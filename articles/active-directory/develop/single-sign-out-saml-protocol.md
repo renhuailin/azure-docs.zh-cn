@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 040e49ee870704107e1d4118f1484119d98a9ebf
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104781205"
 ---
 # <a name="single-sign-out-saml-protocol"></a>单一注销 SAML 协议
@@ -73,4 +73,4 @@ Azure AD 将此值设为 `https://login.microsoftonline.com/<TenantIdGUID>/`，�
 若要评估 `Issuer` 元素的值，请使用应用程序注册期间提供的 **应用 ID URI** 值。
 
 ### <a name="status"></a>状态
-Azure AD 使用 `Status` 元素中的 `StatusCode` 元素指示注销的成功或失败。如果注销尝试失败，`StatusCode` 元素值还包含自定义错误消息。
+Azure AD 使用 `Status` 元素中的 `StatusCode` 元素来指示注销的成功或失败。当注销尝试失败时，`StatusCode` 元素还可能包含自定义错误消息。

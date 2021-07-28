@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: d5320f44aa5d922cea852ab09e5141fad277e2b0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7b9de22a3209a75cec680ae3ea04d2e1f54c956c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566020"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110453260"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>使用 Azure 防火墙保护 Windows 虚拟桌面部署
 
@@ -35,18 +35,18 @@ Windows 虚拟桌面是在 Azure 运行的桌面和应用虚拟化服务。 当�
 
 为 Windows 虚拟桌面创建的 Azure 虚拟机必须有权访问多个完全限定域名 (Fqdn) 才能正常工作。 Azure 防火墙提供 Windows 虚拟桌面 FQDN 标记以简化此配置。 使用以下步骤允许出站 Windows 虚拟桌面平台流量：
 
-- 部署 Azure 防火墙并配置 Windows 虚拟桌面主机池子网“用户定义的路由”(UDR)，以通过 Azure 防火墙路由所有流量。 默认路由现在指向防火墙。
+- 部署 Azure 防火墙并配置 Windows 虚拟桌面主机池子网“用户定义的路由”(UDR)，以通过 Azure 防火墙路由默认流量 (0.0.0.0/0)。 默认路由现在指向防火墙。
 - 创建应用程序规则集合，并启用 *WindowsVirtualDesktop* FQDN 标记的规则。 源 IP 地址范围为主机池虚拟网络，协议为 **https**，目标为 **WindowsVirtualDesktop**。
 
 - Windows 虚拟桌面主机池所需的存储和服务总线帐户集是特定于部署的，因此尚未在 WindowsVirtualDesktop FQDN 标记中捕获。 可以通过以下方式之一来解决此问题：
 
-   - 允许从主机池子网访问 https 到 *xt.blob.core.windows.net、*eh.servicebus.windows.net 和 *xt.table.core.windows.net。 这些通配符 FQDN 会允许所需的访问，但限制更少。
-   - 使用以下日志分析查询列出所需的确切 FQDN，然后在防火墙应用程序规则中显式允许这些 FQDN：
+   - 允许从主机池子网到 *xt.blob.core.windows.net、*eh.servicebus.windows.net 的 https 访问。 这些通配符 FQDN 会允许所需的访问，但限制更少。
+   - 部署 WVD 主机池后，使用以下日志分析查询列出所需的确切 FQDN，然后在防火墙应用程序规则中显式允许这些 FQDN：
    ```
    AzureDiagnostics
    | where Category == "AzureFirewallApplicationRule"
    | search "Deny"
-   | search "gsm*eh.servicebus.windows.net" or "gsm*xt.blob.core.windows.net" or "gsm*xt.table.core.windows.net"
+   | search "gsm*eh.servicebus.windows.net" or "gsm*xt.blob.core.windows.net"
    | parse msg_s with Protocol " request from " SourceIP ":" SourcePort:int " to " FQDN ":" *
    | project TimeGenerated,Protocol,FQDN
    ```

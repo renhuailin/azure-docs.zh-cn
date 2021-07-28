@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/02/2021
 ms.author: yelevin
-ms.openlocfilehash: 7f89780f2ed440898f5a28d78ec541c48a958b90
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4be182b3eee59f7f9d2ef704a3d0f57c6718b45d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700797"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044968"
 ---
 # <a name="connect-your-broadcom-symantec-data-loss-prevention-dlp-to-azure-sentinel"></a>将 Broadcom Symantec 数据丢失防护 (DLP) 连接到 Azure Sentinel
 
@@ -35,7 +35,7 @@ ms.locfileid: "101700797"
 
 - 必须有 Azure Sentinel 工作区的读取和写入权限。
 
-- 必须有工作区的共享密钥的读取权限。 [详细了解工作区密钥](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key)。
+- 必须有工作区的共享密钥的读取权限。 [详细了解工作区密钥](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)。
 
 ## <a name="send-broadcom-symantec-dlp-logs-to-azure-sentinel"></a>向 Azure Sentinel 发送 Broadcom Symantec DLP 日志
 
@@ -47,15 +47,15 @@ ms.locfileid: "101700797"
 
 1. 按照“配置”下的“说明”选项卡中的说明进行操作 ：
 
-    1. 在“1. 定义警报条件”下，Linux Syslog 代理配置”下 - 如果尚未运行日志转发器，或者需要其他日志转发器，请执行此步骤。 有关更多详细说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 1：部署日志转发器](connect-cef-agent.md)。
+    1. 在“1. Linux Syslog 代理配置”下 — 如果你还没有运行日志转发器，或者如果你需要其他日志转发器，请执行此步骤。 有关更多详细说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 1：部署日志转发器](connect-cef-agent.md)。
 
-    1. 在“2. 定义警报详细信息“下，**将 Symantec DLP 日志转发到 Syslog 代理** - 按照 Broadcom 的说明[配置 Symantec dlp](https://help.symantec.com/cs/DLP15.7/DLP/v27591174_v133697641/Configuring-the-Log-to-a-Syslog-Server-action?locale=EN_US)。 此配置应该包含以下元素：
+    1. 在“2. 将 Symantec DLP 日志转发到 Syslog 代理”下，按照 Broadcom 的说明[配置 Symantec DLP](https://help.symantec.com/cs/DLP15.7/DLP/v27591174_v133697641/Configuring-the-Log-to-a-Syslog-Server-action?locale=EN_US)。 此配置应该包含以下元素：
         - 日志目标 – 日志转发服务器的主机名和/或 IP 地址
         - 协议和端口 – TCP 514（如果使用建议的其他协议和端口，请确保在日志转发服务器上的 syslog 守护程序中进行并行更改）
         - 日志格式 – CEF
         - 日志类型 – 所有可用的或所有适用的
 
-    1. 在“3. 定义操作组”下，验证连接”下 - 通过复制连接器页上的命令并在日志转发器上运行该命令来验证数据引入。 有关更多详细说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 3：验证连接性](connect-cef-verify.md)。
+    1. 在“3. 验证连接”下 — 通过复制连接器页上的命令并在日志转发器上运行以验证数据引入。 有关更多详细说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 3：验证连接性](connect-cef-verify.md)。
 
         可能需要长达 20 分钟的时间，日志才会开始显示在 Log Analytics 中。
 

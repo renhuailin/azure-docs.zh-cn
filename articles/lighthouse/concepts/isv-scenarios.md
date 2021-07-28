@@ -1,14 +1,14 @@
 ---
 title: ISV 应场景中的 Azure Lighthouse
 description: ISV 可以使用 Azure Lighthouse 的功能，以更灵活地向客户提供产品/服务。
-ms.date: 12/18/2020
+ms.date: 05/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: d6a12a51d360ad236563b871dbd94cc442ade434
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9fc8c261f49e8a12189708ada1d0da31965e5159
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97696329"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788672"
 ---
 # <a name="azure-lighthouse-in-isv-scenarios"></a>ISV 场景中的 Azure Lighthouse
 
@@ -37,4 +37,4 @@ ms.locfileid: "97696329"
 ## <a name="next-steps"></a>后续步骤
 
 - 了解[跨租户管理体验](cross-tenant-management-experience.md)。
-- 了解 [Azure 委派资源管理](azure-delegated-resource-management.md)。
+- 详细了解 [Azure Lighthouse 体系结构](architecture.md)。

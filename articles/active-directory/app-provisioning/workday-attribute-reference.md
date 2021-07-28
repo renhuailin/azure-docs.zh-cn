@@ -1,24 +1,24 @@
 ---
-title: Workday 属性参考
-description: 了解可使用 XPATH 查询从 Workday 中提取哪些属性。
+title: Azure Active Directory 的 Workday 属性引用
+description: 了解可在 Azure Active Directory 中使用 XPATH 查询从 Workday 中提取哪些属性。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 05/25/2020
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: celested
-ms.openlocfilehash: 0ff9b3d4cc3bee28c8e5e95d8854f64eaa546b0c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.reviewer: arvinh
+ms.openlocfilehash: beb15748086db6d2fb813a4ff636650d38472e36
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99255468"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784676"
 ---
-# <a name="workday-attribute-reference"></a>Workday 属性参考
+# <a name="workday-attribute-reference-for-azure-active-directory"></a>Azure Active Directory 的 Workday 属性引用
 
 本部分提供了可以使用 XPATH 查询从 Workday 中提取的属性列表。 请根据你打算使用的 Workday Web 服务 API 版本参阅相应的部分。 
 
@@ -235,7 +235,7 @@ ms.locfileid: "99255468"
 * substring-after
 * starts-with
 * string-length
-* 包含
+* contains
 * translate
 * normalize-space
 * substring-before

@@ -3,12 +3,12 @@ title: Azure Functions 的 Zip 推送部署
 description: 使用 Kudu 部署服务的 .zip 文件部署功能来发布 Azure Functions。
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.openlocfilehash: fb6867d7719f9650acb00f80ac3a933713ce0e23
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a8a8b6e0ad1cd70ae6fe2f0025afcba6fc9e44a5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777644"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465827"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions 的 Zip 部署
 
@@ -36,11 +36,11 @@ Azure Functions 具有完整的持续部署范围，以及由 Azure 应用服务
 
 函数应用包含 `wwwroot` 目录中的所有文件和文件夹。 .zip 文件部署包含 `wwwroot` 目录的内容，但不包含目录本身。 部署 C# 类库项目时，必须在 .zip 包中的 `bin` 子文件夹中包括编译的库文件和依赖项。
 
+在本地计算机上开发时，可以使用内置的 .zip 压缩功能或第三方工具手动创建函数应用项目文件夹的 .zip 文件。
+
 ## <a name="download-your-function-app-files"></a>下载函数应用文件
 
-在本地计算机上进行开发时，可以轻松在该开发计算机上创建函数应用项目文件夹的 .zip 文件。
-
-但是，可能已通过 Azure 门户中的编辑器创建了函数。 可以通过以下方式之一下载现有的函数应用项目：
+如果使用 Azure 门户中的编辑器创建了函数，则可以通过以下方式之一将现有函数应用项目下载为 .zip 文件：
 
 + **通过 Azure 门户：**
 

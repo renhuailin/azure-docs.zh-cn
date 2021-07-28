@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 门户排查 Azure Stack Edge Pro 排序问题 | Microsoft Docs
-description: 介绍如何排查 Azure Stack Edge Pro 排序问题。
+title: 通过 Azure 门户排查 Azure Stack Edge 排序问题
+description: 介绍如何排查 Azure Stack Edge 排序问题。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: e074043cb685f60027d3c09ae7ad8dc17dded0df
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 99d68cc9a801a73680f32c6f4baa46cebff3b4eb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443397"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460405"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>排查 Azure Stack Edge Pro 排序问题
+# <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>排查 Azure Stack Edge 排序问题
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-本文介绍如何排查 Azure Stack Edge Pro 排序问题。
+本文介绍如何排查 Azure Stack Edge 排序问题。
 
 在本教程中，你将了解：
 
@@ -43,7 +43,7 @@ Microsoft 有可能会根据具体情况，允许按事例升级订阅类型。 
 
 **错误：** 你有 EA、CSP 或赞助的订阅并收到以下错误：
 
-*不支持所选订阅类型。请确保使用支持的订阅。[了解详细信息](azure-stack-edge-deploy-prep.md#prerequisites)。如果使用支持的订阅类型，请确保注册了 `Microsoft.DataBoxEdge` 提供程序。有关如何注册的信息，请参阅[注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)* 。
+*不支持所选订阅类型。请确保使用支持的订阅。[了解详细信息](azure-stack-edge-deploy-prep.md#prerequisites)。如果使用支持的订阅类型，请确保注册了 `Microsoft.DataBoxEdge` 提供程序。有关如何注册的信息，请参阅 [注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)* 。
 
 **建议的解决方案：** 请按照以下步骤注册 Azure Stack Edge 资源提供程序：
 
@@ -61,7 +61,7 @@ Microsoft 有可能会根据具体情况，允许按事例升级订阅类型。 
 
 ## <a name="microsoftdataboxedge-not-registered-for-subscription"></a>没有为订阅注册 Microsoft.DataBoxEdge
 
-**错误：** 在 Azure 门户中，选择要用于 Azure Stack Edge Pro 或 Data Box Gateway 的订阅，然后收到以下错误：
+**错误：** 在 Azure 门户中，选择要用于 Azure Stack Edge 或 Data Box Gateway 的订阅，然后收到以下错误：
 
 *资源提供程序: 没有为订阅“&lt;订阅名称&gt;”注册 Microsoft.DataBoxEdge，并且你没有为订阅“&lt;订阅名称&gt;”注册资源提供程序的权限*。
 
@@ -77,4 +77,4 @@ Microsoft 有可能会根据具体情况，允许按事例升级订阅类型。 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 深入了解如何[排查 Azure Stack Edge Pro 问题](azure-stack-edge-troubleshoot.md)。
+* 深入了解如何[排查 Azure Stack Edge 问题](azure-stack-edge-troubleshoot.md)。

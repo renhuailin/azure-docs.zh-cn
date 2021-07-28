@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 203baa58e286bd605bf28f511a5c12fcf3dc2033
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: d122c9ae2281bde041a15c4f137293f76e0c618c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165058"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475268"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何排查 Log Analytics Linux 代理的问题
 
@@ -52,7 +52,7 @@ Log Analytics 代理 Linux 故障排除工具是一个脚本，旨在帮助查�
 6. 代理自定义日志无效
 7. 收集代理日志
 
-有关更多详细信息，请参阅 [Github 文档](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting-Tool.md)。
+有关更多详细信息，请参阅 [GitHub 文档](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting-Tool.md)。
 
  > [!NOTE]
  > 遇到问题时，请运行日志收集器工具。 从一开始便记录日志将极大帮助我们的支持团队更快解决你的问题。

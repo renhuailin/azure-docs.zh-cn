@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/09/2021
+ms.date: 05/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 2546236399853f3ed6fad9e07e031edb568fbfe9
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 680563e0688d11e02f79f3c184b38d5a80bafeb0
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311526"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480350"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>为 NFS 卷访问配置具有扩展组的 ADDS LDAP
 
@@ -86,6 +86,8 @@ ms.locfileid: "107311526"
     可使用“Active Directory 用户和计算机”MMC 管理单元来管理 POSIX 属性。 以下示例展示了 Active Directory 属性编辑器：  
 
     ![Active Directory 属性编辑器](../media/azure-netapp-files/active-directory-attribute-editor.png) 
+
+    有关详细信息，请参阅[访问 Active Directory 属性编辑器](create-volumes-dual-protocol.md#access-active-directory-attribute-editor)。  
 
 5. 如果要配置集成 LDAP 的 NFSv4.1 Linux 客户端，请查看[为 Azure NetApp 文件配置 NFS 客户端](configure-nfs-clients.md)。
 

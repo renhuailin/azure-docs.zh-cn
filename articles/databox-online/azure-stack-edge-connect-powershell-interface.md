@@ -1,6 +1,6 @@
 ---
-title: 通过 Windows PowerShell 界面连接和管理 Microsoft Azure Stack Edge Pro 设备 | Microsoft Docs
-description: 介绍如何通过 Windows PowerShell 界面连接并管理 Azure Stack Edge Pro。
+title: 通过 Windows PowerShell 接口连接和管理 Microsoft Azure Stack Edge Pro FPGA 设备
+description: 介绍如何通过 Windows PowerShell 接口进行 Azure Stack Edge Pro FPGA 连接和管理。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,20 +8,20 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: c9c6247f021b7af4cfdd899ffd4b6bd178f2256c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09271ddeac59446d134feaa0f2acb6c3e3d9d89f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96345587"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461267"
 ---
 # <a name="manage-an-azure-stack-edge-pro-fpga-device-via-windows-powershell"></a>通过 Windows PowerShell 管理 Azure Stack Edge Pro FPGA 设备
 
-Azure Stack Edge Pro 解决方案可让你处理数据，并通过网络将数据发送到 Azure。 本文介绍了为 Azure Stack Edge Pro 设备执行的一些配置和管理任务。 可以使用 Azure 门户、本地 Web UI 或 Windows PowerShell 界面来管理设备。
+Azure Stack Edge Pro FPGA 解决方案可让你处理数据，并通过网络将数据发送到 Azure。 本文介绍了为 Azure Stack Edge Pro FPGA 设备执行的一些配置和管理任务。 可以使用 Azure 门户、本地 Web UI 或 Windows PowerShell 界面来管理设备。
 
-本文重点介绍使用 PowerShell 接口执行的任务。 
+本文重点介绍使用 PowerShell 界面执行的任务。 
 
-本文包括以下规程：
+本文包括以下过程：
 
 - 连接到 PowerShell 接口
 - 创建支持包
@@ -94,4 +94,4 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在 Azure 门户中部署 [Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md)。
+- 在 Azure 门户中部署 [Azure Stack Edge Pro FPGA](azure-stack-edge-deploy-prep.md)。

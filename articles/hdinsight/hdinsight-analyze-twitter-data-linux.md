@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: 74a18be37608b2ac0c8a64655fa833753111706a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98942779"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>使用 HDInsight 中的 Apache Hive 和 Apache Hadoop 分析 Twitter 数据
@@ -39,7 +39,7 @@ Twitter 允许通过 REST API 检索每个推文的数据作为 JavaScript 对�
 
 4. 选择“是，我同意”，然后选择“创建 Twitter 应用程序”。
 
-5. 选择“权限”选项卡。默认权限为“只读”。
+5. 选择“权限”选项卡。默认权限为“只读”。 
 
 6. 选择“密钥和访问令牌”选项卡。
 

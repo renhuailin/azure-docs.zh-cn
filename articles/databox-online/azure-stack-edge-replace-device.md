@@ -1,6 +1,6 @@
 ---
-title: 更换 Azure Stack Edge Pro 设备 | Microsoft Docs
-description: 说明如何获取更换的 Azure Stack Edge Pro 设备。
+title: Azure Stack Edge 设备更换
+description: 说明如何获取 Azure Stack Edge 设备更换品。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 2196c9463569dc43092b38de58e0103104efed0c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c3c029826ccd4430f935b63b74bc958ad8de4c1e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443465"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460626"
 ---
-# <a name="replace-your-azure-stack-edge-pro-device"></a>更换 Azure Stack Edge Pro 设备
+# <a name="replace-your-azure-stack-edge-device"></a>更换 Azure Stack Edge 设备
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-本文说明如何更换 Azure Stack Edge Pro 设备。 如果现有设备有硬件故障或需要升级，则需要替换设备。 
+本文说明如何更换 Azure Stack Edge 设备。 如果现有设备有硬件故障或需要升级，则需要替换设备。 
 
 
 在本文中，学习如何：
@@ -35,7 +35,7 @@ ms.locfileid: "102443465"
 
 如果现有设备发生硬件故障，请按照以下步骤开具支持票证：
 
-1. 向 Microsoft 支持部门打开支持票证，表示你希望退回设备。 选择“Azure Stack Edge Pro 硬件”问题类型，并选择“硬件问题”子类型 。  
+1. 向 Microsoft 支持部门打开支持票证，表示你希望退回设备。 选择“Azure Stack Edge 硬件”问题类型，并选择“硬件问题”子类型 。  
 
     ![创建支持票证](media/azure-stack-edge-replace-device/open-support-ticket-1.png)  
 
@@ -67,4 +67,4 @@ ms.locfileid: "102443465"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[退回 Azure Stack Edge Pro 设备](azure-stack-edge-return-device.md)。
+- 了解如何[退回 Azure Stack Edge 设备](azure-stack-edge-return-device.md)。

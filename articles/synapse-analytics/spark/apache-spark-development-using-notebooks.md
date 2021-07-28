@@ -1,34 +1,34 @@
 ---
-title: Synapse Studio 笔记本
-description: 本文介绍如何创建和开发 Azure Synapse Studio 笔记本，以便进行数据准备和可视化。
+title: 如何使用 Synapse 笔记本
+description: 本文介绍如何创建和开发 Synapse 笔记本，以便进行数据准备和可视化。
 services: synapse analytics
 author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
-ms.date: 10/19/2020
+ms.date: 05/08/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 203ac7252f06b342e7f553bb1900cdf9ac959e0a
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: a66b036bde5f25873e9d4a371faf249deadd69dc
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891369"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109736891"
 ---
-# <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse Studio 笔记本
+# <a name="create-develop-and-maintain-synapse-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse 笔记本
 
-Synapse Studio 笔记本是一个 Web 界面，用于创建包含实时代码、可视化效果和叙述性文本的文件。 笔记本是验证想法并使用快速试验从数据中获取见解的好地方。 笔记本还广泛用于数据准备、数据可视化、机器学习和其他大数据方案。
+Synapse 笔记本是一种 Web 界面，用于创建包含实时代码、可视化效果和叙述性文本的文件。 笔记本是验证想法并使用快速试验从数据中获取见解的好地方。 笔记本还广泛用于数据准备、数据可视化、机器学习和其他大数据方案。
 
-借助 Azure Synapse Studio 笔记本，可以：
+使用 Synapse 笔记本，可以：
 
 * 无需设置即可开始工作。
 * 利用内置企业安全功能确保数据安全。
 * 针对 Spark 和 SQL，分析跨原始格式（CSV、txt、JSON 等）、已处理的文件格式（parquet、Delta Lake、ORC 等）以及 SQL 表格数据文件的数据。
 * 利用增强的创作功能和内置的数据可视化功能提高工作效率。
 
-本文介绍如何在 Azure Synapse Studio 中使用笔记本。
+本文介绍如何在 Synapse Studio 中使用笔记本。
 
 ## <a name="preview-of-the-new-notebook-experience"></a>全新笔记本体验预览
 Synapse 团队将新的笔记本组件引入 Synapse Studio，为 Microsoft 客户提供一致的笔记本体验，并最大限度地提高可发现性、生产力、共享和协作功能。 全新笔记本体验已就绪，可供预览。 检查笔记本工具栏中的“预览功能”按钮将其打开。 下表提供现有笔记本（称为“经典笔记本”）与新预览版之间的功能比较。  
@@ -48,7 +48,7 @@ Synapse 团队将新的笔记本组件引入 Synapse Studio，为 Microsoft 客�
 
 ## <a name="create-a-notebook"></a>创建笔记本
 
-可通过两种方法创建笔记本。 可以从“对象资源管理器”创建新笔记本或将现有笔记本导入到 Azure Synapse 工作区。 Azure Synapse Studio 笔记本可识别标准 Jupyter Notebook IPYNB 文件。
+可通过两种方法创建笔记本。 可以从“对象资源管理器”创建新笔记本或将现有笔记本导入到 Synapse 工作区。 Synapse 笔记本可识别标准 Jupyter Notebook IPYNB 文件。
 
 ![创建导入笔记本](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook-2.png)
 
@@ -87,7 +87,7 @@ Synapse 团队将新的笔记本组件引入 Synapse Studio，为 Microsoft 客�
 
 ### <a name="set-a-primary-language"></a>设置主要语言
 
-Azure Synapse Studio 笔记本支持四种 Apache Spark 语言：
+Synapse 笔记本支持四种 Apache Spark 语言：
 
 * pySpark (Python)
 * Spark (Scala)
@@ -115,7 +115,7 @@ Azure Synapse Studio 笔记本支持四种 Apache Spark 语言：
 
 ### <a name="use-temp-tables-to-reference-data-across-languages&quot;></a>使用临时表跨语言引用数据
 
-不能直接在 Synapse Studio 笔记本中跨不同语言引用数据或变量。 在 Spark 中，可以跨语言引用临时表。 下面是一个示例，说明如何使用 Spark 临时表作为解决方法，在 `PySpark` 和 `SparkSQL` 中读取 `Scala` 数据帧。
+不能直接在 Synapse 笔记本中跨不同语言引用数据或变量。 在 Spark 中，可以跨语言引用临时表。 下面是一个示例，说明如何使用 Spark 临时表作为解决方法，在 `PySpark` 和 `SparkSQL` 中读取 `Scala` 数据帧。
 
 1. 在单元格 1 中，使用 Scala 从 SQL 池连接器读取 DataFrame，并创建一个临时表。
 
@@ -141,7 +141,7 @@ Azure Synapse Studio 笔记本支持四种 Apache Spark 语言：
 
 ### <a name="ide-style-intellisense"></a>IDE 样式 IntelliSense
 
-Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 IntelliSense 引入到了单元格编辑器中。 语法突出显示、错误标记和自动代码补全功能有助于你编写代码并更快地找出问题。
+Synapse 笔记本集成了 Monaco 编辑器，将 IDE 样式的 IntelliSense 引入到了单元格编辑器中。 语法突出显示、错误标记和自动代码补全功能有助于你编写代码并更快地找出问题。
 
 对于不同的语言，IntelliSense 功能处于不同的成熟度级别。 请参阅下表了解支持的功能。
 
@@ -156,7 +156,7 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
 
 ### <a name="code-snippets"></a>代码段
 
-Azure Synapse Studio 笔记本提供代码片段，可更轻松地输入常用的代码模式，例如配置 Spark 会话、将数据作为 Spark 数据帧读取，或者使用 matplotlib 等绘制图表。
+Synapse 笔记本提供代码片段，可更轻松地输入常用的代码模式，例如配置 Spark 会话、将数据作为 Spark 数据帧读取，或者使用 matplotlib 等绘制图表。
 
 代码片段与其他建议混合在一起显示在 [IntelliSense](#ide-style-intellisense) 中。 代码片段内容与代码单元格语言一致。 可通过在代码单元格编辑器中键入“代码片段”或代码片段标题中出现的任何关键字来查看可用的代码片段。 例如，通过键入“读取”，可查看用于从各种数据源读取数据的代码片段列表。
 
@@ -271,7 +271,8 @@ Azure Synapse Studio 笔记本提供代码片段，可更轻松地输入常用�
 
 大纲（目录）在边栏窗口中显示任何 markdown 单元的第一个 markdown 标题，用于快速导航。 大纲边栏可根据最适合屏幕的方式调整大小和折叠。 你可以选择笔记本命令栏上的“大纲”按钮，以打开或隐藏边栏
 
-<a name="azure-notebook-outline"></a>![azure-notebook-outline](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-outline.png)
+![azure-notebook-outline](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-outline.png)
+
 ---
 
 
@@ -372,7 +373,7 @@ Synapse 笔记本提供内置的变量资源管理器，让你可以在 PySpark 
 
 ### <a name="spark-progress-indicator"></a>Spark 进度指示器
 
-Azure Synapse Studio 笔记本仅基于 Spark。 代码单元格在无服务器 Apache Spark 池上远程执行。 Spark 作业进度指示器提供有实时进度栏，可帮助你了解作业执行状态。
+Synapse 笔记本仅基于 Spark。 代码单元格在无服务器 Apache Spark 池上远程执行。 Spark 作业进度指示器提供有实时进度栏，可帮助你了解作业执行状态。
 每个作业或阶段的任务数有助于识别 spark 作业的并行级别。 你还可以通过选择作业（或阶段）名称上的链接，深入了解特定作业（或阶段）的 Spark UI。
 
 
@@ -476,7 +477,7 @@ df = spark.read.option("header", "true") \
    ![notebook-properties](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
 ## <a name="magic-commands"></a>magic 命令
-可以在 Azure Synapse Studio 笔记本中使用熟悉的 Jupyter magic 命令。 查看以下列表了解当前可用的 magic 命令。 告诉我们[你在 GitHub 上的用例](https://github.com/MicrosoftDocs/azure-docs/issues/new)，以便我们可以继续构建更多 magic 命令来满足你的需求。
+可以在 Synapse 笔记本中使用熟悉的 Jupyter magic 命令。 查看以下列表了解当前可用的 magic 命令。 告诉我们[你在 GitHub 上的用例](https://github.com/MicrosoftDocs/azure-docs/issues/new)，以便我们可以继续构建更多 magic 命令来满足你的需求。
 
 > [!NOTE]
 > Synapse 管道仅支持以下 magic 命令：%%pyspark、%%spark、%%csharp 和 %%sql。 
@@ -528,7 +529,7 @@ Azure 数据工厂查找参数单元格，并将此单元格作为执行时传�
 
 ### <a name="assign-parameters-values-from-a-pipeline"></a>从管道分配参数值
 
-使用参数创建笔记本后，可以从具有 Azure Synapse 笔记本活动的管道执行它。  将活动添加到管道画布后，将能够在“设置”选项卡的“基本参数”部分设置参数值。 
+使用参数创建笔记本后，可以从具有 Synapse 笔记本活动的管道执行该笔记本。  将活动添加到管道画布后，将能够在“设置”选项卡的“基本参数”部分设置参数值。 
 
 ![分配参数](./media/apache-spark-development-using-notebooks/assign-parameter.png)
 
@@ -538,7 +539,7 @@ Azure 数据工厂查找参数单元格，并将此单元格作为执行时传�
 
 ## <a name="shortcut-keys"></a>快捷键
 
-与 Jupyter Notebooks 类似，Azure Synapse Studio 笔记本具有模式用户界面。 键盘根据笔记本单元格的具体模式执行不同的任务。 Synapse Studio 笔记本支持给定代码单元格的以下两种模式：命令模式和编辑模式。
+与 Jupyter Notebooks 类似，Synapse 笔记本具有模式用户界面。 键盘根据笔记本单元格的具体模式执行不同的任务。 Synapse 笔记本支持给定代码单元格的以下两种模式：命令模式和编辑模式。
 
 1. 当没有文本光标提示你键入时，单元格处于命令模式。 当单元格处于命令模式时，可以将笔记本作为一个整体进行编辑，但不能键入单独的单元格。 按 `ESC` 或使用鼠标选择单元格编辑器区域外部，进入命令模式。
 
@@ -552,9 +553,9 @@ Azure 数据工厂查找参数单元格，并将此单元格作为执行时传�
 
 # <a name="classical-notebook"></a>[经典笔记本](#tab/classical)
 
-使用以下击键快捷方式，你可以更轻松地在 Azure Synapse 笔记本中导航并运行代码。
+使用以下击键快捷方式，你可以更轻松地在 Synapse 笔记本中导航并运行代码。
 
-| 操作 |Synapse Studio 笔记本快捷方式  |
+| 操作 |Synapse 笔记本快捷方式  |
 |--|--|
 |运行当前单元格并选择下方的单元格 | Shift+Enter |
 |运行当前单元格并在下方插入 | Alt+Enter |
@@ -571,7 +572,7 @@ Azure 数据工厂查找参数单元格，并将此单元格作为执行时传�
 
 # <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
 
-| 操作 |Synapse Studio 笔记本快捷方式  |
+| 操作 |Synapse 笔记本快捷方式  |
 |--|--|
 |运行当前单元格并选择下方的单元格 | Shift+Enter |
 |运行当前单元格并在下方插入 | Alt+Enter |
@@ -590,9 +591,9 @@ Azure 数据工厂查找参数单元格，并将此单元格作为执行时传�
 ### <a name="shortcut-keys-under-edit-mode"></a>编辑模式下的快捷键
 
 
-使用以下击键快捷方式，可以在编辑模式下更轻松地在 Azure Synapse 笔记本中导航并运行代码。
+使用以下击键快捷方式，可以在编辑模式下更轻松地在 Synapse 笔记本中导航并运行代码。
 
-| 操作 |Synapse Studio 笔记本快捷方式  |
+| 操作 |Synapse 笔记本快捷方式  |
 |--|--|
 |上移光标 | 向上 |
 |下移光标|向下|

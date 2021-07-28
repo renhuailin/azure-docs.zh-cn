@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ee4992e41e792b570d8937edfe31efb4c651d742
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 286ce9b628eff0975cff1cfa006f914ed43c3c46
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100723"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469672"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用适用于容器注册表的 Azure Defender 来扫描映像是否存在漏洞
 
@@ -21,6 +21,9 @@ ms.locfileid: "102100723"
 启用适用于容器注册表的 Azure Defender 时，会立即扫描推送到注册表的任何映像。 此外，还将扫描最近 30 天内拉取的所有映像。 
 
 当扫描程序向安全中心报告漏洞时，安全中心会提供结果和相关信息作为建议。 此外，这些结果还包括相关信息，如修正步骤、相关 CVE、CVSS 评分等。 你可以查看为一个或多个订阅或者为特定注册表识别出的漏洞。
+
+> [!TIP]
+> 还可以扫描容器映像以查找漏洞，因为这些映像是在 CI/CD GitHub 工作流中生成的。 有关详细信息，请参阅[识别 CI/CD 工作流中有漏洞的容器映像](defender-for-container-registries-cicd.md)。
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>标识 Azure 容器注册表映像中的漏洞 
@@ -109,7 +112,7 @@ ms.locfileid: "102100723"
 
 当发现结果与在禁用规则中定义的条件相匹配时，它不会显示在发现结果列表中。 典型方案包括：
 
-- 禁用严重性低于中等的发现结果
+- 禁用严重性低于中等的结果
 - 禁用不可修补的发现结果
 - 禁用 CVSS 分数低于 6.5 的发现结果
 - 禁用在安全检查或类别中带有特定文本的发现结果（例如，“RedHat”，“CentOS Security Update for sudo”）

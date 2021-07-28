@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
 ms.openlocfilehash: 9bb787138267fd8a9fab4dea233c1c828b457d67
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92109181"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>使用 Sqoop 在 Data Lake Storage Gen1 和 Azure SQL 数据库之间复制数据
@@ -105,7 +105,7 @@ HDInsight 群集已经具有可用的 Sqoop 包。 如果已经将 HDInsight 群
     sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=user1@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
     ```
 
-1. 验证数据是否已经传输到 Data Lake Storage Gen1 帐户。 运行以下命令：
+1. 验证数据是否已经传输到 Data Lake Storage Gen1 帐户。 运行下面的命令：
 
     ```console
     hdfs dfs -ls adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/
@@ -121,7 +121,7 @@ HDInsight 群集已经具有可用的 Sqoop 包。 如果已经将 HDInsight 群
     -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
     ```
 
-   每个 part-m-_ 文件对应源表（_ *表 1**）中的一行。可查看待验证的 part-m-* 文件的内容。
+   每个 **part-m-** _ 文件对应源表（表 1）中的一行。*你可以查看 part-m-* 文件的内容进行验证。
 
 ### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>从 Data Lake Storage Gen1 将数据导出到 Azure SQL 数据库
 

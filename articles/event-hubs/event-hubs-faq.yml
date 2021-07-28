@@ -4,12 +4,12 @@ metadata:
   description: 本文提供了有关 Azure 事件中心的常见问题 (FAQ) 和解答的列表。
   ms.topic: article
   ms.date: 01/20/2021
-  ms.openlocfilehash: 726f1d28f17f10d94c8e5bc27a2f5d38a36b6453
-  ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+  ms.openlocfilehash: 75179e8ab3b418de773ceac5dbd35c446421a790
+  ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/14/2021
-  ms.locfileid: "112060824"
+  ms.lasthandoff: 07/16/2021
+  ms.locfileid: "114286129"
 title: 事件中心常见问题
 summary: ''
 sections:
@@ -20,7 +20,7 @@ sections:
     answer: "命名空间是事件中心/Kafka 主题的范围容器。 它提供唯一的 [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)。 命名空间充当容装多个事件中心/Kafka 主题的应用程序容器。 \n"
   - question: >
       何时创建新的命名空间与使用现有命名空间？
-    answer: "容量分配（[吞吐量单位 (TU)](/azure/event-hubs/event-hubs-faq.yml#throughput-units) 或[处理单位 (PU)](./event-hubs-scalability.md#processing-units)）在命名空间级别计费。 命名空间也与区域相关联。\n\n在以下任一情况下，你可能希望创建新的命名空间，而不是使用现有的命名空间： \n\n- 需要与新区域关联的事件中心。\n- 需要与其他订阅关联的事件中心。\n- 需要一个具有不同容量分配的事件中心（即，具有添加的事件中心的命名空间的容量需求将超过 40 TU 阈值，并且你不希望使用专用群集）  \n"
+    answer: "容量分配（[吞吐量单位 (TU)](/azure/event-hubs/event-hubs-faq#throughput-units) 或[处理单位 (PU)](./event-hubs-scalability.md#processing-units)）在命名空间级别计费。 命名空间也与区域相关联。\n\n在以下任一情况下，你可能希望创建新的命名空间，而不是使用现有的命名空间： \n\n- 需要与新区域关联的事件中心。\n- 需要与其他订阅关联的事件中心。\n- 需要一个具有不同容量分配的事件中心（即，具有添加的事件中心的命名空间的容量需求将超过 40 TU 阈值，并且你不希望使用专用群集）  \n"
   - question: >
       事件中心基本和标准这两种服务层有什么不同？
     answer: >
@@ -59,7 +59,7 @@ sections:
       Azure 事件中心标准层和专用层在你选择的区域中存储元数据和数据。 为 Azure 事件中心命名空间设置异地灾难恢复时，会将元数据复制到你选择的次要区域。 因此，此服务会自动满足区域内数据驻留要求，包括[信任中心](https://azuredatacentermap.azurewebsites.net/)内指定的要求。
 
 
-      [!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
+      [!INCLUDE [event-hubs-connectivity](./includes/event-hubs-connectivity.md)]
 - name: Apache Kafka 集成
   questions:
   - question: >
@@ -146,7 +146,8 @@ sections:
     answer: "如果某个命名空间中所有事件中心间的总入口吞吐量或总入口事件率超过了聚合吞吐量单位限额，那么发送方会受到限制，并会收到指明已超出入口配额的错误信息。\n\n如果某个命名空间中所有事件中心间的总出口吞吐量或总出口事件率超过了聚合吞吐量单位限额，那么接收方会受到限制，但不会生成任何限制错误。 \n\n入口和出口配额是分开强制实施的，因此，任何发送方都不会使事件耗用速度减慢，并且接收方也无法阻止事件发送到事件中心。\n"
   - question: >
       可预留/选择的吞吐量单位数量是否有限制？
-    answer: "在 Azure 门户中创建基本层或标准层命名空间时，最多可以为命名空间选择 20 个 TU。 若要将 TU 提升到正好 40 个，请提交一个[支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md)。  \n\n1. 在“事件总线命名空间”页面上，选择左侧菜单上的“新建支持请求” 。 \n1. 在“新建支持请求”页面上，按照以下步骤操作：\n    1. 对于“摘要”，用几句话描述这个问题。 \n    1. 对于“问题类型”，请选择“配额”。 \n    1. 对于“问题子类型”，选择“吞吐量单位增加或减少请求” 。 \n    \n        :::image type=\"content\" source=\"./media/event-hubs-faq/support-request-throughput-units.png\" alt-text=\"“支持请求”页面\":::\n\n如果超出 40 TU，事件中心可提供名为“事件中心专用群集”的基于资源/容量的模型。 专用群集按容量单位 (CU) 销售。 有关详细信息，请参阅[事件中心专用层 - 概述](event-hubs-dedicated-overview.md)。\n"
+    answer: >
+      在 Azure 门户中创建基本层或标准层命名空间时，最多可以为命名空间选择 40 个 TU。 如果超过 40 个 TU，事件中心会提供基于资源/容量的模型，例如事件中心高级群集和事件中心专用群集。 有关详细信息，请参阅[事件中心高级群集 - 概述](event-hubs-premium-overview.md)和[事件中心专用群集 - 概述](event-hubs-dedicated-overview.md)。
 - name: 专用群集
   questions:
   - question: >
@@ -155,7 +156,7 @@ sections:
       事件中心专用群集提供单租户部署来满足苛刻的客户要求。 此产品/服务会构建一个不受限于吞吐量单位的基于容量的群集。 这意味着，可以使用该群集，根据群集的 CPU 和内存用量情况来引入和流式传输数据。 有关详细信息，请参阅[事件中心专用群集](event-hubs-dedicated-overview.md)。
   - question: >
       如何创建事件中心专用群集？
-    answer: "有关设置事件中心专用群集的分步说明和详细信息，请参阅[快速入门：使用 Azure 门户创建事件中心专用群集](event-hubs-dedicated-cluster-create-portal.md)。 \n\n\n[!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]\n"
+    answer: "有关设置事件中心专用群集的分步说明和详细信息，请参阅[快速入门：使用 Azure 门户创建事件中心专用群集](event-hubs-dedicated-cluster-create-portal.md)。 \n\n\n[!INCLUDE [event-hubs-dedicated-clusters-faq](./includes/event-hubs-dedicated-clusters-faq.md)]\n"
 - name: 分区
   questions:
   - question: >
@@ -236,5 +237,5 @@ sections:
   questions:
   - question: >
       当使用 Azure Blob 存储作为检查点存储时，我如何以特定版本的 Azure Storage SDK 为目标？
-    answer: "如果在 Azure Stack Hub 上运行此代码，除非将特定的存储 API 版本作为目标，否则会遇到运行时错误。 这是因为事件中心 SDK 使用 Azure 中提供的最新 Azure 存储 API，而此 API 可能在 Azure Stack Hub 平台上不可用。 Azure Stack Hub 支持的存储 Blob SDK 版本可能与 Azure 上通常提供的版本不同。 如果你是将 Azure Blob 存储用作检查点存储，请检查[支持用于 Azure Stack Hub 内部版本的 Azure 存储 API 版本](/azure-stack/user/azure-stack-acs-differences?#api-version)，并在代码中将该版本作为目标。 \n\n例如，如果在 Azure Stack Hub 版本 2005 上运行，则存储服务的最高可用版本为版本 2019-02-02。 默认情况下，事件中心 SDK 客户端库使用 Azure 上的最高可用版本（在 SDK 发布时为 2019-07-07）。 在这种情况下，除了执行本部分中的步骤以外，还需要添加相关代码，将存储服务 API 版本 2019-02-02 作为目标。 如需通过示例来了解如何以特定的存储 API 版本为目标，请参阅以下 C#、Java、Python 和 JavaScript/TypeScript 示例。  \n\n如需通过示例来了解如何从代码中以特定存储 API 版本为目标，请参阅 GitHub 上的以下示例： \n\n- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/)\n- [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)\n- Python - [同步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)、[异步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)\n- [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) 和 [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts)\n"
+    answer: "如果在 Azure Stack Hub 上运行此代码，除非将特定的存储 API 版本作为目标，否则会遇到运行时错误。 这是因为事件中心 SDK 使用 Azure 中提供的最新 Azure 存储 API，而此 API 可能在 Azure Stack Hub 平台上不可用。 Azure Stack Hub 支持的存储 Blob SDK 版本可能与 Azure 上通常提供的版本不同。 如果你是将 Azure Blob 存储用作检查点存储，请检查[支持用于 Azure Stack Hub 内部版本的 Azure 存储 API 版本](/azure-stack/user/azure-stack-acs-differences?#api-version)，并在代码中将该版本作为目标。 \n\n例如，如果在 Azure Stack Hub 版本 2005 上运行，则存储服务的最高可用版本为版本 2019-02-02。 默认情况下，事件中心 SDK 客户端库使用 Azure 上的最高可用版本（在 SDK 发布时为 2019-07-07）。 在这种情况下，除了执行本部分中的步骤以外，还需要添加相关代码，将存储服务 API 版本 2019-02-02 作为目标。 如需通过示例来了解如何以特定的存储 API 版本为目标，请参阅以下 C#、Java、Python 和 JavaScript/TypeScript 示例。  \n\n如需通过示例来了解如何从代码中以特定存储 API 版本为目标，请参阅 GitHub 上的以下示例： \n\n- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/)\n- [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)\n- Python - [同步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)、[异步](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)\n- [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/eventhub/eventhubs-checkpointstore-blob/samples/v1/javascript/receiveEventsWithApiSpecificStorage.js) 和 [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/eventhub/eventhubs-checkpointstore-blob/samples/v1/typescript/src/receiveEventsWithApiSpecificStorage.ts)\n"
 additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n访问以下链接可以了解有关事件中心的详细信息：\n\n* [事件中心概述](./event-hubs-about.md)\n* [创建事件中心](event-hubs-create.md)\n* [事件中心自动膨胀](event-hubs-auto-inflate.md)"

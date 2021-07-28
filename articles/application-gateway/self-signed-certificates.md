@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/23/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 51536db7fe0bc1ae723327f17b2b5e8303c07e83
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 602f766429045d91748c0f0873744fe1d35b621d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315878"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467006"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>使用自定义根 CA 生成 Azure 应用程序网关自签名证书
 
@@ -50,20 +50,21 @@ ms.locfileid: "108315878"
 
 ### <a name="create-the-root-key"></a>创建根密钥
 
-1. 登录到安装了 OpenSSL 的计算机并运行以下命令。 这会创建一个受密码保护的密钥。
+1. 登录到安装了 OpenSSL 的计算机并运行以下命令。 这会创建加密密钥。
 
    ```
    openssl ecparam -out contoso.key -name prime256v1 -genkey
    ```
-1. 在提示符下键入强密码。 例如，使用大写字母、小写字母、数字和符号至少输入 9 个字符。
-
+   
 ### <a name="create-a-root-certificate-and-self-sign-it"></a>创建根证书并进行自签名
 
 1. 使用以下命令生成 CSR 和证书。
 
    ```
    openssl req -new -sha256 -key contoso.key -out contoso.csr
-
+   ```
+   
+   ```
    openssl x509 -req -sha256 -days 365 -in contoso.csr -signkey contoso.key -out contoso.crt
    ```
    上述命令将创建根证书。 稍后你将使用此证书来为服务器证书签名。

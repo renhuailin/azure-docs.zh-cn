@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 05/19/2021
 ms.author: alkohli
-ms.openlocfilehash: a0e52d64625e8dc9d785a1e6f53db0042de8a1bf
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d7dd4a3920e947469c85df0d9ab440d95ab7712d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126158"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466918"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>使用 Azure CLI 和 Python 在 Azure Stack Edge Pro GPU 设备上部署 VM
 
@@ -72,14 +72,14 @@ ms.locfileid: "108126158"
 
 4. 你已为 Azure Stack Edge Pro 设备创建了 Base-64 编码的 .cer 证书（PEM 格式）。 此证书已作为签名链上传到设备，并安装到了客户端上受信任的根存储中。 还需要 pem 格式的此证书，这样 Python 才能在此客户端上工作。
 
-    使用 `certutil` 命令将此证书转换为 `pem` 格式。 必须在包含证书的目录中运行此命令。
+    使用 [certutil](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc732443(v=ws.11)) 命令将此证书转换为 `pem` 格式。 必须在包含证书的目录中运行此命令。
 
     ```powershell
     certutil.exe <SourceCertificateName.cer> <DestinationCertificateName.pem>
     ```
     下面显示了命令用法的示例：
 
-    ```powershell
+    ```output
     PS C:\Certificates> certutil.exe -encode aze-root.cer aze-root.pem
     Input Length = 2150
     Output Length = 3014
@@ -113,13 +113,17 @@ ms.locfileid: "108126158"
 
 6. [下载此过程中使用的 Python 脚本](https://aka.ms/ase-vm-python)。
 
+7. 为 Azure CLI 准备环境：
+
+   [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
 ## <a name="step-1-set-up-azure-clipython-on-the-client"></a>步骤 1：在客户端上设置 Azure CLI/Python
 
 ### <a name="verify-profile-and-install-azure-cli"></a>验证配置文件并安装 Azure CLI
 
 <!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908&preserve-view=true#azure-resource-manager-api-profiles).-->
 
-1. 在客户端上安装 Azure CLI。 此示例已安装 Azure CLI 2.0.80。 若要验证 Azure CLI 的版本，请运行 `az --version` 命令。
+1. 在客户端上安装 Azure CLI。 此示例已安装 Azure CLI 2.0.80。 若要验证 Azure CLI 的版本，请运行 [az --version](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true#az_version) 命令。
 
     下面是上述命令的输出示例：
 
@@ -153,7 +157,7 @@ ms.locfileid: "108126158"
 
 3. 若要运行本文中使用的示例脚本，你将需要以下 Python 库版本：
 
-    ```powershell
+    ```
     azure-common==1.1.23
     azure-mgmt-resource==2.1.0
     azure-mgmt-network==2.7.0
@@ -163,6 +167,7 @@ ms.locfileid: "108126158"
     haikunator
     msrestazure==0.6.2
     ```
+
     若要安装版本，请运行以下命令：
 
     ```powershell
@@ -257,9 +262,9 @@ ms.locfileid: "108126158"
     
 ### <a name="connect-to-azure-stack-edge-pro"></a>连接到 Azure Stack Edge Pro
 
-1. 通过运行 `az cloud register` 命令注册 Azure Stack Edge Pro 环境。
+1. 通过运行 [az cloud register](/cli/azure/cloud?view=azure-cli-latest&preserve-view=true#az_cloud_register) 命令注册 Azure Stack Edge Pro 环境。
 
-    在某些情况下，直接出站 Internet 连接通过代理或防火墙进行路由，从而强制进行 SSL 拦截。 在这些情况下，az cloud register 命令可能会失败并出现错误，例如\"无法从云中获取终结点。\"若要解决此错误，请在 Windows PowerShell 中设置以下环境变量：
+    在某些情况下，直接出站 Internet 连接通过代理或防火墙进行路由，从而强制进行 SSL 拦截。 在这些情况下，`az cloud register` 命令可能会失败并出现错误，例如“无法从云中获取终结点”。若要解决此错误，请在 Windows PowerShell 中设置以下环境变量：
 
     ```powershell
     $ENV:AZURE_CLI_DISABLE_CONNECTION_VERIFICATION = 1 
@@ -276,31 +281,31 @@ ms.locfileid: "108126158"
     $ENV:PRIVATE_IP_ADDRESS = "5.5.174.126"
     ```
 
-3. 注册环境。 在运行 az cloud register 时使用以下参数：
+3. 注册环境。 在运行 [az cloud register](/cli/azure/cloud?view=azure-cli-latest&preserve-view=true#az_cloud_register) 时使用以下参数：
 
     | 值 | 说明 | 示例 |
     | --- | --- | --- |
     | 环境名称 | 要尝试连接到的环境的名称 | 提供一个名称，例如 `aze-environ` |
     | 资源管理器终结点 | 该 URL 为 `https://Management.<appliancename><dnsdomain>`。 <br> 若要获取此 URL，请转到设备的本地 Web UI 中的“设备”页。 |例如，`https://management.team3device.teatraining1.com`。  |
     
-    ```powershell
+    ```azurecli
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.<appliance name>.<DNS domain>"
     ```
     下面显示了上述命令的用法示例：
     
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> az cloud register -n az-new-env --endpoint-resource-manager "https://management.team3device.teatraining1.com"
     ```
     
     
 4. 使用以下命令设置活动环境：
 
-    ```powershell
+    ```azurecli
     az cloud set -n <EnvironmentName>
     ```
     下面显示了上述命令的用法示例：
 
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> az cloud set -n az-new-env
     Switched active cloud to 'az-new-env'.
     Use 'az login' to log in to this cloud.
@@ -308,7 +313,7 @@ ms.locfileid: "108126158"
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-4. 使用 `az login` 命令登录到 Azure Stack Edge Pro 环境。 你可以以用户或[服务主体](../active-directory/develop/app-objects-and-service-principals.md)身份登录到 Azure Stack Edge Pro 环境。
+4. 使用 [az login](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true#az_login) 命令登录到 Azure Stack Edge Pro 环境。 你可以以用户或[服务主体](../active-directory/develop/app-objects-and-service-principals.md)身份登录到 Azure Stack Edge Pro 环境。
 
    若要以用户身份登录，请按照以下步骤操作：
 
@@ -316,7 +321,7 @@ ms.locfileid: "108126158"
 
    下面显示了 `az login` 用法的示例：
     
-    ```powershell
+    ```azurecli
     PS C:\Certificates> az login -u EdgeARMuser
     ```
    使用 login 命令后，系统将提示你输入密码。 提供 Azure 资源管理器密码。
@@ -359,16 +364,17 @@ ms.locfileid: "108126158"
 
 5. 将配置文件更改为 2019-03-01 混合版本。 若要更改配置文件版本，请运行以下命令：
 
-    ```powershell
+    ```azurecli
     az cloud update --profile 2019-03-01-hybrid
     ```
 
     下面显示了 `az cloud update` 用法的示例：
 
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> az cloud update --profile 2019-03-01-hybrid
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
+<!--Sample is identical to the preceding sample, with window dressing.-->
 
 ## <a name="step-2-create-a-vm"></a>步骤 2：创建 VM
 
@@ -376,14 +382,17 @@ ms.locfileid: "108126158"
 
 1. 从安装了 Python 的同一目录运行该 Python 脚本。
 
-    `.\python.exe example_dbe_arguments_name_https.py cli`
+```powershell
+.\python.exe example_dbe_arguments_name_https.py cli
+```
+<!--Please verify: This is a PowerShell script? (For consistency, I converted the code-formatted setoff line to a code block.)-->
 
 2. 运行脚本时，上传 VHD 需要 20-30 分钟。 若要查看上传操作的进度，可以使用 Azure 存储资源管理器或 AzCopy。
 
     下面是成功运行脚本的输出示例。 该脚本将在一个资源组中创建所有资源，使用这些资源来创建 VM，最后删除该资源组，包括它创建的所有资源。
 
     
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python.exe example_dbe_arguments_name_https.py cli
     
     Create Resource Group

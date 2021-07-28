@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f19425ea4a72f62689daa9dda08a22667aa50bc6
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: aa81fdb68e13f7898df060a6d85d8ff05f6d2528
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331351"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714055"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中创建新访问包
 
@@ -55,7 +55,7 @@ ms.locfileid: "108331351"
 
 ## <a name="start-new-access-package"></a>启动新访问包
 
-**必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
+**必备角色**：全局管理员、标识治理管理员、用户管理员、目录所有者或访问包管理员
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
@@ -75,11 +75,11 @@ ms.locfileid: "108331351"
 
 1. 在“目录”下拉列表中，选择要在其中创建访问包的目录。 例如，你的某个目录所有者需要管理所有可请求的营销资源。 在这种情况下，你可以选择营销目录。
 
-    你只会看到你有权在中创建访问包的目录。 若要在现有目录中创建访问包，你必须是全局管理员或用户管理员，或者你必须是该目录中的目录所有者或访问包管理者。
+    你只会看到你有权在中创建访问包的目录。 若要在现有目录中创建访问包，身份必须是全局管理员、标识治理管理员或用户管理员，或者必须是该目录中的目录所有者或访问包管理者。
 
     ![访问包 - 基本信息](./media/entitlement-management-access-package-create/basics.png)
 
-    如果你是全局管理员、用户管理员或目录创建者，并且希望在未列出的新目录中创建访问包，请单击“创建新目录”。 输入目录的名称和说明，然后单击“创建”。
+    如果你是全局管理员、标识治理管理员、用户管理员或目录创建者，并且希望在未列出的新目录中创建访问包，请单击“创建新目录”。 输入目录的名称和说明，然后单击“创建”。
 
     正在创建的访问包及其包含的所有资源将添加到新目录中。 也可以稍后添加其他目录所有者。
 

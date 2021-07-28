@@ -2,14 +2,14 @@
 title: 服务配额和限制
 description: 了解默认的 Azure Batch 配额、限制和约束，以及如何请求提高配额
 ms.topic: conceptual
-ms.date: 01/28/2021
+ms.date: 04/06/2021
 ms.custom: seodec18
-ms.openlocfilehash: 433272c76b9ff27d9cad542cf65a8ec0d8fc0378
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e17a90cc573205bcb964a0428e0b7320323b8a6
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99052374"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553543"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -19,7 +19,7 @@ ms.locfileid: "99052374"
 
 可以在单个 Batch 帐户中运行多个 Batch 工作负荷，或者在相同订阅的不同 Azure 区域的 Batch 帐户之间分散工作负荷。
 
-如果打算在 Batch 中运行生产工作负荷，可能需要将一个或多个配额提高到默认值以上。 如果需要提高配额，可以免费提出在线[客户支持请求](#increase-a-quota)。
+如果打算在 Batch 中运行生产工作负荷，可能需要将一个或多个配额提高到默认值以上。 若要提高配额，可以免费[请求增加配额](#increase-a-quota)。
 
 ## <a name="resource-quotas"></a>资源配额
 
@@ -33,7 +33,7 @@ ms.locfileid: "99052374"
 
 ### <a name="cores-quotas-in-batch-service-mode"></a>Batch 服务模式下的核心配额
 
-Batch 支持的每个 VM 系列都存在核心配额，它们显示在门户中的“配额”页面上。 可以通过提交支持请求来更新 VM 系列的配额限制，详见下面的描述。 对于专用节点，Batch 对每个 VM 序列强制实施核心配额限制，同时对整个 Batch 帐户强制实施总核心配额限制。 对于低优先级节点，Batch 仅强制实施 Batch 帐户的总核心配额，不同 VM 系列之间没有任何区别。
+Batch 支持的每个 VM 系列都存在核心配额。 这些核心配额显示在 Azure 门户的“配额”页面上。 可以通过提交支持请求来更新 VM 系列的配额限制，详见下面的描述。 对于专用节点，Batch 对每个 VM 序列强制实施核心配额限制，同时对整个 Batch 帐户强制实施总核心配额限制。 对于低优先级节点，Batch 仅强制实施 Batch 帐户的总核心配额，不同 VM 系列之间没有任何区别。
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>用户订阅模式中的核心配额
 
@@ -84,65 +84,66 @@ Batch 支持的每个 VM 系列都存在核心配额，它们显示在门户中�
 
 ## <a name="increase-a-quota"></a>提高配额
 
-可以使用 [Azure 门户](https://portal.azure.com)请求提高 Batch 帐户或订阅的配额。 可以提高哪种配额取决于批处理帐户的池分配模式。 若要请求增加配额，必须包含要增加其配额的 VM 系列。 当应用了配额增加时，它会应用于所有 VM 系列。
+可以使用 [Azure 门户](https://portal.azure.com)或使用 [Azure Quota REST API](#azure-quota-rest-api) 请求提高 Batch 帐户或订阅的配额。
 
-1. 在门户仪表板上选择“帮助 + 支持”磁贴，或单击门户右上角的问号 ( **?** )。
-1. 选择“新建支持请求” > “基本”。
+可以提高哪种配额取决于批处理帐户的池分配模式。 若要请求增加配额，必须包含要增加其配额的 VM 系列。 当应用了配额增加时，它会应用于所有 VM 系列。
+
+提交支持请求后，Azure 支持人员将与你取得联系。 配额请求可以在几分钟内完成，或在最多两个工作日内完成。
+
+### <a name="azure-portal"></a>Azure 门户
+
+1. 在“配额”页面上，选择“请求配额增加”。  或者，可以选择门户仪表板上的“帮助 + 支持”磁贴（或从门户右上角的问号 (?) 中），然后选择“新建支持请求”。  
+
 1. 在“基本信息”中：
 
-    1. “问题类型” > “服务和订阅限制(配额)”
-
+    1. 对于“问题类型”，选择“服务和订阅限制(配额)”。 
     1. 选择订阅。
-
-    1. “配额类型” > “Batch”
-
-       选择“**下一页**”。
+    1. 对于“配额类型”，选择“批处理”。 
+    1. 选择“下一步”继续。
 
 1. 在“详细信息”中：
 
-    1. 在“提供详细信息”中，指定位置、配额类型和 Batch 帐户。
+    1. 在“提供详细信息”部分中，指定位置、配额类型和 Batch 帐户（如果适用），然后选择要增加的配额。
 
        :::image type="content" source="media/batch-quota-limit/quota-increase.png" alt-text="屏幕截图显示了请求增加配额时的“配额详细信息”屏幕。":::
 
        配额类型包括：
 
-       * 每个 Batch 帐户  
-         特定于单个 Batch 帐户的值，包括专用和低优先级核心以及作业和池的数量。
+       - 每个 Batch 帐户  
+         使用此选项可以请求增加特定于单个 Batch 帐户的配额，包括专用配额和低优先级内核配额以及作业和池的数量。
 
-       * 每个区域  
-         应用于区域中所有 Batch 帐户的值，包括每个订阅的每个区域的 Batch 帐户数。
+         如果选择此选项，请指定要将此请求应用于哪个 Batch 帐户，然后选择要更新的配额。 针对每项资源，设定你要请求的新限制。
 
-       低优先级配额是跨所有 VM 系列的单个值。 如果需要受约束的 SKU，则必须选择“低优先级核心”并包含要请求的 VM 系列。
+         低优先级配额是跨所有 VM 系列的单个值。 如果需要受约束的 SKU，则必须选择“低优先级核心”并包含要请求的 VM 系列。
 
-    1. 根据[业务影响情况](https://aka.ms/supportseverity)选择“严重性”。
+       - 此区域中的所有帐户  
+         使用此选项可请求适用于区域中所有 Batch 帐户的配额增加，如每个区域中每个订阅的 Batch 帐户数。
 
-       选择“**下一页**”。
+    1. 在“支持方法”中，根据[业务影响](https://aka.ms/supportseverity)以及首选联系方法和支持语言选择“严重性”。 
 
-1. 在“联系人信息”中：
+    1. 在“联系信息”中，验证并输入所需的联系方式详细信息。
 
-    1. 选择“首选联系方法”。
+1. 选择“查看 + 创建”，然后选择“创建”以提交支持请求。 
 
-    1. 输入并确认所需的联系人详细信息。
+### <a name="azure-quota-rest-api"></a>Azure Quota REST API
 
-       选择“创建”以提交支持请求。
+你可以使用 Azure Quota REST API 在订阅级别或 Batch 帐户级别请求增加配额。
 
-提交支持请求后，Azure 支持人员将与你取得联系。 配额请求可以在几分钟内完成，或在最多两个工作日内完成。
+有关详细信息和示例，请参阅[使用 Azure 支持 REST API 请求提高配额](/rest/api/support/quota-payload#azure-batch)。
 
 ## <a name="related-quotas-for-vm-pools"></a>VM 池的相关配额
 
-部署在 Azure 虚拟网络中的虚拟机配置中的 Batch 池可自动分配其他 Azure 网络资源。 在虚拟网络中，每 50 个池节点需要以下资源：
+[部署在 Azure 虚拟网络中的虚拟机配置中的 Batch 池](batch-virtual-network.md)可自动分配其他 Azure 网络资源。 在包含创建 Batch 池时提供的虚拟网络的订阅中创建这些资源。
+
+在虚拟网络中，将为每 100 个池节点创建以下资源：
 
 - 一个[网络安全组](../virtual-network/network-security-groups-overview.md#network-security-groups)
 - 一个[公共 IP 地址](../virtual-network/public-ip-addresses.md)
 - 一个[负载均衡器](../load-balancer/load-balancer-overview.md)
 
-在包含创建 Batch 池时提供的虚拟网络的订阅中分配这些资源。 这些资源受订阅的[资源配额](../azure-resource-manager/management/azure-subscription-service-limits.md)限制。 如果计划在虚拟网络中部署大型池，请检查订阅的这些资源配额。 如果需要，请在 Azure 门户中选择“帮助和支持”，请求增大配额。
+这些资源受订阅的[资源配额](../azure-resource-manager/management/azure-subscription-service-limits.md)限制。 如果在虚拟网络中计划大型池部署，则可能需要请求为其中一个或多个资源增加配额。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 Azure 门户创建 Azure Batch 帐户](batch-account-create-portal.md)。
-* 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
-* 了解 [Azure 订阅和服务的限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
-
-[account_quotas]: ./media/batch-quota-limit/accountquota_portal.png
-[quota_increase]: ./media/batch-quota-limit/quota-increase.png
+- 了解 [Batch 服务工作流和主要资源](batch-service-workflow-features.md)，例如池、节点、作业和任务。
+- 了解 [Azure 订阅和服务的限制、配额和约束](../azure-resource-manager/management/azure-subscription-service-limits.md)。

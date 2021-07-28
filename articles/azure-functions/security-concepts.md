@@ -3,12 +3,12 @@ title: 保护 Azure Functions
 description: 了解如何使 Azure 中运行的函数代码更安全，使其免遭常见攻击的威胁。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4e667cd8509e73624d7ef14d978480897d6636f0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: c8649c342b237a321c3c47510644451ceb3581fe
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202310"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467916"
 ---
 # <a name="securing-azure-functions"></a>保护 Azure Functions
 
@@ -28,7 +28,7 @@ ms.locfileid: "108202310"
 
 ### <a name="log-and-monitor"></a>日志和监视器
 
-检测攻击的一种方法是对活动进行监视和进行日志分析。 Functions 与 Application Insights 相集成，可收集函数应用的日志、性能和错误数据。 Application Insights 可自动检测性能异常，并且包含了强大的分析工具来帮助你诊断问题并了解函数的使用方式。 若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
+检测攻击的一种方法是进行活动监视和日志记录分析。 Functions 与 Application Insights 相集成，可收集函数应用的日志、性能和错误数据。 Application Insights 可自动检测性能异常，并且包含了强大的分析工具来帮助你诊断问题并了解函数的使用方式。 若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
 Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志与系统事件合并，以便更轻松地进行分析。 你可以使用诊断设置将函数的平台日志和指标流式导出配置到你选择的目标位置，例如 Log Analytics 工作区。 若要了解更多信息，请参阅[使用 Azure Monitor 日志监视 Azure Functions](functions-monitor-log-analytics.md)。 
 
@@ -58,7 +58,7 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 下表比较了不同类型的访问密钥的用法：
 
-| 操作                                        | 作用域                    | 有效密钥         |
+| 操作                                        | 范围                    | 有效密钥         |
 |-----------------------------------------------|--------------------------|--------------------|
 | 执行函数                            | 特定函数        | 函数           |
 | 执行函数                            | 任何函数             | 函数或主机   |

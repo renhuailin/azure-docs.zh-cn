@@ -6,16 +6,15 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.topic: how-to
 ms.custom: sqldbrb=1
-author: scoriani
-ms.author: scoriani
-ms.reviewer: mathoma
+author: stevestein
+ms.author: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 2b632e156d51b7e6985ab183bdadbb2da5da75b3
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 5a0dd12efb9d94bda264b3bd04b05cdc3df917e5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110699499"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "92786626"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>使用弹性数据库工具进行多分片查询
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -58,7 +57,7 @@ using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards
 }
 ```
 
-主要区别在于多分片连接的构建。 其中，“SqlConnection”对单一数据库执行操作，而“MultiShardConnection”则将“分片集合”***用作其输入。填充分片映射中的分片集合。然后，使用“UNION ALL”*** 语义组成一个总体结果在分片集合上执行查询。 或者，也可以在命令上使用 **ExecutionOptions** 属性，将行所源自的分片的名称添加到输出。
+主要区别在于多分片连接的构建。 当 SqlConnection 在单个数据库上运行时，MultiShardConnection 会将分片的集合作为其输入。填充分片映射中的分片集合。然后，使用 UNION ALL 语义在分片集合上执行查询，以汇编为单个总体结果。   或者，也可以在命令上使用 **ExecutionOptions** 属性，将行所源自的分片的名称添加到输出。
 
 请注意对 myShardMap.GetShards() 的调用。 此方法可从分片映射中检索所有分片，并提供一种轻松方式在所有相关数据库上运行查询。 对通过调用 myShardMap.GetShards() 返回的集合执行 LINQ 查询，进一步优化用于多分片查询的分片集合。 多分片查询中的当前功能已随部分结果策略一起被设计为供数十至数百种分片使用。
 

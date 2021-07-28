@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: twooley
 ms.openlocfilehash: 082d684ed0a29cb6bf2de9c506886b6d98cf174a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97723775"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Hive on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
@@ -73,7 +73,7 @@ ms.locfileid: "97723775"
 
 若要查看是否受到限制，需要在客户端上启用调试日志记录。 下面介绍执行该操作的方法：
 
-1. 将 log4j 属性中的以下属性放到 Hive 配置中。可以从 Ambari 视图执行该操作：log4j.logger.com.microsoft.azure.datalake.store=DEBUG 重新启动所有节点/服务使配置生效。
+1. 将 log4j 属性中的以下属性放入 Hive 配置。可以从 Ambari 视图执行该操作：log4j.logger.com.microsoft.azure.datalake.store=DEBUG 重启所有节点/服务使配置生效。
 
 2. 如果受到限制，会在 Hive 日志文件中看到 HTTP 429 错误代码。 Hive 日志文件位于 /tmp/&lt;用户&gt;/hive.log 中
 

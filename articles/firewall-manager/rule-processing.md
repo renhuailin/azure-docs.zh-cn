@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9184bf7baa85420e067edb4c0aafccb7e6711225
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6cda31ad3bd830112d7be2dbf3370e4130473228
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86512174"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474399"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure 防火墙规则处理逻辑
 
@@ -21,6 +21,15 @@ Azure 防火墙具有 NAT 规则、网络规则和应用程序规则。 规则�
 ## <a name="network-rules-and-applications-rules"></a>网络规则和应用程序规则
 
 首先将应用网络规则，然后应用应用程序规则。 规则将终止。 因此，如果在网络规则中找到匹配项，则不会处理应用程序规则。  如果没有网络规则匹配项，并且数据包协议是 HTTP/HTTPS，则会按应用程序规则评估数据包。 如果仍未找到匹配项，则会根据基础结构规则集合评估数据包。 如果仍然没有匹配项，则默认情况下会拒绝该数据包。
+
+![通用规则处理逻辑](media/rule-processing/rule-logic-processing.png)
+
+### <a name="example-of-processing-logic"></a>处理逻辑的示例
+示例方案： Azure 防火墙策略中存在三个规则集合组。  每个规则集合组都有一系列应用程序规则和网络规则。
+
+![规则执行顺序](media/rule-processing/rule-execution-order.png)
+
+在所示图表中，首先执行网络规则，然后执行应用程序规则，因为 Azure 防火墙的规则处理逻辑指出：网络规则的执行优先级始终高于应用程序规则。
 
 ## <a name="nat-rules"></a>NAT 规则
 

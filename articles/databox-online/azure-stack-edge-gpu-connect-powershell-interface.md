@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 1319f806dd2f32233dcfe7383f5283b67827f16f
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: ca3a08cedacce23f9b3086a4bd6d8da98042d7c4
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102517545"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737235"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>通过 Windows PowerShell 管理 Azure Stack Edge Pro GPU 设备
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Azure Stack Edge Pro 解决方案可让你处理数据，并通过网络将数据发送到 Azure。 本文介绍了为 Azure Stack Edge Pro 设备执行的一些配置和管理任务。 可以使用 Azure 门户、本地 Web UI 或 Windows PowerShell 界面来管理设备。
+Azure Stack Edge Pro GPU 解决方案可让你处理数据，并通过网络将数据发送到 Azure。 本文介绍了为 Azure Stack Edge Pro GPU 设备执行的一些配置和管理任务。 可以使用 Azure 门户、本地 Web UI 或 Windows PowerShell 界面来管理设备。
 
 本文重点介绍如何连接到设备的 PowerShell 界面，以及使用此界面可以执行的任务。 
 
@@ -72,6 +72,64 @@ Nvidia GPU 上的多进程服务 (MPS) 提供下述机制：GPU 可供多个作�
 
 [!INCLUDE [Enable MPS](../../includes/azure-stack-edge-gateway-enable-mps.md)]
 
+> [!NOTE]
+> 在更新设备软件和 Kubernetes 群集时，不会为工作负载保留 MPS 设置。 需要重新启用 MPS。
+
+<!--## Enable compute on private network
+
+Use the `Add-HcsNetRoute` cmdlet to enable compute on a private network. This cmdlet lets you add custom routes on Kubernetes master and worker VMs. 
+#### Add new route configuration
+
+IP routing is the process of forwarding a packet based on the destination IP address. For the Kubernetes VMs on your device, you can route the traffic by adding a new route configuration.  
+
+A route configuration is a routing table entry that includes the following fields:
+
+| Parameter | Description  |
+|---------|---------|
+|Destination     | Either an IP address or an IP address prefix.         |
+|Prefix length     | The prefix length corresponding to the address or range of addresses in the destination.        |
+|Next hop     | The IP address to which the packet is forwarded.        |
+|Interface     | The network interface that forwards the IP packet.        |
+|Metric     |Routing metric determines the preferred network interface used to reach the destination.          |
+
+
+Consider the following information before you add these routes:
+
+- The Kubernetes network where you are adding this route is in a private network and not connected to the internet.
+- The device port on which the compute is enabled does not have a gateway configured.
+- If you have a flat subnet, then you don't need to add these routes to the private network. You can (optionally) add these routes when there are multiple subnets on your private network.
+- You can add these routes only to the Kubernetes master and worker VMs and not to the device (Windows host). 
+- The Kubernetes compute need not be configured before you add this route. You can also add or update routes after the Kubernetes compute is configured. You can only add a new route configuration via the PowerShell interface of the device and not through the local UI.
+- Make sure that the network interface that you'll use has a static configuration. 
+
+Consider an example where Port 1 and Port 2 on your device are connected to the internet. Ports 3 to Port 6 are on a private network and is the same network that has the Kubernetes master and worker VMs. None of the ports 3 to 6 have a default gateway configured. There are cameras that are connected to the private network. And the camera feed creates a traffic that flows between the camera and the network interfaces on the Kubernetes VMs. 
+
+To add a new custom route, use the cmdlet as follows:
+
+```powershell
+Add-HcsNetRoute -InterfaceAlias "Port3" -DestinationPrefix "192.168.21.0/24" -NextHop "192.168.20.1" -RouteMetric 100 
+```
+
+Here the compute is enabled on the Port 3 network interface on your device and a virtual switch is created. The above route defines a destination subnet 192.168.21.0/24 and specifies the next hop as 192.168.20.1. This routing configuration has a routing metric of 100. Lower the routing metric, higher the priority assigned to the route.
+ 
+
+#### Check route configuration for an interface 
+
+Use this cmdlet to check for all the custom route configurations that you added on your device. These routes do not include all the system routes or default routes that already exist on the device. 
+
+```powershell
+Get-HcsNetRoute -InterfaceAlias Port3
+```
+
+
+#### Remove a route configuration
+
+Use this cmdlet to remove a route configuration that you added on your device.
+
+```powershell
+Remove-HcsNetRoute -InterfaceAlias "Port3" -DestinationPrefix "192.168.21.0/24"
+```
+-->
 
 ## <a name="reset-your-device"></a>重置设备
 
@@ -130,7 +188,7 @@ Id                                   PodSubnet    ServiceSubnet
 - 已配置计算网络。 请参阅[教程：为带有 GPU 的 Azure Stack Edge Pro 配置网络](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)。
 - 已在设备上配置计算角色。
     
-在配置了计算角色的 Azure Stack Edge Pro 设备上，可以使用两个不同的命令集对设备进行故障排除或监视。
+在配置了计算角色的 Azure Stack Edge Pro GPU 设备上，可以使用两个不同的命令集对设备进行故障排除或监视。
 
 - 使用 `iotedge` 命令。 这些命令适用于针对设备的基本操作。
 - 使用 `kubectl` 命令。 这些命令适用于针对设备的更广泛操作。
@@ -161,6 +219,7 @@ Commands:
 |`logs`     | 提取模块的日志        |
 |`restart`     | 停止和重启模块         |
 
+#### <a name="list-all-iot-edge-modules"></a>列出所有 IoT Edge 模块
 
 若要列出设备上运行的所有模块，请使用 `iotedge list` 命令。
 
@@ -180,11 +239,68 @@ webserverapp           Running Up 10 days  nginx:stable                         
 
 [10.100.10.10]: PS>
 ```
+#### <a name="restart-modules"></a>重启模块
 
+可使用 `list` 命令列出设备上运行的所有模块。 然后，确定要重启的模块的名称并对其使用 `restart` 命令。
+
+下面是演示如何重启模块的示例输出。 根据模块运行时长的说明，可以看到 `cuda-sample1` 已重启。
+
+```powershell
+[10.100.10.10]: PS>iotedge list
+
+NAME         STATUS  DESCRIPTION CONFIG                                          EXTERNAL-IP PORT(S)
+----         ------  ----------- ------                                          ----------- -------
+edgehub      Running Up 5 days   mcr.microsoft.com/azureiotedge-hub:1.0          10.57.48.62 443:31457/TCP,5671:308
+                                                                                             81/TCP,8883:31753/TCP
+iotedged     Running Up 7 days   azureiotedge/azureiotedge-iotedged:0.1.0-beta13 <none>      35000/TCP,35001/TCP
+cuda-sample2 Running Up 1 days   nvidia/samples:nbody
+edgeagent    Running Up 7 days   azureiotedge/azureiotedge-agent:0.1.0-beta13
+cuda-sample1 Running Up 1 days   nvidia/samples:nbody
+
+[10.100.10.10]: PS>iotedge restart cuda-sample1
+[10.100.10.10]: PS>iotedge list
+
+NAME         STATUS  DESCRIPTION  CONFIG                                          EXTERNAL-IP PORT(S)
+----         ------  -----------  ------                                          ----------- -------
+edgehub      Running Up 5 days    mcr.microsoft.com/azureiotedge-hub:1.0          10.57.48.62 443:31457/TCP,5671:30
+                                                                                              881/TCP,8883:31753/TC
+                                                                                              P
+iotedged     Running Up 7 days    azureiotedge/azureiotedge-iotedged:0.1.0-beta13 <none>      35000/TCP,35001/TCP
+cuda-sample2 Running Up 1 days    nvidia/samples:nbody
+edgeagent    Running Up 7 days    azureiotedge/azureiotedge-agent:0.1.0-beta13
+cuda-sample1 Running Up 4 minutes nvidia/samples:nbody
+
+[10.100.10.10]: PS>
+
+```
+
+#### <a name="get-module-logs"></a>获取模块日志
+
+使用 `logs` 命令获取设备上运行的任何 IoT Edge 模块的日志。 
+
+如果在创建容器映像或在拉取映像时出现错误，请运行 `logs edgeagent`。 `edgeagent` 是负责预配其他容器的 IoT Edge 运行时容器。 由于 `logs edgeagent` 转储所有日志，因此查看最近发生的错误的适当方法是使用 `--tail `0` 选项。 
+
+下面是示例输出。
+
+```powershell
+[10.100.10.10]: PS>iotedge logs cuda-sample2 --tail 10
+[10.100.10.10]: PS>iotedge logs edgeagent --tail 10
+<6> 2021-02-25 00:52:54.828 +00:00 [INF] - Executing command: "Report EdgeDeployment status: [Success]"
+<6> 2021-02-25 00:52:54.829 +00:00 [INF] - Plan execution ended for deployment 11
+<6> 2021-02-25 00:53:00.191 +00:00 [INF] - Plan execution started for deployment 11
+<6> 2021-02-25 00:53:00.191 +00:00 [INF] - Executing command: "Create an EdgeDeployment with modules: [cuda-sample2, edgeAgent, edgeHub, cuda-sample1]"
+<6> 2021-02-25 00:53:00.212 +00:00 [INF] - Executing command: "Report EdgeDeployment status: [Success]"
+<6> 2021-02-25 00:53:00.212 +00:00 [INF] - Plan execution ended for deployment 11
+<6> 2021-02-25 00:53:05.319 +00:00 [INF] - Plan execution started for deployment 11
+<6> 2021-02-25 00:53:05.319 +00:00 [INF] - Executing command: "Create an EdgeDeployment with modules: [cuda-sample2, edgeAgent, edgeHub, cuda-sample1]"
+<6> 2021-02-25 00:53:05.412 +00:00 [INF] - Executing command: "Report EdgeDeployment status: [Success]"
+<6> 2021-02-25 00:53:05.412 +00:00 [INF] - Plan execution ended for deployment 11
+[10.100.10.10]: PS>
+```
 
 ### <a name="use-kubectl-commands"></a>使用 kubectl 命令
 
-在配置了计算角色的 Azure Stack Edge Pro 设备上，所有 `kubectl` 命令均可用于对模块进行监视或故障排除。 若要查看可用命令的列表，请在命令窗口中运行 `kubectl --help`。
+在配置了计算角色的 Azure Stack Edge Pro GPU 设备上，所有 `kubectl` 命令均可用于对模块进行监视或故障排除。 若要查看可用命令的列表，请在命令窗口中运行 `kubectl --help`。
 
 ```PowerShell
 C:\Users\myuser>kubectl --help
@@ -515,7 +631,7 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
     - 使用此 cmdlet 可以配置 BMC 的静态配置。 可以指定 `IPv4Address`、`IPv4Gateway` 和 `IPv4SubnetMask` 的值。 
     
         ```powershell
-        Set-HcsNetBmcInterface -IPv4Address "<IPv4 address of the device>" -IPv4Gateway "<IPv4 address of the gateway>" -IPv4SubnetMask "<IPv4 address for the subnet mask>"
+        Set-HcsNetBmcInterface -IPv4Address "<IPv4 address of the device>&quot; -IPv4Gateway &quot;<IPv4 address of the gateway>&quot; -IPv4SubnetMask &quot;<IPv4 address for the subnet mask>"
         ```        
         
         下面是示例输出： 
@@ -544,4 +660,4 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在 Azure 门户中部署 [Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md)。
+- 在 Azure 门户中部署 [Azure Stack Edge Pro GPU](azure-stack-edge-gpu-deploy-prep.md)。

@@ -4,12 +4,12 @@ description: 了解如何使用 C# 开发代码，并将其发布为在进程内
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: c7d14599ec1ebbcb94e0c0f3985a3b857f9353dc
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 60afc79c332385958d9f73ad1e224cab90293e1c
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102563874"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903124"
 ---
 # <a name="develop-c-class-library-functions-using-azure-functions"></a>使用 Azure Functions 开发 C# 类库函数
 
@@ -28,22 +28,7 @@ ms.locfileid: "102563874"
 
 Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在 Azure 门户中使用 C#](functions-create-function-app-portal.md) 的指南，请参阅 [C# 脚本 (.csx) 开发人员参考](functions-reference-csharp.md)。
 
-## <a name="supported-versions"></a>支持的版本
-
-Functions 运行时版本使用特定版本的 .NET。 若要详细了解 Functions 版本，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)
-
-下表显示了可与特定版本的 Functions 配合使用的 .NET Core 或 .NET Framework 的最高级别。 
-
-| Functions 运行时版本 | 最大 .NET 版本 |
-| ---- | ---- |
-| Functions 3.x | .NET Core 3.1<br/>.NET 5.0<sup>1</sup> |
-| Functions 2.x | .NET Core 2.2<sup>2</sup> |
-| Functions 1.x | .NET Framework 4.7 |
-
-<sup>1</sup> 必须在[进程外](dotnet-isolated-process-guide.md)运行。  
-<sup>2</sup> 有关详细信息，请参阅 [Functions v2.x 注意事项](#functions-v2x-considerations)。   
-
-有关 Azure Functions 版本的最新消息，包括删除较旧的特定次要版本，请关注 [Azure 应用服务公告](https://github.com/Azure/app-service-announcements/issues)。
+[!INCLUDE [functions-dotnet-supported-versions](../../includes/functions-dotnet-supported-versions.md)]
 
 ### <a name="functions-v2x-considerations"></a>Functions v2.x 注意事项
 
@@ -221,11 +206,11 @@ Functions 运行时的 1.x 版本和 2.x 版本使用相同的包。 1\.x 项目
 
 GitHub 存储库 [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk) 中提供了适用于 `Microsoft.NET.Sdk.Functions` 的源代码。
 
-## <a name="runtime-version"></a>运行时版本
+## <a name="local-runtime-version"></a>本地运行时版本
 
-Visual Studio 使用 [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 运行 Functions 项目。 Core Tools 是适用于 Functions 运行时的命令行接口。
+Visual Studio 使用 [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 在本地计算机上运行 Functions 项目。 Core Tools 是适用于 Functions 运行时的命令行接口。
 
-如果使用 npm 安装 Core Tools，则不会影响 Visual Studio 使用的 Core Tools 版本。 对于 Functions 运行时版本 1.x，Visual Studio 在 %USERPROFILE%\AppData\Local\Azure.Functions.Cli 中存储 Core Tools 版本且存储最新版本  。 对于 Functions 2.x，Core Tools 包含在 Azure Functions 和 Web Jobs Tools 扩展中  。 对于 1.x 和 2.x，运行 Functions 项目时可以看到控制台输出中正在使用何种版本：
+如果使用 Windows 安装程序 (MSI) 包或 npm 来安装 Core Tools，则不会影响 Visual Studio 使用的 Core Tools 版本。 对于 Functions 运行时版本 1.x，Visual Studio 在 %USERPROFILE%\AppData\Local\Azure.Functions.Cli 中存储 Core Tools 版本且存储最新版本  。 对于 Functions 2.x，Core Tools 包含在 Azure Functions 和 Web Jobs Tools 扩展中  。 对于 1.x 和 2.x，运行 Functions 项目时可以看到控制台输出中正在使用何种版本：
 
 ```terminal
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)

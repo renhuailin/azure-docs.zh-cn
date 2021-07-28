@@ -13,30 +13,68 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/04/2021
+ms.date: 05/10/2021
 ms.author: yelevin
-ms.openlocfilehash: daba8fc1f645b51dc8668c806be63744b6ae0842
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1f782228866d73c84409f394a014bad519d988a9
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97901677"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809627"
 ---
 # <a name="azure-sentinel-ueba-enrichments-reference"></a>Azure Sentinel UEBA 扩充引用
 
-以下表格列出并描述了可用于集中和锐化安全事件调查的实体扩充。
+本文介绍了在“日志”中找到并在[实体详细信息页](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages)上提到的 Azure Sentinel“BehaviorAnalytics”表，并提供了该表中实体扩充字段的详细信息，其中的内容可用于专注处理和加强安全事件调查 。
 
-前两个表“用户见解”和“设备见解”包含来自 Active Directory/Azure AD 和 Microsoft 威胁情报源的实体信息。
+[下面的表](#entity-enrichments-dynamic-fields)介绍了 BehaviorAnalytics 表中的以下三个动态字段。
 
-<a name="baseline-explained"></a>“活动见解表”下的其余表包含基于 Azure Sentinel 的实体行为分析生成的行为配置文件的实体信息。 根据每次使用时动态编译的基线对这些活动进行分析。 每个活动都有其定义的回溯期，此动态基线从该回溯期派生。 此回溯期在这个表中的 [**基线**](#activity-insights-tables)列中指定。
+[UsersInsights](#usersinsights-field) 和 [DevicesInsights](#devicesinsights-field) 字段包含来自 Active Directory/Azure AD 和 Microsoft 威胁情报源的实体信息。
+
+[ActivityInsights](#activityinsights-field) 字段包含的实体信息基于 Azure Sentinel 的实体行为分析生成的行为配置文件。 
+
+<a name="baseline-explained"></a>根据每次使用时都会动态编译的基线来分析用户活动。 每个活动都有其定义的回溯期，动态基线从该回溯期中派生。 此表的[基线](#activityinsights-field)列中指定了该回溯期。
 
 > [!NOTE] 
-> 所有三个表中的“扩充名称”字段都显示两行信息。 第一行以“粗体”显示扩充的“易记名称”。 第二行（斜体且加括号）是存储在 [**行为分析表**](identify-threats-with-entity-behavior-analytics.md#data-schema)中的扩充的字段名称。
+> 所有[实体扩充字段](#entity-enrichments-dynamic-fields)表中的“扩充名称”列都显示两行信息。 
+> 
+> - 第一行以“粗体”显示扩充的“易记名称”。
+> - 第二行（斜体且加括号）是存储在 [**行为分析表**](#behavioranalytics-table)中的扩充的字段名称。
 
-## <a name="user-insights-table"></a>用户见解表
+## <a name="behavioranalytics-table"></a>BehaviorAnalytics 表
+
+下表说明了 Azure Sentinel 中每个[实体详细信息页](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages)上显示的行为分析数据。
+
+| 字段                     | 类型 | 说明                                                  |
+|---------------------------|------|--------------------------------------------------------------|
+| **TenantId**              | string | 租户的唯一 ID 编号                             |
+| **SourceRecordId**        | 字符串 | EBA 事件的唯一 ID 编号                          |
+| **TimeGenerated**         | datetime | 活动发生时的时间戳                   |
+| **TimeProcessed**         | datetime | EBA 引擎处理活动时的时间戳 |
+| **ActivityType**          | 字符串 | 活动的高级类别                        |
+| **ActionType**            | 字符串 | 活动的规范化名称                            |
+| **UserName**              | 字符串 | 发起活动的用户的用户名           |
+| **UserPrincipalName**     | 字符串 | 发起活动的用户的完整用户名      |
+| **EventSource**           | 字符串 | 提供原始事件的数据源               |
+| **SourceIPAddress**       | 字符串 | 发起活动的 IP 地址               |
+| **SourceIPLocation** | 字符串 | 发起活动的国家/地区，从 IP 地址进行扩充 |
+| **SourceDevice**          | 字符串 | 发起活动的设备的主机名         |
+| **DestinationIPAddress**  | 字符串 | 活动目标的 IP 地址                   |
+| **DestinationIPLocation** | 字符串 | 活动目标所在国家/地区，从 IP 地址进行扩充 |
+| **DestinationDevice**     | 字符串 | 目标设备的名称                                  |
+| **UsersInsights**         | 动态 | 相关用户的上下文扩充（[详细信息如下](#usersinsights-field)） |
+| **DevicesInsights**       | 动态 | 相关设备的上下文扩充（[详细信息如下](#devicesinsights-field)） |
+| **ActivityInsights**      | 动态 | 基于我们的分析的活动的上下文分析（[详细信息如下](#activityinsights-field)） |
+| **InvestigationPriority** | int | 异常分数，介于 0-10（0=良性，10=高度异常）   |
+|
+
+## <a name="entity-enrichments-dynamic-fields"></a>实体扩充动态字段
+
+### <a name="usersinsights-field"></a>UsersInsights 字段
+
+下表说明了 BehaviorAnalytics 表中 UsersInsights 动态字段中提供的扩充：
 
 | 扩充名称 | 说明 | 示例值 |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **帐户显示名称**<br>*(AccountDisplayName)* | 用户的帐户显示名称。 | Admin、Hayden Cook |
 | **帐户域**<br>*(AccountDomain)* | 用户的帐户域名。 |  |
 | **帐户对象 ID**<br>*(AccountObjectID)* | 用户的帐户对象 ID。 | a58df659-5cab-446c-9dd0-5a3af20ce1c2 |
@@ -47,10 +85,12 @@ ms.locfileid: "97901677"
 | **本地 SID**<br>*(OnPremisesSID)* | 与该操作相关的用户的本地 SID。 | S-1-5-21-1112946627-1321165628-2437342228-1103 |
 |
 
-## <a name="device-insights-table"></a>设备见解表
+### <a name="devicesinsights-field"></a>DevicesInsights 字段
+
+下表说明了 BehaviorAnalytics 表中 DevicesInsights 动态字段中提供的扩充：
 
 | 扩充名称 | 说明 | 示例值 |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **浏览器**<br>*(Browser)* | 操作中使用的浏览器。 | Edge、Chrome |
 | **设备系列**<br>*(DeviceFamily)* | 操作中使用的设备系列。 | Windows |
 | **设备类型**<br>*(DeviceType)* | 操作中使用的客户端设备类型 | 桌面 |
@@ -62,7 +102,9 @@ ms.locfileid: "97901677"
 | **用户代理系列**<br>*(UserAgentFamily)* | 操作中使用的用户代理系列。 | Chrome、Edge、Firefox |
 |
 
-## <a name="activity-insights-tables"></a>活动见解表
+### <a name="activityinsights-field"></a>ActivityInsights 字段
+
+下表说明了 BehaviorAnalytics 表中 ActivityInsights 动态字段中提供的扩充：
 
 #### <a name="action-performed"></a>已执行的操作
 
@@ -162,3 +204,10 @@ ms.locfileid: "97901677"
 | **删除的异常数量的设备**<br>*(UnusualNumberOfDevicesDeleted)* | 5 | 用户删除了异常数量的设备。 | True、False |
 | **添加到组中的异常数量的用户**<br>*(UnusualNumberOfUsersAddedToGroup)* | 5 | 用户向组中添加了异常数量的用户。 | True、False |
 |
+
+## <a name="next-steps"></a>后续步骤
+
+本文档介绍了 Azure Sentinel 实体行为分析表架构。
+
+- 详细了解[实体行为分析](identify-threats-with-entity-behavior-analytics.md)。
+- [放置要在调查中使用的 UEBA](investigate-with-ueba.md)。

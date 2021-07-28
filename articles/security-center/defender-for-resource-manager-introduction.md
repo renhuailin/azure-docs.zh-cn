@@ -7,12 +7,12 @@ ms.date: 05/12/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a7292d08d2505b63e97c76ca3f40ad573690c173
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 7d564d3d3a27d4ddba50ab05644d612e9bb63645
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109846403"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113002569"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>适用于资源管理器的 Azure Defender 简介
 
@@ -28,7 +28,7 @@ ms.locfileid: "109846403"
 |----|:----|
 |发布状态：|正式发布版 (GA)|
 |定价：|适用于资源管理器的 Azure Defender 按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中所示的定价计费|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov，其他政府<br>![否](./media/icons/no-icon.png) Azure 中国|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-resource-manager"></a>适用于资源管理器的 Azure Defender 有哪些优点？
@@ -39,7 +39,7 @@ ms.locfileid: "109846403"
 - 使用开发工具包，例如 Microburst 或PowerZure
 - 从 Azure 管理层到 Azure 资源数据平面的横向移动
 
-:::image type="content" source="media/defender-for-resource-manager-introduction/consistent-management-layer-with-defender.png" alt-text="Azure 资源管理器概述示意图":::
+:::image type="content" source="media/defender-for-resource-manager-introduction/consistent-management-layer-with-defender.png" alt-text="Azure 资源管理器概述示意图。":::
 
 [警报参考页](alerts-reference.md#alerts-resourcemanager)上提供了由适用于资源管理器的 Azure Defender 提供的警报的完整列表。
 
@@ -54,7 +54,7 @@ ms.locfileid: "109846403"
 
 1. 打开 Azure 活动日志。
 
-    :::image type="content" source="media/defender-for-resource-manager-introduction/opening-azure-activity-log.png" alt-text="如何打开 Azure 活动日志":::
+    :::image type="content" source="media/defender-for-resource-manager-introduction/opening-azure-activity-log.png" alt-text="如何打开 Azure 活动日志。":::
 
 1. 将事件筛选为：
     - 警报中提到的订阅

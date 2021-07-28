@@ -6,13 +6,13 @@ ms.author: nickoman
 ms.service: container-service
 ms.topic: how-to
 ms.date: 03/30/2021
-ms.custom: template-how-to
-ms.openlocfilehash: 5981734dbf9c70b5ff663002cb20fabf22c65cc2
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: template-how-to, devx-track-azurecli
+ms.openlocfilehash: 7f83171733abc07de5997503560c6cc7278f3f39
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108148548"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752372"
 ---
 # <a name="use-the-secrets-store-csi-driver-for-kubernetes-in-an-azure-kubernetes-service-aks-cluster-preview"></a>在 Azure Kubernetes 服务 (AKS) 群集中使用适用于 Kubernetes 的机密存储 CSI 驱动程序（预览）
 
@@ -22,7 +22,7 @@ ms.locfileid: "108148548"
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-- 开始之前，先安装最新版本的 [Azure CLI](/cli/azure/install-azure-cli-windows)。
+- 在开始之前，请安装最新版本的 [Azure CLI](/cli/azure/install-azure-cli-windows) 和 aks-preview 扩展。
 
 ## <a name="features"></a>功能
 
@@ -58,12 +58,30 @@ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/A
 az provider register --namespace Microsoft.ContainerService
 ```
 
+## <a name="install-the-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
+
+还需要 aks-preview Azure CLI 扩展 0.5.9 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展。 如果已安装扩展，请使用 [az extension update][az-extension-update] 命令更新到最新的可用版本。
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
 ## <a name="create-an-aks-cluster-with-secrets-store-csi-driver-support"></a>使用机密存储 CSI 驱动程序支持创建 AKS 群集
 
 > [!NOTE]
 > 如果计划通过用户分配或系统分配的托管标识提供对群集的访问权限，请在群集上使用 `enable-managed-identity` 标志启用 Azure Active Directory。 有关详细信息，请参阅[在 Azure Kubernetes 服务中使用托管标识][aks-managed-identity]。
 
-若要使用机密存储 CSI 驱动程序功能创建 AKS 群集，请搭配使用 [az-aks-create][az-aks-create] 命令与加载项 `azure-keyvault-secrets-provider`：
+首先，创建 Azure 资源组：
+
+```azurecli-interactive
+az group create -n myResourceGroup -l westus
+```
+
+若要使用机密存储 CSI 驱动程序功能创建 AKS 群集，请搭配使用 [az aks create][az-aks-create] 命令与加载项 `azure-keyvault-secrets-provider`：
 
 ```azurecli-interactive
 az aks create -n myAKSCluster -g myResourceGroup --enable-addons azure-keyvault-secrets-provider
@@ -74,16 +92,18 @@ az aks create -n myAKSCluster -g myResourceGroup --enable-addons azure-keyvault-
 > [!NOTE]
 > 如果计划通过用户分配或系统分配的托管标识提供对群集的访问权限，请在群集上使用 `enable-managed-identity` 标志启用 Azure Active Directory。 有关详细信息，请参阅[在 Azure Kubernetes 服务中使用托管标识][aks-managed-identity]。
 
-若要使用机密存储 CSI 驱动程序功能升级现有的 AKS 群集，请搭配使用 [az-aks-create][az-aks-create] 命令与加载项 `azure-keyvault-secrets-provider`：
+若要使用机密存储 CSI 驱动程序功能升级现有的 AKS 群集，请搭配使用 [az aks enable-addons][az-aks-enable-addons] 命令与加载项 `azure-keyvault-secrets-provider`：
 
 ```azurecli-interactive
-az aks upgrade -n myAKSCluster -g myResourceGroup --enable-addons azure-keyvault-secrets-provider
+az aks enable-addons --addons azure-keyvault-secrets-provider --name myAKSCluster --resource-group myResourceGroup
 ```
 
-这些命令将在节点上安装机密存储 CSI 驱动程序和 Azure Key Vault 提供程序。 通过列出所有命名空间中的所有 Pod 来完成验证，并确保输出内容与以下内容类似：
+## <a name="verify-secrets-store-csi-driver-installation"></a>验证机密存储 CSI 驱动程序安装
+
+这些命令将在节点上安装机密存储 CSI 驱动程序和 Azure Key Vault 提供程序。 通过列出 kube-system 命名空间中包含 secrets-store-csi-driver 和 secrets-store-provider-azure 标签的所有 pod 并确保输出如下所示来进行验证：
 
 ```bash
-kubectl get pods -n kube-system
+kubectl get pods -n kube-system -l 'app in (secrets-store-csi-driver, secrets-store-provider-azure)'
 
 NAMESPACE     NAME                                     READY   STATUS    RESTARTS   AGE
 kube-system   aks-secrets-store-csi-driver-4vpkj       3/3     Running   2          4m25s
@@ -94,7 +114,8 @@ kube-system   aks-secrets-store-provider-azure-6pqmv   1/1     Running   0      
 kube-system   aks-secrets-store-provider-azure-f5qlm   1/1     Running   0          4m25s
 ```
 
-### <a name="enabling-autorotation"></a>启用自动轮换
+
+## <a name="enabling-and-disabling-autorotation"></a>启用和禁用自动旋转
 
 > [!NOTE]
 > 启用后，机密存储 CSI 驱动程序将通过每两分钟轮询一次更改来更新在 SecretProviderClass 的 secretObjects 中定义的 Pod 装载和 Kubernetes 机密。
@@ -102,7 +123,19 @@ kube-system   aks-secrets-store-provider-azure-f5qlm   1/1     Running   0      
 若要启用自动轮换机密，可在创建群集时使用 `enable-secret-rotation` 标志：
 
 ```azurecli-interactive
-az aks create -n myAKSCluster2 -g myResourceGroup --enable-addons azure-keyvault-secrets-provider --enable-secret-rotation --rotation-poll-interval 5m
+az aks create -n myAKSCluster2 -g myResourceGroup --enable-addons azure-keyvault-secrets-provider --enable-secret-rotation
+```
+
+或者更新已经启用了加载项的现有群集：
+
+```azurecli-interactive
+az aks update -g myResourceGroup -n myAKSCluster2 --enable-secret-rotation
+```
+
+若要禁用，请使用 `disable-secret-rotation` 标志：
+
+```azurecli-interactive
+az aks update -g myResourceGroup -n myAKSCluster2 --disable-secret-rotation
 ```
 
 ## <a name="create-or-use-an-existing-azure-key-vault"></a>创建或使用现有的 Azure Key Vault
@@ -118,6 +151,15 @@ az aks create -n myAKSCluster2 -g myResourceGroup --enable-addons azure-keyvault
 - 机密内容类型（机密、密钥、证书）
 - 密钥保管库资源的名称
 - 订阅所属的 Azure 租户 ID
+
+## <a name="provide-identity-to-access-azure-key-vault"></a>提供标识以访问 Azure Key Vault
+
+本文中的示例使用服务主体，但 Azure Key Vault 提供程序提供了四种访问方法。 查看这些方法，并选择最适合你的用例的方法。 请注意，根据所选方法的不同，可能还需要执行其他步骤，如授予服务主体权限以从密钥保管库获取机密。
+
+- [Service Principal][service-principal-access]
+- [Pod 标识][pod-identity-access]
+- [用户分配的托管标识][ua-mi-access]
+- [系统分配的托管标识][sa-mi-access]
 
 ## <a name="create-and-apply-your-own-secretproviderclass-object"></a>创建与应用个人的 SecretProviderClass 对象
 
@@ -151,15 +193,6 @@ spec:
 
 有关详细信息，请参阅[创建 SecretProviderClass 对象][sample-secret-provider-class]。 请确保使用你在上文中记下的值。
 
-## <a name="provide-identity-to-access-azure-key-vault"></a>提供标识以访问 Azure Key Vault
-
-本文中的示例使用服务主体，但 Azure Key Vault 提供程序提供了四种访问方法。 查看这些方法，并选择最适合你的用例的方法。 请注意，根据所选方法的不同，可能还需要执行其他步骤，如授予服务主体权限以从密钥保管库获取机密。
-
-- [Service Principal][service-principal-access]
-- [Pod 标识][pod-identity-access]
-- [用户分配的托管标识][ua-mi-access]
-- [系统分配的托管标识][sa-mi-access]
-
 ### <a name="apply-the-secretproviderclass-to-your-cluster"></a>将 SecretProviderClass 应用到群集
 
 接下来，部署你创建的 SecretProviderClass。 例如：
@@ -182,7 +215,7 @@ spec:
   - name: busybox
     image: k8s.gcr.io/e2e-test-images/busybox:1.29
     command:
-      - "/bin/sh"
+      - "/bin/sleep"
       - "10000"
     volumeMounts:
     - name: secrets-store-inline
@@ -217,19 +250,18 @@ kubectl exec busybox-secrets-store-inline -- ls /mnt/secrets-store/
 kubectl exec busybox-secrets-store-inline -- cat /mnt/secrets-store/secret1
 ```
 
-## <a name="disable-secrets-store-csi-driver"></a>禁用机密存储 CSI 驱动程序
+## <a name="disable-secrets-store-csi-driver-on-an-existing-aks-cluster"></a>在现有 AKS 群集上禁用机密存储 CSI 驱动程序
 
-若要在现有群集中禁用机密存储 CSI 驱动程序功能，请搭配使用 az aks 命令与禁用-加载项 `azure-keyvault-secrets-provider`：
+若要在现有群集中禁用机密存储 CSI 驱动程序功能，请搭配使用 [az aks disable-addons][az-aks-disable-addons] 命令与 `azure-keyvault-secrets-provider` 标志：
 
 ```azurecli-interactive
-az aks disable-addons -n myAKSCluster -g myResourceGroup --addons azure-keyvault-secrets-provider
+az aks disable-addons --addons azure-keyvault-secrets-provider -g myResourceGroup -n myAKSCluster
 ```
 
 ## <a name="next-steps"></a>后续步骤
 <!-- Add a context sentence for the following links -->
 了解如何配合使用 CSI 机密存储驱动程序与 AKS 群集后，请参阅以下资源：
 
-- [运行适用于机密存储 CSI 驱动程序的 Azure Key Vault 提供程序][key-vault-provider]
 - [在 AKS 上为 Azure 磁盘和 Azure 文件存储启用 CSI 驱动程序][csi-storage-drivers]
 
 <!-- Links -->
@@ -237,7 +269,11 @@ az aks disable-addons -n myAKSCluster -g myResourceGroup --addons azure-keyvault
 [az-feature-register]: /cli/azure/feature#az_feature_register
 [az-feature-list]: /cli/azure/feature#az_feature_list
 [az-provider-register]: /cli/azure/provider#az_provider_register
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
 [az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-enable-addons]: /cli/azure/aks#az_aks_enable_addons
+[az-aks-disable-addons]: /cli/azure/aks#az_aks_disable_addons
 [key-vault-provider]: ../key-vault/general/key-vault-integrate-kubernetes.md
 [csi-storage-drivers]: ./csi-storage-drivers.md
 [create-key-vault]: ../key-vault/general/quick-create-cli.md

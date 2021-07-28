@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 448998328ff15b74b0aa0b17e2435a7ff55c54a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed1101d75685eb397eb3e45683adb886288ee49b
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83124157"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109808997"
 ---
 # <a name="work-with-incidents-in-many-workspaces-at-once"></a>同时处理许多工作区中的事件 
 
@@ -50,7 +50,7 @@ ms.locfileid: "83124157"
 
 - 你需要对你从中选择了事件的所有工作区具有读写权限。 如果你在某些工作区上只具有读取权限，则选择这些工作区中的事件时，将会显示警告消息。 你将不能修改这些事件，也不能修改与这些事件一起选择的任何其他事件（即使你对其他事件具有权限）。
 
-- 如果选择单个事件并单击“查看完整详细信息”或“调查”，则从那时起你将处于该事件的工作区的数据上下文中，不再处于其他事件的上下文中。
+- 如果选择单个事件并单击“查看完整详细信息”或“操作” > “调查” ，则从那时起你将处于该事件的工作区的数据上下文中，不再处于其他事件的上下文中。
 
 ## <a name="next-steps"></a>后续步骤
 在本文档中，你已了解如何同时查看和处理多个 Azure Sentinel 工作区中的事件。 要详细了解 Azure Sentinel，请参阅以下文章：

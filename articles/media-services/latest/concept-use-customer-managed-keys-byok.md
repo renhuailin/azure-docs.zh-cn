@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: bc7b1a0742e79c3c84bf533e75467b5def2706b4
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 1ad358c428f80e2e8bebcecf73cc89ddd5c37bc7
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277719"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454408"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>自带密钥（客户管理的密钥）与媒体服务
 
@@ -42,7 +42,7 @@ ms.locfileid: "106277719"
 媒体服务自动支持双重加密。 对于静态数据，第一层加密使用客户管理的密钥或 Microsoft 托管密钥，具体取决于帐户的 `AccountEncryption` 设置。  使用单独的 Microsoft 托管密钥自动提供静态数据加密的第二层。 若要详细了解双重加密，请参阅 [Azure 双重加密](../../security/fundamentals/double-encryption.md)。
 
 > [!NOTE]
-> 双重加密在媒体服务帐户上是自动启用的。 但需在存储帐户上分别配置客户管理的密钥和双重加密。 请参阅[存储加密](../../storage/common/storage-service-encryption.md)。
+> 双重加密在媒体服务帐户上是自动启用的。 但需在存储帐户上分别配置客户管理的密钥和双重加密。 若要了解详细信息，请参阅[存储加密](../../storage/common/storage-service-encryption.md)。
 
 ## <a name="tutorials"></a>教程
 

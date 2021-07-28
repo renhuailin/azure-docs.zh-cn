@@ -7,18 +7,18 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 1d2de439e661ef5b1d1669187355621f25400bc4
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 48924cd16eef4cafb2ee0d6a85e30903203169ce
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075546"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785504"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>将 StorSimple 8100 和 8600 迁移到 Azure 文件同步
 
 StorSimple 8000 系列的代表是 8100 或 8600 本地物理设备及其云服务组件。 可以将这些设备中的任一设备的数据迁移到 Azure 文件同步环境。 Azure 文件同步是 StorSimple 设备可迁移到的、默认的、策略性的长期 Azure 服务。
 
-StorSimple 8000 系列将于 2022 年 12 月[停用](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%208000%20Series)。 请务必尽快开始进行迁移规划。 本文提供成功迁移到 Azure 文件同步所需的背景知识和迁移步骤。
+StorSimple 8000 系列将于 2022 年 12 月[停用](/lifecycle/products/azure-storsimple-8000-series)。 请务必尽快开始进行迁移规划。 本文提供成功迁移到 Azure 文件同步所需的背景知识和迁移步骤。
 
 ## <a name="phase-1-prepare-for-migration"></a>阶段 1 - 准备迁移
 
@@ -45,7 +45,7 @@ StorSimple 8000 系列将于 2022 年 12 月[停用](https://support.microsoft.c
 
 可以通过 Azure 文件共享来构建文件服务部署，这是一种全新的方式。 Azure 文件共享只是云中的一个 SMB 共享，你可以对其进行设置，让用户使用可以在本机使用的、熟悉的 Kerberos 身份验证和现有的 NTFS 权限（文件和文件夹 ACL）直接通过 SMB 协议进行访问。 详细了解[如何对 Azure 文件共享进行基于标识的访问](storage-files-active-directory-overview.md)。
 
-直接访问的替代方法是 [Azure 文件同步](./storage-sync-files-planning.md)。Azure 文件同步直接模拟 StorSimple 在本地缓存常用文件的功能。
+直接访问的替代方法是 [Azure 文件同步](../file-sync/file-sync-planning.md)。Azure 文件同步直接模拟 StorSimple 在本地缓存常用文件的功能。
 
 Azure 文件同步是一种 Microsoft 云服务，基于两个主要组件：
 
@@ -56,8 +56,8 @@ Azure 文件共享在存储的文件上保留重要的文件保真特性（如�
 
 本文重点介绍迁移步骤。 如果要在迁移之前详细了解 Azure 文件同步，请参阅以下文章：
 
-* [Azure 文件同步概述](./storage-sync-files-planning.md "概述")
-* [Azure 文件同步部署指南](storage-sync-files-deployment-guide.md)
+* [Azure 文件同步概述](../file-sync/file-sync-planning.md "概述")
+* [Azure 文件同步部署指南](../file-sync/file-sync-deployment-guide.md)
 
 ### <a name="storsimple-service-data-encryption-key"></a>StorSimple 服务数据加密密钥
 
@@ -117,6 +117,15 @@ StorSimple 在卷级别提供差异备份。 Azure 文件共享也具有这种�
 > 确定一个 Azure 区域，确保每个存储帐户和 Azure 文件同步资源与所选的区域匹配。
 > 请勿立即配置存储帐户的网络和防火墙设置。 此时进行这些配置会导致迁移无法进行。 请在完成迁移后配置这些 Azure 存储设置。
 
+### <a name="storage-account-settings"></a>存储帐户设置
+
+可以对存储帐户进行许多配置。 以下清单应该用于确认存储帐户配置。 例如，可以在迁移完成后更改网络配置。 
+
+> [!div class="checklist"]
+> * 大型文件共享：已启用 - 大型文件共享可提高性能，并使共享中的存储容量最高可达 100TiB。 此设置适用于具有 Azure 文件共享的目标存储帐户。
+> * 防火墙和虚拟网络：已禁用 - 不要配置任何 IP 限制或限制存储帐户对特定 VNET 的访问。 在迁移过程中使用存储帐户的公共终结点。 必须允许来自 Azure VM 的所有 IP 地址。 迁移后，最好在存储帐户上配置任何防火墙规则。 按此方式配置源和目标存储帐户。
+> * 专用终结点：支持 - 可以启用专用终结点，但使用公共终结点进行迁移，并且必须保持公共终结点可用。 此注意事项适用于源和目标存储帐户。
+
 ### <a name="phase-1-summary"></a>阶段 1 摘要
 
 阶段 1 末尾：
@@ -160,7 +169,7 @@ StorSimple 在卷级别提供差异备份。 Azure 文件共享也具有这种�
 
 #### <a name="performance"></a>性能
 
-你可以选择为 Azure 文件共享或标准存储选取高级存储 (SSD)。 标准存储包括[用于文件共享的多个层](storage-how-to-create-file-share.md#changing-the-tier-of-an-azure-file-share)。 对于从 StorSimple 进行迁移的大多数客户，标准存储是正确的选择。
+你可以选择为 Azure 文件共享或标准存储选取高级存储 (SSD)。 标准存储包括[用于文件共享的多个层](storage-how-to-create-file-share.md#change-the-tier-of-an-azure-file-share)。 对于从 StorSimple 进行迁移的大多数客户，标准存储是正确的选择。
 
 仍不确定？
 
@@ -204,6 +213,9 @@ StorSimple 在卷级别提供差异备份。 Azure 文件共享也具有这种�
 * 确保文件共享的容量足以容纳要迁移到其中的所有数据，包括存储容量差异备份所需的所有数据。
 * 涵盖未来的增长。
 
+> [!IMPORTANT]
+> 在迁移之前或迁移过程中，请勿将特殊网络应用于存储帐户。 必须可在源和目标存储帐户上访问公共终结点。 不支持对特定 IP 范围或 VNET 的任何限制。 可以在迁移后更改存储帐户网络配置。
+
 ### <a name="azure-file-shares"></a>Azure 文件共享
 
 创建存储帐户后，请转到存储帐户的“文件共享”部分，根据阶段 1 的迁移计划部署适当数量的 Azure 文件共享。 对于 Azure 中的新文件共享，请考虑遵循以下基本设置。
@@ -242,7 +254,7 @@ StorSimple 在卷级别提供差异备份。 Azure 文件共享也具有这种�
 
 :::row:::
     :::column:::
-        ![StorSimple 8000 系列迁移作业。](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png "屏幕截图，显示了用于迁移作业的新作业创建窗体。")
+       ![StorSimple 8000 系列迁移作业。](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job.png "屏幕截图，显示了用于迁移作业的新作业创建窗体。")
     :::column-end:::
     :::column:::
         **作业定义名称**</br>此名称应指示你要移动的文件集。 为其提供一个类似于 Azure 文件共享的名称是一种好的做法。 </br></br>**作业运行的位置**</br>选择区域时，必须选择与 StorSimple 存储帐户相同的区域；如果该区域不可用，则必须选择一个靠近该区域的区域。 </br></br><h3>源</h3>**源订阅**</br>选择在其中存储 StorSimple 设备管理器资源的订阅。 </br></br>**StorSimple 资源**</br>选择你的设备注册到的 StorSimple 设备管理器。 </br></br>**服务数据加密密钥**</br>如果在记录中找不到该密钥，请查看[本文前面的这个部分](#storsimple-service-data-encryption-key)。 </br></br>**设备**</br>选择包含你要迁移到其中的卷的 StorSimple 设备。 </br></br>**音量**</br>选择源卷。 稍后你将决定是否要将整个卷或子目录迁移到目标 Azure 文件共享中。</br></br> **卷备份**</br>你可以选择“选择卷备份”，以便选择要在此作业的过程中移动的特定备份。 [本文中的专门部分](#selecting-volume-backups-to-migrate)（即将发布）详细介绍了该过程。</br></br><h3>目标</h3>选择订阅、存储帐户和 Azure 文件共享作为此迁移作业的目标。</br></br><h3>目录映射</h3>[本文中的专门部分](#directory-mapping)讨论了所有相关的详细信息。
@@ -368,9 +380,26 @@ StorSimple 在卷级别提供差异备份。 Azure 文件共享也具有这种�
     :::column-end:::
 :::row-end:::
 
+#### <a name="run-jobs-in-parallel"></a>并行运行作业
+
+你可能有多个 StorSimple 位置，每个位置都需要复制到不同的 Azure 文件共享。 对于单个 StorSimple 设备，如果以每个不同的 Azure 文件共享为目标，则最多可以并行运行四个迁移作业。 
+
+每个作业都要经过多个阶段。 仅当之前的作业进入文件复制阶段时，才能启动另一个作业。 通常在启动作业后 25 到 35 分钟内可以启动另一个作业，最多可并行启动四个作业。 以相同文件共享为目标的作业（对于后续备份）需要逐个备份地进行复制。
+
+> [!CAUTION]
+> 对于进入同一 Azure 文件共享的任何数据，一次仅启动一个迁移作业。
+
+#### <a name="interpret-the-log-files"></a>解释日志文件
+
+已完成的迁移作业显示指向复制日志的链接。 这些日志是 \*.csv 文件，其中了成功复制的命名空间项和未能复制的项。
+
+访问日志文件的位置后，可以通过使用搜索词“失败”筛选列表来查找失败文件的日志。 结果将是一组未能复制的文件的日志。 然后按大小对它们进行排序。 可能会生成大小为 17 字节的额外日志。 它们是空的，可以忽略。 通过排序，可以轻松地将重点放在包含内容的日志上。
+
+同一过程适用于记录成功复制的日志文件。
+
 ### <a name="phase-3-summary"></a>阶段 3 摘要
 
-在阶段 3 结束时，你将至少运行了一个迁移作业（从 StorSimple 卷迁移到 Azure 文件共享）。 你将针对必须迁移的备份按照从最旧到最新的顺序多次运行了相同的迁移作业。 你现在可以重点关注以下事项：为共享设置 Azure 文件同步（在某个共享的迁移作业完成后进行），或将信息工作者和应用的共享访问权限定向到 Azure 文件共享。
+在阶段 3 结束时，你将至少运行了一个迁移作业（从 StorSimple 卷迁移到 Azure 文件共享）。 你将从必须迁移的最旧备份到最新备份，多次运行相同的迁移作业。 你现在可以重点关注以下事项：为共享设置 Azure 文件同步（在某个共享的迁移作业完成后进行），或将信息工作者和应用的共享访问权限定向到 Azure 文件共享。
 
 ## <a name="phase-4-access-your-azure-file-shares"></a>阶段 4：访问 Azure 文件共享
 
@@ -431,7 +460,7 @@ StorSimple 在卷级别提供差异备份。 Azure 文件共享也具有这种�
     :::column-end:::
     :::column:::
         此视频是有关如何通过五个简单步骤将 Azure 文件共享直接安全地公开给信息工作者和应用的指南和演示。</br>
-        该视频引用一些主题的专用文档：
+        该视频提到了某些主题的专用文档：
 
 * [标识概述](storage-files-active-directory-overview.md)
 * [如何将存储帐户加入域](storage-files-identity-auth-active-directory-enable.md)
@@ -475,7 +504,7 @@ StorSimple 在卷级别提供差异备份。 Azure 文件共享也具有这种�
 
 * 登录到 Azure 门户，转到同步组。 检查同步组和服务器终结点的同步状态。
 * 下载是一种有意思的指示。 如果服务器终结点是新预配的，则会显示“初始同步”，表示命名空间仍在下载。
-如果显示除“初始同步”之外的其他内容，则表明命名空间很快会在服务器上完全填充。 你现在可以使用本地 RoboCopy 继续操作了。
+在该状态更改为除“初始同步”之外的任何状态后，命名空间将在服务器上完全填充。 你现在可以使用本地 RoboCopy 继续操作了。
 
 #### <a name="windows-server-event-viewer"></a>Windows Server 事件查看器
 
@@ -502,96 +531,11 @@ StorSimple 在卷级别提供差异备份。 Azure 文件共享也具有这种�
 > [!WARNING]
 > 在服务器具有下载完的用于 Azure 文件共享的命名空间之前，不得启动 RoboCopy。 有关详细信息，请参阅[确定何时将命名空间完全下载到服务器](#determine-when-your-namespace-has-fully-synced-to-your-server)。
 
- 你只希望复制在上次运行迁移作业后更改过的文件，以及之前尚未通过这些作业进行移动的文件。 你可以稍后（在完成迁移后）在服务器上解决它们为何没有移动的问题。 有关详细信息，请参阅 [Azure 文件同步故障排除](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)。
+ 你只希望复制在上次运行迁移作业后更改过的文件，以及之前尚未通过这些作业进行移动的文件。 你可以稍后（在完成迁移后）在服务器上解决它们为何没有移动的问题。 有关详细信息，请参阅 [Azure 文件同步故障排除](../file-sync/file-sync-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)。
 
 RoboCopy 有多个参数。 以下示例展示了一个完成的命令，以及选择这些参数的原因的列表。
 
-```console
-Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /IT /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
-```
-
-背景色：
-
-:::row:::
-   :::column span="1":::
-      /MT
-   :::column-end:::
-   :::column span="1":::
-      允许 RoboCopy 多线程运行。 默认值为 8，最大值为 128。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /UNILOG:<file name>
-   :::column-end:::
-   :::column span="1":::
-      将状态作为 UNICODE 输出到 LOG 文件（覆盖现有日志）。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /TEE
-   :::column-end:::
-   :::column span="1":::
-      输出到控制台窗口。 与日志文件的输出一起使用。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /NP
-   :::column-end:::
-   :::column span="1":::
-      省略进度记录以保持日志的可读性。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /B
-   :::column-end:::
-   :::column span="1":::
-      在备份应用程序使用的相同模式下运行 RoboCopy。 允许 RoboCopy 移动当前用户没有权限的文件。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /MIR
-   :::column-end:::
-   :::column span="1":::
-      允许 RoboCopy 仅考虑源（StorSimple 设备）和目标（Windows Server 目录）之间的增量。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /IT
-   :::column-end:::
-   :::column span="1":::
-      确保在某些镜像方案中保留保真度。</br>示例 - 在两个 RoboCopy 运行之间，文件遇到 ACL 更改和属性更新的情况，例如，它还被标记为“已隐藏”。 如果没有 /IT，RoboCopy 可能会忽略 ACL 更改，因此不会将其传输到目标位置。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPY:copyflag[s]
-   :::column-end:::
-   :::column span="1":::
-      文件复制的保真度（默认值为 /COPY:DAT），复制标志：D=数据，A=属性，T=时间戳，S=安全性=NTFS ACL，O=所有者信息，U=审核信息。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPYALL
-   :::column-end:::
-   :::column span="1":::
-      复制所有文件信息（等效于 /COPY:DATSOU）。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /DCOPY:copyflag[s]
-   :::column-end:::
-   :::column span="1":::
-      目录复制的保真度（默认值为 /DCOPY:DA），复制标志：D=数据，A=属性，T=时间戳。
-   :::column-end:::
-:::row-end:::
+[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
 在配置 RoboCopy 命令的源和目标位置时，请务必查看源和目标的结构，以确保它们匹配。 如果使用了迁移作业的目录映射功能，则根目录结构可能不同于 StorSimple 卷的结构。 如果是这种情况，则可能需要多个 RoboCopy 作业，每个子目录一个。 如果不确定命令是否会按预期执行，则可以使用 /L 参数，该参数会模拟命令，实际上并不进行任何更改。
 
@@ -603,6 +547,10 @@ Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /IT /COPYALL /DCOPY:DAT <So
 
 1. 将 [Azure 文件共享作为网络驱动器装载](storage-how-to-use-files-windows.md#mount-the-azure-file-share)到本地 Windows 计算机。
 1. 在 StorSimple 与装载的 Azure 文件共享之间执行 RoboCopy。 如果文件无法复制，请在 StorSimple 端修复其名称，删除无效字符， 然后重试 RoboCopy。 前面列出的 RoboCopy 命令可以多次运行，而不会导致对 StorSimple 进行不必要的重新调用。
+
+### <a name="troubleshoot-and-optimize"></a>故障排除和优化
+
+[!INCLUDE [storage-files-migration-robocopy-optimize](../../../includes/storage-files-migration-robocopy-optimize.md)]
 
 ### <a name="user-cut-over"></a>用户完全转移
 
@@ -622,7 +570,7 @@ Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /IT /COPYALL /DCOPY:DAT <So
 在开始之前，最佳做法是在生产环境中观察新的 Azure 文件同步部署一段时间。 你可以在该段时间内解决可能遇到的任何问题。 观察 Azure 文件同步部署至少几天后，就可以开始按以下顺序预配资源：
 
 1. 通过 Azure 门户取消预配 StorSimple 数据管理器资源。 所有 DTS 作业都将随之一起删除。 你将无法轻松地检索复制日志。 如果这些日志对你的记录很重要，请在取消预配前检索它们。
-1. 确保已迁移 StorSimple 物理设备，然后将其注销。 如果不完全确定它们已迁移，请勿继续。 如果在这些资源仍是必需的情况下将其取消预配，则无法恢复数据或其配置。<br>也可以先取消预配 StorSimple 卷资源，这会清除设备上的数据。 这可能需要几天的时间，**不会** 对设备上的数据进行取证式清除。 如果这对你很重要，请按照策略独立于资源取消预配操作进行磁盘清除处理。
+1. 确保已迁移 StorSimple 物理设备，然后将其注销。 如果不完全确定它们已迁移，请勿继续。 如果在这些资源仍是必需的情况下将其取消预配，则无法恢复数据或其配置。<br>也可以先取消预配 StorSimple 卷资源，这会清除设备上的数据。 此过程可能需要几天的时间，不会对设备上的数据进行取证式清除。 如果这对你很重要，请按照策略独立于资源取消预配操作进行磁盘清除处理。
 1. 如果 StorSimple 设备管理器中没有剩余的已注册设备，则可以继续删除设备管理器资源本身。
 1. 现在可以在 Azure 中删除 StorSimple 存储帐户。 同样，在继续操作之前，请停下来确认迁移已完成，并且不会有任何内容和任何人员依赖于此数据。
 1. 从数据中心拔出 StorSimple 物理设备。
@@ -636,7 +584,7 @@ Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /IT /COPYALL /DCOPY:DAT <So
 
 ## <a name="next-steps"></a>后续步骤
 
-* 进一步熟悉 [Azure 文件同步：aka.ms/AFS](./storage-sync-files-planning.md)。
-* 了解[云分层](storage-sync-cloud-tiering-overview.md)策略的灵活性。
+* 进一步熟悉 [Azure 文件同步：aka.ms/AFS](../file-sync/file-sync-planning.md)。
+* 了解[云分层](../file-sync/file-sync-cloud-tiering-overview.md)策略的灵活性。
 * 在 Azure 文件共享上[启用 Azure 备份](../../backup/backup-afs.md#configure-backup-from-the-file-share-pane)，进行快照安排并定义备份保留计划。
-* 如果在 Azure 门户中看到某些文件始终未同步，请参阅[故障排除指南](storage-sync-files-troubleshoot.md)以获取解决这些问题的步骤。
+* 如果在 Azure 门户中看到某些文件始终未同步，请参阅[故障排除指南](../file-sync/file-sync-troubleshoot.md)以获取解决这些问题的步骤。

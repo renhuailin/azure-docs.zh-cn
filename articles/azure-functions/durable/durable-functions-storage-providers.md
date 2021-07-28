@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 05/05/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 090db9c84786735071ef82e60ab2234fb01d5d6e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: bf50f0bdc3c8e654a3d2f780bb7f0c32533948eb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385041"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465793"
 ---
 # <a name="durable-functions-storage-providers"></a>Durable Functions 存储提供程序
 
@@ -39,7 +39,7 @@ Azure 存储提供程序的主要优势包括：
 > [!NOTE]
 > 使用 Azure 存储提供程序时，需要标准常规用途 Azure 存储帐户。 所有其他存储帐户类型均不受支持。 强烈建议使用旧版 v1 常规用途存储帐户，因为对于 Durable Functions 工作负载而言，较新的 v2 存储帐户可能会贵得多。 若要详细了解 Azure 存储帐户类型，请参阅[存储帐户概述](../../storage/common/storage-account-overview.md)文档。
 
-## <a name=""></a><a name="netherite">Netherite（预览版）</a>
+## <a name="netherite-preview"></a><a name="netherite"></a>Netherite（预览版）
 
 Netherite 存储后端由 [Microsoft Research](https://www.microsoft.com/research) 设计和开发。 它在 [Azure 页 Blob](../../storage/blobs/storage-blob-pageblob-overview.md) 之上使用 [Azure 事件中心](../../event-hubs/event-hubs-about.md)和 [FASTER](https://www.microsoft.com/research/project/faster/) 数据库技术。 与其他提供程序相比，Netherite 的设计支持以更高的吞吐量处理业务流程和实体。 在某些基准方案中，与默认的 Azure 存储提供程序相比，其吞吐量提高了一个数量级以上。
 
@@ -55,7 +55,7 @@ Netherite 存储提供程序的主要优势包括：
 > [!NOTE]
 > Netherite 一名源自 [Minecraft](https://minecraft.fandom.com/wiki/Netherite) 世界。
 
-## <a name=""></a><a name="mssql">Microsoft SQL Server (MSSQL)（预览版）</a>
+## <a name="microsoft-sql-server-mssql-preview"></a><a name="mssql"></a>Microsoft SQL Server (MSSQL)（预览版）
 
 Microsoft SQL Server (MSSQL) 存储提供程序将所有状态持久保存到 Microsoft SQL Server 数据库中。 它与 SQL Server 的本地部署和云托管部署均兼容，包括 [Azure SQL 数据库](../../azure-sql/database/sql-database-paas-overview.md)。
 

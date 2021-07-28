@@ -1,22 +1,22 @@
 ---
-title: 将虚拟机规模集扩展添加到 Service Fabric 托管群集节点类型（预览版）
-description: 这里将介绍如何将虚拟机规模集扩展添加到 Service Fabric 托管群集节点类型
+title: 将虚拟机规模集扩展添加到 Service Fabric 托管群集节点类型
+description: 下面介绍如何将虚拟机规模集扩展添加到 Service Fabric 托管群集节点类型
 ms.topic: article
-ms.date: 09/28/2020
-ms.openlocfilehash: a47908b511f79c18482e9d21e623f1cb4dc70ed1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 5/10/2021
+ms.openlocfilehash: 9aaddd912407849133a115116dd769d2090767dd
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737760"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683400"
 ---
-# <a name="add-a-virtual-machine-scale-set-extension-to-a-service-fabric-managed-cluster-node-type-preview"></a>将虚拟机规模集扩展添加到 Service Fabric 托管群集节点类型（预览版）
+# <a name="add-a-virtual-machine-scale-set-extension-to-a-service-fabric-managed-cluster-node-type"></a>将虚拟机规模集扩展添加到 Service Fabric 托管群集节点类型
 
-Service Fabric 托管群集中的每个节点类型都受虚拟机规模集的支持。 这样就可以将[虚拟机规模集扩展](../virtual-machines/extensions/overview.md)添加到 Service Fabric 托管群集节点类型。
+Service Fabric 托管群集中的每个节点类型都受虚拟机规模集的支持。 这使你能够将[虚拟机规模集扩展](../virtual-machines/extensions/overview.md)添加到 Service Fabric 托管群集节点类型。
 
-可以使用 [Add-AzServiceFabricManagedNodeTypeVMExtension](/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension) PowerShell 命令将虚拟机规模集扩展添加到节点类型。
+可使用 [Add-AzServiceFabricManagedNodeTypeVMExtension](/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension) PowerShell 命令将虚拟机规模集扩展添加到节点类型。
 
-或者，可以在 Azure 资源管理器模板的 Service Fabric 托管群集节点类型上使用虚拟机规模集扩展，例如：
+或者，你可以通过 Azure 资源管理器模板将虚拟机规模集扩展添加到 Service Fabric 托管群集节点类型，例如：
 
 ```json
 {

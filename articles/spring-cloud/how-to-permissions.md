@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 0c0b3bd81e0f73a7879382e28516378bd722bc17
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8bc17ef020ae61a18f5259a956c7b5d3b3998a4d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877220"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463573"
 ---
 # <a name="how-to-use-permissions-in-azure-spring-cloud"></a>如何在 Azure Spring Cloud 中使用权限
 本文介绍如何创建将权限委托给 Azure Spring Cloud 资源的自定义角色。 自定义角色通过各种默认权限对 [Azure 内置角色](../role-based-access-control/built-in-roles.md)进行扩展。
@@ -29,7 +29,7 @@ ms.locfileid: "104877220"
     * 重启应用
     * 获取日志流
     * 无法对应用或配置进行更改
-* **Azure Pipelines/Jenkins/GitHub Actions 角色**：
+* Azure Pipelines/Jenkins/GitHub Actions 角色：
     * 可以执行创建、读取、更新、删除操作
     * 可以在 Azure Spring Cloud 和应用的服务实例中创建和配置所有内容：使用 Terraform 或 ARM 模板的 Azure Pipelines、Jenkins 或 GitHub Actions
 
@@ -194,7 +194,7 @@ ms.locfileid: "104877220"
 5. 单击“审阅并创建”。
 
 ## <a name="define-azure-pipelinesprovisioning-role"></a>定义 Azure Pipelines/预配角色
-此 Jenkins/Github Actions 角色可以在 Azure Spring Cloud 和应用中使用服务实例创建和配置所有内容。 此角色用于发布或部署代码。
+此 Jenkins/GitHub Actions 角色可以在 Azure Spring Cloud 和应用中使用服务实例创建和配置所有内容。 此角色用于发布或部署代码。
 
 1. 重复此过程以导航订阅、资源组和访问访问控制 (IAM)。
 

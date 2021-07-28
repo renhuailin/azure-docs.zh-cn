@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 04/08/2021
+ms.date: 05/25/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bbb3bc0e34ad596c39aebb49124bb72d0b3efe6f
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 6298c8483c44472fe6f52f3e48b5c529c2d978a5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103867"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457486"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies"></a>排查 Azure AD B2C 自定义策略问题
 
@@ -48,7 +48,7 @@ Azure AD B2C 相关 ID 是附加到授权请求的唯一标识符值。 它用�
 1. 打开策略的扩展文件， 例如，<em>`SocialAndLocalAccounts/``TrustFrameworkExtensions.xml`</em>。
 1. 搜索 [BuildingBlocks](buildingblocks.md) 元素。 如果该元素不存在，请添加该元素。
 1. 找到 [ClaimsSchema](claimsschema.md) 元素。 如果该元素不存在，请添加该元素。
-1. 将 city 声明添加到 ClaimsSchema 元素。  
+1. 将相关 ID 声明添加到“ClaimsSchema”元素中。  
 
     ```xml
     <!-- 
@@ -63,7 +63,7 @@ Azure AD B2C 相关 ID 是附加到授权请求的唯一标识符值。 它用�
     </BuildingBlocks>-->
     ```
 
-1. 打开策略的信赖方文件。 例如 <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> 文件。 系统会在用户旅程成功后将输出声明添加到令牌，并发送到应用程序。 修改信赖方部分中的技术配置文件元素，以将 city 添加为输出声明。
+1. 打开策略的信赖方文件。 例如 <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> 文件。 系统会在用户旅程成功后将输出声明添加到令牌，并发送到应用程序。 修改信赖方部分中的技术配置文件元素，以将 `correlationId` 添加为输出声明。
  
     ```xml
     <RelyingParty>

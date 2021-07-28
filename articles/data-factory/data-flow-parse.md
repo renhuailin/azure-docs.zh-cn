@@ -5,19 +5,19 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/08/2021
-ms.openlocfilehash: 4db9503ea84ae13148a89a03048c73399413e5cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.openlocfilehash: 7a01d2d17a4c98656588530f5b288c6a69b8a206
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101710186"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109734155"
 ---
 # <a name="parse-transformation-in-mapping-data-flow"></a>分析映射数据流中的转换
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-使用“分析”转换分析数据中文档形式的列。 可以分析的嵌入文档的当前支持类型是 JSON 和带分隔符的文本。
+使用“分析”转换分析数据中文档形式的列。 可以分析的嵌入文档的当前支持类型是 JSON、XML 和带分隔符的文本。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWykdO]
 
@@ -29,11 +29,22 @@ ms.locfileid: "101710186"
 
 ### <a name="column"></a>列
 
-与派生列和聚合类似，你可以在此处通过从下拉选取器中选择现有列来对其进行修改。 或者，也可以在此处键入新列的名称。 ADF 将已分析的源数据存储在此列中。
+与派生列和聚合类似，你可以在此处通过从下拉选取器中选择现有列来对其进行修改。 或者，也可以在此处键入新列的名称。 ADF 将已分析的源数据存储在此列中。 在大多数情况下，需定义一个新列来解析传入的嵌入文档字段。
 
 ### <a name="expression"></a>表达式
 
 使用表达式生成器设置分析的源。 可以只需简单地选择包含要分析的自包含数据的源列，也可以创建复杂的表达式进行分析。
+
+#### <a name="example-expressions"></a>表达式示例
+
+* 源字符串数据：```chrome|steel|plastic```
+  * 表达式：```(desc1 as string, desc2 as string, desc3 as string)```
+
+* 源 JSON 数据：```{"ts":1409318650332,"userId":"309","sessionId":1879,"page":"NextSong","auth":"Logged In","method":"PUT","status":200,"level":"free","itemInSession":2,"registration":1384448}```
+  * 表达式：```(level as string, registration as long)```
+
+* 源 XML 数据：```<Customers><Customer>122</Customer><CompanyName>Great Lakes Food Market</CompanyName></Customers>```
+  * 表达式：```(Customers as (Customer as integer, CompanyName as string))```
 
 ### <a name="output-column-type"></a>输出列类型
 
@@ -105,7 +116,7 @@ ParseCsv select(mapColumn(
 ```
 parse(json = jsonString ? (trade as boolean,
                                 customers as string[]),
-                format: 'json',
+                format: 'json|XML|delimited',
                 documentForm: 'singleDocument') ~> ParseJson
 
 parse(csv = csvString ? (id as integer,

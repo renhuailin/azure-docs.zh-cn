@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Maps 天气服务（预览版）覆盖范围
-description: 了解 Microsoft Azure Maps 天气服务（预览版）覆盖范围
+title: Microsoft Azure Maps 天气服务覆盖范围
+description: 了解 Microsoft Azure Maps 天气服务覆盖范围
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 12/07/2020
@@ -9,19 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 ms.custom: references_regions
 manager: philmea
-ms.openlocfilehash: 6c4e9eb765a72b7a0b495f81a954b484ef6aa2b7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5ac209dc898c2d30f8d50a8989b188ef5a9f5046
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96905479"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257664"
 ---
-# <a name="azure-maps-weather-services-preview-coverage"></a>Azure Maps 天气服务（预览版）覆盖范围
-
-> [!IMPORTANT]
-> Azure Maps 天气服务目前以公共预览版提供。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
+# <a name="azure-maps-weather-services-coverage"></a>Azure Maps 天气服务覆盖范围
 
 本文提供了 Azure Maps [天气服务](/rest/api/maps/weather)的覆盖范围信息。 Azure Maps 天气数据服务返回诸如雷达图块、当前天气状况、天气预报和沿途天气之类的详细信息。
 
@@ -230,7 +225,7 @@ Azure Maps 并非对所有国家/地区都提供相同级别的信息和准确�
 | 新加坡                         | ✓ |   | | ✓| 
 | 所罗门群岛                   | ✓ |   | | ✓| 
 | 斯里兰卡                         | ✓ |   | | ✓| 
-| 中国台湾                            | ✓ |   | | ✓| 
+| 台湾                            | ✓ |   | | ✓| 
 | 塔吉克斯坦                        | ✓ |   | | ✓| 
 | 泰国                          | ✓ |   | | ✓| 
 | 东帝汶                       | ✓ |   | | ✓| 

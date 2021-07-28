@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: e8641cada03577cf22e6627bdf53b2a8a0e836ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4550be7ae8c543eea1bdfa085db6f23fe668a121
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102216377"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025690"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
 
@@ -596,7 +596,7 @@ http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>
 http://<APP_NAME>.azurewebsites.net/api/products/electronics/357
 ```
 
-此配置使得函数代码在地址中支持两个参数：_category_ 和 _id_。有关如何在 URL 中标记化路由参数的更多信息，请参阅 [ASP.NET Core 中的路由](https://docs.microsoft.com/aspnet/core/fundamentals/routing#route-constraint-reference)。
+此配置允许函数代码支持地址中的两个参数“category”和“id” 。有关如何在 URL 中标记化路由参数的详细信息，请参阅 [ASP.NET Core 中的路由](/aspnet/core/fundamentals/routing#route-constraint-reference)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 

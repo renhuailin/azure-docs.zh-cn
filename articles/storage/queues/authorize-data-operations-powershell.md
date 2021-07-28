@@ -10,18 +10,18 @@ ms.date: 02/10/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 61bcf7abca2860078bd89da070309a0057360f0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 862c576ae86cd7d91a1bd73243caa0a68e3689c1
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100370217"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111900532"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-queue-data"></a>使用 Azure AD 凭据运行 PowerShell 命令以访问队列数据
 
 Azure 存储为 PowerShell 提供扩展，使用户可使用 Azure Active Directory (Azure AD) 凭据登录并运行脚本命令。 使用 Azure AD 凭据登录 PowerShell 时，会返回 OAuth 2.0 访问令牌。 PowerShell 会自动使用该令牌针对队列存储进行后续数据操作授权。 对于支持的操作，无需再通过命令传递帐户密钥或 SAS 令牌。
 
-可通过 Azure 基于角色的访问控制 (Azure RBAC) 向 Azure AD 安全主体分配对队列数据的权限。 有关 Azure 存储中 Azure 角色的详细信息，请参阅[通过 Azure RBAC 管理 Azure 存储数据访问权限](../common/storage-auth-aad-rbac-portal.md)。
+可通过 Azure 基于角色的访问控制 (Azure RBAC) 向 Azure AD 安全主体分配对队列数据的权限。 有关 Azure 存储中 Azure 角色的详细信息，请参阅[通过 Azure RBAC 管理 Azure 存储数据访问权限](assign-azure-role-data-access.md)。
 
 ## <a name="supported-operations"></a>支持的操作
 
@@ -71,7 +71,7 @@ Azure 存储扩展支持针对队列数据的操作。 可调用的操作取决�
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. 创建队列之前，请为自己分配[存储队列数据参与者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)角色。 即使你是帐户所有者，也需要显式权限才能针对存储帐户执行数据操作。 有关分配 Azure 角色的详细信息，请参阅[使用 Azure 门户分配用于访问 blob 和队列数据的 Azure 角色](../common/storage-auth-aad-rbac-portal.md)。
+1. 创建队列之前，请为自己分配[存储队列数据参与者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)角色。 即使你是帐户所有者，也需要显式权限才能针对存储帐户执行数据操作。 若要详细了解如何分配 Azure 角色，请参阅[分配用于访问队列数据的 Azure 角色](assign-azure-role-data-access.md)。
 
     > [!IMPORTANT]
     > 传播 Azure 角色分配可能需要花费几分钟时间。
@@ -85,5 +85,5 @@ Azure 存储扩展支持针对队列数据的操作。 可调用的操作取决�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 PowerShell 为 blob 和队列数据分配用于访问的 Azure 角色](../common/storage-auth-aad-rbac-powershell.md)
+- [分配用于访问队列数据的 Azure 角色](assign-azure-role-data-access.md)
 - [使用 Azure 资源托管标识授予对 Blob 和队列数据的访问权限](../common/storage-auth-aad-msi.md)

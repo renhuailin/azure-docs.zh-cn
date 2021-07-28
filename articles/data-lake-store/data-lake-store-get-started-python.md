@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: devx-track-python
 ms.openlocfilehash: 35e71b80c6f47bb13f7a2b490b493b0cb42acf04
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92103503"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>使用 Python 对 Azure Data Lake Storage Gen1 进行的帐户管理操作
@@ -22,7 +22,7 @@ ms.locfileid: "92103503"
 >
 >
 
-了解如何通过用于 Azure Data Lake Storage Gen1 的 Python SDK 执行基本的帐户管理操作，例如创建 Data Lake Storage Gen1 帐户、列出 Data Lake Storage Gen1 帐户，等等。若要了解如何使用 Python 在 Data Lake Storage Gen1 上执行文件系统操作，请参阅[在 Data Lake Storage Gen1 上使用 Python 进行的文件系统操作](data-lake-store-data-operations-python.md)。
+了解如何使用 Python SDK for Azure Data Lake Storage Gen1 执行基本帐户管理操作（例如，创建 Data Lake Storage Gen1 帐户、列出 Data Lake Storage Gen1 帐户，等等）。有关如何使用 Python 对 Data Lake Storage Gen1 执行文件系统操作的说明，请参阅[使用 Python 对 Data Lake Storage Gen1 执行的文件系统操作](data-lake-store-data-operations-python.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

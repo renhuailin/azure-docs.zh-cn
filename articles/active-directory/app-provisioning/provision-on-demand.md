@@ -1,24 +1,24 @@
 ---
 title: 使用 Azure Active Directory 按需预配用户
-description: 强制同步
+description: 了解如何在 Azure Active Directory 中按需预配用户。
 services: active-directory
-author: msmimart
-manager: daveba
+author: kenwith
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/01/2020
-ms.author: mimart
+ms.date: 05/11/2021
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: be03a149f34c16621905081a2f9bb663d85bc53c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 56c86e5d0f06d66eea1841e5c1157432fd92f0ac
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99255655"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785000"
 ---
-# <a name="on-demand-provisioning"></a>按需预配
+# <a name="on-demand-provisioning-in-azure-active-directory"></a>Azure Active Directory 中的按需预配
 使用按需预配可在数秒内将用户预配到应用程序。 除此之外，还可以使用此功能执行以下操作：
 
 * 快速排除配置问题。
@@ -27,7 +27,7 @@ ms.locfileid: "99255655"
 
 ## <a name="how-to-use-on-demand-provisioning"></a>如何使用按需预配
 
-1. 登录到 **Azure 门户**。
+1. 登录 **Azure 门户**。
 1. 转到“所有服务” > “企业应用程序”。
 1. 选择相应应用程序，然后转到“预配配置”页。
 1. 通过提供管理员凭据来配置预配。

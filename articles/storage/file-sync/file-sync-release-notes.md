@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 4/7/2021
+ms.date: 5/20/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 9b217f9911d9a1e3ab3bfcabde5955764314cc7d
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 1cd716ea74f1e16e448f312d007bbd4d90f232d5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787592"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461735"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -25,13 +25,14 @@ ms.locfileid: "109787592"
 
 | 里程碑 | 代理版本号 | 发布日期 | 状态 |
 |----|----------------------|--------------|------------------|
+| V12.1 版本 - [KB4588751](https://support.microsoft.com/topic/497dc33c-d38b-42ca-8015-01c906b96132)| 12.1.0.0 | 2021 年 5 月 20 日 | 支持 |
 | V12 版本 - [KB4568585](https://support.microsoft.com/topic/b9605f04-b4af-4ad8-86b0-2c490c535cfd)| 12.0.0.0 | 2021 年 3 月 26 日 | 支持 |
 | V11.3 版本- [KB4539953](https://support.microsoft.com/topic/f68974f6-bfdd-44f4-9659-bf2d8a696c26)| 11.3.0.0 | 2021 年 4 月 7 日 | 支持 |
 | V11.2 版本 - [KB4539952](https://support.microsoft.com/topic/azure-file-sync-agent-v11-2-release-february-2021-c956eaf0-cd8e-4511-98c0-e5a1f2c84048)| 11.2.0.0 | 2021 年 2 月 2 日 | 支持 |
 | V11.1 版本 - [KB4539951](https://support.microsoft.com/help/4539951)| 11.1.0.0 | 2020 年 11 月 4 日 | 支持 |
-| V10.1 版本 - [KB4522411](https://support.microsoft.com/help/4522411)| 10.1.0.0 | 2020 年 6 月 5 日 | 支持 - 代理版本将于 2021 年 6 月 7 日到期 |
-| 2020 年 5 月更新汇总 - [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | 2020 年 5 月 19 日 | 支持 - 代理版本将于 2021 年 6 月 7 日到期 |
-| V10 版本 - [KB4522409](https://support.microsoft.com/help/4522409)| 10.0.0.0 | 2020 年 4 月 9 日 | 支持 - 代理版本将于 2021 年 6 月 7 日到期 |
+| V10.1 版本 - [KB4522411](https://support.microsoft.com/help/4522411)| 10.1.0.0 | 2020 年 6 月 5 日 | 支持 - 代理版本将于 2021 年 6 月 28 日到期 |
+| 2020 年 5 月更新汇总 - [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | 2020 年 5 月 19 日 | 支持 - 代理版本将于 2021 年 6 月 28 日到期 |
+| V10 版本 - [KB4522409](https://support.microsoft.com/help/4522409)| 10.0.0.0 | 2020 年 4 月 9 日 | 支持 - 代理版本将于 2021 年 6 月 28 日到期 |
 
 ## <a name="unsupported-versions"></a>不支持的版本
 以下 Azure 文件同步代理版本已到期，不再受支持：
@@ -49,6 +50,14 @@ ms.locfileid: "109787592"
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-12100"></a>代理版本 12.1.0.0
+以下发行说明适用于 2021 年 5 月 20 日发布的 Azure 文件同步代理版本 12.1.0.0。 这些说明是对为版本 12.0.0.0 列出的发行说明的补充。
+
+### <a name="improvements-and-issues-that-are-fixed"></a>改进和已解决的问题 
+v12.0 代理版本有两个 bug 已在此版本中修复：
+- 代理自动更新无法将代理更新到较新的版本。
+- FileSyncErrorsReport.ps1 脚本不提供单项错误的列表。
 
 ## <a name="agent-version-12000"></a>代理版本 12.0.0.0
 以下发行说明适用于 Azure 文件同步代理版本 12.0.0.0（2021 年 3 月 26 日发布）。

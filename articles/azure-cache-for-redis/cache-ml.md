@@ -1,29 +1,30 @@
 ---
 title: 使用 Azure Cache for Redis 将机器学习模型部署到 Azure Functions
-description: 本文将使用 Azure Cache for Redis 实例，将模型作为函数应用从 Azure 机器学习部署到 Azure Functions。 Azure Cache for Redis 具有极高的性能和可伸缩性 - 在与 Azure 机器学习模型配对时，可以在应用程序中获得低延迟和高吞吐量。
+description: 在本文中，你将使用 Azure Cache for Redis 实例将 Azure 机器学习中的模型部署为 Azure Functions 中的函数应用。 Azure Cache for Redis 性能优异并且可缩放 - 在与 Azure 机器学习模型配对时，可以在应用程序中获得低延迟和高吞吐量。
 author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: ec8943bc73cac2020350dd4916f040f031cd842b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0541b626168fb680daa2fc5c0c14df5bc8a4ea7c
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499690"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111904168"
 ---
-# <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>使用 Azure Cache for Redis 将机器学习模型部署到 Azure Functions 
+# <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>使用 Azure Cache for Redis 将机器学习模型部署到 Azure Functions
 
-本文将使用 Azure Cache for Redis 实例，将模型作为函数应用从 Azure 机器学习部署到 Azure Functions。  
+在本文中，你将使用 Azure Cache for Redis 实例将 Azure 机器学习中的模型部署为 Azure Functions 中的函数应用。  
 
-Azure Cache for Redis 具有极高的性能和可伸缩性 - 在与 Azure 机器学习模型配对时，可以在应用程序中获得低延迟和高吞吐量。 几种情况下缓存特别有用，例如，可以将缓存用于数据推理和实际的模型推理结果。 在任一情况下，元数据或结果存储在内存中，因而提高了性能。 
+Azure Cache for Redis 性能优异并且可缩放。 在与 Azure 机器学习模型配对时，可以在应用程序中获得低延迟和高吞吐量。 缓存在一些情况下特别有用：在进行数据推理时，以及用于实际的模型推理结果时。 在任一情况下，元数据或结果存储在内存中，因而提高了性能。
 
 > [!NOTE]
 > 虽然 Azure 机器学习和 Azure Functions 都已正式发布，但将模型从机器学习服务部署到 Functions 的功能目前处于预览阶段。  
 >
 
 ## <a name="prerequisites"></a>先决条件
+
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](../machine-learning/how-to-manage-workspace.md)一文。
 * [Azure CLI](/cli/azure/install-azure-cli)。
@@ -38,44 +39,45 @@ Azure Cache for Redis 具有极高的性能和可伸缩性 - 在与 Azure 机器
 >
 > 有关设置这些变量的详细信息，请参阅[使用 Azure 机器学习部署模型](../machine-learning/how-to-deploy-and-where.md)。
 
-## <a name="create-an-azure-cache-for-redis-instance"></a>创建用于 Redis 的 Azure 缓存实例 
+## <a name="create-an-azure-cache-for-redis-instance"></a>创建用于 Redis 的 Azure 缓存实例
+
 你将能够使用任何基本、标准或高级缓存实例将机器学习模型部署到 Azure Functions。 若要创建缓存实例，请执行以下步骤。  
 
-1. 转到 Azure 门户主页或打开边栏菜单，然后选择“创建资源”。 
-   
+1. 转到 Azure 门户主页或打开边栏菜单，然后选择“创建资源”。
+
 1. 在“新建”页上选择“数据库”，然后选择“Azure Cache for Redis”。
 
     :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="选择 Azure Cache for Redis。":::
-   
+
 1. 在“新建 Redis 缓存”页上配置新缓存的设置。
-   
+
    | 设置      | 建议的值  | 说明 |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS 名称** | 输入任何全局唯一的名称。 | 缓存名称必须是包含 1 到 63 个字符的字符串，只能包含数字、字母或连字符。 该名称必须以数字或字母开头和结尾，且不能包含连续的连字符。 缓存实例的主机名是 *\<DNS name> .redis.cache.windows.net*。 | 
-   | **订阅** | 单击下拉箭头并选择你的订阅。 | 要在其下创建此新的 Azure Cache for Redis 实例的订阅。 | 
-   | **资源组** | 单击下拉箭头并选择一个资源组，或者选择“新建”并输入新的资源组名称。 | 要在其中创建缓存和其他资源的资源组的名称。 将所有应用资源放入一个资源组可以轻松地统一管理或删除这些资源。 | 
+   | **DNS 名称** | 输入任何全局唯一的名称。 | 缓存名称必须是 1 至 63 个字符的字符串。 该字符串只能包含数字、字母或连字符。 该名称必须以数字或字母开头和结尾，且不能包含连续的连字符。 缓存实例的主机名是 *\<DNS name> .redis.cache.windows.net*。 |
+   | **订阅** | 单击下拉箭头并选择你的订阅。 | 要在其下创建此新的 Azure Cache for Redis 实例的订阅。 |
+   | **资源组** | 单击下拉箭头并选择一个资源组，或者选择“新建”并输入新的资源组名称。 | 要在其中创建缓存和其他资源的资源组的名称。 将所有应用资源放入一个资源组可以轻松地统一管理或删除这些资源。 |
    | **位置** | 单击下拉箭头并选择一个位置。 | 选择与要使用该缓存的其他服务靠近的[区域](https://azure.microsoft.com/regions/)。 |
    | **定价层** | 单击下拉箭头并选择一个[定价层](https://azure.microsoft.com/pricing/details/cache/)。 |  定价层决定可用于缓存的大小、性能和功能。 有关详细信息，请参阅[用于 Redis 的 Azure 缓存概述](cache-overview.md)。 |
 
-1. 选择“网络”选项卡，或单击页面底部的“网络”按钮 。
+1. 选择“网络”选项卡，或选择页面底部的“网络”按钮 。
 
 1. 在“网络”选项卡中，选择你的连接方法。
 
-1. 选择页面底部的“下一步:高级”选项卡，或者单击页面底部的“下一步:高级”按钮。
+1. 选择“下一步: 高级”选项卡，或选择页面底部的“下一步: 高级”按钮 。
 
 1. 在基本或标准缓存实例的“高级”选项卡中，如果想要启用非 TLS 端口，请选择启用开关。
 
 1. 在高级缓存实例的“高级”选项卡中，配置非 TLS 端口、群集和数据持久性的设置。
 
-1. 选择页面底部的“下一步:标记”选项卡，或者单击“下一步:标记”按钮。
+1. 选择“下一步: 标记”选项卡，或选择页面底部的“下一步: 标记”按钮 。
 
-1. 或者，在“标记”选项卡中，如果希望对资源分类，请输入名称或值。 
+1. 或者，在“标记”选项卡中，如果希望对资源分类，请输入名称或值。
 
 1. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”选项卡，Azure 将在此处验证配置。
 
 1. 显示绿色的“已通过验证”消息后，选择“创建”。
 
-创建缓存需要花费片刻时间。 可以在 Azure Cache for Redis 的“概述”页上监视进度。  如果“状态”显示为“正在运行”，则表示该缓存可供使用。  
+创建缓存需要花费片刻时间。 可以在 Azure Cache for Redis 的“概述”页上监视进度。  如果“状态”显示为“正在运行”，则表示该缓存可供使用。 
 
 ## <a name="prepare-for-deployment"></a>准备部署
 
@@ -161,7 +163,7 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>创建映像
 
-若想创建要部署到 Azure Functions 的 Docker 映像，请为想应用的触发器使用 [azureml.contrib.functions.package](/python/api/azureml-contrib-functions/azureml.contrib.functions) 或特定包函数。 下面的代码片段演示如何通过模型和推理配置创建包含 HTTP 触发器的新包：
+若要创建部署到 Azure Functions 的 Docker 映像，请使用 [azureml.contrib.functions.package](/python/api/azureml-contrib-functions/azureml.contrib.functions) 或想要使用的触发器的特定包函数。 下面的代码片段演示如何通过模型和推理配置创建包含 HTTP 触发器的新包：
 
 > [!NOTE]
 > 该代码片段假定 `model` 包含已注册的模型，并且 `inference_config` 包含推理环境的配置。 有关详细信息，请参阅[使用 Azure 机器学习部署模型](../machine-learning/how-to-deploy-and-where.md)。
@@ -185,7 +187,7 @@ print(model_package.location)
 
 ## <a name="deploy-image-as-a-web-app"></a>将映像部署为 Web 应用
 
-1. 使用以下命令获取包含映像的 Azure 容器注册表的登录凭据。 将 `<myacr>` 替换为之前从 `package.location` 返回的值： 
+1. 使用以下命令获取包含映像的 Azure 容器注册表的登录凭据。 将 `<myacr>` 替换为之前从 `package.location` 返回的值：
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -211,7 +213,7 @@ print(model_package.location)
 
     保存“用户名”和某个“密码”的值 。
 
-1. 如果你还没有资源组或应用服务计划来部署服务，以下命令将演示如何创建这两项：
+1. 如果你还没有用于部署服务的资源组或应用服务计划，则可通过以下命令来创建这两项：
 
     ```azurecli-interactive
     az group create --name myresourcegroup --location "West Europe"
@@ -228,6 +230,7 @@ print(model_package.location)
     ```azurecli-interactive
     az storage account create --name <webjobStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
+
     ```azurecli-interactive
     az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
     ```
@@ -239,7 +242,7 @@ print(model_package.location)
     ```
 
     > [!IMPORTANT]
-    > 此时，函数应用已创建。 但是，由于你尚未向包含映像的 Azure 容器注册表提供 HTTP 触发器的连接字符串或凭据，因此函数应用未处于活动状态。 在接下来的步骤中，为容器注册表提供连接字符串和身份验证信息。 
+    > 此时，函数应用已创建。 但是，由于你尚未向包含映像的 Azure 容器注册表提供 HTTP 触发器的连接字符串或凭据，因此函数应用未处于活动状态。 在接下来的步骤中，为容器注册表提供连接字符串和身份验证信息。
 
 1. 若要为函数应用提供访问容器注册表所需的凭据，请使用以下命令。 将 `<app-name>` 替换为函数应用的名称。 将 `<acrinstance>` 和 `<imagetag>` 替换为上一步中 AZ CLI 调用中的值。 将 `<username>` 和 `<password>` 替换为之前检索到的 ACR 登录信息：
 
@@ -283,22 +286,22 @@ print(model_package.location)
 > [!IMPORTANT]
 > 加载映像可能需要几分钟时间。 可以使用 Azure 门户监视进度。
 
-## <a name="test-azure-functions-http-trigger"></a>测试 Azure Functions HTTP 触发器 
+## <a name="test-azure-functions-http-trigger"></a>测试 Azure Functions HTTP 触发器
 
 现在，我们将运行并测试 Azure Functions HTTP 触发器。
 
 1. 在 Azure 门户中转到函数应用。
-1. 在“开发人员”下，选择“代码 + 测试”。 
-1. 在右侧，选择“输入”选项卡。 
-1. 单击“运行”按钮，以测试 Azure Functions HTTP 触发器。 
+1. 在“开发人员”下，选择“代码 + 测试”。
+1. 在右侧，选择“输入”选项卡。
+1. 选择“运行”按钮，以测试 Azure Functions HTTP 触发器。
 
-现在，你已使用 Azure Cache for Redis 实例成功地将 Azure 机器学习中的模型部署为函数应用。 通过导航到以下部分中的链接，详细了解 Azure Cache for Redis。
+现在，你已成功地使用 Azure Cache for Redis 实例将 Azure 机器学习中的模型部署为函数应用。 通过导航到以下部分中的链接，详细了解 Azure Cache for Redis。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 如果想要继续学习下一篇教程，可以保留本快速入门中创建的资源，以便重复使用。
 
-否则，如果你已完成本快速入门，可以删除本快速入门中创建的 Azure 资源，以免产生费用。 
+否则，如果你已完成本快速入门，可以删除本快速入门中创建的 Azure 资源，以免产生费用。
 
 > [!IMPORTANT]
 > 删除资源组的操作不可逆。 删除资源组时，包含在其中的所有资源会被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
@@ -313,9 +316,9 @@ print(model_package.location)
 
 片刻之后，将会删除该资源组及其所有资源。
 
-## <a name="next-steps"></a>后续步骤 
+## <a name="next-steps"></a>后续步骤
 
 * 详细了解 [Azure Cache for Redis](./cache-overview.md)
 * 通过 [Functions](../azure-functions/functions-create-function-linux-custom-image.md) 文档，了解如何配置函数应用。
-* [API 参考](/python/api/azureml-contrib-functions/azureml.contrib.functions) 
+* [API 参考](/python/api/azureml-contrib-functions/azureml.contrib.functions)
 * 创建[使用 Azure Cache for Redis 的 Python 应用](./cache-python-get-started.md)

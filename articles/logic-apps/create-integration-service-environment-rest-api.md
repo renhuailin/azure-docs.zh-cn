@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: d4500229800fa5d1743779b29927637777647e47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa0b37c46fd39a1764c356aa910347cafaa7d448
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99550651"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787250"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>使用逻辑应用 REST API 创建集成服务环境 (ISE)
 
@@ -195,6 +195,8 @@ ms.locfileid: "99550651"
 使用自定义受信任的根证书更新 ISE 之前，请查看以下注意事项：
 
 * 请确保上传根证书和所有中间证书。 最大证书数量为 20 个。
+
+* 证书上的主题名称必须与要从 Azure 逻辑应用调用的目标终结点的主机名匹配。 
 
 * 上传根证书是一项替换操作，其中最新上传的文件将覆盖之前上传的文件。 例如，如果发送请求上传一个证书，然后再发送一个请求上传另一个证书，则 ISE 只使用第二个证书。 如果需要使用这两个证书，请将它们添加到同一个请求中。  
 

@@ -7,19 +7,19 @@ author: duongau
 ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.author: tyao
+ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: 88c000c96e632f970db075fafb13ea5eb4bbddfc
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 38bd02f478ebe34f3c5708e1df9cc7da1e885058
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799917"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715207"
 ---
 # <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>在 Azure Front Door 标准版/高级版（预览版）中使用专用链接保护源
 
 > [!Note]
-> 本文档适用于 Azure Front Door 标准版/高级版（预览版）。 正在寻找有关 Azure Front Door 的信息？ 请查看 [Azure Front Door 文档](../front-door-overview.md)。
+> 本文档适用于 Azure Front Door 标准/高级（预览版）。 正在寻找有关 Azure Front Door 的信息？ 请查看 [Azure Front Door 文档](../front-door-overview.md)。
 
 ## <a name="overview"></a>概述
 
@@ -43,7 +43,7 @@ Azure Front Door 高级版 SKU 可以通过专用链接服务连接到源。 应
 
 ## <a name="limitations"></a>限制
 
-Azure Front Door 公共预览版期间，以下区域提供专用终结点：美国东部、美国西部 2 和美国中南部。
+Azure Front Door 公共预览版期间，以下区域提供专用终结点：美国东部、美国西部 2、美国中南部和英国南部。
 
 为获得最佳延迟，在选择启用 Front Door 专用链接终结点时，应始终选择一个最接近源的 Azure 区域。
 

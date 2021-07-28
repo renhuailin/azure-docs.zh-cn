@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro 计算管理 | Microsoft Docs
-description: 介绍如何通过 Azure 门户在 Azure Stack Edge Pro 上管理 Edge 计算设置（例如触发器和模块）、查看计算配置及删除配置。
+title: Azure Stack Edge Pro FPGA 计算管理
+description: 介绍如何通过 Azure 门户在 Azure Stack Edge Pro FPGA 上管理 Edge 计算设置（例如触发器和模块）、查看计算配置及删除配置。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: alkohli
-ms.openlocfilehash: ebf967fe02ab6424b9952bb0315b70fadb547fe3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80d19909cc4a2fe843adbf19eed0f8316d64f6db
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97967761"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460694"
 ---
-# <a name="manage-compute-on-your-azure-stack-edge-pro"></a>在 Azure Stack Edge Pro 上管理计算
+# <a name="manage-compute-on-your-azure-stack-edge-pro-fpga"></a>在 Azure Stack Edge Pro FPGA 上管理计算
 
-本文介绍如何管理 Azure Stack Edge Pro 上的计算。 可以通过 Azure 门户或本地 Web UI 管理计算。 使用 Azure 门户可以管理模块、触发器和计算配置，使用本地 Web UI 可以管理计算设置。
+本文介绍如何管理 Azure Stack Edge Pro FPGA 上的计算。 可以通过 Azure 门户或本地 Web UI 管理计算。 使用 Azure 门户可以管理模块、触发器和计算配置，使用本地 Web UI 可以管理计算设置。
 
 在本文中，学习如何：
 
@@ -28,7 +28,7 @@ ms.locfileid: "97967761"
 
 ## <a name="manage-triggers"></a>管理触发器
 
-事件是在云环境中或者在设备上发生的、可能需要采取措施的情况。 例如，在共享中创建文件就是一个事件。 触发器引发这些事件。 对于 Azure Stack Edge Pro，触发器可用于响应文件事件或计划。
+事件是在云环境中或者在设备上发生的、可能需要采取措施的情况。 例如，在共享中创建文件就是一个事件。 触发器引发这些事件。 对于 Azure Stack Edge Pro FPGA，触发器可用于响应文件事件或计划。
 
 - **文件**：这些触发器可用于响应文件创建、文件修改等文件事件。
 - **计划**：这些触发器可用于响应某个计划，对于该计划，可以定义开始日期、开始时间和重复间隔。
@@ -82,7 +82,7 @@ ms.locfileid: "97967761"
 
 ## <a name="manage-compute-configuration"></a>管理计算配置
 
-使用 Azure 门户可以查看计算配置、删除现有的计算配置，或者刷新计算配置以便同步 Azure Stack Edge Pro 的 IoT 设备和 IoT Edge 设备的访问密钥。
+使用 Azure 门户可以查看计算配置、删除现有的计算配置，或者刷新计算配置以便同步 Azure Stack Edge Pro FPGA 的 IoT 设备和 IoT Edge 设备的访问密钥。
 
 ### <a name="view-compute-configuration"></a>查看计算配置
 
@@ -111,11 +111,11 @@ ms.locfileid: "97967761"
 
 ### <a name="sync-up-iot-device-and-iot-edge-device-access-keys"></a>同步 IoT 设备和 IoT Edge 设备的访问密钥
 
-在 Azure Stack Edge Pro 中配置计算时，会创建 IoT 设备和 IoT Edge 设备。 系统会自动为这些设备分配对称访问密钥。 最佳安全做法是通过 IoT 中心服务定期轮换这些密钥。
+在 Azure Stack Edge Pro FPGA 上配置计算时，会创建 IoT 设备和 IoT Edge 设备。 系统会自动为这些设备分配对称访问密钥。 最佳安全做法是通过 IoT 中心服务定期轮换这些密钥。
 
 若要轮换这些密钥，可以转到创建的 IoT 中心服务，并选择该 IoT 设备或 IoT Edge 设备。 每个设备都有一个主要访问密钥和辅助访问密钥。 将主要访问密钥分配到辅助访问密钥，然后重新生成主要访问密钥。
 
-如果已轮换 IoT 设备和 IoT Edge 设备的密钥，需要刷新 Azure Stack Edge Pro 中的配置才能获取最新的访问密钥。 同步可帮助设备获取 IoT 设备和 IoT Edge 设备的最新密钥。 Azure Stack Edge Pro 仅使用主要访问密钥。
+如果已轮换 IoT 设备和 IoT Edge 设备的密钥，需要刷新 Azure Stack Edge Pro FPGA 上的配置才能获取最新的访问密钥。 同步可帮助设备获取 IoT 设备和 IoT Edge 设备的最新密钥。 Azure Stack Edge Pro FPGA 仅使用主要访问密钥。
 
 在 Azure 门户中执行以下步骤可以同步设备的访问密钥。
 

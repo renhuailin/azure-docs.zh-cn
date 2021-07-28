@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Edge Pro 系统要求 | Microsoft Docs
-description: 了解 Azure Stack Edge Pro 的软件和网络要求
+title: Azure Stack Edge Pro FPGA 系统需求
+description: 了解 Azure Stack Edge Pro FPGA 的软件和网络需求
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/26/2021
 ms.author: alkohli
-ms.openlocfilehash: 0e49d460d5ba7bf9131bc0a2f7ec0c1c9a6e653b
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 7be7715586339a4d38370acbe4a047f86b3a917f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076772"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460507"
 ---
-# <a name="azure-stack-edge-pro-system-requirements"></a>Azure Stack Edge Pro 系统要求
+# <a name="azure-stack-edge-pro-fpga-system-requirements"></a>Azure Stack Edge Pro FPGA 系统需求
 
-本文介绍 Microsoft Azure Stack Edge Pro 解决方案以及连接到 Azure Stack Edge Pro 的客户端的重要系统要求。 建议在部署 Azure Stack Edge Pro 之前仔细查看这些信息。 在部署和执行后续操作期间，如有必要，可以回来参考此信息。
+本文介绍 Microsoft Azure Stack Edge Pro FPGA 解决方案以及连接到 Azure Stack Edge Pro FPGA 的客户端的重要系统需求。 建议在部署 Azure Stack Edge Pro FPGA 之前仔细查看这些信息。 在部署和执行后续操作期间，如有必要，可以回来参考此信息。
 
-Azure Stack Edge Pro 系统要求包括： 
+Azure Stack Edge Pro FPGA 系统需求包括： 
 
 - **主机的软件要求** - 介绍支持的平台、本地配置 UI 的浏览器、SMB 客户端以及访问设备的客户端的任何其他要求。
 - **设备的网络要求** - 提供有关物理设备运转的网络要求的信息。
@@ -46,9 +46,9 @@ Azure Stack Edge Pro 系统要求包括：
 
 ## <a name="networking-port-requirements"></a>网络端口要求
 
-### <a name="port-requirements-for-azure-stack-edge-pro"></a>Azure Stack Edge Pro 的端口要求
+### <a name="port-requirements-for-azure-stack-edge-pro-fpga"></a>Azure Stack Edge Pro FPGA 的端口需求
 
-下表列出了需要在防火墙中打开以允许 SMB、云或管理流量的端口。 在此表中，*入* 或 *入站* 表示传入客户端请求访问设备的方向。 “出”或“出站”表示 Azure Stack Edge Pro 设备从外部（超出部署范围）发送数据的方向：例如，向 Internet 发送出站数据。
+下表列出了需要在防火墙中打开以允许 SMB、云或管理流量的端口。 在此表中，*入* 或 *入站* 表示传入客户端请求访问设备的方向。 “出”或“出站”表示 Azure Stack Edge Pro FPGA 设备从外部（超出部署范围）发送数据的方向，例如，向 Internet 发送出站数据。
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
@@ -66,9 +66,9 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 ## <a name="url-patterns-for-firewall-rules"></a>防火墙规则的 URL 模式
 
-通常，网络管理员可以基于 URL 模式配置高级防火墙规则，以筛选入站和出站流量。 Azure Stack Edge Pro 设备和服务依赖于其他 Microsoft 应用程序，例如 Azure 服务总线、Azure Active Directory 访问控制、存储帐户和 Microsoft 更新服务器。 与这些应用程序相关联的 URL 模式可用于配置防火墙规则。 请务必了解可以更改与这些应用程序相关联的 URL 模式。 这些更改要求网络管理员在需要时为 Azure Stack Edge Pro 监视和更新防火墙规则。
+通常，网络管理员可以基于 URL 模式配置高级防火墙规则，以筛选入站和出站流量。 Azure Stack Edge Pro FPGA 设备和服务依赖于其他 Microsoft 应用程序，例如 Azure 服务总线、Azure Active Directory 访问控制、存储帐户和 Microsoft 更新服务器。 与这些应用程序相关联的 URL 模式可用于配置防火墙规则。 请务必了解可以更改与这些应用程序相关联的 URL 模式。 这些更改要求网络管理员在需要时为 Azure Stack Edge Pro FPGA 监视和更新防火墙规则。
 
-绝大多数情况下，建议基于 Azure Stack Edge Pro 固定 IP 地址为出站流量设置防火墙规则。 但是，下面的信息可用于设置创建安全环境所需的高级防火墙规则。
+绝大多数情况下，建议基于 Azure Stack Edge Pro FPGA 固定 IP 地址为出站流量设置防火墙规则。 但是，下面的信息可用于设置创建安全环境所需的高级防火墙规则。
 
 > [!NOTE]
 > - 设备（源）IP 应始终设置为所有已启用云的网络接口。
@@ -104,19 +104,19 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 ## <a name="compute-sizing-considerations"></a>调整计算规模时的注意事项
 
-在开发和测试解决方案时，请充分利用自己的经验，以确保 Azure Stack Edge Pro 设备上有足够的容量并获得设备的最佳性能。
+在开发和测试解决方案时，请充分利用自己的经验，以确保 Azure Stack Edge Pro FPGA 设备上有足够的容量并获得设备的最佳性能。
 
 应考虑的因素包括：
 
-- **容器详细信息** - 请考虑以下内容。
+- 容器详细信息 - 请考虑以下内容。
 
     - 你的工作负载中有多少个容器？ 你可能有大量轻型容器，而不是少量资源密集型容器。
     - 你向这些容器分配了哪些资源？它们消耗哪些资源？
     - 你的容器共享多少层？
     - 是否有未使用的容器？ 已停止的容器仍会占用磁盘空间。
     - 你的容器使用哪种语言编写？
-- **处理的数据大小** - 你的容器将处理多少数据？ 这些数据会消耗磁盘空间还是直接在内存中处理？
-- **预期性能** - 你的解决方案所需的性能特征有哪些？ 
+- 处理的数据大小 - 你的容器将处理多少数据？ 这些数据会消耗磁盘空间还是直接在内存中处理？
+- 预期性能 - 你的解决方案所需的性能特征有哪些？ 
 
 要了解和优化解决方案的性能，可以使用：
 
@@ -130,9 +130,9 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
     有关可用命令的详细信息，请转到[计算模块的监视和故障排除](azure-stack-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules)。
 
-最后，在部署到生产环境之前，请确保在数据集上验证解决方案并量化 Azure Stack Edge Pro 的性能。
+最后，在部署到生产环境之前，请确保在数据集上验证解决方案并量化 Azure Stack Edge Pro FPGA 的性能。
 
 
 ## <a name="next-step"></a>后续步骤
 
-- [部署 Azure Stack Edge Pro](azure-stack-edge-deploy-prep.md)
+- [部署 Azure Stack Edge Pro FPGA](azure-stack-edge-deploy-prep.md)

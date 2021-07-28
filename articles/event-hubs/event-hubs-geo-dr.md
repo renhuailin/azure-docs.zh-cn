@@ -2,13 +2,13 @@
 title: 异地灾难恢复 - Azure 事件中心| Microsoft Docs
 description: 如何使用地理区域进行故障转移并在 Azure 事件中心执行灾难恢复
 ms.topic: article
-ms.date: 02/10/2021
-ms.openlocfilehash: f3b74b89f47582fbb3f1640f315f413ab86b26b5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/14/2021
+ms.openlocfilehash: b2cf2b0ebef2b460b626e45d6b52309c9281d6ce
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104602632"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739235"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure 事件中心 - 异地灾难恢复 
 
@@ -118,14 +118,6 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 
 如果出了错，例如在初始设置过程中将错误的区域配对，则随时可以中断这两个命名空间的配对。 如果想要使用配对命名空间作为常规命名空间，请删除别名。
 
-## <a name="samples"></a>示例
-
-[GitHub 上的示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient)演示如何设置和启动故障转移。 此示例演示以下概念：
-
-- 在 Azure Active Directory 中要将 Azure 资源管理器与事件中心配合使用所需的设置。 
-- 执行示例代码所需的步骤。 
-- 从当前的主要命名空间进行发送和接收。 
-
 ## <a name="considerations"></a>注意事项
 
 请谨记以下注意事项：
@@ -194,19 +186,17 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 > 如需虚拟网络异地灾难恢复的相关指导，请参阅[虚拟网络 - 业务连续性](../virtual-network/virtual-network-disaster-recovery-guidance.md)。
  
 ## <a name="next-steps"></a>后续步骤
-
-* [GitHub 上的示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient)演练了一个针对灾难恢复方案创建地理配对并启动故障转移的简单工作流。
-* [REST API 参考](/rest/api/eventhub/)介绍了用于执行异地灾难恢复配置的 API。
-
-有关事件中心的详细信息，请访问以下链接：
-
-- 事件中心入门
-    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-    - [Java](event-hubs-java-get-started-send.md)
-    - [Python](event-hubs-python-get-started-send.md)
-    - [JavaScript](event-hubs-node-get-started-send.md)
-* [事件中心常见问题解答](event-hubs-faq.md)
-* [使用事件中心的示例应用程序](https://github.com/Azure/azure-event-hubs/tree/master/samples)
+查看以下示例或参考文档。 
+- [.NET GeoDR 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/DotNet/GeoDRClient) 
+- [Java GeoDR 示例](https://github.com/Azure-Samples/eventhub-java-manage-event-hub-geo-disaster-recovery)
+- [.NET - Azure.Messaging.EventHubs 示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
+- [.NET - Microsoft.Azure.EventHubs 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet)
+- [Java - azure-messaging-eventhubs 示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
+- [Java - azure-eventhubs 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java)
+- [Python 示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples)
+- [JavaScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/javascript)
+- [TypeScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/typescript)
+- [REST API 参考](/rest/api/eventhub/)
 
 [1]: ./media/event-hubs-geo-dr/geo1.png
 [2]: ./media/event-hubs-geo-dr/geo2.png

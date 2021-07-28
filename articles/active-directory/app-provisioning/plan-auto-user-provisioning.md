@@ -1,24 +1,24 @@
 ---
 title: 规划 Azure Active Directory 的自动用户预配部署
-description: 有关规划和执行自动用户预配的指导
+description: 有关在 Azure Active Directory 中规划和执行自动用户预配的指导
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/31/2020
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: arvindha, celested
-ms.openlocfilehash: f29bf3fc347fa453dd2d7ebd1f10b3f0e07fac10
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.reviewer: arvinh
+ms.openlocfilehash: a8b2378949e0ead4d05651fc28919aceecd4c542
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059286"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785018"
 ---
-# <a name="plan-an-automatic-user-provisioning-deployment"></a>规划自动用户预配部署
+# <a name="plan-an-automatic-user-provisioning-deployment-in-azure-active-directory"></a>在 Azure Active Directory 中规划自动用户预配部署
 
 许多组织依赖于软件即服务 (SaaS) 应用程序（例如 ServiceNow、Zscaler 和 Slack）来提高最终用户生产效率。 过去，IT 工作人员依赖于手动预配方法（例如上传 CSV 文件或使用自定义脚本）来安全管理每个 SaaS 应用程序中的用户标识。 这些过程很容易出错、不安全且难以管理。
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) 自动用户预配可以根据业务规则在 
 
 若要更好地了解该功能，请参阅[使用 Azure Active Directory 在 SaaS 应用程序中自动预配和取消预配用户](../app-provisioning/user-provisioning.md)。
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>了解
 
 用户预配为持续标识监管奠定了基础，并提高了依赖于权威标识数据的业务流程的质量。
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) 自动用户预配可以根据业务规则在 
 
 * **降低成本**。 自动用户预配可以避免与手动预配相关的低效和人为错误，从而降低成本。 它减少了自定义开发的用户预配解决方案、脚本和审核日志的需求。
 
-### <a name="licensing"></a>授权
+### <a name="licensing"></a>许可
 
 Azure AD 使用应用程序库菜单中给出的模板提供任何应用程序的自助式集成。 有关许可证要求的完整列表，请参阅 [Azure AD 许可页](https://azure.microsoft.com/pricing/details/active-directory/)。
 
@@ -69,11 +69,11 @@ Azure AD 使用应用程序库菜单中给出的模板提供任何应用程序�
 | 资源| 链接和说明 |
 | - | - |
 | 点播网络研讨会| [Manage your Enterprise Applications with Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)（使用 Azure AD 管理企业应用程序）<br>‎了解 Azure AD 如何帮助你实现单一登录 (SSO) 到企业 SaaS 应用程序，以及有关控制访问的最佳做法。 |
-| 视频| [What is user provisioning in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI)（Active Azure Directory 中的用户预配是什么？） <br> [How to deploy user provisioning in Active Azure Directory?](https://youtu.be/pKzyts6kfrw)（如何在 Active Azure Directory 中部署用户预配？） <br> [Integrating Salesforce with Azure AD: How to automate User Provisioning](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/)（将 Salesforce 与 Azure AD 集成：如何自动完成用户预配） |
+| 视频| [Active Azure Directory 中的用户预配是什么？](https://youtu.be/_ZjARPpI6NI) <br> [How to deploy user provisioning in Active Azure Directory?](https://youtu.be/pKzyts6kfrw)（如何在 Active Azure Directory 中部署用户预配？） <br> [Integrating Salesforce with Azure AD: How to automate User Provisioning](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/)（将 Salesforce 与 Azure AD 集成：如何自动完成用户预配） |
 | 在线课程| SkillUp Online：[Managing Identities](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about)（管理标识） <br> 了解如何将 Azure AD 与多个 SaaS 应用程序集成，并保护用户对这些应用程序的访问。 |
 | 书籍| [Modern Authentication with Azure Active Directory for Web Applications (Developer Reference) 1st Edition](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0)（使用 Azure Active Directory 对 Web 应用程序执行新式身份验证（开发人员参考）第 1 版）  <br> ‎这是一部权威性的深入指南，其中介绍了如何为这些新环境构建 Active Directory 身份验证解决方案。 |
 | 教程| 参阅[有关如何将 SaaS 应用与 Azure AD 集成的教程列表](../saas-apps/tutorial-list.md)。 |
-| 常见问题解答| 有关自动用户预配的[常见问题解答](../app-provisioning/user-provisioning.md) |
+| FAQ| 有关自动用户预配的[常见问题解答](../app-provisioning/user-provisioning.md) |
 
 ### <a name="solution-architectures"></a>解决方案体系结构
 
@@ -115,7 +115,7 @@ Azure AD 预配服务通过连接到由每个应用程序供应商提供的用�
 
 ![图 2](./media/plan-auto-user-provisioning/workdayprovisioning.png)
 
-1.  HR 团队在云 HR 应用租户中执行事务。
+1.  “HR团队”在云 HR 应用租户中执行事务。
 2.  Azure AD 预配服务从云 HR 应用租户运行计划的周期，并识别需要处理以便与 AD 同步的更改。
 3.  Azure AD 预配服务使用包含 Azure AD 帐户创建/更新/启用/禁用操作的请求有效负载调用 Azure AD Connect 预配代理。
 4.  Azure AD Connect 预配代理使用服务帐户来管理 AD 帐户数据。
@@ -139,13 +139,13 @@ Azure AD 预配服务通过连接到由每个应用程序供应商提供的用�
 
 我们建议先在包含少量用户的测试环境中运行自动用户预配的初始配置，然后再将其扩展到生产环境中的所有用户。 请参阅有关运行试点的[最佳做法](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot)。
 
-#### <a name="best-practices-for-a-pilot"></a>有关试点的最佳做法  
+#### <a name="best-practices-for-a-pilot"></a>关于试点的最佳做法  
 
-通过试点，可以在面向所有人部署某项功能之前，先对一个小组进行测试。 请确保在测试过程中，组织内的每个用例都经过全面测试。
+通过试点，可以在面向所有人部署某项功能之前，先对一个小组进行测试。 确保在测试过程中，组织内的每个用例都经过全面测试。
 
 在最初阶段，以 IT、可用性和其他可以测试和提供反馈的合适用户为目标试点。 使用此反馈进一步改进你发送给用户的信息和指示，并深入了解你的支持人员可能发现的问题类型。
 
-通过增大目标组的范围，将实施范围扩大至更大的用户组。 通过[动态组成员资格](../enterprise-users/groups-dynamic-membership.md)或手动将用户添加到目标用户组这两种方式均可实现上述目标。
+通过增大目标组的范围，将实施范围扩大至更大的用户组。 通过[动态组成员资格](../enterprise-users/groups-dynamic-membership.md)或手动将用户添加到目标用户群这两种方式均可实现上述目标。
 
 ## <a name="plan-application-connections-and-administration"></a>规划应用程序连接和管理
 
@@ -288,7 +288,7 @@ Azure AD 通过提供常量值或[为特性映射编写表达式](../app-provisi
 
 Azure AD 可以通过审核日志和报告，提供组织中用户预配使用情况和运行状况的[其他见解](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)。
 
-管理员应检查预配摘要报告，以监视预配作业的运行状况。 Azure AD 审核日志中记录了用户预配服务执行的所有活动。 请参阅[教程：有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
+管理员应检查预配摘要报告，以监视预配作业的运行状况。 Azure AD 审核日志中记录了用户预配服务执行的所有操作。 请参阅[教程：有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 建议你承担这些报告的所有权，并根据符合组织要求的频率使用这些报告。 Azure AD 将大部分审核数据保留 30 天。
 
@@ -298,7 +298,7 @@ Azure AD 可以通过审核日志和报告，提供组织中用户预配使用�
 
 * [为 Azure AD 库应用程序配置用户预配时遇到的问题](../app-provisioning/application-provisioning-config-problem.md)
 
-* [将特性从本地 Active Directory 同步到 Azure AD 以预配到应用程序](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
+* [将属性从本地 Active Directory 同步到 Azure AD 以便预配到应用程序](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
 
 * [配置 Azure Active Directory 库应用程序的用户预配时遇到保存管理员凭据问题](./user-provisioning.md)
 
@@ -314,7 +314,7 @@ Azure AD 可以通过审核日志和报告，提供组织中用户预配使用�
 
 * [跳过删除超出范围的用户帐户](skip-out-of-scope-deletions.md)
 
-* [Azure AD Connect 预配代理：版本发行历史记录](provisioning-agent-release-version-history.md)
+* [Azure AD Connect 预配代理：版本发布历史记录](provisioning-agent-release-version-history.md)
 
 #### <a name="resources"></a>资源
 

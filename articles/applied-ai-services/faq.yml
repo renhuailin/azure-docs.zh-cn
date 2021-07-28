@@ -1,0 +1,39 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure 应用 AI 服务常见问题
+  description: 有关 Azure 应用 AI 服务常见问题解答
+  author: mrbullwinkle
+  ms.author: mbullwin
+  manager: nitinme
+  ms.topic: conceptual
+  ms.service: applied-ai-services
+  ms.date: 05/28/2021
+  ms.openlocfilehash: e424501e4b5ce6f6731f093394a6536c332b3cbc
+  ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/02/2021
+  ms.locfileid: "111907101"
+title: Azure 应用 AI 服务常见问题
+summary: >
+  以下是有关使用 Azure 应用 AI 服务的常见问题解答。
+sections:
+- name: 单一部分 - 已忽略
+  questions:
+  - question: Azure 应用 AI 服务是否支持静态数据加密和客户托管密钥 (CMK)？
+    answer: >
+      支持，使用 Azure 密钥保管库为应用 AI 服务启用客户管理的密钥的过程因产品而异。 使用以下链接获得特定服务的说明：
+
+      - [认知搜索静态数据加密](../search/search-security-manage-encryption-keys.md)
+
+      - [表单识别器静态数据加密](../cognitive-services/form-recognizer/encrypt-data-at-rest.md)
+
+      - [对静态数据的指标顾问加密](../cognitive-services/metrics-advisor/encryption.md#customer-managed-keys-with-azure-key-vault)
+
+      - [视频分析器静态数据加密](../azure-video-analyzer/video-analyzer-docs/customer-managed-keys.md)
+additionalContent: >-
+  ## <a name="next-steps"></a>后续步骤
+
+  - [什么是 Azure Key Vault？](../key-vault/general/overview.md)
+
+  - [应用 AI 服务客户管理的密钥请求表单](https://aka.ms/cogsvc-cmk)

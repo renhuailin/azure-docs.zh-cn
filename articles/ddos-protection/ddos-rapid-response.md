@@ -3,7 +3,7 @@ title: Azure DDoS 快速响应
 description: 了解如何在主动攻击期间引入 DDoS 专家来获取专门的支持。
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 8e860bf47420f2b58c44df695da7761bcc2aa0ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f0ebeebb47885d12529a7f09041af9bc3eb12f2
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100521775"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656697"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS 快速响应
 
-在主动访问期间，Azure DDoS 防护标准客户有权联系 DDoS 快速响应 (DRR) 团队，该团队可在攻击过程中帮助进行攻击调查，并且可在攻击之后帮助进行分析。
+在主动攻击期间，Azure DDoS 防护标准客户有权联系 DDoS 快速响应 (DRR) 团队，该团队可在攻击过程中帮助进行攻击调查，并且可在攻击之后帮助进行分析。
 
 ## <a name="prerequisites"></a>先决条件
 

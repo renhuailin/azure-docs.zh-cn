@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: fb53fc37227e040ed7bd7fc8e47de9aed538bc2e
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b85855238beb9887a35369011ff8daaaf58bef9e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721386"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787232"
 ---
 # <a name="use-azure-spot-virtual-machines"></a>使用 Azure 现成虚拟机 
 
@@ -38,8 +38,8 @@ ms.locfileid: "104721386"
 |--------|---------|
 | 最高价格设置为 >= 当前价格。 | 如果有可用的容量和配额，则会部署 VM。 |
 | 最高价格设置为 < 当前价格。 | 不会部署 VM。 你将收到一条错误消息，指出最高价格需要 >= 当前价格。 |
-| 如果最高价格 >= 当前价格，则重启停止/解除分配 VM 的过程 | 如果有容量和配额，则会部署 VM。 |
-| 如果最高价格 < 当前价格，则重启停止/解除分配 VM 的过程 | 你将收到一条错误消息，指出最高价格需要 >= 当前价格。 | 
+| 如果最大价格 >= 当前价格，则重启已停止/已解除分配的 VM | 如果有容量和配额，则会部署 VM。 |
+| 如果最大价格 < 当前价格，则重启已停止/已解除分配的 VM | 你将收到一条错误消息，指出最高价格需要 >= 当前价格。 | 
 | VM 的价格已提高，现在 > 最高价格。 | 将逐出 VM。 在实际逐出之前的 30 秒，你会收到通知。 | 
 | 逐出后，VM 的价格将回落到最高价格以下。 | VM 不会自动重启。 你可以自行重启 VM，这会按当前价格计费。 |
 | 如果最高价格设置为 `-1` | 不会出于定价原因而逐出 VM。 最高价格将是当前价格，最高为标准 VM 的价格。 永远不会以超过标准价格的价格向你收费。| 

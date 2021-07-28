@@ -3,12 +3,12 @@ title: Azure 服务总线消息传送队列、主题和订阅
 description: 本文概述了 Azure 服务总线消息实体（队列、主题和订阅）。
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: ccd91d5091dbbba072cf222e5a73c3db1d48c321
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: c3e50c5f8487a0f6dc26a50ec6bfb10f4136f899
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209818"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479088"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服务总线队列、主题和订阅
 Azure 服务总线支持一组基于云的、面向消息的中间件技术，包括可靠的消息队列和持久发布/订阅消息。 这些中转消息传送功能可被视为分离式消息传送功能，支持使用服务总线消息传送工作负载的发布-订阅、临时分离和负载均衡方案。 分离式通信具有很多优点。 例如，客户端和服务器可以根据需要进行连接并以异步方式执行其操作。
@@ -23,7 +23,7 @@ Azure 服务总线支持一组基于云的、面向消息的中间件技术，�
 使用队列在消息创建方与使用方之间中继可在各组件之间提供固有的松散耦合。 由于创建方和使用方互不相识，因此，可升级使用方，而不会对创建方产生任何影响。
 
 ### <a name="create-queues"></a>创建队列
-可以使用 [Azure 门户](service-bus-quickstart-portal.md)、[PowerShell](service-bus-quickstart-powershell.md)、[CLI](service-bus-quickstart-cli.md) 或[资源管理器模板](service-bus-resource-manager-namespace-queue.md)创建队列。 然后，使用以 [C#](service-bus-dotnet-get-started-with-queues.md)、[Java](service-bus-java-how-to-use-queues.md)、[Python](service-bus-python-how-to-use-queues.md)、[JavaScript](service-bus-nodejs-how-to-use-queues.md)、[PHP](service-bus-php-how-to-use-queues.md) 和 [Ruby](service-bus-ruby-how-to-use-queues.md) 编写的客户端发送和接收消息。 
+可以使用 [Azure 门户](service-bus-quickstart-portal.md)、[PowerShell](service-bus-quickstart-powershell.md)、[CLI](service-bus-quickstart-cli.md) 或[资源管理器模板](service-bus-resource-manager-namespace-queue.md)创建队列。 然后，使用以 [C#](service-bus-dotnet-get-started-with-queues.md)、[Java](service-bus-java-how-to-use-queues.md)、[Python](service-bus-python-how-to-use-queues.md)、[JavaScript](service-bus-nodejs-how-to-use-queues.md) 和 [PHP](service-bus-php-how-to-use-queues.md) 编写的客户端发送和接收消息。 
 
 ### <a name="receive-modes"></a>接收模式
 可以指定服务总线接收消息所用的两种不同模式。
@@ -46,7 +46,7 @@ Azure 服务总线支持一组基于云的、面向消息的中间件技术，�
 队列的消息发送功能直接映射到主题，而其消息接收功能映射到订阅。 此外，此功能意味着订阅支持本部分中前面有关队列所述的相同模式：竞争使用者、临时分离、负荷量和负载均衡。
 
 ### <a name="create-topics-and-subscriptions"></a>创建主题和订阅
-创建主题与创建队列类似，如前一部分中所述。 可以使用 [Azure 门户](service-bus-quickstart-topics-subscriptions-portal.md)、[PowerShell](service-bus-quickstart-powershell.md)、[CLI](service-bus-tutorial-topics-subscriptions-cli.md) 或[资源管理器模板](service-bus-resource-manager-namespace-topic.md)创建主题和订阅。 然后，使用以 [C#](service-bus-dotnet-how-to-use-topics-subscriptions.md)、[Java](service-bus-java-how-to-use-topics-subscriptions.md)、[Python](service-bus-python-how-to-use-topics-subscriptions.md)、[JavaScript](service-bus-nodejs-how-to-use-topics-subscriptions.md)、[PHP](service-bus-php-how-to-use-topics-subscriptions.md) 和 [Ruby](service-bus-ruby-how-to-use-topics-subscriptions.md) 编写的客户端将消息发送到主题并从订阅接收消息。 
+创建主题与创建队列类似，如前一部分中所述。 可以使用 [Azure 门户](service-bus-quickstart-topics-subscriptions-portal.md)、[PowerShell](service-bus-quickstart-powershell.md)、[CLI](service-bus-tutorial-topics-subscriptions-cli.md) 或[资源管理器模板](service-bus-resource-manager-namespace-topic.md)创建主题和订阅。 然后，使用以 [C#](service-bus-dotnet-how-to-use-topics-subscriptions.md)、[Java](service-bus-java-how-to-use-topics-subscriptions.md)、[Python](service-bus-python-how-to-use-topics-subscriptions.md)、[JavaScript](service-bus-nodejs-how-to-use-topics-subscriptions.md) 和 [PHP](service-bus-php-how-to-use-topics-subscriptions.md) 编写的客户端将消息发送到主题并从订阅接收消息。 
 
 ### <a name="rules-and-actions"></a>规则和操作
 在许多情况下，必须以不同方式处理具有特定特征的消息。 若要启用此处理，可配置订阅以找到具有所需属性的消息，并对这些属性执行某些修改。 虽然服务总线订阅可以看到发送到主题的所有消息，但你仅可以将这些消息的一个子集复制到虚拟订阅队列。 可使用订阅筛选器完成此筛选。 此类修改称为筛选器操作  。 创建订阅后，你可以提供对消息属性进行操作的筛选表达式。 这些属性可以是系统属性（例如“标签”），也可以是自定义应用程序属性（例如“StoreName” 。）SQL 筛选器表达式在此示例中为可选。 如果没有 SQL 筛选器表达式，会对该订阅的所有消息执行在订阅上定义的任何筛选器操作。

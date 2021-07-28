@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: f18d1850cb6ccf28ff70f826e3d4bfe74ae05c40
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 27dd64e510ffe00ce1c3c9f24f60c8c018401ab1
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178722"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110471032"
 ---
 # <a name="monitor-azure-cosmos-db"></a>监视 Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -54,9 +54,9 @@ Azure Cosmos DB 使用 [Azure Monitor](../azure-monitor/overview.md) 创建监�
 
 本文的以下各部分介绍如何从 Azure Cosmos DB 收集特定数据，并提供了有关使用 Azure 工具配置数据收集和分析此数据的示例。
 
-## <a name="azure-monitor-for-azure-cosmos-db"></a>适用于 Azure Cosmos DB 的 Azure Monitor
+## <a name="cosmos-db-insights"></a>Cosmos DB 见解
 
-适用于 Azure Cosmos DB 的 Azure Monitor 基于 [Azure Monitor 的工作簿功能](../azure-monitor/visualize/workbooks-overview.md)，并使用以下部分中所述的为 Azure Cosmos DB 收集的相同监视数据。 使用 Azure Monitor 以统一的交互式体验查看所有 Azure Cosmos DB 资源的总体性能、故障、容量和操作运行状况，并利用 Azure Monitor 的其他功能进行详细分析和发出警报。 若要了解详细信息，请参阅文章[探究适用于 Azure Cosmos DB 的 Azure Monitor](../azure-monitor/insights/cosmosdb-insights-overview.md)。
+Cosmos DB 见解基于 [Azure Monitor 的工作簿功能](../azure-monitor/visualize/workbooks-overview.md)，并使用为以下部分所述 Azure Cosmos DB 收集的相同监视数据。 使用 Azure Monitor 以统一的交互式体验查看所有 Azure Cosmos DB 资源的总体性能、故障、容量和操作运行状况，并利用 Azure Monitor 的其他功能进行详细分析和发出警报。 若要了解详细信息，请参阅[浏览 Cosmos DB 见解](../azure-monitor/insights/cosmosdb-insights-overview.md)一文。
 
 > [!NOTE]
 > 创建容器时，请确保不创建名称相同但大小写不同的两个容器。 这是因为 Azure 平台的某些部分不区分大小写，这可能会对具有此类名称的容器导致遥测和操作混乱/冲突。

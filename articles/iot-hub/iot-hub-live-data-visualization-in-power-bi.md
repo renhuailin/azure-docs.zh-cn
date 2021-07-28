@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: 82caf13618fe8483ab8d3a622c6c0d51ab05a206
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6ff0a0bb8bc1ca9b26968d002bb44d206c36e158
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102177328"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483904"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>使用 Power BI 可视化 Azure IoT 中心的实时传感器数据
 
@@ -22,24 +22,14 @@ ms.locfileid: "102177328"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-## <a name="what-you-learn"></a>学习内容
+本文将介绍如何可视化 Azure IoT 中心通过 Power BI 接收的实时传感器数据。 如果你要尝试使用 Web 应用可视化 IoT 中心的数据，请参阅[使用 Web 应用可视化 Azure IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-web-apps.md)。
 
-了解如何可视化 Azure IoT 中心通过 Power BI 接收的实时传感器数据。 如果你要尝试使用 Web 应用可视化 IoT 中心的数据，请参阅[使用 Web 应用可视化 Azure IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-web-apps.md)。
+## <a name="prerequisites"></a>先决条件
 
-## <a name="what-you-do"></a>准备工作
-
-* 添加一个使用者组，让 IoT 中心做好数据访问准备。
-
-* 创建、配置和运行流分析作业，以便将数据从 IoT 中心传输到 Power BI 帐户。
-
-* 创建并发布实现数据可视化的 Power BI 报表。
-
-## <a name="what-you-need"></a>所需条件
-
-* 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 完成这些文章需要满足以下要求：
+* 请完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程。 例如，可转到[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)教程或[发送遥测](quickstart-send-telemetry-dotnet.md)快速入门中的一个教程。 这些文章阐述下列要求：
   
   * 一个有效的 Azure 订阅。
-  * 已在订阅中创建一个 Azure IoT 中心。
+  * 订阅中的 Azure IoT 中心。
   * 一个可向 Azure IoT 中心发送消息的客户端应用程序。
 
 * 一个 Power BI 帐户。 （[免费试用 Power BI](https://powerbi.microsoft.com/)）
@@ -84,7 +74,7 @@ ms.locfileid: "102177328"
 
    **终结点**：选择“消息传送”  。
 
-   共享访问策略名称：选择希望流分析作业对你的 IoT 中心使用的共享访问策略的名称。 对于本教程，可以选择“服务”。 “服务”策略是在新 IoT 中心内默认创建的，它授予在 IoT 中心公开的云端终结点上发送和接收数据的权限。 有关详细信息，请参阅[访问控制和权限](iot-hub-devguide-security.md#access-control-and-permissions)。
+   共享访问策略名称：选择希望流分析作业对你的 IoT 中心使用的共享访问策略的名称。 对于本教程，可以选择“服务”。 “服务”策略是在新 IoT 中心内默认创建的，它授予在 IoT 中心公开的云端终结点上发送和接收数据的权限。 有关详细信息，请参阅[访问控制和权限](iot-hub-dev-guide-sas.md#access-control-and-permissions)。
 
    共享访问策略密钥：系统会根据你选择的共享访问策略名称自动填充此字段。
 

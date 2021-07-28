@@ -7,23 +7,21 @@ ms.custom: subject-cost-optimization
 ms.service: synapse-analytics
 ms.subservice: overview
 ms.topic: how-to
-ms.date: 12/09/2020
-ms.openlocfilehash: 15ac6ce6a1a49bbbd15849adec373dd0fcd42c10
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.date: 06/08/2021
+ms.openlocfilehash: 7a5b9efce1c24aecb54d3f473b7227357c8fb99f
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568516"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890179"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>计划管理 Azure Synapse Analytics 的成本
 
-本文介绍如何计划和管理 Azure Synapse Analytics 的成本。 首先，使用 Azure 定价计算器来帮助规划 Azure Synapse 成本，然后再添加任何服务资源来估算成本。 接下来，在添加 Azure Synapse 资源时，查看估计成本。
+本文介绍如何计划和管理 Azure Synapse Analytics 的成本。 首先，使用 Azure 定价计算器来帮助规划 Azure Synapse Analytics 成本，然后再添加任何服务资源来估算成本。 接下来，在添加 Azure 资源时，查看预估成本。 在开始使用 Azure Synapse Analytics 资源之后，请使用“成本管理”功能来设置预算和监视成本。 还可以查看预测的成本并识别支出趋势，以确定可能需要实施措施的领域。Azure Synapse Analytics 的成本只是 Azure 账单中每月成本的一部分。 尽管本文介绍了如何为 Azure Synapse Analytics 规划和管理成本，但你需要为 Azure 订阅中使用的所有 Azure 服务和资源（包括第三方服务）付费。
 
-在开始使用 Azure Synapse 资源之后，请使用“成本管理”功能来设置预算和监视成本。 还可以查看预测的成本并识别支出趋势，以确定可能需要实施措施的领域。Azure Synapse 的成本只是 Azure 账单中每月成本的一部分。 尽管本文介绍了如何为 Azure Synapse 规划和管理成本，但你需要为 Azure 订阅中使用的所有 Azure 服务和资源（包括第三方服务）付费。
+## <a name="prerequisites"></a>先决条件
 
-## <a name="prerequisites"></a>必备条件
-
-成本管理中的成本分析支持大多数 Azure 帐户类型，但不支持所有帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。 若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+成本管理中的成本分析支持大多数 Azure 帐户类型，但不支持所有帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。 若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](../cost-management/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
 ## <a name="estimate-costs-before-using-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 之前估计成本
 
@@ -35,9 +33,25 @@ Azure Synapse 具有各种资源，费用各不相同，如以下成本估算所
 
 ## <a name="understand-the-full-billing-model-for-azure-synapse-analytics"></a>了解 Azure Synapse Analytics 的完整计费模式
 
-Azure Synapse 在 Azure 基础结构上运行，部署新资源时，会随 Azure Synapse 产生成本。 需要了解的是，其他基础结构可能会产生成本。 对已部署的资源进行更改时需要管理该成本。 
+Azure Synapse 在 Azure 基础结构上运行，部署新资源时，会随 Azure Synapse 产生成本。 需要了解的是，其他基础结构可能会产生成本。 
 
-### <a name="costs-that-typically-accrue-with-azure-synapse-analytics"></a>通常通过 Azure Synapse Analytics 进行计费的成本
+### <a name="how-youre-charged-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的收费方式
+
+创建或使用 Azure Synapse Analytics 资源时，会根据以下计费标准收费：
+
+- 数据浏览和数据仓储 
+    - 专用的 SQL 池 - 根据 DWU 块数和运行时间收费。
+    - 存储 - 根据存储的 TB 数向你收费。
+    - 无服务器 SQL 池 - 按照处理的 TB 数据收费。
+- Apache Spark 池 - 按实例数和运行小时数收费。
+- 数据集成 
+    - 编排活动运行次数 - 按活动运行次数收费。
+    - 数据移动 – 对于在 Azure Integration Runtime 上运行的复制活动，按使用的 DIU 数和任务执行持续时间付费。
+    - 数据流 vCore 小时数 – 对于数据流执行和调试，按计算类型、vCore 数量和任务执行持续时间付费。
+
+在计费周期结束时，将对每个计量标准的费用求和。 帐单或发票显示的费用是所有 Azure Synapse Analytics 成本的一部分。 每个计量标准都有单独的一行项目。
+
+### <a name="other-costs-that-might-accrue-with-azure-synapse-analytics"></a>Azure Synapse Analytics 可能产生的其他成本
 
 为 Azure Synapse 创建资源时，还会创建其他 Azure 服务的资源。 它们包括：
 
@@ -51,13 +65,14 @@ Azure Synapse 在 Azure 基础结构上运行，部署新资源时，会随 Azur
 
 ### <a name="using-azure-prepayment-credit-with-azure-synapse"></a>使用 Azure Synapse 的 Azure 预付款额度 
 
-可以使用 Azure 预付款（之前称为货币承诺）额度支付 Azure Synapse 费用。 但是，不能使用 Azure 预付款额度来支付第三方产品和服务（包括 Azure 市场中的）的费用。
+可以使用 Azure 预付款额度支付 Azure Synapse 费用。 但是，不能使用 Azure 预付款额度来支付第三方产品和服务的费用（包括 Azure 市场中的第三方产品和服务）。
+
 
 ## <a name="review-estimated-costs-in-the-azure-portal"></a>在 Azure 门户中查看估计成本
 
 为 Azure Synapse Analytics 创建资源时，可以看到估计的成本。 工作区具有通过工作区创建的无服务器 SQL 池。 在运行查询之前，无服务器 SQL 池不会产生费用。 需要在工作区中创建其他资源，例如专用的 SQL 池和无服务器 Apache Spark 池。
 
-创建 <ResourceName> 并查看估计价格：
+若要创建 Azure Synapse Analytics 工作区并查看预计价格：
 
 1. 导航到 Azure 门户中的服务。
 2. 创建资源。
@@ -95,14 +110,13 @@ Azure Synapse 在 Azure 基础结构上运行，部署新资源时，会随 Azur
 
 ## <a name="create-budgets"></a>创建预算
 
-可以创建[预算](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来管理成本，并创建[警报](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)以自动通知利益干系人支出异常和超支风险。 警报基于与预算和成本阈值相比的支出。 预算和警报是针对 Azure 订阅和资源组创建的，作为总体成本监视策略的一部分，它们非常有用。 
+可以创建[预算](../cost-management/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来管理成本，并创建[警报](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)以自动通知利益干系人支出异常和超支风险。 警报基于与预算和成本阈值相比的支出。 预算和警报是针对 Azure 订阅和资源组创建的，作为总体成本监视策略的一部分，它们非常有用。 
 
-如果希望增加监视中的精度，可以在 Azure 中使用筛选器为特定资源或服务创建预算。 筛选器可帮助确保不会意外创建会产生额外成本的新资源。 有关创建预算时筛选器选项的详细信息，请参阅[对选项进行分组和筛选](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+如果希望增加监视中的精度，可以在 Azure 中使用筛选器为特定资源或服务创建预算。 筛选器可帮助确保不会意外创建会产生额外成本的新资源。 有关创建预算时可用的筛选选项的详细信息，请参阅[分组和筛选选项](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
 ## <a name="export-cost-data"></a>导出成本数据
 
 还可以将[成本数据导出](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)到存储帐户。 当你或其他人需要进行有关成本的额外数据分析时，这非常有用。 例如，财务团队可以使用 Excel 或 Power BI 来分析数据。 可以按每天、每周或每月计划导出成本，并设置自定义的日期范围。 建议导出成本数据来检索成本数据集。
-
 
 ## <a name="other-ways-to-manage-and-reduce-costs-for-azure-synapse"></a>管理和降低 Azure Synapse 成本的其他方式 
 
@@ -120,7 +134,6 @@ Azure Synapse 在 Azure 基础结构上运行，部署新资源时，会随 Azur
  
 在开发过程中，创建多个不同大小的 Apache Spark 池定义。  创建 Apache Spark 池定义免费，你只需为所使用的资源付费。  Azure Synapse 中的 Apache Spark 使用量按 vCore 小时计费，按分钟计算。  例如，使用较大的池大小进行代码开发和验证，同时使用较大的池大小进行性能测试。
 
-
 ### <a name="data-integration---pipelines-and-data-flows"></a>数据集成 - 管道和数据流 
 
 若要了解有关数据集成成本的详细信息，请参阅[计划和管理 Azure 数据工厂的成本](../data-factory/plan-manage-costs.md)
@@ -129,6 +142,6 @@ Azure Synapse 在 Azure 基础结构上运行，部署新资源时，会随 Azur
 
 - 了解[如何通过 Azure 成本管理优化云投资](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 - 详细了解如何通过[成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来管理成本。
-- 了解如何[防止意外成本](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+- 了解如何[防止意外成本](../cost-management-billing/understand/analyze-unexpected-charges.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 - 参与[成本管理](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)引导式学习课程。
 - 了解 [Azure 机器学习](../machine-learning/concept-plan-manage-cost.md)的计划和管理成本

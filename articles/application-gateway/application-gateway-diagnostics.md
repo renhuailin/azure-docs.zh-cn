@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a2571706d3b1341d6eb3751e50b699043b376767
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: f35a32370f2c5aba0ea3c3e0ea84b739942ceb30
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320648"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110457936"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 
@@ -145,7 +145,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
    ![启用诊断][1]
 
-3. “诊断设置”页提供用于诊断日志的设置。 本示例使用 Log Analytics 存储日志。 也可使用事件中心和存储帐户保存诊断日志。
+3. “诊断设置”  页提供用于诊断日志的设置。 本示例使用 Log Analytics 存储日志。 也可使用事件中心和存储帐户保存诊断日志。
 
    ![启动配置过程][2]
 
@@ -222,7 +222,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 |sslProtocol| 使用的 SSL/TLS 协议（如果已启用 TLS）。|
 |serverRouted| 应用程序网关将请求路由到的后端服务器。|
 |serverStatus| 后端服务器的 HTTP 状态代码。|
-|serverResponseLatency| 后端服务器的响应延迟。|
+|serverResponseLatency| 后端服务器的响应延迟（以秒为单位）。|
 |host| 请求的主机标头中列出的地址。 如果使用标头重写进行重写，此字段将包含更新的主机名|
 |originalRequestUriWithArgs| 此字段包含原始请求 URL |
 |requestUri| 在应用程序网关上执行重写操作后，此字段将包含 URL |
@@ -243,13 +243,13 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
         "httpVersion": "HTTP/1.0",
         "receivedBytes": 65,
         "sentBytes": 553,
-        "timeTaken": 205,
+        "timeTaken": "0.012",
         "sslEnabled": "off",
         "sslCipher": "",
         "sslProtocol": "",
         "serverRouted": "104.41.114.59:80",
         "serverStatus": "200",
-        "serverResponseLatency": "0.023",
+        "serverResponseLatency": "0.012",
         "host": "www.contoso.com",
     }
 }

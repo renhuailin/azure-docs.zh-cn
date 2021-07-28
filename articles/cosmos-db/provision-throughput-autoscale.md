@@ -5,14 +5,14 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 05/18/2021
 ms.custom: seo-nov-2020
-ms.openlocfilehash: ba0dd347c4ee2cb41b34c2fc34f1848a7295dc3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 55899fc38652462f0f98b4ad2d916cf10f203458
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97368658"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470964"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>创建具有自动缩放吞吐量的 Azure Cosmos 容器和数据库
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -59,7 +59,7 @@ ms.locfileid: "97368658"
 
 ## <a name="enable-autoscale-on-existing-resources"></a>对现有资源启用自动缩放
 
-使用 [Azure 门户](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container)、[Azure 资源管理器模板](how-to-provision-autoscale-throughput.md#azure-resource-manager)、[CLI](how-to-provision-autoscale-throughput.md#azure-cli) 或 [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell) 在现有数据库或容器上启用自动缩放。 随时可以在自动缩放与标准（手动）预配吞吐量之间切换。 有关详细信息，请参阅[此文档](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work)。
+使用 [Azure 门户](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container)、[CLI](how-to-provision-autoscale-throughput.md#azure-cli) 或 [PowerShell](how-to-provision-autoscale-throughput.md#azure-powershell) 在现有数据库或容器上启用自动缩放。 随时可以在自动缩放与标准（手动）预配吞吐量之间切换。 有关详细信息，请参阅[此文档](autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-)。
 
 ## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> 自动缩放的吞吐量和存储限制
 
@@ -67,7 +67,7 @@ ms.locfileid: "97368658"
 
 例如，如果从 50,000 RU/s 的最大 RU/s（在 5000 - 50,000 RU/s 之间缩放）开始，则最多可存储 500 GB 数据。 如果超过 500 GB（例如，存储现在为 600 GB），则新的最大 RU/s 将是 60,000 RU/s（在 6000 - 60,000 RU/s 之间缩放）。
 
-将数据库级别吞吐量与自动缩放结合使用时，可以让前 25 个容器共享 4000 的自动缩放最大 RU/s（在 400 - 4000 RU/s 之间缩放），只要未超过 40 GB 存储即可。 有关详细信息，请参阅[此文档](autoscale-faq.md#can-i-change-the-max-rus-on-the-database-or-container)。
+将数据库级别吞吐量与自动缩放结合使用时，可以让前 25 个容器共享 4000 的自动缩放最大 RU/s（在 400 - 4000 RU/s 之间缩放），只要未超过 40 GB 存储即可。 有关详细信息，请参阅[此文档](autoscale-faq.yml#can-i-change-the-max-ru-s-on-the-database-or-container--)。
 
 ## <a name="comparison--containers-configured-with-manual-vs-autoscale-throughput"></a>比较 – 使用手动与自动缩放吞吐量配置的容器
 有关更多详细信息，请参阅有关如何在标准（手动）与自动缩放吞吐量之间进行选择的此[文档](how-to-choose-offer.md)。  
@@ -82,7 +82,7 @@ ms.locfileid: "97368658"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看[自动缩放常见问题解答](autoscale-faq.md)。
+* 查看[自动缩放常见问题解答](autoscale-faq.yml)。
 * 了解如何[在手动与自动缩放吞吐量之间进行选择](how-to-choose-offer.md)。
 * 了解[如何对 Azure Cosmos 数据库或容器预配自动缩放吞吐量](how-to-provision-autoscale-throughput.md)。
 * 深入了解 Azure Cosmos DB 中的[分区](partitioning-overview.md)。

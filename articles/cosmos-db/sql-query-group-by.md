@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: tisande
-ms.openlocfilehash: d9cafc100ddd4b553577c447e82334e6ee7d1b6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0bc50cb511f176b76db2f0ea9f0576a857b3c69e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96545411"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466871"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 GROUP BY 子句
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -61,6 +61,8 @@ FROM f
 GROUP BY f.lastName
 ) AS UniqueLastNames
 ```
+
+此外，跨分区 `GROUP BY` 查询最多可以有 21 个[聚合系统函数](sql-query-aggregate-functions.md)。 
 
 ## <a name="examples"></a>示例
 

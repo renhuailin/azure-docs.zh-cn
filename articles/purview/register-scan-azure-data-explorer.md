@@ -6,13 +6,13 @@ ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 10/9/2020
-ms.openlocfilehash: 7adc7f568fb82692f2c96f610575076e397bd99c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 05/08/2021
+ms.openlocfilehash: f218d87fe1f91e206c3b8873c9af0dddddd45b42
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98896086"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656482"
 ---
 # <a name="register-and-scan-azure-data-explorer"></a>注册并扫描 Azure 数据资源管理器
 
@@ -82,10 +82,10 @@ Azure 数据资源管理器支持完整和增量扫描以捕获元数据和架�
 在“注册源(Azure 数据资源管理器 (Kusto))”屏幕上，执行以下操作：
 
 1. 输入数据源将在目录中列出的名称。
-1. 选择要指向所需存储帐户的方式：
-   1. 选择“从 Azure 订阅中”，然后从“Azure 订阅”下拉框中选择相应订阅，并从“群集”下拉框中选择相应群集  。
-   1. 也可选择“手动输入”并输入服务终结点 (URL)。
-1. 选择“完成”以注册数据源。
+2. 选择 Azure 订阅以筛选 Azure 数据资源管理器。
+3. 选择相应的群集。
+4. 选择集合或创建新集合（可选）。
+5. 选择“注册”以注册数据源。
 
 :::image type="content" source="media/register-scan-azure-data-explorer/register-sources.png" alt-text="注册源选项" border="true":::
 

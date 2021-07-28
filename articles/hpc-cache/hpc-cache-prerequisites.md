@@ -4,14 +4,14 @@ description: 使用 Azure HPC 缓存所要满足的先决条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/14/2021
+ms.date: 05/06/2021
 ms.author: v-erkel
-ms.openlocfilehash: 3cddbba3dca64561d7e2b7b27715152a26a8c9e9
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 59b83132f4de25886494bdc5c23819243240e962
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717578"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737323"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 缓存的先决条件
 
@@ -95,6 +95,8 @@ Azure HPC 缓存需要具有以下特质的专用子网：
 
 缓存支持 Azure Blob 容器、NFS 硬件存储导出和已装载 NFS 的 ADLS Blob 容器（目前为预览版）。 创建缓存后添加存储目标。
 
+缓存的大小决定其可支持的存储目标数，大多数缓存最多可支持 10 个存储目标，最大的缓存最多可支持 20 个存储目标。 有关详细信息，请参阅[正确调整缓存大小以支持存储目标](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets)。
+
 每种存储类型都有特定的先决条件。
 
 ### <a name="blob-storage-requirements"></a>Blob 存储要求
@@ -129,7 +131,7 @@ Azure HPC 缓存需要具有以下特质的专用子网：
 
 [排查 NAS 配置和 NFS 存储目标问题](troubleshoot-nas.md)中提供了详细信息。
 
-* 网络连接： Azure HPC 缓存需要在缓存子网与 NFS 系统的数据中心之间进行高带宽网络访问。 建议使用 [ExpressRoute](../expressroute/index.yml) 或类似的访问方式。 如果使用 VPN，可能需要对其进行配置，以将 TCP MSS 钳制在 1350，确保不会阻止较大的数据包。 在排查 VPN 设置问题时如需更多帮助，请阅读 [VPN 数据包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions)。
+* 网络连接： Azure HPC 缓存需要在缓存子网与 NFS 系统的数据中心之间进行高带宽网络访问。 建议使用 [ExpressRoute](../expressroute/index.yml) 或类似的访问方式。 如果使用 VPN，可能需要对其进行配置，以将 TCP MSS 钳制在 1350，确保不会阻止较大的数据包。 如需排查 VPN 设置问题方面的更多帮助，请阅读 [VPN 数据包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions)。
 
 * 端口访问： 缓存需要访问存储系统上的特定 TCP/UDP 端口。 不同类型的存储具有不同的端口要求。
 

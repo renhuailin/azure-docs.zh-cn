@@ -1,18 +1,18 @@
 ---
 title: 操作说明：浏览数据目录
-description: 本文概述了如何基于资产类型来浏览 Azure Purview 数据目录。
-author: chanuengg
-ms.author: csugunan
+description: 本文概述了如何按资产类型浏览 Azure Purview 数据目录
+author: djpmsft
+ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/30/2020
-ms.openlocfilehash: dd2fd4fbc9d8aecd9821d668dd02bd4b68659cf6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/21/2021
+ms.openlocfilehash: cf836be45374b881945a80f998d851c95c7a5abd
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97695057"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474176"
 ---
 # <a name="browse-the-azure-purview-data-catalog"></a>浏览 Azure Purview 数据目录
 
@@ -26,6 +26,9 @@ ms.locfileid: "97695057"
 
 将会为每个相应的数据源提供具有分层命名空间的原生浏览体验。
 
+> [!NOTE]
+> 成功扫描后，可能会延迟一段时间才会在浏览体验中显示新扫描的资产。 此延迟可能长达数小时。
+
 ## <a name="browse-the-data-catalog-by-asset-type"></a>按资产类型浏览数据目录
 
 1. 可以通过在主页上选择“按资产类型浏览”来浏览数据资产。
@@ -35,6 +38,9 @@ ms.locfileid: "97695057"
 1. 在“浏览资产类型”页上，磁贴是按数据源分类的。 若要进一步浏览每个数据源中的资产，请选择相应的磁贴。
 
     :::image type="content" source="media/how-to-browse-catalog/browse-asset-types.jpg" alt-text="“浏览资产类型”页" border="true":::
+
+> [!TIP]
+> 某些磁贴是对数据源集合进行的分组。 例如，“Azure 存储帐户”磁贴包含所有 Azure Blob 存储帐户和 Azure Data Lake Storage Gen2 帐户。 “Azure SQL Server”磁贴会显示包含 Azure SQL 数据库的 Azure SQL Server 资产，以及引入到目录中的 Azure 专用 SQL 池实例。 
 
 1. 在下一页上会列出所选数据类型下最高级别的资产。 请选取这些资产中的某一个，以进一步浏览其内容。
 

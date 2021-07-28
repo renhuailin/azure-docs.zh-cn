@@ -3,12 +3,12 @@ title: 对 Batch 池使用扩展
 description: 扩展是一种小型应用程序，用于帮助在 Batch 计算节点上进行预配后配置和设置。
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 1bf9847af57347c143ee3d790d89988ba7cd48e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 406de8ea1c781ac742e7ca3fff8f84f03727a031
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100416969"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476099"
 ---
 # <a name="use-extensions-with-batch-pools"></a>对 Batch 池使用扩展
 
@@ -20,14 +20,14 @@ ms.locfileid: "100416969"
 
 - 使用扩展的池必须采用[虚拟机配置](nodes-and-pools.md#virtual-machine-configuration)。
 - CustomScript 扩展类型是为 Azure Batch 服务保留的，不能被替代。
+- 某些扩展可能需要可在计算节点的上下文中访问的池级托管标识才能正常运行。 请参阅[在 Batch 池中配置托管标识](managed-identity-pools.md)（如果适用于扩展）。
 
 ### <a name="supported-extensions"></a>支持的扩展
 
-目前可在创建 Batch 池时安装以下扩展。 
+目前可在创建 Batch 池时安装以下扩展：
 
 - 适用于 [Linux](../virtual-machines/extensions/key-vault-linux.md) 和 [Windows](../virtual-machines/extensions/key-vault-windows.md) 的 Azure Key Vault 扩展
 - 适用于 [Linux](../virtual-machines/extensions/oms-linux.md) 和 [Windows](../virtual-machines/extensions/oms-windows.md) 的日志分析和监视扩展
-- Azure 安全包
 
 可通过创建支持请求来请求对其他发布服务器和/或扩展类型的支持。
 

@@ -6,18 +6,20 @@ ms.service: api-management
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: rongzhang
-ms.openlocfilehash: d8ec04227316088983977f5b487abfa81fb5c525
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01b932cf33883f186f9f4ff69bc78869cdb4cb18
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101652396"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109516571"
 ---
 # <a name="azure-api-management-diagnostics-overview"></a>Azure API 管理诊断概述
 
 在 Azure API 管理中构建和管理 API 时，你需要为任何可能出现的问题（从 404“未找到”错误到 502“错误的网关”错误）做好准备。 API 管理诊断是智能的交互式体验，无需进行配置即可帮助你排查 APIM 中发布的 API 的问题。 在发布的 API 出现问题时，API 管理诊断会指出问题所在，并指导你获取正确信息以快速排查并解决问题。
 
 尽管此体验对于 API 在过去 24 小时内出现的问题最有帮助，但是，所有的诊断图都随时可用于进行分析。
+
+[!NOTE] 消耗层目前不支持诊断和解决问题。
 
 ## <a name="open-api-management-diagnostics"></a>打开 API 管理诊断
 

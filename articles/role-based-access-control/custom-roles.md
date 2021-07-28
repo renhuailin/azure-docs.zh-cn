@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/15/2020
+ms.date: 05/19/2021
 ms.author: rolyon
-ms.openlocfilehash: 79aaeee942a6d46243ee1c72d5904484b8698ebe
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c9ab7faebc28354e96cf1c54332fc1d7b19ef196
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97617317"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469899"
 ---
 # <a name="azure-custom-roles"></a>Azure 自定义角色
 
@@ -23,7 +23,7 @@ ms.locfileid: "97617317"
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-如果 [Azure 内置角色](built-in-roles.md)不满足组织的特定需求，你可以创建自己的自定义角色。 与内置角色一样，可将自定义角色分配到管理组、订阅和资源组范围内的用户、组与服务主体。
+如果 [Azure 内置角色](built-in-roles.md)不满足组织的特定需求，你可以创建自己的自定义角色。 与内置角色一样，可将自定义角色分配到管理组（仅以预览版提供）、订阅和资源组范围内的用户、组与服务主体。
 
 自定义角色可在信任同一 Azure AD 目录的订阅之间共享。 每个目录都有 **5,000** 个自定义角色的限制。 （对于 Azure 德国和 Azure 中国世纪互联，限制为 2,000 个自定义角色。）可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 创建自定义角色。
 
@@ -185,12 +185,6 @@ Microsoft.CostManagement/exports/run/action
 Microsoft.CostManagement/exports/*
 ```
 
-还可以在一个字符串中包含多个通配符。 例如，以下字符串表示对成本管理的所有查询权限。
-
-```
-Microsoft.CostManagement/*/query/*
-```
-
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>谁可以创建、删除、更新或查看自定义角色
 
 与在内置角色中一样，`AssignableScopes` 属性指定角色的可配置范围。 自定义角色的 `AssignableScopes` 属性还控制谁可以创建、删除、更新或查看自定义角色。
@@ -210,6 +204,7 @@ Microsoft.CostManagement/*/query/*
 - 不能将 `AssignableScopes` 设置为根范围 (`"/"`)。
 - 不能在 `AssignableScopes` 中使用通配符 (`*`)。 此通配符限制有助于确保用户不可能通过更新角色定义来获取对某个范围的访问权限。
 - 只能在自定义角色的 `AssignableScopes` 中定义一个管理组。 将管理组添加到 `AssignableScopes` 的功能目前为预览版。
+- 操作字符串中只能有一个通配符。
 - 无法在管理组范围内分配具有 `DataActions` 的自定义角色。
 - Azure 资源管理器不验证管理组是否存在于角色定义的可分配范围中。
 

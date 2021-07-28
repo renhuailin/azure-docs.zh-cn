@@ -1,27 +1,27 @@
 ---
-title: 有关将 ST Microelectronics B-L475E-IOT01A 或 B-L4S5I-IOT01A 连接到 Azure IoT Central 的快速入门
-description: 使用 Azure RTOS 嵌入式软件将 ST Microelectronics B-L475E-IOT01A 或 B-L4S5I-IOT01A 设备连接到 Azure IoT 并发送遥测数据。
+title: 有关将 STMicroelectronics B-L475E-IOT01A 或 B-L4S5I-IOT01A 连接到 Azure IoT Central 的快速入门
+description: 使用 Azure RTOS 嵌入式软件将 STMicroelectronics B-L475E-IOT01A 或 B-L4S5I-IOT01A 设备连接到 Azure IoT 并发送遥测数据。
 author: timlt
 ms.author: timlt
 ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: 9fee4c2642178bfc288396d3e783940e41a0502e
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: dd8a214e060f9f4ace9f310fec3ebca33d4619c0
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903970"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113109226"
 ---
-# <a name="quickstart-connect-an-st-microelectronics-b-l475e-iot01a-or-b-l4s5i-iot01a-discovery-kit-to-iot-central"></a>快速入门：将 ST Microelectronics B-L475E-IOT01A 或 B-L4S5I-IOT01A 发现工具包连接到 IoT Central
+# <a name="quickstart-connect-an-stmicroelectronics-b-l475e-iot01a-or-b-l4s5i-iot01a-discovery-kit-to-iot-central"></a>快速入门：将 STMicroelectronics B-L475E-IOT01A 或 B-L4S5I-IOT01A 发现工具包连接到 IoT Central
 
 **适用于**：[嵌入式设备开发](about-iot-develop.md#embedded-device-development)<br>
 **总完成时间**：30 分钟
 
 [![浏览代码](media/common/browse-code.svg)](https://github.com/azure-rtos/getting-started/tree/master/STMicroelectronics/STM32L4_L4+)
 
-本快速入门介绍如何使用 Azure RTOS 将 ST Microelectronics [B-L475E-IOT01A](https://www.st.com/en/evaluation-tools/b-l475e-iot01a.html) 或 [B-L4S5I-IOT01A](https://www.st.com/en/evaluation-tools/b-l4s5i-iot01a.html) 发现工具包（随后将 STM DevKit）连接到 Azure IoT。
+本快速入门介绍如何使用 Azure RTOS 将 STMicroelectronics [B-L475E-IOT01A](https://www.st.com/en/evaluation-tools/b-l475e-iot01a.html) 或 [B-L4S5I-IOT01A](https://www.st.com/en/evaluation-tools/b-l4s5i-iot01a.html) 发现工具包（以下简称 STM DevKit）连接到 Azure IoT。
 
 你将完成以下任务：
 
@@ -45,7 +45,7 @@ ms.locfileid: "111903970"
 
 ### <a name="clone-the-repo-for-the-quickstart"></a>克隆本快速入门所需的存储库
 
-克隆以下存储库以下载所有示例设备代码、安装脚本和文档的脱机版本。 如果你以前在另一篇快速入门中克隆过此存储库，则无需再次执行此操作。
+克隆以下存储库以下载所有示例设备代码、安装脚本和文档的脱机版本。 如果以前在另一篇快速入门中克隆过此存储库，则无需再次执行此操作。
 
 要克隆存储库，请运行以下命令：
 
@@ -55,7 +55,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="install-the-tools"></a>安装工具
 
-克隆的存储库包含用于安装和配置所需工具的安装脚本。 如果你在另一篇嵌入式设备快速入门中安装了这些工具，则无需再次执行此操作。
+克隆的存储库包含用于安装和配置所需工具的安装脚本。 如果在另一篇嵌入式设备快速入门中安装了这些工具，则无需再次执行此操作。
 
 > [!NOTE]
 > 安装脚本将安装以下工具：
@@ -145,7 +145,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 1. 启动 **Termite**。
     > [!TIP]
-    > 如果无法将 Termite 连接到 devkit，请安装 [ST-LINK 驱动程序](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip)，然后重试。 有关其他步骤，请参阅[故障排除](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)。
+    > 如果无法将 Termite 连接到 devkit，请安装 [ST-LINK 驱动程序](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip)，然后重试。 有关其他步骤，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)。
 1. 选择“设置”。
 1. 在“串行端口设置”对话框中，检查以下设置并根据需要进行更新：
     * **波特率**：115,200
@@ -248,7 +248,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ## <a name="troubleshoot-and-debug"></a>故障排除和调试
 
-如果在生成设备代码、刷写设备或进行连接时遇到问题，请参阅[故障排除](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)。
+如果在生成设备代码、刷写设备或进行连接时遇到问题，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)。
 
 要调试应用程序，请参阅[使用 Visual Studio Code 进行调试](https://github.com/azure-rtos/getting-started/blob/master/docs/debugging.md)。
 

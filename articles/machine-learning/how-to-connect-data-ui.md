@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: nibaccam
-author: nibaccam
+ms.author: yogipandey
+author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: data4ml
-ms.openlocfilehash: 4263c3334e19ddeb6a61325e8802f8544a282c6f
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: b85be179fa12e29ef17fe9fa488b22c3d8a3c69b
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890053"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785108"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>使用 Azure 机器学习工作室连接到数据
 
@@ -119,7 +119,7 @@ ms.locfileid: "107890053"
 |类型|列的推理类型。 可能的值包括：字符串、布尔值、日期和小数。
 |Min| 列的最小值。 对于没有固有顺序（例如布尔值）的特征类型，将显示空白条目。
 |Max| 列的最大值。 
-|计数| 列中缺失和未缺失条目的总数。
+|Count| 列中缺失和未缺失条目的总数。
 |非缺失计数| 列中未缺失的条目数。 空字符串和误差被视为值，因此它们不会计入“未缺少计数”。
 |分位数| 每个分位数中的近似值，用于提供数据分布的概观。
 |平均值| 列的算术中间值或平均值。
@@ -156,7 +156,7 @@ ms.locfileid: "107890053"
 
 > [!IMPORTANT]
 > * 如果需要更改 Azure 存储帐户的访问密钥（帐户密钥或 SAS 令牌），请确保将新凭据与工作区以及与其连接的数据存储同步。 了解如何[同步更新的凭据](how-to-change-storage-access-key.md)。 <br> <br>
-> * 如果你注销了一个数据存储并重新注册一个同名数据存储，但注册失败，则表示工作区的 Azure Key Vault 可能未启用软删除。 默认情况下，将为工作区创建的密钥保管库实例启用软删除，但如果使用的是现有密钥保管库或是在 2020 年 10 月之前创建的工作区，则可能无法启用软删除。 有关如何启用软删除的信息，请参阅[对现有的密钥保管库启用软删除]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault)。
+> * 如果你注销了一个数据存储并重新注册一个同名数据存储，但注册失败，则表示工作区的 Azure Key Vault 可能未启用软删除。 默认情况下，将为工作区创建的密钥保管库实例启用软删除，但如果使用的是现有密钥保管库或是在 2020 年 10 月之前创建的工作区，则可能无法启用软删除。 有关如何启用软删除的信息，请参阅[对现有的密钥保管库启用软删除](../key-vault/general/soft-delete-change.md#turn-on-soft-delete-for-an-existing-key-vault)。
 
 ### <a name="permissions"></a>权限
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro with FPGA 2101 发行说明 | Microsoft Docs
-description: 介绍 Azure Stack Edge 2101 版的关键未结问题和解决方案。
+title: Azure Stack Edge Pro FPGA 2101 发行说明 | Microsoft Docs
+description: 介绍 Azure Stack Edge Pro FPGA 2101 版的关键未结问题和解决方案。
 services: databox
 author: v-dalc
 ms.service: databox
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 02/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 5c95da8d6ee88786ff983b4963c1cb96394886cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c8882706bdbb6719dbc2550df350096a4970fd8
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727543"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461215"
 ---
 # <a name="azure-stack-edge-pro-with-fpga-2101-release-notes"></a>Azure Stack Edge Pro with FPGA 2101 发行说明
 
-以下发行说明明确了包含内置现场可编程门阵列 (FPGA) 的 Azure Stack Edge Pro 2101 版的相关重要未结问题和已解决问题。
+以下发行说明列出了使用内置现场可编程门阵列 (FPGA) 的 Azure Stack Edge Pro FPGA 2101 版的关键未结问题和已解决问题。
 
 发行说明会持续更新。 如果发现了需要提供解决方法的重要问题，则会添加到其中。 在部署 Azure Stack Edge Pro 之前，请仔细查看发行说明中的信息。  
 

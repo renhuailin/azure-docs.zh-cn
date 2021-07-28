@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 573f97c7f592186173b13ea592d151ee291b8249
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 8315c2fa094f1d12a788d42a336cb01feb58c6c9
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967959"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110450269"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>准备好要上传到 Azure 的 Windows VHD 或 VHDX
 
@@ -223,19 +223,19 @@ Get-Service -Name Netlogon, Netman, TermService |
 
    ```powershell
    Enable-PSRemoting -Force
-   Set-NetFirewallRule -DisplayName 'Windows Remote Management (HTTP-In)' -Enabled True
+   Set-NetFirewallRule -Name WINRM-HTTP-In-TCP, WINRM-HTTP-In-TCP-PUBLIC -Enabled True
    ```
 
 1. 启用以下防火墙规则以允许 RDP 流量：
 
    ```powershell
-   Set-NetFirewallRule -DisplayGroup 'Remote Desktop' -Enabled True
+   Set-NetFirewallRule -Group '@FirewallAPI.dll,-28752' -Enabled True
    ```
 
 1. 启用文件和打印机共享规则，使 VM 能够在虚拟网络中响应 ping 请求：
 
    ```powershell
-   Set-NetFirewallRule -DisplayName 'File and Printer Sharing (Echo Request - ICMPv4-In)' -Enabled True
+   Set-NetFirewallRule -Name FPS-ICMP4-ERQ-In -Enabled True
    ```
 
 1. 为 Azure 平台网络创建规则：
@@ -314,10 +314,23 @@ Get-Service -Name Netlogon, Netman, TermService |
 
    如果存储库已损坏，请参阅 [WMI：存储库是否损坏](https://techcommunity.microsoft.com/t5/ask-the-performance-team/wmi-repository-corruption-or-not/ba-p/375484)。
 
-1. 确保没有其他应用程序正在使用端口 3389。 此端口用于 Azure 中的 RDP 服务。 若要查看 VM 上使用的端口，请运行 `netstat.exe -anob`：
+1. 请确保除 TermService 外，没有其他应用程序在使用端口 3389。 此端口用于 Azure 中的 RDP 服务。 若要查看 VM 上使用的端口，请运行 `netstat.exe -anob`：
 
    ```powershell
    netstat.exe -anob
+   ```
+   
+   下面是一个示例。
+
+   ```powershell
+   netstat.exe -anob | findstr 3389
+   TCP    0.0.0.0:3389           0.0.0.0:0              LISTENING       4056
+   TCP    [::]:3389              [::]:0                 LISTENING       4056
+   UDP    0.0.0.0:3389           *:*                                    4056
+   UDP    [::]:3389              *:*                                    4056
+
+   tasklist /svc | findstr 4056
+   svchost.exe                   4056 TermService
    ```
 
 1. 若要上传用作域控制器的 Windows VHD：
@@ -462,6 +475,14 @@ Sysprep 会删除所有个人数据并重置多个组件，从而为你提供“
 1. 调整虚拟磁盘的大小以满足 Azure 要求：
 
    1. Azure 上的磁盘必须已将虚拟大小调整为 1 MiB。 如果 VHD 的大小不是 1 MiB 的整数倍，需要将磁盘大小调整为 1 MiB 的倍数。 基于上传的 VHD 创建映像时，不到 1 MiB 的磁盘将导致错误。 若要验证该大小，可使用 PowerShell [Get-VHD](/powershell/module/hyper-v/get-vhd) comdlet 来显示“大小”和“文件大小”，其中大小在 Azure 中必须是 1 MiB 的倍数，而文件大小将等于“大小”加上 VHD 页脚的 512 字节。
+   
+      ```powershell
+      $vhd = Get-VHD -Path C:\test\MyNewVM.vhd
+      $vhd.Size % 1MB
+      0
+      $vhd.FileSize - $vhd.Size
+      512
+      ```
    
    1. 第 1 代 VM 的 OS VHD 允许的最大大小为 2,048 GiB (2 TiB)， 
    1. 数据磁盘的最大大小为 32,767 GiB (32 TiB)。

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 24c181c17e49fe5b7c3001c1cb2839bc957ef463
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: fe259c3858e798f9bcb72600b680f12c19055884
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490482"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470336"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>使用连接监视器进行网络连接监视
 
@@ -97,7 +97,7 @@ ms.locfileid: "106490482"
 
 使用网络观察程序启用具有虚拟网络的所有订阅。 在订阅中创建虚拟网络时，虚拟网络的区域和订阅中会自动启用网络观察程序。 这种自动启用不会影响资源，也不会产生费用。 确保未在订阅上显式禁用网络观察程序。 
 
-有关详细信息，请参阅[启用网络观察程序](./network-watcher-create.md)。
+请务必确保网络观察程序[可用于你所在的区域](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher&regions=all)。 有关详细信息，请参阅[启用网络观察程序](./network-watcher-create.md)。
 
 ## <a name="create-a-connection-monitor"></a>创建连接监视器 
 
@@ -281,7 +281,7 @@ ms.locfileid: "106490482"
 
 #### <a name="metrics-in-azure-monitor"></a>Azure Monitor 中的指标
 
-在连接监视器体验推出之前创建的连接监视器中，以下所有四个指标都可用：探测失败百分比、AverageRoundtripMs、ChecksFailedPercent (预览版) 和 RoundTripTimeMs (预览版)。 在连接监视器体验中创建的连接监视器中，数据仅可用于标记为“(预览版)”的指标。
+在连接监视器体验推出之前创建的连接监视器中，以下所有四个指标都可用：探测失败百分比、AverageRoundtripMs、ChecksFailedPercent 和 RoundTripTimeMs。 在连接监视器体验中创建的连接监视器中，数据只可用于 ChecksFailedPercent、RoundTripTimeMs 和“测试结果”指标。
 
   :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="屏幕截图显示了连接监视器中的指标" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
@@ -289,11 +289,11 @@ ms.locfileid: "106490482"
 
 | 指标 | Display name | 计价单位 | 聚合类型 | 说明 | 维度 |
 | --- | --- | --- | --- | --- | --- |
-| ProbesFailedPercent（经典） | 失败的探测百分比（经典） | 百分比 | 平均值 | 连接监视探测的失败百分比。 | 无维度 |
-| AverageRoundtripMs（经典） | 平均值往返时间（毫秒）（经典） | 毫秒 | 平均值 | 源和目标之间发送的连接监视探测的平均网络 RTT。 |             无维度 |
-| ChecksFailedPercent | 检查未通过百分比 | 百分比 | 平均值 | 测试的检查失败百分比。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>协议 <br>目的地地址 <br>DestinationName <br>DestinationResourceId <br>目标类型 <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>区域 |
-| RoundTripTimeMs | 往返时间（毫秒） | 毫秒 | 平均值 | 在源和目标之间发送的用于检查的 RTT。 此值不是平均值。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>协议 <br>目的地地址 <br>DestinationName <br>DestinationResourceId <br>目标类型 <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>区域 |
-| TestResult | 测试结果 | 计数 | 平均值 | 连接监视器测试结果 | SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>协议 <br>目的地地址 <br>DestinationName <br>DestinationResourceId <br>目标类型 <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
+| ProbesFailedPercent（经典） | 失败的探测百分比（经典） | 百分比 | 平均值 | 连接监视探测的失败百分比。<br>此指标仅适用于连接监视器经典版  | 无维度 |
+| AverageRoundtripMs（经典） | 平均值往返时间（毫秒）（经典） | 毫秒 | 平均值 | 源和目标之间发送的连接监视探测的平均网络 RTT。<br>此指标仅适用于连接监视器经典版 |             无维度 |
+| ChecksFailedPercent | 检查未通过百分比 | 百分比 | 平均值 | 测试的检查失败百分比。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>协议 <br>目的地地址 <br>DestinationName <br>DestinationResourceId <br>目标类型 <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>区域 <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
+| RoundTripTimeMs | 往返时间（毫秒） | 毫秒 | 平均值 | 在源和目标之间发送的用于检查的 RTT。 此值不是平均值。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>协议 <br>目的地地址 <br>DestinationName <br>DestinationResourceId <br>目标类型 <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>区域 <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
+| TestResult | 测试结果 | 计数 | 平均值 | 连接监视器测试结果 <br>结果值的解释如下所示： <br>0 - 不确定 <br>1 - 通过 <br>2 - 警告 <br>3 - 失败| SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>协议 <br>目的地地址 <br>DestinationName <br>DestinationResourceId <br>目标类型 <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>SourceIP <br>DestinationIP <br>SourceSubnet <br>DestinationSubnet |
 
 #### <a name="metric-based-alerts-for-connection-monitor"></a>连接监视器基于指标的警报
 
@@ -304,8 +304,8 @@ ms.locfileid: "106490482"
 1. 通过 Azure Monitor - 若要在 Azure Monitor 中创建警报： 
     1. 选择在连接监视器中创建的连接监视器资源。
     1. 确保“指标”显示为连接监视器的信号类型。
-    1. 在“信号名称”的“添加条件”中，选择“ChecksFailedPercent（预览版）”或“RoundTripTimeMs（预览版）”   。
-    1. “信号类型”选择“指标” 。 例如，选择“ChecksFailedPercent（预览版）”。
+    1. 在“添加条件”中，选择“ChecksFailedPercent”或“RoundTripTimeMs”作为“信号名称”   。
+    1. “信号类型”选择“指标” 。 例如，选择“ChecksFailedPercent”。
     1. 将列出指标的所有维度。 选择维度名称和维度值。 例如，选择“源地址”，然后在连接监视器中输入任何源的 IP 地址。
     1. 在“警报逻辑”中填写以下详细信息：
         * 条件类型：静态。
@@ -364,6 +364,21 @@ ms.locfileid: "106490482"
 * 由于系统路由或 UDR 的原因，流量已停止。
 * 网关连接上未启用 BGP。
 * 已关闭负载均衡器上的 DIP 探测。
+
+## <a name="faq"></a>常见问题解答
+
+### <a name="are-classic-vms-supported"></a>是否支持经典 VM？
+不支持，连接监视器不支持经典 VM。 建议将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器，因为经典资源将[弃用](../virtual-machines/classic-vm-deprecation.md)。 请参阅本文了解[如何迁移](../virtual-machines/migration-classic-resource-manager-overview.md)。
+
+### <a name="my-topology-is-not-decorated-or-my-hops-have-missing-information"></a>我的拓扑未经修饰或我的跃点缺少信息？
+从非 Azure 到 Azure，只有在目标 Azure 资源和连接监视器资源位于同一区域的情况下才能修饰拓扑 
+
+### <a name="my-connection-monitor-creation-is-failing-with-error-we-dont-allow-creating-different-endpoints-for-the-same-vm"></a>我创建连接监视器失败了，出现“我们不允许为同一 VM 创建不同的终结点”错误。
+同一 Azure VM 不能用于同一连接监视器中的不同配置。 例如，不支持在同一连接监视器中将同一 VM 用于有筛选器的情况和没有筛选器的情况。
+
+### <a name="the-test-failure-reason-is-nothing-to-display"></a>测试失败的原因是“没有要显示的内容”？
+在拓扑发现或跃点探索过程中，发现了连接监视器仪表板上显示的问题。 可能会有这样的情况：突破了为丢失百分比或 RTT 设置的阈值，但未在跃点上发现问题。
+
 
 ## <a name="next-steps"></a>后续步骤
     

@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Edge Pro FPGA 管理用户 | Microsoft Docs
+title: Azure Stack Edge Pro FPGA 用户管理
 description: 介绍如何使用 Azure 门户管理 Azure Stack Edge Pro 上的用户。
 services: databox
 author: alkohli
@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 27ca190f3bad7f75175e5206d48e13dae1f5687e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb7b4ee235d83afd5bdaafe5c7678069c5c864de
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97913280"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460677"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro-fpga"></a>使用 Azure 门户管理 Azure Stack Edge Pro FPGA 上的用户
 
-本文介绍如何管理 Azure Stack Edge Pro FPGA 设备上的用户。 可以通过 Azure 门户或本地 Web UI 管理 Azure Stack Edge Pro。 使用 Azure 门户来添加、修改或删除用户。
+本文介绍如何管理 Azure Stack Edge Pro FPGA 设备上的用户。 可以通过 Azure 门户或本地 Web UI 管理 Azure Stack Edge Pro FPGA。 使用 Azure 门户来添加、修改或删除用户。
 
 在本文中，学习如何：
 

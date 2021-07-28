@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 00fbf0fe3340dc0c14f8cd55098c1e20990a3207
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9388a6e01885e4a3a0c5aa95c254910c96a4e36a
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368017"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902350"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>设置模型训练和部署的计算目标
 
@@ -26,11 +26,13 @@ ms.locfileid: "110368017"
 
 * 本地计算机
 * 远程虚拟机
+* Apache Spark 池（由 Azure Synapse Analytics 提供支持）
 * Azure HDInsight
 * Azure Batch
 * Azure Databricks
 * Azure Data Lake Analytics
 * Azure 容器实例
+
 
 若要使用 Azure 机器学习管理的计算目标，请参阅：
 
@@ -128,6 +130,10 @@ Azure 机器学习还支持连接 Azure 虚拟机。 VM 必须是 Azure Data Sci
 >
 > Azure 机器学习不会为你删除 VM。 必须使用 Azure 门户、CLI 或适用于 Azure VM 的 SDK 手动删除 VM。
 
+## <a name="apache-spark-pools"></a><a id="synapse"></a>Apache Spark 池
+
+通过 Azure Synapse Analytics 与 Azure 机器学习的集成（预览版），你可以附加由 Azure Synapse 提供支持的 Apache Spark 池，以进行交互式数据探索和准备。 借助这种集成，你可使用专用计算大规模地进行数据整理。 有关详细信息，请参阅[如何附加由 Azure Synapse Analytics 提供支持的 Apache Spark 池](how-to-link-synapse-ml-workspaces.md#attach-synapse-spark-pool-as-a-compute)。
+
 ## <a name="azure-hdinsight"></a><a id="hdinsight"></a>Azure HDInsight 
 
 Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Apache Spark 可用于训练模型。
@@ -221,11 +227,14 @@ print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 > [!WARNING]
 > 请勿在工作区中为同一 Azure Batch 创建多个同步附件。 每个新附件都会破坏先前存在的附件。
 
-### <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
+## <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
 
 Azure Databricks 是 Azure 云中基于 Apache Spark 的环境。 它可以用作 Azure 机器学习管道的计算目标。
 
-> [!重要} Azure 机器学习无法创建 Azure Databricks 计算目标。 你需要自行创建一个 Azure Databricks 工作区，然后将其附加到 Azure 机器学习工作区。 若要创建工作区资源，请参阅[在 Azure Databricks 中运行 Spark 作业](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)文档。
+> [!IMPORTANT]
+> Azure 机器学习无法创建 Azure Databricks 计算目标。 而必须由你自行创建一个 Azure Databricks 工作区，然后将其附加到 Azure 机器学习工作区。 若要创建工作区资源，请参阅[在 Azure Databricks 中运行 Spark 作业](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)文档。
+> 
+> 若要从不同 Azure 订阅附加 Azure Databricks 工作区，你（你的 Azure AD 帐户）必须被授予 Azure Databricks 工作区上的“参与者”角色。 查看 [Azure 门户](https://ms.portal.azure.com/)中的访问权限。
 
 要将 Azure Databricks 附加为计算目标，请提供以下信息：
 
@@ -233,7 +242,7 @@ Azure Databricks 是 Azure 云中基于 Apache Spark 的环境。 它可以用�
 * __Databricks 工作区名称__：Azure Databricks 工作区的名称。
 * __Databricks 访问令牌__：用于对 Azure Databricks 进行身份验证的访问令牌。 若要生成访问令牌，请参阅[身份验证](/azure/databricks/dev-tools/api/latest/authentication)文档。
 
-以下代码演示如何使用 Azure 机器学习 SDK 将 Azure Databricks 附加为计算目标（Databricks 工作区需要与 AML 工作区位于同一个订阅中）：
+以下代码演示如何使用 Azure 机器学习 SDK 将 Azure Databricks 附加为计算目标：
 
 ```python
 import os
@@ -277,7 +286,7 @@ except ComputeTargetException:
 > [!WARNING]
 > 请勿在工作区中为同一 Azure Databricks 创建多个同步附件。 每个新附件都会破坏先前存在的附件。
 
-### <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
+## <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
 
 Azure Data Lake Analytics 是 Azure 云中的大数据分析平台。 它可以用作 Azure 机器学习管道的计算目标。
 

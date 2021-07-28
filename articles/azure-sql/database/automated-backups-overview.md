@@ -5,18 +5,18 @@ description: Azure SQL 数据库和 Azure SQL 托管实例每隔几分钟会自�
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: backup-restore
-ms.custom: references_regions
+ms.custom: references_regions, devx-track-azurepowershell
 ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
-ms.reviewer: mathoma, stevestein, danil
+ms.reviewer: mathoma, danil
 ms.date: 03/10/2021
-ms.openlocfilehash: 5879c9107a0ab5a2ef150d119e8b5ac8e16ac01d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5aa0f079ed22d101e17e55d9880aaab7ae1715ff
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102609917"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901360"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自动备份 - Azure SQL 数据库和 SQL 托管实例
 
@@ -50,7 +50,7 @@ SQL 数据库和 SQL 托管实例都使用 SQL Server 技术，每周创建[完�
 > 区域冗余存储目前仅在[特定区域](../../storage/common/storage-redundancy.md#zone-redundant-storage)中可用。 
 
 > [!NOTE]
-> Azure SQL 数据库的可配置备份存储冗余目前在巴西南部提供公共预览版，且仅在 Azure 东南亚地区正式发布。 此功能在超大规模层中尚不可用。 
+> Azure SQL 数据库的可配置备份存储冗余目前在所有 Azure 区域以公共预览版提供，但仅在东南亚 Azure 区域正式发布。 此功能在超大规模层中尚不可用。 
 
 ### <a name="backup-usage"></a>备份使用情况
 
@@ -372,7 +372,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 ## <a name="configure-backup-storage-redundancy"></a>配置备份存储冗余
 
 > [!NOTE]
-> SQL 托管实例备份的可配置存储冗余只能在创建托管实例过程中指定。 预配资源以后，不能更改备份存储冗余选项。 对于 SQL 数据库，此功能的公共预览版目前在巴西南部提供，并在东南亚 Azure 区域正式发布。 
+> SQL 托管实例备份的可配置存储冗余只能在创建托管实例过程中指定。 预配资源以后，不能更改备份存储冗余选项。 对于 SQL 数据库，此功能的公共预览版目前在所有 Azure 区域提供，但仅在东南亚 Azure 区域正式发布。 
 
 只能在创建实例期间设置托管实例的备份存储冗余。 对于 SQL 数据库，可以在创建数据库时设置，也可以为现有数据库更新备份存储冗余。 默认值为异地冗余存储。 有关本地冗余、区域冗余和异地冗余备份存储的定价差异，请访问[托管实例定价页](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6c761edec571f404a538025c868750bc5712eced
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 356c4b1049f6c9558954de457c7e79abbd87d7b8
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107795923"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475372"
 ---
 # <a name="azure-file-sync-networking-considerations"></a>Azure 文件同步的网络注意事项
 可以通过两种方式连接到 Azure 文件共享：
@@ -23,6 +23,9 @@ ms.locfileid: "107795923"
 本文重点介绍如何在用例要求使用 Azure 文件同步在本地缓存文件而不是直接通过 SMB 装载 Azure 文件共享时配置网络。 有关 Azure 文件存储部署的网络注意事项的详细信息，请参阅 [Azure 文件存储的网络注意事项](../files/storage-files-networking-overview.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json)。
 
 Azure 文件同步的网络配置跨两个不同的 Azure 对象：存储同步服务和 Azure 存储帐户。 存储帐户是代表共享存储池的管理结构，你可以在其中部署多个文件共享以及其他存储资源（例如，Blob 容器或队列）。 存储同步服务是代表已注册服务器（与 Azure 文件同步建立了信任关系的 Windows 文件服务器以及定义同步关系拓扑的同步组）的管理结构。 
+
+> [!Important]  
+> Azure 文件同步不支持 Internet 路由。 Azure 文件同步支持默认网络路由选项 - Microsoft 路由。
 
 ## <a name="connecting-windows-file-server-to-azure-with-azure-file-sync"></a>通过 Azure 文件同步将 Windows 文件服务器连接到 Azure 
 若要针对本地 Windows 文件服务器设置并使用 Azure 文件存储和 Azure 文件同步，除了基本 Internet 连接之外，不需要与 Azure 建立任何特殊的网络连接。 若要部署 Azure 文件同步，请在要与 Azure 同步的 Windows 文件服务器上安装 Azure 文件同步代理。 Azure 文件同步代理可通过两种渠道实现与 Azure 文件共享的同步：

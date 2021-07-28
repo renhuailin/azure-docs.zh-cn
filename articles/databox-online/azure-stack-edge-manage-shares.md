@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Edge Pro FPGA 共享管理 | Microsoft Docs
+title: Azure Stack Edge Pro FPGA 共享管理
 description: 介绍如何使用 Azure 门户管理 Azure Stack Edge Pro FPGA 上的共享。
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 7fbb5ca43d2877e2e14914b71df7cc1bcdf27f88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 03099ad5282f526b83bdb8ee187ef8fd6238e21e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97898182"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460711"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro-fpga"></a>使用 Azure 门户管理 Azure Stack Edge Pro FPGA 上的共享 
 
@@ -21,7 +21,7 @@ ms.locfileid: "97898182"
 
 ## <a name="about-shares"></a>关于共享
 
-若要将数据传输到 Azure，需在 Azure Stack Edge Pro FPGA 上创建共享。 在 Azure Stack Edge Pro 设备上添加的共享可以是本地共享，也可以是用于将数据推送到云的共享。
+若要将数据传输到 Azure，需在 Azure Stack Edge Pro FPGA 上创建共享。 在 Azure Stack Edge Pro FPGA 设备上添加的共享可以是本地共享，也可以是用于将数据推送到云的共享。
 
  - **本地共享**：希望在设备本地处理数据时，请使用这些共享。
  - **共享**：希望将设备数据自动推送到云中的存储帐户时，请使用这些共享。 所有云功能（例如“刷新”和“同步存储密钥”）都适用于这些共享。 
@@ -54,7 +54,7 @@ ms.locfileid: "97898182"
 5. 在下拉列表中，选择块 Blob、页 Blob 或文件作为“存储服务”。 所选服务的类型取决于数据需要以何种格式驻留在 Azure 中。 例如，在此实例中，我们希望数据以块 Blob 的形式驻留在 Azure 中，因此选择“块 Blob”。 如果选择“页 Blob”，必须确保数据经过 512 字节对齐。 对于始终经过 512 字节对齐的 VHD 或 VHDX，请使用“页 Blob”。
 
    > [!IMPORTANT]
-   > 确保未对所用的 Azure 存储帐户设置不可变策略，才可将该帐户用于 Azure Stack Edge Pro 或 Data Box Gateway 设备。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](../storage/blobs/storage-blob-immutability-policies-manage.md)。
+   > 确保所用的 Azure 存储帐户没有设置不可变策略（如果要将它用于 Azure Stack Edge 或 Data Box Gateway 设备）。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](../storage/blobs/storage-blob-immutability-policies-manage.md)。
 
 6. 此步骤取决于你是创建 SMB 共享还是 NFS 共享。
    - **如果创建 SMB 共享** - 在“所有特权本地用户”字段中，选择“新建”或“使用现有”。 如果创建新的本地用户，请提供 **用户名**、**密码** 和确认密码。 这样就会为本地用户分配权限。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
@@ -100,7 +100,7 @@ ms.locfileid: "97898182"
 
 ## <a name="mount-a-share"></a>装载共享
 
-如果先创建了某个共享，然后再在 Azure Stack Edge Pro 设备上配置计算，则需装载该共享。 通过以下步骤装载共享。
+如果先创建了某个共享，然后再在 Azure Stack Edge 设备上配置计算，则需装载该共享。 通过以下步骤装载共享。
 
 1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到“云存储网关”>“共享”。 从共享列表中选择要装载的共享。 “用于计算”列会将所选共享的状态显示为“已禁用”。
 

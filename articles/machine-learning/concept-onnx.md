@@ -1,5 +1,5 @@
 ---
-title: ONNX：高性能、跨平台推理
+title: ONNX 模型：优化推理
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Open Neural Network Exchange (ONNX) 来帮助优化机器学习模型的推理。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5a1ed6c43e4d3a96e0e19d7be50e1e16bcab780e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e12b1761f8b6536895c1441667f77add002cd860
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98071232"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480005"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX 和 Azure 机器学习：创建和加速 ML 模型
 

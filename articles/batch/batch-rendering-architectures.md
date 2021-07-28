@@ -4,12 +4,12 @@ description: 使用 Azure Batch 和其他 Azure 服务以迸发到云的方式�
 ms.date: 02/07/2019
 ms.topic: how-to
 ms.custom: seodec18
-ms.openlocfilehash: 784fd89c3dea88e25a2058713897c7a655c8a3af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: abd67312c9ff8d74cc2a73d9750daca80f28391b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83726513"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481374"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Azure 渲染的参考体系结构
 
@@ -51,9 +51,7 @@ ms.locfileid: "83726513"
 
   ![云迸发 - 混合计算和存储](./media/batch-rendering-architectures/hybrid-compute-storage-avere.png)
 
-
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解如何将[渲染管理器](batch-rendering-render-managers.md)与 Azure Batch 配合使用。
-
-* 详细了解[在 Azure 中渲染](batch-rendering-service.md)的选项。
+* 详细了解用于[在 Azure 中渲染](batch-rendering-service.md)的选项。
+* 了解如何将[渲染应用程序与 Batch 一起使用](batch-rendering-applications.md)。

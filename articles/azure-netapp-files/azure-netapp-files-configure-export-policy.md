@@ -1,5 +1,5 @@
 ---
-title: 配置 NFS 卷的导出策略 - Azure NetApp 文件
+title: 为 Azure NetApp 文件 NFS 或双重协议卷配置导出策略 - Azure NetApp 文件
 description: 介绍如何使用 Azure NetApp 文件配置导出策略来控制对 NFS 卷的访问
 services: azure-netapp-files
 author: b-juche
@@ -7,17 +7,17 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 07/27/2020
-ms.openlocfilehash: d3f268a4ce2660350055367770e987a06828e2d7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 05/07/2021
+ms.openlocfilehash: 35bcff2615ab9b31f077a13c1cae7fbe38518575
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740113"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109628241"
 ---
-# <a name="configure-export-policy-for-an-nfs-volume"></a>为 NFS 卷配置导出策略
+# <a name="configure-export-policy-for-nfs-or-dual-protocol-volumes"></a>为 NFS 或双重协议卷配置导出策略
 
-可配置导出策略来控制对 Azure NetApp 文件卷的访问。 Azure NetApp 文件导出策略支持使用 NFS 协议（NFSv3 和 NFSv4.1）和双重协议（NFSv3 和 SMB）的卷。 
+可以配置导出策略来控制对某个使用 NFS 协议（NFSv3 和 NFSv4.1）或双协重议（NFSv3 和 SMB）的 Azure NetApp 文件卷的访问。 
 
 最多可创建 5 个导出策略规则。
 
@@ -31,9 +31,9 @@ ms.locfileid: "101740113"
       导出策略最多可以包含五个规则。 规则将按照它们在索引号列表中的顺序进行评估。 首先将评估索引号较小的规则。 例如，索引号为 1 的规则将在索引号为 2 的规则前进行评估。 
 
     * **允许的客户端**：采用以下格式之一指定值：  
-      * IPv4 地址旁边列出的你的 IP 地址。 示例：`10.1.12.24`
-      * 以位数表示子网掩码的 IPv4 地址。 示例：`10.1.12.10/4`
-      * 逗号分隔的 IP 地址。 可通过逗号分隔方式在单个规则中输入多个主机 IP。 示例：`10.1.12.25,10.1.12.28,10.1.12.29`
+      * IPv4 地址旁边列出的你的 IP 地址。 示例： `10.1.12.24`
+      * 以位数表示子网掩码的 IPv4 地址。 示例： `10.1.12.10/4`
+      * 逗号分隔的 IP 地址。 可通过逗号分隔方式在单个规则中输入多个主机 IP。 长度限制为 4096 个字符。 示例： `10.1.12.25,10.1.12.28,10.1.12.29`
 
     * **访问权限**：选择以下访问权限类型之一：  
       * 无访问权限 
@@ -49,5 +49,5 @@ ms.locfileid: "101740113"
       ![导出策略](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 
 ## <a name="next-steps"></a>后续步骤 
-* [为虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+* [装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [管理快照](azure-netapp-files-manage-snapshots.md)

@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: ba3ca140abe36a31ffa03422420ea537bbe4f39a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97935744"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory 治理操作参考指南
@@ -29,7 +29,7 @@ ms.locfileid: "97935744"
 
 ### <a name="assign-owners-to-key-tasks"></a>将所有者分配到关键任务
 
-管理 Azure Active Directory 需要持续执行关键操作任务和流程，这可能并不完全属于某一个推出式项目。 设置这些任务对于优化环境仍非常重要。 关键任务及其建议所有者包括：
+管理 Azure Active Directory 需要持续执行关键操作任务和过程，这可能并不属于一个推出项目。 设置这些任务对于优化环境仍非常重要。 关键任务及其建议所有者包括：
 
 | 任务 | 所有者 |
 | :- | :- |
@@ -63,7 +63,7 @@ ms.locfileid: "97935744"
 |载入应用程序的测试环境|将应用程序添加到生产环境，从“MyApps”面板中隐藏此应用程序，并在质量保证 (QA) 阶段将其分配给测试用户。|
 |更改同步规则|在采用生产环境当前同种配置的测试 Azure AD Connect 中执行更改（这也称为“暂存模式”），并分析 CSExport 结果。 如果满意，则在准备就绪时切换到生产环境。|
 |更改品牌|在单独的测试租户中进行测试。|
-|推出新功能|如果此功能支持向目标用户集推出，则确定试用用户并完成生成。例如，自助式密码重置和多重身份验证可以面向特定用户或组。|
+|推出新功能|如果该功能支持向目标用户群推出，则确定试点用户并逐步推出。例如，自助式密码重置和多重身份验证可以面向特定用户或组。|
 |将应用程序从本地标识提供者 (IdP)（例如 Active Directory）转换到 Azure AD|如果应用程序支持多个 IdP 配置（如 Salesforce），则在更改时段配置这两者并测试 Azure AD（如果应用程序生成 HRD 页面）。 如果应用程序无法支持多个 IdP，则在更改控制时段和程序停机期间规划测试。|
 |更新动态组规则|使用新规则创建并行动态组。 与计算出的结果进行比较，例如，使用相同的条件运行 PowerShell。<br>如果测试通过，则切换到使用旧组的位置（如果可行）。|
 |迁移产品许可证|请参阅[为 Azure Active Directory 许可组中单个用户更改许可证](../enterprise-users/licensing-groups-change-licenses.md)。|
@@ -128,7 +128,7 @@ ms.locfileid: "97935744"
 > [!NOTE]
 > Azure AD 权利管理需要 Azure AD Premium P2 许可证。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 确保标识治理安全包括八个方面。 此列表有助于你确定应采取的操作，以便于评估和证明已授予非特权标识和特权标识的权限、审核和控制环境更改。
 

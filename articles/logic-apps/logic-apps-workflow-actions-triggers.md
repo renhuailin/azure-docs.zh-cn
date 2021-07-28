@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 04/05/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: ea4a4a47e91e88c00ca8a4e886d0372a24482907
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 95f2e47d3cf0b967f42b988b565da3643796534d
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98784302"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490754"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>有关 Azure 逻辑应用中触发器和操作类型的架构参考指南
 
@@ -337,7 +337,7 @@ ms.locfileid: "98784302"
 
 为很好地配合逻辑应用进行工作，终结点必须符合特定触发器模式或协定，并识别以下响应属性：
 
-| 属性 | 必须 | 说明 |
+| 属性 | 必选 | 说明 |
 |----------|----------|-------------|
 | 状态代码 | 是 | “200 OK”状态代码启动运行。 其他任何状态代码均不会启动运行。 |
 | 重试间隔标头 | 否 | 逻辑应用再次轮询终结点之前所要经过的秒数 |
@@ -2413,11 +2413,11 @@ ID,Product_Name
 
 开启触发器的并发控制后，触发器实例将并行运行，直至达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要更改此默认并发限制，可使用代码视图编辑器或逻辑应用设计器，因为通过设计器更改并发设置会添加或更新基础触发器定义中的 `runtimeConfiguration.concurrency.runs` 属性，反之亦然。 此属性控制可并行运行的新工作流实例的最大数目。
 
-下面是对于何时需要在触发器上启用并发的一些考量：
-
-* 启用并发后，会显著降低[解除数组批处理](#split-on-debatch)时的 [SplitOn 限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 如果项数超过此限制，会禁用 SplitOn 功能。
+下面是在触发器上启用并发前的一些考量：
 
 * 启用并发控制后，无法禁用并发。
+
+* 启用并发后，会显著降低[解除数组批处理](#split-on-debatch)时的 [SplitOn 限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 如果项数超过此限制，会禁用 SplitOn 功能。
 
 * 启用并发后，长时间运行的逻辑应用实例可能会导致新的逻辑应用实例进入等待状态。 此状态会阻止 Azure 逻辑应用创建新实例，即使并发运行次数小于指定的最大并发运行次数，也会发生这种情况。
 
@@ -2450,9 +2450,9 @@ ID,Product_Name
 
 #### <a name="edit-in-code-view"></a>在代码视图中编辑 
 
-在基础触发器定义中添加 `runtimeConfiguration.concurrency.runs` 属性，该属性可以有一个从 `1` 到 `50` 范围内的值。
+在基础触发器定义中，添加 `runtimeConfiguration.concurrency.runs` 属性，并根据[触发器并发限制](logic-apps-limits-and-config.md#concurrency-debatching)设置值。 若要按顺序运行工作流，请将属性值设置为 `1`。
 
-以下示例将并发运行数限制为 10 个实例：
+此示例将并发运行限制为 10 个实例：
 
 ```json
 "<trigger-name>": {

@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 01/08/2021
-ms.openlocfilehash: ab8065a14aac9e798bfe7d632aa5b33c44706190
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 850586db4edf721981315c67317790429dd67d64
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775821"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110465983"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
@@ -25,10 +25,10 @@ ms.locfileid: "107775821"
 
 这些示例需要：
 
-* **Azure 订阅** 上的 **所有者** 或 **Azure 帐户管理员** 角色
+* “Azure 订阅”上的“所有者”、“Azure 帐户管理员”或“Azure 共同管理员”角色
 * Azure CLI 2.7.0 版或更高版本
 
-为了避免需要“所有者”或“Azure 帐户管理员”角色，你可以手动配置托管标识或使用现有托管标识从 AKS 进行 ACR 身份验证。 有关详细信息，请参阅[使用 Azure 托管标识向 Azure 容器注册表验证身份](../container-registry/container-registry-authentication-managed-identity.md)。
+为了避免需要“所有者”、“Azure 帐户管理员”或“Azure 共同管理员”角色，可以使用现有托管标识从 AKS 进行 ACR 身份验证。 有关详细信息，请参阅[使用 Azure 托管标识向 Azure 容器注册表验证身份](../container-registry/container-registry-authentication-managed-identity.md)。
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>通过 ACR 集成创建新的 AKS 群集
 
@@ -71,6 +71,9 @@ az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-name>
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 ```
+
+> [!NOTE]
+> 运行 `az aks update --attach-acr` 使用运行该命令的用户的权限来创建角色 ACR 分配。 此角色分配给 kubelet 托管标识。 有关 AKS 托管标识的详细信息，请参阅[托管标识摘要][summary-msi]。
 
 还可以使用以下命令删除 ACR 与 AKS 群集之间的集成
 
@@ -151,9 +154,11 @@ nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 
 ### <a name="troubleshooting"></a>故障排除
 * 运行 [az aks check-acr](/cli/azure/aks#az_aks_check_acr) 命令，验证是否可以从 AKS 群集访问注册表。
-* 详细了解 [ACR 诊断](../container-registry/container-registry-diagnostics-audit-logs.md)
+* 详细了解 [Azure 监视](../container-registry/monitor-service.md)
 * 详细了解 [ACR 运行状况](../container-registry/container-registry-check-health.md)
 
 <!-- LINKS - external -->
 [AKS AKS CLI]: /cli/azure/aks#az_aks_create
 [Image Pull secret]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+
+[summary-msi]: use-managed-identity.md#summary-of-managed-identities

@@ -4,17 +4,17 @@ description: 了解如何进行 DNS 绑定？
 documentationCenter: ''
 author: barclayn
 manager: daveba
-ms.service: identity
+ms.service: active-directory
 ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: ad5bb6e45479b4cccfa0b002427066439135e468
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: c1254176966a902f81cd42b68db17557288aa241
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588439"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110466173"
 ---
 # <a name="link-your-domain-to-your-decentralized-identifier-did"></a>将域链接到分散式身份识别 (DID)
 
@@ -29,7 +29,7 @@ ms.locfileid: "107588439"
 > * 域链接流程的工作原理是什么？
 > * 验证/未验证域逻辑的工作原理是什么？
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要将 DID 链接到域，需要完成以下操作。
 
@@ -122,7 +122,7 @@ DID 作为未定位到现有系统的标识符启动。 DID 的作用在于可�
 
 4. 复制 DID 并打开 [ION 网络资源管理器](https://identity.foundation/ion/explorer)，验证 DID 文档中是否包含相同的域。 
 
-5. 在指定位置托管已知配置资源。 示例： `https://www.example.com/.well-known/did-configuration.json`
+5. 在指定位置托管已知配置资源。 示例：`https://www.example.com/.well-known/did-configuration.json`
 
 6. 尝试使用 Microsoft Authenticator 颁发或演示以进行验证。 请确保 Authenticator“警告不安全应用”中的设置已打开。
 
@@ -133,4 +133,4 @@ DID 作为未定位到现有系统的标识符启动。 DID 的作用在于可�
 
 ## <a name="next-steps"></a>后续步骤
 
-若加载期间输入的域信息不正确并要进行更改，需要[选择退出](how-to-opt-out.md)。目前，我们不支持更新 DID 文档。 选择退出并选择后退会创建全新 DID。
+如果加入期间输入的域信息不正确，或者要对其进行更改，则需[选择退出](how-to-opt-out.md)。目前，我们不支持更新 DID 文档。 选择退出并选择后退会创建全新 DID。

@@ -6,17 +6,17 @@ author: tamram
 services: storage
 ms.author: tamram
 ms.reviewer: ozguns
-ms.date: 02/10/2021
+ms.date: 06/08/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: fbb96fc1d2cb12e1aede07295357abfaa6d6b67f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35f4e76a437c5ea5926a95b199e433c6e5b1eb76
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100385007"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901252"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>选择如何在 Azure 门户中授予对队列数据的访问权限
 
@@ -28,11 +28,12 @@ ms.locfileid: "100385007"
 
 ### <a name="use-the-account-access-key"></a>使用帐户访问密钥
 
-若要使用帐户访问密钥访问队列数据，你必须已分配到一个 Azure 角色，此角色包含 Azure RBAC 操作 **Microsoft.Storage/storageAccounts/listkeys/action**。 此 Azure 角色可以是内置角色，也可以是自定义角色。 支持 **Microsoft.Storage/storageAccounts/listkeys/action** 的内置角色包括：
+若要使用帐户访问密钥访问队列数据，你必须已分配到一个 Azure 角色，此角色包含 Azure RBAC 操作 **Microsoft.Storage/storageAccounts/listkeys/action**。 此 Azure 角色可以是内置角色，也可以是自定义角色。 支持“Microsoft.Storage/storageAccounts/listkeys/action”的内置角色（按权限从小到大排序）包括：
 
-- Azure 资源管理器[所有者角色](../../role-based-access-control/built-in-roles.md#owner)
-- Azure 资源管理器[参与者角色](../../role-based-access-control/built-in-roles.md#contributor)
+- [读取者和数据访问](../../role-based-access-control/built-in-roles.md#reader-and-data-access)角色
 - [存储帐户参与者角色](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
+- Azure 资源管理器[参与者角色](../../role-based-access-control/built-in-roles.md#contributor)
+- Azure 资源管理器[所有者角色](../../role-based-access-control/built-in-roles.md#owner)
 
 尝试在 Azure 门户中访问队列数据时，门户首先会检查你是否被分配了一个包含 **Microsoft.Storage/storageAccounts/listkeys/action** 的角色。 如果你被分配了包含此操作的角色，则门户将使用帐户密钥来访问队列数据。 如果你不拥有包含此操作的角色，则门户会尝试使用你的 Azure AD 帐户访问数据。
 
@@ -46,21 +47,16 @@ ms.locfileid: "100385007"
 
 若要使用 Azure AD 帐户从 Azure 门户访问队列数据，必须符合以下条件：
 
-- 至少拥有 Azure 资源管理器[`Reader`](../../role-based-access-control/built-in-roles.md#reader)角色，该角色的权限范围为存储帐户或更高级别。 “读取者”角色授予限制性最高的权限，但也接受可授予存储帐户管理资源访问权限的其他 Azure 资源管理器角色。
 - 拥有一个可提供队列数据访问权限的内置角色或自定义角色。
+- 至少拥有 Azure 资源管理器[读取者](../../role-based-access-control/built-in-roles.md#reader)角色，该角色的权限范围为存储帐户或更高级别。 “读取者”角色授予限制性最高的权限，但也接受可授予存储帐户管理资源访问权限的其他 Azure 资源管理器角色。
 
-必须提供“读取者”角色分配或其他 Azure 资源管理器角色分配，使用户能够在 Azure 门户中查看和导航存储帐户管理资源。 授予队列数据访问权限的 Azure 角色不会授予存储帐户管理资源访问权限。 若要在门户中访问队列数据，用户需要有权在存储帐户资源中导航。 有关此要求的详细信息，请参阅[分配“读取者”角色以访问门户](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access)。
+Azure 资源管理器“读取者”角色允许用户查看存储帐户资源，但不允许修改这些资源。 该角色不提供对 Azure 存储中的数据的读取权限，而只提供对帐户管理资源的读取权限。 “读取者”角色是用户导航到 Azure 门户中的队列所需的。
 
-支持访问队列数据的内置角色包括：
-
-- [存储队列数据参与者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)：对队列的读取/写入/删除权限。
-- [存储队列数据读取者](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader)：对队列的只读权限。
+若要了解支持访问队列数据的内置角色，请参阅[队列的 Azure 角色](assign-azure-role-data-access.md#azure-roles-for-queues)。
 
 自定义角色能够支持内置角色所提供的相同权限的不同组合。 若要详细了解如何创建 Azure 自定义角色，请参阅 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)和[了解 Azure 资源的角色定义](../../role-based-access-control/role-definitions.md)。
 
-不支持使用经典订阅管理员角色列出队列。 若要列出队列，用户必须拥有 Azure 资源管理器“读取者”角色、“存储队列数据读取者”角色或“存储队列数据参与者”角色。  
-
-> [!IMPORTANT]
+> [!NOTE]
 > Azure 门户中存储资源管理器的预览版不支持使用 Azure AD 凭据来查看和修改队列数据。 Azure 门户中的存储资源管理器始终使用帐户密钥来访问数据。 若要在 Azure 门户中使用存储资源管理器，你必须被分配一个包含 **Microsoft.Storage/storageAccounts/listkeys/action** 的角色。
 
 ## <a name="navigate-to-queues-in-the-azure-portal"></a>在 Azure 门户中导航到队列
@@ -98,6 +94,4 @@ ms.locfileid: "100385007"
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure Active Directory 验证对 Azure Blob 和队列的访问权限](../common/storage-auth-aad.md)
-- [使用 Azure 门户为 blob 和队列数据分配 Azure 角色](../common/storage-auth-aad-rbac-portal.md)
-- [使用 Azure CLI 分配用于访问 blob 和队列数据的 Azure 角色](../common/storage-auth-aad-rbac-cli.md)
-- [使用 Azure PowerShell 模块分配用于访问 blob 和队列数据的 Azure 角色](../common/storage-auth-aad-rbac-powershell.md)
+- [分配用于访问队列数据的 Azure 角色](assign-azure-role-data-access.md)

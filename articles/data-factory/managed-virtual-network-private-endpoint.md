@@ -1,20 +1,20 @@
 ---
 title: 托管虚拟网络和托管专用终结点
 description: 了解 Azure 数据工厂中的托管虚拟网络和托管专用终结点。
-ms.author: abnarain
-author: nabhishek
+ms.author: lle
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: b6000d8ff3eb35d678a94adc021efcadf8a77f81
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7804279f3d5d95e36918a7c5d3cae543d59e6d9c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101699619"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470757"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure 数据工厂托管虚拟网络（预览版）
 
@@ -36,7 +36,13 @@ ms.locfileid: "101699619"
 - 托管虚拟网络与托管专用终结点一起防止数据外泄。 
 
 > [!IMPORTANT]
->目前，托管 VNet 仅在与 Azure 数据工厂区域相同的区域中受支持。
+>当前，托管虚拟网络仅在与 Azure 数据工厂区域相同的区域中受支持。
+
+> [!Note]
+>由于 Azure 数据工厂托管虚拟网络仍以公共预览版提供，因此没有 SLA 保证。
+
+> [!Note]
+>现有的公共 Azure 集成运行时无法切换到 Azure 数据工厂托管虚拟网络中的 Azure 集成运行时，反之亦然。
  
 
 ![ADF 托管虚拟网络体系结构](./media/managed-vnet/managed-vnet-architecture-diagram.png)
@@ -57,7 +63,7 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 > 建议你创建托管专用终结点来连接到所有 Azure 数据源。 
  
 > [!WARNING]
-> 如果 PaaS 数据存储（Blob、ADLS Gen2、Azure Synapse Analytics）已针对它创建了专用终结点，即使它允许从所有网络进行访问，ADF 也只能使用托管专用终结点对其进行访问。 请确保在此类方案中创建专用终结点。 
+> 如果 PaaS 数据存储（Blob、ADLS Gen2、Azure Synapse Analytics）已针对它创建了专用终结点，即使它允许从所有网络进行访问，ADF 也只能使用托管专用终结点对其进行访问。 如果专用终结点不存在，在这种情况下必须创建一个。 
 
 在 Azure 数据工厂中创建托管专用终结点时，创建的专用终结点连接将处于“挂起”状态。 将启动审批工作流。 专用链接资源所有者负责批准或拒绝该连接。
 
@@ -74,12 +80,61 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 
 ![交互式创作](./media/managed-vnet/interactive-authoring.png)
 
+## <a name="activity-execution-time-using-managed-virtual-network"></a>使用托管虚拟网络的活动执行时间
+按照设计，托管虚拟网络中的 Azure 集成运行时的队列时间比公共 Azure 集成运行时长，因为我们不会为每个数据工厂都保留一个计算节点，因此每个活动都需要预热后才能启动，并且主要在虚拟网络联接而不是在 Azure 集成运行时上发生。 对于非复制活动（包括管道活动和外部活动），首次触发时，会有 60 分钟的生存时间 (TTL)。 在 TTL 内，由于节点已预热，因此队列时间要短得多。 
+> [!NOTE]
+> 复制活动还没有 TTL 支持。
+
+## <a name="create-managed-virtual-network-via-azure-powershell"></a>通过 Azure PowerShell 创建托管虚拟网络
+```powershell
+$subscriptionId = ""
+$resourceGroupName = ""
+$factoryName = ""
+$managedPrivateEndpointName = ""
+$integrationRuntimeName = ""
+$apiVersion = "2018-06-01"
+$privateLinkResourceId = ""
+
+$vnetResourceId = "subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/managedVirtualNetworks/default"
+$privateEndpointResourceId = "subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/managedVirtualNetworks/default/managedprivateendpoints/${managedPrivateEndpointName}"
+$integrationRuntimeResourceId = "subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/integrationRuntimes/${integrationRuntimeName}"
+
+# Create managed Virtual Network resource
+New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${vnetResourceId}"
+
+# Create managed private endpoint resource
+New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${privateEndpointResourceId}" -Properties @{
+        privateLinkResourceId = "${privateLinkResourceId}"
+        groupId = "blob"
+    }
+
+# Create integration runtime resource enabled with VNET
+New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeResourceId}" -Properties @{
+        type = "Managed"
+        typeProperties = @{
+            computeProperties = @{
+                location = "AutoResolve"
+                dataFlowProperties = @{
+                    computeType = "General"
+                    coreCount = 8
+                    timeToLive = 0
+                }
+            }
+        }
+        managedVirtualNetwork = @{
+            type = "ManagedVirtualNetworkReference"
+            referenceName = "default"
+        }
+    }
+
+```
+
 ## <a name="limitations-and-known-issues"></a>限制和已知问题
 ### <a name="supported-data-sources"></a>支持的数据源
-支持通过专用链接从 ADF 托管虚拟网络连接以下数据源。
-- Azure Blob 存储
-- Azure 表存储
-- Azure 文件
+以下数据源具有本机专用终结点支持，并可通过专用链接从 ADF 托管虚拟网络连接。
+- Azure Blob 存储（不包括存储帐户 V1）
+- Azure 表存储（不包括存储帐户 V1）
+- Azure 文件（不包括存储帐户 V1）
 - Azure Data Lake Gen2
 - Azure SQL 数据库（不包括 Azure SQL 托管实例）
 - Azure Synapse Analytics
@@ -92,22 +147,36 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 - Azure Database for MariaDB
 
 ### <a name="azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions"></a>Azure 数据工厂托管虚拟网络在以下 Azure 区域可用：
-- 美国东部
-- 美国东部 2
-- 美国中西部
-- 美国西部
-- 美国西部 2
-- 美国中南部
-- Central US
-- 北欧
-- 西欧
-- 英国南部
-- Southeast Asia
 - 澳大利亚东部
 - 澳大利亚东南部
+- 巴西南部
+- 加拿大中部
+- 加拿大东部
+- 印度中部
+- 美国中部
+- 美国东部
+- 美国东部 2
+- 法国中部
+- 日本东部
+- 日本西部
+- 韩国中部
+- 北欧
+- 挪威东部
+- 南非北部
+- 美国中南部
+- 东南亚
+- 瑞士北部
+- 阿拉伯联合酋长国北部
+- 英国南部
+- 英国西部
+- 美国中西部
+- 西欧
+- 美国西部
+- 美国西部 2
+
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>通过公共终结点从 ADF 托管虚拟网络进行出站通信
-- 仅打开端口 443 进行出站通信。
+- 打开所有端口进行出站通信。
 - 不支持通过公共终结点从 ADF 托管虚拟网络连接到 Azure 存储和 Azure Data Lake Gen2。
 
 ### <a name="linked-service-creation-of-azure-key-vault"></a>为 Azure Key Vault 创建链接服务 

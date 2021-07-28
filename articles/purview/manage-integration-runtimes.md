@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: 9276f845c95b5e736180159b282ddedc33523c17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73144611e835ac1bea20ab92212e52941af84eef
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99980739"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463734"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 
@@ -41,7 +41,7 @@ ms.locfileid: "99980739"
 
    - 复制并粘贴身份验证密钥。
 
-   - 从 [Microsoft Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) 将自承载集成运行时下载到本地 Windows 计算机上。 运行安装程序。
+   - 从 [Microsoft Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) 将自承载集成运行时下载到本地 Windows 计算机上。 运行安装程序。 支持自承载集成运行时版本（例如，5.4.7803.1 和 5.6.7795.1）。 
 
    - 在 **“注册集成运行时(自承载)”** 页上粘贴前面保存的两个密钥的其中一个密钥，然后选择 **“注册”** 。
 

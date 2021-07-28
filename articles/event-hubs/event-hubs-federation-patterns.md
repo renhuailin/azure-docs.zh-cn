@@ -3,12 +3,12 @@ title: 事件复制任务模式 - Azure 事件中心 | Microsoft Docs
 description: 本文为实现特定的事件复制任务模式提供了详细指导
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 438964c228f060dede93abf582c9504b698db8b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: adaa124470e6b3cc94bab647967f08b63a1c4f49
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934605"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110462846"
 ---
 # <a name="event-replication-tasks-patterns"></a>事件复制任务模式
 
@@ -78,7 +78,7 @@ SRV 记录遵循通用约定，以 `_azure_eventhubs._amqp` 为前缀，并包�
 
 | CNAME 记录                | Alias                    |
 | --------------------------- | ------------------------ |
-| `eventhub.test.example.com` | `test1.test.example.com` |
+| `eventhub.test.example.com` | `eh1.test.example.com`   |
 
 使用允许显式查询 CNAME 和 SRV 记录的 DNS 客户端（Java 和 .NET 的内置客户端只允许简单地将名称解析为 IP 地址），然后可以解析所需的终结点。 例如，对于 [DnsClient.NET](https://dnsclient.michaco.net/)，lookup 函数为：
 
@@ -195,7 +195,7 @@ select * into dest2Output from inputSource where Info = 2
 
 ## <a name="log-projection"></a>日志投影
 
-日志投影模式将事件流平展到已编制索引的数据库，流中的事件将变成数据库中的记录。 通常，事件将添加到同一个集合或表中，事件中心分区键将变成主键的、旨在使记录保持唯一的一部分。
+日志投影模式将事件流平展到已编制索引的数据库，流中的事件将变成数据库中的记录。 通常，事件将添加到同一个集合或表中，事件中心分区键将变成旨在使记录保持唯一的主键的一部分。
 
 日志投影可以生成事件数据时序历史图或精简视图，从而只为每个分区键保留最新事件。 目标数据库的形状最终取决于你和你的应用程序的需求。 此模式也称为“事件溯源”。
 

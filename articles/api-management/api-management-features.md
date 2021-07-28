@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/13/2021
 ms.author: apimpm
-ms.openlocfilehash: f111729d7d7707ed4f40ce8f89ce76975fb47400
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 53804e99a3bc341669c0d4943464835cc7d1e531
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536449"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463280"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API 管理层的基于功能的比较
 
@@ -41,6 +41,7 @@ ms.locfileid: "107536449"
 | 直接管理 API                                                                        | 否          | 是       | 是   | 是      | 是     |
 | Azure Monitor 日志和指标                                                               | 否          | 是       | 是   | 是      | 是     |
 | 静态 IP                                                                                    | 否          | 是       | 是   | 是      | 是     |
+| [WebSocket API（预览版）](websocket-api.md)                                                                                    | 否          | 是       | 是   | 是      | 是     |
 
 <sup>1</sup> 允许使用 Azure AD（和 Azure AD B2C）作为标识提供者，以用于开发人员门户上的用户登录。<br/>
 <sup>2</sup> 包括相关功能，例如用户、组、问题、应用程序和电子邮件模板以及通知。<br/>

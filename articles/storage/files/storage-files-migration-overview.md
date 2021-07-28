@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 44fa4fb953399622d75f0239d3e7d626557629f7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0c91f81c1909819f3a5b8d8475ccdd676132dd13
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108744688"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477475"
 ---
 # <a name="migrate-to-azure-file-shares"></a>迁移到 Azure 文件共享
 
@@ -45,7 +45,7 @@ Azure 有多种可用的云存储类型。 文件迁移到 Azure 的一个重要
 
 - 将所有适用的文件信息存储在源上。
 - 通过迁移工具传输文件。
-- 将文件存储在迁移的目标存储中。
+- 将文件存储在迁移的目标存储中。 </br> 最终，此页上的迁移指南目标是一个或多个 Azure 文件共享。 请考虑这个 [Azure 文件共享不支持的功能/文件保真度列表](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)。
 
 若要确保迁移顺利进行，请[根据需要确定最佳复制工具](#migration-toolbox)，并将存储目标与源相匹配。
 
@@ -57,7 +57,7 @@ Active Directory 用户（作为其本地域控制器）可以以本机方式访
 
 备用数据流是文件保真度的主要方面，当前无法存储在 Azure 文件共享中的文件上。 它将在使用 Azure 文件同步时，保留在本地。
 
-详细了解 Azure 文件共享的 [Azure AD 身份验证](storage-files-identity-auth-active-directory-enable.md)和 [Azure AD DS 身份验证](storage-files-identity-auth-active-directory-domain-service-enable.md)。
+详细了解 Azure 文件共享的[本地 Active Directory 身份验证](storage-files-identity-auth-active-directory-enable.md)和 [Azure AD DS 身份验证](storage-files-identity-auth-active-directory-domain-service-enable.md)。
 
 ## <a name="migration-guides"></a>迁移指南
 
@@ -85,8 +85,8 @@ Active Directory 用户（作为其本地域控制器）可以以本机方式访
 | Windows Server 2012 和更低版本 | <ul><li>通过 DataBox 和 Azure 文件同步迁移到最近的服务器 OS</li><li>使用 Azure 文件同步通过存储迁移服务迁移到最新的服务器，然后上传</li></ul> | <ul><li>使用 Azure 文件同步通过存储迁移服务迁移到最新的服务器</li><li>[通过 RoboCopy 迁移到已装载的 Azure 文件共享](storage-files-migration-robocopy.md)</li></ul> |
 | 网络连接存储 (NAS) | <ul><li>[通过 Azure 文件同步 + 上传](storage-files-migration-nas-hybrid.md)</li><li>[通过 DataBox + Azure 文件同步](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>[通过 DataBox](storage-files-migration-nas-cloud-databox.md)</li><li>[通过 RoboCopy 迁移到已装载的 Azure 文件共享](storage-files-migration-robocopy.md)</li></ul> |
 | Linux/Samba | <ul><li>[Azure 文件同步和 RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>[通过 RoboCopy 迁移到已装载的 Azure 文件共享](storage-files-migration-robocopy.md)</li></ul> |
-| Microsoft Azure StorSimple 云设备 8100 或 StorSimple 云设备 8600 | <ul><li>[通过专用数据迁移云服务](storage-files-migration-storsimple-8000.md)</li></ul> | <ul><li>[通过专用数据迁移云服务](storage-files-migration-storsimple-8000.md)</li></ul> |
-| StorSimple 云设备 1200 | <ul><li>[通过 Azure 文件同步](storage-files-migration-storsimple-1200.md)</li></ul> | |
+| Microsoft Azure StorSimple 8100 或 8600 系列设备 | <ul><li>[通过专用数据迁移云服务](storage-files-migration-storsimple-8000.md)</li></ul> | <ul><li>[通过专用数据迁移云服务](storage-files-migration-storsimple-8000.md)</li></ul> |
+| StorSimple 1200 虚拟设备 | <ul><li>[通过 Azure 文件同步](storage-files-migration-storsimple-1200.md)</li></ul> | |
 
 ## <a name="migration-toolbox"></a>迁移工具箱
 
@@ -119,9 +119,9 @@ Microsoft 和其他公司提供了几种文件复制工具。 若要为迁移场
 |![是，推荐](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | 支持。 可以将 Azure 文件共享装载为网络驱动器。 | 完全保真。* |
 |![是，推荐](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure 文件同步 | 以本机方式集成到 Azure 文件共享中。 | 完全保真。* |
 |![是，推荐](media/storage-files-migration-overview/circle-green-checkmark.png)| 存储迁移服务 | 间接支持。 可以在 SMS 目标服务器上将 Azure 文件共享装载为网络驱动器。 | 完全保真。* |
-|![是，推荐](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy </br>版本 10.6 | 支持。 | 不支持源根 ACL 的复制，否则为完全保真。* </br>[了解如何将 AzCopy 与 Azure 文件共享配合使用](../common/storage-use-azcopy-files.md) |
 |![是，推荐](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | 支持。 | DataBox 完全支持元数据。 |
-|![不完全推荐](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure 存储资源管理器 </br>版本 1.14 | 支持。 | 不复制 ACL。 支持时间戳。  |
+|![不完全推荐](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| AzCopy </br>最新版本 | 支持，但不完全建议这样做。 | 不支持大规模差异复制，某些文件保真度可能会丢失。 </br>[了解如何将 AzCopy 与 Azure 文件共享配合使用](../common/storage-use-azcopy-files.md) |
+|![不完全推荐](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure 存储资源管理器 </br>最新版本 | 支持，但不建议这样做。 | 丢失大部分文件保真度，如 ACL。 支持时间戳。 |
 |![不推荐](media/storage-files-migration-overview/circle-red-x.png)| Azure 数据工厂 | 支持。 | 不复制元数据。 |
 |||||
 

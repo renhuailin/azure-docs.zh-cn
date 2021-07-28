@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 04/14/2021
-ms.openlocfilehash: 826183e09f2aa7f3f22ace8b5ce3e16767d49863
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.date: 05/20/2021
+ms.openlocfilehash: ef0639637736b0a8b4f41d6fd038de81a8e94a69
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515646"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454953"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure 数据工厂中的映射数据流
 
@@ -84,7 +84,19 @@ ms.locfileid: "107515646"
 
 ## <a name="data-flow-data-types"></a>数据流数据类型
 
-数组、二进制、布尔、复杂、十进制、日期、浮点、整数、Long、映射、short、字符串、时间戳
+* array
+* binary
+* boolean
+* complex
+* decimal（包括精度）
+* date
+* FLOAT
+* integer
+* long
+* map
+* short
+* 字符串
+* timestamp
 
 ## <a name="data-flow-activity"></a>数据流活动
 

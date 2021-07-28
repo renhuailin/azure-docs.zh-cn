@@ -5,13 +5,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 01/03/2021
-ms.openlocfilehash: 0663690318773ccad3bddfaaa03e456c2f58895e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/20/2021
+ms.openlocfilehash: 3793fb3495ca9df9ab8ed408090a8f285f6488b0
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100383375"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464640"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure 数据工厂中的数据流活动
 
@@ -70,15 +70,18 @@ traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗略�
 
 可以动态设置“核心计数”和“计算类型”属性，以在运行时调整传入源数据的大小。 使用管道活动（例如“查找”或“获取元数据”），以便查找源数据集数据的大小。 然后，在“数据流”活动属性中使用“添加动态内容”。
 
+> [!NOTE]
+> 在 Synapse 数据流中选择驱动程序和工作器节点核心时，将会始终使用至少 3 个节点。
+
 ![动态数据流](media/data-flow/dyna1.png "动态数据流")
 
 [下面是介绍此方法的简短视频教程](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
 ### <a name="data-flow-integration-runtime"></a>数据流集成运行时
 
-选择用于数据流活动执行的 Integration Runtime。 默认情况下，数据工厂将使用具有四个辅助角色核心且没有生存时间 (TTL) 的自动解析 Azure Integration Runtime。 此 IR 具有常规用途计算类型，并在与工厂相同的区域中运行。 可以创建自己的 Azure Integration Runtime，使其用于定义数据流活动执行所需的特定区域、计算类型、核心数和 TTL。
+选择用于数据流活动执行的 Integration Runtime。 在默认情况下，数据工厂会将自动解析 Azure Integration Runtime 与四个工作器核心配合使用。 此 IR 具有常规用途计算类型，并在与工厂相同的区域中运行。 对于已运营化的管道，强烈建议创建你自己的 Azure Integration Runtime，用于定义执行数据流活动所需的特定区域、计算类型、核心计数和 TTL。
 
-对于管道执行，群集是一个作业群集，在执行开始之前需要花费几分钟来启动。 如果未指定 TTL，则每次管道运行都需要此启动时间。 如果指定 TTL，暖群集池将在上一次执行后指定的时间内保持活动状态，从而缩短启动时间。 例如，如果 TTL 为 60 分钟，并且每小时运行一次数据流，则群集池将保持活动状态。 有关详细信息，请参阅 [Azure Integration Runtime](concepts-integration-runtime.md)。
+对于大多数生产工作负荷，建议至少使用一个采用 8+8（总计 16）个 v-Core 和 10 分钟配置的“常规用途”计算类型（对于大型工作负荷，建议不要使用“计算优化”计算类型）。 通过设置小型 TTL，Azure IR 可以维护一个热群集，它不会出现冷群集那种需要几分钟时间才能启动的情况。 通过在 Azure IR 数据流配置上选择“快速重复使用”，你还可以进一步加快数据流的执行速度。 有关详细信息，请参阅 [Azure Integration Runtime](concepts-integration-runtime.md)。
 
 ![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 
@@ -100,6 +103,10 @@ traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗略�
 使用数据流中的分组功能，既可以设置接收器的执行顺序，又可以使用相同的组号将接收器分组在一起。 为了帮助管理组，可以要求 ADF 并行运行同一组中的接收器。 还可以将接收器组设置为继续，即使其中一个接收器遇到错误仍可这样设置。
 
 数据流接收器的默认行为是以串行方式顺序执行每个接收器，并且在接收器中遇到错误时使数据流失败。 此外，除非进入数据流属性并为接收器设置不同的优先级，否则所有接收器均默认为同一组。
+
+### <a name="first-row-only"></a>仅第一行
+
+此选项仅适用于已为“输出到活动”启用了缓存接收器的数据流。 直接注入到管道中的数据流的输出限制为 2MB。 设置“仅第一行”有助于在将数据流活动输出直接注入到管道时限制来自数据流的数据输出。
 
 ![接收器属性](media/data-flow/sink-properties.png "设置接收器属性")
 
@@ -125,7 +132,7 @@ traceLevel | 设置数据流活动执行的日志记录级别 | 精细、粗略�
 
 若要执行通过数据流活动运行的调试管道，则必须通过顶部栏中的“数据流调试”滑块来打开数据流调试模式。 借助调试模式，可以针对活动的 Spark 群集运行数据流。 有关详细信息，请参阅[调试模式](concepts-data-flow-debug-mode.md)。
 
-![“调试”按钮](media/data-flow/debugbutton.png "“调试”按钮")
+![显示“调试”按钮所在位置的屏幕截图](media/data-flow/debug-button-3.png)
 
 调试管道针对活动的调试群集运行，而不是针对“数据流”活动设置中指定的集成运行时环境运行。 在启动调试模式时，可以选择调试计算环境。
 
