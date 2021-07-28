@@ -4,12 +4,12 @@ description: Azure HDInsight 中的 Apache Spark 群集的各种 OutOfMemoryErro
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 11a0f750f737fae60f860d4eef4916e53be39bb6
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: dd33972810ab3b0d51bbd82282d0e6cf6cd9d96c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110190982"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104868658"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Spark 的 OutOfMemoryError 异常
 
@@ -57,7 +57,7 @@ java.lang.OutOfMemoryError
 
 1. 确定 Spark 应用程序将要处理的数据大小上限。 根据输入数据的最大大小、转换输入数据时生成的中间数据，以及进一步转换中间数据时生成的输出数据来估算大小。 如果初始估算值不足，请略微增大大小并反复调整，直到内存错误消减。
 
-1. 请确保要使用的 HDInsight 群集具有足够的内存和核心资源，以便能够适应 Spark 应用程序。 若要确定资源是否足够，可以在群集的 YARN UI 的“群集指标”部分中查看“已用内存”与“内存总计”和“已用 VCore 与 VCore 总计” 的值。
+1. 请确保要使用的 HDInsight 群集具有足够的内存和核心资源，以便能够适应 Spark 应用程序。 若要确定资源是否足够，可以在群集的 YARN UI 的“群集指标”部分查看“已用内存”、“内存总计”、“已用 VCore 数”和“VCore 总数”的值   。
 
     :::image type="content" source="./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png" alt-text="yarn 核心内存视图" border="true":::
 
@@ -150,7 +150,7 @@ Livy 服务器无法在 Apache Spark [Linux 上的 Spark 2.1 (HDI 3.6)] 上启�
 17/07/27 17:52:50 INFO ZooKeeper: Client environment:user.name=livy
 17/07/27 17:52:50 INFO ZooKeeper: Client environment:user.home=/home/livy
 17/07/27 17:52:50 INFO ZooKeeper: Client environment:user.dir=/home/livy
-17/07/27 17:52:50 INFO ZooKeeper: Initiating client connection, connectString=<zookeepername1>.cxtzifsbseee1genzixf44zzga.gx.internal.cloudapp.net:2181,<zookeepername2>.cxtzifsbseee1genzixf44zzga.gx.internal.cloudapp.net:2181,<zookeepername3>.cxtzifsbseee1genzixf44zzga.gx.internal.cloudapp.net:2181 sessionTimeout=60000 watcher=org.apache.curator.ConnectionState@25fb8912
+17/07/27 17:52:50 INFO ZooKeeper: Initiating client connection, connectString=zk2-kcspark.cxtzifsbseee1genzixf44zzga.gx.internal.cloudapp.net:2181,zk3-kcspark.cxtzifsbseee1genzixf44zzga.gx.internal.cloudapp.net:2181,zk6-kcspark.cxtzifsbseee1genzixf44zzga.gx.internal.cloudapp.net:2181 sessionTimeout=60000 watcher=org.apache.curator.ConnectionState@25fb8912
 17/07/27 17:52:50 INFO StateStore$: Using ZooKeeperStateStore for recovery.
 17/07/27 17:52:50 INFO ClientCnxn: Opening socket connection to server 10.0.0.61/10.0.0.61:2181. Will not attempt to authenticate using SASL (unknown error)
 17/07/27 17:52:50 INFO ClientCnxn: Socket connection established to 10.0.0.61/10.0.0.61:2181, initiating session
@@ -210,13 +210,13 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 1. 上述命令列出了群集的所有 Zookeeper
 
     ```bash
-    /etc/hadoop/conf/core-site.xml:      <value><zookeepername1>.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181,<zookeepername2>.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181,<zookeepername3>.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181</value>
+    /etc/hadoop/conf/core-site.xml:      <value>zk1-hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181,zk2-      hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181,zk4-hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181</value>
     ```
 
 1. 使用 ping 获取 Zookeeper 节点的所有 IP 地址，或者使用 Zookeeper 名称从头节点连接到 Zookeeper
 
     ```bash
-    /usr/hdp/current/zookeeper-client/bin/zkCli.sh -server <zookeepername1>:2181
+    /usr/hdp/current/zookeeper-client/bin/zkCli.sh -server zk2-hwxspa:2181
     ```
 
 1. 连接到 Zookeeper 后，执行以下命令列出尝试重启的所有会话。

@@ -2,18 +2,18 @@
 metadata:
   title: 有关 Azure Cosmos DB 中 Gremlin API 的常见问题解答
   description: 获取有关 Azure Cosmos DB 中 Gremlin API 的常见问题的解答
+  author: SnehaGunda
   ms.service: cosmos-db
   ms.subservice: cosmosdb-graph
   ms.topic: conceptual
   ms.date: 04/28/2020
-  author: manishmsfte
-  ms.author: mansha
-  ms.openlocfilehash: 2441a10cd21d933474053bc79e6243e984ef625c
-  ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+  ms.author: sngun
+  ms.openlocfilehash: ae7dc956f7cc5b50d9ce2b0ad197a5c523168e4b
+  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/07/2021
-  ms.locfileid: "113354243"
+  ms.lasthandoff: 05/19/2021
+  ms.locfileid: "111907063"
 title: 有关 Azure Cosmos DB 中 Gremlin API 的常见问题解答
 summary: >
   [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]

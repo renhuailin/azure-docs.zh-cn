@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: ce5f1e9a7ab493bf7989a55fccb5ef696433d771
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 7dae716944426ce21cb81bdbb36992238e4bb227
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066963"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298432"
 ---
 # <a name="register-and-scan-teradata-source"></a>注册并扫描 Teradata 源
 
@@ -72,11 +72,11 @@ Teradata 源支持完全扫描，以从 Teradata 数据库中提取元数据，�
 
 1.  在“管理中心”，单击“集成运行时”。 确保设置了自承载集成运行时。 如果尚未设置，请使用[此处](./manage-integration-runtimes.md)介绍的步骤来设置自承载集成运行时
 
-2.  导航到源
+2.  在 Purview Studio 的左窗格中选择“数据映射”选项卡。
 
 3.  选择已注册的 Teradata 源。
 
-4.  选择“+ 新建扫描”
+4.  选择“新建扫描”
 
 5.  提供以下详细信息：
 

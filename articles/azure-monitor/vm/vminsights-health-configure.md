@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/14/2020
 ms.openlocfilehash: 6bda6c9e5f6e23e9e15c12fd507645fc72159302
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104583439"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-preview"></a>在 VM 见解来宾运行状况中配置监视（预览）
@@ -25,7 +25,7 @@ ms.locfileid: "104583439"
 
 | 设置 | 说明 |
 |:---|:---|
-| Enabled | 无论父级设置如何，都将启用监视器。 |
+| 已启用 | 无论父级设置如何，都将启用监视器。 |
 | 已禁用 | 无论父级设置如何，都将禁用监视器。 |
 | 与父级相同 | 监视器将参照父级设置进行启用或禁用。 |
 
@@ -37,14 +37,14 @@ ms.locfileid: "104583439"
 > [!NOTE]
 > 如果父级监视器处于禁用状态，则任何子级监视器也将禁用。 如果显式启用子级监视器，则父级监视器也将一并启用，但其配置状态将保持不变。 在这种情况下，父级监视器中将收到以下消息。
 >
-> 监视器的配置状态是“已禁用”，但“运行状况”的状态与此有出入。这是因为沿用了已配置的更改，或者任一子级监视器已显式启用。
+> 监视器的已配置状态为“已禁用”，但运行状况状态没有反映出来，这就存在差异。原因要么是正在传播已配置的更改，要么已显式启用其任何子监视器。
 
 ## <a name="enable-or-disable-virtual-machine"></a>启用或禁用虚拟机
 可以禁用 VM 监视，以暂时停止所有监视器。 例如，在对 VM 执行维护时，可以禁用监视。
 
 | 设置 | 说明 |
 |:---|:---|
-| Enabled  | 显示计算机的运行状况状态。 |
+| 已启用  | 显示计算机的运行状况状态。 |
 | 已禁用 | 计算机的运行状况状态显示为“已禁用”。 不会创建警报。 |
 
 ## <a name="health-state-logic"></a>运行状况状态逻辑

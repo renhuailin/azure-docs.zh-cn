@@ -6,10 +6,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.openlocfilehash: 7d597c4dbb81562050e9523c61d47d0020fc9059
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104869457"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>操作 Azure HDInsight 上的 ML Services 群集
@@ -71,7 +71,7 @@ ms.locfileid: "104869457"
 
     :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic1.png" alt-text="R Server 管理实用工具 - 诊断" border="true":::
 
-    b. 从“诊断测试”菜单中选择 **A**。出现提示时，输入为本地管理员用户提供的密码。
+    b. 从“诊断测试”菜单中，选择“A”。根据提示，输入为本地管理员用户提供的密码。
 
     :::image type="content" source="./media/r-server-operationalize/hdinsight-diagnostic2.png" alt-text="R Server 管理实用工具 - 测试" border="true":::
 

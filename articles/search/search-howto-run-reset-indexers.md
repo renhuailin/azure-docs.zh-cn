@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.openlocfilehash: bf8a4e51e23f438265af706914a6bc73ec30f64d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101667668"
 ---
 # <a name="how-to-run-or-reset-indexers-skills-or-documents"></a>如何运行或重置索引器、技能或文档
 
 当你首次创建[索引器](search-indexer-overview.md)、按需运行索引器或按计划设置索引器时，可能会发生索引器执行。 在初次运行后，索引器将通过内部的“高水位线”跟踪已编制索引的搜索文档。 该标记永远不会在 API 中公开，但在内部，索引器知道索引编制的停止位置，因此在下一次运行时，它可以从上次中断的位置继续。
 
-如果你要从头开始重新处理，可以通过重置索引器来清除高水位线。 可以在对象层次结构中的较低级别使用重置 API：
+如果你要从头开始重新处理，可以通过重置索引器来清除高水位线。 重置 API 可以在对象层次结构中按递减级别提供：
 
 + 整个搜索集（使用[重置索引器](#reset-indexers)）
 + 特定的文档或文档列表（使用[重置文档 - 预览版](#reset-docs)）
@@ -73,7 +73,7 @@ ms.locfileid: "101667668"
 ## <a name="reset-skills-preview"></a>重置技能（预览版）
 
 > [!IMPORTANT] 
-> [重置技能](/rest/api/searchservice/preview-api/reset-skills)目前为公共预览版，仅可通过预览版 REST API 使用。 根据[使用条款补充](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，预览功能按原样提供。
+> [重置技能](/rest/api/searchservice/preview-api/reset-skills)目前为公共预览版，仅可通过预览版 REST API 使用。 根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，预览功能按原样提供。
 
 对于具有技能组的索引器，可以重置特定的技能，以强制处理该技能，以及依赖于其输出的任何下游技能。 此外还会刷新[缓存的扩充](search-howto-incremental-index.md)。 重置技能会使缓存的技能结果失效，当已部署某个技能的新版本，并且你希望索引器对所有文档重新运行该技能时，此功能非常有用。 
 
@@ -99,7 +99,7 @@ POST https://[service name].search.windows.net/skillsets/[skillset name]/resetsk
 ## <a name="reset-docs-preview"></a>重置文档（预览版）
 
 > [!IMPORTANT] 
-> [重置文档](/rest/api/searchservice/preview-api/reset-documents)目前为公共预览版，仅可通过预览版 REST API 使用。 根据[使用条款补充](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，预览功能按原样提供。
+> [重置文档](/rest/api/searchservice/preview-api/reset-documents)目前为公共预览版，仅可通过预览版 REST API 使用。 根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，预览功能按原样提供。
 
 [重置文档 API](/rest/api/searchservice/preview-api/reset-documents) 接受文档键列表，因此你可以刷新特定的文档。 如果已指定重置参数，这些参数将成为要处理哪些内容的唯一决定因素，而不管基础数据发生了其他哪些更改。 例如，如果自上次索引器运行以来添加或更新了 20 个 Blob，但你只重置了一个文档，则只会处理这一个文档。
 
@@ -147,7 +147,7 @@ POST https://[service name].search.windows.net/indexers/[indexer name]/resetdocs
 
 若要检查重置状态并查看哪些文档键已排队等候处理，请使用[获取索引器状态](/rest/api/searchservice/get-indexer-status)并指定 `api-version=06-30-2020-Preview`。 预览版 API 将返回 `currentState` 节，可以在“获取索引器状态”响应的末尾找到该节。
 
-“重置技能”的“模式”将是 `indexingAllDocs`（因为通过 AI 扩充填充的字段可能会影响所有文档）。
+“重置技能”的“模式”将是 `indexingAllDocs`（因为通过 AI 扩充填充的字段所在的所有文档都可能会受影响）。
 
 对于“重置文档”，模式设置为 `indexingResetDocs`。 索引器会将此状态保持到已处理重置文档调用中提供的所有文档键，并且在该操作正在进行时不会执行任何其他索引器作业为止。 在文档键列表中查找所有文档需要破解每个文档，以查找键并根据该键进行匹配，如果数据集较大，这可能需要一段时间。 如果 Blob 容器包含数百个 Blob，而你想要重置的文档放在最后，则索引器只有在事先检查了所有其他 Blob 之后，才能找到匹配的 Blob。
 

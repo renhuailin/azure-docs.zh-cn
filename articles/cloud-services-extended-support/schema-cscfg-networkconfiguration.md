@@ -8,12 +8,12 @@ author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 2650da2579f13ec1588af7a25e5b28908209bc82
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ed2d48288bf97fe3ebaa1e8ffc1336d8a82d940e
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700178"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719018"
 ---
 # <a name="azure-cloud-services-extended-support-config-networkconfiguration-schema"></a>Azure 云服务（外延支持）的配置 networkConfiguration 架构
 
@@ -70,7 +70,7 @@ ms.locfileid: "101700178"
 | VirtualNetworkSite | 可选。 指定要在其中部署云服务的虚拟网络站点的名称。 此设置不会创建虚拟网络站点。 它引用之前已在虚拟网络的网络文件中定义的站点。 一个云服务只能是一个虚拟网络的成员。 如未指定此设置，则云服务不会部署到虚拟网络。 虚拟网络站点的名称由 `name` 属性的字符串定义。|
 | InstanceAddress | 可选。 指定角色与虚拟网络中的子网或子网集的关联。 将角色名称关联到实例地址时，可以指定要将此角色与之关联的子网。 `InstanceAddress` 包含 Subnets 元素。 与一个或多个子网相关联的角色的名称由 `roleName` 属性的字符串定义。|
 | 子网 | 可选。 指定与网络配置文件中的子网名称相对应的子网。 子网的名称由 `name` 属性的字符串定义。|
-| ReservedIP | 可选。 指定应与部署关联的保留 IP 地址。 必须使用“创建保留 IP 地址”创建保留的 IP 地址。 云服务中的每个部署均可与一个保留 IP 地址相关联。 保留 IP 地址的名称由 `name` 属性的字符串定义。|
+| ReservedIP | 可选。 指定应与部署关联的保留 IP 地址。 对于模板和 PowerShell 部署，需要将保留 IP 的分配方法指定为 `Static`。 云服务中的每个部署只能与一个保留 IP 地址相关联。 保留 IP 地址的名称由 `name` 属性的字符串定义。|
 
 ## <a name="see-also"></a>另请参阅
 [云服务（外延支持）配置架构](schema-cscfg-file.md)。

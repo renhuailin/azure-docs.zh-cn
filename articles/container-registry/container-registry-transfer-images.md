@@ -4,12 +4,12 @@ description: 使用 Azure 存储帐户创建传输管道，将映像集合或其
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: 4fe36366011fb790d25419ac46a54c4bf5ad94bf
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: c966600b0ca9d65cf533c3c2f0aca211c84917bd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104785812"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780768"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>将项目传输到另一个注册表
 
@@ -416,19 +416,25 @@ az resource delete \
 * **模板部署故障或错误**
   * 如果管道运行失败，请查看运行资源的 `pipelineRunErrorMessage` 属性。
   * 有关常见的模板部署错误，请参阅 [ARM 模板部署疑难解答](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)
+* **访问存储时遇到的问题**<a name="problems-accessing-storage"></a>
+  * 如果存储中显示 `403 Forbidden` 错误，则 SAS 令牌可能存在问题。
+  * SAS 令牌当前可能无效。 SAS 令牌可能已到期，或者创建 SAS 令牌后存储帐户密钥可能已更改。 通过尝试使用 SAS 令牌对对存储帐户容器的访问进行身份验证，验证 SAS 令牌是否有效。 例如，在新的 Microsoft Edge InPrivate 窗口的地址栏中将现有 blob 终结点放在 SAS 令牌之后，或者使用 `az storage blob upload` 将 blob 上传到具有 SAS 令牌的容器。
+  * SAS 令牌可能没有足够的允许的资源类型。 验证 SAS 令牌是否有权访问允许的资源类型（SAS 令牌中的 `srt=sco`）下的服务、容器和对象。
+  * SAS 令牌可能没有足够的权限。 对于导出管道，所需的 SAS 令牌权限为读取、写入、列出和添加。 对于导入管道，所需的 SAS 令牌权限为读取、删除和列出。 （仅在导入管道启用了 `DeleteSourceBlobOnSuccess` 选项时才需要“删除”权限。）
+  * SAS 令牌可能未配置为仅使用 HTTPS。 验证 SAS 令牌是否配置为仅使用 HTTPS（SAS 令牌中的 `spr=https`）。
 * **导出或导入存储 blob 时出现问题**
-  * SAS 令牌可能已过期，或者可能没有足够的权限来运行指定的导出或导入
+  * SAS 令牌可能无效，或者可能没有足够的权限来运行指定的导出或导入。 请参阅[访问存储时遇到的问题](#problems-accessing-storage)。
   * 在多个导出运行期间，源存储帐户中的现有存储 blob 可能未被覆盖。 确认在导出运行中设置了 OverwriteBlob 选项，并且 SAS 令牌具有足够的权限。
   * 在导入运行成功后，可能未删除目标存储帐户中的存储 blob。 确认在导入运行中设置了 DeleteBlobOnSuccess 选项，并且 SAS 令牌具有足够的权限。
   * 未创建或未删除存储 blob。 确认在导出或导入运行中指定的容器存在，或用于手动导入运行的指定存储 blob 存在。 
 * **AzCopy 问题**
-  * 请参阅 [AzCopy 问题疑难解答](../storage/common/storage-use-azcopy-configure.md#troubleshoot-issues)。  
+  * 请参阅 [AzCopy 问题疑难解答](../storage/common/storage-use-azcopy-configure.md)。  
 * **项目传输问题**
   * 并未传输所有项目或者根本未传输任何项目。 确认导出运行中的项目拼写，以及导出和导入运行中的 blob 名称。 确认最多传输 50 个项目。
   * 管道运行可能未完成。 导出或导入运行可能需要一些时间。 
   * 对于其他管道问题，请向 Azure 容器注册表团队提供导出运行或导入运行的部署[相关 ID](../azure-resource-manager/templates/deployment-history.md)。
-* **在物理隔离环境中拉取映像时出现问题**
-  * 如果在物理隔离环境中尝试拉取映像时看到有关外来层或尝试解析 mcr.microsoft.com 的错误，则映像清单可能具有不可分发的层。 由于物理隔离环境的性质，这些映像常常无法拉取。 可以通过检查映像清单中是否存在对外部注册表的任何引用来确认这种情况。 如果是这种情况，在为该映像部署导出管道运行之前，需要将不可分发的层推送到公有云 ACR。 有关如何执行此操作的指导，请参阅[如何向注册表推送不可分发的层？](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry)
+* **在物理隔离环境中拉取映像时出现的问题**
+  * 如果在物理隔离环境中尝试拉取映像时发现与外部层或尝试解析 mcr.microsoft.com 有关的错误，则映像清单可能具有不可分发的层。 由于物理隔离环境的性质，这些映像通常无法拉取。 可以通过检查映像清单中是否存在对外部注册表的任何引用，来确认是这种情况。 如果是这种情况，则需要将不可分发的层推送到公有云 ACR，然后再为该映像部署导出管道运行。 有关如何执行此操作的指导，请参阅[如何将不可分发层推送到注册表？](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -441,15 +447,15 @@ az resource delete \
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-login]: /cli/azure/reference-index#az-login
-[az-keyvault-secret-set]: /cli/azure/keyvault/secret#az-keyvault-secret-set
-[az-keyvault-secret-show]: /cli/azure/keyvault/secret#az-keyvault-secret-show
-[az-keyvault-set-policy]: /cli/azure/keyvault#az-keyvault-set-policy
-[az-storage-container-generate-sas]: /cli/azure/storage/container#az-storage-container-generate-sas
-[az-storage-blob-list]: /cli/azure/storage/blob#az-storage-blob-list
-[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
-[az-deployment-group-delete]: /cli/azure/deployment/group#az-deployment-group-delete
-[az-deployment-group-show]: /cli/azure/deployment/group#az-deployment-group-show
-[az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
-[az-acr-import]: /cli/azure/acr#az-acr-import
-[az-resource-delete]: /cli/azure/resource#az-resource-delete
+[az-login]: /cli/azure/reference-index#az_login
+[az-keyvault-secret-set]: /cli/azure/keyvault/secret#az_keyvault_secret_set
+[az-keyvault-secret-show]: /cli/azure/keyvault/secret#az_keyvault_secret_show
+[az-keyvault-set-policy]: /cli/azure/keyvault#az_keyvault_set_policy
+[az-storage-container-generate-sas]: /cli/azure/storage/container#az_storage_container_generate_sas
+[az-storage-blob-list]: /cli/azure/storage/blob#az_storage-blob-list
+[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
+[az-deployment-group-delete]: /cli/azure/deployment/group#az_deployment_group_delete
+[az-deployment-group-show]: /cli/azure/deployment/group#az_deployment_group_show
+[az-acr-repository-list]: /cli/azure/acr/repository#az_acr_repository_list
+[az-acr-import]: /cli/azure/acr#az_acr_import
+[az-resource-delete]: /cli/azure/resource#az_resource_delete

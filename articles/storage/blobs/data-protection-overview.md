@@ -5,17 +5,17 @@ description: 适用于 blob 存储和 Azure Data Lake Storage Gen2 数据的数�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/22/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: prishet
 ms.subservice: common
-ms.openlocfilehash: afd98e629500bc90cc9ddd1ed4ab2472f733e845
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 90c83397089b77d30694041a37debc0731ea2a38
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104803000"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304250"
 ---
 # <a name="data-protection-overview"></a>数据保护概述
 
@@ -30,7 +30,7 @@ Azure 存储为 blob 存储和 Azure Data Lake Storage Gen2 提供数据保护�
 - 在存储帐户上配置 Azure 资源管理器锁定，以防止帐户被删除或配置发生变化。 [了解详细信息...](../common/lock-account-resource.md)
 - 为存储帐户启用容器软删除，以恢复已删除的容器及其内容。 [了解详细信息...](soft-delete-container-enable.md)
 - 按固定间隔保存 blob 的状态：
-  - 对于 blob 存储工作负载，每次删除或覆盖 blob 时，启用 blob 版本控制以自动保存数据的状态。 [了解详细信息...](versioning-enable.md)
+  - 对于 blob 存储工作负载，每次覆盖 blob 时，启用 blob 版本控制以自动保存数据的状态。 [了解详细信息...](versioning-enable.md)
   - 对于 Azure Data Lake Storage 工作负载，请生成手动快照，以保存特定的时间点的数据状态。 [了解详细信息...](snapshots-overview.md)
 
 下一节将更详细地介绍这些选项以及其他方案的其他数据保护选项。
@@ -45,10 +45,10 @@ Azure 存储为 blob 存储和 Azure Data Lake Storage Gen2 提供数据保护�
 |--|--|--|--|--|
 | 阻止删除或修改存储帐户。 | Azure 资源管理器锁定<br />[了解详细信息...](../common/lock-account-resource.md) | 使用 Azure 资源管理器锁定锁定所有存储帐户，以防止删除存储帐户。 | 防止存储帐户被删除或配置被更改。<br /><br />无法防止帐户中的容器或 blob 被删除或覆盖。 | 是 |
 | 在你控制的时间间隔防止容器及其 blob 被删除或修改。 | 容器上的不可变性策略<br />[了解详细信息...](storage-blob-immutable-storage.md) | 在容器上设置一个不可变性策略以保护关键业务文档，例如，为了满足法律或法规遵从性要求。 | 防止容器及其 blob 被删除和覆盖。<br /><br />当合法保留或锁定的基于时间的保留策略生效时，存储帐户也会受到保护，无法删除。 未设置任何永久性策略的容器不会受到防删除的保护。 | 是，处于预览状态 |
-| 在指定的时间间隔内还原已删除的容器。 | 容器软删除（预览版）<br />[了解详细信息...](soft-delete-container-overview.md) | 为所有存储帐户启用容器软删除，最短保留间隔为 7 天。<br /><br />与容器软删除一起启用 blob 版本控制和 blob 软删除，以保护容器中的各个 blob。<br /><br />在单独的存储帐户中存储需要不同保留期的容器。 | 删除的容器及其内容在保留期内可以被还原。<br /><br />只能还原容器级别的操作（例如，可以还原“删除容器”）。[](/rest/api/storageservices/delete-container) 如果删除了容器中的单个 blob，则无法通过容器软删除来还原该容器中的单个 blob。 | 是，处于预览状态 |
-| 在覆盖或删除 blob 时，自动将其状态保存在以前的版本中。 | Blob 版本控制<br />[了解详细信息...](versioning-overview.md) | 对于某些存储帐户，如果需要对 blob 数据进行最佳保护，则启用 blob 版本控制，以及容器软删除和 blob 软删除。<br /><br />将不需要版本控制的 blob 数据存储在不同的帐户中以限制成本。 | 每个 blob 覆盖或删除操作都会创建一个新版本。 如果删除或覆盖 blob，则可以从以前的版本还原 blob。 | 否 |
+| 在指定的时间间隔内还原已删除的容器。 | 容器软删除（预览版）<br />[了解详细信息...](soft-delete-container-overview.md) | 为所有存储帐户启用容器软删除，最短保留间隔为 7 天。<br /><br />与容器软删除一起启用 blob 版本控制和 blob 软删除，以保护容器中的各个 blob。<br /><br />在单独的存储帐户中存储需要不同保留期的容器。 | 删除的容器及其内容在保留期内可以被还原。<br /><br />只能还原容器级别的操作（例如，可以还原 [删除容器](/rest/api/storageservices/delete-container)）。 如果删除了容器中的单个 blob，则无法通过容器软删除来还原该容器中的单个 blob。 | 是，处于预览状态 |
+| 在覆盖 blob 时，自动将其状态保存在以前的版本中。 | Blob 版本控制<br />[了解详细信息...](versioning-overview.md) | 对于某些存储帐户，如果需要对 blob 数据进行最佳保护，则启用 blob 版本控制，以及容器软删除和 blob 软删除。<br /><br />将不需要版本控制的 blob 数据存储在不同的帐户中以限制成本。 | 每个 blob 写入操作都会创建一个新版本。 如果删除或覆盖当前版本，则可以从以前的版本还原 blob 的当前版本。 | 否 |
 | 在指定的时间间隔内还原已删除的 blob 或 blob 版本。 | Blob 软删除<br />[了解详细信息...](soft-delete-blob-overview.md) | 为所有存储帐户启用 blob 软删除，最短保留间隔为 7 天。<br /><br />启用 blob 版本控制和容器软删除以及 blob 软删除功能，以实现 blob 数据的最佳保护。<br /><br />在单独的存储帐户中存储需要不同保留期的 blob。 | 在保留期内可以还原已删除的 blob 或 blob 版本。 | 否 |
-| 将一组块 blob 还原到以前的时间点。 | 时点还原<br />[了解详细信息...](point-in-time-restore-overview.md) | 要使用时间点还原恢复到以前的状态，请将应用程序设计为删除单个块 blob，而不是删除容器。 | 可以将一组块 blob 还原为过去特定时间点的状态。<br /><br />只能还原在块 blob 上执行的操作。 对容器、页 blob 或追加 blob 执行的任何操作都不会还原。 | 否 |
+| 将一组块 blob 还原到以前的时间点。 | 时间点还原<br />[了解详细信息...](point-in-time-restore-overview.md) | 要使用时间点还原恢复到以前的状态，请将应用程序设计为删除单个块 blob，而不是删除容器。 | 可以将一组块 blob 还原为过去特定时间点的状态。<br /><br />只能还原在块 blob 上执行的操作。 对容器、页 blob 或追加 blob 执行的任何操作都不会还原。 | 否 |
 | 手动保存 blob 在给定时间点的状态。 | Blob 快照<br />[了解详细信息...](snapshots-overview.md) | 如果版本管理不适合你的方案（由于成本或其他考虑因素）或者存储帐户已启用分层命名空间，则建议采用 blob 版本控制的替代方法。 | 如果 blob 被覆盖，则可以从快照还原 blob。 如果删除该 blob，则快照也将被删除。 | 是，处于预览状态 |
 | blob 可以被删除或覆盖，但数据会定期复制到另一个存储帐户。 | 使用 Azure 存储对象复制或 AzCopy 或 Azure 数据工厂等工具将数据复制到第二个帐户的自创解决方案。 | 为了让保护更安心，建议采用，以防意外的有意操作或不可预测的情况。<br /><br />在主帐户所在的同一区域中创建第二个存储帐户，以避免产生传出流量费用。 | 如果主要帐户以任何方式泄露，则可以从第二个存储帐户中还原数据。 | 支持 AzCopy 和 Azure 数据工厂。<br /><br />不支持对象复制。 |
 
@@ -100,7 +100,7 @@ Azure 存储为 blob 存储和 Azure Data Lake Storage Gen2 提供数据保护�
 | 容器软删除 | 为存储帐户启用容器软删除是免费的。 软删除容器中的数据将按与活动数据相同的费率进行计费，直到软删除容器被永久删除。 |
 | Blob 版本控制 | 为存储帐户启用 blob 版本控制是免费的。 启用 blob 版本控制后，对该帐户中的 blob 进行的每次写入或删除操作都将创建一个新版本，这可能会导致增加容量成本。<br /><br />Blob 版本根据唯一的块或页进行计费。 因此，随着基础 blob 与特定版本分离，成本也会随之增加。 更改 blob 或 blob 版本的层级可能会对计费产生影响。 有关详细信息，请参阅[定价和计费](versioning-overview.md#pricing-and-billing)。<br /><br />根据需要使用生命周期管理来删除旧版本，以控制成本。 有关详细信息，请参阅[通过自动执行 Azure Blob 存储访问层来优化成本](storage-lifecycle-management-concepts.md)。 |
 | Blob 软删除 | 为存储帐户启用 blob 软删除是免费的。 软删除 blob 中的数据将按与活动数据相同的费率进行计费，直到软删除 blob 被永久删除。 |
-| 时点还原 | 为存储帐户启用时间点还原是免费的；但是，启用时间点还原还会启用 blob 版本控制、软删除和更改源，其中每一项都可能产生额外费用。<br /><br />执行还原操作时，会按时间点还原收费。 还原操作的成本取决于要还原的数据量。 有关详细信息，请参阅[定价和计费](point-in-time-restore-overview.md#pricing-and-billing)。 |
+| 时间点还原 | 为存储帐户启用时间点还原是免费的；但是，启用时间点还原还会启用 blob 版本控制、软删除和更改源，其中每一项都可能产生额外费用。<br /><br />执行还原操作时，会按时间点还原收费。 还原操作的成本取决于要还原的数据量。 有关详细信息，请参阅[定价和计费](point-in-time-restore-overview.md#pricing-and-billing)。 |
 | Blob 快照 | 根据唯一的块或页对快照中的数据计费。 因此，随着基础 blob 与快照分离，成本也会随之增加。 更改 blob 或快照的层级可能会对计费产生影响。 有关详细信息，请参阅[定价和计费](snapshots-overview.md#pricing-and-billing)。<br /><br />根据需要使用生命周期管理来删除旧快照，以控制成本。 有关详细信息，请参阅[通过自动执行 Azure Blob 存储访问层来优化成本](storage-lifecycle-management-concepts.md)。 |
 | 将数据复制到另一个存储帐户 | 在第二个存储帐户中维护数据将产生容量和事务成本。 如果第二个存储帐户所在的区域不同于源帐户，则将数据复制到第二个帐户将额外产生传出流量费用。 |
 

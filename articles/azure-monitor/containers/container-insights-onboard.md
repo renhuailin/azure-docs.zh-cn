@@ -1,18 +1,18 @@
 ---
 title: 启用容器见解 | Microsoft Docs
-description: 本文介绍如何启用和配置容器见解，以便了解容器的性能以及已识别的性能相关问题。
+description: 本文介绍如何启用和配置容器见解，以便你能够了解容器的性能以及已经发现了哪些与性能相关的问题。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 58797221fa3380e4f7533a710e2f8dc658cb676c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e0544232f40e93cce0705fff6814d29697a96218
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708350"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782092"
 ---
 # <a name="enable-container-insights"></a>启用容器见解
 
-本文概述了可用于设置容器见解的选项，这些选项用于监视部署到 Kubernetes 环境并托管在以下位置上的工作负载的性能：
+本文概述了可用于设置容器见解的选项，这些选项用于监视部署到 Kubernetes 环境并托管在以下位置的工作负荷的性能：
 
 - [Azure Kubernetes 服务 (AKS)](../../aks/index.yml)  
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) 版本 3.x 和 4.x  
@@ -23,7 +23,7 @@ ms.locfileid: "101708350"
 - Azure（通过使用 [AKS 引擎](https://github.com/Azure/aks-engine)）
 - [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) 或本地（通过使用 AKS 引擎）。
 
-可使用以下支持的任意方法为 Kubernetes 的新部署或者一个/多个现有部署启用容器见解：
+通过使用以下受支持的任意方法，可以为 Kubernetes 的新部署或者一个或多个现有的部署启用容器见解：
 
 - Azure 门户
 - Azure PowerShell
@@ -37,14 +37,14 @@ ms.locfileid: "101708350"
 首先，请确保你已满足以下要求：
 
 > [!IMPORTANT]
-> Log Analytics 容器化 Linux 代理 (replicaset pod) 向群集内 Kubelet 安全端口 (10250) 上的所有 Windows 节点进行 API 调用，以收集与节点和容器性能相关的指标。 应在群集的虚拟网络中针对入站和出站打开 Kubelet 安全端口 (:10250)，以便正常收集 Windows 节点和容器性能相关指标。
+> Log Analytics 容器化 Linux 代理 (Replicaset Pod) 会向群集内 Kubelet 安全端口 (10250) 上所有的 Windows 节点发出 API 调用，以收集与节点和容器性能相关的指标。 Kubelet 安全端口 (:10250) 应在群集的虚拟网络中对入站和出站都打开，以便能够正常收集与 Windows 节点和容器性能相关的指标。
 >
-> 如果你有一个包含 Windows 节点的 Kubernetes 群集，请查看并配置网络安全组和网络策略，确保在群集的虚拟网络中针对入站和出站打开 Kubelet 安全端口 (:10250)。
+> 如果你有使用 Windows 节点的 Kubernetes 群集，请查看并配置网络安全组和网络策略，以确保为群集的虚拟网络中的入站和出站都打开 Kubelet 安全端口 (:10250)。
 
 
 - 拥有一个 Log Analytics 工作区。
 
-   容器见解支持[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)中所列区域内的 Log Analytics 工作区。
+   容器见解支持[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)中列出的区域中的 Log Analytics 工作区。
 
    可以在为新 AKS 群集启用监视时创建工作区，或者可让加入体验在 AKS 群集订阅的默认资源组中创建默认的工作区。 
    
@@ -63,7 +63,8 @@ ms.locfileid: "101708350"
 
 - 要查看监视数据，需要在 Log Analytics 工作区中拥有 [*Log Analytics 读者*](../logs/manage-access.md#manage-access-using-azure-permissions)角色，并配置了容器见解。
 
-- 默认情况下不收集 Prometheus 指标。 在[配置代理](container-insights-prometheus-integration.md)以收集这些指标之前，请务必查看 [Prometheus 文档](https://prometheus.io/)，了解可抓取的数据和支持的方法。
+- 默认情况下不收集 Prometheus 指标。 在[配置代理](container-insights-prometheus-integration.md)来收集这些指标之前，请务必先查看 [Prometheus 文档](https://prometheus.io/)，以了解可抓取哪些数据以及支持哪些方法。
+- 可以将 AKS 群集附加到同一 Azure AD 租户的不同 Azure 订阅中的 Log Analytics 工作区。 目前无法通过 Azure 门户完成此操作，但可通过 Azure CLI 或资源管理器模板来完成。
 
 ## <a name="supported-configurations"></a>支持的配置
 
@@ -102,7 +103,7 @@ ms.locfileid: "101708350"
 
 ## <a name="components"></a>组件
 
-监视性能的能力依赖于专门为容器见解开发的用于 Linux 的容器化 Log Analytics 代理。 此专用代理可从群集中的所有节点处收集性能和事件数据，并且在部署期间，会自动部署该代理，并注册指定 Log Analytics 工作区。 
+监视性能的能力依赖于专门为容器见解开发的适用于 Linux 的容器化 Log Analytics 代理。 此专用代理可从群集中的所有节点处收集性能和事件数据，并且在部署期间，会自动部署该代理，并注册指定 Log Analytics 工作区。 
 
 该代理的版本为 microsoft/oms:ciprod04202018 或更高版本，并由采用以下格式的日期表示：mmddyyyy。
 
@@ -116,14 +117,14 @@ ms.locfileid: "101708350"
 >
 > 模板需要部署在群集所在的资源组中。
 
-若要启用容器见解，请使用下表中所述的方法之一：
+若要启用容器见解，请使用下表中描述的方法之一：
 
 | 部署状态 | 方法 | 说明 |
 |------------------|--------|-------------|
 | 新建 Kubernetes 群集 | [使用 Azure CLI 创建 AKS 群集](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| 可以为使用 Azure CLI 创建的新 AKS 群集启用监视。 |
 | | [使用 Terraform 创建 AKS 群集](container-insights-enable-new-cluster.md#enable-using-terraform)| 可以为使用开源工具 Terraform 创建的新 AKS 群集启用监视。 |
 | | [使用 Azure 资源管理器模板创建 OpenShift 群集](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | 你可为使用预先配置的 Azure 资源管理器模板创建的新 OpenShift 群集启用监视。 |
-| | [使用 Azure CLI 创建 OpenShift 群集](/cli/azure/openshift#az-openshift-create) | 你可在使用 Azure CLI 部署新的 OpenShift 群集时启用监视。 |
+| | [使用 Azure CLI 创建 OpenShift 群集](/cli/azure/openshift#az_openshift_create) | 你可在使用 Azure CLI 部署新的 OpenShift 群集时启用监视。 |
 | 现有 Kubernetes 群集 | [使用 Azure CLI 启用对 AKS 群集的监视](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | 可以使用 Azure CLI 为已部署的 AKS 群集启用监视。 |
 | |[使用 Terraform 为 AKS 群集启用](container-insights-enable-existing-clusters.md#enable-using-terraform) | 可以使用开源工具 Terraform 为已部署的 AKS 群集启用监视。 |
 | | [从 Azure Monitor 为 AKS 群集启用](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| 可以从 Azure Monitor 的多群集页为一个或多个已部署的 AKS 群集启用监视。 |

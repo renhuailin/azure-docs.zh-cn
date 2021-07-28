@@ -3,12 +3,12 @@ title: Azure Arc 概述
 description: 了解什么是 Azure Arc，以及它如何帮助客户使用其他 Azure 服务和功能对混合资源进行管理和治理。
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: b9e3cac865a92023d0079a5face9fbc8a3734c6e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b67c01f666916508946b49b0ad45d7151ed179ef
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967090"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112287292"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc 概述
 
@@ -29,7 +29,8 @@ Azure Arc 通过提供一致的多云和本地管理平台，从而简化了治�
 
 * 服务器 - 运行 Windows 或 Linux 的物理计算机和虚拟机。
 * Kubernetes 群集 - 支持多个 Kubernetes 分发。
-* Azure 数据服务 - Azure SQL 数据库和 PostgreSQL 超大规模服务。
+* Azure 数据服务 - Azure SQL 托管实例和 PostgreSQL 超大规模服务。
+* SQL Server - 从任何位置注册实例。
 
 ## <a name="what-does-azure-arc-deliver"></a>Azure Arc 提供哪些功能？
 

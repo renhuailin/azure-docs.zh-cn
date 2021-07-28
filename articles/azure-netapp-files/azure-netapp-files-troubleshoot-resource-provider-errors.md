@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 02/10/2021
 ms.author: b-juche
 ms.openlocfilehash: ac83e5a9366a12c5adce0e08f04f2bb28a7d788d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100374875"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>排查 Azure NetApp 文件资源提供程序错误 
@@ -394,7 +394,7 @@ Azure API 依赖于 Azure NetApp 文件 API 来管理卷。 此错误指示 API 
 * 解决方法：   
 使用新的协议类型创建另一个卷。
 
-创建 {resourceType} 类型的资源将超出每个 {parentResourceType} 的 {resourceType} 类型资源的配额 {quota}。当前资源计数为 {currentCount}，请在创建新资源之前删除一些此类型的资源。
+创建 {resourceType} 类型的资源将超过每个 {parentResourceType} {quota} 个 {resourceType} 类型资源的配额。当前资源计数为 {currentCount}，请先删除此类型的一些资源，然后再创建一个新资源。
 
 尝试创建资源（`NetAppAccount`、`CapacityPool`、`Volume` 或 `Snapshot`）但配额已达到限制时，会出现此错误。
 

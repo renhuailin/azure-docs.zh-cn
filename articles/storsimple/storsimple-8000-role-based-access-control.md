@@ -14,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5c2451f254a12d4be112dc02ce959fbbac5292bd
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 49c38e23ddbbfe983ff82ad25363c744292d4d69
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110698148"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "92518970"
 ---
 # <a name="azure-role-based-access-control-for-storsimple"></a>适用于 StorSimple 的 Azure 基于角色的访问控制
 
@@ -43,7 +42,7 @@ Azure RBAC 可基于角色进行分配。 该角色可确保根据环境中的�
 
 ## <a name="create-a-custom-role-for-storsimple-infrastructure-administrator"></a>为 StorSimple 基础结构管理员创建自定义角色
 
-在以下示例中，我们首先使用内置角色“读者”，该角色可使用户查看所有资源范围，但不能对其进行编辑或创建新的范围。 然后，扩展此角色以创建新的自定义角色 StorSimple 基础结构管理员。将此角色分配给可以管理 StorSimple 设备基础结构的用户。
+在以下示例中，我们首先使用内置角色“读者”，该角色可使用户查看所有资源范围，但不能对其进行编辑或创建新的范围。 然后，我们扩展此角色，以新建自定义角色 StorSimple 基础结构管理员。将此角色分配给可管理 StorSimple 设备基础结构的用户。
 
 1. 以管理员身份运行 Windows PowerShell。
 
@@ -184,7 +183,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 创建此角色后，可在 Azure 门户中查看与此角色关联的权限。
 
-1. 若要查看与此角色关联的权限，请转到“访问控制(IAM)”>“角色”>“StorSimple 基础结构管理员”。随即显示此角色中的用户列表。
+1. 若要查看与此角色关联的权限，请转到“访问控制(IAM)”>“角色”>“StorSimple 基础结构管理员”。拥有此角色的用户列表已显示。
 
 2. 选择 StorSimple 基础结构管理员用户，然后单击“权限”。
 

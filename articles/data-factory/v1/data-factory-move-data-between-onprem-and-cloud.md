@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 robots: noindex
 ms.openlocfilehash: 53fce1744ccbf4289b2415e926e084c90d708a13
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100380281"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>使用数据管理网关在本地源与云之间移动数据
@@ -77,7 +77,7 @@ ms.locfileid: "100380281"
 1. 在“数据工厂”页中，单击“编写和部署”磁贴启动数据工厂的“编辑器”。
 
     ![“编写和部署”磁贴](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png)
-2. 在“数据工厂编辑器”中，单击“...更多”，并单击“新建数据网关”。 此外，也可以在树视图中，右键单击“数据网关”，并单击“新建数据网关”。
+2. 在“数据工厂编辑器”中，单击工具栏上的“… 更多”，然后单击“新建数据网关”。 此外，也可以在树视图中，右键单击“数据网关”，并单击“新建数据网关”。
 
    ![工具栏上的“新建数据网关”](./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png)
 3. 在“创建”页中，输入 adftutorialgateway 作为名称，并单击“确定”。     
@@ -124,7 +124,7 @@ ms.locfileid: "100380281"
    * 在一天中的特定时间安装 **计划更新**。
    * 查看网关的 **上次更新时间**。
    * 指定可以安装网关更新的时间点。
-8. 切换到“设置”选项卡。使用在 **证书** 部分中指定的证书，加密/解密在门户上指定的本地数据存储的凭据。 （可选）单击“更改”以改为使用自己的证书。 默认情况下，网关使用由数据工厂服务自动生成的证书。
+8. 切换到“设置”选项卡。使用在“证书”部分中指定的证书，加密/解密在门户上指定的本地数据存储的凭据。 （可选）单击“更改”以改为使用自己的证书。 默认情况下，网关使用由数据工厂服务自动生成的证书。
 
     ![网关证书配置](./media/data-factory-move-data-between-onprem-and-cloud/gateway-certificate.png)
 
@@ -205,7 +205,7 @@ ms.locfileid: "100380281"
 
 ### <a name="create-input-dataset"></a>创建输入数据集
 
-1. 在“数据工厂编辑器”中，单击“... 更多”，单击命令栏中的“新建数据集”，并单击“SQL Server 表”。
+1. 在“数据工厂编辑器”中，依次单击“... 更多”、命令栏上的“新建数据集”，然后单击“SQL Server 表”。
 2. 将右窗格中的 JSON 替换为以下文本：
 
     ```JSON   
@@ -297,7 +297,7 @@ ms.locfileid: "100380281"
 ## <a name="create-pipeline"></a>创建管道
 本步骤创建 **管道**，其中包含使用 **EmpOnPremSQLTable** 作为输入、使用 **OutputBlobTable** 作为输出的 **复制活动**。
 
-1. 在“数据工厂编辑器”中，单击“...更多”，并单击“新建管道”。
+1. 在“数据工厂编辑器”中，单击“... 更多”，然后单击“新建管道”。
 2. 将右窗格中的 JSON 替换为以下文本：    
 
     ```JSON   

@@ -9,10 +9,10 @@ ms.reviewer: sawinark
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
 ms.openlocfilehash: 917bcce641cfd5178f868e4338354edb78062ab8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100361836"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>在 Azure 数据工厂中排查 SSIS Integration Runtime 管理问题
@@ -75,7 +75,7 @@ ms.locfileid: "100361836"
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-这种错误消息如下所示：“Invalid object name 'catalog.catalog_properties'.”在这种情况下，已经有一个名为 SSISDB 的数据库，但它不是由 SSIS IR 创建的，或者该数据库处于无效状态，这是由上一个 SSIS IR 预配中的错误引起的。 可以删除名称为 SSISDB 的现有数据库，也可以为 IR 配置新的 SQL 数据库或 SQL 托管实例。
+这种错误消息如下所示：“对象名称‘catalog.catalog_properties’无效。”在这种情况下，已经有一个名为 SSISDB 的数据库，但它不是由 SSIS IR 创建的，或者该数据库处于无效状态，这是由上一个 SSIS IR 预配中的错误引起的。 可以删除名称为 SSISDB 的现有数据库，也可以为 IR 配置新的 SQL 数据库或 SQL 托管实例。
 
 ## <a name="custom-setup-issues"></a>自定义安装问题
 

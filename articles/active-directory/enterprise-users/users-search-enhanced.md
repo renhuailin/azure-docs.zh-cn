@@ -1,6 +1,6 @@
 ---
 title: 用户管理增强功能（预览版）- Azure Active Directory | Microsoft Docs
-description: 介绍如何在 Azure Active Directory 中启用用户搜索和筛选，以及有关用户的详细信息。
+description: 介绍 Azure Active Directory 如何启用用户搜索、筛选，以及有关用户的详细信息。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,10 +16,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5038bde01a6b183a25a47f3b4e206c1ce80e6b6d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98127832"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Azure Active Directory 中的用户管理增强功能（预览版）

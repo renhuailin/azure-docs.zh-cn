@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/23/2019
 ms.openlocfilehash: 07600b1fe0cb7420989fbbfbe55c2f1a4197d2fc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100548244"
 ---
 # <a name="notification-hubs-security"></a>通知中心安全性
@@ -58,7 +58,7 @@ ms.locfileid: "100548244"
 
 不能向多个命名空间发送通知。 命名空间是通知中心的逻辑容器，不参与发送通知。
 
-将命名空间级别的访问策略（凭据）用于命名空间级别的操作；例如：列出中心、创建中心或删除中心等。仅中心级别的访问策略可让你发送通知。
+将命名空间级别的访问策略（凭据）用于命名空间级别的操作；例如：列出中心、创建或删除中心等。仅中心级别的访问策略可让你发送通知。
 
 ### <a name="sas-tokens-for-access-policies"></a>用于访问策略的 SAS 令牌
 

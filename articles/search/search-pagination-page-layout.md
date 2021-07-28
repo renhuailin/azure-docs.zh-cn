@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/09/2020
-ms.openlocfilehash: a7171d656ec9f839aea4ae73763ec6ebd20c2bb3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/06/2021
+ms.openlocfilehash: 92db62622c37241a76d7847931df030162de8f00
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98209825"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504220"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用搜索结果
 
@@ -137,12 +137,16 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 新行为：
 
-* 仅返回与完整短语查询匹配的短语。 查询“super bowl”将返回如下所示的突出显示结果：
++ 仅返回与完整短语查询匹配的短语。 查询短语“super bowl”将返回如下所示的突出显示结果：
 
-    ```html
-    '<em>super bowl</em> is super awesome with a bowl of chips'
-    ```
-  请注意，字词“bowl of chips”没有任何突出显示效果，因为它不与完整短语匹配。
+  ```json
+  "@search.highlights": {
+      "sentence": [
+          "The <em>super</em> <em>bowl</em> is super awesome with a bowl of chips"
+     ]
+  ```
+
+  请注意，“super”和“bowl”的其他实例没有任何突出显示结果，因为这些实例与完整短语不匹配。
 
 编写实现命中项突出显示的客户端代码时，请注意此项更改。 请注意，除非创建全新的搜索服务，否则你不会受到影响。
 

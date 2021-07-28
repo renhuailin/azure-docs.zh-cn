@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2020
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 1196ec0c3e92df6c359461ea7d1d53c8aea0bd88
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f0621788f50a07466861fbd87ede191f5ab688cd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101750748"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106554300"
 ---
 创建自己的证书时，以下 CA 获准：
 
@@ -62,6 +62,10 @@ ms.locfileid: "101750748"
 - 安全通信 RootCA1
 - 安全通信 RootCA2
 - 安全通信 RootCA3
+- SSL.com 根证书颁发机构 ECC
+- SSL.com 根证书颁发机构 RSA
+- SSL.com EV 根证书颁发机构 ECC
+- SSL.com EV 根证书颁发机构 RSA R2
 - Staat der Nederlanden EV 根 CA
 - Symantec 类 3 EV SSL CA - G3
 - Symantec 类 3 安全服务器 CA - G4

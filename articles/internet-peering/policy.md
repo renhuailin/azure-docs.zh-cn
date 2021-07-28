@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: prmitiki
 ms.openlocfilehash: bee41bb8e5beb4df3086ab50499cb185a83e4efe
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97592323"
 ---
 # <a name="peering-policy"></a>对等互连策略
@@ -42,7 +42,7 @@ Microsoft 维护了一个选择性的对等互连策略，旨在确保提供最�
 
 ## <a name="operational-requirements"></a>操作要求
 * 人员配备齐全的全天候网络运营中心 (NOC)，能够帮助解决所有技术和性能问题、安全违规、拒绝服务攻击或对等方或其客户的任何滥用行为。
-* 对等方应在 [PeeringDB](https://www.peeringdb.com) 上具有完整且最新的配置文件，包括来自企业域的全天候 NOC 电子邮件和电话号码。 我们使用这些信息来验证对等方的详细信息（例如 NOC 信息、技术联系信息以及它们在对等互连设施中是否存在，等等）。不接受个人 Yahoo、Gmail 和 Hotmail 帐户。
+* 对等方应在 [PeeringDB](https://www.peeringdb.com) 上具有完整且最新的配置文件，包括来自企业域的全天候 NOC 电子邮件和电话号码。 我们使用这些信息来验证对等方的详细信息（例如 NOC 信息、技术联系信息以及它们在对等互连设施中是否存在，等等）。不接受 Yahoo、Gmail 和 Hotmail 个人帐户。
 
 ## <a name="physical-connection-requirements"></a>物理连接要求
 * [PeeringDB](https://www.peeringdb.com/net/694) 中列出了可以连接到 Microsoft 以实现直接对等互连或 Exchange 对等互连的位置

@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 01/16/2020
 ms.openlocfilehash: 7c1a6623883cbee46ba98982808f3c392dc50ffa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98946646"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>为 HDInsight 上的 Apache Hadoop 开发 Java MapReduce 程序
@@ -41,7 +41,7 @@ cd C:\HDI
    mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
-    此命令将使用 `artifactID` 参数指定的名称（此示例中为 **wordcountjava**）创建目录。此目录包含以下项：
+    此命令会创建一个目录，其名称（本示例中为 wordcountjava）由 `artifactID` 参数指定。该目录包含以下项：
 
     * `pom.xml` - [项目对象模型 (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)，其中包含用于生成项目的信息和配置详细信息。
     * src\main\java\org\apache\hadoop\examples：包含应用程序代码。

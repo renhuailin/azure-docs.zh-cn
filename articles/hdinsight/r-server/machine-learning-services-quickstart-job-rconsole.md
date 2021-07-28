@@ -4,15 +4,17 @@ description: 在本快速入门中，将使用 R 控制台在 Azure HDInsight �
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/19/2019
-ms.custom: mvc
-ms.openlocfilehash: eac6fd14acfe12a0f505419a229bb78e423706d1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ROBOTS: NOINDEX
+ms.openlocfilehash: a4c724f973d2a84aada50e62b792b6b2227ecc66
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98935730"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299494"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>快速入门：使用 R 控制台在 Azure HDInsight 中的 ML Services 群集上执行 R 脚本
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 Azure HDInsight 上的 ML Services 允许 R 脚本使用 Apache Spark 和 Apache Hadoop MapReduce 运行分布式计算。 ML Services 可设置计算上下文，从而控制执行调用的方式。 群集的边缘节点为连接到群集和运行 R 脚本提供了便捷的位置。 使用边缘节点，可以选择跨边缘节点服务器的各个核心上运行 RevoScaleR 的并行化分布式函数。 还可以通过使用 RevoScaleR 的 Hadoop Map Reduce 或 Apache Spark 计算上下文在群集的各个节点上运行这些函数。
 
@@ -147,7 +149,7 @@ Azure HDInsight 上的 ML Services 允许 R 脚本使用 Apache Spark 和 Apache
     
       ---
     
-      Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+      Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     
       Condition number of final variance-covariance matrix: 11904202
       Number of iterations: 7

@@ -4,10 +4,10 @@ description: 服务到服务通信是 Service Fabric 应用程序的关键集成
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: fbf889422d69d031d777acd80cf3becfb3184568
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96575918"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric 可测试性方案：服务通信
@@ -33,7 +33,7 @@ ms.locfileid: "96575918"
 
 适当地处理这些方案对于系统的顺畅运行非常重要。 若要这样做，请记住：
 
-* 可以连接的每个服务都有一个它要侦听的 *地址*（例如 HTTP 或 WebSockets）。 当服务实例或分区已经移动时，其地址终结点将改变。 （它已经移到另一个节点，具有不同的 IP 地址。）如果使用内置通信组件，则它们将处理服务地址的重新解析。
+* 可以连接的每个服务都有一个它要侦听的 *地址*（例如 HTTP 或 WebSockets）。 当服务实例或分区已经移动时，其地址终结点将改变。 （它会移动到具有不同 IP 地址的其他节点。）如果使用内置通信组件，它们将重新解析服务地址。
 * 服务延迟有可能暂时性增大，因为服务实例再次启动其侦听程序。 这取决于服务在移动之后有多快启动侦听程序。
 * 在服务打开新的节点后，任何现有连接都需要关闭并重新打开。 正常的节点关闭或重新启动会等待现有连接正常关闭。
 

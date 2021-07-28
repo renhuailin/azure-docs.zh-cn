@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8b3778ea68edf1fbbb41efb899749e6f35b39bae
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96742283"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA 服务器与 Active Directory 之间的目录集成
@@ -104,10 +104,10 @@ Azure 多重身份验证提供以下三个筛选选项：
 | 传真 |输入用户记录中包含传真号码的属性的属性名称。  默认值为 facsimileTelephoneNumber。 |
 | IP 电话 |输入用户记录中包含 IP 电话号码的属性的属性名称。  默认值为 ipPhone。 |
 | 自定义 |输入用户记录中包含自定义电话号码的属性的属性名称。  默认为空。 |
-| 扩展名 |输入用户记录中包含电话号码分机的属性的属性名称。  分机字段的值只用作主电话号码的分机。  默认为空。 <br><br>如果未指定“分机”属性，则分机可以包含在“电话”属性中。 在这种情况下，请在分机前面加上“x”，以便正常分析该号码。  例如，如果输入 555-123-4567 x890，系统会将 555-123-4567 视为电话号码，将 890 视为分机号码。 |
+| 分机 |输入用户记录中包含电话号码分机的属性的属性名称。  分机字段的值只用作主电话号码的分机。  默认为空。 <br><br>如果未指定“分机”属性，则分机可以包含在“电话”属性中。 在这种情况下，请在分机前面加上“x”，以便正常分析该号码。  例如，如果输入 555-123-4567 x890，系统会将 555-123-4567 视为电话号码，将 890 视为分机号码。 |
 | “还原默认值”按钮 |单击“还原默认值”可将所有属性还原为默认值。  默认值会在标准 Active Directory 或 ADAM 架构中正常工作。 |
 
-若要编辑属性，请在“属性”选项卡上单击“编辑”。此时会打开一个窗口，可在其中编辑属性。 选择任一属性旁边的“...”会打开一个窗口，可在其中选择要显示的属性。
+若要编辑属性，单击“属性”选项卡上的“编辑”。这会弹出一个窗口，可在其中编辑属性。 选择任一属性旁边的“...”会打开一个窗口，可在其中选择要显示的属性。
 
 ![在 MFA 服务器中编辑目录属性映射](./media/howto-mfaserver-dir-ad/dirint4.png)
 

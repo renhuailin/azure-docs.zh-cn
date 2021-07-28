@@ -9,16 +9,16 @@ metadata:
   ms.custom: sqldbrb=1
   ms.devlang: 
   ms.topic: conceptual
-  author: jovanpop-msft
-  ms.author: nnikolic
-  ms.reviewer: mathoma
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: urmilano, danil, nnikolic
   ms.date: 09/21/2020
-  ms.openlocfilehash: 24b4c9ac701167c998caa215e724010a4f953ac3
-  ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+  ms.openlocfilehash: 92aa04c2df2b23165afdef39ae39ee95922f19d2
+  ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111907131"
+  ms.lasthandoff: 07/16/2021
+  ms.locfileid: "114295114"
 title: Azure SQL 托管实例常见问题解答 (FAQ)
 summary: >
   [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -77,7 +77,7 @@ sections:
 
       注意：第 4 代硬件正在逐步被淘汰，不能再用于新部署。 所有新的数据库都必须部署在第 5 代硬件上。 也无法从第 5 代切换到第 4 代。
   - question: "性能 \n"
-    answer: "### <a name=\"how-can-i-compare-managed-instance-performance-to-sql-server-performance\"></a>如何将托管实例性能与 SQL Server 性能进行比较？\n\n若要在托管实例与 SQL Server 之间进行性能比较，可以从[有关 Azure SQL 托管实例与 SQL Server 之间的性能比较的最佳做法](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210)一文入手。\n\n### <a name=\"what-causes-performance-differences-between-managed-instance-and-sql-server\"></a>导致托管实例与 SQL Server 之间存在性能差异的原因是什么？\n\n请参阅 [SQL 托管实例与 SQL Server 之间存在性能差异的主要原因](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)。 有关日志文件大小对常规用途托管实例性能的影响的详细信息，请参阅[日志文件大小对常规用途的影响](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)。\n\n### <a name=\"how-do-i-tune-performance-of-my-managed-instance\"></a>如何优化托管实例的性能？\n\n可以通过以下方式优化托管实例的性能：\n- [自动优化](../database/automatic-tuning-overview.md)，通过基于 AI 和机器学习的持续性能优化，提供最佳性能和稳定的工作负载。\n-    [内存中 OLTP](../in-memory-oltp-overview.md)，可改进事务处理工作负载的吞吐量和延迟，并提供更快的业务见解。 \n\n若要进一步优化性能，请考虑应用一些有关[应用程序和数据库优化](../database/performance-guidance.md#tune-your-database)的最佳做法。\n如果工作负载包含大量小型事务，请考虑[将连接类型从代理切换为重定向模式](connection-types-overview.md#changing-connection-type)，以实现更低延迟和更高吞吐量。\n"
+    answer: "### <a name=\"how-can-i-compare-managed-instance-performance-to-sql-server-performance\"></a>如何将托管实例性能与 SQL Server 性能进行比较？\n\n若要在托管实例与 SQL Server 之间进行性能比较，可以从[有关 Azure SQL 托管实例与 SQL Server 之间的性能比较的最佳做法](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210)一文入手。\n\n### <a name=\"what-causes-performance-differences-between-managed-instance-and-sql-server\"></a>导致托管实例与 SQL Server 之间存在性能差异的原因是什么？\n\n请参阅 [SQL 托管实例与 SQL Server 之间存在性能差异的主要原因](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)。 有关日志文件大小对常规用途托管实例性能的影响的详细信息，请参阅[日志文件大小对常规用途的影响](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)。\n\n### <a name=\"how-do-i-tune-performance-of-my-managed-instance\"></a>如何优化托管实例的性能？\n\n可以通过以下方式优化托管实例的性能：\n- [自动优化](../database/automatic-tuning-overview.md)，通过基于 AI 和机器学习的持续性能优化，提供最佳性能和稳定的工作负载。\n- [内存中 OLTP](../in-memory-oltp-overview.md)，可改进事务处理工作负载的吞吐量和延迟，并提供更快的业务见解。 \n- 应用一些[应用程序和数据库优化最佳做法](../database/performance-guidance.md#tune-your-database)\n- 如果工作负载包含大量小型事务，请[将连接类型从代理切换到重定向模式](connection-types-overview.md#changing-connection-type)以降低延迟和提高吞吐量。\n\n### <a name=\"how-can-i-further-tune-performance-of-my-general-purpose-managed-instance\"></a>如何进一步优化常规用途托管实例的性能？\n\n若要提高常规用途实例的性能，请考虑[增加数据文件大小](https://techcommunity.microsoft.com/t5/azure-sql/increase-data-file-size-to-improve-hammerdb-workload-performance/ba-p/823337)。 若要优化常规用途实例的存储性能，请参阅[常规用途层的存储最佳实践指南](https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525)。\n\n### <a name=\"my-query-duration-is-too-long-how-can-i-analyze-wait-statistics-on-my-managed-instance\"></a>查询持续时间过长。 如何分析托管实例的等待统计信息？\n\n请参阅[分析 SQL 托管实例的等待统计信息](/archive/blogs/sqlserverstorageengine/analyzing-wait-statistics-on-managed-instance)。 等待统计信息可以帮助你理解查询持续时间长的原因，并标识正在数据库引擎中等待的查询。\n     \n"
   - question: >
       监视、指标和警报
     answer: >
@@ -85,6 +85,18 @@ sections:
 
 
       有关对 SQL 托管实例消耗和性能进行监视和警报的所有可能选项，请参阅 [Azure SQL 托管实例监视选项博客文章](https://techcommunity.microsoft.com/t5/azure-sql-database/monitoring-options-available-for-azure-sql-managed-instance/ba-p/1065416)。 有关 SQL MI 的实时性能监视，请参阅 [Azure SQL 数据库托管实例的实时性能监视](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)。
+
+
+      ### <a name="how-can-i-monitor-performance-of-my-managed-instance"></a>如何监视托管实例的性能？
+
+
+      请参阅[通过 SQL 见解监视 SQL 部署](../../azure-monitor/insights/sql-insights-overview.md)。
+
+
+      ### <a name="how-can-i-monitor-the-real-time-performance-of-my-managed-instance"></a>如何监视托管实例的实时性能？
+
+
+      请参阅 [Azure SQL DB 托管实例的实时性能监视](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)。
 
 
       ### <a name="can-i-use-sql-profiler-for-performance-tracking"></a>是否可以使用 SQL Profiler 进行性能跟踪？
@@ -99,10 +111,16 @@ sections:
       不支持。 可以将 [DMV](../database/monitoring-with-dmvs.md) 和[查询存储](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?preserve-view=true&view=sql-server-ver15) 与 [SQL Profiler](/sql/tools/sql-server-profiler/sql-server-profiler?preserve-view=true&view=sql-server-ver15) 和 [XEvent](/sql/relational-databases/extended-events/extended-events?preserve-view=true&view=sql-server-ver15) 结合使用来监视数据库。
 
 
+      ### <a name="how-can-i-monitor-cpu-usage-on-my-managed-instance"></a>如何监视托管实例的 CPU 使用率？
+
+
+      请参阅[监视 SQL Server 和 Azure SQL 上的 CPU 使用率](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131)。
+
+
       ### <a name="can-i-create-metric-alerts-on-sql-managed-instance"></a>是否可以在 SQL 托管实例上创建指标警报？
 
 
-      是的。 有关说明，请参阅[为 SQL 托管实例创建警报](alerts-create.md)。
+      是的。 有关说明，请参阅[为 SQL 托管实例创建警报](./alerts-create.md)。 有关更多提示和技巧，请参阅[此博客](https://techcommunity.microsoft.com/t5/azure-database-support-blog/tips-amp-tricks-1-creating-alerts-for-azure-sql-managed-instance/ba-p/2396044)。
 
 
       ### <a name="can-i-create-metric-alerts-on-a-database-in-managed-instance"></a>是否可以在托管实例中的数据库上创建指标警报？

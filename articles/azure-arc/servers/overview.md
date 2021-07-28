@@ -4,12 +4,12 @@ description: 了解如何使用已启用 Azure Arc 的服务器像管理 Azure �
 keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical, hybrid
 ms.date: 05/26/2021
 ms.topic: overview
-ms.openlocfilehash: 307d09f23c5c1e74e2e4c81d77a3521652598fa4
-ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+ms.openlocfilehash: 2cf70cbf20d024d92a3a2025ca6b659ffdd8bffa
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110585487"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294672"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>什么是已启用 Azure Arc 的服务器？
 
@@ -23,7 +23,6 @@ ms.locfileid: "110585487"
 ## <a name="supported-scenarios"></a>支持的方案
 
 将计算机连接到已启用 Azure Arc 的服务器时，它可以执行以下配置管理和监视任务：
-
 - 使用与适用于 Azure 虚拟机的策略分配相同的体验，分配 [Azure Policy 来宾配置](../../governance/policy/concepts/guest-configuration.md)。 目前，大多数来宾配置策略不会应用配置，它们仅审核计算机内部的设置。 若要了解将 Azure Policy 来宾配置策略用于启用了 Arc 的服务器的成本，请参阅 Azure Policy [定价指南](https://azure.microsoft.com/pricing/details/azure-policy/)。
 
 - 使用 Azure 自动化的[更改跟踪和清单](../../automation/change-tracking/overview.md)功能和 [Azure 安全中心文件集成监视](../../security-center/security-center-file-integrity-monitoring.md)功能，报告有关在受监视的服务器上安装的软件、Microsoft 服务、Windows 注册表和文件以及 Linux 守护程序的配置更改（适用于启用了[适用于服务器的 Azure Defender](../../security-center/defender-for-servers-introduction.md) 的服务器）。
@@ -37,7 +36,9 @@ ms.locfileid: "110585487"
     > [!NOTE]
     > 目前，不支持直接从启用了 Arc 的服务器启用更新管理。 请参阅[从自动化帐户启用更新管理](../../automation/update-management/enable-from-automation-account.md)，以了解要求以及如何为服务器启用更新管理。
 
-- 使用 [Azure 安全中心](../../security-center/security-center-introduction.md)将用于检测威胁的非 Azure 服务器包含在内，并主动监视潜在的安全威胁。
+- 使用 [Azure 安全中心](../../security-center/security-center-introduction.md)或 [Azure Defender](../../security-center/azure-defender.md) 将用于高级威胁检测的非 Azure 服务器包含在内，并主动监视潜在的安全威胁。
+
+- 使用 [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint) 保护非 Azure 服务器（包括通过 [Azure Defender](../../security-center/azure-defender.md)），用于威胁检测、漏洞管理和主动监视潜在安全威胁。
 
 从混合计算机收集并存储在 Log Analytics 工作区中的日志数据现在包含特定于计算机的属性，例如资源 ID。 这可用于支持[资源上下文](../../azure-monitor/logs/design-logs-deployment.md#access-mode)日志访问。
 

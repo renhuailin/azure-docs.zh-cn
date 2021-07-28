@@ -8,10 +8,10 @@ author: nabhishek
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 05717352936bed888e108277d0163e43bc5a37af
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100368755"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 存储过程活动
@@ -122,7 +122,7 @@ ms.locfileid: "100368755"
 ### <a name="create-an-output-dataset"></a>创建输出数据集
 必须为存储过程活动指定输出数据集，即使存储过程不生成任何数据也是如此。 这是因为活动的计划（活动的运行频率 - 每小时、每天等）取决于输出数据集。 输出数据集必须使用链接服务，其指代 Azure SQL 数据库、Azure Synapse Analytics 或要在其中运行存储过程的 SQL Server 数据库。 输出数据集可用于传递存储过程的结果，以供管道中另一活动（[链接活动](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)）进行后续处理。 但是，数据工厂不会自动将存储过程的输出写入此数据集。 它是写入输出数据集指向的 SQL 表的存储过程。 在某些情况下，输出数据集可能是虚拟数据集（这种数据集指向实际不包含存储过程输出的表）。 此虚拟数据集仅用于指定运行存储过程活动的计划。
 
-1. 在工具栏上单击“...更多”，然后依次单击“新建数据集”和“Azure SQL”。 单击命令栏上的“新建数据集”并选择“Azure SQL”。
+1. 单击工具栏上的“... 更多”，然后依次单击“新建数据集”和“Azure SQL” 。 单击命令栏上的“新建数据集”并选择“Azure SQL”。
 
     ![包含链接服务的树视图 2](media/data-factory-stored-proc-activity/new-dataset.png)
 2. 将以下 JSON 脚本复制/粘贴到 JSON 编辑器。
@@ -156,7 +156,7 @@ ms.locfileid: "100368755"
 - 类型属性中的 storedProcedureName 设置为 usp_sample（存储过程的名称）。
 - storedProcedureParameters 部分包含一个名为 DateTime 的参数。 采用 JSON 格式时，该参数的名称和大小写必须与存储过程定义中参数的名称和大小写相匹配。 如果需要为参数传递 null，请使用语法：`"param1": null`（全部小写）。
 
-1. 在工具栏上单击“...更多”并单击“新建管道”。
+1. 单击命令栏上的“... 更多”，然后单击“新建管道”。
 2. 复制/粘贴以下 JSON 代码段：
 
     ```JSON

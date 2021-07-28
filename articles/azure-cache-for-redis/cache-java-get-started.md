@@ -13,12 +13,12 @@ ms.custom:
 - seo-java-september2019
 - devx-track-java
 - mode-api
-ms.openlocfilehash: 7128ff1e20439c57d3e6212f29e6f871997584c6
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 107e56ccb105981d112ad765f95c85a884994355
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538612"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112234728"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-java"></a>快速入门：在 Java 中使用 Azure Cache for Redis
 
@@ -158,7 +158,7 @@ mvn exec:java -D exec.mainClass=example.demo.App
 如果已完成快速入门示例应用程序，可以删除本快速入门中创建的 Azure 资源，以免产生费用。 
 
 > [!IMPORTANT]
-> 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
+> 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可在左侧逐个删除这些资源，而不是删除资源组。
 >
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。 

@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 2773ab2a7caa1eb4d198495a3ebe4ef0c14a5a32
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104785506"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>使用 Azure 机器学习工作室（经典版）和 Azure 数据工厂创建预测管道
@@ -189,7 +189,7 @@ ms.locfileid: "104785506"
      }
    ```
 
-   如果 csv 文件不含标题行，可能出现以下错误：**活动中出错：读取字符串时出错。意外令牌：StartObject。路径 ''、行 1、位置 1**。
+   如果 csv 文件没有标题行，你可能会看到以下错误：“活动出错: 读取字符串时出错。异常令牌: StartObject。路径 "，第 1 行，位置 1”。
 
 3. 创建 **输出** Azure 数据工厂 **数据集**。 本示例使用分区为每个切片执行创建唯一输出路径。 如不使用分区，活动将覆盖文件。
 

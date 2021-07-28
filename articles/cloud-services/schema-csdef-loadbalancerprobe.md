@@ -1,24 +1,25 @@
 ---
-title: Azure 云服务 (经典) LoadBalancerProbe 架构 |Microsoft Docs
-description: Customer 定义的 LoadBalancerProbe 是角色实例中的终结点的运行状况探测。 它与服务定义文件中的 web 角色或辅助角色相结合。
+title: Azure 云服务（经典）定义 LoadBalancerProbe 架构 | Microsoft Docs
+description: 客户定义的 LoadBalancerProbe 是角色实例中终结点的运行状况探测。 它与服务定义文件中的 Web 角色或辅助角色组合使用。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 3dca519f7fb4523ce9d9267f7629c1177cc5e3b6
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.openlocfilehash: 1fbbb49918ed83bd38e0c1f879ed31386cfb756b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98739779"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934115"
 ---
-# <a name="azure-cloud-services-classic-definition-loadbalancerprobe-schema"></a>Azure 云服务 (经典) 定义 LoadBalancerProbe 架构
+# <a name="azure-cloud-services-classic-definition-loadbalancerprobe-schema"></a>Azure 云服务（经典）定义 LoadBalancerProbe 架构
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 负载均衡器探测是由客户定义的，用于探测 UDP 终结点和角色实例中的终结点的运行状况。 `LoadBalancerProbe` 不是一个独立的元素；它在服务定义文件中与 Web 角色或辅助角色结合。 `LoadBalancerProbe` 可由多个角色使用。
 
@@ -61,7 +62,7 @@ Azure 负载均衡器负责将传入流量路由到角色实例。 负载均衡�
 |Attribute|类型|说明|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | 必需。 负载均衡器探测的名称。 该名称必须是唯一的。|
-| `protocol`          | `string` | 必需。 指定终结点的协议。 可能的值包括 `http` 或 `tcp`。 如果已指定 `tcp`，则需要接收到的 ACK 才可完成进行探测。 如果已指定 `http`，则需要来自指定 URI 的 200 正常响应才可成功完成探测。|
+| `protocol`          | `string` | 必需。 指定终结点的协议。 可能的值为 `http` 或 `tcp`。 如果已指定 `tcp`，则需要接收到的 ACK 才可完成进行探测。 如果已指定 `http`，则需要来自指定 URI 的 200 正常响应才可成功完成探测。|
 | `path`              | `string` | 用于从 VM 请求运行状况的 URI。 如果 `protocol` 设置为 `http`，则需要 `path`。 否则，不允许使用该属性。<br /><br /> 没有默认值。|
 | `port`              | `integer` | 可选。 用于传达探测的端口。 这对任何终结点都是可选的，因为相同的端口之后会用于探测。 还可为探测配置其他端口。 可能的值介于 1 和 65535（含）之间。<br /><br /> 默认值由终结点设置。|
 | `intervalInSeconds` | `integer` | 可选。 探测终结点的运行状况的间隔（以秒为单位）。 通常，该间隔略小于所分配超时期限（以秒为单位）的一半，以便在退出轮转前执行两次完整的探测。<br /><br /> 默认值为 15，最小值为 5。|

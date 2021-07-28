@@ -12,17 +12,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2fd14ed8d149cdc5296229c52ceb74afb2ce7b23
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98613033"
 ---
 # <a name="azure-ad-connect-cloud-sync-supported-topologies-and-scenarios"></a>Azure AD Connect 云同步支持的拓扑和方案
-本文介绍使用 Azure AD Connect 云同步的各种本地拓扑和 Azure Active Directory (Azure AD) 拓扑。本文仅包括支持的配置和方案。
+本文介绍了使用 Azure AD Connect 云同步的各种本地和 Azure Active Directory (Azure AD) 拓扑。本文仅介绍支持的配置和方案。
 
 > [!IMPORTANT]
-> Microsoft 不支持在正式记录的配置或操作之外修改或操作 Azure AD Connect 云同步。 其中的任何配置或操作都可能会导致 Azure AD Connect 云同步出现不一致或不受支持状态。因此，Microsoft 无法提供这种部署的技术支持。
+> Microsoft 不支持在正式记录的配置或操作之外修改或操作 Azure AD Connect 云同步。 任何这些配置或操作都可能会导致 Azure AD Connect 云同步出现不一致或不受支持的状态。因此，Microsoft 不能为这种部署提供技术支持。
 
 ## <a name="things-to-remember-about-all-scenarios-and-topologies"></a>有关所有方案和拓扑的注意事项
 下面是选择解决方案时要记住的信息列表。
@@ -47,7 +47,7 @@ ms.locfileid: "98613033"
 ## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>具有 Azure AD Connect 的现有林，具有云预配的新林
 ![显示现有林和新林的拓扑的关系图。](media/tutorial-existing-forest/existing-forest-new-forest-2.png)
 
-这种情况下，拓扑类似于多林方案，但这种情况涉及到现有 Azure AD Connect 环境，然后使用 Azure AD Connect 云同步引入新的林。有关此方案的示例，请参阅[教程：包含单个 Azure AD 租户的现有林](tutorial-existing-forest.md)
+这个方案的拓扑与多林方案类似，但是这个方案涉及到现有 Azure AD Connect 环境，然后使用 Azure AD Connect 云同步引入新的林。有关此方案的示例，请参阅[教程：包含单个 Azure AD 租户的现有林](tutorial-existing-forest.md)
 
 ## <a name="piloting-azure-ad-connect-cloud-sync-in-an-existing-hybrid-ad-forest"></a>在现有混合 AD 林中试验 Azure AD Connect 云同步
 ![单个林和单个租户的拓扑](media/tutorial-migrate-aadc-aadccp/diagram-2.png) 试验方案涉及在同一林中同时存在 Azure AD Connect 和 Azure AD Connect 云同步，并相应地限定用户和组的范围。 注意：对象应只在其中一个工具的范围内。 

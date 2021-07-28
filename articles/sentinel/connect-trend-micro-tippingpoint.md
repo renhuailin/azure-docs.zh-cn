@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
 ms.openlocfilehash: 5c7491a0e0ba2a3bf604988c613e1fd8937f277d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98752170"
 ---
 # <a name="connect-your-trend-micro-tippingpoint-solution-to-azure-sentinel"></a>将 Trend Micro TippingPoint 解决方案连接到 Azure Sentinel
@@ -34,7 +34,7 @@ ms.locfileid: "98752170"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 必须有 Azure Sentinel 工作区的读取和写入权限。
+- 必须拥有对 Azure Sentinel 工作区的读取和写入权限。
 
 - 必须有工作区的共享密钥的读取权限。
 
@@ -46,17 +46,17 @@ ms.locfileid: "98752170"
 
 1. 从“数据连接器”库中，选择“Trend Micro TippingPoint(预览版)”，然后选择“打开连接器页”  。
 
-1. 按照“配置”下的“说明”选项卡中的说明进行操作 ：
+1. 在以下“配置”下，按照“说明”选项卡中的说明进行操作 ：
 
-    1. 在“1. 定义警报条件”下，Linux Syslog 代理配置 - 如果尚未运行日志转发器，或者需要其他日志转发器，请执行此步骤。 有关更多详细说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 1：部署日志转发器](connect-cef-agent.md)。
+    1. 在“1. Linux Syslog 代理配置”下 — 如果你还没有运行日志转发器，或者如果你需要其他日志转发器，请执行此步骤。 有关更详细的说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 1：部署日志转发器](connect-cef-agent.md)。
 
-    1. 在“2. 定义警报详细信息“下，将 Trend Micro TippingPoint SMS 日志转发到 Syslog 代理 - 此配置应包含以下元素：
+    1. 在“2. 将 Trend Micro TippingPoint SMS 日志转发到 Syslog 代理”下 - 此配置应包含以下元素：
         - 日志目标 - 日志转发服务器的主机名和/或 IP 地址
         - 协议和端口 – TCP 514（如果使用建议的其他协议和端口，请确保在日志转发服务器上的 syslog 守护程序中进行并行更改）
         - 日志格式 - ArcSight CEF 格式 v4.2
         - 日志类型 - 所有可用类型
 
-    1. 在“3. 定义操作组”下，验证连接 - 通过复制连接器页上的命令并在日志转发器上运行该命令来验证数据引入。 有关更多详细说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 3：验证连接性](connect-cef-verify.md)。
+    1. 在“3. 验证连接”下 — 通过复制连接器页上的命令并在日志转发器上运行以验证数据引入。 有关更详细的说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 3：验证连接性](connect-cef-verify.md)。
 
         可能需要长达 20 分钟的时间，日志才会开始显示在 Log Analytics 中。
 

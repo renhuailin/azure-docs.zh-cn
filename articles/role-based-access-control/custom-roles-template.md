@@ -9,13 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/16/2020
 ms.author: rolyon
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 230a772ba0edb95c2616ede1c4ea9deb4a1b0943
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 0626a9e36d05ac9cb51f62652dbe6f3133bbc6d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110696618"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101095911"
 ---
 # <a name="create-or-update-azure-custom-roles-using-an-arm-template"></a>使用 ARM 模板创建或更新 Azure 自定义角色
 
@@ -70,7 +69,7 @@ ms.locfileid: "110696618"
     New-AzDeployment -Location $location -TemplateUri $templateUri -actions $actions
     ```
 
-1. 输入部署的位置，例如 chinanorth。
+1. 输入部署的位置，例如 `centralus`。
 
 1. 以逗号分隔的列表（如 `Microsoft.Resources/resources/read,Microsoft.Resources/subscriptions/resourceGroups/read`）形式输入自定义角色的操作列表。
 

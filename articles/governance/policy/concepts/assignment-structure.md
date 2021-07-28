@@ -1,14 +1,14 @@
 ---
 title: 策略分配结构的详细信息
 description: 介绍策略分配定义，Azure Policy 使用该定义将策略定义和参数关联到资源，以进行评估。
-ms.date: 03/17/2021
+ms.date: 04/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 909c1c361e092c512a73854a40e22a67efe5f2f8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9de210b17264330e79ab5978a449e7a494054be2
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604859"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535870"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
 
@@ -60,6 +60,30 @@ Azure Policy 使用策略分配来定义为哪些资源分配了哪些策略或�
 ## <a name="display-name-and-description"></a>显示名称和说明
 
 使用 **displayName** 和 **description** 来标识策略分配，并提供它与特定资源集配合使用时的上下文。 **displayName** 的最大长度为 128 个字符，**description** 的最大长度为 512 个字符。
+
+## <a name="metadata"></a>元数据
+
+`metadata` 可选属性用于存储关于策略分配的信息。 客户可在 `metadata` 中定义对其组织有用的任何属性和值。 但是，Azure Policy 使用一些常见属性。 每个 `metadata` 属性有 1024 个字符的限制。
+
+### <a name="common-metadata-properties"></a>常见元数据属性
+
+- `assignedBy`（字符串）：创建分配的安全主体的友好名称。
+- `createdBy`（字符串）：创建分配的安全主体的 GUID。
+- `createdOn`（字符串）：分配创建时间的通用 ISO 8601 日期时间格式。
+- `parameterScopes`（对象）：键值对的集合，其中密钥与 [strongType](./definition-structure.md#strongtype) 配置的参数名称匹配，值定义门户中使用的资源范围，以通过匹配 strongType 提供来可用资源的列表。 如果范围不同于分配范围，门户将设置此值。 如果已设置，则在门户中编辑策略分配后，会自动将参数的作用域设置为此值。 但是，该作用域不会锁定到值，并且可以更改为其他作用域。
+
+  下面的示例 `parameterScopes` 是针对名为 **BackupPolicyId** 的 _strongType_ 参数，用于在门户中编辑分配时设置资源选择的范围。
+
+  ```json
+  "metadata": {
+      "parameterScopes": {
+          "backupPolicyId": "/subscriptions/{SubscriptionID}/resourcegroups/{ResourceGroupName}"
+      }
+  }
+  ```
+
+- `updatedBy`（字符串）：更新分配的安全主体的友好名称（如果有）。
+- `updatedOn`（字符串）：分配更新时间的通用 ISO 8601 日期时间格式（如果有）。
 
 ## <a name="enforcement-mode"></a>强制模式
 

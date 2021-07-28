@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96001518"
 ---
 # <a name="configure-storage"></a>配置存储
@@ -49,7 +49,7 @@ NAS 核心文件管理器可以是本地 NetApp 或 Isilon 设备，也可以是
 
 1. 单击左侧的“核心文件管理器” > “管理核心文件管理器” 。
 
-1. 单击 **“创建”** 。
+1. 单击“创建”。
 
    ![“添加新核心文件”页的屏幕截图，其中光标位于“创建”按钮上](media/avere-vfxt-add-core-filer-start.png)
 
@@ -80,7 +80,7 @@ NAS 核心文件管理器可以是本地 NetApp 或 Isilon 设备，也可以是
 * 创建客户端用于挂载核心文件管理器的命名空间交接点（[创建交接点](#create-a-junction)，硬件和云存储的交接点都一样）
 
 > [!TIP]
-> 如果在创建 Avere vFXT for Azure 群集时创建新的 Blob 容器，则部署模板会自动将该容器配置为核心文件管理器。 （如果使用根据请求提供的创建脚本，情况也是这样。）之后无需配置核心文件管理器。
+> 如果在创建 Avere vFXT for Azure 群集时创建新的 Blob 容器，则部署模板会自动将该容器配置为核心文件管理器。 （如果你使用根据请求提供的创建脚本，也会出现这种情况。）之后不需要配置核心文件管理器。
 >
 > 群集创建工具为你执行以下配置任务：
 >

@@ -12,12 +12,12 @@ metadata:
   ms.date: 04/27/2021
   ms.author: kenwith
   ms.reviewer: japere
-  ms.openlocfilehash: 711a72a689238e22d83109c9ea4f16501ff4c205
-  ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+  ms.openlocfilehash: 74ef399240307823ae5291f3c7bd073d2c0e8db0
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/14/2021
-  ms.locfileid: "113727780"
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111964823"
 title: Active Directory (Azure AD) 应用程序代理常见问题解答
 summary: 本页解答有关 Azure Active Directory (Azure AD) 应用程序代理的常见问题。
 sections:
@@ -25,11 +25,11 @@ sections:
   questions:
   - question: "是否可以从 Azure 门户的“应用注册”页删除“应用代理”应用？ \n"
     answer: >
-      不能。 应该从 Azure 门户的“企业应用程序”区域删除“应用代理”应用。 如果从 Azure 门户的“应用注册”区域删除“应用代理”应用，则可能会遇到问题。
+      不是。 应该从 Azure 门户的“企业应用程序”区域删除“应用代理”应用。 如果从 Azure 门户的“应用注册”区域删除“应用代理”应用，则可能会遇到问题。
   - question: >
       需有哪个许可证才能使用 Azure AD 应用程序代理？
     answer: >
-      若要使用 Azure AD 应用程序代理，必须有 Azure AD Premium P1 或 P2 许可证。 有关许可的详细信息，请参阅 [Azure Active Directory 定价](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
+      若要使用 Azure AD 应用程序代理，必须有 Azure AD Premium P1 或 P2 许可证。 有关许可的详细信息，请参阅 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
   - question: >
       如果许可证过期，租户中的 Azure AD 应用程序代理会发生什么情况？
     answer: >

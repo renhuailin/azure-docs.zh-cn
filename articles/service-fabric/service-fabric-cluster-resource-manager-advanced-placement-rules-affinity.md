@@ -9,10 +9,10 @@ ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9c141cd96877fd140b858d0aaed9197f2de80eca
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89005728"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>在 Service Fabric 中配置和使用服务相关性
@@ -65,7 +65,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 
 <center>
 
-![链与星形][Image2]
+![相关性关系上下文中的链形与星形][Image2]
 </center>
 
 目前关于相关性关系的另一个要注意的事项是，它们默认是双向的。 这意味着相关性规则只强制子级放置在父级的所在之处。 不能确保父级位于子级的所在之处。 因此，如果存在相关性违规并且由于某些原因无法通过将子级移动到父级节点来纠正违规行为，那么 - 即使将父级移动到子级节点可以纠正违规 - 父级也不会移动到子级节点。 将配置 [MoveParentToFixAffinityViolation](service-fabric-cluster-fabric-settings.md) 设置为 true 会消除方向性。 还请务必注意，相关性关系并不完美，或者无法立即强制执行，因为不同的服务具有不同的生命周期，会失败并且会单独移动。 例如，假设父级由于故障突然故障转移到另一个节点。 群集资源管理器和故障转移管理器会先处理故障转移，因为保证服务之间同步、一致和可用是优先考虑的。 故障转移完成后，相关性关系立即破裂，但群集资源管理器会认为一切都正常，直到它发现子级未与父级在一起。 这些种类的检查会定期执行。 若要深入了解群集资源管理器如何评估约束，可访问[本文](service-fabric-cluster-resource-manager-management-integration.md#constraint-types)，[此文](service-fabric-cluster-resource-manager-balancing.md)详细介绍如何配置评估这些约束的频率。   

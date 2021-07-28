@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 06/10/2021
-ms.openlocfilehash: 13f5bb8245ecc57c01d4236dfea7c9e4a2f7ae75
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 52ecc8a66dfa13747daf2b4b7fd227ef7ab5a3b2
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111986311"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237158"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure 安全中心免费版与已启用 Azure Defender
 Azure Defender 前 30 天免费。 30 天后，如果选择继续使用服务，我们会自动开始收取使用费用。
@@ -54,11 +54,11 @@ Azure Defender 前 30 天免费。 30 天后，如果选择继续使用服务，
 ### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>如何跟踪我的组织中谁已在安全中心启用 Azure Defender 更改？
 Azure 订阅可能具有多个管理员，这些管理员有权更改定价设置。 若要找到做出更改的用户，请使用 Azure 活动日志。
 
-:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="显示定价更改事件的 Azure 活动日志":::
+:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="显示定价更改事件的 Azure 活动日志。":::
 
 如果“事件发起者”列中未列出用户信息，请查看事件的 JSON 了解相关详细信息。
 
-:::image type="content" source="media/security-center-pricing/tracking-pricing-changes-in-activity-log.png" alt-text="Azure 活动日志 JSON 资源管理器":::
+:::image type="content" source="media/security-center-pricing/tracking-pricing-changes-in-activity-log.png" alt-text="Azure 活动日志 JSON 资源管理器。":::
 
 
 ### <a name="what-are-the-plans-offered-by-security-center"></a>安全中心提供了哪些计划？ 
@@ -103,7 +103,7 @@ Azure 订阅可能具有多个管理员，这些管理员有权更改定价设�
 | 正在解除分配 | 过渡性状态。 完成后，VM 会显示为“已解除分配”。                                                                             | 不计费            |
 | 已解除分配  | VM 已成功停止并从主机中删除。                                                                                  | 不计费            |
 
-:::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="显示已解除分配的计算机的 Azure 虚拟机":::
+:::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="显示已解除分配的虚拟机的 Azure 虚拟机。":::
 
 ### <a name="will-i-be-charged-for-machines-without-the-log-analytics-agent-installed"></a>是否需要为未安装 Log Analytics 代理的计算机付费？
 是的。 在订阅上启用[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 时，即使未安装 Log Analytics 代理，该订阅中的计算机也会受到一系列保护。

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: b2c1840acae64940561133a90cb1450c4af80a19
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 2acf5178e7d1cfdf907146d733150a48e9696a5e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952750"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101712345"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>商业市场中的 SaaS 履行 API 版本 2
 
@@ -48,7 +48,7 @@ ms.locfileid: "111952750"
 
 在登陆页上，客户应通过 Azure Active Directory (Azure AD) 单一登录 (SSO) 登录到新的或现有的 SaaS 帐户。
 
-发布者应实现 SSO，以提供 Microsoft 所需的用户体验来完成此流。 配置 SSO 时，请确保使用多租户 Azure AD 应用程序，并允许使用工作和学校帐户或个人 Microsoft 帐户。 此项要求仅适用于已使用 Microsoft 凭据登录后重定向到 SaaS 服务登陆页的用户。 并非每次登录到 SaaS 服务都需要执行 SSO。
+发布者应实现 SSO，以提供 Microsoft 所需的用户体验来完成此流。 配置 SSO 时，请确保使用多租户 Azure AD 应用程序，并允许使用工作和学校帐户或个人 Microsoft 帐户。 此要求仅适用于登陆页，适用于使用 Microsoft 凭据登录时重定向到 SaaS 服务的用户。 并非每次登录到 SaaS 服务都需要执行 SSO。
 
 > [!NOTE]
 >如果 SSO 要求管理员必须授予对某个应用的权限，则合作伙伴中心内的产品/服务说明必须披露需要管理员级别的访问权限。 披露此信息的目的是为了符合[商业市场认证策略](/legal/marketplace/certification-policies#10003-authentication-options)。
@@ -181,13 +181,13 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 *查询参数：*
 
-|  参数         | “值”            |
+|  参数         | 值            |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  使用 2018-08-31。   |
 
 *请求标头：*
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 |  `content-type`      | `application/json` |
 |  `x-ms-requestid`    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，将在响应标头中生成并提供一个值。 |
@@ -259,7 +259,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 *查询参数：*
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  --------   |  ---------------  |
 | `ApiVersion`  |  使用 2018-08-31。   |
 | `subscriptionId` | 购买的 SaaS 订阅的唯一标识符。  此 ID 是使用[解析 API](#resolve-a-purchased-subscription) 解析商业市场授权令牌后获取的。
@@ -267,7 +267,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 *请求标头：*
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 | `content-type`       |  `application/json`  |
 | `x-ms-requestid`     |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。  如果未提供此值，将在响应标头中生成并提供一个值。 |
@@ -314,14 +314,14 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 *查询参数：*
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  --------   |  ---------------  |
 | `ApiVersion`  |  使用 2018-08-31。  |
 | `continuationToken`  | 可选参数。 若要检索第一页结果，请将其留空。  使用 `@nextLink` 参数中返回的值检索下一页。 |
 
 *请求标头：*
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 | `content-type`       |  `application/json`  |
 | `x-ms-requestid`     |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，将在响应标头中生成并提供一个值。 |
@@ -421,14 +421,14 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 *查询参数：*
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 | `ApiVersion`        |   使用 2018-08-31。 |
 | `subscriptionId`     |  购买的 SaaS 订阅的唯一标识符。  此 ID 是使用解析 API 解析商业市场授权令牌后获取的。 |
 
 *请求标头：*
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 |  `content-type`      |  `application/json`  |
 |  `x-ms-requestid`    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，将在响应标头中生成并提供一个值。 |
@@ -493,14 +493,14 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 *查询参数：*
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  使用 2018-08-31。  |
 |  `subscriptionId`    |  购买的 SaaS 订阅的唯一标识符。  此 ID 是使用解析 API 解析商业市场授权令牌后获取的。 |
 
 *请求标头：*
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 |   `content-type`     |  `application/json` |
 |   `x-ms-requestid`   |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。  如果未提供此值，将在响应标头中生成并提供一个值。 |
@@ -548,14 +548,14 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 *查询参数：*
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  使用 2018-08-31。  |
 | `subscriptionId`     | 购买的 SaaS 订阅的唯一标识符。  此 ID 是使用解析 API 解析商业市场授权令牌后获取的。 |
 
 *请求标头：*
  
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 |  `content-type`      | `application/json`  |
 |  `x-ms-requestid`    | 唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，将在响应标头中生成并提供一个值。  |
@@ -578,9 +578,9 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 响应头：
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  用于获取操作状态的 URL。  例如 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
+|  `Operation-Location`        |  用于获取操作状态的 URL。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
 
 代码：400 错误的请求: 验证失败。
 
@@ -613,14 +613,14 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 *查询参数：*
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  使用 2018-08-31。  |
 |  `subscriptionId`     | 购买的 SaaS 订阅的唯一标识符。  此 ID 是使用解析 API 解析商业市场授权令牌后获取的。  |
 
 *请求标头：*
  
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 |  `content-type`      | `application/json`  |
 |  `x-ms-requestid`    | 唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。  如果未提供此值，将在响应标头中生成并提供一个值。  |
@@ -643,9 +643,9 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 响应头：
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  链接到资源以获取操作状态。  例如 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。  |
+|  `Operation-Location`        |  链接到资源以获取操作状态。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。  |
 
 代码：400 错误的请求: 验证失败。
 
@@ -686,14 +686,14 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 *查询参数：*
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  使用 2018-08-31。  |
 |  `subscriptionId`     | 购买的 SaaS 订阅的唯一标识符。  此 ID 是使用解析 API 解析商业市场授权令牌后获取的。  |
 
 *请求标头：*
  
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 |  `content-type`      | `application/json`  |
 |  `x-ms-requestid`    | 唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。  如果未提供此值，将在响应标头中生成并提供一个值。  |
@@ -708,9 +708,9 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 响应头：
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  链接到资源以获取操作状态。  例如 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
+|  `Operation-Location`        |  链接到资源以获取操作状态。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
 
 代码：400 错误的请求。  删除操作未包含在此 SaaS 订阅的 `allowedCustomerOperations` 列表中。
 
@@ -734,14 +734,14 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 *查询参数：*
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 |    `ApiVersion`    |  使用 2018-08-31。         |
 |    `subscriptionId` | 购买的 SaaS 订阅的唯一标识符。  此 ID 是使用解析 API 解析商业市场授权令牌后获取的。  |
 
 *请求标头：*
  
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 |  `content-type`     |  `application/json` |
 |  `x-ms-requestid`    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。  如果未提供此值，将在响应标头中生成并提供一个值。  |
@@ -795,7 +795,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 *查询参数：*
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 |  `ApiVersion`        |  使用 2018-08-31。  |
 |  `subscriptionId`    |  购买的 SaaS 订阅的唯一标识符。  此 ID 是使用解析 API 解析商业市场授权令牌后获取的。 |
@@ -803,7 +803,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 *请求标头：*
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 |  `content-type`      |  `application/json`   |
 |  `x-ms-requestid`    |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。  如果未提供此值，将在响应标头中生成并提供一个值。 |
@@ -855,7 +855,7 @@ Response body:
 
 *查询参数：*
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 |   `ApiVersion`       |  使用 2018-08-31。  |
 |   `subscriptionId`   |  购买的 SaaS 订阅的唯一标识符。  此 ID 是使用解析 API 解析商业市场授权令牌后获取的。  |
@@ -863,7 +863,7 @@ Response body:
 
 *请求标头：*
 
-|  参数         | “值”             |
+|  参数         | 值             |
 |  ---------------   |  ---------------  |
 |   `content-type`   | `application/json`   |
 |   `x-ms-requestid`   |  唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。  如果未提供此值，将在响应标头中生成并提供一个值。 |
@@ -945,7 +945,7 @@ Webhook 有效负载示例：
   "quantity": " 20",
   "timeStamp": "2019-04-15T20:17:31.7350641Z",
   "action": "Reinstate",
-  "status": "InProgress"
+  "status": "In Progress"
 }
 ```
 
@@ -970,6 +970,6 @@ Webhook 有效负载示例：
 
 ## <a name="next-steps"></a>后续步骤
 
-有关商业市场中 SaaS 产品/服务的其他选项，请参阅[商业市场计量服务 API](../marketplace-metering-service-apis.md)。
+有关商业市场中 SaaS 产品/服务的其他选项，请参阅[商业市场计量服务 API](marketplace-metering-service-apis.md)。
 
 查看并使用[适用于不同编程语言的客户端和示例](https://github.com/microsoft/commercial-marketplace-samples)。

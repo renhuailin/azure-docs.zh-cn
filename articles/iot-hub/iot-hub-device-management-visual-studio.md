@@ -7,18 +7,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 96f93325e0f17daaaf2bad91123fea81531ca152
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "73953185"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566956"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>使用适用于 Visual Studio 的 Cloud Explorer 管理 Azure IoT 中心设备
 
 ![端到端关系图](media/iot-hub-device-management-visual-studio/iot-e2e-simple.png)
 
-[Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) 是一种有用的 Visual Studio 扩展，可用于在 Visual Studio 中查看 Azure 资源，检查这些资源的属性，以及执行重要的开发人员操作。 它附带了可用于执行各种任务的管理选项。
+本文介绍如何在开发计算机上通过各种管理选项使用适用于 Visual Studio 的 Cloud Explorer。 [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) 是一种有用的 Visual Studio 扩展，可用于在 Visual Studio 中查看 Azure 资源，检查这些资源的属性，以及执行重要的开发人员操作。 它附带了可用于执行各种任务的管理选项。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -33,17 +33,7 @@ ms.locfileid: "73953185"
 
 设备孪生是存储设备状态信息（包括元数据、配置和条件）的 JSON 文档。 IoT 中心为连接到它的每台设备保留一个设备孪生。 有关设备孪生的详细信息，请参阅[设备孪生入门](iot-hub-node-node-twin-getstarted.md)。
 
-## <a name="what-you-learn"></a>学习内容
-
-本文介绍如何在开发计算机上通过各种管理选项使用适用于 Visual Studio 的 Cloud Explorer。
-
-## <a name="what-you-do"></a>准备工作
-
-在本文中，将通过各种管理选项运行适用于 Visual Studio 的 Cloud Explorer。
-
-## <a name="what-you-need"></a>所需条件
-
-需要具备以下先决条件：
+## <a name="prerequisites"></a>先决条件
 
 - 一个有效的 Azure 订阅。
 

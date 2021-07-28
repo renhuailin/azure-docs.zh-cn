@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: pepogors
 ms.openlocfilehash: 70f9cc38d84681f68c10882889214648a4dd2624
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98785560"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux 群集上的证书和安全性
@@ -17,7 +17,7 @@ ms.locfileid: "98785560"
 
 ## <a name="location-and-format-of-x509-certificates-on-linux-nodes"></a>Linux 节点上的 X.509 证书的位置和格式
 
-Service Fabric 通常要求在 Linux 群集节点上的 */var/lib/sfcerts* 目录中提供 X.509 证书。 这些证书包括群集证书、客户端证书，等等。在某些情况下，可为证书指定其他位置，而不一定要指定 *var/lib/sfcerts* 文件夹。 例如，在使用 Service Fabric Java SDK 生成的 Reliable Services 中，可以通过配置包 (Settings.xml) 为某些特定于应用程序的证书指定不同的位置。 有关详细信息，请参阅[配置包 (Settings.xml) 中引用的证书](#certificates-referenced-in-the-configuration-package-settingsxml)。
+Service Fabric 通常要求在 Linux 群集节点上的 */var/lib/sfcerts* 目录中提供 X.509 证书。 这适用于群集证书、客户端证书等。在某些情况下，可以为证书指定“var/lib/sfcerts”文件夹以外的位置。 例如，在使用 Service Fabric Java SDK 生成的 Reliable Services 中，可以通过配置包 (Settings.xml) 为某些特定于应用程序的证书指定不同的位置。 有关详细信息，请参阅[配置包 (Settings.xml) 中引用的证书](#certificates-referenced-in-the-configuration-package-settingsxml)。
 
 对于 Linux 群集，Service Fabric 要求以包含证书和私钥的 .pem 文件形式提供证书，或者以包含证书的 .crt 文件和包含私钥的 .key 文件形式提供证书。 所有文件应采用 PEM 格式。 
 

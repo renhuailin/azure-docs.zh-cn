@@ -5,26 +5,26 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 03/31/2021
 ms.author: victorh
-ms.openlocfilehash: 906687e08c9f31890a9ecec9154079e704512832
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: MT
+ms.openlocfilehash: b8e10eef89df12807cabd96d64d9c7d659f91d6c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485716"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109503"
 ---
 # <a name="deploy-a-security-partner-provider"></a>部署安全合作伙伴提供程序
 
-使用 Azure 防火墙管理器中的 *安全合作伙伴提供程序*，可以使用熟悉的、同类最佳的第三方安全即服务 (SECaaS) 产品，为用户保护 Internet 访问。
+通过 Azure 防火墙管理器中的安全合作伙伴提供程序，你可以使用熟悉的同类最佳第三方安全即服务 (SECaaS) 产品/服务来保护用户的 Internet 访问。
 
 要详细了解支持的场景和最佳做法指南，请参阅[什么是安全合作伙伴提供程序？](trusted-security-partners.md)
 
 
-集成的第三方安全即服务 (SECaaS) 合作伙伴现在提供： 
+集成的第三方安全即服务 (SECaaS) 合作伙伴现已可用： 
 
 - **Zscaler**
-- **[Check Point](check-point-overview.md)**
+- **[检查点](check-point-overview.md)**
 - **iboss**
 
 ## <a name="deploy-a-third-party-security-provider-in-a-new-hub"></a>在新中心部署第三方安全提供程序
@@ -67,7 +67,7 @@ ms.locfileid: "96485716"
 
 ## <a name="configure-third-party-security-providers-to-connect-to-a-secured-hub"></a>配置第三方安全提供程序以连接到安全中心
 
-要设置连接虚拟中心 VPN 网关的隧道，第三方提供程序需要具有对中心的访问权限。 为此，请将服务主体与订阅或资源组关联，并授予访问权限。 然后，必须使用第三方的门户将这些凭据分配给第三方。
+要设置连接虚拟中心 VPN 网关的隧道，第三方提供程序需要具有对中心的访问权限。 为此，请将服务主体与订阅或资源组关联，并授予访问权限。 然后，必须通过其门户将这些凭据分配给第三方。
 
 ### <a name="create-and-authorize-a-service-principal"></a>创建服务主体并为其授权
 
@@ -85,33 +85,30 @@ ms.locfileid: "96485716"
 1. 按照合作伙伴提供的说明完成设置。 这包括提交 AAD 信息以检测并连接到中心、更新出口策略，以及检查连接状态和日志。
 
    - [Zscaler：配置 Microsoft Azure 虚拟 WAN 集成](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration)。
-   - [检查点：配置 Microsoft Azure 虚拟 WAN 集成](https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/CloudGuard-Connect-Azure-Virtual-WAN/Default.htm)。
+   - [Check Point：配置 Microsoft Azure 虚拟 WAN 集成](https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/CloudGuard-Connect-Azure-Virtual-WAN/Default.htm)。
    - [iboss：配置 Microsoft Azure 虚拟 WAN 集成](https://www.iboss.com/blog/securing-microsoft-azure-with-iboss-saas-network-security)。 
    
 2. 可以在 Azure 的 Azure 虚拟 WAN 门户中查看隧道创建状态。 Azure 门户和合作伙伴门户中的隧道状态均显示“已连接”后，请继续执行后续步骤，以设置路由，并选择哪些分支和 Vnet 应将 Internet 流量发送到合作伙伴。
 
-## <a name="configure-route-settings"></a>配置路由设置
+## <a name="configure-security-with-firewall-manager"></a>使用防火墙管理器配置安全性
 
 1. 浏览到“Azure 防火墙管理器”->“安全中心”。 
-2. 选择一个中心。 现在，中心状态应显示“已预配”，而不是“安全连接挂起” 。
+2. 选择一个中心。 现在，中心状态应显示“已预配”，而不是“安全连接挂起”。
 
    请确保第三方提供程序可以连接到中心。 VPN 网关上的隧道应处于“已连接”状态。 与之前的状态相比，此状态更能反映中心与第三方合作伙伴之间的连接运行状况。
-3. 选择中心，并导航到“路由设置”。
+3. 选择中心，并导航到“安全配置”。
 
    向中心部署第三方提供程序时，该第三方提供程序会将该中心转换为安全虚拟中心。 这可确保第三方提供程序向中心播发 0.0.0.0/0（默认）路由。 但是，除非你选择了哪些连接应获得此默认路由，否则连接到中心的 VNet 连接和站点不会获得此路由。
-4. 在“Internet 流量”下，选择“VNet 到 Internet”和/或“分支到 Internet”，以便将路由配置为通过第三方发送  。
+4. 通过 Azure 防火墙设置“Internet 流量”，并通过信任的安全合作伙伴设置“专用流量”来配置虚拟 WAN 安全性。 这会自动保护虚拟 WAN 中单个连接的安全。
 
-   这仅指示应将那种类型的流量路由到中心，但还不会影响 VNet 或分支上的路由。 默认情况下，这些路由不会传播到附加到中心的所有 Vnet/分支。
-5. 必须选择“安全连接”，并选择应在哪些连接上设置这些路由。 这指示哪些 Vnet/分支可以开始向第三方提供程序发送 Internet 流量。
-6. 在“路由设置”中，选择“Internet 流量”下的“安全连接”，然后选择要保护的 VNet 或分支（虚拟 WAN 中的站点） 。 选择“保护 Internet 流量”。
-   ![保护 Internet 流量](media/deploy-trusted-security-partner/secure-internet-traffic.png)
-7. 导航回中心页面。 现在，中心的“安全合作伙伴提供程序”状态应为“安全” 。
+   :::image type="content" source="media/deploy-trusted-security-partner/security-configuration.png" alt-text="安全配置":::
+5. 此外，如果你的组织使用虚拟网络和分支机构中的公共 IP 范围，则需要使用“专用流量前缀”显式指定这些 IP 前缀。 公共 IP 地址前缀可以单独指定，也可以作为聚合来指定。
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>通过第三方服务的分支或 VNet Internet 流量
 
 接下来，你可以检查 VNet 虚拟机或分支站点是否可以访问 Internet，并验证流量是否流向第三方服务。
 
-完成路由设置步骤后，系统将向 VNet 虚拟机和分支站点发送 0/0 到第三方服务的路由。 无法通过 RDP 或 SSH 登录这些虚拟机。 若要登录，可以在互连 VNet 中部署 [Azure Bastion](../bastion/bastion-overview.md) 服务。
+完成路由设置步骤后，将 0/0 通过 VNet 虚拟机和分支站点发送到第三方服务路由。 无法通过 RDP 或 SSH 登录这些虚拟机。 若要登录，可以在互连 VNet 中部署 [Azure Bastion](../bastion/bastion-overview.md) 服务。
 
 ## <a name="next-steps"></a>后续步骤
 

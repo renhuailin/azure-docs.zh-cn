@@ -8,10 +8,10 @@ ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 284486c5db248ced8ada6e7194c7bc5a9be5689f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100388339"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>解决数据管理网关的使用问题
@@ -23,7 +23,7 @@ ms.locfileid: "100388339"
 有关网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。 请参阅[在本地与云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，查看通过使用网关将数据从 SQL Server 数据库移动到 Microsoft Azure Blob 存储的演练。
 
 ## <a name="failed-to-install-or-register-gateway"></a>无法安装或注册网关
-### <a name="1-problem"></a>1.问题
+### <a name="1-problem"></a>1. 问题
 在安装和注册网关时，尤其是在下载网关安装文件时，会出现此错误消息。
 
 `Unable to connect to the remote server". Please check your local settings (Error Code: 10003).`
@@ -36,7 +36,7 @@ ms.locfileid: "100388339"
 
 也可在其他可以访问下载中心的计算机上从[下载中心](https://www.microsoft.com/download/details.aspx?id=39717)下载最新网关的安装文件。 然后即可将安装程序文件复制到网关主机并以手动方式运行，以便安装和更新网关。
 
-### <a name="2-problem"></a>2.问题
+### <a name="2-problem"></a>2. 问题
 通过在 Azure 门户中单击“直接安装在此计算机上”来尝试安装网关时会出现此错误。
 
 `Error:  Abort installing a new gateway on this computer because this computer has an existing installed gateway and a computer without any installed gateway is required for installing a new gateway.`  
@@ -47,7 +47,7 @@ ms.locfileid: "100388339"
 #### <a name="resolution"></a>解决方法
 卸载计算机上的现有网关，并再次单击“直接安装在此计算机上”链接。
 
-### <a name="3-problem"></a>3.问题
+### <a name="3-problem"></a>3. 问题
 注册新网关时可能会出现此错误。
 
 `Error: The gateway has encountered an error during registration.`
@@ -62,7 +62,7 @@ ms.locfileid: "100388339"
 #### <a name="resolution"></a>解决方法
 在门户中验证是否使用的是正确的网关密钥。 如果需要，可重新生成密钥并使用该密钥注册网关。
 
-### <a name="4-problem"></a>4.问题
+### <a name="4-problem"></a>4. 问题
 注册网关时，可能会出现下面的错误消息。
 
 `Error: The content or format of the gateway key "{gatewayKey}" is invalid, please go to azure portal to create one new gateway or regenerate the gateway key.`
@@ -77,7 +77,7 @@ ms.locfileid: "100388339"
 #### <a name="resolution"></a>解决方法
 在门户中生成网关密钥，并使用复制按钮复制整个密钥。 然后将其粘贴在此窗口中，以便注册网关。
 
-### <a name="5-problem"></a>5.问题
+### <a name="5-problem"></a>5. 问题
 注册网关时，可能会出现下面的错误消息。
 
 `Error: The gateway key is invalid or empty. Specify a valid gateway key from the portal.`
@@ -92,7 +92,7 @@ ms.locfileid: "100388339"
 
 如果安装程序是最新的且门户上的网关仍然存在，请在 Azure 门户中重新生成网关密钥，并使用复制按钮复制整个密钥，然后将其粘贴到此窗口中以注册网关。 否则，重新创建网关，然后重新开始。
 
-### <a name="6-problem"></a>6.问题
+### <a name="6-problem"></a>6. 问题
 注册网关时，可能会出现下面的错误消息。
 
 `Error: Gateway has been online for a while, then shows "Gateway is not registered" with the status "Gateway key is invalid"`
@@ -107,7 +107,7 @@ ms.locfileid: "100388339"
 
 如果网关仍然存在但已重新生成其密钥，则使用新的密钥注册网关。 如果没有密钥，请在门户中再次重新生成密钥。
 
-### <a name="7-problem"></a>7.问题
+### <a name="7-problem"></a>7. 问题
 注册网关时，可能需要输入证书的路径和密码。
 
 ![显示你输入证书的路径和密码的位置的屏幕截图。](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
@@ -124,7 +124,7 @@ ms.locfileid: "100388339"
 
 恢复网关时不能跳过此阶段。 如果证书丢失，则需从门户中删除网关，并重新创建新的网关。  此外，需要通过重新输入凭据来更新所有与网关相关的关联服务。
 
-### <a name="8-problem"></a>8.问题
+### <a name="8-problem"></a>8. 问题
 可能会出现以下错误消息。
 
 `Error: The remote server returned an error: (407) Proxy Authentication Required.`
@@ -136,7 +136,7 @@ ms.locfileid: "100388339"
 按照本文“代理服务器注意事项”部分的说明，通过数据管理网关配置管理器配置代理设置。
 
 ## <a name="gateway-is-online-with-limited-functionality"></a>网关联机但功能受限
-### <a name="1-problem"></a>1.问题
+### <a name="1-problem"></a>1. 问题
 网关的状态显示为“联机但功能受限”。
 
 #### <a name="cause"></a>原因
@@ -150,7 +150,7 @@ ms.locfileid: "100388339"
 #### <a name="resolution"></a>解决方法
 此问题（联机但功能受限）的解决方法取决于网关是无法连接到云服务还是云服务无法连接到网关。 以下部分提供相关解决方法。
 
-### <a name="2-problem"></a>2.问题
+### <a name="2-problem"></a>2. 问题
 出现以下错误。
 
 `Error: Gateway cannot connect to cloud service through service bus`
@@ -167,7 +167,7 @@ ms.locfileid: "100388339"
 1. 在网关上配置代理设置。 有关详细信息，请参阅“代理服务器注意事项”部分。
 1. 对网关计算机和企业防火墙上的 Windows 防火墙启用出站端口 5671 和 9350-9354。 有关详细信息，请参阅“端口和防火墙”部分。 此步骤虽为可选步骤，但出于性能方面的考虑，建议执行该步骤。
 
-### <a name="3-problem"></a>3.问题
+### <a name="3-problem"></a>3. 问题
 出现以下错误。
 
 `Error: Cloud service cannot connect to gateway through service bus.`

@@ -7,13 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 478c2cbe35c43ffb0fdc507cc1b00585623013ea
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 26078c3757e42c3e290a5f4122461b287582fb80
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668535"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "96518815"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>为应用程序网关创建 Web 应用程序防火墙策略
 
@@ -26,7 +25,7 @@ ms.locfileid: "110668535"
    > [!NOTE]
    > 防火墙策略关联到 WAF 后，必须始终有一个与该 WAF 关联的策略。 你可能会覆盖该策略，但不支持完全解除策略与 WAF 的关联。 
 
-所有新的 Web 应用程序防火墙的 WAF 设置（自定义规则、托管规则集配置、排除项等等）都在 WAF 策略中。 如果你有现有的 WAF，则这些设置可能仍存在于你的 WAF 配置中。有关如何移至新 WAF 策略的步骤，请参阅本文后面的[将 WAF 配置迁移到 WAF 策略](#migrate)。 
+所有新的 Web 应用程序防火墙的 WAF 设置（自定义规则、托管规则集配置、排除项等等）都在 WAF 策略中。 如果你有现有的 WAF，则这些设置可能仍存在于你的 WAF 配置中。有关如何移动到新 WAF 策略的步骤，请参阅本文后面的[将 WAF 配置迁移到 WAF 策略](#migrate)。 
 
 ## <a name="create-a-policy"></a>创建策略
 
@@ -66,7 +65,7 @@ ms.locfileid: "110668535"
 
 ## <a name="custom-rules"></a>自定义规则
 
-要创建自定义规则，请在“自定义规则”选项卡下选择“添加自定义规则”。 这将打开自定义规则配置页。 下面的屏幕截图显示了自定义规则的示例，该规则配置为：如果查询字符串包含文本 *blockme*，则该规则将阻止请求。
+若要创建自定义规则，请在“自定义规则”选项卡下选择“添加自定义规则”。这将打开“自定义规则配置”页。  下面的屏幕截图显示了自定义规则的示例，该规则配置为：如果查询字符串包含文本 *blockme*，则该规则将阻止请求。
 
 [ ![编辑自定义规则](../media/create-waf-policy-ag/edit-custom-rule.png) ](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
 
