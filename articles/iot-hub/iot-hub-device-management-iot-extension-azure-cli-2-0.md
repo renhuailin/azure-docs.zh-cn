@@ -10,24 +10,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 499c0c065cb38313c98ed9412ab1f08d70dbc654
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a6bf14691e583190c4485ae854de78b187d95211
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199520"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773892"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>针对 Azure IoT 中心设备管理，使用适用于 Azure CLI 的 IoT 扩展
 
 ![端到端关系图](media/iot-hub-get-started-e2e-diagram/2.png)
 
-[!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
-
-[适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)是一个开放源代码 IoT 扩展，它增强了 [Azure CLI](/cli/azure/overview) 的功能。 Azure CLI 包含用于与 Azure 资源管理器和管理终结点进行交互的命令。 例如，可使用 Azure CLI 创建 Azure VM 或 IoT 中心。 CLI 扩展使 Azure 服务能够扩展 Azure CLI，从而可访问其他特定于服务的功能。 IoT 扩展为 IoT 开发人员提供了针对所有 IoT 中心、IoT Edge 和 IoT 中心设备预配服务功能的命令行访问权限。
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
-
-[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+在本文介绍如何在开发计算机上通过各种管理选项使用适用于 Azure CLI 的 IoT 扩展。 [适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)是一个开放源代码 IoT 扩展，它增强了 [Azure CLI](/cli/azure/overview) 的功能。 Azure CLI 包含用于与 Azure 资源管理器和管理终结点进行交互的命令。 例如，可使用 Azure CLI 创建 Azure VM 或 IoT 中心。 CLI 扩展使 Azure 服务能够扩展 Azure CLI，从而可访问其他特定于服务的功能。 IoT 扩展为 IoT 开发人员提供了针对所有 IoT 中心、IoT Edge 和 IoT 中心设备预配服务功能的命令行访问权限。
 
 | 管理选项          | 任务  |
 |----------------------------|-----------|
@@ -41,21 +35,19 @@ ms.locfileid: "102199520"
 
 设备孪生是存储设备状态信息（元数据、配置和条件）的 JSON 文档。 IoT 中心为连接到它的每台设备保留一个设备孪生。 有关设备孪生的详细信息，请参阅[设备孪生入门](iot-hub-node-node-twin-getstarted.md)。
 
-## <a name="what-you-learn"></a>学习内容
+[!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-了解如何在开发计算机上通过各种管理选项使用适用于 Azure CLI 的 IoT 扩展。
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="what-you-do"></a>准备工作
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-使用各种管理选项运行 Azure CLI 和适用于 Azure CLI 的 IoT 扩展。
+## <a name="prerequisites"></a>先决条件
 
-## <a name="what-you-need"></a>所需条件
+* 请完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程。 例如，可转到[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)教程或[发送遥测](quickstart-send-telemetry-dotnet.md)快速入门中的一个教程。 这些文章阐述下列要求：
 
-* 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这些项包括以下要求：
-
-  - 一个有效的 Azure 订阅。
-  - 已在订阅中创建一个 Azure IoT 中心。
-  - 一个可向 Azure IoT 中心发送消息的客户端应用程序。
+  * 一个有效的 Azure 订阅。
+  * 已在订阅中创建一个 Azure IoT 中心。
+  * 一个可向 Azure IoT 中心发送消息的客户端应用程序。
 
 * 在学习本教程期间，确保设备与客户端应用程序均处于运行状态。
 
@@ -90,7 +82,7 @@ az iot hub invoke-device-method --device-id <your device id> \
 
 ```azurecli
 az iot hub device-twin update -n <your hub name> \
-  -d <your device id> --set properties.desired.interval = 3000
+  -d <your device id> --set properties.desired.interval=3000
 ```
 
 可从设备读取此属性。
@@ -119,7 +111,7 @@ az iot hub device-twin show --hub-name <your hub name> --device-id <your device 
 az iot hub device-twin update \
   --hub-name <your hub name> \
   --device-id <your device id> \
-  --set tags = '{"role":"temperature&humidity"}}'
+  --set tags='{"role":"temperature&humidity"}'
 ```
 
 ## <a name="device-twin-queries"></a>设备孪生查询

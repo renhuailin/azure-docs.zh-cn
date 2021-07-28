@@ -1,14 +1,14 @@
 ---
 title: 以编程方式创建策略
 description: 本文逐步讲解如何使用 Azure CLI、Azure PowerShell 和 REST API 以编程方式创建和管理适用于 Azure Policy 的策略。
-ms.date: 08/17/2020
+ms.date: 03/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 4c3a503e8d48573441093879511490608437b1e1
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
-ms.translationtype: MT
+ms.openlocfilehash: 04b2e1a2c84320c61d1c1aba7404af47bc03150e
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033857"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747478"
 ---
 # <a name="programmatically-create-policies"></a>以编程方式创建策略
 
@@ -141,7 +141,7 @@ ms.locfileid: "98033857"
 
    将前面的 {subscriptionId} 替换为你的订阅的 ID，或将 {managementGroupId} 替换为你的[管理组](../../management-groups/overview.md)的 ID。
 
-   有关查询结构的详细信息，请参阅 [Azure Policy 定义 - 创建或更新](/rest/api/resources/policydefinitions/createorupdate)和[策略定义 - 在管理组中创建或更新](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup)
+   有关查询结构的详细信息，请参阅 [Azure Policy 定义 - 创建或更新](/rest/api/policy/policydefinitions/createorupdate)和[策略定义 - 在管理组中创建或更新](/rest/api/policy/policydefinitions/createorupdateatmanagementgroup)。
 
 使用以下过程创建策略分配，并在资源组级别分配策略定义。
 
@@ -244,5 +244,5 @@ az policy definition show --name 'Audit Storage Accounts with Open Public Networ
 - [Azure REST API 资源](/rest/api/resources/)
 - [Azure PowerShell 模块](/powershell/module/az.resources/#policy)
 - [Azure CLI 策略命令](/cli/azure/policy)
-- [Azure Policy Insights 资源提供程序 REST API 参考](/rest/api/policy-insights)
+- [Azure Policy 资源提供程序 REST API 参考](/rest/api/policy)
 - [使用 Azure 管理组来组织资源](../../management-groups/overview.md)。

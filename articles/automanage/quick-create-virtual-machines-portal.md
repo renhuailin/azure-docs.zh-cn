@@ -10,12 +10,12 @@ ms.subservice: automanage
 ms.workload: infrastructure
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 7121d83f9401fe985966324afe6a61cf8396b2bb
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: d0c319fa9579f68c7f429283327f43869c4ab2b1
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534062"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113006043"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>快速入门：在 Azure 门户中启用适用于虚拟机的 Azure 自动管理
 
@@ -35,9 +35,9 @@ ms.locfileid: "107534062"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录 [Azure 门户](https://aka.ms/AutomanagePortal-Ignite21)。
+登录到 [Azure 门户](https://aka.ms/AutomanagePortal-Ignite21)。
 
-## <a name="enable-automanage-for-a-single-vm"></a>对单个 VM 启用 Automanage
+## <a name="enable-automanage-for-a-single-machine"></a>对单个虚拟机启用 Automanage
 
 1. 浏览到要启用的虚拟机。
 
@@ -51,7 +51,7 @@ ms.locfileid: "107534062"
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-enablepane.png" alt-text="在单个 VM 上启用。":::
 
-## <a name="enable-automanage-for-multiple-vms"></a>对多个 VM 启用 Automanage
+## <a name="enable-automanage-for-multiple-machines"></a>对多个虚拟机启用 Automanage
 
 1. 在搜索栏中，搜索并选择“Automanage - Azure 计算机最佳做法”。
 
@@ -60,13 +60,15 @@ ms.locfileid: "107534062"
     :::image type="content" source="media\quick-create-virtual-machine-portal\zero-vm-list-view.png" alt-text="在现有 VM 上启用。":::
 
 3. 在“选择计算机”边栏选项卡上：
-    1. 按“订阅”和“资源组”筛选 VM 列表 。
+    1. 按“订阅”和“资源组”筛选列表。
     1. 选中要加入的每个虚拟机的复选框。
     1. 单击“选择”按钮。
+    > [!NOTE]
+    > 可以同时选择 Azure VM 和启用了 Arc 的服务器。
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="从可用 VM 列表中选择现有 VM。":::
 
-4. 在“环境”下，选择环境类型：“开发/测试”或“生产”  。 
+4. 在“环境”下，选择环境类型：“开发/测试”或“生产”  。
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="选择环境。":::
 
@@ -76,7 +78,7 @@ ms.locfileid: "107534062"
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="浏览生产环境。":::
 
-5. 默认情况下会选择“Azure 最佳做法”首选项作为配置首选项。 若要更改此选择，请创建新的首选项或选择现有的首选项。 
+5. 默认情况下会选择“Azure 最佳做法”首选项作为配置首选项。 若要更改此选择，请创建新的首选项或选择现有的首选项。
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\create-preference.png" alt-text="创建首选项。":::
 

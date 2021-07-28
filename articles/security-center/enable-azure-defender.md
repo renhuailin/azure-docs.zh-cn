@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
 ms.date: 06/07/2021
-ms.openlocfilehash: 4f7900c4abc37df776c231ac9d70a09862f6d49f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: bc8449950134ba8c247c57df06b7495a48558def
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111748385"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112238583"
 ---
 # <a name="quickstart-enable-azure-defender"></a>快速入门：启用 Azure Defender
 
@@ -54,14 +54,14 @@ ms.locfileid: "111748385"
 
         “升级”选项卡列出了符合加入条件的订阅和工作区。
 
-        :::image type="content" source="./media/enable-azure-defender/get-started-upgrade-tab.png" alt-text="“入门”页的“升级”选项卡"::: 
+        :::image type="content" source="./media/enable-azure-defender/get-started-upgrade-tab.png" alt-text="“开始使用”页的“升级”选项卡。"::: 
 
     1. 在“选择要在其中启用 Azure Defender 的订阅和工作区”列表中，选择要升级的订阅和工作区，然后选择“升级”以启用 Azure Defender。 
 
        - 如果选择的订阅和工作区不符合试用条件，会在下一步骤中对其进行升级，并开始收费。
        - 如果你选择了一个有符合免费试用条件的工作区，下一步将开始试用。
 
-        :::image type="content" source="./media/enable-azure-defender/upgrade-selected-workspaces-and-subscriptions.png" alt-text="在“开始使用”页中升级所有选定的工作区和订阅":::
+        :::image type="content" source="./media/enable-azure-defender/upgrade-selected-workspaces-and-subscriptions.png" alt-text="在“开始使用”页中升级所有选定的工作区和订阅。":::
 
 
 ## <a name="disable-azure-defender"></a>禁用 Azure Defender
@@ -72,9 +72,9 @@ ms.locfileid: "111748385"
 1. 选择相关订阅。
 1. 如果订阅已启用 Azure Defender，请打开该“Azure Defender 计划”，然后选择“关闭 Azure Defender”。 
 
-    :::image type="content" source="./media/enable-azure-defender/disable-plans.png" alt-text="启用或禁用 Azure Defender":::
+    :::image type="content" source="./media/enable-azure-defender/disable-plans.png" alt-text="启用或禁用 Azure Defender。":::
 
-1. 选择“保存”。
+1. 选择“保存”。 
 
 > [!NOTE]
 > 禁用 Azure Defender 后（无论是禁用单个计划还是一次禁用所有计划），数据收集可能会在短时间内继续。 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 03/07/2021
 ms.author: bagol
-ms.openlocfilehash: a37501498a9222025860702a7f29dccc9abfc8f7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b096bcc59465bae0a37013c148880b6beb9eecb0
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102450045"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795647"
 ---
 # <a name="commonly-used-azure-sentinel-workbooks"></a>常用的 Azure Sentinel 工作簿
 
@@ -48,6 +48,6 @@ ms.locfileid: "102450045"
 |**安全警报**     |  提供用于 Azure Sentinel 环境中警报的安全警报仪表板。 <br><br>有关详细信息，请参阅[从 Microsoft 安全警报自动创建事件](create-incidents-from-alerts.md)。      |
 |**安全操作效率**     |  旨在用于安全运营中心 (SOC) 管理器查看有关其团队性能的总体效率指标和度量值。 <br><br>有关详细信息，请参阅[通过事件指标更好地管理 SOC](manage-soc-with-incident-metrics.md)。  |
 |**威胁情报**     | 深入了解威胁指示器，包括威胁的类型和严重性、一段时间内的威胁活动以及与其他数据源(包括 Office 365 和防火墙)的关联。  <br><br>有关详细信息，请参阅将[威胁智能导入 Azure Sentinel](import-threat-intelligence.md)。      |
-|**工作区审核**     |  提供了一个工作区审核报告，使你可以了解工作区中运行的查询。   <br><br>有关详细信息，请参阅[审核 Azure Sentinel 查询和活动](audit-sentinel-data.md)。  |
-|     |         |
+|**零信任 (TIC3.0)**     |  提供对交叉遍历到[受信任 Internet 连接框架](https://www.cisa.gov/trusted-internet-connections)的零信任原则的自动可视化。   <br><br>有关详细信息，请参阅[零信任 (TIC 3.0) 工作簿公告博客](https://techcommunity.microsoft.com/t5/public-sector-blog/announcing-the-azure-sentinel-zero-trust-tic3-0-workbook/ba-p/2313761)。  |
+
 

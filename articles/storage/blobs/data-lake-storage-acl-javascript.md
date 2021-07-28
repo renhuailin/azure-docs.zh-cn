@@ -1,5 +1,5 @@
 ---
-title: 使用 JavaScript (Node.js) 设置 Azure Data Lake Storage Gen2 中的 ACL
+title: 使用 JavaScript (Node.js) 在 Azure Data Lake Storage Gen2 中管理 ACL
 description: 使用适用于 JavaScript 的 Azure Storage Data Lake 客户端库在启用了分层命名空间 (HNS) 的存储帐户中管理访问控制列表 (ACL)。
 author: normesta
 ms.service: storage
@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-js
-ms.openlocfilehash: 21b4977102a484d8a3a680450a9cb6f77c7e3fbd
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 98656f6751ec7ed8d18c4cd4c25715df5d59d011
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722746"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633620"
 ---
-# <a name="use-javascript-sdk-in-nodejs-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 Node.js 中的 JavaScript SDK 管理 Azure Data Lake Storage Gen2 中的 ACL
+# <a name="use-javascript-sdk-in-nodejs-to-manage-acls-in-azure-data-lake-storage-gen2"></a>使用 Node.js 中的 JavaScript SDK 设置 Azure Data Lake Storage Gen2 中的 ACL
 
-本文介绍如何使用 Node.js 来获取、设置和更新目录和文件的访问控制列表。 
+本文介绍如何使用 Node.js 来获取、设置和更新目录与文件的访问控制列表。 
 
 “[包(节点包管理器)](https://www.npmjs.com/package/@azure/storage-file-datalake)” | ”[示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)” | ”[提供反馈](https://github.com/Azure/azure-sdk-for-java/issues)”
 

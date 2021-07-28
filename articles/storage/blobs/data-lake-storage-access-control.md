@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 50c6b4f309eb78acee0cfa59d1b540adba65cab2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 142c8b1439447da4d535dd97e191a0ada503fe94
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774807"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632594"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制列表 (ACL)
 
@@ -36,13 +36,14 @@ Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持
 
 | 环境 | 项目 |
 |--------|-----------|
-|Azure 存储资源管理器 |[使用 Azure 存储资源管理器设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-explorer-acl.md)|
-|.NET |[使用 .NET 设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-dotnet.md)|
-|Java|[使用 Java 设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-java.md)|
-|Python|[使用 Python 设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-python.md)|
-|JavaScript (Node.js)|[使用 Node.js 中的 JavaScript SDK 在 Azure Data Lake Storage Gen2 中设置 ACL](data-lake-storage-directory-file-acl-javascript.md)|
-|PowerShell|[使用 PowerShell 设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-powershell.md)|
-|Azure CLI|[使用 Azure CLI 设置 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-cli.md)|
+|Azure 存储资源管理器 |[使用 Azure 存储资源管理器在 Azure Data Lake Storage Gen2 中管理 ACL](data-lake-storage-explorer-acl.md)|
+|Azure 门户 |[使用 Azure 门户管理 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-azure-portal.md)|
+|.NET |[使用 .NET 管理 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-dotnet.md)|
+|Java|[使用 Java 管理 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-java.md)|
+|Python|[使用 Python 管理 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-python.md)|
+|JavaScript (Node.js)|[使用 Node.js 中的 JavaScript SDK 管理 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-directory-file-acl-javascript.md)|
+|PowerShell|[使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-powershell.md)|
+|Azure CLI|[使用 Azure CLI 管理 Azure Data Lake Storage Gen2 中的 ACL](data-lake-storage-acl-cli.md)|
 |REST API |[路径 - 更新](/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]

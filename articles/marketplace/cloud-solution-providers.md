@@ -1,5 +1,5 @@
 ---
-title: 云解决方案提供商 - Microsoft 商业市场
+title: 云解决方案提供商 - Microsoft 商业市场 - Azure
 description: 了解如何通过商业市场中的 Microsoft 云解决方案提供商 (CSP) 计划合作伙伴渠道销售产品/服务。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: c906d37a01f0fca2d4114e8ba07078fc46eec88b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 64ad2c4311ade34314edde6e841e747745378e8c
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93131167"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109716251"
 ---
 # <a name="cloud-solution-provider-program"></a>云解决方案提供商计划
 
@@ -34,7 +34,7 @@ ms.locfileid: "93131167"
 
 ## <a name="how-to-configure-an-offer"></a>如何配置产品/服务
 
-在合作伙伴中心创建产品/服务时，配置 CSP 计划选择加入设置。 [详细了解发布者体验的变化](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)。
+在合作伙伴中心创建产品/服务时，配置 CSP 计划选择加入设置。
 
 ### <a name="partner-center-opt-in"></a>在合作伙伴中心选择加入
 

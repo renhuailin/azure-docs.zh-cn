@@ -1,0 +1,65 @@
+### YamlMime:FAQ
+metadata:
+  title: 弹性缩放常见问题解答
+  description: 有关 Azure SQL 数据库弹性缩放的常见问题。
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: scale-out
+  ms.custom: sqldbrb=1
+  ms.devlang: 
+  ms.topic: conceptual
+  author: scoriani
+  ms.author: scoriani
+  ms.reviewer: mathoma
+  ms.date: 01/25/2019
+  ms.openlocfilehash: c443665d50cfa0c60201a16c23b5725ff9428507
+  ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/29/2021
+  ms.locfileid: "113014503"
+title: 弹性数据库工具常见问题解答 (FAQ)
+summary: >
+  [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+sections:
+- name: 忽略
+  questions:
+  - question: >
+      如果我的分片只有单个租户并且我没有分片键，该如何为架构信息填充分片键
+    answer: >
+      架构信息对象仅用于“拆分/合并”方案。 如果某个应用程序本质上是单租户，那么它则不需要“拆分/合并”工具，因此无需填充架构信息对象。
+  - question: >
+      我已经置了一个数据库，并且已安装分片映射管理器，我应如何将此新数据库注册为分片
+    answer: >
+      请参阅[使用弹性数据库客户端库将分片添加到应用程序](elastic-scale-add-a-shard.md)。
+  - question: >
+      弹性数据库工具的费用如何
+    answer: >
+      使用弹性数据库客户端库不会产生任何费用。 只有用于分片和分片映射管理器的 Azure SQL 数据库中的数据库，以及为“拆分/合并”工具预配的 Web/辅助角色才会产生费用。
+  - question: >
+      为什么当我从另一台服务器添加分片时，我的凭据不起作用
+    answer: >
+      不要使用“User ID=username@servername”形式的凭据，使用“用户 ID = username”形式即可。  此外，请确保“用户名”登录名对分片具有权限。
+  - question: >
+      是否我每次启动应用程序时，都需要创建分片映射管理器并填充分片
+    answer: >
+      不是 - 分片映射管理器（例如，[ShardMapManagerFactory.CreateSqlShardMapManager](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager)）只需创建一次。  在启动应用程序时，应用程序应使用调用 [ShardMapManagerFactory.TryGetSqlShardMapManager()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager)。  每个应用程序域只应有一个这样的调用。
+  - question: >
+      我在使用弹性数据库工具方面存在疑问，如何才能获得解答
+    answer: >
+      请在[有关 SQL 数据库的 Microsoft 问答页](/answers/topics/azure-sql-database.html)上与我们联系。
+  - question: >
+      当使用分片键建立数据库连接的同时，仍然可以对同一分片上的其他分片键查询数据。  这是设计使然吗
+    answer: >
+      弹性缩放 API 使用户能够连接到分片键的正确数据库，但不提供分片键筛选。  如果需要，请在查询中添加 **WHERE** 子句，以将范围限制到提供的分片键。
+  - question: >
+      是否可对分片集中的每个分片使用不同的 SQL 数据库版本？
+    answer: >
+      是的，每个分片是单独的数据库，因此，一个分片可以是高级版，而另一个可以是标准版。 此外，在分片的生命周期内，该分片的版本可以进行多次上调或下调。
+  - question: >
+      在拆分或合并操作期间，“拆分/合并”工具是否会设置（或删除）数据库
+    answer: >-
+      否。 对于 **拆分** 操作，必须存在目标数据库和相应的架构，并且必须注册到分片映射管理器。  对于 **合并** 操作，必须从分片映射管理器中删除分片，并删除数据库。
+
+
+      [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]

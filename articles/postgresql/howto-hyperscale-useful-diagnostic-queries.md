@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/5/2021
 ms.openlocfilehash: 4858f650aca1b704ac79482e0158fd83fc0264b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98165235"
 ---
 # <a name="useful-diagnostic-queries"></a>有用的诊断查询
@@ -45,7 +45,7 @@ SELECT shardid, shardstate, shardlength, nodename, nodeport, placementid
 
 ## <a name="finding-the-distribution-column-for-a-table"></a>查找表的分布列
 
-超大规模 (Citus) 中的每个分布式表都有一个“分布列”。 （有关详细信息，请参阅[分布式数据建模](concepts-hyperscale-choose-distribution-column.md)。）知道哪个列是分布列非常重要。 例如，在联接或筛选表时，可能会现错误消息，其中包含类似于“将筛选器添加到分布列”的提示。
+超大规模 (Citus) 中的每个分布式表都有一个“分布列”。 （有关详细信息，请参阅[分布式数据建模](concepts-hyperscale-choose-distribution-column.md)。）知道它是哪个列很重要。 例如，在联接或筛选表时，可能会现错误消息，其中包含类似于“将筛选器添加到分布列”的提示。
 
 协调器节点上的 `pg_dist_*` 表包含有关分布式数据库的各种元数据。 具体而言，`pg_dist_partition` 包含有关每个表的分布列的信息。 可以使用便捷的实用工具函数在元数据的低级别详细信息中查找分布列名。 下面是一个示例及其输出：
 

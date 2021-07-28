@@ -6,13 +6,13 @@ ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
-ms.custom: seodec18, references_regions
-ms.openlocfilehash: 004b32118521f72c5b59ad7bab2d4e41244b85c4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: seodec18, references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 215132888749a54996b3341e43ef8d91c101a460
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85833598"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834293"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>应用服务环境的异地分布式缩放
 ## <a name="overview"></a>概述
@@ -42,7 +42,7 @@ ms.locfileid: "85833598"
 * **流量管理器域：** 创建 [Azure 流量管理器配置文件][AzureTrafficManagerProfile]时请选择域名。  此名称与 *trafficmanager.net* 后缀相结合，以注册流量管理器所管理的域条目。  就示例应用而言，选择的名称是 *scalable-ase-demo*。  因此，流量管理器所管理的完整域名是 *scalable-ase-demo.trafficmanager.net*。
 * **缩放应用占用空间的策略：** 应用程序占用空间是否分布到单个区域中的多个应用服务环境？  是多个区域吗？  两种方法要混搭使用吗？  做决策时请依据对客户流量来源位置的预期，以及应用的支持性后端基础结构其余部分的可缩放程度。  例如，对于 100% 无状态的应用程序，应用可以通过使用每个 Azure 区域中多个应用服务环境的组合进行大规模缩放，通过多个 Azure 区域间部署的应用服务环境成倍扩展。  由于有 15 个以上的全球 Azure 区域可供选择，客户可真正构建全球性超高缩放性的应用程序范围。  在本文使用的示例应用中，在一个 Azure 区域（美国中南部）创建了三个应用服务环境。
 * **应用服务环境的命名约定：** 每个应用服务环境需要唯一的名称。  有两个或更多应用服务环境时，命名约定将有助于标识每个应用服务环境。  对于该示例应用，使用的是简单命名约定。  三个应用服务环境的名称分别是 *fe1ase*、*fe2ase* 和 *fe3ase*。
-* **应用的命名约定：** 由于将部署多个应用实例，每个部署的应用实例都要有名称。  一项鲜为人知但非常方便的应用服务环境功能是，在多个应用服务环境中可以使用同一个应用名称。  由于每个应用服务环境都有唯一的域后缀，开发人员可以选择在每个环境中重复使用完全相同的应用名称。  例如，开发人员可以将应用命名如下：myapp.foo1.p.azurewebsites.net、myapp.foo2.p.azurewebsites.net、myapp.foo3.p.azurewebsites.net，等等  。但是，对于该示例应用，每个应用实例也都有独一无二的名称。  所用的应用实例名称是 *webfrontend1*、*webfrontend2* 和 *webfrontend3*。
+* **应用的命名约定：** 由于将部署多个应用实例，每个部署的应用实例都要有名称。  一项鲜为人知但非常方便的应用服务环境功能是，在多个应用服务环境中可以使用同一个应用名称。  由于每个应用服务环境都有唯一的域后缀，开发人员可以选择在每个环境中重复使用完全相同的应用名称。  例如，开发人员可以将应用命名如下：myapp.foo1.p.azurewebsites.net、myapp.foo2.p.azurewebsites.net、myapp.foo3.p.azurewebsites.net 等。但示例应用的每个应用实例也都有唯一名称。  所用的应用实例名称是 *webfrontend1*、*webfrontend2* 和 *webfrontend3*。
 
 ## <a name="setting-up-the-traffic-manager-profile"></a>设置流量管理器配置文件
 将应用的多个实例部署在多个应用服务环境上之后，可以使用流量管理器来注册单个应用实例。  就示例应用而言，scalable-ase-demo.trafficmanager.net 必须要有流量管理器配置文件，将客户路由到任何以下已部署的应用实例：

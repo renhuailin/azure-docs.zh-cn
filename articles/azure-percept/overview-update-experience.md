@@ -5,21 +5,21 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/24/2021
 ms.custom: template-concept
-ms.openlocfilehash: 68244e1669bbdce8215df467564ea3aca56b530c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e8448bf47f9d65477c78ee4451a9b9b83a5711c2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098122"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143874"
 ---
-# <a name="the-azure-percept-dk-update-experience"></a>Azure Percept DK 更新体验
+# <a name="azure-percept-dk-update-experience-overview"></a>Azure Percept DK 更新体验概述
 
-使用 Azure Percept DK，可以通过两个选项来更新开发工具包的操作系统和固件：无线 (OTA) 或通过 USB。 OTA 更新是一种使设备保持最新状态的简便方法，但在无法进行 OTA 或要恢复出厂设置时，USB 更新是一个不错选择。 为了确保你能够充分利用最适合的任何更新方法，我们将一系列操作指南整理为一个合集，以为你提供帮助。 
+使用 Azure Percept DK，可以通过无线 (OTA) 方式或通过 USB 更新开发工具包的操作系统和固件。 OTA 更新是一种较轻松的方法，通过 [Device Update for IoT Hub](../iot-hub-device-update/index.yml) 服务使设备保持最新状态。 USB 更新适用于无法使用 OTA 更新或需要恢复设备出厂设置的用户。 请查看以下操作指南，了解如何开始使用 Azure Percept DK 设备更新：
 
-- [如何将 Azure IoT 中心设置为将无线更新部署到 Azure Percept DK](./how-to-set-up-over-the-air-updates.md)
-- [如何以无线方式更新 Azure Percept DK](./how-to-update-over-the-air.md)
+- [将 Azure IoT 中心设置为将无线 (OTA) 更新部署到 Azure Percept DK](./how-to-set-up-over-the-air-updates.md)
+- [以无线方式 (OTA) 更新 Azure Percept DK](./how-to-update-over-the-air.md)
 - [通过 USB 更新 Azure Percept DK](./how-to-update-via-usb.md)
 
 ## <a name="next-steps"></a>后续步骤

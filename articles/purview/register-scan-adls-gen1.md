@@ -6,13 +6,13 @@ ms.author: sandeepshah
 ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: how-to
-ms.date: 11/30/2020
-ms.openlocfilehash: a831681f892de9f6aae50fa9a2fcf71e883fe6ba
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/08/2021
+ms.openlocfilehash: 98de0156eca9269b2a274aa3ca2027112b7b4043
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97693711"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109655474"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen1"></a>注册和扫描 Azure Data Lake Storage Gen1
 
@@ -31,7 +31,7 @@ Azure Data Lake Storage Gen1 数据源支持以下功能：
 
 ## <a name="prerequisites"></a>先决条件
 
-- 在注册数据源之前，先创建一个 Azure Purview 帐户。 若要详细了解如何创建 Purview 帐户，请查看[快速入门：创建 Azure Purview 帐户](create-catalog-portal.md)。
+- 在注册数据源之前，先创建一个 Azure Purview 帐户。 有关创建 Purview 帐户的详细信息，请参阅[快速入门：创建 Azure Purview 帐户](create-catalog-portal.md)。
 - 你需要是 Azure Purview 数据源管理员
 
 ## <a name="setting-up-authentication-for-a-scan"></a>为扫描设置身份验证
@@ -128,10 +128,12 @@ Azure Data Lake Storage Gen1 数据源支持以下功能：
 在“注册源(Azure Data Lake Storage Gen1)”屏幕上，执行以下操作：
 
 1. 输入数据源将在目录中列出的名称。
-2. 选择你的订阅来筛选存储帐户
-3. 选择存储帐户
-4. 选择一个集合或创建新集合（可选）
-5. 选择“完成”以注册数据源。
+2. 选择你的订阅以筛选存储帐户。
+3. 选择一个存储帐户。
+4. 选择一个集合或创建新集合（可选）。
+5. 选择“注册”以注册数据源。
+
+:::image type="content" source="media/register-scan-adls-gen1/register-sources.png" alt-text="注册源选项" border="true":::
 
 [!INCLUDE [create and manage scans](includes/manage-scans.md)]
 

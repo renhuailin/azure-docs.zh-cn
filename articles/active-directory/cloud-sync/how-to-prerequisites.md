@@ -11,12 +11,12 @@ ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0277d4ce263610576178e3844a0665ab6506fbfa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cd2d660a0591506b59aaa1b11526175582d2785b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579155"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758764"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Azure AD Connect 云同步先决条件
 本文指导如何选择 Azure Active Directory (Azure AD) Connect 云同步并将其作为标识解决方案。
@@ -30,7 +30,7 @@ ms.locfileid: "104579155"
 - 本地防火墙配置。
 
 ## <a name="group-managed-service-accounts"></a>Group Managed Service Accounts
-组托管服务帐户是一种托管的域帐户，它提供自动密码管理、简化的服务主体名称 (SPN) 管理、将管理委派给其他管理员以及在多个服务器上扩展此功能的能力。  Azure AD Connect 云同步支持并使用 gMSA 运行代理。  在安装过程中，系统会提示你输入管理凭据，以便创建此帐户。  该帐户将显示为 (domain\provAgentgMSA$)。  有关 gMSA 的详细信息，请参阅[组托管服务帐户](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
+组托管服务帐户是一种托管的域帐户，它提供自动密码管理，简化的服务主体名称 (SPN) 管理、将管理委派给其他管理员以及在多个服务器上扩展此功能的能力。  Azure AD Connect 云同步支持并使用 gMSA 运行代理。  在安装过程中，系统会提示你输入管理凭据，以便创建此帐户。  该帐户将显示为 (domain\provAgentgMSA$)。  有关 gMSA 的详细信息，请参阅[组托管服务帐户](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
 
 ### <a name="prerequisites-for-gmsa"></a>gMSA 的先决条件：
 1.  gMSA 域的林中的 Active Directory 架构需要更新到 Windows Server 2016。
@@ -116,7 +116,7 @@ ms.locfileid: "104579155"
 
 ### <a name="delta-synchronization"></a>增量同步
 
-- 增量同步的组范围筛选不支持超过 1500 个成员。
+- 增量同步的组范围筛选不支持超过 50,000 个成员的情况。
 - 删除用作组范围筛选器一部分的组时，不会删除作为组成员的用户。 
 - 重命名范围内的 OU 或组时，增量同步不会删除用户。
 
@@ -125,6 +125,11 @@ ms.locfileid: "104579155"
 
 ### <a name="group-re-naming-or-ou-re-naming"></a>组重新命名或 OU 重新命名
 - 如果重命名 AD 中某个给定配置范围内的组或 OU，云同步作业将无法识别 AD 中的名称更改。 该作业不会进入隔离状态，并且将保持正常运行。
+
+### <a name="scoping-filter"></a>范围筛选器
+使用 OU 范围筛选器时
+- 对于给定的配置，最多只能同步 59 个单独的 OU。 
+- 支持嵌套 OU（即，可以同步具有 130 个嵌套 OU 的 OU，但不能同步相同配置的 60 个单独的 OU）。 
 
 
 ## <a name="next-steps"></a>后续步骤 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 8562d63bf227fff665c70674c7fe66922bce9992
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 67ddcf5fd7d3ef3c1def12a325eb19980176a8ba
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98882274"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108756208"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>迁移 StorSimple 1200 到 Azure 文件同步
 
@@ -23,21 +23,21 @@ StorSimple 1200 系列将于 2022 年 12 月[停用](https://support.microsoft.c
 ## <a name="azure-file-sync"></a>Azure 文件同步
 
 > [!IMPORTANT]
-> Microsoft 致力于帮助客户完成迁移。 若要获取自定义迁移计划以及在迁移过程中获得帮助，请向 AzureFilesMigration@microsoft.com 发送电子邮件。
+> Microsoft 致力于帮助客户完成迁移。 若要获取自定义迁移计划，或者在迁移过程中需要帮助，请向 AzureFilesMigration@microsoft.com 发送电子邮件。
 
 Azure 文件同步是一种 Microsoft 云服务，基于两个主要组件：
 
 * 文件同步和云分层。
-* 作为 Azure 中的原生存储的文件共享，可通过多个协议（例如 SMB 和文件 REST）访问。 Azure 文件共享相当于 Windows Server 上的文件共享，后者可作为网络驱动器进行本机装载。 它支持重要的文件保真度特性，如属性、权限和时间戳。 与 StorSimple 不同的是，无需使用应用程序/服务来解释存储在云中的文件和文件夹。 在云中存储常规用途文件服务器数据以及某些应用程序数据的理想且最灵活的方法。
+* 作为 Azure 中的原生存储的文件共享，可通过多个协议（例如 SMB 和文件 REST）访问。 Azure 文件共享相当于 Windows Server 上的文件共享，后者可作为网络驱动器进行本机装载。 它支持重要的文件保真度特性，如属性、权限和时间戳。 与 StorSimple 不同的是，无需使用应用程序/服务来解释存储在云中的文件和文件夹。 对于在云中存储常规用途文件服务器数据以及部分应用程序数据来说，它是理想的方法，具有灵活性。
 
 本文重点介绍迁移步骤。 如果要在迁移之前详细了解 Azure 文件同步，我们建议阅读以下文章：
 
-* [Azure 文件同步 - 概述](./storage-sync-files-planning.md "概述")
-* [Azure 文件同步 - 部署指南](storage-sync-files-deployment-guide.md)
+* [Azure 文件同步 - 概述](../file-sync/file-sync-planning.md "概述")
+* [Azure 文件同步 - 部署指南](../file-sync/file-sync-deployment-guide.md)
 
 ## <a name="migration-goals"></a>迁移目标
 
-目标是保证生产数据的完整性并保证可用性。 后者要求尽量减少故障时间，因此可在正常维护时段进行迁移，或者仅略微超出这些时段操作。
+目标是保证生产数据的完整性并保证可用性。 要满足后一项要求，需将停机时间尽量缩短，使之不会超过或者只略微超过例行维护时段。
 
 ## <a name="storsimple-1200-migration-path-to-azure-file-sync"></a>StorSimple 1200 迁移到 Azure 文件同步的路径
 
@@ -78,6 +78,15 @@ Azure 文件同步是一种 Microsoft 云服务，基于两个主要组件：
 
 [!INCLUDE [storage-files-migration-provision-azfs](../../../includes/storage-files-migration-provision-azure-file-share.md)]
 
+#### <a name="storage-account-settings"></a>存储帐户设置
+
+可以对存储帐户进行许多配置。 应将以下清单用于配置存储帐户。 例如，你可以在迁移完成后更改网络配置。 
+
+> [!div class="checklist"]
+> * 大型文件共享：已启用 - 大型文件共享可提高性能，并使共享中的存储容量最高可达 100TiB。
+> * 防火墙和虚拟网络：已禁用 - 不要配置任何 IP 限制或限制存储帐户对特定 VNET 的访问。 在迁移过程中使用存储帐户的公共终结点。 必须允许来自 Azure VM 的所有 IP 地址。 迁移后，最好在存储帐户上配置任何防火墙规则。
+> * 专用终结点：支持 - 可以启用专用终结点，但使用公共终结点进行迁移，并且必须保持公共终结点可用。
+
 ### <a name="step-6-configure-windows-server-target-folders"></a>步骤 6：配置 Windows Server 目标文件夹
 
 在前面的步骤中，你已考虑了确定同步拓扑组件的所有特性。 现在，准备好服务器来接收要上传的文件。
@@ -112,78 +121,9 @@ Azure 文件同步是一种 Microsoft 云服务，基于两个主要组件：
 
 以下 RoboCopy 命令将文件从 StorSimple Azure 存储撤回到本地 StorSimple，然后将其移到 Windows Server 目标文件夹。 Windows Server 会将其同步到 Azure 文件共享。 当本地 Windows Server 卷变满时，将启动云分层，并对已成功同步的文件进行分层。 云分层将生成足够的空间，以便继续从 StorSimple 虚拟设备进行复制。 云分层每小时检查一次，以查看已同步的内容，并释放磁盘空间来使卷可用空间达到 99%。
 
-```console
-Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
-```
+[!INCLUDE [storage-files-migration-robocopy](../../../includes/storage-files-migration-robocopy.md)]
 
-背景色：
-
-:::row:::
-   :::column span="1":::
-      /MT
-   :::column-end:::
-   :::column span="1":::
-      允许 RoboCopy 多线程运行。 默认值为 8，最大值为 128。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /UNILOG:<file name>
-   :::column-end:::
-   :::column span="1":::
-      将状态作为 UNICODE 输出到 LOG 文件（覆盖现有日志）。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /TEE
-   :::column-end:::
-   :::column span="1":::
-      输出到控制台窗口。 与日志文件的输出一起使用。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /B
-   :::column-end:::
-   :::column span="1":::
-      在备份应用程序使用的相同模式下运行 RoboCopy。 允许 RoboCopy 移动当前用户无权访问的文件。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /MIR
-   :::column-end:::
-   :::column span="1":::
-      允许在同一目标上按顺序运行此 RoboCopy 命令多次。 它将标识之前已复制的内容并省略这些内容。 仅会处理自上次运行后发生的更改、添加和“删除”操作。 如果命令之前未运行，则不会省略任何内容。 对于仍在使用和更改的源位置，这是一个很好的选择。
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPY:copyflag[s]
-   :::column-end:::
-   :::column span="1":::
-      文件复制的保真度（默认值为 /COPY:DAT），复制标志：D=数据，A=属性，T=时间戳，S=安全性=NTFS ACL，O=所有者信息，U=审核信息
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /COPYALL
-   :::column-end:::
-   :::column span="1":::
-      复制所有文件信息（等效于 /COPY:DATSOU）
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="1":::
-      /DCOPY:copyflag[s]
-   :::column-end:::
-   :::column span="1":::
-      目录复制的保真度（默认值为 /DCOPY:DA），复制标志：D=数据，A=属性，T=时间戳
-   :::column-end:::
-:::row-end:::
-
-首次运行 RoboCopy 命令时，用户和应用程序仍访问 StorSimple 文件和文件夹，并可能更改这些文件。 有可能出现这种情况：RoboCopy 处理了一个目录并移至下一个目录，然后源位置 (StorSimple) 中的用户添加、更改或删除了一个此时不会在当前 RoboCopy 运行中处理的文件。 这是正常的。
+首次运行 RoboCopy 命令时，用户和应用程序仍访问 StorSimple 文件和文件夹，并可能更改这些文件。 有可能出现这种情况：RoboCopy 处理了一个目录并移至下一个目录，然后源位置 (StorSimple) 中的用户添加、更改或删除了一个此时不会在当前 RoboCopy 运行中处理的文件。 没有问题。
 
 第一次运行是将大量数据移动回本地，然后移动到 Windows Server，并通过 Azure 文件同步备份到云中。此操作可能需要很长时间，具体取决于：
 
@@ -207,14 +147,14 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 
 你已将共享/共享组迁移到公共根或卷中。 （具体取决于你所映射并决定需要存储到同一 Azure 文件共享的内容。）
 
-可以尝试并行运行其中的几个副本。 建议一次处理一个 Azure 文件共享的范围。
+你可以尝试并行运行其中的几个副本。 建议一次处理一个 Azure 文件共享的范围。
 
 > [!WARNING]
 > 将所有数据从 StorSimple 移动到 Windows Server 并完成迁移后：返回到 Azure 门户中的所有同步组，并将云分层卷的可用空间百分比值调整为更适合缓存利用率的值，例如 20%。 
 
 云分层卷中的可用空间策略作用于可能有多个服务器终结点从中同步的卷级别。 如果你忘记了调整哪怕一个服务器终结点上的可用空间，同步也将继续应用最严格的规则，并尝试将可用磁盘空间保留为 99%，从而使本地缓存无法按预期运行。 除非你的目标是为仅包含极少访问的存档数据的卷提供命名空间。
 
-## <a name="troubleshoot"></a>故障排除
+## <a name="troubleshoot"></a>疑难解答
 
 最可能遇到的问题是在 Windows Server 端运行 RoboCopy 命令失败并出现“卷已满”消息。 如果是这样，下载速度可能比上传速度快。 云分层每小时进行一次，以从本地 Windows Server 磁盘撤出已同步的内容。
 
@@ -225,6 +165,8 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 还可能会遇到其他 Azure 文件同步问题。
 尽管不太可能，但如果出现这种情况，请查看 Azure 文件同步故障排除指南的链接。
 
+[!INCLUDE [storage-files-migration-robocopy-optimize](../../../includes/storage-files-migration-robocopy-optimize.md)]
+
 ## <a name="relevant-links"></a>相关链接
 
 迁移内容：
@@ -233,6 +175,6 @@ Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath
 
 Azure 文件同步内容：
 
-* [AFS 概述](./storage-sync-files-planning.md)
-* [AFS 部署指南](./storage-how-to-create-file-share.md)
-* [AFS 故障排除](storage-sync-files-troubleshoot.md)
+* [Azure 文件同步概述](../file-sync/file-sync-planning.md)
+* [部署 Azure 文件同步](../file-sync/file-sync-deployment-guide.md)
+* [Azure 文件同步故障排除指南](../file-sync/file-sync-troubleshoot.md)

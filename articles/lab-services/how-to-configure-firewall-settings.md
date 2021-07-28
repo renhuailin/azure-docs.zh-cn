@@ -5,12 +5,12 @@ author: emaher
 ms.author: enewman
 ms.date: 06/26/2020
 ms.topic: article
-ms.openlocfilehash: 067a2c9672b87974557f650cef07b0394e7d5a63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b37d94249c136d2ec90a955e71e61e8eef0aeb6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85445842"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772290"
 ---
 # <a name="firewall-settings-for-azure-lab-services"></a>Azure 实验室服务的防火墙设置
 
@@ -20,6 +20,9 @@ ms.locfileid: "85445842"
 
 >[!IMPORTANT]
 >每个实验室都会有不同的公共 IP 地址。
+
+> [!NOTE]
+> 如果你的学校需要执行内容筛选，例如，为了符合[儿童互联网保护法案 (CIPA)](https://www.fcc.gov/consumers/guides/childrens-internet-protection-act)的要求，你将需要使用第三方软件。  有关详细信息，请阅读有关[使用实验室服务进行内容筛选](./administrator-guide.md#content-filtering)的指南。
 
 ## <a name="find-public-ip-for-a-lab"></a>查找实验室的公共 IP
 

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e81389ec953829115062a31a019caf040850cbea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4a33170fecab6efbe86568eb81b87637ca5da24
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87798625"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714289"
 ---
 # <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>将访问治理委托给 Azure AD 权利管理中的访问包管理者
 
@@ -40,7 +40,7 @@ ms.locfileid: "87798625"
 
 遵循以下步骤将用户分配给访问包管理者角色：
 
-**必备角色：** 全局管理员、用户管理员或目录所有者
+**必备角色**：全局管理员、标识治理管理员、用户管理员或目录所有者
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 

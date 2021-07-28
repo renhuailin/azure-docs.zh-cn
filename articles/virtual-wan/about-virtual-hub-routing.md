@@ -1,20 +1,20 @@
 ---
 title: 关于虚拟中心路由
 titleSuffix: Azure Virtual WAN
-description: 本文介绍虚拟中心路由
+description: 了解虚拟 WAN 虚拟中心路由。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c1a2a54bf2d4c5de3e6cfca66256f60592fc1f3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 641fc76775d4aa535490d3c6f720d81777665b36
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737505"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108165274"
 ---
 # <a name="about-virtual-hub-routing"></a>关于虚拟中心路由
 

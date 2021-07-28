@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a5a31e15c88cef588c93f44c8fe5303d930b5b2c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 6a0d8bcce8e036cf7fc0efc1fe3956006f276f9e
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479366"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633890"
 ---
 # <a name="monitor-module-twins"></a>监视模块孪生
 
@@ -220,6 +220,19 @@ Azure IoT 中心中的模块孪生可以监视 IoT Edge 部署的连接性和运
 * **az iot hub module-twin show** - 显示模块孪生定义。
 * **az iot hub module-twin update** - 更新模块孪生定义。
 * **az iot hub module-twin replace** - 将模块孪生定义替换为目标 JSON。
+
+>[!TIP]
+>若要使用 CLI 命令锁定运行时模块，可能需要对模块 ID 中的 `$` 字符进行转义。 例如：
+>
+>```azurecli
+>az iot hub module-twin show -m '$edgeAgent' -n <hub name> -d <device name>
+>```
+>
+>或：
+>
+>```azurecli
+>az iot hub module-twin show -m \$edgeAgent -n <hub name> -d <device name>
+>```
 
 ## <a name="next-steps"></a>后续步骤
 

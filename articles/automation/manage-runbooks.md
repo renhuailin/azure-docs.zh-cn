@@ -3,14 +3,15 @@ title: 在 Azure 自动化中管理 Runbook
 description: 本文介绍如何在 Azure 自动化中管理 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/24/2021
+ms.date: 05/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: af767ab37e8e77195b7d13b24ea78f4fb88485fb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c33b4dfdcecf64c692ad5e0df5de3ea80cc34d84
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122130"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737560"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>在 Azure 自动化中管理 Runbook
 
@@ -27,11 +28,13 @@ ms.locfileid: "102122130"
 
 ### <a name="create-a-runbook-in-the-azure-portal"></a>在 Azure 门户中创建 Runbook
 
-1. 在 Azure 门户中，打开自动化帐户。
-2. 从中心内，在“流程自动化”下选择“Runbook”，打开 Runbook 的列表 。
-3. 单击“创建 Runbook”。
-4. 键入 Runbook 的名称并选择其[类型](automation-runbook-types.md)。 Runbook 名称必须以字母开头，可包含字母、数字、下划线和短划线。
-5. 单击“创建”以创建 Runbook 并打开编辑器。
+1. 登录 Azure [门户](https://portal.azure.com)。
+1. 搜索并选择“自动化帐户”。
+1. 在“自动化帐户”页上，从列表中选择你的自动化帐户。
+1. 从自动化帐户内，在“流程自动化”下选择“Runbook”，打开 Runbook 的列表 。
+1. 单击“创建 Runbook”。
+1. 键入 Runbook 的名称并选择其[类型](automation-runbook-types.md)。 Runbook 名称必须以字母开头，可包含字母、数字、下划线和短划线。
+1. 单击“创建”以创建 Runbook 并打开编辑器。
 
 ### <a name="create-a-runbook-with-powershell"></a>通过 PowerShell 创建 Runbook
 
@@ -40,13 +43,18 @@ ms.locfileid: "102122130"
 以下示例演示了如何创建新的空 Runbook。
 
 ```azurepowershell-interactive
-New-AzAutomationRunbook -AutomationAccountName MyAccount `
--Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
+$params = @{
+    AutomationAccountName = 'MyAutomationAccount'
+    Name                  = 'NewRunbook'
+    ResourceGroupName     = 'MyResourceGroup'
+    Type                  = 'PowerShell'
+}
+New-AzAutomationRunbook @params
 ```
 
 ## <a name="import-a-runbook"></a>导入 Runbook
 
-可导入 PowerShell 或 PowerShell 工作流脚本 (.ps1)、图形 Runbook (.graphrunbook) 或 Python 2 或 Python 3 脚本 (.py) 来创建自己的 Runbook  。 必须指定在导入期间创建的 [Runbook 类型](automation-runbook-types.md)，并考虑以下注意事项。
+你可以导入 PowerShell 或 PowerShell 工作流 (.ps1) 脚本、图形 Runbook (.graphrunbook) 或者 Python 2 或 Python 3 脚本 (.py) 来创建自己的 Runbook  。 指定在导入期间创建的 [Runbook 类型](automation-runbook-types.md)，并考虑以下注意事项。
 
 * 可将不含工作流的 .ps1 文件导入 [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) 或 [PowerShell 工作流 Runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 如果将其导入 PowerShell 工作流 Runbook，它将转换为工作流。 这样的话，Runbook 会包含注释来描述所作的更改。
 
@@ -63,14 +71,15 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 > [!NOTE]
 > 只能通过此门户将 .ps1 文件导入 PowerShell 工作流 Runbook。
 
-1. 在 Azure 门户中，打开自动化帐户。
-2. 在“流程自动化”下选择“Runbook”，以打开 Runbook 的列表。 
-3. 单击“导入 Runbook”。
-4. 单击“Runbook 文件”并选择要导入的文件。
-5. 如果启用了“名称”字段，则你可更改 Runbook 名称。 该名称必须以字母开头，可包含字母、数字、下划线和短划线。
-6. 将自动选择 [Runbook 类型](automation-runbook-types.md)，但可以在考虑适用的限制后更改该类型。
-7. 单击“创建”。 新的 runbook 会出现在自动化帐户的 runbook 列表中。
-8. 必须先[发布 Runbook](#publish-a-runbook)，才能运行它。
+1. 在 Azure 门户中，搜索并选择“自动化帐户”。
+1. 在“自动化帐户”页上，从列表中选择你的自动化帐户。
+1. 从自动化帐户内，在“流程自动化”下选择“Runbook”，打开 Runbook 的列表 。
+1. 单击“导入 Runbook”。
+1. 单击“Runbook 文件”并选择要导入的文件。
+1. 如果启用了“名称”字段，则你可更改 Runbook 名称。 该名称必须以字母开头，可包含字母、数字、下划线和短划线。
+1. 将自动选择 [Runbook 类型](automation-runbook-types.md)，但可以在考虑适用的限制后更改该类型。
+1. 单击“创建”。 新的 runbook 会出现在自动化帐户的 runbook 列表中。
+1. 必须先[发布 Runbook](#publish-a-runbook)，才能运行它。
 
 > [!NOTE]
 > 导入图形 Runbook 后，可将其转换为其他类型。 但是，无法将图形 Runbook 转换为文本 Runbook。
@@ -82,14 +91,14 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 以下示例演示了如何将脚本文件导入到 Runbook 中。
 
 ```azurepowershell-interactive
-$automationAccountName =  "AutomationAccount"
-$runbookName = "Sample_TestRunbook"
-$scriptPath = "C:\Runbooks\Sample_TestRunbook.ps1"
-$RGName = "ResourceGroup"
-
-Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
--ResourceGroupName $RGName -AutomationAccountName $automationAccountName `
--Type PowerShellWorkflow
+$params = @{
+    AutomationAccountName = 'MyAutomationAccount'
+    Name                  = 'Sample_TestRunbook'
+    ResourceGroupName     = 'MyResourceGroup'
+    Type                  = 'PowerShell'
+    Path                  = 'C:\Runbooks\Sample_TestRunbook.ps1'
+}
+Import-AzAutomationRunbook @params
 ```
 
 ## <a name="handle-resources"></a>处理资源
@@ -97,20 +106,17 @@ Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
 如果你的 Runbook 创建了一项[资源](automation-runbook-execution.md#resources)脚本应检查看看在尝试创建该资源之前它是否已存在。 下面是一个基本示例。
 
 ```powershell
-$vmName = "WindowsVM1"
-$resourceGroupName = "myResourceGroup"
-$myCred = Get-AutomationPSCredential "MyCredential"
-$vmExists = Get-AzResource -Name $vmName -ResourceGroupName $resourceGroupName
+$vmName = 'WindowsVM1'
+$rgName = 'MyResourceGroup'
+$myCred = Get-AutomationPSCredential 'MyCredential'
 
-if(!$vmExists)
-    {
+$vmExists = Get-AzResource -Name $vmName -ResourceGroupName $rgName
+if (-not $vmExists) {
     Write-Output "VM $vmName does not exist, creating"
-    New-AzVM -Name $vmName -ResourceGroupName $resourceGroupName -Credential $myCred
-    }
-else
-    {
+    New-AzVM -Name $vmName -ResourceGroupName $rgName -Credential $myCred
+} else {
     Write-Output "VM $vmName already exists, skipping"
-    }
+}
 ```
 
 ## <a name="retrieve-details-from-activity-log"></a>从活动日志中检索详细信息
@@ -118,31 +124,36 @@ else
 可从自动化帐户的[活动日志](automation-runbook-execution.md#activity-logging)中检索 Runbook 详细信息，例如启动 Runbook 的人员或帐户。 以下 PowerShell 示例显示了运行指定 Runbook 的最后一名用户。
 
 ```powershell-interactive
-$SubID = "00000000-0000-0000-0000-000000000000"
-$AutomationResourceGroupName = "MyResourceGroup"
-$AutomationAccountName = "MyAutomationAccount"
-$RunbookName = "MyRunbook"
-$StartTime = (Get-Date).AddDays(-1)
-$JobActivityLogs = Get-AzLog -ResourceGroupName $AutomationResourceGroupName -StartTime $StartTime `
-                                | Where-Object {$_.Authorization.Action -eq "Microsoft.Automation/automationAccounts/jobs/write"}
+$rgName = 'MyResourceGroup'
+$accountName = 'MyAutomationAccount'
+$runbookName = 'MyRunbook'
+$startTime = (Get-Date).AddDays(-1)
+
+$params = @{
+    ResourceGroupName = $rgName
+    StartTime         = $startTime
+}
+$JobActivityLogs = (Get-AzLog @params).Where( { $_.Authorization.Action -eq 'Microsoft.Automation/automationAccounts/jobs/write' })
 
 $JobInfo = @{}
-foreach ($log in $JobActivityLogs)
-{
+foreach ($log in $JobActivityLogs) {
     # Get job resource
     $JobResource = Get-AzResource -ResourceId $log.ResourceId
 
-    if ($JobInfo[$log.SubmissionTimestamp] -eq $null -and $JobResource.Properties.runbook.name -eq $RunbookName)
-    {
+    if ($null -eq $JobInfo[$log.SubmissionTimestamp] -and $JobResource.Properties.Runbook.Name -eq $runbookName) {
         # Get runbook
-        $Runbook = Get-AzAutomationJob -ResourceGroupName $AutomationResourceGroupName -AutomationAccountName $AutomationAccountName `
-                                            -Id $JobResource.Properties.jobId | ? {$_.RunbookName -eq $RunbookName}
+        $jobParams = @{
+            ResourceGroupName     = $rgName
+            AutomationAccountName = $accountName
+            Id                    = $JobResource.Properties.JobId
+        }
+        $Runbook = Get-AzAutomationJob @jobParams | Where-Object RunbookName -EQ $runbookName
 
         # Add job information to hashtable
-        $JobInfo.Add($log.SubmissionTimestamp, @($Runbook.RunbookName,$Log.Caller, $JobResource.Properties.jobId))
+        $JobInfo.Add($log.SubmissionTimestamp, @($Runbook.RunbookName, $Log.Caller, $JobResource.Properties.jobId))
     }
 }
-$JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
+$JobInfo.GetEnumerator() | Sort-Object Key -Descending | Select-Object -First 1
 ```
 
 ## <a name="track-progress"></a>跟踪进度
@@ -158,28 +169,42 @@ $JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 ```powershell
 # Authenticate to Azure
 $connection = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
--ApplicationId $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
-
-$AzureContext = Get-AzSubscription -SubscriptionId $connection.SubscriptionID
+$cnParams = @{
+    ServicePrincipal      = $true
+    Tenant                = $connection.TenantId
+    ApplicationId         = $connection.ApplicationId
+    CertificateThumbprint = $connection.CertificateThumbprint
+}
+Connect-AzAccount @cnParams
+$AzureContext = Set-AzContext -SubscriptionId $connection.SubscriptionID
 
 # Check for already running or new runbooks
-$runbookName = "<RunbookName>"
-$rgName = "<ResourceGroupName>"
-$aaName = "<AutomationAccountName>"
-$jobs = Get-AzAutomationJob -ResourceGroupName $rgName -AutomationAccountName $aaName -RunbookName $runbookName -AzContext $AzureContext
+$runbookName = "RunbookName"
+$rgName = "ResourceGroupName"
+$accountName = "AutomationAccountName"
+$jobs = Get-AzAutomationJob -ResourceGroupName $rgName -AutomationAccountName $accountName -RunbookName $runbookName -AzContext $AzureContext
 
 # Check to see if it is already running
-$runningCount = ($jobs | ? {$_.Status -eq "Running"}).count
+$runningCount = ($jobs.Where( { $_.Status -eq 'Running' })).count
 
-If (($jobs.status -contains "Running" -And $runningCount -gt 1 ) -Or ($jobs.Status -eq "New")) {
+if (($jobs.Status -contains 'Running' -and $runningCount -gt 1 ) -or ($jobs.Status -eq 'New')) {
     # Exit code
-    Write-Output "Runbook is already running"
-    Exit 1
+    Write-Output "Runbook [$runbookName] is already running"
+    exit 1
 } else {
     # Insert Your code here
 }
 ```
+或者，可以使用 PowerShell 的展开功能将连接信息传递给 `Connect-AzAccount`。 在这种情况下，上一示例的前几行将如下所示。
+
+```powershell
+# Authenticate to Azure
+$connection = Get-AutomationConnection -Name AzureRunAsConnection
+Connect-AzAccount @connection
+$AzureContext = Set-AzContext -SubscriptionId $connection.SubscriptionID
+```
+
+有关详细信息，请参阅[关于展开](/powershell/module/microsoft.powershell.core/about/about_splatting)。
 
 ## <a name="handle-transient-errors-in-a-time-dependent-script"></a>处理依赖时间的脚本中的暂时性错误
 
@@ -192,27 +217,31 @@ Runbook 必须可靠且能够处理[错误](automation-runbook-execution.md#erro
 
 ## <a name="work-with-multiple-subscriptions"></a>使用多个订阅
 
-Runbook 必须能够处理[订阅](automation-runbook-execution.md#subscriptions)。 例如，Runbook 会使用 [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave) cmdlet 来处理多个订阅。 该 cmdlet 可确保不从正在同一沙盒中运行的另一 Runbook 中检索身份验证上下文。 Runbook 还使用 `Get-AzContext` cmdlet 检索当前会话的上下文，并将其分配给变量 `$AzureContext`。
+Runbook 必须能够处理[订阅](automation-runbook-execution.md#subscriptions)。 例如，Runbook 会使用 [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave) cmdlet 来处理多个订阅。 该 cmdlet 可确保不从正在同一沙盒中运行的另一 Runbook 中检索身份验证上下文。 
 
 ```powershell
 Disable-AzContextAutosave -Scope Process
 
-$Conn = Get-AutomationConnection -Name AzureRunAsConnection
-$AzureContext = Connect-AzAccount -ServicePrincipal `
--Tenant $Conn.TenantID `
--ApplicationId $Conn.ApplicationID `
--CertificateThumbprint $Conn.CertificateThumbprint `
--Subscription $Conn.SubscriptionId
+$connection = Get-AutomationConnection -Name AzureRunAsConnection
+$cnParams = @{
+    ServicePrincipal      = $true
+    Tenant                = $connection.TenantId
+    ApplicationId         = $connection.ApplicationId
+    CertificateThumbprint = $connection.CertificateThumbprint
+}
+Connect-AzAccount @cnParams
 
-$ChildRunbookName = 'ChildRunbookDemo'
-$AutomationAccountName = 'myAutomationAccount'
-$ResourceGroupName = 'myResourceGroup'
+$childRunbookName = 'ChildRunbookDemo'
+$accountName = 'MyAutomationAccount'
+$rgName = 'MyResourceGroup'
 
-Start-AzAutomationRunbook `
--ResourceGroupName $ResourceGroupName `
--AutomationAccountName $AutomationAccountName `
--Name $ChildRunbookName `
--DefaultProfile $AzureContext
+$startParams = @{
+    ResourceGroupName     = $rgName
+    AutomationAccountName = $accountName
+    Name                  = $childRunbookName
+    DefaultProfile        = $AzureContext
+}
+Start-AzAutomationRunbook @startParams
 ```
 
 ## <a name="work-with-a-custom-script"></a>使用自定义脚本
@@ -222,10 +251,9 @@ Start-AzAutomationRunbook `
 
 若要使用自定义脚本：
 
-1. 创建一个自动化帐户并获取[参与者角色](automation-role-based-access-control.md)。
-2. [将帐户关联到 Azure 工作区](../security-center/security-center-enable-data-collection.md).
-3. 启用[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)、[更新管理](./update-management/overview.md)或其他自动化功能。 
-4. 如果是在 Linux 计算机上，则需要很高的权限。 登录来[关闭签名检查](automation-linux-hrw-install.md#turn-off-signature-validation)。
+1. 创建自动化帐户。
+2. 部署[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)。 
+4. 如果是在 Linux 计算机上，则需要提升权限。 登录来[关闭签名检查](automation-linux-hrw-install.md#turn-off-signature-validation)。
 
 ## <a name="test-a-runbook"></a>测试 Runbook
 
@@ -236,9 +264,9 @@ Start-AzAutomationRunbook `
 测试各[类型的 Runbook](automation-runbook-types.md) 的流程相同。 Azure 门户中文本编辑器测试与图形编辑器测试之间没有区别。
 
 1. 在[文本编辑器](automation-edit-textual-runbook.md)或[图形编辑器](automation-graphical-authoring-intro.md)中打开 Runbook 的草稿版本。
-1. 单击“测试”打开测试页面。
+1. 单击“测试”打开测试页面 。
 1. 如果 Runbook 具有参数，它们会在左窗格中列出，你可在这里提供要用于测试的值。
-1. 若要对[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)运行测试，请将“运行设置”更改为“混合辅助角色”，并选择目标组的名称 。  否则，保留默认值 **Azure**，以在云中运行测试。
+1. 若要对[混合 Runbook 辅助角色](automation-hybrid-runbook-worker.md)运行测试，请将“运行设置”更改为“混合辅助角色”，并选择目标组的名称 。 否则，保留默认值 **Azure**，以在云中运行测试。
 1. 单击“启动”，开始测试。
 1. 在测试期间，可使用“输出”窗格下面的按钮来停止或暂停 [PowerShell 工作流](automation-runbook-types.md#powershell-workflow-runbooks)或[图形](automation-runbook-types.md#graphical-runbooks) Runbook。 暂停 Runbook 时，该 Runbook 会完成它在被暂停之前正在进行的活动。 暂停 Runbook 后，可以将它停止或重启。
 1. 在“输出”窗格中检查来自 Runbook 的输出。
@@ -249,7 +277,7 @@ Start-AzAutomationRunbook `
 
 ### <a name="publish-a-runbook-in-the-azure-portal"></a>在 Azure 门户中发布 Runbook
 
-1. 在 Azure 门户中打开 Runbook。
+1. 在 Azure 门户中，用你自己的自动化帐户打开 runbook。
 2. 单击 **“编辑”** 。
 3. 单击“发布”，然后在对验证消息的响应中单击“是” 。
 
@@ -258,19 +286,23 @@ Start-AzAutomationRunbook `
 使用 [Publish-AzAutomationRunbook](/powershell/module/Az.Automation/Publish-AzAutomationRunbook) cmdlet 发布 Runbook。 
 
 ```azurepowershell-interactive
-$automationAccountName =  "AutomationAccount"
+$accountName = "MyAutomationAccount"
 $runbookName = "Sample_TestRunbook"
-$RGName = "ResourceGroup"
+$rgName = "MyResourceGroup"
 
-Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
--Name $runbookName -ResourceGroupName $RGName
+$publishParams = @{
+    AutomationAccountName = $accountName
+    ResourceGroupName     = $rgName
+    Name                  = $runbookName
+}
+Publish-AzAutomationRunbook @publishParams
 ```
 
 ## <a name="schedule-a-runbook-in-the-azure-portal"></a>在 Azure 门户中计划 Runbook
 
 当你的 Runbook 已发布后，可计划它进行操作：
 
-1. 在 Azure 门户中打开 Runbook。
+1. 在 Azure 门户中，用你自己的自动化帐户打开 runbook。
 2. 在“资源”下选择“计划” 。
 3. 选择“添加计划”。
 4. 在“计划 Runbook”窗格中，选择“将计划关联到 Runbook”。
@@ -308,28 +340,45 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 以下示例会获取示例 Runbook 的最后一项作业，并显示它的状态、为 Runbook 参数提供的值以及作业的输出内容。
 
 ```azurepowershell-interactive
-$job = (Get-AzAutomationJob –AutomationAccountName "MyAutomationAccount" `
-–RunbookName "Test-Runbook" -ResourceGroupName "ResourceGroup01" | sort LastModifiedDate –desc)[0]
-$job.Status
-$job.JobParameters
-Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
-–AutomationAccountName "MyAutomationAcct" -Id $job.JobId –Stream Output
+$getJobParams = @{
+    AutomationAccountName = 'MyAutomationAccount'
+    ResourceGroupName     = 'MyResourceGroup'
+    Runbookname           = 'Test-Runbook'
+}
+$job = (Get-AzAutomationJob @getJobParams | Sort-Object LastModifiedDate -Desc)[0]
+$job | Select-Object JobId, Status, JobParameters
+
+$getOutputParams = @{
+    AutomationAccountName = 'MyAutomationAccount'
+    ResourceGroupName     = 'MyResourceGroup'
+    Id                    = $job.JobId
+    Stream                = 'Output'
+}
+Get-AzAutomationJobOutput @getOutputParams
 ```
 
 以下示例会检索特定作业的输出，并返回每条记录。 如果其中一个记录出现[异常](automation-runbook-execution.md#exceptions)，脚本将写出异常而不是值。 此行为非常有用，因为异常可提供在输出过程中可能无法正常记录的其他信息。
 
 ```azurepowershell-interactive
-$output = Get-AzAutomationJobOutput -AutomationAccountName <AutomationAccountName> -Id <jobID> -ResourceGroupName <ResourceGroupName> -Stream "Any"
-foreach($item in $output)
-{
-    $fullRecord = Get-AzAutomationJobOutputRecord -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -JobId <jobID> -Id $item.StreamRecordId
-    if ($fullRecord.Type -eq "Error")
-    {
-        $fullRecord.Value.Exception
+$params = @{
+    AutomationAccountName = 'MyAutomationAccount'
+    ResourceGroupName     = 'MyResourceGroup'
+    Stream                = 'Any'
+}
+$output = Get-AzAutomationJobOutput @params
+
+foreach ($item in $output) {
+    $jobOutParams = @{
+        AutomationAccountName = 'MyAutomationAccount'
+        ResourceGroupName     = 'MyResourceGroup'
+        Id                    = $item.StreamRecordId
     }
-    else
-    {
-    $fullRecord.Value
+    $fullRecord = Get-AzAutomationJobOutputRecord @jobOutParams
+
+    if ($fullRecord.Type -eq 'Error') {
+        $fullRecord.Value.Exception
+    } else {
+        $fullRecord.Value
     }
 }
 ```

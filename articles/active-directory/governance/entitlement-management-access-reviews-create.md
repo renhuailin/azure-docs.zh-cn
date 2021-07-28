@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 012eefe9140703a62d7bb1074ab763191a0976cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf34223e44ddfb59a72f98d31f0df5d9a882e0eb
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87798505"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713587"
 ---
 # <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中创建访问包的访问评审
 
@@ -31,7 +31,7 @@ ms.locfileid: "87798505"
 
 若要启用访问包的评审，必须满足以下创建访问包的先决条件：
 - Azure AD Premium P2
-- 全局管理员、用户管理员、目录所有者或访问包管理员
+- 全局管理员、标识治理管理员、用户管理员、目录所有者或访问包管理员
 
 有关详细信息，请参阅[许可证要求](entitlement-management-overview.md#license-requirements)。
 

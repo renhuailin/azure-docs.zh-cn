@@ -10,12 +10,12 @@ author: mx-iao
 ms.reviewer: peterlu
 ms.date: 09/28/2020
 ms.topic: how-to
-ms.openlocfilehash: 5a641f349b070f3b4cb285b3d0007baa54219683
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 543b99013d31f5a80150bb7daa52d9a9e2992811
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884419"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746992"
 ---
 # <a name="train-keras-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 Keras 模型
 
@@ -36,7 +36,7 @@ Keras 是一种高级神经网络 API，能够基于其他常用 DNN 框架运�
 
 - Azure 机器学习计算实例 - 无需下载或安装
 
-     - 在开始本教程之前完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)创建预先加载了 SDK 和示例存储库的专用笔记本服务器。
+     - 完成[快速入门：开始使用 Azure 机器学习](quickstart-create-resources.md)，以创建一个预加载了 SDK 和示例存储库的专用笔记本服务器。
     - 在笔记本服务器上的示例文件夹中，通过导航到以下目录来查找已完成且已扩展的笔记本：how-to-use-azureml > ml-frameworks > keras > train-hyperparameter-tune-deploy-with-keras 文件夹。
 
  - 你自己的 Jupyter 笔记本服务器

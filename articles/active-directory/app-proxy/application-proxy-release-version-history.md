@@ -11,17 +11,17 @@ ms.date: 04/27/2021
 ms.subservice: app-proxy
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 2062b957a751d80bb278fe830688b1db3cfa5dfe
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: c340d0b51e1d4326bba575094491cdd5ea756616
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108185829"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764380"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD 应用程序代理：版本发布历史记录
-本文列出了已发布的 Azure Active Directory (Azure AD) 应用程序代理的版本和功能。 Azure AD 团队会定期更新应用程序代理的新特性和功能。 发布新版本时，应用程序代理连接器会自动更新。 
+本文列出了已发布的 Azure Active Directory (Azure AD) 应用程序代理的版本和功能。 Azure AD 团队会定期更新应用程序代理的新特性和功能。 应用程序代理连接器会[在新的主版本发布时自动更新](application-proxy-faq.yml#why-is-my-connector-still-using-an-older-version-and-not-auto-upgraded-to-latest-version-)。 
 
-建议确保为连接器启用了自动更新，以确保具有最新的功能和 bug 修复。 Microsoft 为最新连接器版本和之前的一个版本提供直接支持。
+建议确保为连接器启用了自动更新，以确保具有最新的功能和 bug 修复。 Microsoft 支持部门可能会要求你安装最新的连接器版本以解决问题。
 
 下面是相关资源的列表：
 
@@ -35,7 +35,7 @@ ms.locfileid: "108185829"
 
 ### <a name="release-status"></a>版本状态
 
-2020 年 7 月 22 日：已发布供下载。此版本仅可通过下载页面安装。 此版本的自动升级版本将在以后发布。
+2020 年 7 月 22 日：已发布供下载。此版本仅可通过下载页面安装。 
 
 ### <a name="new-features-and-improvements"></a>新增功能和改进
 -   改进了对 Azure 政府云环境的支持。 有关如何正确安装 Azure 政府云连接器的步骤，请查看[先决条件](../hybrid/reference-connect-government-cloud.md#allow-access-to-urls)和[安装步骤](../hybrid/reference-connect-government-cloud.md#install-the-agent-for-the-azure-government-cloud)。
@@ -51,7 +51,7 @@ ms.locfileid: "108185829"
 
 ### <a name="release-status"></a>版本状态
 
-2020 年 7 月 17 日：已发布供下载。 此版本仅可通过下载页面安装。 此版本的自动升级版本将在以后发布。
+2020 年 7 月 17 日：已发布供下载。 此版本仅可通过下载页面安装。 
 
 ### <a name="fixed-issues"></a>已修复的问题
 - 解决了以前版本中存在的内存泄漏问题
@@ -61,7 +61,7 @@ ms.locfileid: "108185829"
 
 ### <a name="release-status"></a>版本状态
 
-2020 年 4 月 7 日：已发布供下载。此版本仅可通过下载页面安装。 此版本的自动升级版本将在以后发布。
+2020 年 4 月 7 日：已发布供下载。此版本仅可通过下载页面安装。 
 
 ### <a name="new-features-and-improvements"></a>新增功能和改进
 -   连接器对所有连接仅使用 TLS 1.2。 有关详细信息，请参阅[连接器先决条件](application-proxy-add-on-premises-application.md#prerequisites)。

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e41f372cd0105896765d5a267456b6bda767dd4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b66ef767795b320368224e5ef855332a735b210
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87798420"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714307"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中将访问权限管理委派给的目录创建者
 
@@ -33,7 +33,7 @@ ms.locfileid: "87798420"
 
 遵循以下步骤将用户分配到目录创建者角色。
 
-**必备角色：** 全局管理员或用户管理员
+**必备角色**：全局管理员、标识治理管理员或用户管理员
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 

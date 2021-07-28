@@ -1,17 +1,15 @@
 ---
 title: 添加自定义 Service Fabric 运行状况报告
 description: 介绍如何将自定义运行状况报告发送至 Azure Service Fabric 运行状况实体。 为设计和实现优质运行状况报告提供建议。
-author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.author: gwallace
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6df434610a8f595ecca7f16e31f8a302373b02f9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c87c063ac9d3b4810657f72c46c17725b8899c77
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96001858"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626163"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>添加自定义 Service Fabric 运行状况报告
 Azure Service Fabric 引入了[运行状况模型](service-fabric-health-introduction.md)，用于在特定实体上标记不正常的群集和应用程序状态。 运行状况模型使用 **运行状况报告器**（系统组件和监视器）。 其目标是实现轻松快捷的诊断和修复。 服务编写器必须预先考虑到运行状况。 应报告任何可能会影响运行状况的条件，尤其是如果它有助于标记出接近根源的问题。 运行状况信息可节省调试和调查的时间和精力。 该服务在云端（私有云或 Azure 云）大规模启动并运行后，好处格外明显。
@@ -140,7 +138,7 @@ GatewayInformation   : {
 
 有时，也并非一定要在群集中运行监视器。 如果受监视的条件是用户所见的服务可用性或功能，监视器最好能与用户客户端位于相同的位置， 并采用与用户调用操作相同的方式来测试操作 例如，监视器可以存留于群集外部、对服务发出请求，并检查结果的延迟和正确性。 （例如在计算器服务中，2+2 是否在合理的时间内返回 4？）
 
-确定监视器详细信息后，应该确定可唯一标识它的源 ID。 如果多个相同类型的监视器存留于群集中，它们必须报告不同的实体，如果它们报告相同的实体，请使用不同的源 ID 或属性。 如此报告才可并存。 运行状况报告的属性应捕获受监视的条件。 （对于上述示例，属性可以是 **ShareSize**。）如果多个报告应用于同一条件，该属性应包含一些动态信息，才可让报告共存。 例如，如果需要监视多个共享，属性名称可以是 **ShareSize-sharename**。
+确定监视器详细信息后，应该确定可唯一标识它的源 ID。 如果多个相同类型的监视器存留于群集中，它们必须报告不同的实体，如果它们报告相同的实体，请使用不同的源 ID 或属性。 如此报告才可并存。 运行状况报告的属性应捕获受监视的条件。 （对于上面的示例，该属性可以是“ShareSize”。）如果多个报告应用于同一条件，该属性应包含一些动态信息，让报告共存。 例如，如果需要监视多个共享，属性名称可以是 **ShareSize-sharename**。
 
 > [!NOTE]
 > 请勿将运行状况存储用于保存状态信息。 只有与运行状况相关的信息才应作为运行状况进行报告，即影响实体运行状况评估的信息。 运行状况存储并非设计作为一般用途的存储。 它使用运行状况评估逻辑将所有数据聚合到运行状况中。 发送与运行状况无关的信息（例如，报告运行状况为“正常”的状态）不会影响聚合的运行状况，但可能对运行状况存储的性能造成负面影响。

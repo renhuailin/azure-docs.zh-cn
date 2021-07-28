@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/14/2021
 ms.author: rolyon
-ms.openlocfilehash: 40a17da6383fb1f368c74a82fefa71991cdc1b19
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: f0fc0611e48f25c8faec415b8702a420402280c5
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517668"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483832"
 ---
 # <a name="steps-to-assign-an-azure-role"></a>分配 Azure 角色的步骤
 
@@ -68,7 +68,7 @@ ms.locfileid: "107517668"
 - 如果在订阅范围向某个组分配了[账单读取者](built-in-roles.md#billing-reader)角色，则该组的成员可以读取订阅中每个资源组和资源的账单数据。
 - 如果在资源组范围向某个应用程序分配了[参与者](built-in-roles.md#contributor)角色，则该应用程序可以管理该资源组中所有类型的资源，但不能管理订阅中其他资源组的资源。
 
- 有关详细信息，请参阅[了解范围](scope-overview.md)。
+[!INCLUDE [Scope for Azure RBAC least privilege](../../includes/role-based-access-control/scope-least.md)] 有关详细信息，请参阅[了解范围](scope-overview.md)。
 
 ## <a name="step-4-check-your-prerequisites"></a>步骤 4. 检查先决条件
 
@@ -83,9 +83,9 @@ ms.locfileid: "107517668"
 
 ## <a name="step-5-assign-role"></a>步骤 5。 分配角色
 
-了解安全主体、角色和范围后，便可以分配角色了。 可使用 Azure 门户、Azure PowerShell、Azure CLI、Azure SDK 或 REST API 分配角色。 每个订阅中最多可以包含 **2000** 个角色分配。 此限制包括订阅、资源组和资源范围内的角色分配。 每个管理组中最多可以有 500 个角色分配。
+了解安全主体、角色和范围后，便可以分配角色了。 可使用 Azure 门户、Azure PowerShell、Azure CLI、Azure SDK 或 REST API 来分配角色。 每个订阅中最多可以包含 **2000** 个角色分配。 此限制包括订阅、资源组和资源范围内的角色分配。 每个管理组中最多可以有 500 个角色分配。
 
-请参阅以下文章，了解分配角色的详细步骤。
+请查看以下文章，了解有关如何分配角色的详细步骤。
 
 - [使用 Azure 门户分配 Azure 角色](role-assignments-portal.md)
 - [使用 Azure PowerShell 分配 Azure 角色](role-assignments-powershell.md)

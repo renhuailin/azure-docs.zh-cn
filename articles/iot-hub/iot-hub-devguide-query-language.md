@@ -5,15 +5,15 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 05/07/2021
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cae2bcb1a3302814a426fa0cb2dfb36ba1b013fa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e473e7305f7e2dd9609edf0f2d18a12a950b9d40
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218360"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656913"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
 
@@ -152,11 +152,23 @@ SELECT properties.reported.telemetryConfig.status AS status,
 
 在此示例中，三个设备报告了成功配置，两个仍在应用配置，一个报告了错误。
 
-投影查询允许开发人员仅返回他们所关注的属性。 例如，若要检索所有已断开连接设备的上次活动时间，请使用以下查询：
+投影查询允许开发人员仅返回他们所关注的属性。 例如，若要检索上次活动时间以及已断开连接的所有已启用设备的设备 ID，请使用以下查询：
 
 ```sql
-SELECT LastActivityTime FROM devices WHERE status = 'enabled'
+SELECT DeviceId, LastActivityTime FROM devices WHERE status = 'enabled' AND connectionState = 'Disconnected'
 ```
+
+以下是 IoT 中心的查询资源管理器中该查询的示例查询结果：
+
+```json
+[
+  {
+    "deviceId": "AZ3166Device",
+    "lastActivityTime": "2021-05-07T00:50:38.0543092Z"
+  }
+]
+```
+
 
 ### <a name="module-twin-queries"></a>模块孪生查询
 

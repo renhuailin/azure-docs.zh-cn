@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: 54bfd7c6e691efbd754e9ea2b804e16b3e07ebbe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cf55dc19a78b667056da9ef614ec75f3817b5773
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101670972"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141192"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>在 Azure 虚拟机上安装 SAP HANA
 ## <a name="introduction"></a>简介
@@ -41,7 +41,7 @@ ms.locfileid: "101670972"
 ## <a name="step-by-step-before-deploying"></a>部署前的每个步骤
 本部分列出了开始在 Azure 虚拟机中安装 SAP HANA 之前需要执行的各个步骤。 步骤的顺序已列出，因此应该按照列出的顺序依次执行：
 
-1. 并非所有可能的部署方案都在 Azure 上受支持。 因此，应该查看文档 [Azure 虚拟机上的 SAP 工作负载支持的方案](./sap-planning-supported-configurations.md)，确定你打算用于 SAP HANA 部署的方案是否受支持。 如果该方案未列出，则需要假设它尚未经过测试，因此不受支持
+1. 并非所有可能的部署方案都在 Azure 上受支持。 因此，你应该查看 [Azure 虚拟机上的 SAP 工作负荷支持的方案](./sap-planning-supported-configurations.md)文档，了解你打算用于 SAP HANA 部署的方案。 如果该方案未列出，则需要假设它尚未经过测试，因此不受支持
 2. 假设你大致了解了 SAP HANA 部署的内存要求，接下来需要找到一个适合的 Azure VM。 并非所有已通过 SAP NetWeaver 认证的 VM（如 [SAP 支持说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533) 中所述）都通过了 SAP HANA 认证。 SAP HANA 认证的 Azure VM 的真实信息源是 [SAP HANA 硬件目录](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)网站。 以“S”开头的单元是 [HANA 大型实例](./hana-overview-architecture.md)单元，而不是 Azure VM。
 3. 对于 SUSE Linux 或 Red Hat Linux，不同的 Azure VM 类型具有不同的最低操作系统版本。 在 [SAP HANA 硬件目录](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)网站上，需要单击 SAP HANA 已认证单元列表中的条目以获取此单元的详细数据。 除了支持的 HANA 工作负载以外，该网站还列出了这些 SAP HANA 单元支持的 OS 版本
 4. 对于操作系统版本，需要考虑特定的最低内核版本。 以下 SAP 支持说明中阐述了这些最低版本：
@@ -49,7 +49,7 @@ ms.locfileid: "101670972"
     - [SAP 支持说明 #2753418：由于计时器回退而导致潜在的性能下降](https://launchpad.support.sap.com/#/notes/2753418)
     - [SAP 支持说明 #2791572：由于 Azure 中的 Hyper-V 缺少 VDSO 支持而导致性能下降](https://launchpad.support.sap.com/#/notes/2791572)
 4. 根据所选虚拟机类型支持的 OS 版本，需要检查该操作系统版本是否支持所需的 SAP HANA 版本。 请阅读 [SAP 支持说明 #2235581](https://launchpad.support.sap.com/#/notes/2235581)，其中提供了不同操作系统版本支持的 SAP HANA 版本对照表。
-5. 需要查看“SAP 产品可用性对照表”，找到 Azure VM 类型、操作系统版本和 SAP HANA 版本的有效组合。 在“SAP 可用性对照表”中，可以确定你要针对 SAP HANA 数据库运行的 SAP 产品是否受支持。
+5. 由于你可能已找到 Azure VM 类型、操作系统版本和 SAP HANA 版本的有效组合，因此你需要查看“SAP 产品可用性对照表”。 在“SAP 可用性对照表”中，可以确定你要针对 SAP HANA 数据库运行的 SAP 产品是否受支持。
 
 
 ## <a name="step-by-step-vm-deployment-and-guest-os-considerations"></a>VM 分步部署和来宾 OS 注意事项
@@ -94,8 +94,8 @@ Azure 中的一个具体步骤是安装 Azure VM 扩展以用于为 SAP 主机�
 
 ## <a name="additional-resources-for-sap-hana-backup"></a>有关 SAP HANA 备份的其他资源
 有关如何在 Azure VM 上备份 SAP HANA 数据库的信息，请参阅：
-* [Azure 虚拟机上的 SAP HANA 备份指南](./sap-hana-backup-guide.md)
-* [文件级别的 SAP HANA Azure 备份](./sap-hana-backup-file-level.md)
+* [Azure 虚拟机上的 SAP HANA 备份指南](../../../backup/sap-hana-db-about.md)
+* [文件级别的 SAP HANA Azure 备份](../../../backup/sap-hana-db-about.md)
 
 ## <a name="next-steps"></a>后续步骤
 阅读文档：

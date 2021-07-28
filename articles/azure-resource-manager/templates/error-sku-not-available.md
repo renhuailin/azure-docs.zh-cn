@@ -2,19 +2,18 @@
 title: SKU 不可用错误
 description: 介绍在使用 Azure 资源管理器部署资源时如何解决 SKU 不可用错误。
 ms.topic: troubleshooting
-ms.date: 02/18/2020
-ms.openlocfilehash: 5b0bbd653907c109eca526af86979013b3137cfa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/14/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2ed04cd3839b8146d7e988b571113a737f38801f
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737144"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318722"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>解决 SKU 不可用的错误
 
 本文介绍如何解决 SkuNotAvailable 错误  。 如果在该区域或满足业务需求的备用区域中找不到合适的 SKU，请将 [SKU 请求](/troubleshoot/azure/general/region-access-request-process)提交到 Azure 支持。
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>症状
 
@@ -51,31 +50,67 @@ virtualMachines       Standard_A2    centralus             NotAvailableForSubscr
 virtualMachines       Standard_D1_v2 centralus   {2, 1, 3}                                  MaxResourceVolumeMB
 ```
 
-一些其他示例：
+若要按位置和 SKU 进行筛选，请使用：
 
 ```azurepowershell-interactive
-Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_DS14_v2")}
-Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("v3")} | fc
-```
+$SubId = (Get-AzContext).Subscription.Id
 
-在末尾追加“fc”会返回更多详细信息。
+$Region = "centralus" # change region here
+$VMSku = "Standard_M" # change VM SKU here
 
-## <a name="solution-2---azure-cli"></a>解决方案 2 - Azure CLI
+$VMSKUs = Get-AzComputeResourceSku | where {$_.Locations.Contains($Region) -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains($VMSku)}
 
-要确定区域中可用的 SKU，请使用 `az vm list-skus` 命令。 使用 `--location` 参数将输出筛选到正在使用的位置。 使用 `--size` 参数按部分大小名称搜索。
+$OutTable = @()
 
-```azurecli-interactive
-az vm list-skus --location southcentralus --size Standard_F --output table
+foreach ($SkuName in $VMSKUs.Name)
+        {
+            $LocRestriction = if ((($VMSKUs | where Name -EQ $SkuName).Restrictions.Type | Out-String).Contains("Location")){"NotAvavalableInRegion"}else{"Available - No region restrictions applied" }
+            $ZoneRestriction = if ((($VMSKUs | where Name -EQ $SkuName).Restrictions.Type | Out-String).Contains("Zone")){"NotAvavalableInZone: "+(((($VMSKUs | where Name -EQ $SkuName).Restrictions.RestrictionInfo.Zones)| Where-Object {$_}) -join ",")}else{"Available - No zone restrictions applied"}
+            
+            
+            $OutTable += New-Object PSObject -Property @{
+                                                         "Name" = $SkuName
+                                                         "Location" = $Region
+                                                         "Applies to SubscriptionID" = $SubId
+                                                         "Subscription Restriction" = $LocRestriction
+                                                         "Zone Restriction" = $ZoneRestriction
+                                                         }
+         }
+
+$OutTable | select Name, Location, "Applies to SubscriptionID", "Region Restriction", "Zone Restriction" | Sort-Object -Property Name | FT
 ```
 
 该命令将返回类似下面的结果：
 
 ```output
-ResourceType     Locations       Name              Zones    Capabilities    Restrictions
----------------  --------------  ----------------  -------  --------------  --------------
-virtualMachines  southcentralus  Standard_F1                ...             None
-virtualMachines  southcentralus  Standard_F2                ...             None
-virtualMachines  southcentralus  Standard_F4                ...             None
+Name                   Location  Applies to SubscriptionID            Region Restriction                         Zone Restriction                        
+----                   --------  -------------------------            ------------------------                   ----------------     
+Standard_M128          centralus xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Available - No region restrictions applied Available - No zone restrictions applied
+Standard_M128-32ms     centralus xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Available - No region restrictions applied Available - No zone restrictions applied
+Standard_M128-64ms     centralus xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Available - No region restrictions applied Available - No zone restrictions applied
+Standard_M128dms_v2    centralus xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx NotAvavalableInRegion                      NotAvavalableInZone: 1,2,3
+```
+
+## <a name="solution-2---azure-cli"></a>解决方案 2 - Azure CLI
+
+要确定区域中可用的 SKU，请使用 [az vm list-skus](/cli/azure/vm#az_vm_list_skus) 命令。 使用 `--location` 参数可按位置筛选输出。 使用 `--size` 参数按部分大小名称搜索。 使用 `--all` 参数显示所有信息，包括对当前订阅不可用的大小。
+
+必须具备 Azure CLI 2.15.0 或更高版本。 要检查版本，请使用 `az --version`。 如果需要，请[更新安装](/cli/azure/update-azure-cli)。
+
+```azurecli-interactive
+az vm list-skus --location southcentralus --size Standard_F --all --output table
+```
+
+该命令将返回类似下面的结果：
+
+```output
+ResourceType     Locations       Name              Zones    Restrictions
+---------------  --------------  ----------------  -------  --------------
+virtualMachines  southcentralus  Standard_F1       1,2,3    None
+virtualMachines  southcentralus  Standard_F2       1,2,3    None
+virtualMachines  southcentralus  Standard_F4       1,2,3    None
+...
+virtualMachines  southcentralus  Standard_F72s_v2  1,2,3    NotAvailableForSubscription, type: Zone, locations: southcentralus, zones: 1,2,3
 ...
 ```
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 4e88ad58c7baba1c66c30df3f4effdbf11371c18
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2703e5f92ad0756ece8088c4948170ea13fa0e06
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045325"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109683436"
 ---
 # <a name="how-to-connect-devices-through-an-iot-edge-transparent-gateway"></a>如何通过 IoT Edge 透明网关连接设备
 
@@ -25,11 +25,11 @@ IoT Edge 支持[透明网关模式和转换网关模式](../../iot-edge/iot-edge
 
 ## <a name="prerequisites"></a>先决条件
 
-需要有效的 Azure 订阅才能完成本教程中的步骤。
+若要完成本文中的步骤，需要：
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 一个有效的 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-完成[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)快速入门，使用“自定义应用”>“自定义应用程序”模板创建 IoT Central 应用程序。
+- 根据自定义应用程序模板[创建的 IoT Central 应用程序](howto-create-iot-central-application.md)。 若要了解详细信息，请参阅[创建 IoT Central 应用程序](howto-create-iot-central-application.md)。
 
 若要执行本文中的步骤，请将以下文件下载到计算机：
 

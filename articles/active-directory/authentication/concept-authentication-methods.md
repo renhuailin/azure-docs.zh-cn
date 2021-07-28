@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: b4d69157f4544daad962cca15e53802e7b912399
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: b6071370d510881d06c5b81f8660781169596a72
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530425"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764400"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的身份验证和验证方法？
 
@@ -89,6 +89,9 @@ ms.locfileid: "107530425"
 
 > [!NOTE]
 > 在 Azure AD 中，密码通常是主要身份验证方法之一。 不能禁用密码身份验证方法。 如果使用密码作为主要身份验证因素，则使用 Azure AD 多重身份验证提高登录事件的安全性。
+
+> [!IMPORTANT]
+> 虽然 FIDO2 满足作为一种 MFA 形式的必要要求，但 FIDO2 只能用作一种无密码的身份验证形式。
 
 在某些情况下，可使用以下附加验证方法：
 

@@ -3,12 +3,12 @@ title: 对访问 Azure 服务总线实体的应用程序进行身份验证
 description: 本文介绍如何对使用 Azure Active Directory 访问 Azure 服务总线实体（队列、主题等）的应用程序进行身份验证
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: c4e19c0ab26d491ba0b95159e274383431aefaee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fc009c5a84c577c5904b3e0fc834295aa355e802
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92518222"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123098"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>使用 Azure Active Directory 对应用程序进行身份验证和授权，使之能够访问 Azure 服务总线实体
 Azure 服务总线支持使用 Azure Active Directory (Azure AD) 授权对服务总线实体（队列、主题、订阅或筛选器）的请求。 可以通过 Azure AD 使用 Azure 基于角色的访问控制 (Azure RBAC) 授予对安全主体的访问权限，该安全主体可能是用户、组或应用程序服务主体。 若要详细了解角色和角色分配，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
@@ -125,29 +125,22 @@ Azure Active Directory (Azure AD) 通过 [Azure RBAC](../role-based-access-contr
 ### <a name="permissions-for-the-service-bus-api"></a>服务总线 API 的权限
 如果应用程序是一个控制台应用程序，则必须注册一个本机应用程序并将 **Microsoft.ServiceBus** 的 API 权限添加到“必需的权限”集。 本机应用程序在 Azure AD 中还需要有一个充当标识符的 **redirect-URI**，该 URI 不需要是网络目标。 对于此示例请使用 `https://servicebus.microsoft.com`，因为示例代码已使用了该 URI。
 
-### <a name="client-libraries-for-token-acquisition"></a>用于获取令牌的客户端库  
-注册应用程序并向其授予在 Azure 服务总线发送/接收数据的权限后，可将代码添加到应用程序，以便对安全主体进行身份验证并获取 OAuth 2.0 令牌。 若要进行身份验证并获取令牌，可以使用 [Microsoft 标识平台身份验证库](../active-directory/develop/reference-v2-libraries.md)，或者其他支持 OpenID 或 Connect 1.0 的开源库。 然后，应用程序可以使用访问令牌授权针对 Azure 服务总线发出的请求。
+### <a name="authenticating-the-service-bus-client"></a>对服务总线客户端进行身份验证   
+注册应用程序并向其授予了在 Azure 服务总线中发送/接收数据的权限后，可以使用客户端密钥凭据对客户端进行身份验证，这将允许你对 Azure 服务总线发出请求。
 
 有关支持获取令牌的方案列表，请参阅[适用于 .NET 的 Microsoft 身份验证库 (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) GitHub 存储库的[方案](https://aka.ms/msal-net-scenarios)部分。
 
-## <a name="sample-on-github"></a>GitHub 上的示例
-查看 GitHub 上的以下示例：[服务总线的 Azure 基于角色的访问控制](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)。 
+# <a name="net"></a>[.NET](#tab/dotnet)
+通过使用最新的 [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus)库，可使用在[Azure.Identity](https://www.nuget.org/packages/Azure.Identity)库中定义的 [ClientSecretCredential](/dotnet/api/azure.identity.clientsecretcredential)对 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient)进行身份验证。
+```cs
+TokenCredential credential = new ClientSecretCredential("<tenant_id>", "<client_id>", "<client_secret>");
+var client = new ServiceBusClient("<fully_qualified_namespace>", credential);
+```
 
-使用“客户端机密登录”选项，而不是“交互用户登录”选项。 使用客户端机密选项时，看不到弹出窗口。 应用程序会使用租户 ID 和应用 ID 进行身份验证。 
-
-### <a name="run-the-sample"></a>运行示例
-
-在运行示例前，请编辑 **app.config** 文件并根据方案设置以下值：
-
-- `tenantId`：设置为 **TenantId** 值。
-- `clientId`：设置为 **ApplicationId** 值。
-- `clientSecret`：如果希望使用客户端机密进行登录，请在 Azure AD 中创建它。 此外，请使用 Web 应用或 API 而非本机应用。 另外，请在之前创建的命名空间中将该应用添加到“访问控制(IAM)”  下。
-- `serviceBusNamespaceFQDN`：设置为新创建的服务总线命名空间的完整 DNS 名称，例如 `example.servicebus.windows.net`。
-- `queueName`：设置为所创建的队列的名称。
-- 执行前面的步骤时在应用中指定的重定向 URI。
-
-运行该控制台应用程序时，系统会提示你选择一个方案。 请通过键入相应的编号并按 ENTER 来选择“交互用户登录”  。 应用程序会显示一个登录窗口，要求你同意访问服务总线，然后使用登录标识通过该服务来演练发送/接收方案。
-
+如果使用较旧的 .NET 包，请参阅下面的示例
+- [Microsoft.Azure.ServiceBus 中的 RoleBasedAccessControl](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/RoleBasedAccessControl)
+- [WindowsAzure.ServiceBus 中的 RoleBasedAccessControl](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)
+---
 
 ## <a name="next-steps"></a>后续步骤
 - 若要详细了解 Azure RBAC，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md)？

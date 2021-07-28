@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: e335f015d784b3f3849c3646d16da9ad8999030c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 07b76f565aa9eda4db885b6ec37a42a21b2d25bc
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309826"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108744355"
 ---
 # <a name="updated-ndv2-series"></a>已更新 NDv2 系列
 
@@ -40,7 +40,7 @@ NDv2 实例使用 CUDA GPU 优化计算内核、众多 AI、ML、支持 GPU 加�
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 代系支持](generation-2.md)：第 2 代<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
-[临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持（[预览版](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks)）<br>
 InfiniBand：支持<br>
 Nvidia NVLink 互连：支持<br>
 <br>

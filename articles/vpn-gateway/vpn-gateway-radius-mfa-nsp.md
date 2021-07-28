@@ -1,26 +1,20 @@
 ---
 title: 将 NPS 与 VPN 网关 RADIUS 身份验证集成以实现多重身份验证
-description: 介绍如何将 Azure 网关 RADIUS 身份验证与 NPS 服务器集成实现多重身份验证。
+titleSuffix: Azure VPN Gateway
+description: 了解如何将 Azure VPN 网关 RADIUS 身份验证与 NPS 服务器集成实现多重身份验证。
 services: vpn-gateway
-documentationcenter: na
 author: ahmadnyasin
 manager: dcscontentpm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 208e99f61694f5a81a98dbc649e2a6035f57891b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6cfc6ea361dddf703741baa1a990018186b402e4
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96018267"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289473"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>将 Azure VPN 网关 RADIUS 身份验证与 NPS 服务器集成实现多重身份验证 
 

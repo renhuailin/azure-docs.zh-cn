@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 8293ed1bfb53895b9631d9730fb75a2364457180
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1ddc3d35817211d7396defa7460a2505b86c700c
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96452367"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713231"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>使用 GPU 虚拟机设置实验室
 
@@ -47,12 +47,15 @@ ms.locfileid: "96452367"
 
 ![“新建实验室”屏幕截图，其中显示“安装 GPU 驱动程序”选项](./media/how-to-setup-gpu/lab-gpu-drivers.png)
 
-如上图所示，此选项默认启用，可确保为所选 GPU 类型和映像安装最新驱动程序。
+如上图所示，此选项默认启用，可确保为所选 GPU 类型和映像安装最新发布的驱动程序：
 - 选择“计算”GPU 大小时，实验室 VM 由 [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) GPU 提供支持。  在这种情况下，将安装最新的[计算统一设备体系结构 (CUDA)](http://developer.download.nvidia.com/compute/cuda/2_0/docs/CudaReferenceManual_2.0.pdf) 驱动程序，从而实现高性能计算。
 - 选择“可视化”GPU 大小时，实验室 VM 由 [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 和 [GRID 技术](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/solutions/resources/documents1/NVIDIA_GRID_vPC_Solution_Overview.pdf)提供支持。  在这种情况下，将安装最新的 GRID 驱动程序，便于使用图形密集型应用程序。
 
+> [!IMPORTANT]
+> “安装 GPU 驱动程序”选项仅在实验室映像中没有驱动程序时才安装驱动程序。  例如，GPU 驱动程序已安装到 Azure 市场的[数据科学映像](../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm)。  如果使用数据科学映像创建实验室并选择“安装 GPU 驱动程序”，驱动程序将不会更新为更新版本。  若要更新驱动程序，需按照下一部分中的说明手动安装。  
+
 ### <a name="install-the-drivers-manually"></a>手动安装驱动程序
-你可能需要安装驱动程序最新版本以外的版本。  本部分介绍如何手动安装相应的驱动程序，具体取决于你使用的是“计算”GPU 还是“可视化”GPU。
+可能需要安装其他版本的驱动程序，而不是 Azure 实验室服务为你安装的版本。  本部分介绍如何手动安装相应的驱动程序，具体取决于你使用的是“计算”GPU 还是“可视化”GPU。
 
 #### <a name="install-the-compute-gpu-drivers"></a>安装“计算”GPU 驱动程序
 
@@ -108,6 +111,8 @@ ms.locfileid: "96452367"
 
       > [!IMPORTANT]
       > 仅可以针对“可视化”GPU 访问“NVIDIA 控制面板”设置。  如果尝试针对“计算”GPU 打开“NVIDIA 控制面板”，则会出现此错误：“NVIDIA 显示器设置不可用。  当前未使用附加到 NVIDIA GPU 的显示器。”  同样，任务管理器中的 GPU 性能信息仅针对“可视化”GPU 提供。
+
+ 根据情况，可能还需进行其他验证，以确保正确配置 GPU。  请参阅 [Python 和 Jupyter Notebooks](./class-type-jupyter-notebook.md#template-virtual-machine) 了解类类型，其中说明了需使用特定版本的驱动程序的示例。
 
 #### <a name="linux-images"></a>Linux 映像
 按照[在运行 Linux 的 N 系列 VM 上安装 NVIDIA GPU 驱动程序](../virtual-machines/linux/n-series-driver-setup.md#verify-driver-installation)的“验证驱动程序安装”部分中的说明进行操作。

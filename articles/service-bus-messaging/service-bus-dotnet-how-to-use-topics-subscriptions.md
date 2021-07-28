@@ -1,332 +1,291 @@
 ---
-title: 使用 azure-messaging-servicebus 将消息发送到 Azure 服务总线主题
+title: Azure 服务总线主题和订阅入门
 description: 本快速入门介绍如何使用 azure-messaging-servicebus 包将消息发送到 Azure 服务总线主题。
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
-ms.date: 03/16/2021
+ms.date: 06/29/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 7cc854c850b02674151da7c88d94a2800b6572f5
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 13fee0b418a295fb47c5eb44f12190c7655b5934
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108015962"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113092710"
 ---
-# <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-net"></a>向 Azure 服务总线主题发送消息，并从该主题的订阅接收消息 (.NET)
-在本教程中，将创建一个 C# 应用程序来执行以下任务：
-
-1. 向服务总线主题发送消息。 
-
-    服务总线主题提供了一个端点，以供发送方应用程序用来发送消息。 一个主题可以有一个或多个订阅。 主题的每个订阅都将获取发送到主题的消息的副本。 有关“服务总线”主题的详细信息，请参阅[什么是 Azure 服务总线？](service-bus-messaging-overview.md)。 
-1. 接收来自主题订阅的消息。 
-
-    :::image type="content" source="./media/service-bus-messaging-overview/about-service-bus-topic.png" alt-text="服务总线主题和订阅":::
-
-    > [!Important]
-    > 本快速入门使用新的 Azure.Messaging.ServiceBus 包。 如果你在使用旧的 Microsoft.Azure.ServiceBus 包，请参阅[使用 Microsoft.Azure.ServiceBus 包发送和接收消息](service-bus-dotnet-how-to-use-topics-subscriptions-legacy.md)。
+# <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-its-subscriptions-net"></a>向 Azure 服务总线主题发送消息，并从其订阅接收消息 (.NET)
+本快速入门介绍如何使用 [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) .NET 库向服务总线主题发送消息和接收有关该主题订阅的消息。
 
 ## <a name="prerequisites"></a>先决条件
+如果你是首次使用该服务，请在使用本快速入门之前先参阅[服务总线概述](service-bus-messaging-overview.md)。 
 
-- Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+- **Azure 订阅**。 若要使用 Azure 服务（包括 Azure 服务总线），需要一个订阅。  如果没有现有的 Azure 帐户，可以注册[免费试用](https://azure.microsoft.com/free/)帐户，或者在[创建帐户](https://azure.microsoft.com)时使用 MSDN 订阅者权益。
+- Microsoft Visual Studio 2019。 Azure 服务总线客户端库利用 C# 8.0 中引入的新功能。  你仍可使用以前的 C# 语言版本的库，但新语法将不可用。 若要使用完整语法，建议使用 [.NET Core SDK](https://dotnet.microsoft.com/download) 3.0 或更高版本进行编译，并将[语言版本](/dotnet/csharp/language-reference/configure-language-version#override-a-default)设置为 `latest`。 如果使用 Visual Studio，Visual Studio 2019 以前的版本与生成 C# 8.0 项目时所需的工具将不兼容。 可在[此处](https://visualstudio.microsoft.com/vs/)下载 Visual Studio 2019（包括免费的 Community Edition）。
 - 遵循这一[快速入门](service-bus-quickstart-topics-subscriptions-portal.md)中的步骤，创建一个“服务总线”主题和多个对该主题的订阅。 
 
-    > [!NOTE]
-    > 在本教程中，你将使用连接字符串连接到命名空间、主题名称和某个订阅的名称。  
-- [Visual Studio 2019](https://www.visualstudio.com/vs)。 
+    > [!IMPORTANT]
+    > 记录到命名空间的连接字符串、主题名称和某个主题订阅的名称。 本教程后面会用到它们。
  
 ## <a name="send-messages-to-a-topic"></a>将消息发送到主题
-在本部分中，你将在 Visual Studio 中创建 .NET Core 控制台应用程序，并添加代码以将消息发送到创建的“服务总线”主题。 
+本部分介绍如何创建一个向服务总线主题发送消息的 .NET Core 控制台应用程序。 
 
 ### <a name="create-a-console-application"></a>创建控制台应用程序
-使用 Visual Studio 创建 .NET Core 控制台应用程序。 
 
-1. 启动 Visual Studio。  
-1. 如果看到“入门”页，请选择“创建新项目”。 
-1. 在“创建新项目”页上，遵循以下步骤： 
-    1. 对于编程语言，请选择“C#”。 
-    1. 对于项目类型，选择“控制台”。 
-    1. 从模板列表中选择“控制台应用 (.NET Core)”。 
+1. 启动 Visual Studio 2019。 
+1. 选择“创建新项目”。 
+1. 在“创建新项目”对话框中执行以下步骤：如果看不到此对话框，请在菜单中选择“文件”，然后依次选择“新建”、“项目”。   
+    1. 选择“C#”作为编程语言。
+    1. 选择“控制台”作为应用程序类型。 
+    1. 从结果列表中选择“控制台应用程序”。 
     1. 然后，选择“下一步”  。 
-    
-        :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/create-console-project.png" alt-text="创建控制台应用项目":::
-1. 在“配置新项目”页上，遵循以下步骤： 
-    1. 对于“项目名称”，请输入项目的名称。 
-    1. 对于“位置”，请选择项目和解决方案文件的位置。 
-    1. 对于“解决方案名称”，请输入解决方案的名称。 一个 Visual Studio 解决方案可以包含一个或多个项目。 在这一快速入门中，解决方案将只有一个项目。 
-    1. 选择“创建”来创建项目。 
-            
-        :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/create-console-project-2.png" alt-text="输入项目和解决方案的名称和位置":::    
 
+        :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/new-send-project.png" alt-text="显示使用 C# 和所选的控制台创建新项目对话框的图像":::
+1. 输入 TopicSender 作为项目名称，输入 ServiceBusTopicQuickStart 作为解决方案名称，然后选择“下一步”。 
+1. 在“其他信息”页面，选择“创建”来创建解决方案和项目。
 
 ### <a name="add-the-service-bus-nuget-package"></a>添加服务总线 NuGet 包
-1. 右键单击新创建的项目，并选择“管理 NuGet 包” 。
 
-    :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/manage-nuget-packages-menu.png" alt-text="“管理 NuGet 包”菜单":::        
-1. 切换到“浏览”选项卡。
-1. 搜索并选择 [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/)。
-1. 选择“安装”即可完成安装。
+1. 在菜单中选择“工具” > “NuGet 包管理器” > “包管理器控制台”。 
+1. 运行以下命令安装 Azure.Messaging.ServiceBus NuGet 包：
 
-    :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/select-service-bus-package.png" alt-text="“选择服务总线 NuGet”包。":::
-5. 如果看到“预览更改”对话框，请选择“确定”以继续。 
-1. 如果看到“许可证接受”页，请选择“我接受”以继续。 
-    
+    ```cmd
+    Install-Package Azure.Messaging.ServiceBus
+    ```
 
 ### <a name="add-code-to-send-messages-to-the-topic"></a>添加将消息发送到主题的代码 
 
-1. 在“解决方案资源管理器”窗口中，双击“Program.cs”以在编辑器中打开该文件。 
-1. 将以下 `using` 语句添加到命名空间定义顶部，位于类声明之前：
-   
-    ```csharp
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using Azure.Messaging.ServiceBus;
-    ```
-1. 在 `Program` 类中，`Main` 函数的上方，声明以下变量：
-
-    ```csharp
-        static string connectionString = "<NAMESPACE CONNECTION STRING>";
-        static string topicName = "<SERVICE BUS TOPIC NAME>";
-        static string subscriptionName = "<SERVICE BUS - TOPIC SUBSCRIPTION NAME>";
-    ```
-
-    请替换以下值：
-    - 将 `<NAMESPACE CONNECTION STRING>` 替换为服务总线命名空间的连接字符串
-    - 将 `<TOPIC NAME>` 替换为主题名称
-    - 将 `<SUBSCRIPTION NAME>` 替换为订阅的名称
-
-### <a name="send-a-single-message-to-the-topic"></a>向主题发送一条消息
-向 `Program` 类中添加一个名为 `SendMessageToTopicAsync` 的方法（可添加在 `Main` 方法的上方或下方）。 这个方法可将单条消息发送到主题。
-
-```csharp
-    static async Task SendMessageToTopicAsync()
-    {
-        // create a Service Bus client 
-        await using (ServiceBusClient client = new ServiceBusClient(connectionString))
-        {
-            // create a sender for the topic
-            ServiceBusSender sender = client.CreateSender(topicName);
-            await sender.SendMessageAsync(new ServiceBusMessage("Hello, World!"));
-            Console.WriteLine($"Sent a single message to the topic: {topicName}");
-        }
-    }
-```
-
-该方法将执行以下步骤： 
-1. 使用命名空间的连接字符串创建 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象。 
-1. 使用 `ServiceBusClient` 对象为指定的“服务总线”主题创建 [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender) 对象。 这一步使用 [ServiceBusClient. CreateSender](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender) 方法。
-1. 然后，这个方法使用 [ServiceBusSender. SendMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.sendmessageasync) 方法将一条测试消息发送到“服务总线”主题。 
-
-### <a name="send-a-batch-of-messages-to-the-topic"></a>向主题发送一批消息
-1. 添加一个名为 `CreateMessages` 的方法，以创建指向 `Program` 类的消息队列（.NET 队列，并非服务总线队列）。 通常，可以从应用程序的不同部分获得这些消息。 在这里，我们将创建一个示例消息队列。 如果不熟悉 .NET 队列，请参阅 [Queue.Enqueue](/dotnet/api/system.collections.queue.enqueue)。
-
-    ```csharp
-        static Queue<ServiceBusMessage> CreateMessages()
-        {
-            // create a queue containing the messages and return it to the caller
-            Queue<ServiceBusMessage> messages = new Queue<ServiceBusMessage>();
-            messages.Enqueue(new ServiceBusMessage("First message"));
-            messages.Enqueue(new ServiceBusMessage("Second message"));
-            messages.Enqueue(new ServiceBusMessage("Third message"));
-            return messages;
-        }
-    ```
-1. 将名为 `SendMessageBatchAsync` 的方法添加到 `Program` 类，并添加以下代码。 此方法使用消息队列，并准备一个或多个要发送到服务总线主题的批处理。 
-
-    ```csharp
-        static async Task SendMessageBatchToTopicAsync()
-        {
-            // create a Service Bus client 
-            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
-            {
-
-                // create a sender for the topic 
-                ServiceBusSender sender = client.CreateSender(topicName);
-
-                // get the messages to be sent to the Service Bus topic
-                Queue<ServiceBusMessage> messages = CreateMessages();
-
-                // total number of messages to be sent to the Service Bus topic
-                int messageCount = messages.Count;
-
-                // while all messages are not sent to the Service Bus topic
-                while (messages.Count > 0)
-                {
-                    // start a new batch 
-                    using ServiceBusMessageBatch messageBatch = await sender.CreateMessageBatchAsync();
-
-                    // add the first message to the batch
-                    if (messageBatch.TryAddMessage(messages.Peek()))
-                    {
-                        // dequeue the message from the .NET queue once the message is added to the batch
-                        messages.Dequeue();
-                    }
-                    else
-                    {
-                        // if the first message can't fit, then it is too large for the batch
-                        throw new Exception($"Message {messageCount - messages.Count} is too large and cannot be sent.");
-                    }
-
-                    // add as many messages as possible to the current batch
-                    while (messages.Count > 0 && messageBatch.TryAddMessage(messages.Peek()))
-                    {
-                        // dequeue the message from the .NET queue as it has been added to the batch
-                        messages.Dequeue();
-                    }
-
-                    // now, send the batch
-                    await sender.SendMessagesAsync(messageBatch);
-
-                    // if there are any remaining messages in the .NET queue, the while loop repeats 
-                }
-
-                Console.WriteLine($"Sent a batch of {messageCount} messages to the topic: {topicName}");
-            }
-        }
-    ```    
-
-    下面是代码中的重要步骤：
+1. 将 Program.cs 中的代码替换为以下代码。 下面是代码中的重要步骤。  
     1. 使用命名空间的连接字符串创建 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象。 
-    1. 对 `ServiceBusClient` 对象调用 [CreateSender](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender) 方法，从而为指定的“服务总线”主题创建 [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender) 对象。 
-    1. 调用帮助器方法 `CreateMessages` 以获取要发送到“服务总线”主题的消息队列。 
-    1. 使用 [ServiceBusSender.CreateMessageBatchAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.createmessagebatchasync) 创建 [ServiceBusMessageBatch](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch)。
-    1. 使用 [ServiceBusMessageBatch.TryAddMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch.tryaddmessage) 将消息添加到该批次。 在消息被添加到批次后，将从 .NET 队列中删除这些消息。 
+    1. 对 `ServiceBusClient` 对象调用 [CreateSender](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender) 方法，从而为特定的“服务总线”主题创建 [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender) 对象。     
+    1. 使用 [ServiceBusSender.CreateMessageBatchAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.createmessagebatchasync) 创建 [ServiceBusMessageBatch](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch) 对象。
+    1. 使用 [ServiceBusMessageBatch.TryAddMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch.tryaddmessage) 将消息添加到该批次。 
     1. 使用 [ServiceBusSender.SendMessagesAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.sendmessagesasync) 方法将批量消息发送到“服务总线”主题。
-
-### <a name="update-the-main-method"></a>更新 Main 方法
-将 `Main()` 方法替换为以下 **async** `Main` 方法。 它同时调用发送方法，将单个消息和一批消息发送到主题。  
-
-```csharp
-    static async Task Main()
-    {
-        // send a single message to the topic
-        await SendMessageToTopicAsync();
-
-        // send a batch of messages to the topic
-        await SendMessageBatchToTopicAsync();
-    }
-```
-
-### <a name="test-the-app-to-send-messages-to-the-topic"></a>测试用于将消息发送到主题的应用
-1. 运行该应用程序。 应该会看到以下输出：
-
-    ```console
-    Sent a single message to the topic: mytopic
-    Sent a batch of 3 messages to the topic: mytopic
+    
+        有关更多信息，请参阅代码注释。
+        ```csharp
+        using System;
+        using System.Threading.Tasks;
+        using Azure.Messaging.ServiceBus;
+        
+        namespace TopicSender
+        {
+            class Program
+            {
+                // connection string to your Service Bus namespace
+                static string connectionString = "<NAMESPACE CONNECTION STRING>";
+        
+                // name of your Service Bus topic
+                static string topicName = "<TOPIC NAME>";
+        
+                // the client that owns the connection and can be used to create senders and receivers
+                static ServiceBusClient client;
+        
+                // the sender used to publish messages to the topic
+                static ServiceBusSender sender;
+        
+                // number of messages to be sent to the topic
+                private const int numOfMessages = 3;
+        
+                static async Task Main()
+                {
+                    // The Service Bus client types are safe to cache and use as a singleton for the lifetime
+                    // of the application, which is best practice when messages are being published or read
+                    // regularly.
+                    //
+                    // Create the clients that we'll use for sending and processing messages.
+                    client = new ServiceBusClient(connectionString);
+                    sender = client.CreateSender(topicName);
+        
+                    // create a batch 
+                    using ServiceBusMessageBatch messageBatch = await sender.CreateMessageBatchAsync();
+        
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        // try adding a message to the batch
+                        if (!messageBatch.TryAddMessage(new ServiceBusMessage($"Message {i}")))
+                        {
+                            // if it is too large for the batch
+                            throw new Exception($"The message {i} is too large to fit in the batch.");
+                        }
+                    }
+        
+                    try
+                    {
+                        // Use the producer client to send the batch of messages to the Service Bus topic
+                        await sender.SendMessagesAsync(messageBatch);
+                        Console.WriteLine($"A batch of {numOfMessages} messages has been published to the topic.");
+                    }
+                    finally
+                    {
+                        // Calling DisposeAsync on client types is required to ensure that network
+                        // resources and other unmanaged objects are properly cleaned up.
+                        await sender.DisposeAsync();
+                        await client.DisposeAsync();
+                    }
+        
+                    Console.WriteLine("Press any key to end the application");
+                    Console.ReadKey();
+                }
+            }
+        }    
+        ```
+1. 将 `<NAMESPACE CONNECTION STRING>` 替换为服务总线命名空间的连接字符串。 此外，将 `<TOPIC NAME>` 替换为你的服务总线主题的名称。 
+1. 生成项目并确保没有错误。 
+1. 运行程序并等待出现确认消息。
+    
+    ```bash
+    A batch of 3 messages has been published to the topic
     ```
 1. 在 Azure 门户中按照以下步骤操作：
     1. 导航到服务总线命名空间。 
     1. 在“概述”页底部居中位置的窗格中，切换到“主题”选项卡，然后选择“服务总线”主题 。 下面的示例中采用的是 `mytopic`。
     
         :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/select-topic.png" alt-text="选择主题":::
-    1. 在“服务总线主题”页的“消息”图表中的底部“指标”部分中，可以看到主题有四条传入的消息  。 如果未看到该值，请等待几分钟，然后刷新页面以查看更新后的图表。 
+    1. 在“服务总线主题”页的“消息”图表中的底部“指标”部分中，可以看到主题有三条传入的消息。 如果未看到该值，请等待几分钟，然后刷新页面以查看更新后的图表。 
 
         :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/sent-messages-essentials.png" alt-text="发送到主题的消息" lightbox="./media/service-bus-dotnet-how-to-use-topics-subscriptions/sent-messages-essentials.png":::
-    4. 在底部窗格中选择订阅。 下面的示例中采用的是 S1。 在“服务总线订阅”页面上，你会看到“活动消息计数”为 4  。 订阅已接收你发送到主题的四条消息，但接收方尚未选择它们。 
+    4. 在底部窗格中选择订阅。 下面的示例中采用的是 S1。 在“服务总线订阅”页面上，你会看到“活动消息计数”为 3。 订阅已接收你发送到主题的三条消息，但接收方尚未选择它们。 
     
         :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/subscription-page.png" alt-text="订阅中接收的消息" lightbox="./media/service-bus-dotnet-how-to-use-topics-subscriptions/subscription-page.png":::
     
-
 ## <a name="receive-messages-from-a-subscription"></a>从订阅接收消息
+在本节中，你将会创建一个 .NET Core 控制台应用程序，用于接收来自服务总线主题订阅的消息。 
 
-1. 将以下方法添加到处理消息和任何错误的 `Program` 类中。 
+### <a name="create-a-project-for-the-receiver"></a>为接收器创建项目
 
-    ```csharp
-        static async Task MessageHandler(ProcessMessageEventArgs args)
-        {
-            string body = args.Message.Body.ToString();
-            Console.WriteLine($"Received: {body} from subscription: {subscriptionName}");
+1. 在“解决方案资源管理器”窗口中，右键单击“ServiceBusTopicQuickStart”解决方案，指向“添加”，然后选择“新建项目”。 
+1. 选择“控制台应用程序”，然后选择“下一步”。 
+1. 输入 SubscriptionReceiver 作为“项目名称”，然后选择“下一步”。 
+1. 在“其他信息”页上，选择“创建”。 
+1. 在“解决方案资源管理器”窗口中，右键单击“SubscriptionReceiver”，然后选择“设为启动项目”。 
 
-            // complete the message. messages is deleted from the queue. 
-            await args.CompleteMessageAsync(args.Message);
-        }
+### <a name="add-the-service-bus-nuget-package"></a>添加服务总线 NuGet 包
 
-        static Task ErrorHandler(ProcessErrorEventArgs args)
-        {
-            Console.WriteLine(args.Exception.ToString());
-            return Task.CompletedTask;
-        }
-    ```
-1. 将以下方法 `ReceiveMessagesFromSubscriptionAsync` 添加到 `Program` 类。
+1. 在菜单中选择“工具” > “NuGet 包管理器” > “包管理器控制台”。 
+1. 在“包管理器控制台”窗口中，确认“SubscriptionReceiver”已选定为“默认项目”。 如果不是，请使用下拉列表选择“SubscriptionReceiver”。
+1. 运行以下命令安装 Azure.Messaging.ServiceBus NuGet 包：
 
-    ```csharp
-        static async Task ReceiveMessagesFromSubscriptionAsync()
-        {
-            await using (ServiceBusClient client = new ServiceBusClient(connectionString))
-            {
-                // create a processor that we can use to process the messages
-                ServiceBusProcessor processor = client.CreateProcessor(topicName, subscriptionName, new ServiceBusProcessorOptions());
-
-                // add handler to process messages
-                processor.ProcessMessageAsync += MessageHandler;
-
-                // add handler to process any errors
-                processor.ProcessErrorAsync += ErrorHandler;
-
-                // start processing 
-                await processor.StartProcessingAsync();
-
-                Console.WriteLine("Wait for a minute and then press any key to end the processing");
-                Console.ReadKey();
-
-                // stop processing 
-                Console.WriteLine("\nStopping the receiver...");
-                await processor.StopProcessingAsync();
-                Console.WriteLine("Stopped receiving messages");
-            }
-        }
+    ```cmd
+    Install-Package Azure.Messaging.ServiceBus
     ```
 
+### <a name="add-code-to-receive-messages-from-the-subscription"></a>添加代码以从订阅接收消息
+1. 将 Program.cs 中的代码替换为以下代码。 下面是代码中的重要步骤。
     下面是代码中的重要步骤：
     1. 使用命名空间的连接字符串创建 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象。 
-    1. 对 `ServiceBusClient` 对象调用 [CreateProcessor](/dotnet/api/azure.messaging.servicebus.servicebusclient.createprocessor) 方法，从而为指定的“服务总线”主题和订阅组合创建 [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) 对象。 
+    1. 对 `ServiceBusClient` 对象调用 [CreateProcessor](/dotnet/api/azure.messaging.servicebus.servicebusclient.createprocessor) 方法，从而为指定的“服务总线”队列创建 [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) 对象。 
     1. 为 `ServiceBusProcessor` 对象的 [ProcessMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync) 和 [ProcessErrorAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processerrorasync) 事件指定处理程序。 
     1. 通过对 `ServiceBusProcessor` 对象调用 [StartProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.startprocessingasync) 以开始处理消息。 
     1. 当用户按下某个键结束处理时，将对 `ServiceBusProcessor` 对象调用 [StopProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.stopprocessingasync)。 
-1. 将对 `ReceiveMessagesFromSubscriptionAsync` 方法的调用添加到 `Main` 方法。 如果只想对接收消息进行测试，请注释禁止 `SendMessagesToTopicAsync` 方法。 如果不这样做，则会看到发送到主题的其他四条消息。 
 
-    ```csharp
-        static async Task Main()
+        有关更多信息，请参阅代码注释。
+
+        ```csharp
+        using System;
+        using System.Threading.Tasks;
+        using Azure.Messaging.ServiceBus;
+        
+        namespace SubscriptionReceiver
         {
-            // send a message to the topic
-            await SendMessageToTopicAsync();
-
-            // send a batch of messages to the topic
-            await SendMessageBatchToTopicAsync();
-
-            // receive messages from the subscription
-            await ReceiveMessagesFromSubscriptionAsync();
+            class Program
+            {
+                // connection string to your Service Bus namespace
+                static string connectionString = "<NAMESPACE CONNECTION STRING>";
+        
+                // name of the Service Bus topic
+                static string topicName = "<SERVICE BUS TOPIC NAME>";
+            
+                // name of the subscription to the topic
+                static string subscriptionName = "<SERVICE BUS - TOPIC SUBSCRIPTION NAME>";
+        
+                // the client that owns the connection and can be used to create senders and receivers
+                static ServiceBusClient client;
+        
+                // the processor that reads and processes messages from the subscription
+                static ServiceBusProcessor processor;
+        
+                // handle received messages
+                static async Task MessageHandler(ProcessMessageEventArgs args)
+                {
+                    string body = args.Message.Body.ToString();
+                    Console.WriteLine($"Received: {body} from subscription: {subscriptionName}");
+        
+                    // complete the message. messages is deleted from the subscription. 
+                    await args.CompleteMessageAsync(args.Message);
+                }
+        
+                // handle any errors when receiving messages
+                static Task ErrorHandler(ProcessErrorEventArgs args)
+                {
+                    Console.WriteLine(args.Exception.ToString());
+                    return Task.CompletedTask;
+                }
+        
+                static async Task Main()
+                {
+                    // The Service Bus client types are safe to cache and use as a singleton for the lifetime
+                    // of the application, which is best practice when messages are being published or read
+                    // regularly.
+                    //
+                    // Create the clients that we'll use for sending and processing messages.
+                    client = new ServiceBusClient(connectionString);
+        
+                    // create a processor that we can use to process the messages
+                    processor = client.CreateProcessor(topicName, subscriptionName, new ServiceBusProcessorOptions());
+        
+                    try
+                    {
+                        // add handler to process messages
+                        processor.ProcessMessageAsync += MessageHandler;
+        
+                        // add handler to process any errors
+                        processor.ProcessErrorAsync += ErrorHandler;
+        
+                        // start processing 
+                        await processor.StartProcessingAsync();
+        
+                        Console.WriteLine("Wait for a minute and then press any key to end the processing");
+                        Console.ReadKey();
+        
+                        // stop processing 
+                        Console.WriteLine("\nStopping the receiver...");
+                        await processor.StopProcessingAsync();
+                        Console.WriteLine("Stopped receiving messages");
+                    }
+                    finally
+                    {
+                        // Calling DisposeAsync on client types is required to ensure that network
+                        // resources and other unmanaged objects are properly cleaned up.
+                        await processor.DisposeAsync();
+                        await client.DisposeAsync();
+                    }
+                }
+            }
         }
-    ```
-## <a name="run-the-app"></a>运行应用
-运行该应用程序。 等待一分钟，然后按任意键停止接收消息。 你应该会看到以下输出（密钥的空格）。 
+        ```
+1. 将占位符替换为正确的值：
+    - 将 `<NAMESPACE CONNECTION STRING>` 替换为服务总线命名空间的连接字符串
+    - 将 `<TOPIC NAME>` 替换为你的服务总线主题的名称
+    - 将 `<SERVICE BUS - TOPIC SUBSCRIPTION NAME>` 替换为主题的订阅名称。 
+1. 生成项目并确保没有错误。
+1. 运行接收器应用程序。 你应该会看到接收的消息。 按任意键来停止使用接收器和应用程序。 
 
-```console
-Sent a single message to the topic: mytopic
-Sent a batch of 3 messages to the topic: mytopic
-Wait for a minute and then press any key to end the processing
-Received: Hello, World! from subscription: mysub
-Received: First message from subscription: mysub
-Received: Second message from subscription: mysub
-Received: Third message from subscription: mysub
-Received: Hello, World! from subscription: mysub
-Received: First message from subscription: mysub
-Received: Second message from subscription: mysub
-Received: Third message from subscription: mysub
-
-Stopping the receiver...
-Stopped receiving messages
-```
-
-再次检查门户。 
-
-- 在“服务总线主题”页面上的“消息”图表中，你会看到八条传入消息和八条传出消息 。 如果未看到这些值，请等待几分钟，然后刷新页面以查看更新后的图表。 
-
-    :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/messages-size-final.png" alt-text="发送和接收的消息" lightbox="./media/service-bus-dotnet-how-to-use-topics-subscriptions/messages-size-final.png":::
-- 在“服务总线订阅”页面上，你会看到“活动消息计数”为零 。 这是因为接收方已接收并已完成来自此订阅的消息。 
-
-    :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/subscription-page-final.png" alt-text="末尾订阅中的活动消息计数" lightbox="./media/service-bus-dotnet-how-to-use-topics-subscriptions/subscription-page-final.png":::
+    ```console
+    Wait for a minute and then press any key to end the processing
+    Received: Message 1 from subscription: S1
+    Received: Message 2 from subscription: S1
+    Received: Message 3 from subscription: S1
     
+    Stopping the receiver...
+    Stopped receiving messages
+    ```
+1. 再次检查门户。 
+    - 在“服务总线主题”页上的“消息”图表中，你会看到三条传入消息和三条传出消息。 如果未看到这些值，请等待几分钟，然后刷新页面以查看更新后的图表。 
+    
+        :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/messages-size-final.png" alt-text="发送和接收的消息" lightbox="./media/service-bus-dotnet-how-to-use-topics-subscriptions/messages-size-final.png":::
+    - 在“服务总线订阅”页面上，你会看到“活动消息计数”为零 。 这是因为接收方已接收并已完成来自此订阅的消息。 
+    
+        :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/subscription-page-final.png" alt-text="末尾订阅中的活动消息计数" lightbox="./media/service-bus-dotnet-how-to-use-topics-subscriptions/subscription-page-final.png":::
+        
 
 
 ## <a name="next-steps"></a>后续步骤

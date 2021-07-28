@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.openlocfilehash: fee6770108cbcc2334b2d8fb3ccc3b1e923772d9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101673247"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上实现 Oracle Golden Gate 
@@ -410,7 +410,7 @@ SQL> EXIT;
    > 该密钥必须包含字符串 `ssh-rsa`。 此外，密钥的内容必须是单行文本。
    >  
 
-6. 启动 PuTTY。 在“类别”窗格中，选择“连接” > “SSH” > “身份验证”。在“用于身份验证的私钥文件”框中，浏览到前面生成的密钥。
+6. 启动 PuTTY。 在“类别”窗格中，选择“连接” > “SSH” > “身份验证”。在“用于身份验证的私钥文件”框中，浏览到前面生成的密钥    。
 
    ![“设置私钥”页屏幕截图](./media/oracle-golden-gate/setprivatekey.png)
 
@@ -726,7 +726,7 @@ SQL> EXIT;
 
 ### <a name="set-up-the-replication-myvm1-and-myvm2"></a>设置复制（myVM1 和 myVM2）
 
-#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1.在 myVM2（复制）上设置复制
+#### <a name="1-set-up-the-replication-on-myvm2-replicate"></a>1. 在 myVM2（复制）上设置复制
 
   ```bash
   $ cd /u01/app/oracle/product/12.1.0/oggcore_1
@@ -749,7 +749,7 @@ SQL> EXIT;
   GGSCI> EXIT
   ```
 
-#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2.在 myVM1（主）上设置复制
+#### <a name="2-set-up-the-replication-on-myvm1-primary"></a>2. 在 myVM1（主）上设置复制
 
 启动初始加载，并检查错误：
 
@@ -760,7 +760,7 @@ GGSCI> START EXTRACT INITEXT
 GGSCI> VIEW REPORT INITEXT
 ```
 
-#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3.在 myVM2（复制）上设置复制
+#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3. 在 myVM2（复制）上设置复制
 
 使用之前获取的编号更改 SCN 编号：
 

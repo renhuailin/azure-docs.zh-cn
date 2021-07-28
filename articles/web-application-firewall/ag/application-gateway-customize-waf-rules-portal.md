@@ -4,15 +4,15 @@ description: 本文将介绍如何使用 Azure 门户自定义应用程序网关
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 04/21/2021
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: c4635333614ee1c0fd0322c29a659380fb4315c9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0ab122d178e5390a53e5a3a39f1b7763b298dc6d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "74048380"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878319"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-portal"></a>使用 Azure 门户自定义 Web 应用程序防火墙规则
 
@@ -21,7 +21,7 @@ Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序
 >[!NOTE]
 > 如果应用程序网关未使用 WAF 层，会在右侧窗格中显示“将应用程序网关升级到 WAF 层”选项。 
 
-![启用 WAF][fig1]
+:::image type="content" source="../media/application-gateway-customize-waf-rules-portal/1.png" alt-text="启用 WAF"::: 
 
 ## <a name="view-rule-groups-and-rules"></a>查看规则组和规则
 
@@ -37,16 +37,13 @@ Azure 应用程序网关 Web 应用程序防火墙 (WAF) 可为 Web 应用程序
 > [!IMPORTANT]
 > 禁用任何规则组或规则时要格外小心。 这可能会加大你的安全风险。
 
-禁用规则时可以禁用整个规则组，也可以禁用一个或多个规则组下的特定规则。 
-
 **禁用规则组或特定规则**
 
    1. 搜索想要禁用的规则或规则组。
    2. 选中与要禁用的规则对应的复选框。 
    3. 为所选规则选择页面顶部的操作（启用/禁用）。
-   2. 选择“保存”。 
-
-![保存更改][3]
+   2. 选择“保存”。
+    :::image type="content" source="../media/application-gateway-customize-waf-rules-portal/figure3.png" alt-text="保存禁用的规则"::: 
 
 ## <a name="mandatory-rules"></a>强制性规则
 
@@ -66,6 +63,3 @@ CRS 3.x 特定：
 ## <a name="next-steps"></a>后续步骤
 
 配置你禁用的规则后，可以了解如何查看 WAF 日志。 有关详细信息，请参阅[应用程序网关诊断](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)。
-
-[fig1]: ../media/application-gateway-customize-waf-rules-portal/1.png
-[3]: ../media/application-gateway-customize-waf-rules-portal/figure3.png

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: kegorman
-ms.openlocfilehash: 971f7c919595f915451faf9266ee3bb18b35087e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 666990d59fe92935150c2ae78712830a186723a8
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101677171"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108205316"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure 上的 Oracle 应用程序和解决方案概述
 
@@ -28,9 +28,9 @@ ms.locfileid: "101677171"
 
 使用 Azure 市场中提供的 Oracle Linux 映像上的 Oracle 数据库在 Azure 基础结构上运行 Oracle 数据库：
 
-* Oracle Database 12.1、12.2 和 18.3 Enterprise Edition 
+* Oracle Database 12.2 和 18.3 Enterprise Edition 
 
-* Oracle Database 12.1、12.2 和 18.3 Standard Edition
+* Oracle Database 12.2 和 18.3 Standard Edition
 
 * Oracle Database 19.3
 

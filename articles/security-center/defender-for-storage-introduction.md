@@ -7,12 +7,12 @@ ms.date: 02/04/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 42aa07ccf8d886dc7eb7109bc405c730331b2c3b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3d14a4a569d59b8bc9cac1334da1486960288412
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095623"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113003523"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>用于存储的 Azure Defender 简介
 
@@ -27,7 +27,7 @@ ms.locfileid: "102095623"
 |发布状态：|正式发布版 (GA)|
 |定价：|用于存储的 Azure Defender 按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中显示的定价计费|
 |受保护的存储类型：|[Blob 存储](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure 文件](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) China Gov，其他 Gov|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) Azure 中国|
 |||
 
 
@@ -39,7 +39,7 @@ ms.locfileid: "102095623"
 - **富检测套件** - 适用于存储的 Defender 中的检测功能由 Microsoft 威胁情报提供支持，可检测最常见的存储威胁风险，例如匿名访问、泄露凭据、社会工程、权限滥用和恶意内容。
 - **大规模响应** - 安全中心的自动化工具使你可以更轻松地阻止和响应已识别的威胁。 有关详细信息，请参阅[自动响应安全中心触发器](workflow-automation.md)。
 
-:::image type="content" source="media/defender-for-storage-introduction/defender-for-storage-high-level-overview.png" alt-text="适用于存储的 Azure Defender 功能的概要性介绍":::
+:::image type="content" source="media/defender-for-storage-introduction/defender-for-storage-high-level-overview.png" alt-text="适用于存储的 Azure Defender 功能的概要性介绍。":::
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-storage-provide"></a>用于存储的 Azure Defender 提供哪种类型的警报？
@@ -74,7 +74,7 @@ ms.locfileid: "102095623"
 1. 打开存储帐户，并启用 Azure Defender for Storage。
 1. 从边栏中选择“容器”，打开现有容器或创建一个新容器。
 
-    :::image type="content" source="media/defender-for-storage-introduction/opening-storage-container.png" alt-text="从 Azure 存储帐户打开 blob 容器" lightbox="media/defender-for-storage-introduction/opening-storage-container.png":::
+    :::image type="content" source="media/defender-for-storage-introduction/opening-storage-container.png" alt-text="从 Azure 存储帐户打开 blob 容器。" lightbox="media/defender-for-storage-introduction/opening-storage-container.png":::
 
 1. 将文件上传到该容器。
 
@@ -83,7 +83,7 @@ ms.locfileid: "102095623"
 
 1. 在上传的文件上使用上下文菜单以选择“生成 SAS”。
 
-    :::image type="content" source="media/defender-for-storage-introduction/generate-sas.png" alt-text="lob 容器中的文件的“生成 SAS”选项":::
+    :::image type="content" source="media/defender-for-storage-introduction/generate-sas.png" alt-text="blob 容器中的文件的“生成 SAS”选项。":::
 
 1. 保留默认选项，然后选择“生成 SAS 令牌和 URL”。
 
@@ -100,7 +100,7 @@ ms.locfileid: "102095623"
 
     在两个小时内，你将从安全中心获得以下安全警报：
 
-    :::image type="content" source="media/defender-for-storage-introduction/tor-access-alert-storage.png" alt-text="有关从 Tor 出口节点访问的安全警报":::
+    :::image type="content" source="media/defender-for-storage-introduction/tor-access-alert-storage.png" alt-text="有关从 Tor 出口节点访问的安全警报。":::
 
 ## <a name="next-steps"></a>后续步骤
 

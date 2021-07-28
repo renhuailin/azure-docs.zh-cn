@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 554fa394179e7cfc5b86a2b50eb754547d137a44
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: ad91260eac0f638d339baf64071cad6475ac19a7
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104870376"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929806"
 ---
-# <a name="disaster-recovery-using-azure-application-consistent-snapshot-tool-preview"></a>使用 Azure 应用程序一致性快照工具（预览版）进行灾难恢复
+# <a name="disaster-recovery-using-azure-application-consistent-snapshot-tool"></a>使用 Azure 应用程序一致性快照工具进行灾难恢复
 
 本文介绍在使用可用于 Azure NetApp 文件的 Azure 应用程序一致性快照工具时如何执行灾难恢复。
 

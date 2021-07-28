@@ -6,13 +6,13 @@ ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/17/2020
-ms.openlocfilehash: 4b7f71b5405708cc1988fafa5ca9c4628fe0d80b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 05/08/2021
+ms.openlocfilehash: 137b77c09cc1ae4f18555568287324a373ca8786
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98882393"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109655403"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>注册和扫描 Azure Data Lake Storage Gen2
 
@@ -92,7 +92,7 @@ Azure Data Lake Storage Gen2 数据源支持以下功能：
 
 ##### <a name="granting-the-service-principal-access-to-your-adls-gen2-account"></a>向服务主体授予对 ADLS gen2 帐户的访问权限
 
-1. 导航到自己的存储帐户。
+1. 导航到存储帐户。
 1. 在左侧导航栏菜单中，选择“访问控制 (IAM)”。 
 1. 选择“+ 添加”。
 1. 将“角色”设置为“存储 Blob 数据读取者”，然后在“选择”输入框下输入服务主体名称或对象 ID。 然后，选择“保存”，以将此角色分配给服务主体。
@@ -121,10 +121,10 @@ Azure Data Lake Storage Gen2 数据源支持以下功能：
 在“注册源(Azure Data Lake Storage Gen2)”屏幕上，执行以下操作：
 
 1. 输入数据源将在目录中列出的名称。
-2. 选择你的订阅来筛选存储帐户
-3. 选择存储帐户
-4. 选择一个集合或创建新集合（可选）
-5. 选择“完成”以注册数据源。
+2. 选择你的订阅以筛选存储帐户。
+3. 选择一个存储帐户。
+4. 选择一个集合或创建新集合（可选）。
+5. 选择“注册”以注册数据源。
 
 :::image type="content" source="media/register-scan-adls-gen2/register-sources.png" alt-text="注册源选项" border="true":::
 

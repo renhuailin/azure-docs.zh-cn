@@ -7,10 +7,10 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96023544"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>在故障转移期间保留 IP 地址
@@ -37,7 +37,7 @@ ms.locfileid: "96023544"
 下方是故障转移之前的体系结构。
 
 - 公司 A 在源和目标 Azure 区域中具有相同的网络和子网。
-- 为了缩短恢复时间目标 (RTO)，公司对 SQL Server Always On、域控制器等使用副本节点。这些副本节点位于目标区域中的另一个 VNet 中，因此可在源区域和目标区域之间建立 VPN 站点到站点连接。 如果源和目标中使用相同的 IP 地址，则无法建立连接。  
+- 为了降低恢复时间目标 (RTO)，公司将副本节点用于 SQL Server Always On、域控制器等。这些副本节点在目标区域中的另一个 VNet 中，因此它们可以在源区域和目标区域之间建立 VPN 站点到站点连接。 如果源和目标中使用相同的 IP 地址，则无法建立连接。  
 - 故障转移前，网络体系结构如下所示：
     - 主要区域是“Azure 东亚”
         - 东亚包含的一个 VNet（源 VNet）的地址空间为 10.1.0.0/16。

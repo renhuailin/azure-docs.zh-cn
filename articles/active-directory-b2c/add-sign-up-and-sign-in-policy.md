@@ -8,16 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/16/2020
+ms.date: 04/22/2021
 ms.author: mimart
 ms.subservice: B2C
+ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 29dd67e9e6e15aaafec0cc47d89da32cbf369938
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 25371e04e4e229786ca96fbc0f72b4bea0dccd96
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97618699"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896399"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中创建注册和登录流
 
@@ -61,11 +62,12 @@ ms.locfileid: "97618699"
 
 1. 输入该用户流的 **名称**。 例如 *signupsignin1*。
 1. 对于“标识提供者”，选择“电子邮件注册”。
-1. 对于“用户属性和声明”，请选择在注册期间要从用户收集并发送的声明和属性。 例如，选择“显示更多”，然后选择“国家/地区”、“显示名称”和“邮政编码”所对应的属性和声明。 单击 **“确定”** 。
+1. 对于“用户属性和声明”，请选择在注册期间要从用户收集并发送的声明和属性。 例如，选择“显示更多”，然后选择“国家/地区”、“显示名称”和“邮政编码”所对应的属性和声明。 单击“确定”。
 
     ![属性和声明选择页，有三个声明处于选中状态](./media/add-sign-up-and-sign-in-policy/signup-signin-attributes.png)
 
 1. 单击“创建”以添加用户流。 名称中会自动附加前缀 B2C_1。
+2. 按照注册或登录策略中的步骤[处理“忘记密码?”流](add-password-reset-policy.md?pivots=b2c-user-flow.md#self-service-password-reset-recommended) 。
 
 ### <a name="test-the-user-flow"></a>测试用户流
 
@@ -73,7 +75,7 @@ ms.locfileid: "97618699"
 1. 对于“应用程序”，请选择前面已注册的名为 *webapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 单击“运行用户流”，然后选择“立即注册”。
 
-    ![门户中的“运行用户流”页面，突出显示了“运行用户流”按钮](./media/add-sign-up-and-sign-in-policy/signup-signin-run-now.PNG)
+    ![门户中的“运行用户流”页面，突出显示了“运行用户流”按钮](./media/add-sign-up-and-sign-in-policy/signup-signin-run-now.png)
 
 1. 输入有效的电子邮件地址，单击“发送验证码”，输入收到的验证码，然后选择“验证代码”。
 1. 输入新密码并确认。
@@ -89,11 +91,11 @@ ms.locfileid: "97618699"
 
 ## <a name="create-a-sign-up-and-sign-in-policy"></a>创建注册或登录策略
 
-自定义策略是上传到 Azure AD B2C 租户的一组 XML 文件，用于定义用户旅程。 我们提供了初学者包，其中有多个预构建策略，包括注册和登录、密码重置以及配置文件编辑策略。 有关详细信息，请参阅 [Azure AD B2C 中的自定义策略入门](custom-policy-get-started.md)。
+自定义策略是上传到 Azure AD B2C 租户的一组 XML 文件，用于定义用户旅程。 我们提供了初学者包，其中有多个预构建策略，包括注册和登录、密码重置以及配置文件编辑策略。 有关详细信息，请参阅 [Azure AD B2C 中的自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)。
 
 ::: zone-end
 
 ## <a name="next-steps"></a>后续步骤
 
 * 添加[使用社交标识提供者登录](add-identity-provider.md)。
-* 创建[密码重置流](add-password-reset-policy.md)。
+* 设置[密码重置流](add-password-reset-policy.md)。

@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 742b9fc79489feba8192b6e62a6431bb37f55ad4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d83b617f08c143ee09251667c4f9bee89577a23
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98613168"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758854"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent"></a>安装 Azure AD Connect 预配代理
 本文档将指导你完成 Azure Active Directory (Azure AD) Connect 预配代理的安装过程，以及如何在 Azure 门户中对其进行初始配置。
@@ -30,6 +30,8 @@ ms.locfileid: "98613168"
 - [安装代理](#install-the-agent)
 - [验证代理安装](#verify-agent-installation)
 
+>[!NOTE]
+>本文档介绍了如何使用向导安装预配代理。  有关使用命令行界面 (CLI) 安装 Azure AD Connect 预配代理的信息，请参阅[使用命令行界面 (CLI) 和 PowerShell 安装 Azure AD Connect 预配代理](how-to-install-pshell.md)。
 
 ## <a name="group-managed-service-accounts"></a>Group Managed Service Accounts
 组托管服务帐户是一种托管的域帐户，它提供自动密码管理，简化的服务主体名称 (SPN) 管理、将管理委派给其他管理员以及在多个服务器上扩展此功能的能力。  Azure AD Connect 云同步支持并建议使用组托管服务帐户运行代理。  有关 gMSA 的详细信息，请参阅[组托管服务帐户](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
@@ -37,6 +39,8 @@ ms.locfileid: "98613168"
 
 ### <a name="upgrading-an-existing-agent-to-use-the-gmsa-account"></a>升级现有代理以使用 gMSA 帐户
 若要升级现有代理以使用在安装过程中创建的 gMSA 帐户，只需通过运行 AADConnectProvisioningAgent.msi 将代理服务更新为最新版本。  这会将服务升级到最新版本。  现在，请再次运行安装向导，并在出现提示时提供用于创建帐户的凭据。
+
+
 
 
 

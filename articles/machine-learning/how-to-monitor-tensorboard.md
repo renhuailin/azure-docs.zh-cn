@@ -9,12 +9,12 @@ author: minxia
 ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: how-to
-ms.openlocfilehash: 4d440742e9cfe9aadb63ed31c113879c4478dc82
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: a8e1c85bf2284eb2dd5a2bc87c2a60b89478e928
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888757"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760600"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>使用 TensorBoard 和 Azure 机器学习可视化试验运行与指标
 
@@ -36,7 +36,7 @@ ms.locfileid: "107888757"
 * 若要启动 TensorBoard 并查看试验运行历史记录，需要事先为试验启用日志记录，以跟踪其指标和性能。  
 * 本文档中的代码可在以下任一环境中运行： 
     * Azure 机器学习计算实例 - 无需下载或安装
-        * 在开始本教程之前完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)创建预先加载了 SDK 和示例存储库的专用笔记本服务器。
+        * 完成[快速入门：开始使用 Azure 机器学习](quickstart-create-resources.md)，以创建一个预加载了 SDK 和示例存储库的专用笔记本服务器。
         * 在笔记本服务器上的 samples 文件夹中，导航到以下目录找到两个已完成的和已扩展的笔记本：
             * how-to-use-azureml > track-and-monitor-experiments > tensorboard > export-run-history-to-tensorboard > export-run-history-to-tensorboard.ipynb
             * how-to-use-azureml > track-and-monitor-experiments > tensorboard > tensorboard > tensorboard.ipynb

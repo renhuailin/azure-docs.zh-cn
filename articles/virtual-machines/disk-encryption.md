@@ -2,26 +2,26 @@
 title: Azure 托管磁盘的服务器端加密
 description: Azure 存储在将数据保存到存储群集之前会对其进行静态加密，以此保护数据。 可以使用客户管理的密钥通过自己的密钥来管理加密，也可以依赖 Microsoft 托管的密钥来加密你的托管磁盘。
 author: roygara
-ms.date: 03/11/2021
+ms.date: 04/15/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 786ecef5d62c7dd18e3992fa0b233b27a80d762b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 09ec15eb45029c42fd5bc02288a0c45e167e7092
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721845"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146286"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure 磁盘存储的服务器端加密
 
-大多数 Azure 托管磁盘都是使用 Azure 存储加密进行加密，后者使用服务器端加密 (SSE) 来保护数据，并帮助满足组织对安全性及合规性的承诺。 将 Azure 托管磁盘（OS 和数据磁盘）上存储的数据保存到云时，Azure 存储加密默认会自动对这些数据进行静态加密。 但是，启用了主机加密的磁盘不会通过 Azure 存储进行加密。 对于启用了主机加密的磁盘，将由托管 VM 的服务器为数据提供加密，随后这些加密后的数据将流入 Azure 存储。
+大多数 Azure 托管磁盘使用 Azure 存储加密进行加密，后者使用服务器端加密 (SSE) 来保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。 将存储在 Azure 托管磁盘（OS 和数据磁盘）上的数据保存到云时，Azure 存储加密在默认情况下会自动对这些数据进行静态加密。 但是，启用了主机加密的磁盘不会通过 Azure 存储进行加密。 对于启用了主机加密的磁盘，托管 VM 的服务器会为数据提供加密，该加密数据会流入 Azure 存储中。
 
 Azure 托管磁盘中的数据使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)（可用的最强大分组加密之一）以透明方式加密，且符合 FIPS 140-2 规范。 有关加密模块基础 Azure 托管磁盘的详细信息，请参阅[加密 API：下一代](/windows/desktop/seccng/cng-portal)
 
-Azure 存储加密不会影响托管磁盘的性能，并且不会产生额外的费用。 有关 Azure 存储加密的详细信息，请参阅 [Azure 存储加密](/azure/storage/common/storage-service-encryption)。
+Azure 存储加密不会影响托管磁盘的性能，并且不会产生额外的费用。 有关 Azure 存储加密的详细信息，请参阅 [Azure 存储加密](../storage/common/storage-service-encryption.md)。
 
 > [!NOTE]
 > 临时磁盘不是托管磁盘，不会由 SSE 加密，除非在主机上启用了加密。
@@ -81,6 +81,8 @@ Azure 存储加密不会影响托管磁盘的性能，并且不会产生额外�
 #### <a name="supported-vm-sizes"></a>支持的 VM 大小
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
+
+你还可以以编程方式找到 VM 大小。 若要了解如何以编程方式进行检索，请参阅 [Azure PowerShell 模块](windows/disks-enable-host-based-encryption-powershell.md#finding-supported-vm-sizes)或 [Azure CLI](linux/disks-enable-host-based-encryption-cli.md#finding-supported-vm-sizes) 一文的“查找支持的 VM 大小”部分。
 
 若要使用主机加密启用端对端加密，请参阅我们的相关文章，了解如何使用 [Azure PowerShell 模块](windows/disks-enable-host-based-encryption-powershell.md)、[Azure CLI](linux/disks-enable-host-based-encryption-cli.md) 或 [Azure 门户](disks-enable-host-based-encryption-portal.md)来启用它。
 

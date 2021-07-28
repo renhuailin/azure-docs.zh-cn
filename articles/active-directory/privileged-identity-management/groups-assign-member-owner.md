@@ -15,12 +15,12 @@ ms.date: 08/18/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48c4473cfafce1215219251c47bce1d5730645fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84b2d75c03644e346dfad84ae01be31d8589f4ec
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91534414"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481924"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>在 Privileged Identity Management 中分配特权访问组（预览）的资格
 
@@ -56,7 +56,10 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以帮
 
 1. 在“分配类型”列表中，选择“合格”或“活动”。 特权访问组提供两种不同的分配类型：
 
-    - “合格”分配要求该角色的成员执行某个操作才能使用该角色。 操作可能包括执行多重身份验证 (MFA) 检查、提供业务理由或请求获得指定审批者的批准。
+    - “合格”分配要求该角色的成员执行某个操作才能使用该角色。 操作可能包括执行多重身份验证 (MFA) 检查、提供业务理由或请求获得指定审批者的批准。 
+
+      > [!Important]
+      > 对于那些用于提升为 Azure AD 角色的特权访问组，Microsoft 建议你要求对符合条件的成员的分配执行审批流程。 如果分配未经批准即可激活，你可能容易遭受其他有权重置符合条件的用户的密码的管理员带来的安全风险。
 
     - “活动”  分配不要求成员执行任何操作便可使用该角色。 分配为“活动”的成员始终具有分配给该角色的权限。
 

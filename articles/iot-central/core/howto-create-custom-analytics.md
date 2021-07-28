@@ -1,24 +1,24 @@
 ---
 title: 通过自定义分析扩展 Azure IoT Central | Microsoft Docs
 description: 解决方案开发人员将配置一个 IoT Central 应用程序来执行自定义分析和可视化。 此解决方案使用 Azure Databricks。
-author: TheRealJasonAndrew
-ms.author: v-anjaso
-ms.date: 02/18/2020
+author: philmea
+ms.author: philmea
+ms.date: 03/15/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 11e5ba3c0700cc9b29b8a11c0f9aa20cb5adb132
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 3e3ce75adde26d1392bff143ad38ff857e14f6d6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551311"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750106"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>使用 Azure Databricks 通过自定义分析扩展 Azure IoT Central
 
-本操作指南向解决方案开发人员介绍如何使用自定义分析和可视化来扩展 IoT Central 应用程序。 本示例使用 [Azure Databricks](/azure/azure-databricks/) 工作区来分析 IoT Central 遥测流并生成可视化效果（例如[框图](https://wikipedia.org/wiki/Box_plot)）。  
+本操作指南介绍如何使用自定义分析和可视化来扩展 IoT Central 应用程序。 本示例使用 [Azure Databricks](/azure/azure-databricks/) 工作区来分析 IoT Central 遥测流并生成可视化效果（例如[框图](https://wikipedia.org/wiki/Box_plot)）。  
 
 本操作指南将介绍如何扩展 IoT Central，使其功能超越[内置分析工具](./howto-create-custom-analytics.md)的功能。
 
@@ -82,43 +82,63 @@ ms.locfileid: "102551311"
 
 创建所需的资源后，**IoTCentralAnalysis** 资源组将如以下屏幕截图所示：
 
-![IoT Central 分析资源组](media/howto-create-custom-analytics/resource-group.png)
+:::image type="content" source="media/howto-create-custom-analytics/resource-group.png" alt-text="IoT Central 分析资源组的图像。":::
 
 ## <a name="create-an-event-hub"></a>创建事件中心
 
 可将 IoT Central 应用程序配置为向某个事件中心连续导出遥测数据。 在本部分，你将创建一个事件中心用于接收来自 IoT Central 应用程序的遥测数据。 该事件中心将遥测数据传送到流分析作业进行处理。
 
 1. 在 Azure 门户中，导航到你的事件中心命名空间并选择“+ 事件中心”。
-1. 将事件中心命名为 **centralexport**，然后选择“创建”。
+1. 将事件中心命名为 centralexport。
 1. 在命名空间中的事件中心列表内，选择“centralexport”。 然后选择“共享访问策略”。
-1. 选择“+ 添加”  。 创建包含 **Listen** 声明的名为 **Listen** 的策略。
+1. 选择“+ 添加”  。 使用“发送”和“侦听”声明创建一个名为 SendListen 的策略。
 1. 当该策略准备就绪时，请在列表中将其选中，然后复制“连接字符串 - 主密钥”值。
 1. 请记下此连接字符串，因为稍后在将 Databricks 笔记本配置为从事件中心读取数据时要用到它。
 
 事件中心命名空间如以下屏幕截图所示：
 
-![事件中心命名空间](media/howto-create-custom-analytics/event-hubs-namespace.png)
+:::image type="content" source="media/howto-create-custom-analytics/event-hubs-namespace.png" alt-text="事件中心命名空间的图像。":::
 
 ## <a name="configure-export-in-iot-central"></a>在 IoT Central 中配置导出
 
-在 [Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上，导航到从 Contoso 模板创建的 IoT Central 应用程序。 在本部分，你将配置应用程序，以将其模拟设备发来的遥测数据流式传输到事件中心。 若要配置导出：
+在本部分，你将配置应用程序，以将其模拟设备发来的遥测数据流式传输到事件中心。
 
-1. 导航到“数据导出”页，依次选择“+ 新建”、“Azure 事件中心”。
-1. 使用以下设置配置导出，然后选择“保存”：
+在 [Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上，导航到之前创建的 IoT Central 应用程序。 若要配置导出，请先创建一个目标：
+
+1. 导航到“数据导出”页，然后选择“目标”。
+1. 选择“+ 新建目标”。
+1. 使用下表中的值来创建目标：
+
+    | 设置 | 值 |
+    | ----- | ----- |
+    | 目标名称 | 遥测事件中心 |
+    | 目标类型 | Azure 事件中心 |
+    | 连接字符串 | 你之前记下的事件中心连接字符串 |
+
+    “事件中心”显示为“centralexport”。
+
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="显示数据导出目标的屏幕截图。":::
+
+1. 选择“保存”。
+
+创建导出定义的步骤：
+
+1. 导航到“数据导出”页，然后选择“+ 新建导出”。 
+
+1. 使用下表中值配置导出：
 
     | 设置 | 值 |
     | ------- | ----- |
-    | 显示名称 | 导出到事件中心 |
+    | 导出名称 | 事件中心导出 |
     | 已启用 | 开 |
-    | 事件中心命名空间 | 事件中心命名空间的名称 |
-    | 事件中心 | centralexport |
-    | 度量 | 开 |
-    | 设备 | 关 |
-    | 设备模板 | 关 |
+    | 要导出的数据的类型 | 遥测 |
+    | Destinations | 选择“+ 目标”，然后选择“遥测事件中心”  |
 
-![数据导出配置](media/howto-create-custom-analytics/cde-configuration.png)
+1. 选择“保存”。
 
-等到导出状态变为“正在运行”，然后继续。
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="显示数据导出定义的屏幕截图。":::
+
+等到“数据导出”页上的导出状态为“正常”，再进行后续操作。
 
 ## <a name="configure-databricks-workspace"></a>配置 Databricks 工作区
 
@@ -164,7 +184,7 @@ ms.locfileid: "102551311"
 
 1. 库的状态现在为“已安装”：
 
-    ![已安装库](media/howto-create-custom-analytics/cluster-libraries.png)
+:::image type="content" source="media/howto-create-custom-analytics/cluster-libraries.png" alt-text="已安装的库的屏幕截图。":::
 
 ### <a name="import-a-databricks-notebook"></a>导入 Databricks 笔记本
 
@@ -178,9 +198,9 @@ ms.locfileid: "102551311"
 
 1. 选择“工作区”查看导入的笔记本：
 
-    ![导入的笔记本](media/howto-create-custom-analytics/import-notebook.png)
+:::image type="content" source="media/howto-create-custom-analytics/import-notebook.png" alt-text="导入的笔记本的屏幕截图。":::
 
-1. 编辑第一个 Python 单元中的代码，以添加前面保存的事件中心连接字符串：
+5. 编辑第一个 Python 单元中的代码，以添加前面保存的事件中心连接字符串：
 
     ```python
     from pyspark.sql.functions import *
@@ -206,7 +226,7 @@ ms.locfileid: "102551311"
 
 在笔记本中，向下滚动到单元 14，查看按设备类型绘制的移动平均湿度图。 随着遥测流的传入，此绘图会不断更新：
 
-![平滑化遥测图](media/howto-create-custom-analytics/telemetry-plot.png)
+:::image type="content" source="media/howto-create-custom-analytics/telemetry-plot.png" alt-text="平滑化遥测绘图的屏幕截图。":::
 
 可以在笔记本中调整图表大小。
 
@@ -214,7 +234,7 @@ ms.locfileid: "102551311"
 
 在笔记本中，向下滚动到单元 20 以查看[框图](https://en.wikipedia.org/wiki/Box_plot)。 框图基于静态数据，因此，若要对其进行更新，必须重新运行单元：
 
-![框图](media/howto-create-custom-analytics/box-plots.png)
+:::image type="content" source="media/howto-create-custom-analytics/box-plots.png" alt-text="框图的屏幕截图。":::
 
 可以在笔记本中调整绘图大小。
 

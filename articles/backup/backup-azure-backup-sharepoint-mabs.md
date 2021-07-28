@@ -3,12 +3,12 @@ title: 使用 MABS 将 SharePoint 场备份到 Azure
 description: 使用 Azure 备份服务器备份和还原 SharePoint 数据。 本文介绍如何配置 SharePoint 场，以便在 Azure 中存储所需的数据。 可以从磁盘或 Azure 还原受保护的 SharePoint 数据。
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 837aabf739431eebaa6406770620329fe6345eb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd0c6ede50151114994152ed2375cf53f708c620
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89375391"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769356"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>使用 MABS 将 SharePoint 场备份到 Azure
 
@@ -80,7 +80,7 @@ ms.locfileid: "89375391"
 
 1. 在“选择组成员”中，展开包含 WFE 角色的服务器。 如果有多个 WFE 服务器，请选择在其上安装 ConfigureSharePoint.exe 的服务器。
 
-    展开 SharePoint 服务器时，MABS 会查询 VSS，以查看 MABS 可以保护的数据。  如果 SharePoint 数据库是远程数据库，则 MABS 将连接到该数据库。 如果未显示 SharePoint 数据源，请检查 VSS 编写器是否在 SharePoint 服务器和任何远程 SQL Server 上运行，并确保 MABS 代理同时安装在 SharePoint 服务器和远程 SQL Server 上。 此外，请确保不会像 SQL Server 数据库一样在其他位置保护 SharePoint 数据库。
+    当你展开运行 SharePoint 的计算机时，MABS 会查询 VSS 以了解 MABS 可以保护哪些数据。 如果 SharePoint 数据库是远程数据库，则 MABS 将连接到该数据库。 如果未显示 SharePoint 数据源，请检查 VSS 编写器是否正在运行 SharePoint 的计算机上和任何 SQL Server 远程实例上运行。 然后，确保 MABS 代理安装在运行 SharePoint 的计算机上和 SQL Server 远程实例上。 此外，请确保不会像 SQL Server 数据库一样在其他位置保护 SharePoint 数据库。
 
 1. 在“选择数据保护方法”中，指定要如何处理短期和长期备份。 短期备份始终是磁盘优先，可以选择使用 Azure 备份从磁盘备份到 Azure 云（短期或长期）。
 

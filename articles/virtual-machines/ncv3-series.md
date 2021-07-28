@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: be76b2b6398048925ce308b421fcd776a7b7acbb
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d9076962cdab1494b26f794b0f370b8a5677eb10
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306392"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108744490"
 ---
 # <a name="ncv3-series"></a>NCv3 系列
 
@@ -25,7 +25,7 @@ NCv3 系列 VM 采用 NVIDIA Tesla V100 GPU。 这些 GPU 可提供 NCv2 系列�
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：不支持<br>
-[临时 OS 磁盘](ephemeral-os-disks.md)：支持 <br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持（[预览版](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks)）<br>
 Nvidia NVLink 互连：不支持<br>
 
 > [!IMPORTANT]

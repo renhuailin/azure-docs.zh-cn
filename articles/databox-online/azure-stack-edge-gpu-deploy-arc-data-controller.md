@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 53058d27e94c9fdf18d726369f6a1b75a9f34db9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ebccfdad883242411b4f45b717553ebd25ee69a9
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567536"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633512"
 ---
 # <a name="deploy-azure-data-services-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上部署 Azure 数据服务
 
@@ -21,7 +21,7 @@ ms.locfileid: "105567536"
 
 本文将介绍在 Azure Stack Edge Pro GPU 设备上创建 Azure Arc 数据控制器并部署 Azure 数据服务的过程。 
 
-Azure Arc 数据控制器是可在客户管理的环境中启用 Azure 数据服务的本地控制平面。 在 Azure Stack Edge Pro 设备上运行的 Kubernetes 群集中创建 Azure Arc 数据控制器后，可以在该数据控制器上部署 SQL 托管实例（预览版）等 Azure 数据服务。
+Azure Arc 数据控制器是可在客户管理的环境中启用 Azure 数据服务的本地控制平面。 在 Azure Stack Edge Pro GPU 设备上运行的 Kubernetes 群集中创建 Azure Arc 数据控制器后，可以在该数据控制器上部署 SQL 托管实例之类的 Azure 数据服务。
 
 创建数据控制器并部署 SQL 托管实例的过程涉及到使用 PowerShell 和 `kubectl` - 一个本机工具，可让用户通过命令行访问设备上的 Kubernetes 群集。
 
@@ -30,9 +30,9 @@ Azure Arc 数据控制器是可在客户管理的环境中启用 Azure 数据服
 
 在开始之前，请确保：
 
-1. 可以访问 Azure Stack Edge Pro 设备，并已根据[激活 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md) 中所述激活了该设备。
+1. 你可以访问 Azure Stack Edge Pro GPU 设备，并已按照[激活 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md) 中所述激活了该设备。
 
-1. 已在该设备上启用计算角色。 此外，根据[在 Azure Stack Edge Pro 设备上配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)中的说明在设备上配置计算时，已在设备上创建了一个 Kubernetes 群集。
+1. 已在该设备上启用计算角色。 当你按照[在 Azure Stack Edge Pro GPU 设备上配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)中的说明在设备上配置了计算时，还在设备上创建了 Kubernetes 群集。
 
 1. 你有来自本地 Web UI 的“设备”页面的 Kubernetes API 终结点。 有关详细信息，请参阅[获取 Kubernetes API 终结点](azure-stack-edge-gpu-deploy-configure-compute.md#get-kubernetes-endpoints)中的说明。
 
@@ -171,7 +171,7 @@ Azure Arc 数据控制器是可在客户管理的环境中启用 Azure 数据服
     完成部署大约需要 5 分钟。
 
     > [!NOTE]
-    > 在当前版本中，在 Azure Stack Edge Pro 设备上的 Kubernetes 群集中创建的数据控制器只能以断开连接模式工作。
+    > 在当前版本中，在 Azure Stack Edge Pro GPU 设备上的 Kubernetes 群集中创建的数据控制器只能以断开连接模式工作。 断开连接模式适用于数据控制器，而不适用于设备。
 
 ### <a name="monitor-data-creation-status"></a>监视数据创建状态
 

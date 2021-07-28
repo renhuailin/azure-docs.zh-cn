@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/04/2021
-ms.openlocfilehash: 753f201fbde5d9e7100b6e257f8dc79e4462d7b6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/29/2021
+ms.openlocfilehash: e335176b5cd7c6c35477ac9318cf20ce4b64b82d
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99584917"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108291003"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>在映射数据流中生成表达式
 
@@ -71,7 +71,7 @@ ms.locfileid: "99584917"
 
 ### <a name="parameters"></a>参数
 
-参数是在运行时从管道传递到数据流的值。 若要引用参数，请单击“表达式元素”视图中的参数，或者在其名称前面用美元符号引用该参数。 例如，通过 `$parameter1` 可以引用名为 parameter1 的参数。 若要了解详细信息，请参阅[将映射数据流参数化](parameters-data-flow.md)。
+参数是在运行时从管道传递到数据流的值。 若要引用参数，请单击“表达式元素”视图中的参数，或者在其名称前面用美元符号引用该参数。 例如，通过 `$parameter1` 可以引用名为 parameter1 的参数。 若要了解详细信息，请参阅[将映射数据流参数化](parameters-data-flow.md)。 
 
 ### <a name="cached-lookup"></a>缓存查找
 
@@ -108,7 +108,7 @@ ms.locfileid: "99584917"
 * ```"{:playerName} is a {:playerRating} player"```
 
 > [!NOTE]
-> 使用 SQL 源查询中的字符串内插语法时，查询字符串必须在单行上，不包含“/n”。
+> 在 SQL 源查询中使用字符串内插语法时，查询字符串必须位于一行上，且不带“/n”。
 
 ## <a name="commenting-expressions"></a>注释表达式
 
@@ -169,6 +169,12 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 ### <a name="find-time-from-epoch-or-unix-time"></a>查找自纪元或 Unix 时间起的时间
 
 toLong( currentTimestamp() - toTimestamp('1970-01-01 00:00:00.000', 'yyyy-MM-dd HH:mm:ss.SSS') ) * 1000l
+
+### <a name="data-flow-time-evaluation"></a>数据流时间评估
+
+数据流处理到毫秒级别。 对于“2018-07-31T20:00:00.2170000”，你会在输出中看到“2018-07-31T20:00:00.217”。
+在 ADF 门户中，时间戳按“当前浏览器设置”显示（可能会消除 217），但当你以端到端方式运行数据流时，217（毫秒部分）也会被处理。 可以使用 toString(myDateTimeColumn) 作为表达式，在预览中查看全精度数据。 实际上会将 datetime 作为日期/时间处理，而不是作为字符串处理。
+ 
 
 ## <a name="next-steps"></a>后续步骤
 

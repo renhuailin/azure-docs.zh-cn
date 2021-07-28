@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1318aaf50d4f05b8a999e5661318dc83997a2f02
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6c302b10baad157cd70751d49fe6d50911c2ce75
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96920782"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074783"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure 静态数据加密
 
@@ -91,7 +91,7 @@ Microsoft 云服务用于下述所有三个云模型：IaaS、PaaS、SaaS。 下
 
 ### <a name="encryption-at-rest-for-paas-customers"></a>适合 PaaS 客户的静态加密
 
-平台即服务 (PaaS) 客户的数据通常驻留在存储服务（例如 Blob 存储）中，但也可以缓存或存储在应用程序执行环境（例如虚拟机）中。 若要查看适用的静态加密选项，请检查下表中是否存在所用的存储和应用程序平台。
+平台即服务 (PaaS) 客户的数据通常驻留在存储服务（例如 Blob 存储）中，但也可以缓存或存储在应用程序执行环境（例如虚拟机）中。 若要查看适用的静态加密选项，请检查[数据加密模型：支持服务标签](encryption-models.md#supporting-services)，确认是否存在所用的存储和应用程序平台。
 
 ### <a name="encryption-at-rest-for-iaas-customers"></a>适合 IaaS 客户的静态加密
 
@@ -99,7 +99,7 @@ Microsoft 云服务用于下述所有三个云模型：IaaS、PaaS、SaaS。 下
 
 #### <a name="encrypted-storage"></a>加密的存储
 
-与 PaaS 一样，IaaS 解决方案可以利用其他存储静态加密数据的 Azure 服务。 在此类情况下，可以启用每个所用 Azure 服务提供的静态加密支持。 下表枚举了主要的存储、服务和应用程序平台以及所支持的静态加密模型。
+与 PaaS 一样，IaaS 解决方案可以利用其他存储静态加密数据的 Azure 服务。 在此类情况下，可以启用每个所用 Azure 服务提供的静态加密支持。 [数据加密模型：支持服务标签](encryption-models.md#supporting-services)枚举了主要的存储、服务和应用程序平台以及所支持的静态加密模型。
 
 #### <a name="encrypted-compute"></a>加密的计算
 

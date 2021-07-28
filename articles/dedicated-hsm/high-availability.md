@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.author: mbaldwin
-ms.openlocfilehash: 85aa9d355b2440535ea13c8c15e95500bac22352
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: c46ccbda35936ed94079a21e3e9c72405875b961
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98567252"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608861"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure 专用 HSM 高可用性
 
@@ -25,7 +25,7 @@ Azure 专用 HSM 由 Microsoft 具有高可用性的数据中心提供支持。 
 
 ## <a name="high-availability-example"></a>高可用性示例
 
-“Thales Luna 7 HSM 管理指南”中提供了有关如何在软件级别配置 HSM 设备以实现高可用性的信息。 此文档在 [Thales HSM 页面](https://thalesdocs.com/gphsm/Content/luna/network/luna_network_releases.htm)提供。
+“Thales Luna 7 HSM 管理指南”中提供了有关如何在软件级别配置 HSM 设备以实现高可用性的信息。 此文档在 [Thales HSM 页面](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms)提供。
 
 下图展示了一个具有高可用性的体系结构。 它在区域中使用了多个设备并且在每个单独的区域中使用了多个配对的设备。 此体系结构使用了四 HSM 设备的最低配置和虚拟网络组件。
 
@@ -42,4 +42,4 @@ Azure 专用 HSM 由 Microsoft 具有高可用性的数据中心提供支持。 
 * [可支持性](supportability.md)
 * [Monitoring](monitoring.md)
 
-有关配置 HSM 设备以实现高可用性的具体详细信息，请参考 Thales 客户支持门户上的管理员指南并查看第 6 部分。
+有关配置 HSM 设备以实现高可用性的具体详细信息，请参考 [Thales 客户支持门户](https://supportportal.thalesgroup.com/csm)上的管理员指南并查看第 6 部分。

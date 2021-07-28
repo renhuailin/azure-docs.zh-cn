@@ -6,17 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/29/2020
+ms.date: 05/07/2021
 ms.author: tamram
-ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 93bcbab9445d83bf17b37b6affc1d2bc70703bbf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 28f46ec6354f98c11ce68beeb2e3de375c7a0249
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97814323"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632324"
 ---
 # <a name="initiate-a-storage-account-failover"></a>启动存储帐户故障转移
 
@@ -41,7 +40,7 @@ ms.locfileid: "97814323"
 请记住，帐户故障转移不支持以下功能和服务：
 
 - Azure 文件同步不支持存储帐户故障转移。 不得对包含 Azure 文件共享且用作 Azure 文件同步中云终结点的存储帐户执行故障转移。 否则，将会导致同步停止，并且可能还会在有新分层文件的情况下导致意外数据丢失。
-- 目前不支持 ADLS Gen2 存储帐户（已启用分层命名空间的帐户）。
+- 目前不支持启用了分层命名空间的存储帐户（例如用于 Data Lake Storage Gen2 的）。
 - 无法对包含高级块 blob 的存储帐户执行故障转移。 支持高级块 blob 的存储帐户暂不支持异地冗余。
 - 无法对包含任何已启用 [WORM 不可变性策略](../blobs/storage-blob-immutable-storage.md)的容器执行故障转移。 已解锁/锁定的基于时间的保留或法定保留策略会阻止故障转移，以便保持合规性。
 
@@ -117,10 +116,15 @@ az storage account failover \ --name accountName
 
 启动后故障转移所花费的时间通常不到一小时。
 
-在故障转移完成后，存储帐户类型自动转换为新的主要区域中的本地冗余存储 (LRS)。 可以为帐户重新启用异地冗余存储 (GRS) 或读取访问权限异地冗余存储 (RA-GRS)。 请注意，从 LRS 转换为 GRS 或 RA-GRS 会产生额外费用。 有关其他信息，请参阅[带宽定价详细信息](https://azure.microsoft.com/pricing/details/bandwidth/)。
+在故障转移完成后，存储帐户类型自动转换为新的主要区域中的本地冗余存储 (LRS)。 可以为帐户重新启用异地冗余存储 (GRS) 或读取访问权限异地冗余存储 (RA-GRS)。 请注意，从 LRS 转换为 GRS 或 RA-GRS 会产生额外费用。 产生该费用是因为将数据重新复制到新的次要区域需要支付网络流出量费用。 有关其他信息，请参阅[带宽定价详细信息](https://azure.microsoft.com/pricing/details/bandwidth/)。
 
-在你为存储帐户重新启用 GRS 后，Microsoft 便会开始将帐户中的数据复制到新的次要区域。 复制时间取决于要复制的数据量。  
+在你为存储帐户重新启用 GRS 后，Microsoft 便会开始将帐户中的数据复制到新的次要区域。 复制时间取决于许多因素，其中包括：
 
+- 存储帐户中对象的数量和大小。 许多小型对象可能比较少但较大的对象花费的时间更长。
+- 可用于后台复制的资源，例如 CPU、内存、磁盘和 WAN 容量。 实时流量优先于异地复制。
+- 每个 Blob 的快照数（如果使用 Blob 存储）。
+- [数据分区策略](/rest/api/storageservices/designing-a-scalable-partitioning-strategy-for-azure-table-storage)（如果使用表存储）。 复制过程不能扩展到超过所用分区键数量的地步。
+  
 ## <a name="next-steps"></a>后续步骤
 
 - [灾难恢复和存储帐户故障转移](storage-disaster-recovery-guidance.md)

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 robots: noindex
 ms.openlocfilehash: a90b26c677c3d53794bce3c2ff48c618415e4cf2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100379363"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出 Azure Cosmos DB
@@ -126,7 +126,7 @@ ms.locfileid: "100379363"
 | **属性** | **说明** | **允许的值** | **必需** |
 | --- | --- | --- | --- |
 | nestingSeparator |源列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>在上述示例中：输出表中的 `Name.First` 在 Cosmos DB 文档中生成以下 JSON 结构：<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |用于分隔嵌套级别的字符。<br/><br/>默认值为 `.`（点）。 |用于分隔嵌套级别的字符。 <br/><br/>默认值为 `.`（点）。 |
-| writeBatchSize |向 Azure Cosmos DB 服务发送创建文档的并行请求数。<br/><br/>向/从 Cosmos DB 复制数据时，可使用此属性对性能进行微调。 当增加 writeBatchSize 时，由于会向 Cosmos DB 发送更多的并行请求，因此可以获得更好的性能。 但是，需要避免可能会引发“请求速率大”的错误消息的限制。<br/><br/>限制由多种因素决定，包括文档大小、文档中的术语数、目标集合的索引策略等。对于复制操作，可以使用更好的集合（例如 S3）以实现最大的吞吐量（2,500 请求单位/秒）。 |整数 |否（默认值：5） |
+| writeBatchSize |向 Azure Cosmos DB 服务发送创建文档的并行请求数。<br/><br/>向/从 Cosmos DB 复制数据时，可使用此属性对性能进行微调。 当增加 writeBatchSize 时，由于会向 Cosmos DB 发送更多的并行请求，因此可以获得更好的性能。 但是，需要避免可能会引发“请求速率大”的错误消息的限制。<br/><br/>限制由多个因素决定，包括文档大小、文档中的术语数量、目标集合的索引策略等。对于复制操作，可以使用更好的集合（例如 S3）来实现可能的最大吞吐量（2,500 请求单位/秒）。 |Integer |否（默认值：5） |
 | writeBatchTimeout |超时之前等待操作完成的时间。 |timespan<br/><br/> 示例："00:30:00"（30 分钟）。 |否 |
 
 ## <a name="importexport-json-documents"></a>导入/导出 JSON 文档

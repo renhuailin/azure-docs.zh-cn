@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: c4ba48377d868404ff130ec458e50e2b42fae977
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 14a235337a1b3bf26874cffe8893f0c21f2ed9f7
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790510"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517867"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中心消息路由查询语法
 
@@ -58,6 +58,7 @@ IoT 中心为所有设备到云的消息传送定义了[格式](iot-hub-devguide
 | contentType | 字符串 | 用户指定消息的内容类型。 若要允许查询消息正文，此值应设置应用程序/JSON。 |
 | contentEncoding | 字符串 | 用户指定消息的编码类型。 如果 contentType 设置为应用程序/JSON，则允许的值为 UTF-8、UTF-16 和 UTF-32。 |
 | iothub-connection-device-id | 字符串 | 此值由 IoT 中心设置，标识设备的 ID。 若要查询，请使用 `$connectionDeviceId`。 |
+| iothub-connection-module-id | 字符串 | 此值由 IoT 中心设置，用于标识边缘模块的 ID。 若要查询，请使用 `$connectionModuleId`。 |
 | iothub-enqueuedtime | 字符串 | 此值由 IoT 中心设置，表示 UTC 中消息排入队列的实际时间。 若要查询，请使用 `enqueuedTime`。 |
 | dt-dataschema | string |  此值是由 IoT 中心对设备到云的消息设置的。 它包含在设备连接中设置的设备型号 ID。 若要查询，请使用 `$dt-dataschema`。 |
 | dt-subject | string | 正在发送设备到云的消息的组件名称。 若要查询，请使用 `$dt-subject`。 |

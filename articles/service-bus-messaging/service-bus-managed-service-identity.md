@@ -2,13 +2,13 @@
 title: 结合使用 Azure 资源的托管标识与 Azure 服务总线
 description: 本文介绍如何使用托管标识访问 Azure 服务总线实体（队列、主题和订阅）。
 ms.topic: article
-ms.date: 01/21/2021
-ms.openlocfilehash: bd985acd9b775d6baef0abf488952e28c17aef2a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/23/2021
+ms.openlocfilehash: 3efe513d5e19ca13567b05e8f8d0aafb402ae879
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98954304"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161116"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 对托管标识进行身份验证，以便访问 Azure 服务总线资源
 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)是一项跨 Azure 功能，可便于用户创建与其中运行应用程序代码的部署关联的安全标识。 然后可以将该标识与访问控制角色进行关联，后者授予的自定义权限可用于访问应用程序需要的特定 Azure 资源。
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) 通过 [Azure 基于角色的访问控制 (Azu
 
 以下列表描述了可将服务总线资源访问权限限定到哪些级别，从最小的范围开始：
 
-- **队列**、**主题** 或 **订阅**：角色分配适用于特定的服务总线实体。 目前，Azure 门户不支持在订阅级别为服务总线 Azure 角色分配用户/组/托管标识。 下面是使用 Azure CLI 命令 [az-role-assignment-create](/cli/azure/role/assignment?#az-role-assignment-create) 为服务总线 Azure 角色分配标识的示例： 
+- **队列**、**主题** 或 **订阅**：角色分配适用于特定的服务总线实体。 目前，Azure 门户不支持在订阅级别为服务总线 Azure 角色分配用户/组/托管标识。 下面是使用 Azure CLI 命令 [az-role-assignment-create](/cli/azure/role/assignment?#az_role_assignment_create) 为服务总线 Azure 角色分配标识的示例： 
 
     ```azurecli
     az role assignment create \
@@ -91,13 +91,8 @@ Azure Active Directory (Azure AD) 通过 [Azure 基于角色的访问控制 (Azu
 
 启用此设置后，会在 Azure Active Directory (Azure AD) 中创建一个新的服务标识并将其配置到应用服务主机中。
 
-> [!NOTE]
-> 使用托管标识时，连接字符串的格式应为：`Endpoint=sb://<NAMESPACE NAME>.servicebus.windows.net/;Authentication=Managed Identity`。
-
-现在，请将此服务标识分配给服务总线资源中所需范围中的某个角色。
-
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>使用 Azure 门户分配 Azure 角色
-若要为服务总线命名空间分配角色，请导航到 Azure 门户中的该命名空间。 显示资源的“访问控制(标识和访问管理)”设置，并按以下说明管理角色分配：
+现在，请将服务标识分配给服务总线资源中所需范围中的某个角色。 若要为服务总线命名空间分配角色，请导航到 Azure 门户中的该命名空间。 显示资源的“访问控制(标识和访问管理)”设置，并按以下说明管理角色分配：
 
 > [!NOTE]
 > 以下步骤为服务总线命名空间分配服务标识角色。 可以按照相同的步骤在其他受支持的范围（资源组和订阅）分配角色。 
@@ -127,7 +122,7 @@ Azure Active Directory (Azure AD) 通过 [Azure 基于角色的访问控制 (Azu
 
 Default.aspx 页是登陆页面。 可以在 Default.aspx.cs 文件中找到代码。 结果是一个最小的 Web 应用程序，其中包含几个输入字段以及用来连接到服务总线以发送或接收消息的 **send** 和 **receive** 按钮。
 
-注意 [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) 对象是如何初始化的。 此代码通过 `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` 调用为托管标识创建令牌提供程序，而不是使用共享访问令牌 (SAS) 令牌提供程序。 因此，不需要保留和使用任何机密。 从托管标识上下文到服务总线的流以及授权握手都是由令牌提供程序自动处理。 这是比使用 SAS 更简单的模型。
+请注意如何使用具有 TokenCredential 的构造函数初始化 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象。 DefaultAzureCredential 派生自 TokenCredential，可在此处传递。 因此，不需要保留和使用任何机密。 从托管标识上下文到服务总线的流以及授权握手均由令牌凭据自动处理。 这是比使用 SAS 更简单的模型。
 
 进行这些更改后，发布并运行应用程序。 若要轻松获取正确的发布数据，可下载发布配置文件，并在 Visual Studio 中导入它：
 

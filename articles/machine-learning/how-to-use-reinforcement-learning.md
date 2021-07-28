@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 84338f81f5f75665c0aa874a0da16786887b4422
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 84fbea3d7d38e16a2069c40a459d5f86e7412a09
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897426"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739036"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure 机器学习的强化学习（预览版）
 
@@ -42,7 +42,7 @@ ms.locfileid: "107897426"
 
  - Azure 机器学习计算实例
 
-     - 可在以下文章中了解如何克隆示例笔记本：[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
+     - 可在以下文章中了解如何克隆示例笔记本：[教程：设置环境和工作区](tutorial-train-models-with-aml.md)。
          - 请克隆 **how-to-use-azureml** 文件夹而不是 **tutorials**
      - 运行 `/how-to-use-azureml/reinforcement-learning/setup/devenv_setup.ipynb` 中的虚拟网络设置笔记本，打开用于分布式强化学习的网络端口。
      - 运行示例笔记本 `/how-to-use-azureml/reinforcement-learning/atari-on-distributed-compute/pong_rllib.ipynb`
@@ -432,7 +432,7 @@ run.wait_for_completion()
 
 如果浏览子运行的日志，可以看到 driver_log.txt 文件中记录的评估结果。 可能需要等待几分钟，这些指标才会出现在“运行”页上。
 
-简而言之，你已了解如何配置多个计算资源来训练强化学习代理，使其能够很好地与计算机对手玩 Pong 游戏。
+简而言之，你已了解如何配置多个计算资源来训练强化学习代理，使其能够很好地与计算机对手玩“乓”游戏。
 
 ## <a name="next-steps"></a>后续步骤
 

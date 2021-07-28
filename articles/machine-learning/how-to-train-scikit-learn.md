@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 09/28/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 3337607c8e4dd9dca230456cdf268ec3fbfb2f12
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 16f436c4b81aac60075be8cb3bf34a9706f739ab
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884401"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746776"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 scikit-learn 模型
 
@@ -30,7 +30,7 @@ ms.locfileid: "107884401"
 在以下任一环境中运行此代码：
  - Azure 机器学习计算实例 - 无需下载或安装
 
-    - 在开始本教程之前完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)以创建预先装载了 SDK 和示例存储库的专用笔记本服务器。
+    - 完成[快速入门：开始使用 Azure 机器学习](quickstart-create-resources.md)，以创建一个预加载了 SDK 和示例存储库的专用笔记本服务器。
     - 在笔记本服务器上的示例训练文件夹中，导航到以下目录，查找一个已完成且已展开的笔记本：how-to-use-azureml > ml-frameworks > scikit-learn > train-hyperparameter-tune-deploy-with-sklearn 文件夹。
 
  - 你自己的 Jupyter 笔记本服务器

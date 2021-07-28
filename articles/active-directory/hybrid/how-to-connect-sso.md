@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeede88bfbe024a66e40270240d32488e581dd77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42c73e2fa0439b247267f8d1021c0a779b6ca2ba
+ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517695"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109627899"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 无缝单一登录
 
@@ -66,23 +66,25 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 - 这是一项免费功能，不需要拥有任何付费版本的 Azure AD 即可使用此功能。
 - 在能够进行 Kerberos 身份验证的平台和浏览器上，支持[新式身份验证](/office365/enterprise/modern-auth-for-office-2013-and-2016)的基于 Web 浏览器的客户端和 Office 客户端支持此功能：
 
-| 操作系统\浏览器 |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
+| 操作系统\浏览器 |Internet Explorer|Microsoft Edge\*\*\*\*|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|是\*|是|是|是\*\*\*|空值
 |Windows 8.1|是\*|是*\*\*\*|是|是\*\*\*|空值
 |Windows 8|是\*|空值|是|是\*\*\*|空值
-|Windows 7|是\*|空值|是|是\*\*\*|空值
 |Windows Server 2012 R2 或更高版本|是\*\*|空值|是|是\*\*\*|空值
 |Mac OS X|空值|空值|是\*\*\*|是\*\*\*|是\*\*\*
 
+ > [!NOTE]
+ >不再支持 Microsoft Edge 旧版本
 
-\*需要 Internet Explorer 版本 10 或更高版本。
 
-\*\*需要 Internet Explorer 版本 10 或更高版本。 禁用增强保护模式。
+\*需要 Internet Explorer 11 或更高版本。 （[自 2021 年 8 月 17 日起，Microsoft 365 应用和服务将不支持 IE 11](https://techcommunity.microsoft.com/t5/microsoft-365-blog/microsoft-365-apps-say-farewell-to-internet-explorer-11-and/ba-p/1591666)。）
+
+\*\*需要 Internet Explorer 11 或更高版本。 禁用增强保护模式。
 
 \*\*\*需要[其他配置](how-to-connect-sso-quick-start.md#browser-considerations)。
 
-\*\*\*\*需要 Microsoft Edge 版本 77 或更高版本。
+\*\*\*\*基于 Chromium 的 Microosft Edge
 
 ## <a name="next-steps"></a>后续步骤
 

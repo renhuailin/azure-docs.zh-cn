@@ -7,12 +7,12 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: 6cadadfb3623d05dd3ae3851acd5eaca13860023
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ded1007cd5d0268d68bcdbff87a3b703da247876
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96929837"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764038"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>为 Azure 应用配置使用专用终结点
 
@@ -33,11 +33,11 @@ VNet 中的应用程序可以 **使用通过其他方式连接时所用的相同
 
 在 VNet 中创建用于服务的专用终结点时，会将一个申请批准的许可请求发送到服务帐户所有者。 如果请求创建专用终结点的用户还是帐户的所有者，则此许可请求会自动获得批准。
 
-服务帐户所有者可以通过 [Azure 门户](https://portal.azure.com)中的配置存储的“`Private Endpoints`”选项卡来管理许可请求和专用终结点。
+服务帐户所有者可以通过 [Azure 门户](https://portal.azure.com)中的应用配置存储的“`Private Endpoints`”选项卡来管理同意请求和专用终结点。
 
 ### <a name="private-endpoints-for-app-configuration"></a>用于应用配置的专用终结点 
 
-创建专用终结点时，必须指定它连接到的应用配置存储。 如果在一个帐户内有多个应用配置实例，则每个存储都需要一个单独的专用终结点。
+创建专用终结点时，必须指定它连接到的应用配置存储。 如果有多个应用配置存储，则每个存储都需要一个单独的专用终结点。
 
 ### <a name="connecting-to-private-endpoints"></a>连接到专用终结点
 
@@ -46,13 +46,20 @@ Azure 依赖于 DNS 解析通过专用链接对从 VNet 到配置存储的连接
 > [!IMPORTANT]
 > 通过专用终结点连接到应用配置存储时所使用的连接字符串与通过公共终结点进行连接时所使用的连接字符串相同。 连接到存储时请勿使用其 `privatelink` 子域 URL。
 
+> [!NOTE]
+> 默认情况下，当专用终结点已添加到应用配置存储时，所有通过公用网络提出的对应用配置数据的请求都会被拒绝。 可以使用以下 Azure CLI 命令启用公用网络访问。 在这种情况下，请务必考虑启用公用网络访问的安全隐患。
+>
+> ```azurecli-interactive
+> az appconfig update -g MyResourceGroup -n MyAppConfiguration --enable-public-network true
+> ```
+
 ## <a name="dns-changes-for-private-endpoints"></a>专用终结点的 DNS 更改
 
 创建专用终结点时，配置存储的 DNS CNAME 资源记录将更新为具有前缀 `privatelink` 的子域中的别名。 Azure 还会创建一个与 `privatelink` 子域对应的[专用 DNS 区域](../dns/private-dns-overview.md)，其中包含专用终结点的 DNS A 资源记录。
 
 从承载着专用终结点的 VNet 内解析终结点 URL 时，它会解析为存储的专用终结点。 从 VNet 外部解析时，终结点 URL 解析为公共终结点。 创建专用终结点时，会禁用公共终结点。
 
-如果在网络上使用自定义 DNS 服务器，则客户端必须能够将服务终结点的完全限定的域名 (FQDN) 解析为专用终结点 IP 地址。 配置 DNS 服务器以将专用链接子域委托到 VNet 的专用 DNS 区域，或者使用专用终结点 IP 地址为 `AppConfigInstanceA.privatelink.azconfig.io` 配置 A 记录。
+如果在网络上使用自定义 DNS 服务器，则客户端必须能够将服务终结点的完全限定的域名 (FQDN) 解析为专用终结点 IP 地址。 配置 DNS 服务器以将专用链接子域委托到 VNet 的专用 DNS 区域，或者使用专用终结点 IP 地址为 `[Your-store-name].privatelink.azconfig.io` 配置 A 记录。
 
 > [!TIP]
 > 使用自定义或本地 DNS 服务器时，应将 DNS 服务器配置为将 `privatelink` 子域中的存储名称解析为专用终结点 IP 地址。 为此，可以将 `privatelink` 子域委托给 VNet 的专用 DNS 区域，或在 DNS 服务器上配置 DNS 区域并添加 DNS A 记录。

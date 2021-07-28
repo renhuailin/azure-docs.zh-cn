@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 68fcf8a8feb046fca2c26041d92264dd8b3a638e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ca3f7c9104fa655536762ac38f50c78cb96ad3a
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103465491"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237940"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>将非 Azure 计算机连接到安全中心
 
@@ -55,14 +55,14 @@ ms.locfileid: "103465491"
 1. 在安全中心的菜单中，打开“开始使用”页。
 1. 选择“入门”选项卡。
 
-    :::image type="content" source="./media/security-center-onboarding/onboarding-get-started-tab.png" alt-text="“开始使用”页中的“开始使用”选项卡" lightbox="./media/security-center-onboarding/onboarding-get-started-tab.png":::
+    :::image type="content" source="./media/security-center-onboarding/onboarding-get-started-tab.png" alt-text="“开始使用”页中的“开始使用”选项卡。" lightbox="./media/security-center-onboarding/onboarding-get-started-tab.png":::
 
 1. 在“添加非 Azure 服务器”下方，选择“配置”。
 
     > [!TIP]
     > 还可以通过“库存”页面的“添加非 Azure 服务器”按钮打开“添加计算机”。
     > 
-    > :::image type="content" source="./media/security-center-onboarding/onboard-inventory.png" alt-text="从“资产清单”页添加非 Azure 计算机":::
+    > :::image type="content" source="./media/security-center-onboarding/onboard-inventory.png" alt-text="从“资产清单”页添加非 Azure 计算机。":::
 
     此时将显示 Log Analytics 工作区的列表。 该列表包含启用自动预配时由安全中心创建的默认工作区（如果适用）。 选择此工作区或要使用的其他工作区。
 
@@ -129,11 +129,11 @@ ms.locfileid: "103465491"
 
 恭喜！ 现在，可以在同一个位置查看 Azure 和非 Azure 计算机了。 打开[“资产清单”页](asset-inventory.md)，并筛选到相关的资源类型。 这些图标区分类型：
 
-  ![用于非 Azure 计算机的 ASC 图标](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) 非 Azure 计算机
+  ![指示非 Azure 计算机的 ASC 图标。](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) 非 Azure 计算机
 
-  ![用于 Azure 计算机的 ASC 图标](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
+  ![指示 Azure 计算机的 ASC 图标。](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
 
-  ![用于 Azure Arc 服务器的 ASC 图标](./media/quick-onboard-linux-computer/arc-enabled-machine-icon.png) 启用了 Azure Arc 的服务器
+  ![指示 Azure Arc 服务器的 ASC 图标。](./media/quick-onboard-linux-computer/arc-enabled-machine-icon.png) 启用了 Azure Arc 的服务器
 
 ## <a name="next-steps"></a>后续步骤
 

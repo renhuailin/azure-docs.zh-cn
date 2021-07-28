@@ -7,12 +7,12 @@ ms.date: 04/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: acf038d6e1ead94bdfb2e00ffe225e566faa6c44
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 6eec2fed58d9c4fa3b0a05dc6ed03d9c5bf9d840
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854893"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113002533"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>适用于 Kubernetes 的 Azure Defender 简介
 
@@ -37,7 +37,7 @@ Azure 安全中心和 AKS 构成了一种云原生 Kubernetes 安全产品/服�
 |发布状态：|正式发布版 (GA)|
 |定价：|用于 Kubernetes 的 Azure Defender 按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中显示的定价计费|
 |所需角色和权限：|**安全管理员** 可以消除警报。<br>**安全读取者** 可以查看结果。|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov，Azure 中国）|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>适用于 Kubernetes 的 Azure Defender 有哪些优点？

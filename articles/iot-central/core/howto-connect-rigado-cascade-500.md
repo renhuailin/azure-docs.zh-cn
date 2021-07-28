@@ -10,30 +10,30 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: 0000e7690ab92f469a7417e82cb375c524e0b343
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee22c1e68f407eb2b508cd97e611ea83b82174b2
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96014756"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684120"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>如何将 Rigado Cascade 500 网关设备连接到 Azure IoT Central 应用程序
 
-本文适用于解决方案构建人员。
-
-本文为解决方案构建人员介绍如何将 Rigado Cascade 500 网关设备连接到 Microsoft Azure IoT Central 应用程序。 
+本文介绍如何将 Rigado Cascade 500 网关设备连接到 Microsoft Azure IoT Central 应用程序。
 
 ## <a name="what-is-cascade-500"></a>什么是 Cascade 500？
 
 Cascade 500 IoT 网关是 Rigado 提供的一款硬件产品，随附在其 Cascade 边缘即服务解决方案中。 该产品为商用 IoT 项目和产品团队提供灵活的边缘计算能力、稳健的容器化应用程序环境，以及各种无线设备连接选项，包括 Bluetooth 5、LTE 和 Wi-Fi。
 
-Cascade 500 已预先通过 Azure IoT 即插即用（预览版）认证，使我们的解决方案构建人员能够轻松将设备加入到其端到端解决方案中。 Cascade 网关允许无线连接到网关设备附近的各种状态监视传感器。 可以通过网关设备将这些传感器加入到 IoT Central 中。
+Cascade 500 已通过 Azure IoT 即插即用认证，使你能够轻松将设备加入到端到端解决方案中。 Cascade 网关允许无线连接到网关设备附近的各种状态监视传感器。 可以通过网关设备将这些传感器加入到 IoT Central 中。
 
 ## <a name="prerequisites"></a>先决条件
-若要完成本操作指南中的每个步骤，需要准备好以下资源：
 
-* 一台 Rigado Cascade 500 设备。 有关详细信息，请访问 [Rigado](https://www.rigado.com/)。
-* Azure IoT Central 应用程序。 有关详细信息，请参阅[创建新应用程序](./quick-deploy-iot-central.md)。
+若要完成本操作指南中的步骤，需要：
+
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
+
+- 一台 Rigado Cascade 500 设备。 有关详细信息，请访问 [Rigado](https://www.rigado.com/)。
 
 ## <a name="add-a-device-template"></a>添加设备模板
 
@@ -71,7 +71,7 @@ Cascade 500 已预先通过 Azure IoT 即插即用（预览版）认证，使我
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你是设备开发人员，则建议执行以下后续步骤：
+一些建议的后续步骤如下：
 
 - 阅读有关 [Azure IoT Central 中的设备连接](./concepts-get-connected.md)的信息
 - 了解如何[使用 Azure CLI 监视设备连接](./howto-monitor-devices-azure-cli.md)

@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 04/24/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 8494e9048ef298fbb3c2e70de10ec793f2bddec5
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 3eea91d1cbbb8fe34dcdc8668840503e6dc9d014
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161602"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517345"
 ---
-# <a name="tutorial-configure-clouldflare-with-azure-active-directory-b2c"></a>教程：为 Azure Active Directory B2C 配置 Clouldflare
+# <a name="tutorial-configure-cloudflare-with-azure-active-directory-b2c"></a>教程：为 Azure Active Directory B2C 配置 Cloudflare
 
-在此示例教程中，可了解如何为使用自定义域的 Azure Active Directory (AD) B2C 租户启用[Cloudflare Web 应用程序防火墙 (WAF)](https://www.cloudflare.com/waf/)解决方案。 Clouldflare WAF 可帮助组织防范旨在利用安全漏洞进行的恶意攻击，如注 SQLi 和 XSS。
+在此示例教程中，可了解如何为使用自定义域的 Azure Active Directory (AD) B2C 租户启用[Cloudflare Web 应用程序防火墙 (WAF)](https://www.cloudflare.com/waf/)解决方案。 Cloudflare WAF 可帮助组织防范旨在利用安全漏洞进行的恶意攻击，如注 SQLi 和 XSS。
 
 ## <a name="prerequisites"></a>先决条件
 

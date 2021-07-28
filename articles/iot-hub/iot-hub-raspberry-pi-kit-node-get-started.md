@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-js
 ms.openlocfilehash: c96f674b64401250d45542d0f59f13654cf37caa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97802518"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (Node.js)
@@ -232,7 +232,7 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 
    如果没有传感器，请将 `simulatedData` 值设置为 `true`，使示例应用程序创建和使用模拟的传感器数据。
 
-   注意：本教程使用的 i2c 地址默认为 0x77。根据你的配置，它也可能是 0x76 的：如果遇到 i2c 错误，请尝试将此值更改为 118，看看效果是否更好。若要查看传感器使用的地址，请在 Raspberry pi 上的 shell 中运行 `sudo i2cdetect -y 1`
+   *注意：本教程中使用的 i2c 地址默认为 0x77。根据配置的不同，也可能为 0x76：如果遇到 i2c 错误，请尝试将此值更改为 118，看看是否更好。若要查看传感器使用的地址，请在 raspberry pi 上在 shell 中运行 `sudo i2cdetect -y 1`*
 
 2. 通过按“Control-O”>“Enter”>“Control-X”保存并退出。
 

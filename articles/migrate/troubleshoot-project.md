@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/01/2020
 ms.openlocfilehash: f68a57d3780f388488d48835f322ff04ab7c7187
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96753376"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>排查 Azure Migrate 项目问题
@@ -53,7 +53,7 @@ ms.locfileid: "96753376"
     - 首次添加到 Azure AD 租户时，你将收到加入租户的电子邮件邀请。
     - 接受被添加到租户的邀请。
     - 如果看不到电子邮件，请与有权访问该租户的用户联系，并请他们向你[重新发送邀请](../active-directory/external-identities/add-users-administrator.md#resend-invitations-to-guest-users)。
-    - 收到邀请电子邮件后，打开电子邮件，然后选择接受邀请的链接。 然后，注销 Azure 门户并再次登录。 （刷新浏览器没有作用。）然后便可以开始创建迁移项目。
+    - 收到邀请电子邮件后，打开电子邮件，然后选择接受邀请的链接。 然后，注销 Azure 门户并再次登录。 （刷新浏览器将不起作用。）然后即可开始创建迁移项目。
 
 ## <a name="how-do-i-delete-a-project"></a>如何删除项目
 

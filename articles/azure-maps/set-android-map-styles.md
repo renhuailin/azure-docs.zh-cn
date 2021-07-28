@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: aef8fbacf8302fb5dd4b5fe28afc615c6bf56090
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d96d116bc4350a3326722c87f65e887d5a54791
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100978"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108326536"
 ---
 # <a name="set-map-style-android-sdk"></a>设置地图样式 (Android SDK)
 
@@ -23,6 +23,10 @@ ms.locfileid: "102100978"
 ## <a name="prerequisites"></a>先决条件
 
 请务必完成[快速入门：创建 Android 应用](quick-android-map.md)文档中的步骤。
+
+>[!important]
+>本部分的过程需要 Gen 1 或 Gen 2 定价层中的 Azure Maps 帐户。 有关定价层的详细信息，请查看[在 Azure Maps 中选择正确的定价层](choose-pricing-tier.md)。
+
 
 ## <a name="set-map-style-in-the-layout"></a>在布局中设置地图样式
 
@@ -83,7 +87,7 @@ mapControl!!.onReady { map: AzureMap ->
 
 ## <a name="setting-the-map-camera"></a>设置地图相机
 
-地图相机控制地图中显示的地图部分。 可以在代码中以编程方式将相机放在布局中。 在代码中设置地图时，有两种主要方法可用于设置地图的位置：使用居中和缩放，或在边界框传递。 以下代码演示在使用 `center` 和 `zoom` 时如何设置所有可选相机选项。
+地图相机可控制在地图视区中显示世界的哪一部分。 可以在代码中以编程方式将相机放在布局中。 在代码中设置地图时，有两种主要方法可用于设置地图的位置：使用居中和缩放，或在边界框传递。 以下代码演示在使用 `center` 和 `zoom` 时如何设置所有可选相机选项。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -104,7 +108,7 @@ map.setCamera(
     //The minimum zoom level the map will zoom-out to when animating from one location to another on the map.
     minZoom(10),
     
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 );
 ```
@@ -130,7 +134,7 @@ map.setCamera(
     //The minimum zoom level the map will zoom-out to when animating from one location to another on the map.
     minZoom(10),
     
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 )
 ```
@@ -162,7 +166,7 @@ map.setCamera(
     //Amount of pixel buffer around the bounding box to provide extra space around the bounding box.
     padding(20),
 
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 );
 ```
@@ -192,14 +196,14 @@ map.setCamera(
     //Amount of pixel buffer around the bounding box to provide extra space around the bounding box.
     padding(20),
 
-    //The maximium zoom level the map will zoom-in to when animating from one location to another on the map.
+    //The maximum zoom level the map will zoom-in to when animating from one location to another on the map.
     maxZoom(14)
 )
 ```
 
 ::: zone-end
 
-请注意，边界框的纵横比可能与地图的纵横比不同，因此地图通常会显示完整的边界框区域，但通常仅在垂直或水平方向紧缩。
+边界框的纵横比可能与地图的纵横比不同，因此地图通常会显示完整的边界框区域，但通常仅在垂直或水平方向紧缩。
 
 ## <a name="next-steps"></a>后续步骤
 

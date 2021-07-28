@@ -9,12 +9,12 @@ ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: e878be5351362923e163c0a6f617b96ab72a36d8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2d4885f23e775f84a412d176568d992ebe01166b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102177506"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875694"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 导入/导出服务从 Azure Blob 存储导出数据
 
@@ -61,7 +61,7 @@ ms.locfileid: "102177506"
 
    1. 选择“从 Azure 导出”。
 
-    ![导出作业的基本选项](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
+    ![导出顺序的基本选项](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
 
     选择“下一步: 作业详细信息 >”以继续。
 
@@ -190,19 +190,19 @@ ms.locfileid: "102177506"
 
 ### <a name="create-a-job"></a>创建作业
 
-1. 使用 [az extension add](/cli/azure/extension#az_extension_add) 命令添加 [az import-export](/cli/azure/ext/import-export/import-export) 扩展：
+1. 使用 [az extension add](/cli/azure/extension#az_extension_add) 命令添加 [az import-export](/cli/azure/import-export) 扩展：
 
     ```azurecli
     az extension add --name import-export
     ```
 
-1. 若要获取可从中接收磁盘的位置列表，请使用 [az import-export location list](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) 命令：
+1. 若要获取可从中接收磁盘的位置列表，请使用 [az import-export location list](/cli/azure/import-export/location#az_import_export_location_list) 命令：
 
     ```azurecli
     az import-export location list
     ```
 
-1. 运行以下 [az import-export create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) 命令来创建使用现有存储帐户的导出作业：
+1. 运行以下 [az import-export create](/cli/azure/import-export#az_import_export_create) 命令来创建使用现有存储帐户的导出作业：
 
     ```azurecli
     az import-export create \
@@ -245,13 +245,13 @@ ms.locfileid: "102177506"
    > [!NOTE]
    > 如果在复制数据时，要导出的 blob 正在使用中，则 Azure 导入/导出服务将生成该 blob 的快照并复制快照。
 
-1. 使用 [az import-export list](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) 命令查看资源组 myierg 的所有作业：
+1. 使用 [az import-export list](/cli/azure/import-export#az_import_export_list) 命令查看资源组 myierg 的所有作业：
 
     ```azurecli
     az import-export list --resource-group myierg
     ```
 
-1. 若要更新作业或取消作业，请运行 [az import-export update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) 命令：
+1. 若要更新作业或取消作业，请运行 [az import-export update](/cli/azure/import-export#az_import_export_update) 命令：
 
     ```azurecli
     az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true

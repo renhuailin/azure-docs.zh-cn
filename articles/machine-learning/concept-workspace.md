@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 215da0e38045a2e66a4a11b54204c26e7720815c
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: fcf222573ac16be54ae98777749306fee0847109
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107719054"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749584"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
 
@@ -132,7 +132,6 @@ ms.locfileid: "107719054"
 
 + [Azure 机器学习概述](overview-what-is-azure-ml.md)
 + [创建和管理工作区](how-to-manage-workspace.md)
-+ [教程：开始在开发环境中使用 Azure 机器学习](tutorial-1st-experiment-sdk-setup-local.md)
-+ [教程：开始在计算实例上创建第一个 ML 试验](tutorial-1st-experiment-sdk-setup.md)
++ [教程：Azure 机器学习入门](quickstart-create-resources.md)
 + [教程：使用自动化机器学习创建第一个分类模型](tutorial-first-experiment-automated-ml.md) 
 + [教程：使用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)

@@ -2,21 +2,21 @@
 title: 在 Service Fabric 群集中引入混沌测试
 description: 使用故障注入和群集分析服务 API 管理群集中的混沌测试。
 ms.topic: conceptual
-ms.date: 02/05/2018
+ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 72b8f7e9e4934b516f843ae8bc9bb7adc1c349ec
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 759e2d1c8d2a326583625fbbbcadb4f4fa950510
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101720494"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732425"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>在 Service Fabric 群集中引入受控的混沌测试
 大规模分布式系统，例如云基础结构，在本质上都是不可靠的。 Azure Service Fabric 可让开发人员在不可靠的基础结构之上编写可靠的分布式服务。 若要在不可靠的基础结构之上编写可靠的分布式服务，开发人员应能够在不可靠的底层基础结构因故障而进行复杂的状态转换时，测试其服务的稳定性。
 
 [故障注入和群集分析服务](./service-fabric-testability-overview.md)（也称为故障分析服务）使开发人员能够引入故障来测试其服务。 这些定向模拟故障（如[重新启动分区](/powershell/module/servicefabric/start-servicefabricpartitionrestart)）可以帮助执行最常见的状态转换。 但是，定向模拟故障易被定义左右，因此可能会漏掉仅在一系列难以预测、持续时间长且复杂的状态转换中出现的 bug。 若要进行无偏测试，可以使用混沌测试。
 
-混沌测试在整个群集模拟定期交叉出现的故障，包括常规故障和非常规故障，时间跨度很长。 常规故障由一组 Service Fabric API 调用组成，例如，重启副本故障是常规故障，因为这次关闭后接着副本打开。 删除副本、移动主要副本和移动次要副本是混沌测试执行的其他常规故障。 非常规故障是进程退出，例如重启节点和重启代码包。 
+混沌测试在整个群集模拟定期交叉出现的故障，包括常规故障和非常规故障，时间跨度很长。 常规故障由一组 Service Fabric API 调用组成，例如，重启副本故障是常规故障，因为这次关闭后接着副本打开。 删除副本、移动主要副本、移动次要副本和移动实例是混沌测试演练的其他常规故障。 非常规故障是进程退出，例如重启节点和重启代码包。
 
 配置混沌测试的故障率和故障类型后，就可以通过 C#、Powershell 或 REST API 启动该测试，开始在群集和服务中生成故障。 可以将混沌测试配置为运行一段指定的时间（例如运行一个小时），此时间段过后，混沌测试自动停止，也可以随时调用 StopChaos API（C#、Powershell 或 REST）来停止混沌测试。
 
@@ -37,6 +37,7 @@ ms.locfileid: "101720494"
 * 重新启动副本
 * 移动主副本（可配置）
 * 移动辅助副本（可配置）
+* 移动实例
 
 混沌测试在多个迭代中运行。 每个迭代包含指定时间段的故障和群集验证。 可以配置使群集达到稳定状态以及成功完成验证所用的时间。 如果在群集验证中发现故障，混沌测试将生成并保留一个包含 UTC 时间戳与故障详细信息的 ValidationFailedEvent。 例如，假设某个混沌测试实例设置为运行 1 小时，并且最多有 3 个并发故障。 该混沌测试将引入三个故障，然后验证群集运行状况。 它会循环访问上一步骤，直到通过 StopChaosAsync API 或者在一小时后将它显式停止。 如果在任何一次迭代中群集变得不正常（即在传入的 MaxClusterStabilizationTimeout 内不稳定或未变得正常），混沌测试会生成 ValidationFailedEvent。 此事件指明系统出现问题，可能需要进一步调查。
 
@@ -56,14 +57,14 @@ ms.locfileid: "101720494"
 > 无论 *MaxConcurrentFaults* 的值有多大，混沌测试都能保证在没有外部故障的情况下，不会发生仲裁丢失或数据丢失。
 >
 
-* **EnableMoveReplicaFaults**：启用或禁用导致主副本或辅助副本移动的故障。 默认情况下，这些故障处于启用状态。
+* EnableMoveReplicaFaults：启用或禁用导致主要副本、次要副本或实例移动的故障。 默认情况下，这些故障处于启用状态。
 * **WaitTimeBetweenIterations**：每两次迭代之间的等待时间。 即在执行一轮故障并完成群集运行状况的相应验证之后，混沌测试将暂停的时长。 该值越高，平均故障注入速率就越低。
 * **WaitTimeBetweenFaults**：单个迭代中每两次连续故障之间的等待时间。 该值越高，故障的并发性（即故障之间的重叠）越低。
 * **ClusterHealthPolicy**：群集运行状况策略用于验证两次混沌测试迭代之间的群集运行状况。 如果群集运行状况出错或者如果在故障执行期间发生了意外的异常，混沌测试会等 30 分钟后再进行下一轮运行状况检查，从而为群集留出一些恢复时间。
 * **Context**：一组 (string, string) 类型的键值对。 此映射可用于记录混沌测试的相关运行信息。 这种键值对不能超过 100 个，并且每个字符串（键或值）的长度不能超过 4095 个字符。 此映射由混沌测试运行的启动程序设置为根据需要存储特定运行的相关上下文。
 * **ChaosTargetFilter**：此筛选器可指定混沌测试故障仅面向特定节点类型或特定应用程序实例。 如未使用 ChaosTargetFilter，混沌测试会使所有群集实体故障。 如果使用 ChaosTargetFilter，混沌测试仅使满足 ChaosTargetFilter 规定的实体故障。 NodeTypeInclusionList 和 ApplicationInclusionList 仅允许联合语义。 换句话说，不可指定 NodeTypeInclusionList 和 ApplicationInclusionList 的交集。 例如，不可指定“仅当此应用程序在该节点类型上时使其故障”。 一旦实体包含在 NodeTypeInclusionList 或 ApplicationInclusionList 中，便不能使用 ChaosTargetFilter 排除该实体。 即使 applicationX 未出现在 ApplicationInclusionList 中，在一些混沌测试迭代中，也可使 applicationX 故障，因为它恰好在 NodeTypeInclusionList 中的 nodeTypeY 的节点上。 如果 NodeTypeInclusionList 和 ApplicationInclusionList 都为 null 或者为空，则会引发 ArgumentException。
-    * **NodeTypeInclusionList**：包括在混沌测试故障中的节点类型列表。 所有类型故障（重启节点、重启代码包、删除副本、重启副本、移动主副本和移动辅助副本）均为这些节点类型的节点启用。 如果节点类型（比如 NodeTypeX）未出现在 NodeTypeInclusionList 中，节点级别故障（比如 NodeRestart）将不会为 NodeTypeX 的节点启用。但是，如果 ApplicationInclusionList 中的应用程序碰巧位于 NodeTypeX 的节点上，那么代码包和副本故障仍可为 NodeTypeX 启用。 此列表最多可以包含 100 个节点类型名称，若要增加，MaxNumberOfNodeTypesInChaosTargetFilter 配置需要升级。
-    * **ApplicationInclusionList**：包含在混沌测试故障中的应用程序 URI 列表。 所有属于这些应用程序服务的副本服从混沌测试的副本故障（重启副本、删除副本、移动主副本和移动辅助副本）。 仅在代码包仅托管这些应用程序的副本时，混沌测试可重启代码包。 如果应用程序未出现在此列表中，那么还是可以在某些混沌测试迭代中使它故障，条件是应用程序最终位于 NodeTypeInclusionList 中的节点类型的节点上。 但是，如果 applicationX 通过放置约束固定为 nodeTypeY，并且 applicationX 不在 ApplicationInclusionList 中同时 nodeTypeY 不在 NodeTypeInclusionList 中，那么不会使 applicationX 故障。 此列表最多可以包含 1000 个应用程序名称，若要增加，MaxNumberOfApplicationsInChaosTargetFilter 配置需要升级。
+    * **NodeTypeInclusionList**：包括在混沌测试故障中的节点类型列表。 所有类型的故障（重启节点、重启代码包、删除副本、重启副本、移动主要副本、移动次要副本和移动实例）均为这些节点类型的节点启用。 如果节点类型（比如 NodeTypeX）未出现在 NodeTypeInclusionList 中，节点级别故障（比如 NodeRestart）将不会为 NodeTypeX 的节点启用。但是，如果 ApplicationInclusionList 中的应用程序碰巧位于 NodeTypeX 的节点上，那么代码包和副本故障仍可为 NodeTypeX 启用。 此列表最多可以包含 100 个节点类型名称，若要增加，MaxNumberOfNodeTypesInChaosTargetFilter 配置需要升级。
+    * **ApplicationInclusionList**：包含在混沌测试故障中的应用程序 URI 列表。 属于这些应用程序的服务的所有副本都可以应对混沌测试出现的副本故障（重启副本、删除副本、移动主要副本、移动次要副本和移动实例）。 仅在代码包仅托管这些应用程序的副本时，混沌测试可重启代码包。 如果应用程序未出现在此列表中，那么还是可以在某些混沌测试迭代中使它故障，条件是应用程序最终位于 NodeTypeInclusionList 中的节点类型的节点上。 但是，如果 applicationX 通过放置约束固定为 nodeTypeY，并且 applicationX 不在 ApplicationInclusionList 中同时 nodeTypeY 不在 NodeTypeInclusionList 中，那么不会使 applicationX 故障。 此列表最多可以包含 1000 个应用程序名称，若要增加，MaxNumberOfApplicationsInChaosTargetFilter 配置需要升级。
 
 ## <a name="how-to-run-chaos"></a>如何运行混沌测试
 
@@ -137,14 +138,15 @@ class Program
                 MaxPercentUnhealthyNodes = 100
             };
 
-            // All types of faults, restart node, restart code package, restart replica, move primary replica,
-            // and move secondary replica will happen for nodes of type 'FrontEndType'
+            // All types of faults, restart node, restart code package, restart replica, move primary
+            // replica, move secondary replica, and move instance will happen for nodes of type 'FrontEndType'
             var nodetypeInclusionList = new List<string> { "FrontEndType"};
 
             // In addition to the faults included by nodetypeInclusionList,
-            // restart code package, restart replica, move primary replica, move secondary replica faults will
-            // happen for 'fabric:/TestApp2' even if a replica or code package from 'fabric:/TestApp2' is residing
-            // on a node which is not of type included in nodeypeInclusionList.
+            // restart code package, restart replica, move primary replica, move secondary replica,
+            //  and move instance faults will happen for 'fabric:/TestApp2' even if a replica or code
+            // package from 'fabric:/TestApp2' is residing on a node which is not of type included
+            // in nodeypeInclusionList.
             var applicationInclusionList = new List<string> { "fabric:/TestApp2" };
 
             // List of cluster entities to target for Chaos faults.

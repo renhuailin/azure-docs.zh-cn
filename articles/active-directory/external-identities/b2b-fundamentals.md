@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94fd488ceb7ddb3724dd576c97c9070481e95147
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddb2a002969b031f25dae2511d679cc520928ff6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100365627"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108737776"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B 最佳做法
 本文包含有关 Azure Active Directory (Azure AD) 中企业到企业 (B2B) 协作的建议和最佳做法。
@@ -29,7 +29,7 @@ ms.locfileid: "100365627"
 ## <a name="b2b-recommendations"></a>B2B 建议
 | 建议 | 注释 |
 | --- | --- |
-| 为了获得最佳登录体验，请与标识提供者联合 | 请尽可能直接与标识提供者联合，以便受邀用户无需创建 Microsoft 帐户 (MSA) 或 Azure AD 帐户即可登录到你的共享应用和资源。 你可以使用 [Gogle 联合功能](google-federation.md)，使 B2B 来宾用户可以使用其 Google 帐户登录。 或者你也可以使用[直接联合（预览版）功能](direct-federation.md)来与其标识提供者 (IdP) 支持 SAML 2.0 或 WS-Fed 协议的任何组织建立直接联合。 |
+| 为了获得最佳登录体验，请与标识提供者联合 | 请尽可能直接与标识提供者联合，以便受邀用户无需创建 Microsoft 帐户 (MSA) 或 Azure AD 帐户即可登录到你的共享应用和资源。 你可以使用 [Gogle 联合功能](google-federation.md)，使 B2B 来宾用户可以使用其 Google 帐户登录。 也可使用 [SAML/WS-Fed 标识提供者（预览版）功能](direct-federation.md)与其标识提供者 (IdP) 支持 SAML 2.0 或 WS-Fed 协议的任何组织建立联合。 |
 | 对于不能通过其他方式进行身份验证的 B2B 来宾，则使用电子邮件一次性密码功能 | 在无法通过 Azure AD、Microsoft 帐户 (MSA) 或 Google 联合身份验证等其他方式对 B2B 来宾用户进行身份验证时，可以使用[电子邮件一次性密码](one-time-passcode.md)功能对其进行身份验证。 当来宾用户兑换邀请或访问共享资源时，他们可以请求临时代码，该代码会发送到他们的电子邮件地址。 他们输入此代码后，可以继续登录。 |
 | 在登录页中添加公司品牌 | 你可以自定义登录页面，以便 B2B 来宾用户获得更直观的体验。 请参阅[如何向登录页和访问面板页添加公司品牌](../fundamentals/customize-branding.md)。 |
 | 将隐私声明添加到 B2B 来宾用户兑换体验 | 可以将组织隐私声明的 URL 添加到首次邀请兑换过程，使受邀用户必须同意你的隐私条款才能继续。 请参阅[操作指南：在 Azure Active Directory 中添加组织的隐私信息](../fundamentals/active-directory-properties-area.md)。 |

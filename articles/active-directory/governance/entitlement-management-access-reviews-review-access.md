@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1115c08214db19227b4b8d7be671ce4da1cf2b1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f1a3a146b2622963fb20deeb2a8915eadb028ac3
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87798591"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714397"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中评审访问包的访问权限
 
@@ -31,8 +31,7 @@ Azure AD 权利管理简化了企业管理组、应用程序和 SharePoint 站�
 
 若要查看用户的有效访问包分配，必须满足执行访问评审的先决条件：
 - Azure AD Premium P2
-- 全局管理员
-- 指定的用户管理员、目录所有者或访问包管理者
+- 全局管理员、标识治理管理员、用户管理员、目录所有者或访问包管理员
 
 有关详细信息，请参阅[许可证要求](entitlement-management-overview.md#license-requirements)。
 

@@ -6,15 +6,15 @@ author: bwren
 ms.author: bwren
 ms.date: 03/16/2021
 ms.custom: references_regions
-ms.openlocfilehash: f1f1ea787406d900c8035c0462ef903b848d7e81
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 248f070c37e32cb0d90c3e31eebddc6245446828
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608208"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108765658"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor 代理概述（预览版）
-Azure Monitor 代理 (AMA) 从虚拟机的来宾操作系统中收集监视数据并将数据交付给 Azure Monitor。 本文概述了 Azure Monitor 代理，包括如何安装以及如何配置数据收集。
+Azure Monitor 代理 (AMA) 从 Azure 虚拟机的来宾操作系统中收集监视数据，并将数据交付给 Azure Monitor。 本文概述了 Azure Monitor 代理，包括如何安装以及如何配置数据收集。
 
 ## <a name="relationship-to-other-agents"></a>与其他代理之间的关系
 Azure Monitor 代理会替换 Azure Monitor 当前使用的以下代理以从虚拟机收集来宾数据：

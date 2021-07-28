@@ -8,18 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 83d8c04765bf9aecc9029cdc8d12461231d191f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f0290241e8051a221e75e1e72789178c8bfdbb3d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97795949"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108772380"
 ---
 # <a name="manage-your-personal-application-preferences"></a>管理个人应用程序首选项
 
-*本文适用于操作员、构建者和管理员。*
-
-使用 IoT Central 可以灵活地自定义应用程序来满足需求。 我们还允许每个用户灵活定义其自己的视图。 本文介绍了用户可以应用于其配置文件的各种自定义选项。
+使用 IoT Central 可以灵活地自定义应用程序来满足需求。 IoT Central 还允许每个用户灵活地自定义自己的视图。 本文介绍了用户可以应用于其配置文件的各种自定义选项。
 
 ## <a name="changing-language"></a>更改语言
 

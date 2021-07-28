@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 0875aae8bb9049fc96377c1c98efa7391211d08f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f12e9ab2ab0faf77520805e3be645a14dbd38885
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97632642"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929986"
 ---
-# <a name="configure-azure-application-consistent-snapshot-tool-preview"></a>配置 Azure 应用程序一致性快照工具（预览版）
+# <a name="configure-azure-application-consistent-snapshot-tool"></a>配置 Azure 应用程序一致性快照工具
 
 本文提供有关运行可与 Azure NetApp 文件一起使用的 Azure 应用程序一致性快照工具的配置命令的指南。
 
@@ -129,7 +129,7 @@ cat azacsnap.json
 
 ```output
 {
-  "version": "5.0 Preview",
+  "version": "5.0",
   "logPath": "./logs",
   "securityPath": "./security",
   "comments": [],

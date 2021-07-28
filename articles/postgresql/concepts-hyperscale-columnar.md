@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: c60c398d49a802dbe051ca37c4aea2092ab5144b
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 05/04/2021
+ms.openlocfilehash: c42cfcc35edf33cf30c4d69b4a1fb15d39dd4009
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107023796"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108773676"
 ---
 # <a name="columnar-table-storage-preview"></a>列式表存储（预览版）
 
@@ -22,6 +22,8 @@ ms.locfileid: "107023796"
 > 请参阅[超大规模 (Citus) 的预览功能](hyperscale-preview-features.md)，以查看其他新功能的完整列表。
 
 对于分析和数据仓库工作负载，Azure Database for PostgreSQL - 超大规模 (Citus) 支持仅限追加的列式表存储。 当列（而不是行）在磁盘上连续存储时，数据的可压缩性会提高，并且查询可以更快地请求列的子集。
+
+## <a name="usage"></a>使用情况
 
 若要使用列式存储，请在创建表时指定 `USING columnar`：
 
@@ -67,22 +69,76 @@ chunk count: 6, containing data for dropped columns: 0, zstd compressed: 6
 
 输出显示超大规模 (Citus) 使用 zstd 压缩算法获得 1.31 倍数据压缩。 压缩率会将 a) 暂存在内存中的插入数据的大小与 b) 该数据在最终带区中压缩后的大小进行比较。
 
-由于测量方式的不同，压缩率可能与表的行式与列式存储之间的大小差异匹配，也可能不匹配。 真正发现这种差异的唯一方法是构造包含相同数据的行式和列式表，并进行比较：
+由于测量方式的不同，压缩率可能与表的行式与列式存储之间的大小差异匹配，也可能不匹配。 真正发现这种差异的唯一方法是构造包含相同数据的行式和列式表，并进行比较。
+
+## <a name="measuring-compression"></a>测量压缩
+
+使用更多数据新建示例，以对压缩节省情况进行基准检验。
 
 ```postgresql
-CREATE TABLE contestant_row AS
-    SELECT * FROM contestant;
+-- first a wide table using row storage
+CREATE TABLE perf_row(
+  c00 int8, c01 int8, c02 int8, c03 int8, c04 int8, c05 int8, c06 int8, c07 int8, c08 int8, c09 int8,
+  c10 int8, c11 int8, c12 int8, c13 int8, c14 int8, c15 int8, c16 int8, c17 int8, c18 int8, c19 int8,
+  c20 int8, c21 int8, c22 int8, c23 int8, c24 int8, c25 int8, c26 int8, c27 int8, c28 int8, c29 int8,
+  c30 int8, c31 int8, c32 int8, c33 int8, c34 int8, c35 int8, c36 int8, c37 int8, c38 int8, c39 int8,
+  c40 int8, c41 int8, c42 int8, c43 int8, c44 int8, c45 int8, c46 int8, c47 int8, c48 int8, c49 int8,
+  c50 int8, c51 int8, c52 int8, c53 int8, c54 int8, c55 int8, c56 int8, c57 int8, c58 int8, c59 int8,
+  c60 int8, c61 int8, c62 int8, c63 int8, c64 int8, c65 int8, c66 int8, c67 int8, c68 int8, c69 int8,
+  c70 int8, c71 int8, c72 int8, c73 int8, c74 int8, c75 int8, c76 int8, c77 int8, c78 int8, c79 int8,
+  c80 int8, c81 int8, c82 int8, c83 int8, c84 int8, c85 int8, c86 int8, c87 int8, c88 int8, c89 int8,
+  c90 int8, c91 int8, c92 int8, c93 int8, c94 int8, c95 int8, c96 int8, c97 int8, c98 int8, c99 int8
+);
 
-SELECT pg_total_relation_size('contestant_row') as row_size,
-       pg_total_relation_size('contestant') as columnar_size;
-```
-```
- row_size | columnar_size
-----------+---------------
-    16384 |         24576
+-- next a table with identical columns using columnar storage
+CREATE TABLE perf_columnar(LIKE perf_row) USING COLUMNAR;
 ```
 
-对于我们的微小表，列式存储实际上使用更多空间，但是随着数据增长，压缩会更胜一筹。
+使用同一大型数据集填充两个表：
+
+```postgresql
+INSERT INTO perf_row
+  SELECT
+    g % 00500, g % 01000, g % 01500, g % 02000, g % 02500, g % 03000, g % 03500, g % 04000, g % 04500, g % 05000,
+    g % 05500, g % 06000, g % 06500, g % 07000, g % 07500, g % 08000, g % 08500, g % 09000, g % 09500, g % 10000,
+    g % 10500, g % 11000, g % 11500, g % 12000, g % 12500, g % 13000, g % 13500, g % 14000, g % 14500, g % 15000,
+    g % 15500, g % 16000, g % 16500, g % 17000, g % 17500, g % 18000, g % 18500, g % 19000, g % 19500, g % 20000,
+    g % 20500, g % 21000, g % 21500, g % 22000, g % 22500, g % 23000, g % 23500, g % 24000, g % 24500, g % 25000,
+    g % 25500, g % 26000, g % 26500, g % 27000, g % 27500, g % 28000, g % 28500, g % 29000, g % 29500, g % 30000,
+    g % 30500, g % 31000, g % 31500, g % 32000, g % 32500, g % 33000, g % 33500, g % 34000, g % 34500, g % 35000,
+    g % 35500, g % 36000, g % 36500, g % 37000, g % 37500, g % 38000, g % 38500, g % 39000, g % 39500, g % 40000,
+    g % 40500, g % 41000, g % 41500, g % 42000, g % 42500, g % 43000, g % 43500, g % 44000, g % 44500, g % 45000,
+    g % 45500, g % 46000, g % 46500, g % 47000, g % 47500, g % 48000, g % 48500, g % 49000, g % 49500, g % 50000
+  FROM generate_series(1,50000000) g;
+
+INSERT INTO perf_columnar
+  SELECT
+    g % 00500, g % 01000, g % 01500, g % 02000, g % 02500, g % 03000, g % 03500, g % 04000, g % 04500, g % 05000,
+    g % 05500, g % 06000, g % 06500, g % 07000, g % 07500, g % 08000, g % 08500, g % 09000, g % 09500, g % 10000,
+    g % 10500, g % 11000, g % 11500, g % 12000, g % 12500, g % 13000, g % 13500, g % 14000, g % 14500, g % 15000,
+    g % 15500, g % 16000, g % 16500, g % 17000, g % 17500, g % 18000, g % 18500, g % 19000, g % 19500, g % 20000,
+    g % 20500, g % 21000, g % 21500, g % 22000, g % 22500, g % 23000, g % 23500, g % 24000, g % 24500, g % 25000,
+    g % 25500, g % 26000, g % 26500, g % 27000, g % 27500, g % 28000, g % 28500, g % 29000, g % 29500, g % 30000,
+    g % 30500, g % 31000, g % 31500, g % 32000, g % 32500, g % 33000, g % 33500, g % 34000, g % 34500, g % 35000,
+    g % 35500, g % 36000, g % 36500, g % 37000, g % 37500, g % 38000, g % 38500, g % 39000, g % 39500, g % 40000,
+    g % 40500, g % 41000, g % 41500, g % 42000, g % 42500, g % 43000, g % 43500, g % 44000, g % 44500, g % 45000,
+    g % 45500, g % 46000, g % 46500, g % 47000, g % 47500, g % 48000, g % 48500, g % 49000, g % 49500, g % 50000
+  FROM generate_series(1,50000000) g;
+
+VACUUM (FREEZE, ANALYZE) perf_row;
+VACUUM (FREEZE, ANALYZE) perf_columnar;
+```
+
+对于这些数据，可以在列式表中看到压缩率超过 8 倍。
+
+```postgresql
+SELECT pg_total_relation_size('perf_row')::numeric/
+       pg_total_relation_size('perf_columnar') AS compression_ratio;
+ compression_ratio
+--------------------
+ 8.0196135873627944
+(1 row)
+```
 
 ## <a name="example"></a>示例
 

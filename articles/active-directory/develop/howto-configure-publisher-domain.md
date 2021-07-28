@@ -13,12 +13,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: 9b3840ffb39a204cfa24dcb0430f20ac16587582
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d17bd46d8036ff2535b0dede9ab95121ad3bf7a8
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100104172"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713425"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>如何：配置应用程序的发布者域
 
@@ -86,14 +86,16 @@ ms.locfileid: "100104172"
 
 1. 单击“验证并保存域”按钮。 
 
+在验证域后，无需维护用于验证的资源。 验证完成后，可以删除托管文件。
+
 ### <a name="to-select-a-verified-domain"></a>选择已验证的域
 
-- 如果租户包含已验证的域，请从“选择已验证的域”下拉列表中选择一个域。 
+如果租户包含已验证的域，请从“选择已验证的域”下拉列表中选择一个域。 
 
->[!Note]
-> 应返回的所需“Content-Type”标头为 `application/json`。 如果使用类似 `application/json; charset=utf-8` 的其他任何内容，则可能会收到如下所述的错误 
+> [!NOTE]
+> 应该返回预期的 `Content-Type` 头 `application/json`。 如果使用类似 `application/json; charset=utf-8` 的其他任何内容，则可能会收到如下所述的错误：
 > 
->``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
+> `Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value.`
 >
 
 ## <a name="implications-on-the-app-consent-prompt"></a>对应用许可提示的影响

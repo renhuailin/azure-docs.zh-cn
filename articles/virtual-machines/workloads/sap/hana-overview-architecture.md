@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c1cd4e7d65897634b5a8a8fa8be46275bbd4b88
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 364953de1c56bcf41efb1a3ac9481b17603f3dec
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101676863"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227787"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>什么是 Azure 上的 SAP HANA（大型实例）？
 
@@ -57,8 +57,8 @@ HANA 大型实例指南的不同文档涵盖以下几个方面：
 - [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](hana-overview-high-availability-disaster-recovery.md)
 - [Azure 上的 SAP HANA（大型实例）的故障排除和监视](troubleshooting-monitoring.md)
 - [使用 STONITH 在 SUSE 中进行高可用性设置](./ha-setup-with-stonith.md)
-- [修订版 3 标记的类型 II SKU 的 OS 备份和还原](./os-backup-type-ii-skus.md)
+- [OS 备份](./large-instance-os-backup.md)
 - [使用 Azure 预留节省 SAP HANA 大型实例](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)
 
-后续步骤
+**后续步骤**
 - 请参阅[了解术语](hana-know-terms.md)

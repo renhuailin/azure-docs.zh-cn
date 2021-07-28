@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e803614a02e76d179579a2258abd563b5c58e63a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98016977"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 Azure AD Connect 同步
@@ -70,7 +70,7 @@ ms.locfileid: "98016977"
 * 该报告涵盖同步客户端（Azure AD Connect 1.1.281.0 或更高版本）记录的错误
 * 其中包含上一次在同步引擎中执行同步操作时发生的错误。 （Azure AD 连接器中的“导出”。）
 * 为了在报告中包含最新的数据，用于同步的 Azure AD Connect Health 代理必须与所需的终结点建立出站连接。
-* 系统会使用用于同步的 Azure AD Connect Health 代理上传的数据每隔 30 分钟更新该报告。该报告提供以下重要功能
+* 系统会使用用于同步的 Azure AD Connect Health 代理上传的数据每隔 30 分钟更新该报告。该报告提供以下主要功能
 
   * 错误分类
   * 按类别列出出错的对象

@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 8b3340c00d856b13edefc7728d5baa327399a441
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 4dc2dd06128c373439229b5e649c37caa25b727e
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502923"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715009"
 ---
 # <a name="synchronize-with-azure-blob-storage-by-using-azcopy"></a>使用 AzCopy 与 Azure Blob 存储同步
 
@@ -83,36 +83,40 @@ azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myD
 
 ## <a name="update-a-container-with-changes-in-another-container"></a>使用一个容器的更改来更新另一个容器
 
-此命令中显示的第一个容器是源。 第二个是目标。
+此命令中显示的第一个容器是源。 第二个是目标。 确保向每个源 URL 追加一个 SAS 令牌。  
+
+如果使用 Azure Active Directory (Azure AD) 提供授权凭据，则只能从目标 URL 中省略 SAS 令牌。 请确保已在目标帐户中设置了适当的角色。 请参阅[选项 1：使用 Azure Active Directory](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory)。
 
 > [!TIP]
 > 此示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
 **语法**
 
-`azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive`
+`azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive`
 
 **示例**
 
 ```azcopy
-azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive
+azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive
 ```
 
 ## <a name="update-a-directory-with-changes-to-a-directory-in-another-container"></a>使用对另一个容器中的目录所做的更改来更新一个目录
 
-此命令中显示的第一个目录是源。 第二个是目标。
+此命令中显示的第一个目录是源。 第二个是目标。 确保向每个源 URL 追加一个 SAS 令牌。  
+
+如果使用 Azure Active Directory (Azure AD) 提供授权凭据，则只能从目标 URL 中省略 SAS 令牌。 请确保已在目标帐户中设置了适当的角色。 请参阅[选项 1：使用 Azure Active Directory](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory)。
 
 > [!TIP]
 > 此示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
 **语法**
 
-`azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive`
+`azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>/<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive`
 
 **示例**
 
 ```azcopy
-azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive
+azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive
 ```
 
 ## <a name="synchronize-with-optional-flags"></a>使用可选标志同步
@@ -142,9 +146,9 @@ azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDi
 - [示例：Azure 文件存储](storage-use-azcopy-files.md)
 - [教程：使用 AzCopy 将本地数据迁移到云存储](storage-use-azcopy-migrate-on-premises-data.md)
 
-请参阅以下文章了解如何配置设置、优化性能和排查问题：
+请参阅以下文章，配置设置、优化性能和排查问题：
 
 - [AzCopy 配置设置](storage-ref-azcopy-configuration-settings.md)
 - [优化 AzCopy 的性能](storage-use-azcopy-optimize.md)
-- [使用日志文件排查 Azure 存储中的 AzCopy V10 问题](storage-use-azcopy-configure.md)
+- [使用日志文件对 Azure 存储中的 AzCopy V10 问题进行故障排除](storage-use-azcopy-configure.md)
 

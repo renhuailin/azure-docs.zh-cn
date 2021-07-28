@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 02/05/2021
-ms.openlocfilehash: 7879db0e059358a2df550a8c82f3b692597de8f6
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: e1868794f7e47ccce3efa36b7954a1a2a704e8d6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888991"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739018"
 ---
 # <a name="how-to-create-and-manage-files-in-your-workspace"></a>如何在工作区中创建和管理文件
 
@@ -58,7 +58,7 @@ ms.locfileid: "107888991"
 
 你的工作区包含一个“示例笔记本”文件夹，其中的笔记本旨在帮助你探索 SDK，并用作你自己的机器学习项目的示例。   将这些笔记本克隆到你自己的文件夹中，以运行和编辑它们。  
 
-有关示例，请参阅[教程：创建第一个 ML 试验](tutorial-1st-experiment-sdk-setup.md#azure)。
+有关示例，请参阅[教程：创建第一个 ML 试验](tutorial-train-models-with-aml.md#azure)。
 
 ## <a name="share-files"></a>共享文件
 

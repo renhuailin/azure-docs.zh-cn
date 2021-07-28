@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e00fe3761824462252ce4984beb754385f3eca9
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 245781f22db75d27f335c0a81d0ee9793b076c47
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532153"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713857"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中查看、添加和删除访问包的分配
 
@@ -36,7 +36,7 @@ ms.locfileid: "107532153"
 
 ## <a name="view-who-has-an-assignment"></a>查看谁具有分配
 
-**必备角色：** 全局管理员、用户管理员、目录所有者、访问包管理员或访问包分配管理员
+**必备角色**：全局管理员、标识治理管理员、用户管理员、目录所有者、访问包管理员或访问包分配管理员
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
