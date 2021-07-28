@@ -6,26 +6,41 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 11/17/2020
-ms.openlocfilehash: b69c4fc3ff16cf30181a3529f61af7126b92950b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/09/2021
+ms.openlocfilehash: 63322fac4c6ad5b705deedcd8a80466ddd803814
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95026380"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305695"
 ---
 # <a name="rebalance-shards-in-hyperscale-citus-server-group"></a>在超大规模 (Citus) 服务器组中再平衡分片
 
-若要利用新添加的节点，必须再平衡分布式表[分片](concepts-hyperscale-distributed-data.md#shards)，这意味着将一些分片从现有节点移到新节点。 首先验证新工作器节点的预配是否已成功完成。 然后使用 psql 连接到群集协调器节点并运行以下内容，以启动分片再平衡器：
+若要利用新添加的节点，必须再平衡分布式表[分片](concepts-hyperscale-distributed-data.md#shards)，这意味着将一些分片从现有节点移到新节点。
+
+## <a name="determine-if-the-server-group-needs-a-rebalance"></a>确定服务器组是否需要再平衡
+
+Azure 门户可以显示服务器组中工作器节点之间的数据分布是否均匀。 若要查看此信息，请在“服务器组管理”菜单中转到“分片再平衡器”页 。 如果工作器之间的数据分布不均，则你会看到“建议再平衡”消息，以及每个节点的大小列表。
+
+如果数据已平衡，则你会看到“此时不建议再平衡”消息。
+
+## <a name="run-the-shard-rebalancer"></a>运行分片再平衡器
+
+若要启动分片再平衡器，需要连接到服务器组的协调器节点，然后对分布式表运行 [rebalance_table_shards](reference-hyperscale-functions.md#rebalance_table_shards) SQL 函数。 该函数会再平衡以参数命名的表的[并置](concepts-hyperscale-colocation.md)组中的所有表。 因此，不必为每个分布式表调用该函数，只需在每个并置组的代表表上调用该函数即可。
 
 ```sql
 SELECT rebalance_table_shards('distributed_table_name');
 ```
 
-[rebalance_table_shards](reference-hyperscale-functions.md#rebalance_table_shards) 函数会重新平衡以参数命名的表的[并置](concepts-hyperscale-colocation.md)组中的所有表。 因此，不必为每个分布式表调用该函数，只需在每个并置组的代表表上调用该函数即可。
+## <a name="monitor-rebalance-progress"></a>监视再平衡进度
 
-后续步骤
+若要在启动再平衡器后对其进行监视，请返回 Azure 门户。 在“服务器组管理”中打开“分片再平衡器”页 。 其中会显示“正在再平衡”消息以及两个表。
 
+第一个表显示移入或移出节点的分片数，例如“已移入 6 个，共 24 个”。 第二个表显示每个数据库表的进度：名称、受影响的分片计数、受影响的数据大小，以及再平衡状态。
+
+选择“刷新”按钮可更新页面。 再平衡完成后，页面上会再次显示“此时不建议再平衡”。
+
+## <a name="next-steps"></a>后续步骤
 
 - 详细了解服务器组[性能选项](concepts-hyperscale-configuration-options.md)。
 - 纵向或横向[缩放服务器组](howto-hyperscale-scale-grow.md)

@@ -3,12 +3,12 @@ title: 修正不符合资源
 description: 本指南将指导你完成对 Azure Policy 中不符合策略的资源的修正。
 ms.date: 05/01/2021
 ms.topic: how-to
-ms.openlocfilehash: 677e203b724f2046dfd7ba8d7a509965a36a8172
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 886087a22712e316f4ecd50674f48594d6953dab
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326158"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747460"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
@@ -22,7 +22,7 @@ Azure Policy 会为每个分配创建一个托管标识，但必须具有要向�
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="缺少对托管标识的已定义权限的 deployIfNotExists 策略的屏幕截图。" border="false":::
 
 > [!IMPORTANT]
-> 在以下情况下，必须向分配的托管标识[手动授予访问权限](#manually-configure-the-managed-identity)，否则修正部署将失败：
+> 在以下情况下，必须向分配的托管标识[手动授予访问权限](#manually-configure-the-managed-identity)，否则修正部署会失败：
 >
 > - 如果分配是通过 SDK 创建的
 > - 如果 deployIfNotExists 或 modify 修改的资源在策略分配的范围之外 
@@ -151,7 +151,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. 选择“策略合规性”页中的“修正任务”以获取有关进度的详细信息。 任务所使用的筛选与正在修正的资源列表一同显示。
 
-1. 从“修正任务”页中，右键单击资源以查看修正任务的部署或资源。 在行末尾，选择“相关事件”以查看诸如错误消息之类的详细信息。
+1. 从“修正任务”页中，长按（或右键单击）资源以查看修正任务的部署或资源。 在行末尾，选择“相关事件”以查看诸如错误消息之类的详细信息。
 
    :::image type="content" source="../media/remediate-resources/resource-task-context-menu.png" alt-text="“修正任务”选项卡上的资源上下文菜单的屏幕截图。" border="false":::
 

@@ -5,20 +5,20 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.date: 05/25/2019
+ms.date: 03/22/2021
 ms.author: duau
-ms.openlocfilehash: 2a5730cd75ccb76d25897e9109555113f7355c2f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d0aa9e8bfd565eeb7599d52adc0ac5b854e750bb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92202407"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105937220"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>使用 ExpressRoute 专用对等互连进行灾难恢复设计
 
-ExpressRoute 旨在实现高可用性，以便与 Microsoft 资源建立运营商级专用网络连接。 换句话说，Microsoft 网络中的 ExpressRoute 路径不存在单一故障点。 有关最大化 ExpressRoute 线路可用性的设计注意事项，请参阅[使用 ExpressRoute 进行高可用性设计][HA]。
+ExpressRoute 旨在实现高可用性，以便与 Microsoft 资源建立运营商级专用网络连接。 换言之，Microsoft 网络中的 ExpressRoute 路径不存在单一故障点。 有关最大化 ExpressRoute 线路可用性的设计注意事项，请参阅[使用 ExpressRoute 进行高可用性设计][HA]。
 
-但是，考虑到墨菲的一句格言“如果某件事可能会出错，那么它就会出错”，本文将重点分析的解决方案并不局限于使用单条 ExpressRoute 线路可以解决的故障。  换而言之，本文将会探讨使用异地冗余 ExpressRoute 线路构建可靠的后端网络连接以实现灾难恢复时的网络体系结构考虑因素。
+但是，考虑到墨菲的一句格言“如果某件事可能会出错，那么它就会出错”，本文将重点分析的解决方案并不局限于使用单条 ExpressRoute 线路可以解决的故障。  我们将会探讨使用异地冗余 ExpressRoute 线路构建可靠的后端网络连接以实现灾难恢复时的网络体系结构考虑因素。
 
 >[!NOTE]
 >本文所述的概念同样适用于在虚拟 WAN 下或其外部创建 ExpressRoute 线路的情况。
@@ -26,9 +26,9 @@ ExpressRoute 旨在实现高可用性，以便与 Microsoft 资源建立运营�
 
 ## <a name="need-for-redundant-connectivity-solution"></a>对冗余连接解决方案的需求
 
-在某些情况下，（Microsoft、网络服务提供商、客户或其他云服务提供商的）整个区域性服务可能会降级。 造成此类区域范围的服务影响的根本原因包括自然灾难。 因此，若要实现业务连续性并使任务关键型应用程序保持正常运行，必须规划好灾难恢复。   
+在某些情况下，（Microsoft、网络服务提供商、客户或其他云服务提供商的）整个区域性服务可能会降级。 造成此类区域范围的服务影响的根本原因包括自然灾难。 正因如此，若要实现业务连续性并使任务关键型应用程序保持正常运行，必须规划好灾难恢复。   
 
-无论是在 Azure 区域、本地还是其他任何位置运行任务关键型应用程序，都可以使用另一个 Azure 区域作为故障转移站点。 以下文章介绍了从应用程序和前端访问角度进行的灾难恢复：
+无论是在 Azure 区域、本地还是其他任何位置运行何种任务关键型应用程序，都可以使用另一个 Azure 区域作为故障转移站点。 以下文章介绍了从应用程序和前端访问角度进行的灾难恢复：
 
 - [企业级灾难恢复][Enterprise DR]
 - [使用 Azure Site Recovery 进行 SMB 灾难恢复][SMB DR]
@@ -37,9 +37,19 @@ ExpressRoute 旨在实现高可用性，以便与 Microsoft 资源建立运营�
 
 ## <a name="challenges-of-using-multiple-expressroute-circuits"></a>使用多条 ExpressRoute 线路时的难点
 
-如果你使用多个连接来互连一组相同的网络，则会在网络之间引入并行路径。 未正确架构的并行路径可能会导致非对称路由。 如果路径中包含有状态实体（例如 NAT、防火墙），则非对称路由可能会阻止流量流。  通常，ExpressRoute 专用对等路径中不会包含 NAT 或防火墙等有状态实体。 因此，通过 ExpressRoute 专用对等互连进行非对称路由不一定会阻止流量流。
+如果你使用多个连接来互连一组相同的网络，则会在网络之间引入并行路径。 未正确架构的并行路径可能会导致非对称路由。 如果路径中包含有状态实体（例如 NAT、防火墙），则非对称路由可能会阻止流量流。  通常，ExpressRoute 专用对等路径中不会包含 NAT 或防火墙等有状态实体。 正因如此，通过 ExpressRoute 专用对等互连进行非对称路由不一定会阻止流量流。
  
-但是，如果你对异地冗余的并行路径中的流量进行负载均衡，则不管是否存在有状态实体，都会遇到不一致的网络性能。 本文介绍如何解决这些难题。
+但是，如果你对异地冗余的并行路径中的流量进行负载均衡，则不管是否存在有状态实体，都会遇到不一致的网络性能。 这些异地冗余的并行路径可能会穿过[各位置的提供商](expressroute-locations-providers.md#partners)页中提到的相同或不同都市圈。 
+
+### <a name="same-metro"></a>同一都市圈
+
+[许多都市圈](expressroute-locations-providers.md#global-commercial-azure)有两个 ExpressRoute 位置。 例如“阿姆斯特丹”和“阿姆斯特丹 2” 。 设计冗余时，可以使用同一都市圈中的这两个位置构建指向 Azure 的两条并行路径。 这种设计的优势在于，当发生应用程序故障转移时，本地应用程序与 Microsoft 之间的端到端延迟将保持大致相同。 但是，如果发生地震之类的自然灾害，则这两条路径的连接可能不再可用。
+
+### <a name="different-metros"></a>不同都市圈
+
+使用不同的都市圈设计冗余时，应选择同一[地缘政治区域](expressroute-locations-providers.md#locations)中的辅助位置。 若要选择地缘政治区域外部的位置，需要为并行路径中的两条线路使用高级 SKU。 此配置的优势是可以大大减少自然灾害导致两条链接发生中断的可能性，代价是端到端的延迟会增大。
+
+本文将会探讨如何解决配置异地冗余的路径时可能遇到的难题。
 
 ## <a name="small-to-medium-on-premises-network-considerations"></a>中小型本地网络的考虑因素
 
@@ -100,7 +110,7 @@ ExpressRoute 旨在实现高可用性，以便与 Microsoft 资源建立运营�
 
 ## <a name="large-distributed-enterprise-network"></a>大型分布式企业网络
 
-如果你使用大型分布式企业网络，则可能已部署多条 ExpressRoute 线路。 本部分介绍如何使用主动-主动 ExpressRoute 线路（无需额外的备用线路）设计灾难恢复。 
+如果你使用大型分布式企业网络，则可能已部署多条 ExpressRoute 线路。 本部分介绍如何使用主动-主动 ExpressRoute 线路（无需其他备用线路）设计灾难恢复。 
 
 让我们考虑下图所示的示例。 在此示例中，Contoso 已通过两个不同对等互连位置的 ExpressRoute 线路，将两个本地位置连接到两个不同 Azure 区域中的两个 Contoso IaaS 部署。 
 

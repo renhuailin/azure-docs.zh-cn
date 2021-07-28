@@ -5,15 +5,15 @@ author: chpalm
 manager: anvalent
 services: azure-communication-services
 ms.author: chpalm
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9ccc192bb5cf4c5e183e21add8e73d9e096d281c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: bb40c4bdcdc61cfa3d82ea5313a1c6b084bb1514
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136006"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110667"
 ---
 # <a name="region-availability-and-data-residency"></a>区域可用性和数据驻留
 
@@ -21,7 +21,7 @@ Azure 通信服务致力于帮助我们的客户满足他们的隐私和个人�
 
 ## <a name="data-residency"></a>数据驻留
 
-创建通信服务资源时，需要指定一个地理位置（非 Azure 数据中心）。 通信服务静态存储的所有数据都将保留在该地理位置中，数据中心由通信服务在内部选择。 数据可在异地传输或处理。 必需使用这些全局终结点来向最终用户提供高性能、低延迟的体验，无论他们位于何处。
+创建通信服务资源时，需要指定一个地理位置（非 Azure 数据中心）。 通信服务静态存储的所有聊天消息和资源数据都将保留在该地理位置（由通信服务在内部选择的数据中心中）。 数据可在异地传输或处理。 必需使用这些全局终结点来向最终用户提供高性能、低延迟的体验，无论他们位于何处。
 
 ## <a name="data-residency-and-events"></a>数据驻留和事件
 

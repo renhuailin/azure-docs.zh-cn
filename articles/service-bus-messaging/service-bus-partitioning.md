@@ -4,12 +4,12 @@ description: 介绍如何使用多个消息中转站对服务总线队列和主�
 ms.topic: article
 ms.date: 04/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 36b3437d3f5e8b27f38ca414fc8a4b954226e608
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 4eba3a911eb5522a1d6ae46f597e99c34d56ef0d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136798"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108743212"
 ---
 # <a name="partitioned-queues-and-topics"></a>分区队列和主题
 
@@ -79,7 +79,7 @@ committableTransaction.Commit();
 
 如果设置了任何作为分区键的属性，服务总线会将消息固定到特定分区。 无论是否使用事务，该行为都会发生。 建议如非必须不要指定分区键。
 
-### <a name="use-sessions-with-partitioned-entities"></a>将会话用于分区实体
+### <a name="use-transactions-in-sessions-with-partitioned-entities"></a>将会话中的事务与已分区的实体配合使用
 
 要将事务消息发送到会话感知的主题或队列，消息必须设置会话 ID 属性。 如果还指定了分区键属性，该属性必须与会话 ID 属性相同。 如果它们不同，服务总线会返回无效操作异常。
 
@@ -113,12 +113,6 @@ committableTransaction.Commit();
 * 高级消息传送层不支持分区队列和主题。 使用 SessionId 在高级层中支持会话。 
 * 分区队列和主题不支持在单个事务中发送属于不同会话的消息。
 * 服务总线当前允许为每个命名空间最多创建 100 个分区队列或主题。 每个分区队列或主题都将计入每个命名空间的 10,000 个实体的配额中（不适用于高级层）。
-
-## <a name="other-features"></a>其他功能
-- 分区实体支持添加或删除规则，但不支持在事务下执行这些操作。 
-- AMQP 支持通过分区实体发送和接收消息。
-- AMQP 支持以下操作：成批发送、成批接收、按序列号接收、速览、续订锁定、计划消息、取消计划的消息、添加规则、删除规则、会话续订锁定、设置会话状态、获取会话状态和枚举会话。
-
 
 
 ## <a name="next-steps"></a>后续步骤

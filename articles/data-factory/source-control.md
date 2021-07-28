@@ -2,17 +2,17 @@
 title: 源代码管理
 description: 了解如何在 Azure 数据工厂中配置源代码管理
 ms.service: data-factory
-author: dcstwh
-ms.author: weetok
+author: nabhishek
+ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/26/2021
-ms.openlocfilehash: 7691c285bcc1c490878f5055468b0a57b6248679
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 77f5d940c06ef5a2a504033225b42b7ddd2c17c1
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101719325"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903265"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure 数据工厂中的源代码管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -23,10 +23,10 @@ ms.locfileid: "101719325"
 - 数据工厂服务未优化协作和版本控制。
 - 部署数据工厂本身所需的 Azure 资源管理器模板没有包括在内。
 
-为了提供更好的创作体验，Azure 数据工厂支持使用 Azure Repos 或 GitHub 配置 Git 存储库。 Git 是一个支持简化变更跟踪和协作的版本控制系统。 本文将概述如何配置和运行 Git 存储库，并重点介绍最佳做法和故障排除指南。
+为了提供更好的创作体验，Azure 数据工厂支持使用 Azure Repos 或 GitHub 配置 Git 存储库。 Git 是一个支持简化变更跟踪和协作的版本控制系统。 本文将概述 Git 存储库的配置和工作原理，并重点介绍最佳做法和故障排除指南。
 
 > [!NOTE]
-> 对于 Azure 政府云，只有 GitHub Enterprise 可用。
+> 对于 Azure 政府版云，仅 GitHub Enterprise Server 可用。
 
 若要详细了解 Azure 数据工厂如何与 Git 集成，请观看下面时长 15 分钟的教程视频：
 
@@ -39,7 +39,7 @@ ms.locfileid: "101719325"
 -   **源代码管理：** 随着数据工厂工作负载变得至关重要，你可能需要将工厂与 Git 集成，以利用以下几种源代码管理优势：
     -   跟踪/审核更改的功能。
     -   还原导致 bug 的更改的功能。
--   **部分保存：** 在通过数据工厂服务进行创作时，不能将更改保存为草稿，所有发布都必须通过数据工厂验证。 无论是管道还没有完成，还是你只是不想在计算机故障时丢失更改，Git 集成都支持数据工厂资源的增量更改，而不管它们处于什么状态。 配置 git 存储库可以保存更改，让你可以在执行满意的更改测试后才进行发布。
+-   **部分保存：** 在通过数据工厂服务进行创作时，不能将更改保存为草稿，所有发布都必须通过数据工厂验证。 无论是管道尚未完成还是你只是不想在计算机崩溃时丢失更改，Git 集成都支持对数据工厂资源进行增量更改，无论资源处于何种状态均是如此。 配置 git 存储库可以保存更改，让你可以在执行满意的更改测试后才进行发布。
 -   **协作和控制：** 如果有多个团队成员参与同一工厂，则可能需要通过代码评审流程让团队成员相互协作。 你还可以对工厂进行设置，使参与者拥有不同的权限。 可以仅允许某些团队成员通过 Git 进行更改，并只允许团队中的某些人将更改“发布”到工厂。
 -   **更好的 CI/CD：** 如果要通过 [持续交付过程](continuous-integration-deployment.md)部署到多个环境中，git 集成可使某些操作更简单。 部分此类操作包括：
     -   将发布管道配置为开发工厂中发生任何更改后立即自动触发。
@@ -47,23 +47,23 @@ ms.locfileid: "101719325"
 -   **性能更好：** 使用 git 集成的工厂平均加载速度是通过数据工厂服务创作的 10 倍。 性能提升的原因在于资源是通过 Git 下载的。
 
 > [!NOTE]
-> 配置有 Git 存储库时，Azure 数据工厂 UX 中将禁用直接使用数据工厂服务进行创作。 通过 PowerShell 或 SDK 所做的更改会直接发布到数据工厂服务中，而不会进入 Git。
+> 配置有 Git 存储库时，Azure 数据工厂 UX 中将禁用直接使用数据工厂服务进行创作。 通过 PowerShell 或 SDK 进行的更改将直接发布到数据工厂服务，而不会输入到 Git 中。
 
 ## <a name="connect-to-a-git-repository"></a>连接到 Git 存储库
 
-对于 Azure Repos 和 GitHub，有四种不同的方法可以将 Git 存储库连接到数据工厂。 连接到 Git 存储库后，可以在[管理中心](author-management-hub.md)内“源代码管理”部分中的“Git 配置”下查看和管理配置
+可通过四种不同的方法将 Git 存储库连接到 Azure Repos 和 GitHub 的数据工厂。 连接到 Git 存储库后，可以在[管理中心](author-management-hub.md)内“源代码管理”部分中的“Git 配置”下查看和管理配置
 
 ### <a name="configuration-method-1-home-page"></a>配置方法 1：主页
 
 在 Azure 数据工厂主页中，选择“设置代码存储库”。
 
-![在主页中配置代码存储库](media/author-visually/configure-repo.png)
+![从主页配置代码存储库](media/author-visually/configure-repo.png)
 
 ### <a name="configuration-method-2-authoring-canvas"></a>配置方法 2：创作画布
 
 在 Azure 数据工厂用户体验创作画布中，依次选择“数据工厂”下拉菜单和“设置代码存储库”。
 
-![通过创作配置代码存储库设置](media/author-visually/configure-repo-2.png)
+![从创作画布配置代码存储库设置](media/author-visually/configure-repo-2.png)
 
 ### <a name="configuration-method-3-management-hub"></a>配置方法 3：管理中心
 
@@ -93,7 +93,7 @@ ms.locfileid: "101719325"
 
 配置窗格将显示以下 Azure Repos 代码存储库设置：
 
-| 设置 | 描述 | 值 |
+| 设置 | 说明 | 值 |
 |:--- |:--- |:--- |
 | **存储库类型** | Azure Repos 代码存储库的类型。<br/> | Azure DevOps Git 或 GitHub |
 | **Azure Active Directory** | Azure AD 租户的名称。 | `<your tenant name>` |
@@ -246,8 +246,8 @@ Azure 数据工厂一次只能有一个发布分支。 当指定新的发布分�
 
 通常，你不希望每个团队成员都有更新数据工厂的权限。 建议使用以下权限设置：
 
-*   所有团队成员都应具有对数据工厂的读取权限。
-*   应只允许一组选定的人员将更改发布到数据工厂中。 为此，他们必须在包含数据工厂的“资源组”上具有“数据工厂参与者”角色。 有关权限的详细信息，请参阅 [Azure 数据工厂的角色和权限](concepts-roles-permissions.md)。
+*   所有团队成员都应对数据工厂具有读取权限。
+*   只允许选定的一组人员发布到数据工厂。 为此，他们必须在包含数据工厂的资源组上具有“数据工厂参与者”角色。 有关权限的详细信息，请参阅 [Azure 数据工厂的角色和权限](concepts-roles-permissions.md)。
 
 建议不要允许直接签入到协作分支。 此限制有助于防止出现 bug，因为每个签入都将经历[创建功能分支](source-control.md#creating-feature-branches)中描述的拉取请求审阅过程。
 
@@ -275,7 +275,7 @@ Azure 数据工厂一次只能有一个发布分支。 当指定新的发布分�
 
 ## <a name="switch-to-a-different-git-repository"></a>切换到不同 Git 存储库
 
-若要切换到另一个 Git 存储库，请转到“源代码管理”下的管理中心的“Git 配置”页。 选择“断开连接”。 
+若要切换到不同 Git 存储库，请转到管理中心的“源代码管理”下的“Git 配置”页面。 选择“断开”。 
 
 ![“Git”图标](media/author-visually/remove-repository.png)
 

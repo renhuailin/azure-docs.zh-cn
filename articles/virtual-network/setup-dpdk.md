@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: 3b4d66525ec52ef2382dfbe97bc09278e35b31fb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f2771284925e35cea975febdabe2ca377a192df8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102124663"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127112"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>在 Linux 虚拟机中设置 DPDK
 
@@ -36,17 +36,18 @@ DPDK 可以在支持多个操作系统分发版的 Azure 虚拟机中运行。 D
 **提高每秒包数 (PPS)** ：绕过内核并控制用户空间中的包可消除上下文切换，从而减少周期计数。 同时，这还会提高 Azure Linux 虚拟机中每秒处理的包比率。
 
 
-## <a name="supported-operating-systems"></a>支持的操作系统
+## <a name="supported-operating-systems-minimum-versions"></a>支持的操作系统最低版本
 
 支持 Azure 市场中的以下分发版：
 
 | Linux OS     | 内核版本               | 
 |--------------|---------------------------   |
-| Ubuntu 16.04 | 4.15.0-1014-azure+           | 
 | Ubuntu 18.04 | 4.15.0-1014-azure+           |
 | SLES 15 SP1  | 4.12.14-8.19-azure+          | 
 | RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64+  | 
 | CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64+  | 
+
+所记录的版本是最低要求。 还支持较新版本。
 
 **自定义内核支持**
 
@@ -60,22 +61,26 @@ DPDK 可以在支持多个操作系统分发版的 Azure 虚拟机中运行。 D
 
 必须在 Linux 虚拟机上启用加速网络。 虚拟机应至少有两个网络接口，其中一个接口用于管理。 不建议在管理界面上启用加速网络。 了解如何[创建启用加速网络的 Linux 虚拟机](create-vm-accelerated-networking-cli.md)。
 
-## <a name="install-dpdk-dependencies"></a>安装 DPDK 依赖项
-
-### <a name="ubuntu-1604"></a>Ubuntu 16.04
-
-```bash
-sudo add-apt-repository ppa:canonical-server/dpdk-azure -y
-sudo apt-get update
-sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
-```
+## <a name="install-dpdk"></a>安装 DPDK
 
 ### <a name="ubuntu-1804"></a>Ubuntu 18.04
 
 ```bash
-sudo add-apt-repository ppa:canonical-server/dpdk-azure -y
+sudo add-apt-repository ppa:canonical-server/server-backports -y
 sudo apt-get update
-sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
+sudo apt-get install -y dpdk
+```
+
+### <a name="ubuntu-2004-and-newer"></a>Ubuntu 20.04 和更高版本
+
+```bash
+sudo apt-get install -y dpdk
+```
+
+### <a name="debian-10-and-newer"></a>Debian 10 和更高版本
+
+```bash
+sudo apt-get install -y dpdk
 ```
 
 ### <a name="rhel75centos-75"></a>RHEL7.5/CentOS 7.5
@@ -255,3 +260,4 @@ DPDK 应用程序必须通过 Azure 中公开的防故障 PMD 运行。 如果�
 
 * [EAL 选项](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#eal-command-line-options)
 * [Testpmd 命令](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#testpmd-command-line-options)
+* [数据包转储命令](https://doc.dpdk.org/guides/tools/pdump.html#pdump-tool)

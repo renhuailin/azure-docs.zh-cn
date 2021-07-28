@@ -5,14 +5,14 @@ author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 05/04/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 220a6c2107063734201064115898611c20cab650
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0041299031934bd76e4ef0700d2e75e2d61516cd
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304454"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108745448"
 ---
 # <a name="add-components-on-the-portal"></a>在门户中添加组件
 
@@ -26,9 +26,9 @@ ms.locfileid: "107304454"
 
 提交来进行认证的每个项目都将包含一个“客户可用产品”组件（在许多情况下，它将表示整个产品本身）。 为了更好地了解“客户可用产品”组件类型的特性，请查看我们的[认证术语表](./resources-glossary.md)。 为了准确捕捉到你的设备，所有其他组件都由你自行决定是否要包括在内。
 
-1. 在“产品详细信息”选项卡上选择`Add a component`。
+1. 在“硬件”选项卡上选择“`Add a component`”。
 
-    ![“添加组件”链接](./media/images/add-a-component-link.png)
+    ![“添加组件”链接](./media/images/add-component-new.png)
 
 1. 填写组件的相关表单域。
 
@@ -112,4 +112,3 @@ ms.locfileid: "107304454"
 
 - [教程：添加设备详细信息](tutorial-02-adding-device-details.md)
 - [编辑已发布的设备](how-to-edit-published-device.md)
-

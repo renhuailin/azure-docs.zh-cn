@@ -1,15 +1,15 @@
 ---
 title: 针对受限制请求的指南
 description: 了解如何分组、错开、分页以及并行查询，以避免 Azure Resource Graph 限制请求。
-ms.date: 01/27/2021
+ms.date: 04/09/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ddd3cf4d411733e831c94039c3bc9aeaf0e95271
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 87d94da5ae247f80d1d7eb26e7aea3d9f582b370
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98917701"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751960"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>有关 Azure Resource Graph 中的受限制请求的指南
 
@@ -31,7 +31,7 @@ Azure Resource Graph 基于时段为每个用户分配配额数量。 例如，�
 - `x-ms-user-quota-remaining` (int)：用户的剩余资源配额。 此值映射到查询计数。
 - `x-ms-user-quota-resets-after` (hh:mm:ss)：在用户的配额消耗量重置之前的持续时间。
 
-当安全主体有权访问租户或管理组[查询范围](./query-language.md#query-scope)中 5000 个以上的订阅时，响应仅限于前 5000 个订阅，`x-ms-tenant-subscription-limit-hit` 标头将返回为 `true`。
+当安全主体有权访问租户或管理组[查询范围](./query-language.md#query-scope)中 5,000 个以上的订阅时，响应仅限于前 5,000 个订阅，`x-ms-tenant-subscription-limit-hit` 标头将返回为 `true`。
 
 为了说明标头的工作方式，我们来看看具有标头并且值为 `x-ms-user-quota-remaining: 10` 和 `x-ms-user-quota-resets-after: 00:00:03` 查询响应。
 
@@ -156,7 +156,7 @@ while (/* Need to query more? */)
 
 ### <a name="query-in-parallel"></a>并行查询
 
-虽然建议进行分组而不是采用并行，不过有时候无法轻松地对查询分组。 在这些情况下，可能需要通过并行发送多个查询来查询 Azure Resource Graph。 下面是在此类情况下如何基于限制标头进行回退的示例：
+虽然建议进行分组而不是采用并行，不过有时候无法轻松地对查询分组。 在这些情况下，可能需要通过并行发送多个查询来查询 Azure Resource Graph。 以下示例演示在这种情况下如何基于限制标头进行回退：
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryGroup = /* Groups of queries  */
@@ -174,7 +174,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
         var azureOperationResponse = await this.resourceGraphClient
             .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
             .ConfigureAwait(false);
-        
+
         var responseHeaders = azureOperationResponse.response.Headers;
         int remainingQuota = /* read and parse x-ms-user-quota-remaining from responseHeaders */
         TimeSpan resetAfter = /* read and parse x-ms-user-quota-resets-after from responseHeaders */
@@ -190,7 +190,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 ## <a name="pagination"></a>分页
 
-由于 Azure Resource Graph 在单个查询响应中最多返回 1000 个条目，因此可能需要对查询[分页](./work-with-data.md#paging-results)，以获取所查找的完整数据集。 但是，某些 Azure Resource Graph 客户端处理分页的方式与其他客户端不同。
+由于 Azure Resource Graph 在单个查询响应中最多返回 1,000 个条目，因此可能需要对查询[分页](./work-with-data.md#paging-results)，以获取所查找的完整数据集。 但是，某些 Azure Resource Graph 客户端处理分页的方式与其他客户端不同。
 
 - C# SDK
 
@@ -219,7 +219,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 - Azure CLI/Azure PowerShell
 
-  使用 Azure CLI 或 Azure PowerShell 时，对 Azure Resource Graph 进行的查询会自动分页，以便最多提取 5000 个条目。 查询结果会返回来自所有分页调用的条目的合并列表。 在这种情况下，根据查询结果中的条目数，单个分页查询可能会消耗多个查询配额。 例如，在以下示例中，运行一次查询最多可能会消耗五个查询配额：
+  使用 Azure CLI 或 Azure PowerShell 时，对 Azure Resource Graph 进行的查询会自动分页，以便最多提取 5,000 个条目。 查询结果会返回来自所有分页调用的条目的合并列表。 在这种情况下，根据查询结果中的条目数，单个分页查询可能会消耗多个查询配额。 例如，在以下示例中，运行一次查询最多可能会消耗五个查询配额：
 
   ```azurecli-interactive
   az graph query -q 'Resources | project id, name, type' --first 5000
@@ -231,7 +231,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 ## <a name="still-get-throttled"></a>仍受到限制？
 
-如果在执行以上建议后仍受到限制，请通过 [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com) 与团队联系。
+如果在执行以上建议后仍受到限制，请联系 [Azure Resource Graph 团队](mailto:resourcegraphsupport@microsoft.com)。
 
 请提供以下详细信息：
 

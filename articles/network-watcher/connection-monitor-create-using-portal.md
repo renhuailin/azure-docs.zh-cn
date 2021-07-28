@@ -4,7 +4,7 @@ titleSuffix: Azure Network Watcher
 description: 本文介绍如何使用 Azure 门户在连接监视器中创建监视器。
 services: network-watcher
 documentationcenter: na
-author: vinigam
+author: vinynigam
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: how-to
@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: edf671c8005fa67f6161f383c503ca278dba3105
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9942b608601b495dd041a8b59aaecb3f5dd81fa7
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101702158"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505223"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>使用 Azure 门户在连接监视器中创建监视器
 
 > [!IMPORTANT]
-> 自 2021 年 7 月 1 日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你还将无法在连接监视器（经典）中添加新的连接监视器。 可以继续使用在 2021 年 7 月 1 日之前创建的测试和连接监示器。 为了最大程度地减少当前工作负荷的服务中断，请在 2024 年 2 月 29 日之前，在 Azure 网络观察程序中[将测试从网络性能监视器迁移](migrate-to-connection-monitor-from-network-performance-monitor.md)到新连接监视器，或[从连接监视器（经典）迁移](migrate-to-connection-monitor-from-connection-monitor-classic.md)到新连接监视器。
+> 自 2021 年 7 月 1 日起，你将无法在现有工作区中添加新测试，也无法在网络性能监视器中启用新的工作区。 你还将无法在连接监视器（经典版）中添加新的连接监视器。 可以继续使用在 2021 年 7 月 1 日之前创建的测试和连接监视器。 为了最大程度地减少当前工作负荷的服务中断，请在 2024 年 2 月 29 日之前，在 Azure 网络观察程序中[将测试从网络性能监视器迁移到新连接监视器](migrate-to-connection-monitor-from-network-performance-monitor.md)或[从连接监视器（经典版）迁移到新连接监视器](migrate-to-connection-monitor-from-connection-monitor-classic.md)。
 
 了解如何使用连接监视器监视资源之间的通信。 本文介绍了如何使用 Azure 门户创建监视器。 连接监视器支持混合部署和 Azure 云部署。
 
@@ -121,7 +121,7 @@ ms.locfileid: "101702158"
 
    * 若要选择本地代理，请选择“非 Azure 终结点”选项卡。默认情况下，代理按区域分组到工作区中。 所有这些工作区都配置了网络性能监视器。 
    
-       如果需要将网络性能监视器添加到工作区，请通过 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview)获取。 有关如何添加网络性能监视器的信息，请参阅 [Azure Monitor 中的监视解决方案](../azure-monitor/insights/solutions.md)。 
+       如果需要将网络性能监视器添加到工作区，请通过 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview)获取。 有关如何添加网络性能监视器的信息，请参阅 [Azure Monitor 中的监视解决方案](../azure-monitor/insights/solutions.md)。 若要了解如何为本地计算机配置代理，请参阅[用于本地计算机的代理](connection-monitor-overview.md#agents-for-on-premises-machines)。
    
        在“创建连接监视器”下的“基本信息”选项卡上，已选择默认区域。  如果更改了区域，则可以在新区域的工作区中选择代理。 可选择一个或多个代理或子网。 在“子网”视图中，可以选择要监视的特定 IP。 如果你添加多个子网，则会创建一个自定义的本地网络“OnPremises_Network_1”。 还可以通过更改“分组依据”选择器来按代理分组。
 
@@ -144,7 +144,7 @@ ms.locfileid: "101702158"
     
     * 若要选择非 Azure 代理作为目标，请选择“非 Azure 终结点”选项卡。默认情况下，代理按区域分组到工作区中。 所有这些工作区都配置了网络性能监视器。 
     
-      如果需要将网络性能监视器添加到工作区，请通过 Azure 市场获取。 有关如何添加网络性能监视器的信息，请参阅 [Azure Monitor 中的监视解决方案](../azure-monitor/insights/solutions.md)。 
+      如果需要将网络性能监视器添加到工作区，请通过 Azure 市场获取。 有关如何添加网络性能监视器的信息，请参阅 [Azure Monitor 中的监视解决方案](../azure-monitor/insights/solutions.md)。 若要了解如何为本地计算机配置代理，请参阅[用于本地计算机的代理](connection-monitor-overview.md#agents-for-on-premises-machines)。
 
       在“创建连接监视器”下的“基本信息”选项卡上，已选择默认区域。 ****  ****   如果更改了区域，则可以在新区域的工作区中选择代理。 可选择一个或多个代理或子网。 在“子网”视图中，可以选择要监视的特定 IP。 如果你添加多个子网，则会创建一个自定义的本地网络“OnPremises_Network_1”。  
 

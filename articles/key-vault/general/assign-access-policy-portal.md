@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 443b269e7155fc206ee50e7907a7acded2c22f53
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 09e7d954261b5bfb680486e06ed298e11974847d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751483"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749712"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>使用 Azure 门户分配 Key Vault 访问策略
 
@@ -40,7 +40,7 @@ Key Vault 访问策略确定给定的安全主体（即用户、应用程序或�
 
     ![为该访问策略选择安全主体](../media/authentication/assign-policy-portal-03.png)
 
-    如果使用的是应用的托管标识，请搜索并选择该应用本身的名称。 （若要详细了解托管标识和服务主体，请参阅 [Key Vault 身份验证 - 应用标识和服务主体](authentication.md#app-identity-and-security-principals)。）
+    如果使用的是应用的托管标识，请搜索并选择该应用本身的名称。 有关安全主体的详细信息，请参阅 [Key Vault 身份验证](authentication.md)。
  
 1.  返回“添加访问策略”窗格，选择“添加”以保存该访问策略 。
 
@@ -53,6 +53,5 @@ Key Vault 访问策略确定给定的安全主体（即用户、应用程序或�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Key Vault 安全性：标识和访问管理](security-overview.md#identity-management)
-- [保护 Key Vault](security-overview.md)
+- [Azure Key Vault 安全性：标识和访问管理](security-features.md#identity-management)
 - [Azure Key Vault 开发人员指南](developers-guide.md)

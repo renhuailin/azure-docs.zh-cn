@@ -8,18 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c2d5310d1a664aa2e22d4241d8066e41d9c82bd1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bcda4ca252101ed1505f71a1b5f9fe9a0d8d16b9
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97796714"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728385"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central 体系结构
 
-本文概述 Microsoft Azure IoT Central 体系结构。
-
-![顶层体系结构](media/concepts-architecture/architecture.png)
+本文概述了 Azure IoT Central 体系结构的重要概念。
 
 ## <a name="devices"></a>设备
 
@@ -28,7 +26,7 @@ ms.locfileid: "97796714"
 - 发送度量，例如遥测。
 - 与应用程序同步设置。
 
-在 Azure IoT Central 中，设备可以与应用程序交换的数据在设备模板中指定。 有关设备模板的详细信息，请参阅[元数据管理](#metadata-management)。
+在 Azure IoT Central 中，设备可以与应用程序交换的数据在设备模板中指定。 有关设备模板的详细信息，请参阅[设备模板](concepts-device-templates.md)。
 
 若要详细了解设备如何连接到 Azure IoT Central 应用程序，请参阅[设备连接](concepts-get-connected.md)。
 
@@ -117,29 +115,6 @@ Azure IoT Central 在云中存储应用程序数据。 存储的应用程序数�
 
 Azure IoT Central 将时序存储用于从设备发送的度量数据。 设备提供的时序数据供分析服务使用。
 
-## <a name="analytics"></a>分析
-
-分析服务负责生成应用程序显示的自定义报告数据。 操作员可以[自定义在应用程序中显示的分析](howto-create-analytics.md)。 分析服务在 [Azure 时序见解](https://azure.microsoft.com/services/time-series-insights/)基础上构建，可以处理从设备发送的度量数据。
-
-## <a name="rules-and-actions"></a>规则和操作
-
-[规则和操作](tutorial-create-telemetry-rules.md)可以紧密地配合使用，以便自动完成应用程序中的任务。 开发者可以根据设备遥测（例如温度超过定义的阈值）来定义规则。 Azure IoT Central 使用流处理器来确定何时满足规则条件。 规则条件在得到满足的情况下，会触发开发者定义的操作。 例如，可以通过某个操作向工程师发送通知电子邮件，告知对方设备中的温度过高。
-
-## <a name="metadata-management"></a>元数据管理
-
-在 Azure IoT Central 应用程序中，设备模板用于定义设备类型的行为和功能。 例如，致冷器设备模板指定致冷器发送给应用程序的遥测。
-
-![模板体系结构](media/concepts-architecture/template-architecture.png)
-
-在 IoT Central 中，[设备模板](concepts-device-templates.md)包含：
-
-- 设备模型，指定设备的功能，例如它发送的遥测数据、用于定义设备状态的属性，以及设备响应的命令。 设备功能已组织到一个或多个界面中。
-- **云属性** 指定 IoT Central 为设备存储的属性。 这些属性只存储在 IoT Central 中，而不会发送到设备。
-- **视图** 指定生成器创建的、让操作员监视和管理设备的仪表板和窗体。
-- 自定义，构建人员可利用自定义替代设备模型中的某些定义，使其与 IoT Central 应用程序更相关。
-
-一个应用程序可以有一个或多个基于每个设备模板的模拟设备和真实设备。
-
 ## <a name="data-export"></a>数据导出
 
 在 Azure IoT Central 应用程序中，可以[连续将数据导出](howto-export-data.md)到自己的 Azure 事件中心和 Azure 服务总线实例。 还可以定期将数据导出到 Azure Blob 存储帐户。 IoT Central 可以导出度量、设备和设备模板。
@@ -160,13 +135,6 @@ Azure IoT Central 中的安全功能包括：
 - 通过 Azure Active Directory 或 Microsoft 帐户提供身份验证。 支持双重身份验证。
 - 完全的租户隔离。
 - 设备级别安全性。
-
-## <a name="ui-shell"></a>UI Shell
-
-UI Shell 是一个现代的基于 HTML5 浏览器的应用程序，响应速度快。
-管理员可以通过应用自定义主题，并将帮助链接修改为指向你自己的自定义帮助资源，来自定义应用程序的 UI。 若要详细了解 UI 自定义，请参阅[自定义 Azure IoT Central UI](howto-customize-ui.md) 一文。
-
-操作员可以创建个性化的应用程序仪表板。 可以设置多个仪表板，用于显示不同的数据，并可以在它们之间进行切换。
 
 ## <a name="next-steps"></a>后续步骤
 

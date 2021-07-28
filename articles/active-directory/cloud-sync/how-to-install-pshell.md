@@ -1,6 +1,6 @@
 ---
-title: 使用 powershell 安装 Azure AD Connect 云预配代理
-description: 了解如何使用 powershell cmdlet 安装 Azure AD Connect 云预配代理。
+title: 使用命令行接口 (CLI) 和 PowerShell 安装 Azure AD Connect 云预配代理
+description: 了解如何使用 PowerShell cmdlet 安装 Azure AD Connect 云预配代理。
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,16 +11,18 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c20cfb96b5cd6e1d05e332fa7157fe6e0cde8656
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d5f560321b13e4c7a47aed262a1d312093e9be56
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98613155"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758818"
 ---
-# <a name="install-the-azure-ad-connect-provisioning-agent-using-powershell-cmdlets"></a>使用 powershell cmdlet 安装 Azure AD Connect 预配代理 
+# <a name="install-the-azure-ad-connect-provisioning-agent-using-a-command-line-interface-cli-and-powershell"></a>使用命令行接口 (CLI) 和 PowerShell 安装 Azure AD Connect 预配代理
 以下文档将介绍和指导如何使用 PowerShell cmdlet 安装 Azure AD Connect 预配代理。
  
+>[!NOTE]
+>本文档介绍如何使用命令行接口安装预配代理。  有关使用向导安装 Azure AD Connect 预配代理的信息，请参阅[安装 Azure AD Connect 预配代理](how-to-install.md)。
 
 ## <a name="prerequisite"></a>先决条件： 
 
@@ -28,14 +30,14 @@ ms.locfileid: "98613155"
 >[!IMPORTANT]
 >以下安装说明假定已满足所有[先决条件](how-to-prerequisites.md)。
 >
-> Windows 服务器需要启用 TLS 1.2，然后才能使用 powershell cmdlet 安装 Azure AD Connect 预配代理。 若要启用 TLS 1.2，可以使用[此处](how-to-prerequisites.md#tls-requirements)所述的步骤。
+> Windows 服务器需要启用 TLS 1.2，然后才能使用 PowerShell cmdlet 安装 Azure AD Connect 预配代理。 若要启用 TLS 1.2，可以使用[此处](how-to-prerequisites.md#tls-requirements)所述的步骤。
 
  
 
-## <a name="install-the-azure-ad-connect-provisioning-agent-using-powershell-cmdlets"></a>使用 powershell cmdlet 安装 Azure AD Connect 预配代理 
+## <a name="install-the-azure-ad-connect-provisioning-agent-using-powershell-cmdlets"></a>使用 PowerShell cmdlet 安装 Azure AD Connect 预配代理 
 
 
- 1. 登录到 Azure 门户，然后转到“Azure Active Directory”。
+ 1. 登录到 Azure 门户，然后选择“Azure Active Directory”。
  2. 在左侧菜单中，选择“Azure AD Connect”。
  3. 选择“管理预配(预览版)” > “查看所有代理”。
  4. 将 Azure AD Connect 预配代理从 Azure 门户下载到本地。  
@@ -51,7 +53,7 @@ ms.locfileid: "98613155"
  7. 导入预配代理 PS 模块 
 
    ```
-   Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Microsoft.CloudSync.Powershell.dll" 
+   Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Microsoft.CloudSync.PowerShell.dll" 
    ```
  8. 使用全局管理员凭据连接到 AzureAD，你可以自定义此部分以从安全存储中获取密码。 
 

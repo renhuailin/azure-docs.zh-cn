@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f57cd3361d7888d9d7f747955257d96282274fd6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e45d2ea0c0e44e859f5339459ed834be22fbb5ea
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97357339"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950849"
 ---
 # <a name="recover-a-deleted-storage-account"></a>恢复删除的存储帐户
 

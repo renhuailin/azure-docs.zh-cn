@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Monitor 监视数据工厂
 description: 了解如何在 Azure Monitor 中，使用数据工厂中的信息通过启用诊断日志来监视 Azure 数据工厂管道。
-author: dcstwh
-ms.author: weetok
-ms.reviewer: maghan
+author: minhe-msft
+ms.author: hemin
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 5e2ecf8dff432f2a0ce6b3356ce3eca7a8127932
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: da0a9b457127400bdeb67c671b2710447b37784e
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586862"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903193"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>使用 Azure Monitor 监视数据工厂和发警报
 
@@ -42,7 +42,7 @@ Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指�
 
 为数据工厂创建或添加诊断设置。
 
-1. 在门户中，转到“监视”。 选择 "**设置**" "  >  **诊断设置**"。
+1. 在门户中，转到“监视”。 选择“设置” > “诊断设置”。
 
 1. 选择要为其设置诊断设置的数据工厂。
 
@@ -56,9 +56,9 @@ Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指�
 
 1. 为设置指定名称，选择“发送到 Log Analytics”，然后从 **Log Analytics 工作区** 中选择一个工作区。
 
-    * 在 _Azure 诊断_ 模式下，诊断日志流入到 _AzureDiagnostics_ 表中。
+    * 在“Azure 诊断”模式下，诊断日志流入 AzureDiagnostics 表中。
 
-    * 在 _特定于资源_ 的模式中，Azure 数据工厂中的诊断日志分为以下几个表：
+    * 在“特定于资源”模式下，来自 Azure 数据工厂的诊断日志流入下表中：
       - _ADFActivityRun_
       - _ADFPipelineRun_
       - _ADFTriggerRun_
@@ -69,61 +69,61 @@ Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指�
       - _ADFSSISPackageExecutionComponentPhases_
       - _ADFSSISPackageExecutionDataStatistics_
 
-      你可以选择与工作负荷相关的各种日志以发送到 Log Analytics 表。 例如，如果不使用 SQL Server Integration Services (SSIS) ，则无需选择任何 SSIS 日志。 如果要记录 SSIS Integration Runtime (IR) 启动/停止/维护操作，则可以选择 "SSIS IR 日志"。 如果在 SQL Server Management Studio (SSMS) 、SQL Server 代理或其他指定的工具上通过 T-sql 调用 SSIS 包执行，则可以选择 "SSIS 包日志"。 如果通过 ADF 管道中的 "执行 SSIS 包" 活动调用 SSIS 包执行，则可以选择 "所有日志"。
+      你可以选择与工作负荷相关的各种日志，以发送到 Log Analytics 表。 例如，如果你根本不使用 SQL Server Integration Services (SSIS)，就不需要选择任何 SSIS 日志。 如果要记录 SSIS Integration Runtime (IR) 的启动/停止/维护操作，则可以选择 SSIS IR 日志。 如果在 SQL Server Management Studio (SSMS)、SQL Server 代理或其他指定工具上通过 T-SQL 调用 SSIS 包执行，则可以选择 SSIS 包日志。 如果通过 ADF 管道中的“执行 SSIS 包”活动调用 SSIS 包执行，则可以选择所有日志。
 
     * 如果选择 AllMetrics，则可使用多种 ADF 指标来进行监视或发出警报，包括针对 ADF 活动、管道和触发器运行的指标以及针对 SSIS IR 操作和 SSIS 包执行的指标。
 
    ![命名设置并选择 log-analytics 工作区](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > 由于 Azure 日志表的列数不能超过500，因此 **强烈建议** 选择 " _特定于资源的模式_"。 有关详细信息，请参阅 [Log Analytics 已知限制](../azure-monitor/essentials/resource-logs.md#column-limit-in-azurediagnostics)。
+    > 由于 Azure 日志表的列数不能超过 500，因此强烈建议选择“特定于资源”模式。 有关详细信息，请参阅 [Azure 诊断日志参考](/azure/azure-monitor/reference/tables/azurediagnostics)。
 
-1. 选择“保存” 。
+1. 选择“保存”。
 
 几分钟后，新设置将出现在此数据工厂的设置列表中。 生成新的事件数据后，诊断日志将立即流式传输到该工作区。 发出事件后可能需要最多 15 分钟的时间该事件才会出现在 Log Analytics 中。
 
-## <a name="install-azure-data-factory-analytics-solution-from-azure-marketplace"></a>从 Azure Marketplace 安装 Azure 数据工厂分析解决方案
+## <a name="install-azure-data-factory-analytics-solution-from-azure-marketplace"></a>从 Azure 市场安装 Azure 数据工厂分析解决方案
 
-此解决方案提供了数据工厂总体运行状况的摘要，并提供了深入了解详细信息和排查意外行为模式的选项。 通过丰富的现成视图，你可以深入了解密钥处理，包括：
+此解决方案提供数据工厂总体运行状况的摘要，并提供用于钻取详细信息以及排查意外行为模式的选项。 使用丰富的现成视图可以洞察关键的处理活动，包括：
 
-* 查看数据工厂管道、活动和触发器运行的摘要
-* 能够按类型钻取到数据工厂活动运行
-* 数据工厂顶部管道的摘要，活动错误
+* 数据工厂管道、活动和触发器运行的一览式摘要
+* 可以按类型钻取到数据工厂活动运行
+* 数据工厂中最常出现的管道和活动错误的摘要
 
-1. 请在 **Azure Marketplace** 中选择 " **分析** " "筛选器"，然后搜索 **Azure 数据工厂分析 (预览)**
+1. 转到“Azure 市场”，选择“分析”筛选器，然后搜索“Azure 数据工厂分析(预览版)”  
 
-   ![请参阅 "Azure Marketplace"，输入 "Analytics filter"，并选择 "Azure 数据工厂分析 (预览" ) ](media/data-factory-monitor-oms/monitor-oms-image3.png)
+   ![转到“Azure 市场”，输入“分析筛选器”，然后选择“Azure 数据工厂分析(预览版)”](media/data-factory-monitor-oms/monitor-oms-image3.png)
 
-1. 有关 **Azure 数据工厂分析 (预览** 的详细信息) 
+1. 有关“Azure 数据工厂分析(预览版)”的详细信息
 
-   ![有关 "Azure 数据工厂分析 (预览) " 的详细信息](media/data-factory-monitor-oms/monitor-oms-image4.png)
+   ![有关“Azure 数据工厂分析(预览版)”的详细信息](media/data-factory-monitor-oms/monitor-oms-image4.png)
 
-1. 选择 " **创建** "，然后创建或选择 " **Log Analytics" 工作区**。
+1. 选择“创建”，然后创建或选择“Log Analytics 工作区”。 
 
    ![创建新解决方案](media/data-factory-monitor-oms/monitor-log-analytics-image-5.png)
 
 ### <a name="monitor-data-factory-metrics"></a>监视数据工厂指标
 
-安装此解决方案会在所选 "Log Analytics" 工作区的 "工作簿" 部分中创建一组默认视图。 因此，会启用以下度量值：
+安装此解决方案会在所选 Log Analytics 工作区的工作簿部分中创建一组默认视图。 因此，将启用以下指标：
 
-* ADF 运行-1) 管道按数据工厂运行
-* ADF 运行-2) 活动由数据工厂运行
-* ADF 运行-3) 触发器按数据工厂运行
-* ADF 错误-1) 按数据工厂列出的前10个管道错误
-* ADF 错误-2) 由数据工厂运行的前10个活动
-* ADF 错误-3) 按数据工厂列出的前10个触发器错误
-* ADF 统计信息-1) 活动按类型运行
-* ADF 统计信息-2) 触发器按类型运行
-* ADF 统计信息-3) 最大管道运行持续时间
+* ADF 运行 - 1) 数据工厂中的管道运行
+* ADF 运行 - 2) 数据工厂中的活动运行
+* ADF 运行 - 3) 数据工厂中的触发器运行
+* ADF 错误 - 1) 数据工厂中最常出现的 10 个管道错误
+* ADF 错误 - 2) 数据工厂中最常出现的 10 个活动运行
+* ADF 错误 - 3) 数据工厂中最常出现的 10 个触发器错误
+* ADF 统计信息 - 1) 按类型列出的活动运行
+* ADF 统计信息 - 2) 按类型列出的触发器运行
+* ADF 统计信息 - 3) 最长管道运行持续时间
 
-![突出显示了 "工作簿 (预览) " 和 "AzureDataFactoryAnalytics" 的窗口](media/data-factory-monitor-oms/monitor-oms-image6.png)
+![突出显示了“工作簿(预览版)”和“AzureDataFactoryAnalytics”的窗口](media/data-factory-monitor-oms/monitor-oms-image6.png)
 
-您可以可视化前面的指标，查看这些指标后面的查询，编辑查询，创建警报，以及执行其他操作。
+可将上述指标可视化，查看这些指标背后的查询，编辑查询，创建警报，以及执行其他操作。
 
-![管道按数据工厂运行的图形表示形式](media/data-factory-monitor-oms/monitor-oms-image8.png)
+![数据工厂中的管道运行的图形表示形式](media/data-factory-monitor-oms/monitor-oms-image8.png)
 
 > [!NOTE]
-> Azure 数据工厂分析 (预览) 将诊断日志发送到 _特定于资源的_ 目标表。 可以针对以下表编写查询： _ADFPipelineRun_、 _ADFTriggerRun_ 和 _ADFActivityRun_。
+> Azure 数据工厂分析（预览版）将诊断日志发送到“资源特定”目标表。 可以针对以下表编写查询：_ADFPipelineRun_、_ADFTriggerRun_ 和 _ADFActivityRun_。
 
 ## <a name="data-factory-metrics"></a>数据工厂指标
 
@@ -154,7 +154,7 @@ Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指�
 若要访问指标，请参阅 [Azure Monitor 数据平台](../azure-monitor/data-platform.md)中的说明。
 
 > [!NOTE]
-> 仅发出已完成和已触发的活动以及管道运行事件。 不会发出正在进行的运行和调试运行。 另一方面，将发出所有 SSIS 包执行事件，包括已完成和正在进行的事件，而无论使用何种调用方法。 例如，你可以在启用了 Azure 的 SQL Server Data Tools (SSDT) 上，通过 SSMS 上的 T-sql、SQL Server 代理或其他指定的工具，以及在 ADF 管道中执行 SSIS 包活动的触发或调试运行来调用包执行。
+> 仅发出已完成和已触发的活动以及管道运行事件。 不会发出正在进行的运行和调试运行。 另一方面，将发出所有 SSIS 包执行事件，包括已完成和正在进行的事件，而无论使用何种调用方法。 例如，可以在支持 Azure 的 SQL Server Data Tools (SSDT) 中、在 SSMS、SQL Server 代理或其他指定工具中通过 T-SQL，或者作为 ADF 管道中“执行 SSIS 包”活动的已触发运行或调试运行来调用包执行。
 
 ## <a name="data-factory-alerts"></a>数据工厂警报
 
@@ -269,7 +269,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | --- | --- | --- |
 | **storageAccountId** |String | 要将诊断日志发送到的存储帐户的资源 ID。 |
 | **serviceBusRuleId** |String | 服务总线命名空间的服务总线规则 ID。你要在该服务总线命名空间中创建事件中心，以便流式传输诊断日志。 规则 ID 的格式为 `{service bus resource ID}/authorizationrules/{key name}`。|
-| **workspaceId** | 复杂类型 | 指标时间粒度及其保留策略的数组。 此属性的值为空。 |
+| **workspaceId** | 字符串 | 将在其中保存日志的工作区的工作区 ID。 |
 |**指标**| 要传递到被调用管道的管道运行的参数值| 将参数名映射为自变量值的 JSON 对象。 |
 | **logs**| 复杂类型| 某个资源类型的诊断日志类别的名称。 若要获取资源的诊断日志类别列表，请先执行 GET 诊断设置操作。 |
 | **category**| String| 日志类别及其保留策略的数组。 |
@@ -620,8 +620,8 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **contextSourceName**      | String | 作为事件消息上下文源的包对象的名称      | `MyPackage` |
 | **contextSourceId**        | String | 作为事件消息上下文源的包对象的唯一 ID | `{E2CF27FB-EA48-41E9-AF6F-3FE938B4ADE1}` |
 | **propertyName**           | String | 事件消息上下文源的包属性的名称   | `DelayValidation` |
-| **propertyValue**          | 字符串 | 事件消息上下文源的包属性的值  | `False` |
-| **resourceId**             | 字符串 | ADF 资源的唯一 ID                                   | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+| **propertyValue**          | String | 事件消息上下文源的包属性的值  | `False` |
+| **resourceId**             | String | ADF 资源的唯一 ID                                   | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 #### <a name="ssis-event-messages-log-attributes"></a>SSIS 事件消息日志特性
 
@@ -664,16 +664,16 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **integrationRuntimeName** | String | SSIS IR 的名称                                           | `MySSISIR` |
 | **level**                  | String | 诊断日志的级别                                       | `Informational` |
 | **operationId**            | String | 用于跟踪 SSISDB 中的特定操作的唯一 ID        | `1`（1 表示与未存储在 SSISDB 中的包/通过 T-SQL 调用的包相关的操作） |
-| **messageTime**            | String | 创建事件消息的时间（采用 UTC 格式）          | `2017-06-28T21:00:27.3534352Z` |
-| **messageType**            | String | 事件消息的类型                                     | `70`（请参阅[更多消息类型](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)） |
+| **messageTime**            | 字符串 | 创建事件消息的时间（采用 UTC 格式）          | `2017-06-28T21:00:27.3534352Z` |
+| **messageType**            | 字符串 | 事件消息的类型                                     | `70`（请参阅[更多消息类型](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)） |
 | **messageSourceType**      | 字符串 | 事件消息源的类型                              | `20`（请参阅[更多消息源类型](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)） |
 | **message**                | String | 事件消息的文本                                     | `MyPackage:Validation has started.` |
 | **packageName**            | 字符串 | 已执行的包文件的名称                             | `MyPackage.dtsx` |
 | **eventName**              | 字符串 | 相关运行时事件的名称                                 | `OnPreValidate` |
 | **messageSourceName**      | 字符串 | 作为事件消息源的包组件的名称         | `Data Flow Task` |
-| **messageSourceId**        | String | 作为事件消息源的包组件的唯一 ID    | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
-| **subcomponentName**       | String | 作为事件消息源的数据流组件的名称       | `SSIS.Pipeline` |
-| **packagePath**            | 字符串 | 作为事件消息源的包对象的路径            | `\Package\Data Flow Task` |
+| **messageSourceId**        | 字符串 | 作为事件消息源的包组件的唯一 ID    | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
+| **subcomponentName**       | 字符串 | 作为事件消息源的数据流组件的名称       | `SSIS.Pipeline` |
+| **packagePath**            | String | 作为事件消息源的包对象的路径            | `\Package\Data Flow Task` |
 | **executionPath**          | 字符串 | 从父包到已执行组件的完整路径            | `\Transformation\Data Flow Task`（此路径还捕获组件迭代） |
 | **threadId**               | 字符串 | 记录事件消息时执行的线程的唯一 ID | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
 
@@ -712,7 +712,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **dataFactoryName**        | String | ADF 的名称                                             | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR 的名称                                         | `MySSISIR` |
 | **level**                  | String | 诊断日志的级别                                     | `Informational` |
-| **executionId**            | String | 用于跟踪 SSISDB 中的特定执行的唯一 ID      | `1`（1 表示与未存储在 SSISDB 中的包/通过 T-SQL 调用的包相关的执行） |
+| **executionId**            | 字符串 | 用于跟踪 SSISDB 中的特定执行的唯一 ID      | `1`（1 表示与未存储在 SSISDB 中的包/通过 T-SQL 调用的包相关的执行） |
 | **executionPath**          | 字符串 | 从父包到已执行组件的完整路径          | `\Transformation\Data Flow Task`（此路径还捕获组件迭代） |
 | **startTime**              | String | 可执行文件进入执行前阶段的时间（采用 UTC 格式）  | `2017-06-28T21:00:27.3534352Z` |
 | **endTime**                | String | 可执行文件进入执行后阶段的时间（采用 UTC 格式） | `2017-06-28T21:00:27.3534352Z` |
@@ -893,7 +893,7 @@ Azure Monitor 和 Log Analytics 中的 SSIS 包执行日志的架构和内容类
 
 有关 SSIS 操作日志特性/属性的详细信息，请参阅 [Azure Monitor 和 Log Analytics 为 ADF 使用的架构](#schema-of-logs-and-events)。
 
-无论使用哪种调用方法，所选 SSIS 包执行日志始终会发送到 Log Analytics。 例如，你可以通过 SSMS 上的 SSDT、SQL Server 代理或其他指定的工具，以及在 ADF 管道中执行 SSIS 包活动的触发或调试运行，在启用了 Azure 的上调用包执行。
+无论使用哪种调用方法，所选 SSIS 包执行日志始终会发送到 Log Analytics。 例如，可以在支持 Azure 的 SSDT 中、在 SSMS、SQL Server 代理或其他指定工具中通过 T-SQL，或者作为 ADF 管道中“执行 SSIS 包”活动的已触发运行或调试运行来调用包执行。
 
 在 Logs Analytics 上查询 SSIS IR 操作日志时，可以使用 OperationName 和 ResultType 属性，这两个属性分别设置为 `Start/Stop/Maintenance` 和 `Started/InProgress/Succeeded/Failed` 。 
 

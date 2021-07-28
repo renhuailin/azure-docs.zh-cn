@@ -3,15 +3,15 @@ title: 执行 Azure 机器学习管道
 description: 了解如何在 Azure 数据工厂管道中运行 Azure 机器学习管道。
 ms.service: data-factory
 ms.topic: conceptual
-ms.author: daperlov
-author: djpmsft
+ms.author: abnarain
+author: nabhishek
 ms.date: 07/16/2020
-ms.openlocfilehash: db1816baf0ebc476a132b344d8db3cdbdd170e50
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: d5013bf12647ababb7aa0765a13751e749dae9d8
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100373923"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904723"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>在 Azure 数据工厂中执行 Azure 机器学习管道
 
@@ -19,7 +19,7 @@ ms.locfileid: "100373923"
 
 作为 Azure 数据工厂管道的一个步骤，运行 Azure 机器学习管道。 机器学习执行管道活动支持批量预测方案，例如识别可能的贷款违约、确定情绪以及分析客户行为模式。
 
-以下视频介绍了此功能的六分钟简介和演示。
+以下视频包含了此功能的六分钟简介和演示。
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/How-to-execute-Azure-Machine-Learning-service-pipelines-in-Azure-Data-Factory/player]
 
@@ -46,15 +46,16 @@ ms.locfileid: "100373923"
 
 ## <a name="type-properties"></a>Type 属性
 
-properties | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必需
 -------- | ----------- | -------------- | --------
 name | 管道中活动的名称 | String | 是
-type | Activity 的类型为 "AzureMLExecutePipeline" | String | 是
+type | 活动类型为“AzureMLExecutePipeline” | String | 是
 linkedServiceName | Azure 机器学习链接服务 | 链接服务引用 | 是
 mlPipelineId | 已发布 Azure 机器学习管道的 ID | 字符串（或带有 resultType 字符串的表达式） | 是
 experimentName | 机器学习管道运行的运行历史记录试验名称 | 字符串（或带有 resultType 字符串的表达式） | 否
 mlPipelineParameters | 要传递给已发布 Azure 机器学习管道终结点的键/值对。 键必须与已发布机器学习管道中定义的管道参数名称一致 | 具有键/值对的对象（或具有 resultType 对象的表达式） | 否
 mlParentRunId | 父 Azure 机器学习管道运行 ID | 字符串（或带有 resultType 字符串的表达式） | 否
+dataPathAssignments | 用于在 Azure 机器学习中更改数据路径的字典。 启用数据路径的交换 | 具有键值对的对象 | 否
 continueOnStepFailure | 当某个步骤失败时，继续执行机器学习管道运行中的其他步骤 | boolean | 否
 
 > [!NOTE]

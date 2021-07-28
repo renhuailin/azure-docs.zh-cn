@@ -3,18 +3,20 @@ title: SAP on RHEL 的 Azure 大型实例高可用性
 description: 了解如何在 Red Hat Enterprise Linux 中使用 Pacemaker 群集自动执行 SAP HANA 数据库故障转移。
 author: jaawasth
 ms.author: jaawasth
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: how-to
-ms.date: 02/08/2021
-ms.openlocfilehash: 99e9994d01e4579bf6ef2e369e0fe85c48af52ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/19/2021
+ms.openlocfilehash: f7b6e6efbbd17655b4f68d79ac26ee34ae754a3b
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182428"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728439"
 ---
 # <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>SAP on RHEL 的 Azure 大型实例高可用性
+
+> [!NOTE]
+> 本文包含对术语“黑名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 本文介绍如何在 RHEL 7.6 中配置 Pacemaker 群集，以自动执行 SAP HANA 数据库故障转移。 若要完成本指南中的步骤，需要充分了解 Linux、SAP HANA 和 Pacemaker。
 
@@ -35,33 +37,23 @@ ms.locfileid: "102182428"
     ```
     root@sollabdsm35 ~]# cat /etc/hosts
     27.0.0.1 localhost localhost.azlinux.com
-    0.60.0.35 sollabdsm35.azlinux.com sollabdsm35 node1
-    0.60.0.36 sollabdsm36.azlinux.com sollabdsm36 node2
-    0.20.251.150 sollabdsm36-st
-
+    10.60.0.35 sollabdsm35.azlinux.com sollabdsm35 node1
+    10.60.0.36 sollabdsm36.azlinux.com sollabdsm36 node2
+    10.20.251.150 sollabdsm36-st
     10.20.251.151 sollabdsm35-st
-
-    
-
     10.20.252.151 sollabdsm36-back
-
     10.20.252.150 sollabdsm35-back
-
-    
-
     10.20.253.151 sollabdsm36-node
-
     10.20.253.150 sollabdsm35-node
-
     ```
 
 2.  创建并交换 SSH 密钥。
     1. 生成 SSH 密钥。
 
-       ```
+    ```
        [root@sollabdsm35 ~]# ssh-keygen -t rsa -b 1024
        [root@sollabdsm36 ~]# ssh-keygen -t rsa -b 1024
-       ```
+    ```
     2. 将密钥复制到其他主机以实现无密码 SSH 通信。
     
        ```
@@ -79,8 +71,6 @@ ms.locfileid: "102182428"
 
     SELINUX=disabled
 
-    
-
     [root@sollabdsm36 ~]# vi /etc/selinux/config
 
     ...
@@ -94,8 +84,6 @@ ms.locfileid: "102182428"
     [root@sollabdsm35 ~]# sestatus
 
     SELinux status: disabled
-
-    
 
     [root@sollabdsm36 ~]# sestatus
 
@@ -131,8 +119,6 @@ ms.locfileid: "102182428"
     
         Ref time (UTC) : Thu Jan 28 18:46:10 2021
     
-        
-    
         chronyc sources
     
         210 Number of sources = 8
@@ -159,7 +145,6 @@ ms.locfileid: "102182428"
         ```
         node1:~ # yum update
         ```
- 
 
 7. 安装 SAP HANA 和 RHEL-HA 存储库。
 
@@ -173,11 +158,11 @@ ms.locfileid: "102182428"
     ```
       
 
-8. 在所有节点上安装 Pacemaker、SBD、OpenIPMI、ipmitools 和 fencing_sbd 工具。
+8. 在所有节点上安装 Pacemaker、SBD、OpenIPMI、ipmitool 和 fencing_sbd 工具。
 
     ``` 
     yum install pcs sbd fence-agent-sbd.x86_64 OpenIPMI
-    ipmitools
+    ipmitool
     ```
 
   ## <a name="configure-watchdog"></a>配置监视器
@@ -199,8 +184,6 @@ ms.locfileid: "102182428"
 
     Active: inactive (dead)
 
-    
-
     Nov 28 23:02:40 sollabdsm35 systemd[1]: Collecting watchdog.service
 
     ```
@@ -208,7 +191,6 @@ ms.locfileid: "102182428"
 2. 在安装过程中安装的默认 Linux 监视器是 UCS 和 HPE SDFlex 系统所不支持的 iTCO 监视器。 因此必须禁用此监视器。
     1. 系统上安装并加载了错误的监视器：
        ```
-   
        sollabdsm35:~ # lsmod |grep iTCO
    
        iTCO_wdt 13480 0
@@ -225,7 +207,6 @@ ms.locfileid: "102182428"
         
     3. 为确保在下一次启动系统期间不会加载该驱动程序，必须将该驱动程序加入阻止列表。 若要将 iTCO 模块加入阻止列表，请将以下内容添加到 `50-blacklist.conf` 文件的末尾：
        ```
-   
        sollabdsm35:~ # vi /etc/modprobe.d/50-blacklist.conf
    
         unload the iTCO watchdog modules
@@ -263,8 +244,6 @@ ms.locfileid: "102182428"
 3. 默认不会创建所需的设备 /dev/watchdog。
 
     ```
-    No watchdog device was created
-
     sollabdsm35:~ # ls -l /dev/watchdog
 
     ls: cannot access /dev/watchdog: No such file or directory
@@ -329,7 +308,7 @@ ms.locfileid: "102182428"
 ## <a name="sbd-configuration"></a>SBD 配置
 本部分介绍如何配置 SBD。 本部分使用本文开头所提到的两个主机：`sollabdsm35` 和 `sollabdsm36`。
 
-1.  请确保 iSCSI 或 FC 磁盘在两个节点上均可见。 此示例使用基于 FC 的 SBD 设备。 有关 SBD 隔离的详细信息，请参阅[参考文档](http://www.linux-ha.org/wiki/SBD_Fencing)。
+1.  请确保 iSCSI 或 FC 磁盘在两个节点上均可见。 此示例使用基于 FC 的 SBD 设备。 有关 SBD 隔离的详细信息，请参阅 [RHEL 高可用性群集的设计指南 - SBD 注意事项](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Faccess.redhat.com%2Farticles%2F2941601&data=04%7C01%7Cralf.klahr%40microsoft.com%7Cd49d7a3e3871449cdecc08d8c77341f1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637478645171139432%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=c%2BUAC5gmgpFNWZCQFfiqcik8CH%2BmhH2ly5DsOV1%2FE5M%3D&reserved=0)。
 2.  LUN-ID 在所有节点上必须相同。
   
 3.  检查 sbd 设备的多路径状态。
@@ -399,18 +378,15 @@ ms.locfileid: "102182428"
 7.  在 SBD 配置文件中添加 SBD 设备。
 
     ```
-    \# SBD_DEVICE specifies the devices to use for exchanging sbd messages
-
-    \# and to monitor. If specifying more than one path, use ";" as
-
-    \# separator.
-
-    \#
+    # SBD_DEVICE specifies the devices to use for exchanging sbd messages
+    # and to monitor. If specifying more than one path, use ";" as
+    # separator.
+    #
 
     SBD_DEVICE="/dev/mapper/3600a098038304179392b4d6c6e2f4b62"
-    \## Type: yesno
+    ## Type: yesno
      Default: yes
-     \# Whether to enable the pacemaker integration.
+     # Whether to enable the pacemaker integration.
     SBD_PACEMAKER=yes
     ```
 
@@ -440,22 +416,16 @@ ms.locfileid: "102182428"
     ```
     systemctl start pcsd
     ```
-  
-  
 
 5.  仅从节点 1 运行群集身份验证。
 
     ```
     pcs cluster auth sollabdsm35 sollabdsm36
 
-
-
         Username: hacluster
 
             Password:
-
             sollabdsm35.localdomain: Authorized
-
             sollabdsm36.localdomain: Authorized
 
      ``` 
@@ -506,20 +476,16 @@ ms.locfileid: "102182428"
 
 8. 如果某个节点未加入群集，请检查防火墙是否仍在运行。
 
-  
-
 9. 创建并启用 SBD 设备
     ```
     pcs stonith create SBD fence_sbd devices=/dev/mapper/3600a098038303f4c467446447a
     ```
   
-
 10. 停止群集并重启群集服务（在所有节点上）。
 
     ```
     pcs cluster stop --all
     ```
-
 
 11. 重启群集服务（在所有节点上）。
 
@@ -628,7 +594,7 @@ ms.locfileid: "102182428"
 
     Present Countdown: 19 sec
 
-    [root@sollabdsm351 ~] lsof /dev/watchdog
+    [root@sollabdsm35 ~] lsof /dev/watchdog
 
     COMMAND PID USER FD TYPE DEVICE SIZE/OFF NODE NAME
 
@@ -667,6 +633,7 @@ ms.locfileid: "102182428"
 19. 对于其余的 SAP HANA 群集，可通过以下设置禁用 STONITH：
 
    * pcs property set `stonith-enabled=false`
+   * 在设置群集过程中，使 STONITH 保持停用状态有时可以带来更大的方便，因为这样可以避免系统意外重新启动。
    * 必须将此参数设置为 true，以提高使用效率。 如果此参数未设置为 true，则不支持群集。
    * pcs property set `stonith-enabled=true`
 
@@ -690,7 +657,7 @@ ms.locfileid: "102182428"
    
        * su - hr2adm
    
-       * hdbsql -u system -p SAPhana10 -i 00 "select value from
+       * hdbsql -u system -p $YourPass -i 00 "select value from
        "SYS"."M_INIFILE_CONTENTS" where key='log_mode'"
    
        
@@ -701,7 +668,7 @@ ms.locfileid: "102182428"
        ```
     2. 只有在执行初始备份之后，才会进行 SAP HANA 系统复制。 以下命令在 `/tmp/` 目录中创建初始备份。 为数据库选择适当的备份文件系统。 
        ```
-       * hdbsql -i 00 -u system -p SAPhana10 "BACKUP DATA USING FILE
+       * hdbsql -i 00 -u system -p $YourPass "BACKUP DATA USING FILE
        ('/tmp/backup')"
    
    
@@ -718,18 +685,14 @@ ms.locfileid: "102182428"
    
        -rw-r----- 1 hr2adm sapsys 1996496896 Oct 26 23:31 backup_databackup_3_1
    
-       ```
-    
+       ```  
 
     3. 备份此数据库的所有数据库容器。
-       ```
+       ``` 
+       * hdbsql -i 00 -u system -p $YourPass -d SYSTEMDB "BACKUP DATA USING
+       FILE ('/tmp/sydb')"     
    
-       * hdbsql -i 00 -u system -p SAPhana10 -d SYSTEMDB "BACKUP DATA USING
-       FILE ('/tmp/sydb')"
-   
-       
-   
-       * hdbsql -i 00 -u system -p SAPhana10 -d SYSTEMDB "BACKUP DATA FOR HR2
+       * hdbsql -i 00 -u system -p $YourPass -d SYSTEMDB "BACKUP DATA FOR HR2
        USING FILE ('/tmp/rh2')"
    
        ```
@@ -956,7 +919,7 @@ ms.locfileid: "102182428"
 
 #### <a name="log-replication-mode-description"></a>日志复制模式说明
 
-有关日志复制模式的详细信息，请参阅[官方的 SAP 文档](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/c039a1a5b8824ecfa754b55e0caffc01.html)。
+有关日志复制模式的详细信息，请参阅[官方的 SAP 文档](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/627bd11e86c84ec2b9fcdf585d24011c.html)。
   
 
 #### <a name="network-setup-for-hana-system-replication"></a>HANA 系统复制的网络设置
@@ -979,7 +942,7 @@ ms.locfileid: "102182428"
 
   
 
-### <a name="source-sap-ag-sap-hana-hrs-networking"></a>源 SAP AG SAP HANA HRS 网络
+有关详细信息，请参阅 [SAP HANA 系统复制的网络配置](https://www.sap.com/documents/2016/06/18079a1c-767c-0010-82c7-eda71af511fa.html)。
 
   
 
@@ -1021,9 +984,8 @@ global.ini
     [root@node1 ~]# pcs resource defaults migration-threshold=5000
     ```
 2.  配置 corosync。
+    有关详细信息，请参阅[如何使用 pacemaker 和 corosync 配置 RHEL 7 高可用性群集](https://access.redhat.com/solutions/1293523)。
     ```
-    https://access.redhat.com/solutions/1293523 --> quorum information RHEL7
-
     cat /etc/corosync/corosync.conf
 
     totem {
@@ -1087,71 +1049,60 @@ global.ini
     ```
   
 
-1.  创建克隆的 SAPHanaTopology 资源。
-    ```
-    pcs resource create SAPHanaTopology_HR2_00 SAPHanaTopology SID=HR2 InstanceNumber=00 --clone clone-max=2 clone-node-max=1 interleave=true
-    SAPHanaTopology resource is gathering status and configuration of SAP
-    HANA System Replication on each node. SAPHanaTopology requires
-    following attributes to be configured.
+3.  创建克隆的 SAPHanaTopology 资源。
+    SAPHanaTopology 资源正在收集每个节点上 SAP HANA 系统复制的状态和配置。 SAPHanaTopology 要求配置以下属性。
+       ```
+       pcs resource create SAPHanaTopology_HR2_00 SAPHanaTopology SID=HR2 InstanceNumber=00 --clone clone-max=2 clone-node-max=1    interleave=true
+       ```
 
+    | 属性名称 | 说明  |
+    |---|---|
+    | SID | SAP HANA 安装的 SAP 系统标识符 (SID)。 此标识符对于所有节点必须相同。 |
+    | InstanceNumber | 2 位数 SAP 实例标识符。|
 
-
-        Attribute Name Description
-
-        SID SAP System Identifier (SID) of SAP HANA installation. Must be
-    same for all nodes.
-
-    InstanceNumber 2-digit SAP Instance identifier.
-    pcs resource show SAPHanaTopology_HR2_00-clone
-
-    Clone: SAPHanaTopology_HR2_00-clone
-
+    * 资源状态
+       ```
+       pcs resource show SAPHanaTopology_HR2_00
+   
+       InstanceNumber 2-digit SAP Instance identifier.
+       pcs resource show SAPHanaTopology_HR2_00-clone
+   
+       Clone: SAPHanaTopology_HR2_00-clone
+   
         Meta Attrs: clone-max=2 clone-node-max=1 interleave=true
-
+   
         Resource: SAPHanaTopology_HR2_00 (class=ocf provider=heartbeat
-    type=SAPHanaTopology)
-
+       type=SAPHanaTopology)
+   
         Attributes: InstanceNumber=00 SID=HR2
-
+   
         Operations: monitor interval=60 timeout=60
-    (SAPHanaTopology_HR2_00-monitor-interval-60)
-
+       (SAPHanaTopology_HR2_00-monitor-interval-60)
+   
         start interval=0s timeout=180
-    (SAPHanaTopology_HR2_00-start-interval-0s)
-
+       (SAPHanaTopology_HR2_00-start-interval-0s)
+   
         stop interval=0s timeout=60 (SAPHanaTopology_HR2_00-stop-interval-0s)
+   
+       ```
 
-    ```
+4.  创建主要/辅助 SAPHana 资源。
+    * SAPHana 资源负责启动、停止和重新定位 SAP HANA 数据库。 此资源必须作为主要/辅助群集资源运行。 该资源具有以下属性。
 
-3.  创建主要/辅助 SAPHana 资源。
-
-    ```
-    SAPHana resource is responsible for starting, stopping and relocating the SAP HANA database. This resource must be run as a Primary/    Secondary cluster resource. The resource has the following attributes.
-
-    
-
-    Attribute Name Required? Default value Description
-
-    SID Yes None SAP System Identifier (SID) of SAP HANA installation. Must be same for all nodes.
-
-    InstanceNumber Yes none 2-digit SAP Instance identifier.
-
-    PREFER_SITE_TAKEOVER
-
-    no yes Should cluster prefer to switchover to secondary instance instead of restarting primary locally? ("no": Do prefer restart locally;   "yes": Do prefer takeover to remote site)
-
-    AUTOMATED_REGISTER no false Should the former SAP HANA primary be registered as secondary after takeover and DUPLICATE_PRIMARY_TIMEOUT?     ("false": no, manual intervention will be needed; "true": yes, the former primary will be registered by resource agent as secondary)
-
-    DUPLICATE_PRIMARY_TIMEOUT no 7200 Time difference (in seconds) needed between primary time stamps, if a dual-primary situation occurs. If   the time difference is less than the time gap, then the cluster holds one or both instances in a "WAITING" status. This is to give an   admin a chance to react on a failover. A failed former primary will be registered after the time difference is passed. After this   registration to the new primary all data will be overwritten by the system replication.
-    ```
-  
+| 属性名称            | 必需？ | 默认值 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|---------------------------|-----------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| SID                       | 是       | 无          | SAP HANA 安装的 SAP 系统标识符 (SID)。 此标识符对于所有节点必须相同。                                                                                                                                                                                                                                                                                                                                                                                       |
+| InstanceNumber            | 是       | 无          | 2 位数 SAP 实例标识符。                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| PREFER_SITE_TAKEOVER      | 否        | 是           | 群集是否应该优先切换到辅助实例而不是在本地重启主要实例？ （"no"：优先在本地重启；"yes"：优先接管到远程站点）                                                                                                                                                                                                                                                                                            |
+|                           |           |               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| AUTOMATED_REGISTER        | 否        | FALSE         | 在接管并发生 DUPLICATE_PRIMARY_TIMEOUT 后，是否应将以前的 SAP HANA 主要实例注册为辅助实例？ （"false"：否，需要手动干预；"true"：是，由资源代理将以前的主要实例注册为辅助实例）                                                                                                                                                                                                                        |
+| DUPLICATE_PRIMARY_TIMEOUT | 否        | 7200          | 存在两个主要实例时，主要实例时间戳之间所需的时间差（秒）。 如果该时间差小于时隙，则群集会将其中一个或两个实例保持“WAITING”状态。 这样，管理员便有机会对故障转移做出反应。 该时间差过后，将会注册以前的有故障主要实例。 在新的主要实例上进行这种注册后，系统复制将覆盖所有数据。 |
 
 5.  创建 HANA 资源。
     ```
     pcs resource create SAPHana_HR2_00 SAPHana SID=HR2 InstanceNumber=00 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200   AUTOMATED_REGISTER=true primary notify=true clone-max=2 clone-node-max=1 interleave=true
 
     pcs resource show SAPHana_HR2_00-primary
-
 
 
     Primary: SAPHana_HR2_00-primary
@@ -1249,10 +1200,8 @@ global.ini
     ```
 
 6.  创建虚拟 IP 地址资源。
-
+    群集将包含虚拟 IP 地址，以访问 SAP HANA 的主要实例。 下面是使用 IP 10.7.0.84/24 创建 IPaddr2 资源的示例命令。
     ```
-    Cluster will contain Virtual IP address in order to reach the Primary instance of SAP HANA. Below is example command to create IPaddr2  resource with IP 10.7.0.84/24
-
     pcs resource create vip_HR2_00 IPaddr2 ip="10.7.0.84"
     pcs resource show vip_HR2_00
 
@@ -1269,13 +1218,11 @@ global.ini
     ```
 
 7.  创建约束。
-
-    ```
-    For correct operation we need to ensure that SAPHanaTopology resources are started before starting the SAPHana resources and also that  the virtual IP address is present on the node where the Primary resource of SAPHana is running. To achieve this, the following 2    constraints need to be created.
-
-    pcs constraint order SAPHanaTopology_HR2_00-clone then SAPHana_HR2_00-primary symmetrical=false
-    pcs constraint colocation add vip_HR2_00 with primary SAPHana_HR2_00-primary 2000
-    ```
+    * 为了正常操作，我们需要确保在启动 SAPHana 资源之前已启动 SAPHanaTopology 资源，并确保虚拟 IP 地址存在于运行 SAPHana 主要资源的节点上。 若要实现此目的，需要创建以下 2 个约束。
+       ```
+       pcs constraint order SAPHanaTopology_HR2_00-clone then SAPHana_HR2_00-primary symmetrical=false
+       pcs constraint colocation add vip_HR2_00 with primary SAPHana_HR2_00-primary 2000
+       ```
 
 ###  <a name="testing-the-manual-move-of-saphana-resource-to-another-node"></a>测试手动将 SAPHana 资源移到另一个节点
 
@@ -1322,7 +1269,7 @@ Node Attributes:
   * 已降级的主机：
 
     ```
-    hdbsql -i 00 -u system -p SAPhana10 -n 10.7.0.82
+    hdbsql -i 00 -u system -p $YourPass -n 10.7.0.82
 
     result:
 
@@ -1333,7 +1280,7 @@ Node Attributes:
   * 已提升的主机：
 
     ```
-    hdbsql -i 00 -u system -p SAPhana10 -n 10.7.0.84
+    hdbsql -i 00 -u system -p $YourPass -n 10.7.0.84
     
     Welcome to the SAP HANA Database interactive terminal.
     
@@ -1357,20 +1304,17 @@ Node Attributes:
 如果使用选项 `AUTOMATED_REGISTER=false`，则无法来回切换。
 
 如果此选项设置为 false，则必须重新注册节点：
-
-  
 ```
 hdbnsutil -sr_register --remoteHost=node2 --remoteInstance=00 --replicationMode=syncmem --name=DC1
 ```
-  
 
 原本是主要主机的节点 2 现在成了辅助主机。
 
 请考虑将此选项设置为 true，以自动注册已降级的主机。
-
   
 ```
 pcs resource update SAPHana_HR2_00-primary AUTOMATED_REGISTER=true
-
 pcs cluster node clear node1
 ```
+
+是否优先使用自动注册取决于客户场景。 在接管后自动重新注册节点对于操作团队而言会更方便。 但是，你可能希望手动注册节点，以便能够先运行额外的测试来确保一切符合预期。

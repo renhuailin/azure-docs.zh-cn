@@ -5,16 +5,16 @@ services: synapse-analytics
 author: periclesrocha
 ms.service: synapse-analytics
 ms.topic: troubleshooting
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 11/18/2020
 ms.author: procha
 ms.reviewer: jrasnick
-ms.openlocfilehash: a1031656eaa5125d07ae078773379270b26625e7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3bad9d6464b41ff1b7ad03147d3a48c50c787cb0
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98121373"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568108"
 ---
 # <a name="compatibility-issues-with-third-party-applications-and-azure-synapse-analytics"></a>与第三方应用程序和 Azure Synapse Analytics 的兼容性问题
 
@@ -24,7 +24,7 @@ ms.locfileid: "98121373"
 
 ## <a name="tableau-error-an-attempt-to-complete-a-transaction-has-failed-no-corresponding-transaction-found"></a>Tableau 错误：“完成事务的尝试已失败。 找不到相应的事务”
 
-从 Azure Synapse 专用 SQL 池版本 10.0.11038.0 开始，进行存储过程调用的一些 Tableau 查询可能失败，并出现以下错误消息：“[Microsoft][ODBC Driver 17 for SQL Server][SQL Server]111214；完成事务的尝试已失败。找不到相应的事务。”
+从 Azure Synapse 专用 SQL 池版本 10.0.11038.0 开始，某些包含存储过程调用的 Tableau 查询可能会失败，并出现以下错误消息：“[Microsoft][ODBC Driver 17 for SQL Server][SQL Server] 111214；尝试完成事务失败。找不到相应的事务。”
 
 ### <a name="cause"></a>原因
 

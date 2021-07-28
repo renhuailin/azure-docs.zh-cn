@@ -3,12 +3,12 @@ title: 使用 Azure Data Box 进行脱机备份
 description: 了解如何使用 Azure Data Box 以脱机方式将较大初始备份数据从 MARS 代理植入到恢复服务保管库。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: e789b6c9f4ff2e8cd168e6b5c138d423911d4743
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 78adc479ce5733e208d2334d30d7b88e4edf8d6b
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96752577"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576085"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>使用 Azure Data Box 进行 Azure 备份脱机备份
 
@@ -267,7 +267,7 @@ Microsoft Azure 恢复服务 (MARS) 代理会在租户中为你创建一个 Azur
 
 #### <a name="step-2-of-verification"></a>验证步骤 2
 
-1. 在安装路径中打开 Temp 文件夹。 临时文件夹的默认路径为 *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*。查找 *CBUICurr* 文件，然后打开这个文件。
+1. 在安装路径中打开 Temp 文件夹。 默认临时文件夹路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Temp。查找 CBUICurr 文件，然后打开该文件。
 
 1. 在 CBUICurr 文件中滚动到最后一行，查看问题是否与以下错误消息中的问题相同：`Unable to create an Azure AD application credential in customer's account. Exception: Update to existing credential with KeyId <some guid> is not allowed`。
 
@@ -292,7 +292,7 @@ Microsoft Azure 恢复服务 (MARS) 代理会在租户中为你创建一个 Azur
 
 在你尝试进行脱机备份配置的服务器中，执行以下操作。
 
-1. 转到“管理计算机证书应用程序” > “个人”选项卡，找到名称为 `CB_AzureADCertforOfflineSeeding_<ResourceId>` 的证书。 
+1. 转到“管理计算机证书应用程序” > “个人”选项卡，找到名称为 `CB_AzureADCertforOfflineSeeding_<Timestamp>` 的证书。 
 
 2. 选择该证书，右键单击“所有任务”并选择“导出”，以 .cer 格式导出不包含私钥的证书。 
 

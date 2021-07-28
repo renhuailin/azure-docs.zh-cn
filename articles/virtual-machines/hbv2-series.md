@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/08/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 25f0933c2d0b8b3c8ec227ce52c974a50a671043
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 70bc81edde843f70dfb4403b63dfeb55ec2036fe
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309724"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750880"
 ---
 # <a name="hbv2-series"></a>HBv2 系列
 
@@ -28,7 +28,7 @@ HBv2 系列 VM 具有 200 Gb/秒 Mellanox EDR InfiniBand。 这些 VM 以非阻�
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（[详细了解](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-hbv2-and-ndv2/ba-p/2067965)性能和潜在问题） <br>
-[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持（[预览版](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks)）<br>
 <br>
 
 | 大小 | vCPU | 处理器 | 内存 (GiB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz) | 所有核心频率（GHz，峰值） | 单一核心频率（GHz，峰值） | RDMA 性能（Gb/秒） | MPI 支持 | 临时存储 (GiB) | 最大数据磁盘数 | 最大以太网 vNIC 数 |

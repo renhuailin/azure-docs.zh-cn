@@ -3,18 +3,18 @@ title: 更改 Azure Maps Web Map Control 的样式
 description: 了解如何更改地图的样式和选项。 请参阅如何在 Azure Maps 中为地图添加样式选取器控件，以便用户可以切换使用不同的样式。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/27/2020
+ms.date: 04/26/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 556e265cc0d1aae33823185ec98d23f191ed1694
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ec79f1427e4561447b80f500adabfa8e8400d7f5
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97680017"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325186"
 ---
 # <a name="change-the-style-of-the-map"></a>更改地图的样式
 
@@ -104,7 +104,7 @@ map.setStyle({ style: 'satellite' });
 :::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="样式选取器列表布局":::
 
 > [!IMPORTANT]
-> 默认情况下，样式选取器控件会列出 Azure Maps S0 定价层下可用的所有样式。 如果要减少此列表中的样式数量，可将希望在列表中显示的样式数组传递到样式选取器的 `mapStyle` 选项中。 如果使用的是 S1 并想要显示所有可用样式，请将样式选取器的 `mapStyles` 选项设置为 `"all"`。
+> 默认情况下，样式选取器控件会列出 Azure Maps S0 定价层下可用的所有样式。 如果要减少此列表中的样式数量，可将希望在列表中显示的样式数组传递到样式选取器的 `mapStyle` 选项中。 如果使用的是 Gen 1 (S1) 或 Gen 2 定价层并想要显示所有可用样式，请将样式选取器的 `mapStyles` 选项设置为 `"all"`。
 
 以下代码演示了如何替代默认 `mapStyles` 基本样式列表。 在此示例中，我们要设置 `mapStyles` 选项以列出想要通过样式选取器控件显示的基本样式。
 

@@ -1,0 +1,77 @@
+### YamlMime:FAQ
+metadata:
+  title: 合作伙伴常见问题解答：适用于云解决方案提供商计划的 StorSimple
+  description: 针对合作伙伴的有关 StorSimple 和 CSP 的常见问题解答。
+  services: storsimple
+  documentationcenter: NA
+  author: alkohli
+  manager: timlt
+  editor: ''
+  ms.assetid: 
+  ms.service: storsimple
+  ms.devlang: NA
+  ms.topic: article
+  ms.tgt_pltfrm: NA
+  ms.workload: TBD
+  ms.date: 02/08/2017
+  ms.author: alkohli
+  ms.openlocfilehash: 31b1cad28190df853d6dc11fbcea7fbedc0e0036
+  ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/30/2021
+  ms.locfileid: "113094756"
+title: 适用于云解决方案提供商计划的 StorSimple：常见问题解答
+summary: "\n## <a name=\"overview\"></a>概述\n下面介绍了作为 StorSimple 合作伙伴在 Azure 门户中部署或管理 StorSimple Virtual Array 时可能会遇到的问题及其解答。\n"
+sections:
+- name: StorSimple 和 CSP 模型
+  questions:
+  - question: >
+      在云解决方案提供商 (CSP) 计划中包含 StorSimple 意味着什么？
+    answer: "通过 StorSimple for CSP，CSP 合作伙伴可向其客户转售 StorSimple Virtual Array。 在此模式下，CSP 合作伙伴拥有包含直接配置、计费和 Microsoft 云服务支持的端到端客户生命周期。 \n\n有关详细信息，请转到 [CSP 计划中的 StorSimple](https://www.microsoft.com/en-us/server-cloud/products/storsimple/)。 \n"
+  - question: >
+      StorSimple 是基于使用情况还是基于席位许可证（如 Microsoft 365 和企业移动性套件 (EMS)）？
+    answer: "StorSimple 是基于使用情况的服务。 通过 CSP 渠道采购 StorSimple Virtual Array 的客户支付 virtual array 和 Azure 的使用费用（作为 CSP 帐单中的单独品种名计费）。 \n"
+  - question: "StorSimple 业务模型是否类似于其他服务（如 Microsoft 365 和企业移动性套件）的业务模型？ \n"
+    answer: "是的。 与 Azure 中其他基于使用情况的服务一样，该模型是批发折扣模型。 StorSimple 的批发折扣与其他 Azure 服务的批发折扣类似。 此模型为 CSP 合作伙伴提供了通过 StorSimple Virtual Array 提高销售量和推动 Azure 使用量的机会。  \n"
+  - question: >
+      发布时提供哪些 StorSimple SKU？
+    answer: "与独立 StorSimple 服务提供的 SKU 相同。 \n"
+  - question: >
+      直接从 Microsoft 的 EA 下购买的 StorSimple 和作为 CSP 的一部分购买的 StorSimple 是否有区别？
+    answer: "不是。 在 CSP 中，客户还可以在同一发票下，与 StorSimple Virtual Array (SVA) 一起购买 CSP 合作伙伴提供的其他服务。 请注意，若要采购 StorSimple 8000 系列物理设备，客户仍需通过 EA 渠道。 \n"
+  - question: >
+      发布时，哪些市场提供用于 CSP 的 StorSimple？
+    answer: >
+      现在，所有提供 StorSimple 的市场均提供用于 CSP 的 StorSimple Virtual Array。 有关详细信息，请转到[提供 StorSimple 的区域列表](https://azure.microsoft.com/regions/services/)。
+  - question: "对于 StorSimple 和 CSP，合作伙伴可提供哪些类型的解决方案？ \n"
+    answer: "可提供多种解决方案：\n\n- 合作伙伴可以转售 StorSimple Virtual Array。 \n- 合作伙伴可以提供围绕 StorSimple 和其他 Azure 服务或第三方软件构建的解决方案。 有关详细信息，请查看可能[存在的有关 StorSimple 的解决方案](./storsimple-disaster-recovery-using-azure-site-recovery.md)。\n- 他们还可以通过提供托管服务发现新的业务模式。\n"
+  - question: >
+      为 StorSimple CSP 合作伙伴提供的奖励有哪些？ 我有资格获得 CSP 计划奖励吗？
+    answer: >
+      有关奖励的信息，请转到 [CSP 计划奖励](https://partner.microsoft.com/cloud-solution-provider/program-details)。
+- name: 以合作伙伴身份部署和管理 StorSimple
+  questions:
+  - question: "如何在 CSP 中管理 StorSimple Virtual Array？ \n"
+    answer: >
+      可以通过合作伙伴中心将 StorSimple Virtual Array 订阅添加到客户的帐户。 此外，还可以使用 Azure 门户向订阅添加用户。
+  - question: "Azure 门户方法是否与 CSP 的其他服务相同？ \n"
+    answer: "是的。 借助用于 CSP 的 StorSimple Virtual Array，合作伙伴访问 Azure 门户的最佳方式应该是通过[合作伙伴中心](https://partnercenter.microsoft.com/)进行访问，他们可在合作伙伴中心中管理客户和订阅。 若要管理 StorSimple 订阅，合作伙伴或客户（具体取决于授予的权限），应登录到 Azure 门户。 \n"
+  - question: "Microsoft 是否为 StorSimple for CSP 提供了新的门户？ \n"
+    answer: >
+      不是。 将能够通过 Azure 门户在 CSP 中管理 StorSimple Virtual Array。
+  - question: "我已为我的客户配置了独立的 StorSimple 订阅。 我必须使用 Azure 门户来管理我的设备吗？ \n"
+    answer: "是的。 \n"
+  - question: >
+      对于通过 CSP 销售的 StorSimple，Microsoft 帐户团队是否会因此得到报酬？
+    answer: >
+      是的。 合作伙伴销售主管和面向最终客户的客户团队会获得 CSP 销售的报酬。 合作伙伴可望在销售差异化价值和产品/服务方面起到带头作用。
+- name: 支持 StorSimple 和 CSP
+  questions:
+  - question: >
+      是否能通过任何论坛获得有关 CSP 合作伙伴部署和管理 StorSimple 的额外支持？
+    answer: >
+      可以访问 CSP 论坛中的 StorSimple 获得一些常见问题的答案。 需要先加入 [Azure 顾问 Yammer 组](https://www.yammer.com/azureadvisors)。 接下来搜索并加入群组 - **StorSimple 合作伙伴顾问**。
+  - question: "如何实施对 StorSimple for CSP 的支持？ \n"
+    answer: "CSP 中 StorSimple 的支持模型与 CSP 中其他 Azure 服务的支持模型相同。 有关详细信息，请转到 [CSP 的客户支持](/partner-center/csp-overview)。\n\n有关 StorSimple for CSP 的详细信息，请转到：\n\n- [Microsoft 云解决方案提供商计划](https://partner.microsoft.com/Membership)\n- [合作伙伴中心](https://partnercenter.microsoft.com/) \n"
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n如果已准备好部署 StorSimple，请转到[部署 CSP 中的 StorSimple](storsimple-partner-csp-deploy.md)。"

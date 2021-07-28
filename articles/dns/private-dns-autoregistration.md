@@ -1,35 +1,34 @@
 ---
-title: 什么是 Azure DNS 专用区域的自动注册功能
-description: Azure DNS 专用区域的自动注册功能概述
+title: Azure DNS 专用区域中的自动注册功能是什么？
+description: Azure DNS 专用区域中自动注册功能的概述。
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 9/24/2019
+ms.date: 04/26/2021
 ms.author: rohink
-ms.openlocfilehash: 2e5f41c0e149c99b5524c439c59e72afe554c776
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: c9ed45d452f2a6ed89ee71826fbee5e107a395ae
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104783891"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761626"
 ---
-# <a name="what-is-the-autoregistration-feature-of-azure-dns-private-zones"></a>什么是 Azure DNS 专用区域的自动注册功能
+# <a name="what-is-the-auto-registration-feature-in-azure-dns-private-zones"></a>Azure DNS 专用区域中的自动注册功能是什么？
 
-Azure DNS 专用区域自动注册功能简化了对虚拟机（部署在虚拟网络中）的 DNS 记录的管理过程。 当将[虚拟网络](./private-dns-virtual-network-links.md)与专用 DNS 区域链接并为所有虚拟机启用自动注册时，将自动在专用 DNS 区域中创建虚拟机（部署在虚拟网络中）的 DNS 记录。 除了前向查找记录（A 记录），该功能还会自动为虚拟机创建反向查找记录（PTR 记录）。
-如果将更多虚拟机添加到虚拟网络，则这些虚拟机的 DNS 记录也会在链接的专用 DNS 区域中自动进行创建。
+Azure DNS 专用区域自动注册功能管理部署在虚拟网络中的虚拟机的 DNS 记录。 在启用此设置的情况下，将[虚拟网络](./private-dns-virtual-network-links.md)与专用 DNS 区域链接。 系统将为部署在虚拟网络中的每一台虚拟机创建一条 DNS 记录。 
 
-删除虚拟机时，虚拟机的 DNS 记录将自动从专用 DNS 区域中删除。
+系统将为每一台虚拟机创建一条 A 记录和一条 PTR 记录。 新部署的虚拟机的 DNS 记录也会在链接的专用 DNS 区域中自动创建。 删除虚拟机时，也会从专用 DNS 区域中删除任何关联的 DNS 记录。
 
-可以通过在创建虚拟网络链接时选择“启用自动注册”选项来启用自动注册。
+若要启用自动注册，请在创建虚拟网络链接时选中“Enable auto registration（启用自动注册）”复选框。
 
-![启用自动注册](./media/privatedns-concepts/enable-autoregistration.png)
+:::image type="content" source="./media/privatedns-concepts/enable-autoregistration.png" alt-text="在添加虚拟网络链接的页面上启用自动注册的屏幕截图。":::
 
 ## <a name="restrictions"></a>限制
 
-* 自动注册仅适用于虚拟机。 对于所有其他资源（如内部负载均衡器等），可以在链接到虚拟网络的专用 DNS 区域中手动创建 DNS 记录。
+* 自动注册仅适用于虚拟机。 对于所有其他资源（如内部负载均衡器），可以在链接到虚拟网络的专用 DNS 区域中手动创建 DNS 记录。
 * 仅为主虚拟机 NIC 自动创建 DNS 记录。 如果虚拟机有多个 NIC，则可以手动为其他网络接口创建 DNS 记录。
-* 只有在主虚拟机 NIC 使用 DHCP 的情况下，才自动创建 DNS 记录。 如果为某个目的配置了静态 IP 地址（例如，为了使用 [Azure 中的多个 IP 地址](../virtual-network/virtual-network-multiple-ip-addresses-portal.md#os-config)而这样做），则自动注册不会为该虚拟机创建记录。
+* 只有在主虚拟机 NIC 使用 DHCP 的情况下，才自动创建 DNS 记录。 如果使用静态 IP，此类配置[在 Azure 中具有多个 IP 地址](../virtual-network/virtual-network-multiple-ip-addresses-portal.md#os-config)，则自动注册不会为该虚拟机创建记录。
 * 不支持 IPv6 自动注册（AAAA 记录）。
 
 ## <a name="next-steps"></a>后续步骤
@@ -38,4 +37,4 @@ Azure DNS 专用区域自动注册功能简化了对虚拟机（部署在虚拟�
 
 * 了解可以通过 Azure DNS 中的专用区域实现的一些常见[专用区域方案](./private-dns-scenarios.md)。
 
-* 有关 Azure DNS 专用区域的一些常见问题和解答，包括对于某些类型的操作可以期待的特定行为，请参阅[专用 DNS 常见问题解答](./dns-faq-private.md)。
+* 有关 Azure DNS 专用区域的一些常见问题和解答，包括对于某些类型的操作可以期待的特定行为，请参阅[专用 DNS 常见问题解答](./dns-faq-private.yml)。

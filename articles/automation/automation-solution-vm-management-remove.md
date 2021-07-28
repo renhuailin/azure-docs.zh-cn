@@ -3,14 +3,14 @@ title: 删除 Azure 自动化“在空闲时间启动/停止 VM”的概述
 description: 本文介绍如何删除“在空闲时间启动/停止 VM”功能，以及如何取消自动化帐户与 Log Analytics 工作区的链接。
 services: automation
 ms.subservice: process-automation
-ms.date: 03/04/2021
+ms.date: 04/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0bab5d8e82ce432e9b3834fe4c003316545eb338
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9ec76197bfde6bb679f70c44ab01712f9f52bfd2
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122079"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533950"
 ---
 # <a name="remove-startstop-vms-during-off-hours-from-automation-account"></a>从自动化账户中删除“在空闲时间启动/停止 VM”功能
 
@@ -21,6 +21,9 @@ ms.locfileid: "102122079"
 * 从支持其他管理和监视目标的自动化帐户和链接的工作区中删除该功能。
 
 删除此功能只会删除关联的 runbook，不会删除部署期间创建的计划或变量，也不会删除之后创建的任何自定义计划或变量。
+
+> [!NOTE]
+> 在继续之前，请确认订阅、资源组或资源上没有应用任何[资源管理器锁](../azure-resource-manager/management/lock-resources.md)，以防止意外删除或修改关键资源。 部署在空闲时间启动/停止 VM 的解决方案时，该解决方案将针对自动化帐户中的多个从属资源（特别是其 runbook 和变量）将锁定级别设置为 CanNotDelete。 删除自动化帐户之前，需要删除任何锁。
 
 ## <a name="delete-the-dedicated-resource-group"></a>删除专用资源组
 

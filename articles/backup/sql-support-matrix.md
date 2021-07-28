@@ -2,14 +2,14 @@
 title: 适用于 Azure VM 中 SQL Server 备份的 Azure 备份支持矩阵
 description: 提供有关在使用 Azure 备份服务备份 Azure VM 中的 SQL Server 时的支持设置和限制摘要。
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 78436981c515b95ccda763d8ac916738b4364953
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 354f64eb86cd545860c47562fba7ff43babe72ca
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97734787"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714139"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>适用于 Azure VM 中 SQL Server 备份的支持矩阵
 
@@ -30,11 +30,10 @@ ms.locfileid: "97734787"
 |设置  |最大限制 |
 |---------|---------|
 |服务器（和保管库）中可以保护的数据库数    |   2000      |
-|支持的数据库大小（超出此值，可能会出现性能问题）   |   2 TB      |
+|支持的数据库大小（超出此值，可能会出现性能问题）   |   6 TB*      |
 |数据库中支持的文件数    |   1000      |
 
->[!NOTE]
-> [下载详细资源规划器](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)，以根据 VM 资源、带宽和备份策略，计算建议每个服务器保护的数据库的大概数量。
+*数据库大小限制取决于我们支持的数据传输速率以及备份时间限制配置。这并非硬性限制。[详细了解](#backup-throughput-performance)备份吞吐量性能。
 
 * SQL Server 备份可配置在 Azure 门户或 PowerShell 中。 不支持 CLI。
 * 此解决方案在 Azure 资源管理器 VM 和经典 VM 这两种[部署](../azure-resource-manager/management/deployment-models.md)上均受支持。
@@ -93,6 +92,17 @@ ms.locfileid: "97734787"
 差异 | 主要
 日志 |  次要
 仅复制完整 |  次要
+
+## <a name="backup-throughput-performance"></a>备份吞吐量性能
+
+对大型 SQL 数据库 (500 GB) 进行完整和差异备份时，Azure 备份可提供 200 Mbps 的稳定数据传输速率。 若要利用最佳性能，请确保：
+
+- 为基础 VM（包含托管了数据库的 SQL Server 实例）配置了所需的网络吞吐量。 如果 VM 的最大吞吐量小于 200 Mbps，则 Azure 备份无法以最佳速度传输数据。<br>此外，必须为包含数据库文件的磁盘预配足够的吞吐量。 [详细了解](../virtual-machines/disks-performance.md) Azure VM 中的磁盘吞吐量和性能。 
+- 在 VM 中运行的进程不消耗 VM 带宽。 
+- 备份计划分散在一部分数据库之间。 在 VM 上并发运行的多个备份彼此分担网络消耗量。 [详细了解](faq-backup-sql-server.yml#can-i-control-how-many-concurrent-backups-run-on-the-sql-server-)如何控制并发备份数。
+
+>[!NOTE]
+> [下载详细资源规划器](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)，以根据 VM 资源、带宽和备份策略，计算建议每个服务器保护的数据库的大概数量。
 
 ## <a name="next-steps"></a>后续步骤
 

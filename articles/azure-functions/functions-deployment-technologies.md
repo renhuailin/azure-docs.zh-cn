@@ -4,12 +4,12 @@ description: 了解将代码部署到 Azure Functions 的不同方式。
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 4a65a00c28a20c9381d3dcc6fd7545137528d5c0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca81067fa60836d77c4d8af121ebf415c772a1d7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943636"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789206"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技术
 
@@ -106,7 +106,7 @@ Azure Functions 中提供了以下部署方法。
 
 可以使用外部包 URL 来引用包含函数应用的远程包 (.zip) 文件。 可从提供的 URL 下载该文件，应用将在[“从包运行”](run-functions-from-deployment-package.md)模式下运行。
 
->如何使用：将 [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) 添加到应用程序设置。 此设置的值应是一个 URL（要运行的特定包文件的位置）。 可以[在门户中](functions-how-to-use-azure-function-app-settings.md#settings)或[使用 Azure CLI](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) 来添加设置。
+>如何使用：将 [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) 添加到应用程序设置。 此设置的值应是一个 URL（要运行的特定包文件的位置）。 可以[在门户中](functions-how-to-use-azure-function-app-settings.md#settings)或[使用 Azure CLI](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) 来添加设置。
 >
 >如果使用 Azure Blob 存储，请结合[共享访问签名 (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) 使用专用容器，使 Functions 能够访问该包。 每当应用程序重启时，都会提取内容的副本。 引用必须在应用程序的整个生存期内有效。
 
@@ -118,7 +118,7 @@ Azure Functions 中提供了以下部署方法。
 
 >__如何使用：__ 使用偏爱的客户端工具进行部署：[Visual Studio Code](functions-develop-vs-code.md#publish-to-azure)、[Visual Studio](functions-develop-vs.md#publish-to-azure)，或从命令行使用 [Azure Functions Core Tools](functions-run-local.md#project-file-deployment)。 默认情况下，这些工具使用 zip 部署并[从包运行](run-functions-from-deployment-package.md)。 Core Tools 和 Visual Studio Code 扩展在部署到 Linux 时都启用[远程生成](#remote-build)。 若要手动将 .zip 文件部署到函数应用，请遵照[从 .zip 文件或 URL 进行部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)中的说明操作。
 
->使用压缩部署方法时，可将应用设置为[从包运行](run-functions-from-deployment-package.md)。 若要从包运行，请将 [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package 应用程序设置值设置为 `1`。 我们建议使用压缩部署。 此方法可以缩短应用程序加载时间，并且是 VS Code、Visual Studio 和 Azure CLI 的默认部署方法。
+>使用压缩部署方法时，可将应用设置为[从包运行](run-functions-from-deployment-package.md)。 若要利用包运行，请将 [`WEBSITE_RUN_FROM_PACKAGE`](functions-app-settings.md#website_run_from_package) 应用程序设置值设置为 `1`。 我们建议使用压缩部署。 此方法可以缩短应用程序加载时间，并且是 VS Code、Visual Studio 和 Azure CLI 的默认部署方法。
 
 >__何时使用：__ 压缩部署是建议用于 Azure Functions 的部署技术。
 

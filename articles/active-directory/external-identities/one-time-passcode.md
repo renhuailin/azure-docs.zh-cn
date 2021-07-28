@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 04/06/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7961997c6a6736c154b6217ee3f21682d0c4c3fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3b4089559b341dd268928b1f150b6fc173869ead
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101688461"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529926"
 ---
 # <a name="email-one-time-passcode-authentication"></a>电子邮件一次性密码身份验证
 
@@ -64,7 +64,7 @@ ms.locfileid: "101688461"
 ![显示具有 OTP 源值的一次性密码用户的屏幕截图](media/one-time-passcode/guest-user-properties.png)
 
 > [!NOTE]
-> 在用户兑换一次性密码并稍后获得 MSA、Azure AD 帐户或其他联合帐户的情况下，他们将继续使用一次性密码进行身份验证。 如果要更新用户的身份验证方法，可以删除其来宾用户帐户并重新邀请用户。
+> 在用户兑换一次性密码并稍后获得 MSA、Azure AD 帐户或其他联合帐户的情况下，他们将继续使用一次性密码进行身份验证。 如果要更新用户的身份验证方法，可以[重置其兑换状态](reset-redemption-status.md)。
 
 ### <a name="example"></a>示例
 
@@ -76,7 +76,7 @@ ms.locfileid: "101688461"
 
 > [!NOTE]
 >
-> 如果电子邮件一次性密码功能已在租户中启用，而你将其关闭，则已兑换一次性密码的任何来宾用户将无法登录。 你可以删除来宾用户，然后重新邀请他们，以便他们可以使用另一种身份验证方法重新登录。
+> 如果电子邮件一次性密码功能已在租户中启用，而你将其关闭，则已兑换一次性密码的任何来宾用户将无法登录。 可以[重置其兑换状态](reset-redemption-status.md)，以便他们可以使用另一种身份验证方法再次登录。
 
 ### <a name="to-disable-the-email-one-time-passcode-feature"></a>若要禁用电子邮件一次性密码功能
 
@@ -106,7 +106,7 @@ ms.locfileid: "101688461"
 
 ![启用“已选择加入电子邮件一次性密码”](media/one-time-passcode/email-otp-options.png)
 
-- 自 2021 年 10 月起，自动为来宾启用电子邮件一次性密码。 （默认）如果尚未为租户启用电子邮件一次性密码功能，则会从 2021 年 10 开始自动启用该功能。 如果届时要启用该功能，无需执行任何其他操作。 如果已启用或禁用该功能，此选项将不可用。
+- 自 2021 年 10 月起，自动为来宾启用电子邮件一次性密码。 （默认）如果尚未为租户启用电子邮件一次性密码功能，则会从 2021 年 10 开始自动启用该功能。 如果届时要启用该功能，则无需执行进一步操作。 如果已启用或禁用该功能，则此选项将不可用。
 
 - 立即为来宾启用电子邮件一次性密码。 为租户启用电子邮件一次性密码功能。
 
@@ -114,7 +114,7 @@ ms.locfileid: "101688461"
 
 ## <a name="note-for-azure-us-government-customers"></a>Azure 美国政府客户注意事项
 
-在 Azure 美国政府云中，默认禁用电子邮件一次性密码功能。  
+在 Azure 美国政府云中，默认禁用电子邮件一次性密码功能。 若不启用此功能，你的合作伙伴将无法登录。 与 Azure 公有云不同，Azure 美国政府云不支持自助服务 Azure Active Directory 帐户的兑换邀请。
 
  ![已禁用电子邮件一次性密码](media/one-time-passcode/enable-email-otp-disabled.png)
 
@@ -122,7 +122,7 @@ ms.locfileid: "101688461"
 
 1. 以 Azure AD 全局管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在导航窗格中选择“Azure Active Directory”。
-3. 选择“组织关系” >“设置” **** 。
+3. 选择“组织关系” >“所有标识提供者” **** 。
 
    > [!NOTE]
    > - 如果未看到“组织关系”，请在顶部的搜索栏中搜索“外部标识”。

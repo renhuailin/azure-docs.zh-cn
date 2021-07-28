@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure 数据工厂托管虚拟网络映射数据流来转换数据
 description: 本教程分步介绍了如何使用 Azure 数据工厂通过映射数据流转换数据。
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/15/2021
-ms.openlocfilehash: a5c93244862d72f9c8ea2928c41e699302b1752b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/14/2021
+ms.openlocfilehash: ac868fdf3ca80d489d479b5be0c57bd14a90ccbb
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98249426"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905695"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>使用映射数据流安全地转换数据
 
@@ -91,9 +91,6 @@ ms.locfileid: "98249426"
    ![屏幕截图显示正在创建管道。](./media/doc-common-process/get-started-page.png)
 
 1. 在管道的“属性”窗格中，输入“TransformMovies”作为管道名称。
-1. 在工厂顶部栏中，将“数据流调试”滑块滑动到“开”。 调试模式允许针对实时 Spark 群集进行转换逻辑的交互式测试。 数据流群集需要 5 到 7 分钟的预热时间。 如果计划进行数据流开发，请先启用“数据流调试”。 有关详细信息，请参阅[调试模式](./concepts-data-flow-debug-mode.md)。
-
-    ![展示了“数据流调试”滑块的屏幕截图。](media/tutorial-data-flow-private/dataflow-debug.png)
 1. 在“活动”窗格中，展开“移动和转换”。 将“数据流”活动从窗格中拖动到管道画布上。
 
 1. 在“添加数据流”弹出窗口中，选中“新建数据流”，然后选择“映射数据流”。 完成后，选择“确定”。
@@ -101,6 +98,9 @@ ms.locfileid: "98249426"
     ![展示了“映射数据流”的屏幕截图。](media/tutorial-data-flow-private/mapping-dataflow.png)
 
 1. 在“属性”窗格中，将数据流命名为“TransformMovies”。
+1. 在管道画布的顶部栏中，将“数据流调试”滑块滑动到打开。 调试模式允许针对实时 Spark 群集进行转换逻辑的交互式测试。 数据流群集需要 5-7 分钟才能预热，如果用户计划进行数据流开发，建议先打开调试。 有关详细信息，请参阅[调试模式](concepts-data-flow-debug-mode.md)。
+
+    ![展示了“数据流调试”滑块的屏幕截图。](media/tutorial-data-flow-private/dataflow-debug.png)
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>在数据流画布中构建转换逻辑
 
@@ -248,7 +248,7 @@ ms.locfileid: "98249426"
 
 1. 转到管道画布。 选择“调试”，以触发调试运行。
 
-1. 数据流活动的管道调试使用活动的调试群集，但初始化仍然需要至少一分钟。 可以通过“输出”选项卡来跟踪进度。运行成功后，选择眼镜图标来获取运行详细信息。
+1. 数据流活动的管道调试使用活动的调试群集，但初始化仍然需要至少一分钟。 可以通过“输出”选项卡跟踪进度。运行成功后，选择眼镜图标查看“运行详细信息”。
 
 1. 在“详细信息”页上，可以看到行数和每个转换步骤所花费的时间。
 

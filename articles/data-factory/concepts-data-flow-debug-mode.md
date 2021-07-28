@@ -6,13 +6,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/19/2021
-ms.openlocfilehash: 0aa472aca40acbaf3f8c8a09469d08fe6b37187a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/16/2021
+ms.openlocfilehash: 681a3643c04472cc42c1f672f4c9433da30e3955
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101699753"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565487"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>映射数据流调试模式
 
@@ -20,9 +20,11 @@ ms.locfileid: "101699753"
 
 ## <a name="overview"></a>概述
 
-通过 Azure 数据工厂映射数据流的调试模式，你可以在生成和调试数据流时以交互方式观察数据形状转换。 调试会话可在数据流设计会话中使用，也可在数据流的管道调试执行期间使用。 若要启用调试模式，请使用设计图面顶部的“数据流调试”按钮。
+通过 Azure 数据工厂映射数据流的调试模式，你可以在生成和调试数据流时以交互方式观察数据形状转换。 调试会话可在数据流设计会话中使用，也可在数据流的管道调试执行期间使用。 若要启用调试模式，请在有数据流活动时使用数据流画布或管道画布顶部栏中的“数据流调试”按钮。
 
-![调试滑块](media/data-flow/debugbutton.png "调试滑块")
+![屏幕截图显示了“调试”滑块 1 的位置](media/data-flow/debug-button.png)
+
+![屏幕截图显示了“调试”滑块 2 的位置](media/data-flow/debug-button-4.png)
 
 开启滑块后，系统将提示你选择要使用的集成运行时配置。 如果选择“AutoResolveIntegrationRuntime”，则将启动具有八个常规计算内核的群集（默认 60 分钟时间）。 如果要在会话超时之前允许更多空闲团队，可以选择更高的 TTL 设置。 有关数据流集成运行时的详细信息，请参阅[数据流性能](concepts-data-flow-performance.md#ir)。
 

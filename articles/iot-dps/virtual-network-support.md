@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: f1409a931195d236b2729e629e4603c606137593
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f5b1947a8d037dbdd20a3335a79f90ebf10b2ca6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94959775"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108749890"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>对虚拟网络的 Azure IoT 中心设备预配服务 (DPS) 支持
 
@@ -24,11 +24,11 @@ ms.locfileid: "94959775"
 
 ## <a name="introduction"></a>简介
 
-默认情况下，DPS 主机名会映射到一个公共终结点，该终结点具有可通过 Internet 以公开方式路由的 IP 地址。 此公共终结点对所有客户都可见。 IoT 设备可以尝试通过广域网络以及本地网络来访问公共终结点。
+默认情况下，DPS 主机名会映射到一个公共终结点，该终结点具有可通过 Internet 以公开方式路由的 IP 地址。 此公共终结点对所有客户都可见。 IoT 设备可以尝试通过广域网络和本地网络来访问公共终结点。
 
 出于多种原因，客户可能想要限制与 DPS 等 Azure 资源的连接。 其原因包括：
 
-* 防止通过公共 Internet 的连接曝光。 可以通过网络级隔离为 IoT 中心和 DPS 资源引入附加的安全层，从而降低曝光度
+* 防止通过公共 Internet 的连接曝光。 可以通过网络级隔离为 IoT 中心和 DPS 资源引入更多安全层，从而降低曝光度
 
 * 提供来自本地网络资产的专用连接体验，确保数据和流量直接传输到 Azure 主干网络。
 
@@ -69,7 +69,7 @@ ms.locfileid: "94959775"
 
 若要设置专用终结点，请执行以下步骤：
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，打开 DPS 资源并单击“网络”选项卡。单击“专用终结点连接”和“+ 专用终结点”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，打开 DPS 资源，然后单击“网络”选项卡。单击“Private endpoint connections（专用终结点连接）”和“+ 专用终结点”。
 
     ![为 DPS 添加新的专用终结点](./media/virtual-network-support/networking-tab-add-private-endpoint.png)
 
@@ -112,6 +112,38 @@ ms.locfileid: "94959775"
 6. 依次单击“查看 + 创建”和“创建”，以创建专用终结点资源。
 
 
+## <a name="use-private-endpoints-with-devices"></a>对设备使用专用终结点
+
+若要将专用终结点与设备预配代码一起使用，预配代码必须使用 DPS 资源的特定 **服务终结点**，如 [Azure 门户](https://portal.azure.com)中 DPS 资源的概述页所示。 服务终结点具有以下形式。
+
+`<Your DPS Tenant Name>.azure-devices-provisioning.net`
+
+文档和 SDK 中演示的大多数示例代码使用全局设备终结点 (`global.azure-devices-provisioning.net`) 和 ID 范围来解析特定的 DPS 资源。 使用专用链接连接到 DPS 资源来预配设备时，使用服务终结点来代替全局设备终结点。
+
+例如，[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 中的预配设备客户端示例 ([pro_dev_client_sample](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/prov_dev_client_sample)) 旨在使用全局设备终结点作为 [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c) 中的全局预配 URI (`global_prov_uri`)
+
+:::code language="c" source="~/iot-samples-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c" range="60-64" highlight="4":::
+
+:::code language="c" source="~/iot-samples-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c" range="138-144" highlight="3":::
+
+若要将示例与专用链接一起使用，上述突出显示的代码将更改为使用 DPS 资源的服务终结点。 例如，如果服务终结点为 `mydps.azure-devices-provisioning.net`，则代码将如下所示。
+
+```C
+static const char* global_prov_uri = "global.azure-devices-provisioning.net";
+static const char* service_uri = "mydps.azure-devices-provisioning.net";
+static const char* id_scope = "[ID Scope]";
+```
+
+```C
+    PROV_DEVICE_RESULT prov_device_result = PROV_DEVICE_RESULT_ERROR;
+    PROV_DEVICE_HANDLE prov_device_handle;
+    if ((prov_device_handle = Prov_Device_Create(service_uri, id_scope, prov_transport)) == NULL)
+    {
+        (void)printf("failed calling Prov_Device_Create\r\n");
+    }
+```
+
+
 ## <a name="request-a-private-endpoint"></a>请求专用终结点
 
 可以按资源 ID 向 DPS 资源请求专用终结点。 若要提出此请求，需要资源所有者提供资源 ID。 
@@ -129,7 +161,7 @@ ms.locfileid: "94959775"
     | :---- | :-----|
     | **资源 ID 或别名** | 输入 DPS 资源的资源 ID。 |
     | **目标子资源** | 输入 **iotDps** |
-    | **请求消息** | 输入面向 DPS 资源所有者的请求消息。<br>例如， <br>`Please approve this new private endpoint`<br>`for IoT devices in site 23 to access this DPS instance`  |
+    | 请求消息 | 输入面向 DPS 资源所有者的请求消息。<br>例如， <br>`Please approve this new private endpoint`<br>`for IoT devices in site 23 to access this DPS instance`  |
 
     单击“下一步:配置”，为专用终结点配置 VNET。
 
@@ -139,7 +171,7 @@ ms.locfileid: "94959775"
 
 4. 依次单击“查看 + 创建”和“创建”，以创建专用终结点请求。
 
-5. DPS 所有者将能在 DPS 网络选项卡上的“专用终结点连接”列表中看到专用终结点请求。在此页面上，所有者可以“批准”或“拒绝”专用终结点请求，如下所示。
+5. DPS 所有者将在 DPS 网络选项卡上的“专用终结点连接”列表中看到专用终结点请求。在此页面上，所有者可以“批准”或“拒绝”专用终结点请求，如下所示。
 
     ![DPS 审批](./media/virtual-network-support/approve-dps-private-endpoint.png)
 

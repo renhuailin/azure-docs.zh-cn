@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: eebcfb98d4e155ca965b9e4c68a862afa08a46ca
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0b88923ff6447785a4ef5a7c80e1ff44d1a2b9cb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101727424"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777305"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何预配多租户 
 
@@ -26,11 +26,12 @@ ms.locfileid: "101727424"
 
 本文使用 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 中的模拟设备示例来演示如何在跨区域的多租户方案中预配设备。 你将在本文中执行以下步骤：
 
-* 使用 Azure CLI 创建两个区域 IoT 中心（美国西部和美国东部）
-* 创建多租户注册
-* 使用 Azure CLI 创建两个区域 Linux VM，以充当同一区域中的设备（美国西部和美国东部）
-* 在这两个 Linux VM 上为 Azure IoT C SDK 设置开发环境
-* 模拟设备，以确保为最近区域中同一租户预配设备。
+> [!div class="checklist"]
+> * 使用 Azure CLI 创建两个区域 IoT 中心（美国西部和美国东部）
+> * 创建多租户注册
+> * 使用 Azure CLI 创建两个区域 Linux VM，以充当同一区域中的设备（美国西部和美国东部）
+> * 在这两个 Linux VM 上为 Azure IoT C SDK 设置开发环境
+> * 模拟设备，以确保为最近区域中同一租户预配设备。
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -46,7 +47,7 @@ ms.locfileid: "101727424"
 在这一部分，你将使用 Azure Cloud Shell 在美国西部和美国东部区域为租户创建两个新的区域 IoT 中心。
 
 
-1. 在 Azure Cloud Shell 中，使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+1. 在 Azure Cloud Shell 中，使用 [az group create](/cli/azure/group#az_group_create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
     以下示例在“eastus”区域创建名为“contoso-us-resource-group”的资源组。 建议对本文中创建的所有资源使用该组。 这将便于在完成学习后更为轻松地清理创建的资源。
 
@@ -54,7 +55,7 @@ ms.locfileid: "101727424"
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令在“eastus”区域中创建 IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group。
+2. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) 命令在“eastus”区域中创建 IoT 中心。 IoT 中心将被添加到 contoso-us-resource-group。
 
     以下示例在“eastus”位置创建名为“contoso-east-hub”的 IoT 中心。 你必须使用自己的唯一中心名称来替代 contoso-east-hub。
 
@@ -64,7 +65,7 @@ ms.locfileid: "101727424"
     
     此命令可能需要花费几分钟时间完成。
 
-3. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) 命令在“westus”区域中创建 IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group。
+3. 在 Azure Cloud Shell 中，使用 [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) 命令在“westus”区域中创建 IoT 中心。 此 IoT 中心也将被添加到 contoso-us-resource-group。
 
     以下示例在“westus”位置创建名为“contoso-west-hub”的 IoT 中心。 你必须使用自己的唯一中心名称来替代 contoso-west-hub。
 
@@ -417,8 +418,11 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!div class="nextstepaction"]
-> 若要详细了解如何重新预配，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md)
+* 要详细了解重新设置，请参阅
 
 > [!div class="nextstepaction"]
-> 若要详细了解如何取消预配，请参阅[如何取消预配先前自动预配的设备](how-to-unprovision-devices.md)
+> [IoT 中心设备重新预配概念](concepts-device-reprovision.md)
+
+* 要详细了解取消设置，请参阅
+> [!div class="nextstepaction"]
+> [如何取消预配以前自动预配的设备](how-to-unprovision-devices.md)
