@@ -1,0 +1,106 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure IoT Central 常见问题 | Microsoft Docs
+  description: Azure IoT Central 常见问题 (FAQ) 和解答
+  author: dominicbetts
+  ms.author: dobett
+  ms.date: 12/20/2020
+  ms.topic: how-to
+  ms.service: iot-central
+  services: iot-central
+  ms.openlocfilehash: 0d18679d8821a003d18c127af69487e97f68cfcf
+  ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/14/2021
+  ms.locfileid: "113798739"
+title: 有关 IoT Central的常见问题
+summary: ''
+sections:
+- name: 忽略
+  questions:
+  - question: >
+      如何获取有关应用程序的信息？
+    answer: "你可能需要：\n\n- 此信息（如果你联系支持人员）。\n- 你的应用程序用于在 Azure 门户中查找账单信息的 Azure 订阅。\n- 应用程序的 ID（使用 REST API 时）。\n- 用于完成任务（如添加连接器）的应用程序的版本。\n\n若要获取有关 IoT Central 应用程序的信息，请执行以下操作：\n\n1. 选择顶部菜单上的“帮助”链接。\n\n1. 选择“关于应用”。\n\n1. “关于应用”页显示有关应用程序的信息：  \n\n    :::image type=\"content\" source=\"media/howto-faq/about-your-app2.png\" alt-text=\"“关于应用”屏幕截图\":::\n\n    使用“复制信息”按钮将信息复制到剪贴板。\n"
+  - question: >
+      我可以在我的订阅中部署多少个 IoT Central 应用程序？
+    answer: >
+      每个 Azure 订阅具有默认的配额，这些配额可能影响 IoT 解决方案的范围。 目前，IoT Central 将可在单个订阅中部署的应用程序数限制为 10 个。 如果需要增加此限制，请联系 [Microsoft 支持](https://azure.microsoft.com/support/options/)。
+  - question: >
+      如何将设备从 IoT 中心传输到 IoT Central？
+    answer: >
+      设备可以使用连接字符串或使用[设备预配服务 (DPS)](../../iot-dps/about-iot-dps.md) 直接连接到 IoT 中心。 IoT Central 始终使用 DPS。
+
+
+      要将连接到 IoT 中心的设备连接到 IoT Central，请使用以下内容更新设备：
+
+
+      - IoT Central 应用程序的范围 ID。
+
+      - 派生自应用程序组 SAS 密钥或 X.509 证书的密钥。
+
+
+      有关详细信息，请参阅[连接到 Azure IoT Central](concepts-get-connected.md)
+
+
+      若要与 IoT Central 进行交互，必须有一个设备模板来模拟设备功能。 若要了解详细信息，请参阅[什么是设备模板？](concepts-device-templates.md)。
+  - question: >
+      如果设备未连接到我的 IoT Central 应用程序，如何检查凭据问题？
+    answer: >
+      [排查设备中的数据未在 Azure IoT Central 中显示的原因](troubleshoot-connection.md)包括诊断设备连接问题的步骤。
+  - question: >
+      如何向客户支持提交票证？
+    answer: >
+      如果需要帮助，可以提交 [Azure 支持票证](https://portal.azure.com/#create/Microsoft.Support)。
+
+
+      有关详细信息，包括其他支持选项，请参阅 [Azure IoT 支持和帮助选项](../../iot-fundamentals/iot-support-help.md)。
+  - question: >
+      如何解除阻止设备？
+    answer: >
+      阻止设备时，它无法将数据发送到 IoT Central 应用程序。 被阻止的设备在应用程序的“设备”页上的状态为“已阻止”。 操作员必须解除阻止设备，才能使其恢复发送数据：
+
+
+      :::image type="content" source="media/howto-faq/blocked.png" alt-text="显示已阻止设备的屏幕截图":::
+
+
+      当操作员取消阻止设备时，状态将恢复为以前的值：“已注册”或“已预配”。
+  - question: >
+      如何从免费定价计划转到标准定价计划？
+    answer: "- 使用免费定价计划的应用程序在到期前可以免费使用 7 天。 为了避免丢失数据，可以随时将数据转移到标准定价计划中，以免数据过期。\n- 使用标准定价计划的应用程序按设备收费，每个应用程序的前两个设备是免费的。\n\n可在 [Azure IoT Central 定价页](https://azure.microsoft.com/pricing/details/iot-central/)上了解定价详细信息。\n\n在定价部分中，你可以将应用程序从免费计划转移到标准定价计划。\n\n若要完成此自助服务过程，请遵循以下步骤：\n\n1. 在“管理”部分转到“定价”页。 \n\n1. 选择计划\n\n    :::image type=\"content\" source=\"media/howto-faq/free-trial-billing.png\" alt-text=\"试用状态\":::\n\n1. 选择相应的 Azure Active Directory，然后选择要对使用付费计划的应用程序使用的 Azure 订阅。\n\n1. 选择“保存”后，你的应用程序现在使用付费计划，并且开始计费。\n\n> [!Note]\n> 默认将转换为“标准 2”定价计划。\n"
+  - question: >
+      如何更改应用程序定价计划
+    answer: "使用标准定价计划的应用程序按设备收费，每个应用程序的前两个设备是免费的。\n\n在定价部分中，可以随时升级或降级 Azure IoT 定价计划。\n\n1. 在“管理”部分转到“定价”页。 \n\n    :::image type=\"content\" source=\"media/howto-faq/pricing.png\" alt-text=\"升级定价计划\":::\n\n1. 选择“计划”，然后选择“保存”以升级或降级。 \n"
+  - question: >
+      如何实现批准设备？
+    answer: >
+      如果“设备”页上的设备状态为“正在等待批准”，则表示“自动批准”选项处于禁用状态：
+
+
+      :::image type="content" source="media/howto-faq/auto-approve.png" alt-text="显示禁用了自动批准选项的应用程序的屏幕截图。":::
+
+
+      操作员必须先显式批准设备，然后才能开始发送数据。 未在“设备”页上手动注册，但已使用有效凭据建立连接的设备的状态将是“等待批准”。 操作员可以在“设备”页中使用“批准”按钮批准这些设备：
+
+
+      :::image type="content" source="media/howto-faq/approve-device.png" alt-text="显示如何批准设备的屏幕截图":::
+  - question: >
+      如何实现将设备与设备模板关联？
+    answer: "如果设备状态为“未关联”，则表示连接到 IoT Central 的设备没有关联的设备模板。 通常在下列场景中会发生这种情况：\n\n- 在“设备”页上使用“导入”添加了一组设备，但未指定设备模板。 \n- 在“设备”页上手动注册了设备，但未指定设备模板。 然后使用有效凭据连接设备。  \n\n操作员可以在“设备”页上使用“迁移”按钮将设备关联到设备模板。 要了解详细信息，请参阅[在 Azure IoT Central 应用程序中管理设备 > 将设备迁移到一个模板](howto-manage-devices-individually.md)。\n"
+  - question: >
+      在哪里可以了解有关 IoT 中心的详细信息？
+    answer: >
+      Azure IoT Central 使用 Azure IoT 中心作为启用设备连接的云网关。 IoT 中心允许：
+
+
+      - 在云中进行大规模数据引入。
+
+      - 设备管理。
+
+      - 安全的设备连接。
+
+
+      若要详细了解 IoT 中心，请参阅 [Azure IoT 中心](../../iot-hub/index.yml)。
+  - question: >
+      在哪里可以了解有关设备预配服务 (DPS) 的详细信息？
+    answer: Azure IoT Central 使用 DPS 使设备能够连接到应用程序。 若要详细了解如何将设备连接到 IoT Central，请参阅 [连接到 Azure IoT Central](concepts-get-connected.md)。 要了解有关 DPS 的更多详细信息，请参阅[使用 Azure IoT 中心设备预配服务预配设备](../../iot-dps/about-iot-dps.md)。

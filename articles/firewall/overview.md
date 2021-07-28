@@ -6,14 +6,14 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 04/20/2021
+ms.date: 07/01/2021
 ms.author: victorh
-ms.openlocfilehash: 077de420397f3b8feab60a9f555fc26e66a5b5ff
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: e87953217fe44fedc8d693a40a1f3ae942a06a39
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110539766"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113216362"
 ---
 # <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -79,6 +79,8 @@ Azure 防火墙存在以下已知问题：
 |目前不支持 IPv6|如果将 IPv6 地址添加到规则，防火墙会失败。|仅使用 IPv4 地址。 正在调查 IPv6 支持。|
 |更新多个 IPGroup 失败并出现冲突错误。|当你更新两个或更多个已附加到同一个防火墙的 IP 组时，其中一个资源将进入失败状态。|这是一个已知问题或限制。 <br><br>更新 IP 组时，会对该 IP 组所附加到的所有防火墙触发更新。 如果在防火墙仍处于“正在更新”状态时启动对另一个 IP 组的更新，IP 组更新将会失败。<br><br>若要避免更新失败，必须逐个更新附加到同一个防火墙的 IP 组。 请在两次更新之间留出足够的时间，让防火墙可以避开“正在更新”状态。|
 |不支持使用 ARM 模板删除 RuleCollectionGroup。|不支持使用 ARM 模板删除 RuleCollectionGroup，这会导致失败。|此操作不受支持。|
+|允许任何 (*) 的 DNAT 规则将对流量进行 SNAT 处理。|如果 DNAT 规则允许任何 (*) 为源 IP 地址，则隐式网络规则将匹配 VNet-VNet 流量，并始终会对流量进行 SNAT 处理。|这是当前的一项限制。|
+|不支持使用安全提供程序将 DNAT 规则添加到安全虚拟中心。|这将导致返回 DNAT 流量的异步路由，该流量将发送到安全提供程序。|不支持。|
 
 
 ## <a name="next-steps"></a>后续步骤

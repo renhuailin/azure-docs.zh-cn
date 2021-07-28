@@ -1,7 +1,6 @@
 ---
 title: 机器学习和 AI 合作伙伴
 description: 其解决方案支持 Azure Synapse Analytics 的第三方机器学习和人工智能合作伙伴列表。
-services: synapse-analytics
 author: periclesrocha
 manager: charlesf
 ms.service: synapse-analytics
@@ -11,12 +10,12 @@ ms.date: 06/22/2020
 ms.author: procha
 ms.reviewer: charlesf
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 80b01eb78d6dfb0d1629eb73bf86c76e3dc4e32f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7f6b6e2b7880a1316346f24653805948e7907163
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98249137"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566471"
 ---
 # <a name="azure-synapse-analytics-machine-learning-and-ai-partners"></a>Azure Synapse Analytics 机器学习和 AI 合作伙伴
 

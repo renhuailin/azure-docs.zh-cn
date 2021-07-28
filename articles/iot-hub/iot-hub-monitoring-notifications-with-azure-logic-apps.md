@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: cd14ff0688f4230aeedac748ca4b32609bdd2938
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 74724357dea9cd6c8c89a11a9eeb3d1b2933b790
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92490316"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564926"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>通过连接 IoT 中心和邮箱的 Azure 逻辑应用进行 IoT 远程监视并发送通知
 
@@ -24,11 +24,7 @@ ms.locfileid: "92490316"
 
 [Azure 逻辑应用](../logic-apps/index.yml)可帮助你协调跨一个或多个企业中的本地和云服务以及跨各种协议的工作流。 逻辑应用以触发器开始，后接一个或多个可以使用内置控制机制（例如条件和迭代器）定序的操作。 这种灵活性使得逻辑应用成为 IoT 监视方案的理想 IoT 解决方案。 例如，设备将遥测数据发送到 IoT 中心终结点后，可以启动逻辑应用工作流以便在 Azure 存储 Blob 中存储数据、发送电子邮件警报来警示出现数据异常、在设备报告故障时安排技术人员上门解决，等等。
 
-## <a name="what-you-learn"></a>学习内容
-
-了解如何创建连接 IoT 中心和邮箱的逻辑应用，以监视温度并发送通知。
-
-每当设备上运行的客户端代码将遥测消息发送到 IoT 中心时，都会设置应用程序属性 `temperatureAlert`。 当客户端代码检测到温度超过 30 摄氏度时，会将此属性设置为 `true`；否则将此属性设置为 `false`。
+本文介绍如何创建连接 IoT 中心和邮箱的逻辑应用，以监视温度并发送通知。 每当设备上运行的客户端代码将遥测消息发送到 IoT 中心时，都会设置应用程序属性 `temperatureAlert`。 当客户端代码检测到温度超过 30 摄氏度时，会将此属性设置为 `true`；否则将此属性设置为 `false`。
 
 到达 IoT 中心的消息如下所示，正文中包含遥测数据，应用程序属性中包含 `temperatureAlert` 属性（未显示系统属性）：
 
@@ -50,15 +46,9 @@ ms.locfileid: "92490316"
 
 在本主题中，你将在 IoT 中心上设置路由，以将 `temperatureAlert` 属性为 `true` 的消息发送到服务总线终结点。 然后设置一个逻辑应用，该应用在到达服务总线终结点的消息上触发并向你发送电子邮件通知。
 
-## <a name="what-you-do"></a>准备工作
+## <a name="prerequisites"></a>必备知识
 
-* 创建服务总线命名空间，并向其添加服务总线队列。
-* 将自定义终结点和路由规则添加到 IoT 中心，以将包含温度警报的消息路由到服务总线队列。
-* 创建、配置并测试一个逻辑应用，以使用来自服务总线队列的消息，并将通知电子邮件发送到所需的收件人。
-
-## <a name="what-you-need"></a>需要什么
-
-* 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这包括以下要求：
+* 请完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程。 例如，可转到[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)教程或[发送遥测](quickstart-send-telemetry-dotnet.md)快速入门中的一个教程。 这些文章阐述下列要求：
 
   * 一个有效的 Azure 订阅。
   * 已在订阅中创建一个 Azure IoT 中心。

@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: c1057478d9ae7d63bef9477a0b1297fa2c507ffa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92218419"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Data Lake Analytics
@@ -85,7 +85,7 @@ Data Lake Analytics 支持以下数据源：
 3. 选择一个用户，然后单击“选择”。
 4. 选择一个角色，然后单击“选择”。 若要设置要使用 Azure Data Lake 的新的开发人员，请选择“Data Lake Analytics 开发人员”角色。
 5. 选择 U-SQL 数据库的访问控制列表 (ACL)。 如果对所选内容满意，请单击“选择”。
-6. 选择文件的 ACL。 对于默认存储，不要更改根文件夹“/”和 /system 文件夹的 ACL。 单击“选择”  。
+6. 选择文件的 ACL。 对于默认存储，不要更改根文件夹“/”和 /system 文件夹的 ACL。 单击“选择”。
 7. 查看所选的所有更改，然后单击“运行”。
 8. 完成向导后，单击“完成”。
 
@@ -146,7 +146,7 @@ Data Lake Analytics 支持以下数据源：
 
 1. 在 Azure 门户中，转到 Data Lake Analytics 帐户。
 2. 单击“作业见解”。 默认显示“所有作业”选项卡，即显示正在运行的作业、排队的作业以及已结束作业的列表。
-3. 单击“管道作业”选项卡。管道作业列表随每个管道的聚合统计信息一起显示。
+3. 单击“管道作业”选项卡。管道作业列表将随每个管道的聚合统计信息一起显示。
 
 ### <a name="monitoring-recurring-jobs"></a>监视定期作业
 定期作业是指具有相同的业务逻辑，但每次运行时均使用不同输入数据的作业。 理想情况下，定期作业应始终成功，并具有相对稳定的执行时间；监视这些行为有助于确保作业处于正常状态。 定期作业是使用“Recurrence”属性标识的。 使用 ADF V2 计划的作业会自动填充此属性。
@@ -155,7 +155,7 @@ Data Lake Analytics 支持以下数据源：
 
 1. 在 Azure 门户中，转到 Data Lake Analytics 帐户。
 2. 单击“作业见解”。 默认显示“所有作业”选项卡，即显示正在运行的作业、排队的作业以及已结束作业的列表。
-3. 单击“定期作业”选项卡。定期作业列表随每个定期作业的聚合统计信息一起显示。
+3. 单击“定期作业”选项卡。定期作业列表将随每个定期作业的聚合统计信息一起显示。
 
 ## <a name="next-steps"></a>后续步骤
 

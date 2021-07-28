@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
 ms.openlocfilehash: 5863dcc20fb13f1bb203c68ad168655371130601
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92674560"
 ---
 # <a name="install-azure-farmbeats"></a>安装 Azure FarmBeats
@@ -34,7 +34,7 @@ Azure FarmBeats 是 Azure Marketplace 中提供的企业到企业产品/服务�
 | 应用服务     |     数据中心和加速器     |
 | 应用服务计划   | 数据中心和加速器  |
 | API 连接    |  数据中心       |
-| Azure Redis 缓存       | 数据中心      |
+| 用于 Redis 的 Azure 缓存       | 数据中心      |
 | Azure Cosmos DB   |  数据中心       |
 | Azure 数据工厂 V2       |     数据中心和加速器      |
 | Azure Batch 帐户    | 数据中心   |
@@ -57,7 +57,7 @@ Azure FarmBeats 的成本是基础 Azure 服务成本的总和。 Azure 服务�
 目前，在以下区域的公有云环境中支持 Azure FarmBeats：
 
 - 澳大利亚东部
-- 美国中部
+- Central US
 - 美国东部
 - 美国东部 2
 - 美国西部
@@ -124,7 +124,7 @@ Azure FarmBeats 需要创建和注册 Azure Active Directory 应用程序。 若
 
 4. 该脚本要求提供以下三个输入：
 
-    - FarmBeats 网站名称：这是 FarmBeats Web 应用程序的唯一 URL 前缀。 如果前缀已被采用，则该脚本会出错。安装后，FarmBeats 部署可通过 https://\<FarmBeats-website-name>.azurewebsites.net 进行访问，swagger API 会处于 https://\<FarmBeats-website-name>-api.azurewebsites.net
+    - FarmBeats 网站名称：这是 FarmBeats Web 应用程序的唯一 URL 前缀。 如果前缀已被占用，则脚本将出错。安装后，FarmBeats 部署可通过 https://\<FarmBeats-website-name>.azurewebsites.net 进行访问，swagger API 将位于 https://\<FarmBeats-website-name>-api.azurewebsites.net
 
     - Azure 登录 ID：为要添加为 FarmBeats 管理员的用户提供 Azure 登录 ID。 此用户随后可以向其他用户授予访问 FarmBeats Web 应用程序的访问权限。 登录 ID 通常采用 john.doe@domain.com 的形式。 也支持 Azure UPN。
 
@@ -152,7 +152,7 @@ Azure FarmBeats 设置使你可以获取欧洲空间代理商的 [Sentinel-2](ht
 
 2. 转到门户中的 Azure 市场，在市场中搜索“Azure FarmBeats”。
 
-3. 此时将显示新窗口，其中包含 Azure FarmBeats 概述。 选择“创建”  。
+3. 此时将显示新窗口，其中包含 Azure FarmBeats 概述。 选择“创建”。
 
 4. 此时将显示新窗口。 通过选择正确的订阅、资源组以及要将 Azure FarmBeats 安装到其中的位置来完成注册过程。
 

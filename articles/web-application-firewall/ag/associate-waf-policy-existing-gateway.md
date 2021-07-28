@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 10/25/2019
 ms.author: victorh
 ms.openlocfilehash: 1ed2e0cf8cc8cd841d8779462d62ba4852774a3a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74083913"
 ---
 # <a name="associate-a-waf-policy-with-an-existing-application-gateway"></a>将 WAF 策略与现有的应用程序网关关联
@@ -36,8 +36,8 @@ ms.locfileid: "74083913"
       $policy = Get-AzApplicationGatewayFirewallPolicy -Name <policy name> -ResourceGroupName <RG name>`
    ```
    > [!NOTE]
-   > 如果要创建此 WAF 策略以从 WAF 配置转换为 WAF 策略，则该策略必须是旧配置的精确副本。这意味着每个排除、自定义规则、禁用规则组等都需要与 WAF 配置中的完全相同。
-3. （可选）你可以配置 WAF 策略来满足你的需求。 这包括自定义规则、禁用规则/规则组、排除、设置文件上传限制等。如果跳过此步骤，将选择所有默认值。 
+   > 如果要创建此 WAF 策略以从 WAF 配置转换为 WAF 策略，则该策略需要是旧配置的完全相同副本。这意味着每个排除项、自定义规则、禁用的规则组等都需要与 WAF 配置中完全相同。
+3. （可选）你可以配置 WAF 策略来满足你的需求。 这包括自定义规则、禁用规则/规则组、排除项、设置文件上传限制等。如果跳过此步骤，将选择所有默认值。 
    
 4. 保存策略，并将其附加到应用程序网关。 
    

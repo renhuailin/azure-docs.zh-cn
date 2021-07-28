@@ -7,10 +7,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
 ms.openlocfilehash: 8fb60e62a63bfc4562f19d483dc84c99c37676b0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92215529"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>使用 Azure Data Lake U-SQL SDK 运行和测试 U-SQL
@@ -21,7 +21,7 @@ ms.locfileid: "92215529"
 
 ## <a name="install-azure-data-lake-u-sql-sdk"></a>安装 Azure Data Lake U-SQL SDK
 
-可从 Nuget.org 上的[此处](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)获取 Azure Data Lake U-SQL SDK。在使用它之前，需要确保拥有以下依赖项。
+可以通过[此链接](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)在 Nuget.org 中获取 Azure Data Lake U-SQL SDK。在使用前，需要确保具有如下依赖项。
 
 ### <a name="dependencies"></a>依赖项
 
@@ -324,7 +324,7 @@ namespace Test.Helpers
 
 ### <a name="programming-interfaces-in-localrunhelperexe"></a>LocalRunHelper.exe 中的编程接口
 
-LocalRunHelper.exe 为 U-SQL 本地编译和运行等提供编程接口。以下列出了这些接口。
+LocalRunHelper.exe 提供了用于进行 U-SQL 本地编译、运行等功能的编程接口。接口按如下方式列出。
 
 ### <a name="constructor"></a>构造函数
 
@@ -338,26 +338,26 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
 |属性|类型|说明|
 |--------|----|-----------|
-|AlgebraPath|字符串|代数文件的路径（代数文件是某个编译结果）|
-|CodeBehindReferences|字符串|如果脚本有额外的代码隐藏引用，请指定用“;”分隔的路径|
-|CppSdkDir|字符串|CppSDK 目录|
-|CurrentDir|字符串|当前目录|
-|DataRoot|字符串|数据根路径|
-|DebuggerMailPath|字符串|调试程序邮件槽的路径|
+|AlgebraPath|string|代数文件的路径（代数文件是某个编译结果）|
+|CodeBehindReferences|string|如果脚本有额外的代码隐藏引用，请指定用“;”分隔的路径|
+|CppSdkDir|string|CppSDK 目录|
+|CurrentDir|string|当前目录|
+|DataRoot|string|数据根路径|
+|DebuggerMailPath|string|调试程序邮件槽的路径|
 |GenerateUdoRedirect|bool|是否要生成程序集加载重定向替代配置|
 |HasCodeBehind|bool|如果脚本具有.cs 代码隐藏|
-|InputDir|字符串|输入数据的目录|
-|MessagePath|字符串|消息转储文件路径|
-|OutputDir|字符串|输出数据的目录|
+|InputDir|string|输入数据的目录|
+|MessagePath|string|消息转储文件路径|
+|OutputDir|string|输出数据的目录|
 |并行度|int|运行代数的并行度|
 |ParentPid|int|父级（服务监视器要从中退出）的 PID，设置为 0 或负数以忽略|
-|ResultPath|字符串|结果转储文件路径|
-|RuntimeDir|字符串|运行时目录|
-|ScriptPath|字符串|在何处可以找到脚本|
+|ResultPath|string|结果转储文件路径|
+|RuntimeDir|string|运行时目录|
+|ScriptPath|string|在何处可以找到脚本|
 |Shallow|bool|浅层编译或不编译|
-|TempDir|字符串|Temp 目录|
-|UseDataBase|字符串|指定用于代码隐藏临时程序集注册的数据库，默认为 master|
-|WorkDir|字符串|首选工作目录|
+|TempDir|string|Temp 目录|
+|UseDataBase|string|指定用于代码隐藏临时程序集注册的数据库，默认为 master|
+|WorkDir|string|首选工作目录|
 
 ### <a name="method"></a>方法
 

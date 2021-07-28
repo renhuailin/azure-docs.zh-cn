@@ -1,17 +1,17 @@
 ---
 title: 扩展 - Azure Database for PostgreSQL - 单一服务器
 description: 了解 Azure Database for PostgreSQL 中可用的 Postgres 扩展 - 单一服务器
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: 78395873457f9fe53d45dfbfd94aa9ccdccd614d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/25/2021
+ms.openlocfilehash: 765c3653dae4f514263cd8db636d9cec42d56d15
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92485454"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107612"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的 PostgreSQL 扩展
 PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中将多个相关 SQL 对象捆绑在一起，可以使用单个命令在数据库中加载或删除该包。 在数据库中加载之后，扩展会如同内置功能一样运行。
@@ -62,7 +62,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | PostGIS 拓扑空间类型和函数|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | 外部数据包装器，用于远程 PostgreSQL 服务器|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | 可操作整个表（包括交叉表）的函数|
-> |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2             | 允许对时序数据进行可缩放的插入和复杂查询|
+> |[timescaledb](https://docs.timescale.com/latest)                    |1.7.4             | 允许对时序数据进行可缩放的插入和复杂查询|
 > |[unaccent](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | 删除了重音的文本搜索字典|
 > |[uuid ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | 生成全局唯一标识符 (UUID)|
 
@@ -108,7 +108,7 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.4.3           | PostGIS 拓扑空间类型和函数|
 > |[postgres_fdw](https://www.postgresql.org/docs/10/postgres-fdw.html)                 | 1.0             | 外部数据包装器，用于远程 PostgreSQL 服务器|
 > |[tablefunc](https://www.postgresql.org/docs/10/tablefunc.html)                    | 1.0             | 可操作整个表（包括交叉表）的函数|
-> |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | 允许对时序数据进行可缩放的插入和复杂查询|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.7.4             | 允许对时序数据进行可缩放的插入和复杂查询|
 > |[unaccent](https://www.postgresql.org/docs/10/unaccent.html)                     | 1.1             | 删除了重音的文本搜索字典|
 > |[uuid ossp](https://www.postgresql.org/docs/10/uuid-ossp.html)                    | 1.1             | 生成全局唯一标识符 (UUID)|
 
@@ -154,11 +154,14 @@ PostgreSQL 支持使用扩展来扩展数据的功能。 扩展在单个包中�
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.3.2           | PostGIS 拓扑空间类型和函数|
 > |[postgres_fdw](https://www.postgresql.org/docs/9.6/postgres-fdw.html)                 | 1.0             | 外部数据包装器，用于远程 PostgreSQL 服务器|
 > |[tablefunc](https://www.postgresql.org/docs/9.6/tablefunc.html)                    | 1.0             | 可操作整个表（包括交叉表）的函数|
-> |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | 允许对时序数据进行可缩放的插入和复杂查询|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.7.4             | 允许对时序数据进行可缩放的插入和复杂查询|
 > |[unaccent](https://www.postgresql.org/docs/9.6/unaccent.html)                     | 1.1             | 删除了重音的文本搜索字典|
 > |[uuid ossp](https://www.postgresql.org/docs/9.6/uuid-ossp.html)                    | 1.1             | 生成全局唯一标识符 (UUID)|
 
-## <a name="postgres-95-extensions"></a>Postgres 9.5 扩展 
+## <a name="postgres-95-extensions"></a>Postgres 9.5 扩展
+
+>[!NOTE]
+> PostgreSQL 版本 9.5 已停用。
 
 以下扩展在 Azure Database for PostgreSQL 服务器中提供，此类服务器的 Postgres 版本为 9.5。
 

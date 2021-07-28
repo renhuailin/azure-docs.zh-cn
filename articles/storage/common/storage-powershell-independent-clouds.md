@@ -11,10 +11,10 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e924a5f6c765b5b964fe3b1492393b063d9d23b4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92783566"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 管理 Azure 独立云中的存储
@@ -75,7 +75,7 @@ Get-AzLocation | select Location, DisplayName
 
 使用 [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) 检索终结点后缀。 终结点是环境的 *StorageEndpointSuffix* 属性。
 
-下面的代码片段演示如何检索终结点后缀。 所有这些命令返回类似于“core.cloudapp.net”、“core.cloudapi.de”等的内容。将后缀追加到存储服务即可访问该服务。 例如，追加“queue.core.cloudapi.de”可访问德国云中的队列服务。
+下面的代码片段演示如何检索终结点后缀。 所有这些命令均返回类似“core.cloudapp.net”或“core.cloudapi.de”的内容。请将后缀追加到存储服务以访问该服务。 例如，追加“queue.core.cloudapi.de”可访问德国云中的队列服务。
 
 此代码片段检索所有环境，以及每个环境的终结点后缀。
 

@@ -5,77 +5,65 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 3d1e0eb90005abf69d90b46acc59e0258c9914c6
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
-ms.translationtype: MT
+ms.openlocfilehash: b1254e7db0e62d08ea2a3d6d30f2abd379675c55
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630024"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078309"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>将应用服务或 Azure Functions 应用配置为使用 Azure AD 登录
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-本文介绍如何配置 Azure 应用服务或 Azure Functions，以便将 Azure Active Directory (Azure AD) 用作身份验证提供程序。
+本文介绍如何为 Azure 应用服务或 Azure Functions 配置身份验证，使应用使用 [Microsoft 标识平台](../active-directory/develop/v2-overview.md) (Azure AD) 作为身份验证提供程序为用户登录。
+
+应用服务身份验证功能可以通过 Microsoft 标识平台自动创建应用注册。 你还可以使用你或目录管理员单独创建的注册。
+
+- [自动创建新的应用注册](#express)
+- [使用单独创建的现有注册](#advanced)
 
 > [!NOTE]
-> 快速设置流会设置 AAD V1 应用程序注册。 如果想使用 [Azure Active Directory v2.0](../active-directory/develop/v2-overview.md)（包括 [MSAL](../active-directory/develop/msal-overview.md)），请按照[高级配置说明](#advanced)操作。
+> 用于创建新注册的选项不适用于政府云。 可以[单独定义注册](#advanced)。
 
-在设置应用和身份验证时，请遵循以下最佳做法：
+## <a name="create-a-new-app-registration-automatically"></a><a name="express"></a>自动创建新的应用注册
 
-- 为每个应用服务应用提供其自身的权限和许可。
-- 为每个应用服务应用配置其自身的注册。
-- 避免通过对不同的部署槽使用不同的应用注册，在环境之间共享权限。 测试新代码时，这种做法有助于防止问题影响到生产应用。
+此选项旨在使身份验证的启用变得简单，只需单击几下鼠标即可。
 
-> [!NOTE]
-> 此功能暂不适用于 Azure Functions 的 Linux 消耗计划
+1. 登录 [Azure 门户]并导航到你的应用程序。
+1. 在左侧菜单中选择“身份验证”。 单击“添加标识提供者”。
+1. 在“标识提供者”下拉列表中选择“Microsoft”。 默认会选中用于创建新注册的选项。 你可以更改注册名称或支持的帐户类型。
 
-## <a name="configure-with-express-settings"></a><a name="express"> </a>使用快速设置进行配置
+    将创建一个客户端密码，并将其存储为一个名为 `MICROSOFT_PROVIDER_AUTHENTICATION_SECRET` 的槽粘滞[应用程序设置](./configure-common.md#configure-app-settings)。 如果你想要在 Azure Key Vault 中管理机密，稍后可以将该设置更新为使用 [Key Vault 引用](./app-service-key-vault-references.md)。
 
-> [!NOTE]
-> “快速”选项不适用于政府云。
+1. 如果这是为应用程序配置的第一个标识提供程序，你还将看到“应用服务身份验证设置”部分的提示。 否则你可转到下一步。
+    
+    这些选项可确定应用程序如何响应未经身份验证的请求，默认选择会将所有请求重定向到用此新提供程序登录。 你现在可以更改自定义此行为，也可以稍后通过选择“身份验证”设置旁边的“编辑”，在主要“身份验证”屏幕上调整这些设置。   若要详细了解这些选项，请参阅[身份验证流](overview-authentication-authorization.md#authentication-flow)。
 
-1. 在 [Azure 门户]中，搜索并选择“应用服务”，然后选择你的应用。
-2. 在左侧导航栏中，依次选择“身份验证/授权” > “开”。
-3. 依次选择“Azure Active Directory” > “快速”。
+1. （可选）单击“下一步: 权限”并添加应用程序所需的任何作用域。 这些作用域将被添加到应用注册中，但你也可以稍后更改它们。
+1. 单击“添加”。
 
-   若要改为选择现有应用注册，请执行以下操作：
+现在，你可以在应用中使用 Microsoft 标识平台进行身份验证了。 该提供程序将在“身份验证”屏幕上列出。 在该屏幕上，你可以编辑或删除此提供程序配置。
 
-   1. 选择“选择现有 AD 应用”，然后单击“Azure AD 应用”。
-   2. 选择现有应用注册，然后单击“确定”。
+有关为访问 Azure 存储和 Microsoft Graph 的 Web 应用配置 Azure AD 登录的示例，请参阅[此教程](scenario-secure-app-authentication-app-service.md)。
 
-4. 选择“确定”，在 Azure Active Directory 中注册应用服务应用。 此时会新建一个应用注册。
+## <a name="use-an-existing-registration-created-separately"></a><a name="advanced"></a>使用单独创建的现有注册
 
-    ![Azure Active Directory 中的快速设置](./media/configure-authentication-provider-aad/express-settings.png)
-
-5. （可选）默认情况下，应用服务提供身份验证，但不限制对站点内容和 API 的授权访问。 必须在应用代码中为用户授权。 若要限制为只有经过 Azure Active Directory 身份验证的用户才能访问应用，请将“请求未经验证时需执行的操作”设置为“使用 Azure Active Directory 登录”。 如果你设置此功能，应用会要求对所有请求进行身份验证。 它还将所有未经身份验证的请求都重定向到 Azure Active Directory 进行身份验证。
-
-    > [!CAUTION]
-    > 以这种方式限制访问权限适用于对应用的所有调用，但这对于有可公开访问的主页的应用（如许多单页应用）可能并不可取。 对于此类应用，“允许匿名请求(无操作)”可能是首选，因为应用是手动启动登录本身。 有关详细信息，请参阅[身份验证流](overview-authentication-authorization.md#authentication-flow)。
-6. 选择“保存”。
-
-有关配置访问 Azure 存储和 Microsoft Graph 的 web 应用 Azure AD 登录名的示例，请参阅 [此教程](scenario-secure-app-authentication-app-service.md)。
-
-## <a name="configure-with-advanced-settings"></a><a name="advanced"> </a>使用高级设置进行配置
-
-若要使用另一 Azure AD 租户中的应用注册，可以手动配置应用设置。 若要完成此自定义配置，请执行以下操作：
-
-1. 在 Azure AD 中创建注册。
-2. 向应用服务提供一些注册详细信息。
+你也可以为 Microsoft 标识平台手动注册应用程序，并通过注册详细信息自定义注册和配置应用服务身份验证。 例如，如果你要使用的应用注册来自其他 Azure AD 租户，而不是你的应用程序所在的租户，则此选项很有用。
 
 ### <a name="create-an-app-registration-in-azure-ad-for-your-app-service-app"></a><a name="register"> </a>在 Azure AD 中为应用服务应用创建应用注册
 
-配置应用服务应用时，需要提供以下信息：
+首先创建应用注册。 执行此操作时，请收集以下信息，稍后在应用服务应用中配置身份验证时需要用到这些信息：
 
 - 客户端 ID
 - 租户 ID
 - 客户端机密（可选）
 - 应用程序 ID URI
 
-执行以下步骤：
+若要注册应用，请执行以下步骤：
 
 1. 登录到 [Azure 门户]，搜索并选择“应用服务”，然后选择应用。 记下应用的 URL。 稍后要使用此 URL 来配置 Azure Active Directory 应用注册。
-1. 选择“Azure Active Directory” > “应用注册” > “新建注册”。  
+1. 在门户菜单中选择“Azure Active Directory”，然后转到“应用注册”选项卡并选择“新建注册”。  
 1. 在“注册应用”页上的“名称”中，输入应用注册的名称。
 1. 在“重定向 URI”中，选择“Web”并键入 `<app-url>/.auth/login/aad/callback`。 例如，`https://contoso.azurewebsites.net/.auth/login/aad/callback`。
 1. 选择“注册”。
@@ -90,32 +78,41 @@ ms.locfileid: "98630024"
 1. 选择“添加范围”。
    1. 在“范围名称”中输入 *user_impersonation*。
    1. 在文本框中，输入许可范围名称，以及希望在许可页上向用户显示的说明。 例如，输入“访问我的应用”。
-   1. 选择“添加范围”。
+   1. 选择“添加作用域”。
 1. （可选）若要创建客户端机密，请选择“证书和机密” > “新建客户端机密” > “添加”。   复制页面中显示的客户端机密值。 它不会再次显示。
 1. （可选）若要添加多个回复 URL，请选择“身份验证”。
 
 ### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>在应用服务应用中启用 Azure Active Directory
 
-1. 在 [Azure 门户]中搜索并选择“应用服务”  ，然后选择应用。
-1. 在左窗格中的“设置”下，选择“身份验证/授权” > “启用”。  
-1. （可选）默认情况下，应用服务身份验证允许未经身份验证的用户访问你的应用。 若要强制执行用户身份验证，请将“请求未经验证时需执行的操作”设置为“使用 Azure Active Directory 登录”。
-1. 在“验证提供程序”下，选择“Azure Active Directory” 。
-1. 在“管理模式”中，选择“高级”，然后根据下表来配置应用服务身份验证：
+1. 登录 [Azure 门户]并导航到你的应用程序。
+1. 在左侧菜单中选择“身份验证”。 单击“添加标识提供者”。
+1. 在“标识提供者”下拉列表中选择“Microsoft”。
+1. 对于“应用注册类型”，可以选择“选取此目录中的现有应用注册”，这将自动收集必要的应用信息。 如果你的注册来自其他租户，或者你没有查看注册对象的权限，请选择“提供现有应用注册的详细信息”。 对于此选项，你将需要填写以下配置详细信息：
 
     |字段|说明|
     |-|-|
-    |客户端 ID| 使用应用注册的应用（客户端）ID。 |
-    |颁发者 URL| 使用 `<authentication-endpoint>/<tenant-id>/v2.0` ，将替换为 *\<authentication-endpoint>* 你的 [云环境的身份验证终结点](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (例如，"" （ https://login.microsoftonline.com 适用于全局 Azure) ），同时将替换 *\<tenant-id>* 为在其中创建了应用注册的 **目录 (租户) ID** 。 例如，此值用于将用户重定向到相应的 Azure AD 租户，以及下载适当的元数据，以便确定相应的令牌签名密钥和令牌颁发者声明值。 对于使用 Azure AD v1 的应用程序以及对于 Azure Functions 应用，请在 URL 中省略 `/v2.0`。|
-    |客户端密码（可选）| 使用在应用注册中生成的客户端机密。|
-    |允许的令牌受众| 如果这是云应用或服务器应用，并且你希望允许使用 Web 应用中的身份验证令牌，请在此处添加 Web 应用的应用 ID URI。 系统始终会将配置的“客户端 ID”隐式视为允许的受众。 |
+    |应用程序（客户端）ID| 使用应用注册的应用（客户端）ID。 |
+    |客户端密码（可选）| 使用在应用注册中生成的客户端机密。 使用客户端密码，将使用混合流，并且应用服务将返回访问令牌和刷新令牌。 如果未设置客户端密码，则使用隐式流并仅返回 id 令牌。 这些令牌由提供程序发送并存储在 EasyAuth 令牌存储中。|
+    |颁发者 URL| 使用 `<authentication-endpoint>/<tenant-id>/v2.0`。请将其中的 *\<authentication-endpoint>* 替换为 [云环境的身份验证终结点](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints)（例如，“https://login.microsoftonline.com”表示全球 Azure），并将 *\<tenant-id>* 替换为在其中创建了应用注册的 **目录（租户）ID**。 例如，此值用于将用户重定向到相应的 Azure AD 租户，以及下载适当的元数据，以便确定相应的令牌签名密钥和令牌颁发者声明值。 对于使用 Azure AD v1 的应用程序以及对于 Azure Functions 应用，请在 URL 中省略 `/v2.0`。|
+    |允许的令牌受众| 如果这是云应用或服务器应用，并且你希望允许使用 Web 应用中的身份验证令牌，请在此处添加 Web 应用的应用 ID URI。 系统始终会将配置的“客户端 ID”隐式视为允许的受众。|
 
-2. 选择“确定”，然后选择“保存” 。
+    该客户端密码将存储为一个名为 `MICROSOFT_PROVIDER_AUTHENTICATION_SECRET` 的槽粘滞[应用程序设置](./configure-common.md#configure-app-settings)。 如果你想要在 Azure Key Vault 中管理机密，稍后可以将该设置更新为使用 [Key Vault 引用](./app-service-key-vault-references.md)。
 
-现在，可以使用 Azure Active Directory 在应用服务应用中进行身份验证。
+1. 如果这是为应用程序配置的第一个标识提供程序，你还将看到“应用服务身份验证设置”部分的提示。 否则你可转到下一步。
+    
+    这些选项可确定应用程序如何响应未经身份验证的请求，默认选择会将所有请求重定向到用此新提供程序登录。 你现在可以更改自定义此行为，也可以稍后通过选择“身份验证”设置旁边的“编辑”，在主要“身份验证”屏幕上调整这些设置。   若要详细了解这些选项，请参阅[身份验证流](overview-authentication-authorization.md#authentication-flow)。
 
-## <a name="configure-a-native-client-application"></a>配置本机客户端应用程序
+1. 单击“添加”。
 
-可以注册本地客户端，以使用客户端库（例如 Active Directory 身份验证库）对应用中托管的 Web API 进行身份验证。
+现在，你可以在应用中使用 Microsoft 标识平台进行身份验证了。 该提供程序将在“身份验证”屏幕上列出。 在该屏幕上，你可以编辑或删除此提供程序配置。
+
+## <a name="configure-client-apps-to-access-your-app-service"></a>配置客户端应用以访问应用服务
+
+在上一部分，你已注册应用服务或 Azure Function 以便对用户进行身份验证。 本部分介绍如何注册本机客户端或守护程序应用，以便它们能够代表用户或自身来请求访问应用服务公开的 API。 如果你只想要对用户进行身份验证，则不需要完成本部分所述的步骤。
+
+### <a name="native-client-application"></a>本机客户端应用程序
+
+可以注册本机客户端，以代表已登录用户请求访问应用服务应用的 API。
 
 1. 在 [Azure 门户]中，选择“Active Directory” > “应用注册” > “新建注册”。
 1. 在“注册应用”页上的“名称”中，输入应用注册的名称。
@@ -129,9 +126,9 @@ ms.locfileid: "98630024"
 1. 选择前面为应用服务应用创建的应用注册。 如果未看到该应用注册，请确保在 [在 Azure AD 中为应用服务应用创建应用注册](#register)部分已添加 **user_impersonation** 范围。
 1. 在“委托的权限”下，依次选择“user_impersonation”和“添加权限”。
 
-现在，你已配置了可以代表用户访问应用服务应用的本机客户端应用程序。
+现已配置一个可以代表用户请求访问应用服务应用的本机客户端应用程序。
 
-## <a name="configure-a-daemon-client-application-for-service-to-service-calls"></a>为服务到服务调用配置后台程序客户端应用程序
+### <a name="daemon-client-application-service-to-service-calls"></a>守护程序客户端应用程序（服务到服务的调用）
 
 应用程序可以获取令牌，代表自身（不代表用户）调用应用服务或 Functions 应用中托管的 Web API。 此方案适用于在没有登录用户的情况下执行任务的非交互式后台程序应用程序。 它使用标准 OAuth 2.0 [客户端凭据](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)授权。
 
@@ -156,10 +153,18 @@ ms.locfileid: "98630024"
 
 现已配置可以使用自己的标识访问应用服务应用的后台程序客户端应用程序。
 
+## <a name="best-practices"></a>最佳做法
+
+无论使用哪种配置来设置身份验证，以下最佳做法都能使租户和应用程序保持更高的安全性：
+
+- 为每个应用服务应用提供其自身的权限和许可。
+- 为每个应用服务应用配置其自身的注册。
+- 避免通过对不同的部署槽使用不同的应用注册，在环境之间共享权限。 测试新代码时，这种做法有助于防止问题影响到生产应用。
+
 ## <a name="next-steps"></a><a name="related-content"> </a>后续步骤
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
-* [教程：在访问 Azure 存储和 Microsoft Graph 的 web 应用中对用户进行身份验证和授权](scenario-secure-app-authentication-app-service.md)
+* [教程：在访问 Azure 存储和 Microsoft Graph 的 Web 应用中对用户进行身份验证和授权](scenario-secure-app-authentication-app-service.md)
 * [教程：在 Azure 应用服务中对用户进行端到端身份验证和授权](tutorial-auth-aad.md)
 <!-- URLs. -->
 

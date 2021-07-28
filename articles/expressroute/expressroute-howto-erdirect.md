@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: f54c22a0c2f7bf89d790dbd33f748446a871d224
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2c49fe65cf97207a495f6c0cc78585489a0db6ff
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099941"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228242"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>如何配置 ExpressRoute Direct
 
 使用 ExpressRoute Direct，可以直接连接到 Microsoft 战略性分布在全球的对等互连位置的的全球网络。 有关详细信息，请参阅[关于 ExpressRoute Direct](expressroute-erdirect-about.md)。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>在开始之前
 
 需要先注册订阅，然后才能使用 ExpressRoute Direct。 需要先注册订阅，然后才能使用 ExpressRoute Direct。 若要注册，请通过 Azure PowerShell 执行以下操作：
 1.  登录到 Azure 并选择想要注册的订阅。
@@ -305,7 +305,12 @@ SkuFamily 只能为 MeteredData。 ExpressRoute Direct 不支持“无限制”�
   AllowClassicOperations           : False
   GatewayManagerEtag     
   ```
-
+## <a name="delete-the-resource"></a>删除资源
+在删除 ExpressRoute Direct 资源之前，首先需要删除在 ExpressRoute Direct 端口对上创建的所有 ExpressRoute 线路。
+可以通过运行以下命令来删除 ExpressRoute Direct 资源：
+ ```powershell
+   Remove-azexpressrouteport -Name $Name -Resourcegroupname -$ResourceGroupName
+   ```
 ## <a name="next-steps"></a>后续步骤
 
 有关 ExpressRoute Direct 的详细信息，请参阅[概述](expressroute-erdirect-about.md)。

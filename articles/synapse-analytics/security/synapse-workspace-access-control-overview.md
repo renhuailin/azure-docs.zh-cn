@@ -1,5 +1,5 @@
 ---
-title: Synapse 工作区访问控制概述
+title: Azure Synapse 工作区访问控制概述
 description: 本文介绍用于控制对 Synapse 工作区的访问的机制及其包含的资源和代码项目。
 services: synapse-analytics
 author: RonyMSFT
@@ -9,26 +9,26 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 20614b1c397bdf24e807d48d3de33f0033da14bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 574211bc426d97c5bd734dcf348b66ecce1b3ff8
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100105107"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217802"
 ---
-# <a name="synapse-access-control"></a>Synapse 访问控制 
+# <a name="azure-synapse-access-control"></a>Azure Synapse 访问控制 
 
-本文概述了可用于控制对 Synapse 计算资源和数据的访问的机制。  
+本文概述了可用于控制对 Azure Synapse 计算资源和数据的访问的机制。  
 
 ## <a name="overview"></a>概述
 
-Synapse 提供全面且精细的访问控制系统，该系统集成： 
+Azure Synapse 提供全面且精细的访问控制系统，该系统集成： 
 - 用于资源管理和访问存储中的数据的 Azure 角色， 
 - 用于管理对代码和执行的实时访问的 Synapse 角色， 
 - 用于对 SQL 池中的数据的数据平面访问的 SQL 角色，以及 
 - 源代码管理的 Git 权限，包括持续集成和部署支持。  
 
-Synapse 角色提供可应用于不同范围的权限集。 这种粒度使得向管理员、开发人员、安全人员和操作员授予适当的访问权限以计算资源和数据变得容易。
+Azure Synapse 角色提供可应用于不同范围的权限集。 这种粒度使得向管理员、开发人员、安全人员和操作员授予适当的访问权限以计算资源和数据变得容易。
 
 通过使用符合人员的工作角色的安全组，可以简化访问控制。 只需从适当的安全组添加和删除用户即可管理访问权限。
 

@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 53b5add7526b0c20487e8fe3adb0b8ebe207a2ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4f2f0678b421ac6965b2848cc25564b4e95c7c6b
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200044"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567041"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>在 Web 应用程序中可视化 Azure IoT 中心的实时传感器数据
 
@@ -25,23 +25,11 @@ ms.locfileid: "102200044"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-## <a name="what-you-learn"></a>学习内容
+本文介绍如何通过在本地计算机上运行的 Node.js Web 应用将 IoT 中心接收的实时传感器数据可视化。 在本地运行该 Web 应用后，可以选择性地遵循相应的步骤在 Azure 应用服务中托管该 Web 应用。 若要尝试使用 Power BI 可视化 IoT 中心的数据，请参阅[使用 Power BI 可视化 Azure IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-power-bi.md)。
 
-本教程介绍如何通过在本地计算机上运行的 Node.js Web 应用将 IoT 中心接收的实时传感器数据可视化。 在本地运行该 Web 应用后，可以选择性地遵循相应的步骤在 Azure 应用服务中托管该 Web 应用。 若要尝试使用 Power BI 可视化 IoT 中心的数据，请参阅[使用 Power BI 可视化 Azure IoT 中心的实时传感器数据](iot-hub-live-data-visualization-in-power-bi.md)。
+## <a name="prerequisites"></a>必备条件
 
-## <a name="what-you-do"></a>准备工作
-
-* 将一个使用者组添加到 Web 应用程序用来读取传感器数据的 IoT 中心
-* 从 GitHub 下载 Web 应用代码
-* 检查 Web 应用代码
-* 配置环境变量以保存 Web 应用所需的 IoT 中心项目
-* 在开发计算机上运行 Web 应用
-* 打开一个网页，以查看 IoT 中心的实时温度和湿度数据
-* （可选）使用 Azure CLI 在 Azure 应用服务中托管 Web 应用
-
-## <a name="what-you-need"></a>所需条件
-
-* 完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程；例如[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这包括以下要求：
+* 请完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程。 例如，可转到[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)教程或[发送遥测](quickstart-send-telemetry-dotnet.md)快速入门中的一个教程。 这些文章阐述下列要求：
 
   * 一个有效的 Azure 订阅
   * 已在订阅中创建一个 IoT 中心

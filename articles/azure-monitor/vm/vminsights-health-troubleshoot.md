@@ -4,16 +4,44 @@ description: 介绍了在 VM 见解运行状况出现问题时可以采取的故
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/08/2020
-ms.openlocfilehash: d8b37569ebaa8e75be601a1efd65a23a61aeaa75
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 02/25/2021
+ms.openlocfilehash: 834c70e02ab25fa6dcadb5f6c997be09aaf5e353
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102051933"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932771"
 ---
 # <a name="troubleshoot-vm-insights-guest-health-preview"></a>VM 见解来宾运行状况疑难解答（预览）
 本文介绍了在 VM 见解运行状况出现问题时可以采取的故障排除步骤。
+
+
+## <a name="upgrade-available-message-is-still-displayed-after-upgrading-guest-health"></a>升级来宾运行状况后，仍显示升级可用信息 
+
+- 验证 VM 是否正在全局 Azure 中运行。 目前尚不支持已启用 Arc 的服务器。
+- 验证是否如[启用用于 VM 的 Azure Monitor 来宾运行状况（预览）](vminsights-health-enable.md)中所述，支持虚拟机的区域和操作系统版本。
+- 验证是否已成功安装来宾运行状况扩展（退出代码为 0）。
+- 验证是否已成功安装 Azure Monitor 代理扩展。
+- 验证是否已为虚拟机启用系统分配的托管标识。
+- 验证是否未为虚拟机指定用户分配的托管标识。
+- 验证 Windows 虚拟机的区域设置是否为“美国英语”。 Azure Monitor 代理目前不支持本地化。
+- 验证虚拟机是否未正在使用网络代理。 Azure Monitor 代理目前不支持代理。
+- 验证运行状况扩展代理启动时是否没有出现错误。 如果代理无法启动，那么代理的状态可能已损坏。 删除代理状态文件夹的内容，然后重启代理。
+  - 对于 Linux：守护程序为 vmGuestHealthAgent。 状态文件夹为 /var/opt/vmGuestHealthAgent/*
+  - 对于 Windows：服务为“VM 来宾运行状况代理”。 状态文件夹为 %ProgramData%\Microsoft\VMGuestHealthAgent\\*。
+- 验证 Azure Monitor 代理是否具有网络连接。 
+  - 从虚拟机尝试 ping <region>.handler.control.monitor.azure.com。 例如，对于 westeurope 中的虚拟机，尝试 ping westeurope.handler.control.monitor.azure.com:443。
+- 验证虚拟机是否与 Log Analytics 工作区同一区域中的数据集合规则关联。
+  -  请参阅[启用用于 VM 的 Azure Monitor 来宾运行状况（预览）](vminsights-health-enable.md)中的“创建数据集合规则 (DCR)”，确保 DCR 的结构正确无误。 请特别注意，performanceCounters 数据源部分的状态设置为采样三个计数器，运行状况扩展配置中 inputDataSources 部分的状态设置为向扩展发送计数器。
+-  检查虚拟机是否存在来宾运行状况扩展错误。
+   -  对于 Linux：检查 /var/log/azure/Microsoft.Azure.Monitor.VirtualMachines.GuestHealthLinuxAgent/*.log 中的日志。
+   -  对于 Windows：检查 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Monitor.VirtualMachines.GuestHealthWindowsAgent\{extension version}\*.log 中的日志。
+-  检查虚拟机是否存在 Azure Monitor 代理错误。
+   -  对于 Linux：检查 /var/log/mdsd.* 中的日志。
+   -  对于 Windows：检查 C:\WindowsAzure\Resources\*{vmName}.AMADataStore 中的日志。
+ 
+
+
 
 ## <a name="error-message-that-no-data-is-available"></a>指示没有数据可用的错误消息 
 
@@ -44,6 +72,15 @@ ms.locfileid: "102051933"
 此错误指示未在订阅中注册 Microsoft.WorkloadMonitor 资源提供程序。 有关注册此资源提供程序的详细信息，请参阅 [Azure 资源提供程序和类型](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)。 
 
 ![错误的请求](media/vminsights-health-troubleshoot/bad-request.png)
+
+## <a name="health-shows-as-unknown-after-guest-health-is-enabled"></a>启用来宾运行状况后，运行状况显示为“未知”。
+
+### <a name="verify-that-performance-counters-on-windows-nodes-are-working-correctly"></a>验证 Windows 节点上的性能计数器是否正常运行 
+来宾运行状况依赖于能够从节点收集性能计数器的代理。 性能计数器库的基础集可能会损坏，并可能需要重新生成。 按照[手动重新生成性能计数器库值](/troubleshoot/windows-server/performance/rebuild-performance-counter-library-values)中的说明重新生成性能计数器。
+
+
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

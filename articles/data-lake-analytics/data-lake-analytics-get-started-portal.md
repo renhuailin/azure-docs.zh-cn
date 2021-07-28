@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.openlocfilehash: 6e51c6848476147073626119689407ebc02c036d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92220952"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Analytics
@@ -60,7 +60,7 @@ OUTPUT @a
 2. 粘贴前面的 U-SQL 脚本的文本。 命名此作业。 
 3. 选择“提交”按钮以启动作业。   
 4. 监视作业的状态，并等到作业状态更改为“成功”。
-5. 选择“数据”选项卡，然后选择“输出”选项卡。选择名为 `data.csv` 的输出文件并查看输出数据。
+5. 选择“数据”选项卡，接着选择“输出”选项卡，然后选择名为 `data.csv` 的输出文件并查看输出数据。
 
 ## <a name="see-also"></a>另请参阅
 

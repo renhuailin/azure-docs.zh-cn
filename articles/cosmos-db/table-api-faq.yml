@@ -8,12 +8,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 08/12/2020
   ms.author: sngun
-  ms.openlocfilehash: fd2457bf29da67b3cf8fd3cf062ebe91bb3e3bc4
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: 58c098eccc289e59e732836884a6c2bd2b224dc9
+  ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "111907071"
+  ms.lasthandoff: 07/08/2021
+  ms.locfileid: "113492273"
 title: 有关 Azure Cosmos DB 中的表 API 的常见问题解答
 summary: >
   [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -25,64 +25,7 @@ sections:
   questions:
   - question: >
       表 API 与 Azure 表存储的行为有哪些不同之处？
-    answer: >
-      想要使用 Azure Cosmos DB 表 API 创建表的 Azure 表存储用户应注意以下这些行为差异：
-
-
-      * Azure Cosmos DB 表 API 使用保留容量模型来保障性能，但这意味着，一旦创建了表，就必须立即支付容量费用，即使容量未被使用。 使用 Azure 表存储时，只需为使用的容量付费。 这也说明了，表 API 在 99% 的时间里为何能够提供 10 毫秒的读取延迟和 15 毫秒的写入延迟 SLA，而 Azure 表存储提供 10 秒延迟 SLA。 因此，使用表 API 表（即使是不带任何请求的空表）时，要达到 Azure Cosmos DB 所提供的 SLA，必须支付费用来确保提供所需的容量来处理对这些表发出的所有请求。
-
-
-      * 表 API 返回的查询结果未按分区键/行键顺序排序，因为它们在 Azure 表存储中。
-
-
-      * 行键最多可以包含 255 个字节。
-
-
-      * 批最多可以包含 2 MB。
-
-
-      * 目前不支持 CORS。
-
-
-      * Azure 表存储中的表名不区分大小写，但出现在 Azure Cosmos DB 表 API 中。
-
-
-      * Azure Cosmos DB 的某些编码信息内部格式，例如二进制字段，目前不如想像的那么有效。 因此，这会导致数据大小受到意外限制。 例如，目前无法使用整整有 1 MB 的表实体来存储二进制数据，因为编码会增大数据大小。
-
-
-      * 目前不支持实体属性名称“ID”。
-
-
-      * TableQuery TakeCount 不限为 1000 以内。
-
-
-      * 对于 REST API，有大量的终结点/查询选项不受 Azure Cosmos DB 表 API 的支持：
-
-        | REST 方法 | REST 终结点/查询选项 | 文档 URL | 说明 |
-        | ------------| ------------- | ---------- | ----------- |
-        | GET、PUT | `/?restype=service@comp=properties`| [设置表服务属性](/rest/api/storageservices/set-table-service-properties)和[获取表服务属性](/rest/api/storageservices/get-table-service-properties) | 此终结点用于设置 CORS 规则、存储分析配置和日志记录设置。 CORS 目前不受支持，Azure Cosmos DB 与 Azure 存储表中以不同的方式处理分析和日志记录 |
-        | OPTIONS | `/<table-resource-name>` | [预检 CORS 表请求](/rest/api/storageservices/preflight-table-request) | 这是 Azure Cosmos DB 目前不支持的 CORS 部分。 |
-        | GET | `/?restype=service@comp=stats` | [获取表服务统计信息](/rest/api/storageservices/get-table-service-stats) | 提供有关主节点与辅助节点之间的数据复制速度的信息。 由于复制是写入的一部分，因此在 Cosmos DB 中不需要此选项。 |
-        | GET、PUT | `/mytable?comp=acl` | [获取表 ACL](/rest/api/storageservices/get-table-acl) 和[设置表 ACL](/rest/api/storageservices/set-table-acl) | 获取和设置用于管理共享访问签名 (SAS) 的存储访问策略。 尽管支持 SAS，但其设置和管理方式不同。 |
-
-      * Azure Cosmos DB 表 API 仅支持 JSON 格式，而不支持 ATOM。
-
-
-      * 尽管 Azure Cosmos DB 支持共享访问签名 (SAS)，但它不支持某些策略，具体而言，是与管理操作相关的策略，例如创建新表的权限。
-
-
-      * 对于特定的 .NET SDK，Azure Cosmos DB 目前不支持某些类和方法。
-
-        | 类 | 不支持的方法 |
-        |-------|-------- |
-        | CloudTableClient | \*ServiceProperties\* |
-        |                  | \*ServiceStats\* |
-        | CloudTable | SetPermissions* |
-        |            | GetPermissions* |
-        | TableServiceContext | *（此类已弃用） |
-        | TableServiceEntity | " " |
-        | TableServiceExtensions | " " |
-        | TableServiceQuery | " " |
+    answer: "想要使用 Azure Cosmos DB 表 API 创建表的 Azure 表存储用户应注意以下这些行为差异：\n\n* Azure Cosmos DB 表 API 使用保留容量模型来保障性能，但这意味着，一旦创建了表，就必须立即支付容量费用，即使容量未被使用。 使用 Azure 表存储时，只需为使用的容量付费。 这也说明了，表 API 在 99% 的时间里为何能够提供 10 毫秒的读取延迟和 15 毫秒的写入延迟 SLA，而 Azure 表存储提供 10 秒延迟 SLA。 因此，使用表 API 表（即使是不带任何请求的空表）时，要达到 Azure Cosmos DB 所提供的 SLA，必须支付费用来确保提供所需的容量来处理对这些表发出的所有请求。\n\n* 表 API 返回的查询结果未按分区键/行键顺序排序，因为它们在 Azure 表存储中。\n\n* 行键最多可以包含 255 个字节。\n\n* 批最多可以包含 2 MB。\n\n* 目前不支持 CORS。\n\n* Azure 表存储中的表名不区分大小写，但出现在 Azure Cosmos DB 表 API 中。\n\n* Azure Cosmos DB 的某些编码信息内部格式，例如二进制字段，目前不如想像的那么有效。 因此，这会导致数据大小受到意外限制。 例如，目前无法使用整整有 1 MB 的表实体来存储二进制数据，因为编码会增大数据大小。\n\n* 目前不支持实体属性名称“ID”。\n\n* TableQuery TakeCount 不限为 1000 以内。\n\n* 对于 REST API，以下终结点/查询选项受 Azure 表存储的支持，但不受 Azure Cosmos DB 表 API 的支持：\n\n  | REST 方法 | REST 终结点/查询选项 | 文档 URL | 说明 | 受表存储支持 | 受表 API 支持 | \n  | ------------| ------------- | ---------- | ----------- |\n  | GET、PUT | `/?restype=service@comp=properties`| [设置表服务属性](/rest/api/storageservices/set-table-service-properties)和[获取表服务属性](/rest/api/storageservices/get-table-service-properties) | 此终结点用于设置 CORS 规则、存储分析配置和日志记录设置。 CORS 目前不受支持，Azure Cosmos DB 与 Azure 存储表中以不同的方式处理分析和日志记录 | 是 | 否 |\n  | OPTIONS | `/<table-resource-name>` | [预检 CORS 表请求](/rest/api/storageservices/preflight-table-request) | 这是 Azure Cosmos DB 目前不支持的 CORS 部分。 | 是 | 否 |\n  | GET | `/?restype=service@comp=stats` | [获取表服务统计信息](/rest/api/storageservices/get-table-service-stats) | 提供有关主节点与辅助节点之间的数据复制速度的信息。 由于复制是写入的一部分，因此在 Cosmos DB 中不需要此选项。 | 是 | 否 |\n  | GET、PUT | `/mytable?comp=acl` | [获取表 ACL](/rest/api/storageservices/get-table-acl) 和[设置表 ACL](/rest/api/storageservices/set-table-acl) | 获取和设置用于管理共享访问签名 (SAS) 的存储访问策略。 | 是 | 否 |\n\n* Azure Cosmos DB 表 API 仅支持 JSON 格式，而不支持 ATOM。\n\n* 对于特定的 .NET SDK，Azure Cosmos DB 目前不支持某些类和方法。\n\n  | 类 | 不支持的方法 |\n  |-------|-------- |\n  | CloudTableClient | \\*ServiceProperties\\* |\n  |                  | \\*ServiceStats\\* |\n  | CloudTable | SetPermissions* |\n  |            | GetPermissions* |\n  | TableServiceContext | *（此类已弃用） |\n  | TableServiceEntity | \" \" |\n  | TableServiceExtensions | \" \" |\n  | TableServiceQuery | \" \" |\n"
 - name: 其他常见问题解答
   questions:
   - question: >

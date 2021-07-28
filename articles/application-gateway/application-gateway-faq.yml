@@ -9,12 +9,12 @@ metadata:
   ms.date: 06/08/2021
   ms.author: victorh
   ms.custom: references_regions
-  ms.openlocfilehash: f9f6a834239e46c2c0934dd145f8a1193f6a50b2
-  ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+  ms.openlocfilehash: afbd0c7fbbe6565a2f8e80c394d8ac608d1aa27a
+  ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/18/2021
-  ms.locfileid: "114404412"
+  ms.lasthandoff: 06/09/2021
+  ms.locfileid: "111907127"
 title: 应用程序网关常见问题
 summary: >
   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -85,7 +85,7 @@ sections:
   - question: 部署应用程序网关需要多长时间？ 更新时应用程序网关是否仍正常工作？
     answer: "预配新的应用程序网关 v1 SKU 部署最多需 20 分钟。 更改实例大小或计数不会出现干扰，且在此期间网关处于活动状态。\n\n大多数使用 v2 SKU 的部署大约需要 6 分钟进行预配。 但是，根据部署类型的不同，可能需要更长的时间。 例如，跨多个具有多个实例的可用性区域的部署可能需要 6 分钟以上的时间。 \n"
   - question: 是否可以使用 Exchange Server 作为应用程序网关的后端？
-    answer: 不是。 应用程序网关不支持电子邮件协议，如 SMTP、IMAP 和 POP3。
+    answer: 否。 应用程序网关不支持电子邮件协议，如 SMTP、IMAP 和 POP3。
   - question: 是否提供了从 v1 SKU 迁移到 v2 SKU 的指南？
     answer: >
       是的。 有关详细信息，请参阅[将 Azure 应用程序网关和 Web 应用程序防火墙从 v1 迁移到 v2](migrate-v1-v2.md)。
@@ -110,7 +110,7 @@ sections:
     answer: >
       是，应用程序网关 v2 SKU 支持自动缩放。 有关详细信息，请参阅[自动缩放和区域冗余应用程序网关](application-gateway-autoscaling-zone-redundant.md)。
   - question: 手动或自动纵向扩展或缩减是否会导致停机？
-    answer: 不是。 实例将分布在升级域和容错域上。
+    answer: 否。 实例将分布在升级域和容错域上。
   - question: 应用程序网关是否支持连接排出？
     answer: >
       是的。 可以设置连接排出，以在不中断操作的情况下更改后端池内的成员。 有关详细信息，请参阅[应用程序网关的“连接排出”部分](features.md#connection-draining)。
@@ -125,9 +125,9 @@ sections:
     answer: >
       只要建立 IP 连接，应用程序网关就能与其所在的虚拟网络外部的实例进行通信。 应用程序网关还能与其所在订阅外部的实例通信。 如果你打算使用内部 IP 作为后端池成员，请使用[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)或 [Azure VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)。
   - question: 是否可以在应用程序网关子网中部署其他任何组件？
-    answer: 不是。 但可以在子网中部署其他应用程序网关。
+    answer: 否。 但可以在子网中部署其他应用程序网关。
   - question: 能否更改现有应用程序网关的虚拟网络或子网？
-    answer: "只能跨同一虚拟网络中的子网移动应用程序网关。 具有公共和专用前端的 V1 以及仅具有公共前端的 V2 支持此操作。 另请务必注意，只有在应用程序网关进入“已停止”状态后才能执行此操作。 请记住，停止/启动 V1 将更改公共 IP。 此操作只能使用 Azure PowerShell 和 Azure CLI 运行以下命令完成：\n\n**Azure PowerShell**\n\n```azurepowershell-interactive\n$VNet = Get-AzVirtualNetwork -Name \"<VNetName>\" -ResourceGroupName \"<ResourceGroup>\"\n$Subnet = Get-AzVirtualNetworkSubnetConfig -Name \"<NewSubnetName>\" -VirtualNetwork $VNet\n$AppGw = Get-AzApplicationGateway -Name \"<ApplicationGatewayName>\" -ResourceGroupName \"<ResourceGroup>\"\nStop-AzApplicationGateway -ApplicationGateway $AppGw\n$AppGw = Set-AzApplicationGatewayIPConfiguration -ApplicationGateway $AppGw -Name $AppGw.GatewayIPConfigurations.Name -Subnet $Subnet\n#If you have a private frontend IP configuration, uncomment and run the next line:\n#$AppGw = Set-AzApplicationGatewayFrontendIPConfig -Name $AppGw.FrontendIPConfigurations.Name[1] -Subnet $Subnet -ApplicationGateway $AppGw\nSet-AzApplicationGateway -ApplicationGateway $AppGw\n```\n有关详细信息，请参阅 [Set-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/Set-AzApplicationGatewayIPConfiguration)。\n\n**Azure CLI**\n\n```azurecli-interactive\naz network application-gateway stop -g <ResourceGroup> -n <ApplicationGatewayName>\naz network application-gateway update -g <ResourceGroup> -n <ApplicationGatewayName> --set gatewayIpConfigurations[0].subnet.id=<subnetID>\n``` \n"
+    answer: "只能跨同一虚拟网络中的子网移动应用程序网关。 另请务必注意，只有在应用程序网关进入“已停止”状态后才能执行此操作。 此操作只能使用 Azure PowerShell 和 Azure CLI 运行以下命令完成：\n\n**Azure PowerShell**\n\n```azurepowershell-interactive\n$VNet = Get-AzVirtualNetwork -Name \"<VNetName>\" -ResourceGroupName \"<ResourceGroup>\"\n$Subnet = Get-AzVirtualNetworkSubnetConfig -Name \"<NewSubnetName>\" -VirtualNetwork $VNet\n$AppGw = Get-AzApplicationGateway -Name \"<ApplicationGatewayName>\" -ResourceGroupName \"<ResourceGroup>\"\nStop-AzApplicationGateway -ApplicationGateway $AppGw\n$AppGw = Set-AzApplicationGatewayIPConfiguration -ApplicationGateway $AppGw -Name \"<IPConfigurationName>\" -Subnet $Subnet\nSet-AzApplicationGateway -ApplicationGateway $AppGw\n```\n有关详细信息，请参阅 [Set-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/Set-AzApplicationGatewayIPConfiguration)。\n\n**Azure CLI**\n\n```azurecli-interactive\naz network application-gateway stop -g <ResourceGroup> -n <ApplicationGatewayName>\naz network application-gateway update -g <ResourceGroup> -n <ApplicationGatewayName> --set gatewayIpConfigurations[0].subnet.id=<subnetID>\n``` \n"
   - question: 应用程序网关子网是否支持网络安全组？
     answer: >
       请参阅[应用程序网关子网中的网络安全组](./configuration-infrastructure.md#network-security-groups)。
@@ -149,7 +149,7 @@ sections:
   - question: 是否可以使用一个后端池来为不同端口上的许多应用程序提供服务？
     answer: 支持微服务体系结构。 若要探测不同的端口，需要配置多个 HTTP 设置。
   - question: 自定义探测是否支持对响应数据使用通配符或正则表达式？
-    answer: 不是。
+    answer: 否。
   - question: 如何在应用程序网关中处理路由规则？
     answer: >
       请参阅[规则的处理顺序](./configuration-request-routing-rules.md#order-of-processing-rules)。
@@ -160,7 +160,7 @@ sections:
     answer: >
       是的。 请参阅[限制对特定源 IP 的访问](./configuration-infrastructure.md#allow-access-to-a-few-source-ips)。
   - question: 能否同时对公共和专用侦听器使用同一个端口？
-    answer: 不是。
+    answer: 否。
   - question: 应用程序网关是否支持 IPv6？
     answer: 应用程序网关 v2 目前不支持 IPv6。 它只能使用 IPv4 在双堆栈 VNet 中运行，但网关子网仅限 IPv4。 应用程序网关 v1 不支持双堆栈 VNet。
   - question: 如何实现将应用程序网关 V2 仅用于专用前端 IP 地址？

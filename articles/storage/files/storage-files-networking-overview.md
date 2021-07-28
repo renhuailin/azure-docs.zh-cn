@@ -4,15 +4,15 @@ description: Azure 文件存储的网络选项概述。
 author: roygara
 ms.service: storage
 ms.topic: overview
-ms.date: 02/22/2020
+ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3ba86c8f0d28e48e0c93834b30afe0ad77bfa87d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8771c79aa788627fb73745e98e924bbaa3ab1236
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477406"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113224672"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure 文件存储的网络注意事项 
 可以通过两种方式连接到 Azure 文件共享：
@@ -38,23 +38,23 @@ Azure 文件共享的网络配置是在 Azure 存储帐户中完成的。 存储
    :::column-end:::
 :::row-end:::
 
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
+
 ## <a name="accessing-your-azure-file-shares"></a>访问 Azure 文件共享
-在存储帐户中部署 Azure 文件共享时，可以通过该存储帐户的公共终结点立即访问该文件共享。 这意味着，已经过身份验证的请求（例如已由用户登录标识授权的请求）可以安全地从 Azure 内部或外部发起。 
+SMB Azure 文件共享可立即通过存储帐户 SMB 3.1.1 和 SMB 3.0 的公共终结点访问。 这意味着，已经过身份验证的请求（例如已由用户登录标识授权的请求）可以安全地从 Azure 内部或外部发起。 如果公共终结点仅限于 Azure 虚拟网络，则只能通过存储帐户的公共终结点访问 NFS Azure 文件共享。
 
-在许多客户环境中，最初在本地工作站上装载 Azure 文件共享的操作会失败，尽管可以成功地从 Azure VM 装载。 其原因是，许多组织和 Internet 服务提供商 (ISP) 阻止 SMB 用来通信的端口 445。 这种做法源自于有关传统版和已弃用版 SMB 协议的安全指导原则。 SMB 3.x 是 Internet 安全的协议，但早期版本的 SMB，尤其是 SMB 1.0，却并非如此。 在外部，只能使用公共终结点通过 SMB 3.x 和 FileREST 协议（也是 Internet 安全的协议）访问 Azure 文件共享。
+在许多环境中，你可能希望将其他网络配置应用于其 Azure 文件共享：
 
-由于从本地访问 Azure SMB 文件共享的最简单方法是在本地网络中打开端口 445，Microsoft 建议使用以下步骤从环境中删除 SMB 1.0：
+- 对于 SMB 文件共享，许多组织和 Internet 服务提供商 (ISP) 阻止 SMB 用来通信的端口 445。 这种做法源自于有关已弃用版和非 Internet 安全版本的 SMB 协议的旧安全指导原则。 尽管 SMB 3.x 是 Internet 安全协议，但组织或 ISP 策略可能无法更改。 
 
-1. 请确认是否在组织的设备上删除或禁用了 SMB 1.0。 Windows 和 Windows Server 当前支持的所有版本均支持删除或禁用 SMB 1.0，并且自 Windows 10 1709 版起，默认情况下 Windows 上未安装 SMB 1.0。 若要详细了解如何禁用 SMB 1.0，请参阅特定于 OS 的页面：
-    - [保护 Windows/Windows Server](storage-how-to-use-files-windows.md#securing-windowswindows-server)
-    - [保护 Linux](storage-how-to-use-files-linux.md#securing-linux)
-1. 请确认组织内没有需要 SMB 1.0 的产品并将其删除。 我们提供 [SMB1 产品交换所](https://aka.ms/stillneedssmb1)，其中包含需要 SMB 1.0 的所有 Microsoft 已知的第一和第三方产品。 
-1. （可选）在组织的本地网络中使用第三方防火墙，以阻止 SMB 1.0 流量离开组织边界。
+- 对于 NFS 文件共享，受限的公共终结点访问仅限于装载到 Azure 内部。
 
-如果组织要求按照政策或法规阻止端口 445，或者组织要求发往 Azure 的流量遵循确定性的路径，则你可以使用 Azure VPN 网关或 ExpressRoute 将流量以隧道方式传输到 Azure 文件共享。 NFS 共享不需要这些，因为不需要端口 445。
-
-> [!Important]  
-> 即使你决定使用替代方法来访问 Azure 文件共享，Microsoft 也仍建议从环境中删除 SMB 1.0。
+- 某些组织要求流量发送到 Azure，以遵循确定性路径。
 
 ### <a name="tunneling-traffic-over-a-virtual-private-network-or-expressroute"></a>通过虚拟专用网络或 ExpressRoute 以隧道方式传输流量
 在本地网络与 Azure 之间建立网络隧道时，会将本地网络对等互连到 Azure 中的一个或多个虚拟网络。 [虚拟网络](../../virtual-network/virtual-networks-overview.md) (VNet) 类似于在本地运行的传统网络。 与 Azure 存储帐户或 Azure VM 一样，VNet 是在资源组中部署的 Azure 资源。 
@@ -152,20 +152,9 @@ IP4Address : 52.239.194.40
 - 仅限一个或多个虚拟网络访问公共终结点。 为此，可以使用称作“服务终结点”的虚拟网络功能。 通过服务终结点限制发往存储帐户的流量时，仍会通过公共 IP 地址访问存储帐户。
 
 > [!NOTE]
-> NFS 共享无法通过公共 IP 地址访问存储帐户的公共终结点，只能使用虚拟网络访问存储帐户的公共终结点。 NFS 共享还可以使用专用终结点来访问存储帐户。
+> NFS 文件共享只能通过虚拟网络访问存储帐户的公共终结点。 NFS 共享可以随时访问存储帐户的专用终结点。
 
 若要详细了解如何配置存储帐户防火墙，请参阅[配置 Azure 存储防火墙和虚拟网络](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
-
-## <a name="encryption-in-transit"></a>传输中加密
-
-> [!IMPORTANT]
-> 本部分介绍 SMB 共享的传输中加密详细信息。 有关通过 NFS 共享进行传输中加密的详细信息，请参阅[安全性](storage-files-compare-protocols.md#security)。
-
-默认情况下，所有 Azure 存储帐户均已启用传输中加密。 即通过 SMB 装载文件共享或通过 FileREST 协议（例如，通过 Azure门户、PowerShell/CLI 或 Azure SDK）访问文件共享时，Azure 文件存储仅允许通过加密或 HTTPS 使用 SMB 3.x 及更高版本建立的连接。 如果启用了传输中加密，不支持 SMB 3.x 的客户端或支持 SMB 3.x 但不支持 SMB 加密的客户端将无法装载 Azure 文件共享。 要详细了解哪些操作系统支持具有加密功能的 SMB 3.x，请参阅适用于 [Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md) 和 [Linux](storage-how-to-use-files-linux.md) 的详细文档。 PowerShell、CLI 和 SDK 的所有当前版本均支持 HTTPS。  
-
-可以为 Azure 存储帐户禁用传输中加密。 禁用加密后，Azure 文件存储还将允许没有加密功能的 SMB 2.1、SMB 3.x 和通过 HTTP 进行的未经加密的 FileREST API 调用。 禁用传输中加密的主要原因是为了支持必须在更低版本的操作系统（例如，Windows Server 2008 R2 或更低版本的 Linux 发行版）上运行的旧版应用程序。 Azure 文件存储仅允许在与 Azure 文件共享相同的 Azure 区域内建立 SMB 2.1 连接；Azure 文件共享的 Azure 区域之外的 SMB 2.1 客户端（例如，本地或其他 Azure 区域）将无法访问文件共享。
-
-有关传输中加密的详细信息，请参阅[要求在 Azure 存储中进行安全传输](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 ## <a name="see-also"></a>另请参阅
 - [Azure 文件存储概述](storage-files-introduction.md)

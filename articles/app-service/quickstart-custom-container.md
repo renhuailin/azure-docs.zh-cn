@@ -3,16 +3,16 @@ title: 快速入门：在应用服务上运行自定义容器
 description: 部署第一个自定义容器即可开始使用 Azure 应用服务中的容器。
 author: msangapu-msft
 ms.author: msangapu
-ms.date: 10/21/2019
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 360da015f012822593dbb6390cb7df0017ba85b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d4e22c58fd45edc4beb58b4b1b9ae7c835e8fa9
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96745071"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113215434"
 ---
 # <a name="run-a-custom-container-in-azure"></a>在 Azure 中运行自定义容器
 
@@ -91,17 +91,17 @@ ms.locfileid: "96745071"
 
 1. 在 Azure 门户的左上角选择“创建资源”。
 
-1. 在 Azure 市场资源列表上方的搜索框中，搜索“用于容器的 Web 应用”并选择“创建” 。
+1. 在“常用服务”下，选择“Web 应用”下的“创建”。
 
-1. 在“Web 应用创建”中，选择你的订阅和一个 **资源组**。 如果需要，可以创建新的资源组。
+1. 在“创建 Web 应用”中，选择你的订阅和一个资源组。 如果需要，可以创建新的资源组。
 
-1. 提供应用名称（例如 *win-container-demo*），然后选择“Windows”作为 **操作系统**。 在完成时选择“下一步:Docker”以继续。
+1. 提供一个应用名称（例如 win-container-demo）。 在“发布”项中选择“Docker 容器” ，选择“Windows”作为“操作系统”。 在完成时选择“下一步:Docker”以继续。
 
-   ![创建用于容器的 Web 应用。](media/quickstart-custom-container/create-web-app-continer.png)
+   ![创建用于容器的 Web 应用。](media/quickstart-custom-container/create-web-app-container.png)
 
 1. 对于“映像源”，请选择“Docker Hub”；对于“映像和标记”，请输入在[发布到 Docker Hub](#publish-to-docker-hub) 中复制的存储库名称。  
 
-   ![配置用于容器的 Web 应用](media/quickstart-custom-container/configure-web-app-continer.png)
+   ![配置用于容器的 Web 应用](media/quickstart-custom-container/configure-web-app-container.png)
 
     如果用于 Web 应用程序的自定义映像位于其他位置，例如位于 [Azure 容器注册表](../container-registry/index.yml)中或任何其他的专用存储库中，则可在这里对其进行配置。
 
@@ -192,44 +192,124 @@ Linux 上的应用服务在 Linux 上提供预定义的应用程序堆栈，并�
 * [适用于 VS Code 的 Azure 应用服务扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)。 可以使用此扩展在 Azure 平台即服务 (PaaS) 上创建、管理和部署 Linux Web 应用。
 * [适用于 VS Code 的 Docker 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)。 可以使用此扩展简化本地 Docker 映像和命令的管理，并将生成的应用映像部署到 Azure。
 
-## <a name="create-an-image"></a>创建映像
+## <a name="create-a-container-registry"></a>创建容器注册表
 
-若要完成本快速入门，需要在 [Azure 容器注册表](../container-registry/index.yml)中存储合适的 Web 应用映像。 遵循[快速入门：使用 Azure 门户创建专用容器注册表](../container-registry/container-registry-get-started-portal.md)中的说明进行操作，但使用 `mcr.microsoft.com/azuredocs/go` 映像而不是 `hello-world` 映像。 若要参考，可[在 Azure 示例存储库中找到示例 Dockerfile](https://github.com/Azure-Samples/go-docs-hello-world)。
+本快速入门使用 Azure 容器注册表作为所选注册表。 你可以随意使用其他注册表，但步骤可能略有不同。
+
+按照[快速入门：使用 Azure 门户创建专用容器注册表](../container-registry/container-registry-get-started-portal.md)中的说明创建容器注册表。
 
 > [!IMPORTANT]
-> 请确保在创建容器注册表时将“管理员用户”选项设为“启用”。 也可以在 Azure 门户中从注册表页的“访问密钥”部分进行设置。 应用服务访问需要此设置。
+> 请确保在创建 Azure 容器注册表时将“管理员用户”选项设为“启用”。 也可以在 Azure 门户中从注册表页的“访问密钥”部分进行设置。 应用服务访问需要此设置。
 
 ## <a name="sign-in"></a>登录
 
-接下来，使用应用服务扩展启动 VS Code 并登录到 Azure 帐户。 为此，请在活动栏中选择 Azure 徽标，导航到“应用服务”资源管理器，然后选择“登录到 Azure”，并按照说明进行操作。
+1. 启动 Visual Studio Code。 
+1. 在[活动栏](https://code.visualstudio.com/docs/getstarted/userinterface)中选择 Azure 徽标，导航到“应用服务”资源管理器，然后选择“登录到 Azure”，并按照说明进行操作。
 
-![登录到 Azure](./media/quickstart-docker/sign-in.png)
+    ![登录到 Azure](./media/quickstart-docker/sign-in.png)
+
+1. 在底部的[状态栏](https://code.visualstudio.com/docs/getstarted/userinterface)中，验证 Azure 帐户电子邮件地址。 在“应用服务”资源管理器中，应显示你的订阅。
+
+1. 在活动栏中，选择 Docker 徽标。 在“注册表”资源管理器中，验证是否显示所创建的容器注册表。
+
+    ![屏幕截图显示已展开的 Azure 的注册表值。](./media/quickstart-docker/registries.png)
 
 ## <a name="check-prerequisites"></a>检查先决条件
 
-现在你可以检查是否已安装并配置了所有必备组件。
-
-在 VS Code 的状态栏中应会显示你的 Azure 电子邮件地址，“应用服务”资源管理器中应会显示你的订阅。
-
-接下来，验证是否已安装并运行 Docker。 以下命令将显示 Docker 版本（如果它正在运行）。
+验证是否已安装并运行 Docker。 以下命令将显示 Docker 版本（如果它正在运行）。
 
 ```bash
 docker --version
 ```
 
-最后，请确保已连接 Azure 容器注册表。 为此，请在活动栏中选择 Docker 徽标，然后导航到“注册表”。
+## <a name="create-and-build-image"></a>创建和生成映像
 
-![屏幕截图显示展开了 Azure 的注册表值以及文件扩展名为 .io 的文件。](./media/quickstart-docker/registries.png)
+1. 在 Visual Studio Code 中，打开一个空文件夹并添加一个名为 `Dockerfile` 的文件。 在 Dockerfile 中，根据所需的语言框架粘贴内容：
 
-## <a name="deploy-the-image-to-azure-app-service"></a>将映像部署到 Azure 应用服务
+# <a name="net"></a>[.NET](#tab/dotnet)
 
-完成所有配置后，即可将映像直接从 Docker 扩展资源管理器部署到 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)。
+<!-- https://mcr.microsoft.com/v2/appsvc%2Fdotnetcore/tags/list -->
+```dockerfile
+FROM mcr.microsoft.com/appsvc/dotnetcore:lts
 
-在 **DOCKER 资源管理器** 中的“注册表”节点下找到映像，并将其展开以显示其标记。 右键单击标记，然后选择“将映像部署到 Azure 应用服务”。
+ENV PORT 8080
+EXPOSE 8080
 
-在此处，按照提示选择订阅、全局唯一的应用名称、资源组和应用服务计划。 选择“B1 基本”作为“定价层”，并选择区域。
+ENV ASPNETCORE_URLS "http://*:${PORT}"
 
-部署之后，你的应用将在 `http://<app name>.azurewebsites.net` 上可用。
+ENTRYPOINT ["dotnet", "/defaulthome/hostingstart/hostingstart.dll"]
+```
+
+在此 Dockerfile 中，父映像是应用服务的内置 .NET 容器之一。 可以[在 GenerateDockerFiles/dotnetcore 下的 Azure-App-Service/ImageBuilder GitHub 存储库中](https://github.com/Azure-App-Service/ImageBuilder/tree/master/GenerateDockerFiles/dotnetcore)找到它的源文件。 它的 [Dockerfile](https://github.com/Azure-App-Service/ImageBuilder/blob/master/GenerateDockerFiles/dotnetcore/debian-9/Dockerfile) 将一个简单的 .NET 应用复制到 `/defaulthome/hostingstart` 中。 Dockerfile 只需启动该应用即可。
+
+# <a name="nodejs"></a>[Node.js](#tab/node)
+
+<!-- https://mcr.microsoft.com/v2/appsvc%2Fnode/tags/list -->
+```dockerfile
+FROM mcr.microsoft.com/appsvc/node:10-lts
+
+ENV HOST 0.0.0.0
+ENV PORT 8080
+EXPOSE 8080
+
+ENTRYPOINT ["pm2", "start", "--no-daemon", "/opt/startup/default-static-site.js"]
+```
+
+在此 Dockerfile 中，父映像是应用服务的内置 Node.js 容器之一。 可以[在 GenerateDockerFiles/node/node-template 下的 Azure-App-Service/ImageBuilder GitHub 存储库中](https://github.com/Azure-App-Service/ImageBuilder/tree/master/GenerateDockerFiles/node/node-template)找到它的源文件。 它的 [Dockerfile](https://github.com/Azure-App-Service/ImageBuilder/blob/master/GenerateDockerFiles/node/node-template/Dockerfile) 将一个简单的 Node.js 应用复制到 `/opt/startup` 中。 Dockerfile 只需使用父映像已安装的 PM2 启动该应用。
+
+# <a name="python"></a>[Python](#tab/python)
+
+<!-- https://mcr.microsoft.com/v2/appsvc%2Fpython/tags/list -->
+```dockerfile
+FROM mcr.microsoft.com/appsvc/python:latest
+
+ENV PORT 8080
+EXPOSE 8080
+
+ENTRYPOINT ["gunicorn", "--timeout", "600", "--access-logfile", "'-'", "--error-logfile", "'-'", "--chdir=/opt/defaultsite", "application:app"]
+```
+
+在此 Dockerfile 中，父映像是应用服务的内置 Python 容器之一。 可以[在 GenerateDockerFiles/python/template-3.9 下的 Azure-App-Service/ImageBuilder GitHub 存储库中](https://github.com/Azure-App-Service/ImageBuilder/tree/master/GenerateDockerFiles/python/template-3.9)找到它的源文件。 它的 [Dockerfile](https://github.com/Azure-App-Service/ImageBuilder/blob/master/GenerateDockerFiles/python/template-3.9/Dockerfile) 将一个简单的 Python 应用复制到 `/opt/defaultsite` 中。 Dockerfile 只需使用父映像已安装的 Gunicorn 启动该应用。
+
+# <a name="java"></a>[Java](#tab/java)
+
+<!-- https://mcr.microsoft.com/v2/azure-app-service%2Fjava/tags/list -->
+```dockerfile
+FROM mcr.microsoft.com/azure-app-service/java:11-java11_stable
+
+ENV PORT 80
+EXPOSE 80
+
+ENTRYPOINT ["java", "-Dserver.port=80", "-jar", "/tmp/appservice/parkingpage.jar"]
+```
+
+在此 Dockerfile 中，父映像是应用服务的内置 Java 容器之一。 可以[在 java/tree/dev/java11-alpine 下的 Azure-App-Service/java GitHub 存储库中](https://github.com/Azure-App-Service/java/tree/dev/java11-alpine)找到它的源文件。 它的 [Dockerfile](https://github.com/Azure-App-Service/java/blob/dev/java11-alpine/Dockerfile) 将一个简单的 Java 应用复制到 `/tmp/appservice` 中。 Dockerfile 只需启动该应用即可。
+
+-----
+
+2. [打开命令面板](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette)，然后键入“Docker Images: Build Image”。 按“Enter”运行该命令。
+
+3. 在映像标记框中，按以下格式指定所需标记：`<acr-name>.azurecr.io/<image-name>/<tag>`，其中 `<acr-name>` 是所创建的容器注册表的名称。 按 **Enter**。
+
+4. 映像完成生成后，请单击“映像”资源管理器顶部的"刷新"，并验证映像是否已成功生成。
+
+    ![屏幕截图显示了带标记的生成映像。](./media/quickstart-docker/built-image.png)
+
+## <a name="deploy-to-container-registry"></a>部署到容器注册表
+
+1. 在活动栏中，单击 Docker 图标。 在“映像”资源管理器中，找到刚刚生成的映像。
+1. 展开映像，右键单击所需的标记，然后单击“推送”。
+1. 确保映像标记以 `<acr-name>.azurecr.io` 开头，然后按 Enter。
+1. 当 Visual Studio Code 将映像推送到容器注册表后，请单击“注册表”资源管理器顶部的“刷新”，并验证映像是否已成功推送。
+
+    ![屏幕截图显示了部署到 Azure 容器注册表的映像。](./media/quickstart-docker/image-in-registry.png)
+
+## <a name="deploy-to-app-service"></a>部署到应用服务
+
+1. 在“注册表”资源管理器中，展开映像，右键单击标记，然后单击“将映像部署到 Azure 应用服务”。
+1. 按照提示选择订阅、全局唯一的应用名称、资源组和应用服务计划。 选择“B1 基本”作为“定价层”，并选择你附近的区域。
+
+部署之后，你的应用将在 `http://<app-name>.azurewebsites.net` 上可用。
 
 “资源组”是 Azure 中所有应用程序资源的命名集合。 例如，资源组可以包含对网站、数据库和 Azure 函数的引用。
 
@@ -237,27 +317,32 @@ docker --version
 
 ## <a name="browse-the-website"></a>浏览网站
 
-“输出”面板将在部署过程中打开，以指示操作的状态。 操作完成后，查找在“应用服务”资源管理器中创建的应用，右键单击该应用，然后选择“浏览网站”以在浏览器中打开该站点。
+“输出”面板显示部署操作的状态。 操作完成后，单击弹出通知中的“打开站点”，在浏览器中打开站点。
 
 > [!div class="nextstepaction"]
 > [我遇到了问题](https://www.research.net/r/PWZWZ52?tutorial=quickstart-docker&step=deploy-app)
 
 ## <a name="next-steps"></a>后续步骤
 
-祝贺你，你现已成功完成本快速入门！
+祝贺你，你现已成功完成本快速入门。
 
-接下来请查看其他 Azure 扩展。
+应用服务应用在每次启动时，都会从容器注册表进行拉取。 如果你要重新生成映像，只需将其推送到容器注册表，应用会在重启时拉取更新的映像。 若要指示应用立即拉入更新的映像，请重启应用。
+
+> [!div class="nextstepaction"]
+> [配置自定义容器](configure-custom-container.md)
+
+> [!div class="nextstepaction"]
+> [自定义容器教程](tutorial-custom-container.md)
+
+> [!div class="nextstepaction"]
+> [多容器应用教程](tutorial-multi-container-app.md)
+
+其他 Azure 扩展：
 
 * [Cosmos DB](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
 * [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 * [Azure CLI 工具](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)
 * [Azure 资源管理器工具](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-
-或安装 [Azure 工具](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)扩展包获取所有这些工具。
-
-查看其他资源：
-
-> [!div class="nextstepaction"]
-> [配置自定义容器](configure-custom-container.md)
+* [Azure 工具](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)扩展包包含上述所有扩展。
 
 ::: zone-end

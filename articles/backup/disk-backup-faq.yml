@@ -1,0 +1,157 @@
+### YamlMime:FAQ
+metadata:
+  title: 有关 Azure 磁盘备份的常见问题
+  description: 获取有关 Azure 磁盘备份的常见问题的解答
+  ms.topic: conceptual
+  ms.date: 05/27/2021
+  ms.openlocfilehash: 4c676d412799838193122399f50e984fbad833b2
+  ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 05/28/2021
+  ms.locfileid: "111907093"
+title: 有关 Azure 磁盘备份的常见问题
+summary: >
+  本文解答了有关 Azure 磁盘备份的常见问题。 有关 [Azure 磁盘备份](disk-backup-overview.md)区域可用性、支持的方案和限制的详细信息，请参阅[支持矩阵](disk-backup-support-matrix.md)。
+
+
+  ## <a name="frequently-asked-questions"></a>常见问题解答
+sections:
+- name: 常见问题解答
+  questions:
+  - question: >
+      如果已使用 Azure 虚拟机备份对磁盘进行备份，是否可以使用 Azure 磁盘备份解决方案备份同一个磁盘？
+    answer: >
+      Azure 备份并行支持使用磁盘备份和 [Azure VM 备份](backup-azure-vms-introduction.md)解决方案来备份托管磁盘。 如果你需要对虚拟机每天执行一次应用程序一致性备份，或者需要更频繁地对 OS 磁盘或特定数据磁盘执行崩溃一致性备份而不影响生产应用程序性能，此解决方案非常有用。
+  - question: >
+      如何找到用于配置磁盘备份的快照资源组？
+    answer: >
+      在“备份实例”屏幕中，可以从“概要”部分中找到“快照资源组”字段。 可以从备份中心或备份保管库中搜索和选择相应磁盘的备份实例。
+
+
+      ![“快照资源组”字段](./media/disk-backup-faq/snapshot-resource-group.png)
+  - question: >
+      快照资源组是什么？
+    answer: >
+      Azure 磁盘备份为托管磁盘提供操作层备份。 也就是说，在计划和按需备份操作过程中创建的快照存储在订阅内的资源组中。 由于增量快照存储在你的订阅中，因此 Azure 备份可执行快速还原。 此资源组称为快照资源组。 有关详细信息，请参阅[配置备份](backup-managed-disks.md#configure-backup)。
+  - question: >
+      为什么快照资源组必须位于要备份的磁盘所在的同一订阅中？
+    answer: >
+      无法在某一特定磁盘的订阅之外为该磁盘创建增量快照。 因此，请选择与要备份的磁盘同一订阅内的资源组。 详细了解托管磁盘的[增量快照](../virtual-machines/disks-incremental-snapshots.md#restrictions)。
+  - question: >
+      为什么需要提供角色分配才能配置备份、执行计划备份和按需备份以及还原操作？
+    answer: >
+      Azure 磁盘备份使用最小特权方法来发现、保护和还原订阅中的托管磁盘。 为实现此目的，Azure 备份使用[备份保管库](backup-vault-overview.md)的托管标识来访问其他 Azure 资源。 系统分配的托管标识限制为每个资源一个，并绑定到此资源的生命周期。 可以使用 Azure 基于角色的访问控制 (Azure RBAC) 来授予对托管标识的访问权限。 托管标识是一种只能用于 Azure 资源的特殊类型的服务主体。 详细了解[托管标识](../active-directory/managed-identities-azure-resources/overview.md)。 默认情况下，备份保管库无权访问要备份的磁盘、创建定期快照、在保持期过后删除快照以及从备份还原磁盘。 通过向备份保管库的托管标识显式授予角色分配，你可以控制对订阅中资源的管理权限。
+  - question: >
+      为什么备份策略会限制保持期？
+    answer: >
+      Azure 磁盘备份使用增量快照，每个磁盘的快照限制为 200 个。 为了可以按计划进行备份，以及按需进行备份，备份策略将总备份限制为 180 个。 详细了解托管磁盘的[增量快照](../virtual-machines/disks-incremental-snapshots.md#restrictions)。
+  - question: >
+      备份策略中的“每小时”和“每日”备份频率如何发挥作用？
+    answer: >
+      Azure 磁盘备份每天提供多次备份。 如果需要更频繁地执行备份，请选择“每小时”备份频率。 根据所选的“时间”间隔安排备份。 例如，如果选择“每 4 小时”，则会大约 4 小时执行一次备份，以便备份在一天中均匀分布。 如果每天备份一次即可满足需求，则选择“每日”备份频率。 可在每日备份频率中指定每日备份时间。 请注意，每日备份时间表示备份开始时间，而不是备份完成时间。 完成备份操作所需时间取决于各种因素，包括连续备份的更改率。 但是，Azure 磁盘备份是使用[增量快照](../virtual-machines/disks-incremental-snapshots.md)的无代理备份，不会影响生产应用程序的性能。
+  - question: >
+      为什么备份保管库的冗余设置不适用于操作层中存储的备份（快照资源组）？
+    answer: >
+      Azure 备份使用托管磁盘的[增量快照](../virtual-machines/disks-incremental-snapshots.md#restrictions)，无论父磁盘的存储类型如何，增量快照仅存储自标准 HDD 存储上的上一次快照以来磁盘的增量更改。 为了提高可靠性，在支持区域冗余存储 (ZRS) 的区域中，增量快照默认存储在 ZRS 上。 目前，Azure 磁盘备份支持托管磁盘的操作备份，不会将备份复制到备份保管库存储中。 因此备份保管库的备份存储冗余设置不适用于恢复点。
+  - question: >
+      是否可以使用备份中心来配置 Azure 磁盘的备份和管理备份实例？
+    answer: >
+      可以，Azure 磁盘备份集成在[备份中心](backup-center-overview.md)中，可在 Azure 中提供单一的统一管理体验，使企业能够大规模治理、监视、操作和分析备份。 你还可以使用备份保管库来备份、还原和管理保管库中受保护的备份实例。
+  - question: >
+      为什么需要创建备份保管库，而不使用恢复服务保管库？
+    answer: >
+      备份保管库是 Azure 中的一个存储实体，用于保存 Azure 备份支持的某些更新的工作负荷的备份数据。 你可以使用备份保管库来保存各种 Azure 服务（例如 Azure Database for PostgreSQL 服务器、Azure 磁盘和 Azure 备份将支持的更新的工作负荷）的备份数据。 备份保管库便于组织备份数据，并最大限度降低管理开销。 有关详细信息，请参阅[备份保管库](./backup-vault-overview.md)。
+  - question: >
+      要备份的磁盘和备份保管库是否可以位于不同的订阅中？
+    answer: >
+      可以，要备份的源托管磁盘和备份保管库可以位于不同的订阅中。
+  - question: >
+      要备份的磁盘和备份保管库是否可以位于不同的区域中？
+    answer: >
+      不可以，目前要备份的源托管磁盘和备份保管库必须位于同一个区域中。
+  - question: >
+      是否可以将磁盘还原到不同的订阅中？
+    answer: >
+      是的，你可以将磁盘还原到与备份的源托管磁盘的订阅不同的订阅。
+  - question: >
+      是否可以同时备份多个磁盘？
+    answer: >
+      否，不支持对附加到虚拟机的多个磁盘提取时间点快照。 有关详细信息，请参阅[配置备份](backup-managed-disks.md#configure-backup)；要详细了解限制，请参阅[支持矩阵](disk-backup-support-matrix.md)。
+  - question: >
+      目标资源组是什么？
+    answer: >
+      执行还原操作时，可以选择要将磁盘还原到的订阅和资源组。 Azure 备份将从所选资源组中的恢复点创建新磁盘。 这称为目标资源组。 请注意，备份保管库的托管标识需要具有目标资源组上的角色分配才能够成功执行还原操作。 有关详细信息，请参阅[还原文档](restore-managed-disks.md)。
+  - question: >
+      在执行备份和还原操作时，Azure 备份使用哪些权限？
+    answer: >
+      在要备份的磁盘上使用分配的“磁盘备份读取者”角色可执行以下操作：
+
+
+      “Microsoft.Compute/disks/read”
+
+
+      “Microsoft.Compute/disks/beginGetAccess/action”
+
+
+      "Microsoft.Authorization/*/read"
+
+
+      在快照资源组上使用分配的“磁盘快照参与者”角色可执行以下操作：
+
+
+      “Microsoft.Compute/snapshots/delete”
+
+
+      “Microsoft.Compute/snapshots/write”
+
+
+      “Microsoft.Compute/snapshots/read”
+
+
+      “Microsoft.Storage/storageAccounts/write”
+
+
+      “Microsoft.Storage/storageAccounts/read”
+
+
+      “Microsoft.Storage/storageAccounts/delete”
+
+
+      “Microsoft.Resources/subscriptions/resourceGroups/read”
+
+
+      “Microsoft.Storage/storageAccounts/listkeys/action”
+
+
+      “Microsoft.Compute/snapshots/beginGetAccess/action”
+
+
+      “Microsoft.Compute/snapshots/endGetAccess/action”
+
+
+      “Microsoft.Compute/disks/beginGetAccess/action”
+
+
+      "Microsoft.Authorization/*/read"
+
+
+      在目标资源组上使用分配的“磁盘还原操作员”角色可执行以下操作：
+
+
+      “Microsoft.Compute/disks/write”
+
+
+      “Microsoft.Compute/disks/read”
+
+
+      “Microsoft.Resources/subscriptions/resourceGroups/read”
+
+
+      "Microsoft.Authorization/*/read"
+
+
+      >[!NOTE]
+
+      >这些角色的权限未来可能会随 Azure 备份服务添加的功能而变化。
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n- [Azure 磁盘备份支持矩阵](disk-backup-support-matrix.md)"

@@ -5,15 +5,15 @@ author: martinekuan
 manager: martinekuan
 ms.service: multiple
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 03/30/2021
 ms.author: martinek
 ms.custom: references_regions
-ms.openlocfilehash: 3310d4a7d86db9dee7d5f71fc9410545817886f3
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
-ms.translationtype: MT
+ms.openlocfilehash: 9fda6f913fcb5325c811671cd6476dcbf2413766
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511223"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058011"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>业务连续性和灾难恢复 (BCDR)：Azure 配对区域
 
@@ -21,7 +21,7 @@ ms.locfileid: "97511223"
 
 Azure 区域由一组数据中心组成，这些数据中心部署在定义了延迟的外围内，并通过专用的低延迟网络进行连接。  这可确保 Azure 区域中的 Azure 服务提供尽可能最佳的性能和安全性。  
 
-Azure 地理位置定义了至少包含一个 Azure 区域的世界区域。 地理位置定义了一种离散市场，通常包含两个或更多区域，这些区域会保留数据驻留和符合性边界。  [在此处](https://azure.microsoft.com/global-infrastructure/regions/)查找有关 Azure 全球基础结构的详细信息
+Azure 地理位置定义了至少包含一个 Azure 区域的世界区域。 地理位置定义了一种离散市场，通常包含两个或更多区域，这些区域会保留数据驻留和符合性边界。  在[此处](https://azure.microsoft.com/global-infrastructure/regions/)查找有关 Azure 全球基础结构的详细信息
 
 区域对由同一地理位置中的两个区域组成。 Azure 会跨区域对序列化平台更新（计划内维护），以确保一次仅更新每对中的一个区域。 如果中断影响多个区域，则每对中的至少一个区域将优先进行恢复。
 
@@ -39,47 +39,50 @@ Azure 地理位置定义了至少包含一个 Azure 区域的世界区域。 地
 
 ## <a name="am-i-limited-to-using-services-within-my-regional-pairs"></a>我是否被限制在我的区域对中使用服务？
 
-否。 虽然给定的 Azure 服务可能依赖于区域对，但你可以在满足业务需求的任何区域中托管其他服务。  使用美国东部的计算资源，Azure GRS 存储解决方案可以将加拿大中部的数据与加拿大东部的对等互连。  
+否。 虽然给定的 Azure 服务可能依赖于区域对，但你可以在满足业务需求的任何区域中托管其他服务。  Azure GRS 存储解决方案可以在使用位于“美国东部”区域的计算资源的同时，将“加拿大中部”区域的数据与“加拿大东部”区域的对等数据配对。  
 
 ## <a name="must-i-use-azure-regional-pairs"></a>是否必须使用 Azure 区域对？
 
-否。 客户可以利用 Azure 服务来构建可复原的服务，无需依赖 Azure 的区域对。  但是，我们建议你配置业务连续性灾难恢复 (跨区域对) BCDR，以从 [隔离](./security/fundamentals/isolation-choices.md) 和提高 [可用性](./availability-zones/az-overview.md)中获益。 对于支持多个活动区域的应用程序，我们建议尽可能使用区域对中的这两个区域。 这可确保应用程序的最佳可用性，并在发生灾难时最大限度地缩短恢复时间。 尽可能设计你的应用程序以实现 [最大](/azure/architecture/framework/resiliency/overview) 的恢复能力和简化 [灾难恢复](/azure/architecture/framework/resiliency/backup-and-recovery)。
+否。 客户可以利用 Azure 服务来构建可复原的服务，无需依赖 Azure 的区域对。  但是，我们建议你跨区域对配置业务连续性和灾难恢复 (BCDR)，以便从[隔离](./security/fundamentals/isolation-choices.md)中获益并提高[可用性](./availability-zones/az-overview.md)。 对于支持多个活动区域的应用程序，我们建议尽可能使用区域对中的这两个区域。 这可确保应用程序的最佳可用性，并在发生灾难时最大限度地缩短恢复时间。 尽可能设计你的应用程序以实现[最大复原能力](/azure/architecture/framework/resiliency/overview)并简化[灾难恢复](/azure/architecture/framework/resiliency/backup-and-recovery)。
 
 ## <a name="azure-regional-pairs"></a>Azure 区域对
 
 | 地理位置 | 区域对 A | 区域对 B  |
 |:--- |:--- |:--- |
-| Asia-Pacific |东亚 (香港特别行政区)  | 东南亚 (新加坡)  |
+| 亚太区 |东亚（香港） | 东南亚（新加坡） |
 | 澳大利亚 |澳大利亚东部 |澳大利亚东南部 |
-| 澳大利亚 |澳大利亚中部 |澳大利亚中部 2 |
+| 澳大利亚 |澳大利亚中部 |澳大利亚中部 2* |
 | 巴西 |巴西南部 |美国中南部 |
+| 巴西 |巴西东南部* |巴西南部 |
 | Canada |加拿大中部 |加拿大东部 |
 | 中国 |中国北部 |中国东部|
 | 中国 |中国北部 2 |中国东部 2|
 | 欧洲 |北欧(爱尔兰) |西欧(荷兰) |
-| 法国 |法国中部|法国南部|
-| 德国 |德国中部 |德国东北部 |
+| 法国 |法国中部|法国南部*|
+| 德国 |德国中西部 |德国北部* |
 | 印度 |印度中部 |印度南部 |
 | 印度 |印度西部 |印度南部 |
 | 日本 |日本东部 |日本西部 |
 | 韩国 |韩国中部 |韩国南部 |
 | 北美 |美国东部 |美国西部 |
-| 北美 |美国东部 2 |美国中部 |
+| 北美 |美国东部 2 |Central US |
 | 北美 |美国中北部 |美国中南部 |
 | 北美 |美国西部 2 |美国中西部 |
-| 挪威 | 挪威东部 | 挪威西部 |
-| 南非 | 南非北部 |南非西部 |
-| 瑞士 | 瑞士北部 |瑞士西部 |
+| 挪威 | 挪威东部 | 挪威西部* |
+| 南非 | 南非北部 |南非西部* |
+| 瑞士 | 瑞士北部 |瑞士西部* |
 | 英国 |英国西部 |英国南部 |
-| 阿拉伯联合酋长国 | 阿拉伯联合酋长国北部 | 阿联酋中部
-| 美国国防部 |US DoD 东部 |US DoD 中部 |
-| 美国政府 |US Gov 亚利桑那州 |US Gov 德克萨斯州 |
-| 美国政府 |US Gov 爱荷华州 |US Gov 弗吉尼亚州 |
-| 美国政府 |US Gov 弗吉尼亚州 |US Gov 德克萨斯州 |
+| 阿拉伯联合酋长国 | 阿拉伯联合酋长国北部 | 阿联酋中部* |
+| 美国国防部 |US DoD 东部* |US DoD 中部* |
+| 美国政府 |US Gov 亚利桑那州* |US Gov 德克萨斯州* |
+| 美国政府 |US Gov 爱荷华州* |US Gov 弗吉尼亚州* |
+| 美国政府 |US Gov 弗吉尼亚州* |US Gov 德克萨斯州* |
+
+(*) 某些区域的访问受到限制，用于支持特定的客户方案，例如国内灾难恢复。 这些区域只有在通过[在 Azure 门户中创建新的支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)进行请求时才能获得。
 
 > [!Important]
-> - 印度西部仅成对一个方向配对。 印度西部的次要区域是印度南部，而印度南部的次要区域是印度中部。
-> - 巴西南部是唯一的，因为它与地理位置外部的区域配对。 巴西南部的次要区域是美国中南部。 美国中南部的次要区域不是巴西南部。
+> - 印度西部仅在一个方向上配对。 印度西部的次要区域是印度南部，而印度南部的次要区域是印度中部。
+> - 巴西南部与其他区域的不同之处在于，它与其地理位置外部的区域配对。 巴西南部的次要区域是美国中南部。 美国中南部的次要区域不是巴西南部。
 
 
 ## <a name="an-example-of-paired-regions"></a>配对区域的示例
@@ -94,7 +97,7 @@ Azure 地理位置定义了至少包含一个 Azure 区域的世界区域。 地
 
 1. **Azure 计算 (IaaS)** - 必须提前预配附加的计算资源，以确保在发生灾难期间另一个区域可以提供资源。 有关详细信息，请参阅 [Azure 复原技术指南](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md)。 
 
-2. **Azure 存储** -如果使用托管磁盘，请使用 Azure 备份了解 [跨区域备份](/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) ，并使用 Azure Site Recovery 将 [vm](./site-recovery/azure-to-azure-tutorial-enable-replication.md) 从一个区域复制到另一个区域。 如果使用的是存储帐户，则在创建 Azure 存储帐户时默认配置异地冗余存储 (GRS)。 使用 GRS 时，数据在主要区域自动复制三次，并在配对区域复制三次。 有关详细信息，请参阅 [Azure 存储冗余选项](storage/common/storage-redundancy.md)。
+2. Azure 存储 - 若要使用托管磁盘，请了解如何使用 Azure 备份进行[跨区域备份](/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines)，以及如何使用 Azure Site Recovery [复制 VM](./site-recovery/azure-to-azure-tutorial-enable-replication.md)（从一个区域复制到另一个区域）。 如果使用的是存储帐户，则在创建 Azure 存储帐户时默认配置异地冗余存储 (GRS)。 使用 GRS 时，数据在主要区域自动复制三次，并在配对区域复制三次。 有关详细信息，请参阅 [Azure 存储冗余选项](storage/common/storage-redundancy.md)。
 
 3. **Azure SQL 数据库** - 使用 Azure SQL 数据库异地复制，可以将事务的异步复制配置到全球任何区域；但是，我们建议在配对区域中为大多数灾难恢复方案部署这些资源。 有关详细信息，请参阅 [Azure SQL 数据库中的异地复制](./azure-sql/database/auto-failover-group-overview.md)
 

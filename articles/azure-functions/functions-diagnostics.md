@@ -7,10 +7,10 @@ ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
 ms.openlocfilehash: fb329273d442c023233fee2e7e01aabe5f5bff8c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "83122353"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Azure Functions 诊断概述
@@ -39,7 +39,7 @@ ms.locfileid: "83122353"
 
 ## <a name="view-a-diagnostic-report"></a>查看诊断报告
 
-选择某个主题后，可以查看特定于函数应用的诊断报告。 诊断报告使用状态图标来指示应用是否存在任何特定问题。 你会看到问题的详细描述、建议的操作、相关指标和有用的文档。自定义诊断报告是通过在函数应用上运行的一系列检查生成的。 诊断报告是一个有用的工具，可用于在函数应用中查明问题并指导你解决问题。
+选择某个主题后，可以查看特定于函数应用的诊断报告。 诊断报告使用状态图标来指示应用是否存在任何特定问题。 你将看到有关问题的详细描述、建议操作、相关指标和有用的文档。自定义诊断报告是通过在函数应用上运行的一系列检查生成的。 诊断报告是一个有用的工具，可用于在函数应用中查明问题并指导你解决问题。
 
 ## <a name="find-the-problem-code"></a>查找问题代码
 

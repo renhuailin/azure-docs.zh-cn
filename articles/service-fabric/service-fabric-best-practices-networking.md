@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: caba864e77822ccab649f694df7e63e0ee5d6e51
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de6a80f73a97a5732f00e10107fff2330038210a
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732558"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122010"
 ---
 # <a name="networking"></a>网络
 
@@ -87,7 +87,7 @@ ms.locfileid: "101732558"
 
 * **应用程序**。 应用程序端口范围的大小应足以满足应用程序的终结点要求。 此范围在计算机上的动态端口范围中应是独占的，即按配置中设置的 ephemeralPorts 范围。 每当需要新端口时，Service Fabric 将使用这些端口，并负责为节点上的这些端口打开防火墙。
 
-* SMB。 ImageStore 服务在两个场景中使用 SMB 协议。 节点需要此端口才能从 ImageStore 下载包，以及在副本之间复制这些包。 
+* SMB。 可选，7.1 以上的运行时版本默认情况下不再使用 SMB。 ImageStore 服务在两个场景中使用 SMB 协议。 节点需要此端口才能从 ImageStore 下载包，以及在副本之间复制这些包。 
 
 * RDP。 可选（如果对于 jumpbox 场景，Internet 或 VirtualNetwork 需要 RDP）。 
 

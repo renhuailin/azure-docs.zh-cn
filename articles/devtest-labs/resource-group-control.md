@@ -3,12 +3,12 @@ title: 在 Azure 开发测试实验室中为 VM 指定资源组 | Microsoft Docs
 description: 了解如何在 Azure 开发测试实验室中为实验室中的 VM 指定资源组。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7b72048405d3025ca21b324b6ad3168dd0c9ac95
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c6f576a20fc8fada9dd515e8ba2a266761a3e586
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85483357"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377482"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中为实验室虚拟机指定资源组
 
@@ -76,7 +76,7 @@ az resource update -g $labRg -n $labName --resource-type "Microsoft.DevTestLab/l
         {
             "type": "microsoft.devtestlab/labs",
             "name": "[parameters('lab_name')]",
-            "apiVersion": "2018_10_15_preview",
+            "apiVersion": "2018-10-15-preview",
             "location": "eastus",
             "tags": {},
             "scale": null,
@@ -103,7 +103,7 @@ az resource update -g $labRg -n $labName --resource-type "Microsoft.DevTestLab/l
 此设置适用于在实验室中创建的新虚拟机。 实验室中那些在它们自己的资源组中创建的旧 VM 不会受影响。 在实验室中创建的环境会继续保留在它们自己的资源组中。
 
 如何使用此 API：
-- 请使用 API 版本 2018_10_15_preview。
+- 请使用 API 版本 2018-10-15-preview。
 - 如果指定新资源组，请确保你对订阅中的资源组有写入权限。 如果没有写入权限，在指定的资源组中创建新虚拟机会失败。
 - 使用 API 时，请传入 **完整的资源组 ID**。 例如：`/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`。 请确保资源组与实验室位于同一订阅中。 
 

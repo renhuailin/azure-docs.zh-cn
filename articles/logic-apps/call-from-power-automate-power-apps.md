@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.openlocfilehash: b402dab4c6e94a7634e11f0330b5379315e43abf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91762442"
 ---
 # <a name="call-logic-apps-from-power-automate-and-power-apps"></a>从 Power Automate 和 Power Apps 调用逻辑应用
@@ -60,9 +60,9 @@ ms.locfileid: "91762442"
 
 以下是将逻辑应用导出为自定义连接器时可能发生的错误及其建议解决方案：
 
-* **无法获取环境。确保已为 Power Automate 配置帐户，然后重试。** ：检查 Azure 帐户是否具有 Power Automate 计划。
+* 获取环境失败。确保已为 Power Automate 配置帐户，然后重试。：检查 Azure 帐户是否具有 Power Automate 计划。
 
-* **无法导出当前的逻辑应用。若要导出，请选择具有请求触发器的逻辑应用。** ：检查逻辑应用是否以[请求触发器](./logic-apps-workflow-actions-triggers.md#request-trigger)开头。
+* 无法导出当前逻辑应用。若要导出，请选择具有请求触发器的逻辑应用。：检查逻辑应用是否以[请求触发器](./logic-apps-workflow-actions-triggers.md#request-trigger)开头。
 
 ## <a name="connect-to-your-logic-app-from-power-automate"></a>从 Power Automate 连接到逻辑应用
 

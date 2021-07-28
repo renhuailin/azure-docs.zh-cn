@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
 ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "70860325"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>使用 Azure Cloud Shell 窗口
@@ -66,7 +66,7 @@ Cloud Shell 允许每个会话作为单独进程，因此可在多个浏览器�
 ![Web 预览](media/using-the-shell-window/preview.png)  
 <br>
 ![配置端口](media/using-the-shell-window/preview-configure.png)  
-单击窗口左上角的 Web 预览图标，选择“预览端口...”以在新选项卡中预览打开的端口。单击窗口左上方的 Web 预览图标，选择“关闭端口...”以关闭打开的端口。  
+单击窗口左上角的 Web 预览图标，选择“预览端口...”以在新选项卡中预览打开的端口。单击窗口左上角的 Web 预览图标，选择“关闭端口...”以关闭打开的端口。  
 ![预览/关闭端口](media/using-the-shell-window/preview-options.png)
 
 ## <a name="minimize--maximize-cloud-shell-window"></a>最小化和最大化 Cloud Shell 窗口

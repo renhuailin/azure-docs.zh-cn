@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37e41a00c1489d5b7b4822fec8bb4da35e917826
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 836c7bf9aefd4b2cb7d52c66bbd37e7ba38a467c
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101686455"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107377304"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 操作
 本主题介绍可通过使用 Azure Active Directory (Azure AD) Connect Health 执行的各种操作。
@@ -35,17 +35,18 @@ ms.locfileid: "101686455"
 >
 
 ### <a name="to-enable-azure-ad-connect-health-email-notifications"></a>启用 Azure AD Connect Health 电子邮件通知的步骤
-1. 打开需要接收电子邮件通知的服务的“警报”边栏选项卡。
-2. 单击操作栏中的“通知设置”按钮。
-3. 在电子邮件通知开关处，选择“开”。
-4. 若要让所有全局管理员能够接收电子邮件通知，请选中该复选框。
-5. 若想通过任何其他电子邮件地址接收电子邮件通知，则可在“其他电子邮件收件人”框中进行指定相应邮件地址。 若要从该列表中删除电子邮件地址，可右键单击相应的条目，然后选择“删除”。
-6. 若要保存所做更改，请单击“保存”。 只有在保存之后，更改才会生效。
+1. 在 Azure 门户中，搜索 Azure AD Connect Health
+2. 选择“同步错误”
+3. 选择“通知设置”。
+5. 在电子邮件通知开关处，选择“开”。
+6. 若要让所有全局管理员能够接收电子邮件通知，请选中该复选框。
+7. 若想通过任何其他电子邮件地址接收电子邮件通知，则可在“其他电子邮件收件人”框中进行指定相应邮件地址。 若要从该列表中删除电子邮件地址，可右键单击相应的条目，然后选择“删除”。
+8. 若要保存所做更改，请单击“保存”。 只有在保存之后，更改才会生效。
 
 >[!NOTE] 
-> 如果后端服务在处理同步请求时出现问题，此服务会向租户的管理联系人电子邮件地址发送一封包含错误详细信息的通知电子邮件。 我们听到客户反馈说，在某些情况下这些消息的数量很大，因此我们正在改变发送这些消息的方式。 
+> 如果后端服务在处理同步请求时出现问题，此服务会向租户的管理联系人电子邮件地址发送一封包含错误详细信息的通知电子邮件。 我们从客户那里听到反馈说，在某些情况下，这些消息的数量非常大，所以我们正在改变发送这些消息的方式。 
 >
-> 我们将发送后端服务返回的所有错误的每日摘要，而不是每次发生同步错误时都发送消息。 这使客户能够以更高效的方式处理这些错误，并减少重复错误消息的数量。
+> 我们将发送后端服务返回的所有错误的每日摘要，而不是每次发生同步错误时都发送消息。 这样，客户就能够以更有效的方式处理这些错误并减少重复的错误消息数。
 
 ## <a name="delete-a-server-or-service-instance"></a>删除服务器或服务实例
 
@@ -102,7 +103,7 @@ ms.locfileid: "101686455"
 
 [//]: # (开始 RBAC 部分)
 ## <a name="manage-access-with-azure-rbac"></a>使用 Azure RBAC 管理访问权限
-用于 Azure AD Connect Health 的 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) 可向全局管理员以外的用户和组提供访问权限。 Azure RBAC 会将角色分配给目标用户和组，并提供一个机制来将全局管理员的权限限制在你的目录中。
+Azure AD Connect Health 的 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) 为全局管理员以外的用户和组提供访问权限。 Azure RBAC 将角色分配给目标用户和组，并提供一个机制来限制目录中的全局管理员。
 
 ### <a name="roles"></a>角色
 Azure AD Connect Health 支持以下内置角色：
@@ -131,14 +132,14 @@ Azure AD Connect Health 支持两个级别的访问管理：
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>步骤 2：添加用户、组并分配角色
 1. 在“配置”部分中，单击“用户”。<br>
    ![Azure AD Connect Health 资源边栏的屏幕截图](./media/how-to-connect-health-operations/startRBAC.png)
-2. 选择“添加”。
+2. 选择 **添加** 。
 3. 在“选择角色”窗格中，选择一个角色（例如“所有者”）。<br>
    ![Azure AD Connect Health 和 Azure RBAC 配置菜单的屏幕截图](./media/how-to-connect-health-operations/RBAC_add.png)
-4. 键入目标用户或组的名称或标识符。 可以同时选择一个或多个用户或组。 单击“选择”  。
+4. 键入目标用户或组的名称或标识符。 可以同时选择一个或多个用户或组。 单击“选择”。
    ![Azure AD Connect Health 和 Azure 角色列表的屏幕截图](./media/how-to-connect-health-operations/RBAC_select_users.png)
 5. 选择“确定”。<br>
 6. 完成角色分配后，用户和组将显示在列表中。<br>
-   ![Azure AD Connect Health 和 Azure RBAC 的屏幕截图，其中突出显示了新用户](./media/how-to-connect-health-operations/RBAC_user_list.png)
+   ![Azure AD Connect Health 和 Azure RBAC 的屏幕快照（其中突出显示了新用户）](./media/how-to-connect-health-operations/RBAC_user_list.png)
 
 现在，列出的用户和组具有基于所分配角色的相应访问权限。
 
@@ -151,7 +152,7 @@ Azure AD Connect Health 支持两个级别的访问管理：
 #### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>步骤 3：与用户或组共享边栏选项卡位置
 1. 分配权限后，用户可以转到[此处](https://aka.ms/aadconnecthealth)，访问 Azure AD Connect Health。
 2. 在边栏选项卡上，用户可将边栏选项卡或卡上的其他部件固定到仪表板。 只需单击“固定到仪表板”图标。<br>
-   ![Azure AD Connect Health 和 Azure RBAC 固定边栏选项卡的屏幕截图，其中突出显示了固定图标](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
+   ![Azure AD Connect Health 和 Azure RBAC 固定边栏选项卡的屏幕截图（其中突出显示了固定图标）](./media/how-to-connect-health-operations/RBAC_pin_blade.png)
 
 > [!NOTE]
 > 分配有“读取者”角色的用户无法从 Azure 市场获取 Azure AD Connect Health 扩展。 这类用户无法执行实现上述操作所必需的“创建”操作。 但此用户仍可通过转到前一链接来访问边栏选项卡。 为方便后续使用，用户可以将边栏选项卡固定到仪表板。
@@ -159,8 +160,8 @@ Azure AD Connect Health 支持两个级别的访问管理：
 >
 
 ### <a name="remove-users-or-groups"></a>删除用户或组
-可删除已添加到 Azure AD Connect Health 和 Azure RBAC 的用户或组。 只需右键单击用户或组，然后选择“删除”。<br>
-![Azure AD Connect Health 和 Azure RBAC 的屏幕截图，其中突出显示了“删除”按钮](./media/how-to-connect-health-operations/RBAC_remove.png)
+可以删除添加到 Azure AD Connect Health 和 Azure RBAC 的用户或组。 只需右键单击用户或组，然后选择“删除”。<br>
+![Azure AD Connect Health 和 Azure RBAC 的屏幕快照（其中突出显示了“删除”）](./media/how-to-connect-health-operations/RBAC_remove.png)
 
 [//]: # (结束 RBAC 部分)
 

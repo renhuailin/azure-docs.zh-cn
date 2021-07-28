@@ -6,10 +6,10 @@ ms.author: rbest
 ms.date: 08/16/2020
 ms.topic: article
 ms.openlocfilehash: 29f6be5319c5a142ad3ea0d73deb2f95d8cb0d7a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94659720"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Azure 实验室服务成本管理
@@ -57,7 +57,7 @@ ms.locfileid: "94659720"
 > [!div class="mx-imgBorder"]
 > ![显示订阅的示例成本分析的屏幕截图。](./media/cost-management-guide/cost-analysis.png)
 
-默认会提供六列：“资源”、“资源类型”、“位置”、“资源组名称”、“标记”和“成本”     。 “资源”列包含有关实验室帐户、实验室名称和 VM 的信息。 显示实验室帐户、实验室名称和默认值（第二行和第三行）的行是实验室的成本。 在显示实验室帐户、实验室名称、默认值和 VM 名称的行中，可以查看已用 VM 的某项成本。 
+默认会提供六列：“资源”、“资源类型”、“位置”、“资源组名称”、“标记”和“成本”     。 “资源”列包含有关实验室帐户、实验室名称和 VM 的信息。 显示实验室帐户、实验室名称和默认值（第二行和第三行）的行是实验室的成本。 在显示实验室帐户、实验室名称、默认值和 VM 名称的行中，可以看到已用 VM 的成本。 
 
 在此示例中，添加第一行和第二行（都以 aaalab/ dockerlab 开头）可以得到“aaalab”实验室帐户中实验室“dockerlab”的总成本。
 
@@ -160,6 +160,6 @@ ms.locfileid: "94659720"
 
 实验室可以通过虚拟网络连接到其他 Azure 资源。 删除实验室后，应删除该虚拟网络和其他资源。
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 
 但愿你已通过本文中的信息更好地了解了可帮助降低使用成本的工具。

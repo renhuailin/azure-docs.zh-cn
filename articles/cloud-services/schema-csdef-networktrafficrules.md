@@ -1,24 +1,25 @@
 ---
-title: Azure 云服务 (经典) NetworkTrafficRules 架构 |Microsoft Docs
-description: 了解 NetworkTrafficRules，它限制了可访问某个角色的内部终结点的角色。 它与服务定义文件中的角色相结合。
+title: Azure 云服务（经典）定义 NetworkTrafficRules 架构 | Microsoft Docs
+description: 了解 NetworkTrafficRules，它限制了可以访问角色内部终结点的角色。 它与服务定义文件中的角色组合使用。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 2c8ab53068b71652d03d03bf79a224fe5e34dff3
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.openlocfilehash: 499b0f2b7e02dabbde906e0d347a17389b2e5753
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98739762"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934098"
 ---
-# <a name="azure-cloud-services-classic-definition-networktrafficrules-schema"></a>Azure 云服务 (经典) 定义 NetworkTrafficRules 架构
+# <a name="azure-cloud-services-classic-definition-networktrafficrules-schema"></a>Azure 云服务（经典）定义 NetworkTrafficRules 架构
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 `NetworkTrafficRules` 节点是服务定义文件中的一个可选元素，用于指定角色如何彼此进行通信。 它限制哪些角色可以访问特定角色的内部终结点。 `NetworkTrafficRules` 不是一个独立的元素；它在服务定义文件中与两个或更多角色结合使用。
 
@@ -69,7 +70,7 @@ AllowAllTraffic 元素
 ##  <a name="onlyallowtrafficto-element"></a><a name="OnlyAllowTrafficTo"></a> OnlyAllowTrafficTo 元素
 `OnlyAllowTrafficTo` 元素描述目标终结点的集合以及可以与它们进行通信的角色。 可以指定多个 `OnlyAllowTrafficTo` 节点。
 
-##  <a name="destinations-element"></a><a name="Destinations"></a> 目标元素
+##  <a name="destinations-element"></a><a name="Destinations"></a> Destinations 元素
 `Destinations` 元素描述可以与之进行通信的 RoleEndpoint 的集合。
 
 ##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a> RoleEndpoint 元素

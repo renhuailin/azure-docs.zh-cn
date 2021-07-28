@@ -37,7 +37,7 @@ sections:
   - question: >
       检测模式是否会阻止流量？
     answer: >
-      否。 检测模式仅记录触发了 WAF 规则的流量。
+      不是。 检测模式仅记录触发了 WAF 规则的流量。
   - question: >
       我可以自定义 WAF 规则吗？
     answer: >

@@ -7,19 +7,18 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 84f14a43cb66ef724bd055a6c1b126b9317a5989
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: af88f0b3403fb80acbb7dacebe293ac583e35799
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110666699"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "91716033"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>第二部分：向标识分配共享级权限
 
 在开始阅读本文之前，请确保已完成上一篇文章：[为你的帐户启用 AD DS 身份验证](storage-files-identity-ad-ds-enable.md)。
 
-在存储帐户上启用 Active Directory 域服务 (AD DS) 身份验证后，必须配置共享级权限才能访问文件共享。 你需要的用于访问 Azure 文件共享资源的标识必须是同时存在于 AD DS 和 Azure AD 中的混合标识。 例如，假设你的 AD DS 中有一个用户是 user1@onprem.contoso.com，并且你已使用 Azure AD Connect 同步将其作为 user1@contoso.com 同步到 Azure AD。若要允许此用户访问 Azure 文件存储，必须向 user1@contoso.com 分配共享级权限。 同一理念也适用于组或服务主体。 因此，你必须使用 Azure AD Connect 同步将用户和组从 AD DS 同步到 Azure AD。 
+在存储帐户上启用 Active Directory 域服务 (AD DS) 身份验证后，必须配置共享级权限才能访问文件共享。 你需要的用于访问 Azure 文件共享资源的标识必须是同时存在于 AD DS 和 Azure AD 中的混合标识。 例如，假设你的 AD DS 中有一个用户为 user1@onprem.contoso.com，并且你已使用 Azure AD Connect 同步以 user1@contoso.com 的身份同步到 Azure AD。若要允许此用户访问 Azure 文件存储，你必须将共享级别权限分配给 user1@contoso.com。 同一理念也适用于组或服务主体。 因此，你必须使用 Azure AD Connect 同步将用户和组从 AD DS 同步到 Azure AD。 
 
 必须在 AD DS 中为表示同一用户或组的 Azure AD 标识分配共享级权限，以支持向 Azure文件共享进行 AD DS 身份验证的功能。 AD DS 身份验证不支持对仅存在于 Azure AD 中的标识（例如 Azure 托管标识 (MSI)）进行身份验证和授权。 本文演示了如何将文件共享的共享级权限分配给某个标识。
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: bcb6e91bba367363385214806077146b1a24fe7b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92503481"
 ---
 # <a name="indexer-access-to-content-protected-by-azure-network-security-features-azure-cognitive-search"></a>索引器对 Azure 网络安全功能所保护内容的访问（Azure 认知搜索）
@@ -24,7 +24,7 @@ ms.locfileid: "92503481"
 | Azure 存储（Blob、表、ADLS Gen 2） | 数据源 |
 | Azure 存储（Blob、表） | 技能组（缓存已扩充的文档，存储知识存储投影） |
 | Azure Cosmos DB（各种 API） | 数据源 |
-| Azure SQL 数据库 | 数据源 |
+| Azure SQL Database | 数据源 |
 | Azure 虚拟机上的 SQL Server | 数据源 |
 | SQL 托管实例 | 数据源 |
 | Azure Functions | 自定义 Web API 技能的主机 |
@@ -41,8 +41,8 @@ ms.locfileid: "92503481"
 | Azure Cosmos DB - SQL API | 支持 | 支持 |
 | Azure Cosmos DB - Cassandra、Mongo 和 Gremlin API | 支持 | 不支持 |
 | Azure SQL 数据库 | 支持 | 支持 |
-| Azure 虚拟机上的 SQL Server | 支持 | 不适用 |
-| SQL 托管实例 | 支持 | 不适用 |
+| Azure 虚拟机上的 SQL Server | 支持 | 空值 |
+| SQL 托管实例 | 支持 | 空值 |
 | Azure Functions | 支持 | 支持，但仅适用于特定的 Azure Functions 层 |
 
 > [!NOTE]
@@ -80,7 +80,7 @@ Azure 认知搜索索引器能够有效地从数据源提取内容，将扩充�
 
 ## <a name="granting-access-via-private-endpoints"></a>通过专用终结点授予访问权限
 
-索引器可以利用[专用终结点](../private-link/private-endpoint-overview.md)来访问资源，这些资源限制为选定的虚拟网络，或未启用任何公共访问的虚拟网络。
+索引器可以利用[专用终结点](../private-link/private-endpoint-overview.md)来访问资源，对这些资源的访问被锁定，目的是选择虚拟网络或不启用任何公共访问。
 此功能仅在可计费的搜索服务中可用，并且可创建的专用终结点数有限制。 有关详细信息，请参阅[服务限制](search-limits-quotas-capacity.md#shared-private-link-resource-limits)。
 
 ### <a name="step-1-create-a-private-endpoint-to-the-secure-resource"></a>步骤 1：创建用于访问安全资源的专用终结点

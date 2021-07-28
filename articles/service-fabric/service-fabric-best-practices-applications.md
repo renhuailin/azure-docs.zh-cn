@@ -4,10 +4,10 @@ description: 使用 Azure Service Fabric 开发应用程序和服务的最佳做
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: ddf846e9e3ac6add7cf3f584b702de5accfb22af
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91538492"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>有关 Azure Service Fabric 应用程序设计的最佳做法
@@ -25,7 +25,7 @@ ms.locfileid: "91538492"
 熟悉 Service Fabric 应用程序的[一般体系结构](/azure/architecture/reference-architectures/microservices/service-fabric)及其[设计注意事项](/azure/architecture/reference-architectures/microservices/service-fabric#design-considerations)。
 
 ### <a name="choose-an-api-gateway"></a>选择 API 网关
-使用与后端服务通信的 API 网关服务，这些后端服务随后可以进行横向扩展。最常用的 API 网关服务包括：
+使用与后端服务通信的 API 网关服务，这些后端服务随后可以进行横向扩展。最常用的 API 网关服务如下：
 
 - [与 Service Fabric 集成](./service-fabric-tutorial-deploy-api-management.md)的 [Azure API 管理](./service-fabric-api-management-overview.md)。
 - 使用 [ServiceFabricProcessor](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Microsoft.Azure.EventHubs.ServiceFabricProcessor) 从事件中心分区读取数据的 [Azure IoT 中心](../iot-hub/index.yml)或 [Azure 事件中心](../event-hubs/index.yml)。

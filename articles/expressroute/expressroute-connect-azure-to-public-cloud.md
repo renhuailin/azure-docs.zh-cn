@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 07/24/2019
 ms.author: duau
 ms.openlocfilehash: fb4c34345ab902e243f22eae06fd5ea174fd2992
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92202185"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>将 Azure 与公有云进行连接
 
-许多企业因业务目标和技术目标而追求一种多云的策略。 其中包括成本、灵活性、功能可用性、冗余、数据主权等。此策略可帮助他们充分利用这两个云。 
+许多企业因业务目标和技术目标而追求一种多云的策略。 这包括成本、灵活性、功能可用性、冗余、数据主权等。该策略有助于充分利用这两种云。 
 
 此方法也对企业提出了网络和应用程序体系结构方面的挑战。 这些挑战包括延迟和数据吞吐量。 为了应对这些挑战，客户希望能够直接连接到多个云。 一些服务提供商提供了一种为客户连接多个云提供商的解决方案。 在其他情况下，客户可以通过部署自己的路由器来连接多个公有云。
 ## <a name="connectivity-via-expressroute"></a>通过 ExpressRoute 进行连接

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 3d44fada1eddf2d3f80bec085d8a5bf751197eb1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94968802"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>为 StorSimple 设备配置多路径 I/O
@@ -84,7 +84,7 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
 3. 选择 **“添加对 iSCSI 设备的支持”**，然后单击 **“添加”**。  
    ![MPIO 属性 - 发现多路径](./media/storsimple-configure-mpio-windows-server/IC741003.png)
 4. 出现提示时，重新启动服务器。
-5. 在“MPIO 属性”对话框中，单击“MPIO 设备”选项卡。 单击“添加”。
+5. 在“MPIO 属性”对话框中，单击“MPIO 设备”选项卡。单击“添加”。  
     </br>![MPIO 属性 - MPIO 设备](./media/storsimple-configure-mpio-windows-server/IC741004.png)
 6. 在“添加 MPIO 支持”对话框中的“设备硬件 ID”下面，输入设备的序列号。 若要获取设备序列号，请访问 StorSimple 设备管理器服务。 导航到“设备”>“仪表板”。 设备序列号显示在设备仪表板的右侧“速览”窗格中。
     </br>
@@ -155,7 +155,7 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
 **建议设备和应用程序主机之间至少具有 8 个活动平行会话。** 这可通过在 Windows Server 系统上启用 4 个网络接口实现。 在 Windows Server 主机上的硬件或操作系统级别使用物理网络接口或网络虚拟化技术。 设备上两个网络接口时，此配置会形成 8 个活动会话。 此配置有助于优化设备和云吞吐量。
 
 > [!IMPORTANT]
-> **建议不要将 1 GbE 和 10 GbE 网络接口混合使用。如果要使用两种网络接口，它们的类型应该相同。**
+> **建议不要混合使用 1 GbE 和 10 GbE 网络接口。如果使用两个网络接口，两个接口的类型应相同。**
 
 以下过程描述当有两个网络接口的 StorSimple 设备连接到有两个网络接口的主机时，如何添加会话。 这只会提供 4 个会话。 对于 2 个网络接口连接到具有 4 个网络接口的主机的 StorSimple 设备，采用相同的过程。 需要配置 8 个而不是此处所述的 4 个会话。
 
@@ -186,7 +186,7 @@ MPIO 是 Windows Server 上的一项可选功能，默认情况下不会安装�
    4. 单击 **“确定”** 返回到 **“iSCSI 发起程序属性”** 对话框。 现已向目标添加第二个会话。
 10. 重复步骤 8-10，向目标添加其他会话（路径）。 主机上有两个接口，设备上也有两个接口，总共可以添加四个会话。
 11. 添加所需的会话（路径）之后，请在 **“iSCSI 发起程序属性”** 对话框中选择目标并单击 **“属性”**。 在“属性”对话框的“会话”选项卡上，记下与可能的路径排列对应的四个会话标识符。 若要取消会话，请选中会话标识符旁边的复选框，然后单击 **“断开连接”**。
-12. 若要查看会话内存在的设备，请选择“设备”选项卡。若要为所选设备配置 MPIO 策略，请单击“MPIO”。 此时将显示 **“设备详细信息”** 对话框。 在 **“MPIO”** 选项卡上，你可以选择相应的 **“负载平衡策略”** 设置。 还可以查看 **“活动”** 或 **“备用”** 路径类型。
+12. 若要查看会话中显示的设备，请选择“设备”选项卡。若要为选定设备配置 MPIO 策略，请单击“MPIO”。  此时将显示 **“设备详细信息”** 对话框。 在 **“MPIO”** 选项卡上，你可以选择相应的 **“负载平衡策略”** 设置。 还可以查看 **“活动”** 或 **“备用”** 路径类型。
 
 ## <a name="next-steps"></a>后续步骤
 

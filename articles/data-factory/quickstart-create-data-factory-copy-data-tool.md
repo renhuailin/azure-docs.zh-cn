@@ -5,13 +5,13 @@ author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
 ms.topic: quickstart
-ms.date: 06/01/2021
-ms.openlocfilehash: a66af648abc0ae48c0a4fcc7eb33ab7c1351c41b
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.date: 06/04/2021
+ms.openlocfilehash: d78b915fc9efffd52f31b75edcb35d91fb529e4a
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371791"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113219782"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>快速入门：使用“复制数据”工具复制数据
 
@@ -53,7 +53,7 @@ ms.locfileid: "111371791"
 
    该列表仅显示数据工厂支持的位置，以及 Azure 数据工厂元数据要存储到的位置。 数据工厂使用的关联数据存储（如 Azure 存储和 Azure SQL 数据库）和计算（如 Azure HDInsight）可以在其他区域中运行。
 
-1. 选择“创建”  。
+1. 选择“创建”。
 
 1. 创建完成后，会显示“数据工厂”页。 选择“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI) 应用程序。
    
@@ -61,9 +61,9 @@ ms.locfileid: "111371791"
     
 ## <a name="start-the-copy-data-tool"></a>启动“复制数据”工具
 
-1. 在“开始”页中，选择“复制数据”磁贴启动“复制数据”工具。 
+1. 在 Azure 数据工厂的主页上，选择“引入”磁贴来启动“复制数据”工具。
 
-   ![“复制数据”磁贴](./media/doc-common-process/get-started-page.png)
+   ![屏幕截图显示 Azure 数据工厂主页。](./media/doc-common-process/get-started-page.png)
 
 1. 在“复制数据”工具的“属性”页上，选择“任务类型”下的“内置复制任务”，然后选择“下一步”   。
 

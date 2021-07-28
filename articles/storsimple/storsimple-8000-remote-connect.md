@@ -8,10 +8,10 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1da688dfb00b26ca6b561d5aa0fb548c221381c5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85514565"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>远程连接到 StorSimple 8000 系列设备
@@ -54,7 +54,7 @@ ms.locfileid: "85514565"
 1. 转到 StorSimple Device Manager 服务。 选择“设备”，选择并单击要为其配置远程管理的设备。 转到“设备设置”>“安全性”。
 2. 在“安全设置”边栏选项卡中，单击“远程管理”。
 3. 在“远程管理”边栏选项卡中，将“启用远程管理”设置为“是”。
-4. 现在可选择使用 HTTP 进行连接。 （默认为通过 HTTPS 连接。）请确保已选中 HTTP。
+4. 现在可选择使用 HTTP 进行连接。 （默认为通过 HTTPS 进行连接。）确保已选择“HTTP”。
    
    > [!NOTE]
    > 只有受信任的网络才支持通过 HTTP 连接。
@@ -133,7 +133,7 @@ ms.locfileid: "85514565"
 1. 转到 StorSimple Device Manager 服务。 选择“设备”，选择并单击要为其配置远程管理的设备。 转到“设备设置”>“安全性”。
 2. 在“安全设置”边栏选项卡中，单击“远程管理”。
 3. 将 **“启用远程管理”** 设置为 **“是”**。
-4. 现在可以选择使用 HTTPS 进行连接。 （默认为通过 HTTPS 连接。）请确保已选中 HTTPS。
+4. 现在可以选择使用 HTTPS 进行连接。 （默认为通过 HTTPS 进行连接。）确保已选择“HTTPS”。
 5. 依次单击“...”、“下载远程管理证书”。 指定保存此文件的位置。 需要在用于连接到设备的客户端或主机计算机上安装此证书。
 6. 单击“保存”，出现确认提示时，单击“是”。
 
@@ -189,7 +189,7 @@ ms.locfileid: "85514565"
 3. 选择“将所有证书放入下列存储”，并单击“浏览”。 导航到远程主机的根存储，并单击“下一步”。
    
     ![证书导入向导 2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
-4. 单击“完成”  。 将显示一条提示已成功导入的消息。
+4. 单击“完成”。 将显示一条提示已成功导入的消息。
    
     ![证书导入向导 3](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 

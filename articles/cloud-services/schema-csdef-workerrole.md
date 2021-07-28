@@ -1,24 +1,25 @@
 ---
-title: Azure 云服务 (经典) WorkerRole 架构 |Microsoft Docs
-description: Azure 辅助角色用于一般化开发，并可能对 web 角色执行后台处理。 了解 Azure 辅助角色架构。
+title: Azure 云服务（经典）定义 WorkerRole 架构 |Microsoft Docs
+description: Azure 辅助角色用于普通开发，可为 web 角色执行后台处理。 了解 Azure 辅助角色架构。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 0871527187a3d678cb2b94bd8dc342cf2abde1ba
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
-ms.translationtype: MT
+ms.openlocfilehash: f8ba321d95cc030d75ff9286c92c57335695790b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743128"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934064"
 ---
-# <a name="azure-cloud-services-classic-definition-workerrole-schema"></a>Azure 云服务 (经典) 定义 WorkerRole 架构
+# <a name="azure-cloud-services-classic-definition-workerrole-schema"></a>Azure 云服务（经典）定义 WorkerRole 架构
 
 > [!IMPORTANT]
-> [Azure 云服务 (扩展支持) ](../cloud-services-extended-support/overview.md) 是适用于 Azure 云服务产品的新的基于 azure 资源管理器的部署模型。进行此更改后，基于 Azure Service Manager 的部署模型运行的 Azure 云服务已重命名为云服务 (经典) ，所有新部署应使用 [云服务 (扩展支持) ](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处理。
 
@@ -97,7 +98,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 [LocalStorage](#LocalStorage)
 
-[终结点](#Endpoints)
+[Endpoints](#Endpoints)
 
 [InputEndpoint](#InputEndpoint)
 
@@ -115,7 +116,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 [证书](#Certificate)
 
-[导](#Imports)
+[Imports](#Imports)
 
 [导入](#Import)
 
@@ -150,9 +151,9 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 | Attribute | 类型 | 说明 |
 | --------- | ---- | ----------- |
-|name|字符串|必需。 辅助角色的名称。 该角色的名称必须唯一。|
+|name|string|必需。 辅助角色的名称。 该角色的名称必须唯一。|
 |enableNativeCodeExecution|布尔值|可选。 默认值是 `true`默认启用本机代码执行和完全信任。 将此属性设置为 `false`，可禁用辅助角色的本机代码执行，并改为使用 Azure 部分信任。|
-|vmsize|字符串|可选。 设置此值可更改分配给此角色的虚拟机的大小。 默认值为 `Small`。 有关可能的虚拟机大小及其属性的列表，请参阅[云服务的虚拟机大小](cloud-services-sizes-specs.md)。|
+|vmsize|字符串|可选。 设置此值可更改分配给此角色的虚拟机的大小。 默认值是 `Small`。 有关可能的虚拟机大小及其属性的列表，请参阅[云服务的虚拟机大小](cloud-services-sizes-specs.md)。|
 
 ##  <a name="configurationsettings"></a><a name="ConfigurationSettings"></a> ConfigurationSettings
 `ConfigurationSettings` 元素描述辅助角色的配置设置集。 此元素是 `Setting` 元素的父级。
@@ -164,7 +165,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 | Attribute | 类型 | 说明 |
 | --------- | ---- | ----------- |
-|name|字符串|必需。 配置设置的唯一名称。|
+|name|string|必需。 配置设置的唯一名称。|
 
 角色的配置设置是在服务定义文件中声明并在服务配置文件中设置的名称-值对。
 
@@ -181,8 +182,8 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 | Attribute | 类型 | 说明 |
 | --------- | ---- | ----------- |
-|name|字符串|必需。 本地存储的唯一名称。|
-|cleanOnRoleRecycle|布尔值|可选。 指示重启角色时是否应清理本地存储。 默认值是 `true`。|
+|name|string|必需。 本地存储的唯一名称。|
+|cleanOnRoleRecycle|布尔值|可选。 指示重启角色时是否应清理本地存储。 默认值为 `true`。|
 |sizeInMb|int|可选。 需要为本地存储分配的存储空间量，以 MB 为单位。 如果未指定，则分配的默认存储空间为 100 MB。 可分配的最小存储空间量为 1 MB。<br /><br /> 最大的本地资源大小取决于虚拟机大小。 有关详细信息，请参阅[云服务的虚拟机大小](cloud-services-sizes-specs.md)。|
 
 分配给本地存储资源的目录的名称对应于为名称属性提供的值。
@@ -209,7 +210,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 |port|int|必需。 外部终结点的端口。 可以指定所选的任意端口号，但为服务中每个角色指定的端口号必须唯一。<br /><br /> 可能的值介于 1 和 65535（包含在内）之间（Azure SDK 1.7 或更高版本）。|
 |证书 (certificate)|string|HTTPS 终结点需要。 由 `Certificate` 元素定义的证书的名称。|
 |localPort|int|可选。 指定用于终结点上内部连接的端口。 `localPort` 属性将终结点上的外部端口映射到角色上的内部端口。 这在以下情况下非常有用：角色必须与端口上的内部组件而非为外部公开的组件进行通信。<br /><br /> 如果未指定，则 `localPort` 的值与 `port` 属性相同。 将 `localPort` 的值设置为“*”会自动分配可使用运行时 API 发现的未分配端口。<br /><br /> 可能的值介于 1 和 65535（包含在内）之间（Azure SDK 1.7 或更高版本）。<br /><br /> 仅当使用 Azure SDK 1.3 或更高版本时，才提供 `localPort` 属性。|
-|ignoreRoleInstanceStatus|布尔值|可选。 当此属性的值设置为 `true` 时，会忽略服务的状态，并且负载均衡器不会删除该终结点。 此值设置为 `true` 对调试服务的繁忙实例非常有用。 默认值为 `false`。 **注意：** 即使角色不处于就绪状态，终结点仍可接收流量。|
+|ignoreRoleInstanceStatus|布尔值|可选。 当此属性的值设置为 `true` 时，会忽略服务的状态，并且负载均衡器不会删除该终结点。 此值设置为 `true` 对调试服务的繁忙实例非常有用。 默认值是 `false`。 **注意：** 即使角色不处于就绪状态，终结点仍可接收流量。|
 |loadBalancerProbe|字符串|可选。 与输入终结点关联的负载均衡器探测的名称。 有关详细信息，请参阅 [LoadBalancerProbe 架构](schema-csdef-loadbalancerprobe.md)。|
 
 ##  <a name="internalendpoint"></a><a name="InternalEndpoint"></a> InternalEndpoint
@@ -232,9 +233,9 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 | Attribute | 类型 | 说明 |
 | --------- | ---- | ----------- |
-|name|字符串|必需。 终结点的唯一名称。|
+|name|string|必需。 终结点的唯一名称。|
 |localPort|int|必需。 指定需要所有角色实例均对其侦听才能接收负载均衡器转发的传入流量的内部端口。 可能的值介于 1 和 65535（含）之间。|
-|protocol|字符串|必需。 内部终结点的传输协议。 可能的值包括 `udp` 或 `tcp`。 将 `tcp` 用于基于 http/https 的流量。|
+|protocol|字符串|必需。 内部终结点的传输协议。 可能的值为 `udp` 或 `tcp`。 将 `tcp` 用于基于 http/https 的流量。|
 
 ##  <a name="allocatepublicportfrom"></a><a name="AllocatePublicPortFrom"></a> AllocatePublicPortFrom
 `AllocatePublicPortFrom` 元素描述可供外部客户用来访问每个实例输入终结点的公共端口范围。 公共 (VIP) 端口号在此范围中分配，并在租户部署和更新过程中分配给每个单独的角色实例终结点。 此元素是 `FixedPortRange` 元素的父级。
@@ -270,7 +271,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 ##  <a name="certificates"></a><a name="Certificates"></a>证书
 `Certificates` 元素描述辅助角色的证书集。 此元素是 `Certificate` 元素的父级。 一个角色可以包含任意数目的关联证书。 有关使用 certificates 元素的详细信息，请参阅[使用证书修改服务定义文件](cloud-services-configure-ssl-certificate-portal.md#step-2-modify-the-service-definition-and-configuration-files)。
 
-##  <a name="certificate"></a><a name="Certificate"></a> 证书
+##  <a name="certificate"></a><a name="Certificate"></a> Certificate
 `Certificate` 元素描述与辅助角色关联的证书。
 
 下表介绍了 `Certificate` 元素的属性。
@@ -280,14 +281,14 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 |name|string|必需。 此证书的名称，用于与 HTTPS `InputEndpoint` 元素关联时进行引用。|
 |storeLocation|字符串|必需。 本地计算机上的证书存储位置，可在其中找到此证书。 可能值为 `CurrentUser` 和 `LocalMachine`。|
 |storeName|字符串|必需。 本地计算机上此证书所在的证书存储的名称。 可能的值包括内置存储名称 `My`、`Root`、`CA`、`Trust`、`Disallowed`、`TrustedPeople`、`TrustedPublisher`、`AuthRoot`、`AddressBook`，或任何自定义存储名称。 如果指定了自定义存储名称，则会自动创建存储。|
-|permissionLevel|字符串|可选。 指定授予角色进程的访问权限。 如果只希望提升的进程访问私钥，则指定 `elevated` 权限。 `limitedOrElevated` 权限允许所有角色进程访问私钥。 可能的值包括 `limitedOrElevated` 或 `elevated`。 默认值为 `limitedOrElevated`。|
+|permissionLevel|字符串|可选。 指定授予角色进程的访问权限。 如果只希望提升的进程访问私钥，则指定 `elevated` 权限。 `limitedOrElevated` 权限允许所有角色进程访问私钥。 可能的值为 `limitedOrElevated` 或 `elevated`。 默认值是 `limitedOrElevated`。|
 
-##  <a name="imports"></a><a name="Imports"></a> 导
+##  <a name="imports"></a><a name="Imports"></a> Imports
 `Imports` 元素描述辅助角色的导入模块集，它会向来宾操作系统添加组件。 此元素是 `Import` 元素的父级。 此元素是可选的，一个角色只能有一个运行时块。
 
 仅当使用 Azure SDK 1.3 或更高版本时，才提供 `Imports` 元素。
 
-##  <a name="import"></a><a name="Import"></a> 导入
+##  <a name="import"></a><a name="Import"></a> Import
 `Import` 元素指定要添加到来宾操作系统的模块。
 
 仅当使用 Azure SDK 1.3 或更高版本时，才提供 `Import` 元素。
@@ -298,7 +299,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 | --------- | ---- | ----------- |
 |moduleName|string|必需。 要导入的模块的名称。 有效的导入模块为：<br /><br /> -   RemoteAccess<br />-   RemoteForwarder<br />-   Diagnostics<br /><br /> 借助 RemoteAccess 和 RemoteForwarder 模块，可配置远程桌面连接的角色实例。 有关详细信息，请参阅[启用远程桌面连接](cloud-services-role-enable-remote-desktop-new-portal.md)。<br /><br /> 借助 Diagnostics 模块，可收集角色实例的诊断数据|
 
-##  <a name="runtime"></a><a name="Runtime"></a> 时会
+##  <a name="runtime"></a><a name="Runtime"></a> Runtime
 `Runtime` 元素描述辅助角色的环境变量设置集，这些设置用于控制 Azure 主机进程的运行时环境。 此元素是 `Environment` 元素的父级。 此元素是可选的，一个角色只能有一个运行时块。
 
 仅当使用 Azure SDK 1.3 或更高版本时，才提供 `Runtime` 元素。
@@ -309,10 +310,10 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 | --------- | ---- | ----------- |
 |executionContext|字符串|可选。 指定在其中启动角色进程的上下文。 默认上下文为 `limited`。<br /><br /> -   `limited` – 不使用管理员特权启动进程。<br />-   `elevated` – 需要管理员权限才能启动进程。|
 
-##  <a name="environment"></a><a name="Environment"></a> 环境
+##  <a name="environment"></a><a name="Environment"></a> Environment
 `Environment` 元素描述辅助角色的环境变量设置集。 此元素是 `Variable` 元素的父级。 一个角色可以包含任意数目的环境变量集。
 
-##  <a name="variable"></a><a name="Variable"></a> 各种
+##  <a name="variable"></a><a name="Variable"></a> Variable
 `Variable` 元素指定要在来宾操作系统中设置的环境变量。
 
 仅当使用 Azure SDK 1.3 或更高版本时，才提供 `Variable` 元素。
@@ -322,7 +323,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 | Attribute | 类型 | 说明 |
 | --------- | ---- | ----------- |
 |name|string|必需。 要设置的环境变量的名称。|
-|值|字符串|可选。 要为环境变量设置的值。 必须包含 value 属性或 `RoleInstanceValue` 元素。|
+|value|字符串|可选。 要为环境变量设置的值。 必须包含 value 属性或 `RoleInstanceValue` 元素。|
 
 ##  <a name="roleinstancevalue"></a><a name="RoleInstanceValue"></a> RoleInstanceValue
 `RoleInstanceValue` 元素指定要从其中检索变量值的 xPath。
@@ -333,7 +334,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 | --------- | ---- | ----------- |
 |xpath|字符串|可选。 实例的部署设置的位置路径。 有关详细信息，请参阅[带有 XPath 的配置变量](cloud-services-role-config-xpath.md)。<br /><br /> 必须包含 value 属性或 `RoleInstanceValue` 元素。|
 
-##  <a name="entrypoint"></a><a name="EntryPoint"></a> 入口
+##  <a name="entrypoint"></a><a name="EntryPoint"></a> EntryPoint
 `EntryPoint` 元素指定角色的入口点。 此元素是 `NetFxEntryPoint` 元素的父级。 借助这些元素，可以指定默认 WaWorkerHost.exe 以外的应用程序充当角色入口点。
 
 仅当使用 Azure SDK 1.5 或更高版本时，才提供 `EntryPoint` 元素。
@@ -348,7 +349,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 
 | Attribute | 类型 | 说明 |
 | --------- | ---- | ----------- |
-|assemblyName|字符串|必需。 包含入口点的程序集的路径和文件名称。 路径相对于文件夹 **\\ %ROLEROOT%\Approot** (未在中指定 **\\ %ROLEROOT%\Approot** `commandLine` ，则假定为) 。 **%ROLEROOT%** 是由 Azure 维护的环境变量，表示角色的根文件夹位置。 **\\ %ROLEROOT%\Approot** 文件夹表示角色的应用程序文件夹。|
+|assemblyName|字符串|必需。 包含入口点的程序集的路径和文件名称。 该路径相对于文件夹 \\%ROLEROOT%\Approot（请勿在 `commandLine` 中指定 \\%ROLEROOT%\Approot，它是假定的） 。 **%ROLEROOT%** 是由 Azure 维护的环境变量，表示角色的根文件夹位置。 **\\%ROLEROOT%\Approot** 文件夹表示角色的应用程序文件夹。|
 |targetFrameworkVersion|字符串|必需。 在其上生成程序集的 .NET Framework 的版本。 例如，`targetFrameworkVersion="v4.0"`。|
 
 ##  <a name="programentrypoint"></a><a name="ProgramEntryPoint"></a> ProgramEntryPoint
@@ -364,7 +365,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 |commandLine|字符串|必需。 要执行的程序的路径、文件名和任何命令行参数。 该路径相对于文件夹 **%ROLEROOT%\Approot**（请勿在 commandLine 中指定 **%ROLEROOT%\Approot**，这是假定的）。 **%ROLEROOT%** 是由 Azure 维护的环境变量，表示角色的根文件夹位置。 **%ROLEROOT%\Approot** 文件夹表示角色的应用程序文件夹。<br /><br /> 程序结束后会回收该角色，所以通常会将程序设置为继续运行，而不是启动后运行有限的任务。|
 |setReadyOnProcessStart|boolean|必需。 指定角色实例是否等待命令行程序表明它已启动。 此时，此值必须设置为 `true`。 保留将该值设置为 `false` 这一操作，供将来使用。|
 
-##  <a name="startup"></a><a name="Startup"></a> 阶段
+##  <a name="startup"></a><a name="Startup"></a> Startup
 `Startup` 元素描述角色启动时运行的任务的集合。 此元素可以是 `Variable` 元素的父级。 有关使用角色启动任务的详细信息，请参阅[如何配置启动任务](cloud-services-startup-tasks.md)。 此元素是可选的，一个角色只能有一个启动块。
 
 下表描述 `Startup` 元素的属性。
@@ -373,7 +374,7 @@ Azure 辅助角色对普通开发非常有用，可为 web 角色执行后台处
 | --------- | ---- | ----------- |
 |priority|int|仅限内部使用。|
 
-##  <a name="task"></a><a name="Task"></a> 任务
+##  <a name="task"></a><a name="Task"></a> Task
 `Task` 元素指定在角色启动时发生的启动任务。 启动任务可用于执行准备角色以运行的任务，如安装软件组件或运行其他应用程序。 这些任务会按照它们在 `Startup` 元素块中出现的顺序执行。
 
 仅当使用 Azure SDK 1.3 或更高版本时，才提供 `Task` 元素。

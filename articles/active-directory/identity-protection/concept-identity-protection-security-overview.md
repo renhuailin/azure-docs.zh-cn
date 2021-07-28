@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95c589289d77597be2550673944c8fa21902e0fb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93098461"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory 标识保护 - 安全概览
@@ -27,7 +27,7 @@ ms.locfileid: "93098461"
 - 趋势：位于左侧，呈现组织的风险时间线。
 - 磁贴：位于右侧，突出显示组织中正在发生的关键问题，并建议如何快速采取措施。
 
-:::image type="content" source="./media/concept-identity-protection-security-overview/01.png" alt-text="Azure 门户安全概述的屏幕截图。条形图显示的是一段时间内风险的计数。磁贴总结了有关用户和登录的信息。" border="false":::
+:::image type="content" source="./media/concept-identity-protection-security-overview/01.png" alt-text="Azure 门户安全概述的屏幕截图。条形图显示一段时间内的风险计数。磁贴汇总有关用户和登录的信息。" border="false":::
   
 ## <a name="trends"></a>趋势
 

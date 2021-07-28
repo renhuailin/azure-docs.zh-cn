@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/17/2019
 ms.openlocfilehash: bc119f1ce8efb821781dabfb9dd259cc5c8d9c23
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "74792473"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 管理集成帐户中的项目元数据
@@ -61,7 +61,7 @@ ms.locfileid: "74792473"
 
 1. 提供要查找的项目的以下信息：
 
-   | 属性 | 必须 | 值 | 说明 | 
+   | 属性 | 必选 | 值 | 说明 | 
    |----------|---------|-------|-------------| 
    | **项目类型** | 是 | “架构”、“映射”、“合作伙伴”、“协议”或自定义类型 | 所需项目的类型 | 
    | **项目名称** | 是 | <*artifact-name*> | 所需项目的名称 | 
@@ -83,12 +83,12 @@ ms.locfileid: "74792473"
 
       例如，假设你要获取在本主题中前面添加的 `routingUrl` 元数据。 下面是可以指定的属性值： 
 
-      | 属性 | 必须 | 值 | 说明 | 
+      | 属性 | 必选 | 值 | 说明 | 
       |----------|----------|-------|-------------| 
       | **方法** | 是 | <*operation-to-run*> | 要针对项目运行的 HTTP 操作。 例如，此 HTTP 操作使用 **GET** 方法。 | 
       | **URI** | 是 | <*metadata-location*> | 若要访问检索的项目中的 `routingUrl` 元数据值，可以使用表达式，例如： <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
       | **标头** | 否 | <*header-values*> | 触发器中的、要传入到 HTTP 操作的所有标头输出。 例如，若要传入触发器的 `headers` 属性值，可以使用表达式，如下所示： <p>`@triggeroutputs()['headers']` | 
-      | **正文** | 否 | <body-content> | 要通过 HTTP 操作的 `body` 属性传递的其他任何内容。 此示例将项目的 `properties` 值传入 HTTP 操作： <p>1.在“正文”属性中单击，以显示动态内容列表。 如果未显示任何属性，请选择“查看更多”。 <br>2.在动态内容列表中的“集成帐户项目查找”下，选择“属性”。  | 
+      | **正文** | 否 | <body-content> | 要通过 HTTP 操作的 `body` 属性传递的其他任何内容。 此示例将项目的 `properties` 值传入 HTTP 操作： <p>1. 在“正文”属性中单击，以显示动态内容列表。 如果未显示任何属性，请选择“查看更多”。 <br>2. 在动态内容列表中的“集成帐户项目查找”下，选择“属性”。  | 
       |||| 
 
       例如：
