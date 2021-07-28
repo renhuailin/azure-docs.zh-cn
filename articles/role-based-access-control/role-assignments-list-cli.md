@@ -14,19 +14,19 @@ ms.workload: identity
 ms.date: 10/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: cc64e314a8acb035736df0521987cb78a7297326
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 35170cb047ae7b4cfd376f86a76a36c88bbbaaa2
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100556921"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787484"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>使用 Azure CLI 列出 Azure 角色分配
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] 本文介绍如何使用 Azure CLI 列出角色分配。
 
 > [!NOTE]
-> 如果你的组织已将管理功能外包给使用 [Azure 委托资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服务提供商，则此处将不会显示该服务提供商授权的角色分配。
+> 如果组织已将管理功能外包给使用 [Azure Lighthouse](../lighthouse/overview.md) 的服务提供商，则此处将不会显示该服务提供商授权的角色分配。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,7 +34,7 @@ ms.locfileid: "100556921"
 
 ## <a name="list-role-assignments-for-a-user"></a>列出用户的角色分配
 
-若要列出特定用户的角色分配，请使用 [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list)：
+若要列出特定用户的角色分配，请使用 [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list)：
 
 ```azurecli
 az role assignment list --assignee {assignee}
@@ -65,7 +65,7 @@ az role assignment list --all --assignee patlong@contoso.com --output json --que
 
 ## <a name="list-role-assignments-for-a-resource-group"></a>列出资源组的角色分配
 
-若要列出存在于资源组范围的角色分配，请使用 [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list)：
+若要列出存在于资源组范围的角色分配，请使用 [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list)：
 
 ```azurecli
 az role assignment list --resource-group {resourceGroup}
@@ -97,7 +97,7 @@ az role assignment list --resource-group pharma-sales --output json --query '[].
 
 ## <a name="list-role-assignments-for-a-subscription"></a>列出订阅的角色分配
 
-若要列出订阅范围内的所有角色分配，请使用 [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list)。 若要获取订阅 ID，可以在 Azure 门户中的“订阅”边栏选项卡上找到它，也可以使用 [az account list](/cli/azure/account#az-account-list)。
+若要列出订阅范围内的所有角色分配，请使用 [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list)。 若要获取订阅 ID，可以在 Azure 门户中的“订阅”边栏选项卡上找到它，也可以使用 [az account list](/cli/azure/account#az_account_list)。
 
 ```azurecli
 az role assignment list --subscription {subscriptionNameOrId}
@@ -134,7 +134,7 @@ az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --ou
 
 ## <a name="list-role-assignments-for-a-management-group"></a>列出管理组的角色分配
 
-若要列出管理组范围内的所有角色分配，请使用 [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list)。 若要获取管理组 ID，可以在 Azure 门户中的“管理组”边栏选项卡上找到它，也可以使用 [az account management-group list](/cli/azure/account/management-group#az-account-management-group-list)。
+若要列出管理组范围内的所有角色分配，请使用 [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list)。 若要获取管理组 ID，可以在 Azure 门户中的“管理组”边栏选项卡上找到它，也可以使用 [az account management-group list](/cli/azure/account/management-group#az_account_management_group_list)。
 
 ```azurecli
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/{groupId}
@@ -165,19 +165,19 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 1. 获取系统分配的或用户分配的托管标识的主体 ID。
 
-    若要获取用户分配的托管标识的主体 ID，可以使用 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) 或 [az identity list](/cli/azure/identity#az-identity-list)。
+    若要获取用户分配的托管标识的主体 ID，可以使用 [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) 或 [az identity list](/cli/azure/identity#az_identity_list)。
 
     ```azurecli
     az ad sp list --display-name "{name}" --query [].objectId --output tsv
     ```
 
-    若要获取系统分配的托管标识的主体 ID，可以使用 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list)。
+    若要获取系统分配的托管标识的主体 ID，可以使用 [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list)。
 
     ```azurecli
     az ad sp list --display-name "{vmname}" --query [].objectId --output tsv
     ```
 
-1. 若要列出角色分配，请使用 [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list)。
+1. 若要列出角色分配，请使用 [az role assignment list](/cli/azure/role/assignment#az_role_assignment_list)。
 
     默认情况下，将仅显示当前订阅的角色分配。 若要查看当前订阅和以下订阅的角色分配，请添加 `--all` 参数。 若要查看继承的角色分配，请添加 `--include-inherited` 参数。
 

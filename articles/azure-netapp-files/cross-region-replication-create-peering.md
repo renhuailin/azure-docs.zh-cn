@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 2a3c788ce50ccc1d537fd2903fe05acffd079b0b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 84b10fefbfae4ca42fa96cc96f357dbfe0d25800
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591004"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108794765"
 ---
 # <a name="create-volume-replication-for-azure-netapp-files"></a>为 Azure NetApp 文件创建卷复制
 
 > [!IMPORTANT]
-> 跨区域复制功能目前为公共预览版。 需要提交候补名单请求，以通过 [Azure NetApp 文件跨区域复制候补名单提交页](https://aka.ms/anfcrrpreviewsignup)访问该功能。 在使用跨区域复制功能之前，请先等待来自 Azure NetApp 文件团队的官方确认电子邮件。
+> 跨区域复制功能目前为预览版。 需要提交候补名单请求，以通过 [Azure NetApp 文件跨区域复制候补名单提交页](https://aka.ms/anfcrrpreviewsignup)访问该功能。 在使用跨区域复制功能之前，请先等待来自 Azure NetApp 文件团队的官方确认电子邮件。
 
 本文介绍如何通过创建复制对等互连来设置跨区域复制。 
 
@@ -109,7 +109,7 @@ Azure NetApp 文件复制当前不支持多个订阅；必须在单个订阅下�
 ## <a name="next-steps"></a>后续步骤  
 
 * [跨区域复制](cross-region-replication-introduction.md)
-* [使用跨区域复制的要求和注意事项](cross-region-replication-requirements-considerations.md)
+* [跨区域复制的要求和注意事项](cross-region-replication-requirements-considerations.md)
 * [显示复制关系的运行状况](cross-region-replication-display-health-status.md)
 * [卷复制指标](azure-netapp-files-metrics.md#replication)
 * [管理灾难恢复](cross-region-replication-manage-disaster-recovery.md)

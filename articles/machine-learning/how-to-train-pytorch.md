@@ -10,12 +10,12 @@ author: mx-iao
 ms.reviewer: peterlu
 ms.date: 01/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 1a261a972636021bec88244704b2b491ae8bcc61
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 5a107bd8548b313ad2ac0bf2fa86c9f5b7527e26
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888433"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764794"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 PyTorch 模型
 
@@ -31,7 +31,7 @@ ms.locfileid: "107888433"
 
 - Azure 机器学习计算实例 - 无需下载或安装
 
-    - 在开始本教程之前完成[教程：设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)创建预先加载了 SDK 和示例存储库的专用笔记本服务器。
+    - 完成[快速入门：开始使用 Azure 机器学习](quickstart-create-resources.md)，以创建一个预加载了 SDK 和示例存储库的专用笔记本服务器。
     - 在笔记本服务器上的示例深度学习文件夹中，通过导航到以下目录，找到已完成且已展开的笔记本：**how-to-use-azureml > ml-frameworks > pytorch > train-hyperparameter-tune-deploy-with-pytorch** 文件夹。 
  
  - 你自己的 Jupyter 笔记本服务器

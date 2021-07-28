@@ -11,12 +11,12 @@ ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
 ms.date: 04/22/2021
-ms.openlocfilehash: 36a8ee83d2ff4b8673042d7764e83ab14ac2f016
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: f9c52307e4d743e32f8771998e2dfaacc6643a35
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107946216"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108739000"
 ---
 # <a name="deploy-a-model-locally"></a>在本地部署模型
 
@@ -30,7 +30,7 @@ ms.locfileid: "107946216"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 一个有计算实例运行的 Azure 机器学习工作区。 有关详细信息，请参阅[设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
+- 一个有计算实例运行的 Azure 机器学习工作区。 有关详细信息，请参阅[快速入门：开始使用 Azure 机器学习](quickstart-create-resources.md)。
 
 ## <a name="deploy-to-the-compute-instances"></a>部署到计算实例
 

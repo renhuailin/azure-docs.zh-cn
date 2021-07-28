@@ -1,20 +1,20 @@
 ---
 title: 如何创建适用于 Linux 的来宾配置策略
 description: 了解如何创建适用于 Linux 的 Azure Policy 来宾配置策略。
-ms.date: 08/17/2020
+ms.date: 03/31/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 352c8b1936c38c9b5f706ac88bd4fd06e008b892
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
-ms.translationtype: MT
+ms.openlocfilehash: b28d7f0ccd2f4b8cca7bdb5015dce6e8ee8f2f17
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525341"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762976"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何创建适用于 Linux 的来宾配置策略
 
 创建自定义策略前，请先阅读 [Azure Policy 来宾配置](../concepts/guest-configuration.md)中的概述信息。
- 
+
 若要了解如何创建适用于 Windows 的来宾配置策略，请参阅[如何创建适用于 Windows 的来宾配置策略](./guest-configuration-create.md)页
 
 当审核 Linux 时，来宾配置使用 [Chef InSpec](https://www.inspec.io/)。 InSpec 配置文件定义了计算机应处于的条件。 如果配置评估失败，则会触发策略效果 auditIfNotExists，并将计算机视为不符合。
@@ -24,10 +24,10 @@ ms.locfileid: "99525341"
 请执行以下操作来创建你自己的配置，用于验证 Azure 或非 Azure 计算机的状态。
 
 > [!IMPORTANT]
-> Azure 政府和 Azure 中国环境中具有来宾配置的自定义策略定义是一项预览功能。
+> Azure 政府和 Azure 中国世纪互联环境中具有来宾配置的自定义策略定义是一项预览功能。
 >
 > 必须有来宾配置扩展，才能在 Azure 虚拟机中执行审核。 若要在所有 Linux 计算机上大规模部署扩展，请分配以下策略定义：`Deploy prerequisites to enable Guest Configuration Policy on Linux VMs`
-> 
+>
 > 不要在自定义内容包中使用机密或保密信息。
 
 ## <a name="install-the-powershell-module"></a>安装 PowerShell 模块
@@ -90,17 +90,15 @@ DSC 充当 InSpec 的包装器，用于标准化它的执行方式、参数提�
 
 自定义配置的名称必须在所有位置都保持一致。 内容包的 .zip 文件名称、MOF 文件中的配置名称，以及 Azure 资源管理器模板 (ARM template) 中的来宾分配名称必须相同。
 
-PowerShell cmdlet 可帮助创建包。
-不需要根级别文件夹或版本文件夹。
-包格式必须为 .zip 文件。 且未压缩时总大小不能超过 100MB。
+PowerShell cmdlet 可帮助创建包。 不需要根级别文件夹或版本文件夹。 包格式必须为 .zip 文件。 且未压缩时总大小不能超过 100 MB。
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux 上的自定义来宾配置
 
-Linux 上的来宾配置使用 `ChefInSpecResource` 资源为引擎提供 [InSpec 配置文件](https://www.inspec.io/docs/reference/profiles/)的名称。 “名称”是唯一必需的资源属性。 创建 YaML 文件和 Ruby 脚本文件，如下所详述。
+Linux 上的来宾配置使用 `ChefInSpecResource` 资源为引擎提供 [InSpec 配置文件](https://www.inspec.io/docs/reference/profiles/)的名称。 “名称”是唯一必需的资源属性。 创建 YAML 文件和 Ruby 脚本文件，如下所详述。
 
-首先，创建 InSpec 使用的 YaML 文件。 此文件提供了环境的基本信息。 下面给出了一个示例：
+首先，创建 InSpec 使用的 YAML 文件。 此文件提供了环境的基本信息。 下面给出了一个示例：
 
-```YaML
+```yaml
 name: linux-path
 title: Linux path
 maintainer: Test
@@ -115,7 +113,7 @@ supports:
 
 接下来，使用用于审核计算机的 InSpec 语言抽象来创建 Ruby 文件。
 
-```Ruby
+```ruby
 describe file('/tmp') do
     it { should exist }
 end
@@ -147,9 +145,9 @@ Configuration AuditFilePathExists
 AuditFilePathExists -out ./Config
 ```
 
-将这个名为 `config.ps1` 的文件保存到项目文件夹中。 通过在终端中执行 `./config.ps1`，在 PowerShell 中运行它。 将创建一个新的 mof 文件。
+将这个名为 `config.ps1` 的文件保存到项目文件夹中。 通过在终端中执行 `./config.ps1`，在 PowerShell 中运行它。 随即将创建新 MOF 文件。
 
-从技术上讲，`Node AuditFilePathExists` 命令不是必需的，但它会生成一个名为 `AuditFilePathExists.mof`（而不是默认的 `localhost.mof`）的文件。 让 .mof 文件名遵循配置，可以在大规模操作时轻松地组织许多文件。
+从技术上讲，`Node AuditFilePathExists` 命令不是必需的，但它会生成一个名为 `AuditFilePathExists.mof`（而不是默认的 `localhost.mof`）的文件。 让 .MOF 文件名遵循配置，可以在大规模操作时轻松地组织许多文件。
 
 你现在应该有如下所示的项目结构：
 
@@ -160,7 +158,7 @@ AuditFilePathExists -out ./Config
     / linux-path
         inspec.yml
         / controls
-            linux-path.rb 
+            linux-path.rb
 ```
 
 支持文件必须打包在一起。 来宾配置使用已完成的包来创建 Azure Policy 定义。
@@ -208,13 +206,13 @@ New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/
 
 `Publish-GuestConfigurationPackage` cmdlet 的参数：
 
-- **路径**：要发布的包的位置
+- **Path**：要发布的包的位置
 - **ResourceGroupName**：存储帐户所在的资源组的名称
 - **StorageAccountName**：应在其中发布包的存储帐户的名称
-- **StorageContainerName**： (默认值： *guestconfiguration*) 存储帐户中存储容器的名称
-- **强制**：覆盖具有相同名称的存储帐户中的现有包
+- **StorageContainerName**：（默认：guestconfiguration）存储帐户中的存储容器的名称
+- **Force**：覆盖同名存储帐户中的现有包
 
-下面的示例将包发布到存储容器名称 "guestconfiguration"。
+以下示例将包发布到名为“guestconfiguration”的存储容器。
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPackage -Path ./AuditFilePathExists/AuditFilePathExists.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName
@@ -224,7 +222,7 @@ Publish-GuestConfigurationPackage -Path ./AuditFilePathExists/AuditFilePathExist
 
 `New-GuestConfigurationPolicy` cmdlet 的参数：
 
-- ContentUri：来宾配置内容包的公共 http(s) URI。
+- ContentUri：来宾配置内容包的公共 HTTP(S) URI。
 - DisplayName：策略显示名称。
 - **说明**：策略说明。
 - Parameter：以哈希表格式提供的策略参数。
@@ -262,28 +260,28 @@ Publish-GuestConfigurationPolicy `
   -Path './policies'
 ```
 
- `Publish-GuestConfigurationPolicy` cmdlet 接受来自 PowerShell 管道的路径。 此功能意味着可以创建策略文件，并在一组管道命令中发布它们。
+`Publish-GuestConfigurationPolicy` cmdlet 接受来自 PowerShell 管道的路径。 此功能意味着可以创建策略文件，并在一组管道命令中发布它们。
 
- ```azurepowershell-interactive
- New-GuestConfigurationPolicy `
+```azurepowershell-interactive
+New-GuestConfigurationPolicy `
   -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditFilePathExists.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' `
   -DisplayName 'Audit Linux file path.' `
   -Description 'Audit that a file path exists on a Linux machine.' `
   -Path './policies' `
- | Publish-GuestConfigurationPolicy
- ```
+| Publish-GuestConfigurationPolicy
+```
 
 在 Azure 中创建策略后，最后一步是分配定义。 了解如何使用[门户](../assign-policy-portal.md)、[Azure CLI](../assign-policy-azurecli.md) 和 [Azure PowerShell](../assign-policy-powershell.md) 分配定义。
 
 ### <a name="using-parameters-in-custom-guest-configuration-policies"></a>使用自定义来宾配置策略中的参数
 
-来宾配置支持在运行时替代配置属性。 此功能意味着包中 MOF 文件内的值不必被认为是静态的。 替代值是通过 Azure Policy 提供的，并不影响配置的创作或编译方式。
+来宾配置支持在运行时替代配置属性。 此功能意味着包中 MOF 文件内的值不必被认为是静态的。 替代值是通过 Azure Policy 提供的，并不会改变配置的创作或编译方式。
 
 借助 InSpec，参数通常在运行时作为输入处理，或使用特性作为代码处理。 来宾配置令此过程变得混淆，因此可以在分配策略时提供输入。 特性文件在计算机中自动创建。 不需要在项目中创建和添加文件。 向 Linux 审核项目添加参数需要执行两个步骤。
 
 在编写要在计算机上审核什么的脚本的 Ruby 文件中定义输入。 下面给出了一个示例。
 
-```Ruby
+```ruby
 attr_path = attribute('path', description: 'The file path to validate.')
 
 describe file(attr_path) do
@@ -291,8 +289,8 @@ describe file(attr_path) do
 end
 ```
 
-在配置中添加属性 **AttributesYmlContent** ，其中包含任何字符串作为值。
-来宾配置代理自动创建 InSpec 用于存储特性的 YAML 文件。 请参阅以下示例。
+在配置中添加“AttributesYmlContent”属性，将任意字符串作为该属性的值。 来宾配置代理自动创建 InSpec 用于存储特性的 YAML 文件。
+请参阅以下示例。
 
 ```powershell
 Configuration AuditFilePathExists
@@ -342,7 +340,6 @@ New-GuestConfigurationPolicy -ContentUri $uri `
     -Version 1.0.0
 ```
 
-
 ## <a name="policy-lifecycle"></a>策略生命周期
 
 如果要发布策略更新，请同时更改来宾配置包和 Azure Policy 定义详细信息。
@@ -350,8 +347,7 @@ New-GuestConfigurationPolicy -ContentUri $uri `
 > [!NOTE]
 > 来宾配置分配的 `version` 属性仅影响 Microsoft 托管的包。 对自定义内容进行版本控制的最佳做法是在文件名中包含版本。
 
-首先，在运行 `New-GuestConfigurationPackage` 时为包指定一个名称，使其与以前的版本不同。 可以在名称中包含版本号，例如 `PackageName_1.0.0`。
-使用本示例中的数字只是为了让包独一无二，而不是指定该包应被视为比其他包更新或更旧。
+首先，在运行 `New-GuestConfigurationPackage` 时为包指定一个名称，使其与以前的版本不同。 可以在名称中包含版本号，例如 `PackageName_1.0.0`。 使用本示例中的数字只是为了让包独一无二，而不是指定该包应被视为比其他包更新或更旧。
 
 接下来，按下面的每项说明更新与 `New-GuestConfigurationPolicy` cmdlet 一起使用的参数。
 

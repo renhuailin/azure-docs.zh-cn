@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/14/2021
+ms.date: 06/15/2021
 ms.author: b-juche
-ms.openlocfilehash: 768b2f4a9b993e4824fbcebe7a96d7f62a90c934
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 28006c1b17242d943a70312938282f2d254884a1
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078305"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112123428"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp 文件中的新增功能
 
@@ -29,7 +29,7 @@ Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强
 
 * [Azure NetApp 文件存储服务加载项](storage-service-add-ons.md)
 
-    新的 Azure NetApp 文件的“存储服务加载项”菜单选项针对 Azure NetApp 文件存储服务提供了一个 Azure 门户启动板，可启动受支持的第三方生态系统加载项。 使用这个新的门户菜单选项，您可以通过单击加载项磁贴来进入登陆页，以便快速访问该外接程序。  
+    新的 Azure NetApp 文件的“存储服务加载项”菜单选项针对 Azure NetApp 文件存储服务提供了一个 Azure 门户启动板，可启动可用的第三方生态系统加载项。 使用这个新的门户菜单选项，您可以通过单击加载项磁贴来进入登陆页，以便快速访问该外接程序。  
 
     NetApp 加载项是存储服务加载项下面引入的第一类加载项。 它提供了对 NetApp 云合规性的访问。 单击“NetApp 云合规性”磁贴将打开一个新浏览器，并将你引导到加载项安装页面。 
 

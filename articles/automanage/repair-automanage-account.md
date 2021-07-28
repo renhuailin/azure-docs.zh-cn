@@ -8,12 +8,13 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: alsin
-ms.openlocfilehash: 4694fa679c7bbff309a0452219ff39bacf2488c4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: fdfeae56ba1ef46b58fdb8f5beb32f85a6e2fcb4
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96183696"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752312"
 ---
 # <a name="repair-an-automanage-account"></a>修复 Automanage 帐户
 [Azure Automanage 帐户](./automanage-virtual-machines.md#automanage-account)是执行自动化操作所基于的安全性上下文或标识。 如果最近将包含 Automanage 帐户的订阅移动到了新租户，则需要重新配置该帐户。 若要重新配置该帐户，则需要重置标识类型，并为该帐户分配适当的角色。
@@ -61,7 +62,7 @@ ms.locfileid: "96183696"
 ## <a name="step-2-assign-appropriate-roles-for-the-automanage-account"></a>步骤 2：为 Automanage 帐户分配适当的角色
 Automanage 帐户需要订阅（包含 Automanage 所管理的 VM）上的参与者角色和资源策略参与者角色。 可使用 Azure 门户、ARM 模板或 Azure CLI 来分配这些角色。
 
-如果使用的是 ARM 模板或 Azure CLI，则需要 Automanage 帐户的主体 ID（也称为对象 ID）。 （如果使用的是 Azure 门户，则不需要此 ID。）可使用以下方法找到此 ID：
+如果使用的是 ARM 模板或 Azure CLI，则需要 Automanage 帐户的主体 ID（也称为对象 ID）。 （如果使用的是 Azure 门户，则无需此 ID。）可以使用以下方法查找此 ID：
 
 - [Azure CLI](/cli/azure/ad/sp)：使用命令 `az ad sp list --display-name <name of your Automanage Account>`。
 

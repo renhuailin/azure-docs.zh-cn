@@ -3,21 +3,21 @@ title: Azure Functions 中的 IP 地址
 description: 了解如何查找函数应用的入站和出站 IP 地址，以及这些地址发生更改的原因。
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 2c248756899459e17082bcab863a4e857b594909
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 30b45394ea620d05a89c3b2fd747573f1ea8017d
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608225"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204992"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions 中的 IP 地址
 
-本文介绍与函数应用的 IP 地址相关的以下概念：
+本文介绍以下与函数应用的 IP 地址相关的概念：
 
-* 查找函数应用当前正在使用 IP 地址。
+* 查找函数应用当前正在使用的 IP 地址。
 * 导致函数应用 IP 地址发生更改的条件。
-* 限制可访问函数应用的 IP 地址。
-* 获取函数应用的专用 IP 地址。
+* 限制可以访问函数应用的 IP 地址。
+* 定义函数应用的专用 IP 地址。
 
 IP 地址与函数应用而不是单个函数相关联。 传入的 HTTP 请求不能使用入站 IP 地址来调用单个函数；它们必须使用默认域名 (functionappname.azurewebsites.net) 或自定义域名。
 
@@ -54,7 +54,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="data-center-outbound-ip-addresses"></a>数据中心出站 IP 地址
 
-如果需要将函数应用使用的出站 IP 地址添加到允许列表，另一种做法是将函数应用的数据中心（Azure 区域）添加到允许列表。 可以[下载列出所有 Azure 数据中心 IP 地址的 JSON 文件](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。 然后，找到应用于运行函数应用的区域的 JSON 片段。
+如果需要将函数应用使用的出站 IP 地址添加到允许列表，可以采用另一种做法，即，将函数应用的数据中心（Azure 区域）添加到允许列表。 可以[下载列出所有 Azure 数据中心 IP 地址的 JSON 文件](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。 然后，找到应用于运行函数应用的区域的 JSON 片段。
 
 例如，下面的 JSON 片段是西欧允许列表的样子：
 
@@ -92,14 +92,24 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="outbound-ip-address-changes"></a>出站 IP 地址更改
 
-如果执行以下操作，函数应用可用的出站 IP 地址集可能会更改：
+出站 IP 地址的相对稳定性取决于托管计划。  
+
+### <a name="consumption-and-premium-plans"></a>消耗计划和高级计划
+
+由于自动缩放行为，在[消耗计划](consumption-plan.md)或[高级计划](functions-premium-plan.md)中运行时，出站 IP 可以随时更改。 
+
+如果需要控制函数应用的出站 IP 地址（例如需要将其添加到允许列表中），请考虑在高级计划中实施一个[虚拟网络 NAT 网关](#virtual-network-nat-gateway-for-outbound-static-ip)。
+
+### <a name="dedicated-plans"></a>专用计划
+
+在按专用（应用服务）计划运行时，如果执行以下操作，函数应用可用的出站 IP 地址集可能会更改：
 
 * 执行可能更改入站 IP 地址的任何操作。
-* 更改应用服务计划的定价层。 应用可在所有定价层中使用的所有可能出站 IP 地址列表在 `possibleOutboundIPAddresses` 属性中指定。 请参阅[查找出站 IP](#find-outbound-ip-addresses)。
+* 更改专用（应用服务）计划的定价层。 应用可在所有定价层中使用的所有可能出站 IP 地址列表在 `possibleOutboundIPAddresses` 属性中指定。 请参阅[查找出站 IP](#find-outbound-ip-addresses)。
 
-当函数应用在[消耗计划](consumption-plan.md)或[高级计划](functions-premium-plan.md)中运行时，即使你未执行任何操作（如[上面列出](#inbound-ip-address-changes)的操作），出站 IP 地址也可能会更改。
+#### <a name="forcing-an-outbound-ip-address-change"></a>强制进行出站 IP 地址更改
 
-使用以下过程特意强制进行出站 IP 地址更改：
+使用以下过程在专用（应用服务）计划中特意强制进行出站 IP 地址更改：
 
 1. 在标准和高级 v2 定价层之间纵向缩放应用服务计划。
 
@@ -113,15 +123,15 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="dedicated-ip-addresses"></a>专用 IP 地址
 
-当函数应用需要静态专用 IP 地址时，可以通过多种策略来进行探索。 
+在函数应用需要静态专用 IP 地址时，可以探索多种策略。 
 
 ### <a name="virtual-network-nat-gateway-for-outbound-static-ip"></a>用于出站静态 IP 的虚拟网络 NAT 网关
 
-你可以通过使用虚拟网络 NAT 网关将流量定向到静态公共 IP 地址，以此来控制来自函数的出站流量的 IP 地址。 在[高级计划](functions-premium-plan.md)中运行时，可以使用此拓扑。 要了解详细信息，请参阅[教程：使用 Azure 虚拟网络 NAT 网关控制 Azure Functions 出站 IP](functions-how-to-use-nat-gateway.md)。
+可以通过使用虚拟网络 NAT 网关引导流量通过静态公共 IP 地址，从而控制来自函数的出站流量的 IP 地址。 在[高级计划](functions-premium-plan.md)中运行时，可以使用此拓扑。 若要进行详细的了解，请参阅[教程：使用 Azure 虚拟网络 NAT 网关控制 Azure Functions 出站 IP](functions-how-to-use-nat-gateway.md)。
 
 ### <a name="app-service-environments"></a>应用服务环境
 
-要完全控制传入和传出 IP 地址，我们建议采用[应用服务环境](../app-service/environment/intro.md)（应用服务计划的[隔离层](https://azure.microsoft.com/pricing/details/app-service/)）。 有关详细信息，请参阅[应用服务环境的 IP 地址](../app-service/environment/network-info.md#ase-ip-addresses)和[如何控制应用服务环境的入站流量](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md)。
+若要对入站和出站的 IP 地址都进行完全控制，建议使用[应用服务环境](../app-service/environment/intro.md)（应用服务计划的[独立层](https://azure.microsoft.com/pricing/details/app-service/)）。 有关详细信息，请参阅[应用服务环境的 IP 地址](../app-service/environment/network-info.md#ase-ip-addresses)和[如何控制应用服务环境的入站流量](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md)。
 
 确定函数应用是否在应用服务环境中运行：
 

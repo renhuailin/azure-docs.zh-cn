@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: e78f0d1e8d6d637dfebe1ff475ab8416ba49a263
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88935409"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>如何将自定义技能添加到 Azure 认知搜索扩充管道
@@ -40,7 +40,7 @@ Azure 认知搜索中的[扩充管道](cognitive-search-concept-intro.md)可以�
 
 目前，与自定义技能交互的唯一机制是通过 Web API 接口。 Web API 需求必须满足本节中所述的要求。
 
-### <a name="1--web-api-input-format"></a>1.Web API 输入格式
+### <a name="1--web-api-input-format"></a>1.  Web API 输入格式
 
 
 > [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=294&end=340]
@@ -89,7 +89,7 @@ Web API 必须接受要处理的一组记录。 每条记录都必须包含一�
 ```
 实际上，可能会调用服务的数百或数千条记录，而不仅仅是这里显示的三条记录。
 
-### <a name="2-web-api-output-format"></a>2.Web API 输出格式
+### <a name="2-web-api-output-format"></a>2. Web API 输出格式
 
 输出的格式是一组包含 recordId 和属性包的记录 
 

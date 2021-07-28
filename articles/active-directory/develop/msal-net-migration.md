@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 64107c3f667dd7e59fcf6d191e83457029b3a277
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3d877641948635a47dd69ddb03b98acc2ddf3eaf
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100546340"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109633134"
 ---
 # <a name="migrating-applications-to-msalnet"></a>将应用程序迁移到 MSAL.NET
 
@@ -29,9 +29,17 @@ ms.locfileid: "100546340"
 - 应用程序可以启用增量许可，可以更轻松地为条件访问提供支持
 - 你将从创新中受益。
 
-**MSAL.NET 现在是建议用于 Microsoft 标识平台的身份验证库**。 不会使用 ADAL.NET 实现任何新功能。 工作的重点是改进 MSAL。
+现在建议将 MSAL.NET 或 Microsoft.Identity.Web 作为身份验证库，与 Microsoft 标识平台配合。 不会使用 ADAL.NET 实现任何新功能。 工作的重点是改进 MSAL。
 
 本文介绍适用于 .NET 的 Microsoft 身份验证库 (MSAL.NET) 与适用于 .NET 的 Azure AD 身份验证库 (ADAL.NET) 之间的差异，并帮助你迁移到 MSAL。
+
+## <a name="should-you-migrate-to-msalnet-or-to-microsoftidentityweb"></a>是该迁移到 MSAL.NET 还是 Microsoft.Identity.Web
+
+在深入了解 MSAL.NET 与 ADAL.NET 的详细信息之前，可能需要检查是要使用 MSAL.NET 还是更高级别的抽象（如 [Microsoft.Identity.Web](microsoft-identity-web.md)）
+
+有关下文的决策树的详细信息，请阅读[我是该只使用 MSAL.NET 还是使用更高级别的抽象？](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Is-MSAL.NET-right-for-me%3F)
+
+:::image type="content" source="media/msal-net-migration/decision-diagram.png" alt-text="方框图，说明在从 ADAL.NET 迁移时是需要使用 MSAL.NET 还是 Microsoft.Identity.Web，或者需要同时使用这两者":::
 
 ## <a name="differences-between-adal-and-msal-apps"></a>ADAL 与 MSAL 应用之间的差异
 
@@ -41,13 +49,15 @@ ms.locfileid: "100546340"
 
 但是，如果应用程序需要使用早期版本的 [Active Directory 联合身份验证服务 (ADFS)](/windows-server/identity/active-directory-federation-services) 将用户登录，则你仍然需要使用 ADAL.NET。 有关详细信息，请参阅 [ADFS 支持](https://aka.ms/msal-net-adfs-support)。
 
-下图汇总了 ADAL.NET 与 MSAL.NET 之间的一些差异 ![代码比较](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png)
+下图总结了 ADAL.NET 和 MSAL.NET 在公共客户端应用程序方面的一些区别[![显示 ADAL.NET 与 MSAL.NET 在公共客户端应用程序方面的某些差异的屏幕截图。](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png)](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png#lightbox)
+
+下图总结了 ADAL.NET 和 MSAL.NET 在机密客户端应用程序方面的一些区别[![显示 ADAL.NET 与 MSAL.NET 在机密客户端应用程序方面的某些差异的屏幕截图。](./media/msal-net-migration/confidential-client-application.png)](./media/msal-net-migration/confidential-client-application.png#lightbox)
 
 ### <a name="nuget-packages-and-namespaces"></a>NuGet 包和命名空间
 
 ADAL.NET 是从 [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) NuGet 包使用的。 要使用的命名空间为 `Microsoft.IdentityModel.Clients.ActiveDirectory`。
 
-若要使用 MSAL.NET，需要添加 [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet 包并使用 `Microsoft.Identity.Client` 命名空间
+若要使用 MSAL.NET，需要添加 [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet 包并使用 `Microsoft.Identity.Client` 命名空间。 如果要生成机密客户端应用程序，还需要查看 [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web)。
 
 ### <a name="scopes-not-resources"></a>范围不是资源
 
@@ -120,26 +130,26 @@ catch(MsalUiRequiredException exception)
 
 授予 | ADAL.NET | MSAL.NET
 ----- |----- | -----
-交互 | [交互式身份验证](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [在 MSAL.NET 中以交互方式获取令牌](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively)
-Windows 集成身份验证 | [Windows 上的集成身份验证 (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Windows 集成身份验证](msal-authentication-flows.md#integrated-windows-authentication)
-用户名/密码 | [使用用户名和密码获取令牌](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-username-and-password)| [用户名/密码身份验证](msal-authentication-flows.md#usernamepassword)
-设备代码流 | [没有 Web 浏览器的设备的设备配置文件](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers) | [设备代码流](msal-authentication-flows.md#device-code)
+交互 | [交互式身份验证](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [在 MSAL.NET 中以交互方式获取令牌](scenario-desktop-acquire-token.md?tabs=dotnet#acquire-a-token-interactively)
+Windows 集成身份验证 | [Windows 上的集成身份验证 (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Windows 集成身份验证](scenario-desktop-acquire-token.md?tabs=dotnet#integrated-windows-authentication)
+用户名/密码 | [使用用户名和密码获取令牌](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-username-and-password)| [用户名/密码身份验证](scenario-desktop-acquire-token.md?tabs=dotnet#username-and-password)
+设备代码流 | [没有 Web 浏览器的设备的设备配置文件](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers) | [设备代码流](scenario-desktop-acquire-token.md?tabs=dotnet#command-line-tool-without-a-web-browser)
 
 #### <a name="confidential-client-applications"></a>机密客户端应用程序
 
-下面是适用于 Web 应用程序、Web API 和守护程序应用程序的 ADAL.NET 与 MSAL.NET 支持的授权：
+下面是 ADAL.NET、MSAL.NET 和 Microsoft.Identity.Web 中针对 Web 应用程序、Web API 和守护程序应用程序支持的授权：
 
 应用类型 | 授予 | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
-Web 应用、Web API、守护程序 | 客户端凭据 | [ADAL.NET 中的客户端凭据流](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [MSAL.NET 中的客户端凭据流](msal-authentication-flows.md#client-credentials)
-Web API | 代表 | [代表用户使用 ADAL.NET 进行服务到服务的调用](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [在 MSAL.NET 中代表](msal-authentication-flows.md#on-behalf-of)
-Web 应用 | 身份验证代码 | [使用 ADAL.NET 通过 Web 应用中的授权代码获取令牌](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [使用 MSAL.NET 通过 Web 应用中的授权代码获取令牌](msal-authentication-flows.md#authorization-code)
+Web 应用、Web API、守护程序 | 客户端凭据 | [ADAL.NET 中的客户端凭据流](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [MSAL.NET 中的客户端凭据流](scenario-daemon-acquire-token.md?tabs=dotnet#acquiretokenforclient-api)
+Web API | 代表 | [代表用户使用 ADAL.NET 进行服务到服务的调用](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [在 MSAL.NET 中代表](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/on-behalf-of)
+Web 应用 | 身份验证代码 | [使用 ADAL.NET 通过 Web 应用中的授权代码获取令牌](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [使用 MSAL.NET 通过 Web 应用中的授权代码获取令牌](scenario-web-app-call-api-acquire-token.md?tabs=aspnetcore)
 
 ### <a name="cache-persistence"></a>缓存持久性
 
 ADAL.NET 允许使用 `BeforeAccess` 和 `BeforeWrite` 方法扩展 `TokenCache` 类，以便在没有安全存储的平台（.NET Framework 和.NET Core）上实现所需的持久性功能。 有关详细信息，请参阅 [ADAL.NET 中的令牌缓存序列化](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization)。
 
-MSAL.NET 将令牌缓存用作密封类，并消除了扩展该类的功能。 因此，令牌缓存持久性的实现必须采用与密封令牌缓存交互的帮助器类的形式。 [MSAL.NET 中的令牌缓存序列化](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/token-cache-serialization)中介绍了这种交互。
+MSAL.NET 将令牌缓存用作密封类，并消除了扩展该类的功能。 因此，令牌缓存持久性的实现必须采用与密封令牌缓存交互的帮助器类的形式。 [MSAL.NET 中的令牌缓存序列化](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/token-cache-serialization)中介绍了这种交互。 对于公共客户端应用程序和机密客户端应用程序，序列化将有所不同（请分别参阅[公共客户端应用程序的令牌缓存](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/token-cache-serialization#token-cache-for-a-public-client-application)和 [Web 应用或 Web API 的令牌缓存](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/token-cache-serialization#token-cache-for-a-public-client-application)）
 
 ## <a name="signification-of-the-common-authority"></a>通用颁发机构的作用
 

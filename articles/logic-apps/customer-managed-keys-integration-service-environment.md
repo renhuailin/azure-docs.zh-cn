@@ -7,10 +7,10 @@ ms.reviewer: mijos, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.openlocfilehash: d31fbd813f0c5d63ee9eddbff5b299209618626b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98629668"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>在 Azure 逻辑应用中设置客户管理的密钥以加密集成服务环境 (ISE) 的静态数据
@@ -47,7 +47,7 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 
 * 在你的密钥保管库中有一个使用以下属性值创建的密钥：
 
-  | Property | 值 |
+  | 属性 | 值 |
   |----------|-------|
   | **键类型** | RSA |
   | RSA 密钥大小 | 2048 |

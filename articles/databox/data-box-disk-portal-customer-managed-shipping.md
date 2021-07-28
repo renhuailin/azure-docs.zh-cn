@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 05/08/2021
+ms.date: 06/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 6323a077596a7ed13384bfbaace929b270c2d3f5
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 66ff9018371de309b61824895492335e0d3bb763
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754472"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112517647"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>在 Azure 门户中对 Azure Data Box Disk 使用自我托管交付功能
 
@@ -64,7 +64,7 @@ ms.locfileid: "109754472"
    - Order name
    - Company name
    - Company legal name (if different) 
-   - Tax ID 
+   - CNPJ (Business Tax ID, format: 00.000.000/0000-00) or CPF (Individual Tax ID, format: 000.000.000-00)
    - Address 
    - Country 
    - Phone number 

@@ -6,14 +6,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 05/25/2021
+ms.date: 06/24/2021
 ms.custom: references_regions
-ms.openlocfilehash: 3d388a072038655d5b9de690abed68096e93faad
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 945a11fb8d8aef3eef2d3c43a68b8c092741436e
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469758"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113003775"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
@@ -23,25 +23,26 @@ ms.locfileid: "110469758"
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  说明 | 可用性  |
 |------------------------------------|--------------|---------------|
-| [Power Query 连接器支持（预览）](search-how-to-index-power-query-data-sources.md) | 索引器现可从其他云平台建立索引。 若要使用索引器抓取外部数据源来建立索引，现可使用 Power Query 连接器连接到 Amazon Redshift、Elasticsearch、PostgreSQL、Salesforce 对象、Salesforce 报告、Smartsheet 和 Snowflake。 | 公共预览版（[通过请求获取](https://aka.ms/azure-cognitive-search/indexer-preview)），使用 Azure 门户和 REST api-version=2020-06-30-Preview。 |
-|[Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) | 索引器使用的 ADLS Gen2 数据源现已正式发布。 | 正式发布，使用 REST 和 Azure 门户。 |
+| [Power Query 连接器支持（预览）](search-how-to-index-power-query-data-sources.md) | 索引器现可从其他云平台建立索引。 若要使用索引器抓取外部数据源来建立索引，现可使用 Power Query 连接器连接到 Amazon Redshift、Elasticsearch、PostgreSQL、Salesforce 对象、Salesforce 报告、Smartsheet 和 Snowflake。 </br></br>[公告（techcommunity 博客）](https://techcommunity.microsoft.com/t5/azure-ai/azure-cognitive-search-indexers-allow-you-to-ingest-data-from/ba-p/2381988)  | 公共预览版（[通过请求获取](https://aka.ms/azure-cognitive-search/indexer-preview)），使用 REST api-version=2020-06-30-Preview 和 Azure 门户。 |
+|[Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) | 索引器使用的 ADLS Gen2 数据源现已正式发布。 | 正式发布，使用 REST api-version=2020-06-30 和 Azure 门户。 |
 |[MySQL 支持（预览）](search-howto-index-mysql.md) | 对于基于索引器的索引，宣布推出 Azure MySQL 的数据源支持预览版。 | 公共预览版，REST api-version=2020-06-30-Preview、[.NET SDK 11.2.1](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype.mysql) 和 Azure 门户。 |
-| [面向拼写检查和语义结果的更多 queryLanguage](/rest/api/searchservice/preview-api/search-documents#queryLanguage) | 对于调用拼写检查或 queryType=semantic 的查询请求，现可将 queryLanguage 设置为 [38 种](/rest/api/searchservice/preview-api/search-documents#queryLanguage)非英语语言。 | 公开预览版（[根据要求提供](https://aka.ms/SemanticSearchPreviewSignup)）。 </br></br>在 Azure 门户中使用[搜索文档 (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview 或[搜索资源管理器](search-explorer.md)。 </br></br>需遵守[区域和层级](semantic-search-overview.md#availability-and-pricing)限制。 |
+| [面向拼写检查和语义结果的更多 queryLanguage](/rest/api/searchservice/preview-api/search-documents#queryLanguage) | 对于调用拼写检查或 queryType=semantic 的查询请求，现可将 queryLanguage 设置为 [38 种](/rest/api/searchservice/preview-api/search-documents#queryLanguage)非英语语言。 </br></br>[公告（techcommunity 博客）](https://techcommunity.microsoft.com/t5/azure-ai/introducing-multilingual-support-for-semantic-search-on-azure/ba-p/2385110) | 公开预览版（[根据要求提供](https://aka.ms/SemanticSearchPreviewSignup)）。 </br></br>使用[搜索文档 (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview、[Azure.Search.Documents 11.3.0-beta.2](https://www.nuget.org/packages/Azure.Search.Documents/11.3.0-beta.2) 或 Azure 门户中的[搜索资源管理器](search-explorer.md)。 </br></br>需遵守[区域和层级](semantic-search-overview.md#availability-and-pricing)限制。 |
+| [双重加密可用性](search-security-manage-encryption-keys.md#double-encryption) | 对于通过客户托管的密钥进行加密的搜索索引和对象，当前在所有受支持的区域中都实现了双重加密（静态和临时磁盘的加密）。 | 在所有区域中，受[服务创建日期](search-security-manage-encryption-keys.md#double-encryption)的限制。 |
 
 ## <a name="april-2021"></a>2021 年 4 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  说明 | 可用性  |
 |------------------------------|---------------|---------------|
-| [Gremlin API 支持](search-howto-index-cosmosdb-gremlin.md) | 对于基于索引器的索引，现可创建一个数据源，用于从通过 Gremlin API 访问的 Cosmos DB 中检索内容。 | 公共预览版（[通过请求获取](https://aka.ms/azure-cognitive-search/indexer-preview)），使用 api-version=2020-06-30-Preview。 |
+| [Gremlin API 支持（预览）](search-howto-index-cosmosdb-gremlin.md) | 对于基于索引器的索引，现可创建一个数据源，用于从通过 Gremlin API 访问的 Cosmos DB 中检索内容。 | 公共预览版（[通过请求获取](https://aka.ms/azure-cognitive-search/indexer-preview)），使用 api-version=2020-06-30-Preview。 |
 
 ## <a name="march-2021"></a>2021 年 3 月
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  说明 | 可用性  |
 |------------------------------|---------------|---------------|
-| [语义搜索](semantic-search-overview.md) | 一组与查询相关的功能，这些功能通过对查询请求进行最小调整，显著提高了搜索结果的相关性。 </br></br>[语义排名](semantic-ranking.md)使用单词和内容背后的语义含义来计算相关性分数。 </br></br>[语义标题](semantic-how-to-query-request.md)返回文档中最能概括文档的相关段落，其中突出显示了最重要的术语或短语。 </br></br>[语义答案](semantic-answers.md)返回从搜索文档中提取的关键段落，这些段落被表述为对看似问题的查询的直接回答。 | 公开预览版（[根据要求提供](https://aka.ms/SemanticSearchPreviewSignup)）。 </br></br>在 Azure 门户中使用[搜索文档 (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview 或[搜索资源管理器](search-explorer.md)。 </br></br>需遵守区域和层级限制。 |
-| [检查查询词的拼写](speller-how-to-add.md) | 在查询词到达搜索引擎之前，你可检查其是否存在拼写错误。 `speller` 选项适用于任何查询类型（简单、完整或语义查询）。 |  公共预览版，仅限 REST，api-version=2020-06-30-Preview|
-| [SharePoint Online 索引器](search-howto-index-sharepoint-online.md) | 此索引器可将你连接到 SharePoint Online 网站，这样你即可索引文档库中的内容。 | 公共预览版，仅限 REST，api-version=2020-06-30-Preview |
-| [Normalizers](search-normalizers.md) | Normalizers 提供简单的文本预处理：一致的大小写、删除重音和 ASCII 折叠，无需调用全文分析链。| 公共预览版，仅限 REST，api-version=2020-06-30-Preview |
+| [语义搜索（预览）](semantic-search-overview.md) | 一组与查询相关的功能，这些功能通过对查询请求进行最小调整，显著提高了搜索结果的相关性。 </br></br>[语义排名](semantic-ranking.md)使用单词和内容背后的语义含义来计算相关性分数。 </br></br>[语义标题](semantic-how-to-query-request.md)返回文档中最能概括文档的相关段落，其中突出显示了最重要的术语或短语。 </br></br>[语义答案](semantic-answers.md)返回从搜索文档中提取的关键段落，这些段落被表述为对看似问题的查询的直接回答。 | 公开预览版（[根据要求提供](https://aka.ms/SemanticSearchPreviewSignup)）。 </br></br>在 Azure 门户中使用[搜索文档 (REST)](/rest/api/searchservice/preview-api/search-documents) api-version=2020-06-30-Preview 或[搜索资源管理器](search-explorer.md)。 </br></br>需遵守区域和层级限制。 |
+| [检查查询词的拼写（预览）](speller-how-to-add.md) | 在查询词到达搜索引擎之前，你可检查其是否存在拼写错误。 `speller` 选项适用于任何查询类型（简单、完整或语义查询）。 |  公共预览版，仅限 REST，api-version=2020-06-30-Preview|
+| [SharePoint Online 索引器（预览）](search-howto-index-sharepoint-online.md) | 此索引器可将你连接到 SharePoint Online 网站，这样你即可索引文档库中的内容。 | 公共预览版，仅限 REST，api-version=2020-06-30-Preview |
+| [Normalizers（预览）](search-normalizers.md) | Normalizers 提供简单的文本预处理：一致的大小写、删除重音和 ASCII 折叠，无需调用全文分析链。| 公共预览版，仅限 REST，api-version=2020-06-30-Preview |
 | [自定义实体查找技能](cognitive-search-skill-custom-entity-lookup.md ) |  可在用户自定义的单词和短语列表中查找文本的一项认知技能。 它使用此列表为包含任何匹配实体的所有文档加上标签。 该技能还支持一定程度的模糊匹配，应用此匹配方法可以查找类似但不完全相同的匹配项。 | 正式发布。 |
 
 ## <a name="february-2021"></a>2021 年 2 月
@@ -90,14 +91,14 @@ ms.locfileid: "110469758"
 |February | [PII 检测技能（预览）](cognitive-search-skill-pii-detection.md)  | 一种用于提取和掩盖个人信息的认知技能。 |
 |February | [自定义实体查找技能（预览）](cognitive-search-skill-custom-entity-lookup.md) | 一种认知技能，它会从列表中查找字词和短语并标记具有匹配实体的所有文档。  |
 |1 月 | [客户管理的密钥加密](search-security-manage-encryption-keys.md) | 正式发布  |
-|1 月 | [适用于入站防火墙支持的 IP 规则（预览版）](service-configure-firewall.md) | [CreateOrUpdate API](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) 中新增了 IpRule 和 NetworkRuleSet 属性 。  |
+|1 月 | [适用于入站防火墙支持的 IP 规则（预览版）](service-configure-firewall.md) | [CreateOrUpdate API](/rest/api/searchmanagement/2020-08-01/services/create-or-update) 中新增了 IpRule 和 NetworkRuleSet 属性 。  |
 |1 月 | [创建专用终结点（预览）](service-create-private-endpoint.md) | 设置专用链接用于安全连接到搜索服务。 此预览功能在解决方案中附带依赖项 - [Azure 专用链接](../private-link/private-link-overview.md)和 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 |
 
 ## <a name="2019-archive"></a>2019 年存档
 
 | 月份 | 功能 | 说明 |
 |-------|---------|-------------|
-|12 月 | [创建演示应用（预览）](search-create-app-portal.md) | 一个向导，它会生成可下载且可对索引进行查询（只读）访问的 HTML 文件，旨在用作一项验证和测试工具，而不是完整客户端应用的快捷方式。|
+|12 月 | [创建演示应用](search-create-app-portal.md) | 一个向导，它会生成可下载且可对索引进行查询（只读）访问的 HTML 文件，旨在用作一项验证和测试工具，而不是完整客户端应用的快捷方式。|
 |11 月 | [增量扩充（预览）](cognitive-search-incremental-indexing-conceptual.md) | 缓存技能组处理，供将来重复使用。  |
 |11 月 | [文档提取技能（预览）](cognitive-search-skill-document-extraction.md) | 技能组中一种从文件提取内容的认知技能。|
 |11 月 | [文本翻译技能](cognitive-search-skill-text-translation.md) | 一种在索引期间用于评估和翻译文本的认知技能。 正式发布。|

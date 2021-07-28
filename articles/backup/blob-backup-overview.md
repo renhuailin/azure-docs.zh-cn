@@ -1,16 +1,16 @@
 ---
 title: Azure Blob 操作备份概述
-description: 了解 Azure Blob 的操作备份（预览）。
+description: 了解 Azure Blob 的操作备份。
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: 1f6bc98b92a2af4b05cae766a2186f2970b7133c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 05/05/2021
+ms.openlocfilehash: 5d6113108a41430e9d864ff05095be4d440989ee
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558748"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108767232"
 ---
-# <a name="overview-of-operational-backup-for-azure-blobs-in-preview"></a>Azure Blob 操作备份概述（预览）
+# <a name="overview-of-operational-backup-for-azure-blobs"></a>Azure Blob 操作备份概述
 
 Blob 的操作备份是一种托管的本地数据保护解决方案，它使你能够保护块 Blob 免受各种数据丢失情况的影响，如损坏、Blob 删除和意外存储帐户删除。 数据本地存储在源存储帐户中，并可在需要时恢复到选定时间点。 因此，它提供了一种保护 Blob 的简单、安全且经济高效的方法。
 

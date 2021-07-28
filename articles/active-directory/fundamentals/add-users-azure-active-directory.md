@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 05/04/2021
 ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36455b3f6395216bd1ed26c8bd193f0e3ca10b5b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34342111aa0067b4f275820ac0111692c4a590f6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594591"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108762562"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>使用 Azure Active Directory 添加或删除用户
 
@@ -28,9 +28,12 @@ ms.locfileid: "104594591"
 
 可使用 Azure Active Directory 门户创建新用户。
 
+>[!Note]
+>“用户名”和“电子邮件地址”属性不能包含重音字符。
+
 若要添加新用户，请执行以下步骤：
 
-1. 以组织的用户管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
+1. 以组织的“用户管理员”角色登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 在任意页面中搜索并选择“Azure Active Directory”。 
 

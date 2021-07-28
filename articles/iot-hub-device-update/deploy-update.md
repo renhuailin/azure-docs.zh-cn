@@ -7,10 +7,10 @@ ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
 ms.openlocfilehash: 0a11c8e8946229941c1fe60f7f2ce84d9fadb2ed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101679102"
 ---
 # <a name="deploy-an-update-using-device-update-for-iot-hub"></a>使用 Device Update for IoT Hub 部署更新
@@ -19,10 +19,10 @@ ms.locfileid: "101679102"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [能够访问启用了 Device Update for IoT Hub 的 IoT 中心](create-device-update-account.md)。 建议为 IoT 中心使用 S1（标准）层或更高层级。 
+* [访问启用了 IoT 中心设备更新的 IoT 中心](create-device-update-account.md)。 建议为 IoT 中心使用 S1（标准）层或更高版本。 
 * [已为预配的设备成功导入了至少一个更新](import-update.md)。 
-* 为 IoT 中心内的 Device Update 预配了 IoT 设备（或模拟器）。
-* [已将标签分配给你尝试更新的 IoT 设备。该设备至少属于一个更新组。](create-update-group.md)
+* 为 IoT 中心内的设备更新预配的 IoT 设备（或模拟器）。
+* [已为要尝试更新的 IoT 设备分配了标记。该设备至少是一个更新组的一部分。](create-update-group.md)
 * 支持的浏览器：
   * [Microsoft Edge](https://www.microsoft.com/edge)
   * Google Chrome

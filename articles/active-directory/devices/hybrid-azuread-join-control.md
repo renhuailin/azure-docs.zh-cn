@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38754b9e349e27afcff58dac27a616e3e4fb5319
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 50e3272be139e8b0cd30f9e5867e263efc92ae24
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96860926"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108178747"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>以受控方式验证混合 Azure AD 加入
 
@@ -63,7 +63,7 @@ ms.locfileid: "96860926"
       1. 密钥路径：SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ\AAD
       1. 值名称：**TenantId**
       1. 值类型：REG_SZ
-      1. 值数据：Azure AD 实例的 GUID 或目录 ID（此值可以在“Azure 门户” > “Azure Active Directory” > “属性” > “目录 ID”中找到    ）
+      1. 值数据：Azure AD 实例的 GUID 或租户 ID（此值可以在“Azure 门户” > “Azure Active Directory” > “属性” > “租户 ID”中找到）    
    1. 单击 **“确定”**
 1. 右键单击“注册表”，然后选择“新建” > “注册表项” 
    1. 在“常规”选项卡上，配置以下内容

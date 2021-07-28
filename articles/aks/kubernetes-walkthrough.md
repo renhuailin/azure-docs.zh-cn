@@ -13,12 +13,12 @@ ms.custom:
 - seo-python-october2019
 - devx-track-azurecli
 - contperf-fy21q1
-ms.openlocfilehash: 8adfd1a6e26a3381653ca9a794b124e201b9d481
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 9814037b9a4ace0a5f39d6ab0b01d1d940fb00fa
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106698"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112991975"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集
 
@@ -38,6 +38,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 - 本文需要 2.0.64 或更高版本的 Azure CLI。 如果使用 Azure Cloud Shell，则最新版本已安装。
+- 用于创建群集的标识具有相应的最小权限。 有关 AKS 访问和标识的详细信息，请参阅 [Azure Kubernetes Service (AKS) 的访问和标识选项](concepts-identity.md)。
 
 > [!NOTE]
 > 如果你打算在本地（而不是 Azure Cloud Shell 中）运行本快速入门中的命令，请以管理员身份运行命令。

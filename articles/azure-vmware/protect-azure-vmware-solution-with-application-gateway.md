@@ -3,14 +3,14 @@ title: 使用 Azure 应用程序网关保护 Azure VMware 解决方案上的 Web
 description: 将 Azure 应用程序网关配置为安全地公开在 Azure VMware 解决方案上运行的 Web 应用。
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: f92027ee46fdaae275939acaea10e144b6bde101
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d31eb24f1cb4ec1e2ead789174189dc99d5310f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601910"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108771678"
 ---
-# <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>使用 Azure 应用程序网关保护 Azure VMware 解决方案上的 Web 应用
+# <a name="protect-web-apps-on-azure-vmware-solution-with-azure-application-gateway"></a>使用 Azure 应用程序网关保护 Azure VMware 解决方案上的 Web 应用
 
 [Azure 应用程序网关](https://azure.microsoft.com/services/application-gateway/)是第 7 层 Web 流量负载均衡器，可用于管理 Web 应用程序的流量。 它在 Azure VMware 解决方案 v1.0 和 v2.0 中提供。 这两个版本都是通过在 Azure VMware 解决方案上运行的 Web 应用进行测试的。
 

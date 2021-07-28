@@ -1,19 +1,19 @@
 ---
 title: 用于 S2S VPN 连接和 VNet 到 VNet 连接的 IPsec/IKE 策略：Azure 门户
 titleSuffix: Azure VPN Gateway
-description: 使用 Azure 资源管理器和 Azure 门户通过 Azure VPN 网关为 S2S 连接或 VNet 到 VNet 连接配置 IPsec/IKE 策略。
+description: 了解如何使用 Azure 门户通过 Azure VPN 网关为 S2S 连接或 VNet 到 VNet 连接配置 IPsec/IKE 策略。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 04/28/2021
 ms.author: yushwang
-ms.openlocfilehash: 2b298185866d16da02fe8d3b3fdb41f0b0b1f726
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04dd5a1e8907d7314f9d96a81ae6965c943dc60c
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98878538"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229263"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections-azure-portal"></a>为 S2S VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略：Azure 门户
 

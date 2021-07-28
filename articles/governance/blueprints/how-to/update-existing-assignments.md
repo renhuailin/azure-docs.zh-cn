@@ -3,12 +3,12 @@ title: 从门户更新现有分配
 description: 了解如何在 Azure 蓝图中通过门户而更新现有蓝图分配的机制。
 ms.date: 05/01/2021
 ms.topic: how-to
-ms.openlocfilehash: 67ce41d6d7b4497d84d960e96813f20db940c965
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: b08862ba32dbdd52faff85115553e59ae856b453
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323728"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108761356"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新现有蓝图分配
 
@@ -24,7 +24,7 @@ ms.locfileid: "108323728"
 
 1. 从左侧页面选择“分配的蓝图”。
 
-1. 在蓝图列表中，左键单击蓝图分配。 然后使用“更新分配”按钮，或右键单击蓝图分配并选择“更新分配”。
+1. 在蓝图列表中，左键单击蓝图分配。 然后使用“更新分配”按钮，或者选择并按住（或右键单击）蓝图分配并选择“更新分配”。
 
    :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="突出显示了“更新分配”按钮的“蓝图分配”页面的屏幕截图。" border="false":::
 
@@ -56,7 +56,7 @@ ms.locfileid: "108323728"
 
 更新分配时，在执行期间进行更改可能会导致中断。 一个示例是在部署完成后更改资源组的位置。 [资源管理器](../../../azure-resource-manager/management/overview.md)支持的任何更改都可以进行，但是任何会在资源管理器中导致错误的更改也将导致分配失败。
 
-可以更新分配的次数没有限制。 如果发生错误，请确定该错误并对分配进行其他更新。  示例错误场景：
+可以更新分配的次数没有限制。 如果发生错误，请确定该错误并对分配进行其他更新。 示例错误场景：
 
 - 不正确的参数
 - 已经存在的对象

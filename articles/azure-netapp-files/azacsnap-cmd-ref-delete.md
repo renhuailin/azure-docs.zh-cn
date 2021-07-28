@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 1f2c767d45bb08e25a057c7db1f380ceb250f607
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: d02f0e8ff3d8d6da37e0e457cea2e4878ff1a2b0
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864901"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930004"
 ---
-# <a name="delete-using-azure-application-consistent-snapshot-tool-preview"></a>使用 Azure 应用程序一致性快照工具（预览版）进行删除
+# <a name="delete-using-azure-application-consistent-snapshot-tool"></a>使用 Azure 应用程序一致性快照工具进行删除
 
 本文提供的指南介绍了如何运行可与 Azure NetApp 文件配合使用的 Azure 应用程序一致性快照工具的删除命令。
 

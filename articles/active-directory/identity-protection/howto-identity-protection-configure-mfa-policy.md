@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 072db1d47abd95844075aeedfeddc4f8cf6bf936
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94835860"
 ---
 # <a name="how-to-configure-the-azure-ad-multi-factor-authentication-registration-policy"></a>如何：配置 Azure AD 多重身份验证注册策略
@@ -24,7 +24,7 @@ Azure AD 标识保护帮助你管理 Azure AD 多重身份验证 (MFA) 注册的
 
 ## <a name="what-is-the-azure-ad-multi-factor-authentication-registration-policy"></a>什么是 Azure AD 多重身份验证注册策略？
 
-Azure AD 多重身份验证提供了一种不仅仅是验证用户名和密码的方法来验证用户的身份。 它为用户登录提供了附加的安全层。为了使用户能够响应 MFA 提示，他们必须首先注册 Azure AD 多重身份验证。
+Azure AD 多重身份验证是要求使用多种方式（而不仅仅是用户名和密码）对你的身份进行验证的一种方法。 它为用户的登录提供了附加的安全保障。为了使用户能够响应 MFA 提示，他们必须首先注册 Azure AD 多重身份验证。
 
 建议要求对用户登录执行 Azure AD 多重身份验证，因为这种身份验证方法可以：
 

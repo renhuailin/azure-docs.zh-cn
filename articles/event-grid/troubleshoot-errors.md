@@ -2,13 +2,13 @@
 title: Azure 事件网格 - 故障排除指南
 description: 本文提供错误代码列表、错误消息、说明和建议的措施。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 79533918ccc6995f459b39f058de9e01091c0958
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/09/2021
+ms.openlocfilehash: 4647039f67cf84a5471dc7b3f38ca754ca9eecb0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94592985"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310863"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>排查 Azure 事件网格错误
 此故障排除指南提供以下信息： 
@@ -30,7 +30,7 @@ ms.locfileid: "94592985"
 | ---------- | ------------- | ----------- | -------------- | 
 | HttpStatusCode.Conflict <br/>409 | 已存在具有指定名称的主题。 请选择其他主题名称。   | 自定义主题名称在单个 Azure 区域中应保持唯一，以确保正常完成发布操作。 同一名称可在不同的 Azure 区域中使用。 | 请为主题选择其他名称。 |
 | HttpStatusCode.Conflict <br/> 409 | 已存在具有指定名称的域。 请选择其他域名。 | 域名在单个 Azure 区域中应保持唯一，以确保正常完成发布操作。 同一名称可在不同的 Azure 区域中使用。 | 请为该域选择其他名称。 |
-| HttpStatusCode.Conflict<br/>409 | 已达配额限制。 有关这些限制的详细信息，请参阅 [Azure 事件网格限制](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits)。  | 每个 Azure 订阅可使用的 Azure 事件网格资源数量有限制。 已超过部分或全部配额，无法创建更多的资源。 |    请检查当前的资源用量，并删除任何不需要的资源。 如果仍需提高配额，请向 [aeg@microsoft.com](mailto:aeg@microsoft.com) 发送电子邮件并在其中指出所需的确切资源数。 |
+| HttpStatusCode.Conflict<br/>409 | 已达配额限制。 有关这些限制的详细信息，请参阅 [Azure 事件网格限制](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits)。  | 每个 Azure 订阅可使用的 Azure 事件网格资源数量有限制。 已超过部分或全部配额，无法创建更多的资源。 | 请检查当前的资源用量，并删除任何不需要的资源。 如果无法删除任何资源，请创建另一个 Azure 订阅，并在该订阅中创建事件网格资源。 |
 
 ## <a name="error-code-403"></a>错误代码：403
 
