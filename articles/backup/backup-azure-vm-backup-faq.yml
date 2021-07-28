@@ -4,12 +4,12 @@ metadata:
   description: 本文解答有关使用 Azure 备份服务备份 Azure VM 的常见问题。
   ms.topic: conceptual
   ms.date: 06/02/2021
-  ms.openlocfilehash: fc7d9ff7770cdd60ac1a30ccbcb2758b67ec2a35
-  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+  ms.openlocfilehash: b829855ad97e702f4a005375a1e70bd0869289ad
+  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111968656"
+  ms.lasthandoff: 06/22/2021
+  ms.locfileid: "112467331"
 title: 常见问题 - 备份 Azure VM
 summary: >
   本文解答有关使用 [Azure 备份](./backup-overview.md)服务备份 Azure VM 的常见问题。
@@ -211,11 +211,11 @@ sections:
 
 
       还可使用[备份资源管理器](./monitor-azure-backup-with-backup-explorer.md)在单一管理平台查看所有 VM 的保留设置。 从任何恢复服务保管库中导航到备份资源管理器，转到“备份项”选项卡，然后选择“高级视图”，查看每个 VM 的详细保留信息。
-  - question: 将快照从存储帐户移至保管库时，如何管理动态加密？
-    answer: Azure VM 备份采用 [HTTPS 通信进行动态加密](guidance-best-practices.md#encryption-of-data-in-transit-and-at-rest)。 该数据传输采用 Azure 结构（而非公共终结点），不需要访问 Internet 进行 VM 备份。
+  - question: 当快照从存储帐户移到保管库时，如何管理传输中加密？
+    answer: Azure VM 备份[使用 HTTPS 通信进行传输中加密](guidance-best-practices.md#encryption-of-data-in-transit-and-at-rest)。 数据传输使用 Azure 结构（而不是公共终结点），该结构无需访问 Internet 即可进行 VM 备份。
   - question: 如何禁用“文件恢复”选项？
     answer: >-
-      [此 API](/rest/api/backup/itemlevelrecoveryconnections/provision) 可预配脚本来调用 iSCSI 连接，以便通过 Azure 备份进行文件恢复。
+      [此 API](/rest/api/backup/2021-02-10/item-level-recovery-connections/provision) 可预配脚本来调用 iSCSI 连接，以便通过 Azure 备份进行文件恢复。
 
       - 可以通过排除 API 操作，使用“自定义角色定义”禁用此选项。
 

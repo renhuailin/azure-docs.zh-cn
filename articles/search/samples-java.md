@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: b5ae38a3dc4a9324a4141314106d67c96c06c8e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39547b3405e25faabef64b6a9c80d0405fe1e66a
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98955031"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110586383"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Azure 认知搜索的 Java 代码示例
 
@@ -49,7 +49,7 @@ Azure SDK 开发团队中的代码示例演示 API 用法。 可在 GitHub 上�
 | [快速入门](https://github.com/Azure-Samples/azure-search-java-samples/tree/java-rest-api/quickstart) | 用于[快速入门：使用 Java 和 REST 创建搜索索引](search-get-started-java.md)的源代码。 此示例尚未针对 Java SDK 进行更新。 它调用 REST API。 |
 
 > [!Tip]
-> 请尝试使用[示例浏览器](/samples/browse/?languages=java&products=azure-cognitive-search)来搜索 Github 中的 Microsoft 代码示例，搜索时可按产品、服务和语言进行筛选。
+> 请尝试使用[示例浏览器](/samples/browse/?languages=java&products=azure-cognitive-search)来搜索 GitHub 中的 Microsoft 代码示例（按产品、服务和语言进行筛选）。
 
 ## <a name="other-samples"></a>其他示例
 

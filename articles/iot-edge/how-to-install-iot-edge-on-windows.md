@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 2799e25dbd84ff07b375c6fa1b103789aae82b49
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: c44f3cb4ee8d25a0197888b498f07b40ed2072c6
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538415"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790192"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>在 Windows 设备上安装和预配 Azure IoT Edge for Linux（预览版）
 
@@ -45,7 +45,7 @@ Azure IoT Edge for Linux on Windows 允许你通过 Linux 虚拟机在 Windows �
   * 最小可用内存：1 GB
   * 最小可用磁盘空间：10 GB
   * 如果要使用 Windows 10 创建新的部署，请确保启用 Hyper-V。 有关详细信息，请参阅：如何[在 Windows 10 上安装 Hyper-V](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)。
-  * 如果要使用 Windows Server 创建新的部署，请确保安装 Hyper-V 角色。 有关详细信息，请参阅：如何[在 Windows Server 上安装 Hyper-V 角色](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)。
+  * 如果要使用 Windows Server 创建新的部署，请确保安装 Hyper-V 角色并部署了网络交换机。 有关详细信息，请参阅[用于 Azure IoT Edge for Linux on Windows 的嵌套虚拟化](nested-virtualization.md)。
   * 如果要使用 VM 创建新的部署，请确保正确配置嵌套虚拟化。 有关详细信息，请参阅[嵌套虚拟化](nested-virtualization.md)指南。
 
 * 能够访问安装了适用于 Windows Admin Center 的 Azure IoT Edge 扩展的 Windows Admin Center：
@@ -177,7 +177,7 @@ Azure IoT Edge for Linux on Windows 支持以下预配方法：
    ```
 
    > [!NOTE]
-   > 你可以在不使用参数的情况下运行此命令，也可以选择使用参数来自定义部署。 可以查看 [IoT Edge for Linux on Windows PowerShell 脚本参考](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow)来了解参数含义和默认值。
+   > 你可以在不使用参数的情况下运行此命令，也可以选择使用参数来自定义部署。 可以查看 [IoT Edge for Linux on Windows PowerShell 脚本参考](reference-iot-edge-for-linux-on-windows-functions.md#deploy-eflow)来了解参数含义和默认值。
 
 1. 输入“Y”接受许可条款。
 

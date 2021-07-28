@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: f8d795dcf64230140e1dd07e3f30ca3aa6825ab4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e912cabd27bac52792ffb2d71027170f4e53f310
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99806997"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784514"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>自带机器学习 (ML) 到 Azure Sentinel
 
 机器学习 (ML) 是 Azure Sentinel 的主要基础结构之一，是它的主要独特属性之一。 Azure Sentinel 在几个体验中提供 ML：内置于[融合](fusion.md)关联引擎和 Jupyter Notebook，以及新发布的自行构建 ML (BYO ML) 平台。 
 
-ML 检测模型可适应个人环境和用户行为变化，从而减少假正并识别使用传统方法无法找到的威胁。 许多安全组织都了解 ML 的安全性价值，但是没多少组织能够拥有在安全和 ML 方面都具有专业知识的专业人员。 我们在这里展示了为安全组织和专业人员设计的框架，请在 ML 旅程中与我们一起成长。 刚刚接触 ML 或没有必要专业知识的组织可以从 Azure Sentinel 的内置 ML 功能中获得重大的保护价值。
+ML 检测模型可适应个人环境和用户行为变化，从而减少[假正](false-positives.md)并识别使用传统方法无法找到的威胁。 许多安全组织都了解 ML 的安全性价值，但是没多少组织能够拥有在安全和 ML 方面都具有专业知识的专业人员。 我们在这里展示了为安全组织和专业人员设计的框架，请在 ML 旅程中与我们一起成长。 刚刚接触 ML 或没有必要专业知识的组织可以从 Azure Sentinel 的内置 ML 功能中获得重大的保护价值。
 
 :::image type="content" source="./media/bring-your-own-ml/machine-learning-framework.png" alt-text="机器学习框架":::
 
@@ -137,7 +137,7 @@ az monitor log-analytics workspace data-export list --resource-group "RG_NAME" -
 
 ### <a name="export-custom-data"></a>导出自定义数据
 
-对于 Log Analytics 自动导出不支持的自定义数据，可以使用逻辑应用或其他解决方案来移动数据。 可以参考[将 Log Analytics 数据导出到 Blob 存储](https://www.borninthecloud.com/exporting-log-analytics-data-to-blob-store/?preview=true)博客和脚本。
+对于 Log Analytics 自动导出不支持的自定义数据，可以使用逻辑应用或其他解决方案来移动数据。 可以参考[将 Log Analytics 数据导出到 Blob 存储](https://techcommunity.microsoft.com/t5/azure-monitor/log-analytics-data-export-preview/ba-p/1783530)博客和脚本。
 
 ### <a name="correlate-with-data-outside-of-azure-sentinel"></a>与 Azure Sentinel 之外的数据关联
 

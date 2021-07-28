@@ -4,12 +4,12 @@ description: 记录并分析 Azure Batch 帐户资源（诸如池和任务）的
 ms.topic: how-to
 ms.date: 04/13/2021
 ms.custom: seodec18
-ms.openlocfilehash: 61aaca84b609aaf7513c6de6f0f7e73aef5a5efe
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 3bbaf01b71a2256416112f5e365f70d563a9f36d
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389309"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753937"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用于诊断评估和监视的 Batch 指标、警报和日志
 
@@ -67,7 +67,7 @@ Azure Monitor 收集 Azure Batch 帐户中资源的[指标](../azure-monitor/ess
 
 有关创建指标警报的详细信息，请参阅[了解指标警报在 Azure Monitor 中的工作方式](../azure-monitor/alerts/alerts-metric-overview.md)和[使用 Azure Monitor 创建、查看和管理指标警报](../azure-monitor/alerts/alerts-metric.md)。
 
-还可以使用 [Azure Monitor REST API](/rest/api/monitor/) 配置准实时警报。 有关详细信息，请参阅 [Microsoft Azure 中的警报概述](../azure-monitor/alerts/alerts-overview.md)。 若要将作业、任务或特定于池的信息包含在警报中，请参阅[使用 Azure Monitor 警报响应事件](../azure-monitor/alerts/tutorial-response.md)。
+还可以使用 [Azure Monitor REST API](/rest/api/monitor/) 配置准实时警报。 有关详细信息，请参阅 [Microsoft Azure 中的警报概述](../azure-monitor/alerts/alerts-overview.md)。 若要将作业、任务或特定于池的信息包含在警报中，请参阅 [Azure Monitor 日志警报](../azure-monitor/alerts/alerts-log.md)。
 
 ## <a name="batch-diagnostics"></a>Batch 诊断
 

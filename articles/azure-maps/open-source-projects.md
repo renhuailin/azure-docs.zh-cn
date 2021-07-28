@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 8be747d2027291203272a960efe6b26368471a50
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b00561875d7c8c08061c9fcbe46a88815ef2f32c
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735040"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784636"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps 社区 - 开源项目
 
@@ -79,7 +79,7 @@ ms.locfileid: "101735040"
 | 项目名称 | 描述 |
 |-|-|
 | [Azure Maps 文档](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | 所有 Azure Location Based Services 文档的来源。 |
-| [Azure Maps Creator（预览版）工具](https://github.com/Azure-Samples/AzureMapsCreator) | 用于 Azure Maps Creator（预览版）工具的 Python 工具。 |
+| [Azure Maps Creator 工具](https://github.com/Azure-Samples/AzureMapsCreator) | 用于 Azure Maps Creator 工具的 Python 工具。 |
 
 [此处](https://github.com/microsoft/Maps/blob/master/AzureMaps.md)提供了其中包含社区创建项目的 Azure Maps 开源项目的更完整列表
 

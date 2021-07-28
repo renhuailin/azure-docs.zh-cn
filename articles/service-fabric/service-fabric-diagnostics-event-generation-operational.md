@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric 事件列表
 description: 由 Azure Service Fabric 提供的事件综合列表，用于帮助监视群集。
-author: srrengar
 ms.topic: reference
 ms.date: 2/25/2019
-ms.author: srrengar
-ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1ba21aaac831abb07544944420f2b77e1753955
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85846657"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279776"
 ---
 # <a name="list-of-service-fabric-events"></a>Service Fabric 事件列表 
 
@@ -39,6 +37,12 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 | 29630 | ClusterUpgradeRollbackCompleted | 升级 | 群集升级已完成回退 | CM | 警告 | 
 | 29631 | ClusterUpgradeDomainCompleted | 升级 | 升级域在群集升级期间已完成升级 | CM | 信息 | 
 
+**放置事件**
+| EventId | 名称 | 类别 | 说明 |源（任务） | Level |
+| --- | --- | ---| --- | --- | --- |
+| 17616 | 决策 |StateTransition | 已计划放置操作以决定如何放置新副本。 | CRM | 信息 |
+
+
 ## <a name="node-events"></a>节点事件
 
 **节点生命周期事件** 
@@ -47,14 +51,21 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 | --- | --- | ---| --- | --- | --- | 
 | 18602 | NodeDeactivateCompleted | StateTransition | 节点停用已完成 | FM | 信息 | 
 | 18603 | NodeUp | StateTransition | 群集检测到节点已启动 | FM | 信息 | 
-| 18604 | NodeDown | StateTransition | 群集检测到节点已关闭。 在节点重新启动时，将看到后跟 NodeUp 事件的 NodeDown 事件 |  FM | Error | 
+| 18604 | NodeDown | StateTransition | 群集检测到节点已关闭。 在节点重新启动时，将看到后跟 NodeUp 事件的 NodeDown 事件 |  FM | 错误 | 
 | 18605 | NodeAddedToCluster | StateTransition |  一个新节点已添加到群集，Service Fabric 可以将应用程序部署到此节点 | FM | 信息 | 
 | 18606 | NodeRemovedFromCluster | StateTransition |  从群集中删除了一个节点。 Service Fabric 将无法再将应用程序部署到此节点 | FM | 信息 | 
 | 18607 | NodeDeactivateStarted | StateTransition |  节点停用已启动 | FM | 信息 | 
 | 25621 | NodeOpenSucceeded | StateTransition |  节点已成功启动 | FabricNode | 信息 | 
-| 25622 | NodeOpenFailed | StateTransition |  节点未能启动并加入环 | FabricNode | Error | 
+| 25622 | NodeOpenFailed | StateTransition |  节点未能启动并加入环 | FabricNode | 错误 | 
 | 25624 | NodeClosed | StateTransition |  节点已成功关闭 | FabricNode | 信息 | 
-| 25626 | NodeAborted | StateTransition |  一个节点已经以非正常方式关闭 | FabricNode | Error | 
+| 25626 | NodeAborted | StateTransition |  一个节点已经以非正常方式关闭 | FabricNode | 错误 | 
+
+**Ktl 记录器节点事件** 
+
+| EventId | 名称 | 类别 | 说明 |源（任务） | Level |
+| --- | --- | --- | --- | --- | --- | 
+| 50187 | SharedLogWriteThrottled | 健康产业 | 写入共享日志受限 | KtlLoggerNode | 信息 | 
+| 50188 | SharedLogWriteUnthrottled | 健康产业 | 写入共享日志不受限 | KtlLoggerNode | 信息 | 
 
 ## <a name="application-events"></a>应用程序事件
 
@@ -114,7 +125,7 @@ Service Fabric 公开一组主要的群集事件，以通知群集的状态为 [
 | 63648 | ReliableConcurrentQueueOpened | LifeCycle | 可靠并发队列已打开 | ReliableConcurrentQueue | 信息 |
 | 63649 | ReliableConcurrentQueueClosed | LifeCycle | 可靠并发队列已关闭 | ReliableConcurrentQueue | 信息 |
 | 63650 | ReliableConcurrentQueueCheckpointRecovered | LifeCycle | 可靠并发队列已恢复其检查点 | ReliableConcurrentQueue | 信息 |
-| 61687 | TStoreError | 失败 | 可靠集合已收到意外错误 | TStore | Error |
+| 61687 | TStoreError | 失败 | 可靠集合已收到意外错误 | TStore | 错误 |
 | 63831 | PrimaryFullCopyInitiated | LifeCycle | 主要副本已启动完整副本 | TReplicator | 信息 |
 | 63832 | PrimaryPartialCopyInitiated | LifeCycle | 主要副本已启动不完整副本 | TReplicator | 信息 |
 | 16831 | BuildIdleReplicaStarted | LifeCycle | 主要副本已开始构建空闲副本 | 复制 | 信息 |

@@ -3,15 +3,15 @@ title: 对数据执行操作
 description: 在 Azure 逻辑应用中转换、管理和操作数据输出与格式
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 09/20/2019
-ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 05/11/2021
+ms.openlocfilehash: cc4952acd8d5949485b9bd1fe5fac91296839493
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "84710365"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109753644"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>在 Azure 逻辑应用中执行数据操作
 
@@ -22,33 +22,6 @@ ms.locfileid: "84710365"
 * 从 JavaScript 对象表示法 (JSON) 对象属性创建用户友好的令牌，以便可以在工作流中轻松使用这些属性。
 
 如果在此处找不到所需的操作，请尝试浏览 Azure 逻辑应用提供的多种[数据操作函数](../logic-apps/workflow-definition-language-functions-reference.md)。
-
-这些表格汇总了可用的数据操作，并根据操作可以处理的源数据类型进行组织，但每项说明以字母顺序显示。
-
-**数组操作** 
-
-这些操作帮助处理数组中的数据。
-
-| 操作 | 说明 |
-|--------|-------------|
-| [**创建 CSV 表**](#create-csv-table-action) | 从数组创建逗号分隔值 (CSV) 表。 |
-| [**创建 HTML 表**](#create-html-table-action) | 从数组创建 HTML 表。 |
-| [**筛选数组**](#filter-array-action) | 基于指定的筛选器或条件从数组创建数组子集。 |
-| [Join](#join-action) | 基于数组中的所有项创建一个字符串，并使用指定的字符分隔每个项。 |
-| [Select](#select-action) | 从不同数组中所有项的指定属性创建一个数组。 |
-||| 
-
-**JSON 操作**
-
-这些操作帮助处理采用 JavaScript 对象表示法 (JSON) 格式的数据。
-
-| 操作 | 说明 |
-|--------|-------------|
-| [Compose](#compose-action) | 从可能具有不同数据类型的多个输入创建一个消息或字符串。 然后可以使用此字符串作为单个输入，而无需反复输入相同的输入。 例如，可以从各种输入创建单个 JSON 消息。 |
-| [Parse JSON](#parse-json-action) | 为 JSON 内容中的属性创建用户友好的数据令牌，以便在逻辑应用中更轻松地使用这些属性。 |
-|||
-
-若要创建更复杂的 JSON 转换，请参阅[使用 Liquid 模板执行高级 JSON 转换](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -61,6 +34,35 @@ ms.locfileid: "84710365"
 * 用作逻辑应用中第一个步骤的[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts) 
 
   数据操作只以操作的形式提供，因此，在使用这些操作之前，请使用触发器启动逻辑应用，并包含用于创建所需输出的其他所有操作。
+
+## <a name="data-operation-actions"></a>数据操作的操作
+
+这些表格汇总了可用的数据操作，并根据操作可以处理的源数据类型进行组织，但每项说明以字母顺序显示。
+
+### <a name="array-actions"></a>数组操作
+
+这些操作帮助处理数组中的数据。
+
+| 操作 | 说明 |
+|--------|-------------|
+| [**创建 CSV 表**](#create-csv-table-action) | 从数组创建逗号分隔值 (CSV) 表。 |
+| [**创建 HTML 表**](#create-html-table-action) | 从数组创建 HTML 表。 |
+| [**筛选数组**](#filter-array-action) | 基于指定的筛选器或条件从数组创建数组子集。 |
+| [Join](#join-action) | 基于数组中的所有项创建一个字符串，并使用指定的字符分隔每个项。 |
+| [Select](#select-action) | 从不同数组中所有项的指定属性创建一个数组。 |
+||| 
+
+### <a name="json-actions"></a>JSON 操作
+
+这些操作帮助处理采用 JavaScript 对象表示法 (JSON) 格式的数据。
+
+| 操作 | 说明 |
+|--------|-------------|
+| [Compose](#compose-action) | 从可能具有不同数据类型的多个输入创建一个消息或字符串。 然后可以使用此字符串作为单个输入，而无需反复输入相同的输入。 例如，可以从各种输入创建单个 JSON 消息。 |
+| [Parse JSON](#parse-json-action) | 为 JSON 内容中的属性创建用户友好的数据令牌，以便在逻辑应用中更轻松地使用这些属性。 |
+|||
+
+若要创建更复杂的 JSON 转换，请参阅[使用 Liquid 模板执行高级 JSON 转换](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md)。
 
 <a name="compose-action"></a>
 
@@ -273,6 +275,9 @@ Oranges,2
 
    ![“创建 CSV 表”操作的“输出”字段](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
 
+   > [!NOTE]
+    > 如果返回的表的格式不正确，请参阅[如何检查表的数据格式](#format-table-data)。
+
 1. 现在，请手动运行逻辑应用。 在设计器工具栏上选择“运行”。 
 
    根据所用的电子邮件连接器，会收到下面所示的结果：
@@ -426,6 +431,9 @@ Oranges,2
 
    > [!NOTE]
    > 在电子邮件操作中包含 HTML 表输出时，请确保在电子邮件中操作的高级选项中，将“是 HTML”属性设置为“是”。 这样，电子邮件操作便可以正确设置 HTML 表的格式。
+
+   > [!NOTE]
+   > 如果返回的表的格式不正确，请参阅[如何检查表的数据格式](#format-table-data)。
 
 1. 现在，请手动运行逻辑应用。 在设计器工具栏上选择“运行”。 
 
@@ -663,7 +671,7 @@ Oranges,2
 
    * 若要在步骤之间添加操作，请将鼠标移到连接箭头上方，以显示加号 (+)。 选择加号，然后选择“添加操作”。 
 
-1. 在“选择操作”下，选择“内置”。  在搜索框中，输入 `select` 作为筛选器。 在“操作”列表中，选择“选择”操作。
+1. 在“选择操作”下，选择“内置”。   在搜索框中，输入 `select` 作为筛选器。 在“操作”列表中，选择“选择”操作。
 
    ![选择“选择”操作](./media/logic-apps-perform-data-operations/select-select-action.png)
 
@@ -707,6 +715,51 @@ Oranges,2
 
    ![包含“选择”操作结果的电子邮件](./media/logic-apps-perform-data-operations/select-email-results.png)
 
+## <a name="troubleshooting"></a>故障排除
+
+### <a name="format-table-data"></a>表数据格式设置
+
+如果返回的 [CSV 表](#create-csv-table-action)或 [HTML 表](#create-html-table-action)的格式不正确，请确保输入数据在行之间有换行符。 
+
+格式不正确：
+
+```text
+Fruit,Number Apples,1 Oranges,2
+```
+
+格式正确：
+
+```text
+Fruit,Number
+Apples,1
+Oranges,2
+```
+
+若要在行之间添加换行符，请将以下任一表达式添加到表中：
+
+```text
+replace(body('Create_CSV_table'),'','<br/>')
+```
+
+```text
+replace(body('Create_HTML_table'),'','<br/>')
+```
+
+例如： 
+
+```json
+{
+    "Send_an_email_": {
+        "inputs": {
+            "body": {
+                "Body": "<p>Results from Create CSV table action:<br/>\n<br/>\n<br/>\n@{replace(body('Create_CSV_table'),'\r\n','<br/>')}</p>",
+                "Subject": "Create CSV table results",
+                "To": "sophia.owen@fabrikam.com"
+            }
+        }
+    }
+}
+```
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[逻辑应用连接器](../connectors/apis-list.md)

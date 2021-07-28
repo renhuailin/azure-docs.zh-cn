@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 03/15/2021
+ms.date: 05/28/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99829d6afbec638f26ae91fcb73bd20220c54ffa
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 7d5e6102a46e8015fa4fb7a1a148950e98629681
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481888"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110793892"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>在 PIM 中激活我的 Azure AD 角色
 
@@ -218,4 +218,4 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 简化了
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Privileged Identity Management 中激活 Azure AD 角色](pim-how-to-activate-role.md)
+- [查看 Azure AD 角色的审核历史记录](pim-how-to-use-audit-log.md)

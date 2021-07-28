@@ -7,13 +7,13 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: duau
-ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: cb4843319e08eff33ce6ce1869f64fccd9e17c6c
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.custom: seodec18
+ms.openlocfilehash: 366f27a0e2a22e9aa10dda20e105bf644255bdd4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950659"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "89393133"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>通过 ExpressRoute Microsoft 对等互连配置站点到站点的 VPN
 
@@ -53,7 +53,7 @@ ms.locfileid: "111950659"
 6. （可选）在本地 VPN 设备上配置防火墙/筛选器。
 7. 通过 ExpressRoute 线路测试和验证 IPsec 通信。
 
-## <a name="1-configure-microsoft-peering"></a><a name="peering"></a>1.配置 Microsoft 对等互连
+## <a name="1-configure-microsoft-peering"></a><a name="peering"></a>1. 配置 Microsoft 对等互连
 
 若要通过 ExpressRoute 配置站点到站点的 VPN 连接，必须利用 ExpressRoute Microsoft 对等互连。
 
@@ -65,7 +65,7 @@ ms.locfileid: "111950659"
 
 ![线路](./media/site-to-site-vpn-over-microsoft-peering/ExpressRouteCkt.png)
 
-## <a name="2-configure-route-filters"></a><a name="routefilter"></a>2.配置路由筛选器
+## <a name="2-configure-route-filters"></a><a name="routefilter"></a>2. 配置路由筛选器
 
 使用路由筛选器可标识要通过 ExpressRoute 线路的 Microsoft 对等互连使用的服务。 它实质上是所有 BGP 社区值的允许列表。 
 
@@ -112,7 +112,7 @@ sh ip bgp vpnv4 vrf 10 neighbors X.243.229.34 received-routes
 Get-AzBgpServiceCommunity
 ```
 
-## <a name="3-configure-the-vpn-gateway-and-ipsec-tunnels"></a><a name="vpngateway"></a>3.配置 VPN 网关和 IPsec 隧道
+## <a name="3-configure-the-vpn-gateway-and-ipsec-tunnels"></a><a name="vpngateway"></a>3. 配置 VPN 网关和 IPsec 隧道
 
 本节将在 Azure VPN 网关和本地 VPN 设备间创建 IPsec VPN 隧道。 这些示例使用 Cisco 云服务路由器 (CSR1000) VPN 设备。
 
@@ -130,7 +130,7 @@ Get-AzBgpServiceCommunity
 
 ### <a name="about-the-azure-resource-manager-template-examples"></a>关于 Azure 资源管理器模板示例
 
-这些示例使用 Azure 资源管理器模板配置 VPN 网关和 IPsec 隧道终端。 如果不熟悉资源管理器模板的用法或不了解资源管理器模板的基础知识，请参阅[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/syntax.md)。 本节中的模板会创建一个全新的 Azure 环境 (VNet)。 但如果有现成的 VNet，则可在模板中引用它。 如果不熟悉 VPN 网关 IPsec/IKE 站点到站点配置，请参阅[创建站点到站点的连接](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)。
+这些示例使用 Azure 资源管理器模板配置 VPN 网关和 IPsec 隧道终端。 如果不熟悉资源管理器模板的用法或不了解资源管理器模板的基础知识，请参阅[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md)。 本节中的模板会创建一个全新的 Azure 环境 (VNet)。 但如果有现成的 VNet，则可在模板中引用它。 如果不熟悉 VPN 网关 IPsec/IKE 站点到站点配置，请参阅[创建站点到站点的连接](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)。
 
 >[!NOTE]
 >无需使用 Azure 资源管理器模板来创建此配置。 可使用 Azure 门户或 PowerShell 创建此配置。
@@ -354,7 +354,7 @@ Get-AzBgpServiceCommunity
   }
 ```
 
-## <a name="4-configure-the-on-premises-vpn-device"></a><a name="device"></a>4.配置本地 VPN 设备
+## <a name="4-configure-the-on-premises-vpn-device"></a><a name="device"></a>4. 配置本地 VPN 设备
 
 Azure VPN 网关与许多来自不同供应商的 VPN 设备兼容。 要了解配置信息和经验证可与 VPN 网关配合使用的设备，请参阅[关于 VPN 设备](../vpn-gateway/vpn-gateway-about-vpn-devices.md)。
 
@@ -475,11 +475,11 @@ ip route 10.2.0.229 255.255.255.255 Tunnel1
 !
 ```
 
-## <a name="5-configure-vpn-device-filtering-and-firewalls-optional"></a><a name="firewalls"></a>5.配置 VPN 设备筛选和防火墙（可选）
+## <a name="5-configure-vpn-device-filtering-and-firewalls-optional"></a><a name="firewalls"></a>5. 配置 VPN 设备筛选和防火墙（可选）
 
 根据需求配置防火墙和筛选。
 
-## <a name="6-test-and-validate-the-ipsec-tunnel"></a><a name="testipsec"></a>6.测试并验证 IPsec 隧道
+## <a name="6-test-and-validate-the-ipsec-tunnel"></a><a name="testipsec"></a>6. 测试并验证 IPsec 隧道
 
 可使用 Powershell 命令在 Azure VPN 网关上验证 IPsec 隧道的状态：
 

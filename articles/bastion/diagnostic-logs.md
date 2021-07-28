@@ -1,18 +1,18 @@
 ---
 title: 启用和使用 Azure Bastion 资源日志
-description: 本文介绍如何启用和使用 Azure Bastion 诊断日志。
+description: 了解如何启用和使用 Azure Bastion 诊断日志。
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 1e76fffd17ee565d4103ca8a7bf1523bbd16209d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58ad863c1133ee7be984fe723b567ce43a8ef6ad
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91445391"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534816"
 ---
 # <a name="enable-and-work-with-bastion-resource-logs"></a>启用和使用 Bastion 资源日志
 

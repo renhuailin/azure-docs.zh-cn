@@ -1,5 +1,5 @@
 ---
-title: 对 Azure 表存储内容进行搜索
+title: 对 Azure 表存储进行搜索
 titleSuffix: Azure Cognitive Search
 description: 了解如何使用 Azure 认知搜索索引器为 Azure 表存储中存储的数据编制索引。
 manager: nitinme
@@ -9,16 +9,16 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 2c67cd4d071660da2ca5714623695ca434329263
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3994ee7e87670adb6ffbe2aa6f7279d11afa146
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91275177"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111557047"
 ---
-# <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>如何使用 Azure 认知搜索从 Azure 表存储索引表
+# <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>如何使用 Azure 认知搜索为 Azure 表存储中的表编制索引
 
-本文介绍如何使用 Azure 认知搜索对 Azure 表存储中存储的数据编制索引。
+本文介绍如何使用 Azure 认知搜索为 Azure 表存储中存储的数据编制索引。
 
 ## <a name="set-up-azure-table-storage-indexing"></a>设置 Azure 表存储索引
 

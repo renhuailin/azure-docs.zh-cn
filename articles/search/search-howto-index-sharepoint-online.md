@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 5888a7cc8aa58d1c6edab191e1243ebc60000fd6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea65011a27b7dab65ea75b5365bdcdf2be67d8b2
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048861"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747124"
 ---
 # <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>如何在认知搜索中配置 SharePoint Online 索引（预览版）
 
@@ -49,6 +49,10 @@ Azure 认知搜索 SharePoint Online 索引器可从以下文档格式提取文�
 
 ## <a name="setting-up-sharepoint-online-indexing"></a>设置 SharePoint Online 索引
 若要设置 SharePoint Online 索引器，需要在 Azure 门户中执行一些操作，并使用预览版 REST API 进行一些操作。 SDK 不支持此预览版。
+
+ 以下视频演示如何设置 SharePoint Online 索引器。
+ 
+> [!VIDEO https://www.youtube.com/embed/QmG65Vgl0JI]
 
 ### <a name="step-1-enable-system-assigned-managed-identity"></a>步骤 1：启用系统分配的托管标识
 启用系统分配的托管标识后，Azure 将为搜索服务创建一个可供索引器使用的标识。
@@ -87,7 +91,7 @@ SharePoint Online 索引器将使用此 AAD 应用程序进行身份验证。
 
 1.  授予管理员同意（仅某些租户需要）。
 
-    某些租户被锁定，需要管理员同意才能获取这些委托的 API 权限。 如果是这种情况，则需要在创建索引器之前，让管理员对此 AAD 应用程序授予管理员同意。 
+    某些租户被锁定，需要管理员同意才能获取这些委托的 API 权限。 如果是这种情况，则需要在创建索引器之前，让管理员对此 AAD 应用程序授予管理员同意。
 
     并非所有租户都有此要求，因此建议先跳过此步骤，继续查看说明。 在创建索引器时，如果身份验证失败，告知需要管理员批准身份验证，你将知道是否需要管理员同意。 在这种情况下，请使用下面的按钮让租户管理员予以同意。
 

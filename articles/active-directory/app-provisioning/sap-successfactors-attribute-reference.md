@@ -1,24 +1,24 @@
 ---
-title: SAP SuccessFactors 属性参考
-description: 了解 SuccessFactors-HR 驱动的预配支持 SuccessFactors 中的哪些属性
+title: Azure Active Directory 的 SAP SuccessFactors 属性引用
+description: 了解 Azure Active Directory 中 SuccessFactors-HR 驱动的预配支持 SuccessFactors 中的哪些属性。
 services: active-directory
-author: cmmdesai
-manager: daveba
+author: kenwith
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 08/05/2020
-ms.author: chmutali
-ms.reviewer: celested
-ms.openlocfilehash: 0d1a25f67d3550e79b2339ee060d37acaea0c1c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.author: kenwith
+ms.reviewer: chmutali
+ms.openlocfilehash: ea6887c69b292cc2cff4d923ba2ce60af8f1920e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99255536"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784946"
 ---
-# <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors 属性参考
+# <a name="sap-successfactors-attribute-reference-for-azure-active-directory"></a>Azure Active Directory 的 SAP SuccessFactors 属性引用
 
 本文将介绍以下内容：
 

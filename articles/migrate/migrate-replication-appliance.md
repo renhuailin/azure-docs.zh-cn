@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate 复制设备
-description: 了解基于代理的 VMWare 迁移的 Azure Migrate 复制设备。
+description: 了解基于代理的 VMware 迁移的 Azure Migrate 复制设备。
 author: anvar-ms
 ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: ec277bcc3e361561f54e72c54526d65487c113b4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5f63b033c3995932662fc9b68c1397bf57b0326e
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96754090"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714967"
 ---
 # <a name="replication-appliance"></a>复制设备
 
@@ -75,7 +75,7 @@ NIC 类型 | VMXNET3
 **方法** | **详细信息**
 --- | ---
 手动下载并安装 | 下载 MySQL 应用程序，将其置于 C:\Temp\ASRSetup 文件夹中，然后手动安装。<br/> 安装设备时，MySQL 显示为“已安装”。
-无在线下载 | 将 MySQL 安装程序应用程序置于 C:\Temp\ASRSetup 文件夹中。 安装设备并单击下载并安装 MySQL 时，将使用所添加的安装程序来完成安装过程。
+无在线下载 | 将 MySQL 安装程序应用程序置于 C:\Temp\ASRSetup 文件夹中。 安装设备并选择下载并安装 MySQL 时，将使用所添加的安装程序来完成安装过程。
 在 Azure Migrate 中下载并安装 | 当你安装设备并且系统提示 MySQL 时，请选择“下载并安装”。
 
 ## <a name="url-access"></a>URL 访问
@@ -89,7 +89,7 @@ NIC 类型 | VMXNET3
 \*.blob.core.windows.net | 用于访问存储所复制数据的存储帐户
 \*.hypervrecoverymanager.windowsazure.com | 用于复制管理操作和协调
 https:\//management.azure.com | 用于复制管理操作和协调
-*.services.visualstudio.com | 用于遥测数据（可选）
+*.services.visualstudio.com | 用于日志记录目的（可选）
 time.windows.com | 用于检查系统时间与全球时间之间的时间同步。
 https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | 设备设置需要访问以下这些 URL。 它们由 Azure Active Directory 用于访问控制和标识管理
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载。 在某些区域中，下载可能会被重定向到 CDN URL。 如果需要，请确保还允许 CDN URL。
@@ -106,10 +106,17 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 \*.blob.core.windows.net | 用于访问存储所复制数据的存储帐户
 \*.hypervrecoverymanager.windowsazure.us | 用于复制管理操作和协调
 https:\//management.usgovcloudapi.net | 用于复制管理操作和协调
-*.services.visualstudio.com | 用于遥测数据（可选）
+*.services.visualstudio.com | 用于日志记录目的（可选）
 time.nist.gov | 用于检查系统时间与全球时间之间的时间同步。
 https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | 带 OVA 设备设置需要访问以下这些 URL。 它们由 Azure Active Directory 用于访问控制和标识管理。
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载。 在某些区域中，下载可能会被重定向到 CDN URL。 如果需要，请确保还允许 CDN URL。
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | 完成 MySQL 下载。 在某些区域中，下载可能会被重定向到 CDN URL。 如果需要，请确保还允许 CDN URL。  
+
+>[!Note]
+>
+> 如果你的迁移项目具有专用终结点连接，则除了私有链接访问之外，还需要访问以下 URL：   
+> - *.blob.core.windows.com - 用于访问存储已复制数据的存储帐户 在存储帐户附加了专用终结点的情况下，这是可选的，不是必需的。 
+> - https:\//management.azure.com，用于复制管理操作和协调。 
+>- https:\//login.microsoftonline.com <br/>https:\//login.windows.net <br/> https:\//www.live.com _和_ <br/> https:\//www.microsoft.com，由 Azure Active Directory 用于访问控制和标识管理
 
 ## <a name="port-access"></a>端口访问
 
@@ -138,7 +145,7 @@ VM | 为了进行复制管理，VM 上运行的出行服务需要与 HTTPS 443 �
 
 需要从 Azure Migrate 中心手动升级设备。 我们建议始终运行最新版本。
 
-1. 在“Azure Migrate”>“服务器”>“Azure Migrate: 服务器评估，基础结构服务器”中，单击“配置服务器”。
+1. 在“Azure Migrate”>“服务器”>“Azure Migrate: 服务器评估，基础结构服务器”中，选择“配置服务器”。
 2. 在“配置服务器”中，当复制设备的新版本可用时，代理版本中会出现一个链接。  
 3. 将安装程序下载到复制设备计算机，然后安装升级。 安装程序检测设备上运行的当前版本。
  

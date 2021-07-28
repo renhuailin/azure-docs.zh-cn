@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/29/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: c86166c2e38e3fec251707626f5cf9ebab938299
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: f2f1c01ec323452997f5e7ab8f20e13e1d572a72
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209204"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438191"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
@@ -143,12 +143,18 @@ az aks get-versions --location eastus --output table
 
 |  K8s 版本 | 上游版本  | AKS 预览版  | AKS GA  | 生命周期结束 |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.18  | 20-03-23  | 2020 年 5 月   | 2020 年 8 月  | 1.21 GA | 
+| 1.18  | 20-03-23  | 2020 年 5 月   | 2020 年 8 月  | *1.21 GA | 
 | 1.19  | 20-08-04  | 2020 年 9 月   | 2020 年 11 月  | 1.22 GA | 
 | 1.20  | 2020 年 12 月 8 日  | 2021 年 1 月   | 2021 年 3 月  | 1.23 GA |
 | 1.21  | 2021 年 4 月 8 日 | 2021 年 5 月   | 2021 年 6 月  | 1.24 GA |
+| 1.22  | Aug-04-21 | 2021 年 9 月   | 2021 年 10 月  | 1.25 GA |
+| 1.23  | 2021 年 12 月 | 2022 年 1 月   | 2022 年 2 月  | 1.26 GA |
 
-
+>[!NOTE]
+>在 2021 年 7 月 31 日之前，AKS 版本 1.18 将继续可用。 此日期过后，AKS 将返回到其常规的三版本窗口支持。 请务必注意以下事项，因为从 2021 年 6 月 30 日到 7 月 31 日的支持将存在范围限制。 下面列出了会对用户进行限制的内容：
+> - 在 1.18 上创建新的群集和节点池。
+> - 1\.18 群集上的 CRUD 操作。
+> - 非 Kubernetes 相关的平台问题的 Azure 支持。 平台问题包括在 Azure 上运行的网络、存储或计算方面的问题。 要求进行 K8s 修补和故障排除的任何支持请求都会被要求升级到受支持的版本。
 
 ## <a name="faq"></a>常见问题解答
 
@@ -208,7 +214,7 @@ az aks get-versions --location eastus --output table
 
 不是。 版本弃用/删除后，将无法使用该版本创建群集。 随着更改版的推出，你将开始看到旧版本从版本列表中删除。 从公告开始，此过程可能需要长达两周的时间，按区域逐步进行。
 
-**我使用的是刚弃用的版本，是否仍然可以添加新的节点池？或者必须升级？**
+我使用的是刚弃用的版本，是否仍然可以添加新的节点池？或者必须升级？
 
 不是。 系统不允许你将已弃用版本的节点池添加到群集中。 你可以添加新版本的节点池。 但是，这可能需要先更新控制平面。 
 

@@ -4,18 +4,27 @@ description: 了解如何解释针对 Azure 文件共享的预配和即用即付
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 05/11/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6bb608492327baae958c32be05d8f2a1bb4dbfbf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9d0079ac85980f97a0241780b23e639e2359c65d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99226635"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109787211"
 ---
 # <a name="understand-azure-files-billing"></a>了解 Azure 文件存储计费
 Azure 文件存储提供了两种不同的计费模型：预配和即用即付。 预配模型只适用于高级文件共享，即部署在 FileStorage 存储帐户类型中的文件共享。 即用即付模型只适用于标准文件共享，即部署在常规用途版本 2 (GPv2) 存储帐户类型中的文件共享。 本文介绍了这两种模型的工作原理，以帮助你理解每月的 Azure 文件存储帐单。
+
+:::row:::
+    :::column:::
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/m5_-GsKv4-o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    :::column-end:::
+    :::column:::
+        该视频的内容是一段采访讨论，涵盖 Azure 文件存储计费模型的基础知识，包括如何优化 Azure 文件共享以实现尽可能最低的成本，以及如何将 Azure 文件存储与其他本地和云端文件存储产品进行比较。
+   :::column-end:::
+:::row-end:::
 
 有关 Azure 文件存储的定价信息，请参阅 [Azure 文件存储定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
 
@@ -23,23 +32,33 @@ Azure 文件存储提供了两种不同的计费模型：预配和即用即付�
 Azure 文件存储使用 base-2 度量单位来表示存储容量：KiB、MiB、GiB 和 TiB。 你的操作系统不一定会使用相同的度量单位或计算系统。
 
 ### <a name="windows"></a>Windows
-
 Windows 操作系统和 Azure 文件存储都使用 base-2 计算系统来衡量存储容量，但在标记单位时存在差异。 Azure 文件存储使用 base-2 度量单位来标记其存储容量，而 Windows 使用 base-10 度量单位标记其存储容量。 报告存储容量时，Windows 不会将其存储容量的度量单位从 base-2 转换为 base-10。
 
-|首字母缩写词  |定义  |计价单位  |Windows 的显示方式  |
-|---------|---------|---------|---------|
-|KiB     |1,024 字节         |kibibyte         |KB（千字节）         |
-|MiB     |1,024 KiB（1,048,576 字节）         |mebibyte         |MB（兆字节）         |
-|GiB     |1024 MiB（1,073,741,824 字节）         |gibibyte         |GB（十亿字节）         |
-|TiB     |1024 GiB（1,099,511,627,776 字节）         |tebibyte         |TB（万亿字节）         |
+| 首字母缩写词 | 定义                         | 计价单位     | Windows 的显示方式 |
+|---------|------------------------------------|----------|---------------------|
+| KiB     | 1,024 字节                        | kibibyte | KB（千字节）       |
+| MiB     | 1,024 KiB（1,048,576 字节）        | mebibyte | MB（兆字节）       |
+| GiB     | 1024 MiB（1,073,741,824 字节）     | gibibyte | GB（十亿字节）       |
+| TiB     | 1024 GiB（1,099,511,627,776 字节） | tebibyte | TB（万亿字节）       |
 
 ### <a name="macos"></a>macOS
-
 请参阅 Apple 网站上的 [iOS 和 macOS 报告存储容量的方式](https://support.apple.com/HT201402)，以确定使用的是哪种计算系统。
 
 ### <a name="linux"></a>Linux
-
 每个操作系统或软件部分都可使用不同的计算系统。 请参阅其对应的文档，以确定它们报告存储容量的方式。
+
+## <a name="reserve-capacity"></a>保留容量
+Azure 文件存储支持存储产能预留，让你可以通过预先承诺存储利用率来获得存储折扣。 应考虑为任何生产工作负载或具有一致内存占用情况的开发/测试工作负载购买预留实例。 购买预留产能时，预留必须指定以下维度：
+
+- 产能大小：产能预留可以是 10 TiB 或 100 TiB，购买更高的产能预留可以获得更多折扣。 可以购买多个预留，包括不同产能大小的预留，以满足工作负载要求。 例如，如果生产部署具有 120 TiB 的文件共享，可以购买一个 100 TiB 预留和两个 10 TiB 预留，以满足总产能要求。
+- 期限：预留的购买期限为一年或三年，购买更长的预留期可以获得更多折扣。 
+- 层：产能预留的 Azure 文件存储层。 目前，Azure 文件存储的热存储层和冷存储层支持预留。
+- 位置：产能预留的 Azure 区域。 产能预留在 Azure 区域的一个子集提供。
+- 冗余：产能预留的存储冗余。 可以对所有冗余 Azure 文件存储支持（包括 LRS、ZRS、GRS 和 GZRS）进行预留。
+
+购买产能预留后，现有存储利用率会自动使用该预留。 如果使用的存储量超过了预留的量，则将为产能预留未涵盖的部分支付标价。 预留中不包括事务、带宽和数据传输费用。
+
+有关如何购买存储预留的详细信息，请参阅[通过预留产能优化 Azure 文件存储的成本](files-reserve-capacity.md)。
 
 ## <a name="provisioned-model"></a>预配模型
 Azure 文件存储将预配模型用于高级文件共享。 在预配业务模型中，可以主动向 Azure 文件存储服务指定存储需求，而不是根据使用的资源进行计费。 这类似于在本地购买硬件，因为当你预配具有一定存储量的 Azure 文件共享时，无论是否使用该存储，都需要为其付费，就像在开始使用空间时，你不会支付本地物理媒体的费用一样。 与在本地购买物理媒体不同，可以根据存储和 IO 性能特征来灵活地纵向扩展或纵向缩放预配的文件共享。
@@ -95,7 +114,7 @@ Azure 文件存储对标准文件共享使用即用即付业务模型。 在即�
 - 热层适合不涉及大量事务的活跃工作负载；与事务优化相比，它的静态数据存储价格稍微低一些，但事务价格要高一些。 可以把它看作是事务优化层和冷层之间的中间地带。
 - 冷层为没有大量活动的工作负载优化了价格，提供了最低的静态数据存储价格，但事务价格最高。
 
-如果你将不经常访问的工作负载放在事务优化层中，那么对于在一个月内针对你的共享执行的几次事务，你几乎不用支付任何费用，但你需要支付很高金额的数据存储成本。 如果你将此同一共享迁移到冷层中，则仍然几乎不用支付事务成本，这仅仅是因为你很少为此工作负载执行事务，但冷层的数据存储价格要便宜得多。 为用例选择适当的层可以大大降低你的成本。 为用例选择适当的层可以大大降低你的成本。
+如果你将不经常访问的工作负载放在事务优化层中，那么对于在一个月内针对你的共享执行的几次事务，你几乎不用支付任何费用，但你需要支付很高金额的数据存储成本。 如果你将此同一共享迁移到冷层中，则仍然几乎不用支付事务成本，这仅仅是因为你很少为此工作负载执行事务，但冷层的数据存储价格要便宜得多。 为用例选择适当的层可以大大降低你的成本。
 
 同样地，如果你将经常访问的工作负载放在冷层中，则支付的事务成本更多，支付的数据存储成本更少。 这可能会导致一种情况，即事务价格上涨带来的成本增加超过了数据存储价格下降带来的金额节省，导致你在冷层中支付的成本多于事务优化层。 对于某些使用级别，虽然热层是最具成本效益的层，但冷层比事务优化层更昂贵。
 
@@ -112,9 +131,24 @@ Azure 文件存储对标准文件共享使用即用即付业务模型。 在即�
 | 数据操作 | <ul><li>`CopyFile`</li><li>`Create`</li><li>`CreateDirectory`</li><li>`CreateFile`</li><li>`PutRange`</li><li>`PutRangeFromURL`</li><li>`SetDirectoryMetadata`</li><li>`SetFileMetadata`</li><li>`SetFileProperties`</li><li>`SetInfo`</li><li>`SetShareACL`</li><li>`Write`</li><li>`PutFilePermission`</li></ul> | <ul><li>`ListFileRanges`</li><li>`ListFiles`</li><li>`ListHandles`</li></ul>  | <ul><li>`FilePreflightRequest`</li><li>`GetDirectoryMetadata`</li><li>`GetDirectoryProperties`</li><li>`GetFile`</li><li>`GetFileCopyInformation`</li><li>`GetFileMetadata`</li><li>`GetFileProperties`</li><li>`QueryDirectory`</li><li>`QueryInfo`</li><li>`Read`</li><li>`GetFilePermission`</li></ul> | <ul><li>`AbortCopyFile`</li><li>`Cancel`</li><li>`ChangeNotify`</li><li>`Close`</li><li>`Echo`</li><li>`Ioctl`</li><li>`Lock`</li><li>`Logoff`</li><li>`Negotiate`</li><li>`OplockBreak`</li><li>`SessionSetup`</li><li>`TreeConnect`</li><li>`TreeDisconnect`</li><li>`CloseHandles`</li><li>`AcquireFileLease`</li><li>`BreakFileLease`</li><li>`ChangeFileLease`</li><li>`ReleaseFileLease`</li></ul> | <ul><li>`ClearRange`</li><li>`DeleteDirectory`</li></li>`DeleteFile`</li></ul> |
 
 > [!Note]  
-> NFS 4.1 只适用于使用预配计费模型的高级文件共享，事务不会影响高级文件共享的计费。
+> NFS 4.1 仅适用于使用预配计费模型的高级文件共享，事务不会影响高级文件共享的计费。
+
+## <a name="file-storage-comparison-checklist"></a>文件存储比较清单
+若要正确评估 Azure 文件存储相比其他文件存储选项的成本，请考虑以下问题：
+
+- 如何为存储、IOPS 和带宽付费？  
+    使用 Azure 文件存储的计费模型取决于是部署[高级](#provisioned-model)还是[标准](#pay-as-you-go-model)文件共享。 大多数云解决方案的模型都符合预配存储（价格确定、简单）或即用即付存储（仅为实际使用付款）的原则。 预配模型最吸引人的优点是预配共享大小极小、预配单元以及增加和减少预配的能力。 
+
+- 如何实现存储的复原能力和冗余？  
+    借助 Azure 文件存储，可以将存储的复原能力和冗余融入到产品中。 所有层和冗余级别可确保数据高度可用，且至少有三个数据副本可供访问。 考虑其他文件存储选项时，请考虑存储的复原能力和冗余是内置的还是必须自行组装。 
+
+- 需要管理什么？  
+    使用 Azure 文件存储时，管理的基本单位是存储帐户。 其他解决方案可能需要额外的管理，例如操作系统更新或虚拟资源管理（VM、磁盘、网络 IP 地址等）。
+
+- 备份成本有哪些？  
+    借助 Azure 文件存储，可以轻松地启用 Azure 备份集成，并将备份存储作为成本共享的一部分进行计费（备份作为差异快照存储）。 其他解决方案可能需要备份软件许可和额外的备份存储费用。
 
 ## <a name="see-also"></a>另请参阅
 - [Azure 文件存储定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
-- [计划 Azure 文件存储部署](./storage-files-planning.md)和[计划 Azure 文件同步部署](./storage-sync-files-planning.md)。
-- [创建文件共享](./storage-how-to-create-file-share.md)和[部署 Azure 文件同步](./storage-sync-files-deployment-guide.md)。
+- [规划 Azure 文件存储部署](storage-files-planning.md)和[规划 Azure 文件同步部署](../file-sync/file-sync-planning.md)。
+- [创建文件共享](storage-how-to-create-file-share.md)和[部署 Azure 文件同步](../file-sync/file-sync-deployment-guide.md)。

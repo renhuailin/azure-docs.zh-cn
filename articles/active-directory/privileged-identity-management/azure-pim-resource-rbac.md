@@ -7,26 +7,26 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: pim
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: pim
-ms.date: 01/10/2020
+ms.date: 04/20/2021
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45144f64789a19390984c3f9f6a660e3c3300215
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd211c284ef5240e3f658d90c5d801018a02b9bf
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96002487"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790174"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中查看 Azure 资源角色的活动和审核历史记录
 
-使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM)，可以查看组织中的 Azure 资源角色的活动、激活和审核历史记录。 这些资源包括订阅、资源组甚至虚拟机。 如果 Azure 门户中的任何资源利用了 Azure 的基于角色的访问控制 (RBAC) 功能，则可以利用 Privileged Identity Management 中的安全和生命周期管理功能。
+使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM)，可以查看组织中的 Azure 资源角色的活动、激活和审核历史记录。 这些资源包括订阅、资源组甚至虚拟机。 如果 Azure 门户中的任何资源利用了 Azure 的基于角色的访问控制 (RBAC) 功能，则可以利用 Privileged Identity Management 中的安全和生命周期管理功能。 如果审核数据的保留时间需要长于默认保留期，可以使用 Azure Monitor 将其路由到 Azure 存储帐户。 有关详细信息，请参阅[将 Azure AD 日志存档到 Azure 存储帐户](../reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)。
 
 > [!NOTE]
-> 如果你的组织已将管理功能外包给使用 [Azure 委托资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)的服务提供商，则此处将不会显示该服务提供商授权的角色分配。
+> 如果你的组织已将管理功能外包给使用 [Azure Lighthouse](../../lighthouse/overview.md) 的服务提供商，则此处将不会显示该服务提供商授权的角色分配。
 
 ## <a name="view-activity-and-activations"></a>查看活动和激活
 

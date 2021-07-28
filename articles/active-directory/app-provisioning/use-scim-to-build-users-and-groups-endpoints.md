@@ -1,30 +1,30 @@
 ---
 title: 构建 SCIM 终结点以便从 Azure Active Directory 将用户预配到应用
-description: 了解如何开发 SCIM 终结点、将 SCIM API 与 Azure AD 集成以及使用 Azure Active Directory 自动将用户和组预配到云应用程序中。
+description: 了解如何开发 SCIM 终结点、将 SCIM API 与 Azure Active Directory 集成，以及自动将用户和组预配到云应用程序中。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 4e933000c8e700d8bfd193b542e3855b2fca26f8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ac876ff4370c20ca0b4db59575a3d8ab49b7b0a3
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101689328"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784838"
 ---
-# <a name="tutorial-develop-a-sample-scim-endpoint"></a>教程：开发示例 SCIM 终结点
+# <a name="tutorial-develop-a-sample-scim-endpoint-in-azure-active-directory"></a>教程：在 Azure Active Directory 中开发示例 SCIM 终结点
 
 没有人希望从头开始构建新终结点，因此我们创建了一些[参考代码](https://aka.ms/scimreferencecode)，以供你开始使用[跨域身份管理系统 (SCIM)](https://aka.ms/scimoverview)。 无需代码，只需五分钟便可设置并运行 SCIM 终结点。
 
 本教程介绍如何通过使用 Postman 或通过与 Azure Active Directory (Azure AD) SCIM 客户端集成，在 Azure 中部署 SCIM 参考代码并进行测试。 本教程适用于要开始使用 SCIM 的开发人员，或对测试 SCIM 终结点感兴趣的任何人。
 
-在本教程中，你将了解：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -119,16 +119,16 @@ ms.locfileid: "101689328"
    |环境|变量|值|
    |-|-|-|
    |使用 IIS Express 在本地运行项目|||
-   ||**Server**|`localhost`|
+   ||**服务器**|`localhost`|
    ||端口|`:44359`（请勿忘记 `:`）|
    ||**Api**|`scim`|
    |使用 Kestrel 在本地运行项目|||
-   ||**Server**|`localhost`|
+   ||**服务器**|`localhost`|
    ||端口|`:5001`（请勿忘记 `:`）|
    ||**Api**|`scim`|
    |在 Azure 中托管终结点|||
-   ||**Server**|（输入 SCIM URL）|
-   ||端口|（留空）|
+   ||**服务器**|（输入 SCIM URL）|
+   ||端口|*（留空）*|
    ||**Api**|`scim`|
 
 1. 使用来自 Postman 集合的“获取密钥”将 GET 请求发送到令牌终结点，并检索要在令牌变量中存储以用于后续请求的安全令牌  。

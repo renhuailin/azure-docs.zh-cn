@@ -9,19 +9,19 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 276f5f4542ecea42c665764b8c4e5f66f2531126
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7788d7e7a8aa92d4c06b0895c5bea000e13e2d85
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552705"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109713119"
 ---
-# <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>为 Azure 准备 SLES 或 openSUSE 虚拟机
+# <a name="prepare-a-sles-or-opensuse-leap-virtual-machine-for-azure"></a>为 Azure 准备 SLES 或 openSUSE Leap 虚拟机
 
 
-本文假定已在虚拟硬盘中安装了 SUSE 或 openSUSE Linux 操作系统。 存在多个用于创建 .vhd 文件的工具，例如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅[安装 Hyper-V 角色和配置虚拟机](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
+本文假定你已在虚拟硬盘中安装了 SUSE 或 openSUSE Leap Linux 操作系统。 存在多个用于创建 .vhd 文件的工具，例如 Hyper-V 等虚拟化解决方案。 有关说明，请参阅[安装 Hyper-V 角色和配置虚拟机](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
 
-## <a name="sles--opensuse-installation-notes"></a>SLES/openSUSE 安装说明
+## <a name="sles--opensuse-leap-installation-notes"></a>SLES/openSUSE Leap 安装说明
 * 另请参阅[常规 Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)，获取更多有关如何为 Azure 准备 Linux 的提示。
 * Azure 不支持 VHDX 格式，仅支持 **固定大小的 VHD**。  可使用 Hyper-V 管理器或 convert-vhd cmdlet 将磁盘转换为 VHD 格式。
 * 在安装 Linux 系统时，建议使用标准分区而不是 LVM（通常是许多安装的默认值）。 这会避免 LVM 与克隆 VM 发生名称冲突，特别是在 OS 磁盘需要连接到另一台 VM 以进行故障排除的情况下。 如果需要，可以在数据磁盘上使用 [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) 或 [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid)。
@@ -29,7 +29,7 @@ ms.locfileid: "102552705"
 * Azure 上的所有 VHD 必须已将虚拟大小调整为 1MB。 从原始磁盘转换为 VHD 时，必须确保在转换前原始磁盘大小是 1MB 的倍数。 有关详细信息，请参阅 [Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)。
 
 ## <a name="use-suse-studio"></a>使用 SUSE Studio
-[SUSE Studio](https://studioexpress.opensuse.org/) 可以轻松地创建和管理 Azure 和 Hyper-V 的 SLES 和 openSUSE 映像。 这是自定义用户自己的 SUSE 和 openSUSE 映像的推荐方法。
+[SUSE Studio](https://studioexpress.opensuse.org/) 可以轻松创建和管理 Azure 和 Hyper-V 的 SLES 和 openSUSE Leap 映像。 这是自定义用户自己的 SUSE 和 openSUSE Leap 映像的推荐方法。
 
 作为一种构建你自己的 VHD 的替代方法，SUSE 也会在 [VM Depot](https://www.microsoft.com/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf) 上发布 SLES 的 BYOS（自带订阅）映像。
 
@@ -157,23 +157,23 @@ ms.locfileid: "102552705"
 16. 在 Hyper-V 管理器中单击“操作”->“关闭”。 现在，准备将 Linux VHD 上传到 Azure。
 
 ---
-## <a name="prepare-opensuse-131"></a>准备 openSUSE 13.1+
+## <a name="prepare-opensuse-152"></a>准备 openSUSE 15.2+
 1. 在 Hyper-V 管理器的中间窗格中，选择虚拟机。
 2. 单击“连接”打开虚拟机窗口。
 3. 在 shell 上，运行命令“`zypper lr`”。 如果此命令返回了类似于下面的输出，则表示已按预期配置了存储库 - 不需要进行任何调整（请注意版本号可能有所不同）：
 
    | # | Alias                 | “属性”                  | 已启用 | 刷新
    | - | :-------------------- | :-------------------- | :------ | :------
-   | 1 | Cloud:Tools_13.1      | Cloud:Tools_13.1      | 是     | 是
-   | 2 | openSUSE_13.1_OSS     | openSUSE_13.1_OSS     | 是     | 是
-   | 3 | openSUSE_13.1_Updates | openSUSE_13.1_Updates | 是     | 是
+   | 1 | Cloud:Tools_15.2      | Cloud:Tools_15.2      | 是     | 是
+   | 2 | openSUSE_15.2_OSS     | openSUSE_15.2_OSS     | 是     | 是
+   | 3 | openSUSE_15.2_Updates | openSUSE_15.2_Updates | 是     | 是
 
     如果该命令返回“未定义存储库...”，则使用以下命令来添加这些存储库：
 
     ```console
-    # sudo zypper ar -f http://download.opensuse.org/repositories/Cloud:Tools/openSUSE_13.1 Cloud:Tools_13.1
-    # sudo zypper ar -f https://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
-    # sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
+    # sudo zypper ar -f http://download.opensuse.org/repositories/Cloud:Tools/openSUSE_15.2 Cloud:Tools_15.2
+    # sudo zypper ar -f https://download.opensuse.org/distribution/15.2/repo/oss openSUSE_15.2_OSS
+    # sudo zypper ar -f http://download.opensuse.org/update/15.2 openSUSE_15.2_Updates
     ```
 
     然后，可以通过再次运行命令“`zypper lr`”来验证已添加存储库。 如果未启用某个相关的更新存储库，请使用以下命令启用该存储库：

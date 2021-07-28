@@ -6,13 +6,13 @@ ms.author: suvirdi
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 10/01/2020
-ms.openlocfilehash: a0bd7a4cd8afafc16f05b4a37cd5723304ad931e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 05/08/2021
+ms.openlocfilehash: c88134e978615d53bdfbde26492096212c3f582f
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96552190"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656393"
 ---
 # <a name="register-and-scan-azure-files"></a>注册 Azure 文件并进行扫描
 
@@ -20,7 +20,7 @@ ms.locfileid: "96552190"
 
 Azure 文件支持完整扫描和增量扫描，以根据系统和客户分类来捕获元数据并应用元数据的分类。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 在注册数据源之前，先创建一个 Azure Purview 帐户。 有关创建 Purview 帐户的详细信息，请参阅[快速入门：创建 Azure Purview 帐户](create-catalog-portal.md)。
 - 要设置和计划扫描，你必须是数据源管理员，有关详细信息，请参阅[目录权限](catalog-permissions.md)。
@@ -40,10 +40,10 @@ Azure 文件支持完整扫描和增量扫描，以根据系统和客户分类�
 在“注册源（Azure 文件）”屏幕上，执行以下操作：
 
 1. 输入数据源将在目录中列出的名称。
-1. 选择要指向所需存储帐户的方式：
-   1. 选择“从 Azure 订阅中”，然后从“Azure 订阅”下拉框中选择相应订阅，并从“存储帐户名称”下拉框中选择相应存储帐户  。
-   1. 也可选择“手动输入”并输入服务器终结点（URL）。
-1. 选择“完成”以注册数据源。
+2. 选择 Azure 订阅，以筛选 Azure 存储帐户。
+3. 附加 Azure 存储帐户。
+4. 选择集合或创建新集合（可选）。
+5. 选择“注册”以注册数据源。
 
 :::image type="content" source="media/register-scan-azure-files/register-sources.png" alt-text="注册源选项" border="true":::
 

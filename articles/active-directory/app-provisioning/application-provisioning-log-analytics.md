@@ -3,20 +3,20 @@ title: 了解预配如何与 Azure Active Directory 中的 Azure Monitor 日志�
 description: 了解预配如何与 Azure Active Directory 中的 Azure Monitor 日志集成。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/12/2020
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: arvinh,luleon
-ms.openlocfilehash: f656f55b0c74103053f110b8c66645d353db9fbf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: arvinh
+ms.openlocfilehash: 8ad80b7fb8c148ae42d52b15719ddadf4b5302e2
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561562"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783272"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>了解预配如何与 Azure Monitor 日志集成
 
@@ -96,7 +96,7 @@ AADProvisioningLogs
 
 通过 Azure Monitor，可以配置自定义警报，以便可以收到有关与预配相关的关键事件的通知。 例如，你可能希望收到有关故障高峰的警报。 或者收到有关禁用高峰或删除高峰的警报。 可能希望收到的警报的另一个示例是缺少预配，这表明出现了问题。
 
-若要了解有关警报的详细信息，请参阅[借助 Azure Monitor 警报对事件作出响应](../../azure-monitor/alerts/tutorial-response.md)。
+有关警报的详细信息，请参阅 [Azure Monitor 日志警报](../../azure-monitor/alerts/alerts-log.md)。
 
 出现故障高峰时发出警报。 将 jobID 替换为应用程序的 jobID。
 

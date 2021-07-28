@@ -11,12 +11,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: ea984fdc4abeb08f4b080e913a0c34b99c59d93c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d7ad92e864e3da7860d08e8e3f569dd8ca14399
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561103"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789553"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Azure 备份的 VM 快照 Linux 扩展
 
@@ -90,6 +90,16 @@ az backup protection enable-for-vm \
     --vault-name myRecoveryServicesVault \
     --vm myVM \
     --policy-name DefaultPolicy
+```
+
+## <a name="azure-powershell-deployment"></a>Azure PowerShell 部署
+
+可以使用 Azure PowerShell 在虚拟机上启用备份。 配置备份之后，第一个计划的备份作业将在 VM 上安装 VM 快照扩展。
+
+```azurepowershell
+$targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "myResourceGroup" -Name "myRecoveryServicesVault"
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy Name DefaultPolicy -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "myVM" -ResourceGroupName "myVMResourceGroup" -VaultId $targetVault.ID
 ```
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持

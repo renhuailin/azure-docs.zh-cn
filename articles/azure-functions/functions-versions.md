@@ -3,13 +3,13 @@ title: Azure Functions 运行时版本概述
 description: Azure Functions 支持多个版本的运行时。 了解这些版本之间的差异以及如何选择最适合你的版本。
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
-ms.date: 12/09/2019
-ms.openlocfilehash: b37cf33a96452f9f3e86f853d3d87fd3b4b3879c
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.date: 05/19/2021
+ms.openlocfilehash: b3d148bbf6aadaa9ed48d234fdd22d68412f3ec5
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102431835"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789622"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
@@ -96,7 +96,7 @@ Azure Functions 版本 3.x 向后高度兼容版本 2.x。  许多应用应该�
 
 ## <a name="migrating-from-1x-to-later-versions"></a>从 1.x 迁移到更高版本
 
-可以选择迁移所编写的现有应用，以使用 1.x 版运行时，而不使用较新版本。 需要做出的大多数更改与语言运行时的更改相关，例如，.NET Framework 4.7 与 .NET Core 之间的 C# API 更改。 还需要确保代码和库与所选的语言运行时兼容。 最后，请务必注意触发器、绑定和以下突出显示功能中的任何更改。 为获得最佳迁移结果，应当在新版本中创建一个新的函数应用，并将现有的 1.x 版函数代码移植到新应用。  
+可以选择迁移所编写的现有应用，以使用 1.x 版运行时，而不使用较新版本。 需要做出的大多数更改与语言运行时的更改相关，例如，.NET Framework 4.8 与 .NET Core 之间的 C# API 更改。 还需要确保代码和库与所选的语言运行时兼容。 最后，请务必注意触发器、绑定和以下突出显示功能中的任何更改。 为获得最佳迁移结果，应当在新版本中创建一个新的函数应用，并将现有的 1.x 版函数代码移植到新应用。  
 
 尽管可以通过手动更新应用配置来执行“就地”升级，但从 1.x 转变到更高版本包括了一些中断性变更。 例如，在 C# 中，调试对象从 `TraceWriter` 更改为 `ILogger`。 创建新的 3.x 版项目后，可以基于最新的 3.x 版模板，从更新的函数着手进行开发。
 

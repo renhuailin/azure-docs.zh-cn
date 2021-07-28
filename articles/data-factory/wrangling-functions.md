@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: 659f6527d43e1b45a11fddf774050ca6d42bfe12
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/16/2021
+ms.openlocfilehash: 5985db37e6b88dc39ce1ac166c4aaf9ba368240d
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98896657"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737694"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>Power Query 中用于数据整理的转换函数
 
@@ -63,8 +63,8 @@ ms.locfileid: "98896657"
 * 作为逻辑列的行筛选器
 * Number、text、logical、date 和 datetime 常量
 
-<a name="mergingjoining-tables"></a>合并/联接表
-----------------------
+## <a name="mergingjoining-tables"></a>合并/联接表
+
 * Power Query 将生成嵌套联接（Table.NestedJoin；用户还可以手动写入 [Table.AddJoinColumn](/powerquery-m/table-addjoincolumn)）。
     然后，用户必须将嵌套联接列扩展为非嵌套联接（Table.ExpandTableColumn，在任何其他上下文中不受支持）。
 * 可以直接写入 M 函数 [Table.Join](/powerquery-m/table-join)，以避免执行额外的扩展步骤，但用户必须确保联接表中没有重复的列名
@@ -87,7 +87,7 @@ ms.locfileid: "98896657"
 
 ## <a name="known-unsupported-functions"></a>不支持的已知函数
 
-| 函数 | 状态 |
+| 功能 | 状态 |
 | -- | -- |
 | Table.PromoteHeaders | 不支持。 可以通过在数据集中设置“第一行作为页眉”来实现相同的结果。 |
 | Table.CombineColumns | 这是一个不直接支持的常见方案，但可通过添加一个连接两个给定列的新列来实现。  例如，Table.AddColumn（RemoveEmailColumn、"Name"、each [FirstName] & " " & [LastName]） |
@@ -99,6 +99,23 @@ ms.locfileid: "98896657"
 | 行级别错误处理 | 当前不支持行级别错误处理。 例如，若要筛选出列中的非数字值，一种方法是将文本列转换为数字。 无法转换的每个单元都将处于错误状态，需要对其进行筛选。 此方案在向外扩展的 M 中无法进行。 |
 | Table.Transpose | 不支持 |
 | Table.Pivot | 不支持 |
+| Table.SplitColumn | 部分支持 |
+
+## <a name="m-script-workarounds"></a>M 脚本解决方法
+
+### <a name="for-splitcolumn-there-is-an-alternate-for-split-by-length-and-by-position"></a>对于 ```SplitColumn```，有一个备用项用于按长度和位置拆分
+
+* Table.AddColumn(Source, "First characters", each Text.Start([Email], 7), type text)
+* Table.AddColumn(#"Inserted first characters", "Text range", each Text.Middle([Email], 4, 9), type text)
+
+可从功能区中的“提取”选项访问此选项
+
+![Power Query 添加列](media/wrangling-data-flow/pq-split.png)
+
+### <a name="for-tablecombinecolumns"></a>对于 ```Table.CombineColumns```
+
+* Table.AddColumn(RemoveEmailColumn, "Name", each [FirstName] & " " & [LastName])
+
 
 ## <a name="next-steps"></a>后续步骤
 

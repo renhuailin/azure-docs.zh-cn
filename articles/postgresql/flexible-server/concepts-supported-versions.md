@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/23/2021
-ms.openlocfilehash: 7f779d3856187cb6ce5db55b3a974fdd3818d8dc
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.date: 05/19/2021
+ms.openlocfilehash: 07663ac14dcfb3e323a2edeadf886a715ecac3a0
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112894934"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463717"
 ---
 # <a name="supported-postgresql-major-versions-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中支持的 PostgreSQL 主版本
 
@@ -22,15 +22,15 @@ Azure Database for PostgreSQL 灵活服务器目前支持以下主版本：
 
 ## <a name="postgresql-version-13"></a>PostgreSQL 版本 13
 
-当前的次要版本为 13.3。 若要详细了解此版本中的改进和修复，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/13/static/release-13-3.html)。 新服务器将使用此次要版本创建。 
+当前的次要版本为 13.2。 若要详细了解此版本中的改进和修复，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/12/static/release-13-2.html)。 新服务器将使用此次要版本创建。 
 
 ## <a name="postgresql-version-12"></a>PostgreSQL 版本 12
 
-当前的次要版本为 12.7。 若要详细了解此版本中的改进和修复，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/12/static/release-12-7.html)。 新服务器将使用此次要版本创建。 现有服务器会在将来的计划性维护时段自动升级到受支持的最新次要版本。
+当前的次要版本为 12.6。 若要详细了解此版本中的改进和修复，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/12/static/release-12-6.html)。 新服务器将使用此次要版本创建。 现有服务器会在将来的计划性维护时段自动升级到受支持的最新次要版本。
 
 ## <a name="postgresql-version-11"></a>PostgreSQL 版本 11
 
-当前的次要版本为 11.12。 若要详细了解此版本中的改进和修复，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/11/static/release-11-12.html)。 新服务器将使用此次要版本创建。 现有服务器会在将来的计划性维护时段自动升级到受支持的最新次要版本。
+当前的次要版本为 11.11。 若要详细了解此版本中的改进和修复，请参阅 [PostgreSQL 文档](https://www.postgresql.org/docs/11/static/release-11-11.html)。 新服务器将使用此次要版本创建。 现有服务器会在将来的计划性维护时段自动升级到受支持的最新次要版本。
 
 ## <a name="postgresql-version-10-and-older"></a>PostgreSQL 版本 10 及更早版本
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1, contperf-fy21q2
 ms.date: 12/14/2020
-ms.openlocfilehash: 5dabae76308f32da7968d8cfa89b95f1eb19c142
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7a31fde34a65d69ca862a6dd8bd4fb638b15cb3a
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104863762"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751412"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自动缩放 Azure HDInsight 群集
 
@@ -70,12 +70,12 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
 
 | 版本 | Spark | Hive | 交互式查询 | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| 不包含 ESP 的 HDInsight 3.6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| 不包含 ESP 的 HDInsight 4.0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| 包含 ESP 的 HDInsight 3.6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| 包含 ESP 的 HDInsight 4.0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| 不包含 ESP 的 HDInsight 3.6 | 是 | 是 | 是* | 是* | 否 | 否 | 否 |
+| 不包含 ESP 的 HDInsight 4.0 | 是 | 是 | 是* | 是* | 否 | 否 | 否 |
+| 包含 ESP 的 HDInsight 3.6 | 是 | 是 | 是* | 是* | 否 | 否 | 否 |
+| 包含 ESP 的 HDInsight 4.0 | 是 | 是 | 是* | 是* | 否 | 否 | 否 |
 
-\* 只能为 HBase 群集配置基于计划的缩放，不能为其配置基于负载的缩放。
+\* 只能为 HBase 和 Interactive Query 群集配置基于计划的缩放，不能为其配置基于负载的缩放。
 
 ## <a name="get-started"></a>入门
 
@@ -85,7 +85,7 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
 
 1. 在“配置 + 定价”选项卡上，选中“启用自动缩放”复选框。 
 1. 在“自动缩放类型”下选择“基于负载”。
-1. 为以下属性输入所需的值：  
+1. 为以下属性输入所需的值：
 
     * 适用于工作器节点的初始工作节点数。
     * 工作器节点 **最小** 数目。
@@ -120,16 +120,16 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
 
 你的订阅具有针对每个区域的容量配额。 头节点核心总数加最大工作器节点数不能超过容量配额。 但是，此配额是软性限制；始终可创建支持票证来轻松地增加此配额。
 
-> [!Note]  
+> [!Note]
 > 如果超出总核心配额限制，将收到一条错误消息，指出“最大节点数超出此区域中的可用核心数，请选择其他区域或联系客户支持以增加配额”。
 
-有关使用 Azure 门户创建 HDInsight 群集的详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。  
+有关使用 Azure 门户创建 HDInsight 群集的详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 ### <a name="create-a-cluster-with-a-resource-manager-template"></a>使用资源管理器模板创建群集
 
 #### <a name="load-based-autoscaling"></a>基于负载的自动缩放
 
-可以使用 Azure 资源管理器模板创建支持基于负载的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到包含属性 `minInstanceCount` 和 `maxInstanceCount` 的 `computeProfile` > `workernode` 节，如以下 JSON 代码片段所示。 有关完整的资源管理器模板，请参阅[快速启动模板：在启用基于负载的自动缩放的情况下部署 Spark 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased)。
+可以使用 Azure 资源管理器模板创建支持基于负载的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到包含属性 `minInstanceCount` 和 `maxInstanceCount` 的 `computeProfile` > `workernode` 节，如以下 JSON 代码片段所示。 有关完整的资源管理器模板，请参阅[快速启动模板：在启用基于负载的自动缩放的情况下部署 Spark 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.hdinsight/hdinsight-autoscale-loadbased)。
 
 ```json
 {
@@ -157,7 +157,7 @@ Azure HDInsight 的免费“自动缩放”功能可根据先前设置的条件�
 
 #### <a name="schedule-based-autoscaling"></a>基于计划的自动缩放
 
-可以使用 Azure 资源管理器模板创建支持基于计划的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到 `computeProfile` > `workernode` 节。 `autoscale` 节点包含 `recurrence`，其中的 `timezone` 和 `schedule` 描述了更改生效的时间。 有关完整的资源管理器模板，请参阅[在启用基于计划的自动缩放的情况下部署 Spark 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased)。
+可以使用 Azure 资源管理器模板创建支持基于计划的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到 `computeProfile` > `workernode` 节。 `autoscale` 节点包含 `recurrence`，其中的 `timezone` 和 `schedule` 描述了更改生效的时间。 有关完整的资源管理器模板，请参阅[在启用基于计划的自动缩放的情况下部署 Spark 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.hdinsight/hdinsight-autoscale-schedulebased)。
 
 ```json
 {
@@ -251,25 +251,37 @@ Azure 门户中列出的群集状态可帮助你监视自动缩放活动。
 
 正在运行的作业将继续运行。 在可用的工作器节点变少的情况下，挂起的作业会等待安排。
 
+### <a name="configure-schedule-based-autoscale-based-on-usage-pattern"></a>根据使用模式配置基于计划的自动缩放
+
+配置基于计划的自动缩放时，需了解群集使用模式。 [Grafana 仪表板](./interactive-query/hdinsight-grafana.md)可帮助了解查询负载和执行槽。 可以从仪表板获取可用的执行程序槽和总执行程序槽。
+
+可以通过以下方式估计所需的工作器节点数。 建议提供额外 10% 的缓冲区来应对工作负载的变化。
+
+实际使用的执行程序槽数 = 执行程序槽总数 - 可用执行程序槽总数。
+
+所需的工作器节点数 = 实际使用的执行程序槽数/(hive.llap.daemon.num.executors + hive.llap.daemon.task.scheduler.wait.queue.size)
+
+*hive.llap.daemon.num.executors 可配置，且默认值为 4
+
+*hive.llap.daemon.task.scheduler.wait.queue.size 可配置，且默认值为 10
+
+
 ### <a name="be-aware-of-the-minimum-cluster-size"></a>了解最小的群集大小
 
 请勿将群集缩减到三个节点以下。 将群集缩放成少于三个节点可能导致系统停滞在安全模式下，因为没有进行充分的文件复制。 有关详细信息，请参阅[停滞在安全模式下](hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode)。
 
 ### <a name="increase-the-number-of-mappers-and-reducers"></a>增加映射器和减速器的数目
 
-适用于 Hadoop 群集的自动缩放功能也会监视 HDFS 使用情况。 如果 HDFS 非常繁忙，它会认为该群集仍需要当前资源。 如果查询中涉及大量数据，可增加映射器和减速器的数量，以提高并行度并加速 HDFS 操作。 这样一来，当有额外资源时，会触发适当的纵向缩减。 
+适用于 Hadoop 群集的自动缩放功能也会监视 HDFS 使用情况。 如果 HDFS 非常繁忙，它会认为该群集仍需要当前资源。 如果查询中涉及大量数据，可增加映射器和减速器的数量，以提高并行度并加速 HDFS 操作。 这样一来，当有额外资源时，会触发适当的纵向缩减。
 
 ### <a name="set-the-hive-configuration-maximum-total-concurrent-queries-for-the-peak-usage-scenario"></a>针对峰值使用方案设置名为“最大并发查询总数”的 Hive 配置
 
 自动缩放事件不会更改 Ambari 中名为“最大并发查询总数”的 Hive 配置。 这意味着，即使 Interactive Query 守护程序计数根据负载和计划进行纵向扩展和纵向缩减，Hive Server 2 交互式服务在任意时间点也只能处理给定数量的并发查询。 通常建议针对峰值使用方案设置此配置，以避免手动干预。
 
-但是，如果只有少量的工作器节点，并且最大并发查询总数的值配置过高，则可能会出现 Hive Server 2 重启失败的情况。 至少需要可容纳给定数量的 Tez Ams 的最小工作器节点数（等于最大并发查询配置总数）。 
+但是，如果只有少量的工作器节点，并且最大并发查询总数的值配置过高，则可能会出现 Hive Server 2 重启失败的情况。 至少需要可容纳给定数量的 Tez Ams 的最小工作器节点数（等于最大并发查询配置总数）。
 
 ## <a name="limitations"></a>限制
 
-### <a name="node-label-file-missing"></a>节点标签文件缺失
-
-HDInsight 自动缩放使用节点标签文件来确定节点是否准备好执行任务。 节点标签文件存储在具有 3 个副本的 HDFS 中。 如果群集大小大幅度地纵向缩减，并且有大量的临时数据，则全部三个副本都可能会被删除。 如果发生这种情况，群集将进入错误状态。
 
 ### <a name="interactive-query-daemons-count"></a>Interactive Query 守护程序计数
 

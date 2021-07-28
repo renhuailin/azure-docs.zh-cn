@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 204d83b96e3cbe26759d678126d8826d0b2e492e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a66b53cbcc8a072dce6b4f5f2f1f0cf1dc6322f
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100577839"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714325"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD 权利管理中的委托和角色
 
@@ -65,7 +65,7 @@ Hana 可以采用下面这种方式将访问管理委托给市场营销部、财
 
 | 用户 | 工作角色 | Azure AD 角色 | 权利管理角色 |
 | --- | --- | --- | --- |
-| Hana | IT 管理员 | 全局管理员或用户管理员 |  |
+| Hana | IT 管理员 | 全局管理员、标识治理管理员或用户管理员 |  |
 | Mamta | 市场营销部经理 | 用户 | 目录创建者和目录所有者 |
 | Bob | 市场营销部主管 | 用户 | 目录所有者 |
 | Jessica | 市场营销部项目经理 | 用户 | 访问包管理者 |

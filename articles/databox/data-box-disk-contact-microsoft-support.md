@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 05/24/2019
+ms.date: 05/04/2021
 ms.author: alkohli
-ms.openlocfilehash: d0c45626016049424c8028eea7ffbd7f281e9012
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2b3a89178648d90d1b9aa54fe7963a1baa7270ef
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91744145"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109735933"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>为 Azure Data Box 开具支持票证
 
@@ -83,5 +83,9 @@ ms.locfileid: "91744145"
 ## <a name="next-steps"></a>后续步骤
 
 了解如何[排查 Data Box Disk 相关的问题](data-box-disk-troubleshoot.md)。
-了解如何[排查 Data Box 相关的问题](data-box-troubleshoot.md)。
+
+了解如何[排查与 Data Box 相关的问题](data-box-troubleshoot.md)。
+
+了解如何[查看从 Data Box 或 Data Box Disk 设备上传时的复制错误](data-box-troubleshoot-data-upload.md)。
+
 了解如何[排查 Data Box Blob 存储相关的问题](data-box-troubleshoot-rest.md)。

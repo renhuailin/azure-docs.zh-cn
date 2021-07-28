@@ -1,21 +1,22 @@
 ---
-title: 使用范围筛选器预配应用 | Microsoft Docs
-description: 了解如何使用范围筛选器阻止应用中支持自动用户预配的对象进行预配（如果对象不满足业务要求）。
+title: 在 Azure Active Directory 应用程序预配中使用范围筛选器
+description: 了解如何使用范围筛选器阻止应用中支持自动用户预配的对象进行预配（如果对象不满足 Azure Active Directory 应用程序预配中的业务要求）。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.openlocfilehash: 7fff456b7ad6e980fc3c9bda36cfcab02e2ed863
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: arvinh
+ms.openlocfilehash: 640541bd001cbe2f0118bc5b82d9c9f26f01b9dc
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99255825"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109782912"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
 本文的目的是说明如何使用范围筛选器定义基于属性的规则，用于确定哪些用户将预配到应用程序。

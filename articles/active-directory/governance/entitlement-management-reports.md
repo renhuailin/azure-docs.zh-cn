@@ -3,7 +3,7 @@ title: 在权利管理中查看报表和日志 - Azure AD
 description: 了解如何在 Azure Active Directory 权利管理中查看用户分配报表和审核日志。
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: jocastel-MSFT
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
 ms.date: 12/23/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb44c1efd683b6febe9a355ef72c80cc6f2e40d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab1cd0da0e44f9b0dd496b72c3dff7630eb9d641
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97746620"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786260"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中查看报表和日志
 
@@ -35,7 +35,7 @@ Azure AD 权利管理报表和 Azure AD 审核日志提供有关用户对哪些�
 
 使用此报表，可以列出用户能够请求的所有访问包以及当前分配给该用户的访问包。
 
-**必备角色：** 全局管理员或用户管理员
+必备角色：全局管理员、标识治理管理员或用户管理员
 
 1. 依次单击“Azure Active Directory”、“标识监管”。  
 
@@ -59,7 +59,7 @@ Azure AD 权利管理报表和 Azure AD 审核日志提供有关用户对哪些�
 
 使用此报表可以列出权利管理中当前分配给用户的资源。 请注意，此报表适用于利用权利管理进行管理的资源。 用户可能有权访问权利管理之外的目录中的其他资源。
 
-**必备角色：** 全局管理员或用户管理员
+必备角色：全局管理员、标识治理管理员或用户管理员
 
 1. 依次单击“Azure Active Directory”、“标识监管”。  
 

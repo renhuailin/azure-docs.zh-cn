@@ -6,12 +6,12 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.date: 03/18/2021
-ms.openlocfilehash: c78778f9152fd4c07fb9e550e562cfef858333c8
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: dfa96948b7e582457a9f09eed89d5cbe3bbc762d
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786730"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750386"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>使用脚本设置设备
 
@@ -34,7 +34,7 @@ ms.locfileid: "104786730"
 VMware | Windows Server 2016，含 32 GB 内存，8 个 vCPU，约 80 GB 的磁盘存储
 Hyper-V | Windows Server 2016，含 16 GB 内存，8 个 vCPU，约 80 GB 的磁盘存储
 
-- 服务器还需要有一个外部虚拟交换机。 其需要静态或动态 IP 地址，并且要能访问 Internet。
+- 服务器还需要有一个外部虚拟交换机。 它需要静态或动态 IP 地址。 
 - 在部署设备之前，请先检查针对 [VMware 上服务器](migrate-appliance.md#appliance---vmware)和 [Hyper-V 上](migrate-appliance.md#appliance---hyper-v)服务器的详细设备要求。
 - 请勿在现有的 Azure Migrate 设备上运行脚本。
 
@@ -49,7 +49,7 @@ Hyper-V | Windows Server 2016，含 16 GB 内存，8 个 vCPU，约 80 GB 的磁
 1. 在下载文件的服务器上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-Public.zip SHA256```
+    - 示例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMware-Public.zip SHA256```
 3. 验证 Azure 公有云的最新设备版本和脚本：
 
     **算法** | **下载** | **SHA256**
@@ -62,7 +62,7 @@ Hyper-V | Windows Server 2016，含 16 GB 内存，8 个 vCPU，约 80 GB 的磁
 
 - 安装代理和 Web 应用程序。
 - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
-- 下载并安装 IIS 可重写模块。 [了解详细信息](https://www.microsoft.com/download/details.aspx?id=7435)。
+- 下载并安装 IIS 可重写模块。
 - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置。
 - 创建日志和配置文件，如下所示：
     - 配置文件：%ProgramData%\Microsoft Azure\Config
@@ -95,7 +95,7 @@ Hyper-V | Windows Server 2016，含 16 GB 内存，8 个 vCPU，约 80 GB 的磁
 1. 在下载文件的服务器上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-HyperV.zip SHA256```
+    - 示例： ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-HyperV.zip SHA256```
 
 3. 验证 Azure 公有云的最新设备版本和脚本：
 
@@ -109,7 +109,7 @@ Hyper-V | Windows Server 2016，含 16 GB 内存，8 个 vCPU，约 80 GB 的磁
 
 - 安装代理和 Web 应用程序。
 - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
-- 下载并安装 IIS 可重写模块。 [了解详细信息](https://www.microsoft.com/download/details.aspx?id=7435)。
+- 下载并安装 IIS 可重写模块。
 - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置。
 - 创建日志和配置文件，如下所示：
     - 配置文件：%ProgramData%\Microsoft Azure\Config

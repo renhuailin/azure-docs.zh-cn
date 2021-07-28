@@ -3,7 +3,7 @@ title: 在 Azure AD 权利管理中添加连接的组织 - Azure Active Director
 description: 了解如何允许组织外部的人员请求访问包，以便你可以进行项目协作。
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
 ms.date: 12/11/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f08c25749bbd21e3624dee898d9a8c97fd74164
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7371bd090581d2295e3e0e53ae27136e37c89191
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98059375"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786368"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中添加连接的组织
 
@@ -42,7 +42,7 @@ ms.locfileid: "98059375"
 - Graphic Design Institute 使用 Azure AD，其用户的用户主体名称以 graphicdesigninstitute.com 结尾。
 - Contoso 尚未使用 Azure AD。 Contoso 用户的用户主体名称以 *contoso.com* 结尾。
 
-在这种情况下，你可以配置两个连接的组织。 分别为 Graphic Design Institute 和 Contoso 创建一个连接的组织。 如果随后将两个连接的组织添加到策略，则每个组织中具有与该策略相匹配的用户主体名称的用户都可以请求访问包。 用户主体名称中的域为 *graphicdesigninstitute.com* 的用户将与 Graphic Design Institute 连接组织匹配，这些用户获允提交请求。 用户主体名称中的域为 *contoso.com* 的用户将与 Contoso 连接组织匹配，这些用户获允请求包。 而且，由于 Graphic Design Institute 使用 Azure AD，因此其主体名称与已添加到其租户的[已验证域](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name)匹配的任何用户（例如 graphicdesigninstitute.example）也可以通过使用相同的策略来请求访问包。
+在这种情况下，你可以配置两个连接的组织。 分别为 Graphic Design Institute 和 Contoso 创建一个连接的组织。 如果随后将两个连接的组织添加到策略，则每个组织中具有与该策略相匹配的用户主体名称的用户都可以请求访问包。 用户主体名称中的域为 contoso.com 的用户将与 Contoso 连接组织匹配，这些用户获允请求包。 用户主体名称中的域为 *graphicdesigninstitute.com* 的用户将与 Graphic Design Institute 连接组织匹配，这些用户获允提交请求。 而且，由于 Graphic Design Institute 使用 Azure AD，因此其主体名称与已添加到其租户的[已验证域](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name)匹配的任何用户（例如 graphicdesigninstitute.example）也可以通过使用相同的策略来请求访问包。 如果打开[电子邮件一次性密码 (OTP) 身份验证](../external-identities/one-time-passcode.md)，则包括尚未有 Azure AD 帐户、在访问资源时使用电子邮件 OTP 进行身份验证的域中的用户。 
 
 ![连接的组织示例](./media/entitlement-management-organization/connected-organization-example.png)
 
@@ -60,7 +60,7 @@ Azure AD 目录或域中的用户进行身份验证的方式取决于身份验�
 
 若要将外部 Azure AD 目录或域添加为连接的组织，请按照此部分中的说明进行操作。
 
-**必备角色**：全局管理员或用户管理员 
+必备角色：全局管理员、标识治理管理员或用户管理员  
 
 1. 在 Azure 门户中，依次选择“Azure Active Directory”、“标识监管”。 
 
@@ -140,7 +140,7 @@ Azure AD 目录或域中的用户进行身份验证的方式取决于身份验�
 
 ## <a name="managing-a-connected-organization-programmatically"></a>以编程方式管理连接的组织
 
-你还可以使用 Microsoft Graph 创建、列出、更新和删除连接的组织。 通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户可以调用 API 来管理 [connectedOrganization](/graph/api/resources/connectedorganization?view=graph-rest-beta) 对象并为其设置发起人。
+你还可以使用 Microsoft Graph 创建、列出、更新和删除连接的组织。 通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序，相应角色中的用户可以调用 API 来管理 [connectedOrganization](/graph/api/resources/connectedorganization?view=graph-rest-beta&preserve-view=true) 对象并为其设置发起人。
 
 ## <a name="state-properties-of-connected-organizations"></a>连接的组织的状态属性
 

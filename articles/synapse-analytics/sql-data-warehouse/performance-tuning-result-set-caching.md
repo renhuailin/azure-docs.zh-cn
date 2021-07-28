@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: d8c6c8d22c059c63fb4f84c84a02a70de30d4ebe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80827b5c891029092f144dd2f645220b798cc781
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678519"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565475"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>使用结果集缓存优化性能
 
@@ -44,7 +44,7 @@ ms.locfileid: "98678519"
 >[!NOTE]
 > - 某些非确定性函数和运行时表达式对相同数据的重复查询来说可以是确定性。 例如，ROW_NUMBER()。  
 > - 如果查询结果集中的行顺序/序列对应用程序逻辑很重要，请在查询中使用 ORDER BY。
-> - 如果 ORDER BY 列中的数据不是唯一的，无论是否启用或禁用结果集缓存，都不能保证 ORDER BY 列中值相同的行的行顺序。
+> - 如果 ORDER BY 列中的数据不是独一无二的，则无论是启用还是禁用结果集缓存，都不能保证 ORDER BY 列中值相同的行的行顺序。
 
 > [!IMPORTANT]
 > 创建结果集缓存以及从缓存中检索数据的操作在专用 SQL 池实例的控制节点上进行。

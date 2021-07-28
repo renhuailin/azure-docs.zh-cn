@@ -1,19 +1,20 @@
 ---
 title: 管理 Azure 存储帐户的默认访问层
 description: 了解如何更改 GPv2 或 Blob 存储帐户的默认访问层
-author: twooley
-ms.author: twooley
+author: tamram
+ms.author: tamram
 ms.date: 01/11/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: klaasl
-ms.openlocfilehash: 026ab6be1fd4ef79f818f796c4725f6613a9bc6d
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ee009c47188e104cfe1d5430be6e68a1c80132cb
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277379"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110666734"
 ---
 # <a name="manage-the-default-access-tier-of-an-azure-storage-account"></a>管理 Azure 存储帐户的默认访问层
 
@@ -47,7 +48,7 @@ ms.locfileid: "106277379"
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-以下 PowerShell 脚本可用于更改帐户层。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用你的存储帐户名初始化 `$accountName` 变量。
+以下 PowerShell 脚本可用于更改帐户层。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用存储帐户名称初始化 `$accountName` 变量。
 
 ```powershell
 #Initialize the following with your resource group and storage account names
@@ -56,6 +57,19 @@ $accountName = ""
 
 #Change the storage account tier to hot
 Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier Hot
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+以下 Azure CLI 脚本可用于更改帐户层。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用你的存储帐户名初始化 `$accountName` 变量。
+
+```azurecli
+#Initialize the following with your resource group and storage account names
+$rgName = ""
+$accountName = ""
+
+#Change the storage account tier to hot
+az storage account update --resource-group $rgName --name $accountName --access-tier Hot
 ```
 
 ---

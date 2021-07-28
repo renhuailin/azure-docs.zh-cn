@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
-ms.openlocfilehash: 8f48ed1aa7422d6925c3a7b0ad30b59a479e4614
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 96d9e64a7b3443b4c2e835bfe824bd7d9197cb1c
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034942"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109752150"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>将 Log Analytics 工作区移到其他订阅或资源组
 
@@ -43,7 +44,7 @@ ms.locfileid: "102034942"
 > - 如果已移动工作区，请禁用“分析”下的所有活动规则，并在五分钟后重新启用这些规则。 重申一下，此解决方案在大多数情况下应该是有效的，但不支持这样做，风险由你自己承担。
 > 
 > **重新创建警报**
-> - 所有警报必须在移动后重新创建，因为权限基于工作区的 Azure 资源 ID，而该 ID 在工作区移动期间会更改。
+> - 所有警报都必须在工作区的移动或重命名操作后重新创建，因为权限基于工作区的 Azure 资源 ID，该 ID 在工作区移动或资源名称更改期间会发生变化。
 >
 > **更新资源路径**
 > - 工作区移动之后，必须查看并更新指向工作区的任何 Azure 资源或外部资源，使之指向新的资源目标路径。

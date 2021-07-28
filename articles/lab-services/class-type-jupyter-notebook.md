@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: enewman
-ms.openlocfilehash: d4034f889334bcf1e4eaa3710a32db60b6a9936b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f84edf29e6c4e3bd111deb5ea4bd479ea2d6140
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94648015"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109716269"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>设置实验室以使用 Python 和 Jupyter Notebook 讲授数据科学
 本文介绍了如何在实验室服务中设置模板虚拟机 (VM)，使用其中的教学工具教授学生如何使用 [Jupyter Notebook](http://jupyter-notebook.readthedocs.io/)，以及学生如何在虚拟机 (VM) 上连接他们的笔记本。
@@ -42,6 +42,7 @@ Jupyter Notebooks 是一个开源项目，可让你轻松地在名为“笔记�
 | 虚拟机大小 | <p>根据运行的工作负荷选取大小：</p><ul><li>小型或中型 - 适用于访问 Jupyter Notebook 的基本设置</li><li>小型 GPU（计算）- 此大小最适用于计算密集型和网络密集型应用程序（如人工智能和深度学习）</li></ul> | 
 | 虚拟机映像 | <p>根据你的操作系统选取以下其中一个映像：</p><ul><li>[Data Science Virtual Machine – Windows Server 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019)</li><li>[Data Science Virtual Machine – Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804?tab=Overview)</li></ul> |
 
+创建具有小型 GPU（计算）大小的实验室时，可以选择[安装 GPU 驱动程序](./how-to-setup-lab-gpu.md#ensure-that-the-appropriate-gpu-drivers-are-installed)。  此选项会安装最新的 NVIDIA 驱动程序和计算统一设备体系结构 (CUDA) 工具包，这些是使用 GPU 启用高性能计算所必需的。  有关详细信息，请参阅[使用 GPU 虚拟机设置实验室](./how-to-setup-lab-gpu.md)一文。
 
 ### <a name="template-virtual-machine"></a>模板虚拟机
 创建实验室后，将根据所选的虚拟机大小和映像创建模板 VM。 为模板 VM 配置课堂的所有教授内容。 若要了解详细信息，请参阅[如何管理模板虚拟机](how-to-create-manage-template.md)。 
@@ -50,6 +51,53 @@ Jupyter Notebooks 是一个开源项目，可让你轻松地在名为“笔记�
 
 - [Jupyter Notebook](http://jupyter-notebook.readthedocs.io/)：这是一种 Web 应用程序，数据科学家通过这种应用可获取原始数据、运行计算，并查看相同环境中的所有结果。 该应用程序将在模板 VM 中本地运行。  
 - [Visual Studio Code](https://code.visualstudio.com/)：这是一种集成开发环境 (IDE)，可在编写和测试笔记本时提供丰富的交互式体验。 有关详细信息，请参阅[在 Visual Studio Code 中使用 Jupyter Notebook](https://code.visualstudio.com/docs/python/jupyter-support)。
+
+如果使用的是小型 GPU（计算）大小，建议验证是否使用 GPU 正确设置了数据科学框架和库。  若要正确设置框架和库，可能需要安装不同版本的 NVIDIA 驱动程序和 CUDA 工具包。  例如，要验证是否为 TensorFlow 配置了 GPU，可以连接到模板 VM 并在 Jupyter Notebooks 中运行以下 Python-TensorFlow 代码：
+
+```python
+import tensorflow as tf
+from tensorflow.python.client import device_lib
+
+print(device_lib.list_local_devices())
+```
+
+如果上述代码的输出如下所示，这意味着未为 TensorFlow 配置 GPU：
+
+```python
+[name: "/device:CPU:0"
+device_type: "CPU"
+memory_limit: 268435456
+locality {
+}
+incarnation: 15833696144144374634
+]
+```
+若要正确配置 GPU，应查阅框架或库的文档。  继续以上面的示例为例，TensorFlow 提供以下指导：
+- [TensorFlow GPU 支持](https://www.tensorflow.org/install/gpu)
+
+其指南涵盖了所需的 [NVIDIA 驱动程序](https://www.nvidia.com/drivers)和 [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit-archive) 版本。  其指南还包括安装 [NVIDIA CUDA 深度神经网络库 (cudDNN)](https://developer.nvidia.com/cudnn)。
+
+按照 TensorFlow 的步骤配置 GPU 后，重新运行上述代码时，应会看到类似于以下内容的输出：
+
+```python
+[name: "/device:CPU:0"
+device_type: "CPU"
+memory_limit: 268435456
+locality {
+}
+incarnation: 15833696144144374634
+, name: "/device:GPU:0"
+device_type: "GPU"
+memory_limit: 11154792128
+locality {
+  bus_id: 1
+  links {
+  }
+}
+incarnation: 2659412736190423786
+physical_device_desc: "device: 0, name: NVIDIA Tesla K80, pci bus id: 0001:00:00.0, compute capability: 3.7"
+]
+```
 
 ### <a name="provide-notebooks-for-the-class"></a>为课堂提供笔记本
 接下来的任务是向学生提供适用的笔记本。 若要适用自己的笔记本，可以在模板 VM 上本地保存笔记本。 
@@ -116,7 +164,7 @@ Jupyter Notebooks 是一个开源项目，可让你轻松地在名为“笔记�
      - **登录名**：学生
      - **SSH 端口**：12345
      - **会话类型**：XFCE
-6. 选择“确定”。 
+6. 选择“确定”  。 
 
     > [!NOTE]
      > 创建新的 X2Go 会话时，确保使用 SSH 端口，而不是 RDP 端口。
@@ -128,7 +176,6 @@ Jupyter Notebooks 是一个开源项目，可让你轻松地在名为“笔记�
     ![X2Go 客户端](./media/class-type-jupyter-notebook/x2go-client.png)
 2. 输入用于连接到 VM 的密码。 （可能必须授予 X2Go 绕过防火墙的权限才能完成连接。）
 3.  现在应会看到 Ubuntu Data Science VM 的图形界面。
-
 
 #### <a name="ssh-tunnel-to-jupyter-server-on-the-vm"></a>通过 SSH 隧道连接到 VM 上 Jupyter 服务器
 一些学生可能需要直接从其本地计算机直接连接到其 Vm 内的 Jupyter 服务器。 SSH 协议允许在本地计算机和远程服务器（在我们的用例中，即学生的实验室 VM）之间进行端口转发，因此，使在服务器特定端口上运行的应用程序可以通过“隧道”连接到本地计算机上的映射端口。 学生应按照以下步骤，通过 SSH 隧道连接到实验室 VM 上的 Jupyter 服务器：

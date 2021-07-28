@@ -1,22 +1,22 @@
 ---
-title: 使用 SCIM、Microsoft Graph 和 Azure AD 来预配用户并利用数据扩充应用
-description: 协同使用 SCIM 和 Microsoft Graph 来预配用户并使用应用程序需要的数据来扩充应用程序。
+title: 使用 SCIM、Microsoft Graph 和 Azure Active Directory 来预配用户并利用数据扩充应用
+description: 在 Azure Active Directory 中协同使用 SCIM 和 Microsoft Graph 来预配用户并使用应用程序需要的数据来扩充应用程序。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/26/2020
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: arvinh, celested
-ms.openlocfilehash: 0a5d84585f28f6d13cbceb1fec41d6cdabf6d08c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.reviewer: arvinh
+ms.openlocfilehash: 3e3b8670aebb52c1b1bf36d9ce933113b17b7714
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99255621"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784892"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>协同使用 SCIM 和 Microsoft Graph 来预配用户并使用应用程序需要的数据来扩充应用程序
 
@@ -117,5 +117,5 @@ DELETE /Users/5171a35d82074e068ce2 HTTP/1.1
 
 ## <a name="related-articles"></a>相关文章
 
-- [查看同步 Microsoft Graph 文档](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [查看同步 Microsoft Graph 文档](/graph/api/resources/synchronization-overview)
 - [将自定义 SCIM 应用与 Azure AD 集成](use-scim-to-provision-users-and-groups.md)

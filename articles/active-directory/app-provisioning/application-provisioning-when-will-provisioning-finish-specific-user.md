@@ -1,22 +1,22 @@
 ---
-title: 找出特定用户何时可以访问某个应用
+title: 查明特定用户何时能够访问 Azure Active Directory 应用程序预配中的应用
 description: 如何找出非常重要的用户何时可以访问已使用 Azure AD 配置用户预配的应用程序
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/03/2019
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9835ba2b6db2d71d0ff5825f2eb1996133e75537
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f972028b407ca5704fed5000142072231d65410b
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530820"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109782894"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>检查用户预配状态
 

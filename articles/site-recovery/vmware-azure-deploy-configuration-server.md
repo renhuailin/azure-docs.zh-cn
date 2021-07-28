@@ -2,18 +2,18 @@
 title: 在 Azure Site Recovery 中部署配置服务器
 description: 本文介绍如何通过 Azure Site Recovery 部署配置服务器，以便进行 VMware 灾难恢复
 services: site-recovery
-author: Rajeswari-Mamilla
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
-ms.topic: article
-ms.date: 10/15/2019
-ms.author: ramamill
-ms.openlocfilehash: a8ceb3df68ebe42f83c70ed62327bf59c0dfc225
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: conceptual
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: 9fd9dd63967dc5fb27b9db6931fdc60d57b405fb
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92359809"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576172"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -185,7 +185,7 @@ ms.locfileid: "92359809"
     否。 不要更改配置服务器的 IP 地址。 确保分配给配置服务器的所有 IP 是静态 IP，而不是 DHCP IP。
 * 是否可以在 Azure 上设置配置服务器？
 
-    使用与 v-Center 的直通连接在本地环境中设置配置服务器，这样可将数据传输延迟降至最低。 可出于[故障回复目的](vmware-azure-manage-configuration-server.md#failback-requirements)对配置服务器进行计划备份。
+    使用与 vCenter 的直通连接在本地环境中设置配置服务器，这样可将数据传输延迟降至最低。 可出于[故障回复目的](vmware-azure-manage-configuration-server.md#failback-requirements)对配置服务器进行计划备份。
 
 * 是否可以更改配置服务器或横向扩展进程服务器上的缓存驱动程序？
 

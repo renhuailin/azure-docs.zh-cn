@@ -1,6 +1,6 @@
 ---
-title: 创建测试产品/服务
-description: 如何在 Microsoft 合作伙伴中心的商业市场计划中创建单独的开发产品/服务，以供测试生产产品/服务。
+title: 创建测试 SaaS 产品/服务
+description: 创建单独的开发产品/服务，用于在 Azure 市场中测试生产产品/服务。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 04/20/2021
-ms.openlocfilehash: 318eebcca3053be2164a1fc52905f36f26b11a6d
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 3c71dc08f58c73cf1fe35d4c2b42d30b30867a1e
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331117"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559027"
 ---
-# <a name="create-a-test-offer"></a>创建测试产品/服务
+# <a name="create-a-test-saas-offer"></a>创建测试 SaaS 产品/服务
 
 要在与生产产品/服务不同的环境中进行开发，你将创建一个单独的测试和开发 (DEV) 产品/服务以及一个单独的生产 (PROD) 产品/服务。 如需了解使用单独的 DEV 产品/服务的好处，请参阅[规划 SaaS 产品/服务](plan-saas-offer.md#test-offer)。
 

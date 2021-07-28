@@ -4,12 +4,12 @@ description: 在规划 Service Fabric 群集时要考虑节点类型、持久性
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: b3361337bb0cf60e47efe198aad7aa8cc20ae7b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0b04bc99abc2f9864ed22078f809702390d9f547
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101714929"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110695455"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
 
@@ -53,9 +53,9 @@ ms.locfileid: "101714929"
 
 * ***你的群集是否跨越可用性区域？***
 
-    Service Fabric 通过部署固定到特定区域的节点类型来支持跨[可用性区域](../availability-zones/az-overview.md)的群集，从而确保应用程序的高可用性。 可用性区域需要其他节点类型规划和最低要求。 有关详细信息，请参阅[跨可用性区域 Service Fabric 群集的主节点类型的建议拓扑](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones)。 
+    Service Fabric 通过部署固定到特定区域的节点类型来支持跨[可用性区域](../availability-zones/az-overview.md)的群集，从而确保应用程序的高可用性。 可用性区域需要其他节点类型规划和最低要求。 有关详细信息，请参阅[跨可用性区域跨越主节点类型的建议拓扑](service-fabric-cross-availability-zones.md#recommended-topology-for-spanning-a-primary-node-type-across-availability-zones)。
 
-为集群的初始创建确定节点类型的数量和属性时，请记住，部署集群后，随时可以添加、修改或删除（非主要）节点类型。 也可以在正在运行的集群中[修改主节点类型](service-fabric-scale-up-primary-node-type.md)（尽管在生产环境中执行此类操作需要大量的计划和谨慎工作）。
+为集群的初始创建确定节点类型的数量和属性时，请记住，部署集群后，随时可以添加、修改或删除（非主要）节点类型。 在正在运行的群集中，[主节点类型也可以纵向扩展或缩减](service-fabric-scale-up-primary-node-type.md)。不过，要做到这一点，需要创建一个新的节点类型，将工作负载转移过去，然后删除原始的主节点类型。
 
 节点类型属性的另一个考虑因素是持续性级别，它决定该节点类型的 VM 在 Azure 基础结构中拥有的权限。 使用你为群集选择的 VM 的大小以及为各个节点类型分配的实例计数，帮助确定每种节点类型的适当持续性层，如下所述。
 
@@ -111,7 +111,7 @@ ms.locfileid: "101714929"
 * 为任何已启用“黄金”或“白银”耐久性级别的虚拟机规模集保留至少五个节点。 如果横向缩减到此阈值以下，群集将进入错误状态，需要手动清除已删除节点的状态 (`Remove-ServiceFabricNodeState`)。
 * 持续性级别为“白银”或“黄金”的每个虚拟机规模集，在 Service Fabric 群集中都必须映射到其自己的节点类型。 将多个虚拟机规模集映射到单个节点类型，将阻碍 Service Fabric 群集和 Azure 基础结构间的协调正常工作。
 * 不要删除随机 VM 实例，请始终使用虚拟机规模集横向缩减功能。 删除随机 VM 实例可能会在分布于[升级域](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains)和[故障域](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains)的 VM 实例中造成不平衡。 这一失衡可能会对系统在服务实例/服务副本之间进行适当负载均衡的能力产生负面影响。
-* 如果使用自动缩放，请设置规则，使得在同一时间仅对一个节点进行横向缩减（删除 VM 实例）。 一次减少多个实例是不安全的。
+* 如果使用自动缩放，请设置规则，使得在同一时间仅对一个节点进行横向缩减（删除 VM 实例）。 一次横向缩减多个实例是不安全的。
 * 如果在主节点类型上删除或取消分配 VM，切勿将已分配 VM 数降至可靠性层所需数量以下。 在耐久性级别为“白银”或“黄金”的规模集中，这些操作会被无限期阻止。
 
 ### <a name="changing-durability-levels"></a>更改耐久性级别

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 9b18b24686908ac92f97ea0cae892369919ae4d6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f71084e9c13bd1a30f5d5f01a04172671074db03
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721010"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111525203"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。 另请参阅适用于 MySQL 数据库引擎的[常规限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)。
@@ -52,7 +52,7 @@ MySQL 服务不允许直接访问基础文件系统。 不支持某些数据操�
 不支持以下项：
 - DBA 角色：受限制。 另外，使用管理员用户（在新建服务器的过程中创建）可执行大部分 DDL 和 DML 语句。 
 - SUPER 特权：类似地，[SUPER 特权](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super)也受到限制。
-- DEFINER：需要创建并限制超级权限。 如果使用备份导入数据，请在执行 mysqldump 时手动删除或使用 `--skip-definer` 命令删除 `CREATE DEFINER` 命令。
+- DEFINER：需要创建并限制超级权限。 如果使用备份导入数据，请手动删除 `CREATE DEFINER` 命令，或者在执行 [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html) 时使用 `--skip-definer` 命令。
 - 系统数据库：[mysql 系统数据库](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)为只读数据库，用于支持各种 PaaS 功能。 不能对 `mysql` 系统数据库进行更改。
 - `SELECT ... INTO OUTFILE`：在该服务中不受支持。
 - `LOAD_FILE(file_name)`：在该服务中不受支持。

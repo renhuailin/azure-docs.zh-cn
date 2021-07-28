@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/26/2021
+ms.date: 03/30/2021
 ms.author: justinha
-ms.openlocfilehash: 8eb1560887c08c3f64fa599c39e5577242d2a1e8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 8bcd3ebef027ec72728be21b0fe1504236f553ba
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101689056"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058164"
 ---
-# <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services"></a>副本集 Azure Active Directory 域服务的概念和功能
+# <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services"></a>Azure Active Directory 域服务的副本集概念和功能
 
 创建 Azure Active Directory 域服务 (Azure AD DS) 托管域时，需定义唯一的命名空间。 此命名空间是域名（如 aaddscontoso.com），两个域控制器 (DC) 随后会部署到所选 Azure 区域。 DC 的这种部署称为副本集。
 
@@ -54,7 +54,7 @@ ms.locfileid: "101689056"
 
 托管域的默认 SKU 为 Enterprise SKU，它支持多个副本集。 如果更改为标准 SKU，则需创建其他副本集，请[将托管域升级](change-sku.md)到 Enterprise 或 Premium  。
 
-支持的最大副本集数量为四，包括创建托管域时创建的第一个副本。
+支持的副本集最大数量为 5，包括创建托管域时创建的第一个副本。
 
 每个副本集的计费基于域配置 SKU。 例如，如果你有一个使用 Enterprise SKU 的托管域，且有三个副本集，则对于三个副本集中的每个副本集，你的订阅都将按小时计费。
 
@@ -66,7 +66,7 @@ ms.locfileid: "101689056"
 
 ### <a name="how-many-replica-sets-can-i-create"></a>可以创建多少个副本集？
 
-你最多可以创建四个副本集：托管域的初始副本集，以及三个额外的副本集。
+你最多可以创建 5 个副本集 - 托管域的初始副本集外加 4 个附加副本集。
 
 ### <a name="how-does-user-and-group-information-get-synchronized-to-my-replica-sets"></a>如何将用户和组信息同步到我的副本集？
 

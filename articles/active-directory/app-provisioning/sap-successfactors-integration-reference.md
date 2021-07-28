@@ -1,23 +1,24 @@
 ---
 title: Azure Active Directory 和 SAP SuccessFactors 集成参考
-description: 从技术上深入了解 SAP SuccessFactors-HR 驱动的预配
+description: 从技术上深入了解 SAP SuccessFactors-HR 驱动的 Azure Active Directory 预配。
 services: active-directory
-author: cmmdesai
-manager: daveba
+author: kenwith
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/19/2021
-ms.author: chmutali
-ms.openlocfilehash: ed97600ca1802629f81f93f4f51c92ad4b1c9bd1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/11/2021
+ms.author: kenwith
+ms.reviewer: chmutali
+ms.openlocfilehash: 7c7ba58383481e2b776b27015f98080b35f3084d
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99256215"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784928"
 ---
-# <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Azure Active Directory 预配如何与 SAP SuccessFactors 集成 
+# <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Azure Active Directory 预配与 SAP SuccessFactors 的集成方式 
 
 [Azure Active Directory 用户预配服务](../app-provisioning/user-provisioning.md)与 [SAP SuccessFactors Employee Central](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html) 相集成，以便于管理用户的标识生命周期。 Azure Active Directory 提供三个预生成集成： 
 
@@ -52,7 +53,7 @@ Azure AD 预配服务使用基本身份验证连接到 Employee Central OData AP
 | 3  | PerPhone                               | phoneNav                     | 始终           |
 | 4  | PerEmail                               | emailNav                     | 始终           |
 | 5  | EmpEmployment                          | employmentNav                | 始终           |
-| 6  | User                                   | employmentNav/userNav        | 始终           |
+| 6  | 用户                                   | employmentNav/userNav        | 始终           |
 | 7  | EmpJob                                 | employmentNav/jobInfoNav     | 始终           |
 | 8  | EmpEmploymentTermination               | activeEmploymentsCount       | 始终           |
 | 9  | 用户的经理                         | employmentNav/userNav/manager/empInfo | 始终  |
@@ -78,11 +79,11 @@ Azure AD 预配服务使用基本身份验证连接到 Employee Central OData AP
 > [!div class="mx-tdCol2BreakAll"]
 >| 参数 | 说明 |
 >| ----------|-------------|
->| OData API 主机 | 将 https 追加到租户 URL。 示例：`https://api4.successfactors.com` |
+>| OData API 主机 | 将 https 追加到租户 URL。 示例： `https://api4.successfactors.com` |
 >| OData API 终结点 | `/odata/v2/PerPerson` |
 >| OData $format 查询参数 | `json` |
 >| OData $filter 查询参数 | `(personEmpTerminationInfoNav/activeEmploymentsCount ge 1) and (lastModifiedDateTime le <CurrentExecutionTime>)` |
->| OData $expand 查询参数 | 此参数值取决于映射的特性。 示例：`employmentNav/userNav,employmentNav/jobInfoNav,personalInfoNav,personEmpTerminationInfoNav,phoneNav,emailNav,employmentNav/jobInfoNav/companyNav/countryOfRegistrationNav,employmentNav/jobInfoNav/divisionNav,employmentNav/jobInfoNav/departmentNav` |
+>| OData $expand 查询参数 | 此参数值取决于映射的特性。 示例： `employmentNav/userNav,employmentNav/jobInfoNav,personalInfoNav,personEmpTerminationInfoNav,phoneNav,emailNav,employmentNav/jobInfoNav/companyNav/countryOfRegistrationNav,employmentNav/jobInfoNav/divisionNav,employmentNav/jobInfoNav/departmentNav` |
 >| OData customPageSize 查询参数 | `100` |
 
 > [!NOTE]
@@ -295,7 +296,7 @@ JSONPath 是适用于 JSON 的一种查询语言，类似于 XML 的 XPath。 �
 | 1 | * 仅将业务电子邮件设置为主要联系方式。 <br> * 不设置电话号码。 | true | true | false | \[不设置\] | \[不设置\] | 
 | 2 | * 在 SuccessFactors 中，业务电子邮件和业务电话是主要联系方式 <br> * 始终将 Azure AD 电话号码传送到业务电话，并将移动电话传送到手机。 | true | true | false | telephoneNumber | mobile | 
 | 3 | * 在 SuccessFactors 中，业务电子邮件和手机是主要联系方式 <br> * 始终将 Azure AD 电话号码传送到业务电话，并将移动电话传送到手机 | true | false | true |  telephoneNumber | mobile | 
-| 4 | * 在 SuccessFactors 中，业务电子邮件是主要联系方式 <br> * 在 Azure AD 中，检查工作电话号码是否存在，如果存在，则检查移动电话号码是否也存在；仅当移动电话号码不存在时，才将工作电话号码标记为主要联系方式。 | 是 | 使用表达式映射：`IIF(IsPresent([telephoneNumber]), IIF(IsPresent([mobile]),"false", "true"), "false")` | 使用表达式映射：`IIF(IsPresent([mobile]),"false", "true")` | telephoneNumber | mobile | 
+| 4 | * 在 SuccessFactors 中，业务电子邮件是主要联系方式 <br> * 在 Azure AD 中，检查工作电话号码是否存在，如果存在，则检查移动电话号码是否也存在；仅当移动电话号码不存在时，才将工作电话号码标记为主要联系方式。 | true | 使用表达式映射：`IIF(IsPresent([telephoneNumber]), IIF(IsPresent([mobile]),"false", "true"), "false")` | 使用表达式映射：`IIF(IsPresent([mobile]),"false", "true")` | telephoneNumber | mobile | 
 | 5 | * 在 SuccessFactors 中，业务电子邮件和业务电话是主要联系方式。 <br> * 在 Azure AD 中，如果移动电话可用，请将其设置为业务电话，否则请使用 telephoneNumber。 | true | true | false | `IIF(IsPresent([mobile]), [mobile], [telephoneNumber])` | \[不设置\] | 
 
 * 如果写回特性映射中没有电话号码的映射，则写回中仅包括电子邮件。

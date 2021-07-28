@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 04/22/2021
+ms.date: 06/07/2021
 ms.author: duau
-ms.openlocfilehash: 77b9cd7590b381a29fc0dc19b2a80b72afceca0a
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 848134fec184febcdc5cde722fbec8e55d149d14
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930292"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747988"
 ---
 # <a name="azure-route-server-preview-faq"></a>Azure 路由服务器（预览版）常见问题解答
 
@@ -47,7 +47,7 @@ Azure 路由服务器仅支持边界网关协议 (BGP)。 NVA 需要支持多跃
 不是。 Azure 路由服务器仅与 NVA 交换 BGP 路由。 数据流量直接从 NVA 流入目标 VM，并直接从 VM 流入 NVA。
 
 ### <a name="does-azure-route-server-store-customer-data"></a>Azure 路由服务器是否存储客户数据？
-不知道。 Azure 路由服务器仅与 NVA 交换 BGP 路由，然后将其传播到虚拟网络。
+不是。 Azure 路由服务器仅与 NVA 交换 BGP 路由，然后将其传播到虚拟网络。
 
 ### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-how-does-it-handle-them"></a>如果 Azure 路由服务器接收来自多个 NVA 的相同路由，它会如何处理这些路由？
 
@@ -71,6 +71,12 @@ Azure 或 IANA 保留的 ASN 如下所示：
 ### <a name="can-i-use-32-bit-4-byte-asns"></a>能否使用 32 位（4 字节）ASN？
 
 不能，Azure 路由服务器仅支持 16 位（2 字节）ASN。
+
+### <a name="can-i-peer-two-route-servers-in-two-peered-virtual-networks-and-enable-the-nvas-connected-to-the-route-servers-to-talk-to-each-other"></a>能否在两个对等互连的虚拟网络中将两个路由服务器对等互连，使连接到路由服务器的 NVA 能够相互通信？ 
+
+***拓扑：NVA1 -> RouteServer1 ->（通过 VNet 对等互连）-> RouteServer2 -> NVA2***
+
+不能，Azure 路由服务器不会转发数据流量。 若要通过 NVA 启用传输连接，请在 NVA 之间设置直接连接（例如，IPsec 隧道），并利用路由服务器进行动态路由传播。 
 
 ## <a name="route-server-limits"></a><a name = "limitations"></a>路由服务器限制
 

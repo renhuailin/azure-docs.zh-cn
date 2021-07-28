@@ -5,13 +5,13 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 01/04/2021
-ms.openlocfilehash: 4dc718f21f2ef3beabc31821bd60b571ac07be05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/07/2021
+ms.openlocfilehash: c0f81c5abdffe307550d2b0b3e1f86f67f867f5a
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98018745"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591289"
 ---
 # <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job-preview"></a>使用托管标识通过 Azure 流分析作业访问事件中心（预览版）
 
@@ -56,13 +56,16 @@ Azure 流分析支持针对 Azure 事件中心的输入和输出进行托管标�
    |---------|-----|
    |角色|Azure 事件中心数据所有者|
    |将访问权限分配到|用户、组或服务主体|
-   |选择|输入流分析作业的名称|
+   |Select|输入流分析作业的名称|
 
    :::image type="content" source="media/event-hubs-managed-identity/add-role-assignment.png" alt-text="添加角色分配":::
 
 1. 选择“保存”，并等待大约一分钟，以便传播所做的更改。
 
 还可以在事件中心命名空间级别授予此角色，这样就会将权限自然地传播到在该级别下创建的所有事件中心。 也就是说，某个命名空间下的所有事件中心都可以用作流分析作业中的托管标识身份验证资源。
+
+> [!NOTE]
+> 由于全局复制或缓存延迟，在撤销或授予权限时可能会有延迟。 更改应在 8 分钟内反映出来。
 
 ## <a name="create-anevent-hub-input-or-output"></a>创建事件中心输入或输出  
 

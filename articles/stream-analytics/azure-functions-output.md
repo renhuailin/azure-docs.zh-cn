@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: e5ea7a1abbbd6ab4be32955179227fbd539cf641
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/28/2021
+ms.openlocfilehash: ccedab6284fd5dac5a3d9f8d221a22803a3571f8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019612"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110666664"
 ---
 # <a name="azure-functions-output-from-azure-stream-analytics"></a>从 Azure 流分析输出的 Azure Functions
 
@@ -25,7 +25,7 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 提供具有以下
 | --- | --- |
 | 函数应用 |Azure Functions 应用的名称。 |
 | 函数 |Azure Functions 应用中的函数的名称。 |
-| 密钥 |若要使用其他订阅中的 Azure 函数，可提供用于访问该函数的密钥。 |
+| 键 |若要使用其他订阅中的 Azure 函数，可提供用于访问该函数的密钥。 |
 | 最大批大小 |此属性可用于设置将发送到 Azure 函数的每个输出批的最大大小。 输入单元以字节为单位。 默认情况下，此值为 262,144 字节 (256 KB)。 |
 | 最大批数  |一个用于指定发送到 Azure Functions 的每个批中的最大事件数的属性。 默认值为 100。 |
 
@@ -45,6 +45,11 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 提供具有以下
 ## <a name="output-batch-size"></a>输出批大小
 
 默认批大小为 262,144 字节 (256 KB)。 每批的默认事件计数为 100。 批大小是可配置的，可在流分析输出选项中增大或减小。
+
+## <a name="limitation"></a>限制
+
+Azure Functions 应该在 100 秒内完成其请求，因为 HTTP 客户端会在 100 秒后超时。 如果 Azure Functions 处理一批数据的时间超过 100 秒，就会出现一个会触发重试的超时。 此重试可能导致数据重复，因为 Azure Functions 会再次处理数据并可能产生相同的输出（因为它可能已在前一个请求中部分输出）
+
 
 ## <a name="next-steps"></a>后续步骤
 

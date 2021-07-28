@@ -3,18 +3,18 @@ title: 配置维护时段（预览版）
 description: 了解如何设置要对 Azure SQL 数据库、弹性池和托管实例数据库执行计划内维护的时间。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: deployment-configuration
 ms.topic: how-to
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
-ms.date: 03/04/2021
-ms.openlocfilehash: 210f0c52a2b27492bfa2181473043df3537157d2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+author: scott-kim-sql
+ms.author: scottkim
+ms.reviewer: mathoma
+ms.date: 03/23/2021
+ms.openlocfilehash: f2f12238d5c75b2d36d09efa2fddd76bf6b1ec1d
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183193"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694371"
 ---
 # <a name="configure-maintenance-window-preview"></a>配置维护时段（预览版）
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "102183193"
 并非在每个服务级别或每个区域中都可以改用其他维护时段。 有关可用性的详细信息，请参阅[维护时段可用性](maintenance-window.md#availability)。
 
 > [!Important]
-> 配置维护时段是一种长时间运行的异步操作，类似于更改 Azure SQL 资源的服务层级。 该资源在操作过程中可用，只在操作结束时会发生短暂的故障转移，并且即使在中断长时间运行的事务的情况下，通常最多也会持续 8 秒。 若要将故障转移的影响降至最低，应在高峰时段之外执行操作。
+> 配置维护时段是一种长时间运行的异步操作，类似于更改 Azure SQL 资源的服务层级。 该资源在操作过程中可用，只在操作结束时会发生短暂的重新配置，即使在长期运行的事务中断的情况下，通常最多也仅持续 8 秒。 若要将重新配置的影响降至最低，应在高峰时段之外执行操作。
 
 ## <a name="configure-maintenance-window-during-database-creation"></a>在创建数据库期间配置维护时段 
 
@@ -178,7 +178,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ### <a name="discover-sql-database-and-elastic-pool-maintenance-windows"></a>发现 SQL 数据库和弹性池维护时段
 
-以下示例使用 [az maintenance public-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list) 命令返回 eastus2 区域的可用维护时段。 对于数据库和弹性池，请将 `maintenanceScope` 设置为 `SQLDB`。
+以下示例使用 [az maintenance public-configuration list](/cli/azure/maintenance/public-configuration#az_maintenance_public_configuration_list) 命令返回 eastus2 区域的可用维护时段。 对于数据库和弹性池，请将 `maintenanceScope` 设置为 `SQLDB`。
 
    ```azurecli
    location="eastus2"
@@ -188,7 +188,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ### <a name="discover-sql-managed-instance-maintenance-windows"></a>发现 SQL 托管实例维护时段
 
-以下示例使用 [az maintenance public-configuration list](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list) 命令返回 eastus2 区域的可用维护时段。 对于托管实例，请将 `maintenanceScope` 设置为 `SQLManagedInstance`。
+以下示例使用 [az maintenance public-configuration list](/cli/azure/maintenance/public-configuration#az_maintenance_public_configuration_list) 命令返回 eastus2 区域的可用维护时段。 对于托管实例，请将 `maintenanceScope` 设置为 `SQLManagedInstance`。
 
    ```azurecli
    az maintenance public-configuration list --query "[?location=='eastus2'&&contains(maintenanceScope,'SQLManagedInstance')]"
@@ -257,7 +257,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 ## <a name="configure-maintenance-window-for-existing-databases"></a>为现有数据库配置维护时段
 
 
-将所选的维护时段应用于数据库时，在某些情况下可能会经历短暂的故障转移过程（持续几秒钟），因为 Azure 要应用所需的更改。
+将所选的维护时段应用于数据库时，在某些情况下可能会经历短暂的重新配置过程（几秒钟），因为 Azure 要应用所需的更改。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

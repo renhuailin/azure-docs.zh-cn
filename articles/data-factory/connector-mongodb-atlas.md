@@ -1,28 +1,28 @@
 ---
-title: 从 MongoDB Atlas 复制数据
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 MongoDB Atlas 复制到支持的接收器数据存储。
+title: 从 MongoDB Atlas 复制数据或将数据复制到其中
+description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 MongoDB Atlas 复制到支持的接收器数据存储，或者从支持的源数据存储复制到 MongoDB Atlas。
 author: jianleishen
 ms.author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 09/28/2020
-ms.openlocfilehash: 517f32a526ed6695c7890a330359f52667367979
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 06/01/2021
+ms.openlocfilehash: 07e3d801f1f8d6cfebd6c31daf00d92ccc7b8444
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487666"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747484"
 ---
-# <a name="copy-data-from-mongodb-atlas-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB Atlas 复制数据
+# <a name="copy-data-from-or-to-mongodb-atlas-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB Atlas 复制数据或将数据复制到其中
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 MongoDB Atlas 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 MongoDB Atlas 数据库复制数据和将数据复制到其中。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-可以将数据从 MongoDB Atlas 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
+可以将 MongoDB Atlas 数据库中的数据复制到任意受支持的接收器数据存储，或将任意受支持的源数据存储中的数据复制到 MongoDB Atlas 数据库。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 具体而言，此 MongoDB Atlas 连接器支持的版本最高为 4.2。
 
@@ -40,7 +40,7 @@ ms.locfileid: "109487666"
 
 MongoDB Atlas 链接服务支持以下属性：
 
-| properties | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：**MongoDbAtlas** |是 |
 | connectionString |指定 MongoDB Atlas 连接字符串，例如 `mongodb+srv://<username>:<password>@<clustername>.<randomString>.<hostName>/<dbname>?<otherProperties>`。 <br/><br /> 还可以将连接字符串置于 Azure Key Vault 中。 有关更多详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
@@ -70,7 +70,7 @@ MongoDB Atlas 链接服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 MongoDB Atlas 数据集支持以下属性：
 
-| properties | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**MongoDbAtlasCollection** | 是 |
 | collectionName |MongoDB Atlas 数据库中集合的名称。 |是 |
@@ -96,13 +96,13 @@ MongoDB Atlas 链接服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 MongoDB Atlas 源支持的属性列表。
+有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 MongoDB Atlas 源和接收器支持的属性列表。
 
 ### <a name="mongodb-atlas-as-source"></a>MongoDB Atlas 作为源
 
 复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**MongoDbAtlasSource** | 是 |
 | filter | 使用查询运算符指定选择筛选器。 若要返回集合中的所有文档，请省略此参数或传递空文档 ({})。 | 否 |
@@ -153,13 +153,66 @@ MongoDB Atlas 链接服务支持以下属性：
 ]
 ```
 
-## <a name="export-json-documents-as-is"></a>按原样导出 JSON 文档
+### <a name="mongodb-atlas-as-sink"></a>MongoDB Atlas 作为接收器
 
-可以使用此 MongoDB Atlas 连接器将 JSON 文档按原样从 MongoDB Atlas 集合导出到各种基于文件的存储或 Azure Cosmos DB。 若要实现这种架构不可知的复制，请跳过数据集中的“结构”（也称为“架构”）节和复制活动中的架构映射  。
+复制活动 **sink** 节支持以下属性：
+
+| 属性 | 说明 | 必须 |
+|:--- |:--- |:--- |
+| type | 复制活动接收器的“type”属性必须设置为“MongoDbAtlasSink”。  |是 |
+| writeBehavior |介绍如何将数据写入 MongoDB Atlas。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 `_id` 的文档，则替换该文档；否则将插入该文档。<br /><br />备注：如果未在原始文档中或通过列映射指定 `_id`，则数据工厂会自动为文档生成 `_id`。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
+| writeBatchSize | **writeBatchSize** 属性控制每个批中可写入的文档大小。 可尝试增大 **writeBatchSize** 的值以提高性能，并在文档大小较大时减小该值。 |否<br />（默认值为 **10,000**） |
+| writeBatchTimeout | 超时前等待批插入操作完成的时间。允许的值为 timespan。 | 否<br/>（默认值为 **00:30:00** - 30 分钟） |
+
+>[!TIP]
+>若要按原样导入 JSON 文档，请参阅[导入或导出 JSON 文档](#import-and-export-json-documents)部分；若要从表格形数据复制，请参阅[架构映射](#schema-mapping)。
+
+**示例**
+
+```json
+"activities":[
+    {
+        "name": "CopyToMongoDBAtlas",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<Document DB output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "MongoDbAtlasSink",
+                "writeBehavior": "upsert"
+            }
+        }
+    }
+]
+```
+
+## <a name="import-and-export-json-documents"></a>导入和导出 JSON 文档
+
+可以使用此 MongoDB Atlas 连接器轻松地：
+
+* 在两个 MongoDB Atlas 集合之间按原样复制文档。
+* 将各种源（包括 Azure Cosmos DB、Azure Blob 存储、Azure Data Lake Store 和 Azure 数据工厂所支持的其他基于文件的存储）中的 JSON 文档导入 MongoDB Atlas。
+* 将 JSON 文档从 MongoDB Atlas 集合导出到各种基于文件的存储。
+
+若要实现这种架构不可知的复制，请跳过数据集中的“结构”（也称为“架构”）节和复制活动中的架构映射  。
+
 
 ## <a name="schema-mapping"></a>架构映射
 
-若要将数据从 MongoDB Atlas 复制到表格接收器，请参阅[架构映射](copy-activity-schema-and-type-mapping.md#schema-mapping)。
+要将数据从 MongoDB Atlas 复制到表格接收器或进行反向复制，请参阅[架构映射](copy-activity-schema-and-type-mapping.md#schema-mapping)。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

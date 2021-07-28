@@ -1,18 +1,18 @@
 ---
 title: 查看服务提供商活动
-description: 客户可以查看日志记录的活动，以了解服务提供商通过 Azure 委托资源管理执行的操作。
-ms.date: 12/11/2020
+description: 客户可以查看日志记录的活动，以了解服务提供商通过 Azure Lighthouse 执行的操作。
+ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 40deca310eea2fc9618cfc83d34caadcf2b2b14d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ef9f8e76c9b6c2ab23c4075b81874816ff784f67
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100571741"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785944"
 ---
 # <a name="view-service-provider-activity"></a>查看服务提供商活动
 
-已为 [Azure Lighthouse](../overview.md) 委托了订阅的客户可以[查看 Azure 活动日志](../../azure-monitor/essentials/platform-logs-overview.md)数据，以了解所有执行的操作。 这样，客户就能够全面了解服务提供商正在通过 [Azure 委托资源管理](../concepts/azure-delegated-resource-management.md)执行的操作，以及客户自己的 Azure Active Directory (Azure AD) 租户中用户执行的操作。
+已为 [Azure Lighthouse](../overview.md) 委托了订阅的客户可以[查看 Azure 活动日志](../../azure-monitor/essentials/platform-logs-overview.md)数据，以了解所有执行的操作。 这样，客户就能够全面了解服务提供商正在通过 [Azure 委托资源管理](../concepts/architecture.md)执行的操作，以及客户自己的 Azure Active Directory (Azure AD) 租户中用户执行的操作。
 
 > [!TIP]
 > 我们还提供 Azure Policy 内置策略定义，以便[将委托限制在特定托管租户](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/AllowCertainManagingTenantIds_Deny.json)，并[审核对托管租户的范围委托](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json)。 有关详细信息，请参阅[审核环境中的委托](view-manage-service-providers.md#audit-delegations-in-your-environment)。

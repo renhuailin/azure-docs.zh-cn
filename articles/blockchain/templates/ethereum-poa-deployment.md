@@ -4,13 +4,13 @@ description: 在 Azure 上使用 Ethereum 权威证明联盟解决方案部署�
 ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: 70c9498bae9117585963e111bea4f1e127cab232
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: contperf-fy21q3, devx-track-azurepowershell
+ms.openlocfilehash: 58615f1d57c5b97da555e894bcc33dcf98dee204
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097935"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110705236"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>在 Azure 上部署 Ethereum 权威证明联盟解决方案模板
 
@@ -169,8 +169,8 @@ F16s|高级·SSD|high|high|low
 监视 | 启用监视的选项 | 启用
 连接到现有 Azure Monitor 日志 | 用于创建新 Azure Monitor 日志实例或加入现有实例的选项 | 新建
 位置 | 部署新实例的区域 | 美国东部
-现有日志分析工作区 ID（连接到现有 Azure Monitor 日志 = 加入现有）|现有 Azure Monitor 日志实例的工作区 ID||NA
-现有日志分析主键（连接到现有 Azure Monitor 日志 = 加入现有）|用于连接到现有 Azure Monitor 日志实例的主键||NA
+现有日志分析工作区 ID（连接到现有 Azure Monitor 日志 = 加入现有）|现有 Azure Monitor 日志实例的工作区 ID|NA
+现有日志分析主键（连接到现有 Azure Monitor 日志 = 加入现有）|用于连接到现有 Azure Monitor 日志实例的主键|NA
 
 选择“确定”。
 
@@ -241,7 +241,7 @@ F16s|高级·SSD|high|high|low
 
 ![Cloud Shell](./media/ethereum-poa-deployment/cloud-shell.png)
 
-```Powershell
+```powershell
 $MyGatewayResourceId = "<EXISTING_MEMBER_RESOURCEID>"
 $OtherGatewayResourceId = "<NEW_MEMBER_RESOURCEID]"
 $ConnectionName = "Leader2Member"
@@ -288,7 +288,7 @@ Governance DApp 是一组预部署的[智能合同](https://github.com/Azure-Sam
 
 若要通过 Governance DApp 执行任何类型的事务，将使用 Ethereum 电子钱包。 最简单的方法是使用 [MetaMask](https://metamask.io) 等浏览器内电子钱包；但是，由于它们是网络上部署的智能合同，因此还可以自动化与 Governance 合同的交互。
 
-安装 MetaMask 后，在浏览器中导航到 Governance DApp。  可以通过 Azure 门户在部署输出中找到 URL。  如果未安装浏览器内电子钱包，将无法执行任何操作；但可以查看管理员状态。  
+安装 MetaMask 后，在浏览器中导航到 Governance DApp。  可以通过 Azure 门户在部署输出中找到 URL。  如果未安装浏览器内电子钱包，将无法执行任何操作；但可以查看管理员状态。
 
 ### <a name="becoming-an-admin"></a>成为管理员
 

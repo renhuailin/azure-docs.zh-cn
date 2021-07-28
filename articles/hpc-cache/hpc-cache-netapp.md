@@ -4,14 +4,14 @@ description: 如何使用 Azure HPC 缓存来改善对 Azure NetApp 文件中存
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 10/30/2019
+ms.date: 05/05/2021
 ms.author: v-erkel
-ms.openlocfilehash: e955ddc14bb2b0a7abc0dc815c6955247568876b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8dca61a9debad2c743c66b15d6f721edc7538178
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86497006"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109737287"
 ---
 # <a name="use-azure-hpc-cache-with-azure-netapp-files"></a>将 Azure HPC 缓存与 Azure NetApp 文件搭配使用
 
@@ -50,13 +50,13 @@ Azure HPC 缓存目前仅支持 NFS 访问。 不能与 SMB ACL 或 POSIX 模式
 
 最小规模使用网络掩码 /28 指定，提供了 16 个 IP 地址。 实际上，Azure NetApp 文件仅使用其中三个可用的 IP 地址来访问卷。 这意味着，只需在 Azure HPC 缓存中创建三个存储目标，即可涵盖所有卷。
 
-如果委托子网太大，则 Azure NetApp 文件卷可能使用太多的 IP 地址，超出了单个 Azure HPC 缓存实例的处理能力。 单个缓存最多可以有 10 个存储目标。
+如果委托子网太大，则 Azure NetApp 文件卷可能使用太多的 IP 地址，超出了单个 Azure HPC 缓存实例的处理能力。 单个缓存的大多数缓存吞吐量/存储大小组合的[限制为 10 个存储目标](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets)，最大的配置为 20 个存储目标。
 
 Azure NetApp 文件文档中的快速入门示例使用 10.7.0.0/16 作为委托子网，给出的子网规模过大。
 
 ### <a name="capacity-pool-service-level"></a>容量池服务级别
 
-为容量池选择服务级别时，需考虑到工作流。 如果经常将数据写回到 Azure NetApp 文件卷，那么写回时间较慢可能导致缓存性能受限。 为经常写入的卷选择较高的服务级别。
+为容量池选择[服务级别](../azure-netapp-files/azure-netapp-files-service-levels.md)时，需考虑到工作流。 如果经常将数据写回到 Azure NetApp 文件卷，那么写回时间较慢可能导致缓存性能受限。 为经常写入的卷选择较高的服务级别。
 
 如果卷对应的服务级别较低，则在任务开始，缓存预填充内容时，可能存在一些延迟。 使用一组运行良好的文件，让缓存启动并正常运行后，延迟应变得不明显。
 

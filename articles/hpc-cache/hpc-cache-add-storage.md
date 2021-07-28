@@ -4,22 +4,23 @@ description: 如何定义存储目标，使 Azure HPC 缓存能够使用本地 N
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/22/2021
+ms.date: 05/05/2021
+ms.custom: subject-rbac-steps
 ms.author: v-erkel
-ms.openlocfilehash: 47cbb3caa46f62ef6b1d4384c50d161963cce908
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: aae7d29abbb9ef18846e85e9a54ff0fb97f09181
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905551"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738511"
 ---
 # <a name="add-storage-targets"></a>添加存储目标
 
 *存储目标* 是适用于通过 Azure HPC 缓存访问的文件的后端存储。 可以添加 NFS 存储（例如本地硬件系统），也可以将数据存储在 Azure Blob 中。
 
-最多可为一个缓存定义 20 个不同的存储目标。 缓存在一个聚合命名空间中提供所有存储目标。
+可以为任何缓存定义 10 个不同的存储目标，较大的缓存可以[支持最多 20 个存储目标](#size-your-cache-correctly-to-support-your-storage-targets)。
 
-命名空间路径是在添加存储目标后单独配置的。
+缓存在一个聚合命名空间中提供所有存储目标。 命名空间路径是在添加存储目标后单独配置的。
 
 请记住，存储导出必须可供从缓存的虚拟网络访问。 对于本地硬件存储，可能需要设置一个 DNS 服务器，该服务器可以解析用于访问 NFS 存储的主机名。 请阅读 [DNS 访问](hpc-cache-prerequisites.md#dns-access)了解详细信息。
 
@@ -34,6 +35,15 @@ ms.locfileid: "107905551"
 单击下图观看有关在 Azure 门户中创建缓存和添加存储目标的[视频演示](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)。
 
 [![视频缩略图：Azure HPC 缓存：设置（单击此项可访问视频页）](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
+
+## <a name="size-your-cache-correctly-to-support-your-storage-targets"></a>正确调整缓存大小以支持存储目标
+
+支持的存储目标数取决于创建缓存时设置的缓存大小。 该大小是吞吐量容量 (GB/s) 和存储容量 (TB) 的组合。
+
+* 最多 10 个存储目标 - 如果为所选吞吐量值选择最小或中等缓存存储大小，则缓存最多可以有 10 个存储目标。
+* 最多 20 个存储目标 - 如果要使用 10 个以上存储目标，请选择所选吞吐量值的最高可用缓存大小。 （如果使用 Azure CLI，则为缓存 SKU 选择最高有效缓存大小。）
+
+请阅读[设置缓存容量](hpc-cache-create.md#set-cache-capacity) ，详细了解吞吐量和缓存大小设置。
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>添加新的 Azure Blob 存储目标
 
@@ -83,26 +93,43 @@ Azure HPC 缓存使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-
 
 可以提前执行此操作，也可以通过单击添加 Blob 存储目标时所在页面上的链接来执行此操作。 请记住，在整个 Azure 环境中传播角色设置最长可能需要五分钟，因此，在添加角色之后，请先等待几分钟再创建存储目标。
 
-添加 Azure 角色的步骤：
+1. 为存储帐户打开“访问控制(IAM)”。
 
-1. 打开存储帐户的“访问控制(IAM)”页。 （单击“添加存储目标”页中的链接会自动打开选定帐户的此 IAM 页。）
+1. 选择“添加” > “添加角色分配”，打开“添加角色分配”页面 。
 
-1. 单击页面顶部的 **+** 并选择“添加角色分配”。
+1. 分配以下角色，一次分配一个。 有关详细步骤，请查看[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
+    
+    | 设置 | 值 |
+    | --- | --- |
+    | 角色 | [存储帐户参与者](../role-based-access-control/built-in-roles.md#storage-account-contributor) <br/>  [存储 Blob 数据参与者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) |
+    | 将访问权限分配到 | HPC 缓存资源提供程序 |
 
-1. 在列表中选择角色“存储帐户参与者”。
-
-1. 在“将访问权限分配给”字段中，保留选定的默认值（“Azure AD 用户、组或服务主体”）。  
-
-1. 在“选择”字段中搜索“hpc”。  此字符串应该匹配一个名为“HPC 缓存资源提供者”的服务主体。 单击该主体将其选中。
+    ![“添加角色分配”页](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
    > [!NOTE]
-   > 如果搜索“hpc”不起作用，请尝试改用字符串“storagecache”。 参与过预览版（正式版发布之前）的用户可能需要使用服务主体的旧名称。
+   > 如果找不到 HPC 缓存资源提供程序，请改为尝试搜索字符串“storagecache”。 用过 HPC 缓存预览版（正式版发布之前）的用户可能需要使用服务主体的旧名称。
 
-1. 单击底部的“保存”按钮。
+<!-- 
+Steps to add the Azure roles:
 
-1. 重复此过程以分配角色“存储 Blob 数据参与者”。  
+1. Open the **Access control (IAM)** page for the storage account. (The link in the **Add storage target** page automatically opens this page for the selected account.)
 
-![“添加角色分配”GUI 的屏幕截图](media/hpc-cache-add-role.png)
+1. Click the **+** at the top of the page and choose **Add a role assignment**.
+
+1. Select the role "Storage Account Contributor&quot; from the list.
+
+1. In the **Assign access to** field, leave the default value selected (&quot;Azure AD user, group, or service principal").  
+
+1. In the **Select** field, search for "hpc".  This string should match one service principal, named "HPC Cache Resource Provider". Click that principal to select it.
+
+   > [!NOTE]
+   > If a search for "hpc" doesn't work, try using the string "storagecache" instead. Users who participated in previews (before GA) might need to use the older name for the service principal.
+
+1. Click the **Save** button at the bottom.
+
+1. Repeat this process to assign the role "Storage Blob Data Contributor".  
+
+![screenshot of add role assignment GUI](media/hpc-cache-add-role.png) -->
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

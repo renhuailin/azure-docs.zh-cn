@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a0c8a42edad08308095469039c048f8dd8552af
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94413456"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>排查对象不与 Azure Active Directory 同步的问题
@@ -87,7 +87,7 @@ ms.locfileid: "94413456"
 出现错误时，Synchronization Service Manager 将以链接形式显示出错的对象和错误本身，单击这些链接可获取更多信息。
 
 ![Synchronization Service Manager 中的错误屏幕截图](./media/tshoot-connect-object-not-syncing/errorsync.png)  
-首先选择错误字符串。 （在上图中，错误字符串为 **sync-rule-error-function-triggered**。）随后会先看到对象概述。 若要查看实际的错误，请选择“堆栈跟踪”。 此跟踪提供错误的调试级别信息。
+首先选择错误字符串。 （在上图中，错误字符串是“sync-rule-error-function-triggered”。）你首先会看到对象的概述。 若要查看实际的错误，请选择“堆栈跟踪”。 此跟踪提供错误的调试级别信息。
 
 右键单击“调用堆栈信息”框，单击“全选”，然后选择“复制”。 然后复制堆栈，并在偏爱的编辑器（例如记事本）中查看此错误。
 
@@ -143,7 +143,7 @@ ms.locfileid: "94413456"
 在“沿袭”选项卡中，可以选择 [**Metaverse 对象属性**](#mv-attributes)转到 Metaverse。
 
 ### <a name="preview"></a>预览
-“连接器空间对象属性”窗口的左下角提供了“预览”按钮。 选择此按钮会打开“预览”页，在其中可以同步单个对象。 如果你正在对某些自定义同步规则进行故障排除，并且想要在单个对象上查看更改的效果，则此页非常有用。 可以选择“完全同步”或“增量同步” 。还可以选择“生成预览”，这只会在内存中保留更改。 或者，可以选择“提交预览”，这会更新 Metaverse 并暂存对目标连接器空间的所有更改。  
+“连接器空间对象属性”窗口的左下角提供了“预览”按钮。 选择此按钮会打开“预览”页，在其中可以同步单个对象。 如果你正在对某些自定义同步规则进行故障排除，并且想要在单个对象上查看更改的效果，则此页非常有用。 你可以选择“完全同步”或“增量同步”。还可以选择“生成预览”，它只会在内存中保留更改。 或者，可以选择“提交预览”，这会更新 Metaverse 并暂存对目标连接器空间的所有更改。  
 
 ![“预览”页的屏幕截图，其中已选择“开始预览”](./media/tshoot-connect-object-not-syncing/preview.png)  
 

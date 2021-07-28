@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 03/16/2021
-ms.openlocfilehash: 7799266bf9cece1ed789d6fab64ec970a09fbfcb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 178604335968c3664bde51c144759c1c040c359d
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588410"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564907"
 ---
 # <a name="search-the-azure-purview-data-catalog"></a>搜索 Azure Purview 数据目录
 
@@ -55,8 +55,8 @@ Azure Purview 中的搜索目标是快速找到重要数据，从而加快数据
 | NOT | 指定资产不能包含 NOT 子句右边的关键字 | 查询 `hive NOT database` 将返回包含“hive”但不包含“database”的资产。 |
 | () | 将一组关键字和运算符组合在一起。 组合使用多个运算符时，括号指定运算顺序。 | 查询 `hive AND (database OR warehouse)` 将返回包含“hive”以及“database”和/或“warehouse”的资产。 |
 | "" | 指定短语中查询必须匹配的确切内容。 | 查询 `"hive database"` 将返回其属性中包含“hive database”短语的资产 |
-| * | 匹配一个或多个字符的通配符。 不能是关键字的第一个字符。 | 查询 `hiv\`* 将返回属性以“hiv”开头（例如“hive”或“hive-table”）的资产。 |
-| ? | 匹配单个字符的通配符。 不能是关键字的第一个字符 | 查询 `hiv?` 将返回属性以“hiv”开头并且由四个字母组成（例如“hive”或“hiva”）的资产。 |
+| * | 匹配一个或多个字符的通配符。 不能是关键字的第一个字符。 | 查询 `dat*` 将返回含有以“dat”开头（例如“data”或“database”）的属性的资产。 |
+| ? | 匹配单个字符的通配符。 不能是关键字的第一个字符 | 查询 `dat?` 将返回含有以“dat”开头并且由四个字母组成（例如“date”或“data”）的属性的资产。 |
 
 > [!Note]
 > 始终全部以大写字母指定布尔运算符（AND、OR、NOT）  。 否则，大小写无关紧要，额外的空格也无关紧要。

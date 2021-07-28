@@ -8,12 +8,12 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3b19fab33d0c8f53025605fd14fe65f08e660392
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 15ade6fca3885bfabba7a23e2c3d8e561a9e6a0c
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101677919"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738457"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Azure Purview 中支持的数据源和文件类型
 
@@ -21,23 +21,7 @@ ms.locfileid: "101677919"
 
 ## <a name="supported-data-sources"></a>支持的数据源
 
-Azure Purview 支持以下源：
-
-| 存储类型 | 支持的身份验证类型 | 通过 UX/PowerShell 设置扫描 |
-| ---------- | ------------------- | ------------------------------ |
-| 本地 SQL Server                   | SQL 身份验证                        | UX                                |
-| Azure Synapse Analytics（以前称为 SQL DW）            | SQL 身份验证、服务主体、MSI               | UX                             |
-| Azure SQL 数据库 (DB)                  | SQL 身份验证、服务主体、MSI               | UX |
-| Azure SQL 数据库托管实例      | SQL 身份验证、服务主体、MSI               | UX    |
-| Azure Blob 存储                       | 帐户密钥、服务主体、MSI | UX            |
-| Azure 数据资源管理器                      | Service Principal                              | UX            |
-| Azure Data Lake Storage Gen1 (ADLS Gen1) | 服务主体、MSI                              | UX            |
-| Azure Data Lake Storage Gen2 (ADLS Gen2) | 帐户密钥、服务主体、MSI            | UX            |
-| Azure Cosmos DB                          | 帐户密钥                                    | UX            |
-
-
-> [!Note]
-> Azure Data Lake Storage Gen2 现已正式发布。 我们建议你立即开始使用它。 有关详细信息，请参阅[产品页](https://azure.microsoft.com/en-us/services/storage/data-lake-storage/)。
+Purview 支持[此处](purview-connector-overview.md)列出的所有数据源。
 
 ## <a name="file-types-supported-for-scanning"></a>支持扫描的文件类型
 
@@ -48,7 +32,10 @@ Azure Purview 支持以下源：
 - Purview 还支持自定义文件扩展名和自定义分析程序。
  
 > [!Note]
-> 每个 Gzip 文件必须映射到其中的单个 csv 文件。 Gzip 文件受系统和自定义分类规则的限制。 我们目前不支持扫描映射到其中的多个文件的 gzip 文件，或者除 csv 以外的任何文件类型。 
+> 每个 Gzip 文件必须映射到其中的单个 csv 文件。 Gzip 文件受系统和自定义分类规则的限制。 我们目前不支持扫描映射到其中的多个文件的 gzip 文件，或者除 csv 以外的任何文件类型。 此外，Purview 扫描程序支持为架构提取和分类扫描对齐压缩的 PARQUET 和 AVRO 文件类型。
+
+> [!Note]
+> Purview 扫描程序不支持为架构提取扫描 AVRO、ORC 和 PARQUET 文件类型中的复杂数据类型。   
 
 ## <a name="sampling-within-a-file"></a>在文件中采样
 
@@ -74,28 +61,6 @@ Azure Purview 支持以下源：
 - 其他结构化文件类型（JSON、XML、TXT）- 在被视为“资源集”的分区文件的文件夹或组中，对 100 个文件中的 1 个文件进行采样（L3 扫描）
 - SQL 对象和 CosmosDB 实体 - 每个文件都经过 L3 扫描。
 - 文档文件类型 - 每个文件都经过 L3 扫描。 资源集模式不适用于这些文件类型。
-
-## <a name="scan-regions"></a>扫描区域
-下面是运行 Purview 扫描程序的所有 Azure 数据源（数据中心）区域的列表。 如果 Azure 数据源位于此列表之外的区域，扫描程序将在 Purview 实例的区域中运行。
- 
-### <a name="purview-scanner-regions"></a>Purview 扫描程序区域
-
-- EastUs
-- EastUs2 
-- SouthCentralUS
-- WestUs
-- WestUs2
-- SoutheastAsia
-- 西欧
-- NorthEurope
-- UkSouth
-- AustraliaEast
-- CanadaCentral
-- BrazilSouth
-- CentralIndia
-- JapanEast
-- SouthAfricaNorth
-- FranceCentral
 
 ## <a name="classification"></a>分类
 
