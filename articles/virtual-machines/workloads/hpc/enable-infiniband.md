@@ -1,19 +1,19 @@
 ---
-title: 在 HPC VM 上启用 InifinBand - Azure 虚拟机 | Microsoft Docs
+title: 在 HPC VM 上启用 InfiniBand - Azure 虚拟机 | Microsoft Docs
 description: 了解如何在 Azure HPC VM 上启用 InfiniBand。
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/18/2021
+ms.date: 04/28/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 089976f2009e006f53dd2a77f09f57d5090429b7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 6f2a9502074543272b69f01b567da89b421f6fa6
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721239"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227751"
 ---
 # <a name="enable-infiniband"></a>启用 InfiniBand
 
@@ -22,9 +22,7 @@ ms.locfileid: "104721239"
 可以通过多种方法在各种 VM 大小上启用 InfiniBand。
 
 ## <a name="vm-images-with-infiniband-drivers"></a>具有 InfiniBand 驱动程序的 VM 映像
-请参阅 [VM 映像](configure.md#vm-images)，了解市场中支持的一系列 VM 映像。InfiniBand 驱动程序（适用于 SR-IOV 或非 SR-IOV VM）中预加载了这些映像，也可以使用适用于[支持 RDMA 的 VM](../../sizes-hpc.md#rdma-capable-instances) 的适当驱动程序配置这些映像。
-- 市场中的 [CentOS-HPC](configure.md#centos-hpc-vm-images) VM 映像是最简单的入门方法。
-- 可以使用正确的 IB 驱动程序来配置 [Ubuntu](configure.md#ubuntu-vm-images) VM 映像。
+请参阅 [VM 映像](configure.md#vm-images)，了解市场中支持的一系列 VM 映像。InfiniBand 驱动程序（适用于 SR-IOV 或非 SR-IOV VM）中预加载了这些映像，也可以使用适用于[支持 RDMA 的 VM](../../sizes-hpc.md#rdma-capable-instances) 的适当驱动程序配置这些映像。  市场中的 [CentOS-HPC](configure.md#centos-hpc-vm-images) 和 [Ubuntu-HPC](configure.md#ubuntu-hpc-vm-images) VM 映像是最简单的入门方法。
 
 ## <a name="infiniband-driver-vm-extensions"></a>InfiniBand 驱动程序 VM 扩展
 在 Linux 上，可以使用 [InfiniBandDriverLinux VM 扩展](../../extensions/hpc-compute-infiniband-linux.md)安装 Mellanox OFED 驱动程序，并在已启用 SR-IOV 的 H 和 N 系列 VM 上启用 InfiniBand。
@@ -67,7 +65,7 @@ sudo systemctl restart waagent
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何安装各种[受支持的 MPI 库](setup-mpi.md)及其在 VM 上的最佳配置。
+- 详细了解如何在 VM 上安装和运行各种[受支持的 MPI 库](setup-mpi.md)。
 - 查看 [HBv3 系列概述](hbv3-series-overview.md)和 [HC 系列概述](hc-series-overview.md)。
 - 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告、HPC 工作负载示例和性能结果。
 - 若要从体系结构角度更概略性地看待如何运行 HPC 工作负荷，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

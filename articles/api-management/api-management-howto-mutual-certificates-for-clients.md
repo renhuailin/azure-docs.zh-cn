@@ -11,18 +11,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 06/01/2021
 ms.author: apimpm
-ms.openlocfilehash: 553b4527796db3e5d0f430afd6c5e614626187e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d000b9db658c76b5d7cdb586599f04d9078dde5d
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99988893"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111812150"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>如何使用 API 管理中的客户端证书身份验证确保 API 安全
 
-API 管理提供的功能可确保使用客户端证书安全地访问 API（即，客户端到 API 管理）。 可以使用策略表达式验证传入证书并根据所需值检查证书属性。
+API 管理提供的功能可确保使用客户端证书安全地访问 API（即，客户端到 API 管理）。 你可以验证连接客户端提供的证书，并使用策略表达式，对照所需的值检查证书属性。
 
 若要了解如何使用客户端证书保护对 API 后端服务的访问（即，从 API 管理到后端），请参阅[如何使用客户端证书身份验证保护后端服务](./api-management-howto-mutual-certificates.md)
 
@@ -36,7 +36,22 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 
 ![请求客户端证书](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 
-## <a name="checking-the-issuer-and-subject"></a>检查颁发者和使用者
+## <a name="policy-to-validate-client-certificates"></a>用于客户端证书的策略
+
+使用 [validate-client-certificate](api-management-access-restriction-policies.md#validate-client-certificate) 策略验证客户端证书的一个或多个属性，该客户端证书用于访问托管在 API 管理 API 实例中的 API。
+
+配置策略以验证一个或多个属性，包括证书颁发者、主题、指纹、是否根据联机吊销列表验证证书等。
+
+有关详细信息，请参阅访问 [API 管理访问限制策略](api-management-access-restriction-policies.md)。
+
+## <a name="certificate-validation-with-context-variables"></a>使用上下文变量的证书验证
+
+还可使用 [`context` 变量](api-management-policy-expressions.md#ContextVariables)创建策略表达式以检查客户端证书。 以下各节中的示例显示了使用 `context.Request.Certificate` 属性和其他 `context` 属性的表达式。
+
+> [!IMPORTANT]
+> 从 2021 年 5 月开始，仅当 API 管理实例的 [`hostnameConfiguration`](/rest/api/apimanagement/2019-12-01/apimanagementservice/createorupdate#hostnameconfiguration) 将 `negotiateClientCertificate` 属性设置为 True 时，`context.Request.Certificate` 属性才会请求证书。 `negotiateClientCertificate` 默认设置为 false。
+
+### <a name="checking-the-issuer-and-subject"></a>检查颁发者和使用者
 
 可以将以下策略配置为检查客户端证书的颁发者和使用者：
 
@@ -54,7 +69,7 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 > 若要禁止检查证书吊销列表，请使用 `context.Request.Certificate.VerifyNoRevocation()` 而不是 `context.Request.Certificate.Verify()`。
 > 如果客户端证书是自签名证书，则必须将根（或中间）CA 证书[上传](api-management-howto-ca-certificates.md)到 API 管理，`context.Request.Certificate.Verify()` 和 `context.Request.Certificate.VerifyNoRevocation()` 才能正常工作。
 
-## <a name="checking-the-thumbprint"></a>检查指纹
+### <a name="checking-the-thumbprint"></a>检查指纹
 
 可以将以下策略配置为检查客户端证书的指纹：
 
@@ -72,7 +87,7 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 > 若要禁止检查证书吊销列表，请使用 `context.Request.Certificate.VerifyNoRevocation()` 而不是 `context.Request.Certificate.Verify()`。
 > 如果客户端证书是自签名证书，则必须将根（或中间）CA 证书[上传](api-management-howto-ca-certificates.md)到 API 管理，`context.Request.Certificate.Verify()` 和 `context.Request.Certificate.VerifyNoRevocation()` 才能正常工作。
 
-## <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>针对已上传到 API 管理的证书检查指纹
+### <a name="checking-a-thumbprint-against-certificates-uploaded-to-api-management"></a>针对已上传到 API 管理的证书检查指纹
 
 以下示例演示如何针对已上传到 API 管理的证书，检查客户端证书的指纹：
 
@@ -94,19 +109,6 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 > [!TIP]
 > 本[文](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672)中所述的客户端证书死锁问题可以通过多种方式表现出来，例如：请求冻结、请求在超时后生成 `403 Forbidden` 状态代码、`context.Request.Certificate` 为 `null`。 此问题通常会影响内容长度约为 60KB 或更大的 `POST` 和 `PUT` 请求。
 > 若要防止出现此问题，请在“自定义域”边栏选项卡上为所需主机名启用“协商客户端证书”设置，如本文档的第一个图像所示。 在“消耗”层中，此功能不可用。
-
-## <a name="certificate-validation-in-self-hosted-gateway"></a>自承载网关上的证书验证
-
-默认 API 管理[自承载网关](self-hosted-gateway-overview.md)映像不支持使用上传到 API 管理实例的 [CA 根证书](api-management-howto-ca-certificates.md)验证服务器和客户端证书。 向自承载网关提供自定义证书的客户端可能会遇到响应慢的问题，因为证书吊销列表 (CRL) 验证可能需要较长时间才会在网关上超时。 
-
-一种解决方法是，在运行网关时，可以将 PKI IP 地址配置为指向 localhost 地址 (127.0.0.1) 而不是 API 管理实例。 当网关尝试验证客户端证书时，这会导致 CRL 验证快速失败。 要配置网关，请添加 API 管理实例的 DNS 条目以解析到容器中 `/etc/hosts` 文件中的 localhost。 可以在网关部署过程中添加此条目：
- 
-* 对于 Docker 部署 - 请将 `--add-host <hostname>:127.0.0.1` 参数添加到 `docker run` 命令中。 有关详细信息，请参阅[将条目添加到容器主机文件](https://docs.docker.com/engine/reference/commandline/run/#add-entries-to-container-hosts-file---add-host)
- 
-* 对于 Kubernetes 部署 - 将 `hostAliases` 规范添加到 `myGateway.yaml` 配置文件。 有关详细信息，请参阅[使用主机别名向 Pod/etc/hosts 添加条目](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)。
-
-
-
 
 ## <a name="next-steps"></a>后续步骤
 

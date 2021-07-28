@@ -7,14 +7,14 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: 1cb5f2f9ac941001efb18301f4a54bd0092920ba
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d061eed42280fffa1ff7f53e43adb7b85a94ae0d
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172734"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109813209"
 ---
-# <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>在 Azure 静态 Web 应用预览中查看预生产环境中的拉取请求
+# <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps"></a>在 Azure 静态 Web 应用中查看预生产环境中的拉取请求
 
 本文演示了如何使用预生产环境查看对使用 [Azure 静态 Web 应用](overview.md)部署的应用程序所做的更改。
 
@@ -33,7 +33,7 @@ Azure 静态 Web 应用会在存储库中生成 GitHub 操作工作流。 当针
 - 在部署到生产环境之前执行健全性检查。
 
 > [!NOTE]
-> 在预览期间，一次[最多允许三个过渡环境](quotas.md)。
+> 一次[最多允许三个过渡环境](quotas.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

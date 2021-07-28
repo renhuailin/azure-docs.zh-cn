@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 02/26/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 4154d73cbf7a82c78dcc8ea30f11b8d984dd6af0
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 40c94b367f827d727e1d255f677e26b5b17fd95b
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896668"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440927"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>使用 Azure 机器学习对模型进行超参数优化
 
@@ -430,7 +430,7 @@ hd_config = HyperDriveConfig(run_config=script_run_config,
 
     :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-metrics.png" alt-text="超参数优化指标图":::
 
-- **并行坐标图**：此可视化效果显示主要指标性能与单个超参数值之间的关联。 可通过这些方式与图表进行交互：移动轴（单击并拖动轴标签）以及在单个轴上突出显示值（单击并沿单个轴垂直拖动即可突出显示所需范围的值）。
+- **并行坐标图**：此可视化效果显示主要指标性能与单个超参数值之间的关联。 可通过这些方式与图表进行交互：移动轴（单击并拖动轴标签）以及在单个轴上突出显示值（单击并沿单个轴垂直拖动即可突出显示所需范围的值）。 并行坐标图表包括图表最右侧的一个轴，该轴绘制与为该运行实例设置的超参数相对应的最佳指标值。 提供此轴是为了以更可读的方式将图表渐变图例投影到数据上。
 
     :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png" alt-text="超参数优化并行坐标图":::
 

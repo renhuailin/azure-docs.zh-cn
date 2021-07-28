@@ -10,13 +10,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: juergent
-ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 67ef0bf7a8c3906122468c895325a77de555c196
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.custom: H1Hack27Feb2017, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 717d98591fe5dc8326e6ee311c569bdca83eaa19
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258786"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960941"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 
@@ -228,7 +228,7 @@ ms.locfileid: "107258786"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-az-ps
+[powershell-install-configure]:/powershell/azure/install-az-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -591,7 +591,7 @@ Azure 中的每个虚拟机都需要连接到虚拟网络。
 
 
 ##### <a name="secondary-ip-addresses-for-sap-hostname-virtualization"></a>SAP 主机名虚拟化的辅助 IP 地址
-每个 Azure 虚拟机的网络接口卡可以有多个分配给它的 IP 地址，此辅助 IP 可用于 SAP 虚拟主机名，在需要时可映射到 DNS A/PTR 记录。 必须按[本文](../../../virtual-network/virtual-network-multiple-ip-addresses-portal.md)所述将辅助 IP 地址分配到 Azure vNICs IP 配置，并在 OS 中进行配置，因为未通过 DHCP 分配辅助 IP。 每个辅助 IP 必须来自 vNIC 绑定到的同一子网。 对于辅助 IP 配置（如 Pacemaker 群集），[不支持]( https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations) 使用 Azure 负载均衡器的浮动 IP，在这种情况下，负载均衡器的 IP 会启用 SAP 虚拟主机名。 另请参阅有关使用虚拟主机名的一般指南的 SAP 说明 [#962955](https://launchpad.support.sap.com/#/notes/962955)。
+每个 Azure 虚拟机的网络接口卡可以有多个分配给它的 IP 地址，此辅助 IP 可用于 SAP 虚拟主机名，在需要时可映射到 DNS A/PTR 记录。 必须按[本文](../../../virtual-network/virtual-network-multiple-ip-addresses-portal.md)所述将辅助 IP 地址分配到 Azure vNICs IP 配置，并在 OS 中进行配置，因为未通过 DHCP 分配辅助 IP。 每个辅助 IP 必须来自 vNIC 绑定到的同一子网。 对于辅助 IP 配置（如 Pacemaker 群集），[不支持](../../../load-balancer/load-balancer-multivip-overview.md#limitations) 使用 Azure 负载均衡器的浮动 IP，在这种情况下，负载均衡器的 IP 会启用 SAP 虚拟主机名。 另请参阅有关使用虚拟主机名的一般指南的 SAP 说明 [#962955](https://launchpad.support.sap.com/#/notes/962955)。
 
 
 ##### <a name="multiple-nics-per-vm"></a>每个 VM 可以有多个 NIC
@@ -733,7 +733,7 @@ Windows PowerShell 是一个功能强大的可扩展框架，在 Azure 中部署
 
 随着 Azure 提供的功能越来越多，我们会添加新的 PS cmdlet，这就需要你更新 cmdlet。 因此，最好是每月至少查看 Azure 下载站点 <https://azure.microsoft.com/downloads/> 一次，获取新版 cmdlet。 安装新版本时会覆盖旧版本。
 
-请查看此处 <https://docs.microsoft.com/powershell/azure/>，获取 Azure 相关的 PowerShell 命令的常规列表。
+请查看此处，获取 Azure 相关的 PowerShell 命令的常规列表：</powershell/azure/>。
 
 ### <a name="management-via-microsoft-azure-cli-commands"></a>通过 Microsoft Azure CLI 命令进行管理
 
@@ -780,7 +780,7 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 ---
 > ![Windows 徽标。][Logo_Windows] Windows
 >
-> 有关详细信息，请参阅：<https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed>Windows 设置（例如 Windows SID 和主机名）必须通过 sysprep 命令在本地 VM 抽象化/通用化。
+> 有关更多详细信息，请参阅此处：</azure/virtual-machines/windows/upload-generalized-managed> Windows 设置（如 Windows SID 和主机名）必须通过 sysprep 命令在本地 VM 抽象化/通用化。
 >
 >
 > ![Linux 徽标。][Logo_Linux] Linux
@@ -874,7 +874,7 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 ### <a name="transferring-vms-and-vhds-between-on-premises-to-azure"></a>在本地与 Azure 之间传输 VM 和 VHD
 由于无法通过 Azure 门户将 VM 映像和磁盘上传到 Azure，因此需要使用 Azure PowerShell cmdlet 或 CLI。 另一种可行的方法是使用“AzCopy”工具。 该工具可在本地与 Azure 之间（双向）复制 VHD。 它还可以在 Azure 区域之间复制 VHD。 有关如何下载和使用 AzCopy，请参阅[此文档][storage-use-azcopy]。
 
-第三种替代做法是使用面向 GUI 的各种第三方工具。 但是，请确保这些工具支持 Azure 页 Blob。 为了达到目的，需要使用 Azure 页 Blob 存储区（此处 <https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs> 描述了相关差异）。 另外，Azure 提供的工具能够非常高效地压缩需要上传的 VM 和 VHD。 这种优势非常重要，因为这种压缩效率可以减少上传时间（具体的上传时间根据从本地设施和目标 Azure 部署区域与 Internet 网络之间的上传链路的情况而有一定的差异）。 可以合理地推测出这样一个结论：将位于欧洲的某个 VM 或 VHD 上传到位于美国的 Azure 数据中心所需的时间，比将同一个 VM/VHD 上传到位于欧洲的 Azure 数据中心所需的时间要长。
+第三种替代做法是使用面向 GUI 的各种第三方工具。 但是，请确保这些工具支持 Azure 页 Blob。 为实现目的，需使用 Azure 页 Blob 存储（有关差异说明，请参阅此处：</rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>）。 另外，Azure 提供的工具能够非常高效地压缩需要上传的 VM 和 VHD。 这种优势非常重要，因为这种压缩效率可以减少上传时间（具体的上传时间根据从本地设施和目标 Azure 部署区域与 Internet 网络之间的上传链路的情况而有一定的差异）。 可以合理地推测出这样一个结论：将位于欧洲的某个 VM 或 VHD 上传到位于美国的 Azure 数据中心所需的时间，比将同一个 VM/VHD 上传到位于欧洲的 Azure 数据中心所需的时间要长。
 
 #### <a name="uploading-a-vhd-from-on-premises-to-azure"></a><a name="a43e40e6-1acc-4633-9816-8f095d5a7b6a"></a>将 VHD 从本地上载到 Azure
 要从本地网络上传现有的 VM 或 VHD，这种 VM 或 VHD 需要满足本文档的[准备使用非通用化磁盘将 VM 从本地移到 Azure][planning-guide-5.2.1] 一章中列出的要求。
@@ -887,19 +887,19 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 **PowerShell**
 
 * 使用 *Connect-AzAccount* 登录到订阅
-* 使用 *Set-AzContext* 和参数 SubscriptionId 或 SubscriptionName 设置上下文订阅 - 请参阅 <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
-* 使用 *Add-AzVhd* 将 VHD 上传到 Azure 存储帐户 - 请参阅 <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
-* （可选）使用 *New-AzDisk* 从 VHD 创建托管磁盘 - 请参阅 <https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk>
-* 使用 *Set-AzVMOSDisk* 将新 VM 配置的 OS 磁盘设置为 VHD 或托管磁盘 - 请参阅 <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>
-* 使用 *New-AzVM* 从 VM 配置新建 VM - 请参阅 <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
-* 使用 *Add-AzVMDataDisk* 将数据磁盘添加到新的 VM - 请参阅 <https://docs.microsoft.com/powershell/module/az.compute/add-Azvmdatadisk>
+* 使用 *Set-AzContext* 和参数 SubscriptionId 或 SubscriptionName 设置上下文订阅 - 请参阅 </powershell/module/az.accounts/set-Azcontext>
+* 使用 *Add-AzVhd* 将 VHD 上传到 Azure 存储帐户 - 请参阅 </powershell/module/az.compute/add-Azvhd>
+* （可选）使用 *New-AzDisk* 从 VHD 创建托管磁盘 - 请参阅 </powershell/module/az.compute/new-Azdisk>
+* 使用 *Set-AzVMOSDisk* 将新 VM 配置的 OS 磁盘设置为 VHD 或托管磁盘 - 请参阅 </powershell/module/az.compute/set-Azvmosdisk>
+* 使用 *New-AzVM* 从 VM 配置创建新 VM - 请参阅 </powershell/module/az.compute/new-Azvm>
+* 使用 *Add-AzVMDataDisk* 将数据磁盘添加到新 VM - 请参阅 </powershell/module/az.compute/add-Azvmdatadisk>
 
 **Azure CLI**
 
 * 使用 *az login* 登录到订阅
 * 使用 az account set --subscription `<subscription name or id`> 选择订阅
-* 使用 *az storage blob upload* 上传 VHD - 请参阅 [结合使用 Azure CLI 与 Azure 存储][storage-azure-cli]
-* （可选）使用 *az disk create* 从 VHD 创建托管磁盘 - 请参阅 https://docs.microsoft.com/cli/azure/disk
+* 使用 *az storage blob upload* 上传 VHD - 请参阅[结合使用 Azure CLI 与 Azure 存储][storage-azure-cli]。
+* （可选）使用 *az disk create* 从 VHD 创建托管磁盘 - 请参阅 [az disk](/cli/azure/disk)。
 * 使用 az vm create 和参数 --attach-os-disk 创建新的 VM，并将上传的 VHD 或托管磁盘指定为 OS 磁盘 
 * 使用 az vm disk attach 和参数 --new 将数据磁盘添加到新 VM 
 
@@ -907,28 +907,28 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 
 * 使用 PowerShell 或 Azure CLI 上传 VHD
 * （可选）使用 PowerShell、Azure CLI 或 Azure 门户从 VHD 创建托管磁盘
-* 使用引用 VHD 的 JSON 模板（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json)中所示）或使用托管磁盘（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)中所示）部署 VM。
+* 使用引用 VHD 的 JSON 模板（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json)中所示）或使用托管磁盘（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)中所示）部署 VM。
 
 #### <a name="deployment-of-a-vm-image"></a>部署 VM 映像
 若要从本地网络上传现有 VM 或 VHD 以将其用作 Azure VM 映像，这种 VM 或 VHD 需要满足本文档的[准备使用特定于客户的映像为 SAP 部署 VM][planning-guide-5.2.2] 一章中列出的要求。
 
 * 在 Windows 上使用 *sysprep* 或者在 Linux 上使用 *waagent -deprovision* 将 VM 通用化 - 请参阅 [Sysprep 技术参考](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))（适用于 Windows）或 [如何捕获 Linux 虚拟机以用作 Resource Manager 模板][capture-image-linux-step-2-create-vm-image]（适用于 Linux）
 * 使用 *Connect-AzAccount* 登录到订阅
-* 使用 *Set-AzContext* 和参数 SubscriptionId 或 SubscriptionName 设置上下文订阅 - 请参阅 <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
-* 使用 *Add-AzVhd* 将 VHD 上传到 Azure 存储帐户 - 请参阅 <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
-* （可选）使用 *New-AzImage* 从 VHD 创建托管磁盘映像 - 请参阅 <https://docs.microsoft.com/powershell/module/az.compute/new-Azimage>
+* 使用 *Set-AzContext* 和参数 SubscriptionId 或 SubscriptionName 设置上下文订阅 - 请参阅 </powershell/module/az.accounts/set-Azcontext>
+* 使用 *Add-AzVhd* 将 VHD 上传到 Microsoft Azure 存储帐户 - 请参阅 </powershell/module/az.compute/add-Azvhd>
+* （可选）使用 *New-AzDisk* 从 VHD 创建托管磁盘映像 - 请参阅 </powershell/module/az.compute/new-Azimage>
 * 将新 VM 配置的 OS 磁盘设置为
-  * VHD：使用 *Set-AzVMOSDisk -SourceImageUri -CreateOption fromImage* - 请参阅 <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>
-  * 托管磁盘映像：使用 *Set-AzVMSourceImage* - 请参阅 <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmsourceimage>
-* 使用 *New-AzVM* 从 VM 配置新建 VM - 请参阅 <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
+  * VHD 与 *Set-AzVMOSDisk -SourceImageUri -CreateOption fromImage* - 请参阅 </powershell/module/az.compute/set-Azvmosdisk>
+  * 托管磁盘映像 *Set-AzVMSourceImage* - 请参阅 </powershell/module/az.compute/set-Azvmsourceimage>
+* 使用 *New-AzVM* 从 VM 配置创建新 VM - 请参阅 </powershell/module/az.compute/new-Azvm>
 
 **Azure CLI**
 
 * 在 Windows 上使用 *sysprep* 或者在 Linux 上使用 *waagent -deprovision* 将 VM 通用化 - 请参阅 [Sysprep 技术参考](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))（适用于 Windows）或 [如何捕获 Linux 虚拟机以用作 Resource Manager 模板][capture-image-linux-step-2-create-vm-image]（适用于 Linux）
 * 使用 *az login* 登录到订阅
 * 使用 az account set --subscription `<subscription name or id`> 选择订阅
-* 使用 *az storage blob upload* 上传 VHD - 请参阅 [结合使用 Azure CLI 与 Azure 存储][storage-azure-cli]
-* （可选）使用 *az image create* 从 VHD 创建托管磁盘映像 - 请参阅 https://docs.microsoft.com/cli/azure/image
+* 使用 *az storage blob upload* 上传 VHD - 请参阅[结合使用 Azure CLI 与 Azure 存储][storage-azure-cli]。
+* （可选）使用 *az image create* 从 VHD 创建托管磁盘映像 - 请参阅 [az image](/cli/azure/image]。
 * 使用 az vm create 和参数 --image 创建新的 VM，并将上传的 VHD 或托管磁盘映像指定为 OS 磁盘 
 
 **模板**
@@ -936,7 +936,7 @@ Microsoft Azure 提供多种用于部署 VM 和相关磁盘的方法。 因此�
 * 在 Windows 上使用 *sysprep* 或者在 Linux 上使用 *waagent -deprovision* 将 VM 通用化 - 请参阅 [Sysprep 技术参考](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10))（适用于 Windows）或 [如何捕获 Linux 虚拟机以用作 Resource Manager 模板][capture-image-linux-step-2-create-vm-image]（适用于 Linux）
 * 使用 PowerShell 或 Azure CLI 上传 VHD
 * （可选）使用 PowerShell、Azure CLI 或 Azure 门户从 VHD 创建托管磁盘映像
-* 使用引用映像 VHD 的 JSON 模板（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json)中所示）或使用托管磁盘映像（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)中所示）部署 VM。
+* 使用引用映像 VHD 的 JSON 模板（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json)中所示）或使用托管磁盘映像（如[此示例 JSON 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json)中所示）部署 VM。
 
 #### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>将 VHD 或托管磁盘下载到本地
 Azure 基础结构即服务不仅能够上传 VHD 和 SAP 系统， 而且你还可以在其中将 SAP 系统从 Azure 移回到本地。
@@ -967,7 +967,7 @@ Azure 基础结构即服务不仅能够上传 VHD 和 SAP 系统， 而且你还
   Save-AzVhd -ResourceGroupName <resource group name of storage account> -SourceUri http://<storage account name>.blob.core.windows.net/<container name>/sapidedata.vhd -LocalFilePath E:\Azure_downloads\sapidesdata.vhd
   ```
 
-  有关 Save-AzVhd cmdlet 的更多详细信息，请查看此处 <https://docs.microsoft.com/powershell/module/az.compute/save-Azvhd>。
+  有关 Save-AzVhd cmdlet 的更多详细信息，请查看此处 </powershell/module/az.compute/save-Azvhd>。
 
 #### <a name="azure-cli"></a>Azure CLI
 * 下载托管磁盘：首先获取对托管磁盘基础 blob 的访问权限。 然后可将基础 blob 复制到新的存储帐户，并从该存储帐户下载 blob。
@@ -1080,8 +1080,8 @@ az vm disk attach --disk <new disk name or managed disk id> --resource-group <re
 
 PS cmdlet 逻辑的基本流程如下所示：
 
-* 使用 *New-AzStorageContext* 创建 **源** 存储帐户的存储帐户上下文 - 请参阅 <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
-* 使用 *New-AzStorageContext* 创建 **目标** 存储帐户的存储帐户上下文 - 请参阅 <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
+* 使用 *New-AzStorageContext* 为 **源** 存储帐户创建存储帐户上下文 - 请参阅 </powershell/module/az.storage/new-AzStoragecontext>
+* 使用 *New-AzStorageContext* 为 **目标** 存储帐户创建存储帐户上下文 - 请参阅 </powershell/module/az.storage/new-AzStoragecontext>
 * 开始复制
 
 ```powershell
@@ -1261,7 +1261,7 @@ Azure 异地复制在 VM 中的每个 VHD 上本地执行，并且不会跨 VM �
 
 请参阅下文，了解关于本主题的详细信息：
 
-<https://docs.microsoft.com/archive/blogs/saponsqlserver/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure>
+</archive/blogs/saponsqlserver/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure>
 
 #### <a name="changing-firewall-settings-within-vm"></a>更改 VM 中的防火墙设置
 
@@ -1518,9 +1518,9 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 可以使用 GitHub 上 Azure-quickstart-templates 存储库中的示例模板。
 
-* [简单的 Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
-* [简单的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
-* [来自映像的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
+* [简单的 Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-linux)
+* [简单的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows)
+* [来自映像的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-from-user-image)
 
 ### <a name="implement-a-set-of-vms-that-communicate-within-azure"></a>实施一组需要在 Azure 中通信的 VM
 
@@ -1972,9 +1972,9 @@ SAP 提供了相应的功能，用于在启动 VM 中的 OS 后立即启动 SAP 
 > 理论上，如果 DBMS 系统支持 Windows VSS（卷影复制服务 <https://msdn.microsoft.com/library/windows/desktop/bb968832(v=vs.85).aspx>），就能以一致的方式备份运行数据库的 VM（比如 SQL Server 就可以）。
 > 不过请注意，无法根据 Azure VM 备份时间点来还原数据库。 因此，建议使用 DBMS 功能执行数据库备份，而不要依赖于 Azure VM 备份。
 >
-> 若要熟悉 Azure 虚拟机备份，请从此处开始：<https://docs.microsoft.com/azure/backup/backup-azure-vms>。
+> 要熟悉 Azure 虚拟机备份，请从此处着手：</azure/backup/backup-azure-vms>。
 >
-> 也可以结合使用安装在 Azure VM 中的 Microsoft Data Protection Manager 及 Azure 备份来备份/还原数据库。 可在此处找到更多信息：<https://docs.microsoft.com/azure/backup/backup-azure-dpm-introduction>。
+> 也可以结合使用安装在 Azure VM 中的 Microsoft Data Protection Manager 及 Azure 备份来备份/还原数据库。 更多信息，请参阅此处：</azure/backup/backup-azure-dpm-introduction>。
 >
 > ![Linux 徽标。][Logo_Linux] Linux
 >
@@ -1986,7 +1986,7 @@ SAP 提供了相应的功能，用于在启动 VM 中的 OS 后立即启动 SAP 
 
 从 2014 年中期开始，借助 Hyper-V、System Center 和 Azure 的各种组件扩展可以使用 Azure 作为在本地运行的、基于 Hyper-V 的 VM 的 DR 站点。
 
-<https://docs.microsoft.com/archive/blogs/saponsqlserver/protecting-sap-solutions-with-azure-site-recovery> 博客中详细介绍了如何部署此解决方案。
+以下博客详细说明了如何部署此解决方案：</archive/blogs/saponsqlserver/protecting-sap-solutions-with-azure-site-recovery>。
 
 ## <a name="summary-for-high-availability-for-sap-systems"></a>SAP 系统的高可用性摘要
 
@@ -2004,6 +2004,7 @@ Azure 中 SAP 系统的高可用性要点如下：
 * 备份包含 SAP 系统全局目录的 VM 和不同实例的所有配置文件很有帮助，应该通过 Windows 备份或者诸如 Linux 上的 tar 来执行此操作。 由于 Windows Server 2008 (R2) 与 Windows Server 2012 (R2) 之间存在差异，因此使用更新版 Windows Server 可以更轻松地进行备份，建议运行 Windows Server 2012 (R2) 作为 Windows 来宾操作系统。
 
 ## <a name="next-steps"></a>后续步骤
+
 阅读以下文章：
 
 - [SAP NetWeaver 的 Azure 虚拟机部署](./deployment-guide.md)

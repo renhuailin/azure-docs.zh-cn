@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.custom: references_regions
-ms.openlocfilehash: 7980ea5811fe77bc80d97e31e3b852766debd31a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: ffff2c1831aab09a1c622ced98cfe180fe0ec5d7
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107795922"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679194"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 
@@ -270,6 +270,9 @@ Azure 文件同步代理使用 Azure 文件同步 REST 协议和 FileREST 协议
 - 利用 Azure 文件存储和 Azure 网络功能，如服务终结点和专用终结点。
 - 配置 Azure 文件同步以支持环境中的代理。
 - 限制 Azure 文件同步的网络活动。
+
+> [!Important]  
+> Azure 文件同步不支持 Internet 路由。 Azure 文件同步支持默认网络路由选项 - Microsoft 路由。
 
 若要详细了解 Azure 文件同步和网络，请参阅 [Azure 文件同步网络注意事项](file-sync-networking-overview.md)。
 

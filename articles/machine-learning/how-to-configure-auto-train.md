@@ -1,29 +1,28 @@
 ---
-title: 创建自动化机器学习试验
+title: 通过 Python 设置自动化机器学习
 titleSuffix: Azure Machine Learning
-description: 了解如何为自动化机器学习试验定义数据源、计算和配置设置。
+description: 了解如何使用 Azure 机器学习自动化机器学习将自动化机器学习训练设置为通过 Azure 机器学习 Python SDK 来运行。
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 09/29/2020
+ms.date: 06/11/2021
 ms.topic: how-to
-ms.custom: devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: a198e49e540d728a65021cf5b45436fc1654cb25
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack
+ms.openlocfilehash: dff2e9c0c1de1b92f0d00d5dc50aeb7dadca348f
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905209"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030892"
 ---
-# <a name="configure-automated-ml-experiments-in-python"></a>使用 Python 配置自动化 ML 试验
+# <a name="set-up-automl-training-with-python"></a>使用 Python 设置自动化机器学习训练
 
+在本指南中，了解如何使用 Azure 机器学习自动化机器学习将自动化机器学习训练设置为通过 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/intro) 来运行。 自动化 ML 将自动选择算法和超参数，并生成随时可用于部署的模型。 可以使用多个选项来配置这些类型的试验。
 
-本指南介绍如何通过 [Azure 机器学习 SDK](/python/api/overview/azure/ml/intro) 定义各种自动机器学习试验的配置设置。 自动化机器学习将自动选择算法和超参数，并生成随时可用于部署的模型。 可以使用多个选项来配置自动化机器学习试验。
-
-若要查看自动化机器学习试验的端到端示例，请参阅[教程：使用自动化机器学习训练分类模型](tutorial-auto-train-models.md)。
+有关端到端示例，请参阅[教程：自动化机器学习 - 训练回归模型](tutorial-auto-train-models.md)。
 
 自动化机器学习提供的配置选项：
 
@@ -35,7 +34,7 @@ ms.locfileid: "107905209"
 * 探索模型指标
 * 注册和部署模型
 
-如果你更喜欢无代码体验，还可以[在 Azure 机器学习工作室中创建自动化学习试验](how-to-use-automated-ml-for-ml-models.md)。
+如果你更喜欢无代码体验，还可以 [在 Azure 机器学习工作室中设置无代码自动化机器学习训练](how-to-use-automated-ml-for-ml-models.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -112,7 +111,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ## <a name="compute-to-run-experiment"></a>用于运行试验的计算环境
 
-接下来，确定要在何处训练模型。 自动化机器学习训练试验可根据以下计算选项运行。 了解[本地和远程计算选项的优缺点](concept-automated-ml.md#local-remote)。 
+接下来，确定要在何处训练模型。 自动化机器学习训练试验可在以下计算选项中运行。 了解[本地和远程计算选项的优缺点](concept-automated-ml.md#local-remote)。 
 
 * **本地** 台式机或便携式计算机等本地计算机 – 如果数据集较小，并且你仍然处于探索阶段，则通常使用此选项。 有关本地计算示例，请参阅[此笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb)。 
  
@@ -154,7 +153,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
    ```
 
 
-1. 预测任务需要额外的设置，请参阅[自动训练时序预测模型](how-to-auto-train-forecast.md)一文来了解更多详细信息。 
+1. 预测任务需要额外设置，有关更多详细信息，请参阅[为时序预测设置自动化机器学习](how-to-auto-train-forecast.md)一文。 
 
     ```python
     time_series_settings = {
@@ -184,7 +183,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 下表按任务类型汇总了支持的模型。 
 
 > [!NOTE]
-> 如果你计划将自动化 ML 创建的模型导出为 [ONNX 模型](concept-onnx.md)，只有标有 * 的算法才能转换为 ONNX 格式。 详细了解[如何将模型转换为 ONNX](concept-automated-ml.md#use-with-onnx)。 <br> <br> 另请注意，ONNX 目前只支持分类和回归任务。 
+> 如果你计划将自动化机器学习创建的模型导出为 [ONNX 模型](concept-onnx.md)，只有标有 * 的算法才能转换为 ONNX 格式。 详细了解[如何将模型转换为 ONNX](concept-automated-ml.md#use-with-onnx)。 <br> <br> 另请注意，ONNX 目前只支持分类和回归任务。 
 
 分类 | 回归 | 时序预测
 |-- |-- |--
@@ -258,7 +257,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ### <a name="data-featurization"></a>数据特征化
 
-在每个自动化机器学习实验中，数据都是 *自动缩放和规范化*，以帮助对不同规模上的特征敏感的某些算法。 此缩放和规范化称为特征化。 有关更多详细信息和代码示例，请参阅 [AutoML 中的特征化](how-to-configure-auto-features.md#)。 
+在每个自动化机器学习实验中，数据都是自动缩放和规范化，以帮助对不同规模上的特征敏感的 *某些* 算法。 此缩放和规范化称为特征化。 有关更多详细信息和代码示例，请参阅 [AutoML 中的特征化](how-to-configure-auto-features.md#)。 
 
 在 `AutoMLConfig` 对象中配置试验时，可以启用/禁用设置 `featurization`。 下表列出了 [AutoMLConfig 对象](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中的特征化的已接受设置。 
 
@@ -543,7 +542,7 @@ model = remote_run.register_model(model_name = model_name,
 
 模型可解释性让你可以了解模型进行预测的原因，以及基础特征重要性值。 SDK 包括各种包，这些包用于在训练和推理时间为本地和已部署的模型启用模型可解释性功能。
 
-有关如何在自动化机器学习试验中启用可解释性功能的代码示例，请参阅[操作方法](how-to-machine-learning-interpretability-automl.md)。
+有关如何在自动化机器学习实验中专门启用可解释性特征的代码示例，请参阅[操作指南](how-to-machine-learning-interpretability-automl.md)。
 
 有关如何在自动化机器学习之外的其他 SDK 区域中启用模型解释和特征重要性的基本信息，请参阅可解释性方面的[概念](how-to-machine-learning-interpretability.md)文章。
 

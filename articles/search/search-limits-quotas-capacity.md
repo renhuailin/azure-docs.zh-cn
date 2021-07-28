@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 994ed74750d159dfdb83259e9fe921f870ec2241
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21c5fd8832805c5e733f19d5fbf71a4e5512478e
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99509361"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540513"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
 
@@ -127,7 +127,7 @@ ms.locfileid: "99509361"
 
 ## <a name="data-limits-ai-enrichment"></a>数据限制（AI 扩充）
 
-调用文本分析资源进行[实体识别](cognitive-search-skill-entity-recognition.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、[情绪分析](cognitive-search-skill-sentiment.md)、[语言检测](cognitive-search-skill-language-detection.md)和[个人信息检测](cognitive-search-skill-pii-detection.md)的 [AI 扩充管道](cognitive-search-concept-intro.md)会受到数据限制的约束。 记录的最大大小应为 50,000 个字符（通过 [`String.Length`](/dotnet/api/system.string.length) 进行测量）。 如果需要在将数据发送到情绪分析器之前拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
+调用文本分析资源进行[实体识别](cognitive-search-skill-entity-recognition-v3.md)、[实体链接](cognitive-search-skill-entity-linking-v3.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、[情绪分析](cognitive-search-skill-sentiment-v3.md)、[语言检测](cognitive-search-skill-language-detection.md)和[个人信息检测](cognitive-search-skill-pii-detection.md)的 [AI 扩充管道](cognitive-search-concept-intro.md)存在数据限制。 记录的最大大小应为 50,000 个字符，通过 [`String.Length`](/dotnet/api/system.string.length) 进行测量。 如果需要在将数据发送到情绪分析器之前拆分数据，请使用[文本拆分技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="throttling-limits"></a>限制
 

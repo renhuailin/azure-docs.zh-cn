@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 52cd7817594c5c2a1d4e3a4ca9c56891df594cd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc580bd1e7b33507f25fdb0ebec3ba38904db8bb
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201114"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111541856"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>使用内置直接方法来与 edgeAgent 通信
 
@@ -44,7 +44,10 @@ az iot hub invoke-module-method --method-name 'ping' -n <hub name> -d <device na
 
 使用 RestartModule 方法可以远程管理 IoT Edge 设备上运行的模块。  如果某个模块报告故障状态或其他不正常行为，你可以触发 IoT Edge 代理来重启该模块。 成功的 restart 命令将返回空有效负载和“状态”：  200。
 
-RestartModule 方法可在 IoT Edge 1.0.9 和更高版本中使用。 
+RestartModule 方法可在 IoT Edge 1.0.9 和更高版本中使用。
+
+>[!TIP]
+>Azure 门户中的 IoT Edge 故障排除页提供了重启模块的简化体验。 有关详细信息，请参阅[在 Azure 门户中对 IoT Edge 设备进行监视和故障排除](troubleshoot-in-portal.md)。
 
 可对 IoT Edge 设备上运行的任何模块（包括 edgeAgent 模块本身）使用 RestartModule 直接方法。 但是，如果使用此直接方法来关闭 edgeAgent，将不会收到成功结果，因为在模块重启时会中断连接。
 

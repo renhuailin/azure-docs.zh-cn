@@ -5,12 +5,12 @@ description: 了解有关 Azure Kubernetes 服务 (AKS) 中的隔离的群集操
 services: container-service
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: e51689d33711f127f775c63c9d7fc8ad4c901604
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3b6295c1f1ae424c77c32876e32609a7d492e07d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105164"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461632"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的群集隔离的最佳做法
 
@@ -72,7 +72,7 @@ ms.locfileid: "107105164"
 
 目前，Kubernetes 环境并不完全安全，因为可能存在恶意的多租户使用情况。 在多租户环境中，多个租户使用公共的共享基础设施。 如果所有租户都不受信任，你将需要额外的计划来防止租户影响其他部分的安全性和服务。
 
-其他安全性功能（如 Pod 安全策略或用于节点的 Kubernetes RBAC）可有效阻止攻击。 若要在运行恶意多租户工作负载时获得真正的安全性，应只信任虚拟机监控程序。 Kubernetes 的安全域成为整个群集，而不是单个节点。 
+其他安全功能（如用于节点的 Kubernetes RBAC）可有效阻止攻击。 若要在运行恶意多租户工作负载时获得真正的安全性，应只信任虚拟机监控程序。 Kubernetes 的安全域成为整个群集，而不是单个节点。 
 
 对于这些类型的恶意多租户工作负荷，应使用物理隔离的群集。
 

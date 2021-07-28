@@ -6,14 +6,19 @@ author: harelbr
 ms.author: harelbr
 ms.date: 02/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: fa14f0dd40a30a4750d9bb102d8e67608f958135
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0937683eaacefc9fe4bbee21802a0f1657918efd
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101734496"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111536712"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>智能检测电子邮件通知更改
+
+>[!NOTE]
+>你可以将 Application Insights 资源迁移到警报库智能检测（预览版）。 迁移时会为各种智能检测模块创建警报规则。 创建后就可以管理和配置这些规则，就像任何其他 Azure Monitor 警报规则一样。 你还可以为这些规则配置操作组，从而通过多种方法针对新的检测执行操作或触发通知。
+>
+> 有关迁移过程和迁移后智能检测行为的更多详细信息，请参阅[智能检测警报迁移](../alerts/alerts-smart-detections-migration.md)。
 
 根据客户反馈，我们将于 2019 年 4 月 1 日更改从智能检测接收电子邮件通知的默认角色。
 

@@ -9,23 +9,25 @@ ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 11/18/2020
+ms.date: 06/03/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 64d110243a8be5756e7de635b55e229078251a3c
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: ff6e4f0a3c2b79f63376a480986f15014d20f9ae
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897336"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565349"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>将防火墙后的工作区用于 Azure 机器学习
 
 本文介绍如何配置 Azure 防火墙以控制对 Azure 机器学习工作区和公共 Internet 的访问。 若要详细了解如何保护 Azure 机器学习，请参阅 [Azure 机器学习的企业安全性](concept-enterprise-security.md)。
 
-> [!WARNING]
-> 只有在代码优先体验中才支持访问防火墙后面的数据存储。 不支持使用 [Azure 机器学习工作室](overview-what-is-machine-learning-studio.md)访问防火墙后的数据。 若要使用工作室处理专用网络上的数据存储，必须首先[设置虚拟网络](../virtual-network/quick-create-portal.md)，然后[授予工作室访问存储在虚拟网络内部的数据的权限](how-to-enable-studio-virtual-network.md)。
-
 ## <a name="azure-firewall"></a>Azure 防火墙
+
+> [!IMPORTANT]
+> Azure 防火墙是一项 Azure 服务，可为 Azure 虚拟网络资源提供安全性。 其他一些 Azure 服务（如 Azure 存储帐户）有自己的防火墙设置，适用于该特定服务实例的公共终结点。 本文档中的信息针对 Azure 防火墙。
+> 
+> 有关服务实例防火墙设置的信息，请参阅 [在虚拟网络中使用工作室](how-to-enable-studio-virtual-network.md#firewall-settings)。
 
 使用 Azure 防火墙时，请使用目标网络地址转换 (DNAT) 为入站流量创建 NAT 规则。 对于出站流量，请创建“网络”和/或“应用程序”规则 。 [一些 Azure 防火墙概念](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts)中更详细地介绍了这些规则集合。
 
@@ -107,6 +109,18 @@ ms.locfileid: "107897336"
 
 1. 若要限制对部署到 Azure Kubernetes Service (AKS) 的模型的访问，请参阅[限制 Azure Kubernetes Service 中的出口流量](../aks/limit-egress-traffic.md)。
 
+### <a name="diagnostics-for-support"></a>针对支持的诊断
+
+如果在使用 Microsoft 支持时需要收集诊断信息，请执行以下步骤：
+
+1. 添加网络规则，以允许传入和传出 `AzureMonitor` 标记的流量。
+1. 为以下主机添加应用程序规则。 为以下主机的“协议: 端口”选择“http, https” ：
+
+    + **dc.applicationinsights.azure.com**
+    + **dc.applicationinsights.microsoft.com**
+    + **dc.services.visualstudio.com**
+
+    有关 Azure Monitor 主机的 IP 地址列表，请参阅 [Azure Monitor 使用的 IP 地址](../azure-monitor/app/ip-addresses.md)。
 ## <a name="other-firewalls"></a>其他防火墙
 
 本部分中的指南是通用的，因为每个防火墙都有自己的术语和特定配置。 如果你对如何允许通过防火墙进行通信有疑问，请查阅你正在使用的防火墙的相关文档。
@@ -131,10 +145,6 @@ ms.locfileid: "107897336"
 | ----- | ----- | ----- | ----- |
 | Azure 机器学习工作室 | ml.azure.com | ml.azure.us | studio.ml.azure.cn |
 | API |\*.azureml.ms | \*.ml.azure.us | \*.ml.azure.cn |
-| 试验、历史记录、Hyperdrive、标记 | \*.experiments.azureml.net | \*.ml.azure.us | \*.ml.azure.cn |
-| 模型管理 | \*.modelmanagement.azureml.net | \*.ml.azure.us | \*.ml.azure.cn |
-| 管道 | \*.aether.ms | \*.ml.azure.us | \*.ml.azure.cn |
-| 设计器（工作室服务） | \*.studioservice.azureml.com | \*.ml.azure.us | \*.ml.azure.cn |
 | 集成笔记本 | \*.notebooks.azure.net | \*.notebooks.usgovcloudapi.net |\*.notebooks.chinacloudapi.cn |
 | 集成笔记本 | \*.file.core.windows.net | \*.file.core.usgovcloudapi.net | \*.file.core.chinacloudapi.cn |
 | 集成笔记本 | \*.dfs.core.windows.net | \*.dfs.core.usgovcloudapi.net | \*.dfs.core.chinacloudapi.cn |
@@ -150,6 +160,9 @@ ms.locfileid: "107897336"
 | 计算群集/实例 | graph.windows.net | graph.windows.net | graph.chinacloudapi.cn |
 | 计算实例 | \*.instances.azureml.net | \*.instances.azureml.us | \*.instances.azureml.cn |
 | 计算实例 | \*.instances.azureml.ms |  |  |
+
+> [!IMPORTANT]
+> 你的防火墙必须允许通过 TCP 端口 18881、443 和 8787 与 .instances.azureml.ms 通信。\* 
 
 **Azure 机器学习使用的关联资源**
 
@@ -168,6 +181,8 @@ ms.locfileid: "107897336"
 
 如需了解限制对部署到 Azure Kubernetes Service (AKS) 的模型的访问，请参阅[限制 Azure Kubernetes Service 中的出口流量](../aks/limit-egress-traffic.md)。
 
+> [!TIP]
+> 如果你正在与 Microsoft 支持部门合作收集诊断信息，则必须允许到 Azure Monitor 主机使用的 IP 地址的出站流量。 有关 Azure Monitor 主机的 IP 地址列表，请参阅 [Azure Monitor 使用的 IP 地址](../azure-monitor/app/ip-addresses.md)。
 ### <a name="python-hosts"></a>Python 主机
 
 本部分中的主机用于安装 Python 包。 开发、训练和部署过程中需要使用它们。 

@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Bastion 中使用 VM 和 NSG
-description: 可以将网络安全组与 Azure Bastion 配合使用。 了解此配置所需的子网。
+description: 了解如何在 Azure Bastion 中使用网络安全组。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: b6a0dee4c3fef1be4f4b9f910b4c6256b4924a2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84f32755a4838fbcb29b3d85d8308b5288d746ea
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101700212"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537898"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>使用 NSG 访问和 Azure Bastion
 

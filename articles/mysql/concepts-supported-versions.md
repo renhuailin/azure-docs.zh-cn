@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 77b43561ea0c1fdf9ff7a8d0fcce7fa7b9a2e0fa
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 1804cef5baf70fad303c2813286e2bad500e63d7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129380"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073371"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>支持的 Azure Database for MySQL 服务器版本
 
@@ -38,7 +38,7 @@ ms.locfileid: "108129380"
 | 版本 | [单一服务器](overview.md) <br/> 当前次要版本 |[灵活服务器（预览版）](./flexible-server/overview.md) <br/> 当前次要版本  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL 版本 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html)（已停用） | 不支持|
-|MySQL 版本 5.7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
+|MySQL 版本 5.7 | [5.7.32](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-32.html) | [5.7.32](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-32.html)|
 |MySQL 版本 8.0 | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
 
 阅读[版本支持策略文档](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)中的已停用版本的版本支持策略。

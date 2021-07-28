@@ -6,23 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 05/10/2021
 ms.author: alkohli
-ms.openlocfilehash: a9304936f746b82b59550d62e8b60a9e0035d188
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d98141c52acc3cd0628943d17a89ec9822299d48
+ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92147941"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109738133"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>跟踪 Azure Data Box 和 Azure Data Box Heavy 导入订单并记录其事件
 
 Data Box 或 Data Box Heavy 导入订单会经历以下步骤：订购、设置、数据复制、寄回、上传到 Azure、验证和数据擦除。 对于每个订单步骤，可以采取多种措施来控制对订单的访问、审核事件、跟踪订单，以及解释生成的各种日志。
 
-下表显示了 Data Box 或 Data Box Heavy 导入订单步骤的摘要，以及在每个步骤中可用于跟踪和审核订单的工具。
+下表提供了处理导入订单的每个步骤的摘要，以及在步骤中可用于跟踪和审核订单的工具。
 
-| Data Box 导入订单阶段       | 用于跟踪和审核的工具                                                                        |
-|----------------------------|------------------------------------------------------------------------------------------------|
+| Data Box 导入订单阶段| 用于跟踪和审核的工具|
+|----------------------------|------------------------|
 | 创建订单               | [通过 Azure RBAC 对订单设置访问控制](#set-up-access-control-on-the-order)                                                    |
 | 订单已处理            | 通过以下方式[跟踪订单](#track-the-order) <ul><li> Azure 门户 </li><li> 承运商网站 </li><li>电子邮件通知</ul> |
 | 设置设备              | 在[活动日志](#query-activity-logs-during-setup)中记录的设备访问凭据                                              |
@@ -79,7 +79,7 @@ Data Box 或 Data Box Heavy 导入订单会经历以下步骤：订购、设置�
 请确保复制作业已完成且未出错。 如果复制过程中出错，请从“连接和复制”页下载日志。
 
 - 如果将未经 512 字节对齐的文件复制到 Data Box 上的托管磁盘文件夹，该文件不会作为页 Blob 上传到临时存储帐户。 日志中会显示一条错误。 请删除该文件，并复制经过 512 字节对齐的文件。
-- 如果复制了 VHDX、动态 VHD 或差异 VHD（不支持这些文件），将在日志中看到错误。
+- 如果复制了 VHDX、动态 VHD 或差异 VHD（不支持这些文件类型），则会在日志中看到错误。
 
 下面是复制到托管磁盘时出现的不同错误的 *error.xml* 示例。
 
@@ -161,7 +161,7 @@ Data Box 或 Data Box Heavy 导入订单会经历以下步骤：订购、设置�
 
 ### <a name="bom-or-manifest-file"></a>BOM 或清单文件
 
-BOM 或清单文件包含复制到 Data Box 设备的所有文件的列表。 BOM 文件包含文件名和相应的大小，以及校验和。 系统将为块 Blob、页 Blob，Azure 文件、通过 REST API 执行的复制，以及复制到 Data Box 上的托管磁盘的操作创建单独的 BOM 文件。 在准备交付期间，可以从设备的本地 Web UI 下载 BOM 文件。
+BOM 或清单文件包含复制到 Data Box 设备的所有文件的列表。 BOM 文件具有文件名和文件大小以及校验和。 系统将为块 Blob、页 Blob，Azure 文件、通过 REST API 执行的复制，以及复制到 Data Box 上的托管磁盘的操作创建单独的 BOM 文件。 在准备交付期间，可以从设备的本地 Web UI 下载 BOM 文件。
 
 这些文件还会保存在 Data Box 设备上，并会上传到 Azure 数据中心内的关联存储帐户中。
 
@@ -211,7 +211,7 @@ BOM 或清单文件还会复制到 Azure 存储帐户。 可以使用 BOM 或清
 
 ![完成后“概述”边栏选项卡中显示的复制日志路径](media/data-box-logs/copy-log-path-1.png)
 
-### <a name="upload-completed-successfully"></a>上传已成功完成 
+### <a name="upload-completed-successfully"></a>上传已成功完成
 
 以下示例描述了成功完成 Data Box 上传后复制日志的常规格式：
 
@@ -224,40 +224,15 @@ BOM 或清单文件还会复制到 Azure 存储帐户。 可以使用 BOM 或清
 </CopyLog>
 ```
 
-### <a name="upload-completed-with-errors"></a>上传已完成但出错 
-
-上传到 Azure 的过程也有可能出现这种状态：完成但出错。
-
-![完成但出错时“概述”边栏选项卡中显示的复制日志路径](media/data-box-logs/copy-log-path-2.png)
-
-下面是上传完成但出错时的复制日志示例：
-
-```xml
-<ErroredEntity Path="iso\samsungssd.iso">
-  <Category>UploadErrorCloudHttp</Category>
-  <ErrorCode>409</ErrorCode>
-  <ErrorMessage>The blob type is invalid for this operation.</ErrorMessage>
-  <Type>File</Type>
-</ErroredEntity><ErroredEntity Path="iso\iSCSI_Software_Target_33.iso">
-  <Category>UploadErrorCloudHttp</Category>
-  <ErrorCode>409</ErrorCode>
-  <ErrorMessage>The blob type is invalid for this operation.</ErrorMessage>
-  <Type>File</Type>
-</ErroredEntity><CopyLog Summary="Summary">
-  <Status>Failed</Status>
-  <TotalFiles_Blobs>72</TotalFiles_Blobs>
-  <FilesErrored>2</FilesErrored>
-</CopyLog>
-```
 ### <a name="upload-completed-with-warnings"></a>上传已完成但出现警告
 
-如果数据中包含不符合 Azure 命名约定的容器/Blob/文件名，并且在修复数据文件的名称后将数据上传到 Azure，则上传到 Azure 的过程将会完成，但会出现警告。
+如果数据具有不符合 Azure 命名约定的容器、Blob 或文件名，并已修改名称以便将数据上载到 Azure，则上传到 Azure 完成时会出现警告。
 
 ![完成但出现警告时“概述”边栏选项卡中显示的复制日志路径](media/data-box-logs/copy-log-path-3.png)
 
 下面是复制日志的一个示例，其中，不符合 Azure 命名约定的容器在将数据上传到 Azure 期间已重命名。
 
-容器的新唯一名称采用 `DataBox-GUID` 格式，容器的数据将放入已重命名的新容器。 复制日志为容器指定旧的和新的容器名称。
+新容器的唯一名称格式为 `DataBox-GUID`。 原始容器中的数据放置在已重命名的新容器中。 复制日志指定旧的和新的容器名称。
 
 ```xml
 <ErroredEntity Path="New Folder">
@@ -268,7 +243,7 @@ BOM 或清单文件还会复制到 Azure 存储帐户。 可以使用 BOM 或清
 </ErroredEntity>
 ```
 
-下面是复制日志的一个示例，其中，不符合 Azure 命名约定的 Blob 或文件在将数据上传到 Azure 期间已重命名。 新的 Blob 或文件名称已转换为容器相对路径的 SHA256 摘要，并已根据目标类型上传到路径。 目标可以是块 Blob、页 Blob 或 Azure 文件。
+下面是复制日志的一个示例，其中，不符合 Azure 命名约定的 Blob 或文件在将数据上传到 Azure 期间已重命名。 新的 Blob 或文件名将转换为容器的相对路径的 SHA256 摘要，并基于目标类型上传到该路径。 目标可以是块 Blob、页 Blob 或 Azure 文件。
 
 `copylog` 指定旧的和新的 Blob 或文件名称，以及 Azure 中的路径。
 
@@ -289,6 +264,35 @@ BOM 或清单文件还会复制到 Azure 存储帐户。 可以使用 BOM 或清
   <ErrorMessage>The original container/share/blob has been renamed to: BlockBlob/DataBox-0xcdc5c61692e5d63af53a3cb5473e5200915e17b294683968a286c0228054f10e :from: Ã :because either name has invalid character(s) or length is not supported</ErrorMessage>
   <Type>File</Type>
 </ErroredEntity>
+```
+
+
+### <a name="upload-completed-with-errors"></a>上传已完成但出错
+
+上传到 Azure 的过程也有可能出现这种状态：完成但出错。
+
+![完成但出错时“概述”边栏选项卡中显示的复制日志路径](media/data-box-logs/copy-log-path-2.png)
+
+有时可能会出现导致文件无法上传的不可重试错误。 在这种情况下，你将收到通知。 有关如何跟进通知的信息，请参阅[查看从 Azure Data Box 和 Azure Data Box Heavy 设备上传数据时出现的复制错误](data-box-troubleshoot-data-upload.md)。
+
+下面是上传完成但出错时的复制日志示例：
+
+```xml
+<ErroredEntity Path="iso\samsungssd.iso">
+  <Category>UploadErrorCloudHttp</Category>
+  <ErrorCode>409</ErrorCode>
+  <ErrorMessage>The blob type is invalid for this operation.</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity><ErroredEntity Path="iso\iSCSI_Software_Target_33.iso">
+  <Category>UploadErrorCloudHttp</Category>
+  <ErrorCode>409</ErrorCode>
+  <ErrorMessage>The blob type is invalid for this operation.</ErrorMessage>
+  <Type>File</Type>
+</ErroredEntity><CopyLog Summary="Summary">
+  <Status>Failed</Status>
+  <TotalFiles_Blobs>72</TotalFiles_Blobs>
+  <FilesErrored>2</FilesErrored>
+</CopyLog>
 ```
 
 ## <a name="get-chain-of-custody-logs-after-data-erasure"></a>擦除数据后获取监管日志链

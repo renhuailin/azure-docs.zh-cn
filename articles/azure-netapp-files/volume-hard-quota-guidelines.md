@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 12807e83f7841bc67999ce385d0cb82bf15f4c71
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a0080687d65c7165b0c2a463229a9a817fb045e0
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175985"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288171"
 ---
 # <a name="what-changing-to-volume-hard-quota-means-for-your-azure-netapp-files-service"></a>Azure NetApp 文件服务卷硬配额方式的更改
 
 Azure NetApp 文件服务从最初开始就一直使用容量池预配和自动增长机制。 Azure NetApp 文件卷是在所选层和大小的、客户预配的底层容量池中精简预配的。 卷大小（配额）用于提供性能和容量，配额可随时动态调整。 此行为意味着，卷配额目前是用于控制卷带宽的性能杠杆。 目前，当容量占满时，底层容量池会自动增长。   
 
 > [!IMPORTANT] 
-> 卷和容量池预配的 Azure NetApp 文件行为将更改为手动且可控的机制 。 从 2021 年 4 月 1 日开始（已更新），卷大小（配额）将管理带宽性能和预配的容量，底层容量池将不再自动增长。 
+> 卷和容量池预配的 Azure NetApp 文件行为将更改为手动且可控的机制 。 从 2021 年 4 月 30 日开始（已更新），卷大小（配额）将管理带宽性能和预配的容量，底层容量池将不再自动增长。 
 
 ## <a name="reasons-for-the-change-to-volume-hard-quota"></a>更改卷硬配额的原因
 
@@ -56,7 +56,7 @@ Azure NetApp 文件服务从最初开始就一直使用容量池预配和自动�
 * 容量池：大小保持为 4 TiB，不会自动增长。 
 * 卷配额更改：更改卷的性能（带宽），以及客户端可见的容量或可用容量。
 
-你需要主动监视 Azure NetApp 文件卷和容量池的利用率。 需要有针对性地更改卷和池的接近全容量利用率。 Azure NetApp 文件将继续允许[动态卷和容量池大小调整操作](azure-netapp-files-resize-capacity-pools-or-volumes.md)。
+你需要主动监视 Azure NetApp 文件卷和容量池的利用率。 你需要有针对性地更改卷和池的利用率，以实现接近全容量使用。 Azure NetApp 文件将继续允许[动态卷和容量池大小调整操作](azure-netapp-files-resize-capacity-pools-or-volumes.md)。
 
 ## <a name="how-to-operationalize-the-volume-hard-quota-change"></a>如何操作化卷硬配额更改
 
@@ -160,7 +160,7 @@ ANFCapacityManager 是一个 Azure 逻辑应用，用于管理基于容量的警
 
 ##### <a name="portal"></a>门户 
 
-可根据需要[更改卷的大小](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-volume)。 卷的容量消耗是依据其池的预配容量计数的。
+可根据需要[更改卷的大小](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-volume-using-the-azure-portal)。 卷的容量消耗是依据其池的预配容量计数的。
 
 1. 在“管理 NetApp 帐户”边栏选项卡中，单击“卷”。  
 2. 右键单击要调整大小的卷的名称，或单击卷所在行末尾的 `…` 图标以显示上下文菜单。 
@@ -170,7 +170,7 @@ ANFCapacityManager 是一个 Azure 逻辑应用，用于管理基于容量的警
 
    ![显示“更新卷配额”窗口的屏幕截图。](../media/azure-netapp-files/hard-quota-update-volume-quota.png) 
 
-在某些情况下，宿主容量池不提供足够的容量用于调整卷的大小。 但是，可以以 1-TiB 为增量或减量[更改容量池大小](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-the-capacity-pool)。 容量池大小不能小于 4 TiB。 *重设容量池大小会更改购买的 Azure NetApp 文件容量。*
+在某些情况下，宿主容量池不提供足够的容量用于调整卷的大小。 但是，可以以 1-TiB 为增量或减量[更改容量池大小](azure-netapp-files-resize-capacity-pools-or-volumes.md#resizing-the-capacity-pool-or-a-volume-using-azure-cli)。 容量池大小不能小于 4 TiB。 *重设容量池大小会更改购买的 Azure NetApp 文件容量。*
 
 1. 在“管理 NetApp 帐户”边栏选项卡中，单击要重设大小的容量池。
 2. 右键单击容量池名称，或单击容量池所在行末尾的 `…` 图标以显示上下文菜单。
@@ -196,13 +196,13 @@ ANFCapacityManager 是一个 Azure 逻辑应用，用于管理基于容量的警
 
 [ ![显示“Cloud Shell”窗口的屏幕截图。](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png) ](../media/azure-netapp-files/hard-quota-update-cloud-shell-window.png#lightbox)
 
-以下示例使用命令来[显示](/cli/azure/netappfiles/volume#az-netappfiles-volume-show)和[更新](/cli/azure/netappfiles/volume#az-netappfiles-volume-update)卷的大小：
+以下示例使用命令来[显示](/cli/azure/netappfiles/volume#az_netappfiles_volume_show)和[更新](/cli/azure/netappfiles/volume#az_netappfiles_volume_update)卷的大小：
  
 [ ![展示如何使用 PowerShell 显示卷大小的屏幕截图。](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png) ](../media/azure-netapp-files/hard-quota-update-powershell-volume-show.png#lightbox)
 
 [ ![展示如何使用 PowerShell 更新卷大小的屏幕截图。](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png) ](../media/azure-netapp-files/hard-quota-update-powershell-volume-update.png#lightbox)
 
-以下示例使用命令来[显示](/cli/azure/netappfiles/pool#az-netappfiles-pool-show)和[更新](/cli/azure/netappfiles/pool#az-netappfiles-pool-update)容量池的大小：
+以下示例使用命令来[显示](/cli/azure/netappfiles/pool#az_netappfiles_pool_show)和[更新](/cli/azure/netappfiles/pool#az_netappfiles_pool_update)容量池的大小：
 
 [ ![展示如何使用 PowerShell 显示容量池大小的屏幕截图。](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png) ](../media/azure-netapp-files/hard-quota-update-powershell-pool-show.png#lightbox) 
 
@@ -237,7 +237,7 @@ ANFCapacityManager 是一个 Azure 逻辑应用，用于管理基于容量的警
 
     ![显示“设置卷自动增长百分比”窗口的屏幕截图。](../media/azure-netapp-files/hard-quota-volume-anfcapacitymanager-auto-grow-percent.png) 
 
-## <a name="faq"></a>FAQ 
+## <a name="faq"></a>常见问题解答 
 
 本部分解答有关卷硬配额更改的一些问题。 
 
@@ -250,7 +250,7 @@ ANFCapacityManager 是一个 Azure 逻辑应用，用于管理基于容量的警
 
 ### <a name="does-this-change-mean-the-volume-auto-grow-behavior-will-disappear-from-azure-netapp-files"></a>此项更改是否意味着卷自动增长行为将从 Azure NetApp 文件中消失？
 
-一个常见的错误认知是，Azure NetApp 文件卷在填满后会自动增长。 不管实际设置的配额是什么，卷都精简预配为 100 TiB 大小，而底层容量池将以 1-TiB 增量自动增长。 此项更改将会解决（可见和可用）卷大小不会超过设置的配额的问题，同时，容量池将不再自动增长 。 此项更改可以提供用户通常所期望的准确客户端空间和容量报告。 它避免了“失控的”容量消耗。
+一个常见的错误认知是，Azure NetApp 文件卷在填满后会自动增长。 不管实际设置的配额是什么，卷都精简预配为 100 TiB 大小，而底层容量池将以 1-TiB 增量自动增长。 此更改会把（可视和可用）卷大小存入集配额，并且容量池将不再自动增长。 此项更改可以提供用户通常所期望的准确客户端空间和容量报告。 它避免了“失控的”容量消耗。
 
 ### <a name="does-this-change-have-any-effect-on-volumes-replicated-with-cross-region-replication-preview"></a>此项更改是否对使用跨区域复制（预览版）复制的卷造成任何影响？ 
 

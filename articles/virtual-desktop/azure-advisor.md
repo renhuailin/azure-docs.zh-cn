@@ -1,23 +1,23 @@
 ---
-title: 将 Windows 虚拟桌面与 Azure 顾问集成 - Azure
-description: 如何将 Azure 顾问与 Windows 虚拟桌面部署结合使用。
+title: 将 Azure 虚拟桌面与 Azure 顾问集成 - Azure
+description: 如何将 Azure 顾问与 Azure 虚拟桌面部署结合使用。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: b141d3829e9d98cb793d2038e93331804d2e6b8f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 25bdeb3db8872550a4f1f03e7165cd24653272c1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448281"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745342"
 ---
-# <a name="use-azure-advisor-with-windows-virtual-desktop"></a>将 Azure 顾问与 Windows 虚拟桌面结合使用
+# <a name="use-azure-advisor-with-azure-virtual-desktop"></a>将 Azure 顾问与 Azure 虚拟桌面结合使用
 
 Azure 顾问可帮助用户自行解决常见问题，而无需提交支持案例。 这些建议可以减少用于提交帮助请求的次数，从而节省了时间和成本。
 
-本文将介绍如何在 Windows 虚拟桌面部署中设置 Azure 顾问，以对用户有所帮助。
+本文将介绍如何在 Azure 虚拟桌面部署中设置 Azure 顾问，以对用户有所帮助。
 
 ## <a name="what-is-azure-advisor"></a>什么是 Azure 顾问？
 
@@ -56,7 +56,7 @@ Azure 顾问会分析你的配置和遥测，提供个性化的建议来解决�
 
 - 只有在你知道显示建议的原因并确保它不会对你或你的用户产生负面影响之后，再关闭建议。 始终选择“了解更多”以了解问题。 如果根据 Azure 顾问中的说明解决了某个问题，这个问题将自动从列表中消失。 最好是及时解决这些问题，而不是不断地推迟。
 
-- 每当遇到 Windows 虚拟桌面中的问题时，始终首先检查 Azure 顾问。 Azure 顾问将为你提供有关如何解决此问题的说明，或者至少指向有帮助的资源。
+- 每当遇到 Azure 虚拟桌面中的问题时，请始终首先检查 Azure 顾问。 Azure 顾问将为你提供有关如何解决此问题的说明，或者至少指向有帮助的资源。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: 如何在 Microsoft 合作伙伴中心销售 SaaS 产品/服务
-description: 了解如何在 Microsoft 商业市场中与 Microsoft 联合销售以及通过软件即服务 (SaaS) 产品/服务的“云解决方案提供商(CSP)计划”选项进行转售。
+title: 在 Azure 市场中销售 SaaS 产品/服务
+description: 了解如何在 Azure 市场与 Microsoft 联合销售以及通过服务型软件 (SaaS) 产品/服务的云解决方案提供商 (CSP) 计划选项进行转售。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: fa207ca38c46f09e3660ea03e70d20e45c620845
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 632c2aaed5b9c0ffbfb6c47c4194276fd6a1869c
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127436"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110703453"
 ---
-# <a name="how-to-sell-your-saas-offer"></a>如何销售 SaaS 产品/服务
+# <a name="sell-a-saas-offer-through-microsoft"></a>通过 Microsoft 销售 SaaS 产品/服务
 
 本文介绍了通过 Microsoft 销售软件即服务 (SaaS) 产品/服务时可以选择的其他选项。 你可以与 Microsoft 联合销售以及/或者通过[云解决方案提供商(CSP)计划](cloud-solution-providers.md)转售你的产品/服务。
 
@@ -32,4 +32,4 @@ ms.locfileid: "108127436"
 ## <a name="next-steps"></a>后续步骤
 
 - [测试和发布 SaaS 产品/服务](test-publish-saas-offer.md)
-- [有效市场奖励](partner-center-portal/marketplace-rewards.md)
+- [有效市场奖励](marketplace-rewards.md)

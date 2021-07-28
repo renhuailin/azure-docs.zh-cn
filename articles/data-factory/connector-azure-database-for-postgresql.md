@@ -1,18 +1,18 @@
 ---
 title: 复制和转换 Azure Database for PostgreSQL 中的数据
 description: 了解如何使用 Azure 数据工厂复制和转换 Azure Database for PostgreSQL 中的数据。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/25/2021
-ms.openlocfilehash: ec4ea645e325ef48d4cb5951cd39fd4e9cbe1617
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d7d5ac30549667a6806b9f0c45328c0662a2e47e
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738049"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109785288"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>使用 Azure 数据工厂复制和转换 Azure Database for PostgreSQL 中的数据
 
@@ -30,11 +30,11 @@ ms.locfileid: "101738049"
 - [映射数据流](concepts-data-flow-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
-目前，数据流支持 Azure database for PostgreSQL 单一服务器，但不支持灵活服务器或超大规模 (Citus)。
+目前，Azure 数据工厂中的数据流支持 Azure Database for PostgreSQL 单一服务器，但不支持灵活服务器或超大规模 (Citus)；Azure Synapse Analytics 中的数据流支持所有 PostgreSQL 风格。
 
 ## <a name="getting-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Azure Database for PostgreSQL 连接器的数据工厂实体，以下部分提供有关用于定义这些实体的属性的详细信息。
 

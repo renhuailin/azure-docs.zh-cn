@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 06/02/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: guptashi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23832d9f1205105f1f9711cdf3260b74ee4a9bb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d5c1a1493a7ea2aac0945dae14fc4c547ad86c9
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952245"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409912"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>什么是 Azure Active Directory 中的标识安全评分？
 
@@ -57,6 +57,11 @@ Azure 每隔 48 小时检查安全配置，并将你的设置与建议的最佳�
 每条建议是根据 Azure AD 配置来衡量的。 如果使用第三方产品来实现建议的最佳做法，可以在改进操作的设置中指示此配置。 此外，如果建议不适用于你的环境，还可以选择设置要忽略的建议。 评分计算不考虑已忽略的建议。
 
 ![忽略或标记第三方涵盖的操作](./media/identity-secure-score/identity-secure-score-ignore-or-third-party-reccomendations.png)
+
+- 待解决 - 你认识到有必要采取改进操作，并计划在将来某个时间解决这个问题。 此状态也适用于检测为部分完成（而非全部完成）的操作。
+- 已计划 - 用于完成改进操作的具体计划已准备到位。
+- 接受风险 - 应始终在安全性与可用性之间进行平衡，并不是每个建议都适合你的环境。 在这种情况下，你可以选择接受该风险或其余的风险，而不执行改进操作。 你不会获得任何点数，而该操作也不会再显示在改进操作列表中。 你可以在历史记录中查看此操作，也可以随时撤消此操作。
+- “已通过第三方解决”和“已通过备用缓解措施解决”- 改进操作已由第三方应用程序或软件或内部工具解决 。 你将获得该操作所值的点数，因此你的分数会更好地反映出你的总体安全态势。 如果某个第三方工具或内部工具不再涵盖该控制，你可以选择另一个状态。 请记住，如果将改进操作标记为这些状态之一，Microsoft 将无法了解实现的完成情况。
 
 ## <a name="how-does-it-help-me"></a>评分有什么作用？
 

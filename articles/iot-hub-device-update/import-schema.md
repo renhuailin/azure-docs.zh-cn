@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/25/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 989535d0bd6f514e63c7cea9e5fd71912f8fb08b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d58d0b0ecb614779b2fd046a44ad16afd8ebeb9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104780151"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111956012"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub---schema-and-other-information"></a>将更新导入 Device Update for IoT Hub - 架构和其他信息
 如果要将更新导入 Device Update for IoT Hub，请确保先查看[概念](import-concepts.md)和[操作指南](import-update.md)。 如果你对构造导入清单时使用的架构的详细信息，以及相关对象的信息感兴趣，请参阅下文。
@@ -53,9 +53,35 @@ ms.locfileid: "104780151"
 
 ## <a name="hashes-object"></a>Hashes 对象
 
-| 名称 | 必选 | 类型 | 说明 |
+| 名称 | 必须 | 类型 | 说明 |
 | --------- | --------- | --------- | --------- |
 | Sha256 | True | 字符串 | 使用 SHA-256 算法的文件的 Base64 编码哈希。 |
+
+## <a name="example-import-request-body"></a>导入请求正文示例
+
+如果在使用[如何添加新更新](./import-update.md#review-the-generated-import-manifest)页面中的导入清单输出示例，并且希望直接调用设备更新 [REST API](/rest/api/deviceupdate/updates) 来执行导入，则相应的请求正文应该如下所示：
+
+```json
+{
+  "importManifest": {
+    "url": "http://<your Azure Storage location file path>/importManifest.json",
+    "sizeInBytes": <size of import manifest file>,
+    "hashes": {
+      "sha256": "<hash of import manifest file>"
+    }
+  },
+  "files": [
+    {
+      "filename": "file1.json",
+      "url": "http://<your Azure Storage location file path>/file1.json"
+    },
+    {
+          "filename": "file2.zip",
+          "url": "http://<your Azure Storage location file path>/file2.zip"
+    },
+  ]
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 

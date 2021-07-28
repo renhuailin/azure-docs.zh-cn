@@ -7,12 +7,12 @@ author: StefArroyo
 ms.author: esarroyo
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperf-fy21q1
-ms.openlocfilehash: 3c8e2559d1dc8fce27815d498578d352fa9fe498
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 777eeb615596d353770b7abcbe10191707e6fbfe
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372818"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072732"
 ---
 # <a name="install-and-use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>安装并使用 Azure Cosmos DB 模拟器进行本地开发和测试
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -97,8 +97,7 @@ Azure Cosmos DB 模拟器提供对 Azure Cosmos DB 服务的高保真模拟。 �
 
 ## <a name="use-the-emulator-on-linux-or-macos"></a><a id="run-on-linux-macos"></a>在 Linux 或 macOS 上使用模拟器
 
-目前 Azure Cosmos DB 模拟器只能在 Windows 上运行。 如果你使用 Linux 或 macOS，则可以在某个托管在虚拟机监控程序（例如 Parallels 或 VirtualBox）中的 Windows 虚拟机中运行模拟器。
-
+目前 Azure Cosmos DB 模拟器只能在 Windows 上运行。 如果你使用的是 Linux 或 macOS，我们建议你使用 [Linux Emulator（预览版）](linux-emulator.md)，或在某个托管在虚拟机监控程序中的 Windows 虚拟机（例如 Parallels 或 VirtualBox）中运行此模拟器。
 > [!NOTE]
 > 每次重启虚拟机监控程序中托管的 Windows 虚拟机时，都必须重新导入证书，因为虚拟机的 IP 地址会发生更改。 如果已将虚拟机配置为保留 IP 地址，则不需要导入证书。
 

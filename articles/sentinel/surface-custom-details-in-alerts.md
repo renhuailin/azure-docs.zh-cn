@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 45f0ef5366d97c275c40d4d436020dbaf3501d42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 97cd4d51da70b9b1cca501c7f04a3b0ccfc51305
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102456139"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112059664"
 ---
 # <a name="surface-custom-event-details-in-alerts-in-azure-sentinel"></a>显示 Azure Sentinel 的警报中的自定义事件详细信息 
 
@@ -39,13 +39,13 @@ ms.locfileid: "102456139"
 
 1. 从 Azure Sentinel 导航菜单中，选择“分析”。
 
-1. 选择计划的查询规则，再单击“编辑”。 或者单击屏幕顶部的“创建”&#10132;“计划的查询规则”，创建一个新规则。
+1. 选择计划的查询规则，再单击“编辑”。 或者单击屏幕顶部的“创建”>“计划的查询规则”，创建一个新规则。
 
 1. 单击“设置规则逻辑”选项卡。
 
-1. 在“警报增强”部分，选择“自定义详细信息” 。
+1. 在“警报扩充(预览)”部分，展开“自定义详细信息”。
 
-    :::image type="content" source="media/surface-custom-details-in-alerts/alert-enhancement.png" alt-text="查找并选择自定义详细信息":::
+    :::image type="content" source="media/surface-custom-details-in-alerts/alert-enrichment.png" alt-text="查找并选择自定义详细信息":::
 
 1. 在现已展开的“自定义详细信息”部分中，添加与要显示的详细信息对应的键值对：
 
@@ -63,7 +63,7 @@ ms.locfileid: "102456139"
 
     > [!NOTE]
     > 
-    >**服务限制**
+    > **服务限制**
     > - 一个分析规则中最多可定义 20 个自定义详细信息。
     >
     > - 所有自定义详细信息的大小限制统一为 2 KB。

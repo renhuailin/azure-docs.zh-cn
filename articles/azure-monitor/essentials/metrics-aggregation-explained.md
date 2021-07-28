@@ -5,13 +5,13 @@ author: rboucher
 ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 01/12/2020
-ms.openlocfilehash: b7e9318ee34836f8fbd2ae7a330134d8174e6a60
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/10/2021
+ms.openlocfilehash: c89b352954f114ec9da22cad6751bb57ef59899b
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031389"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106381791"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Azure Monitor 指标的指标聚合和显示说明
 
@@ -26,6 +26,7 @@ ms.locfileid: "102031389"
 首先明确定义几个术语：
 
 - **指标值** - 为特定资源收集的单个度量值。
+- 时序数据库 - 针对存储和检索数据点而优化的数据库，所有这些数据点都包含一个值和与之对应的时间戳。 
 - **时间段** - 一段普通时间。
 - **时间间隔** - 收集两个指标值之间的时间段。 
 - **时间范围** - 图表上显示的时间段。 典型默认值为 24 小时。 仅提供特定范围。 
@@ -33,7 +34,9 @@ ms.locfileid: "102031389"
 - **聚合类型** - 通过多个指标值计算得出的一种统计信息。  
 - **聚合** - 获取多个输入值，然后使用这些值通过聚合类型定义的规则生成单个输出值的过程。 例如，获取多个值的平均值。  
 
-指标是按固定时间间隔捕获的一系列指标值。 绘制图表时，所选指标的值将基于时间粒度进行单独聚合。 使用[指标资源管理器时间选取器面板](../essentials/metrics-getting-started.md#select-a-time-range)选择时间粒度的大小。 如果没有进行显式选择，则会根据当前选择的时间范围自动选择时间粒度。 选择后，在每个时间粒度间隔期间捕获的指标值将聚合并放置在图表上 - 每个间隔一个数据点。
+## <a name="summary-of-process"></a>进程摘要
+
+指标是一系列带时间戳存储的值。 在 Azure 中，大多数指标存储在 Azure 指标时序数据库中。 在绘制图表时，系统可从数据库中检索所选指标的值，然后根据所选的时间粒度（亦称“粒度”）单独聚合这些值。 使用[指标资源管理器时间选取器面板](../essentials/metrics-getting-started.md#select-a-time-range)选择时间粒度的大小。 如果没有进行显式选择，则会根据当前选择的时间范围自动选择时间粒度。 选择后，在每个时间粒度间隔期间捕获的指标值将聚合并放置在图表上 - 每个间隔一个数据点。
 
 ## <a name="aggregation-types"></a>聚合类型 
 
@@ -82,9 +85,11 @@ ms.locfileid: "102031389"
 
 ## <a name="how-the-system-collects-metrics"></a>系统如何收集指标
 
-数据收集因指标而异。 有两种类型的收集周期。
+数据收集因指标而异。 
 
 ### <a name="measurement-collection-frequency"></a>度量值收集频率 
+
+有两种类型的收集周期。
 
 - **定期** - 以不会发生变化的一致时间间隔收集指标。
 

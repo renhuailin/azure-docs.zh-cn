@@ -3,12 +3,12 @@ title: Azure 服务总线 - 消息到期时间
 description: 本文介绍 Azure 服务总线消息的到期时间和生存时间。 此截止时间过后，将不再传递该消息。
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 5d60d84bdc0d437d97c369296a414d55beda4167
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d41cb7a5e04753989c0e65e8afb8d74a11cd1af2
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952314"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614874"
 ---
 # <a name="message-expiration-time-to-live"></a>消息过期时间（生存时间）
 消息中的有效负载，或者由消息传递给接收方的命令或查询，几乎总是附带了某种形式的应用程序级过期截止时间。 此截止时间过后，便不再传送内容，或不再执行请求的操作。

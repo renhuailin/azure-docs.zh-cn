@@ -1,21 +1,22 @@
 ---
-title: 导出预配配置并回退到灾难恢复的已知良好状态
-description: 了解如何导出预配配置并回退到灾难恢复的已知良好状态。
+title: 导出应用程序预配配置并回退到已知良好状态，以便在 Azure Active Directory 中进行灾难恢复
+description: 了解如何导出应用程序预配配置并回退到已知良好状态，以便在 Azure Active Directory 中进行灾难恢复。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.openlocfilehash: c6af42c78bda66c4b397cbb99b26af7d6a5c7f07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: arvinh
+ms.openlocfilehash: 202450e66fe9f91257364b6840f1056435299f55
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256367"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109782930"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>操作说明：导出预配配置并回退到已知良好状态
 

@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 06/4/2021
 ms.author: damaerte
-ms.openlocfilehash: f824bddf833a1e2c01a3b779abc2c5252d8e0547
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 250e4bc171950bb643a75bdc9d80bdb2941cb97a
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89468651"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111539294"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell 的概述
 
@@ -112,6 +112,10 @@ Cloud Shell 是一个灵活的工具，可以通过以下项使用：
 * 在 Bash 中权限是按常规 Linux 用户设置的
 
 详细了解 [Cloud Shell 中的 Bash](features.md) 和 [Cloud Shell 中的 PowerShell](./features.md) 的功能。
+
+## <a name="complaince"></a>符合性
+### <a name="encryption-at-rest"></a>静态加密
+默认情况下，所有 Cloud Shell 基础结构符合双重静态加密。 用户不需要执行任何操作。
 
 ## <a name="pricing"></a>定价
 

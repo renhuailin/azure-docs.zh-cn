@@ -5,23 +5,23 @@ author: anthonychu
 ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: dd112c74ea9f013a0e14bddd735060ddbf73c14e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82166ca69db6dc2dc1b7562e23078609b01cb2ed
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578522"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756016"
 ---
 # <a name="azure-functions-custom-handlers"></a>Azure Functions 自定义处理程序
 
-每个函数应用由特定于语言的处理程序执行。 尽管 Azure Functions 默认支持许多[语言处理程序](./supported-languages.md)，但在某些情况下，你可能需要使用其他语言或运行时。
+每个函数应用由特定于语言的处理程序执行。 尽管 Azure Functions 默认具有很多[语言处理程序](./supported-languages.md)，但在某些情况下，你可能想要使用其他语言或运行时。
 
 自定义处理程序是可以从 Functions 主机接收事件的轻型 Web 服务器。 支持 HTTP 基元的任何语言都可以实现自定义处理程序。
 
 自定义处理程序最适合用于以下场合：
 
-- 使用当前不受支持的语言（如 Go 或 Rust）实现函数应用。
-- 使用当前不受支持的运行时（如 Deno）实现函数应用。
+- 使用当前非现成的语言（如 Go 或 Rust）实现函数应用。
+- 使用当前默认不提供的运行时（如 Deno）实现函数应用。
 
 对于自定义处理程序，可以通过[扩展绑定](./functions-bindings-register.md)来使用[触发器以及输入和输出绑定](./functions-triggers-bindings.md)。
 

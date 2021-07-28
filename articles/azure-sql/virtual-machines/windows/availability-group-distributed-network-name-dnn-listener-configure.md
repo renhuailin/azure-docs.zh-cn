@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bf5c4c39ea8f5705cc9788fdcf2cddd01dcb4087
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d7d637a98a0f250936fa8c9024ae1302d3aaa536
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034701"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572374"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>为可用性组配置 DNN 侦听器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,6 +51,7 @@ DNN 侦听器功能目前仅适用于 Windows Server 2016 及更高版本上的 
 - 配置了你的 [Always On 可用性组](availability-group-overview.md)。 
 - 安装了最新版本的 [PowerShell](/powershell/azure/install-az-ps)。 
 - 确定将用于 DNN 侦听器的唯一端口。 用于 DNN 侦听器的端口在可用性组或故障转移群集实例的所有副本中必须是唯一的。  不能与其他连接共享同一端口。
+- 连接到 DNN 侦听器的客户端必须支持连接字符串中的 `MultiSubnetFailover=True` 参数。 
 
 
 
@@ -182,4 +183,12 @@ DNN 侦听器旨在侦听所有 IP 地址，但采用的是特定的唯一端口
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure 中的 SQL Server HADR 功能，请参阅[可用性组](availability-group-overview.md)和[故障转移群集实例](failover-cluster-instance-overview.md)。 你还可以了解对环境进行配置以实现高可用性和灾难恢复的[最佳做法](hadr-cluster-best-practices.md)。 
+部署可用性组后，请考虑优化 [Azure VM 上的 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)。 
+
+
+若要了解更多信息，请参阅以下文章：
+
+- [Azure VM 上的 SQL Server 的 Windows Server 故障转移群集](hadr-windows-server-failover-cluster-overview.md)
+- [Azure VM 上的 SQL Server 的 Always On 可用性组](availability-group-overview.md)
+- [Always On 可用性组概述](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+

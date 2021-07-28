@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
-ms.reviewer: MashaMSFT
+ms.reviewer: cawrites
 ms.date: 05/14/2021
-ms.openlocfilehash: 27f763e16ecda6935f194dcab78c35919efbddd6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: bf096e8e444ae9fd0832ad446d79db37fa365951
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099714"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954796"
 ---
 # <a name="migration-guide-ibm-db2-to-azure-sql-database"></a>迁移指南：从 IBM Db2 迁移到 Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -156,8 +156,9 @@ ms.locfileid: "110099714"
 |资产  |说明  |
 |---------|---------|
 |[数据工作负荷评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| 此工具为给定的工作负荷提供了建议的“最佳匹配”目标平台、云就绪和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
-|[Db2 zOS 数据资产发现和评估包](https://github.com/microsoft/DataMigrationTeam/tree/master/DB2%20zOS%20Data%20Assets%20Discovery%20and%20Assessment%20Package)|在数据库上运行 SQL 脚本后，可以将结果导出到文件系统上的文件。 支持多种文件格式（包括 *.csv），方便你在外部工具（如电子表格）中捕获结果。 如果你想要与未安装工作台的团队轻松共享结果，此方法会很有用。|
-|[IBM Db2 LUW 清单脚本和项目](https://github.com/microsoft/DataMigrationTeam/blob/master/IBM%20DB2%20LUW%20Inventory%20Scripts%20and%20Artifacts)|此资产包含一个 SQL 查询，该查询可访问 IBM Db2 LUW 版本 11.1 系统表，并按架构和对象类型提供对象计数、每个架构中“原始数据”的粗略估计、每个架构中表的大小，以及 CSV 格式的存储结果。|
+|[Db2 zOS 数据资产发现和评估包](https://www.microsoft.com/download/details.aspx?id=103108)|在数据库上运行 SQL 脚本后，可以将结果导出到文件系统上的文件。 支持多种文件格式（包括 \*.csv），方便你在外部工具（如电子表格）中捕获结果。 如果你想要与未安装工作台的团队轻松共享结果，此方法会很有用。|
+|[IBM Db2 LUW 清单脚本和项目](https://www.microsoft.com/download/details.aspx?id=103109)|此资产包含一个 SQL 查询，该查询可访问 IBM Db2 LUW 版本 11.1 系统表，并按架构和对象类型提供对象计数、每个架构中“原始数据”的粗略估计、每个架构中表的大小，以及 CSV 格式的存储结果。|
+|[IBM Db2 到 SQL DB - 数据库比较实用工具](https://www.microsoft.com/download/details.aspx?id=103016)|数据库比较实用工具是可用于验证源和目标平台上的数据是否相同的 Windows 控制台应用程序。 可以使用该工具在所有或所选表、行和列中的行或列级别高效地比较数据。|
 
 数据 SQL 工程团队开发了这些资源。 此团队的核心章程是解锁和加速到 Microsoft 的 Azure 数据平台的数据平台迁移项目的复杂现代化进程。
 
@@ -171,7 +172,7 @@ ms.locfileid: "110099714"
    - [SQL 数据库概述](../../database/sql-database-paas-overview.md)
    - [Azure 总拥有成本计算器](https://azure.microsoft.com/pricing/tco/calculator/) 
 
-- 要详细了解云迁移的框架和采用周期，请参阅：
+- 有关云迁移的框架和采用周期的详细信息，请参阅：
    -  [适用于 Azure 的云采用框架](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [为迁移到 Azure 的工作负荷计算成本和调整大小的最佳做法](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
    -  [云迁移资源](https://azure.microsoft.com/migration/resources) 

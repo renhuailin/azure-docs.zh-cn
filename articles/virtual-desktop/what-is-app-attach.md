@@ -1,5 +1,5 @@
 ---
-title: Windows 虚拟桌面 MSIX 应用附加概述 - Azure
+title: Azure 虚拟桌面 MSIX 应用附加概述 - Azure
 description: 什么是 MSIX 应用附加？ 请在本文中查找答案。
 services: virtual-desktop
 author: Heidilohr
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: cdbb7574f9da5ea6cd0695b74c269d8e1b88b7f4
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 3da80de79490ce21ae99a4dd7dd36c08054cd666
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444065"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751570"
 ---
 # <a name="what-is-msix-app-attach"></a>什么是 MSIX 应用附加？
 
 MSIX 是一种新的打包格式，它提供了许多功能，旨在提升所有 Windows 应用的打包体验。 若要详细了解 MSIX，请参阅 [MSIX 概述](/windows/msix/overview)。
 
-MSIX 应用附加是将 MSIX 应用程序交付到物理计算机和虚拟机的一种方法。 但是，MSIX 应用附加不同于常规 MSIX，因为它是特别为 Windows 虚拟桌面提供的。 本文将介绍什么是 MSIX 应用附加，以及它可以实现哪些功能。
+MSIX 应用附加是将 MSIX 应用程序交付到物理计算机和虚拟机的一种方法。 但是，MSIX 应用附加不同于常规 MSIX，因为它是特别为 Azure 虚拟桌面提供的。 本文将介绍什么是 MSIX 应用附加，以及它可以实现哪些功能。
 
-## <a name="application-delivery-options-in-windows-virtual-desktop"></a>Windows 虚拟桌面中的应用程序交付选项
+## <a name="application-delivery-options-in-azure-virtual-desktop"></a>Azure 虚拟桌面中的应用程序交付选项
 
-可以通过以下方法之一在 Windows 虚拟桌面中交付应用：
+可以通过以下方法之一在 Azure 虚拟桌面中交付应用：
 
 - 将应用放入主映像
 - 使用 SCCM 或 Intune 等工具进行集中管理
@@ -32,7 +32,7 @@ MSIX 应用附加是将 MSIX 应用程序交付到物理计算机和虚拟机的
 
 ## <a name="what-does-msix-app-attach-do"></a>MSIX 应用附加有什么作用？
 
-在 Windows 虚拟桌面部署中，MSIX 应用附加可以实现以下功能：
+在 Azure 虚拟桌面部署中，MSIX 应用附加可以实现以下功能：
 
 - 通过使用 [MSIX 容器](/windows/msix/msix-container)在用户数据、OS 和应用之间进行分隔。
 - 在动态交付应用程序时不需要重新打包。

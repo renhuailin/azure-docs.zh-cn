@@ -1,20 +1,20 @@
 ---
 title: 在 Azure 市场中为虚拟机产品/服务添加预览版受众
-description: 了解如何在 Azure 市场中为虚拟机产品/服务添加预览版受众。
+description: 在 Azure 市场中为虚拟机产品/服务添加预览版受众。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 854d0fa9b34d495f03a0c3c6203ceb227e4712d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ca53a950aeaaf888dead6c1e134f63fe7cea04c
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629506"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111524951"
 ---
-# <a name="how-to-add-a-preview-audience-for-a-virtual-machine-offer"></a>如何为虚拟机产品/服务添加预览版受众
+# <a name="add-a-preview-audience-for-a-virtual-machine-offer"></a>为虚拟机产品/服务添加预览版受众
 
 在“预览”页面（从合作伙伴中心的左侧导航菜单中选择），选择有限的“预览版受众”来验证产品/服务，然后再向更广泛的商业市场受众发布产品/服务。
 

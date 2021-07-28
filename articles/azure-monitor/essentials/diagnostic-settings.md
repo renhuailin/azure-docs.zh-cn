@@ -5,13 +5,13 @@ author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 02/08/2021
-ms.openlocfilehash: 60ac56cfda026871afa1725bbd54625b7ce7585e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/09/2021
+ms.openlocfilehash: bb820be289aa2ddcec2183094e819083dde8c1d8
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789188"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902780"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>创建诊断设置以将平台日志和指标发送到不同的目标
 Azure 中的[平台日志](./platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 默认情况下会收集[平台指标](./data-platform-metrics.md)，它们通常存储在 Azure Monitor 指标数据库中。 本文详细介绍如何创建和配置诊断设置，以将平台指标和平台日志发送到不同的目标。
@@ -153,7 +153,7 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 > [!IMPORTANT]
 > 不能将此方法用于 Azure 活动日志。 请改为按[使用资源管理器模板在 Azure Monitor 中创建诊断设置](./resource-manager-diagnostic-settings.md)中的说明操作，创建资源管理器模板并使用 CLI 进行部署。
 
-以下示例 CLI 命令使用所有三个目标创建诊断设置。 根据你的客户端不同，语法也会稍有不同。
+以下示例 CLI 命令使用所有三个目标创建诊断设置。 语法根据你的客户端稍有不同。
 
 # <a name="cmd"></a>[CMD](#tab/CMD)
 ```azurecli
@@ -199,7 +199,7 @@ az monitor diagnostic-settings create  \
 ## <a name="create-using-azure-policy"></a>使用 Azure Policy 创建
 由于需要为每个 Azure 资源创建诊断设置，因此在创建每个资源时，可以使用 Azure Policy 来自动创建诊断设置。 有关详细信息，请参阅[使用 Azure Policy 大规模部署 Azure Monitor](../deploy-scale.md)。
 
-## <a name="metric-category-is-not-supported-error"></a>不支持指标类别错误
+## <a name="error-metric-category-is-not-supported"></a>错误：不支持指标类别
 部署诊断设置时，将收到以下错误消息：
 
    “不支持指标类别 ‘xxxx’”
@@ -216,7 +216,9 @@ az monitor diagnostic-settings create  \
 
 如果收到此错误，请更新部署，将任何指标类别名称替换为“AllMetrics”以解决此问题。 如果部署之前添加了多个类别，则应只保留具有“AllMetrics”引用的类别。 如果仍遇到问题，请通过 Azure 门户联系 Azure 支持。 
 
+## <a name="error-setting-disappears-due-to-non-ascii-characters-in-resourceid"></a>错误：由于 resourceID 中包含非 ASCII 字符，设置消失
 
+诊断设置不支持包含非 ASCII 字符的 resourceID（例如，Preproducción）。 由于无法重命名 Azure 中的资源，唯一的选择是创建不包含非 ASCII 字符的新资源。 如果这些字符在一个资源组中，可以将其下的资源移到新的资源组。 否则，你需要重新创建该资源。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: e0bbc9fc1e6259b70e1f1d46b545300a568601d2
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: ca4210465039044587e61d5df92db1385f1be052
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109792"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469828"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure 认知搜索中的预览版功能
 
@@ -23,6 +23,8 @@ ms.locfileid: "106109792"
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 类别 | 说明 | 可用性  |
 |---------|------------------|-------------|---------------|
+|  [**Power Query 连接器**](search-how-to-index-power-query-data-sources.md) | 索引器数据源 | 索引器现可从其他云平台建立索引。 若要使用索引器抓取外部数据源来建立索引，现可使用 Power Query 连接器连接到 Amazon Redshift、Elasticsearch、PostgreSQL、Salesforce 对象、Salesforce 报告、Smartsheet 和 Snowflake。 | 你需要[注册](https://aka.ms/azure-cognitive-search/indexer-preview)，然后我们才能在后端为你的订阅启用支持。 使用[创建数据源 (REST)](/rest/api/searchservice/create-data-source) 和 api-version=2020-06-30-Preview 或 Azure 门户访问此数据源。|
+|  [**MySQL 索引器数据源**](search-howto-index-mysql.md) | 索引器数据源 | 从 Auzre MySQL 数据源为内容和元数据编制索引。| 你需要[注册](https://aka.ms/azure-cognitive-search/indexer-preview)，然后我们才能在后端为你的订阅启用支持。 使用[创建数据源 (REST)](/rest/api/searchservice/create-data-source) 和 api-version=2020-06-30-Preview、[.NET SDK 11.2.1](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype.mysql) 和 Azure 门户访问此数据源。 |
 | [**语义搜索**](semantic-search-overview.md) | 相关性（评分） | 结果、描述文字和答案的语义排名。 | [搜索 REST API 2020-06-30-Preview](/rest/api/searchservice/preview-api/search-documents) 和搜索浏览器（门户）。 |
 | [**拼写检查器**](cognitive-search-aml-skill.md) | 查询 | 对于简单、完整和语义查询的查询字词输入的可选拼写更正。 | [搜索 REST API 2020-06-30-Preview](/rest/api/searchservice/preview-api/search-documents) |
 | [**SharePoint Online 索引器**](search-howto-index-sharepoint-online.md) | 索引器数据源 | 用于 SharePoint 内容的基于索引器索引的新数据源。 | [搜索 REST API 2020-06-30-Preview](/rest/api/searchservice/preview-api/create-indexer) |
@@ -33,7 +35,6 @@ ms.locfileid: "106109792"
 | [PII 检测技能](cognitive-search-skill-pii-detection.md) | AI 扩充（技能组） | 在编制索引期间使用的一项认知技能，它可从输入文本中提取个人信息，并可让你通过多种方式在该文本中屏蔽此类信息。 | 请使用门户中的技能组编辑器或使用 api-version=2020-06-30-Preview 或 api-version=2019-05-06-Preview 的[创建技能组 (REST)](/rest/api/searchservice/create-skillset) 来引用此预览版技能。 |
 | [增量扩充](cognitive-search-incremental-indexing-conceptual.md) | 索引器配置| 将缓存添加到扩充管道。如果有针对性的修改（例如更新技能集或另一对象）不会更改内容，则此功能可让你重复使用现有的输出。 缓存仅适用于技能集生成的扩充文档。| 使用 api-version=2020-06-30-Preview 或 api-version=2019-05-06-Preview 的[创建索引器 (REST)](/rest/api/searchservice/create-indexer) 添加此配置设置。 |
 | [Cosmos DB 索引器：MongoDB API、Gremlin API、Cassandra API](search-howto-index-cosmosdb.md) | 索引器数据源 | 对于 Cosmos DB，SQL API 已正式发布，但 MongoDB、Gremlin 和 Cassandra API 为预览版。 | 请[先注册](https://aka.ms/azure-cognitive-search/indexer-preview)，以便我们可以在后端为你的订阅启用支持（仅适用于 Gremlin 和 Cassandra）。 MongoDB 数据源可以在门户中配置。 否则，使用 api-version=2020-06-30-Preview 或 api-version=2019-05-06-Preview 的[创建数据源 (REST)](/rest/api/searchservice/create-data-source) 为所有三个 API 的数据源配置提供支持。 |
-|  [Azure Data Lake Storage Gen2 索引器](search-howto-index-azure-data-lake-storage.md) | 索引器数据源 | 为 Data Lake Storage Gen2 中的内容和元数据编制索引。| 你需要[注册](https://aka.ms/azure-cognitive-search/indexer-preview)，然后我们才能在后端为你的订阅启用支持。 使用 api-version=2020-06-30-Preview 或 api-version=2019-05-06-Preview 的[创建数据源 (REST)](/rest/api/searchservice/create-data-source) 访问此数据源。 |
 | [moreLikeThis](search-more-like-this.md) | 查询 | 查找与特定文档相关的文档。 早期预览版中已有此功能。 | 在 api-version 为 2020-06-30-Preview、2019-05-06-Preview、2016-09-01-Preview 或 2017-11-11-Preview 的[搜索文档 (REST)](/rest/api/searchservice/search-documents) 调用中添加此查询参数。 |
 
 ## <a name="how-to-call-a-preview-rest-api"></a>如何调用预览版 REST API

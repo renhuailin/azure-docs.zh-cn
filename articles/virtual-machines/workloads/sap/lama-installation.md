@@ -14,12 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 4772fdae06f23430d829fa411068b7af7a85b3dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 9eca2fe92109bcd91fe5943e53d1e18734401984
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668701"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111814352"
 ---
 # <a name="sap-lama-connector-for-azure"></a>适用于 Azure 的 SAP LaMa 连接器
 
@@ -91,34 +92,19 @@ Azure 连接器可使用服务主体对 Microsoft Azure 授权。 遵循以下�
 1. 记下值。 此值用作服务主体的密码
 1. 记下应用程序 ID。 此值用作服务主体的用户名
 
-默认情况下，服务主体无权访问 Azure 资源。 需要向服务主体授予访问这些资源的权限。
+默认情况下，服务主体无权访问 Azure 资源。
+对于包含 SAP LaMa 应管理的 SAP 系统的所有资源组，在资源组范围内将“参与者”角色分配给服务主体。
 
-1. 转到 https://portal.azure.com
-1. 打开“资源组”边栏选项卡
-1. 选择要使用的资源组
-1. 选择“访问控制(IAM)”
-1. 单击“添加角色分配”
-1. 选择“参与者”角色
-1. 输入前面创建的应用程序名称
-1. 点击“保存”
-1. 针对要在 SAP LaMa 中使用的所有资源组重复步骤 3 到 8
+有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="use-a-managed-identity-to-get-access-to-the-azure-api"></a><a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>使用托管标识获取对 Azure API 的访问权限
 
 为了能够使用托管标识，SAP LaMa 实例必须在具有系统或用户分配的标识的 Azure VM 上运行。 有关托管标识的详细信息，请参阅 [Azure 资源的托管标识是什么？](../../../active-directory/managed-identities-azure-resources/overview.md)和[使用 Azure 门户为 VM 上的 Azure 资源配置托管标识](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)。
 
-默认情况下，托管标识无权访问 Azure 资源。 你需要为其提供访问权限。
+默认情况下，托管标识无权访问 Azure 资源。
+对于包含 SAP LaMa 应管理的 SAP 系统的所有资源组，在资源组范围内将“参与者”角色分配给虚拟机标识。
 
-1. 转到 https://portal.azure.com
-1. 打开“资源组”边栏选项卡
-1. 选择要使用的资源组
-1. 选择“访问控制(IAM)”
-1. 单击“添加”->“添加角色分配”
-1. 选择“参与者”角色
-1. 为“分配访问权限给”选择“虚拟机”
-1. 选择运行 SAP LaMa 实例的虚拟机
-1. 点击“保存”(Save)
-1. 对要在 SAP LaMa 中使用的所有资源组重复这些步骤
+有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../../role-based-access-control/role-assignments-portal.md)。
 
 在 SAP LaMa Azure 连接器配置中，选择“使用托管标识”启用对托管标识的使用。 如果要使用系统分配的标识，请确保将“用户名”字段留空。 如果要使用用户分配的标识，请在“用户名”字段中输入用户分配的标识 Id。
 
@@ -462,7 +448,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di
 
 在“主应用程序服务器实例”对话框中，为“PAS 实例主机名”使用 *as1-di-0*。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="errors-and-warnings-during-discover"></a>发现期间的错误和警告
 

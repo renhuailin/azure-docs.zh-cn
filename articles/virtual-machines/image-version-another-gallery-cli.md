@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e2cd885d886a0f13783e61a04c7243efdf12967e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: bc4af87ca560c19af47a877d05a34a33c74a67bb
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784976"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111437921"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>使用 Azure CLI 复制另一个库中的映像
 
@@ -135,7 +135,7 @@ az sig image-definition create \
 
 使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create) 创建版本。 你需要传入托管映像的 ID 以作为创建映像版本时要使用的基线。 可以使用 [az image list](/cli/azure/image?view#az_image_list) 获取资源组中的映像的相关信息。 
 
-允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：MajorVersion.MinorVersion.Patch  。
+允许用于映像版本的字符为数字和句点。 数字必须在 32 位整数范围内。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
 在此示例中，映像版本为 1.0.0，我们将使用区域冗余存储在“美国中南部”区域创建 1 个副本，并在“美国东部”区域创建 1 个副本  。
 
@@ -161,6 +161,6 @@ az sig image-version create \
 
 从[通用化](vm-generalized-image-version-cli.md)或[专用化](vm-specialized-image-version-cli.md)映像版本创建 VM。
 
-同时，试用 [Azure 映像生成器（预览版）](./image-builder-overview.md)可以帮助自动创建映像版本，你甚至可以使用它进行更新以及[从现有的映像版本创建新映像版本](./linux/image-builder-gallery-update-image-version.md)。 
+同时，试用 [Azure 映像生成器](./image-builder-overview.md)有助于自动创建映像版本，你甚至可以使用它进行更新，以及[从现有的映像版本创建新映像版本](./linux/image-builder-gallery-update-image-version.md)。 
 
 有关如何提供购买计划信息的信息，请参阅[在创建映像时提供 Azure 市场购买计划信息](marketplace-images.md)。

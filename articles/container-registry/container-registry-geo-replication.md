@@ -3,14 +3,14 @@ title: 异地复制注册表
 description: 开始创建和管理异地复制的 Azure 容器注册表，使注册表能够为多个区域提供多主区域副本。 异地复制是高级服务层级的一项功能。
 author: stevelas
 ms.topic: article
-ms.date: 07/21/2020
+ms.date: 06/09/2021
 ms.author: stevelas
-ms.openlocfilehash: d36cf1c5ed8c916962ae0b621548a593d2fe0a97
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: b60de8dd9dc4ba5b66594fe6d75caa43ef0017b5
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331837"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029650"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器注册表中的异地复制
 
@@ -25,8 +25,8 @@ ms.locfileid: "108331837"
 * 发生区域性中断时的注册表复原能力
 
 > [!NOTE]
-> 如果需要在多个 Azure 容器注册表中维护容器映像的副本，则 Azure 容器注册表还支持[映像导入](container-registry-import-images.md)。 例如，在 DevOps 工作流中，可以将映像从开发注册表导入到生产注册表中，不需要使用 Docker 命令。
->
+> * 如果需要在多个 Azure 容器注册表中维护容器映像的副本，则 Azure 容器注册表还支持[映像导入](container-registry-import-images.md)。 例如，在 DevOps 工作流中，可以将映像从开发注册表导入到生产注册表中，不需要使用 Docker 命令。
+> * 如果要将注册表移到不同的 Azure 区域（而不是对注册表进行异地复制），请参阅[手动将容器注册表移到另一个区域](manual-regional-move.md)。
 
 ## <a name="example-use-case"></a>示例用例
 Contoso 在美国、加拿大和欧洲各地运行着一个公开展示网站。 为了向这些市场提供本地近网络内容，Contoso 在美国西部、美国东部、加拿大中部和西欧都运行着 [Azure Kubernetes 服务](../aks/index.yml) (AKS) 群集。 部署为 Docker 映像的网站应用程序在所有区域中均使用相同的代码和映像。 从在每个区域独特部署的数据库检索该区域的本地内容。 对于本地数据库这样的资源，每个区域部署均有其唯一配置。
@@ -58,15 +58,18 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 
 * 跨所有区域管理单个注册表：`contoso.azurecr.io`
 * 管理多个映像部署的单个配置，因为所有区域使用同一个映像 URL：`contoso.azurecr.io/public/products/web:1.2`
-* 推送到单个注册表，而 ACR 管理异地复制。 ACR 仅复制独一无二的层，从而减少跨区域的数据传输。 
+* 推送到单个注册表，而 ACR 会自动管理异地复制。 ACR 仅复制独一无二的层，从而减少跨区域的数据传输。 
 * 配置区域性 [Webhook](container-registry-webhook.md) 来通知你特定副本中的事件。
 * 提供高度可用的注册表，该注册表可在发生区域性中断时复原。
 
 Azure 容器注册表还支持[可用性区域](zone-redundancy.md)，以便在 Azure 区域中创建可复原和高度可用的 Azure 容器注册表。 某个区域内用于冗余的可用性区域和跨多个区域的异地复制合并在一起，可增强注册表的可靠性和性能。
 
+> [!IMPORTANT]
+> 如果在注册表的主区域（即最初部署注册表的区域）发生特定的中断，则异地复制的注册表可能会变得不可用。
+
 ## <a name="configure-geo-replication"></a>配置异地复制
 
-配置异地复制就如在地图上单击区域一样简单。 还可以使用工具（包括 Azure CLI 中的 [az acr replication](/cli/azure/acr/replication) 命令）管理异地复制，或使用 [Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/)部署为异地复制启用的注册表。
+配置异地复制就如在地图上单击区域一样简单。 还可以使用工具（包括 Azure CLI 中的 [az acr replication](/cli/azure/acr/replication) 命令）管理异地复制，或使用 [Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/container-registry-geo-replication/)部署为异地复制启用的注册表。
 
 异地复制是[高级注册表](container-registry-skus.md)的一项功能。 如果尚未使用高级注册表，可在 [Azure 门户](https://portal.azure.com)中将基本和标准更改为高级：
 
