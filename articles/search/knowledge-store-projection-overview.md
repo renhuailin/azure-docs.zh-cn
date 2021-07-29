@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 22db4f95bacd926208ac7edf3306cd136d81b00e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2fa631e8ad3da1d40f68c9887b84e4ebd532240
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85565190"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559063"
 ---
 # <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储“投影”
 
@@ -21,7 +21,7 @@ Azure 认知搜索允许通过编制索引功能附带的内置认知技能和�
 
 投影（[知识存储](knowledge-store-concept-intro.md)的一个组件）是可以保存到物理存储的、用于实现知识挖掘的扩充文档的视图。 使用投影可将数据“投影”到符合需求的形状，并保持相应的关系，使 Power BI 等工具能够在不增大负载的情况下读取数据。
 
-投影可以是表格式的，其中的数据存储在 Azure Blob 存储中的行与列中；也可以是存储在 Azure 表存储中的 JSON 对象。 可以在扩充数据时定义数据的多个投影。 希望以不同的方式为各种用例塑造相同的数据时，多个投影非常有用。
+投影可以是表格式的，其中的数据存储在 Azure 表存储中的行与列中；也可以是存储在 Azure Blob 存储中的 JSON 对象。 可以在扩充数据时定义数据的多个投影。 希望以不同的方式为各种用例塑造相同的数据时，多个投影非常有用。
 
 知识存储支持三种类型的投影：
 

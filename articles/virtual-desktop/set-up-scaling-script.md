@@ -1,23 +1,23 @@
 ---
 title: 使用 Azure 自动化来改变会话主机规模 - Azure
-description: 如何利用 Azure 自动化自动改变 Windows 虚拟桌面会话主机规模。
+description: 如何利用 Azure 自动化自动改变 Azure 虚拟桌面会话主机规模。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 80bcf647ee63242bfe60b63ed400b8d3b3dc1d9e
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b3ac4074dd4c49933924e39e20d7dbf703525324
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445663"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755980"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自动化来改变会话主机规模
 
-可以通过改变虚拟机 (VM) 规模来降低 Windows 虚拟桌面总部署成本。 这是指在非高峰使用时段关闭和取消分配会话主机 VM，并在高峰时段重新启用和重新分配。
+可以通过改变虚拟机 (VM) 规模来降低 Azure 虚拟桌面总部署成本。 这是指在非高峰使用时段关闭和取消分配会话主机 VM，并在高峰时段重新启用和重新分配。
 
-本文介绍使用 Azure 自动化帐户和 Azure 逻辑应用构建的缩放工具，该工具可在 Windows 虚拟桌面环境中自动缩放会话主机 VM。 若要了解如何使用缩放工具，请转至[先决条件](#prerequisites)。
+本文介绍使用 Azure 自动化帐户和 Azure 逻辑应用构建的缩放工具，该工具可在 Azure 虚拟桌面环境中自动缩放会话主机 VM。 若要了解如何使用缩放工具，请转至[先决条件](#prerequisites)。
 
 ## <a name="how-the-scaling-tool-works"></a>缩放工具的工作原理
 
@@ -41,11 +41,11 @@ ms.locfileid: "106445663"
 >[!NOTE]
 >如果手动将会话主机 VM 设置为排出模式，则作业将不会管理会话主机 VM。 如果会话主机 VM 正在运行并且设置为排出模式，则将被视为不可用，这将使作业启动其他 VM 来处理负载。 建议在将任何 Azure VM 手动设置为排出模式之前，对其进行标记。 之后在创建 Azure 逻辑应用计划程序时，可以使用 MaintenanceTagName 参数来命名此标记。 标记将帮助区分这些 VM 和缩放工具管理的 VM。 设置维护标记还会防止缩放工具更改 VM，直到删除该标记。
 
-如果将 LimitSecondsToForceLogOffUser 参数设置为零，作业将允许指定的组策略中的会话配置设置处理用户会话的注销。 若要查看这些组策略，请转到“计算机配置” > “策略” > “管理模板” > “Windows 组件” > “远程桌面服务” > “远程桌面会话主机” > “会话时间限制”      。 如果某个会话主机 VM 上存在任何活动会话，该作业会使该会话主机 VM 保持运行。 如果没有活动会话，该作业将关闭会话主机 VM。
+如果将 LimitSecondsToForceLogOffUser 参数设置为零，作业将允许指定的组策略中的会话配置设置处理用户会话的注销。 若要查看这些组策略，请转到“计算机配置” > “策略” > “管理模板” > “Windows 组件” > “远程桌面服务” > “远程桌面会话主机” > “会话时间限制”。 如果某个会话主机 VM 上存在任何活动会话，该作业会使该会话主机 VM 保持运行。 如果没有活动会话，该作业将关闭会话主机 VM。
 
 在任何时候，作业还会考虑主机池的 MaxSessionLimit，以确定当前会话数是否超过最大容量的 90%。 如果超过，该作业将启动其他会话主机 VM。
 
-作业基于所设置的重复周期间隔定期运行。 可以根据 Windows 虚拟桌面环境的大小来更改此间隔，但请记住，启动和关闭 VM 可能需要一些时间，所以应将延迟考虑在内。 建议将重复周期间隔设置为每 15 分钟一次。
+作业基于所设置的重复周期间隔定期运行。 可以根据 Azure 虚拟桌面环境的大小来更改此间隔，但请记住，启动和关闭 VM 可能需要一些时间，所以应将延迟考虑在内。 建议将重复周期间隔设置为每 15 分钟一次。
 
 然而，该工具还存在以下限制：
 
@@ -63,8 +63,8 @@ ms.locfileid: "106445663"
 
 开始设置缩放工具之前，请确保已准备好以下内容：
 
-- [Windows 虚拟桌面主机池](create-host-pools-azure-marketplace.md)
-- 已配置了 Windows 虚拟桌面服务并向其注册了的会话主机池 VM
+- [Azure 虚拟桌面主机池](create-host-pools-azure-marketplace.md)
+- 已配置了 Azure 虚拟桌面服务并向其注册了的会话主机池 VM
 - 对 Azure 订阅具有[参与者访问权限](../role-based-access-control/role-assignments-portal.md)的用户
 
 用于部署此工具的计算机必须具有：

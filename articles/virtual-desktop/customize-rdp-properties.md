@@ -1,24 +1,25 @@
 ---
 title: 通过 PowerShell 自定义 RDP 属性 - Azure
-description: 如何通过 PowerShell cmdlet 为 Windows 虚拟桌面自定义 RDP 属性。
+description: 如何通过 PowerShell cmdlet 为 Azure 虚拟桌面自定义 RDP 属性。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: cc3a08f383368b189e41bebd204707f2483e77c0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+manager: femila
+ms.openlocfilehash: 545d748d521d623bdbaa21ccafd8c52c6508bf03
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95018301"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750256"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>自定义主机池的远程桌面协议 (RDP) 属性
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)。
 
-通过自定义主机池的远程桌面协议 (RDP) 属性（例如多监视器体验和音频重定向），可以根据用户的需要为用户提供最佳体验。 你可以通过使用 Azure 门户或在 Update-AzWvdHostPool cmdlet 中使用 -CustomRdpProperty 参数，在 Windows 虚拟桌面中自定义 RDP 属性。
+通过自定义主机池的远程桌面协议 (RDP) 属性（例如多监视器体验和音频重定向），可以根据用户的需要为用户提供最佳体验。 你可以通过使用 Azure 门户或在 Update-AzWvdHostPool cmdlet 中使用 -CustomRdpProperty 参数，在 Azure 虚拟桌面中自定义 RDP 属性。
 
 有关支持的属性及其默认值的完整列表，请参阅[支持的 RDP 文件设置](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext)。
 
@@ -26,24 +27,29 @@ ms.locfileid: "95018301"
 
 RDP 文件默认具有以下属性：
 
-|RDP 属性|在桌面上|作为 RemoteApp|
-|---|---|---|
-|多监视器模式|已禁用|Enabled|
-|驱动器重定向已启用|驱动器、剪贴板、打印机、COM 端口和智能卡|驱动器、剪贴板和打印机|
-|远程音频模式|本地播放|本地播放|
+|RDP 属性|对于桌面和 RemoteApp|
+|---|---|
+|多监视器模式|已禁用|
+|驱动器重定向已启用|驱动器、剪贴板、打印机、COM 端口、智能卡、设备和USB 设备存储|
+|远程音频模式|本地播放|
+|VideoPlayback|已启用|
+|EnableCredssp|已启用|
+
+>[!NOTE]
+>多监视器模式只适用于桌面应用组，对于 RemoteApp 应用组将会忽略。
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，请按照[设置 Windows 虚拟桌面 PowerShell 模块](powershell-module.md)中的说明设置 PowerShell 模块并登录到 Azure。
+在开始之前，请按照[设置 Azure 虚拟桌面 PowerShell 模块](powershell-module.md)中的说明设置 PowerShell 模块并登录到 Azure。
 
 ## <a name="configure-rdp-properties-in-the-azure-portal"></a>在 Azure 门户中配置 RDP 属性
 
 若要在 Azure 门户中配置 RDP 属性，请执行以下操作：
 
 1. 通过 <https://portal.azure.com> 登录到 Azure。
-2. 在搜索栏中输入“Windows 虚拟桌面”。
-3. 在“服务”下，选择“Windows 虚拟桌面”。
-4. 在“Windows 虚拟桌面”页上，在屏幕左侧的菜单中，选择“主机池”。
+2. 在搜索栏中输入“Azure 虚拟桌面”。
+3. 在“服务”下，选择“Azure 虚拟桌面”。
+4. 在“Azure 虚拟桌面”页上，在屏幕左侧的菜单中，选择“主机池”。
 5. 选择要更新的主机池的名称。
 6. 在屏幕左侧的菜单中选择“RDP 属性”。
 7. 设置所需的属性。
@@ -124,7 +130,7 @@ CustomRdpProperty : <CustomRDPpropertystring>
 
 ## <a name="next-steps"></a>后续步骤
 
-现在你已自定义给定主机池的 RDP 属性，因此可以登录到 Windows 虚拟桌面客户端，将其作为用户会话的一部分进行测试。 接下来的两篇操作指南将会介绍如何使用所选的客户端连接到会话：
+现在你已自定义给定主机池的 RDP 属性，因此可以登录到 Azure 虚拟桌面客户端，将其作为用户会话的一部分进行测试。 接下来的两篇操作指南将会介绍如何使用所选的客户端连接到会话：
 
 - [使用 Windows 桌面客户端进行连接](connect-windows-7-10.md)
 - [使用 Web 客户端进行连接](connect-web.md)

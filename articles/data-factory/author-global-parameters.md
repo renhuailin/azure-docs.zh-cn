@@ -5,13 +5,14 @@ ms.service: data-factory
 ms.topic: conceptual
 author: minhe-msft
 ms.author: hemin
-ms.date: 03/15/2021
-ms.openlocfilehash: 3598ede0cab3c001854d0ba46501692935397923
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 05/12/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b699b7929709fd9ae9e206d6a50291f02aca2a18
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905378"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110675234"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Azure 数据工厂中的全局参数
 
@@ -46,17 +47,18 @@ ms.locfileid: "107905378"
 * 在 ARM 模板中包含全局参数
 * 通过 PowerShell 脚本部署全局参数
 
-对于大多数用例，建议在 ARM 模板中包含全局参数。 这会与 [CI/CD 文档](continuous-integration-deployment.md)中所述的解决方案原生集成。默认情况下，将添加全局参数作为 ARM 模板参数，因为这些参数经常因环境而异。 可以从“管理”中心启用将全局参数包含在 ARM 模板中的设置。
-
-> [!NOTE]
-> 只能在“Git 模式”下使用“包含在 ARM 模板中”配置。 目前，在“实时模式”或“数据工厂”模式下会禁用此配置。 
-
-> [!WARNING]
->不能在参数名称中使用“-”。 否则将收到错误代码 "{"code":"BadRequest","message":"ErrorCode=InvalidTemplate,ErrorMessage=The expression >'pipeline().globalParameters.myparam-dbtest-url' is not valid: .....}"。 但可以在参数名称中使用“_”。
+对于一般用例，建议在 ARM 模板中包含全局参数。 这会与 [CI/CD 文档](continuous-integration-deployment.md)中列出的解决方案进行原生集成。在使用自动发布和 Purview 连接的情况下，需要使用 PowerShell 脚本方法。 稍后可以找到有关 PowerShell 脚本方法的更多信息。 默认情况下，全局参数将作为 ARM 模板参数添加，因为它们经常根据不同的环境而变化。 可以从“管理”中心启用将全局参数包含在 ARM 模板中的设置。
 
 ![包含在 ARM 模板中](media/author-global-parameters/include-arm-template.png)
 
-将全局参数添加到 ARM 模板会添加一个工厂级设置，该设置将替代其他工厂级设置，例如客户管理的密钥，或其他环境中的 Git 配置。 如果在提升的环境（如 UAT 或 PROD）中启用这些设置，则最好在下面突出显示的步骤中通过 PowerShell 脚本部署全局参数。
+> [!NOTE]
+> 只能在“Git 模式”下使用“包含在 ARM 模板中”配置。 目前，在“实时模式”或“数据工厂”模式下会禁用此配置。 在使用自动发布或 Purview 连接的情况下，不要使用包含全局参数的方法；请使用 PowerShell 脚本方法。 
+
+> [!WARNING]
+>不能在参数名称中使用“-”。 否则将收到错误代码 "{"code":"BadRequest","message":"ErrorCode=InvalidTemplate,ErrorMessage=The expression >'pipeline().globalParameters.myparam-dbtest-url' is not valid: .....}"。 但可以在参数名称中使用“_”。 
+
+将全局参数添加到 ARM 模板会添加一个工厂级设置，该设置将替代其他工厂级设置，例如客户管理的密钥，或其他环境中的 Git 配置。 如果在提升的环境（如 UAT 或 PROD）中启用这些设置，则最好在下面突出显示的步骤中通过 PowerShell 脚本部署全局参数。 
+
 
 ### <a name="deploying-using-powershell"></a>使用 PowerShell 进行部署
 

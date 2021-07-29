@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 3c92aa3b35240831fad14919dc73609d803c610a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 03dcd9f4750e9bf3e6ec5568255b06ccb8316a0b
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97358208"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569433"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>使用 SQL Server FCI 和 DNN 时的功能互操作性
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -175,8 +175,10 @@ GO
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅： 
+若要了解更多信息，请参阅以下文章：
 
-- [Windows 群集技术](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server 故障转移群集实例](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows Server 故障转移群集与 Azure VM 上的 SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [故障转移群集实例与 Azure VM 上的 SQL Server](failover-cluster-instance-overview.md)
+- [故障转移群集实例概述](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Azure VM 上的 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)
 

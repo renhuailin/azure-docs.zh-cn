@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 484dd8313710332660bb20d55f3dac2aa21bbc61
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 29f8e1e3b89ef68c3ead4841cfba7b5e44f09a36
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98232516"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744640"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>将现有网络策略服务器 (NPS) 基础结构与 Azure AD 多重身份验证集成
 
@@ -72,7 +72,7 @@ NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满
 
 ### <a name="licenses"></a>许可证
 
-适用于 Azure AD 多重身份验证的 NPS 扩展可供持有 [Azure 多重身份验证许可证](./concept-mfa-howitworks.md)的客户使用。 Azure AD 多重身份验证的基于使用量的许可证（例如，按用户或按身份验证许可证）与 NPS 扩展不兼容。
+具有 [Azure AD 多重身份验证的许可证](./concept-mfa-howitworks.md)（Azure AD Premium P1 和 Premium P2 或 Enterprise Mobility + Security 中随附）的客户可以使用适用于 Azure AD 多重身份验证的 NPS 扩展。 Azure AD 多重身份验证的基于使用量的许可证（例如，按用户或按身份验证许可证）与 NPS 扩展不兼容。
 
 ### <a name="software"></a>软件
 

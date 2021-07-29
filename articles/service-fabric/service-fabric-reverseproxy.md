@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 012a49762596adee39988614ed0c1020cd8bc104
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d15f8a139a63845470c26048c043d574064e2aa1
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791098"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112034006"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric 中的反向代理
 借助 Azure Service Fabric 中内置的反向代理，Service Fabric 群集中运行的微服务可以发现包含 http 终结点的其他服务，并与之通信。
@@ -41,7 +41,7 @@ Service Fabric 中的微服务在群集中的部分节点上运行，可以出�
 >
 
 ## <a name="reaching-microservices-from-outside-the-cluster"></a>从群集外部访问微服务
-微服务的默认外部通信模型为“选择加入”模型，在该模型中，无法直接从外部客户端访问每个服务。 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md)充当微服务和外部客户端之间的网络边界，可以进行网络地址转换并将外部请求转发到内部的 IP:端口终结点。 要允许外部客户端直接访问微服务的终结点，必须先将负载均衡器配置为将流量转发到群集中服务使用的每个端口。 另外，大多数微服务（尤其是有状态微服务）并不驻留在群集的所有节点上。 这些微服务在故障转移时可在节点之间移动。 在这种情况下，负载均衡器无法有效确定要将流量转发到的副本的目标节点位置。
+微服务的默认外部通信模型为“选择加入”模型，在该模型中，无法直接从外部客户端访问每个服务。 [Azure 负载均衡器](../load-balancer/load-balancer-overview.md)充当微服务和外部客户端之间的网络边界，可以进行网络地址转换并将外部请求转发到内部的 IP:端口终结点。 要允许外部客户端直接访问微服务的终结点，必须先将负载均衡器配置为将流量转发到群集中服务使用的每个端口。 但是，大多数微服务（尤其是有状态微服务）并非驻留在群集的所有节点上。 这些微服务在故障转移时可在节点之间移动。 在这种情况下，负载均衡器无法有效确定要将流量转发到的副本的目标节点位置。
 
 ### <a name="reaching-microservices-via-the-reverse-proxy-from-outside-the-cluster"></a>从群集外部通过反向代理访问微服务
 可以在负载均衡器中直接配置反向代理的端口，而无需配置单个服务的端口。 这种配置可让群集外部的客户端使用反向代理访问群集内部的服务，无需经过额外的配置。

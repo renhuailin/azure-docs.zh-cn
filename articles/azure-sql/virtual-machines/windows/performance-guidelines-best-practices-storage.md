@@ -8,6 +8,7 @@ editor: ''
 tags: azure-service-management
 ms.assetid: a0c85092-2113-4982-b73a-4e80160bac36
 ms.service: virtual-machines-sql
+ms.subservice: performance
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -15,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: 9a9cfc444c101b603b5287fa862c36d5befef91a
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: d3a4a8bb54c5bafa9eb50ed4441cd6eebe2acc6c
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110189651"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079906"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>存储：Azure VM 上的 SQL Server 的性能最佳做法
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +30,7 @@ ms.locfileid: "110189651"
 
 通常需要在针对成本优化和针对性能优化之间进行权衡。 这一系列性能最佳做法侧重于实现 Azure 虚拟机上 SQL Server 的最佳性能。 如果工作负荷要求较低，可能不需要每项建议的优化。 评估这些建议时应考虑性能需求、成本和工作负荷模式。
 
-若要了解详细信息，请参阅本系列中的其他文章：[性能清单](performance-guidelines-best-practices-checklist.md)、[VM 大小](performance-guidelines-best-practices-vm-size.md)和[收集基线](performance-guidelines-best-practices-collect-baseline.md)。 
+若要了解详细信息，请参阅本系列中的其他文章：[清单](performance-guidelines-best-practices-checklist.md)、[VM 大小](performance-guidelines-best-practices-vm-size.md)、[安全性](security-considerations-best-practices.md)、[HADR 配置](hadr-cluster-best-practices.md)和 [收集基线](performance-guidelines-best-practices-collect-baseline.md)。 
 
 ## <a name="checklist"></a>清单
 
@@ -277,10 +278,12 @@ I/O 单位大小影响 IOPS 和吞吐容量，因为较小的 I/O 大小产生�
 若要了解有关性能最佳做法的详细信息，请参阅本系列中的其他文章：
 - [快速核对清单](performance-guidelines-best-practices-checklist.md)
 - [VM 大小](performance-guidelines-best-practices-vm-size.md)
+- [安全性](security-considerations-best-practices.md)
+- [HADR 设置](hadr-cluster-best-practices.md)
 - [收集基线](performance-guidelines-best-practices-collect-baseline.md)
 
 有关安全最佳做法，请参阅 [Azure 虚拟机上 SQL Server 的安全注意事项](security-considerations-best-practices.md)。
 
 有关采用 TPC-E 和 TPC_C 基准详细测试 Azure VM 上的 SQL Server 性能的信息，请参阅博客[优化 OLTP 性能](https://techcommunity.microsoft.com/t5/sql-server/optimize-oltp-performance-with-sql-server-on-azure-vm/ba-p/916794)。
 
-查看 [Azure 虚拟机上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)中的其他 SQL Server 虚拟机文章。 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.md)。
+查看 [Azure 虚拟机上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)中的其他 SQL Server 虚拟机文章。 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.yml)。

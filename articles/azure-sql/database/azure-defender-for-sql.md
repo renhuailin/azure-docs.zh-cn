@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.author: memildin
 manager: rkarlin
 author: memildin
-ms.date: 03/08/2021
-ms.openlocfilehash: 27f17b3d1060e8b693c2a34cdb4643840f1bfd13
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 06/07/2021
+ms.openlocfilehash: 12cc4fc1c0aafa148b765f329f0badab127f3644
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452300"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111570994"
 ---
 # <a name="azure-defender-for-sql"></a>Azure Defender for SQL
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure Defender for SQL 是高级 SQL 安全功能的统一包。 Azure Defender 可用于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics。 它包括用于发现和分类敏感数据、呈现和减少潜在数据库漏洞，以及检测可能表明数据库有威胁的异常活动的功能。 它提供用于启用和管理这些功能的一个转到位置。
+Azure Defender for SQL 是高级 SQL 安全功能的统一包。 Azure Defender 可用于 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse Analytics。 它具有以下功能：发现并缓解潜在的数据库漏洞，并检测可能表明数据库受到威胁的异常活动。 它提供用于启用和管理这些功能的一个转到位置。
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-sql"></a>适用于 SQL 的 Azure Defender 有哪些优点？
 

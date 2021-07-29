@@ -10,12 +10,13 @@ ms.topic: reference
 ms.date: 02/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eaf58b964517162ee7f7eb925e1e64830eedc087
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: b2c-support
+ms.openlocfilehash: ccf8c5fceea71c3781ae420c1c36c629ebb97a7b
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85202545"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783812"
 ---
 # <a name="date-claims-transformations"></a>日期声明转换
 
@@ -31,7 +32,7 @@ ms.locfileid: "85202545"
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | leftOperand | 字符串 | 第一个声明的类型，应晚于第二个声明。 |
 | InputClaim | rightOperand | 字符串 | 第二个声明的类型，应早于第一个声明。 |
-| InputParameter | AssertIfEqualTo | boolean | 指定如果左操作数等于右操作数，是否应传递此断言。 |
+| InputParameter | AssertIfEqualTo | boolean | 指定在左操作数等于右操作数时，此断言是否应引发错误。 如果左操作数等于右操作数且值设置为 `true`，则会引发错误。 可能的值为 `true`（默认）或 `false`。 |
 | InputParameter | AssertIfRightOperandIsNotPresent | boolean | 指定如果缺少右操作数，是否应传递此断言。 |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | 指定将两个日期时间视为相等时允许两者之间相差的毫秒数（例如，用于说明时钟偏差）。 |
 
@@ -39,7 +40,7 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
 
 ![AssertStringClaimsAreEqual 执行](./media/date-transformations/assert-execution.png)
 
-下面的示例比较 `currentDateTime` 声明与 `approvedDateTime` 声明。 如果 `currentDateTime` 晚于 `approvedDateTime`，则引发错误。 如果它们的差异在 5 分钟（30000 毫秒）内，则转换将值视为相等。
+下面的示例比较 `currentDateTime` 声明与 `approvedDateTime` 声明。 如果 `currentDateTime` 晚于 `approvedDateTime`，则引发错误。 如果它们的差异在 5 分钟（30000 毫秒）内，则转换将值视为相等。 如果值相等，则不会引发错误，因为 `AssertIfEqualTo` 设置为 `false`。
 
 ```xml
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
@@ -54,6 +55,10 @@ AssertDateTimeIsGreaterThan 声明转换始终从[验证技术配置文件](vali
   </InputParameters>
 </ClaimsTransformation>
 ```
+
+> [!NOTE]
+> 在上面的示例中，如果删除 `AssertIfEqualTo` 输入参数，并且 `currentDateTime` 等于 `approvedDateTime`，则会引发错误。 `AssertIfEqualTo` 默认值为 `true`。
+>
 
 `login-NonInteractive` 验证技术配置文件会调用 `AssertApprovedDateTimeLaterThanCurrentDateTime` 声明转换。
 ```xml

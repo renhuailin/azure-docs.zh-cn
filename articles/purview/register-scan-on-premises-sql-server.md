@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: b5f4218cfcd5f9ccfbe43efac46e2f70fdc30905
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 43a71f6260f688a1e9cc5e39e0c61f81d2265eb3
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99574951"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559590"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>注册和扫描本地 SQL Server
 
@@ -109,7 +109,35 @@ SQL 帐户必须拥有访问 master 数据库的权限。 这是因为 `sys.data
 
 5. 提供一个友好名称和服务器终结点，然后选择“完成”以注册数据源。 例如，如果你的 SQL Server FQDN 是 foobar.database.windows.net，则输入 foobar 作为服务器终结点。
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+## <a name="creating-and-running-a-scan"></a>创建和运行扫描
+
+若要创建并运行新扫描，请执行以下操作：
+
+1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+
+1. 选择已注册的 SQL Server 源。
+
+1. 选择“新建扫描”
+
+1. 选择要连接到数据源的凭据。
+
+   :::image type="content" source="media/register-scan-on-premises-sql-server/on-premises-sql-set-up-scan.png" alt-text="设置扫描":::
+
+1. 通过在列表中选择适当的项，可以将扫描范围限定到特定的表。
+
+   :::image type="content" source="media/register-scan-on-premises-sql-server/on-premises-sql-scope-your-scan.png" alt-text="限定扫描范围":::
+
+1. 然后选择一个扫描规则集。 可以选择系统默认项、现有的自定义规则集，或以内联方式创建新规则集。
+
+   :::image type="content" source="media/register-scan-on-premises-sql-server/on-premises-sql-scan-rule-set.png" alt-text="扫描规则集":::
+
+1. 选择扫描触发器。 可以设置一个计划或运行一次扫描。
+
+   :::image type="content" source="media/register-scan-on-premises-sql-server/trigger-scan.png" alt-text="trigger":::
+
+1. 查看扫描并选择“保存并运行”。
+
+[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

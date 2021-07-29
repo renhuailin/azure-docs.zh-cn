@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 90b1df8af4cf9f65cb04cc9418d7e8f97f9c3e49
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: c8c4e516b297bb5d4466910bff83859288e0ec89
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108162826"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575384"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>场景：通过 NVA 路由流量
 
@@ -46,7 +46,7 @@ ms.locfileid: "108162826"
 | 非 NVA VNet| &#8594; | 通过 NVA VNet | 直接 | 直接 | 直接 |
 | **分支**     | &#8594; | 通过 NVA VNet | 直接 | 直接 | 直接 |
 
-该连接矩阵中的每个单元格都描述了 VNet 或分支（流的“从”端，表中的行标题）如何与目标 VNet 或分支（流的“到”端，表中的列标题）通信。 “直接”表示由虚拟 WAN 以本机方式提供连接，“对等互连”表示由 VNet 中的用户定义的路由来提供连接，“通过 NVA VNet”表示该连接会穿过 NVA VNet 中部署的 NVA。 考虑以下情况：
+该连接矩阵中的每个单元格都描述了 VNet 或分支（流的“从”端，表中的行标题）如何与目标 VNet 或分支（流的“到”端，表中的列标题）通信。 “直接”表示由虚拟 WAN 以原生方式提供连接；“对等互连”表示由 VNet 中用户定义的路由提供连接；“通过 NVA VNet”表示该连接会穿过 NVA VNet 中部署的 NVA。 考虑以下情况：
 
 * NVA 分支不由虚拟 WAN 来管理。 因此，这些分支与其他 Vnet 或分支通信时将采用的机制由用户来维护。 到 NVA VNet 的连接由 VNet 对等互连提供，并且指向 NVA 作为下一个跃点的到 0.0.0.0/0 的默认路由应该覆盖到 Internet 的、到其他轮幅的以及到分支的连接
 * NVA VNet 会知道它们自己的 NVA 分支，但不会知道连接到其他 NVA VNet 的 NVA 分支。 例如，在本文后面图 2 中，VNet 2 知道 VNet 5 和 VNet 6，但不知道 VNet 7 和 VNet 8 等其他分支。 需要使用静态路由将其他分支的前缀注入到 NVA VNet 中
@@ -69,7 +69,7 @@ ms.locfileid: "108162826"
 
 这样，在默认表中需要的用于将流量发送到 NVA VNet 后方 NVA 分支的静态路由如下：
 
-| 描述 | 路由表 | 静态路由              |
+| 说明 | 路由表 | 静态路由              |
 | ----------- | ----------- | ------------------------- |
 | VNet 2       | 默认     | 10.2.0.0/16 -> eastusconn |
 | VNet 4       | 默认     | 10.4.0.0/16 -> weconn     |

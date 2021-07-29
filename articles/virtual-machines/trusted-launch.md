@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: 5e500eca601d21f106dbe31236e9b5c2aa76b0d2
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 2483a207344894489992f38d08b37126d7eded22
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104801921"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652231"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Azure 虚拟机的受信任启动（预览版）
 
@@ -38,13 +38,17 @@ Azure 提供受信任启动作为一种无缝提高[第 2 代](generation-2.md) 
 
 ## <a name="public-preview-limitations"></a>公共预览版限制
 
-**大小支持**：除以下系列之外的所有[第 2 代](generation-2.md) VM 大小：
-
-- Lsv2 系列 
-- M 系列 
-- Mv2 系列 
-- NDv4 系列 
-- NVv4 系列
+**大小支持**：
+- B 系列
+- Dav4 系列、Dasv4 系列
+- DCsv2 系列
+- Dv4 系列、Dsv4 系列、Dsv3 系列、Dsv2 系列
+- Ddv4 系列、Ddsv4 系列
+- Fsv2 系列
+- Eav4 系列和 Easv4 系列
+- Ev4 系列、Esv4 系列、Esv3 系列
+- Edv4 系列、Edsv4 系列
+- Lsv2 系列
 
 **OS 支持**：
 - Redhat Enterprise Linux 8.3
@@ -58,8 +62,11 @@ Azure 提供受信任启动作为一种无缝提高[第 2 代](generation-2.md) 
 - Windows 10 Enterprise 多会话
 
 **区域**： 
+- 美国中部
+- 美国东部 2
 - 美国中南部
 - 北欧
+- 西欧
 
 **定价**：按现有 VM 定价收费，无额外费用。
 

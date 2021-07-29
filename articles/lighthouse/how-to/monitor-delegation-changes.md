@@ -1,14 +1,15 @@
 ---
 title: 监视管理租户中的委托更改
-description: 了解如何监视客户租户对管理租户进行的委托活动。
-ms.date: 02/18/2021
+description: 了解如何监视所有针对管理租户的 Azure Lighthouse 委托活动。
+ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 1a12b916fae9794d6d695191a81ec076917bda31
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 2472e7519a6c45ff62fb0c0280f0886b4aa0ff4d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814885"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077693"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>监视管理租户中的委托更改
 
@@ -180,6 +181,6 @@ else {
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何将客户加入 [Azure Lighthouse](../concepts/azure-delegated-resource-management.md)。
+- 了解如何[将客户加入到 Azure Lighthouse](onboard-customer.md)。
 - 了解 [Azure Monitor](../../azure-monitor/index.yml) 和 [Azure 活动日志](../../azure-monitor/essentials/platform-logs-overview.md)。
 - 查看[按域提供的活动日志](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain)示例工作簿，了解如何使用一个用于按域名筛选日志的选项显示各个订阅的 Azure 活动日志。

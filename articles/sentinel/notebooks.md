@@ -9,15 +9,17 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
-ms.date: 09/06/2020
-ms.openlocfilehash: 43d7a697b3cb013a73a0b14db8ec1758244ae3b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/19/2021
+ms.openlocfilehash: 1746398147e8f504b9e0c6aafd65507ef6a4b464
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97092184"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749590"
 ---
 # <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>使用 Jupyter Notebook 搜寻安全威胁
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 Azure Sentinel 的基础是数据存储；它结合了高性能查询和动态架构并可扩展到大规模数据卷。 Azure 门户和所有 Azure Sentinel 工具都使用一个公共 API 来访问此数据存储。 同一 API 也可用于 [Jupyter](https://jupyter.org/) 笔记本和 Python 等外部工具。 虽然可以在门户中执行许多常见任务，但 Jupyter 扩展了可对此数据执行的操作范围。 它将完整的可编程性与用于机器学习、可视化效果和数据分析的大量库集合组合在一起。 这些属性使 Jupyter 成为安全调查和搜寻的引人注目的工具。
 
@@ -41,7 +43,7 @@ Azure Sentinel 笔记本使用许多常见的 Python 库，例如 pandas、matpl
 - 统计和数字计算
 - 机器学习和深度学习
 
-我们还在 [msticpy](https://github.com/Microsoft/msticpy/) 包中发布了一些开放源代码 Jupyter 安全工具。 此包可用于许多随附的笔记本。 Msticpy 工具专为帮助创建用于搜寻和调查的笔记本而设计，我们正在积极地致力于提供新功能和改进。
+我们还在 [msticpy](https://github.com/Microsoft/msticpy/) 包中发布了一些开放源代码 Jupyter 安全工具。 此包可用于许多随附的笔记本。 Msticpy 工具专为帮助创建用于搜寻和调查的笔记本而设计，我们正在积极地致力于提供新功能和改进。 有关详细信息，请参阅 [MSTIC Jupyter 和 Python 安全工具文档](https://msticpy.readthedocs.io/)。
 
 [Azure Sentinel GitHub 社区存储库](https://github.com/Azure/Azure-Sentinel)是存储任何未来的 Azure Sentinel 笔记本的位置，这些笔记本由 Microsoft 生成或由社区提供。
 
@@ -111,15 +113,20 @@ Azure Sentinel 笔记本使用许多常见的 Python 库，例如 pandas、matpl
     > ![启动笔记本](./media/notebooks/sentinel-azure-notebooks-launch.png)
 
 1. 选择计算实例。 如果没有计算实例，请执行以下操作：
-    1. 选择加号 (+) 开始“新建计算实例”向导。
+    1. 选择加号 (+) 开始 **创建计算实例** 向导。
 
         > [!div class="mx-imgBorder"]
         > ![开始计算实例向导](./media/notebooks/sentinel-azure-notebooks-compute-wizard.png)
 
-    1. 在“新建计算实例”页上，提供所需的信息，然后选择“创建”。
+    1. 在 **选择虚拟机** 页上，提供所需信息，然后选择 **下一步**。
 
         > [!div class="mx-imgBorder"]
-        > ![创建计算实例](./media/notebooks/sentinel-azure-notebooks-compute-create.png)
+        > ![选择计算实例 VM](./media/notebooks/sentinel-azure-notebooks-compute-create.png)
+
+    1. 在 **配置设置** 页上，提供所需的信息，然后选择 **创建**。
+    
+        > [!div class="mx-imgBorder"]
+        > ![配置计算实例设置](./media/notebooks/sentinel-azure-notebooks-compute-settings.png)
 
 1. 创建笔记本服务器后，在每个单元中，选择“运行”图标以在笔记本中执行代码。
 
@@ -144,3 +151,4 @@ Azure Sentinel 笔记本使用许多常见的 Python 库，例如 pandas、matpl
 
 - [主动搜寻威胁](hunting.md)
 - [在搜寻时使用书签保存感兴趣的信息](bookmarks.md)
+- [Jupyter、msticpy 和 Microsoft Azure Sentinel](https://msticpy.readthedocs.io/en/latest/getting_started/JupyterAndAzureSentinel.html)

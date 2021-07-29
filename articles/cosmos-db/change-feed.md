@@ -5,15 +5,15 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2020
+ms.date: 06/07/2021
 ms.reviewer: sngun
 ms.custom: seodec18, "seo-nov-2020"
-ms.openlocfilehash: c6856a0cb70123f1a3570b611c81660a592fdc1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8dd8e1da81d6c906e29caf155edc8c2b9e44ea9
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98027753"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755530"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB 中的更改源
 [!INCLUDE[appliesto-all-apis-except-table](includes/appliesto-all-apis-except-table.md)]
@@ -78,9 +78,9 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 * 更改源包括针对容器中的项所执行的插入和更新操作。 在项（如文档）中的删除位置设置“软删除”标志，可以捕获删除操作。 此外，也可以使用 [TTL 功能](time-to-live.md)为项设置有限的过期时段。 例如，24 小时，可使用该属性的值来捕获删除操作。 使用此解决方案时，处理更改的时间间隔必须比 TTL 过期时段要短。
 
-* 在更改源中，对项的每个更改都将显示一次，且客户端必须管理其检查点逻辑。 如果想要避免复杂的检查点管理过程，更改源处理器提供了自动检查点和“至少一次”语义。 请参阅[将更改源与更改源处理器配合使用](change-feed-processor.md)。
-
 * 更改日志中仅包含最近对给定项所做的更改。 而不包含中途的更改。
+
+* 更改日志中包含的每项更改在更改源中仅显示一次，且客户端必须管理其检查点逻辑。 如果想要避免复杂的检查点管理过程，更改源处理器提供了自动检查点和“至少一次”语义。 [将更改源与更改源处理器配合使用](change-feed-processor.md)。
 
 * 更改源按照每个逻辑分区键值中的修改顺序排序。 无法保证各分区键值中的顺序一致。
 

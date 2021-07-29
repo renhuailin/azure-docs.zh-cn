@@ -3,21 +3,25 @@ title: 使用流分析从 Azure Application Insights 进行导出 | Microsoft Do
 description: 流分析可以持续转换、筛选和路由从 Application Insights 导出的数据。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: a517bddd8981554b7fb5044d33b6c6777df51e36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b54b6045c1def9d87636f4facfe65f8abd056cd
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719791"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753910"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用流分析处理从 Application Insights 导出的数据
 
 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)是用于处理[从 Application Insights 导出](export-telemetry.md)的数据的理想工具。 流分析可以从各种源提取数据。 它可以转换和筛选数据，然后将其路由到各种接收器。
 
-在本示例中，我们将创建一个适配器用于从 Application Insights 提取数据，重命名和处理某些字段，然后通过管道将数据传送到 Power BI。
+在本示例中，我们将使用连续导出创建一个适配器用于从 Application Insights 提取数据，重命名和处理某些字段，然后通过管道将数据传送到 Power BI。
 
 > [!WARNING]
 > 还有便利得多的[建议方法可在 Power BI 中显示 Application Insights 数据](./export-power-bi.md)。 本文所述的途径只是一个示例，演示如何处理导出的数据。
+
+> [!IMPORTANT]
+> 连续导出已被弃用，只有经典 Application Insights 资源支持连续导出。 [迁移到基于工作区的 Application Insights 资源](convert-classic-resource.md)，以使用[诊断设置](export-telemetry.md#diagnostic-settings-based-export)导出遥测数据。
+
 
 ![通过 SA 导出到 PBI 的框图](./media/export-stream-analytics/020.png)
 
@@ -38,7 +42,7 @@ ms.locfileid: "101719791"
 
 ## <a name="start-continuous-export-to-azure-storage"></a>开始向 Azure 存储连续导出
 
-[连续导出](export-telemetry.md)会将数据从 Application Insights 移入 Azure 存储。
+[连续导出](export-telemetry.md)会将数据从 Application Insights 移入 Azure 存储。 
 
 1. 在 Azure 门户中，浏览到为应用程序创建的 Application Insights 资源。
    

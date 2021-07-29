@@ -1,23 +1,23 @@
 ---
-title: 使用服务主体为 Windows 虚拟桌面（经典）部署管理工具 - Azure
-description: 如何使用 PowerShell 部署适用于 Windows 虚拟桌面（经典）的管理工具。
+title: 使用服务主体为 Azure 虚拟桌面（经典）部署管理工具 - Azure
+description: 如何使用 PowerShell 部署适用于 Azure 虚拟桌面（经典）的管理工具。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 60eec4580e222123795db9554f56e74cb01c5257
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: fbd12216cbc81df7f4f9e187c8150f69744eb139
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444439"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744514"
 ---
-# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>使用 PowerShell 部署 Windows 虚拟桌面（经典）管理工具
+# <a name="deploy-a-azure-virtual-desktop-classic-management-tool-with-powershell"></a>使用 PowerShell 部署 Azure 虚拟桌面（经典）管理工具
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。
 
 本文将介绍如何使用 PowerShell 来部署管理工具。
 
@@ -41,7 +41,7 @@ ms.locfileid: "106444439"
 - 有权在 Azure 订阅中创建资源
 - 有权创建 Azure AD 应用程序 按照[所需的权限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)中的说明，执行这些步骤检查用户是否具有所需的权限。
 
-部署和配置管理工具后，建议你要求用户启动管理 UI，以确保一切正常。 启动管理 UI 的用户必须具有使他们能够查看或编辑 Windows 虚拟桌面租户的角色分配。
+部署和配置管理工具后，建议你要求用户启动管理 UI，以确保一切正常。 启动管理 UI 的用户必须具有使他们能够查看或编辑 Azure 虚拟桌面租户的角色分配。
 
 ## <a name="set-up-powershell"></a>设置 PowerShell
 
@@ -156,7 +156,7 @@ Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCre
 现在，你已设置管理工具，可以随时随地启动它了。 下面是该工具的启动方式：
 
 1. 在 Web 浏览器中打开 Web 应用的 URL。 如果你不记得 URL，可以登录到 Azure，找到你为管理工具部署的应用服务，然后选择 URL。
-2. 使用 Windows 虚拟桌面凭据登录。
+2. 使用 Azure 虚拟桌面凭据登录。
 
    > [!NOTE]
    > 如果你在配置管理工具时未授予管理员同意，则登录的每个用户都需要提供自己的用户同意才能使用该工具。
@@ -169,7 +169,7 @@ Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCre
 
 ## <a name="report-issues"></a>报告问题
 
-如果遇到有关管理工具或其他 Windows 虚拟桌面工具的任何问题，请按照[远程桌面服务的 Azure 资源管理器模板](https://github.com/Azure/RDS-Templates/blob/master/README.md)中的说明在 GitHub 上报告这些问题。
+如果遇到有关管理工具或其他 Azure 虚拟桌面工具的任何问题，请按照[远程桌面服务的 Azure 资源管理器模板](https://github.com/Azure/RDS-Templates/blob/master/README.md)中的说明在 GitHub 上报告这些问题。
 
 ## <a name="next-steps"></a>后续步骤
 

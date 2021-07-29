@@ -1,28 +1,29 @@
 ---
-title: PowerShell 模块 Windows 虚拟桌面 - Azure
-description: 如何安装和设置适用于 Windows 虚拟桌面的 PowerShell 模块。
+title: 适用于 Azure 虚拟桌面的 PowerShell 模块 - Azure
+description: 如何安装和设置适用于 Azure 虚拟桌面的 PowerShell 模块。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: fdd74a09e49a352d18cf4ceccf406a25bf6dffb3
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 029034cd4c4e118cca532509208f08843ca8b7fd
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445833"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753118"
 ---
-# <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>设置适用于 Windows 虚拟桌面的 PowerShell 模块
+# <a name="set-up-the-powershell-module-for-azure-virtual-desktop"></a>设置适用于 Azure 虚拟桌面的 PowerShell 模块
 
 >[!IMPORTANT]
->本内容适用于将 Windows 虚拟桌面与 Azure 资源管理器集成。
+>本内容适用于包含 Azure 资源管理器集成的 Azure 虚拟桌面。
 
-Windows 虚拟桌面 PowerShell 模块已集成到 Azure PowerShell 模块中。 本文介绍如何设置 PowerShell 模块，以便针对 Windows 虚拟桌面运行 cmdlet。
+Azure 虚拟桌面 PowerShell 模块集成到 Azure PowerShell 模块中。 本文介绍如何设置 PowerShell 模块，以便针对 Azure 虚拟桌面运行 cmdlet。
 
 ## <a name="set-up-your-powershell-environment"></a>设置 PowerShell 环境
 
-若要开始使用该模块，请先安装[最新版本的 PowerShell Core](/powershell/scripting/install/installing-powershell#powershell-core)。 Windows 虚拟桌面 cmdlet 目前仅可在 PowerShell Core 中使用。
+若要开始使用该模块，请先安装[最新版本的 PowerShell Core](/powershell/scripting/install/installing-powershell#powershell-core)。 Azure 虚拟桌面 cmdlet 目前只能与 PowerShell Core 配合使用。
 
 接下来，需要安装要在 PowerShell 会话中使用的 DesktopVirtualization 模块。
 
@@ -136,11 +137,11 @@ New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -W
 
 ## <a name="next-steps"></a>后续步骤
 
-设置 PowerShell 模块后，可以通过运行 cmdlet 来执行 Windows 虚拟桌面中的各种操作。 下面是一些可以使用模块的位置：
+设置 PowerShell 模块后，可以通过运行 cmdlet 来执行 Azure 虚拟桌面中的各种操作。 下面是一些可以使用模块的位置：
 
-- 浏览我们的 [Windows 虚拟桌面教程]()，以设置你自己的 Windows 虚拟桌面环境。
+- 浏览我们的 [Azure 虚拟桌面教程]()，以设置你自己的 Azure 虚拟桌面环境。
 - [使用 PowerShell 创建主机池](create-host-pools-powershell.md)
-- [配置 Windows 虚拟桌面负载均衡方法](configure-host-pool-load-balancing.md)
+- [配置 Azure 虚拟桌面负载均衡方法](configure-host-pool-load-balancing.md)
 - [配置个人桌面主机池分配类型](configure-host-pool-personal-desktop-assignment-type.md)
 - 还有更多其他功能！
 

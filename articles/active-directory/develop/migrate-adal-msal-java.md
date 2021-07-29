@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 620f77655f8281919ba0831a7e53af8cd28bc5f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eda9b3a65b4db6b058c0279575c0414285216975
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99583987"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110539957"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>适用于 Java 的 ADAL 到 MSAL 迁移指南
 
@@ -34,6 +34,8 @@ MSAL 提供以下优势：
 - 应用程序可以启用增量许可，更轻松地为条件访问提供支持。
 
 MSAL for Java 是我们建议用于 Microsoft 标识平台的身份验证库。 我们不会对 ADAL4J 实现任何新的功能。 今后我们的所有努力都重在改进 MSAL。
+
+你可以了解有关 MSAL 的更多信息，并从 [Microsoft 身份验证库概述](msal-overview.md)开始。
 
 ## <a name="differences"></a>差异
 

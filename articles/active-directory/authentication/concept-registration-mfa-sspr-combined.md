@@ -11,16 +11,16 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 112ad0714c84cd3be08788b3277f52372f6d0373
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c3d80a97b7be3127caaa4ce86dac8435dec1666
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98938477"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111438443"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory 的合并安全信息注册概述
 
-在进行合并注册之前，用户分别注册了 Azure AD 多重身份验证和自助式密码重置 (SSPR) 的身份验证方法。 让人们感到困惑的是，多重身份验证和 SSPR 使用的方法相似，但他们却不得不同时注册这两个功能。 现在，通过合并注册，用户只需注册一次，便可同时获得多重身份验证和 SSPR 带来的好处。
+在进行合并注册之前，用户分别注册了 Azure AD 多重身份验证和自助式密码重置 (SSPR) 的身份验证方法。 让人们感到困惑的是，多重身份验证和 SSPR 使用的方法相似，但他们却不得不同时注册这两个功能。 现在，通过合并注册，用户只需注册一次，便可同时获得多重身份验证和 SSPR 带来的好处。 建议观看[如何在 Azure AD 中启用和配置 SSPR](https://www.youtube.com/watch?v=rA8TvhNcCvQ) 这段视频
 
 > [!NOTE]
 > 自 2020 年 8 月 15 日起，将自动为所有新的 Azure AD 租户启用合并注册。 

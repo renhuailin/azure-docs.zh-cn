@@ -1,47 +1,47 @@
 ---
-title: 为 Windows 虚拟桌面配置 GPU - Azure
-description: 如何在 Windows 虚拟桌面中启用 GPU 加速的渲染和编码。
+title: 为 Azure 虚拟桌面配置 GPU - Azure
+description: 如何在 Azure 虚拟桌面中启用 GPU 加速的渲染和编码。
 author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: f95b9c1615cc58d9cc0589bad98c7315e571686e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e55564ab1534b145958e128f58d50911ae9c51fa
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709457"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746278"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>为 Windows 虚拟桌面配置图形处理单元 (GPU) 加速
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-azure-virtual-desktop"></a>为 Azure 虚拟桌面配置图形处理单元 (GPU) 加速
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/configure-vm-gpu-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/configure-vm-gpu-2019.md)。
 
-Windows 虚拟桌面支持用于提高应用性能和可伸缩性的 GPU 加速渲染和编码。 GPU 加速对于图形密集型应用尤其重要。
+Azure 虚拟桌面支持用于提高应用性能和可伸缩性的 GPU 加速渲染和编码。 GPU 加速对于图形密集型应用尤其重要。
 
-按照本文中的说明创建 GPU 优化的 Azure 虚拟机，将其添加到你的主机池，并将其配置为使用 GPU 加速进行渲染和编码。 本文假设你已配置 Windows 虚拟桌面租户。
+按照本文中的说明创建 GPU 优化的 Azure 虚拟机，将其添加到你的主机池，并将其配置为使用 GPU 加速进行渲染和编码。 本文假设你已配置 Azure 虚拟桌面租户。
 
 ## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>选择 GPU 经过优化的合适的 Azure 虚拟机大小
 
 在 Azure 的 [NV 系列](../virtual-machines/nv-series.md)、[NVv3 系列](../virtual-machines/nvv3-series.md)或 [NVv4 系列](../virtual-machines/nvv4-series.md) 的 VM 大小中选择其中一个大小。 这些系列专为应用和桌面虚拟化而定制，并且能使大多数应用和 Windows 用户界面的 GPU 得到加速。 主机池的正确选择取决于多种因素，包括特定的应用工作负荷、所需的用户体验质量和成本。 通常，在给定的用户密度下，更大更强的 GPU 能够实现更好的用户体验，而较小的部分大小 GPU 则能更精细地控制成本和质量。
 
 >[!NOTE]
->Azure 的 NC、NCv2、NCv3、ND 和 NDv2 系列 VM 通常不适用于 Windows 虚拟桌面会话主机。 这些 VM 是为专用的高性能计算或机器学习工具而量身定制，如用 NVIDIA CUDA 构建的工具。 对于大多数应用或 Windows 用户界面，它们不支持 GPU 加速。
+>Azure 的 NC、NCv2、NCv3、ND 和 NDv2 系列 VM 通常不适用于 Azure 虚拟桌面会话主机。 这些 VM 是为专用的高性能计算或机器学习工具而量身定制，如用 NVIDIA CUDA 构建的工具。 对于大多数应用或 Windows 用户界面，它们不支持 GPU 加速。
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>创建主机池、预配虚拟机并配置应用组
 
 使用你选择的大小的 VM 创建新的主机池。 有关说明，请参阅[教程：使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
 
-Windows 虚拟桌面在以下操作系统中支持 GPU 加速的渲染和编码：
+Azure 虚拟桌面在以下操作系统中支持 GPU 加速的渲染和编码：
 
 * Windows 10 版本 1511 或更高版本
 * Windows Server 2016 或更高版本
 
-你还必须配置应用组，或使用在创建新主机池时自动创建的默认桌面应用组（名为“桌面应用程序组”）。 有关说明，请参阅[教程：管理 Windows 虚拟桌面的应用组](./manage-app-groups.md)。
+你还必须配置应用组，或使用在创建新主机池时自动创建的默认桌面应用组（名为“桌面应用程序组”）。 有关说明，请参阅[教程：管理 Azure 虚拟桌面（经典）的应用组](./manage-app-groups.md)。
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>在虚拟机中安装受支持的图形驱动程序
 
-若要在 Windows 虚拟桌面中利用 Azure N 系列 VM 的 GPU 功能，必须安装相应的图形驱动程序。 按照[支持的操作系统和驱动程序](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers)中的说明来安装驱动程序。 仅支持 Azure 分发的驱动程序。
+若要在 Azure 虚拟桌面中利用 Azure N 系列 VM 的 GPU 功能，必须安装相应的图形驱动程序。 按照[支持的操作系统和驱动程序](../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers)中的说明来安装驱动程序。 仅支持 Azure 分发的驱动程序。
 
 * 对于 Azure NV 系列或 NVv3 系列 VM，只有 NVIDIA GRID 驱动程序（而非 NVIDIA CUDA 驱动程序）支持大多数应用和 Windows 用户界面的 GPU 加速。 如果选择手动安装驱动程序，请务必安装 GRID 驱动程序。 如果选择使用 Azure VM 扩展安装驱动程序，将自动为这些 VM 大小安装 GRID 驱动程序。
 * 对于 Azure NVv4 系列 VM，请安装 Azure 提供的 AMD 驱动程序。 你可以使用 Azure VM 扩展自动安装它们，也可以手动安装它们。
@@ -100,7 +100,7 @@ Windows 虚拟桌面在以下操作系统中支持 GPU 加速的渲染和编码�
 
 若要验证远程桌面是否正在使用 GPU 加速的编码，请执行以下操作：
 
-1. 使用 Windows 虚拟桌面客户端连接到 VM 的桌面。
+1. 使用 Azure 虚拟桌面客户端连接到 VM 的桌面。
 2. 启动事件查看器并导航到以下节点：“应用程序和服务日志” > “Microsoft” > “Windows” > “RemoteDesktopServices-RdpCoreCDV” > “操作”
 3. 若要确定是否正在使用 GPU 加速的编码，请查找事件 ID 170。 如果看到“AVC 硬件编码器已启用:1”，这表示已使用了 GPU 编码。
 
@@ -108,7 +108,7 @@ Windows 虚拟桌面在以下操作系统中支持 GPU 加速的渲染和编码�
 
 若要验证远程桌面是否正在使用全屏视频编码，请执行以下操作：
 
-1. 使用 Windows 虚拟桌面客户端连接到 VM 的桌面。
+1. 使用 Azure 虚拟桌面客户端连接到 VM 的桌面。
 2. 启动事件查看器并导航到以下节点：“应用程序和服务日志” > “Microsoft” > “Windows” > “RemoteDesktopServices-RdpCoreCDV” > “操作”
 3. 若要确定是否使用了全屏视频编码，请查找事件 ID 162。 如果看到“可用 AVC:1 初始配置文件:2048”，这表示已使用了 AVC 444。
 

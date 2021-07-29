@@ -3,20 +3,20 @@ title: 新增功能
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: 了解 Azure SQL 数据库和 SQL 托管实例的新增功能和文档改进。
 services: sql-database
-author: stevestein
+author: MashaMSFT
+ms.author: mathoma
 ms.service: sql-db-mi
-ms.subservice: service
-ms.custom: sqldbrb=2
+ms.subservice: service-overview
+ms.custom: sqldbrb=2, references_regions
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/17/2021
-ms.author: sstein
-ms.openlocfilehash: 7746b8aa84bea9ec8c18b4c4af0851ca3e5e3957
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 06/03/2021
+ms.openlocfilehash: 3a971b88e2152d79f0c11cc58092d6faf1e3f900
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132008"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752668"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例中的新增功能有哪些？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -132,13 +132,13 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 
 如果某个实例加入[自动故障转移组](./auto-failover-group-overview.md)，则更改该实例的[连接类型](../managed-instance/connection-types-overview.md)对通过故障转移组侦听器终结点建立的连接不起作用。
 
-**解决方法**：更改连接类型后删除并重新创建自动故障转移组。
+解决方法：在更改连接类型后删除并重新创建自动故障转移组。
 
 ### <a name="procedure-sp_send_dbmail-may-transiently-fail-when-query-parameter-is-used"></a>使用 @query 参数时，过程 sp_send_dbmail 可能会暂时失败
 
-使用 `@query` 参数时，过程 sp_send_dbmail 可能会暂时失败。 发生此问题时，每秒执行一次 sp_send_dbmail 过程都会失败，并显示错误 `Msg 22050, Level 16, State 1` 和消息 `Failed to initialize sqlcmd library with error number -2147467259`。 为了能够正确看到此错误，应使用参数 `@exclude_query_output` 的默认值 0 调用该过程，否则错误将不会传播。
-此问题是由与 sp_send_dbmail 如何使用模拟和连接池相关的已知 bug 引起的。
-若要解决此问题，请将用于发送电子邮件的代码包装到依赖于输出参数 `@mailitem_id` 的重试逻辑中。 如果执行失败，则参数值将为 NULL，表示应该再次调用 sp_send_dbmail 以成功发送电子邮件。 下面是此重试逻辑的示例。
+在使用 `@query` 参数时，过程 `sp_send_dbmail` 可能会暂时失败。 发生此问题时，每秒执行一次 sp_send_dbmail 过程都会失败，并显示错误 `Msg 22050, Level 16, State 1` 和消息 `Failed to initialize sqlcmd library with error number -2147467259`。 为了能够正确看到此错误，应使用参数 `@exclude_query_output` 的默认值 0 调用该过程，否则错误将不会传播。
+此问题是由一个已知 bug 引起的，这个 bug 与 `sp_send_dbmail` 使用模拟和连接池的方式相关。
+若要解决此问题，请将用于发送电子邮件的代码包装到依赖于输出参数 `@mailitem_id` 的重试逻辑中。 如果执行失败，则参数值会是 NULL，指示应再调用一次 `sp_send_dbmail` 以成功发送电子邮件。 下面是此重试逻辑的示例。
 ```sql
 CREATE PROCEDURE send_dbmail_with_retry AS
 BEGIN
@@ -159,32 +159,33 @@ END
 
 ### <a name="distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group"></a>从服务器信任组删除托管实例后，可以执行分布式事务
 
-[服务器信任组](../managed-instance/server-trust-group-overview.md)用于在托管实例之间建立信任，这是执行[分布式事务](./elastic-transactions-overview.md)的先决条件。 从服务器信任组中删除托管实例后或删除该组后，仍可以执行分布式事务。 若要确保禁用分布式事务，可以使用一种解决方法，即[用户发起的手动故障转移](../managed-instance/user-initiated-failover.md)（在托管实例上应用）。
+[服务器信任组](../managed-instance/server-trust-group-overview.md)用于在托管实例之间建立信任，这是执行[分布式事务](./elastic-transactions-overview.md)的先决条件。 在从服务器信任组中删除托管实例后，或在删除该组后，你仍然可以执行分布式事务。 若要确保禁用分布式事务，可以使用一种解决方法，即[用户发起的手动故障转移](../managed-instance/user-initiated-failover.md)（在托管实例上应用）。
 
 ### <a name="distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation"></a>执行托管实例缩放操作后无法执行分布式事务
 
 包括更改服务层或 vCore 数量在内的托管实例缩放操作会重置后端的服务器信任组设置，并禁止运行[分布式事务](./elastic-transactions-overview.md)。 解决方法是在 Azure 门户上删除并创建新的[服务器信任组](../managed-instance/server-trust-group-overview.md)。
 
-### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>BULK INSERT 和 BACKUP/RESTORE 语句无法使用托管标识访问 Azure 存储
+### <a name="bulk-insert-and-backuprestore-statements-should-use-sas-key-to-access-azure-storage"></a>BULK INSERT 和 BACKUP/RESTORE 语句应该使用 SAS 密钥来访问 Azure 存储
 
-BULK INSERT、BACKUP 和 RESTORE 语句以及 OPENROWSET 函数无法使用 `DATABASE SCOPED CREDENTIAL` 和托管标识来对 Azure 存储进行身份验证。 解决方法是切换到“共享访问签名”身份验证。 以下示例不适用于 Azure SQL（数据库和托管实例）：
+目前，不支持将 `DATABASE SCOPED CREDENTIAL` 语法与托管标识配合使用来向 Azure 存储进行身份验证。 在访问 Azure 存储以使用 BULK INSERT、`BACKUP` 和 `RESTORE` 语句或 `OPENROWSET` 函数时，Microsoft 建议对[数据库范围的凭据](/sql/t-sql/statements/create-credential-transact-sql#d-creating-a-credential-using-a-sas-token)使用[共享访问签名](../../storage/common/storage-sas-overview.md)。 例如：
 
 ```sql
-CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Identity';
+CREATE DATABASE SCOPED CREDENTIAL sas_cred WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
+ SECRET = '******srt=sco&sp=rwac&se=2017-02-01T00:55:34Z&st=2016-12-29T16:55:34Z***************';
 GO
 CREATE EXTERNAL DATA SOURCE MyAzureBlobStorage
-  WITH ( TYPE = BLOB_STORAGE, LOCATION = 'https://****************.blob.core.windows.net/curriculum', CREDENTIAL= msi_cred );
+  WITH ( TYPE = BLOB_STORAGE, LOCATION = 'https://****************.blob.core.windows.net/invoices', CREDENTIAL= sas_cred );
 GO
 BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzureBlobStorage');
 ```
 
-**解决方法**：使用 [共享访问签名向存储进行身份验证](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage)。
+有关将 `BULK INSERT` 与 SAS 密钥配合使用的另一个示例，请参阅[用于向存储进行身份验证的共享访问签名](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage)。 
 
 ### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>服务主体无法访问 Azure AD 和 AKV
 
-在某些情况下，用于访问 Azure AD 和 Azure Key Vault (AKV) 服务的服务主体可能存在问题。 此问题最终会对使用 Azure AD 身份验证和 SQL 托管实例的透明数据库加密 (TDE) 产生影响。 这可能是一个间歇性连接问题，或者无法运行诸如 CREATE LOGIN/USER FROM EXTERNAL PROVIDER 或 EXECUTE AS LOGIN/USER 之类的语句。 在某些情况下，在新的 Azure SQL 托管实例上使用客户托管密钥设置 TDE 也可能不起作用。
+在有些情况下，用于访问 Azure AD 和 Azure Key Vault (AKV) 服务的服务主体可能会存在问题。 此问题最终会对使用 Azure AD 身份验证和 SQL 托管实例的透明数据库加密 (TDE) 产生影响。 这种情况可能会体现为间歇性的连接问题，或者是无法运行 `CREATE LOGIN/USER FROM EXTERNAL PROVIDER` 或 `EXECUTE AS LOGIN/USER` 之类的语句。 在某些情况下，在新的 Azure SQL 托管实例上使用客户托管密钥设置 TDE 也可能不起作用。
 
-**解决方法**：为了防止在执行任何更新命令之前 SQL 托管实例出现此问题，或者你已在更新命令后遇到此问题，请转到 Azure 门户，访问 SQL 托管实例 [“Active Directory 管理员”边栏选项卡](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal)。 验证是否可以看到错误消息“托管实例需要服务主体才能访问 Azure Active Directory。 单击此处创建服务主体”。 如果看到此错误消息，请单击它，然后按照提供的分步说明操作，直到解决此错误为止。
+解决方法：如果要防止在执行任何更新命令之前 SQL 托管实例出现此问题，或者如果你在更新命令后遇到了此问题，请转到 Azure 门户，访问 SQL 托管实例的[“Active Directory 管理员”页面](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal)。 验证是否可以看到错误消息“托管实例需要服务主体才能访问 Azure Active Directory。 单击此处创建服务主体”。 如果看到此错误消息，请单击它，然后按照提供的分步说明操作，直到解决此错误为止。
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>没有使用 CHECKSUM 的手动备份可能无法还原
 
@@ -210,18 +211,18 @@ BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzur
 
 ### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL 代理角色需要拥有对非 sysadmin 登录名的显式 EXECUTE 权限
 
-如果将非 sysadmin 登录名添加到任何 [SQL 代理固定数据库角色](/sql/ssms/agent/sql-server-agent-fixed-database-roles)，则会出现以下问题：需要向主存储过程授予显式 EXECUTE 权限才能使这些登录名正常工作。 如果遇到此问题，将显示错误消息“在对象 <object_name> 中拒绝了 EXECUTE 权限(Microsoft SQL Server，错误:229)”。
+如果将非 sysadmin 登录名添加到任何 [SQL 代理固定数据库角色](/sql/ssms/agent/sql-server-agent-fixed-database-roles)，则会存在一个问题，即必须向 master 数据库中的三个存储过程授予显式 EXECUTE 权限，这些登录名才能正常使用。 如果遇到此问题，将显示错误消息“在对象 <object_name> 中拒绝了 EXECUTE 权限(Microsoft SQL Server，错误:229)”。
 
 **解决方法**：将登录名添加到 SQL 代理固定数据库角色（SQLAgentUserRole、SQLAgentReaderRole 或 SQLAgentOperatorRole）后，对于添加到这些角色的每个登录名，请执行以下 T-SQL 脚本，向列出的存储过程显式授予 EXECUTE 权限。
 
 ```tsql
 USE [master]
 GO
-CREATE USER [login_name] FOR LOGIN [login_name]
+CREATE USER [login_name] FOR LOGIN [login_name];
 GO
-GRANT EXECUTE ON master.dbo.xp_sqlagent_enum_jobs TO [login_name]
-GRANT EXECUTE ON master.dbo.xp_sqlagent_is_starting TO [login_name]
-GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
+GRANT EXECUTE ON master.dbo.xp_sqlagent_enum_jobs TO [login_name];
+GRANT EXECUTE ON master.dbo.xp_sqlagent_is_starting TO [login_name];
+GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name];
 ```
 
 ### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>重启代理进程可能会中断 SQL 代理作业
@@ -313,12 +314,12 @@ SQL Server Data Tools 不完全支持 Azure AD 登录名和用户。
 
 多个系统视图、性能计数器、错误消息、XEvent 和错误日志条目显示了 GUID 数据库标识符而非实际的数据库名称。 不要依赖这些 GUID 标识符，因为将来它们会被替换为实际的数据库名称。
 
-**解决方法**：使用 sys.databases 视图通过物理数据库名称（以 GUID 数据库标识符的形式指定）解析实际数据库名称：
+解决方法：使用 `sys.databases` 视图从物理数据库名称（以 GUID 数据库标识符的形式指定）解析实际数据库名称：
 
 ```tsql
 SELECT name as ActualDatabaseName, physical_database_name as GUIDDatabaseIdentifier 
 FROM sys.databases
-WHERE database_id > 4
+WHERE database_id > 4;
 ```
 
 ### <a name="error-logs-arent-persisted"></a>不保留错误日志

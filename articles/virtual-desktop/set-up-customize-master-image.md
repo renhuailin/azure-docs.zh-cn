@@ -1,24 +1,24 @@
 ---
 title: 准备和自定义主 VHD 映像 - Azure
-description: 如何准备、自定义 Windows 虚拟桌面主映像并将其上传到 Azure。
+description: 如何准备、自定义 Azure 虚拟桌面主映像并将其上传到 Azure。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 01/19/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 654b5b293397af9737813d759a7c784d90629942
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 576a791ee8c252a8bc1fa73cd98174e6958cf606
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445799"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751426"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
 
-本文介绍如何准备用于上传到 Azure 的主虚拟硬盘 (VHD) 映像，包括如何创建虚拟机 (VM) 并在其中安装软件。 这些说明适用于可与组织的现有过程配合使用的特定于 Windows 虚拟桌面的配置。
+本文介绍如何准备用于上传到 Azure 的主虚拟硬盘 (VHD) 映像，包括如何创建虚拟机 (VM) 并在其中安装软件。 这些说明适用于可与组织的现有过程配合使用的特定于 Azure 虚拟桌面的配置。
 
 >[!IMPORTANT]
->建议使用 Azure 映像库中的映像。 但如果确实需要使用自定义映像，请确保 VM 上尚未安装 Windows 虚拟桌面代理。 在已安装 Windows 虚拟桌面代理的情况下使用自定义映像，可能会导致映像出现问题，例如阻止注册、阻止用户会话连接。  
+>建议使用 Azure 映像库中的映像。 但如果确实需要使用自定义映像，请确保 VM 上尚未安装 Azure 虚拟桌面代理。 在已安装 Azure 虚拟桌面代理的情况下使用自定义映像，可能会导致映像出现问题，例如阻止注册、阻止用户会话连接。  
 
 ## <a name="create-a-vm"></a>创建 VM
 
@@ -128,7 +128,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnab
 
 ### <a name="disable-storage-sense"></a>禁用存储感知
 
-对于使用 Windows 10 企业版或 Windows 10 企业版多会话的 Windows 虚拟桌面会话主机，建议禁用存储感知。 用户可以在“设置”菜单的“存储”下禁用存储感知，如以下屏幕截图所示：
+对于使用 Windows 10 企业版或 Windows 10 企业版多会话的 Azure 虚拟桌面会话主机，建议禁用存储感知。 用户可以在“设置”菜单的“存储”下禁用存储感知，如以下屏幕截图所示：
 
 > [!div class="mx-imgBorder"]
 > ![“设置”下“存储”菜单的屏幕截图。 “存储感知”选项已关闭。](media/storagesense.png)
@@ -215,6 +215,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 - [教程：通过 Azure 市场创建主机池](create-host-pools-azure-marketplace.md)
 - [使用 PowerShell 创建主机池](create-host-pools-powershell.md)
 - [使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md)
-- [配置 Windows 虚拟桌面负载均衡方法](configure-host-pool-load-balancing.md)
+- [配置 Azure 虚拟桌面负载均衡方法](configure-host-pool-load-balancing.md)
 
 如果在准备或自定义 VHD 映像后遇到连接问题，请查看[故障排除指南](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved)获取帮助。

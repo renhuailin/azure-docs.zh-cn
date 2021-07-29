@@ -6,12 +6,12 @@ ms.author: kimal
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 369348133f7395f5db5b5923bd438cec8e4ad733
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 98a78d9d769300fc4963869fbc4fa2607b800fad
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98954372"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591109"
 ---
 # <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>使用托管标识（预览版）在 Azure Blob 存储中对 Azure 流分析作业进行身份验证
 
@@ -21,15 +21,22 @@ ms.locfileid: "98954372"
 
 ## <a name="create-the-stream-analytics-job-using-the-azure-portal"></a>使用 Azure 门户创建流分析作业
 
-1. 在 Azure 门户中创建新的流分析作业，或打开现有的作业。 在屏幕左侧的菜单栏中，选择“配置”下面的“托管标识”。 确保选择“使用系统分配的托管标识”，然后单击屏幕底部的“保存”按钮。
+首先，创建 Azure 流分析作业的托管标识。  
 
-   ![配置流分析托管标识](./media/common/stream-analytics-enable-managed-identity.png)
+1. 在 Azure 门户中，打开 Azure 流分析作业。  
 
-2. 在 Azure Blob 存储输出接收器的输出属性窗口中，选择“身份验证模式”下拉列表并选择“托管标识”。 有关其他输出属性的信息，请参阅[了解 Azure 流分析的输出](./stream-analytics-define-outputs.md)。 完成后，单击“保存”。
+2. 从左侧导航菜单中，选择“配置”下的“托管标识” ****   ** 。 然后，选中“使用系统分配的托管标识”旁的框，然后选择“保存” ****   **** 。
 
-   ![配置 Azure Blob 存储输出](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
+   :::image type="content" source="media/event-hubs-managed-identity/system-assigned-managed-identity.png" alt-text="系统分配托管标识":::  
 
-3. 创建作业后，请参阅本文的[为流分析作业授予对存储帐户的访问权限](#give-the-stream-analytics-job-access-to-your-storage-account)部分。
+3. 在 Azure Active Directory 中为流分析作业的标识创建服务主体。 新创建的标识的生命周期由 Azure 管理。 删除流分析作业时，Azure 会自动删除关联的标识（即服务主体）。  
+
+   保存配置后，服务主体的对象 ID (OID) 将列为主体 ID，如下所示：  
+
+   :::image type="content" source="media/event-hubs-managed-identity/principal-id.png" alt-text="主体 ID":::
+
+   服务主体与流分析作业同名。 例如，如果作业的名称是 `MyASAJob`，则服务主体的名称也是 `MyASAJob`。 
+
 
 ## <a name="azure-resource-manager-deployment"></a>Azure 资源管理器部署
 
@@ -160,6 +167,9 @@ ms.locfileid: "98954372"
 
 除非你需要作业代表你创建容器，否则应选择“容器级访问权限”，因为此选项将为作业授予所需的最低访问权限级别。 下面将会解释这两个选项在 Azure 门户和命令行中的用法。
 
+> [!NOTE]
+> 由于全局复制或缓存延迟，在撤销或授予权限时可能会有延迟。 更改应在 8 分钟内反映出来。
+
 ### <a name="grant-access-via-the-azure-portal"></a>通过 Azure 门户授予访问权限
 
 #### <a name="container-level-access"></a>容器级访问权限
@@ -213,6 +223,15 @@ ms.locfileid: "98954372"
    ```azurecli
    az role assignment create --role "Storage Blob Data Contributor" --assignee <principal-id> --scope /subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
    ```
+   
+## <a name="create-a-blob-input-or-output"></a>创建 blob 输入或输出  
+
+现在已经配置了托管标识，可以将 blob 资源作为输入或输出添加到流分析作业了。
+
+1. 在 Azure Blob 存储输出接收器的输出属性窗口中，选择“身份验证模式”下拉列表并选择“托管标识”。 有关其他输出属性的信息，请参阅[了解 Azure 流分析的输出](./stream-analytics-define-outputs.md)。 完成后，单击“保存”。
+
+   ![配置 Azure Blob 存储输出](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
+
 
 ## <a name="enable-vnet-access"></a>启用 VNET 访问权限
 

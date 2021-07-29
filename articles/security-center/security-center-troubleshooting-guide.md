@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 9822dfe50fa50fdd70f4e09e188188cad0f9b8f0
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 96cd715a16c06dd6e35d042a6938de083ec262a9
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102438210"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556777"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 
@@ -148,5 +148,5 @@ ms.locfileid: "102438210"
 * [处理 Azure 安全中心内的安全事件](security-center-incident.md)
 * [Azure 安全中心检测功能](./security-center-alerts-overview.md)
 * [通过 Azure 安全中心监视合作伙伴解决方案](./security-center-partner-integration.md) - 了解如何监视合作伙伴解决方案的运行状态。
-* [Azure 安全中心常见问题解答](faq-general.md) - 查找有关使用服务的常见问题
+* [Azure 安全中心常见问题解答](faq-general.yml) - 查找有关使用服务的常见问题
 * [Azure 安全性博客](/archive/blogs/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章

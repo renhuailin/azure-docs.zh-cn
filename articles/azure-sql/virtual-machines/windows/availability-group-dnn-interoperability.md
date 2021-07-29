@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/08/2020
 ms.author: mathoma
-ms.openlocfilehash: 19b4b7407468b19419e2f85193b1f8fb6ace39c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7ff8eaaca03a2c977311c6469e06714c87ce53f
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359398"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572358"
 ---
 # <a name="feature-interoperability-with-ag-and-dnn-listener"></a>与 AG 和 DNN 侦听器的功能互操作性 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,6 +27,13 @@ ms.locfileid: "97359398"
 
 本文详细介绍了 SQL Server 功能以及与可用性组 DNN 侦听器的互操作性。 
 
+## <a name="behavior-differences"></a>行为差异
+
+VNN 侦听器和 DNN 侦听器的功能之间有一些必须注意的行为差异： 
+
+- 故障转移时间：使用 DNN 侦听器时，故障转移时间更短，因为不需要等待网络负载均衡器来检测失败事件和更改其路由。 
+- 现有连接：与故障转移可用性组中特定数据库之间的连接将会关闭，但与主要副本的其他连接将保持打开状态，因为在故障转移过程中，DNN 将保持联机状态。 这不同于传统的 VNN 环境。在传统 VNN 环境中，主要副本的所有连接通常在可用性组故障转移时关闭，侦听器进入脱机状态，而主要副本转换为次要角色。 使用 DNN 侦听器时，可能需要调整应用程序连接字符串，以确保在故障转移时将连接重定向到新的主要副本。
+- 开放事务：针对故障转移可用性组中的数据库的开放事务将关闭并回滚，你需要手动重新连接。 例如，在 SQL Server Management Studio 中，关闭查询窗口并打开一个新窗口。 
 
 ## <a name="client-drivers"></a>客户端驱动程序
 
@@ -125,8 +132,10 @@ FileTable 受支持，但不适用于用户通过 Windows 文件 API 访问具�
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅： 
+若要了解更多信息，请参阅以下文章：
 
-- [Windows 群集技术](/windows-server/failover-clustering/failover-clustering-overview)   
-- [Always On 可用性组](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [Azure VM 上的 SQL Server 的 Always On 可用性组](availability-group-overview.md)
+- [Azure VM 上的 SQL Server 的 Windows Server 故障转移群集](hadr-windows-server-failover-cluster-overview.md)
+- [Always On 可用性组概述](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [Azure VM 上的 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)
 

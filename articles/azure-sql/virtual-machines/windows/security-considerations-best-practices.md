@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ab51a22abd5dac99a1a1bd3be5324e5d57c8e12e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a0eca49f600855e3fa092ed45e2ee314284ec474
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145602"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079762"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的安全注意事项
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "108145602"
 
 Azure 遵守多个行业法规和标准，使用户能够使用虚拟机中运行的 SQL Server 生成符合规定的解决方案。 有关 Azure 合规性的信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/)。
 
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
+如需了解更全面详尽的信息，请参阅本系列中的其他文章：[清单](performance-guidelines-best-practices-checklist.md)、[VM 大小](performance-guidelines-best-practices-vm-size.md)、[存储](performance-guidelines-best-practices-storage.md)、[HADR 配置](hadr-cluster-best-practices.md)和[收集基线](performance-guidelines-best-practices-collect-baseline.md)。 
 
 ## <a name="control-access-to-the-sql-virtual-machine"></a>控制对 SQL 虚拟机的访问
 
@@ -109,6 +109,14 @@ SQL Server 侦听非默认端口时，必须在连接时指定该端口。 例�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果还对有关性能的最佳做法感兴趣，请参阅 [Azure 虚拟机中 SQL Server 的性能最佳做法](./performance-guidelines-best-practices-checklist.md)。
+若要了解详细信息，请参阅本系列中的其他文章：
 
-若要了解与在 Azure VM 中运行 SQL Server 相关的其他主题，请参阅 [Azure 虚拟机上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)。 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.md)。
+- [快速核对清单](performance-guidelines-best-practices-checklist.md)
+- [VM 大小](performance-guidelines-best-practices-vm-size.md)
+- [存储](performance-guidelines-best-practices-storage.md)
+- [安全性](security-considerations-best-practices.md)
+- [HADR 设置](hadr-cluster-best-practices.md)
+- [收集基线](performance-guidelines-best-practices-collect-baseline.md)
+
+若要了解与在 Azure VM 中运行 SQL Server 相关的其他主题，请参阅 [Azure 虚拟机上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)。 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.yml)。
+

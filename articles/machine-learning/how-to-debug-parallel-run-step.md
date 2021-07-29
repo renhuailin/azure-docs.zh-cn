@@ -11,12 +11,12 @@ ms.reviewer: larryfr, vaidyas, laobri, tracych
 ms.author: pansav
 author: psavdekar
 ms.date: 09/23/2020
-ms.openlocfilehash: 6c486b5085ee5e3152367229944b7782f04dc854
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: aaacc12f6a577fd0a2ff0150d22902bb6e7d6cc1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204452"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753388"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>排查 ParallelRunStep 问题
 
@@ -31,10 +31,14 @@ ms.locfileid: "108204452"
 ##  <a name="script-requirements"></a>脚本要求
 
 `ParallelRunStep` 的脚本必须包含两个函数：
-- `init()`：此函数适用于后续推理的任何成本高昂或常见的准备工作。 例如，使用它将模型加载到全局对象。 此函数将在进程开始时调用一次。
+- `init()`：此函数适用于后续处理的任何成本高昂或常见的准备工作。 例如，使用它将模型加载到全局对象。 此函数将在进程开始时调用一次。
+    > [!NOTE]
+    > 如果 `init` 方法创建输出目录，请指定 `exist_ok=True`。 每个运行该作业的节点上的每个工作进程都会调用 `init` 方法。
 -  `run(mini_batch)`：将针对每个 `mini_batch` 实例运行此函数。
     -  `mini_batch``ParallelRunStep` 将调用 run 方法，并将列表或 pandas `DataFrame` 作为参数传递给该方法。 如果输入是 `FileDataset`，则 mini_batch 中的每个条目都将是文件路径；如果输入是 `TabularDataset`，则是 pandas `DataFrame`。
     -  `response`：run() 方法应返回 pandas `DataFrame` 或数组。 对于 append_row output_action，这些返回的元素将追加到公共输出文件中。 对于 summary_only，将忽略元素的内容。 对于所有的输出操作，每个返回的输出元素都指示输入微型批处理中输入元素的一次成功运行。 确保运行结果中包含足够的数据，以便将输入映射到运行输出结果。 运行输出将写入输出文件中，并且不保证按顺序写入，你应使用输出中的某个键将其映射到输入。
+        > [!NOTE]
+        > 一个输入元素应该对应一个输出元素。  
 
 ```python
 %%writefile digit_identification.py
@@ -97,7 +101,7 @@ file_path = os.path.join(script_dir, "<file_name>")
     - 对于 `FileDataset`，它是最小值为 `1` 的文件数。 可以将多个文件合并成一个微型批处理。
     - 对于 `TabularDataset`，它是数据的大小。 示例值为 `1024`、`1024KB`、`10MB` 和 `1GB`。 建议值为 `1MB`。 `TabularDataset` 中的微批永远不会跨越文件边界。 例如，如果你有各种大小的 .csv 文件，最小的文件为 100 KB，最大的文件为 10 MB。 如果设置 `mini_batch_size = 1MB`，则大小小于 1 MB 的文件将被视为一个微型批处理。 大小大于 1 MB 的文件将被拆分为多个微型批处理。
         > [!NOTE]
-        > 不能对 SQL 支持的 TabularDataset 进行分区。 
+        > 不能对 SQL 支持的 TabularDataset 进行分区。 无法对单个 parquet 文件和单个行组中的 TabularDataset 进行分区。
 
 - `error_threshold`：在处理过程中应忽略的 `TabularDataset` 记录失败数和 `FileDataset` 文件失败数。 如果整个输入的错误计数超出此值，则作业将中止。 错误阈值适用于整个输入，而不适用于发送给 `run()` 方法的单个微型批处理。 范围为 `[-1, int.max]`。 `-1` 部分指示在处理过程中忽略所有失败。
 - `output_action`：以下值之一指示将如何组织输出：
@@ -107,13 +111,22 @@ file_path = os.path.join(script_dir, "<file_name>")
 - `source_directory`：文件夹的路径，这些文件夹包含要在计算目标上执行的所有文件（可选）。
 - `compute_target`：仅支持 `AmlCompute`。
 - `node_count`：用于运行用户脚本的计算节点数。
-- `process_count_per_node`：每个节点的进程数。 最佳做法是设置为一个节点具有的 GPU 或 CPU 数量（可选；默认值为 `1`）。
+- `process_count_per_node`：每个节点并行运行入口脚本的工作进程数。 对于 GPU 计算机，默认值为 1。 对于 CPU 计算机，默认值是每个节点的核心数。 工作进程会通过传递它获取的微型批来反复调用 `run()`。 作业中的工作进程总数为 `process_count_per_node * node_count`，这个数字决定了要并行执行的 `run()` 的最大数目。  
 - `environment`：Python 环境定义。 可以将其配置为使用现有的 Python 环境或设置临时环境。 定义还负责设置所需的应用程序依赖项（可选）。
 - `logging_level`：日志详细程度。 递增详细程度的值为：`WARNING`、`INFO` 和 `DEBUG`。 （可选；默认值为 `INFO`）
 - `run_invocation_timeout`：`run()` 方法调用超时（以秒为单位）。 （可选；默认值为 `60`）
 - `run_max_try`：微型批处理的 `run()` 的最大尝试次数。 如果引发异常，则 `run()` 失败；如果达到 `run_invocation_timeout`，则不返回任何内容（可选；默认值为 `3`）。 
 
 可以指定 `mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout` 和 `run_max_try` 作为 `PipelineParameter` 以便在重新提交管道运行时，可以微调参数值。 在本例中，你将 `PipelineParameter` 用于 `mini_batch_size` 和 `Process_count_per_node`。重新提交另一运行时，需更改这些值。 
+
+#### <a name="cuda-devices-visibility"></a>CUDA 设备可见性
+对于配备 GPU 的计算目标，将在工作进程中设置环境变量 `CUDA_VISIBLE_DEVICES`。 在 AmlCompute 中，可以在环境变量 `AZ_BATCHAI_GPU_COUNT_FOUND` 中查找 GPU设备的总数，它是自动设置的。 如果希望每个工作进程都有专用 GPU，请将 `process_count_per_node` 设置为等于计算机上 GPU 设备的数量。 每个工作进程都将为 `CUDA_VISIBLE_DEVICES` 分配唯一索引。 如果工作进程因任何原因停止，则下一个启动的工作进程将使用已发布的 GPU 索引。
+
+如果 GPU 设备的总数小于 `process_count_per_node`，则工作进程将会被分配 GPU 索引，直至使用完所有索引。 
+
+假设 GPU 设备总数为 2，并以 `process_count_per_node = 4` 为例，进程 0 和进程 1 将具有索引 0 和 1。 进程 2 和 3 将不会有环境变量。 对于使用此环境变量进行 GPU 分配的库，进程 2 和 3 将不会有 GPU，也不会尝试获取 GPU 设备。 如果进程 0 停止，它将会释放 GPU 索引 0。 下一个进程（即进程 4）将会被分配 GPU 索引 0。
+
+有关详细信息，请参阅 [CUDA Pro 提示：使用CUDA_VISIBLE_DEVICES 控制 GPU 可见性](https://developer.nvidia.com/blog/cuda-pro-tip-control-gpu-visibility-cuda_visible_devices/)。
 
 ### <a name="parameters-for-creating-the-parallelrunstep"></a>用于创建 ParallelRunStep 的参数
 
@@ -224,6 +237,7 @@ ParallelRunStep 会在根记录器上设置一个处理程序，该程序可将�
 ### <a name="how-could-i-write-to-a-file-to-show-up-in-the-portal"></a>如何写入到文件，以便在门户中显示？
 `logs` 文件夹中的文件将被上传并显示在门户中。
 你可以获得如下所示的文件夹 `logs/user/entry_script_log/<node_id>` 并编写要写入的文件路径：
+
 ```python
 from pathlib import Path
 def init():
@@ -234,11 +248,30 @@ def init():
     fil_path = Path(folder) / "<file_name>"
 ```
 
-### <a name="how-could-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>如何将端输入（如包含查找表的单个或多个文件）传递到所有工作器？
+### <a name="how-do-i-write-a-file-to-the-output-directory-and-then-view-it-in-the-portal"></a>如何将文件写入到输出目录，然后在门户中查看它？
+
+可以从 `EntryScript` 类获取输出目录并写入到该目录。 若要查看写入的文件，请在 Azure 机器学习门户中的“单步运行”视图中，选择“输出 + 日志”选项卡。选择“数据输出”链接，然后完成对话框中所述的步骤 。 
+
+在入口脚本中使用 `EntryScript`，如以下示例所示：
+
+```python
+from pathlib import Path
+from azureml_user.parallel_run import EntryScript
+
+def run(mini_batch):
+    output_dir = Path(entry_script.output_dir)
+    (Path(output_dir) / res1).write...
+    (Path(output_dir) / res2).write...
+```
+
+### <a name="how-can-i-pass-a-side-input-such-as-a-file-or-files-containing-a-lookup-table-to-all-my-workers"></a>如何将端输入（如包含查找表的一个或多个文件）传递到所有工作器？
 
 用户可以使用 ParalleRunStep 的 side_inputs 参数将引用数据传递给脚本。 作为 side_inputs 提供的所有数据集将装载到每个工作器节点上。 用户可以通过传递参数获取装载的位置。
 
-构造一个包含参考数据的[数据集](/python/api/azureml-core/azureml.core.dataset.dataset)，指定本地装载路径并将其注册到工作区。 将其传递到 `ParallelRunStep` 的 `side_inputs` 参数。 此外，还可以在 `arguments` 节中添加其路径，以便轻松访问其已装载的路径：
+构造一个包含参考数据的[数据集](/python/api/azureml-core/azureml.core.dataset.dataset)，指定本地装载路径并将其注册到工作区。 将其传递到 `ParallelRunStep` 的 `side_inputs` 参数。 此外，还可以在 `arguments` 部分中添加其路径，以便轻松访问其已装载的路径。
+
+> [!NOTE]
+> FileDataset 只用于 side_inputs。 
 
 ```python
 local_path = "/tmp/{}".format(str(uuid.uuid4()))
@@ -264,7 +297,6 @@ labels_path = args.labels_dir
 ```
 
 ### <a name="how-to-use-input-datasets-with-service-principal-authentication"></a>如何通过服务主体身份验证使用输入数据集？
-
 用户可以通过工作区中使用的服务主体身份验证传递输入数据集。 若要在 ParallelRunStep 中使用此类数据集，需要为其注册该数据集以构造 ParallelRunStep 配置。
 
 ```python
@@ -284,6 +316,38 @@ default_blob_store = ws.get_default_datastore() # or Datastore(ws, '***datastore
 ds = Dataset.File.from_files(default_blob_store, '**path***')
 registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 ```
+
+## <a name="how-to-check-progress-and-analyze-it"></a>如何检查进度和分析进度
+本部分介绍如何检查 ParallelRunStep 作业的进度并检查意外行为的原因。
+
+### <a name="how-to-check-job-progress"></a>如何检查作业进度？
+在 `~/logs/job_progress_overview.<timestamp>.txt` 中，除了可以查看 StepRun 的总体状态外，还可以查看已计划的/已处理的微型批的计数以及生成输出的进度。 该文件每天轮换，你可以检查时间戳最大的文件，以了解最新信息。
+
+### <a name="what-should-i-check-if-there-is-no-progress-for-a-while"></a>如果一段时间没有进度，应该检查什么？
+可以转到 `~/logs/sys/errror` 查看是否有异常。 如果没有，则有可能是因为输入脚本耗时较长，你可以在代码中输出进度信息，以查找耗时部分，或将 `"--profiling_module", "cProfile"` 添加到 `ParallelRunStep` 的 `arguments`，以便在 `~/logs/sys/node/<node_id>` 文件夹下生成名为 `<process_name>.profile` 的配置文件。
+
+### <a name="when-will-a-job-stop"></a>作业将何时运行？
+如果未取消，该作业将会停止，状态为：
+- 已完成。 如果已经为 `append_row` 模式处理了所有微型批并生成了输出。
+- 已失败。 如果已超出 [`Parameters for ParallelRunConfig`](#parameters-for-parallelrunconfig) 中的 `error_threshold`，或在作业期间发生了系统错误。
+
+### <a name="where-to-find-the-root-cause-of-failure"></a>在哪里查找到失败的根本原因？
+可以按照 `~logs/job_result.txt` 中的线索来查找原因和详细的错误日志。
+
+### <a name="will-node-failure-impact-the-job-result"></a>节点故障是否会影响作业结果？
+如果在指定的计算群集中有其他可用节点，则不会影响。 业务流程协调程序将会启动新节点作为替代节点，并且 ParallelRunStep 对于此类操作是可复原的。
+
+### <a name="what-happens-if-init-function-in-entry-script-fails"></a>如果入口脚本中的 `init` 函数失败，会发生什么情况？
+ParallelRunStep 具有重试特定次数的机制，以提供从暂时性问题恢复的可能性，这样不会使作业失败延迟过久，该机制如下所示：
+1. 如果在节点启动后，所有代理上的 `init` 仍然失败，我们将会在发生 `3 * process_count_per_node` 次故障后停止尝试。
+2. 如果在作业启动后，所有节点的所有代理上的 `init` 都继续失败，我们将在作业运行时间超过 2 分钟并且出现 `2 * node_count * process_count_per_node` 次故障后停止尝试。
+3. 如果所有代理都在 `init` 上停滞超过 `3 * run_invocation_timeout + 30` 秒，则该作业会由于长时间没有进度而失败。
+
+### <a name="what-will-happen-on-outofmemory-how-can-i-check-the-cause"></a>出现 OutOfMemory 时会发生什么情况？ 如何检查原因？
+ParallelRunStep 会将当前用于处理微型批的尝试设置为失败状态，并尝试重启失败的进程。 可以检查 `~logs/perf/<node_id>` 以查找消耗内存的进程。
+
+### <a name="why-do-i-have-a-lot-of-processnnn-files"></a>为什么有很多 processNNN 文件？
+ParallelRunStep 将启动新的工作进程来替换异常退出的工作进程，并且每个进程都将生成 `processNNN` 文件作为日志。 但是，如果该进程由于用户脚本的 `init` 函数期间出现异常而失败，并且该错误持续重复 `3 * process_count_per_node` 次，则不会启动新工作进程。
 
 ## <a name="next-steps"></a>后续步骤
 

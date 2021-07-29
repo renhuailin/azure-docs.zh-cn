@@ -1,19 +1,19 @@
 ---
-title: Windows 虚拟桌面准备 MSIX 应用附加映像 - Azure
-description: 如何为 Windows 虚拟桌面主机池创建 MSIX 应用附加映像。
+title: Azure 虚拟桌面准备 MSIX 应用附加映像 - Azure
+description: 如何为 Azure 虚拟桌面主机池创建 MSIX 应用附加映像。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 443f117907381862639564dfbf9752562f4a3564
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: f80d123a96a24ef9e9402cc2b142e94448468ea1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363659"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745630"
 ---
-# <a name="prepare-an-msix-image-for-windows-virtual-desktop"></a>为 Windows 虚拟桌面准备 MSIX 映像
+# <a name="prepare-an-msix-image-for-azure-virtual-desktop"></a>为 Azure 虚拟桌面准备 MSIX 映像
 
 MSIX 应用附加是一个应用程序分层解决方案，可用于将应用从 MSIX 包动态附加到用户会话。 MSIX 包系统将应用与操作系统分开，这样更易于为虚拟机构建映像。 借助 MSIX 包，还可以更好地控制用户在其虚拟机中可以访问哪些应用。 甚至可以将应用与主映像分开，稍后再将这些应用提供给用户。
 
@@ -99,9 +99,9 @@ MSIX 包需要采用 VHD 或 VHDX 格式才能正常工作。 这意味着，需
 
 ## <a name="next-steps"></a>后续步骤
 
-请在 [Windows 虚拟桌面 TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 向社区咨询有关此功能的问题。
+请在 [Azure 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)询问有关此功能的问题。
 
-还可以在 [Windows 虚拟桌面反馈中心](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)提供关于 Windows 虚拟桌面的反馈。
+还可以在 [Azure 虚拟桌面反馈中心](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)提供关于 Azure 虚拟桌面的反馈。
 
 下面是一些可能有用的其他文章：
 

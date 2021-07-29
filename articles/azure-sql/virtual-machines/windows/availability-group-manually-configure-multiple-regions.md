@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7ef3535158c99226da135ad3726266023ac0690f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d4d0f355d48532c43e9180f2c819e45d45737b4
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102509398"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572193"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>在不同的 Azure 区域中配置 SQL Server Always On 可用性组
 
@@ -189,7 +189,7 @@ ms.locfileid: "102509398"
 | ----- | ----- | ----- | ----- | -----
 | 主数据中心 | SQL-1 | 主要 | 同步 | 自动
 | 主数据中心 | SQL-2 | 次要 | 同步 | 自动
-| 辅助或远程数据中心 | SQL-3 | 辅助 | 异步 | 手动
+| 辅助或远程数据中心 | SQL-3 | 辅助副本 | 异步 | 手动
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>有关计划内和强制手动故障转移的详细信息
@@ -201,7 +201,9 @@ ms.locfileid: "102509398"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Always On 可用性组](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)
-* [Azure 虚拟机](../../../virtual-machines/index.yml)
-* [Azure 负载均衡器](availability-group-manually-configure-tutorial.md#configure-internal-load-balancer)
-* [Azure 可用性集](../../../virtual-machines/availability.md)
+若要了解更多信息，请参阅以下文章：
+
+- [Windows Server 故障转移群集与 Azure VM 上的 SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [Always On 可用性组与 Azure VM 上的 SQL Server](availability-group-overview.md)
+- [Always On 可用性组概述](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [Azure VM 上的 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)

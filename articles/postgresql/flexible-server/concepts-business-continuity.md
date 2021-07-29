@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 341d3c6f0a2d84c2b7b725959db9f7e5dd80d3ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbc47fa19cccb8d5ce6af38fdff3f0e772f5039f
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92542958"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537702"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---flexible-server"></a>有关使用 Azure Database for PostgreSQL 灵活服务器确保业务连续性的概述
 
@@ -35,7 +35,7 @@ Azure Database for PostgreSQL 灵活服务器中的业务连续性是指在遇�
 | **功能** | **说明** | **注意事项** |
 | ---------- | ----------- | ------------ |
 | **自动备份** | 灵活服务器自动执行数据库文件的每日备份，并连续备份事务日志。 备份可以保留 7 天到 35 天。 可将数据库服务器还原到备份保持期内的任何时间点。 RTO 取决于要还原的数据的大小 + 执行日志恢复的时间。 从几分钟到 12 小时不等。 有关更多详细信息，请参阅[概念 - 备份和还原](./concepts-backup-restore.md)。 |备份数据保留在该区域中。 |
-| **区域冗余高可用性** | 可以使用区域冗余高可用性 (HA) 配置来部署灵活服务器，其中主服务器和备用服务器部署在区域内两个不同的可用性区域中。 这种 HA 配置可防止数据库发生区域级故障，还有助于减少计划内和计划外停机事件期间的应用程序停机时间。 在同步模式下，主服务器中的数据将复制到备用副本。 如果主服务器发生任何中断，服务器将自动故障转移到备用副本。 大多数情况下，RTO 应在 60s - 120s 内。 RPO 应为零（无数据丢失）。 有关详细信息，请参阅[概念-高可用性](./concepts-high-availability.md) | 在常规用途和内存优化计算层中受支持。 只有在有多个区域可用的区域中才支持。 |
+| **区域冗余高可用性** | 可以使用区域冗余高可用性 (HA) 配置来部署灵活服务器，其中主服务器和备用服务器部署在区域内两个不同的可用性区域中。 这种 HA 配置可防止数据库发生区域级故障，还有助于减少计划内和计划外停机事件期间的应用程序停机时间。 在同步模式下，主服务器中的数据将复制到备用副本。 如果主服务器发生任何中断，服务器将自动故障转移到备用副本。 大多数情况下，RTO 应小于 120 秒。 RPO 应为零（无数据丢失）。 有关详细信息，请参阅[概念-高可用性](./concepts-high-availability.md) | 在常规用途和内存优化计算层中受支持。 只有在有多个区域可用的区域中才支持。 |
 | **高级托管磁盘** | 数据库文件存储在高度持久且可靠的高级托管存储中。 这提供了数据冗余，在具有自动数据恢复功能的区域中存储三份副本。 有关详细信息，请参阅[托管磁盘文档](../../virtual-machines/managed-disks-overview.md)。 | 存储在可用性区域中的数据。 |
 | **区域冗余备份** | 灵活服务器备份自动并安全地存储在某一区域的本地冗余存储中。 在预配了服务器的区域级别故障期间，如果未使用区域冗余配置服务器，你仍可以使用不同区域中的最新还原点来还原数据库。 有关详细信息，请参阅[概念-备份和还原](./concepts-backup-restore.md)。| 只有在有多个区域可用的区域中才适用。|
 

@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/17/2021
 tags: azure-synapse
-ms.openlocfilehash: f47303a953dbb06b4c9efdfbbae41715cad81d2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d6b51d32b691919e0f0947d3ddb58d184424b9ad
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101690798"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534403"
 ---
 # <a name="data-discovery--classification"></a>数据发现和分类
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "101690798"
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>什么是数据发现和分类？
 
-数据发现和分类在 Azure 中引入了一组基本服务和新功能。 它构成适用于 SQL 数据库、SQL 托管实例和 Azure Synapse 的信息保护范例，旨在保护数据，而不仅仅是数据库。 范例包括：
+数据发现和分类形成适用于 SQL 数据库、SQL 托管实例和 Azure Synapse 的新信息保护范例，旨在保护数据，而不仅仅是保护数据库。 目前，它支持以下功能：
 
 - **发现和建议：** 分类引擎扫描数据库，并识别包含潜在敏感数据的列。 使用此功能可以通过 Azure 门户轻松地查看和应用建议的分类。
 
@@ -60,7 +60,7 @@ ms.locfileid: "101690798"
 
 ### <a name="define-and-customize-your-classification-taxonomy"></a>定义和自定义分类
 
-数据发现和分类附带了一组内置的敏感度标签和一组内置的信息类型和发现逻辑。 现在，可以自定义此分类并专门针对你的环境定义分类构造的集合和级别。
+数据发现和分类附带了一组内置的敏感度标签和一组内置的信息类型和发现逻辑。 可以自定义此分类并专门针对你的环境定义分类构造的集合和级别。
 
 可在一个中心位置针对整个 Azure 组织定义和自定义分类。 该位置在 [Azure 安全中心](../../security-center/security-center-introduction.md)内，是安全策略的一部分。 仅对组织根管理组具有管理权限的人员可以执行此任务。
 

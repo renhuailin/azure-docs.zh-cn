@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 61f0f2a71240c0ade13f7cd20b6c411f3df7f278
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 7d1c31c9f8507154056e6e6de0073eeb9ae636b7
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279147"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111422005"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>将托管标识与 Azure 机器学习结合使用（预览版）
 
@@ -260,7 +260,7 @@ ws = Workspace.create(name="workspace name",
 > [!IMPORTANT]
 > 若要引入自己的关联资源，需要为这些资源授予托管标识角色，而不是让 Azure 机器学习服务创建它们。 使用[角色分配 ARM 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment)进行分配。
 
-对于具有（用于加密的客户管理的密钥）[https://docs.microsoft.com/azure/machine-learning/concept-data-encryption ] 的工作区，可以传入用户分配的托管标识以从存储向密钥保管库进行身份验证。 使用参数 user-assigned-identity-for-cmk-encryption (CLI) 或 user_assigned_identity_for_cmk_encryption (SDK) 来传递托管标识 。 此托管标识可与工作区主要用户分配的托管标识相同，也可不同。
+对于具有[用于加密的客户管理的密钥](concept-data-encryption.md)的工作区，可以传入用户分配的托管标识以从存储向密钥保管库进行身份验证。 使用参数 user-assigned-identity-for-cmk-encryption (CLI) 或 user_assigned_identity_for_cmk_encryption (SDK) 来传递托管标识 。 此托管标识可与工作区主要用户分配的托管标识相同，也可不同。
 
 如果已有工作区，则可以使用 ```az ml workspace update``` CLI 命令或 ```Workspace.update``` Python SDK 方法将其从系统分配的托管标识更新为用户分配的托管标识。
 

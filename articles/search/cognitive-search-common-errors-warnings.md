@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 3ba0abe8510291351c10ba085ba7e42b8197d886
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af4958610f2be5aa31a6800203d06dd887191e15
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553232"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538299"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 认知搜索中的常见索引器错误和警告
 
@@ -228,7 +228,7 @@ ms.locfileid: "102553232"
 
 | Reason | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
-| 技能输入的类型错误 | “必需的技能输入未采用预期类型 `String`。 名称: `text`，源: `/document/merged_content`。”  “必需的技能输入未采用预期格式。 名称: `text`，源: `/document/merged_content`。”  “无法迭代非数组 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`。”  “无法选择非数组 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` 中的 `0`” | 某些技能需要特定类型的输入，例如，[情绪技能](cognitive-search-skill-sentiment.md)要求 `text` 为字符串。 如果输入指定了非字符串值，则技能不会执行，且不会生成输出。 请确保数据集中的输入值在类型上一致，或者，请使用[自定义 Web API 技能](cognitive-search-custom-skill-web-api.md)来预处理输入。 如果在技能中迭代某个数组，请检查技能上下文和输入是否在正确的位置包含 `*`。 通常，上下文和输入源应以 `*` 作为数组的结尾。 |
+| 技能输入的类型错误 | “必需的技能输入未采用预期类型 `String`。 名称: `text`，源: `/document/merged_content`。”  “必需的技能输入未采用预期格式。 名称: `text`，源: `/document/merged_content`。”  “无法迭代非数组 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`。”  “无法选择非数组 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` 中的 `0`” | 某些技能需要特定类型的输入，例如，[情绪技能](cognitive-search-skill-sentiment-v3.md)要求 `text` 为字符串。 如果输入指定了非字符串值，则技能不会执行，且不会生成输出。 请确保数据集中的输入值在类型上一致，或者，请使用[自定义 Web API 技能](cognitive-search-custom-skill-web-api.md)来预处理输入。 如果在技能中迭代某个数组，请检查技能上下文和输入是否在正确的位置包含 `*`。 通常，上下文和输入源应以 `*` 作为数组的结尾。 |
 | 缺少技能输入 | “缺少必需的技能输入。 名称: `text`，源: `/document/merged_content`”。“缺少值 `/document/normalized_images/0/imageTags`。”  “无法在长度为 `0` 的数组 `/document/pages` 中选择 `0`。” | 如果所有文档都出现此警告，则很有可能是输入路径中存在拼写错误。请反复检查属性名称大小写、路径中多余或缺少的 `*`，并确保数据源中的文档提供必需的输入。 |
 | 技能语言代码输入无效 | 技能输入 `languageCode` 具有以下语言代码 `X,Y,Z`，其中至少有一个语言代码无效。 | 参阅[下面](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid)的更多详细信息 |
 
@@ -257,7 +257,7 @@ ms.locfileid: "102553232"
 ```
 
 下面是可能生成此错误消息的每项技能当前支持的语言的一些参考资源：
-* [文本分析支持的语言](../cognitive-services/text-analytics/language-support.md)（[KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)，[EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)、[SentimentSkill](cognitive-search-skill-sentiment.md) 和 [PIIDetectionSkill](cognitive-search-skill-pii-detection.md)）
+* [文本分析支持的语言](../cognitive-services/text-analytics/language-support.md)（[KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)、[EntityRecognitionSkill](cognitive-search-skill-entity-recognition-v3.md)、[EntityLinkingSkill](cognitive-search-skill-entity-linking-v3.md)、[SentimentSkill](cognitive-search-skill-sentiment-v3.md) 和 [PIIDetectionSkill](cognitive-search-skill-pii-detection.md)）
 * [翻译服务支持的语言](../cognitive-services/translator/language-support.md)（[文本 TranslationSkill](cognitive-search-skill-text-translation.md)）
 * [文本 SplitSkill](cognitive-search-skill-textsplit.md) 支持的语言：`da, de, en, es, fi, fr, it, ko, pt`
 

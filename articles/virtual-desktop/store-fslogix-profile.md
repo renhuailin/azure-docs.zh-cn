@@ -1,25 +1,25 @@
 ---
-title: Windows 虚拟桌面 FSLogix 配置文件容器存储 - Azure
-description: 用于在 Azure 存储中存储 Windows 虚拟桌面 FSLogix 配置文件的选项。
+title: Azure 虚拟桌面 FSLogix 配置文件容器存储 - Azure
+description: 用于在 Azure 存储中存储 Azure 虚拟桌面 FSLogix 配置文件的选项。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 34be20a1b8768414efa0ea32382dea6eab66035a
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: ba1ae8c108f02dbd104361e1efe39f5583011124
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073190"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755692"
 ---
-# <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows 虚拟桌面中 FSLogix 配置文件容器的存储选项
+# <a name="storage-options-for-fslogix-profile-containers-in-azure-virtual-desktop"></a>Azure 虚拟桌面中 FSLogix 配置文件容器的存储选项
 
-Azure 提供了多个存储解决方案，可用于存储 FSLogix 配置文件容器。 本文比较了 Azure 提供的用于 Windows 虚拟桌面 FSLogix 用户配置文件容器的几种存储解决方案。 建议大多数客户将 FSLogix 配置文件容器存储在 Azure 文件存储中。
+Azure 提供了多个存储解决方案，可用于存储 FSLogix 配置文件容器。 本文比较了 Azure 提供的用于 Azure 虚拟桌面 FSLogix 用户配置文件容器的存储解决方案。 建议大多数客户将 FSLogix 配置文件容器存储在 Azure 文件存储中。
 
-Windows 虚拟桌面服务提供 FSLogix 配置文件容器作为推荐的用户配置文件解决方案。 FSLogix 设计用于在远程计算环境（如 Windows 虚拟桌面）中漫游配置文件。 登录时，此容器将动态附加到使用原生支持的虚拟硬盘 (VHD) 和 Hyper-V 虚拟硬盘 (VHDX) 的计算环境。 用户配置文件随时可用并在系统中显示，就像本机用户配置文件一样。
+Azure 虚拟桌面提供 FSLogix 配置文件容器作为推荐的用户配置文件解决方案。 FSLogix 设计用于在远程计算环境（如 Azure 虚拟桌面）中漫游配置文件。 登录时，此容器将动态附加到使用原生支持的虚拟硬盘 (VHD) 和 Hyper-V 虚拟硬盘 (VHDX) 的计算环境。 用户配置文件随时可用并在系统中显示，就像本机用户配置文件一样。
 
-下表比较了适用于 Windows 虚拟桌面 FSLogix 配置文件容器用户配置文件的 Azure 存储服务的存储解决方案。
+下表比较了适用于 Azure 虚拟桌面 FSLogix 配置文件容器用户配置文件的 Azure 存储产品/服务的存储解决方案。
 
 ## <a name="azure-platform-details"></a>Azure 平台详细信息
 
@@ -43,7 +43,7 @@ Windows 虚拟桌面服务提供 FSLogix 配置文件容器作为推荐的用户
 |安全性与符合性|[所有 Azure 支持的证书](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|已完成 ISO 认证|[所有 Azure 支持的证书](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Azure Active Directory 集成|[Native Active Directory 和 Azure Active Directory 域服务](../storage/files/storage-files-active-directory-overview.md)|[Azure Active Directory 域服务和 Native Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|仅 Native Active Directory 或 Azure Active Directory 域服务支持|
 
-选择存储方法后，请查看 [Windows 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)，了解有关定价计划的信息。
+选择存储方法后，请查看 [Azure 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)，了解我们的定价计划。
 
 ## <a name="azure-files-tiers"></a>Azure 文件存储层
 
@@ -71,8 +71,8 @@ Azure 文件存储提供两个不同的存储层：高级和标准。 这些层�
 
 如果已准备好创建自己的 FSLogix 配置文件容器，请开始学习以下其中一个教程：
 
-- [Windows 虚拟桌面 Azure 文件存储上的 FSLogix 配置文件容器入门指南](create-file-share.md)
+- [Azure 虚拟桌面中 Azure 文件存储上的 FSLogix 配置文件容器入门](create-file-share.md)
 - [使用 Azure NetApp 文件为主机池创建 FSLogix 配置文件容器](create-fslogix-profile-container.md)
 - 使用 FSLogix 配置文件容器而不是用户配置文件磁盘时，[在 Azure 中部署 UPD 存储的双节点存储空间直通横向扩展文件服务器](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/)中的说明同样适用
 
-另外，还可以从最初阶段开始，并在 [Windows 虚拟桌面创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)中设置自己的 Windows 虚拟桌面解决方案。
+另外，还可以从最初阶段开始，按照[在 Azure 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)中的说明设置自己的 Azure 虚拟桌面解决方案。

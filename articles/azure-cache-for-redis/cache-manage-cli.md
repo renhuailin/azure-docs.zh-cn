@@ -7,26 +7,28 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7643f882d5ac330046c169e0a3f2fa4920331d4e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f1be7c257cfd99849fdec21d2731a0a6a1c2b85
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92537688"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110653572"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>如何使用 Azure 经典 CLI 创建和管理 Azure Redis 缓存
+
 > [!div class="op_single_selector"]
 > * [PowerShell](cache-how-to-manage-redis-cache-powershell.md)
 > * [Azure 经典 CLI](cache-manage-cli.md)
 >
 
-Azure 经典 CLI 是从任何平台管理 Azure 基础结构的好办法。 本文演示了如何使用 Azure 经典 CLI 创建和管理 Azure Redis 缓存实例。
+Azure 经典 CLI 是从任何平台管理 Azure 基础结构的好办法。 本文演示了如何使用 Azure 经典 CLI 创建和管理 Azure Cache for Redis 实例。
 
 [!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
 > [!NOTE]
 > 有关最新的 Azure CLI 示例脚本，请参阅 [Azure Redis 缓存示例](cli-samples.md)。
 
 ## <a name="prerequisites"></a>先决条件
+
 要使用 Azure 经典 CLI 创建和管理 Azure Redis 缓存实例，必须完成以下步骤。
 
 * 必须具有 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
@@ -35,6 +37,7 @@ Azure 经典 CLI 是从任何平台管理 Azure 基础结构的好办法。 本�
 * 在运行以下任何命令之前，通过运行 `azure config mode arm` 命令将经典 CLI 切换到资源管理器模式下。 有关更多详细信息，请参阅[使用 Azure 经典 CLI 管理 Azure 资源和资源组](../azure-resource-manager/management/manage-resources-cli.md)。
 
 ## <a name="azure-cache-for-redis-properties"></a>Azure Redis 缓存属性
+
 在创建和更新 Azure Redis 缓存实例时使用以下属性。
 
 | 属性 | 开关 | 说明 |
@@ -48,14 +51,15 @@ Azure 经典 CLI 是从任何平台管理 Azure 基础结构的好办法。 本�
 | Redis 配置 |-c, --redis-configuration |Redis 配置。 在此处输入配置键和值的 JSON 格式字符串。 格式："{"":"","":""}" |
 | Redis 配置 |-f, --redis-configuration-file |Redis 配置。 在此处输入包含配置键和值的文件的路径。 文件输入项的格式：{"":"","":""} |
 | 分片计数 |-r, --shard-count |要在启用群集的高级群集缓存上创建的分片数。 |
-| 虚拟网络 |-v, --virtual-network |在 VNet 中托管缓存时，指定要在其中部署 Azure Redis 缓存的虚拟网络的确切 ARM 资源 ID。 格式示例：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| 虚拟网络 |-v, --virtual-network |在 VNET 中托管缓存时，指定要在其中部署 Azure Cache for Redis 的虚拟网络的确切资源管理器资源 ID。 格式示例：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | 密钥类型 |-t, --key-type |要续订的密钥类型。 有效值：[Primary、Secondary] |
 | StaticIP |-p, --static-ip \<static-ip\> |在 VNET 中托管缓存时，指定缓存在子网中的唯一 IP 地址。 如果未提供此值，系统将从子网中为你选择一个。 |
 | 子网 |t, --subnet \<subnet\> |在 VNET 中托管缓存时，指定要在其中部署缓存的子网。 |
-| VirtualNetwork |-v, --virtual-network \<virtual-network\> |在 VNet 中托管缓存时，指定要在其中部署 Azure Redis 缓存的虚拟网络的确切 ARM 资源 ID。 格式示例：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| VirtualNetwork |-v, --virtual-network \<virtual-network\> |在 VNET 中托管缓存时，指定要在其中部署 Azure Cache for Redis 的虚拟网络的确切资源管理器资源 ID。 格式示例：/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | 订阅 |-s, --subscription |订阅标识符。 |
 
 ## <a name="see-all-azure-cache-for-redis-commands"></a>查看所有 Azure Redis 缓存命令
+
 要查看所有 Azure Redis 缓存命令及其参数，请使用 `azure rediscache -h` 命令。
 
 ```azurecli
@@ -90,6 +94,7 @@ help:    Current Mode: arm (Azure Resource Management)
 ```
 
 ## <a name="create-an-azure-cache-for-redis"></a>创建 Azure Redis 缓存
+
 要创建 Azure Redis 缓存，请使用以下命令：
 
 ```azurecli
@@ -127,6 +132,7 @@ help:    Current Mode: arm (Azure Resource Management)
 ```
 
 ## <a name="delete-an-existing-azure-cache-for-redis"></a>删除现有的 Azure Redis 缓存
+
 要删除 Azure Redis 缓存，请使用以下命令：
 
 ```azurecli
@@ -154,6 +160,7 @@ help:    Current Mode: arm (Azure Resource Management)
 ```
 
 ## <a name="list-all-azure-cache-for-redis-within-your-subscription-or-resource-group"></a>列出订阅或资源组中的所有 Azure Redis 缓存
+
 要列出订阅或资源组中的所有 Azure Redis 缓存，请使用以下命令：
 
 ```azurecli
@@ -180,6 +187,7 @@ help:    Current Mode: arm (Azure Resource Management)
 ```
 
 ## <a name="show-properties-of-an-existing-azure-cache-for-redis"></a>显示现有 Azure Redis 缓存的属性
+
 要显示现有 Azure Redis 缓存的属性，请使用以下命令：
 
 ```azurecli
@@ -209,6 +217,7 @@ help:    Current Mode: arm (Azure Resource Management)
 <a name="scale"></a>
 
 ## <a name="change-settings-of-an-existing-azure-cache-for-redis"></a>更改 Azure Redis 缓存的属性设置
+
 更改现有 Azure Redis 缓存的属性设置，请使用以下命令：
 
 ```azurecli
@@ -238,6 +247,7 @@ help:    Current Mode: arm (Azure Resource Management)
 ```
 
 ## <a name="renew-the-authentication-key-for-an-existing-azure-cache-for-redis"></a>为现有 Azure Redis 缓存续订身份验证密钥
+
 要为现有 Azure Redis 缓存续订身份验证密钥，请使用以下命令：
 
 ```azurecli
@@ -268,6 +278,7 @@ help:    Current Mode: arm (Azure Resource Management)
 ```
 
 ## <a name="list-primary-and-secondary-keys-of-an-existing-azure-cache-for-redis"></a>列出现有 Azure Redis 缓存的主密钥和辅助密钥
+
 要列出现有 Azure Redis 缓存的主密钥和辅助密钥，请使用以下命令：
 
 ```azurecli

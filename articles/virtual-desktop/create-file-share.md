@@ -1,25 +1,25 @@
 ---
 title: 创建具有域控制器的 Azure 文件共享 - Azure
-description: 使用 Active Directory 域在现有 Windows 虚拟桌面主机池中的 Azure 文件共享上设置 FSLogix 配置文件容器。
+description: 使用 Active Directory 域在现有 Azure 虚拟桌面主机池中的 Azure 文件共享上设置 FSLogix 配置文件容器。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e859da6b3ac38ddb89c998d172c39f2549455aaa
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: ab9a70dccdeff6ed16eb3f25e9dc78fb274b2449
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447924"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746926"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>使用 Azure 文件存储和 AD DS 创建配置文件容器
 
-本文介绍如何在现有 Windows 虚拟桌面主机池上创建通过域控制器进行身份验证的 Azure 文件共享。 你可以使用此文件共享来存储存储配置文件。
+本文介绍如何在现有 Azure 虚拟桌面主机池中创建通过域控制器进行身份验证的 Azure 文件共享。 你可以使用此文件共享来存储存储配置文件。
 
 此过程使用 Active Directory 域服务 (AD DS)，这是本地的目录服务。 如果你正在查找有关如何使用 Azure AD DS 创建 FSLogix 配置文件容器的信息，请参阅[使用 Azure 文件存储创建 FSLogix 配置文件容器](create-profile-container-adds.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保域控制器已同步到 Azure，并可从会话主机连接到 Azure 虚拟网络 (VNET) 进行解析。
 
@@ -39,8 +39,8 @@ ms.locfileid: "106447924"
 
     - 创建新的资源组。
     - 为存储帐户输入唯一的名称。
-    - 对于“位置”，建议选择与 Windows 虚拟机主机池相同的位置。
-    - 对于“性能”，请选择“标准”。 （取决于你的 IOPS 需求。 有关详细信息，请参阅 [Windows 虚拟桌面中的 FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。）
+    - 对于“位置”，建议选择与 Azure 虚拟桌面主机池相同的位置。
+    - 对于“性能”，请选择“标准”。 （取决于你的 IOPS 需求。 有关详细信息，请参阅 [Azure 虚拟桌面中的 FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。）
     - 对于“帐户类型”，选择“StorageV2”或 “FileStorage”（仅在性能层为高级时可用）。
     - 对于“复制”，请选择“本地冗余存储(LRS)” 。
 
@@ -60,7 +60,7 @@ ms.locfileid: "106447924"
 
 3. 选择“+ 文件共享”，创建一个名为“配置文件”的新文件共享，然后输入相应的配额，或者将该字段留空，不使用配额。
 
-4. 选择“创建”。
+4. 选择“创建”  。
 
 ## <a name="enable-active-directory-authentication"></a>启用 Active Directory 域服务身份验证
 
@@ -75,11 +75,11 @@ ms.locfileid: "106447924"
      > [!div class="mx-imgBorder"]
      > ![启用了 Azure Active Directory (AD) 的配置页的屏幕截图。](media/active-directory-enabled.png)
 
-## <a name="assign-azure-rbac-permissions-to-windows-virtual-desktop-users"></a>为 Windows 虚拟桌面用户分配 Azure RBAC 权限
+## <a name="assign-azure-rbac-permissions-to-azure-virtual-desktop-users"></a>为 Azure 虚拟桌面用户分配 Azure RBAC 权限
 
 必须为所有需要将 FSLogix 配置文件存储在存储帐户上的用户分配“存储文件数据 SMB 共享参与者角色”。
 
-登录 Windows 虚拟桌面会话主机的用户需要访问权限才能访问文件共享。 授予对 Azure 文件共享的访问权限包括在共享级别和 NTFS 级别配置权限，类似于传统的 Windows 共享。
+登录 Azure 虚拟桌面会话主机的用户需要访问权限才能访问文件共享。 授予对 Azure 文件共享的访问权限包括在共享级别和 NTFS 级别配置权限，类似于传统的 Windows 共享。
 
 若要配置共享级别权限，请为每个用户分配适当的访问权限。 权限可以分配给单个用户或 Azure AD 组。 若要了解详细信息，请参阅[为标识分配访问权限](../storage/files/storage-files-identity-ad-ds-assign-permissions.md)。
 
@@ -167,7 +167,7 @@ ms.locfileid: "106447924"
 
     默认情况下，“NT Authority\Authenticated Users”和“BUILTIN\Users”具有特定权限。 这些默认权限允许这些用户读取其他用户的配置文件容器。 但是，[配置用于配置文件容器和 Office 容器的存储权限](/fslogix/fslogix-storage-config-ht)中描述的权限不允许用户读取彼此的配置文件容器。
 
-4. 运行以下命令可允许 Windows 虚拟机用户创建自己的配置文件容器，同时阻止其他用户访问其配置文件容器。
+4. 运行以下命令可允许 Azure 虚拟桌面用户创建自己的配置文件容器，同时阻止其他用户访问其配置文件容器。
 
      ```cmd
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
@@ -194,7 +194,7 @@ ms.locfileid: "106447924"
 
 在会话主机 VM 上配置 FSLogix：
 
-1. 将 RDP 连接到 Windows 虚拟桌面主机池的会话主机 VM。
+1. 通过 RDP 连接到 Azure 虚拟桌面主机池的会话主机 VM。
 
 2. [在此处下载并安装 FSLogix](/fslogix/install-ht)。
 
@@ -220,7 +220,7 @@ ms.locfileid: "106447924"
 
 检查你拥有的会话权限：
 
-1. 在 Windows 虚拟桌面上启动会话。
+1. 在 Azure 虚拟桌面上启动会话。
 
 2. 打开 Azure 门户。
 
