@@ -8,19 +8,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/05/2021
+ms.date: 05/26/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8469e05b82a651760829761ca57af3bdb1b256a9
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: bb2a0cbba9d1aaf4a4465de7d4b994cde45f6df1
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443400"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590173"
 ---
 # <a name="page-layout-versions"></a>页面布局版本
 
 页面布局包会定期更新，其中包括页面元素的修复和改进。 以下更改日志详述了在每个版本中引入的更改。
+
+> [!IMPORTANT]
+> Azure Active Directory B2C 通过每个新的页面布局版本来发布改进和修复。 强烈建议你让页面布局版本保持最新，以便所有页面元素都反映最新的安全增强功能、辅助功能标准和你的反馈。
+>
 
 ## <a name="jquery-version"></a>jQuery 版本
 
@@ -33,6 +37,12 @@ Azure AD B2C 页面布局使用以下版本的 [jQuery 库](https://jquery.com/)
 |1.1.0 | 1.10.2 |
 
 ## <a name="self-asserted-page-selfasserted"></a>自断言页面 (selfasserted)
+
+2\.1.6
+- 修复了在另一字段上键入太快时密码错误会被清除的问题。
+
+**2.1.5**
+- 修复了在文本中间编辑时 iOS 上的游标跳动问题。
 
 **2.1.4**
 - 已将 jQuery 更新至版本 3.5.1。
@@ -93,6 +103,10 @@ Azure AD B2C 页面布局使用以下版本的 [jQuery 库](https://jquery.com/)
 
 > [!TIP]
 > 如果对页面进行本地化以支持多种区域设置或用户流中的语言。 [本地化 ID](localization-string-ids.md) 提供了一系列可用于所选页面版本的本地化 ID。
+
+**2.1.5**
+- 修复了在登录页上使用 idp 选择器模板时 Tab 键顺序的问题。
+- 修复了登录链接文本上的编码问题。
 
 **2.1.4**
 - 已将 jQuery 更新至版本 3.5.1。

@@ -1,6 +1,6 @@
 ---
 title: 排查 Synapse Studio 的问题
-description: 排查 Azure Synapse Studio 的问题
+description: 排查 Synapse Studio 的问题
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.subservice: troubleshooting
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 362b588112c5027b78285a77bbb556f2497b1892
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 16608f77971c3c19836d8f956512f28f945d3667
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143136"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809051"
 ---
-# <a name="azure-synapse-studio-troubleshooting"></a>Azure Synapse Studio 故障排除
+# <a name="synapse-studio-troubleshooting"></a>Synapse Studio 故障排除
 
 此故障排除指南提供了有关开具网络连接问题的支持票证时提供哪些信息的说明。 有了正确的信息，我们就可以更快地解决问题。
 
@@ -43,7 +43,7 @@ ms.locfileid: "108143136"
 
 ![诊断信息](media/troubleshooting-synapse-studio/diagnostic-info-download.png)
 
-若要开始进行故障排除，请重试你在 Azure Synapse Studio 中执行的操作。
+若要开始进行故障排除，请重试你在 Synapse Studio 中执行的操作。
 
 - 对于症状 1，在“SQL 脚本”选项卡的“使用数据库”下拉列表的右侧选择“刷新”按钮，然后检查是否可以看到“无服务器 SQL 池”。
 - 对于症状 2，请尝试再次运行查询以查看其是否成功执行。

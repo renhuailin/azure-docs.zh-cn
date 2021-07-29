@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 69355b58e36f435b5b5dbe94af72d55d9806b156
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a58042c7098116a2800453dcca46cae62011dfac
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100557169"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111570477"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>本教程介绍如何使用 Strata 扩展 Azure AD B2C 以保护本地应用程序
 
@@ -49,7 +49,7 @@ Strata 的 Maverics 集成包括以下组件：
 
 - Azure AD B2C：负责验证用户凭据的授权服务器。 经过身份验证的用户可以使用 Azure AD B2C 目录中存储的本地帐户来访问本地应用。
 
-- 外部社交或企业 IdP：可以是任何 OpenID Connect 提供程序、Facebook、Google 或 GitHub。 请参阅有关如何将[外部 IdP](./technical-overview.md#external-identity-providers) 与 Azure AD B2C 配合使用的信息。  
+- 外部社交或企业 IdP：可以是任何 OpenID Connect 提供程序、Facebook、Google 或 GitHub。 有关详细信息，请参阅[添加标识提供者](./add-identity-provider.md)。  
 
 - Strata 的 Maverics 标识业务流程协调程序：该服务协调用户登录并以透明方式将标识通过 HTTP 标头传递到应用。
 
@@ -107,7 +107,7 @@ Strata 的 Maverics 集成包括以下组件：
 
 - 端口：22 (SSH/SCP)、443、80
 
-- 适用于安装/管理任务的根访问权限
+- 安装/管理任务的根访问
 
 - Maverics 标识业务流程协调程序以 `systemd` 下用户 `maverics` 的身份运行
 
@@ -344,4 +344,4 @@ appgateways:
 
 - [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 12/10/2019
-ms.openlocfilehash: fa5675104d9614e1bd917585ea537c92dddd88cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0571a1a36def0ca3fa60c7a98695681609ebdf1f
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945784"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278481"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 创建 Apache Hadoop 群集
 
@@ -25,9 +25,9 @@ Azure REST API 允许对托管在 Azure 平台中的服务执行管理操作，�
 
 ## <a name="create-a-template"></a>创建模板
 
-Azure 资源管理器模板是描述 **资源组** 及其包含的所有资源（例如 HDInsight）的 JSON 文档此基于模板的方法可以在一个模板中定义需要用于 HDInsight 的资源。
+Azure 资源管理器模板是描述资源组及其中所有资源（如 HDInsight）的 JSON 文档。利用此基于模本的方法，你可以对一个模板中 HDInsight 所需的资源进行定义。
 
-下面的 JSON 文档是来自 [https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-ssh-password) 的模板与参数文件的组合形式，它将创建基于 Linux 的群集，并使用密码保护 SSH 用户帐户。
+下面的 JSON 文档是来自 [https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.hdinsight/hdinsight-linux-ssh-password/azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.hdinsight/hdinsight-linux-ssh-password/azuredeploy.json) 的模板与参数文件的组合形式，它将创建基于 Linux 的群集，并使用密码保护 SSH 用户帐户。
 
    ```json
    {

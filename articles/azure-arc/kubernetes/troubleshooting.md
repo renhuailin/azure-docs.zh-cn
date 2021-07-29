@@ -2,18 +2,18 @@
 title: 排查已启用 Azure Arc 的 Kubernetes 的常见问题
 services: azure-arc
 ms.service: azure-arc
-ms.date: 03/02/2020
+ms.date: 05/21/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
 description: 排查已启用 Arc 的 Kubernetes 群集的常见问题。
 keywords: Kubernetes, Arc, Azure, 容器
-ms.openlocfilehash: f0b02e5b4e58cda246751b16542a0a2ac587e7b6
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: c05e82b084e49958a8c99bc755bdf954b708d69e
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289617"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110795075"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting"></a>已启用 Azure Arc 的 Kubernetes 故障排除
 
@@ -201,11 +201,323 @@ juju config kubernetes-worker allow-privileged=true
 Unable to fetch oid of 'custom-locations' app. Proceeding without enabling the feature. Insufficient privileges to complete the operation.
 ```
 
-使用服务主体登录到 Azure 并且此服务主体没有权限获取 Azure Arc 服务所使用应用程序的信息时，将看到上述警告。 运行以下命令以授予所需的权限：
+使用服务主体登录到 Azure 并且此服务主体没有权限获取 Azure Arc 服务所使用应用程序的信息时，将看到上述警告。 若要避免此错误，请执行以下步骤：
 
-```console
-az ad app permission add --id <service-principal-app-id> --api 00000002-0000-0000-c000-000000000000 --api-permissions 3afa6a7d-9b1a-42eb-948e-1650a849e176=Role
-az ad app permission admin-consent --id <service-principal-app-id>
-```
+1. 获取 Azure Arc 服务使用的 Azure AD 应用程序的对象 ID：
+
+    ```console
+    az ad sp show --id 'bc313c14-388c-4e7d-a58e-70017303ee3b' --query objectId -o tsv
+    ```
+
+1. 使用上面步骤中的 `<objectId>` 值在群集上启用自定义位置功能：
+    - 如果在将群集连接到 Arc 时要启用自定义位置功能，请运行以下命令：
+
+        ```console
+        az connectedk8s connect -n <cluster-name> -g <resource-group-name> --custom-locations-oid <objectId>   
+        ```
+
+    - 如果在现有的启用了 Arc 的 Kubernetes 群集上启用自定义位置功能，请运行以下命令：
+
+        ```console
+        az connectedk8s enable-features -n <cluster-name> -g <resource-group-name> --custom-locations-oid <objectId> --features cluster-connect custom-locations
+        ```
 
 授予上述权限后，现在可以继续在群集上[启用自定义位置功能](custom-locations.md#enable-custom-locations-on-cluster)。
+
+## <a name="arc-enabled-open-service-mesh"></a>启用了 Arc 的开放式服务网格
+
+以下故障排除步骤提供了有关验证群集上所有开放服务网格扩展组件的部署的指南。
+
+### <a name="1-check-osm-controller-deployment"></a>1. 检查 OSM 控制器部署
+```bash
+kubectl get deployment -n arc-osm-system --selector app=osm-controller
+```
+
+如果 OSM 控制器运行正常，获得的输出将如下所示：
+```
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+osm-controller   1/1     1            1           59m
+```
+
+### <a name="2-check-the-osm-controller-pod"></a>2. 检查 OSM 控制器 Pod
+```bash
+kubectl get pods -n arc-osm-system --selector app=osm-controller
+```
+
+如果 OSM 控制器运行正常，获得的输出将如下所示：
+```
+NAME                            READY   STATUS    RESTARTS   AGE
+osm-controller-b5bd66db-wglzl   0/1     Evicted   0          61m
+osm-controller-b5bd66db-wvl9w   1/1     Running   0          31m
+```
+
+即使我们的一个控制器在某个时间点被逐出，也会有另一个控制器（即 `READY 1/1` 和 `Running` 为 `0` 的控制器）重新启动。
+如果 `READY` 列并非显示 `1/1`，则表示服务网格处于中断状态。
+如果 `READY` 列显示 `0/1`，表示控制平面容器崩溃，我们需要获取日志。 请参阅下面的`Get OSM Controller Logs from Azure Support Center`部分。
+如果 `READY` 列下的 `/` 后面显示大于 1 的数字，表示安装了挎斗。 OSM 控制器很可能无法与附加到它的任何挎斗配合工作。
+
+### <a name="3-check-osm-controller-service"></a>3. 检查 OSM 控制器服务
+```bash
+kubectl get service -n arc-osm-system osm-controller
+```
+
+如果 OSM 控制器运行正常，你将获得以下输出：
+```
+NAME             TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)              AGE
+osm-controller   ClusterIP   10.0.31.254   <none>        15128/TCP,9092/TCP   67m
+```
+
+> 注意：`CLUSTER-IP` 将有所不同。 服务 `NAME` 和 `PORT(S)` 必须与输出中所示的相同。
+
+### <a name="4-check-osm-controller-endpoints"></a>4. 检查 OSM 控制器终结点：
+```bash
+kubectl get endpoints -n arc-osm-system osm-controller
+```
+
+如果 OSM 控制器运行正常，获得的输出将如下所示：
+```
+NAME             ENDPOINTS                              AGE
+osm-controller   10.240.1.115:9092,10.240.1.115:15128   69m
+```
+
+如果用户的群集针对 `osm-controller` 不包含 `ENDPOINTS`，则表明控制平面运行不正常。 原因可能是 OSM 控制器 pod 崩溃，或者从未正确部署。
+
+### <a name="5-check-osm-injector-deployment"></a>5. 检查 OSM 注入程序部署
+```bash
+kubectl get deployments -n arc-osm-system osm-injector
+```
+
+如果 OSM 注入程序运行正常，获得的输出将如下所示：
+```
+NAME           READY   UP-TO-DATE   AVAILABLE   AGE
+osm-injector   1/1     1            1           73m
+```
+
+### <a name="6-check-osm-injector-pod"></a>6. 检查 OSM 注入程序 Pod
+```bash
+kubectl get pod -n arc-osm-system --selector app=osm-injector
+```
+
+如果 OSM 注入程序运行正常，获得的输出将如下所示：
+```
+NAME                            READY   STATUS    RESTARTS   AGE
+osm-injector-5986c57765-vlsdk   1/1     Running   0          73m
+```
+
+`READY` 列必须是 `1/1`。 任何其他值都表示 osm-injector pod 运行不正常。
+
+### <a name="7-check-osm-injector-service"></a>7. 检查 OSM 注入程序服务
+```bash
+kubectl get service -n arc-osm-system osm-injector
+```
+
+如果 OSM 注入程序运行正常，获得的输出将如下所示：
+```
+NAME           TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
+osm-injector   ClusterIP   10.0.39.54   <none>        9090/TCP   75m
+```
+
+确保对于 `osm-injector` 服务列出的 IP 地址为 `9090`。 不应该有 `EXTERNAL-IP`。
+
+### <a name="8-check-osm-injector-endpoints"></a>8. 检查 OSM 注入器终结点
+```bash
+kubectl get endpoints -n arc-osm-system osm-injector
+```
+
+如果 OSM 注入程序运行正常，获得的输出将如下所示：
+```
+NAME           ENDPOINTS           AGE
+osm-injector   10.240.1.172:9090   75m
+```
+
+要使 OSM 正常工作，`osm-injector` 必须至少有一个终结点。 OSM 注入器终结点的 IP 地址将有所不同。 `9090` 端口必须相同。
+
+
+### <a name="9-check-validating-and-mutating-webhooks"></a>9. 检查“验证”Webhook 和“变异”Webhook： 
+```bash
+kubectl get ValidatingWebhookConfiguration --selector app=osm-controller
+```
+
+如果“验证”Webhook 运行正常，获得的输出将如下所示：
+```
+NAME              WEBHOOKS   AGE
+arc-osm-webhook-osm   1      81m
+```
+
+```bash
+kubectl get MutatingWebhookConfiguration --selector app=osm-controller
+```
+
+
+如果“变异”Webhook 运行正常，获得的输出将如下所示：
+```
+NAME              WEBHOOKS   AGE
+arc-osm-webhook-osm   1      102m
+```
+
+检查“验证”Webhook 的服务和 CA 捆绑包：
+```
+kubectl get ValidatingWebhookConfiguration arc-osm-webhook-osm -o json | jq '.webhooks[0].clientConfig.service'
+```
+
+已正确配置的“验证”Webhook 配置具有以下输出：
+```json
+{
+  "name": "osm-config-validator",
+  "namespace": "arc-osm-system",
+  "path": "/validate-webhook",
+  "port": 9093
+}
+```
+
+检查“变异”Webhook 的服务和 CA 捆绑包：
+```bash
+kubectl get MutatingWebhookConfiguration arc-osm-webhook-osm -o json | jq '.webhooks[0].clientConfig.service'
+```
+
+已正确配置的“变异”Webhook 配置具有以下输出：
+```
+{
+  "name": "osm-injector",
+  "namespace": "arc-osm-system",
+  "path": "/mutate-pod-creation",
+  "port": 9090
+}
+```
+
+
+使用以下命令来检查 OSM 控制器是否为验证（或改变）Webhook 提供了 CA 捆绑包：
+
+```bash
+kubectl get ValidatingWebhookConfiguration arc-osm-webhook-osm -o json | jq -r '.webhooks[0].clientConfig.caBundle' | wc -c
+```
+
+```bash
+kubectl get MutatingWebhookConfiguration arc-osm-webhook-osm -o json | jq -r '.webhooks[0].clientConfig.caBundle' | wc -c
+```
+
+示例输出：
+```bash
+1845
+```
+输出中的这个数字表示字节数或 CA 捆绑包的大小。 如果这个数字为空、0 或低于 1000 的数字，则表示 CA 包没有正确预配。 如果没有正确的 CA 捆绑包，“验证”Webhook 将引发错误，并禁止你对 `arc-osm-system` 命名空间中的 `osm-config` ConfigMap 进行更改。
+
+我们来看看 CA 捆绑包不正确时的错误示例：
+- 尝试更改 `osm-config` ConfigMap：
+  ```bash
+  kubectl patch ConfigMap osm-config -n arc-osm-system --type merge --patch '{"data":{"config_resync_interval":"2m"}}'
+  ```
+- 错误输出：
+  ```bash
+  Error from server (InternalError): Internal error occurred: failed calling webhook "osm-config-webhook.k8s.io": Post https://osm-config-validator.arc-osm-system.svc:9093/validate-webhook?timeout=30s: x509: certificate signed by unknown authority
+  ```
+
+“验证”Webhook 配置具有错误的证书时，请使用以下解决方法之一：
+- 选项 1. 重启 OSM 控制器 - 这将重启 OSM 控制器。 启动时，它将覆盖改变 Webhook 和验证 Webhook 的 CA 捆绑包。
+  ```bash
+  kubectl rollout restart deployment -n arc-osm-system osm-controller
+  ```
+
+- 选项 2. 删除“验证”Webhook - 如果删除验证 Webhook，会使 `osm-config` ConfigMap 的改变不再经过验证。 将进行任何修补。 可能必须重启 OSM 控制器，以快速重写 CA 捆绑包。
+   ```bash
+   kubectl delete ValidatingWebhookConfiguration arc-osm-webhook-osm
+   ```
+
+- 选项 3. 删除并修补：以下命令将删除验证 Webhook 以使你能够添加任何值，并且会立即尝试应用补丁
+  ```bash
+  kubectl delete ValidatingWebhookConfiguration arc-osm-webhook-osm; kubectl patch ConfigMap osm-config -n arc-osm-system --type merge --patch '{"data":{"config_resync_interval":"15s"}}'
+  ```
+
+
+### <a name="10-check-the-osm-config-configmap"></a>10. 检查 `osm-config` ConfigMap
+
+>[!Note]
+>OSM 控制器不要求 `arc-osm-system` 命名空间中存在 `osm-config` ConfigMap。 控制器具有合理的默认配置值，即使没有该 ConfigMap 也能正常运行。
+
+检查该 ConfigMap 是否存在：
+```bash
+kubectl get ConfigMap -n arc-osm-system osm-config
+```
+
+检查 `osm-config` ConfigMap 的内容：
+```bash
+kubectl get ConfigMap -n arc-osm-system osm-config -o json | jq '.data'     
+```
+将显示以下输出：
+```json
+{
+  "egress": "false",
+  "enable_debug_server": "false",
+  "enable_privileged_init_container": "false",
+  "envoy_log_level": "error",
+  "permissive_traffic_policy_mode": "true",
+  "prometheus_scraping": "true",
+  "service_cert_validity_duration": "24h",
+  "tracing_enable": "false",
+  "use_https_ingress": "false",
+}
+```
+
+若要了解 `osm-config` ConfigMap 值，请参阅 [OSM ConfigMap 文档](https://release-v0-8.docs.openservicemesh.io/docs/osm_config_map/)。
+
+### <a name="11-check-namespaces"></a>11. 检查命名空间
+
+>[!Note]
+>arc-osm-system 命名空间永远不会加入服务网格，并且永远不会使用下面的键/值进行标记和/或标注。
+
+可以使用 `osm namespace add` 命令将命名空间加入到给定的服务网格。
+如果 kubernetes 命名空间是网格的一部分，则必须满足以下条件：
+
+查看命名空间 `bookbuyer` 的注释：
+```bash
+kc get namespace bookbuyer -o json | jq '.metadata.annotations'
+```
+
+必须存在以下注释：
+```
+{
+  "openservicemesh.io/sidecar-injection": "enabled"
+}
+```
+
+
+查看命名空间 `bookbuyer` 的标签：
+```bash
+kc get namespace bookbuyer -o json | jq '.metadata.labels'
+```
+
+必须存在以下标签：
+```
+{
+  "openservicemesh.io/monitored-by": "osm"
+}
+```
+请注意，如果未使用 `osm` CLI，也可以手动将这些注释添加到命名空间。 如果命名空间不带有 `"openservicemesh.io/sidecar-injection": "enabled"` 注释或 `"openservicemesh.io/monitored-by": "osm"` 标签，则 OSM 注入程序不会添加 Envoy 挎斗。
+
+>[!Note]
+>只有在调用 `osm namespace add` 之后，新的 Pod 才会与 Envoy 挎斗一起注入。 必须使用 `kubectl rollout restard deployment` 命令重启现有 Pod。
+
+
+### <a name="12-verify-the-smi-crds"></a>12. 验证 SMI CRD
+检查群集是否具有所需的 CRD：
+```bash
+kubectl get crds
+```
+
+确保 CRD 与相同的 OSM 上游版本相对应。 例如 如果使用的是 v0.8.4，请确保 CRD 与 [OSM OSS 项目](https://docs.openservicemesh.io/)的版本分支 0.8.4 中可用的 CRD 匹配。 请参阅 [OSM 发行说明](https://github.com/openservicemesh/osm/releases)。
+
+使用以下命令获取已安装的 CRD 版本：
+```bash
+for x in $(kubectl get crds --no-headers | awk '{print $1}' | grep 'smi-spec.io'); do
+    kubectl get crd $x -o json | jq -r '(.metadata.name, "----" , .spec.versions[].name, "\n")'
+done
+```
+
+如果缺少 CRD，请使用以下命令在群集上安装它们。 确保替换命令中的版本。
+```bash
+kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.8.2/charts/osm/crds/access.yaml
+
+kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.8.2/charts/osm/crds/specs.yaml
+
+kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.8.2/charts/osm/crds/split.yaml
+```

@@ -3,12 +3,12 @@ title: 使用 Azure 实验室服务设置“项目引路”实验室
 description: 了解如何设置实验室来讲授“项目引路”课程。
 ms.topic: article
 ms.date: 10/28/2020
-ms.openlocfilehash: ca4fdae2372895c17c4a98dd3959935108846744
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: aaaddcb2c2111ccfbf0edfc79bbefafb711b19dc
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95024613"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768528"
 ---
 # <a name="set-up-labs-for-project-lead-the-way-classes"></a>为“项目引路”课程设置实验室
 
@@ -48,7 +48,7 @@ ms.locfileid: "95024613"
 
 - **计算机科学 A**
 
-    在这节课中，学生通过学习移动应用开发，拓展编程能力。  在这节课中，学生通过使用 [Microsoft Visual Studio 代码开发环境](https://code.visualstudio.com/)来学习 [Java](https://www.java.com/)。  学生还使用仿真器来运行和测试其移动应用代码。  有关如何在 Azure 实验室服务中设置仿真器的信息，[请联系 Azure 实验室服务](mailto:AzLabsCOVIDSupport@microsoft.com)。
+    在这节课中，学生通过学习移动应用开发，拓展编程能力。  在这节课中，学生通过使用 [Microsoft Visual Studio 代码开发环境](https://code.visualstudio.com/)来学习 [Java](https://www.java.com/)。  学生还使用仿真器来运行和测试其移动应用代码。  若要了解如何在 Azure 实验室服务中设置仿真器，请通过 [Azure 实验室服务论坛](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices)与我们联系，以便了解详细信息。
 
 有关课程软件的完整列表，请转到每节课的 [PLTW 站点](https://www.pltw.org/pltw-software)。
 
@@ -75,15 +75,15 @@ ms.locfileid: "95024613"
 
 | 实验室设置 | 值和描述 | 课程建议 |
 | ------------ | ------------------ | --- |
-| 虚拟机大小 | **小型 GPU (可视化)**<br>最适用于使用框架（如 OpenGL 和 DirectX）进行远程可视化、流式处理、游戏和编码。 | 建议对以下 PLTW 课程使用此大小：土木工程与建筑、数字电子技术、计算机集成制造以及工程设计和开发。
-| 虚拟机大小 | **大**<br>最适用于需要 CPU 更快、本地磁盘性能更佳、大型数据库和大型内存缓存的应用程序。 | 建议对以下 PLTW 课程使用此大小：工程设计概论、工程原理、计算机科学基础、计算机科学原理和计算机科学 A。 |
+| 虚拟机大小 | **小型 GPU (可视化)**<br>最适用于使用框架（如 OpenGL 和 DirectX）进行远程可视化、流式处理、游戏和编码。 | 建议对以下 PLTW 课程使用此大小：土木工程与建筑、数字电子技术、计算机集成制造、工程设计与开发以及工程设计概论。
+| 虚拟机大小 | **大型**<br>最适用于需要 CPU 更快、本地磁盘性能更佳、大型数据库和大型内存缓存的应用程序。 | 建议对以下 PLTW 课程使用此大小：工程原理、计算机科学基础、计算机科学原理和计算机科学 A。 |
 
 <br>
 
 ### <a name="license-server"></a>许可证服务器
 前面提到的 PLTW 课程中使用的大多数软件“不”需要访问许可证服务器。  但是，如果计划对以下软件使用 Autodesk 网络许可模型，则需要访问许可证服务器：
 -   Revit
--   Inventor
+-   Inventor CAD
 -   Inventor CAM
 
 如果要将网络许可用于 Autodesk 软件，[PLTW 提供了详细步骤](https://www.pltw.org/pltw-software)，用于在许可证服务器上安装 Autodesk Network License Manager。  此许可证服务器通常位于本地网络中，或托管在 Azure 虚拟网络中的 Azure 虚拟机 (VM) 上。
@@ -122,6 +122,9 @@ PLTW 所需的某些安装文件很大。 将文件下载到实验室模板 VM �
 1.  创建实验室后，启动并连接到模板 VM，验证映像是否按预期方式工作。
 
 1.  最后，发布模板 VM 以创建学生的 VM。
+
+> [!NOTE]
+> 如果你的学校需要执行内容筛选，例如，为了符合[儿童互联网保护法案 (CIPA)](https://www.fcc.gov/consumers/guides/childrens-internet-protection-act)的要求，你将需要使用第三方软件。  有关详细信息，请阅读有关[使用实验室服务进行内容筛选](./administrator-guide.md#content-filtering)的指南。
 
 ## <a name="student-devices"></a>学生设备
 学生可以从 Windows 计算机、Mac 和 Chromebook 连接到其实验室 VM。 有关说明，请参阅：

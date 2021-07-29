@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: a3b073cdb90e0c427bfbca15c1440b9122672610
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1f0085695d810a2e6c30da410ca4d11fe4d5f490
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98880129"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556003"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>示例：创建表单识别器自定义技能
 
@@ -77,12 +77,12 @@ POST https://localhost:7071/api/analyze-form
 }
 ```
 
-在这里，你将需要提供与你训练的窗体具有相同类型的窗体的 URL。 出于测试目的，可以使用你的一种训练窗体。 如果遵循了 cURL 快速入门，则窗体将位于 Azure blob 存储帐户中。 打开 Azure 存储资源管理器，找到一个窗体文件，右键单击该文件，然后选择“获取共享访问签名”。 下一个对话框窗口将提供 URL 和 SAS 令牌。 将这些字符串分别输入请求正文的 `"formUrl"` 和 `"formSasToken"` 字段。
+在这里，你将需要提供与你训练的窗体具有相同类型的窗体的 URL。 出于测试目的，可以使用你的一种训练窗体。 如果遵循了 cURL 快速入门，则窗体将位于 Azure Blob 存储帐户中。 打开 Azure 存储资源管理器，找到一个窗体文件，右键单击该文件，然后选择“获取共享访问签名”。 下一个对话框窗口将提供 URL 和 SAS 令牌。 将这些字符串分别输入请求正文的 `"formUrl"` 和 `"formSasToken"` 字段。
 
 > [!div class="mx-imgBorder"]
 > ![Azure 存储资源管理器；选中 pdf 文档](media/cognitive-search-skill-form/form-sas.png)
 
-如果要分析不在 Azure blob 存储中的远程文档，请在 `"formUrl"` 字段中粘贴其 URL，并将 `"formSasToken"` 字段留空。
+如果要分析不在 Azure Blob 存储中的远程文档，请在 `"formUrl"` 字段中粘贴其 URL，并将 `"formSasToken"` 字段留空。
 
 > [!NOTE]
 > 在技能组中集成了技能后，认知搜索将提供 URL 和令牌。

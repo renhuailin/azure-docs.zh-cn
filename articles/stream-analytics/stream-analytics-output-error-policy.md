@@ -5,14 +5,14 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 05/30/2021
 ms.custom: seodec18
-ms.openlocfilehash: 19d762a55127af34e84185b11518aa6584acb5bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1fdd973f51ee564bf59a7ed4fac347a007836d52
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98012404"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110794045"
 ---
 # <a name="azure-stream-analytics-output-error-policy"></a>Azure 流分析的输出错误策略
 本文介绍可在 Azure 流分析中配置的输出数据错误处理策略。
@@ -23,7 +23,7 @@ ms.locfileid: "98012404"
 
 
 ## <a name="retry"></a>重试
-发生错误时，Azure 流分析会无限期重试写入事件，直到写入成功为止。 重试不会超时。 最终，重试的事件会阻止所有后续事件的处理。 此选项是默认的输出错误处理策略。
+发生错误时，Azure 流分析会无限期重试写入事件，直到写入成功为止。 重试不会超时。 最终，重试的事件会阻止所有后续事件的处理。 此选项是默认的输出错误处理策略。 重试间隔可能因输出而异，在随后的重试中可能短至几秒钟或长达数分钟。
 
 ## <a name="drop"></a>丢弃
 Azure 流分析会丢弃任何导致数据转换错误的输出事件。 无法恢复丢弃的事件以便稍后重新处理。

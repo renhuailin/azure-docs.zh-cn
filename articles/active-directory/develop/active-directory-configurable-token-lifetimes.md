@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/08/2021
+ms.date: 06/01/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: e1753391c7b61b6e9bd9e6ac0d142b4ee94502d8
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: a970fdf041b0a946f959eeb8c1f3adac1c7ce32e
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363965"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784774"
 ---
 # <a name="configurable-token-lifetimes-in-the-microsoft-identity-platform-preview"></a>Microsoft 标识平台中的可配置令牌生存期（预览版）
 
@@ -62,7 +62,7 @@ ID 令牌将传递给网站和本机客户端。 ID 令牌包含有关用户的�
 
 ## <a name="token-lifetime-policies-for-refresh-tokens-and-session-tokens"></a>刷新令牌和会话令牌的令牌生存期策略
 
-你不能设置刷新令牌和会话令牌的令牌生存期策略。
+你不能设置刷新令牌和会话令牌的令牌生存期策略。 有关刷新令牌的生存期、超时和吊销信息，请参阅[刷新令牌](refresh-tokens.md)。
 
 > [!IMPORTANT]
 > 从 2021 年 1 月 30 日起，无法再配置刷新和会话令牌生存期。 Azure Active Directory 不再支持现有策略中的刷新和会话令牌配置。  现有令牌过期后颁发的新令牌现已设置为[默认配置](#configurable-token-lifetime-properties)。 在刷新和会话令牌配置停用后，你仍可配置访问权限、SAML 和 ID 令牌生存期。

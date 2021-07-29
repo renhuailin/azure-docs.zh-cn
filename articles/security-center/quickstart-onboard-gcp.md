@@ -7,12 +7,12 @@ ms.date: 02/08/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5e32c5f02191e4bd60ad4334884df34ce0bc0537
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: c4a49b3db5fe87f006a1bcd6d13a81b47c8d6abb
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537446"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113006223"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>将 GCP 帐户连接到 Azure 安全中心
 
@@ -39,7 +39,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 |发布状态：|正式发布版 (GA)|
 |定价：|需要[用于服务器的 Azure Defender](defender-for-servers-introduction.md)|
 |所需角色和权限：|相关 Azure 订阅上的“所有者”或“参与者”角色|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权（US Gov，Azure 中国）|
 |||
 
 ## <a name="connect-your-gcp-account"></a>连接到你的 GCP 帐户
@@ -95,7 +95,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
     1. 选择“添加”。
     1. 在“新成员”字段中，粘贴之前复制的电子邮件值。
     1. 将“角色”指定为“安全中心管理员查看器”，然后选择“保存” 。
-        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="设置相关的 GCP 权限":::
+        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="设置相关的 GCP 权限。":::
 
 
 ### <a name="step-4-create-a-private-key-for-the-dedicated-service-account"></a>步骤 4. 为专用服务帐户创建私钥

@@ -6,13 +6,13 @@ ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 10/9/2020
-ms.openlocfilehash: 1aaeed1973ebd15af312b722ab61938aa4271947
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 05/08/2021
+ms.openlocfilehash: 23825bd3ab41891f775f26e2ee2b052e3a041401
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97696252"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111560078"
 ---
 # <a name="register-and-scan-azure-cosmos-database-sql-api"></a>注册并扫描 Azure Cosmos 数据库 (SQL API)
 
@@ -39,10 +39,10 @@ Azure Cosmos 数据库 (SQL API) 支持通过完全扫描和增量扫描来捕�
 
 1. 导航到 Azure 门户中的 Cosmos DB 帐户 
 1. 选择“设置” > “密钥”  
-1. 复制密钥，并将其保存在某个位置以供后续步骤使用
+1. 从读写密钥或只读密钥复制主密钥或辅助密钥，并将其保存到某个位置以用于后续步骤 。
 1. 导航到你的密钥保管库
 1. 选择“设置”>“机密”
-1. 选择“+ 生成/导入”，然后输入“名称”和“值”作为存储帐户中的密钥
+1. 选择“+ 生成/导入”，然后输入“名称”和“值”作为 Azure Cosmos DB 帐户中的密钥  。
 1. 选择“创建”以完成
 1. 如果密钥保管库尚未连接到 Purview，则需要[创建新的密钥保管库连接](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)
 1. 最后，使用密钥[新建凭据](manage-credentials.md#create-a-new-credential)来设置扫描
@@ -62,15 +62,43 @@ Azure Cosmos 数据库 (SQL API) 支持通过完全扫描和增量扫描来捕�
 在“注册资源 (Azure Cosmos DB (SQL API))”屏幕上，执行以下操作：
 
 1. 输入数据源将在目录中列出的名称。
-1. 选择要指向所需存储帐户的方式：
-   1. 选择“从 Azure 订阅中”，然后从“Azure 订阅”下拉框中选择相应订阅，并从“Cosmos DB 帐户名称”下拉框中选择相应的 Cosmos DB 帐户  。
-   1. 也可选择“手动输入”并输入服务终结点 (URL)。
-1. 选择“完成”以注册数据源。
+2. 选择 Azure 订阅，以筛选 Azure Cosmos DB。
+3. 选择适当的 Cosmos DB 帐户名称。
+4. 选择集合或创建新集合（可选）。
+5. 选择“注册”以注册数据源。
 
 :::image type="content" source="media/register-scan-azure-cosmos-database/register-sources.png" alt-text="注册源选项" border="true":::
 
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+## <a name="creating-and-running-a-scan"></a>创建和运行扫描
+
+若要创建并运行新扫描，请执行以下操作：
+
+1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+
+1. 选择你已注册的 Azure Cosmos DB 数据源。
+
+1. 选择“新建扫描”
+
+1. 选择要连接到数据源的凭据。 
+
+   :::image type="content" source="media/register-scan-azure-cosmos-database/set-up-scan-cosmos.png" alt-text="设置扫描":::
+
+1. 可以通过选择列表中相应的项，将扫描范围限定到特定的数据库。
+
+   :::image type="content" source="media/register-scan-azure-cosmos-database/cosmos-database-scope-your-scan.png" alt-text="限定扫描范围":::
+
+1. 然后选择扫描规则集。 可以在系统默认项和现有的自定义规则集之间选择，或者可以以内联方式创建新规则集。
+
+   :::image type="content" source="media/register-scan-azure-cosmos-database/select-scan-rule-set.png" alt-text="扫描规则集":::
+
+1. 选择扫描触发器。 可以设置一个计划或运行一次扫描。
+
+   :::image type="content" source="media/register-scan-azure-cosmos-database/trigger-scan.png" alt-text="trigger":::
+
+1. 查看扫描并选择“保存并运行”。
+
+[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
-ms.openlocfilehash: 144e8058e640f98dc6b0ef60534405525532b00e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 681900e2d2175e3e52a906072ae0b31a835cd1c8
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102547860"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483652"
 ---
 # <a name="document-extraction-cognitive-skill"></a>文档提取认知技能
 
@@ -26,6 +26,12 @@ ms.locfileid: "102547860"
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.DocumentExtractionSkill
+
+## <a name="supported-document-formats"></a>支持的文档格式
+
+DocumentExtractionSkill 可从以下文档格式提取文本：
+
+[!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
 ## <a name="skill-parameters"></a>技能参数
 
@@ -60,13 +66,23 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 }
 ```
 
+或
+
+```json
+{
+  "$type": "file",
+  "url": "URL to download file",
+  "sasToken": "OPTIONAL: SAS token for authentication if the URL provided is for a file in blob storage"
+}
+```
+
 可以通过以下三种方式之一生成此文件引用对象：
 
  - 在你的索引器定义中将 `allowSkillsetToReadFileData` 参数设置为“true”。  这将创建路径 `/document/file_data`，该路径是一个对象，表示从 blob 数据源下载的原始文件数据。 此参数仅适用于 Blob 存储中的数据。
 
  - 在你的索引器定义中将 `imageAction` 参数设置为 `none` 之外的值。  这将创建一个图像数组，该数组将遵循此技能的输入在逐个传递的情况下所需的约定（即 `/document/normalized_images/*`）。
 
- - 让自定义技能返回严格如上所述定义的 json 对象。  `$type` 参数必须确切地设置为 `file`，并且 `data` 参数必须是文件内容的 base64 编码的字节数组数据。
+ - 让自定义技能返回严格如上所述定义的 json 对象。  `$type` 参数必须精确设置为 `file`，`data` 参数必须是文件内容的 Base64 编码字节数组数据，或者 `url` 参数必须是格式正确的 URL，有权在该位置下载文件。
 
 ## <a name="skill-outputs"></a>技能输出
 

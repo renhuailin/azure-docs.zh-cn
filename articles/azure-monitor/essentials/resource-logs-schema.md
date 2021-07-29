@@ -2,13 +2,13 @@
 title: Azure 资源日志支持的服务和架构
 description: 了解 Azure 资源日志支持的服务和事件架构。
 ms.topic: reference
-ms.date: 04/07/2020
-ms.openlocfilehash: d219153f9d1dfbcd05cbe28a5ac0609a156c68a9
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 05/10/2021
+ms.openlocfilehash: e2ba32c5f65cda4702866c1942d860da13a301dc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142560"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095007"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure 资源日志的通用架构和特定于服务的架构
 
@@ -55,7 +55,7 @@ ms.locfileid: "108142560"
 | Azure 自动化 |[适用于 Azure 自动化的 Log Analytics](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch 日志记录](../../batch/batch-diagnostics.md) |
 | 认知服务 | [Azure 认知服务的日志记录](../../cognitive-services/diagnostic-logging.md) |
-| 容器注册表 | [Azure 容器注册表的日志记录](../../container-registry/container-registry-diagnostics-audit-logs.md) |
+| 容器注册表 | [监视 Azure 容器注册表](../../container-registry/monitor-service.md) |
 | 内容分发网络 | [CDN 的 Azure 日志](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB 日志记录](../../cosmos-db/monitor-cosmos-db.md) |
 | Data Factory | [使用 Azure Monitor 监视数据工厂](../../data-factory/monitor-using-azure-monitor.md) |
@@ -76,6 +76,7 @@ ms.locfileid: "108142560"
 | Kubernetes 服务 |[Azure Kubernetes 日志记录](../../aks/view-control-plane-logs.md#log-event-schema) |
 | 负载均衡器 |[Azure 负载均衡器的 Log Analytics](../../load-balancer/load-balancer-monitor-log.md) |
 | 逻辑应用 |[逻辑应用 B2B 自定义跟踪架构](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
+| 媒体服务 | [媒体服务监视架构](../../media-services/latest/monitoring/monitor-media-services-data-reference.md#schemas) |
 | 网络安全组 |[网络安全组 (NSG) 的 Log Analytics](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | Power BI 专用 | [Azure 中 Power BI Embedded 的日志记录](/power-bi/developer/azure-pbie-diag-logs) |
 | 恢复服务 | [Azure 备份的数据模型](../../backup/backup-azure-reports-data-model.md)|

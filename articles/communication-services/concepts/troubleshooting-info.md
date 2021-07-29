@@ -5,15 +5,15 @@ author: manoskow
 manager: jken
 services: azure-communication-services
 ms.author: manoskow
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 081c520377327e4ceeace204755a0076e5b2f0d0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 06ba8675b0d393b85ef5748df6d0250257324808
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092379"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108596"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure 通信服务中的故障排除
 
@@ -160,6 +160,8 @@ AzureLogger.log = (...args) => {
 
 在 Android Studio 上，从模拟器和设备中选择“查看”>“工具窗口”>“设备文件资源管理器”，导航到设备文件资源管理器。 `.blog` 文件将位于应用程序的目录中，例如 `/data/data/[app_name_space:com.contoso.com.acsquickstartapp]/files/acs_sdk.blog`。 可以将此文件附加到支持请求。
 
+---
+
 ## <a name="enable-and-access-call-logs-windows"></a>启用并访问调用日志 (Windows)
 
 在针对 Windows 系统进行开发时，日志存储在 `.blog` 文件中。 请注意，不能直接查看日志，因为它们已加密。
@@ -172,7 +174,6 @@ AzureLogger.log = (...args) => {
 5. 通过输入 `start ` 以及步骤 3 返回的路径，打开包含日志的文件夹。 例如：`start C:\Users\myuser\AppData\Local\Packages\e84000dd-df04-4bbc-bf22-64b8351a9cd9_k2q8b5fxpmbf6`
 6. 请将所有 `*.blog` 和 `*.etl` 文件附加到 Azure 支持请求。
 
----
 
 ## <a name="calling-sdk-error-codes"></a>呼叫 SDK 错误代码
 
@@ -180,7 +181,7 @@ Azure 通信服务呼叫 SDK 使用以下错误代码，你可以通过这些错
 
 | 错误代码 | 说明 | 采取的操作 |
 | -------- | ---------------| ---------------|
-| 403 | 被禁止/身份验证失败。 | 确保通信服务令牌有效且未过期。 |
+| 403 | 被禁止/身份验证失败。 | 确保通信服务令牌有效且未过期。 如果使用 Teams 互操作性，请确保已将 Teams 租户添加到预览访问允许列表。 若要启用/禁用 [Teams 租户互操作性](https://docs.microsoft.com/azure/communication-services/concepts/teams-interop)，请填写[此表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)。|
 | 404 | 找不到呼叫。 | 确保要呼叫的电话（或要加入的电话）存在。 |
 | 408 | 呼叫控制器超时。 | 等待来自用户终结点的协议消息的呼叫控制器超时。 确保客户端已连接且可用。 |
 | 410 | 本地媒体堆栈或媒体基础结构错误。 | 确保在受支持的环境中使用最新的 SDK。 |

@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/29/2021
-ms.openlocfilehash: db3b62e7ce07c1e10bc5030c37cb8957d281ea05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/29/2021
+ms.openlocfilehash: 585a2cf1a3dcbc1c45ae40b728b28ece505efee3
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100517291"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110788359"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>在 Azure Database for PostgreSQL - 单一服务器中进行备份和还原
 
@@ -34,13 +34,16 @@ Azure Database for PostgreSQL 对数据文件和事务日志进行备份。 根�
 
 在 [Azure 区域](./concepts-pricing-tiers.md#storage)的子集中，所有新预配的服务器最多可以支持 16 TB 的存储容量。 这些大型存储服务器上的备份是基于快照的。 第一次完整快照备份在创建服务器后立即进行计划。 第一次完整快照备份将作为服务器的基准备份保留。 后续快照备份仅为差异备份。 差异快照备份不按固定计划进行。 在一天之内，将执行三次差异快照备份。 事务日志备份每五分钟进行一次。 
 
+> [!NOTE]
+> 对最多配置 4TB 存储配置的[副本服务器](./concepts-read-replicas.md)执行自动备份。
+
 ### <a name="backup-retention"></a>备份保留
 
 根据服务器上的备份保持期设置来保留备份。 可以选择 7 到 35 天的保留期。 默认保持期为 7 天。 可以在服务器创建期间或以后通过使用 [Azure 门户](./howto-restore-server-portal.md#set-backup-configuration)或 [Azure CLI](./howto-restore-server-cli.md#set-backup-configuration) 更新备份配置来设置保留期。 
 
 备份保留期控制可以往回检索多长时间的时间点还原，因为它基于可用备份。 从恢复的角度来看，备份保留期也可以视为恢复时段。 在备份保留期间内执行时间点还原所需的所有备份都保留在备份存储中。 例如，如果备份保留期设置为 7 天，则认为恢复时段是最近 7 天。 在这种情况下，将保留在过去 7 天内还原服务器所需的所有备份。 备份保留期为 7 天：
 - 存储容量最大达 4 TB 的服务器将保留最多 2 个完整数据库备份、所有差异备份和自最早的完整数据库备份以来执行的事务日志备份。
--   存储容量最大达 16 TB 的服务器将保留完整数据库快照、所有差异快照和过去 8 天的事务日志备份。
+- 存储容量最大达 16 TB 的服务器将保留完整数据库快照、所有差异快照和过去 8 天的事务日志备份。
 
 ### <a name="backup-redundancy-options"></a>备份冗余选项
 

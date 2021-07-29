@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 04/26/2021
+ms.date: 05/20/2021
 ms.custom: generated
-ms.openlocfilehash: 4e2df06b67ee9148d3c74700ebfadd72bff8392f
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 989724452f57b5b44954f739eae6bff1da61263f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108069968"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470123"
 ---
 # <a name="azure-built-in-roles"></a>Azure 内置角色
 
@@ -37,9 +37,9 @@ ms.locfileid: "108069968"
 > | **计算** |  |  |
 > | [经典虚拟机参与者](#classic-virtual-machine-contributor) | 允许管理经典虚拟机，但不允许访问这些虚拟机及其连接到的虚拟网络或存储帐户。 | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 > | [虚拟机管理员登录](#virtual-machine-administrator-login) | 在门户中查看虚拟机并以管理员身份登录 | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
-> | [虚拟机参与者](#virtual-machine-contributor) | 允许管理虚拟机，但不允许访问这些虚拟机及其连接到的虚拟网络或存储帐户。 | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
+> | [虚拟机参与者](#virtual-machine-contributor) | 创建并管理虚拟机、管理磁盘和磁盘快照、安装并运行软件、使用 VM 扩展重置虚拟机根用户的密码，以及使用 VM 扩展管理本地用户帐户。 此角色不授予对虚拟机连接到的虚拟网络或存储帐户的管理访问权限。 此角色不允许在 Azure RBAC 中分配角色。 | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | [虚拟机用户登录](#virtual-machine-user-login) | 在门户中查看虚拟机并以普通用户身份登录。 | fb879df8-f326-4884-b1cf-06f3ad86be52 |
-> | **网络** |  |  |
+> | **联网** |  |  |
 > | [CDN 终结点参与者](#cdn-endpoint-contributor) | 可以管理 CDN 终结点，但不能向其他用户授予访问权限。 | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
 > | [CDN 终结点读者](#cdn-endpoint-reader) | 可以查看 CDN 终结点，但不能进行更改。 | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
 > | [CDN 配置文件参与者](#cdn-profile-contributor) | 可以管理 CDN 配置文件及其终结点，但不能向其他用户授予访问权限。 | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
@@ -78,6 +78,11 @@ ms.locfileid: "108069968"
 > | [Azure Maps 数据参与者](#azure-maps-data-contributor) | 从 Azure Maps 帐户中授予地图相关数据的读取、写入和删除权限。 | 8f5e0ce6-4f7b-4dcf-bddf-e6f48634a204 |
 > | [Azure Maps 数据读取器](#azure-maps-data-reader) | 授予从 Azure Maps 帐户中读取地图相关数据的权限。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [Azure Spring Cloud 数据读取者](#azure-spring-cloud-data-reader) | 允许对 Azure Spring Cloud 进行读取访问 | b5537268-8956-4941-a8f0-646150406f0c |
+> | [媒体服务帐户管理员](#media-services-account-administrator) | 创建、读取、修改和删除媒体服务帐户；对其他媒体服务资源的只读访问权限。 | 054126f8-9a2b-4f1c-a9ad-eca461f08466 |
+> | [媒体服务直播活动管理员](#media-services-live-events-administrator) | 创建、读取和修改直播活动、资产、资产筛选器和流式处理定位符；对其他媒体服务资源的只读访问权限。 | 532bc159-b25e-42c0-969e-a1d439f60d77 |
+> | [媒体服务媒体操作员](#media-services-media-operator) | 创建、读取、修改和删除资产、资产筛选器、流式处理定位符和作业；对其他媒体服务资源的只读访问权限。 | e4395492-1534-4db2-bedf-88c14621589c |
+> | [媒体服务策略管理员](#media-services-policy-administrator) | 创建、读取、修改和删除帐户筛选器、流式处理策略、内容密钥策略和转换；对其他媒体服务资源的只读访问权限。 无法创建作业、资产或流式处理资源。 | c4bba371-dacd-4a26-b320-7250bca963ae |
+> | [媒体服务流式处理终结点管理员](#media-services-streaming-endpoints-administrator) | 创建、读取、修改和删除流式处理终结点；对其他媒体服务资源的只读访问权限。 | 99dba123-b5fe-44d5-874c-ced7199a5804 |
 > | [搜索服务参与者](#search-service-contributor) | 允许管理搜索服务，但不允许访问这些服务。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [SignalR AccessKey 读取者](#signalr-accesskey-reader) | 读取 SignalR 服务访问密钥 | 04165923-9d83-45d5-8227-78b77b0a687e |
 > | [SignalR 应用服务器（预览版）](#signalr-app-server-preview) | 允许应用服务器使用 AAD 身份验证选项访问 SignalR 服务。 | 420fcaa2-552c-430f-98ca-3264be4806c7 |
@@ -88,12 +93,12 @@ ms.locfileid: "108069968"
 > | [Web 计划参与者](#web-plan-contributor) | 允许管理网站的 Web 计划，但不允许访问这些计划。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [网站参与者](#website-contributor) | 允许管理网站（而非 Web 计划），但不允许访问这些网站。 | de139f84-1756-47ae-9be6-808fbbe84772 |
 > | **容器** |  |  |
-> | [AcrDelete](#acrdelete) | acr 删除 | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
-> | [AcrImageSigner](#acrimagesigner) | ACR 映像签名程序 | 6cef56e8-d556-48e5-a04f-b8e64114680f |
-> | [AcrPull](#acrpull) | acr 拉取 | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
-> | [AcrPush](#acrpush) | acr 推送 | 8311e382-0749-4cb8-b61a-304f252e45ec |
-> | [AcrQuarantineReader](#acrquarantinereader) | ACR 隔离数据读取器 | cdda3590-29a3-44f6-95f2-9f980659eb04 |
-> | [AcrQuarantineWriter](#acrquarantinewriter) | ACR 隔离数据编写器 | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
+> | [AcrDelete](#acrdelete) | 从容器注册表中删除存储库、标记或清单。 | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
+> | [AcrImageSigner](#acrimagesigner) | 将受信任的映像推送到为内容信任启用的容器注册表中或从中拉取受信任的映像。 | 6cef56e8-d556-48e5-a04f-b8e64114680f |
+> | [AcrPull](#acrpull) | 从容器注册表中拉取项目。 | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
+> | [AcrPush](#acrpush) | 将项目推送到容器注册表或从容器注册表中拉取项目。 | 8311e382-0749-4cb8-b61a-304f252e45ec |
+> | [AcrQuarantineReader](#acrquarantinereader) | 从容器注册表中拉取隔离的映像。 | cdda3590-29a3-44f6-95f2-9f980659eb04 |
+> | [AcrQuarantineWriter](#acrquarantinewriter) | 将隔离的映像推送到容器注册表或从中拉取隔离的映像。 | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | [Azure Kubernetes 服务群集管理员角色](#azure-kubernetes-service-cluster-admin-role) | 列出群集管理员凭据操作。 | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | [Azure Kubernetes 服务群集用户角色](#azure-kubernetes-service-cluster-user-role) | 列出群集用户凭据操作。 | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
 > | [Azure Kubernetes 服务参与者角色](#azure-kubernetes-service-contributor-role) | 授予对 Azure Kubernetes 服务群集的读写访问权限 | ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8 |
@@ -143,6 +148,10 @@ ms.locfileid: "108069968"
 > | [认知服务 QnA Maker 读取者](#cognitive-services-qna-maker-reader) | 只能读取和测试知识库。 | 466ccd10-b268-4a11-b098-b4849f024126 |
 > | [认知服务用户](#cognitive-services-user) | 允许读取和列出认知服务的密钥。 | a97b65f3-24c7-4388-baec-2e87135dc908 |
 > | **物联网** |  |  |
+> | [IoT 中心数据参与者](#iot-hub-data-contributor) | 允许对 IoT 中心数据平面操作进行完全访问。 | 4fc6c259-987e-4a07-842e-c321cc9d413f |
+> | [IoT 中心数据读取者](#iot-hub-data-reader) | 允许对 IoT 中心数据平面属性进行完全读取访问 | b447c946-2db7-41ec-983d-d8bf3b1c77e3 |
+> | [IoT 中心注册表参与者](#iot-hub-registry-contributor) | 允许对 IoT 中心设备注册表进行完全访问。 | 4ea46cd5-c1b2-4a8e-910b-273211f9ce47 |
+> | [IoT 中心数字孪生体参与者](#iot-hub-twin-contributor) | 允许对所有 IoT 中心设备和模块孪生进行读写访问。 | 494bdba2-168f-4f31-a0a1-191d2f7c028c |
 > | [设备更新管理员](#device-update-administrator) | 授予你对管理和内容操作的完全访问权限 | 02ca0879-e8e4-47a5-a61e-5c618b76e64a |
 > | [设备更新内容管理员](#device-update-content-administrator) | 授予你对内容操作的完全访问权限 | 0378884a-3af5-44ab-8323-f5b22f9f3c98 |
 > | [设备更新内容读取者](#device-update-content-reader) | 授予你对内容操作的读取访问权限，但不允许进行更改 | d1ee9a80-8b14-47f0-bdc2-f4a351625a7b |
@@ -570,7 +579,7 @@ ms.locfileid: "108069968"
 
 ### <a name="virtual-machine-contributor"></a>虚拟机参与者
 
-允许管理虚拟机，但不允许访问这些虚拟机及其连接到的虚拟网络或存储帐户。 [了解详细信息](../virtual-machines/linux/tutorial-govern-resources.md)
+创建并管理虚拟机、管理磁盘和磁盘快照、安装并运行软件、使用 VM 扩展重置虚拟机根用户的密码，以及使用 VM 扩展管理本地用户帐户。 此角色不授予对虚拟机连接到的虚拟网络或存储帐户的管理访问权限。 此角色不允许在 Azure RBAC 中分配角色。 [了解详细信息](/azure/architecture/reference-architectures/n-tier/linux-vm)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -578,7 +587,7 @@ ms.locfileid: "108069968"
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* | 创建和管理计算可用性集 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/locations/* | 创建和管理计算位置 |
-> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/* | 执行所有虚拟机操作，包括创建、更新、删除、启动、重新启动和关闭虚拟机。 在虚拟机上执行预定义的脚本。 |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/* | 执行所有虚拟机操作，包括创建、更新、删除、启动、重新启动和关闭虚拟机。 在虚拟机上执行脚本。 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachineScaleSets/* | 创建和管理虚拟机规模集 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/write | 创建新的磁盘，或更新现有的磁盘 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/read | 获取磁盘的属性 |
@@ -2779,6 +2788,327 @@ ms.locfileid: "108069968"
 }
 ```
 
+### <a name="media-services-account-administrator"></a>媒体服务帐户管理员
+
+创建、读取、修改和删除媒体服务帐户；对其他媒体服务资源的只读访问权限。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | 添加指标 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | 读取指标定义 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/*/read |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/listStreamingLocators/action | 列出资产的流式处理定位符 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingLocators/listPaths/action | 列出路径 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/write | 创建或更新任何媒体服务帐户 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/delete | 删除任何媒体服务帐户 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/privateEndpointConnectionsApproval/action | 审批专用终结点连接 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/privateEndpointConnections/* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Create, read, modify and delete Media Services accounts; read-only access to other Media Services resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/054126f8-9a2b-4f1c-a9ad-eca461f08466",
+  "name": "054126f8-9a2b-4f1c-a9ad-eca461f08466",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Insights/metrics/read",
+        "Microsoft.Insights/metricDefinitions/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.ResourceHealth/availabilityStatuses/read",
+        "Microsoft.Media/mediaservices/*/read",
+        "Microsoft.Media/mediaservices/assets/listStreamingLocators/action",
+        "Microsoft.Media/mediaservices/streamingLocators/listPaths/action",
+        "Microsoft.Media/mediaservices/write",
+        "Microsoft.Media/mediaservices/delete",
+        "Microsoft.Media/mediaservices/privateEndpointConnectionsApproval/action",
+        "Microsoft.Media/mediaservices/privateEndpointConnections/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Media Services Account Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="media-services-live-events-administrator"></a>媒体服务直播活动管理员
+
+创建、读取和修改直播活动、资产、资产筛选器和流式处理定位符；对其他媒体服务资源的只读访问权限。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | 添加指标 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | 读取指标定义 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/*/read |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/assetfilters/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingLocators/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/liveEvents/* |  |
+> | **不操作** |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/getEncryptionKey/action | 获取资产加密密钥 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingLocators/listContentKeys/action | 列出内容密钥 |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Create, read and modify Live Events, Assets, Asset Filters and Streaming Locators; read-only access to other Media Services resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/532bc159-b25e-42c0-969e-a1d439f60d77",
+  "name": "532bc159-b25e-42c0-969e-a1d439f60d77",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Insights/metrics/read",
+        "Microsoft.Insights/metricDefinitions/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.ResourceHealth/availabilityStatuses/read",
+        "Microsoft.Media/mediaservices/*/read",
+        "Microsoft.Media/mediaservices/assets/*",
+        "Microsoft.Media/mediaservices/assets/assetfilters/*",
+        "Microsoft.Media/mediaservices/streamingLocators/*",
+        "Microsoft.Media/mediaservices/liveEvents/*"
+      ],
+      "notActions": [
+        "Microsoft.Media/mediaservices/assets/getEncryptionKey/action",
+        "Microsoft.Media/mediaservices/streamingLocators/listContentKeys/action"
+      ],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Media Services Live Events Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="media-services-media-operator"></a>媒体服务媒体操作员
+
+创建、读取、修改和删除资产、资产筛选器、流式处理定位符和作业；对其他媒体服务资源的只读访问权限。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | 添加指标 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | 读取指标定义 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/*/read |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/assetfilters/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingLocators/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/transforms/jobs/* |  |
+> | **不操作** |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/getEncryptionKey/action | 获取资产加密密钥 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingLocators/listContentKeys/action | 列出内容密钥 |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Create, read, modify, and delete of Assets, Asset Filters, Streaming Locators and Jobs; read-only access to other Media Services resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e4395492-1534-4db2-bedf-88c14621589c",
+  "name": "e4395492-1534-4db2-bedf-88c14621589c",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Insights/metrics/read",
+        "Microsoft.Insights/metricDefinitions/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.ResourceHealth/availabilityStatuses/read",
+        "Microsoft.Media/mediaservices/*/read",
+        "Microsoft.Media/mediaservices/assets/*",
+        "Microsoft.Media/mediaservices/assets/assetfilters/*",
+        "Microsoft.Media/mediaservices/streamingLocators/*",
+        "Microsoft.Media/mediaservices/transforms/jobs/*"
+      ],
+      "notActions": [
+        "Microsoft.Media/mediaservices/assets/getEncryptionKey/action",
+        "Microsoft.Media/mediaservices/streamingLocators/listContentKeys/action"
+      ],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Media Services Media Operator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="media-services-policy-administrator"></a>媒体服务策略管理员
+
+创建、读取、修改和删除帐户筛选器、流式处理策略、内容密钥策略和转换；对其他媒体服务资源的只读访问权限。 无法创建作业、资产或流式处理资源。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | 添加指标 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | 读取指标定义 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/*/read |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/listStreamingLocators/action | 列出资产的流式处理定位符 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingLocators/listPaths/action | 列出路径 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/accountFilters/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingPolicies/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/contentKeyPolicies/* |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/transforms/* |  |
+> | **不操作** |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/contentKeyPolicies/getPolicyPropertiesWithSecrets/action | 获取包含机密的策略属性 |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Create, read, modify, and delete Account Filters, Streaming Policies, Content Key Policies and Transforms; read-only access to other Media Services resources. Cannot create Jobs, Assets or Streaming resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/c4bba371-dacd-4a26-b320-7250bca963ae",
+  "name": "c4bba371-dacd-4a26-b320-7250bca963ae",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Insights/metrics/read",
+        "Microsoft.Insights/metricDefinitions/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.ResourceHealth/availabilityStatuses/read",
+        "Microsoft.Media/mediaservices/*/read",
+        "Microsoft.Media/mediaservices/assets/listStreamingLocators/action",
+        "Microsoft.Media/mediaservices/streamingLocators/listPaths/action",
+        "Microsoft.Media/mediaservices/accountFilters/*",
+        "Microsoft.Media/mediaservices/streamingPolicies/*",
+        "Microsoft.Media/mediaservices/contentKeyPolicies/*",
+        "Microsoft.Media/mediaservices/transforms/*"
+      ],
+      "notActions": [
+        "Microsoft.Media/mediaservices/contentKeyPolicies/getPolicyPropertiesWithSecrets/action"
+      ],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Media Services Policy Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="media-services-streaming-endpoints-administrator"></a>媒体服务流式处理终结点管理员
+
+创建、读取、修改和删除流式处理终结点；对其他媒体服务资源的只读访问权限。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | 读取角色和角色分配 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 创建和管理经典指标警报 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | 添加指标 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | 读取指标定义 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | 创建和管理部署 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 获取或列出资源组。 |
+> | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/*/read |  |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/assets/listStreamingLocators/action | 列出资产的流式处理定位符 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingLocators/listPaths/action | 列出路径 |
+> | [Microsoft.Media](resource-provider-operations.md#microsoftmedia)/mediaservices/streamingEndpoints/* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Create, read, modify and delete Streaming Endpoints; read-only access to other Media Services resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/99dba123-b5fe-44d5-874c-ced7199a5804",
+  "name": "99dba123-b5fe-44d5-874c-ced7199a5804",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Insights/metrics/read",
+        "Microsoft.Insights/metricDefinitions/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.ResourceHealth/availabilityStatuses/read",
+        "Microsoft.Media/mediaservices/*/read",
+        "Microsoft.Media/mediaservices/assets/listStreamingLocators/action",
+        "Microsoft.Media/mediaservices/streamingLocators/listPaths/action",
+        "Microsoft.Media/mediaservices/streamingEndpoints/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Media Services Streaming Endpoints Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="search-service-contributor"></a>搜索服务参与者
 
 允许管理搜索服务，但不允许访问这些服务。 [了解详细信息](../search/search-security-rbac.md)
@@ -3229,7 +3559,7 @@ ms.locfileid: "108069968"
 
 ### <a name="acrdelete"></a>AcrDelete
 
-acr 删除 [了解详细信息](../container-registry/container-registry-roles.md)
+从容器注册表中删除存储库、标记或清单。 [了解详细信息](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -3268,7 +3598,7 @@ acr 删除 [了解详细信息](../container-registry/container-registry-roles.m
 
 ### <a name="acrimagesigner"></a>AcrImageSigner
 
-acr 映像签名程序 [了解详细信息](../container-registry/container-registry-roles.md)
+将受信任的映像推送到为内容信任启用的容器注册表中或从中拉取受信任的映像。 [了解详细信息](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -3307,7 +3637,7 @@ acr 映像签名程序 [了解详细信息](../container-registry/container-regi
 
 ### <a name="acrpull"></a>AcrPull
 
-acr 拉取 [了解详细信息](../container-registry/container-registry-roles.md)
+从容器注册表中拉取项目。 [了解详细信息](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -3346,7 +3676,7 @@ acr 拉取 [了解详细信息](../container-registry/container-registry-roles.m
 
 ### <a name="acrpush"></a>AcrPush
 
-acr 推送 [了解详细信息](../container-registry/container-registry-roles.md)
+将项目推送到容器注册表或从容器注册表中拉取项目。 [了解详细信息](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -3387,7 +3717,7 @@ acr 推送 [了解详细信息](../container-registry/container-registry-roles.m
 
 ### <a name="acrquarantinereader"></a>AcrQuarantineReader
 
-ACR 隔离数据读取器
+从容器注册表中拉取隔离的映像。 [了解详细信息](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -3426,7 +3756,7 @@ ACR 隔离数据读取器
 
 ### <a name="acrquarantinewriter"></a>AcrQuarantineWriter
 
-ACR 隔离数据编写器
+将隔离的映像推送到容器注册表或从中拉取隔离的映像。 [了解详细信息](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
@@ -6063,6 +6393,163 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 
 ## <a name="internet-of-things"></a>物联网
 
+### <a name="iot-hub-data-contributor"></a>IoT 中心数据参与者
+
+允许对 IoT 中心数据平面操作进行完全访问。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full access to IoT Hub data plane operations.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4fc6c259-987e-4a07-842e-c321cc9d413f",
+  "name": "4fc6c259-987e-4a07-842e-c321cc9d413f",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Data Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-data-reader"></a>IoT 中心数据读取者
+
+允许对 IoT 中心数据平面属性进行完全读取访问
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/*/read |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/fileUpload/notifications/action | 接收、完成或放弃文件上传通知 |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full read access to IoT Hub data-plane properties",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b447c946-2db7-41ec-983d-d8bf3b1c77e3",
+  "name": "b447c946-2db7-41ec-983d-d8bf3b1c77e3",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/*/read",
+        "Microsoft.Devices/IotHubs/fileUpload/notifications/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-registry-contributor"></a>IoT 中心注册表参与者
+
+允许对 IoT 中心设备注册表进行完全访问。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/devices/* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for full access to IoT Hub device registry.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4ea46cd5-c1b2-4a8e-910b-273211f9ce47",
+  "name": "4ea46cd5-c1b2-4a8e-910b-273211f9ce47",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/devices/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Registry Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="iot-hub-twin-contributor"></a>IoT 中心数字孪生体参与者
+
+允许对所有 IoT 中心设备和模块孪生进行读写访问。
+
+> [!div class="mx-tableFixed"]
+> | 操作 | 描述 |
+> | --- | --- |
+> | *无* |  |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | [Microsoft.Devices](resource-provider-operations.md#microsoftdevices)/IotHubs/twins/* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for read and write access to all IoT Hub device and module twins.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/494bdba2-168f-4f31-a0a1-191d2f7c028c",
+  "name": "494bdba2-168f-4f31-a0a1-191d2f7c028c",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Devices/IotHubs/twins/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "IoT Hub Twin Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
 
 ### <a name="device-update-administrator"></a>设备更新管理员
 
@@ -7024,7 +7511,7 @@ Microsoft.Purview 数据源管理员可以管理数据源和数据扫描。 此�
 > [!div class="mx-tableFixed"]
 > | 操作 | 描述 |
 > | --- | --- |
-> | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/read | 获取 Azure Stack Edge 订阅的属性 |
+> | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/read |  |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/*/action |  |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/read | 获取 Azure Stack 市场产品的属性 |
 > | [Microsoft.AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/read | 获取 Azure Stack 注册的属性 |
@@ -10125,7 +10612,9 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | 读取任何 Azure Arc 计算机 |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | 写入 Azure Arc 计算机 |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/delete | 删除 Azure Arc 计算机 |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/read | 读取任何 Azure Arc 扩展 |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/write | 安装或更新 Azure Arc 扩展 |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/delete | 删除 Azure Arc 扩展 |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/privateLinkScopes/* |  |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/*/read |  |
 > | **不操作** |  |
@@ -10149,7 +10638,9 @@ Azure Sentinel 响应者 [了解详细信息](../sentinel/roles.md)
         "Microsoft.HybridCompute/machines/read",
         "Microsoft.HybridCompute/machines/write",
         "Microsoft.HybridCompute/machines/delete",
+        "Microsoft.HybridCompute/machines/extensions/read",
         "Microsoft.HybridCompute/machines/extensions/write",
+        "Microsoft.HybridCompute/machines/extensions/delete",
         "Microsoft.HybridCompute/privateLinkScopes/*",
         "Microsoft.HybridCompute/*/read"
       ],

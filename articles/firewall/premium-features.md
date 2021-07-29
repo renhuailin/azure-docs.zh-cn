@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 04/22/2021
+ms.date: 06/01/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: fa7d17b208c4a950e82a8bdc4db243ebb44e4c41
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 21ea2dcb6f7ffc70a1ed5db15117b39b5b0016bd
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896272"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796552"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure 防火墙高级预览版功能
 
@@ -54,7 +54,7 @@ Azure 防火墙高级版终止出站和东-西 TLS 连接。 允许端到端加�
 
 网络入侵检测和防护系统 (IDPS) 使你可以监视网络是否出现恶意活动，记录有关此活动的信息，予以报告，选择性地尝试阻止。 
 
-Azure 防火墙高级预览版提供基于签名的 IDPS，允许通过查找特定模式（例如网络流量中的字节序列或恶意软件使用的已知恶意指令序列）来快速检测攻击。 IDPS 签名是完全托管的，并且会持续更新。
+Azure 防火墙高级预览版提供基于签名的 IDPS，允许通过查找特定模式（例如网络流量中的字节序列或恶意软件使用的已知恶意指令序列）来快速检测攻击。 IDPS 签名是完全托管的，并且会持续更新。 IDPS 可应用于入站流量、分支到分支（东-西）流量和出站流量。
 
 Azure 防火墙签名/规则集包括：
 - 侧重于对实际恶意软件、命令和控制、攻击工具包以及传统防护方法遗漏的疯狂恶意活动进行指纹识别。

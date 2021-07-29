@@ -6,13 +6,13 @@ author: nabhishek
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/26/2020
-ms.openlocfilehash: 1a99fbd3d3163808a364e8b26e770563a901dc18
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/03/2021
+ms.openlocfilehash: 54c96aced03853b8a3f78ff0f348eeb6459afccc
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100371322"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108760262"
 ---
 # <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 
@@ -130,10 +130,11 @@ Salesforce 支持防火墙平台加密，它允许加密所有文件、附件和
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>在自承载集成运行时中加密链接服务时使用的端口
 
-默认情况下，PowerShell 在装有自承载集成运行时的计算机上使用端口 8060 来确保通信安全。 如有必要，可以更改此端口。  
+默认情况下，当启用从 Intranet 进行远程访问的功能时，PowerShell 会使用装有自承载集成运行时的计算机上的端口 8060 进行安全通信。 如有必要，可以从 Integration Runtime 配置管理器的“设置”选项卡更改此端口：
 
-![网关的 HTTPS 端口](media/data-movement-security-considerations/https-port-for-gateway.png)
+:::image type="content" source="media/data-movement-security-considerations/integration-runtime-configuration-manager-settings.png" alt-text="Integration Runtime 配置管理器的“设置”选项卡":::
 
+:::image type="content" source="media/data-movement-security-considerations/https-port-for-gateway.png" alt-text="网关的 HTTPS 端口":::
 
 ### <a name="encryption-in-transit"></a>传输中加密
 
@@ -175,7 +176,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 下表提供了企业防火墙的出站端口和域要求：
 
-[!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
+[!INCLUDE [domain-and-outbound-port-requirements](includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE]
 > 可能需要按相应数据源的要求在企业防火墙级别为域管理端口或设置允许列表。 此表仅以 Azure SQL 数据库、Azure Synapse Analytics 和 Azure Data Lake Store 为例。   

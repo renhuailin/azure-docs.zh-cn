@@ -6,12 +6,12 @@ ms.author: rywinter
 ms.service: iot-develop
 ms.topic: conceptual
 ms.date: 01/11/2021
-ms.openlocfilehash: aa99594fe3de98635e37d15beebf015f15dc4f64
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 482acaa4fbec2991bf61f949602958b14144c2ce
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100654067"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108226887"
 ---
 # <a name="overview-of-azure-iot-device-types"></a>Azure IoT 设备类型改善
 IoT 设备在各种硬件平台上都存在。 台式计算机中一直有小型 8 位 MCU，即使最新款的 x86 CPU 中也存在。 许多变量会影响你为 IoT 设备选择硬件的决定，本文概述了一些关键差异。
@@ -44,8 +44,13 @@ IoT 设备可以分为两大类：微控制器 (MCU) 和微处理器 (MPU)。
 |**RAM**| Less | 更多 |
 |**Flash**| Less | 更多 |
 |**OS**| 无操作系统还是 RTOS | 常规用途 |
-|开发难点| 更困难 |  更容易 |
+|开发难点| 更困难 | 更容易 |
 |功耗| 较低 | 较高 |
-|**节约成本**| 较低 | 较高 |
-|**具有确定性**| 是 | 否 - 有异常|
+|**成本**| 较低 | 较高 |
+|**具有确定性**| 是 | 否 - 有异常 |
 |设备大小| 较小 | 较大 |
+
+## <a name="next-steps"></a>后续步骤
+你选择的 IoT 设备类型会直接影响设备连接到 Azure IoT 的方式。
+
+浏览不同的 [Azure IoT SDK](about-iot-sdks.md)，找到最适合你设备需求的 SDK。

@@ -4,12 +4,12 @@ description: 本参考文章介绍了如何将视频分析器播放器小组件�
 ms.service: azure-video-analyzer
 ms.topic: reference
 ms.date: 05/11/2021
-ms.openlocfilehash: 12565f2ca1a86d3a9e57fef652abab9564cb7b5e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f4c2d3f7d13002d0de231859bc31a74b72b1c7fd
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385215"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555121"
 ---
 # <a name="using-the-azure-video-analyzer-player-widget"></a>使用 Azure 视频分析器播放器小组件
 
@@ -44,7 +44,7 @@ ms.locfileid: "110385215"
 > [!NOTE] 
 > 如果熟悉如何基于 RSA 或 ECC 证书生成 JWT 令牌，可跳过此部分。
 
-1. 下载位于[此处](https://github.com/Azure-Samples/video-analyzer-iot-edge-csharp/tree/main/src/jwt-token-issuer/readme.md)的 JWTTokenIssuer 应用程序。
+1. 下载位于[此处](https://github.com/Azure-Samples/video-analyzer-iot-edge-csharp/tree/main/src/jwt-token-issuer/)的 JWTTokenIssuer 应用程序。
 
    > [!NOTE] 
    > 有关配置受众值的详细信息，请参阅此[文章](./access-policies.md)
@@ -260,10 +260,15 @@ Video name: <input type="text" id="videoName" /><br><br>
 npm install @azure/video-analyzer/widgets
 ```
 
-或者，可使用以下内容将其导入到应用程序代码中：
+也可在应用程序代码中使用适用于 Typescript 的以下语句导入它：
 
 ```typescript
 import { Player } from '@video-analyzer/widgets';
+```
+
+或者，如果要动态创建播放器小组件，请使用适用于 Javascript 的以下语句：
+```javascript
+<script async type="module" src="https://unpkg.com/@azure/video-analyzer-widgets@latest/dist/global.min.js"></script>
 ```
 
 如果使用此方法导入，在导入完成后，需要以编程方式创建播放器对象。  在上面的示例中，使用 `ava-player` HTML 标记将模块添加到了页面。  若要通过代码创建播放器对象，可在 JavaScript 中执行以下操作：

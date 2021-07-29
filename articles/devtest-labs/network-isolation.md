@@ -3,12 +3,12 @@ title: Azure 开发测试实验室中的网络隔离
 description: 了解 Azure 开发测试实验室中的网络隔离。
 ms.topic: article
 ms.date: 08/25/2020
-ms.openlocfilehash: 28bfa048a8a6666deb58a8ecfff38779c91d95b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7a46d242d16cf1c84495fbd2f2f10911cf4f1e9
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96352926"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111809511"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>开发测试实验室中的网络隔离
 
@@ -75,6 +75,10 @@ ms.locfileid: "96352926"
 你还可选择自动执行这些步骤，为多个实验室配置此设置。 
 
 [详细了解如何使用 PowerShell 和 CLI 管理 Azure 存储的默认网络访问规则](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#powershell)
+
+## <a name="network-isolation-for-an-existing-lab"></a>现有实验室的网络隔离
+
+作为实验室所有者，你可以选择隔离现有实验室的网络。 [此示例脚本](https://github.com/Azure/azure-devtestlab/blob/master/Tools/ConvertDtlLabToIsolatedNetwork/Convert-DtlLabToIsolatedNetwork.ps1)演示了如何将现有实验室和相关实验室资源转换为隔离网络模式。 
 
 ## <a name="things-to-remember-while-using-a-lab-in-a-network-isolated-mode"></a>在网络隔离模式下使用实验室时的注意事项
 

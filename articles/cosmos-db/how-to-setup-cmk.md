@@ -4,20 +4,18 @@ description: 了解如何使用 Azure Key Vault 为 Azure Cosmos DB 帐户配置
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 02/19/2021
+ms.date: 04/23/2021
 ms.author: thweiss
-ms.openlocfilehash: 3ee566a598ea7fdf060712c934305ef63467e548
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 8738f34ea9d038bbc5a0bc3d9f13be11db2b9e00
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101656510"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681703"
 ---
-# <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>使用 Azure Key Vault 为 Azure Cosmos 帐户配置客户管理的密钥
+# <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>通过 Azure Key Vault 为 Azure Cosmos 帐户配置客户管理的密钥
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
-
-> [!NOTE]
-> 若要结合使用客户管理的密钥和 Azure Cosmos DB [分析存储](analytical-store-introduction.md)，目前需要对帐户进行额外配置。 请联系 [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) 以了解详细信息。
 
 存储在 Azure Cosmos 帐户中的数据会自动使用由 Microsoft 管理的密钥（服务管理的密钥）进行无缝加密。 还可以选择使用你自己托管的密钥（客户托管密钥）来添加另一个加密层。
 
@@ -51,7 +49,7 @@ ms.locfileid: "101656510"
 - [如何在 PowerShell 中使用软删除](../key-vault/general/key-vault-recovery.md)
 - [如何在 Azure CLI 中使用软删除](../key-vault/general/key-vault-recovery.md)
 
-## <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a>将访问策略添加到 Azure Key Vault 实例
+## <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a><a id="add-access-policy"></a> 将访问策略添加到 Azure Key Vault 实例
 
 1. 在 Azure 门户中，转到你打算用来托管加密密钥的 Azure Key Vault 实例。 在左侧菜单中选择“访问策略”：
 
@@ -63,7 +61,14 @@ ms.locfileid: "101656510"
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png" alt-text="选择适当的权限":::
 
-1. 在“选择主体”下，选择“未选择任何项”。  然后，搜索“Azure Cosmos DB”主体并选中（为了更容易查找，还可以按主体 ID `a232010e-820c-4083-83bb-3ace5fc29d0b` 搜索，这适用于任何 Azure 区域，主体 ID 为 `57506a73-e302-42a9-b869-6f12d9ec29e9` 的 Azure 政府区域除外）。 最后，选择底部的“选择”。 如果列表中没有“Azure Cosmos DB”主体，可能需要根据本文的[注册资源提供程序](#register-resource-provider)部分所述，重新注册 Microsoft.DocumentDB 资源提供程序）。
+1. 在“选择主体”下，选择“未选择任何项”。 
+
+1. 搜索“Azure Cosmos DB”主体并将其选中（为了更容易查找，还可以按主体 ID `a232010e-820c-4083-83bb-3ace5fc29d0b` 进行搜索，这适用于任何 Azure 区域，主体 ID 为 `57506a73-e302-42a9-b869-6f12d9ec29e9` 的 Azure 政府区域除外）。 如果列表中没有“Azure Cosmos DB”主体，可能需要根据本文的[注册资源提供程序](#register-resource-provider)部分所述，重新注册 Microsoft.DocumentDB 资源提供程序）。
+
+   > [!NOTE]
+   > 这样便可在 Azure Key Vault 访问策略中注册 Azure Cosmos DB 第一方标识。 若要将第一方标识替换为 Azure Cosmos DB 帐户托管标识，请参阅[使用 Azure Key Vault 访问策略中的托管标识](#using-managed-identity)。
+
+1. 选择底部的“选择”。 
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="选择 Azure Cosmos DB 主体":::
 
@@ -226,6 +231,45 @@ az cosmosdb show \
     --query keyVaultKeyUri
 ```
 
+## <a name="using-a-managed-identity-in-the-azure-key-vault-access-policy"></a><a id="using-managed-identity"></a> 在 Azure Key Vault 访问策略中使用托管标识
+
+此访问策略确保你的 Azure Cosmos DB 帐户可以访问你的加密密钥。 这是通过授予对特定 Azure Active Directory (AD) 标识的访问权限来实现的。 支持两种类型的标识：
+
+- Azure Cosmos DB 的第一方标识，可用于授予对 Azure Cosmos DB 服务的访问权限。
+- Azure Cosmos DB 帐户的[托管标识](how-to-setup-managed-identity.md)，可用于专门授予对帐户的访问权限。
+
+由于只有在创建帐户后才能检索系统分配的托管标识，因此你仍然需要首先使用第一方标识创建你的帐户，[如上所述](#add-access-policy)。 那么：
+
+1. 如果在创建帐户过程中未完成此操作，请在你的帐户上[启用系统分配的托管标识](how-to-setup-managed-identity.md)并复制分配的 `principalId`。
+
+1. [如上所述](#add-access-policy)，向 Azure Key Vault 帐户添加新的访问策略，但使用在上一步中复制的 `principalId`，而不是 Azure Cosmos DB 的第一方标识。
+
+1. 更新 Azure Cosmos DB 帐户，以指定在访问 Azure Key Vault 中的加密密钥时要使用系统分配的托管标识。 为此，可执行以下操作：
+
+   - 在帐户的 Azure 资源管理器模板中指定以下属性：
+
+     ```json
+     {
+         "type": " Microsoft.DocumentDB/databaseAccounts",
+         "properties": {
+             "defaultIdentity": "SystemAssignedIdentity",
+             // ...
+         },
+         // ...
+     }
+     ```
+
+   - 使用 Azure CLI 更新帐户：
+
+     ```azurecli
+     resourceGroupName='myResourceGroup'
+     accountName='mycosmosaccount'
+     
+     az cosmosdb update --resource-group $resourceGroupName --name $accountName --default-identity "SystemAssignedIdentity"
+     ```
+
+1. （可选）然后从 Azure Key Vault 访问策略中删除 Azure Cosmos DB 第一方标识。
+
 ## <a name="key-rotation"></a>密钥轮换
 
 可以通过两种方式来轮换 Azure Cosmos 帐户使用的客户托管密钥。
@@ -295,9 +339,9 @@ Azure Cosmos 帐户中存储的所有数据都将通过客户托管密钥加密�
 
 此功能目前仅适用于新帐户。
 
-### <a name="is-it-possible-to-use-customer-managed-keys-in-conjunction-with-the-azure-cosmos-db-analytical-store"></a>可否结合使用客户管理的密钥和 Azure Cosmos DB [分析存储](analytical-store-introduction.md)？
+### <a name="is-it-possible-to-use-customer-managed-keys-in-conjunction-with-the-azure-cosmos-db-analytical-store"></a>能否将客户管理的密钥与 Azure Cosmos DB [分析存储](analytical-store-introduction.md)结合使用？
 
-可以，但目前需要对帐户进行额外配置。 请联系 [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) 以了解详细信息。
+可以，但在启用分析存储之前，必须在 Azure Key Vault 访问策略中[使用 Azure Cosmos DB 帐户的托管标识](#using-managed-identity)。
 
 ### <a name="is-there-a-plan-to-support-finer-granularity-than-account-level-keys"></a>是否有计划支持比帐户级别密钥更精细的粒度？
 

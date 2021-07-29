@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 03/31/2021
 ms.author: jlian
-ms.openlocfilehash: d36a7917693aef9063ade473759f2f451d3a677f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 834ccc850a3099857dc1b88e45b0c0c3ee3a186c
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98234012"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109486442"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>IoT 中心的传输层安全性 (TLS) 支持
 
@@ -24,9 +24,13 @@ TLS 1.0 和 1.1 被视为旧版，我们已计划弃用这两个版本。 有关
 
 在 TLS 握手期间，IoT 中心会提供 RSA 加密的服务器证书以连接客户端。 它的根是 Baltimore Cybertrust 根 CA。 最近，我们推出了对 TLS 服务器证书的更改，它现在由新的中间证书颁发机构 (ICA) 颁发。 有关详细信息，请参阅 [IoT 中心 TLS 证书更新](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/)。
 
+### <a name="4kb-size-limit-on-renewal"></a>针对续订的 4KB 大小限制
+
+在续订 IoT 中心服务器端证书期间，会在 IoT 中心服务端进行检查以防止 `Server Hello` 的大小超过 4KB。 客户端应为传入的 TLS 最大内容长度缓冲区设置至少 4KB 的 RAM，以便设置为 4KB 限制的现有设备在证书续订后继续像以前一样工作。 对于受约束的设备，IoT 中心支持[预览版中的 TLS 最大片段长度协商](#tls-maximum-fragment-length-negotiation-preview)。 
+
 ### <a name="elliptic-curve-cryptography-ecc-server-tls-certificate-preview"></a>椭圆曲线加密 (ECC) 服务器 TLS 证书（预览版）
 
-IoT 中心 ECC 服务器 TLS 证书提供公共预览版。 在为 RSA 证书提供相似安全性的同时，ECC 证书验证（具有仅限 ECC 的加密套件）最多使用 40% 的计算、内存和带宽。 由于 IoT 设备的配置文件和内存较少，因此这些节省的资源对于 IoT 设备而言至关重要，并且对于支持网络带宽受限的环境中的用例也至关重要。 
+IoT 中心 ECC 服务器 TLS 证书提供公共预览版。 在为 RSA 证书提供相似安全性的同时，ECC 证书验证（具有仅限 ECC 的加密套件）最多使用 40% 的计算、内存和带宽。 由于 IoT 设备的配置文件和内存较少，因此这些节省的资源对于 IoT 设备而言至关重要，并且对于支持网络带宽受限的环境中的用例也至关重要。 ECC 服务器证书的根是 DigiCert 全局根 G3。
 
 预览 IoT 中心的 ECC 服务器证书：
 
@@ -129,7 +133,7 @@ IoT Edge 设备可以配置为在与 IoT 中心通信时使用 TLS 1.2。 为此
 
 ## <a name="device-authentication"></a>设备身份验证
 
-成功进行 TLS 握手后，IoT 中心可以使用对称密钥或 X.509 证书对设备进行身份验证。 对于基于证书的身份验证，可以使用任何 X.509 证书，包括 ECC。 IoT 中心根据所提供的指纹或证书颁发机构 (CA) 对证书进行验证。 若要了解详细信息，请参阅[支持的 X.509 证书](iot-hub-devguide-security.md#supported-x509-certificates)。
+成功进行 TLS 握手后，IoT 中心可以使用对称密钥或 X.509 证书对设备进行身份验证。 对于基于证书的身份验证，可以使用任何 X.509 证书，包括 ECC。 IoT 中心根据所提供的指纹或证书颁发机构 (CA) 对证书进行验证。 若要了解详细信息，请参阅[支持的 X.509 证书](iot-hub-dev-guide-sas.md#supported-x509-certificates)。
 
 ## <a name="tls-maximum-fragment-length-negotiation-preview"></a>TLS 最大片段长度协商（预览）
 

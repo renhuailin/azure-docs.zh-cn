@@ -1,55 +1,51 @@
 ---
 title: 托管标识
 description: 媒体服务可与 Azure 托管标识结合使用。
-keywords: ''
 services: media-services
 author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: conceptual
-ms.date: 1/29/2020
+ms.date: 05/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 0bbfb54d6ba7483e96633bdf05bb580e5517d216
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 02f832c7fc25003950d6a112d951c07d1332e08a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277736"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454361"
 ---
 # <a name="managed-identities"></a>托管标识
 
 开发人员面临的一个共同挑战是如何管理密码和凭据，以确保不同服务之间的通信安全。 在 Azure 上，托管标识可为 Azure AD 中的 Azure 资源提供标识并使用它来获取 Azure Active Directory (Azure AD) 令牌，从而使开发人员无需管理凭据。
 
-目前有以下两种方案可将托管标识与媒体服务结合使用：
+## <a name="media-services-managed-identity-scenarios"></a>媒体服务托管标识方案
 
-- 使用媒体服务帐户的托管标识来访问存储帐户。
+目前有以下三种方案可将托管标识与媒体服务配合使用：
 
-- 使用媒体服务帐户的托管标识访问 Key Vault 以访问客户密钥。
+- [向媒体服务帐户授予对 Key Vault 的访问权限以启用客户管理的密钥](security-encrypt-data-managed-identity-cli-tutorial.md)
+- [授予媒体服务帐户对存储帐户的访问权限，以允许媒体服务绕过 Azure 存储网络 ACL](security-access-storage-managed-identity-cli-tutorial.md)
+- 允许其他服务（例如 VM 或 [Azure Functions](security-function-app-managed-identity-cli-tutorial.md)）访问媒体服务
 
-以下两部分介绍这两种方案的步骤。
+在前两个方案中，托管标识用于向媒体服务帐户授予对其他服务的访问权限。  在第三个方案中，服务具有用于访问媒体服务的托管标识。
 
-## <a name="use-the-managed-identity-of-the-media-services-account-to-access-storage-accounts"></a>使用媒体服务帐户的托管标识来访问存储帐户
+:::image type="content" source="media/diagrams/managed-identities-scenario-comparison.svg" alt-text="托管标识方案比较":::
 
-1. 创建包含托管标识的媒体服务帐户。
-1. 授予托管标识主体对你所拥有存储帐户的访问权限。
-1. 然后媒体服务可以使用托管标识代表你访问存储帐户。
+> [!NOTE]
+> 这些方案可以合并。 你可以为媒体服务帐户创建托管标识（例如，为了访问客户管理的密钥而这样做），还可以为 Azure Functions 资源创建托管标识，以便访问媒体服务帐户。
 
-## <a name="use-the-managed-identity-of-the-media-services-account-to-access-key-vault-to-access-customer-keys"></a>使用媒体服务帐户的托管标识访问 Key Vault 以访问客户密钥
+## <a name="tutorials-and-how-tos"></a>教程和操作说明
 
-1. 创建包含托管标识的媒体服务帐户。
-1. 授予托管标识主体对你所拥有 Key Vault 的访问权限。
-1. 将媒体服务帐户配置为使用基于客户密钥的帐户加密。
-1. 媒体服务使用托管标识代表你访问 Key Vault。
+请尝试这些教程，获取一些将托管标识与媒体服务配合使用的实践体验。
 
-有关客户管理的密钥和 Key Vault 的详细信息，请参阅[创建自己的密钥（客户管理的密钥）用于媒体服务](concept-use-customer-managed-keys-byok.md)
+- [CLI：使用 Key Vault 中的密钥将数据加密到媒体服务帐户中](security-encrypt-data-managed-identity-cli-tutorial.md)
+- [CLI：允许媒体服务访问配置为阻止来自未知 IP 地址的请求的存储帐户](security-access-storage-managed-identity-cli-tutorial.md)
+- [CLI：授予函数应用访问媒体服务帐户的权限](security-function-app-managed-identity-cli-tutorial.md)
+- [门户：使用 Azure 门户将客户管理的密钥或 BYOK 与媒体服务配合使用](security-customer-managed-keys-portal-tutorial.md)
+- [POSTMAN/REST：将客户管理的密钥或 BYOK 与媒体服务 REST API 配合使用](security-customer-managed-keys-rest-postman-tutorial.md)
 
-## <a name="tutorials"></a>教程
-
-这些教程包括上述两种场景。
-
-- [使用 Azure 门户将客户管理的密钥或 BYOK 与媒体服务配合使用](security-customer-managed-keys-portal-tutorial.md)
-- [将客户管理的密钥或 BYOK 与媒体服务 REST API 配合使用](security-customer-managed-keys-rest-postman-tutorial.md)。
-
-## <a name="next-steps"></a>后续步骤
+## <a name="further-reading"></a>延伸阅读
 
 若要详细了解托管标识可以为你和你的 Azure 应用程序执行哪些操作，请参阅 [Azure AD 托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
+
+若要详细了解 Azure Functions，请参阅[关于 Azure Functions](../../azure-functions/functions-overview.md)

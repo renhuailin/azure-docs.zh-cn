@@ -1,28 +1,23 @@
 ---
 title: 使用 Azure Maps 绘图错误可视化工具
-description: 本文介绍如何可视化由 Creator（预览版）转换 API 返回的警告和错误。
+description: 本文介绍了如何可视化由 Creator 转换 API 返回的警告和错误。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 04/21/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: db88e347e12783205ea8c31fed0bb374fccb4736
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dcd9ccbcbc2372b5648bf6d5367b2c364a34eb0f
+ms.sourcegitcommit: 5c136a01bddfccb2cc9f7e7e7741e2cf2651ddbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96903575"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111352428"
 ---
-# <a name="using-the-azure-maps-drawing-error-visualizer-with-creator-preview"></a>在 Creator（预览版）中使用 Azure Maps 绘图错误可视化工具
+# <a name="using-the-azure-maps-drawing-error-visualizer-with-creator"></a>在 Creator 中使用 Azure Maps 绘图错误可视化工具
 
-> [!IMPORTANT]
-> Azure Maps Creator 服务目前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-
-绘图错误可视化工具是一款独立 Web 应用，用于显示在转换过程中检测到的[绘图包警告和错误](drawing-conversion-error-codes.md)。 错误可视化工具 Web 应用由一个静态页组成，可以在不连接到 Internet 的情况下使用此页。  可以使用错误可视化工具来根据[绘图包要求](drawing-requirements.md)修复错误和警告。 只有在检测到错误时，[Azure Maps 转换 API](/rest/api/maps/conversion) 才会返回包含错误可视化工具链接的响应。
+绘图错误可视化工具是一款独立 Web 应用，用于显示在转换过程中检测到的[绘图包警告和错误](drawing-conversion-error-codes.md)。 错误可视化工具 Web 应用由一个静态页组成，可以在不连接到 Internet 的情况下使用此页。  可以使用错误可视化工具来根据[绘图包要求](drawing-requirements.md)修复错误和警告。 只有在检测到错误时，[Azure Maps 转换 API](/rest/api/maps/v2/conversion) 才会返回包含错误可视化工具链接的响应。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -30,13 +25,13 @@ ms.locfileid: "96903575"
 
 1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
-3. [创建 Creator（预览版）资源](how-to-manage-creator.md)
+3. [创建 Creator 资源](how-to-manage-creator.md)
 
 本教程使用 [Postman](https://www.postman.com/) 应用，但你也可以选择其他 API 开发环境。
 
 ## <a name="download"></a>下载
 
-1. 将绘图包上传到 Azure Maps Creator 服务（预览版），以获取已上传包的 `udid`。 有关如何上传包的步骤，请参阅[上传绘图包](tutorial-creator-indoor-maps.md#upload-a-drawing-package)。
+1. 将绘图包上传到 Azure Maps Creator 服务，以获取已上传包的 `udid`。 有关如何上传包的步骤，请参阅[上传绘图包](tutorial-creator-indoor-maps.md#upload-a-drawing-package)。
 
 2. 至此，绘图包已上传，现在我们将使用已上传包的 `udid` 将此包转换为定位数据。 有关如何转换包的步骤，请参阅[转换绘图包](tutorial-creator-indoor-maps.md#convert-a-drawing-package)。
 
@@ -64,7 +59,7 @@ ms.locfileid: "96903575"
 在从 `diagnosticPackageLocation` 链接下载的压缩包中，你会找到两个文件。
 
 * VisualizationTool.zip：包含绘制错误可视化工具的源代码、媒体和网页。
-* ConversionWarningsAndErrors.json：包含绘图错误可视化工具使用的警告、错误和其他详细信息的格式化列表。
+* ConversionWarningsAndErrors.json：包含一个格式化列表，其中有绘图错误可视化工具使用的警告、错误和其他详细信息。
 
 解压缩 VisualizationTool.zip 文件夹。 它包含以下项：
 
@@ -85,7 +80,7 @@ ms.locfileid: "96903575"
 
 :::image type="content" source="./media/drawing-errors-visualizer/start-page.png" alt-text="绘图错误可视化工具应用 - 起始页":::
 
-ConversionWarningsAndErrors.json 文件已被置于下载目录的根目录下。 若要加载 ConversionWarningsAndErrors.json，可以将此文件拖放到框中，也可以单击拖放框，在“文件资源管理器”对话框中查找此文件，然后上传此文件。
+ConversionWarningsAndErrors.json 文件已被置于下载目录的根目录下。 若要加载 ConversionWarningsAndErrors.json，请将文件拖放到框中。 或者，单击该框，在 `File Explorer dialogue` 中找到该文件，然后上传该文件。
 
 :::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="绘制错误可视化工具应用 - 拖放以加载数据":::
 
@@ -95,13 +90,16 @@ ConversionWarningsAndErrors.json 文件已被置于下载目录的根目录下�
 
 ## <a name="next-steps"></a>后续步骤
 
-在[绘图包符合要求](drawing-requirements.md)后，你就可以使用 [Azure Maps 数据集服务](/rest/api/maps/conversion)将绘图包转换为数据集了。 然后，可以使用“室内定位”Web 模块来开发应用。 若要了解详细信息，请阅读以下文章：
+在[绘图包符合要求](drawing-requirements.md)后，你就可以使用 [Azure Maps 数据集服务](/rest/api/maps/v2/conversion)将绘图包转换为数据集了。 然后，可以使用“室内定位”Web 模块来开发应用。 若要了解详细信息，请阅读以下文章：
 
 > [!div class="nextstepaction"]
 > [绘图转换错误代码](drawing-conversion-error-codes.md)
 
 > [!div class="nextstepaction"]
-> [用于室内地图的 Creator（预览版）](creator-indoor-maps.md)
+> [绘图包指南](drawing-package-guide.md)
+
+> [!div class="nextstepaction"]
+> [适用于室内定位的 Creator](creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
 > [使用“室内定位”模块](how-to-use-indoor-module.md)

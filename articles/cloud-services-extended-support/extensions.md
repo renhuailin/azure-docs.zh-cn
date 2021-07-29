@@ -8,16 +8,22 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 58377252e163894cdfee83d9c68146a9131f94c5
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: c9ee7e475957ca41c9094cab3b149f53e48a3764
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288771"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111900893"
 ---
 # <a name="extensions-for-cloud-services-extended-support"></a>云服务扩展（外延支持）
 
-扩展是小型应用程序，用于在角色上提供部署后配置和自动化任务。 例如，在云服务（外延支持）部署期间，你可以通过使用远程桌面扩展在你的角色中启用远程桌面连接。  
+扩展是小型应用程序，用于在角色上提供部署后配置和自动化任务。 例如，在云服务（外延支持）部署期间，你可以通过使用远程桌面扩展在你的角色中启用远程桌面连接。 
+
+## <a name="key-vault-extension"></a>Key Vault 扩展
+
+通过 Key Vault VM 扩展，可自动刷新 Azure Key Vault 中存储的证书。 具体而言，该扩展监视一系列观测到的存储在密钥保管库中的证书，并在检测到更改时检索并安装相应的证书。 它还允许跨区域/跨订阅引用云服务的证书（外延支持）。
+
+有关详细信息，请参阅[配置云服务的密钥保管库扩展（外延支持）](https://docs.microsoft.com/azure/cloud-services-extended-support/enable-key-vault-virtual-machine)
 
 ## <a name="remote-desktop-extension"></a>远程桌面扩展
 

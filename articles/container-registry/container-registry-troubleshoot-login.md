@@ -3,12 +3,12 @@ title: 注册表登录故障排除
 description: 登录到 Azure 容器注册表时的常见问题的症状、原因和解决方法
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 47186cc8256836e5367ecee520787b67662eb42f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d8579d2a590f722c40dc3582a03efb602dde6520
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780724"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078141"
 ---
 # <a name="troubleshoot-registry-login"></a>注册表登录故障排除
 
@@ -131,11 +131,11 @@ az acr login --name myregistry
 
 ## <a name="advanced-troubleshooting"></a>高级故障排除
 
-如果在注册表中启用了[收集资源日志](container-registry-diagnostics-audit-logs.md)，请查看 ContainterRegistryLoginEvents 日志。 此日志存储身份验证事件和状态，包括传入标识和 IP 地址。 查询此日志可获得有关[注册表身份验证失败](container-registry-diagnostics-audit-logs.md#registry-authentication-failures)的信息。 
+如果在注册表中启用了[收集资源日志](monitor-service.md)，请查看 ContainterRegistryLoginEvents 日志。 此日志存储身份验证事件和状态，包括传入标识和 IP 地址。 查询此日志可获得有关[注册表身份验证失败](monitor-service.md#registry-authentication-failures)的信息。 
 
 相关链接：
 
-* [用于诊断评估和审核的日志](container-registry-diagnostics-audit-logs.md)
+* [监视 Azure 容器注册表](monitor-service.md)
 * [容器注册表常见问题解答](container-registry-faq.md)
 * [Azure 容器注册表的最佳做法](container-registry-best-practices.md)
 

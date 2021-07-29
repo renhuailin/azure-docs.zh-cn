@@ -7,18 +7,18 @@ ms.date: 01/08/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: c909fd1438488e3625f3674dd26f959cf6fad79f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e93da2bec3753ba6efda2b4eb16d6ef78b42234b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98127997"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747208"
 ---
 # <a name="use-location-data-in-an-azure-iot-central-solution"></a>使用 Azure IoT Central 解决方案中的位置数据
 
 本文介绍如何在 IoT Central 应用程序中使用位置数据。 连接到 IoT Central 的设备可将位置数据作为遥测流发送，也可使用设备属性来报告位置数据。
 
-解决方案生成器可使用位置数据执行以下操作：
+位置数据可用于：
 
 * 在地图上绘制报告的位置。
 * 在地图上绘制遥测位置历史记录。

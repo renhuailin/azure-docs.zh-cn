@@ -1,10 +1,10 @@
 ---
-title: Azure Active Directory 门户中的“审核活动”报告 | Microsoft Docs
-description: Azure Active Directory 门户中的审核活动报告简介
+title: Azure Active Directory 中的审核日志 | Microsoft Docs
+description: Azure Active Directory 中的审核日志概述。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
 ms.service: active-directory
@@ -13,44 +13,103 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/17/2020
+ms.date: 04/30/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5aa8f675e3fd36fbebfecf42db0f02b0f0f00115
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f7ccca25bf140a51755c229f8c438e053a7ac7de
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95995975"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319246"
 ---
-# <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“审核活动”报告 
+# <a name="audit-logs-in-azure-active-directory"></a>Azure Active Directory 中的审核日志 
 
-通过 Azure Active Directory (Azure AD) 报告，可以获取确定环境运行状况所需的信息。
+作为 IT 管理员，你想知道你的 IT 环境的运行状况。 你可通过有关系统运行状况的信息来评估是否需要响应潜在问题以及响应方式。 
+
+为了帮助你实现此目标，Azure Active Directory 门户为你提供了访问三个活动日志的权限：
+
+- **[登录](concept-sign-ins.md)** - 有关登录以及用户如何使用资源的信息。
+- **[审核](concept-audit-logs.md)** - 有关应用于租户的更改（如用户和组管理）或应用于租户资源的更新的信息。
+- **[预配](concept-provisioning-logs.md)** - 由预配服务执行的活动（例如在 ServiceNow 中创建组，或从 Workday 导入用户）。
+
+本文概述了审核日志。
 
 
+## <a name="what-is-it"></a>它是什么？
 
-报告体系结构包括以下组件：
+通过 Azure AD 中的审核日志，可以访问系统活动的记录以实现符合性。
+此日志最常见的视图基于以下类别：
 
-- **活动** 
-    - **登录** - [登录报告](concept-sign-ins.md)提供有关托管应用程序的使用情况和用户登录活动的信息。
-    - **审核日志** - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 审核日志的示例包括对 Azure AD 中的任何资源（例如添加或删除用户、应用、组、角色和策略）所做的更改。
-    - “预配日志” - [预配日志](./concept-provisioning-logs.md)允许客户通过预配服务监视活动，例如创建用户（从 Workday 导入）或者在 ServiceNow 中创建组。 
-- **安全性** 
-    - **风险登录** - [风险登录](../identity-protection/overview-identity-protection.md)是指可能由非用户帐户合法拥有者进行的登录尝试。 
-    - **已标记为存在风险的用户** - [风险用户](../identity-protection/overview-identity-protection.md)是指可能已泄露的用户帐户。
+- 用户管理
 
-本文概述了审核报告。
+- 组管理
  
-## <a name="who-can-access-the-data"></a>谁可以访问该数据？
-
-* 具有 **安全管理员**、**安全读取者**、**报告读取者**、**全局读取者** 或 **全局管理员** 角色的用户
-
-## <a name="audit-logs"></a>审核日志
-
-Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访问审核报告，请在 **Azure Active Directory** 的“监视”部分中选择“审核日志”   。 
+- 应用程序管理  
 
 
+使用以用户为中心的视图，可以获得如下问题的答案：
+
+- 已对用户应用了哪些类型的更新？
+
+- 更改了多少用户？
+
+- 更改了多少密码？
+
+- 管理员在目录中做了什么？
+
+
+使用以组为中心的视图，可以获得如下问题的答案：
+
+- 添加了哪些组？
+
+- 是否存在成员身份已更改的组？
+
+- 是否已更改组的所有者？
+
+- 向组或用户分配了哪些许可证？
+
+使用以应用程序为中心的视图，可以获得如下问题的答案：
+
+- 添加或更新了哪些应用程序？
+
+- 删除了哪些应用程序？
+
+- 应用程序的服务主体是否有变化？
+
+- 应用程序的名称是否已更改？
+
+- 哪些用户同意使用应用程序？
+
+ 
+## <a name="what-license-do-i-need"></a>需要哪个许可证？
+
+所有版本的 Azure AD 中都提供了审核活动报告。
+
+## <a name="who-can-access-it"></a>谁可以访问它们？
+
+若要访问审核日志，需要具有以下角色之一： 
+
+- 安全管理员
+- 安全读取者
+- 报表读取者
+- 全局读取者
+- 全局管理员角色
+
+## <a name="where-can-i-find-it"></a>在哪里可以找到这样的脚本？
+
+Azure 门户提供了几种用于访问日志的选项。 例如，在 Azure Active Directory 菜单上，可以在“监视”部分打开日志。  
+
+![打开审核日志](./media/concept-audit-logs/audit-logs-menu.png)
+
+此外，可以使用[此链接](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/ProvisioningEvents)直接访问审核日志。
+
+
+还可以通过 Microsoft Graph API 访问审核日志。
+
+
+## <a name="what-is-the-default-view&quot;></a>什么是默认视图？
 
 审核日志有一个默认列表视图，用于显示：
 
@@ -61,7 +120,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 - 目标
 - 活动的发起者/参与者（人员）
 
-![审核日志](./media/concept-audit-logs/listview.png "审核日志")
+![审核日志](./media/concept-audit-logs/listview.png &quot;审核日志")
 
 单击工具栏中的“列”即可自定义列表视图。 
 
@@ -74,7 +133,6 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 选择列表视图中的某个项可获得更详细的信息。
 
 ![选择项](./media/concept-audit-logs/details.png "选择项")
-
 
 ## <a name="filtering-audit-logs"></a>筛选审核日志
 
@@ -162,54 +220,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 ![下载数据](./media/concept-audit-logs/download.png "下载数据")
 
-## <a name="audit-logs-shortcuts"></a>审核日志快捷方式
 
-除了 **Azure Active Directory**，Azure 门户还提供了两个额外的进行数据审核的入口点：
-
-- 用户和组
-- 企业应用程序
-
-### <a name="users-and-groups-audit-logs"></a>用户和组审核日志
-
-使用基于用户和组的审核报表，可以获得如下问题的答案：
-
-- 已对用户应用了哪些类型的更新？
-
-- 更改了多少用户？
-
-- 更改了多少密码？
-
-- 管理员在目录中做了什么？
-
-- 添加了哪些组？
-
-- 是否存在成员身份已更改的组？
-
-- 是否已更改组的所有者？
-
-- 向组或用户分配了哪些许可证？
-
-如果只想查看与用户相关的审核数据，可以在“用户”选项卡“监视”部分中的“审核日志”下找到筛选视图  。此入口点已将 **UserManagement** 作为预先选择的类别。
-
-![User](./media/concept-audit-logs/users.png "用户")
-
-如果只想查看与组相关的审核数据，可以在“组”选项卡“监视”部分中的“审核日志”下找到筛选视图  。此入口点已将 **GroupManagement** 作为预先选择的类别。
-
-![筛选组](./media/concept-audit-logs/groups.png "筛选组")
-
-### <a name="enterprise-applications-audit-logs"></a>企业应用程序审核日志
-
-通过基于应用程序的审核报表，可以获得如下问题的答案：
-
-* 添加或更新了哪些应用程序？
-* 删除了哪些应用程序？
-* 应用程序的服务主体是否有变化？
-* 应用程序的名称是否已更改？
-* 哪些用户同意使用应用程序？
-
-如果希望查看与应用程序相关的审核数据，可以在“企业应用程序”边栏选项卡的“活动”部分中的“审核日志”下方查找筛选视图。 此入口点已将“企业应用程序”预先选择为“应用程序类型”。
-
-![企业应用程序](./media/concept-audit-logs/enterpriseapplications.png "企业应用程序")
 
 ## <a name="microsoft-365-activity-logs"></a>Microsoft 365 活动日志
 
@@ -220,5 +231,6 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure AD 审核活动参考](reference-audit-activities.md)
-- [Azure AD 报告保留参考](reference-reports-data-retention.md)
+- [Azure AD 日志保留参考](reference-reports-data-retention.md)
 - [Azure AD 日志延迟参考](reference-reports-latencies.md)
+- [审核报告中的未知参与者](/troubleshoot/azure/active-directory/unknown-actors-in-audit-reports)

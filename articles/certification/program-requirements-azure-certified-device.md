@@ -1,20 +1,20 @@
 ---
-title: Azure 认证设备要求
-description: Azure 认证设备计划要求
+title: Azure 认证设备的认证要求
+description: Azure 认证设备的认证要求
 author: cbroad
 ms.author: cbroad
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Azure Certified Device Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 497ffa4b3026491d6aa95df87708b3b1f2f1619e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 8e68cf180927e000c93c4c2d73d25d4ae6ccf0f8
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308279"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538137"
 ---
-# <a name="azure-certified-device-requirements"></a>Azure 认证设备要求 
+# <a name="azure-certified-device-certification-requirements"></a>Azure 认证设备的认证要求 
 （之前称为 IoT 中心）
 
 本文档概述了将在 Azure 认证设备目录中呈现的设备特定功能。 功能是单一设备属性，可以是软件实现，也可以是软件和硬件实现的组合。 
@@ -51,7 +51,7 @@ Azure 认证设备认证的承诺包括：
 | **适用于**          | 任何设备                                                   |
 | **OS**                  | 不可知                                                     |
 | **验证类型**     | 自动                                                    |
-| **验证**          | 设备支持轻松输入目标 DPS ID 范围所有权，而无需重新编译嵌入代码。 Microsoft 提供了[门户工作流](https://certify.azure.com)来执行测试，以验证设备是否支持 DPS 1. 用户必须选择一种证明方法（X.509、TPM 和 SAS 密钥）2. 根据证明方法，用户需要执行相应的操作（例如 a) 将 X.509 证书上传到 AICS 托管的 DPS 范围；b) 在设备中实现 SAS 密钥或认可密钥）  |
+| **验证**          | 设备支持轻松输入目标 DPS ID 范围所有权。 Microsoft 提供了 [门户工作流](https://certify.azure.com)来执行这些测试，以验证设备是否支持 DPS **1.** 用户必须选择一种证明方法（X.509、TPM 和 SAS 密钥）2. 根据证明方法，用户需要执行相应的操作（例如 a) 将 X.509 证书上传到 AICS 托管的 DPS 范围；b) 在设备中实现 SAS 密钥或认可密钥）  |
 | **资源**           | [设备预配服务概述](../iot-dps/about-iot-dps.md) |
 
 **[如果已实现] 云到设备：测试的目的是确保可以将消息从云发送到设备**                                                              
@@ -86,3 +86,14 @@ Azure 认证设备认证的承诺包括：
 | **验证类型**                       | 自动                                                       |
 | **验证**                            | 设备必须将任何遥测架构发送到 IoT 中心。 Microsoft 提供了[门户工作流](https://certify.azure.com)来执行测试。 设备孪生属性（如果已实现）1. AICS 验证设备孪生 JSON 中的读/写属性 2. 用户必须指定要更改的 JSON 有效负载 3. AICS 验证从 IoT 中心发送的指定必需属性和设备收到的 ACK 消息 |
 | **资源**                             | a) [认证步骤](./overview.md)（具有所有附加资源）b) [将设备孪生与 IoT 中心配合使用](../iot-hub/iot-hub-devguide-device-twins.md)  |
+
+[必需] 限制重新编译：此策略的目的是确保在默认情况下设备应该不会需要用户重新编译代码来部署该设备。
+
+| **名称**                                  | AzureCertified.Policy.LimitRecompile                                      |
+| ----------------------------------------- | ------------------------------------------------------------ |
+| **目标可用性**                   | 策略                                            |
+| **适用于**                            | 任何设备                                                   |
+| **OS**                                    | 不可知                                                     |
+| **验证类型**                       | 策略                                                       |
+| **验证**                            | 为了简化用户的设备配置，我们要求所有设备都可以配置为连接到 Azure，无需重新编译和部署设备源代码。 其中包括 DPS 信息（例如范围 ID），应将此信息设置为配置设置，并且不应进行编译。 但是，如果你的设备包含某些安全硬件，或者，如果用户的环境确有必要进行编译和部署代码，请联系认证团队，以请求进行例外评审。 |
+| **资源**                             | a) [设备预配服务概述](../iot-dps/about-iot-dps.md)，b) [DPS ID 范围传送的示例配置文件](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/serializer/samples/devicetwin_simplesample)  |

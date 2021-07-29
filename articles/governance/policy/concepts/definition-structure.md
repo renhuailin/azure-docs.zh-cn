@@ -1,14 +1,14 @@
 ---
 title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
-ms.date: 02/17/2021
+ms.date: 05/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: cebba214671cfab75a3f44720578b51febacdfcd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 926ee1d44d0f0ce523e883c36203fb278023e6c4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102215062"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108753058"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -117,7 +117,7 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
 
 ## <a name="metadata"></a>Metadata
 
-`metadata` 可选属性用于存储关于策略定义的信息。 客户可在 `metadata` 中定义对其组织有用的任何属性和值。 但是，Azure 策略和内置策略有一些相同属性。每个 `metadata` 属性有 1024 个字符的限制。
+`metadata` 可选属性用于存储关于策略定义的信息。 客户可在 `metadata` 中定义对其组织有用的任何属性和值。 但是，Azure Policy 和内置项使用一些常见属性。每个 `metadata` 属性的限制为 1024 个字符。
 
 ### <a name="common-metadata-properties"></a>常见元数据属性
 
@@ -131,7 +131,7 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
 
 ## <a name="parameters"></a>parameters
 
-参数可减少策略定义的数量，有助于简化策略管理。 使用类似窗体中字段的参数 - `name`、`address`、`city`、`state`。 这些参数始终不变，但其值会基于窗体中的各填写内容变化。
+参数可减少策略定义的数量，有助于简化策略管理。 可以将参数想象成窗体上的字段 - `name`、`address`、`city`、`state`。 这些参数始终不变，但其值会基于窗体中的各填写内容变化。
 构建策略时，参数同样适用。 如果在策略定义中包括参数，就可以通过使用不同的值重新使用策略以执行不同方案。
 
 > [!NOTE]
@@ -147,10 +147,10 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
   - `description`：说明参数的用途。 可以用来提供可接受值的示例。
   - `displayName`：在门户中显示的用于参数的友好名称。
   - `strongType`：（可选）通过门户分配策略定义时使用。 提供上下文感知列表。 有关详细信息，请参阅 [strongType](#strongtype)。
-  - `assignPermissions`：（可选）设置为“true”，使 Azure 门户在策略分配过程中创建角色分配。 如果希望在分配范围之外分配权限，此属性会很有用。 策略中每个角色定义（或计划中所有策略中的每个角色定义）都有一个角色分配。 参数值必须是有效的资源或范围。
+  - `assignPermissions`：（可选）设置为“true”，使 Azure 门户在策略分配过程中创建角色分配。 如果希望在分配范围之外分配权限，此属性会很有用。 策略中的每个角色定义（或计划中所有策略中的每个角色定义）都有一个角色分配。 参数值必须是有效的资源或范围。
 - `defaultValue`：（可选）设置分配的参数的值（如果值未给定）。
   在更新已分配的现有策略定义时必须使用此项。
-- `allowedValues`：（可选）提供参数在分配过程中所接受值的数组。 允许的值比较区分大小写。 
+- `allowedValues`：（可选）提供参数在分配过程中所接受值的数组。 允许值在比较时区分大小写。
 
 例如，可以定义策略定义来限制资源的部署位置。 **allowedLocations** 可以是该策略定义的一个参数。 每次分配策略定义来限制接受的值时，会使用此参数。 使用 **strongType** 可以在通过门户完成分配时提供增强的体验：
 
@@ -188,7 +188,7 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
 
 ### <a name="strongtype"></a>strongType
 
-在 `metadata` 属性中，可以使用 **strongType** 提供 Azure 门户中的选项多选列表。 strongType 可以是受支持的资源类型，也可以是允许值。 若要确定资源类型是否对 strongType有效，请使用 [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)。 资源类型“StrongType”的格式为 `<Resource Provider>/<Resource Type>`。 例如 `Microsoft.Network/virtualNetworks/subnets`。
+在 `metadata` 属性中，可以使用 strongType 来提供 Azure 门户中的一个包含选项的多选列表。 strongType 可以是受支持的资源类型，也可以是允许值。 若要确定某个资源类型是否对 strongType 有效，请使用 [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)。 资源类型“StrongType”的格式为 `<Resource Provider>/<Resource Type>`。 例如 `Microsoft.Network/virtualNetworks/subnets`。
 
 支持部分不是由 **Get-AzResourceProvider** 返回的资源类型。 这些类型包括：
 
@@ -487,7 +487,7 @@ strongType 的非资源类型允许值包括：
 以下属性与“值计数”结合使用：
 
 - count.value（必需）：要评估的数组。
-- count.name（必需）：索引名称，由英文字母和数字构成。 定义在当前迭代中评估的数组成员的值的名称。 该名称用于引用 `count.where` 条件内的当前值。 当“count”表达式不在另一个“count”表达式的子级中时，此项为可选 。 如果未提供此项，则索引名称将隐式设置为 `"default"`。
+- count.name（必需）：索引名称，由英文字母和数字构成。 定义在当前迭代中评估的数组成员的值的名称。 该名称用于引用 `count.where` 条件内的当前值。 当 count 表达式不在另一个 count 表达式的子级中时，此项为可选 。 如果未提供此项，则索引名称将隐式设置为 `"default"`。
 - **count.where**（可选）：用于针对 `count.value` 的每个数组成员分别进行评估的条件表达式。 如果未提供此属性，则所有数组成员都将评估为 true。 任何[条件](../concepts/definition-structure.md#conditions)都可在此属性内使用。 可在此属性中使用[逻辑运算符](#logical-operators)来创建复杂的评估要求。 可以通过调用 [current](#the-current-function) 函数来访问当前枚举的数组成员的值。
 - **\<condition\>** （必需）：该值将与满足 `count.where` 条件表达式的项数进行比较。 应使用数字[条件](../concepts/definition-structure.md#conditions)。
 
@@ -497,19 +497,19 @@ strongType 的非资源类型允许值包括：
 
 #### <a name="the-current-function"></a>current 函数
 
-`current()` 函数仅在 `count.where` 条件内可用。 它返回当前通过“count”表达式评估枚举的数组成员的值。
+`current()` 函数仅在 `count.where` 条件内可用。 它返回当前通过 count 表达式评估枚举的数组成员的值。
 
 值计数用法
 
 - `current(<index name defined in count.name>)`. 例如：`current('arrayMember')`。
-- `current()`. 只有当“值计数”表达式不是另一个“count”表达式的子级时，才允许使用此函数 。 返回与上面的值相同的值。
+- `current()`. 只有当 value count 表达式不是另一个 count 表达式的子级时，才允许使用此函数 。 返回与上面的值相同的值。
 
 如果调用返回的值是一个对象，则支持属性访问器。 例如：`current('objectArrayMember').property`。
 
 字段计数用法
 
 - `current(<the array alias defined in count.field>)`. 例如，`current('Microsoft.Test/resource/enumeratedArray[*]')`。
-- `current()`. 只有当“字段计数”表达式不是另一个“count”表达式的子级时，才允许使用此函数 。 返回与上面的值相同的值。
+- `current()`. 只有当 field count 表达式不是另一个 count 表达式的子级时，才允许使用此函数 。 返回与上面的值相同的值。
 - `current(<alias of a property of the array member>)`. 例如，`current('Microsoft.Test/resource/enumeratedArray[*].property')`。
 
 #### <a name="field-count-examples"></a>字段计数示例
@@ -720,6 +720,7 @@ strongType 的非资源类型允许值包括：
 ```
 
 策略:
+
 ```json
 {
     "count": {
@@ -799,30 +800,32 @@ Azure Policy 支持以下类型的效果：
 - `addDays(dateTime, numberOfDaysToAdd)`
   - **dateTime**：[必需] 字符串 - 采用通用 ISO 8601 日期/时间格式“yyyy-MM-ddTHH:mm:ss.FFFFFFFZ”的字符串
   - numberOfDaysToAdd：[必需] 整数 - 要增加的天数
+
 - `field(fieldName)`
   - fieldName：[必需] 字符串 - 要检索的[字段](#fields)名称
   - 从 If 条件正在评估的资源返回该字段的值。
   - `field` 主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
+
 - `requestContext().apiVersion`
   - 返回已触发策略评估的请求的 API 版本（示例：`2019-09-01`）。
     该值是 PUT/PATCH 请求中用于对资源创建/更新进行评估的 API 版本。 在对现有资源进行符合性评估时，将会一律使用最新的 API 版本。
+
 - `policy()`
   - 返回有关正在评估的策略的下列信息。 可以从返回的对象访问属性，例如：`[policy().assignmentId]`。
-  
-  ```json
-  {
-    "assignmentId": "/subscriptions/ad404ddd-36a5-4ea8-b3e3-681e77487a63/providers/Microsoft.Authorization/policyAssignments/myAssignment",
-    "definitionId": "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c",
-    "setDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/42a694ed-f65e-42b2-aa9e-8052e9740a92",
-    "definitionReferenceId": "StorageAccountNetworkACLs"
-  }
-  ```
+
+    ```json
+    {
+      "assignmentId": "/subscriptions/ad404ddd-36a5-4ea8-b3e3-681e77487a63/providers/Microsoft.Authorization/policyAssignments/myAssignment",
+      "definitionId": "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c",
+      "setDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/42a694ed-f65e-42b2-aa9e-8052e9740a92",
+      "definitionReferenceId": "StorageAccountNetworkACLs"
+    }
+    ```
 
 - `ipRangeContains(range, targetRange)`
-  - **range**：[必需] 字符串 - 指定 IP 地址范围的字符串。
-  - **targetRange**：[必需] 字符串 - 指定 IP 地址范围的字符串。
-
-  返回的信息表明给定 IP 地址范围是否包含目标 IP 地址范围。 空范围或 IP 系列之间的混合是不允许的，这会导致评估失败。
+  - range：[必需]字符串 - 指定 IP 地址范围的字符串，用于检查 targetRange 是否在其中。
+  - targetRange：[必需]字符串 - 此字符串指定一个 IP 地址范围，需要验证它是否包含在 range 内。
+  - 返回一个布尔值，指示 range IP 地址范围是否包含 targetRange IP 地址范围。 空范围或 IP 系列之间的混合是不允许的，这会导致评估失败。
 
   支持的格式：
   - 单个 IP 地址（示例：`10.0.0.0`、`2001:0DB8::3:FFFE`）

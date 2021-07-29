@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8f376fb383e50a39f0f12d45cf9b5ae47ad6fcbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fc5210ad64d534f8be015d324a454b513b7fccc
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86186497"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108758332"
 ---
 # <a name="create-configurations-from-existing-servers"></a>从现有服务器创建配置
 
@@ -33,7 +33,7 @@ ms.locfileid: "86186497"
 
 已创建一个名为 [ReverseDSC](https://github.com/microsoft/reversedsc) 的、由社区维护的解决方案，启动 SharePoint 后，该解决方案可在此区域中运行。
 
-该解决方案是基于 [SharePointDSC 资源](https://github.com/powershell/sharepointdsc)构建的，并扩展了该资源，以从现有的 SharePoint 服务器[收集信息](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use)。
+该解决方案基于 [SharePointDSC 资源](https://github.com/powershell/sharepointdsc)构建，并对其进行扩展，以协调从运行 SharePoint 的现有服务器[收集信息](https://github.com/Microsoft/sharepointDSC.reverse#how-to-use)的操作。
 最新版本提供了多种[提取模式](https://github.com/Microsoft/SharePointDSC.Reverse/wiki/Extraction-Modes)来确定要包含的信息级别。
 
 使用该解决方案后，会生成可与 SharePointDSC 配置脚本配合使用的[配置数据](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data)。

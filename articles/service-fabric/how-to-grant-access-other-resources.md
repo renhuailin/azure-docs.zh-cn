@@ -3,12 +3,13 @@ title: 为应用程序授予对其他 Azure 资源的访问权限
 description: 本文介绍如何为启用了托管标识的 Service Fabric 应用程序授予对支持基于 Azure Active Directory 身份验证的其他 Azure 资源的访问权限。
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: c7560294fbf6d122396b6a5a8ffd3ee93bc89048
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 7f49a3f97862c3a141ea9376d0ffc9bf510d3e6f
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97507449"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110782955"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>为 Service Fabric 应用程序的托管标识授予对 Azure 资源的访问权限
 
@@ -17,18 +18,10 @@ ms.locfileid: "97507449"
 具体的步骤顺序取决于要访问的 Azure 资源的类型，以及用于授予权限的语言/客户端。 本文的余下内容假设已将用户分配的标识分配到应用程序，其中包含一些典型示例供你参考，但本主题的参考内容不可能做到详尽；有关授予权限的最新说明，请参阅相应 Azure 服务的文档。  
 
 ## <a name="granting-access-to-azure-storage"></a>授予对 Azure 存储的访问权限
-可以使用 Service Fabric 应用程序的托管标识（在本例中为用户分配的标识）来检索 Azure 存储 Blob 中的数据。 在 Azure 门户中使用以下步骤为标识授予所需的权限：
+可以使用 Service Fabric 应用程序的托管标识（在本例中为用户分配的标识）来检索 Azure 存储 Blob 中的数据。 通过在“resource-group”范围将[存储 Blob 数据读者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)角色分配给应用程序的托管标识，为标识授予存储帐户所需的权限。
 
-1. 导航到存储帐户
-2. 单击左侧面板中的“访问控制(IAM)”链接。
-3. （可选）检查现有的访问权限：在“查找”控件中选择“系统分配的托管标识”或“用户分配的托管标识”；从随后的结果列表中选择适当的标识
-4. 单击页面顶部的“+ 添加角色分配”，为应用程序的标识添加新的角色分配。
-在“角色”下面的下拉列表中，选择“存储 Blob 数据读取者”。
-5. 在“将访问权限分配给”下面的下拉列表中，选择 `User assigned managed identity`。
-6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。
-7. 在“选择”下，选择对应于 Service Fabric 应用程序的 UAI，然后单击“保存”。
+有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
-对系统分配的 Service Fabric 托管标识的支持不包括 Azure 门户中的集成；如果应用程序使用系统分配的标识，则必须先找到该应用程序标识的客户端 ID，然后重复上述步骤，不过要在“查找”控件中选择 `Azure AD user, group, or service principal` 选项。
 
 ## <a name="granting-access-to-azure-key-vault"></a>授予对 Azure Key Vault 的访问权限
 与访问存储类似，可以利用 Service Fabric 应用程序的托管标识来访问 Azure Key Vault。 在 Azure 门户中授予访问权限的步骤类似于上面所列的步骤，这里不再重复。 有关差异，请参考下图。

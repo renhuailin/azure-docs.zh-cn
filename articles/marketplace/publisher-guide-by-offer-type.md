@@ -6,19 +6,22 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 10/06/2020
-ms.openlocfilehash: 3be967b611f6b75705a60bfa14523832b0652931
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/06/2021
+ms.openlocfilehash: 72cae8aee9b1bcca286696b5685ef69b84167a8e
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98879218"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537847"
 ---
 # <a name="publishing-guide-by-offer-type"></a>发布指南（按产品/服务类型）
 
 本文介绍商业市场中提供的产品/服务类型。 “产品/服务类型”定义产品/服务结构，其中包括元数据、项目和商业市场中呈现的其他内容。
 
 [确定发布选项](determine-your-listing-type.md)后，必须先选择产品/服务类型，然后才能开始在合作伙伴中心创建产品/服务。 套餐类型对应于你要发布的解决方案、应用或服务套餐的类型，并取决于与 Microsoft 产品和服务的匹配情况。
+
+> [!NOTE]
+> 选择产品/服务类型后，无法将产品/服务更改为其他类型。 要创建不同的产品/服务类型，需要创建新产品/服务。
 
 可通过不同方式配置单个产品/服务类型，以启用不同的发布选项、列表选项、预配或定价。 套餐类型的发布选项和配置也取决于套餐资格和技术要求。
 
@@ -34,12 +37,11 @@ ms.locfileid: "98879218"
 | [**Azure 容器**](marketplace-containers.md) | 如果解决方案是预配为基于 Kubernetes 的 Azure 容器服务的 Docker 容器映像，请使用“Azure 容器”产品/服务类型。 |
 | [**Azure 虚拟机**](marketplace-virtual-machines.md) | 将虚拟设备部署到与客户关联的订阅时，请使用“虚拟机”产品/服务类型。 |
 | [**咨询服务**](./plan-consulting-service-offer.md) | 咨询服务有助于将客户与服务联系起来，以支持和扩展他们对 Azure、Dynamics 365 或 Power Suite 服务的使用。|
-| [**Dynamics 365**](appsource-offer-publishing-guide.md) | 可以发布依赖或扩展 Dynamics 365 Business Central、Dynamics 365 Customer Engagement、Power Apps 和 Finance and Operations 应用的 AppSource 产品/服务。|
-| [**IoT Edge 模块**](iot-edge-module.md) | Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Microsoft 服务（如 Azure 流分析）、第三方服务，或你自己特定于解决方案的代码。 |
-| [**托管服务**](./plan-managed-service-offer.md) | 可以通过 [Azure Lighthouse](../lighthouse/overview.md) 创建托管服务产品/服务和管理客户委托的订阅或资源组。|
-| [**Power BI 应用**<br/>**Microsoft 365**](appsource-offer-publishing-guide.md) | 可以发布依赖或扩展 Power BI 和 Microsoft 365 的 AppSource 产品/服务。|
+| [**Dynamics 365**](marketplace-dynamics-365.md) | 发布依赖或扩展 Dynamics 365 Business Central、Dynamics 365 Customer Engagement、Power Apps 和 Finance and Operations 应用的 AppSource 产品/服务。|
+| [**IoT Edge 模块**](marketplace-iot-edge.md) | Azure IoT Edge 模块是由 IoT Edge 托管的最小计算单位，可以包含 Microsoft 服务（如 Azure 流分析）、第三方服务，或你自己特定于解决方案的代码。 |
+| [**托管服务**](./plan-managed-service-offer.md) | 通过 [Azure Lighthouse](../lighthouse/overview.md) 创建托管服务产品/服务和管理客户委托的订阅或资源组。|
+| [**Power BI 应用**<br/>**Microsoft 365**](marketplace-dynamics-365.md) | 发布依赖或扩展 Power BI 和 Microsoft 365 的 AppSource 产品/服务。|
 | [**服务型软件**](plan-saas-offer.md) | 使用服务型软件 (SaaS) 产品/服务类型可让客户以订阅的形式购买基于 SaaS 的技术解决方案。 有关 SaaS 产品/服务的单一登录要求的信息，请参阅[商业市场中的 Azure AD 和可交易的 SaaS 产品/服务](azure-ad-saas.md)。 |
-
 
 ## <a name="next-steps"></a>后续步骤
 

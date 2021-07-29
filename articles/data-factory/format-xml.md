@@ -1,17 +1,17 @@
 ---
 title: Azure 数据工厂中的 XML 格式
 description: 本主题介绍了如何处理 Azure 数据工厂中的 XML 格式。
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/29/2021
-ms.author: jingwang
-ms.openlocfilehash: 4a7e56040a58d87cab34fdba4ebbac77757b2226
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.author: jianleishen
+ms.openlocfilehash: c054c789dd7c26e57a4f393863711d34665854ee
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289545"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097617"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>Azure 数据工厂中的 XML 格式
 
@@ -19,13 +19,13 @@ ms.locfileid: "108289545"
 
 如果要 **分析 XML 文件**，请按此文的要求操作。 
 
-以下连接器支持 XML 格式：[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md) 和 [SFTP](connector-sftp.md)。 它可以作为源，但不可作为接收器。
+以下连接器支持 XML 格式：[Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 兼容存储](connector-amazon-s3-compatible-storage.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[Oracle 云存储](connector-oracle-cloud-storage.md) 和 [SFTP](connector-sftp.md)。 它可以作为源，但不可作为接收器。
 
 ## <a name="dataset-properties"></a>数据集属性
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 XML 数据集支持的属性列表。
 
-| 属性         | 描述                                                  | 必需 |
+| 属性         | 描述                                                  | 必须 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 数据集的 type 属性必须设置为 Xml。 | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
@@ -70,7 +70,7 @@ ms.locfileid: "108289545"
 
 复制活动的 ***\*source\**** 节支持以下属性。 详细了解 [XML 连接器行为](#xml-connector-behavior)。
 
-| 属性      | 描述                                                  | 必需 |
+| 属性      | 描述                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动的 type 属性必须设置为 XmlSource。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“XML 读取设置”表。 | 否       |
@@ -78,7 +78,7 @@ ms.locfileid: "108289545"
 
 `formatSettings` 下支持的“XML 读取设置”：
 
-| 属性      | 描述                                                  | 必需 |
+| 属性      | 描述                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | formatSettings 的 type 必须设置为 XmlReadSettings。 | 是      |
 | validationMode | 指定是否要验证 XML 架构。<br>允许的值为 none（默认值、无验证）、xsd（使用 XSD 验证）以及 dtd （使用 DTD 验证）  。 | 否 |

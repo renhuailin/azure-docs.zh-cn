@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 03/17/2021
+ms.date: 06/10/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 32893a29b0fa6a22ca0b9d9a64281f6fb5df1cae
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 668584c7c254c1d1f200050154256621ba220b5a
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888613"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111981793"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习工作区
 
@@ -56,8 +56,8 @@ ms.locfileid: "107888613"
 
 有关设置专用链接工作区的详细信息，请参阅[配置专用链接](how-to-configure-private-link.md)。
 
-> [!Warning]
-> 使用专用终结点保护工作区本身不能确保端到端安全。 必须按照本文其余部分的步骤和 VNet 系列中的步骤进行操作，以确保解决方案中各个组件的安全。
+> [!WARNING]
+> 使用专用终结点保护工作区本身不能确保端到端安全。 必须按照本文其余部分的步骤和 VNet 系列中的步骤进行操作，以确保解决方案中各个组件的安全。 例如，如果为工作区使用专用终结点，但 Azure 存储帐户不在 VNet 之后，则工作区和存储之间的流量出于安全原因不会使用 VNet。
 
 ## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>使用服务终结点保护 Azure 存储帐户
 
@@ -94,6 +94,9 @@ Azure 机器学习支持将存储帐户配置为使用服务终结点或专用�
 
    [![Azure 门户中的“防火墙和虚拟网络”窗格](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
+> [!TIP]
+> 使用服务终结点时，还可以禁用公共访问。 有关详细信息，请参阅[禁止公共读取访问](../storage/blobs/anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account)。
+
 ## <a name="secure-azure-storage-accounts-with-private-endpoints"></a>使用专用终结点保护 Azure 存储帐户
 
 Azure 机器学习支持将存储帐户配置为使用服务终结点或专用终结点。 如果存储帐户使用专用终结点，则必须为默认存储帐户配置两个专用终结点：
@@ -106,6 +109,8 @@ Azure 机器学习支持将存储帐户配置为使用服务终结点或专用�
 
 有关详细信息，请参阅[对 Azure 存储使用专用终结点](../storage/common/storage-private-endpoints.md)
 
+> [!TIP]
+> 使用专用终结点时，还可以禁用公共访问。 有关详细信息，请参阅[禁止公共读取访问](../storage/blobs/anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account)。
 ## <a name="secure-datastores-and-datasets"></a>保护数据存储和数据集
 
 本部分介绍如何通过虚拟网络在 SDK 体验中使用数据存储和数据集。 有关工作室体验的详细信息，请参阅[在 Azure 虚拟网络中使用机器学习工作室](how-to-enable-studio-virtual-network.md)。
@@ -238,6 +243,8 @@ Azure 机器学习使用关联的 Key Vault 实例存储以下凭据：
     
     有关详细信息，请参阅 [update()](/python/api/azureml-core/azureml.core.workspace.workspace#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-) 方法参考。
 
+> [!TIP]
+> 当 ACR 位于 VNet 后面时，还可以[禁用对它的公共访问](../container-registry/container-registry-access-selected-networks.md#disable-public-network-access)。
 ## <a name="next-steps"></a>后续步骤
 
 虚拟网络系列文章由 5 部分构成，本文是第 2 部分。 若要了解如何保护虚拟网络，请参阅其余文章：

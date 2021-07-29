@@ -1,22 +1,22 @@
 ---
-title: 利用新的会话主机展开现有 Windows 虚拟桌面（经典）主机池-Azure
-description: 如何使用 Windows 虚拟桌面（经典）中的新会话主机展开现有的主机池。
+title: 利用新的会话主机展开现有 Azure 虚拟桌面（经典）主机池 - Azure
+description: 如何使用 Azure 虚拟桌面（经典）中的新会话主机展开现有的主机池。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f82b831d887f0ebdd659167935f2134583b3bb87
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: e459737db621dfb55b5534e60989437b293e57a9
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551945"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745071"
 ---
-# <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>使用 Windows 虚拟桌面（经典）中的新会话主机展开现有的主机池。
+# <a name="expand-an-existing-host-pool-with-new-session-hosts-in-azure-virtual-desktop-classic"></a>使用 Azure 虚拟桌面（经典）中的新会话主机展开现有的主机池
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../expand-existing-host-pool.md)。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[本文](../expand-existing-host-pool.md)。
 
 当你在主机池内提高使用率时，可能需要使用新的会话主机扩展现有的主机池以处理新负载。
 
@@ -33,7 +33,7 @@ ms.locfileid: "106551945"
 当你首次创建主机池和会话主机 Vm 时，还需要以下信息：
 
 - VM 大小、映像和名称前缀
-- 域加入和 Windows 虚拟桌面租户管理员凭据
+- 域加入和 Azure 虚拟桌面租户管理员凭据
 - 虚拟网络名称和子网名称
 
 接下来的三个部分是可以用来展开主机池的三个方法。 你可以通过你熟悉的任何部署工具来展开。
@@ -83,7 +83,7 @@ ms.locfileid: "106551945"
 3.    对于“*区域*”，请选择现有主机池会话主机 VM 所在的同一区域。
 4.    对于“*Hostpool 名称*”，请输入现有主机池的名称。
 5.    对于“*桌面类型*”，请选择与现有主机池匹配的桌面类型。
-6.    对于“*默认桌面用户*”，请输入在 Azure Marketplace offering 完成后可登录到 Windows 虚拟桌面客户端并访问桌面的用户的逗号分隔列表。 例如，如果要分配 user3@contoso.com 和 user4@contoso.com 访问权限，请输入 user3@contoso.com、user4@contoso.com。
+6.    对于“默认桌面用户”，请输入在 Azure Marketplace 产品完成后可登录到 Azure 虚拟桌面客户端并访问桌面的用户的逗号分隔列表。 例如，如果要分配 user3@contoso.com 和 user4@contoso.com 访问权限，请输入 user3@contoso.com、user4@contoso.com。
 7.    选择“**下一步：配置虚拟机**”。
 
 >[!NOTE]
@@ -109,14 +109,14 @@ ms.locfileid: "106551945"
 1. 对于“*映像源*”和“*映像操作系统版本*”，输入在首次创建主机池时提供的相同信息。
 2. 对于 *AD 域加入 UPN* 和关联的密码，输入在首次创建主机池以将 VM 加入到 Active Directory 域时所提供的相同信息。 这些凭据将用于在虚拟机上创建本地帐户。 稍后可以重置这些本地帐户以更改其凭据。
 3. 对于虚拟网络信息，为现有的主机池会话主机 VM 所在的位置选择同一个虚拟网络和子网。
-4. 选择“**下一步：配置 Windows 虚拟桌面信息**”。
+4. 选择“下一步：配置 Azure 虚拟桌面信息”。
 
-### <a name="windows-virtual-desktop-information"></a>Windows 虚拟桌面信息
+### <a name="azure-virtual-desktop-information"></a>Azure 虚拟桌面信息
 
 本部分中的所有参数应与首次创建主机池和会话主机 Vm 时提供的参数匹配：
 
-1. 对于“Windows 虚拟桌面租户组名称”  ，请输入租户所在的租户组的名称。 将此字段保留默认值，除非为你提供了具体的租户组名称。
-2. 对于“Windows 虚拟桌面租户名称”  ，请输入要在其中创建此主机池的租户的名称。
+1. 对于“Azure 虚拟桌面租户组名称”，请输入租户所在的租户组的名称。 将此字段保留默认值，除非为你提供了具体的租户组名称。
+2. 对于“Azure 虚拟桌面租户名称”，请输入要在其中创建此主机池的租户的名称。
 3. 指定在首次创建主机池和会话主机 VM 时使用的相同凭据。 如果使用的是服务主体，请输入服务主体所在的 Azure Active Directory 实例的 ID。
 4. **选择“下一步:** 查看 + 创建”。
 
@@ -126,7 +126,7 @@ ms.locfileid: "106551945"
 
 ## <a name="next-steps"></a>后续步骤
 
-在扩展现有主机池后，可以登录到 Windows 虚拟桌面客户端，将其作为用户会话的一部分进行测试。 你可以使用以下任一客户端连接到会话：
+在扩展现有主机池后，可以登录到 Azure 虚拟桌面客户端，将其作为用户会话的一部分进行测试。 你可以使用以下任一客户端连接到会话：
 
 - [使用 Windows 桌面客户端进行连接](connect-windows-7-10-2019.md)
 - [使用 Web 客户端进行连接](connect-web-2019.md)

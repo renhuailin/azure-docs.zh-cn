@@ -6,12 +6,12 @@ ms.author: bsiva
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 90da16789344754c02d46022160db71ee261a056
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 14660ca026dc51bc6e722559a28ef4a77361100b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96754056"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094557"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V 迁移的支持矩阵
 
@@ -46,7 +46,7 @@ ms.locfileid: "96754056"
 | **Linux 启动**                 | 如果 /boot 位于专用分区上，则它应驻留在 OS 磁盘上，而不是分布在多个磁盘上。<br/> 如果 /boot 是根 (/) 分区的一部分，则“/”分区应在 OS 磁盘上，而不是分布在其他磁盘上。 |
 | **UEFI 启动**                  | 支持。 基于 UEFI 的 VM 将迁移到 Azure 第 2 代 VM。  |
 | **UEFI - 安全启动**         | 不支持迁移。|
-| **磁盘大小**                  | OS 磁盘（BIOS 引导）需要 2 TB，OS 磁盘（UEFI 引导）需要 4 TB，数据磁盘需要 4 TB。|
+| **磁盘大小**                  | 最大 2 TB OS 磁盘，8 TB 数据磁盘。|
 | **磁盘编号** | 每个 VM 最多 16 个磁盘。|
 | **加密磁盘/卷**    | 不支持迁移。|
 | **RDM/传递磁盘**      | 不支持迁移。|
@@ -83,7 +83,13 @@ backup.windowsazure.us | 复制数据传输和协调。
 *.hypervrecoverymanager.windowsazure.us | 用于复制管理。
 *.blob.core.usgovcloudapi.net | 将数据上传到存储帐户。
 dc.services.visualstudio.com | 上传用于内部监视的应用日志。
-time.nist.gov | 验证系统时间与全球时间之间的时间同步。
+time.nist.gov | 验证系统时间与全球时间之间的时间同步。   
+
+>[!Note]
+>
+> 如果 Migrate 项目具有专用终结点连接，则 Hyper-V 主机上的复制提供程序软件需访问这些 URL 以获得专用链接支持。 
+> - *.blob.core.windows.com - 用于访问存储已复制数据的存储帐户 在存储帐户附加了专用终结点的情况下，这是可选的，不是必需的。 
+> - login.windows.net，用于通过 Active Directory 进行访问控制和标识管理。
 
 ## <a name="azure-vm-requirements"></a>Azure VM 要求
 
@@ -100,8 +106,8 @@ time.nist.gov | 验证系统时间与全球时间之间的时间同步。
 FC 磁盘 | 不支持。 | 如果不支持，检查会失败。
 BitLocker | 不支持。 | 为计算机启用复制之前，必须先禁用 BitLocker。
 VM 名称 | 1 到 63 个字符。<br/> 限制为字母、数字和连字符。<br/><br/> 计算机名称必须以字母或数字开头和结尾。 |  请在 Site Recovery 中的计算机属性中更新该值。
-在迁移 Windows 后进行连接 | 若要在迁移后连接到运行 Windows 的 Azure VM，请执行以下操作：<br/><br/> - 在迁移之前，在本地 VM 上启用 RDP。 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP  。<br/><br/> - 为了通过站点到站点 VPN 进行访问，启用 RDP 并在“Windows 防火墙” -> “允许的应用和功能”中同意域和专用网络使用 RDP。 此外，检查操作系统的 SAN 策略是否已设置为 OnlineAll。 [了解详细信息](prepare-for-migration.md)。 |
-在迁移 Linux 后进行连接 | 若要在使用 SSH 迁移后连接到 Azure VM，请执行以下操作：<br/><br/> - 在迁移之前，请在本地计算机上检查安全外壳服务是否设置为“启动”，以及防火墙规则是否允许 SSH 连接。<br/><br/> - 在 Azure VM 上执行迁移后，允许已故障转移的 VM 及其所连接 Azure 子网上的网络安全组规则与 SSH 端口建立传入连接。 此外，为 VM 添加公共 IP 地址。 |  
+在迁移后进行连接 - Windows | 若要在迁移后连接到运行 Windows 的 Azure VM，请执行以下操作：<br/><br/> - 在迁移之前，在本地 VM 上启用 RDP。 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP  。<br/><br/> - 为了通过站点到站点 VPN 进行访问，启用 RDP 并在“Windows 防火墙” -> “允许的应用和功能”中同意域和专用网络使用 RDP。 此外，检查操作系统的 SAN 策略是否已设置为 OnlineAll。 [了解详细信息](prepare-for-migration.md)。 |
+在迁移后进行连接 - Linux | 若要在使用 SSH 迁移后连接到 Azure VM，请执行以下操作：<br/><br/> - 在迁移之前，请在本地计算机上检查安全外壳服务是否设置为“启动”，以及防火墙规则是否允许 SSH 连接。<br/><br/> - 在 Azure VM 上执行迁移后，允许已故障转移的 VM 及其所连接 Azure 子网上的网络安全组规则与 SSH 端口建立传入连接。 此外，为 VM 添加公共 IP 地址。 |  
 
 ## <a name="next-steps"></a>后续步骤
 

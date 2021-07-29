@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 263397aa2cd09ba24fa750131b76047801869a65
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b0295c994a736e26d7b581bd13b6167819833360
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798929"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108748702"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>调用 Web API 的桌面应用：应用注册
 
@@ -43,9 +43,10 @@ ms.locfileid: "104798929"
 通过在 Azure 门户中“应用注册”中为应用[配置平台设置](quickstart-register-app.md#add-a-redirect-uri)，来指定应用的重定向 URI。
 
 - 对于使用交互式身份验证的应用：
-  - 使用嵌入浏览器的应用：`https://login.microsoftonline.com/common/oauth2/nativeclient`
-  - 使用系统浏览器的应用：`http://localhost`
 
+  - 使用嵌入式浏览器的应用：`https://login.microsoftonline.com/common/oauth2/nativeclient`（注意：如果应用会弹出一个通常不包含地址栏的窗口，则它使用的是“嵌入式浏览器”。）
+  - 使用系统浏览器的应用：`http://localhost`（注意：如果应用会使用系统的默认浏览器（例如，Edge、Chrome、Firefox 等）来访问 Microsoft 登录门户，则它使用的是“系统浏览器”。）
+  
   > [!IMPORTANT]
   > 作为安全最佳做法，我们建议显式设置 `https://login.microsoftonline.com/common/oauth2/nativeclient` 或 `http://localhost` 作为重定向 URI。 如果未指定任何其他重定向 URI（不建议这样做），某些身份验证库（如 MSAL.NET）将使用默认值 `urn:ietf:wg:oauth:2.0:oob`。 在下一个主要版本中，此默认值将作为中断性变更进行更新。
 

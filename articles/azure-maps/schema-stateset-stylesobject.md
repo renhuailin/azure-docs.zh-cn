@@ -8,20 +8,16 @@ ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 08379e66c97d34eea53410190475e90e156a58e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f213976d0e61706b2d8a9c8465be1ff0a4065b2e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96903337"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031882"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>动态 Maps StylesObject 架构参考指南
 
-> [!IMPORTANT]
-> Azure Maps Creator 服务目前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
- `StylesObject`是表示状态集样式的`StyleObject`数组。 使用 Azure Maps Creator（预览版）[功能状态服务](/rest/api/maps/featurestate) 将状态集样式应用到室内地图数据功能。 创建状态集样式，并将其与室内地图功能关联后，可以使用它们来创建动态室内地图。 有关创建动态室内地图的详细信息，请参阅[为 Creator 室内地图实现动态样式](indoor-map-dynamic-styling.md)。
+ `StylesObject`是表示状态集样式的`StyleObject`数组。 使用 Azure Maps Creator [功能状态服务](/rest/api/maps/v2/feature-state)将状态集样式应用到室内地图数据功能。 创建状态集样式，并将其与室内地图功能关联后，可以使用它们来创建动态室内地图。 有关创建动态室内地图的详细信息，请参阅[为 Creator 室内地图实现动态样式](indoor-map-dynamic-styling.md)。
 
 ## <a name="styleobject"></a>StyleObject
 

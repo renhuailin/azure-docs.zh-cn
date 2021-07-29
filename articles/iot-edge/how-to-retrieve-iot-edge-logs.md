@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 19183da24a3652757626cb37fae96027ed01a8ea
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 51a79058ec4456b173b1f50169198d3ea3ba2e93
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633170"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111541868"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>检索 IoT Edge 部署中的日志
 
@@ -53,6 +53,9 @@ ms.locfileid: "109633170"
 ## <a name="retrieve-module-logs"></a>检索模块日志
 
 使用 GetModuleLogs 直接方法检索 IoT Edge 模块的日志。
+
+>[!TIP]
+>Azure 门户中的 IoT Edge 故障排除页提供了查看模块日志的简化体验。 有关详细信息，请参阅[在 Azure 门户中对 IoT Edge 设备进行监视和故障排除](troubleshoot-in-portal.md)。
 
 此方法接受具有以下架构的 JSON 有效负载：
 
@@ -201,7 +204,7 @@ az iot hub invoke-module-method \
 
 | 名称 | 类型 | 说明 |
 |-|-|-|
-| status | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
+| 状态 | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
 | message | 字符串 | 如果错误，则为消息；否则为空字符串。 |
 | correlationId | 字符串   | 用于查询上传请求状态的 ID。 |
 
@@ -325,7 +328,7 @@ az iot hub invoke-module-method --method-name UploadModuleLogs -n <hub name> -d 
 
 | 名称 | 类型 | 说明 |
 |-|-|-|
-| status | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
+| 状态 | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
 | message | 字符串 | 如果错误，则为消息；否则为空字符串。 |
 | correlationId | 字符串   | 用于查询上传请求状态的 ID。 |
 
@@ -383,7 +386,7 @@ az iot hub invoke-module-method --method-name 'UploadSupportBundle' -n <hub name
 
 | 名称 | 类型 | 说明 |
 |-|-|-|
-| status | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
+| 状态 | 字符串 | `NotStarted`、`Running`、`Completed`、`Failed` 或 `Unknown` 中的一个。 |
 | message | 字符串 | 如果错误，则为消息；否则为空字符串。 |
 | correlationId | 字符串   | 用于查询上传请求状态的 ID。 |
 

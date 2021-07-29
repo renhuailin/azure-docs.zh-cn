@@ -1,29 +1,29 @@
 ---
 title: 市场推广服务 - 如何在市场中推广 | Azure 市场
-description: 市场推广服务 - 本部分介绍如何在 Azure 市场中推广商品
+description: 市场推广服务 - 本部分介绍如何在 Microsoft AppSource 和 Azure 市场推广商品
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/16/2020
-ms.openlocfilehash: 465f00400c28de9642a95ebcb7bc6b2349d64bc5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/15/2021
+ms.openlocfilehash: 4ffbca8e4e70a5201b374d4fac9bdb136c860573
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98878708"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144954"
 ---
-# <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>如何在 AppSource 和 Azure 市场中推广
+# <a name="how-to-get-featured-in-microsoft-appsource-and-azure-marketplace"></a>如何在 Microsoft AppSource 和 Azure 市场中推广
 
 Azure 市场和 AppSource 提供“特色应用”部分，可在其中推广应用：
 
-* 首先，如果你销售的是试用或事务处理产品/服务，可以通过[商业市场权益](gtm-your-marketplace-benefits.md)使用“类别促销”权益。
+* 首先，如果你有“试用版”、“咨询”或“交易”套餐，则你可能有资格通过 [商业市场权益](./gtm-your-marketplace-benefits.md)获得 **商业市场特色类别广告位权益**。 符合条件后，你的商业市场产品清单将自动在产品清单左侧的某个类别中变为特别推荐。 推广广告位的类别和时间安排将基于可用性。 为了让你的市场产品清单更加强大，请在[优化产品清单的最佳做法 (microsoft.com)](https://partner.microsoft.com/asset/detail/best-practices-for-optimizing-your-listing-mp4) 中查看此视频。
 * 其次，查看最佳做法列表和以下条件，以获得一个位置。
 
 Microsoft 的特色应用选择算法生成应用的评分，就如同美国的个人信用评分一样。  特色应用的每周选择基于应用和服务性能的计算。
 
-## <a name="steps-to-take"></a>要执行的步骤
+## <a name="steps-to-improve-your-score"></a>提高分数的步骤
 
 可以执行以下操作项来提高评分：
 

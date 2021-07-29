@@ -11,18 +11,24 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32ad7199360ca0acc8674f7a4e34bd206f8b335f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0698d07268c416b0a10055ec5480971fc10c142c
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648758"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854371"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD 密码保护代理版本历史记录
 
+## <a name="121760"></a>1.2.176.0
+
+发布日期：2021 年 6 月 4 日
+
+* 针对阻止代理和 DC 代理在某些环境中成功运行的问题进行的小型 Bug 修复。
+
 ## <a name="121720"></a>1.2.172.0
 
-发行日期：2021 年 2 月 22 日
+发布日期：2021 年 2 月 22 日
 
 自推出本地 Azure AD 密码保护代理的 GA 版本以来，已经有将近两年的时间。 现已推出新的更新 - 请参阅下面的更改描述。 感谢向我们提供产品相关反馈的每位用户。 
 
@@ -41,7 +47,7 @@ ms.locfileid: "101648758"
 
 ## <a name="121250"></a>1.2.125.0
 
-发行日期：2019 年 3 月 22 日
+发布日期：2019 年 3 月 2 日
 
 * 修复事件日志消息中的拼写小错误
 * 更新 EULA 协议至最终正式发布版本
@@ -51,7 +57,7 @@ ms.locfileid: "101648758"
 
 ## <a name="121160"></a>1.2.116.0
 
-发行日期：2019 年 3 月 13 日
+发布日期：2019 年 3 月 3 日
 
 * Get-AzureADPasswordProtectionProxy and Get-AzureADPasswordProtectionDCAgent 现在会报告软件版本和当前的 Azure 租户，但有以下限制：
   * 软件版本和 Azure 租户数据仅适用于运行版本1.2.116.0 或更高版本的 DC 代理和代理程序。
@@ -69,7 +75,7 @@ ms.locfileid: "101648758"
 
 ## <a name="12650"></a>1.2.65.0
 
-发行日期：2019 年 2 月 1 日
+发布日期：2019 年 2 月 1 日
 
 更改：
 
@@ -107,7 +113,7 @@ ms.locfileid: "101648758"
 
 ## <a name="12250"></a>1.2.25.0
 
-发行日期：2018 年 11 月 1 日
+发布日期：2018 年 11 月 1 日
 
 修复项：
 
@@ -125,7 +131,7 @@ ms.locfileid: "101648758"
 
 ## <a name="12100"></a>1.2.10.0
 
-发行日期：2018 年 8 月 17 日
+发布日期：2018 年 8 月 17 日
 
 修复项：
 
@@ -149,7 +155,7 @@ ms.locfileid: "101648758"
 
 ## <a name="11103"></a>1.1.10.3
 
-发行日期：2018 年 6 月 15 日
+发布日期：2018 年 6 月 15 日
 
 初始的公开预览版
 

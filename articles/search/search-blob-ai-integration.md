@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 3d427d80e502eed0825165e640acc0755515c5b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bdf5f2708daee0a3dc05ec8bc3d861633a3b7b7f
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99222042"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590569"
 ---
 # <a name="use-ai-to-process-and-analyze-blob-content-in-azure-cognitive-search"></a>在 Azure 认知搜索中使用 AI 处理和分析 blob 内容
 
-Azure Blob 存储中的内容由图像或无差异长文本组成，可以进行深度学习分析，以揭示和提取对下游应用程序有用的有价值信息。 使用 [AI 扩充](cognitive-search-concept-intro.md)，你可以：
+Azure Blob 存储中的内容由图像或无差异长文本组成，可以进行深度学习分析，以揭示和提取适用于下游应用程序的有价值信息。 使用 [AI 扩充](cognitive-search-concept-intro.md)，你可以：
 
 + 使用光学字符识别 (OCR) 从图像中提取文本
 + 基于照片生成场景说明或标记
@@ -34,7 +34,7 @@ Azure Blob 存储中的内容由图像或无差异长文本组成，可以进行
 
 AI 扩充是 Azure 认知搜索的索引编制体系结构的一部分，它集成了 Microsoft 提供的机器学习模型或你提供的自定义学习模型。 AI 扩充可帮助实现端到端的方案，在其中，你需要处理 Blob（传入的或更新的现有 Blob 和新 Blob），破解所有文件格式以提取图像和文本，使用各种 AI 功能提取所需的信息，在搜索索引中为这些信息编制索引以便快速执行搜索、检索和浏览。 
 
-输入是 Azure Blob 存储中单个容器内的 Blob。 Blob 几乎可以是任何类型的文本或图像数据。 
+输入是 Azure Blob 存储的单个容器中的 Blob。 Blob 几乎可以是任何类型的文本或图像数据。 
 
 输出始终是搜索索引，用于在客户端应用程序中快速执行搜索、检索和浏览。 此外，输出还可以是[知识存储](knowledge-store-concept-intro.md)，知识存储将扩充的文档投影到 Azure Blob 或 Azure 表中，以便在 Power BI 等工具或数据科学工作负荷中进行下游分析。
 
@@ -96,7 +96,7 @@ AI 扩充的输出是 Azure 认知搜索中的搜索索引，或者是 Azure 存
 
 + Blob 容器捕获整个扩充文档，这很有利于将数据馈送到其他过程。 
 
-+ 相比之下，表存储可以容纳扩充文档的物理投影。 可以创建包含或排除特定部分的扩充文档的切片或层。 在 Power BI 中分析时，Azure 表存储中的表将成为用于进一步可视化和浏览的数据源。
++ 相比之下，表存储可以容纳扩充文档的物理投影。 可以创建包含或排除特定部分的扩充文档的切片或层。 为了在 Power BI 中进行分析，Azure 表存储中的表将成为用于进一步可视化和浏览的数据源。
 
 位于管道末端的扩充文档与其原始输入版本不同，其中存在额外的字段，这些字段包含扩充期间提取或生成的新信息。 因此，无论使用哪种输出结构，都可以结合使用原始内容和创建的内容。
 

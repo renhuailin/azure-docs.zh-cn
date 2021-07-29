@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure PowerShell 创建 Bastion 主机 | Microsoft Docs
-description: 本文介绍如何创建 Azure Bastion 主机
+description: 了解如何使用 PowerShell 创建 Azure Bastion 主机。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: cherylmc
-ms.openlocfilehash: ba2716613a0e950cbae5c65add410ac8a8b38955
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f08ffdafdbca4e406e0bf7d6e23fa3218ccccfe4
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92077719"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110538023"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>使用 Azure PowerShell 创建 Azure Bastion 主机
 
@@ -25,6 +25,10 @@ ms.locfileid: "92077719"
 确保拥有 Azure 订阅。 如果还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册获取[免费帐户](https://azure.microsoft.com/pricing/free-trial)。
 
 [!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+
+ >[!NOTE]
+ >目前不支持一起使用 Azure Bastion 和 Azure 专用 DNS 区域。 开始之前，请确保计划在其中部署 Bastion 资源的虚拟网络未链接到专用 DNS 区域。
+ >
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>创建 Bastion 主机
 

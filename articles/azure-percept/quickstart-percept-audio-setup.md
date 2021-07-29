@@ -6,12 +6,12 @@ ms.author: mimcco
 ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/25/2021
-ms.openlocfilehash: ae2720c321e701d14e91f8aee7a6dfbfc5f15739
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 03cab112681536708496c35e4440e463d1522406
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071337"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108182"
 ---
 # <a name="azure-percept-audio-setup"></a>Azure Percept 音频设置
 
@@ -31,7 +31,7 @@ Azure Percept 音频可直接与 Azure Percept DK 一起使用。 无需进行�
 
 1. （可选）通过音频插孔（标记为“输出线”）将扬声器或耳机连接到 Azure Percept Audio 设备。 这样即可听到音频响应。
 
-1. 开启 devkit。 LED L02 将变为白色闪烁，这表示设备已开机且正在进行身份验证。
+1. 通过将 devkit 连接到电源适配器，让 devkit 通电。 LED L02 将变为白色闪烁，这表示设备已开机且正在进行身份验证。
 
 1. 等待身份验证过程完成，最多需要 5 分钟。
 

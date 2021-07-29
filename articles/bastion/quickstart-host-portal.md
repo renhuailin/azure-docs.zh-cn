@@ -6,18 +6,18 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: quickstart
-ms.date: 02/18/2021
+ms.date: 06/29/2021
 ms.author: cherylmc
-ms.openlocfilehash: e51d8633418a0a00afb8a6055c05f9c77d93f3cb
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 67211215b3dac9ad8774dc4e3c67a869bd031646
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110540446"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113111260"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>快速入门：通过专用 IP 地址和浏览器安全地连接到 VM
 
-可以使用 Azure 门户和 Azure Bastion 通过浏览器连接到虚拟机 (VM)。 本快速入门文章介绍了如何根据 VM 设置配置 Azure Bastion，然后通过门户连接到 VM。 VM 不需要公共 IP 地址、客户端软件、代理或特殊配置。 预配服务后，RDP/SSH 体验即可用于同一虚拟网络中的所有虚拟机。 有关 Azure Bastion 的详细信息，请参阅[什么是 Azure Bastion](bastion-overview.md)。
+可以使用 Azure 门户和 Azure Bastion 通过浏览器连接到虚拟机 (VM)。 本快速入门文章介绍了如何根据 VM 设置配置 Azure Bastion。 预配服务后，RDP/SSH 体验即可用于同一虚拟网络中的所有虚拟机。 VM 不需要公共 IP 地址、客户端软件、代理或特殊配置。 如果不需要对 VM 上的公共 IP 地址执行任何其它操作，可以将其删除。 然后，使用专用 IP 地址，通过门户连接到 VM。 有关 Azure Bastion 的详细信息，请参阅[什么是 Azure Bastion？](bastion-overview.md)
 
 ## <a name="prerequisites"></a><a name="prereq"></a>先决条件
 
@@ -99,19 +99,26 @@ ms.locfileid: "110540446"
    * 公共 IP 地址名称：公共 IP 地址资源的名称。
    * 公共 IP 地址 SKU：预配置为“标准” 
    * 分配：预配置为“静态” 。 不能对 Azure Bastion 使用“动态”分配。
-   * **资源组**：与 VM 相同的资源组。
+   * 资源组：与 VM 相同的资源组。
 
    :::image type="content" source="./media/quickstart-host-portal/create-bastion.png" alt-text="步骤 3 的屏幕截图。":::
 1. 在设置完这些值后，请选择“使用默认值创建 Azure Bastion”。 Azure 会验证设置，然后创建主机。 主机和其资源的创建及部署大约需要 5 分钟。
 
-## <a name="connect"></a><a name="connect"></a>连接
+## <a name="remove-vm-public-ip-address"></a><a name="remove"></a>删除 VM 公共 IP 地址
+
+[!INCLUDE [Remove a public IP address from a VM](../../includes/bastion-remove-ip.md)]
+
+## <a name="connect-to-a-vm"></a><a name="connect"></a>连接到 VM
 
 在将 Bastion 部署到虚拟网络后，屏幕切换到连接页面。
 
 1. 键入虚拟机的用户名和密码。 然后，选择“连接”。
 
    :::image type="content" source="./media/quickstart-host-portal/connect.png" alt-text="屏幕截图显示“使用 Azure Bastion 进行连接”对话框。":::
-1. 连接到此虚拟机的 RDP 将使用端口 443 和 Bastion 服务在 Azure 门户中（通过 HTML5）直接打开。
+1. 通过 Bastion 连接到此虚拟机的 RDP 将使用端口 443 和 Bastion 服务在 Azure 门户中（通过 HTML5）直接打开。 
+
+   * 进行连接时，VM 的桌面看起来可能与示例屏幕截图有所不同。 
+   * 连接到 VM 时，使用键盘快捷键可能不会产生与本地计算机上的快捷键相同的行为。 例如，从 Windows 客户端连接到 Windows VM 时，CTRL+ALT+END 是本地计算机上 CTRL+ALT+Delete 的键盘快捷方式。 若要在连接到 Windows VM 时从 Mac 上执行此操作，键盘快捷方式为 Fn+CTRL+ALT+Backspace。
 
    :::image type="content" source="./media/quickstart-host-portal/connected.png" alt-text="RDP 连接":::
 

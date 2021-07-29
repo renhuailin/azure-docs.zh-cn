@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: a7ab48759ac775c1195dedb4143d895bdcdec937
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a903b63ad1da2dbb029fdbeba1106d3090ba3ef
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98956470"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554815"
 ---
 # <a name="rest-code-samples-for-azure-cognitive-search"></a>Azure 认知搜索的 REST 代码示例
 
@@ -41,7 +41,7 @@ REST 示例通常在 Postman 上进行开发和测试，但你可以使用支持
 | [index-encrypted-blobs](https://github.com/Azure-Samples/azure-search-postman-samples/commit/f5ebb141f1ff98f571ab84ac59dcd6fd06a46718) | [如何使用 blob 索引器和技能组为加密的 blob 编制索引](search-howto-index-encrypted-blobs.md)的源代码。 本文介绍了如何在 Azure Blob 存储中为之前已使用 Azure Key Vault 加密的文档编制索引。 |
 
 > [!Tip]
-> 请尝试使用[示例浏览器](/samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search)来搜索 Github 中的 Microsoft 代码示例，搜索时可按产品、服务和语言进行筛选。
+> 请尝试使用[示例浏览器](/samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search)来搜索 GitHub 中的 Microsoft 代码示例（按产品、服务和语言进行筛选）。
 
 ## <a name="other-samples"></a>其他示例
 

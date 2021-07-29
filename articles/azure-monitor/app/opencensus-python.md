@@ -5,24 +5,36 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: d22174b269ba9cea3b2c9cb9de2b5521df2786fa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+author: lzchen
+ms.author: lechen
+ms.openlocfilehash: 4f3ef03e3561cf054102b5f5c15ff571c3d4d28d
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704406"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108742618"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>为 Python 应用程序设置 Azure Monitor
 
-通过与 [OpenCensus](https://opencensus.io) 集成，Azure Monitor 支持对 Python 应用程序进行分布式跟踪、指标收集和日志记录。 本文分步介绍设置 OpenCensus for Python 并将监视数据发送到 Azure Monitor 的过程。
+Azure Monitor 支持对 Python 应用程序进行分布式跟踪、指标收集和日志记录。
+
+Microsoft 支持的用于跟踪和导出 Python 应用程序数据的解决方案是通过 [Opencensus Python SDK](#introducing-opencensus-python-sdk) 借助 Azure Monitor [导出程序](#instrument-with-opencensus-python-sdk-with-azure-monitor-exporters)完成的。
+
+适用于 Python 的其他任何遥测 SDK 都不受支持，Microsoft 不建议将这些 SDK 用作遥测解决方案。
+
+你可能已注意到 OpenCensus 正在聚合到 [OpenTelemetry](https://opentelemetry.io/) 中。 但是我们继续推荐使用 OpenCensus，虽然 OpenTelemetry 不断变得成熟。
 
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-- Python 安装。 本文使用 [Python 3.7.0](https://www.python.org/downloads/release/python-370/)，但其他版本在经过轻微的更改后也可能适用。 SDK 仅支持 Python v2.7 和 v3.4-v3.7。
+- Python 安装。 本文使用 [Python 3.7.0](https://www.python.org/downloads/release/python-370/)，但其他版本在经过轻微的更改后也可能适用。 Opencensus Python SDK 仅支持 Python v2.7 和 v3.4-v3.7。
 - 创建 Application Insights [资源](./create-new-resource.md)。 系统将针对你的资源为你分配自己的检测密钥 (ikey)。
 
-## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>检测适用于 Azure Monitor 的 OpenCensus Python SDK
+## <a name="introducing-opencensus-python-sdk"></a>Opencensus Python SDK 简介
+
+[OpenCensus](https://opencensus.io) 是一组开放源代码库，用于收集分布式跟踪、指标和日志记录遥测数据。 通过使用 [Azure Monitor 导出程序](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)，你可以将收集的遥测数据发送到 Application Insights。 本文分步介绍设置为 Python 设置 OpenCensus for Python 和 Azure Monitor 导出程序并将监视数据发送到 Azure Monitor 的过程。
+
+## <a name="instrument-with-opencensus-python-sdk-with-azure-monitor-exporters"></a>使用 Azure Monitor 导出程序检测 OpenCensus Python SDK
 
 安装 OpenCensus Azure Monitor 导出程序：
 
@@ -221,14 +233,14 @@ logger.info('Hello, World!')
 
 ### <a name="metrics"></a>指标
 
-OpenCensus.stats 支持 4 种聚合方法，但提供对 Azure Monitor 的部分支持：
+OpenCensus.stats 支持 4 种聚合方法，但对 Azure Monitor 提供部分支持：
 
-- Count：度量点数的计数。 此值为累积值，只能增加，且在重启时重置为 0。 
-- Sum：度量点的总和。 此值为累积值，只能增加，且在重启时重置为 0。 
-- LastValue：保留最后记录的值，删除所有其他值。
-- Distribution：度量点的直方图分布。 Azure 导出程序不支持此方法。
+- **Count：** 测量点数的计数。 该值是累积值，只能增加，在重启时重置为 0。 
+- **Sum：** 测量点之和。 该值是累积值，只能增加，在重启时重置为 0。 
+- **LastValue：** 保留最后记录的值，丢弃所有其他值。
+- **Distribution：** 测量点的直方图分布。 Azure 导出程序不支持此方法。
 
-### <a name="count-aggregation-example"></a>Count 聚合示例
+### <a name="count-aggregation-example"></a>计数聚合示例
 
 1. 首先，让我们生成一些本地指标数据。 我们将创建一个简单的指标，用于跟踪用户选择 Enter 键的次数。
 
@@ -329,7 +341,55 @@ OpenCensus.stats 支持 4 种聚合方法，但提供对 Azure Monitor 的部分
         main()
     ```
 
-1. 导出程序按固定的间隔将指标数据发送到 Azure Monitor。 默认值为每 15 秒。 我们正在跟踪单个指标，因此，在每个间隔将会发送此指标数据及其包含的任何值和时间戳。 此值为累积值，只能增加，且在重启时重置为 0。 可在 `customMetrics` 下找到数据，但 `customMetrics` 属性 valueCount、valueSum、valueMin、valueMax 和 valueStdDev 未被有效使用。
+1. 导出程序按固定的间隔将指标数据发送到 Azure Monitor。 默认值为每 15 秒。 我们正在跟踪单个指标，因此，在每个间隔将会发送此指标数据及其包含的任何值和时间戳。 该值是累积值，只能增加，在重启时重置为 0。 虽然可以在 `customMetrics` 下找到数据，但实际上并未使用 `customMetrics` 属性 valueCount、valueSum、valueMin、valueMax 和 valueStdDev。
+
+### <a name="setting-custom-dimensions-in-metrics"></a>在指标中设置自定义维度
+
+Opencensus Python SDK 允许通过 `tags`（实质上是键/值对的字典）向指标遥测添加自定义维度。 
+
+1. 将想要使用的标记插入到标记映射中。 标记映射的作用就像一种“池塘”，包含所有可用的标记。
+
+```python
+...
+tmap = tag_map_module.TagMap()
+tmap.insert("url", "http://example.com")
+...
+```
+
+1. 对于特定 `View`，请通过标记键来指定在使用该视图记录指标时要使用的标记。
+
+```python
+...
+prompt_view = view_module.View("prompt view",
+                               "number of prompts",
+                               ["url"], # <-- A sequence of tag keys used to specify which tag key/value to use from the tag map
+                               prompt_measure,
+                               aggregation_module.CountAggregation())
+...
+```
+
+1. 在度量映射中记录时，请务必使用标记映射。 在 `View` 中指定的标记键必须能在用于记录的标记映射中找到。
+
+```python
+...
+mmap = stats_recorder.new_measurement_map()
+mmap.measure_int_put(prompt_measure, 1)
+mmap.record(tmap) # <-- pass the tag map in here
+...
+```
+
+1. 在 `customMetrics` 表下，使用 `prompt_view` 发出的所有指标记录都将具有自定义维度 `{"url":"http://example.com"}`。
+
+1. 若要使用相同的键生成具有不同值的标记，请为这些标记创建新的标记映射。
+
+```python
+...
+tmap = tag_map_module.TagMap()
+tmap2 = tag_map_module.TagMap()
+tmap.insert("url", "http://example.com")
+tmap2.insert("url", "https://www.wikipedia.org/wiki/")
+...
+```
 
 #### <a name="performance-counters"></a>性能计数器
 
@@ -489,4 +549,3 @@ exporter = metrics_exporter.new_metrics_exporter(
 * [可用性测试](./monitor-web-app-availability.md)：创建测试来确保站点在 Web 上可见。
 * [智能诊断](./proactive-diagnostics.md)：这些测试可自动运行，因此不需要进行任何设置。 它们会告诉你应用是否具有异常的失败请求速率。
 * [指标警报](../alerts/alerts-log.md)：设置警报以在某个指标超过阈值时发出警告。 可以在编码到应用中的自定义指标中设置它们。
-

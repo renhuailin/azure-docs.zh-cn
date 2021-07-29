@@ -3,12 +3,12 @@ title: 规划 Azure Service Fabric 群集部署
 description: 了解如何规划和准备 Azure 中的生产 Service Fabric 群集部署。
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 82521487b9a3e9438784e010a32cf6df8e7be2ef
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e6b7c0a14f6e5f63e84c8efa484347cd4ff322f4
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046311"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789536"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>规划和准备群集部署
 
@@ -33,7 +33,7 @@ ms.locfileid: "105046311"
 ### <a name="select-node-properties-for-each-node-type"></a>选择每个节点类型的节点属性
 节点类型定义关联规模集中 VM 的 VM SKU、数目和属性。
 
-每个节点类型的 VM 大小下限取决于为节点类型选择的[持久性层][durability]。
+每个节点类型的 VM 大小下限取决于为节点类型选择的[持久性层][durability]。 在选择 VM SKU 之前，如果你确定将来需要不同的 VM SKU，请确保你了解[垂直缩放](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)所需的步骤。
 
 主节点类型的 VM 数目下限取决于选择的[可靠性层][reliability]。
 
