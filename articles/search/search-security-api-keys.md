@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
-ms.openlocfilehash: 8b2e85744923fb2e7e474e049df1536aebc56f3c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/08/2021
+ms.openlocfilehash: 6954ce289cb3cf219f8c4024a112411fd60d70e0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99536927"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310659"
 ---
-# <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>创建和管理用于 Azure 认知搜索服务的 API 密钥
+# <a name="create-and-manage-api-keys-for-authentication-to-azure-cognitive-search"></a>创建和管理 API 密钥，以便对 Azure 认知搜索进行身份验证
 
-对搜索服务的所有请求都需要有一个专为服务生成的只读 API 密钥。 API 密钥是对搜索服务终结点的入站请求进行身份验证的唯一机制，每个请求中都必须包含此密钥。 
+在连接到搜索服务时，所有请求都需要包含专为你的服务生成的只读 API 密钥。 API 密钥是对搜索服务终结点的入站请求进行身份验证的唯一机制，每个请求中都必须包含此密钥。 
 
 + 在 [REST 解决方案](search-get-started-rest.md)中，`api-key` 通常在请求头中指定
 
@@ -97,7 +97,7 @@ API 密钥是由随机生成的数字和字母组成的唯一字符串，随每�
 
 以下角色的成员可以查看和重新生成密钥：所有者、参与者和[搜索服务参与者](../role-based-access-control/built-in-roles.md#search-service-contributor)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 + [Azure 认知搜索中的安全性](search-security-overview.md)
 + [Azure 认知搜索中 Azure 基于角色的访问控制](search-security-rbac.md)

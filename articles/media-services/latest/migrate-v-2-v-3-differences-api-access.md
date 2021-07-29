@@ -10,14 +10,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 831bc737fbd54685cdc8358642bc37e7b2df2c42
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5f3c6526139389da3bfdbc3c43cf8b6d2a1dbccf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98953710"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567961"
 ---
 # <a name="api-access-differences-between-azure-media-services-v2-to-v3-api"></a>Azure 媒体服务 V2 与 V3 API 之间的 API 访问差异
 
@@ -36,6 +36,8 @@ ms.locfileid: "98953710"
 
 在 2024 年 V2 API 停用前都可以对其进行访问。
 
+## <a name="create-a-v3-account"></a>创建 V3 帐户
+
 迁移时，可以创建仍有权访问 V2 的 V3 帐户。  可以通过以下方式创建帐户：
 
 - REST API 和更早版本
@@ -48,7 +50,3 @@ ms.locfileid: "98953710"
 
 > [!NOTE]
 > 使用 2020-05-01 API 创建的新帐户不能使用 V2 API。
-
-## <a name="next-steps"></a>后续步骤
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]
