@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 6d753a90f2a4cb19c9f3933d007fb3d378af6d81
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92793205"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>具有弹性数据库工具和行级安全性的多租户应用程序
@@ -57,7 +57,7 @@ ms.locfileid: "92793205"
 1. **应用程序层**：打开连接后，将应用程序代码修改为始终设置 SESSION\_CONTEXT 中的当前 TenantId。 示例项目已通过这种方式设置 TenantId。
 2. **数据层**：在每个分片数据库中创建一个 RLS 安全策略，以根据 SESSION\_CONTEXT 中存储的 TenantId 筛选行。 针对每个分片数据库创建一个 策略，否则不会筛选多租户分片中的行。
 
-## <a name="1-application-tier-set-tenantid-in-the-session_context"></a>1.应用程序层：在 SESSION\_CONTEXT 中设置 TenantId
+## <a name="1-application-tier-set-tenantid-in-the-session_context"></a>1. 应用程序层：在 SESSION\_CONTEXT 中设置 TenantId
 
 首先，使用弹性数据库客户端库的数据依赖路由 API 连接到分片数据库。 应用程序仍需告知数据库，哪个 TenantId 在使用连接。 TenantId 告知 RLS 安全策略，必须筛选掉哪些属于其他租户的行。 将当前 TenantId 存储在连接的 [SESSION\_CONTEXT](/sql/t-sql/functions/session-context-transact-sql) 中。
 
@@ -213,7 +213,7 @@ All blogs for TenantId {0} (using ADO.NET SqlClient):", tenantId4);
 
 ```
 
-## <a name="2-data-tier-create-row-level-security-policy"></a>2.数据层：创建行级安全策略
+## <a name="2-data-tier-create-row-level-security-policy"></a>2. 数据层：创建行级安全策略
 
 ### <a name="create-a-security-policy-to-filter-the-rows-each-tenant-can-access"></a>创建安全策略，以便筛选每个租户可以访问的行
 

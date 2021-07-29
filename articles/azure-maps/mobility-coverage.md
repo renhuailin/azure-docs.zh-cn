@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: e902f313edf22d75f6b183575c3dc8d0dd94bc1f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96904748"
 ---
 # <a name="azure-maps-mobility-services-preview-coverage"></a>Azure Maps 出行服务（预览版）的覆盖范围
@@ -56,7 +56,7 @@ Azure Maps 不能为所有城市和国家/地区提供同一级别的信息和�
 | 苏里南 | Paramaribo |
 | 乌拉圭 | Montevideo、Paysandu、Punta del Este、Salto |
 | 美国 | <p>Albany (GA)、Albany (NY)、Albuquerque (NM)、Anchorage (AK)、Ann Arbor (MI)  Appleton-Oshkosh-Neenah (WI)、Asheville (NC)、Athens (GA)、Athens (OH)、Atlanta (GA)、Austin (TX)、Bakersfield (CA)、Baltimore (MD)、Bend-Redmond (OR)、Berkshire County (MA)、Birmingham (AL)、Bloomington (IN)、Boise (ID)、Boston (MA)、Boulder (CO)、Bowling Green (KY)、Brevard County (FL)、Buffalo (NY)、Butte (MT)、Cape Cod (MA)、Centre County (PA)、Champaign-Urbana (IL)、Charleston (SC)、Charleston (WV)、Charlotte (NC)、Charlottesville (VA)、Chattanooga (TN)、Cheyenne (WY)、Chicago (IL)、Cincinnati (OH)、Citrus County (FL)、Cleveland (OH)、Coachella Valley (CA)、Colorado Springs (CO)、Columbia (TN)、Columbia (SC)、Columbus (OH)、Corpus Christi (TX)、Dallas/Forth Worth (TX)、Dayton (OH)、Delaware、Denver (CO)、Des Moines (IA)、Detroit (MI)、Duluth (MN)、El Paso (TX)、Eugene (OR)、Fairbanks (AK)、Fargo (ND)、Fayetteville (NC)、Flagstaff (AZ)、Flint (MI) Fort Collins (CO)、Fort Wayne (IN)、Fresno (CA)、Gainesville (FL)、Grand Forks (ND)、Grand Rapids (MI)、Green Bay (WI)、Greensboro (NC)、Greenville (SC)、Gunnison (CO)、Hampton Roads (VA)、Hanford (CA)、Hartford (CT)、Hernando County (FL)、Hinesville (GA)、Honolulu (HI)、Houston (TX)、Humboldt County (CA)、Huntsville (AL)、Indianapolis (IN)、Ithaca (NY)、Jackson (MS)、Jackson (TN)、Jacksonville - St. John's County (FL)、Johnson city (TN)、Jonesboro (AR)、Joplin (MO)、Juneau (AK)、Kalamazoo (MI)、Kalispell (MT)、Kansas City (MO)、Kauai (HI)、Ketchum (ID)、Knoxville (TN)、Lafayette (IN)、Lancaster (PA)、Lansing (MI)、Laredo (TX)、Las Vegas (NV)、Lawrence (KS)、Lee County (FL)、Lexington (KY)、Lincoln County (OR)、Little Rock (AR)、Los Angeles (CA)、Louisville (KY)、Lubbock (TX)、Madison (WI)、Manchester (NH)、McAllen (TX)、Memphis (TN)、Miami (FL)、Milwaukee-Waukesha (WI)、Minneapolis-St. Paul (MN)、Missoula (MT)、Modesto (USA)、Moline (IL)、Monroe County (PA)、Montgomery (AL)、Morgantown (WV)、Nashville (TN)、Navajo Nation)、New Haven (CT)、New Orleans (LA)、NYC-NJ Area(NY)、Ocala (FL)、Okaloosa County (FL)、Oklahoma City (OK)、Omaha (NE)、Orlando (FL)、Palm Desert (CA)、Panama City (FL)、Pensacola (FL)、Peoria (IL)、Philadelphia (PA)、Phoenix (AZ)、Pittsburgh (PA)、Portland (ME)、Portland (OR)、Racine (WI)、Raleigh (NC)、Redding (CA)、Reno & Lake Tahoe (NV)、Richmond (VA)、Roanoke Valley (VA - Lynchburg)、Rochester (NY)、Rockford (IL)、Rocky Mount (NC)、Rocky Mountain National Park (CO)、Rogue Valley (OR)、Roseburg (OR)、Roseville (CA)、Sacramento (CA)、Salem (OR)、Salt Lake City (UT)、San Antonio (TX)、San Diego (CA)、San Luis Obispo (CA)、Santa Barbara (CA)、Santa Fe (NM)、Sarasota (FL)、Savannah (GA)、Seacoast Region (NH)、Seattle-Tacoma-Bellevue (WA)、SF Bay Area (CA)、SF-San Jose Area (CA)、Sioux City (IA)、Sioux Falls (SD)、Sitka (AK)、Spokane (WA)、Springfield (MA)、South Bend (IN)、Springfield (IL)、Springfield (Mass)、St. George (UT)、St. Louis (MO)、Stockton (CA)、Syracuse-Utica (NY)、Tallahassee (FL)、Tampa-St. Petersburg (FL)、Terre Haute (IN)、Toledo (OH)、Topeka (KS)、Traverse City (MI)、Tucson (AZ)、Tulsa (OK)、Vermont、Victorville (CA)、Volusia County (FL)、Waco (TX)、Washington (DC)、Waterbury (CT)、Wichita (KS)、Wichita Falls (TX) Wilmington (NC)、Yakima (WA)、Youngstown (OH)、York County (PA)、Yuma County (AZ)</p>|
-| +美属维尔京群岛 | 美国维尔京群岛* |
+| \+ 美属维尔京群岛 | 美属维尔京群岛* |
 | 委内瑞拉 | Caracas |
 
 ## <a name="asia-pacific"></a>亚太区
@@ -77,7 +77,7 @@ Azure Maps 不能为所有城市和国家/地区提供同一级别的信息和�
 | 菲律宾 | 马尼拉 |
 | 新加坡 | 新加坡* |
 | 韩国 | 釜山、首尔 |
-| 中国台湾 | 彰化县、台北 |
+| 台湾 | 彰化县、台北 |
 | 泰国 | Bangkok、Chiang Mai |
 | 乌兹别克斯坦 | Samarkand |
 | 越南 | Hanoi、Ho Chi Minh City |
@@ -154,7 +154,7 @@ Azure Maps 不能为所有城市和国家/地区提供同一级别的信息和�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用出行服务（预览版）请求交通数据：
+了解如何使用出行服务（预览版）来请求交通数据：
 
 > [!div class="nextstepaction"]
 > [如何请求交通数据](how-to-request-transit-data.md)
