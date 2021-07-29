@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 31d22be5ee5480878633b9742837e3f5d6119043
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: f42cb2f3f00c75dea262b7151bef5efad4e9aa92
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078938"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569581"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>适用于 Azure 虚拟机上的 SQL Server 的业务连续性和 HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,6 +38,10 @@ VM 联机并正常运行时，SQL Server 实例也可能会出故障。 即便�
 
 Azure 中的异地冗余存储 (GRS) 是通过一个名为异地复制的功能实现的。 GRS 可能不是适合你的数据库的灾难恢复解决方案。 因为异地复制异步发送数据，所以最近的更新可能会在灾难中丢失。 有关异地复制限制的详细信息，请阅读[异地复制支持](#geo-replication-support)部分。
 
+> [!NOTE]
+> 现在，可以使用 Azure Migrate 将[故障转移群集实例](../../migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md)和[可用性组](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md)解决方案直接迁移到 Azure VM 上的 SQL Server。 
+
+
 ## <a name="deployment-architectures"></a>部署体系结构
 Azure 支持以下 SQL Server 技术以实现业务连续性：
 
@@ -46,6 +50,7 @@ Azure 支持以下 SQL Server 技术以实现业务连续性：
 * [日志传送](/sql/database-engine/log-shipping/about-log-shipping-sql-server)
 * [使用 Azure Blob 存储执行 SQL Server 备份和还原](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
 * [数据库镜像](/sql/database-engine/database-mirroring/database-mirroring-sql-server) - SQL Server 2016 中已弃用
+* [Azure Site Recovery](../../../site-recovery/site-recovery-sql.md)
 
 可将多种技术配合使用，以实现具有高可用性和灾难恢复功能的 SQL Server 解决方案。 根据所用技术的不同，混合部署可能需要使用 VPN 隧道连接 Azure 虚拟网络。 以下部分显示了某些部署体系结构的示例。
 
@@ -113,52 +118,10 @@ Azure VM、存储和网络的运行特征与本地非虚拟化的 IT 基础结�
 
 若要配置高可用性，请将参与的 SQL Server 虚拟机分散到该区域中的各个可用性区域。 可用性区域之间的网络到网络传输会产生额外的费用。 有关详细信息，请参阅[可用性区域](../../../availability-zones/az-overview.md)。 
 
-
-### <a name="failover-cluster-behavior-in-azure-networking"></a>故障转移群集在 Azure 网络中的行为
-Azure 中不符合 RFC 的 DHCP 服务可能会导致某些故障转移群集配置创建失败。 失败的原因是为群集网络名称分配了重复的 IP 地址，例如与某个群集节点相同的 IP 地址。 当你使用可用性组时，会产生一个问题，因为它依赖于 Windows 故障转移群集功能。
-
-创建两节点群集并使其联机时，请考虑此应用场景：
-
-1. 群集联机，NODE1 随后会为群集网络名称请求一个动态分配的 IP 地址。
-2. DHCP 服务除了 NODE1 自身的 IP 地址以外不提供任何 IP 地址，因为 DHCP 服务可以识别请求是否来自 NODE1 自身。
-3. Windows 检测到同时向 NODE1 和故障转移群集网络名称分配了一个重复的地址，并且默认群集组未能联机。
-4. 默认群集组会移动到 NODE2。 NODE2 将 NODE1 的 IP 地址作为群集 IP 地址，并使默认群集组联机。
-5. 当 NODE2 尝试与 NODE1 建立连接时，针对 NODE1 的数据包从不离开 NODE2，因为后者将 NODE1 的 IP 地址解析为其自身。 NODE2 无法与 NODE1 建立连接，它会丢失仲裁并关闭群集。
-6. NODE1 可向 NODE2 发送数据包，但 NODE2 无法回复。 NODE1 丢失仲裁并关闭群集。
-
-可将未使用的静态 IP 地址分配给群集网络名称，让群集网络名称联机，从而避免这种情况发生。 例如，可以使用 169.254.1.1 等本地链路 IP 地址。 若要简化此过程，请参阅[在 Azure 中针对可用性组配置 Windows 故障转移群集](https://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx)。
-
-有关详细信息，请参阅[在 Azure 中配置可用性组 (GUI)](./availability-group-quickstart-template-configure.md)。
-
-### <a name="support-for-availability-group-listeners"></a>支持可用性组侦听器
-运行 Windows Server 2012 及更高版本的 Azure VM 支持可用性组侦听器。 这种支持的实现，是借助于在 Azure VM 上启用的负载均衡终结点，它们都是可用性组节点。 必须执行特殊的配置步骤，才能让侦听器对在 Azure 中运行和本地运行的客户端应用程序都有效。
-
-设置侦听器时有两个主要选项：“外部(公共)”或“内部”。 外部（公共）侦听器使用面向 Internet 的负载均衡器，并与可通过 Internet 访问的公共虚拟 IP 相关联。 内部侦听器使用内部负载均衡器，仅支持同一虚拟网络内的客户端。 对于任一负载均衡器类型，都必须启用直接服务器返回。 
-
-如果可用性组跨多个 Azure 子网（例如，跨 Azure 区域的部署），则客户端连接字符串必须包含 `MultisubnetFailover=True`。 这会导致与不同子网中的副本建立并行连接。 有关设置侦听器的说明，请参阅[为 Azure 中的可用性组配置 ILB 侦听器](availability-group-listener-powershell-configure.md)。
-
-
-仍可通过直接连接到服务实例，单独连接到每个可用性副本。 此外，由于可用性组与数据库镜像客户端向后兼容，因此可以像数据库镜像伙伴一样连接到可用性副本，只要这些副本配置得类似于数据库镜像即可：
-
-* 有一个主要副本和一个次要副本。
-* 将辅助副本配置为不可读（“可读辅助副本”选项设置为“否”） 。
-
-下面是一个示例客户端连接字符串，它对应于这个使用 ADO.NET 或 SQL Server Native Client 的类似于数据库镜像的配置：
-
-```console
-Data Source=ReplicaServer1;Failover Partner=ReplicaServer2;Initial Catalog=AvailabilityDatabase;
-```
-
-有关客户端连接的详细信息，请参阅：
-
-* [将连接字符串关键字用于 SQL Server 本机客户端](/sql/relational-databases/native-client/applications/using-connection-string-keywords-with-sql-server-native-client)
-* [将客户端连接到数据库镜像会话 (SQL Server)](/sql/database-engine/database-mirroring/connect-clients-to-a-database-mirroring-session-sql-server)
-* [在混合 IT 环境中连接到可用性组侦听器](/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
-* [可用性组侦听器、客户端连接和应用程序故障转移 (SQL Server)](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
-* [将数据库镜像连接字符串用于可用性组](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
-
 ### <a name="network-latency-in-hybrid-it"></a>混合 IT 环境中的网络延迟
 在部署 HADR 解决方案时，请假设本地网络和 Azure 之间有时可能会存在很高的网络延迟。 将副本部署到 Azure 时，同步模式应使用异步提交而非同步提交。 当你同时在本地和 Azure 中部署数据库镜像服务器时，请使用高性能模式，而非高安全模式。
+
+请参阅 [HADR 配置最佳做法](hadr-cluster-best-practices.md)，了解有助于适应云环境的群集和 HADR 设置。 
 
 ### <a name="geo-replication-support"></a>异地复制支持
 Azure 磁盘中的异地复制不支持将同一数据库的数据文件和日志文件各自存储在不同的磁盘上。 GRS 独立并异步地复制对每个磁盘的更改。 此机制可保证单个磁盘中异地复制副本上的写顺序，但不能保证多个磁盘的异地复制副本上的写顺序。 如果将数据库配置为将其数据文件和日志文件各自存储在不同的磁盘上，则灾难后恢复的磁盘所含的数据文件副本可能比日志文件副本新，而这违反了 SQL Server 中的预写日志以及事务的 ACID 属性（原子性、一致性、隔离性和持久性）。 

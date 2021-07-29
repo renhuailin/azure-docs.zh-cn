@@ -3,16 +3,19 @@ title: 为基于事件的视频录制配置信号入口 - Azure
 description: 本文提供有关如何在管道中配置信号入口的指导。
 ms.topic: how-to
 ms.date: 4/12/2021
-ms.openlocfilehash: e7871f017d416e164a6160336646d8285c3792a7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e03524e7e12a0081172918159e9f2d2ed2e4a7d6
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385141"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413422"
 ---
 # <a name="configuring-a-signal-gate-for-event-based-video-recording"></a>为基于事件的视频录制配置信号入口
 
 在管道中，[信号入口处理器节点](pipeline.md#signal-gate-processor)可以在入口被事件触发时将媒体从一个节点转发到另一个节点。 当被触发时，信号门会打开，允许媒体在指定的持续时间内流过。 如果没有事件触发信号门，则信号门会关闭，媒体会停止流动。 可以使用信号门处理器进行基于事件的视频录制。
+
+> [!NOTE]
+> 信号门处理器节点后面必须紧跟视频接收器或文件接收器。
 
 在本文中，你将了解如何配置信号门处理器。
 
@@ -71,8 +74,8 @@ ms.locfileid: "110385141"
 
 * **activationEvaluationWindow**：0 秒到 10 秒
 * **activationSignalOffset**：-1 分钟到 1 分钟
-* **minimumActivationTime**：1 秒到 1 小时
-* **maximumActivationTime**：1 秒到 1 小时
+* minimumActivationTime：10 秒到 1 小时
+* maximumActivationTime：10 秒到 1 小时
 
 在用例中，你将按以下要求设置参数：
 

@@ -1,54 +1,45 @@
 ---
-title: 了解 Azure 映像生成器（预览版）
+title: 了解 Azure 映像生成器
 description: 详细了解 Azure 中虚拟机的 Azure 映像生成器。
-author: danielsollondon
-ms.author: danis
-ms.date: 03/05/2021
+author: kof-f
+ms.author: kofiforson
+ms.date: 05/24/2021
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions
 ms.reviewer: cynthn
-ms.openlocfilehash: 20bb6925f859d497046eb42bbafb5264826b77b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7289d9d814385f31a71cbd598889e564958a0140
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104604060"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111441809"
 ---
-# <a name="preview-azure-image-builder-overview"></a>预览：Azure 映像生成器概述
+# <a name="azure-image-builder-overview"></a>Azure 映像生成器概述
 
 借助标准化虚拟机 (VM) 映像，组织可迁移到云，并确保在部署中保持一致。 映像通常包括预定义的安全性和配置设置，以及必需的软件。 设置自己的映像管道需要时间、基础结构和设置，但使用 Azure VM 映像生成器，只需提供一个描述映像的配置，将其提交给该服务，即可生成映像并进行分发。
  
 通过 Azure VM 映像生成器（Azure 映像生成器），可从基于 Windows 或 Linux 的 Azure 市场映像、现有自定义映像开始，并开始添加自己的自定义项。 由于映像生成器在 [HashiCorp Packer](https://packer.io/) 上生成，你会发现一些相似性，但映像生成器具有托管服务的优势。 在 [Azure 共享映像库](shared-image-galleries.md)中，还可以指定要在其中托管映像的位置（作为托管映像或 VHD）。
 
-> [!IMPORTANT]
-> Azure 映像生成器目前提供公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="preview-features"></a>预览功能
+## <a name="features"></a>功能
 
-对于预览版，支持以下功能：
+Azure 映像生成器支持以下功能：
 
 - 创建基线映像，该映像包括最低安全性和企业配置，使部门可以进一步对其进行自定义。
 - 集成核心应用程序，因此 VM 可以在创建后执行工作负载，或添加配置以支持 Windows 虚拟桌面映像。
 - 修补现有映像，使用映像生成器可以持续修补现有的自定义映像。
 - 将映像生成器连接到现有的虚拟网络，以便连接到现有的配置服务器（DSC、Chef、Puppet 等）、文件共享或任何其他可路由的服务器/服务。
 - 与 Azure 共享映像库集成，以在全球范围内分发、更改和缩放映像，并提供映像管理系统。
-- 与现有映像生成管道集成，只需从管道调用映像生成器，或者使用简单的预览映像生成器 Azure DevOps 任务即可。
+- 与现有映像生成管道集成，只需从管道调用映像生成器，或者使用简单的映像生成器 Azure DevOps 任务即可。
 - 将现有的映像自定义管道迁移到 Azure。 使用现有的脚本、命令和进程来自定义映像。
 - 创建 VHD 格式的映像以支持 Azure Stack。
  
 
 ## <a name="regions"></a>区域
-Azure 映像生成器服务将在这些区域提供预览版。 可以在这些区域外分发映像。
-- 美国东部
-- 美国东部 2
-- 美国中西部
-- 美国西部
-- 美国西部 2
-- 北欧
-- 西欧
+
+Azure 映像生成器服务在[这些](./linux/image-builder-json.md#location)区域可用。 可以在这些区域外分发映像。
 
 ## <a name="os-support"></a>OS 支持
 AIB 将支持 Azure 市场基础 OS 映像：

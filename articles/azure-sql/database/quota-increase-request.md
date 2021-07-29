@@ -3,18 +3,18 @@ title: 请求增加配额
 description: 本页介绍如何创建增加 Azure SQL 数据库和 Azure SQL 托管实例配额的支持请求。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: deployment-configuration
 ms.topic: how-to
 author: sachinpMSFT
 ms.author: sachinp
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 06/04/2020
-ms.openlocfilehash: 27719663acfbdbcd7293defc4b746153359adb61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5530becdcbe150ddc7ab2608bdf964ac269ed99
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98251840"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409012"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>请求增加 Azure SQL 数据库和 SQL 托管实例配额
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,7 +54,7 @@ ms.locfileid: "98251840"
 
    ![输入详细信息链接](./media/quota-increase-request/provide-details-link.png)
 
-单击“输入详细信息”将显示“配额详细信息”窗口，可在其中添加其他信息 。 以下各部分介绍适用于 SQL 数据库和 SQL 数据库托管实例配额类型的不同选项 。
+单击“输入详细信息”将显示“配额详细信息”窗口，可在其中添加其他信息 。 以下各部分介绍适用于“SQL 数据库”和“SQL 托管实例”配额类型的不同选项 。
 
 ## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a> SQL 数据库配额类型
 
@@ -110,7 +110,7 @@ ms.locfileid: "98251840"
 
 ### <a name="request-enabling-specific-hardware-in-a-region"></a>请求启用区域中的特定硬件
 
-如果想要使用的[硬件生成](service-tiers-vcore.md#hardware-generations)在你所处的区域中不可用（请参阅[硬件可用性](service-tiers-vcore.md#hardware-availability)），你可能需要使用以下步骤来进行请求。
+如果想要使用的硬件代系在你的区域中不可用，你可能需要使用以下步骤来进行请求。 有关硬件代系和区域可用性的详细信息，请参阅 [SQL 数据库的硬件代系](./service-tiers-sql-database-vcore.md#hardware-generations)或 [SQL 托管实例的硬件代系](../managed-instance/service-tiers-managed-instance-vcore.md#hardware-generations)。
 
 1. 选择“其他配额请求”配额类型。
 

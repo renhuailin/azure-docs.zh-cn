@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: how-to
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 25dfad48d3782c50797c855a0a8cbfded6581e0e
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 573868d8dc637afcab1970d0e41ed2ed0830808d
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788006"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538852"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>使用 Azure 机器学习数据集来训练模型 
 
@@ -232,9 +232,13 @@ with open(mounted_input_path, 'r') as f:
 
 下载数据集时，数据集引用的所有文件都将下载到计算目标。 所有计算类型都支持下载。 
 
+> [!NOTE]
+> 对于 Windows 操作系统，下载路径名称不应超过 255 个字母数字字符。 对于 Linux 操作系统，下载路径名称不应超过 4,096 个字母数字字符。 此外，对于 Linux 操作系统，文件名（是指下载路径 `/path/to/file/{filename}` 中的最后一段）不应超过 255 个字母数字字符。
+
 如果脚本处理数据集引用的所有文件，并且计算磁盘可以容纳整个数据集，则建议下载，以避免从存储服务流式传输数据的开销。 如果数据大小超出计算磁盘大小，则无法下载。 对于此方案，我们建议装载，因为在处理时只会加载脚本使用的数据文件。
 
 以下代码将 `dataset` 装载到 `mounted_path` 的临时目录
+
 
 ```python
 import tempfile
@@ -289,29 +293,45 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 
 ## <a name="troubleshooting"></a>疑难解答
 
-* **数据集初始化失败：“等待装入点准备完毕”已超时**： 
+**数据集初始化失败：“等待装入点准备完毕”已超时**： 
   * 如果你没有任何出站[网络安全组](../virtual-network/network-security-groups-overview.md)规则并且正在使用 `azureml-sdk>=1.12.0`，请将 `azureml-dataset-runtime` 及其依赖项更新为特定次要版本的最新版本，而如果你正在运行中使用该版本，请重新创建环境，以便获得具有修补程序的最新补丁。 
   * 如果使用的是 `azureml-sdk<1.12.0`，请升级到最新版本。
   * 如果具有出站 NSG 规则，请确保存在允许服务标记 `AzureResourceMonitor` 的所有流量的出站规则。
 
-### <a name="overloaded-azurefile-storage"></a>AzureFile 存储过载
+### <a name="azurefile-storage"></a>AzureFile 存储
 
-如果收到 `Unable to upload project files to working directory in AzureFile because the storage is overloaded` 错误，请应用以下解决方法。
+无法将项目文件上传到 AzureFile 中的工作目录，因为该存储已过载：
 
-如果对其他工作负荷（例如数据传输）使用文件共享，则我们建议使用 Blob，以便可以自由使用文件共享来提交运行。 还可以在两个不同的工作区之间拆分工作负荷。
+* 如果对其他工作负荷（例如数据传输）使用文件共享，则我们建议使用 Blob，以便可以自由使用文件共享来提交运行。
+
+* 另一种选择是在两个不同的工作区之间拆分工作负载。
+
+ConfigException：由于缺少凭据，无法建立到 AzureFileService 的连接。需要将帐户密钥或 SAS 令牌链接到默认工作区 Blob 存储。
+
+若要确保存储访问凭据链接到工作区以及关联的文件数据存储，请完成以下步骤：
+
+1. 在 [Azure 门户](https://ms.portal.azure.com)中导航到工作区。
+1. 在工作区“概述”页上选择存储链接。
+1. 在存储页上，选择左侧菜单中的“访问密钥”。 
+1. 复制密钥。
+1. 导航到工作区的 [Azure 机器学习工作室](https://ml.azure.com)。
+1. 在工作室中，选择要为其提供身份验证凭据的文件数据存储。 
+1. 选择“更新身份验证”。
+1. 粘贴前面步骤中的密钥。 
+1. 选择“保存”。  
 
 ### <a name="passing-data-as-input"></a>作为输入传递数据
 
-*  **TypeError：FileNotFound:无此类文件或目录：** 如果文件不在提供的文件路径中，则会出现此错误。 需确保引用文件的方式与在计算目标上将数据集装载到的位置相一致。 为确保确定性状态，我们建议在将数据集装载到计算目标时使用抽象路径。 例如，在以下代码中，我们将数据集装载到计算目标文件系统的根目录 `/tmp` 下。 
+**TypeError：FileNotFound:无此类文件或目录：** 如果文件不在提供的文件路径中，则会出现此错误。 需确保引用文件的方式与在计算目标上将数据集装载到的位置相一致。 为确保确定性状态，我们建议在将数据集装载到计算目标时使用抽象路径。 例如，在以下代码中，我们将数据集装载到计算目标文件系统的根目录 `/tmp` 下。 
     
-    ```python
-    # Note the leading / in '/tmp/dataset'
-    script_params = {
-        '--data-folder': dset.as_named_input('dogscats_train').as_mount('/tmp/dataset'),
-    } 
-    ```
+```python
+# Note the leading / in '/tmp/dataset'
+script_params = {
+    '--data-folder': dset.as_named_input('dogscats_train').as_mount('/tmp/dataset'),
+} 
+```
 
-    如果不包含前导正斜杠“/”，则需要为计算目标上的工作目录添加前缀（例如 `/mnt/batch/.../tmp/dataset`），以指示要将数据集装载到的位置。
+如果不包含前导正斜杠“/”，则需要为计算目标上的工作目录添加前缀（例如 `/mnt/batch/.../tmp/dataset`），以指示要将数据集装载到的位置。
 
 
 ## <a name="next-steps"></a>后续步骤

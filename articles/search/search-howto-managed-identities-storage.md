@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: f26ca04955dfa854a8ee17b7aa255a6ed991b8df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91ca017bf94f2c9a75a8016fb861cc085dc47ebe
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358365"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556957"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>使用托管标识设置到 Azure 存储帐户的连接
 
@@ -49,9 +49,9 @@ ms.locfileid: "94358365"
     ![添加角色分配](./media/search-managed-identities/add-role-assignment-storage.png "添加角色分配")
 
 4. 根据要为其编制索引的存储帐户类型选择适当的角色：
-    1. Azure Blob 存储要求将搜索服务添加到“存储 Blob 数据读取器”角色。
+    1. Azure Blob 存储要求将搜索服务添加到“存储 Blob 数据读取者”角色。
     1. Azure Data Lake Storage Gen2 要求将搜索服务添加到“存储 Blob 数据读取器”角色。
-    1. Azure 表存储要求将搜索服务添加到“读取器和数据访问”角色。
+    1. Azure 表存储要求将搜索服务添加到“读取者和数据访问”角色。
 5.  将“分配访问权限至”保留为“Azure AD 用户、组或服务主体” 
 6.  搜索你的搜索服务，选中它，然后选择“保存”
 

@@ -10,16 +10,25 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 11/24/2020
-ms.openlocfilehash: 6218715878ec40fecee79f1c93bf2ca1820af007
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 3a1de2f0e35a3ef747818d7dea47ecacb2753cea
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277005"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747268"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge 发行说明 
 
 本文介绍每个新的 Azure SQL Edge 内部版本中的新增功能或已更改的内容。
+
+## <a name="azure-sql-edge-104"></a>Azure SQL Edge 1.0.4
+
+SQL 引擎内部版本 15.0.2000.1558
+
+### <a name="whats-new"></a>新增功能
+
+- 对 ONNX 的 PREDICT 支持 
+    - 改进了在对 ONNX 进行 PREDICT 时对 null 数据的处理
 
 ## <a name="azure-sql-edge-103"></a>Azure SQL Edge 1.0.3
 

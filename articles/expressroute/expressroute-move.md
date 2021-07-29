@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 06/02/2021
 ms.author: duau
-ms.openlocfilehash: dcba2e9de2b37e8c432f94781b3c4c369ad52395
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5395204f75a0637daedabba6b933036b7144dae1
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97807935"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111571341"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型
 本文概述了将 Azure ExpressRoute 线路从经典部署模型转移到 Azure 资源管理器部署模型时会发生什么。
@@ -22,7 +22,7 @@ ms.locfileid: "97807935"
 ![跨两种部署模型链接到虚拟网络的 ExpressRoute 线路](./media/expressroute-move/expressroute-move-1.png)
 
 ## <a name="expressroute-circuits-that-are-created-in-the-classic-deployment-model"></a>在经典部署模型中创建的 ExpressRoute 线路
-在经典部署模型中创建的 ExpressRoute 线路需要首先迁移到资源管理器部署模型。 只有这样才能同时启用到经典部署模型和资源管理器部署模型的连接。 转移连接时，不会发生连接丢失或断开的情况。 经典部署模型中所有从线路到虚拟网络的链接都会保留，而无论这些链接是在同一订阅还是不同订阅中。
+在经典部署模型中创建的 ExpressRoute 线路需要首先迁移到资源管理器部署模型。 只有这样才能同时启用到经典部署模型和资源管理器部署模型的连接。 移动连接时，连接不会丢失或中断。 经典部署模型中所有从线路到虚拟网络的链接都会保留，而无论这些链接是在同一订阅还是不同订阅中。
 
 成功完成转移后，ExpressRoute 线路的行为将与在资源管理器部署模型中创建的 ExpressRoute 线路完全相同。 现在，可以在 Resource Manager 部署模型中建立与虚拟网络的连接。
 

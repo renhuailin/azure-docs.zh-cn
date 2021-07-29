@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5755e14e53d359fd8b322939bf1325d21536d593
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b962282ee4e488d026b6475c63fc32e6a77cee74
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89020178"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591523"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>示例：使用“必应实体搜索 API”创建自定义技能
 
@@ -24,7 +24,7 @@ ms.locfileid: "89020178"
 
 + 如果不熟悉自定义技能应实现的输入/输出接口，请阅读“[自定义技能接口](cognitive-search-custom-skill-interface.md)”一文。
 
-+ [!INCLUDE [cognitive-services-bing-entity-search-signup-requirements](../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
++ 通过 Azure 门户创建[必应搜索 v7 资源](https://ms.portal.azure.com/#create/Microsoft.BingSearch)。 对于此示例，免费层可用且够用。
 
 + 安装 [Visual Studio 2019](https://www.visualstudio.com/vs/) 或更高版本，包括 Azure 开发工作负荷。
 
@@ -36,15 +36,13 @@ ms.locfileid: "89020178"
 
 1. 在 Visual Studio 中，从“文件”菜单中选择“新建” > “项目” 。
 
-1. 在“新建项目”对话框中，选择“已安装”，展开“Visual C#” > “云”，选择“Azure Functions”，键入项目的名称，然后选择“确定”。 函数应用名称必须可以充当 C# 命名空间，因此请勿使用下划线、连字符或任何其他的非字母数字字符。
-
-1. 选择“**Azure Functions v2 (.NET Core)** ”。 也可以使用版本 1 执行此操作，但下面的代码基于 v2 模板编写。
+1. 在“新建项目”对话框中，选择“Azure Functions”作为模板，然后选择“下一步”。 键入项目的名称，并选择“创建”。 函数应用名称必须可以充当 C# 命名空间，因此请勿使用下划线、连字符或任何其他的非字母数字字符。
 
 1. 选择“HTTP 触发器”作为类型
 
 1. 对于存储帐户，可选择“无”，因为此函数不需要任何存储。
 
-1. 选择“确定”以创建函数项目和 HTTP 触发的函数。
+1. 选择“创建”以创建函数项目和 HTTP 触发的函数。
 
 ### <a name="modify-the-code-to-call-the-bing-entity-search-service"></a>修改代码以调用“必应实体搜索服务”
 
@@ -76,7 +74,7 @@ namespace SampleSkills
     {
         #region Credentials
         // IMPORTANT: Make sure to enter your credential and to verify the API endpoint matches yours.
-        static readonly string bingApiEndpoint = "https://api.cognitive.microsoft.com/bing/v7.0/entities/";
+        static readonly string bingApiEndpoint = "https://api.bing.microsoft.com/v7.0/entities";
         static readonly string key = "<enter your api key here>";  
         #endregion
 
@@ -447,11 +445,11 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 }
 ```
 
-此处，我们依靠的是内置[实体识别技能](cognitive-search-skill-entity-recognition.md)，该技能将列入技能组中并扩充组织列表文档。 作为参考，这里是一个实体提取技能配置，该配置足以生成所需的数据：
+此处，我们依靠的是内置[实体识别技能](cognitive-search-skill-entity-recognition-v3.md)，该技能将列入技能组中并扩充组织列表文档。 作为参考，这里是一个实体提取技能配置，该配置足以生成所需的数据：
 
 ```json
 {
-    "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+    "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
     "name": "#1",
     "description": "Organization name extraction",
     "context": "/document/merged_content",
