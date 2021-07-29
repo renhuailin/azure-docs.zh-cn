@@ -8,12 +8,13 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/16/2016
 ms.author: mimckitt
-ms.openlocfilehash: eb2bf1badb699060a0c1576956db395d612433c2
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 958edc8a5e9874efd8add4b74a3dc56a54651e11
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325727"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110667608"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>为 Azure Resource Manager 中的虚拟机设置 WinRM 访问权限
 
@@ -25,7 +26,7 @@ ms.locfileid: "108325727"
 4. 获取密钥保管库中自签名证书的 URL
 5. 创建 VM 时引用自签名证书 URL
 
- 
+
 
 ## <a name="step-1-create-a-key-vault"></a>步骤 1：创建密钥保管库
 可使用以下命令来创建密钥保管库
@@ -127,9 +128,9 @@ $secretURL = (Get-AzKeyVaultSecret -VaultName "<vault name>" -Name "<secret name
     },
 ```
 
-针对上述内容的示例模板可在此处 [201-vm-winrm-keyvault-windows](https://azure.microsoft.com/documentation/templates/201-vm-winrm-keyvault-windows) 找到
+针对上述内容的示例模板可在此处 ([vm-winrm-keyvault-windows](https://azure.microsoft.com/resources/templates/vm-winrm-keyvault-windows/)) 找到
 
-此模板的源代码可在 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows) 上找到
+此模板的源代码可在 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/vm-winrm-keyvault-windows) 上找到
 
 #### <a name="powershell"></a>PowerShell
 ```azurepowershell
@@ -151,8 +152,8 @@ Enable-PSRemoting -Force
 
 > [!NOTE]
 > 如果以上命令无效，可能需要确保 WinRM 服务正在运行。 可使用 `Get-Service WinRM`
-> 
-> 
+>
+>
 
 设置完成后，即可使用以下命令连接到 VM
 

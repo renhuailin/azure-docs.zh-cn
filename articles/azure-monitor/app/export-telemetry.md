@@ -4,12 +4,12 @@ description: 将诊断和使用情况数据导出到 Microsoft Azure 中的存�
 ms.topic: conceptual
 ms.date: 02/19/2021
 ms.custom: references_regions
-ms.openlocfilehash: e7831123834df9186310453106c50261373160ec
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8a302717ed962971069ee56a07d78747d82b00df
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737029"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110455040"
 ---
 # <a name="export-telemetry-from-application-insights"></a>从 Application Insights 导出遥测数据
 想要将遥测数据保留超过标准保留期限？ 或者要以某种专业方式处理这些数据？ 连续导出很适合此目的。 可以使用 JSON 格式将 Application Insights 门户中显示的事件导出到 Microsoft Azure 中的存储。 可以从该存储中下载这些数据，并编写所需的代码来处理这些数据。  
@@ -68,7 +68,7 @@ ms.locfileid: "101737029"
 * 日本西部
 
 > [!NOTE]
-> 支持已在西欧和美国东部配置的应用程序，但不支持在这些区域中加入新应用程序 。
+> 如果导出是在 2021 年 2 月 23 日之前配置的，连续导出将继续适用于美国东部和欧洲西部的应用程序。  无论应用程序何时创建，都不能在美国东部或欧洲西部的任何应用程序上配置新的连续导出规则。 
 
 ## <a name="continuous-export-advanced-storage-configuration"></a>连续导出高级存储配置
 

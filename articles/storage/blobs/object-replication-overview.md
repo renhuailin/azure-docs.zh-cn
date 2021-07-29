@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/08/2021
+ms.date: 05/11/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 391c33e72f45e7c0c0b56128b32a8e73399e417a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39b1ebb4ca0a7daf5654c306382effa44d90c798
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99834317"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109845755"
 ---
 # <a name="object-replication-for-block-blobs"></a>块 blob 的对象复制
 
@@ -80,11 +80,13 @@ ms.locfileid: "99834317"
 
 配置对象复制时，需要通过 Azure 存储资源提供程序针对源帐户和目标帐户创建复制策略。 复制策略通过策略 ID 进行标识。 源帐户和目标帐户的策略必须具有相同的策略 ID，才能进行复制。
 
-存储帐户可用作最多两个目标帐户的源帐户。 源帐户和目标帐户可以位于相同区域，也可以位于不同区域。 它们还可以位于不同的订阅以及不同的 Azure Active Directory (Azure AD) 租户中。 只能为每个源帐户/目标帐户对创建一个复制策略。
+一个源帐户最多可以复制到两个目标帐户，每个目标帐户使用一个策略。 类似地，一个帐户可以作为不超过两个复制策略的目标帐户。
+
+源帐户和目标帐户可以位于相同区域，也可以位于不同区域。 它们还可以位于不同的订阅以及不同的 Azure Active Directory (Azure AD) 租户中。 只能为每个源帐户/目标帐户对创建一个复制策略。
 
 ### <a name="replication-rules"></a>复制规则
 
-复制规则指定 Azure 存储如何将 blob 从源容器复制到目标容器。 可以为每个复制策略最多指定 10 个复制规则。 每个复制规则定义一个源和目标容器，并且每个源和目标容器只能在一个规则中使用。
+复制规则指定 Azure 存储如何将 blob 从源容器复制到目标容器。 可以为每个复制策略最多指定 10 个复制规则。 每个复制规则定义一个源和目标容器，每个源和目标容器只能在一个规则中使用，这意味着最多可以有 10 个源容器和 10 个目标容器参与一个复制策略。
 
 创建复制规则时，默认情况下仅复制随后添加到源容器的新块 blob。 你可以指定复制新的和现有的块 blob，也可以定义自定义复制范围，以复制从指定的时间开始创建的块 blob。
 

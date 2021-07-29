@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 23597804a34a9bc409db179010569024aa472016
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 45489d25256d049467dd946922d30606c53f9bed
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725919"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109750944"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>在 Linux 计算机上安装 Log Analytics 代理
 本文详细介绍如何使用以下方法在 Linux 计算机上安装 Log Analytics 代理：
@@ -56,7 +56,7 @@ ms.locfileid: "107725919"
  - Ubuntu、Debian：`apt-get install -y python2`
  - SUSE: `zypper install -y python2`
 
-Python2 可执行文件必须将别名设置为“python”。 下面是可用来设置此别名的一种方法：
+同样，仅在使用旧版代理时，必须对 python2 可执行文件使用别名 python。 下面是可用来设置此别名的一种方法：
 
 1. 运行以下命令以删除所有现有别名。
  
@@ -80,7 +80,7 @@ OMS 代理对 Linux 提供了有限的自定义支持和强化支持。
 - CIS
 - SELINUX
 
-[Azure 监视代理](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview)计划提供 CIS 和 SELINUX 强化支持。 OMS 代理不支持且未计划使用深入强化和自定义方法。  
+[Azure 监视代理](./azure-monitor-agent-overview.md)计划提供 CIS 和 SELINUX 强化支持。 OMS 代理不支持且未计划使用深入强化和自定义方法。  
 
 ## <a name="agent-prerequisites"></a>代理必备组件
 

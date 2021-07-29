@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
 ms.openlocfilehash: f9c400b55b0da47495db4f1ff4ceb86aa39fe2cc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "90885836"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>从工作区中删除 Azure Sentinel
@@ -66,7 +66,7 @@ ms.locfileid: "90885836"
 
 -   书签
 
-不会删除你的 playbook、已保存的工作簿、已保存的搜寻查询和笔记本。 一些可能因删除数据而中断。可以手动将其删除。
+不会删除你的 playbook、已保存的工作簿、已保存的搜寻查询和笔记本。 某些可能会因删除的数据而中断。你可以手动将其删除。
 
 删除服务后，有 30 天的宽限期，在此期间，你可以重新启用解决方案，并且数据和分析规则将会还原，但必须重新连接已断开连接的已配置连接器。
 

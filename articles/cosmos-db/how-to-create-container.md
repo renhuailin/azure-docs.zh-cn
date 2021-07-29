@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 26e1fe78e54b0de1cf7c7a0ddc54c3d792d1deed
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 6aa233e82ca272b9b5b9e4a9bee4ef2b57f2de77
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071165"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069989"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-sql-api"></a>在 Azure Cosmos DB SQL API 中创建容器
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,11 +35,11 @@ ms.locfileid: "108071165"
 
    * 表明要创建新数据库还是使用现有数据库。
    * 输入容器 ID。
-   * 输入分区键。
-   * 输入要进行预配的吞吐量（例如，1000 RU）。
+   * 输入分区键值（例如 `/ItemID`）。
+   * 选择“自动缩放”或“手动缩放”吞吐量并输入所需的“容器吞吐量”（例如，1000 RU/秒）。 输入要预配的吞吐量（例如，1000 RU）
    * 选择“确定” 。
 
-    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-sql.png" alt-text="“数据资源管理器”窗格的屏幕截图，其中突出显示了“新建容器”":::
+    :::image type="content" source="./media/how-to-provision-container-throughput/provision-container-throughput-portal-sql-api.png" alt-text="数据资源管理器的屏幕截图，突出显示“新建集合”":::
 
 ## <a name="create-a-container-using-azure-cli"></a><a id="cli-sql"></a>使用 Azure CLI 创建容器
 

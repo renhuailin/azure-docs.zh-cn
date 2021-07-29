@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Stack Edge Pro 上管理计算网络以访问模块 | Microsoft Docs
-description: 介绍如何在 Azure Stack Edge Pro 上扩展计算网络，以通过外部 IP 访问模块。
+title: 管理 Azure Stack Edge Pro FPGA 计算网络以访问模块
+description: 介绍如何在 Azure Stack Edge Pro FPGA 上扩展计算网络，以通过外部 IP 访问模块。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 19c92deb58ac51aa882e7123b9a90aa3eae627d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dbbd43d07bbb07e13f2e0301e15d73ee727a86fd
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90894116"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461232"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>在 Azure Stack Edge Pro 上启用计算网络
 

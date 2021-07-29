@@ -5,14 +5,14 @@ services: frontdoor
 author: duongau
 ms.service: frontdoor
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 05/17/2021
 ms.author: qixwang
-ms.openlocfilehash: 94c22ffd423c32ba5f489298267464ca36abaecd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b25f56b238c7f0c42a1ba589f7da2d68344c915
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101098469"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464384"
 ---
 # <a name="configure-an-azure-front-door-standardpremium-route"></a>配置 Azure Front Door 标准版/高级版路由
 
@@ -52,7 +52,7 @@ ms.locfileid: "101098469"
 
     :::image type="content" source="../media/how-to-configure-route/add-route-page.png" alt-text="“添加路由”页的屏幕截图。" lightbox="../media/how-to-configure-route/add-route-page-expanded.png"::: 
 
-    | 设置 | 值 |
+    | 设置 | 说明 |
     | --- | --- |
     | 名称 | 为新路由输入唯一名称。 |   
     | Domain| 选择一个或多个已验证且未关联到其他路由的域 |
@@ -60,7 +60,7 @@ ms.locfileid: "101098469"
     | 接受的协议 | 指定你希望 Azure Front Door 在客户端发出请求时接受的协议。 |
     | 重定向 | 指定是否为使用 HTTP 请求的传入请求强制使用 HTTPS |
     | 源组 | 选择返回源请求发生时应转发哪个源组。 |
-    | 源路径 | 输入要缓存的资源的路径。 若要允许缓存域的任何资源，请将此设置留空。 |
+    | 源路径 | 此路径用于重写 Azure Front Door 在构造转发到源的请求时将使用的 URL。 默认情况下，不提供此路径。 因此，Azure Front Door 将在对源的请求中使用传入 URL 路径。 还可以指定通配符路径，以便将传入路径的任何匹配部分复制到源的请求路径。 </br></br>要匹配的模式：`/foo/*`</br>源路径：`/fwd/`</br></br>传入 URL 路径：`/foo/a/b/c/`</br>从 Azure Front Door 到源的 URL：`fwd/a/b/c`。 |
     | 转发协议 | 选择用于转发请求的协议。 |
     | Caching | 选择此选项后，可缓存 Azure Front Door 中的静态内容。 |
     | 规则 | 选择将应用于此路由的规则集。 要详细了解如何配置规则，请参阅[为 Azure Front Door 配置规则集](how-to-configure-rule-set.md) | 

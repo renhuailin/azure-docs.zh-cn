@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure Policy 将内置策略用于 Azure 机器学习，确保工作区符合要求。
 author: aashishb
 ms.author: aashishb
-ms.date: 05/03/2021
+ms.date: 05/10/2021
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 688af6bbc4de786c36011312f64fb6d67e34183f
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 02225a3be02612b9baa0a66aff3d3dcd5ef1bb87
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633800"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067467"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>使用 Azure Policy 审核和管理 Azure 机器学习
 
@@ -28,8 +28,14 @@ ms.locfileid: "109633800"
 | **专用终结点** | 配置应在其中创建专用终结点的 Azure 虚拟网络子网。 |
 | 专用 DNS 区域 | 配置要用于专用链接的专用 DNS 区域。 |
 | **用户分配的托管标识** | 审核或强制工作区是否使用用户分配的托管标识。 |
+| “禁用本地身份验证” | 审核或强制 Azure 机器学习计算资源应禁用本地身份验证方法。 |
+| “修改/禁用本地身份验证” | 配置计算资源以禁用本地身份验证方法。 |
 
 可以在不同的范围（如订阅或资源组级别）内设置策略。 有关详细信息，请参阅 [Azure Policy 文档](../governance/policy/overview.md)。
+
+## <a name="conditional-access-policies"></a>条件性访问策略
+
+若要控制谁可以访问 Azure 机器学习工作区，请使用 Azure Active Directory [条件访问](../active-directory/conditional-access/overview.md)。
 
 ## <a name="built-in-policies"></a>内置策略
 
@@ -79,6 +85,21 @@ Azure 机器学习提供了一组策略，可用于 Azure 机器学习的常见�
 若要配置此策略，请将 effect 参数设置为 audit、deny 或 disabled。 如果设置为 audit，则可以在不指定用户分配的托管标识的情况下创建工作区。 将使用系统分配的标识，并在活动日志中创建一个警告事件。
 
 如果将此策略设置为 deny，那么除非在创建过程中提供用户分配的标识，否则无法创建工作区。 尝试在不提供用户分配的标识的情况下创建工作区会导致错误。 系统还会将该错误记录到活动日志中。 策略标识符将作为此错误的一部分返回。
+
+## <a name="disable-local-authentication"></a>禁用本地身份验证
+
+控制 Azure 机器学习计算群集或实例是否应禁用本地身份验证 (SSH)。
+
+若要配置此策略，请将 effect 参数设置为 audit、deny 或 disabled。 如果设置为“audit”，则可以创建启用了 SSH 的计算，并在活动日志中创建警告事件。
+
+如果策略设置为“deny”，则无法创建计算，除非禁用 SSH。 尝试创建启用了 SSH 的计算会导致错误。 还会在活动日志中记录该错误。 策略标识符将作为此错误的一部分返回。
+
+
+## <a name="modifydisable-local-authentication"></a>修改/禁用本地身份验证
+
+修改任何 Azure 机器学习计算群集或实例创建请求，以禁用本地身份验证 (SSH)。
+
+若要配置此策略，请将 effect 参数设置为“Modify”或“Disabled”。 如果设置“Modify”，则应用策略的范围内的任何计算群集或实例的创建将自动禁用本地身份验证。
 
 ## <a name="next-steps"></a>后续步骤
 

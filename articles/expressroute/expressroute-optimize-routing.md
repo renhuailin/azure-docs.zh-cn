@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: duau
 ms.openlocfilehash: f35f1d390762d3f83176d7b36db8959dc5ed0157
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92204871"
 ---
 # <a name="optimize-expressroute-routing"></a>优化 ExpressRoute 路由
@@ -54,7 +54,7 @@ ms.locfileid: "92204871"
 ![ExpressRoute 案例 1 问题 - 从客户到 Microsoft 的路由欠佳](./media/expressroute-optimize-routing/expressroute-case1-problem.png)
 
 ### <a name="solution-use-bgp-communities"></a>解决方案：使用 BGP 社区
-要优化两个办公室的用户的路由，需要知道哪个前缀来自 Azure 美国西部，哪个前缀来自 Azure 美国东部。 我们使用 [BGP 社区值](expressroute-routing.md)对此信息进行编码。 我们向每个 Azure 区域分配了唯一的 BGP 社区值，例如：为美国东部分配“12076:51004”，为美国西部分配“12076:51006”。 现在，知道了哪个前缀来自哪个 Azure 区域，因此可以配置哪个 ExpressRoute 线路应该为首选线路。 由于我们使用 BGP 来交换路由信息，因此可以使用 BGP 的“本地首选项”来影响路由。 在我们的示例中，可以在美国西部将比美国东部更高的本地首选项值分配给 13.100.0.0/16。类似地，可以在美国东部将比美国西部更高的本地首选项值分配给 23.100.0.0/16。 此配置将确保当通往 Microsoft 的两个路径都可用时，在洛杉矶的用户将使用美国西部的 ExpressRoute 线路连接到 Azure 美国西部，而你在纽约的用户将使用美国东部的 ExpressRoute 连接到 Azure 美国东部。 两边的路由都获得了优化。 
+要优化两个办公室的用户的路由，需要知道哪个前缀来自 Azure 美国西部，哪个前缀来自 Azure 美国东部。 我们使用 [BGP 社区值](expressroute-routing.md)对此信息进行编码。 我们为每个 Azure 区域分配了唯一的 BGP 社区值，例如美国东部地区为“12076:51004”，美国西部地区为“12076:51006”。 现在，知道了哪个前缀来自哪个 Azure 区域，因此可以配置哪个 ExpressRoute 线路应该为首选线路。 由于我们使用 BGP 来交换路由信息，因此可以使用 BGP 的“本地首选项”来影响路由。 在我们的示例中，可以在美国西部将比美国东部更高的本地首选项值分配给 13.100.0.0/16。类似地，可以在美国东部将比美国西部更高的本地首选项值分配给 23.100.0.0/16。 此配置将确保当通往 Microsoft 的两个路径都可用时，在洛杉矶的用户将使用美国西部的 ExpressRoute 线路连接到 Azure 美国西部，而你在纽约的用户将使用美国东部的 ExpressRoute 连接到 Azure 美国东部。 两边的路由都获得了优化。 
 
 ![ExpressRoute 案例 1 解决方法 - 使用 BGP 社区](./media/expressroute-optimize-routing/expressroute-case1-solution.png)
 

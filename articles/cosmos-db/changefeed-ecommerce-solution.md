@@ -10,10 +10,10 @@ ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
 ms.openlocfilehash: e7b75c71d64054e38630677ecd38f8e3e2483c12
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97606328"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 更改源将实时数据分析可视化
@@ -211,7 +211,7 @@ Azure 流分析是实时处理流数据的完全托管式云服务。 在此实�
 
 5. 导航回到流分析作业页，并选择“输出”。  
 
-6. 选择“+ 添加”。 然后，从下拉菜单中选择“Power BI”。  
+6. 选择“+ 添加”  。 然后，从下拉菜单中选择“Power BI”。  
 
 7. 若要创建新的 Power BI 输出来可视化平均价格，请执行以下操作：
 
@@ -253,7 +253,7 @@ Power BI 是一套商业分析工具，可以分析数据和分享见解。 在�
  
 5. 从“你的数据集”中选择“averagePrice”，然后选择“下一步”。  
 
-6. 在“可视化效果类型”字段中，从下拉菜单中选择“簇状条形图”。 在“轴”下面添加操作。 跳过“图例”，不要添加任何内容。 在名为“值”的下一个部分下面，添加“avg”。 选择“下一步”，为图表指定标题，然后选择“应用”。  仪表板上应会出现一个新图表！  
+6. 在“可视化效果类型”字段中，从下拉菜单中选择“簇状条形图”。 在“轴”下面添加操作。 跳过“图例”，不要添加任何内容。 然后，在下一部分“值”下，添加“平均值”。选择“下一步”，然后为图表命名，并选择“应用”。 仪表板上应会出现一个新图表！  
 
 7. 现在，若要可视化更多的指标，可以返回到“streamjob1”，并使用以下字段额外创建三个输出。
 

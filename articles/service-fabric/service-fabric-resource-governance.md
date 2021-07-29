@@ -3,12 +3,12 @@ title: 容器和服务的资源调控
 description: Azure Service Fabric 允许你为作为进程或容器运行的服务指定资源请求和限制。
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: d760766870c8c2be0a2d2384f6d012b75bc92fbd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2265640346525c6521d7f421c2e589979cceb4ca
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735652"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783400"
 ---
 # <a name="resource-governance"></a>资源调控
 
@@ -264,14 +264,18 @@ Service Fabric 允许对 CPU 和内存使用 **RequestsOnly、LimitsOnly** 和 *
 
 ## <a name="other-resources-for-containers"></a>容器的其他资源
 
-除了 CPU 和内存之外，还可以为容器指定其他资源限制。 这些限制是在代码包一级指定，并在容器启动时应用。 这些资源与 CPU 和内存不同，群集资源管理器不会注意到它们，也不会针对它们进行任何容量检查或负载均衡。
+除了 CPU 和内存之外，还可以为容器指定[其他资源限制](service-fabric-service-model-schema-complex-types.md#resourcegovernancepolicytype-complextype)。 这些限制是在代码包一级指定，并在容器启动时应用。 这些资源与 CPU 和内存不同，群集资源管理器不会注意到它们，也不会针对它们进行任何容量检查或负载均衡。
 
-* *MemorySwapInMB*：容器可使用的交换内存量。
-* *MemoryReservationInMB*：内存调控软限制，仅当在节点上检测到内存争用时才强制执行此限制。
-* *CpuPercent*：容器可使用的 CPU 百分比。 如果为服务包指定了 CPU 请求或限制，则实际上会忽略此参数。
-* *MaximumIOps*：容器可使用的最大 IOPS（读取和写入）。
-* *MaximumIOBytesps*：容器可使用（读取和写入）的最大 IO（字节/秒）。
-* *BlockIOWeight*：相对于其他容器的块 IO 权重。
+* MemorySwapInMB：可以使用的交换内存的总容量，以 MB 为单位。 必须是正整数。
+* MemoryReservationInMB：内存治理软限制（以 MB 为单位），仅当在节点上检测到内存争用时，才强制执行此限制。 必须是正整数。
+* CpuPercent：可用 CPU 的可用百分比（仅适用于 Windows）。 必须是正整数。 不能与 CpuShares、CpuCores 或 CpuCoresLimit 一起使用。
+* CpuShares：相对 CPU 权重。 必须是正整数。 不能与 CpuPercent、CpuCores 或 CpuCoresLimit 一起使用。
+* MaximumIOps：以能够使用的 IOps 计的最大 IO 速率（读取和写入）。 必须是正整数。
+* MaximumIOBandwidth：可以使用（读取和写入）的最大 IO（字节/秒）。 必须是正整数。
+* BlockIOWeight：相对于其他代码包的块 IO 权重。 必须是介于 10 和 1000 之间的正整数。
+* DiskQuotaInMB：容器的磁盘配额。 必须是正整数。
+* KernelMemoryInMB：内核内存限制（以字节为单位）。  必须是正整数。  请注意，这是特定于 Linux 的，Windows 上的 Docker 在进行此设置的情况下会出错。
+* ShmSizeInMB：/dev/shm 的大小（以字节为单位）。 如果省略此项，系统会使用 64MB。  必须是正整数。 请注意，这是特定于 Linux 的，但 Docker 仅在指定此项的情况下会忽略。
 
 这些资源可与 CPU 和内存组合。 以下示例显示如何为容器指定其他资源：
 

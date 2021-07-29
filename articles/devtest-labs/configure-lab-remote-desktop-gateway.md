@@ -3,12 +3,12 @@ title: 在 Azure 开发测试实验室中配置实验室以使用远程桌面网
 description: 了解如何在 Azure 开发测试实验室中配置一个使用远程桌面网关的实验室，以确保无需公开 RDP 端口即可安全访问实验室 VM。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: dcf5191dea64c3d7bf28b9ce1c616d3d2defb73e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b15d4d39199c1a30eae292ece67f4553b656f530
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97695691"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639586"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>将 Azure 开发测试实验室中的实验室配置为使用远程桌面网关
 在 Azure 开发测试实验室中，可为实验室配置远程桌面网关，以确保无需公开 RDP 端口即可安全访问实验室虚拟机 (VM)。 实验室提供了一个中心位置，以便实验室用户查看和连接他们有权访问的所有虚拟机。 “虚拟机”页上的“连接”按钮用于创建计算机特定的 RDP 文件，打开该文件可以连接到该计算机 。 可以通过将实验室连接到远程桌面网关来进一步自定义和保护 RDP 连接。 
@@ -36,7 +36,7 @@ ms.locfileid: "97695691"
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>远程桌面网关计算机的要求
 - 必须在网关计算机上安装 TLS/SSL 证书以处理 HTTPS 流量。 如果只有一台计算机，则该证书必须与网关场负载均衡器的完全限定域名 (FQDN) 或者该计算机本身的 FQDN 相匹配。 不能使用通配符 TLS/SSL 证书。  
 - 已在网关计算机上安装一个签名证书。 使用 [Create-SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) 脚本创建签名证书。
-- 安装支持远程桌面网关令牌身份验证的[可插式身份验证](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273)模块。 此类模块的一个示例是 [System Center Virtual Machine Manager (VMM) 映像](/system-center/vmm/install-console?view=sc-vmm-1807)随附的 `RDGatewayFedAuth.msi`。 有关 System Center 的详细信息，请参阅 [System Center 文档](/system-center/)和[定价详细信息](https://www.microsoft.com/cloud-platform/system-center-pricing)。  
+- 安装支持远程桌面网关令牌身份验证的[可插式身份验证](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273)模块。 此类模块的一个示例是 [System Center Virtual Machine Manager (VMM) 映像](/system-center/vmm/install-console?view=sc-vmm-1807&preserve-view=true)随附的 `RDGatewayFedAuth.msi`。 有关 System Center 的详细信息，请参阅 [System Center 文档](/system-center/)和[定价详细信息](https://www.microsoft.com/cloud-platform/system-center-pricing)。  
 - 网关服务器可以处理对 `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` 发出的请求。
 
     如果只有一台计算机，则 gateway-hostname 是网关场负载均衡器的 FQDN，或该计算机本身的 FQDN。 `{lab-machine-name}` 是你尝试连接的实验室计算机的名称，`{port-number}` 是要在其上建立连接的端口。  此端口默认为 3389。  但是，如果虚拟机正在使用开发测试实验室中的[共享 IP](devtest-lab-shared-ip.md) 功能，则端口将不是 3389。
@@ -105,14 +105,14 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
     ```powershell
     $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate;
-    $cer.Import(‘path-to-certificate’);
+    $cer.Import('path-to-certificate');
     $hash = $cer.GetCertHashString()
     ```
 
     若要使用 PowerShell 获取 Base64 编码，请使用以下命令。
 
     ```powershell
-    [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes(‘path-to-certificate’))
+    [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes('path-to-certificate'))
     ```
 3. 从 [https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/GatewaySample/arm/gateway) 下载文件。
 

@@ -10,10 +10,10 @@ ms.date: 12/17/2020
 ms.author: kegorman
 ms.reviewer: tigorman
 ms.openlocfilehash: 6e59d0065dfa74979bf3bbc72458bda516e3b641
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101669984"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
@@ -43,13 +43,13 @@ ms.locfileid: "101669984"
 |  | 本地实现 | Azure 实现 |
 | --- | --- | --- |
 | **联网** |LAN/WAN  |SDN（软件定义的网络）|
-| 安全组 |IP/端口限制工具 |[网络安全组 (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
+| **安全组** |IP/端口限制工具 |[网络安全组 (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
 | **复原能力** |MTBF（平均无故障时间） |MTTR（平均恢复时间）|
 | **计划内维护** |修补/升级|[可用性集](/previous-versions/azure/virtual-machines/windows/infrastructure-example)（由 Azure 管理的修补/升级） |
 | **资源** |专用  |与其他客户端共享|
 | **区域** |数据中心 |[区域对](../../regions.md#region-pairs)|
 | **存储** |SAN/物理磁盘 |[Azure 托管的存储](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-| **可伸缩** |垂直缩放 |横向缩放|
+| **缩放** |垂直缩放 |横向缩放|
 
 
 ### <a name="requirements"></a>要求
@@ -110,7 +110,7 @@ SQL> @$ORACLE_HOME/rdbms/admin/awrrpt.sql;
 
 ### <a name="virtual-machine-size"></a>虚拟机大小
 
-#### <a name="1-estimate-vm-size-based-on-cpu-memory-and-io-usage-from-the-awr-report"></a>1.根据 AWR 报表提供的 CPU、内存和 I/O 使用情况估计虚拟机的大小
+#### <a name="1-estimate-vm-size-based-on-cpu-memory-and-io-usage-from-the-awr-report"></a>1. 根据 AWR 报表提供的 CPU、内存和 I/O 使用情况估计虚拟机的大小
 
 用户可能想要了解超时最严重的五大前景事件，这些事件指明了系统的瓶颈所在。
 
@@ -122,11 +122,11 @@ SQL> @$ORACLE_HOME/rdbms/admin/awrrpt.sql;
 
 ![显示读写操作的 I/O 统计总量的屏幕截图。](./media/oracle-design/io_info.png)
 
-#### <a name="2-choose-a-vm"></a>2.选择虚拟机
+#### <a name="2-choose-a-vm"></a>2. 选择虚拟机
 
 从 AWR 报表收集信息后，应根据该信息选择一个虚拟机，其大小应大致可满足需求。 可在[内存优化](../../sizes-memory.md)一文中查看可用的虚拟机列表。
 
-#### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3.根据 ACU 微调相似虚拟机系列的虚拟机大小
+#### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3. 根据 ACU 微调相似虚拟机系列的虚拟机大小
 
 选择虚拟机后，请注意虚拟机的 ACU。 可根据 ACU 值选择不同的虚拟机，以便更好地满足需求。 有关详细信息，请参阅 [Azure 计算单元](../../acu.md)。
 

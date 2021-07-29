@@ -5,21 +5,22 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 2b4079b6d4eb39b65a7a60cd4d149c7748ab39ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 29bac1ea9de7fb81797733bbccce24688b4acc10
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178875"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108164338"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>在 Azure Kubernetes 服务 (AKS) 中使用 Azure 磁盘容器存储接口 (CSI) 驱动程序（预览版）
+
 Azure 磁盘容器存储接口 (CSI) 驱动程序是符合 [CSI 规范](https://github.com/container-storage-interface/spec/blob/master/spec.md)的驱动程序，供 Azure Kubernetes 服务 (AKS) 用来管理 Azure 磁盘的生命周期。
 
 CSI 是有关在 Kubernetes 上的容器化工作负载中公开任意块和文件存储系统的一套标准。 AKS 可以采用 CSI 来编写、部署和迭代插件，以在 Kubernetes 中公开新的或改进现有的存储系统，而无需改动核心 Kubernetes 代码并等待经历代码发布周期。
 
 若要创建提供 CSI 驱动程序支持的 AKS 群集，请参阅[在 AKS 上启用 Azure 磁盘和 Azure 文件存储的 CSI 驱动程序](csi-storage-drivers.md)。
 
->[!NOTE]
+> [!NOTE]
 > “树中驱动程序”是指包含在核心 Kubernetes 代码中的当前存储驱动程序，而不是新的 CSI 驱动程序（插件）。
 
 ## <a name="use-csi-persistent-volumes-with-azure-disks"></a>使用含 Azure 磁盘的 CSI 永久性卷
@@ -71,9 +72,9 @@ test.txt
 
 默认存储类适合最常见的方案，但并非适合所有方案。 在某些情况下，你可能想要使用自己的参数来自定义自己的存储类。 例如，假设你需要更改 `volumeBindingMode` 类。
 
-默认存储类使用 `volumeBindingMode: Immediate` 类，此类可保证 PVC 创建后立即生效。 例如，节点池使用可用性区域约束了拓扑时，则在绑定或预配 PV 时不会考虑 Pod 的计划要求（在此示例中为在特定区域内）。
+你可以使用 `volumeBindingMode: Immediate` 类，此类可保证创建 PVC 后立即生效。 例如，节点池使用可用性区域约束了拓扑时，则在绑定或预配 PV 时不会考虑 Pod 的计划要求（在此示例中为在特定区域内）。
 
-为处理这种情况，可以使用 `volumeBindingMode: WaitForFirstConsumer`，它会延迟 PV 绑定和预配，直至创建使用该 PVC 的 Pod。 这样，PV 将与 Pod 的计划约束指定的可用性区域（或其他拓扑）一致并预配到其中。
+为处理这种情况，可以使用 `volumeBindingMode: WaitForFirstConsumer`，它会延迟 PV 绑定和预配，直至创建使用该 PVC 的 Pod。 这样，PV 将与 Pod 的计划约束指定的可用性区域（或其他拓扑）一致并预配到其中。 默认存储类使用 `volumeBindingMode: WaitForFirstConsumer` 类。
 
 创建名为 `sc-azuredisk-csi-waitforfirstconsumer.yaml` 的文件，并粘贴以下清单。
 此存储类与 `managed-csi` 存储类相同，但它使用不同的 `volumeBindingMode` 类。
@@ -116,7 +117,6 @@ volumesnapshotclass.snapshot.storage.k8s.io/csi-azuredisk-vsc created
 ```
 
 现在基于[我们在本教程开头动态创建](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes)的 PVC `pvc-azuredisk` 创建[卷快照](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/azuredisk-volume-snapshot.yaml)。
-
 
 ```bash
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/snapshot/azuredisk-volume-snapshot.yaml
@@ -186,7 +186,6 @@ test.txt
 
 Azure 磁盘的 CSI 驱动程序支持卷克隆。 为了进行演示，我们创建[之前创建的](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes) `azuredisk-pvc` 的[克隆卷](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/cloning/nginx-pod-restored-cloning.yaml)和[要使用它的新 Pod](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/cloning/nginx-pod-restored-cloning.yaml)。
 
-
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/cloning/pvc-azuredisk-cloning.yaml
 
@@ -215,7 +214,7 @@ test.txt
 
 在 AKS 中，内置的 `managed-csi` 存储类已经能够实现扩展，因此请使用[先前通过此存储类创建的 PVC](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes)。 此 PVC 请求了 10 Gi 永久性卷。 可通过运行以下命令来确认这一点：
 
-```console 
+```console
 $ kubectl exec -it nginx-azuredisk -- df -h /mnt/azuredisk
 
 Filesystem      Size  Used Avail Use% Mounted on
@@ -263,6 +262,7 @@ pod/nginx-azuredisk created
 ```
 
 最后，在 Pod 内确认 PVC 的大小：
+
 ```console
 $ kubectl get pvc pvc-azuredisk
 NAME            STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
@@ -277,7 +277,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 [Azure 共享磁盘](../virtual-machines/disks-shared.md)是一种 Azure 托管磁盘功能，它可将 Azure 磁盘同时附加到多个代理节点。 例如，通过将托管磁盘附加到多个代理节点，可以向 Azure 部署新的群集应用程序或迁移现有的群集应用程序。
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > 目前，Azure 磁盘 CSI 驱动程序仅支持原始块设备 `volumeMode: Block`。 应用程序应负责协调和控制作为原始块设备公开的共享磁盘上的写入、读取、锁定、缓存、装载和隔离。
 
 通过复制以下包含共享磁盘存储类和 PVC 的命令，创建一个名为 `shared-disk.yaml` 的文件：
@@ -315,7 +315,7 @@ $ kubectl apply -f shared-disk.yaml
 
 storageclass.storage.k8s.io/managed-csi-shared created
 persistentvolumeclaim/pvc-azuredisk-shared created
-``` 
+```
 
 现在，通过复制以下命令，创建一个名为 `deployment-shared.yml` 的文件：
 
@@ -372,7 +372,7 @@ Azure 磁盘 CSI 驱动程序还支持 Windows 节点和容器。 如果你要�
 
 具有 Windows 节点池后，现在可以使用内置的存储类，如 `managed-csi`。 可使用以下 [kubectl apply][kubectl-apply] 命令，部署一个可将时间戳保存到 `data.txt` 文件中的[基于 Windows 的示例 StatefulSet 集](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/windows/statefulset.yaml)：
 
- ```console
+```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/windows/statefulset.yaml
 
 statefulset.apps/busybox-azuredisk created
@@ -395,7 +395,6 @@ $ kubectl exec -it busybox-azuredisk-0 -- cat c:\mnt\azuredisk\data.txt # on Win
 - 若要了解如何将 CSI 驱动程序用于 Azure 文件，请参阅[结合使用 Azure 文件与 CSI 驱动程序](azure-files-csi.md)。
 - 有关存储最佳做法的详细信息，请参阅[有关 Azure Kubernetes 服务中存储和备份的最佳做法][operator-best-practices-storage]。
 
-
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
@@ -408,18 +407,18 @@ $ kubectl exec -it busybox-azuredisk-0 -- cat c:\mnt\azuredisk\data.txt # on Win
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
 [premium-storage]: ../virtual-machines/disks-types.md
-[az-disk-list]: /cli/azure/disk#az-disk-list
-[az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
-[az-disk-create]: /cli/azure/disk#az-disk-create
-[az-disk-show]: /cli/azure/disk#az-disk-show
+[az-disk-list]: /cli/azure/disk#az_disk_list
+[az-snapshot-create]: /cli/azure/snapshot#az_snapshot_create
+[az-disk-create]: /cli/azure/disk#az_disk_create
+[az-disk-show]: /cli/azure/disk#az_disk_show
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register

@@ -1,71 +1,72 @@
 ---
-title: Azure Migrate 服务器评估中的评估最佳实践
-description: Azure Migrate Server 评估创建评估的技巧。
+title: Azure Migrate 发现和评估工具中的评估最佳做法
+description: 使用 Azure Migrate 发现和评估工具创建评估的提示。
 author: rashi-ms
 ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: c1fff5b5b7f6450ad8d1977e55a1f6b255f3d668
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
-ms.translationtype: MT
+ms.openlocfilehash: fac488ba1881b6b79139eaf2468237e546737177
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754311"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077324"
 ---
-# <a name="best-practices-for-creating-assessments"></a>创建评估的最佳实践
+# <a name="best-practices-for-creating-assessments"></a>创建评估的最佳做法
 
 [Azure Migrate](./migrate-services-overview.md) 在一个中心位置提供多种工具，帮助你发现、评估应用、基础结构和工作负荷并将其迁移到 Microsoft Azure。 该中心包含 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 的产品/服务。
 
-本文汇总了使用 Azure Migrate Server 评估工具创建评估时的最佳做法。
+本文汇总了使用 Azure Migrate 发现和评估工具创建评估时的最佳做法。
 
-## <a name="about-assessments"></a>关于评估
-
-使用 Azure Migrate Server 评估创建的评估是数据的时间点快照。 您可以使用 Azure Migrate：服务器评估来创建两种类型的评估：
+使用“Azure Migrate：发现和评估”工具创建的评估是数据的时间点快照。 使用“Azure Migrate：发现和评估”可以创建三种类型的评估：
 
 **评估类型** | **详细信息**
 --- | --- 
-**Azure VM** | 将本地服务器迁移到 Azure 虚拟机的评估。 <br/><br/> 可使用此评估类型评估要迁移到 Azure 的本地 [VMware VM](how-to-set-up-appliance-vmware.md)、[Hyper-V VM](how-to-set-up-appliance-hyper-v.md) 和[物理服务器](how-to-set-up-appliance-physical.md)。 [了解详细信息](concepts-assessment-calculation.md)
+**Azure VM** | 将本地服务器迁移到 Azure 虚拟机的评估。 <br/><br/> 使用这种评估类型，可以对 [VMware](how-to-set-up-appliance-vmware.md) 和 [Hyper-V](how-to-set-up-appliance-hyper-v.md) 环境中的本地服务器以及要迁移到 Azure 的[物理服务器](how-to-set-up-appliance-physical.md)进行评估。 [了解详细信息](concepts-assessment-calculation.md)
+**Azure SQL** | 将本地 SQL Server 从 VMware 环境迁移到 Azure SQL 数据库或 Azure SQL 托管实例的评估。 [了解详细信息](concepts-azure-sql-assessment-calculation.md)
 **Azure VMware 解决方案 (AVS)** | 将本地服务器迁移到 [Azure VMware 解决方案 (AVS)](../azure-vmware/introduction.md) 的评估。 <br/><br/> 可使用此评估类型评估要迁移到 Azure VMware 解决方案 (AVS) 的本地 [VMware VM](how-to-set-up-appliance-vmware.md)。 [了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
 
+> [!NOTE]
+> 如果“发现和评估”工具上的 Azure VM 或 AVS 评估数不正确，请单击评估总数以导航到所有评估并重新计算 Azure VM 或 AVS 评估数。 然后，“发现和评估”工具就会显示该评估类型的正确计数。 
 
 ### <a name="sizing-criteria"></a>调整大小标准
-服务器评估提供两个调整大小标准选项：
+Azure Migrate 评估中的调整大小标准选项：
 
 **调整大小标准** | **详细信息** | **数据**
 --- | --- | ---
-**基于性能** | 基于收集的性能数据提出建议的评估 | **Azure VM 评估**：VM 大小建议基于 CPU 和内存利用率数据。<br/><br/> 磁盘类型建议（标准 HDD/SSD 或高级托管磁盘）基于本地磁盘的 IOPS 和吞吐量。<br/><br/> **Azure VMware 解决方案 (AVS) 评估**：AVS 节点建议基于 CPU 和内存利用率数据。
+**基于性能** | 基于收集的性能数据提出建议的评估 | **Azure VM 评估**：VM 大小建议基于 CPU 和内存利用率数据。<br/><br/> 磁盘类型建议（标准 HDD/SSD 或高级托管磁盘）基于本地磁盘的 IOPS 和吞吐量。<br/><br/>**Azure SQL 评估**：Azure SQL 配置基于 SQL 实例和数据库的性能数据，其中包括：CPU 利用率、内存利用率、IOPS（数据和日志文件）、吞吐量和 IO 操作延迟<br/><br/>**Azure VMware 解决方案 (AVS) 评估**：AVS 节点建议基于 CPU 和内存利用率数据。
 **按本地原样** | 不使用性能数据来提出建议的评估。 | **Azure VM 评估**：VM 大小建议基于本地 VM 大小<br/><br> 建议的磁盘类型基于在存储类型设置中选择要评估的内容。<br/><br/> **Azure VMware 解决方案 (AVS) 评估**：AVS 节点建议基于本地 VM 大小。
 
 #### <a name="example"></a>示例
-例如，如果你有一个本地 VM，其四个内核的利用率为20%，内存为 8 GB，利用率为10%，Azure VM 评估将如下所示：
+例如，如果本地 VM 的四个内核的利用率为 20%，8 GB 内存的利用率为 10%，Azure VM 评估将如下所示：
 
 - **基于性能的评估**：
-    - 基于核心 (4 x 0.20 = 0.8) 和内存 (8 GB x 0.10 = 0.8) 利用率确定有效的内核和内存。
-    - 应用评估属性中指定的舒适系数 (假设 1.3 x) 获取用于调整大小的值。 
-    - 建议 Azure 中最接近的 VM 大小，该大小可支持 ~ 1.04 核心 (0.8 x 1.3) ，~ 1.04 GB (0.8 x 1.3) 内存。
+    - 确定有效核心和基于核心的内存 (4 x 0.20 = 0.8)，以及内存 (8 GB x 0.10 = 0.8) 利用率。
+    - 应用评估属性中指定的舒适因子（假设 1.3x）以获取用于调整大小的值。 
+    - 建议使用 Azure 中能够支持 ~1.04 核心 (0.8 x 1.3) 和 ~1.04 GB (0.8 x 1.3) 内存的最接近的 VM 大小。
 
-- **与 (一样，作为本地) 评估**：
-    -  建议具有四个核心的 VM;8 GB 内存。
+- **按原样（作为本地）评估**：
+    -  建议使用具有四个核心的 VM；8 GB 内存。
 
 
-## <a name="best-practices-for-creating-assessments"></a>创建评估的最佳实践
+## <a name="best-practices-for-creating-assessments"></a>创建评估的最佳做法
 
-Azure Migrate 设备会持续分析你的本地环境，并将元数据和性能数据发送到 Azure。 遵循以下最佳实践来评估使用设备发现的服务器：
+Azure Migrate 设备会持续分析本地环境，并将元数据和性能数据发送到 Azure。 遵循以下最佳做法来评估使用设备发现的服务器：
 
-- **创建按配置评估**：你可以在 Azure Migrate 的门户中显示你的计算机后立即创建 "按原样" 评估。
-- **创建基于性能的评估**：设置发现后，建议你等待至少一天，然后再运行基于性能的评估：
-    - 收集性能数据会耗费时间。 等待至少一天可确保在运行评估之前有足够的性能数据点。
-    - 当你运行基于性能的评估时，请确保为评估持续时间分析你的环境。 例如，如果你创建的评估的 "性能持续时间" 设置为 "一周"，则在开始发现后，你需要等待至少一周的时间来收集所有数据点。 如果不这样做，评估将不会获得五星评级。
-- **重新计算评估**：由于评估是时间点快照，因此不会自动更新到最新数据。 若要使用最新数据更新评估，需要重新计算。
+- **创建按原样评估**：一旦服务器显示在 Azure Migrate 门户中，即可立即创建按原样评估。 不能使用“作为本地”调整大小标准创建 Azure SQL 评估。
+- **创建基于性能的评估**：设置发现后，建议等待至少一天，再运行基于性能的评估：
+    - 收集性能数据需要时间。 等待至少一天可确保在运行评估之前有足够的性能数据点。
+    - 运行基于性能的评估时，请确保分析评估期间的环境。 例如，如果创建评估时将性能持续时间设置为一周，则在开始发现之后，需要至少等待一周，才会收集所有数据点。 如果不这样做，评估将不会获得五星评级。
+- **重新计算评估**：由于评估是时间点快照，因此不会自动使用最新数据更新。 若要使用最新数据更新评估，需要进行重新计算。
 
-遵循以下最佳做法，以便评估通过导入到 Azure Migrate 的服务器。CSV 文件：
+遵循以下最佳做法，评估通过 .CSV 文件导入到 Azure Migrate 的服务器：
 
-- **创建按配置评估**：你可以在 Azure Migrate 的门户中显示你的计算机后立即创建 "按原样" 评估。
-- **创建基于性能的评估**：这有助于获得更好的成本估算，尤其是在本地过度预配服务器容量时。 但基于性能的评估的准确性取决于你为服务器指定的性能数据。 
-- **重新计算评估**：由于评估是时间点快照，因此不会自动更新到最新数据。 若要使用最新导入的数据更新评估，需要对其进行重新计算。
+- **创建按原样评估**：一旦服务器显示在 Azure Migrate 门户中，即可立即创建按原样评估。
+- **创建基于性能的评估**：这有助于更好地估算成本，尤其是在本地过度预配服务器容量时。 但是，基于性能的评估的准确度取决于为服务器指定的性能数据。 
+- **重新计算评估**：由于评估是时间点快照，因此不会自动使用最新数据更新。 若要使用最新导入的数据更新评估，需要进行重新计算。
  
-### <a name="ftt-sizing-parameters-for-avs-assessments"></a>适用于 AVS 评估的 FTT 大小参数
+### <a name="ftt-sizing-parameters-for-avs-assessments"></a>适用于 AVS 评估的 FTT 调整大小参数
 
 AVS 中使用的存储引擎为 vSAN。 vSAN 存储策略定义了虚拟机的存储要求。 这些策略保证了 VM 所需的服务级别，因为它们可确定如何将存储分配给 VM。 以下是可用的 FTT-Raid 组合： 
 
@@ -78,14 +79,21 @@ AVS 中使用的存储引擎为 vSAN。 vSAN 存储策略定义了虚拟机的�
 3 | RAID-1（镜像） | 7 | 100GB VM 将使用 400GB。
 
 
-## <a name="best-practices-for-confidence-ratings"></a>置信度评级的最佳实践
+## <a name="best-practices-for-confidence-ratings"></a>可信度评级的最佳做法
 
-当你运行基于性能的评估时，从1星 (最低) 到5星 (最高) 的置信度将为评估奖励。 有效使用置信度：
-- Azure Migrate Server 评估需要 VM CPU/内存的利用率数据。
-- 对于附加到本地 VM 的每个磁盘，都需要读/写 IOPS/吞吐量数据。
-- 对于附加到 VM 的每个网络适配器，它需要网络输入/输出数据。
+运行基于性能的评估时，对评估进行 1 星（最低）到 5 星（最高）的可信度评级。 有效使用可信度评级：
 
-根据所选持续时间的可用数据点数百分比，按下表所述提供评估的置信度评级。
+- Azure VM 和 AVS 评估需要：
+    - 每台服务器的 CPU 和内存利用率数据
+    - 每个附加到本地服务器的磁盘的读/写 IOPS/吞吐量数据
+    - 每个附加到服务器的网络适配器的网络流入/流出量信息。
+     
+- Azure SQL 评估需要评估的 SQL 实例和数据库的性能数据，其中包括：
+    - CPU 和内存利用率数据
+    - 数据和日志文件的读/写 IOPS/吞吐量数据
+    - IO 操作延迟
+
+根据所选持续时间的可用数据点百分比，下表提供了评估的可信度评级。
 
    **数据点可用性** | **置信度分级**
    --- | ---
@@ -98,45 +106,64 @@ AVS 中使用的存储引擎为 vSAN。 vSAN 存储策略定义了虚拟机的�
 
 ## <a name="common-assessment-issues"></a>常见评估问题
 
-下面介绍了一些影响评估的常见环境问题。
+下面介绍了如何解决影响评估的一些常见环境问题。
 
 ###  <a name="out-of-sync-assessments"></a>不同步评估
 
-如果在创建评估后在组中添加或删除计算机，你创建的评估将标记为 "不 **同步**"。再次运行评估 (**重新计算**) 以反映组更改。
+如果在创建评估后在组中添加或删除服务器，创建的评估将标记为“不同步”。请再次运行评估（“重新计算”）以反映组更改。
 
-### <a name="outdated-assessments"></a>过时评估
+### <a name="outdated-assessments"></a>过时的评估
 
-如果对组中已评估的 Vm 进行本地更改，则将评估标记为 **过时**。 由于以下属性中的一个或多个更改，可将评估标记为 "过时"：
-
+#### <a name="azure-vm-assessment-and-avs-assessment"></a>Azure VM 评估和 AVS 评估
+如果对已评估的组中的本地服务器进行了更改，则评估将标记为“过时”。 可能会由于在以下属性中进行了一项或多项更改而将评估标记为“过时”：
 - 处理器核心数
 - 分配的内存
 - 启动类型或固件
 - 操作系统名称、版本和体系结构
 - 磁盘数目
-- 网络适配器的数目
-- 磁盘大小更改 (GB 已分配) 
-- Nic 属性更新。 示例： Mac 地址更改、IP 地址添加等。
+- 网络适配器数目
+- 磁盘大小更改（分配的 GB）
+- NIC 属性更新。 例如：更改 Mac 地址、添加 IP 地址等。
+    
+再次运行评估（“重新计算”）以反映更改。
+    
+#### <a name="azure-sql-assessment"></a>Azure SQL 评估
+如果对已评估的组中的本地 SQL 实例和数据库进行了更改，则评估将标记为“过时”。 由于以下一个或多个原因而将评估标记为“过时”：
+- 已在服务器中添加或删除 SQL 实例
+- 已在 SQL 实例中添加或删除 SQL 数据库
+- SQL 实例中的总数据库大小更改超过 20%
+- 处理器核心数改变
+- 分配的内存改变        
+  
+    再次运行评估（“重新计算”）以反映更改。
 
-再次运行评估 (**重新计算**) 以反映所做的更改。
+### <a name="low-confidence-rating"></a>低可信度评级
 
-### <a name="low-confidence-rating"></a>低置信度分级
+由于以下原因，评估时并非所有数据点都可用：
 
-评估可能不包含所有数据点的原因有很多：
+- 在创建评估的过程中，你没有对环境进行分析。 例如，如果创建性能持续时间设置为一周的评估，则在对所有数据点启用发现之后，需要等待至少一周才能收集。 如果无法等待这么久，请将性能持续时间缩短，并“重新计算”评估。
+ 
+- 评估无法在评估期内收集部分或全部服务器的性能数据。 若要获得高置信度分级，请确保： 
+    - 服务器在评估期间处于开机状态
+    - 允许端口 443 上的出站连接
+    - 为 Hyper-V 服务器启用了动态内存 
+    - Azure Migrate 中代理的连接状态为“已连接”，并请检查上一个检测信号
+    - 对于 Azure SQL 评估，“已发现的 SQL 实例”边栏选项卡中所有 SQL 实例的 Azure Migrate 连接状态均为“已连接”
 
-- 在创建评估的过程中，你没有对环境进行分析。 例如，如果要创建性能持续时间设置为一周的 *基于性能的评估* ，则必须在开始发现所有数据点后至少等待一周。 随时可以单击 " **重新计算** " 查看最新的适用置信度级别。 仅当你创建 *基于性能的* 评估时，置信度才适用。
+    请重新计算评估以反映置信度评级的最新更改。
 
-- 一些 VM 在进行评估计算期间关闭。 如果某些 VM 停机了一段时间，则服务器评估将无法收集该时段的性能数据。
+- 对于 Azure VM 和 AVS 评估，启动发现后，创建了几乎很少的服务器。 例如，如果针对最后一个月的性能历史记录创建评估，但仅仅在一周前在环境中创建了几乎很少的服务器。 在这种情况下，整个评估过程中将不会用到新服务器的性能数据，而且可信度评级会较低。
 
-- 启动服务器评估中的发现之后，基本不再创建 VM。 例如，如果要针对最后一个月的性能历史记录创建评估，但仅仅在一周前，在环境中创建了一些 VM， 在这种情况下，新 VM 的性能数据在整个过程中都不可用，并且置信度分级会较低。
+- 对于 Azure SQL 评估，很少有 SQL 实例或数据库是在发现开始后创建的。 例如，如果针对最后一个月的性能历史记录创建评估，但仅仅在一周前在环境中创建了几乎很少的 SQL 实例或数据库。 在这种情况下，整个评估过程中将不会用到新服务器的性能数据，而且可信度评级会较低。
 
-### <a name="migration-tool-guidance-for-avs-assessments"></a>适用于 AVS 评估的迁移工具指南
+### <a name="migration-tool-guidance-for-avs-assessments"></a>用于 AVS 评估的迁移工具指南
 
 在 Azure VMware 解决方案 (AVS) 评估的 Azure 迁移就绪性报告中，可以看到以下推荐工具： 
-- **VMWARE HCX 或 Enterprise**：对于 vmware 计算机，Vmware 混合云扩展 (HCX) 解决方案是将本地工作负荷迁移到 Azure VMware 解决方案 (AVS) 私有云的建议迁移工具。 [了解详细信息](../azure-vmware/tutorial-deploy-vmware-hcx.md)。
-- **未知**：对于通过 CSV 文件导入的计算机，默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMware 混合云扩展 (HCX) 解决方案。
+- **VMware HCX 或 Enterprise**：对于 VMware 服务器，若要将本地工作负载迁移到 Azure VMware 解决方案 (AVS) 私有云，建议使用 VMware 混合云扩展 (HCX) 解决方案作为迁移工具。 [了解详细信息](../azure-vmware/tutorial-deploy-vmware-hcx.md)。
+- **未知**：对于通过 CSV 文件导入的服务器，默认迁移工具是未知的。 但对于 VMware 环境中的服务器，建议使用 VMWare 混合云扩展 (HCX) 解决方案。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解](concepts-assessment-calculation.md) 如何计算评估。
-- [了解](how-to-modify-assessment.md) 如何自定义评估。
+- [了解](concepts-assessment-calculation.md)如何计算评估。
+- [了解](how-to-modify-assessment.md)如何自定义评估。

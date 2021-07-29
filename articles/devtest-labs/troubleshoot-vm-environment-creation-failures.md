@@ -4,10 +4,10 @@ description: 了解如何在 Azure 开发测试实验室中排查虚拟机 (VM) 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b7d3f3ad34d8a5bb48607816623c67121d21d78c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85476472"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中排查虚拟机 (VM) 和环境创建失败问题
@@ -33,7 +33,7 @@ ms.locfileid: "85476472"
 1. 在你的实验室的主页上，选择 VM 以启动“虚拟机”页面。
 2. 在“虚拟机”页的左侧菜单的“监视”部分，选择“活动日志”以查看与 VM 关联的所有日志。
 3. 在活动日志项中，选择失败的操作。 通常，失败的操作名为“`Write Virtualmachines`”。
-4. 在右窗格中，切换到“JSON”选项卡。你可以在日志的 JSON 视图中看到详细信息。
+4. 在右侧窗格中，切换到“JSON”选项卡。日志的 JSON 视图中会显示详细信息。
 
     ![VM 的活动日志](./media/troubleshoot-vm-environment-creation-failures/vm-activity-log.png)
 5. 查看 JSON 日志，直到找到 `statusMessage` 属性。 它提供主要错误消息和进一步的详细信息（如果适用）。 下面的 JSON 是在本文前面部分看到的“超出了核心配额”错误的示例。

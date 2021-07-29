@@ -2,13 +2,13 @@
 title: 模板函数 - 部署
 description: 介绍可在 Azure 资源管理器模板（ARM 模板）中使用的用于检索部署信息的函数。
 ms.topic: conceptual
-ms.date: 03/02/2021
-ms.openlocfilehash: a9a073284c62efac4e77f8f9b35e8730c350e5f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/13/2021
+ms.openlocfilehash: a51e11a34e9c5dd51b07bfa1f2d64e1b306f5b31
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101722715"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959685"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM 模板的部署函数
 
@@ -20,8 +20,6 @@ ms.locfileid: "101722715"
 * [variables](#variables)
 
 若要从资源、资源组或订阅获取值，请参阅 [Resource functions](template-functions-resource.md)（资源函数）。
-
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 ## <a name="deployment"></a>部署
 
@@ -132,9 +130,7 @@ ms.locfileid: "101722715"
 
 ### <a name="remarks"></a>备注
 
-如何根据父模板的 URI，使用 deployment() 链接到另一个模板。
-
-# <a name="json"></a>[JSON](#tab/json)
+可以根据父模板的 URI，使用 `deployment()` 链接到另一个模板。
 
 ```json
 "variables": {
@@ -142,21 +138,11 @@ ms.locfileid: "101722715"
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-var sharedTemplateUrl = uri(deployment().prperties.templateLink.uri, 'shared-resources.json')
-```
-
----
-
 如果从门户中的部署历史记录重新部署模板，则该模板将部署为本地文件。 部署函数不返回 `templateLink` 属性。 如果模板依赖于 `templateLink` 来构建指向另一个模板的链接，请不要使用门户进行重新部署， 而是使用最初部署模板时使用的命令。
 
 ### <a name="example"></a>示例
 
 下面的[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json)返回部署对象：
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -171,14 +157,6 @@ var sharedTemplateUrl = uri(deployment().prperties.templateLink.uri, 'shared-res
   }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output deploymentOutput object = deployment()
-```
-
----
 
 前面的示例返回以下对象：
 
@@ -253,8 +231,6 @@ output deploymentOutput object = deployment()
 
 以下示例模板返回环境对象。
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -268,14 +244,6 @@ output deploymentOutput object = deployment()
   }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output environmentOutput object = environment()
-```
-
----
 
 前面的示例在部署到全局 Azure 时返回以下对象：
 
@@ -319,9 +287,11 @@ output environmentOutput object = environment()
 
 返回一个参数值。 指定的参数名称必须已在模板的 parameters 节中定义。
 
+在 Bicep 中，通过使用参数的符号名称直接引用参数。
+
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | parameterName |是 |字符串 |要返回的参数名称。 |
 
@@ -332,8 +302,6 @@ output environmentOutput object = environment()
 ### <a name="remarks"></a>备注
 
 通常，使用参数设置资源值。 以下示例将 Web 站点的名称设置为在部署过程中传递的参数值。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "parameters": {
@@ -350,24 +318,9 @@ output environmentOutput object = environment()
 ]
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param siteName string
-
-resource mySite 'Microsoft.Web/Sites@2016-08-01' = {
-  name: siteName
-  ...
-}
-```
-
----
-
 ### <a name="example"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json)演示了 parameters 函数的简化用法。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -425,34 +378,9 @@ resource mySite 'Microsoft.Web/Sites@2016-08-01' = {
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param stringParameter string = 'option 1'
-param intParameter int = 1
-param objectParameter object = {
-  'one': 'a'
-  'two': 'b'
-}
-param arrayParameter array = [
-  1
-  2
-  3
-]
-param crossParameter string = stringParameter
-
-output stringOutput string = stringParameter
-output intOutput int = intParameter
-output objectOutput object = objectParameter
-output arrayOutput array = arrayParameter
-output crossOutput string = crossParameter
-```
-
----
-
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | stringOutput | String | 选项 1 |
 | intOutput | int | 1 |
@@ -460,7 +388,7 @@ output crossOutput string = crossParameter
 | arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | 选项 1 |
 
-如需详细了解如何使用参数，请参阅 [ARM 模板中的参数](template-parameters.md)。
+如需详细了解如何使用参数，请参阅 [ARM 模板中的参数](./parameters.md)。
 
 ## <a name="variables"></a>variables
 
@@ -468,9 +396,11 @@ output crossOutput string = crossParameter
 
 返回变量的值。 指定的变量名称必须已在模板的 variables 节中定义。
 
+在 Bicep 中，通过使用变量的符号名称直接引用变量。
+
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | variableName |是 |String |要返回的变量名称。 |
 
@@ -481,8 +411,6 @@ output crossOutput string = crossParameter
 ### <a name="remarks"></a>备注
 
 通常，使用变量通过只构造一次复杂值来简化模板。 以下示例构造存储帐户的唯一名称。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "variables": {
@@ -505,28 +433,9 @@ output crossOutput string = crossParameter
 
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-var storageName = 'storage${uniqueString(resourceGroup().id)}'
-
-resource myStorage 'Microsoft.Storage/storageAccounts@2019-06-01' = {
-  name: storageName
-  ...
-}
-
-resource myVm 'Microsoft.Compute/virtualMachines@2020-06-01' = {
-  ...
-}
-```
-
----
-
 ### <a name="example"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json)返回了不同的变量值。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -564,30 +473,6 @@ resource myVm 'Microsoft.Compute/virtualMachines@2020-06-01' = {
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-var var1 = 'myVariable'
-var var2 = [
-  1
-  2
-  3
-  4
-]
-var var3 = var1
-var var4 = {
-  'property1': 'value1'
-  'property2': 'value2'
-}
-
-output exampleOutput1 string = var1
-output exampleOutput2 array = var2
-output exampleOutput3 string = var3
-output exampleOutput4 object = var4
-```
-
----
-
 上述示例中使用默认值的输出为：
 
 | 名称 | 类型 | Value |
@@ -597,8 +482,8 @@ output exampleOutput4 object = var4
 | exampleOutput3 | String | myVariable |
 | exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
-如需详细了解如何使用变量，请参阅 [ARM 模板中的变量](template-variables.md)。
+如需详细了解如何使用变量，请参阅 [ARM 模板中的变量](./variables.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。

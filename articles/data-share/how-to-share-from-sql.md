@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 02/24/2021
-ms.openlocfilehash: f87ad76e9bb1db4d71716bf860d5fee2d413e8e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ef8c1a50cd3568c6cec9bdb053b02e6e14741eb0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740369"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644681"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>从 Azure SQL 数据库和 Azure Synapse Analytics 共享和接收数据
 
@@ -36,7 +36,20 @@ Azure Data Share 支持共享 Azure SQL 数据库和 Azure Synapse Analytics（�
 下面是从 SQL 源共享数据的先决条件列表。 
 
 #### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>从 Azure SQL 数据库或 Azure Synapse Analytics（以前称为 Azure SQL DW）共享的先决条件
-可按照[分步演示](https://youtu.be/hIE-TjJD8Dc)配置先决条件。
+
+
+若要使用 Azure Active Directory 身份验证共享数据，需满足以下列出的先决条件：
+
+* 包含要共享的表和视图的 Azure SQL 数据库或 Azure Synapse Analytics（以前称为 Azure SQL DW）。
+* 向 SQL 服务器上的数据库进行写入的权限，此权限存在于 *Microsoft.Sql/servers/databases/write* 中。 “参与者”角色有此权限。
+* SQL Server“Azure Active Directory 管理员”
+* SQL Server 防火墙访问权限。 可以通过以下步骤完成此操作： 
+    1. 在 Azure 门户中导航到“SQL Server”。 从左侧导航栏中选择“防火墙和虚拟网络”。
+    1. 对于“允许 Azure 服务和资源访问此服务器”，单击“是”。
+    1. 单击“+ 添加客户端 IP”。 客户端 IP 地址可能会更改。 下次从 Azure 门户共享 SQL 数据时，可能需要重复此过程。 还可以添加 IP 范围。
+    1. 单击“ **保存**”。 
+
+若要使用 SQL 身份验证共享数据，需满足以下列出的先决条件。 可按照[分步演示](https://youtu.be/hIE-TjJD8Dc)配置先决条件。
 
 * 包含要共享的表和视图的 Azure SQL 数据库或 Azure Synapse Analytics（以前称为 Azure SQL DW）。
 * 向 SQL 服务器上的数据库进行写入的权限，此权限存在于 *Microsoft.Sql/servers/databases/write* 中。 “参与者”角色有此权限。
@@ -116,7 +129,7 @@ Azure Data Share 支持共享 Azure SQL 数据库和 Azure Synapse Analytics（�
 
 1. 选择“开始共享数据”  。
 
-1. 选择“创建”  。   
+1. 选择“创建”。   
 
 1. 填写共享的详细信息。 指定名称、共享类型、共享内容说明以及使用条款（可选）。 
 
@@ -132,7 +145,9 @@ Azure Data Share 支持共享 Azure SQL 数据库和 Azure Synapse Analytics（�
 
     ![AddDatasets](./media/add-datasets.png "添加数据集")    
 
-1. 选择 SQL 服务器或 Synapse 工作区，在出现提示时提供凭据，然后选择“下一步”以导航到要共享的对象，然后选择“添加数据集”。 可以从 Azure SQL 数据库和 Azure Synapse Analytics（以前的 Azure SQL DW）中选择表和视图，或从 Azure Synapse Analytics（工作区）专用 SQL 池中选择表。 
+1. 选择 SQL 服务器或 Synapse 工作区。 如果使用的是 AAD 身份验证，并且屏幕上显示“允许‘Data Share’以我的名义运行上述‘创建用户’SQL 脚本”复选框，请选中该复选框。 如果使用的是 SQL 身份验证，请提供凭据，并按照先决条件中的步骤运行屏幕上显示的脚本。 这为 Data Share 资源提供了从 SQL DB 读取数据的权限。 
+
+   选择“下一步”导航到要共享的对象，然后选择“添加数据集”。 可以从 Azure SQL 数据库和 Azure Synapse Analytics（以前的 Azure SQL DW）中选择表和视图，或从 Azure Synapse Analytics（工作区）专用 SQL 池中选择表。 
 
     ![SelectDatasets](./media/select-datasets-sql.png "选择数据集")    
 
@@ -176,7 +191,18 @@ Azure Data Share 支持共享 Azure SQL 数据库和 Azure Synapse Analytics（�
 如果选择将数据接收到 Azure SQL 数据库和 Azure Synapse Analytics，请查看以下相关先决条件的列表。 
 
 #### <a name="prerequisites-for-receiving-data-into-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>将数据接收到 Azure SQL 数据库或 Azure Synapse Analytics（以前称为 Azure SQL DW）的先决条件
-可按照[分步演示](https://youtu.be/aeGISgK1xro)配置先决条件。
+
+若要将数据接收到你担任“Azure Active Directory 管理员”的 SQL 服务器，需满足以下列出的先决条件：
+
+* Azure SQL 数据库或 Azure Synapse Analytics（以前称为 Azure SQL DW）。
+* 向 SQL 服务器上的数据库进行写入的权限，此权限存在于 *Microsoft.Sql/servers/databases/write* 中。 “参与者”角色有此权限。
+* SQL Server 防火墙访问权限。 可以通过以下步骤完成此操作： 
+    1. 在 Azure 门户中导航到“SQL Server”。 从左侧导航栏中选择“防火墙和虚拟网络”。
+    1. 对于“允许 Azure 服务和资源访问此服务器”，单击“是”。
+    1. 单击“+ 添加客户端 IP”。 客户端 IP 地址可能会更改。 下次从 Azure 门户共享 SQL 数据时，可能需要重复此过程。 还可以添加 IP 范围。
+    1. 单击“ **保存**”。 
+    
+若要将数据接收到你并未担任“Azure Active Directory 管理员”的 SQL 服务器，需满足以下列出的先决条件。 可按照[分步演示](https://youtu.be/aeGISgK1xro)配置先决条件。
 
 * Azure SQL 数据库或 Azure Synapse Analytics（以前称为 Azure SQL DW）。
 * 向 SQL 服务器上的数据库进行写入的权限，此权限存在于 *Microsoft.Sql/servers/databases/write* 中。 “参与者”角色有此权限。 
@@ -264,11 +290,11 @@ Azure Data Share 支持共享 Azure SQL 数据库和 Azure Synapse Analytics（�
 
    ![映射到目标](./media/dataset-map-target.png "映射到目标") 
 
-1. 选择要用于保存数据的目标数据存储。 目标数据存储中具有相同路径和名称的任何数据文件或表将被覆盖。 
+1. 选择要用于保存数据的目标数据存储。 目标数据存储中具有相同路径和名称的任何数据文件或表将被覆盖。 若要将数据接收到 SQL 目标，并且屏幕上显示“允许‘Data Share’以我的名义运行上述‘创建用户’SQL 脚本”复选框，请选中该复选框。 否则，请按照先决条件中的说明运行屏幕上显示的脚本。 这为 Data Share 资源提供了写入目标 SQL DB 的权限。
 
    ![目标存储帐户](./media/dataset-map-target-sql.png "目标数据存储") 
 
-1. 对于基于快照的共享，如果数据提供程序已创建定期更新数据的快照计划，你还可以通过选择“快照计划”选项卡来启用快照计划。选中快照计划旁边的框，然后选择“+ 启用”。
+1. 对于基于快照的共享，如果数据提供程序已创建定期更新数据的快照计划，你还可以通过选择“快照计划”选项卡来启用快照计划。选中快照计划旁边的框，然后选择“+ 启用”。 请注意，第一个计划快照将在计划时间的一分钟内启动，后续快照将在计划时间的几秒内启动。
 
    ![启用快照计划](./media/enable-snapshot-schedule.png "启用快照计划")
 
@@ -293,7 +319,7 @@ Azure Data Share 支持共享 Azure SQL 数据库和 Azure Synapse Analytics（�
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boolean |
+| bit |布尔 |
 | char |String, Char[] |
 | date |DateTime |
 | datetime |DateTime |

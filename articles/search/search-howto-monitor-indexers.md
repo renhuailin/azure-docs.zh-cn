@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: a94720e6b84821d53a3bfdcbdce249390078940f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ed79831559802efdf7e3813f48b74c2fd3c63e87
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99063228"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581864"
 ---
-# <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>如何监视 Azure 认知搜索索引器的状态和结果
+# <a name="monitor-indexer-status-and-results-in-azure-cognitive-search"></a>监视 Azure 认知搜索中的索引器状态和结果
 
 可以在 Azure 门户中监视索引器处理，也可以通过 REST 调用或 Azure SDK 以编程方式进行监视。 除了有关索引器本身的状态之外，还可以查看开始和结束时间，以及特定运行中的详细错误和警告。
 
@@ -29,7 +29,7 @@ ms.locfileid: "99063228"
 |--------|-------------|
 | **正在进行** | 指示活动执行。 门户将报告部分信息。 在编制索引的过程中，你可以在响应中看到“成功的文档”值增加。 处理大量数据的索引器可能需要很长时间才能完成运行。 例如，处理数百万个源文档的索引器可能要运行 24 个小时，紧接着重启。 处理大量数据的索引器的状态可能始终在门户中显示为“正在进行”。  即使索引器正在运行，也会提供有关当前进度和以前的运行的详细信息。 |
 | **Success** | 指示运行已成功。 如果错误数小于索引器的“最大失败项数”设置，即使单个文档出错，索引器运行也可以成功。  |
-| **已失败** | 错误数超过了“最大失败项目数”，因此已停止编制索引。 |
+| 失败 | 错误数超过了“最大失败项目数”，因此已停止编制索引。 |
 | **重置** | 已重置索引器的内部更改跟踪状态。 索引器将完全运行，并刷新所有文档，而不仅仅是时间戳较新的文档。 |
 
 可以单击列表中的索引器以查看有关索引器的当前和最新运行的详细信息。

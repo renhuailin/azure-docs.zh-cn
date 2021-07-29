@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Static Web Apps 预览版配置前端框架
+title: 使用 Azure Static Web Apps 配置前端框架
 description: Azure Static Web Apps 所需的常用前端框架的设置
 services: static-web-apps
 author: craigshoemaker
@@ -7,14 +7,14 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 14564b0591ef0146131b3f9324556b613e25daac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 767b20600c8edb2752a87a10c788ee446a8f15b3
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97901226"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109813967"
 ---
-# <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>使用 Azure Static Web Apps 预览版配置前端框架和库
+# <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps"></a>使用 Azure Static Web Apps 配置前端框架和库
 
 Azure Static Web Apps 要求在前端框架或库的[生成配置文件](github-actions-workflow.md)中具有相应的配置值。
 
@@ -24,9 +24,9 @@ Azure Static Web Apps 要求在前端框架或库的[生成配置文件](github-
 
 表中各列的作用通过以下项进行说明：
 
-- **输出位置**：列出 `output_location` 的值，即[应用程序文件的生成版本所在的文件夹](github-actions-workflow.md#build-and-deploy)。
+- **输出位置**：列出 `output_location` 的值，即 [应用程序文件的生成版本所在的文件夹](github-actions-workflow.md#build-and-deploy)。
 
-- **自定义生成命令**：当框架需要不同于 `npm run build` 或 `npm run azure:build` 的命令时，可以定义[自定义生成命令](github-actions-workflow.md#custom-build-commands)。
+- **自定义生成命令**：当框架需要不同于 `npm run build` 或 `npm run azure:build` 的命令时，可以定义 [自定义生成命令](github-actions-workflow.md#custom-build-commands)。
 
 | 框架 | 应用项目位置 | 自定义生成命令 |
 |--|--|--|
@@ -52,6 +52,7 @@ Azure Static Web Apps 要求在前端框架或库的[生成配置文件](github-
 | [Polymer](https://www.polymer-project.org/) | `build/default` | 不适用 |
 | [Preact](https://preactjs.com/) | `build` | 不适用 |
 | [React](https://reactjs.org/) | `build` | 不适用 |
+| [RedwoodJS](https://redwoodjs.com/) | `web/dist` | `yarn rw build` |
 | [模具](https://stenciljs.com/) | `www` | 不适用 |
 | [Svelte](https://svelte.dev/) | `public` | 不适用 |
 | [Three.js](https://threejs.org/) | `/` | 不适用 |

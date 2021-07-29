@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: d1ddf69acda442212500200eb6dc326dcbcb3c1b
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104867791"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>使用 psql 将数据批量加载到 Apache Phoenix
@@ -24,7 +24,7 @@ ms.locfileid: "104867791"
 
 由于 MapReduce 使用多个线程，对于极大型的数据卷（通常用于生产方案），可以使用 MapReduce 执行批量加载。
 
-在开始加载数据之前，请先确认是否已启用 Phoenix，并且查询超时设置是否符合预期。  请访问 HDInsight 群集的 [Apache Ambari](https://ambari.apache.org/) 仪表板，然后依次选择“HBase”和“配置”选项卡。向下滚动，确认 Apache Phoenix 是否已设置为 `enabled`，如下所示：
+在开始加载数据之前，请先确认是否已启用 Phoenix，并且查询超时设置是否符合预期。  访问 HDInsight 群集 [Apache Ambari](https://ambari.apache.org/) 仪表板，依次选择“HBase”和“配置”选项卡。向下滚动以验证 Apache Phoenix 设置为 `enabled`，如下所示：
 
 :::image type="content" source="./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png" alt-text="Apache Phoenix HDInsight 群集设置" border="true":::
 

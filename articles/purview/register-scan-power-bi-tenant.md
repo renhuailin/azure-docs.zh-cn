@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 2ecc5df9db51bb6c923b9e0f47163e492bd76cfa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 402618872c5a3ee8dd01c35021656312f1fe3371
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101695732"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228435"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>注册并扫描 Power BI 租户（预览版）
 
@@ -70,15 +70,9 @@ ms.locfileid: "101695732"
 
 授予用于连接到 Power BI 租户的管理员 API 的 Purview 托管标识权限后，现在，可以通过 Azure Purview Studio 设置扫描。
 
-首先，将一个特殊的功能标志添加到 Purview URL 
+1. 在左侧导航区域中选择“源”。
 
-1. 选择“管理中心”图标。
-
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/management-center.png" alt-text="“管理中心”图标。":::
-
-1. 然后，在“数据源”上选择“+ 新建” 。
-
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/data-sources.png" alt-text="“新建数据源”按钮的图像":::
+1. 然后选择“注册”。
 
     选择“Power BI”作为数据源。
 
@@ -105,6 +99,7 @@ ms.locfileid: "101695732"
     > [!Note]
     > * 切换扫描配置以包括或排除个人工作区将触发对 Power BI 源进行完全扫描
     > * 扫描名称的长度必须介于 3-63 个字符之间，并且只能包含字母、数字、下划线和连字符。 不允许包含空格。
+    > * “架构”选项卡中的架构不可用。
 
 5. 设置扫描触发器。 选项包括“一次”、“每 7 天一次”和“每 30 天一次”  。
 

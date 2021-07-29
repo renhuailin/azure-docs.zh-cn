@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
 ms.openlocfilehash: 5e3b6802bab2c5fae97be8e55c8d5c11ff570f78
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94651306"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>在通过 Azure Sentinel 进行搜寻期间跟踪数据
@@ -144,7 +144,7 @@ Azure Sentinel 中的搜寻书签可以保留你在“Azure Sentinel - 日志”
 
 2. 右键单击所选内容，然后选择相应选项以删除一个或多个书签。 例如，仅选择一个书签时，单击“删除书签”；选择两个书签时，则单击“删除 2 个书签”。
     
-删除书签后，该书签将不再显示在“书签”选项卡上的列表中。Log Analytics 工作区所对应的“HuntingBookmark”表还将继续包含之前的书签条目，但是最新的条目会将“SoftDelete”值更改为 true，这样就可以轻松筛选出旧书签。 删除书签后，调查体验中与其他书签或警报相关联的任何实体并不会删除。 
+删除书签会将书签从“书签”选项卡的列表中删除。Log Analytics 工作区所对应的“HuntingBookmark”表将继续包含之前的书签条目，但最新条目会将“SoftDelete”值更改为 true，这样即可轻松筛选出旧书签。 删除书签后，调查体验中与其他书签或警报相关联的任何实体并不会删除。 
 
 
 ## <a name="next-steps"></a>后续步骤

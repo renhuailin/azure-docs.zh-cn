@@ -3,7 +3,7 @@ title: Azure DDoS 防护标准报表和流日志
 description: 了解如何配置报表和流日志。
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: cc5b3b85d6d13fda532da0993fa7f733126b8eae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b8ae9365199edfde078cad39783458fc3f86ebd6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100591876"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061491"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>查看和配置 DDoS 诊断日志记录
 
@@ -39,7 +39,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 ## <a name="prerequisites"></a>先决条件
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 在完成本教程中的步骤之前，必须先创建 [Azure DDoS 标准保护计划](manage-ddos-protection.md)，并且必须在虚拟网络上启用 DDoS 保护标准。
+- 在完成本教程中的步骤之前，必须先创建 [Azure DDoS 标准防护计划](manage-ddos-protection.md)，并且必须在虚拟网络上启用 DDoS 防护标准。
 - DDoS 监视分配给虚拟网络中的资源的公共 IP 地址。 如果虚拟网络中没有任何具有公共 IP 地址的资源，必须首先创建具有公共 IP 地址的资源。 你可以监视 [Azure 服务的虚拟网络](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)中列出的通过资源管理器（非经典）部署的所有资源（包括后端虚拟机位于虚拟网络中的 Azure 负载均衡器）的公共 IP，但 Azure 应用服务环境除外。 可快速创建 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机继续本教程的内容。    
 
 ## <a name="configure-ddos-diagnostic-logs"></a>配置 DDoS 诊断日志
@@ -128,9 +128,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 ## <a name="enable-diagnostic-logging-on-all-public-ips"></a>对所有公共 IP 启用诊断日志记录
 
-此[模板](https://aka.ms/ddosdiaglogs)创建一个 Azure Policy 定义，用于在定义的范围内对所有公共 IP 日志自动启用诊断日志记录。
-
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FEnable%2520Diagnostic%2520Logging%2FAzure%2520Policy%2FDDoSLogs.json)
+此[内置策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F752154a7-1e0f-45c6-a880-ac75a7e4f648)会自动对定义范围内的所有公共 IP 日志启用诊断日志记录。 有关内置策略的完整列表，请参阅 [Azure DDoS 防护标准版的 Azure Policy 内置定义](policy-reference.md)。
 
 ## <a name="view-log-data-in-workbooks"></a>查看工作簿中的日志数据
 
@@ -144,7 +142,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
 
 可以使用[此 Azure 资源管理器 (ARM) 模板](https://aka.ms/ddosworkbook)来部署攻击分析工作簿。 利用此工作簿，可在多个可筛选面板上可视化攻击数据，以轻松了解面临的威胁。 
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%20DDoS%20Protection%2FWorkbook%20-%20Azure%20DDOS%20monitor%20workbook%2FAzureDDoSWorkbook_ARM.json)
 
 ![DDoS 保护工作簿](./media/ddos-attack-telemetry/ddos-attack-analytics-workbook.png)
 

@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 05/13/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b7b7f1c5fb0a7991707a26b4a7f54fb3ffaf7bab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 601eec9c65ee7e9bc3c163da78a81a372f26507d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033514"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061689"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中启用多重身份验证
 
@@ -40,10 +40,19 @@ Azure Active Directory B2C (Azure AD B2C) 直接集成了 [Azure AD 多重身份
 1. 选择“用户流”。
 1. 选择要为其启用 MFA 的用户流。 例如，*B2C_1_signinsignup*。
 1. 选择“属性”。
-1. 在“多重身份验证”部分中，选择所需的“MFA 方法”，然后在“MFA 强制执行”下选择“始终启用”或“条件(推荐)”    。
+1. 在“多重身份验证”部分，选择所需的“方法类型”。  然后，在“MFA 强制”下选择一个选项：
+
+   - **关** - 决不在登录期间强制执行 MFA，也不在注册和登录期间提示用户注册 MFA。
+   - “始终启用” - 无论条件访问设置如何，始终需要 MFA。 在注册期间，系统会提示用户注册 MFA。 在登录期间，如果用户尚未注册 MFA，系统会提示他们注册。
+   - “条件性” - 在注册和登录期间，系统会提示用户注册 MFA（包括新用户和未注册 MFA 的现有用户）。 在登录期间，仅在活动的条件访问策略评估需要 MFA 时强制执行 MFA：
+
+      - 如果结果是没有风险的 MFA 质询，则强制实施 MFA。 如果用户尚未注册 MFA，系统会提示他们注册。
+      - 如果结果是因风险导致的 MFA 质询，而且用户未注册 MFA，则会阻止登录。
+
    > [!NOTE]
    >
-   > - 如果选择“条件(推荐)”，则还需要[用户流添加条件访问](conditional-access-user-flow.md)，并指定要应用策略的应用。
+   > - 随着条件访问在 Azure AD B2C 中正式发布，现在系统会在注册期间提示用户注册 MFA 方法。 在正式发布之前创建的任何注册用户流都不会自动反映这一新行为，但你可以通过创建新的用户流来包括该行为。
+   > - 如果选择“条件性”，则还需要 [用户流添加条件访问](conditional-access-user-flow.md)，并指定要应用策略的应用。
    > - 在默认情况下，对于注册用户流，多重身份验证 (MFA) 处于禁用状态。 你可以在具有电话注册的用户流中启用 MFA，但是，由于使用电话号码作为主标识符，因此，对于第二个身份验证因素，只提供电子邮件一次性密码这一个选项。
 
 1. 选择“保存”。 现在已为此用户流启用 MFA。
@@ -56,6 +65,6 @@ Azure Active Directory B2C (Azure AD B2C) 直接集成了 [Azure AD 多重身份
 
 ::: zone pivot="b2c-custom-policy"
 
-若要启用多重身份验证，请从 GitHub 获取自定义策略新手包，然后使用 Azure AD B2C 租户名称更新 SocialAndLocalAccountsWithMFA 新手包中的 XML 文件。 SocialAndLocalAccountsWithMFA 启用社交、本地和多重身份验证选项。 有关详细信息，请参阅 [Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)。 
+若要启用多重身份验证，请从 GitHub 获取自定义策略新手包，然后使用 Azure AD B2C 租户名称更新 SocialAndLocalAccountsWithMFA 新手包中的 XML 文件。 SocialAndLocalAccountsWithMFA 启用社交、本地和多重身份验证选项。 有关详细信息，请参阅 [Active Directory B2C 中的自定义策略入门](tutorial-create-user-flows.md?pivots=b2c-custom-policy)。 
 
 ::: zone-end

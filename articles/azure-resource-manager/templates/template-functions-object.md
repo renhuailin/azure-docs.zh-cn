@@ -2,13 +2,13 @@
 title: 模板函数 - 对象
 description: 介绍可在 Azure 资源管理器模板（ARM 模板）中用来处理对象的函数。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: 5e13177db1a7cf2f19a822363cb3884474566add
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/13/2021
+ms.openlocfilehash: aa52cee2236ac3eab5090b1caad27b6cbf516c7a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96920450"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959616"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM 模板的对象函数
 
@@ -23,17 +23,15 @@ ms.locfileid: "96920450"
 * [null](#null)
 * [union](#union)
 
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
-
 ## <a name="contains"></a>contains
 
 `contains(container, itemToFind)`
 
 检查数组是否包含某个值、某个对象是否包含某个键，或者某个字符串是否包含某个子字符串。 字符串比较区分大小写。 但在测试某个对象是否包含某个键时，该比较不区分大小写。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | container |是 |数组、对象或字符串 |包含要查找的值的值。 |
 | itemToFind |是 |字符串或整数 |要查找的值。 |
@@ -45,8 +43,6 @@ ms.locfileid: "96920450"
 ### <a name="example"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json)演示如何对不同的类型使用 contains：
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -101,34 +97,9 @@ ms.locfileid: "96920450"
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param stringToTest string = 'OneTwoThree'
-param objectToTest object = {
-  'one': 'a'
-  'two': 'b'
-  'three': 'c'
-}
-param arrayToTest array = [
-  'one'
-  'two'
-  'three'
-]
-
-output stringTrue bool = contains(stringToTest, 'e')
-output stringFalse bool = contains(stringToTest, 'z')
-output objectTrue bool = contains(objectToTest, 'one')
-output objectFalse bool = contains(objectToTest, 'a')
-output arrayTrue bool = contains(arrayToTest, 'three')
-output arrayFalse bool = contains(arrayToTest, 'four')
-```
-
----
-
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -141,11 +112,13 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 `createObject(key1, value1, key2, value2, ...)`
 
-从键和值创建对象。 Bicep 不支持 `createObject` 函数。  使用 `{}` 构造对象。
+从键和值创建对象。
+
+Bicep 不支持 `createObject` 函数。  使用 `{}` 构造对象。 请参阅[对象](../bicep/data-types.md#objects)。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | key1 |否 |string |键的名称。 |
 | value1 |否 |int、布尔值、字符串、对象或数组 |键的值。 |
@@ -162,8 +135,6 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 下面的示例从不同类型的值创建对象。
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -178,26 +149,6 @@ output arrayFalse bool = contains(arrayToTest, 'four')
   }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output newObject object = {
-  'intProp': 1
-  'stringProp': 'abc'
-  'boolProp': true
-  'arrayProp': [
-    'a'
-    'b'
-    'c'
-  ]
-  'objectProp': {
-    'key1': 'value1'
-  }
-}
-```
-
----
 
 上述示例中使用默认值的输出是一个名为 `newObject` 的对象，其值如下：
 
@@ -217,9 +168,9 @@ output newObject object = {
 
 确定数组、对象或字符串是否为空。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |是 |数组、对象或字符串 |要检查是否为空的值。 |
 
@@ -230,8 +181,6 @@ output newObject object = {
 ### <a name="example"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json)检查某个数组、对象和字符串是否为空。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -270,23 +219,9 @@ output newObject object = {
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param testArray array = []
-param testObject object = {}
-param testString string = ''
-
-output arrayEmpty bool = empty(testArray)
-output objectEmpty bool = empty(testObject)
-output stringEmpty bool = empty(testString)
-```
-
----
-
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -300,7 +235,7 @@ output stringEmpty bool = empty(testString)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于查找通用元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于查找通用元素的第二个值。 |
@@ -313,8 +248,6 @@ output stringEmpty bool = empty(testString)
 ### <a name="example"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/intersection.json)演示如何对数组和对象使用 intersection：
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -361,38 +294,9 @@ output stringEmpty bool = empty(testString)
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param firstObject object = {
-  'one': 'a'
-  'two': 'b'
-  'three': 'c'
-}
-param secondObject object = {
-  'one': 'a'
-  'two': 'z'
-  'three': 'c'
-}
-param firstArray array = [
-  'one'
-  'two'
-  'three'
-]
-param secondArray array = [
-  'two'
-  'three'
-]
-
-output objectOutput object = intersection(firstObject, secondObject)
-output arrayOutput array = intersection(firstArray, secondArray)
-```
-
----
-
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | objectOutput | 对象 | {"one": "a", "three": "c"} |
 | arrayOutput | Array | ["two", "three"] |
@@ -407,7 +311,7 @@ output arrayOutput array = intersection(firstArray, secondArray)
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |string |要转换为 JSON 的值。 字符串必须是格式正确的 JSON 字符串。 |
 
@@ -424,8 +328,6 @@ output arrayOutput array = intersection(firstArray, secondArray)
 ### <a name="example"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json)演示如何使用 json 函数。 请注意，可以为空对象传入 null。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -496,28 +398,6 @@ output arrayOutput array = intersection(firstArray, secondArray)
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param jsonEmptyObject string = 'null'
-param jsonObject string = '{\'a\': \'b\'}'
-param jsonString string = '\'test\''
-param jsonBoolean string = 'true'
-param jsonInt string = '3'
-param jsonArray string = '[[1,2,3]]'
-param concatValue string = 'demo value'
-
-output emptyObjectOutput bool = empty(json(jsonEmptyObject))
-output objectOutput object = json(jsonObject)
-output stringOutput string =json(jsonString)
-output booleanOutput bool = json(jsonBoolean)
-output intOutput int = json(jsonInt)
-output arrayOutput array = json(jsonArray)
-output concatObjectOutput object = json(concat('{"a": "', concatValue, '"}'))
-```
-
----
-
 上述示例中使用默认值的输出为：
 
 | 名称 | 类型 | Value |
@@ -538,7 +418,7 @@ output concatObjectOutput object = json(concat('{"a": "', concatValue, '"}'))
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组、字符串或对象 |用于获取元素数的数组、用于获取字符数的字符串，或用于获取根级属性数的对象。 |
 
@@ -549,8 +429,6 @@ output concatObjectOutput object = json(concat('{"a": "', concatValue, '"}'))
 ### <a name="example"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json)演示如何对数组和字符串使用 length：
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -600,35 +478,9 @@ output concatObjectOutput object = json(concat('{"a": "', concatValue, '"}'))
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param arrayToTest array = [
-  'one'
-  'two'
-  'three'
-]
-param stringToTest string = 'One Two Three'
-param objectToTest object = {
-  'propA': 'one'
-  'propB': 'two'
-  'propC': 'three'
-  'propD': {
-      'propD-1': 'sub'
-      'propD-2': 'sub'
-  }
-}
-
-output arrayLength int = length(arrayToTest)
-output stringLength int = length(stringToTest)
-output objectLength int = length(objectToTest)
-```
-
----
-
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
@@ -638,7 +490,9 @@ output objectLength int = length(objectToTest)
 
 `null()`
 
-返回 Null。 `null` 函数在 Bicep 中不可用。 请改用 `null` 关键字。
+返回 Null。
+
+`null` 函数在 Bicep 中不可用。 请改用 `null` 关键字。
 
 ### <a name="parameters"></a>参数
 
@@ -651,8 +505,6 @@ Null 函数不接受任何参数。
 ### <a name="example"></a>示例
 
 下面的示例使用 null 函数。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -668,14 +520,6 @@ Null 函数不接受任何参数。
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output emptyOutput bool = empty(null)
-```
-
----
-
 前述示例的输出为：
 
 | 名称 | 类型 | Value |
@@ -690,7 +534,7 @@ output emptyOutput bool = empty(null)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于联接元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于联接元素的第二个值。 |
@@ -703,8 +547,6 @@ output emptyOutput bool = empty(null)
 ### <a name="example"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/union.json)演示如何对数组和对象使用 union：
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -751,45 +593,13 @@ output emptyOutput bool = empty(null)
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param firstObject object = {
-  'one': 'a'
-  'two': 'b'
-  'three': 'c1'
-}
-
-param secondObject object = {
-  'three': 'c2'
-  'four': 'd'
-  'five': 'e'
-}
-
-param firstArray array = [
-  'one'
-  'two'
-  'three'
-]
-
-param secondArray array = [
-  'three'
-  'four'
-]
-
-output objectOutput object = union(firstObject, secondObject)
-output arrayOutput array = union(firstArray, secondArray)
-```
-
----
-
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.author: allensu
 ms.openlocfilehash: 0ea4f167b992ccfbc4156ac06c8f636d2ef4a355
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96020409"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Verizon Premium Azure CDN 规则引擎功能
@@ -35,7 +35,7 @@ ms.locfileid: "96020409"
 * [URL](#url)
 * [Web 应用程序防火墙](#waf)
 
-### <a name="access"></a><a name="access"></a>访问
+### <a name="access"></a><a name="access"></a>Access
 
 以下功能旨在控制对内容的访问。
 

@@ -1,89 +1,17 @@
 ---
-title: 在 Service Fabric 群集中修补 Windows 操作系统
-description: 本文介绍如何使用修补业务流程应用程序在 Service Fabric 群集上自动进行操作系统修补。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
-ms.service: service-fabric
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
+title: 使用修补业务流程应用程序
+description: 使用修补业务流程应用程序在非 Azure 托管 Service Fabric 群集上自动进行操作系统修补。
+ms.topic: how-to
 ms.date: 2/01/2019
-ms.author: atsenthi
-ms.openlocfilehash: e94b809513bda8edc7a51baf79ec05a2c9c77489
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3d51cfeaa13bd2556e1d32ffc39232b514f8a7b4
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448548"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663680"
 ---
-# <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Windows 操作系统
-
-## <a name="automatic-os-image-upgrades"></a>自动 OS 映像升级
-
-[在虚拟机规模集上执行自动 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)是在 Azure 中修补操作系统的最佳做法。 基于虚拟机规模集的自动 OS 映像升级需要在规模集上具有白银或更高持续性级别。
-
-虚拟机规模集自动 OS 映像升级的要求
--   Service Fabric [持久性级别](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) 为 Silver 或 Gold，而不是 Bronze。
--   根据规模集模型定义，Service Fabric 扩展必须具有 TypeHandlerVersion 1.1 或更高版本。
--   根据规模集模型定义，Service Fabric 群集与 Service Fabric 扩展的持久性级别应相同。
-- 虚拟规模集不需要额外的运行状况探测，也不需要使用应用程序运行状况扩展。
-
-请确保 Service Fabric 群集与 Service Fabric 扩展上的持久性设置匹配，因为不匹配将导致升级错误。 可以通过[此页](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)上概述的指导原则来修改持久性级别。
-
-在青铜级持续性下，无法进行自动 OS 映像升级。 虽然不推荐将[补丁协调应用程序](#patch-orchestration-application )（仅适用于非 Azure 托管群集）用于白银或更高持续性级别，但对于 Service Fabric 升级域，只能通过它自动执行 Windows 更新。
-
-> [!IMPORTANT]
-> 虚拟机内升级，其中，Azure Service Fabric 不支持在未更换 OS 磁盘的情况下应用“Windows 更新”操作系统修补程序。
-
-要在操作系统上正确启用已禁用的 Windows 更新功能，需要两个步骤。
-
-1. 启用自动 OS 映像升级，禁用 Windows 更新 ARM 
-    ```json
-    "virtualMachineProfile": { 
-        "properties": {
-          "upgradePolicy": {
-            "automaticOSUpgradePolicy": {
-              "enableAutomaticOSUpgrade":  true
-            }
-          }
-        }
-      }
-    ```
-    
-    ```json
-    "virtualMachineProfile": { 
-        "osProfile": { 
-            "windowsConfiguration": { 
-                "enableAutomaticUpdates": false 
-            }
-        }
-    }
-    ```
-
-    Azure PowerShell
-    ```azurepowershell-interactive
-    Update-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName -AutomaticOSUpgrade $true -EnableAutomaticUpdate $false
-    ``` 
-    
-1. 更新规模集模型：此配置更改后，需要对所有计算机重新映像以更新规模集模型，使所做的更改生效。
-    
-    Azure PowerShell
-    ```azurepowershell-interactive
-    $scaleSet = Get-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName
-    $instances = foreach($vm in $scaleSet)
-    {
-        Set-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName -InstanceId $vm.InstanceID -Reimage
-    }
-    ``` 
-    
-有关更多说明，请参阅[虚拟机规模集的自动 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)。
-
-## <a name="patch-orchestration-application"></a>修补业务流程应用程序
+# <a name="use-patch-orchestration-application"></a>使用修补业务流程应用程序
 
 > [!IMPORTANT]
 > 从 2019 年 4 月 30 日起，修补业务流程应用程序版本 1.2.* 不再受支持。 请务必升级到最新版本。

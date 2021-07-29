@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 58616b647affd33e96357e556ab61f85d1c62129
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96752271"
 ---
 # <a name="authentication-requests-and-responses"></a>身份验证、请求和响应
@@ -24,7 +24,7 @@ Azure Key Vault 提供了两种类型的容器来存储和管理云应用程序�
 |容器类型|支持的对象类型|数据平面终结点|
 |--|--|--|
 | **保管库**|<ul><li>受软件保护的密钥</li><li>受 HSM 保护的密钥（含高级 SKU）</li><li>证书</li><li>存储帐户密钥</li></ul> | https://{vault-name}.vault.azure.net
-|**托管的 HSM** |<ul><li>HSM 保护的密钥</li></ul> | https://{hsm-name}.managedhsm.azure.net
+|**托管 HSM** |<ul><li>HSM 保护的密钥</li></ul> | https://{hsm-name}.managedhsm.azure.net
 
 下面是用于访问每种对象的 URL 后缀
 

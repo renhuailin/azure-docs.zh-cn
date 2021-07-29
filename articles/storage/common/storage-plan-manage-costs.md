@@ -10,10 +10,10 @@ ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
 ms.openlocfilehash: 0bad4637f13bbcf02047416499e4f82fdc53eb4f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98601310"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>计划和管理 Azure Blob 存储的成本
@@ -41,7 +41,7 @@ ms.locfileid: "98601310"
 4. 修改剩余的选项，查看其对估算的影响。
 
    > [!NOTE]
-   > 可以使用 Azure 预付款（之前称为货币承诺）额度支付 Azure Blob 存储费用。 但是，不能使用 Azure 预付款信用额度来支付第三方产品和服务（包括 Azure 市场中的第三方产品和服务）的费用。
+   > 可以使用 Azure 预付款（之前称为货币承诺）额度支付 Azure Blob 存储费用。 但是，不能使用 Azure 预付款额度来支付第三方产品和服务（包括 Azure 市场中的）的费用。
 
 ## <a name="optimize-costs"></a>优化成本
 
@@ -79,9 +79,9 @@ ms.locfileid: "98601310"
 
 ## <a name="monitor-costs"></a>监视成本
 
-将 Azure 资源用于 Azure 存储时，会产生成本。 资源使用量单位成本因时间间隔（秒、分钟、小时和天）或单位使用量（字节、MB 等）而异。一旦开始使用 Azure 存储，就会产生成本。 可以在 Azure 门户的[成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)窗格中看到成本。
+将 Azure 资源用于 Azure 存储时，会产生成本。 资源使用情况单位成本因时间间隔（秒、分钟、小时和天）或单位使用情况（字节、MB 等）而异。Azure 存储一经使用，即会产生成本。 可以在 Azure 门户的[成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)窗格中看到成本。
 
-使用成本分析时，可以在图表中查看不同时间间隔的 Azure 存储成本。 有些示例是按天、当月和上个月以及按年来统计的。 还可以对比预算和预测的成本来查看成本。 切换到时间更长的视图有助于确定支出趋势，以及了解可能超支的领域。 如果已创建预算，还可以轻松查看超支的地方。
+使用成本分析时，可以在图表中查看不同时间间隔的 Azure 存储成本。 有些示例是按天、当前、上个月和年划分的。 还可以对比预算和预测的成本来查看成本。 切换到时间更长的视图有助于确定支出趋势，以及了解可能超支的领域。 如果已创建预算，还可以轻松查看超支的地方。
 
 >[!NOTE]
 > 成本分析支持各种 Azure 帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](../../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。 若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](../../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
@@ -100,7 +100,7 @@ ms.locfileid: "98601310"
 
    ![显示按存储筛选的屏幕截图](./media/storage-plan-manage-costs/cost-analysis-pane-storage.png)
 
-在前面的示例中，可查看服务的当前成本。 还显示了按 Azure 区域（位置）和按资源组筛选的成本。 也可以添加其他筛选器（例如：用于查看特定存储帐户的成本的筛选器）。
+在前面的示例中，你将看到该服务的当前成本。 还显示了按 Azure 区域（位置）和按资源组筛选的成本。 也可以添加其他筛选器（例如：用于查看特定存储帐户的成本的筛选器）。
 
 ## <a name="export-cost-data"></a>导出成本数据
 

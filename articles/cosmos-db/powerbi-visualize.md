@@ -1,23 +1,26 @@
 ---
 title: Azure Cosmos DB 连接器的 Power BI 教程
 description: 使用此 Power BI 教程导入 JSON、创建见解深入的报表以及使用 Azure Cosmos DB 和 Power BI 连接器来将数据可视化。
-author: SnehaGunda
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
-ms.author: sngun
-ms.openlocfilehash: b27bab9ea3029264143caaacf094f0a799894356
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: rosouz
+ms.openlocfilehash: ccdef9784e96d55615caf640675f98946fcca43d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359857"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959127"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>使用 Power BI 连接器可视化 Azure Cosmos DB 数据
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-[Power BI](https://powerbi.microsoft.com/) 是一种在线服务，你可以使用它创建和共享仪表板和报表。 Power BI Desktop 是一种报表创作工具，可以从各种数据源检索数据。 Azure Cosmos DB 是可以与 Power BI Desktop 一起使用的一种数据源。 可以使用 Power BI 的 Azure Cosmos DB 连接器将 Power BI Desktop 连接到 Azure Cosmos DB 帐户。  将 Azure Cosmos DB 数据导入到 Power BI 之后，可以对其进行转换，创建报表，以及将报表发布到 Power BI。   
+[Power BI](https://powerbi.microsoft.com/) 是一种在线服务，你可以使用它创建和共享仪表板和报表。 Power BI Desktop 是一种报表创作工具，可以从各种数据源检索数据。 Azure Cosmos DB 是可以与 Power BI Desktop 一起使用的一种数据源。 可以使用 Power BI 的 Azure Cosmos DB 连接器将 Power BI Desktop 连接到 Azure Cosmos DB 帐户。  将 Azure Cosmos DB 数据导入到 Power BI 之后，可以对其进行转换，创建报表，以及将报表发布到 Power BI。
+
+另一种做法是使用 [Azure Synapse Link for Azure Cosmos DB](synapse-link.md) 创建近乎实时的报表。 借助 Azure Synapse Link，你可以连接 Power BI 来分析你的 Azure Cosmos DB 数据，并且对事务工作负载的性能和成本没有任何影响，在 ETL 管道方面也没有影响。 可以使用 [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode) 或 [import](/power-bi/connect-data/service-dataset-modes-understand#import-mode) 模式。 有关详细信息，请单击[此处](synapse-link-power-bi.md)。
+
 
 本文介绍了将 Azure Cosmos DB 帐户连接到 Power BI Desktop 所需执行的步骤。 在连接后，可以导航到某个集合，提取数据，将 JSON 数据转换为表格格式，以及将报表发布到 Power BI。
 
@@ -26,6 +29,9 @@ ms.locfileid: "97359857"
 
 > [!NOTE]
 > 目前，仅 Azure Cosmos DB SQL API 和 Gremlin API 帐户支持使用 Power BI 连接器连接 Azure Cosmos DB。
+
+> [!NOTE]
+> 目前 Azure Cosmos DB SQL API 和 Azure Cosmos DB API for MongoDB 支持使用 Azure Synapse Link 创建近乎实时的 Power BI 仪表板。
 
 ## <a name="prerequisites"></a>先决条件
 在按照此 Power BI 教程中的说明操作之前，请确保已拥有对以下资源的访问权限：
@@ -96,7 +102,7 @@ ms.locfileid: "97359857"
     
 8. 帐户成功连接后，将出现“导航器”窗格  。 “导航器”  会在帐户下显示数据库的列表。
 
-9. 单击并展开作为报表数据来源的数据库，并选择 **volcanodb**（你的数据库名称可能不同）。   
+9. 单击并展开作为报表数据来源的数据库，并选择 ``volcanodb``（你的数据库名称可能有所不同）。   
 
 10. 现在，选择包含要检索的数据的集合，选择 **volcano1**（你的集合名称可能不同）。
     
@@ -205,26 +211,18 @@ ms.locfileid: "97359857"
 
 创建仪表板之前也可以临时修改报表。 但是，建议使用 Power BI Desktop 执行修改并将报表重新发布到 PowerBI.com。
 
-<!-- ## Refresh data in PowerBI.com
-There are two ways to refresh data, ad hoc and scheduled.
+## <a name="refresh-data-in-powerbicom"></a>在 PowerBI.com 中刷新数据
+刷新数据有两种方法，临时和计划。
 
-For an ad hoc refresh, simply click on the eclipses (…) by the **Dataset**, e.g. PowerBITutorial. You should see a list of actions including **Refresh Now**. Click **Refresh Now** to refresh the data.
+对于临时刷新，只需单击“立即刷新”即可刷新数据。
 
-:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Screenshot of Refresh Now in PowerBI.com":::
+对于计划刷新，请执行以下操作。
 
-For a scheduled refresh, do the following.
+1. 转到“设置”并打开“数据集”选项卡。
 
-1. Click **Schedule Refresh** in the action list. 
+2. 单击“计划刷新”并设置计划。
 
-    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Screenshot of the Schedule Refresh in PowerBI.com":::
-2. In the **Settings** page, expand **Data source credentials**. 
-3. Click on **Edit credentials**. 
-   
-    The Configure popup appears. 
-4. Enter the key to connect to the Azure Cosmos DB account for that data set, then click **Sign in**. 
-5. Expand **Schedule Refresh** and set up the schedule you want to refresh the dataset. 
-6. Click **Apply** and you are done setting up the scheduled refresh.
--->
+
 ## <a name="next-steps"></a>后续步骤
 * 有关 Power BI 的详细信息，请参阅 [Power BI 入门](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)。
 * 若要了解有关 Azure Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB 文档登陆页](https://azure.microsoft.com/documentation/services/cosmos-db/)。

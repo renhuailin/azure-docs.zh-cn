@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 02/13/2019
+ms.date: 06/10/2021
 ms.author: curtand
-ms.openlocfilehash: c947bee0b702797a86d1e038f74c6c10e2b23eb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e03fe3ca7a66dc361988151b558fef0c4b4f390
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103197474"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982567"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>将 Microsoft Authenticator 应用设置为验证方法
 
@@ -130,6 +130,9 @@ ms.locfileid: "103197474"
 
 如果在使用双重验证登录到工作或学校帐户时想要将验证器应用用作默认的方法，或者希望验证器应用成为默认用于密码重置请求的方法，可以从“安全信息”页设置该方法。
 
+>[!NOTE]
+>如果你的默认登录方法是给你的电话号码发短信或打电话，则在多重身份验证过程中会自动发送短信代码或语音呼叫。 从 2021 年 6 月开始，某些应用会要求用户首先选择“发短信”或“打电话”。 此选项可防止为不同应用发送过多的安全代码。 如果默认登录方法是 Microsoft Authenticator 应用（[强烈推荐](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)），则会自动发送应用通知。
+
 ### <a name="to-change-your-default-security-info-method"></a>更改默认安全信息方法
 
 1. 在“安全信息”页上，选择“默认登录方法”信息旁边的“更改”链接  。
@@ -152,7 +155,7 @@ ms.locfileid: "103197474"
 
 - **移动设备或工作电话。** 输入移动设备号码，获取将用于双重验证或密码重置的电话。 有关如何使用电话号码验证身份的分步说明，请参阅[设置安全信息以使用电话](security-info-setup-phone-number.md)。
 
-- 安全密钥。 注册与 Microsoft 兼容的安全密钥，并将其与 PIN 一起使用来进行双重验证或密码重置。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
+- **安全密钥。** 注册与 Microsoft 兼容的安全密钥，并将其与 PIN 一起使用来进行双重验证或密码重置。 有关如何使用安全密钥验证身份的分步说明，请参阅[设置安全信息以使用安全密钥](security-info-setup-security-key.md)。
 
 - **电子邮件地址。** 输入工作或学校电子邮件地址，获取用于密码重置的电子邮件。 此选项不可用于双重验证。 有关如何设置电子邮件的分步说明，请参阅[设置安全信息以使用电子邮件](security-info-setup-email.md)。
 

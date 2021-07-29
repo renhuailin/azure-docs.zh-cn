@@ -5,16 +5,16 @@ author: masnider
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
-ms.openlocfilehash: 2ac4b81a284ed8c38bc9cefccd08db5afa51d600
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9b29ab54853fcd62284c1c0f19c3b17b053a1d7d
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96575935"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330136"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 术语概述
 
-Service Fabric 是分布式系统平台，可借助它轻松打包、部署和管理可缩放且可靠的微服务。  可以[在任何位置托管 Service Fabric 群集](service-fabric-deploy-anywhere.md)：Azure、本地数据中心或任何云提供程序。  Service Fabric 是支持 [Azure Service Fabric 网格](../service-fabric-mesh/index.yml)的业务流程协调程序。 可以使用任何框架编写服务，并从多个环境选项中选择运行应用程序的位置。 本文详细介绍 Service Fabric 所使用的术语，帮助了解文档中使用的术语。
+Service Fabric 是分布式系统平台，可借助它轻松打包、部署和管理可缩放且可靠的微服务。 Service Fabric 是一种容器和进程业务流程协调程序，无论是在 Azure、本地数据中心还是任何云服务提供商上，有了它，你可以[在任意位置托管群集](service-fabric-deploy-anywhere.md)。 可以使用任何框架编写服务，并从多个环境选项中选择运行应用程序的位置。 本文详细介绍 Service Fabric 所使用的术语，帮助了解文档中使用的术语。
 
 ## <a name="infrastructure-concepts"></a>基础结构概念
 
@@ -24,28 +24,7 @@ Service Fabric 是分布式系统平台，可借助它轻松打包、部署和�
 
 ## <a name="application-and-service-concepts"></a>应用程序和服务概念
 
-**Service Fabric 网格应用程序**：Service Fabric 网格应用程序由资源模型（YAML 和 JSON 资源文件）描述，可以部署到运行 Service Fabric 的任何环境中。
-
-**Service Fabric 本机应用程序**：Service Fabric 本机应用程序由本机应用程序模型（基于 XML 的应用程序和服务清单）描述。  Service Fabric 本机应用程序无法在 Service Fabric 网格中运行。
-
-### <a name="service-fabric-mesh-application-concepts"></a>Service Fabric 网格应用程序概念
-
-**应用程序**：应用程序是网格应用程序的部署、版本控制和生存期的单位。 每个应用程序实例的生命周期可以单独管理。  应用程序由一个或多个服务代码包和设置组成。 应用程序是使用 Azure 资源模型 (RM) 架构定义的。  服务被描述为 RM 模板中的应用程序资源的属性。  应用程序使用的网络和卷由应用程序引用。  创建应用程序时，应用程序、服务、网络和卷均使用 Service Fabric 资源模型建模。
-
-**服务**：应用程序中的服务代表微服务并执行完整且独立的功能。 每个服务由一个或多个代码包组成，这些代码包描述运行与代码包关联的容器映像所需的所有内容。  应用程序中的服务数量可以增大和减小。
-
-**网络**：网络资源为应用程序创建专用网络，并独立于可能引用它的应用程序或服务。 同一网络可以包含来自不同应用程序的多个服务。 网络是应用程序引用的可部署资源。
-
-**代码包**：代码包描述运行与代码包关联的容器映像所需的所有内容，包括以下内容：
-
-* 容器名称、版本和注册表
-* 每个容器所需的 CPU 和内存资源
-* 网络终结点
-* 要在引用单独卷资的源容器中装载的卷。
-
-若代码包被定义为应程序资源的一部分，则所有此类代码包都作为一组一起进行部署和激活。
-
-**卷**：卷是装载在可用于保留状态的容器实例内的目录。 Azure 文件卷驱动程序将 Azure 文件共享安装到容器，并通过支持文件存储的任何 API 提供可靠的数据存储。 卷是应用程序引用的可部署资源。
+**Service Fabric 本机应用程序**：Service Fabric 本机应用程序由本机应用程序模型（基于 XML 的应用程序和服务清单）描述。
 
 ### <a name="service-fabric-native-application-concepts"></a>Service Fabric 本机应用程序概念
 
@@ -122,15 +101,11 @@ Service Fabric 是分布式系统平台，可借助它轻松打包、部署和�
 
 若要部署服务，需要描述服务的运行方式。 Service Fabric 支持 3 种不同的部署模型：
 
-### <a name="resource-model-preview"></a>资源模型（预览版）
-
-Service Fabric 资源是可以单独部署到 Service Fabric 的任何内容，包括应用程序、服务、网络和卷。 资源是使用 JSON 文件定义的，该文件可以部署到群集终结点。  对于 Service Fabric 网格，使用 Azure 资源模型架构。 YAML 文件架构还可用于更轻松地创作定义文件。 可将资源部署到 Service Fabric 运行的任何位置。 资源模型是用来描述 Service Fabric 应用程序的最简单方法。 其主要重点在于容器化服务的简单部署和管理。 要了解详细信息，请参阅 [Service Fabric 资源模型简介](../service-fabric-mesh/service-fabric-mesh-service-fabric-resources.md)。
-
 ### <a name="native-model"></a>本机模块
 
 本机应用程序模型为应用程序提供对 Service Fabric 的完整低级别访问权限。 应用程序和服务被定义为 XML 清单文件中的已注册类型。
 
-本机模型支持 Reliable Services 框架和 Reliable Actors 框架，该框架提供对 C# 和 Java 中 Service Fabric 运行时 API 和群集管理 API 的访问权限。 本机模型还支持任意容器和可执行文件。 [Service Fabric 网格环境](../service-fabric-mesh/service-fabric-mesh-overview.md)中不支持本机模型。
+本机模型支持 Reliable Services 框架和 Reliable Actors 框架，该框架提供对 C# 和 Java 中 Service Fabric 运行时 API 和群集管理 API 的访问权限。 本机模型还支持任意容器和可执行文件。
 
 **Reliable Services**：用于构建无状态和有状态服务的 API。 有状态服务将其状态存储在 Reliable Collections（例如字典或队列）中。 也可插入各种通信堆栈，如 Web API 和 Windows Communication Foundation (WCF)。
 
@@ -152,26 +127,9 @@ Service Fabric 资源是可以单独部署到 Service Fabric 的任何内容，�
 
 Service Fabric 是一种开放源平台技术，多种不同的服务和产品都以它为基础。 Microsoft 提供以下选项：
 
- - **Azure Service Fabric 网格**：一种完全托管服务，用于在 Microsoft Azure 中运行 Service Fabric 应用程序。
  - **Azure Service Fabric**：Azure 托管的 Service Fabric 群集服务/产品。 它提供 Service Fabric 和 Azure 基础结构之间的集成，以及 Service Fabric 群集的升级和配置管理。
  - **Service Fabric 独立**：一组安装和配置工具，可 [在任何位置部署 Service Fabric 群集](./service-fabric-deploy-anywhere.md)（在本地或任何云提供程序）。 不由 Azure 管理。
  - **Service Fabric 开发群集**：在 Windows、Linux 或 Mac 上提供本地开发经验，用于开发 Service Fabric 应用程序。
-
-## <a name="environment-framework-and-deployment-model-support-matrix"></a>环境、框架和部署模型支持矩阵
-
-不同的环境为框架和部署模型提供不同级别的支持。 下表介绍了支持的框架和部署模型组合。
-
-| 应用程序类型 | 介绍依据 | Azure Service Fabric 网格 | Azure Service Fabric 群集（任意 OS）| 本地群集 | 独立群集 |
-|---|---|---|---|---|---|
-| Service Fabric 网格应用程序 | 资源模型（YAML 和 JSON） | 支持 |不支持 | Windows - 支持，Linux 和 Mac - 不支持 | Windows - 不支持 |
-|Service Fabric 本机应用程序 | 本机应用程序模型 (XML) | 不支持| 支持|支持|Windows - 支持|
-
-下表介绍了不同的应用模型以及针对 Service Fabric 为它们提供的工具。
-
-| 应用程序类型 | 介绍依据 | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
-|---|---|---|---|---|---|---|
-| Service Fabric 网格应用程序 | 资源模型（YAML 和 JSON） | VS 2017 |不支持 |不支持 | 支持 - 仅网格环境 | 不支持|
-|Service Fabric 本机应用程序 | 本机应用程序模型 (XML) | VS 2017 和 VS 2015| 支持|支持|支持|支持|
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -180,7 +138,3 @@ Service Fabric 是一种开放源平台技术，多种不同的服务和产品�
 * [Service Fabric 概述](service-fabric-overview.md)
 * [为什么要使用微服务方法构建应用程序？](service-fabric-overview-microservices.md)
 * [应用程序方案](service-fabric-application-scenarios.md)
-
-了解有关 Service Fabric 网格的详细信息：
-
-* [Service Fabric 网格概述](../service-fabric-mesh/service-fabric-mesh-overview.md)

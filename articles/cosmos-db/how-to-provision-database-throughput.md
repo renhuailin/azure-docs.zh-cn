@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 4ecbee2260da735cd6ba74d3b9ffb55b4a652e9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7466a2e620a9489fe7b3b69967388d3ad4b7ab85
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93341988"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110065308"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>在 Azure Cosmos DB 的数据库中预配标准（手动）吞吐量 - SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,8 +31,10 @@ ms.locfileid: "93341988"
 1. 打开“数据资源管理器”窗格，然后选择“新建数据库” 。 提供以下详细信息：
 
    * 输入数据库 ID。
-   * 选择“预配数据库吞吐量”选项。
-   * 输入吞吐量（例如 1000 RU）。
+   * 选择“跨容器共享吞吐量”选项。
+   * 选择“自动缩放”或“手动缩放”吞吐量并输入所需的“数据库吞吐量”（例如，1000 RU/秒）。
+   * 在“容器 ID”下输入容器的名称
+   * 输入一个“分区键”
    * 选择“确定”。
 
     :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-sql-api.png" alt-text="“新建数据库”对话框屏幕截图":::

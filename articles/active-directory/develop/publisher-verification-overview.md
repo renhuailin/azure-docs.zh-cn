@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/19/2020
+ms.date: 06/01/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 1e913e3a5356ad7f49d8b3066f5bd3da7eddd2c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d02b8cae22349412a83b35624479ef19de4697f6
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93308772"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951733"
 ---
 # <a name="publisher-verification"></a>发布者验证
 
@@ -40,7 +40,7 @@ ms.locfileid: "93308772"
 - 推动企业更顺畅地采用 - 管理员可以配置[用户同意策略](../manage-apps/configure-user-consent.md)，发布者验证状态将作为主要的策略标准之一。
 
 > [!NOTE]
-> 自 2020 年 11 月起，最终用户将不再能够同意未经认证的发布者最新注册的多租户应用。 这将适用于在 2020 年 11 月 8 日之后注册的应用，使用 OAuth2.0 可以请求除基本登录和读取用户配置文件以外的权限，还可以请求与注册该应用的租户不同的租户中的用户的同意。 同意屏幕上将显示一条警告消息，告知用户这些应用有风险，来自未经验证的发布者。    
+> 自 2020 年 11 月起，如果启用了[基于风险的升级同意](../manage-apps/configure-user-consent.md#risk-based-step-up-consent)，最终用户将不再能够同意未经认证的发布者最新注册的多租户应用。 这将适用于在 2020 年 11 月 8 日之后注册的应用，使用 OAuth2.0 可以请求除基本登录和读取用户配置文件以外的权限，还可以请求与注册该应用的租户不同的租户中的用户的同意。 同意屏幕上将显示一条警告消息，告知用户这些应用有风险，来自未经验证的发布者。    
 
 ## <a name="requirements"></a>要求
 发布者验证需要满足一些先决条件，许多 Microsoft 合作伙伴已经达成了其中一些条件。 它们分别是： 

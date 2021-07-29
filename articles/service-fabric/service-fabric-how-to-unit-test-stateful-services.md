@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/04/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 287c0544daa3c44d91fd336b502c496b9b4bb266
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89011389"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>为有状态服务创建单元测试
@@ -26,7 +26,7 @@ ms.locfileid: "89011389"
 [Nuget](https://www.nuget.org/packages/ServiceFabric.Mocks/)
 [GitHub](https://github.com/loekd/ServiceFabric.Mocks)
 
-*ServiceFabric.Mocks 不归 Microsoft 所有或维护。但是，这是当前 Microsoft 建议用于对有状态服务进行单元测试的库。*
+ServiceFabric.Mocks 不归 Microsoft 所有，亦不由 Microsoft 维护，但这当前是 Microsoft 建议的用于单元测试有状态服务的库。
 
 ## <a name="set-up-the-mock-orchestration-and-state"></a>设置模拟业务流程和状态
 作为测试的排列部分的一部分，将创建模拟副本集和状态管理器。 然后，副本集将自己为每个副本创建已测试服务的实例。 它还将自己执行生命周期事件，例如 `OnChangeRole` 和 `RunAsync`。 模拟状态管理器将确保对状态管理器执行的任何操作均按照实际状态管理器那样运行和保持。

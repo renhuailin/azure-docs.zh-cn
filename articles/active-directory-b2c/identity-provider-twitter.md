@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 04/06/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8cb31f57e5403e99e2ef9bfcc5d1042e33516d1d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 97a8134e858112d7e1deff6744b5555c172692f2
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448143"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028173"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 Twitter 帐户注册与登录
 
@@ -45,8 +45,12 @@ ms.locfileid: "102448143"
 1. 在“Authentication settings”（身份验证设置）下，选择“Edit”（编辑） 
     1. 选中“Enable 3-legged OAuth”（启用三重 OAuth）复选框。
     1. 选中“Request email address from users”（请求用户提供电子邮件地址）复选框。
-    1. 对于“Callback URLs”（回调 URL），请输入 `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`。 将 `your-tenant` 替换为你的租户的名称，并将 `your-user-flow-Id` 替换为你的用户流的标识符。 例如，`b2c_1a_signup_signin_twitter`。 输入租户名称和用户流 ID 时，请使用全小写字母，即使它们在 Azure AD B2C 中是使用大写字母定义的。
-    1. 对于“Website URL”（网站 URL），请输入 `https://your-tenant.b2clogin.com`。 将 `your-tenant` 替换为租户的名称。 例如，`https://contosob2c.b2clogin.com`。
+    1. 对于“Callback URLs”（回调 URL），请输入 `https://your-tenant.b2clogin.com/your-tenant-name.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`。  如果使用[自定义域](custom-domain.md)，请输入 `https://your-domain-name/your-tenant-name.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`。 输入租户名称和用户流 ID 时，请使用全小写字母，即使它们在 Azure AD B2C 中是使用大写字母定义也不例外。 将：
+        - `your-tenant-name` 替换为租户的名称。
+        - `your-domain-name` 替换为自定义域。
+        - `your-user-flow-Id` 替换为用户流的标识符。 例如，`b2c_1a_signup_signin_twitter`。 
+    
+    1. 对于“Website URL”（网站 URL），请输入 `https://your-tenant.b2clogin.com`。 将 `your-tenant` 替换为租户的名称。 例如，`https://contosob2c.b2clogin.com`。 如果使用[自定义域](custom-domain.md)，请输入 `https://your-domain-name`。
     1. 为“Terms of service”（服务条款）输入一个 URL，例如 `http://www.contoso.com/tos`。 策略 URL 是为了提供应用程序使用条款和条件而保留的页面。
     1. 为“Privacy policy”（隐私策略）输入一个 URL，例如 `http://www.contoso.com/privacy`。 策略 URL 是继续提供应用程序的隐私信息的页面。
     1. 选择“保存”。
@@ -66,12 +70,14 @@ ms.locfileid: "102448143"
 
 ## <a name="add-twitter-identity-provider-to-a-user-flow"></a>将 Twitter 标识提供者添加到用户流 
 
+此时，Twitter 标识提供者已设置，但还不能在任何登录页中使用。 将 Twitter 标识提供者添加到用户流：
+
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 单击要将 Twitter 标识提供者添加到的用户流。
 1. 在“社交标识提供者”下，选择“Twitter”。
 1. 选择“保存”。
 1. 若要测试策略，请选择“运行用户流”。
-1. 对于“应用程序”，请选择前面已注册的名为 *testapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择前面已注册的名为“testapp1”的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“运行用户流”按钮。
 1. 在注册或登录页中，选择“Twitter”以使用 Twitter 帐户登录。
 
@@ -173,7 +179,7 @@ ms.locfileid: "102448143"
 ## <a name="test-your-custom-policy"></a>测试自定义策略
 
 1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
-1. 对于“应用程序”，请选择[前面注册](troubleshoot-custom-policies.md#troubleshoot-the-runtime)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择[前面注册](tutorial-register-applications.md)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“立即运行”按钮。
 1. 在注册或登录页中，选择“Twitter”以使用 Twitter 帐户登录。
 

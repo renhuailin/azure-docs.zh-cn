@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 05/16/2021
 ms.author: duau
-ms.openlocfilehash: 50e047325ad17710794b1640715ab1938373fe85
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9910cadfcbb40bbb411c8d07bc73ad2205c085e5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96019457"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070509"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>使用 Azure 的应用程序传送套件进行负载均衡
 
@@ -40,8 +40,8 @@ Microsoft Azure 提供了多种全球和区域服务，用于管理网络流量�
 
 ## <a name="global-load-balancing"></a>全局负载均衡
 **流量管理器** 提供全局 DNS 负载均衡。 它着眼于传入的 DNS 请求，并根据客户选择的路由策略使用正常的后端进行响应。 路由方法选项包括：
-- **性能路由将请求发送到延迟最低的最近的后端。
-- 优先级路由将所有流量定向到一个后端，其他后端作为备份。
+- “性能路由”将请求发送到延迟最低的最近的后端。
+- “优先级路由”将所有流量定向到一个后端，其他后端作为备份。
 - 加权轮循机制路由根据分配给每个后端的权重进行流量分布。
 - 地理路由可确保由为这些区域映射的后端来处理来自特定地理区域的请求。 （例如，来自西班牙的所有请求应定向到法国中部 Azure 区域）
 - 通过子网路由，你可以将 IP 地址范围映射到后端，以便将这些 IP 的传入请求发送到特定的后端。 （例如，从公司总部的 IP 地址范围进行连接的任何用户都应该获取不同于一般用户的 Web 内容）
@@ -74,7 +74,7 @@ Front Door 在 Microsoft 网络边缘终止 HTTP 请求，并主动进行探测�
 ## <a name="building-with-azures-application-delivery-suite"></a>使用 Azure 的应用程序传送套件进行生成 
 建议所有网站、API 和服务均为地域冗余的，以便在可能的情况下将流量从距用户最近的位置传送给他们。  组合使用多个负载均衡服务，可以构建地理和区域冗余，以最大程度地提高可靠性和性能。
 
-下图展示一个示例体系结构，它结合使用这些服务来生成一个全局 Web 服务。 架构师使用流量管理器将流量路由到全局后端，以传送文件和对象。 使用 Front Door 时，将与 /store/* 模式匹配的 URL 路径全局路由到已迁移到应用服务的服务。 最后，将所有其他请求路由到区域应用程序网关。
+下图展示一个示例体系结构，它结合使用这些服务来生成一个全局 Web 服务。 体系结构使用流量管理器将流量路由到全局后端供存档和对象传送，使用 Front Door 在全局范围内将与模式 /store/* 匹配的 URL 路径路由到他们已迁移到应用服务的服务，并将所有其他请求路由到区域应用程序网关。
 
 在 IaaS 服务的每个区域中，应用程序开发者决定，为访问与 /images/* 模式匹配的任意 URL 的用户，从 VM 专用池提供服务。 此 VM 池不同于 Web 场的其余部分。
 

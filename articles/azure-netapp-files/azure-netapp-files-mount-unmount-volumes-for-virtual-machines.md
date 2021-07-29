@@ -6,13 +6,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 11/17/2020
-ms.openlocfilehash: 83d6e051f520737e750e6c46c192eb698e7bf0e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/17/2021
+ms.openlocfilehash: 2da352a10f5ff9bacdfb28de8752e5ffefa3fd82
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94842251"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110068187"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>为 Windows 或 Linux 虚拟机装载或卸载卷 
 
@@ -39,7 +39,7 @@ ms.locfileid: "94842251"
     * 如果要装载 NFS 卷，请确保使用 `mount` 命令中的 `vers` 选项来指定与要装载的卷相对应的 NFS 协议版本。 
     * 如果使用的是 NFSv4.1，请使用以下命令来装载文件系统：`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
         > [!NOTE]
-        > 如果使用 NFSv4.1，请确保装载导出的所有 VM 都使用唯一的主机名。
+        > 如果使用 NFSv4.1 并且用例涉及到利用那些具有相同主机名的 VM（例如，在 DR 测试中这样做），请参阅[配置两个具有相同主机名的 VM 以访问 NFSv4.1 卷](configure-nfs-clients.md#configure-two-vms-with-the-same-hostname-to-access-nfsv41-volumes)。
 
 3. 如果希望在启动或重启 Azure VM 时自动装载 NFS 卷，请将条目添加到主机上的 `/etc/fstab` 文件中。 
 
@@ -63,3 +63,4 @@ ms.locfileid: "94842251"
 * [NFS 常见问题解答](./azure-netapp-files-faqs.md#nfs-faqs)
 * [网络文件系统概述](/windows-server/storage/nfs/nfs-overview)
 * [装载 NFS Kerberos 卷](configure-kerberos-encryption.md#kerberos_mount)
+* [配置两个具有相同主机名的 VM 以访问 NFSv4.1 卷](configure-nfs-clients.md#configure-two-vms-with-the-same-hostname-to-access-nfsv41-volumes) 

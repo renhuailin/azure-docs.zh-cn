@@ -8,46 +8,54 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 10/07/2020
-ms.openlocfilehash: 73d31fff362807937cbd87b8e1313cf601909802
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 54398620775b28f0c497a061f5ea4446a38a5ada
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93092171"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110464892"
 ---
 # <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>Spark 上 Azure Cosmos DB Cassandra API 中的 DDL 操作
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 本文详细介绍了针对 Spark 上 Azure Cosmos DB Cassandra API 的密钥空间和表 DDL 操作。
 
+## <a name="spark-context"></a>Spark 上下文
+
+ Cassandra API 连接器要求将 Cassandra 连接的详细信息作为 spark 上下文的一部分进行初始化。 当你启动笔记本时，Spark 上下文已初始化。建议你不要停止并重新初始化它。 一种解决方案是在群集 spark 配置中添加群集级别的 Cassandra API 实例配置。 这是每个群集的一次性活动。 将以下代码添加到 Spark 配置，作为空格分隔的键值对：
+ 
+  ```scala
+  spark.cassandra.connection.host YOUR_COSMOSDB_ACCOUNT_NAME.cassandra.cosmosdb.azure.com
+  spark.cassandra.connection.port 10350
+  spark.cassandra.connection.ssl.enabled true
+  spark.cassandra.auth.username YOUR_COSMOSDB_ACCOUNT_NAME
+  spark.cassandra.auth.password YOUR_COSMOSDB_KEY
+  ```
+
 ## <a name="cassandra-api-related-configuration"></a>与 Cassandra API 相关的配置 
 
 ```scala
 import org.apache.spark.sql.cassandra._
-
 //Spark connector
 import com.datastax.spark.connector._
 import com.datastax.spark.connector.cql.CassandraConnector
 
-//CosmosDB library for multiple retry
-import com.microsoft.azure.cosmosdb.cassandra
-
-//Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
-spark.conf.set("spark.cassandra.connection.port","10350")
-spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
-spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
-spark.conf.set("spark.cassandra.auth.password","YOUR_ACCOUNT_KEY")
-spark.conf.set("spark.cassandra.connection.factory", "com.microsoft.azure.cosmosdb.cassandra.CosmosDbConnectionFactory")
+//if using Spark 2.x, CosmosDB library for multiple retry
+//import com.microsoft.azure.cosmosdb.cassandra
+//spark.conf.set("spark.cassandra.connection.factory", "com.microsoft.azure.cosmosdb.cassandra.CosmosDbConnectionFactory")
 
 //Throughput-related...adjust as needed
 spark.conf.set("spark.cassandra.output.batch.size.rows", "1")
-spark.conf.set("spark.cassandra.connection.connections_per_executor_max", "10")
+//spark.conf.set("spark.cassandra.connection.connections_per_executor_max", "10") // Spark 2.x
+spark.conf.set("spark.cassandra.connection.remoteConnectionsPerExecutor", "10") // Spark 3.x
 spark.conf.set("spark.cassandra.output.concurrent.writes", "1000")
 spark.conf.set("spark.cassandra.concurrent.reads", "512")
 spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
+
+> [!NOTE]
+> 如果使用的是 Spark 3.0 或更高版本，则无需安装 Cosmos DB 帮助程序和连接工厂。 对于 Spark 3 连接器，还应使用 `remoteConnectionsPerExecutor` 而不是 `connections_per_executor_max`（见上文）。
 
 ## <a name="keyspace-ddl-operations"></a>密钥空间 DDL 操作
 
@@ -93,7 +101,7 @@ DESCRIBE keyspaces;
 ### <a name="create-a-table"></a>创建表
 
 ```scala
-cdbConnector.withSessionDo(session => session.execute("CREATE TABLE IF NOT EXISTS books_ks1.books(book_id TEXT,book_author TEXT, book_name TEXT,book_pub_year INT,book_price FLOAT, PRIMARY KEY(book_id,book_pub_year)) WITH cosmosdb_provisioned_throughput=4000 , WITH default_time_to_live=630720000;"))
+cdbConnector.withSessionDo(session => session.execute("CREATE TABLE IF NOT EXISTS books_ks.books(book_id TEXT,book_author TEXT, book_name TEXT,book_pub_year INT,book_price FLOAT, PRIMARY KEY(book_id,book_pub_year)) WITH cosmosdb_provisioned_throughput=4000 , WITH default_time_to_live=630720000;"))
 ```
 
 #### <a name="validate-in-cqlsh"></a>在 cqlsh 中验证

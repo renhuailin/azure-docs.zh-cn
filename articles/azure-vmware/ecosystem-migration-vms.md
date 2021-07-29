@@ -3,12 +3,12 @@ title: 针对 Azure VMware 解决方案虚拟机的迁移解决方案
 description: 了解针对 Azure VMware 解决方案虚拟机的主流迁移解决方案。
 ms.topic: reference
 ms.date: 03/22/2021
-ms.openlocfilehash: d4497af48c2f1875de9e163d2d562d93df66da4b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3463b0536aa1096e20ab5c917be015c8ff8e30c9
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126212"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109634358"
 ---
 # <a name="migration-solutions-for-azure-vmware-solution-virtual-machines-vms"></a>针对 Azure VMware 解决方案虚拟机 (VM) 的迁移解决方案
 
@@ -18,5 +18,5 @@ ms.locfileid: "108126212"
 
 你不需要使用 VMware HCX 作为迁移工具，这意味着，你也可以将物理工作负荷迁移到 Azure VMware 解决方案中。 此外，迁移到 Azure VMware 解决方案环境不需要 ExpressRoute 连接（有时候该连接在源环境中不可用）。  如果决定将这些工作负荷托管在多个 Azure 区域中，则可以迁移到多个位置。
 
-你可在此处找到有关这些备份解决方案的详细信息：
+你可在此处找到有关这些迁移解决方案的详细信息：
 - [RiverMeadow](https://www.rivermeadow.com/migrating-to-vmware-on-azure)。

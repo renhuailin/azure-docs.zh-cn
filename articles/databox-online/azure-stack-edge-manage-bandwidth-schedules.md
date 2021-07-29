@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro 管理带宽计划 | Microsoft Docs
-description: 介绍如何使用 Azure 门户管理 Azure Stack Edge Pro 上的带宽计划。
+title: Azure Stack Edge Pro FPGA 带宽计划管理
+description: 介绍如何使用 Azure 门户管理 Azure Stack Edge Pro FPGA 上的带宽计划。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: e73a02c93807072e30c8ce2a1a7feb30e9d3c8c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a89b5359b48b1ad7d0e0a3c32f0e637ba5b2264
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91978962"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460799"
 ---
-# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro"></a>使用 Azure 门户管理 Azure Stack Edge Pro 上的带宽计划  
+# <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-fpga"></a>使用 Azure 门户管理 Azure Stack Edge Pro FPGA 上的带宽计划  
 
-本文介绍如何管理 Azure Stack Edge Pro 上的用户。 使用带宽计划可以根据多个日期时间计划配置网络带宽用量。 可将这些计划应用到在设备与云之间执行的上传和下载操作。
+本文介绍如何管理 Azure Stack Edge Pro FPGA 上的用户。 使用带宽计划可以根据多个日期时间计划配置网络带宽用量。 可将这些计划应用到在设备与云之间执行的上传和下载操作。
 
-可以通过 Azure 门户添加、修改或删除 Azure Stack Edge Pro 的带宽计划。
+可以通过 Azure 门户添加、修改或删除 Azure Stack Edge Pro FPGA 的带宽计划。
 
 在本文中，学习如何：
 
@@ -71,7 +71,7 @@ ms.locfileid: "91978962"
 
 ## <a name="delete-a-schedule"></a>删除计划
 
-执行以下步骤可以删除与 Azure Stack Edge Pro 设备关联的带宽计划。
+执行以下步骤可以删除与 Azure Stack Edge Pro FPGA 设备关联的带宽计划。
 
 1. 在 Azure 门户中，转到 Azure Stack Edge 资源，然后转到“带宽”。  
 

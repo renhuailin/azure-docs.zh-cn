@@ -3,12 +3,13 @@ title: 新建 Azure Application Insights 资源 | Microsoft Docs
 description: 为新的实时应用程序手动设置 Application Insights 监视。
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 459f61d9e13a2098403f3e78c7a529e49bf65e59
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 37f090f44099dc45d6c258e10b09d164277fcb47
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100927"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077169"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
@@ -32,7 +33,7 @@ Azure Application Insights 在 Microsoft Azure *资源* 中显示有关应用程
    | **名称**      | `Unique value` | 名称，用于标识要监视的应用。 |
    | **资源组**     | `myResourceGroup`      | 用于托管 App Insights 数据的新资源组或现有资源组的名称。 |
    | **区域** | `East US` | 选择离你近的位置或离托管应用的位置近的位置。 |
-   | **资源模式** | `Classic` 或 `Workspace-based` | 基于工作区的资源当前为公共预览版，用于将 Application Insights 遥测发送到常用 Log Analytics 工作区。 有关详细信息，请参阅[有关基于工作区的资源的文章](create-workspace-resource.md)。
+   | **资源模式** | `Classic` 或 `Workspace-based` | 基于工作区的资源可用于将 Application Insights 遥测发送到常用 Log Analytics 工作区。 有关详细信息，请参阅[有关基于工作区的资源的文章](create-workspace-resource.md)。
 
 > [!NOTE]
 > 虽然可以在不同资源组中使用相同的资源名称，但使用全局唯一名称会有好处。 如果打算[执行跨资源查询](../logs/cross-workspace-query.md#identifying-an-application)，这将很有用，因为它可以简化所需的语法。
@@ -49,7 +50,7 @@ Azure Application Insights 在 Microsoft Azure *资源* 中显示有关应用程
 检测密钥用于标识要与遥测数据关联的资源。 你需要复制检测密钥并将其添加到应用程序的代码中。
 
 > [!IMPORTANT]
-> 新的 Azure 区域要求使用连接字符串而不是检测密钥。 [连接字符串](./sdk-connection-string.md?tabs=net)用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
+> 建议使用[连接字符串](./sdk-connection-string.md)替代检测密钥。 新的 Azure 区域要求使用连接字符串而不是检测密钥。 连接字符串用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
 
 ## <a name="install-the-sdk-in-your-app"></a>在应用中安装 SDK
 
@@ -155,7 +156,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-有关此命令的完整 Azure CLI 文档，以及若要了解如何检索检测密钥，请参阅 [Azure CLI 文档](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create)。
+有关此命令的完整 Azure CLI 文档，以及若要了解如何检索检测密钥，请参阅 [Azure CLI 文档](/cli/azure/monitor/app-insights/component#az_monitor_app_insights_component_create)。
 
 ## <a name="next-steps"></a>后续步骤
 * [诊断搜索](./diagnostic-search.md)
@@ -168,4 +169,3 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 [diagnostic]: ./diagnostic-search.md
 [metrics]: ../essentials/metrics-charts.md
 [start]: ./app-insights-overview.md
-

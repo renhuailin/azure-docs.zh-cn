@@ -2,26 +2,26 @@
 title: Durable Functions 的绑定 - Azure
 description: 如何使用 Azure Functions 的 Durable Functions 扩展的触发器和绑定。
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 05/07/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 26c9da85b27ba46e9c48bdc7872a65d452a7acb1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a07748f996788825b21b5c23a117954085dadcbf
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607078"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656931"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 的绑定
 
-[Durable Functions](durable-functions-overview.md) 扩展引入了两个新的触发器绑定，用于控制业务流程协调程序和活动函数的执行。 它还引入了输出绑定，充当 Durable Functions 运行时的客户端。
+[Durable Functions](durable-functions-overview.md) 扩展引入了三个触发器绑定，用于控制业务流程协调程序、实体和活动函数的执行。 它还引入了输出绑定，充当 Durable Functions 运行时的客户端。
 
 ## <a name="orchestration-trigger"></a>业务流程触发器
 
-业务流程触发器可用于创作[持久业务流程协调程序函数](durable-functions-types-features-overview.md#orchestrator-functions)。 此触发器支持启动新的业务流程协调程序函数实例和恢复“等待”任务的现有业务流程协调程序函数实例。
+业务流程触发器可用于创作[持久业务流程协调程序函数](durable-functions-types-features-overview.md#orchestrator-functions)。 安排新业务流程实例且现有业务流程实例接收事件时，便会执行此触发器。 可触发业务流程协调程序函数的事件示例包括持久计时器到期、活动函数响应，以及由外部客户端引发的事件。
 
-使用适用于 Azure Functions 的 Visual Studio 工具时，使用 [OrchestrationTriggerAttribute](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.orchestrationtriggerattribute) .NET 属性配置业务流程触发器。
+在 .NET 中创作函数时，使用 [OrchestrationTriggerAttribute](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.orchestrationtriggerattribute) .NET 属性配置业务流程触发器。
 
-使用脚本语言（例如 JavaScript 或 C# scripting）编写业务流程协调程序函数时，由 *function.json* 文件中 `bindings` 数组的以下 JSON 对象定义业务流程协调程序触发器：
+使用脚本语言（例如 JavaScript、Python 或 PowerShell）编写业务流程协调程序函数时，由 function.json 文件中 `bindings` 数组的以下 JSON 对象定义业务流程触发器：
 
 ```json
 {
@@ -34,7 +34,7 @@ ms.locfileid: "105607078"
 
 * `orchestration` 是客户端想要启动此业务流程协调程序函数的新实例时必须使用的业务流程名称。 此属性是可选的。 如果未指定，则使用该函数的名称。
 
-本质上，此触发器绑定轮询函数应用的默认存储帐户中的一系列队列。 这些队列是扩展的内部实现详细信息，因此未在绑定属性中显式配置这些队列。
+在内部，此触发器绑定轮询已配置的持久存储以查找新的业务流程事件，例如业务流程启动事件、持久计时器到期事件、活动函数响应事件，以及其他函数引发的外部事件。
 
 ### <a name="trigger-behavior"></a>触发器行为
 
@@ -46,55 +46,70 @@ ms.locfileid: "105607078"
 * 返回值 - 返回值序列化为 JSON，并持久保存到 Azure 表存储中的业务流程历史记录表  。 业务流程客户端绑定可以查询这些值，后文会对此进行介绍。
 
 > [!WARNING]
-> 业务流程协调程序函数不得使用业务流程触发器绑定之外的任何输入或输出绑定。 这样做有可能导致 Durable Task 扩展出现问题，因为这些绑定可能不遵从单线程处理和 I/O 规则。 若要使用其他绑定，请将它们添加到从业务流程协调程序函数调用的活动函数。
+> 业务流程协调程序函数不得使用业务流程触发器绑定之外的任何输入或输出绑定。 这样做有可能导致 Durable Task 扩展出现问题，因为这些绑定可能不遵从单线程处理和 I/O 规则。 若要使用其他绑定，请将它们添加到从业务流程协调程序函数调用的活动函数。 有关业务流程协调程序函数的代码限制的详细信息，请参阅[业务流程协调程序函数代码约束](durable-functions-code-constraints.md)文档。
 
 > [!WARNING]
-> 绝不应当将 JavaScript 业务流程协调程序函数声明为 `async`。
+> 绝不应当将 JavaScript 和 Python 业务流程协调程序函数声明为 `async`。
 
-### <a name="trigger-usage-net"></a>触发器用法 (.NET)
+### <a name="trigger-usage"></a>触发器使用情况
 
 业务流程触发器绑定同时支持输入和输出。 下面是有关输入和输出处理的一些须知事项：
 
-* **输入** - .NET 业务流程函数仅支持以 `DurableOrchestrationContext` 作为参数类型。 不支持在函数签名中直接反序列化输入。 代码必须使用 `GetInput<T>` (.NET) 或 `getInput` (JavaScript) 方法提取业务流程协调程序函数输入。 这些输入必须是 JSON 可序列化类型。
-* 输出 - 业务流程触发器支持输出值以及输入  。 函数的返回值用于分配输出值，且必须是 JSON 可序列化的。 如果 .NET 函数返回 `Task` 或 `void`，则会将 `null` 值保存为输出。
+* **输入** - 可以使用通过上下文输入对象获取的输入来调用业务流程触发器。 所有输入必须是 JSON 可序列化类型。
+* 输出 - 业务流程触发器支持输出值以及输入  。 函数的返回值用于分配输出值，且必须是 JSON 可序列化的。
 
 ### <a name="trigger-sample"></a>触发器示例
 
 以下示例代码演示了最简单的“Hello World”业务流程协调程序函数的形式：
 
-#### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HelloWorld")]
 public static string Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     string name = context.GetInput<string>();
+    // ... do some work ...
     return $"Hello {name}!";
 }
 ```
+
 > [!NOTE]
 > 前面的代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-#### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
     const name = context.df.getInput();
+    // ... do some work ...
     return `Hello ${name}!`;
 });
 ```
 
 > [!NOTE]
-> JavaScript 中的 `context` 对象并非表示 DurableOrchestrationContext，而是表示[整个函数上下文](../functions-reference-node.md#context-object)。 可以通过 `context` 对象的 `df` 属性访问业务流程方法。
+> 生成器函数退出时，`durable-functions` 库负责调用 `context.done` 方法。
 
-> [!NOTE]
-> JavaScript 业务流程协调程序应使用 `return`。 `durable-functions` 库将负责调用 `context.done` 方法。
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    input_ = context.get_input()
+    # Do some work
+    return f"Hello {name}!"
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+---
 
 大多数业务流程协调程序函数会调用活动函数，因此下面的“Hello World”示例演示了如何调用活动函数：
 
-#### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HelloWorld")]
@@ -110,7 +125,7 @@ public static async Task<string> Run(
 > [!NOTE]
 > 前面的代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-#### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -122,13 +137,28 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    input_ = context.get_input()
+    result = yield context.call_activity('SayHello', name)
+    return result
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
+---
+
 ## <a name="activity-trigger"></a>活动触发器
 
 使用活动触发器可以创作业务流程协调程序函数调用的函数（称为[活动函数](durable-functions-types-features-overview.md#activity-functions)）。
 
-如果使用 Visual Studio，则使用 `ActivityTriggerAttribute` .NET 属性配置活动触发器。
+如果在 .NET 中创作函数，活动触发器使用 [ActvityTriggerAttribute](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.activitytriggerattribute) .NET 属性进行配置。
 
-如果使用 VS Code 或 Azure 门户进行开发，则由 function.json  文件中 `bindings` 数组的以下 JSON 对象定义活动触发器：
+如果使用的是 JavaScript、Python 或 PowerShell，则由 function.json 文件中 `bindings` 数组的以下 JSON 对象定义活动触发器：
 
 ```json
 {
@@ -141,33 +171,30 @@ module.exports = df.orchestrator(function*(context) {
 
 * `activity` 是活动的名称。 此值是业务流程协调程序函数用来调用此活动函数的名称。 此属性是可选的。 如果未指定，则使用该函数的名称。
 
-本质上，此触发器绑定轮询函数应用的默认存储帐户中的一个轮询队列。 这个队列是扩展的内部实现详细信息，因此未在绑定属性中显式配置此队列。
+在内部，此触发器绑定轮询已配置的持久存储以查找新的活动执行事件。
 
 ### <a name="trigger-behavior"></a>触发器行为
 
 以下是有关活动触发器的一些注意事项：
 
 * 线程处理 - 与业务流程触发器不同，活动触发器没有关于线程处理或 I/O 的任何限制  。 可以将它们视为常规功能。
-* 有害消息处理 - 活动触发器中不支持有害消息  。
+* **有害消息处理** - 活动触发器不支持有害消息。
 * 消息可见性 - 活动触发器消息会取消排队并在可配置的持续时间内保持可见  。 只要函数应用正常运行，这些消息的可见性就会自动更新。
-* 返回值 - 返回值序列化为 JSON，并持久保存到 Azure 表存储中的业务流程历史记录表  。
+* **返回值** - 返回值序列化为 JSON，并持久保存到已配置的持久存储。
 
-> [!WARNING]
-> 活动函数的存储后端属于实现详细信息，用户代码不得直接与这些存储实体进行交互。
-
-### <a name="trigger-usage-net"></a>触发器用法 (.NET)
+### <a name="trigger-usage"></a>触发器使用情况
 
 类似于业务流程触发器，活动触发器绑定也同时支持输入和输出。 下面是有关输入和输出处理的一些须知事项：
 
-* **输入** - .NET 活动函数以本机方式使用 `DurableActivityContext` 作为参数类型。 或者，可以使用任何 JSON 可序列化的参数类型声明活动函数。 如果使用 `DurableActivityContext`，可以调用 `GetInput<T>` 来提取和反序列化活动函数输入。
-* **输出** - 活动函数支持输出值以及输入。 函数的返回值用于分配输出值，且必须是 JSON 可序列化的。 如果 .NET 函数返回 `Task` 或 `void`，则会将 `null` 值保存为输出。
-* **元数据** - .NET 活动函数可以绑定到 `string instanceId` 参数，以获取父业务流程的实例 ID。
+* **输入** - 可以使用来自业务流程协调程序函数的输入调用活动触发器。 所有输入必须是 JSON 可序列化类型。
+* **输出** - 活动函数支持输出值以及输入。 函数的返回值用于分配输出值，且必须是 JSON 可序列化的。
+* **元数据** - .NET 活动函数可以绑定到 `string instanceId` 参数，以获取调用业务流程的实例 ID。
 
 ### <a name="trigger-sample"></a>触发器示例
 
-以下示例代码演示了简单的“Hello World”活动函数的形式：
+以下示例代码演示了简单的 `SayHello` 活动函数可能呈现的形式：
 
-#### <a name="c"></a>C#
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("SayHello")]
@@ -178,10 +205,7 @@ public static string SayHello([ActivityTrigger] IDurableActivityContext helloCon
 }
 ```
 
-> [!NOTE]
-> 前面的代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableActivityContext` 而不是 `IDurableActivityContext`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
-
-.NET `ActivityTriggerAttribute` 绑定的默认参数类型是 `IDurableActivityContext`。 但是，.NET 活动触发器还支持直接绑定到 JSON 可序列化类型（包括基元类型），因此相同的函数可以简化为如下所示：
+.NET `ActivityTriggerAttribute` 绑定的默认参数类型是 [IDurableActivityContext](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableactivitycontext)（对于 Durable Functions v1，则是 [DurableActivityContext](/dotnet/api/microsoft.azure.webjobs.durableactivitycontext?view=azure-dotnet-legacy&preserve-view=true)）。 但是，.NET 活动触发器还支持直接绑定到 JSON 可序列化类型（包括基元类型），因此相同的函数可以简化为如下所示：
 
 ```csharp
 [FunctionName("SayHello")]
@@ -191,7 +215,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 module.exports = async function(context) {
@@ -207,6 +231,14 @@ module.exports = async function(context, name) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+def main(name: str) -> str:
+    return f"Hello {name}!"
+```
+
+---
 
 ### <a name="using-input-and-output-bindings"></a>使用输入和输出绑定
 
@@ -239,7 +271,7 @@ module.exports = async function (context) {
 
 ## <a name="orchestration-client"></a>业务流程客户端
 
-通过业务流程客户端绑定，可以编写与业务流程协调程序函数进行交互的函数。 这些函数有时称为[客户端函数](durable-functions-types-features-overview.md#client-functions)。 例如，可以通过以下方式对业务流程实例进行操作：
+通过业务流程客户端绑定，可以编写与业务流程协调程序函数进行交互的函数。 这些函数通常称为[客户端函数](durable-functions-types-features-overview.md#client-functions)。 例如，可以通过以下方式对业务流程实例进行操作：
 
 * 启动它们。
 * 查询它们的状态。
@@ -247,9 +279,9 @@ module.exports = async function (context) {
 * 当它们正在运行时，向它们发送事件。
 * 清除实例历史记录。
 
-如果使用 Visual Studio，可以使用 Durable Functions 1.0 的 `OrchestrationClientAttribute` .NET 属性绑定到业务流程客户端。 从 Durable Functions 2.0 开始，可以使用 `DurableClientAttribute` .NET 属性绑定到业务流程客户端。
+如果使用的是 .NET，则可以使用 [DurableClientAttribute](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.durableclientattribute) 属性（对于 Durable Functions v1.x，则是 [OrchestrationClientAttribute](/dotnet/api/microsoft.azure.webjobs.orchestrationclientattribute?view=azure-dotnet-legacy&preserve-view=true)）绑定到业务流程客户端。
 
-如果使用脚本语言（例如， *.csx* 或 *.js* 文件）进行开发，由 *function.json* 的 `bindings` 数组中的以下 JSON 对象定义业务流程触发器：
+如果使用的是 JavaScript、Python 或 PowerShell 等脚本语言，则由 function.json 文件中 `bindings` 数组的以下 JSON 对象定义持久客户端触发器：
 
 ```json
 {
@@ -269,23 +301,11 @@ module.exports = async function (context) {
 
 ### <a name="client-usage"></a>客户端使用情况
 
-在 .NET 函数中，通常会绑定到 `IDurableOrchestrationClient`，后者可提供对 Durable Functions 支持的所有业务流程客户端 API 的完全访问权限。 在较旧的 Durable Functions 2.x 版本中，应改为绑定到 `DurableOrchestrationClient` 类。 在 JavaScript 中，相同的 API 是由从 `getClient` 返回的对象公开的。 客户端对象上的 API 包括：
-
-* `StartNewAsync`
-* `GetStatusAsync`
-* `TerminateAsync`
-* `RaiseEventAsync`
-* `PurgeInstanceHistoryAsync`
-* `CreateCheckStatusResponse`
-* `CreateHttpManagementPayload`
-
-另外，还可以将 .NET 函数绑定到 `IAsyncCollector<T>`，其中 `T` 是 `StartOrchestrationArgs` 或 `JObject`。
-
-有关这些操作的详细信息，请参阅 `IDurableOrchestrationClient` API 文档。
-
-### <a name="client-sample-visual-studio-development"></a>客户端示例（Visual Studio 开发）
+在 .NET 函数中，你通常会绑定到 [IDurableClient](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableclient)（对于 Durable Functions v1.x，则是 [DurableOrchestrationClient](/dotnet/api/microsoft.azure.webjobs.durableorchestrationclient?view=azure-dotnet-legacy&preserve-view=true)），它可提供对 Durable Functions 支持的所有业务流程客户端 API 的完全访问权限。 在其他语言中，必须使用特定于语言的 SDK 才能访问客户端对象。
 
 下面的示例是启动“HelloWorld”业务流程的队列触发型函数。
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueueStart")]
@@ -301,10 +321,9 @@ public static Task Run(
 > [!NOTE]
 > 前面的 C# 代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `OrchestrationClient` 属性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
 
-### <a name="client-sample-not-visual-studio"></a>客户端示例（非 Visual Studio）
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-如果未使用 Visual Studio 进行开发，则可以创建以下 *function.json* 文件。 此示例演示如何配置使用持久业务流程客户端绑定的队列触发型函数：
-
+**function.json**
 ```json
 {
   "bindings": [
@@ -323,33 +342,7 @@ public static Task Run(
 }
 ```
 
-> [!NOTE]
-> 前面的 JSON 适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `orchestrationClient` 而不是 `durableClient` 作为触发器类型。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
-
-下面是启动新业务流程协调程序函数实例的语言特定示例。
-
-#### <a name="c-script-sample"></a>C# 脚本示例
-
-下面的示例演示如何使用持久业务流程客户端绑定从队列触发的 C# 函数启动新函数实例：
-
-```csharp
-#r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
-
-using Microsoft.Azure.WebJobs.Extensions.DurableTask;
-
-public static Task Run(string input, IDurableOrchestrationClient starter)
-{
-    return starter.StartNewAsync("HelloWorld", input);
-}
-```
-
-> [!NOTE]
-> 前面的代码适用于 Durable Functions 2.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationClient` 参数类型而不是 `IDurableOrchestrationClient`。 有关版本之间差异的详细信息，请参阅 [Durable Functions 版本](durable-functions-versions.md)一文。
-
-#### <a name="javascript-sample"></a>JavaScript 示例
-
-下面的示例演示如何使用持久业务流程客户端绑定从 JavaScript 函数启动新函数实例：
-
+**index.js**
 ```javascript
 const df = require("durable-functions");
 
@@ -359,18 +352,51 @@ module.exports = async function (context) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+**function.json**
+```json
+{
+  "bindings": [
+    {
+      "name": "input",
+      "type": "queueTrigger",
+      "queueName": "durable-function-trigger",
+      "direction": "in"
+    },
+    {
+      "name": "starter",
+      "type": "durableClient",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+__init__.py
+```python
+import json
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(msg: func.QueueMessage, starter: str) -> None:
+    client = df.DurableOrchestrationClient(starter)
+    payload = msg.get_body().decode('utf-8')
+    instance_id = await client.start_new("HelloWorld", client_input=payload)
+```
+
+---
+
 有关启动实例的更多详细信息，请参阅[实例管理](durable-functions-instance-management.md)。
 
 ## <a name="entity-trigger"></a>实体触发器
 
 使用实体触发器可以创作[实体函数](durable-functions-entities.md)。 此触发器支持处理特定实体实例的事件。
 
-使用适用于 Azure Functions 的 Visual Studio 工具时，需使用 `EntityTriggerAttribute` .NET 属性配置实体触发器。
-
 > [!NOTE]
 > 从 Durable Functions 2.x 开始提供实体触发器。
 
-本质上，此触发器绑定轮询函数应用的默认存储帐户中的一系列队列。 这些队列是扩展的内部实现详细信息，因此未在绑定属性中显式配置这些队列。
+在内部，此触发器绑定轮询已配置的持久存储以查找需执行的新实体操作。
 
 ### <a name="trigger-behavior"></a>触发器行为
 
@@ -383,135 +409,18 @@ module.exports = async function (context) {
 
 在执行实体期间对实体所做的任何状态更改将在执行完成后自动保留。
 
-### <a name="trigger-usage-net"></a>触发器用法 (.NET)
-
-每个实体函数具有参数类型 `IDurableEntityContext`，其中包含以下成员：
-
-* **EntityName**：当前正在执行的实体的名称。
-* **EntityKey**：当前正在执行的实体的键。
-* **EntityId**：当前正在执行的实体的 ID。
-* **OperationName**：当前操作的名称。
-* **HasState**：实体是否存在，即，是否存在某种状态。 
-* **GetState\<TState>()** ：获取实体的当前状态。 如果它不存在，则会创建它并将它初始化为 `default<TState>`。 `TState` 参数必须是基元或 JSON 可序列化类型。 
-* **GetState\<TState>(initfunction)** ：获取实体的当前状态。 如果它不存在，则会通过调用提供的 `initfunction` 参数来创建它。 `TState` 参数必须是基元或 JSON 可序列化类型。 
-* **SetState(arg)** ：创建或更新实体的状态。 `arg` 参数必须是 JSON 可序列化对象或基元。
-* **DeleteState()** ：删除实体的状态。 
-* **GetInput\<TInput>()** ：获取当前操作的输入。 `TInput` 类型参数必须是基元或 JSON 可序列化类型。
-* **Return(arg)** ：将值返回到调用该操作的业务流程。 `arg` 参数必须是基元或 JSON 可序列化对象。
-* **SignalEntity(EntityId, scheduledTimeUtc, operation, input)** ：向实体发送单向消息。 `operation` 参数必须是非 NULL 字符串，可选 `scheduledTimeUtc` 必须是调用操作的 UTC 日期时间，`input` 参数必须是基元或 JSON 可序列化对象。
-* **CreateNewOrchestration(orchestratorFunctionName, input)** ：启动新的业务流程。 `input` 参数必须是基元或 JSON 可序列化对象。
-
-传递给实体函数的 `IDurableEntityContext` 对象可以使用 `Entity.Current` 异步本地属性进行访问。 在使用基于类的编程模型时，此方法很方便。
-
-### <a name="trigger-sample-c-function-based-syntax"></a>触发器示例（基于 C# 函数的语法）
-
-以下代码是作为持久函数实现的简单 *Counter* 实体示例。 此函数定义三个操作：`add`、`reset` 和 `get`，每个操作针对整数状态运行。
-
-```csharp
-[FunctionName("Counter")]
-public static void Counter([EntityTrigger] IDurableEntityContext ctx)
-{
-    switch (ctx.OperationName.ToLowerInvariant())
-    {
-        case "add":
-            ctx.SetState(ctx.GetState<int>() + ctx.GetInput<int>());
-            break;
-        case "reset":
-            ctx.SetState(0);
-            break;
-        case "get":
-            ctx.Return(ctx.GetState<int>()));
-            break;
-    }
-}
-```
-
-有关基于函数的语法及其用法的详细信息，请参阅[基于函数的语法](durable-functions-dotnet-entities.md#function-based-syntax)。
-
-### <a name="trigger-sample-c-class-based-syntax"></a>触发器示例（基于 C# 类的语法）
-
-以下示例是使用类和方法的 `Counter` 实体的等效实现。
-
-```csharp
-[JsonObject(MemberSerialization.OptIn)]
-public class Counter
-{
-    [JsonProperty("value")]
-    public int CurrentValue { get; set; }
-
-    public void Add(int amount) => this.CurrentValue += amount;
-
-    public void Reset() => this.CurrentValue = 0;
-
-    public int Get() => this.CurrentValue;
-
-    [FunctionName(nameof(Counter))]
-    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
-        => ctx.DispatchAsync<Counter>();
-}
-```
-
-此实体的状态是 `Counter` 类型的对象，该对象包含存储计数器当前值的字段。 为了将此对象持久保存在存储中，[Json.NET](https://www.newtonsoft.com/json) 库会将其序列化和反序列化。 
-
-有关基于类的语法及其用法的详细信息，请参阅[定义实体类](durable-functions-dotnet-entities.md#defining-entity-classes)。
-
-> [!NOTE]
-> 使用实体类时，必须将具有 `[FunctionName]` 属性的函数入口点方法声明为 `static`。  非静态入口点方法可能会导致多次进行对象初始化，并可能导致其他不确定的行为。
-
-实体类使用特殊的机制来与绑定和 .NET 依赖项注入交互。 有关详细信息，请参阅[实体构造](durable-functions-dotnet-entities.md#entity-construction)。
-
-### <a name="trigger-sample-javascript"></a>触发器示例 (JavaScript)
-
-以下代码是作为持久函数（以 JavaScript 编写）实现的简单 *Counter* 实体示例。 此函数定义三个操作：`add`、`reset` 和 `get`，每个操作针对整数状态运行。
-
-**function.json**
-```json
-{
-  "bindings": [
-    {
-      "name": "context",
-      "type": "entityTrigger",
-      "direction": "in"
-    }
-  ],
-  "disabled": false
-}
-```
-
-**index.js**
-```javascript
-const df = require("durable-functions");
-
-module.exports = df.entity(function(context) {
-    const currentValue = context.df.getState(() => 0);
-    switch (context.df.operationName) {
-        case "add":
-            const amount = context.df.getInput();
-            context.df.setState(currentValue + amount);
-            break;
-        case "reset":
-            context.df.setState(0);
-            break;
-        case "get":
-            context.df.return(currentValue);
-            break;
-    }
-});
-```
-
-> [!NOTE]
-> 从 `durable-functions` npm 包版本 1.3.0 开始，JavaScript 中提供了持久实体  。
+有关定义实体触发器并与之交互的更多信息和示例，请参阅[持久实体](durable-functions-entities.md)文档。
 
 ## <a name="entity-client"></a>实体客户端
 
 使用实体客户端绑定可以异步触发[实体函数](#entity-trigger)。 这些函数有时称为[客户端函数](durable-functions-types-features-overview.md#client-functions)。
 
-如果使用 Visual Studio，则可以使用 `DurableClientAttribute` .NET 属性绑定到实体客户端。
+如果使用 .NET 预编译函数，可以使用 [DurableClientAttribute](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.durableclientattribute) .NET 属性绑定到实体客户端。
 
 > [!NOTE]
 > 还可以使用 `[DurableClientAttribute]` 绑定到[业务流程客户端](#orchestration-client)。
 
-如果使用脚本语言（例如， *.csx* 或 *.js* 文件）进行开发，由 *function.json* 的 `bindings` 数组中的以下 JSON 对象定义实体触发器：
+如果使用的是脚本语言（例如 C# 脚本、JavaScript 或 Python）进行开发，则由 function.json 的 `bindings` 数组中的以下 JSON 对象定义实体触发器：
 
 ```json
 {
@@ -529,112 +438,7 @@ module.exports = df.entity(function(context) {
 > [!NOTE]
 > 在大多数情况下，建议忽略可选属性，并依赖默认行为。
 
-### <a name="entity-client-usage"></a>实体客户端的用法
-
-在 .NET 函数中，通常会绑定到 `IDurableEntityClient`，后者可提供对持久实体支持的所有客户端 API 的完全访问权限。 也可以绑定到 `IDurableOrchestrationClient` 接口，该接口提供对实体和业务流程的客户端 API 的访问。 客户端对象上的 API 包括：
-
-* **ReadEntityStateAsync\<T>** ：读取实体的状态。 它会返回响应，指出目标实体是否存在，以及在存在的情况下，其状态是什么。
-* **SignalEntityAsync**：将单向消息发送到实体，并等待消息排队。
-* **ListEntitiesAsync**：查询多个实体的状态。 可以按“名称”  和“上次操作时间”  来查询实体。
-
-不需在发送信号之前创建目标实体 - 实体状态可以在处理信号的实体函数内部创建。
-
-> [!NOTE]
-> 必须知道，从客户端发送的“信号”会直接排队，稍后以异步方式对其进行处理。 具体说来，`SignalEntityAsync` 通常会在实体开始操作之前返回，因此不可能获取返回值或观察异常。 如果需要更强的保证（例如，在使用工作流的情况下），则应使用 *业务流程协调程序函数*，此类函数会等待实体操作完成，可以处理返回值并观察异常。
-
-### <a name="example-client-signals-entity-directly---c"></a>示例：客户端直接向实体发出信号 - C#
-
-下面是一个调用“计数器”实体的示例队列触发的函数。
-
-```csharp
-[FunctionName("AddFromQueue")]
-public static Task Run(
-    [QueueTrigger("durable-function-trigger")] string input,
-    [DurableClient] IDurableEntityClient client)
-{
-    // Entity operation input comes from the queue message content.
-    var entityId = new EntityId(nameof(Counter), "myCounter");
-    int amount = int.Parse(input);
-    return client.SignalEntityAsync(entityId, "Add", amount);
-}
-```
-
-### <a name="example-client-signals-entity-via-interface---c"></a>示例：客户端同接口向实体发出信号 - C#
-
-我们建议尽量[通过接口访问实体](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces)，因为这种方法提供更多的类型检查。 例如，假设前面所述的 `Counter` 实体实现 `ICounter` 接口，定义如下：
-
-```csharp
-public interface ICounter
-{
-    void Add(int amount);
-    void Reset();
-    Task<int> Get();
-}
-
-public class Counter : ICounter
-{
-    // ...
-}
-```
-
-然后，客户端代码可以使用 `SignalEntityAsync<ICounter>`，以生成类型安全的代理：
-
-```csharp
-[FunctionName("UserDeleteAvailable")]
-public static async Task AddValueClient(
-    [QueueTrigger("my-queue")] string message,
-    [DurableClient] IDurableEntityClient client)
-{
-    var target = new EntityId(nameof(Counter), "myCounter");
-    int amount = int.Parse(message);
-    await client.SignalEntityAsync<ICounter>(target, proxy => proxy.Add(amount));
-}
-```
-
-`proxy` 参数是动态生成的 `ICounter` 实例，它在内部将 `Add` 调用转换为等效的（非类型化）`SignalEntityAsync` 调用。
-
-> [!NOTE]
-> `SignalEntityAsync` API 表示单向操作。 如果实体接口返回 `Task<T>`，则 `T` 参数的值始终为 null 或 `default`。
-
-具体说来，向 `Get` 操作发出信号没有意义，因为这不会返回任何值。 客户端可以改用 `ReadStateAsync` 来直接访问计数器状态，或者可以启动一个调用 `Get` 操作的业务流程协调程序函数。
-
-### <a name="example-client-signals-entity---javascript"></a>示例：客户端向实体发出信号 - JavaScript
-
-下面是一个在 JavaScript 中指示“计数器”实体的队列触发函数示例。
-
-**function.json**
-```json
-{
-    "bindings": [
-      {
-        "name": "input",
-        "type": "queueTrigger",
-        "queueName": "durable-entity-trigger",
-        "direction": "in",
-      },
-      {
-        "name": "starter",
-        "type": "durableClient",
-        "direction": "in"
-      }
-    ],
-    "disabled": false
-  }
-```
-
-**index.js**
-```javascript
-const df = require("durable-functions");
-
-module.exports = async function (context) {
-    const client = df.getClient(context);
-    const entityId = new df.EntityId("Counter", "myCounter");
-    await client.signalEntity(entityId, "add", 1);
-};
-```
-
-> [!NOTE]
-> 从 `durable-functions` npm 包版本 1.3.0 开始，JavaScript 中提供了持久实体  。
+有关以客户端形式与实体交互的更多信息和示例，请参阅[持久实体](durable-functions-entities.md#access-entities)文档。
 
 <a name="host-json"></a>
 ## <a name="hostjson-settings"></a>host.json 设置

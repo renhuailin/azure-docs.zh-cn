@@ -1,19 +1,19 @@
 ---
-title: Azure Monitor 资源组见解 |Microsoft Docs
-description: 通过 Azure Monitor 了解资源组级别的分布式应用程序和服务的运行状况和性能
+title: Azure Monitor 资源组见解 | Microsoft Docs
+description: 通过 Azure Monitor 的资源组见解功能，了解资源组级别的分布式应用程序和服务的运行状况和性能。
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: bfe197befc781548dc41ff389f2d9558af7a8aae
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 466d63f8615d8115c7dcbfacdca2d004cf19621e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567396"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110073803"
 ---
-# <a name="monitor-resource-groups-with-azure-monitor-preview"></a>使用 Azure Monitor（预览版）监视资源组
+# <a name="monitor-azure-monitor-resource-group-insights-preview"></a>监视 Azure Monitor 资源组见解（预览版）
 
 现代应用程序通常很复杂且分布广泛，许多独立部件协同工作来提供服务。 Azure Monitor 考虑到这种复杂性，为资源组提供监视见解。 因此，可以轻松分类和诊断各资源出现的任何问题，同时提供有关资源组和应用程序的运行状况和性能的整体上下文&mdash;&mdash;。
 
@@ -43,7 +43,7 @@ ms.locfileid: "105567396"
 
 资源组见解页提供一些可帮助诊断问题的其他工具
 
-   | 工具 | 说明 |
+   | 工具 | 描述 |
    | ---------------- |:-----|
    | [**警报**](../alerts/alerts-overview.md)      |  查看、创建和管理警报。 |
    | [**指标**](../data-platform.md) | 可视化并浏览基于指标的数据。    |
@@ -108,10 +108,10 @@ ms.locfileid: "105567396"
 
 ### <a name="enabling-access-to-alerts"></a>启用对警报的访问
 
-若要在适用于资源组的 Azure Monitor 中查看警报，需要由此订阅中具有“所有者”或“参与者”角色的某人为订阅中的任何资源组打开适用于资源组的 Azure Monitor。 这会使得具有读取访问权限的任何人都能够在适用于资源组的 Azure Monitor 中查看针对该订阅中所有资源组的警报。 如果你拥有“所有者”或“参与者”角色，请在几分钟后刷新此页面。
+若要在资源组见解中查看警报，需要由此订阅中具有“所有者”或“参与者”角色的某人为订阅中的任何资源组打开资源组见解。 这会使得具有读取访问权限的任何人都能够在资源组见解中查看订阅中所有资源组的警报。 如果你拥有“所有者”或“参与者”角色，请在几分钟后刷新此页面。
 
-适用于资源组的 Azure Monitor 依赖于 Azure Monitor 警报管理系统来检索警报状态。 默认情况下没有为每个资源组和订阅配置“警报管理”，它只能由具有“所有者”或“参与者”角色的某人来启用。 可以通过以下任一方式启用它：
-* 为订阅中的任何资源组打开适用于资源组的 Azure Monitor。
+资源组见解依赖 Azure Monitor 警报管理系统来检索警报状态。 默认情况下没有为每个资源组和订阅配置“警报管理”，它只能由具有“所有者”或“参与者”角色的某人来启用。 可以通过以下任一方式启用它：
+* 为订阅中的任何资源组打开资源组见解。
 * 或者，转到订阅，单击“资源提供程序”，然后单击“注册 Alerts.Management”。
 
 ## <a name="next-steps"></a>后续步骤

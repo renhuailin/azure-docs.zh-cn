@@ -6,17 +6,20 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: anithaa
-ms.openlocfilehash: fd0b3ada5fec283562cee9727e3f805a7d34c532
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 09b4e6ebe14f5650be5bc92302acc51b1c6e99a5
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479043"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985753"
 ---
 # <a name="configure-azure-private-link-for-azure-cosmos-db-analytical-store"></a>为 Azure Cosmos DB 分析存储配置 Azure 专用链接
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 在文本中，你将了解如何为 Azure Cosmos DB 分析存储设置托管的专用终结点。 如果要使用事务存储，请参阅[事务存储的专用终结点](how-to-configure-private-endpoints.md)一文。 使用[托管的专用终结点](../synapse-analytics/security/synapse-workspace-managed-private-endpoints.md)，你可以限制 Azure Cosmos DB 分析存储对与 Azure Synapse 工作区关联的托管虚拟网络的网络访问权限。 托管的专用终结点建立与分析存储的专用链接。
+
+> [!NOTE]
+> 如果你正在对 Cosmos DB 使用专用 DNS 区域，并且希望为分析存储子资源创建一个 Synapse 托管的专用终结点，那么你必须先为链接到 Cosmos DB 的虚拟网络的分析存储 (`privatelink.analytics.cosmos.azure.com`) 创建一个 DNS 区域。
 
 ## <a name="enable-a-private-endpoint-for-the-analytical-store"></a>启用分析存储的专用终结点
 

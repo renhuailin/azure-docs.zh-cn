@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6be76878a9a07c5f4a1e2a9348bb7b09cb1b10eb
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: efe404511b725680697c5f6601b8cb13be13910b
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567581"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109808961"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>使用专用链接保护链接服务
 
@@ -31,7 +31,7 @@ ms.locfileid: "107567581"
 
 在 Azure Synapse Analytics 中，链接服务是定义到其他服务的连接信息的一个位置。 在本部分中，你将添加 Azure Synapse Analytics 和 Azure Data Lake Gen 2 作为链接服务。
 
-1. 打开 Azure Synapse Studio，转到“管理”选项卡。
+1. 打开 Synapse Studio，转到“管理”选项卡。
 1. 在“外部连接”下，选择“链接服务”。
 1. 若要添加链接服务，请选择“新建”。
 1. 从列表中选择“Azure Data Lake Storage Gen2”磁贴，然后选择“继续”。

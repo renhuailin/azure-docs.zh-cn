@@ -9,18 +9,18 @@ ms.date: 11/18/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 5efdfcea7b6d727038bad124368179b9395bfafd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dbdfb7e13249de21b890c6f4476cb82a5c91a23e
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97093271"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809897"
 ---
 # <a name="azure-synapse-analytics-notebooks"></a>Azure Synapse Analytics 笔记本
 
 Synapse Studio 笔记本是一个 Web 界面，用于创建包含实时代码、可视化效果和叙述性文本的文件。 笔记本是验证想法并使用快速试验从数据中获取见解的好地方。 
 
-借助 Azure Synapse Studio 笔记本，可以：
+借助 Synapse Studio 笔记本，可以：
 
 * 无需设置即可开始工作。
 * 利用内置企业安全功能确保数据安全。

@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: c70ecc4fc5469d728bc12d47024585ccf00ff98e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bed5c6b1b1cf21de0105e0eeb2096d359177c115
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102098700"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814993"
 ---
 # <a name="manage-scala-and-java-packages-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中管理用于 Apache Spark 的 Scala 和 Java 包
 
@@ -45,7 +45,7 @@ Azure Synapse Analytics 中的 Apache Spark 包含一整套用于常见数据工
 ## <a name="pool-libraries"></a>池库
 在确定要用于 Spark 应用程序的 Scala 和 Java 包后，就可将它们安装到 Spark 池中。 池级别的库可用于在池中运行的所有笔记本和作业。
 
-可以导航到 Azure Synapse Studio 或 Azure 门户来更新 Spark 池库。 在此，可选择要安装的工作区库。 
+可以导航到 Synapse Studio 或 Azure 门户来更新 Spark 池库。 在此，可选择要安装的工作区库。 
 
 保存更改后，Spark 作业将运行安装并缓存生成的环境，供以后再次使用。 作业完成后，新的 Spark 作业或笔记本会话将使用更新的池库。 
 
@@ -53,8 +53,8 @@ Azure Synapse Analytics 中的 Apache Spark 包含一整套用于常见数据工
 > - 如果要安装的包很大，或者需要很长时间才能完成安装，则会影响 Spark 实例的启动时间。
 > - 不支持更改 PySpark、Python、Scala/Java、.NET 或 Spark 版本。
 
-#### <a name="manage-packages-from-azure-synapse-studio-or-azure-portal"></a>通过 Azure Synapse Studio 或 Azure 门户管理包
-通过 Azure Synapse Studio 或 Azure 门户可以管理 Spark 池库。 
+#### <a name="manage-packages-from-synapse-studio-or-azure-portal"></a>通过 Synapse Studio 或 Azure 门户管理包
+通过 Synapse Studio 或 Azure 门户可以管理 Spark 池库。 
 
 在 Spark 池中更新或添加库：
 1. 从 Azure 门户导航到 Azure Synapse Analytics 工作区。

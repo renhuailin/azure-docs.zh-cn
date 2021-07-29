@@ -5,13 +5,13 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.custom: devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: 43f24d06f9074fdcf4dc9d3ae96de239905db201
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9f39bd874c1f5a1be42ca1c88e6ea2fe8df22f87
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671008"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "94648202"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>以编程方式缩放 Service Fabric 群集 
 
@@ -66,7 +66,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 ## <a name="scaling-in"></a>缩减
 
-缩减过程类似于扩展。实际的虚拟机规模集更改几乎是相同的。 但是，如前所述，Service Fabric 只会自动清理持久性为金级或银级的已删除节点。 因此，在持久性为铜级的节点中缩减时，需要与 Service Fabric 群集交互，以关闭要删除的节点，并删除其状态。
+内向扩展与横向扩展类似。实际的虚拟机规模集更改几乎是相同的。 但是，如前所述，Service Fabric 只会自动清理持久性为金级或银级的已删除节点。 因此，在持久性为铜级的节点中缩减时，需要与 Service Fabric 群集交互，以关闭要删除的节点，并删除其状态。
 
 关闭节点的准备工作涉及查找要删除的节点（最近添加的虚拟机规模集实例）并将其停用。 虚拟机规模集实例按其添加顺序编号，因此，可以通过比较节点名称中的数字后缀（它与基础虚拟机规模集实例名称相匹配）来查找较新的节点。 
 

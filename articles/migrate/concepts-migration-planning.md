@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.openlocfilehash: 1c2be47060004d464003c00cbbddb3b58a136e3c
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104871140"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>使用 Azure Migrate 构建迁移计划
@@ -23,7 +23,7 @@ ms.locfileid: "104871140"
 
 **业务事件** | **迁移结果**
 --- | ---
-数据中心退出 | 成本 
+数据中心退出 | Cost 
 合并、收购或资产剥离 | 降低供应商/技术复杂性
 降低资本支出 | 优化内部操作
 终止对任务关键型技术的支持 | 提高业务敏捷性

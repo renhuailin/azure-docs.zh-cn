@@ -6,13 +6,13 @@ ms.author: suvirdi
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 10/20/2020
-ms.openlocfilehash: 94b765cbcbdd81505b08052845207ee1d93a28d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/08/2021
+ms.openlocfilehash: 5926add3b4affffeb532c1b10cd81edc866f7f14
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667809"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059547"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-purview"></a>有关 Azure Purview 的常见问题 (FAQ)
 
@@ -38,7 +38,7 @@ Azure Purview 是一个数据治理解决方案。 它可帮助客户深入了�
 |Azure Data Lake Storage Gen1|Hive 元存储（2020 年底前推出）|
 |Azure Data Lake Storage Gen2|Amazon S3|
 |Azure 文件|--|
-|Azure SQL Database|--|
+|Azure SQL 数据库|--|
 
 ### <a name="what-data-systemsprocessors-can-we-connect-and-get-lineage"></a>我们可以连接什么数据系统/处理器并获取其世系？
 
@@ -64,7 +64,7 @@ Azure Purview 是 Microsoft 的目录解决方案空间中所有产品创新的�
 
 ### <a name="can-i-run-adc-gen-1-and-azure-purview-in-parallel"></a>是否能够并行运行 ADC 第 1 代和 Azure Purview？
 
-是的。 两者都是独立的服务。
+是。 两者都是独立的服务。
 
 ### <a name="how-do-i-migrate-existing-adc-gen-1-data-assets-to-azure-purview"></a>如何将现有的 ADC 第 1 代数据资产迁移到 Azure Purview？
 
@@ -76,7 +76,7 @@ Azure Purview 是 Microsoft 的目录解决方案空间中所有产品创新的�
 
 ### <a name="will-all-the-capabilities-of-adc-gen-2-exist-in-azure-purview"></a>是否 ADC 第 2 代的所有功能都将存在于 Azure Purview 中？
 
-是的。
+是。
 
 <!--## Is the data lineage feature available in Azure Purview?
 
@@ -141,3 +141,13 @@ Azure Purview 与 Atlas API 兼容。 如果要从 Atlas 进行迁移，建议�
 ### <a name="does-azure-purview-support-column-level-lineage"></a>Azure Purview 是否支持列级世系？
 
 是，Azure Purview 支持列级世系。
+
+### <a name="does-azure-purview-support-soft-delete"></a>Azure Purview 是否支持软删除？
+
+是的，从 Azure 订阅状态管理角度来看，Azure Purview 支持软删除。 Purview 可以读取订阅状态（已禁用/已警告等）并将帐户置于软删除状态，直到帐户被还原/删除。 当帐户进入软删除状态时，系统会阻止所有数据平面 API 调用，仅允许 GET/DELETE 控制平面 API 调用。 你可以在 Azure 订阅状态页“[Azure 订阅状态](../cost-management-billing/manage/subscription-states.md)”中查找其他信息
+
+### <a name="does-azure-purview-currently-support-data-loss-prevention-capabilities"></a>Azure Purview 目前是否支持数据丢失防护功能？
+
+否，Azure Purview 目前不提供数据丢失防护功能。 
+
+如果你对 Microsoft 365 中的数据丢失防护功能感兴趣，请参阅 [Microsoft 信息保护中的数据丢失防护](/microsoft-365/compliance/information-protection#prevent-data-loss)。

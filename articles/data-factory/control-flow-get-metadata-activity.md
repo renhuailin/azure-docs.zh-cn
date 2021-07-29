@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: jianleishen
-ms.openlocfilehash: e4715802f7b284bd9e6ce9a41b44c3750c33c260
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 6c375143217379b7ec795778f8947d88b70aa4bc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482752"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062805"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure 数据工厂中的“获取元数据”活动
 
@@ -30,7 +30,9 @@ ms.locfileid: "109482752"
 | 连接器/元数据 | itemName<br>（文件/文件夹） | itemType<br>（文件/文件夹） | 大小<br>（文件） | created<br>（文件/文件夹） | lastModified<sup>1</sup><br>（文件/文件夹） |childItems<br>（文件夹） |contentMD5<br>（文件） | structure<sup>2</sup><br/>（文件） | columnCount<sup>2</sup><br>（文件） | exists<sup>3</sup><br>（文件/文件夹） |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Amazon S3 兼容存储](connector-amazon-s3-compatible-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Oracle 云存储](connector-oracle-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Blob 存储](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
@@ -40,12 +42,12 @@ ms.locfileid: "109482752"
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
 <sup>1</sup> 元数据 `lastModified`：
-- 对于 Amazon S3 和 Google 云存储，`lastModified` 适用于桶和键，但不适用于虚拟文件夹；而 `exists` 适用于桶和键，但不适用于前缀或虚拟文件夹。 
+- 对于 Amazon S3、Amazon S3 兼容存储、Google Cloud Storage 和 Oracle 云存储，`lastModified` 适用于 bucket 和密钥，但不适用于虚拟文件夹，而 `exists` 适用于 bucket 和密钥，但不适用于前缀或虚拟文件夹。 
 - 对于 Azure Blob 存储，`lastModified` 适用于容器和 Blob，但不适用于虚拟文件夹。
 
 <sup>2</sup> 从二进制文件、JSON 文件或 XML 文件获取元数据时，不支持元数据 `structure` 和 `columnCount`。
 
-<sup>3</sup> 元数据 `exists`：对于 Amazon S3 和 Google Cloud Storage，`exists` 适用于 Bucket 和密钥，但不适用于前缀或虚拟文件夹。
+<sup>3</sup> 元数据 `exists`：对于 Amazon S3、Amazon S3 兼容存储、Google Cloud Storage 和 Oracle 云存储，`exists` 适用于 bucket 和密钥，但不适用于前缀或虚拟文件夹。
 
 注意以下事项：
 
@@ -133,7 +135,7 @@ ms.locfileid: "109482752"
 }
 ```
 
-**数据集**
+数据集
 
 ```json
 {

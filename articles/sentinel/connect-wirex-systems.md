@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
 ms.openlocfilehash: 9029b945eabd05b34306393b513e26ee9c1563f2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98541539"
 ---
 # <a name="connect-your-wirex-network-forensics-platform-nfp-appliance-to-azure-sentinel"></a>将 WireX Network Forensics Platform (NFP) 设备连接到 Azure Sentinel
@@ -48,15 +48,15 @@ ms.locfileid: "98541539"
 
 1. 在以下“配置”下，按照“说明”选项卡中的说明进行操作 ：
 
-    1. **1.** “Linux Syslog 代理配置”- 如果尚未运行日志转发器，或者需要其他日志转发器，请执行此步骤。 有关更详细的说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 1：部署日志转发器](connect-cef-agent.md)。
+    1. “1. Linux Syslog 代理配置”- 如果尚未运行日志转发器，或者需要其他日志转发器，请执行此步骤。 有关更详细的说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 1：部署日志转发器](connect-cef-agent.md)。
 
-    1. **2.** “将通用事件格式(CEF)日志转发到 Syslog 代理”- 联系 [WireX 支持人员](https://wirexsystems.com/contact-us/)，以正确配置 WireX NFP 解决方案。 此配置应该包含以下元素：
+    1. “2. 将通用事件格式 (CEF) 日志转发到 Syslog 代理”- 请联系 [WireX 支持团队](https://wirexsystems.com/contact-us/)，以正确配置 WireX NFP 解决方案。 此配置应该包含以下元素：
         - 日志目标 - 日志转发服务器的主机名和/或 IP 地址
         - 协议和端口 - TCP 514（如果使用建议的其他协议和端口，请确保在日志转发服务器上的 syslog 守护程序中进行并行更改）
         - 日志格式 - CEF
         - 日志类型 - WireX 建议的所有日志类型
 
-    1. **3.** “验证连接”- 通过复制连接器页上的命令并在日志转发器上运行该命令来验证数据引入。 有关更详细的说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 3：验证连接性](connect-cef-verify.md)。
+    1. “3. 验证连接”- 通过复制连接器页上的命令并在日志转发器上运行该命令来验证数据引入。 有关更详细的说明和介绍，请参阅 Azure Sentinel 文档中的[步骤 3：验证连接性](connect-cef-verify.md)。
 
         可能需要长达 20 分钟的时间，日志才会开始显示在 Log Analytics 中。
 

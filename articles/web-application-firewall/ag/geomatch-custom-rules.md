@@ -7,18 +7,18 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
-ms.openlocfilehash: bdb115cf6d0f0aa2c55f6143015a323df6faa114
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b92b7ff4839bf2bf51c281942ed6d15d2dc1f86c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83744302"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110455499"
 ---
 # <a name="geomatch-custom-rules-preview"></a>Geomatch 自定义规则（预览版）
 
 自定义规则允许你创建定制的规则，以满足应用程序和安全策略的确切需求。 现在，可以按国家/地区限制对 Web 应用程序的访问。 与所有自定义规则一样，此逻辑可以与其他规则结合，以满足应用程序的需求。
 
-若要创建地区筛选自定义规则，只需选择“地理位置”作为匹配类型，然后从应用程序中选择要允许/阻止的一个或多个国家/地区。 有关详细信息，请参阅[如何在 Powershell 中创建自定义规则](configure-waf-custom-rules.md)和更多自定义规则示例 (create-custom-waf-rules.md)。
+若要在 Azure 门户中创建地区筛选自定义规则，请直接选择“地理位置”作为“匹配类型”，然后从应用程序中选择要允许/阻止的一个或多个国家/地区。 使用 Azure PowerShell 或 Azure 资源管理器创建地理匹配规则时，请使用匹配变量 `RemoteAddr` 和运算符 `Geomatch`。 有关详细信息，请参阅[如何在 PowerShell 中创建自定义规则](configure-waf-custom-rules.md)以及更多[自定义规则示例](create-custom-waf-rules.md)。
 
 > [!IMPORTANT]
 > 此公共预览版在提供时没有附带服务级别协议，不应用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。

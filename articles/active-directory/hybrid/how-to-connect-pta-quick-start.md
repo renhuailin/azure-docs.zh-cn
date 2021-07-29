@@ -1,5 +1,5 @@
 ---
-title: Azure AD 传递身份验证-快速入门 |Microsoft Docs
+title: Azure AD 直通身份验证 - 快速入门 | Microsoft Docs
 description: 本文介绍如何开始使用 Azure Active Directory (Azure AD) 直通身份验证。
 services: active-directory
 keywords: Azure AD Connect 传递身份验证, 安装 Active Directory, Azure AD 所需的组件, SSO, 单一登录
@@ -16,14 +16,14 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5394a2829af4b0cd7a1c817f6aad4ca5451cc4bc
-ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
-ms.translationtype: MT
+ms.openlocfilehash: 1c5e71522d53bd4e528b2a5a106a4dcc344df3ab
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2020
-ms.locfileid: "97792426"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732850"
 ---
-# <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory 传递身份验证：快速入门
+# <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory 直通身份验证：快速入门
 
 ## <a name="deploy-azure-ad-pass-through-authentication"></a>部署 Azure AD 直通身份验证
 
@@ -33,7 +33,7 @@ ms.locfileid: "97792426"
 >如果要从 AD FS（或其他联合技术）迁移到传递身份验证，强烈建议按照[此处](https://aka.ms/adfstoPTADPDownload)发布的详细部署指南进行操作。
 
 >[!NOTE]
->如果通过 Azure 政府云部署 Pass 身份验证，请查看 [Azure 政府的混合标识注意事项](./reference-connect-government-cloud.md)。
+>如果是在 Azure 政府云中部署直通身份验证，请查看[针对 Azure 政府的混合标识注意事项](./reference-connect-government-cloud.md)。
 
 按照以下说明在租户上部署直通身份验证：
 
@@ -42,7 +42,7 @@ ms.locfileid: "97792426"
 请确保符合以下先决条件：
 
 >[!IMPORTANT]
->从安全角度来看，管理员应该将运行 PTA 代理的服务器视为域控制器。  应按照[保证域控制器防范攻击](/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)中所述的相同顺序对 PTA 代理服务器进行强制验证
+>从安全角度来看，管理员应该将运行 PTA 代理的服务器视为域控制器。  应按照[保护域控制器免受攻击](/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)中所述的同样方式，对 PTA 代理服务器进行强化
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>在 Azure Active Directory 管理中心中
 
@@ -51,7 +51,7 @@ ms.locfileid: "97792426"
 
 ### <a name="in-your-on-premises-environment"></a>在本地环境中
 
-1. 标识运行 Windows Server 2012 R2 或更高版本的服务器，以在其上运行 Azure AD Connect。 如果尚未启用，请[在服务器上启用 TLS 1.2](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect)。 将该服务器添加到与需要验证其密码的用户同一 Active Directory 林中。 应注意的是，不支持在 Windows Server Core 版本上安装 Pass-Through Authentication 代理。 
+1. 标识运行 Windows Server 2012 R2 或更高版本的服务器，以在其上运行 Azure AD Connect。 如果尚未启用，请[在服务器上启用 TLS 1.2](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect)。 将该服务器添加到与需要验证其密码的用户同一 Active Directory 林中。 应注意，不支持在 Windows Server Core 版本上安装直通身份验证代理。 
 2. 在上一步中标识的服务器上安装[最新版 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。 如果已在运行 Azure AD Connect，请确保其版本为 1.1.750.0 或更高版本。
 
     >[!NOTE]
@@ -72,14 +72,16 @@ ms.locfileid: "97792426"
      | **8080**（可选） | 如果端口 443 不可用，身份验证代理每隔十分钟通过端口 8080 报告其状态。 此状态显示在 Azure AD 门户上。 用户登录不会使用端口 8080。 |
      
      如果防火墙根据原始用户强制实施规则，请打开这些端口以允许来自作为网络服务运行的 Windows 服务的流量。
-   - 如果你的防火墙或代理允许向允许列表添加 DNS 条目，请添加 **\* msappproxy.net** 和 **\* servicebus.windows.net** 的连接。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+   - 如果防火墙或代理允许向加入允许列表中添加 DNS 条目，请添加与 **\*.msappproxy.net** 和 **\*.servicebus.windows.net** 的连接。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+   - 避免在 Azure Passthrough 代理与 Azure 终结点之间，对出站 TLS 通信进行各类形式的内联检查和终止。 
+   - 如果有传出 HTTP 代理，请确保此 URL (autologon.microsoftazuread-sso.com) 被列入允许列表中。 应显式指定此 URL，因为可能不接受通配符。 
    - 身份验证代理首次注册需要访问 login.windows.net 和 login.microsoftonline.net。 另外，还请为这些 URL 打开防火墙。
-    - 对于证书验证，请取消阻止以下 Url： **crl3.digicert.com:80**、 **crl4.digicert.com:80**、 **ocsp.digicert.com:80**、 **www \. d-trust.net:80**、 **root-c3-ca2-2009.ocsp.d-trust.net:80**、 **crl.microsoft.com:80**、 **oneocsp.microsoft.com:80** 和 **ocsp.msocsp.com:80**。 由于这些 URL 与其他 Microsoft 产品一起用于证书验证，因此可能已取消阻止这些 URL。
+    - 对于证书验证，请取消阻止以下 URL：**crl3.digicert.com:80**、**crl4.digicert.com:80**、**ocsp.digicert.com:80**、**www\.d-trust.net:80**、**root-c3-ca2-2009.ocsp.d-trust.net:80**、**crl.microsoft.com:80**、**oneocsp.microsoft.com:80** 和 **ocsp.msocsp.com:80**。 由于这些 URL 与其他 Microsoft 产品一起用于证书验证，因此可能已取消阻止这些 URL。
 
-### <a name="azure-government-cloud-prerequisite"></a>Azure 政府云必备组件
-在使用步骤 2 Azure AD Connect 启用直通身份验证之前，请从 Azure 门户下载 PTA 代理的最新版本。  你需要确保代理版本为 **1.5.1742.0。** 或更高版本。  若要验证代理，请参阅 [升级身份验证代理](how-to-connect-pta-upgrade-preview-authentication-agents.md)
+### <a name="azure-government-cloud-prerequisite"></a>Azure 政府云的先决条件
+在根据步骤 2 通过 Azure AD Connect 启用直通身份验证之前，请先从 Azure 门户下载最新版本的 PTA 代理。  需确保代理版本为 **1.5.1742.0.** 或更高版本。  若要验证代理，请参阅[升级身份验证代理](how-to-connect-pta-upgrade-preview-authentication-agents.md)
 
-下载最新版本的代理后，请继续执行以下说明，通过 Azure AD Connect 配置 Pass-Through 身份验证。
+下载最新版本的代理后，请继续执行以下说明，通过 Azure AD Connect 配置直通身份验证。
 
 ## <a name="step-2-enable-the-feature"></a>步骤 2：启用功能
 
@@ -103,7 +105,7 @@ ms.locfileid: "97792426"
 
 按照这些说明验证是否已正确启用直通身份验证：
 
-1. 用租户的全局管理员凭据登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com) 。
+1. 使用租户的全局管理员凭据登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
 2. 在左窗格中选择“Azure Active Directory”。
 3. 选择“Azure AD Connect”。
 4. 验证“直通身份验证”功能是否显示为“已启用”。
@@ -122,13 +124,13 @@ ms.locfileid: "97792426"
 >[!IMPORTANT]
 >在生产环境中，我们建议你在租户上至少运行 3 个身份验证代理。 系统限制每位租户最多安装 40 个身份验证代理。 最佳做法是将运行身份验证代理的所有服务器视为第 0 层系统（请参阅[参考](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)）。
 
-安装多个直通身份验证代理可确保高可用性，但不会在身份验证代理之间实现确定性负载均衡。 若要确定你的租户所需的身份验证代理数，请考虑你预期会在你的租户上看到的登录请求的峰值和平均负载。 作为基准，单一身份验证代理可在标准的 4 核 CPU、16 GB RAM 服务器上每秒处理 300 到 400 个身份验证。
+安装多个直通身份验证代理可以确保高可用性，但不会在身份验证代理之间实现确定性负载均衡。 若要确定租户所需的身份验证代理数，请考虑租户上预期出现的登录请求峰值和平均负载。 作为基准，单一身份验证代理可在标准的 4 核 CPU、16 GB RAM 服务器上每秒处理 300 到 400 个身份验证。
 
 若要估算网络流量，请使用以下大小调整指南：
-- 每个请求的有效负载大小为 (0.5 K + 1K * num_of_agents) 字节，即从 Azure AD 到身份验证代理的数据。 此处，“num_of_agents”表示在租户上注册的身份验证代理的数量。
-- 每个响应的负载大小为1K 个字节，即从身份验证代理到 Azure AD 的数据。
+- 每个请求的有效负载大小为 (0.5K + 1K * num_of_agents) 个字节，即从 Azure AD 传输到身份验证代理的数据。 此处，“num_of_agents”表示在租户上注册的身份验证代理的数量。
+- 每个响应的有效负载大小为 1K 字节，即从身份验证代理传输到 Azure AD 的数据。
 
-对于大多数客户，总共有三个身份验证代理足以满足高可用性和容量需求。 应在域控制器附近安装身份验证代理以改善登录延迟。
+对于大多数客户而言，总共三个身份验证代理足以满足高可用性和大容量需求。 应在域控制器附近安装身份验证代理以改善登录延迟。
 
 若要开始，请按照以下说明下载身份验证代理软件：
 
@@ -142,7 +144,7 @@ ms.locfileid: "97792426"
 ![Azure Active Directory 管理中心：“下载代理”窗格](./media/how-to-connect-pta-quick-start/pta10.png)
 
 >[!NOTE]
->也可以直接[下载身份验证代理软件](https://aka.ms/getauthagent)。 安装身份验证代理 _之前_，请查看并接受其 [服务条款](https://aka.ms/authagenteula)。
+>也可以直接[下载身份验证代理软件](https://aka.ms/getauthagent)。 安装身份验证代理之前 ，请查看并接受其[服务条款](https://aka.ms/authagenteula)。
 
 以下是部署独立身份验证代理的两种方法：
 
@@ -151,7 +153,7 @@ ms.locfileid: "97792426"
 其次，还可以创建并运行无人参与的部署脚本。 如果希望同时部署多个身份验证代理，或在没有启用用户界面的 Windows 服务器上安装身份验证代理，或无法使用远程桌面进行访问时，这种方法非常有用。 以下是如何使用此方法的说明：
 
 1. 运行以下命令以安装身份验证代理：`AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`。
-2. 可以通过我们的服务使用 Windows PowerShell 注册身份验证代理。 创建包含租户全局管理用户名和密码的 PowerShell 凭据对象 `$cred`。 运行以下命令，并替换 *\<username\>* 和 *\<password\>* ：
+2. 可以通过我们的服务使用 Windows PowerShell 注册身份验证代理。 创建包含租户全局管理用户名和密码的 PowerShell 凭据对象 `$cred`。 运行以下命令，替换 *\<username\>* 和 *\<password\>* ：
 
   ```powershell
   $User = "<username>"
@@ -166,11 +168,11 @@ ms.locfileid: "97792426"
   ```
 
 >[!IMPORTANT]
->如果在虚拟机上安装了身份验证代理，则无法克隆虚拟机以安装其他身份验证代理。 此方法不 **受支持**。
+>如果在虚拟机上安装了身份验证代理，则无法克隆虚拟机以设置其他身份验证代理。 此方法 **不受支持**。
 
-## <a name="step-5-configure-smart-lockout-capability"></a>步骤5：配置智能锁定功能
+## <a name="step-5-configure-smart-lockout-capability"></a>步骤 5：配置 Smart Lockout 功能
 
-智能锁定有助于锁定尝试猜测用户密码或使用强制方法获取的不良执行组件。 通过在本地 Active Directory 中的 Azure AD 和/或适当的锁定设置中配置智能锁定设置，可以在访问 Active Directory 之前对其进行筛选。 阅读 [本文](../authentication/howto-password-smart-lockout.md) ，了解有关如何在租户中配置智能锁定设置以保护用户帐户的详细信息。
+Smart Lockout 功能可帮助锁定那些试图猜测用户密码或使用暴力方法闯入的不良参与者。 通过在 Azure AD 中配置 Smart Lockout 设置和/或在本地 Active Directory 中配置适当的锁定设置，可以在攻击访问 Active Directory 之前将其筛选排除。 阅读[本文](../authentication/howto-password-smart-lockout.md)，了解有关如何在租户中配置 Smart Lockout 设置以保护用户帐户的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 - [从 AD FS 迁移到传递身份验证](https://aka.ms/adfstoptadp) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。

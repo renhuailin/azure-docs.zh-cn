@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 0e59fa2bcbc2d357857ddef39d990ddee9bc9c90
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 23bd1ce63e3d697a40125c79e802ad3e01915f49
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129452"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109487486"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -37,6 +37,7 @@ ms.locfileid: "108129452"
 * 授权规则 '\*' 不允许访问 '\*'
 * 此设备的身份验证失败，请续订令牌或证书，然后重新连接
 * 指纹与配置不匹配：指纹：SHA1Hash=\*, SHA2Hash=\*；配置：PrimaryThumbprint=\*, SecondaryThumbprint=\*
+* 由于没有分配的权限，主体 user@example.com 无权进行 GET on /exampleOperation
 
 ## <a name="cause"></a>原因
 
@@ -73,6 +74,7 @@ SDK 的默认令牌有效期为 60 分钟；但是，对于某些 SDK，令牌�
 - 对于 X.509 证书指纹身份验证，需要向 IoT 中心注册设备证书的指纹。
 - 授权凭据的格式正确，适用于所使用的协议。 若要了解详细信息，请参阅[控制 IoT 中心的访问权限](iot-hub-devguide-security.md)。
 - 使用的授权规则对所请求的操作具有权限。
+- 对于以“principal...”开头的最后一条错误消息，可以通过向用户分配正确级别的 Azure RBAC 权限来解决此错误。 例如，IoT 中心的所有者可以分配“IoT 中心数据所有者”角色，这将授予所有权限。 请尝试使用此角色来解决缺少权限的问题。
 
 ## <a name="next-steps"></a>后续步骤
 

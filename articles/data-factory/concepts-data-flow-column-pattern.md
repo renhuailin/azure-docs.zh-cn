@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 68c211608cfceedaa9d13a595be6d1e5de17f1d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/21/2021
+ms.openlocfilehash: aca49982cf6e25e95002c1fab40b46ef05c842e2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94844994"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110454936"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>使用映射数据流中的列模式
 
@@ -33,7 +33,6 @@ ms.locfileid: "94844994"
 
 使用[表达式生成器](concepts-data-flow-expression-builder.md)输入匹配条件。 基于列的 `name`、`type`、`stream`、`origin` 和 `position` 创建与列匹配的布尔表达式。 模式将影响条件返回 true 的任何列（偏差列或定义的列）。
 
-匹配条件下方的两个表达式框指定受影响列的新名称和值。 使用 `$$` 引用匹配字段的现有值。 左侧表达式框定义名称，右侧表达式框定义值。
 
 ![屏幕截图显示派生列的“设置”选项卡。](media/data-flow/edit-column-pattern.png "列模式")
 
@@ -85,7 +84,7 @@ ms.locfileid: "94844994"
 
 * `$$` 在运行时转换为每个匹配项的名称或值。 将 `$$` 视为等效于 `this`。
 * `name` 表示每个传入列的名称
-* `type` 表示每个传入列的数据类型
+* `type` 表示每个传入列的数据类型。 在这里[此处](concepts-data-flow-overview.md#data-flow-data-types)找到数据流类型系统中的数据类型列表。
 * `stream` 表示与流中的每个流式传输或转换相关联的名称
 * `position` 是数据流中列的序号位置
 * `origin` 是产生列或引起上次更新的转换

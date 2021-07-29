@@ -11,14 +11,14 @@ ms.date: 01/06/2021
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 395d5f0697138155b0bb0c629461aada9e9c18c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2cebee3ad9b515c6f40529fe5d25da687fd53687
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98739085"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109786278"
 ---
-# <a name="disable-geo-backups-for-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>禁用 Azure Synapse Analytics 中专用 SQL 池（之前称为 SQL DW）的异地备份
+# <a name="disable-geo-backups-for-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>禁用对 Azure Synapse Analytics 中[专用 SQL 池（之前称为 SQL DW）](sql-data-warehouse-overview-what-is.md)的异地备份
 
 本文介绍如何通过 Azure 门户禁用专用 SQL 池（之前称为 SQL DW）的异地备份。
 
@@ -28,7 +28,7 @@ ms.locfileid: "98739085"
 
 > [!NOTE]
 > 如果禁用异地备份，你将无法再将专用 SQL 池（之前称为 SQL DW）恢复到其他 Azure 区域。 
->
+> 
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)帐户。
 1. 选择要为其禁用异地备份的专用 SQL 池（之前称为 SQL DW）资源。 

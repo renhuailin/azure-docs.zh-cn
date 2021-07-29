@@ -1,24 +1,23 @@
 ---
-title: 关于 Azure 可用性区域中的区域冗余虚拟网络网关
-description: 在 Azure 可用性区域中部署 VPN 和 ExpressRoute 网关，为虚拟网络网关提供弹性、可伸缩性和更高的可用性。
+title: Azure 可用性区域中的区域冗余虚拟网络网关
+description: 了解如何在 Azure 可用性区域中部署 VPN 和 ExpressRoute 网关，以便为虚拟网络网关提供复原能力、可伸缩性和更高的可用性。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
-Customer intent: As someone with a basic network background, I want to understand zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 05/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2030469262baf406635fd170af384e154fec6ae6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: MT
+ms.openlocfilehash: 0482146a7070083c795a60a4b01fdede7e1b3bf1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401106"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067377"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>关于 Azure 可用性区域中的区域冗余虚拟网络网关
 
-可以在 [Azure 可用性区域](../availability-zones/az-overview.md)中部署 VPN 和 ExpressRoute 网关。 这样可以提高虚拟网络网关的复原性、可伸缩性和可用性。 可通过在 Azure 可用性区域中部署网关，在地理位置和逻辑上将区域内的网关分隔开来，同时还能保护本地网络与 Azure 的连接免受区域级故障的影响。
+可以在 [Azure 可用性区域](../availability-zones/az-overview.md)中部署 VPN 网关和 ExpressRoute 网关。 这样可以提高虚拟网络网关的复原性、可伸缩性和可用性。 可通过在 Azure 可用性区域中部署网关，在地理位置和逻辑上将区域内的网关分隔开来，同时还能保护本地网络与 Azure 的连接免受区域级故障的影响。
 
 ### <a name="zone-redundant-gateways"></a><a name="zrgw"></a>区域冗余网关
 
@@ -40,42 +39,42 @@ ms.locfileid: "89401106"
 
 ## <a name="gateway-skus"></a><a name="gwskus"></a>网关 SKU
 
-区域冗余网关和区域网关以新的网关 SKU 的形式提供。 我们已在 Azure AZ 区域中添加了新的虚拟网络网关 SKU。 这些 SKU 与 ExpressRoute 网关和 VPN 网关的相应现有 SKU 类似，不同之处在于它们是区域冗余网关和区域网关的专用 SKU。 可以通过 SKU 名称中的 "AZ" 标识这些 Sku。
+区域冗余网关和区域网关以网关 SKU 的形式提供。 我们已在 Azure AZ 区域中添加了新的虚拟网络网关 SKU。 这些 SKU 与 ExpressRoute 网关和 VPN 网关的相应现有 SKU 类似，不同之处在于它们是区域冗余网关和区域网关的专用 SKU。 可以通过 SKU 名称中的“AZ”标识这些 SKU。
 
-有关网关 Sku 的信息，请参阅 [VPN 网关 sku](vpn-gateway-about-vpngateways.md#gwsku) 和 [ExpressRoute 网关 sku](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku)。
+有关网关 SKU 的信息，请参阅 [VPN 网关 SKU](vpn-gateway-about-vpngateways.md#gwsku) 和 [ExpressRoute 网关 SKU](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku)。
 
 ## <a name="public-ip-skus"></a><a name="pipskus"></a>公共 IP SKU
 
-区域冗余网关和区块网关都依赖 Azure 公共 IP 资源标准** SKU。 Azure 公共 IP 资源的配置决定了是部署区域冗余网关，还是部署区块网关。 如果使用基本** SKU 创建公共 IP 资源，网关不会有任何区域冗余，且网关资源具有区域性。
+区域冗余网关和区块网关都依赖 Azure 公共 IP 资源标准 SKU。 Azure 公共 IP 资源的配置决定了是部署区域冗余网关，还是部署区块网关。 如果使用基本 SKU 创建公共 IP 资源，网关不会有任何区域冗余，且网关资源具有区域性。
 
 ### <a name="zone-redundant-gateways"></a><a name="pipzrg"></a>区域冗余网关
 
-如果使用标准**** 公共 IP SKU 创建公共 IP 地址，但未指定区域，行为因网关是 VPN 网关还是 ExpressRoute 网关而异。 
+如果使用标准公共 IP SKU 创建公共 IP 地址，但未指定区域，行为因网关是 VPN 网关还是 ExpressRoute 网关而异。 
 
 * 对于 VPN 网关，两个网关实例会部署到这三个区域中的任意两个区域，以实现区域冗余。 
 * 对于 ExpressRoute 网关，由于可以有超过两个实例，因此网关可以跨所有这三个区域部署。
 
 ### <a name="zonal-gateways"></a><a name="pipzg"></a>区块网关
 
-如果使用标准**** 公共 IP SKU 创建公共 IP 地址，并指定区域（1、2 或 3），所有网关实例都会部署到同一区域中。
+如果使用标准公共 IP SKU 创建公共 IP 地址，并指定区域（1、2 或 3），所有网关实例都会部署到同一区域中。
 
 ### <a name="regional-gateways"></a><a name="piprg"></a>区域网关
 
-如果使用基本**** 公共 IP SKU 创建公共 IP 地址，网关会部署为区域网关，并且不会内置有任何区域冗余。
+如果使用基本公共 IP SKU 创建公共 IP 地址，网关会部署为区域网关，并且不会内置有任何区域冗余。
 
 ## <a name="faq"></a><a name="faq"></a>常见问题解答
 
-### <a name="what-will-change-when-i-deploy-these-new-skus"></a>部署这些新 SKU 时会发生什么变化？
+### <a name="what-will-change-when-i-deploy-these-skus"></a>部署这些 SKU 时会发生什么变化？
 
 从你的角度来看，可以部署区域冗余网关。 也就是说，所有网关实例都会跨 Azure 可用性区域部署，每个可用性区域都是不同的容错域和更新域。 这样可以提高网关的可靠性、可用性和区域故障复原性。
 
 ### <a name="can-i-use-the-azure-portal"></a>是否可以使用 Azure 门户？
 
-是的，可以使用 Azure 门户部署新 SKU。 但是，你将仅在具有 Azure 可用性区域的 Azure 区域中看到这些新 SKU。
+是的，可以使用 Azure 门户部署这些 SKU。 但是，你将仅在具有 Azure 可用性区域的 Azure 区域中看到这些 SKU。
 
-### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>我可以在哪些区域中使用新 SKU？
+### <a name="what-regions-are-available-for-me-to-use-these-skus"></a>我可以在哪些区域中使用这些 SKU？
 
-Azure 区域中提供了新的 Sku，其中包含 Azure 可用性区域美国、法国中部、北欧、西欧和美国西部2区域、美国东部、美国东部2、东南亚、日本东部、英国南部。 今后，我们将在其他 Azure 公共区域推出区域冗余网关。
+这些 SKU 可以在具有 Azure 可用性区域的 Azure 区域中使用。 有关详细信息，请参阅[具有可用性区域的 Azure 区域](../availability-zones/az-region.md#azure-regions-with-availability-zones)。
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>我能否将现有虚拟网络网关更改/迁移/升级为区域冗余网关或区域网关？
 

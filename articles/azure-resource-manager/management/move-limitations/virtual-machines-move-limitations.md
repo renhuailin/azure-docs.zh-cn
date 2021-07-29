@@ -2,13 +2,14 @@
 title: 将 Azure VM 移到新的订阅或资源组
 description: 使用 Azure 资源管理器将虚拟机移到新的资源组或订阅。
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: ad7023f309f1ca948711eaa9bdf3867d2ef7a6f8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/23/2021
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: f57b09900a955a3988c27f8f6990ff18db41c97c
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100104903"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109751736"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>针对虚拟机的移动指南
 
@@ -56,7 +57,7 @@ Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 
 ## <a name="virtual-machines-with-azure-backup"></a>使用 Azure 备份的虚拟机
 
-若要移动配置了 Azure 备份的虚拟机，必须从保管库中删除还原点。
+若要移动使用 Azure 备份配制的虚拟机，必须从保管库中删除还原点集合（快照）。 可以保留和移动已复制到保管库的还原点。
 
 如果为虚拟机启用了[软删除](../../../backup/soft-delete-virtual-machines.md)，则在保留这些还原点的情况下，你将无法移动虚拟机。 请[禁用软删除](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)，或在删除还原点后等待 14 天。
 
@@ -73,7 +74,7 @@ Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
    6. 删除操作完成后，可以移动虚拟机。
 
 3. 将 VM 移到目标资源组。
-4. 恢复备份。
+4. 重新配置备份。
 
 ### <a name="powershell"></a>PowerShell
 

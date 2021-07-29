@@ -4,23 +4,23 @@ titleSuffix: Azure Storage
 description: 概述了使用 Azure 作为 Veeam 备份和恢复的存储目标与恢复位置时所要考虑的因素以及所要遵循的步骤
 author: karauten
 ms.author: karauten
-ms.date: 03/15/2021
+ms.date: 05/12/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 0b8bc0defd3314fcff691a049323201732644ff3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 334ae28c160a01032d5403e06f40846e8b9d9ed5
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589899"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839178"
 ---
 # <a name="backup-to-azure-with-veeam"></a>使用 Veeam 备份到 Azure
 
 本文帮助你将 Veeam 基础结构与 Azure Blob 存储相集成。 内容包括先决条件、注意事项、实施指导和操作指导。 本文介绍在发生了导致主站点无法正常运营的灾难时，如何使用 Azure 作为场外备份目标和恢复站点。
 
 > [!NOTE]
-> Veeam 还提供一个恢复时间目标 (RTO) 较低的解决方案：Veeam 复制。 使用此解决方案可以配置一个待机 VM，当 Azure 生产环境中发生灾难时，该 VM 可帮助你更快地予以恢复。 Veeam 还提供专用于备份 Azure 和 Office 365 资源的工具。 这些功能不属于本文档的介绍范围。
+> Veeam 还提供恢复时间目标 (RTO) 较低的解决方案，Veeam 备份和复制，并支持 Azure VMware 解决方案工作负荷。 使用此解决方案可以配置一个待机 VM，当 Azure 生产环境中发生灾难时，该 VM 可帮助你更快地予以恢复。 Veeam 还提供直接还原到 Microsoft Azure 和其他专用于备份 Azure 和 Office 365 资源的工具。 这些功能不属于本文档的介绍范围。
 
 ## <a name="reference-architecture"></a>参考体系结构
 
@@ -39,7 +39,10 @@ ms.locfileid: "104589899"
 | Azure Blob | v10a | v10a | 不可用 | 10a<sup>*</sup> |
 | Azure 文件 | v10a | v10a | 不可用 | 10a<sup>*</sup> |
 
-<sup>*</sup>对于 Azure Data Box，Veeam 备份和复制仅支持 REST API。 因此，Azure Data Box Disk 不受支持。
+Veeam 还为其产品的旧版本中的 Azure 功能提供支持，强烈建议使用最新的产品版本来获得最佳体验。
+
+<sup>*</sup>对于 Azure Data Box，Veeam 备份和复制仅支持 REST API。 因此，Azure Data Box Disk 不受支持。 请参阅 [此处](https://helpcenter.veeam.com/docs/backup/hyperv/osr_adding_data_box.html?ver=110)，了解Data Box 支持的详细信息。
+
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -96,7 +99,7 @@ Azure Data Box 提供了一种无需更多带宽即可将初始备份基线传�
 |**有效副本数**     | 3         | 3         | 6         | 6 |
 |**可用性区域数**     | 1         | 3         | 2         | 4 |
 |**区域数**     | 1         | 1         | 2         | 2 |
-|**手动故障转移到次要区域**     | 不可用         | 不可用         | 是         | 是 |
+|**手动故障转移到次要区域**     | 不可用         | 不适用         | 是         | 是 |
 
 **Blob 存储层：**
 
@@ -114,17 +117,17 @@ Azure Data Box 提供了一种无需更多带宽即可将初始备份基线传�
 |成本因素  |每月成本  |
 |---------|---------|
 |冷存储中的 100 TB 备份数据     |$1556.48         |
-|每天写入 2 TB 新数据 x 30 天     |$72 事务成本          |
-|每月估算总计     |$1628.48         |
+|每天写入 2 TB 新数据 x 30 天     |$42 事务成本          |
+|每月估算总计     |$1598.48         |
 |---------|---------|
 |通过公共 Internet 一次性将 5 TB 还原到本地   | $527.26         |
 
 > [!Note]
-> 此估算成本是在 Azure 定价计算器中使用美国东部即用即付定价生成的，并且基于 Veeam 默认的 256 kb 块大小（用于 WAN 传输）。 此示例可能不适合你的要求。
+> 此估算成本是在 Azure 定价计算器中使用美国东部即用即付定价生成的，并且基于 Veeam 默认的 512 kb 块大小（用于 WAN 传输）。 此示例可能不适合你的要求。
 
 ## <a name="implementation-guidance"></a>实施指南
 
-本部分提供有关如何将 Azure 存储添加到本地 Veeam 部署的简要指导。 有关详细指导和规划注意事项，请参阅 [Veeam Cloud Connect 备份指南](https://helpcenter.veeam.com/docs/backup/cloud/cloud_backup.html?ver=100)。
+本部分提供有关如何将 Azure 存储添加到本地 Veeam 部署的简要指导。 有关详细指导和规划注意事项，我们建议查看以下有关 Veeam [容量层](https://helpcenter.veeam.com/docs/backup/vsphere/capacity_tier.html?ver=110)的指南。
 
 1. 打开 Azure 门户，搜索“存储帐户”。 也可以单击默认服务图标。
 
@@ -136,11 +139,9 @@ Azure Data Box 提供了一种无需更多带宽即可将初始备份基线传�
 
     ![展示门户中的存储帐户设置](../media/account-create-1.png)
 
-3. 暂时保留默认网络选项并转到“数据保护”。 在此处可以选择启用软删除，这样就可以在定义的保留期内恢复意外删除的备份文件，并针对意外删除或恶意删除提供保护。
+3. 暂时保留默认网络和数据保护选项。 “不要”为存储 Veeam 容量层的存储帐户启用软删除。
 
-    ![展示门户中的“数据保护”设置。](../media/account-create-2.png)
-
-4. 接下来，对于备份到 Azure 的用例，我们建议使用“高级”屏幕中的默认设置。
+ 4. 接下来，对于备份到 Azure 的用例，我们建议使用“高级”屏幕中的默认设置。
 
     ![展示门户中的“高级”设置选项卡。](../media/account-create-3.png)
 
@@ -225,10 +226,10 @@ Azure 以 [Azure Monitor](../../../../../azure-monitor/essentials/monitor-azure-
 
 #### <a name="to-open-a-case-with-azure"></a>若要向 Azure 提出案例
 
-在 [Azure 门户](https://portal.azure.com)的顶部搜索栏中搜索“支持”。 选择“帮助+支持” -> “新建支持请求”。 
+在 [Azure 门户](https://portal.azure.com)的顶部搜索栏中搜索“支持”。 选择“帮助 + 支持” -> “新建支持请求” 。
 
 > [!NOTE]
-> 提出案例时，请具体指出需要 Azure 存储或 Azure 网络方面的哪些帮助。 不要指定 Azure 备份。 Azure 备份是 Azure 服务的名称，如果指定，你的案例将移交到错误的人员。
+> 提交案例时，明确指出你需要 Azure 存储或 Azure 网络方面的帮助。 请勿指定 Azure 备份。 Azure 备份是 Azure 服务的名称，如果指定，你的案例将移交到错误的人员。
 
 ### <a name="links-to-relevant-veeam-documentation"></a>相关 Veeam 文档的链接
 
