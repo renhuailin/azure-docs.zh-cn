@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/25/2021
+ms.date: 06/11/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e25fc61fe99a5c7df19b7c0ecb8265f4dcc681cc
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: baf000169c993290dc45ef6ec9ed4591f87d1def
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137014"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030635"
 ---
-# <a name="sign-ins-logs-in-azure-active-directory---preview"></a>Azure Active Directory 中的登录日志 - 预览版
+# <a name="sign-in-logs-in-azure-active-directory---preview"></a>Azure Active Directory 中的登录日志 - 预览版
 
 作为 IT 管理员，你想知道你的 IT 环境的运行状况。 你可通过有关系统运行状况的信息来评估是否需要响应潜在问题以及响应方式。 
 
@@ -35,7 +35,7 @@ ms.locfileid: "108137014"
 - **[预配](concept-provisioning-logs.md)** - 由预配服务执行的活动（例如在 ServiceNow 中创建组，或从 Workday 导入用户）。
 
 
-Azure Active Directory 中的经典登录报告概述了交互式用户登录的情况。此外，你现在可以访问另外三个目前处于预览状态的登录日志：
+Azure Active Directory 中的经典登录日志概述了交互式用户登录的情况。此外，你现在可以访问另外三个目前处于预览状态的登录日志：
 
 - 非交互式用户登录
 
@@ -49,7 +49,7 @@ Azure Active Directory 中的经典登录报告概述了交互式用户登录的
 
 ## <a name="what-can-you-do-with-it"></a>日志有哪些作用？
 
-登录报告提供了以下问题的答案：
+登录日志提供了以下问题的答案：
 
 - 用户、应用程序或服务的登录模式是什么？
 
@@ -81,7 +81,7 @@ Azure 门户提供了几种用于访问日志的选项。 例如，在 Azure Act
 
 此外，可以使用以下链接直接访问登录日志：[https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)
 
-在登录报告边栏选项卡中，可在以下项之间切换：
+在登录页上，可以在以下选项之间切换：
 
 - **交互式用户登录** - 一种登录方式，用户可通过这种方式提供身份验证因素，例如密码、通过 MFA 应用提供的响应、生物识别因素或 QR 码。
 
@@ -92,11 +92,11 @@ Azure 门户提供了几种用于访问日志的选项。 例如，在 Azure Act
 - **Azure 资源托管标识登录** - 其机密由 Azure 管理的 Azure 资源的登录。 有关详细信息，请参阅[什么是 Azure 资源的托管标识？](../managed-identities-azure-resources/overview.md) 
 
 
-![登录报告类型](./media/concept-all-sign-ins/sign-ins-report-types.png)
+![登录日志类型](./media/concept-all-sign-ins/sign-ins-report-types.png)
 
 
 
-登录边栏选项卡中的每个选项卡都显示下面的默认列。 某些选项卡有其他列：
+登录页面的每个选项卡都显示下面的默认列。 某些选项卡有其他列：
 
 - 登录日期
 
@@ -118,12 +118,12 @@ Azure 门户提供了几种用于访问日志的选项。 例如，在 Azure Act
 交互式用户登录是指这样一种登录：用户向 Azure AD 提供身份验证因素，或者直接与 Azure AD 或帮助程序应用（如 Microsoft Authenticator 应用）交互。 用户提供的因素包括：密码、对 MFA 质询的响应、生物因素，或者用户提供给 Azure AD 或帮助程序应用的 QR 码。
 
 > [!NOTE]
-> 此报告还包括与 Azure AD 联合的标识提供者提供的联合登录。  
+> 此日志还包括与 Azure AD 联合的标识提供者提供的联合登录。  
 
 
 
 > [!NOTE] 
-> 交互式用户登录报告过去常常包含来自 Microsoft Exchange 客户端的一些非交互式登录。 尽管这些登录是非交互式登录，但为了增加可见性，它们包含在交互式用户登录报告中。 非交互式用户登录报告于 2020 年 11 月进入公共预览版后，这些非交互式登录事件日志已移至非交互式用户登录报告以提高准确性。 
+> 交互式用户登录日志过去常常包含来自 Microsoft Exchange 客户端的一些非交互式登录。 尽管这些登录是非交互式登录，但为了增加可见性，它们包含在交互式用户登录日志中。 非交互式用户登录日志于 2020 年 11 月进入公共预览版后，这些非交互式登录日志已移至非交互式用户登录日志以提高准确性。 
 
 
 **报告大小：** 小 <br> 
@@ -138,7 +138,7 @@ Azure 门户提供了几种用于访问日志的选项。 例如，在 Azure Act
 - 用户使用 AD FS SAML 断言与 Azure AD 联合。
 
 
-除了默认字段，交互式登录报告还显示： 
+除了默认字段，交互式登录日志还显示： 
 
 - 登录位置
 
@@ -184,7 +184,7 @@ Azure 门户提供了几种用于访问日志的选项。 例如，在 Azure Act
 
 
 
-除了默认字段，非交互式登录报告还显示： 
+除了默认字段，非交互式登录日志还显示： 
 
 - 资源 ID
 
@@ -226,7 +226,7 @@ Azure 门户提供了几种用于访问日志的选项。 例如，在 Azure Act
 
 ## <a name="service-principal-sign-ins&quot;></a>服务主体登录
 
-与交互式和非交互式用户登录不同，服务主体登录不是涉及用户的登录， 而是由任何非用户帐户（例如应用或服务主体）执行的登录（托管标识登录除外，此类登录仅包含在托管标识登录报告中）。 在此类登录中，应用或服务提供自己的凭据（例如证书或应用机密）对资源进行身份验证或访问。
+与交互式和非交互式用户登录不同，服务主体登录不是涉及用户的登录， 而是由任何非用户帐户（例如应用或服务主体）执行的登录（托管标识登录除外，此类登录仅包含在托管标识登录日志中）。 在此类登录中，应用或服务提供自己的凭据（例如证书或应用机密）对资源进行身份验证或访问。
 
 
 **报告大小：** 大型 <br>

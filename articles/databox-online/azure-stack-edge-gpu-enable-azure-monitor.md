@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 06/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 24fd0e9765ddbafda0fde0a3b362a4facd99afe7
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: bbb4ce6442cc38e2554c6c1f745223a193ca793d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460833"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950745"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备上启用 Azure Monitor
 
@@ -22,6 +22,9 @@ ms.locfileid: "110460833"
 在 Azure Stack Edge Pro GPU 设备上监视容器至关重要，特别是当你运行多个计算应用程序时。 借助 Azure Monitor，可从设备上运行的 Kubernetes 群集收集容器日志、内存和处理器指标。
 
 本文介绍了在设备上启用 Azure Monitor 并在 Log Analytics 工作区中收集容器日志所需的步骤。 Azure Stack Edge Pro GPU 设备目前不支持 Azure Monitor 指标存储。 
+
+> [!NOTE]
+> 如果设备上的 Kubernetes 群集启用了 Azure Arc，请按照[启用了 Azure Arc 的 Kubernetes 群集的 Azure Monitor 容器见解](../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json)中的步骤设置容器监视。
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -243,4 +246,4 @@ ms.locfileid: "110460833"
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[通过 Kubernetes 仪表板监视 Kubernetes 工作负载](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)。
-- 了解如何[管理设备事件警报通知](azure-stack-edge-gpu-manage-device-event-alert-notifications.md)。 
+- 了解如何[管理设备事件警报通知](azure-stack-edge-gpu-manage-device-event-alert-notifications.md)。

@@ -2,13 +2,13 @@
 title: Batch 服务工作流和资源
 description: 从开发的角度了解 Batch 服务的功能及其高级工作流。
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: 76a0b140f3bea4b07a6de632abbcbc3fd26e582d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: c525b635bbda4284c876fa092c285e884a33db73
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85965206"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006988"
 ---
 # <a name="batch-service-workflow-and-resources"></a>Batch 服务工作流和资源
 
@@ -17,7 +17,7 @@ ms.locfileid: "85965206"
 不管是在开发可发出直接 [REST API](/rest/api/batchservice/) 调用的分布式计算应用程序或服务，还是使用某个 [Batch SDK](batch-apis-tools.md#batch-service-apis)，都可以使用此处介绍的多种资源和功能。
 
 > [!TIP]
-> 有关 Batch 服务的更全面介绍，请参阅 [Basics of Azure Batch](batch-technical-overview.md)（Azure Batch 基础知识）。 另请参阅最新的 [Batch 服务更新](https://azure.microsoft.com/updates/?product=batch)。
+> 有关 Batch 服务的更全面介绍，请参阅 [What is Azure Batch?](batch-technical-overview.md)（Azure Batch 简介）。 另请参阅最新的 [Batch 服务更新](https://azure.microsoft.com/updates/?product=batch)。
 
 ## <a name="basic-workflow"></a>基本工作流
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: conceptual
 ms.date: 03/24/2021
-ms.openlocfilehash: 49da5d7f045ed06ba16696ebd16ad212b9d140d8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 490750fecf1634f8d0bbcd92bd71cdf3cb531c71
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763302"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888583"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源
 
@@ -170,7 +170,7 @@ ms.locfileid: "107763302"
 
 * 你的 Azure 帐户不属于唯一单个 [Azure Active Directory (Azure AD) 租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 检查是否正在使用网关安装期间所使用的 Azure AD 租户或目录。
 
-* 网关资源和网关安装不在同一区域中。 但是，逻辑应用的位置可以不同于网关资源的位置。
+* 网关资源和网关安装不在同一区域中。 在 Azure 中，请确保网关安装使用的区域与要在其中创建网关资源的区域相同。 但是，逻辑应用的位置可以不同于网关资源的位置。
 
 * 网关安装已关联到其他网关资源。 每个网关资源只能链接到一个网关安装，且后者只能链接到一个 Azure 帐户和订阅。 因此，不能选择已与另一个网关资源关联的网关安装。 这些安装不会显示在“安装名称”列表中。
 

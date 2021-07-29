@@ -7,12 +7,12 @@ ms.topic: article
 author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 4be063342a6c46d73c86f2d9dff1da5395328389
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b82fb574b134065f3c0f1a7dc5a4742258914ff6
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583439"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017408"
 ---
 # <a name="custom-query-specification"></a>自定义查询规范
 
@@ -60,10 +60,10 @@ ms.locfileid: "102583439"
 
 | 查询 | 说明 |
 | ------------ | ------------- |
-| **SELECT** MarketplaceSubscriptionId,CustomerId **FROM** ISVUsage **TIMESPAN LAST_MONTH** | 此查询会获取过去 1 个月内的每个唯一 `MarketplaceSubscriptionId` 及其相应的 `CustomerId`。 |
+| **SELECT** MarketplaceSubscriptionId,CustomerId **FROM** ISVUsage **TIMESPAN LAST_MONTH** | 此查询会获取过去 1 个月内的每个 `MarketplaceSubscriptionId` 及其相应的 `CustomerId`。 |
 | **SELECT** MarketplaceSubscriptionId, EstimatedExtendedChargeCC **FROM** ISVUsage **ORDER BY** EstimatedExtendedChargeCC **LIMIT** 10 | 此查询会获取前 10 个订阅（每个订阅下销售的许可证数按降序排序）。 |
-| **SELECT** CustomerId, NormalizedUsage, RawUsage **FROM** ISVUsage **ORDER BY** NormalizedUsage **WHERE** NormalizedUsage > 100000 **ORDER BY** NormalizedUsage **TIMESPAN** LAST_6_MONTHS | 此查询会获取 NormalizedUsage 大于 100,000 的所有客户的 NormalizedUsage 和 RawUsage。 |
-| **SELECT** MarketplaceSubscriptionId, MonthStartDate, NormalizedUsage **FROM** ISVUsage **WHERE** CustomerId IN (‘2a31c234-1f4e-4c60-909e-76d234f93161’, ‘80780748-3f9a-11eb-b378-0242ac130002’) | 此查询会通过两个 `CustomerId` 值（`2a31c234-1f4e-4c60-909e-76d234f93161` 和 `80780748-3f9a-11eb-b378-0242ac130002`）获取 `MarketplaceSubscriptionId` 以及每个月产生的收入。 |
+| **SELECT** CustomerId, NormalizedUsage, RawUsage **FROM** ISVUsage **WHERE** NormalizedUsage > 100000 **ORDER BY** NormalizedUsage **TIMESPAN** LAST_6_MONTHS | 此查询会获取 NormalizedUsage 大于 100,000 的所有客户的 NormalizedUsage 和 RawUsage。 |
+| **SELECT** MarketplaceSubscriptionId, MonthStartDate, NormalizedUsage **FROM** ISVUsage **WHERE** CustomerId IN (‘2a31c234-1f4e-4c60-909e-76d234f93161’, ‘80780748-3f9a-11eb-b378-0242ac130002’) | 此查询会通过两个 `CustomerId` 值（`2a31c234-1f4e-4c60-909e-76d234f93161` 和 `80780748-3f9a-11eb-b378-0242ac130002`）获取 `MarketplaceSubscriptionId` 以及每个月的规范化用量。 |
 |||
 
 ## <a name="query-specification"></a>查询规范
@@ -118,10 +118,17 @@ ms.locfileid: "102583439"
 
 #### <a name="select"></a>SELECT
 
-查询的此部分指定将导出的列。 可以选择的列是数据集的 `selectableColumns` 和 `availableMetrics` 部分列出的字段。 最终的导出的行将始终包含所选列中的非重复值。 例如，导出的文件中不会有重复的行。 将针对所选列的每个非重复组合计算指标。
+查询的此部分指定将导出的列。 可以选择的列是数据集的 `selectableColumns` 和 `availableMetrics` 部分列出的字段。 如果所选字段列表中包含指标列，则会为非指标列的每个不同组合计算指标。 
 
 **示例**：
 - **SELECT** `OfferName`, `NormalizedUsage`
+
+#### <a name="distinct"></a>DISTINCT
+
+在 SELECT 后添加 DISTINCT 关键字可确保最终导出的数据不会有重复的行。 DISTINCT 关键字的工作方式与是否选择了指标列无关。
+
+**示例**：
+- **SELECT DISTINCT** `MarketplaceSubscriptionId, OfferType`
 
 #### <a name="from"></a>FROM
 

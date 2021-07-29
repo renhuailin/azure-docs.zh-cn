@@ -3,12 +3,12 @@ title: 注册表性能故障排除
 description: 注册表性能常见问题的症状、原因和解决方法
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 15129ebe1da2e52fac106a34863f609c440549ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8557c8c342919073099a14be91c743b65c4d7fbc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92148411"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069069"
 ---
 # <a name="troubleshoot-registry-performance"></a>注册表性能故障排除
 
@@ -99,11 +99,11 @@ nslookup myregistry.azurecr.io
 
 如果对注册表资源的权限允许，请[检查注册表环境的运行状况](container-registry-check-health.md)。 如果报告了错误，请查看[错误参考](container-registry-health-error-reference.md)来了解可能的解决方案。
 
-如果在注册表中启用了[收集资源日志](container-registry-diagnostics-audit-logs.md)，请查看 ContainterRegistryRepositoryEvents 日志。 此日志存储有关推送或拉取事件等操作的信息。 查询此日志可获得有关[存储库级操作失败](container-registry-diagnostics-audit-logs.md#repository-level-operation-failures)的信息。 
+如果在注册表中启用了[收集资源日志](monitor-service.md)，请查看 ContainterRegistryRepositoryEvents 日志。 此日志存储有关推送或拉取事件等操作的信息。 查询此日志可获得有关[存储库级操作失败](monitor-service.md#repository-level-operation-failures)的信息。 
 
 相关链接：
 
-* [用于诊断评估和审核的日志](container-registry-diagnostics-audit-logs.md)
+* [监视 Azure 容器注册表](monitor-service.md)
 * [容器注册表常见问题解答](container-registry-faq.md)
 * [Azure 容器注册表的最佳做法](container-registry-best-practices.md)
 

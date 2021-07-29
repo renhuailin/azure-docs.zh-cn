@@ -6,24 +6,28 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: b32b1fb3e0e21374fab2068d337440003005b1e7
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: ec48ea7bacbc0bffdd260d7c3b06660e8e7f03c1
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291309"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029308"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java 无代码应用程序监视 Azure Monitor Application Insights
 
+> [!NOTE]
+> 如果要查找旧的 2.x 文档，请转到[此处](./java-2x-get-started.md)。
+
 Java 无代码应用程序监视只是为了简化操作 - 无需更改代码，只需更改几个配置即可启用 Java 代理。
 
- Java 代理可在任何环境中正常工作，并允许你监视所有 Java 应用程序。 换句话说，无论你是在 VM 上、本地、AKS 中还是在 Windows、Linux 上运行 Java 应用，不管什么位置，Java 3.0 代理都可以监视你的应用。
+Java 代理可在任何环境中正常工作，并允许你监视所有 Java 应用程序。 换句话说，无论你是在 VM 上、本地、AKS 中还是在 Windows、Linux 上运行 Java 应用，不管什么位置，Application Insights Java 代理都可以监视你的应用。
 
-不再需要将 Application Insights Java SDK 添加到你的应用程序，因为 3.0 代理会自动收集请求、依赖项并自行记录所有内容。
+不再需要将 Application Insights Java 2.x SDK 添加到你的应用程序，因为 Application Insights Java 3.x 代理会自动收集请求、依赖项并自行记录所有内容。
 
-你仍可以从应用程序发送自定义遥测。 3\.0 代理会跟踪它并将它与所有自动收集的遥测数据相关联。
+你仍可以从应用程序发送自定义遥测。
+3\.x 代理会跟踪它并将它与所有自动收集的遥测数据相关联。
 
-3\.0 代理支持 Java 8 及更高版本。
+3\.x 代理支持 Java 8 及更高版本。
 
 ## <a name="quickstart"></a>快速入门
 
@@ -34,11 +38,18 @@ Java 无代码应用程序监视只是为了简化操作 - 无需更改代码，
 >
 > 请仔细检查所有的[配置选项](./java-standalone-config.md)，因为除了文件名本身全部变为小写外，json 结构也已完全改变。
 
-下载 [applicationinsights-agent-3.0.3.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.3/applicationinsights-agent-3.0.3.jar)
+> [!WARNING]
+> **如果要从 3.0.x 升级**
+>
+> 操作名称和请求遥测名称现在以 http 方法为前缀（`GET`、`POST` 等等）。
+> 如果自定义仪表板或警报依赖于以前的无前缀的值，则可能会影响这些仪表板或警报。
+> 有关更多详细信息，请参阅 [3.1.0 发行说明](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.1.0)。
+
+下载 [applicationinsights-agent-3.1.1.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.1.1/applicationinsights-agent-3.1.1.jar)
 
 **2.将 JVM 指向该代理**
 
-将 `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` 添加到应用程序的 JVM 参数
+将 `-javaagent:path/to/applicationinsights-agent-3.1.1.jar` 添加到应用程序的 JVM 参数
 
 典型的 JVM 参数包括 `-Xmx512m` 和 `-XX:+UseG1GC`。 如果你知道在何处添加这些参数，则你已知道要将此项添加到何处。
 
@@ -54,7 +65,7 @@ Java 无代码应用程序监视只是为了简化操作 - 无需更改代码，
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-另一种方法是创建一个名为 `applicationinsights.json` 的配置文件，并将其置于 `applicationinsights-agent-3.0.3.jar` 所在的目录中，该文件包含以下内容：
+另一种方法是创建一个名为 `applicationinsights.json` 的配置文件，并将其置于 `applicationinsights-agent-3.1.1.jar` 所在的目录中，该文件包含以下内容：
 
 ```json
 {
@@ -139,8 +150,10 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 * [通信聊天](/java/api/overview/azure/communication-chat-readme) 1.0.0+
 * [通信通用](/java/api/overview/azure/communication-common-readme) 1.0.0+
 * [通信标识](/java/api/overview/azure/communication-identity-readme) 1.0.0+
+* [通信电话号码](/java/api/overview/azure/communication-phonenumbers-readme) 1.0.0+
 * [通信短信](/java/api/overview/azure/communication-sms-readme) 1.0.0+
 * [Cosmos DB](/java/api/overview/azure/cosmos-readme) 4.13.0+
+* [数字孪生 - 核心](/java/api/overview/azure/digitaltwins-core-readme) 1.1.0+
 * [事件网格](/java/api/overview/azure/messaging-eventgrid-readme) 4.0.0+
 * [事件中心](/java/api/overview/azure/messaging-eventhubs-readme) 5.6.0+
 * [事件中心 - Azure Blob 存储检查点存储](/java/api/overview/azure/messaging-eventhubs-checkpointstore-blob-readme) 1.5.1+
@@ -150,6 +163,13 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 * [密钥保管库 - 密钥](/java/api/overview/azure/security-keyvault-keys-readme) 4.2.6+
 * [密钥保管库 - 机密](/java/api/overview/azure/security-keyvault-secrets-readme) 4.2.6+
 * [服务总线](/java/api/overview/azure/messaging-servicebus-readme) 7.1.0+
+* [存储 - Blob](/java/api/overview/azure/storage-blob-readme) 12.11.0+
+* [存储 - Blob 批处理](/java/api/overview/azure/storage-blob-batch-readme) 12.9.0+
+* [存储 - Blob 加密](/java/api/overview/azure/storage-blob-cryptography-readme) 12.11.0+
+* [存储 - 通用](/java/api/overview/azure/storage-common-readme) 12.11.0+
+* [存储 - 文件数据湖](/java/api/overview/azure/storage-file-datalake-readme) 12.5.0+
+* [存储 - 文件共享](/java/api/overview/azure/storage-file-share-readme) 12.9.0+
+* [存储 - 队列](/java/api/overview/azure/storage-queue-readme) 12.9.0+
 * [文本分析](/java/api/overview/azure/ai-textanalytics-readme) 5.0.4+
 
 [//]: # "从 https://azure.github.io/azure-sdk/releases/latest/java.html 抓取的上述名称和链接"
@@ -166,20 +186,20 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 [//]: # "  }"
 [//]: # "  var version = versionBadge.textContent.trim()"
 [//]: # "  var link = stableRow.querySelectorAll('a')[2].href"
-[//]: # "  str += '* [' + name + '](' + link + ') ' + version"
+[//]: # "  str += '* [' + name + '](' + link + ') ' + version + '\n'"
 [//]: # "}"
 [//]: # "console.log(str)"
 
 ## <a name="send-custom-telemetry-from-your-application"></a>从应用程序发送自定义遥测
 
-我们在 3.0+ 版本中的目标是让你能够使用标准 API 发送自定义遥测。
+我们在 Application Insights Java 3.x 版本中的目标是让你能够使用标准 API 发送自定义遥测。
 
 到目前为止，我们支持 Micrometer、热门的日志记录框架和 Application Insights Java 2.x SDK。
-Application Insights Java 3.0 会自动捕获通过这些 API 发送的遥测，并将其与自动收集的遥测相关联。
+Application Insights Java 3.x 会自动捕获通过这些 API 发送的遥测，并将其与自动收集的遥测相关联。
 
 ### <a name="supported-custom-telemetry"></a>支持的自定义遥测
 
-下表显示了当前支持的自定义遥测类型，你可以使用它们来对 Java 3.0 代理进行补充。 总而言之，通过 Micrometer 可以支持自定义指标，通过记录框架可以启用自定义异常和跟踪，通过 [Application Insights Java 2.x SDK](#send-custom-telemetry-using-the-2x-sdk) 可以支持任何类型的自定义遥测。
+下表显示了当前支持的自定义遥测类型，你可以使用它们来对 Java 3.x 代理进行补充。 总而言之，通过 Micrometer 可以支持自定义指标，通过记录框架可以启用自定义异常和跟踪，通过 [Application Insights Java 2.x SDK](#send-custom-telemetry-using-the-2x-sdk) 可以支持任何类型的自定义遥测。
 
 |                     | Micrometer | Log4j、logback、JUL | 2.x SDK |
 |---------------------|------------|---------------------|---------|
@@ -191,9 +211,9 @@ Application Insights Java 3.0 会自动捕获通过这些 API 发送的遥测，
 | **请求**        |            |                     |  是    |
 | **跟踪**          |            |  是                |  是    |
 
-我们目前不打算发布带有 Application Insights 3.0 的 SDK。
+我们目前不打算发布带有 Application Insights 3.x 的 SDK。
 
-Application Insights Java 3.0 已在侦听发送到 Application Insights Java 2.x SDK 的遥测。 对于现有 2.x 用户来说，此功能是升级过程中的一个重要部分。在 OpenTelemetry API 正式发布之前，它填补了我们在自定义遥测支持方面的一个重要空白。
+Application Insights Java 3.x 已在侦听发送到 Application Insights Java 2.x SDK 的遥测。 对于现有 2.x 用户来说，此功能是升级过程中的一个重要部分。在 OpenTelemetry API 正式发布之前，它填补了我们在自定义遥测支持方面的一个重要空白。
 
 ### <a name="send-custom-metrics-using-micrometer"></a>使用 Micrometer 发送自定义指标
 
@@ -226,17 +246,17 @@ counter.increment();
 默认情况下，仅当在 INFO 级别或更高级别执行日志记录时，才收集该日志记录。
 有关如何更改此级别的信息，请参阅[配置选项](./java-standalone-config.md#auto-collected-logging)。
 
-如果要将自定义维度附加到日志，可以使用 [Log4j 1.2 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html)、[Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html) 或 [Log4j 2 MDC](http://logback.qos.ch/manual/mdc.html)，Application Insights Java 3.0 将自动捕获这些 MDC 属性作为跟踪和异常遥测的自定义维度。
+如果要将自定义维度附加到日志，可以使用 [Log4j 1.2 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html)、[Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html) 或 [Log4j 2 MDC](http://logback.qos.ch/manual/mdc.html)，Application Insights Java 3.x 将自动捕获这些 MDC 属性作为跟踪和异常遥测的自定义维度。
 
 ### <a name="send-custom-telemetry-using-the-2x-sdk"></a>使用 2.x SDK 发送自定义遥测
 
-将 `applicationinsights-core-2.6.2.jar` 添加到应用程序（Application Insights Java 3.0 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
+将 `applicationinsights-core-2.6.3.jar` 添加到应用程序（Application Insights Java 3.x 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure</groupId>
   <artifactId>applicationinsights-core</artifactId>
-  <version>2.6.2</version>
+  <version>2.6.3</version>
 </dependency>
 ```
 
@@ -298,13 +318,13 @@ try {
 > [!NOTE]
 > 此功能仅在 3.0.2 及更高版本中提供
 
-将 `applicationinsights-web-2.6.2.jar` 添加到应用程序（Application Insights Java 3.0 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
+将 `applicationinsights-web-2.6.3.jar` 添加到应用程序（Application Insights Java 3.x 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure</groupId>
   <artifactId>applicationinsights-web</artifactId>
-  <version>2.6.2</version>
+  <version>2.6.3</version>
 </dependency>
 ```
 
@@ -322,13 +342,13 @@ requestTelemetry.getProperties().put("mydimension", "myvalue");
 > [!NOTE]
 > 此功能仅在 3.0.2 及更高版本中提供
 
-将 `applicationinsights-web-2.6.2.jar` 添加到应用程序（Application Insights Java 3.0 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
+将 `applicationinsights-web-2.6.3.jar` 添加到应用程序（Application Insights Java 3.x 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure</groupId>
   <artifactId>applicationinsights-web</artifactId>
-  <version>2.6.2</version>
+  <version>2.6.3</version>
 </dependency>
 ```
 
@@ -346,13 +366,13 @@ requestTelemetry.getContext().getUser().setId("myuser");
 > [!NOTE]
 > 此功能仅在 3.0.2 及更高版本中提供
 
-将 `applicationinsights-web-2.6.2.jar` 添加到应用程序（Application Insights Java 3.0 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
+将 `applicationinsights-web-2.6.3.jar` 添加到应用程序（Application Insights Java 3.x 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure</groupId>
   <artifactId>applicationinsights-web</artifactId>
-  <version>2.6.2</version>
+  <version>2.6.3</version>
 </dependency>
 ```
 
@@ -370,17 +390,17 @@ requestTelemetry.setName("myname");
 > [!NOTE]
 > 此功能仅在 3.0.3 及更高版本中提供
 
-将 `applicationinsights-web-2.6.2.jar` 添加到应用程序（Application Insights Java 3.0 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
+将 `applicationinsights-web-2.6.3.jar` 添加到应用程序（Application Insights Java 3.x 支持所有 2.x 版本，但如果你可以选择，最好使用最新版本）：
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure</groupId>
   <artifactId>applicationinsights-web</artifactId>
-  <version>2.6.2</version>
+  <version>2.6.3</version>
 </dependency>
 ```
 
-同时在代码中获取请求遥测 ID 和操作 ID：
+并在代码中获取请求遥测 ID 和操作 ID：
 
 ```java
 import com.microsoft.applicationinsights.web.internal.ThreadContext;

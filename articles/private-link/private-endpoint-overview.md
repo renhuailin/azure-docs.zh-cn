@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 92f9c3baaa8260bdc154f8752b56a63cf1444ebe
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7359dc8199c01bae7f7463b83079193397e40519
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140400"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072885"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -22,7 +22,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
  专用终结点指定以下属性： 
 
 
-|属性  |说明 |
+|属性  |描述 |
 |---------|---------|
 |名称    |    资源组中的唯一名称。      |
 |子网    |  虚拟网络中要部署和分配专用 IP 地址的子网。 有关子网要求，请参阅本文中的“限制”部分。         |
@@ -109,6 +109,12 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
  
 > [!NOTE]
 > 只有处于已批准状态的专用终结点才能将流量发送到给定的专用链接资源。 
+
+### <a name="rbac-permissions"></a>RBAC 权限
+
+下面是用户创建专用终结点所需的特定 RBAC 权限。 有关自定义角色的详细信息，请查看 [创建自定义角色的步骤](/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role)。
+
+Microsoft.Resources/deployments/* Microsoft.Resources/subscriptions/resourcegroups/resources/read Microsoft.Network/virtualNetworks/read Microsoft.Network/virtualNetworks/subnets/read Microsoft.Network/virtualNetworks/subnets/write Microsoft.Network/virtualNetworks/subnets/join/action Microsoft.Network/privateEndpoints/read Microsoft.Network/privateEndpoints/write Microsoft.Network/locations/availablePrivateEndpointTypes/read
 
 ### <a name="connecting-using-alias"></a>使用别名进行连接
 别名是当服务所有者在标准负载均衡器后面创建专用链接服务时，生成的唯一名字对象。 服务所有者可与其使用者脱机共享此别名。 使用者可以使用资源 URI 或别名请求连接到专用链接服务。 若要使用别名进行连接，必须使用手动连接批准方法创建专用终结点。 若要使用手动连接批准方法，请在专用终结点创建流期间将手动请求参数设置为 true。 有关详细信息，请查看 [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) 和 [az network private-endpoint create](/cli/azure/network/private-endpoint#az_network_private_endpoint_create)。 

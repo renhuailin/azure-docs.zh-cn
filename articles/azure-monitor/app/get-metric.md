@@ -2,21 +2,20 @@
 title: Azure Monitor Application Insights 中的 Get-Metric
 description: 了解如何有效地使用 GetMetric() 调用在 Azure Monitor Application Insights 中捕获 .NET 和 .NET Core 应用程序的本地预聚合指标
 ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 0ce2651d5cfcb1578d78982af109a004aaac11f4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 8efea750ea60c8bb699dac4ffc9aba56241726e1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101719774"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070077"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>.NET 和 .NET Core 中的自定义指标集合
 
 Azure Monitor Application Insights.NET 和 .NET Core SDK 有两种不同的方法来收集自定义指标，分别为 `TrackMetric()` 和 `GetMetric()`。 这两种方法的主要区别在于本地聚合。 `TrackMetric()` 缺少预聚合，而 `GetMetric()` 具有预聚合。 推荐的方法是使用聚合，因此，`TrackMetric()` 不再是收集自定义指标的首选方法。 本文将引导你使用 GetMetric() 方法并介绍它的一些基本原理。
 
-## <a name="trackmetric-versus-getmetric"></a>TrackMetric 与 GetMetric
+## <a name="pre-aggregating-vs-non-pre-aggregating-api"></a>预聚合与非预聚合 API
 
 `TrackMetric()` 发送表示指标的原始遥测。 为每个值发送单个遥测项效率低。 `TrackMetric()` 在性能方面的效率也较低，因为每个 `TrackMetric(item)` 都要经过整个 SDK 管道，包括遥测初始化程序和处理器。 与 `TrackMetric()` 不同，`GetMetric()` 为你处理本地预聚合，然后仅以一分钟的固定间隔提交聚合汇总指标。 因此，如果你需要在秒级甚至毫秒级密切监视某些自定义指标，则可以这样做，同时只需要承担每分钟监视一次的存储和网络流量成本。 这也极大降低了发生限制的风险，因为需要为聚合指标发送的遥测项的总数大大减少。
 
@@ -33,7 +32,7 @@ Azure Monitor Application Insights.NET 和 .NET Core SDK 有两种不同的方�
 总之，推荐使用 `GetMetric()` 方法，因为它执行预聚合、从所有 Track() 调用中累积值，并每分钟发送一次汇总/聚合。 通过发送更少的数据点，同时仍然收集所有相关信息，这可以显著降低成本和性能开销。
 
 > [!NOTE]
-> 只有 .NET 和 .NET Core SDK 具有 GetMetric() 方法。 如果你使用的是 Java，则可以使用 [Micrometer 指标](./micrometer-java.md)或 `TrackMetric()`。 对于 JavaScript 和 Node.js，仍可以使用 `TrackMetric()`，但请记住上一部分总结的注意事项。 对于 Python，可以使用 [OpenCensus](./opencensus-python.md#metrics) 发送自定义指标，但指标实现不同。
+> 只有 .NET 和 .NET Core SDK 具有 GetMetric() 方法。 如果使用的是 Java，请参阅[使用 Micrometer 发送自定义指标](./java-in-process-agent.md#send-custom-metrics-using-micrometer)。 对于 JavaScript 和 Node.js，仍可以使用 `TrackMetric()`，但请记住上一部分总结的注意事项。 对于 Python，可以使用 [OpenCensus.stats](./opencensus-python.md#metrics) 发送自定义指标，但指标实现不同。
 
 ## <a name="getting-started-with-getmetric"></a>GetMetric 入门
 
@@ -103,7 +102,7 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 此单个遥测项代表了 41 个不同指标度量的聚合。 由于我们反复发送相同的值，因此标准偏差 (stDev) 为 0，具有相同的最大值 (max) 和最小值 (min)  。 值属性表示聚合的所有单个值的总和。
 
 > [!NOTE]
-> GetMetric 不支持跟踪 ) 或跟踪直方图/分布 (的最后一个值。
+> GetMetric 不支持跟踪最后一个值（即“gauge”），也不支持跟踪直方图/分布。
 
 如果我们在日志（分析）体验中检查 Application Insights 资源，此单独的遥测项将如下所示：
 
@@ -204,13 +203,13 @@ Application Insights Telemetry: {"name":"Microsoft.ApplicationInsights.Dev.00000
 
 ![外形规格](./media/get-metric/formfactor.png)
 
-### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions"></a>当维护超过三个时如何使用 Metrocidentifier
+### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions&quot;></a>当维护超过三个时如何使用 Metrocidentifier
 
 目前支持 10 个维度，但是大于 3 个维度需要使用 `MetricIdentifier`：
 
 ```csharp
-// Add "using Microsoft.ApplicationInsights.Metrics;" to use MetricIdentifier
-// MetricIdentifier id = new MetricIdentifier("[metricNamespace]","[metricId],"[dim1]","[dim2]","[dim3]","[dim4]","[dim5]");
+// Add &quot;using Microsoft.ApplicationInsights.Metrics;&quot; to use MetricIdentifier
+// MetricIdentifier id = new MetricIdentifier(&quot;[metricNamespace]&quot;,&quot;[metricId],&quot;[dim1]&quot;,&quot;[dim2]&quot;,&quot;[dim3]&quot;,&quot;[dim4]&quot;,&quot;[dim5]");
 MetricIdentifier id = new MetricIdentifier("CustomMetricNamespace","ComputerSold", "FormFactor", "GraphicsCard", "MemorySpeed", "BatteryCapacity", "StorageCapacity");
 Metric computersSold  = _telemetryClient.GetMetric(id);
 computersSold.TrackValue(110,"Laptop", "Nvidia", "DDR4", "39Wh", "1TB");
@@ -286,7 +285,7 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit` 是指标可以包含的最大数据时序数目。 达到此限制后，将不会跟踪对的调用 `TrackValue()` 。
+* `seriesCountLimit` 是指标可以包含的最大数据时序数目。 达到此限制后，对 `TrackValue()` 的调用将返回 false，该调用通常会导致产生新序列。
 * `valuesPerDimensionLimit` 以类似的方式限制每个维度的非重复值数目。
 * `restrictToUInt32Values` 确定是否只跟踪非负整数值。
 

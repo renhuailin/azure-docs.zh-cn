@@ -3,25 +3,26 @@ title: Azure Service Fabric 版本
 description: 了解主动支持的 Azure Service Fabric 和平台版本中的群集版本
 ms.topic: troubleshooting
 ms.date: 04/12/2021
-ms.openlocfilehash: d106462578879ef3ff6ba902c7c950f2bf6ab308
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: f8979d83934234379a61cb8fab606cf5f37cf7e5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140112"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110080680"
 ---
 # <a name="service-fabric-supported-versions"></a>受支持的 Service Fabric 版本
 本文中的表概述了主动支持的 Service Fabric 和平台版本。
 
 ## <a name="windows"></a>Windows
 
-| Service Fabric 运行时 |可直接从此版本升级|可降级到|兼容的 SDK 或 NuGet 包版本|受支持的 dotnet 运行时** |OS 版本。 |结束支持 |
+| Service Fabric 运行时 |可直接从此版本升级|可降级到|兼容的 SDK 或 NuGet 包版本|支持的 .NET 运行时** |OS 版本。 |结束支持 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 8.0 RTO | 7.1 CU10 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、.NET Core 3.1、.NET Core 2.1、 <br>所有 4.5 版本及更高版本的 .NET Full Framework| [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 当前版本 |
-| 7.2 CU7 | 7.0 CU9 | 7.1 | 版本 4.2 或更低版本 | .NET 5.0（预览版支持）、.NET Core 3.1、.NET Core 2.1、<br>所有 4.5 版本及更高版本的 .NET Full Framework | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2021 年 11 月 30 日 |
-| 7.2 CU6 | 7.0 CU4 |7.1 | 版本 4.2 或更低版本 | .NET 5.0（预览版支持）、.NET Core 3.1、.NET Core 2.1、<br>所有 4.5 版本及更高版本的 .NET Full Framework | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date)| 2021 年 11 月 30 日 |
-| 7.2 RTO-CU5 | 7.0 CU4 | 7.1 |版本 4.2 或更低版本 | .NET Core 3.1、.NET Core 2.1、<br>所有 4.5 版本及更高版本的 .NET Full Framework | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date)| 2021 年 11 月 30 日 |
-| 7.1 |7.0 CU3 |不适用 | 版本 4.1 或更低版本 | .NET Core 3.1、.NET Core 2.1、<br>所有 4.5 版本及更高版本的 .NET Full Framework | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2021 年 7 月 31 日 |
+| 8.0 CU1 | 7.1 CU10 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 当前版本 |
+| 8.0 RTO | 7.1 CU10 | 7.2 | 版本 5.0 或更低版本 | .NET 5.0 (GA)、>= .NET Core 2.1、 <br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 当前版本 |
+| 7.2 CU7 | 7.0 CU9 | 7.1 | 版本 4.2 或更低版本 | .NET 5.0（预览版支持）、>= .NET Core 2.1、<br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2021 年 11 月 30 日 |
+| 7.2 CU6 | 7.0 CU4 |7.1 | 版本 4.2 或更低版本 | .NET 5.0（预览版支持）、>= .NET Core 2.1、<br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date)| 2021 年 11 月 30 日 |
+| 7.2 RTO-CU5 | 7.0 CU4 | 7.1 |版本 4.2 或更低版本 | >= .NET Core 2.1、<br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date)| 2021 年 11 月 30 日 |
+| 7.1 |7.0 CU3 |不适用 | 版本 4.1 或更低版本 | >= .NET Core 2.1、<br>全部 >= .NET Framework 4.5 | [请参阅受支持的 OS 版本](#supported-windows-versions-and-support-end-date) | 2021 年 7 月 31 日 |
 
 ** Service Fabric 不提供 .NET Core 运行时。 由服务作者负责确保其<a href="/dotnet/core/deploying/">可用</a>。
 
@@ -55,12 +56,13 @@ ms.locfileid: "108140112"
 
 ## <a name="linux"></a>Linux
 
-| Service Fabric 运行时 | 可直接从此版本升级 |可降级到 |兼容的 SDK 或 NuGet 包版本 | 受支持的 dotnet 运行时** | OS 版本 | 结束支持 |
+| Service Fabric 运行时 | 可直接从此版本升级 |可降级到 |兼容的 SDK 或 NuGet 包版本 | 支持的 .NET 运行时** | OS 版本 | 结束支持 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 8.0 RTO | 7.1 CU8 | 7.2 | 版本 5.0 或更低版本 | .NET Core 3.1、.NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 当前版本 |
-| 7.2 CU7 | 7.0 CU9 | 7.1 | 低于或等于版本 4.2 | .NET Core 3.1、.NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 11 月 30 日 |
-| 7.2 RTO-CU6 | 7.0 CU4 | 7.1 | 低于或等于版本 4.2 | .NET Core 3.1、.NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 11 月 30 日 |
-| 7.1 | 7.0 CU3 | 不适用 | 低于或等于版本 4.1 | .NET Core 3.1、.NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 7 月 31 日 |
+| 8.0 CU1 | 7.1 CU8 | 7.2 | 版本 5.0 或更低版本 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 当前版本 |
+| 8.0 RTO | 7.1 CU8 | 7.2 | 版本 5.0 或更低版本 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 当前版本 |
+| 7.2 CU7 | 7.0 CU9 | 7.1 | 低于或等于版本 4.2 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 11 月 30 日 |
+| 7.2 RTO-CU6 | 7.0 CU4 | 7.1 | 低于或等于版本 4.2 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 11 月 30 日 |
+| 7.1 | 7.0 CU3 | 不适用 | 低于或等于版本 4.1 | >= .NET Core 2.1 | [请参阅受支持的 OS 版本](#supported-linux-versions-and-support-end-date) | 2021 年 7 月 31 日 |
 
 ** Service Fabric 不提供 .NET Core 运行时，由服务作者负责确保其<a href="/dotnet/core/deploying/">可用</a>
 
@@ -73,16 +75,25 @@ ms.locfileid: "108140112"
 | Ubuntu 18.04 | 2028 年 4 月 | <a href="https://wiki.ubuntu.com/Releases">Ubuntu 生命周期</a>|
 | Ubuntu 16.04 | 2024 年 4 月 | <a href="https://wiki.ubuntu.com/Releases">Ubuntu 生命周期</a>|
 
-<br>
+## <a name="supported-net-runtimes"></a>支持的 .NET 运行时
+
+下表列出了 Service Fabric 支持的 .NET 运行时：
+
+| Service Fabric 运行时 | Windows 支持的 .NET 运行时 |Linux 支持的 .NET 运行时 |
+| --- | --- | --- |
+| 8.0 CU1 | .NET 5.0、>= .NET Core 2.1、全部 >= .NET Framework 4.5 | >= .NET Core 2.1|
+| 8.0 RTO | .NET 5.0、>= .NET Core 2.1、全部 >= .NET Framework 4.5 | >= .NET Core 2.1|
 
 ## <a name="service-fabric-version-name-and-number-reference"></a>Service Fabric 版本名称和版本号参考
 下表列出了 Service Fabric 的版本名称以及相应的版本号。
 
 | 版本名称 | Windows 版本号 | Linux 版本号 |
 | --- | --- | --- |
+| 8.0 CU1 | 8.0.516.9590 | 8.0.515.1 | 
 | 8.0 RTO | 8.0.514.9590 | 8.0.513.1 | 
 | 7.2 CU7 | 7.2.477.9590 | 7.2.476.1 |
 | 7.2 CU6 | 7.2.457.9590 | 7.2.456.1 |
+| 7.2 CU7 | 7.2.477.9590 | 7.2.476.1 |
 | 7.2 CU5 | 7.2.452.9590 | 7.2.454.1 |
 | 7.2 CU4 | 7.2.445.9590 | 7.2.447.1 |
 | 7.2 CU3 | 7.2.433.9590 | NA |

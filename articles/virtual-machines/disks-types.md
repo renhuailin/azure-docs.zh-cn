@@ -3,17 +3,17 @@ title: 选择 Azure IaaS VM 的磁盘类型 - 托管磁盘
 description: 了解虚拟机的可用 Azure 磁盘类型，包括超级磁盘、高级 SSD、标准 SSD 和标准 HDD。
 author: roygara
 ms.author: rogarana
-ms.date: 09/30/2020
+ms.date: 05/12/2021
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 1a7e8e71e26af241d16095a5fa1e6a02a7e3d4c2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 782d4d18e9b6ffc16c1d95a995cef806adc42904
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96500761"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110083415"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure 有哪些可用的磁盘类型？
 
@@ -42,7 +42,7 @@ Azure 超级磁盘为 Azure IaaS VM 提供高吞吐量、高 IOPS 和一贯低�
 超级磁盘的一些重要功能包括：
 
 - 磁盘容量：超级磁盘容量范围为 4 GiB 至 64 TiB。
-- 磁盘 IOPS：超级磁盘支持 300 IOPS/GiB 的 IOPS 限制，每个磁盘最高可达 160K IOPS。 若要实现预配的 IOPS，请确保选择的磁盘 IOPS 小于 VM IOPS 限制。 每个磁盘的最低保证 IOPS 为 2 IOPS/GiB，总体基线最低为 100 IOPS。 例如，如果有 4 GiB 的超级磁盘，则至少需要 100 IOPS，而不是 8 IOPS。
+- 磁盘 IOPS：超级磁盘支持 300 IOPS/GiB 的 IOPS 限制，每个磁盘最高可达 160K IOPS。 若要实现预配的 IOPS，请确保选择的磁盘 IOPS 小于 VM IOPS 限制。 每个磁盘的最低保证 IOPS 为 1 IOPS/GiB，总体基线最低为 100 IOPS。 例如，如果你有一个 4 GiB 的超级磁盘，则你至少有 100 IOPS，而不是 8 IOPS。
 - 磁盘吞吐量：使用超级磁盘时，单个磁盘对应于每个预配 IOPS 的吞吐量限制为 256 KiB/秒，每个磁盘的最大吞吐量为 2000 MBps（其中 MBps = 每秒 10^6 字节）。 对于每个预配的 IOPS，每个磁盘的最低保证吞吐量为 4KiB/s，总体基线最低为 1 MBps。
 - 超级磁盘支持在运行时调整磁盘性能属性（IOPS 和吞吐量），而无需从虚拟机拆离磁盘。 在对磁盘上发出磁盘性能调整大小操作后，更改实际上可能最多需要一个小时才能生效。 在 24 小时内，最多只能进行 4 次性能大小调整操作。 性能大小调整操作可能会因为性能带宽容量不足而失败。
 

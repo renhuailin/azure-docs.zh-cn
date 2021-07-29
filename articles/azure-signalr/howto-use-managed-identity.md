@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: dee15977318eda7bcd0b1950286bb33f621221dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7f39e209cf2f01abaf836924fc25dc64275f5fcb
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98731578"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089805"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Azure SignalR 服务的托管标识
 
@@ -84,7 +84,7 @@ Azure Active Directory (Azure AD) 中间件具有用于验证访问令牌的内�
 
 无需代码即可轻松有效地在函数应用中设置访问令牌验证。
 
-1. 在“身份验证/授权”页中，将“应用服务身份验证”切换为“开”  。
+1. 在“身份验证(经典)”页中，将“应用服务身份验证”切换到“开”。
 
 2. 在“请求未经身份验证时需执行的操作”中，选择“使用 Azure Active Directory 登录” 。
 
@@ -97,6 +97,10 @@ Azure Active Directory (Azure AD) 中间件具有用于验证访问令牌的内�
 6. 在 SignalR 服务中进入“上游设置”，然后选择“使用托管标识”和“从现有应用程序中选择”  。 选择之前创建的应用程序。
 
 完成这些设置后，函数应用将拒绝标头中没有访问令牌的请求。
+
+> [!Important] 
+> 若要通过身份验证，“颁发者 URL”必须与令牌中的“iss”声明相匹配。 目前，我们仅支持 v1 终结点（请参阅 [v1.0 和 v2.0](../active-directory/develop/access-tokens.md#v10-and-v20)），因此“颁发者 URL”应类似于 `https://sts.windows.net/<tenant-id>/`。 检查 Azure 函数中配置的“颁发者 URL”。 对于“身份验证”，请转到“标识提供者” -> “编辑” -> “颁发者 URL”；对于“身份验证(经典)”，请转到“Azure Active Directory” -> “高级” -> “颁发者 URL”
+
 
 ## <a name="use-a-managed-identity-for-key-vault-reference"></a>使用托管标识实现 Key Vault 引用
 

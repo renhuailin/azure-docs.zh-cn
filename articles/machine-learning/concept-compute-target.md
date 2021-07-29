@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: a0644342c417cb06c257372e526fff55df62f9b9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 389460e79dbcc9c6ba9480540d7f361382ef5987
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095421"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112021080"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标?
 
@@ -86,28 +86,29 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 
 | **支持的 VM 系列**  | **限制** | **类别** | **支持的服务** |
 |------------|------------|------------|------------|
-| D | 无。 | 常规用途 | 计算群集和实例 |
-| DDSv4 | 无。 | 常规用途 | 计算群集和实例 |
-| Dv2 | 无。 | 常规用途 | 计算群集和实例 |
-| Dv3 | 无。| 常规用途 | 计算群集和实例 |
-| DSv2 | 无。 | 常规用途 | 计算群集和实例 |
-| DSv3 | 无。| 常规用途 | 计算群集和实例 |
-| EAv4 | 无。 | 内存优化 | 计算群集和实例 |
-| Ev3 | 无。 | 内存优化 | 计算群集和实例 |
-| FSv2 | 无。 | 计算优化 | 计算群集和实例 |
-| H | 无。 | 高性能计算 | 计算群集和实例 |
-| HB | 需要审批。 | 高性能计算 | 计算群集和实例 |
-| HBv2 | 需要审批。 |  高性能计算 | 计算群集和实例 |
-| HCS | 需要审批。 |  高性能计算 | 计算群集和实例 |
-| M | 需要审批。 | 内存优化 | 计算群集和实例 |
-| NC | 无。 |  GPU | 计算群集和实例 |
-| NC 促销 | 无。 | GPU | 计算群集和实例 |
-| NCsv2 | 需要审批。 | GPU | 计算群集和实例 |
-| NCsv3 | 需要审批。 | GPU | 计算群集和实例 |
-| NDs | 需要审批。 | GPU | 计算群集和实例 |
-| NDv2 | 需要审批。 | GPU | 计算群集和实例 |
-| NV | 无。 | GPU | 计算群集和实例 |
-| NVv3 | 需要审批。 | GPU | 计算群集和实例 |
+| [DDSv4](../virtual-machines/ddv4-ddsv4-series.md#ddsv4-series) | 无。 | 常规用途 | 计算群集和实例 |
+| [Dv2](../virtual-machines/dv2-dsv2-series.md#dv2-series) | 无。 | 常规用途 | 计算群集和实例 |
+| [Dv3](../virtual-machines/dv3-dsv3-series.md#dv3-series) | 无。| 常规用途 | 计算群集和实例 |
+| [DSv2](../virtual-machines/dv2-dsv2-series.md#dsv2-series) | 无。 | 常规用途 | 计算群集和实例 |
+| [DSv3](../virtual-machines/dv3-dsv3-series.md#dsv3-series) | 无。| 常规用途 | 计算群集和实例 |
+| [EAv4](../virtual-machines/eav4-easv4-series.md) | 无。 | 内存优化 | 计算群集和实例 |
+| [Ev3](../virtual-machines/ev3-esv3-series.md) | 无。 | 内存优化 | 计算群集和实例 |
+| [FSv2](../virtual-machines/fsv2-series.md) | 无。 | 计算优化 | 计算群集和实例 |
+| [H](../virtual-machines/h-series.md) | 无。 | 高性能计算 | 计算群集和实例 |
+| [HB](../virtual-machines/hb-series.md) | 需要审批。 | 高性能计算 | 计算群集和实例 |
+| [HBv2](../virtual-machines/hbv2-series.md) | 需要审批。 |  高性能计算 | 计算群集和实例 |
+| [HC](../virtual-machines/hc-series.md) | 需要审批。 |  高性能计算 | 计算群集和实例 |
+| [M](../virtual-machines/m-series.md) | 需要审批。 | 内存优化 | 计算群集和实例 |
+| [NC](../virtual-machines/nc-series.md) | 无。 |  GPU | 计算群集和实例 |
+| [NC 促销](../virtual-machines/nc-series.md) | 无。 | GPU | 计算群集和实例 |
+| [NCv2](../virtual-machines/ncv2-series.md) | 需要审批。 | GPU | 计算群集和实例 |
+| [NCv3](../virtual-machines/ncv3-series.md) | 需要审批。 | GPU | 计算群集和实例 |
+| [ND](../virtual-machines/nd-series.md) | 需要审批。 | GPU | 计算群集和实例 |
+| [NDv2](../virtual-machines/ndv2-series.md) | 需要审批。 | GPU | 计算群集和实例 |
+| [NV](../virtual-machines/nv-series.md) | 无。 | GPU | 计算群集和实例 |
+| [NVv3](../virtual-machines/nvv3-series.md) | 需要审批。 | GPU | 计算群集和实例 |
+| [NCT4_v3](../virtual-machines/nct4-v3-series.md) | 需要审批。 | GPU | 计算群集和实例 |
+| [NDA100_v4](../virtual-machines/nda100-v4-series.md) | 需要审批。 | GPU | 计算群集和实例 |
 
 
 虽然 Azure 机器学习支持这些 VM 系列，但它们可能并非在所有 Azure 区域中均可用。 若要检查 VM 系列是否可用，请参阅[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。
@@ -117,6 +118,22 @@ Azure 机器学习为不同的计算目标提供不同的支持。 典型的模�
 > * [REST API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2020-08-01/examples/ListVMSizesResult.json)
 > * [Python SDK](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#supported-vmsizes-workspace--location-none-)
 >
+
+如果使用支持 GPU 的计算目标，请务必确保在训练环境中安装正确的 CUDA 驱动程序。 根据下表来确定要使用的正确的 CUDA 版本：
+
+| GPU 体系结构  | Azure VM 系列 | 支持的 CUDA 版本 |
+|------------|------------|------------|
+| Ampere | NDA100_v4 | 高于 11.0 |
+| Turing | NCT4_v3 | 10.0+ |
+| Volta | NCv3、NDv2 | 9.0+ |
+| Pascal | NCv2、ND | 9.0+ |
+| Maxwell | NV、NVv3 | 9.0+ |
+| Kepler | NC、NC 促销| 9.0+ |
+
+除了确保 CUDA 版本和硬件兼容以外，还请确保 CUDA 版本与你正在使用的机器学习框架的版本兼容： 
+
+- 对于 PyTorch，可以在[此处](https://pytorch.org/get-started/previous-versions/)查看兼容性。 
+- 对于 Tensorflow，可以在[此处](https://www.tensorflow.org/install/source#gpu)查看兼容性。
 
 ### <a name="compute-isolation"></a>计算隔离
 

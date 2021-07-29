@@ -1,22 +1,22 @@
 ---
 title: 了解 Azure IoT 中心消息路由 | Microsoft Docs
 description: 开发人员指南 - 如何使用消息路由发送设备到云的消息。 包含有关发送遥测和非遥测数据的信息。
-author: ash2017
-manager: briz
+author: nehsin
+manager: mehmet.kucukgoz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/15/2019
-ms.author: asrastog
+ms.date: 05/14/2021
+ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: 07bbd50dbc415b86aa0c511d46ead9f0612df107
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d7f6030e8d4d2807084d212713df8630f2d7a17a
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642503"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191716"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>使用 IoT 中心消息路由将设备到云消息发送到不同的终结点
 
@@ -24,7 +24,7 @@ ms.locfileid: "105642503"
 
 消息路由使你能够以自动、可缩放以及可靠的方式将消息从设备发送到云服务。 消息路由可用于： 
 
-* **发送设备遥测消息以及事件**（即设备生命周期事件、设备孪生更改事件和数字孪生更改事件）到内置终结点和自定义终结点。 了解有关[路由终结点](#routing-endpoints)。 若要详细了解从 IoT 即插即用设备发送的事件，请参阅[了解 IoT 即插即用数字孪生体](../iot-pnp/concepts-digital-twin.md)。
+* **发送设备遥测消息以及事件**（即设备生命周期事件、设备孪生更改事件、数字孪生更改事件和设备连接状态事件）到内置终结点和自定义终结点。 了解有关[路由终结点](#routing-endpoints)。 若要详细了解从 IoT 即插即用设备发送的事件，请参阅[了解 IoT 即插即用数字孪生体](../iot-pnp/concepts-digital-twin.md)。
 
 * **在将数据路由到各个终结点之前对数据进行筛选**，筛选方法是通过应用丰富的查询。 消息路由允许你查询消息属性和消息正文以及设备孪生标记和设备孪生属性。 深入了解如何使用[消息路由中的查询](iot-hub-devguide-routing-query-syntax.md)。
 
@@ -38,7 +38,7 @@ IoT 中心有一个默认的内置终结点（消息/事件），此终结点与
 
 每条消息都路由到与它的路由查询匹配的所有终结点。 换句话说，消息可以路由到多个终结点。
 
-如果自定义终结点具有防火墙配置，请考虑使用 Microsoft 受信任的第一方例外，让 IoT 中心可以访问特定终结点 - [Azure 存储](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)、[Azure 事件中心](./virtual-network-support.md#egress-connectivity-to-event-hubs-endpoints-for-routing)和 [Azure 服务总线](./virtual-network-support.md#egress-connectivity-to-service-bus-endpoints-for-routing)。 这适用于使用[托管服务标识](./virtual-network-support.md)的 IoT 中心的选定区域。
+如果自定义终结点具有防火墙配置，请考虑使用 [Microsoft 受信任的第一方例外情况](./virtual-network-support.md#egress-connectivity-from-iot-hub-to-other-azure-resources)
 
 IoT 中心目前支持以下终结点：
 
@@ -59,7 +59,7 @@ IoT 中心支持将数据以 [Apache Avro](https://avro.apache.org/) 格式和 J
 
 只有在配置 Blob 存储终结点时才能设置编码格式，不能编辑现有终结点的编码格式。 若要为现有终结点切换编码格式，则需要删除现有终结点并重新创建具有所需格式的自定义终结点。 一个有用的策略可能是创建具有所需编码格式的新自定义终结点，并将并行路由添加到该终结点。 通过这种方式，你可以在删除现有终结点之前验证数据。
 
-可以使用 IoT 中心的创建或更新 REST API（具体说来就是 [RoutingStorageContainerProperties](/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties)、Azure 门户、[Azure CLI](/cli/azure/iot/hub/routing-endpoint) 或 [Azure PowerShell](/powershell/module/az.iothub/add-aziothubroutingendpoint)）选择编码格式。 下图说明如何在 Azure 门户中选择编码格式。
+可以使用 IoT 中心的创建或更新 REST API（具体说来就是 [RoutingStorageContainerProperties](/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties)、[Azure 门户](https://portal.azure.com)、[Azure CLI](/cli/azure/iot/hub/routing-endpoint) 或 [Azure PowerShell](/powershell/module/az.iothub/add-aziothubroutingendpoint)）选择编码格式。 下图说明如何在 Azure 门户中选择编码格式。
 
 ![Blob 存储终结点编码](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -120,15 +120,24 @@ public void ListBlobsInContainer(string containerName, string iothub)
 
 ## <a name="fallback-route"></a>回退路由
 
-回退路由将所有不满足任何现有路由上的查询条件的消息发送到与[事件中心](../event-hubs/index.yml)兼容的内置事件中心（消息/事件）。 如果已启用消息路由，则可以启用此回退路由功能。 在创建一个路由后，数据将停止流向内置终结点，除非创建了到该终结点的路由。 如果没有到内置终结点的路由并且已启用回退路由，则仅与路由上的任何查询条件不匹配的消息将被发送到内置终结点。 此外，如果已删除现有路由，必须启用回退路由才能接收内置终结点处的所有数据。
+回退路由将所有不满足任何现有路由上的查询条件的消息发送到与[事件中心](../event-hubs/index.yml)兼容的内置事件中心（消息/事件）。 如果已启用消息路由，则可以启用此回退路由功能。 在创建一个路由后，数据将停止流向内置终结点，除非创建了到该终结点的路由。 如果没有到内置终结点的路由并且已启用回退路由，则仅与路由上的任何查询条件不匹配的消息将被发送到内置终结点。 此外，如果已删除现有路由，必须启用回退路由才能接收内置终结点处的所有数据。 
 
 可以在 Azure 门户->“消息路由”边栏选项卡中启用/禁用回退路由。 还可以将 Azure 资源管理器用于 [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) 来为回退路由使用自定义终结点。
 
 ## <a name="non-telemetry-events"></a>非遥测事件
 
-除了设备遥测数据之外，消息路由还支持发送设备孪生更改事件、设备生命周期事件和数字孪生体更改事件。 例如，如果使用数据源创建一个设置为到 **设备孪生更改事件** 的路由，IoT 中心会将消息发送到包含设备孪生更改的终结点。 同样，如果创建路由时将数据源设置为“设备生命周期事件”，则 IoT 中心会发送一条消息，指示是否删除或创建了设备。 最后，在 [Azure IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)过程中，开发人员可以创建将数据源设置为“数字孪生体更改事件”的路由，并且 IoT 中心在设置或更改数字孪生体属性、更换数字孪生体或发生基础设备孪生更改事件时会发送消息。
+除了设备遥测数据之外，消息路由还支持发送设备孪生更改事件、设备生命周期事件、数字孪生体更改事件和设备连接状态事件。 例如，如果使用数据源创建一个设置为到 **设备孪生更改事件** 的路由，IoT 中心会将消息发送到包含设备孪生更改的终结点。 同样，如果创建路由时将数据源设置为“设备生命周期事件”，则 IoT 中心会发送一条消息，指示是否删除或创建了设备。 在 [Azure IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)过程中，开发人员可以创建将数据源设置为“数字孪生体更改事件”的路由，并且 IoT 中心在设置或更改数字孪生体属性、更换数字孪生体或发生基础设备孪生更改事件时会发送消息。 最后，如果创建路由时将数据源设置为“设备连接状态事件”，则 IoT 中心会发送一条消息，指示设备已经连接还是已经断开连接。
+
 
 [IoT 中心还集成了 Azure 事件网格](iot-hub-event-grid.md)来发布设备事件以支持基于这些事件的工作流的实时集成和自动化。 请参阅[消息路由和事件网格之间的主要区别](iot-hub-event-grid-routing-comparison.md)来了解哪种更适合你的方案。
+
+## <a name="limitations-for-device-connection-state-events"></a>设备连接状态事件的限制
+
+若要接收设备连接状态事件，设备必须通过 IoT 中心调用“发送设备到云的遥测数据”或“接收云到设备的消息”操作。  但是，如果设备使用 AMQP 协议与 IoT 中心进行连接，建议你让设备调用“接收云到设备的消息”操作，否则其连接状态通知可能会延迟数分钟。 如果设备使用 MQTT 协议进行连接，IoT 中心会让云到设备链接保持打开状态。 若要打开 AMQP 的云到设备链接，请调用[异步接收 API](/rest/api/iothub/device/receivedeviceboundnotification)。
+
+只要设备发送遥测数据，设备到云的链接就保持打开状态。
+
+如果设备连接“闪烁”（意即设备频繁地连接和断开连接），则 IoT 中心不会发送每个连接状态，但会发布通过每隔 60 秒定期拍摄的快照获取的当前连接状态，直到“闪烁”停止。 接收具有不同序列号或不同连接状态事件的相同连接状态事件均意味着设备连接状态发生变化。
 
 ## <a name="testing-routes"></a>测试路由
 

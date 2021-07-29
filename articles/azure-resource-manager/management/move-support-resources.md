@@ -3,12 +3,12 @@ title: 资源类型支持的移动操作
 description: 列出了可移动到新资源组、订阅或区域的 Azure 资源类型。
 ms.topic: conceptual
 ms.date: 04/23/2021
-ms.openlocfilehash: 5a347a9041423c7e466499cdd65fe27e6623ab98
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 3a43ea09dd4986d1f2d0e2679e81f5b25b590f7e
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108737398"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968333"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 
@@ -911,7 +911,7 @@ ms.locfileid: "108737398"
 > | 资源类型 | 资源组 | 订阅 | 区域移动 |
 > | ------------- | ----------- | ---------- | ----------- |
 > | 控制器 | 是 | 是 | 否 |
-> | AKS 群集 | 待批准 | 待批准 | 否<br/><br/> [了解更多](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region)如何移动到其他区域。
+> | AKS 群集 | 待批准 | 待批准 | 否<br/><br/> [了解更多](../../dev-spaces/index.yml)如何移动到其他区域。
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -1448,7 +1448,7 @@ ms.locfileid: "108737398"
 > | privateendpointredirectmaps | 否 | 否 | 否 |
 > | privateendpoints | 否 | 否 | 否 |
 > | privatelinkservices | 否 | 否 | 否 |
-> | publicipaddresses | 是 - 基本 SKU<br>是 - 标准 SKU | 是 - 基本 SKU<br>否 - 标准 SKU | 是<br/><br/> 使用 [Azure 资源转移器](../../resource-mover/tutorial-move-region-virtual-machines.md) 移动公共 IP 地址。 |
+> | publicipaddresses | 是 - 基本 SKU<br>是 - 标准 SKU | 是 - 基本 SKU<br>否 - 标准 SKU | 是<br/><br/> 使用 [Azure 资源转移器](../../resource-mover/tutorial-move-region-virtual-machines.md)移动公共 IP 地址配置（IP 地址不会被保留）。 |
 > | publicipprefixes | 是 | 是 | 否 |
 > | routefilters | 否 | 否 | 否 |
 > | routetables | 是 | 是 | 否 |

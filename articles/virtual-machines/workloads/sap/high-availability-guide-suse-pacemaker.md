@@ -12,14 +12,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 05/13/2021
 ms.author: radeltch
-ms.openlocfilehash: aa2006ecfad91e21ac13a1e63be23302b2a70399
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: c762f0e04a7079fff72962cafe44b06acfcf0eaf
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551027"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110100029"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -442,8 +442,8 @@ o- / ...........................................................................
    >可以通过运行 SUSEConnect ---list-extensions 来检查扩展。  
    >要加快使用 Azure 隔离代理进行故障转移，请执行以下操作：
    > - 在 SLES 12 SP4 或 SLES 12 SP5 上，安装版本 4.6.2 或更高版本的包 python-azure-mgmt-compute  
-   > - 在 SLES 15 上，安装版本 4.6.2 或更高版本的包 python 3-azure-mgmt-compute 
-
+   > - 在 SLES 15.X 上，安装版本 **4.6.2** 的包 python **3**-azure-mgmt-compute，但不安装更高版本。 避免安装版本 17.0.0-6.7.1 的包 python **3**-azure-mgmt-compute，因为它包含与 Azure 隔离代理不兼容的更改    
+     
 1. [A] 设置主机名称解析
 
    可以使用 DNS 服务器，或修改所有节点上的 /etc/hosts。 此示例演示如何使用 /etc/hosts 文件。
@@ -660,7 +660,7 @@ sudo crm configure property stonith-timeout=900
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>用于 Azure 计划事件的 Pacemaker 配置
 
-Azure 提供[计划事件](../../linux/scheduled-events.md)。 计划事件通过元数据服务提供，可为应用程序留出时间来准备 VM 关闭、VM 重新部署等事件。资源代理 [azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161) 可监视计划的 Azure 事件。 如果检测到事件，该代理将尝试停止受影响 VM 上的所有资源，并将它们移至群集中的另一个节点。 若要实现这一点，必须配置其他 Pacemaker 资源。 
+Azure 提供[计划事件](../../linux/scheduled-events.md)。 计划事件通过元数据服务提供，可为应用程序留出时间来准备 VM 关闭、VM 重新部署等事件。资源代理 [azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161) 可监视计划的 Azure 事件。 如果检测到事件，并且资源代理确定有另一个可用的群集节点，则 azure-events 代理会将目标群集节点置于备用模式，以强制群集将资源从具有挂起的 [Azure 计划事件](../../linux/scheduled-events.md) 的 VM 中迁移。 若要实现这一点，必须配置其他 Pacemaker 资源。 
 
 1. **[A]** 确保已安装 azure-events 代理包，并且其版本是最新的。 
 

@@ -6,17 +6,17 @@ author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ab6ca63e76e22fe82cf806da77258e427112d9f1
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: c12cb6c344554f4d18af28dd563b7c96358ea2ee
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320144"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095133"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Monitor 中的 Azure Key Vault 分析解决方案
 
 > [!NOTE]
-> 此解决方案已弃用。 [我们现在建议对 Key Vault 使用 Azure Monitor](./key-vault-insights-overview.md)。
+> 此解决方案已弃用。 [我们现在建议使用 Key Vault 见解](./key-vault-insights-overview.md)。
 
 ![Key Vault 符号](media/azure-key-vault/key-vault-analytics-symbol.png)
 
@@ -145,7 +145,7 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 
 在发生此项更改之前收集的数据不会显示在新解决方案中。 可以继续使用旧类型和字段名称查询此数据。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>后续步骤

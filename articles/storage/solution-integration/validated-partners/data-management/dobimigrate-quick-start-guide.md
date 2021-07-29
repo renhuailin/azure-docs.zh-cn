@@ -8,12 +8,12 @@ ms.date: 04/27/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 43a519cfd08ff96e2e53a07223f6cda31e98df50
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 6984230044dc70e6e5e05c7ae0dcb4789065c436
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108280933"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955355"
 ---
 # <a name="migrate-data-to-azure-with-datadobi-dobimigrate"></a>通过 Datadobi DobiMigrate 将数据迁移到 Azure
 
@@ -41,8 +41,8 @@ Microsoft 提供一个框架来帮助你开始使用 Azure。 [云采用框架](
 
 考虑将文件数据迁移到 Azure 时，需要注意几个方面。 继续之前，请先详细了解以下内容：
 
-- [存储迁移概述](/azure/storage/common/storage-migration-overview)
-- [迁移工具比较矩阵](/azure/storage/solution-integration/validated-partners/data-management/migration-tools-comparison)中 DobiMigrate 支持的最新功能。
+- [存储迁移概述](../../../common/storage-migration-overview.md)
+- [迁移工具比较矩阵](./migration-tools-comparison.md)中 DobiMigrate 支持的最新功能。
 
 请记住，需有足够的网络容量才能在不影响生产应用程序的情况下支持迁移。 本部分概述了可用于评估网络需求的工具和方法。
 
@@ -80,7 +80,7 @@ Microsoft 提供一个框架来帮助你开始使用 Azure。 [云采用框架](
    2. 为存储帐户提供唯一的名称
    3. 选择区域
    4. 根据需求选择“标准”或“高级”性能 。 如果选择“高级”，请在“高级帐户类型”中选择“文件共享”  。
-   5. 选择满足数据保护要求的[冗余](/azure/storage/common/storage-redundancy)
+   5. 选择满足数据保护要求的[冗余](../../../common/storage-redundancy.md)
    
    :::image type="content" source="./media/dobimigrate-quick-start-guide/azure-account-create-1.png" alt-text="显示门户中的存储帐户设置。":::
 
@@ -104,17 +104,17 @@ Microsoft 提供一个框架来帮助你开始使用 Azure。 [云采用框架](
 
 8. （可选）可将更多安全层添加到部署。
  
-   1. 配置基于角色的访问，以限制可对你的存储帐户进行更改的人员。 有关详细信息，请参阅[用于管理操作的内置角色](/azure/storage/common/authorization-resource-provider#built-in-roles-for-management-operations)。
+   1. 配置基于角色的访问，以限制可对你的存储帐户进行更改的人员。 有关详细信息，请参阅[用于管理操作的内置角色](../../../common/authorization-resource-provider.md#built-in-roles-for-management-operations)。
  
-   2.  通过[存储防火墙设置](/azure/storage/common/storage-network-security)将对帐户的访问限制为只能通过特定网段访问。 配置防火墙设置以阻止来自企业网络外部的访问。
+   2.  通过[存储防火墙设置](../../../common/storage-network-security.md)将对帐户的访问限制为只能通过特定网段访问。 配置防火墙设置以阻止来自企业网络外部的访问。
 
        :::image type="content" source="./media/dobimigrate-quick-start-guide/azure-storage-firewall.png" alt-text="展示门户中的存储防火墙设置。":::
 
-   3.  对帐户设置[删除锁](/azure/azure-resource-manager/management/lock-resources)，以防止意外删除存储帐户。
+   3.  对帐户设置[删除锁](../../../../azure-resource-manager/management/lock-resources.md)，以防止意外删除存储帐户。
 
        :::image type="content" source="./media/dobimigrate-quick-start-guide/azure-resource-lock.png" alt-text="显示如何在门户中设置删除锁。":::
 
-   4.  配置其他[安全性最佳做法](/azure/storage/blobs/security-recommendations)。
+   4.  配置其他[安全性最佳做法](../../../blobs/security-recommendations.md)。
 
 9.  在 DobiMigrate 中，导航到“配置”>“文件服务器”。 单击“添加”，添加 Microsoft Azure 文件存储作为文件服务器类型：
 
@@ -138,6 +138,24 @@ Microsoft 提供一个框架来帮助你开始使用 Azure。 [云采用框架](
 
 13. 单击“完成”以完成 Azure 文件存储配置。 然后，可以启动新的迁移任务。
 
+### <a name="start-a-new-migration"></a>启动新迁移
+
+DobiMigrate 可以通过手动添加迁移路径或使用批量导入来设置新的迁移。 批量导入会添加多个具有常见迁移选项的迁移。
+
+若要启动新的迁移，请执行以下操作：
+
+1. 单击仪表板上的“新建迁移”按钮。
+   
+    :::image type="content" source="./media/dobimigrate-quick-start-guide/dobimigrate-new-migration.png" alt-text="启动新迁移作业。":::
+
+1. 选择要迁移的源和路径。
+
+    :::image type="content" source="./media/dobimigrate-quick-start-guide/dobimigrate-select-source.png" alt-text="选择要迁移的源和路径。":::
+
+1. 选择“目标”。
+2. 验证协议并确认迁移选项。
+3. 单击“完成”以完成迁移过程。
+
 ## <a name="support"></a>支持 
 
 在迁移到 Azure 解决方案过程中需要帮助时，应该向 Datadobi 和 Azure 提出案例。
@@ -156,10 +174,11 @@ Datadobi 可以方便客户在 Azure 中部署解决方案以保护 Azure 虚拟
 
 - [通过 DobiMigrate 将文件数据迁移到 Azure](https://azuremarketplace.microsoft.com/marketplace/apps/datadobi1602192408529.datadobi-dobimigrate?tab=overview)
 
+## <a name="next-steps"></a>后续步骤
 
-## <a name="additional-resources"></a>其他资源
+有关详细信息，请访问我们的指南：
 
-- [Azure 存储迁移概述](/azure/storage/common/storage-migration-overview)
+- [Azure 存储迁移概述](../../../common/storage-migration-overview.md)
 - [DobiMigrate 用户手册](https://downloads.datadobi.com/NAS/olh/latest/dobimigrate.html)
 - [DobiMigrate 先决条件指南](https://downloads.datadobi.com/NAS/guides/latest/prerequisites.html)
 - [DobiMigrate 安装指南](https://downloads.datadobi.com/NAS/guides/latest/installguide.html)

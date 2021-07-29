@@ -9,33 +9,41 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 101f1452f547f195288e2d22bc516880100c7735
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: ba7c3459d5df540304b0595ac6aacf039c558d6c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107496820"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094647"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>在 Azure Active Directory 的管理单元中添加和管理用户
 
 在 Azure Active Directory (Azure AD) 中，你可以向管理单元添加用户，以便更精细地控制管理范围。
 
-若要准备将 PowerShell 和 Microsoft Graph 用于管理单元的管理，请参阅[入门](admin-units-manage.md#get-started)。
+## <a name="prerequisites"></a>先决条件
+
+- 每个管理单元管理员都有 Azure AD Premium P1 或 P2 许可证
+- 管理单元成员有 Azure AD 免费许可证
+- 特权角色管理员或全局管理员
+- 使用 PowerShell 时需要 AzureAD 模块
+- 将 Graph 浏览器用于 Microsoft Graph API 时需要管理员同意
+
+有关详细信息，请参阅[使用 PowerShell 或 Graph 浏览器的先决条件](prerequisites.md)。
 
 ## <a name="add-users-to-an-administrative-unit"></a>向管理单元添加用户
 
-### <a name="use-the-azure-portal"></a>使用 Azure 门户
+### <a name="azure-portal"></a>Azure 门户
 
 你可以逐个地或以批量操作的方式将用户分配到管理单元。
 
 - 从用户配置文件分配单个用户：
 
-   1. 使用特权角色管理员权限登录到 [Azure AD 管理中心](https://portal.azure.com)。
+   1. 登录到 [Azure AD 管理中心](https://portal.azure.com)。
 
    1. 选择“用户”，然后打开用户配置文件，选择要分配给管理单元的用户。
    
@@ -47,7 +55,7 @@ ms.locfileid: "107496820"
 
 - 从管理单元分配单个用户：
 
-   1. 使用特权角色管理员权限登录到 [Azure AD 管理中心](https://portal.azure.com)。
+   1. 登录到 [Azure AD 管理中心](https://portal.azure.com)。
    1. 选择“管理单元”，然后选择要为其分配用户的管理单元。
    1. 选择“所有用户”，然后选择“添加成员”，然后在“添加成员”窗格上，选择要分配给管理单元的一个或多个用户  。
 
@@ -55,7 +63,7 @@ ms.locfileid: "107496820"
 
 - 批量分配用户：
 
-   1. 使用特权角色管理员权限登录到 [Azure AD 管理中心](https://portal.azure.com)。
+   1. 登录到 [Azure AD 管理中心](https://portal.azure.com)。
 
    1. 选择“管理单元”。
 
@@ -65,7 +73,7 @@ ms.locfileid: "107496820"
 
       ![“用户”窗格的屏幕截图，用于将用户批量分配给管理单元。](./media/admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
 
-### <a name="use-powershell"></a>使用 PowerShell
+### <a name="powershell"></a>PowerShell
 
 在 PowerShell 中，使用以下示例中的 `Add-AzureADAdministrativeUnitMember` cmdlet 将用户添加到管理单元。 要向其中添加用户的管理单元的对象 ID 和要添加的用户的对象 ID 用作参数。 根据特定环境的需要更改突出显示的部分。
 
@@ -76,7 +84,7 @@ Add-AzureADMSAdministrativeUnitMember -Id $adminUnitObj.Id -RefObjectId $userObj
 ```
 
 
-### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 用测试信息替换占位符并运行以下命令：
 
@@ -104,7 +112,7 @@ POST /administrativeUnits/{admin-unit-id}/members/$ref
 
 ## <a name="view-a-list-of-administrative-units-for-a-user"></a>查看用户的管理单元列表
 
-### <a name="use-the-azure-portal"></a>使用 Azure 门户
+### <a name="azure-portal"></a>Azure 门户
 
 在 Azure 门户中可以通过以下方式打开用户配置文件：
 
@@ -116,7 +124,7 @@ POST /administrativeUnits/{admin-unit-id}/members/$ref
 
    ![已向其分配用户的管理单元的屏幕截图。](./media/admin-units-add-manage-users/list-user-admin-units.png)
 
-### <a name="use-powershell"></a>使用 PowerShell
+### <a name="powershell"></a>PowerShell
 
 运行以下命令：
 
@@ -127,7 +135,7 @@ Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember 
 > [!NOTE]
 > 默认情况下，`Get-AzureADAdministrativeUnitMember` 只返回管理单元的 100 个成员。 若要检索更多成员，可以添加 `"-All $true"`。
 
-### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 用测试信息替换占位符并运行以下命令：
 
@@ -137,7 +145,7 @@ https://graph.microsoft.com/v1.0/users/{user-id}/memberOf/$/Microsoft.Graph.Admi
 
 ## <a name="remove-a-single-user-from-an-administrative-unit"></a>从管理单元中删除单个用户
 
-### <a name="use-the-azure-portal"></a>使用 Azure 门户
+### <a name="azure-portal"></a>Azure 门户
 
 可以通过以下两种方式之一从管理单元中删除用户： 
 
@@ -153,7 +161,7 @@ https://graph.microsoft.com/v1.0/users/{user-id}/memberOf/$/Microsoft.Graph.Admi
   
      ![显示如何在管理单元级别删除用户的屏幕截图。](./media/admin-units-add-manage-users/admin-units-remove-user.png)
 
-### <a name="use-powershell"></a>使用 PowerShell
+### <a name="powershell"></a>PowerShell
 
 运行以下命令：
 
@@ -161,7 +169,7 @@ https://graph.microsoft.com/v1.0/users/{user-id}/memberOf/$/Microsoft.Graph.Admi
 Remove-AzureADMSAdministrativeUnitMember -Id $adminUnitId -MemberId $memberUserObjId
 ```
 
-### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 用测试信息替换占位符并运行以下命令：
 

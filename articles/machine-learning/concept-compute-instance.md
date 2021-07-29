@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 8bc3c3dfba8414381c4bc26508e96d12925df7ab
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 966b471efc7fcadbb4207fe94bb11e5333bfb0a0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135772"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095439"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
 Azure 机器学习计算实例是面向数据科学家的基于云的托管式工作站。
 
-计算实例可让客户轻松地开始进行 Azure 机器学习开发，并为 IT 管理员提供管理和企业就绪功能。  
+计算实例可让客户轻松地开始进行 Azure 机器学习开发，并为 IT 管理员提供管理和企业就绪功能。
 
-可以使用计算实例作为在云中进行机器学习的完全配置和托管的开发环境。 还可以在开发和测试中将它们用作训练和推理的计算目标。  
+可以使用计算实例作为在云中进行机器学习的完全配置和托管的开发环境。 还可以在开发和测试中将它们用作训练和推理的计算目标。
 
 对于生产级模型训练，请使用具有多节点缩放功能的 [Azure 机器学习计算群集](how-to-create-attach-compute-cluster.md)。 对于生产级模型部署，请使用 [Azure Kubernetes 服务群集](how-to-deploy-azure-kubernetes-service.md)。
 
@@ -39,21 +39,24 @@ Azure 机器学习计算实例是面向数据科学家的基于云的托管式�
 |已针对 ML 进行了预配置|使用预配置的最新 ML 包、深度学习框架和 GPU 驱动程序完成设置任务，可节省时间。|
 |完全可自定义|支持多种 Azure VM 类型，包括 GPU 和持久性低级自定义，例如，安装相应的包和驱动程序可以轻而易举地实现高级方案。 |
 
-你可以自行[创建计算实例](how-to-create-manage-compute-instance.md?tabs=python#create)，也可以让管理员[为你创建计算实例](how-to-create-manage-compute-instance.md?tabs=python#create-on-behalf-of-preview)。
+你可以自行[创建计算实例](how-to-create-manage-compute-instance.md?tabs=python#create)，也可以由管理员[代表你创建计算实例](how-to-create-manage-compute-instance.md?tabs=python#on-behalf)。
+
+你还可以[使用设置脚本（预览版）](how-to-create-manage-compute-instance.md#setup-script)，根据需要以自动化方式自定义并配置计算实例。
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>工具和环境
 
 > [!IMPORTANT]
 > 本文中标记了“（预览版）”的项目目前为公共预览版。
-> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用 Azure 机器学习计算实例可以在工作区中的完全集成式笔记本体验中创作、训练和部署模型。
 
 使用计算实例作为远程服务器，无需 SSH 即可在 [VS Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) 中运行 Jupyter 笔记本。 也可以通过[远程 SSH 扩展](https://devblogs.microsoft.com/python/enhance-your-azure-machine-learning-experience-with-the-vs-code-extension/)启用 VS Code 集成。
 
-可以[安装包](how-to-access-terminal.md#install-packages)，然后在计算实例中[添加内核](how-to-access-terminal.md#add-new-kernels)。  
+可以[安装包](how-to-access-terminal.md#install-packages)，然后在计算实例中[添加内核](how-to-access-terminal.md#add-new-kernels)。
 
-计算实例上已安装以下工具和环境： 
+计算实例上已安装以下工具和环境：
 
 |常规工具和环境|详细信息|
 |----|:----:|
@@ -64,7 +67,7 @@ Azure 机器学习计算实例是面向数据科学家的基于云的托管式�
 |Docker||
 |Nginx||
 |NCCL 2.0 ||
-|Protobuf|| 
+|Protobuf||
 
 |**R** 工具和环境|详细信息|
 |----|:----:|
@@ -84,7 +87,7 @@ Azure 机器学习计算实例是面向数据科学家的基于云的托管式�
 |ONNX 包|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
 |Azure 机器学习 Python 和 R SDK 示例||
 
-Python 包都安装在 **Python 3.6 - AzureML** 环境中。  
+Python 包都安装在“Python 3.8 - AzureML”环境中。 计算实例使用 Ubuntu 18.04 作为基础 OS。
 
 ## <a name="accessing-files"></a>访问文件
 
@@ -96,9 +99,9 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 
 还可以将最新 Azure 机器学习示例克隆到工作区文件共享中“用户文件”目录下的文件夹内。
 
-与写入到计算实例本地磁盘本身相比，在网络驱动器上写入小文件可能速度更慢。  若要写入许多小文件，请尝试直接在计算实例上使用某个目录，例如 `/tmp` 目录。 请注意，无法从其他计算实例访问这些文件。 
+与写入到计算实例本地磁盘本身相比，在网络驱动器上写入小文件可能速度更慢。  若要写入许多小文件，请尝试直接在计算实例上使用某个目录，例如 `/tmp` 目录。 请注意，无法从其他计算实例访问这些文件。
 
-你可以使用计算实例上的 `/tmp` 目录来保存临时数据。  但是，不要在计算实例的 OS 磁盘上写入大型数据文件。  请改用[数据存储](concept-azure-machine-learning-architecture.md#datasets-and-datastores)。 如果安装了 JupyterLab git 扩展，也可能导致计算实例性能下降。
+请勿在笔记本文件共享上存储训练数据。 你可以使用计算实例上的 `/tmp` 目录来保存临时数据。  但是，请勿在计算实例的 OS 磁盘上写入非常大的数据文件。 计算实例上的 OS 磁盘容量为 128 GB。 也可以在 /mnt 上装载的临时磁盘上存储临时训练数据。 临时磁盘大小可以根据所选 VM 大小来配置。如果选择了较大的 VM，则可以存储更大量的数据。 还可以装载[数据存储和数据集](concept-azure-machine-learning-architecture.md#datasets-and-datastores)。
 
 ## <a name="managing-a-compute-instance"></a>管理计算实例
 
@@ -106,72 +109,31 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 
 ![管理计算实例](./media/concept-compute-instance/manage-compute-instance.png)
 
-可执行以下操作：
-
-* [创建计算实例](#create)。 
-* 刷新“计算实例”选项卡。
-* 启动、停止和重启计算实例。  只要实例在运行，你就需要为其付费。 不使用计算实例时，请将其停止，以便降低成本。 停止计算实例会将其解除分配。 然后在需要时重启。 请注意，停止计算实例将停止计算小时的计费，但仍会对磁盘、公共 IP 和标准负载均衡器进行计费。
-* 删除计算实例。
-* 筛选计算实例列表，以仅显示已创建的实例。
-
-对于工作区中可供你使用的每个计算实例，你可以：
-
-* 访问计算实例上的 Jupyter、JupyterLab、RStudio
-* 通过 SSH 连接到计算实例。 默认已禁用 SSH 访问，但可以在创建计算实例时启用。 SSH 访问是通过公钥/私钥机制实现的。 选项卡中将提供 IP 地址、用户名和端口号等 SSH 连接详细信息。
-* 获取有关特定计算实例的详细信息，例如 IP 地址和区域。
-
-使用 [Azure RBAC](../role-based-access-control/overview.md) 可以对工作区中的哪些用户能够创建、删除、启动、停止、重启计算实例进行控制。 充当工作区参与者和所有者角色的所有用户可以在整个工作区中创建、删除、启动、停止和重启计算实例。 但是，只有特定计算实例的创建者或分配的用户（如果该计算实例是以其名义创建的）可在该计算实例上访问 Jupyter、JupyterLab 和 RStudio。 计算实例专用于具有 root 用户访问权限的单个用户，并且可通过 Jupyter/JupyterLab/RStudio 进行终端访问。 计算实例将具有单用户登录名，所有操作都将使用该用户的标识进行试验运行的 Azure RBAC 控制和权限划分。 SSH 访问是通过公钥/私钥机制控制的。
-
-可以通过 Azure RBAC 来控制这些操作：
-* *Microsoft.MachineLearningServices/workspaces/computes/read*
-* *Microsoft.MachineLearningServices/workspaces/computes/write*
-* *Microsoft.MachineLearningServices/workspaces/computes/delete*
-* *Microsoft.MachineLearningServices/workspaces/computes/start/action*
-* *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
-* *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
-
-若要创建计算实例，需要具有以下操作的权限：
-* *Microsoft.MachineLearningServices/workspaces/computes/write*
-* *Microsoft.MachineLearningServices/workspaces/checkComputeNameAvailability/action*
-
+若要详细了解如何管理计算实例，请参阅[创建和管理 Azure 机器学习计算实例](how-to-create-manage-compute-instance.md)。
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>创建计算实例
 
-在 Azure 机器学习工作室的工作区中，当你准备好运行某个笔记本时，请从“计算”部分或“笔记本”部分[创建新的计算实例](how-to-create-attach-compute-studio.md#compute-instance) 。 
+作为管理员，你可以[为工作区中的其他人创建计算实例（预览版）](how-to-create-manage-compute-instance.md#on-behalf)。
+
+还可以[使用设置脚本（预览版）](how-to-create-manage-compute-instance.md#setup-script)，以自动化方式自定义并配置计算实例。
+
+若要为自己创建计算实例，请使用 Azure 机器学习工作室中你的工作区，在准备好运行某个笔记本时，从“计算”部分或在“笔记本”部分[新建计算实例](how-to-create-attach-compute-studio.md#compute-instance) 。
 
 也可以通过以下方式创建实例
-* 直接从[集成式笔记本体验](tutorial-1st-experiment-sdk-setup.md#azure)
+* 直接从[集成式笔记本体验](tutorial-train-models-with-aml.md#azure)
 * 在 Azure 门户中配置
-* 通过 Azure 资源管理器模板。 有关示例模板，请参阅[创建 Azure 机器学习计算实例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)。
+* 通过 Azure 资源管理器模板。 有关示例模板，请参阅[创建 Azure 机器学习计算实例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-compute-create-computeinstance)。
 * 使用 [Azure 机器学习 SDK](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/concept-compute-instance.md)
 * 从 [Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md#computeinstance)
 
-对于每个区域每个虚拟机 (VM) 系列配额和创建计算实例时应用的区域总配额，专用内核数一致，且该数量与 Azure 机器学习训练计算群集配额共享。 停止计算实例不会释放配额，因此无法确保你能够重启计算实例。
+对于每个区域每个虚拟机 (VM) 系列配额和创建计算实例时应用的区域总配额，专用内核数一致，且该数量与 Azure 机器学习训练计算群集配额共享。 停止计算实例不会释放配额，因此无法确保你能够重启计算实例。 请不要以执行 sudo 关闭的方式通过 OS 终端停止计算实例。
 
 计算实例附带 P10 OS 磁盘。 临时磁盘类型取决于所选的 VM 大小。 目前无法更改 OS 磁盘类型。
 
 
-### <a name="create-on-behalf-of-preview"></a>代表他人创建（预览版）
-
-作为管理员，你可代表数据科学家创建计算实例，并通过以下方式将实例分配给他们：
-* [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)。  若要详细了解如何查找此模板中所需的 TenantID 和 ObjectID，请参阅[查找身份验证配置的标识对象 ID](../healthcare-apis/fhir/find-identity-object-ids.md)。  也可在 Azure Active Directory 门户中找到这些值。
-* REST API
-
-你为其创建计算实例的数据科学家需要以下 Azure RBAC 权限： 
-* *Microsoft.MachineLearningServices/workspaces/computes/start/action*
-* *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
-* *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
-* *Microsoft.MachineLearningServices/workspaces/computes/applicationaccess/action*
-
-数据科学家可启动、停止和重启计算实例。 他们可将计算实例用于：
-* Jupyter
-* JupyterLab
-* RStudio
-* 集成式笔记本
-
 ## <a name="compute-target"></a>计算目标
 
-计算实例可用作类似于 Azure 机器学习计算训练群集的[训练计算目标](concept-compute-target.md#train)。 
+计算实例可用作类似于 Azure 机器学习计算训练群集的[训练计算目标](concept-compute-target.md#train)。
 
 计算实例：
 * 具有作业队列。
@@ -182,7 +144,7 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 可以使用计算实例作为测试/调试方案的本地推理部署目标。
 
 > [!TIP]
-> 计算实例具有 120GB 的 OS 磁盘。 如果磁盘空间不足并进入不可用状态，请通过 JupyterLab 终端删除文件，为 OS 磁盘（/ 上装载的 /dev/sda1/ 文件系统）清除至少 5 GB 的磁盘空间，然后执行 sudo 重启。 若要访问 JupyterLab 终端，请转到 https://ComputeInstanceName.AzureRegion.instances.azureml.ms/lab 替换计算实例和 Azure 区域的名称，然后单击“文件”->“新建”->“终端”。 [停止或重启](how-to-create-manage-compute-instance.md#manage)计算实例之前，请至少先清除 5 GB 的空间。 你可在终端上运行 df -h，检查可用磁盘空间。
+> 计算实例具有 120GB 的 OS 磁盘。 如果磁盘空间不足并且进入不可用状态，请采用删除文件/文件夹的方式通过计算实例终端在 OS 磁盘（在 / 上装载的）上清除至少 5 GB 磁盘空间，然后执行 `sudo reboot`。 若要访问该终端，请转到计算列表页或计算实例详细信息页，然后单击“终端”链接。 你可通过在终端上运行 `df -h` 来检查可用的磁盘空间。 在执行 `sudo reboot` 之前，请清除至少 5 GB 空间。 在清除完 5 GB 磁盘空间之前，请不要通过工作室停止或重启计算实例。
 
 ## <a name="next-steps"></a>后续步骤
 

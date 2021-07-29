@@ -3,12 +3,12 @@ title: 使用 Azure Pipelines 和模板实现 CI/CD
 description: 介绍如何使用 Azure 资源管理器模板在 Azure Pipelines 中配置持续集成。 它演示如何使用 PowerShell 脚本，或如何将文件复制到暂存位置并从该位置进行部署。
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 4a2f1f15de0abd802f3dce138b2cea33e52e3dfc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8264fd53bde168972cdddd9bdf15fccc8d536651
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561936"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984457"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>将 ARM 模板与 Azure Pipelines 集成
 
@@ -113,7 +113,7 @@ ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateF
 
 ## <a name="copy-and-deploy-tasks"></a>复制并部署任务
 
-本部分介绍如何使用两个任务来配置持续部署。 第一个任务将生成工件暂存到存储帐户，第二个任务部署模板。
+本部分介绍如何使用两个任务来配置持续部署。 第一个任务将项目暂存到存储帐户，第二个任务部署模板。
 
 若要将文件复制到存储帐户，必须为服务连接的服务主体分配存储 blob 数据参与者或存储 blob 数据所有者角色。 有关详细信息，请参阅 [AzCopy 入门](../../storage/common/storage-use-azcopy-v10.md)。
 

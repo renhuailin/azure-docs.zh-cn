@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/06/2020
+ms.date: 06/11/2021
 ms.author: victorh
-ms.openlocfilehash: f7196c7715ad5d2c02759040b780b96218e1655e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f28092c050e58c6ef90a3faf07034be21198008a
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94695939"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017192"
 ---
 # <a name="use-fqdn-filtering-in-network-rules"></a>在网络规则中使用 FQDN 筛选
 
@@ -32,8 +32,9 @@ ms.locfileid: "94695939"
 - 应用程序规则中针对 HTTP/S 和 MSSQL 的 FQDN 筛选基于应用程序级透明代理和 SNI 标头。 因此，它可以区分解析为同一 IP 地址的两个 FQDN。 对于网络规则中的 FQDN 筛选，情况并非如此。 
 
    如果可能，请始终使用应用程序规则：
-     - 如果协议为 HTTP/S 或 MSSQL，请使用应用程序规则进行 FQDN 筛选。
-   - 对于 HTTP/S 或 MSSQL 以外的其他任何协议，可以使用应用程序或网络规则进行 FQDN 筛选。
+  - 如果协议为 HTTP/S 或 MSSQL，请使用应用程序规则进行 FQDN 筛选。
+  - 对于 AzureBackup、HDInsight 等服务，请使用带 FQDN 标记的应用程序规则。
+  - 对于任何其他协议，可以使用网络规则进行 FQDN 筛选。
 
 ## <a name="next-steps"></a>后续步骤
 

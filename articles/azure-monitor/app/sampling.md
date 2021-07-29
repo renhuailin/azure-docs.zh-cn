@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ba7892c8afbe8e557c7dcf9aa3bd663f53a5728f
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 27aff24abddbca3317e252a76ac11c062f57213a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834743"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071589"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -325,9 +325,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 }
 ```
 
-#### <a name="configuring-java-sdk"></a>配置 Java SDK
+#### <a name="configuring-java-2x-sdk"></a>配置 Java 2.x SDK
 
-1. 使用最新的 [Application Insights Java SDK](./java-get-started.md) 下载并配置 Web 应用程序。
+1. 使用最新的 [Application Insights Java SDK](./java-2x-get-started.md) 下载并配置 Web 应用程序。
 
 2. 通过将以下代码片段添加到 `ApplicationInsights.xml` 文件，来 **启用固定速率采样模块**：
 

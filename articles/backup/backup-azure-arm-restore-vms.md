@@ -3,13 +3,13 @@ title: 使用 Azure 门户还原 VM
 description: 使用 Azure 门户（包括“跨区域还原”功能）从恢复点还原 Azure 虚拟机。
 ms.reviewer: geg
 ms.topic: conceptual
-ms.date: 04/19/2021
-ms.openlocfilehash: 0f3a715f4fef85b90fd8f06558a8cfdab1ca8900
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.date: 05/01/2021
+ms.openlocfilehash: 26efe6cafc5829cedcb7bb74f8ea796256d45d10
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739037"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966787"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -53,13 +53,20 @@ Azure 备份提供了几种用来还原 VM 的方法。
 
 ## <a name="select-a-restore-point"></a>选择还原点
 
-1. 在与要还原的 VM 关联的保管库中，选择“备份项” > “Azure 虚拟机”。 
-1. 选择 VM。 VM 仪表板默认会显示过去 30 天的恢复点。 可以显示 30 天以前的恢复点，或者根据日期、时间范围和不同类型的快照一致性进行筛选，以找到所需的恢复点。
-1. 若要还原 VM，请选择“还原 VM”。
+1. 在 Azure 门户中导航到“备份中心”，然后在“概述”选项卡中单击“还原”。
 
-    ![还原点](./media/backup-azure-arm-restore-vms/restore-point.png)
+    ![导航到“还原”](./media/backup-azure-arm-restore-vms/select-restore.png)
 
-1. 选择用于恢复的还原点。
+1. 选择“Azure 虚拟机”作为“数据源类型”，然后选择一个备份实例。
+
+    ![选择数据源类型](./media/backup-azure-arm-restore-vms/virtual-machine-as-datasource.png)
+
+1. 选择 VM，然后单击“继续”。
+1. 在出现的下一个屏幕中，选择要用于恢复的还原点。
+
+    ![选择虚拟机的还原点](./media/backup-azure-arm-restore-vms/restore-point.png)
+
+
 
 ## <a name="choose-a-vm-restore-configuration"></a>选择 VM 还原配置
 
@@ -116,7 +123,7 @@ Azure 备份提供了几种用来还原 VM 的方法。
 
 1. 若要自定义模板中提供的 VM 设置，请选择“编辑模板”。 若要添加其他自定义项，请选择“编辑参数”。
     - [详细了解](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)如何从自定义模板部署资源。
-    - [详细了解](../azure-resource-manager/templates/template-syntax.md)如何创作模板。
+    - [详细了解](../azure-resource-manager/templates/syntax.md)如何创作模板。
 
    ![加载模板部署](./media/backup-azure-arm-restore-vms/edit-template1.png)
 
@@ -165,10 +172,6 @@ Azure 备份提供了几种用来还原 VM 的方法。
 ![选择要还原的 VM](./media/backup-azure-arm-restore-vms/sec-restore.png)
 
 ![选择还原点](./media/backup-azure-arm-restore-vms/sec-rp.png)
-
-![还原配置](./media/backup-azure-arm-restore-vms/rest-config.png)
-
-![“正在触发还原”通知](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 
 - 若要还原和创建 VM，请参阅[创建 VM](#create-a-vm)。
 - 若要还原为磁盘，请参阅[还原磁盘](#restore-disks)。

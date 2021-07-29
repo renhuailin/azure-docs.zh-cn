@@ -1,31 +1,30 @@
 ---
-title: 使用 AutoML 创建模型并部署
+title: 使用工作室 UI 设置 AutoML
 titleSuffix: Azure Machine Learning
-description: 使用 Azure 机器学习工作室创建、查看和部署自动化机器学习模型。
+description: 了解如何在 Azure 机器学习工作室中使用 Azure 机器学习自动化机器学习来设置 AutoML 训练运行，且无需编写任何代码。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: nibaccam
 author: cartacioS
 ms.reviewer: nibaccam
-ms.date: 12/20/2020
-ms.topic: conceptual
-ms.custom: how-to, automl
-ms.openlocfilehash: 5718e0e3732f57b46500f9d2cdb1165e883ca44f
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.date: 06/11/2021
+ms.topic: how-to
+ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 3bf83c31c10245cb64a047c9d856489a4e0ce71a
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575575"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030748"
 ---
-# <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure 机器学习创建、查看和部署自动化机器学习模型
+# <a name="set-up-no-code-automl-training-with-the-studio-ui"></a>使用工作室 UI 设置无代码 AutoML 训练 
 
+在本文中，你将了解如何在 [Azure 机器学习工作室](overview-what-is-machine-learning-studio.md)中使用 Azure 机器学习自动化机器学习来设置 AutoML 训练运行，且无需编写任何代码。
 
-本文介绍如何在不编写任何代码的情况下，在 Azure 机器学习工作室中创建、探索和部署自动化机器学习模型。
-
-自动化机器学习是一个为你选择要用于特定数据的最佳机器学习算法的过程。 通过此过程可以快速生成机器学习模型。 [详细了解自动化机器学习](concept-automated-ml.md)。
+自动化机器学习（简称 AutoML）是为特定数据选择要使用的最佳机器学习算法的过程。 通过此过程可以快速生成机器学习模型。 [详细了解 Azure 机器学习如何实现自动化机器学习](concept-automated-ml.md)。
  
-对于端到端示例，请试用[使用 Azure 机器学习的自动化 ML 界面创建分类模型教程](tutorial-first-experiment-automated-ml.md)。 
+有关端到端示例，请尝试[教程：AutoML - 训练无代码分类模型](tutorial-first-experiment-automated-ml.md)。 
 
 要获得 Python 基于代码的体验，请使用 Azure 机器学习 SDK [配置自动化机器学习试验](how-to-configure-auto-train.md)。
 
@@ -47,7 +46,7 @@ ms.locfileid: "107575575"
 
  如果这是第一个进行试验，将会看到空列表和文档链接。 
 
-否则，将看到最近进行的自动化机器学习试验列表，包括使用 SDK 创建的试验。 
+如果不是，会看到最近的自动化 ML 试验的列表，包括使用 SDK 创建的那些试验。 
 
 ## <a name="create-and-run-experiment"></a>创建并运行试验
 
@@ -180,6 +179,14 @@ ms.locfileid: "107575575"
 
 [![迭代详细信息](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
+
+在“数据转换”选项卡上，可以看到一个图表，其中显示应用了哪些数据预处理、特征工程、缩放技术和机器学习算法来生成此模型。
+
+>[!IMPORTANT]
+> “数据转换”选项卡为预览版。 此功能应被视为[实验性](/python/api/overview/azure/ml/#stable-vs-experimental)功能，随时可能会更改。
+
+![数据转换](./media/how-to-use-automated-ml-for-ml-models/data-transformation.png)
+
 ## <a name="model-explanations-preview"></a>模型说明（预览）
 
 若要更好地了解模型，可以通过模型说明仪表板了解会影响模型预测的数据特征（原始特征或经过设计的特征）。 
@@ -219,7 +226,7 @@ ms.locfileid: "107575575"
 
 1. 填充“部署模型”窗格。
 
-    字段| 值
+    字段| Value
     ----|----
     名称| 输入部署的唯一名称。
     说明| 输入说明，以更清楚地指出此部署的用途。

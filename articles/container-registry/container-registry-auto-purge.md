@@ -2,24 +2,21 @@
 title: 清除标记和清单
 description: 使用清除命令根据年龄和标记筛选器从 Azure 容器注册表中删除多个标记和清单，并选择性地安排清除操作计划。
 ms.topic: article
-ms.date: 02/19/2021
-ms.openlocfilehash: 562d1940459cb1594b7cd9aca2af280b05a4e419
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/07/2021
+ms.openlocfilehash: bb1a8a2a9af0e7ab96b5ae12bd10500e700dfa39
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784184"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089067"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>自动清除 Azure 容器注册表中的映像
 
 在开发工作流中使用 Azure 容器注册表时，注册表中可能很快会填满在一小段时间后不需要的映像或其他项目。 你可能会想删除早于某一特定持续时间或与指定名称筛选器匹配的所有标记。 为帮助你快速删除多个项目，本文介绍了 `acr purge` 命令，可以将其作为按需或[计划的](container-registry-tasks-scheduled.md) ACR 任务来运行。 
 
-`acr purge` 命令当前在公共容器映像 (`mcr.microsoft.com/acr/acr-cli:0.4`) 中分发，该映像通过 GitHub 中 [acr-cli](https://github.com/Azure/acr-cli) 存储库中的源代码生成。
+`acr purge` 命令当前在公共容器映像 (`mcr.microsoft.com/acr/acr-cli:0.4`) 中分发，该映像通过 GitHub 中 [acr-cli](https://github.com/Azure/acr-cli) 存储库中的源代码生成。 `acr purge` 当前为预览版。
 
 可以使用 Azure Cloud Shell 或 Azure CLI 的本地安装来运行本文中的 ACR 任务示例。 如果想要在本地使用它，则需要使用 2.0.76 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。 
-
-> [!IMPORTANT]
-> 此功能目前处于预览状态。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
 > [!WARNING]
 > 请谨慎使用 `acr purge` 命令，已删除映像数据是无法恢复的。 如果系统按清单摘要（而不是映像名称）拉取映像，则不应清除未标记的映像。 删除无标的记映像后，这些系统即无法从注册表拉取映像。 不按清单拉取，而是考虑采用[建议的最佳做法](container-registry-image-tag-version.md)，即唯一标记方案。
@@ -49,7 +46,7 @@ ms.locfileid: "107784184"
 
 对于其他参数，请运行 `acr purge --help`。 
 
-`acr purge` 支持 ACR 任务命令的其他功能，包括经过流式处理并保存以供以后检索的[运行变量](container-registry-tasks-reference-yaml.md#run-variables)和[任务运行日志](container-registry-tasks-logs.md)。
+`acr purge` 支持 ACR 任务命令的其他功能，包括 [run 变量](container-registry-tasks-reference-yaml.md#run-variables)以及[任务运行日志](container-registry-tasks-logs.md)（这些日志会进行流式传输，还会进行保存供以后检索）。
 
 ### <a name="run-in-an-on-demand-task"></a>在按需任务中运行
 

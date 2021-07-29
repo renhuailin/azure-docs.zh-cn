@@ -2,19 +2,19 @@
 title: 参考：Ubuntu Data Science Virtual Machine
 titleSuffix: Azure Data Science Virtual Machine
 description: Data Science Virtual Machine 中包含的工具的详细信息
-author: gvashishtha
+author: timoklimmer
 services: machine-learning
 ms.service: data-science-vm
 ms.custom: devx-track-python
-ms.author: gopalv
-ms.date: 09/11/2019
+ms.author: tklimmer
+ms.date: 05/12/2021
 ms.topic: reference
-ms.openlocfilehash: e9a55f72718d6ed5991f3d0f16323409bb0f699f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2a960b2a924d06b7ecc2a2f613fdd5a5695071a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101661063"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110076377"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>参考：Ubuntu (Linux) Data Science Virtual Machine
 
@@ -22,32 +22,9 @@ ms.locfileid: "101661063"
 
 ## <a name="deep-learning-libraries"></a>深度学习库
 
-### <a name="cntk"></a>CNTK
+### <a name="pytorch"></a>PyTorch
 
-Microsoft Cognitive Toolki 是一种开放源的深度学习工具包。 Python 绑定位于根环境和 py35 Conda 环境中。 它还具有已存在于路径中的命令行工具 (CNTK)。
-
-示例 Python 笔记本位于 JupyterHub。 若要在命令行中运行基本示例，请在 shell 中运行以下命令：
-
-```bash
-cd /home/[USERNAME]/notebooks/CNTK/HelloWorld-LogisticRegression
-cntk configFile=lr_bs.cntk makeMode=false command=Train
-```
-
-有关详细信息，请参阅 [GitHub](https://github.com/Microsoft/CNTK) 的 CNTK 部分，以及 [CNTK wiki](https://github.com/Microsoft/CNTK/wiki)。
-
-### <a name="caffe"></a>Caffe
-
-Caffe 是美国伯克利视觉与学习中心的深度学习框架。 其路径为 /opt/caffe。 可以在 /opt/caffe/examples 中找到示例。
-
-### <a name="caffe2"></a>Caffe2
-
-Caffe2 是 Facebook 基于 Caffe 构建的深度学习框架。 它可在 Conda 根环境中的 Python 2.7 中使用。 若要激活它，请从 shell 运行以下命令：
-
-```bash
-source /anaconda/bin/activate root
-```
-
-可在 JupyterHub 中获取一些示例笔记本。
+[PyTorch](https://pytorch.org/) 是广泛支持机器学习算法的常用科学计算框架。 如果计算机内置了 GPU，它可利用该 GPU 来加速深度学习。PyTorch 在 `py38_pytorch` 环境中可用。
 
 ### <a name="h2o"></a>H2O
 
@@ -55,148 +32,60 @@ H2O 是一种快速的内存中分布式机器学习和预测分析平台。 根
 
 若要从命令行打开 H2O，请运行 `java -jar /dsvm/tools/h2o/current/h2o.jar`。 可能需要配置各种[命令行选项](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line)。 若要开始，可以浏览到 `http://localhost:54321` 以访问 Flow Web UI。 示例笔记本也位于 JupyterHub。
 
-### <a name="keras"></a>Keras
-
-Keras 是 Python 中的高级神经网络 API。 它可以在 TensorFlow、Microsoft Cognitive Toolkit 或 Theano 的顶层运行。 它位于根环境和 py35 Python 环境中。
-
-### <a name="mxnet"></a>MXNet
-
-MXNet 是专为提高效率和灵活性而设计的深度学习框架。 具有 DSVM 上包含的 R 和 Python 绑定。 示例笔记本位于 JupyterHub 中，示例代码位于 /dsvm/samples/mxnet。
-
-### <a name="nvidia-digits"></a>NVIDIA DIGITS
-
-NVIDIA 深度学习 GPU 训练系统也称为 DIGITS，是用于简化常见深度学习任务的系统。 这些任务包括管理数据，在 GPU 系统上设计和训练神经网络，以及实时监视高级可视化效果的性能。
-
-DIGITS 可用作一项服务，称为 *digits*。 启动服务，然后浏览到 `http://localhost:5000` 开始操作。
-
-DIGITS 也可在 Conda 根环境中作为 Python 模块安装。
-
 ### <a name="tensorflow"></a>TensorFlow
 
-TensorFlow 是 Google 的深度学习库。 它是使用数据流图进行数值计算的开源软件库。 TensorFlow 位于 py35 Python 环境中，一些示例笔记本位于 JupyterHub 中。
+[TensorFlow](https://tensorflow.org) 是 Google 的深度学习库。 它是使用数据流图进行数值计算的开源软件库。 如果计算机内置了 GPU，它可利用该 GPU 来加速深度学习。 TensorFlow 在 `py38_tensorflow` conda 环境中可用。
 
-### <a name="theano"></a>Theano
-
-Theano 是用于高效数值计算的 Python 库。 它位于根环境和 py35 Python 环境中。 
-
-### <a name="torch"></a>Torch
-
-Torch 是广泛支持机器学习算法的科学计算框架。 位于 /dsvm/tools/torch，**th** 交互式会话和 LuaRocks 程序包管理器可在命令行中使用。 示例位于 /dsvm/samples/torch。
-
-PyTorch 也位于根 Anaconda 环境中。 示例位于 /dsvm/samples/pytorch。
-
-## <a name="microsoft-machine-learning-server"></a>Microsoft 机器学习服务器
-
-R 是数据分析和机器学习的最常用语言之一。 若要使用 R 进行分析，可以利用 VM 中带有 Microsoft R Open 和数学内核库的 Microsoft Machine Learning Server。 数学内核库可优化分析算法中常用的数学运算。 Microsoft R Open 与 CRAN R 完全兼容，在 CRAN 中发布的任何 R 库都可以安装在 Microsoft R Open 上。 
-
-使用 Machine Learning Server 可将 R 模型缩放和实施为 Web 服务。 可以在其中一个默认编辑器（如 RStudio、vi 或 Emacs）中编辑 R 程序。 预安装了 Emacs 编辑器，可根据喜好使用。 Emacs ESS (Emacs Speaks Statistics) 包简化了 Emacs 编辑器内的 R 文件处理。
-
-若要打开 R 控制台，请在 shell 中输入 **R**。 执行此命令将进入交互式环境。 若要开发 R 程序，通常使用 Emacs 或 vi 等编辑器，并在 R 中运行脚本。使用 RStudio，便拥有一个完整的图形 IDE 来开发 R 程序。
-
-还提供一个 R 脚本，可用于安装[前 20 个 R 程序包](https://www.kdnuggets.com/2015/06/top-20-r-packages.html)（如果需要）。 进入 R 交互式界面后可以运行此脚本。 如前所述，可以在 shell 中输入 **R** 打开该界面。  
 
 ## <a name="python"></a>Python
 
-使用 Python 2.7 和 3.5 环境安装 Anaconda Python。 2\.7 环境称为根环境，3.5 环境称为 py35 环境 。 此分发版包含基本 Python 以及约 300 种最常用的数学、工程和数据分析包。
+DSVM 预安装了多个 Python 环境，其中的 Python 版本为 Python 3.8 或 Python 3.6。
+若要查看已安装的环境的完整列表，请在命令行中运行 `conda env list`。
 
-默认为 py35 环境。 若要激活根 (2.7) 环境，请使用以下命令：
 
-```bash
-source activate root
-```
+## <a name="jupyter"></a>Jupyter
 
-若要再次激活 py35 环境，请使用以下命令：
+DSVM 还附带了 Jupyter，它是用于共享代码和分析的环境。 Jupyter 会以不同风格安装在 DSVM 上：
+ - Jupyter Lab
+ - Jupyter 笔记本
+ - Jupyter 中心
 
-```bash
-source activate py35
-```
+若要打开 Jupyter 实验室，请从应用程序菜单中打开 Jupyter，或单击桌面图标。 也可通过从命令行运行 `jupyter lab` 来打开 Jupyter 实验室。
 
-若要调用 Python 交互式会话，请在 shell 中输入 **python**。 
+若要打开 Jupyter 笔记本，请打开命令行并运行 `jupyter notebook`。
 
-使用 Conda 或 pip 安装其他 Python 库。 对于 pip，如果不想要使用默认值，请先激活正确的环境：
-
-```bash
-source activate root
-pip install <package>
-```
-
-或者，指定到 pip 的完整路径：
-
-```bash
-/anaconda/bin/pip install <package>
-```
-
-对于 Conda，始终应指定环境名称（py35 或根）：
-
-```bash
-conda install <package> -n py35
-```
-
-如果在图形界面上操作或者已设置 X11 转发，可以输入 **pycharm** 打开 PyCharm Python IDE。 可以使用默认文本编辑器。 此外，可以使用 Spyder，它是与 Anaconda Python 分发版捆绑在一起的 Python IDE。 Spyder 需要图形桌面或 X11 转发。 图形桌面中提供了 Spyder 的快捷方式。
-
-## <a name="jupyter-notebook"></a>Jupyter 笔记本
-
-Anaconda 分发版还附带 Jupyter 笔记本 - 用于共享代码和分析的环境。 可通过 JupyterHub 访问 Jupyter notebook。 使用本地 Linux 用户名和密码登录。
-
-已使用 Python 2、Python 3 和 R 内核预配置 Jupyter 笔记本服务器。 使用“Jupyter Notebook”桌面图标打开浏览器并访问 Notebook 服务器。 如果通过 SSH 或 X2Go 客户端登录 VM，则还可以通过 `https://localhost:8000/` 访问 Jupyter Notebook 服务器。
+若要打开 Jupyter 中心，请打开 https://\<VM DNS name or IP address\>:8000/。 然后，需要提供本地 Linux 用户名和密码。
 
 > [!NOTE]
 > 如果收到任何证书警告，请选择继续。
 
-可以从任何主机访问 Jupyter 笔记本服务器。 输入 https://\<VM DNS name or IP address\>:8000/。
-
 > [!NOTE]
-> 默认情况下，配置 VM 时，防火墙中会打开端口 8000。 
+> 对于 Ubuntu 映像，在预配了 VM 时，防火墙中会默认打开端口 8000。
 
-我们已经打包了两个示例笔记本（分别在 Python 和 R 中）。通过使用本地 Linux 用户名和密码向 Jupyter 笔记本进行身份验证后，可以在笔记本主页上看到示例链接。 通过选择“新建”并选择相应的语言内核，可创建新笔记本。 如果未看到“新建”按钮，请选择左上角的“Jupyter”图标转到 Notebook 服务器的主页。 
 
 ## <a name="apache-spark-standalone"></a>Apache Spark 独立版
 
 一个 Apache Spark 独立版实例已预装在 Linux DSVM 上，以帮助你在本地开发 Spark 应用程序，然后在大型群集上对其进行测试和部署。 
 
-可以通过 Jupyter 内核运行 PySpark 程序。 打开 Jupyter 时，选择“新建”按钮即可看到可用内核的列表。 “Spark - Python”是 PySpark 内核。借助它可以使用 Python 语言生成 Spark 应用程序。 还可以使用 Python IDE（如 PyCharm 或 Spyder）生成 Spark 程序。 
+可以通过 Jupyter 内核运行 PySpark 程序。 打开 Jupyter 时，选择“新建”按钮即可看到可用内核的列表。 “Spark - Python”是 PySpark 内核。借助它可以使用 Python 语言生成 Spark 应用程序。 还可以使用 Python IDE（如 VS.Code 或 PyCharm）来生成 Spark 程序。 
 
 在此独立实例中，Spark 堆栈会在调用方客户端程序中运行。 与在 Spark 群集上进行开发相比，使用此功能可以更快、更轻松地排查问题。
 
-Jupyter 提供一个示例 PySpark 笔记本。 可以在 Jupyter 主目录下的 SparkML 目录中找到该笔记本 ($HOME/notebooks/SparkML/pySpark)。 
-
-若要以 R for Spark 编程，可以使用 Microsoft Machine Learning Server、SparkR 或 sparklyr。 
-
-在 Microsoft Machine Learning Server 的 Spark 上下文中运行之前，需要执行一次性的设置步骤来启用本地单节点 Hadoop HDFS 和 Yarn 实例。 默认情况下，Hadoop 服务已安装但在 DSVM 上禁用。 若要启用它，需要首次以 root 身份运行以下命令：
-
-```bash
-echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
-cat ~hadoop/.ssh/id_rsa.pub >> ~hadoop/.ssh/authorized_keys
-chmod 0600 ~hadoop/.ssh/authorized_keys
-chown hadoop:hadoop ~hadoop/.ssh/id_rsa
-chown hadoop:hadoop ~hadoop/.ssh/id_rsa.pub
-chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
-systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
-```
-
-不需要 Hadoop 相关服务时，可以通过运行 ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` 来停止这些服务。
-
-/dsvm/samples/MRS 目录中提供了一个示例，演示如何在远程 Spark 上下文（即，DSVM 上的独立 Spark 实例）中开发和测试 Microsoft Machine Learning Server。
 
 ## <a name="ides-and-editors"></a>IDE 和编辑器
 
-可以选择多个代码编辑器，包括 vi/Vim、Emacs、PyCharm、RStudio 和 IntelliJ。 
+有多种代码编辑器可供选择，包括 VS.Code、PyCharm、RStudio、IntelliJ、vi/Vim、Emacs。 
 
-PyCharm、RStudio 和 IntelliJ 是图形编辑器。 若要使用它们，需要登录到图形桌面。 可以使用桌面和应用程序菜单中的快捷方式打开它们。
+VS.Code、PyCharm、RStudio 和 IntelliJ 是图形编辑器。 若要使用它们，需要登录到图形桌面。 可以使用桌面和应用程序菜单中的快捷方式打开它们。
 
 Vim 和 Emacs 是基于文本的编辑器。 Emacs 上的 ESS 附加包可以简化 Emacs 编辑器中 R 的处理。 可在 [ESS 网站](https://ess.r-project.org/)上找到更多信息。
 
-LaTex 是通过 texlive 包连同名为 [AUCTeX](https://www.gnu.org/software/auctex/manual/auctex/auctex.html) 的 Emacs 附加包一起安装的。 此包简化了 Emacs 中 LaTex 文档的创作。  
 
 ## <a name="databases"></a>数据库
 
 ### <a name="graphical-sql-client"></a>图形化 SQL 客户端
 
-SQuirrel SQL 是一个图形化 SQL 客户端，可连接到各种数据库（如 Microsoft SQL Server 和 MySQL）和运行 SQL 查询。 可以使用桌面图标从图形桌面会话运行 SQuirrel SQL（例如，通过 X2Go 客户端）。 或者，可以在 shell 中使用以下命令运行该客户端：
-
-```bash
-/usr/local/squirrel-sql-3.7/squirrel-sql.sh
-```
+SQuirrel SQL 是一个图形化 SQL 客户端，可连接到各种数据库（如 Microsoft SQL Server 和 MySQL）和运行 SQL 查询。 打开 SQuirrel SQL 的最快方式是从图形桌面会话中使用应用程序菜单（例如通过 X2Go 客户端来这样做）
 
 首次使用前，需设置驱动程序和数据库别名。 JDBC 驱动程序位于 /usr/share/java/jdbcdrivers 中。
 
@@ -208,7 +97,7 @@ SQL Server 的 ODBC 驱动程序包还附带两个命令行工具：
 
 - **bcp**：bcp 工具在 Microsoft SQL Server 实例与用户指定格式的数据文件之间批量复制数据。 可以使用 bcp 工具将大量新行导入 SQL Server 表，或者将表中的数据导出到数据文件。 要将数据导入表中，必须使用为该表创建的格式文件。 或者，必须了解表的结构，以及对其列有效的数据类型。
 
-  有关详细信息，请参阅[使用 bcp 连接](/sql/connect/odbc/linux-mac/connecting-with-bcp)。
+有关详细信息，请参阅[使用 bcp 连接](/sql/connect/odbc/linux-mac/connecting-with-bcp)。
 
 - **sqlcmd**：可以使用 sqlcmd 工具输入 Transact-SQL 语句。 还可以在命令提示符下输入系统过程和脚本文件。 此工具使用 ODBC 运行 Transact-SQL 批处理。
 
@@ -235,8 +124,6 @@ VM 上安装有以下 Azure 工具：
   * **Python**：Python 中的 Azure 相关库包括 *azure*、*azureml*、*pydocumentdb* 和 *pyodbc*。 使用前三个库，可以访问 Azure 存储服务、Azure 机器学习和 Azure Cosmos DB（Azure 上的 NoSQL 数据库）。 通过第 4 个库 pyodbc（以及 SQL Server 的 Microsoft ODBC 驱动程序），可使用 ODBC 接口从 Python 访问 SQL Server、Azure SQL 数据库和 Azure Synapse Analytics。 输入 **pip 列表** 查看所有列出的库。 请确保在 Python 2.7 和 3.5 环境中都运行此命令。
   * **R**：R 中的 Azure 相关库包括 AzureML 和 RODBC。
   * **Java**：可在 VM 上的 /dsvm/sdk/AzureSDKJava 目录中找到 Azure Java 库列表。 密钥库是 Azure 存储和用于 SQL Server 的管理 API、Azure Cosmos DB 和 JDBC 驱动程序。  
-
-可以从预安装的 Firefox 浏览器访问 [Azure 门户](https://portal.azure.com)。 在 Azure 门户中，可以创建、管理和监视 Azure 资源。
 
 ## <a name="azure-machine-learning"></a>Azure 机器学习
 

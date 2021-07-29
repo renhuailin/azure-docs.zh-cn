@@ -8,12 +8,12 @@ ms.subservice: proximity-placement-groups
 ms.topic: conceptual
 ms.date: 3/07/2021
 ms.reviewer: zivr
-ms.openlocfilehash: 1a65a1e4ecd989f3a7c4968c424472c3c6dfe472
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 15da7300018d563ed9919c145ca3e7f08a07f619
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559068"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190638"
 ---
 # <a name="proximity-placement-groups"></a>邻近放置组
 
@@ -23,27 +23,25 @@ ms.locfileid: "102559068"
 
 邻近放置组是一种逻辑分组，用于确保 Azure 计算资源在物理上彼此靠近。 邻近放置组用于要求低延迟的工作负荷。
 
-
 - 独立 VM 之间的低延迟。
 - 单个可用性集或虚拟机规模集中的 VM 之间的低延迟。 
 - 独立 VM、多个可用性集或多个规模集中的 VM 之间的低延迟。 单个放置组中可以有多个计算资源，形成一个多层应用程序。 
 - 多个使用不同硬件类型的应用程序之间的低延迟。 例如，运行在可用性集中使用 M 系列的后端，以及在单个邻近放置组的规模集的 D 系列实例上的前端。
 
-
 ![邻近放置组的插图](./media/virtual-machines-common-ppg/ppg.png)
 
 ## <a name="using-proximity-placement-groups"></a>使用邻近放置组 
 
-邻近放置组是 Azure 中的一种新资源类型。 在将邻近放置组用于其他资源之前，需要先创建邻近放置组。 创建后，可将其用于虚拟机、可用性集或虚拟机规模集。 创建计算资源时，可以通过提供邻近放置组 ID 来指定邻近放置组。 
+Azure 邻近放置组是 Azure 中的一种资源。 在将邻近放置组用于其他资源之前，需要先创建邻近放置组。 创建后，可将其用于虚拟机、可用性集或虚拟机规模集。 创建计算资源时，可以通过提供邻近放置组 ID 来指定邻近放置组。 
 
 还可将现有资源移入邻近放置组。 将资源移入邻近放置组时，应该先停止（解除分配）资产，因为可能需要将资产重新部署到区域中的另一数据中心以满足共置约束。 
 
 对于可用性集和虚拟机规模集，应在资源级别而不是在单个虚拟机上设置邻近放置组。 
 
-邻近放置组是一种归置约束，而不是一种固定机制。 它会与要使用它的第一个资源的部署一起固定到特定的数据中心。 停止（解除分配）或删除使用邻近放置组的所有资源后，邻近放置组将不再固定。 因此，在将一个邻近放置组用于多个 VM 系列时，必须尽可能地提前在模板中指定全部所需的类型，或者按照可以提高成功部署几率的部署顺序来进行。 如果部署失败，请使用已失败的第一个待部署 VM 大小重新开始部署。
+邻近放置组是一种共置约束，而不是一种固定机制。 它会与要使用它的第一个资源的部署一起固定到特定的数据中心。 停止（解除分配）或删除使用邻近放置组的所有资源后，邻近放置组将不再固定。 因此，在将一个邻近放置组用于多个 VM 系列时，必须尽可能地提前在模板中指定全部所需的类型，或者按照可以提高成功部署几率的部署顺序来进行。 如果部署失败，请使用已失败的第一个待部署 VM 大小重新开始部署。
 
 ## <a name="what-to-expect-when-using-proximity-placement-groups"></a>使用邻近放置组时预期会发生的情况 
-邻近放置组提供在同一数据中心内的共置。 但是，因为邻近放置组提供一个附加的部署约束，因此可能会发生分配失败。 在少数用例中，使用邻近放置组时你可能会遇到分配失败：
+邻近放置组提供在同一数据中心内的归置。 但是，因为邻近放置组提供一个附加的部署约束，因此可能会发生分配失败。 在少数用例中，使用邻近放置组时你可能会遇到分配失败：
 
 - 当你请求邻近放置组中的第一个虚拟机时，会自动选择数据中心。 在某些情况下，当请求另一个虚拟机 SKU 时，如果它在该数据中心内不存在，则该请求可能会失败。 在这种情况下，将返回 OverconstrainedAllocationRequest 错误  。 为了避免这种情况，请尝试更改 SKU 的部署顺序，或者使用单个 ARM 模板部署这两个资源。
 -   对于你在其中添加和删除 VM 实例的弹性工作负荷，在部署上施加邻近放置组约束可能会导致去满足请求时失败，进而导致 AllocationFailure 错误  。 
@@ -56,7 +54,6 @@ ms.locfileid: "102559068"
 ### <a name="check-the-alignment-status"></a>检查对齐状态
 
 可以执行以下操作来检查邻近放置组的对齐状态。
-
 
 - 可以使用门户、CLI 和 PowerShell 查看邻近放置组的归置状态。
 
@@ -76,7 +73,6 @@ ms.locfileid: "102559068"
 
 - 对于规模集，可在规模集“概述”页的“实例”选项卡中查看有关各个实例的对齐信息 。 
 
-
 ### <a name="re-align-resources"></a>重新对齐资源 
 
 如果邻近放置组为 `Not Aligned`，则可以停止\解除分配，然后重新启动受影响的资源。 如果 VM 位于可用性集或规模集中，则必须先停止\解除分配可用性集或规模集中的所有 VM，然后再重新启动它们。
@@ -92,10 +88,7 @@ ms.locfileid: "102559068"
 
 ## <a name="next-steps"></a>后续步骤
 
-使用 [Azure CLI](./linux/proximity-placement-groups.md) 或 [PowerShell](./windows/proximity-placement-groups.md) 将 VM 部署到邻近放置组
-
-了解如何[测试网络延迟](../virtual-network/virtual-network-test-latency.md)。
-
-了解如何[优化网络吞吐量](../virtual-network/virtual-network-optimize-network-bandwidth.md)。  
-
-了解如何[将邻近放置组用于 SAP 应用程序](./workloads/sap/sap-proximity-placement-scenarios.md)。
+- 使用 [Azure CLI](./linux/proximity-placement-groups.md) 或 [PowerShell](./windows/proximity-placement-groups.md) 将 VM 部署到邻近放置组。
+- 了解如何[测试网络延迟](../virtual-network/virtual-network-test-latency.md)。
+- 了解如何[优化网络吞吐量](../virtual-network/virtual-network-optimize-network-bandwidth.md)。
+- 了解如何[将邻近放置组用于 SAP 应用程序](./workloads/sap/sap-proximity-placement-scenarios.md)。

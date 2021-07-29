@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: ea08c82ed5772be7e3a6094f5477c4450975c1fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d86e8a6e16fdaa48678ae1af89eb236f6e00b01b
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775832"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005120"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>使用 Synapse Studio 监视 Apache Spark 应用程序
 
@@ -28,6 +28,8 @@ ms.locfileid: "104775832"
 * 查看已完成的 Apache Spark 应用程序
 * 查看已取消的 Apache Spark 应用程序
 * 调试失败的 Apache Spark 应用程序
+* 查看 Apache Spark 应用程序的输入数据和输出数据
+* 比较 Apache Spark 应用程序
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,47 +51,66 @@ ms.locfileid: "104775832"
 
 1. 查看“已完成的任务”、“状态”和“总持续时间”  。
 
-2. 刷新日志查询。
+2. 刷新该作业。
 
-3. 单击“Spark History Server”，可打开 Apache Spark History Server 链接。
+3. 单击“比较应用程序”以使用比较功能，有关此功能详细信息，请参阅[比较 Apache Spark 应用程序](#compare-apache-spark-applications) 。
 
-4. 查看“摘要”信息。
+4. 单击“Spark 历史记录服务器”，以打开“历史记录服务器”页面。
 
-5. 查看“日志”。 你可以从下拉列表中选择不同类型的日志，可以单击“下载日志”来下载日志信息，还可选中“筛选错误和警告”复选框，筛选出需要的错误和警告 。
+5. 查看“摘要”信息。
 
-6. 你可以在生成的作业图中查看作业概况。 默认情况下，该图将显示所有作业。 可按作业 ID 筛选此视图。
+6. 在“诊断”选项卡中可查看诊断信息。
 
-7. 默认情况下，“进度”显示处于选中状态。 通过在“显示”下拉列表中选择“进度”/“读取”/“写入”/“持续时间”，可查看数据流    。
+7. 查看“日志”。 可以通过在下拉列表中选择不同的选项来查看“Livy”、“预启动”和“驱动程序”等日志的完整日志  。 并且可以通过搜索关键字来直接检索所需日志信息。 单击“下载日志”，以将日志信息下载到本地，然后选中“筛选错误和警告”复选框，以筛选所需错误和警告 。
 
-8. 若要播放作业，请单击“播放”按钮。 单击“停止”按钮即可随时停止。
+8. 你可以在生成的作业图中查看作业概况。 默认情况下，该图将显示所有作业。 可按作业 ID 筛选此视图。
 
-9. 你可使用鼠标滚轮或滚动条放大和缩小作业图，还可以选择“缩放到合适大小”使图形适合屏幕大小。
+9. 默认情况下，“进度”显示处于选中状态。 可以通过在“视图”下拉列表中选择“进度”/“读取”/“写入”/“持续时间”来检查数据流    。
 
-10. 作业图节点将显示每个阶段的以下信息：
+10. 若要播放该作业，请单击“播放”按钮。 单击“停止”按钮即可随时停止。
 
-    * ID。
+11. 请使用滚动条来放大和缩小作业图，还可以选择“缩放到合适大小”来使其适合屏幕。
 
-    * 名称或说明。
+    [![查看已完成的作业](./media/how-to-monitor-spark-applications/view-completed-job.png)](./media/how-to-monitor-spark-applications/view-completed-job.png#lightbox)
 
-    * 总任务数。
 
-    * 读取的数据：输入大小和随机读取大小之和。
+12. 作业图节点将显示每个阶段的以下信息：
 
-    * 写入的数据：输出大小和随机写入大小之和。
+    - 作业 ID
+    - 任务数目
+    - 持续时间
+    - 行计数
+    - 读取的数据：输入大小和随机读取大小之和
+    - 写入的数据：输出大小和随机写入大小之和
+    - 阶段编号
 
-    * 执行时间：从第一次尝试的开始时间到最后一次尝试的完成时间的时间和。
+       ![作业图节点](./media/how-to-monitor-spark-applications/job-graph-node.png)
 
-    * 行计数：输入记录、输出记录、随机读取记录和随机写入记录的总和。
-
-    * 进度。
-
-     ![查看已完成的作业](./media/how-to-monitor-spark-applications/view-completed-job.png)
+13. 将鼠标悬停在某个作业上，在工具提示中将会显示作业详细信息：
     
-11. 单击图中的“查看详细信息”，随即将显示相应阶段的详细信息。
+    - 作业状态的图标：如果该作业状态为成功，它将会显示绿色的“√”；如果该作业检测到问题，则会显示黄色的“!”。
+    - 作业 ID。
+    - 常规部分：
+      - 进度
+      - 持续时间
+      - 任务总数
+    - 数据部分：
+      - 任务总数
+      - 读取大小
+      - 写入大小
+    - 倾斜部分：
+      - 数据倾斜
+      - 时间倾斜
+    - 阶段编号
 
-    ![阶段的详细信息](./media/how-to-monitor-spark-applications/details-for-stage.png)
+      ![将鼠标悬停在作业上](./media/how-to-monitor-spark-applications/hover-a-job.png)
 
+14. 单击“阶段编号”，以展开该作业中包含的所有阶段。 单击作业 ID 旁边的“折叠”，以折叠该作业中的所有阶段。
 
+15. 单击阶段图中的“查看详细信息”，阶段的详细信息将会显示。
+
+    [![展开所有阶段](./media/how-to-monitor-spark-applications/expand-all-the-stages.png)](./media/how-to-monitor-spark-applications/expand-all-the-stages.png#lightbox)
+    
 ## <a name="monitor-running-apache-spark-application"></a>监视运行中的 Apache Spark 应用程序
 
 打开“监视”，然后选择“Apache Spark 应用程序” 。 若要查看运行中的 Apache Spark 应用程序的详细信息，请选择提交 Apache Spark 应用程序并查看详细信息。 如果 Apache Spark 应用程序仍在运行，则可以监视进度。
@@ -100,19 +121,13 @@ ms.locfileid: "104775832"
 
 2. 取消 Apache Spark 应用程序。
 
-3. 刷新日志查询。
+3. 刷新该作业。
 
 4. 单击“Spark UI”按钮，切换到“Spark 作业”页面。
 
-5. 查看图形。 你可以在生成的作业图中查看作业概况。 请参阅[查看已完成的 Apache Spark 应用程序](#view-completed-apache-spark-application)中的步骤 6、7、8、9、10。
+5. 对于“作业图”、“摘要”、“诊断”和“日志”   。 你可以在生成的作业图中查看作业概况。 请参阅[查看已完成的 Apache Spark 应用程序](#view-completed-apache-spark-application)中的第 5 至 15 步。 
 
-6. 查看“摘要”信息。
-
-7. 在“诊断”选项卡中可查看诊断信息。
-
-8. 在此选项卡中可查看日志。你可以从下拉列表中选择不同类型的日志，可以单击“下载日志”来下载日志信息，还可选中“筛选错误和警告”复选框，筛选出需要的错误和警告 。
-
-    ![查看运行中的作业](./media/how-to-monitor-spark-applications/view-running-job.png)
+    [![查看运行中的作业](./media/how-to-monitor-spark-applications/view-running-job.png)](./media/how-to-monitor-spark-applications/view-running-job.png#lightbox)
 
 ## <a name="view-canceled-apache-spark-application"></a>查看已取消的 Apache Spark 应用程序
 
@@ -122,19 +137,15 @@ ms.locfileid: "104775832"
 
 1. 查看“已完成的任务”、“状态”和“总持续时间”  。
 
-2. 刷新日志查询。
+2. 刷新该作业。
 
-3. 单击“Spark history server”，打开 Apache History Server 链接。
+3. 单击“比较应用程序”以使用比较功能，有关此功能详细信息，请参阅[比较 Apache Spark 应用程序](#compare-apache-spark-applications) 。
 
-4. 查看图形。 你可以在生成的作业图中查看作业概况。 请参阅[查看已完成的 Apache Spark 应用程序](#view-completed-apache-spark-application)中的步骤 6、7、8、9、10。
+4. 单击“Spark history server”，打开 Apache History Server 链接。
 
-5. 查看“摘要”信息。
+5. 查看图形。 你可以在生成的作业图中查看作业概况。 请参阅[查看已完成的 Apache Spark 应用程序](#view-completed-apache-spark-application)中的第 5 至 15 步。
 
-6. 查看“日志”。 你可以从下拉列表中选择不同类型的日志，可以单击“下载日志”来下载日志信息，还可选中“筛选错误和警告”复选框，筛选出需要的错误和警告 。
-
-7. 单击图中的“查看详细信息”，随即将显示相应阶段的详细信息。
-
-   ![查看已取消的作业](./media/how-to-monitor-spark-applications/view-cancelled-job.png)
+  [![查看已取消的作业](./media/how-to-monitor-spark-applications/view-cancelled-job.png)](./media/how-to-monitor-spark-applications/view-cancelled-job.png#lightbox)
 
 ## <a name="debug-failed-apache-spark-application"></a>调试失败的 Apache Spark 应用程序
 
@@ -144,17 +155,50 @@ ms.locfileid: "104775832"
 
 1. 查看“已完成的任务”、“状态”和“总持续时间”  。
 
-2. 刷新日志查询。
+2. 刷新该作业。
 
-3. 单击“Spark History Server”，可打开 Apache Spark History Server 链接。
+3. 单击“比较应用程序”以使用比较功能，有关此功能详细信息，请参阅[比较 Apache Spark 应用程序](#compare-apache-spark-applications) 。
 
-4. 查看图形。 你可以在生成的作业图中查看作业概况。 请参阅[查看已完成的 Apache Spark 应用程序](#view-completed-apache-spark-application)中的步骤 6、7、8、9、10
+4. 单击“Spark history server”，打开 Apache History Server 链接。
 
-5. 查看“摘要”信息。
+5. 查看图形。 你可以在生成的作业图中查看作业概况。 请参阅[查看已完成的 Apache Spark 应用程序](#view-completed-apache-spark-application)中的第 5 至 15 步。
 
-6. 查看错误信息。
+   [![失败的作业信息](./media/how-to-monitor-spark-applications/failed-job-info.png)](./media/how-to-monitor-spark-applications/failed-job-info.png#lightbox)
 
-   ![失败的作业信息](./media/how-to-monitor-spark-applications/failed-job-info.png)
+
+## <a name="view-input-dataoutput-data-for-apache-spark-application"></a>查看 Apache Spark 应用程序的输入数据/输出数据
+
+选择 Apache Spark 应用程序，然后单击“输入数据/输出数据”选项卡，以查看 Apache Spark 应用程序的输入和输出的日期。 此函数可以更好地帮助调试 Spark 作业。 数据源支持三种存储方法：gen1、gen2 和 Blob。
+    
+“输入数据”选项卡
+     
+1. 单击“复制输入”按钮，以将输入文件粘贴到本地。
+
+2. 单击“导出到 CSV”按钮，以 CSV 格式导出输入文件。
+
+3. 您可以按输入关键字在“搜索框”中搜索文件（关键字包括文件名、读取格式和路径）。
+
+4. 可以通过单击“名称”、“读取格式”和“路径”来对输入文件进行排序  。
+
+5. 在将鼠标悬停在某个输入文件上时，将会出现“下载/复制路径/更多”按钮的图标。
+
+   ![输入选项卡](./media/how-to-monitor-spark-applications/input-tab.png)
+
+6. 单击“更多”按钮，“复制路径/在资源管理器中显示/属性”会显示上下文菜单 。
+      
+    ![输入更多内容](./media/how-to-monitor-spark-applications/input-more.png)
+
+   * 复制路径：可以复制完整路径和相对路径 。
+   * 在资源管理器中显示：可以跳转到链接的存储帐户（数据 -> 已链接）。
+   * 属性：显示文件的基本属性（文件名/文件路径/读取格式/大小/修改时间）。
+
+     ![属性图像](./media/how-to-monitor-spark-applications/properties.png)
+
+“输出数据”选项卡
+
+   具有与输入相同的功能。
+
+   ![输出图像](./media/how-to-monitor-spark-applications/output.png)
 
 ## <a name="compare-apache-spark-applications"></a>比较 Apache Spark 应用程序
 

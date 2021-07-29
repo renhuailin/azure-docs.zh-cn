@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 90855059461fcd5f8ed8d2733d2b6d4addaccde3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ede3650aa185e178f6df21ff285115e4230b521f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94535038"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110471948"
 ---
 # <a name="security-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的安全性
 
@@ -47,7 +47,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对服务器的访�
 
 ## <a name="threat-protection"></a>威胁防护
 
-可以选择加入用于检测异常活动的[高级威胁防护](concepts-data-access-and-security-threat-protection.md)，这些活动指示有人企图以非寻常或可能有害的方式访问或恶意利用服务器。
+可以选择加入[用于开源关系数据库的 Azure Defender](../security-center/defender-for-databases-introduction.md) 来检测异常活动，这些活动指示有人企图以非寻常或可能有害的方式访问或恶意利用服务器。
 
 [审核日志记录](concepts-audit-logs.md)可用于跟踪数据库中的活动。 
 

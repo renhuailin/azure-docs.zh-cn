@@ -1,23 +1,23 @@
 ---
 title: Azure Blob 备份的支持矩阵
-description: 汇总了备份 Azure Blob（预览版）时的支持设置和限制
+description: 汇总了备份 Azure Blob 时的支持设置和限制
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 05/20/2021
 ms.custom: references_regions
-ms.openlocfilehash: 12d289fdc3f84e7cbb3489a3ece283179e51772c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 06e6d193ec929961dd4eeb192045a217aefa4ab2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561893"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475094"
 ---
-# <a name="support-matrix-for-azure-blobs-backup-in-preview"></a>Azure Blob 备份的支持矩阵（预览版）
+# <a name="support-matrix-for-azure-blobs-backup"></a>Azure Blob 备份的支持矩阵
 
 本文总结了区域可用性、支持的方案以及 blob 操作备份的限制。
 
 ## <a name="supported-regions"></a>支持的区域
 
-Blob 的操作备份目前在以下区域中提供：澳大利亚中部、澳大利亚东部、巴西南部、加拿大中部、印度中部、美国中部、东亚、美国东部、美国东部 2、德国中西部、日本东部、日本西部、韩国中部、韩国南部、北欧、美国中南部、南东亚、瑞士北部、阿拉伯联合酋长国北部、英国南部、英国西部、美国中北部、西欧、美国西部、美国西部 2
+Blob 的操作备份目前在以下区域提供：澳大利亚中部、澳大利亚中部 2、澳大利亚东部、澳大利亚东南部、巴西南部、巴西东南部、加拿大中部、加拿大东部、印度中部、美国中部、东亚、美国东部、美国东部 2、法国中部、德国北部、德国中西部、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、挪威东部、挪威西部、南非北部、美国中南部、东南亚、印度南部、瑞士北部、瑞士西部、阿拉伯联合酋长国中部、阿拉伯联合酋长国北部、英国南部、英国西部、美国中西部、西欧、印度西部、美国西部、美国西部 2。
 
 ## <a name="limitations"></a>限制
 
@@ -35,4 +35,4 @@ Blob 的操作备份使用 blob 时点恢复、blob 版本控制、blob 的软�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Blob 操作备份概述（预览版）](blob-backup-overview.md)
+[Azure Blob 操作备份概述](blob-backup-overview.md)

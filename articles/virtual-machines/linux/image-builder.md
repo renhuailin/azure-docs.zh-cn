@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 映像生成器用于 Linux VM 的映像库（预览）
+title: 将 Azure 映像生成器用于 Linux VM 的映像库
 description: 使用 Azure 映像生成器和共享映像库创建 Linux 虚拟机映像。
 author: cynthn
 ms.author: cynthn
@@ -9,14 +9,14 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: danis
-ms.openlocfilehash: 6ae7e384aa5d70b688b7fe4c6d4140e886b789f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7fbee42440b9f0ad7663850cd72a46c238a8d2e1
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694285"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112027238"
 ---
-# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery-by-using-azure-cli"></a>预览版：使用 Azure CLI 创建 Linux 映像并将其分发到共享映像库
+# <a name="create-a-linux-image-and-distribute-it-to-a-shared-image-gallery-by-using-azure-cli"></a>使用 Azure CLI 创建 Linux 映像并将其分发到共享映像库
 
 本文介绍如何使用 Azure 映像生成器和 Azure CLI，在[共享映像库](../shared-image-galleries.md)中创建映像版本，然后全局分发此映像。 还可以使用 [Azure PowerShell](../windows/image-builder-gallery.md).来实现此目的。
 
@@ -25,22 +25,9 @@ ms.locfileid: "101694285"
 
 此模板使用 [sharedImage](image-builder-json.md#distribute-sharedimage) 作为模板的 `distribute` 部分的值，以便将映像分发到共享映像库。
 
-> [!IMPORTANT]
-> Azure 映像生成器目前提供公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="register-the-features"></a>注册功能
-若要在预览期间使用 Azure 映像生成器，需要注册新功能。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
-```
-
-检查功能注册的状态。
-
-```azurecli-interactive
-az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview -o json | grep state
-```
+若要使用 Azure 映像生成器，需要注册新功能。
 
 检查注册。
 
@@ -66,7 +53,7 @@ az provider register -n Microsoft.Network
 
 我们将重复使用某些信息，因此我们将创建一些变量来存储这些信息。
 
-对于预览，映像生成器仅支持在与源托管映像相同的资源组中创建自定义映像。 将此示例中的资源组名称更新为与源托管映像相同的资源组。
+映像生成器仅支持在源托管映像所在的资源组中创建自定义映像。 将此示例中的资源组名称更新为与源托管映像相同的资源组。
 
 ```azurecli-interactive
 # Resource group name - we are using ibLinuxGalleryRG in this example

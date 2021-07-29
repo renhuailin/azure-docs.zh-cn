@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 03/08/2021
-ms.openlocfilehash: 36bda5d241a1d383e7773abeda8a9889fb24086e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3935afe1c174ace2492d2d81c6ef10d3d934d26d
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133018"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112008032"
 ---
 # <a name="notifying-microsoft-regarding-the-publisher-agreement"></a>向 Microsoft 通知发布者协议
 
@@ -20,7 +20,7 @@ ms.locfileid: "108133018"
 
 ## <a name="submit-notice-regarding-the-publisher-agreement"></a>提交有关发布者协议的声明
 
-1. 请参阅合作伙伴中心支持的[合同或法律问题](https://partner.microsoft.com/support/?stage=2&topicid=05a1a389-1256-d441-89c9-a140217de6b9)部分。
+1. 请参阅合作伙伴中心支持的[合同或法律问题](https://go.microsoft.com/fwlink/?linkid=2157631)部分。
 
 1. 选择“提供问题详细信息”（如有必要，请先登录到合作伙伴中心）。
 
@@ -45,4 +45,4 @@ ms.locfileid: "108133018"
 ## <a name="next-steps"></a>后续步骤
 
 - 如果我们有任何问题，支持代理将与你联系。
-- 查看 [Microsoft Publisher 协议](/legal/marketplace/msft-publisher-agreement) (PDF)。
+- 查看 [Microsoft 发行商协议](/legal/marketplace/msft-publisher-agreement)。

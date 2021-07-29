@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 4caf43cb972b44dd1482b9e6e467e41cae294708
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: daf169a84268a24fd1cc50cd67386d359f9d726a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93100093"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110097869"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container---sql-api"></a>在 Azure Cosmos 容器上预配标准（手动）吞吐量 - SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "93100093"
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)，或选择现有的 Azure Cosmos 帐户。
 
@@ -33,7 +33,7 @@ ms.locfileid: "93100093"
    * 表明要创建新数据库还是使用现有数据库。
    * 输入容器 ID。
    * 输入分区键值（例如 `/ItemID`）。
-   * 输入要预配的吞吐量（例如，1000 RU）
+   * 选择“自动缩放”或“手动缩放”吞吐量并输入所需的“容器吞吐量”（例如，1000 RU/秒）。 输入要预配的吞吐量（例如，1000 RU）
    * 选择“确定” 。
 
     :::image type="content" source="./media/how-to-provision-container-throughput/provision-container-throughput-portal-sql-api.png" alt-text="数据资源管理器的屏幕截图，突出显示“新建集合”":::

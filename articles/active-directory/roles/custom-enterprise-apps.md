@@ -8,21 +8,30 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 04/14/2021
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7c04afe76ced0abf40abf8e30362005fb269172
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: db22b44e032261d138d74e34340dca6fcaf75779
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534715"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092865"
 ---
 # <a name="create-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>创建自定义角色以在 Azure Active Directory 中管理企业应用
 
 本文介绍如何创建一个在 Azure Active Directory (Azure AD) 中有权限管理用户和组的企业应用分配的自定义角色。 有关角色分配的元素，以及子类型、权限和属性集等术语的含义，请参阅[自定义角色概述](custom-overview.md)。
+
+## <a name="prerequisites"></a>先决条件
+
+- Azure AD Premium P1 或 P2 许可证
+- 特权角色管理员或全局管理员
+- 使用 PowerShell 时需要 AzureADPreview 模块
+- 将 Graph 浏览器用于 Microsoft Graph API 时需要管理员同意
+
+有关详细信息，请参阅[使用 PowerShell 或 Graph 浏览器的先决条件](prerequisites.md)。
 
 ## <a name="enterprise-app-role-permissions"></a>企业应用角色权限
 
@@ -38,14 +47,14 @@ ms.locfileid: "107534715"
 1. 使用权限 `microsoft.directory/servicePrincipals/appRoleAssignedTo/update` 创建自定义角色
 1. 向用户或组授予权限，以管理向企业应用的用户和组分配。 这时，你可以将范围设置为组织范围级别或单个应用程序。
 
-## <a name="use-the-azure-ad-admin-center"></a>使用 Azure AD 管理中心
+## <a name="azure-portal"></a>Azure 门户
 
 ### <a name="create-a-new-custom-role"></a>创建新的自定义角色
 
 >[!NOTE]
 > 自定义角色是在组织范围级别创建和管理的，只在组织的“概述”页中提供。
 
-1. 使用组织中的特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
+1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
 1. 依次选择“Azure Active Directory”、“角色和管理员”和“新建自定义角色”  。
 
     ![在 Azure AD 中，从角色列表添加新的自定义角色](./media/custom-enterprise-apps/new-custom-role.png)
@@ -62,9 +71,9 @@ ms.locfileid: "107534715"
 
     ![现在可以创建自定义角色](./media/custom-enterprise-apps/role-custom-create.png)
 
-### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>使用 Azure AD 门户将角色分配给用户
+### <a name="assign-the-role-to-a-user-using-the-azure-portal"></a>使用 Azure 门户将角色分配给用户
 
-1. 使用特权角色管理员角色权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
+1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
 1. 依次选择“Azure Active Directory”、“角色和管理员” 。
 1. 选择“授予权限以管理用户和组分配”角色。
 
@@ -82,24 +91,9 @@ ms.locfileid: "107534715"
 
     ![验证用户权限](./media/custom-enterprise-apps/verify-user-permissions.png)
 
-## <a name="use-azure-ad-powershell"></a>使用 Azure AD PowerShell
+## <a name="powershell"></a>PowerShell
 
 有关更多详细信息，请参阅[创建和分配自定义角色](custom-create.md)和[使用 PowerShell 分配具有资源范围的自定义角色](custom-assign-powershell.md)。
-
-首先，安装 [PowerShell 库](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)中的 Azure AD PowerShell 模块。 然后使用以下命令导入 Azure AD PowerShell 预览版模块：
-
-```powershell
-Import-Module -Name AzureADPreview
-```
-
-若要验证该模块是否可供使用，请将以下命令返回的版本与此处列出的版本之一进行匹配：
-
-```powershell
-Get-Module -Name AzureADPreview
-  ModuleType Version      Name                         ExportedCommands
-  ---------- ---------    ----                         ----------------
-  Binary     2.0.0.115    AzureADPreview               {Add-AzureADAdministrati...}
-```
 
 ### <a name="create-a-custom-role"></a>创建自定义角色
 
@@ -138,7 +132,7 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-## <a name="use-the-microsoft-graph-api"></a>使用 Microsoft Graph API
+## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 在 Microsoft Graph API 中使用提供的示例创建自定义角色。 有关更多详细信息，请参阅[创建和分配自定义角色](custom-create.md)以及[使用 Microsoft Graph API 分配自定义管理员角色](custom-assign-graph.md)。
 
@@ -169,7 +163,7 @@ https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitionsIsEnabl
 }
 ```
 
-### <a name="assign-the-custom-role-using-microsoft-graph-api"></a>使用 Microsoft 图形 API 分配自定义角色
+### <a name="assign-the-custom-role-using-the-microsoft-graph-api"></a>使用 Microsoft Graph API 分配自定义角色
 
 角色分配会将安全主体 ID（可以是用户或服务主体）、角色定义 ID 和 Azure AD 资源范围合并。 有关角色分配元素的详细信息，请参阅[自定义角色概述](custom-overview.md)
 

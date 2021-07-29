@@ -1,18 +1,18 @@
 ---
 title: 准备 Debian Linux VHD
 description: 了解如何创建 Debian VHD 映像，以便在 Azure 中进行 VM 部署。
-author: gbowerman
+author: srijang
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
-ms.date: 11/13/2018
-ms.author: guybo
-ms.openlocfilehash: 7dcb6dbc62513535c562a430f5958a62dae9d005
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 6/3/2021
+ms.author: srijangupta
+ms.openlocfilehash: 9e276c9051be711e41b68d0b2dbb17c6816645d5
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554507"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004954"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>为 Azure 准备 Debian VHD
 ## <a name="prerequisites"></a>必备条件
@@ -42,89 +42,117 @@ ms.locfileid: "102554507"
 ```
 
 
-## <a name="manually-prepare-a-debian-vhd"></a>手动准备 Debian VHD
-1. 在 Hyper-V 管理器中，选择虚拟机。
-2. 单击“连接”打开该虚拟机的控制台窗口。 
-3. 如果用 ISO 安装了 OS，请注释掉与 `/etc/apt/source.list` 中的“`deb cdrom`”相关的任何行。
+## <a name="prepare-a-debian-image-for-azure"></a>为 Azure 准备 Debian 映像
 
-4. 编辑 `/etc/default/grub` 文件并按如下方式修改 **GRUB_CMDLINE_LINUX** 参数，包含用于 Azure 的其他内核参数。
+可以通过 [FAI 云映像生成器](https://salsa.debian.org/cloud-team/debian-cloud-images)创建基本的 Azure Debian 云映像。
 
-    ```config-grub
-    GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200"
-    ```
+（下面的 git 克隆和 apt 安装命令来自 Debian 云映像存储库）首先克隆存储库并安装依赖项：
 
-5. 重新生成 grub 并运行：
+```
+$ git clone https://salsa.debian.org/cloud-team/debian-cloud-images.git
+$ sudo apt install --no-install-recommends ca-certificates debsums dosfstools \
+    fai-server fai-setup-storage make python3 python3-libcloud python3-marshmallow \
+    python3-pytest python3-yaml qemu-utils udev
+$ cd ./debian-cloud-images
+```
 
-    ```console
-    # sudo update-grub
-    ```
+（可选）通过向 `./config_space/scripts/AZURE` 中添加脚本（例如 shell 脚本）来自定义构建。
 
-6. 将 Debian 的 Azure 存储库添加到 Debian 8、9 或 10 的 /etc/apt/sources.list 中：
 
-    **Debian 8.x "Jessie"**
 
-    ```config-grub
-    deb http://debian-archive.trafficmanager.net/debian jessie main
-    deb-src http://debian-archive.trafficmanager.net/debian jessie main
-    deb http://debian-archive.trafficmanager.net/debian-security jessie/updates main
-    deb-src http://debian-archive.trafficmanager.net/debian-security jessie/updates
-    deb http://debian-archive.trafficmanager.net/debian jessie-updates main
-    deb-src http://debian-archive.trafficmanager.net/debian jessie-updates main
-    deb http://debian-archive.trafficmanager.net/debian jessie-backports main
-    deb-src http://debian-archive.trafficmanager.net/debian jessie-backports main
-    ```
+## <a name="an-example-of-a-script-to-customize-the-image-is"></a>以下是用于自定义映像的脚本示例：
 
-    **Debian 9.x "Stretch"**
+```
+$ mkdir -p ./config_space/scripts/AZURE
+$ cat > ./config_space/scripts/AZURE/10-custom <<EOF
+#!/bin/bash
 
-    ```config-grub
-    deb http://debian-archive.trafficmanager.net/debian stretch main
-    deb-src http://debian-archive.trafficmanager.net/debian stretch main
-    deb http://debian-archive.trafficmanager.net/debian-security stretch/updates main
-    deb-src http://debian-archive.trafficmanager.net/debian-security stretch/updates main
-    deb http://debian-archive.trafficmanager.net/debian stretch-updates main
-    deb-src http://debian-archive.trafficmanager.net/debian stretch-updates main
-    deb http://debian-archive.trafficmanager.net/debian stretch-backports main
-    deb-src http://debian-archive.trafficmanager.net/debian stretch-backports main
-    ```
-    
-    **Debian 10.x "Buster"**
-    ```config-grub
-    deb http://debian-archive.trafficmanager.net/debian buster main
-    deb-src http://debian-archive.trafficmanager.net/debian buster main
-    deb http://debian-archive.trafficmanager.net/debian-security buster/updates main
-    deb-src http://debian-archive.trafficmanager.net/debian-security buster/updates main
-    deb http://debian-archive.trafficmanager.net/debian buster-updates main
-    deb-src http://debian-archive.trafficmanager.net/debian buster-updates main
-    deb http://debian-archive.trafficmanager.net/debian buster-backports main
-    deb-src http://debian-archive.trafficmanager.net/debian buster-backports main
-    ```
+\$ROOTCMD bash -c "echo test > /usr/local/share/testing"
+EOF
+$ sudo chmod 755 ./config_space/scripts/AZURE/10-custom
+```
 
-7. 安装 Azure Linux 代理：
+注意，请务必为用于定制映像的任何命令加上 `$ROOTCMD` 前缀，因为这会别名化为 `chroot $target`。
 
-    ```console
-    # sudo apt-get update
-    # sudo apt-get install waagent
-    ```
 
-8. 对于 Debian 9+，建议将新的 Debian Cloud 内核与 Azure 中的 VM 配合使用。 若要安装此新内核，首先使用以下内容创建名为 /etc/apt/preferences.d/linux.pref 的文件：
+## <a name="build-the-azure-debian-10-image"></a>生成 Azure Debian 10 映像：
 
-    ```config-pref
-    Package: linux-* initramfs-tools
-    Pin: release n=stretch-backports
-    Pin-Priority: 500
-    ```
+```
+$ make image_buster_azure_amd64
+```
 
-    然后运行“sudo apt-get install linux-image-amd64”，以安装该新内核。
 
-9. 取消对虚拟机的预配并对其进行准备，以便在 Azure 上进行预配并运行：
+这会在当前目录中输出少量文件，最重要的是 `image_buster_azure_amd64.raw` 映像文件。
 
-    ```console
-    # sudo waagent –force -deprovision
-    # export HISTSIZE=0
-    # logout
-    ```
+要将原始映像转换为适用于 Azure 的 VHD，可以执行以下操作：
 
-10. 在 Hyper-V 管理器中单击“操作”->“关闭”。  Linux VHD 现已准备好上传到 Azure。
+```
+rawdisk="image_buster_azure_amd64.raw"
+vhddisk="image_buster_azure_amd64.vhd"
 
-## <a name="next-steps"></a>后续步骤
-现在，可以使用 Debian 虚拟硬盘在 Azure 中创建新的 Azure 虚拟机了。 如果是首次将 .vhd 文件上传到 Azure，请参阅[从自定义磁盘创建 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。
+MB=$((1024*1024))
+size=$(qemu-img info -f raw --output json "$rawdisk" | \
+gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
+
+rounded_size=$(((($size+$MB-1)/$MB)*$MB))
+rounded_size_adjusted=$(($rounded_size + 512))
+
+echo "Rounded Size Adjusted = $rounded_size_adjusted"
+
+sudo qemu-img resize "$rawdisk" $rounded_size
+qemu-img convert -f raw -o subformat=fixed,force_size -O vpc "$rawdisk" "$vhddisk"
+```
+
+
+这会创建一个 VHD `image_buster_azure_amd64.vhd`，其大小进行了取整，能够成功将其复制到 Azure Disk。
+
+现在我们需要为这个映像创建 Azure 资源（此映像使用了 `$rounded_size_adjusted` 变量，所以它应该来自上面的同一个 shell 进程）。
+
+```
+az group create -l $LOCATION -n $RG
+
+az disk create \
+    -n $DISK \
+    -g $RG \
+    -l $LOCATION \
+    --for-upload --upload-size-bytes "$rounded_size_adjusted" \
+    --sku standard_lrs --hyper-v-generation V1
+
+ACCESS=$(az disk grant-access \
+    -n $DISK -g $RG \
+    --access-level write \
+    --duration-in-seconds 86400 \
+    --query accessSas -o tsv)
+
+azcopy copy "$vhddisk" "$ACCESS" --blob-type PageBlob
+
+az disk revoke-access -n $DISK -g $RG
+az image create \
+    -g $RG \
+    -n $IMAGE \
+    --os-type linux \
+    --source $(az disk show \
+        -g $RG \
+        -n $DISK \
+        --query id -o tsv)
+az vm create \
+    -g $RG \
+    -n $VM \
+    --ssh-key-value $SSH_KEY_VALUE \
+    --public-ip-address-dns-name $VM \
+    --image $(az image show \
+        -g $RG \
+        -n $IMAGE \
+        --query id -o tsv)
+```
+
+
+>[!Note]
+> 如果从本地计算机到 Azure Disk 的带宽导致使用 azcopy 处理上传需要很长时间，则可以使用 Azure VM Jumpbox 来加快处理速度。 以下演示了如何执行此操作：
+>
+>1. 在本地计算机上创建 VHD 的 tarball：`tar -czvf ./image_buster_azure_amd64.vhd.tar.gz ./image_buster_azure_amd64.vhd`。
+>2. 创建一个 Azure Linux 虚拟机（你选择的发行版本）。 请确保使用足够大的磁盘来创建，以便保存提取的 VHD！
+>3. 将 azcopy 实用工具下载到 Azure Linux 虚拟机。 可以从[此处](../../storage/common/storage-use-azcopy-v10.md#download-azcopy)检索。
+>4. 将 tarball 复制到虚拟机：`scp ./image_buster_azure_amd64.vhd.tar.gz <vm>:~`。
+>5. 在 VM 上，提取 VHD：`tar -xf ./image_buster_azure_amd64.vhd.tar.gz`（此操作将需要一些时间，具体取决于文件大小）。
+>6. 最后，在虚拟机上，使用 `azcopy`（上文中的命令）将 VHD 复制到 Azure Disk。

@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: yuajia
-ms.openlocfilehash: e4698a1c1576d15042dd050e0123b83dba39a3e3
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 98f09b35bb51f4f93c7bf326683a333e79845de2
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064732"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109810744"
 ---
 # <a name="azure-front-door-standardpremium-preview-rule-set-actions"></a>Azure Front Door 标准/高级（预览版）规则集操作
 
@@ -326,6 +326,54 @@ Azure Front Door 标准/高级[规则集](concept-rule-set.md)由包含匹配条
     destination: '/redirection'
     preserveUnmatchedPath: false
     '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleUrlRewriteActionParameters'
+  }
+}
+```
+
+---
+
+## <a name="origin-group-override"></a><a name="OriginGroupOverride"></a> 源组替代
+
+使用“源组替代”操作来更改请求应路由到的源组。
+
+### <a name="properties"></a>属性
+
+| 属性 | 支持的值 |
+|----------|------------------|
+| 源组 | 请求应路由到的源组。 这会替代 Front Door 终结点路由中指定的配置。 |
+
+### <a name="example"></a>示例
+
+在此示例中，我们将所有匹配的请求路由到名为 `SecondOriginGroup` 的源组，而不考虑 Front Door 终结点路由中的配置。
+
+# <a name="portal"></a>[Portal](#tab/portal)
+
+:::image type="content" source="../media/concept-rule-set-actions/origin-group-override.png" alt-text="Portal screenshot showing origin group override action.":::
+
+# <a name="json"></a>[JSON](#tab/json)
+
+```json
+{
+  "name": "OriginGroupOverride",
+  "parameters": {
+    "originGroup": {
+      "id": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Cdn/profiles/<profile-name>/originGroups/SecondOriginGroup"
+    },
+    "@odata.type": "#Microsoft.Azure.Cdn.Models.DeliveryRuleOriginGroupOverrideActionParameters"
+  }
+}
+```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+{
+  name: 'OriginGroupOverride'
+  parameters: {
+    originGroup: {
+      id: '/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Cdn/profiles/<profile-name>/originGroups/SecondOriginGroup'
+    }
+    '@odata.type': '#Microsoft.Azure.Cdn.Models.DeliveryRuleOriginGroupOverrideActionParameters'
   }
 }
 ```

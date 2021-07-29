@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/12/2020
 ms.topic: how-to
-ms.openlocfilehash: df82f51377ac1a585dbfab989ca5386d33d90297
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: d164eb0250c98573e781b87be339748900c4920b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988957"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110452059"
 ---
 # <a name="using-azure-batch-rendering"></a>使用 Azure Batch 渲染
 
@@ -35,10 +35,6 @@ ms.locfileid: "107988957"
 
 ## <a name="using-batch-explorer"></a>使用 Batch Explorer
 
-有关使用 Batch Explorer 执行渲染的分步教程，请参阅 [Blender 教程](./tutorial-rendering-batchexplorer-blender.md)。
-
-### <a name="download-and-install"></a>下载并安装
-
 有适用于 Windows、OSX 和 Linux 的 Batch Explorer [可供下载](https://azure.github.io/BatchExplorer/)。
 
 ### <a name="using-templates-to-create-pools-and-run-jobs"></a>使用模板来创建池和运行作业
@@ -57,7 +53,5 @@ ms.locfileid: "107988957"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Batch 渲染的示例，请尝试学习以下两篇教程：
-
-* [使用 Azure CLI 进行渲染](./tutorial-rendering-cli.md)
-* [使用 Batch Explorer 进行渲染](./tutorial-rendering-batchexplorer-blender.md)
+* 了解如何将[渲染应用程序与 Batch 一起使用](batch-rendering-applications.md)。
+* 了解[用于渲染资产和输出文件的存储与数据移动选项](batch-rendering-storage-data-movement.md)。

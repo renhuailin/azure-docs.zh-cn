@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b69daf9e9fbbb3f6d6597a8e8349dc8bec61fbf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5513aff9bed85293978061f8989c1389e9e7a9c4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103008768"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954952"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>将品牌添加到组织的 Azure Active Directory 登录页面
 使用组织的徽标和自定义颜色方案，在 Azure Active Directory (Azure AD) 登录页面上提供一致外观和体验。 用户登录到组织的基于 Web 的应用（例如 Microsoft 365，它使用 Azure AD 作为标识提供者时）时，将显示登录页面。
@@ -66,13 +66,16 @@ ms.locfileid: "103008768"
 
            可以自定义输入的登录页文本。 若要开始新段落，请使用两次 Enter 键。 还可以更改文本格式以包括粗体、斜体、下划线或可单击的链接。 使用以下语法向文本添加格式： 
 
-          > 超链接：```[text](link)``` 
+          > 超链接：`[text](link)` 
           
-          > 粗体：``` **text** ``` 或 ``` __text__ ``` 
+          > 粗体：`**text**` 或 `__text__` 
           
-          > 斜体：``` *text* ``` 或 ``` _text_ ``` 
+          > 斜体：`*text*` 或 `_text_` 
           
-          > 下划线：``` ++text++ ``` 
+          > 下划线：`++text++` 
+         
+          > [!IMPORTANT]
+          > 与登录页文本一起添加的超链接在原生环境中（例如，在桌面和移动应用程序中）呈现为文本。
 
     - **高级设置**
             

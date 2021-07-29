@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28847ece3c08e93d14d381b35fc93fb16dad95a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de370b133e5938d3838f1968691b475e8d6fdd40
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95973892"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110478764"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 门户添加自定义域名
 
@@ -98,7 +98,9 @@ ms.locfileid: "95973892"
 
 如果 Azure AD 无法验证自定义域名，请尝试以下建议的方法：
 
-- **至少等待一小时，然后重试**。 必须先传播 DNS 记录，Azure AD 才能验证域。 此过程可能需要一小时以上。
+- 至少等待一小时，然后重试。 必须先传播 DNS 记录，Azure AD 才能验证域。 此过程可能需要一小时以上。
+ 
+- 如果要尝试验证子域，请先验证父域。 请确保先创建并验证父域，然后再尝试验证子域。
 
 - **确保 DNS 记录正确。** 返回到域名注册机构站点。 确保该条目已存在，并且它与 Azure AD 提供的 DNS 条目信息相匹配。
 

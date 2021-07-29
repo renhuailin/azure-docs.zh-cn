@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b84d55e2d3a2f49a870c1e57eeed3c5c0caeba4a
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 25ee91482ac17ac5e91715f5dfe6191c6ed4007a
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530407"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982697"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>为用户配置和启用通过 Azure Active Directory 进行基于短信的身份验证 
 
@@ -38,14 +38,15 @@ ms.locfileid: "107530407"
     * [企业移动性 + 安全性 (EMS) E3 或 E5][ems-licensing] 或 [Microsoft 365 (M365) E3 或 E5][m365-licensing]
     * [Office 365 F3][o365-f3]
 
-## <a name="limitations"></a>限制
+## <a name="known-issues"></a>已知问题
 
-以下限制适用于基于短信的身份验证：
+以下是一些已知问题：
 
 * 基于短信的身份验证目前与 Azure AD 多重身份验证不兼容。
 * 基于短信的身份验证与本机 Office 应用程序不兼容，Teams 除外。
 * 不建议对 B2B 帐户使用基于短信的身份验证。
 * 联合用户不会在主租户中进行身份验证。 他们只会在云中进行身份验证。
+* 如果用户的默认登录方法是给你的电话号码发短信或打电话，则在多重身份验证过程中会自动发送短信代码或语音呼叫。 截至 2021 年 6 月，某些应用程序会要求用户首先选择“发短信”或“打电话”。 此选项可防止为不同应用发送过多的安全码。 如果默认登录方法是 Microsoft Authenticator 应用（[强烈推荐](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)）,则将自动发送应用通知。
 
 ## <a name="enable-the-sms-based-authentication-method"></a>启用基于短信的身份验证方法
 

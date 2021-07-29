@@ -7,18 +7,18 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 03/16/2020
-ms.openlocfilehash: a7f12891bf394e54ee46c60598536faed1731202
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c82f68ee35ae95a424c0847be9a9cc770185af43
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104600866"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005728"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>为托管体验版设置 Azure 市场订阅
 
-本文介绍如何为体验版设置 Azure 市场订阅和 Dynamics 365 for Customer Engagement 或 Dynamics 365 for Operations 环境。 
+本文介绍如何为体验版设置 Azure 市场订阅以及 Dynamics 365 for Customer Engagement & Power Apps 或 Dynamics 365 for Operations 环境。 
 
-## <a name="set-up-for-dynamics-365-for-customer-engagement"></a>针对 Dynamics 365 for Customer Engagement 的设置
+## <a name="set-up-for-dynamics-365-for-customer-engagement--power-apps"></a>Dynamics 365 for Customer Engagement & Power Apps 的设置
 
 1. 使用管理帐户登录 [Azure 门户](https://portal.azure.com/)。
 2. 通过将鼠标悬停在右上角的帐户图标上，验证你是否处于与 Dynamics 365 体验版实例相关联的租户中。 如果不在正确的租户中，请选择帐户图标以切换到正确的租户中。
@@ -31,7 +31,7 @@ ms.locfileid: "104600866"
 
 4. 在 Azure 中创建 Azure Active Directory (AD) 应用。 AppSource 将使用此应用在租户中预配和取消预配体验版用户。
     1. 在筛选器窗格中，选择“Azure Active Directory”。
-    2. 选择 **“应用注册”**。
+    2. 选择“应用注册” 。
 
         [![选择应用注册。](media/test-drive/app-registrations.png)](media/test-drive/app-registrations.png#lightbox)
 
@@ -100,7 +100,7 @@ ms.locfileid: "104600866"
 
 3. 在 Azure 中创建 Azure AD 应用。 AppSource 将使用此应用在租户中预配和取消预配体验版用户。
     1. 在筛选器窗格中，选择“Azure Active Directory”。
-    2. 选择 **“应用注册”**。
+    2. 选择“应用注册” 。
 
         :::image type="content" source="./media/test-drive/app-registrations.png" alt-text="选择应用注册。":::
 

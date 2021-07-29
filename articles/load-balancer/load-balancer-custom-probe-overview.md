@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: a008d7b26738b9552a7a43ab026391bd9afe0aa8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6aa21dda1f19335a542edf729135d55a9f3b9176
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96780937"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110083469"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
 
@@ -37,7 +37,7 @@ ms.locfileid: "96780937"
 >请通篇查看本文档，包括下面有关创建可靠服务的重要[设计指导原则](#design)。
 
 >[!IMPORTANT]
->负载均衡器运行状况探测源自 IP 地址 168.63.129.16，要使探测将实例标记为运行，不得阻止这些探测。  有关详细信息，请查看[探测源 IP 地址](#probesource)。
+>负载均衡器运行状况探测源自 IP 地址 168.63.129.16，要使探测将实例标记为运行，不得阻止这些探测。  有关详细信息，请查看[探测源 IP 地址](#probesource)。 若要查看后端实例中的该探测流量，请查看[此常见问题解答](load-balancer-faqs.md#probes)。
 
 >[!IMPORTANT]
 >无论配置的超时阈值如何，HTTP(S) 负载均衡器运行状况探测都会自动探测实例，前提是服务器返回的状态代码不是“HTTP 200 正常”，或者连接通过 TCP 重置终止。

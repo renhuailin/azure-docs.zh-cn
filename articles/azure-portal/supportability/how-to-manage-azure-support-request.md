@@ -4,13 +4,13 @@ description: 介绍如何查看支持请求、发送消息、更改请求严重�
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
-ms.date: 12/14/2020
-ms.openlocfilehash: 4d0c03e0035f6b71a23891ac1691f5421c1bdb76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/25/2021
+ms.openlocfilehash: bc9edecd918668e76c36308a660c47d3a8fd9e8b
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102502512"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110496504"
 ---
 # <a name="manage-an-azure-support-request"></a>管理 Azure 支持请求
 
@@ -56,17 +56,17 @@ ms.locfileid: "102502512"
 
 ## <a name="share-diagnostic-information-with-azure-support"></a>与 Azure 支持共享诊断信息
 
-创建支持请求时，默认情况下会选择“共享诊断信息”选项。 这允许 Azure 支持收集来自 Azure 资源的[诊断信息](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)：
+创建支持请求时，默认情况下会选择“共享诊断信息”选项。 使用此选项，Azure 支持人员可从 Azure 资源中收集[诊断信息](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)，这些信息可能有助于解决你的问题。
 
-* 创建请求后，不能清除此选项。
+若要在创建请求后更改“共享诊断信息”选择：
 
-* 如果在创建请求时清除了此选项，则可以在创建请求后选择它。
-
-    1. 在“所有支持请求”页上，选择支持请求。
+1. 在“所有支持请求”页上，选择支持请求。
     
-    1. 在“支持请求”页上，选择“授予权限”，然后选择“是”和“确定”   。
+1. 在“支持请求”页上，查找“共享诊断信息”，然后选择“更改”。
     
-        :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="为诊断信息授予权限":::
+1.  选择“是”或“否”，然后选择“确定”进行确认。
+    
+    :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="为诊断信息授予权限":::
 
 ## <a name="upload-files"></a>上传文件
 

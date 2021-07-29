@@ -10,16 +10,14 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: e0f3464420c5cb429f780999bf5983b2ab142567
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2233e6f40c1023f1b02543f4e234b00422f6f77f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102608625"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077187"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>将 Azure IoT Edge 设备连接到 Azure IoT Central 应用程序
-
-本文适用于解决方案构建者和设备开发人员。 
 
 Azure IoT Edge 将云分析和自定义业务逻辑移到设备，这样你的组织就可以专注于业务见解而非数据管理。 通过将业务逻辑打包到标准容器中，横向扩展 IoT 解决方案，然后将这些容器部署到设备，并从云中监视所有这些设备。
 
@@ -198,8 +196,6 @@ IoT Edge 部署清单列出要在设备上部署的 IoT Edge 模块以及如何�
 
 ### <a name="update-a-deployment-manifest"></a>更新部署清单
 
-如果创建新[版本](howto-version-device-template.md)的设备模板，可以使用新版本替换部署清单：
-
 替换部署清单时，任何连接的 IoT Edge 设备都会下载新的清单并更新其模块。 但是，IoT Central 不会使用对模块配置所做的任何更改更新设备模板中的接口。 例如，如果将上一代码片段中显示的清单替换为以下清单，则不会在设备模板的“管理”界面中自动看到 SendUnits 属性。 手动将新属性添加到“管理”界面，以便 IoT Central 识别它：
 
 ```json
@@ -288,4 +284,4 @@ IoT Edge 部署清单列出要在设备上部署的 IoT Edge 模块以及如何�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你是设备开发人员，建议的下一步是了解如何[开发自己的 IoT Edge 模块](../../iot-edge/module-development.md)。
+建议的下一步是了解如何[开发自己的 IoT Edge 模块](../../iot-edge/module-development.md)。

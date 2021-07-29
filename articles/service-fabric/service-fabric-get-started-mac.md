@@ -4,12 +4,12 @@ description: 安装运行时、SDK 和工具并创建本地开发群集。 完�
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6fe551f8371322af8d955b5233e6d9d05741f3d9
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 71fd869ad68164faf883fe148a47c2da4fd133b0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868116"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088422"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上设置开发环境
 > [!div class="op_single_selector"]
@@ -20,15 +20,15 @@ ms.locfileid: "107868116"
 可以使用 Mac OS X 生成在 Linux 群集上运行的 Azure Service Fabric 应用程序。本文档介绍了如何设置用于开发的 Mac。
 
 ## <a name="prerequisites"></a>先决条件
-Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Service Fabric 群集，我们提供了预配置的 Docker 容器映像。 准备事项：
+Azure Service Fabric 不在 Mac OS X 本机上运行。为了运行本地 Service Fabric 群集，我们提供了预配置的 Docker 容器映像。 准备工作：
 
-* 至少 4 GB 的 RAM。
-* 最新版的 [Docker](https://www.docker.com/)。
+* [在 Mac 上安装Docker Desktop](https://docs.docker.com/docker-for-mac/install/) 的系统需求
+
+* [在 Mac 上安装并运行 Docker Desktop](https://docs.docker.com/docker-for-mac/install/#install-and-run-docker-desktop-on-mac)
 
 >[!TIP]
 >
->若要在 Mac 上安装 Docker，请按 [Docker 文档](https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install)中的步骤操作。 安装之后，请[验证安装](https://docs.docker.com/docker-for-mac/#check-versions-of-docker-engine-compose-and-machine)。
->
+>若要在 Mac 上安装 Docker，请按 [Docker 文档](https://docs.docker.com/docker-for-mac/install/#what-to-know-before-you-install)中的步骤操作。 安装后，可以使用 Docker Desktop 设置首选项，包括 [资源限制](https://docs.docker.com/docker-for-mac) 和 [磁盘利用率](https://docs.docker.com/docker-for-mac/space/)。
 
 ## <a name="create-a-local-container-and-set-up-service-fabric"></a>创建本地容器和设置 Service Fabric
 若要设置本地 Docker 容器并在其上运行 Service Fabric 群集，请执行以下步骤：

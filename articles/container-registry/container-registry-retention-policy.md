@@ -1,39 +1,36 @@
 ---
 title: 保留未标记清单的策略
-description: 了解如何在 Azure 容器注册表中启用保留策略，以便在定义期间后自动删除未标记的清单。
+description: 了解如何在高级 Azure 容器注册表中启用保留策略，以便在定义期间后自动删除未标记的清单。
 ms.topic: article
-ms.date: 10/02/2019
-ms.openlocfilehash: 81ce92a2533cc8a688be43da9406cd5b0e726509
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 04/26/2021
+ms.openlocfilehash: 80e16c4b8cccdda2e171159cca807368b2648e82
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781336"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062823"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>设置未标记清单的保留策略
 
-Azure 容器注册表为你提供了为没有任何关联标记（未标记清单）的存储映像清单设置保留策略的选项 。 启用保留策略后，注册表中的未标记清单会在设置的数天后自动删除。 此功能可防止注册表填满不需要的项目，并有助于节省存储成本。 如果将未标记清单的 `delete-enabled` 属性设置为 `false`，则无法删除清单，并且保留策略不适用。
+Azure 容器注册表为你提供了为没有任何关联标记（未标记清单）的存储映像清单设置保留策略的选项 。 启用保留策略后，注册表中的未标记清单会在设置的数天后自动删除。 此功能可防止注册表填满不需要的项目，并有助于节省存储成本。 
 
 可以使用 Azure Cloud Shell 或 Azure CLI 的本地安装来运行本文中的命令示例。 如果想要在本地使用它，则需要使用 2.0.74 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
 
-保留策略是高级容器注册表的一项功能。 有关注册表服务层级的信息，请参阅 [Azure 容器注册表服务层](container-registry-skus.md)。
-
-> [!IMPORTANT]
-> 此功能目前以预览版提供，存在一些[限制](#preview-limitations)。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+未标记清单的保留策略目前是“高级”容器注册表的预览功能。 有关注册表服务层级的信息，请参阅 [Azure 容器注册表服务层](container-registry-skus.md)。
 
 > [!WARNING]
 > 谨慎设置保留策略 - 删除的映像数据是无法恢复的。 如果系统按清单摘要（而不是映像名称）拉取映像，则不应为未标记的清单设置保留策略。 删除无标的记映像后，这些系统即无法从注册表拉取映像。 不按清单拉取，而是考虑采用[建议的最佳做法](container-registry-image-tag-version.md)，即唯一标记方案。
-
-## <a name="preview-limitations"></a>预览版限制
-
-* 仅可以设置未标记清单的保留策略。
-* 保留策略当前仅适用于启用策略后未标记的清单。 注册表中现有的未标记清单不受策略约束。 要删除现有的未标记清单，请参阅[删除 Azure 容器注册表中的容器映像](container-registry-delete.md)中的示例。
 
 ## <a name="about-the-retention-policy"></a>关于保留策略
 
 Azure 容器注册表对注册表中的清单进行引用计数。 当未标记清单时，它将检查保留策略。 如果启用了保留策略，则会根据策略中设置的天数，将清单删除操作排入队列，并带有特定日期。
 
 单独的队列管理作业会不断处理消息，根据需要进行缩放。 例如，假设你在保留策略为 30 天的注册表中未标记两个清单（相隔 1 小时）。 将两条消息排入队列。 然后，30 天后，大约相隔 1 小时，将从队列中检索并处理消息，前提是策略仍然有效。
+
+如果将未标记清单的 `delete-enabled` 属性设置为 `false`，则清单将被锁定且不被策略删除。
+
+> [!IMPORTANT]
+> 保留策略仅适用于时间戳为启用策略 *后* 的未标记的清单。 注册表中带更早时间戳的未标记清单不受策略约束。 有关删除映像数据的其他选项，请参阅 [删除 Azure 容器注册表中的容器映像](container-registry-delete.md) 中的示例。
 
 ## <a name="set-a-retention-policy---cli"></a>设置保留策略 - CLI
 
@@ -52,7 +49,9 @@ az acr config retention update --registry myregistry --status enabled --days 30 
 下面的示例设置一个策略，以便在未标记时立即删除注册表中的任何清单。 通过设置 0 天的保留期来创建此策略。 
 
 ```azurecli
-az acr config retention update --registry myregistry --status enabled --days 0 --type UntaggedManifests
+az acr config retention update \
+  --registry myregistry --status enabled \
+  --days 0 --type UntaggedManifests
 ```
 
 ### <a name="validate-a-retention-policy"></a>验证保留策略
@@ -62,13 +61,14 @@ az acr config retention update --registry myregistry --status enabled --days 0 -
 1. 将测试映像 `hello-world:latest` 映像推送到注册表，或替换所选的其他测试映像。
 1. 取消标记 `hello-world:latest` 映像，例如，使用 [az acr repository untag][az-acr-repository-untag] 命令。 未标记的清单将保留在注册表中。
     ```azurecli
-    az acr repository untag --name myregistry --image hello-world:latest
+    az acr repository untag \
+      --name myregistry --image hello-world:latest
     ```
 1. 在几秒钟内，未标记的清单将被删除。 可以通过在存储库中列出清单来验证删除，例如，使用 [z acr repository show-manifests][az-acr-repository-show-manifests] 命令。 如果测试映像是存储库中唯一的映像，则存储库本身将被删除。
 
-### <a name="disable-a-retention-policy"></a>禁用保留策略
+### <a name="manage-a-retention-policy"></a>管理保留策略
 
-要查看注册表中设置的保留策略，请运行 [az acr config retention show][az-acr-config-retention-show] 命令：
+要显示注册表中设置的保留策略，请运行 [az acr config retention show][az-acr-config-retention-show] 命令：
 
 ```azurecli
 az acr config retention show --registry myregistry
@@ -77,12 +77,14 @@ az acr config retention show --registry myregistry
 要禁用注册表中的保留策略，请运行 [az acr config retention update][az-acr-config-retention-update] 命令并设置 `--status disabled`：
 
 ```azurecli
-az acr config retention update --registry myregistry --status disabled --type UntaggedManifests
+az acr config retention update \
+  --registry myregistry --status disabled \
+  --type UntaggedManifests
 ```
 
 ## <a name="set-a-retention-policy---portal"></a>设置保留策略 - 门户
 
-还可以在 [Azure 门户](https://portal.azure.com)中设置注册表的保留策略。 下面的示例演示如何使用门户为注册表中未标记的清单设置保留策略。
+还可以在 [Azure 门户](https://portal.azure.com)中设置注册表的保留策略。 
 
 ### <a name="enable-a-retention-policy"></a>启用保留策略
 

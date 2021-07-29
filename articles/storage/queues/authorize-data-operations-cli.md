@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1570906ae036b31dc2e97f35c827385933093f73
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 480798177797ad83ec01f33297d5fc559c7c3e3d
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108162196"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111900460"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>选择如何使用 Azure CLI 授予对队列数据的访问权限
 
@@ -46,7 +46,7 @@ Azure 存储提供适用于 Azure CLI 的扩展，使你能够指定如何根据
 
 使用 Azure AD 凭据登录 Azure CLI 时，会返回 OAuth 2.0 访问令牌。 Azure CLI 自动使用该令牌针对队列存储进行后续数据操作授权。 对于支持的操作，无需再通过命令传递帐户密钥或 SAS 令牌。
 
-可通过 Azure 基于角色的访问控制 (Azure RBAC) 向 Azure AD 安全主体分配对队列数据的权限。 有关 Azure 存储中 Azure 角色的详细信息，请参阅[通过 Azure RBAC 管理 Azure 存储数据访问权限](../common/storage-auth-aad-rbac-portal.md)。
+可通过 Azure 基于角色的访问控制 (Azure RBAC) 向 Azure AD 安全主体分配对队列数据的权限。 有关 Azure 存储中 Azure 角色的详细信息，请参阅[通过 Azure RBAC 管理 Azure 存储数据访问权限](assign-azure-role-data-access.md)。
 
 ### <a name="permissions-for-calling-data-operations"></a>用于调用数据操作的权限
 
@@ -58,7 +58,7 @@ Azure 存储扩展支持针对队列数据的操作。 可调用的操作取决�
 
 以下示例演示如何在 Azure CLI 中使用 Azure AD 凭据创建队列。 若要创建队列，需要登录到 Azure CLI，并需要资源组和存储帐户。
 
-1. 创建队列之前，请为自己分配[存储队列数据参与者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)角色。 即使你是帐户所有者，也需要显式权限才能针对存储帐户执行数据操作。 有关分配 Azure 角色的详细信息，请参阅[使用 Azure 门户分配用于访问 blob 和队列数据的 Azure 角色](../common/storage-auth-aad-rbac-portal.md)。
+1. 创建队列之前，请为自己分配[存储队列数据参与者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)角色。 即使你是帐户所有者，也需要显式权限才能针对存储帐户执行数据操作。 若要详细了解如何分配 Azure 角色，请参阅[分配用于访问队列数据的 Azure 角色](assign-azure-role-data-access.md)。
 
     > [!IMPORTANT]
     > 传播 Azure 角色分配可能需要花费几分钟时间。
@@ -111,5 +111,5 @@ az storage queue create \
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure CLI 分配一个可以访问 blob 和队列数据的 Azure 角色](../common/storage-auth-aad-rbac-cli.md)
+- [分配用于访问队列数据的 Azure 角色](assign-azure-role-data-access.md)
 - [使用 Azure 资源托管标识授予对 Blob 和队列数据的访问权限](../common/storage-auth-aad-msi.md)

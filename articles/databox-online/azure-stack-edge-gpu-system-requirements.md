@@ -8,13 +8,13 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 04/26/2021
 ms.author: alkohli
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: 1233c35df8c8471b91eafdc98616906f76ffe103
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: e9bf7d7d61ad05726ca8dcaad06d63902273f6f8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073156"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085053"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>带有 GPU 的 Azure Stack Edge Pro 的系统要求 
 
@@ -107,6 +107,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 | https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft 容器注册表（必填）               |
 | https://\*.azurecr.io                     | 个人和第三方容器注册表（可选） | 
 | https://\*.azure-devices.net              | Iot 中心访问权限（必填）                             | 
+| https://\*.docker.com              | StorageClass（必填）                             | 
 
 ### <a name="url-patterns-for-monitoring"></a>监视的 URL 模式
 
@@ -153,7 +154,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 应考虑的因素包括：
 
-- **容器详细信息** - 请考虑以下内容。
+- 容器详细信息 - 请考虑以下内容。
 
     - 容器占用量是多少？ 容器消耗多少内存、存储和 CPU？
     - 你的工作负载中有多少个容器？ 你可能有大量轻型容器，而不是少量资源密集型容器。
@@ -161,12 +162,12 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
     - 你的容器共享多少层？ 容器映像是文件的捆绑包，这些文件组织成一个由层组成的堆栈。 对于容器映像，请确定有多少层及其各自的大小以计算资源消耗。
     - 是否有未使用的容器？ 已停止的容器仍会占用磁盘空间。
     - 你的容器使用哪种语言编写？
-- **处理的数据大小** - 你的容器将处理多少数据？ 这些数据会消耗磁盘空间还是直接在内存中处理？
-- **预期性能** - 你的解决方案所需的性能特征有哪些？ 
+- 处理的数据大小 - 你的容器将处理多少数据？ 这些数据会消耗磁盘空间还是直接在内存中处理？
+- 预期性能 - 你的解决方案所需的性能特征有哪些？ 
 
 要了解和优化解决方案的性能，可以使用：
 
-- Azure 门户中提供的计算指标。 前往 Azure Stack Edge 资源，然后转到“监视”>“指标”。 查看“Edge 计算 - 内存使用”和“Edge 计算 - CPU 百分比”，以了解可用资源以及这些资源的消耗情况 。
+- Azure 门户中提供的计算指标。 前往 Azure Stack Edge 资源，然后转到“监视”>“指标”。 查看“Edge 计算 - 内存使用”和“Edge 计算 - CPU 百分比”，以了解可用资源以及这些资源的消耗情况。
 - 若要监视计算模块并对其进行故障排除，请参阅[调试 Kubernetes 问题](azure-stack-edge-gpu-connect-powershell-interface.md#debug-kubernetes-issues-related-to-iot-edge)。
 
 最后，在部署到生产环境之前，请确保在数据集上验证解决方案并量化 Azure Stack Edge Pro 的性能。

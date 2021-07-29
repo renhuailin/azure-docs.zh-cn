@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f81f7922431f85cfc2a98261a128ba66d23a984f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 49d5a6ed7b23169e655a02cdbb14df52a6e82231
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608589"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099778"
 ---
 # <a name="dev-tools-pack-installer-overview"></a>开发工具包安装程序概述
 
@@ -22,29 +22,29 @@ ms.locfileid: "105608589"
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Python 3.6 或更高版本](https://www.python.org/)
-* [Docker 19.03](https://www.docker.com/)
-* [PIP3](https://pip.pypa.io/en/stable/user_guide/)
-* [TensorFlow 1.13](https://www.tensorflow.org/)
-* [Azure 机器学习 SDK 1.1](/python/api/overview/azure/ml/)
+* [Docker 20.10](https://www.docker.com/)
+* [PIP3 21.1](https://pip.pypa.io/en/stable/user_guide/)
+* [TensorFlow 2.0](https://www.tensorflow.org/)
+* [Azure 机器学习 SDK 1.2](/python/api/overview/azure/ml/)
 
 ## <a name="optional-tools"></a>可选工具
 
-* [Nvidia DeepStream SDK 5](https://developer.nvidia.com/deepstream-sdk)（用于开发 Nvidia 加速器解决方案的工具包）
-* [Intel OpenVino 工具包 2020.2](https://docs.openvinotoolkit.org/)（用于开发 Intel 加速器解决方案的工具包）
-* [Lobe.ai](https://lobe.ai/)  
-* [Streamlit](https://www.streamlit.io/)
+* [NVIDIA DeepStream SDK 5](https://developer.nvidia.com/deepstream-sdk)（用于开发 NVIDIA 加速器解决方案的工具包）
+* [Intel OpenVINO 工具包 2021.3](https://docs.openvinotoolkit.org/)（用于开发 Intel 加速器解决方案的工具包）
+* [Lobe.ai 0.9](https://lobe.ai/)  
+* [Streamlit 0.8](https://www.streamlit.io/)
 * [Pytorch 1.4.0 (Windows) 或 1.2.0 (Linux)](https://pytorch.org/)
-* [Miniconda3](https://docs.conda.io/en/latest/miniconda.html)
-* [Chainer 5.2](https://chainer.org/)
-* [Caffe](https://caffe.berkeleyvision.org/)
-* [CUDA 工具包 10.0.130](https://developer.nvidia.com/cuda-toolkit)
+* [Miniconda 4.5](https://docs.conda.io/en/latest/miniconda.html)
+* [Chainer 7.7](https://chainer.org/)
+* [Caffe 1.0](https://caffe.berkeleyvision.org/)
+* [CUDA 工具包 11.2](https://developer.nvidia.com/cuda-toolkit)
 * [Microsoft Cognitive Toolkit 2.5.1](https://www.microsoft.com/research/product/cognitive-toolkit/?lang=fr_ca)
 
 ## <a name="known-issues"></a>已知问题
 
-- 如果 Docker 运行不正常，则可选的 Caffe 安装可能会失败。 如果要安装 Caffe，请确保在尝试通过开发工具包安装程序安装 Caffe 之前已安装并运行 Docker。
+- 如果 Docker 未正常运行，可选的 Caffe、NVIDIA DeepStream SDK 和 Intel OpenVINO 工具包安装可能会失败。 若要安装这些可选工具，请确保在尝试通过开发工具包安装程序进行安装之前安装并运行 Docker。
 
-- 可选的 CUDA 安装在不兼容的系统上失败。 尝试通过开发工具包安装程序安装 [CUDA 工具包 10.0.130](https://developer.nvidia.com/cuda-toolkit) 之前，请验证系统兼容性。
+- Mac 版本上安装的可选 CUDA 工具包为 10.0.130。 CUDA 工具包 11 不再支持在 macOSity 上开发或运行应用程序。
 
 ## <a name="docker-minimum-requirements"></a>Docker 最低要求
 

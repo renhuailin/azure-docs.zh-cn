@@ -2,13 +2,13 @@
 title: 排查事件网格问题
 description: 本文提供了各种方式来解决 Azure 事件网格问题
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: d30b8464de90474ad74853cc423de700b41226a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/10/2021
+ms.openlocfilehash: 5dd6450e1f849dca084bbe0e52a0bcab8f7a29ca
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720553"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982297"
 ---
 # <a name="troubleshoot-azure-event-grid-issues"></a>解决 Azure 事件网格问题
 本文提供的信息有助于解决 Azure 事件网格问题。 
@@ -31,8 +31,13 @@ ms.locfileid: "104720553"
 ## <a name="error-codes"></a>错误代码
 如果你收到错误代码为 400、409 和 403 等等的错误消息，请参阅[解决事件网格错误](troubleshoot-errors.md)。 
 
-## <a name="distributed-tracing-net"></a>分布式跟踪 (.NET)
+## <a name="distributed-tracing"></a>分布式跟踪 
+
+### <a name="net"></a>.NET
 事件网格 .NET 库支持分布式跟踪。 根据有关分布式跟踪的 [CloudEvents 规范指南](https://github.com/cloudevents/spec/blob/master/extensions/distributed-tracing.md)，当分布式跟踪已启用时，该库会在 `CloudEvent` 的 [ExtensionAttributes](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventgrid/Azure.Messaging.EventGrid/src/Customization#L126) 上设置 `traceparent` 和 `tracestate`。 若要详细了解如何在应用程序中启用分布式跟踪，请参阅 Azure SDK [分布式跟踪文档](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/samples/Diagnostics.md#Distributed-tracing)。
+
+### <a name="java"></a>Java
+事件网格 Java 库现成支持分发跟踪功能。 根据有关分布式跟踪的 CloudEvents 规范[指南](https://github.com/cloudevents/spec/blob/master/extensions/distributed-tracing.md)，当分布式跟踪已启用时，该库会在 `CloudEvent` 的 `extensionAttributes` 上设置 `traceparent` 和 `tracestate`。 若要详细了解如何在应用程序中启用分布式跟踪，请参阅 Azure SDK Java [分布式跟踪文档](/azure/developer/java/sdk/tracing)。
 
 ### <a name="sample"></a>示例
 请参阅[行计数器示例](/samples/azure/azure-sdk-for-net/line-counter/)。 此示例应用展示了如何将存储、事件中心和事件网格客户端与 ASP.NET Core 集成、分布式跟踪和托管服务配合使用。 它允许用户将文件上传到 blob，这会触发包含文件名的事件中心事件。 事件中心处理器接收事件，然后，应用下载 blob 并对文件中的行数进行计数。 应用将显示一个指向某个页面的链接，其中包含行计数。 单击此链接后，将使用事件网格发布包含该文件名称的 CloudEvent。

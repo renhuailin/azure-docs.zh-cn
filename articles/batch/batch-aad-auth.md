@@ -2,14 +2,14 @@
 title: 使用 Azure Active Directory 对 Azure Batch 服务进行身份验证
 description: Batch 支持 Azure AD 在 Batch 服务中进行身份验证。 了解如何通过以下两种方式之一进行身份验证。
 ms.topic: how-to
-ms.date: 10/20/2020
-ms.custom: has-adal-ref
-ms.openlocfilehash: 2ceefa538c44208750da8986fcf3d161f0c0865f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/13/2021
+ms.custom: has-adal-ref, subject-rbac-steps
+ms.openlocfilehash: 52e34bb94ab151afcfcdc14d2de55e608d82a139
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180014"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110066747"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 对 Batch 服务解决方案进行身份验证
 
@@ -114,14 +114,9 @@ Azure Batch 资源终结点用于获取对 Batch 服务的请求进行身份验�
 
 1. 在 Azure 门户中，导航到应用程序使用的 Batch 帐户。
 1. 在批处理帐户的“设置”部分中，选择“访问控制(IAM)” 。
-1. 选择“角色分配”选项卡。
-1. 选择“添加角色分配”。
-1. 在“角色”下拉列表中，为应用程序选择参与者或读者角色。 有关这些角色的详细信息，请参阅 [Azure 门户中 Azure 基于角色的访问控制入门](../role-based-access-control/overview.md)。
-1. 在“选择”字段中，输入应用程序的名称。 从列表中选择你的应用程序，然后选择“保存”。
+1. 为应用程序分配[参与者](../role-based-access-control/built-in-roles.md#contributor)或[读取者](../role-based-access-control/built-in-roles.md#reader)角色。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 现在，应用程序应出现在访问控制设置中，同时已分配有 Azure 角色。
-
-![将 Azure 角色分配到应用程序](./media/batch-aad-auth/app-rbac-role.png)
 
 ### <a name="assign-a-custom-role"></a>分配自定义角色
 
@@ -412,4 +407,3 @@ credentials = ServicePrincipalCredentials(
 - 了解 [Azure Active Directory 中的应用程序对象和服务主体对象](../active-directory/develop/app-objects-and-service-principals.md)和[如何创建可访问资源的 Azure AD 应用程序和服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
 - 了解如何[使用 Active Directory 对 Batch 管理解决方案进行身份验证](batch-aad-auth-management.md)。
 - 有关如何创建使用 Azure AD 令牌进行身份验证的 Batch 客户端的 Python 示例，请参阅[使用 Python 脚本部署 Azure Batch 自定义映像](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md)示例。
-

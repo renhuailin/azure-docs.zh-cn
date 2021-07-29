@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 06/11/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00291907ddea75ba4507779d1226502dc8343aea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6fc67b0b038abda37c591162caad9b3b94e6c440
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100365695"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112027472"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 中对 Microsoft 365 组强制执行命名策略
 
@@ -70,12 +70,12 @@ ms.locfileid: "100365695"
 ### <a name="roles-and-permissions"></a>角色和权限
 
 若要配置命名策略，需要以下角色之一：
+
 - 全局管理员
 - 组管理员
 - 目录写入者
 
-
-选定的管理员可跨所有组工作负荷和终结点得到这些策略的豁免，因此可以使用阻止的字词及其自己的命名约定创建组。 下面列出了可得到组命名策略豁免的管理员角色。
+某些管理员角色在所有组工作负载和终结点中不受这些策略的约束，因此他们可以使用禁止使用的字词和自己的命名约定来创建组。 以下管理员角色不受组命名策略的约束：
 
 - 全局管理员
 - 用户管理员

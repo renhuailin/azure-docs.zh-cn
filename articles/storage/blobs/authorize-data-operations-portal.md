@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 06/08/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: a12936f8f9f84dacfab4850253df665ae7758be1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3d654a84b6e0e5cfb00c7b5d5dd5742649ec7a81
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102613234"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111900766"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>选择如何在 Azure 门户中授予对 blob 数据的访问权限
 
@@ -30,11 +30,12 @@ ms.locfileid: "102613234"
 
 ### <a name="use-the-account-access-key"></a>使用帐户访问密钥
 
-若要使用帐户访问密钥访问 blob 数据，你必须已分配到一个 Azure 角色，此角色包含 Azure RBAC 操作 **Microsoft.Storage/storageAccounts/listkeys/action**。 此 Azure 角色可以是内置角色，也可以是自定义角色。 支持 **Microsoft.Storage/storageAccounts/listkeys/action** 的内置角色包括：
+若要使用帐户访问密钥访问 blob 数据，你必须已分配到一个 Azure 角色，此角色包含 Azure RBAC 操作 **Microsoft.Storage/storageAccounts/listkeys/action**。 此 Azure 角色可以是内置角色，也可以是自定义角色。 支持“Microsoft.Storage/storageAccounts/listkeys/action”的内置角色按权限从小到大的顺序包括：
 
-- Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色
-- Azure 资源管理器[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色
-- [存储帐户参与者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)角色
+- [读取者和数据访问](../../role-based-access-control/built-in-roles.md#reader-and-data-access)角色
+- [存储帐户参与者角色](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
+- Azure 资源管理器[参与者角色](../../role-based-access-control/built-in-roles.md#contributor)
+- Azure 资源管理器[所有者角色](../../role-based-access-control/built-in-roles.md#owner)
 
 尝试在 Azure 门户中访问 Blob 数据时，门户首先会检查你是否拥有一个包含 **Microsoft.Storage/storageAccounts/listkeys/action** 的角色。 如果你被分配了包含此操作的角色，则门户将使用帐户密钥来访问 blob 数据。 如果你不拥有包含此操作的角色，则门户会尝试使用你的 Azure AD 帐户访问数据。
 
@@ -48,20 +49,16 @@ ms.locfileid: "102613234"
 
 若要使用 Azure AD 帐户从 Azure 门户访问 Blob 数据，必须符合以下条件：
 
-- 至少拥有 Azure 资源管理器[读取者](../../role-based-access-control/built-in-roles.md#reader)角色，该角色的权限范围为存储帐户或更高级别。 “读取者”角色授予限制性最高的权限，但也接受可授予存储帐户管理资源访问权限的其他 Azure 资源管理器角色。
 - 拥有一个可提供 blob 数据访问权限的内置角色或自定义角色。
+- 至少拥有 Azure 资源管理器[读取者](../../role-based-access-control/built-in-roles.md#reader)角色，该角色的权限范围为存储帐户或更高级别。 “读取者”角色授予限制性最高的权限，但也接受可授予存储帐户管理资源访问权限的其他 Azure 资源管理器角色。
 
-必须提供“读取者”角色分配或其他 Azure 资源管理器角色分配，使用户能够在 Azure 门户中查看和导航存储帐户管理资源。 授予 blob 数据访问权限的 Azure 角色不会授予存储帐户管理资源访问权限。 若要在门户中访问 Blob 数据，用户需要拥有在存储帐户资源中导航的权限。 有关此要求的详细信息，请参阅[分配“读取者”角色以访问门户](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access)。
+Azure 资源管理器“读取者”角色允许用户查看存储帐户资源，但不允许修改这些资源。 该角色不提供对 Azure 存储中的数据的读取权限，而只提供对帐户管理资源的读取权限。 “读者”角色是必需的，以便用户可以导航到 Azure 门户中的 blob 容器。
 
-支持访问 Blob 数据的内置角色包括：
-
-- [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)：用于对 Azure Data Lake Storage Gen2 进行 POSIX 访问控制。
-- [存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)：对 Blob 的读取/写入/删除权限。
-- [存储 Blob 数据读取者](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)：对 Blob 的只读权限。
+有关支持访问 blob 数据的内置角色的信息，请参阅 [blob 的 Azure 角色](assign-azure-role-data-access.md#azure-roles-for-blobs)。
 
 自定义角色能够支持内置角色所提供的相同权限的不同组合。 若要详细了解如何创建 Azure 自定义角色，请参阅 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)和[了解 Azure 资源的角色定义](../../role-based-access-control/role-definitions.md)。
 
-> [!IMPORTANT]
+> [!NOTE]
 > Azure 门户中存储资源管理器的预览版不支持使用 Azure AD 凭据来查看和修改 blob 数据。 Azure 门户中的存储资源管理器始终使用帐户密钥来访问数据。 若要在 Azure 门户中使用存储资源管理器，你必须被分配一个包含 **Microsoft.Storage/storageAccounts/listkeys/action** 的角色。
 
 ## <a name="navigate-to-blobs-in-the-azure-portal"></a>在 Azure 门户中导航到 Blob
@@ -114,6 +111,4 @@ ms.locfileid: "102613234"
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure Active Directory 验证对 Azure Blob 和队列的访问权限](../common/storage-auth-aad.md)
-- [使用 Azure 门户为 blob 和队列数据分配 Azure 角色](../common/storage-auth-aad-rbac-portal.md)
-- [使用 Azure CLI 分配用于访问 blob 和队列数据的 Azure 角色](../common/storage-auth-aad-rbac-cli.md)
-- [使用 Azure PowerShell 模块分配用于访问 blob 和队列数据的 Azure 角色](../common/storage-auth-aad-rbac-powershell.md)
+- [分配 Azure 角色以访问 blob 数据](assign-azure-role-data-access.md)

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 0d09851cf8e68cead4a67615aaa792512482f351
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: fc27ed68f5dedefa0b4bf77a206faa15c94f083f
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98955116"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018308"
 ---
 # <a name="python-code-samples-for-azure-cognitive-search"></a>Azure 认知搜索的 Python 代码示例
 
@@ -49,8 +49,9 @@ Azure SDK 开发团队中的代码示例演示 API 用法。 可在 GitHub 的 [
 | 示例 | 项目 |
 |---------|---------|
 | [快速入门](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Quickstart) | [快速入门：使用 Python 创建搜索索引](search-get-started-python.md)的源代码。 本文介绍了使用示例数据来创建、加载和查询搜索索引的基本工作流。 |
+| [search-website](https://github.com/azure-samples/azure-search-python-samples/tree/master/search-website) | [教程：向 Web 应用添加搜索](tutorial-python-overview.md)的源代码。 演示一个端到端搜索应用，其中包含一个富客户端以及用于托管应用和处理搜索请求的组件。|
 | [tutorial-ai-enrichment](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment)  | [教程：使用 Python 和 AI 从 Azure Blob 生成可搜索的内容](cognitive-search-tutorial-blob-python.md)的源代码。 本文介绍了如何使用认知技能组创建 blob 索引器，其中技能组可创建并转换原始内容，使其方便搜索或使用。 |
 | [AzureML-Custom-Skill](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill)  | [示例：使用 Python 创建自定义技能](cognitive-search-custom-skill-python.md)的源代码。 本文演示了索引器和技能组与 Azure 机器学习中的深度学习模型的集成。 |
 
 > [!Tip]
-> 请尝试使用[示例浏览器](/samples/browse/?languages=python&products=azure-cognitive-search)来搜索 Github 中的 Microsoft 代码示例，搜索时可按产品、服务和语言进行筛选。
+> 请尝试使用[示例浏览器](/samples/browse/?languages=python&products=azure-cognitive-search)来搜索 GitHub 中的 Microsoft 代码示例，搜索时可按产品、服务和语言进行筛选。

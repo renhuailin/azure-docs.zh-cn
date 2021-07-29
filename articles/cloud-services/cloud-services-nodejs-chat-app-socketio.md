@@ -1,6 +1,6 @@
 ---
 title: 使用 Socket.io 构建 Node.js 应用程序 - Azure
-description: 使用本教程了解如何在 Azure 上托管一个基于 socket.IO 的聊天应用程序。 Socket.IO 为 node.js 服务器和客户端提供实时通信。
+description: 使用本教程了解如何在 Azure 上托管一个基于 socket.IO 的聊天应用程序。 Socket.IO 为 Node.js 服务器和客户端提供实时通信。
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
@@ -8,19 +8,19 @@ ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: abc02769d7d978e14975d90ae0f98547bdc4faf7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3f6d331c6579d6317ab226d6d2d1e4f8682ac3b
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743315"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108803829"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service-classic"></a>在 Azure 云服务（经典）中使用 Socket.IO 生成 Node.js 聊天应用程序
 
 > [!IMPORTANT]
 > [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
-Socket.IO 在 node.js 服务器和客户端之间提供实时通信。 本教程指导你在 Azure 上托管一个基于 socket.IO 的聊天应用程序。 有关 Socket.IO 的详细信息，请参阅 [socket.io](https://socket.io)。
+Socket.IO 在 Node.js 服务器和客户端之间提供实时通信。 本教程指导你在 Azure 上托管一个基于 socket.IO 的聊天应用程序。 有关 Socket.IO 的详细信息，请参阅 [socket.io](https://socket.io)。
 
 以下是已完成应用程序的屏幕截图：
 

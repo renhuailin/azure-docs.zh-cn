@@ -11,20 +11,27 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 03/16/2021
+ms.date: 04/27/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 110a94c78427087f4ca5555f59055ab8e3bebcee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3cf140468aa0743ab93eaa2fe2d1c35f5fa64b37
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592552"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084769"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中创建对 Azure 资源角色的访问评审
 
 员工对有特权的 Azure 资源角色的访问需求会随着时间推移而变化。 若要降低与过时角色分配相关的风险，应定期查看访问权限。 可以使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 为 Azure 资源角色的特权访问创建访问评审。 还可以配置自动进行的定期访问评审。 本文介绍如何创建一个或多个访问评审。
+
+## <a name="prerequisite-license"></a>必备许可证
+
+[!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)] 有关 PIM 许可证的详细信息，请参阅[使用 Privileged Identity Management 所要满足的许可证要求](subscription-requirements.md)。
+
+> [!Note]
+>  目前，你可以使用租户中处于活动状态的 Azure Active Directory Premium P2 版本将访问评审的范围限定为可访问 Azure AD 和 Azure 资源角色（预览版）的服务主体。 服务主体的许可模型将会最终确定，以便正式发布此功能。可能需要额外的许可证。
 
 ## <a name="prerequisite-role"></a>必备角色
 
@@ -34,9 +41,9 @@ ms.locfileid: "104592552"
 
 1. 使用分配有某个必备角色的用户登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 打开“Azure AD Privileged Identity Management”。 
-
-1. 在左侧菜单中，选择“Azure 资源”  。
+1. 选择“标识监管”。
+ 
+1. 在左侧菜单中，选择“Azure AD Privileged Identity Management”下的“Azure 资源” 。
 
 1. 选择要管理的资源，例如订阅。
 
@@ -58,28 +65,28 @@ ms.locfileid: "104592552"
 
 1. 使用“结束”设置指定如何结束定期访问评审系列。 系列的结束方式有三种：持续运行，无限期地开始评审；运行至指定日期；运行至已完成定义的评审数目。 你、其他用户管理员或其他全局管理员可以在创建后停止此系列，只需在“设置”中更改日期，然后此系列就会在该日期结束。
 
-1. 在“用户”部分中，选择要查看其成员身份的一个或多个角色。
+1. 在“用户”部分，选择评审的范围。 若要评审用户，请选择“用户”，或选择“(预览)服务主体”，以评审对 Azure 角色具有访问权限的计算机帐户。   
 
     ![要查看其角色成员身份的用户范围](./media/pim-resource-roles-start-access-review/users.png)
 
+
+1. 在“评审角色成员身份”下，选择要评审的特权 Azure 角色。 
+
     > [!NOTE]
-    > - 此处选择的角色包括[永久和符合条件的角色](../privileged-identity-management/pim-how-to-add-role-to-user.md)。
-    > - 选择多个角色会创建多个访问评审。 例如，选择五个角色会创建五个单独的访问评审。
+    > 选择多个角色会创建多个访问评审。 例如，选择五个角色会创建五个单独的访问评审。
     如果创建 Azure AD 角色的访问评审，下面显示了审阅成员身份列表的示例。
 
-    ![列出可以选择的 Azure AD 角色的审阅成员身份窗格](./media/pim-resource-roles-start-access-review/review-membership.png)
+1. 在“分配类型”中，根据主体分配给角色的方式确定评审范围。 选择“(预览)仅合格分配”来评审合格的分配（无论创建评审时激活状态如何），或者选择“(预览)仅活动分配”来评审活动分配。 选择“所有活动且合格的分配”可评审所有分配而不考虑类型。
 
-    如果创建 Azure 资源角色的访问评审，下图显示了审阅成员身份列表的示例。
-
-    ![列出可以选择的 Azure 资源角色的审阅成员身份窗格](./media/pim-resource-roles-start-access-review/review-membership-azure-resource-roles.png)
+    ![分配类型的审阅者列表](./media/pim-resource-roles-start-access-review/assignment-type-select.png)
 
 1. 在“审阅者”部分选择一人或多人来评审所有用户。 也可以选择让成员评审自己的访问权限。
 
     ![所选用户或成员（自我）的审阅者列表](./media/pim-resource-roles-start-access-review/reviewers.png)
 
-    - 所选用户 - 如果不知道谁需要访问，请使用此选项。 使用此选项，可以将审阅分配给资源所有者或组管理员完成。
-    - 成员(自我) - 使用此选项可让用户评审其自己的角色分配。 
-    - **管理员** - 使用此选项可让用户的管理员查看其角色分配。 选择“管理员”后，还可以选择指定一个后备审阅者。 当用户未在目录中指定任何管理员时，系统会要求后备审阅者评审用户。 
+    - **所选用户** - 使用此选项可指定一个特定用户来完成评审。 无论评审范围如何，均可使用此选项，并且选定的审阅者可以评审用户和服务主体。 
+    - 成员(自我) - 使用此选项可让用户评审其自己的角色分配。 仅当评审的范围限定为“用户”时，此选项才可用。
+    - **管理员** - 使用此选项可让用户的管理员查看其角色分配。 仅当评审的范围限定为“用户”时，此选项才可用。 选择“管理员”后，还可以选择指定一个后备审阅者。 当用户未在目录中指定任何管理员时，系统会要求后备审阅者评审用户。 
 
 ### <a name="upon-completion-settings"></a>完成后的设置
 
@@ -95,6 +102,10 @@ ms.locfileid: "104592552"
     - **删除访问权限** - 删除用户的访问权限
     - **批准访问权限** - 批准用户的访问权限
     - **采用建议** - 根据系统的建议拒绝或批准用户的持续访问权限
+
+1. 可以向其他需要接收评审完成情况更新的用户或组发送通知（预览版）。 除评审创建者之外的利益干系人使用此功能可了解最新的评审进度。 若要使用此功能，请选择“选择用户或组”并在要接收完成度状态时添加其他用户或组。
+
+    ![完成后的设置 - 添加要接收通知的其他用户](./media/pim-resource-roles-start-access-review/upon-completion-settings-additional-receivers.png) 
 
 ### <a name="advanced-settings"></a>高级设置
 

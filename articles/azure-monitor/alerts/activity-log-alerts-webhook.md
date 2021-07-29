@@ -3,12 +3,12 @@ title: 了解活动日志警报中使用的 Webhook 架构
 description: 了解有关活动日志警报激活时发布到 webhook URL 的 JSON 架构。
 ms.topic: conceptual
 ms.date: 03/31/2017
-ms.openlocfilehash: 31b9f4b41d741475a031efd4392c7df2fd2260c4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e4ced623cb6f4b44aea0d8b8b275a11531a8c93a
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034330"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110068151"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活动日志警报的 Webhook
 作为操作组定义的一部分，可以配置 webhook 终结点以接收活动日志警报通知。 通过 webhook 可以将这些通知路由到其他系统，以便进行后续处理或自定义操作。 本文介绍针对 webhook 发出的 HTTP POST 的有效负载的大致形式。
@@ -30,13 +30,13 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 > [!NOTE]
 > 目前，活动日志事件中的描述会复制到已触发的“警报说明”属性中。
 >
-> 为了使活动日志有效负载与其他警报类型保持一致，从 2021 年 4 月 1 日开始，触发的警报属性“说明”将包含预警规则说明。
+> 为了使活动日志有效负载与其他警报类型保持一致，从 2021 年 4 月 1 日开始，触发的警报属性“说明”将改为包含警报规则说明。
 >
-> 为了针对此更改做好准备，我们为活动日志触发的警报创建了一个新属性“活动日志事件说明”。 这个新属性将使用现在可用的“说明”属性进行填充。 这意味着新字段“活动日志事件说明”将包含活动日志事件中的说明。
+> 为了针对此更改做好准备，我们为活动日志触发的警报创建了一个新属性：“活动日志事件说明”。 这个新属性将使用现在可用的“说明”属性进行填充。 这意味着新字段“活动日志事件说明”将包含活动日志事件中的说明。
 >
-> 请查看预警规则、操作规则、Webhook、逻辑应用或任何其他配置，你可能会在其中使用触发警报中的“说明”属性，并将其替换为“活动日志事件说明”属性 。
+> 请查看警报规则、操作规则、Webhook、逻辑应用或任何其他配置（你可能会在其中使用已触发警报的“说明”属性），将其替换为“活动日志事件说明”属性 。
 >
-> 如果你的条件（在操作规则、Webhook、逻辑应用或任何其他配置中）当前基于活动日志警报的“说明”属性，则可能需要将其修改为基于“活动日志事件说明”属性 。
+> 如果你的条件（在操作规则、Webhook、逻辑应用或任何其他配置中）目前基于活动日志警报的“说明”属性，则可能需要将其修改为基于“活动日志事件说明”属性 。
 >
 > 为了填充新的“说明”属性，可以在预警规则定义中添加说明。
 > ![触发的活动日志警报](media/activity-log-alerts-webhook/activity-log-alert-fired.png)
@@ -102,42 +102,42 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 
 ```json
 {
-    "schemaId":"Microsoft.Insights/activityLogs",
-    "data":{"status":"Activated",
-        "context":{
-            "activityLog":{
-                "channels":"Operation",
-                "correlationId":"2518408115673929999",
-                "description":"Failed SSH brute force attack. Failed brute force attacks were detected from the following attackers: [\"IP Address: 01.02.03.04\"].  Attackers were trying to access the host with the following user names: [\"root\"].",
-                "eventSource":"Security",
-                "eventTimestamp":"2017-06-25T19:00:32.607+00:00",
-                "eventDataId":"Sec-07f2-4d74-aaf0-03d2f53d5a33",
-                "level":"Informational",
-                "operationName":"Microsoft.Security/locations/alerts/activate/action",
-                "operationId":"Sec-07f2-4d74-aaf0-03d2f53d5a33",
-                "properties":{
-                    "attackers":"[\"IP Address: 01.02.03.04\"]",
-                    "numberOfFailedAuthenticationAttemptsToHost":"456",
-                    "accountsUsedOnFailedSignInToHostAttempts":"[\"root\"]",
-                    "wasSSHSessionInitiated":"No","endTimeUTC":"06/25/2017 19:59:39",
-                    "actionTaken":"Detected",
-                    "resourceType":"Virtual Machine",
-                    "severity":"Medium",
-                    "compromisedEntity":"LinuxVM1",
-                    "remediationSteps":"[In case this is an Azure virtual machine, add the source IP to NSG block list for 24 hours (see https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/)]",
-                    "attackedResourceType":"Virtual Machine"
-                },
-                "resourceId":"/subscriptions/12345-5645-123a-9867-123b45a6789/resourceGroups/contoso/providers/Microsoft.Security/locations/centralus/alerts/Sec-07f2-4d74-aaf0-03d2f53d5a33",
-                "resourceGroupName":"contoso",
-                "resourceProviderName":"Microsoft.Security",
-                "status":"Active",
-                "subscriptionId":"12345-5645-123a-9867-123b45a6789",
-                "submissionTimestamp":"2017-06-25T20:23:04.9743772+00:00",
-                "resourceType":"MICROSOFT.SECURITY/LOCATIONS/ALERTS"
-            }
+  "schemaId":"Microsoft.Insights/activityLogs",
+  "data":{"status":"Activated",
+    "context":{
+      "activityLog":{
+        "channels":"Operation",
+        "correlationId":"2518408115673929999",
+        "description":"Failed SSH brute force attack. Failed brute force attacks were detected from the following attackers: [\"IP Address: 01.02.03.04\"].  Attackers were trying to access the host with the following user names: [\"root\"].",
+        "eventSource":"Security",
+        "eventTimestamp":"2017-06-25T19:00:32.607+00:00",
+        "eventDataId":"Sec-07f2-4d74-aaf0-03d2f53d5a33",
+        "level":"Informational",
+        "operationName":"Microsoft.Security/locations/alerts/activate/action",
+        "operationId":"Sec-07f2-4d74-aaf0-03d2f53d5a33",
+        "properties":{
+          "attackers":"[\"IP Address: 01.02.03.04\"]",
+          "numberOfFailedAuthenticationAttemptsToHost":"456",
+          "accountsUsedOnFailedSignInToHostAttempts":"[\"root\"]",
+          "wasSSHSessionInitiated":"No","endTimeUTC":"06/25/2017 19:59:39",
+          "actionTaken":"Detected",
+          "resourceType":"Virtual Machine",
+          "severity":"Medium",
+          "compromisedEntity":"LinuxVM1",
+          "remediationSteps":"[In case this is an Azure virtual machine, add the source IP to NSG block list for 24 hours (see https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/)]",
+          "attackedResourceType":"Virtual Machine"
         },
-        "properties":{}
-    }
+        "resourceId":"/subscriptions/12345-5645-123a-9867-123b45a6789/resourceGroups/contoso/providers/Microsoft.Security/locations/centralus/alerts/Sec-07f2-4d74-aaf0-03d2f53d5a33",
+        "resourceGroupName":"contoso",
+        "resourceProviderName":"Microsoft.Security",
+        "status":"Active",
+        "subscriptionId":"12345-5645-123a-9867-123b45a6789",
+        "submissionTimestamp":"2017-06-25T20:23:04.9743772+00:00",
+        "resourceType":"MICROSOFT.SECURITY/LOCATIONS/ALERTS"
+      }
+    },
+    "properties":{}
+  }
 }
 ```
 
@@ -145,42 +145,42 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 
 ```json
 {
-    "schemaId":"Microsoft.Insights/activityLogs",
-    "data":{
-        "status":"Activated",
-        "context":{
-            "activityLog":{
-                "channels":"Operation",
-                "claims":"{\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\":\"Microsoft.Advisor\"}",
-                "caller":"Microsoft.Advisor",
-                "correlationId":"123b4c54-11bb-3d65-89f1-0678da7891bd",
-                "description":"A new recommendation is available.",
-                "eventSource":"Recommendation",
-                "eventTimestamp":"2017-06-29T13:52:33.2742943+00:00",
-                "httpRequest":"{\"clientIpAddress\":\"0.0.0.0\"}",
-                "eventDataId":"1bf234ef-e45f-4567-8bba-fb9b0ee1dbcb",
-                "level":"Informational",
-                "operationName":"Microsoft.Advisor/recommendations/available/action",
-                "properties":{
-                    "recommendationSchemaVersion":"1.0",
-                    "recommendationCategory":"HighAvailability",
-                    "recommendationImpact":"Medium",
-                    "recommendationName":"Enable Soft Delete to protect your blob data",
-                    "recommendationResourceLink":"https://portal.azure.com/#blade/Microsoft_Azure_Expert/RecommendationListBlade/recommendationTypeId/12dbf883-5e4b-4f56-7da8-123b45c4b6e6",
-                    "recommendationType":"12dbf883-5e4b-4f56-7da8-123b45c4b6e6"
-                },
-                "resourceId":"/subscriptions/12345-5645-123a-9867-123b45a6789/resourceGroups/contoso/providers/microsoft.storage/storageaccounts/contosoStore",
-                "resourceGroupName":"CONTOSO",
-                "resourceProviderName":"MICROSOFT.STORAGE",
-                "status":"Active",
-                "subStatus":"",
-                "subscriptionId":"12345-5645-123a-9867-123b45a6789",
-                "submissionTimestamp":"2017-06-29T13:52:33.2742943+00:00",
-                "resourceType":"MICROSOFT.STORAGE/STORAGEACCOUNTS"
-            }
+  "schemaId":"Microsoft.Insights/activityLogs",
+  "data":{
+    "status":"Activated",
+    "context":{
+      "activityLog":{
+        "channels":"Operation",
+        "claims":"{\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\":\"Microsoft.Advisor\"}",
+        "caller":"Microsoft.Advisor",
+        "correlationId":"123b4c54-11bb-3d65-89f1-0678da7891bd",
+        "description":"A new recommendation is available.",
+        "eventSource":"Recommendation",
+        "eventTimestamp":"2017-06-29T13:52:33.2742943+00:00",
+        "httpRequest":"{\"clientIpAddress\":\"0.0.0.0\"}",
+        "eventDataId":"1bf234ef-e45f-4567-8bba-fb9b0ee1dbcb",
+        "level":"Informational",
+        "operationName":"Microsoft.Advisor/recommendations/available/action",
+        "properties":{
+          "recommendationSchemaVersion":"1.0",
+          "recommendationCategory":"HighAvailability",
+          "recommendationImpact":"Medium",
+          "recommendationName":"Enable Soft Delete to protect your blob data",
+          "recommendationResourceLink":"https://portal.azure.com/#blade/Microsoft_Azure_Expert/RecommendationListBlade/recommendationTypeId/12dbf883-5e4b-4f56-7da8-123b45c4b6e6",
+          "recommendationType":"12dbf883-5e4b-4f56-7da8-123b45c4b6e6"
         },
-        "properties":{}
-    }
+        "resourceId":"/subscriptions/12345-5645-123a-9867-123b45a6789/resourceGroups/contoso/providers/microsoft.storage/storageaccounts/contosoStore",
+        "resourceGroupName":"CONTOSO",
+        "resourceProviderName":"MICROSOFT.STORAGE",
+        "status":"Active",
+        "subStatus":"",
+        "subscriptionId":"12345-5645-123a-9867-123b45a6789",
+        "submissionTimestamp":"2017-06-29T13:52:33.2742943+00:00",
+        "resourceType":"MICROSOFT.STORAGE/STORAGEACCOUNTS"
+      }
+    },
+    "properties":{}
+  }
 }
 ```
 
@@ -302,6 +302,6 @@ Webhook 可以选择使用基于令牌的授权进行身份验证。 保存的 w
 ## <a name="next-steps"></a>后续步骤
 * [了解有关活动日志的更多信息](../essentials/platform-logs-overview.md)。
 * [对 Azure 警报执行 Azure 自动化脚本 (Runbook)](https://go.microsoft.com/fwlink/?LinkId=627081)。
-* [使用逻辑应用通过 Twilio 从 Azure 警报发送短信](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。
-* [使用逻辑应用从 Azure 警报发送 Slack 消息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。
-* [使用逻辑应用从 Azure 警报将消息发送到 Azure 队列](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。
+* [使用逻辑应用通过 Twilio 从 Azure 警报发送短信](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-text-message-with-logic-app)。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。
+* [使用逻辑应用从 Azure 警报发送 Slack 消息](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-slack-with-logic-app)。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。
+* [使用逻辑应用从 Azure 警报将消息发送到 Azure 队列](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/alert-to-queue-with-logic-app)。 本示例适用于度量值警报，但经过修改后可用于活动日志警报。

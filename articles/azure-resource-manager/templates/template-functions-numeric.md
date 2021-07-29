@@ -2,13 +2,13 @@
 title: 模板函数 - 数值
 description: 介绍了可在 Azure 资源管理器模板（ARM 模板）中用来处理数字的函数。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: f3687581d94f80cc923614a0655da1813bd5c97b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/13/2021
+ms.openlocfilehash: 9f9959c07f936fc800fac836553fb0f37f4f4e83
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359704"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959643"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>ARM 模板的数值函数
 
@@ -25,17 +25,17 @@ ms.locfileid: "97359704"
 * [mul](#mul)
 * [sub](#sub)
 
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
-
 ## <a name="add"></a>add
 
 `add(operand1, operand2)`
 
-返回提供的两个整数的总和。 Bicep 不支持 `add` 函数。 请改用 `+` 运算符。
+返回提供的两个整数的总和。
+
+Bicep 不支持 `add` 函数。 请改用 [`+` 运算符](../bicep/operators-numeric.md#add-)。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 |operand1 |是 |int |被加数。 |
 |operand2 |是 |int |加数。 |
@@ -47,8 +47,6 @@ ms.locfileid: "97359704"
 ### <a name="example"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json)将添加两个参数。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -81,17 +79,6 @@ ms.locfileid: "97359704"
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param first int = 5
-param second int = 3
-
-output addResult int = first + second
-```
-
----
-
 上述示例中使用默认值的输出为：
 
 | 名称 | 类型 | Value |
@@ -106,7 +93,7 @@ output addResult int = first + second
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | loopName | 否 | string | 用于获取迭代的循环的名称。 |
 | offset |否 |int |要添加到的从零开始的迭代值的数字。 |
@@ -127,8 +114,6 @@ output addResult int = first + second
 ### <a name="example"></a>示例
 
 以下示例显示名称中包含 copy 循环和索引值。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -161,13 +146,6 @@ output addResult int = first + second
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-> [!NOTE]
-> Bicep 中尚未实现循环和 `copyIndex`。  请参阅[循环](https://github.com/Azure/bicep/blob/main/docs/spec/loops.md)。
-
----
-
 ### <a name="return-value"></a>返回值
 
 一个表示迭代的当前索引的整数。
@@ -176,11 +154,13 @@ output addResult int = first + second
 
 `div(operand1, operand2)`
 
-返回提供的两个整数在整除后的商。 Bicep 不支持 `div` 函数。 请改用 `/` 运算符。
+返回提供的两个整数在整除后的商。
+
+Bicep 不支持 `div` 函数。 请改用 [`/` 运算符](../bicep/operators-numeric.md#divide-)。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被除数。 |
 | operand2 |是 |int |除数。 不能为 0。 |
@@ -192,8 +172,6 @@ output addResult int = first + second
 ### <a name="example"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json)将一个参数除以另一个参数。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -226,17 +204,6 @@ output addResult int = first + second
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param first int = 8
-param second int = 3
-
-output addResult int = first / second
-```
-
----
-
 上述示例中使用默认值的输出为：
 
 | 名称 | 类型 | Value |
@@ -247,11 +214,13 @@ output addResult int = first / second
 
 `float(arg1)`
 
-将值转换为浮点数。 仅当将自定义参数传递给应用程序（例如，逻辑应用）时，才使用此函数。 Bicep 不支持 `float` 函数。  请参阅[支持 32 位整数以外的数字类型](https://github.com/Azure/bicep/issues/486)。
+将值转换为浮点数。 仅当将自定义参数传递给应用程序（例如，逻辑应用）时，才使用此函数。
+
+Bicep 不支持 `float` 函数。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或整数 |要转换为浮点数的值。 |
 
@@ -262,8 +231,6 @@ output addResult int = first / second
 ### <a name="example"></a>示例
 
 以下示例演示如何使用 float 将参数传递给逻辑应用：
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -279,13 +246,6 @@ output addResult int = first / second
       },
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-> [!NOTE]
-> Bicep 不支持 `float` 函数。  请参阅[支持 32 位整数以外的数字类型](https://github.com/Azure/bicep/issues/486)。
-
----
-
 ## <a name="int"></a>int
 
 `int(valueToConvert)`
@@ -294,7 +254,7 @@ output addResult int = first / second
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 |字符串或整数 |要转换为整数的值。 |
 
@@ -305,8 +265,6 @@ output addResult int = first / second
 ### <a name="example"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json)将用户提供的参数值转换为整数。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -329,16 +287,6 @@ output addResult int = first / second
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param stringToConvert string = '4'
-
-output inResult int = int(stringToConvert)
-```
-
----
-
 上述示例中使用默认值的输出为：
 
 | 名称 | 类型 | Value |
@@ -353,7 +301,7 @@ output inResult int = int(stringToConvert)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最大值的集合。 |
 
@@ -364,8 +312,6 @@ output inResult int = int(stringToConvert)
 ### <a name="example"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json)演示如何对整数数组和整数列表使用 max：
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -391,26 +337,9 @@ output inResult int = int(stringToConvert)
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param arrayToTest array = [
-  0
-  3
-  2
-  5
-  4
-]
-
-output arrayOutPut int = max(arrayToTest)
-output intOutput int = max(0,3,2,5,4)
-```
-
----
-
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | arrayOutput | int | 5 |
 | intOutput | int | 5 |
@@ -423,7 +352,7 @@ output intOutput int = max(0,3,2,5,4)
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
 
@@ -434,8 +363,6 @@ output intOutput int = max(0,3,2,5,4)
 ### <a name="example"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json)演示如何对整数数组和整数列表使用 min：
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -461,26 +388,9 @@ output intOutput int = max(0,3,2,5,4)
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param arrayToTest array = [
-  0
-  3
-  2
-  5
-  4
-]
-
-output arrayOutPut int = min(arrayToTest)
-output intOutput int = min(0,3,2,5,4)
-```
-
----
-
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | arrayOutput | int | 0 |
 | intOutput | int | 0 |
@@ -489,11 +399,13 @@ output intOutput int = min(0,3,2,5,4)
 
 `mod(operand1, operand2)`
 
-返回使用提供的两个整数整除后的余数。 Bicep 不支持 `mod` 函数。 请改用 `%` 运算符。
+返回使用提供的两个整数整除后的余数。
+
+Bicep 不支持 `mod` 函数。 请改用 [% 运算符](../bicep/operators-numeric.md#modulo-)。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被除数。 |
 | operand2 |是 |int |除数，不能为 0。 |
@@ -505,8 +417,6 @@ output intOutput int = min(0,3,2,5,4)
 ### <a name="example"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json)将返回一个参数除以另一个参数后所得的余数。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -539,17 +449,6 @@ output intOutput int = min(0,3,2,5,4)
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param first int = 7
-param second int = 3
-
-output modResult int = first % second
-```
-
----
-
 上述示例中使用默认值的输出为：
 
 | 名称 | 类型 | Value |
@@ -560,11 +459,13 @@ output modResult int = first % second
 
 `mul(operand1, operand2)`
 
-返回提供的两个整数的积。 Bicep 不支持 `mul` 函数。 请改用 `*` 运算符。
+返回提供的两个整数的积。
+
+Bicep 不支持 `mul` 函数。 请改用 [* 运算符](../bicep/operators-numeric.md#multiply-)。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被乘数。 |
 | operand2 |是 |int |乘数。 |
@@ -576,8 +477,6 @@ output modResult int = first % second
 ### <a name="example"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json)将一个参数乘以另一个参数。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -610,17 +509,6 @@ output modResult int = first % second
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param first int = 5
-param second int = 3
-
-output mulResult int = first * second
-```
-
----
-
 上述示例中使用默认值的输出为：
 
 | 名称 | 类型 | Value |
@@ -631,11 +519,11 @@ output mulResult int = first * second
 
 `sub(operand1, operand2)`
 
-返回提供的两个整数在相减后的结果。 Bicep 不支持 `sub` 函数。 请改用 `-` 运算符。
+返回提供的两个整数在相减后的结果。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被减数。 |
 | operand2 |是 |int |减数。 |
@@ -647,8 +535,6 @@ output mulResult int = first * second
 ### <a name="example"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json)将一个参数与另一个参数相减。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -681,17 +567,6 @@ output mulResult int = first * second
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param first int = 7
-param second int = 3
-
-output subResult int = first - second
-```
-
----
-
 上述示例中使用默认值的输出为：
 
 | 名称 | 类型 | Value |
@@ -700,5 +575,5 @@ output subResult int = first - second
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。
 * 若要在创建资源类型时迭代指定的次数，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。

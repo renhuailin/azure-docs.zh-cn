@@ -7,12 +7,12 @@ author: nabhishek
 ms.author: abnarain
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 0a1eb593e9f9f15f88aefb2fe06706153a4b74a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44fc791fd10517ee52fc2e05ea292b889bd95e11
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100361394"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110496846"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>在 Azure 数据工厂中转换数据
 
@@ -26,6 +26,7 @@ ms.locfileid: "100361394"
 > * [Azure 机器学习工作室（经典）](transform-data-using-machine-learning.md) 
 > * [存储过程](transform-data-using-stored-procedure.md)
 > * [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md)
+> * [Synapse Notebook](../synapse-analytics/synapse-notebook-activity.md)
 > * [Databricks Notebook](transform-data-databricks-notebook.md)
 > * [Databricks Jar](transform-data-databricks-jar.md)
 > * [Databricks Python](transform-data-databricks-python.md)
@@ -79,6 +80,10 @@ Azure 数据工厂中的 Power Query 支持云规模数据整理，使你能够�
 
 ### <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活动
 Data Lake Analytics U-SQL 活动在 Azure Data Lake Analytics 群集上运行 U-SQL 脚本。 有关详细信息，请参阅 [Data Analytics U-SQL 活动](transform-data-using-data-lake-analytics.md)一文。 
+
+### <a name="synapse-notebook-activity"></a>Synapse Notebook 活动 
+
+Synapse 管道中的 Azure Synapse Notebook 活动在你的 Azure Synapse 工作区中运行 Synapse Notebook。 请参阅[通过运行 Synapse Notebook 转换数据](../synapse-analytics/synapse-notebook-activity.md)。
 
 ### <a name="databricks-notebook-activity"></a>Databricks Notebook 活动
 

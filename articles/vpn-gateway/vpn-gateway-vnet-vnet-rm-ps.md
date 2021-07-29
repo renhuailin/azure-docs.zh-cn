@@ -1,18 +1,19 @@
 ---
-title: 使用 Azure VPN 网关 VNet 到 VNet 连接将一个 VNet 连接到另一个 VNet：PowerShell
-description: 使用 VNet 到 VNet 连接和 PowerShell 将虚拟网络连接起来。
+title: 使用 VPN 网关 VNet 到 VNet 连接将一个 VNet 连接到另一个 VNet：PowerShell
+titleSuffix: Azure VPN Gateway
+description: 了解如何使用 VNet 到 VNet 连接和 PowerShell 将虚拟网络连接在一起。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7de83302dd91d7d679b9c35718d184a9767ba436
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6baf0342f5fea5ee4ec062c5eed07d9761e72c1d
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94655351"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289455"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
 

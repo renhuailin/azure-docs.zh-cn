@@ -2,13 +2,13 @@
 title: 在创建 Azure VM 时启用备份
 description: 介绍了如何在创建 Azure VM 时通过 Azure 备份启用备份。
 ms.topic: conceptual
-ms.date: 06/13/2019
-ms.openlocfilehash: ad81300545686d61f42cdd8684e502c937b4fd43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/03/2021
+ms.openlocfilehash: 48798dc276c10276e0effd458bd15e9cfbab32dd
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89377329"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006052"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>在创建 Azure VM 时启用备份
 
@@ -57,16 +57,20 @@ ms.locfileid: "89377329"
 
 需要注意的要点：
 
-1. 可以使用 RG 的默认名称，也可以根据公司要求对其进行编辑。
-2. 可以在创建 VM 备份策略时将 RG 名称模式作为输入提供。 RG 名称应采用以下格式：`<alpha-numeric string>* n <alpha-numeric string>`。 “n”将替换为一个整数（从 1 开始），用于在第一个 RG 已满时进行横向扩展。 目前一个 RG 最多可有 600 个 RPC。
+1. 可以使用 RG 的默认名称，也可以根据公司要求对其进行编辑。<br>如果尚未创建 RG，则若要为 restorepointcollection 指定 RG，请执行以下步骤：
+   1. 为 restorepointcollection 创建 RG。 例如，“rpcrg”。
+   1. 在 VM 备份策略中提及 RG 的名称。
+   >[!NOTE]
+   >这会创建一个追加了数字的 RG，并会将其用于 restorepointcollection。
+1. 可以在创建 VM 备份策略时将 RG 名称模式作为输入提供。 RG 名称应采用以下格式：`<alpha-numeric string>* n <alpha-numeric string>`。 “n”将替换为一个整数（从 1 开始），用于在第一个 RG 已满时进行横向扩展。 目前一个 RG 最多可有 600 个 RPC。
               ![创建策略时选择名称](./media/backup-during-vm-creation/create-policy.png)
-3. 该模式应遵循下面的 RG 命名规则，而且总长度不得超过允许的 RG 名称长度上限。
+1. 该模式应遵循下面的 RG 命名规则，而且总长度不得超过允许的 RG 名称长度上限。
     1. 资源组名称只允许使用字母数字字符、句点、下划线、连字符和括号。 它们不能以句点结尾。
     2. 资源组名称最多可包含 74 个字符，包括 RG 名称和后缀。
-4. 第一个 `<alpha-numeric-string>` 是必需的，但“n”后面的第二个是可选的。 这仅适用于你提供自定义名称的情况。 如果未在任何文本框中输入任何内容，则使用默认名称。
-5. 如果需要，可以通过修改策略来编辑 RG 的名称。 如果更改了名称模式，将在新 RG 中创建新的 RP。 但是，旧的 RP 仍将驻留在旧 RG 中，不会被删除，因为 RP 集合不支持资源移动。 最终，当点过期时，RP 会进行垃圾回收。
+1. 第一个 `<alpha-numeric-string>` 是必需的，但“n”后面的第二个是可选的。 这仅适用于你提供自定义名称的情况。 如果未在任何文本框中输入任何内容，则使用默认名称。
+1. 如果需要，可以通过修改策略来编辑 RG 的名称。 如果更改了名称模式，将在新 RG 中创建新的 RP。 但是，旧的 RP 仍将驻留在旧 RG 中，不会被删除，因为 RP 集合不支持资源移动。 最终，当点过期时，RP 会进行垃圾回收。
 ![修改策略时更改名称](./media/backup-during-vm-creation/modify-policy.png)
-6. 建议不要锁定创建以供备份服务使用的资源组。
+1. 建议不要锁定创建以供备份服务使用的资源组。
 
 若要使用 PowerShell 为虚拟机配置 Azure 备份资源组，请参阅[在快照保留期间创建 Azure 备份资源组](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention)。
 
@@ -83,7 +87,7 @@ ms.locfileid: "89377329"
 
 ## <a name="use-a-resource-manager-template-to-deploy-a-protected-vm"></a>使用资源管理器模板部署一个受保护的 VM
 
-前面的步骤说明了如何使用 Azure 门户来创建虚拟机，以及使用恢复服务保管库来保护该虚拟机。 若要快速部署一台或多台虚拟机并在恢复服务保管库中保护它们，请参阅模板[部署 Windows VM 并启用备份](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/)。
+前面的步骤说明了如何使用 Azure 门户来创建虚拟机，以及使用恢复服务保管库来保护该虚拟机。 若要快速部署一台或多台虚拟机并在恢复服务保管库中保护它们，请参阅模板[部署 Windows VM 并启用备份](https://azure.microsoft.com/resources/templates/recovery-services-create-vm-and-configure-backup/)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,23 +4,23 @@ description: 获取页面视图和会话计数、Web 客户端数据、单页应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 04cda044b002e226c49f8647d4705d7c0f2a514e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 61b7aa455cf9b782ca10d749344c26f5d15caa40
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565259"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072507"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
 了解网页或应用的性能和使用情况。 如果将 [Application Insights](app-insights-overview.md) 添加到页面脚本，可以获取页面加载和 AJAX 调用的时间、浏览器异常和 AJAX 失败的计数和详细信息，以及用户和会话计数。 所有这些信息可按页面、客户端 OS 和浏览器版本、地理位置和其他维度细分。 可以针对失败计数或页面加载缓慢情况设置警报。 并且通过在 JavaScript 代码中插入跟踪调用，可以跟踪网页应用程序的不同功能的使用情况。
 
-可以在任何网页中使用 Application Insights - 刚刚添加了 JavaScript 的简短片段。 如果 Web 服务是 [Java](java-get-started.md) 或 [ASP.NET](asp-net.md)，则你可以将服务器端 SDK 与客户端 JavaScript SDK 结合使用，以全方面地了解应用的性能。
+可以在任何网页中使用 Application Insights - 刚刚添加了 JavaScript 的简短片段。 如果 Web 服务是 [Java](java-in-process-agent.md) 或 [ASP.NET](asp-net.md)，则你可以将服务器端 SDK 与客户端 JavaScript SDK 结合使用，以全方面地了解应用的性能。
 
 ## <a name="adding-the-javascript-sdk"></a>添加 JavaScript SDK
 
 > [!IMPORTANT]
-> 新的 Azure 区域要求使用连接字符串而不是检测密钥。 [连接字符串](./sdk-connection-string.md?tabs=js)用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
+> 建议使用[连接字符串](./sdk-connection-string.md?tabs=js)替代检测密钥。 新的 Azure 区域要求使用连接字符串而不是检测密钥。 连接字符串用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
 
 1. 首先需要一个 Application Insights 资源。 如果你尚未获得资源和检测密钥，请遵照[有关创建新资源的说明](create-new-resource.md)。
 2. 复制你要将 JavaScript 遥测数据发送到的资源（从步骤 1）的检测密钥（也称为“iKey”）或[连接字符串](#connection-string-setup)。你需要将该密钥添加到 Application Insights JavaScript SDK 的 `instrumentationKey` 或 `connectionString` 设置。
@@ -171,7 +171,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>配置
 大多数配置字段的命名都可默认为 false。 除 `instrumentationKey` 以外的所有字段都是可选的。
 
-| 名称 | 说明 | 默认 |
+| 名称 | 描述 | 默认 |
 |------|-------------|---------|
 | instrumentationKey | **必需**<br>从 Azure 门户获取的检测密钥。 | string<br/>NULL |
 | accountId | 可选的帐户 ID（如果应用将用户分组到帐户中）。 不允许使用空格、逗号、分号、等于或竖线 | string<br/>NULL |
@@ -214,7 +214,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | enable&#8203;AutoRoute&#8203;Tracking | 自动跟踪单页应用程序 (SPA) 中的路由更改。 如果为 true，则每次更改路由都会将一个新的页面视图发送到 Application Insights。 哈希路由更改 (`example.com/foo#bar`) 也会记录为新的页面视图。| boolean<br/>false |
 | enableRequest&#8203;HeaderTracking | 如果为 true，则跟踪 AJAX & Fetch 请求标头。 | boolean<br/> false |
 | enableResponse&#8203;HeaderTracking | 如果为 true，则跟踪 AJAX & Fetch 请求的响应头。 | boolean<br/> false |
-| distributedTracingMode | 设置分布式跟踪模式。 如果设置了 AI_AND_W3C 模式或 W3C 模式，则将生成 W3C 跟踪上下文标头 (traceparent/tracestate)，并将其包含在所有传出请求中。 提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测服务向后兼容。 请参阅[此处](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的示例。| `DistributedTracingModes` 或<br/>numeric<br/>（自 v2.6.0 起）`DistributedTracingModes.AI_AND_W3C`<br />（v 2.5.11 或更早版本）`DistributedTracingModes.AI` |
+| distributedTracingMode | 设置分布式跟踪模式。 如果设置了 AI_AND_W3C 模式或 W3C 模式，则将生成 W3C 跟踪上下文标头 (traceparent/tracestate)，并将其包含在所有传出请求中。 提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测服务向后兼容。 请参阅[此处](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的示例。| `DistributedTracingModes`或<br/>numeric<br/>（自 v2.6.0 起）`DistributedTracingModes.AI_AND_W3C`<br />（v 2.5.11 或更早版本）`DistributedTracingModes.AI` |
 | enable&#8203;AjaxErrorStatusText | 如果为 true，则在 AJAX 请求失败时包含依赖关系事件中的响应错误数据文本。 | boolean<br/> false |
 | enable&#8203;AjaxPerfTracking |用于启用查找并包含报告的 `ajax`（XHR 和 fetch）报告的指标中其他浏览器 window.performance 计时的标记。 | boolean<br/> false |
 | maxAjaxPerf&#8203;LookupAttempts | 查找 window.performance 计时的最大次数，此值为必需，因为并非所有浏览器在报告 XHR 请求完成之前都会填充 window.performance，而对于 fetch 请求，将在请求完成之后添加该值。| numeric<br/> 3 |
@@ -222,7 +222,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | enableUnhandled&#8203;PromiseRejection&#8203;Tracking | 如果为 true，则将自动收集未处理的拒绝承诺并报告为 JavaScript 错误。 如果 disableExceptionTracking 为 true（不跟踪异常），则将忽略配置值且不会报告未处理的拒绝承诺。 | boolean<br/> false |
 | disable&#8203;InstrumentationKey&#8203;Validation | 如果为 true，则跳过检测密钥验证检查。 | boolean<br/>false |
 | enablePerfMgr | 启用时（为 true 时）将为已检测的代码创建本地 perfEvents 以发出 perfEvents（通过 doPerf() 帮助程序）。 这可用于根据使用情况识别 SDK 中的性能问题，或者选择性地在自己的已检测代码中识别性能问题。 [基本文档中提供了更多详细信息](https://github.com/microsoft/ApplicationInsights-JS/blob/master/docs/PerformanceMonitoring.md)。 自 v2.5.7 起 | boolean<br/>false |
-| perfEvtsSendAll | 如果已启用 _enablePerfMgr_ 且 [IPerfManager](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfManager.ts) 触发了 [INotificationManager](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/INotificationManager.ts).perfEvent()，此标志会确定是为所有事件触发事件并发送到所有侦听器（为 true 时），还是仅针对父级事件触发事件（为 false 时，&lt;默认值&gt;）。<br />父级 [IPerfEvent](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfEvent.ts) 事件在创建时没有其他 IPerfEvent 仍在运行，且其“父级”属性不为 NULL 或未定义状态。 自 v2.5.7 起 |  boolean<br />false |
+| perfEvtsSendAll | 如果已启用 enablePerfMgr 且 [IPerfManager](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfManager.ts) 触发了 [INotificationManager](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/INotificationManager.ts).perfEvent()，此标志会确定是为所有事件触发事件并发送到所有侦听器（为 true 时），还是仅针对父级事件触发事件（为 false 时，&lt;默认值&gt;）。<br />父级 [IPerfEvent](https://github.com/microsoft/ApplicationInsights-JS/blob/master/shared/AppInsightsCore/src/JavaScriptSDK.Interfaces/IPerfEvent.ts) 事件在创建时没有其他 IPerfEvent 仍在运行，且其“父级”属性不为 NULL 或未定义状态。 自 v2.5.7 起 |  boolean<br />false |
 | idLength | 标识用于生成新的随机会话和用户 ID 值的默认长度。 默认值为 22，以前的默认值为 5（v 2.5.8 或更低版本），如果需要保留以前的最大长度，则应将此值设置为 5。 |  numeric<br />22 |
 
 ## <a name="cookie-handling"></a>Cookie 处理

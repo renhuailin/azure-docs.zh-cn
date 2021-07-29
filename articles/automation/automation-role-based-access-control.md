@@ -4,15 +4,15 @@ description: 本文介绍如何使用 Azure 基于角色的访问控制 (Azure R
 keywords: 自动化 rbac, 基于角色的访问控制, azure rbac
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 07/21/2020
+ms.date: 05/17/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0727d3342c73d9aa4d15e84aacb82bd8fea01d65
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 943fa65f114e46c80c8c1ef576f784f9117c9f79
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833573"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110083793"
 ---
 # <a name="manage-role-permissions-and-security"></a>管理角色权限和安全性
 
@@ -262,14 +262,19 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 更新管理达到跨多个服务以提供其服务。 下表显示了管理更新管理部署所需的权限：
 
-|**资源**  |**角色**  |**范围**  |
+|**资源** |**角色** |**范围** |
 |---------|---------|---------|
-|自动化帐户     | Log Analytics 参与者       | 自动化帐户        |
-|自动化帐户    | 虚拟机参与者        | 帐户的资源组        |
-|Log Analytics 工作区     | Log Analytics 参与者| Log Analytics 工作区        |
-|Log Analytics 工作区 |Log Analytics 读者| 订阅|
-|解决方案     |Log Analytics 参与者         | 解决方案|
-|虚拟机     | 虚拟机参与者        | 虚拟机        |
+|自动化帐户 |Log Analytics 参与者 |自动化帐户 |
+|自动化帐户 |虚拟机参与者  |帐户的资源组  |
+|Log Analytics 工作区  Log Analytics 参与者|Log Analytics 工作区 |
+|Log Analytics 工作区 |Log Analytics 读者|订阅|
+|解决方案 |Log Analytics 参与者 |解决方案|
+|虚拟机 |虚拟机参与者 |虚拟机 |
+|虚拟机上的操作 | | |
+|查看更新计划执行的历史记录（[软件更新配置计算机运行](/rest/api/automation/softwareupdateconfigurationmachineruns)） |读取器 |自动化帐户 |
+|虚拟机上的操作 |**权限** | |
+|创建更新计划（[软件更新配置](/rest/api/automation/softwareupdateconfigurations)） |Microsoft.Compute/virtualMachines/write |用于静态 VM 列表和资源组 |
+|创建更新计划（[软件更新配置](/rest/api/automation/softwareupdateconfigurations)） |Microsoft.OperationalInsights/workspaces/analytics/query/action |用于使用非 Azure 动态列表时的工作区资源 ID。|
 
 ## <a name="configure-azure-rbac-for-your-automation-account"></a>为自动化帐户配置 Azure RBAC
 

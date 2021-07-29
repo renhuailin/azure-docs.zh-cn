@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 05/13/2021
 ms.custom: references_regions
-ms.openlocfilehash: b020c74ce7479f9925c1a4e1db06fb4b3b9ef22b
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: e339c9847024aa35665b9a8b4114102c8fde22a1
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108065432"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470281"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>用于 Amazon S3 的 Azure Purview 连接器
 
@@ -29,9 +29,8 @@ ms.locfileid: "108065432"
 
 |范围  |说明  |
 |---------|---------|
-|**数据限制**     |    Purview 扫描程序服务目前支持扫描 Amazon S3 存储桶，针对每个租户最多扫描 100 GB 的数据。     |
 |**文件类型**     | Purview 扫描程序服务目前支持以下文件类型： <br><br>.avro、.csv、.doc、.docm、.docx、.dot、.json、.odp、.ods、.odt、.orc、.parquet、.pdf、.pot、.pps、.ppsx、.ppt、.pptm、.pptx、.psv、.ssv、.tsv、.txt、.xlc、.xls、.xlsb、.xlsm、.xlsx、.xlt、.xml        |
-|**区域**     | Amazon S3 服务的 Purview 连接器当前部署在 AWS 美国东部（俄亥俄州）、美国东部（弗吉尼亚北部）、欧洲（爱尔兰）、欧洲（法兰克福）和亚太地区（悉尼）    。 <br><br>有关详细信息，请参阅[存储和扫描区域](#storage-and-scanning-regions)。   |
+|**区域**     | Amazon S3 服务的 Purview 连接器当前仅在特定区域部署。 <br><br>有关详细信息，请参阅[存储和扫描区域](#storage-and-scanning-regions)。   |
 |     |         |
 
 有关详细信息，请参阅以下链接中说明的 Purview 限制：
@@ -52,24 +51,24 @@ ms.locfileid: "108065432"
 | ------------------------------- | ------------------------------------- |
 | 美国东部（俄亥俄州）                  | 美国东部（俄亥俄州）                        |
 | 美国东部（北 弗吉尼亚）           | 美国东部（北 弗吉尼亚）                       |
-| 美国西部（北 加利福尼亚州）         | 美国东部（俄亥俄州）                        |
-| 美国西部（俄勒冈州）                | 美国东部（俄亥俄州）                        |
+| 美国西部（北 加利福尼亚州）         | 美国东部（俄亥俄州）或美国西部（北 加利福尼亚州）                        |
+| 美国西部（俄勒冈州）                | 美国东部（俄亥俄州）或美国西部（俄勒冈州）                      |
 | 非洲（开普敦）              | 欧洲（法兰克福）                    |
-| 亚太（香港特别行政区）        | 亚太（悉尼）                   |
-| 亚太（孟买）           | 亚太（悉尼）                   |
-| 亚太（大阪-本地）      | 亚太（悉尼）                   |
-| 亚太（首尔）            | 亚太（悉尼）                   |
-| 亚太（新加坡）        | 亚太（悉尼）                   |
+| 亚太（香港特别行政区）        | 亚太（悉尼）或亚太（新加坡）                |
+| 亚太（孟买）           | 亚太（悉尼）或亚太（新加坡）                |
+| 亚太（大阪-本地）      | 亚太（悉尼）或亚太（东京）                 |
+| 亚太（首尔）            | 亚太（悉尼）或亚太（东京）                 |
+| 亚太（新加坡）        | 亚太（悉尼）或亚太（新加坡）                 |
 | 亚太（悉尼）           | 亚太（悉尼）                  |
-| 亚太（东京）            | 亚太（悉尼）                 |
+| 亚太（东京）            | 亚太（悉尼）或亚太（东京）                |
 | 加拿大（中部）                | 美国东部（俄亥俄州）                        |
 | 中国（北京）                 | 不支持                    |
 | 中国（宁夏）                 | 不支持                   |
 | 欧洲（法兰克福）              | 欧洲（法兰克福）                    |
 | 欧洲（爱尔兰）                | 欧洲（爱尔兰）                   |
-| 欧洲（伦敦）                 | 欧洲（爱尔兰）                   |
+| 欧洲（伦敦）                 | 欧洲（爱尔兰）或欧洲（伦敦）                 |
 | 欧洲（米兰）                  | 欧洲（法兰克福）                    |
-| 欧洲（巴黎）                  | 欧洲（法兰克福）                    |
+| 欧洲（巴黎）                  | 欧洲（法兰克福）或欧洲（巴黎）                   |
 | 欧洲（斯德哥尔摩）              | 欧洲（法兰克福）                    |
 | 中东（巴林）           | 欧洲（法兰克福）                    |
 | 南美洲（圣保罗）       | 美国东部（俄亥俄州）                        |

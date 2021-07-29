@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: ae0d9696d869b2a260de643482a9f86c34bcc824
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be5face0a93dc360493e22fd3d2c6d9743c4f5ff
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575467"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110072435"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Azure SQL 托管实例审核入门
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -144,7 +144,10 @@ ms.locfileid: "100575467"
 
      1. 在“创建审核”对话框中单击“确定” 。
      
-     1. <a id="createspec"></a>将 Blob 容器配置为审核日志的目标后，创建并启用服务器审核规范或数据库审核规范（就像对 SQL Server 操作一样）：
+        > [!NOTE]
+        > 使用 SQL Server Management Studio UI 创建审核时，会自动创建带 SAS 密钥的容器凭据。 
+     
+     1.  <a id="createspec"></a>将 Blob 容器配置为审核日志的目标后，创建并启用服务器审核规范或数据库审核规范（就像对 SQL Server 操作一样）：
 
    - [创建服务器审核规范 T-SQL 指南](/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [创建数据库审核规范 T-SQL 指南](/sql/t-sql/statements/create-database-audit-specification-transact-sql)
@@ -177,7 +180,7 @@ ms.locfileid: "100575467"
 
 5. 选择审核事件的目标：事件中心、Azure Monitor 日志或两者。 为每个目标配置所需的参数（例如，Log Analytics 工作区）。
 
-6. 单击“保存”  。
+6. 单击“保存” 。
 
     ![配置诊断设置](./media/auditing-configure/9_mi_configure_diagnostics.png)
 

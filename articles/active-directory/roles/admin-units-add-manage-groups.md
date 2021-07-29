@@ -9,29 +9,37 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
-ms.date: 03/10/2021
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ad8cce8375ecd670a481541a091e36aacb41240
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: fa9a7b08f792c36ecf0f65e37f2f9e9c551bca8c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505286"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088131"
 ---
 # <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>在 Azure Active Directory 的管理单元中添加和管理组
 
 在 Azure Active Directory (Azure AD) 中，你可以向管理单元添加组，以获得更精细的管理控制范围。
 
-若要准备将 PowerShell 和 Microsoft Graph 用于管理单元的管理，请参阅[入门](admin-units-manage.md#get-started)。
+## <a name="prerequisites"></a>先决条件
+
+- 每个管理单元管理员都有 Azure AD Premium P1 或 P2 许可证
+- 管理单元成员有 Azure AD 免费许可证
+- 特权角色管理员或全局管理员
+- 使用 PowerShell 时需要 AzureAD 模块
+- 将 Graph 浏览器用于 Microsoft Graph API 时需要管理员同意
+
+有关详细信息，请参阅[使用 PowerShell 或 Graph 浏览器的先决条件](prerequisites.md)。
 
 ## <a name="add-groups-to-an-administrative-unit"></a>向管理单元添加组
 
 可以使用 Azure 门户、PowerShell 或 Microsoft Graph 向管理单元添加组。
 
-### <a name="use-the-azure-portal"></a>使用 Azure 门户
+### <a name="azure-portal"></a>Azure 门户
 
 只能将单个组分配给管理单元。 没有将组分配为批量操作的选项。 在 Azure 门户中，可以通过以下两种方式之一将组分配给管理单元：
 
@@ -60,7 +68,7 @@ ms.locfileid: "107505286"
 
   1. 选择要分配给管理单元的一个或多个组，然后选择“选择”按钮。
 
-### <a name="use-powershell"></a>使用 PowerShell
+### <a name="powershell"></a>PowerShell
 
 在以下示例中，将使用 `Add-AzureADMSAdministrativeUnitMember` cmdlet 向管理单元添加组。 管理单元的对象 ID 和要添加的组的对象 ID 用作参数。 根据特定环境的需要更改突出显示的部分。
 
@@ -71,7 +79,7 @@ $GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
 Add-AzureADMSAdministrativeUnitMember -Id $adminUnitObj.Id -RefObjectId $GroupObj.ObjectId
 ```
 
-### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 运行以下命令：
 
@@ -99,7 +107,7 @@ POST /administrativeUnits/{admin-unit-id}/members/$ref
 
 ## <a name="view-a-list-of-groups-in-an-administrative-unit"></a>查看管理单元中的组列表
 
-### <a name="use-the-azure-portal"></a>使用 Azure 门户
+### <a name="azure-portal"></a>Azure 门户
 
 1. 在 Azure 门户中，转到“Azure AD”。
 
@@ -109,7 +117,7 @@ POST /administrativeUnits/{admin-unit-id}/members/$ref
 
    ![“组”窗格的屏幕截图，其中显示了管理单元中的组列表。](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
-### <a name="use-powershell"></a>使用 PowerShell
+### <a name="powershell"></a>PowerShell
 
 若要显示管理单元的所有成员的列表，请运行以下命令： 
 
@@ -130,7 +138,7 @@ Get-AzureADGroup -ObjectId $member.ObjectId
 }
 ```
 
-### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 运行以下命令：
 
@@ -148,7 +156,7 @@ GET /directory/administrativeUnits/{admin-unit-id}/members/$/microsoft.graph.gro
 
 ## <a name="view-a-list-of-administrative-units-for-a-group"></a>查看组的管理单元列表
 
-### <a name="use-the-azure-portal"></a>使用 Azure 门户
+### <a name="azure-portal"></a>Azure 门户
 
 1. 在 Azure 门户中，转到“Azure AD”。
 
@@ -160,7 +168,7 @@ GET /directory/administrativeUnits/{admin-unit-id}/members/$/microsoft.graph.gro
 
    ![“管理单元”窗格的屏幕截图，其中显示了组分配到的管理单元的列表。](./media/admin-units-add-manage-groups/list-group-au.png)
 
-### <a name="use-powershell"></a>使用 PowerShell
+### <a name="powershell"></a>PowerShell
 
 运行以下命令：
 
@@ -168,7 +176,7 @@ GET /directory/administrativeUnits/{admin-unit-id}/members/$/microsoft.graph.gro
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $groupObjId} }
 ```
 
-### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 运行以下命令：
 
@@ -178,7 +186,7 @@ https://graph.microsoft.com/v1.0/groups/{group-id}/memberOf/$/Microsoft.Graph.Ad
 
 ## <a name="remove-a-group-from-an-administrative-unit"></a>从管理单元删除组
 
-### <a name="use-the-azure-portal"></a>使用 Azure 门户
+### <a name="azure-portal"></a>Azure 门户
 
 可以通过以下两种方式之一从 Azure 门户中的管理单元中删除组：
 
@@ -200,7 +208,7 @@ https://graph.microsoft.com/v1.0/groups/{group-id}/memberOf/$/Microsoft.Graph.Ad
 
     ![“组”窗格的屏幕截图，其中显示了管理单元中的组列表。](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
-### <a name="use-powershell"></a>使用 PowerShell
+### <a name="powershell"></a>PowerShell
 
 运行以下命令：
 
@@ -208,7 +216,7 @@ https://graph.microsoft.com/v1.0/groups/{group-id}/memberOf/$/Microsoft.Graph.Ad
 Remove-AzureADMSAdministrativeUnitMember -ObjectId $adminUnitId -MemberId $memberGroupObjId
 ```
 
-### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 运行以下命令：
 

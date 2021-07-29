@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 4ebc363f29ed8956d10e91f41be1d257cbcc492f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8897e6da3b3d70f9b7d0434dade86e4f2ceb9c50
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98703880"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094417"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>物理服务器迁移的支持矩阵
 
@@ -48,7 +48,7 @@ ms.locfileid: "98703880"
 **UEFI 启动** | 支持。 基于 UEFI 的计算机将迁移到 Azure 第 2 代 VM。  <br/><br/> OS 磁盘应最多有四个分区，卷应采用 NTFS 设置格式。
 **UEFI - 安全启动**         | 不支持迁移。
 **目标磁盘** | 计算机只能迁移到 Azure 中的托管磁盘（标准 HDD、标准 SSD、高级 SSD）。
-**磁盘大小** | 2 TB OS 磁盘；32 TB 数据磁盘。
+**磁盘大小** | 第 1 代 VM 的 OS 磁盘最大为 2 TB；第 2 代 VM 的 OS 磁盘最大为 4 TB；数据磁盘为 32 TB。
 **磁盘限制** |  每台计算机最多 63 个磁盘。
 **加密磁盘/卷** |  具有加密磁盘/卷的计算机不支持用于迁移。
 **共享磁盘群集** | 不支持。

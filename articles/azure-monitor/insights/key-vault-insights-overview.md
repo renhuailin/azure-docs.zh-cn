@@ -1,30 +1,30 @@
 ---
-title: 使用 Azure Monitor for Key Vault 监视 Key Vault | Microsoft Docs
-description: 本文介绍用于密钥保管库的 Azure Monitor。
+title: 使用 Key Vault 见解监视 Key Vault | Microsoft Docs
+description: 本文介绍 Key Vault 见解。
 services: azure-monitor
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: 91aed191e3bb165d6690759426a596df39f8c10f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 953d6300b8ac19ddfcfe3b37a1cfde50480e19a4
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100582288"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095115"
 ---
-# <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>使用 Azure Monitor for Key Vault 监视密钥保管库服务
-Azure Monitor for Key Vault 通过提供 Key Vault 请求、性能、故障和延迟的统一视图，对密钥保管库进行全面监视。
-本文将帮助你了解如何加入和自定义 Azure Monitor for Key Vault 的体验。
+# <a name="monitoring-your-key-vault-service-with-key-vault-insights"></a>使用 Key Vault 见解监视密钥保管库服务
+Key Vault 见解提供 Key Vault 请求、性能、失败和延迟的统一视图，在其中可以全面监视密钥保管库。
+本文将帮助你了解如何加入和自定义 Key Vault 见解的体验。
 
-## <a name="introduction-to-azure-monitor-for-key-vault"></a>Azure Monitor for Key Vault 简介
+## <a name="introduction-to-key-vault-insights"></a>Key Vault 见解简介
 
 在深入了解此体验之前，应该了解它如何呈现和可视化信息。
 -    **大规模透视图**：可显示基于请求的性能快照视图、故障详情以及操作和延迟概览。
 -   **深化分析**：可对特定密钥保管库执行详细分析。
 -    **可自定义**：可在其中更改要查看、修改的指标，或设置与限制相符的阈值，并保存你自己的工作簿。 可以将工作簿中的图表固定到 Azure 面板。
 
-用于密钥保管库的 Azure Monitor 结合了日志和指标来提供全局监视解决方案。 所有用户都可以访问基于指标的监视数据，但包含基于日志的可视化效果可能要求用户[对其 Azure 密钥保管库启用日志记录](../../key-vault/general/logging.md)。
+Key Vault 见解结合了日志和指标，可提供全局监视解决方案。 所有用户都可以访问基于指标的监视数据，但包含基于日志的可视化效果可能要求用户[对其 Azure 密钥保管库启用日志记录](../../key-vault/general/logging.md)。
 
 ## <a name="view-from-azure-monitor"></a>从 Azure Monitor 查看
 
@@ -64,7 +64,7 @@ Azure Monitor for Key Vault 通过提供 Key Vault 请求、性能、故障和�
 
 ## <a name="view-from-a-key-vault-resource"></a>从密钥保管库资源查看
 
-要直接从密钥保管库访问用于密钥保管库的 Azure Monitor，请执行以下操作：
+若要直接从密钥保管库访问 Key Vault 见解，请执行以下操作：
 
 1. 在 Azure 门户中，选择密钥保管库。
 
@@ -105,7 +105,7 @@ Azure Monitor for Key Vault 通过提供 Key Vault 请求、性能、故障和�
 
 ![已选择的固定图标的屏幕截图](./media/key-vaults-insights-overview/pin.png)
 
-## <a name="customize-azure-monitor-for-key-vault"></a>自定义 Azure Monitor for Key Vault
+## <a name="customize-key-vault-insights"></a>自定义 Key Vault 见解
 
 本部分重点介绍编辑工作簿以自定义支持数据分析需求的常见方案：
 *  将工作簿的作用域限定为始终选择特定订阅或密钥保管库
@@ -135,11 +135,11 @@ Azure Monitor for Key Vault 通过提供 Key Vault 请求、性能、故障和�
 
 如需常规故障排除指南，请参阅专用的基于工作簿的见解[故障排除文章](troubleshoot-workbooks.md)。
 
-本部分将帮助你诊断和排查在使用 Azure Monitor for Key Vault 时可能会遇到的一些常见问题。 使用下面的列表来查找与具体问题相关的信息。
+本部分将帮助你诊断和排查在使用 Key Vault 见解时可能会遇到的一些常见问题。 使用下面的列表来查找与具体问题相关的信息。
 
 ### <a name="resolving-performance-issues-or-failures"></a>解决性能问题或故障
 
-若要解决使用 Azure Monitor for Key Vault 确定的任何密钥保管库相关问题，请参阅 [Azure Key Vault 文档](../../key-vault/index.yml)。
+若要排查使用 Key Vault 见解确定的任何密钥保管库相关问题，请参阅 [Azure Key Vault 文档](../../key-vault/index.yml)。
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>为什么只能看到 200 个密钥保管库
 

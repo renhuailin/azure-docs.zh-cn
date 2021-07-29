@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0a9615e6bcb350732ccd7b2cf27dad3b46a7e4b3
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 6971b2e04455a6424d70db2512363911f7cd7d86
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102427005"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110473933"
 ---
 # <a name="tutorial-configure-github-ae-for-automatic-user-provisioning"></a>教程：为 GitHub AE 配置自动用户预配
 
@@ -33,7 +33,7 @@ ms.locfileid: "102427005"
 > * 在用户不再有访问需求的情况下，在 GitHub AE 中删除用户
 > * 使用户属性在 Azure AD 和 GitHub AE 之间保持同步
 > * 在 GitHub AE 中预配组和组成员身份
-> * 单一登录到 [GitHub AE](./github-ae-tutorial.md)（推荐）
+> * 单一登录到 [GitHub AE](./github-ae-tutorial.md)（建议）
 
 ## <a name="prerequisites"></a>先决条件
 

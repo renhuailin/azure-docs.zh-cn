@@ -4,12 +4,12 @@ description: 了解如何轮换 Azure Kubernetes 服务 (AKS) 群集中的证书
 services: container-service
 ms.topic: article
 ms.date: 11/15/2019
-ms.openlocfilehash: 6baad681a9d629c397c53ab90057cc5746fc3b85
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b3ab6074dcbf79df8b2b0ff3369b94006343a2a6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776008"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089859"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>轮换 Azure Kubernetes 服务 (AKS) 中的证书
 
@@ -80,7 +80,7 @@ kubectl get no
 ```
 
 > [!NOTE]
-> 如果有任何在 AKS 上运行的服务（如 [Azure Dev Spaces][dev-spaces]），则可能还需要[更新与这些服务相关的证书][dev-spaces-rotate]。
+> 如果有任何在 AKS 上运行的服务，则可能还需要更新与这些服务相关的证书。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -92,5 +92,3 @@ kubectl get no
 [az-extension-add]: /cli/azure/extension#az_extension_add
 [az-extension-update]: /cli/azure/extension#az_extension_update
 [aks-best-practices-security-upgrades]: operator-best-practices-cluster-security.md
-[dev-spaces]: ../dev-spaces/index.yml
-[dev-spaces-rotate]: ../dev-spaces/troubleshooting.md#error-using-dev-spaces-after-rotating-aks-certificates

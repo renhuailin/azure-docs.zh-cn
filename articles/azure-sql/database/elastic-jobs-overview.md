@@ -3,20 +3,20 @@ title: 弹性数据库作业（预览版）
 description: 配置弹性数据库作业（现为预览版），以在 Azure SQL 数据库中的一个或多个数据库中运行 Transact-SQL (T-SQL) 脚本
 services: sql-database
 ms.service: sql-database
-ms.subservice: scale-out
+ms.subservice: elastic-jobs
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: srinia
 ms.author: srinia
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: f9a026ed47d662b80ef01e505bfbcf8f32d20b04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35e13b483141e841d9cca5a2e5d3aa3c77ee7b4a
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92792168"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017606"
 ---
 # <a name="create-configure-and-manage-elastic-jobs-preview"></a>创建、配置和管理弹性作业（预览版）
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ ms.locfileid: "92792168"
 
 若要确保针对 SQL 弹性池中的数据库运行作业时资源不会超负荷，可以对作业进行配置，限制可以在同一时间对其运行作业的数据库数。
 
-通过在 T-SQL 中设置 `sp_add_jobstep` 存储过程的 `@max_parallelism` 参数，或者通过在 PowerShell 中设置 `Add-AzSqlElasticJobStep -MaxParallelism`，来设置作业运行的并发数据库数。
+通过在 T-SQL 中设置 `sp_add_jobstep` 存储过程的 `@max_parallelism` 参数来设置作业运行时所在的并发数据库的数目。
 
 ## <a name="best-practices-for-creating-jobs"></a>创建作业的最佳做法
 

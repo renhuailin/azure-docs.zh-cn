@@ -1,19 +1,19 @@
 ---
 title: 使用映射数据流转换数据
 description: 本教程提供有关通过 Azure 数据工厂使用映射数据流转换数据的分步说明
-author: dcstwh
-ms.author: weetok
+author: kromerm
+ms.author: makromer
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/16/2021
-ms.openlocfilehash: f8570c8b252fae91986508abd3725cbbedd361a0
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 2e732cf11627c9bf9be2610d32dc324f548b82ed
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565417"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111986401"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>使用映射数据流转换数据
 
@@ -50,11 +50,11 @@ ms.locfileid: "107565417"
 
    ![在“新建”窗格中选择“数据工厂”](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-3. 在“新建数据工厂”  页的“名称”下输入 **ADFTutorialDataFactory**  。
+3. 在“新建数据工厂”页的“名称”下输入 **ADFTutorialDataFactory** 。
 
    Azure 数据工厂的名称必须 *全局唯一*。 如果收到有关名称值的错误消息，请为数据工厂输入另一名称。 （例如 yournameADFTutorialDataFactory）。 有关数据工厂项目的命名规则，请参阅[数据工厂命名规则](naming-rules.md)。
 
-    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="在名称重复的情况下新建数据工厂出现的错误消息。":::
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="针对重复名称的新数据工厂错误消息。":::
 4. 选择要在其中创建数据工厂的 Azure **订阅**。
 5. 对于“资源组”，请执行以下步骤之一： 
 

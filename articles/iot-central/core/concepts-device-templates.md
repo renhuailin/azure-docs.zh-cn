@@ -8,16 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 2396768d87b93c4df16b6de78d03faf1d8d1cc2b
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: ab209cd3fb598c0c9ad4df359578d956aca7077b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491995"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088725"
 ---
 # <a name="what-are-device-templates"></a>什么是设备模板？
-
-_本文适用于设备开发者和解决方案构建者。_
 
 Azure IoT Central 中的设备模板是一个蓝图，用于定义可连接到应用程序的某种设备的特征和行为。 例如，设备模板定义设备发送的遥测数据，以便 IoT Central 使用正确单位和数据类型创建可视化效果。
 
@@ -35,7 +33,9 @@ Azure IoT Central 中的设备模板是一个蓝图，用于定义可连接到�
 
 ## <a name="device-models"></a>设备模型
 
-设备模型定义设备与 IoT Central 应用程序交互的方式。 设备开发者必须确保设备实现设备模型中定义的行为，以便 IoT Central 能够监视和管理设备。 设备模型由一个或多个“接口”组成，每个接口都可以定义“遥测”类型、“设备属性”和“命令”的集合。 解决方案开发者可以将定义设备模型的 JSON 文件导入设备模板，或使用 IoT Central 中的 web UI 来创建或编辑设备模型。 对使用 Web UI 进行的设备模型更改需要[对设备模板进行版本控制](./howto-version-device-template.md)。
+设备模型定义设备与 IoT Central 应用程序交互的方式。 设备开发者必须确保设备实现设备模型中定义的行为，以便 IoT Central 能够监视和管理设备。 设备模型由一个或多个“接口”组成，每个接口都可以定义“遥测”类型、“设备属性”和“命令”的集合。 解决方案开发者可以将定义设备模型的 JSON 文件导入设备模板，或使用 IoT Central 中的 web UI 来创建或编辑设备模型。
+
+若要详细了解如何编辑设备模型，请参阅[编辑现有设备模板](howto-edit-device-template.md)
 
 解决方案开发者还可以导出包含设备模型的 JSON 文件。 设备开发者可以使用此 JSON 文档来了解设备应该如何与 IoT Central 的应用程序进行通信。
 
@@ -341,6 +341,4 @@ IoT Central 允许你通过仪表板和图表上查看遥测数据，并使用�
 
 ## <a name="next-steps"></a>后续步骤
 
-现在作为设备开发者，你已经了解了设备模板，接下来的后续步骤是阅读[遥测、属性和命令有效负载](./concepts-telemetry-properties-commands.md)，了解有关设备与 IoT Central 交换数据的详细信息。
-
-作为解决方案开发者，建议后续步骤是阅读[在 Azure IoT Central 应用程序中定义新的 IoT 设备类型](./howto-set-up-template.md)，以了解有关如何创建设备模板的详细信息。
+现在，你已经了解了设备模板，建议的后续步骤是阅读[遥测、属性和命令有效负载](./concepts-telemetry-properties-commands.md)，详细了解设备与 IoT Central 交换的数据。

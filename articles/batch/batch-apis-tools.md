@@ -2,14 +2,14 @@
 title: 面向开发人员的 API 和工具
 description: 了解通过 Azure Batch 服务开发解决方案时可以使用的 API 和工具。
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 06/11/2021
 ms.custom: seodec18
-ms.openlocfilehash: b7c68ab16834bbd746cf52708db0cdb3f31c8d4d
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 0c378ae34ca74df7bb639464818f13f86a8f5ec2
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219920"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006628"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>批处理 API 和工具概述
 
@@ -24,8 +24,8 @@ ms.locfileid: "106219920"
 
 开发 Batch 解决方案时，请在 Azure 订阅中使用以下帐户：
 
-- **Batch 帐户** - Azure Batch 资源（包括池、计算节点、作业和任务）与 Azure [Batch 帐户](accounts.md)相关联。 当应用程序针对 Batch 服务提出请求时，会使用 Azure Batch 帐户名称、帐户的 URL 以及访问密钥或 Azure Active Directory 令牌对请求进行身份验证。 可以通过 Azure 门户或编程方式[创建 Batch 帐户](batch-account-create-portal.md)。
-- **存储帐户** - Batch 提供的内置支持允许处理 [Azure 存储](../storage/index.yml)中的文件。 几乎每个 Batch 方案都使用 Azure Blob 存储暂存任务所运行的程序及其处理的数据，以及存储任务生成的输出数据。 每个 Batch 帐户通常与相应的存储帐户关联。
+- **Batch 帐户**：Azure Batch 资源（包括池、计算节点、作业和任务）与 Azure [Batch 帐户](accounts.md)相关联。 当应用程序针对 Batch 服务提出请求时，会使用 Azure Batch 帐户名称、帐户的 URL 以及访问密钥或 Azure Active Directory 令牌对请求进行身份验证。 可以通过 Azure 门户或编程方式[创建 Batch 帐户](batch-account-create-portal.md)。
+- **存储帐户**：Batch 提供的内置支持允许处理 [Azure 存储](../storage/index.yml)中的文件。 几乎每个 Batch 方案都使用 Azure Blob 存储暂存任务所运行的程序及其处理的数据，以及存储任务生成的输出数据。 每个 Batch 帐户通常与相应的存储帐户关联。
 
 ## <a name="service-level-and-management-level-apis"></a>服务级别和管理级 API
 
@@ -66,16 +66,16 @@ Azure Batch 具有两组 API，一个用于服务级别，另一个用于管理�
 这些命令行工具提供的功能与批处理服务和批处理管理 API 相同： 
 
 - [Batch PowerShell cmdlet](/powershell/module/az.batch/)：[Azure PowerShell](/powershell/azure/) 模块中的 Azure Batch cmdlet 可让用户使用 PowerShell 管理 Batch 资源。
-- [Azure CLI](/cli/azure)：Azure CLI 是一个跨平台工具集，提供用来与许多 Azure 服务（包括 Batch 服务和 Batch 管理服务）交互的 shell 命令。 请参阅[使用 Azure CLI 管理批处理资源](batch-cli-get-started.md)，详细了解如何将 Azure CLI 与批处理配合使用。
+- [Azure CLI](/cli/azure)：Azure CLI 是一个跨平台工具集，提供用来与许多 Azure 服务（包括 Batch 服务和 Batch 管理服务）交互的 shell 命令。 有关详细信息，请参阅[使用 Azure CLI 管理 Batch 资源](batch-cli-get-started.md)。
 
 ## <a name="other-tools-for-application-development"></a>适合应用程序开发的其他工具
 
 这些附加工具可能有助于生成和调试 Batch 应用程序和服务。
 
 - [Azure 门户](https://portal.azure.com/)：可以在 Azure 门户中创建、监视和删除 Batch 池、作业和任务。 用户运行作业时，可以查看这些资源和其他资源的状态信息，甚至可以从池中的计算节点下载文件。 例如，在进行故障排除时下载失败任务的 `stderr.txt`。 用户还可以下载可用于登录到计算节点的远程桌面 (RDP) 文件。
-- [Azure Batch Explorer](https://azure.github.io/BatchExplorer/)：Batch Explorer（以前称为 BatchLabs）是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 下载适用于 Mac、Linux 或 Windows 的[安装包](https://azure.github.io/BatchExplorer/)。
+- [Azure Batch Explorer](https://azure.github.io/BatchExplorer/)：Batch Explorer 是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 下载适用于 Mac、Linux 或 Windows 的[安装包](https://azure.github.io/BatchExplorer/)。
 - [Azure Batch Shipyard](https://github.com/Azure/batch-shipyard)：Batch Shipyard 是一个帮助在 Azure Batch 上预配、执行和监视基于容器的批处理和 HPC 工作负荷的工具。
-- [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)：严格地说，虽然存储资源管理器不算是 Azure Batch 工具，但却是开发和调试 Batch 解决方案时的另一个很有用的工具。
+- [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)：严格地说，虽然存储资源管理器不算是 Azure Batch 工具，但在开发和调试 Batch 解决方案时非常有用。
 
 ## <a name="additional-resources"></a>其他资源
 

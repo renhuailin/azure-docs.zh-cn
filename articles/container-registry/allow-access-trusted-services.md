@@ -3,12 +3,12 @@ title: 使用受信任的 Azure 服务访问受网络限制的注册表
 description: 启用受信任的 Azure 服务实例，以便安全地访问受网络限制的容器注册表以拉取或推送映像
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 4b0d7feb223bcfcec4e8b2c786b211f4e3c3c3eb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 77ea904e73df1b423c99e6039c4e0756fcade34e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785863"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474974"
 ---
 # <a name="allow-trusted-services-to-securely-access-a-network-restricted-container-registry-preview"></a>允许受信任的服务安全地访问受网络限制的容器注册表（预览版）
 
@@ -45,7 +45,7 @@ Azure 容器注册表具有分层的安全模型，支持多个限制对注册�
 |Azure 容器注册表 | [从另一个 Azure 容器注册表导入映像](container-registry-import-images.md#import-from-an-azure-container-registry-in-the-same-ad-tenant) | 
 
 > [!NOTE]
-> 目前，启用“允许受信任的服务”设置以后，其他托管 Azure 服务（包括应用服务、Azure 容器实例和 Azure 安全中心）的实例就不能访问受网络限制的容器注册表。
+> 目前，启用“允许受信任的服务”设置时，不允许其他托管 Azure 服务的实例（包括应用服务、Azure 容器实例和 Azure 安全中心）访问受网络限制的容器注册表。
 
 ## <a name="allow-trusted-services---cli"></a>允许受信任的服务 - CLI
 

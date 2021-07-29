@@ -4,29 +4,30 @@ description: 本文介绍如何使用 Azure 安全中心的安全策略。
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/24/2021
+ms.date: 05/25/2021
 ms.author: memildin
-ms.openlocfilehash: 6ecedc20cf6924a82b6b4640d3caa75bc5958de0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b48adf5e6c2c7b91e98ef410c71802b5d47d2845
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101318"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110459782"
 ---
 # <a name="manage-security-policies"></a>管理安全策略
 
 本文介绍如何配置安全策略，以及如何在安全中心查看这些策略。 
 
-## <a name="who-can-edit-security-policies"></a>谁可以编辑安全策略？
+若要了解计划、策略和建议之间的关系，请参阅[什么是安全策略、计划和建议？](security-policy-concept.md)
 
-你可以在 Azure Policy 门户中通过 REST API 或 Windows PowerShell 编辑安全策略。
+## <a name="who-can-edit-security-policies"></a>谁可以编辑安全策略？
 
 安全中心使用 Azure 基于角色的访问控制 (Azure RBAC)，后者提供可分配到 Azure 用户、组和服务的内置角色。 用户打开安全中心时，只能看到与他们可访问的资源相关的信息。 这意味着，已为用户分配了资源订阅的所有者、参与者或读取者角色。   还有两个特定的安全中心角色：
 
 - **安全读取者**：有权查看安全中心项，例如建议、警报、策略和运行状况。 无法执行更改。
 - **安全管理员**：与安全读取者具有相同的查看权限。 还可以更新安全策略并消除警报。
+
+你可以在 Azure Policy 门户中通过 REST API 或 Windows PowerShell 编辑安全策略。
 
 ## <a name="manage-your-security-policies"></a>管理安全策略
 
@@ -81,27 +82,48 @@ ms.locfileid: "102101318"
 
     :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="在 Azure 安全中心启动策略管理过程":::
 
-2. 选择要禁用其建议的订阅或管理组。
+1. 选择要禁用针对它的建议（和策略）的订阅或管理组。
 
    > [!NOTE]
    > 请记住，管理组将其策略应用于其订阅。 因此，如果禁用了某个订阅策略，而该订阅属于仍使用同一策略的管理组，则你将继续收到策略建议。 仍将从管理级别应用该策略，且仍将生成建议。
 
-1. 选择“查看有效策略”。
+1. 从“安全中心默认策略”、“行业和监管标准”或“你的自定义计划”部分选择包含要禁用的策略的相关计划  。
 
-    :::image type="content" source="./media/tutorial-security-policy/view-effective-policy.png" alt-text="如何打开分配给订阅的有效策略":::
+1. 打开“参数”部分，搜索会对你要禁用的建议进行调用的策略。
 
-1. 选择分配的策略。
-
-   ![选择策略](./media/tutorial-security-policy/security-policy.png)
-
-1. 在“参数”部分中，搜索调用要禁用的建议的策略，然后从下拉列表中选择“禁用”
+1. 从下拉列表中，将相应策略的值更改为“Disabled”。
 
    ![禁用策略](./media/tutorial-security-policy/disable-policy.png)
 
 1. 选择“保存” 。
 
    > [!NOTE]
-   > 禁用策略更改可能需要长达 12 小时才会生效。
+   > 此更改最多可能需要 12 小时才能生效。
+
+
+## <a name="enable-a-security-policy"></a>启用安全策略
+
+计划中的有些策略可能会处于默认禁用状态。 例如，在 Azure 安全基准计划中，提供的有些策略只在满足组织的特定法规或符合性要求的情况下启用。 此类策略包括使用客户管理的密钥加密静态数据的建议，例如“应该使用客户管理的密钥(CMK)加密容器注册表”。
+
+若要启用已禁用的策略并确保针对你的资源评估该策略，请执行以下操作：
+
+1. 在安全中心的“策略和符合性”部分，选择“安全策略” 。
+
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="在 Azure 安全中心启动策略管理过程":::
+
+1. 选择要为其启用建议（和策略）的订阅或管理组。
+
+1. 从“安全中心默认策略”、“行业和监管标准”或“你的自定义计划”部分选择包含要启用的策略的相关计划  。
+
+1. 打开“参数”部分，搜索会对你要禁用的建议进行调用的策略。
+
+1. 从下拉列表中，将相应策略的值更改为“AuditIfNotExists”或“Enforce” 。
+
+1. 选择“保存”。
+
+   > [!NOTE]
+   > 此更改最多可能需要 12 小时才能生效。
+
 
 ## <a name="next-steps"></a>后续步骤
 此页介绍了安全策略。 如需相关信息，请参阅以下页面：

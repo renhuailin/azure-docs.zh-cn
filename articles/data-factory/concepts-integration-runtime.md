@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 455a9b2061dcf92297c99e9d8fa8cee677ca3891
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 27bd310b48be2c20c5014ba9e2f93a98751baae0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483130"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110086475"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时 
 
@@ -171,6 +171,8 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 ![集成运行时位置](media/concepts-integration-runtime/integration-runtime-location.png)
 
 ## <a name="determining-which-ir-to-use"></a>确定要使用哪个 IR
+如果一个数据工厂活动与多种类型的集成运行时关联，它将解析为其中一种。 自承载集成运行时优先于 Azure 数据工厂托管虚拟网络中的 Azure 集成运行时。 而后者优先于公用 Azure 集成运行时。
+例如，一个复制活动用于将数据从源复制到接收器。 公用 Azure 集成运行时与源的链接服务相关联，而 Azure 数据工厂托管虚拟网络中的 Azure 集成运行时与接收器的链接服务相关联，结果是源和接收器链接服务都使用 Azure 数据工厂托管虚拟网络中的 Azure 集成运行时。 但如果自承载集成运行时关联源的链接服务，则源和接收器链接服务都使用自承载集成运行时。
 
 ### <a name="copy-activity"></a>复制活动
 

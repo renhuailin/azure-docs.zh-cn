@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/01/2021
-ms.openlocfilehash: fdf7f52bf781d0e8da21f0b36bacc3f4ade52e8c
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: deabcc9170e8b025e91dace47ce9e6a70bd385bb
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581891"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809249"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>映射数据流中的数据转换表达式
 
@@ -267,7 +267,7 @@ ___
 ### <code>expr</code>
 <code><b>expr(<i>&lt;expr&gt;</i> : string) => any</b></code><br/><br/>
 从字符串生成表达式。 这与在非文本窗体中编写此表达式的效果一样。 这可以用来以字符串表示形式传递参数。
-*   expr(‘price * discount’) => any ___
+*    expr('price * discount') => any ___
 ### <code>factorial</code>
 <code><b>factorial(<i>&lt;value1&gt;</i> : number) => long</b></code><br/><br/>
 计算一个数的阶乘。  
@@ -558,7 +558,7 @@ ___
 ### <code>normalize</code>
 <code><b>normalize(<i>&lt;String to normalize&gt;</i> : string) => string</b></code><br/><br/>
 规范化字符串值以分隔重音的 unicode 字符。  
-* ``regexReplace(normalize('bo²s'), `\p{M}`, '') -> 'boys'``  
+* ``regexReplace(normalize('bo²s'), `\p{M}`, '') -> 'boys'``
 ___
 ### <code>not</code>
 <code><b>not(<i>&lt;value1&gt;</i> : boolean) => boolean</b></code><br/><br/>
@@ -886,16 +886,19 @@ ___
 根据条件获取两个列的样本协方差。  
 * ``covarianceSampleIf(region == 'West', sales, profit)``  
 ___
+
 ### <code>first</code>
 <code><b>first(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : boolean]) => any</b></code><br/><br/>
 获取列组的第一个值。 如果省略第二个参数 ignoreNulls，则假定为 false。  
 * ``first(sales)``  
 * ``first(sales, false)``  
 ___
+
 ### <code>isDistinct</code>
 <code><b>isDistinct(<i>&lt;value1&gt;</i> : any , <i>&lt;value1&gt;</i> : any) => boolean</b></code><br/><br/>
-确定一列或一组列是否是非重复值。 它不将 null 计为非重复值 *   ``isDistinct(custId, custName) => boolean``
-*   ___
+确定一列或一组列是否是非重复值。 它不将 null 计为非重复值 *    ``isDistinct(custId, custName) => boolean``
+___
+
 ### <code>kurtosis</code>
 <code><b>kurtosis(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 获取列的峰度。  
@@ -1105,8 +1108,8 @@ ___
 * ``map(['a', 'b', 'c', 'd'], #item + '_processed') -> ['a_processed', 'b_processed', 'c_processed', 'd_processe（备注：原文网址为https://docs.microsoft.com/zh-cn/azure/data-factory/data-flow-expression-functions，tag 处理有误。）d']``  
 ___
 ### <code>mapIf</code>
-<code><b>mapIf (<value1> : array, <value2> : binaryfunction, <value3>: binaryFunction) => any</b></code><br/><br/>有条件地将数组映射到长度相同或更短的另一个数组。 这些值可以是任何数据类型，包括 structTypes。 它采用一个映射函数，在其中可以将数组中的项作为 #item 进行寻址，将当前索引作为 #index 进行寻址。 对于深层嵌套的映射，可使用 t maps using the ``#item_[n](#item_1, #index_1...)`` notation.
-*   ``mapIf([10, 20, 30], #item > 10, #item + 5) -> [25, 35]``
+<code><b>mapIf (<i>\<value1\></i> : array, <i>\<value2\></i> : binaryfunction, \<value3\>: binaryFunction) => any</b></code><br/><br/>有条件地将数组映射到长度相同或更短的另一个数组。 这些值可以是任何数据类型，包括 structTypes。 它采用一个映射函数，在其中可以将数组中的项作为 #item 进行寻址，将当前索引作为 #index 进行寻址。 对于深层嵌套的映射，可使用 t maps using the ``#item_[n](#item_1, #index_1...)`` notation.
+*    ``mapIf([10, 20, 30], #item > 10, #item + 5) -> [25, 35]``
 * ``mapIf(['icecream', 'cake', 'soda'], length(#item) > 4, upper(#item)) -> ['ICECREAM', 'C 表示法引用父映射。AKE']``
 ___
 ### <code>mapIndex</code>
@@ -1114,8 +1117,8 @@ ___
 * ``mapIndex([1, 2, 3, 4], #item + 2 + #index) -> [4, 6, 8, 10]``  
 ___
 ### <code>mapLoop</code>
-<code><b>mapLoop(<value1> : integer, <value2> : unaryfunction) => any</b></code><br/><br/> 从 1 到某个长度进行循环，以创建具有该长度的数组。 它采用一个映射函数，在其中可以将数组中的索引作为 #index 进行寻址。 对于深层嵌套的映射，可使用 #index_n(#index_1, #index_2...) notation.
-*   ``mapLoop(3, #index * 10) -> [10, 20 引用父映射。, 30]``
+<code><b>mapLoop(<i>\<value1\></i> : integer, <i>\<value2\></i> : unaryfunction) => any</b></code><br/><br/> 从 1 到某个长度进行循环，以创建具有该长度的数组。 它采用一个映射函数，在其中可以将数组中的索引作为 #index 进行寻址。 对于深层嵌套的映射，可使用 #index_n(#index_1, #index_2...) notation.
+*    ``mapLoop(3, #index * 10) -> [10, 20 引用父映射。, 30]``
 ___
 ### <code>reduce</code>
 <code><b>reduce(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : any, <i>&lt;value3&gt;</i> : binaryfunction, <i>&lt;value4&gt;</i> : unaryfunction) => any</b></code><br/><br/> 累积数组中的元素。 Reduce 需要引用第一个表达式函数中的累加器和一个元素作为 #acc 和 #item，并且需要在第二个表达式函数中使用结果值作为 #result。ession function.  
@@ -1161,9 +1164,9 @@ Maps each element of the array to a new element using the provided expression. M
 * ``map(['a', 'b', 'c', 'd'], #item + '_processed') -> ['a_processed', 'b_processed', 'c_processed', 'd_processed']``  
 ___
 ### <code>mapIf</code>
-<code><b>mapIf (<value1> : array, <value2> : binaryfunction, <value3>: binaryFunction) => any</b></code><br/><br/>
+<code><b>mapIf (<i>\<value1\></i> : array, <i>\<value2\></i> : binaryfunction, \<value3\>: binaryFunction) => any</b></code><br/><br/>
 Conditionally maps an array to another array of same or smaller length. The values can be of any datatype including structTypes. It takes a mapping function where you can address the item in the array as #item and current index as #index. For deeply nested maps you can refer to the parent maps using the ``#item_[n](#item_1, #index_1...)`` notation.
-*   ``mapIf([10, 20, 30], #item > 10, #item + 5) -> [25, 35]``
+*    ``mapIf([10, 20, 30], #item > 10, #item + 5) -> [25, 35]``
 * ``mapIf(['icecream', 'cake', 'soda'], length(#item) > 4, upper(#item)) -> ['ICECREAM', 'CAKE']``
 ___
 ### <code>mapIndex</code>
@@ -1172,9 +1175,9 @@ Maps each element of the array to a new element using the provided expression. M
 * ``mapIndex([1, 2, 3, 4], #item + 2 + #index) -> [4, 6, 8, 10]``  
 ___
 ### <code>mapLoop</code>
-<code><b>mapLoop(<value1> : integer, <value2> : unaryfunction) => any</b></code><br/><br/>
+<code><b>mapLoop(<i>\<value1\></i> : integer, <i>\<value2\></i> : unaryfunction) => any</b></code><br/><br/>
 Loops through from 1 to length to create an array of that length. It takes a mapping function where you can address the index in the array as #index. For deeply nested maps you can refer to the parent maps using the #index_n(#index_1, #index_2...) notation.
-*   ``mapLoop(3, #index * 10) -> [10, 20, 30]``
+*    ``mapLoop(3, #index * 10) -> [10, 20, 30]``
 ___
 ### <code>reduce</code>
 <code><b>reduce(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : any, <i>&lt;value3&gt;</i> : binaryfunction, <i>&lt;value4&gt;</i> : unaryfunction) => any</b></code><br/><br/>
@@ -1231,75 +1234,75 @@ ___
 转换函数用于转换数据和数据类型测试
 
 ### <code>isBitSet</code>
-<code><b>isBitSet (<value1> : array, <value2>:integer ) => boolean</b></code><br/><br/>
+<code><b>isBitSet (<i><i>\<value1\></i></i> : array, <i>\<value2\></i>:integer ) => boolean</b></code><br/><br/>
 检查是否在此位集中设置了位的位置 * ``isBitSet(toBitSet([10, 32, 98]), 10) => true``
 ___
 ### <code>setBitSet</code>
-<code><b>setBitSet (<value1> : array, <value2>:array) => array</b></code><br/><br/>
+<code><b>setBitSet (<i>\<value1\></i>: array, <i>\<value2\></i>:array) => array</b></code><br/><br/>
 在此位集中设置位的位置 * ``setBitSet(toBitSet([10, 32]), [98]) => [4294968320L, 17179869184L]``
 ___  
 ### <code>isBoolean</code>
-<code><b>isBoolean(<value1> : string) => boolean</b></code><br/><br/>
+<code><b>isBoolean(<i>\<value1\></i>: string) => boolean</b></code><br/><br/>
 根据 ``toBoolean()``
 * ``isBoolean('true') -> true``
 * ``isBoolean('no') -> true``
 * ``isBoolean('microsoft') -> false``
 ___
 ### <code>isByte</code>
-<code><b>isByte(<value1> : string) => boolean</b></code> 规则检查 string 值是否是 boolean 值<br/><br/>
+<code><b>isByte(<i>\<value1\></i> : string) => boolean</b></code> 规则检查 string 值是否是 boolean 值<br/><br/>
 根据 ``toByte()``
 * ``isByte('123') -> true``
 * ``isByte('chocolate') -> false``
 ___
 ### <code>isDate</code>
-<code><b>isDate (<value1> : string, [<format>: string]) => boolean</b></code> 规则检查 string 值是否是给定可选格式的 byte 值<br/><br/>
+<code><b>isDate (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code> 规则检查 string 值是否是给定可选格式的 byte 值<br/><br/>
 使用可选输入日期格式检查输入日期字符串是否为日期。 有关可用格式，请参阅 Java 的 SimpleDateFormat。 如果省略输入日期格式，则默认格式为 ``yyyy-[M]M-[d]d``。 接受的格式为 ``[ yyyy, yyyy-[M]M, yyyy-[M]M-[d]d, yyyy-[M]M-[d]dT* ]``
 * ``isDate('2012-8-18') -> true``
 * ``isDate('12/18--234234' -> 'MM/dd/yyyy') -> false``
 ___
 ### <code>isShort</code>
-<code><b>isShort (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+<code><b>isShort (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code><br/><br/>
 根据 ``toShort()``
 * ``isShort('123') -> true``
 * ``isShort('$123' -> '$###') -> true``
 * ``isShort('microsoft') -> false``
 ___
 ### <code>isInteger</code>
-<code><b>isInteger (<value1> : string, [<format>: string]) => boolean</b></code> 规则检查 string 值是否是给定可选格式的 short 值<br/><br/>
+<code><b>isInteger (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code> 规则检查 string 值是否是给定可选格式的 short 值<br/><br/>
 根据 ``toInteger()``
 * ``isInteger('123') -> true``
 * ``isInteger('$123' -> '$###') -> true``
 * ``isInteger('microsoft') -> false``
 ___
 ### <code>isLong</code>
-<code><b>isLong (<value1> : string, [<format>: string]) => boolean</b></code> 规则检查 string 值是否是给定可选格式的 integer 值<br/><br/>
+<code><b>isLong (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code> 规则检查 string 值是否是给定可选格式的 integer 值<br/><br/>
 根据 ``toLong()``
 * ``isLong('123') -> true``
 * ``isLong('$123' -> '$###') -> true``
 * ``isLong('gunchus') -> false``
 ___
 ### <code>isFloat</code>
-<code><b>isFloat (<value1> : string, [<format>: string]) => boolean</b></code> 规则检查 string 值是否是给定可选格式的 long 值<br/><br/>
+<code><b>isFloat (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code> 规则检查 string 值是否是给定可选格式的 long 值<br/><br/>
 根据 ``toFloat()``
 * ``isFloat('123') -> true``
 * ``isFloat('$123.45' -> '$###.00') -> true``
 * ``isFloat('icecream') -> false``
 ___
 ### <code>isDouble</code>
-<code><b>isDouble (<value1> : string, [<format>: string]) => boolean</b></code> 规则检查 string 值是否是给定可选格式的 float 值<br/><br/>
+<code><b>isDouble (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code> 规则检查 string 值是否是给定可选格式的 float 值<br/><br/>
 根据 ``toDouble()``
 * ``isDouble('123') -> true``
 * ``isDouble('$123.45' -> '$###.00') -> true``
 * ``isDouble('icecream') -> false``
 ___
 ### <code>isDecimal</code>
-<code><b>isDecimal (<value1> : string) => boolean</b></code> 规则检查 string 值是否是给定可选格式的 double 值<br/><br/>
+<code><b>isDecimal (<i>\<value1\></i> : string) => boolean</b></code> 规则检查 string 值是否是给定可选格式的 double 值<br/><br/>
 根据 ``toDecimal()``
 * ``isDecimal('123.45') -> true``
 * ``isDecimal('12/12/2000') -> false``
 ___
 ### <code>isTimestamp</code>
-<code><b>isTimestamp (<value1> : string, [<format>: string]) => boolean</b></code> 规则检查 string 值是否是给定可选格式的 decimal 值<br/><br/>
+<code><b>isTimestamp (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code> 规则检查 string 值是否是给定可选格式的 decimal 值<br/><br/>
 使用可选输入时间戳格式检查输入日期字符串是否为时间戳。 有关可用格式，请参阅 Java 的 SimpleDateFormat。 如果省略时间戳，则使用默认模式 ``yyyy-[M]M-[d]d hh:mm:ss[.f...]``。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 时间戳最多支持毫秒准确度，值为 999。有关可用格式，请参阅 Java 的 SimpleDateFormat。
 * ``isTimestamp('2016-12-31 00:12:00') -> true``
 * ``isTimestamp('2016-12-31T00:12:00' -> 'yyyy-MM-dd\\'T\\'HH:mm:ss' -> 'PST') -> true``
@@ -1472,13 +1475,13 @@ ___
 * ``hasPath('grandpa.parent.child') => boolean``
 ___
 ### <code>hex</code>
-<code><b>hex(<value1>: binary) => string</b></code><br/><br/>
+<code><b>hex(<i>\<value1\></i>: binary) => string</b></code><br/><br/>
 返回二进制值的十六进制字符串表示形式 * ``hex(toBinary([toByte(0x1f), toByte(0xad), toByte(0xbe)])) -> '1fadbe'``
 ___
 ### <code>unhex</code>
-<code><b>unhex(<value1>: string) => binary</b></code><br/><br/>
-对字符串表示形式的二进制值进行反向十六进制转换。 这可以用于联合 sha2 和 md5 从字符串表示形式转换为二进制表示形式 *   ``unhex('1fadbe') -> toBinary([toByte(0x1f), toByte(0xad), toByte(0xbe)])``
-*   ``unhex(md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4'))) -> toBinary([toByte(0x4c),toByte(0xe8),toByte(0xa8),toByte(0x80),toByte(0xbd),toByte(0x62),toByte(0x1a),toByte(0x1f),toByte(0xfa),toByte(0xd0),toByte(0xbc),toByte(0xa9),toByte(0x05),toByte(0xe1),toByte(0xbc),toByte(0x5a)])``
+<code><b>unhex(<i>\<value1\></i>: string) => binary</b></code><br/><br/>
+对字符串表示形式的二进制值进行反向十六进制转换。 这可以用于联合 sha2 和 md5 从字符串表示形式转换为二进制表示形式 *    ``unhex('1fadbe') -> toBinary([toByte(0x1f), toByte(0xad), toByte(0xbe)])``
+*    ``unhex(md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4'))) -> toBinary([toByte(0x4c),toByte(0xe8),toByte(0xa8),toByte(0x80),toByte(0xbd),toByte(0x62),toByte(0x1a),toByte(0x1f),toByte(0xfa),toByte(0xd0),toByte(0xbc),toByte(0xa9),toByte(0x05),toByte(0xe1),toByte(0xbc),toByte(0x5a)])``
 
 ## <a name="window-functions"></a>开窗函数
 以下函数仅可用于窗口转换。

@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 637f09c5ee52928631b965dfa6caea9368b44991
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 908d9492a6eb699c999fe93b92697dc511dca082
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99550753"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110189283"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -33,7 +33,10 @@ Application Insights 可收集日志、性能和错误数据。 通过自动检�
 
 ## <a name="application-insights-integration"></a>Application Insights 集成
 
-通常，你在创建函数应用时创建 Application Insights 实例。 在本例中，集成所需的检测密钥已设置为名为 APPINSIGHTS_INSTRUMENTATIONKEY 的应用程序设置。 如果你的函数应用由于某个原因未设置检测密钥，则你需要[启用 Application Insights 集成](configure-monitoring.md#enable-application-insights-integration)。  
+通常，你在创建函数应用时创建 Application Insights 实例。 在这种情况下，集成所需的检测密钥已设置为名为 `APPINSIGHTS_INSTRUMENTATIONKEY` 的应用程序设置。 如果你的函数应用由于某个原因未设置检测密钥，则你需要[启用 Application Insights 集成](configure-monitoring.md#enable-application-insights-integration)。  
+
+> [!IMPORTANT]
+> 主权云（例如 Azure 政府）需要使用 Application Insights 连接字符串 (`APPLICATIONINSIGHTS_CONNECTION_STRING`) 而不是检测密钥。 若要了解详细信息，请参阅 [APPLICATIONINSIGHTS_CONNECTION_STRING 参考](functions-app-settings.md#applicationinsights_connection_string)。
 
 ## <a name="collecting-telemetry-data"></a>收集遥测数据
 

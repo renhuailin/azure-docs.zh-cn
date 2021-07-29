@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/4/2020
-ms.openlocfilehash: 43d616bc82c608918f5e7ee51481a393dd55a284
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8ae2d31bcb6cd17d020bf1602b5280f1db927f3f
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566064"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110496191"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>将 Azure HDInsight 3.6 Hive 工作负荷迁移到 HDInsight 4.0
 
@@ -130,6 +130,10 @@ HDInsight 可以选择使用 HDInsight 企业安全性套餐 (ESP) 与 Azure Act
 * `HiveCLI` 替换为 `Beeline`。
 
 请参阅 [HDInsight 4.0 公告](../hdinsight-version-release.md)，了解更多变动。
+
+## <a name="troubleshooting-guide"></a>故障排除指南
+
+[适用于 Hive 工作负载的 HDInsight 3.6 到 4.0 故障排除指南](./interactive-query-troubleshoot-migrate-36-to-40.md)提供了将 Hive 工作负载从 HDInsight 3.6 迁移到 HDInsight 4.0 时所遇到的常见问题的解答。
 
 ## <a name="further-reading"></a>延伸阅读
 

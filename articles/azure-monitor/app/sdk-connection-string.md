@@ -7,12 +7,12 @@ ms.author: tilee
 ms.date: 01/17/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: df87b060423aeff9fa5f83f21634395fe30e0bbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af29de06c4b0f82d6c951d54935a93e77e723177
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102486278"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191347"
 ---
 # <a name="connection-strings"></a>连接字符串
 
@@ -25,6 +25,8 @@ ms.locfileid: "102486278"
 > [!IMPORTANT]
 > 建议不要同时设置连接字符串和检测密钥。 如果用户同时设置了这两个值，则以最后设置的值为准。 
 
+> [!TIP]
+> 建议对检测密钥使用连接字符串。
 
 ## <a name="scenario-overview"></a>方案概述 
 
@@ -83,7 +85,7 @@ ms.locfileid: "102486278"
 - applicationinsights.us
 
 
-另请参阅：https://docs.microsoft.com/azure/azure-monitor/app/custom-endpoints#regions-that-require-endpoint-modification
+另请参阅：[需要修改终结点的区域](./custom-endpoints.md#regions-that-require-endpoint-modification)
 
 
 ##### <a name="valid-prefixes"></a>有效的前缀
@@ -295,7 +297,7 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 
 * [ASP.NET](./asp-net.md)
 * [ASP.NET Core](./asp-net-core.md)
-* [Java](./java-get-started.md)
+* [Java](./java-in-process-agent.md)
 * [Node.js](./nodejs.md)
 * [Python](./opencensus-python.md)
 

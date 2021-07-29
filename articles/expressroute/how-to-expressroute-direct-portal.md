@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 05/05/2021
 ms.author: duau
-ms.openlocfilehash: b133f1cce4af07d8d5e50e04670741fcf7c936a4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b659fee979fd936a85c0cd5a711390594bbe79b1
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097068"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795739"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>使用 Azure 门户创建 ExpressRoute Direct
 
@@ -81,7 +81,13 @@ ms.locfileid: "102097068"
 
 ## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>生成授权信 (LOA)
 
-目前无法从门户生成授权信。 请使用 **[Azure PowerShell](expressroute-howto-erdirect.md#authorization)** 来获取授权信。
+1. 转至 ExpressRoute Direct 资源的概述页面，选择“生成授权信”。
+
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/overview.png" alt-text="概述页面上的“生成授权信”按钮的屏幕截图。":::
+
+1. 输入公司名称，然后选择“下载”以生成信件。
+
+    :::image type="content" source="./media/how-to-expressroute-direct-portal/letter-of-authorization-page.png" alt-text="授权信页面的屏幕截图。":::
 
 ## <a name="change-admin-state-of-links"></a><a name="state"></a>更改链路的管理状态
 

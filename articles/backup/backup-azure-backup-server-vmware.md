@@ -3,12 +3,12 @@ title: 使用 Azure 备份服务器备份 VMware VM
 description: 本文介绍如何使用 Azure 备份服务器备份 VMware vCenter/ESXi 服务器上运行的 VMware VM。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12374393d0f94c567a68f1e28b6479e0747f3d40
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96002947"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084585"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
@@ -308,7 +308,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
 6. 选择“添加”将 VMware 服务器添加到服务器列表。 然后，选择“下一步”。
 
-    ![添加 VMWare 服务器和凭据](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
+    ![添加 VMware 服务器和凭据](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
 7. 在“摘要”页中选择“添加”，将 VMware 服务器添加到 Azure 备份服务器 。 新服务器会立即添加，无需在 VMware 服务器上安装代理。
 
@@ -403,24 +403,24 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 >[!NOTE]
 > 此功能适用于 MABS V3 UR1。
 
-早期版本的 MABS 仅跨保护组执行并行备份。 借助 MABS V3 UR1，单个保护组中的所有 VMWare VM 备份将并行进行，从而提高 VM 备份速度。 所有 VMWare 增量复制作业将并行运行。 默认情况下，并行运行的作业数设置为 8。
+早期版本的 MABS 仅跨保护组执行并行备份。 借助 MABS V3 UR1，单个保护组中的所有 VMware VM 备份将并行进行，从而提高 VM 备份速度。 所有 VMware 增量复制作业将并行运行。 默认情况下，并行运行的作业数设置为 8。
 
 你可以如下所示使用注册表项来修改作业数（默认情况下不存在此注册表项，你需要添加它）：
 
-**注册表项路径**：`Software\Microsoft\Microsoft Data Protection Manager\Configuration\ MaxParallelIncrementalJobs\VMWare`<BR>
+**注册表项路径**：`Software\Microsoft\Microsoft Data Protection Manager\Configuration\ MaxParallelIncrementalJobs\VMware`<BR>
 **注册表项类型**：DWORD（32 位）值。
 
 > [!NOTE]
-> 你可以将作业数修改为较高的值。 如果将作业数设置为 1，则复制作业将按顺序运行。 若要将此数量增加到更大的值，则必须考虑 VMWare 性能。 考虑 VMWare vSphere Server 上正在使用的资源数量和所需的额外使用量，并确定要并行运行的增量复制作业的数量。 此外，此更改将仅影响新创建的保护组。 对于现有保护组，你必须临时向保护组中添加另一个 VM。 这会相应地更新保护组配置。 完成此过程后，可以从保护组中删除此 VM。
+> 你可以将作业数修改为较高的值。 如果将作业数设置为 1，则复制作业将按顺序运行。 若要将此数量增加到更大的值，则必须考虑 VMware 性能。 考虑 VMWare vSphere Server 上正在使用的资源数量和所需的额外使用量，并确定要并行运行的增量复制作业的数量。 此外，此更改将仅影响新创建的保护组。 对于现有保护组，你必须临时向保护组中添加另一个 VM。 这会相应地更新保护组配置。 完成此过程后，可以从保护组中删除此 VM。
 
-## <a name="vmware-vsphere-67"></a>VMWare vSphere 6.7
+## <a name="vmware-vsphere-67"></a>VMware vSphere 6.7
 
 若要备份 vSphere 6.7，请执行以下操作：
 
 - 在 MABS 服务器上启用 TLS 1.2
 
 >[!NOTE]
->VMWare 6.7 及更高版本已启用 TLS 作为通信协议。
+>VMware 6.7 及更高版本已启用 TLS 作为通信协议。
 
 - 按如下所示设置注册表项：
 
@@ -453,7 +453,7 @@ Windows Registry Editor Version 5.00
 
 若要配置磁盘排除，请执行以下步骤：
 
-### <a name="identify-the-vmware-vm-and-disk-details-to-be-excluded"></a>识别要排除的 VMWare VM 和磁盘详细信息
+### <a name="identify-the-vmware-vm-and-disk-details-to-be-excluded"></a>识别要排除的 VMware VM 和磁盘详细信息
 
   1. 在 VMware 控制台上，转到你要为其排除磁盘的 VM 设置。
   2. 选择要排除的磁盘并记下该磁盘的路径。

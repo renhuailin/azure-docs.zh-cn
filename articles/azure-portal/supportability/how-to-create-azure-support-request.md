@@ -3,13 +3,13 @@ title: 如何创建 Azure 支持请求
 description: 需要协助的客户可在 Azure 门户中查找自助服务解决方案并创建和管理支持请求。
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
-ms.date: 03/16/2021
-ms.openlocfilehash: 395fc0d5905389ffb8f68d8bbc4c6f8b3a871d36
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/25/2021
+ms.openlocfilehash: 3b38a010fa23605019f1969a80e9f9a3cda467c8
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774859"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110496571"
 ---
 # <a name="create-an-azure-support-request"></a>创建 Azure 支持请求
 
@@ -84,7 +84,7 @@ Azure 对订阅管理（包括计费、配额调整和帐户转移）提供无�
 
 1. 在我们获得关于该问题的全部信息后，请选择如何获取支持。 在“详细信息”的“支持方法”部分，选择影响程度 。 最大严重性级别取决于[支持计划](https://azure.microsoft.com/support/plans)。
 
-    默认情况下，“共享诊断信息”选项处于选中状态。 这允许 Azure 支持从你的 Azure 资源收集[诊断信息](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)。 在某些情况下，还有一个默认情况下没有选择的问题，例如，请求访问虚拟机的内存。
+    默认情况下，“共享诊断信息”选项处于选中状态。 这允许 Azure 支持从你的 Azure 资源收集[诊断信息](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)。 如果不想共享诊断信息，可以清除此选项。 在某些情况下，还有一个默认情况下没有选择的问题，例如，请求访问虚拟机的内存。
 
 1. 提供首选联系方法、适宜联系时间和支持语言。
 
