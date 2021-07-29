@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 05/11/2021
 ms.author: ranku
-ms.openlocfilehash: 123916aebd743e0a5d0f40415f3d5eea956c2c3a
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 7d972139888d45e7e0967f076fd5ed5d8a86e513
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114605936"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667092"
 ---
 # <a name="how-to-convert-data-to-fhir-preview"></a>如何将数据转换为 FHIR（预览版）
 
@@ -24,7 +24,7 @@ FHIR 服务中的 $convert 数据自定义终结点用于从不同数据类型�
 
 ## <a name="use-the-convert-data-endpoint"></a>使用 $convert-data 终结点
 
-`$convert-data`操作集成到 FHIR 服务，以便作为服务的一部分运行。 `$convert-data`部署 FHIR 服务器时需要启用，方法是将 `FhirServer__Operations__ConvertData__Enabled` FHIR 服务器中的设置设置为 "true"。 还需要确保已启用托管标识，如本文后面所述。 然后，你可以对服务器进行 API 调用，以将数据转换为 FHIR：
+`$convert-data`操作集成到 FHIR 服务，以便作为服务的一部分运行。 可以对服务器进行 API 调用，将数据转换为 FHIR：
 
 `https://<<FHIR service base URL>>/$convert-data`
 
