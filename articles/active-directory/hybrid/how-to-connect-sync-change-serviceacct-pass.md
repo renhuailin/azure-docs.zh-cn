@@ -17,12 +17,12 @@ ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8778e50dcb881647696c6e901bf1058b9d6ac43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 736b43fc860cfe4405b8def97b511d18bb77c599
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720332"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111853381"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>更改 ADSync 服务帐户密码
 如果更改了 ADSync 服务帐户密码，则将无法正常启动同步服务，除非已放弃加密密钥并重新初始化 ADSync 服务帐户密码。 
@@ -109,11 +109,14 @@ Azure AD Connect 是同步服务的一部分，它使用加密密钥来存储 AD
 #### <a name="reinitialize-the-password-of-the-adsync-service-account"></a>重新初始化 ADSync 服务帐户的密码
 不能直接向同步服务提供 Azure AD 服务帐户的密码， 而只能使用 cmdlet **Add-ADSyncAADServiceAccount** 重新初始化 Azure AD 服务帐户。 该 cmdlet 重置帐户密码，并使其可供同步服务使用：
 
-1. 在 Azure AD Connect 服务器上启动新的 PowerShell 会话。
-2. 运行 cmdlet `Add-ADSyncAADServiceAccount`。
-3. 在弹出对话框中，为 Azure AD 租户提供 Azure AD 全局管理员凭据。
-![Azure AD Connect 同步加密密钥实用工具](./media/how-to-connect-sync-change-serviceacct-pass/key7.png)
-4. 如果成功，会看到 PowerShell 命令提示符。
+1. 登录到 Azure AD Connect 同步服务器并打开 PowerShell。
+2. 若要提供 Azure AD 全局管理员凭据，请运行 `$credential = Get-Credential`。
+3. 运行 cmdlet `Add-ADSyncAADServiceAccount -AADCredential $credential`。
+ 
+   如果 cmdlet 成功，则会出现 PowerShell 命令提示符。 
+   
+此 cmdlet 重置服务帐户的密码，并在 Azure AD 和同步引擎中更新该密码。
+
 
 #### <a name="start-the-synchronization-service"></a>启动同步服务
 同步服务可以访问加密密钥及其所需的所有密码以后，即可在 Windows 服务控制管理器中重新启动该服务：

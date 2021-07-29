@@ -4,13 +4,13 @@ description: Azure Monitor 指标警报的常见问题和可能的解决方案�
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 04/12/2021
-ms.openlocfilehash: fc9af94b07add5728201baaa8fa6992728a60a8c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/03/2021
+ms.openlocfilehash: cbbecb49acf556dc7a8ce6285d4b1b3581c39b3d
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786002"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412893"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>排查 Azure Monitor 指标警报的问题 
 
@@ -62,7 +62,10 @@ ms.locfileid: "107786002"
     - 指标图表中选择的“聚合”与警报规则中的“聚合类型”相同 
     - 所选的“时间粒度”与警报规则中的“聚合粒度(周期)”相同，且未设置为“自动” 
 
-5. 如果在触发该警报时已存在对同一条件进行监视的已触发警报（尚未解决），则请检查是否已将警报规则的已配置 autoMitigate 属性设置为“false”（此属性只能通过 REST/PowerShell/CLI 进行配置，因此请检查用来部署警报规则的脚本）。 在这种情况下，警报规则不会自动解析触发的警报，并且在再次触发警报之前不需要解析触发的警报。
+5. 如果警报被触发，而同时已有监视相同条件的已触发的警报（尚未解决），请检查警报规则是否已配置为不自动解决警报。 这样的配置会导致警报规则变为无状态，意味着警报规则不会自动解决触发的警报，并且不要求已触发的警报在同一时序上再次触发之前先行得到解决。
+    可以通过以下方法之一来检查是否已将警报规则配置为不自动解决：
+    - 在 Azure 门户中编辑警报规则，并查看是否未选中“自动解决警报”复选框（在“警报规则详细信息”部分）。
+    - 查看用于部署警报规则的脚本，或检索警报规则定义并检查 autoMitigate 属性是否设置为 false。
 
 
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>找不到警报所针对的指标 - 虚拟机来宾指标
@@ -107,7 +110,9 @@ ms.locfileid: "107786002"
 
 ## <a name="make-metric-alerts-occur-every-time-my-condition-is-met"></a>使指标警报在每次满足条件时都出现
 
-默认情况下，指标警报是有状态的，因此，如果给定的时序已存在触发的警报，则不会触发其他警报。 如果希望将特定指标警报规则设为无状态，并在每次评估符合警报条件时收到警报，请以编程方式（例如，通过[资源管理器](./alerts-metric-create-templates.md)、[PowerShell](/powershell/module/az.monitor/)、[REST](/rest/api/monitor/metricalerts/createorupdate)、[CLI](/cli/azure/monitor/metrics/alert)）创建警报规则，并将 autoMitigate 属性设为“False”。
+默认情况下，指标警报是有状态的，因此，如果给定的时序已存在触发的警报，则不会触发其他警报。 如果需要使某个特定指标警报规则无状态，并在评估结果为满足警报条件的情况下收到警报，请按下述选项之一操作：
+- 如果要以编程方式创建警报规则（例如，通过[资源管理器](./alerts-metric-create-templates.md)、[PowerShell](/powershell/module/az.monitor/)、[REST](/rest/api/monitor/metricalerts/createorupdate)、[CLI](/cli/azure/monitor/metrics/alert) 来这样做），请将 autoMitigate 属性设置为“False”。
+- 如果要通过 Azure 门户创建警报规则，请取消选中“自动解决警报”选项（在“警报规则详细信息”部分）。
 
 > [!NOTE] 
 > 将指标警报规则设为无状态会妨碍已触发警报的解决，因此即使在不再满足条件后，触发的警报也会在 30 天的保留期内保持已触发状态。
@@ -239,6 +244,7 @@ ms.locfileid: "107786002"
 - 指标警报规则名称在资源组中必须唯一
 - 指标警报规则名称不能包含以下字符：* # & + : < > ? @ % { } \ / 
 - 指标预警规则名称不能以空格或句点结尾
+- 合并的资源组名称和警报规则名称不能超过 252 个字符
 
 > [!NOTE] 
 > 如果警报规则名称包含不是字母或数字的字符（例如：空格、标点符号或符号），则在某些客户端检索这些字符时，可能会对这些字符进行 URL 编码。

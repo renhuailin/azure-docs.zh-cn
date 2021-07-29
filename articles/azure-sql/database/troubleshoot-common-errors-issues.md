@@ -3,19 +3,19 @@ title: 排查 Azure SQL 数据库的常见连接问题
 description: 提供步骤来排查 Azure SQL 数据库连接问题，并解决其他的 Azure SQL 数据库或 Azure SQL 托管实例特定问题
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: development
+ms.subservice: connect
 ms.topic: troubleshooting
 ms.custom: seo-lt-2019, OKR 11/2019, sqldbrb=1
 author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: sstein,vanto
 ms.date: 01/14/2021
-ms.openlocfilehash: ec61f2c67576d6e144d8d4bb7e8ecaaa157db0a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5953099567edc3ef0f09ae07fd2708b1ce748dd9
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98233366"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413602"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>排查 Azure SQL 数据库和 Azure SQL 托管实例的连接问题和其他问题
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -248,13 +248,13 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
 如果反复出现此错误，请尝试执行以下步骤来解决问题：
 
-1. 检查 sys.dm_exec_requests 视图，以确定是否有任何打开的会话对 total_elapsed_time 列使用了较大的值。 运行以下 SQL 脚本来执行此项检查：
+1. 检查 `sys.dm_exec_requests` 视图以查看 `total_elapsed_time` 列的值较高的任何打开的会话。 运行以下 SQL 脚本来执行此项检查：
 
    ```sql
    SELECT * FROM sys.dm_exec_requests;
    ```
 
-2. 使用 [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) 动态管理功能和有问题的查询的 session_id 为头阻塞程序确定“输入缓冲区”，例如：
+2. 使用 [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) 动态管理函数和有问题查询的 `session_id` 确定头阻塞程序的“输入缓冲区”，例如：
 
    ```sql 
    SELECT * FROM sys.dm_exec_input_buffer (100,0);
@@ -262,7 +262,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
 3. 优化该查询。
 
-    > [!Note]
+    > [!NOTE]
     > 有关故障排除 Azure SQL 数据库中阻塞的详细信息，请参阅[了解并解决 Azure SQL 数据库阻塞问题](understand-resolve-blocking.md)。
 
 还应考虑批处理查询。 有关批处理的信息，请参阅[如何使用批处理来改善 SQL 数据库应用程序的性能](../performance-improve-use-batching.md)。
@@ -289,6 +289,10 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
   > [!NOTE]
   > 对于索引重建，所更新字段的平均大小应替换为平均索引大小。
+
+  > [!NOTE]
+  > 若要详细了解如何对 Azure SQL 数据库和 Azure SQL 托管实例中的完整事务日志进行故障排除，请参阅[排查 Azure SQL 数据库和 Azure SQL 托管实例的事务日志错误](troubleshoot-transaction-log-errors-issues.md)。
+
 
 ### <a name="error-40553-the-session-has-been-terminated-because-of-excessive-memory-usage"></a>错误 40553：由于过度使用 TEMPDB，已终止会话
 
@@ -396,3 +400,8 @@ ClientConnectionId:<Client connection ID>
 
 - [Azure SQL 数据库连接体系结构](./connectivity-architecture.md)
 - [Azure SQL 数据库和 Azure Synapse Analytics 网络访问控制](./network-access-controls-overview.md)
+
+## <a name="see-also"></a>另请参阅
+
+- [排查 Azure SQL 数据库和 Azure SQL 托管实例的事务日志错误](troubleshoot-transaction-log-errors-issues.md)
+- [排查 SQL 数据库和 SQL 托管实例中的临时连接错误](troubleshoot-common-connectivity-issues.md)

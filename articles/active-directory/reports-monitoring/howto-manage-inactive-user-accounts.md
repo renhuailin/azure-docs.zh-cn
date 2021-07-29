@@ -4,7 +4,7 @@ description: 了解如何检测和处理 Azure AD 中已过时的用户帐户
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
@@ -13,22 +13,25 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 01/21/2021
+ms.date: 05/06/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ea62a8d602cc472269b52c230529aa3f9b86ed4
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: cce8adf65eba2586440d490860f13a6c5aa1f626
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535105"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088167"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>如何：管理 Azure AD 中的非活动用户帐户
 
 在大型环境中，当员工离开组织时，并不总是会删除用户帐户。 作为 IT 管理员，你希望检测和处理这些过时的用户帐户，因为它们会带来安全风险。
 
 本文介绍了在 Azure AD 中处理过时用户帐户的方法。 
+
+> [!IMPORTANT]
+> Microsoft Graph 中 `/beta` 版本下的 API 可能会更改。 不支持在生产应用程序中使用这些 API。 若要确定 API 在 v1.0 中是否可用，请使用“版本”选择器。
 
 ## <a name="what-are-inactive-user-accounts"></a>什么是非活动用户帐户？
 
@@ -49,7 +52,7 @@ ms.locfileid: "107535105"
 
 > [!NOTE]
 > 可能需要生成所有用户上次登录日期的报告，如果是这样，则可以使用以下方案。
-> **所有用户上次登录的日期和时间**：在此方案中，你请求所有用户的列表，以及每个用户最后的 lastSignInDateTime：`https://graph.microsoft.com/beta/users?$select=displayName,signInActivity` 
+> **所有用户上次登录的日期和时间**：在此方案中，需要请求一个包含所有用户的列表，以及每个用户最后的 lastSignInDateTime：`https://graph.microsoft.com/beta/users?$select=displayName,signInActivity` 
 
 ## <a name="what-you-need-to-know"></a>需要了解的事项
 
@@ -65,14 +68,14 @@ lastSignInDateTime 属性由 [Microsoft Graph REST API](/graph/overview#whats-in
 
 ### <a name="what-edition-of-azure-ad-do-i-need-to-access-the-property"></a>访问属性需要哪些版本的 Azure AD？
 
-可以在 Azure AD 的所有版本中访问此属性。
+若要访问此属性，需要 Azure Active Directory Premium 版本。
 
 ### <a name="what-permission-do-i-need-to-read-the-property"></a>读取属性需要哪些权限？
 
 若要读取此属性，需要授予以下权限： 
 
 - AuditLogs.Read.All
-- Organisation.Read.All  
+- Organization.Read.All  
 
 
 ### <a name="when-does-azure-ad-update-the-property"></a>Azure AD 何时更新此属性？
@@ -92,3 +95,4 @@ lastSignInDateTime 属性由 [Microsoft Graph REST API](/graph/overview#whats-in
 * [使用具有证书的 Azure Active Directory 报告 API 获取数据](tutorial-access-api-with-certificates.md)
 * [审核 API 参考](/graph/api/resources/directoryaudit) 
 * [登录活动报告 API 参考](/graph/api/resources/signin)
+

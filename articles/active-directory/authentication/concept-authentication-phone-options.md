@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 06/08/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a5e8b933f617d767f017f73fb6778a45b5a1ce3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb1504e406e5edb25cea01fa2add5751257802e8
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98725583"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744442"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory 中的身份验证方法 - 电话选项
 
@@ -57,7 +57,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的 Azure AD 多重
 如果在使用 Azure AD 的手机身份验证时出现问题，请查看以下故障排除步骤：
 
 * 登录期间收到“你已达到验证呼叫限制”或“你已达到文本验证码限制”错误消息
-   * Microsoft 可能会限制同一用户在短时间内尝试重复身份验证的次数。 此限制不适用于 Microsoft Authenticator 或验证码。 如果你已达到这些限制，则可以使用 Authenticator 应用、验证码或在几分钟后尝试再次登录。
+   * Microsoft 可能会限制同一用户在短时间内尝试重复执行身份验证的次数。 此限制不适用于 Microsoft Authenticator 或验证码。 如果你已达到这些限制，则可以使用 Authenticator 应用、验证码或在几分钟后尝试再次登录。
 * 登录期间收到“抱歉，我们无法验证你的帐户”错误消息
    * 由于失败的语音或短信身份验证尝试次数过多，Microsoft 可能会限制或阻止同一用户、电话号码或组织执行的语音或短信身份验证尝试。 如果遇到此错误，可以尝试其他方法，例如 Authenticator 应用或验证码，或者联系管理员获取支持。
 * 单个设备上阻止了呼叫方 ID。

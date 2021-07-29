@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: 了解如何购买 Azure SQL 数据库和 SQL 托管实例预留容量以节省计算成本。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: features
+ms.subservice: service-overview
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
-ms.reviewer: sstein
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
 ms.date: 10/13/2020
-ms.openlocfilehash: cacd43502a01352c24f8fcfd85b12aac781dccbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e4f1ba5d15921f30319b001474351d637a0e338
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98602514"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413746"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>通过预留容量节省资源成本 - Azure SQL 数据库和 SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
@@ -57,7 +57,7 @@ ms.locfileid: "98602514"
     
     | 字段      | 说明|
     |------------|--------------|
-    |订阅|用于支付产能预留费用的订阅。 将向订阅的付款方式收取预订的预付费用。 订阅类型必须是企业协议（产品/服务编号：MS-AZR-0017P 或 MS-AZR-0148P）或采用即用即付定价的个人协议（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的 Azure 预付款（以前称为货币承诺）余额中扣除费用或按超额收取费用。 对于采用即用即付定价的个人订阅，将从订阅上的信用卡或发票付款方式收取费用。|
+    |订阅|用于支付产能预留费用的订阅。 将向订阅的付款方式收取预订的预付费用。 订阅类型必须是企业协议（产品/服务编号：MS-AZR-0017P 或 MS-AZR-0148P）或采用即用即付定价的个人协议（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的 Azure 预付款（以前称为货币承诺）余额中扣除费用或按超额收取费用。 对于采用即用即付定价的个人订阅，将按订阅上的信用卡或发票付款方式收取费用。|
     |范围       |vCore 预留范围可以包括一个订阅或多个订阅（共享范围）。 如果选择 <br/><br/>“共享”，则 vCore 预留折扣将应用于计费上下文中任何订阅中运行的数据库或托管实例。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。<br/><br/>“单个订阅”，则 vCore 预留折扣将应用于此订阅中的数据库或托管实例。 <br/><br/>“单个资源组”，则预留折扣将应用于所选订阅中的数据库实例或托管实例，以及该订阅中的所选资源组。|
     |区域      |产能预留涵盖的 Azure 区域。|
     |部署类型|要为其购买预留容量的 SQL 资源类型。|
@@ -88,6 +88,9 @@ vCore 大小灵活性有助于在同一性能层和区域内纵向扩展或收�
 ## <a name="next-steps"></a>后续步骤
 
 vCore 预留折扣自动应用于与产能预留范围和属性匹配的数据库或托管实例数目。 可以通过 [Azure 门户](https://portal.azure.com)、PowerShell、Azure CLI 或 API 更新产能预留的范围。
+
+- 有关 vCore 模型的 Azure SQL 数据库服务层级的信息，请参阅 [vCore 模型概述 - Azure SQL 数据库](service-tiers-sql-database-vcore.md)。
+- 有关 vCore 模型的 Azure SQL 托管实例服务层级的信息，请参阅 [vCore 模型概述 - Azure SQL 托管实例](../managed-instance/service-tiers-managed-instance-vcore.md)。
 
 若要了解如何管理产能预留，请参阅[管理预留容量](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)。
 

@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
-ms.reviewer: MashaMSFT
+ms.reviewer: cawrites
 ms.date: 03/19/2021
-ms.openlocfilehash: b2e5fdec732b823a42492af03b1cde705814b924
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 437b7bd6e919cd6b462cb8653354631fbeb438ed
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136528"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110785546"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-database"></a>迁移指南：SQL Server 到 Azure SQL 数据库
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -36,12 +36,13 @@ ms.locfileid: "108136528"
 
 ## <a name="prerequisites"></a>先决条件 
 
-若要将 [SQL Server 迁移](https://azure.microsoft.com/en-us/migration/sql-server/)到 Azure SQL 数据库，请确保满足以下先决条件： 
+若要将 [SQL Server 迁移](https://azure.microsoft.com/en-us/migration/sql-server/)到 Azure SQL 数据库，请确保已执行以下操作： 
 
-- 一个已选定的[迁移方法](sql-server-to-sql-database-overview.md#compare-migration-options)及相应的工具。
-- 在可以连接到源 SQL Server 的计算机上安装的[数据迁移助手 (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)。
-- 一个目标 [Azure SQL 数据库](../../database/single-database-create-quickstart.md)。 
-- 连接以及访问源和目标的适当权限。 
+- 选定[迁移方法](sql-server-to-sql-database-overview.md#compare-migration-options)及相应的工具。
+- 在可以连接到源 SQL Server 的计算机上安装[数据迁移助手 (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)。
+- 创建一个目标 [Azure SQL 数据库](../../database/single-database-create-quickstart.md)。 
+- 配置连接和适当权限以访问源和目标。 
+- 查看 [Azure SQL Database 中可用](../../database/features-comparison.md)的数据库引擎功能。 
 
 
 

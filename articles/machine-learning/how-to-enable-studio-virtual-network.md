@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperf-fy20q4, tracking-python
-ms.openlocfilehash: 13becdf8c49d9affe8c2946d6147707fbe954437
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: bf4a019c9f40475750fd508a56f7f8903e0a2876
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889315"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538857"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>在 Azure 虚拟网络中使用 Azure 机器学习工作室
 
@@ -68,6 +68,13 @@ ms.locfileid: "107889315"
 * Azure Data Lake Storage Gen2
 * Azure SQL 数据库
 
+### <a name="firewall-settings"></a>防火墙设置
+
+一些存储服务（如 Azure 存储帐户）有防火墙设置，该设置适用于该特定服务实例的公共终结点。 通常情况下，可以通过该设置来允许/禁止从公共 Internet 的特定 IP 地址进行的访问。 使用 Azure 机器学习工作室时，不支持此功能。 使用 Azure 机器学习 SDK 或 CLI 时，支持此功能。
+
+> [!TIP]
+> 使用 Azure 防火墙服务时，支持 Azure 机器学习工作室。 有关详细信息，请参阅[使用防火墙后面的工作区](how-to-access-azureml-behind-firewall.md)。
+
 ### <a name="configure-datastores-to-use-workspace-managed-identity"></a>将数据存储配置为使用工作区托管标识
 
 将 Azure 存储帐户添加到具有[服务终结点](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)或[专用终结点](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)的虚拟网络后，必须配置数据存储才能使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)身份验证。 这样，工作室就可以访问存储帐户中的数据。
@@ -84,7 +91,7 @@ Azure 机器学习使用[数据存储](concept-data.md#datastores)连接到存�
 
     ![显示如何启用托管工作区标识的屏幕截图](./media/how-to-enable-studio-virtual-network/enable-managed-identity.png)
 
-这些步骤使用 Azure RBAC 将工作区托管标识作为“读取者”添加到存储服务。 “读取者”访问权限允许工作区检索防火墙设置，以确保数据不会离开虚拟网络。 这些更改可能需要长达 10 分钟才能生效。
+这些步骤使用 Azure RBAC 将工作区托管标识作为“读取者”添加到存储服务。 “读取者”访问权限允许工作区查看资源，但不能进行更改。
 
 ### <a name="enable-managed-identity-authentication-for-default-storage-accounts"></a>对默认存储账户启用托管标识身份验证
 

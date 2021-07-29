@@ -1,36 +1,34 @@
 ---
-title: 重置并重新激活 Azure Stack Edge Pro 设备 | Microsoft Docs
-description: 了解如何从 Azure Stack Edge Pro 设备中擦除数据，然后重新激活该设备。
+title: Azure Stack Edge 设备重置和重新激活
+description: 了解如何从 Azure Stack Edge 设备中擦除数据，然后重新激活该设备。
 services: databox
 author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/03/2020
+ms.date: 05/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 95fbe5dc4a934fee10c558f640bc24f261203a33
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4afe7235cb4122e4c4fe7e26fff4b34504663892
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443489"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460592"
 ---
-# <a name="reset-and-reactivate-your-azure-stack-edge-pro-device"></a>重置并重新激活 Azure Stack Edge Pro 设备
+# <a name="reset-and-reactivate-your-azure-stack-edge-device"></a>重置并重新激活 Azure Stack Edge 设备
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-本文介绍如何重置、重新配置和重新激活 Azure Stack Edge Pro 设备（如果该设备出现问题，或者出于其他某种原因需要重新启动）。
+本文介绍如何重置、重新配置和重新激活 Azure Stack Edge 设备（如果该设备出现问题，或者出于其他某种原因需要重新启动）。
 
 重置设备以删除数据后，需要将设备作为新资源重新激活。 重置设备会删除设备配置，因此需要通过本地 Web UI 重新配置设备。
 
-在本文中，学习如何：
+例如，可能需要将现有的 Azure Stack Edge 资源移动到新的订阅。 为此，需要：
 
-> [!div class="checklist"]
->
-> * 擦除设备上数据磁盘中的数据
-> * 通过创建新订单、重新配置设备并激活它来重新激活设备
+1. 按照[重置设备](#reset-device)中的步骤重置设备上的数据。
+2. 创建将新订阅与现有设备一同使用的新资源，然后激活该设备。 按照[重新激活设备](#reactivate-device)中的步骤操作。
 
-## <a name="reset-data-from-the-device"></a>重置设备上的数据
+## <a name="reset-device"></a>重置设备
 
 若要擦除设备上数据磁盘中的数据，需要重置设备。
 
@@ -67,4 +65,4 @@ ms.locfileid: "102443489"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[连接到 Azure Stack Edge Pro 设备](azure-stack-edge-gpu-deploy-connect.md)。
+- 了解如何[连接到 Azure Stack Edge 设备](azure-stack-edge-gpu-deploy-connect.md)。

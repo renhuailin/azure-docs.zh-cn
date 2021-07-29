@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 03/24/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 562398b17ec5adaaa590b36c1e30e9818592a485
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: fcf3ef3c122639ee0d2c9fa2664fe1b165195a8f
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684804"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110493710"
 ---
 # <a name="how-to-stitch-two-or-more-video-files-with-net"></a>如何使用 .NET 拼结两个或更多视频文件
 
@@ -30,4 +30,8 @@ ms.locfileid: "109684804"
 
 ## <a name="prerequisites"></a>先决条件
 
-克隆或下载[媒体服务 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet/)。  下面引用的代码位于 [EncodingWithMESCustomStitchTwoAssets 文件夹](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/VideoEncoding/Encoding_StitchTwoAssets/Program.cs)中。
+克隆或下载[媒体服务 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet/)。 
+
+## <a name="example"></a>示例
+
+在 [EncodingWithMESCustomStitchTwoAssets 文件夹](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/VideoEncoding/Encoding_StitchTwoAssets/Program.cs)中查找显示如何拼接视频文件的代码。

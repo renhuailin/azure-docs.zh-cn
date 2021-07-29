@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/29/2021
-ms.openlocfilehash: 62ef47e7d8f98241009c1c1f3d8c111113be432c
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
-ms.translationtype: MT
+ms.date: 05/29/2021
+ms.openlocfilehash: 635a90b70c044e1f8c49518c42b49c521dbb317e
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220762"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110781881"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的只读副本
 
@@ -34,30 +34,33 @@ ms.locfileid: "99220762"
 > [!NOTE]
 > 对于大多数工作负荷，只读副本提供来自主服务器的准实时更新。 但是，对于持久的大量写入密集型主工作负荷，复制滞后时间可能会持续增长，并且可能永远都无法赶上主服务器。 这也可能会增加主服务器上的存储使用量，因为在副本收到 WAL 文件之前，这些文件不会被删除。 如果这种情况持续存在，则可以选择在写入密集型工作负荷完成后删除并重新创建只读副本，以使副本恢复到相对于滞后的良好状态。
 > 异步只读副本不适合这种繁重的写入工作负荷。 评估应用程序的只读副本时，请在完整的应用工作负荷周期，通过其高峰时间和非高峰时间来监视副本上的滞后时间，以获取工作负荷周期各个点可能的滞后时间和预期的 RTO/RPO。
-> 
+
+> [!NOTE]
+> 对最多配置 4TB 存储配置的副本服务器执行自动备份。
+
 ## <a name="cross-region-replication"></a>跨区域复制
 可以在与主服务器不同的区域中创建只读副本。 跨区域复制对于灾难恢复规划或使数据更接近用户等方案非常有用。
 
 >[!NOTE]
 > 基本层服务器仅支持相同区域复制。
 
-你可以在任何 [Azure Database for PostgreSQL 区域](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)中拥有主服务器。 主服务器可以在其配对区域或通用副本区域中拥有副本。 下图显示了哪些副本区域可用，具体取决于你的主要区域。
+你可以在任何 [Azure Database for PostgreSQL 区域](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)中拥有主服务器。 主服务器可以在其配对区域或通用副本区域中拥有副本。 下图显示了哪些副本区域可用，具体取决于你的主区域。
 
-[:::image type="content" source="media/concepts-read-replica/read-replica-regions.png" alt-text="读取副本区域":::](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[ :::image type="content" source="media/concepts-read-replica/read-replica-regions.png" alt-text="只读副本区域":::](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>通用副本区域
-无论主服务器位于何处，始终可以在以下任何区域中创建读取副本。 下面是通用副本区域：
+无论主服务器位于何处，你都可以始终在以下任何区域中创建只读副本。 以下为通用副本区域：
 
-澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、美国中部、东亚、美国东部、美国东部2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、西欧、美国西部、美国西部2、美国中部。
+澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、美国中部、东亚、美国东部、美国东部 2、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、英国南部、英国西部、西欧、美国西部、美国西部 2、美国中西部。
 
 ### <a name="paired-regions"></a>配对区域
-除通用副本区域外，还可以在主服务器的 Azure 配对区域中创建读取副本。 如果你不知道所在区域的配对，可以从 [Azure 配对区域](../best-practices-availability-paired-regions.md)一文中了解更多信息。
+除通用副本区域外，还可以在主服务器的 Azure 配对区域中创建只读副本。 如果你不知道所在区域的配对，可以从 [Azure 配对区域](../best-practices-availability-paired-regions.md)一文中了解更多信息。
 
 如果你使用跨区域副本进行灾难恢复规划，建议你在配对区域而不是其他某个区域中创建副本。 配对区域可避免同时更新，并优先考虑物理隔离和数据驻留。  
 
 需要考虑以下限制： 
     
-* 单向对：某些 Azure 区域仅在一个方向上配对。 这些区域包括印度西部、巴西南部。 
+* 单向对：某些 Azure 区域仅在一个方向上配对。 这些区域包括印度西部和巴西南部。 
    这意味着印度西部的主服务器可以在印度南部创建副本。 但是，印度南部的主服务器无法在印度西部创建副本。 这是因为印度西部的次要区域是印度南部，但印度南部的次要区域不是印度西部。
 
 
@@ -70,7 +73,7 @@ ms.locfileid: "99220762"
 
 了解如何[在 Azure 门户中创建只读副本](howto-read-replicas-portal.md)。
 
-如果源 PostgreSQL 服务器是用客户管理的密钥加密的，请参阅 [文档](concepts-data-encryption-postgresql.md) 以了解其他注意事项。
+如果源 PostgreSQL 服务器使用客户管理的密钥加密，请参阅[文档](concepts-data-encryption-postgresql.md)以了解其他注意事项。
 
 ## <a name="connect-to-a-replica"></a>连接到副本
 创建副本时，该副本不会继承主服务器的防火墙规则或 VNet 服务终结点。 必须单独为副本设置这些规则。
@@ -138,7 +141,7 @@ SELECT EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 
 ### <a name="disaster-recovery"></a>灾难恢复
 
-当出现重大灾难事件（如可用性区域级别或区域故障）时，可以通过提升读取副本来执行灾难恢复操作。 在 UI 门户中，可以导航到只读副本服务器。 然后单击“复制”选项卡，并且可以停止副本以将其提升为独立服务器。 或者，你可以使用 [Azure CLI](/cli/azure/postgres/server/replica#az_postgres_server_replica_stop) 来停止和提升副本服务器。
+当出现重大灾难事件（例如可用性区域级或区域性故障）时，可以通过提升只读副本来执行灾难恢复操作。 在 UI 门户中，可以导航到只读副本服务器。 然后单击“复制”选项卡，并且可以停止副本以将其提升为独立服务器。 或者，你可以使用 [Azure CLI](/cli/azure/postgres/server/replica#az_postgres_server_replica_stop) 来停止和提升副本服务器。
 
 ## <a name="considerations"></a>注意事项
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 80be5ca22f3dfb673f09327108e66fccc9de6ddd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b66ab52a65dd848997d8f13dde7bfba944ad520b
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98918037"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744388"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和账户限制
 
@@ -51,7 +51,7 @@ ms.locfileid: "98918037"
 
 | 属性 | 要求 |
 | --- | --- |
-| 允许的字符 |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ' , . ? / \` ~ " ( ) ;</li> <li>空白</li></ul> |
+| 允许的字符 |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ' , . ? / \` ~ " ( ) ; < ></li> <li>空白</li></ul> |
 | 不允许的字符 | Unicode 字符。 |
 | 密码限制 |<ul><li>至少 8 个字符，最多包含 256 个字符。</li><li>需满足以下 4 项中的 3 项：<ul><li>小写字符。</li><li>大写字符。</li><li>数字 (0-9)。</li><li>符号（请参阅前面的密码限制）。</li></ul></li></ul> |
 | 密码过期期限（最长密码期限） |<ul><li>默认值：“90”天。</li><li>可通过 Windows PowerShell 的 Azure Active Directory 模块中的 `Set-MsolPasswordPolicy` cmdlet 来配置该值。</li></ul> |
@@ -117,7 +117,7 @@ ms.locfileid: "98918037"
 本指南适用于其他提供程序（如 Intune 和 Microsoft 365），这些提供程序也依赖于 Azure AD 提供标识和目录服务。 密码过期是策略中唯一可更改的部分。
 
 > [!NOTE]
-> 只能将未通过 Azure AD Connect 进行同步的用户帐户的密码配置为永不过期。 有关目录同步的详细信息，请参阅[将 AD 与 Azure AD 连接](../hybrid/whatis-hybrid-identity.md)。
+> 默认情况下，只有未通过 Azure AD Connect 进行同步的用户帐户的密码才能配置为不过期。 有关目录同步的详细信息，请参阅[将 AD 与 Azure AD 连接](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization#password-expiration-policy)。
 
 ### <a name="set-or-check-the-password-policies-by-using-powershell"></a>使用 PowerShell 设置或检查密码策略
 

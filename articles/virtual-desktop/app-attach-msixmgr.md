@@ -1,24 +1,24 @@
 ---
 title: 使用 MSIXMGR 工具 - Azure
-description: 如何使用适用于 Windows 虚拟桌面的 MSIXMGR 工具。
+description: 如何使用适用于 Azure 虚拟桌面的 MSIXMGR 工具。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: b2cab56fb99bda7da361cc2068396e53e794501d
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 7b997f817e8e430d6f2985f73e4005da86dcda10
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448332"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745522"
 ---
 # <a name="using-the-msixmgr-tool"></a>使用 MSIXMGR 工具
 
-MSIXMGR 工具用于将 MSIX 打包的应用程序扩展到 MSIX 映像中。 该工具使用 MSIX 打包的应用程序 (.MSIX) 并将其扩展到 VHD、VHDx 或 CIM 文件中。 生成的 MSIX 映像存储在 Windows 虚拟桌面部署使用的 Azure 存储帐户中。本文将演示如何使用 MSIXMGR 工具。
+MSIXMGR 工具用于将 MSIX 打包的应用程序扩展到 MSIX 映像中。 该工具使用 MSIX 打包的应用程序 (.MSIX) 并将其扩展到 VHD、VHDx 或 CIM 文件中。 生成的 MSIX 映像存储在 Azure 虚拟桌面部署使用的 Azure 存储帐户中。本文将演示如何使用 MSIXMGR 工具。
 
 >[!NOTE]
->为了保证兼容性，请确保在 Windows 虚拟桌面主机池中运行的 OS 版本上生成存储 MSIX 映像的 CIM。 MSIXMGR 可以创建 CIM 文件，但只能将这些文件与运行 Windows 10 20H2 的主机池一起使用。
+>为了保证兼容性，请确保在 Azure 虚拟桌面主机池中运行的 OS 版本上生成存储 MSIX 映像的 CIM。 MSIXMGR 可以创建 CIM 文件，但只能将这些文件与运行 Windows 10 20H2 的主机池一起使用。
 
 ## <a name="requirements"></a>要求
 
@@ -81,7 +81,7 @@ msixmgr.exe -Unpack -packagePath "C:\Users\ssa\Desktop\packageName_3.51.1.0_x64_
 - [通过 Azure 门户设置 MSIX 应用附加](app-attach-azure-portal.md)
 - [通过 PowerShell 设置 MSIX 应用附加](app-attach-powershell.md)
 - [为 MSIX 应用附加创建 PowerShell 脚本](app-attach.md)
-- [为 Windows 虚拟桌面准备 MSIX 映像](app-attach-image-prep.md)
+- [为 Azure 虚拟桌面准备 MSIX 映像](app-attach-image-prep.md)
 - [设置用于 MSIX 应用附加的文件共享](app-attach-file-share.md)
 
 如果你对 MSIX 应用附加有疑问，请参阅我们的[应用附加常见问题解答](app-attach-faq.md)和[应用附加术语表](app-attach-glossary.md)。

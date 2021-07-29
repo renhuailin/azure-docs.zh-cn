@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46cc8ef1158c02190f905cbe8eb1d12ea7be50a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c2a687dc1165b2eca52213811721b35e998a6d9
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644929"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033277"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什么是主刷新令牌？
 
@@ -122,7 +122,7 @@ PRT 通过两种不同的方法续订：
 * **WAM 交互式登录中的 MFA**：在通过 WAM 请求令牌时，如果用户需要进行 MFA 才能访问应用，则在此交互过程中续订的 PRT 将带有 MFA 声明。
    * 在这种情况下，MFA 声明不会持续更新，因此，MFA 的持续时间取决于目录上设置的生存期。
    * 使用已有的 PRT 和 RT 访问应用时，PRT 和 RT 将被视为身份验证的第一项证明。 将需要具有第二项证明和 MFA 声明的新 AT。 这还将颁发新的 PRT 和 RT。
-* **设备注册期间的 MFA**：如果管理员已将 Azure AD 中的设备设置配置为 [需要完成 MFA 才能注册设备](device-management-azure-portal.md#configure-device-settings)，则用户需要进行 MFA 才能完成注册。 在此过程中，颁发给用户的 PRT 具有在注册期间获得的 MFA 声明。 此功能仅适用于执行联接操作的用户，不适用于登录到该设备的其他用户。
+* **设备注册期间的 MFA**：如果管理员已将 Azure AD 中的设备设置配置为 [需要完成 MFA 才能注册设备](device-management-azure-portal.md#configure-device-settings)，则用户需要进行 MFA 才能完成注册。 在此过程中，颁发给用户的 PRT 具有在注册期间获得的 MFA 声明。 此功能仅适用于设备的注册所有者，而不适用于登录该设备的其他用户。
    * 与 WAM 交互式登录类似，MFA 声明不会持续更新，因此，MFA 的持续时间取决于目录上设置的生存期。
 
 Windows 10 维护每个凭据的 PRT 分区列表。 Windows Hello 企业版、密码或智能卡中的每一个都有 PRT。 此分区确保根据使用的凭据隔离 MFA 声明，而不会在令牌请求过程中混合在一起。

@@ -2,14 +2,14 @@
 title: 推送和拉取容器映像
 description: 使用 Docker CLI 将 Docker 映像推送和拉取到 Azure 中的专用容器注册表
 ms.topic: article
-ms.date: 01/23/2019
-ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 48f5f1707881ac8461e12212be631d3b80c16ca7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/12/2021
+ms.custom: seodec18, H1Hack27Feb2017, devx-track-azurepowershell
+ms.openlocfilehash: 0fd44ae001bd7f120b6c903a4109dd0e6268e19e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783820"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062949"
 ---
 # <a name="push-your-first-image-to-your-azure-container-registry-using-the-docker-cli"></a>使用 Docker CLI 将你的第一个映像推送到 Azure 容器注册表
 
@@ -19,17 +19,32 @@ Azure 容器注册表可存储和管理专用容器映像和其他项目，类�
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 容器注册表** - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
+* **Azure 容器注册表** - 在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)、[Azure CLI](container-registry-get-started-azure-cli.md) 或 [Azure PowerShell](container-registry-get-started-powershell.md)。
 * **Docker CLI** - 还必须在本地安装 Docker。 Docker 提供的包可在任何 [macOS][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系统上轻松配置 Docker。
 
 ## <a name="log-in-to-a-registry"></a>登录到注册表
 
-可[通过多种方式验证](container-registry-authentication.md)专用容器注册表。 在命令行中操作时，建议的方法是使用 Azure CLI 命令 [az acr login](/cli/azure/acr#az_acr_login)。 例如，若要登录到名为 myregistry 的注册表，请登录到 Azure CLI，然后向注册表进行身份验证：
+可[通过多种方式验证](container-registry-authentication.md)专用容器注册表。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+在命令行中操作时，建议的方法是使用 Azure CLI 命令 [az acr login](/cli/azure/acr#az_acr_login)。 例如，若要登录到名为 myregistry 的注册表，请登录到 Azure CLI，然后向注册表进行身份验证：
 
 ```azurecli
 az login
 az acr login --name myregistry
 ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+在 PowerShell 中操作时，建议的方法是使用 Azure PowerShell cmdlet [Connect-AzContainerRegistry](/powershell/module/az.containerregistry/connect-azcontainerregistry)。 例如，若要登录到名为“myregistry”的注册表，请登录到 Azure，然后向注册表进行身份验证：
+
+```azurepowershell
+Connect-AzAccount
+Connect-AzContainerRegistry -Name myregistry
+```
+
+---
 
 也可以使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 登录。 例如，你可能在自动化方案中向注册表[分配了服务主体](container-registry-authentication.md#service-principal)。 运行以下命令时，收到提示后，请以交互方式提供服务主体 appID（用户名）和密码。 有关管理登录凭据的最佳做法，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令参考：
 
@@ -114,11 +129,31 @@ docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 若要从 Azure 容器注册表中删除映像，可以使用 Azure CLI 命令[az acr repository delete](/cli/azure/acr/repository#az_acr_repository_delete)。 例如，以下命令删除 `samples/nginx:latest` 标记引用的清单、所有唯一的层数据以及引用此清单的其他所有标记。
 
 ```azurecli
 az acr repository delete --name myregistry --image samples/nginx:latest
 ```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+[Az.ContainerRegistry](/powershell/module/az.containerregistry) Azure PowerShell 模块包含多个命令，用于从容器实例中删除映像。 [Remove-AzContainerRegistryRepository](/powershell/module/az.containerregistry/remove-azcontainerregistryrepository) 删除特定命名空间（如 `samples:nginx`）中的所有映像，而 [Remove-AzContainerRegistryManifest](/powershell/module/az.containerregistry/remove-azcontainerregistrymanifest) 删除特定标记或清单。
+
+在下面的示例中，使用 `Remove-AzContainerRegistryRepository` cmdlet 删除 `samples:nginx` 命名空间中的所有映像。
+
+```azurepowershell
+Remove-AzContainerRegistryRepository -RegistryName myregistry -Name samples/nginx
+```
+
+在下面的示例中，使用 `Remove-AzContainerRegistryManifest` cmdlet 删除 `samples/nginx:latest` 标记引用的清单、所有唯一的层数据以及引用此清单的其他所有标记。
+
+```azurepowershell
+Remove-AzContainerRegistryManifest -RegistryName myregistry -RepositoryName samples/nginx -Tag latest
+```
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

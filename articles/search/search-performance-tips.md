@@ -7,12 +7,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/06/2021
-ms.openlocfilehash: 28325a1bbda1b2d4a4bb060ae3e79057275ee42a
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 804166beebf4f12e246a27122bd44c611972a488
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106582006"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111437993"
 ---
 # <a name="tips-for-better-performance-in-azure-cognitive-search"></a>提高 Azure 认知搜索性能的提示
 
@@ -24,7 +24,7 @@ ms.locfileid: "106582006"
 
 ## <a name="index-size-and-schema"></a>索引大小和架构
 
-查询在小型索引上运行更快。 部分是由于要扫描的字段较少，这也与系统缓存内容以供将来查询的方式有关。 第一次查询后，某些内容将保留在内存中，以便更有效地搜索。 由于索引大小会随着时间的推移而不断增加，因此，最佳做法是定期重新访问索引构成（架构和文档），查找是否有缩减内容的机会。 不过，如果索引大小合适，那么唯一可进行的其他校准就是增加容量：[添加副本](search-capacity-planning.md#adjust-capacity)或升级服务层。 ["Tip: Upgrade to a Standard S2 tier"]](#tip-upgrade-to-a-standard-s2-tier) 部分介绍了如何评估纵向扩展和横向扩展决策。
+查询在小型索引上运行更快。 部分是由于要扫描的字段较少，这也与系统缓存内容以供将来查询的方式有关。 第一次查询后，某些内容将保留在内存中，以便更有效地搜索。 由于索引大小会随着时间的推移而不断增加，因此，最佳做法是定期重新访问索引构成（架构和文档），查找是否有缩减内容的机会。 不过，如果索引大小合适，那么唯一可进行的其他校准就是增加容量：[添加副本](search-capacity-planning.md#adjust-capacity)或升级服务层。 [提示：升级到标准 S2 层](#tip-upgrade-to-a-standard-s2-tier)部分介绍了如何评估纵向扩展与横向扩展决策。
 
 架构复杂性也会对索引和查询性能产生负面影响。 过多字段属性会产生更多的限制和处理要求。 [复杂类型](search-howto-complex-data-types.md)需要更长的时间来编制索引和查询。 接下来的几个部分将探讨每种情况。
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
-ms.openlocfilehash: ee4dd70faab9ed44b1aa6ca8ca0ec517c7746f66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 717142f5e97d68b844bc15a2f335390d1951ec0c
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94832524"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109487504"
 ---
 # <a name="security-frame-authentication--mitigations"></a>安全框架：身份验证 | 缓解措施
 
@@ -457,7 +457,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 | **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型、C#、Node.JS,  |
 | **属性**              | 不适用，网关选项 - Azure IoT 中心 |
-| **参考**              | 不适用，[使用 .NET 的 Azure IoT 中心](../../iot-hub/quickstart-send-telemetry-dotnet.md)、[IoT 中心和 Node JS 入门](../../iot-hub/quickstart-send-telemetry-node.md)、[使用 SAS 和证书保护 IoT](../../iot-hub/iot-hub-devguide-security.md)、[Git 存储库](https://github.com/Azure/azure-iot-sdks/) |
+| **参考**              | 不适用，[使用 .NET 的 Azure IoT 中心](../../iot-hub/quickstart-send-telemetry-dotnet.md)、[IoT 中心和 Node JS 入门](../../iot-hub/quickstart-send-telemetry-node.md)、[使用 SAS 和证书保护 IoT](../../iot-hub/iot-hub-dev-guide-sas.md)、[Git 存储库](https://github.com/Azure/azure-iot-sdks/) |
 | **步骤** | <ul><li>**泛型：** 使用传输层安全性 (TLS) 或 IPSec 对设备进行身份验证。 如果设备无法处理完全非对称加密，则基础结构应该支持在这些设备上使用预共享密钥 (PSK)。 利用 Azure AD、Oauth。</li><li>**C#：** 创建 DeviceClient 实例时，Create 方法默认创建使用 AMQP 协议来与 IoT 中心通信的 DeviceClient 实例。 要使用 HTTPS 协议，请使用 Create 方法的重写，它可以让你指定协议。 如果使用 HTTPS 协议，则还应在项目中添加 `Microsoft.AspNet.WebApi.Client` NuGet 包，以包含 `System.Net.Http.Formatting` 命名空间。</li></ul>|
 
 ### <a name="example"></a>示例
@@ -478,7 +478,7 @@ await deviceClient.SendEventAsync(message);
 ### <a name="example"></a>示例
 **Node.JS：身份验证**
 #### <a name="symmetric-key"></a>对称密钥
-* 在 Azure 中创建 IoT 中心
+* 在 Azure 上创建 IoT 中心
 * 在设备标识注册表中创建条目
     ```javascript
     var device = new iothub.Device(null);
@@ -557,7 +557,7 @@ await deviceClient.SendEventAsync(message);
 | **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型 |
 | **属性**              | 网关选项 - Azure IoT 中心 |
-| **参考**              | [Azure IoT 中心安全令牌](../../iot-hub/iot-hub-devguide-security.md) |
+| **参考**              | [Azure IoT 中心安全令牌](../../iot-hub/iot-hub-dev-guide-sas.md) |
 | **步骤** | 结合基于 SAS 令牌的设备密钥或客户端证书使用每个设备的身份验证凭据，而不要使用 IoT 中心级别的共享访问策略。 这可以防止其他人重复使用一个设备或现场网关的身份验证令牌 |
 
 ## <a name="ensure-that-only-the-required-containers-and-blobs-are-given-anonymous-read-access"></a><a id="req-containers-anon"></a>确保只对所需的容器和 Blob 授予匿名读取访问权限

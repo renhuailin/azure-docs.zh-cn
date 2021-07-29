@@ -4,15 +4,15 @@ description: 了解针对按流量计费的自动异常情况检测如何帮助�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 2/18/2021
+ms.date: 5/03/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 1ff6262a75261c575082f3fc48d588c868ad0b51
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4576cad94cd26f0b2892dca5aeddd8861c5abf09
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101092527"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540121"
 ---
 # <a name="manage-metered-billing-anomalies-in-partner-center"></a>在合作伙伴中心管理按流量计费异常
 
@@ -32,12 +32,12 @@ Microsoft 依赖于你（即合作伙伴）来先向客户报告其 SaaS 或 Azu
 1. 在左侧导航菜单中，选择“商业市场” > “分析” 。
 1. 选择“定量使用量异常”选项卡。
 
-    [![说明“使用情况”页上的“定量使用量异常”选项卡。](./media/anomaly-detection/metered-usage-anomalies.png)](./media/anomaly-detection/metered-usage-anomalies.png#lightbox)
+    [![说明“使用情况”页上的“定量使用量异常”选项卡。](./media/anomaly-detection/metered-usage-anomalies.png)](./media/anomaly-detection/metered-usage-anomalies.png#lightbox)<br>
     图 1：“定量使用量异常”选项卡
 
 1. 对于根据按流量计费检测到的任何使用量异常，将要求你（即发布者）调查并确认异常是否真实。 选择“标记为异常”以确认诊断。
 
-     [![说明“标记为异常”对话框。](./media/anomaly-detection/mark-as-anomaly.png)](./media/anomaly-detection/mark-as-anomaly.png#lightbox)
+     [![说明“标记为异常”对话框。](./media/anomaly-detection/mark-as-anomaly.png)](./media/anomaly-detection/mark-as-anomaly.png#lightbox)<br>
     图 2：“标记为异常”对话框
 
 1. 如果你认为我们检测到的超额使用量异常不是真实的，则可以针对合作伙伴中心标记的特定超额使用量异常，选择“不是异常”来提供该反馈。
@@ -47,18 +47,22 @@ Microsoft 依赖于你（即合作伙伴）来先向客户报告其 SaaS 或 Azu
 
 1. 你可以向下滚动页面，查看未确认异常的清单列表。 该列表提供你尚未确认的异常清单。 可以选择将任何合作伙伴中心标记的异常标记为真实或虚假。
 
-   [![说明“使用情况”页上的合作伙伴中心未确认异常的列表。](./media/anomaly-detection/unacknowledged-anomalies.png)](./media/anomaly-detection/unacknowledged-anomalies.png#lightbox)
+   [![说明“使用情况”页上的合作伙伴中心未确认异常的列表。](./media/anomaly-detection/unacknowledged-anomalies.png)](./media/anomaly-detection/unacknowledged-anomalies.png#lightbox)<br>
     图 4：合作伙伴中心未确认异常的列表
+
+    默认情况下，合作伙伴中心中显示预计财务影响超过 100 美元的标记异常。 但是，可以从“异常的估计财务影响”列表中选择“全部”，以查看所有标记的异常。 
+
+    :::image type="content" source="./media/anomaly-detection/all-anomalies.png" alt-text="所选产品/服务的所有计量用量异常的屏幕截图。":::
 
 1. 你还会看到一个异常操作日志，其中显示了你对超额使用量所采取的操作。 在该操作日志中，你将能够看到哪些超额使用量事件被标记为真实或虚假。
 
-   [![说明“使用情况”页上的“异常操作日志”。](./media/anomaly-detection/anomaly-action-log.png)](./media/anomaly-detection/anomaly-action-log.png#lightbox)
-   图 5：异常操作日志
+   [![“使用情况”页面上异常操作日志的图示。](./media/anomaly-detection/anomaly-action-log.png)](./media/anomaly-detection/anomaly-action-log.png#lightbox)<br>
+   ***图 5：异常操作日志***
 
 1. 合作伙伴中心分析将不支持重述导出报表中的超额使用量事件。 你可以通过合作伙伴中心输入针对某个异常的纠正后的超额使用量，并将详细信息传递给 Microsoft 团队进行调查。 根据调查结果，Microsoft 将酌情向多收费的客户发放信用退款。 选择任何标记的异常时，可以选择“标记为异常”以将超额使用量异常标记为真实。
 
-   [![说明“标记为异常”对话框。](./media/anomaly-detection/new-reported-usage.png)](./media/anomaly-detection/new-reported-usage.png#lightbox)
-   图 6：“标记为异常”对话框
+   [![“标记为异常”对话框的图示。](./media/anomaly-detection/new-reported-usage.png)](./media/anomaly-detection/new-reported-usage.png#lightbox)<br>
+   ***图 6：“标记为异常”对话框***
 
 首次在合作伙伴中心内将超额使用量标记为不正常时，从该实例起，你将有 30 天的时间将该异常标记为真实或虚假。 30 天后，你（即发布者）将无法对该异常采取任何操作。
 
@@ -79,5 +83,5 @@ Microsoft 依赖于你（即合作伙伴）来先向客户报告其 SaaS 或 Azu
 
 ## <a name="see-also"></a>请参阅
 - [使用商业市场计量服务的 SaaS 按流量计费](./partner-center-portal/saas-metered-billing.md)
-- [托管应用程序按流量计费](./partner-center-portal/azure-app-metered-billing.md)
+- [托管应用程序按流量计费](marketplace-metering-service-apis.md)
 - [针对按流量计费的异常情况检测服务](./partner-center-portal/anomaly-detection-service-for-metered-billing.md)

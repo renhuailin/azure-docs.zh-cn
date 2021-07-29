@@ -15,14 +15,14 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5670a29e86eb201a707e5ceef28043aafe4839d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cecf43f3795e38daa75f9463cadec94114046de
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97357970"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111568893"
 ---
-# <a name="configure-azure-load-balancer-for-failover-cluster-instance-vnn"></a>为故障转移群集实例 VNN 配置 Azure 负载均衡器
+# <a name="configure-azure-load-balancer-for-an-fci-vnn"></a>为 FCI VNN 配置 Azure 负载均衡器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 在 Azure 虚拟机上，群集使用负载均衡器来保存每次都需要位于一个群集节点上的 IP 地址。 在此解决方案中，负载均衡器保留 Azure 中的群集化资源使用的虚拟网络名称 (VNN) 的 IP 地址。 
@@ -36,10 +36,9 @@ ms.locfileid: "97357970"
 
 在完成本文中的步骤之前，应已做好以下准备：
 
-- 确定了 Azure 负载均衡器是适合[用于你的 HADR 解决方案的连接选项](hadr-cluster-best-practices.md#connectivity)。
-- 配置你的[可用性组侦听程序](availability-group-overview.md)或[故障转移群集实例](failover-cluster-instance-overview.md)。 
-- 安装了最新版本的 [PowerShell](/powershell/azure/install-az-ps)。 
-
+- 确定 Azure 负载均衡器是合适的 [FCI 连接选项](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn)。
+- 配置了你的[故障转移群集实例](failover-cluster-instance-overview.md)。 
+- 安装了最新版本的 [PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows)。 
 
 ## <a name="create-load-balancer"></a>创建负载均衡器
 
@@ -49,7 +48,7 @@ ms.locfileid: "97357970"
 
 1. 选择 **添加** 。 在 Azure 市场中搜索“负载均衡器”。 选择“负载均衡器”。
 
-1. 选择“创建”。
+1. 选择“创建”  。
 
 1. 使用以下值设置负载均衡器：
 
@@ -76,7 +75,7 @@ ms.locfileid: "97357970"
 
 1. 将该后端池与包含 VM 的可用性集进行关联。
 
-1. 在“目标网络 IP 配置”下选择“虚拟机”，并选择要作为群集节点参与操作的虚拟机。  请务必包括将承载 FCI 或可用性组的所有虚拟机。
+1. 在“目标网络 IP 配置”下选择“虚拟机”，并选择要作为群集节点参与操作的虚拟机。  请务必包括将承载 FCI 的所有虚拟机。
 
 1. 选择“确定”以创建后端池。
 
@@ -124,7 +123,7 @@ ms.locfileid: "97357970"
 
 ```powershell
 $ClusterNetworkName = "<Cluster Network Name>"
-$IPResourceName = "<SQL Server FCI / AG Listener IP Address Resource Name>" 
+$IPResourceName = "<SQL Server FCI IP Address Resource Name>" 
 $ILBIP = "<n.n.n.n>" 
 [int]$ProbePort = <nnnnn>
 
@@ -151,6 +150,25 @@ Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"
 Get-ClusterResource $IPResourceName | Get-ClusterParameter
 ```
 
+## <a name="modify-connection-string"></a>修改连接字符串 
+
+对于支持它的客户端，请将 `MultiSubnetFailover=True` 添加到连接字符串。  在不需要 MultiSubnetFailover 连接选项时，它将提供更快进行子网故障转移的优势。 这是因为客户端驱动程序会尝试为每个 IP 地址并行打开一个 TCP 套接字。 客户端驱动程序将等待第一个 IP 响应成功，一旦成功，就将其用于连接。
+
+如果客户端不支持 MultiSubnetFailover 参数，则可以修改 RegisterAllProvidersIP 和 HostRecordTTL 设置，防止在故障转移时出现连接延迟。 
+
+使用 PowerShell 修改 RegisterAllProvidersIp 和 HostRecordTTL 设置： 
+
+```powershell
+Get-ClusterResource yourFCIname | Set-ClusterParameter RegisterAllProvidersIP 0  
+Get-ClusterResource yourFCIname | Set-ClusterParameter HostRecordTTL 300 
+```
+
+若要了解详细信息，请参阅 SQL Server [侦听器连接超时](/troubleshoot/sql/availability-groups/listener-connection-times-out)文档。 
+
+> [!TIP]
+> - 即使是跨越单个子网的 HADR 解决方案，也可以在连接字符串中将 MultiSubnetFailover 参数设置为 true，以支持将来的跨越子网而无需更新连接字符串的功能。  
+> - 默认情况下，客户端缓存 20 分钟的群集 DNS 记录。 通过减小 HostRecordTTL 来缩短缓存记录的生存时间 (TTL)，旧客户端重新连接的速度可以更快。 因此，减小 HostRecordTTL 设置可能导致到 DNS 服务器的流量增加。
+
 
 ## <a name="test-failover"></a>测试故障转移
 
@@ -160,7 +178,7 @@ Get-ClusterResource $IPResourceName | Get-ClusterParameter
 执行以下步骤：
 
 1. 使用 RDP 连接到 SQL Server 群集节点之一。
-1. 打开“故障转移群集管理器”。 选择“角色”。 观察哪个节点拥有 SQL Server FCI 角色。
+1. 打开“故障转移群集管理器”。 选择“角色”  。 观察哪个节点拥有 SQL Server FCI 角色。
 1. 右键单击“SQL Server FCI”角色。 
 1. 选择“移动”，再选择“最佳节点” 。
 
@@ -176,9 +194,17 @@ Get-ClusterResource $IPResourceName | Get-ClusterParameter
 
 
 
+
+
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure 中的 SQL Server HADR 功能，请参阅[可用性组](availability-group-overview.md)和[故障转移群集实例](failover-cluster-instance-overview.md)。 你还可以了解对环境进行配置以实现高可用性和灾难恢复的[最佳做法](hadr-cluster-best-practices.md)。 
+若要了解更多信息，请参阅以下文章：
+
+- [Azure VM 上的 SQL Server 的 Windows Server 故障转移群集](hadr-windows-server-failover-cluster-overview.md)
+- [Azure VM 上的 SQL Server 的故障转移群集实例](failover-cluster-instance-overview.md)
+- [故障转移群集实例概述](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Azure VM 上的 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)
+
 
 
 

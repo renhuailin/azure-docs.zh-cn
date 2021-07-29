@@ -2,13 +2,13 @@
 title: Batch 帐户和 Azure 存储帐户
 description: 了解 Azure Batch 帐户以及如何从开发角度使用它们。
 ms.topic: conceptual
-ms.date: 01/26/2021
-ms.openlocfilehash: 83108a265f91c9feef2fab424f1819939c2d58c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/25/2021
+ms.openlocfilehash: 3dd071a55e8605b8b5b1cf72c517c9304878e101
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896742"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110452042"
 ---
 # <a name="batch-accounts-and-azure-storage-accounts"></a>Batch 帐户和 Azure 存储帐户
 
@@ -27,7 +27,7 @@ Azure Batch 帐户是 Batch 服务中唯一标识的实体。 大多数 Batch �
 
 ## <a name="azure-storage-accounts"></a>Azure 存储帐户
 
-大多数 Batch 解决方案使用 Azure 存储来存储资源文件和输出文件。 例如，Batch 任务（包括标准任务、启动任务、作业准备任务和作业释放任务）通常指定位于存储帐户中的资源文件。 存储帐户还会存储处理的数据和生成的任何输出数据。
+大多数 Batch 解决方案使用 Azure 存储来存储[资源文件](resource-files.md)和输出文件。 例如，Batch 任务（包括标准任务、启动任务、作业准备任务和作业释放任务）通常指定位于存储帐户中的资源文件。 存储帐户还会存储处理的数据和生成的任何输出数据。
 
 Batch 支持以下类型的 Azure 存储帐户：
 
@@ -38,6 +38,8 @@ Batch 支持以下类型的 Azure 存储帐户：
 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../storage/common/storage-account-overview.md)。
 
 创建 Batch 帐户时可以将存储帐户与 Batch 帐户关联，也可以稍后关联。 选择存储帐户时，请考虑成本和性能要求。 例如，与 GPv1 相比，GPv2 和 blob 存储帐户选项支持更大的[容量和可伸缩性限制](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)。 （请联系 Azure 支持以请求提高存储上限。）对于包含大量读取或写入存储帐户的并行任务的 Batch 解决方案，这些帐户选项可以提高其性能。
+
+将存储帐户关联到 Batch 帐户时，它会被视为自动存储帐户。 如果计划使用[应用程序包](batch-application-packages.md)功能，则自动存储帐户是必需的，因为它用于存储应用程序包 .zip 文件。 它还可用于[任务资源文件](resource-files.md#storage-container-name-autostorage)；由于自动存储帐户已关联到 Batch 帐户，因此不需要共享访问签名 (SAS) URL 就可以访问资源文件。
 
 ## <a name="next-steps"></a>后续步骤
 

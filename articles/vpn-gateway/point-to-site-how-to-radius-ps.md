@@ -6,14 +6,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 06/04/2021
 ms.author: cherylmc
-ms.openlocfilehash: 1dbfc83a24b1c4db09625a73cf0684acedfb2355
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 97c8f1111f84b36ead123dcad9f8d9faeb157336
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228111"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558847"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>使用 RADIUS 身份验证配置 VNet 的点到站点连接：PowerShell
 
@@ -35,9 +36,9 @@ P2S VPN 连接是从 Windows 和 Mac 设备启动的。 连接方客户端可以
 
 * SSTP 是基于 TLS 的 VPN 隧道，仅在 Windows 客户端平台上受支持。 它可以穿透防火墙，这使得它成为一个可用来从任何位置连接到 Azure 的理想选项。 在服务器端，我们支持 SSTP 1.0、1.1 和 1.2 版。 客户端决定要使用的版本。 对于 Windows 8.1 及更高版本，SSTP 默认使用 1.2。
 
-* OpenVPN® 协议，一种基于 SSL/TLS 的 VPN 协议。 由于大多数防火墙都会打开 TLS 所用的出站 TCP 端口 443，因此 TLS VPN 解决方案可以穿透防火墙。 OpenVPN 可用于从 Android、iOS（11.0 及更高版本）、Windows、Linux 和 Mac 设备（OSX 10.13 及更高版本）进行连接。
+* OpenVPN® 协议，一种基于 SSL/TLS 的 VPN 协议。 由于大多数防火墙都会打开 TLS 所用的出站 TCP 端口 443，因此 TLS VPN 解决方案可以穿透防火墙。 OpenVPN 可用于从 Android、iOS（11.0 及更高版本）、Windows、Linux 和 Mac 设备（macOS 10.13 及更高版本）进行连接。
 
-* IKEv2 VPN，这是一种基于标准的 IPsec VPN 解决方案。 IKEv2 VPN 可用于从 Mac 设备进行连接（OSX 10.11 和更高版本）。
+* IKEv2 VPN，这是一种基于标准的 IPsec VPN 解决方案。 IKEv2 VPN 可用于从 Mac 设备进行连接（macOS 10.11 和更高版本）。
 
 P2S 连接有以下要求：
 

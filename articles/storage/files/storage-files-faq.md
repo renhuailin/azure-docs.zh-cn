@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 4d7123aa22d95e3e4c3850be775ddad96f28d280
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ff5d891b4374a61c8806666a48505a2ee4682a67
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785300"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094467"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件存储](storage-files-introduction.md)会在云中提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)或[网络文件系统 (NFS) 协议](https://en.wikipedia.org/wiki/Network_File_System)（预览）进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -31,7 +31,7 @@ ms.locfileid: "107785300"
 
 * <a id="file-access-options"></a>
   **访问 Azure 文件中的文件有哪些不同方式？**  
-    可以使用 SMB 3.0 协议将 SMB 文件共享装载在本地计算机上，也可以使用[存储资源管理器](https://storageexplorer.com/)之类的工具访问文件共享中的文件。 可通过复制/粘贴 Azure 门户提供的脚本，将 NFS 文件共享装载到本地计算机上。 在应用程序中，可以使用存储客户端库、REST API、PowerShell 或 Azure CLI 来访问 Azure 文件共享中的文件。
+    可以使用 SMB 3.x 协议将 SMB 文件共享装载在本地计算机上，也可以使用[存储资源管理器](https://storageexplorer.com/)之类的工具访问文件共享中的文件。 可通过复制/粘贴 Azure 门户提供的脚本，将 NFS 文件共享装载到本地计算机上。 在应用程序中，可以使用存储客户端库、REST API、PowerShell 或 Azure CLI 来访问 Azure 文件共享中的文件。
 
 * <a id="what-is-afs"></a>
   **什么是 Azure 文件同步？**  
@@ -335,7 +335,7 @@ ms.locfileid: "107785300"
 * <a id="backup-nfs-data"></a>
 **如何备份 NFS 共享中存储的数据？**
 
-    可以使用熟悉的工具（如 rsync）或其中一个第三方备份合作伙伴的产品来协调 NFS 共享上的数据备份。 多个备份合作伙伴（包括 [Commvault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm)、[Veeam](https://www.veeam.com/blog/?p=123438) 和 [Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001)）都是我们初始预览版的一部分，并已将其解决方案扩展为适用于 Azure 文件存储的 SMB 3.0 和 NFS 4.1。
+    可以使用熟悉的工具（如 rsync）或其中一个第三方备份合作伙伴的产品来协调 NFS 共享上的数据备份。 多个备份合作伙伴（包括 [Commvault](https://documentation.commvault.com/commvault/v11/article?p=92634.htm)、[Veeam](https://www.veeam.com/blog/?p=123438) 和 [Veritas](https://players.brightcove.net/4396107486001/default_default/index.html?videoId=6189967101001)）包含在我们初始预览版中，并已将其解决方案扩展为适用于 Azure 文件存储的 SMB 3.x 和 NFS 4.1。
 
 * <a id="migrate-nfs-data"></a>
 **是否可以将现有数据迁移到 NFS 共享？**
@@ -347,7 +347,7 @@ ms.locfileid: "107785300"
 * <a id="port-445-blocked"></a>
 **我的 ISP 或 IT 阻止了端口 445，这导致 Azure 文件装载失败。我该怎样做？**
 
-    可在此处了解[解决端口 445 受阻问题的各种方法](./storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked)。 Azure 文件只允许来自区域或数据中心外部的使用 SMB 3.0（带加密支持）的连接。 SMB 3.0 协议引入了许多安全功能，包括通道加密，在 Internet 上使用非常安全。 但是，由于在较低 SMB 版本中发现漏洞的历史原因，端口 445 可能已被阻止。 理想情况下，应仅针对 SMB 1.0 流量阻止该端口，并且应在所有客户端上关闭 SMB 1.0。
+    可在此处了解[解决端口 445 受阻问题的各种方法](./storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked)。 Azure 文件存储只允许来自区域或数据中心外部的使用 SMB 3.x（带加密支持）的连接。 SMB 3.x 协议引入了许多安全功能，包括在 Internet 上使用非常安全的通道加密。 但是，由于在较低 SMB 版本中发现漏洞的历史原因，端口 445 可能已被阻止。 理想情况下，应仅针对 SMB 1.0 流量阻止该端口，并且应在所有客户端上关闭 SMB 1.0。
 
 * <a id="expressroute-not-required"></a>
 **必须使用 Azure ExpressRoute 才能在本地连接到 Azure 文件或使用 Azure 文件同步吗？**  
@@ -357,7 +357,7 @@ ms.locfileid: "107785300"
 * <a id="mount-locally"></a>
 **如何才能在本地计算机上装载 Azure 文件共享？**  
 
-    可以使用 SMB 协议装载文件共享，只要端口 445（TCP 出站）处于打开状态，且客户端支持 SMB 3.0 协议（例如，如果使用的是 Windows 10 或 Windows Server 2016）。 如果端口 445 被组织的策略或 ISP 阻止，则可使用 Azure 文件同步访问 Azure 文件共享。
+    可以使用 SMB 协议装载文件共享，前提是端口 445（TCP 出站）处于打开状态且客户端支持 SMB 3.x 协议（例如，你使用的是 Windows 10 或 Windows Server 2016）。 如果端口 445 被组织的策略或 ISP 阻止，则可使用 Azure 文件同步访问 Azure 文件共享。
 
 ## <a name="backup"></a>备份
 * <a id="backup-share"></a>

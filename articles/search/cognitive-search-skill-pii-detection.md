@@ -8,12 +8,12 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: acacf617d3f1d9ab891d08b32fc2dfb14deb64a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 448784987f3304303a1bd47c2038440db5cdd194
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91540517"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112063227"
 ---
 # <a name="pii-detection-cognitive-skill"></a>PII 检测认知技能
 
@@ -41,16 +41,17 @@ Microsoft.Skills.Text.PIIDetectionSkill
 
 | 参数名称     | 说明 |
 |--------------------|-------------|
-| `defaultLanguageCode` |    输入文本的语言代码。 目前仅支持 `en`。 |
+| `defaultLanguageCode` | （可选）要应用到未显式指定语言的文档的语言代码。  如果未指定默认语言代码，会将英语 (en) 用作默认语言代码。 <br/> 请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/language-support.md)。 |
 | `minimumPrecision` | 一个介于 0.0 和 1.0 之间的值。 如果置信度分数（在 `piiEntities` 输出中）低于所设置的 `minimumPrecision` 值，则不会返回或屏蔽该实体。 默认值为 0.0。 |
-| `maskingMode` | 一个参数，提供各种方法来屏蔽在输入文本中检测到的个人信息。 可以使用以下选项： <ul><li>`none`（默认值）：不会发生屏蔽，并且不会返回 `maskedText` 输出。 </li><li> `redact`：从输入文本中删除检测到的实体，并且不替换已删除的值。 在这种情况下，`piiEntities` 输出中的偏移量将与原始文本（而非已屏蔽文本）相关。 </li><li> `replace`：使用 `maskingCharacter` 参数中给定的字符替换检测到的实体。 将重复该字符，直至达到检测到的实体的长度，以便偏移量与输入文本和输出 `maskedText` 都正确对应。</li></ul> |
-| `maskingCharacter` | 当 `maskingMode` 参数设置为 `replace` 时用来屏蔽文本的字符。 支持以下选项：`*`（默认值）、`#`、`X`。 如果 `maskingMode` 未设置为 `replace`，则此参数只能为 `null`。 |
+| `maskingMode` | 一个参数，提供各种方法来屏蔽在输入文本中检测到的个人信息。 可以使用以下选项： <ul><li>`none`（默认值）：不会发生屏蔽，并且不会返回 `maskedText` 输出。 </li><li> `replace`：使用 `maskingCharacter` 参数中给定的字符替换检测到的实体。 将重复该字符，直至达到检测到的实体的长度，以便偏移量与输入文本和输出 `maskedText` 都正确对应。</li></ul> <br/> 在 PIIDetectionSkill 预览版中，还支持 `maskingMode` 的 `redact` 选项，这允许完全删除检测到的实体，不进行替换。 `redact` 选项已被弃用，以后的技能中将不再支持此选项。 |
+| `maskingCharacter` | 当 `maskingMode` 参数设置为 `replace` 时用来屏蔽文本的字符。 支持以下选项：`*`（默认）。 如果 `maskingMode` 未设置为 `replace`，则此参数只能为 `null`。 <br/><br/> 在 PIIDetectionSkill 预览版中，还支持 `maskingCharacter` 选项 `X` 和 `#`。 `X` 和 `#` 选项已被弃用，以后的技能中将不再支持此选项。 |
+| `modelVersion`   | （可选）调用文本分析服务时要使用的模型版本。 如果未指定，将默认为最新版本。 建议不要指定此值，除非绝对必要。 有关详细信息，请参阅[文本分析 API 中的模型版本控制](../cognitive-services/text-analytics/concepts/model-versioning.md)。 |
 
 ## <a name="skill-inputs"></a>技能输入
 
 | 输入名称      | 说明                   |
 |---------------|-------------------------------|
-| `languageCode`    | 可选。 默认值为 `en`。  |
+| `languageCode`    | 表示记录的语言的字符串。 如果未指定此参数，将使用默认语言代码分析记录。 <br/>请参阅[支持的语言的完整列表](../cognitive-services/text-analytics/language-support.md)  |
 | `text`          | 要分析的文本。          |
 
 ## <a name="skill-outputs"></a>技能输出

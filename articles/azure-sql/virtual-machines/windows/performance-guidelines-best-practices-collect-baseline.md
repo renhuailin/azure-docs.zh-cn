@@ -8,6 +8,7 @@ editor: ''
 tags: azure-service-management
 ms.assetid: a0c85092-2113-4982-b73a-4e80160bac36
 ms.service: virtual-machines-sql
+ms.subservice: performance
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -15,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b1909d5fd5e3c02f104c73acb515740cb6ff65f6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 46dff70c8d1064f05d89af9340b5b07e7adc747e
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572198"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079888"
 ---
 # <a name="collect-baseline-performance-best-practices-for-sql-server-on-azure-vm"></a>收集基线：Azure VM 上 SQL Server 的性能最佳做法
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -63,7 +64,7 @@ SQL Server 性能很大程度上取决于 I/O 子系统，存储性能根据 IOP
 跟踪 OS 使用的外部内存以及 SQL Server 内部使用的内存。 识别任一组件的压力将有助于调整虚拟机的大小并识别调整的机会。 
 
 以下 PerfMon 计数器可帮助验证 SQL Server 虚拟机的内存运行状况： 
-* [\Memory\Available MBytes](/azure/monitoring/infrastructure-health/vmhealth-windows/winserver-memory-availmbytes)
+* \Memory\Available MBytes
 * [\SQLServer:Memory Manager\Target Server Memory (KB)](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
 * [\SQLServer:Memory Manager\Total Server Memory (KB)](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
 * [\SQLServer:Buffer Manager\Lazy writes/sec](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
@@ -87,12 +88,14 @@ Azure 中的计算管理方式与本地计算管理方式不同。 由于管理�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解更多信息，请参阅本系列中的其他文章：
+若要了解详细信息，请参阅本系列中的其他文章：
 - [快速核对清单](performance-guidelines-best-practices-checklist.md)
 - [VM 大小](performance-guidelines-best-practices-vm-size.md)
 - [存储](performance-guidelines-best-practices-storage.md)
+- [安全性](security-considerations-best-practices.md)
+- [HADR 设置](hadr-cluster-best-practices.md)
 
 
 有关安全最佳做法，请参阅 [Azure 虚拟机上 SQL Server 的安全注意事项](security-considerations-best-practices.md)。
 
-查看 [Azure 虚拟机上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)中的其他 SQL Server 虚拟机文章。 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.md)。
+查看 [Azure 虚拟机上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)中的其他 SQL Server 虚拟机文章。 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.yml)。

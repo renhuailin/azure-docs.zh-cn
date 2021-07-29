@@ -3,12 +3,12 @@ title: 服务总线队列和主题作为 Azure 事件网格事件的事件处理
 description: 介绍如何将服务总线队列和主题用作 Azure 事件网格事件的事件处理程序。
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: 12b72420e3475b46a4cd61ce5032b478af740dde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f3aa7fedc8daa15f9de239e47f8b6a0c2fc0454
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97399853"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110091283"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>服务总线队列和主题作为 Azure 事件网格事件的事件处理程序
 事件处理程序是发送事件的位置。 处理程序将执行一些进一步的操作来处理事件。 几个 Azure 服务已自动配置为处理事件，Azure 服务总线是其中之一。 
@@ -16,6 +16,10 @@ ms.locfileid: "97399853"
 可以使用服务队列或主题作为事件网格事件的处理程序。 
 
 ## <a name="service-bus-queues"></a>服务总线队列
+
+> [!NOTE]
+> 不支持将启用了会话的队列作为 Azure 事件网格事件的事件处理程序
+ 
 可以将事件网格中的事件直接路由到服务总线队列，用于企业应用程序中的缓冲或命令和控制方案。
 
 在 Azure 门户中，请在创建事件订阅时选择“服务总线队列”作为终结点类型，然后单击“选择终结点”以选择服务总线队列。

@@ -1,18 +1,18 @@
 ---
 title: Azure 数据工厂中的系统变量
 description: 本文介绍了 Azure 数据工厂支持的系统变量。 定义数据工厂实体时，可以在表达式中使用这些变量。
-author: dcstwh
-ms.author: weetok
+author: chez-charlie
+ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: b85efa7ac4481ab9eb2b2637aee7d9e5e76e8f3f
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 7e29bd82f9f72651ca0383c680c0b05860fe29b4
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786050"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062229"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure 数据工厂支持的系统变量
 
@@ -33,6 +33,9 @@ ms.locfileid: "104786050"
 | @pipeline().TriggerId|调用了管道的触发器的 ID |
 | @pipeline().TriggerName|调用了管道的触发器的名称 |
 | @pipeline().TriggerTime|触发器运行调用管道的时间。 这是触发器实际触发以调用管道运行的时间，它可能与触发器的计划时间略有不同。  |
+| @pipeline().GroupId | 管道运行所属组的 ID。 |
+| @pipeline() __?__ .TriggeredByPipelineName | 触发管道运行的管道的名称。 当管道运行由 ExecutePipeline 活动触发时适用。 在其他环境中使用时，结果为“Null”。 注意 @pipeline() 后面的问号 |
+| @pipeline() __?__ .TriggeredByPipelineRunId | 运行触发管道运行的管道的 id。 当管道运行由 ExecutePipeline 活动触发时适用。 在其他环境中使用时，结果为“Null”。 注意 @pipeline() 后面的问号 |
 
 >[!NOTE]
 >与触发器相关的日期/时间系统变量（在管道和触发器作用域内）以 ISO 8601 格式返回 UTC 日期，例如 `2017-06-01T22:20:00.4061448Z`。

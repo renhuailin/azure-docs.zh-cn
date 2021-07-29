@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/16/2021
-ms.openlocfilehash: 03dbfc96d0df6ac8539b454177cd8f75cda80193
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: a412af3020012844a633d01c1b5b928ec4a4758f
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482824"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110535040"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Snowflake 中复制和转换数据
 
@@ -31,7 +31,8 @@ ms.locfileid: "109482824"
 对于复制活动，此 Snowflake 连接器支持以下功能：
 
 - 从 Snowflake 复制数据：利用 Snowflake 的 [COPY into [location]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html) 命令实现最佳性能。
-- 将数据复制到 Snowflake 中：利用 Snowflake 的 [COPY into [table]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html) 命令实现最佳性能。 它支持 Azure 上的 Snowflake。 
+- 将数据复制到 Snowflake 中：利用 Snowflake 的 [COPY into [table]](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html) 命令实现最佳性能。 它支持 Azure 上的 Snowflake。
+- 如果需要一个代理，以便从自承载 Integration Runtime 连接到 Snowflake，则必须在 Integration Runtime 主机上为 HTTP_PROXY 和 HTTPS_PROXY 配置环境变量。 
 
 ## <a name="get-started"></a>入门
 
@@ -43,7 +44,7 @@ ms.locfileid: "109482824"
 
 Snowflake 链接服务支持以下属性。
 
-| 属性         | 说明                                                  | 必需 |
+| 属性         | 说明                                                  | 必须 |
 | :--------------- | :----------------------------------------------------------- | :------- |
 | type             | type 属性必须设置为 **Snowflake**。              | 是      |
 | connectionString | 指定连接到 Snowflake 实例所需的信息。 可以选择将密码或整个连接字符串置于 Azure Key Vault。 如需更多详细信息，请参阅表下面的示例和[将凭据存储在 Azure Key Vault 中](store-credentials-in-key-vault.md)一文。<br><br>部分典型设置：<br>- 帐户名称：Snowflake 帐户的[完整帐户名称](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name)（包括用于标识区域和云平台的其他段），例如 xy12345.east-us-2.azure。<br/>- 用户名：用于连接的用户登录名。<br>- 密码：用户的密码。<br>- 数据库：要在连接后使用的默认数据库。 它应为指定角色具有权限的现有数据库。<br>- 仓库：要在连接后使用的虚拟仓库。 它应为指定角色具有权限的现有仓库。<br>- 角色：要在 Snowflake 会话中使用的默认访问控制角色。 指定角色应为已分配给指定用户的现有角色。 默认角色为 PUBLIC。 | 是      |
@@ -99,7 +100,7 @@ Snowflake 链接服务支持以下属性。
 
 Snowflake 数据集支持以下属性。
 
-| 属性  | 说明                                                  | 必需                    |
+| 属性  | 说明                                                  | 必须                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | 数据集的 type 属性必须设置为 SnowflakeTable。 | 是                         |
 | schema | 架构的名称。 请注意，架构名称在 ADF 中区分大小写。 |对于源为“否”，对于接收器为“是”  |
@@ -137,7 +138,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [location]](https://docs.snow
 
 从 Snowflake 复制数据时，复制活动的“源”部分支持以下属性。
 
-| 属性                     | 说明                                                  | 必需 |
+| 属性                     | 说明                                                  | 必须 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | 复制活动源的类型属性必须设置为 SnowflakeSource。 | 是      |
 | 查询          | 指定要从 Snowflake 读取数据的 SQL 查询。 如果架构、表和列的名称包含小写字母，请在查询中引用对象标识符，例如 `select * from "schema"."myTable"`。<br>不支持执行存储过程。 | 否       |
@@ -267,7 +268,7 @@ Snowflake 连接器利用 Snowflake 的 [COPY into [table]](https://docs.snowfla
 
 若要将数据复制到 Snowflake，复制活动的“接收器”部分需要支持以下属性。
 
-| 属性          | 说明                                                  | 必需                                      |
+| 属性          | 说明                                                  | 必须                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | 复制活动接收器的类型属性设置为 SnowflakeSink。 | 是                                           |
 | preCopyScript     | 指定在每次运行中将数据写入到 Snowflake 之前要由复制活动运行的 SQL 查询。 使用此属性清理预加载的数据。 | 否                                            |

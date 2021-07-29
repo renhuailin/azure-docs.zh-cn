@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
-ms.openlocfilehash: a52d6dca423565e7b5e4b6ac059bcf21b637c87c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references_region
+ms.openlocfilehash: e7da31ec80153fe2d2bd6923850a4342886fa9be
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104586329"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110495563"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Monitor 中的数据收集规则（预览版）
 数据收集规则 (DCR) 定义传入 Azure Monitor 的数据，并指定应发送或存储数据的位置。 本文概述了数据收集规则，包括内容和结构，以及如何创建和使用它们。
@@ -50,6 +51,10 @@ ms.locfileid: "104586329"
 ## <a name="limits"></a>限制
 有关适用于每个数据收集规则的限制，请参阅 [Azure Monitor 服务限制](../service-limits.md#data-collection-rules)。
 
+## <a name="data-residency"></a>数据驻留 
+数据收集规则作为一项服务在区域内部署。 规则在你指定的区域中创建和存储，并备份到同一地区内的[配对区域](../../best-practices-availability-paired-regions.md#azure-regional-pairs)。  
+
+单一区域数据驻留：允许在单一区域存储客户数据的预览功能目前仅在亚太地区的东南亚区域（新加坡）和巴西地区的巴西南部（圣保罗州）区域提供。 “单一区域驻留”在这些区域默认启用。
 
 ## <a name="create-a-dcr"></a>创建 DCR
 当前可以使用以下任一方法创建 DCR：

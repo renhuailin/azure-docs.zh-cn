@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/27/2021
-ms.openlocfilehash: cbb84a4934eed4d258cf07772753315785f98019
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32fbdae5719e2f8e379b39076f8557b3db0d61ca
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99218156"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112020018"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>Azure 认知搜索的 .NET (C#) 代码示例
 
@@ -46,8 +46,9 @@ Azure SDK 开发团队中的代码示例演示 API 用法。 可以在 GitHub �
 
 | 示例 | 项目  |
 |---------|-------------|
-| [快速入门](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart) | [快速入门：创建搜索索引](search-get-started-dotnet.md)的源代码。 本文介绍了使用示例数据来创建、加载和查询搜索索引的基本工作流。 |
-| [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)  | [如何使用 .NET 客户端库](search-howto-dotnet-sdk.md)的源代码。 本文不仅逐步讲解基本工作流，还详细介绍了 API 的用法。  |
+| [快速入门](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart) | [快速入门：创建搜索索引](search-get-started-dotnet.md)的源代码。 介绍了使用示例数据来创建、加载和查询搜索索引的基本工作流。 |
+| [search-website](https://github.com/azure-samples/azure-search-dotnet-samples/tree/master/search-website) | [教程：向 Web 应用添加搜索](tutorial-csharp-overview.md)的源代码。 演示一个端到端搜索应用，其中包含一个富客户端以及用于托管应用和处理搜索请求的组件。|
+| [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)  | [如何使用 .NET 客户端库](search-howto-dotnet-sdk.md)的源代码。 不仅逐步讲解基本工作流，还详细介绍了 API 的用法。  |
 | [DotNetHowToSynonyms](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToSynonyms)  | [示例：在 C# 中添加同义词](search-synonyms-tutorial-sdk.md)的源代码。 同义词列表用于扩展查询，可提供索引外部的匹配术语。 |
 | [DotNetToIndexers](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToIndexers) | [教程：使用 .NET SDK 为 Azure SQL 数据编制索引](search-indexer-tutorial.md)的源代码。 本文演示如何配置具有计划、字段映射和参数的 Azure SQL 索引器。  |
 | [DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)  | [如何配置客户管理的密钥以进行数据加密](search-security-manage-encryption-keys.md)的源代码。 |
@@ -57,7 +58,7 @@ Azure SDK 开发团队中的代码示例演示 API 用法。 可以在 GitHub �
 | [tutorial-ai-enrichment](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/tutorial-ai-enrichment)  | [教程：AI 使用 .NET SDK 从 Azure Blob 生成可搜索内容](cognitive-search-tutorial-blob-dotnet.md)的源代码。  |
 
 > [!Tip]
-> 请尝试使用[示例浏览器](/samples/browse/?languages=csharp&products=azure-cognitive-search)来搜索 Github 中的 Microsoft 代码示例，搜索时可按产品、服务和语言进行筛选。
+> 请尝试使用[示例浏览器](/samples/browse/?languages=csharp&products=azure-cognitive-search)来搜索 GitHub 中的 Microsoft 代码示例，搜索时可按产品、服务和语言进行筛选。
 
 ## <a name="other-samples"></a>其他示例
 
