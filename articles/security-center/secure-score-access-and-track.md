@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 02/25/2021
-ms.openlocfilehash: 5efc48d348e9cfceab590bcfba8c621e7721376f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 50ab34a73a7709a47efdf6904acf005cd5db9da5
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102107367"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753586"
 ---
 # <a name="access-and-track-your-secure-score"></a>访问和跟踪安全分数
 
@@ -98,7 +98,7 @@ ms.locfileid: "102107367"
 如果你是具有 Pro 帐户的 Power BI 用户，则可以使用“一段时间内的安全评分”Power BI 面板跟踪一段时间内的安全评分，并调查任何更改。
 
 > [!TIP]
-> 可以在 GitHub 上 Azure 安全中心社区的专门区域中找到此面板，以及可以通过编程方式使用安全评分的其他工具： https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score
+> 可以在 GitHub 上的 Azure 安全中心社区的专用区域中找到这个仪表板，以及其他以编程方式使用安全分数的工具： https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score
 
 该面板包含以下两个报表，可帮助你分析安全状态：
 

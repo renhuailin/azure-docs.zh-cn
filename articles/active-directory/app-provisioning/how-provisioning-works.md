@@ -1,25 +1,24 @@
 ---
-title: 了解 Azure AD 预配的工作原理 |Microsoft Docs
-description: 了解 Azure AD 预配的工作原理
+title: 了解应用程序预配在 Azure Active Directory 中的工作方式
+description: 了解应用程序预配在 Azure Active Directory 中的工作方式。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 048adee21d5c2e49ef02f518002a1dc6025c1ecd
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
-ms.translationtype: MT
+ms.openlocfilehash: e95359d24cda6b0d23084010d8ab19566dd2197c
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988975"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409372"
 ---
-# <a name="how-provisioning-works"></a>预配工作原理
+# <a name="how-application-provisioning-works-in-azure-active-directory"></a>应用程序预配在 Azure Active Directory 中的工作方式
 
 自动预配是指在用户需要访问的云应用程序中创建用户标识和角色。 除了创建用户标识外，自动预配还包括在状态或角色发生更改时维护和删除用户标识。 在开始部署之前，可以阅读本文以了解 Azure AD 预配的工作原理并获取配置建议。 
 
@@ -43,7 +42,7 @@ Azure AD 预配服务使用 [SCIM 2.0 协议](https://techcommunity.microsoft.co
 
 ## <a name="authorization"></a>授权
 
-Azure AD 需要凭据才能连接到应用程序的用户管理 API。 在为应用程序配置自动用户预配时，需要输入有效凭据。 对于库应用程序，可以通过参考应用教程来查找应用程序的凭据类型和要求。 对于非库应用程序，可以参考 [SCIM](./use-scim-to-provision-users-and-groups.md#authorization-to-provisioning-connectors-in-the-application-gallery) 文档来了解凭据类型和要求。 在 Azure 门户中，你将能够让 Azure AD 尝试使用提供的凭据连接到该应用的预配应用来测试凭据。
+Azure AD 需要凭据才能连接到应用程序的用户管理 API。 在为应用程序配置自动用户预配时，需要输入有效凭据。 对于库应用程序，可以参考应用教程来查找应用程序的凭据类型和要求。 对于非库应用程序，可以参考 [SCIM](./use-scim-to-provision-users-and-groups.md#authorization-to-provisioning-connectors-in-the-application-gallery) 文档来了解凭据的类型和要求。 在 Azure 门户中，你将能够让 Azure AD 尝试使用提供的凭据连接到该应用的预配应用来测试凭据。
 
 ## <a name="mapping-attributes"></a>映射属性
 
@@ -138,7 +137,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 预配服务会根据[特定于每个应用程序的教程](../saas-apps/tutorial-list.md)中定义的间隔，持续无限期地运行后端到后端的增量周期。 增量周期将继续，直到发生以下某个事件：
 
 - 使用 Azure 门户或使用相应的 Microsoft Graph API 命令手动停止了该服务。
-- 在 Azure 门户中使用“清除状态并重启”选项，或使用相应的 Microsoft Graph API 命令触发了新的初始周期。 此操作会清除所有存储的水印，并导致重新评估所有源对象。
+- 在 Azure 门户中使用“重启预配”选项，或使用相应的 Microsoft Graph API 命令触发了新的初始周期。 此操作会清除所有存储的水印，并导致重新评估所有源对象。
 - 由于属性映射或范围筛选器发生更改而触发了新的初始周期。 此操作会清除所有存储的水印，并导致重新评估所有源对象。
 - 高错误率导致预配进程进入隔离区（参阅下文），并在隔离区保留四周以上。 在此情况下，该服务会自动禁用。
 
@@ -168,31 +167,31 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 Azure AD [预配日志（预览）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)中记录了用户预配服务运行的所有操作。 该日志包括对源系统和目标系统执行的所有读写操作，以及在每次操作期间读取或写入的用户数据。 若要了解如何在 Azure 门户中读取预配日志，请参阅[预配报告指南](./check-status-user-account-provisioning.md)。
 
 ## <a name="de-provisioning"></a>取消预配
-如果删除用户访问权限，则 Azure AD 预配服务会使源和目标系统保持同步，方法是取消预配帐户。
+当用户访问权限被删除时，Azure AD 预配服务通过取消预配帐户来使源系统和目标系统保持同步。
 
-预配服务支持删除和禁用 (有时称为软删除) 用户。 根据目标应用的实现，"禁用" 和 "删除" 的确切定义会有所不同，但通常禁用指示用户无法登录。 删除指示已完全从应用程序中删除用户。 对于 SCIM 应用程序，禁用是将用户的 *活动* 属性设置为 false 的请求。 
+预配服务支持删除和禁用（有时称为软删除）用户。 根据目标应用的实现，“禁用”和“删除”的确切定义会有所不同，但“禁用”通常表示用户无法登录。 “删除”表示已从应用程序中完全删除用户。 对于 SCIM 应用程序，禁用是将用户的 active 属性设置为 false 的请求。 
 
 **配置应用程序以禁用用户**
 
-确保已选中 "更新" 复选框。
+确保已选中要进行更新的复选框。
 
-确保你具有应用程序的 *活动* 映射。 如果你使用应用程序库中的应用程序，映射可能会略有不同。 请确保对库应用程序使用默认的/出盒映射。
+确保对你的应用程序使用活动映射。 如果使用应用库中的应用程序，映射可能会略有不同。 请确保对库应用程序使用默认的/现成的映射。
 
 :::image type="content" source="./media/how-provisioning-works/disable-user.png" alt-text="禁用用户" lightbox="./media/how-provisioning-works/disable-user.png":::
 
 
 **配置应用程序以删除用户**
 
-以下方案将触发 "禁用" 或 "删除"： 
-* 将用户软删除 Azure AD (发送到 "回收站"/"AccountEnabled" 属性设置为 "false) "。
+以下场景会触发禁用或删除操作： 
+* 在 Azure AD 中软删除用户（发送到回收站/AccountEnabled 属性设置为 false）。
     在 Azure AD 中删除用户 30 天后，他们将从租户中永久删除。 此时，设置服务将发送 DELETE 请求以永久删除应用程序中的用户。 在 30 天窗口期中的任何时候，你都可以[手动永久删除用户](../fundamentals/active-directory-users-restore.md)，这将向应用程序发送一个删除请求。
-* 将从 Azure AD 中的 "回收站" 中永久删除/删除用户。
-* 用户未从应用中取消分配。
-* 用户从范围内进入范围外 (不会再) 传递范围筛选器。
+* 在 Azure AD 中永久删除/移除回收站中的用户。
+* 从应用中取消分配用户。
+* 用户从范围内移动到范围外（不再经过范围筛选器）。
 
 :::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="删除用户" lightbox="./media/how-provisioning-works/delete-user.png":::
 
-默认情况下，Azure AD 预配服务软删除或禁用超出范围的用户。 如果要重写此默认行为，可以设置一个标志来 [跳过超出范围的删除操作。](skip-out-of-scope-deletions.md)
+默认情况下，Azure AD 预配服务软删除或禁用超出范围的用户。 如果要重写此默认行为，可以将标志设置为[跳过范围外删除](skip-out-of-scope-deletions.md)
 
 如果发生上述四个事件之一，并且目标应用程序不支持软删除，则预配服务将发送 DELETE 请求，以从应用中永久删除该用户。
 
@@ -200,13 +199,13 @@ Azure AD [预配日志（预览）](../reports-monitoring/concept-provisioning-l
 
 **已知的限制**
 
-* 如果先前由预配服务管理的用户未从应用中分配或从分配到应用的组中取消分配，我们将发送禁用请求。 此时，该用户不受服务管理，将不会在从目录中删除时发送删除请求。
-* 不支持在 Azure AD 中预配已禁用的用户。 它们必须在设置之前处于 Azure AD 状态。
-* 当用户从软删除变为活动状态时，Azure AD 预配服务将在目标应用中激活该用户，但不会自动还原组成员身份。 目标应用程序应维护处于非活动状态的用户的组成员身份。 如果目标应用程序不支持此功能，则可以重新启动预配以更新组成员身份。 
+* 如果从某个应用或从分配给某个应用的组中取消分配先前由预配服务管理的用户，我们将发送禁用请求。 此时，该用户不受服务管理，当他们从目录中删除时，我们不会发送删除请求。
+* 不支持在 Azure AD 中预配已禁用的用户。 在预配之前，用户必须在 Azure AD 中处于活动状态。
+* 当用户从软删除状态进入活动状态时，Azure AD 预配服务会在目标应用中激活用户，但不会自动还原组成员身份。 目标应用程序应保持处于非活动状态的用户的组成员身份。 如果目标应用程序不支持此功能，可以重启预配以更新组成员身份。 
 
 建议
 
-开发应用程序时，始终支持软删除和硬删除。 它允许客户在意外禁用用户时进行恢复。
+开发应用程序时，始终支持软删除和硬删除。 当意外禁用用户时，客户可以进行恢复。
 
 
 ## <a name="next-steps"></a>后续步骤

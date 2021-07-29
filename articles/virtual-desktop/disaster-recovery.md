@@ -1,25 +1,25 @@
 ---
-title: 设置 Windows 虚拟桌面灾难恢复计划 - Azure
-description: 如何为 Windows 虚拟桌面部署设置业务连续性和灾难恢复计划。
+title: 设置 Azure 虚拟桌面灾难恢复计划 - Azure
+description: 如何为 Azure 虚拟桌面部署设置业务连续性和灾难恢复计划。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 968f82a143872fd282222539ab71a70db488a20d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 91795dbe4e648f12e9a088a5aeffb68bffb46a65
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91935655"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757888"
 ---
 # <a name="set-up-a-business-continuity-and-disaster-recovery-plan"></a>设置业务连续性和灾难恢复计划
 
 为确保组织数据的安全，可能需要采用业务连续性和灾难恢复 (BCDR) 策略。 合理的 BCDR 策略可以让应用和工作负载在执行计划内和计划外维护或 Azure 中断期间仍能保持正常运行。
 
-Windows 虚拟桌面为 Windows 虚拟桌面服务提供 BCDR，以便在中断期间保留客户元数据。 当某个区域发生服务中断时，服务基础结构组件会故障转移到次要位置，并继续像正常一样运行。 你仍可以访问与服务相关的元数据，并且用户仍可以连接到可用的主机。 只要租户环境或主机保持可访问状态，最终用户连接就将保持联机状态。
+Azure 虚拟桌面为 Azure 虚拟桌面服务提供 BCDR，以便在中断期间保留客户元数据。 当某个区域发生服务中断时，服务基础结构组件会故障转移到次要位置，并继续像正常一样运行。 你仍可以访问与服务相关的元数据，并且用户仍可以连接到可用的主机。 只要租户环境或主机保持可访问状态，最终用户连接就将保持联机状态。
 
 为确保用户在区域服务中断期间仍可以连接，需要在某个不同的位置复制他们的虚拟机 (VM)。 在中断期间，主站点将故障转移到次要位置中复制的 VM。 用户则可以继续从次要位置访问应用，而不会出现中断。 在 VM 复制的基础上，需要保持用户标识在次要位置处于可访问状态。 因此，如果要使用配置文件容器，则还需要复制它们。 最后，请确保依赖于主要位置数据的业务应用可与其余数据一起进行故障转移。
 
@@ -40,17 +40,17 @@ Windows 虚拟桌面为 Windows 虚拟桌面服务提供 BCDR，以便在中断�
 
 建议使用 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) 来管理其他 Azure 位置中的复制 VM，如 [Azure 到 Azure 灾难恢复体系结构](../site-recovery/azure-to-azure-architecture.md)中所述。 对于个人主机池，特别推荐使用 Azure Site Recovery，因为 Azure Site Rhuecovery 支持[基于服务器和基于客户端的 SKU](../site-recovery/azure-to-azure-support-matrix.md#replicated-machine-operating-systems)。
 
-如果使用 Azure Site Recovery，则无需再手动注册这些 VM。 次要 VM 中的 Windows 虚拟桌面代理将自动使用最新的安全令牌连接到最靠近它的服务实例。 次要位置的 VM（会话主机）将自动成为主机池的一部分。 在此过程中，最终用户必须重新连接，但除此之外，再无其他手动操作。
+如果使用 Azure Site Recovery，则无需再手动注册这些 VM。 次要 VM 中的 Azure 虚拟桌面代理将自动使用最新的安全令牌连接到最靠近它的服务实例。 次要位置的 VM（会话主机）将自动成为主机池的一部分。 在此过程中，最终用户必须重新连接，但除此之外，再无其他手动操作。
 
 如果在中断期间已存在用户连接，则在管理员开始故障转移到次要区域之前，需要先结束当前区域的用户连接。
 
-要在 Windows 虚拟桌面（经典版）中断开用户连接，请运行以下 cmdlet：
+要在 Azure 虚拟桌面（经典版）中断开用户连接，请运行以下 cmdlet：
 
 ```powershell
 Invoke-RdsUserSessionLogoff
 ```
 
-要在 Azure 集成版本的 Windows 虚拟桌面中断开用户连接，请运行以下 cmdlet：
+要在 Azure 集成版本的 Azure 虚拟桌面中断开用户连接，请运行以下 cmdlet：
 
 ```powershell
 Remove-AzWvdUserSession
@@ -84,7 +84,7 @@ Remove-AzWvdUserSession
    - Azure NetApp 文件
    - 通过云缓存进行复制
 
-有关详细信息，请查阅 [Windows 虚拟桌面中 FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
+有关详细信息，请查阅 [Azure 虚拟桌面中 FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
 
 如果要为配置文件设置灾难恢复，可选择以下选项：
 

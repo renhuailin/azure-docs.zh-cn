@@ -1,18 +1,18 @@
 ---
-title: Azure 市场中 IoT Edge 模块产品/服务的预认证清单
-description: 了解在 Azure 市场中发布 IoT Edge 模块产品/服务的特定认证要求。
+title: Azure 市场上 IoT Edge 模块产品/服务的预认证清单
+description: 了解在 Azure 市场上发布 IoT Edge 模块产品/服务的特定认证要求。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-author: keferna
-ms.author: keferna
-ms.date: 03/01/2021
-ms.openlocfilehash: 31c19f62f0328fca05562eaa2f19b7a79c0f3e15
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+author: aarathin
+ms.author: aarathin
+ms.date: 05/21/2021
+ms.openlocfilehash: ec24d4df5a792166812693ad90f21396771ecdd6
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562692"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537896"
 ---
 # <a name="pre-certification-checklist-for-iot-edge-modules"></a>IoT Edge 模块的预认证清单
 
@@ -38,7 +38,7 @@ ms.locfileid: "105562692"
     - 容器创建选项（与合作伙伴中心添加的此选项相同）
     - 模块孪生设置（与合作伙伴中心添加的此设置相同）
 1. 添加路由（与合作伙伴中心添加的路由相同）。
-1. 选择“查看 + 创建”。
+1. 选择“查看 + 创建”  。
 
 Edge 模块部署在 Azure 中创建的 Edge 设备上。
 
@@ -79,5 +79,5 @@ Edge 模块部署在 Azure 中创建的 Edge 设备上。
 ## <a name="next-steps"></a>后续步骤
 
 - [从商业市场部署模块](../iot-edge/how-to-deploy-modules-portal.md#deploy-from-azure-marketplace)
-- [在合作伙伴中心发布 Edge 模块](./partner-center-portal/azure-iot-edge-module-creation.md)
+- [在合作伙伴中心发布 Edge 模块](./iot-edge-offer-setup.md)
 - [部署 IoT Edge 模块](../iot-edge/quickstart-linux.md)

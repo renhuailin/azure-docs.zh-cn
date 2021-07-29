@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: bbb996362df1f99a8702de310bc11f6828cc303a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10caff631d59085aa2bbfcd573c3e3114b0306f7
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103008444"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111560863"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 
@@ -108,6 +108,9 @@ ms.locfileid: "103008444"
 
 如果你计划在多个地理位置托管一个网站，建议你使用[内容分发网络](../../cdn/index.yml)进行区域缓存。 如果要在每个区域提供不同的内容，请使用 [Azure Front Door](../../frontdoor/index.yml)。 此外，它还提供故障转移功能。 如果计划使用自定义域，则不建议使用 [Azure 流量管理器](../../traffic-manager/index.yml)。 考虑到 Azure 存储验证自定义域名的方式，可能会出现问题。
 
+## <a name="permissions"></a>权限
+
+能够启用静态网站的权限是 Microsoft.Storage/storageAccounts/blobServices/write 或共享式密钥。  提供此访问权限的内置角色包括存储帐户参与者。  
 
 ## <a name="pricing"></a>定价
 

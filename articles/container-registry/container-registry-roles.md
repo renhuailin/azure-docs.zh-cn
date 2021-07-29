@@ -2,13 +2,14 @@
 title: 注册表角色和权限
 description: 使用 Azure 基于角色的访问控制 (Azure RBAC) 以及标识和访问管理 (IAM)，提供对 Azure 容器注册表中资源的精细访问权限。
 ms.topic: article
-ms.date: 10/14/2020
-ms.openlocfilehash: 097ccf89caf63d2a504d072cf04c2b534a57a031
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/07/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6923e356f60916e34325b9b6815dbae8aeaf5c51
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92207948"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854785"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure 容器注册表角色和权限
 
@@ -16,17 +17,17 @@ Azure 容器注册表服务支持一组[内置 Azure 角色](../role-based-acces
 
 | 角色/权限       | [访问资源管理器](#access-resource-manager) | [创建/删除注册表](#create-and-delete-registry) | [推送映像](#push-image) | [拉取映像](#pull-image) | [删除映像数据](#delete-image-data) | [更改策略](#change-policies) |   [对映像签名](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
-| “所有者” | X | X | X | X | X | X |  |  
-| 参与者 | X | X | X |  X | X | X |  |  
+| “所有者” | X | X | X | X | X | X |  |
+| 参与者 | X | X | X |  X | X | X |  |
 | 读取器 | X |  |  | X |  |  |  |
-| AcrPush |  |  | X | X | |  |  |  
-| AcrPull |  |  |  | X |  |  |  |  
+| AcrPush |  |  | X | X | |  |  |
+| AcrPull |  |  |  | X |  |  |  |
 | AcrDelete |  |  |  |  | X |  |  |
 | AcrImageSigner |  |  |  |  |  |  | X |
 
 ## <a name="assign-roles"></a>分配角色
 
-请参阅[添加角色分配的步骤](../role-based-access-control/role-assignments-steps.md)，以了解将角色分配添加到现有用户、组、服务主体或托管标识的概要步骤。 可以使用 Azure 门户、Azure CLI 或其他 Azure 工具。
+请参阅[添加角色分配的步骤](../role-based-access-control/role-assignments-steps.md)，以了解将角色分配添加到现有用户、组、服务主体或托管标识的概要步骤。 可以使用 Azure 门户、Azure CLI、Azure PowerShell 或其他 Azure 工具。
 
 创建服务主体时，还需要配置其对 Azure 资源（例如容器注册表）的访问和权限。 有关使用 Azure CLI 的示例脚本，请参阅[使用服务主体的 Azure 容器注册表身份验证](container-registry-auth-service-principal.md#create-a-service-principal)。
 
@@ -44,11 +45,19 @@ Azure 容器注册表服务支持一组[内置 Azure 角色](../role-based-acces
 
 ### <a name="visual-studio-code-docker-extension"></a>Visual Studio Code Docker 扩展
 
-对于 Visual Studio Code [Docker 扩展](https://code.visualstudio.com/docs/azure/docker)这样的工具，需要其他资源提供程序访问权限才能列出可用的 Azure 容器注册表。 在这种情况下，请为用户提供对“读者”或“参与者”角色的访问权限。 这些角色允许 `docker pull`、`docker push`、`az acr list`、`az acr build` 等功能。 
+对于 Visual Studio Code [Docker 扩展](https://code.visualstudio.com/docs/azure/docker)这样的工具，需要其他资源提供程序访问权限才能列出可用的 Azure 容器注册表。 在这种情况下，请为用户提供对“读者”或“参与者”角色的访问权限。 这些角色允许 `docker pull`、`docker push`、`az acr list`、`az acr build` 等功能。
 
 ## <a name="access-resource-manager"></a>访问资源管理器
 
-Azure 资源管理器访问权限是 Azure 门户和使用 [Azure CLI](/cli/azure/) 进行注册表管理所需的。 例如，若要通过 `az acr list` 命令获取一系列注册表，需要此权限集。 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure 资源管理器访问权限是 Azure 门户和使用 [Azure CLI](/cli/azure/) 进行注册表管理所需的。 例如，若要通过 `az acr list` 命令获取一系列注册表，需要此权限集。
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Azure 资源管理器访问权限是 Azure 门户和使用 [Azure PowerShell](/powershell/azure/) 进行注册表管理所需的。 例如，若要通过 `Get-AzContainerRegistry` cmdlet 获取一系列注册表，需要此权限集。
+
+---
 
 ## <a name="create-and-delete-registry"></a>创建和删除注册表
 
@@ -56,7 +65,7 @@ Azure 资源管理器访问权限是 Azure 门户和使用 [Azure CLI](/cli/azur
 
 ## <a name="push-image"></a>推送映像
 
-通过 `docker push` 将映像推送到注册表的功能，或者将其他[受支持的项目](container-registry-image-formats.md)（例如 Helm 图表）推送到注册表的功能。 要求使用授权的标识通过注册表进行[身份验证](container-registry-authentication.md)。 
+通过 `docker push` 将映像推送到注册表的功能，或者将其他[受支持的项目](container-registry-image-formats.md)（例如 Helm 图表）推送到注册表的功能。 要求使用授权的标识通过注册表进行[身份验证](container-registry-authentication.md)。
 
 ## <a name="pull-image"></a>拉取映像
 
@@ -76,9 +85,11 @@ Azure 资源管理器访问权限是 Azure 门户和使用 [Azure CLI](/cli/azur
 
 ## <a name="custom-roles"></a>自定义角色
 
-与其他 Azure 资源一样，可以创建具有对 Azure 容器注册表的精细访问权限的[自定义角色](../role-based-access-control/custom-roles.md)。 然后，将自定义角色分配给需要与注册表进行交互的用户、服务主体或其他标识。 
+与其他 Azure 资源一样，可以创建具有对 Azure 容器注册表的精细访问权限的[自定义角色](../role-based-access-control/custom-roles.md)。 然后，将自定义角色分配给需要与注册表进行交互的用户、服务主体或其他标识。
 
 若要确定将哪些权限应用于自定义角色，请参阅 Microsoft.ContainerRegistry [操作](../role-based-access-control/resource-provider-operations.md#microsoftcontainerregistry)列表，查看[内置 ACR 角色](../role-based-access-control/built-in-roles.md)允许的操作，或运行以下命令：
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az provider operation show --namespace Microsoft.ContainerRegistry
@@ -88,6 +99,16 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 
 > [!IMPORTANT]
 > 在自定义角色中，Azure 容器注册表当前不支持通配符（如 `Microsoft.ContainerRegistry/*` 或 `Microsoft.ContainerRegistry/registries/*`），这些通配符会授予对所有匹配操作的访问权限。 在角色中单独指定任何所需的操作。
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Get-AzProviderOperation -OperationSearchString Microsoft.ContainerRegistry/*
+```
+
+若要定义自定义角色，请参阅[创建自定义角色的步骤](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role)。
+
+---
 
 ### <a name="example-custom-role-to-import-images"></a>示例：用于导入映像的自定义角色
 
@@ -121,7 +142,7 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解如何通过 [Azure 门户](../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../role-based-access-control/role-assignments-cli.md) 或其他 Azure 工具将 Azure 角色分配给 Azure 标识。
+* 详细了解如何通过 [Azure 门户](../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../role-based-access-control/role-assignments-cli.md)、[Azure PowerShell](../role-based-access-control/role-assignments-powershell.md) 或其他 Azure 工具将 Azure 角色分配给 Azure 标识。
 
 * 了解适用于 Azure 容器注册表的[身份验证选项](container-registry-authentication.md)。
 

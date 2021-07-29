@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 0fa6777dc5b587150f630ed8ccc110d16448cc21
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 45b9fa1fb96f45b5b24d7a0b823b11f89a471bd4
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104602241"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752308"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Azure Synapse 专用 SQL 池中的备份和还原
 
@@ -26,7 +26,7 @@ ms.locfileid: "104602241"
 
 数据仓库快照会创建一个还原点，利用该还原点可将数据仓库恢复或复制到以前的状态。  由于专用 SQL 池是一个分布式系统，因此数据仓库快照包含许多位于 Azure 存储中的文件。 快照捕获数据仓库中存储的数据的增量更改。
 
-数据仓库还原是基于现有数据仓库或已删除数据仓库的还原点创建的新数据仓库。 还原数据仓库是任何业务连续性和灾难恢复策略的基本组成部分，因为数据库还原可以在意外损坏或删除数据后重新创建数据。 此外，数据仓库是出于测试或开发目的创建数据仓库副本的强大机制。 专用 SQL 池还原速度因数据库大小以及源和目标数据仓库的位置而异。
+数据仓库还原是基于现有数据仓库或已删除数据仓库的还原点创建的新数据仓库。 还原数据仓库是任何业务连续性和灾难恢复策略的基本组成部分，因为数据库还原可以在意外损坏或删除数据后重新创建数据。 此外，数据仓库快照是出于测试或开发目的创建数据仓库副本的强大机制。 专用 SQL 池还原速度因数据库大小以及源和目标数据仓库的位置而异。
 
 ## <a name="automatic-restore-points"></a>自动还原点
 
@@ -57,7 +57,7 @@ order by run_id desc
 1. 专用 SQL 池会在达到 7 天保留期并且总共至少有 42 个还原点（包括用户定义的还原点和自动还原点）时删除还原点。
 2. 暂停专用 SQL 池时不会创建快照。
 3. 还原点的存在时长是从创建还原点的时间算起的绝对日历天数（包括 SQL 池暂停的时间）。
-4. 在任何时间点，专用 SQL 池均保证能够存储最多 42 个用户定义的还原点和 42 个自动还原点，只要这些还原点尚未达到 7 天保留期的限制
+4. 在任何时间点，专用 SQL 池均保证能够存储最多 42 个用户定义的还原点或 42 个自动还原点，只要这些还原点尚未达到 7 天保留期的限制
 5. 如果创建了快照，然后专用 SQL 池暂停 7 天以上的时间，然后进行了恢复，那么还原点会持续存在，直到总共有 42 个还原点（包括用户定义的还原点和自动还原点）
 
 ### <a name="snapshot-retention-when-a-sql-pool-is-dropped"></a>删除 SQL 池时的快照保留
@@ -78,7 +78,7 @@ order by run_id desc
 
 ## <a name="data-residency"></a>数据驻留 
 
-如果配对的数据中心位于地理边界之外，你可以通过选择退出地理冗余存储来确保你的数据保持在地理边界内。 创建或还原专用 SQL 池（原 SQL DW）时，可以通过地理冗余存储选项预配专用 SQL 池（原 SQL DW）来做到这一点。 
+如果配对的数据中心位于你所在国家/地区以外的位置，则可以通过在本地冗余存储 (LRS) 上预配数据库，确保你的数据保留在你的区域内。 如果你的数据库已经在 RA-GRS（只读地理冗余存储，当前的默认值）上预配，那么可以选择不进行异地备份，但你的数据库将继续驻留在复制到区域对的存储上。 要确保客户数据保留在你的区域中，你可以将专用 SQL 池预配或还原为本地冗余存储。 有关如何预配或还原为本地冗余存储的详细信息，请参阅[操作指南：如何在 Azure Synapse Analytics 中为专用 SQL 池（以前成为 SQL DW）配置单区域驻留](single-region-residency.md)
 
 若要确认配对的数据中心是否位于不同的国家/地区，请参阅 [Azure 配对区域](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 

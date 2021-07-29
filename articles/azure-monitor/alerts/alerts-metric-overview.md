@@ -3,16 +3,16 @@ title: 了解指标警报在 Azure Monitor 中的工作原理。
 description: 获取指标警报功能的概述，以及它们在 Azure Monitor 中的工作原理。
 ms.date: 03/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8a243f0a2130e0ec2ebafe726f48e07c148807c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd0672523329b17b0e101d5abb16700254b8a918
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103016077"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111441323"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
-Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些指标可能是[平台指标](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)、[自定义指标](../essentials/metrics-custom-overview.md)、[Azure Monitor 中已转换为指标的常用日志](./alerts-metric-logs.md)，以及 Application Insights 指标。 指标警报定期评估，以检查一个或多个指标时序的条件是否属实，并在符合评估条件时发出通知。 指标警报是有状态的，即，它们只会在状态有更改时才发出通知。
+Azure Monitor 中的指标警报建立在多维指标的基础之上。 这些指标可能是[平台指标](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)、[自定义指标](../essentials/metrics-custom-overview.md)、[Azure Monitor 中已转换为指标的常用日志](./alerts-metric-logs.md)，以及 Application Insights 指标。 指标警报定期评估，以检查一个或多个指标时序的条件是否属实，并在符合评估条件时发出通知。 默认情况下，指标警报是有状态的，即，它们只会在状态有更改（已触发、已解决）时才发出通知。 如果要使它们成为无状态，请参阅[每次满足条件时发出指标警报](alerts-troubleshoot-metric.md#make-metric-alerts-occur-every-time-my-condition-is-met)。
 
 ## <a name="how-do-metric-alerts-work"></a>指标警报的工作原理
 
@@ -130,8 +130,6 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 > - 监视多个资源的指标警报规则 - 新资源添加到范围时
 > - 监视未连续发出的指标（稀疏指标）的指标警报规则 - 指标在超过 24 小时的时间段内未发出时
 
-
-
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>使用 Azure Monitor 中的指标警报进行大规模监视
 
 到目前为止，已了解了如何使用单个指标警报监视与单个 Azure 资源相关的一个或多个指标时序。 很多时候，你可能希望将同一预警规则应用于许多资源。 对于存在于同一 Azure 区域中的资源，Azure Monitor 还支持使用一个指标警报规则监视多个资源（属于同一类型）。 
@@ -175,11 +173,10 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 可在[此文](./alerts-metric-near-real-time.md#metrics-and-dimensions-supported)中找到受支持资源类型的完整列表。
 
-
 ## <a name="next-steps"></a>后续步骤
 
 - [了解如何在 Azure 中创建、查看和管理指标警报](../alerts/alerts-metric.md)
-- [了解如何在 Azure 监视器指标资源管理器中创建警报](../essentials/metrics-charts.md#alert-rules)
+- [了解如何在 Azure Monitor 指标资源管理器中创建警报](../essentials/metrics-charts.md#alert-rules)
 - [了解如何使用 Azure 资源管理器模板部署指标警报](./alerts-metric-create-templates.md)
 - [详细了解操作组](./action-groups.md)
 - [详细了解动态阈值条件类型](../alerts/alerts-dynamic-thresholds.md)

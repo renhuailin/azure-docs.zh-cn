@@ -3,12 +3,12 @@ title: 在 Azure 开发测试实验室中的实验室 VM 上启用托管标识
 description: 本文介绍实验室所有者如何在实验室虚拟机上启用用户分配的托管标识。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b4bf2900acebaeecd5cbc4cb65635aee6de87dda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d2c7b944d37160df241e6ca4407c730593f1b62
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88717620"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854029"
 ---
 # <a name="enable-user-assigned-managed-identities-on-lab-virtual-machines-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中的实验室虚拟机上启用用户分配的托管标识
 作为实验室所有者，可以在 Azure 开发测试实验室中的实验室虚拟机 (VM) 上启用用户分配的托管标识。
@@ -40,23 +40,22 @@ ms.locfileid: "88717620"
 
 1.  在创建标识后，请记下该标识的资源 ID。 该 ID 应类似于以下示例： 
 
-    `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.
-2. 运行 PUT HTTPS 方法，以将新的 ServiceRunner 资源添加到实验室，如以下示例中所示。 
+    `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/{rg}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}`.
+    
+2. 对实验室资源执行 PUT HTTPS 方法，将一个或多个用户分配的标识添加到 managementIdentities 字段。
 
-    服务运行器资源是代理资源，用于管理和控制开发测试实验室中的托管标识。 服务运行器名称可以是任何有效名称，但建议使用托管标识资源的名称。
 
     ```json
     {
-        "identity": {
-            "type": "userAssigned",
-            "userAssignedIdentities": { 
-                "[userAssignedIdentityResourceId]": {}
-            }
-            },
         "location": "southeastasia",
         "properties": {
-            "identityUsageType": "VirtualMachine"
-        }
+        ...
+            "managementIdentities": {
+               "/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/{rg}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}": {}
+        },
+        ...
+        },
+    ...
     }
     ```
 

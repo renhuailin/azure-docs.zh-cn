@@ -10,12 +10,12 @@ ms.date: 03/27/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7e951de46b5220e5c2edde2fcd84673c9a16cebc
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: bdd0c8a3ddacd3a99627bfc29c41e61a165350c6
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477699"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111812361"
 ---
 # <a name="manage-and-restore-soft-deleted-blobs"></a>管理和还原软删除的 Blob
 
@@ -78,7 +78,7 @@ Blob 软删除是针对 Blob 数据的综合性数据保护策略的一部分。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverDeletedBlobs":::
 
-若要还原特定的版本，请先对基础 Blob 或版本调用“取消删除 Blob”操作，然后将所需版本复制到基础 Blob。 以下示例将块 Blob 还原到最近保存的版本：
+若要还原特定的软删除快照，请先对基础 Blob 调用“取消删除 Blob”操作，然后将所需快照复制到基础 Blob。 以下示例将块 Blob 还原到其最近生成的快照：
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverSpecificBlobSnapshot":::
 
@@ -96,7 +96,7 @@ foreach (CloudBlob blob in container.ListBlobs(useFlatBlobListing: true, blobLis
 }
 ```
 
-若要还原特定的快照，请先对基础 Blob 调用“取消删除 Blob”操作，然后将所需快照复制到基础 Blob。 以下示例将块 Blob 还原到其最近生成的快照：
+若要还原特定的软删除快照，请先对基础 Blob 调用“取消删除 Blob”操作，然后将所需快照复制到基础 Blob。 以下示例将块 Blob 还原到其最近生成的快照：
 
 ```csharp
 // Restore the block blob.
@@ -130,6 +130,6 @@ blockBlob.StartCopy(copySource);
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Blob 存储的软删除](./soft-delete-blob-overview.md)
+- [Blob 存储的软删除](soft-delete-blob-overview.md)
 - [为 blob 启用软删除](soft-delete-blob-enable.md)
 - [Blob 版本控制](versioning-overview.md)

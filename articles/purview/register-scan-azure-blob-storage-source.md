@@ -6,13 +6,13 @@ ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/25/2020
-ms.openlocfilehash: b27b46c68d018d2ddf79d284b20cc05b51640891
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 05/08/2021
+ms.openlocfilehash: a691c242cbe91ea4a3e76bd0b1a93f11a6dd7c8b
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98880635"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750516"
 ---
 # <a name="register-and-scan-azure-blob-storage"></a>注册和扫描 Azure Blob 存储
 
@@ -24,8 +24,8 @@ Azure Blob 存储支持通过完整扫描和增量扫描来捕获元数据和架
 
 ## <a name="prerequisites"></a>先决条件
 
-- 在注册数据源之前，先创建 Azure Purview 帐户。 若要详细了解如何创建 Purview 帐户，请参阅[快速入门：创建 Azure Purview 帐户](create-catalog-portal.md)。
-- 必须是 Azure Purview 数据源管理员
+- 在注册数据源之前，先创建一个 Azure Purview 帐户。 有关创建 Purview 帐户的详细信息，请参阅[快速入门：创建 Azure Purview 帐户](create-catalog-portal.md)。
+- 你需要是 Azure Purview 数据源管理员
 
 ## <a name="setting-up-authentication-for-a-scan"></a>为扫描设置身份验证
 
@@ -110,8 +110,8 @@ Azure Blob 存储支持通过完整扫描和增量扫描来捕获元数据和架
 
 若要在数据目录中注册新的 blob 帐户，请执行以下操作：
 
-1. 导航到你的 Purview 帐户
-1. 在左侧导航区域中选择“源”
+1. 从门户中的 Purview 帐户导航到 Purview Studio。
+1. 在 Purview Studio 主页上选择“注册源”。
 1. 选择“注册”
 1. 在“注册源”上，选择“Azure Blob 存储”
 1. 选择“继续”
@@ -119,14 +119,42 @@ Azure Blob 存储支持通过完整扫描和增量扫描来捕获元数据和架
 在“注册源(Azure Blob 存储)”屏幕上，执行以下操作：
 
 1. 输入数据源将在目录中列出的名称。 
-1. 选择你的订阅来筛选存储帐户
-1. 选择存储帐户
-1. 选择一个集合或创建新集合（可选）
-1. 选择“完成”以注册数据源。
+1. 选择你的订阅以筛选存储帐户。
+1. 选择一个存储帐户。
+1. 选择一个集合或创建新集合（可选）。
+1. 选择“注册”以注册数据源。
 
 :::image type="content" source="media/register-scan-azure-blob-storage-source/register-sources.png" alt-text="注册源选项" border="true":::
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+## <a name="creating-and-running-a-scan"></a>创建和运行扫描
+
+若要创建并运行新扫描，请执行以下操作：
+
+1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+
+1. 选择你已注册的 Azure Blob 数据源。
+
+1. 选择“新建扫描”
+
+1. 选择要连接到数据源的凭据。 
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/set-up-scan-blob.png" alt-text="设置扫描":::
+
+1. 可以选择列表中适当的项，以便将扫描范围限定在特定的文件夹或子文件夹。
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/blob-scope-your-scan.png" alt-text="限定扫描范围":::
+
+1. 选择扫描规则集。 可以选择系统默认项、现有的自定义规则集，或以内联方式创建新规则集。
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/blob-scan-rule-set.png" alt-text="扫描规则集":::
+
+1. 选择扫描触发器。 可以设置一个计划或运行一次扫描。
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/trigger-scan.png" alt-text="trigger":::
+
+1. 查看扫描并选择“保存并运行”。
+
+[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

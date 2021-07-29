@@ -2,29 +2,22 @@
 title: Azure 磁盘备份支持矩阵
 description: 汇总 Azure 磁盘备份的支持设置和限制。
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 05/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: 922bd532275cdd6b09df83b0e9d36fdec1da0b47
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8b6ea48a326ec42aaf33af61b0ec1a6a07bae8fe
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101707211"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750922"
 ---
-# <a name="azure-disk-backup-support-matrix-in-preview"></a>Azure 磁盘备份支持矩阵（预览版）
-
->[!IMPORTANT]
->此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负载。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
->[填写此表格](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u)以便注册预览版。
+# <a name="azure-disk-backup-support-matrix"></a>Azure 磁盘备份支持矩阵
 
 可使用 [Azure 备份](./backup-overview.md)保护 Azure 磁盘。 本文总结了区域可用性、支持的方案以及限制。
 
 ## <a name="supported-regions"></a>支持的区域
 
-在以下区域中提供 Azure 磁盘备份预览版：美国西部、美国中西部、美国东部 2、加拿大中部、英国西部、瑞士北部、瑞士西部、澳大利亚中部、澳大利亚中部 2、韩国中部、韩国南部、日本西部、东亚、阿拉伯联合酋长国北部、巴西南部、印度中部。 
-
-如果在更多区域中提供，后面将公布这些区域。
+Azure 磁盘备份在除法国南部、南非西部之外的所有公有云区域提供，但目前不在主权云区域提供。 在这些区域中提供时，我们会公布这些区域。
 
 ## <a name="limitations"></a>限制
 
@@ -56,7 +49,7 @@ ms.locfileid: "101707211"
 
 - 目前，配置磁盘备份的 Azure 门户体验最多只能备份来自同一订阅的 20 个磁盘。
 
-- 目前（预览版期间），不支持使用 PowerShell 和 Azure CLI 配置磁盘的备份和还原。
+- Azure 磁盘备份支持 PowerShell。 目前不支持 Azure CLI。
 
 - 配置备份时，所选要进行备份的磁盘以及要存储快照的快照资源组必须属于同一订阅。 无法在某一特定磁盘的订阅之外为该磁盘创建增量快照。 详细了解托管磁盘的[增量快照](../virtual-machines/disks-incremental-snapshots.md#restrictions)。 要详细了解如何选择快照资源组，请参阅[配置备份](backup-managed-disks.md#configure-backup)。
 
@@ -66,7 +59,16 @@ ms.locfileid: "101707211"
 
 - 对托管磁盘的[专用链接](../virtual-machines/disks-enable-private-links-for-import-export-portal.md)支持使你能够限制托管磁盘的导出和导入，使其仅发生在 Azure 虚拟网络中。 Azure 磁盘备份支持备份启用了专用终结点的磁盘。 这不包括可通过专用终结点访问的备份数据或快照。
 
-- 在预览版期间，无法禁用备份，因此不支持“停止备份并保留备份数据”选项。 可以删除备份实例，从而停止备份并删除所有备份数据。
+- 可以删除备份实例，从而停止备份并删除所有备份数据。 目前无法禁用备份，因为“停止备份并保留备份数据”选项不受支持。
+
+- Azure 磁盘备份限制如下：
+    
+    | 设置 | 最大限制 |
+    | --- | --- |
+    | 每个备份保管库的备份策略数 | 5000 |
+    | 每个备份保管库的备份实例数 | 5000 |
+    | 每个备份实例每天允许的按需备份数 | 10 |
+    | 每个备份实例每天允许的还原数 | 10 |
 
 ## <a name="next-steps"></a>后续步骤
 

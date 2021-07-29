@@ -4,12 +4,12 @@ description: 使用 Azure Monitor 监视 Azure 备份工作负荷及创建自定
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 1800771bfff0afbcec8440383536734246ea8f5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e1466d3f7f8130cfe8b12ad23f2bf1f9dd61b54
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100580738"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565511"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>使用 Azure Monitor 进行大规模监视
 
@@ -156,10 +156,13 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 
 - 在所有解决方案中，一旦创建备份服务的内置警报，就会立即推送这些警报。 因此，它们通常会在 20 到 30 分钟后显示在 Log Analytics 工作区中。
 - 在所有解决方案中，在完成按需备份作业和还原作业后，会立即推送这些作业。
-- 对于除 SQL 备份以外的所有解决方案，在完成计划的备份作业后，会立即推送这些作业。
-- 对于 SQL 备份，由于日志备份可每隔 15 分钟发生，所有已完成的计划备份作业的信息（包括日志）将每隔 6 小时进行批处理和推送。
+- 对于除 SQL 和 SAP HANA 备份以外的所有解决方案，计划的备份作业会在完成后立即推送。
+- 对于 SQL 和 SAP HANA 备份，由于日志备份可能每 15 分钟执行一次，因此所有已完成的计划备份作业（包括日志）的信息每 6 小时进行一次批量推送。
 - 在所有解决方案中，备份项、策略、恢复点、存储等其他信息每天至少推送一次。
 - 备份配置发生更改（例如更改策略或编辑策略）会触发所有相关备份信息的推送。
+
+> [!NOTE]
+> 诊断数据的其他目标（例如存储帐户和事件中心）也会出现相同的延迟。
 
 ## <a name="using-the-recovery-services-vaults-activity-logs"></a>使用恢复服务保管库的活动日志
 

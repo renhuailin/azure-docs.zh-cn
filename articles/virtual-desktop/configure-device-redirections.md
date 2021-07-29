@@ -1,21 +1,21 @@
 ---
 title: 配置设备重定向 - Azure
-description: 如何配置 Windows 虚拟桌面的设备重定向。
+description: 如何配置 Azure 虚拟桌面的设备重定向。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f603a4b44b555382e4178d90522ae41fa2388663
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 570983229c16fa9c01d14bd7575d0720a7197191
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107947710"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756538"
 ---
 # <a name="configure-device-redirections"></a>配置设备重定向
 
-在为 Windows 虚拟桌面环境配置设备重定向后，可以在远程会话中使用打印机、USB 设备、麦克风和其他外围设备。 有些设备重定向需要对远程桌面协议 (RDP) 属性和组策略设置都进行更改。
+在为 Azure 虚拟桌面环境配置设备重定向后，可以在远程会话中使用打印机、USB 设备、麦克风和其他外围设备。 有些设备重定向需要对远程桌面协议 (RDP) 属性和组策略设置都进行更改。
 
 ## <a name="supported-device-redirections"></a>支持的设备重定向
 

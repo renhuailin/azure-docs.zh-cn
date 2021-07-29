@@ -1,19 +1,19 @@
 ---
 title: 关于 Azure 点到站点 VPN 连接
 titleSuffix: Azure VPN Gateway
-description: 了解点到站点连接和要使用的 P2S VPN 网关身份验证类型。
+description: 了解点到站点 VPN。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 04/28/2021
+ms.date: 05/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: c7c9d1ad6aefe9fc05b77925ee6bbf4160b988d8
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 1be0ecfe773bfa56900295db8701d9a582389046
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202400"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554671"
 ---
 # <a name="about-point-to-site-vpn"></a>关于点到站点 VPN
 
@@ -23,11 +23,11 @@ ms.locfileid: "108202400"
 
 点到站点 VPN 可使用以下协议之一：
 
-* **OpenVPN® 协议**，一种基于 SSL/TLS 的 VPN 协议。 由于大多数防火墙都会打开 TLS 所用的出站 TCP 端口 443，因此 TLS VPN 解决方案可以穿透防火墙。 OpenVPN 可用于从 Android、iOS（11.0 及更高版本）、Windows、Linux 和 Mac 设备（OSX 10.13 及更高版本）进行连接。
+* **OpenVPN® 协议**，一种基于 SSL/TLS 的 VPN 协议。 由于大多数防火墙都会打开 TLS 所用的出站 TCP 端口 443，因此 TLS VPN 解决方案可以穿透防火墙。 OpenVPN 可用于从 Android、iOS（11.0 及更高版本）、Windows、Linux 和 Mac 设备（macOS 10.13 及更高版本）进行连接。
 
 * 安全套接字隧道协议 (SSTP)，一个基于 TLS 的专属 VPN 协议。 由于大多数防火墙都会打开 TLS 所用的出站 TCP 端口 443，因此 TLS VPN 解决方案可以穿透防火墙。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
 
-* IKEv2 VPN，这是一种基于标准的 IPsec VPN 解决方案。 IKEv2 VPN 可用于从 Mac 设备进行连接（OSX 10.11 和更高版本）。
+* IKEv2 VPN，这是一种基于标准的 IPsec VPN 解决方案。 IKEv2 VPN 可用于从 Mac 设备进行连接（macOS 10.11 和更高版本）。
 
 
 >[!NOTE]
@@ -169,20 +169,28 @@ P2S 配置需要相当多的特定步骤。 以下文章包含引导你完成 P2
 
 ### <a name="to-remove-the-configuration-of-a-p2s-connection"></a>删除 P2S 连接的配置
 
-有关步骤，请参阅下面的[常见问题解答](#removeconfig)。
+可以使用 PowerShell 或 CLI 删除某个连接的配置。 有关示例，请参阅[常见问题解答](vpn-gateway-vpn-faq.md#removeconfig)。
+
+## <a name="how-does-p2s-routing-work"></a>P2S 路由的工作原理是什么？
+
+请参阅以下文章：
+
+* [关于点到站点 VPN 路由](vpn-gateway-about-point-to-site-routing.md)
+
+* [如何播发自定义路由](vpn-gateway-p2s-advertise-custom-routes.md)
+
+## <a name="faqs"></a>常见问题解答
+
+关于 P2S，有多个基于身份验证的“常见问题解答”部分。
+
+* [常见问题解答 - 证书身份验证](vpn-gateway-vpn-faq.md#P2S)
+
+* [常见问题解答 - RADIUS 身份验证](vpn-gateway-vpn-faq.md#P2SRADIUS)
  
-## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>本机 Azure 证书身份验证常见问题解答
-
-[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
-
-## <a name="faq-for-radius-authentication"></a><a name="faqradius"></a>RADIUS 身份验证常见问题解答
-
-[!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
-
 ## <a name="next-steps"></a>后续步骤
 
 * [配置 P2S 连接 - RADIUS 身份验证](point-to-site-how-to-radius-ps.md)
 
-* [配置 P2S 连接 - Azure 本机证书身份验证](vpn-gateway-howto-point-to-site-rm-ps.md)
+* [配置 P2S 连接 - Azure 证书身份验证](vpn-gateway-howto-point-to-site-rm-ps.md)
 
 **“OpenVPN”是 OpenVPN Inc. 的商标。**

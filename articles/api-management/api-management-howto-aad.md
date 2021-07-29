@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2021
 ms.author: apimpm
-ms.openlocfilehash: 743a7e7d34457405aa4be42b196dc994506c6587
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 37a0ac51f5cbc7d3eaa98027b5e8568dfcf208ee
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105035790"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747700"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>在 Azure API 管理中使用 Azure Active Directory 授权开发人员帐户
 
@@ -92,18 +92,21 @@ ms.locfileid: "105035790"
 
 在为 Azure AD 租户中的用户启用访问权限之后，即可将 Azure AD 组添加到 API 管理中。 因此，可以使用 Azure AD 组控制产品可见性。
 
-若要将外部 Azure AD 组添加到 APIM 中，必须先完成上一部分。 另外，必须按照以下步骤通过 `Directory.Read.All` 权限为注册的应用程序授予访问 Microsoft Graph API 的权限： 
+若要将外部 Azure AD 组添加到 APIM 中，必须先完成上一部分。 默认情况下，你注册的应用程序有权访问具有所需 `User.Read` 委托权限的 Microsoft Graph API。 你还必须执行以下步骤，使应用程序能够以 `Directory.Read.All` 应用程序权限访问 Microsoft Graph API 和 Azure Active Directory Graph API： 
 
 1. 返回到在上一部分创建的应用注册。
-2. 选择“API 权限”，然后单击“+添加权限” 。 
-3. 在“请求 API 权限”窗格中，选择“Microsoft API”选项卡，向下滚动，然后选择“Azure Active Directory Graph”磁贴  。 选择“应用程序权限”，搜索“Directory”，然后选择“Directory.Read.All”权限  。 
-4. 单击窗格底部的“添加权限”，然后单击“为 {tenantname} 授予管理员许可”，以便为此目录中的所有用户授予访问权限 。 
+2. 选择“API 权限”，然后选择“添加权限”。 
+3. 在“请求 API 权限”窗格中，选择“Microsoft API”选项卡，然后选择“Microsoft Graph”磁贴  。 选择“应用程序权限”并搜索“目录”。 选择“Directory.Read.All”权限，然后在窗格底部选择“添加权限” 。
+4. 选择“添加权限”。 
+5. 在“请求 API 权限”窗格中，选择“Microsoft API”选项卡，向下滚动，然后选择“Azure Active Directory Graph”磁贴。   选择“应用程序权限”并搜索“目录”。 选择“Directory.Read.All”权限，然后选择“添加权限” 。 
+6. 选择“为 {tenantname} 授予管理员同意”，以便为此目录中的所有用户授予访问权限。 
 
 现在可以从 API 管理实例的“组”选项卡添加外部 Azure AD 组。
 
 1. 选择“组”选项卡。
 2. 选择“添加 AAD 组”按钮。
-    ![“添加 AAD 组”按钮](./media/api-management-howto-aad/api-management-with-aad008.png)
+
+   ![“添加 AAD 组”按钮](./media/api-management-howto-aad/api-management-with-aad008.png)
 3. 选择要添加的组。
 4. 按“选择”按钮。
 

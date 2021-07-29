@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2020
+ms.date: 06/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 05848eb2761284669e659b3875e96acdfa71f90f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 135ca977f19ed44742b1086c7a02a9b89dab1445
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98632176"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111422023"
 ---
 # <a name="connect-office-365-logs-to-azure-sentinel"></a>将 Office 365 日志连接到 Azure Sentinel
 
-[Office 365](/office/) 日志连接器可将 Exchange 和 SharePoint（包括 OneDrive）中正在执行的用户活动和管理员活动的相关信息引入 Azure Sentinel，现在也可引入 Teams 中的此类活动的信息。    此信息包括文件下载、发送访问请求、组事件更改、邮箱操作等操作、Teams 事件（如聊天、团队、成员和渠道事件）以及执行操作的用户的详细信息。 通过将 Office 365 日志连接到 Azure Sentinel，你可以在工作簿中查看和分析此数据，查询该数据并创建自定义警报，结合该数据改进调查过程，进而可以更深入地了解 Office 365 的安全性。
+[Office 365](/office/) 日志连接器可将 Exchange、SharePoint（包括 OneDrive）和 Teams 中正在执行的用户活动和管理员活动的相关信息引入 Azure Sentinel。    此信息包括文件下载、发送访问请求、组事件更改、邮箱操作等操作、Teams 事件（如聊天、团队、成员和渠道事件）以及执行操作的用户的详细信息。 通过将 Office 365 日志连接到 Azure Sentinel，你可以在工作簿中查看和分析此数据，查询该数据并创建自定义警报，结合该数据改进调查过程，进而可以更深入地了解 Office 365 的安全性。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,7 +42,7 @@ ms.locfileid: "98632176"
 
 
    > [!NOTE]
-   > 如上所述，并且从连接器页的“数据类型”下也可以看到，Azure Sentinel Office 365 连接器当前只支持引入 Microsoft Exchange 和 SharePoint（包括 OneDrive）中的审核日志，现在也支持从 Teams 中引入 。 但是，如果想要将[其他 Office 数据](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-office-365-alerts-with-graph-security-api/ba-p/984888)引入到 Azure Sentinel，可使用一些外部解决方案。 
+   > 如上所述，并且从连接器页的“数据类型”下也可以看到，Azure Sentinel Office 365 连接器当前只支持从 Microsoft Exchange、SharePoint（包括 OneDrive）和 Teams 引入审核日志。 但是，如果想要将[其他 Office 数据](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-office-365-alerts-with-graph-security-api/ba-p/984888)引入到 Azure Sentinel，可使用一些外部解决方案。 
 
 ## <a name="enable-the-office-365-log-connector"></a>启用 Office 365 日志连接器
 

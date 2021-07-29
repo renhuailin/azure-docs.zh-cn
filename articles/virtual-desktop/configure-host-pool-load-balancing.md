@@ -1,28 +1,29 @@
 ---
-title: 配置 Windows 虚拟桌面负载均衡 - Azure
-description: 如何为 Windows 虚拟桌面环境配置负载均衡方法。
+title: 配置 Azure 虚拟桌面负载均衡 - Azure
+description: 如何为 Azure 虚拟桌面环境配置负载均衡方法。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 0e742a046d43fef6e8263f73fc2ca8460848ad40
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: a39aad7889ee395c723d76a74cfb006b6d09caa3
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448111"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751048"
 ---
-# <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>配置 Windows 虚拟桌面负载均衡方法
+# <a name="configure-the-azure-virtual-desktop-load-balancing-method"></a>配置 Azure 虚拟桌面负载均衡方法
 
-为主机池配置负载均衡方法，可以调整 Windows 虚拟桌面环境，从而更好地满足用户的需求。
+为主机池配置负载均衡方法，可以调整 Azure 虚拟桌面环境，从而更好地满足自己的需求。
 
 >[!NOTE]
 > 这种操作不适用于永久性桌面主机池，因为用户始终能够 1:1 映射到主机池中的某个会话主机。
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假设已按照“[设置 Windows 虚拟桌面 powershell 模块](powershell-module.md)”中的说明，下载和安装 PowerShell 模块并登录到 Azure 帐户。
+本文假设你已按照[设置 Azure 虚拟桌面 PowerShell 模块](powershell-module.md)中的说明，下载和安装 PowerShell 模块并登录到 Azure 帐户。
 
 ## <a name="configure-breadth-first-load-balancing"></a>配置广度优先负载均衡
 
@@ -82,8 +83,8 @@ MaxSessionLimit  : 6
 配置负载均衡：
 
 1. 登录 Azure 门户：https://portal.azure.com。
-2. 搜索并选择服“服务”下面的“**Windows 虚拟桌面**”。
-3. 在“Windows 虚拟桌面”页中，选择“主机池”。
+2. 在“服务”下搜索并选择“Azure 虚拟桌面”。
+3. 在“Azure 虚拟桌面”页中，选择“主机池”。
 4. 选择要编辑的主机池的名称。
 5. 选择“属性”。
 6. 在该字段中输入“**最大会话限制**”，并在下拉菜单中选择要用于此主机池的 **负载均衡算法**。

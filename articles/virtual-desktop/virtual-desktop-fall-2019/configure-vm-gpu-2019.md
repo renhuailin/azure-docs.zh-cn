@@ -1,25 +1,25 @@
 ---
-title: 为 Windows 虚拟桌面（经典版）配置 GPU - Azure
-description: 如何在 Windows 虚拟桌面（经典版）中启用 GPU 加速的渲染和编码。
+title: 为 Azure 虚拟桌面（经典版）配置 GPU - Azure
+description: 如何在 Azure 虚拟桌面（经典版）中启用 GPU 加速的渲染和编码。
 author: gundarev
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: denisgun
-ms.openlocfilehash: fa7b80b021e00d25dea4f96432ae922c15474058
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ae012b1c8084c0f5f518a7e7006d7e5df9cdf4c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95023048"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750058"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-classic"></a>为 Windows 虚拟桌面（经典版）配置图形处理单元 (GPU) 加速
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-azure-virtual-desktop-classic"></a>为 Azure 虚拟桌面（经典版）配置图形处理单元 (GPU) 加速
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../configure-vm-gpu.md)。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[本文](../configure-vm-gpu.md)。
 
-Windows 虚拟桌面支持用于提高应用性能和可伸缩性的 GPU 加速渲染和编码。 GPU 加速对于图形密集型应用尤其重要。
+Azure 虚拟桌面支持用于提高应用性能和可伸缩性的 GPU 加速渲染和编码。 GPU 加速对于图形密集型应用尤其重要。
 
-按照本文中的说明创建 GPU 优化的 Azure 虚拟机，将其添加到你的主机池，并将其配置为使用 GPU 加速进行渲染和编码。 本文假设你已配置 Windows 虚拟桌面租户。
+按照本文中的说明创建 GPU 优化的 Azure 虚拟机，将其添加到你的主机池，并将其配置为使用 GPU 加速进行渲染和编码。 本文假设已配置 Azure 虚拟桌面租户。
 
 ## <a name="select-a-gpu-optimized-azure-virtual-machine-size"></a>选择 GPU 优化的 Azure 虚拟机大小
 
@@ -29,18 +29,18 @@ Azure 提供了许多 [GPU 优化的虚拟机大小](../../virtual-machines/size
 
 使用你选择的大小的 VM 创建新的主机池。 有关说明，请参阅[教程：使用 Azure 市场创建主机池](../create-host-pools-azure-marketplace.md)。
 
-Windows 虚拟桌面在以下操作系统中支持 GPU 加速的渲染和编码：
+Azure 虚拟桌面在以下操作系统中支持 GPU 加速的渲染和编码：
 
 * Windows 10 版本 1511 或更高版本
 * Windows Server 2016 或更高版本
 
-你还必须配置应用组，或使用在创建新主机池时自动创建的默认桌面应用组（名为“桌面应用程序组”）。 有关说明，请参阅[教程：管理 Windows 虚拟桌面的应用组](../manage-app-groups.md)。
+你还必须配置应用组，或使用在创建新主机池时自动创建的默认桌面应用组（名为“桌面应用程序组”）。 有关说明，请参阅[教程：管理 Azure 虚拟桌面的应用组](../manage-app-groups.md)。
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>在虚拟机中安装受支持的图形驱动程序
 
-若要在 Windows 虚拟桌面中利用 Azure N 系列 VM 的 GPU 功能，必须安装相应的图形驱动程序。 按照[支持的操作系统和驱动程序](../../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers)中的说明，以手动方式或使用 Azure VM 扩展安装来自相应显卡供应商的驱动程序。
+若要在 Azure 虚拟桌面中利用 Azure N 系列 VM 的 GPU 功能，必须安装相应的图形驱动程序。 按照[支持的操作系统和驱动程序](../../virtual-machines/sizes-gpu.md#supported-operating-systems-and-drivers)中的说明，以手动方式或使用 Azure VM 扩展安装来自相应显卡供应商的驱动程序。
 
-Windows 虚拟桌面仅支持 Azure 分发的驱动程序。 此外，对于具有 NVIDIA GPU 的 Azure VM，Windows 虚拟桌面仅支持 [NVIDIA GRID 驱动程序](../../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)。
+Azure 虚拟桌面仅支持 Azure 分发的驱动程序。 此外，对于具有 NVIDIA GPU 的 Azure VM，Azure 虚拟桌面仅支持 [NVIDIA GRID 驱动程序](../../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)。
 
 安装驱动程序后，需要重启 VM。 使用上述说明中的验证步骤确认图形驱动程序已成功安装。
 
@@ -82,7 +82,7 @@ Windows 虚拟桌面仅支持 Azure 分发的驱动程序。 此外，对于具�
 
 若要验证远程桌面是否正在使用 GPU 加速的编码，请执行以下操作：
 
-1. 使用 Windows 虚拟桌面客户端连接到 VM 的桌面。
+1. 使用 Azure 虚拟桌面客户端连接到 VM 的桌面。
 2. 启动事件查看器并导航到以下节点：“应用程序和服务日志” > “Microsoft” > “Windows” > “RemoteDesktopServices-RdpCoreCDV” > “操作”
 3. 若要确定是否正在使用 GPU 加速的编码，请查找事件 ID 170。 如果看到“AVC 硬件编码器已启用:1”，这表示已使用了 GPU 编码。
 4. 若要确定是否使用了 AVC 444 模式，请查找事件 ID 162。 如果看到“可用 AVC:1 初始配置文件:2048”，这表示已使用了 AVC 444。

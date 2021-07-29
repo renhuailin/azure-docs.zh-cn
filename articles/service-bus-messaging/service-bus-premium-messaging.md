@@ -3,12 +3,12 @@ title: Azure 服务总线高级层和标准层
 description: 本文介绍 Azure 服务总线的标准层和高级层。 比较这些层并提供技术差异。
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: aa08a99009ef3d20e831e214ae5811059817d13c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f0cc6b6d7b9026d9be23e36a587b7ce667ba1652
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104607545"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111811255"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服务总线高级和标准消息传送层
 
@@ -29,6 +29,9 @@ ms.locfileid: "104607545"
 **服务总线高级消息传送** 在 CPU 和内存级别提供资源隔离，以便每个客户工作负荷以隔离方式运行。 此资源容器称为 *消息传送单元*。 每个高级命名空间至少会分配一个消息传送单元。 可以为每个服务总线高级命名空间购买 1、2、4、8 或 16 个消息传送单元。 单一工作负荷或实体可以跨多个消息传送单元，可以随意更改消息传送单元数。 这会为基于服务总线的解决方案提供可预测和稳定的性能。
 
 此性能不仅更易于预测和实现，而且速度更快。 使用高级消息传送，峰值性能比使用标准层快得多。
+
+> [!NOTE]
+> 高级消息传送的批大小限制为 1 MB。
 
 ## <a name="premium-messaging-technical-differences"></a>高级消息传送技术差异
 
@@ -66,7 +69,7 @@ ms.locfileid: "104607545"
 为体系结构确定消息传送单元数量时，需要考虑以下几个因素：
 
 - 从分配给命名空间的 1 个或 2 个消息传送单元开始。
-- 在命名空间的[资源使用情况指标](service-bus-metrics-azure-monitor.md#resource-usage-metrics)中研究 CPU 使用情况指标。
+- 在命名空间的[资源使用情况指标](monitor-service-bus-reference.md#resource-usage-metrics)中研究 CPU 使用情况指标。
     - 如果 CPU 使用率*低于 20%_，则可_纵向缩减*分配给命名空间的消息传送单元数。
     - 如果 CPU 使用率*超过 70%_，则_增加*分配给命名空间的消息传送单元数将有益于应用程序。
 
@@ -88,7 +91,8 @@ ms.locfileid: "104607545"
 
 ![create-premium-namespace][create-premium-namespace]
 
-也可以[使用 Azure 资源管理器模板创建高级命名空间](https://azure.microsoft.com/resources/templates/101-servicebus-pn-ar/)。
+也可以[使用 Azure 资源管理器模板创建高级命名空间](https://azure.microsoft.com/resources/templates/servicebus-pn-ar/)。
+
 
 ## <a name="next-steps"></a>后续步骤
 

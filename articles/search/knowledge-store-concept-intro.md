@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 3ec556c6198a00f217568f6591bd4b43c7fc743e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a379c6e828a4d3a10dd958ec7f380907b20f7352
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88924293"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559117"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储
 
@@ -74,7 +74,7 @@ ms.locfileid: "88924293"
 
 在此结构中指定的投影类型确定了知识存储使用的存储类型。
 
-+ 定义 `tables` 时将使用表存储。 如果需要使用表格式报告结构作为分析工具的输入或者要以数据帧的形式导出到其他数据存储，请定义表投影。 可以指定多个 `tables`，以获取扩充文档的子集或截面。 在同一投影组内，将会保留表关系，以便可以使用所有表。
++ 定义 `tables` 时使用表存储。 如果需要使用表格式报告结构作为分析工具的输入或者要以数据帧的形式导出到其他数据存储，请定义表投影。 可以指定多个 `tables`，以获取扩充文档的子集或截面。 在同一投影组内，将会保留表关系，以便可以使用所有表。
 
 + 定义 `objects` 或 `files` 时，将使用 Blob 存储。 `object` 的物理表示形式是一个表示扩充文档的分层 JSON 结构。 `file` 是从文档中提取的图像，它按原样传输到 Blob 存储。
 
@@ -124,7 +124,7 @@ REST API 是一种可以通过编程方式创建知识存储的机制。 一种�
 
 ## <a name="how-to-connect-with-tools-and-apps"></a>如何连接工具和应用
 
-只要扩充存在于存储中，连接到 Azure Blob 存储或表存储的任何工具或技术，都可用于浏览、分析或使用内容。 请从以下列表入手：
+只要扩充存在于存储中，连接到 Azure Blob 存储或表存储的任何工具或技术就都可用于浏览、分析或使用内容。 请从以下列表入手：
 
 + [存储资源管理器](knowledge-store-view-storage-explorer.md)：用于查看扩充文档的结构和内容。 将这视为用于查看知识存储内容的基线工具。
 

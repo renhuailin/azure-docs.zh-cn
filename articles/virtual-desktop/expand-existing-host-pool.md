@@ -1,22 +1,22 @@
 ---
 title: 利用新的会话主机扩展现有的主机池-Azure
-description: 如何使用 Windows 虚拟桌面中的新会话主机扩展现有的主机池。
+description: 如何使用 Azure 虚拟桌面中的新会话主机扩展现有的主机池。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 9c73d7434a002a5efc7d058095eb9743a7f3ebf8
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 446052190df59f6dc53ac6a39cd4bc120752fa41
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446819"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757726"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>利用新的会话主机扩展现有的主机池
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md)。
+>本内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md)。
 
 当你在主机池内提高使用率时，可能需要使用新的会话主机扩展现有的主机池以处理新负载。
 
@@ -41,7 +41,7 @@ ms.locfileid: "106446819"
 
 1. 登录到 Azure 门户。
 
-2. 搜索并选择“Windows 虚拟桌面”  。
+2. 搜索并选择“Azure 虚拟桌面”。
 
 3. 在屏幕左侧的菜单中，选择 " **主机池**"，然后选择要将虚拟机添加到的主机池的名称。
 
@@ -71,7 +71,7 @@ ms.locfileid: "106446819"
 
 ## <a name="next-steps"></a>后续步骤
 
-在扩展现有主机池后，可以登录到 Windows 虚拟桌面客户端，将其作为用户会话的一部分进行测试。 你可以使用以下任一客户端连接到会话：
+在扩展现有主机池后，可以登录到 Azure 虚拟桌面客户端，将其作为用户会话的一部分进行测试。 你可以使用以下任一客户端连接到会话：
 
 - [使用 Windows 桌面客户端进行连接](./connect-windows-7-10.md)
 - [使用 Web 客户端进行连接](./connect-web.md)

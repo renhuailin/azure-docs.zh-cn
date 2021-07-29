@@ -4,12 +4,12 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: c2af279ec7e846316a94e58977e7079305ab9b03
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 76d81aa92643002bc5cd2b8859941af8e7440c87
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579362"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111421861"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -111,7 +111,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 | Debian | 7 及更高版本 |
 | Oracle Linux | 6.4 及更高版本 |
 | SLES | 12 及更高版本 |
-| openSUSE | 42.2 及更高版本 |
+| OpenSUSE | 42.2 及更高版本 |
 
 > [!NOTE]
 > 我们发现，在使用 SLES 12 SP4 OS 的计算机上运行文件恢复脚本时会出现一些问题，我们正在与 SLES 团队一起调查这些问题。
@@ -143,9 +143,14 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 > [!NOTE]
 >
-> 在[上文](#step-1-generate-and-download-script-to-browse-and-recover-files)步骤 1 中下载的脚本文件的名称中将包含地区名称。 使用该地区名称填写 URL。 下载的脚本名称将以如下开头：\'VMname\'\_\'geoname\'_\'GUID\'。<br><br>
-> 例如，如果脚本文件名为 ContosoVM_wcus_12345678，则 geo-name 为 wcus，URL 如下所示：<br> <https://pod01-rec2.wcus.backup.windowsazure.com>
+> 如果备份的 VM 是 Windows，则生成的密码中会提到地区名称。<br><br>
+> 例如，如果生成的密码为“ContosoVM_wcus_GUID”，则地区名称为“wcus”，URL 为 <https://pod01-rec2.wcus.backup.windowsazure.com><br><br>
 >
+>
+> 如果备份的 VM 是 Linux，则在[上面](#step-1-generate-and-download-script-to-browse-and-recover-files)的步骤 1 中下载的脚本文件的文件名中将包含地区名称。 使用该地区名称填写 URL。 下载的脚本名称将以如下开头：\'VMname\'\_\'geoname\'_\'GUID\'。<br><br>
+> 因此，举例来说，如果脚本文件名为 ContosoVM_wcus_12345678，则地区名称为“wcus”，URL 如下所示：<https://pod01-rec2.wcus.backup.windowsazure.com><br><br>
+>
+
 
 在 Linux 上，该脚本需要“open-iscsi”和“lshw”组件才能连接到恢复点。 如果这些组件不存在于运行脚本的计算机上，该脚本会请求权限以安装组件。 请同意安装必需组件。
 

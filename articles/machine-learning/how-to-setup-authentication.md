@@ -8,31 +8,36 @@ ms.author: cgronlun
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 04/02/2021
+ms.date: 05/27/2021
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-js, contperf-fy21q2
-ms.openlocfilehash: 44468f056cb9e13b8384c86fa5858ef1c3edb44b
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 5f8f2c1f6d48a5c1b128643258af083b1811570e
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070022"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854623"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>为 Azure 机器学习资源和工作流设置身份验证
 
 
-了解如何对 Azure 机器学习工作区设置身份验证。 在大多数情况下，Azure 机器学习工作区的身份验证基于 Azure Active Directory (Azure AD)。 通常，在连接到工作区时可使用 3 种身份验证工作流：
+了解如何对 Azure 机器学习工作区设置身份验证。 在大多数情况下，Azure 机器学习工作区的身份验证基于 Azure Active Directory (Azure AD)。 通常，在连接到工作区时可使用 4 种身份验证工作流：
 
 * __交互式__：你可以使用 Azure Active Directory 中的帐户直接进行身份验证，或者使用它来获取用于身份验证的令牌。 在试验和迭代开发期间，使用交互式身份验证。 借助交互式身份验证，可基于每位用户控制对资源（例如 Web 服务）的访问。
 
 * __服务主体__：在 Azure Active Directory 中创建一个服务主体帐户，并使用它来进行身份验证或获取令牌。 当需要使用自动化过程向服务进行身份验证时，将使用服务主体，无需用户交互。 例如连续集成和部署脚本，它可以在训练代码每次发生更改时对模型进行训练和测试。
 
+* __Azure CLI 会话__：使用活动 Azure CLI 会话进行身份验证。 在 _试验和迭代开发_ 期间使用 Azure CLI 身份验证，或者当你需要使用预先认证的会话来对服务 _自动完成身份验证过程_ 时也可以使用 Azure CLI 身份验证。 你可以通过本地工作站上的 Azure CLI 登录到 Azure，而无需在 Python 代码中存储凭据，也无需提示用户进行身份验证。 同样，你可以在持续集成和部署管道中重复使用相同的脚本，同时使用服务主体标识对 Azure CLI 进行身份验证。
+
 * __托管标识__：在 Azure 虚拟机上使用 Azure 机器学习 SDK 时，可使用 Azure 的托管标识。 此工作流允许 VM 使用托管标识连接到工作区，无需在 Python 代码中存储凭据或提示用户进行身份验证。 训练模型时，还可配置 Azure 机器学习计算群集来使用托管标识访问工作区。
 
-> [!IMPORTANT]
-> 无论使用何种身份验证工作流，都可使用 Azure 基于角色的访问控制 (Azure RBAC) 来限定允许拥有的资源访问权限（授权）级别。 例如，管理员或自动化过程可能具有创建计算实例的权限，但不使用它，而数据科学家可能会使用它，但不能删除或创建它。 有关详细信息，请参阅[管理对 Azure 机器学习工作区的访问权限](how-to-assign-roles.md)。
+无论使用何种身份验证工作流，都可使用 Azure 基于角色的访问控制 (Azure RBAC) 来限定允许拥有的资源访问权限（授权）级别。 例如，管理员或自动化过程可能具有创建计算实例的权限，但不使用它，而数据科学家可能会使用它，但不能删除或创建它。 有关详细信息，请参阅[管理对 Azure 机器学习工作区的访问权限](how-to-assign-roles.md)。
+
+Azure AD 条件访问可用于进一步控制或限制对每个身份验证工作流的工作区的访问。 例如，管理员可以仅允许从托管设备访问工作区。
 
 ## <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [cli-version-info](../../includes/machine-learning-cli-version-1-only.md)]
 
 * 创建 [Azure 机器学习工作区](how-to-manage-workspace.md)。
 * [配置开发环境](how-to-configure-environment.md)以安装 Azure 机器学习 SDK，或使用已安装该 SDK 的 [Azure 机器学习计算实例](concept-azure-machine-learning-architecture.md#compute-instance)。
@@ -392,6 +397,10 @@ ws = Workspace(subscription_id="your-sub-id",
                 auth=msi_auth
                 )
 ```
+
+## <a name="use-conditional-access"></a>使用条件访问
+
+作为管理员，你可以为登录到工作区的用户强制实施 [Azure AD 条件性访问策略](../active-directory/conditional-access/overview.md)。 例如，你可以要求双因素身份验证，或者仅允许从托管设备登录。 若要专门对 Azure 机器学习工作区使用条件性访问，请[将条件性访问策略分配](../active-directory/conditional-access/concept-conditional-access-cloud-apps.md)给机器学习云应用。
 
 ## <a name="next-steps"></a>后续步骤
 
