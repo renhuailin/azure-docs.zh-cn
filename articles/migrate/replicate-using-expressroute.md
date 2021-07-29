@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: 3a6afa0fadf5a84ad938b0b0cec321c0e17adeff
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e26434ae1ff2f9d8829d3665807f7d9916233833
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317516"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792231"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>使用 Azure Migrate: 服务器迁移通过 ExpressRoute 复制数据
 
@@ -87,7 +87,7 @@ ExpressRoute 线路通过连接提供商将本地基础结构连接到 Microsoft
 1. 在“确认升级”下输入帐户名称。
 1. 选择页面底部的“升级”。
 
-   ![此屏幕截图显示如何升级存储帐户。](./media/replicate-using-expressroute/upgrade-storage-account.png)
+   ![此屏幕截图显示如何升级存储帐户。](./media/replicate-using-expressroute/upgrade-storage-account.png) 
 
 ### <a name="create-a-private-endpoint-for-the-storage-account"></a>创建存储帐户的专用终结点
 
@@ -148,7 +148,27 @@ ExpressRoute 线路通过连接提供商将本地基础结构连接到 Microsoft
     1. 在“添加记录集”页上，添加一个对应于 FQDN 和专用 IP 的条目作为 A 类记录。
 
 > [!Important]
-> 可能需要其他 DNS 设置，以便解析源环境中存储帐户专用终结点的专用 IP 地址。 若要了解所需的 DNS 配置，请参阅 [Azure 专用终结点 DNS 配置](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder)。
+> 可能需要其他 DNS 设置，以便解析源环境中存储帐户专用终结点的专用 IP 地址。 若要了解所需的 DNS 配置，请参阅 [Azure 专用终结点 DNS 配置](../private-link/private-endpoint-dns.md#on-premises-workloads-using-a-dns-forwarder)。  
+
+### <a name="verify-network-connectivity-to-the-storage-account"></a>验证与存储帐户的网络连接
+
+要验证专用链接的连接，请从托管 Azure Migrate 设备的本地 VM 执行高速缓存存储帐户资源终结点的 DNS 解析，并确保其解析为专用 IP 地址。
+
+高速缓存存储帐户 的 DNS 解析的说明性示例。 
+
+- 输入 nslookup _storageaccountname_.blob.core.windows.net。 将 <storage-account-name> 替换为用于 Azure Migrate 创建的高速缓存存储帐户的名称。  
+
+    你将收到如下消息：  
+
+   ![DNS 解析示例](./media/how-to-use-azure-migrate-with-private-endpoints/dns-resolution-example.png)
+
+- 将为存储帐户返回专用 IP 地址 10.1.0.5。 此地址应属于存储帐户的专用终结点。 
+
+如果 DNS 解析不正确，请执行以下步骤：  
+
+- 提示：可以手动更新源环境 DNS 记录，方法是使用存储帐户 FQDN 链接、_storageaccountname_.blob.core.windows.net 和关联的专用 IP 地址编辑本地设备的 DNS 主机文件来。 此选项仅建议用于测试。 
+- 如果使用自定义 DNS，请查看自定义 DNS 设置，并验证 DNS 配置是否正确。 有关指南，请参阅[专用终结点概述：DNS 配置](../private-link/private-endpoint-overview.md#dns-configuration)。 
+- 如果使用 Azure 提供的 DNS 服务器，请使用本指南作为进一步故障排除的参考，[以进行进一步的故障排除](./troubleshoot-network-connectivity.md#validate-the-private-dns-zone)。   
 
 ## <a name="replicate-data-by-using-an-expressroute-circuit-with-microsoft-peering"></a>使用具备 Microsoft 对等互连的 ExpressRoute 线路复制数据
 
@@ -181,7 +201,7 @@ ExpressRoute 线路通过连接提供商将本地基础结构连接到 Microsoft
 1. 下载 [PsExec 工具](/sysinternals/downloads/psexec)来访问系统用户上下文。
 1. 运行以下命令行，在系统用户上下文中打开 Internet Explorer：`psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"`。
 1. 在 Internet Explorer 中添加代理设置。
-1. 在绕过列表中，添加 Azure 存储 URL：*.blob.core.windows.net。
+1. 在绕过列表中，添加 URL：*.blob.core.windows.net、*.hypervrecoverymanager.windowsazure.com 和 *.backup.windowsazure.com。 
 
 上述跳过规则可确保复制流量可以通过 ExpressRoute，而管理通信可以通过 Internet 的代理。
 

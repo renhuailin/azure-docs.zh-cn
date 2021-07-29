@@ -3,15 +3,15 @@ title: 使用 Key Vault 引用
 description: 了解如何使用 Key Vault 引用设置 Azure 应用服务和 Azure Functions。 向应用程序代码提供 Key Vault 机密。
 author: mattchenderson
 ms.topic: article
-ms.date: 04/23/2021
+ms.date: 05/25/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 0ca620d50706f10081e955cf206fcf8c06ae5fd4
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 3300f5fbb5613672d7979f161ca0c92126f26a83
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064928"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578109"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>使用应用服务和 Azure Functions 的 Key Vault 引用
 
@@ -77,7 +77,7 @@ Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 
 
 Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-app-settings)的值，以便将机密保存在 Key Vault 而不是站点配置中。可以对应用程序设置进行安全的静态加密，但如果需要机密管理功能，则应将它们置于 Key Vault 中。
 
-若要将 Key Vault 引用用于应用程序设置，请将引用设为设置的值。 应用可以通过密钥正常引用机密。 不需更改代码。
+若要将 Key Vault 引用用于[应用程序设置](configure-common.md#add-or-edit)，请将引用设为设置的值。 应用可以通过密钥正常引用机密。 不需更改代码。
 
 > [!TIP]
 > 应该将大多数使用 Key Vault 引用的应用程序设置标记为槽设置，因为你应该为每个环境设置单独的保管库。
@@ -161,8 +161,8 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
                 //...
                 "accessPolicies": [
                     {
-                        "tenantId": "[reference(concat('Microsoft.Web/sites/',  variables('functionAppName'), '/providers/Microsoft.ManagedIdentity/Identities/default'), '2015-08-31-PREVIEW').tenantId]",
-                        "objectId": "[reference(concat('Microsoft.Web/sites/',  variables('functionAppName'), '/providers/Microsoft.ManagedIdentity/Identities/default'), '2015-08-31-PREVIEW').principalId]",
+                        "tenantId": "[reference(resourceId('Microsoft.Web/sites/', variables('functionAppName')), '2020-12-01', 'Full').identity.tenantId]",
+                        "objectId": "[reference(resourceId('Microsoft.Web/sites/', variables('functionAppName')), '2020-12-01', 'Full').identity.principalId]",
                         "permissions": {
                             "secrets": [ "get" ]
                         }
@@ -179,7 +179,7 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
                         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
                     ],
                     "properties": {
-                        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountResourceId'),'2015-05-01-preview').key1)]"
+                        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountResourceId'),'2019-09-01').key1)]"
                     }
                 },
                 {
@@ -191,7 +191,7 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
                         "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
                     ],
                     "properties": {
-                        "value": "[reference(resourceId('microsoft.insights/components/', variables('appInsightsName')), '2015-05-01').InstrumentationKey]"
+                        "value": "[reference(resourceId('microsoft.insights/components/', variables('appInsightsName')), '2019-09-01').InstrumentationKey]"
                     }
                 }
             ]

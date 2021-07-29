@@ -9,12 +9,12 @@ ms.date: 04/07/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e5034c228a354c98b5792492d484da9eb10b8cf2
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: fae824df8c8947198fe0d214cf3db5f71c55c98f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310846"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108759574"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全守护程序和运行时
 
@@ -30,10 +30,10 @@ ms.locfileid: "107310846"
 
 IoT Edge 安全守护程序是一个本机组件，需要使用 IoT Edge 设备上的包管理器进行更新。
 
-使用命令 `iotedge version` 检查设备上运行的安全守护程序的版本。
+使用命令 `iotedge version` 检查设备上运行的安全守护程序的版本。 如果使用的是 IoT Edge for Linux on Windows，则需要通过 SSH 连接到 Linux 虚拟机以检查版本。
 
 >[!IMPORTANT]
->如果要将设备从版本 1.0 或 1.1 更新到版本 1.2，则需要执行额外步骤的安装和配置过程存在差异。 有关详细信息，请参阅本文后面的步骤：[特殊情况：从 1.0 或 1.1 更新到 1.2](#special-case-update-from-10-or-11-to-12)。
+>如果要将设备从版本 1.0 或 1.1 更新到版本 1.2，安装和配置过程有所不同，需要执行额外的步骤。 有关详细信息，请参阅本文后面的步骤：[特殊情况：从 1.0 或 1.1 更新为 1.2](#special-case-update-from-10-or-11-to-12)。
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -119,22 +119,41 @@ curl -L <iotedge link> -o iotedge.deb && sudo apt-get install ./iotedge.deb
 <!-- end 1.2 -->
 :::moniker-end
 
-# <a name="windows"></a>[Windows](#tab/windows)
-
-<!-- 1.1 -->
-::: moniker range="iotedge-2018-06"
-
-借助 IoT Edge for Linux on Windows，IoT Edge 可以在 Windows 设备上托管的 Linux 虚拟机中运行。 此虚拟机已预安装 IoT Edge，并通过 Microsoft 更新进行管理，以使组件保持最新。 如果启用了自动更新，则在有新的更新可用时，系统会立即下载和安装该更新。
-
-借助适用于 Windows 的 IoT Edge，IoT Edge 可直接在 Windows 设备上运行。 有关使用 PowerShell 脚本的更新说明，请参阅[安装和管理适用于 Windows 的 Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md)。
-:::moniker-end
+# <a name="linux-on-windows"></a>[Linux on Windows](#tab/linuxonwindows)
 
 <!-- 1.2 -->
 :::moniker range=">=iotedge-2020-11"
 
-目前，不支持在 Windows 设备上运行 IoT Edge 版本 1.2。
+>[!NOTE]
+>目前，不支持在 Linux for Windows 虚拟机上运行的 IoT Edge 1.2 版。
 
 :::moniker-end
+<!-- end 1.2 -->
+
+借助 IoT Edge for Linux on Windows，IoT Edge 可以在 Windows 设备上托管的 Linux 虚拟机中运行。 此虚拟机已预安装 IoT Edge，并通过 Microsoft 更新进行管理，可以自动使组件保持最新。
+
+若要接收 IoT Edge for Linux on Windows 更新，应将 Windows 主机配置为接收其他 Microsoft 产品的更新。 可通过以下步骤启用此选项：
+
+1. 在 Windows 主机上打开“设置”。
+
+1. 选择“更新和安全性”。
+
+1. 选择“高级选项”。
+
+1. 将“更新 Windows 时接收其他 Microsoft 产品的更新”按钮切换到“开”。
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+
+>[!NOTE]
+>目前不支持在 Windows 设备上运行的 IoT Edge 版本 1.2。
+
+:::moniker-end
+<!-- end 1.2 -->
+
+借助适用于 Windows 的 IoT Edge，IoT Edge 可直接在 Windows 设备上运行。 有关使用 PowerShell 脚本的更新说明，请参阅[安装和管理适用于 Windows 的 Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md)。
 
 ---
 
@@ -142,7 +161,7 @@ curl -L <iotedge link> -o iotedge.deb && sudo apt-get install ./iotedge.deb
 
 更新 IoT Edge 代理和 IoT Edge 中心容器的方式取决于在部署中使用的是滚动标记（如 1.1）还是特定标记（如 1.1.1）。
 
-使用 `iotedge logs edgeAgent` 或 `iotedge logs edgeHub` 命令检查设备上目前安装的 IoT Edge 代理和 IoT Edge 中心模块的版本。
+使用 `iotedge logs edgeAgent` 或 `iotedge logs edgeHub` 命令检查设备上目前安装的 IoT Edge 代理和 IoT Edge 中心模块的版本。 如果使用的是 IoT Edge for Linux on Windows，则需要通过 SSH 连接到 Linux 虚拟机以检查运行时模块版本。
 
   ![在日志中查找容器版本](./media/how-to-update-iot-edge/container-version.png)
 
@@ -156,7 +175,7 @@ IoT Edge 代理和 IoT Edge 中心映像使用与之关联的 IoT Edge 版本进
 
 ### <a name="update-a-rolling-tag-image"></a>更新滚动更新标记映像
 
-如果在部署中使用滚动更新标记（例如 mcr.microsoft.com/azureiotedge-hub:1.1），则需要在设备上强制实施容器运行时，以提取最新版本的映像。
+如果在部署中使用滚动标记（例如 mcr.microsoft.com/azureiotedge-hub:1.1），则需要在设备上强制实施容器运行时，以提取最新版本的映像。
 
 从 IoT Edge 设备中删除本地版本的映像。 在 Windows 计算机上，卸载安全守护程序时也会删除运行时映像，因此不需再次执行此步骤。
 
@@ -193,23 +212,26 @@ IoT Edge 服务将提取最新版本的运行时映像，并自动在设备上�
 
 ## <a name="special-case-update-from-10-or-11-to-12"></a>特殊情况：从 1.0 或 1.1 更新到 1.2
 
-从版本 1.2 开始，IoT Edge 服务使用新的包名称，并且在安装和配置过程中存在一些差异。 如果有运行版本 1.0 或 1.1 的 IoT Edge 设备，请使用这些说明了解如何更新到 1.2。
+>[!NOTE]
+>如果使用的是 Windows 容器或 IoT Edge for Linux on Windows，则此特殊情况部分不适用。
+
+从版本 1.2 开始，IoT Edge 服务使用新的包名称，并且安装和配置过程有所不同。 如果 IoT Edge 设备运行版本 1.0 或 1.1，请使用以下说明了解如何更新到 1.2。
 
 >[!NOTE]
->目前，不支持在 Windows 设备上运行 IoT Edge 版本 1.2。
+>目前不支持在 Windows 设备上运行的 IoT Edge 版本 1.2。
 
-1\.2 及更早版本之间的一些主要差异包括：
+1\.2 与更早版本之间的一些主要差异包括：
 
 * 包名称从 iotedge 更改为 aziot-edge 。
-* 不再使用 libiothsm-std 包。 如果使用的是 IoT Edge 版本中提供的标准包，则可以将配置传输到新版本。 如果使用的是 libiothsm-std 的不同实现，则需要重新配置用户提供的任何证书，例如设备标识证书、设备 CA 和信任捆绑。
+* 不再使用 libiothsm-std 包。 如果你使用的是 IoT Edge 版本中提供的标准包，则可以将你的配置传输到新版本。 如果你之前使用的是 libiothsm 的不同实现，则需要重新配置用户提供的所有证书（如设备标识证书、设备 CA 和信任捆绑）。
 * 1\.2 版本中引入了新的标识服务 aziot-identity-service。 此服务处理 IoT Edge 以及需要与 IoT 中心通信的其他设备组件的标识预配和管理，如 [IoT 中心的设备更新](../iot-hub-device-update/understand-device-update.md)。
-* 默认配置文件具有新的名称和位置。 设备配置信息以前在 `/etc/iotedge/config.yaml` 中，现在默认情况下应位于 `/etc/aziot/config.toml` 中。 可借助 `iotedge config import` 命令将配置信息从旧位置迁移到新位置，并将旧语法更改为新语法。
+* 默认配置文件具有新的名称和位置。 默认情况下，设备配置信息现在应位于 `/etc/aziot/config.toml` 中，而以前位于 `/etc/iotedge/config.yaml` 中。 可借助 `iotedge config import` 命令将配置信息从旧位置迁移到新位置，并将旧语法更改为新语法。
   * 导入命令无法检测或修改设备受信任的平台模块 (TPM) 的访问规则。 如果设备使用 TPM 证明，则需要手动更新 /etc/udev/rules.d/tpmaccess.rules 文件以授予对 aziottpm 服务的访问权限。 有关详细信息，请参阅[向 IoT Edge 授予 TPM 的访问权限](how-to-auto-provision-simulated-device-linux.md?view=iotedge-2020-11&preserve-view=true#give-iot-edge-access-to-the-tpm)。
 * 版本 1.2 中的工作负载 API 以新格式保存加密的机密。 如果从旧版本升级到 1.2 版本，则会导入现有的主加密密钥。 工作负载 API 可以使用导入的加密密钥读取以先前的格式保存的机密。 但是，工作负载 API 无法以旧格式写入加密的机密。 机密一旦被模块重新加密，便会以新格式保存。 在版本 1.2 中加密的机密无法被版本 1.1 中的同一模块读取。 如果将加密的数据持久保存到主机装载的文件夹或卷中，请始终在升级之前创建数据的备份副本，以便必要时能够降级。
 
-在自动执行任何更新过程之前，请验证它是否适用于测试计算机。
+在自动执行任何更新过程之前，请在测试计算机上验证其是否可正常工作。
 
-准备就绪后，请按照以下步骤更新设备上的 IoT Edge：
+准备就绪后，请按照以下步骤在你的设备上更新 IoT Edge：
 
 1. 从 Microsoft 获取最新的存储库配置：
 
@@ -244,7 +266,7 @@ IoT Edge 服务将提取最新版本的运行时映像，并自动在设备上�
    sudo apt-get update
    ```
 
-5. 卸载以前版本的 IoT Edge，使配置文件保持不变。
+5. 卸载先前版本的 IoT Edge，保留配置文件。
 
    ```bash
    sudo apt-get remove iotedge
@@ -256,15 +278,18 @@ IoT Edge 服务将提取最新版本的运行时映像，并自动在设备上�
    sudo apt-get install aziot-edge
    ```
 
-7. 将旧的 config.yaml 文件导入到新格式中，并应用配置信息。
+7. 将旧 yaml 文件导入为其新格式，并应用配置信息。
 
    ```bash
    sudo iotedge config import
    ```
 
-现在，在设备上运行的 IoT Edge 服务已更新，请按照本文中的步骤操作，并[更新运行时容器](#update-the-runtime-containers)。
+现在，设备上运行的 IoT Edge 服务已更新，接下来请按照本文中的步骤[更新运行时容器](#update-the-runtime-containers)。
 
 ## <a name="special-case-update-to-a-release-candidate-version"></a>特殊情况：更新到候选发布版本
+
+>[!NOTE]
+>如果使用的是 Windows 容器或 IoT Edge for Linux on Windows，则此特殊情况部分不适用。
 
 Azure IoT Edge 定期发布新版 IoT Edge 服务。 在发布每个稳定版本之前，会有一个或多个候选发布 (RC) 版本。 RC 版本包括发布版的所有计划内功能，但仍需进行测试和验证。 若要提前测试某项新功能，可以安装 RC 版本，然后通过 GitHub 提供反馈。
 

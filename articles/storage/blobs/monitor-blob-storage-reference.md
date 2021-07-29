@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: subject-monitoring
-ms.openlocfilehash: b37586f66106e33b2a8dad034a6e7c131484be73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f3cf8303a0667d3479500d6c3956be3b21959c0
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100571622"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592243"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Azure Blob 存储监视数据参考
 
@@ -46,7 +46,7 @@ Azure 存储在 Azure Monitor 中提供以下容量指标。
 | ContainerCount    | 存储帐户中的容器数。 <br/><br/> 单位：计数 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 | IndexCapacity     | ADLS Gen2 分层索引所使用的存储量 <br/><br/> 单元：字节 <br/> 聚合类型：平均值 <br/> 值示例：1024 |
 
-### <a name="transaction-metrics"></a>事务度量值
+### <a name="transaction-metrics"></a>事务指标
 
 从 Azure 存储到 Azure Monitor 的每个存储帐户请求都会发出事务指标。 如果存储帐户中没有任何活动，则在此期间不会有关于事务指标的数据。 所有事务指标均可用于帐户和 Blob 存储服务级别。 时间粒度定义呈现指标值的时间间隔。 所有事务指标的受支持时间粒度为 PT1H 和 PT1M。
 

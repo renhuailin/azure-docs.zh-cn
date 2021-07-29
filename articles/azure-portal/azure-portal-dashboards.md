@@ -3,13 +3,13 @@ title: 在 Azure 门户中创建仪表板
 description: 本文介绍如何在 Azure 门户中创建和自定义仪表板。
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.topic: how-to
-ms.date: 04/15/2021
-ms.openlocfilehash: 0666a9f8ca9df2fa44a7eaa4045c9b5e9a724ff5
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.date: 05/12/2021
+ms.openlocfilehash: 0de3e30d2a27d131c13b2df94b1462b6e89b48e3
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726034"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846171"
 ---
 # <a name="create-a-dashboard-in-the-azure-portal"></a>在 Azure 门户中创建仪表板
 
@@ -42,7 +42,7 @@ Azure 门户提供默认仪表板作为起点。 可以编辑默认仪表板，�
 
     :::image type="content" source="media/azure-portal-dashboards/dashboard-name.png" alt-text="空网格和磁贴库的屏幕截图。":::
 
-1. 要按原样保存仪表板，请在页眉中选择“完成自定义”。 或转到下一部分，添加磁贴并保存仪表板。
+1. 要按原样保存仪表板，请在页眉中选择“完成自定义”。 或继续执行下一部分的步骤 2，添加磁贴并保存仪表板。
 
 此时，仪表板视图将显示新仪表板。 选择仪表板名称旁的箭头，以查看可供你使用的仪表板。 此列表可能包括其他用户已创建和共享的仪表板。
 
@@ -68,21 +68,34 @@ Azure 门户提供默认仪表板作为起点。 可以编辑默认仪表板，�
 
     - 如果你在多家组织中工作，可将“组织标识”磁贴添加到仪表板，以明确显示资源所属的组织。 
 
-1. 如果需要，请通过拖放磁贴右下角来调整磁贴的大小。
+1. 如果需要，[重设磁贴的大小或重新排列磁贴](#resize-or-rearrange-tiles)。
 
-1. 要保存更改，请在页眉中选择“保存”。 通过在页眉中选择“预览”还可以在不保存的情况下预览更改。 在预览屏幕上，可以选择“保存”以保留更改，选择“放弃”以删除更改，也可以选择“编辑”以返回到编辑选项并进行进一步更改  。
+1. 要保存更改，请在页眉中选择“保存”。 通过在页眉中选择“预览”还可以在不保存的情况下预览更改。 此预览模式还可用于查看[筛选器](#set-and-override-dashboard-filters)如何影响磁贴。 在预览屏幕上，可以选择“保存”以保留更改，选择“放弃”以删除更改，也可以选择“编辑”以返回到编辑选项并进行进一步更改  。
 
    :::image type="content" source="media/azure-portal-dashboards/dashboard-save.png" alt-text="“预览”、“保存”和“放弃”选项的屏幕截图。":::
+
+> [!NOTE]
+> 使用 markdown 磁贴可以在仪表板上显示自定义的静态内容。 这可能是基本说明、一幅图像、一组超链接甚至联系信息。 有关使用 Markdown 磁贴的详细信息，请参阅[在 Azure 仪表板上使用 Markdown 磁贴显示自定义内容](azure-portal-markdown-tile.md)。
 
 ### <a name="pin-content-from-a-resource-page"></a>固定资源页中的内容
 
 将磁贴添加到仪表板的另一种方法是直接从资源页添加。
 
-许多资源页在命令栏都包含固定图标。 如果选择此图标，则可以将表示源页的磁贴固定到现有仪表板或创建的新仪表板。
+许多资源页在页眉中包含固定图标，这意味着可以固定表示资源页的磁贴。 在某些情况下，固定图标也可能会显示在页面中的特定内容旁边，这意味着可以固定该特定内容的磁贴，而不是整个页面。
 
-![包含固定图标的页面命令栏屏幕截图](./media/azure-portal-dashboards/dashboard-pin-blade.png)
+:::image type="content" source="media/azure-portal-dashboards/dashboard-pin-blade.png" alt-text="包含固定图标的页面命令栏屏幕截图。":::
 
-在某些情况下，固定图标也可能会显示在页面中的特定内容旁边，这意味着可以固定该特定内容的磁贴，而不是整个页面。
+如果选择此图标，可以将磁贴固定到现有的专用或共享仪表板。 还可以选择“新建”来新建仪表板，其中将包含此固定。
+
+:::image type="content" source="media/azure-portal-dashboards/dashboard-pin-pane.png" alt-text="“固定到仪表板”选项的屏幕截图。":::
+
+### <a name="copy-a-tile-to-a-new-dashboard"></a>将磁贴复制到新仪表板
+
+如果想要在不同仪表板上重新使用磁贴，可以将其从一个仪表板复制到另一个仪表板。 为此，请选择右上角的上下文菜单，然后选择“复制”。
+
+:::image type="content" source="media/azure-portal-dashboards/copy-dashboard.png" alt-text="显示如何在 Azure 门户中复制磁贴的屏幕截图。":::
+
+然后，可以选择是将磁贴复制到现有的专用或共享仪表板，还是在已在其中工作的仪表板内创建磁贴的副本。 还可以选择“新建”来新建仪表板，其中将包含磁贴的副本。
 
 ### <a name="resize-or-rearrange-tiles"></a>调整或重新排列磁贴
 
@@ -96,11 +109,33 @@ Azure 门户提供默认仪表板作为起点。 可以编辑默认仪表板，�
 
 1. 选择一个磁贴，并将其拖到网格上的新位置以排列仪表板。
 
-### <a name="additional-tile-configuration"></a>其他磁贴配置
+### <a name="set-and-override-dashboard-filters"></a>设置和替代仪表板筛选器
 
-某些磁贴可能需要额外配置才能显示所需的信息。 例如，“指标图表”磁贴必须经过设置才能显示 Azure Monitor 中的指标。 还可以自定义磁贴数据以替代仪表板的默认时间设置。
+仪表板顶部附近会显示用于设置仪表板中显示的数据的“自动刷新”和“时间设置”的选项，以及用于添加其他筛选器的选项。 
 
-需要设置的任何磁贴在自定义它之前会显示一个横幅。 对于“指标图表”，横幅为“在指标中编辑”。若要自定义磁贴，请执行以下操作 ：
+:::image type="content" source="media/azure-portal-dashboards/dashboard-global-filters.png" alt-text="显示仪表板的全局筛选器的屏幕截图。":::
+
+默认情况下，每小时刷新一次数据。 若要更改此设置，请选择“自动刷新”，并选择新的刷新间隔。 完成选择后，选择“应用”。
+
+默认时间设置为“UTC 时间”，显示“过去 24 小时”的数据。  若要更改此设置，请选择按钮并选择新的时间范围、时间粒度和/或时区，然后选择“应用”。
+
+若要应用其他筛选器，请选择“添加筛选器”。 将要看到的选项因仪表板中的磁贴而异。 例如，可能只能显示特定订阅或位置的数据。 选择要使用的筛选器并进行选择。 然后，筛选器将应用于数据。 若要删除筛选器，请在其按钮中选择“X”。
+
+支持筛选的磁贴在磁贴的左上角有一个![筛选器图标](./media/azure-portal-dashboards/dashboard-filter.png)筛选器图标。 某些磁贴允许用特定于该磁贴的筛选器替代全局筛选器。 为此，请从上下文菜单中选择“配置磁贴数据”，或选择筛选器图标，然后应用所需筛选器。
+
+如果为特定磁贴设置筛选器，则该磁贴左上角将显示一个双筛选器图标，表示该磁贴中的数据反映其自己的筛选器。
+
+:::image type="content" source="media/azure-portal-dashboards/dashboard-filter-override.png" alt-text="显示带筛选器替代的磁贴图标的屏幕截图。":::
+
+## <a name="modify-tile-settings"></a>修改磁贴设置
+
+某些磁贴可能需要额外配置才能显示所需的信息。 例如，“指标图表”磁贴必须经过设置才能显示 Azure Monitor 中的指标。 还可以自定义磁贴数据以替代仪表板的默认时间设置和筛选器。
+
+## <a name="complete-tile-configuration"></a>完成磁贴配置
+
+需要设置的任何磁贴在自定义它之前会显示一个横幅。 例如，在“指标图表”中，横幅写着“在指标中编辑”。  其他横幅可能会使用不同的文本，如“配置磁贴”。
+
+若要自定义磁贴，请执行以下操作：
 
 1. 在页标题中，选择“保存”退出编辑模式。
 
@@ -108,14 +143,11 @@ Azure 门户提供默认仪表板作为起点。 可以编辑默认仪表板，�
 
     ![需要配置的磁贴的屏幕截图](./media/azure-portal-dashboards/dashboard-configure-tile.png)
 
-> [!NOTE]
-> 使用 markdown 磁贴可以在仪表板上显示自定义的静态内容。 这可能是基本说明、一幅图像、一组超链接甚至联系信息。 有关使用 Markdown 磁贴的详细信息，请参阅[在 Azure 仪表板上使用 Markdown 磁贴显示自定义内容](azure-portal-markdown-tile.md)。
+### <a name="customize-time-span-for-a-tile"></a>为磁贴自定义时间跨度
 
-### <a name="customize-tile-data"></a>自定义磁贴数据
+仪表板上的数据基于全局筛选器显示活动和刷新。 某些磁贴将允许仅为一个磁贴选择不同的时间跨度。 为此，请执行下列步骤：
 
-仪表板上的数据自动显示过去 24 小时的活动。 若要仅显示此磁贴的不同时间跨度，请执行以下步骤：
-
-1. 从上下文菜单中选择“自定义磁贴数据”，或者从磁贴左上角选择![筛选器图标](./media/azure-portal-dashboards/dashboard-filter.png)筛选器。
+1. 从上下文菜单或磁贴左上角的![筛选器图标](./media/azure-portal-dashboards/dashboard-filter.png)中选择“自定义磁贴数据”。
 
     ![磁贴上下文菜单的屏幕截图。](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
@@ -125,7 +157,7 @@ Azure 门户提供默认仪表板作为起点。 可以编辑默认仪表板，�
 
 1. 选择要为此磁贴显示的时间跨度。 可以选择过去 30 分钟到过去 30 天的时间，或者自定义范围。
 
-1. 选择要显示的时间粒度。 可以使用 1 分钟到 1 个月的增量作为显示粒度。
+1. 选择要显示的时间粒度。  可以使用 1 分钟到 1 个月的增量作为显示粒度。
 
 1. 选择“应用”。 
 

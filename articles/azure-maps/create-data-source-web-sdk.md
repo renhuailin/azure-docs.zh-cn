@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 9964c99ddfb59811fc67df634b41cede5847ede0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60c15909f542ca4ef3e1f3fb87a98e66c12368ed
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97678857"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792059"
 ---
 # <a name="create-a-data-source"></a>创建数据源
 
 Azure Maps Web SDK 将数据存储在数据源中。 使用数据源可优化用于查询和渲染的数据操作。 目前数据源有两种类型：
 
-* GeoJSON 源：本地管理 GeoJSON 格式的原始位置数据。 适合中小型数据集（成千上万个形状以上）。
-* 矢量图块源：基于地图图块系统，为当前的地图视图加载矢量图块格式的数据。 适合大型乃至超大型数据集（数百万或数十亿个形状）。
+* **GeoJSON 源**：在本地管理 GeoJSON 格式的原始位置数据。 适合中小型数据集（数十万个形状以上）。
+* **矢量图块源**：基于地图图块系统，为当前的地图视图加载矢量图块格式的数据。 适合大型乃至超大型数据集（数百万或数十亿个形状）。
 
 ## <a name="geojson-data-source"></a>GeoJSON 数据源
 
@@ -74,22 +74,22 @@ source.setShapes(geoJsonData);
 
 ## <a name="vector-tile-source"></a>矢量图块源
 
-矢量图块源介绍如何访问矢量图块层。 使用 [VectorTileSource](/javascript/api/azure-maps-control/atlas.source.vectortilesource) 类实例化矢量图块源。 矢量图块层与图块层类似，但不同。 图块层是光栅图像。 矢量图块层是压缩文件，为 PBF 格式。 压缩文件包含矢量图数据以及一个或多个层。 根据每层的样式，可以在客户端渲染并设计文件样式。 矢量图块中的数据包含点、线和多边形格式的地理功能。 相比光栅图块层，使用矢量图块层有多种优势：
+矢量图块源介绍如何访问矢量图块层。 使用 [VectorTileSource](/javascript/api/azure-maps-control/atlas.source.vectortilesource) 类实例化矢量图块源。 矢量图块层与图块层类似，但不同。 图块层是光栅图像。 矢量图块层是压缩文件，为 PBF 格式。 此压缩文件包含矢量地图数据以及一个或多个层。 根据每层的样式，可以在客户端渲染文件并设计文件样式。 矢量图块中的数据包含点、线和多边形形式的地理功能。 相比光栅图块层，使用矢量图块层有多种优势：
 
 * 矢量图块的文件大小通常比等效的光栅图块小得多。 因此，使用的带宽更少。 这意味着延迟较低、地图较快和用户体验更好。
-* 由于矢量图块在客户端渲染，所以它们适应要显示它们的设备的分辨率。 因此，渲染的地图看起来更清晰，并具有透明的标签。
-* 更改矢量图中的数据样式不需要重新下载数据，因为新样式可应用于客户端。 相反，更改光栅图块层的样式通常需要从服务器加载图块，然后再应用新样式。
+* 由于矢量图块在客户端渲染，所以它们会适应要显示它们的设备的分辨率。 因此，渲染的地图看起来更清晰，可清楚地看到标签。
+* 更改矢量地图中的数据样式不需要重新下载数据，因为新样式可应用于客户端。 相反，更改光栅图块层的样式通常需要从服务器加载图块，然后再应用新样式。
 * 由于数据以矢量形式传递，所以准备数据所需的服务器端处理更少。 因此，可以更快地提供较新的数据。
 
 Azure Maps 遵循开放式标准 - [Mapbox 矢量图块规范](https://github.com/mapbox/vector-tile-spec)。 Azure Maps 在平台中提供以下矢量图块服务：
 
-- 道路图块[文档](/rest/api/maps/renderv2/getmaptilepreview)  |  [数据格式详细信息](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
+- 道路图块[文档](/rest/api/maps/renderv2/getmaptilepreview) | [数据格式详细信息](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
 - 交通事故[文档](/rest/api/maps/traffic/gettrafficincidenttile) | [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
 - 交通流[文档](/rest/api/maps/traffic/gettrafficflowtile) | [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- 使用 Azure Maps Creator（预览版本），还可以通过[获取图块渲染器 V2](/rest/api/maps/renderv2/getmaptilepreview) 创建和访问自定义矢量图块
+- 使用 Azure Maps Creator，还可以通过[渲染器 V2 - 获取地图图块 API](/rest/api/maps/renderv2/getmaptilepreview) 创建和访问自定义矢量图块
 
 > [!TIP]
-> 通过 web SDK 使用 Azure Maps 渲染服务中的矢量或光栅图块时，可以使用占位符 `{azMapsDomain}` 替代 `atlas.microsoft.com`。 此占位符将替换为地图使用的相同域，还会自动附加相同的身份验证详细信息。 这样可大大简化使用 Azure Active Directory 身份验证时对渲染服务的身份验证。
+> 通过 Web SDK 使用 Azure Maps 渲染服务中的矢量或光栅图块时，可以使用占位符 `{azMapsDomain}` 替代 `atlas.microsoft.com`。 此占位符将替换为地图使用的相同域，还会自动附加相同的身份验证详细信息。 这样可大大简化使用 Azure Active Directory 身份验证时对渲染服务的身份验证。
 
 要在地图上显示矢量图块源中的数据，请将该源连接到数据渲染层之一。 使用矢量源的所有层都必须在选项中指定一个 `sourceLayer` 值。 以下代码可将 Azure Maps 交通流矢量图块服务加载为矢量图块源，然后使用线条层在地图上进行显示。 该矢量图块源在源层中有一个数据集，称为“交通流”。 此数据集中的线条数据包含一个 `traffic_level` 属性，在此代码中用于选择颜色和缩放线条大小。
 
@@ -140,12 +140,12 @@ map.layers.add(flowLayer, 'labels');
 
 ## <a name="connecting-a-data-source-to-a-layer"></a>将数据源连接到层
 
-地图中使用渲染层渲染数据。 一个数据源可被一个或多个渲染层引用。 以下渲染层需要数据源：
+使用渲染层在地图上渲染数据。 一个数据源可被一个或多个渲染层引用。 以下渲染层需要数据源：
 
 * [气泡层](map-add-bubble-layer.md) - 将点数据渲染为地图上的缩放圆圈。
 * [符号层](map-add-pin.md) - 将点数据渲染为图标或文本。
-* [热度地图层](map-add-heat-map-layer.md) -将点数据渲染为密度热度地图。
-* [线条层](map-add-shape.md) - 渲染线条和/或渲染多边形的轮廓。 
+* [热度地图层](map-add-heat-map-layer.md) - 将点数据渲染为密度热度地图。
+* [线条层](map-add-shape.md) - 渲染线条和/或渲染多边形边框。 
 * [多边形层](map-add-shape.md) - 使用纯色或图像图案填充多边形区域。
 
 以下代码演示了如何创建数据源，将其添加到地图中，然后将其连接到气泡层。 然后，从远程位置向数据源中导入 GeoJSON 点数据。 
@@ -167,13 +167,13 @@ source.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summ
 * [图像层](map-add-image-layer.md) -将单个图像覆盖到地图顶部，并将其角部绑定到一组指定坐标。
 * [图块层](map-add-tile-layer.md) - 将光栅图块层叠加到地图顶部。
 
-## <a name="one-data-source-with-multiple-layers"></a>一个数据源包含多个层
+## <a name="one-data-source-with-multiple-layers"></a>包含多个层的单个数据源
 
-可将多个层连接到单个数据源。 在许多不同方案中，这种选择都很有用。 例如，考虑用户绘制多边形的场景。 当用户向地图中添加点时，我们应渲染并填充多边形区域。 如果对多边形边框添加线条样式，用户在绘制时则可以更轻松地看到多边形的边缘。 要方便地编辑多边形中的单个位置，可以在每个位置上添加句柄，如引脚或标记。
+可将多个层连接到单个数据源。 在许多不同方案中，这种选择都很有用。 例如，假设用户绘制多边形的场景。 当用户向地图中添加点时，我们应渲染并填充多边形区域。 如果对多边形边框添加样式化的线条，用户在绘制时则可以更清晰地看到多边形的边缘。 若要方便地编辑多边形中的单个位置，可以在每个位置上添加图柄，如单边锁定或标记。
 
-![显示单个数据源中多层渲染数据的地图](media/create-data-source-web-sdk/multiple-layers-one-datasource.png)
+![地图，显示了从单个数据源渲染数据的多个层](media/create-data-source-web-sdk/multiple-layers-one-datasource.png)
 
-大多数地图平台中都需要一个多边形对象、一个线条对象和一个引脚来定位多边形中的每个位置。 修改多边形时，需要手动更新线条和引脚，这可能很快就变得复杂起来。
+大多数地图平台中都需要一个多边形对象、一个线条对象以及用于多边形中各个位置的单边锁定。 由于修改了多边形，因此你需要手动更新线条和单边锁定，这可能很快就变得复杂起来。
 
 使用 Azure Maps，只需数据源中创建一个多边形，如以下代码所示。
 
@@ -212,7 +212,7 @@ map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 > 使用 `map.layers.add` 函数向地图中添加层时，可以将现有层的 ID 或实例作为第二个参数传递。 这会告知地图将要添加的新层插入到现有层下方。 除传递层 ID 之外，这种方法还支持以下值。
 >
 > * `"labels"` - 将新层插入到地图标签层之下。
-> * `"transit"` -将新层插入到地图道路和中转层下方。
+> * `"transit"` - 将新层插入到地图道路和中转层之下。
 
 ## <a name="next-steps"></a>后续步骤
 

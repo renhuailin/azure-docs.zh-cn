@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: bc085163b4f738d022ab9771794ec85293de5ed8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4f46dc092776e73556a67fee705a98fa883dfbc6
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100521673"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109810689"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -93,10 +93,10 @@ ms.locfileid: "100521673"
                     * **Traffic Flow** - 流的方向。 有效值为 **I**（表示入站）和 **O**（表示出站）。
                     * **Traffic Decision** - 是允许了还是拒绝了流。 有效值为 **A**（表示已允许）和 **D**（表示已拒绝）。
                     * **Flow State - 仅限版本 2** - 捕获流的状态。 可能的状态包括 **B**：创建流时开始。 未提供统计信息。 **C**：继续执行正在进行的流。 以 5 分钟的时间间隔提供统计信息。 **E**：在流终止时结束。 已提供统计信息。
-                    * **Packets - 源到目标 - 仅限版本 2** 自上次更新以来，从源发送到目标的 TCP 或 UDP 数据包的总数。
-                    * **Bytes sent - 源到目标 - 仅限版本 2** 自上次更新以来，从源发送到目标的 TCP 或 UDP 数据包字节的总数。 数据包字节包括数据包标头和有效负载。
-                    * **Packets - 目标到源 - 仅限版本 2** 自上次更新以来，从目标发送到源的 TCP 或 UDP 数据包的总数。
-                    * **Bytes sent - 目标到源 - 仅限版本 2** 自上次更新以来，从目标发送到源的 TCP 和 UDP 数据包字节的总数。 数据包字节包括数据包标头和有效负载。
+                    * **Packets - 源到目标 - 仅限版本 2** 自上次更新以来，从源发送到目标的 TCP 数据包的总数。
+                    * **Bytes sent - 源到目标 - 仅限版本 2** 自上次更新以来，从源发送到目标的 TCP 数据包字节的总数。 数据包字节包括数据包标头和有效负载。
+                    * **Packets - 目标到源 - 仅限版本 2** 自上次更新以来，从目标发送到源的 TCP 数据包的总数。
+                    * **Bytes sent - 目标到源 - 仅限版本 2** 自上次更新以来，从目标发送到源的 TCP 数据包字节的总数。 数据包字节包括数据包标头和有效负载。
 
 
 **NSG 流日志版本 2（与版本 1 的比较）** 
@@ -339,7 +339,7 @@ ms.locfileid: "100521673"
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
-*可视化流日志*
+可视化流日志
 
 - [Azure 流量分析](./traffic-analytics.md)是一个 Azure 原生服务，用于处理流日志、提取见解以及可视化流日志。 
 - [[教程] 使用 Power BI 可视化 NSG 流日志](./network-watcher-visualize-nsg-flow-logs-power-bi.md)
@@ -347,6 +347,18 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 - [[教程] 使用 Grafana 管理和分析 NSG 流日志](./network-watcher-nsg-grafana.md)
 - [[教程] 使用 Graylog 管理和分析 NSG 流日志](./network-watcher-analyze-nsg-flow-logs-graylog.md)
 
+*禁用流日志*
+
+禁用流日志后，将停止对关联 NSG 进行流日志记录。 但流日志本身将作为一种资源继续存在，包含其所有设置和关联。 可随时启用该功能以对配置的 NSG 开始流日志记录。 有关禁用/启用流日志的步骤，请参阅[此操作方法指南](./network-watcher-nsg-flow-logging-powershell.md)。  
+
+删除流日志
+
+删除流日志后，不仅会停止关联 NSG 的流日志记录，还会将流日志资源连同其设置与关联一起删除。 若要再次开始流日志记录，必须为该 NSG 创建一个新的流日志资源。 可使用 [PowerShell](/powershell/module/az.network/remove-aznetworkwatcherflowlog)、[CLI](/cli/azure/network/watcher/flow-log#az_network_watcher_flow_log_delete) 或 [REST API](/rest/api/network-watcher/flowlogs/delete) 删除流日志。 对从 Azure 门户删除流日志的支持在管道中提供。    
+
+此外，删除 NSG 后，默认情况下也会删除关联的流日志资源。
+
+> [!NOTE]
+> 若要将 NSG 移动到不同资源组或订阅，必须删除关联的流日志，仅禁用流日志不起作用。 迁移 NSG 后，必须重新创建流日志以对其启用流日志记录。  
 
 ## <a name="nsg-flow-logging-considerations"></a>NSG 流日志记录注意事项
 
@@ -358,14 +370,14 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **流日志记录成本**：NSG 流日志记录按生成的日志量计费。 流量较高时，流日志的量和相关成本可能会增大。 NSG 流日志定价不包括基本的存储成本。 将保留策略功能与 NSG 流日志记录配合使用意味着在较长时间内会产生单独的存储成本。 若要永久保留数据，并且不希望应用任何保留策略，请将“保留期(天)”设置为“0”。 有关详细信息，请参阅[网络观察程序定价](https://azure.microsoft.com/pricing/details/network-watcher/)和 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。
 
-用户定义的入站 TCP 规则问题：[网络安全组 (NSG)](../virtual-network/network-security-groups-overview.md) 实现为[有状态防火墙](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)。 但是，由于当前平台限制，影响入站 TCP 流的用户定义的规则将以无状态方式实现。 因此，被用户定义的入站规则影响的流将变为非终止类型。 不会为这些流记录额外的字节和数据包计数。 因此，NSG 流日志（和流量分析）中报告的字节数和数据包数可能与实际数字不同。 修复这些问题的选择启用标志计划最迟于 2021 年 3 月发布。 在此期间，由于此行为而面临严重问题的客户可以通过支持部门请求选择启用；请在“网络观察程序”>“NSG 流日志”下提出支持请求。  
+用户定义的入站 TCP 规则问题：[网络安全组 (NSG)](../virtual-network/network-security-groups-overview.md) 实现为[有状态防火墙](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true)。 但是，由于当前平台限制，影响入站 TCP 流的用户定义的规则将以无状态方式实现。 因此，被用户定义的入站规则影响的流将变为非终止类型。 不会为这些流记录额外的字节和数据包计数。 因此，NSG 流日志（和流量分析）中报告的字节数和数据包数可能与实际数字不同。 修复这些问题的选择启用标志计划最迟于 2021 年 6 月发布。 在此期间，由于此行为而面临严重问题的客户可以通过支持部门请求选择启用；请在“网络观察程序” -> “NSG 流日志”下提出支持请求。  
 
 **入站流被从 Internet IP 记录到了没有公共 IP 的虚拟机**：对于没有通过与 NIC 关联的公共 IP 地址分配公共 IP 地址作为实例级公共 IP 的虚拟机，或者是属于基本负载均衡器后端池的一部分的虚拟机，请使用 [默认SNAT](../load-balancer/load-balancer-outbound-connections.md)，并使用由 Azure 分配的 IP 地址以便于进行出站连接。 因此，如果流的目的地是分配给 SNAT 的端口范围内的端口，你可能会看到来自 Internet IP 地址的流的流日志条目。 虽然 Azure 不允许将这些流传输到 VM，但是按照设计，该尝试会被记录并显示在网络观察程序的 NSG 流日志中。 我们建议使用 NSG 来显式阻止不需要的入站 Internet 流量。
 
 应用程序网关 V2 子网 NSG 的问题：当前[不支持](../application-gateway/application-gateway-faq.yml#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet)对应用程序网关 V2 子网 NSG 使用流日志记录。 此问题不会影响应用程序网关 V1。
 
 不兼容的服务：由于当前的平台限制，NSG 流日志不支持一小部分 Azure 服务。 当前不兼容的服务的列表为
-- [Azure Kubernetes 服务 (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
+- [Azure 容器实例 (ACI)](https://azure.microsoft.com/services/container-instances/)
 - [逻辑应用](https://azure.microsoft.com/services/logic-apps/) 
 
 ## <a name="best-practices"></a>最佳实践
@@ -377,6 +389,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 下面是几个常见方案：
 1. 一个 VM 上有多个 NIC：如果有多个 NIC 附加到一个虚拟机，则必须在所有这些 NIC 上启用流日志记录
 1. 在 NIC 和子网级别上都有 NSG：如果在 NIC 和子网级别都配置了 NSG，则必须也在这两个级别的 NSG 上均启用流日志记录。 
+1. “AKS 群集子网”：AKS 在群集子网添加默认 NSG。 如上点所述，必须在此默认 NSG 上启用流日志记录。
 
 **存储预配**：应该根据预期的流日志量预配存储。
 

@@ -7,13 +7,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 02/06/2019
-ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/27/2021
+ms.openlocfilehash: 39fc84e9a83f7417836c895481da27a0d00cc71f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "75979380"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137177"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中使用架构验证 XML
 
@@ -183,6 +183,14 @@ ms.locfileid: "75979380"
 1. “架构”页打开后，请选择你的架构，然后选择“删除”。
 
 1. 若要确认删除该架构，请选择“是”。
+
+## <a name="limitations"></a>限制
+
+通常，当将集成帐户与工作流结合使用并且想要验证 XML 时，可以将架构添加或上传到该帐户。 如果要引用或导入未在集成帐户中的架构，则在使用 `xsd:redefine` 元素时可能会收到以下错误：
+
+`An error occurred while processing the XML schemas: ''SchemaLocation' must successfully resolve if <redefine> contains any child other than <annotation>.'.`
+
+要解决此错误，需要使用元素 `xsd:import` 或 `xsd:include`，而不是 `xsd:redefine`，或使用 URI。
 
 ## <a name="next-steps"></a>后续步骤
 

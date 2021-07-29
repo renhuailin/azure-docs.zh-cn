@@ -5,12 +5,12 @@ ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 01/06/2021
-ms.openlocfilehash: 0ad1df23e71e652f7d380ffbabb542b81954e038
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2395aff1d9174e5a7c99c231b1af8d2997d1926
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935166"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111748042"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-with-debezium-for-change-data-capture"></a>将 Azure 事件中心上的 Apache Kafka Connect 支持与 Debezium 集成以进行变更数据捕获
 
@@ -19,16 +19,16 @@ ms.locfileid: "97935166"
 > [!WARNING]
 > 使用 Apache Kafka Connect 框架和 Debezium 平台及其连接器不符合通过 Microsoft Azure 获得产品支持的条件。
 >
-> Apache Kafka Connect 假定其动态配置保存在压缩主题中，否则会对其进行无限期保留。 Azure 事件中心[不会将压缩作为中转站功能来实现](event-hubs-federation-overview.md#log-projections)，始终会对保留的事件施加基于时间的保留限制，这源于“Azure 事件中心是实时事件流式处理引擎，而不是长期数据存储或配置存储”准则。
+> Apache Kafka Connect 假定其动态配置保存在压缩主题中，否则会对其进行无限期保留。 Azure 事件中心[不会将压缩实现为代理功能](event-hubs-federation-overview.md#log-projections)，且始终对保留的事件应用基于时间的保留期，这源于以下原则：Azure 事件中心是一个实时事件流式处理引擎，不会长期存储数据和配置。
 >
-> 虽然 Apache Kafka 项目可以将这些角色混合起来，但 Azure 认为，此类信息最好是在适当的数据库或配置存储中进行管理。
+> 虽然 Apache Kafka 项目可能接受混合这些角色，但 Azure 认为最好在适当的数据库或配置存储中管理此类信息。
 >
-> 许多 Apache Kafka Connect 方案都可以使用，但是 Apache Kafka 和 Azure 事件中心的保留模型之间的这些概念差异可能会导致某些配置无法按预期工作。 
+> 许多 Apache Kafka Connect 场景都可以正常运行，但 Apache Kafka 保留模型与 Azure 事件中心保留模型之间的这些概念差异可能会导致某些配置无法按预期工作。 
 
 本教程介绍了如何使用 [Azure 事件中心](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu)（适用于 Kafka）、[Azure DB for PostgreSQL](../postgresql/overview.md) 和 Debezium 在 Azure 上设置基于变更数据捕获的系统。 它将使用 [Debezium PostgreSQL 连接器](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html)将数据库修改从 PostgreSQL 流式传输到 Azure 事件中心内的 Kafka 主题。
 
 > [!NOTE]
-> 本文包含对术语“白名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+> 本文包含对术语“允许列表”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 在本教程中，我们将执行以下步骤：
 
@@ -179,7 +179,7 @@ psql -h my-postgres.postgres.database.azure.com -p 5432 -U testuser@my-postgres 
 **创建一个表并插入记录**
 
 ```sql
-CREATE TABLE todos (id SERIAL, description VARCHAR(50), todo_status VARCHAR(10), PRIMARY KEY(id));
+CREATE TABLE todos (id SERIAL, description VARCHAR(50), todo_status VARCHAR(12), PRIMARY KEY(id));
 
 INSERT INTO todos (description, todo_status) VALUES ('setup postgresql on azure', 'complete');
 INSERT INTO todos (description, todo_status) VALUES ('setup kafka connect', 'complete');
@@ -187,7 +187,7 @@ INSERT INTO todos (description, todo_status) VALUES ('configure and install conn
 INSERT INTO todos (description, todo_status) VALUES ('start connector', 'pending');
 ```
 
-连接器现在应当发挥作用，并将变更数据事件发送到一个事件中心主题，其中包含以下 na,e `my-server.public.todos`（假设你已将 `my-server` 用作 `database.server.name` 的值，并且 `public.todos` 是要跟踪其变更的表（根据 `table.whitelist` 配置））
+连接器现在应当发挥作用，并将变更数据事件以名称 `my-server.public.todos` 发送到一个事件中心主题，假设你已将 `my-server` 用作 `database.server.name` 的值，并且 `public.todos` 是要跟踪其变更的表（根据 `table.whitelist` 配置）
 
 **检查事件中心主题**
 

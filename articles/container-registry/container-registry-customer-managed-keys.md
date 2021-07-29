@@ -2,14 +2,14 @@
 title: 使用客户管理的密钥加密注册表
 description: 了解 Azure 容器注册表的静态加密，以及如何使用 Azure Key Vault 中存储的客户管理的密钥来加密高级注册表
 ms.topic: article
-ms.date: 03/03/2021
+ms.date: 05/27/2021
 ms.custom: ''
-ms.openlocfilehash: 9ec32e32d187a3db07f023c78efbd301ef578cbc
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 84a949e26bbf5677888185741e06139ed2d35db2
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817028"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412738"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>使用客户管理的密钥加密注册表
 
@@ -26,7 +26,7 @@ ms.locfileid: "107817028"
 
 ## <a name="things-to-know"></a>使用须知
 
-* 目前只能在创建注册表时启用客户管理的密钥。 启用密钥时，可配置用户分配托管标识以访问密钥保管库。
+* 目前只能在创建注册表时启用客户管理的密钥。 启用密钥时，可配置用户分配托管标识以访问密钥保管库。 稍后，可以根据需要启用注册表的系统管理标识以访问密钥保管库。
 * 对注册表启用使用客户管理的密钥进行的加密后，无法禁用加密。  
 * Azure 容器注册表仅支持 RSA 或 RSA-HSM 密钥。 当前不支持椭圆曲线密钥。
 * 使用客户管理的密钥加密的注册表目前不支持[内容信任](container-registry-content-trust.md)。
@@ -516,11 +516,14 @@ az keyvault delete-policy \
   --object-id $identityPrincipalID
 ```
 
-撤销密钥会有效阻止对所有注册表数据的访问，因为注册表无法访问加密密钥。 如果启用了对密钥的访问或者还原了已删除的密钥，则注册表将选取该密钥，使你可以再次访问已加密的注册表数据。
+撤销密钥会有效阻止对所有注册表数据的访问，因为注册表无法访问加密密钥。 如果启用了对密钥的访问或者还原了已删除的密钥，则注册表将选取该密钥，使你可以再次访问已加密的注册表数据。 
 
 ## <a name="advanced-scenario-key-vault-firewall"></a>高级方案：Key Vault 防火墙
 
-你可能想要使用通过 [Key Vault 防火墙](../key-vault/general/network-security.md)配置的现有 Azure Key Vault 来存储加密密钥，该密钥保管库拒绝公共访问且仅允许专用终结点或所选虚拟网络。 
+> [!IMPORTANT]
+> 目前，在注册表部署期间，注册表的用户分配标识只能配置为访问允许公共访问的密钥保管库中的加密密钥，而不能访问配置了 [Key Vault 防火墙](../key-vault/general/network-security.md)的密钥保管库中的加密密钥。 
+> 
+> 若要访问受 Key Vault 防火墙保护的密钥保管库，注册表必须使用其系统管理标识绕过防火墙。 目前，这些设置只能在部署注册表后进行配置。 
 
 对于此方案，首先使用 [Azure CLI](#enable-customer-managed-key---cli)、[门户](#enable-customer-managed-key---portal)或[模板](#enable-customer-managed-key---template)创建新的用户分配的标识、密钥保管库以及使用客户管理的密钥加密的容器注册表。 本文前面的部分介绍了详细步骤。
    > [!NOTE]

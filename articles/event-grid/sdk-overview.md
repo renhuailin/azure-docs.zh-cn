@@ -2,13 +2,13 @@
 title: Azure 事件网格 SDK
 description: 介绍 Azure 事件网格的 SDK。 这些 SDK 提供管理、发布和使用功能。
 ms.topic: reference
-ms.date: 07/07/2019
-ms.openlocfilehash: aa53aaa89a703bb88df6611cdb0dd38341248a55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/17/2021
+ms.openlocfilehash: 330f0399a16e6765a754d342580a221adc6fb7d9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955918"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062769"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>用于管理和发布的事件网格 SDK
 
@@ -31,10 +31,10 @@ ms.locfileid: "104955918"
 
 | 编程语言 | SDK 中 IsInRole 中的声明 | 
 | -------------------- | ---------- | 
-| .NET | 稳定版 SDK：[Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)<p>预览版 SDK：[Azure.Messaging.EventGrid](https://www.nuget.org/packages/Azure.Messaging.EventGrid/) |
-| Java | 稳定版 SDK：[azure-eventgrid](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)<p>预览版 SDK：[azure-messaging-eventgrid](https://search.maven.org/artifact/com.azure/azure-messaging-eventgrid/)</p> |  
-| Python | [azure-eventgrid](https://pypi.org/project/azure-eventgrid/#history)（在“版本历史记录”页面上查看最新稳定版和预发行版） |
-| Javascript | [@azure/eventgrid](https://www.npmjs.com/package/@azure/eventgrid/)（切换到“版本”选项卡来查看最新稳定版本和 beta 版本的包）。 | 
+| .NET | 最新稳定版 SDK：[Azure.Messaging.EventGrid](https://www.nuget.org/packages/Azure.Messaging.EventGrid/)<p>旧版 SDK：[Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) |
+| Java | 最新稳定版 SDK：[azure-messaging-eventgrid](https://search.maven.org/artifact/com.azure/azure-messaging-eventgrid/)<p>旧版 SDK：[azure-eventgrid](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)</p> |  
+| Python | [azure-eventgrid](https://pypi.org/project/azure-eventgrid/) |
+| JavaScript | [@azure/eventgrid](https://www.npmjs.com/package/@azure/eventgrid/) | 
 | Go | [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) |
 | Ruby | [azure_event_grid](https://rubygems.org/gems/azure_event_grid) |
 

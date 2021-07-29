@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/16/2020
+ms.date: 04/30/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a3f8a0562df4b4eeef338ddf357f37d7d0bc8f5a
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 6477283b3eb96579b943baf0aa34c2737bf43a58
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107946630"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059585"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 ID 令牌提示技术配置文件
 
@@ -82,24 +82,26 @@ OutputClaims 元素包含要从 JWT 令牌中提取的声明列表。 可能需�
 
 使用对称密钥时，以下元数据是相关的。 
 
-| Attribute | 必需 | 描述 |
+| Attribute | 必须 | 描述 |
 | --------- | -------- | ----------- |
 | 颁发者 | 是 | 标识安全令牌服务（令牌颁发者）。 此值必须与 JWT 令牌声明中的 `iss` 声明相同。 | 
 | IdTokenAudience | 是 | 标识令牌的目标接收方。 必须与 JWT 令牌声明中的 `aud` 声明相同。 | 
 
 使用非对称密钥时，以下元数据是相关的。 
 
-| Attribute | 必需 | 描述 |
+| Attribute | 必须 | 描述 |
 | --------- | -------- | ----------- |
 | METADATA| 是 | 指向令牌颁发者配置文档的 URL，也称为 OpenID 已知配置终结点。   |
 | 颁发者 | 否 | 标识安全令牌服务（令牌颁发者）。 此值可用于覆盖元数据中配置的值，并且必须与 JWT 令牌声明中的 `iss` 声明相同。 |  
 | IdTokenAudience | 否 | 标识令牌的目标接收方。 必须与 JWT 令牌声明中的 `aud` 声明相同。 |  
 
+[!INCLUDE [active-directory-b2c-https-cipher-tls-requirements](../../includes/active-directory-b2c-https-cipher-tls-requirements.md)]
+
 ## <a name="cryptographic-keys"></a>加密密钥
 
 使用对称密钥时，CryptographicKeys 元素包含以下属性：
 
-| Attribute | 必需 | 说明 |
+| Attribute | 必须 | 说明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 用于验证 JWT 令牌签名的加密密钥。|
 
@@ -185,7 +187,7 @@ $newClientSecret
 * `/.well-known/openid-configuration` - 一个已知配置终结点，其中包含有关令牌的相关信息，例如令牌颁发者名称和 JWK 终结点的链接。 
 * `/.well-known/keys` - JSON Web 密钥 (JWK) 终结点，其中包含用于对密钥（带有证书的私钥部分）进行签名的公钥。
 
-请参阅 [TokenMetadataController.cs](https://github.com/azure-ad-b2c/id-token-builder/blob/master/source-code/B2CIdTokenBuilder/Controllers/TokenMetadataController.cs) .Net MVC 控制器示例。
+请参阅 [TokenMetadataController.cs](https://github.com/azure-ad-b2c/id-token-builder/blob/master/source-code/B2CIdTokenBuilder/Controllers/TokenMetadataController.cs) .NET MVC 控制器示例。
 
 #### <a name="step-1-prepare-a-self-signed-certificate"></a>步骤 1。 准备自签名证书
 
@@ -219,7 +221,7 @@ New-SelfSignedCertificate `
       <Metadata>
         <!-- Replace with your endpoint location -->
         <Item Key="METADATA">https://your-app.azurewebsites.net/.well-known/openid-configuration</Item>
-        <Item Key="IdTokenAudience">your_optional_audience</Item> -->
+        <Item Key="IdTokenAudience">your_optional_audience</Item>
         <!-- <Item Key="issuer">your_optional_token_issuer_override</Item> -->
       </Metadata>
       <OutputClaims>

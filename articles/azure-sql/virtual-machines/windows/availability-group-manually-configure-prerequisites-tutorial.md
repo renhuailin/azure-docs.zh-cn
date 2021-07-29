@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1f7d73a6553d8baed86c87da0c4e7a5b036e99f7
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 21d9c4cebfdb22fb694cef8064991572159dcf48
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134314"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569829"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>教程：在 Azure 虚拟机中的 SQL Server 上创建可用性组的先决条件
 
@@ -35,6 +35,9 @@ ms.locfileid: "108134314"
 下图演示了在本教程中构建的内容。
 
 ![可用性组](./media/availability-group-manually-configure-prerequisites-tutorial-/00-EndstateSampleNoELB.png)
+
+>[!NOTE]
+> 现在，可以使用 Azure Migrate 将可用性组解决方案直接迁移到 Azure VM 上的 SQL Server。 有关详细信息，请参阅[迁移可用性组](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md)。 
 
 ## <a name="review-availability-group-documentation"></a>查看可用性组文档
 
@@ -88,7 +91,7 @@ Azure 会创建资源组，并在门户中固定资源组的快捷方式。
 
     下表显示了虚拟网络的设置：
 
-   | **字段** | 值 |
+   | **字段** | Value |
    | --- | --- |
    | **名称** |autoHAVNET |
    | **地址空间** |10.0.0.0/24 |
@@ -150,7 +153,7 @@ Azure 返回到门户仪表板，并在创建好新网络时发出通知。
 
 下表显示了这两个虚拟机的设置：
 
-| **字段** | 值 |
+| **字段** | Value |
 | --- | --- |
 | **名称** |第一个域控制器：*ad-primary-dc*。</br>第二个域控制器 *ad-secondary-dc*。 |
 | **VM 磁盘类型** |SSD |
@@ -348,7 +351,7 @@ Azure 会创建虚拟机。
 
 * **存储：Azure 托管磁盘**
 
-   将 Azure 托管磁盘用作虚拟机存储。 Microsoft 建议为 SQL Server 虚拟机使用托管磁盘。 托管磁盘在后台处理存储。 此外，当使用托管磁盘的虚拟机位于同一可用性集中时，Azure 会分发存储资源以提供适当冗余。 有关其他信息，请参阅 [Azure 托管磁盘概述](../../../virtual-machines/managed-disks-overview.md)。 有关可用性集中托管磁盘的具体信息，请参阅[为可用性集中的 VM 使用托管磁盘](../../../virtual-machines/availability.md)。
+   将 Azure 托管磁盘用作虚拟机存储。 Microsoft 建议为 SQL Server 虚拟机使用托管磁盘。 托管磁盘在后台处理存储。 此外，当使用托管磁盘的虚拟机位于同一可用性集中时，Azure 会分发存储资源以提供适当冗余。 有关详细信息，请参阅 [Azure 托管磁盘概述](../../../virtual-machines/managed-disks-overview.md)。 有关可用性集中托管磁盘的具体信息，请参阅[为可用性集中的 VM 使用托管磁盘](../../../virtual-machines/availability.md)。
 
 * **网络：生产环境中的专用 IP 地址**
 
@@ -363,7 +366,7 @@ Azure 会创建虚拟机。
 接下来，创建三台 VM - 两台 SQL Server VM 和一台用于其他群集节点的 VM。 若要创建每台 VM，请返回到“SQL-HA-RG”资源组，然后选择“添加”。 搜索相应的库项，选择“虚拟机”，然后选择“从库中”。 参考下表中的信息创建 VM：
 
 
-| 页 | VM1 | VM2 | VM3 |
+| Page | VM1 | VM2 | VM3 |
 | --- | --- | --- | --- |
 | 选择相应的库项 |**Windows Server 2016 Datacenter** |**Windows Server 2016 上的 SQL Server 2016 SP1 Enterprise** |**Windows Server 2016 上的 SQL Server 2016 SP1 Enterprise** |
 | 虚拟机配置 **基本信息** |**名称** = cluster-fsw<br/>**用户名** = DomainAdmin<br/>**密码** = Contoso!0000<br/>**订阅** = 自己的订阅<br/>**资源组** = SQL-HA-RG<br/>**位置** = 你的 Azure 位置 |**名称** = sqlserver-0<br/>**用户名** = DomainAdmin<br/>**密码** = Contoso!0000<br/>**订阅** = 自己的订阅<br/>**资源组** = SQL-HA-RG<br/>**位置** = 你的 Azure 位置 |**名称** = sqlserver-1<br/>**用户名** = DomainAdmin<br/>**密码** = Contoso!0000<br/>**订阅** = 自己的订阅<br/>**资源组** = SQL-HA-RG<br/>**位置** = 你的 Azure 位置 |
@@ -538,4 +541,11 @@ Azure 会创建虚拟机。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 Azure 虚拟机上创建 SQL Server AlwaysOn 可用性组](availability-group-manually-configure-tutorial.md)
+配置先决条件后，请开始[配置可用性组](availability-group-manually-configure-tutorial.md)
+
+若要了解更多信息，请参阅以下文章：
+
+- [Windows Server 故障转移群集与 Azure VM 上的 SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [Always On 可用性组与 Azure VM 上的 SQL Server](availability-group-overview.md)
+- [Always On 可用性组概述](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [Azure VM 上的 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)

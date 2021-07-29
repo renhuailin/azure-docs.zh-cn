@@ -2,35 +2,32 @@
 title: 概念 - API 管理
 description: 了解 API 管理如何保护在 Azure VMware 解决方案虚拟机 (VM) 上运行的 API
 ms.topic: conceptual
-ms.date: 10/27/2020
-ms.openlocfilehash: 958cc52c48d1121a69dca2fc901289ad1ed671cb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/28/2021
+ms.openlocfilehash: aba60f255019701722b38036c87bcb592a0a4410
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94541957"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108204524"
 ---
-# <a name="api-management-to-publish-and-protect-apis-running-on-azure-vmware-solution-based-vms"></a>API 管理用于发布和保护在基于 Azure VMware 解决方案的 VM 上运行的 API
+# <a name="publish-and-protect-apis-running-on-azure-vmware-solution-vms"></a>发布和保护在 Azure VMware 解决方案 VM 上运行的 API
 
-通过 Microsoft Azure [API 管理](https://azure.microsoft.com/services/api-management/)，可以安全地发布到内部或外部使用者。  只有开发人员和高级 SKU 允许 Azure 虚拟网络集成发布在 Azure VMware 解决方案工作负载上运行的 API。  两个 SKU 都安全地启用 API 管理服务和后端之间的连接。 
+借助 Microsoft Azure [API 管理](https://azure.microsoft.com/services/api-management/)，用户可以安全地向外部或内部使用者进行发布。  只有开发人员（开发）和高级（生产）SKU 允许 Azure 虚拟网络集成发布在 Azure VMware 解决方案工作负载上运行的 API。  这两个 SKU 均可实现 API 管理服务和后端之间的连接。 
 
->[!NOTE]
->开发人员 SKU 适用于开发和测试，而高级 SKU 适用于生产部署。
-
-对于在 Azure VMware 解决方案虚拟机 (VM) 上和本地运行的后端服务，API 管理配置是相同的。 对于两种部署，当将后端服务器放置在 Azure VMware 解决方案的 NSX 负载均衡器后面时，API 管理将负载均衡器上的虚拟 IP (VIP) 配置为后端终结点。 
+对于在 Azure VMware 解决方案虚拟机 (VM) 上和本地运行的后端服务，API 管理配置是相同的。 对于这两种部署，如果后端服务器位于 Azure VMware 解决方案的 NSX 负载均衡器后面，则 API 管理会将负载均衡器上的虚拟 IP 配置为后端终结点。 
 
 
 ## <a name="external-deployment"></a>外部部署
 
-外部部署使用公共终结点发布供外部用户使用的 API。 开发人员和 DevOps 工程师可以通过 Azure 门户或 PowerShell 以及 API 管理开发人员门户来管理 API。
+外部部署发布使用公共终结点的外部用户所使用的 API。 开发人员和 DevOps 工程师可以通过 Azure 门户、PowerShell 或 API 管理开发人员门户来管理 API。
 
 外部部署关系图显示整个过程以及涉及的执行者（显示在顶部）。 执行者包括：
 
 - 管理员：表示管理员或 DevOps 团队，该管理员通过 Azure 门户和自动化机制（如 PowerShell 或 Azure DevOps）来管理 Azure VMware 解决方案。
 
-- 用户：表示公开的 API 的使用者，同时表示使用 API 的用户和服务。
+- 用户：表示已公开 API 的使用者，同时表示使用 API 的用户和服务。
 
-流量流通过 API 管理实例，该实例抽象化插入到中心虚拟网络中的后端服务。 ExpressRoute 网关将流量路由到 ExpressRoute Global Reach 通道，并到达将传入流量分发到不同后端服务实例的 NSX 负载均衡器。
+流量会流经 API 管理实例，该实例会将插入到中心虚拟网络中的后端服务抽象化。 ExpressRoute 网关将流量路由到 ExpressRoute Global Reach 通道，并定向至 NSX 负载均衡器，后者可将传入流量分发到不同后端服务实例。
 
 API 管理具有 Azure 公共 API，建议激活 Azure DDOS 防护服务。 
 
@@ -41,7 +38,7 @@ API 管理具有 Azure 公共 API，建议激活 Azure DDOS 防护服务。
 
 内部部署发布供内部用户或系统使用的 API。 DevOps 团队和 API 开发人员使用与外部部署中相同的管理工具和开发人员门户。
 
-内部部署可[通过 Azure 应用程序网关](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)创建 API 的公共和安全终结点来完成。  网关的功能用于创建支持不同方案的混合部署。  
+使用 [Azure 应用程序网关](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)进行内部部署，以为 API 创建公共且安全的终结点。  网关的功能用于创建支持不同方案的混合部署。  
 
 * 使用面向内部使用者和外部使用者的相同 API 管理资源。
 

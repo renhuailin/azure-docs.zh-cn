@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 2924caaac5fb8c512100d9e897f7f153af9a3b3e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8b0bc143ca92961d7c358248b73ee5524e6835c3
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87284908"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768186"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Azure 虚拟机上的自定义数据和 Cloud-Init
 
@@ -80,7 +80,7 @@ Azure 目前支持两个预配代理：
 若要排查自定义数据执行问题，请查看故障排除[文档](./linux/using-cloud-init.md#troubleshooting-cloud-init)。
 
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>是否可以在创建 VM 后更新自定义数据？
 对于单个 VM，无法更新 VM 模型中的自定义数据，但对于 VMSS，你可以通过 [REST API](/rest/api/compute/virtualmachinescalesets/update) 更新 VMSS 自定义数据（不适用于 PS 或 AZ CLI 客户端）。 在 VMSS 模型中更新自定义数据时：
 * VMSS 中的现有实例只有在重置映像之后，才会获得更新的自定义数据。
@@ -92,4 +92,4 @@ Azure 目前支持两个预配代理：
 
 
 ### <a name="is-custom-data-made-available-in-imds"></a>自定义数据在 IMDS 中是否可用？
-目前不提供此功能。
+自定义数据在 IMDS 中不可用。 建议你改为通过 IMDS 使用用户数据。 有关详细信息，请参阅[通过 Azure 实例元数据服务使用用户数据](./linux/instance-metadata-service.md?tabs=linux#get-user-data)

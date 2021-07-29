@@ -5,13 +5,13 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 04/08/2021
-ms.openlocfilehash: 24298734a46b8339a2a8818692641b4c10812294
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 06/03/2021
+ms.openlocfilehash: 1228f89c2037e1a181fd1f881a1a8d0262b4dbbd
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107104875"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410128"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor 中的指标警报支持的资源
 
@@ -36,6 +36,7 @@ Azure Monitor 现在支持[新型指标警报类型](./alerts-overview.md)，它
 |Microsoft.Automation/automationAccounts | 是| 否 | [自动化帐户](../essentials/metrics-supported.md#microsoftautomationautomationaccounts) |
 |Microsoft.AVS/privateClouds | 否 | 否 | [Azure VMware 解决方案](../essentials/metrics-supported.md#microsoftavsprivateclouds) |
 |Microsoft.Batch/batchAccounts | 是 | 否 | [Batch 帐户](../essentials/metrics-supported.md#microsoftbatchbatchaccounts) |
+|Microsoft.Bing/accounts | 是 | 否 | [必应帐户](../essentials/metrics-supported.md#microsoftbingaccounts) |
 |Microsoft.BotService/botServices | 是 | 否 | [机器人服务](../essentials/metrics-supported.md#microsoftbotservicebotservices) |
 |Microsoft.Cache/redis | 是 | 是 | [用于 Redis 的 Azure 缓存](../essentials/metrics-supported.md#microsoftcacheredis) |
 |microsoft.Cdn/profiles | 是 | 否 | [CDN 配置文件](../essentials/metrics-supported.md#microsoftcdnprofiles) |
@@ -51,6 +52,7 @@ Azure Monitor 现在支持[新型指标警报类型](./alerts-overview.md)，它
 |Microsoft.Compute/cloudServices/roles | 是 | 否 |  [云服务角色](../essentials/metrics-supported.md#microsoftcomputecloudservicesroles) |
 |Microsoft.Compute/virtualMachines | 是 | 是<sup>1</sup> | [虚拟机](../essentials/metrics-supported.md#microsoftcomputevirtualmachines) |
 |Microsoft.Compute/virtualMachineScaleSets | 是 | 否 |[虚拟机规模集](../essentials/metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
+|Microsoft.ConnectedVehicle/platformAccounts | 是 | 否 |[互联车辆平台帐户](../essentials/metrics-supported.md#microsoftconnectedvehicleplatformaccounts) |
 |Microsoft.ContainerInstance/containerGroups | 是| 否 | [容器组](../essentials/metrics-supported.md#microsoftcontainerinstancecontainergroups) |
 |Microsoft.ContainerRegistry/registries | 否 | 否 | [容器注册表](../essentials/metrics-supported.md#microsoftcontainerregistryregistries) |
 |Microsoft.ContainerService/managedClusters | 是 | 否 | [托管群集](../essentials/metrics-supported.md#microsoftcontainerservicemanagedclusters) |

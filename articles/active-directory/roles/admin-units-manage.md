@@ -9,42 +9,38 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fad9356d3379e76aa259d67711d18f14a4e266f
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 78468c9528c4502ce691dec183c261b9636325f8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505269"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094323"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>在 Azure Active Directory 中管理管理单元
 
 若要在 Azure Active Directory (Azure AD) 中实现更精细的管理控制，可将用户分配到范围限定为一个或多个管理单元的 Azure AD 角色。
 
-## <a name="get-started"></a>入门
 
-1. 若要通过 [Graph 资源管理器](https://aka.ms/ge)使用以下指令运行查询，请执行以下操作：
+## <a name="prerequisites"></a>先决条件
 
-    a. 在 Azure 门户中，转到 Azure AD。 
-    
-    b. 在应用程序列表中，选择“Graph 浏览器”。
-    
-    c. 在“权限”窗格中，选择“为 Graph 浏览器授予管理员同意”。
+- 每个管理单元管理员都有 Azure AD Premium P1 或 P2 许可证
+- 管理单元成员有 Azure AD 免费许可证
+- 特权角色管理员或全局管理员
+- 使用 PowerShell 时需要 AzureAD 模块
+- 将 Graph 浏览器用于 Microsoft Graph API 时需要管理员同意
 
-    ![显示“为 Graph 浏览器授予管理员同意”链接的屏幕截图。](./media/admin-units-manage/select-graph-explorer.png)
-
-
-1. 使用 [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/)。
+有关详细信息，请参阅[使用 PowerShell 或 Graph 浏览器的先决条件](prerequisites.md)。
 
 ## <a name="add-an-administrative-unit"></a>添加管理单元
 
 可以使用 Azure 门户或 PowerShell 添加管理单元。
 
-### <a name="use-the-azure-portal"></a>使用 Azure 门户
+### <a name="azure-portal"></a>Azure 门户
 
 1. 在 Azure 门户中，转到 Azure AD。 然后，在左侧窗格中，选择“管理单元”。
 
@@ -56,9 +52,7 @@ ms.locfileid: "107505269"
 
 1. 选择蓝色的“添加”按钮以完成管理单元的操作。
 
-### <a name="use-powershell"></a>使用 PowerShell
-
-在尝试运行以下命令之前，请安装 [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/)：
+### <a name="powershell"></a>PowerShell
 
 ```powershell
 Connect-AzureAD
@@ -67,7 +61,7 @@ New-AzureADMSAdministrativeUnit -Description "West Coast region" -DisplayName "W
 
 可以根据需要修改用引号引起来的值。
 
-### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 请求
 
@@ -88,7 +82,7 @@ POST /administrativeUnits
 
 在 Azure AD 中，可以删除不再需要作为管理角色的作用域的管理单元。
 
-### <a name="use-the-azure-portal"></a>使用 Azure 门户
+### <a name="azure-portal"></a>Azure 门户
 
 1. 在 Azure 门户中，转到“Azure AD”，然后选择“管理单元” 。 
 1. 键入要删除的管理单元，然后选择“删除”。 
@@ -96,7 +90,7 @@ POST /administrativeUnits
 
 ![管理单元的“删除”按钮和确认窗口的屏幕截图。](./media/admin-units-manage/select-admin-unit-to-delete.png)
 
-### <a name="use-powershell"></a>使用 PowerShell
+### <a name="powershell"></a>PowerShell
 
 ```powershell
 $adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
@@ -105,7 +99,7 @@ Remove-AzureADMSAdministrativeUnit -Id $adminUnitObj.Id
 
 可以根据特定环境的需要修改用引号引起来的值。
 
-### <a name="use-the-graph-api"></a>使用 Graph API
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 请求
 

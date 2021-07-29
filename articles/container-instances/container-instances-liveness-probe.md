@@ -3,12 +3,12 @@ title: 在容器实例上设置运行情况探测
 description: 了解如何配置运行情况探测以重启 Azure 容器实例中不正常的容器
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: befe9693be1413abf455d915814c53aab20db53c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d88133692fbfad4c5e81eefa57c69a843448222
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86169691"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108771552"
 ---
 # <a name="configure-liveness-probes"></a>配置运行情况探测
 
@@ -23,7 +23,7 @@ Azure 容器实例还支持[就绪情况探测](container-instances-readiness-pr
 
 ## <a name="yaml-deployment"></a>YAML 部署
 
-创建包含下面的代码片段的 `liveness-probe.yaml` 文件。 此文件定义了包含最终变得不正常的 NGNIX 容器的容器组。
+创建包含下面的代码片段的 `liveness-probe.yaml` 文件。 此文件定义了一个包含最终变得不正常的 NGINX 容器的容器组。
 
 ```yaml
 apiVersion: 2019-12-01

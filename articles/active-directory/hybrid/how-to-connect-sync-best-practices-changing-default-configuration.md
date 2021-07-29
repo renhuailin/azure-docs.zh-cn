@@ -16,12 +16,12 @@ ms.date: 08/29/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70e91ff8fa3666a2dfc5aaad07be7927852b08bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afe4db68b5a5d508aaf9760f4da0a8fd15890e15
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85357692"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614857"
 ---
 # <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect 同步：有关更改默认配置的最佳实践
 本主题旨在说明支持和不支持的 Azure AD Connect 同步更改。
@@ -31,7 +31,9 @@ ms.locfileid: "85357692"
 ## <a name="changes-to-the-service-account"></a>服务帐户的更改
 Azure AD Connect 同步在安装向导创建的服务帐户下运行。 此服务帐户保存了同步使用的数据库加密密钥。它是使用 127 个字符长的密码创建的，密码设置为永不过期。
 
-* **不支持** 更改或重置服务帐户的密码。 这样做会破坏加密密钥，服务将无法访问数据库且无法启动。
+> [!WARNING]
+> 如果更改或重置 ADSync 服务帐户密码，则将无法正常启动同步服务，除非已放弃加密密钥并重新初始化 ADSync 服务帐户密码。
+> 为此，请参阅[更改 ADSync 服务帐户密码](how-to-connect-sync-change-serviceacct-pass.md)。
 
 ## <a name="changes-to-the-scheduler"></a>计划程序的更改
 从内部版本 1.1（2016 年 2 月）开始，可以将[计划程序](how-to-connect-sync-feature-scheduler.md)配置为使用非默认的同步周期（默认周期为 30 分钟）。

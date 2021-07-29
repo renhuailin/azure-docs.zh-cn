@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdef929b27c636b3908dd7a88eb93adc2382a53f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4fd158c5d19c805fe7b7592904fc42ed3117bef6
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101687731"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108764344"
 ---
 # <a name="identity-providers-for-external-identities"></a>外部标识的标识提供者
 
@@ -32,13 +32,13 @@ ms.locfileid: "101687731"
 
 - **Google**：通过 Google 联合身份验证，外部用户可以使用他们自己的 Gmail 帐户登录你的应用，来兑换你发出的邀请。 Google 联合身份验证还可以用于自助注册用户流。 了解如何将 [Google 添加为标识提供者](google-federation.md)。
    > [!IMPORTANT]
-   > 从 2021 年 1 月 4 日开始，Google 将[弃用 WebView 登录支持](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果要通过 Gmail 使用 Google 联合身份验证或自助服务注册，则应[测试业务线本机应用程序的兼容性](google-federation.md#deprecation-of-webview-sign-in-support)。
+   > 从 2021 年下半年开始，Google 将[弃用 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果正在对 B2B 邀请或 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 使用 Google 联合身份验证，或者正在将自助注册与 Gmail 一起使用，那么当你的应用通过嵌入的 Web 视图对用户进行身份验证时，Google Gmail 用户将无法登录。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
 
 - **Facebook**：生成应用时，可以配置自助注册并启用 Facebook 联合身份验证，这样用户即能够使用他们自己的 Facebook 帐户注册你的应用。 Facebook 只能用于自助注册用户流，当用户兑换你发出的邀请时不能将它用作登录选项。 了解如何将 [Facebook 添加为标识提供者](facebook-federation.md)。
 
-- **直接联合身份验证**：你还可以设置与任何支持 SAML 或 WS 联合身份验证协议的外部标识提供者的直接联合身份验证。 通过直接联合身份验证，外部用户可以使用他们现有的社交或公司帐户登录你的应用，来兑换你发出的邀请。 了解如何[设置直接联合身份验证](direct-federation.md)。
+- SAML/WS-Fed 标识提供者联合身份验证：你还可以设置与任何支持 SAML 或 WS-Fed 协议的外部 IdP 的联合身份验证。 通过 SAML/WS-Fed IdP 联合身份验证，外部用户可以使用他们现有的社交或公司帐户登录你的应用，来兑换你发出的邀请。 参阅如何[设置 SAML/WS-Fed IdP 联合身份验证](direct-federation.md)。
    > [!NOTE]
-   > 直接联合身份验证标识提供者不能用于自助注册用户流。
+   > 联合 SAML/WS-Fed IDP 不能用于自助注册用户流。
 
 ## <a name="adding-social-identity-providers"></a>添加社交标识提供者
 
@@ -60,4 +60,4 @@ ms.locfileid: "101687731"
 - [添加电子邮件一次性密码身份验证](one-time-passcode.md)
 - [添加 Google](google-federation.md) 作为允许的社交标识提供者
 - [添加 Facebook](facebook-federation.md) 作为允许的社交标识提供者
-- 与其标识提供者支持 SAML 2.0 或 WS 联合身份验证协议的任何组织[建立直接联合](direct-federation.md)。 请注意，直接联合不是自助注册用户流的选项。
+- 与其标识提供者支持 SAML 2.0 或 WS-Fed 联合身份验证协议的任何组织[建立 SAML/WS-Fed IdP 联合身份验证](direct-federation.md)。 请注意，自助注册用户流无法选择 SAML/WS-Fed IdP 联合身份验证。

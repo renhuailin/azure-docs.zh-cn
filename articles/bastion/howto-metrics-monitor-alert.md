@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Monitor 配置监视和度量值
 titleSuffix: Azure Bastion
-description: 了解使用 Azure Monitor（Azure 中指标、警报和诊断日志的解决方案）的 Azure Bastion 监视和指标。
+description: 了解如何使用 Azure Monitor 配置 Azure Bastion 的监视和指标。
 services: bastion
 author: mialdrid
 ms.service: bastion
 ms.topic: how-to
 ms.date: 03/12/2021
 ms.author: mialdrid
-ms.openlocfilehash: c4e03318fae8d8d3a8b4d29538cad49f9ef39593
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: bed26390a2a64b7bbb39f1df014d0d63ccce6a5f
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259109"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110534766"
 ---
 # <a name="how-to-configure-monitoring-and-metrics-for-azure-bastion-using-azure-monitor"></a>如何使用 Azure Monitor 配置 Azure Bastion 的监视和指标
 
@@ -29,7 +29,7 @@ Azure Bastion 有多种可用指标。 下表显示了每个可用指标的类�
 
 |**指标**|**类别**|**维度**|
 | --- | --- | --- |
-|Bastion 通信状态**|[可用性](#availability)|不适用|
+|Bastion 通信状态**|[可用性](#availability)|空值|
 |总内存量|[可用性](#availability)|实例|
 |已用 CPU|[交通](#traffic)|实例
 |已用内存|[交通](#traffic)|实例

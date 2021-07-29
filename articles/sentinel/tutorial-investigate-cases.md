@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2021
 ms.author: yelevin
-ms.openlocfilehash: 8980a8920b4f41f5a8e6afe106415032eef2055b
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: ab24c9157a82591352e3511e15d4b45c750444db
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375826"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110497652"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>教程：使用 Azure Sentinel 调查事件
 
 > [!IMPORTANT]
-> 调查图现已正式发布。 
+> 调查图现已正式发布。
 
 本教程帮助你使用 Azure Sentinel 调查事件。 将数据源连接到 Azure Sentinel 后，你希望在发生可疑情况时收到通知。 为此，Azure Sentinel 支持你创建高级警报规则，以生成可分配和调查的事件。
 
@@ -85,12 +85,14 @@ ms.locfileid: "107375826"
 
 1. 选择一个事件，然后选择“调查”。 此操作会将你转到调查图。 此图对直接连接到警报的实体以及进一步连接的每个资源进行了图示说明。
 
+
+    [ ![查看映射。](media/tutorial-investigate-cases/investigation-map.png) ](media/tutorial-investigate-cases/investigation-map.png#lightbox)
+
    > [!IMPORTANT] 
    > - 只有在设置分析规则时使用了实体映射字段，才能调查事件。 调查图要求原始事件包含实体。
    >
    > - Azure Sentinel 目前支持调查“最多 30 天前的事件”。
 
-   ![查看地图](media/tutorial-investigate-cases/map1.png)
 
 1. 选择一个实体可打开“实体”窗格，以便查看有关该实体的信息。
 
@@ -125,6 +127,8 @@ ms.locfileid: "107375826"
 - 未确定
 
 :::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="突出显示“选择分类”列表中可用分类的屏幕截图。":::
+
+有关假正和良性的详细信息，请参阅[在 Azure Sentinel 中处理假正](false-positives.md)。
 
 选择相应分类后，在“注释”字段中添加一些说明性文本。 当需要参考此事件时，这将非常有用。 完成后单击“应用”，事件将关闭。
 

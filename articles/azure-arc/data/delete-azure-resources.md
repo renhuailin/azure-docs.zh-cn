@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: ce46b7afe7344fabde03805dc2a0977411be5811
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: bde1b1f84847c3ebf05f14312b89ae8227908948
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107716072"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411172"
 ---
 # <a name="delete-resources-from-azure"></a>从 Azure 中删除资源
 
@@ -22,6 +22,18 @@ ms.locfileid: "107716072"
 
 > [!WARNING]
 > 如本文所述删除资源时，操作不可逆。
+
+## <a name="before"></a>以前
+
+删除 Azure Arc SQL 托管实例或 Azure Arc 数据控制器等资源之前，需要按照[将计费数据上传到 Azure](view-billing-data-in-azure.md#upload-billing-data-to-azure) 中所述的说明，将使用情况信息导出并上传到 Azure 进行准确的计费计算。
+
+## <a name="direct-connectivity-mode"></a>直接连接模式
+
+当群集使用直接连接模式连接到 Azure 时，请使用 Azure 门户来管理资源。 使用门户对数据控制器、托管实例和 PostgreSQL 组进行所有创建、读取、更新和删除 (CRUD) 操作。
+
+请参阅[使用 Azure 门户管理 Azure 资源](../../azure-resource-manager/management/manage-resources-portal.md)。
+
+## <a name="indirect-connectivity-mode"></a>间接连接模式
 
 在间接连接模式中，从 Kubernetes 中删除实例不会将其从 Azure 中删除，从 Azure 中删除实例也不会将其从 Kubernetes 中删除。 对于间接连接模式，删除资源分两步操作，这一点将在未来得到改进。 Kubernetes 将是事实来源，且门户将更新以反映出这一点。
 

@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/16/2020
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: a98fd5785174d681b333cdaa29fe53ae06f137e1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 435528f7338657bc7e7d486a481cdf0ce48f4d38
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101675370"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142884"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -65,7 +65,7 @@ SAP HANA 复制由一个主节点和至少一个辅助节点组成。 对主节�
 * SAP 说明 [2243692] 包含 Azure 中的 Linux 上的 SAP 许可的相关信息。
 * SAP 说明 [1999351] 包含适用于 SAP 的 Azure 增强型监视扩展的其他故障排除信息。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 包含适用于 Linux 的所有必需 SAP 说明。
-* [针对 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
+* [适用于 Linux 上的 SAP 的 Azure 虚拟机规划和实施][planning-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机部署（本文）][deployment-guide]
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * [SAP HANA system replication in pacemaker cluster](https://access.redhat.com/articles/3004101)（Pacemaker 群集中的 SAP HANA 系统复制）
@@ -108,7 +108,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
     * **SAP 系统大小**：输入新系统将提供的 SAPS 数量。 如果不确定系统需要多少 SAPS，请咨询 SAP 技术合作伙伴或系统集成商。
     * **系统可用性**：选择“HA”。
     * **管理员用户名、管理员密码或 SSH 密钥**：创建可用于登录计算机的新用户。
-    * **子网 ID**：如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示： **/Subscriptions/ \<subscription ID> /resourceGroups/ \<resource group name> /providers/Microsoft.Network/virtualNetworks/ \<virtual network name> /subnets/ \<subnet name>**。 如果要创建新的虚拟网络，请将其留空
+    * **子网 ID**：如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常类似于“/subscriptions/\<subscription ID>/resourceGroups/\<resource group name>/providers/Microsoft.Network/virtualNetworks/\<virtual network name>/subnets/\<subnet name>”。 如果要创建新的虚拟网络，请将其留空
 
 ### <a name="manual-deployment"></a>手动部署
 
@@ -125,7 +125,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 1. 添加数据磁盘。
 
 > [!IMPORTANT]
-> 负载平衡方案中的 NIC 辅助 IP 配置不支持浮动 IP。 有关详细信息，请参阅 [Azure 负载均衡器限制](../../../load-balancer/load-balancer-multivip-overview.md#limitations)。 如果需要 VM 的其他 IP 地址，请部署第二个 NIC。    
+> 负载均衡方案中的 NIC 辅助 IP 配置不支持浮动 IP。 有关详细信息，请参阅 [Azure 负载均衡器限制](../../../load-balancer/load-balancer-multivip-overview.md#limitations)。 如果你需要为 VM 提供其他 IP 地址，请部署第二个 NIC。    
 
 > [!Note]
 > 如果没有公共 IP 地址的 VM 被放在内部（无公共 IP 地址）标准 Azure 负载均衡器的后端池中，就不会有出站 Internet 连接，除非执行额外的配置来允许路由到公共终结点。 有关如何实现出站连接的详细信息，请参阅 [SAP 高可用性方案中使用 Azure 标准负载均衡器的虚拟机的公共终结点连接](./high-availability-guide-standard-load-balancer-outbound-connections.md)。  
@@ -347,12 +347,12 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
 1. **[A]** RHEL for HANA 配置
 
-   如和中所述配置 RHEL，请参阅 <https://access.redhat.com/solutions/2447641> 以下 SAP 说明：  
+   如 <https://access.redhat.com/solutions/2447641> 和以下 SAP 说明中所述配置 RHEL：  
    - [2292690 - SAP HANA DB: Recommended OS settings for RHEL 7](https://launchpad.support.sap.com/#/notes/2292690)（2292690 - SAP HANA DB：RHEL 7 的建议 OS 设置）
-   - [2777782-SAP HANA DB：适用于 RHEL 8 的建议 OS 设置](https://launchpad.support.sap.com/#/notes/2777782)
-   - [2455582-Linux：运行用 GCC 1.x 编译的 SAP 应用程序](https://launchpad.support.sap.com/#/notes/2455582)
-   - [2593824-Linux：运行用 GCC 7. x 编译的 SAP 应用程序](https://launchpad.support.sap.com/#/notes/2593824) 
-   - [2886607-Linux：运行用 GCC 6.x 编译的 SAP 应用程序](https://launchpad.support.sap.com/#/notes/2886607)
+   - [2777782 - SAP HANA DB: Recommended OS Settings for RHEL 8](https://launchpad.support.sap.com/#/notes/2777782)（2777782 - SAP HANA DB：RHEL 8 的建议 OS 设置）
+   - [2455582 - Linux: Running SAP applications compiled with GCC 6.x](https://launchpad.support.sap.com/#/notes/2455582)（2455582 - Linux：运行使用 GCC 6.x 编译的 SAP 应用程序）
+   - [2593824 - Linux: Running SAP applications compiled with GCC 7.x](https://launchpad.support.sap.com/#/notes/2593824)（2593824 - Linux：运行使用 GCC 7.x 编译的 SAP 应用程序） 
+   - [2886607 - Linux: Running SAP applications compiled with GCC 9.x](https://launchpad.support.sap.com/#/notes/2886607)（2886607 - Linux：运行使用 GCC 9.x 编译的 SAP 应用程序）
 
 1. **[A]** 安装 SAP HANA
 
@@ -559,9 +559,74 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
 按照[在 Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker](high-availability-guide-rhel-pacemaker.md) 的步骤，创建适用于此 HANA 服务器的基本 Pacemaker。
 
+## <a name="implement-the-python-system-replication-hook-saphanasr"></a>实现 Python 系统复制挂钩 SAPHanaSR
+
+这是优化与群集的集成并在需要进行群集故障转移时改进检测的重要步骤。 强烈建议配置 SAPHanaSR python 挂钩。    
+
+1. [A] 安装 HANA“系统复制挂钩”。 需要在两个 HANA DB 节点上安装挂钩。           
+
+   > [!TIP]
+   > 只能对 HANA 2.0 实现 python 挂钩。        
+
+   1. 以 `root` 身份准备挂钩。  
+
+    ```bash
+     mkdir -p /hana/shared/myHooks
+     cp /usr/share/SAPHanaSR/srHook/SAPHanaSR.py /hana/shared/myHooks
+     chown -R hn1adm:sapsys /hana/shared/myHooks
+    ```
+
+   2. 在两个节点上停止 HANA。 以 <sid\>adm 身份执行：  
+   
+    ```bash
+    sapcontrol -nr 03 -function StopSystem
+    ```
+
+   3. 在每个群集节点上调整 `global.ini`。  
+ 
+    ```bash
+    # add to global.ini
+    [ha_dr_provider_SAPHanaSR]
+    provider = SAPHanaSR
+    path = /hana/shared/myHooks
+    execution_order = 1
+    
+    [trace]
+    ha_dr_saphanasr = info
+    ```
+
+2. [A] 群集需要在每个群集节点上为 <sid\>adm 配置 sudoers。 在此示例中，通过创建新文件来实现此目的。 以 `root` 身份执行命令。    
+    ```bash
+    cat << EOF > /etc/sudoers.d/20-saphana
+    # Needed for SAPHanaSR python hook
+    hn1adm ALL=(ALL) NOPASSWD: /usr/sbin/crm_attribute -n hana_hn1_site_srHook_*
+    EOF
+    ```
+
+3. [A] 在两个节点上启动 SAP HANA。 以 <sid\>adm 身份执行。  
+
+    ```bash
+    sapcontrol -nr 03 -function StartSystem 
+    ```
+
+4. **[1]** 验证是否安装了挂钩。 在活动 HANA 系统复制站点上以 <sid\>adm 的身份执行。   
+
+    ```bash
+     cdtrace
+     awk '/ha_dr_SAPHanaSR.*crm_attribute/ \
+     { printf "%s %s %s %s\n",$2,$3,$5,$16 }' nameserver_*
+     # Example output
+     # 2021-04-12 21:36:16.911343 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-12 21:36:29.147808 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-12 21:37:04.898680 ha_dr_SAPHanaSR SOK
+
+    ```
+
+有关 SAP HANA 系统复制挂钩实现的更多详细信息，请参阅[启用 SAP HA/DR 提供程序挂钩](https://access.redhat.com/articles/3004101#enable-srhook)。  
+ 
 ## <a name="create-sap-hana-cluster-resources"></a>创建 SAP HANA 群集资源
 
-在所有节点上安装 SAP HANA 资源代理。 确保启用包含程序包的存储库。 如果使用已启用 RHEL 8.x HA 的映像，则不需要启用其他存储库。  
+在所有节点上安装 SAP HANA 资源代理。 确保启用包含程序包的存储库。 如果正在使用已启用 RHEL 8.x HA 的映像，则不需要启用其他存储库。  
 
 <pre><code># Enable repository that contains SAP HANA resource agents
 sudo subscription-manager repos --enable="rhel-sap-hana-for-rhel-7-server-rpms"
@@ -584,7 +649,7 @@ clone clone-max=2 clone-node-max=1 interleave=true
 > [!NOTE]
 > 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
-如果在 **RHEL 7、windows** 上构建群集，请使用以下命令：  
+如果在 RHEL 7.x 上构建群集，请使用以下命令：  
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
 #
@@ -605,7 +670,7 @@ sudo pcs constraint colocation add g_ip_<b>HN1</b>_<b>03</b> with master SAPHana
 sudo pcs property set maintenance-mode=false
 </code></pre>
 
-如果在 **RHEL** 2.x 上构建群集，请使用以下命令：  
+如果在 RHEL 8.x 上构建群集，请使用以下命令：  
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
 #
@@ -647,6 +712,111 @@ sudo pcs property set maintenance-mode=false
 #      nc_HN1_03  (ocf::heartbeat:azure-lb):      Started hn1-db-0
 #      vip_HN1_03 (ocf::heartbeat:IPaddr2):       Started hn1-db-0
 </code></pre>
+
+
+## <a name="configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster"></a>在 Pacemaker 群集中配置启用 HANA 活动/读取的系统复制
+
+从 SAP HANA 2.0 SPS 01 开始，SAP 允许对 SAP HANA 系统复制使用启用活动/读取的设置，在这种情况下，SAP HANA 系统复制的辅助系统可积极用于读取密集型工作负载。 若要在群集中支持此类设置，需要提供第二个虚拟 IP 地址，以便客户端能够访问启用了辅助读取的 SAP HANA 数据库。 若要确保辅助复制站点在接管后仍可以访问，群集需要将虚拟 IP 地址与 SAPHana 资源的辅助地址一起移动。
+
+本部分介绍使用第二个虚拟 IP 在 Red Hat 高可用性群集中管理启用 HANA 活动/读取系统复制所需的其他步骤。    
+
+在继续下一步之前，请确保已完全配置 Red Hat 高可用性群集管理 SAP HANA 数据库，如上文所述。  
+
+![具备启用读取辅助的 SAP HANA 高可用性](./media/sap-hana-high-availability/ha-hana-read-enabled-secondary.png)
+
+### <a name="additional-setup-in-azure-load-balancer-for-activeread-enabled-setup"></a>在 Azure 负载均衡器中进行其他设置，以实现启用活动/读取设置
+
+若要继续执行预配第二个虚拟 IP 的其他步骤，请确保已配置[手动部署](#manual-deployment)部分所述的 Azure 负载均衡器。
+
+1. 对于“标准”负载均衡器，请在前面部分中创建的同一负载平衡器上按照以下附加步骤进行操作。
+
+   a. 创建第二个前端 IP 池： 
+
+   - 打开负载均衡器，选择 **前端 IP 池**，然后选择“添加”。
+   - 输入第二个新前端 IP 池的名称（例如“hana-secondaryIP”）。
+   - 将“分配”设置为“静态”并输入 IP 地址（例如，“10.0.0.14”）  。
+   - 选择“确定”。
+   - 创建新前端 IP 池后，请记下池 IP 地址。
+
+   b. 接下来创建运行状况探测：
+
+   - 打开负载均衡器，选择 **运行状况探测**，然后选择“添加”。
+   - 输入新运行状况探测的名称（例如“hana-secondaryhp”）。
+   - 选择“TCP”作为协议，并选择端口“62603” 。 将“间隔”值保留设置为 5，将“不正常阈”值设置为 2。 
+   - 选择“确定”。
+
+   c. 接下来，创建负载均衡规则：
+
+   - 打开负载均衡器，选择 **负载均衡规则**，然后选择“添加”。
+   - 输入新负载均衡器规则的名称（例如“hana-secondarylb”）。
+   - 选择前面创建的前端 IP 地址、后端池和运行状况探测（例如“hana-secondaryIP”、“hana-backend”和“hana-secondaryhp”）。
+   - 选择“HA 端口”。
+   - 确保 **启用浮动 IP**。
+   - 选择“确定”。
+
+### <a name="configure-hana-activeread-enabled-system-replication"></a>配置启用 HANA 活动/读取的系统复制
+
+[配置 SAP HANA 2.0 系统复制](#configure-sap-hana-20-system-replication)部分介绍了配置 HANA 系统复制的步骤。 如果部署已启用读取的辅助方案，则在第二个节点上配置系统复制的同时，请以“hanasid”adm 身份执行以下命令：
+
+```
+sapcontrol -nr 03 -function StopWait 600 10 
+
+hdbnsutil -sr_register --remoteHost=hn1-db-0 --remoteInstance=03 --replicationMode=sync --name=SITE2 --operationMode=logreplay_readaccess 
+```
+
+### <a name="adding-a-secondary-virtual-ip-address-resource-for-an-activeread-enabled-setup"></a>为已启用活动/读取设置添加辅助虚拟 IP 地址资源
+
+可以通过以下命令配置第二个虚拟 IP 和适当的归置约束：
+
+```
+pcs property set maintenance-mode=true
+
+pcs resource create secvip_HN1_03 ocf:heartbeat:IPaddr2 ip="10.40.0.16"
+
+pcs resource create secnc_HN1_03 ocf:heartbeat:azure-lb port=62603
+
+pcs resource group add g_secip_HN1_03 secnc_HN1_03 secvip_HN1_03
+
+RHEL 8.x: 
+pcs constraint colocation add g_secip_HN1_03 with slave SAPHana_HN1_03-clone 4000
+RHEL 7.x:
+pcs constraint colocation add g_secip_HN1_03 with slave SAPHana_HN1_03-master 4000
+
+pcs property set maintenance-mode=false
+```
+请确保群集状态正常，并且所有资源都已启动。 第二个虚拟 IP 将与 SAPHana 辅助资源一起在辅助站点上运行。
+
+```
+sudo pcs status
+
+# Online: [ hn1-db-0 hn1-db-1 ]
+#
+# Full List of Resources:
+#   rsc_hdb_azr_agt     (stonith:fence_azure_arm):      Started hn1-db-0
+#   Clone Set: SAPHanaTopology_HN1_03-clone [SAPHanaTopology_HN1_03]:
+#     Started: [ hn1-db-0 hn1-db-1 ]
+#   Clone Set: SAPHana_HN1_03-clone [SAPHana_HN1_03] (promotable):
+#     Masters: [ hn1-db-0 ]
+#     Slaves: [ hn1-db-1 ]
+#   Resource Group: g_ip_HN1_03:
+#     nc_HN1_03         (ocf::heartbeat:azure-lb):      Started hn1-db-0
+#     vip_HN1_03        (ocf::heartbeat:IPaddr2):       Started hn1-db-0
+#   Resource Group: g_secip_HN1_03:
+#     secnc_HN1_03      (ocf::heartbeat:azure-lb):      Started hn1-db-1
+#     secvip_HN1_03     (ocf::heartbeat:IPaddr2):       Started hn1-db-1
+```
+
+在下一部分中，可以找到要执行的典型故障转移测试组。
+
+请注意第二个虚拟 IP 的行为，同时测试使用已启用读取辅助配置的 HANA 群集：
+
+1. 将“SAPHana_HN1_HDB03”群集资源迁移到“hn1-db-1”时，第二个虚拟 IP 将移到另一个服务器“hn1-db-0”。 如果已配置 AUTOMATED_REGISTER = "false"，且未自动注册 HANA 系统复制，则第二个虚拟 IP 将在“hn1-db-0”上运行，因为服务器可用且群集服务处于联机状态。  
+
+2. 测试服务器故障时，第二个虚拟 IP 资源 (“rsc_secip_HN1_HDB03”) 和 Azure 负载均衡器端口资源 (“rsc_secnc_HN1_HDB03”) 将在主服务器上与主虚拟 IP 资源一起运行。  当辅助服务器关闭时，连接到启用读取的 HANA 数据库的应用程序将连接到主 HANA 数据库。 此行为是预期行为，因为当时间辅助服务器不可用时，不希望连接到已启用读取的 HANA 数据库的应用程序无法访问。
+
+3. 当辅助服务器可用且群集服务处于联机状态时，第二个虚拟 IP 和端口资源会自动转移到辅助服务器，即使 HANA 系统复制可能无法注册为辅助服务器。 你需要确保在启动该服务器上的群集服务之前，将辅助 HANA 数据库注册为已启用读取。 可以通过设置参数 AUTOMATED_REGISTER = true 来将 HANA 实例群集资源配置为自动注册辅助副本。
+   
+4. 在故障转移和回退过程中，使用第二个虚拟 IP 连接到 HANA 数据库的应用程序的现有连接可能会中断。  
 
 ## <a name="test-the-cluster-setup"></a>测试群集设
 

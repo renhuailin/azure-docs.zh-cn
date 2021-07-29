@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: bef5942707c1ded22ba82bdb0d945b9fdb23fffa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 868d1280179d63bd07b7e01d5e807339439c02f0
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96349344"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108163600"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>在 Azure Active Directory 中为应用程序配置组声明
 
@@ -29,9 +29,9 @@ Azure Active Directory 可以在应用程序内使用的令牌中提供用户组
 > [!IMPORTANT]
 > 对于此功能，需要注意几个事项：
 >
->- 支持使用从本地同步的 sAMAccountName 和安全标识符 (SID) 特性的目的是为了能够从 AD FS 和其他标识提供者移动现有应用程序。 在 Azure AD 中管理的组不包含发出这些声明所需的特性。
->- 在较大的组织中，某个用户所属的组的数量可能会超过 Azure Active Directory 可在令牌中添加的组数限制。 SAML 令牌限制为 150 个组，JWT 限制为 200 个组。 这可能会导致不可预知的结果。 如果你的用户是大量组的成员，我们建议使用相应的选项，将声明中发出的组限制为与应用程序相关的组。  
->- 对于新的应用程序开发，或者在可以为应用程序配置嵌套组支持或不需要这种支持的情况下，我们建议使应用内授权基于应用程序角色，而不是基于组。  这种做法可以限制需要传入令牌的信息量，且更安全，而且还能将用户分配与应用配置分隔开来。
+> - 支持使用从本地同步的 sAMAccountName 和安全标识符 (SID) 特性的目的是为了能够从 AD FS 和其他标识提供者移动现有应用程序。 在 Azure AD 中管理的组不包含发出这些声明所需的特性。
+> - 在较大的组织中，某个用户所属的组的数量可能会超过 Azure Active Directory 可在令牌中添加的组数限制。 SAML 令牌限制为 150 个组，JWT 限制为 200 个组。 这可能会导致不可预知的结果。 如果你的用户是大量组的成员，我们建议使用相应的选项，将声明中发出的组限制为与应用程序相关的组。
+> - 对于新的应用程序开发，或者在可以为其配置应用程序以及不需要嵌套组支持的情况下，我们建议使应用内授权基于应用程序角色，而不是基于组。  这种做法可以限制需要传入令牌的信息量，且更安全，而且还能将用户分配与应用配置分隔开来。
 
 ## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>从 AD FS 和其他标识提供者迁移的应用程序的组声明
 
@@ -57,7 +57,7 @@ Azure Active Directory 可以在应用程序内使用的令牌中提供用户组
 但是，如果现有应用程序预期通过声明使用组信息，你可以在 Azure Active Directory 中配置一些不同的声明格式。  请考虑以下选项：
 
 - 将组成员身份用于应用程序内授权时，最好是使用组 ObjectID。 组 ObjectID 在 Azure Active Directory 中不可变且唯一，并可用于所有组。
-- 如果使用本地组 sAMAccountName 进行授权，请使用域限定的名称，这样可以减少名称冲突的可能性。 sAMAccountName 在 Active Directory 域中可能是唯一的，但如果有多个 Active Directory 域已与某个 Azure Active Directory 租户同步，则可能会出现多个组同名的情况。
+- 如果使用本地组 sAMAccountName 进行授权，请使用域限定的名称；这样可以减少名称冲突的可能性。 sAMAccountName 在 Active Directory 域中可能是唯一的，但如果有多个 Active Directory 域已与某个 Azure Active Directory 租户同步，则可能会出现多个组同名的情况。
 - 请考虑使用[应用程序角色](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md)在组成员身份与应用程序之间提供一个间接层。   然后，应用程序会根据令牌中的角色声明做出内部授权决策。
 - 如果将应用程序配置为获取已从 Active Directory 同步的组特性，而某个组并不包含这些特性，则不会将该组包含在声明中。
 - 令牌中的组声明包括嵌套组，但使用相应选项将组声明限制为已分配给应用程序的组时除外。  如果某个用户是组 B 的成员，而组 B 是组 A 的成员，则该用户的组声明将包含组 A 和组 B。 当组织中的用户是大量组的成员时，令牌中列出的组数可能会增大令牌大小。  对于 SAML 断言和 JWT，Azure Active Directory 将它在令牌中发出的组数分别限制为 150 个和 200 个。  如果某个用户是更多组的成员，则会忽略这些组，并改为在令牌中包含用于获取组信息的 Graph 终结点的链接。
@@ -76,7 +76,7 @@ Azure Active Directory 可以在应用程序内使用的令牌中提供用户组
 
 若要为库或非库 SAML 应用程序配置组声明，请打开“企业应用程序”，在列表中单击该应用程序，选择“单一登录配置”，然后选择“用户特性和声明”  。
 
-单击“添加组声明”  
+单击“添加组声明”
 
 ![显示“用户特性和声明”页的屏幕截图，其中选择了“添加组声明”。](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
 
@@ -126,7 +126,7 @@ Azure Active Directory 可以在应用程序内使用的令牌中提供用户组
 
 ### <a name="edit-the-group-claims-configuration"></a>编辑组声明配置
 
-将组声明配置添加到“用户特性和声明”配置后，用于添加组声明的选项将灰显。若要更改组声明配置，请在“其他声明”列表中单击该组声明。
+将组声明配置添加到“用户属性和声明”配置后，添加组声明的选项将灰显。若要更改组声明配置，请单击“其他声明”列表中的组声明。
 
 ![声明 UI](media/how-to-connect-fed-group-claims/group-claims-ui-7.png)
 
@@ -187,7 +187,7 @@ Azure Active Directory 可以在应用程序内使用的令牌中提供用户组
 
    在 additionalProperties 中，只需要指定“sam_account_name”、“dns_domain_and_sam_account_name”和“netbios_domain_and_sam_account_name”中的一个。  如果存在多个，则将使用第一个，而忽略其他。
 
-   某些应用程序需要角色声明中有关用户的组信息。  若要将声明类型从组声明更改为角色声明，请将“emit_as_roles”添加到附加属性。  组值将在角色声明中发出。
+   某些应用程序需要角色声明中有关用户的组信息。  要将声明类型从组声明更改为角色声明，请将“emit_as_roles”添加到附加属性。  组值将在角色声明中发出。
 
    > [!NOTE]
    > 如果使用“emit_as_roles”，则分配了用户的任何已配置应用程序角色不会显示在角色声明中
@@ -203,7 +203,7 @@ Azure Active Directory 可以在应用程序内使用的令牌中提供用户组
         "additionalProperties": ["dns_domain_and_sam_account_name"]
     }]
 }
- ```
+```
 
 若要发出以 netbiosDomain\samAccountName 格式作为 SAML 和 OIDC ID 令牌中的角色声明返回的组名，请使用以下代码：
 
@@ -218,8 +218,8 @@ Azure Active Directory 可以在应用程序内使用的令牌中提供用户组
         "name": "groups",
         "additionalProperties": ["netbios_name_and_sam_account_name", "emit_as_roles"]
     }]
- }
- ```
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 

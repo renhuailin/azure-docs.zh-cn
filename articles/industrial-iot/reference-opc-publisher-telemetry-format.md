@@ -6,16 +6,16 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: reference
 ms.date: 3/22/2021
-ms.openlocfilehash: d4aea455a33f45973c2329fb44fdda6c2a508f53
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 77469a9232361cf680eca69f4a2e9d131581d14d
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104787425"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677937"
 ---
 # <a name="opc-publisher-telemetry-format"></a>OPC 发布服务器遥测格式
 
-OPC 发布服务器 2.6 及更高版本支持标准化 OPC UA PubSub JSON 格式（如 [OPC UA 规范第 14 部分](https://opcfoundation.org/developer-tools/specifications-unified-architecture/part-14-pubsub/)所述），如下所示：
+OPC 发布服务器 2.6 及更高版本支持标准化 OPC UA PubSub JSON 格式，如 [OPC UA 规范第 14 部分](https://opcfoundation.org/developer-tools/specifications-unified-architecture/part-14-pubsub/)所述：
 ```
 {
   "MessageId": "18",
@@ -82,10 +82,15 @@ OPC 发布服务器 2.6 及更高版本支持标准化 OPC UA PubSub JSON 格式
 ```
 
 ## <a name="opc-publisher-telemetry-configuration-file-format"></a>OPC 发布服务器遥测配置文件格式
+
+> [!NOTE]
+> 遥测配置格式已弃用。 它仅在 2.5 或以下版本中可用。
+
+
 ```
     // The configuration settings file consists of two objects:
     // 1) The 'Defaults' object, which defines defaults for the telemetry configuration
-    // 2) An array 'EndpointSpecific' of endpoint specific configuration
+    // 2) An array 'EndpointSpecific' of endpoint-specific configuration
     // Both objects are optional and if they are not specified, then OPC Publisher uses
     // its internal default configuration:
     //  {
@@ -215,7 +220,7 @@ OPC 发布服务器 2.6 及更高版本支持标准化 OPC UA PubSub JSON 格式
         // or the defaults used by publisher.
         // It is not allowed to specify 'Name' and 'Flat' properties in this object.
         "EndpointSpecific": [
-            // The following shows how a endpoint specific configuration can look like:
+            // The following shows how an endpoint-specific configuration can look like:
             {
                 // 'ForEndpointUrl' allows to configure for which OPC UA server this
                 // object applies and is a required property for all objects in the

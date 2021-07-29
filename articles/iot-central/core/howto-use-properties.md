@@ -7,16 +7,16 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 39bab52a564439d34b8702de11edabe7f0d6dfbc
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: a605046c8cf76a425f7df5b1cdf637f7dc4bfc90
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106492250"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108747244"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>使用 Azure IoT Central 解决方案中的属性
 
-本操作指南介绍了如何以设备开发人员的身份使用 Azure IoT Central 应用程序的设备模板中定义的设备属性。
+本操作指南介绍了如何使用 Azure IoT Central 应用程序的设备模板中定义的设备属性。
 
 属性表示时间点值。 例如，设备可使用属性来报告它尝试达到的目标温度。 默认情况下，设备属性在 IoT Central 中是只读的。 使用可写属性，你可以在设备与 Azure IoT Central 应用程序之间同步状态。
 

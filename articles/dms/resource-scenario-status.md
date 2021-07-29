@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: 5d5706738a0d85beed839d324ae3da055cafe39a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 237de7e75007de85054501ed76b253a6eedf4346
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108747514"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111528363"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure 数据库迁移服务支持的迁移方案的状态
 
@@ -53,11 +53,16 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 | **Azure SQL VM** | SQL Server | ✔ | GA |
 |   | Oracle | X |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
-| **Azure DB for MySQL** | MySQL | ✔ |   |
-|   | RDS MySQL | X |   |
+| Azure DB for MySQL 单一服务器 | MySQL | ✔ | 公共预览版  |
+|   | RDS MySQL | ✔ | 公共预览版  |
+|   | Azure DB for MySQL* | ✔ | 公共预览版  |
+| Azure DB for MySQL 灵活服务器 | MySQL | ✔ | 公共预览版  |
+|   | RDS MySQL | ✔ | 公共预览版  |
+|   | Azure DB for MySQL* | ✔ | 公共预览版  |
 | **Azure DB for PostgreSQL（单一服务器）** | PostgreSQL | X |
 |  | RDS PostgreSQL | X |   |
-|  | Oracle | X |   |
+| Azure DB for PostgreSQL 灵活服务器 | PostgreSQL | X |
+|  | RDS PostgreSQL | X |   |
 | **Azure DB for PostgreSQL - 超大规模 (Citus)** | PostgreSQL | X |
 |  | RDS PostgreSQL | X |   |
 
@@ -79,12 +84,16 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 | **Azure DB for MySQL** | MySQL | ✔ | GA |
 |   | RDS MySQL | ✔ | GA |
 | **Azure DB for PostgreSQL（单一服务器）** | PostgreSQL | ✔ | GA |
-|   | Azure DB for PostgreSQL - 单一服务器 | ✔ | GA |
+|   | Azure DB for PostgreSQL（单一服务器*） | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
-|   | Oracle | X |   |
+| Azure DB for PostgreSQL 灵活服务器 | PostgreSQL | ✔ | GA |
+|   | Azure DB for PostgreSQL（单一服务器*） | ✔ | GA |
+|   | RDS PostgreSQL | ✔ | GA |
 | **Azure DB for PostgreSQL - 超大规模 (Citus)** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
 
+> [!NOTE]
+> 如果源数据库已在 Azure PaaS（例如 Azure DB for MySQL 或 Azure DB for PostgreSQL）中，则请在创建迁移活动时选择相应的引擎。 例如，如果要从 Azure DB for MySQL 单一服务器迁移到 Azure DB for MySQL 灵活服务器，请选择 MySQL 作为方案创建期间的源引擎。 如果要从 Azure DB for PostgreSQL 单一服务器迁移到 Azure DB for PostgreSQL 灵活服务器，请选择 PostgreSQL 作为方案创建期间的源引擎。 
 
 ## <a name="next-steps"></a>后续步骤
 

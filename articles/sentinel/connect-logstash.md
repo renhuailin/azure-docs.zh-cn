@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: da7d540a4b7982c7f743a7ae968515485b45aa5a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 328dd2145cb72de929c421e8688cd35db435ca30
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035410"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075297"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>使用 Logstash 将数据源连接到 Azure Sentinel
 
@@ -44,7 +44,11 @@ Logstash 引擎由三个组件组成：
 - 输出插件：以自定义的方式将收集和处理的数据发送到各种目标。
 
 > [!NOTE]
-> Azure Sentinel 仅支持自带的输出插件。 Azure Sentinel 不支持第三方输出插件，或其他任何类型的 Logstash 插件。
+> - Microsoft 仅支持此处讨论的由 Azure Sentinel 提供的 Logstash 输出插件。 此插件的当前版本为 v1.0.0，发布于 2020 年 8 月 25 日。 可以针对有关输出插件的任何问题[提交支持票证](https://ms.portal.azure.com/#create/Microsoft.Support)。
+>
+> - Microsoft 不支持第三方输出插件，或其他任何类型的 Logstash 插件或组件。
+>
+> - Azure Sentinel Logstash 输出插件仅支持 Logstash 版本 7.0 到 7.9。
 
 Logstash 的 Azure Sentinel 输出插件使用 Log Analytics HTTP 数据收集器 REST API 将 JSON 格式的数据发送到 Log Analytics 工作区。 数据将引入自定义日志。
 
@@ -67,19 +71,21 @@ Logstash 集合中提供了 Azure Sentinel 输出插件。
 
 | 字段名称 | 数据类型 | 说明 |
 |----------------|---------------|-----------------|
-| `workspace_id` | string | 输入工作区 ID GUID。 * |
-| `workspace_key` | string | 输入工作区主键 GUID。 * |
+| `workspace_id` | 字符串 | 输入工作区 ID GUID（参见“提示”）。 |
+| `workspace_key` | 字符串 | 输入工作区主键 GUID（参见“提示”）。 |
 | `custom_log_table_name` | string | 设置将引入日志的表格的名称。 只能为每个输出插件配置一个表格名称。 日志表格将显示在 Azure Sentinel 的“日志”下的“表格”中的“自定义日志”类别中，并带有 `_CL` 后缀  。 |
 | `endpoint` | string | 可选字段。 默认情况下，这是 Log Analytics 终结点。 使用此字段可设置备用终结点。 |
 | `time_generated_field` | string | 可选字段。 此属性将替代 Log Analytics 中默认的 TimeGenerated 字段。 在数据源中输入时间戳字段的名称。 该字段中的数据必须遵循 ISO 8601 格式 (`YYYY-MM-DDThh:mm:ssZ`) |
 | `key_names` | array | 输入 Log Analytics 输出架构字段的列表。 每个列表项都应加单引号，各项之间以逗号分隔，并且整个列表用方括号括起来。 请参阅以下示例。 |
 | `plugin_flush_interval` | 数字 | 可选字段。 设置此项以定义向 Log Analytics 传输信息的最大时间间隔（以秒为单位）。 默认值为 5。 |
-    | `amount_resizing` | boolean | True 或 False。 启用或禁用自动缩放机制，该机制根据收到的日志数据量调整消息缓冲区大小。 |
+| `amount_resizing` | boolean | True 或 False。 启用或禁用自动缩放机制，该机制根据收到的日志数据量调整消息缓冲区大小。 |
 | `max_items` | 数字 | 可选字段。 仅在 `amount_resizing` 设置为“false”时适用。 用于设置（记录中的）消息缓冲区大小的上限。 默认为 2000。  |
 | `azure_resource_id` | string | 可选字段。 定义数据所在的 Azure 资源的 ID。 <br>如果使用[资源上下文 RBAC](resource-context-rbac.md)提供仅针对特定数据的访问，则资源 ID 值特别有用。 |
 | | | |
 
-* 在“代理管理”下可找到工作区资源中的工作区 ID 和主键。
+> [!TIP]
+> - 在“代理管理”下可找到工作区资源中的工作区 ID 和主键。
+> - 但是，由于凭据和其他敏感信息在配置文件中以明文方式，这不符合安全最佳做法，因此强烈建议你使用 Logstash 密钥存储，以便安全地在配置中包括工作区 ID 和工作区主密钥。    请参阅 [Elastic 文档](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html)来获取说明。
 
 #### <a name="sample-configurations"></a>示例配置
 

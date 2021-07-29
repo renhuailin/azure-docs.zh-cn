@@ -2,13 +2,13 @@
 title: 停机时间、SLA 和中断工作簿 - Application Insights
 description: 通过 Application Insights 资源和 Azure 订阅中的单一管理平台计算和报告 Web 测试的 SLA。
 ms.topic: conceptual
-ms.date: 02/8/2021
-ms.openlocfilehash: d225627a27bffd9088956e5aee37ca543e528d4a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 05/4/2021
+ms.openlocfilehash: 4063cd28111dd0ea3c3d0cabe44f884f6605c063
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101714045"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108750521"
 ---
 # <a name="downtime-sla-and-outages-workbook"></a>停机时间、SLA 和中断工作簿
 
@@ -23,15 +23,15 @@ ms.locfileid: "101714045"
 
 工作簿中设置的参数会影响报告的其余部分。
 
-:::image type="content" source="./media/sla-report/outages.png" alt-text="停机时间和中断工作簿中的“中断/维护参数”选项卡的屏幕截图。" lightbox ="./media/sla-report/outages.png":::
+:::image type="content" source="./media/sla-report/parameters.png" alt-text="参数的屏幕截图。" lightbox= "./media/sla-report/parameters.png":::
 
-`Subscriptions`、`App Insights Resources` 和 `Web Test` 参数确定大致的资源选项。 这些参数基于 Log Analytics 查询，并用于每个报告查询。
+`Subscriptions`、 `App Insights Resources` 和  `Web Test`  参数确定大致的资源选项。 这些参数基于 Log Analytics 查询，并用于每个报告查询。
 
-`Failure Threshold` 和 `Outage Window` 使你能够确定自己的服务中断标准，例如，App Insights Availability 警报的标准基于选定时间段内的失败位置计数器。 典型阈值为五分钟时段内三个位置。
+`Failure Threshold`  和  `Outage Window`  使你能够确定自己的服务中断标准，例如，App Insights Availability 警报的标准基于选定时间段内的失败位置计数器。 典型阈值为五分钟时段内三个位置。
 
-`Maintenance Period` 使你能够选择典型维护频率，`Maintenance Window` 是示例维护时段的日期/时间选择器。 结果将忽略在确定的时段内出现的所有数据。
+`Maintenance Period`  使你能够选择典型维护频率， `Maintenance Window`  是示例维护时段的日期/时间选择器。 结果将忽略在确定的时段内出现的所有数据。
 
-`Availability Target 9s` 指定从两个 9s 到五个 9s 的 Target 9s 目标。
+`Availability Target %`  指定你的终点目标并获取自定义值。
 
 ## <a name="overview-page"></a>概述页
 

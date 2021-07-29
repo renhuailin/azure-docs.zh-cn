@@ -5,13 +5,13 @@ ms.service: stream-analytics
 author: enkrumah
 ms.author: ebnkruma
 ms.topic: how-to
-ms.date: 3/10/2020
-ms.openlocfilehash: 7c1ddbbbd8198cf769e89cfa824de370184a992c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/30/2021
+ms.openlocfilehash: f0dfc7c77ce0eeedc6a85760627988e3eddc838e
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104589678"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784912"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>使用托管标识对 Azure 流分析作业的 Power BI 进行身份验证
 
@@ -209,6 +209,13 @@ POST https://api.powerbi.com/v1.0/myorg/groups/{groupId}/users
     "principalType": "App"
 }
 ```
+
+### <a name="use-a-service-principal-to-grant-permission-for-an-asa-jobs-managed-identity"></a>使用服务主体为 ASA 作业的托管标识授予权限
+
+对于自动部署，无法使用交互式登录来授予 ASA 作业访问 Power BI 工作区的权限。 这可以通过使用服务主体为 ASA 作业的托管标识授予权限来完成。 这可以使用 PowerShell 实现：
+
+Connect-PowerBIServiceAccount -ServicePrincipal -TenantId "<tenant-id>" -CertificateThumbprint "<thumbprint>" -ApplicationId "<app-id>" Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -PrincipalType App -AccessRight Contributor
+
 
 ## <a name="remove-managed-identity"></a>删除托管标识
 

@@ -1,22 +1,22 @@
 ---
 title: 如何在 Azure IoT Central 解决方案中使用设备命令
-description: 如何在 Azure IoT Central 解决方案中使用设备命令。 本教程介绍了作为设备开发人员如何在 Azure IoT Central 应用程序的客户端应用中使用设备命令。
+description: 如何在 Azure IoT Central 解决方案中使用设备命令。 本教程介绍如何在 Azure IoT Central 应用程序的客户端应用中使用设备命令。
 author: dominicbetts
 ms.author: dobett
 ms.date: 01/07/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: e53bf377a7ef8f2293debd288ba25ef8f04ff4fc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a0a7b24c2d28e27c44a130383e852838950abe49
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98610992"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108733186"
 ---
 # <a name="how-to-use-commands-in-an-azure-iot-central-solution"></a>如何在 Azure IoT Central 解决方案中使用命令
 
-本操作指南介绍了作为设备开发人员如何使用设备模板中定义的命令。
+本操作指南介绍如何使用设备模板中定义的命令。
 
 操作员可以使用 IoT Central UI 在设备上调用命令。 命令控制设备的行为。 例如，操作员可以调用命令来重新启动设备或收集诊断数据。
 
@@ -107,7 +107,7 @@ ms.locfileid: "98610992"
 * `@type` 用于指定功能类型：`Command`
 * `name` 用于命令值。
 
-使用可选字段（如“显示名称”和“说明”），可以向接口和功能添加更多详细信息。
+可选字段（例如显示名称和说明）允许你向接口和功能添加更多详细信息。
 
 ## <a name="standard-commands"></a>标准命令
 

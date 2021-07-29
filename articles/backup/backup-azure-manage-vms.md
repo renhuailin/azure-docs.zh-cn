@@ -3,12 +3,12 @@ title: 管理和监视 Azure VM 备份
 description: 了解如何使用 Azure 备份服务管理和监视 Azure VM 备份。
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 51ce88bb67d64ce129a3479d38db9a66dfe65d0a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70ce8ababcb596c3eb804e429156000ff7d64ecc
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100635071"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111372565"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 备份服务管理 Azure VM 备份
 
@@ -21,7 +21,7 @@ ms.locfileid: "100635071"
 * 所有备份快照的总大小。
 * 启用了备份的 VM 数。
 
-可以使用仪表板以及通过向下钻取到各个 VM 来管理备份。 若要开始计算机备份，请在仪表板上打开保管库。
+可以使用仪表板以及通过向下钻取到各个 VM 来管理备份。 若要开始机器备份，请在仪表板上打开保管库：
 
 ![具有滑块的完整仪表板视图](./media/backup-azure-manage-vms/bottom-slider.png)
 

@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: 30579536b8051e9a045c217751871287636a3976
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d6f3368619395934dd358536e39f227bc66dfbfd
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102454272"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110497392"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift 支持策略
 
@@ -35,6 +35,7 @@ Azure Red Hat OpenShift 4 群集的某些配置可能会影响群集的可支持
 * 请勿设置任何 unsupportedConfigOverrides 选项。 设置这些选项可防止次要版本升级。
 * Azure Red Hat OpenShift 服务通过专用链接服务访问群集。  请勿删除或修改服务访问权限。
 * 不支持非 RHCOS 计算节点。 例如，不能使用 RHEL 计算节点。
+* 请勿在订阅或管理组中放置阻止 SRE 对 ARO 群集执行正常维护的策略，例如，要求在 ARO RP 托管的群集资源组上添加标记。
 
 ## <a name="supported-virtual-machine-sizes"></a>支持的虚拟机大小
 

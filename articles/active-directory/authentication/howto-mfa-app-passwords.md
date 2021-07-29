@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfb38f9fcdba6898b690d0af68b715fea07e80bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac603cef478b821d1fea72fce22004fc72860914
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96743099"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744460"
 ---
 # <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>使用应用密码对旧版应用程序启用和使用 Azure AD 多重身份验证
 
@@ -81,7 +81,7 @@ Azure AD 支持与本地 Active Directory 域服务 (AD DS) 联合（也称单�
 
 ## <a name="allow-users-to-create-app-passwords"></a>允许用户创建应用密码
 
-默认情况下，用户无法创建应用密码。 必须先启用应用密码功能，用户才能使用它们。 若要允许用户创建应用密码，请完成以下步骤：
+默认情况下，用户无法创建应用密码。 必须先启用应用密码功能，用户才能使用它们。 为了让用户能够创建应用密码，管理员需要完成以下步骤：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 搜索并选择“Azure Active Directory”，然后选择“用户”。 
@@ -101,7 +101,9 @@ Azure AD 支持与本地 Active Directory 域服务 (AD DS) 联合（也称单�
 
 当用户完成 Azure AD 多重身份验证的初始注册后，可以选择在注册过程结束时创建应用密码。
 
-用户还可以在注册后创建应用密码。 有关适用于用户的详细信息和详细步骤，请参阅 [Azure AD 多重身份验证中的应用密码是什么？](../user-help/multi-factor-authentication-end-user-app-passwords.md)
+用户还可以在注册后创建应用密码。 有关用户的更多信息和详细步骤，请参阅以下资源：
+* [Azure AD 多重身份验证中的应用密码是什么？](../user-help/multi-factor-authentication-end-user-app-passwords.md)
+* [从“安全信息”页创建应用密码](https://docs.microsoft.com/azure/active-directory/user-help/security-info-app-passwords)
 
 ## <a name="next-steps"></a>后续步骤
 

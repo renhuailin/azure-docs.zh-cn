@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 95f1c4bf9b599da8285ac69e299549e5aa73c2f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efb7d0a239d31d82b55b5cd5066e6003391ace45
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92519582"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558782"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>使用托管标识设置到数据源的索引器连接
 
@@ -39,7 +39,7 @@ Azure 认知搜索中的[索引器](search-indexer-overview.md)是一种爬网�
 
 以下数据源支持使用托管标识设置索引器连接。 
 
-* [Azure Blob 存储，Azure Data Lake Storage Gen2 （预览版）、Azure 表存储](search-howto-managed-identities-storage.md)
+* [Azure Blob 存储、Azure Data Lake Storage Gen2（预览版）、Azure 表存储](search-howto-managed-identities-storage.md)
 * [Azure Cosmos DB](search-howto-managed-identities-cosmos-db.md)
 * [Azure SQL 数据库](search-howto-managed-identities-sql.md)
 
@@ -51,6 +51,6 @@ Azure 认知搜索中的[索引器](search-indexer-overview.md)是一种爬网�
 
 详细了解如何使用托管标识设置索引器连接：
 
-* [Azure Blob 存储，Azure Data Lake Storage Gen2 （预览版）、Azure 表存储](search-howto-managed-identities-storage.md)
+* [Azure Blob 存储、Azure Data Lake Storage Gen2（预览版）、Azure 表存储](search-howto-managed-identities-storage.md)
 * [Azure Cosmos DB](search-howto-managed-identities-cosmos-db.md)
 * [Azure SQL 数据库](search-howto-managed-identities-sql.md)

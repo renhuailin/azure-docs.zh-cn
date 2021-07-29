@@ -3,12 +3,12 @@ title: 排查常见错误
 description: 了解如何通过 Azure Resource Graph 在查询 Azure 资源的同时排查各种 SDK 问题。
 ms.date: 05/01/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 54b680169c38cd4517c225e6452c02de8ecd4dd2
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 86d60f888dfd702e8895f560258b8ddb02d35827
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325798"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751474"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>使用 Azure Resource Graph 排查错误
 
@@ -43,15 +43,15 @@ Azure Resource Graph 基于时段为每个用户分配配额数量。 例如，�
 
 #### <a name="issue"></a>问题
 
-有权访问 1000 多个订阅（包括使用 [Azure Lighthouse](../../../lighthouse/overview.md) 的跨租户订阅的客户无法通过对 Azure Resource Graph 的单个调用获取所有订阅的数据。
+有权访问 1,000 多个订阅（包括使用 [Azure Lighthouse](../../../lighthouse/overview.md) 的跨租户订阅）的客户无法通过对 Azure Resource Graph 的一次调用获取所有订阅的数据。
 
 #### <a name="cause"></a>原因
 
-Azure CLI 和 PowerShell 仅将前 1000 个订阅转发到 Azure Resource Graph。 Azure Resource Graph 的 REST API 接受要对其执行查询的最大订阅数。
+Azure CLI 和 PowerShell 仅将前 1,000 个订阅转发到 Azure Resource Graph。 Azure Resource Graph 的 REST API 接受要对其执行查询的最大订阅数。
 
 #### <a name="resolution"></a>解决方法
 
-将对包含订阅子集的查询的批处理请求保持在 1000 个订阅的限制以下。 解决方法是在 PowerShell 中使用 Subscription 参数。
+对包含订阅子集的查询的请求进行批处理，让子集保持在 1,000 个订阅的限制以内。 解决方法是在 PowerShell 中使用 Subscription 参数。
 
 ```azurepowershell-interactive
 # Replace this query with your own
@@ -109,5 +109,5 @@ Azure Resource Graph REST API 仅支持“application/json”的 `Content-Type`�
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
 - 请通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答。
-- 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
+- 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区与适当的资源（解答、支持人员和专家）相关联来改善客户体验。
 - 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

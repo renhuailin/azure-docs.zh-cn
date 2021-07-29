@@ -3,14 +3,14 @@ title: 使用 Azure Monitor 日志监视 Azure HDInsight 群集
 description: 了解如何使用 Azure Monitor 日志监视在 HDInsight 群集中运行的作业。
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
+ms.custom: seoapr2020, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: b81a2021cabefd9587d448aa236e7e87bc254741
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.openlocfilehash: 7f828d5c0183cedca9c763eb2368d1cb460b713e
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590823"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074108"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>使用 Azure Monitor 日志监视 HDInsight 群集
 
@@ -58,7 +58,7 @@ ms.locfileid: "100590823"
 
 1. 选择“保存”。  需要几分钟来保存设置。
 
-    ![启用 HDInsight 群集的监视](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "启用 HDInsight 群集的监视")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png" alt-text="启用 HDInsight 群集的监视":::
 
 ## <a name="enable-azure-monitor-using-azure-powershell"></a>使用 Azure PowerShell 启用 Azure Monitor
 
@@ -102,7 +102,7 @@ Disable-AzHDInsightMonitoring -Name "<your-cluster>"
 
 ## <a name="enable-azure-monitor-using-azure-cli"></a>使用 Azure CLI 启用 Azure Monitor
 
-可以使用 Azure CLI `[az hdinsight monitor enable` ] (/cli/azure/hdinsight/monitor # az-enable) 命令启用 Azure Monitor 日志。
+可以使用 Azure CLI `[az hdinsight monitor enable`](/cli/azure/hdinsight/monitor#az_hdinsight_monitor_enable) 命令来启用 Azure Monitor 日志。
 
 ```azurecli
 # set variables
@@ -117,7 +117,7 @@ az hdinsight monitor enable --name $cluster --resource-group $resourceGroup --wo
 az hdinsight monitor show --name $cluster --resource-group $resourceGroup
 ```
 
-若要禁用，请使用 [`az hdinsight monitor disable`](/cli/azure/hdinsight/monitor#az-hdinsight-monitor-disable) 命令。
+若要禁用，请使用 [`az hdinsight monitor disable`](/cli/azure/hdinsight/monitor#az_hdinsight_monitor_disable) 命令。
 
 ```azurecli
 az hdinsight monitor disable --name $cluster --resource-group $resourceGroup
@@ -138,7 +138,7 @@ HDInsight 提供特定于群集的管理解决方案，可为 Azure Monitor 日�
 
 有关管理解决方案的说明，请参阅 [Azure 中的管理解决方案](../azure-monitor/insights/solutions.md#install-a-monitoring-solution)。 若要体验，请安装 HDInsight Hadoop 监视解决方案。 完成后，将看到“摘要”下列出的“HDInsightHadoop”磁贴。  选择“HDInsightHadoop”磁贴。 HDInsightHadoop 解决方案如下所示：
 
-![HDInsight 监视解决方案视图](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
+:::image type="content" source="media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png" alt-text="HDInsight 监视解决方案视图":::
 
 由于群集是全新的群集，因此报告不会显示任何活动。
 

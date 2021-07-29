@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: azla
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: e9e29a091608be54c806a98323b9e485bc7a49a8
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/08/2021
+ms.openlocfilehash: 7de89605f86e47b3062ec07160288ab14584f42e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385298"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747412"
 ---
 # <a name="create-parameters-for-values-that-change-in-workflows-across-environments-for-single-tenant-azure-logic-apps"></a>在各个环境的单租户 Azure 逻辑应用中的工作流中，针对要在其中更改的值创建参数
 
@@ -90,6 +90,16 @@ ms.locfileid: "110385298"
 
 ```azurecli
 az functionapp deploy --resource-group MyResourceGroup --name MyLogicApp --src-path C:\parameters.json --type static --target-path parameters.json
+```
+
+如果你有一个基于 NuGet 的逻辑应用项目，则必须更新项目文件 (&lt;logic-app-name&gt;.csproj) 以在生成输出中包含参数文件，例如：
+  
+```csproj
+<ItemGroup>
+  <None Update="parameters.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+  </None>
+</ItemGroup>
 ```
 
 > [!NOTE]

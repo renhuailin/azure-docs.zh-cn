@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: 2291d1fa7f890296c59661060f5a823d8eb194ba
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f9dcea1c9f25772d45e6d01e1a6b17635df9cf48
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654384"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287511"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>配置自定义警报来监视播发路由
 
@@ -271,25 +271,25 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 
 ### <a name="workflow"></a>工作流
 
-在此工作流中，我们构建一个逻辑应用来定期监视 ExpressRoute 网关。 如果存在新项，逻辑应用会针对每个项发送电子邮件。 完成后，逻辑应用看起来大致与以下工作流类似：
+对于此逻辑应用，构建定期监视 ExpressRoute 网关的工作流。 如果存在新建项目，工作流会针对每个项目发送电子邮件。 完成后，工作流看起来大致与以下工作流类似：
 
 :::image type="content" source="./media/custom-route-alert-portal/logic-apps-workflow.png" alt-text="逻辑应用工作流":::
 
 ### <a name="1-create-a-logic-app"></a>1.创建逻辑应用
 
-在“逻辑应用设计器”中，使用“空白逻辑应用”模板创建逻辑应用。 有关步骤，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)。
+在“逻辑应用设计器”中，使用“空白逻辑应用”模板创建逻辑应用。  相关步骤，请参阅[创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 :::image type="content" source="./media/custom-route-alert-portal/blank-template.png" alt-text="空白模板":::
 
 ### <a name="2-add-a-trigger"></a>2.添加触发器
 
-每个逻辑应用都由触发器启动。 触发器在发生特定事件时或特定条件得到满足时触发。 每当触发器触发时，Azure 逻辑应用引擎就会创建一个逻辑应用实例来启动并运行工作流。
+每个工作流均以触发器开始。 触发器在发生特定事件时或特定条件得到满足时触发。 每当触发器触发时，Azure 逻辑应用都会创建并运行新的工作流实例。
 
-若要定期运行基于预定义时间计划的逻辑应用，请向工作流添加内置的“重复周期:计划”。 在搜索框中键入“计划”。 选择“触发器”。 从“触发器”列表中选择“重复周期计划”。
+若要定期运行基于预定义时间计划的工作流，请向工作流添加内置的“定期”触发器。 在搜索框中键入“计划”。 选择“计划”图标。 在“触发器”列表中，选择“定期”。
 
 :::image type="content" source="./media/custom-route-alert-portal/schedule.png" alt-text="重复周期:计划":::
 
-在“重复周期计划”触发器中，可以设置时区以及重复执行该工作流时需遵循的重复周期。 时间间隔和频率合在一起，即可定义逻辑应用的触发器的计划。 若要确定合理的最小重复频率，请考虑以下因素：
+在“定期”触发器中，可以设置时区以及重复执行该工作流时需遵循的重复周期。 时间间隔和频率合在一起，即可定义工作流的触发器的计划。 若要确定合理的最小重复频率，请考虑以下因素：
 
 * 自动化 runbook 中的 PowerShell 脚本需要一定的时间才能完成。 运行时间取决于要监视的 ExpressRoute 网关数。 重复频率太高会导致作业排队。
 
@@ -303,7 +303,7 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 
 ### <a name="3-create-a-job"></a><a name="job"></a>3.创建作业
 
-逻辑应用通过连接器访问其他应用、服务和平台。 在此工作流中，下一步是选择连接器以访问先前定义的 Azure 自动化帐户。
+逻辑应用工作流通过连接器访问其他应用、服务和平台。 下一步是选择连接器以访问先前定义的 Azure 自动化帐户。
 
 1. 在“逻辑应用设计器”中，在“定期”下 选择“新建步骤”。 在“选择操作”和搜索框下，选择“全部” 。
 2. 在搜索框中键入“Azure 自动化”，然后进行搜索。 选择“创建作业”。 “创建作业”将用于触发先前创建的自动化 runbook。
@@ -334,7 +334,7 @@ Azure 逻辑应用是集合和操作的所有流程的业务流程协调程序�
 
 ### <a name="5-parse-the-json"></a><a name="parse"></a>5.分析 JSON
 
-“Azure 自动化的‘创建作业’操作”（前面的步骤）的输出中包含的信息会生成一个 JSON 对象。 逻辑应用的“分析 JSON”是一个内置操作，用于基于 JSON 内容中的属性及其值创建用户易记的令牌。 然后，你可以在工作流中使用这些属性。
+“Azure 自动化的‘创建作业’操作”（前面的步骤）的输出中包含的信息会生成一个 JSON 对象。 内置的“分析 JSON”操作基于 JSON 内容中的属性及其值创建用户易记的令牌。 然后，你可以在工作流中使用这些属性。
 
 1. 添加操作。 在“获取作业输出 -> 操作”下，选择“新建步骤”。 
 2. 在“选择操作”搜索框中键入“分析 json”以搜索提供此操作的连接器。 在“操作”列表中，选择与要使用的数据操作相对应的“分析 JSON”操作。

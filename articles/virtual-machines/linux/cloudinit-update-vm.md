@@ -5,23 +5,31 @@ author: cynthn
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
-ms.date: 04/20/2018
+ms.date: 06/01/2021
 ms.author: cynthn
 ms.subservice: cloud-init
-ms.openlocfilehash: fb6875b56b4cde41323984fd8495974d11db7f99
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: ab44e9710fc4a0a86d3225b11f7755400bca0b79
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784082"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111853291"
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>使用 cloud-init 在 Azure 的 Linux VM 中更新和安装包
 本文演示如何在 Azure 中使用 [cloud-init](https://cloudinit.readthedocs.io) 在预配时间更新 Linux 虚拟机 (VM) 或虚拟机规模集上的包。 Azure 预配资源后，这些 cloud-init 脚本即会在第一次启动时运行。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
 
 ## <a name="update-a-vm-with-cloud-init"></a>使用 cloud-init 更新 VM
-出于安全目的，你需要配置 VM，以便在首次启动时应用最新的更新。 由于 cloud-init 支持不同 Linux 发行版，因此无需为包管理器指定 `apt` 或 `yum`。 相反，你需要定义 `package_upgrade`，并让 cloud-init 进程确定正在使用的发行版的适当机制。 此工作流允许跨发行版使用相同的 cloud-init 脚本。
+出于安全目的，你需要配置 VM，以便在首次启动时应用最新的更新。 由于 cloud-init 支持不同 Linux 发行版，因此无需为包管理器指定 `apt` 或 `yum`。 相反，你需要定义 `package_upgrade`，并让 cloud-init 进程确定正在使用的发行版的适当机制。 
 
-若要查看操作中的升级进程，请在当前 shell 中创建一个名为“cloud_init_upgrade.txt”的文件并粘贴下面的配置。 对于此示例，请在不处于本地计算机上的 Cloud Shell 中创建文件。 可使用任何想要使用的编辑器。 输入 `sensible-editor cloud_init_upgrade.txt` 以创建文件并查看可用编辑器的列表。 选择 #1 以使用 nano 编辑器  。 请确保已正确复制整个 cloud-init 文件，尤其是第一行。  
+就此示例来说，我们将使用 Azure Cloud Shell。 若要查看操作中的升级进程，请创建一个名为“cloud_init_upgrade.txt”的文件并粘贴下面的配置。 
+
+在下面的代码块中选择“试用”按钮，以打开 Cloud Shell。 若要在 Cloud Shell 中创建文件并查看可用编辑器的列表，请键入以下内容：
+
+```azurecli-interactive
+sensible-editor cloud_init_upgrade.txt 
+```
+
+复制下面的文本并将其粘贴到 `cloud_init_upgrade.txt` 文件中。 请确保已正确复制整个 cloud-init 文件，尤其是第一行。  
 
 ```yaml
 #cloud-config
@@ -30,13 +38,13 @@ packages:
 - httpd
 ```
 
-在部署此映像之前，需要使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
+在部署之前，需要使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 以下示例在“eastus”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-现在，使用 [az vm create](/cli/azure/vm) 创建 VM，并通过 `--custom-data cloud_init_upgrade.txt` 指定 cloud-init 文件，如下所示：
+现在，使用 [az vm create](/cli/azure/vm) 创建 VM，并通过 `--custom-data` 参数指定 cloud-init 文件，如下所示：
 
 ```azurecli-interactive 
 az vm create \
