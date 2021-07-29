@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 6fc09f9145b7a1652b621ed38a8bf9af7c4c82a8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92106563"
 ---
 # <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 身份验证
@@ -37,7 +37,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 |服务到服务（使用客户端密钥）         |    **[✔*](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-client-secret)** |    **[✔*](data-lake-store-service-to-service-authenticate-java.md)**    |    ✔      |       ✔      |    **[✔*](data-lake-store-service-to-service-authenticate-python.md#service-to-service-authentication-with-client-secret-for-account-management)**     |    **[✔*](data-lake-store-service-to-service-authenticate-rest-api.md)**    |
 |服务到服务（使用客户端证书） |    **[✔*](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-certificate)**        |    ✔    |    ✔      |       ✔      |    ✔     |    ✔    |
 
-<i>* 单击 <b>✔\*</b> 符号。它是一个链接。</i><br>
+<i>* 单击<b>✔\*</b> 符号。这是一个链接。</i><br>
 <i>** MFA 代表多重身份验证</i>
 
 有关如何使用 Azure Active Directory 进行身份验证的详细信息，请参阅 [Authentication Scenarios for Azure Active Directory](../active-directory/develop/authentication-vs-authorization.md)（Azure Active Directory 的身份验证方案）。

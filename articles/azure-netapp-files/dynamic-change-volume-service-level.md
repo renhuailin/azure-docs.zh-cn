@@ -12,19 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 05/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 7b5bbad1f0691f76c12f161d1dd1f9d6ddc43270
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d75bd3580f66d7948d28b0d9ff34e247bc51c6b5
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102184315"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108795017"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>动态更改卷的服务级别
-
-> [!IMPORTANT] 
-> 当前不支持动态更改复制目标卷的服务级别。
 
 可以通过将现有卷移到使用所需卷[服务级别](azure-netapp-files-service-levels.md)的另一个容量池中，来更改该卷的服务级别。 这种针对卷的就地服务级别更改不需要迁移数据， 也不会影响对卷的访问。  
 
@@ -42,6 +39,8 @@ ms.locfileid: "102184315"
 
 将卷移动到另一个容量池的功能目前以预览版提供。 如果你是首次使用此功能，则需要先注册该功能。
 
+如果有多个 Azure 订阅，请确保使用[“Set-AzContext”](/powershell/module/az.accounts/set-azcontext)命令注册目标订阅。 <!-- GitHub #74191 --> 
+
 1. 注册此功能： 
 
     ```azurepowershell-interactive
@@ -51,12 +50,12 @@ ms.locfileid: "102184315"
 2. 检查功能注册的状态： 
 
     > [!NOTE]
-    > RegistrationState 可能会处于`Registering`状态长达 60 分钟，然后才更改为`Registered`状态。 请等到状态变为“已注册”后再继续。
+    > RegistrationState 可能会处于 `Registering` 状态长达 60 分钟，然后才更改为 `Registered` 状态。 请等到状态变为“已注册”后再继续。
 
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
-此外，[Azure CLI 命令](/cli/azure/feature) `az feature register` 和 `az feature show` 分别可用于注册功能和显示注册状态。 
+还可以使用 [Azure CLI 命令](/cli/azure/feature) `az feature register` 和 `az feature show` 注册功能并显示注册状态。 
  
 ## <a name="move-a-volume-to-another-capacity-pool"></a>将卷移到另一个容量池
 
