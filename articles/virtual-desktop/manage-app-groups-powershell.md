@@ -1,24 +1,24 @@
 ---
-title: 使用 PowerShell 管理 Windows 虚拟桌面的应用组 - Azure
-description: 如何使用 PowerShell 管理 Windows 虚拟桌面应用组。
+title: 使用 PowerShell 管理 Azure 虚拟桌面的应用组 - Azure
+description: 如何使用 PowerShell 管理 Azure 虚拟桌面应用组。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1652048da8084007bc86a6793f14f10b4a1f2e0f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: a900d1d92509fab7b777ca5864a51c7699cb294e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446037"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749068"
 ---
 # <a name="manage-app-groups-using-powershell"></a>使用 PowerShell 管理应用组
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/manage-app-groups-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/manage-app-groups-2019.md)。
 
-为新的 Windows 虚拟桌面主机池创建的默认应用组也会发布完整桌面。 此外，可为主机池创建一个或多个 RemoteApp 应用程序组。 请遵循本教程创建 RemoteApp 应用组并发布单个“开始”  菜单应用。
+为新的 Azure 虚拟桌面主机池创建的默认应用组也会发布完整桌面。 此外，可为主机池创建一个或多个 RemoteApp 应用程序组。 请遵循本教程创建 RemoteApp 应用组并发布单个“开始”  菜单应用。
 
 本教程介绍如何执行下列操作：
 
@@ -26,7 +26,7 @@ ms.locfileid: "106446037"
 > * 创建 RemoteApp 组。
 > * 授予对 RemoteApp 程序的访问权限。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本文假定你已按照[设置 PowerShell 模块](powershell-module.md)中的说明设置 PowerShell 模块并登录到 Azure 帐户。
 

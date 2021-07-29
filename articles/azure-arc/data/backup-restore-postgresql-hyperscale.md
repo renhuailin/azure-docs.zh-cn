@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 12/09/2020
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: 8b3304c673e8606667246a7d0df9ad8f3be11d9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ad0fbacdfe8b6205dd32ecd75e5291b504adcac
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101686693"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407770"
 ---
 # <a name="back-up-and-restore-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>备份并还原已启用 Azure Arc 的超大规模 PostgreSQL 服务器组
 
@@ -90,6 +90,9 @@ a304c6ef99694645a2a90ce339e94714  backup12072020-0822pm  9.1 MiB    Done     202
 
 ## <a name="restore-a-backup"></a>还原备份
 在此部分，我们将演示如何执行完整还原或时间点还原。 执行完整备份还原时，将还原整个备份内容。 执行时间点还原时，将还原到指定时间点。 在此时间点之后完成的任何事务都不会还原。
+
+> [!CAUTION]
+> 你只能还原到与创建备份时具有相同数量的工作器节点的服务器组。 如果你在备份之后增加或减少了工作器节点的数目，则在还原之前，你需要增加/减少工作器节点的数目，或者创建新的服务器组以匹配备份的内容。 当工作器节点的数目不匹配时，还原将失败。
 
 ### <a name="restore-a-full-backup"></a>还原完整备份
 要还原整个备份内容，请运行以下命令：
@@ -215,5 +218,5 @@ azdata arc postgres backup delete --help
 ```
 
 ## <a name="next-steps"></a>后续步骤
-- 了解如何[横向扩展（添加工作器节点）](scale-out-postgresql-hyperscale-server-group.md)服务器组
+- 了解如何[横向扩展（添加工作器节点）](scale-out-in-postgresql-hyperscale-server-group.md)服务器组
 - 了解如何[纵向扩展或缩减（增加/减少内存/vCore）](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)服务器组

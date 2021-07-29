@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: 9bb3343bc9c3dffa8f84280cd0799c7e92f4f50c
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 4231ca2330fd49bcfae28c0aa844088bdbd7f50e
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165796"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575332"
 ---
 # <a name="scenario-secure-traffic-between-application-gateway-and-backend-pools"></a>场景：确保应用程序网关和后端池之间的流量安全
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 07/02/2020
+ms.date: 05/04/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a09c4513206bea3462577ecba49b5d77b655b0e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99d8fbf65cdfd4a56f4e7bec197131a1274b0beb
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91628258"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110612794"
 ---
 # <a name="conditional-access-sign-in-risk-based-conditional-access"></a>条件访问：基于登录风险的条件访问
 
@@ -24,7 +24,7 @@ ms.locfileid: "91628258"
 
 登录风险表示给定身份验证请求未经标识所有者授权的概率。 使用 Azure AD Premium P2 许可证的组织可以创建纳入 [Azure AD 标识保护登录风险检测](../identity-protection/concept-identity-protection-risks.md#sign-in-risk)的条件访问策略。
 
-可在两个位置分配此策略。 组织应选择以下选项之一，以启用需要更改安全密码的基于登录风险的条件访问策略。
+可以在两个位置配置此策略：条件访问和标识保护。 使用条件访问策略的配置是提供更多上下文的首选方法，包括增强的诊断数据、仅报告模式集成、图形 API 支持，以及利用策略中其他条件访问属性的能力。
 
 ## <a name="enable-with-conditional-access-policy"></a>通过条件访问策略进行启用
 
