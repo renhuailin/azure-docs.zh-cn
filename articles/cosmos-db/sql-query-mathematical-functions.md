@@ -5,15 +5,15 @@ author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 05/26/2021
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 63d349c8cfff52932d51ce7143aba33521c43890
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d05322c8124372f7fe032165c9c28daa03142d4
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96549177"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110539199"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>数学函数 (Azure Cosmos DB)  
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,35 +34,33 @@ ms.locfileid: "96549177"
 
 ## <a name="functions"></a>函数
 
-以下支持的内置数学函数通常基于输入参数执行计算，并返回数值表达式：
+以下支持的内置数学函数通常基于输入参数执行计算，并返回数值表达式。 “索引使用情况”列假设，你在用相等筛选器将数学系统函数与另一个值进行比较（如果适用）。
  
-* [ABS](sql-query-abs.md)
-* [ACOS](sql-query-acos.md)
-* [ASIN](sql-query-asin.md)
-* [ATAN](sql-query-atan.md)
-* [ATN2](sql-query-atn2.md)
-* [CEILING](sql-query-ceiling.md)
-* [COS](sql-query-cos.md)
-* [COT](sql-query-cot.md)
-* [DEGREES](sql-query-degrees.md)
-* [EXP](sql-query-exp.md)
-* [FLOOR](sql-query-floor.md)
-* [LOG](sql-query-log.md)
-* [LOG10](sql-query-log10.md)
-* [PI](sql-query-pi.md)
-* [POWER](sql-query-power.md)
-* [RADIANS](sql-query-radians.md)
-* [RAND](sql-query-rand.md)
-* [ROUND](sql-query-round.md)
-* [SIGN](sql-query-sign.md)
-* [SIN](sql-query-sin.md)
-* [SQRT](sql-query-sqrt.md)
-* [SQUARE](sql-query-square.md)
-* [TAN](sql-query-tan.md)
-* [TRUNC](sql-query-trunc.md)
-
-  
-除 RAND 以外的所有数学函数都为确定性函数。 这意味着在每次使用特定的输入值集调用这些函数时，它们都将返回相同的结果。
+| 系统函数                 | 索引使用情况 | [使用标量聚合函数的查询中的索引使用情况](index-overview.md#index-utilization-for-scalar-aggregate-functions) | 备注                                                      |
+| ------------------------------- | ----------- | ------------------------------------------------------ | ------------------------------------------------------------ |
+| [ABS](sql-query-abs.md)         | 索引查找  | 索引查找                                             |                                                              |
+| [ACOS](sql-query-acos.md)       | 完全扫描   | 完全扫描                                              |                                                              |
+| [ASIN](sql-query-asin.md)       | 完全扫描   | 完全扫描                                              |                                                              |
+| [ATAN](sql-query-atan.md)       | 完全扫描   | 完全扫描                                              |                                                              |
+| [ATN2](sql-query-atn2.md)       | 完全扫描   | 完全扫描                                              |                                                              |
+| [CEILING](sql-query-ceiling.md) | 索引查找  | 索引查找                                             |                                                              |
+| [COS](sql-query-cos.md)         | 完全扫描   | 完全扫描                                              |                                                              |
+| [COT](sql-query-cot.md)         | 完全扫描   | 完全扫描                                              |                                                              |
+| [DEGREES](sql-query-degrees.md) | 索引查找  | 索引查找                                             |                                                              |
+| [EXP](sql-query-exp.md)         | 完全扫描   | 完全扫描                                              |                                                              |
+| [FLOOR](sql-query-floor.md)     | 索引查找  | 索引查找                                             |                                                              |
+| [LOG](sql-query-log.md)         | 完全扫描   | 完全扫描                                              |                                                              |
+| [LOG10](sql-query-log10.md)     | 完全扫描   | 完全扫描                                              |                                                              |
+| [PI](sql-query-pi.md)           | 空值         | 空值                                                    | PI () 返回一个常数值。 因为结果是确定的，所以与 PI() 的比较可以使用索引。 |
+| [POWER](sql-query-power.md)     | 完全扫描   | 完全扫描                                              |                                                              |
+| [RADIANS](sql-query-radians.md) | 索引查找  | 索引查找                                             |                                                              |
+| [RAND](sql-query-rand.md)       | 空值         | 空值                                                    | Rand() 返回一个随机数。 因为结果是不确定的，所以涉及 Rand() 的比较不能使用索引。 |
+| [ROUND](sql-query-round.md)     | 索引查找  | 索引查找                                             |                                                              |
+| [SIGN](sql-query-sign.md)       | 索引查找  | 索引查找                                             |                                                              |
+| [SIN](sql-query-sin.md)         | 完全扫描   | 完全扫描                                              |                                                              |
+| [SQRT](sql-query-sqrt.md)       | 完全扫描   | 完全扫描                                              |                                                              |
+| [SQUARE](sql-query-square.md)   | 完全扫描   | 完全扫描                                              |                                                              |
+| [TAN](sql-query-tan.md)         | 完全扫描   | 完全扫描                                              |                                                              |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 05/15/2020
+ms.date: 06/14/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5f78b70599d6d0ae8825accf4cc55cdc1c01d9ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9d5f47b6f1552c769a7827eeebfb46dc79d8a75
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96861232"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112077785"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-ad-multi-factor-authentication-events"></a>使用登录报告查看 Azure AD 多重身份验证事件
 
@@ -31,6 +31,7 @@ ms.locfileid: "96861232"
 
 - 登录时是否进行了 MFA？
 - 用户如何完成 MFA？
+- 登录期间使用了哪些身份验证方法？
 - 用户无法完成 MFA 的原因是什么？
 - 对多少用户进行了 MFA？
 - 无法完成 MFA 质询的用户有多少？
@@ -48,6 +49,32 @@ ms.locfileid: "96861232"
     [![屏幕截图，其中显示了 Azure 门户中的示例 Azure Active Directory 登录报告](media/howto-mfa-reporting/sign-in-report-cropped.png)](media/howto-mfa-reporting/sign-in-report.png#lightbox)
 
 如果可用，将显示身份验证，如短信、Microsoft Authenticator 应用通知或电话呼叫。
+
+“身份验证详细信息”选项卡针对每次身份验证尝试提供以下信息：
+
+- 应用于身份验证策略的列表（例如条件访问、基于用户的 MFA、安全默认值）
+- 用于登录的身份验证方法序列
+- 身份验证尝试是否成功
+- 有关身份验证尝试成功或失败的原因的详细信息
+
+此信息允许管理员排查用户登录中每个步骤的问题，并进行跟踪：
+
+- 受多重身份验证保护的登录数量 
+- 每个身份验证方法的使用情况和成功率 
+- 使用无密码身份验证方法（如无密码的手机登录、FIDO2 和 Windows Hello 企业版） 
+- 令牌声明满足身份验证要求的频率（不以交互方式提示用户输入密码、输入短信 OTP 等）
+
+查看登录报告，请选择“身份验证详细信息”： 
+
+![“身份验证详细信息”选项卡的屏幕截图](media/howto-mfa-reporting/auth-details-tab.png)
+
+>[!NOTE]
+>OATH 验证码作为 OATH 硬件和软件令牌（Microsoft Authenticator 应用）的身份验证方法被记录。
+
+>[!IMPORTANT]
+>“身份验证详细信息”选项卡最初显示的数据可能不完整或不准确，直到日志信息完全聚合后才会完整且准确。 已知示例包括： 
+>- 最初记录登录事件时，会错误地显示以下消息：“满足令牌中的声明”。 
+>- 最初不会记录“主身份验证”行。 
 
 以下详细信息显示在登录事件的“身份验证详细信息”窗口上，该事件显示 MFA 请求是得到满足还是遭到拒绝：
 
@@ -108,11 +135,7 @@ Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods.Count -eq 0 -an
 标识已注册的用户和输出方法：
 
 ```powershell
-Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalName}},
-
-@{N='MFA Status';E={if ($_.StrongAuthenticationRequirements.State){$_.StrongAuthenticationRequirements.State} else {"Disabled"}}},
-
-@{N='MFA Methods';E={$_.StrongAuthenticationMethods.methodtype}} | Export-Csv -Path c:\MFA_Report.csv -NoTypeInformation
+Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalName}},@{N='MFA Status';E={if ($_.StrongAuthenticationRequirements.State){$_.StrongAuthenticationRequirements.State} else {"Disabled"}}},@{N='MFA Methods';E={$_.StrongAuthenticationMethods.methodtype}} | Export-Csv -Path c:\MFA_Report.csv -NoTypeInformation
 ```
 
 ## <a name="downloaded-activity-reports-result-codes"></a>已下载的活动报告结果代码
@@ -167,6 +190,7 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 | FAILED_AUTH_RESULT_TIMEOUT | 身份验证结果超时 | 用户完成多重身份验证尝试所用的时间过长。 |
 | FAILED_AUTHENTICATION_THROTTLED | 已限制身份验证 | 服务已限制多重身份验证尝试。 |
 
+
 ## <a name="additional-mfa-reports"></a>其他 MFA 报告
 
 以下其他信息和报告可用于 MFA 事件，包括可用于 MFA 服务器的信息和报告：
@@ -177,6 +201,7 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 | 本地组件的使用情况 | Azure AD > 安全性 > MFA > 活动报告 | 提供有关通过 NPS 扩展、ADFS 和 MFA 服务器实现的 MFA 服务器的总体使用情况信息。 |
 | 跳过的用户历史记录 | Azure AD > 安全性 > MFA > 免验证一次 | 提供 MFA 服务器请求历史记录，请求内容为跳过用户 MFA。 |
 | 服务器状态 | Azure AD > 安全性 > MFA > 服务器状态 | 显示与帐户关联的 MFA 服务器的状态。 |
+
 
 ## <a name="next-steps"></a>后续步骤
 

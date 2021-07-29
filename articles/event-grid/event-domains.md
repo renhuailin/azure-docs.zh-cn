@@ -3,12 +3,12 @@ title: Azure 事件网格中的事件域
 description: 本文介绍如何使用事件域来管理各种业务组织、客户或应用程序的自定义事件流。
 ms.topic: conceptual
 ms.date: 04/13/2021
-ms.openlocfilehash: 32c06ac55f667ec9807c7952127c2cf0f0384024
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 78a785d3f1ee0431b11e8c14c3e48f4a156b5fd4
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374703"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537778"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>了解用于管理事件网格主题的事件域
 
@@ -45,7 +45,7 @@ ms.locfileid: "107374703"
 订阅事件域中主题的事件与[创建自定义主题的事件订阅](./custom-event-quickstart.md)或订阅 Azure 服务中的事件相同。
 
 > [!IMPORTANT]
-> 域主题在事件网格中被视为自动托管资源。 可以在域主题范围内创建事件订阅，而无需创建域主题。 在这种情况下，事件网格会代表你自动创建域主题。 当然，你仍然可以选择手动创建域主题。 通过此行为，你可以在处理大量域主题时少担心一个资源。 删除域主题的最后一个订阅时，还会删除域主题，无论该域主题是手动创建还是自动创建的。 
+> 域主题在事件网格中被视为自动托管资源。 可以在[域范围](#domain-scope-subscriptions)内创建事件订阅，而无需创建域主题。 在这种情况下，事件网格会代表你自动创建域主题。 当然，你仍然可以选择手动创建域主题。 通过此行为，你可以在处理大量域主题时少担心一个资源。 删除域主题的最后一个订阅时，还会删除域主题，无论该域主题是手动创建还是自动创建的。 
 
 ### <a name="domain-scope-subscriptions"></a>域范围订阅
 

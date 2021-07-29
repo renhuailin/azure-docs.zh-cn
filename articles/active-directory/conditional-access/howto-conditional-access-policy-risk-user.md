@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 07/02/2020
+ms.date: 05/04/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5423a61c8febee72f32935f3dee4e9f9e868630
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a6509c7b47a0f8c3f36df72e1d3aa16c834594f
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89049071"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110612811"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>条件访问：基于用户风险的条件访问
 
 Microsoft 会与研究人员、执法机构、Microsoft 安全团队以及其他受信任的源合作，以查找已泄露的用户名和密码对。 使用 Azure AD Premium P2 许可证的组织可以创建包含 [Azure AD 标识保护用户风险检测](../identity-protection/concept-identity-protection-risks.md#user-risk)的条件访问策略。 
 
-可在两个位置分配此策略。 组织应选择以下选项之一，以启用需要更改安全密码的基于用户风险的条件访问策略。
+可以在两个位置配置此策略：条件访问和标识保护。 使用条件访问策略的配置是提供更多上下文的首选方法，包括增强的诊断数据、仅报告模式集成、图形 API 支持，以及利用策略中其他条件访问属性的能力。
 
 ## <a name="enable-with-conditional-access-policy"></a>通过条件访问策略进行启用
 
@@ -53,7 +53,7 @@ Microsoft 会与研究人员、执法机构、Microsoft 安全团队以及其他
    1. 选择“选择”，然后选择“完成” 。
 1. 在“控制” > “访问权限”下选择“允许访问”，然后选择“需要更改密码”。
    1. 选择“选择”。
-1. 将“强制实施策略”设置为“打开”。
+1. 将“强制实施策略”设置为“打开” 。
 1. 选择“保存”。
 
 ## <a name="next-steps"></a>后续步骤

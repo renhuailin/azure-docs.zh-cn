@@ -6,16 +6,16 @@ ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: MashaMSFT
+author: rajeshsetlem
+ms.author: rsetlem
+ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: fc8959d44fbacd90916a045d23db4bee872c4670
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 489ba57063244d399c9dd0255641568f2db5c6de
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105026030"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112034556"
 ---
 # <a name="assessment-rules-for-sql-server-to--azure-sql-managed-instance-migration"></a>SQL Server 到 Azure SQL 托管实例迁移的评估规则
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -56,14 +56,13 @@ ms.locfileid: "105026030"
 ## <a name="assembly-from-file"></a>文件中的程序集<a id="AssemblyFromFile"></a>
 
 **标题：带有文件参数的“CREATE ASSEMBLY”和“ALTER ASSEMBLY”在 Azure SQL 托管实例中不受支持。**    
-**类别**：警告   
+类别：问题   
 
 **描述**   
-Azure SQL 托管实例无法访问文件共享或 Windows 文件夹。 请查看“受影响的对象”部分，了解 BULK INSERT 语句的特定用法，这些语句不引用 Azure Blob。 如果源不是 Azure Blob 存储，则在迁移到 Azure SQL 托管实例后，使用“BULK INSERT”的对象将无法工作。
-
+Azure SQL 托管实例不支持带有文件参数的“CREATE ASSEMBLY”或“ALTER ASSEMBLY”。 支持二进制参数。 有关在其中使用文件参数的特定对象，请参阅“受影响的对象”部分。
 
 建议   
-迁移到 Azure SQL 托管实例时，需要将 BULK INSERT 语句从使用本地文件或文件共享转换为使用 Azure Blob 存储中的文件。 或者，迁移到 Azure 虚拟机上的 SQL Server。 
+使用带文件参数的“CREATE ASSEMBLY”或“ALTER ASSEMBLY”检查对象。 如果任何此类对象是必需的，请将文件参数转换为二进制参数。 或者，迁移到 Azure 虚拟机上的 SQL Server。 
 
 详细信息：[Azure SQL 托管实例中的 CLR 差异](../../managed-instance/transact-sql-tsql-differences-sql-server.md#clr)
 
@@ -386,10 +385,8 @@ ALTER DATABASE [database_name] REMOVE FILE [log_file_name]
 **描述**   
 OPENROWSET 通过内置的 BULK 提供程序支持批量操作，该提供程序使文件中的数据可被读取并作为行集返回。 Azure SQL 托管实例不支持将 OPENROWSET 用于非 Azure Blob 存储数据源。 
 
-
-
 建议   
-OPENROWSET 函数只能用于对 SQL Server 实例（托管实例、本地实例或虚拟机中的实例）执行查询。 仅支持将值 SQLNCLI、SQLNCLI11 和 SQLOLEDB 用作提供程序。 因此，建议的操作是确定哪些从属数据库属于非 SQL 远程服务器，并考虑将它们移到要迁移的数据库中。 或者，迁移到 Azure 虚拟机上的 SQL Server
+由于 Azure SQL 托管实例无法访问文件共享和 Windows 文件夹，因此必须从 Azure Blob 存储导入文件。 因此，OPENROWSET 函数中仅支持 DATASOURCE Blob 类型。 或者，迁移到 Azure 虚拟机上的 SQL Server。
 
 详细信息：[Azure SQL 托管实例中 Bulk Insert 与 OPENROWSET 之间的差异](../../managed-instance/transact-sql-tsql-differences-sql-server.md#bulk-insert--openrowset)
 

@@ -3,17 +3,17 @@ title: Datadog 故障排除 - Azure 合作伙伴解决方案
 description: 本文介绍如何在 Azure 上对 Datadog 进行故障排除。
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 02/19/2021
+ms.date: 05/28/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: 0e3c82f711de4cd9710c9aafe798a986e3403ed4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1c23851dc76cb0e012ad8796d361e5c293bc8d99
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103563702"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110655146"
 ---
-# <a name="troubleshooting-datadog-on-azure"></a>Azure 上的 Datadog 故障排除
+# <a name="fix-common-errors-for-datadog-on-azure"></a>修复 Azure 上的 Datadog 的常见错误
 
 本文档包含有关排查使用 Datadog 的解决方案问题的信息。
 
@@ -21,9 +21,9 @@ ms.locfileid: "103563702"
 
 * 购买失败，因为该 Azure 订阅未连接有效信用卡，或该订阅未关联付款方式。
 
-  使用其他 Azure 订阅。 或者，为订阅添加或更新信用卡或付款方式。 有关详细信息，请参阅[更新信用和付款方式](../../cost-management-billing/manage/change-credit-card.md)。
+  使用其他 Azure 订阅。 或者，为订阅添加或更新信用卡或付款方式。 有关详细信息，请参阅[更新信用卡和付款方式](../../cost-management-billing/manage/change-credit-card.md)。
 
-* EA 订阅不允许市场购买。
+* EA 订阅不允许在市场中购买。
 
   使用其他订阅。 或者，检查你的 EA 订阅是否启用了市场购买。 有关详细信息，请参阅[启用市场购买](../../cost-management-billing/manage/ea-azure-marketplace.md#enabling-azure-marketplace-purchases)。 如果这些选项不能解决问题，请联系 [Datadog 支持](https://www.datadoghq.com/support)。
 

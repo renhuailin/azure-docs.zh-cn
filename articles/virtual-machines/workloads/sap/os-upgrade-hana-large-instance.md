@@ -3,22 +3,23 @@ title: Azure SAP HANA（大型实例）操作系统升级 | Microsoft Docs
 description: 执行 Azure SAP HANA（大型实例）操作系统升级
 services: virtual-machines-linux
 documentationcenter: ''
-author: saghorpa
+author: Ajayan1008
 manager: juergent
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/04/2019
-ms.author: juergent
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f77c16f16ddac01329a8315893021767a4120295
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c7be86ca3895d7ed98d676a5c9fc19c873da6d5e
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179232"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577217"
 ---
 # <a name="operating-system-upgrade"></a>操作系统升级
 本文档介绍 HANA 大型实例操作系统升级的详细信息。
@@ -60,10 +61,13 @@ ms.locfileid: "102179232"
   |---------------|-------------------------|--------------------|--------------|--------------|
   |   SuSE        |  SLES 12 SP2            |   3.1.3h           |  2.3.0.40    |   1.6.0.34   |
   |   SuSE        |  SLES 12 SP3            |   3.1.3h           |  2.3.0.44    |   1.6.0.36   |
-  |   SuSE        |  SLES 12 SP4            |   3.2.3i           |  4.0.0.6     |   2.0.0.60   |
   |   SuSE        |  SLES 12 SP2            |   3.2.3i           |  2.3.0.45    |   1.6.0.37   |
   |   SuSE        |  SLES 12 SP3            |   3.2.3i           |  2.3.0.43    |   1.6.0.36   |
+  |   SuSE        |  SLES 12 SP4            |   3.2.3i           |  4.0.0.6     |   2.0.0.60   |  
+  |   SuSE        |  SLES 12 SP4            |   4.1.1b           |  4.0.0.6     |   2.0.0.60   |  
   |   SuSE        |  SLES 12 SP5            |   3.2.3i           |  4.0.0.8     |   2.0.0.60   |
+  |   SuSE        |  SLES 12 SP5            |   4.1.1b           |  4.0.0.6     |   2.0.0.59   |
+  |   SuSE        |  SLES 15 SP1            |   4.1.1b           |  4.0.0.8     |   2.0.0.60   |
   |   Red Hat     |  RHEL 7.2               |   3.1.3h           |  2.3.0.39    |   1.6.0.34   |
   |   Red Hat     |  RHEL 7.6               |   3.2.3i           |  3.1.137.5   |   2.0.0.50   |
   |   Red Hat     |  RHEL 7.6               |   4.1.1b           |  4.0.0.8     |   2.0.0.60   |
@@ -151,4 +155,4 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ## <a name="next-steps"></a>后续步骤
 - 有关 I 类 SKU 操作系统备份的信息，请参阅[备份和恢复](hana-overview-high-availability-disaster-recovery.md)。
-- 若要了解类型 II SKU，请查看[修订版 3 标记的类型 II SKU 的 OS 备份](os-backup-type-ii-skus.md)。
+- 请参阅 [OS 备份](./large-instance-os-backup.md)以了解 HLI。

@@ -1,18 +1,18 @@
 ---
-title: 下载 Azure 虚拟 WAN 全局或基于中心的 VPN 配置文件 | Microsoft Docs
+title: 下载 Azure 虚拟 WAN 全局或基于中心的 VPN 配置文件
 description: 了解 Azure 虚拟 WAN 如何为远程用户提供两种类型的连接以及如何下载配置文件。
 services: virtual-wan
-author: kumudD
+author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.author: alzam
-ms.openlocfilehash: 6d5c4ba0f1f55119d1ec38296e67ae3e90c52650
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/26/2021
+ms.author: cherylmc
+ms.openlocfilehash: 90d734b9e3ce2bd17496790d3cc4bf1961b22fe2
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91313716"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579848"
 ---
 # <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>为用户 VPN 客户端下载全局或基于中心的配置文件
 

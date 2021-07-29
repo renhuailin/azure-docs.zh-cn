@@ -3,12 +3,12 @@ title: Azure 视频分析器故障排除 - Azure
 description: 本文介绍 Azure 视频分析器的故障排除步骤。
 ms.topic: how-to
 ms.date: 05/04/2021
-ms.openlocfilehash: f43d959d1f289b76d4a0b8071aba49c01abe3481
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cd54386702c24065cccad4f7ede43c313a44886c
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385282"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613657"
 ---
 # <a name="troubleshoot-azure-video-analyzer"></a>Azure 视频分析器故障排除
 
@@ -26,6 +26,10 @@ ms.locfileid: "110385282"
 1. [查看经过 IoT Edge 中心的消息](../../iot-edge/troubleshoot.md#view-the-messages-going-through-the-iot-edge-hub)。
 1. [重启容器](../../iot-edge/troubleshoot.md#restart-containers)。
 1. [检查防火墙和端口配置规则](../../iot-edge/troubleshoot.md#check-your-firewall-and-port-configuration-rules)。
+
+### <a name="issues-when-using-arm-template"></a>使用 ARM 模板时出现问题
+
+如果在使用 ARM 模板（“部署到 Azure”按钮）时遇到问题，请使用此[快速入门](get-started-detect-motion-emit-events-portal.md)中的步骤手动部署所需的资源。 
 
 ### <a name="pre-deployment-issues"></a>部署前的问题
 

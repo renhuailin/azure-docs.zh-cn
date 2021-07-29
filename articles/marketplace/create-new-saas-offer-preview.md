@@ -1,6 +1,6 @@
 ---
-title: 如何在 Microsoft 商业市场中添加 SaaS 产品/服务的预览版受众
-description: 如何在 Microsoft 合作伙伴中心为软件即服务 (SaaS) 产品/服务添加预览版受众。
+title: 在 Azure 市场中为 SaaS 产品/服务添加预览版受众
+description: 在 Azure 市场中为软件即服务 (SaaS) 产品/服务添加预览版观众。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 041df9b77e85f09d2cf680773edc995c6288acaa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe42b5c7d9953a3e8bc15c4dbd351d3d2beb4d33
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96746414"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614398"
 ---
-# <a name="how-to-add-a-preview-audience-for-your-saas-offer"></a>如何为 SaaS 产品/服务添加预览版受众
+# <a name="add-a-preview-audience-for-a-saas-offer"></a>为 SaaS 产品/服务添加预览版受众
 
 在合作伙伴中心创建软件即服务 (SaaS) 产品/服务时，你需要定义预览版受众，这些受众可以在产品/服务上线之前查看你的产品/服务列表。 本文介绍了如何配置预览版受众。
 
@@ -51,4 +51,4 @@ ms.locfileid: "96746414"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 继续查看[如何为 SaaS 产品/服务添加技术详细信息](create-new-saas-offer-technical.md)
+- [为 SaaS 产品/服务添加技术详细信息](create-new-saas-offer-technical.md)

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 04/14/2020
-ms.openlocfilehash: 02e64c6c6e5ab2ef77f02959ada6f95d1042b76d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/14/2021
+ms.openlocfilehash: 0173d6e897c122d53d8f64c1d0110ab7ddfa68ed
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94488751"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075909"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>Microsoft 商业市场的支持
 
@@ -26,7 +26,8 @@ ms.locfileid: "94488751"
 
 | 支持渠道 | 说明 | 可用性 |  
 |:--- |:--- |:--- |  
-| 如需帮助，请访问位于[市场支持](https://aka.ms/marketplacepublishersupport)中的“创建事件”页</li> </ul> | 合作伙伴中心支持。 | 工作日全天候提供支持。 |  
+| 如需帮助，请访问位于[市场支持](https://aka.ms/marketplacepublishersupport)中的“创建事件”页</li> </ul> | 合作伙伴中心支持。 | 工作日全天候提供支持。 |
+|
 
 ## <a name="technical"></a>技术方面  
 
@@ -39,12 +40,12 @@ ms.locfileid: "94488751"
 
 | 支持渠道 | 说明 | 可用性 |  
 |:--- |:--- |:--- |
-| 电子邮件： [gtm@microsoft.com](mailto:gtm@microsoft.com) | 支持享受 GTM 权益和提出程序问题。 | 营业时间基于太平洋时区。 |  
-| 电子邮件： [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | 解答有关 Azure 徽标使用和品牌推广的问题。 |  |  
+| 电子邮件： [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | 解答有关 Azure 徽标使用和品牌推广的问题。 |  |
+|
+
+有关 Marketplace Rewards 的问题，请联系[合作伙伴中心支持](https://partner.microsoft.com/support/v2/?stage=1)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 访问[“商业市场发布者指南”页面](index.yml)。
-* 详细了解[合作伙伴中心商业市场计划的支持](support.md)。
-
----
+- 访问[商业市场发布者指南页](index.yml)
+- 详细了解[合作伙伴中心商业市场计划的支持](support.md)

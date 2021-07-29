@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/26/2021
 ms.author: v-doeris
-ms.openlocfilehash: e2b82976c84d838f8c774cfba39edb630cbceb61
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 0fbcd0437488631d8bd4b34d67a28bda81f2a6e9
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124286"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110539889"
 ---
 # <a name="how-to-migrate-a-nodejs-app-from-adal-to-msal"></a>如何将 Node.js 应用从 ADAL 迁移到 MSAL
 
@@ -30,7 +30,7 @@ ms.locfileid: "108124286"
 
 使用 ADAL Node 时，你有可能会用到 Azure AD v1.0 终结点。 从 ADAL 迁移到 MSAL 的应用还应考虑切换至 Azure AD v2.0 终结点。
 
-1. 查看 [v1 与 v2 终结点之间的差异](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison)
+1. 查看 [v1 与 v2 终结点之间的差异](../azuread-dev/azure-ad-endpoint-comparison.md)
 1. 如有必要，请相应更新现有应用的注册设置。
 
 > [!NOTE]
@@ -154,7 +154,7 @@ adal.logging.setLoggingOptions({
     console.log(message);
 
     if (error) {
-      console.log(error);
+        console.log(error);
     }
   },
   level: logging.LOGGING_LEVEL.VERBOSE, // provide the logging level
@@ -193,31 +193,32 @@ const cca = new msal.ConfidentialClientApplication(msalConfig);
 v1.0 和 v2.0 终结点之间的一个重要区别就在于资源的访问方式。 在 ADAL Node 中，你要先在应用注册门户中注册权限，然后为资源（如 Microsoft Graph）请求访问令牌，如下所示：
 
 ```javascript
-  authenticationContext.acquireTokenWithAuthorizationCode(
+authenticationContext.acquireTokenWithAuthorizationCode(
     req.query.code,
     redirectUri,
     resource, // e.g. 'https://graph.microsoft.com'
     clientId,
     clientSecret,
     function (err, response) {
-      // do something with the authentication response
-  );
+        // do something with the authentication response
+    }
+);
 ```
 
 MSAL Node 同时支持 v1.0 和 v2.0 终结点。 v2.0 终结点使用以作用域为中心的模型来访问资源。 因此，你在为资源请求访问令牌时，还需要指定该资源的作用域：
 
 ```javascript
-    const tokenRequest = {
-        code: req.query.code,
-        scopes: ["https://graph.microsoft.com/User.Read"],
-        redirectUri: REDIRECT_URI,
-    };
+const tokenRequest = {
+    code: req.query.code,
+    scopes: ["https://graph.microsoft.com/User.Read"],
+    redirectUri: REDIRECT_URI,
+};
 
-    pca.acquireTokenByCode(tokenRequest).then((response) => {
-        // do something with the authentication response
-    }).catch((error) => {
-        console.log(error);
-    });
+pca.acquireTokenByCode(tokenRequest).then((response) => {
+    // do something with the authentication response
+}).catch((error) => {
+    console.log(error);
+});
 ```
 
 以作用域为中心的模型有一个优点，即可以使用动态作用域。 使用 v1.0 构建应用程序时，你需要注册该应用程序所需的完整权限集（称为“静态作用域”），以便用户在登录时同意这些权限。 在 v2.0 中，你可以随时按需使用作用域参数来请求相关权限（因此称为“动态作用域”）。 这样，用户便可以提供对作用域的增量同意。 因此，如果你最初只是希望用户登录到你的应用程序，而不需要任何类型的访问权限，则可以这样做。 如果后来需要读取用户的日历，则可以在 acquireToken 方法中请求日历范围，并获取用户的许可。 有关详细信息，请参阅[资源和作用域](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/resources-and-scopes.md)
@@ -230,7 +231,7 @@ ADAL Node 中的大多数公共方法都可在 MSAL Node 中找到同等方法�
 |-------------------------------------|-----------------------------------|-----------------------------------|
 | `acquireToken`                      | `acquireTokenSilent`              | 已重命名，现在需要[帐户](https://azuread.github.io/microsoft-authentication-library-for-js/ref/modules/_azure_msal_common.html#accountinfo)对象 |
 | `acquireTokenWithAuthorizationCode` | `acquireByAuthorizationCode`      |                                   |
-| `acquireTokenWithClientCredentials` | `acquireTokenByClientCredentials` |                                   |
+| `acquireTokenWithClientCredentials` | `acquireTokenByClientCredential` |                                   |
 | `acquireTokenWithRefreshToken`      | `acquireTokenByRefreshToken`      |                                   |
 | `acquireTokenWithDeviceCode`        | `acquireTokenByDeviceCode`        | 现在介绍抽象用户代码的获取方法（见下文） |
 | `acquireTokenWithUsernamePassword`  | `acquireTokenByUsernamePassword`  |                                   |
@@ -240,9 +241,9 @@ ADAL Node 中的大多数公共方法都可在 MSAL Node 中找到同等方法�
 | ADAL                              | MSAL                            | 说明                             |
 |-----------------------------------|---------------------------------|-----------------------------------|
 | `acquireUserCode`                   | 不适用                             | 与 `acquireTokeByDeviceCode` 合并（见上文）|
-| 不适用                               | `acquireTokenOnBehalfOf`          | 一种用于抽象化 [OBO 流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)的新方法 |
+| 不适用                               | `acquireTokenOnBehalfOf`          | 一种用于抽象化 [OBO 流](./v2-oauth2-on-behalf-of-flow.md)的新方法 |
 | `acquireTokenWithClientCertificate` | 不适用                             | 不再需要，因为现在系统会在初始化期间分配证书（请参阅[配置选项](#configure-msal)） |
-| 不适用                               | `getAuthCodeUrl`                  | 一种用于抽象化[授权终结点](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols#endpoints) URL 构造的新方法 |
+| 不适用                               | `getAuthCodeUrl`                  | 一种用于抽象化[授权终结点](./active-directory-v2-protocols.md#endpoints) URL 构造的新方法 |
 
 ## <a name="use-promises-instead-of-callbacks"></a>使用承诺而不是回叫
 
@@ -252,11 +253,11 @@ ADAL Node 中的大多数公共方法都可在 MSAL Node 中找到同等方法�
 var context = new AuthenticationContext(authorityUrl, validateAuthority);
 
 context.acquireTokenWithClientCredentials(resource, clientId, clientSecret, function(err, response) {
-  if (err) {
-    console.log(err);
-  } else {
-    // do something with the authentication response
-  }
+    if (err) {
+        console.log(err);
+    } else {
+        // do something with the authentication response
+    }
 });
 ```
 
@@ -265,7 +266,7 @@ context.acquireTokenWithClientCredentials(resource, clientId, clientSecret, func
 ```javascript
     const cca = new msal.ConfidentialClientApplication(msalConfig);
 
-    cca.acquireTokenByClientCredentials(tokenRequest).then((response) => {
+    cca.acquireTokenByClientCredential(tokenRequest).then((response) => {
         // do something with the authentication response
     }).catch((error) => {
         console.log(error);
@@ -344,7 +345,7 @@ const cachePlugin = {
 };
 ```
 
-若要开发[公共客户端应用程序](https://docs.microsoft.com/azure/active-directory/develop/msal-client-applications)（如桌面应用），[适用于 Node 的 Microsoft 身份验证扩展](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/extensions/msal-node-extensions)可提供安全机制，以使客户端应用程序能够跨平台执行令牌缓存的序列化和暂留操作。 支持的平台包括 Windows、Mac 和 Linux。
+若要开发[公共客户端应用程序](./msal-client-applications.md)（如桌面应用），[适用于 Node 的 Microsoft 身份验证扩展](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/extensions/msal-node-extensions)可提供安全机制，以使客户端应用程序能够跨平台执行令牌缓存的序列化和暂留操作。 支持的平台包括 Windows、Mac 和 Linux。
 
 > [!NOTE]
 > 若为 Web 应用程序，则不建议使用[适用于 Node 的 Microsoft 身份验证扩展](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/extensions/msal-node-extensions)，因为这可能会导致缩放和性能问题。 相反，我们建议使用 Web 应用将缓存保存到会话中。
@@ -368,7 +369,13 @@ npm start
 
 ## <a name="example-securing-web-apps-with-adal-node-vs-msal-node"></a>示例：通过 ADAL Node 和 MSAL Node 保护 Web 应用
 
-下方片段演示了 Express.js 框架中的一款机密客户端 Web 应用。 该应用通过 ADAL Node 提供保护。 其会在用户完成身份验证路由 `/auth` 时执行登录，通过 `/redirect` 路由获取 Microsoft Graph 的访问令牌，然后显示上述令牌的内容。
+下方片段演示了 Express.js 框架中的一款机密客户端 Web 应用。 其会在用户完成身份验证路由 `/auth` 时执行登录，通过 `/redirect` 路由获取 Microsoft Graph 的访问令牌，然后显示上述令牌的内容。
+
+
+<table>
+<tr><td> 使用 ADAL 节点 </td><td> 使用 MSAL 节点 </td></tr>
+<tr>
+<td>
 
 ```javascript
 // Import dependencies
@@ -394,9 +401,10 @@ adal.Logging.setLoggingOptions({
 });
 
 // Auth code request URL template
-var templateAuthzUrl = 'https://login.microsoftonline.com/' + tenant + 
- '/oauth2/authorize?response_type=code&client_id=' + clientId + '&redirect_uri=' 
- + redirectUri + '&state=<state>&resource=' + resource;
+var templateAuthzUrl = 'https://login.microsoftonline.com/' 
+    + tenant + '/oauth2/authorize?response_type=code&client_id=' 
+    + clientId + '&redirect_uri=' + redirectUri 
+    + '&state=<state>&resource=' + resource;
 
 // Initialize express
 var app = express();
@@ -406,12 +414,16 @@ app.locals.state = "";
 
 app.get('/auth', function(req, res) {
 
-    // Create a random string as state parameter, which is used against XSRF
+    // Create a random string to use against XSRF
     crypto.randomBytes(48, function(ex, buf) {
-        app.locals.state = buf.toString('base64').replace(/\//g, '_').replace(/\+/g, '-');
+        app.locals.state = buf.toString('base64')
+            .replace(/\//g, '_')
+            .replace(/\+/g, '-');
         
         // Construct auth code request URL
-        var authorizationUrl = templateAuthzUrl.replace('<state>', app.locals.state);
+        var authorizationUrl = templateAuthzUrl
+            .replace('<state>', app.locals.state);
+
         res.redirect(authorizationUrl);
     });
 });
@@ -423,7 +435,8 @@ app.get('/redirect', function(req, res) {
     }
 
     // Initialize an AuthenticationContext object
-    var authenticationContext = new adal.AuthenticationContext(authorityUrl);
+    var authenticationContext = 
+        new adal.AuthenticationContext(authorityUrl);
     
     // Exchange auth code for tokens
     authenticationContext.acquireTokenWithAuthorizationCode(
@@ -438,10 +451,13 @@ app.get('/redirect', function(req, res) {
     );
 });
 
-app.listen(3000, function() { console.log(`listening on port 3000!`); });
+app.listen(3000, function() { 
+    console.log(`listening on port 3000!`); 
+});
 ```
 
-具有等效功能的 Web 应用可通过 MSAL Node 提供保护，如下所示：
+</td>
+<td>
 
 ```javascript
 // Import dependencies
@@ -483,9 +499,10 @@ app.get('/auth', (req, res) => {
     };
 
     // Request auth code, then redirect
-    cca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
-        res.redirect(response);
-    }).catch((error) => res.send(error));
+    cca.getAuthCodeUrl(authCodeUrlParameters)
+        .then((response) => {
+            res.redirect(response);
+        }).catch((error) => res.send(error));
 });
 
 app.get('/redirect', (req, res) => {
@@ -499,13 +516,19 @@ app.get('/redirect', (req, res) => {
     };
 
     // Exchange the auth code for tokens
-    cca.acquireTokenByCode(tokenRequest).then((response) => {
-        res.send(response);
-    }).catch((error) => res.status(500).send(error));
+    cca.acquireTokenByCode(tokenRequest)
+        .then((response) => {
+            res.send(response);
+        }).catch((error) => res.status(500).send(error));
 });
 
-app.listen(3000, () => console.log(`listening on port 3000!`));
+app.listen(3000, () => 
+    console.log(`listening on port 3000!`));
 ```
+
+</td>
+</tr>
+</table>
 
 ## <a name="next-steps"></a>后续步骤
 

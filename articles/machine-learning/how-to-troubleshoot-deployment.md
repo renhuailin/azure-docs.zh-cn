@@ -10,12 +10,12 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 4d1bffd39fa474a5c973ca2b6fd45e9f59964e39
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: df2e47b75b4dd01274a2ec2c4f5b5acaac164ca0
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110098283"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536268"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>远程模型部署故障排除 
 
@@ -84,6 +84,28 @@ print(service.get_logs())
 ## <a name="debug-locally"></a>本地调试
 
 如果将模型部署到 ACI 或 AKS 时遇到问题，请将其部署为本地 Web 服务。 使用本地 Web 服务可简化解决问题的过程。 若要在本地对部署进行故障排除，请参阅[本地故障排除文章](./how-to-troubleshoot-deployment-local.md)。
+
+## <a name="azure-machine-learning-inference-http-server"></a>Azure 机器学习推理 HTTP 服务器
+
+在本地推理服务器中可以快速调试入口脚本 (`score.py`)。 如果基础评分脚本存在 bug，该服务器将无法初始化或者为模型提供服务。 相反，它会引发异常并指出发生问题的位置。 [详细了解 Azure 机器学习推理 HTTP 服务器](how-to-inference-server-http.md)
+
+1. 从 [pypi](https://pypi.org/) 源安装 `azureml-inference-server-http` 包：
+
+    ```bash
+    python -m pip install azureml-inference-server-http
+    ```
+
+2. 启动服务器并将 `score.py` 设置为入口脚本：
+
+    ```bash
+    azmlinfsrv --entry_script score.py
+    ```
+
+3. 使用 `curl` 将评分请求发送到服务器：
+
+    ```bash
+    curl -p 127.0.0.1:5001/score
+    ```
 
 ## <a name="container-cannot-be-scheduled"></a>无法计划容器
 

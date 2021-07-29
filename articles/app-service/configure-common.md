@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: a865c1070150b31399b5b738a0a469a07e0b13de
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 55f34ec9416bdca81d025efb0910b10a7fa48736
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122351"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110585864"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
 
@@ -59,7 +59,7 @@ ms.locfileid: "102122351"
 完成后，单击“更新”。  别忘了返回“配置”页并单击“保存”。  
 
 > [!NOTE]
-> 在默认 Linux 容器或自定义 Linux 容器中，需要在应用服务中将应用设置名称（如 `ApplicationInsights:InstrumentationKey`）中的任何嵌套 JSON 密钥结构配置为密钥名称的 `ApplicationInsights__InstrumentationKey`。 换而言之，应将任何 `:` 替换为 `__`（双下划线）。
+> 在默认 Linux 应用服务或自定义 Linux 容器中，需要在应用服务中将应用设置名称（如 `ApplicationInsights:InstrumentationKey`）中的任何嵌套 JSON 密钥结构配置为密钥名称的 `ApplicationInsights__InstrumentationKey`。 换而言之，应将任何 `:` 替换为 `__`（双下划线）。
 >
 
 ### <a name="edit-in-bulk"></a>批量编辑
@@ -200,7 +200,7 @@ ms.locfileid: "102122351"
     ![Linux 容器的常规设置](./media/configure-common/open-general-linux.png)
 
 - **平台设置**：用于配置托管平台的设置，包括：
-    - **位数**：32 位或 64 位。
+    - **位数**：32 位或 64 位。 （对于在门户中创建的应用服务，默认为 32 位。）
     - **WebSocket 协议**：例如，[ASP.NET SignalR] 或 [socket.io](https://socket.io/)。
     - **Always On**：即使没有流量，也保持应用的加载状态。 对于连续性 WebJobs 或使用 CRON 表达式触发的 WebJobs，它是必需的。
       > [!NOTE]

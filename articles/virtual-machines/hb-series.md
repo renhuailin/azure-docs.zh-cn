@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/22/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 92a46c7f9d7cf86787bb1707c41ae0e44c37fc60
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 02eb75f96cee6df8cf2659e65cbb48099b0d81e4
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800901"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108768240"
 ---
 # <a name="hb-series"></a>HB 系列
 
@@ -24,20 +24,21 @@ HB 系列 VM 具有 100 Gb/秒 Mellanox EDR InfiniBand。 这些 VM 以非阻塞
 [ACU](acu.md)：199-216<br>
 [高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：支持<br>
+[超级磁盘](disks-types.md#ultra-disk)：支持（[详细了解](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)可用性、使用情况和性能） <br>
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持（[详细了解](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-hbv2-and-ndv2/ba-p/2067965)性能和潜在问题） <br>
-[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持（[预览版](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks)）<br>
 <br>
 
-| 大小 | vCPU | 处理器 | 内存 (GiB) | 内存带宽（GB/秒） | 基本 CPU 频率 (GHz) | 所有核心频率（GHz，峰值） | 单一核心频率（GHz，峰值） | RDMA 性能（Gb/秒） | MPI 支持 | 临时存储 (GiB) | 最大数据磁盘数 | 最大以太网 vNIC |
+| 大小 | vCPU | 处理器 | 内存 (GiB) | 内存带宽 GB/秒 | 基本 CPU 频率 (GHz) | 所有核心频率（GHz，峰值） | 单一核心频率（GHz，峰值） | RDMA 性能（Gb/秒） | MPI 支持 | 临时存储 (GiB) | 最大数据磁盘数 | 最大以太网 vNIC 数 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HB60rs | 60 | AMD EPYC 7551 | 228 | 263 | 2.0 | 2.55 | 2.55 | 100 | All | 700 | 4 | 8 |
 
-详细了解：
-- [体系结构和 VM 拓扑](./workloads/hpc/hb-series-overview.md)
-- 受支持的[软件堆栈](./workloads/hpc/hb-series-overview.md#software-specifications)，包括受支持的 OS
+了解详细信息：
+- [基础架构和 VM 拓扑](./workloads/hpc/hb-series-overview.md)
+- 支持的[软件堆栈](./workloads/hpc/hb-series-overview.md#software-specifications)，包括受支持的操作系统
 - HB 系列 VM 的预期[性能](./workloads/hpc/hb-series-performance.md)
 
 [!INCLUDE [hpc-include.md](./workloads/hpc/includes/hpc-include.md)]

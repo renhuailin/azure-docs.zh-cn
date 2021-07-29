@@ -5,15 +5,15 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/04/2021
+ms.date: 05/26/2021
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 4fe60a119626dca51f5dd4f38a81f6a2ef99c83c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6051e659502a9dbccf653a2b5009affe343b9df4
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743716"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110539182"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>字符串函数 (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -22,9 +22,9 @@ ms.locfileid: "108743716"
 
 ## <a name="functions"></a>函数
 
-以下标量函数对字符串输入值执行操作，并返回字符串、数字或布尔值：
-  
-| 系统函数                                 | 索引使用情况        | 使用[标量聚合函数](index-overview.md#index-utilization-for-scalar-aggregate-functions)的查询中的索引使用情况 | 注解                                                      |
+下面的标量函数对字符串输入值执行操作，并返回字符串、数值或布尔值。 “索引使用情况”列假设，你在用相等筛选器将字符串系统函数与另一个值进行比较（如果适用）。
+
+| 系统函数                                 | 索引使用情况        | [使用标量聚合函数的查询中的索引使用情况](index-overview.md#index-utilization-for-scalar-aggregate-functions) | 备注                                                      |
 | ----------------------------------------------- | ------------------ | ------------------------------------------------------ | ------------------------------------------------------------ |
 | [CONCAT](sql-query-concat.md)                   | 完全扫描          | 完全扫描                                              |                                                              |
 | [CONTAINS](sql-query-contains.md)               | 完全索引扫描    | 完全扫描                                              |                                                              |

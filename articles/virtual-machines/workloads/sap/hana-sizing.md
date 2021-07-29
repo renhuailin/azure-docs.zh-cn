@@ -1,28 +1,35 @@
 ---
 title: 对 Azure SAP HANA（大型实例）调整大小 | Microsoft Docs
-description: 对 Azure SAP HANA（大型实例）调整大小。
+description: 了解如何为 Azure SAP HANA（大型实例）调整大小。
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
-ms.author: juergent
+ms.date: 05/14/2021
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d49191abbba9c189672be4cd8bad4346e9689bf6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b93e7febc478452d713d115162280f0fd2657a3
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675421"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579456"
 ---
 # <a name="sizing"></a>调整大小
 
-为 HANA 大型实例调整大小与为一般 HANA 调整大小没有什么不同。 对于现有的已部署系统，需要从其他 RDBMS 迁移到 HANA，SAP 提供了许多在现有 SAP 系统上运行的报告。 如果数据库移到 HANA，这些报告会针对 HANA 实例检查数据并计算内存需求。 请阅读以下 SAP 说明来获取有关如何运行这些报告以及如何获取其最新修补程序或版本的详细信息：
+本文介绍有助于为 HANA 大型实例调整大小的信息。 通常情况下，为 HANA 大型实例调整大小与为 HANA 调整大小没有什么不同。 
+
+## <a name="moving-an-existing-system-to-sap-hana-large-instances"></a>将现有系统移到 SAP HANA（大型实例）
+
+假设你要将现有的已部署系统从另一个关系数据库管理系统 (RDBMS) 移到 HANA。 SAP 提供将在现有 SAP 系统上运行的报告。 如果数据库移到 HANA，这些报告会针对 HANA 实例检查数据并计算内存需求。 
+
+请阅读以下 SAP 说明来获取有关如何运行这些报告以及如何获取其最新修补程序或版本的详细信息：
 
 - [SAP 说明 #1793345 - 为 HANA 上的 SAP 套件调整大小](https://launchpad.support.sap.com/#/notes/1793345)
 - [SAP 说明 #1872170 - HANA 和 S/4 HANA 上的套件的大小调整报告](https://launchpad.support.sap.com/#/notes/1872170)
@@ -30,9 +37,17 @@ ms.locfileid: "101675421"
 - [SAP 说明 #1736976 - 适用于 HANA 上的 BW 的大小调整报告](https://launchpad.support.sap.com/#/notes/1736976)
 - [SAP 说明 #2296290 - 新的适用于 HANA 上的 BW 的大小调整报告](https://launchpad.support.sap.com/#/notes/2296290)
 
-为实现绿色的字段实施，可以使用 SAP Quick Sizer 来计算在 HANA 的基础上实施 SAP 软件时的内存需求。
+## <a name="sizing-greenfield-implementations"></a>调整全新实现的大小
+
+如果从头开始你的实现，SAP Quick Sizer 会计算在 HANA 基础上实现 SAP 软件时的内存要求。
+
+## <a name="memory-requirements"></a>内存需求
 
 HANA 的内存需求将随数据量增长而增加。 请注意当前的内存消耗并能够预测将来的内存消耗。 然后，可以根据内存需求将需求映射到其中一个 HANA 大型实例 SKU。
 
-后续步骤
-- 请参阅[加入要求](hana-onboarding-requirements.md)
+## <a name="next-steps"></a>后续步骤
+
+了解 HANA 大型实例的加入要求。
+
+> [!div class="nextstepaction"]
+> [加入要求](hana-onboarding-requirements.md)

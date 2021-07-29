@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: mbaldwin
-ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: cd87d2261ab89b521829d1049a0c17db125a14f3
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91359148"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112063407"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure 专用 HSM 网络
 
@@ -41,10 +41,9 @@ Azure 专用 HSM 需要高度安全的网络环境。 无论是要 Azure 云连�
 
 子网将部署资源的虚拟网络分段成可由 Azure 资源使用的独立地址空间。 专用 HSM 部署在虚拟网络的子网中。 客户子网中部署的每个专用 HSM 设备将从此子网接收专用 IP 地址。 需将部署 HSM 设备的子网显式委托给服务 Microsoft.HardwareSecurityModules/dedicatedHSMs。 这会向 HSM 服务授予特定的权限，使其可部署到该子网中。 专用 HSM 委托会对子网施加特定的策略限制。 委托的子网目前不支持网络安全组 (NSG) 和用户定义的路由 (UDR)。 因此，将某个子网委托给专用 HSM 后，该子网只可用于部署 HSM 资源。 将其他任何客户资源部署到该子网都会失败。
 
-
 ### <a name="expressroute-gateway"></a>ExpressRoute 网关
 
-当前体系结构的要求是，在需要将 HSM 设备定位到的客户子网中配置一个 ER 网关，以便能够将 HSM 设备集成到 Azure 中。 不能使用此 ER 网关将本地位置连接到 Azure 中的客户 HSM 设备。
+当前体系结构要求，在需要放置 HSM 设备的客户子网中配置 [ExpressRoute 网关](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)，以便将 HSM 设备集成到 Azure 中。 不能使用此 [ExpressRoute 网关](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)将本地位置连接到 Azure 中的客户 HSM 设备。
 
 ## <a name="connecting-your-on-premises-it-to-azure"></a>将本地 IT 连接到 Azure
 
@@ -85,9 +84,63 @@ HSM 设备可以通过软件库将流量重定向到备用 HSM。 如果设备�
 
 ![图中显示了由 VPN 网关连接的两个区域。 每个区域都包含对等互连虚拟网络。](media/networking/global-vnet.png)
 
+## <a name="networking-restrictions"></a>网络限制
+> [!NOTE]
+> 使用子网委派的专用 HSM 服务的约束是在设计 HSM 部署的目标网络体系结构时应当考虑的限制。 使用子网委派意味着专用 HSM 不支持 NSG、UDR 和全局 VNet 对等互连。 以下部分提供了替代技术帮助，这些替代技术可实现这些功能的相同或类似结果。 
+
+驻留在专用 HSM VNet 中的 HSM NIC 不能使用网络安全组或用户定义的路由。 这意味着，无法从专用 HSM VNet 的角度设置默认拒绝策略，并且必须允许将其他网段列入允许列表才能访问专用 HSM 服务。 
+
+添加网络虚拟设备 (NVA) 代理解决方案还允许将传输/DMZ 中心的 NVA 防火墙在逻辑上放置在 HSM NIC 前面，从而提供 NSG 和 UDR 所需的替代方案。
+
+### <a name="solution-architecture"></a>解决方案体系结构
+此网络设计需要以下元素：
+1.  具有 NVA 代理层的传输或 DMZ 中心 VNet。 理想情况下，存在两个或更多 NVA。 
+2.  已启用专用对等互连并连接传输中心 VNet 的 ExpressRoute 线路。
+3.  传输中心 VNet 与专用 HSM VNet 之间的 VNet 对等互连。
+4.  可以部署 NVA 防火墙或 Azure 防火墙，从而在中心提供 DMZ 服务。 
+5.  其他工作负荷分支 VNet 可以对等互连到中心 VNet。 Gemalto 客户端可以通过中心 VNet 访问专用 HSM 服务。
+
+![此图显示了 DMZ 中心 VNet，其中具有用于 NSG 和 UDR 解决方法的 NVA 代理层](media/networking/network-architecture.png)
+
+由于 NVA 代理解决方案还允许将传输/DMZ 中心中的 NVA 防火墙在逻辑上放置在 HSM NIC 前面，从而提供 NSG 和 UDR 所需的默认拒绝策略。 在我们的示例中，我们将使用 Azure 防火墙来达到此目的，并需要准备以下元素：
+1. 部署到 DMZ 中心 VNet 中“AzureFirewallSubnet”子网的 Azure 防火墙
+2. 具有 UDR 的路由表，可将发往 Azure ILB 专用终结点的流量引导到 Azure 防火墙。 此路由表将应用于客户 [ExpressRoute 虚拟网关](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)驻留的GatewaySubnet
+3. AzureFirewall 中的网络安全规则，允许在受信任的源范围与侦听 TCP 端口 1792 的 Azure IBL 专用终结点之间进行转发。 此安全逻辑将针对专用 HSM 服务添加必要的“默认拒绝”策略。 这意味着，仅允许受信任的源 IP 范围进入专用 HSM 服务。 所有其他范围将被删除。  
+4. 具有 UDR 的路由表，该路由表将发往本地的流量引导到 Azure 防火墙。 此路由表将应用于 NVA 代理子网。 
+5. 应用于代理 NVA 子网的 NSG 仅信任 Azure 防火墙的子网范围作为源，并且只允许通过 TCP 端口 1792 转发到 HSM NIC IP 地址。 
+
+> [!NOTE]
+> 由于 NVA 代理层将在客户端 IP 地址转发到 HSM NIC 时对其进行 SNAT，因此 HSM VNet 和 DMZ 中心 VNet 之间不需要 UDR。  
+
+### <a name="alternative-to-udrs"></a>UDR 的替代方法
+上面提到的 NVA 层解决方案将用作 UDR 的替代方法。 有几个要点需要注意。
+1.  应在 NVA 上配置网络地址转换，以便正确路由返回流量。
+2. 客户应在 Luna HSM 配置中禁用客户端 IP 检查，以便对 NAT 使用 VNA。 以下命令为例。
+```
+Disable:
+[hsm01] lunash:>ntls ipcheck disable
+NTLS client source IP validation disabled
+Command Result : 0 (Success)
+
+Show:
+[hsm01] lunash:>ntls ipcheck show
+NTLS client source IP validation : Disable
+Command Result : 0 (Success)
+```
+3.  将入口流量 UDR 部署到 NVA 层。 
+4. 根据设计，HSM 子网不会向平台层发起出站连接请求。
+
+### <a name="alternative-to-using-global-vnet-peering"></a>使用全局 VNET 对等互连的替代方法
+可以使用几个体系结构作为全局 VNet 对等互连的替代方法。
+1.  使用 [Vnet-to-Vnet VPN 网关连接](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) 
+2.  使用 ER 线路将 HSM VNET 与另一个 VNET 连接。 此方法非常适合需要直接本地路径或 VPN VNET 的情形。 
+
+#### <a name="hsm-with-direct-express-route-connectivity"></a>具有直接 Express Route 连接的 HSM
+![此图显示了具有直接 Express Route 连接的 HSM](media/networking/expressroute-connectivity.png)
+
 ## <a name="next-steps"></a>后续步骤
 
-- [常见问题解答](faq.md)
+- [常见问题解答](faq.yml)
 - [可支持性](supportability.md)
 - 高可用性
 - [物理安全性](physical-security.md)

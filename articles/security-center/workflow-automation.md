@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 05/03/2021
 ms.author: memildin
-ms.openlocfilehash: bc9c12338610b81e23d5b850fe53aa3c5731a03a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6fbfb138f8c4605b12c5c4ff6cd0ac8c9b0c43dd
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108770274"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537709"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>自动执行对安全中心触发器的响应
 
@@ -143,7 +143,7 @@ ms.locfileid: "108770274"
 若要查看传递到逻辑应用实例的安全警报或建议事件的原始事件架构，请访问[工作流自动化数据类型架构](https://aka.ms/ASCAutomationSchemas)。 如果你没有使用上述安全中心的内置逻辑应用连接器，而是使用逻辑应用的通用 HTTP 连接器，这将非常有用，而且你可根据需要使用事件 JSON 架构手动分析它。
 
 
-## <a name="faq-for-workflow-automation"></a>工作流自动化的常见问题解答
+## <a name="faq---workflow-automation"></a>常见问题解答 - 工作流自动化
 
 ### <a name="does-workflow-automation-support-any-business-continuity-or-disaster-recovery-bcdr-scenarios"></a>工作流自动化是否支持任何业务连续性或灾难恢复 (BCDR) 场景？
 

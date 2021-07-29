@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/11/2021
-ms.openlocfilehash: 82aba428627cba1a3df26fc67c5da0cde52d368c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/11/2021
+ms.openlocfilehash: 18481a24bb9e8d5624cb52c9b02833204d4f403d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309061"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076577"
 ---
 # <a name="monitor-data-flows"></a>监视数据流
 
@@ -22,7 +22,7 @@ ms.locfileid: "107309061"
 
 执行管道时，可以监视该管道及其包含的所有活动，包括数据流活动。 在 Azure 数据工厂 UI 的左侧面板中单击监视图标。 可以看到下面所示的屏幕。 使用突出显示的图标可以深入到管道中的活动，包括数据流活动。
 
-![屏幕截图显示了为管道选择以获取详细信息的图标。](media/data-flow/mon001.png "数据流监视")
+![屏幕截图显示了为管道选择以获取详细信息的图标。](media/data-flow/monitor-new-001.png "数据流监视")
 
 还可以看到此级别的统计信息，包括运行次数和状态。 活动级别的运行 ID 不同于管道级别的运行 ID。 上一级别的运行 ID 适用于管道。 选择眼镜图标可以查看有关数据流执行的深入详细信息。
 
@@ -32,15 +32,11 @@ ms.locfileid: "107309061"
 
 ![屏幕截图显示图形的仅查看版本。](media/data-flow/mon003.png "数据流监视")
 
-下面是有关从 ADF 监视屏幕监视数据流性能的视频概述：
-
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4u4mH]
-
 ## <a name="view-data-flow-execution-plans"></a>查看数据流执行计划
 
-在 Spark 中执行数据流时，Azure 数据工厂会根据数据流的完整性确定最佳代码路径。 此外，执行路径可能出现在不同的横向扩展节点和数据分区上。 因此，监视图形表示流的设计，它考虑到了转换的执行路径。 选择单个节点时，可以看到“分组”，它们表示在群集上统一执行的代码。 看到的计时和计数表示相对于设计中各个步骤的组。
+在 Spark 中执行数据流时，Azure 数据工厂会根据数据流的完整性确定最佳代码路径。 此外，执行路径可能出现在不同的横向扩展节点和数据分区上。 因此，监视图形表示流的设计，它考虑到了转换的执行路径。 选择单个节点时，可以看到表示在群集上一起执行过的代码的“阶段”。 你看到的计时和计数表示这些组或阶段，而不是设计中的单个步骤。
 
-![屏幕截图显示了数据流页面。](media/data-flow/mon004.png "数据流监视")
+![屏幕截图显示了数据流页面。](media/data-flow/monitor-new-005.png "数据流监视")
 
 * 在监视窗口中选择空白区域时，底部窗格中的统计信息会显示每个接收器的计时和行数，以及生成转换沿袭的接收器数据的转换。
 
@@ -85,6 +81,8 @@ ms.locfileid: "107309061"
 * 前 SQL 持续时间和后 SQL 持续时间：运行前/后 SQL 命令所花费的时间
 * 前命令持续时间和后命令持续时间：针对基于文件的源/接收器运行任何前/后操作所花费的时间。 例如，在处理后移动或删除文件。
 * 合并持续时间：合并文件所花费的时间，在写入到单个文件或使用“作为列数据的文件名”时，合并文件用于基于文件的接收器。 如果在此指标中花费了大量时间，则应避免使用这些选项。
+* 阶段时间：在 Spark 内部完成阶段操作所用的总时间。
+* 临时暂存表：数据流用于在数据库中暂存数据的临时表的名称。
   
 ## <a name="error-rows"></a>错误行
 

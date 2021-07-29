@@ -12,18 +12,28 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/21/2021
+ms.date: 05/27/2021
 ms.author: phjensen
-ms.openlocfilehash: 269ef95835e5284806e7c1eaa76980e635c3d1dd
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: fd8d4e1bfed60aa8f3eae4d4d3c033247ab1268d
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107946540"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579899"
 ---
 # <a name="release-notes-for-azure-application-consistent-snapshot-tool"></a>Azure 应用程序一致性快照工具（预览版）的发行说明
 
 此页列出了对 AzAcSnap 所做的重大更改，这些更改的目的是提供新功能或解决缺陷问题。
+
+## <a name="may-2021"></a>May-2021
+
+### <a name="azacsnap-v501-build-2021052414837---patch-update-to-v50"></a>AzAcSnap v5.0.1（内部版本：20210524.14837）- 对 v5.0 的补丁更新
+
+AzAcSnap v5.0.1（内部版本：20210524.14837）作为 v5.0 分支的补丁更新提供，具有以下修复和改进：
+
+- 改进了退出代码处理。  在某些情况下，即使执行失败，也会发出退出代码 0（零），而此类情况下退出代码本应为非零值。  退出代码现在只会在成功运行 `azacsnap` 到结束的情况下为零。只要运行失败，退出代码就会变为非零值。  另外，AzAcSnap 的内部错误处理已扩展为捕获和发出由 AzAcSnap 运行的外部命令的退出代码（例如 hdbsql、ssh），前提是这些命令是失败的原因。
+
+下载[最新版本](https://aka.ms/azacsnapdownload)的安装程序并查看如何[开始操作](azacsnap-get-started.md)。
 
 ## <a name="april-2021"></a>2021 年 4 月
 
@@ -32,8 +42,6 @@ ms.locfileid: "107946540"
 AzAcSnap v5.0（版本编号：20210421.6349）已公开发布，此版本包含以下修复和改进：
 
 - Hdbsql 重试超时（等待 SAP HANA 的响应）自动设置为“savePointAbortWaitSeconds”的一半，以避免争用条件。  可以直接在 JSON 配置文件中修改“savePointAbortWaitSeconds”的设置，并且该设置的最小值必须为 600 秒。
-
-下载[最新版本](https://aka.ms/azacsnapdownload)的安装程序并查看如何[开始操作](azacsnap-get-started.md)。
 
 ## <a name="march-2021"></a>2021 年 3 月
 

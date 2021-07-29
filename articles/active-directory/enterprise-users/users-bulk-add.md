@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 12/02/2020
+ms.date: 05/19/2021
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c653f3e8583ef3aadff26cb2b7a3266555d313a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba10cad9db1431d9456120be5e7762ebb24953be
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96547808"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536285"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>在 Azure Active Directory 中批量创建用户
 
@@ -36,6 +36,8 @@ Azure Active Directory (Azure AD) 支持批量用户创建和删除操作，并�
 
 > [!WARNING]
 > 如果要使用 CSV 模板仅添加一个条目，则必须保留第 3 行并将新条目添加到第 4 行。
+>
+> 确保添加“.csv”文件扩展名并删除 userPrincipalName、passwordProfile 和 accountEnabled 之前的所有前导空格。
 
 ### <a name="csv-template-structure"></a>CSV 模板结构
 

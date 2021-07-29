@@ -4,18 +4,18 @@ titleSuffix: Azure Maps
 description: 了解 Azure Maps 中进行请求身份验证的两种方式：共享密钥身份验证和 Azure Active Directory (Azure AD) 身份验证。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 05/25/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9c973859c8b7a3d04693946f50377837c3538b85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3f594f910a6645a3a1a0cc8e71afcb65cac8735
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101094086"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616353"
 ---
 # <a name="authentication-with-azure-maps"></a>使用 Azure Maps 进行身份验证
 
@@ -30,8 +30,8 @@ ms.locfileid: "101094086"
 
 有关在 Azure 门户中查看密钥的信息，请参阅[管理身份验证](./how-to-manage-authentication.md#view-authentication-details)。
 
-> [!TIP]
-> 出于安全考虑，建议轮换使用主密钥和辅助密钥。 若要轮换密钥，请更新应用以使用辅助密钥、进行部署，然后按主密钥旁边的循环/刷新按钮以生成新的主密钥。 将禁用旧的主密钥。 有关密钥轮换的详细信息，请参阅[使用密钥轮换和审核功能设置 Azure Key Vault](../key-vault/secrets/tutorial-rotation-dual.md)
+> [!NOTE]
+> 应将主密钥和辅助密钥视为敏感数据。 共享密钥用于对所有 Azure Maps REST API 进行身份验证。  使用共享密钥的用户应该通过环境变量或安全的机密存储将 API 密钥提取出来，以便集中进行管理。
 
 ## <a name="azure-ad-authentication"></a>Azure AD 身份验证
 
@@ -51,7 +51,7 @@ Azure Maps 为每个 Azure Maps 帐户生成一个唯一的标识符（客户端
 
 ### <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Azure 资源和 Azure Maps 的托管标识
 
-[Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)为 Azure 服务提供了一个自动托管的基于应用程序的安全主体，可使用 Azure AD 进行身份验证。 使用 Azure 基于角色的访问控制 (Azure RBAC)，可以授权托管标识安全主体访问 Azure Maps 服务。 托管标识的一些示例包括：Azure 应用服务、Azure Functions 和 Azure 虚拟机。 有关托管标识的列表，请参阅 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)。
+[Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)为 Azure 服务提供一个自动托管的基于应用程序的安全主体，该安全主体可通过 Azure AD 进行身份验证。 使用 Azure 基于角色的访问控制 (Azure RBAC)，可以授权托管标识安全主体访问 Azure Maps 服务。 托管标识的一些示例包括：Azure 应用服务、Azure Functions 和 Azure 虚拟机。 有关托管标识的列表，请参阅 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)。
 
 ### <a name="configuring-application-azure-ad-authentication"></a>配置应用程序 Azure AD 身份验证
 
@@ -80,9 +80,9 @@ Authorization: Bearer eyJ0e….HNIVN
 
 ## <a name="authorization-with-role-based-access-control"></a>使用基于角色的访问控制进行授权
 
-Azure Maps 支持访问 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 的所有主体类型，包括：各个 Azure AD 用户、组、应用程序、Azure 资源和 Azure 托管标识。 主体类型被授予了一组权限，也称为角色定义。 角色定义提供了对 REST API 操作的权限。 将访问权限应用到一个或多个 Azure Maps 帐户称为作用域。 在应用主体、角色定义和作用域时，将创建角色分配。 
+Azure Maps 支持访问 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 的所有主体类型，包括：各个 Azure AD 用户、组、应用程序、Azure 资源和 Azure 托管标识。 主体类型被授予了一组权限，也称为角色定义。 角色定义提供了对 REST API 操作的权限。 将访问权限应用到一个或多个 Azure Maps 帐户称为作用域。 在应用主体、角色定义和作用域时，将创建角色分配。
 
-以下部分将讨论与 Azure Maps 与 Azure RBAC 集成的概念和组件。 当设置 Azure Maps 帐户时，Azure AD 目录将关联到 Azure Maps 帐户所在的 Azure 订阅。 
+以下部分将讨论与 Azure Maps 与 Azure RBAC 集成的概念和组件。 在设置 Azure Maps 帐户的过程中，Azure AD 目录将关联到 Azure Maps 帐户所在的 Azure 订阅。
 
 当配置 Azure RBAC 时，需选择一个安全主体并将其应用于角色分配。 如果要了解如何将角色分配添加到 Azure 门户，请参阅[分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 

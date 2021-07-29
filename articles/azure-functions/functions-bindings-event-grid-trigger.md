@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: cb22c2a9cacf4e226338b45fed79f7fa135874e7
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 3786ac149847c61974fb079409d7d18beb16bdd8
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228813"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536787"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件网格触发器
 
@@ -71,6 +71,54 @@ namespace Company.Function
         public static void Run([EventGridTrigger]JObject eventGridEvent, ILogger log)
         {
             log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
+        }
+    }
+}
+```
+
+### <a name="version-3x-preview"></a>版本 3.x（预览版）
+
+以下示例演示绑定到 `CloudEvent` 的 Functions 3.x [C# 函数](functions-dotnet-class-library.md)：
+
+```cs
+using Azure.Messaging;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Extensions.Logging;
+
+namespace Azure.Extensions.WebJobs.Sample
+{
+    public static class CloudEventTriggerFunction
+    {
+        [FunctionName("CloudEventTriggerFunction")]
+        public static void Run(
+            ILogger logger,
+            [EventGridTrigger] CloudEvent e)
+        {
+            logger.LogInformation("Event received {type} {subject}", e.Type, e.Subject);
+        }
+    }
+}
+```
+
+以下示例演示绑定到 `EventGridEvent` 的 Functions 3.x [C# 函数](functions-dotnet-class-library.md)：
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Azure.Messaging.EventGrid;
+using Microsoft.Extensions.Logging;
+
+namespace Azure.Extensions.WebJobs.Sample
+{
+    public static class EventGridEventTriggerFunction
+    {
+        [FunctionName("EventGridEventTriggerFunction")]
+        public static void Run(
+            ILogger logger,
+            [EventGridTrigger] EventGridEvent e)
+        {
+            logger.LogInformation("Event received {type} {subject}", e.EventType, e.Subject);
         }
     }
 }
@@ -340,7 +388,7 @@ Python 不支持特性。
 |---------|---------|
 | type | 必需 - 必须设置为 `eventGridTrigger`。 |
 | **direction** | 必需 - 必须设置为 `in`。 |
-| **name** | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
+| name | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
 
 ## <a name="usage"></a>使用情况
 
@@ -359,7 +407,7 @@ Python 不支持特性。
 > 在 Functions v1 中，如果尝试绑定到 `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`，编译器将显示“已弃用”消息，并建议你改用 `Microsoft.Azure.EventGrid.Models.EventGridEvent`。 若要使用较新类型，请引用 [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet 包，并通过为 `EventGridEvent` 类型名称添加 `Microsoft.Azure.EventGrid.Models` 前缀来对其进行完全限定。
 
 ### <a name="additional-types"></a>其他类型 
-使用事件网格扩展 3.0.0 或更高版本的应用程序使用 [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent) 命名空间中的 `EventGridEvent` 类型。
+使用事件网格扩展 3.0.0 或更高版本的应用使用 [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent) 命名空间中的 `EventGridEvent` 类型。 此外，还可以绑定到 [Azure.Messaging](/dotnet/api/azure.messaging.cloudevent) 命名空间中的 `CloudEvent` 类型。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
@@ -376,7 +424,7 @@ Python 不支持特性。
 > 在 Functions v1 中，如果尝试绑定到 `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`，编译器将显示“已弃用”消息，并建议你改用 `Microsoft.Azure.EventGrid.Models.EventGridEvent`。 若要使用较新类型，请引用 [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet 包，并通过为 `EventGridEvent` 类型名称添加 `Microsoft.Azure.EventGrid.Models` 前缀来对其进行完全限定。 有关如何在 C# 脚本函数中引用 NuGet 包的信息，请参阅[使用 NuGet 包](functions-reference-csharp.md#using-nuget-packages)
 
 ### <a name="additional-types"></a>其他类型 
-使用事件网格扩展 3.0.0 或更高版本的应用程序使用 [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent) 命名空间中的 `EventGridEvent` 类型。
+使用事件网格扩展 3.0.0 或更高版本的应用使用 [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent) 命名空间中的 `EventGridEvent` 类型。 此外，还可以绑定到 [Azure.Messaging](/dotnet/api/azure.messaging.cloudevent) 命名空间中的 `CloudEvent` 类型。
 
 # <a name="java"></a>[Java](#tab/java)
 

@@ -12,29 +12,31 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/06/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 27c2ab96106bbfcc05b8fa12daf9b6f7b816c5c7
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: e6bc27674cadc8798afa3f9f9297b0d573d7ce64
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579986"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071042"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>为 Azure NetApp 文件创建和管理 Active Directory 连接
 
-Azure NetApp 文件的几项功能需要 Active Directory 连接。  例如，在创建 [SMB 卷](azure-netapp-files-create-volumes-smb.md)或[双协议卷](create-volumes-dual-protocol.md)之前，需要具有 Active Directory 的连接。  本文演示如何为 Azure NetApp 文件创建和管理 Active Directory 连接。
+Azure NetApp 文件的几项功能需要 Active Directory 连接。  例如，在创建 [SMB 卷](azure-netapp-files-create-volumes-smb.md)、[NFSv4.1 Kerberos 卷](configure-kerberos-encryption.md)或[双协议卷](create-volumes-dual-protocol.md)之前，需要具有 Active Directory 连接。  本文演示如何为 Azure NetApp 文件创建和管理 Active Directory 连接。
 
 ## <a name="before-you-begin"></a>开始之前  
 
-必须已设置容量池。   
-[设置容量池](azure-netapp-files-set-up-capacity-pool.md)   
-子网必须委派给 Azure NetApp 文件。  
-[将子网委派给 Azure NetApp 文件](azure-netapp-files-delegate-subnet.md)
+* 必须已设置容量池。 请参阅[设置容量池](azure-netapp-files-set-up-capacity-pool.md)。   
+* 子网必须委派给 Azure NetApp 文件。 请参阅[将子网委托给 Azure NetApp 文件](azure-netapp-files-delegate-subnet.md)。
 
 ## <a name="requirements-for-active-directory-connections"></a>Active Directory 连接的要求
 
- Active Directory 连接的要求如下： 
+* 对于每个订阅和每个区域，只能配置一个 Active Directory (AD) 连接。   
+
+    Azure NetApp 文件在单个区域中不支持多个 AD 连接，即使 AD 连接位于不同的 NetApp 帐户中也是如此。 但是，如果 AD 连接位于不同的区域中，就可以在单个订阅中拥有多个 AD 连接。 如果在单个区域中需要多个 AD 连接，则可以使用单独的订阅来执行此操作。  
+
+    AD 连接仅通过创建它的 NetApp 帐户可见。 但是，可以启用共享 AD 功能，从而允许同一订阅和同一区域下的 NetApp 帐户使用其中一个 NetApp 帐户中创建的 AD 服务器。 请参阅[将同一订阅和区域中的多个 NetApp 帐户映射到 AD 连接](#shared_ad)。 启用此功能后，AD 连接变得在同一订阅和同一区域下的所有 NetApp 帐户中可见。 
 
 * 你使用的管理帐户必须能够在你将指定的组织单位 (OU) 路径中创建计算机帐户。  
 
@@ -134,6 +136,8 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](/windo
 
 1. 在 NetApp 帐户中，单击“Active Directory 连接”，然后单击“联接” 。  
 
+    Azure NetApp 文件在同一区域和同一订阅中仅支持一个 Active Directory 连接。 如果 Active Directory 已由同一订阅和区域中的另一个 NetApp 帐户配置，则无法从你的 NetApp 帐户配置和加入其他 Active Directory。 但是，你可以启用共享 AD 功能，允许同一订阅和同一区域中的多个 NetApp 帐户共享 Active Directory 配置。 请参阅[将同一订阅和区域中的多个 NetApp 帐户映射到 AD 连接](#shared_ad)。
+
     ![Active Directory 连接](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
 
 2. 在“联接 Active Directory”窗口中，根据要使用的域服务提供以下信息：  
@@ -166,8 +170,10 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](/windo
         ![加入 Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
     * “AES 加密”   
-        如果要为 SMB 卷启用 AES 加密，请选择此复选框。 针对要求，请参阅[Active Directory 连接的要求](#requirements-for-active-directory-connections)。 
-
+        如果要为 AD 身份验证启用 AES 加密，或者需要[加密 SMB 卷](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)，请选中此复选框。   
+        
+        针对要求，请参阅[Active Directory 连接的要求](#requirements-for-active-directory-connections)。  
+  
         ![Active Directory AES 加密](../media/azure-netapp-files/active-directory-aes-encryption.png)
 
         “AES 加密”功能目前提供预览版。 如果第一次使用此功能，请在使用之前注册该功能： 
@@ -243,7 +249,7 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](/windo
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
         ```
         
-        还可以使用 [Azure CLI 命令](/cli/azure/feature) `az feature register` 和 `az feature show` 注册功能并显示注册状态。 
+        还可以使用 [Azure CLI 命令](/cli/azure/feature) `az feature register` 和 `az feature show` 注册功能并显示注册状态。  
 
     * 凭证，包括“用户名”和“密码” 
 
@@ -255,6 +261,28 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](/windo
 
     ![创建的Active Directory 连接](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
 
+## <a name="map-multiple-netapp-accounts-in-the-same-subscription-and-region-to-an-ad-connection"></a><a name="shared_ad"></a>请参阅将同一订阅和区域中的多个 NetApp 帐户映射到 AD 连接  
+
+共享 AD 功能使所有 NetApp 帐户共享一个 Active Directory (AD) 连接，该连接是由属于同一订阅和同一区域的某个 NetApp 帐户创建。 例如，使用此功能，同一订阅和区域中的所有 NetApp 帐户均可使用常见 AD 配置来创建 [SMB 卷](azure-netapp-files-create-volumes-smb.md)、[NFSv 4.1 Kerberos 卷](configure-kerberos-encryption.md)或[双协议卷](create-volumes-dual-protocol.md)。 使用此功能时，AD 连接将在同一订阅和同一区域下的所有 NetApp 帐户中可见。   
+
+此功能目前以预览版提供。 首次使用此功能之前，你需要注册此功能。 注册后，即可在后台启用并使用该功能。 无需 UI 控件。 
+
+1. 注册此功能： 
+
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSharedAD
+    ```
+
+2. 检查功能注册的状态： 
+
+    > [!NOTE]
+    > RegistrationState 可能会处于`Registering`状态长达 60 分钟，然后才更改为`Registered`状态。 请等到状态变为“已注册”后再继续。
+
+    ```azurepowershell-interactive
+    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSharedAD
+    ```
+此外，[Azure CLI 命令](/cli/azure/feature) `az feature register` 和 `az feature show` 分别可用于注册功能和显示注册状态。 
+ 
 ## <a name="next-steps"></a>后续步骤  
 
 * [创建 SMB 卷](azure-netapp-files-create-volumes-smb.md)

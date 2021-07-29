@@ -2,13 +2,13 @@
 title: 使用 Azure 备份服务器备份工作负荷
 description: 本文介绍了如何准备环境，以使用 Microsoft Azure 备份服务器 (MABS) 来保护和备份工作负荷。
 ms.topic: conceptual
-ms.date: 11/13/2018
-ms.openlocfilehash: d476c228a619f03f798c1a2cd6854a8d603c3637
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/14/2021
+ms.openlocfilehash: adc87847900167299c9a2473079237e069782b48
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98987016"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769500"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 
@@ -28,7 +28,7 @@ ms.locfileid: "98987016"
 >
 >
 
-部署在 Azure VM 中的 MABS 可以备份 Azure 中的 VM，但它们应位于同一域中以启用备份操作。 备份 Azure VM 的过程与在本地备份 VM 的过程相同，但在 Azure 中部署 MABS 有一些限制。 有关限制的详细信息，请参阅 [DPM 作为 Azure 虚拟机](/system-center/dpm/install-dpm#setup-prerequisites)
+部署在 Azure VM 中的 MABS 可以备份 Azure 中的 VM，但它们应位于同一域中以启用备份操作。 备份 Azure VM 的过程与在本地备份 VM 的过程相同，但在 Azure 中部署 MABS 有一些限制。 有关限制的详细信息，请参阅 [DPM 作为 Azure 虚拟机](/system-center/dpm/install-dpm#setup-prerequisites)。
 
 > [!NOTE]
 > Azure 有两种用于创建和使用资源的部署模型：[资源管理器部署模型和经典部署模型](../azure-resource-manager/management/deployment-models.md)。 本文提供有关还原使用 Resource Manager 模型部署的 VM 的信息和过程。
@@ -41,8 +41,8 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
 若要启动并运行 Azure 备份服务器，首先要设置 Windows Server。 服务器可位于 Azure 中，也可位于本地。
 
-* 若要保护本地工作负荷，MABS 服务器必须位于本地。
-* 若要保护在 Azure VM 上运行的工作负荷，MABS 服务器必须位于 Azure 中，并作为 Azure VM 运行。
+* 若要保护本地工作负载，MABS 服务器必须位于本地，并连接到域。
+* 若要保护在 Azure VM 上运行的工作负载，MABS 服务器必须位于 Azure 中，作为 Azure VM 运行，并连接到域。
 
 ### <a name="using-a-server-in-azure"></a>使用 Azure 中的服务器
 
@@ -72,7 +72,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 >
 > Windows Server Core 或 Microsoft Hyper-V Server 不支持安装 Azure 备份服务器。
 
-请始终将 Azure 备份服务器加入域。 如果计划将服务器移到其他域，请先安装 Azure 备份服务器，然后将服务器加入到新域。 部署之后，*不支持* 将现有 Azure 备份服务器计算机移到新域中。
+请始终将 Azure 备份服务器加入域。 部署之后，*不支持* 将现有 Azure 备份服务器计算机移到新域中。
 
 无论是将备份数据发送到 Azure 还是在本地保留，都必须将 Azure 备份服务器注册到恢复服务保管库。
 
@@ -276,11 +276,11 @@ MABS 使用 System Center Data Protection Manager 保护代理。 [此处](/syst
 7. 还原步骤 1 中创建的 DPMDB。
 8. 将存储从原始备份服务器连接到新服务器。
 9. 从 SQL 还原 DPMDB。
-10. 在新服务器上运行 CMD（以管理员身份）。 转到 Microsoft Azure 备份安装位置和 bin 文件夹
+10. 在新服务器上运行 CMD（以管理员身份）。 转到 Microsoft Azure 备份安装位置和 bin 文件夹。
 
     路径示例：`C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"`
 
-11. 若要连接到 Azure 备份，请运行 `DPMSYNC -SYNC`
+11. 若要连接到 Azure 备份，请运行 `DPMSYNC -SYNC`。
 
     如果已将新磁盘添加到 DPM 存储池（而不是移动旧磁盘），请运行 `DPMSYNC -Reallocatereplica`。
 
@@ -366,7 +366,8 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 ## <a name="troubleshooting"></a>疑难解答
 
 如果 Microsoft Azure 备份服务器在安装阶段（或者备份或还原时）失败并出现错误，请参阅此[错误代码文档](https://support.microsoft.com/kb/3041338)以获取详细信息。
-此外，还可以参考 [Azure 备份相关的常见问题](backup-azure-backup-faq.md)
+
+此外，还可以参考 [Azure 备份相关的常见问题](backup-azure-backup-faq.yml)。
 
 ## <a name="next-steps"></a>后续步骤
 
