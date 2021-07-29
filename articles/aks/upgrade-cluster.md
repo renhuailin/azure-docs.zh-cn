@@ -4,12 +4,12 @@ description: 了解如何升级 Azure Kubernetes 服务 (AKS) 群集以获取最
 services: container-service
 ms.topic: article
 ms.date: 12/17/2020
-ms.openlocfilehash: 11218fc0cd754e9793067c449fdcb7589688dc2e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 772cb9d33c9bf9307ca0dc16536933fc9123de4b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176342"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085791"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升级 Azure Kubernetes 服务 (AKS) 群集
 
@@ -126,6 +126,7 @@ myAKSCluster  eastus      myResourceGroup  1.18.10              Succeeded       
 | `patch`| 当有最新的受支持补丁版本可用时，将群集自动升级到该版本，同时使次要版本保持不变。| 例如，如果群集正在运行版本 1.17.7 且版本 1.17.9、1.18.4、1.18.6 和 1.19.1 可用，则你的群集将升级到 1.17.9。|
 | `stable`| 自动将群集升级到次要版本 N-1 的最新受支持补丁发行版，其中 N 是最新的受支持次要版本。| 例如，如果群集正在运行版本 1.17.7 且版本 1.17.9、1.18.4、1.18.6 和 1.19.1 可用，则你的群集将升级到 1.18.6。
 | `rapid`| 自动将群集升级到最新受支持次要版本的最新受支持补丁发行版。| 如果群集的 Kubernetes 版本的次要版本为 N-2，其中 N 是最新的受支持次要版本，则群集将首先升级到 N-1 次要版本的最新受支持补丁版本。 例如，如果群集正在运行版本 1.17.7 且版本 1.17.9、1.18.4、1.18.6 和 1.19.1 可用，则群集将首先升级到 1.18.6，然后再升级到 1.19.1。
+| `node-image`| 自动将节点映像升级到可用的最新版本。| Microsoft 经常（通常每周）为映像节点提供补丁和新映像，但除非升级节点映像，正在运行的节点将不会获得新映像。 当有新版本可用时，打开节点映像通道将自动更新节点映像。 |
 
 > [!NOTE]
 > 群集自动升级仅更新到 Kubernetes 的 GA 版，不会更新到预览版。
@@ -166,6 +167,10 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --auto-upgrad
 az aks update --resource-group myResourceGroup --name myAKSCluster --auto-upgrade-channel stable
 ```
 
+## <a name="using-cluster-auto-upgrade-with-planned-maintenance"></a>与计划内维护配合使用群集自动升级
+
+如果同时使用计划内维护和自动升级，则在指定的维护时段内将开始升级。 有关计划内维护的更多详细信息，请参阅 [使用计划内维护为 Azure Kubernetes 服务 (AKS) 群集安排维护时段（预览版）][planned-maintenance]。
+
 ## <a name="next-steps"></a>后续步骤
 
 本文演示了如何升级现有的 AKS 群集。 若要详细了解如何部署和管理 AKS 群集，请参阅相关教程系列。
@@ -179,13 +184,14 @@ az aks update --resource-group myResourceGroup --name myAKSCluster --auto-upgrad
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
-[az-aks-upgrade]: /cli/azure/aks#az-aks-upgrade
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-aks-get-upgrades]: /cli/azure/aks#az_aks_get_upgrades
+[az-aks-upgrade]: /cli/azure/aks#az_aks_upgrade
+[az-aks-show]: /cli/azure/aks#az_aks_show
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-provider-register]: /cli/azure/provider#az_provider_register
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [upgrade-cluster]:  #upgrade-an-aks-cluster
+[planned-maintenance]: planned-maintenance.md

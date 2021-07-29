@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 953d43f93635e25da008515afd9baf9a9e9b7afa
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 31b1ac989e90b525f754f49ccf2f6d5fd254ff58
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817064"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098589"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>使用自定义 Docker 映像训练模型
 
@@ -28,7 +28,7 @@ Azure 机器学习提供了一个默认的 Docker 基础映像。 你还可以�
 在以下任一环境中运行此代码：
 
 * Azure 机器学习计算实例（无需下载或安装）：
-  * 完成[设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)教程，以创建预先加载了 SDK 和示例存储库的专用笔记本服务器。
+  * 完成[快速入门：Azure 机器学习入门](quickstart-create-resources.md)教程，以创建一个预加载了 SDK 和示例存储库的专用笔记本服务器。
   * 在 Azure 机器学习 [示例存储库](https://github.com/Azure/azureml-examples)中，通过导航到以下目录找到一个完整的笔记本：**notebooks** > **fastai** > **train-pets-resnet34.ipynb**。 
 * 你自己的 Jupyter Notebook 服务器：
   * 创建[工作区配置文件](how-to-configure-environment.md#workspace)。
@@ -53,13 +53,12 @@ ws = Workspace.from_config()
 
 ### <a name="define-your-environment"></a>定义环境
 
-创建一个 `Environment` 对象并启用 Docker。
+创建一个 `Environment` 对象。
 
 ```python
 from azureml.core import Environment
 
 fastai_env = Environment("fastai2")
-fastai_env.docker.enabled = True
 ```
 
 以下代码中指定的基础映像支持 fast.ai 库，后者支持分布式深度学习功能。 有关详细信息，请参阅 [fast.ai Docker Hub 存储库](https://hub.docker.com/u/fastdotai)。 
@@ -107,6 +106,7 @@ fastai_env.docker.base_dockerfile = "./Dockerfile"
 > * Ubuntu 16.04 或更高版本。
 > * Conda 4.5.# 或更高版本。
 > * Python 3.6+。
+> * 在用于训练的任何容器映像中都需要一个与 POSIX 兼容的 shell（位于 /bin/sh）。 
 
 若要详细了解如何创建和管理 Azure 机器学习环境，请参阅[创建和使用软件环境](how-to-use-environments.md)。 
 
@@ -144,7 +144,7 @@ print(compute_target.get_status().serialize())
 
 ## <a name="configure-your-training-job"></a>配置训练作业
 
-对于本教程，请使用 [GitHub](https://github.com/Azure/azureml-examples/blob/main/workflows/train/fastai/pets/src/train.py) 上的训练脚本 train.py。 实际上，你可以原样接受任何自定义的训练脚本并使用 Azure 机器学习运行它。
+对于本教程，请使用 [GitHub](https://github.com/Azure/azureml-examples/blob/main/python-sdk/workflows/train/fastai/pets/src/train.py) 上的训练脚本 train.py。 实际上，你可以原样接受任何自定义的训练脚本并使用 Azure 机器学习运行它。
 
 创建 `ScriptRunConfig` 资源，以将作业配置为在所需的[计算目标](how-to-set-up-training-targets.md)上运行。
 

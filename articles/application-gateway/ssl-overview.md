@@ -5,14 +5,14 @@ services: application-gateway
 author: surajmb
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 06/03/2021
 ms.author: victorh
-ms.openlocfilehash: c39401289ffc6f27c292168adaa15c5163a3967b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0800373919ba95f48d30b9fe6eb5e7f8eb99a82a
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96001280"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111422059"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>应用程序网关的 TLS 终止和端到端 TLS 概述
 
@@ -40,7 +40,7 @@ ms.locfileid: "96001280"
 若要建立 TLS 连接，需要确保 TLS/SSL 证书符合以下条件：
 
 - 当前日期和时间处于证书上的“生效日期”和“失效日期”日期范围内。
-- 证书的“公用名”(CN) 与请求中的主机标头相匹配。 例如，如果客户端正在向 `https://www.contoso.com/` 发出请求，则 CN 必须是 `www.contoso.com`。
+- 证书的“公用名”(CN) 与请求中的主机标头相匹配。 例如，如果客户端向 `https://www.contoso.com/` 发出请求，则 CN 必须为 `www.contoso.com`。
 
 ### <a name="certificates-supported-for-tls-termination"></a>支持用于 TLS 终止的证书
 
@@ -107,7 +107,7 @@ ms.locfileid: "96001280"
 >
 > 为了使 TLS/SSL 证书受信任，后端服务器的证书必须由已知 CA 颁发。 如果证书不是由受信任的 CA 颁发的，应用程序网关会检查发证 CA 的证书是否由受信任的 CA 颁发，依此类推，直到找到受信任的 CA（此时会建立受信任的安全连接），或者直到找不到受信任的 CA（此时，应用程序网关会将后端标记为“运行不正常”）。 因此，建议后端服务器证书同时包含根 CA 和中间 CA。
 
-- 如果证书是自签名证书，或是由未知中介签名的证书，那么，要在 v2 SKU 中启用端到端 TLS，必须定义受信任的根证书。 应用程序网关仅与符合以下条件的后端通信：其服务器证书的根证书与池关联的后端 http 设置中的受信任根证书列表之一匹配。
+- 如果后端服务器证书是自签名的，或者是由未知 CA/中介签名的，则要在应用程序网关 v2 中启用端到端 TLS，必须上传受信任的根证书。 应用程序网关仅与符合以下条件的后端进行通信：后端的服务器证书的根证书与后端 http 设置中与池关联的受信任根证书列表之一匹配。
 
 - 除了根证书匹配之外，应用程序网关 v2 还会验证后端 http 设置中指定的主机设置是否与后端服务器的 TLS/SSL 证书提供的公用名 (CN) 的主机设置相匹配。 尝试与后端建立 TLS 连接时，应用程序网关 v2 会将服务器名称指示 (SNI) 扩展设置为后端 http 设置中指定的主机。
 

@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 4ece05601efb515b3eab0f884aeff3d8add1bed0
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7371bc023cc13278c0d1382ac1ac60ee42a39f0b
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128894"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109809133"
 ---
-# <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio 中的源代码管理
+# <a name="source-control-in-synapse-studio"></a>Synapse Studio 中的源代码管理
 
-默认情况下，Azure Synapse Studio 直接面向 Synapse 服务进行创作。 如果你在使用 Git 进行源代码管理方面需要协作，则可使用 Synapse Studio 将工作区与 Git 存储库、Azure DevOps 或 GitHub 相关联。 
+默认情况下，Synapse Studio 直接面向 Synapse 服务进行创作。 如果你在使用 Git 进行源代码管理方面需要协作，则可使用 Synapse Studio 将工作区与 Git 存储库、Azure DevOps 或 GitHub 相关联。 
 
 本文概述如何在启用了 git 存储库的 Synapse 工作区中进行配置和工作。 此外，我们还重点介绍一些最佳做法和故障排除指南。
 
 > [!NOTE]
-> Azure Synapse Studio git 集成在 Azure 政府云中不可用。
+> Synapse Studio git 集成在 Azure 政府云中不可用。
 
 ## <a name="configure-git-repository-in-synapse-studio"></a>在 Synapse Studio 中配置 Git 存储库 
 
@@ -176,7 +176,7 @@ GitHub 与 Synapse Studio 的集成支持公共 GitHub（即 [https://github.com
 }
 ```
 
-Azure Synapse Studio 一次只能有一个发布分支。 指定新的发布分支时，不会删除以前的发布分支。 如果想要远程删除以前的发布分支，请手动将其删除。
+Synapse Studio 一次只能有一个发布分支。 指定新的发布分支时，不会删除以前的发布分支。 如果想要远程删除以前的发布分支，请手动将其删除。
 
 
 ### <a name="publish-code-changes"></a>发布代码更改
@@ -194,7 +194,7 @@ Azure Synapse Studio 一次只能有一个发布分支。 指定新的发布分�
 
 ## <a name="switch-to-a-different-git-repository"></a>切换到不同 Git 存储库
 
-若要切换到不同 Git 存储库，请转到管理中心的“源代码管理”下的“Git 配置”页面。 选择“断开”。 
+若要切换到另一个 Git 存储库，请转到“源代码管理”下的管理中心的“Git 配置”页。 选择“断开”。 
 
 ![“Git”图标](media/remove-repository.png)
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/03/2020
-ms.openlocfilehash: aec39b86f9651539028efce93ba6a88c3be75b0c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e7a20b617808457ad9512f5dc835e4de33f880f3
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102038304"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110585212"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>在 Windows 计算机上安装 Log Analytics 代理
 本文详细介绍如何使用以下方法在 Windows 计算机上安装 Log Analytics 代理：
@@ -23,6 +23,9 @@ ms.locfileid: "102038304"
 
 > [!NOTE]
 > 如果需要将代理配置为向多个工作区报告，则不能在初始设置期间执行此操作，而只能在之后通过从控制面板或 PowerShell 更新设置执行，如[添加或删除工作区](agent-manage.md#adding-or-removing-a-workspace)中所述。  
+
+> [!NOTE]
+> 安装 Log Analytics 代理通常不需要重启计算机。  
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 

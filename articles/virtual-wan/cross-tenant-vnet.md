@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: 82a5e90221a77b891df78984c7fddfd63b6532aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1aae5620f32b5680badc073d74d360b70b68a3b
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585411"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579865"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>将跨租户 VNet 连接到某个虚拟 WAN 中心
 
@@ -54,7 +54,7 @@ ms.locfileid: "104585411"
 1. 接下来，将远程租户订阅和父租户订阅添加到 PowerShell 的当前会话。 运行以下命令。 如果你已登录到父租户，则只需针对远程租户运行此命令。
 
    ```azurepowershell-interactive
-   Add-AzAccount -SubscriptionId "xxxxx-b34a-4df9-9451-4402dcaecc5b"
+   Connect-AzAccount -SubscriptionId "[subscription ID]" -TenantId "[tenant ID]"
    ```
 
 1. 验证角色分配是否成功，方法是使用父凭据登录 Azure PowerShell 并运行以下命令：
@@ -63,7 +63,7 @@ ms.locfileid: "104585411"
    Get-AzSubscription
    ```
 
-1. 如果权限已成功传播到父租户并已添加到会话中，则远程租户所拥有的订阅会显示在该命令的输出中。
+1. 如果权限已成功传播到父租户并已添加到会话中，则父租户和远程租户所拥有的订阅会显示在该命令的输出中。
 
 ## <a name="connect-vnet-to-hub"></a><a name="connect"></a>将 VNet 连接到中心
 

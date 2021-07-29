@@ -1,5 +1,5 @@
 ---
-title: 为 VM 映像生成 SAS URI - Azure 市场
+title: 为 VM 映像生成 SAS URI
 description: 为 Azure 市场中的虚拟硬盘 (VHD) 生成共享访问签名 (SAS) URI。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,17 +7,17 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 04/21/2021
-ms.openlocfilehash: 0f7d63a1213b6fe6625f16f33f18680b7a9e6bcb
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 1935d64db958112a7b6951abb81e3bd4d7119bda
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906829"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111525743"
 ---
-# <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>如何为 VM 映像生成 SAS URI
+# <a name="generate-a-sas-uri-for-a-vm-image"></a>为 VM 映像生成 SAS URI
 
 > [!NOTE]
-> 无需使用 SAS URI 来发布 VM。 只需在合作伙伴中心共享映像即可。 请参阅[使用已批准的基础映像创建虚拟机](./azure-vm-create-using-approved-base.md)或[使用自己的映像创建虚拟机](./azure-vm-create-using-own-image.md)中的说明。
+> 无需使用 SAS URI 来发布 VM。 只需在合作伙伴中心共享映像即可。 请参阅[使用已批准的基础映像创建虚拟机](azure-vm-create-using-approved-base.md)或[使用自己的映像创建虚拟机](azure-vm-create-using-own-image.md)中的说明。
 
 为 VHD 生成 SAS URI 需要满足以下要求：
 
@@ -173,6 +173,6 @@ az storage blob copy start --destination-blob $destinationVHDFileName --destinat
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果你遇到问题，请参阅 [VM SAS 失败消息](azure-vm-sas-failure-messages.md)。
+- 如果遇到问题，请参阅 [VM SAS 失败消息](azure-vm-sas-failure-messages.md)
 - [登录到合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
 - [在 Azure 市场中创建虚拟机产品/服务](azure-vm-create.md)

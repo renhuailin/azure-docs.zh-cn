@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: e870134e2ecd431aa3e5c02638120027f0d47df2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7ba00e1f3bd28b3fa24b14bc31080655a8d4c98b
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101454"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792076"
 ---
 # <a name="create-a-data-source-android-sdk"></a>创建数据源 (Android SDK)
 
@@ -590,7 +590,7 @@ Azure Maps 遵循开放式标准 - [Mapbox 矢量图块规范](https://github.co
 - 道路图块[文档](/rest/api/maps/renderv2/getmaptilepreview) | [数据格式详细信息](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
 - 交通事故[文档](/rest/api/maps/traffic/gettrafficincidenttile) | [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
 - 交通流[文档](/rest/api/maps/traffic/gettrafficflowtile) | [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- 使用 Azure Maps Creator，还可以通过[获取图块渲染器 V2](/rest/api/maps/renderv2/getmaptilepreview) 创建和访问自定义矢量图块
+- 使用 Azure Maps Creator，还可以通过[渲染器 V2 - 获取地图图块 API](/rest/api/maps/renderv2/getmaptilepreview) 创建和访问自定义矢量图块
 
 > [!TIP]
 > 通过 Web SDK 使用 Azure Maps 渲染服务中的矢量或光栅图块时，可以使用占位符 `azmapsdomain.invalid` 替代 `atlas.microsoft.com`。 此占位符将替换为地图使用的相同域，还会自动附加相同的身份验证详细信息。 这样可大大简化使用 Azure Active Directory 身份验证时对渲染服务的身份验证。

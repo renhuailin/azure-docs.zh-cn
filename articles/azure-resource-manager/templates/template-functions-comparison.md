@@ -2,13 +2,13 @@
 title: 模板函数 - 比较
 description: 介绍可在 Azure 资源管理器模板（ARM 模板）中使用的用于比较值的函数。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: 95655a4c92a1de9bb7a7faebcdaa83fb0fa75696
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/11/2021
+ms.openlocfilehash: 0572ff1815cd8ede87d490457a5cb689bed80467
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833994"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959729"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM 模板的比较函数
 
@@ -21,17 +21,17 @@ ms.locfileid: "99833994"
 * [less](#less)
 * [lessOrEquals](#lessorequals)
 
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
-
 ## <a name="coalesce"></a>coalesce
 
 `coalesce(arg1, arg2, arg3, ...)`
 
 从参数中返回第一个非 null 值。 空字符串、空数组和空对象不为 null。
 
+在 Bicep 中，改用 `??` 运算符。 请参阅[联合 ??](../bicep/operators-logical.md#coalesce-)。
+
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int、string、array 或 object |要测试是否为 null 的第一个值。 |
 | 其他参数 |否 |int、string、array 或 object |要测试是否为 null 的其他值。 |
@@ -43,8 +43,6 @@ ms.locfileid: "99833994"
 ### <a name="example"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/coalesce.json)显示 coalesce 不同用法的输出。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -90,34 +88,9 @@ ms.locfileid: "99833994"
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param objectToTest object = {
-  'null1': null
-  'null2': null
-  'string': 'default'
-  'int': 1
-  'object': {
-    'first': 'default'
-  }
-  'array': [
-    1
-  ]
-}
-
-output stringOutput string = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.string
-output intOutput int = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.int
-output objectOutput object = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.object
-output arrayOutput array = objectToTest.null1 ?? objectToTest.null2 ?? objectToTest.array
-output emptyOutput bool =empty(objectToTest.null1 ?? objectToTest.null2)
-```
-
----
-
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
 | stringOutput | String | 默认值 |
 | intOutput | int | 1 |
@@ -129,11 +102,13 @@ output emptyOutput bool =empty(objectToTest.null1 ?? objectToTest.null2)
 
 `equals(arg1, arg2)`
 
-检查两个值是否相等。 Bicep 不支持 `equals` 函数。 请改用 `==` 运算符。
+检查两个值是否相等。
+
+在 Bicep 中，改用 `==` 运算符。 请参阅[等于 = =](../bicep/operators-comparison.md#equals-)。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int、string、array 或 object |要检查是否相等的第一个值。 |
 | arg2 |是 |int、string、array 或 object |要检查是否相等的第二个值。 |
@@ -145,8 +120,6 @@ output emptyOutput bool =empty(objectToTest.null1 ?? objectToTest.null2)
 ### <a name="remarks"></a>备注
 
 equals 函数通常与 `condition` 元素一起使用来测试资源是否已部署。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -163,18 +136,9 @@ equals 函数通常与 `condition` 元素一起使用来测试资源是否已部
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-> [!NOTE]
-> `Conditions` 尚未在 Bicep 中实现。 请参阅[条件](https://github.com/Azure/bicep/issues/186)。
-
----
-
 ### <a name="example"></a>示例
 
 下列[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/equals.json)检查不同类型的值是否相等。 所有默认值都返回 True。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -237,36 +201,6 @@ equals 函数通常与 `condition` 元素一起使用来测试资源是否已部
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param firstInt int = 1
-param secondInt int = 1
-param firstString string = 'a'
-param secondString string = 'a'
-param firstArray array = [
-  'a'
-  'b'
-]
-param secondArray array = [
-  'a'
-  'b'
-]
-param firstObject object = {
-  'a': 'b'
-}
-param secondObject object = {
-  'a': 'b'
-}
-
-output checInts bool = firstInt == secondInt
-output checkStrings bool = firstString == secondString
-output checkArrays bool = firstArray == secondArray
-output checkObjects bool = firstObject == secondObject
-```
-
----
-
 上述示例中使用默认值的输出为：
 
 | 名称 | 类型 | Value |
@@ -277,8 +211,6 @@ output checkObjects bool = firstObject == secondObject
 | checkObjects | Bool | True |
 
 以下 [示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json)结合使用 [not](template-functions-logical.md#not) 和 **equals**。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -295,14 +227,6 @@ output checkObjects bool = firstObject == secondObject
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output checkNotEquals bool = ! (1 == 2)
-```
-
----
-
 前述示例的输出为：
 
 | 名称 | 类型 | Value |
@@ -313,11 +237,13 @@ output checkNotEquals bool = ! (1 == 2)
 
 `greater(arg1, arg2)`
 
-检查第一个值是否大于第二个值。 Bicep 不支持 `greater` 函数。 请改用 `>` 运算符。
+检查第一个值是否大于第二个值。
+
+在 Bicep 中，改用 `>` 运算符。 请参阅[大于 >](../bicep/operators-comparison.md#greater-than-)。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于大于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于大于比较的第二个值。 |
@@ -329,8 +255,6 @@ output checkNotEquals bool = ! (1 == 2)
 ### <a name="example"></a>示例
 
 下列[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greater.json)检查一个值是否大于另一个值。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -369,20 +293,6 @@ output checkNotEquals bool = ! (1 == 2)
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param firstInt int = 1
-param secondInt int = 2
-param firstString string = 'A'
-param secondString string = 'a'
-
-output checkInts bool = firstInt > secondInt
-output checkStrings bool = firstString > secondString
-```
-
----
-
 上述示例中使用默认值的输出为：
 
 | 名称 | 类型 | Value |
@@ -394,11 +304,13 @@ output checkStrings bool = firstString > secondString
 
 `greaterOrEquals(arg1, arg2)`
 
-检查第一个值是否大于或等于第二个值。 Bicep 不支持 `greaterOrEquals` 函数。 请改用 `>=` 运算符。
+检查第一个值是否大于或等于第二个值。
+
+在 Bicep 中，改用 `>=` 运算符。 请参阅[大于或等于 >=](../bicep/operators-comparison.md#greater-than-or-equal-)。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于大于或等于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于大于或等于比较的第二个值。 |
@@ -410,8 +322,6 @@ output checkStrings bool = firstString > secondString
 ### <a name="example"></a>示例
 
 下列[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greaterorequals.json)检查一个值是否大于等于另一个值。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -450,20 +360,6 @@ output checkStrings bool = firstString > secondString
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param firstInt int = 1
-param secondInt int = 2
-param firstString string = 'A'
-param secondString string = 'a'
-
-output checkInts bool = firstInt >= secondInt
-output checkStrings bool = firstString >= secondString
-```
-
----
-
 上述示例中使用默认值的输出为：
 
 | 名称 | 类型 | Value |
@@ -475,11 +371,13 @@ output checkStrings bool = firstString >= secondString
 
 `less(arg1, arg2)`
 
-检查第一个值是否小于第二个值。 Bicep 不支持 `less` 函数。 请改用 `<` 运算符。
+检查第一个值是否小于第二个值。
+
+在 Bicep 中，改用 `<` 运算符。 请参阅[小于 <](../bicep/operators-comparison.md#less-than-)。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于小于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于小于比较的第二个值。 |
@@ -491,8 +389,6 @@ output checkStrings bool = firstString >= secondString
 ### <a name="example"></a>示例
 
 下列[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/less.json)检查一个值是否小于另一个值。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -531,20 +427,6 @@ output checkStrings bool = firstString >= secondString
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param firstInt int = 1
-param secondInt int = 2
-param firstString string = 'A'
-param secondString string = 'a'
-
-output checkInts bool = firstInt < secondInt
-output checkStrings bool = firstString < secondString
-```
-
----
-
 上述示例中使用默认值的输出为：
 
 | 名称 | 类型 | Value |
@@ -556,11 +438,13 @@ output checkStrings bool = firstString < secondString
 
 `lessOrEquals(arg1, arg2)`
 
-检查第一个值是否小于或等于第二个值。 Bicep 不支持 `lessOrEquals` 函数。 请改用 `<=` 运算符。
+检查第一个值是否小于或等于第二个值。
+
+在 Bicep 中，改用 `<=` 运算符。 请参阅[小于或等于 <=](../bicep/operators-comparison.md#less-than-or-equal-)。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int 或 string |用于小于或等于比较的第一个值。 |
 | arg2 |是 |int 或 string |用于小于或等于比较的第二个值。 |
@@ -572,8 +456,6 @@ output checkStrings bool = firstString < secondString
 ### <a name="example"></a>示例
 
 下列[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/lessorequals.json)检查一个值是否小于等于另一个值。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -612,20 +494,6 @@ output checkStrings bool = firstString < secondString
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param firstInt int = 1
-param secondInt int = 2
-param firstString string = 'A'
-param secondString string = 'a'
-
-output checkInts bool = firstInt <= secondInt
-output checkStrings bool = firstString <= secondString
-```
-
----
-
 上述示例中使用默认值的输出为：
 
 | 名称 | 类型 | Value |
@@ -635,4 +503,4 @@ output checkStrings bool = firstString <= secondString
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。

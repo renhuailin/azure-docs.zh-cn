@@ -14,19 +14,19 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94dd5c2579eb7ce96dea70c6354df8ec84125bd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5947d9bcd6109e4d13d0f4492911b0cd8ead3f40
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88141663"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109790606"
 ---
 # <a name="audit-activity-history-for-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>在 Privileged Identity Management 中审核特权访问组分配的活动历史记录（预览）
 
 使用 Privileged Identity Management (PIM)，可以查看 Azure Active Directory (Azure AD) 组织中 Azure 特权访问组成员和所有者的活动、激活和审核历史记录。
 
 > [!NOTE]
-> 如果你的组织已将管理功能外包给使用 [Azure 委托资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)的服务提供商，则此处将不会显示该服务提供商授权的角色分配。
+> 如果你的组织已将管理功能外包给使用 [Azure Lighthouse](../../lighthouse/overview.md) 的服务提供商，则此处将不会显示该服务提供商授权的角色分配。
 
 按以下步骤查看特权访问组的审核历史记录。
 

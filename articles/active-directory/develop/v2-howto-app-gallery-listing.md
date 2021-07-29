@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/14/2020
+ms.date: 06/10/2021
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f2a04a341239b62290eecac8c0e1ce70b7c927c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ade77d05e209d65a9d7aa40451362bd66718cf75
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99988906"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033315"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>将应用发布到 Azure AD 应用库
 
@@ -81,7 +81,7 @@ ms.locfileid: "99988906"
 
 **如何获取面向开发人员的 Azure AD？**
 
-可以获取一个具有所有高级 Azure AD 功能的免费测试帐户 - 该帐户可免费使用 90 天，并且只要将其用于开发工作，就还能延长其免费使用期限： https://docs.microsoft.com/office/developer-program/office-365-developer-program
+可以获取一个具有所有高级 Azure AD 功能的免费测试帐户 - 该帐户可免费使用 90 天，并且只要将其用于开发工作，就还能延长其免费使用期限：[加入 Microsoft 365 开发者计划](/office/developer-program/microsoft-365-developer-program)。
 
 ## <a name="step-1---choose-the-right-single-sign-on-standard-for-your-app"></a>步骤 1 - 为应用选择适当的单一登录标准
 
@@ -287,17 +287,6 @@ Azure AD 提供了[参考代码](https://aka.ms/scimoverview)来帮助你生成 
 > [!NOTE]
 > 如果你在访问时遇到任何问题，请参阅前面有关创建帐户的部分。 如果这些方法不起作用，请联系 [Azure AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
 
-### <a name="list-requests-by-customers"></a>按客户提交列出请求
-
-客户可以选择“按客户提交应用请求” > “提交新请求”来提交列出应用程序的请求 。
-
-![显示客户请求的应用磁贴](./media/howto-app-gallery-listing/customer-submit-request.png)
-
-下面是客户请求的应用程序的流。
-
-![显示客户请求的应用流](./media/howto-app-gallery-listing/customer-request-2.png)
-
-
 ### <a name="timelines"></a>时间线
 
 将 SAML 2.0 或 WS-Fed 应用程序列入库中这一过程的时间线为 7 到 10 个工作日。
@@ -316,7 +305,20 @@ Azure AD 提供了[参考代码](https://aka.ms/scimoverview)来帮助你生成 
 ## <a name="step-7---join-the-microsoft-partner-network"></a>步骤 7 - 加入 Microsoft 合作伙伴网络
 在 Microsoft 合作伙伴网络中可以即时访问专用的资源、计划、工具和连接。 若要加入该网络并创建面市计划，请参阅[与商业客户取得联系](https://partner.microsoft.com/explore/commercial#gtm)。
 
+## <a name="request-apps-by-sharing-isv-app-team-contact"></a>通过共享 ISV 应用团队联系人请求应用
+
+客户可以通过在[此处](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/AppRequestsByCustomers.aspx)共享应用程序和 ISV 联系人信息来请求应用程序。
+
+![显示客户请求的应用磁贴](./media/howto-app-gallery-listing/customer-submit-request.png)
+
+下面是客户请求的应用程序的流。
+
+![显示客户请求的应用流](./media/howto-app-gallery-listing/customer-request-2.png)
+
+> [!Note]
+> 如果[访问时遇到任何问题](#issues-on-logging-into-portal)，请发送电子邮件给 [Azure AD 应用集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
 
 ## <a name="next-steps"></a>后续步骤
+
 * [生成 SCIM 终结点并配置预配](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [Azure AD 的身份验证方案](authentication-flows-app-scenarios.md)

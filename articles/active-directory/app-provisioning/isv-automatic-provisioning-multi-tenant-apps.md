@@ -1,24 +1,24 @@
 ---
-title: 为多租户应用程序启用自动用户预配 - Azure AD
-description: 用于启用自动预配的独立软件供应商指南
+title: 在 Azure Active Directory 中为多租户应用程序启用自动用户预配
+description: 面向在 Azure Active Directory 中启用自动预配的独立软件供应商的指南
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/23/2019
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: zhchia
-ms.openlocfilehash: 7bd0fc634109beb6cc674d89f56666e7035d33ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.reviewer: zhchia, arvinh
+ms.openlocfilehash: 03f2f06e29f3641d44be9c4f5bd6e8c58671653f
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99255689"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109782840"
 ---
-# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>为多租户应用程序启用自动用户预配
+# <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application-in-azure-active-directory"></a>在 Azure Active Directory 中为你的多租户应用程序启用自动用户预配
 
 自动用户预配是在目标系统（如软件即服务应用程序）中自动创建、维护和删除用户标识的过程。
 
@@ -85,7 +85,7 @@ Azure AD 预配服务使用 [SCIM](https://aka.ms/SCIMOverview)，这是许多�
 
 * [使用跨域标识管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-* [了解 Azure AD SCIM 实现](../app-provisioning/use-scim-to-provision-users-and-groups.md)。
+* [了解 Azure AD SCIM 实现](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
 ## <a name="microsoft-graph-for-provisioning"></a>使用 Microsoft Graph 预配
 

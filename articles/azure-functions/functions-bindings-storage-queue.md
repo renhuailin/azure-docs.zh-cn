@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: a1b9d03da29b7c89055303fa97fc38c2ef734b23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7497f98ec82596417a8c3fbb8cef11814e7df6c0
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100381471"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412180"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>适用于 Azure Functions 的 Azure 队列存储触发器和绑定概述
 
@@ -36,7 +36,7 @@ Azure Functions 可以在创建新的 Azure 队列存储消息时运行，并可
 
 #### <a name="storage-extension-5x-and-higher"></a>存储扩展 5.x 和更高版本
 
-新版本的存储绑定扩展可用作[预览 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.2)。 此预览版引入了[使用标识而不是机密进行连接](./functions-reference.md#configure-an-identity-based-connection)的功能。 对于 .NET 应用程序，它还会更改可以绑定到的类型，并将 `WindowsAzure.Storage` 和 `Microsoft.Azure.Storage` 中的类型替换为 [Azure.Storage.Queues](/dotnet/api/azure.storage.queues) 中的新类型。
+新版本的存储绑定扩展可用作[预览 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.3)。 此预览版引入了[使用标识而不是机密进行连接](./functions-reference.md#configure-an-identity-based-connection)的功能。 对于 .NET 应用程序，它还会更改可以绑定到的类型，并将 `WindowsAzure.Storage` 和 `Microsoft.Azure.Storage` 中的类型替换为 [Azure.Storage.Queues](/dotnet/api/azure.storage.queues) 中的新类型。
 
 > [!NOTE]
 > 预览包不包括在扩展捆绑包中，必须手动安装。 对于 .NET 应用，请添加对包的引用。 对于所有其他应用类型，请参阅[更新扩展]。
@@ -84,7 +84,7 @@ Functions 1.x 应用会自动引用 [Microsoft.Azure.WebJobs](https://www.nuget.
 |visibilityTimeout|00:00:00|消息处理失败时的重试间隔时间。 |
 |batchSize|16|Functions 运行时同时检索并并行处理的队列消息数。 当处理的数量下降到 `newBatchThreshold` 时，运行时可获取另一个批，并开始处理这些消息。 因此，每个函数处理的最大并发消息数是 `batchSize` 加上 `newBatchThreshold`。 此限制分别应用于各个队列触发的函数。 <br><br>如果要避免对队列上收到的消息并行执行，可以将 `batchSize` 设置为 1。 但是，只有在函数应用仅于单个虚拟机 (VM) 上运行时，此设置才可消除并发。 如果函数应用横向扩展到多个 VM，每个 VM 可运行每个队列触发的函数的一个实例。<br><br>`batchSize` 的最大值为 32。 |
 |maxDequeueCount|5|在将某个消息移到有害队列之前，尝试处理该消息的次数。|
-|newBatchThreshold|batchSize/2|只要同时处理的消息数下降到此数值，运行时即检索另一个批次。|
+|newBatchThreshold|N*batchSize/2|只要同时处理的消息数下降到此数值，运行时即检索另一个批次。<br><br>`N` 表示在应用服务或高级计划上运行时可用的 vCPU 数。 对于消耗计划，其值为 `1`。|
 |messageEncoding|base64| 此设置仅适用于[扩展版本 5.0.0 和更高版本](#storage-extension-5x-and-higher)。 它表示消息的编码格式。 有效值为 `base64` 和 `none`。|
 
 ## <a name="next-steps"></a>后续步骤

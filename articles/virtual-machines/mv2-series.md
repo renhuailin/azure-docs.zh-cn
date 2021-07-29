@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: b15fdc3826a72e9cfb039b6b2994179ab9565404
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bafae485c16923f3a4f7f5db6db0456f4b2f3bf7
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562514"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109844945"
 ---
 # <a name="mv2-series"></a>Mv2 系列
 
@@ -34,8 +34,8 @@ Mv2 系列 VM 采用 Intel® 超线程技术
 |---|---|---|---|---|---|---|---|---|
 | Standard_M208ms_v2<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8 | 16000 |
 | Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80000 / 800 (7040) | 40000 / 1000 | 8 | 16000 |
-| Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 | 32000 |
-| Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 | 32000 |
+| Standard_M416ms_v2<sup>1,2</sup> | 416 | 11400 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 | 32000 |
+| Standard_M416s_v2<sup>1,2</sup> | 416 | 5700 | 8192 | 64 | 250000 / 1600 (14080) | 80000 / 2000 | 8 | 32000 |
 
 <sup>1</sup> Mv2 系列 VM 仅支持第 2 代，并支持第 2 代支持的部分映像。 有关 Mv2 系列支持的映像的完整列表，请参阅下文。 如果你使用的是 Linux，请参阅 [Azure 对第 2 代 VM 的支持](./generation-2.md)，了解如何查找并选择映像。 如果你使用的是 Windows，请参阅 [Azure 对第 2 代 VM 的支持](./generation-2.md)，了解如何查找并选择映像。 
 
@@ -44,6 +44,7 @@ Mv2 系列 VM 采用 Intel® 超线程技术
 - Red Hat Enterprise Linux 7.6、7.7、8.1 或更高版本 
 - Oracle Enterprise Linux 7.7 或更高版本
 
+<sup>2</sup> [受约束的可用核心大小](./constrained-vcpu.md)。
 
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]

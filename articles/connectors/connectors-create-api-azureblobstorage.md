@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: cd23ff0f5ad9912440d38903a344011b069aaf16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1703e206bb13aa6f239346f7a724004a00ddfeca
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92677726"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111568911"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在 Azure Blob 存储中创建和管理 Blob
 
@@ -121,7 +121,7 @@ ms.locfileid: "92677726"
 
 1. 当系统提示创建连接时，请提供以下信息：
 
-   | 属性 | 必选 | 值 | 说明 |
+   | 属性 | 必须 | Value | 说明 |
    |----------|----------|-------|-------------|
    | **连接名称** | 是 | <*connection-name*> | 将要为连接创建的名称 |
    | **存储帐户** | 是 | <*storage-account*> | 从列表中选择存储帐户。 |
@@ -180,6 +180,9 @@ ms.locfileid: "92677726"
 ### <a name="access-storage-accounts-as-a-trusted-service-with-managed-identities"></a>使用托管标识访问用作受信任服务的存储帐户
 
 若要授予 Microsoft 受信任服务通过防火墙访问某个存储帐户的权限，可在该存储帐户中为这些服务设置一个例外。 此解决方案允许支持[使用托管标识进行身份验证](../active-directory/managed-identities-azure-resources/overview.md)的 Azure 服务访问防火墙后用作受信任服务的存储帐户。 具体而言，要使全球多租户 Azure 中的逻辑应用能够访问这些存储帐户，首先请在该逻辑应用中[启用托管标识支持](../logic-apps/create-managed-service-identity.md)。 然后，在逻辑应用中使用 HTTP 操作或触发器，并[将其身份验证类型设置为使用该逻辑应用的托管标识](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 对于此方案，只能使用 HTTP 操作或触发器。 
+
+> [!NOTE]
+> 如果使用托管标识功能对访问存储帐户进行身份验证，则不能使用内置的 Azure Blob 存储操作。 必须使用设置了托管标识的 HTTP 触发器或操作对存储帐户连接进行身份验证。 要运行必要的存储操作，必须调用 Azure Blob 存储的 相应 REST API。 有关详细信息，请查看 [Blob 服务 REST API](/rest/api/storageservices/blob-service-rest-api)。
 
 若要设置例外和托管标识支持，请执行以下常规步骤：
 

@@ -1,23 +1,24 @@
 ---
-title: 设置 Windows 虚拟桌面排出模式 - Azure
-description: 如何在 Windows 虚拟桌面中配置和使用排出模式。
+title: 设置 Azure 虚拟桌面排出模式 - Azure
+description: 如何在 Azure 虚拟桌面中配置和使用排出模式。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/14/2021
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 19ef7d520800ac703ed77dc0520e5b860306c4bd
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 2ff90e2800da857dd5c82cd3b9402fa2454575ac
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107508926"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757834"
 ---
 # <a name="set-drain-mode"></a>设置排出模式
 
-如果要应用补丁并进行维护而不中断用户会话，排出模式可隔离会话主机。 隔离时，会话主机不会接受新的用户会话。 任何新连接都会重定向到下一个可用的会话主机。 在用户注销或管理员结束会话之前，会话主机中的现有连接会保持工作。 会话主机处于排出模式时，管理员还可以远程连接到服务器，而无需通过 Windows 虚拟桌面服务。 可以将此设置应用于共用和个人桌面。
+如果要应用补丁并进行维护而不中断用户会话，排出模式可隔离会话主机。 隔离时，会话主机不会接受新的用户会话。 任何新连接都会重定向到下一个可用的会话主机。 在用户注销或管理员结束会话之前，会话主机中的现有连接会保持工作。 会话主机处于排出模式时，管理员还可以远程连接到服务器，而无需通过 Azure 虚拟桌面服务。 可以将此设置应用于共用和个人桌面。
 
 ## <a name="set-drain-mode-using-the-azure-portal"></a>使用 Azure 门户设置排出模式
 
@@ -52,6 +53,6 @@ Update-AzWvdSessionHost -ResourceGroupName <resourceGroupName> -HostPoolName <ho
 
 ## <a name="next-steps"></a>后续步骤
 
-如果要了解有关适用于 Windows 虚拟桌面的 Azure 门户的详细信息，请查看[我们的教程](create-host-pools-azure-marketplace.md)。 如果已熟悉基本知识，请查看可通过 Azure 门户使用的其他一些功能，例如 [MSIX 应用附加](app-attach-azure-portal.md)和 [Azure 顾问](azure-advisor.md)。
+如果要了解有关适用于 Azure 虚拟桌面的 Azure 门户的详细信息，请查看[我们的教程](create-host-pools-azure-marketplace.md)。 如果已熟悉基本知识，请查看可通过 Azure 门户使用的其他一些功能，例如 [MSIX 应用附加](app-attach-azure-portal.md)和 [Azure 顾问](azure-advisor.md)。
 
-如果使用 PowerShell 方法，并且要了解模块可以执行的其他操作，请查看[设置适用于 Windows 虚拟桌面的 PowerShell 模块](powershell-module.md)和 [PowerShell 参考](/powershell/module/az.desktopvirtualization/)。
+如果使用 PowerShell 方法，并且要了解模块可以执行的其他操作，请查看[设置适用于 Azure 虚拟桌面的 PowerShell 模块](powershell-module.md)和 [PowerShell 参考](/powershell/module/az.desktopvirtualization/)。

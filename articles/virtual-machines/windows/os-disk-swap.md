@@ -8,12 +8,13 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 8e928944a7508cc2a0ed35e89189fa2dd8c50665
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b1b2782f9bf7ab7e99478a547c2181598ff4cd12
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550376"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110672744"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>使用 PowerShell 更改 Azure VM 使用的 OS 磁盘
 
@@ -24,7 +25,7 @@ ms.locfileid: "102550376"
 需要停止/取消分配 VM，然后才可将该托管磁盘的资源 ID 替换为其他托管磁盘的资源 ID。
 
 请确保 VM 大小和存储类型与要附加的磁盘兼容。 例如，如果要使用的磁盘位于高级存储中，则 VM 需要能使用高级存储（如 DS 系列大小）。 这两个磁盘的大小也必须相同。
-此外，不支持将未加密的 VM 与加密的 OS 磁盘混合使用。 如果 VM 不使用 Azure 磁盘加密，则要交换的 OS 磁盘不应使用 Azure 磁盘加密。
+此外，不支持将未加密的 VM 与加密的 OS 磁盘混合使用。 如果 VM 不使用 Azure 磁盘加密，则要交换的 OS 磁盘不应使用 Azure 磁盘加密。 如果磁盘使用磁盘加密集，则这两个磁盘应属于同一个磁盘加密集。
 
 使用 [Get-AzDisk](/powershell/module/az.compute/get-azdisk) 获取资源组中的磁盘列表
 

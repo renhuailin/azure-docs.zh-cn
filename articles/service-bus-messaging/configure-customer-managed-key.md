@@ -3,12 +3,12 @@ title: 配置自己的密钥以用于加密 Azure 服务总线静态数据
 description: 本文介绍了如何配置自己的密钥以用于加密 Azure 服务总线静态数据。
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: de716b9f14191ba057c83a060104e64937c4192a
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 0ebce2d9b5d02f12f9f2ab363b225519fcc838d7
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816001"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854353"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 门户配置客户管理的密钥以用于加密 Azure 服务总线静态数据
 Azure 服务总线高级层提供了通过 Azure 存储服务加密 (Azure SSE) 对静态数据进行加密的功能。 服务总线高级层使用 Azure 存储来存储数据。 使用 Azure 存储存储的所有数据都使用 Microsoft 托管密钥进行加密。 如果你使用自己的密钥（也称为创建自己的密钥 (BYOK) 或客户管理的密钥），则仍使用 Microsoft 托管密钥对数据进行加密，但另外，将使用客户管理的密钥对 Microsoft 托管密钥进行加密。 使用此功能可以创建、轮换、禁用用于加密 Microsoft 托管密钥的客户管理的密钥，以及撤销对这些密钥的访问权限。 启用 BYOK 功能是在命名空间中执行的一次性设置过程。
@@ -103,7 +103,7 @@ Azure 服务总线高级层提供了通过 Azure 存储服务加密 (Azure SSE) 
 - 服务总线服务每隔 5 分钟就会轮询命名空间记录中列出的所有由客户管理的密钥：
     - 如果已经旋转了某个密钥，则使用新密钥更新该记录。
     - 如果密钥已被撤销，则从记录中删除该密钥。
-    - 如果所有密钥均被撤销，则会将命名空间的加密状态设置为“已撤销”。 将无法从服务总线命名空间访问数据。 
+    - 如果所有密钥均被撤销，则会将命名空间的加密状态设置为“已撤销”。 在接下来的几分钟内，此状态更新将传播到系统的其余部分。 之后，将无法从服务总线命名空间访问数据。
     
 
 ## <a name="use-resource-manager-template-to-enable-encryption"></a>使用资源管理器模板启用加密

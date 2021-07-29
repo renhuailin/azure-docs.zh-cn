@@ -1,25 +1,26 @@
 ---
-title: Azure VPN 网关：删除网关：PowerShell
-description: 在 Resource Manager 部署模型中使用 PowerShell 删除虚拟网络网关。
+title: 删除虚拟网络网关：PowerShell
+titleSuffix: Azure VPN Gateway
+description: 了解如何使用 PowerShell 删除虚拟网络网关。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.date: 09/03/2020
+ms.date: 04/29/2021
 ms.author: cherylmc
 ms.topic: how-to
-ms.openlocfilehash: 48e0998719ea19c0b360b50d8c9171d2b448ad19
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 259d5776e6f9a2ce431743fe8dd3d9160b9f657d
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89440756"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671884"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>使用 PowerShell 删除虚拟网络网关
 > [!div class="op_single_selector"]
 > * [Azure 门户](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [PowerShell（经典）](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
->
 >
 
 可以使用多种不同的方法来删除 VPN 网关配置中的虚拟网络网关。
