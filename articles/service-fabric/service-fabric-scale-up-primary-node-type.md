@@ -4,16 +4,17 @@ description: 通过添加新的节点类型和删除以前的节点类型，垂�
 ms.date: 12/11/2020
 ms.author: pepogors
 ms.topic: how-to
-ms.openlocfilehash: 325ece761481077171a670c52e9d98071237601a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ad6b105d18f431c53c9fc46a463271e0481b4f0b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98251161"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688587"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>纵向扩展 Service Fabric 群集主节点类型
 
-本文介绍了如何在尽量减少停机时间的情况下纵向扩展 Service Fabric 群集主节点类型。 升级 Service Fabric 群集节点类型的一般策略是：
+本文介绍了如何在尽量减少停机时间的情况下纵向扩展 Service Fabric 群集主节点类型。 Service Fabric 群集节点不支持就地 SKU 升级，因为此类操作可能涉及数据和可用性丢失。 建议用于纵向扩展 Service Fabric 节点类型的最安全且最可靠的方法是：
 
 1. 向 Service Fabric 群集添加一个新节点类型，该节点类型由升级（或修改）后的虚拟机规模集 SKU 和配置提供支持。 此步骤还涉及为规模集设置新的负载均衡器、子网和公共 IP。
 

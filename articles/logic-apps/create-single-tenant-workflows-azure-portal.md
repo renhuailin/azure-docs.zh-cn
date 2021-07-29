@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 05/25/2021
-ms.openlocfilehash: 8058f6a912981f44205a6a2739fe2be54141d3dd
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 63b3de255269d921f38374adc246fb923fdda100
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368146"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110497081"
 ---
 # <a name="create-an-integration-workflow-using-single-tenant-azure-logic-apps-and-the-azure-portal"></a>使用单租户 Azure 逻辑应用和 Azure 门户创建集成工作流
 
@@ -71,22 +71,22 @@ ms.locfileid: "110368146"
 
 1. 在“创建逻辑应用”页面中的“基本信息”选项卡上，提供有关你的逻辑应用资源的以下信息： 
 
-   | 属性 | 必须 | 值 | 描述 |
+   | 属性 | 必须 | Value | 说明 |
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure-subscription-name*> | 要用于你的逻辑应用的 Azure 订阅。 |
    | **资源组** | 是 | <*Azure-resource-group-name*> | 你在其中创建逻辑应用和相关资源的 Azure 资源组。 此资源名称在各个区域中必须唯一，并且只能包含字母、数字、连字符 ( **-** )、下划线 ( **_** )、括号 ( **()** ) 和句点 ( **.** )。 <p><p>此示例创建一个名为 `Fabrikam-Workflows-RG` 的资源组。 |
    | **逻辑应用名称** | 是 | <*logic-app-name*> | 用于逻辑应用的名称。 此资源名称在各个区域中必须唯一，并且只能包含字母、数字、连字符 ( **-** )、下划线 ( **_** )、括号 ( **()** ) 和句点 ( **.** )。 <p><p>此示例创建一个名为 `Fabrikam-Workflows` 的逻辑应用。 <p><p>注意：你的逻辑应用名称会自动添加后缀 `.azurewebsites.net`，因为“逻辑应用(标准版)”资源由 Azure Functions 提供支持，后者使用相同的应用命名约定 。 |
-   | **发布** | 是 | <*deployment-environment*> | 逻辑应用的部署目标。 默认情况下，“工作流”为当前可用的唯一门户选项，可部署到单租户 Azure 逻辑应用。 <p><p>注意：Azure 创建一个空的逻辑应用资源，你必须在其中添加第一个工作流。 |
-   | **区域** | 是 | <*Azure-region*> | 在创建资源组和资源时要使用的 Azure 区域。 <p><p>此示例使用“美国西部”。 |
+   | **发布** | 是 | <*deployment-environment*> | 逻辑应用的部署目标。 默认选择“工作流”，目的是部署到单租户 Azure 逻辑应用。 Azure 会创建一个空的逻辑应用资源，你必须在其中添加第一个工作流。 <p><p>注意：目前，**Docker 容器** 选项要求[自定义位置](../azure-arc/kubernetes/conceptual-custom-locations.md)位于已启用 Azure Arc 的 Kubernetes 群集上，以便将它与[已启用 Azure Arc 的逻辑应用（预览版）](azure-arc-enabled-logic-apps-overview.md)配合使用。 逻辑应用资源位置、自定义位置和群集必须相同。 |
+   | **区域** | 是 | <*Azure-region*> | 用于创建资源组和资源的位置。 如果选择了“Docker 容器”，请选择自定义位置。 <p><p>此示例将示例逻辑应用部署到 Azure 并使用“美国西部”。 |
    |||||
 
-   以下是一个示例：
+   以下示例显示了“创建逻辑应用(标准)”页：
 
    ![显示了 Azure 门户和“创建逻辑应用”页面的屏幕截图。](./media/create-single-tenant-workflows-azure-portal/create-logic-app-resource-portal.png)
 
 1. 在“托管”选项卡上，提供有关要用于逻辑应用的存储解决方案和托管计划的以下信息。
 
-   | 属性 | 必须 | 值 | 描述 |
+   | 属性 | 必须 | Value | 说明 |
    |----------|----------|-------|-------------|
    | **存储帐户** | 是 | <*Azure-storage-account-name*> | 要用于存储事务的 [Azure 存储帐户](../storage/common/storage-account-overview.md)。 <p><p>此资源名称在各个区域中必须唯一，长度为 3-24 个字符，并且仅包含数字和小写字母。 选择一个现有的帐户，或者创建一个新帐户。 <p><p>此示例创建一个名为 `fabrikamstorageacct` 的存储帐户。 |
    | **计划类型** | 是 | <托管计划> | 要用于部署逻辑应用的托管计划。 <p><p>有关详细信息，请查看[托管计划和定价层](logic-apps-pricing.md#standard-pricing)。 |
@@ -209,9 +209,9 @@ ms.locfileid: "110368146"
 
    ![屏幕截图显示了设计器和“发送电子邮件”详细信息窗格，该窗格中的“参数”选项卡处于选中状态。](./media/create-single-tenant-workflows-azure-portal/send-email-action-details.png)
 
-   | 属性 | 必须 | 值 | 说明 |
+   | 属性 | 必须 | Value | 说明 |
    |----------|----------|-------|-------------|
-   | **To** | 是 | <*your-email-address*> | 电子邮件收件人，这可以是你自己的电子邮件地址（用于测试）。 此示例使用虚构的电子邮件 `sophiaowen@fabrikam.com`。 |
+   | **收件人** | 是 | <*your-email-address*> | 电子邮件收件人，这可以是你自己的电子邮件地址（用于测试）。 此示例使用虚构的电子邮件 `sophiaowen@fabrikam.com`。 |
    | **主题** | 是 | `An email from your example workflow` | 电子邮件主题 |
    | **正文** | 是 | `Hello from your example workflow!` | 电子邮件正文内容 |
    ||||
@@ -585,7 +585,7 @@ ms.locfileid: "110368146"
 
 * Azure 逻辑应用不会创建或运行新的工作流实例。
 
-* 如果删除工作流，然后重新创建相同的工作流，则重新创建的工作流不会具有与删除的工作流相同的元数据。 必须重新保存任何调用已删除工作流的工作流。 这样，调用方就会获取重新创建的工作流的正确信息。 否则，对重新创建的工作流的调用将会失败，并出现 `Unauthorized` 错误。 此行为也适用于在集成帐户中使用项目的工作流和调用 Azure 函数的工作流。
+* 如果删除工作流，然后重新创建相同的工作流，则重新创建的工作流不会具有与删除的工作流相同的元数据。 必须重新保存任何调用删除工作流的工作流。 这样，调用方就可获取重新创建的工作流的正确信息。 否则，对重新创建的工作流的调用将失败并显示 `Unauthorized` 错误。 此行为也适用于在集成帐户中使用项目的工作流和调用 Azure 函数的工作流。
 
 1. 在 Azure 门户中，查找并打开逻辑应用。
 

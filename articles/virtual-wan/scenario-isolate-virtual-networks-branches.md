@@ -1,23 +1,23 @@
 ---
 title: 方案：虚拟网络和分支的自定义隔离
 titleSuffix: Azure Virtual WAN
-description: 路由方案 - 阻止所选 VNet 和分支相互联系
+description: 了解可防止选定 VNet 和分支相互访问的虚拟 WAN 路由方案。
 services: virtual-wan
 author: wellee
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 01/25/2021
+ms.date: 04/27/2021
 ms.author: wellee
-ms.openlocfilehash: e8e5a5a1b9325f40fdd51133155a0daffaa55a7b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c5c85d2d24a6e1c49dd2787eeb14caabd0e3f941
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99408467"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579235"
 ---
 # <a name="scenario-custom-isolation-for-virtual-networks-and-branches"></a>方案：虚拟网络和分支的自定义隔离
 
-使用虚拟 WAN 虚拟中心路由时，有很多可用方案。 在虚拟网络 (VNet) 和分支的自定义隔离方案中，目标是阻止一组特定的 VNet 与另一组 VNet 进行联系。 同样，只会允许分支（VPN/ER/用户 VPN）联系特定的 VNet 组。
+使用虚拟 WAN 虚拟中心路由时，有很多可用方案。 在虚拟网络 (VNet) 和分支的自定义隔离方案中，目标是阻止一组特定的 VNet 访问另一组 VNet。 同样，只会允许分支（VPN/ER/用户 VPN）联系特定的 VNet 组。
 
 我们还引入了其他要求，即 Azure 防火墙应检查分支到 VNet 以及 VNet 到分支的流量，但不检查 VNet 到 VNet 的流量。  
 
@@ -85,7 +85,7 @@ ms.locfileid: "99408467"
 3. 对于与红色 VNet 对应的 RT_RED 路由表，请重复相同的步骤。
 4. 在虚拟 WAN 中预配 Azure 防火墙。 有关虚拟 WAN 中心内的 Azure 防火墙的详细信息，请参阅[在虚拟 WAN 中心内配置 Azure 防火墙](howto-firewall.md)。
 5. 将一个静态路由添加到虚拟中心的 Default 路由表，将目标为 VNet 地址空间（蓝色和红色）的所有流量定向到 Azure 防火墙。 此步骤可确保将分支中的任何数据包发送到 Azure 防火墙进行检测。
-    * 示例：目标前缀：10.0.0.0/24 下一跃点：Azure 防火墙
+    * 示例：目标前缀：10.0.0.0/8 下一跃点：Azure 防火墙
     >[!NOTE]
     > 还可以使用防火墙管理器通过选择“安全专用流量”选项来执行此步骤。 这会为适用于 VNet 和分支的所有 RFC1918 专用 IP 地址添加一个路由。 你需要在任何不符合 RFC1918 要求的分支或虚拟网络中手动进行添加。 
 

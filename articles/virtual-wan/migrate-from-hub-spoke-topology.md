@@ -1,18 +1,18 @@
 ---
 title: 体系结构：迁移到 Azure 虚拟 WAN
-description: 了解如何迁移到 Azure 虚拟 WAN。
+description: 了解如何从现有的客户管理型中心辐射拓扑迁移到利用 Microsoft 管理型虚拟 WAN 中心的设计。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: e602905b461e370189cefed706ddc3a47e0199fe
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3fa07445b667d59fba81040c70a111c4a0f94670
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91839633"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110580037"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>迁移到 Azure 虚拟 WAN
 

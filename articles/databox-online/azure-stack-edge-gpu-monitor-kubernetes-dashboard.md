@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 19b3595228c29814e42af88696972fd81b156190
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6b50169586ef29e579d52985ee8b7822a63560d0
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443040"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982423"
 ---
 # <a name="use-kubernetes-dashboard-to-monitor-your-azure-stack-edge-pro-gpu-device"></a>使用 Kubernetes 仪表板监视 Azure Stack Edge Pro GPU 设备
 
@@ -121,4 +121,5 @@ Kubernetes 指标服务器提供管道自动缩放功能，如[水平 Pod 自动
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[排查设备问题](azure-stack-edge-gpu-troubleshoot.md)。
+了解如何[使用 Azure Monitor 进行监视](azure-stack-edge-gpu-enable-azure-monitor.md)。
+了解如何[运行诊断和收集日志](azure-stack-edge-gpu-troubleshoot.md)

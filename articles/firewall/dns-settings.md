@@ -5,18 +5,19 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 04/30/2021
+ms.date: 05/26/2021
 ms.author: victorh
-ms.openlocfilehash: 4692b21333999dfc6fcc8edcbba8af800989ee1d
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e4543af78b173632e3374567e9a199f182679e8f
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325510"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110701721"
 ---
 # <a name="azure-firewall-dns-settings"></a>Azure 防火墙 DNS 设置
 
-可以为 Azure 防火墙配置自定义 DNS 服务器并启用 DNS 代理。 可以在部署防火墙时配置这些设置，或者以后从“DNS 设置”页进行配置。
+可以为 Azure 防火墙配置自定义 DNS 服务器并启用 DNS 代理。 可以在部署防火墙时配置这些设置，或者以后从“DNS 设置”页进行配置。 默认情况下，Azure 防火墙使用 Azure DNS，而 DNS 代理已禁用。
 
 ## <a name="dns-servers"></a>DNS 服务器
 
@@ -29,7 +30,7 @@ DNS 服务器维护域名并将它解析为 IP 地址。 默认情况下，Azure
 
 1. 在 Azure 防火墙的“设置”下，选择“DNS 设置” 。
 2. 在“DNS 服务器”下，可以键入或添加之前在虚拟网络中指定的现有 DNS 服务器。
-3. 选择“保存”。
+3. 选择“应用”。 
 
 防火墙现在将 DNS 流量定向到指定的 DNS 服务器以进行名称解析。
 
@@ -63,7 +64,9 @@ $azFw | Set-AzFirewall
 
 ## <a name="dns-proxy"></a>DNS 代理
 
-可以对 Azure 防火墙进行配置来充当 DNS 代理。 DNS 代理是从客户端虚拟机到 DNS 服务器的 DNS 请求的中介。 如果要在网络规则中启用 FQDN（完全限定的域名）筛选，请启用 DNS 代理并更新虚拟机配置，以将防火墙用作 DNS 代理。
+可以对 Azure 防火墙进行配置来充当 DNS 代理。 DNS 代理是从客户端虚拟机到 DNS 服务器的 DNS 请求的中介。
+
+如果要在网络规则中启用 FQDN（完全限定的域名）筛选，请启用 DNS 代理并更新虚拟机配置，以将防火墙用作 DNS 代理。
 
 :::image type="content" source="media/dns-settings/dns-proxy-2.png" alt-text="使用自定义 DNS 服务器的 DNS 代理配置。":::
 
@@ -76,7 +79,13 @@ $azFw | Set-AzFirewall
 
 - **消极缓存**：DNS 解析不返回响应，或者不进行解析。 防火墙将此信息缓存一小时。
 
-DNS 代理将存储网络规则中的 FQDN 的所有已解析的 IP 地址。 最佳做法是使用可解析为一个 IP 地址的 FQDN。  
+DNS 代理将存储网络规则中的 FQDN 的所有已解析的 IP 地址。 最佳做法是使用可解析为一个 IP 地址的 FQDN。
+
+### <a name="policy-inheritance"></a>策略继承
+
+ 应用于独立防火墙的策略 DNS 设置替代独立防火墙的 DNS 设置。 子策略继承所有父策略 DNS 设置，但可以替代父策略。
+
+例如，若要在网络规则中使用 FQDN，应启用 DNS 代理。 但是，如果父策略“未”启用 DNS 代理，则子策略将不支持网络规则中的 FQDN，除非在本地替代此设置。
 
 ### <a name="dns-proxy-configuration"></a>DNS 代理配置
 
@@ -163,4 +172,5 @@ $azFw | Set-AzFirewall
 
 ## <a name="next-steps"></a>后续步骤
 
-[网络规则中的 FQDN 筛选](fqdn-filtering-network-rules.md)
+- [Azure 防火墙 DNS 代理详细信息](dns-details.md)
+- [网络规则中的 FQDN 筛选](fqdn-filtering-network-rules.md)

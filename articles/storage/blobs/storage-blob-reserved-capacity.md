@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/08/2020
+ms.date: 05/17/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6fd791495602846b95e2dd3e99423db5505f5307
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f130e2367ed2fa4c9095479e9ff9d9722b010e5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98600909"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110098535"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>借助预留容量优化 Blob 存储的成本
 
@@ -49,7 +49,7 @@ Azure 存储预留容量适用于标准存储帐户中的资源，包括常规�
 所有类型的冗余都支持预留。 有关冗余选项的详细信息，请参阅 [Azure 存储冗余](../common/storage-redundancy.md)。
 
 > [!NOTE]
-> Azure 存储预留容量不适用于高级存储帐户、常规用途 v1 (GPv1) 存储帐户、Azure Data Lake Storage Gen1、页 blob、Azure 队列存储、Azure 表存储或 Azure 文件存储。  
+> Azure 存储预留容量不适用于高级存储帐户、常规用途 v1 (GPv1) 存储帐户、Azure Data Lake Storage Gen1、页 blob、Azure 队列存储或 Azure 表存储。 有关 Azure 文件存储预留容量的信息，请参阅[借助预留容量优化 Azure 文件存储的成本](../files/files-reserve-capacity.md)。  
 
 ### <a name="security-requirements-for-purchase"></a>购买的安全要求
 
@@ -79,7 +79,7 @@ Azure 存储预留容量适用于标准存储帐户中的资源，包括常规�
 
     ![显示如何购买预留容量的屏幕截图](media/storage-blob-reserved-capacity/select-reserved-capacity.png)
 
-   |字段  |说明  |
+   |字段  |描述  |
    |---------|---------|
    |**范围**   |  指示可享受与预留关联的计费权益的订阅数。 它还控制将预留应用于特定订阅的方式。 <br/><br/> 如果选择“共享”，则预留折扣将应用到计费背景下任何订阅中的 Azure 存储容量。 计费上下文基于 Azure 的注册方式。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围包括由帐户管理员创建的所有采用即用即付费率的个人订阅。  <br/><br/>  如果选择“单个订阅”，预留折扣将应用到所选订阅中的 Azure 存储容量。 <br/><br/> 如果选择“单个资源组”，预留折扣将应用到所选订阅中的 Azure 存储容量，以及该订阅内的所选资源组。 <br/><br/> 购买预留后，可以更改预留范围。  |
    |**订阅**  | 用于支付 Azure 存储预留的订阅。 收取费用时将采用所选订阅中的付款方式。 订阅必须是以下类型之一： <br/><br/>  企业协议（产品/服务编号：MS-AZR-0017P 或 MS-AZR-0148P）：对于企业订阅，从注册的 Azure 预付款余额（以前称为货币承诺）中扣除费用或作为超额费用收取。 <br/><br/> 采用即用即付费率的个人订阅（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）：对于采用即用即付费率的个人订阅，通过信用卡收取费用或按订阅中的发票付款方式收费。    |

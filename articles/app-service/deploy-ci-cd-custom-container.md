@@ -9,12 +9,12 @@ ms.date: 03/12/2021
 ms.author: msangapu
 ms.custom: seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 6519f3fe7335ed41f4d5ef67771aaa738a33e4a8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 26515528a809b36be8d13d19f7baf99b5b2f897f
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782596"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783296"
 ---
 # <a name="continuous-deployment-with-custom-containers-in-azure-app-service"></a>在 Azure 应用服务中使用自定义容器进行持续部署
 
@@ -67,7 +67,11 @@ ms.locfileid: "107782596"
 “注册表”下拉列表显示与你的应用位于同一订阅中的注册表。 选择所需的注册表。
 
 > [!NOTE]
-> 要从其他订阅中的注册表进行部署，请改为在“注册表源”中选择“专用注册表”  。
+>  - 若要使用托管标识锁定 ACR 访问权限，请遵循以下指南：
+>    - [如何将系统分配的托管标识与应用服务和 Azure 容器注册表配合使用](https://github.com/Azure/app-service-linux-docs/blob/master/HowTo/use_system-assigned_managed_identities.md)
+>    - [如何将用户分配的托管标识与应用服务和 Azure 容器注册表配合使用](https://github.com/Azure/app-service-linux-docs/blob/master/HowTo/use_user-assigned_managed_identities.md)
+>  - 要从其他订阅中的注册表进行部署，请改为在“注册表源”中选择“专用注册表”  。
+>   
 
 ::: zone pivot="container-windows"
 选择要部署的映像和标记  。 如果需要，请在启动文件中键入 start up 命令 。 

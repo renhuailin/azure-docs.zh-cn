@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: d4310c724707548cd55df5591504736d8f3c3857
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 48aa91d4ba68b1a69e46019ced7c5bbb69d9029f
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460045"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786784"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Azure 认知搜索的安全性概述
 
@@ -146,15 +146,7 @@ ms.locfileid: "110460045"
 
 ### <a name="double-encryption"></a>双重加密
 
-在 Azure 认知搜索中，双重加密是 CMK 的扩展。 这种情况可以理解为双层加密（通过 CMK 加密一次，通过服务托管密钥再次加密），并且范围全面，包含写入数据磁盘的长期存储和写入临时磁盘的短期存储。 CMK 在 2020 年 8 月 1 日之前和之后的差异在于，该日期之后，它将对临时磁盘上的静态数据进行额外加密，这也是使 CMK 成为 Azure 认知搜索中双重加密功能的原因。
-
-对于 8 月 1 日后在这些区域中创建的新服务，目前可以使用双重加密：
-
-+ 美国西部 2
-+ 美国东部
-+ 美国中南部
-+ US Gov 弗吉尼亚州
-+ US Gov 亚利桑那州
+在 Azure 认知搜索中，双重加密是 CMK 的扩展。 这种情况可以理解为双层加密（通过 CMK 加密一次，通过服务托管密钥再次加密），并且范围全面，包含写入数据磁盘的长期存储和写入临时磁盘的短期存储。 双重加密在特定日期之后创建的服务中实现。 有关详细信息，请参阅[双重加密](search-security-manage-encryption-keys.md#double-encryption)。
 
 ## <a name="security-management"></a>安全管理
 

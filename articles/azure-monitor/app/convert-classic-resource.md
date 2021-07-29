@@ -3,12 +3,13 @@ title: 将 Azure Monitor Application Insights 经典资源迁移到基于工作�
 description: 了解将 Azure Monitor Application Insights 经典资源升级到新的基于工作区的模型需要执行的步骤。
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 5791abe33dee2e62aadb00ae1024338e1e44a900
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3d6092d694d1c99ff7755dfcbec5c0edbfb7567f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100584262"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077295"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>迁移到基于工作区的 Application Insights 资源
 
@@ -40,7 +41,7 @@ ms.locfileid: "100584262"
 
 如果不需要迁移现有资源，但是想要创建新的基于工作区的 Application Insights 资源，请使用[基于工作区的资源创建指南](create-workspace-resource.md)。
 
-## <a name="pre-requisites"></a>先决条件 
+## <a name="pre-requisites"></a>先决条件
 
 - 一个 Log Analytics 工作区，且其访问控制模式需要设为“`use resource or workspace permissions`”设置。 
 
@@ -75,6 +76,9 @@ ms.locfileid: "100584262"
 ![工作区名称](./media/create-workspace-resource/workspace-name.png)
 
 单击蓝色链接文本会转到关联的 Log Analytics 工作区，你可以在其中利用新的统一工作区查询环境。
+
+> [!NOTE]
+> 迁移到基于工作区的 Application Insights 资源后，我们建议使用[工作区的每日上限](../logs/manage-cost-storage.md#manage-your-maximum-daily-data-volume)（而不是 Application Insights 中的上限）来限制引入和成本。
 
 ## <a name="understanding-log-queries"></a>了解日志查询
 
@@ -114,7 +118,7 @@ az monitor app-insights component update --app
 az monitor app-insights component update --app your-app-insights-resource-name -g your_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-update)。
+有关此命令的完整 Azure CLI 文档，请参阅 [Azure CLI 文档](/cli/azure/monitor/app-insights/component#az_monitor_app_insights_component_update)。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

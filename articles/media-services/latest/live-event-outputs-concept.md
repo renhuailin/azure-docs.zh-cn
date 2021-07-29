@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 44ab9e4ff83fec2ddfbd1cb44f503298d12789d1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f1df5c945c5216e82837672ad8aeaa669fc4fb20
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766292"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786439"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒体服务中的实时事件和实时输出
 
@@ -47,7 +47,7 @@ ms.locfileid: "107766292"
 
 使用直通 **实时事件**，可以依赖本地实时编码器生成多比特率视频流，并将其作为贡献源发送到实时事件（使用 RTMP 或分段 MP4 协议）。 然后，实时事件会接受传入视频流，不对其进行进一步的处理。 此类直通实时事件已针对长时间运行的实时事件或 24x365 线性实时传送视频流进行优化。 创建此类实时事件时，请指定 None (LiveEventEncodingType.None)。
 
-发送的贡献源的最高分辨率可为 4K，帧速率可为 60 帧/秒，采用 H.264/AVC 或 H.265/HEVC 视频编解码器，以及 AAC（AAC-LC、HE-AACv1 或 HE-AACv2）音频编解码器。 有关详细信息，请参阅[实时事件类型的比较](live-event-types-comparison-reference.md)。
+发送的贡献源的最高分辨率可为 4K，帧速率可为 60 帧/秒，采用 H.264/AVC 或 H.265/HEVC（仅平滑引入）视频编解码器，以及 AAC（AAC-LC、HE-AACv1 或 HE-AACv2）音频编解码器。 有关详细信息，请参阅[实时事件类型的比较](live-event-types-comparison-reference.md)。
 
 > [!NOTE]
 > 当你要在很长一段时间内进行多个活动，并且已在本地编码器上进行投入时，使用直通方法是进行实时传送视频流的最经济方式。 请参阅[定价](https://azure.microsoft.com/pricing/details/media-services/)详细信息。
@@ -121,9 +121,9 @@ ms.locfileid: "107766292"
 
 
 > [!NOTE]
-> 要使引入 URL 变为静态且可预测，以便在设置硬件编码器时使用，请将 useStaticHostname 属性设置为 true，并在每次创建时将 accessToken 属性设置为相同的 GUID 。 
+> 要使一个引入 URL 变为静态且可预测，以便在设置硬件编码器时使用，请将 useStaticHostname 属性设置为 true，并在每次创建时将 accessToken 属性设置为相同的 GUID 。 
 
-### <a name="example-liveevent-and-liveeventinput-configuration-settings-for-a-static-non-random-ingest-rtmp-url"></a>静态（非随机）引入 RTMP URL 的示例 LiveEvent 和 LiveEventInput 配置设置。
+### <a name="example-liveevent-and-liveeventinput-configuration-settings-for-a-static-non-random-ingest-rtmp-url"></a>静态（非随机）引入 RTMP URL 的 LiveEvent 和 LiveEventInput 配置设置的示例。
 
 ```csharp
              LiveEvent liveEvent = new LiveEvent(
@@ -147,13 +147,13 @@ ms.locfileid: "107766292"
 
 * 非静态主机名
 
-    创建 LiveEvent 时，媒体服务 v3 中的默认模式为非静态主机名。 你可以更快地获取分配的实时事件，但实时编码硬件或软件所需的引入 URL 将是随机的。 如果停止/启动实时事件，此 URL 会更改。 非静态主机名仅适合这样的情况：即最终用户想要使用应用进行流式处理，而应用需要非常快速地获取实时事件，并且可以使用动态引入 URL。
+    创建 LiveEvent 时，媒体服务 v3 中的默认模式为非静态主机名。 可以稍微更快地分配直播活动，但实时编码硬件或软件所需的引入 URL 将是随机的。 如果停止/启动实时事件，此 URL 会更改。 非静态主机名仅适合这样的情况：即最终用户想要使用应用进行流式处理，而应用需要非常快速地获取直播活动，并且可以轻松获取动态引入 URL。
 
     如果客户端应用在创建实时事件之前不需要预生成引入 URL，请让媒体服务自动生成实时事件的访问令牌。
 
 * 静态主机名 
 
-    大多数希望使用 RTMP 引入 URL（它在创建或停止/启动特定实时事件时不会发生改变）预先配置其实时编码硬件或软件的操作员，更倾向于使用静态主机名模式。 这些操作员需要一个不随时间变化的预测性 RTMP 引入 URL。 如果需要将静态 RTMP 引入 URL 推送到硬件编码设备（如 BlackMagic Atem Mini Pro）的配置设置或类似的硬件编码和生产工具，这也非常有用。 
+    大多数希望使用在创建或停止/启动特定直播活动时不会发生改变的 RTMP 引入 URL 来预先配置其实时编码硬件或软件的操作员，更倾向于使用静态主机名模式。 这些操作员需要一个不随时间变化的预测性 RTMP 引入 URL。 如果需要将静态 RTMP 引入 URL 推送到硬件编码设备（如 BlackMagic Atem Mini Pro）的配置设置或类似的硬件编码和生产工具，这也非常有用。 
 
     > [!NOTE]
     > 在 Azure 门户中，静态主机名 URL 称为“静态主机名前缀”。
@@ -162,7 +162,7 @@ ms.locfileid: "107766292"
 
     为了避免 URL 中出现随机令牌，在创建时还需要传递你自己的访问令牌 (`LiveEventInput.accessToken`)。  访问令牌必须是有效的 GUID 字符串（带或不带连字符）。 一旦设置模式，就无法将其更新。
 
-    访问令牌在 Azure 区域和媒体服务帐户中必须是唯一的。 如果应用需使用静态主机名引入 URL，我们建议你始终创建新的 GUID 实例，将其与特定的区域、媒体服务帐户和实时事件组合一起使用。
+    访问令牌在 Azure 区域和媒体服务帐户中必须是唯一的。 如果应用需使用静态主机名引入 URL，建议始终创建新的 GUID 实例，将其与特定的区域、媒体服务帐户和直播活动分别组合使用。
 
     使用以下 API 启用静态主机名 URL，并将访问令牌设置为有效的 GUID（例如 `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`）。  
 

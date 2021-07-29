@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8d99b4d1fbf227d850de387b7ca24dcd3fd40646
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4f10ce3203eb63f7622f41e6838289129026ca73
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791149"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110698281"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric 中的灾难恢复
 提供高可用性的关键一环是确保服务能够经受各种不同类型的故障。 对于计划外和不受控制的故障，这一点尤其重要。 
@@ -186,14 +186,15 @@ Service Fabric 的目标是自动管理故障。 但是，若要处理某些类�
 
 对于在 Azure 中运行的群集，可以在 [Azure 状态页][azure-status-dashboard]上查看有关中断的最新信息。 物理数据中心遭到部分或完全损坏（这种情况很少见）时，托管在此处的任何 Service Fabric 群集或其中的服务可能会丢失。 这种丢失包括未在该数据中心或区域外部备份的任何状态。
 
-可通过两种不同的策略解决单个数据中心或区域出现的永久性或持续性故障： 
+可通过多种不同的策略解决单个数据中心或区域出现的永久性或持续性故障： 
 
 - 在多个此类区域中运行单独的 Service Fabric 群集，并使用某些机制在这些环境之间进行故障转移和故障回复。 这种多群集主动/主动或主动/被动模型需要额外的管理工作和操作代码。 此模型还需要协调来自同一数据中心或区域中服务的备份，以便某一数据中心或区域失败时，其他数据中心或区域可以使用该备份。 
-- 运行跨多个数据中心或区域的单个 Service Fabric 群集。 此策略支持的最低配置是三个数据中心或区域。 建议的区域或数据中心数量为 5。 
+- 运行跨多个数据中心的单个 Service Fabric 群集。 此策略支持的最低配置是三个数据中心。 有关详细信息，请参阅[跨可用性区域部署 Service Fabric 群集](service-fabric-cross-availability-zones.md)。
   
-  此模型需要更复杂的群集拓扑。 但是，好处是一个数据中心或区域的故障可从灾难转变为正常故障。 可通过适用于单个区域内群集的机制来处理这些故障。 容错域、升级域和 Service Fabric 放置规则可确保工作负载得以分散，使其能够承受正常故障。 
+  此模型需要其他设置。 但是，好处是一个数据中心的故障可从灾难转变为正常故障。 可通过适用于单个区域内群集的机制来处理这些故障。 容错域、升级域和 Service Fabric 放置规则可确保工作负载得以分散，使其能够承受正常故障。
   
   若要详细了解那些有助于在此类群集中运行服务的策略，请参阅 [Service Fabric 服务的放置策略](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)。
+- 使用独立模型运行跨多个区域的单个 Service Fabric 群集。 建议的区域数为三个。 有关独立 Service Fabric 设置的详细信息，请参阅[创建独立群集](service-fabric-cluster-creation-for-windows-server.md)。
 
 ### <a name="random-failures-that-lead-to-cluster-failures"></a>导致群集故障的随机故障
 Service Fabric 具有种子节点的概念  。 种子节点可以维护基础群集的可用性。 

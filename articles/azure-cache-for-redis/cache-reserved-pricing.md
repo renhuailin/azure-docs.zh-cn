@@ -6,18 +6,18 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 2f3472aa495042749410bc0b9635f0924a02e1fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9fcb8567d9f7593a059567df6edc279b6fa701c
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98598550"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110782938"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>为具有预留容量的 Azure Cache for Redis 计算资源预付费用
 
 与即用即付价格相比，Azure Cache for Redis 现在可以通过预付计算资源费用来节省成本。 通过 Azure Cache for Redis 预留容量，可以提前承诺为期一年或三年的缓存购买量，以获得可观的计算资源价格折扣。 若要购买 Azure Cache for Redis 预留容量，需要指定 Azure 区域、服务层级和期限。
 
-无需为特定的 Azure Cache for Redis 分配预留。 已在运行或新部署的 Azure Cache for Redis 将自动获得预留定价的权益，高达预留缓存大小。 购买预留容量便会预付为期一年或三年的计算资源费用。 购买预留容量后，与预留属性匹配的 Azure Cache for Redis 计算资源费用不再按照即用即付的费率计收。 预留不包括与缓存相关联的网络或存储费用。 预留期限结束时，计费权益随即过期，Azure Cache for Redis 将按即用即付价格计费。 虚拟机预留实例不自动续订。 有关定价信息，请参阅 [Azure Cache for Redis 预留容量套餐](https://azure.microsoft.com/pricing/details/cache)。
+无需为特定的 Azure Cache for Redis 分配预留。 已在运行或新部署的 Azure Cache for Redis 将自动获得预留定价的权益，高达预留缓存大小。 购买预留容量便会预付为期一年或三年的计算资源费用。 购买预留容量后，与预留属性匹配的 Azure Cache for Redis 计算资源费用不再按照即用即付的费率计收。 预留不包括与缓存相关联的网络或存储费用。 预留期限结束时，计费权益随即过期，Azure Cache for Redis 将按即用即付价格计费。 预留容量不自动续订。 有关定价信息，请参阅 [Azure Cache for Redis 预留容量套餐](https://azure.microsoft.com/pricing/details/cache)。
 
 可在 [Azure 门户](https://portal.azure.com/)中购买 Azure Cache for Redis 预留容量。 购买预留容量：
 
@@ -32,7 +32,7 @@ ms.locfileid: "98598550"
 
 预留容量的大小应基于特定区域中使用相同服务层级的现有或即将部署的缓存所用的内存大小总量。
 
-例如，假设你要运行两个缓存 - 一个为 13 GB，另一个为 26 GB。 运行两个缓存至少需要一年。 接下来，假设你计划将现有的 13 GB 缓存扩展到 26 GB 达一个月，以满足季节性需求，然后再缩减回去。 在这种情况下，可以在一年的预留期内购买 1 个 P2 缓存和 1 个 P3 缓存或 3 个 P2 缓存，以最大限度地节省成本。 你可享受的预留的缓存内存总量的折扣，与在缓存中分配该总量的方式无关。
+例如，假设要运行两个缓存 - 一个为 13 GB，另一个为 26 GB。 运行两个缓存至少需要一年。 接下来，假设计划将现有的 13 GB 缓存扩展到 26 GB 达一个月，以满足季节性需求，然后再缩减回去。 在这种情况下，可以在一年的预留期内购买 1 个 P2 缓存和 1 个 P3 缓存或 3 个 P2 缓存，以最大限度地节省成本。 你可享受的预留的缓存内存总量的折扣，与在缓存中分配该总量的方式无关。
 
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>购买 Azure Cache for Redis 预留容量
@@ -57,7 +57,7 @@ ms.locfileid: "98598550"
 | 区域 | 预订的 Azure Cache for Redis 预留容量涵盖的 Azure 区域。
 | 定价层 | Azure Cache for Redis 服务器的服务层级。
 | 术语 | 一年或三年
-| 数量 | 在 Azure Cache for Redis 预留容量预定中购买的计算资源量。 数量是预留并将享受计费折扣的所选 Azure 区域和服务层级中的缓存的数量。 例如，如果你在美国东部区域正在运行或计划运行包含 26 GB 总缓存容量的 Azure Cache for Redis 服务器，则需指定相当于 26 GB 的容量，以最大限度地享受所有缓存的权益。 这可能是 1 个 P3 或 2 个 P2 缓存。
+| 数量 | 在 Azure Cache for Redis 预留容量预定中购买的计算资源量。 数量是预留并将享受计费折扣的所选 Azure 区域和服务层级中的缓存的数量。 例如，如果在美国东部区域正在运行或计划运行包含 26 GB 总缓存容量的 Azure Cache for Redis 服务器，则需指定相当于 26 GB 的容量，以最大限度地享受所有缓存的权益。 数量可以是一个 P3 缓存或两个 P2 缓存。
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>对预留执行取消、交换或退款操作
 

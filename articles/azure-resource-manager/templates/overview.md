@@ -3,12 +3,12 @@ title: 模板概述
 description: 介绍使用 Azure 资源管理器模板（ARM 模板）部署资源的好处。
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 14bcbbd7a7ae7315dbb8e9d3e7e44ce0ffe0a4b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62d25d2bd87f9335ac6442a7038f9326b04b36b0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419977"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960354"
 ---
 # <a name="what-are-arm-templates"></a>什么是 ARM 模板？
 
@@ -18,7 +18,7 @@ ms.locfileid: "103419977"
 
 若要针对 Azure 解决方案实现基础结构即代码，请使用 Azure 资源管理器模板（ARM 模板）。 该模板是一个定义项目基础结构和配置的 JavaScript 对象表示法 (JSON) 文件。 该模板使用声明性语法，使你可以指明要部署的内容，而不需要编写一系列编程命令来创建内容。 在该模板中，指定要部署的资源以及这些资源的属性。
 
-我们引入了一种用于开发 ARM 模板的新语言。 该语言名为 Bicep，目前以预览版提供。 Bicep 和 JSON 模板提供的功能相同。 你可以在两种语言之间转换模板。 Bicep 提供的语法更容易用于创建模板。 有关详细信息，请参阅[什么是 Bicep（预览）？](bicep-overview.md)。
+我们引入了一种名为“Bicep”的新语言，用于开发 ARM 模板 JSON。 Bicep 文件和 JSON 模板提供的功能相同。 你可以在两种语言之间转换模板。 Bicep 提供的语法更容易用于创建模板。 有关详细信息，请参阅[什么是 Bicep？](../bicep/overview.md)。
 
 若要了解如何开始使用 ARM 模板，请参阅以下视频。
 
@@ -28,7 +28,7 @@ ms.locfileid: "103419977"
 
 如果要尝试在使用 ARM 模板和其他基础结构即代码服务之间做出选择，请考虑使用模板的以下优点：
 
-* **声明性语法**：ARM 模板允许以声明方式创建和部署整个 Azure 基础结构。 例如，不仅可以部署虚拟机，还可以部署网络基础结构、存储系统和可能需要的任何其他资源。
+* **声明性语法**：ARM 模板允许以声明方式创建和部署整个 Azure 基础结构。 例如，你不仅可以部署虚拟机，还可以部署网络基础结构、存储系统和可能需要的任何其他资源。
 
 * **可反复效果**：在整个开发生命周期内反复部署基础结构，并确保以一致的方式部署资源。 模板是幂等的，这意味着，可以多次部署同一模板，并获得处于相同状态的相同资源类型。 可以开发一个模板来表示所需的状态，而无需开发大量的独立模板来表示更新。
 
@@ -44,7 +44,7 @@ ms.locfileid: "103419977"
 
 * **测试**：可以使用 ARM 模板工具包 (arm-ttk) 对模板进行测试，确保模板符合建议的准则。 此测试工具包是一个 PowerShell 脚本，可从 [GitHub](https://github.com/Azure/arm-ttk) 下载。 使用此工具包，可以更轻松地使用模板语言开发专门技术。
 
-* **预览更改**：可以使用 [模拟操作](template-deploy-what-if.md)在部署模板前预览更改。 通过 What-if，你可查看将创建、更新或删除的资源，以及将更改的任何资源属性。 模拟操作会检查环境的当前状态，因此无需管理状态。
+* **预览更改**：可以使用 [模拟操作](./deploy-what-if.md)在部署模板前预览更改。 通过 What-if，你可查看将创建、更新或删除的资源，以及将更改的任何资源属性。 模拟操作会检查环境的当前状态，因此无需管理状态。
 
 * **内置验证**：只有在通过验证后才会部署模板。 资源管理器在开始部署之前会检查模板，以确保部署成功。 部署不太可能会在半完成状态时停止。
 
@@ -68,15 +68,15 @@ ms.locfileid: "103419977"
 
 模板包含以下节：
 
-* [参数](template-parameters.md) - 在部署过程中提供值，以便可将同一模板用于不同的环境。
+* [参数](./parameters.md) - 在部署过程中提供值，以便可将同一模板用于不同的环境。
 
-* [变量](template-variables.md) - 定义在模板中重复使用的值。 可以从参数值构造变量。
+* [变量](./variables.md) - 定义在模板中重复使用的值。 可以从参数值构造变量。
 
-* [用户定义的函数](template-user-defined-functions.md) - 创建自定义函数用于简化模板。
+* [用户定义的函数](./user-defined-functions.md) - 创建自定义函数用于简化模板。
 
 * [资源](resource-declaration.md) - 指定要部署的资源。
 
-* [输出](template-outputs.md) - 从已部署的资源返回值。
+* [输出](./outputs.md) - 从已部署的资源返回值。
 
 ## <a name="template-deployment-process"></a>模板部署过程
 
@@ -151,6 +151,6 @@ REQUEST BODY
 
 * 有关引导你完成模板创建过程的分步教程，请参阅[教程：创建和部署第一个 ARM 模板](template-tutorial-create-first-template.md)。
 * 要通过 Microsoft Learn 上的一组引导式模块了解 ARM 模板，请参阅[使用 ARM 模板在 Azure 中部署和管理资源](/learn/paths/deploy-manage-resource-manager-templates/)。
-* 有关模板文件中的属性的信息，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 有关模板文件中的属性的信息，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。
 * 若要了解如何导出模板，请参阅[快速入门：使用 Azure 门户创建和部署 ARM 模板](quickstart-create-templates-use-the-portal.md)。
 * 有关常见问题的解答，请参阅[有关 ARM 模板的常见问题解答](frequently-asked-questions.md)。

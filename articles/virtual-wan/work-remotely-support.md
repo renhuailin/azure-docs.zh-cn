@@ -1,18 +1,18 @@
 ---
 title: Azure 虚拟 WAN 和远程工作
-description: 本页介绍在新冠肺炎疫情期间如何利用 Azure 虚拟 WAN 来实现远程工作。
+description: 了解在新冠肺炎疫情期间如何利用 Azure 虚拟 WAN 来实现远程工作。
 services: virtual-wan
 author: reyandap
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 05/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: fc048f3da3156f5e17cfa32479b834b7320a60a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb3af5f19e81ccf21a9ca38fe45514aa0bdf471e
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023478"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110580243"
 ---
 # <a name="azure-virtual-wan-and-supporting-remote-work"></a>Azure 虚拟 WAN 和远程工作支持
 

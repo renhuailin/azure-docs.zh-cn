@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
 ms.custom: devx-track-js
-ms.openlocfilehash: 2886cb6433c4f8a65eb0661eded0ddd08248e137
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b7191e4d1cff49ff31fa66f80c3aafbc4dfd9924
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102219176"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814273"
 ---
-# <a name="configure-application-settings-for-azure-static-web-apps-preview"></a>为 Azure 静态 Web 应用预览版配置应用程序设置
+# <a name="configure-application-settings-for-azure-static-web-apps"></a>为 Azure 静态 Web 应用配置应用程序设置
 
 应用程序设置包含可能更改的值（例如数据库连接字符串）的配置设置。 通过添加应用程序设置，可以修改应用的配置输入，而无需更改应用程序代码。
 
@@ -168,4 +168,4 @@ Azure CLI 命令需要一些特定于帐户的值才能运行上传。 在静态
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [设置本地开发](local-development.md)
+> [配置前端框架](front-end-frameworks.md)

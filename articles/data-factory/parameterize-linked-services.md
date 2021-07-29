@@ -3,15 +3,15 @@ title: 参数化 Azure 数据工厂中的链接服务
 description: 了解如何参数化 Azure 数据工厂中的链接服务，并在运行时传递动态值。
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 06/01/2021
 author: chez-charlie
 ms.author: chez
-ms.openlocfilehash: 48e8c9ff5111b6b67e835676e3bc56e4536248a0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 277f3d9e9d82edf9e93d41808a351528a94f85d7
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110091461"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110793688"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>参数化 Azure 数据工厂中的链接服务
 
@@ -22,7 +22,7 @@ ms.locfileid: "110091461"
 可以使用 Azure 门户中的数据工厂 UI 或编程接口来参数化链接服务。
 
 > [!TIP]
-> 我们建议不要参数化密码或机密。 而应将所有连接字符串都存储在 Azure Key Vault 中，并参数化 *机密名称*。
+> 我们建议不要参数化密码或机密。 而应将所有机密都存储在 Azure Key Vault 中，并参数化“机密名称”。
 
 > [!Note]
 > 存在导致在参数名中使用“-”的待解决的 bug，在该 bug 被解决之前，建议使用不带“-”的名称。
@@ -33,8 +33,9 @@ ms.locfileid: "110091461"
 
 ## <a name="supported-linked-service-types"></a>支持的链接服务类型
 
-可以将任何类型的链接服务参数化。
-在 UI 上创作链接服务时，数据工厂会为以下类型的链接服务提供内置参数化体验。 在“链接服务创建/编辑”边栏选项卡中，可以找到新参数的选项并添加动态内容。
+所有链接服务类型都支持参数化。
+
+在 ADF UI 上提供原生支持：在 UI 上创作链接服务时，数据工厂为以下类型的链接服务提供内置的参数化体验。 在“链接服务创建/编辑”边栏选项卡中，可以找到新参数的选项并添加动态内容。 请参阅[数据工厂 UI 体验](#data-factory-ui)。
 
 - Amazon Redshift
 - Amazon S3
@@ -56,7 +57,7 @@ ms.locfileid: "110091461"
 - Oracle 云存储
 - SQL Server
 
-对于不在上述列表中的其他链接服务类型，可以通过在 UI 上编辑 JSON 来参数化该链接服务：
+高级创作：对于上面列表中没有的其他链接服务类型，可以通过在 UI 上编辑 JSON 将链接服务参数化：
 
 - 在“链接服务创建/编辑”边栏选项卡中 -> 展开底部的“高级”-> 选中“以 JSON 格式指定动态内容”复选框 -> 指定链接服务 JSON 有效负载。 
 - 或者，在创建没有参数化的链接服务后，转到[管理中心](author-visually.md#management-hub) ->“链接服务”-> 查找特定的链接服务 -> 单击“代码”（“{}”按钮）以编辑 JSON。 

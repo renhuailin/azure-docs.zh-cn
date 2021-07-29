@@ -3,19 +3,19 @@ title: 超大规模服务层级的性能诊断
 description: 本文介绍如何排查 Azure SQL 数据库中的超大规模服务层级性能问题。
 services: sql-database
 ms.service: sql-database
-ms.subservice: service
+ms.subservice: performance
 ms.custom: seo-lt-2019 sqldbrb=1
 ms.topic: troubleshooting
 author: denzilribeiro
 ms.author: denzilr
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 10/18/2019
-ms.openlocfilehash: ed31ff5d77b258d141a77fc174c2d5452adf7d01
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 116212ff082a2d21e8609c41af82e8325c78156c
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92791709"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110704301"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL 超大规模服务层级性能故障排除诊断
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,7 +33,9 @@ ms.locfileid: "92791709"
 |RBIO_RG_STORAGE        | 如果由于页面服务器上的日志使用延迟而导致超大规模数据库主计算节点日志生成速率受到限制，则会发生此等待。         |
 |RBIO_RG_DESTAGE        | 如果由于长期日志存储的日志使用延迟而导致超大规模数据库计算节点日志生成速率受到限制，则会发生此等待。         |
 |RBIO_RG_REPLICA        | 如果由于可读辅助副本的日志使用延迟而导致超大规模数据库计算节点日志生成速率受到限制，则会发生此等待。         |
+|RBIO_RG_GEOREPLICA    | 如果由于异地辅助数据库辅助副本的日志使用延迟而导致超大规模数据库计算节点日志生成速率受到限制，则会发生此等待。         |
 |RBIO_RG_LOCALDESTAGE   | 如果由于日志服务的日志使用延迟而导致超大规模数据库计算节点日志生成速率受到限制，则会发生此等待。         |
+
 
 ## <a name="page-server-reads"></a>页面服务器读取
 
@@ -75,7 +77,7 @@ ms.locfileid: "92791709"
 
 `select * from sys.dm_io_virtual_file_stats(0,NULL);`
 
-在 RBPEX 中完成的读取数与在所有其他数据文件中完成的聚合读取数之比提供了 RBPEX 缓存命中率。
+在 RBPEX 中完成的读取数与在所有其他数据文件中完成的聚合读取数之比提供了 RBPEX 缓存命中率。 计数器 `RBPEX cache hit ratio` 也会在性能计数器 DMV `sys.dm_os_performance_counters` 中公开。                                                                        
 
 ### <a name="data-reads"></a>数据读取
 
@@ -106,6 +108,7 @@ ms.locfileid: "92791709"
 ## <a name="additional-resources"></a>其他资源
 
 - 有关“超大规模”单一数据库的 vCore 资源限制，请参阅[超大规模服务层级的 vCore 限制](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5)
+- 若要监视 Azure SQL 数据库，请启用 [Azure Monitor SQL 见解](../../azure-monitor/insights/sql-insights-overview.md)
 - 有关如何优化 Azure SQL 数据库性能，请参阅 [Azure SQL 数据库中的查询性能](performance-guidance.md)
 - 有关如何使用查询存储优化性能，请参阅[使用查询存储进行性能监视](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store/)
 - 有关 DMV 监视脚本，请参阅[使用动态管理视图监视 Azure SQL 数据库的性能](monitoring-with-dmvs.md)

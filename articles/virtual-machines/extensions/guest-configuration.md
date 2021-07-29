@@ -7,12 +7,13 @@ ms.subservice: extensions
 author: mgreenegit
 ms.author: migreene
 ms.date: 04/15/2021
-ms.openlocfilehash: 2fda3cc2cf9adc3a734780209a0c9cc06a04e7cf
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d189cf54edfaca13b801e786254eec9fc5aa96f6
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107368430"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110662824"
 ---
 # <a name="overview-of-the-azure-policy-guest-configuration-extension"></a>Azure 策略来宾配置扩展的概述
 
@@ -45,12 +46,15 @@ ms.locfileid: "107368430"
 
 ## <a name="how-can-i-install-the-extension"></a>如何安装扩展？
 
-若要大规模部署最新版本的扩展（包括标识要求），请分配 Azure 策略，[部署先决条件以在虚拟机上启用来宾配置策略](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_Prerequisites.json)。
-对于单个计算机，可以使用 Azure CLI、PowerShell、资源管理器模板或第三方工具来部署扩展。
-
 必须将扩展的实例名称设置为“AzurePolicyforWindows”或“AzurePolicyforLinux”，因为上面引用的策略需要这些特定字符串。
 
 默认情况下，所有部署都会更新到最新版本。 除非另外指定，否则属性 _autoUpgradeMinorVersion_ 的值默认为“true”。 发布新版本的扩展时，无需担心更新代码。
+
+### <a name="azure-policy"></a>Azure Policy
+
+要大规模部署最新版本的扩展（包括身份要求），请[指定](../../governance/policy/assign-policy-portal.md) Azure Policy：
+
+[部署先决条件以在虚拟机上启用来宾配置策略](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_AzureBaseline.json)。
 
 ### <a name="azure-cli"></a>Azure CLI
 

@@ -2,13 +2,13 @@
 title: 将 Azure VM 备份到恢复服务保管库中
 description: 介绍如何使用 Azure 备份将 Azure VM 备份到恢复服务保管库中
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.openlocfilehash: 5c3bc66c2111c347f8ed0e32c9e597a52ed404ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/01/2021
+ms.openlocfilehash: 42ce8990e4593fc734be619aa363f080f3055878
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104670420"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783559"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>将 Azure VM 备份到恢复服务保管库中
 
@@ -62,22 +62,23 @@ ms.locfileid: "104670420"
 
 ## <a name="apply-a-backup-policy"></a>应用备份策略
 
-为保管库配置备份策略。
+若要将备份策略应用于 Azure VM，请执行以下步骤：
 
-1. 在保管库的“概述”部分，选择“+备份” 。
+1. 导航到备份中心，在“概述”选项卡中单击“+备份”。 
 
    ![“备份”按钮](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
-1. 在“备份目标” > “你的工作负荷在哪里运行?”中，选择“Azure”。   在“要备份哪些内容?”中，选择“虚拟机” >  “确定”。   这会在保管库中注册 VM 扩展。
+1. 选择“Azure 虚拟机”作为“数据源类型”，然后选择已创建的保管库。 然后单击“继续”。
 
    ![“备份”和“备份目标”窗格](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
-1. 在“备份策略”中，选择要与保管库关联的策略。
-    * 默认策略每天备份一次 VM。 每日备份保留 30 天。 即时恢复快照保留两天。
+1. 分配备份策略。
+
+    - 默认策略每天备份一次 VM。 每日备份保留 30 天。 即时恢复快照保留两天。
 
       ![默认备份策略](./media/backup-azure-arm-vms-prepare/default-policy.png)
 
-    * 如果不想使用默认策略，请选择“新建”，然后按照下一过程中所述创建自定义策略。
+    - 如果不想使用默认策略，请选择“新建”，然后按照下一过程中所述创建自定义策略。
 
 1. 在“虚拟机”下，选择“添加”。
 
@@ -129,12 +130,13 @@ ms.locfileid: "104670420"
 
 初始备份将根据计划运行，但可以按如下所示立即运行：
 
-1. 在保管库菜单中，选择“备份项”。
-2. 在“备份项”中，选择“Azure 虚拟机” 。
-3. 在“备份项”列表中，选择省略号 (...)。
-4. 选择“立即备份”。
-5. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期。 然后选择“确定”。 
-6. 监视门户通知。 可以在保管库仪表板 >“备份作业” > “进行中”监视作业进度。  创建初始备份可能需要一些时间，具体取决于 VM 的大小。
+1. 导航到备份中心，然后选择“备份实例”菜单项。
+1. 选择“Azure 虚拟机”作为“数据源类型”。 然后搜索已配置的用于备份的 VM。
+1. 右键单击相关行或选择“更多”图标 (...)，然后单击“立即备份”。
+1. 在“立即备份”中，使用日历控件选择恢复点的最后保留日期。 然后选择“确定”。 
+1. 监视门户通知。
+   若要监视作业进度，请转到“备份中心” > “备份作业”，通过筛选列表来查找处于“正在进行中”状态的作业。  
+   创建初始备份可能需要一些时间，具体取决于 VM 的大小。
 
 ## <a name="verify-backup-job-status"></a>验证备份作业状态
 

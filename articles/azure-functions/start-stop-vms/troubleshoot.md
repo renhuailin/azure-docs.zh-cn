@@ -5,12 +5,12 @@ services: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: 83633b6f107aee995c19e1cda94f4f93a96e84e2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 587dddfde930bb64aa21f2e24c26d815e60ab9b0
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110076773"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110791683"
 ---
 # <a name="troubleshoot-common-issues-with-startstop-vms-preview"></a>排查“启动/停止 VM”（预览）的常见问题
 
@@ -32,7 +32,7 @@ ms.locfileid: "110076773"
 
 你可以在用于“启动/停止 VM”v2（预览）的 Azure 存储帐户中查看对 VM 执行的写入 requestsstoretable 表中的操作的详细信息。 请执行以下步骤来查看这些记录。
 
-1. 导航到 Azure 门户中的存储帐户，并在帐户的左侧窗格中选择“存储资源管理器(预览版)”。
+1. 导航到 Azure 门户中的存储帐户，在帐户的左侧窗格中选择“存储资源管理器(预览版)”。
 1. 选择“表”，然后选择“requeststoretable” 。
 1. 表中的每条记录均表示基于逻辑应用方案中定义的目标范围针对 Azure VM 执行的启动/停止操作。 可按任意一个记录属性（例如，TIMESTAMP、ACTION 或 TARGETTOPLEVELRESOURCENAME）来筛选结果。
 

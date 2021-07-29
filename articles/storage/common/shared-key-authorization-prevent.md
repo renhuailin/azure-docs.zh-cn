@@ -1,31 +1,29 @@
 ---
-title: 阻止通过共享密钥进行授权（预览）
+title: 阻止通过共享密钥进行授权
 titleSuffix: Azure Storage
-description: 若要要求客户端使用 Azure AD 来对请求进行授权，你可以禁止使用共享密钥 对存储帐户进行授权的请求（预览）。
+description: 若要要求客户端使用 Azure AD 对请求进行授权，你可以禁止使用共享密钥对向存储帐户发出的请求进行授权。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/11/2021
+ms.date: 05/27/2021
 ms.author: tamram
-ms.reviewer: fryu
-ms.openlocfilehash: b7290abe102d22bb87c87c3c9d13ee99c127b942
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: sohamnc
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0262cdd348c03dafd378af95374beacf2bc77c23
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199917"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679263"
 ---
-# <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>阻止对 Azure 存储帐户进行共享密钥授权（预览）
+# <a name="prevent-shared-key-authorization-for-an-azure-storage-account"></a>阻止对 Azure 存储帐户进行共享密钥授权
 
-对 Azure 存储帐户的每个安全请求都必须经过授权。 默认情况下，可以使用 Azure Active Directory (Azure AD) 凭据对请求进行授权，或使用帐户访问密钥进行共享密钥授权。 在这两种类型的授权中，与共享密钥相比，Azure AD 提供更高级别的安全性和易用性，是 Microsoft 推荐的授权方法。 若要要求客户端使用 Azure AD 来对请求进行授权，你可以禁止使用共享密钥 对存储帐户进行授权的请求（预览）。
+对 Azure 存储帐户的每个安全请求都必须经过授权。 默认情况下，可以使用 Azure Active Directory (Azure AD) 凭据对请求进行授权，或使用帐户访问密钥进行共享密钥授权。 在这两种类型的授权中，与共享密钥相比，Azure AD 提供更高级别的安全性和易用性，是 Microsoft 推荐的授权方法。 若要要求客户端使用 Azure AD 对请求进行授权，你可以禁止使用共享密钥对向存储帐户发出的请求进行授权。
 
 当禁止对某个存储帐户进行共享密钥授权时，Azure 存储将拒绝向该帐户发出的所有使用帐户访问密钥进行授权的后续请求。 只有通过 Azure AD 进行授权的安全请求才会成功。 有关使用 Azure AD 的详细信息，请参阅[使用 Azure Active Directory 授予对 blob 和队列的访问权限](storage-auth-aad.md)。
 
-> [!IMPORTANT]
-> 禁止共享密钥授权的功能目前为 **预览版**。 有关 beta 版本、预览版或尚未正式发布的版本的 Azure 功能所适用的法律条款，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-本文介绍如何检测通过共享密钥授权发送的请求，以及如何修正存储帐户的共享密钥授权。 若要了解如何注册使用预览功能，请参阅[关于预览](#about-the-preview)。
+本文介绍如何检测通过共享密钥授权发送的请求，以及如何修正存储帐户的共享密钥授权。
 
 ## <a name="detect-the-type-of-authorization-used-by-client-applications"></a>检测客户端应用程序使用的授权类型
 
@@ -33,7 +31,7 @@ ms.locfileid: "103199917"
 
 使用指标来确定存储帐户收到的通过共享密钥或共享访问签名 (SAS) 授权的请求数。 使用日志来确定发送这些请求的客户端。
 
-有关在预览过程中解释使用共享访问签名发出的请求的详细信息，请参阅[关于预览](#about-the-preview)。
+可以通过共享密钥或 Azure AD 为 SAS 授权。 若要详细了解如何解释使用共享访问签名发出的请求，请参阅[了解禁止共享密钥会如何影响 SAS 令牌](#understand-how-disallowing-shared-key-affects-sas-tokens)。
 
 ### <a name="monitor-how-many-requests-are-authorized-with-shared-key"></a>监视通过共享密钥授权的请求数
 
@@ -77,7 +75,6 @@ Azure Monitor 中的 Azure 存储日志记录支持使用日志查询来分析�
 
 若要使用 Azure Monitor 记录 Azure 存储数据并使用 Azure Log Analytics 对其进行分析，必须先创建一项诊断设置，用于指示要记录其数据的请求类型和存储服务。 若要在 Azure 门户中创建诊断设置，请执行以下步骤：
 
-1. 在 [Azure Monitor 中的 Azure 存储日志记录预览版](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)中注册。
 1. 在包含你的 Azure 存储帐户的订阅中创建新的 Log Analytics 工作区，或使用现有的 Log Analytics 工作区。 配置存储帐户的日志记录后，日志将在 Log Analytics 工作区中提供。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../azure-monitor/logs/quick-create-workspace.md)。
 1. 导航到 Azure 门户中的存储帐户。
 1. 在“监视”部分选择“诊断设置(预览版)”。
@@ -158,6 +155,8 @@ az storage account update \
 
 禁用共享密钥授权后，使用共享密钥授权对存储帐户发出的请求将失败，错误代码为 403（禁止访问）。 Azure 存储会返回错误，指示不允许对存储帐户进行基于密钥的授权。
 
+仅使用 Azure 资源管理器部署模型的存储帐户支持 AllowSharedKeyAccess 属性。 有关哪些存储帐户使用 Azure 资源管理器部署模型的信息，请参阅[存储帐户的类型](storage-account-overview.md#types-of-storage-accounts)。
+
 ### <a name="verify-that-shared-key-access-is-not-allowed"></a>验证是否不允许使用共享密钥访问
 
 若要验证是否不再允许使用共享密钥授权，可以尝试使用帐户访问密钥调用数据操作。 以下示例尝试使用访问密钥创建容器。 在不允许对存储帐户进行共享密钥授权的情况下，此调用将失败。 请记得将括号中的占位符值替换为你自己的值：
@@ -213,6 +212,13 @@ resources
 | 服务 SAS | 共享密钥 | 拒绝对所有 Azure 存储服务的请求。 |
 | 帐户 SAS | 共享密钥 | 拒绝对所有 Azure 存储服务的请求。 |
 
+Azure 指标和 Azure Monitor 中的日志记录不区分不同类型的共享访问签名。 Azure 指标资源管理器中的 SAS 筛选器和 Azure Monitor 中 Azure 存储日志记录内的 SAS 字段都会报告通过任何类型的 SAS 授权的请求 。 但是，不同类型的共享访问签名以不同的方式获得授权，并且当不允许使用共享密钥访问时，行为会有所不同：
+
+- 服务 SAS 令牌或帐户 SAS 令牌使用共享密钥授权，当 AllowSharedKeyAccess 属性设置为 false时，不允许在对 Blob 存储的请求中使用 。
+- 用户委派 SAS 使用 Azure AD 授权，当 AllowSharedKeyAccess 属性设置为 false时，不允许在对 Blob 存储的请求中使用 。
+
+评估通向存储帐户的流量时，请记住，[检测客户端应用程序使用的授权类型](#detect-the-type-of-authorization-used-by-client-applications)中所述的指标和日志可能包括使用用户委托 SAS 发出的请求。
+
 有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)。
 
 ## <a name="consider-compatibility-with-other-azure-tools-and-services"></a>考虑与其他 Azure 工具和服务的兼容性
@@ -238,21 +244,6 @@ Azure 存储仅支持针对 Blob 和队列存储请求的 Azure AD 授权。 如
 Microsoft 建议在禁止通过共享密钥访问帐户之前，将任何 Azure 文件存储或表存储数据迁移到单独的存储帐户，或者不将此设置应用于支持 Azure 文件存储或表存储工作负载的存储帐户。
 
 禁止对存储帐户进行共享密钥访问不会影响与 Azure 文件存储的 SMB 连接。
-
-## <a name="about-the-preview"></a>关于此预览版
-
-用于禁止使用共享密钥授权的预览版在 Azure 公有云中提供。 仅支持使用 Azure 资源管理器部署模型的存储帐户。 有关哪些存储帐户使用 Azure 资源管理器部署模型的信息，请参阅[存储帐户的类型](storage-account-overview.md#types-of-storage-accounts)。
-
-预览功能包括以下各节所述的限制。
-
-### <a name="metrics-and-logging-report-all-requests-made-with-a-sas-regardless-of-how-they-are-authorized"></a>指标和日志记录报告使用 SAS 发出的所有请求，而不考虑它们的授权方式
-
-Azure 指标和 Azure Monitor 中的日志记录不区分预览功能中不同类型的共享访问签名。 Azure 指标资源管理器中的 SAS 筛选器和 Azure Monitor 中 Azure 存储日志记录内的 SAS 字段都会报告通过任何类型的 SAS 授权的请求 。 但是，不同类型的共享访问签名以不同的方式获得授权，并且当不允许使用共享密钥访问时，行为会有所不同：
-
-- 服务 SAS 令牌或帐户 SAS 令牌使用共享密钥授权，当 AllowSharedKeyAccess 属性设置为 false时，不允许在对 Blob 存储的请求中使用 。
-- 用户委派 SAS 使用 Azure AD 授权，当 AllowSharedKeyAccess 属性设置为 false时，不允许在对 Blob 存储的请求中使用 。
-
-评估通向存储帐户的流量时，请记住，[检测客户端应用程序使用的授权类型](#detect-the-type-of-authorization-used-by-client-applications)中所述的指标和日志可能包括使用用户委托 SAS 发出的请求。 有关在 AllowSharedKeyAccess 属性设置为 false 时 Azure 存储如何响应 SAS 的详细信息，请参阅[了解禁用共享密钥如何影响 SAS 令牌](#understand-how-disallowing-shared-key-affects-sas-tokens) 。
 
 ## <a name="next-steps"></a>后续步骤
 

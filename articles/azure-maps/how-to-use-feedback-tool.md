@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4be775d8a6a8c476bcc659a902c7f43c12a6d6d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: daaa7a2fa0c25c49a1a6d404edb8ab0765d8c36a
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96905326"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784000"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>向 Azure Maps 提供数据反馈
 
 Azure Maps 自 2018 年 5 月起提供。 Azure Maps 提供最新的地图数据、易于使用的 REST API 和强大的 SDK，为企业客户不同种类的业务用例提供支持。 世界无时不变，如今为我们的客户提供数字形式的事实信息变得至关重要。 客户计划打开或关闭设施，都需要我们的地图及时更新。 这样，他们才能在适当的设施上高效地计划交付、维护或客户服务。 我们已创建 Azure Maps 数据反馈站点来帮助客户提供直接数据反馈。 客户的数据反馈会直接发送到我们的数据提供程序，以及其地图编辑器。 他们可以快速评估并将反馈纳入我们的地图产品。  
 
-使用 [Azure Maps 数据（预览版）反馈站点](https://feedback.azuremaps.com)，客户可以轻松提供地图数据反馈，尤其是在业务兴趣点和住宅地址方面。 本文将指导用户了解，如何使用 Azure Maps 反馈站点提供不同类型的反馈。
+使用 [Azure Maps 数据反馈站点](https://feedback.azuremaps.com)，客户可以轻松提供地图数据反馈，尤其是在业务兴趣点和住宅地址方面。 本文将指导用户了解，如何使用 Azure Maps 反馈站点提供不同类型的反馈。
 
 ## <a name="add-a-business-place-or-a-residential-address"></a>添加办公地点或住宅地址 
 

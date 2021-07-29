@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 950a786b29a8144c4bb192fa6078e8c88d67481d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87156914769c2cb76b7509b74ebfeb13b15af95e
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100384446"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784188"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>了解在 Synapse 中执行常见任务所需的角色
 
@@ -116,7 +116,7 @@ APACHE SPARK 池|
 为用户、组和服务主体分配和删除 Synapse RBAC 角色分配| 工作区或特定工作区项范围内的 Synapse 管理员|roleAssignments/写入、删除 
 
 >[!Note]
->其他租户的来宾用户不能查看、添加或更改角色分配，无论向他们分配的是什么角色。 
+>来自其他租户的来宾用户在被分配为 Synapse 管理员后，也可以查看、添加或更改角色分配。 
 
 ## <a name="next-steps"></a>后续步骤
 

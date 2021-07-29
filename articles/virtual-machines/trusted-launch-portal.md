@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 295579d17f3b24adcf43f6907cc4b1aca01dcae2
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 15386baa369b18678ef84ebed8144d358fa8177f
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565910"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109839358"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>部署已启用受信任启动的 VM（预览版）
 
@@ -22,7 +22,7 @@ ms.locfileid: "107565910"
 
 > [!IMPORTANT]
 > 受信任启动目前以公共预览版提供。
-> 
+>
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 >
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -32,9 +32,9 @@ ms.locfileid: "107565910"
 创建已启用受信任启动的虚拟机。
 
 1. 登录 Azure [门户](https://aka.ms/TL_preview)。
-   > [!NOTE] 
+   > [!NOTE]
    > 门户链接对于受信任启动预览版是独一无二的。
-   >  
+   >
 2. 搜索“虚拟机”。
 3. 在“服务”下，选择“虚拟机” 。
 4. 在“虚拟机”页中选择“添加”，然后选择“虚拟机”。 
@@ -48,7 +48,7 @@ ms.locfileid: "107565910"
     :::image type="content" source="media/trusted-launch/gen-2-image.png" alt-text="屏幕截图，其中显示的消息确认这是支持受信任启动的第 2 代映像。":::
 
 13. 选择支持受信任启动的 VM 大小。 请查看[受支持的大小](trusted-launch.md#public-preview-limitations)的列表。
-14. 填写“管理员帐户”信息，然后填写“入站端口规则”。 
+14. 填写“管理员帐户”信息，然后填写“入站端口规则”。
 1. 通过在页面顶部选择“高级”选项卡，切换到“高级”选项卡。
 1. 向下滚动到“VM 代系”部分。 确保选中“第 2 代”。
 1. 仍在“高级”选项卡上时，向下滚动到“受信任启动”，然后选中“受信任启动”复选框。   这样会显示另外两个选项 -“安全启动”和“vTPM”。 选择适合你的部署的选项。
@@ -61,23 +61,21 @@ ms.locfileid: "107565910"
     :::image type="content" source="media/trusted-launch/validation.png" alt-text="“验证”页的屏幕截图，显示已包含了受信任启动选项。":::
 
 
-部署 VM 需要数分钟。 
+部署 VM 需要数分钟。
 
 ## <a name="deploy-using-a-template"></a>使用模板进行部署
 
 可以使用快速启动模板部署受信任启动 VM：
 
-Linux：    
-[![部署到 Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-linux%2FcreateUiDefinition.json)
+Linux：[![部署到 Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-linux%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-linux%2FcreateUiDefinition.json)
 
-**Windows**：    
-[![部署到 Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-trustedlaunch-windows%2FcreateUiDefinition.json)
+Windows：[![部署到 Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-windows%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvm-trustedlaunch-windows%2FcreateUiDefinition.json)
 
 ## <a name="view-and-update"></a>查看和更新
 
 可以通过在门户中访问 VM 的“概述”页，查看现有 VM 的受信任启动配置。
 
-若要更改受信任启动配置，请在左侧菜单中选择“设置”部分下的“配置”。 你可以从“受信任启动”部分启用或禁用“安全启动”和“vTPM”。 完成操作后，选择页面顶部的“保存”。 
+若要更改受信任启动配置，请在左侧菜单中选择“设置”部分下的“配置”。 你可以从“受信任启动”部分启用或禁用“安全启动”和“vTPM”。 完成操作后，选择页面顶部的“保存”。
 
 :::image type="content" source="media/trusted-launch/configuration.png" alt-text="屏幕截图，显示如何更改受信任启动配置。":::
 
@@ -87,24 +85,24 @@ Linux：
 ## <a name="verify-secure-boot-and-vtpm"></a>验证安全启动和 vTPM
 
 你可以验证是否已在虚拟机上启用安全启动和 vTPM。
-    
+
 ### <a name="linux-validate-if-secure-boot-is-running"></a>Linux：验证安全启动是否正在运行
 
-通过 SSH 连接到 VM，然后运行以下命令： 
+通过 SSH 连接到 VM，然后运行以下命令：
 
 ```bash
 mokutil --sb-state
 ```
 
 如果启用了安全启动，则该命令会返回以下内容：
- 
+
 ```bash
-SecureBoot enabled 
+SecureBoot enabled
 ```
 
 ### <a name="linux-validate-if-vtpm-is-enabled"></a>Linux：验证是否已启用 vTPM
 
-通过 SSH 连接到 VM。 检查 tpm0 设备是否存在： 
+通过 SSH 连接到 VM。 检查 tpm0 设备是否存在：
 
 ```bash
 ls /dev/tpm0
@@ -130,7 +128,7 @@ ls: cannot access '/dev/tpm0': No such file or directory
 
 ## <a name="enable-the-azure-security-center-experience"></a>启用 Azure 安全中心体验
 
-若要使 Azure 安全中心能够显示有关受信任启动 VM 的信息，需要启用多个策略。 启用这些策略的最简单方法是将此[资源管理器模板](https://github.com/prash200/azure-quickstart-templates/tree/master/101-asc-trustedlaunch-policies)部署到订阅。 
+若要使 Azure 安全中心能够显示有关受信任启动 VM 的信息，需要启用多个策略。 启用这些策略的最简单方法是将此[资源管理器模板](https://github.com/prash200/azure-quickstart-templates/tree/master/101-asc-trustedlaunch-policies)部署到订阅。
 
 选择下面的按钮以将策略部署到订阅：
 
@@ -139,7 +137,7 @@ ls: cannot access '/dev/tpm0': No such file or directory
 每个订阅只需将此模板部署一次。 它会自动在所有受支持的 VM 上安装 `GuestAttestation` 和 `AzureSecurity` 扩展。 如果出现错误，请尝试重新部署此模板。
 
 若要获取有关受信任启动 VM 的 vTPM 和安全启动建议，请参阅[将自定义计划添加到订阅](../security-center/custom-security-policies.md#to-add-a-custom-initiative-to-your-subscription)。
- 
+
 ## <a name="sign-things-for-secure-boot-on-linux"></a>在 Linux 上为安全启动签名
 
 在某些情况下，可能需要为 UEFI 安全启动签名。  例如，你可能需要了解[如何为 Ubuntu 的安全启动签名](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot)。 在这些情况下，需要为 VM 输入 MOK 实用工具注册密钥。 为此，需要使用 Azure 串行控制台来访问 MOK 实用工具。
@@ -152,7 +150,7 @@ ls: cannot access '/dev/tpm0': No such file or directory
 1. 登录后，使用 `mokutil` 导入公钥 `.der` 文件。
 
     ```bash
-    sudo mokutil –import <path to public key.der> 
+    sudo mokutil –import <path to public key.der>
     ```
 1. 通过键入 `sudo reboot` 从 Azure 串行控制台重启计算机。 此时会开始 10 秒倒计时。
 1. 按向上键或向下键可中断倒计时并在 UEFI 控制台模式下等待。 如果计时器未中断，则启动过程会继续，所有 MOK 更改都会丢失。

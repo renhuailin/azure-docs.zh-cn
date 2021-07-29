@@ -2,17 +2,18 @@
 title: 将云服务（经典）部署到 Azure 时对 LocationNotFoundForRoleSize 进行故障排除 | Microsoft Docs
 description: 本文介绍了如何在将云服务（经典）部署到 Azure 时解决 LocationNotFoundForRoleSize 异常。
 services: cloud-services
-author: mibufo
-ms.author: v-mibufo
+author: mamccrea
+ms.author: mamccrea
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: b11aedb52be3c263c781c2ac68d1d5197ba4def2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7938dcb3e66bc618832171668e392e4fff0cf5a9
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101744478"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706173"
 ---
 # <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>将云服务（经典）部署到 Azure 时对 LocationNotFoundForRoleSize 进行故障排除
 
@@ -47,7 +48,8 @@ ms.locfileid: "101744478"
 
 ### <a name="list-skus-in-region-using-azure-cli"></a>使用 Azure CLI 列出区域中的 SKU
 
-你可以使用 [az vm list-skus](https://docs.microsoft.com/cli/azure/vm.html#az_vm_list_skus) 命令。
+可以使用 [az vm list-skus](/cli/azure/vm?view=azure-cli-latest
+#<a name="az_vm_list_skus-command"></a>az_vm_list_skus) 命令。
 
 - 使用 `--location` 参数将输出筛选为你正在使用的位置。
 - 使用 `--size` 参数按部分大小名称搜索。
@@ -63,7 +65,7 @@ ms.locfileid: "101744478"
 
 #### <a name="list-skus-in-region-using-powershell"></a>使用 PowerShell 列出区域中的 SKU
 
-你可以使用 [Get-AzComputeResourceSku](https://docs.microsoft.com/powershell/module/az.compute/get-azcomputeresourcesku) 命令。
+你可以使用 [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) 命令。
 
 - 按位置筛选结果。
 - 必须拥有最新版本 PowerShell 才能运行此命令。
@@ -91,7 +93,7 @@ Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.Res
 
 #### <a name="list-skus-in-region-using-rest-api"></a>使用 REST API 列出区域中的 SKU
 
-你可以使用[资源 SKU - 列出](https://docs.microsoft.com/rest/api/compute/resourceskus/list)操作。 它会以下列格式返回可用 SKU 和区域：
+你可以使用[资源 SKU - 列出](/rest/api/compute/resourceskus/list)操作。 它会以下列格式返回可用 SKU 和区域：
 
 ```json
 {

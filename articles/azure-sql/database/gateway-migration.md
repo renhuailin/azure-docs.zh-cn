@@ -3,19 +3,19 @@ title: 网关流量迁移通知
 description: 本文向用户提供有关 Azure SQL 数据库网关 IP 地址迁移的通知
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: service-overview
 ms.custom: sqldbrb=1
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
-ms.reviewer: vanto
+ms.reviewer: vanto, mathoma
 ms.date: 07/01/2019
-ms.openlocfilehash: 07611a3620a2fd8efe0da075b03b55a5be3a5be9
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 58194f74bb32fec7d58f707d74720c37e26dba5a
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505371"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110699494"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>将 Azure SQL 数据库流量迁移到更新的网关
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,6 +29,14 @@ Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保我们�
 ## <a name="status-updates"></a>状态更新
 
 # <a name="in-progress"></a>[正在学习](#tab/in-progress-ip)
+## <a name="june-2021"></a>2021 年 6 月
+将会向以下区域添加新的 SQL 网关：
+- 英国西部：51.140.208.96、51.140.208.97
+- 韩国中部：20.44.24.32、20.194.64.33
+- 日本东部：13.78.104.32
+
+此 SQL 网关应在 2021 年 6 月 1 日开始接受客户流量。
+
 ## <a name="may-2021"></a>2021 年 5 月
 将会向以下区域添加新的 SQL 网关：
 - 英国南部：51.140.144.36、51.105.72.32  

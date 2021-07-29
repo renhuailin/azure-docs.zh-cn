@@ -4,14 +4,14 @@ description: 了解如何排查 Azure 数据工厂中的安全性和访问控制
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/24/2021
+ms.date: 05/31/2021
 ms.author: lle
-ms.openlocfilehash: fa410441203c50d96c0de1d9188fb73b6fd4d577
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ff95f5c3f8d978d58146529825adee94f82eaf07
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101706114"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110782886"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>排查 Azure 数据工厂安全性和访问控制问题
 
@@ -182,12 +182,24 @@ Azure 资源管理器和 ADF 使用相同的专用区域，这会在客户的私
 
 #### <a name="cause"></a>原因
 
-ADF 仍可使用托管 VNet IR，但你可能会遇到此类错误，因为根据测试结果，托管 VNet 中 Azure Blob 存储的公共终结点不可靠，并且根据 [托管的虚拟网络和托管的专用终结点](https://docs.microsoft.com/azure/data-factory/managed-virtual-network-private-endpoint#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network)，不支持从 ADF 托管虚拟网络通过公共终结点连接 Azure Blob 存储和 Azure Data Lake Gen2。
+ADF 仍可使用托管 VNet IR，但你可能会遇到此类错误，因为根据测试结果，托管 VNet 中 Azure Blob 存储的公共终结点不可靠，并且根据 [托管的虚拟网络和托管的专用终结点](./managed-virtual-network-private-endpoint.md#outbound-communications-through-public-endpoint-from-adf-managed-virtual-network)，不支持从 ADF 托管虚拟网络通过公共终结点连接 Azure Blob 存储和 Azure Data Lake Gen2。
 
 #### <a name="solution"></a>解决方案
 
 - 使用托管 VNet IR 时，在源上启用专用终结点，同时也在接收器端启用。
 - 如果仍想使用公共终结点，则只能切换到公共 IR，而不是对源和接收器使用托管 VNet IR。 即使切换回公共 IR，如果托管 VNet IR 仍然存在，ADF 仍可能会使用托管 VNet IR。
+
+## <a name="sharing-self-hosted-integration-runtime"></a>共享自承载集成运行时
+
+### <a name="sharing-a-self-hosted-ir-from-a-different-tenant-is-not-supported"></a>不支持从其他租户共享自承载 IR 
+
+#### <a name="symptoms"></a>症状
+
+尝试从 Azure 数据工厂 UI 共享自承载 IR 时，你可能会注意到其他数据工厂（位于不同租户），但你无法在位于不同租户的数据工厂之间共享自承载 IR。
+
+#### <a name="cause"></a>原因
+
+不能跨租户共享自承载 IR。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Static Web Apps（预览版）中重置部署令牌
+title: 在 Azure Static Web Apps 中重置部署令牌
 description: 在 Azure Static Web Apps 站点中重置令牌
 services: static-web-apps
 author: webmaxru
@@ -7,14 +7,14 @@ ms.author: masalnik
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 1/31/2021
-ms.openlocfilehash: fe1edb2693993d02a705039c18b04c8d1b7b9725
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d516a448240e32f58318689d985bc0aad906b9f
+ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101744433"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109814003"
 ---
-# <a name="reset-deployment-tokens-in-azure-static-web-apps-preview"></a>在 Azure Static Web Apps（预览版）中重置部署令牌
+# <a name="reset-deployment-tokens-in-azure-static-web-apps"></a>在 Azure Static Web Apps 中重置部署令牌
 
 创建新的 Azure Static Web Apps 站点时，Azure 会生成用于在部署过程中标识应用程序的令牌。 在预配期间，此令牌作为机密存储在 GitHub 存储库中。 本文介绍如何使用和管理此令牌。
 

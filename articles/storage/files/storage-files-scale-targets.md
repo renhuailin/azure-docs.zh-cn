@@ -4,15 +4,15 @@ description: 了解 Azure 文件的可伸缩性和性能目标信息，包括容
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 05/28/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0ecfbb9053fde4ff332cbbcb6e14a84a5bbeb99a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 78ecf275a9c607273aef16e6351224709f230959
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593146"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690519"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 [Azure 文件](storage-files-introduction.md)在云中提供可通过 SMB 和 NFS 文件系统协议访问的完全托管的文件共享。 本文讨论了 Azure 文件和 Azure 文件同步的可伸缩性和性能目标。
@@ -35,8 +35,8 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 | 最大存储帐户容量 | 5 PiB<sup>1</sup> | 100 TiB（预配值） |
 | 最大文件共享数 | 无限制 | 无限制，所有共享的总预配大小必须小于最大存储帐户容量 |
 | 最大并发请求速率 | 20,000 IOPS<sup>1</sup> | 100,000 IOPS |
-| 最大流入量 | <ul><li>美国/欧洲：10 Gbp/秒<sup>1</sup></li><li>其他区域 (LRS/ZRS)：10 Gbp/秒<sup>1</sup></li><li>其他区域 (GRS)：5 Gbp/秒<sup>1</sup></li></ul> | 4,136 MiB/秒 |
-| 最大流出量 | 50 Gbp/秒<sup>1</sup> | 6,204 MiB/秒 |
+| 最大流入量 | <ul><li>美国/欧洲：9,536 MiB/秒<sup>1</sup></li><li>其他区域 (LRS/ZRS)：9,536 MiB/秒<sup>1</sup></li><li>其他区域 (GRS)：4,768 MiB/秒<sup>1</sup></li></ul> | 4,136 MiB/秒 |
+| 最大流出量 | 47,683 MiB/秒<sup>1</sup> | 6,204 MiB/秒 |
 | 虚拟网络规则的数目上限 | 200 | 200 |
 | IP 地址规则的数目上限 | 200 | 200 |
 | 管理读取操作数目 | 每 5 分钟 800 次 | 每 5 分钟 800 次 |
@@ -49,7 +49,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 | 属性 | 标准文件共享<sup>1</sup> | 高级文件共享 |
 |-|-|-|
 | 文件共享的最小大小 | 无最小值 | 100 GiB（预配值） |
-| 预配大小增加/减少单位 | 不可用 | 1 GiB |
+| 预配大小增加/减少单位 | 空值 | 1 GiB |
 | 文件共享的最大大小 | <ul><li>100 TiB，如果启用大型文件共享功能<sup>2</sup></li><li>5 TiB，默认值</li></ul> | 100 TiB |
 | 文件共享中的文件数上限 | 无限制 | 无限制 |
 | 最大请求速率（最大 IOPS） | <ul><li>10,000，如果启用大型文件共享功能<sup>2</sup></li><li>每 100 毫秒 1,000 或 100 个请求，默认值</li></ul> | <ul><li>基线 IOPS：400 + 每 GiB 1 IOPS，最高 100,000</li><li>IOPS 突发：Max (4000, 每 GiB 3x IOPS)，最高 100,000</li></ul> |
@@ -103,7 +103,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 
 对于 Azure 文件同步，性能在两个阶段至关重要：
 
-1. **初始一次性预配**：若要优化初始预配的性能，请参阅 [使用 Azure 文件同步进行载入](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync)来了解最佳部署详细信息。
+1. **初始一次性预配**：若要优化初始预配的性能，请参阅 [使用 Azure 文件同步进行载入](../file-sync/file-sync-deployment-guide.md#onboarding-with-azure-file-sync)来了解最佳部署详细信息。
 2. **持续同步**：在 Azure 文件同步中初次植入数据后，Azure 文件同步会使多个终结点保持同步。
 
 为帮助你计划每个阶段的部署，下面提供了在采用某个配置的系统上进行内部测试期间观察到的结果
@@ -134,7 +134,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 
 **将数据从 Windows Server 初始同步到 Azure 文件共享**：许多 Azure 文件同步部署从一个空的 Azure 文件共享开始，因为所有数据都在 Windows Server 上。 在这些情况下，初始云更改枚举速度很快，并且时间主要花费在将 Windows Server 中的更改同步到 Azure 文件共享中。 
 
-同步将数据上传到 Azure 文件共享时，本地文件服务器不会停机，管理员可[设置网络限制](./storage-sync-files-server-registration.md#set-azure-file-sync-network-limits)来限制用于后台数据上传的带宽量。
+同步将数据上传到 Azure 文件共享时，本地文件服务器不会停机，管理员可[设置网络限制](../file-sync/file-sync-server-registration.md#set-azure-file-sync-network-limits)来限制用于后台数据上传的带宽量。
 
 初始同步通常受每个同步组每秒 20 个文件的初始上传速率限制。 客户可使用以下公式来估算将其所有数据上传到 Azure 所需的时间（以天为单位）：  
 
@@ -164,4 +164,4 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 
 ## <a name="see-also"></a>另请参阅
 - [规划 Azure 文件部署](storage-files-planning.md)
-- [规划 Azure 文件同步部署](storage-sync-files-planning.md)
+- [规划 Azure 文件同步部署](../file-sync/file-sync-planning.md)

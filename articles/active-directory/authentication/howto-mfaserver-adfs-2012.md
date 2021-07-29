@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/11/2018
+ms.date: 06/01/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b38a27788a4bbb25ff0405a54ca5e64258dd135
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 23d568e78027617a57ce8a534511cd052157a11d
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286017"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110785941"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>将 Azure 多重身份验证服务器配置为与 Windows Server 中的 AD FS 配合使用
 
@@ -98,7 +98,7 @@ ms.locfileid: "108286017"
 有两个选项用于配置 Web 服务 SDK。 第一个选项是使用用户名和密码，第二个选项是使用客户端证书。 有关使用第一个选项，请参阅以下步骤，或跳转到使用第二个选项的步骤。  
 
 1. 将“WebServiceSdkUsername”的值设置为 PhoneFactor Admins 安全组的成员帐户。 使用 &lt;domain&gt;&#92;&lt;user name&gt; 格式。  
-2. 将“WebServiceSdkPassword”的值设置为相应的帐户密码。
+2. 将“WebServiceSdkPassword”的值设置为相应的帐户密码。 “WebServiceSdkPassword”中不能使用特殊字符“&”。
 
 ### <a name="configure-the-web-service-sdk-with-a-client-certificate"></a>使用客户端证书配置 Web 服务 SDK
 

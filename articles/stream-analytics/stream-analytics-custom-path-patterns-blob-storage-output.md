@@ -5,14 +5,14 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 05/30/2021
 ms.custom: seodec18
-ms.openlocfilehash: cb9d8edd24dcc8809f2b207a4db80653b0e140e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91ba1280262a7d13afa71d5dc0e2b7eb0e545ecc
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98014030"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787707"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure 流分析自定义 blob 输出分区
 
@@ -62,13 +62,15 @@ SELECT name, id, CONCAT(name, "/", id) AS nameid
    * cluster1/{date}/{aFieldInMyData}  
    * cluster1/{time}/{aFieldInMyData}  
    * cluster1/{aFieldInMyData}  
-   * cluster1/{date}/{time}/{aFieldInMyData} 
+   * cluster1/{date}/{time}/{aFieldInMyData}
+
+2. 如果客户想要使用多个输入字段，他们可以使用 CONCAT 在针对 blob 输出中的自定义路径分区的查询中创建组合键。 例如：select concat (col1, col2) as compositeColumn into blobOutput from input。 然后，他们可以将 compositeColumn 指定为 Blob 存储中的自定义路径。
    
-2. 由于分区键不区分大小写，因此像“John”和“john”这样的分区键是等效的。 另外，无法使用表达式作为分区键。 例如，{columnA + columnB} 不起作用。  
+3. 由于分区键不区分大小写，因此像“John”和“john”这样的分区键是等效的。 另外，无法使用表达式作为分区键。 例如，{columnA + columnB} 不起作用。  
 
-3. 如果输入流由分区键基数低于 8000 的记录组成，记录会附加到现有 blob，并且仅在必要时新建 blob。 如果基数超过 8000，无法保证将写入现有 blob，并且不会为具有相同分区键的任意数量记录新建 blob。
+4. 如果输入流由分区键基数低于 8000 的记录组成，记录会附加到现有 blob，并且仅在必要时新建 blob。 如果基数超过 8000，无法保证将写入现有 blob，并且不会为具有相同分区键的任意数量记录新建 blob。
 
-4. 如果将 Blob 输出[配置为不可变](../storage/blobs/storage-blob-immutable-storage.md)，则每次发送数据时，流分析都会创建一个新的 Blob。
+5. 如果将 Blob 输出[配置为不可变](../storage/blobs/storage-blob-immutable-storage.md)，则每次发送数据时，流分析都会创建一个新的 Blob。
 
 ## <a name="custom-datetime-path-patterns"></a>自定义 DateTime 路径模式
 

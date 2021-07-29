@@ -3,13 +3,13 @@ title: Azure 视频分析器配额和限制 - Azure
 description: 本文介绍 Azure 视频分析器配额和限制。
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 03/26/2021
-ms.openlocfilehash: ca70737fd9bcf571dd4f0ca729bbe50b540de90e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 05/26/2021
+ms.openlocfilehash: d4bc488411319832b59540fb1392b5d3259cef69
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385212"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652180"
 ---
 # <a name="video-analyzer-quotas-and-limitations"></a>视频分析器配额和限制
 
@@ -44,6 +44,7 @@ ms.locfileid: "110385212"
    * 不能从 HTTP 或 gRPC 扩展处理器的下游使用。
 * 信号门处理器
    * 必须立即成为 RTSP 源中的下游。
+   * 不能从 HTTP 或 gRPC 扩展处理器的上游使用。
 * 对象跟踪器处理器
    * 必须直接是 HTTP 或 gRPC 扩展处理器的下游。 扩展处理器不应该对实时视频的每一帧都应用 AI 模型。
 * 跨线处理器

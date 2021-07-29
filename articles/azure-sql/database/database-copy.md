@@ -4,19 +4,19 @@ description: 在相同或不同的服务器上创建 Azure SQL 数据库中现�
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: sqldbrb=1, devx-track-azurecli
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
-author: stevestein
-ms.author: sashan
-ms.reviewer: wiassaf
+author: shkale-msft
+ms.author: shkale
+ms.reviewer: mathoma
 ms.date: 03/10/2021
-ms.openlocfilehash: 1a86522975ffb7b5b2bd514402dd97a76aa2506e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 325a2feb0cf29a03a88249e2d0ac3a22f685d498
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103014581"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110694546"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>复制 Azure SQL 数据库中数据库的事务一致性副本
 
@@ -74,7 +74,7 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
     --name "<databaseName>" --resource-group "<resourceGroup>" --server $sourceserver
 ```
 
-数据库复制是一个异步操作，但在接受请求后会立即创建目标数据库。 如果需要取消仍在进行的复制操作，请使用 [az sql db delete](/cli/azure/sql/db#az-sql-db-delete) 命令删除目标数据库。
+数据库复制是一个异步操作，但在接受请求后会立即创建目标数据库。 如果需要取消仍在进行的复制操作，请使用 [az sql db delete](/cli/azure/sql/db#az_sql_db_delete) 命令删除目标数据库。
 
 * * *
 
@@ -182,6 +182,7 @@ AS COPY OF source_server_name.source_database_name;
 
 > [!TIP]
 > 使用 T-SQL 的数据库复制操作支持从不同 Azure 租户中的订阅复制数据库。 仅当使用 SQL 身份验证登录名来登录目标服务器时才支持此项。
+> 当源或目标逻辑服务器上的 [Azure Active Directory](https://techcommunity.microsoft.com/t5/azure-sql/support-for-azure-ad-user-creation-on-behalf-of-azure-ad/ba-p/2346849) 身份验证处于活动（已启用）状态时，不支持在其他 Azure 租户的逻辑服务器上创建数据库副本。
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>监视复制操作的进度
 
@@ -194,7 +195,7 @@ AS COPY OF source_server_name.source_database_name;
 > 如果决定在复制过程中取消复制，请对新数据库执行 [DROP DATABASE](/sql/t-sql/statements/drop-database-transact-sql) 语句。
 
 > [!IMPORTANT]
-> 如果需要使用比源小得多的服务目标创建副本，则目标数据库可能没有足够的资源来完成种子设定过程，这可能会导致复制操作失败。 在这种情况下，请使用异地还原请求在不同服务器和/或不同区域中创建副本。 有关详细信息，请参阅[使用数据库备份恢复 Azure SQL 数据库](recovery-using-backups.md#geo-restore)。
+> 如果需要使用比源小得多的服务目标创建副本，那么目标数据库可能没有足够的资源来完成种子设定过程，这可能会导致复制操作失败。 在这种情况下，请使用异地还原请求在不同服务器和/或不同区域中创建副本。 有关详细信息，请参阅[使用数据库备份恢复 Azure SQL 数据库](recovery-using-backups.md#geo-restore)。
 
 ## <a name="azure-rbac-roles-and-permissions-to-manage-database-copy"></a>管理数据库副本的 Azure RBAC 角色和权限
 
@@ -218,7 +219,7 @@ AS COPY OF source_server_name.source_database_name;
 
    Microsoft.Resources/subscriptions/resources/read Microsoft.Resources/subscriptions/resources/write Microsoft.Resources/deployments/read Microsoft.Resources/deployments/write Microsoft.Resources/deployments/operationstatuses/read
 
-若要查看门户上资源组中部署下的操作、跨多个资源提供程序的操作（包括 SQL 操作），还需要以下 Azure 角色：
+若要查看门户上资源组中部署下的操作、跨多个资源提供程序的操作（包括 SQL 操作），还需要以下权限：
 
    Microsoft.Resources/subscriptions/resourcegroups/deployments/operations/read Microsoft.Resources/subscriptions/resourcegroups/deployments/operationstatuses/read
 

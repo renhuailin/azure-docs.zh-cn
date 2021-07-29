@@ -2,13 +2,13 @@
 title: 模板函数 - 逻辑
 description: 介绍 Azure 资源管理器模板（ARM 模板）中用于确定逻辑值的函数。
 ms.topic: conceptual
-ms.date: 05/05/2021
-ms.openlocfilehash: f37f43d8fcec63ee4ae3d8a1064d87b0ec3d68a7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 05/13/2021
+ms.openlocfilehash: c69e10b660d5b7cbf768ea31fda6678d07053224
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108736876"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959638"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM 模板的逻辑函数
 
@@ -22,17 +22,17 @@ ms.locfileid: "108736876"
 * [or](#or)
 * true
 
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
-
 ## <a name="and"></a>and
 
 `and(arg1, arg2, ...)`
 
-检查所有参数值是否均为 true。 Bicep 不支持 `and` 函数。 请改用 `&&` 运算符。
+检查所有参数值是否均为 true。
+
+Bicep 不支持 `and` 函数，请改用 [&& 运算符](../bicep/operators-logical.md#and-)。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要检查是否为 true 的第一个值。 |
 | arg2 |是 |boolean |要检查是否为 true 的第二个值。 |
@@ -45,8 +45,6 @@ ms.locfileid: "108736876"
 ### <a name="examples"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json)演示如何使用逻辑函数。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -70,16 +68,6 @@ ms.locfileid: "108736876"
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output andExampleOutput bool = bool('true') && bool('false')
-output orExampleOutput bool = bool('true') || bool('false')
-output notExampleOutput bool = !(bool('true'))
-```
-
----
-
 前述示例的输出为：
 
 | 名称 | 类型 | Value |
@@ -96,7 +84,7 @@ output notExampleOutput bool = !(bool('true'))
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或整数 |要转换为布尔值的值。 |
 
@@ -111,8 +99,6 @@ output notExampleOutput bool = !(bool('true'))
 ### <a name="examples"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json)演示如何对字符串或整数使用 bool。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -140,16 +126,6 @@ output notExampleOutput bool = !(bool('true'))
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output trueString bool = bool('true')
-output falseString bool = bool('false')
-output trueInt bool = bool(1)
-output falseInt bool = bool(0)
-```
-
----
 上述示例中使用默认值的输出为：
 
 | 名称 | 类型 | Value |
@@ -163,7 +139,9 @@ output falseInt bool = bool(0)
 
 `false()`
 
-返回 false。 `false` 函数在 Bicep 中不可用。  请改用 `false` 关键字。
+返回 false。
+
+`false` 函数在 Bicep 中不可用。  请改用 `false` 关键字。
 
 ### <a name="parameters"></a>参数
 
@@ -176,8 +154,6 @@ false 函数不接受任何参数。
 ### <a name="example"></a>示例
 
 下面的示例返回一个 false 输出值。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -193,14 +169,6 @@ false 函数不接受任何参数。
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output falseOutput bool = false
-```
-
----
-
 前述示例的输出为：
 
 | 名称 | 类型 | Value |
@@ -211,11 +179,13 @@ output falseOutput bool = false
 
 `if(condition, trueValue, falseValue)`
 
-根据条件为 true 或 false 返回值。 Bicep 不支持 `if` 函数。 请改用 `?:` 运算符。
+根据条件为 true 或 false 返回值。
+
+Bicep 不支持 `if` 函数。 请改用 [?: 运算符](../bicep/operators-logical.md#conditional-expression--)。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | condition |是 |boolean |要检查是为 true 还是为 false 的值。 |
 | trueValue |是 | 字符串、int、对象或数组 |条件为 true 时返回的值。 |
@@ -232,8 +202,6 @@ output falseOutput bool = false
 ### <a name="examples"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json)演示如何使用 `if` 函数。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -258,16 +226,6 @@ output falseOutput bool = false
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output yesOutput string = 'a' == 'a' ? 'yes' : 'no'
-output noOutput string = 'a' == 'b' ? 'yes' : 'no'
-output objectOutput object = 'a' == 'a' ? json('{"test": "value1"}') : json('null')
-```
-
----
-
 前述示例的输出为：
 
 | 名称 | 类型 | Value |
@@ -277,8 +235,6 @@ output objectOutput object = 'a' == 'a' ? json('{"test": "value1"}') : json('nul
 | objectOutput | Object | { "test": "value1" } |
 
 以下[示例模板](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json)演示了如何将此函数与仅在特定条件下有效的表达式配合使用。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -326,44 +282,17 @@ output objectOutput object = 'a' == 'a' ? json('{"test": "value1"}') : json('nul
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param vmName string
-param location string
-param logAnalytics string = ''
-
-resource vmName_omsOnboarding 'Microsoft.Compute/virtualMachines/extensions@2017-03-30' = if (!empty(logAnalytics)) {
-  name: '${vmName}/omsOnboarding'
-  location: location
-  properties: {
-    publisher: 'Microsoft.EnterpriseCloud.Monitoring'
-    type: 'MicrosoftMonitoringAgent'
-    typeHandlerVersion: '1.0'
-    autoUpgradeMinorVersion: true
-    settings: {
-      workspaceId: ((!empty(logAnalytics)) ? reference(logAnalytics, '2015-11-01-preview').customerId : json('null'))
-    }
-    protectedSettings: {
-      workspaceKey: ((!empty(logAnalytics)) ? listKeys(logAnalytics, '2015-11-01-preview').primarySharedKey : json('null'))
-    }
-  }
-}
-
-output mgmtStatus string = ((!empty(logAnalytics)) ? 'Enabled monitoring for VM!' : 'Nothing to enable')
-```
-
----
-
 ## <a name="not"></a>not
 
 `not(arg1)`
 
-将布尔值转换为其相反值。 Bicep 不支持 `not` 函数。 请改用 `!` 运算符。
+将布尔值转换为其相反值。
+
+Bicep 不支持 `not` 函数，请改用 [! 运算符](../bicep/operators-logical.md#not-)。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要转换的值。 |
 
@@ -374,8 +303,6 @@ output mgmtStatus string = ((!empty(logAnalytics)) ? 'Enabled monitoring for VM!
 ### <a name="examples"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json)演示如何使用逻辑函数。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -399,16 +326,6 @@ output mgmtStatus string = ((!empty(logAnalytics)) ? 'Enabled monitoring for VM!
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output andExampleOutput bool = bool('true') && bool('false')
-output orExampleOutput bool = bool('true') || bool('false')
-output notExampleOutput bool = !(bool('true'))
-```
-
----
-
 前述示例的输出为：
 
 | 名称 | 类型 | Value |
@@ -418,8 +335,6 @@ output notExampleOutput bool = !(bool('true'))
 | notExampleOutput | Bool | False |
 
 以下 [示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json)结合使用 **not** 和 [equals](template-functions-comparison.md#equals)。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -436,14 +351,6 @@ output notExampleOutput bool = !(bool('true'))
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output checkNotEquals bool = !(1 == 2)
-```
-
----
-
 前述示例的输出为：
 
 | 名称 | 类型 | Value |
@@ -454,11 +361,13 @@ output checkNotEquals bool = !(1 == 2)
 
 `or(arg1, arg2, ...)`
 
-检查任何参数值是否为 true。 Bicep 不支持 `or` 函数。 请改用 `||` 运算符。
+检查任何参数值是否为 true。
+
+Bicep 不支持 `or` 函数，请改用 [|| 运算符](../bicep/operators-logical.md#or-)。
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |boolean |要检查是否为 true 的第一个值。 |
 | arg2 |是 |boolean |要检查是否为 true 的第二个值。 |
@@ -471,8 +380,6 @@ output checkNotEquals bool = !(1 == 2)
 ### <a name="examples"></a>示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json)演示如何使用逻辑函数。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -496,16 +403,6 @@ output checkNotEquals bool = !(1 == 2)
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output andExampleOutput bool = bool('true') && bool('false')
-output orExampleOutput bool = bool('true') || bool('false')
-output notExampleOutput bool = !(bool('true'))
-```
-
----
-
 前述示例的输出为：
 
 | 名称 | 类型 | Value |
@@ -518,11 +415,13 @@ output notExampleOutput bool = !(bool('true'))
 
 `true()`
 
-返回 true。 `true` 函数在 Bicep 中不可用。  请改用 `true` 关键字。
+返回 true。
+
+`true` 函数在 Bicep 中不可用。  请改用 `true` 关键字。
 
 ### <a name="parameters"></a>参数
 
-true 函数不接受任何参数。 `true` 函数在 Bicep 中不可用。  请改用 `true` 关键字。
+true 函数不接受任何参数。
 
 ### <a name="return-value"></a>返回值
 
@@ -531,8 +430,6 @@ true 函数不接受任何参数。 `true` 函数在 Bicep 中不可用。  请�
 ### <a name="example"></a>示例
 
 下面的示例返回一个 true 输出值。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -548,14 +445,6 @@ true 函数不接受任何参数。 `true` 函数在 Bicep 中不可用。  请�
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output trueOutput bool = true
-```
-
----
-
 前述示例的输出为：
 
 | 名称 | 类型 | Value |
@@ -564,4 +453,4 @@ output trueOutput bool = true
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。

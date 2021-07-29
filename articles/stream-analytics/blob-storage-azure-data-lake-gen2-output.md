@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 3ce22837da2ca30249b399a297b6188d950b1ea4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/30/2021
+ms.openlocfilehash: 348cd594ae515503c870c1b96eb64aa7117ea26b
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98935138"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786747"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>来自 Azure 流分析的 Blob 存储和 Azure Data Lake Gen2 输出
 
@@ -58,7 +58,12 @@ Azure Blob 存储提供了一种经济高效且可扩展的解决方案，用于
 
 ## <a name="output-batch-size"></a>输出批大小
 
-有关最大消息大小，请参阅 [Azure 存储限制](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)。 最大 Blob 块大小为 4 MB，最大 Blob 块计数为 50,000。 |
+有关最大消息大小，请参阅 [Azure 存储限制](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)。 最大 Blob 块大小为 4 MB，最大 Blob 块计数为 50,000。
+
+## <a name="limitations"></a>限制
+
+* 如果在路径模式中使用“/”（例如“/folder2/folder3”），则会创建空文件夹，并且这些文件夹在存储资源管理器中不可见
+* 在不需要新 blob 文件的情况下，流分析会追加到同一文件。 请注意，如果将事件网格之类的 Azure 服务配置为在 blob 文件更新时触发，这可能会导致生成额外的触发器
 
 ## <a name="next-steps"></a>后续步骤
 

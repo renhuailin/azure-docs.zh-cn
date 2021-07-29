@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 829f89f716a29f09f88a2e02b257aba1b207d072
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31183be893a9216f33adc4f5e25a55cfb3545db8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102634186"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110099561"
 ---
 # <a name="azure-stack-edge-mini-r-system-requirements"></a>Azure Stack Edge Mini R 系统要求
 
@@ -107,6 +107,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 | https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft 容器注册表（必填）               |
 | https://\*.azurecr.io                     | 个人和第三方容器注册表（可选） | 
 | https://\*.azure-devices.net              | Iot 中心访问权限（必填）                             | 
+| https://\*.docker.com              | StorageClass（必填）                             |
 
 ### <a name="url-patterns-for-gateway-for-azure-government"></a>Azure 政府网关的 URL 模式
 
@@ -130,7 +131,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 应考虑的因素包括：
 
-- **容器详细信息** - 请考虑以下内容。
+- 容器详细信息 - 请考虑以下内容。
 
     - 容器占用量是多少？ 容器消耗多少内存、存储和 CPU？
     - 你的工作负载中有多少个容器？ 你可能有大量轻型容器，而不是少量资源密集型容器。
@@ -138,8 +139,8 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
     - 你的容器共享多少层？ 容器映像是文件的捆绑包，这些文件组织成一个由层组成的堆栈。 对于容器映像，请确定有多少层及其各自的大小以计算资源消耗。
     - 是否有未使用的容器？ 已停止的容器仍会占用磁盘空间。
     - 你的容器使用哪种语言编写？
-- **处理的数据大小** - 你的容器将处理多少数据？ 这些数据会消耗磁盘空间还是直接在内存中处理？
-- **预期性能** - 你的解决方案所需的性能特征有哪些？ 
+- 处理的数据大小 - 你的容器将处理多少数据？ 这些数据会消耗磁盘空间还是直接在内存中处理？
+- 预期性能 - 你的解决方案所需的性能特征有哪些？ 
 
 要了解和优化解决方案的性能，可以使用：
 

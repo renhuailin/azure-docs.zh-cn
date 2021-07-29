@@ -3,12 +3,12 @@ title: 在 Azure 实验室服务的实验室中配置使用设置
 description: 了解如何配置实验室的学生数，将学生注册到实验室，控制学生可以使用 VM 的小时数，以及其他方面。
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: 380a587eecb276c457b93ca3c3f3ac08b2239275
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7c0fb7b0228ee17705af2dfd70279f6fc7bda3c
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791957"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110190715"
 ---
 # <a name="add-and-manage-lab-users"></a>添加和管理实验室用户
 
@@ -156,6 +156,9 @@ CSV 文本文件用于存储以逗号分隔 (CSV) 的表格数据（数字和文
     “用户”窗格显示已向实验室注册的学生列表。  
 
     ![已注册用户的列表](./media/tutorial-track-usage/registered-users.png)
+
+    > [!NOTE] 
+    > 如果 [重新发布实验室](how-to-create-manage-template.md#publish-the-template-vm) 或 [重置学生 VM](how-to-set-virtual-machine-passwords.md#reset-vms)，学生将对实验室的 VM 保持注册。  但是，VM 的内容将被删除，并将通过模板 VM 的映像重新创建 VM。
 
 ## <a name="set-quotas-for-users"></a>为用户设置配额
 

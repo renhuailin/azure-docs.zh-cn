@@ -3,16 +3,18 @@ title: 在 SQL 托管实例虚拟群集上同步虚拟网络 DNS 服务器设置
 description: 了解如何在 SQL 托管实例虚拟群集上同步虚拟网络 DNS 服务器设置。
 services: sql-database
 ms.service: sql-managed-instance
+ms.subservice: deployment-configuration
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.topic: how-to
 ms.date: 01/17/2021
-ms.openlocfilehash: b95afe513dba2f1da9556b27ec17bcccc9fe88e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 276b4033dc2a5c157245448453b72a8074b79702
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102173545"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110707154"
 ---
 # <a name="synchronize-virtual-network-dns-servers-setting-on-sql-managed-instance-virtual-cluster"></a>在 SQL 托管实例虚拟群集上同步虚拟网络 DNS 服务器设置
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,8 +36,7 @@ ms.locfileid: "102173545"
 
 用户同步 DNS 服务器配置时需要以下 Azure 角色之一：
 
-- “订阅所有者”角色或
-- “托管实例参与者”角色或
+- 订阅参与者角色，或者
 - 具有以下权限的自定义角色：
   - `Microsoft.Sql/virtualClusters/updateManagedInstanceDnsServers/action`
 

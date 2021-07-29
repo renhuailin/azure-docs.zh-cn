@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 6644f495f28fb76503948c18354a5af0fcf832e5
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: fcac9eee73f509de5903030b77d567cbe11ee043
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364747"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787553"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -54,6 +54,13 @@ ms.locfileid: "107364747"
 |受支持的最小运行时|[Java 开发工具包 (JDK) 7+](/java/azure/jdk/)|
 
 ## <a name="release-notes"></a>发行说明
+### <a name="263"></a><a name="2.6.3"></a>2.6.3
+* 修复了当 `GoneException` 包装在 `IllegalStateException` 中时的重试策略 - 此更改是确保在出现 410 时刷新网关缓存所必需的，这样 Spark 连接器（适用于Spark 2.4）便可以使用自定义重试策略，使查询能够在分区拆分期间获得成功
+
+### <a name="262"></a><a name="2.6.2"></a>2.6.2
+* 添加了新的重试策略以在读取超时时重试
+* 已将依赖项 `com.fasterxml.jackson.core/jackson-databind` 升级到 2.9.10.8
+* 已将依赖项 `org.apache.httpcomponents/httpclient` 升级到 4.5.13
 
 ### <a name="261"></a><a name="2.6.1"></a>2.6.1
 * 修复了通过服务互操作处理查询时的 bug。
@@ -336,7 +343,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月** 之前发出通知，以便�
 | 0.9.1-prelease |2014 年 12 月 19 日 |2016 年 2 月 29 日 |
 | 0.9.0-prelease |2014 年 12 月 10 日 |2016 年 2 月 29 日 |
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅

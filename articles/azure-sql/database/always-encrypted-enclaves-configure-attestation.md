@@ -10,13 +10,14 @@ ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
-ms.date: 01/15/2021
-ms.openlocfilehash: fb42a0428f0439053375027481d38977b068e356
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/01/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0e2e6bc57a830b5257d246a4229e174cf8612d3c
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102122572"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110662513"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>为 Azure SQL 逻辑服务器配置 Azure 证明
 
@@ -31,18 +32,10 @@ ms.locfileid: "102122572"
 
 1. 创建[证明提供程序](../../attestation/basic-concepts.md#attestation-provider)，并使用建议证明策略进行配置。
 
-2. 授予 Azure SQL 逻辑服务器对证明提供程序的访问权限。
+2. 确定证明 URL 并与应用程序管理员共享。
 
 > [!NOTE]
 > 配置证明是证明管理员的职责。 请参阅[配置 SGX enclave 和证明时的角色和职责](always-encrypted-enclaves-plan.md#roles-and-responsibilities-when-configuring-sgx-enclaves-and-attestation)。
-
-## <a name="requirements"></a>要求
-
-Azure SQL 逻辑服务器和证明提供程序必须属于同一个 Azure Active Directory 租户。 不支持跨租户交互。 
-
-Azure SQL 逻辑服务器必须分配有 Azure AD 标识。 作为证明管理员，你需要从该服务器的 Azure SQL 数据库管理员处获取服务器的 Azure AD 标识。 你会使用该标识向服务器授予对证明提供程序的访问权限。 
-
-有关如何使用 PowerShell 和 Azure CLI 创建具有标识的服务器或向现有服务器分配标识的说明，请参阅[将 Azure AD 标识分配到服务器](transparent-data-encryption-byok-configure.md#assign-an-azure-active-directory-azure-ad-identity-to-your-server)。
 
 ## <a name="create-and-configure-an-attestation-provider"></a>创建和配置证明提供程序
 
@@ -92,62 +85,21 @@ authorizationrules
 
 ## <a name="determine-the-attestation-url-for-your-attestation-policy"></a>确定证明策略的证明 URL
 
-配置证明策略后，需要向在 Azure SQL 数据库中使用具有安全 enclave 的 Always Encrypted 的应用程序管理员共享证明 URL，从而引用策略。 应用程序管理员或/和应用程序用户需要使用证明 URL 配置其应用，以便他们可以运行使用安全 enclave 的语句。
-
-### <a name="use-powershell-to-determine-the-attestation-url"></a>使用 PowerShell 确定证明 URL
-
-使用以下脚本可确定证明 URL：
-
-```powershell
-$attestationProvider = Get-AzAttestation -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName 
-$attestationUrl = $attestationProvider.AttestUri + “/attest/SgxEnclave”
-Write-Host "Your attestation URL is: " $attestationUrl 
-```
+配置证明策略后，需要向在 Azure SQL 数据库中使用具有安全 enclave 的 Always Encrypted 的应用程序管理员共享证明 URL。 证明 URL 是包含证明策略的证明提供程序的 `Attest URI`，如下所示：`https://MyAttestationProvider.wus.attest.azure.net`。
 
 ### <a name="use-azure-portal-to-determine-the-attestation-url"></a>使用 Azure 门户确定证明 URL
 
-1. 在证明提供程序的“概述”窗格中，将“证明 URI”属性的值复制到剪贴板。 证明 URI 应如下所示：`https://MyAttestationProvider.us.attest.azure.net`。
+在证明提供程序的“概述”窗格中，将 `Attest URI` 属性的值复制到剪贴板。 
 
-2. 将以下内容追加到证明 URI：`/attest/SgxEnclave`。 
+### <a name="use-powershell-to-determine-the-attestation-url"></a>使用 PowerShell 确定证明 URL
 
-得到的证明 URL 应如下所示：`https://MyAttestationProvider.us.attest.azure.net/attest/SgxEnclave`
-
-## <a name="grant-your-azure-sql-logical-server-access-to-your-attestation-provider"></a>授予 Azure SQL 逻辑服务器对证明提供程序的访问权限
-
-在证明工作流过程中，包含数据库的 Azure SQL 逻辑服务器会调用证明提供程序以提交证明请求。 若要使 Azure SQL 逻辑服务器能够提交证明请求，服务器必须对证明提供程序拥有 `Microsoft.Attestation/attestationProviders/attestation/read` 操作权限。 授予该权限的建议方法是让证明提供程序的管理员将服务器的 Azure AD 标识分配给证明提供程序或其包含资源组的证明读取者角色。
-
-### <a name="use-azure-portal-to-assign-permission"></a>使用 Azure 门户分配权限
-
-若要将 Azure SQL 服务器的标识分配给证明提供程序的证明读取者角色，请按照[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)中的常规说明进行操作。 处于“添加角色分配”窗格中时：
-
-1. 在“角色”下拉列表中，选择“证明读取者”角色。
-1. 在“选择”字段中，输入 Azure SQL 服务器的名称以搜索它。
-
-相关示例请参阅以下屏幕截图。
-
-![证明读取者角色分配](./media/always-encrypted-enclaves/attestation-provider-role-assigment.png)
-
-> [!NOTE]
-> 若要使服务器显示在“添加角色分配”窗格中，服务器必须分配有 Azure AD 标识 - 请参阅[要求](#requirements)。
-
-### <a name="use-powershell-to-assign-permission"></a>使用 PowerShell 分配权限
-
-1. 查找 Azure SQL 逻辑服务器。
+使用 `Get-AzAttestation` cmdlet 来检索证明提供程序属性，包括 AttestURI。
 
 ```powershell
-$serverResourceGroupName = "<server resource group name>"
-$serverName = "<server name>" 
-$server = Get-AzSqlServer -ServerName $serverName -ResourceGroupName
-```
- 
-2. 将服务器分配给包含证明提供程序的资源组的证明读取者角色。
-
-```powershell
-$attestationResourceGroupName = "<attestation provider resource group name>"
-New-AzRoleAssignment -ObjectId $server.Identity.PrincipalId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName
+Get-AzAttestation -Name $attestationProviderName -ResourceGroupName $attestationResourceGroupName
 ```
 
-有关详细信息，请参阅[使用 Azure PowerShell 分配 Azure 角色](../../role-based-access-control/role-assignments-powershell.md#assign-role-examples)。
+有关详细信息，请参阅[创建并管理证明提供程序](../../attestation/quickstart-powershell.md#create-and-manage-an-attestation-provider)。
 
 ## <a name="next-steps"></a>后续步骤
 

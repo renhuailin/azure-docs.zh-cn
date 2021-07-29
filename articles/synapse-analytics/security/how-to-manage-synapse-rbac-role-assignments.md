@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: bed0c00b8cb5718456302dff06e98ff2f7f2b4e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01f923828f0b83280d033b9bc6e5c7b6bbebae35
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100102183"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784068"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>如何在 Synapse Studio 中管理 Synapse RBAC 角色分配
 
@@ -23,7 +23,7 @@ Synapse RBAC 使用角色向用户、组和其他安全主体分配权限，以�
 
 >[!Note]
 >- 若要管理 Synapse RBAC 角色分配，你需要在工作区或包含要管理的对象的较低级别作用域中拥有 Synapse 管理员角色。 如果你是工作区的 Synapse 管理员，则可以授予对工作区中所有对象的访问权限。 
->- 来自不同 AD 租户的 **来宾用户** 无法查看或管理角色分配，即使为其分配了 Synapse 管理员角色也是如此。
+>- 来自不同 AD 租户的来宾用户也可以在被分配“Synapse 管理员”角色后查看和管理角色分配。
 >- 为了帮助你在未分配或没有 Synapse 管理员角色可用的情况下重新获得对工作区的访问权限，有权管理工作区上的 **AZURE RBAC** 角色分配的用户也可以管理 **Synapse RBAC** 角色分配，从而可以添加 Synapse 管理员或其他 Synapse 角色分配。
 >- 对 SQL 池的访问权限是使用 SQL 权限管理的。  除了 Synapse 管理员角色和 Synapse SQL 管理员角色以外，其他 Synapse RBAC 角色不会授予对 SQL 池的访问权限。
 

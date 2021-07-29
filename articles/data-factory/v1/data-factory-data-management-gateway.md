@@ -6,13 +6,14 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
+ms.custom: devx-track-azurepowershell
 robots: noindex
-ms.openlocfilehash: 708d84bdb3ebe8fbba6939aa771a9120868d5d1b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 50e9dbddd0a84f104aed9275f985f444990dbc30
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100375198"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677157"
 ---
 # <a name="data-management-gateway"></a>数据管理网关
 > [!NOTE]
@@ -199,8 +200,8 @@ ms.locfileid: "100375198"
 ### <a name="configure-proxy-server-settings"></a>配置代理服务器设置
 如果为 HTTP 代理服务器选择“使用系统代理”设置，则网关使用 diahost.exe.config 和 diawp.exe.config 中的代理设置。如果 diahost.exe.config 和 diawp.exe.config 中未指定代理，则网关无需通过代理，直接连接到云服务。 以下过程说明如何更新 diahost.exe.config 文件。
 
-1. 在文件资源管理器中，生成 C:\\\\Program Files\\Microsoft Data Management Gateway\\2.0\\Shared\\diahost.exe.config 的安全副本，以备份原始文件。
-2. 启动以管理员身份运行的 Notepad.exe，并打开文本文件 C:\\\\Program Files\\Microsoft Data Management Gateway\\2.0\\Shared\\diahost.exe.config。找到 system.net 的默认标记，如以下代码中所示：
+1. 在文件资源管理器中，生成 C:\\Program Files\\Microsoft Integration Runtime\\5.0\\Shared\\diahost.exe.config 的安全副本，以备份原始文件。
+2. 启动以管理员身份运行的 Notepad.exe，并打开文本文件 C:\\Program Files\\Microsoft Integration Runtime\\5.0\\Shared\\diahost.exe.config。找到 system.net 的默认标记，如以下代码中所示：
 
     ```
     <system.net>
@@ -276,7 +277,7 @@ msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
 [适用于单节点网关]
 1. 在网关计算机上启动 Windows PowerShell。
-2. 切换到 C:\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\ 文件夹。
+2. 切换到 C:\\\\Program Files\\Microsoft Integration Runtime\\5.0\\PowerShellScript\\ 文件夹。
 3. 运行以下命令以关闭自动更新功能（禁用）。
 
     ```powershell
@@ -289,7 +290,7 @@ msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
     ```
    [对于多节点高度可用的可扩展网关](data-factory-data-management-gateway-high-availability-scalability.md)
 1. 在网关计算机上启动 Windows PowerShell。
-2. 切换到 C:\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\ 文件夹。
+2. 切换到 C:\\\\Program Files\\Microsoft Integration Runtime\\5.0\\PowerShellScript\\ 文件夹。
 3. 运行以下命令以关闭自动更新功能（禁用）。
 
     对于具有高可用性功能的网关，需要额外的 AuthKey 参数。
@@ -306,14 +307,14 @@ msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 安装网关后，可以通过以下方式之一来启动数据管理网关配置管理器：
 
 1. 在“搜索”窗口中，键入“数据管理网关”，以访问此实用程序。
-2. 在文件夹 C:\\\\Program Files\\Microsoft Data Management Gateway\\2.0\\Shared 中运行可执行文件 ConfigManager.exe 。
+2. 在文件夹 C:\\Program Files\\Microsoft Integration Runtime\\5.0\\Shared\\ 中运行可执行文件 ConfigManager.exe。
 
 ### <a name="home-page"></a>主页
 在主页中可执行以下操作：
 
 * 查看网关状态（连接到云服务等）。
 * 从门户中使用密钥进行 **注册**。
-* **停止** 和启动网关计算机上的“数据管理网关主机服务”。
+* 停止和启动网关计算机上的“Integration Runtime 服务”。
 * **计划更新** 发生在一天中的某个特定时间。
 * 查看网关的 **上次更新日期**。
 
@@ -326,7 +327,7 @@ msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 * “SSL 证书”视图可用于门户与网关之间的 TLS/SSL 通信，从而为数据源设置凭据。
 
 ### <a name="remote-access-from-intranet"></a>从 Intranet 进行远程访问
-以后将启用此功能。 在即将发布的更新（v3.4 或更高版本）中，我们将让你在使用 PowerShell 或凭据管理器应用程序加密凭据时启用/禁用现在使用端口 8050 实现的任何远程连接（请参阅上面部分）。
+你可以在使用 PowerShell 或凭据管理器应用程序加密凭据时启用/禁用现在使用端口 8050 实现的任何远程连接（请参阅上面部分）。
 
 ### <a name="diagnostics-page"></a>“诊断”页
 在“诊断”页中可执行以下操作：
@@ -390,7 +391,7 @@ Offline | 节点处于脱机状态。
 需注册 | 尚未向此逻辑网关注册任何节点
 联机 | 网关节点处于联机状态
 脱机 | 没有节点处于联机状态。
-有限 | 此网关中并非所有节点都处于运行正常状态。 此状态是部分节点可能出现故障的警告！ <br/><br/>可能是由于调度程序/辅助角色节点上的凭据同步问题所导致。
+受限制 | 此网关中并非所有节点都处于运行正常状态。 此状态是部分节点可能出现故障的警告！ <br/><br/>可能是由于调度程序/辅助角色节点上的凭据同步问题所导致。
 
 ## <a name="scale-up-gateway"></a>向上扩展网关
 可配置可在单个节点上运行的 **并发数据移动作业数**，提升在本地与云数据存储之间移动数据的能力。
@@ -507,7 +508,7 @@ Offline | 节点处于脱机状态。
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. 在 Azure PowerShell 中，切换到文件夹：C:\\\\Program Files\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\。 运行与本地变量 $Key 关联的 RegisterGateway.ps1，如以下命令所示。 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
+1. 在 Azure PowerShell 中，切换到文件夹：C:\\\\Program Files\\Microsoft Integration Runtime\\5.0\\PowerShellScript\\。 运行与本地变量 $Key 关联的 RegisterGateway.ps1，如以下命令所示。 此脚本使用之前创建的逻辑网关注册安装在计算机上的客户端代理。
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.workload: media
 ms.topic: conceptual
-ms.date: 03/25/2021
+ms.date: 05/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 297520764272e2d6df54fe3a8ad734088163638d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: c5d8d5d5dbbe8e79591c735e4a6fa77f47ff9b2f
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068408"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110793348"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>适用于 Android 的脱机 Widevine 流式处理和媒体服务 v3
 
@@ -50,7 +50,7 @@ ms.locfileid: "106068408"
     - [使用 DRM 动态加密和许可证传送服务](drm-protect-with-drm-tutorial.md)
 - 克隆 https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git 。
 
-    需要修改[使用 .NET 加密 DRM ](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM)中的代码以添加 Widevine 配置。  
+    需要修改[使用 .NET 加密 DRM ](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/main/AMSV3Tutorials/EncryptWithDRM)中的代码以添加 Widevine 配置。  
 - 熟悉适用于 Android 的 Google ExoPlayer SDK，此开源视频播放器 SDK 能够支持脱机 Widevine DRM 播放。 
     - [ExoPlayer SDK](https://github.com/google/ExoPlayer)
     - [ExoPlayer 开发人员指南](https://google.github.io/ExoPlayer/guide.html)
@@ -58,7 +58,7 @@ ms.locfileid: "106068408"
 
 ## <a name="configure-content-protection-in-azure-media-services"></a>在 Azure 媒体服务中配置内容保护
 
-使用 [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L189) 方法时，有必要执行以下步骤：
+使用 [GetOrCreateContentKeyPolicyAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs#L192) 方法时，有必要执行以下步骤：
 
 1. 指定在许可证传送服务中如何授权内容密钥传送： 
 
@@ -91,7 +91,7 @@ ms.locfileid: "106068408"
 
 ## <a name="enable-offline-mode"></a>启用脱机模式
 
-若要为 Widevine 许可证启用“脱机”模式，需要配置 [Widevine 许可证模板](drm-widevine-license-template-concept.md)。 在“policy_overrides”对象中，将“can_persist”属性设置为“true”（默认值为 false），如 [ConfigureWidevineLicenseTempate](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563) 中所示。 
+若要为 Widevine 许可证启用“脱机”模式，需要配置 [Widevine 许可证模板](drm-widevine-license-template-concept.md)。 在 policy_overrides 对象中，将 can_persist 属性设置为 true（默认值为 false），如 [ConfigureWidevineLicenseTemplate](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM/Program.cs#L452) 中所示  。 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#ConfigureWidevineLicenseTempate)]
 
