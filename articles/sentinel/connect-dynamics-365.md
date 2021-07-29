@@ -12,22 +12,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2020
+ms.date: 06/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 018368b6284cf39edec01f0a9a943b8ea15c85d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d2a9c69108211b1342c553731c28785e1f2cc79
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98104168"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111421789"
 ---
 # <a name="connect-dynamics-365-activity-logs-to-azure-sentinel"></a>将 Dynamics 365 活动日志连接到 Azure Sentinel
 
 [Dynamics 365](/office365/servicedescriptions/microsoft-dynamics-365-online-service-description) Common Data Service (CDS) 活动连接器提供对管理员活动、用户活动和支持活动以及 Microsoft Social Engagement 日志记录事件的见解。 通过将 Dynamics 365 CRM 日志连接到 Azure Sentinel，可以在工作簿中查看此数据、使用此数据创建自定义警报，以及利用它来改进调查过程。 这个新的 Azure Sentinel 连接器会从 Office 管理 API 收集 Dynamics CD 数据。 若要详细了解在 Power Platform 中审核的 Dynamics CDS 活动，请访问[启用和使用活动日志记录](/power-platform/admin/enable-use-comprehensive-auditing)。
 
-> [!IMPORTANT]
->
-> Dynamics 365 Common Data Service (CDS) 活动连接器目前为预览版。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +43,7 @@ ms.locfileid: "98104168"
 
 1. 在 Azure Sentinel 导航菜单中，选择“数据连接器”。
 
-1. 从数据连接器库中选择“Dynamics 365 (预览)”，然后在预览窗格中选择“打开连接器页”。  
+1. 从数据连接器库中选择“Dynamics 365”，然后在预览窗格中选择“打开连接器页”。  
 
 1. 在“说明”选项卡上的“配置”下，单击“连接”。 
 

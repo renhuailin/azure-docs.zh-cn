@@ -1,17 +1,17 @@
 ---
 title: 在主 VHD 映像中安装 Office - Azure
-description: 如何在 Azure 的 Windows 虚拟桌面主映像上安装和自定义 Office。
+description: 如何在 Azure 的 Azure 虚拟桌面主映像上安装和自定义 Office。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ce4eb3d556b6dff833129d11b26d439066b63f2e
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 09dda24d7bd177764f9d715256762e25cb4729a3
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446836"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757564"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>在主 VHD 映像中安装 Office
 
@@ -22,7 +22,7 @@ ms.locfileid: "106446836"
 本文还假定你在 VM 上拥有已提升的访问权限，无论它是在 Azure 还是 Hyper-V 管理器中预配。 如果没有，请参阅[提升访问权限以管理所有 Azure 订阅和管理组](../role-based-access-control/elevate-access-global-admin.md)。
 
 >[!NOTE]
->这些说明适用于可与组织的现有过程配合使用的特定于 Windows 虚拟桌面的配置。
+>这些说明适用于可与组织的现有过程配合使用的特定于 Azure 虚拟桌面的配置。
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>在共享计算机激活模式下安装 Office
 
@@ -44,7 +44,7 @@ Office 部署工具需要一个配置 XML 文件。 若要自定义下面的示�
    - 启用共享计算机激活。
 
 >[!NOTE]
->在 Windows 虚拟桌面中，Visio 的模具搜索功能可能无法按预期方式运行。
+>在 Azure 虚拟桌面中，Visio 的模具搜索功能可能无法按预期方式运行。
 
 下面是此示例配置 XML 不会执行的操作：
 
@@ -157,9 +157,9 @@ OneDrive 通常在每用户模式下安装。 在此环境中，应在每台计�
 
 ## <a name="microsoft-teams-and-skype-for-business"></a>Microsoft Teams 和 Skype for Business
 
-Windows 虚拟桌面不支持 Skype for Business。
+Azure 虚拟桌面不支持 Skype for Business。
 
-有关安装 Microsoft Teams 的帮助信息，请参阅 [在 Windows 虚拟桌面上使用 Microsoft Teams](teams-on-wvd.md)。 Windows 虚拟桌面上适用于 Microsoft Teams 的媒体优化以预览版提供。
+有关安装 Microsoft Teams 的帮助信息，请参阅[在 Azure 虚拟桌面上使用 Microsoft Teams](teams-on-wvd.md)。 Azure 虚拟桌面上适用于 Microsoft Teams 的媒体优化以预览版提供。
 
 ## <a name="next-steps"></a>后续步骤
 

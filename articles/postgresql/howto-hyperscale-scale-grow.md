@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 04/07/2021
-ms.openlocfilehash: 905224119b9df4e4003b1736443406e9548a49e3
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 9746c6509673d3268a4afa15bcbeee9fa676d8c1
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012523"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554401"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>缩放超大规模 (Citus) 服务器组
 
@@ -42,6 +42,15 @@ Azure Database for PostgreSQL - 超大规模 (Citus) 提供了自助服务扩展
 除了添加新节点之外，还可以增加现有节点的功能。 调高和调低计算容量对于性能试验以及流量需求的短期或长期更改都很有用。
 
 若要更改所有工作器节点的 vCore 数，请调整“配置(每工作器节点)”下的“vCore”滑块。 协调器节点的 vCore 数可以单独调整。 调整“配置(协调器节点)”下的“vCore”滑块。
+
+## <a name="increase-storage-on-nodes"></a>增加节点上的存储
+
+除了添加新节点之外，还可以增加现有节点的磁盘空间。 增加磁盘空间可让你在需要添加更多工作器节点之前，对现有工作器节点执行更多操作。
+
+若要更改所有工作器节点的存储，请调整“配置(每工作器节点)”下的“存储”滑块。 协调器节点的存储可以单独调整。 调整“配置(协调器节点)”下的“存储”滑块。
+
+> [!NOTE]
+> 每个节点的存储在增加并保存后无法使用滑块来减少。
 
 ## <a name="next-steps"></a>后续步骤
 

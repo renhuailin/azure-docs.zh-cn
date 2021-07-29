@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 7d64684b5e8e73e82b6d778a193de617301a14eb
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 8f11c6d02649f85eddc39aa151ab7df3d8b72ab6
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106123068"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110797658"
 ---
 # <a name="live-event-types-comparison"></a>实时事件类型比较
 
@@ -45,7 +45,7 @@ ms.locfileid: "106123068"
 | 贡献源的最大聚合带宽|60 Mbps|空值|
 | 贡献中单个层的最大比特率 |20 Mbps|20 Mbps|
 | 支持多语言音轨|是|否|
-| 支持的输入视频编解码器 |H.264/AVC 和 H.265/HEVC|H.264/AVC|
+| 支持的输入视频编解码器 |H.264/AVC（RTMP 和平滑流式处理引入）或 H.265/HEVC（仅平滑流式处理引入）|H.264/AVC（RTMP 和平滑流式处理引入）|
 | 支持的输出视频编解码器|与输入相同|H.264/AVC|
 | 支持的视频位深、输入和输出|最多 10 位，包括 HDR 10/HLG|8 位|
 | 支持的输入音频编解码器|AAC-LC、HE-AAC v1、HE-AAC v2|AAC-LC、HE-AAC v1、HE-AAC v2|

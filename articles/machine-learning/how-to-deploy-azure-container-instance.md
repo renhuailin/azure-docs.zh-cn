@@ -10,20 +10,20 @@ ms.custom: deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/12/2020
-ms.openlocfilehash: 667174fbf36b7113d49ea5c5d700e2e3a7f41949
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 05/20/2021
+ms.openlocfilehash: 60978d2be1fdad5acf8ec00535ab844e6afd52b0
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367212"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111557155"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>将模型部署到 Azure 容器实例
 
-了解如何使用 Azure 机器学习将模型部署为 Azure 容器实例 (ACI) 上的 Web 服务。 如果满足下列任一条件，请使用 Azure 容器实例：
+了解如何使用 Azure 机器学习将模型部署为 Azure 容器实例 (ACI) 上的 Web 服务。 如果你符合以下情况，可使用 Azure 容器实例：
 
-- 你需要快速部署并验证你的模型。 不需要提前创建 ACI 容器。 将在部署过程中创建它们。
-- 正在测试一个开发中的模型。 
+- 不愿意管理自己的 Kubernetes 群集
+- 可以接受只拥有服务的单个副本，这可能会影响运行时间
 
 有关 ACI 的配额和区域可用性的信息，请参阅 [Azure 容器实例的配额和区域可用性](../container-instances/container-instances-quotas.md)文章。
 
@@ -89,7 +89,7 @@ print(service.state)
 要使用 CLI 进行部署，请使用以下命令。 将 `mymodel:1` 替换为注册的模型的名称和版本。 将 `myservice` 替换为要赋予此服务的名称：
 
 ```azurecli-interactive
-az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
+az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
 ```
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aci-deploy-config.md)]

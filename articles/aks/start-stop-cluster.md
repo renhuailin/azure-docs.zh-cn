@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 2d3c946bc2f98b0c06fe33dcaaa77a5399f6d56b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 734986d2c9b372214a54c1308e4ca445940c5f65
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782722"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111808918"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster"></a>停止和启动 Azure Kubernetes 服务 (AKS) 群集
 
@@ -27,6 +27,7 @@ AKS 工作负载可能不需要连续运行，例如仅在工作时间使用的�
 - 只有虚拟机规模集支持的群集才支持此功能。
 - 已停止的 AKS 群集的群集状态将最多保留 12 个月。 如果群集停止超过 12 个月，则无法恢复群集状态。 有关详细信息，请参阅 [AKS 支持策略](support-policies.md)。
 - 只能启动或删除已停止的 AKS 群集。 若要执行任何操作（例如缩放或升级），请先启动群集。
+- 启动某个已停止的 AKS 群集时，需要删除并重新创建链接到专用群集的客户预配 PrivateEndpoints。
 
 ## <a name="stop-an-aks-cluster"></a>停止 AKS 群集
 
@@ -83,6 +84,9 @@ az aks start --name myAKSCluster --resource-group myResourceGroup
 ```
 
 如果 `provisioningState` 显示为 `Starting`，则表明群集尚未完全启动。
+
+> [!NOTE]
+> 如果使用的是群集自动缩放程序，则在启动群集备份时，当前节点计数可能不在所设置的最小和最大范围值之间。 这是预期的行为。 群集以运行其工作负载所需的节点数（不受自动缩放程序设置影响）开始。 当群集执行缩放操作时，最小值和最大值将影响当前节点计数，并且群集最终将进入并保持在所需范围内，直到停止群集为止。
 
 ## <a name="next-steps"></a>后续步骤
 

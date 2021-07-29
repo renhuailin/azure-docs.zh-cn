@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8549592ace00e712929ebc76045a32531b9db659
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d27223906727af3b45617c7162f5c5da5133d2e3
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97358310"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569496"
 ---
 # <a name="configure-a-dnn-for-failover-cluster-instance"></a>为故障转移群集实例配置 DNN
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,6 +47,7 @@ DNN 功能目前仅适用于 Windows Server 2016 及更高版本上的 SQL Serve
 - 确定了分布式网络名称是适合[用于你的 HADR 解决方案的连接性选项](hadr-cluster-best-practices.md#connectivity)。
 - 配置了你的[故障转移群集实例](failover-cluster-instance-overview.md)。 
 - 安装了最新版本的 [PowerShell](/powershell/azure/install-az-ps)。 
+- 连接到 DNN 侦听器的客户端必须支持连接字符串中的 `MultiSubnetFailover=True` 参数。 
 
 ## <a name="create-dnn-resource"></a>创建 DNN 资源 
 
@@ -160,7 +161,7 @@ Start-ClusterResource -Name dnn-demo
 若要测试故障转移，请执行以下步骤： 
 
 1. 使用 RDP 连接到 SQL Server 群集节点之一。
-1. 打开“故障转移群集管理器”。 选择“角色”。 观察哪个节点拥有 SQL Server FCI 角色。
+1. 打开“故障转移群集管理器”。 选择“角色”  。 观察哪个节点拥有 SQL Server FCI 角色。
 1. 右键单击“SQL Server FCI”角色。 
 1. 选择“移动”，再选择“最佳节点” 。
 
@@ -203,6 +204,10 @@ Get-ClusterResource "virtual IP address" | Set-ClusterParameter
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure 中的 SQL Server HADR 功能，请参阅[可用性组](availability-group-overview.md)和[故障转移群集实例](failover-cluster-instance-overview.md)。 你还可以了解对环境进行配置以实现高可用性和灾难恢复的[最佳做法](hadr-cluster-best-practices.md)。 
+若要了解更多信息，请参阅以下文章：
 
+- [Windows Server 故障转移群集与 Azure VM 上的 SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [故障转移群集实例与 Azure VM 上的 SQL Server](failover-cluster-instance-overview.md)
+- [故障转移群集实例概述](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Azure VM 上的 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)
 

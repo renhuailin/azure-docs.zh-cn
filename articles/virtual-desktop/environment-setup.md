@@ -1,35 +1,35 @@
 ---
-title: Windows 虚拟桌面环境 - Azure
-description: 了解 Windows 虚拟桌面环境的基本元素，例如主机池和应用组。
+title: Azure 虚拟桌面环境 - Azure
+description: 了解 Azure 虚拟桌面环境的基本元素，例如主机池和应用组。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 99a07dd1791b539ea44fcbab250aa9c227ee1705
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: bc854669c5d724da92c19c19a01f56ebe91f78ee
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88002605"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757780"
 ---
-# <a name="windows-virtual-desktop-environment"></a>Windows 虚拟桌面环境
+# <a name="azure-virtual-desktop-environment"></a>Azure 虚拟桌面环境
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/environment-setup-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[本文](./virtual-desktop-fall-2019/environment-setup-2019.md)。
 
-Windows 虚拟桌面是一种服务，使用户能够轻松安全地访问其虚拟化桌面和 RemoteApp。 本主题将详细介绍 Windows 虚拟桌面环境的一般结构。
+Azure 虚拟桌面是一种服务，使用户能够轻松安全地访问其虚拟化桌面和 RemoteApp。 本主题将详细介绍 Azure 虚拟桌面环境的一般结构。
 
 ## <a name="host-pools"></a>主机池
 
-主机池是在运行 Windows 虚拟桌面代理时注册到 Windows 虚拟桌面作为会话主机的 Azure 虚拟机的集合。 主机池中的所有会话主机虚拟机都应源自同一映像，以实现一致的用户体验。
+主机池是在运行 Azure 虚拟桌面代理时注册到 Azure 虚拟桌面作为会话主机的 Azure 虚拟机的集合。 主机池中的所有会话主机虚拟机都应源自同一映像，以实现一致的用户体验。
 
 主机池可以是以下两种类型之一：
 
 - 个人主机池，其中每个会话主机分配给各个用户。
 - 共用主机池，其中会话主机可以接受来自主机池内某个应用组的任何授权用户的连接。
 
-可以在主机池上设置附加属性，以更改其负载平衡行为、每个会话主机可以使用的会话数，以及用户在登录到 Windows 虚拟桌面会话时可以对主机池中会话主机执行的操作。 可以通过应用组控制发布给用户的资源。
+可以在主机池上设置附加属性，以更改其负载平衡行为、每个会话主机可以使用的会话数，以及用户在登录到 Azure 虚拟桌面会话时可以对主机池中会话主机执行的操作。 可以通过应用组控制发布给用户的资源。
 
 ## <a name="app-groups"></a>应用组
 
@@ -47,19 +47,19 @@ Windows 虚拟桌面是一种服务，使用户能够轻松安全地访问其虚
 
 ## <a name="workspaces"></a>工作区
 
-工作区是 Windows 虚拟桌面中的应用程序组的逻辑分组。 每个 Windows 虚拟桌面应用程序组必须与一个工作区关联，用户才能查看向其发布的远程应用和桌面。
+工作区是 Azure 虚拟桌面中的应用程序组的逻辑分组。 每个 Azure 虚拟桌面应用程序组必须与一个工作区关联，用户才能查看向其发布的远程应用和桌面。
 
 ## <a name="end-users"></a>最终用户
 
-将用户分配到其应用组后，他们可以使用任何 Windows 虚拟桌面客户端连接到 Windows 虚拟桌面部署。
+将用户分配到其应用组后，他们可以使用任何 Azure 虚拟桌面客户端连接到 Azure 虚拟桌面部署。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关委托访问以及如何将角色分配给用户的详细信息，请参阅 [Windows 虚拟桌面中的委托访问](delegated-access-virtual-desktop.md)。
+若要了解有关委托访问以及如何将角色分配给用户的详细信息，请参阅 [Azure 虚拟桌面中的委托访问](delegated-access-virtual-desktop.md)。
 
-若要了解如何设置 Windows 虚拟桌面主机池，请参阅[使用 Azure 门户创建主机池](create-host-pools-azure-marketplace.md)。
+若要了解如何设置 Azure 虚拟桌面主机池，请参阅[使用 Azure 门户创建主机池](create-host-pools-azure-marketplace.md)。
 
-若要了解如何连接到 Windows 虚拟桌面，请参阅以下文章之一：
+若要了解如何连接到 Azure 虚拟桌面，请参阅以下文章之一：
 
 - [使用 Windows 10 或 Windows 7 进行连接](connect-windows-7-10.md)
 - [使用 Web 浏览器建立连接](connect-web.md)

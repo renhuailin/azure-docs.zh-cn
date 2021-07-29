@@ -3,12 +3,12 @@ title: 备份保管库概述
 description: 备份保管库概述。
 ms.topic: conceptual
 ms.date: 04/19/2021
-ms.openlocfilehash: e2d720da9474a35870de01559201d22c9e5b567f
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 6748121bd85fe6dc26a09c038ab305bcf06e3902
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739073"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565944"
 ---
 # <a name="backup-vaults-overview"></a>备份保管库概述
 
@@ -48,21 +48,20 @@ ms.locfileid: "107739073"
 ### <a name="create-backup-vault"></a>创建备份保管库
 
 1. 在搜索框中键入“备份保管库”。
-1. 在“服务”下，选择“备份保管库”。
-1. 在“备份保管库”页中，选择“添加”。
-1. 在“基本信息”选项卡中的“项目详细信息”下，确保选择了正确的订阅，然后选择“新建”资源组  。 对于名称，请键入 *myResourceGroup*。
+2. 在“服务”下，选择“备份保管库”。
+3. 在“备份保管库”页上，选择“添加”。
+4. 在“基本信息”选项卡上的“项目详细信息”下，确保选择了正确的订阅，然后选择“新建”资源组  。 对于名称，请键入 *myResourceGroup*。
 
-  ![新建资源组](./media/backup-vault-overview/new-resource-group.png)
+    ![新建资源组](./media/backup-vault-overview/new-resource-group.png)
 
-1. 在“实例详细信息”下，键入“myVault”作为“备份保管库名称”，然后选择所需的区域，在此示例中，你的“区域”为“美国东部”。
-1. 现在，选择你的“存储冗余”。 保护保管库的项之后，无法更改存储冗余。
-1. 如果使用 Azure 作为主要备份存储终结点，则我们建议继续使用默认的“异地冗余”设置。
-1. 如果不使用 Azure 作为主要的备份存储终结点，则请选择“本地冗余”，减少 Azure 存储费用。
-1. 详细了解[异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)。
+5. 在“实例详细信息”下，键入“myVault”作为“备份保管库名称”，然后选择所需的区域，在此示例中，你的“区域”为“美国东部”。
+6. 现在，选择你的“存储冗余”。 保护保管库的项之后，无法更改存储冗余。
+7. 如果使用 Azure 作为主要备份存储终结点，则我们建议继续使用默认的“异地冗余”设置。
+8. 如果不使用 Azure 作为主要的备份存储终结点，则请选择“本地冗余”，减少 Azure 存储费用。 详细了解[异地冗余](../storage/common/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/common/storage-redundancy.md#locally-redundant-storage)。
 
-  ![选择存储冗余](./media/backup-vault-overview/storage-redundancy.png)
+    ![选择存储冗余](./media/backup-vault-overview/storage-redundancy.png)
 
-1. 在页面底部选择“查看 + 创建”按钮。
+9. 在页面底部选择“查看 + 创建”按钮。
 
     ![选择“查看 + 创建”](./media/backup-vault-overview/review-and-create.png)
 
@@ -80,6 +79,10 @@ ms.locfileid: "107739073"
 如果在不删除依赖项的情况下尝试删除保管库，将会遇到以下错误消息：
 
 >无法删除此备份保管库，因为此保管库中现有备份实例或备份策略。 请先删除此保管库中现有的全部备份实例和备份策略，再尝试删除此保管库。
+
+请确保循环访问备份中心的“数据源类型”筛选器选项，不要错过任何需要删除的现有备份实例或策略，然后才能删除备份保管库。 
+
+![数据源类型](./media/backup-vault-overview/datasource-types.png)
 
 ### <a name="proper-way-to-delete-a-vault"></a>删除保管库的正确方式
 

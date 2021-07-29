@@ -1,28 +1,28 @@
 ---
-title: 排查 Windows 虚拟桌面（经典）服务连接问题 - Azure
-description: 如何解决在 Windows 虚拟桌面（经典）租户环境中设置客户端连接时遇到的问题。
+title: 排查 Azure 虚拟桌面（经典）的服务连接问题 - Azure
+description: 如何解决在 Azure 虚拟桌面（经典）租户环境中设置客户端连接时遇到的问题。
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 05/20/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 8a034cb8371972c2c7908cdba4dd491c17d8cc9f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 856d6e65273b15c843bffe40c818b07c60f00fb0
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88008536"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753928"
 ---
-# <a name="windows-virtual-desktop-classic-service-connections"></a>Windows 虚拟桌面（经典）服务连接
+# <a name="azure-virtual-desktop-classic-service-connections"></a>Azure 虚拟桌面（经典）服务连接
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../troubleshoot-service-connection.md)。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[此文](../troubleshoot-service-connection.md)。
 
-使用本文解决 Windows 虚拟桌面客户端连接问题。
+使用本文解决 Azure 虚拟桌面客户端连接问题。
 
 ## <a name="provide-feedback"></a>提供反馈
 
-可以通过 [Windows 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)，向我们提供反馈并与产品团队和其他活跃的社区成员共同探讨 Windows 虚拟桌面服务。
+可以通过 [Azure 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)，向我们提供反馈并与产品团队和其他活跃的社区成员共同探讨 Azure 虚拟桌面服务。
 
 ## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>用户可以连接，但不显示任何内容（无源）
 
@@ -40,8 +40,8 @@ Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如需简要了解如何排查 Windows 虚拟桌面问题和跟踪升级，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview-2019.md)。
-- 若要排查在 Windows 虚拟桌面环境中创建租户和主机池时遇到的问题，请参阅[租户和主机池创建](troubleshoot-set-up-issues-2019.md)。
-- 若要排查在 Windows 虚拟桌面中配置虚拟机 (VM) 时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration-2019.md)。
-- 若要排查将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题，请参阅 [Windows 虚拟桌面 PowerShell](troubleshoot-powershell-2019.md)。
+- 如需大致了解如何排查 Azure 虚拟桌面问题和跟踪升级，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview-2019.md)。
+- 若要排查在 Azure 虚拟桌面环境中创建租户和主机池时遇到的问题，请参阅[租户和主机池创建](troubleshoot-set-up-issues-2019.md)。
+- 若要排查在 Azure 虚拟桌面中配置虚拟机 (VM) 时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration-2019.md)。
+- 若要排查将 PowerShell 与 Azure 虚拟桌面结合使用时遇到的问题，请参阅 [Azure 虚拟桌面 PowerShell](troubleshoot-powershell-2019.md)。
 - 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署问题](../../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。

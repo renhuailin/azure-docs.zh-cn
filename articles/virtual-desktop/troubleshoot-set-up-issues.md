@@ -1,29 +1,29 @@
 ---
-title: Windows 虚拟桌面环境主机池创建 - Azure
-description: 如何在安装 Windows 虚拟桌面环境期间排除和解决租户和主机池问题。
+title: Azure 虚拟桌面环境主机池创建 - Azure
+description: 如何在设置 Azure 虚拟桌面环境期间排查和解决租户和主机池问题。
 author: Heidilohr
 ms.topic: troubleshooting
 ms.custom: references_regions
 ms.date: 02/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 4d515e75aba9b3912507da07267c3dcb31f1ee34
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: a18d78fdc6714894a9ce038f1e67e72e0acc0b87
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445493"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744532"
 ---
 # <a name="host-pool-creation"></a>创建主机池
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)。
+>本内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)。
 
-本文介绍了 Windows 虚拟桌面租户和相关会话主机池基础结构的初始设置过程中的问题。
+本文介绍了 Azure 虚拟桌面租户和相关会话主机池基础结构的初始设置过程中的问题。
 
 ## <a name="provide-feedback"></a>提供反馈
 
-请访问 [Windows 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)，与产品团队和活跃的社区成员共同探讨 Windows 虚拟桌面服务。
+请访问 [Azure 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)，与产品团队和活跃的社区成员共同探讨 Azure 虚拟桌面服务。
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>获取 Windows 10 企业版多会话映像
 
@@ -56,7 +56,7 @@ ms.locfileid: "106445493"
 
 ### <a name="i-only-see-us-when-setting-the-location-for-my-service-objects"></a>仅当为服务对象设置位置时才会看到美国
 
-原因：Azure 当前对 Windows 虚拟桌面服务不支持该区域。 若要了解我们支持的地理位置，请查看[数据位置](data-locations.md)。 如果 Windows 虚拟桌面支持该位置，但在尝试选择位置时它仍未显示，则表示资源提供程序尚未更新。
+原因：就 Azure 虚拟桌面服务来说，Azure 目前不支持该区域。 若要了解我们支持的地理位置，请查看[数据位置](data-locations.md)。 如果 Azure 虚拟桌面支持该位置，但你在尝试选择位置时它仍未显示，则表示资源提供程序尚未进行更新。
 
 解决方法：若要获取最新的区域列表，请重新注册资源提供程序：
 
@@ -122,11 +122,11 @@ ms.locfileid: "106445493"
 > [!div class="mx-imgBorder"]
 > ![“部署失败”屏幕截图，其中终端预配状态为失败。](media/failure-vmextensionprovisioning.png)
 
-原因 1：Windows 虚拟桌面环境出现暂时性错误。
+原因 1：Azure 虚拟桌面环境出现暂时性错误。
 
 原因 2：连接发生暂时性错误。
 
-解决方法：使用 PowerShell 登录，确认 Windows 虚拟桌面环境正常运行。 在[使用 PowerShell 创建主机池](create-host-pools-powershell.md)中手动完成 VM 注册。
+解决方法：使用 PowerShell 登录，确认 Azure 虚拟桌面环境正常运行。 在[使用 PowerShell 创建主机池](create-host-pools-powershell.md)中手动完成 VM 注册。
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>错误：不允许使用指定的管理员用户名
 
@@ -280,13 +280,13 @@ the VM.\\\"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如需简要了解如何排查 Windows 虚拟桌面问题和跟踪升级，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
-- 若要排查在 Windows 虚拟桌面中配置虚拟机 (VM) 时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
-- 若要排查与 Windows 虚拟桌面代理或会话连接有关的问题，请参阅[排查常见的 Windows 虚拟桌面代理问题](troubleshoot-agent.md)。
-- 若要排查 Windows 虚拟桌面客户端连接的问题，请参阅 [Windows 虚拟桌面服务连接](troubleshoot-service-connection.md)。
-- 若要排查有关远程桌面客户端的问题，请参阅[远程桌面客户端故障排除](troubleshoot-client.md)
-- 若要排查将 PowerShell 与 Windows 虚拟桌面结合使用时遇到的问题，请参阅 [Windows 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
-- 若要详细了解该服务，请参阅 [Windows 虚拟桌面环境](environment-setup.md)。
+- 如需大致了解如何排查 Azure 虚拟桌面问题和跟踪升级，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
+- 若要排查在 Azure 虚拟桌面中配置虚拟机 (VM) 时遇到的问题，请参阅[会话主机虚拟机配置](troubleshoot-vm-configuration.md)。
+- 若要排查与 Azure 虚拟桌面代理或会话连接性相关的问题，请参阅[排查常见的 Azure 虚拟桌面代理问题](troubleshoot-agent.md)。
+- 若要排查 Azure 虚拟桌面客户端连接问题，请参阅 [Azure 虚拟桌面服务连接](troubleshoot-service-connection.md)。
+- 若要排查远程桌面客户端的问题，请参阅[排查远程桌面客户端问题](troubleshoot-client.md)
+- 若要排查将 PowerShell 与 Azure 虚拟桌面结合使用时遇到的问题，请参阅 [Azure 虚拟桌面 PowerShell](troubleshoot-powershell.md)。
+- 若要详细了解该服务，请参阅 [Azure 虚拟桌面环境](environment-setup.md)。
 - 若要完成故障排除教程，请参阅[教程：排查资源管理器模板部署问题](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。
 - 若要了解审核操作，请参阅[使用 Resource Manager 执行审核操作](../azure-resource-manager/management/view-activity-logs.md)。
 - 若要了解部署期间为确定错误需要执行哪些操作，请参阅[查看部署操作](../azure-resource-manager/templates/deployment-history.md)。

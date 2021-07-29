@@ -1,17 +1,17 @@
 ---
-title: Windows 虚拟桌面启动 VM 连接常见问题解答 — Azure
+title: Azure 虚拟桌面启动 VM 连接常见问题解答 - Azure
 description: 有关使用“连接时启动 VM”功能的常见问题和最佳做法。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0a35d0541358af2f5fac5e4c7486a1be93797922
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: c973b3a78e90786fa46db858de00ecf63bace5fd
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445578"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755764"
 ---
 # <a name="start-vm-on-connect-faq-preview"></a>连接时启动 VM 常见问题解答（预览版）
 
@@ -19,7 +19,7 @@ ms.locfileid: "106445578"
 > 连接时启动 VM 功能目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本文介绍了有关 Windows 虚拟机主机池连接时启动虚拟机 (VM) 功能（预览版）的常见问题。
+本文介绍了有关 Azure 虚拟桌面主机池连接时启动虚拟机 (VM) 功能（预览版）的常见问题。
 
 ## <a name="are-vms-automatically-deallocated-when-a-user-stops-using-them"></a>当用户停止使用 VM 时，它们是否会自动解除分配？
 
@@ -48,4 +48,4 @@ ms.locfileid: "106445578"
 
 若要了解如何配置在连接时启动 VM，请参阅[在连接时启动虚拟机（预览版）](start-virtual-machine-connect.md)。
 
-如果你有关于 Windows 虚拟桌面的更多常规问题，请查看我们的一般[常见问题解答](faq.md)。
+如果你有关于 Azure 虚拟桌面的更多常规问题，请查看我们的一般[常见问题解答](faq.md)。

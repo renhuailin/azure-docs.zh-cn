@@ -6,16 +6,22 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: cc7c70fa2e7131f09f621e992d537e0b120061ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 91c62faf53bd0a0f81322316e5225579eaa6ca9d
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102210727"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111813042"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Azure Cache for Redis 的故障转移和修补
 
-若要构建可复原的、成功的客户端应用程序，了解 Azure Cache for Redis 服务上下文中的故障转移非常重要。 故障转移可以是计划的管理运营的一部分，也可能是非计划的硬件或网络故障造成的。 当管理服务修补 Azure Cache for Redis 二进制文件时，往往会使用缓存故障转移。 本文介绍故障转移的概念、如何在修补过程中进行故障转移，以及如何构建可复原的客户端应用程序。
+要构建可复原且成功的客户端应用程序，了解 Azure Cache for Redis 服务中的故障转移至关重要。 故障转移可能是计划的管理操作中的一部分，也可能由意外硬件或网络故障引发。 当管理服务修补 Azure Cache for Redis 二进制文件时，往往会使用缓存故障转移。
+
+在本文中，你将找到以下信息：  
+
+- 什么是故障转移。
+- 修补期间会出现什么样的故障转移。
+- 如何构建可复原的客户端应用程序。
 
 ## <a name="what-is-a-failover"></a>什么是故障转移？
 
@@ -34,7 +40,12 @@ ms.locfileid: "102210727"
 
 当某个副本节点将其自身提升为主节点，且旧主节点关闭现有连接时，将发生故障转移。 主节点重新启动后，它会注意到角色的变化，从而将自身降级为副本节点。 然后，它将连接到新的主节点并同步数据。 故障转移可以是计划性的，也可以是非计划的。
 
-计划性故障转移发生在系统更新（例如 Redis 修补或 OS 升级）和管理操作（例如缩放和重启）过程中。  由于节点会提前收到更新通知，因此它们可以协作交换角色，并在更改后快速更新负载均衡器。 计划性故障转移通常可在 1 秒内完成。
+*计划的故障转移* 发生在两个不同的时间：
+
+- 系统更新，例如 Redis 修补或 OS 升级。  
+- 管理操作，例如缩放和重新启动。
+
+由于节点会提前收到更新通知，因此它们可以协作交换角色，并在更改后快速更新负载均衡器。 计划性故障转移通常可在 1 秒内完成。
 
 发生非计划性故障转移的可能原因是硬件故障、网络故障或主节点的其他意外中断。 副本节点可将自身提升为主节点，但该过程需要更长时间。 副本节点必须先检测到其主节点不可用，然后才能启动故障转移过程。 副本节点还必须验证此非计划性故障不是暂时性的或局部性的，以避免不必要的故障转移。 检测时出现的这种延迟意味着非计划性故障转移通常要在 10 到 15 秒内完成。
 
@@ -48,7 +59,7 @@ Azure Cache for Redis 服务定期使用最新的平台功能和修补程序更�
 1. 副本节点连接到主节点并同步数据。
 1. 数据同步完成后，将对剩余的节点重复修补过程。
 
-因为修补属于计划性故障转移，所以副本节点会快速将自身提升为主节点，并开始为请求和新连接提供服务。 基本缓存没有副本节点，在更新完成之前不可用。 群集缓存的每个分片单独进行修补，不会关闭与另一个分片的连接。
+因为修补属于计划性故障转移，所以副本节点会快速将自身提升为主节点。 然后，节点开始为请求和新连接提供服务。 基本缓存没有副本节点，在更新完成之前不可用。 群集缓存的每个分片单独进行修补，不会关闭与另一个分片的连接。
 
 > [!IMPORTANT]
 > 每次修补一个节点以防数据丢失。 基本缓存会发生数据丢失。 每次修补缓存群集的一个分片。
@@ -59,7 +70,7 @@ Azure Cache for Redis 服务定期使用最新的平台功能和修补程序更�
 
 ## <a name="additional-cache-load"></a>额外的缓存负载
 
-每当发生故障转移时，标准和高级缓存需要将数据从一个节点复制到另一个节点。 这种复制会导致负载消耗的服务器内存和 CPU 增大。 如果缓存实例的负载已很繁重，客户端应用程序遇到的延迟可能会增大。 在极端情况下，客户端应用程序可能会收到超时异常。 若要帮助减轻此额外负载造成的影响，请[配置](cache-configure.md#memory-policies)缓存的 `maxmemory-reserved` 设置。
+每当发生故障转移时，标准和高级缓存需要将数据从一个节点复制到另一个节点。 这种复制会导致负载消耗的服务器内存和 CPU 增大。 如果缓存实例的负载已很繁重，客户端应用程序遇到的延迟可能会增大。 在极端情况下，客户端应用程序可能会收到超时异常。 为了帮助减轻负载增加的影响，请[配置](cache-configure.md#memory-policies)缓存的 `maxmemory-reserved` 设置。
 
 ## <a name="how-does-a-failover-affect-my-client-application"></a>故障转移如何影响我的客户端应用程序？
 
@@ -75,7 +86,7 @@ Azure Cache for Redis 服务定期使用最新的平台功能和修补程序更�
 
 ### <a name="can-i-be-notified-in-advance-of-a-planned-maintenance"></a>能否提前得到计划内维护的通知？
 
-Azure Cache for Redis 现在会在计划内更新前约 30 秒在名为 [AzureRedisEvents](https://github.com/Azure/AzureCacheForRedis/blob/main/AzureRedisEvents.md) 的发布/订阅通道上发布通知。 这些是运行时通知，专门为可使用断路器绕过缓存或缓冲区命令的应用程序而生成，例如，在计划内更新期间。 该机制不能提前几天或几小时通知你。
+Azure Cache for Redis 现在会在计划内更新前约 30 秒在名为 [AzureRedisEvents](https://github.com/Azure/AzureCacheForRedis/blob/main/AzureRedisEvents.md) 的发布/订阅通道上发布通知。 通知是运行时通知。 这些通知专门为可使用断路器绕过缓存或缓冲区命令的应用程序而生成，例如，在计划内更新期间。 该机制不能提前几天或几小时通知你。
 
 ### <a name="client-network-configuration-changes"></a>客户端网络配置更改
 
@@ -84,7 +95,7 @@ Azure Cache for Redis 现在会在计划内更新前约 30 秒在名为 [AzureRe
 - 在过渡槽与生产槽之间交换客户端应用程序的虚拟 IP 地址。
 - 缩放应用程序实例的大小或数量。
 
-此类更改可能会导致持续一分钟以下的连接问题。 客户端应用程序除了断开与 Azure Cache for Redis 服务的连接以外，还可能会断开与其他外部网络资源的连接。
+此类更改可能会导致持续一分钟以下的连接问题。 客户端应用程序不仅会断开与 Azure Cache for Redis 服务的连接以外，还会断开与其他外部网络资源的连接。
 
 ## <a name="next-steps"></a>后续步骤
 

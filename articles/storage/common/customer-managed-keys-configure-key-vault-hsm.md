@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f9b40c934cb428a31a3feb77195518d5351818d7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f340ac18cb74523d64f4dbf8d6ae1d6f4559582a
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785354"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411874"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>使用 Azure 密钥保管库托管 HSM 中存储的客户管理的密钥配置加密（预览版）
 
@@ -45,7 +45,7 @@ az storage account update \
 
 ## <a name="assign-a-role-to-the-storage-account-for-access-to-the-managed-hsm"></a>将角色分配到存储帐户以便访问托管的 HSM
 
-接下来，将托管的 HSM 加密服务加密角色分配到存储帐户的托管标识，以便该存储帐户具有托管的 HSM 的访问权限。 Microsoft 建议将角色分配的范围限定为单个密钥级别，以便向托管标识授予尽可能少的特权。
+接下来，将“托管的 HSM 加密服务加密用户”角色分配到存储帐户的托管标识，以便该存储帐户具有托管的 HSM 的访问权限。 Microsoft 建议将角色分配的范围限定为单个密钥级别，以便向托管标识授予尽可能少的特权。
 
 若要为存储帐户创建角色分配，请调用 [az key vault role assignment create](/cli/azure/role/assignment#az_role_assignment_create)。 请记得将括号中的占位符值替换为你自己的值。
   
@@ -58,7 +58,7 @@ storage_account_principal = $(az storage account show \
 
 az keyvault role assignment create \
     --hsm-name <hsm-name> \
-    --role "Managed HSM Crypto Service Encryption" \
+    --role "Managed HSM Crypto Service Encryption User" \
     --assignee $storage_account_principal \
     --scope /keys/<key-name>
 ```
