@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 02/23/2021
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 36759a0caef41af9307bf621a1b6b634ddf586cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101703658"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
@@ -23,7 +23,7 @@ ms.locfileid: "101703658"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在主页中选择“创建资源”。
+1. 在主页中，选择“创建资源”。
 
 1. 在搜索框中，输入“Batch 服务”。 从结果中选择“Batch 服务”，然后选择“创建”。
 
@@ -56,7 +56,7 @@ ms.locfileid: "101703658"
 
 :::image type="content" source="media/batch-account-create-portal/batch_blade.png" alt-text="Azure 门户中“Batch 帐户”页的屏幕截图。":::
 
-通过 [Batch API](batch-apis-tools.md#azure-accounts-for-batch-development) 开发应用程序时，需要帐户 URL 和密钥才能访问 Batch 资源。 （Batch 还支持 Azure Active Directory 身份验证。）若要查看 Batch 帐户访问信息，请选择“密钥”。
+通过 [Batch API](batch-apis-tools.md#azure-accounts-for-batch-development) 开发应用程序时，需要帐户 URL 和密钥才能访问 Batch 资源。 （Batch 还支持 Azure Active Directory 身份验证。）若要查看 Batch 帐户访问权限信息，请选择“秘钥”。
 
 :::image type="content" source="media/batch-account-create-portal/batch-account-keys.png" alt-text="Azure 门户中“Batch 帐户”密钥的屏幕截图。":::
 

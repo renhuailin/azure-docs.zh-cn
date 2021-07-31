@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
 ms.openlocfilehash: e298cb0d1a2c510a096f8ead03f8af7e39c206a8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96498925"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS 保护 - 设计复原解决方案
@@ -54,7 +54,7 @@ DDoS 是企图耗尽应用程序资源的一种攻击。 其目的是影响应�
 
 深层防御的理念是通过多样化的防御策略来掌控风险。 应用程序中的分层安全防御可以减少攻击成功的可能性。 我们建议使用 Azure 平台的内置功能对其应用程序实施安全设计。
 
-例如，攻击风险会随着应用程序的规模（外围应用）的增大而增大。 可以使用审批列表关闭负载均衡器（[Azure 负载均衡器](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)和 [Azure 应用程序网关](../../application-gateway/application-gateway-create-probe-portal.md)）上不需要的公开 IP 地址空间和侦听端口，来减少外围应用。 [网络安全组 (NSG)](../../virtual-network/network-security-groups-overview.md) 是缩小受攻击面的另一种方法。
+例如，攻击风险会随着应用程序的规模（外围应用）的增大而增大。 可以使用审批列表关闭负载均衡器（[Azure 负载均衡器](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)和 [Azure 应用程序网关](../../application-gateway/application-gateway-create-probe-portal.md)）上不需要的公开 IP 地址空间和侦听端口，从而减少外围应用。 [网络安全组 (NSG)](../../virtual-network/network-security-groups-overview.md) 是缩小受攻击面的另一种方法。
 可以使用[服务标记](../../virtual-network/network-security-groups-overview.md#service-tags)和[应用程序安全组](../../virtual-network/network-security-groups-overview.md#application-security-groups)来最大程度地简化安全规则的创建，并将网络安全性配置为应用程序结构的自然扩展。
 
 应尽可能地在[虚拟网络](../../virtual-network/virtual-networks-overview.md)中部署 Azure 服务。 这种做法可让服务资源通过专用 IP 地址通信。 来自虚拟网络的 Azure 服务流量默认使用公共 IP 地址作为源 IP 地址。 使用[服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)时，服务流量会在通过虚拟网络访问 Azure 服务时改用虚拟网络专用地址作为源 IP 地址。
@@ -73,7 +73,7 @@ Azure 提供两个可以防御网络攻击（第 3 层和第 4 层）的 DDoS �
 
 Azure 中的基本 DDoS 防护包括硬件和软件组件。 软件控制平面决定何时、何处的何种流量应该流过用于分析和消除攻击流量的硬件设备。 控制平面根据基础结构范围的 DDoS 防护策略做出此决定。 此策略是静态设置的，将全局应用到所有 Azure 客户。
 
-例如，DDoS 防护策略指定在生成多大的流量后应触发保护。 （即，应该通过清理设备路由租户的流量。）然后，策略指定清理设备应以何种方式缓解攻击。
+例如，DDoS 防护策略指定在生成多大的流量后应触发保护。 （换言之，应通过清理设备路由租户的流量）该策略之后会指定清理设备应如何 *缓解* 攻击。
 
 Azure DDoS 防护基本服务用于实现基础结构保护和 Azure 平台保护。 当流量速率过大，从而可能影响到多租户环境中的多个客户时，该服务会降低流量。 它不提供警报或者按客户自定义的策略。
 

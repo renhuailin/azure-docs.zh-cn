@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/29/2020
 ms.openlocfilehash: dba47073a6676b17c091af048f583ca3e7712999
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87420220"
 ---
 # <a name="create-or-modify-an-offer"></a>创建或修改产品/服务
@@ -25,11 +25,11 @@ ms.locfileid: "87420220"
 
 ## <a name="uri-parameters"></a>URI 参数
 
-|  **名称**         |  **说明**                      |  **数据类型**  |
+|  **名称**         |  **说明**                      |  **Data type**  |
 |  --------         |  ----------------                     |  -------------  |
-| publisherId       |  发布者标识符，例如 `contoso` |   String |
-| offerId           |  产品/服务标识符                     |   String        |
-| api-version       |  API 最新版本            |   日期           |
+| publisherId       |  发布者标识符，例如 `contoso` |   字符串 |
+| offerId           |  产品/服务标识符                     |   字符串        |
+| api-version       |  API 最新版本            |   Date           |
 |  |  |  |
 
 ## <a name="header"></a>标头
@@ -477,7 +477,7 @@ ms.locfileid: "87420220"
 | 搜索和引用 | search-reference | search-reference | search-and-reference |
 | 其他 | other-productivity | other-productivity | 其他 |
 | 游戏化 | 游戏化 | 游戏化 | 游戏化 |
-| ***销售** _ | _*_Sales_*_ | _*_Sales_*_ | _ *_Sales_** |
+| ***销售** _ | _*_销售_*_ | _*_销售_*_ | _ *_Sales_** |
 | 电话销售 | telesales | telesales | telesales |
 | 配置、定价和报价(CPQ) | configure-price-quote | configure-price-quote | configure-price-quote |
 | 合同管理 | contract-management | contract-management | contract-management |

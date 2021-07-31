@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
 ms.openlocfilehash: 67d3fafb9b4b93ae52bdb09d673bf65cad30b816
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94966150"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array 更新 0.2 和 0.1 发行说明
@@ -63,7 +63,7 @@ ms.locfileid: "94966150"
 | 5 |监视图表 |在之前的版本中，在进行了设备故障转移操作后，云容量利用率图表在 Azure 经典门户中会显示不正确的值。 在当前版本中已修复了此问题。 |
 
 ## <a name="known-issues-in-the-update-01"></a>更新 0.1 中的已知问题
-下表提供了 StorSimple Virtual Array 的已知问题的摘要，包括早期版本中发行说明的问题。 **此版本中发行说明的问题标有星号。此列表中几乎所有问题都是从 StorSimple Virtual Array 的正式版本中延续下来的。**
+下表提供了 StorSimple Virtual Array 的已知问题的摘要，包括早期版本中发行说明的问题。 此版本中所述的问题以星号标记。此列表中的问题几乎都已从 StorSimple Virtual Array 的 GA 版本沿袭下来。
 
 | 不是。 | 功能 | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
