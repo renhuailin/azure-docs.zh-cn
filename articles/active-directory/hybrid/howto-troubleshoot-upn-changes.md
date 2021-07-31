@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 19e40d135316c1c7cd270d2804fff1f487937685
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96858529"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Azure Active Directory 中用户主体名称更改的规划和故障排除
 
 用户主体名称 (UPN) 是表示用户帐户的 Internet 通信标准的属性。 UPN 由 UPN 前缀（用户帐户名）和 UPN 后缀（DNS 域名）组成。 前缀与后缀以“\@”符号相联接。 例如，someone@example.com。 UPN 必须在目录林中的所有安全主体对象之间保持唯一。 
 
-**本文假定使用 UPN 作为用户标识符。本文讲解了 UPN 更改的规划，并解决了 UPN 更改可能导致的问题。**
+**本文假设你使用 UPN 作为用户标识符。其中讲解了 UPN 更改的规划，以及如何解决可能由 UPN 更改引起的问题。**
 
 > [!NOTE]
 > 对于开发人员，我们建议使用用户对象 ID 作为不可变标识符，而不是使用 UPN 或电子邮件地址，因为后者的值可能会更改。

@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: disks
 ms.collection: linux
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 05/12/2021
 ms.author: cynthn
-ms.openlocfilehash: adf6198cf12011c77fcf3f93d4b595ea433ddefd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb207b5ece190a4398c7b9ef15472db409ac4d71
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104580379"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110087789"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>将磁盘添加到 Linux VM
 
@@ -71,7 +71,7 @@ sdb     1:0:1:0      14G
 sdc     3:0:0:0      50G
 ```
 
-这里的 `sdc` 是我们所需的磁盘，因为它是 50G。 如果只根据大小无法确定是哪块磁盘，可转到门户中的 VM 页面，选择“磁盘”，然后在“数据磁盘”下检查磁盘的 LUN 编号 。 
+这里的 `sdc` 是我们所需的磁盘，因为它是 50G。 如果添加多个磁盘，并且只根据大小无法确定是哪块磁盘，可转到门户中的 VM 页面，选择“磁盘”，然后在“数据磁盘”下检查磁盘的 LUN 编号。  将门户中的 LUN 编号与输出的 HTCL 部分的最后一个数字（也就是 LUN）进行比较。
 
 
 ### <a name="format-the-disk"></a>格式化磁盘
@@ -151,16 +151,18 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   xfs   defaults,nofail  
 > 如果修改 fstab 导致启动失败，可以使用 Azure VM 串行控制台对 VM 进行控制台访问。 有关更多详细信息，请参阅[串行控制台文档](/troubleshoot/azure/virtual-machines/serial-console-linux)。
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>Azure 中对 Linux 的 TRIM/UNMAP 支持
+
 某些 Linux 内核支持 TRIM/UNMAP 操作以放弃磁盘上未使用的块。 此功能主要用于标准存储中，如果你创建大型文件后又将其删除，则该功能将通知 Azure 已删除的页不再有效并且可以丢弃，可以节省成本。
 
 在 Linux VM 中有两种方法可以启用 TRIM 支持。 与往常一样，有关建议的方法，请参阅分发：
 
-* 在 */etc/fstab* 中使用 `discard` 装载选项，例如：
+- 在 */etc/fstab* 中使用 `discard` 装载选项，例如：
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   xfs   defaults,discard   1   2
     ```
-* 在某些情况下，`discard` 选项可能会影响性能。 此处，还可以从命令行手动运行 `fstrim` 命令，或将其添加到 crontab 以定期运行：
+
+- 在某些情况下，`discard` 选项可能会影响性能。 此处，还可以从命令行手动运行 `fstrim` 命令，或将其添加到 crontab 以定期运行：
 
     **Ubuntu**
 

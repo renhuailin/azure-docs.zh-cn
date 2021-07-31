@@ -15,18 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: abecddb6f5469cb4ef463e65d6c74149bf34dca9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b6ad04afce5fb4ead5575d47333525c0f5f8a13
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100590228"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110075191"
 ---
 # <a name="connect-your-domain-name-server"></a>连接域名服务器
 
 > [!IMPORTANT]
 > Azure Sentinel 中的 DNS 数据连接器目前为公共预览版。
-> 此功能不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此功能不附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+> [!CAUTION]
+> 启用 DNS 解决方案可能会导致目标计算机上的 CPU 使用率过高。 如上所述，建议不要在生产设置中使用此连接器。 我们正在努力开发此连接器的可正式发布的稳定版本。
 
 可以将在 Windows 上运行的任何域名服务器 (DNS) 连接到 Azure Sentinel。 这通过在 DNS 计算机上安装代理来完成。 使用 DNS 日志，可以通过收集、分析和关联分析和审核日志以及来自 DNS 服务器的其他相关数据，获取对组织的 DNS 基础结构的安全性、性能和操作相关的见解。
 

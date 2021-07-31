@@ -6,15 +6,15 @@ ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
+author: cawrites
+ms.author: chadam
 ms.date: 03/19/2021
-ms.openlocfilehash: 6aa6537cefb110662f9fbc535832d8c9423a6f68
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ec117b8f341546deb48510d9b27a43b731d03742
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136582"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970700"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>迁移指南：MySQL 到 Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -85,7 +85,7 @@ ms.locfileid: "108136582"
    a. 输入用于连接到 SQL 数据库的详细信息。  
    b. 在下拉列表中选择目标 SQL 数据库。 也可以提供新名称（在这种情况下，将在目标服务器上创建一个数据库）。  
    c. 提供身份验证详细信息。  
-   d. 选择“连接”。
+   d. 选择“连接”  。
 
    ![SSMA for MySQL 中“连接到 Azure SQL 数据库”窗格的屏幕截图。](./media/mysql-to-sql-database-guide/connect-to-sqldb.png)
  
@@ -125,7 +125,7 @@ ms.locfileid: "108136582"
 
    ![“MySQL 元数据资源管理器”窗格上“迁移数据”命令的屏幕截图。](./media/mysql-to-sql-database-guide/migrate-data.png)
 
-1. 迁移完成后，查看“数据迁移报表”。
+1. 迁移完成后，查看“数据迁移报告”。
    
    ![数据迁移报表的屏幕截图。](./media/mysql-to-sql-database-guide/data-migration-report.png)
 
@@ -166,6 +166,7 @@ ms.locfileid: "108136582"
 | 标题 | 说明 |
 | --- | --- |
 | [数据工作负荷评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | 为指定工作负载提供建议的“最适合”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。 |
+|[MySQL 到 SQL DB - 数据库比较实用工具](https://www.microsoft.com/download/details.aspx?id=103016)|数据库比较实用工具是可用于验证源和目标平台上的数据是否相同的 Windows 控制台应用程序。 可以使用该工具在所有或所选表、行和列中的行或列级别高效地比较数据。|
 
 数据 SQL 工程团队开发了这些资源。 此团队的核心章程是解锁和加速到 Microsoft 的 Azure 数据平台的数据平台迁移项目的复杂现代化进程。
 

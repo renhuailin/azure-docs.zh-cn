@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 06/09/2021
 ms.author: alkohli
-ms.openlocfilehash: e109c09a70b96e81daad8929fc82b6059b3619b6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1ad5475078c515d36a57b7608ab9d363c6f678aa
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060537"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983936"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>针对 Azure Stack Edge 和 Azure Data Box Gateway 打开支持票证
 
-[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-databox-gateway-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-databox-gateway-sku.md)]
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-fpga-databox-gateway-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-fpga-databox-gateway-sku.md)]
 
 本文适用于 Azure Stack Edge 和 Azure Data Box Gateway，两者均由 Azure Stack Edge/Azure Data Box Gateway 服务管理。 如果你的服务遇到任何问题，可以为获取技术支持创建服务请求。 本文介绍：
 
@@ -100,5 +100,6 @@ ms.locfileid: "110060537"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[排查 Azure Stack Edge 相关问题](azure-stack-edge-troubleshoot.md)。
-了解如何[排查 Data Box Gateway 相关问题](../databox-gateway/data-box-gateway-troubleshoot.md)。
+- [排查 Azure Stack Edge FPGA 相关问题](azure-stack-edge-troubleshoot.md)。
+- [排查 Azure Stack Edge Pro GPU 的设备问题](azure-stack-edge-gpu-troubleshoot.md)。
+- [排查与 Data Box Gateway 相关的问题](../databox-gateway/data-box-gateway-troubleshoot.md)。

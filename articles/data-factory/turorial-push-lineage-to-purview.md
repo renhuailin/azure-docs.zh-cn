@@ -1,20 +1,20 @@
 ---
 title: 将数据工厂世系数据推送到 Azure Purview
 description: 了解如何将数据工厂世系数据推送到 Azure Purview
-ms.author: lle
-author: lrtoyou1223
+ms.author: jingwang
+author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: 3f2297ae619145ec19b53ba79d70b7c085cbcaab
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c1b6f8856d7cff88abd59661d06422cdb0fbe271
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100361442"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109481023"
 ---
 # <a name="push-data-factory-lineage-data-to-azure-purview-preview"></a>将数据工厂世系数据推送到 Azure Purview（预览）
 

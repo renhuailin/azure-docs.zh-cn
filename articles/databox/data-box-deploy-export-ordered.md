@@ -70,7 +70,7 @@ Azure Data Box 是一种混合解决方案，可让将 Azure 中的数据移到�
     |订阅     | 对于 Data Box 服务，选择一个 EA、CSP 或 Azure 赞助订阅。 <br> 该订阅将链接到计费帐户。       |
     |资源组     |    选择现有资源组。 <br> 资源组是可以统一管理或部署的资源的逻辑容器。         |
     |源 Azure 区域    |    选择数据当前所在的 Azure 区域。         |
-    |目标国家     |     选择要将此设备寄送到的国家。        |
+    |目标国家     |     选择要将此设备寄送到的国家/地区。        |
 
    ![选择 Data Box 设置](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-box-settings.png)
 

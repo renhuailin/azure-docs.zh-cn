@@ -5,16 +5,16 @@ description: 了解 Azure Data Science Virtual Machine 支持的数据平台和�
 keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux 数据科学
 services: machine-learning
 ms.service: data-science-vm
-author: lobrien
-ms.author: laobri
+author: timoklimmer
+ms.author: tklimmer
 ms.topic: conceptual
-ms.date: 12/12/2019
-ms.openlocfilehash: 927e945a0d045abcd1caa2951dbd484224b2f425
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/29/2021
+ms.openlocfilehash: 8e8920d2a2ebbf326c9d5d0aba100ad5352ca6c4
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519535"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071193"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine 支持的数据平台
 
@@ -27,16 +27,21 @@ DSVM 支持以下数据平台工具。
 | 类别 | 值 |
 | ------------- | ------------- |
 | 它是什么？   | 本地关系数据库实例      |
-| 支持的 DSVM 版本      | Windows 2016：SQL Server 2017、Windows 2019：SQL Server 2019      |
+| 支持的 DSVM 版本      | Windows 2019、Ubuntu 18.04 (SQL Server 2019)   |
 | 典型用途      | <ul><li>使用小型数据集在本地进行快速开发</li><li>运行数据库内 R</li></ul> |
 | 指向示例的链接      | <ul><li>将 New York City 数据集加载进 SQL 数据库的小型示例：<br/>  `nyctaxi`</li><li>可在以下位置找到显示 Microsoft Machine Learning Server 和数据库内分析的 Jupyter 示例：<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`</li></ul> |
-| DSVM 上的相关工具       | <ul><li>SQL Server Management Studio</li><li>ODBC/JDBC 驱动程序</li><li>pyodbc, RODBC</li><li>Apache Drill</li></ul> |
+| DSVM 上的相关工具       | <ul><li>SQL Server Management Studio</li><li>ODBC/JDBC 驱动程序</li><li>pyodbc, RODBC</li></ul> |
 
 > [!NOTE]
 > SQL Server Developer Edition 只能用于开发和测试。 需要许可证或一个 SQL Server VM 才能在生产中运行。
 
+> [!NOTE]
+> 对 Machine Learning Server 独立版的支持将于 2021 年 7 月 1 日结束。 我们将在 6 月 30 日之后从 DSVM 映像中删除它。 现有部署可继续访问该软件，但由于已到达支持结束日期，因此在 2021 年 7 月 1 日之后将不再为其提供支持。
 
-### <a name="setup"></a>设置
+
+### <a name="windows"></a>Windows
+
+#### <a name="setup"></a>设置
 
 数据库服务器已预先配置，与 SQL Server 相关的 Windows 服务（例如 `SQL Server (MSSQLSERVER)`）设置为自动运行。 唯一的手动步骤涉及使用 Microsoft Machine Learning Server 启用数据库内分析。 要启用分析，可在 SQL Server Management Studio (SSMS) 中一次性运行以下命令。 先以计算机管理员身份登录，然后运行此命令，在 SSMS 中打开一个新查询，并确保选择的是 `master` 数据库：
 
@@ -48,15 +53,21 @@ CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS
 
 若要运行 SQL Server Management Studio，可在程序列表中搜索“SQL Server Management Studio”，或使用 Windows 搜索来查找并运行它。 系统提示输入凭据时，请选择“Windows 身份验证”，然后使用计算机名称或 SQL Server 名称字段中的 ```localhost``` 。
 
-### <a name="how-to-use-and-run-it"></a>如何使用和运行它
+#### <a name="how-to-use-and-run-it"></a>如何使用和运行它
 
 默认情况下，具有默认数据库实例的数据库服务器会自动运行。 可在 VM 上使用 SQL Server Management Studio 等工具在本地访问 SQL Server 数据库。 本地管理员帐户在数据库中具有管理员访问权限。
 
 此外，ODBC 驱动程序和 JDBC 驱动程序随附的 DSVM 还会通过使用多种语言（包括 Python 和 Machine Learning Server）编写的应用程序与 SQL Server、Azure SQL 数据库和 Azure Synapse Analytics 通信。
 
-### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>如何在 DSVM 上配置和安装它？ 
+#### <a name="how-is-it-configured-and-installed-on-the-dsvm"></a>如何在 DSVM 上配置和安装它？ 
 
  SQL Server 采用标准方式安装。 可在 `C:\Program Files\Microsoft SQL Server` 中找到它。 可在 `C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\R_SERVICES` 找到数据库内 Machine Learning Server 实例。 DSVM 还具有单独的独立 Machine Learning Server 实例，该实例安装在 `C:\Program Files\Microsoft\R Server\R_SERVER` 中。 这两个 Machine Learning Server 实例不共享库。
+
+
+### <a name="ubuntu"></a>Ubuntu
+
+若要在 Ubuntu DSVM 上使用 SQL Server Developer Edition，需要先安装它。 [快速入门：在 Ubuntu 上安装 SQL Server 并创建数据库](/sql/linux/quickstart-install-connect-ubuntu)告诉你如何操作。
+
 
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2.x (Standalone)
