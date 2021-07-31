@@ -20,7 +20,7 @@ ms.locfileid: "97861001"
 > [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker) 上提供了此示例
 
 > [!NOTE]
-> 本文包含对术语“白名单”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
+> 本文包含对术语“允许列表”的引用，Microsoft 不再使用该术语。 在从软件中删除该术语后，我们会将其从本文中删除。
 
 在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]

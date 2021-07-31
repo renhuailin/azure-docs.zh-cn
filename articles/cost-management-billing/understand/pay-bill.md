@@ -137,7 +137,7 @@ ms.locfileid: "107483174"
 > - [列支敦士登](/legal/pay/liechtenstein)
 > - [立陶宛](/legal/pay/lithuania)
 > - [卢森堡](/legal/pay/luxembourg)
-> - [中国澳门](/legal/pay/macao)
+> - 澳门
 > - [前南斯拉夫马其顿共和国](/legal/pay/macedonia)
 > - [马来西亚](/legal/pay/malaysia)
 > - [马耳他](/legal/pay/malta)
