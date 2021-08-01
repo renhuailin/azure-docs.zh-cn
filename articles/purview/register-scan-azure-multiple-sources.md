@@ -6,13 +6,13 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 2/26/2021
-ms.openlocfilehash: f3503dd986f037310b2b24dec535cc05b9d4c4a4
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 05/08/2021
+ms.openlocfilehash: ce78b36a07a0648e869a2a382554fdc41b408f96
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127490"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109656319"
 ---
 # <a name="register-and-scan-multiple-sources-in-azure-purview"></a>在 Azure Purview 中注册和扫描多个源
 
@@ -73,7 +73,7 @@ ms.locfileid: "108127490"
 
       :::image type="content" source="media/register-scan-azure-multiple-sources/azure-multiple-source-setup.png" alt-text="屏幕截图显示用于选择订阅和资源组的框。":::
    1. 在“选择集合”框中，选择一个集合，或创建一个新的集合（可选）。
-   1. 选择“完成”以注册数据源。
+   1. 选择“注册”以注册数据源。
 
 
 ## <a name="create-and-run-a-scan"></a>创建并运行扫描

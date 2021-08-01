@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 28ac7d0d7079d8ba8c9483e7da816430295941c9
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 80e25690e133b348ad5ee180bb5a3e01d4176c90
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027850"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136232"
 ---
 # <a name="vision-solution-troubleshooting"></a>视觉解决方案故障排除
 
@@ -58,11 +58,7 @@ ms.locfileid: "112027850"
 
     :::image type="content" source="./media/vision-solution-troubleshooting/vision-delete-device.png" alt-text="显示“删除”按钮的屏幕截图，其中突出显示了 IoT Edge 主页。":::
 
-## <a name="eye-module-troubleshooting-tips"></a>Eye 模块故障排除技巧
-
-以下故障排除技巧可帮助解决视觉 AI 原型设计体验中的一些更常见问题。
-
-### <a name="check-the-runtime-status-of-azureeyemodule"></a>检查 azureeyemodule 的运行时状态
+## <a name="check-the-runtime-status-of-azureeyemodule"></a>检查 azureeyemodule 的运行时状态
 
 如果 WebStreamModule 有问题，请确保 azureeyemodule（处理视觉模型推理）正在运行。 若要检查运行时状态，请执行以下操作：
 
@@ -76,19 +72,20 @@ ms.locfileid: "112027850"
 
     :::image type="content" source="./media/vision-solution-troubleshooting/firmware-desired-status-stopped.png" alt-text="显示“模块设置”配置屏幕的屏幕截图。":::
 
-### <a name="update-telemetryintervalneuralnetworkms"></a>更新 TelemetryIntervalNeuralNetworkMs
+## <a name="change-how-often-messages-are-sent-from-the-azureeyemodule"></a>更改从 azureeyemodule 发送消息的频率
 
-如果你看到以下计数限制错误，则需要更新 azureeyemodule 模块孪生设置中的 TelemetryIntervalNeuralNetworkMs 值。
+订阅层可能会限制可从设备发送到 IoT 中心的消息数。 例如，免费层将消息数限制为每天 8,000 条。 达到该限制后，azureeyemodule 将停止运行，你可能会收到此错误：
 
 |错误消息|
 |------|
-|IotHub“xxxxxxxxx”上的消息总数超出了分配的配额。 允许的最大消息数：8000，当前消息数：xxxx。 对于此中心，发送和接收操作将被阻止，直到下一个 UTC 日期。 考虑增加此中心的单位以增加配额。|
+|IotHub "xxxxxxxxx"上的消息总数超过了分配的配额。允许的最大消息计数: "8000"，当前消息计数: "xxxx"。已阻止此中心的发送和接收操作，直到 UTC 时间的明天。请考虑增加此中心的单位数以增加配额。|
 
-TelemetryIntervalNeuralNetworkMs 确定从神经网络发送消息的频率。 消息以毫秒为单位发送。 Azure 订阅每天发送一定的消息。
+使用 azureeyemodule 模块孪生，可以更改发送消息的间隔速率。 为间隔速率输入的值指示每条消息的发送频率（以毫秒为单位）。 该数字越大，每条消息之间的时间就越长。 例如，如果将间隔速率设置为 12,000，则意味着每 12 秒发送一条消息。 对于整天运行的模型，以此速率每天将生成 7,200 条消息，这一数量低于免费层限制。 选择的值取决于你需要的视觉模型响应速度。
 
-消息量取决于订阅层。 如果你发现自己由于发送了过多消息而遭锁定，请将此值增加到更高的数值。 12,000 意味着每 12 秒钟发送一次消息。 此数量表示每天为你提供 7,200 条消息，这个数量在免费订阅的 8,000 消息限制之内。
+> [!NOTE]
+> 更改消息间隔速率不会影响每条消息的大小。 消息大小取决于几个不同的因素，例如模型类型和在每条消息中检测到的对象数。 因此，很难确定消息大小。
 
-若要更新 TelemetryIntervalNeuralNetworkMs 值，请执行以下操作：
+请按照以下步骤更新消息间隔：
 
 1. 登录到 [Azure 门户](https://ms.portal.azure.com/?feature.canmodifystamps=true&Microsoft_Azure_Iothub=aduprod#home)并打开“所有资源”。
 
@@ -102,11 +99,14 @@ TelemetryIntervalNeuralNetworkMs 确定从神经网络发送消息的频率。 �
 
     :::image type="content" source="./media/vision-solution-troubleshooting/module-page-inline.png" alt-text="模块页的屏幕截图。" lightbox= "./media/vision-solution-troubleshooting/module-page.png":::
 
-1. 向下滚动到“属性”。 “正在运行”和“日志记录”属性目前处于不活动状态。
+1. 向下滚动到“属性”
+1. 查找“TelemetryInterval”并将其替换为“TelemetryIntervalNeuralNetworkMs” 
 
-    :::image type="content" source="./media/vision-solution-troubleshooting/module-identity-twin-inline.png" alt-text="“模块标识孪生”属性的屏幕截图。" lightbox= "./media/vision-solution-troubleshooting/module-identity-twin.png":::
+    :::image type="content" source="./media/vision-solution-troubleshooting/module-identity-twin-inline-02.png" alt-text="“模块标识孪生”属性的屏幕截图。" lightbox= "./media/vision-solution-troubleshooting/module-identity-twin.png":::
 
-1. 根据需要更新 TelemetryIntervalNeuralNetworkMs 值，然后选择“保存”图标。
+1. 将 TelemetryIntervalNeuralNetworkMs 值更新为所需的值
+
+1. 选择“保存”图标。
 
 ## <a name="view-device-rtsp-video-stream"></a>查看设备 RTSP 视频流
 

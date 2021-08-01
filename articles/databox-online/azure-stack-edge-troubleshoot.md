@@ -1,23 +1,23 @@
 ---
-title: 使用 Azure 门户排查 Azure Stack Edge Pro 问题 | Microsoft Docs
-description: 了解如何排查 Azure Stack Edge Pro 问题。 您可以运行诊断、收集支持信息并使用日志进行故障排除。
+title: 在 Microsoft Azure 门户中排查 Azure Stack Edge Pro FPGA 问题
+description: 了解如何排查 Azure Stack Edge Pro FPGA 问题。 你可以运行诊断、收集支持信息并使用日志进行故障排除。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 02/05/2021
+ms.date: 06/08/2021
 ms.author: alkohli
-ms.openlocfilehash: ff6d1f46299875354a72a6a93a828df7960169ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4f98e37d16e78e7fdb5578cf5747c34054c0fcd6
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831530"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111986171"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>排查 Azure Stack Edge Pro 问题
+# <a name="troubleshoot-your-azure-stack-edge-pro-fpga-issues"></a>排查 Azure Stack Edge Pro FPGA 问题
 
-本文介绍如何排查 Azure Stack Edge Pro 问题。 
+本文介绍如何排查 Azure Stack Edge Pro FPGA 问题。 
 
 在本文中，学习如何：
 
@@ -66,7 +66,7 @@ ms.locfileid: "99831530"
 
       ![连接到共享内容并查看](media/azure-stack-edge-troubleshoot/troubleshoot-logs-1.png)
 
-2. 选择 _Microsoft Azure Stack Edge Pro 文件夹_。 此文件夹包含两个子文件夹：
+2. 选择 _Microsoft Azure Stack Edge 文件夹_。 此文件夹包含两个子文件夹：
 
     * Upload 文件夹：包含上传错误的日志文件。
     * Refresh 文件夹：包含刷新期间发生的错误。

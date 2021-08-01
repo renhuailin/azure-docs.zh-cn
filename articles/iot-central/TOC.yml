@@ -8,6 +8,8 @@
       href: core/overview-iot-central-tour.md
     - name: 最新更新
       items:
+        - name: 2021 年 5 月新增功能和更新的功能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-may-2021/'
         - name: 2021 年 4 月新增功能和更新的功能
           href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-april-2021/'
         - name: 2021 年 3 月新增功能和更新的功能
@@ -45,12 +47,10 @@
   items:
     - name: 1. 创建新应用程序
       href: core/quick-deploy-iot-central.md
-    - name: 2. 添加模拟设备
-      href: core/quick-create-simulated-device.md
-    - name: 3. 配置管理规则和操作
+    - name: 2. 配置管理规则和操作
       href: core/quick-configure-rules.md
-    - name: 4. 监视设备
-      href: core/quick-monitor-devices.md
+    - name: 3. 导出数据
+      href: core/quick-export-data.md
 - name: 教程
   items:
     - name: 开发和连接设备
@@ -60,7 +60,7 @@
         - name: 创建网关设备模板
           href: core/tutorial-define-gateway-device-type.md
         - name: 连接 IoT Edge 设备
-          href: core/tutorial-add-edge-as-leaf-device.md
+          href: /learn/modules/connect-iot-edge-device-to-iot-central
     - name: 生成集成的解决方案
       items:
         - name: 创建设备组
@@ -197,10 +197,10 @@
       href: core/concepts-best-practices.md
 - name: 操作指南
   items:
+    - name: 创建应用程序
+      href: core/howto-create-iot-central-application.md
     - name: 开发和连接设备
       items:
-        - name: 创建应用程序
-          href: core/howto-create-iot-central-application.md
         - name: 设置设备模板
           href: core/howto-set-up-template.md
         - name: 编辑设备模板
@@ -216,21 +216,19 @@
         - name: 通过 IoT Edge 透明网关连接设备
           href: core/how-to-connect-iot-edge-transparent-gateway.md
         - name: 准备和连接 Azure Sphere DevKit
-          href: core/howto-connect-sphere.md
+          href: /azure-sphere/app-development/setup-iot-central
         - name: 准备和连接 RuuviTag 设备
           href: core/howto-connect-ruuvi.md
         - name: 准备和连接 Rigado Cascade 500
           href: core/howto-connect-rigado-cascade-500.md
     - name: 生成集成的解决方案
       items:
-        - name: 向仪表板添加磁贴
-          href: core/howto-add-tiles-to-your-dashboard.md
+        - name: 创建仪表板
+          href: core/howto-manage-dashboards.md
+        - name: 使用位置数据
+          href: core/howto-use-location-data.md
         - name: 配置规则
           href: core/howto-configure-rules.md
-        - name: 根据规则创建 Webhook
-          href: core/howto-create-webhooks.md
-        - name: 根据规则连接 Azure Monitor 操作组
-          href: core/howto-use-action-groups.md
         - name: 分析设备数据
           href: core/howto-create-analytics.md
         - name: 将数据导出到云目标
@@ -259,60 +257,42 @@
           href: core/howto-manage-users-roles-with-rest-api.md
         - name: 控制设备
           href: core/howto-control-devices-with-rest-api.md
+        - name: 管理作业
+          href: core/howto-manage-jobs-with-rest-api.md
     - name: 管理设备
       items:
-        - name: 添加和删除设备
-          href: core/howto-manage-devices.md
-        - name: 运行作业
-          href: core/howto-run-a-job.md
-        - name: 从 IoT 中心移动设备
-          href: core/how-to-move-device-to-iot.md
+        - name: 单独管理设备
+          href: core/howto-manage-devices-individually.md
+        - name: 批量管理设备
+          href: core/howto-manage-devices-in-bulk.md
     - name: 管理解决方案
       items:
         - name: 管理应用程序设置
           href: core/howto-administer.md
         - name: 管理用户和角色
           href: core/howto-manage-users-roles.md
-        - name: 管理帐单
-          href: core/howto-view-bill.md
         - name: 自定义应用程序 UI
           href: core/howto-customize-ui.md
-        - name: 导出应用程序
-          href: core/howto-use-app-templates.md
         - name: 将 V2 迁移到 V3 应用程序
           href: core/howto-migrate.md
-        - name: 监视应用程序运行状况
-          href: core/howto-monitor-application-health.md
-        - name: 关于你的应用程序
-          href: core/howto-get-app-info.md
         - name: 配置和使用文件上传
           href: core/howto-configure-file-uploads.md
-        - name: 滚动 X.509 证书
-          href: core/how-to-roll-x509-certificates.md
-        - name: 从 Azure 门户进行管理
+        - name: 在 Azure 门户中管理和监视
           href: core/howto-manage-iot-central-from-portal.md
-        - name: 从 Azure CLI 进行管理
+        - name: 从命令行管理
           href: core/howto-manage-iot-central-from-cli.md
-        - name: 从 Azure PowerShell 进行管理
-          href: core/howto-manage-iot-central-from-powershell.md
-        - name: 以编程方式管理
-          href: core/howto-manage-iot-central-programmatically.md
         - name: 从云解决方案提供商门户进行管理
           href: core/howto-create-and-manage-applications-csp.md
-    - name: 个性化设置解决方案
-      items:
-        - name: 创建个人仪表板
-          href: core/howto-create-personal-dashboards.md
-        - name: 管理个人首选项
-          href: core/howto-manage-preferences.md
-        - name: 切换实时聊天
-          href: core/howto-show-hide-chat.md
     - name: 疑难解答
       items:
         - name: 设备连接
           href: core/troubleshoot-connection.md
     - name: 常见问题解答
       href: core/howto-faq.md
+    - name: 管理个人首选项
+      href: core/howto-manage-preferences.md
+    - name: 切换实时聊天
+      href: core/howto-show-hide-chat.md
 - name: 参考
   items:
     - name: Azure CLI

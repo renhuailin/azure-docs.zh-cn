@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 2dbf7c31e6b0b40fa9dc2d59e86c0ecc731657e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a8c7584b91b59aa7d807dd8b57f5a9ea3fb5a13d
+ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172403"
+ms.lasthandoff: 05/11/2021
+ms.locfileid: "109754544"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions 部署槽
 
@@ -20,9 +20,6 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
 - 流量重定向是无缝的；不会因为交换而丢弃任何请求。
 - 如果交换期间某个函数正在运行，则执行将会继续，后续触发器将路由到交换的应用实例。
-
-> [!NOTE]
-> 槽目前不适用于 Linux 消耗计划。
 
 ## <a name="why-use-slots"></a>为何要使用槽？
 
@@ -127,7 +124,7 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
 ## <a name="add-a-slot"></a>添加槽
 
-可以通过 [CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create) 或门户添加槽。 以下步骤演示如何在门户中创建新槽：
+可以通过 [CLI](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_create) 或门户添加槽。 以下步骤演示如何在门户中创建新槽：
 
 1. 导航到函数应用。
 
@@ -141,7 +138,7 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
 ## <a name="swap-slots"></a>交换槽
 
-可以通过 [CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap) 或门户交换槽。 以下步骤演示如何在门户中交换槽：
+可以通过 [CLI](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_swap) 或门户交换槽。 以下步骤演示如何在门户中交换槽：
 
 1. 导航到函数应用。
 1. 选择“部署槽”，然后选择“交换”。
@@ -160,7 +157,7 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
 ## <a name="remove-a-slot"></a>删除槽
 
-可以通过 [CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete) 或门户删除槽。 以下步骤演示如何在门户中删除槽：
+可以通过 [CLI](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_delete) 或门户删除槽。 以下步骤演示如何在门户中删除槽：
 
 1. 在函数应用中导航到“部署槽”，然后选择槽名称。
 
@@ -182,11 +179,11 @@ Azure Functions 部署槽使函数应用能够运行不同的实例（称作“�
 
 使用 [Azure CLI](/cli/azure/functionapp/deployment/slot) 可以针对槽自动执行以下操作：
 
-- [create](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create)
-- [delete](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete)
-- [list](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-list)
-- [swap](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap)
-- [auto-swap](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-auto-swap)
+- [create](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_create)
+- [delete](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_delete)
+- [list](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_list)
+- [swap](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_swap)
+- [auto-swap](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_auto_swap)
 
 ## <a name="change-app-service-plan"></a>更改应用服务计划
 
@@ -215,7 +212,7 @@ Azure Functions 部署槽存在以下限制：
 
 - 应用可用的槽数取决于计划。 消耗计划仅允许一个部署槽。 在应用服务计划中运行的应用可以使用更多的槽。
 - 交换某个槽会重置其 `AzureWebJobsSecretStorageType` 应用设置等于 `files` 的应用的密钥。
-- 槽不适用于 Linux 消耗计划。
+- 启用槽后，Functions 应用在门户中设置为只读模式。
 
 ## <a name="support-levels"></a>支持级别
 
@@ -229,7 +226,7 @@ Azure Functions 部署槽存在以下限制：
 | Windows 消耗计划       | 正式版 |
 | Windows 高级计划           | 正式版  |
 | Windows 专用计划         | 正式版 |
-| Linux 消耗计划         | 不支持          |
+| Linux 消耗计划         | 预览          |
 | Linux 高级计划             | 正式版  |
 | Linux 专用计划           | 正式版 |
 

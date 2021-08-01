@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
-ms.openlocfilehash: 8f38ed175241bdb9235795d7a999a82d0799d46d
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 8f35e0fcf369616e5e95ce41554370e2bb7b604d
+ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107876555"
+ms.lasthandoff: 05/08/2021
+ms.locfileid: "109632630"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -52,6 +52,10 @@ ms.locfileid: "107876555"
 ## <a name="release-notes"></a>发行说明
 
 ### <a name="v2-builds"></a>v2 版本
+
+### <a name="240"></a><a id="2.4.0"></a>2.4.0
+* 添加了对可分区且分区键定义为 /partitionKey 的租约集合的支持。 在此更改前，租约集合的分区键必须定义为 /id。
+* 此版本允许将租约集合与 Gremlin API 结合使用，因为 Gremlin 集合无法将分区键定义为 /id。
 
 ### <a name="232"></a><a id="2.3.2"></a>2.3.2
 * 添加了与启用热迁移路径的 V3 SDK 的租用存储兼容性。 应用程序可以迁移到 V3 SDK 再迁移回更改源处理器库，而不会丢失任何状态。
@@ -199,6 +203,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月** 之前发出通知，以便�
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.4.0](#2.4.0) |2021 年 5 月 6 日 |--- |
 | [2.3.2](#2.3.2) |2020 年 8 月 11 日 |--- |
 | [2.3.1](#2.3.1) |2020 年 7 月 30 日 |--- |
 | [2.3.0](#2.3.0) |2020 年 4 月 2 日 |--- |

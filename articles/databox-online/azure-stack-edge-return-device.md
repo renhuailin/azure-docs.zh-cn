@@ -1,6 +1,6 @@
 ---
-title: 退回 Azure Stack Edge Pro 设备 | Microsoft Docs
-description: 了解如何擦除数据并退回 Azure Stack Edge Pro 设备，然后删除与设备相关的资源。
+title: Azure Stack Edge 设备退回
+description: 了解如何擦除数据并退回 Azure Stack Edge 设备，然后删除与设备相关的资源。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: alkohli
-ms.openlocfilehash: cb11d7d3b2da9ab793cb18814e4021ea7afeb806
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ab087747bbc6ee9edcb072223c2edf3465ba4cba
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443584"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110460541"
 ---
-# <a name="return-your-azure-stack-edge-pro-device"></a>退回 Azure Stack Edge Pro 设备
+# <a name="return-your-azure-stack-edge-device"></a>退回 Azure Stack Edge 设备
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-本文介绍如何擦除数据，然后退回 Azure Stack Edge Pro 设备。 退回设备后，还可以删除与设备关联的资源。
+本文介绍如何擦除数据，然后退回 Azure Stack Edge 设备。 退回设备后，还可以删除与设备关联的资源。
 
 在本文中，学习如何：
 
@@ -50,7 +50,7 @@ ms.locfileid: "102443584"
 
 若要开始退回过程，请执行以下步骤。
 
-1. 在 Azure 门户中转到 Azure Stack Edge Pro/Data Box Gateway 资源。 在“概述”中，转到右窗格中的命令栏并选择“退回设备” 。 
+1. 在 Azure 门户中转到 Azure Stack Edge/Data Box Gateway 资源。 在“概述”中，转到右窗格中的命令栏并选择“退回设备” 。 
 
     ![退回设备 1](media/azure-stack-edge-return-device/return-device-1.png)  
 
@@ -81,11 +81,11 @@ ms.locfileid: "102443584"
 
     ![退回设备 4](media/azure-stack-edge-return-device/return-device-4.png) 
 
-6. 捕获设备返回详细信息后，可通过电子邮件通知 Azure Stack Edge Pro 运营团队。 你可使用电子邮件应用程序（假设已安装并配置电子邮件应用程序）。 还可复制数据来创建和发送电子邮件。
+6. 捕获设备退回详细信息后，可通过电子邮件通知 Azure Stack Edge 运营团队。 你可使用电子邮件应用程序（假设已安装并配置电子邮件应用程序）。 还可复制数据来创建和发送电子邮件。
 
     ![退回设备 5](media/azure-stack-edge-return-device/return-device-5.png) 
 
-7. Azure Stack Edge Pro 运营团队收到电子邮件后，他们将向你发送反向装运标签。 当你收到此标签时，你可以与承运商一起安排设备取件。 
+7. Azure Stack Edge 运营团队收到电子邮件后，他们将向你发送反向装运标签。 当你收到此标签时，你可以与承运商一起安排设备取件。 
 
 ## <a name="schedule-a-pickup"></a>安排取件
 
@@ -102,20 +102,20 @@ ms.locfileid: "102443584"
     2. 在通话中，引用反向装运跟踪号码，如打印的标签上所示。
     3. 如果未引用跟踪号码，UPS 将在取件时要求你支付额外费用。
 
-    如果不安排取件，也可以在最近的卸货位置放置 Azure Stack Edge Pro。
+    如果不安排取件，也可以在最近的卸货位置放置 Azure Stack Edge。
 
 ## <a name="delete-the-resource"></a>删除资源
 
 在 Azure 数据中心接收到设备后，会检查设备是否损坏或是否有任何篡改迹象。
 
-- 如果设备到达时完好无损，则该资源的计费指示器将停止。 Azure Stack Edge Pro 运营团队将与你联系，以确认设备已退回。 然后，你可以在 Azure 门户中删除与该设备关联的资源。
+- 如果设备到达时完好无损，则该资源的计费指示器将停止。 Azure Stack Edge 运营团队将与你联系，确认设备已退回。 然后，你可以在 Azure 门户中删除与该设备关联的资源。
 - 如果设备严重损坏，可能会收取罚款。 有关详细信息，请参阅[有关设备丢失或损坏的 FAQ](https://azure.microsoft.com/pricing/details/databox/edge/) 和[产品服务条款](https://www.microsoft.com/licensing/product-licensing/products)。  
 
 
 可以在以下时段从 Azure 门户删除设备：
 
 - 在你下订单之后但在 Microsoft 准备好设备之前。
-- 你将设备退回 Microsoft 并且 Azure Stack Edge Pro 运营团队已致电确认设备已退回之后。 直到退回的设备通过 Azure 数据中心的物理检查，运营团队才会致电。
+- 将设备退回 Microsoft 并且 Azure Stack Edge 运营团队已致电确认设备已退回之后。 直到退回的设备通过 Azure 数据中心的物理检查，运营团队才会致电。
 
 如果你已针对其他订阅或位置激活了设备，Microsoft 将在一个工作日内将你的订单转移到新的订阅或位置。 移动订单后，可以删除此资源。
 
@@ -135,4 +135,4 @@ ms.locfileid: "102443584"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[更换 Azure Stack Edge Pro 设备](azure-stack-edge-replace-device.md)。
+- 了解如何[更换 Azure Stack Edge 设备](azure-stack-edge-replace-device.md)。

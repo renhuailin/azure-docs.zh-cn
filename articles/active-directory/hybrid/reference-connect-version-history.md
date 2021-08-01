@@ -12,12 +12,12 @@ ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d36836bf0a0803573f930b0f352a6179be962f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f6093413fb2f82a009288903ced191dcd56cfc44
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451471"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984889"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发行历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -90,12 +90,13 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
    - 添加了新的默认同步规则，用于限制组写回（Out to AD - 组写回成员限制）和组同步到 Azure Active Directory（Out to ADD - 组补写成员限制）组中的成员身份计数。
    - 将成员属性添加到“Out to AD - Group SOAInAAD - Exchange”规则，以将写回组中的成员限制为 50 k
  - 更新了同步规则以支持组写回 v2 - 如果克隆了“In from AAD - Group SOAInAAD”规则并升级 AADConnect。
-     -默认情况下，将禁用更新的规则，因此 targetWritebackType 将为 null。
+     - 默认情况下，会禁用更新的规则，因此 targetWritebackType 将为 null。
      - AADConnect 将写回所有云组（包括为写回启用的 Azure Active Directory 安全组）作为分发组。
    -如果克隆了“Out to AD - Group SOAInAAD”规则并升级 AADConnect。
      - 默认情况下，将禁用更新的规则。 但是，会启用添加的新同步规则“Out to AD - Group SOAInAAD - Exchange”。
      - 根据克隆的自定义同步规则的优先级，AADConnect 将遵循 Mail 和 Exchange 属性。
      - 如果克隆的自定义同步规则不遵循某些 Mail 和 Exchange 属性，则“新建 Exchange 同步规则”将添加这些属性。
+     - 请注意，Group Writeback V2 目前以个人预览版提供，未正式发布。
  - 添加了对[选择性密码哈希同步](./how-to-connect-selective-password-hash-synchronization.md)的支持
  - 添加了新的[单对象同步 cmdlet](./how-to-connect-single-object-sync.md)。 使用此 cmdlet 对 Azure AD Connect 同步配置进行故障排除。 
  -  Azure AD Connect 现在支持用于配置服务的混合标识管理员角色。

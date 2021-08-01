@@ -1,18 +1,18 @@
 ---
 title: 公司工作帐户和合作伙伴中心
-description: 如何检查你的公司是否在 Microsoft 设置了工作帐户，如何创建新的工作帐户或设置多个工作帐户与合作伙伴中心配合使用。
+description: 如何检查你的公司是否在 Microsoft 设置了工作帐户，如何创建新的工作帐户或设置多个工作帐户与合作伙伴中心（Azure 市场）配合使用。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
-ms.date: 05/30/2019
-ms.openlocfilehash: c4433572f503ca086b88e6e42600fff623f34a11
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 06/08/2021
+ms.openlocfilehash: d40bce42d687f546b5944a845ce8f7963e1c1258
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133198"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111981974"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>公司工作帐户和合作伙伴中心
 
@@ -23,6 +23,7 @@ ms.locfileid: "108133198"
 如果公司已订阅 Microsoft 云服务（如 Azure、Microsoft Intune 或 Microsoft 365），那么你已有可与合作伙伴中心一起使用的工作电子邮件帐户域（也称为 Azure Active Directory 租户）。
 
 请按照以下步骤检查：
+
 1. 登录到 Azure 管理门户 (https://portal.azure.com )。
 2. 从左侧导航菜单中选择“Azure Active Directory”，然后选择“自定义域名” 。
 3. 如果你已有工作帐户，门户将列出你的域名。
@@ -38,11 +39,11 @@ ms.locfileid: "108133198"
 按照以下步骤为公司创建新工作帐户。 最好向具有公司 Microsoft Azure 帐户管理权限的人员请求帮助。
 
 1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)。
-2. 从左侧导航菜单中，选择“Azure Active Directory” -> “用户” 。
-3. 选择“新建用户”，输入名称和电子邮件地址来创建新 Azure 工作帐户。 确保将“目录角色”设置为“用户”，然后选择底部的“显示密码”复选框来查看并记下自动生成的密码  。
-4. 选择“创建”，保存新用户。
+2. 从左侧导航菜单中，选择“Azure Active Directory” > “用户” 。
+3. 选择“新建用户”，输入名称和工作电子邮件地址来创建新 Azure 工作帐户。 确保根据用户要求来设置“目录角色”，然后选择底部的“显示密码”复选框来查看并记下自动生成的密码 。
+4. 填写其他必填字段，然后选择“创建”以保存新用户。 
 
-用户帐户的电子邮件地址必须是目录中已验证的域名。 可选择左侧导航菜单的“Azure Active Directory” -> “自定义域名”来列出所有已验证的域 。
+用户帐户的电子邮件地址必须是目录中已验证的域名。 可选择左侧导航菜单的“Azure Active Directory” > “自定义域名”来列出所有已验证的域 。
 
 要详细了解如何在 Azure Active Directory 中添加自定义域，请参阅[在 Azure AD 中添加或关联域](../active-directory/fundamentals/add-custom-domain.md)。
 
@@ -50,7 +51,7 @@ ms.locfileid: "108133198"
 
 如果在登录到工作帐户（也称为 Azure AD 租户）时遇到问题，请在下图中查找最符合自身情况的方案，然后执行建议的步骤。
 
-![工作帐户登录故障排除示意图](./media/manage-accounts/onboarding-aad-flow.png)
+[![工作帐户登录故障排除示意图](media/manage-accounts/onboarding-aad-flow.png)](media/manage-accounts/onboarding-aad-flow.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 

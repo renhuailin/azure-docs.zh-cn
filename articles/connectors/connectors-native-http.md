@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.date: 05/25/2021
 tags: connectors
-ms.openlocfilehash: 45c6945818016618252e69554c62391691d2fb6a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 10c946010fa3caba14130c3c7055c711323ad93c
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368849"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110498285"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>从 Azure 逻辑应用通过 HTTP 或 HTTPS 调用服务终结点
 
@@ -122,6 +122,82 @@ ms.locfileid: "110368849"
 | 500 | 内部服务器错误。 发生未知错误。 |
 |||
 
+<a name="single-tenant-authentication"></a>
+
+## <a name="authentication-for-single-tenant-environment"></a>单租户环境的身份验证
+
+如果你在单租户 Azure 逻辑应用中具有“逻辑应用(标准)”资源，并想要将 HTTP 操作用于以下任一身份验证类型，请确保完成相应身份验证类型的额外设置步骤。 否则，调用会失败。
+
+* [TSL/SSL 证书](#tsl-ssl-certificate-authentication)：添加应用设置 `WEBSITE_LOAD_ROOT_CERTIFICATES`，并为 TSL/SSL 证书提供指纹。
+
+* [客户端证书或凭据类型为“证书”的 Azure Active Directory 开放式身份验证 (Azure AD OAuth)](#client-certificate-authentication)：添加应用设置 `WEBSITE_LOAD_USER_PROFILE`，并将值设置为 `1`。
+
+<a name="tsl-ssl-certificate-authentication"></a>
+
+### <a name="tslssl-certificate-authentication"></a>TSL/SSL 证书身份验证
+
+1. 在逻辑应用资源的应用设置中，[添加或更新应用设置](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings) `WEBSITE_LOAD_ROOT_CERTIFICATES`。
+
+1. 对于设置值，请提供 TSL/SSL 证书的指纹作为受信任的根证书。
+
+   `"WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>"`
+
+例如，如果使用 Visual Studio Code，请执行以下步骤：
+
+1. 打开逻辑应用项目的 local.settings.json 文件。
+
+1. 在 `Values` JSON 对象中，添加或更新 `WEBSITE_LOAD_ROOT_CERTIFICATES` 设置：
+
+   ```json
+   {
+      "IsEncrypted": false,
+      "Values": {
+         <...>
+         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+         "WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>",
+         <...>
+      }
+   }
+   ```
+
+有关详细信息，请查看以下文档：
+
+* [在单租户 Azure 逻辑应用中编辑逻辑应用的主机和应用设置](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings)
+* [专用客户端证书 - Azure 应用服务](../app-service/environment/certificates.md#private-client-certificate)
+
+<a name="client-certificate-authentication"></a>
+
+### <a name="client-certificate-or-azure-ad-oauth-with-certificate-credential-type-authentication"></a>客户端证书或凭据类型为“证书”的 Azure AD OAuth 的身份验证
+
+1. 在逻辑应用资源的应用设置中，[添加或更新应用设置](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings) `WEBSITE_LOAD_USER_PROFILE`。
+
+1. 指定 `1` 作为设置值。
+
+   `"WEBSITE_LOAD_USER_PROFILE": "1"`
+
+例如，如果使用 Visual Studio Code，请执行以下步骤：
+
+1. 打开逻辑应用项目的 local.settings.json 文件。
+
+1. 在 `Values` JSON 对象中，添加或更新 `WEBSITE_LOAD_USER_PROFILE` 设置：
+
+   ```json
+   {
+      "IsEncrypted": false,
+      "Values": {
+         <...>
+         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+         "WEBSITE_LOAD_USER_PROFILE": "1",
+         <...>
+      }
+   }
+   ```
+
+有关详细信息，请查看以下文档：
+
+* [在单租户 Azure 逻辑应用中编辑逻辑应用的主机和应用设置](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings)
+* [专用客户端证书 - Azure 应用服务](../app-service/environment/certificates.md#private-client-certificate)
+
 ## <a name="content-with-multipartform-data-type"></a>具有多部分/表单数据类型的内容
 
 若要处理 HTTP 请求中具有 `multipart/form-data` 类型的内容，可以使用此格式向 HTTP 请求的正文添加包含 `$content-type` 和 `$multipart` 属性的 JSON 对象。
@@ -193,41 +269,6 @@ ms.locfileid: "110368849"
      ![“异步模式”设置](./media/connectors-native-http/asynchronous-pattern-setting.png)
 
 * HTTP 操作的基础 JavaScript 对象表示法 (JSON) 定义隐式遵循异步操作模式。
-
-<a name="tsl-ssl-certificate-authentication"></a>
-
-## <a name="tslssl-certificate-authentication"></a>TSL/SSL 证书身份验证
-
-如果你在单租户 Azure 逻辑应用中具有逻辑应用（标准版）资源，并且尝试使用 HTTP 操作和用于身份验证的 TSL/SSL 证书从工作流调用 HTTPS 终结点，则调用会失败，除非还完成以下步骤：
-
-1. 在逻辑应用资源的应用设置中，[添加或更新应用设置](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings) `WEBSITE_LOAD_ROOT_CERTIFICATES`。
-
-1. 对于设置值，请提供 TSL/SSL 证书的指纹作为受信任的根证书。
-
-   `"WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>"`
-
-例如，如果使用 Visual Studio Code，请执行以下步骤：
-
-1. 打开逻辑应用项目的 local.settings.json 文件。
-
-1. 在 `Values` JSON 对象中，添加或更新 `WEBSITE_LOAD_ROOT_CERTIFICATES` 设置：
-
-   ```json
-   {
-      "IsEncrypted": false,
-      "Values": {
-         <...>
-         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-         "WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>",
-         <...>
-      }
-   }
-   ```
-
-有关详细信息，请查看以下文档：
-
-* [在单租户 Azure 逻辑应用中编辑逻辑应用的主机和应用设置](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings)
-* [专用客户端证书 - Azure 应用服务](../app-service/environment/certificates.md#private-client-certificate)
 
 <a name="disable-asynchronous-operations"></a>
 

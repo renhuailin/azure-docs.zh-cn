@@ -3,12 +3,12 @@ title: 保护 Azure Service Fabric 群集
 description: 了解有关 Azure Service Fabric 群集的安全性方案，以及用于实现它们的各种技术。
 ms.topic: conceptual
 ms.date: 08/14/2018
-ms.openlocfilehash: 6f7bb785184938fe5c1e20e3c915b0112c7723ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: feeb6bf0844dc9f0d835d934b148484010979441
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96573062"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112034042"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 群集安全方案
 
@@ -30,9 +30,9 @@ Azure Service Fabric 群集是你拥有的资源。 保护群集以阻止未经�
 
 ### <a name="node-to-node-certificate-security"></a>节点到节点的证书安全性
 
-创建群集时，Service Fabric 将使用指定为节点类型配置一部分的 X.509 服务器证书。 本文末尾概述了这些证书是什么，以及如何获取或创建这些证书。
+创建群集时，Service Fabric 将使用指定为节点类型配置一部分的 X.509 服务器证书。 可以在通过 Azure 门户、Azure 资源管理器模板或独立的 JSON 模板来设置证书安全性。 本文末尾概述了这些证书是什么，以及如何获取或创建这些证书。
 
-证书安全性是在通过 Azure 门户、Azure 资源管理器模板或独立的 JSON 模板创建群集时配置的。 Service Fabric SDK 的默认行为是部署并安装距未来过期日期最远的证书；经典行为允许定义主要证书和次要证书，因此允许手动发起的变换，故不推荐将其用于新功能之上。 将要使用的距离未来到期日期最远的主证书应与为[客户端到节点安全性](#client-to-node-security)设置的管理员客户端和只读客户端证书不同。
+Service Fabric SDK 的默认行为是部署和安装距到期日期最长的证书。 主证书应不同于为[客户端到节点安全性](#client-to-node-security)设置的管理员客户端证书和只读客户端证书。 SDK 的经典行为允许定义主证书和辅助证书，从而允许手动启动的滚动更新；不建议对新功能使用经典行为。 
 
 若要了解如何在群集中为 Azure 设置证书安全性，请参阅[使用 Azure 资源管理器模板设置群集](service-fabric-cluster-creation-via-arm.md)。
 
@@ -67,11 +67,9 @@ Azure Service Fabric 群集是你拥有的资源。 保护群集以阻止未经�
 
 ### <a name="client-to-node-azure-active-directory-security-on-azure"></a>Azure 上客户端到节点的 Azure Active Directory 安全性
 
-通过 Azure AD，组织（称为租户）可管理用户对应用程序的访问。 应用程序分为采用基于 Web 的登录 UI 的应用程序和采用本地客户端体验的应用程序。 如果尚未创建租户，请先阅读[如何获取 Azure Active Directory 租户][active-directory-howto-tenant]。
+通过 Azure Active Directory (Azure AD)，组织（称为租户）可管理用户对应用程序的访问。 应用程序分为采用基于 Web 的登录 UI 的应用程序和采用本地客户端体验的应用程序。 如果尚未创建租户，请先阅读[如何获取 Azure Active Directory 租户][active-directory-howto-tenant]。
 
-Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 的 [Service Fabric Explorer][service-fabric-visualizing-your-cluster] 和 [Visual Studio][service-fabric-manage-application-in-visual-studio]。 因此，需要创建两个 Azure AD 应用程序来控制对群集的访问：一个 Web 应用程序和一个本机应用程序。
-
-对在 Azure 上运行的群集，也可使用 Azure Active Directory (Azure AD) 来保护对管理终结点的访问。 若要了解如何创建所需的 Azure AD 项目以及如何在创建群集时填充项目，请参阅[设置 Azure AD 以对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
+对于在 Azure 上运行的群集，你还可使用 Azure AD 保护对管理终结点的访问。 Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 的 [Service Fabric Explorer][service-fabric-visualizing-your-cluster] 和 [Visual Studio][service-fabric-manage-application-in-visual-studio]。 因此，要控制对群集的访问，需要创建两个 Azure AD 应用程序：一个 Web 应用程序和一个本机应用程序。 若要了解如何创建所需的 Azure AD 项目以及如何在创建群集时填充项目，请参阅[设置 Azure AD 以对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
 
 ## <a name="security-recommendations"></a>安全建议
 

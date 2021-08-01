@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: beaeb0131a2c9b326d663f6fcbb8273a9b52b412
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 450dd67c272de8ee250f0af66522ab3be26f63e5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100961"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077205"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -291,7 +291,7 @@ Application Insights .NET SDK 使用 `DiagnosticSource` 和 `Activity` 收集和
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Java 中的遥测关联
 
-[Java 代理](./java-in-process-agent.md)以及 [Java SDK](../../azure-monitor/app/java-get-started.md) 2.0.0 或更高版本支持自动关联遥测。 对于所有在请求范围内发出的遥测（例如跟踪、异常、自定义事件），它会自动填充 `operation_id`。 对于通过 HTTP 进行的服务到服务调用，它还会传播关联标头（如前所述），前提是 [Java SDK 代理](../../azure-monitor/app/java-agent.md)已配置。
+[Java 代理](./java-in-process-agent.md) 支持自动关联遥测。 对于所有在请求范围内发出的遥测（例如跟踪、异常、自定义事件），它会自动填充 `operation_id`。 对于通过 HTTP 进行的服务到服务调用，它还会传播关联标头（如前所述），前提是 [Java SDK 代理](java-2x-agent.md)已配置。
 
 > [!NOTE]
 > Application Insights Java 代理自动收集 JMS、Kafka、Netty/Webflux 等的请求和依赖项。 对于 Java SDK，关联功能仅支持通过 Apache HttpClient 进行的调用。 该 SDK 不支持跨消息传送技术（例如，Kafka、RabbitMQ 和 Azure 服务总线）自动进行上下文传播。 

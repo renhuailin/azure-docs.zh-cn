@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
 ms.openlocfilehash: c6cdf2f6dada0aa4dea2f70f18237b7ee39e3ea1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91571283"
 ---
 # <a name="oracle-database-performance-on-azure-netapp-files-single-volumes"></a>Azure NetApp 文件单卷上的 Oracle 数据库性能
@@ -124,7 +124,7 @@ Oracle 参数如下：
 
 本部分介绍性能测量结果。
 
-### <a name="linux-knfs-client-vs-oracle-direct-nfs"></a>Linux kNFS 客户端与Oracle Direct NFS 的比较
+### <a name="linux-knfs-client-vs-oracle-direct-nfs"></a>Linux kNFS 客户端与 Oracle Direct NFS
 
 此方案在 Azure VM Standard_D32s_v3 (Intel E5-2673 v4 @ 2.30 GHz) 上运行。 75% 的工作负载为 SELECT，25% 为 UPDATE，大多为随机 I/O，数据库缓冲区命中率约为 7.5%。 
 
@@ -166,7 +166,7 @@ DNFS 可消耗的带宽要比 8 TB Azure NetApp 文件性能配额提供的带�
 
 #### <a name="sequential-io"></a>顺序 I/O  
 
-如下图所示，并非所有 I/O 都是随机性的，因为工作负载（例如，RMAN 备份或完整表扫描）需要尽可能多的带宽。  下图显示了使用前面所述的相同配置但将卷大小调整为 32 TiB 时，单个 Oracle DB 实例的吞吐量可以提升至 3900 MB/秒，这非常接近 Azure NetApp 文件卷的 32 TB 性能配额（128 MB/秒 * 32 = 4096 MB/秒）。
+如下图所示，并非所有 I/O 都是随机性的，例如，将 RMAN 备份或完整表扫描视为需要尽可能多的带宽的工作负载时。  下图显示了使用前面所述的相同配置但将卷大小调整为 32 TiB 时，单个 Oracle DB 实例的吞吐量可以提升至 3900 MB/秒，这非常接近 Azure NetApp 文件卷的 32 TB 性能配额（128 MB/秒 * 32 = 4096 MB/秒）。
 
 ![Oracle DNFS I/O](../media/azure-netapp-files/performance-oracle-dnfs-io.png)  
 

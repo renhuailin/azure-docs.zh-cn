@@ -4,10 +4,10 @@ description: 了解如何从 Teams 管理 Azure 实验室服务中的 VM 池。
 ms.topic: article
 ms.date: 10/07/2020
 ms.openlocfilehash: b838e0561bb48b20450e49aaef37baf3c9ecb4d0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "91946627"
 ---
 # <a name="manage-a-vm-pool-in-lab-services-from-teams"></a>从 Teams 管理实验室服务中的 VM 池
@@ -22,7 +22,7 @@ ms.locfileid: "91946627"
 
 在触发用户列表同步时，实验室容量（实验室中 VM 的数量）将会根据对团队成员身份的变化自动更新。 在添加新用户时将会创建新 VM，对于从团队中删除的用户，分配给该用户的 VM 也将会被删除。 有关详细信息，请参阅[如何在 Teams 中管理用户](how-to-manage-user-lists-within-teams.md)。 
 
-教师可以直接从“VM 池”选项卡继续访问学生 VM。并且教师可以从“虚拟机池”选项卡或通过单击“我的虚拟机”按钮（屏幕的右上角）来访问分配给他们自己的 VM 。 
+教师可以继续直接从“虚拟机池”选项卡访问学生虚拟机。教师可以从“虚拟机池”选项卡或通过单击“我的虚拟机”按钮（屏幕顶部/右上角）访问分配给自己的虚拟机。 
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/how-to-manage-vm-pool-with-teams/vm-pool.png" alt-text="VM 池":::

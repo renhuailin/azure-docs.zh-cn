@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 513f262f5d09cf56c4506a4f20c9aa41507c2abd
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 3fa167233c5afe7b50b2794f6c0fff5458e9acf7
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515271"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089049"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍了由 Azure Monitor 监视的不同应用程序和服务。 
@@ -26,13 +26,13 @@ ms.locfileid: "107515271"
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | 可扩展应用程序性能管理 (APM) 服务，用于监视任何平台上的实时 web 应用程序。 |
 | [容器见解](containers/container-insights-overview.md) | 监视部署到 Azure 容器实例或 Azure Kubernetes 服务 (AKS) 上托管的托管 Kubernetes 群集的容器工作负荷的性能。 |
-| [用于 Cosmos DB 的 Azure Monitor](insights/cosmosdb-insights-overview.md) | 提供了关于所有 Azure Cosmos DB 资源的整体性能、故障、容量和运行状况的统一交互式体验视图。 |
-| [用于网络的 Azure Monitor（预览版）](insights/network-insights-overview.md) | 提供所有网络资源的运行状况和指标的综合视图。 高级搜索功能通过便捷搜索网站名称，帮助你识别资源依赖关系，从而能够支持多种方案，比如识别用于托管网站的资源等。 |
-[用于资源组的 Azure Monitor（预览版）](insights/resource-group-insights.md) |  分类和诊断各资源出现的任何问题，同时提供有关资源组的运行状况和性能的整体上下文。 |
-| [用于存储的 Azure Monitor](insights/storage-insights-overview.md) | 通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 |
+| [Cosmos DB 见解](insights/cosmosdb-insights-overview.md) | 提供了关于所有 Azure Cosmos DB 资源的整体性能、故障、容量和运行状况的统一交互式体验视图。 |
+| [网络见解（预览版）](insights/network-insights-overview.md) | 提供所有网络资源的运行状况和指标的综合视图。 高级搜索功能通过便捷搜索网站名称，帮助你识别资源依赖关系，从而能够支持多种方案，比如识别用于托管网站的资源等。 |
+[资源组见解（预览版）](insights/resource-group-insights.md) |  分类和诊断各资源出现的任何问题，同时提供有关资源组的运行状况和性能的整体上下文。 |
+| [存储见解](insights/storage-insights-overview.md) | 通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 |
 | [VM 见解](vm/vminsights-overview.md) | 可以大规模监视 Azure 虚拟机 (VM) 和虚拟机规模集。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 |
-| [Key Vault 的 Azure Monitor（预览版）](./insights/key-vault-insights-overview.md) | 提供 Key Vault 请求、性能、失败和延迟的统一视图，在其中可以全面监视密钥保管库。 |
-| [适用于 Azure Cache for Redis 的 Azure Monitor（预览版）](insights/redis-cache-insights-overview.md) |  提供有关整体性能、故障、容量和运行状况的统一交互式视图。 |
+| [Key Vault 见解（预览版）](./insights/key-vault-insights-overview.md) | 提供 Key Vault 请求、性能、失败和延迟的统一视图，在其中可以全面监视密钥保管库。 |
+| [Azure Cache for Redis 见解（预览版）](insights/redis-cache-insights-overview.md) |  提供有关整体性能、故障、容量和运行状况的统一交互式视图。 |
 
 
 ### <a name="core-solutions"></a>核心解决方案
@@ -174,7 +174,7 @@ ms.locfileid: "107515271"
 
 若要详细了解每个代理可收集的数据，请参阅 [Azure Monitor 代理概述](agents/agents-overview.md)。
 
-| 代理 |  指标 | 日志 |
+| Agent |  指标 | 日志 |
 |:---|:---|:---|:---|
 | [Azure Monitor 代理（预览版）](agents/azure-monitor-agent-overview.md) | 是 | 是 |
 | [Log Analytics 代理](agents/log-analytics-agent.md) | 否 | 是|

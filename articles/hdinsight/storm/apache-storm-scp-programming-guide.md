@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
 ms.openlocfilehash: c993b3f70f609fb79c51ba9be08fa3d5dc7e8317
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104864102"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Storm 的 SCP 编程指南
@@ -69,7 +69,7 @@ SCP 插件是独立应用程序。 它们可以在开发期间在 Visual Studio 
 
 ### <a name="iscpplugin"></a>ISCPPlugin
 
-ISCPPlugin 是许多插件的通用接口。目前，该接口是虚拟接口。
+ISCPPlugin 是许多插件的通用接口。目前，它是一个虚拟接口。
 
 ```csharp
 public interface ISCPPlugin
@@ -395,7 +395,7 @@ public interface ILocalContext
 
 #### <a name="regular-mode"></a>常规模式
 
-在此模式下，Storm Java 进程运行 SCP 插件。下面是一个示例：
+在这种模式下，Storm Java 进程运行 SCP 插件。下面是一个例子：
 
 ```csharp
 namespace Scp.App.HelloWorld
@@ -690,7 +690,7 @@ public interface ICustomizedInteropJavaDeserializer {
 
 以下 HelloWorld 示例是简单的 SCP.NET 示例。 它使用非事务性拓扑，带有一个名为 generator 的 Spout，以及两个分别名为 splitter 和 counter 的 Bolt。 generator Spout 会随机生成一些句子，并将这些句子发出到 splitter。 splitter Bolt 会将句子拆分为字词，并将这些字词发出到 counter Bolt。 counter Bolt 使用字典记录每个字词的出现次数。
 
-此示例有两个规范文件：HelloWorld.spec 和 HelloWorld\_EnableAck.spec。通过从 Java 端获取 `pluginConf` 对象，C# 代码可以确定是否启用了确认。
+此示例有两个规范文件：HelloWorld.spec 和 HelloWorld\_EnableAck.spec。C# 代码可以通过从 Java 端获取 `pluginConf` 对象来确定是否启用了确认。
 
 ```csharp
 /* demo how to get pluginConf info */

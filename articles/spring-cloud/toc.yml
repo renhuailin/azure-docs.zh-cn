@@ -25,10 +25,15 @@
           href: quickstart-logs-metrics-tracing.md
         - name: 与 Azure Database for MySQL 集成
           href: quickstart-integrate-azure-database-mysql.md
-        - name: 设置
-          items:
-            - name: 使用 ARM 模板进行预配
-              href: quickstart-deploy-infrastructure-vnet.md
+    - name: 设置
+      expanded: true
+      items:
+        - name: 使用 ARM 模板进行预配
+          href: quickstart-deploy-infrastructure-vnet.md
+        - name: 使用 Azure CLI 进行预配
+          href: quickstart-deploy-infrastructure-vnet-azure-cli.md
+        - name: 使用 Terraform 进行预配
+          href: quickstart-deploy-infrastructure-vnet-terraform.md
 - name: 教程
   items:
     - name: 警报和操作组
@@ -149,16 +154,6 @@
           href: how-to-enable-end-to-end-tls.md
         - name: 访问 Config Server 和服务注册表
           href: how-to-access-data-plane-azure-ad-rbac.md
-    - name: 集成
-      items:
-        - name: 将应用绑定到 Azure CosmosDB
-          href: how-to-bind-cosmos.md
-        - name: 将应用绑定到 Azure Cache for Redis
-          href: how-to-bind-redis.md
-        - name: 将应用绑定到 Azure MySQL
-          href: how-to-bind-mysql.md
-        - name: 与 Azure 负载均衡解决方案集成
-          href: how-to-integrate-azure-load-balancers.md
     - name: 自动化
       items:
         - name: 使用 Azure DevOps 进行 CI/CD

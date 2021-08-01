@@ -10,5 +10,5 @@
   href: ./kubernetes/overview.md
 - name: 已启用 Arc 的数据服务（预览）>
   href: ./data/overview.md
-- name: 已启用 Arc 的 SQL Server（预览）>
+- name: 已启用 Azure Arc 的服务器上的 SQL Server（预览版）>
   href: 'https://docs.microsoft.com/sql/sql-server/azure-arc/overview'

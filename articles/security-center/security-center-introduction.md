@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: fb505c42cda53db549cd5187972ad6fabfdf7ca4
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b700cd6a9b17abcd86cfb31b1d2c65fefe226d79
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137086"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237395"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 
@@ -64,11 +64,11 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 了解并确保工作负荷的安全性是保障安全的基础，并且要从拥有量身定制的适当安全策略开始。 由于安全中心的所有策略都是基于 Azure Policy 控制构建的，因此你将获得世界级策略解决方案的全方位服务和灵活性。 在安全中心中，可以将策略设置为在管理组上、订阅中以及甚至为整个租户运行。
 
-:::image type="content" source="./media/security-center-intro/sc-dashboard.png" alt-text="策略管理页":::
+:::image type="content" source="./media/security-center-intro/sc-dashboard.png" alt-text="策略管理页。":::
 
 安全中心可以帮助识别影子 IT 订阅。 通过在仪表板中查看标记为“未涵盖”的订阅，可以立即知道新订阅创建的时间并确保策略已涵盖了这些订阅以及确保它们受到 Azure 安全中心的保护。
 
-:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="安全中心策略仪表板":::
+:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="安全中心策略仪表板。":::
 
 ### <a name="continuous-assessments"></a>持续评估
 
@@ -76,13 +76,13 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 为了帮助你了解每个建议对整体安全状况的重要程度，安全中心将建议分组到安全控件中，并向每个控件添加“安全分数”值。 这一点在你设置安全工作的优先级时至关重要。
 
-:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="安全中心安全分数":::
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="安全中心安全功能分数。":::
 
 ### <a name="network-map"></a>网络映射
 
 安全中心提供用于持续监视网络安全状态的强大工具之一是网络映射。 通过映射可以查看工作负荷的拓扑，从而可以查看是否已正确配置了每个节点。 可以看到节点的连接方式，这有助于阻止不必要的连接，这些连接可能使攻击者更容易沿网络爬行。
 
-:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="安全中心网络映射":::
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="安全中心网络映射。":::
 
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>通过配置建议的控制来优化和提高安全性
@@ -93,7 +93,7 @@ Azure 安全中心的值的核心在于其建议。 这些建议是针对在工�
 
 这些建议有助于降低每个资源的攻击面。 其中包括 Azure 虚拟机、非 Azure 服务器和 Azure PaaS 服务（如 SQL 和存储帐户等），其中每种类型的资源都以不同的方式被评估并且具有自己的标准。
 
-:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="安全中心建议示例":::
+:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="安全中心建议示例。":::
 
 ## <a name="protect-against-threats"></a>防范威胁
 

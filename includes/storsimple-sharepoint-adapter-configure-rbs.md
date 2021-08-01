@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 45b2ac73ffcb4b777572f9ad62d8aae0e8277e1c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f7d69d1bf2bd0c1f3b6b8a3a67a788155f30d73
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95559384"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108746885"
 ---
 > [!NOTE]
 > 更改适用于 StorSimple Adapter for SharePoint RBS 配置时，必须使用属于“域管理员”组的用户帐户登录。 此外，必须从浏览器（在管理中心所在的同一台主机上运行）访问配置页。
@@ -32,7 +32,7 @@ ms.locfileid: "95559384"
    3. 单击每个要配置为进行远程存储的内容数据库下方的 **“启用”** 按钮。
       
       > [!NOTE]
-      > BLOB 存储必须由所有 Web 前端 (WFE) 服务器共享和访问，为 SharePoint 服务器场配置的用户帐户必须有权访问该共享。
+      > BLOB 存储必须由所有 Web 前端 (WFE) 服务器共享和访问，为 SharePoint Server 场配置的用户帐户必须有权访问该共享。
       
       ![启用 RBS 提供程序](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS2-include.png)
       

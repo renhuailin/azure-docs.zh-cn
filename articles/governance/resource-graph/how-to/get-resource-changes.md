@@ -3,12 +3,12 @@ title: 获取资源更改
 description: 了解如何查找资源的更改时间，获取已更改属性的列表以及评估差异。
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 500a2d58c5fc9e1b63a544978c4b583eba60a63e
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 103ebf0303ee2b8613ccafd13d9c8916ed7e1fbc
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219070"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108751600"
 ---
 # <a name="get-resource-changes"></a>获取资源更改
 
@@ -41,7 +41,7 @@ resourceChanges 终结点接受请求正文中的以下参数：
 
 - resourceId \[必需\]：要在其上查找更改的 Azure 资源。
 - interval \[必需\]：具有使用“祖鲁语时区 (Z)”检查更改事件的 start 和 end 日期的属性。
-- fetchPropertyChanges（可选）：一个布尔值属性，设置响应对象是否包括属性更改。
+- fetchPropertyChanges（可选）：一个布尔属性，设置响应对象是否包括属性更改。
 
 示例请求正文：
 
@@ -147,7 +147,7 @@ resourceId 的每个检测到的更改事件都具有以下属性：
 - changeType - 描述已针对 beforeSnapshot 和 afterSnapshot 之间的完整更改记录检测到的更改的类型。 值为：Create、Update 和 Delete。   仅当 changeType 为 Update 时，才包括 propertyChanges 属性数组。
 
   > [!IMPORTANT]
-  > Create 只能在过去 14 天内已存在并已删除的资源上可用。
+  > Create 仅可用于以前存在并且在过去 14 天内删除的资源。
 
 - propertyChanges - 此属性数组提供了 beforeSnapshot 和 afterSnapshot 之间已更新的所有资源属性的详细信息：
   - propertyName - 已更改的资源属性的名称。

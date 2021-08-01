@@ -1,31 +1,30 @@
 ---
 title: 将 HBase 群集迁移到新版本 - Azure HDInsight
-description: 如何将 Apache HBase 群集迁移到 Azure HDInsight 中的较新版本。
+description: 了解如何将 Azure HDInsight 中的 Apache HBase 群集迁移到较新版本。
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 01/02/2020
-ms.openlocfilehash: 24a0c09ba78c668dab017ec80adda19f59d89a4f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
-ms.translationtype: MT
+ms.date: 05/06/2021
+ms.openlocfilehash: 1d6f2d66a00601334a9cab4695b4e78c77a67917
+ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942974"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109654773"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>将 Apache HBase 群集迁移到新版本
 
-本文介绍如何通过必要步骤将 Azure HDInsight 上的 Apache HBase 群集更新为新版本。
+本文介绍如何将 Azure HDInsight 上的 Apache HBase 群集更新为新版本。
 
-升级造成的停机时间应该很短，以分钟计。 停机是执行刷新所有内存中数据的步骤，然后在新群集上配置和重启服务造成的。 根据节点数目、数据量和其他变数，结果会有所不同。
+仅当你为源群集和目标群集使用相同的 Microsoft Azure 存储帐户时，本文才适用。 若要为目标群集使用新的或不同的存储帐户进行升级，请参阅[使用新的存储帐户将 Apache HBase 迁移到新版本](apache-hbase-migrate-new-version-new-storage-account.md)。
+
+升级时，停机时间应该只有几分钟。 停机是刷新所有内存中数据的步骤造成的，用于在新群集上配置和重启服务。 根据节点数目、数据量和其他变数，结果会有所不同。
 
 ## <a name="review-apache-hbase-compatibility"></a>检查 Apache HBase 兼容性
 
-在升级 Apache HBase 之前，请确保源群集和目标群集上的 HBase 版本兼容。 有关详细信息，请参阅 [HDInsight 提供的 Apache Hadoop 组件和版本](../hdinsight-component-versioning.md)。
+在升级 Apache HBase 之前，请确保源群集和目标群集上的 HBase 版本兼容。 查看 [HBase 参考指南](https://hbase.apache.org/book.html#upgrading)中的 HBase 版本兼容性对照表和发行说明，以确保应用程序与新版本兼容。
 
-> [!NOTE]  
-> 我们强烈建议查看 [HBase 书册](https://hbase.apache.org/book.html#upgrading)中的版本兼容性矩阵。 HBase 版本发行说明中应会阐述任何重大的不兼容性。
-
-下面是一个示例性的版本兼容性对照表。 Y 表示兼容，N 表示可能不兼容：
+下面是兼容性对照表的示例。 Y 表示兼容，N 表示可能不兼容：
 
 | 兼容性类型 | 主版本| 次版本 | 修补程序 |
 | --- | --- | --- | --- |
@@ -41,210 +40,182 @@ ms.locfileid: "98942974"
 | 依赖项兼容性 | N | Y | Y |
 | 操作兼容性 | N | N | Y |
 
-## <a name="upgrade-with-same-apache-hbase-major-version"></a>使用相同的 Apache HBase 主版本升级
+有关 HDInsight 版本和兼容性的详细信息，请参阅 [Azure HDInsight 版本](../hdinsight-component-versioning.md)。
 
-若要升级 Azure HDInsight 上的 Apache HBase 群集，请完成以下步骤：
+## <a name="apache-hbase-cluster-migration-overview"></a>Apache HBase 群集迁移概述
 
-1. 请确保应用程序与新版本兼容，如 HBase 兼容性矩阵和发行说明中所述。 在运行 HDInsight 和 HBase 目标版本的群集中测试应用程序。
+若要升级 Azure HDInsight 上的 Apache HBase 群集，请完成以下基础步骤。 有关详细说明，请参阅详细步骤和命令。
 
-1. 使用相同的存储帐户、不同的容器名称[设置新的目标 HDInsight 群集](../hdinsight-hadoop-provision-linux-clusters.md)：
+准备源群集：
+1. 停止数据引入。
+1. 刷新 memstore 数据。
+1. 从 Ambari 停止 HBase。
+1. 对于具有加速写入的群集，请备份“Write Ahead Log (WAL)”目录。
 
-   ![使用相同的存储帐户，但创建不同的容器](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
+准备目标群集：
+1. 创建目标群集。
+1. 从 Ambari 停止 HBase。
+1. 在 HDFS 服务配置中更新 `fs.defaultFS` 以引用原始源群集容器。
+1. 对于具有加速写入的群集，在 HBase 服务配置中更新 `hbase.rootdir` 以引用原始源群集容器。
+1. 清理 Zookeeper 数据。
 
-1. 刷新源 HBase 群集，即正在升级的群集。 HBase 将传入的数据写入名为 _memstore_ 的内存中存储。 memstore 达到特定的大小后，HBase 会将其刷新到群集存储帐户中用作长期存储的磁盘中。 删除旧群集时，将回收 memstores，这可能会丢失数据。 若要将每个表的 memstore 手动刷新到磁盘，请运行以下脚本。 Azure 的 [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh) 中提供了此脚本的最新版本。
+完成迁移：
+1. 清理并迁移 WAL。
+1. 将应用程序从目标群集的默认容器复制到原始源容器。
+1. 从 Ambari 目标群集启动所有服务。
+1. 验证 HBase。
+1. 准备源群集。
 
-    ```bash
-    #!/bin/bash
-    
-    #-------------------------------------------------------------------------------#
-    # SCRIPT TO FLUSH ALL HBASE TABLES.
-    #-------------------------------------------------------------------------------#
-    
-    LIST_OF_TABLES=/tmp/tables.txt
-    HBASE_SCRIPT=/tmp/hbase_script.txt
-    TARGET_HOST=$1
-    
-    usage ()
-    {
-        if [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]
-        then
-            cat << ...
-    
-    Usage: 
-    
-    $0 [hostname]
-    
-    Providing hostname is optional and not required when the script is executed within HDInsight cluster with access to 'hbase shell'.
-    
-    However hostname should be provided when executing the script as a script-action from HDInsight portal.
-    
-    For Example:
-    
-        1.  Executing script inside HDInsight cluster (where 'hbase shell' is 
-            accessible):
-    
-            $0 
-    
-            [No need to provide hostname]
-    
-        2.  Executing script from HDinsight Azure portal:
-    
-            Provide Script URL.
-    
-            Provide hostname as a parameter (i.e. hn0, hn1, hn2.. or wn2 etc.).
-    ...
-            exit
-        fi
-    }
-    
-    validate_machine ()
-    {
-        THIS_HOST=`hostname`
-    
-        if [[ ! -z "$TARGET_HOST" ]] && [[ $THIS_HOST  != $TARGET_HOST* ]]
-        then
-            echo "[INFO] This machine '$THIS_HOST' is not the right machine ($TARGET_HOST) to execute the script."
-            exit 0
-        fi
-    }
-    
-    get_tables_list ()
-    {
-    hbase shell << ... > $LIST_OF_TABLES 2> /dev/null
-        list
-        exit
-    ...
-    }
-    
-    add_table_for_flush ()
-    {
-        TABLE_NAME=$1
-        echo "[INFO] Adding table '$TABLE_NAME' to flush list..."
-        cat << ... >> $HBASE_SCRIPT
-            flush '$TABLE_NAME'
-    ...
-    }
-    
-    clean_up ()
-    {
-        rm -f $LIST_OF_TABLES
-        rm -f $HBASE_SCRIPT
-    }
-    
-    ########
-    # MAIN #
-    ########
-    
-    usage $1
-    
-    validate_machine
-    
-    clean_up
-    
-    get_tables_list
-    
-    START=false
-    
-    while read LINE 
-    do 
-        if [[ $LINE == TABLE ]] 
-        then
-            START=true
-            continue
-        elif [[ $LINE == *row*in*seconds ]]
-        then
-            break
-        elif [[ $START == true ]]
-        then
-            add_table_for_flush $LINE
-        fi
-    
-    done < $LIST_OF_TABLES
-    
-    cat $HBASE_SCRIPT
-    
-    hbase shell $HBASE_SCRIPT << ... 2> /dev/null
-    exit
-    ...
-    
-    ```
+## <a name="detailed-migration-steps-and-commands"></a>详细的迁移步骤和命令
 
-1. 停止引入到旧 HBase 群集。
+使用这些详细步骤和命令迁移 Apache HBase 群集。
 
-1. 为确保刷新 memstore 中的所有最新数据，请再次运行前面的脚本。
+### <a name="prepare-the-source-cluster"></a>准备源群集
 
-1. 登录到旧群集上的 [Apache Ambari](https://ambari.apache.org/) (`https://OLDCLUSTERNAME.azurehdidnsight.net`) 并停止 HBase 服务。 当系统提示你确认想要停止这些服务时，请选中为 HBase 启用维护模式的框。 有关连接和使用 Ambari 的详细信息，请参阅[使用 Ambari Web UI 管理 HDInsight 群集](../hdinsight-hadoop-manage-ambari.md)。
-
-    ![在 Ambari 中的“服务操作”下，单击“服务”>“HBase”>“停止”](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
-
-    ![选中“为 HBase 启用维护模式”复选框，然后确认](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
-
-1. 如果不使用带增强写入功能的 HBase 群集，请跳过此步骤。 带增强写入功能的 HBase 群集才需要它。
-
-   通过从原始群集的任何 zookeeper 节点或工作器节点上的 ssh 会话运行以下命令，在 HDFS 下备份 WAL 目录。
+1. 停止引入到源 HBase 群集。
+   
+1. 刷新要升级的源 HBase 群集。
+   
+   HBase 将传入的数据写入名为“memstore”的内存中存储。 memstore 达到特定的大小后，HBase 会将其刷新到群集存储帐户中用作长期存储的磁盘中。 升级后删除源群集也会删除 memstore 中的任何数据。 若要保留数据，在升级之前，请手动将每个表的 memstore 刷新到磁盘。
+   
+   可以从 [Azure hbase-utils GitHub 存储库](https://github.com/Azure/hbase-utils/)运行 [flush_all_tables.sh](https://github.com/Azure/hbase-utils/blob/master/scripts/flush_all_tables.sh) 脚本来刷新 memstore 数据。
+   
+   还可以从 HDInsight 群集运行以下 HBase shell 命令来刷新 memstore 数据：
    
    ```bash
-   hdfs dfs -mkdir /hbase-wal-backup**
-   hdfs dfs -cp hdfs://mycluster/hbasewal /hbase-wal-backup**
+   hbase shell
+   flush "<table-name>"
    ```
-    
-1. 在新 HDInsight 群集上登录到 Ambari。 将 `fs.defaultFS` HDFS 设置更改为指向原始群集所用的容器名称。 此设置位于“HDFS”>“配置”>“高级”>“高级 core-site”下。
+   
+1. 在源群集 (`https://<OLDCLUSTERNAME>.azurehdinsight.net`) 上登录 [Apache Ambari](https://ambari.apache.org/)，然后停止 HBase 服务。
+   
+1. 在弹出确认提示时，选中方框以打开 HBase 的维护模式。
+   
+   有关连接和使用 Ambari 的详细信息，请参阅[使用 Ambari Web UI 管理 HDInsight 群集](../hdinsight-hadoop-manage-ambari.md)。
+   
+1. 如果源 HBase 群集没有[加速写入](apache-hbase-accelerated-writes.md)功能，请跳过此步骤。 对于具有加速写入的源 HBase 群集，从源群集的任何 Zookeeper 节点或工作器节点上的 SSH 会话运行以下命令，从而备份 HDFS 下的 WAL 目录。
+   
+   ```bash
+   hdfs dfs -mkdir /hbase-wal-backup
+   hdfs dfs -cp hdfs://mycluster/hbasewal /hbase-wal-backup
+   ```
+   
+### <a name="prepare-the-destination-cluster"></a>准备目标群集
 
-   ![在 Ambari 中单击“服务”>“HDFS”>“配置”>“停止”](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+1. 在 Microsoft Azure 门户中，使用与源群集相同的存储帐户 [设置新的目标 HDInsight 群集](../hdinsight-hadoop-provision-linux-clusters.md)，但使用不同的容器名称：
 
-   ![在 Ambari 中更改容器名称](./media/apache-hbase-migrate-new-version/change-container-name.png)
-
-1. 如果不使用带增强写入功能的 HBase 群集，请跳过此步骤。 带增强写入功能的 HBase 群集才需要它。
-
-   将 `hbase.rootdir` 路径改为指向原始群集的容器。
-
-   ![在 Ambari 中更改 HBase rootdir 的容器名称](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
-    
-1. 如果不使用带增强写入功能的 HBase 群集，请跳过此步骤。 只有带增强写入功能的 HBase 群集才需要它，并且只有在原始群集是带增强写入功能的 HBase 群集的情况下才需要它。
-
-   清除此新群集的 zookeeper 和 WAL FS 数据。 在任何 zookeeper 节点或工作器节点中发出以下命令：
-
+   
+1. 在新群集 (`https://<NEWCLUSTERNAME>.azurehdinsight.net`) 上登录 [Apache Ambari](https://ambari.apache.org/)，然后停止 HBase 服务。
+   
+1. 在“Services（服务）” > “HDFS” > “Configs（配置）” > “Advanced（高级）” > “Advanced core-site（高级核心站点）”下，将 `fs.defaultFS` HDFS 设置更改为指向原始源群集容器名称。 例如，以下屏幕截图中的设置应更改为 `wasbs://hbase-upgrade-old-2021-03-22`。
+   
+   :::image type="content" source="./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png" alt-text="在 Ambari 中，选择“Services（服务）”>“HDFS”>“Configs（配置）”>“Advanced（高级）”>“Advanced core-site（高级核心站点）”，并更改容器名称。" border="false":::
+   
+1. 如果目标群集具有加速写入功能，请更改 `hbase.rootdir` 路径以指向原始源群集容器名称。 例如，以下路径应更改为 `hbase-upgrade-old-2021-03-22`。 如果群集没有加速写入，请跳过此步骤。
+   
+   :::image type="content" source="./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png" alt-text="在 Ambari 中更改 HBase rootdir 的容器名称。" border="true":::
+   
+1. 在任何 Zookeeper 节点或工作器节点中运行以下命令，从而清除目标群集上的 Zookeeper 数据：
+   
    ```bash
    hbase zkcli
    rmr /hbase-unsecure
    quit
+   ```
+   
+### <a name="clean-and-migrate-wal"></a>清理并迁移 WAL
 
-   hdfs dfs -rm -r hdfs://mycluster/hbasewal**
+根据源 HDI 版本以及源群集和目标群集是否具有加速写入运行以下命令。
+
+- 目标群集始终是 HDI 版本 4.0，因为 HDI 3.6 为 Microsoft Azure 基本支持，不建议用于新群集。
+- HDFS 复制命令为 `hdfs dfs <copy properties starting with -D> -cp <source> <destination> # Serial execution`。
+
+> [!NOTE]  
+> - 存储类型 WASB 的 `<source-container-fullpath>` 为 `wasbs://<source-container-name>@<storageaccountname>.blob.core.windows.net`。
+> - 存储类型 Azure Data Lake Storage Gen2 的 `<source-container-fullpath>` 为 `abfs://<source-container-name>@<storageaccountname>.dfs.core.windows.net`。
+
+- [源群集为 HDI 3.6 且具有加速写入，目标群集具有加速写入](#the-source-cluster-is-hdi-36-or-hdi-40-with-accelerated-writes-and-the-destination-cluster-has-accelerated-writes)。
+- [源群集为 HDI 3.6 且不具有加速写入，目标群集具有加速写入](#the-source-cluster-is-hdi-36-without-accelerated-writes-and-the-destination-cluster-has-accelerated-writes)。
+- [源群集为 HDI 3.6 且不具有加速写入，目标群集不具有加速写入](#the-source-cluster-is-hdi-36-without-accelerated-writes-and-the-destination-cluster-doesnt-have-accelerated-writes)。
+- [源群集为 HDI 4.0 且具有加速写入，目标群集具有加速写入](#the-source-cluster-is-hdi-36-or-hdi-40-with-accelerated-writes-and-the-destination-cluster-has-accelerated-writes)。
+- [源群集为 HDI 4.0 且不具有加速写入，目标群集具有加速写入](#the-source-cluster-is-hdi-40-without-accelerated-writes-and-the-destination-cluster-has-accelerated-writes)。
+- [源群集为 HDI 4.0 且不具有加速写入，目标群集不具有加速写入](#the-source-cluster-is-hdi-40-without-accelerated-writes-and-the-destination-cluster-doesnt-have-accelerated-writes)。
+
+#### <a name="the-source-cluster-is-hdi-36-or-hdi-40-with-accelerated-writes-and-the-destination-cluster-has-accelerated-writes"></a>源群集为 HDI 3.6 或 HDI 4.0 且具有加速写入，目标群集具有加速写入
+
+清理目标群集的 WAL FS 数据，并将 WAL 目录从源群集复制到目标群集的 HDFS 中。 通过在任何 Zookeeper 节点或工作器节点中运行以下命令来复制目录：
+
+```bash   
+sudo -u hbase hdfs dfs -rm -r hdfs://mycluster/hbasewal
+sudo -u hbase hdfs dfs -cp <source-container-fullpath>/hbase-wal-backup/hbasewal hdfs://mycluster/
+```
+#### <a name="the-source-cluster-is-hdi-36-without-accelerated-writes-and-the-destination-cluster-has-accelerated-writes"></a>源群集为 HDI 3.6 且不具有加速写入，目标群集具有加速写入
+
+清理目标群集的 WAL FS 数据，并将 WAL 目录从源群集复制到目标群集的 HDFS 中。 通过在任何 Zookeeper 节点或工作器节点中运行以下命令来复制目录：
+
+```bash
+sudo -u hbase hdfs dfs -rm -r hdfs://mycluster/hbasewal
+sudo -u hbase hdfs dfs -Dfs.azure.page.blob.dir="/hbase/WALs,/hbase/MasterProcWALs,/hbase/oldWALs" -cp <source-container>/hbase/*WALs hdfs://mycluster/hbasewal
+```
+
+#### <a name="the-source-cluster-is-hdi-36-without-accelerated-writes-and-the-destination-cluster-doesnt-have-accelerated-writes"></a>源群集为 HDI 3.6 且不具有加速写入，目标群集不具有加速写入
+
+清理目标群集的 WAL FS 数据，并将源群集的 WAL 目录复制到目标群集的 HDFS 中。 通过在任何 Zookeeper 节点或工作器节点中运行以下命令来复制该目录：
+
+```bash
+sudo -u hbase hdfs dfs -rm -r /hbase-wals/*
+sudo -u hbase hdfs dfs -Dfs.azure.page.blob.dir="/hbase/WALs,/hbase/MasterProcWALs,/hbase/oldWALs" -cp <source-container-fullpath>/hbase/*WALs /hbase-wals
+```
+
+#### <a name="the-source-cluster-is-hdi-40-without-accelerated-writes-and-the-destination-cluster-has-accelerated-writes"></a>源群集为 HDI 4.0 且不具有加速写入，目标群集具有加速写入
+
+清理目标群集的 WAL FS 数据，并将 WAL 目录从源群集复制到目标群集的 HDFS 中。 通过在任何 Zookeeper 节点或工作器节点中运行以下命令来复制目录：
+
+```bash
+sudo -u hbase hdfs dfs -rm -r hdfs://mycluster/hbasewal
+sudo -u hbase hdfs dfs -cp <source-container-fullpath>/hbase-wals/* hdfs://mycluster/hbasewal
    ```
 
-1. 如果不使用带增强写入功能的 HBase 群集，请跳过此步骤。 带增强写入功能的 HBase 群集才需要它。
+#### <a name="the-source-cluster-is-hdi-40-without-accelerated-writes-and-the-destination-cluster-doesnt-have-accelerated-writes"></a>源群集为 HDI 4.0 且不具有加速写入，目标群集不具有加速写入
+
+清理目标群集的 WAL FS 数据，并将源群集的 WAL 目录复制到目标群集的 HDFS 中。 通过在任何 Zookeeper 节点或工作器节点中运行以下命令来复制该目录：
+
+```bash
+sudo -u hbase hdfs dfs -rm -r /hbase-wals/*
+sudo -u hbase hdfs dfs -Dfs.azure.page.blob.dir="/hbase-wals" -cp <source-container-fullpath>/hbase-wals /
+```
+
+### <a name="complete-the-migration"></a>完成迁移
+
+1. 使用 `sudo -u hdfs` 用户上下文，将文件夹 `/hdp/apps/<new-version-name>` 及其内容从 `<destination-container-fullpath>` 复制到 `<source-container-fullpath>` 下的 `/hdp/apps` 文件夹。 可以通过在目标群集上运行以下命令来复制文件夹：
    
-   通过新群集的任何 zookeeper 节点或工作器节点上的 ssh 会话，将 WAL 目录还原到新群集的 HDFS 中。
+   ```bash   
+   sudo -u hdfs hdfs dfs -cp /hdp/apps/<hdi-version> <source-container-fullpath>/hdp/apps
+   ```
    
+   例如：
    ```bash
-   hdfs dfs -cp /hbase-wal-backup/hbasewal hdfs://mycluster/**
+   sudo -u hdfs hdfs dfs -cp /hdp/apps/4.1.3.6 wasbs://hbase-upgrade-old-2021-03-22@hbaseupgrade.blob.core.windows.net/hdp/apps
    ```
    
-1. 如果要将 HDInsight 3.6 升级到4.0，请遵循以下步骤，否则请跳到步骤13：
-
-    1. 选择“服务” > “重启所有必需服务”，以便重启 Ambari 中的所有必需服务。
-    1. 停止 HBase 服务。
-    1. 通过 SSH 连接到 Zookeeper 节点，执行 [zkCli](https://github.com/go-zkcli/zkcli) 命令 `rmr /hbase-unsecure`，以便从 Zookeeper 中删除 HBase 根 znode。
-    1. 重启 HBase。
-
-1. 若要升级到 4.0 之外的任何其他 HDInsight 版本，请执行以下步骤：
-    1. 保存所做更改。
-    1. 根据 Ambari 中的指示重启全部所需的服务。
-
-1. 将应用程序指向新群集。
-
-    > [!NOTE]  
-    > 升级时，应用程序的静态 DNS 会更改。 不要硬编码此 DNS，可以在域名的 DNS 设置中配置一个指向群集名称的 CNAME。 另一种做法是使用应用程序的、无需重新部署即可更新的配置文件。
-
-1. 启动引入，确定一切是否按预期正常运行。
-
-1. 如果新群集符合预期，请删除原始群集。
+1. 在目标群集上保存更改，然后重启 Ambari 指示的所有所需服务。
+   
+1. 将应用程序指向目标群集。
+   
+   > [!NOTE]  
+   > 升级时，应用程序的静态 DNS 名称会更改。 请勿硬编码此 DNS 名称，可以在域名的 DNS 设置中配置一个指向群集名称的 CNAME。 另一种做法是使用应用程序的、无需重新部署即可更新的配置文件。
+   
+1. 开始引入。
+   
+1. 验证 HBase 一致性以及简单数据定义语言 (DDL) 和数据操作语言 (DML) 操作。
+   
+1. 如果目标群集没有问题，请删除源群集。
 
 ## <a name="next-steps"></a>后续步骤
 
 若要详细了解 [Apache HBase](https://hbase.apache.org/) 以及如何升级 HDInsight 群集，请参阅以下文章：
 
-* [将 HDInsight 群集升级到更新版本](../hdinsight-upgrade-cluster.md)
-* [使用 Apache Ambari Web UI 监视和管理 Azure HDInsight](../hdinsight-hadoop-manage-ambari.md)
-* [Apache Hadoop 组件和版本](../hdinsight-component-versioning.md)
-* [优化 Apache HBase](../optimize-hbase-ambari.md)
+- [将 HDInsight 群集升级到更新版本](../hdinsight-upgrade-cluster.md)
+- [使用 Apache Ambari Web UI 监视和管理 Azure HDInsight](../hdinsight-hadoop-manage-ambari.md)
+- [Azure HDInsight 版本](../hdinsight-component-versioning.md)
+- [优化 Apache HBase](../optimize-hbase-ambari.md)

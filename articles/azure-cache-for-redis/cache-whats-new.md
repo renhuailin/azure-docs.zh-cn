@@ -6,18 +6,18 @@ ms.service: cache
 ms.topic: reference
 ms.date: 09/28/2020
 ms.author: yegu
-ms.openlocfilehash: b30e83b89b25e6400b8c7e0419406631fa1edcd0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21ee51ac53147482210aa0bda410e11d12e5f479
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91492385"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413782"
 ---
 # <a name="whats-new-in-azure-cache-for-redis"></a>Azure Cache for Redis 的新增功能
 
 ## <a name="azure-tls-certificate-change"></a>Azure TLS 证书更改
 
-Microsoft 在将 Azure 服务更新为使用来自一组不同的证书颁发机构 (CA) 的 TLS 服务器证书。 这一更改从 2020 年 8 月 13 日至 2020 年 10 月 26 日（预计）分阶段推出。 Azure 正在进行此更改，因为[当前 CA 证书不符合某个 CA/浏览器论坛基线要求](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)。 此问题已于 2020 年 7 月 1 日报告，适用于全球多个热门公钥基础结构 (PKI) 提供商。 目前，Azure 服务使用的大多数 TLS 证书来自 Baltimore CyberTrust 根 PKI。 Azure Cache for Redis 服务将继续链接到 Baltimore CyberTrust 根。 不过从 2020 年 10 月 12 日开始，其 TLS 服务器证书将由新的中间证书颁发机构 (ICA) 颁发。
+Microsoft 在将 Azure 服务更新为使用来自一组不同的证书颁发机构 (CA) 的 TLS 服务器证书。 这一更改从 2020 年 8 月 13 日至 2020 年 10 月 26 日（预计）分阶段推出。 Azure 进行此更改是因为[当前 CA 证书不符合某个 CA/浏览器论坛基线要求](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)。 此问题已于 2020 年 7 月 1 日报告，适用于全球多个热门公钥基础结构 (PKI) 提供商。 目前，Azure 服务使用的大多数 TLS 证书来自 Baltimore CyberTrust 根 PKI。 Azure Cache for Redis 服务将继续链接到 Baltimore CyberTrust 根。 不过从 2020 年 10 月 12 日开始，其 TLS 服务器证书将由新的中间证书颁发机构 (ICA) 颁发。
 
 > [!NOTE]
 > 此更改仅限于公共 [Azure 区域](https://azure.microsoft.com/global-infrastructure/geographies/)中的服务。 它不包括主权（例如中国）云或政府云。
@@ -37,7 +37,9 @@ Microsoft 在将 Azure 服务更新为使用来自一组不同的证书颁发机
 
 ### <a name="what-actions-should-i-take"></a>我应该采取什么措施？
 
-如果你的应用程序使用操作系统证书存储或将 Baltimore 根固定在其他地方，则无需执行任何操作。 另一方面，如果你的应用程序需要固定任何中间或叶 TLS 证书，建议固定以下根：
+如果你的应用程序使用操作系统证书存储或将 Baltimore 根固定在其他地方，则无需执行任何操作。 
+
+如果应用程序固定任何中间或叶 TLS 证书，建议固定以下根：
 
 | 证书 | Thumbprint |
 | ----- | ----- |
@@ -50,7 +52,7 @@ Microsoft 在将 Azure 服务更新为使用来自一组不同的证书颁发机
 >
 >
 
-若要继续固定中间证书，请将以下内容添加到“固定的中间证书”列表中，该列表包含几个附加证书，以最大程度地减少将来更改：
+若要继续固定中间证书，请将以下内容添加到包含几个附加证书的“固定的中间证书”列表中，以最大程度地减少将来的更改：
 
 | CA 的公用名 | Thumbprint |
 | ----- | ----- |
@@ -61,8 +63,8 @@ Microsoft 在将 Azure 服务更新为使用来自一组不同的证书颁发机
 | [Microsoft Azure TLS 颁发 CA 05](https://www.microsoft.com/pkiops/certs/Microsoft%20Azure%20TLS%20Issuing%20CA%2005.cer) | 6c3af02e7f269aa73afd0eff2a88a4a1f04ed1e5 |
 | [Microsoft Azure TLS 颁发 CA 06](https://www.microsoft.com/pkiops/certs/Microsoft%20Azure%20TLS%20Issuing%20CA%2006.cer) | 30e01761ab97e59a06b41ef20af6f2de7ef4f7b0 |
 
-如果你的应用程序使用代码验证证书，你将需要修改它以识别新固定的证书的属性（例如颁发者、指纹）。 这一额外验证应覆盖所有固定的证书，以便更好地面向未来。
+如果应用程序使用代码来验证证书，则需修改代码以识别新固定的证书的属性（例如颁发者、指纹）。 这一额外验证应覆盖所有固定的证书，以便更好地面向未来。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果有其他问题，请通过[支持](https://azure.microsoft.com/support/options/)联系我们。  
+如果有更多问题，请通过[客户支持](https://azure.microsoft.com/support/options/)联系我们。  

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 1d5bcf9c04ad02eaf297f8971aa0f4ff599888c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c11a28fafc633879f22f0133b544fe99a8c4a72
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98942996"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110191748"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>在 HDInsight 上为 Apache HBase 和 Apache Phoenix 设置备份与复制
 
@@ -111,13 +111,13 @@ hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> --p
 
 `<destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>`
 
-* `<ZooKeeperQuorum>` 是逗号分隔的 Apache ZooKeeper 节点列表，例如：
+* `<ZooKeeperQuorum>` 是逗号分隔的 Apache ZooKeeper 节点 FQDN 名称列表，例如：
 
-    zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
+    \<zookeepername1>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,\<zookeepername2>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,\<zookeepername3>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
 * HDInsight 上的 `<Port>` 默认为 2181，`<ZnodeParent>` 为 `/hbase-unsecure`，因此，完整的 `<destinationAddress>` 是：
 
-    zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net:2181:/hbase-unsecure
+    \<zookeepername1>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,\<zookeepername2>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,\<zookeepername3>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net:2181:/hbase-unsecure
 
 请参阅本文中的[手动收集 Apache ZooKeeper 仲裁列表](#manually-collect-the-apache-zookeeper-quorum-list)，详细了解如何检索 HDInsight 群集的这些值。
 
@@ -145,7 +145,7 @@ curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterNam
 该 curl 命令检索包含 HBase 配置信息的 JSON 文档，而 grep 命令只返回“hbase.zookeeper.quorum”条目，例如：
 
 ```output
-"hbase.zookeeper.quorum" : "zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net"
+"hbase.zookeeper.quorum" : "<zookeepername1>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,<zookeepername2>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,<zookeepername3>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net"
 ```
 
 仲裁主机名称值为冒号右侧的整个字符串。
@@ -156,7 +156,7 @@ curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterNam
 curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/hosts/<zookeeperHostFullName>" | grep "ip"
 ```
 
-在此 curl 命令中，`<zookeeperHostFullName>` 是 ZooKeeper 主机的完整 DNS 名称，例如 `zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net`。 该命令的输出包含指定主机的 IP 地址，例如：
+在此 curl 命令中，`<zookeeperHostFullName>` 是 ZooKeeper 主机的完整 DNS 名称，例如 `<zookeepername1>.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net`。 该命令的输出包含指定主机的 IP 地址，例如：
 
 `100    "ip" : "10.0.0.9",`
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
-ms.openlocfilehash: 1214cfaa0d534edc47cdcadd98ab0a3ead4d2f46
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 856cef0da55b12e808565d25ffe2ac92db4762eb
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985627"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112238116"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-arm-template"></a>快速入门：使用 ARM 模板创建特定安全警报自动响应
 
@@ -23,7 +23,7 @@ ms.locfileid: "111985627"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.security%2fsecuritycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
+[![部署到 Azure。](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.security%2fsecuritycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -62,7 +62,7 @@ ms.locfileid: "111985627"
 
 - **门户**：
 
-  [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.security%2fsecuritycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
+  [![部署到 Azure。](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.security%2fsecuritycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
 
   若要查找有关此部署选项的详细信息，请参阅[使用部署按钮从 GitHub 存储库部署模板](../azure-resource-manager/templates/deploy-to-azure-button.md)。
 
@@ -73,7 +73,7 @@ ms.locfileid: "111985627"
 1. 在 [Azure 门户](https://portal.azure.com)中，打开“安全中心”。
 1. 在顶部菜单栏中，选择筛选器图标，然后选择在其上部署了新的工作流自动化的特定订阅。
 1. 从安全中心的侧边栏打开“工作流自动化”并查看新的自动化。
-    :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="已配置的自动化列表" lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
+    :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="已配置的自动化列表。" lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
     >[!TIP]
     > 如果订阅中有许多工作流自动化，则使用“按名称筛选”选项。
 
@@ -84,7 +84,7 @@ ms.locfileid: "111985627"
 1. 在 [Azure 门户](https://portal.azure.com)中，打开“安全中心”。
 1. 在顶部菜单栏中，选择筛选器图标，然后选择在其上部署了新的工作流自动化的特定订阅。
 1. 从安全中心的侧边栏打开“工作流自动化”并查找要删除的自动化。
-    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="删除工作流自动化的步骤" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
+    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="删除工作流自动化的步骤。" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. 选中要删除的项的复选框。
 1. 从工具栏中选择“删除”。
 

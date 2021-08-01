@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: rohinkoul
   ms.author: rohink
-  ms.date: 09/20/2019
-  ms.openlocfilehash: 7276b26944b7eeca90bdc74fa40507688d591c05
-  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.date: 07/07/2021
+  ms.openlocfilehash: 46aca1ee3209265c7a5749b91516feba9e354e44
+  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "108765267"
+  ms.lasthandoff: 07/10/2021
+  ms.locfileid: "113595986"
 landingContent:
 - title: 了解 Azure DNS
   linkLists:
@@ -23,6 +23,10 @@ landingContent:
     links:
     - text: 什么是 Azure DNS？
       url: dns-overview.md
+  - linkListType: learn
+    links:
+    - text: 在 Azure DNS 上托管域？
+      url: /learn/modules/host-domain-azure-dns/
 - title: 创建 Azure DNS 区域和记录
   linkLists:
   - linkListType: quickstart

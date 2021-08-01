@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2021
 ms.author: radeltch
 ms.openlocfilehash: 4947585b1f20b8142c51d9d7e28c6d8504b6d6d5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101669639"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>使用 Red Hat Enterprise Linux 上的 Azure NetApp 文件在 Azure VM 上部署具有备用节点的 SAP HANA 横向扩展系统 
@@ -143,7 +143,7 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
 
 4. 按照[将子网委派给 Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)中的说明所述，将子网委派给 Azure NetApp 文件。  
 
-5. 按照[为 Azure NetApp 文件创建 NFS 卷](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)中的说明部署 Azure NetApp 文件卷。  
+5. 按照[为 Azure NetApp 文件创建 NFS 卷](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)中的说明，部署 Azure NetApp 文件卷。  
 
    部署卷时，请务必选择“NFSv4.1”版本。 将卷部署在指定的 Azure NetApp 文件[子网](/rest/api/virtualnetwork/subnets)中。 将自动分配 Azure NetApp 卷的 IP 地址。 
    
@@ -167,7 +167,7 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
 - 所选的虚拟网络必须具有一个委派给 Azure NetApp 文件的子网。
 - Azure NetApp 文件卷的吞吐量取决于卷配额和服务级别，如 [Azure NetApp 文件的服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md)中所述。 调整 HANA Azure NetApp 卷的大小时，请确保生成的吞吐量满足 HANA 系统要求。  
 - 通过 Azure NetApp 文件[导出策略](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)，可以对允许的客户端、访问类型（读写、只读等）进行控制。 
-- Azure NetApp 文件功能尚没有区域感知性。 目前，该功能未在 Azure 区域中的所有可用性区域中部署。 请注意某些 Azure 区域的潜在延迟影响。  
+- Azure NetApp 文件功能尚没有区域感知性。 当前，该功能未部署在 Azure 区域中的所有可用性区域中。 请注意某些 Azure 区域的潜在延迟影响。  
 
 > [!IMPORTANT]
 > 对于 SAP HANA 工作负载，低延迟至关重要。 与 Microsoft 代表合作，确保虚拟机和 Azure NetApp 文件卷在邻近的地方部署。  
@@ -188,7 +188,7 @@ Azure NetApp 文件卷的吞吐量取决于卷大小和服务级别，如 [Azure
 
 为了符合数据和日志的 SAP 最低吞吐量要求以及 /hana/shared 准则，建议的大小为：
 
-| 数据量(Volume) | 大小<br>高级存储层 | 大小<br>超级存储层 | 支持的 NFS 协议 |
+| 音量 | 大小<br>高级存储层 | 大小<br>超级存储层 | 支持的 NFS 协议 |
 | --- | --- | --- | --- |
 | /hana/log/ | 4 TiB | 2 TiB | v4.1 |
 | /hana/data | 6.3 TiB | 3.2 TiB | v4.1 |
@@ -196,7 +196,7 @@ Azure NetApp 文件卷的吞吐量取决于卷大小和服务级别，如 [Azure
 
 本文中所述的使用 Azure NetApp 文件超高性能存储层的布局的 SAP HANA 配置为：
 
-| 数据量(Volume) | 大小<br>超级存储层 | 支持的 NFS 协议 |
+| 音量 | 大小<br>超级存储层 | 支持的 NFS 协议 |
 | --- | --- | --- |
 | /hana/log/mnt00001 | 2 TiB | v4.1 |
 | /hana/log/mnt00002 | 2 TiB | v4.1 |
@@ -584,7 +584,7 @@ Azure NetApp 文件卷的吞吐量取决于卷大小和服务级别，如 [Azure
      * 对于“选择系统使用情况/输入索引[4]”：输入 4（用于自定义）
      * 对于“数据卷的位置”[/hana/data/HN1]：按 Enter 接受默认值
      * 对于“日志卷的位置”[/hana/log/HN1]：按 Enter 接受默认值
-     * 对于“是否限制最大内存分配?” [n]：输入 n
+     * 对于“是否限制最大内存分配？” [n]：输入 n
      * 对于“主机 hanadb1 的证书主机名”[hanadb1]：按 Enter 接受默认值
      * 对于“主机 hanadb2 的证书主机名”[hanadb2]：按 Enter 接受默认值
      * 对于“主机 hanadb3 的证书主机名”[hanadb3]：按 Enter 接受默认值
@@ -714,8 +714,8 @@ Azure NetApp 文件卷的吞吐量取决于卷大小和服务级别，如 [Azure
 6. 若要为基础 Azure NetApp 文件存储优化 SAP HANA，请设置以下 SAP HANA 参数：
 
    - `max_parallel_io_requests` **128**
-   - `async_read_submit` **on**
-   - `async_write_submit_active` **on**
+   - `async_read_submit` on **on**
+   - `async_write_submit_active` on
    - `async_write_submit_blocks` **all**
 
    有关详细信息，请参阅 [NetApp SAP Applications on Microsoft Azure using Azure NetApp Files][anf-sap-applications-azure]（Microsoft Azure 上使用 Azure NetApp 文件的 NetApp SAP 应用程序）。 

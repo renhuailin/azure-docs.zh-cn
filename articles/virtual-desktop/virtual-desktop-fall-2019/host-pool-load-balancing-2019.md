@@ -1,26 +1,26 @@
 ---
-title: Windows 虚拟桌面（经典）主机池负载均衡 - Azure
-description: Windows 虚拟桌面环境的主机池负载均衡方法。
+title: Azure 虚拟桌面（经典）主机池负载均衡 - Azure
+description: Azure 虚拟桌面环境的主机池负载均衡方法。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 50f25422fb30f5d519acd70c632145d51454ed62
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: abd52941efc06b79a21e490e4e94f39a6e1d34be
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444422"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745036"
 ---
-# <a name="host-pool-load-balancing-methods-in-windows-virtual-desktop-classic"></a>Windows 虚拟桌面（经典）中的主机池负载均衡方法
+# <a name="host-pool-load-balancing-methods-in-azure-virtual-desktop-classic"></a>Azure 虚拟桌面（经典）中的主机池负载均衡方法
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../host-pool-load-balancing.md)。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[此文](../host-pool-load-balancing.md)。
 
-Windows 虚拟桌面支持两种负载均衡方法。 每种方法将确定在用户连接到主机池中的资源时，哪些会话主机将托管用户会话。
+Azure 虚拟桌面支持两种负载均衡方法。 每种方法将确定在用户连接到主机池中的资源时，哪些会话主机将托管用户会话。
 
-Windows 虚拟桌面提供以下负载均衡方法：
+Azure 虚拟桌面提供以下负载均衡方法：
 
 - 广度优先负载均衡允许你在主机池中的会话主机之间均匀分布用户会话。
 - 深度优先负载均衡可使用主机池中的用户会话让会话主机饱和。 第一个会话达到其会话限制阈值后，负载均衡器会将任何新用户连接定向到主机池中的下一个会话，直至会话主机达到限制，以此类推。

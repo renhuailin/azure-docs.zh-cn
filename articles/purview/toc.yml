@@ -89,15 +89,18 @@ items:
             items:
               - name: 管理数据源
                 href: manage-data-sources.md
-              - name: Purview 连接器概述
+              - name: Azure Purview 连接器
                 href: purview-connector-overview.md
               - name: Azure 多源
                 href: register-scan-azure-multiple-sources.md
-              - name: Azure Synapse Analytics（工作区）
+              - name: Azure Synapse Analytics 工作区
                 href: register-scan-synapse-workspace.md
               - name: Azure Blob 存储
                 href: register-scan-azure-blob-storage-source.md
-                displayName: Register and scan azure blob storage
+                displayName: Register and scan Azure Blob Storage
+              - name: Azure 文件
+                href: register-scan-azure-files-storage-source.md
+                displayName: Register and scan Azure Files
               - name: Azure Cosmos DB
                 href: register-scan-azure-cosmos-database.md
                 displayName: Register and scan Azure Cosmos DB
@@ -110,7 +113,7 @@ items:
               - name: Azure Data Lake Storage Gen 2
                 href: register-scan-adls-gen2.md
                 displayName: Register and scan Azure Data Lake Storage Gen 2 ADLS
-              - name: Azure SQL 数据库
+              - name: Azure SQL Database
                 href: register-scan-azure-sql-database.md
                 displayName: Register and scan Azure SQL DB
               - name: Azure SQL 数据库托管实例
@@ -170,6 +173,8 @@ items:
             href: how-to-lineage-powerbi.md
           - name: Spark 世系
             href: how-to-lineage-spark-atlas-connector.md
+          - name: SQL Server Integration Services 世系
+            href: how-to-lineage-sql-server-integration-services.md
       - name: 监视
         items:
           - name: 使用 Azure Monitor 进行监视

@@ -1,19 +1,19 @@
 ---
 title: 配置 Always-On VPN 用户隧道
 titleSuffix: Azure VPN Gateway
-description: 本文介绍如何为 VPN 网关配置 Always On VPN 用户隧道
+description: 了解如何为 VPN 网关配置 Always On VPN 用户隧道。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 04/29/2021
 ms.author: cherylmc
-ms.openlocfilehash: 99d21222a62ed6b27a6a1b2a73b704f4cb26457b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 59c12333c6cf8ea9d251ce6387e3dce4ff23468b
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89435790"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287313"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel"></a>配置 Always On VPN 用户隧道
 

@@ -1,26 +1,24 @@
 ---
 title: Edge Secured-Core 认证要求
-description: Edge Secured-core 认证计划要求
+description: Edge Secured-Core 认证要求
 author: cbroad
 ms.author: cbroad
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Edge Secured-core Certification Requirements
 ms.service: certification
-ms.openlocfilehash: c52a1fe215223d8aceca19f2f382a999f8b470de
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6a4e969c592e844164d2f031914740e24fdc8f99
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131704"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540259"
 ---
-# <a name="azure-certified-device---edge-secured-core-preview"></a>Azure 认证设备 - Edge Secured-core（预览版） #
-
-## <a name="edge-secured-core-certification-requirements"></a>Edge Secured-Core 认证要求 ##
+# <a name="edge-secured-core-certification-requirements-preview"></a>Edge Secured-Core 认证要求（预览版） #
 
 本文档概述了特定于设备的功能和要求，用户需要满足这些要求才能完成认证并在 Azure IoT 设备目录中列出带有 Edge Secured-core 标签的设备。
 
-### <a name="program-purpose"></a>计划用途 ###
+## <a name="program-purpose"></a>计划用途 ##
 Edge Secured-core 是 Azure 认证设备计划中的增量认证，面向运行完整操作系统（如 Linux 或 Windows 10 IoT）的 IoT 设备。该计划使设备合作伙伴能够通过满足一组额外的安全标准来区分其设备。 满足此标准的设备可实现以下承诺：
 1. 基于硬件的设备标识 
 2. 可以强制实施系统完整性 
@@ -28,7 +26,7 @@ Edge Secured-core 是 Azure 认证设备计划中的增量认证，面向运行�
 4. 提供静态数据保护
 5. 提供传输中的数据保护
 6. 内置安全代理和强化
-### <a name="requirements"></a>要求 ###
+## <a name="requirements"></a>要求 ##
 
 ---
 |名称|SecuredCore.Built-in.Security|

@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: 9e2dcace673a1c7215634434f9e89ddc6b953a63
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: f8d0871f07168e0d7a2fbda90df4209ab7e5a28e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834563"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111748492"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用自适应应用程序控制来减少计算机的攻击面
 
@@ -217,7 +217,7 @@ ms.locfileid: "107834563"
 
 ## <a name="manage-application-controls-via-the-rest-api"></a>通过 REST API 管理应用程序控制 
 
-要以编程方式管理自适应应用程序控制，请使用我们的 REST API。 
+若要以编程方式管理自适应应用程序控制，请使用我们的 REST API。 
 
 [安全中心 API 文档的“自适应应用程序控制”部分](/rest/api/securitycenter/adaptiveapplicationcontrols)提供了相关的 API 文档。
 

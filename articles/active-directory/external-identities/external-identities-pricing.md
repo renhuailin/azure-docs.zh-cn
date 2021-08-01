@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 09/21/2020
+ms.date: 05/24/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 983a803245467145a0b1161a4495e8045759e7ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86a055bade77f92912134a295f7576e545fe7124
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92442059"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110467142"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Azure AD External Identities 的计费模型
 
@@ -38,8 +38,8 @@ Azure Active Directory (Azure AD) External Identities 定价基于月度活跃�
 ## <a name="about-monthly-active-users-mau-billing"></a>关于月度活跃用户 (MAU) 计费
 
 在 Azure AD 租户中，将根据在日历月内具有身份验证活动的唯一来宾用户计数对来宾用户协作使用量进行计费。 此模型将替换 1:5 比率计费模型，该模型允许租户中的每个 Azure AD Premium 许可证最多 5 个来宾用户。 当你的租户链接到订阅时，如果使用 External Identities 功能与来宾用户协作，则将使用基于 MAU 的计费模型自动计费。
-  
-应用于来宾用户的定价层基于分配给 Azure AD 租户的最高定价层。 例如，如果你的租户中的最高定价层是 Azure AD Premium P1，则 Premium P1 定价层还应用于你的来宾用户。 如果最高定价是 Azure AD Free，则当你尝试为来宾用户使用高级功能时，系统会要求你升级到高级定价层。
+
+应用于来宾用户的定价层基于分配给 Azure AD 租户的最高定价层。 有关详细信息，请参阅 [Azure Active Directory 外部标识定价](https://azure.microsoft.com/en-us/pricing/details/active-directory/external-identities/)。
 
 ## <a name="link-your-azure-ad-tenant-to-a-subscription"></a>将 Azure AD 租户关联到订阅
 
@@ -64,7 +64,9 @@ Azure Active Directory (Azure AD) External Identities 定价基于月度活跃�
 7. 在“关联订阅”窗格中，选择一个 **订阅** 和一个 **资源组**。 然后，选择“应用”。
 
    > [!NOTE]
-   > 如果未列出任何订阅，可以[将订阅关联到租户](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。 或者，可以通过选择“如果你还没有订阅，可以在此处创建一个订阅”链接来添加新订阅。
+   >
+   > * Premium P1 和 Premium P2 功能每月免费提供前 50,000 个 MAU。 为了确定 MAU 的总数，我们合并了关联到同一订阅的所有租户（Azure AD 和 Azure AD B2C）的 MAU。
+    >* 如果未列出任何订阅，可以[将订阅关联到租户](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。 或者，可以通过选择“如果你还没有订阅，可以在此处创建一个订阅”链接来添加新订阅。
 
     ![选择一个订阅和一个资源组](media/external-identities-pricing/link-subscription-resource.png)
 

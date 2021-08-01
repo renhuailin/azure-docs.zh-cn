@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: lagayhar
-ms.openlocfilehash: 114245030ba2356861b83a580f103d3b84c0eae3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b30c98bbaf7f7806feecdbccd2c8736d431943c
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100607489"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854335"
 ---
 # <a name="grid-visualizations"></a>网格可视化效果
 
@@ -137,7 +137,7 @@ requests
 
 ![列设置的屏幕截图，其中以红色框突出显示了“自定义列宽”字段](./media/workbooks-grid-visualizations/custom-column-width-setting.png)
 
-如果该字段保留图中的黑色文本，则将根据列中的字符数和可见列数自动确定宽度。 默认单位为“ch”（字符）。
+如果该字段留空，则会根据列中的字符数和可见列数自动确定宽度。 默认单位为“ch”（字符）。
 
 选择标签中的蓝色“(当前宽度)”按钮将会用所选列的当前宽度填充文本字段。 如果“自定义宽度”字段中存在值但没有度量单位，则将使用默认值。
 

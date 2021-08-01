@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: df58be32123f662ae2a2782d6ebb7f19bd5c339c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b87f3221e62db6999dd67f475055f699a74c4c2a
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134926"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110495153"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>实时流式传输 Azure Spring Cloud 应用日志
 
@@ -79,7 +79,7 @@ az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-p
 还可以从 Azure 门户获取应用实例的详细信息。  在 Azure Spring Cloud 服务的左侧导航窗格中选择“应用”之后，选择“应用实例” 。
 
 ### <a name="continuously-stream-new-logs"></a>连续流式传输新日志
-默认情况下，`az spring-cloud ap log tail` 仅打印流式传输到应用控制台的现有日志，然后退出。 如果要流式传输新日志，请添加 -f (--follow)：  
+默认情况下，`az spring-cloud app logs` 仅打印流式传输到应用控制台的现有日志，然后退出。 如果要流式传输新日志，请添加 -f (--follow)：  
 
 ```azurecli
 az spring-cloud app logs -n auth-service -f
@@ -88,6 +88,39 @@ az spring-cloud app logs -n auth-service -f
 ```azurecli
 az spring-cloud app logs -h 
 ```
+
+### <a name="format-json-structured-logs"></a>设置 JSON 结构化日志的格式
+
+> [!NOTE]
+> 需要 spring-cloud 扩展版本 2.4.0 或更高版本。
+
+为应用启用[结构化应用程序日志](./structured-app-log.md)后，日志将以 JSON 格式打印。 这种格式难以阅读。 可以使用 `--format-json` 参数将 JSON 日志格式化为人工可读格式。
+
+```shell
+# Raw JSON log
+$ az spring-cloud app logs -n auth-service
+{"timestamp":"2021-05-26T03:35:27.533Z","logger":"com.netflix.discovery.DiscoveryClient","level":"INFO","thread":"main","mdc":{},"message":"Disable delta property : false"}
+{"timestamp":"2021-05-26T03:35:27.533Z","logger":"com.netflix.discovery.DiscoveryClient","level":"INFO","thread":"main","mdc":{},"message":"Single vip registry refresh property : null"}
+
+# Formatted JSON log
+$ az spring-cloud app logs -n auth-service --format-json
+2021-05-26T03:35:27.533Z  INFO [           main] com.netflix.discovery.DiscoveryClient   : Disable delta property : false
+2021-05-26T03:35:27.533Z  INFO [           main] com.netflix.discovery.DiscoveryClient   : Single vip registry refresh property : null
+```
+
+参数 `--format-json` 还可采用可选的自定义格式，使用关键字参数 [ 格式字符串语法 ](https://docs.python.org/3/library/string.html#format-string-syntax)。
+
+```shell
+# Custom format
+$ az spring-cloud app logs -n auth-service --format-json="{message}{n}"
+Disable delta property : false
+Single vip registry refresh property : null
+```
+
+> 使用的默认格式为
+> ```
+> {timestamp} {level:>5} [{thread:>15.15}] {logger{39}:<40.40}: {message}{n}{stackTrace}
+> ```
 
 ## <a name="next-steps"></a>后续步骤
 * [快速入门：通过日志、指标和跟踪来监视 Azure Spring Cloud 应用](./quickstart-logs-metrics-tracing.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 316b513f761aa422f87c83658e6c50efec25efb4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cc67b678fabeb2a7878490a4ea713acb5709cdbc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94961135"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643791"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>用于从 StorSimple 5000-7000 系列迁移数据的选项 
 
@@ -63,14 +63,13 @@ Cohesity 使你可以将数据从当前 StorSimple 5000–7000 迁移到 Azure �
 
 通过 Nasuni，StorSimple 5000-7000 客户可以轻松地将其数据迁移并保存在 Azure 中。  Nasuni 是一个基于 Azure 的领先 NAS 存储解决方案，为客户提供本地解决方案应提供的性能和安全性，以及云经济和规模。  除高性能文件存储以外，Nasuni 和 Azure 还处理备份和灾难恢复，同时允许你通过集中式文件存储管理，在全球范围内共享数据并展开协作。 
 
-Nasuni 的经验可让你轻松完成迁移 - 立即开始： https://info.nasuni.com/nasuni-storsimple-migration
+Nasuni 的经验可让你轻松完成迁移 - 立即开始： https://www.nasuni.com/blog-migrating-off-storsimple/
 
 #### <a name="migrate-to-talon-fast"></a>迁移到 Talon FAST
 
 通过 Talon，StorSimple 5000-7000 客户可以继续轻松地利用其在 StorSimple 平台中重视的优势（受无限云资源支持的小型现场占用情况），甚至拥有更大的功能。  借助 Talon FAST 解决方案，客户可以将数据迁移并保存在 Azure 中，同时拥有更小的仅限软件的现场占用空间，并增加了全局文件锁定、全局命名空间和多站点协作等优势。  Talon 是一个领先的 Azure 生态系统解决方案，与全球客户合作，将其本地文件服务器工作负载迁移到基于 Azure 的整合占用空间，而不会影响用户工作流或体验。  
 
-详细了解如何发展为云整合企业，网址： https://www.talonstorage.com/alliances/microsoft-storsimple 。
-
+详细了解如何发展为云整合企业。
 
 ## <a name="migration---frequently-asked-questions"></a>迁移 - 常见问题解答
 

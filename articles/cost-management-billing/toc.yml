@@ -5,14 +5,14 @@
     - name: 什么是成本管理和计费？
       href: cost-management-billing-overview.md
 - name: 快速入门
-  expanded: true
   items:
     - name: 开始分析成本
-      href: costs/quick-acm-cost-analysis.md
       displayName: 'Azure CLI, az costmanagement query, az costmanagement export'
+      href: costs/quick-acm-cost-analysis.md
     - name: 创建预算 - ARM 模板
-      href: costs/quick-create-budget-template.md
       displayName: 'ARM template, resource manager template'
+      href: costs/quick-create-budget-template.md
+  expanded: true
 - name: 教程
   items:
     - name: 查看个人帐户帐单
@@ -26,8 +26,8 @@
     - name: 创建并管理预算
       href: costs/tutorial-acm-create-budgets.md
     - name: 导出数据
-      href: costs/tutorial-export-acm-data.md
       displayName: 'Azure CLI, az costmanagement query, az costmanagement export'
+      href: costs/tutorial-export-acm-data.md
     - name: 根据建议采取措施
       href: costs/tutorial-acm-opt-recommendations.md
 - name: 概念
@@ -296,6 +296,8 @@
           href: manage/spending-limit.md
         - name: 跟踪 Microsoft 客户协议的额度余额
           href: manage/mca-check-azure-credits-balance.md
+        - name: 跟踪 Microsoft Azure 使用量承诺
+          href: manage/track-consumption-commitment.md
         - name: 从 EA 迁移到 MCA API
           href: costs/migrate-cost-management-api.md
         - name: 向 EA SPN 分配角色
@@ -366,6 +368,8 @@
               href: reservations/reservation-renew.md?toc=/azure/cost-management-billing/toc.json
     - name: 疑难解答
       items:
+        - name: 无法查看或查找发票
+          href: manage/troubleshoot-cant-find-invoice.md
         - name: 带有使用情况文件的 EA 计费问题
           href: manage/troubleshoot-ea-billing-issues-usage-file-pivot-tables.md
         - name: 带有使用情况文件的 MCA 计费问题
@@ -453,56 +457,17 @@
 - name: Cloudyn
   items:
     - name: 概述
-      items:
-        - name: 什么是 Cloudyn？
-          href: cloudyn/overview.md
     - name: 快速入门
-      items:
-        - name: 查看成本数据 - CSP
-          href: cloudyn/quick-register-csp.md
     - name: 教程
-      items:
-        - name: 查看使用情况和成本
-          href: cloudyn/tutorial-review-usage.md
-        - name: 预测支出
-          href: cloudyn/tutorial-forecast-spending.md
-        - name: 管理成本
-          href: cloudyn/tutorial-manage-costs.md
-        - name: 优化预留实例
-          href: cloudyn/tutorial-optimize-reserved-instances.md
-        - name: 控制对数据的访问
-          href: cloudyn/tutorial-user-access.md
     - name: 概念
-      items:
-        - name: 了解成本报表
-          href: cloudyn/understanding-cost-reports.md
     - name: 操作指南
-      items:
-        - name: 激活 Azure 订阅和帐户
-          href: cloudyn/activate-subs-accounts.md
-        - name: 为 VM 添加扩展的指标
-          href: cloudyn/azure-vm-extended-metrics.md
-        - name: 连接 AWS 帐户
-          href: cloudyn/connect-aws-account.md
-        - name: 配置存储帐户
-          href: cloudyn/storage-accounts.md
-        - name: 使用 Cloudyn 报表
-          href: cloudyn/use-reports.md
-        - name: 使用仪表板
-          href: cloudyn/dashboards.md
-        - name: 管理预算
-          href: cloudyn/manage-budgets.md
     - name: 资源
       items:
-        - name: Cloudyn 视频
-          href: cloudyn/ref-videos.md
         - name: Azure 路线图
           href: 'https://azure.microsoft.com/roadmap/'
         - name: Cloudyn 定价
           href: 'https://azure.microsoft.com/pricing/details/cost-management'
         - name: Cloudyn 区域可用性
           href: 'https://azure.microsoft.com/regions/services/'
-        - name: Cloudyn 常见问题解答
-          href: cloudyn/cost-mgt-faq.md
         - name: 联系 Cloudyn 支持人员
           href: ./costs/open-support-request.md

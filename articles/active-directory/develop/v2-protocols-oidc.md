@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 82e9901c4bea8de7e5fee37ff4f2b7374f67e0ca
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: a01566341a1c5aa1700b68938410ee0c08c17ddd
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467230"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747538"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft 标识平台和 OpenID Connect 协议
 
@@ -43,7 +43,7 @@ OpenID Connect 描述了元数据文档 [(RFC)](https://openid.net/specs/openid-
 
 `{tenant}` 可取以下四个值之一：
 
-| 值 | 说明 |
+| Value | 说明 |
 | --- | --- |
 | `common` |同时拥有 Microsoft 个人帐户和 Azure AD 中的工作或学校帐户的用户可以登录应用。 |
 | `organizations` |仅拥有工作/学校帐户的用户可以从 Azure AD 登录到应用程序。 |
@@ -126,7 +126,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `nonce` | 必须 | 由应用程序生成且包含在请求中的值，以声明方式包含在生成的 id_token 值中。 应用可以验证此值，以缓解令牌重放攻击。 该值通常是随机化的唯一字符串，可用于标识请求的来源。 |
 | `response_mode` | 建议 | 指定将生成的授权代码发回给应用时应该使用的方法。 可以是 `form_post` 或 `fragment`。 对于 Web 应用程序，建议使用 `response_mode=form_post`，确保以最安全的方式将令牌传输到应用程序。 |
 | `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 随机生成的唯一值通常用于 [防范跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该状态还用于在身份验证请求出现之前，在应用中编码用户的状态信息，例如用户过去所在的页面或视图。 |
-| `prompt` | 可选 | 表示需要的用户交互类型。 目前仅有的有效值为 `login`、`none` 和 `consent`。 `prompt=login` 声明强制用户在该请求上输入凭据，从而使单一登录无效。 而 `prompt=none` 声明完全相反。 此声明确保不会向用户显示任何交互提示。 如果请求无法通过单一登录以无提示方式完成，则 Microsoft 标识平台将返回一个错误。 `prompt=consent` 声明将在用户登录后触发 OAuth 同意对话框。 该对话框要求用户向应用授予权限。 |
+| `prompt` | 可选 | 表示需要的用户交互类型。 此时唯一有效的值为 `login`、`none`、`consent` 和 `select_account`。 `prompt=login` 声明强制用户在该请求上输入凭据，从而使单一登录无效。 `prompt=none` 参数与之相反，应与 `login_hint` 配合使用，以指示必须登录的用户。 这些参数确保用户根本不会看到交互式提示。 如果请求无法通过单一登录以无提示方式完成（因为没有用户登录、提示的用户未登录，或者有多个用户登录但未提供提示），则 Microsoft 标识平台会返回错误。 `prompt=consent` 声明将在用户登录后触发 OAuth 同意对话框。 该对话框要求用户向应用授予权限。 最后，`select_account` 向用户显示帐户选择器，取消无提示 SSO，但允许用户选取他们登录时想要使用的帐户，无需输入凭据。 不能同时使用 `login_hint` 和 `select_account`。|
 | `login_hint` | 可选 | 如果事先知道用户名，可以使用此参数预先填充用户登录页的用户名/电子邮件地址字段。 通常，应用在已经使用 `preferred_username` 声明从前次登录提取用户名后，会在重新身份验证时使用此参数。 |
 | `domain_hint` | 可选 | 联合目录中的用户领域。  这会跳过用户在登录页面上经历的基于电子邮件的发现过程，从而实现更加流畅的用户体验。 对于通过本地目录（例如 AD FS）联合的租户，这通常会由于现有登录会话而导致无缝登录。 |
 

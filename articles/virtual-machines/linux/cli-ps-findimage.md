@@ -1,69 +1,41 @@
 ---
-title: 使用 Azure CLI 选择 Linux VM 映像
-description: 了解如何使用 Azure CLI 确定发布服务器、产品/服务、SKU 和市场 VM 映像的版本。
+title: 利用 CLI 查找并使用市场购买计划信息
+description: 了解如何使用 Azure CLI 针对市场 VM 映像查找映像 URN 和购买计划参数，如发布服务器、产品/服务、SKU 和版本。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
-ms.date: 01/25/2019
+ms.date: 03/22/2021
 ms.author: cynthn
 ms.collection: linux
-ms.openlocfilehash: efa0b91c9c0e43104f36017c3b1a1f3167190d63
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.custom: contperf-fy21q3-portal, devx-track-azurecli
+ms.openlocfilehash: db21cf9e4dc28a83b98f58e73db9a5d76f80aef2
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102562803"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886669"
 ---
-# <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>使用 Azure CLI 在 Azure 市场中查找 Linux VM 映像
+# <a name="find-azure-marketplace-image-information-using-the-azure-cli"></a>使用 Azure CLI 查找 Azure 市场映像信息
 
 本主题介绍如何使用 Azure CLI 在 Azure 市场中查找 VM 映像。 使用 CLI、资源管理器模板或其他工具以编程方式创建 VM 时，使用此信息指定市场映像。
 
-还可以使用 [Azure 市场](https://azuremarketplace.microsoft.com/)店面、[Azure 门户](https://portal.azure.com)或 [Azure PowerShell](../windows/cli-ps-findimage.md) 浏览可用的映像和产品/服务。 
+还可以使用 [Azure 市场](https://azuremarketplace.microsoft.com/)或 [Azure PowerShell](../windows/cli-ps-findimage.md) 浏览可用的映像和产品/服务。 
 
-确保你已经登录到 Azure 帐号 (`az login`)。
+## <a name="terminology"></a>术语
 
-[!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
+Azure 中的市场映像具有以下属性：
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
+* **发布者**：创建映像的组织。 示例：Canonical、MicrosoftWindowsServer
+* **产品/服务**：发布者创建的一组相关映像的名称。 示例：UbuntuServer、WindowsServer
+* **SKU**：产品/服务的实例，例如分发的主要版本。 示例：18.04-LTS、2019-Datacenter
+* **版本**：映像 SKU 的版本号。 
 
-## <a name="deploy-from-a-vhd-using-purchase-plan-parameters"></a>使用购买计划参数从 VHD 部署
+这些值可以单独传递，也可以作为映像 URN 进行传递，从而将用冒号 (:) 分隔的值组合在一起。 例如：*Publisher*:*Offer*:*Sku*:*Version*。 可将 URN 中的版本号替换为 `latest`，以使用最新版本的映像。 
 
-如果你有一个使用付费 Azure 市场映像创建的现有 VHD，则在从该 VHD 创建新的 VM 时，可能需要提供购买计划信息。 
+如果映像发布服务器提供附加许可和购买条款，则必须先接受这些许可和条款才能使用映像。  有关详细信息，请参阅[查看购买计划信息](#check-the-purchase-plan-information)。
 
-如果你仍有原始 VM 或有使用同一市场映像创建的其他 VM，则可以使用 [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) 从其中获取计划名称、发布者和产品信息。 此示例获取 myResourceGroup 资源组中名为 myVM 的 VM，然后显示购买计划信息 。
 
-```azurepowershell-interactive
-az vm get-instance-view -g myResourceGroup -n myVM --query plan
-```
-
-如果在删除原始 VM 之前未获得计划信息，则可提交[支持请求](https://ms.portal.azure.com/#create/Microsoft.Support)。 他们将需要 VM 名称、订阅 ID 和删除操作的时间戳。
-
-获得计划信息后，可以使用 `--attach-os-disk` 参数指定 VHD 来创建新的 VM。
-
-```azurecli-interactive
-az vm create \
-   --resource-group myResourceGroup \
-  --name myNewVM \
-  --nics myNic \
-  --size Standard_DS1_v2 --os-type Linux \
-  --attach-os-disk myVHD \
-  --plan-name planName \
-  --plan-publisher planPublisher \
-  --plan-product planProduct 
-```
-
-## <a name="deploy-a-new-vm-using-purchase-plan-parameters"></a>使用购买计划参数部署新的 VM
-
-如果你已经有映像的相关信息，可以使用 `az vm create` 命令来部署它。 在此示例中，使用 Bitnami 认证的 RabbitMQ 映像部署 VM：
-
-```azurecli
-az group create --name myResourceGroupVM --location westus
-
-az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
-```
-
-如果收到有关接受映像条款的消息，请参阅本文后面的[接受条款](#accept-the-terms)部分。
 
 ## <a name="list-popular-images"></a>列出常用映像
 
@@ -73,20 +45,23 @@ az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabb
 az vm image list --output table
 ```
 
-输出包括映像 URN（Urn 列中的值）  。 使用其中一个常用市场映像创建 VM 时，可选择指定 *UrnAlias*（一种简短格式，如 *UbuntuLTS*）。
+输出包括映像 URN。 还可以使用 UrnAlias，这是为 UbuntuLTS 等常用映像创建的简化版本。
 
 ```output
-You are viewing an offline list of images, use --all to retrieve an up-to-date list
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
 CentOS         OpenLogic               7.5                 OpenLogic:CentOS:7.5:latest                                     CentOS               latest
 CoreOS         CoreOS                  Stable              CoreOS:CoreOS:Stable:latest                                     CoreOS               latest
-Debian         credativ                8                   credativ:Debian:8:latest                                        Debian               latest
+debian-10      Debian                  10                  Debian:debian-10:10:latest                                      Debian               latest
 openSUSE-Leap  SUSE                    42.3                SUSE:openSUSE-Leap:42.3:latest                                  openSUSE-Leap        latest
-RHEL           RedHat                  7-RAW               RedHat:RHEL:7-RAW:latest                                        RHEL                 latest
-SLES           SUSE                    12-SP2              SUSE:SLES:12-SP2:latest                                         SLES                 latest
-UbuntuServer   Canonical               16.04-LTS           Canonical:UbuntuServer:16.04-LTS:latest                         UbuntuLTS            latest
-...
+RHEL           RedHat                  7-LVM               RedHat:RHEL:7-LVM:latest                                        RHEL                 latest
+SLES           SUSE                    15                  SUSE:SLES:15:latest                                             SLES                 latest
+UbuntuServer   Canonical               18.04-LTS           Canonical:UbuntuServer:18.04-LTS:latest                         UbuntuLTS            latest
+WindowsServer  MicrosoftWindowsServer  2019-Datacenter     MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest     Win2019Datacenter    latest
+WindowsServer  MicrosoftWindowsServer  2016-Datacenter     MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest     Win2016Datacenter    latest
+WindowsServer  MicrosoftWindowsServer  2012-R2-Datacenter  MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:latest  Win2012R2Datacenter  latest
+WindowsServer  MicrosoftWindowsServer  2012-Datacenter     MicrosoftWindowsServer:WindowsServer:2012-Datacenter:latest     Win2012Datacenter    latest
+WindowsServer  MicrosoftWindowsServer  2008-R2-SP1         MicrosoftWindowsServer:WindowsServer:2008-R2-SP1:latest         Win2008R2SP1         latest
 ```
 
 ## <a name="find-specific-images"></a>查找特定映像
@@ -97,228 +72,77 @@ UbuntuServer   Canonical               16.04-LTS           Canonical:UbuntuServe
 
 ```azurecli
 az vm image list --offer Debian --all --output table 
-
 ```
 
 部分输出： 
 
 ```output
-Offer              Publisher    Sku                  Urn                                                    Version
------------------  -----------  -------------------  -----------------------------------------------------  --------------
-Debian             credativ     7                    credativ:Debian:7:7.0.201602010                        7.0.201602010
-Debian             credativ     7                    credativ:Debian:7:7.0.201603020                        7.0.201603020
-Debian             credativ     7                    credativ:Debian:7:7.0.201604050                        7.0.201604050
-Debian             credativ     7                    credativ:Debian:7:7.0.201604200                        7.0.201604200
-Debian             credativ     7                    credativ:Debian:7:7.0.201606280                        7.0.201606280
-Debian             credativ     7                    credativ:Debian:7:7.0.201609120                        7.0.201609120
-Debian             credativ     7                    credativ:Debian:7:7.0.201611020                        7.0.201611020
-Debian             credativ     7                    credativ:Debian:7:7.0.201701180                        7.0.201701180
-Debian             credativ     8                    credativ:Debian:8:8.0.201602010                        8.0.201602010
-Debian             credativ     8                    credativ:Debian:8:8.0.201603020                        8.0.201603020
-Debian             credativ     8                    credativ:Debian:8:8.0.201604050                        8.0.201604050
-Debian             credativ     8                    credativ:Debian:8:8.0.201604200                        8.0.201604200
-Debian             credativ     8                    credativ:Debian:8:8.0.201606280                        8.0.201606280
-Debian             credativ     8                    credativ:Debian:8:8.0.201609120                        8.0.201609120
-Debian             credativ     8                    credativ:Debian:8:8.0.201611020                        8.0.201611020
-Debian             credativ     8                    credativ:Debian:8:8.0.201701180                        8.0.201701180
-Debian             credativ     8                    credativ:Debian:8:8.0.201703150                        8.0.201703150
-Debian             credativ     8                    credativ:Debian:8:8.0.201704110                        8.0.201704110
-Debian             credativ     8                    credativ:Debian:8:8.0.201704180                        8.0.201704180
-Debian             credativ     8                    credativ:Debian:8:8.0.201706190                        8.0.201706190
-Debian             credativ     8                    credativ:Debian:8:8.0.201706210                        8.0.201706210
-Debian             credativ     8                    credativ:Debian:8:8.0.201708040                        8.0.201708040
-Debian             credativ     8                    credativ:Debian:8:8.0.201710090                        8.0.201710090
-Debian             credativ     8                    credativ:Debian:8:8.0.201712040                        8.0.201712040
-Debian             credativ     8                    credativ:Debian:8:8.0.201801170                        8.0.201801170
-Debian             credativ     8                    credativ:Debian:8:8.0.201803130                        8.0.201803130
-Debian             credativ     8                    credativ:Debian:8:8.0.201803260                        8.0.201803260
-Debian             credativ     8                    credativ:Debian:8:8.0.201804020                        8.0.201804020
-Debian             credativ     8                    credativ:Debian:8:8.0.201804150                        8.0.201804150
-Debian             credativ     8                    credativ:Debian:8:8.0.201805160                        8.0.201805160
-Debian             credativ     8                    credativ:Debian:8:8.0.201807160                        8.0.201807160
-Debian             credativ     8                    credativ:Debian:8:8.0.201901221                        8.0.201901221
+Offer                                    Publisher                         Sku                                      Urn                                                                                                   Version
+---------------------------------------  --------------------------------  ---------------------------------------  ----------------------------------------------------------------------------------------------------  --------------
+apache-solr-on-debian                    apps-4-rent                       apache-solr-on-debian                    apps-4-rent:apache-solr-on-debian:apache-solr-on-debian:1.0.0                                         1.0.0
+atomized-h-debian10-v1                   atomizedinc1587939464368          hdebian10plan                            atomizedinc1587939464368:atomized-h-debian10-v1:hdebian10plan:1.0.0                                   1.0.0
+atomized-h-debian9-v1                    atomizedinc1587939464368          hdebian9plan                             atomizedinc1587939464368:atomized-h-debian9-v1:hdebian9plan:1.0.0                                     1.0.0
+atomized-r-debian10-v1                   atomizedinc1587939464368          rdebian10plan                            atomizedinc1587939464368:atomized-r-debian10-v1:rdebian10plan:1.0.0                                   1.0.0
+atomized-r-debian9-v1                    atomizedinc1587939464368          rdebian9plan                             atomizedinc1587939464368:atomized-r-debian9-v1:rdebian9plan:1.0.0                                     1.0.0
+cis-debian-linux-10-l1                   center-for-internet-security-inc  cis-debian10-l1                          center-for-internet-security-inc:cis-debian-linux-10-l1:cis-debian10-l1:1.0.7                         1.0.7
+cis-debian-linux-10-l1                   center-for-internet-security-inc  cis-debian10-l1                          center-for-internet-security-inc:cis-debian-linux-10-l1:cis-debian10-l1:1.0.8                         1.0.8
+cis-debian-linux-10-l1                   center-for-internet-security-inc  cis-debian10-l1                          center-for-internet-security-inc:cis-debian-linux-10-l1:cis-debian10-l1:1.0.9                         1.0.9
+cis-debian-linux-9-l1                    center-for-internet-security-inc  cis-debian9-l1                           center-for-internet-security-inc:cis-debian-linux-9-l1:cis-debian9-l1:1.0.18                          1.0.18
+cis-debian-linux-9-l1                    center-for-internet-security-inc  cis-debian9-l1                           center-for-internet-security-inc:cis-debian-linux-9-l1:cis-debian9-l1:1.0.19                          1.0.19
+cis-debian-linux-9-l1                    center-for-internet-security-inc  cis-debian9-l1                           center-for-internet-security-inc:cis-debian-linux-9-l1:cis-debian9-l1:1.0.20                          1.0.20
+apache-web-server-with-debian-10         cognosys                          apache-web-server-with-debian-10         cognosys:apache-web-server-with-debian-10:apache-web-server-with-debian-10:1.2019.1008                1.2019.1008
+docker-ce-with-debian-10                 cognosys                          docker-ce-with-debian-10                 cognosys:docker-ce-with-debian-10:docker-ce-with-debian-10:1.2019.0710                                1.2019.0710
+Debian                                   credativ                          8                                        credativ:Debian:8:8.0.201602010                                                                       8.0.201602010
+Debian                                   credativ                          8                                        credativ:Debian:8:8.0.201603020                                                                       8.0.201603020
+Debian                                   credativ                          8                                        credativ:Debian:8:8.0.201604050                                                                       8.0.201604050
 ...
 ```
 
-通过 `--location`、`--publisher` 和 `--sku` 选项应用类似的筛选器。 可以在筛选器上执行部分匹配，如搜索 `--offer Deb` 以查找所有 Debian 映像。
 
-如果没有使用 `--location` 选项指定一个特定位置，则将返回默认位置的值。 （通过运行 `az configure --defaults location=<location>` 设置不同默认位置。）
-
-例如，以下命令列出了“西欧”位置中的所有 Debian 8 SKU：
-
-```azurecli
-az vm image list --location westeurope --offer Deb --publisher credativ --sku 8 --all --output table
-```
-
-部分输出：
-
-```output
-Offer    Publisher    Sku                Urn                                              Version
--------  -----------  -----------------  -----------------------------------------------  -------------
-Debian   credativ     8                  credativ:Debian:8:8.0.201602010                  8.0.201602010
-Debian   credativ     8                  credativ:Debian:8:8.0.201603020                  8.0.201603020
-Debian   credativ     8                  credativ:Debian:8:8.0.201604050                  8.0.201604050
-Debian   credativ     8                  credativ:Debian:8:8.0.201604200                  8.0.201604200
-Debian   credativ     8                  credativ:Debian:8:8.0.201606280                  8.0.201606280
-Debian   credativ     8                  credativ:Debian:8:8.0.201609120                  8.0.201609120
-Debian   credativ     8                  credativ:Debian:8:8.0.201611020                  8.0.201611020
-Debian   credativ     8                  credativ:Debian:8:8.0.201701180                  8.0.201701180
-Debian   credativ     8                  credativ:Debian:8:8.0.201703150                  8.0.201703150
-Debian   credativ     8                  credativ:Debian:8:8.0.201704110                  8.0.201704110
-Debian   credativ     8                  credativ:Debian:8:8.0.201704180                  8.0.201704180
-Debian   credativ     8                  credativ:Debian:8:8.0.201706190                  8.0.201706190
-Debian   credativ     8                  credativ:Debian:8:8.0.201706210                  8.0.201706210
-Debian   credativ     8                  credativ:Debian:8:8.0.201708040                  8.0.201708040
-Debian   credativ     8                  credativ:Debian:8:8.0.201710090                  8.0.201710090
-Debian   credativ     8                  credativ:Debian:8:8.0.201712040                  8.0.201712040
-Debian   credativ     8                  credativ:Debian:8:8.0.201801170                  8.0.201801170
-Debian   credativ     8                  credativ:Debian:8:8.0.201803130                  8.0.201803130
-Debian   credativ     8                  credativ:Debian:8:8.0.201803260                  8.0.201803260
-Debian   credativ     8                  credativ:Debian:8:8.0.201804020                  8.0.201804020
-Debian   credativ     8                  credativ:Debian:8:8.0.201804150                  8.0.201804150
-Debian   credativ     8                  credativ:Debian:8:8.0.201805160                  8.0.201805160
-Debian   credativ     8                  credativ:Debian:8:8.0.201807160                  8.0.201807160
-Debian   credativ     8                  credativ:Debian:8:8.0.201901221                  8.0.201901221
-...
-```
-
-## <a name="navigate-the-images"></a>浏览映像
+## <a name="look-at-all-available-images"></a>查看所有可用映像
  
 在某个位置查找映像的另一种方法是，运行序列中的 [az vm image list-publishers](/cli/azure/vm/image)、[az vm image list-offers](/cli/azure/vm/image) 和 [az vm image list-skus](/cli/azure/vm/image) 命令。 可以使用这些命令确定以下值：
 
-1. 列出映像发布者。
-2. 对于给定的发布者，列出其产品。
-3. 对于给定的产品，列出其 SKU。
+1. 列出某个位置的映像发布服务器。 在本例中，我们探讨的是美国西部区域。
+    
+    ```azurecli
+    az vm image list-publishers --location westus --output table
+    ```
 
-然后，对于所选 SKU，可以选择要部署的版本。
+1. 对于给定的发布者，列出其产品。 在本例中，我们将 Canonical 添加为发布服务器。
+    
+    ```azurecli
+    az vm image list-offers --location westus --publisher Canonical --output table
+    ```
 
-例如，以下命令列出了美国西部位置的映像发布者：
+1. 对于给定的产品，列出其 SKU。 在本例中，我们将 UbuntuServer 添加为产品/服务。
+    ```azurecli
+    az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
+    ```
 
-```azurecli
-az vm image list-publishers --location westus --output table
-```
+1. 对于给定的发布服务器、产品/服务和 SKU，显示所有版本的映像。 在本例中，我们将 18.04-LTS 添加为 SKU。
 
-部分输出：
+    ```azurecli
+    az vm image list \
+        --location westus \
+        --publisher Canonical \  
+        --offer UbuntuServer \    
+        --sku 18.04-LTS \
+        --all --output table
+    ```
 
-```output
-Location    Name
-----------  ----------------------------------------------------
-westus      128technology
-westus      1e
-westus      4psa
-westus      5nine-software-inc
-westus      7isolutions
-westus      a10networks
-westus      abiquo
-westus      accellion
-westus      accessdata-group
-westus      accops
-westus      Acronis
-westus      Acronis.Backup
-westus      actian-corp
-westus      actian_matrix
-westus      actifio
-westus      activeeon
-westus      advantech-webaccess
-westus      aerospike
-westus      affinio
-westus      aiscaler-cache-control-ddos-and-url-rewriting-
-westus      akamai-technologies
-westus      akumina
-...
-```
-
-使用此信息可以从特定发布者找到产品/服务。 例如，如果 *Canonical* 是美国西部位置的映像发布者，可通过运行 `azure vm image list-offers` 查找产品/服务。 传递位置和发布者，如以下示例中所示：
-
-```azurecli
-az vm image list-offers --location westus --publisher Canonical --output table
-```
-
-输出：
-
-```output
-Location    Name
-----------  -------------------------
-westus      Ubuntu15.04Snappy
-westus      Ubuntu15.04SnappyDocker
-westus      UbunturollingSnappy
-westus      UbuntuServer
-westus      Ubuntu_Core
-```
-你将看到在美国西部区域中，Canonical 在 Azure 上发布 UbuntuServer 产品。 但是，有哪些 SKU 呢？ 要获取这些值，请运行 `azure vm image list-skus`，并对找到的位置、发布者和产品/服务进行设置：
-
-```azurecli
-az vm image list-skus --location westus --publisher Canonical --offer UbuntuServer --output table
-```
-
-输出：
-
-```output
-Location    Name
-----------  -----------------
-westus      12.04.3-LTS
-westus      12.04.4-LTS
-westus      12.04.5-LTS
-westus      14.04.0-LTS
-westus      14.04.1-LTS
-westus      14.04.2-LTS
-westus      14.04.3-LTS
-westus      14.04.4-LTS
-westus      14.04.5-DAILY-LTS
-westus      14.04.5-LTS
-westus      16.04-DAILY-LTS
-westus      16.04-LTS
-westus      16.04.0-LTS
-westus      18.04-DAILY-LTS
-westus      18.04-LTS
-westus      18.10
-westus      18.10-DAILY
-westus      19.04-DAILY
-```
-
-最后，使用 `az vm image list` 命令查找所需的特定版本的 SKU，例如，18.04-LTS  ：
-
-```azurecli
-az vm image list --location westus --publisher Canonical --offer UbuntuServer --sku 18.04-LTS --all --output table
-```
-
-部分输出：
-
-```output
-Offer         Publisher    Sku        Urn                                               Version
-------------  -----------  ---------  ------------------------------------------------  ---------------
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201804262  18.04.201804262
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201805170  18.04.201805170
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201805220  18.04.201805220
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201806130  18.04.201806130
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201806170  18.04.201806170
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201807240  18.04.201807240
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201808060  18.04.201808060
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201808080  18.04.201808080
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201808140  18.04.201808140
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201808310  18.04.201808310
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201809110  18.04.201809110
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201810030  18.04.201810030
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201810240  18.04.201810240
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201810290  18.04.201810290
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201811010  18.04.201811010
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201812031  18.04.201812031
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201812040  18.04.201812040
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201812060  18.04.201812060
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201901140  18.04.201901140
-UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201901220  18.04.201901220
-...
-```
-
-现在，可通过记下 URN 值准确地选择想要使用的映像。 通过 [az vm create](/cli/azure/vm) 命令创建 VM 时，可将此值与 `--image` 参数一起传递。 记住，可选择将 URN 中的版本号替换为“latest”。 此版本始终是映像的最新版本。 
+使用 [az vm create](/cli/azure/vm) 命令创建 VM 时，可将 URN 列的此值与 `--image` 参数一起传递。 还可以将 URN 中的版本号替换为“latest”以简单使用最新版本的映像。 
 
 如果使用资源管理器模板部署 VM，请在 `imageReference` 属性中单独设置映像参数。 请参阅[模板参考](/azure/templates/microsoft.compute/virtualmachines)。
 
-[!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 
-### <a name="view-plan-properties"></a>查看计划属性
+## <a name="check-the-purchase-plan-information"></a>查看购买计划信息
 
-若要查看映像的购买计划信息，请运行 [az vm image show](/cli/azure/image) 命令。 如果输出中的 `plan` 属性不是 `null`，则映像有条款，在以编程方式部署前需要接受该条款。
+Azure 市场中的某些 VM 映像具有附加许可条款和购买条款，你必须接受这些条款，然后才能以编程方式部署这些映像。  
+
+若要从此类映像部署 VM，需要在首次使用时接受映像的条款，每个订阅接受一次。 还需要指定采购计划参数，以便从该映像部署 VM
+
+若要查看映像的购买计划信息，请使用映像的 URN 运行 [az vm image show](/cli/azure/image) 命令。 如果输出中的 `plan` 属性不是 `null`，则映像有条款，在以编程方式部署前需要接受该条款。
 
 例如，Canonical Ubuntu Server 18.04 LTS 映像没有附加条款，因为 `plan` 信息为 `null`：
 
@@ -342,7 +166,7 @@ az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
 }
 ```
 
-对 Bitnami 映像认证的 RabbitMQ 运行类似的命令显示以下 `plan` 属性：`name`、`product` 和 `publisher`。 （某些映像还具有 `promotion code` 属性。）若要部署此映像，请参阅以下部分，以接受条款并启用编程部署。
+对 Bitnami 映像认证的 RabbitMQ 运行类似的命令显示以下 `plan` 属性：`name`、`product` 和 `publisher`。 （某些映像还具有 `promotion code` 属性。） 
 
 ```azurecli
 az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
@@ -367,12 +191,14 @@ az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
 }
 ```
 
+若要部署此映像，则在使用该映像部署 VM 时，需要接受条款，并提供购买计划参数。
+
 ## <a name="accept-the-terms"></a>接受条款
 
-若要查看并接受许可条款，请使用 [az vm image accept-terms](/cli/azure/vm/image?) 命令。 接受条款时，将在订阅中启用编程部署。 对于映像的每个订阅，只需接受条款一次。 例如：
+若要查看并接受许可条款，请使用 [az vm image accept-terms](/cli/azure/vm/image/terms) 命令。 接受条款时，将在订阅中启用编程部署。 对于映像的每个订阅，只需接受条款一次。 例如：
 
 ```azurecli
-az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
+az vm image terms show --urn bitnami:rabbitmq:rabbitmq:latest
 ``` 
 
 输出包括指向许可条款的 `licenseTextLink`，并指示 `accepted` 的值为 `true`：
@@ -393,6 +219,75 @@ az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
   "type": "Microsoft.MarketplaceOrdering/offertypes"
 }
 ```
+
+若要接受条款，请键入：
+
+```azurecli
+az vm image terms accept --urn bitnami:rabbitmq:rabbitmq:latest
+``` 
+
+## <a name="deploy-a-new-vm-using-the-image-parameters"></a>使用映像参数部署全新 VM
+
+如果已有映像的相关信息，可以使用 `az vm create` 命令来进行部署。 
+
+若要部署没有计划信息的映像（例如，来自 Canonical 的最新 Ubuntu Server 18.04 映像），请传递 `--image` 的 URN：
+
+```azurecli-interactive
+az group create --name myURNVM --location westus
+az vm create \
+   --resource-group myURNVM \
+   --name myVM \
+   --admin-username azureuser \
+   --generate-ssh-keys \
+   --image Canonical:UbuntuServer:18.04-LTS:latest 
+```
+
+
+对于具有购买计划参数的映像，如由 Bitnami 映像认证的 RabbitMQ，则可以传递 `--image` 的 URN，并提供购买计划参数：
+
+```azurecli
+az group create --name myPurchasePlanRG --location westus
+
+az vm create \
+   --resource-group myPurchasePlanRG \
+   --name myVM \
+   --admin-username azureuser \
+   --generate-ssh-keys \
+   --image bitnami:rabbitmq:rabbitmq:latest \
+   --plan-name rabbitmq \
+   --plan-product rabbitmq \
+   --plan-publisher bitnami
+```
+
+如果收到有关接受映像条款的消息，请查看[接受条款](#accept-the-terms)部分。 请确保 `az vm image accept-terms` 的输出返回值 `"accepted": true,`，表明你已接受映像的条款。
+
+
+## <a name="using-an-existing-vhd-with-purchase-plan-information"></a>将现有 VHD 与购买计划信息配合使用
+
+如果来自 VM 的现有 VHD 是使用付费 Azure 市场映像创建，则在从该 VHD 创建全新 VM 时，可能需要提供购买计划信息。 
+
+如果你仍有原始 VM 或有使用同一市场映像创建的其他 VM，则可以使用 [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) 从其中获取计划名称、发布者和产品信息。 此示例获取 myResourceGroup 资源组中名为 myVM 的 VM，然后显示购买计划信息 。
+
+```azurepowershell-interactive
+az vm get-instance-view -g myResourceGroup -n myVM --query plan
+```
+
+如果在删除原始 VM 之前未获得计划信息，则可提交[支持请求](https://ms.portal.azure.com/#create/Microsoft.Support)。 他们将需要 VM 名称、订阅 ID 和删除操作的时间戳。
+
+获得计划信息后，可以使用 `--attach-os-disk` 参数指定 VHD 来创建新的 VM。
+
+```azurecli-interactive
+az vm create \
+  --resource-group myResourceGroup \
+  --name myNewVM \
+  --nics myNic \
+  --size Standard_DS1_v2 --os-type Linux \
+  --attach-os-disk myVHD \
+  --plan-name planName \
+  --plan-publisher planPublisher \
+  --plan-product planProduct 
+```
+
 
 ## <a name="next-steps"></a>后续步骤
 若要使用映像信息快速创建虚拟机，请参阅[使用 Azure CLI 创建和管理 Linux VM](tutorial-manage-vm.md)。

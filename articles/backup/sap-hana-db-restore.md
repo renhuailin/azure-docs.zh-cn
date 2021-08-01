@@ -3,12 +3,12 @@ title: 还原 Azure VM 上的 SAP HANA 数据库
 description: 本文介绍如何还原在 Azure 虚拟机上运行的 SAP HANA 数据库。 还可以使用“跨区域还原”将数据库还原到次要区域。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d0b1af610ffa19f2a7708ee6f96de335a1886f78
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96021667"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279975"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>还原 Azure VM 上的 SAP HANA 数据库
 
@@ -152,7 +152,7 @@ Azure 备份可以还原在 Azure VM 上运行的 SAP HANA 数据库，如下所
     ![选择还原点](media/sap-hana-db-restore/select-restore-point.png)
 
 1. 与所选还原点关联的所有备份文件将转储到目标路径中。
-1. 根据所选的还原点类型（“时间点”或“完整和差异”），你将看到一个或多个在目标路径中创建的文件夹 。 名为 `Data_<date and time of restore>` 的文件夹之一包含完整备份和差异备份，名为 `Log` 的其他文件夹包含日志备份。
+1. 根据所选的还原点类型（“时间点”或“完整和差异”），你将看到一个或多个在目标路径中创建的文件夹 。 一个名为 `Data_<date and time of restore>` 的文件夹包含完整备份，另一个名为 `Log` 的文件夹包含日志备份和其他备份（例如差异备份和增量备份）。
 1. 将这些已还原文件移动到要将其还原为数据库的 SAP HANA 服务器。
 1. 然后执行以下步骤：
     1. 使用以下命令在存储备份文件的文件夹/目录上设置权限：
@@ -176,7 +176,7 @@ Azure 备份可以还原在 Azure VM 上运行的 SAP HANA 数据库，如下所
         在上面的命令中：
 
         * `<DataFileDir>` - 包含完整备份的文件夹
-        * `<LogFilesDir>` - 包含日志备份的文件夹
+        * `<LogFilesDir>` - 包含日志备份、差异备份和增量备份（若有）的文件夹
         * `<PathToPlaceCatalogFile>` - 必须放置已生成的目录文件的文件夹
 
     1. 通过 HANA Studio 使用新生成的目录文件进行还原或使用此新生成的目录运行 HDBSQL 还原查询。 下面列出了 HDBSQL 查询：
@@ -196,7 +196,7 @@ Azure 备份可以还原在 Azure VM 上运行的 SAP HANA 数据库，如下所
         * `<DatabaseName@HostName>` - 备份用于还原的数据库的名称，以及此数据库所在位置的“主机”/SAP HANA 服务器的名称。 `USING SOURCE <DatabaseName@HostName>` 选项指定数据备份（用于还原）是一个具有与目标 SAP HANA 计算机不同的 SID 或名称的数据库。 因此，对于在进行备份的 HANA 服务器上进行的还原，不需要指定它。
         * `<PathToGeneratedCatalogInStep3>` - 在“步骤 C”中生成的指向目录文件的路径
         * `<DataFileDir>` - 包含完整备份的文件夹
-        * `<LogFilesDir>` - 包含日志备份的文件夹
+        * `<LogFilesDir>` - 包含日志备份、差异备份和增量备份（若有）的文件夹
         * `<BackupIdFromJsonFile>` - 在“步骤 C”中提取的“BackupId” 
 
     * 要还原到特定完整备份或差异备份：
@@ -212,7 +212,7 @@ Azure 备份可以还原在 Azure VM 上运行的 SAP HANA 数据库，如下所
         * `<DatabaseName@HostName>` - 备份用于还原的数据库的名称，以及此数据库所在位置的“主机”/SAP HANA 服务器的名称。 `USING SOURCE <DatabaseName@HostName>` 选项指定数据备份（用于还原）是一个具有与目标 SAP HANA 计算机不同的 SID 或名称的数据库。 因此，不需要为采用备份的同一 HANA 服务器上的还原指定它。
         * `<PathToGeneratedCatalogInStep3>` - 在“步骤 C”中生成的指向目录文件的路径
         * `<DataFileDir>` - 包含完整备份的文件夹
-        * `<LogFilesDir>` - 包含日志备份的文件夹
+        * `<LogFilesDir>` - 包含日志备份、差异备份和增量备份（若有）的文件夹
         * `<BackupIdFromJsonFile>` - 在“步骤 C”中提取的“BackupId” 
 
 ### <a name="restore-to-a-specific-point-in-time"></a>还原到特定时间点
@@ -276,10 +276,10 @@ Azure 备份可以还原在 Azure VM 上运行的 SAP HANA 数据库，如下所
 
 次要区域还原用户体验将类似于主要区域还原用户体验。 在“还原配置”窗格中配置详细信息以配置还原时，系统会提示你仅提供次要区域参数。
 
-![在何处以及如何还原](./media/sap-hana-db-restore/restore-secondary-region.png)
+![在何处还原以及如何还原](./media/sap-hana-db-restore/restore-secondary-region.png)
 
 >[!NOTE]
->次要区域中的虚拟网络需要唯一分配，并且不能用于该资源组中的任何其他 VM。
+>次要区域中的虚拟网络需要进行独一无二的分配，并且不能用于该资源组中的任何其他 VM。
 
 ![“正在触发还原”通知](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/19/2016
+ms.date: 05/05/2021
 ms.author: rohink
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8e116096afbd01af4914be49d5675881724d5069
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3418ef3f0c6a85a21ef4f295fa3d0e4104a91e5a
+ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96015054"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108794045"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>使用 .NET SDK 创建 DNS 区域和记录集
 
@@ -28,15 +28,18 @@ ms.locfileid: "96015054"
 
 ## <a name="create-a-service-principal-account"></a>创建服务主体帐户
 
-通常情况下，通过专用帐户（而不是自己的用户凭据）授予对 Azure 资源的编程访问权限。 将这些专用帐户称为“服务主体”帐户。 若要使用 Azure DNS SDK 示例项目，首先需要创建一个服务主体帐户并为其分配正确的权限。
+通常情况下，使用专用帐户（而不是自己的用户凭据）授予对 Azure 资源的编程访问权限。 将这些专用帐户称为“服务主体”帐户。 若要使用 Azure DNS SDK 示例项目，首先需要创建一个服务主体帐户并为其分配正确的权限。
 
-1. 请按照[这些说明](../active-directory/develop/howto-authenticate-service-principal-powershell.md)创建服务主体帐户（Azure DNS SDK 示例项目采用基于密码的身份验证。）
-2. 创建资源组（[此处提供了方法](../azure-resource-manager/templates/deploy-portal.md)）。
-3. 使用 Azure RBAC 将服务主体帐户的“DNS 区域参与者”权限授予资源组（[此处提供了方法](../role-based-access-control/role-assignments-portal.md)）。
-4. 如果使用 Azure DNS SDK 示例项目，请如下所示编辑 program.cs 文件：
+1. [创建服务主体帐户](../active-directory/develop/howto-authenticate-service-principal-powershell.md)。 Azure DNS SDK 示例项目假定基于密码的身份验证。）
+
+1. 然后，创建一个[资源组](../azure-resource-manager/templates/deploy-portal.md)。
+
+1. 使用 [Azure RBAC](../role-based-access-control/role-assignments-portal.md) 将服务主体帐户的“DNS 区域参与者”权限授予该资源组。
+
+1. 如果使用 Azure DNS SDK 示例项目，请如下所示编辑“program.cs”文件：
 
    * 请插入在步骤 1 中使用的 `tenantId`、`clientId`（也称为帐户 ID）、`secret`（服务主体帐户密码）和 `subscriptionId` 的正确值。
-   * 输入在步骤 2 中选择的资源组名称。
+   * 输入在步骤 2 中创建的资源组名称。
    * 输入所选的 DNS 区域名称。
 
 ## <a name="nuget-packages-and-namespace-declarations"></a>NuGet 包和命名空间声明
@@ -44,10 +47,14 @@ ms.locfileid: "96015054"
 若要使用 Azure DNS .NET SDK，需要安装 **Azure DNS 管理库** NuGet 包和其他所需的 Azure 包。
 
 1. 在 **Visual Studio** 中，打开项目或新的项目。
-2. 转到“工具”>“NuGet 包管理器”>“管理解决方案的 NuGet 包…”    。
-3. 单击“浏览”，启用“包括预发行版”复选框，并在搜索框中键入 **Microsoft.Azure.Management.Dns**。
-4. 选择此包，然后单击“**安装**”将其添加到 Visual Studio 项目中。
-5. 重复以上过程，还能安装以下包：**Microsoft.Rest.ClientRuntime.Azure.Authentication** 和 **Microsoft.Azure.Management.ResourceManager**。
+
+1. 转到“工具”>“NuGet 包管理器”>“管理解决方案的 NuGet 包…”    。
+
+1. 选择“浏览”，启用“包括预发行版”复选框，并在搜索框中键入 **Microsoft.Azure.Management.Dns**。
+
+1. 选择此包，然后选择“安装”将其添加到 Visual Studio 项目中。
+
+1. 重复以上过程，还能安装以下包：**Microsoft.Rest.ClientRuntime.Azure.Authentication** 和 **Microsoft.Azure.Management.ResourceManager**。
 
 ## <a name="add-namespace-declarations"></a>添加命名空间声明
 
@@ -72,14 +79,14 @@ dnsClient.SubscriptionId = subscriptionId;
 
 ## <a name="create-or-update-a-dns-zone"></a>创建或更新 DNS 区域
 
-若要创建 DNS 区域，首先创建一个 "Zone" 对象来包含 DNS 区域参数。 因为 DNS 区域未链接到某一特定区域，此位置会被设置为 'global'。 在此示例中，还会将 [Azure 资源管理器“标记”](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)添加到此区域。
+若要创建 DNS 区域，首先需要创建一个包含 DNS 区域参数的“区域”对象。 因为 DNS 区域未链接到某一特定区域，此位置会被设置为“global”。 在此示例中，还会将 [Azure 资源管理器“标记”](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/)添加到此区域。
 
-要实际创建或更新 Azure DNS 中的区域，会将包含区域参数的区域对象传递给 `DnsManagementClient.Zones.CreateOrUpdateAsyc` 方法。
+要在 Azure DNS 中创建或更新区域，会将包含区域参数的区域对象传递给 `DnsManagementClient.Zones.CreateOrUpdateAsyc` 方法。
 
 > [!NOTE]
 > DnsManagementClient 支持三种操作模式：同步 ('CreateOrUpdate')、异步 ('CreateOrUpdateAsync') 或异步但可以访问 HTTP 响应 ('CreateOrUpdateWithHttpMessagesAsync')。  可以选择上述任何一种模式，具体取决于应用程序的需要。
 
-Azure DNS 支持乐观并发，称为 [Etag](./dns-getstarted-powershell.md)。 在此示例中，为“If-None-Match”标头指定 "*"，通知 Azure DNS 创建一个 DNS 区域（如果尚不存在）。  如果指定的资源组内已存在具有特定名称的区域，此调用失败。
+Azure DNS 支持乐观并发，称为 [Etag](./dns-getstarted-powershell.md)。 在此示例中，为“If-None-Match”标头指定“*”，通知 Azure DNS 创建一个 DNS 区域（如果尚不存在）。  如果指定的资源组内已存在具有特定名称的区域，此调用失败。
 
 ```cs
 // Create zone parameters
@@ -102,7 +109,7 @@ DNS 记录是作为记录集管理的。 记录集是区域内一组名称和记
 
 若要创建或更新记录集，请创建“RecordSet”参数对象并将其传递到 `DnsManagementClient.RecordSets.CreateOrUpdateAsync`。 和 DNS 区域一样，也有三种操作模式：同步 ('CreateOrUpdate')、异步 ('CreateOrUpdateAsync') 或异步但可以访问 HTTP 响应 ('CreateOrUpdateWithHttpMessagesAsync')。
 
-和 DNS 区域一样，记录集的操作包括对乐观并发的支持。  在此示例中，由于既未指定 If-match 也未指定 If-None-Match，始终都会创建记录集。  此调用将覆盖 DNS 区域中任何现有的名称和记录类型都相同的记录。
+和 DNS 区域一样，记录集的操作包括对乐观并发的支持。  在此示例中，由于未指定“If-Match”或“If-None-Match”，将始终创建记录集。  此调用将覆盖 DNS 区域中任何现有的名称和记录类型都相同的记录。
 
 ```cs
 // Create record set parameters
@@ -132,7 +139,7 @@ var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetN
 
 ## <a name="update-an-existing-record-set"></a>更新现有的记录集
 
-要更新现有的 DNS 记录集，首先检索记录集，再更新记录集的内容，然后提交更改。  在此示例中，我们从 If-match 参数检索到的记录集内指定 Etag。 如果在此期间并发操作修改了记录集，调用会失败。
+若要更新现有 DNS 记录集，请首先检索该记录集。 然后，更新记录集内容，再提交更改。 在此示例中，我们从 If-match 参数检索到的记录集内指定 Etag。 如果在此期间并发操作修改了记录集，调用会失败。
 
 ```cs
 var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetName, RecordType.A);
@@ -147,7 +154,9 @@ recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName, zo
 
 ## <a name="list-zones-and-record-sets"></a>列出区域和记录集
 
-若要列出区域，请使用 *DnsManagementClient.Zones.List...* 方法，它支持列出给定资源组中的所有区域或给定 Azure 订阅中的所有区域（跨资源组）。若要列出记录集，请使用 *DnsManagementClient.RecordSets.List...* 方法，它支持列出给定区域中的所有记录集或仅列出特定类型的记录集。
+* 若要列出区域，请使用 *DnsManagementClient.Zones.List...* 方法，它支持列出给定资源组中的所有区域或给定 Azure 订阅中的所有区域（跨资源组）。 
+
+* 若要列出记录集，请使用 *DnsManagementClient.RecordSets.List...* 方法，它支持列出给定区域中的所有记录集或仅列出特定类型的记录集。
 
 请注意，列出区域和记录集时，可能会对结果进行分页。  下面的示例演示如何循环访问各页结果。 （人为减小的‘2’页面大小用于强制分页；在实践中，应省略此参数并使用默认页面大小。）
 
@@ -167,4 +176,4 @@ while (page.NextPageLink != null)
 
 ## <a name="next-steps"></a>后续步骤
 
-下载 [Azure DNS .NET SDK 示例项目](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True)，其中包括有关如何使用 Azure DNS .NET SDK 的更多示例，包括其他 DNS 记录类型的示例。
+下载 [Azure DNS .NET SDK 示例项目](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True)。 包括有关如何使用 Azure DNS .NET SDK 的示例和其他 DNS 记录类型示例。

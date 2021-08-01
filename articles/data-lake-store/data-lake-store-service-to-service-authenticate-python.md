@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref, devx-track-python
 ms.openlocfilehash: fe987070438c689e899dee18edaf4f708555ab11
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92106750"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>使用 Python 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
@@ -80,7 +80,7 @@ pip install azure-datalake-store
 
 ## <a name="service-to-service-authentication-with-client-secret-for-account-management"></a>为帐户管理使用结合客户端机密的服务到服务身份验证
 
-使用此代码片段通过 Azure AD 对 Data Lake Storage Gen1 上的帐户管理操作（例如，创建 Data Lake Storage Gen1 帐户、删除 Data Lake Storage Gen1 帐户，等等）进行身份验证。可以使用以下代码片段通过现有 Azure AD“Web 应用”应用程序的应用程序 / 服务主体的客户端机密以非交互方式对应用程序进行身份验证。
+使用此代码片段，通过 Azure AD 对 Data Lake Storage Gen1 上的帐户管理操作进行身份验证，例如创建 Data Lake Storage Gen1 帐户、删除 Data Lake Storage Gen1 帐户等。还可使用以下代码片段，通过现有 Azure AD“Web 应用”应用程序的应用程序/服务主体的客户端密码，以非交互方式对应用程序进行身份验证。
 
 ```python
 authority_host_uri = 'https://login.microsoftonline.com'
@@ -97,7 +97,7 @@ armCreds = AADTokenCredentials(mgmt_token, client_id, resource=RESOURCE)
 
 ## <a name="service-to-service-authentication-with-client-secret-for-filesystem-operations"></a>对文件系统操作使用结合客户端密码的服务到服务身份验证
 
-使用以下代码片段通过 Azure AD 对 Data Lake Storage Gen1 上的文件系统操作（例如，创建文件夹、上传文件，等等）进行身份验证。可以使用以下代码片段通过应用程序/服务主体的客户端机密对应用程序进行非交互式身份验证。 请对现有的 Azure AD“Web 应用”应用程序使用这种身份验证。
+使用以下代码片段，通过 Azure AD 对 Data Lake Storage Gen1 上的文件系统操作进行身份验证，例如创建文件夹、上传文件等。还可使用以下代码片段，通过应用程序/服务主体的客户端密码，以非交互方式对应用程序进行身份验证。 请对现有的 Azure AD“Web 应用”应用程序使用这种身份验证。
 
 ```python
 tenant = '<TENANT>'

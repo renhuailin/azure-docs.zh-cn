@@ -11,12 +11,12 @@ ms.date: 11/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa358b0c9d7747584deabe761160d3bcbcde8feb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12eebf9c43dff9b3a83458051f5a3980b5afcbe0
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99593174"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888979"
 ---
 # <a name="aadcloudsynctools-powershell-module-for-azure-ad-connect-cloud-sync"></a>用于 Azure AD Connect 云同步的 AADCloudSyncTools PowerShell 模块
 
@@ -45,7 +45,7 @@ AADCloudSyncTools 模块提供了一组有用的工具，可用于帮助管理 A
 5. 现在应会看到有关模块的信息。
 6. 接下来，若要安装 AADCloudSyncTools 模块必备组件，请运行：`Install-AADCloudSyncToolsPrerequisites`
 7. 在首次运行时，将会安装 PoweShellGet 模块（如果尚不存在）。 若要加载新的 PowershellGet 模块，请关闭 PowerShell 窗口，并使用管理员权限打开新的 PowerShell 会话。 
-8. 再次使用步骤 3 导入该模块。
+8. 再次使用步骤 2 导入该模块。
 9. 运行 `Install-AADCloudSyncToolsPrerequisites` 以安装 MSAL 和 AzureAD 模块
 11. 所有预请求应该已成功安装![安装模块](media/reference-powershell/install-1.png)
 

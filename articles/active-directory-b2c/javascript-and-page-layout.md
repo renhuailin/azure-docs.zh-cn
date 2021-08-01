@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 06/07/2021
 ms.custom: project-no-code, devx-track-js
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d234e57f7c11b0d9f2cd212bde93a8b8e478ef41
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 652551635b84c18020bf928194923d0e6ca86149
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781358"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565261"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的 JavaScript 和页面布局版本
 
@@ -63,7 +63,7 @@ Azure AD B2C 提供一组打包的内容，其中包含的 HTML、CSS 和 JavaSc
 
 1. 在 Azure AD B2C 租户中，选择“用户流”  。
 1. 选择策略（例如，“B2C_1_SignupSignin”）将其打开。
-1. 选择“页面布局”。 选择“布局名称”，然后选择“页面布局版本（预览版）”。
+1. 选择“页面布局”。 选择“布局名称”，然后选择“页面布局版本”。
 
 若要了解不同的页面布局版本，请参阅[页面布局版本更改日志](page-layout.md)。
 

@@ -3,12 +3,12 @@ title: 使用 MARS 代理将文件还原到 Windows 服务器
 description: 在本文中，了解如何使用 Microsoft Azure 恢复服务 (MARS) 代理将存储在 Azure 中的数据还原到 Windows 服务器或 Windows 计算机。
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 7ca0787ec38e1bc22b62e756c7ee56c5c9e93493
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: fd17d4f2199440c72e5b0ceb4ec7fda7ab40d837
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107517328"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555103"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>使用 MARS 代理将文件还原到 Windows 服务器
 
@@ -75,7 +75,7 @@ ms.locfileid: "107517328"
     ![恢复数据向导“浏览和恢复文件”页 - 确认恢复卷卸载的屏幕截图（还原到相同计算机）](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > 如果不选择“卸载”，恢复卷将保持装载 6 个小时（从装载时算起）。 但是，如果正在持续进行文件复制，装载时间延长至最多 24 小时。 装载卷时，不会运行任何备份操作。 计划为在装载卷时运行的任何备份操作会在卸载恢复卷后运行。
+    > 如果不选择“卸载”，恢复卷将保持装载 6 个小时（从装载时算起）。 但是，如果正在进行文件复制，装载时间将延长至最多 7 天。 装载卷时，不会运行任何备份操作。 计划为在装载卷时运行的任何备份操作会在卸载恢复卷后运行。
     >
 
 ## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>使用即时还原将数据还原到另一台计算机

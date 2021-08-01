@@ -12,16 +12,16 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: fa3a2366f007ff1481e7c84f049e606586392037
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b95286169df2960d8e7297a493354b8f01e2f667
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96742946"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029686"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-ad-multi-factor-authentication"></a>解决 Azure AD 多重身份验证的 NPS 扩展出现的错误消息
 
-如果在使用 Azure AD 多重身份验证的 NPS 扩展时遇到错误，请参考本文快速解决问题。 NPS 扩展日志可以在安装 NPS 扩展的服务器上事件查看器中“自定义视图” > “服务器角色” > “网络策略和访问服务”下找到。
+如果在使用 Azure AD 多重身份验证的 NPS 扩展时遇到错误，请参考本文快速解决问题。 NPS 扩展日志可以在安装 NPS 扩展的服务器上的事件查看器中找到，具体位置是在“应用程序和服务日志” > “Microsoft” > “AzureMfa” > “AuthN” > “AuthZ”。    
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>解决常见错误的故障排除步骤
 

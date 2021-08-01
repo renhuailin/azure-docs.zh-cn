@@ -13,8 +13,12 @@
     - name: 适用于 Windows Server 的 Automanage
       href: automanage-windows-server.md
       items:
+        - name: 适用于 Windows Server 的 Automanage 服务（预览版）
+          href: automanage-windows-server-services-overview.md
         - name: 新虚拟机的热补丁
           href: automanage-hotpatch.md
+    - name: 适用于已启用 Arc 的服务器的 Automanage
+      href: automanage-arc.md
     - name: Automanage 帐户
       href: automanage-account.md
 - name: 如何
