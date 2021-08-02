@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 01/05/2021
+ms.date: 05/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18e504579c750caf452ef74844c4a388ec96448a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3d13b1f515d5585c6378e48eb64feed59615cdef
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97954479"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616908"
 ---
 # <a name="what-is-risk"></a>什么是风险？
 
@@ -66,6 +66,7 @@ Azure AD 标识保护中的风险检测包括已识别的与目录中的用户�
 | 新国家/地区 | 脱机 | 此检测由 [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country) 发现。 此项检测考虑过去的活动位置，以确定新的和不常见的位置。 异常情况检测引擎将存储组织中用户以往用过的位置的相关信息。 |
 | 来自匿名 IP 地址的活动 | 脱机 | 此检测由 [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses) 发现。 此项检测可以识别使用已标识为匿名代理 IP 地址的 IP 地址展开活动的用户。 |
 | 可疑收件箱转发 | 脱机 | 此检测由 [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding) 发现。 此检测查找可疑的电子邮件转发规则，例如，如果用户创建了将所有电子邮件副本转发到外部地址的收件箱规则。 |
+| Azure AD 威胁智能 | 脱机 | 此风险检测类型指示给定用户的异常登录活动，或与基于 Microsoft 内部和外部威胁情报源的已知攻击模式一致的登录活动。 |
 
 ### <a name="other-risk-detections"></a>其他风险检测
 
@@ -83,7 +84,7 @@ Azure AD 标识保护中的风险检测包括已识别的与目录中的用户�
 
 ### <a name="password-hash-synchronization"></a>密码哈希同步
 
-凭据泄露和密码喷射等风险检测要求存在密码哈希才能进行检测。 有关密码哈希同步的详细信息，请查看[使用 Azure AD Connect 同步实现密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md)一文。
+凭据泄露等风险检测要求存在密码哈希才能进行检测。 有关密码哈希同步的详细信息，请查看[使用 Azure AD Connect 同步实现密码哈希同步](../hybrid/how-to-connect-password-hash-synchronization.md)一文。
 
 ### <a name="leaked-credentials"></a>凭据泄露
 
@@ -109,6 +110,10 @@ Microsoft 在各种位置查找凭据泄露，包括：
 #### <a name="how-often-does-microsoft-process-new-credentials"></a>Microsoft 多久处理一次新凭据？
 
 凭据会在找到后立即处理，通常每天分多批处理。
+
+### <a name="locations"></a>位置
+
+风险检测中的位置由 IP 地址查找决定。
 
 ## <a name="next-steps"></a>后续步骤
 

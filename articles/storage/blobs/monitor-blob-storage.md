@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: dd4d4c1ddea737a1aa2083f7e2801aaee1b4cff7
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: subject-monitoring, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: bd9e8c2e71f69045078111bd5a4ae7c0edf567aa
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467439"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527363"
 ---
 # <a name="monitoring-azure-blob-storage"></a>监视 Azure Blob 存储
 
@@ -542,7 +542,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 有关详细信息，请参阅 [Azure Monitor 中的 Log Analytics 入门](../../azure-monitor/logs/log-analytics-tutorial.md)。
 
-数据存储在 StorageBlobLog 表中。 Data Lake Storage Gen2 的日志不会出现在专用表中。 这是因为 Data Lake Storage Gen2 不是服务。 这是你可以在存储帐户中启用的一组功能。 如果启用了这些功能，日志将继续出现在 StorageBlobLogs 表中。 
+数据存储在 StorageBlobLog 表中。 Data Lake Storage Gen2 的日志不会出现在专用表中。 这是因为 Data Lake Storage Gen2 不是服务。 这是你可以在存储帐户中启用的一组功能。 如果启用了这些功能，日志将继续出现在 StorageBlobLog 表中。 
 
 #### <a name="sample-kusto-queries"></a>示例 Kusto 查询
 
@@ -603,7 +603,7 @@ Azure Monitor 提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.M
 
 **Azure 存储是否支持托管磁盘或非托管磁盘的指标？**
 
-不是。 Azure 计算支持磁盘上的指标。 有关详细信息，请参阅 [托管和非托管磁盘的每个磁盘指标](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
+否。 Azure 计算支持磁盘上的指标。 有关详细信息，请参阅 [托管和非托管磁盘的每个磁盘指标](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: aashishb
+ms.author: jmartens
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 11/20/2020
-ms.openlocfilehash: a079504872eaf3840416a99e784c4d33a6828b0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/02/2021
+ms.openlocfilehash: 27bd8124c0b78d1fecd1f7027104c3b5c9b8a8a1
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94992023"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111541518"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure 机器学习的企业安全性和治理
 
@@ -39,7 +39,7 @@ ms.locfileid: "94992023"
 
 [![Azure 机器学习中的身份验证](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication.png#lightbox)
 
-每个工作区都有一个关联的系统分配的[托管标识](../active-directory/managed-identities-azure-resources/overview.md)，该标识与工作区同名。 此托管标识用于安全地访问工作区使用的资源。 它对附加的资源具有以下 Azure RBAC 权限：
+每个工作区都有一个关联的系统分配的[托管标识](../active-directory/managed-identities-azure-resources/overview.md)，该标识与工作区同名。 此托管标识用于安全地访问工作区使用的资源。 它对关联的资源具有以下 Azure RBAC 权限：
 
 | 资源 | 权限 |
 | ----- | ----- |
@@ -48,13 +48,23 @@ ms.locfileid: "94992023"
 | 密钥保管库 | 访问所有密钥、机密和证书 |
 | Azure 容器注册表 | 参与者 |
 | 包含工作区的资源组 | 参与者 |
-| 包含 Key Vault 的资源组（如果不同于包含工作区的资源组） | 参与者 |
+
+系统分配的托管标识用于在 Azure 机器学习与其他 Azure 资源之间进行内部的服务到服务身份验证。 用户无法访问该标识令牌，也无法使用它获取对这些资源的访问权限。 用户在具有足够 RBAC 权限的情况下，只能通过 [Azure 机器学习控制和数据平面 API](how-to-assign-roles.md) 来访问这些资源。
+
+托管标识需要资源组（其中包含工作区）的“参与者”权限，才能预配关联的资源并[为 Web 服务终结点部署 Azure 容器实例](how-to-deploy-azure-container-instance.md)。
 
 不建议管理员撤销托管标识对上表中所述资源的访问权限。 可以使用[“重新同步密钥”操作](how-to-change-storage-access-key.md)来恢复访问权限。
 
-对于每个工作区区域，Azure 机器学习还会在订阅中另外创建一个拥有参与者级别访问权限的应用程序（名称以 `aml-` 或 `Microsoft-AzureML-Support-App-` 开头）。 例如，在同一订阅中，如果在美国东部和欧洲北部各有一个工作区，则会看到两个这样的应用程序。 Azure 机器学习可以通过这些应用程序来帮助你管理计算资源。
+> [!NOTE]
+> 如果你的 Azure 机器学习工作区具有在 2021 年 5 月 14 日之前创建的计算目标（计算群集、计算实例、Azure Kubernetes 服务等），则你可能还有其他 Azure Active Directory 帐户。 帐户名称以 `Microsoft-AzureML-Support-App-` 开头，并且对你在每个工作区区域的订阅具有参与者级别访问权限。
+> 
+> 如果工作区未附加任何 Azure Kubernetes 服务 (AKS)，你可以放心删除此 Azure AD 帐户。 
+> 
+> 如果工作区已附加 AKS 群集，并且这些群集是在 2021 年 5 月 14 日之前创建的，请不要删除此 Azure AD 帐户。 在这种情况下，必须先删除并重新创建 AKS 群集，然后才能删除 Azure AD 帐户。
 
-你还可以配置自己的托管标识，以便将其与 Azure 虚拟机和 Azure 机器学习计算群集一起使用。 使用 VM 时，可以从 SDK 使用托管标识来访问工作区，而不是使用各个用户的 Azure AD 帐户。 使用计算群集时，可以使用托管标识来访问运行训练作业的用户可能无权访问的资源，例如安全数据存储。 有关详细信息，请参阅 [Azure 机器学习工作区的身份验证](how-to-setup-authentication.md)。
+你可以将工作区预配为使用用户分配的托管标识，并将其他角色授予托管标识，以便访问所需目标（例如，访问你自己的 Azure 容器注册表以获取基础 Docker 映像）。 有关详细信息，请参阅[使用托管标识进行访问控制](how-to-use-managed-identities.md)。
+
+你还可以将托管标识配置为与 Azure 机器学习计算群集配合使用。 此托管标识独立于工作区托管标识。 使用计算群集时，可以使用托管标识来访问运行训练作业的用户可能无权访问的资源，例如安全数据存储。 有关详细信息，请参阅[对 Azure 上的存储服务进行基于标识的数据访问](how-to-identity-based-data-access.md)。
 
 > [!TIP]
 > 在 Azure 机器学习中使用 Azure AD 和 Azure RBAC 有一些例外：

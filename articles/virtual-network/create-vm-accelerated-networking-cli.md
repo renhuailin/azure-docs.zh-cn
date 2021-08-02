@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 643a52c9be04fb325b8e1d088faeb68e473aa673
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e67ecdb25a64c7e61eb54391a6f09f5f68df435
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98919946"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755259"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 创建具有加速网络的 Linux 虚拟机
 
@@ -200,8 +200,8 @@ ssh azureuser@<your-public-ip-address>
 
 * **Ubuntu 16.04**：4.11.0-1013
 * **SLES SP3**：4.4.92-6.18
-* **RHEL**：7.4.2017120423
-* **CentOS**:7.4.20171206
+* RHEL：3.10.0-693
+* CentOS：3.10.0-693
 
 
 使用 `lspci` 命令确认向 VM 公开了 Mellanox VF 设备。 返回的输出与以下输出类似：

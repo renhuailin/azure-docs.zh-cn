@@ -1,21 +1,24 @@
 ---
-title: 使用转储和还原进行升级 - Azure Database for PostgreSQL - 单一服务器
-description: 描述使用转储和还原数据库迁移到更高版本的 Azure Database for PostgreSQL - 单一服务器的脱机升级方法。
+title: 使用转储和还原进行升级 - Azure Database for PostgreSQL
+description: 描述使用转储和还原数据库迁移到更高版本的 Azure Database for PostgreSQL 的脱机升级方法。
 author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 11/10/2020
-ms.openlocfilehash: 42bbe1c9f4056ae0dae0ccd59b452db90a7c63c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/02/2021
+ms.openlocfilehash: d528d75bd26bf17ca0da20447848d315e2dc9057
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96493655"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111406870"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>使用转储和还原升级 PostgreSQL 数据库
 
-通过使用以下方法将数据库迁移到主版本更高的服务器，可以升级部署在 Azure Database for PostgreSQL - 单一服务器中的 PostgreSQL 服务器。
+>[!NOTE]
+> 本文档中介绍的概念适用于 Azure Database for PostgreSQL 单一服务器和 Azure Database for PostgreSQL 灵活服务器（预览版）。 
+
+通过使用以下方法将数据库迁移到主版本更高的服务器，可以升级部署在 Azure Database for PostgreSQL 中的 PostgreSQL 服务器。
 * 使用 PostgreSQL [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) 和 [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) 的 **脱机** 方法，这种方法会导致迁移数据时停机。 本文档介绍这种升级/迁移方法。
 * 使用 [数据库迁移服务](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) (DMS) 的 **联机** 方法。 这种方法减少了迁移时的停机时间，使目标数据库与源保持同步，并且可以选择何时进行切换。 但是，使用 DMS 需要满足一些先决条件和限制。 有关详细信息，请参阅 [DMS 文档](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md)。 
 
@@ -41,8 +44,8 @@ ms.locfileid: "96493655"
  
 若要逐步执行本操作指南，你需要：
 
-- 运行要升级的 9.5、9.6 或 10 的源 PostgreSQL 数据库
-- 具有所需主版本 [Azure Database for PostgreSQL 服务器](quickstart-create-server-database-portal.md)的目标 PostgreSQL 数据库服务器。 
+- 一个运行要升级的较低版本引擎的源 PostgreSQL 数据库服务器。
+- 一个具有所需主版本 [Azure Database for PostgreSQL 服务器单一服务器](quickstart-create-server-database-portal.md)或 [Azure Database for PostgreSQL 灵活服务器](./flexible-server/quickstart-create-server-portal.md)的目标 PostgreSQL 数据库服务器。 
 - PostgreSQL 客户端系统，用于运行转储和还原命令。
   - 它可以是安装了 PostgreSQL 以及 [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) 和 [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) 命令行实用程序的 Linux 或 Windows 客户端。 
   - 也可以使用 [Azure Cloud Shell](https://shell.azure.com)，或单击 [Azure 门户](https://portal.azure.com)右上角菜单栏上的 Azure Cloud Shell。 在运行转储和还原命令之前，你必须先登录到你的帐户 `az login`。
@@ -71,6 +74,9 @@ ms.locfileid: "96493655"
  | 目标服务器 (v11) | pg-11.postgres.database.azure.com |
  | 目标数据库 | bench5gb |
  | 目标用户名 | pg@pg-11 |
+
+>[!NOTE]
+> 灵活服务器支持 PostgreSQL 版本 11 及更高版本。 此外，灵活服务器用户名不需要 @<servername>。
 
 ## <a name="upgrade-your-databases-using-offline-migration-methods"></a>使用脱机迁移方法升级数据库
 可以选择使用此部分中所述的方法之一进行升级。 执行任务时，可以使用以下提示。
@@ -164,5 +170,5 @@ ms.locfileid: "96493655"
 ## <a name="next-steps"></a>后续步骤
 
 - 对目标数据库功能满意后，可以删除旧的数据库服务器。 
-- 如果要使用与源服务器相同的数据库终结点，则在删除旧的源数据库服务器后，可以使用旧的数据库服务器名称创建只读副本。 建立稳定状态后，可以停止副本，这会将副本服务器提升为独立服务器。 有关更多详细信息，请参阅[复制](./concepts-read-replicas.md)。
+- 仅限 Azure Database for PostgreSQL 单一服务器。 如果要使用与源服务器相同的数据库终结点，则在删除旧的源数据库服务器后，可以使用旧的数据库服务器名称创建只读副本。 建立稳定复制状态后，可以停止副本，这会将副本服务器提升为独立服务器。 有关更多详细信息，请参阅[复制](./concepts-read-replicas.md)。
 - 请记住先在测试环境中测试和验证这些命令，然后再将其用于生产。

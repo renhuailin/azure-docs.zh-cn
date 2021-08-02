@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 映像生成器从现有映像版本创建新的 VM 映像版本（预览版）
+title: 使用 Azure 映像生成器从现有映像版本创建新的 VM 映像版本
 description: 使用 Linux 中的 Azure 映像生成器从现有映像版本创建新的 VM 映像版本。
 author: cynthn
 ms.author: cynthn
@@ -9,14 +9,14 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: danis
-ms.openlocfilehash: 0887051ffa396f1eac8bc00dc2437b8e92bec45a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9508da2002035ee413d557c0cd48474b6e10e0d
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101695628"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071238"
 ---
-# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-linux"></a>预览版：使用 Linux 中的 Azure 映像生成器从现有映像版本创建新的 VM 映像版本
+# <a name="create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-linux"></a>使用 Linux 中的 Azure 映像生成器从现有映像版本创建新的 VM 映像版本
 
 本文介绍如何使用[共享映像库](../shared-image-galleries.md)中的现有映像版本，对其进行更新，并将其作为新的映像版本发布到库。
 
@@ -24,17 +24,7 @@ ms.locfileid: "101695628"
 
 
 ## <a name="register-the-features"></a>注册功能
-若要在预览期间使用 Azure 映像生成器，需要注册新功能。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
-```
-
-检查功能注册的状态。
-
-```azurecli-interactive
-az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
-```
+若要使用 Azure 映像生成器，则需要注册此功能。
 
 检查注册。
 

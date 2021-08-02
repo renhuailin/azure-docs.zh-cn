@@ -2,14 +2,14 @@
 title: 将资源移动到新的订阅或资源组
 description: 使用 Azure Resource Manager 将资源移到新的资源组或订阅。
 ms.topic: conceptual
-ms.date: 04/16/2021
+ms.date: 06/03/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e899319460c4d9b144a580e0cb093488ea76683c
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: fdda54f31fe4a85a5ac62d8ce60fffd03c5a785d
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322160"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111526581"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>将资源移到新的资源组或订阅
 
@@ -17,7 +17,7 @@ ms.locfileid: "108322160"
 
 在移动操作过程中，源组和目标组都会锁定。 在完成移动之前，将阻止对资源组执行写入和删除操作。 此锁意味着将无法添加、更新或删除资源组中的资源。 这并不意味着资源已被冻结。 例如，如果将 Azure SQL 逻辑服务器及其数据库移到新的资源组或订阅，则使用这些数据库的应用程序不会受停机影响。 它们仍可读取和写入数据库。 锁定时间最长可达四小时，但大多数移动所需的完成时间要少得多。
 
-移动资源只会将其移到新的资源组或订阅。 它不会更改资源的位置。
+移动资源只会将其移到新的资源组或订阅。 但不会更改该资源的位置。
 
 ## <a name="changed-resource-id"></a>更改的资源 ID
 
@@ -122,7 +122,117 @@ ms.locfileid: "108322160"
 * 步骤 2：将资源和依赖资源一起从源订阅移到目标订阅。
 * 步骤 3：也可将依赖资源重新分布到目标订阅中的不同资源组。
 
-## <a name="validate-move"></a>验证移动
+## <a name="use-the-portal"></a>使用门户
+
+若要移动资源，请选择包含那些资源的资源组。
+
+选择要移动的资源。 若要移动所有资源，请选中列表顶部的复选框。 或者，分别选择各个资源。
+
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources-to-move.png" alt-text="选择资源":::
+
+选择“移动”按钮
+
+:::image type="content" source="./media/move-resource-group-and-subscription/select-move.png" alt-text="移动选项":::
+
+此按钮提供了三个选项：
+
+* 移动到新的资源组。
+* 移动到新的订阅。
+* 移动到新的区域。 若要更改区域，请参阅[在区域之间移动资源（从资源组）](../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json)。
+
+选择是要将资源移到新资源组还是新订阅。
+
+将自动设置源资源组。 指定目标资源组。 如果要移动到新订阅，还请指定订阅。 选择“**下一页**”。
+
+:::image type="content" source="./media/move-resource-group-and-subscription/select-destination-group.png" alt-text="选择目标资源组":::
+
+门户验证资源是否可移动。 等待验证完成。
+
+:::image type="content" source="./media/move-resource-group-and-subscription/validation.png" alt-text="移动验证":::
+
+验证成功完成后，选择“下一步”。
+
+确认需要更新这些资源的工具和脚本。 若要开始移动资源，请选择“移动”。
+
+:::image type="content" source="./media/move-resource-group-and-subscription/acknowledge-change.png" alt-text="选择目标":::
+
+移动完成后，你会获得结果通知。
+
+:::image type="content" source="./media/move-resource-group-and-subscription/view-notification.png" alt-text="查看移动结果":::
+
+## <a name="use-azure-powershell"></a>使用 Azure PowerShell
+
+### <a name="validate"></a>验证
+
+若要在不实际移动资源的情况下测试移动方案，请使用 [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) 命令。 仅在需要预先确定结果时，才使用此命令。 若要运行此操作，需要：
+
+* 源资源组的资源 ID
+* 目标资源组的资源 ID
+* 要移动的每个资源的资源 ID
+
+```azurepowershell
+Invoke-AzResourceAction -Action validateMoveResources `
+-ResourceId "/subscriptions/{subscription-id}/resourceGroups/{source-rg}" `
+-Parameters @{ resources= @("/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}", "/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}", "/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}");targetResourceGroup = '/subscriptions/{subscription-id}/resourceGroups/{destination-rg}' }  
+```
+
+如果验证通过，则看不到任何输出。
+
+如果验证失败，则会看到一条错误消息，说明无法移动资源的原因。
+
+### <a name="move"></a>移动
+
+要将现有资源移到另一个资源组或订阅，请使用 [Move-AzResource](/powershell/module/az.resources/move-azresource) 命令。 下面的示例演示了如何将多个资源移动到新的资源组。
+
+```azurepowershell-interactive
+$webapp = Get-AzResource -ResourceGroupName OldRG -ResourceName ExampleSite
+$plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
+Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
+```
+
+若要移到新订阅，请包含 `DestinationSubscriptionId` 参数的值。
+
+## <a name="use-azure-cli"></a>使用 Azure CLI
+
+### <a name="validate"></a>验证
+
+若要在不实际移动资源的情况下测试移动方案，请使用 [az resource invoke-action](/cli/azure/resource#az_resource_invoke_action) 命令。 仅在需要预先确定结果时，才使用此命令。 若要运行此操作，需要：
+
+* 源资源组的资源 ID
+* 目标资源组的资源 ID
+* 要移动的每个资源的资源 ID
+
+在请求正文中，使用 `\"` 转义双引号。
+
+```azurecli
+az resource invoke-action --action validateMoveResources \
+  --ids "/subscriptions/{subscription-id}/resourceGroups/{source-rg}" \
+  --request-body "{  \"resources\": [\"/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}\", \"/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}\", \"/subscriptions/{subscription-id}/resourceGroups/{source-rg}/providers/{resource-provider}/{resource-type}/{resource-name}\"],\"targetResourceGroup\":\"/subscriptions/{subscription-id}/resourceGroups/{destination-rg}\" }" 
+```
+
+如果验证通过，则会看到：
+
+```azurecli
+{} Finished .. 
+```
+
+如果验证失败，则会看到一条错误消息，说明无法移动资源的原因。
+
+### <a name="move"></a>移动
+
+若要将现有资源移动到另一个资源组或订阅，请使用 [az resource move](/cli/azure/resource#az_resource_move) 命令。 提供要移动的资源的资源 ID。 下面的示例演示了如何将多个资源移动到新的资源组。 在 `--ids` 参数中，提供要移动的资源 ID 的空格分隔列表。
+
+```azurecli
+webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
+plan=$(az resource show -g OldRG -n ExamplePlan --resource-type "Microsoft.Web/serverfarms" --query id --output tsv)
+az resource move --destination-group newgroup --ids $webapp $plan
+```
+
+若要移到新订阅，请提供 `--destination-subscription-id` 参数。
+
+## <a name="use-rest-api"></a>使用 REST API
+
+### <a name="validate"></a>验证
 
 [验证移动操作](/rest/api/resources/resources/moveresources)可以测试你的移动方案而无需实际移动资源。 使用此操作检查移动是否会成功。 发送移动请求时会自动调用验证。 仅当需要预先确定结果时才使用此操作。 若要运行此操作，需要：
 
@@ -175,65 +285,7 @@ Authorization: Bearer <access-token>
 {"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
 ```
 
-## <a name="use-the-portal"></a>使用门户
-
-若要移动资源，请选择包含那些资源的资源组。
-
-当你查看资源组时，移动选项处于禁用状态。
-
-:::image type="content" source="./media/move-resource-group-and-subscription/move-first-view.png" alt-text="移动选项处于禁用状态":::
-
-若要启用移动选项，请选择要移动的资源。 若要选择所有资源，请选中列表顶部的复选框。 或者，分别选择各个资源。 选择资源后，将启用移动选项。
-
-:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="选择资源":::
-
-选择“移动”按钮
-
-:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="移动选项":::
-
-此按钮提供了三个选项：
-
-* 移动到新的资源组。
-* 移动到新的订阅。
-* 移动到新的区域。 若要更改区域，请参阅[在区域之间移动资源（从资源组）](../../resource-mover/move-region-within-resource-group.md?toc=/azure/azure-resource-manager/management/toc.json)。
-
-选择是要将资源移到新资源组还是新订阅。
-
-选择目标资源组。 确认需要更新这些资源的脚本，选择“确定”  。 如果你选择了移动到新的订阅，则还必须选择目标订阅。
-
-:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="选择目标":::
-
-验证资源是否可以移动后，你会看到一个通知，指示移动操作正在运行。
-
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="通知":::
-
-操作完成后，你会获得结果通知。
-
-## <a name="use-azure-powershell"></a>使用 Azure PowerShell
-
-要将现有资源移到另一个资源组或订阅，请使用 [Move-AzResource](/powershell/module/az.resources/move-azresource) 命令。 下面的示例演示了如何将多个资源移动到新的资源组。
-
-```azurepowershell-interactive
-$webapp = Get-AzResource -ResourceGroupName OldRG -ResourceName ExampleSite
-$plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
-Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
-```
-
-若要移到新订阅，请包含 `DestinationSubscriptionId` 参数的值。
-
-## <a name="use-azure-cli"></a>使用 Azure CLI
-
-若要将现有资源移动到另一个资源组或订阅，请使用 [az resource move](/cli/azure/resource#az_resource_move) 命令。 提供要移动的资源的资源 ID。 下面的示例演示了如何将多个资源移动到新的资源组。 在 `--ids` 参数中，提供要移动的资源 ID 的空格分隔列表。
-
-```azurecli
-webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
-plan=$(az resource show -g OldRG -n ExamplePlan --resource-type "Microsoft.Web/serverfarms" --query id --output tsv)
-az resource move --destination-group newgroup --ids $webapp $plan
-```
-
-若要移到新订阅，请提供 `--destination-subscription-id` 参数。
-
-## <a name="use-rest-api"></a>使用 REST API
+### <a name="move"></a>移动
 
 要将现有资源移到另一个资源组或订阅，请使用[移动资源](/rest/api/resources/resources/moveresources)操作。
 
@@ -291,6 +343,12 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
   * storageAccounts
 
 另一个常见示例涉及移动虚拟网络。 可能必须移动与该虚拟网络关联的多个其他资源。 移动请求可能要求移动公共 IP 地址、路由表、虚拟网络网关、网络安全组和其他项。
+
+问：错误代码“RequestDisallowedByPolicy”的含义是什么？
+
+资源管理器在尝试移动之前验证移动请求。 此验证包括检查在移动所涉及的资源上定义的策略。 例如，如果尝试移动密钥保管库，但组织有一个策略拒绝在目标资源组中创建密钥保管库，则验证会失败并阻止移动。 返回的错误代码为 RequestDisallowedByPolicy。 
+
+有关策略的详细信息，请参阅[什么是 Azure Policy？](../../governance/policy/overview.md)。
 
 **问：为何无法移动 Azure 中的某个资源？**
 

@@ -1,5 +1,5 @@
 ---
-title: Windows 虚拟桌面 MSIX 应用附加术语表 - Azure
+title: Azure 虚拟桌面 MSIX 应用附加术语表 - Azure
 description: MSIX 应用附加术语和概念的术语表。
 services: virtual-desktop
 author: Heidilohr
@@ -7,13 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 7132eae073f3d53a104536076ae801ec9ff93e5f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+manager: femila
+ms.openlocfilehash: 66f3cc71c27ff80991f3cded1957f90e622f447f
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96518662"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745666"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX 应用附加术语表
 
@@ -33,7 +33,7 @@ MSIX 包是 MSIX 文件或应用程序。
 
 ## <a name="msix-share"></a>MSIX 共享
 
-MSIX 共享是保存扩展的 MSIX 包的网络共享。 MSIX 共享支持 SMB 3 或更高版本。 应用程序从该 MSIX 共享进行暂存，无需将应用程序文件移到系统驱动器。
+MSIX 共享是保存扩展的 MSIX 包的网络共享。 MSIX 共享必须支持 SMB 3 或更高版本。 主机池系统帐户中的虚拟机 (VM) 还必须可以访问共享。 MSIX 包从 MSIX 共享进行暂存，无需将应用程序文件移到系统驱动器。 
 
 ## <a name="msix-image"></a>MSIX 映像
 
@@ -65,15 +65,15 @@ MSIX 映像为 VHD、VHDx 或 CIM 文件，其中包含一个或多个 MSIX 封�
 
 上传 MSIX 包需要将包含扩展的 .MSIX 包的 VHD(x) 或 [CIM](#cim) 上传到 MSIX 共享。
 
-在 Windows 虚拟桌面中，每个 MSIX 共享发生一次上传。 上传包后，同一订阅中的所有主机池都可以引用这个包。
+在 Azure 虚拟桌面中，每个 MSIX 共享发生一次上传。 上传包后，同一订阅中的所有主机池都可以引用这个包。
 
 ## <a name="add-an-msix-package"></a>添加 MSIX 包
 
-在 Windows 虚拟桌面中，添加 MSIX 包会将其链接到主机池。
+在 Azure 虚拟桌面中，添加 MSIX 包会将其链接到主机池。
 
 ## <a name="publish-an-msix-package"></a>发布 MSIX 包 
 
-在 Windows 虚拟桌面中，必须将发布的 MSIX 包分配到 Active Directory 域服务 (AD DS) 或 Azure Active Directory (Azure AD) 用户或用户组。
+在 Azure 虚拟桌面中，必须将发布的 MSIX 包分配到 Active Directory 域服务 (AD DS) 或 Azure Active Directory (Azure AD) 用户或用户组。
 
 ## <a name="staging"></a>过渡
 
@@ -90,11 +90,11 @@ MSIX 映像为 VHD、VHDx 或 CIM 文件，其中包含一个或多个 MSIX 封�
 
 ### <a name="regular-registration"></a>定期注册
 
-在定期注册中，分配给用户的每个应用程序都是完全注册的。 注册在用户登录到会话期间发生，这可能会影响用户开始使用 Windows 虚拟桌面所花费的时间。
+在定期注册中，分配给用户的每个应用程序都是完全注册的。 注册在用户登录到会话期间发生，这可能会影响用户开始使用 Azure 虚拟桌面所花费的时间。
 
 ### <a name="delayed-registration"></a>延迟注册
 
-在延迟注册中，分配给用户的每个应用程序只是部分注册的。 部分注册是指开始菜单磁贴和双击文件关联已注册。 注册会在用户登录到其会话时进行，因此对开始使用 Windows 虚拟桌面所需的时间的影响最小。 仅当用户在 MSIX 包中运行该应用程序时，才完成注册。
+在延迟注册中，分配给用户的每个应用程序只是部分注册的。 部分注册是指开始菜单磁贴和双击文件关联已注册。 注册会在用户登录到其会话时进行，因此对开始使用 Azure 虚拟桌面所需的时间的影响最小。 仅当用户在 MSIX 包中运行该应用程序时，才完成注册。
 
 延迟注册当前是 MSIX 应用附加的默认配置。
 
@@ -110,7 +110,7 @@ MSIX 映像为 VHD、VHDx 或 CIM 文件，其中包含一个或多个 MSIX 封�
 
 .CIM 是与合成图像文件系统 (CimFS) 相关的新文件扩展名。 安装和卸载 CIM 文件会加快 VHD 文件的安装速度。 CIM 消耗的 CPU 和内存也少于 VHD。
 
-CIM文件是扩展名为 .CIM 的文件，该文件包含元数据和至少六个其他包含实际数据的文件。 CIM 文件中的文件不包含扩展名。 下表列出了可在 CIM 中找到的示例文件：
+CIM 文件是扩展名为 .CIM 的文件，该文件包含元数据和至少两个其他包含实际数据的文件。 CIM 文件中的文件不包含扩展名。 下表列出了可在 CIM 中找到的示例文件：
 
 | 文件名 | 扩展名 | 大小 |
 |-----------|-----------|------|

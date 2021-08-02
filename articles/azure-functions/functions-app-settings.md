@@ -3,12 +3,12 @@ title: Azure Functions 的应用设置参考
 description: 有关 Azure Functions 应用设置或环境变量的参考文档。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: b1a3563d766f0f4636086024a1f23d157e8e9a06
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: eb595d666641003c813573a70ab7365732e0a386
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228597"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983143"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -18,12 +18,12 @@ ms.locfileid: "108228597"
 
 [host.json](functions-host-json.md) 文件和 [local.settings.json](functions-run-local.md#local-settings-file) 文件中提供了其他全局配置选项。
 
-> [!NOTE]  
+> [!NOTE]
 > 可以使用应用程序设置替代 host.json 设置值，而不必更改 host.json 文件本身。 这对于需要针对特定环境配置或修改特定 host.json 设置的方案很有用。 这也让你可以更改 host.json 设置，而不必重新发布项目。 若要了解详细信息，请参阅 [host.json 参考文章](functions-host-json.md#override-hostjson-values)。 如果更改函数应用设置，则需要重启函数应用。
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Application Insights 的检测密钥。 仅使用 `APPINSIGHTS_INSTRUMENTATIONKEY` 或 `APPLICATIONINSIGHTS_CONNECTION_STRING` 中的一个。 当 Application Insights 在主权云中运行时，请使用 `APPLICATIONINSIGHTS_CONNECTION_STRING`。 有关详细信息，请参阅[如何配置对 Azure Functions 的监视](configure-monitoring.md)。 
+Application Insights 的检测密钥。 仅使用 `APPINSIGHTS_INSTRUMENTATIONKEY` 或 `APPLICATIONINSIGHTS_CONNECTION_STRING` 中的一个。 当 Application Insights 在主权云中运行时，请使用 `APPLICATIONINSIGHTS_CONNECTION_STRING`。 有关详细信息，请参阅[如何配置对 Azure Functions 的监视](configure-monitoring.md)。
 
 |键|示例值|
 |---|------------|
@@ -33,10 +33,10 @@ Application Insights 的检测密钥。 仅使用 `APPINSIGHTS_INSTRUMENTATIONKE
 
 Application Insights 的连接字符串。 在以下情况下使用 `APPLICATIONINSIGHTS_CONNECTION_STRING` 而不是 `APPINSIGHTS_INSTRUMENTATIONKEY`：
 
-+ 当函数应用需要通过连接字符串提供支持的已添加自定义项时。 
++ 当函数应用需要通过连接字符串提供支持的已添加自定义项时。
 + 当 Application Insights 实例在需要自定义终结点的主权云中运行时。
 
-有关详细信息，请参阅[连接字符串](../azure-monitor/app/sdk-connection-string.md)。 
+有关详细信息，请参阅[连接字符串](../azure-monitor/app/sdk-connection-string.md)。
 
 |键|示例值|
 |---|------------|
@@ -46,16 +46,16 @@ Application Insights 的连接字符串。 在以下情况下使用 `APPLICATION
 
 默认情况下，[Functions 代理](functions-proxies.md)使用快捷方式从代理直接将 API 调用发送到同一函数应用中的函数。 使用此快捷方式取代创建新的 HTTP 请求。 此设置让你能够禁用该快捷方式行为。
 
-|键|值|说明|
+|键|Value|说明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|是|具有指向本地函数应用中函数的后端 URL 的调用不会直接发送到函数， 相反，请求会定向回函数应用的 HTTP 前端。|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|具有指向本地函数应用中函数的后端 URL 的调用会直接转发到函数。 这是默认值。 |
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
 
-此设置控制字符 `%2F` 在路由参数插入后端 URL 时是否在路由参数中解码为斜杠。 
+此设置控制字符 `%2F` 在路由参数插入后端 URL 时是否在路由参数中解码为斜杠。
 
-|键|值|说明|
+|键|Value|说明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|是|包含编码斜杠的路由参数已解码。 |
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|所有路由参数均原样传递，这是默认行为。 |
@@ -159,7 +159,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 ## <a name="functions_extension_version"></a>FUNCTIONS\_EXTENSION\_VERSION
 
-托管函数应用的 Functions 运行时版本。 波浪符（`~`）加主要版本号表示使用该主要版本的最新版本（例如“~3”）。 当同一主要版本的新版本可用时，会自动在函数应用中安装新版本。 若要让应用固定使用特定的版本，请使用完整版本号（例如“3.0.12345”）。 默认值为“~3”。 值 `~1` 让应用固定使用运行时版本 1.x。 有关详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)。
+托管函数应用的 Functions 运行时版本。 波浪符（`~`）加主要版本号表示使用该主要版本的最新版本（例如“~3”）。 当同一主要版本的新版本可用时，会自动在函数应用中安装新版本。 若要让应用固定使用特定的版本，请使用完整版本号（例如“3.0.12345”）。 默认值为“~3”。 值 `~1` 让应用固定使用运行时版本 1.x。 有关详细信息，请参阅 [Azure Functions 运行时版本概述](functions-versions.md)。 使用值 `~4`，可以运行预览版 Azure Functions 以使用 .NET 6.0 预览版。 若要了解详细信息，请参阅 [Azure Functions v4 早期预览版](https://aka.ms/functions-dotnet6earlypreview-wiki)页面。
 
 |键|示例值|
 |---|------------|
@@ -167,7 +167,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 ## <a name="functions_v2_compatibility_mode"></a>FUNCTIONS\_V2\_COMPATIBILITY\_MODE
 
-此设置使函数应用能够在版本 3.x 运行时上以版本 2.x 兼容模式运行。 仅当在[将函数应用从运行时版本 2.x 升级到版本 3.x](functions-versions.md#migrating-from-2x-to-3x) 时遇到问题的情况下，才使用此设置。 
+此设置使函数应用能够在版本 3.x 运行时上以版本 2.x 兼容模式运行。 仅当在[将函数应用从运行时版本 2.x 升级到版本 3.x](functions-versions.md#migrating-from-2x-to-3x) 时遇到问题的情况下，才使用此设置。
 
 >[!IMPORTANT]
 > 在更新应用以便在版本 3.x 上正常运行时，此设置仅用作短期解决方法。 只要 [2.x 运行时受支持](functions-versions.md)，此设置就受支持。 如果在不使用此设置的情况下遇到阻止应用在版本 3.x 上运行的问题，请[报告问题](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md)。
@@ -188,7 +188,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
-要在函数应用中加载的语言辅助角色运行时。  这对应于应用程序中使用的语言（例如，`dotnet`）。 从 Azure Functions 运行时的版本 2.x 开始，一个给定的函数应用只能支持一种语言。   
+要在函数应用中加载的语言辅助角色运行时。  此项对应于应用程序中正在使用的语言（例如，“`dotnet`”）。 从 Azure Functions 运行时版本 2.x 开始，给定函数应用只能支持一种语言。
 
 |键|示例值|
 |---|------------|
@@ -205,11 +205,11 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 | `powershell` | [PowerShell](functions-reference-powershell.md) |
 | `python` | [Python](functions-reference-python.md) |
 
-## <a name="mdmaxbackgroundupgradeperiod"></a>MDMaxBackgroundUpgradePeriod 
+## <a name="mdmaxbackgroundupgradeperiod"></a>MDMaxBackgroundUpgradePeriod
 
-控制 PowerShell 函数应用的托管依赖项后台更新周期，默认值为 `7.00:00:00`（每周）。 
+控制 PowerShell 函数应用的托管依赖项后台更新周期，默认值为 `7.00:00:00`（每周）。
 
-每个 PowerShell 工作进程都会在进程启动时检查 PowerShell 库上的模块升级，并在之后每 `MDMaxBackgroundUpgradePeriod` 检查一次。 当 PowerShell 库中有新的模块版本时，该版本会被安装到文件系统，并提供给 PowerShell 工作进程。 减小此值后，函数应用不但可以更快地获取较新的模块版本，而且可以增加应用资源使用率（网络 I/O、CPU、存储）。 增大此值会减少应用的资源使用率，但也可能会延迟将新的模块版本传递给你的应用。 
+每个 PowerShell 工作进程都会在进程启动时检查 PowerShell 库上的模块升级，并在之后每 `MDMaxBackgroundUpgradePeriod` 检查一次。 当 PowerShell 库中有新的模块版本时，该版本会被安装到文件系统，并提供给 PowerShell 工作进程。 减小此值后，函数应用不但可以更快地获取较新的模块版本，而且可以增加应用资源使用率（网络 I/O、CPU、存储）。 增大此值会减少应用的资源使用率，但也可能会延迟将新的模块版本传递给你的应用。
 
 |键|示例值|
 |---|------------|
@@ -219,11 +219,11 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 ## <a name="mdnewsnapshotcheckperiod"></a>MDNewSnapshotCheckPeriod
 
-指定每个 PowerShell 辅助角色检查是否已安装托管依赖关系升级的频率。 默认频率为 `01:00:00`（每小时）。 
+指定每个 PowerShell 辅助角色检查是否已安装托管依赖关系升级的频率。 默认频率为 `01:00:00`（每小时）。
 
-将新的模块版本安装到文件系统后，必须重启每个 PowerShell 工作进程。 重启 PowerShell 工作进程会影响应用可用性，因为它可能会中断当前的函数执行操作。 在所有 PowerShell 工作进程都重启之前，函数调用可能使用旧的模块版本，也可能使用新的模块版本。 重启所有 PowerShell 工作进程的操作会在 `MDNewSnapshotCheckPeriod` 内完成。 
+将新的模块版本安装到文件系统后，必须重启每个 PowerShell 工作进程。 重启 PowerShell 工作进程会影响应用可用性，因为它可能会中断当前的函数执行操作。 在所有 PowerShell 工作进程都重启之前，函数调用可能使用旧的模块版本，也可能使用新的模块版本。 重启所有 PowerShell 工作进程的操作会在 `MDNewSnapshotCheckPeriod` 内完成。
 
-在每个 `MDNewSnapshotCheckPeriod` 中，PowerShell 工作进程会检查是否已安装托管依赖关系升级。 安装升级后，重启随即开始。 增加此值会降低因重启而中断的频率。 但是，这种增加也可能会增加函数调用使用新/旧模块版本的时间，这种情况不确定。 
+在每个 `MDNewSnapshotCheckPeriod` 中，PowerShell 工作进程会检查是否已安装托管依赖关系升级。 安装升级后，重启随即开始。 增加此值会降低因重启而中断的频率。 但是，这种增加也可能会增加函数调用使用新/旧模块版本的时间，这种情况不确定。
 
 |键|示例值|
 |---|------------|
@@ -234,9 +234,9 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 ## <a name="mdminbackgroundupgradeperiod"></a>MDMinBackgroundUpgradePeriod
 
-在前一次托管依赖关系升级检查之后，启动下一次升级检查之前的时间段，默认值为 `1.00:00:00`（每天）。 
+在前一次托管依赖关系升级检查之后，启动下一次升级检查之前的时间段，默认值为 `1.00:00:00`（每天）。
 
-为了避免在频繁重启工作进程时进行过多的模块升级，当任何工作进程在上一个 `MDMinBackgroundUpgradePeriod` 中启动了模块升级检查时，系统不会执行该检查。 
+为了避免在频繁重启工作进程时进行过多的模块升级，当任何工作进程在上一个 `MDMinBackgroundUpgradePeriod` 中启动了模块升级检查时，系统不会执行该检查。
 
 |键|示例值|
 |---|------------|
@@ -246,13 +246,31 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 ## <a name="pip_extra_index_url"></a>PIP\_EXTRA\_INDEX\_URL
 
-此设置的值指示 Python 应用的自定义包索引 URL。 如果需要使用在额外的包索引中找到的自定义依赖项运行远程生成，请使用此设置。   
+此设置的值指示 Python 应用的自定义包索引 URL。 如果需要使用在额外的包索引中找到的自定义依赖项运行远程生成，请使用此设置。
 
 |键|示例值|
 |---|------------|
 |PIP\_EXTRA\_INDEX\_URL|http://my.custom.package.repo/simple |
 
 若要了解详细信息，请参阅 Python 开发人员参考中的[自定义依赖项](functions-reference-python.md#remote-build-with-extra-index-url)。
+
+## <a name="python_isolate_worker_dependencies"></a>PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES
+
+此配置特定于 Python 函数应用。 此配置定义模块加载顺序的优先级。 当 Python 函数应用面临与模块冲突相关的问题（例如，在项目中使用 protobuf、tensorflow 或 grpcio）时，将此应用设置配置为 `1` 应该可以解决问题。 默认情况下，此值设置为 `0`。
+
+|键|Value|说明|
+|---|-----|-----------|
+|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|0| 设置从内部 Python 辅助角色依赖项加载 Python 库的优先级。 可能会隐藏 requirements.txt 中定义的第三方库。 |
+|PYTHON\_ISOLATE\_WORKER\_DEPENDENCIES|1| 设置从 requirements.txt 中定义的应用程序包加载 Python 库的优先级。 此设置可防止库与内部 Python 辅助角色库发生冲突。 |
+
+## <a name="python_enable_worker_extensions"></a>PYTHON\_ENABLE\_WORKER\_EXTENSIONS
+
+此配置特定于 Python 函数应用。 如果将此配置设置为 `1`，则辅助角色可载入 requirements.txt 中所定义的 [Python 辅助角色扩展](functions-reference-python.md#python-worker-extensions)中。 使用此配置，函数应用可访问第三方包提供的新功能。 此外，此配置还可以更改应用中函数加载和调用的行为。 请确保选择的扩展可信，因为你需要承担其使用风险。 Azure Functions 不对任何扩展提供任何明示保证。 有关如何使用扩展的信息，请访问扩展的手册页或自述文件文档。默认情况下，此值设置为 `0`。
+
+|键|Value|说明|
+|---|-----|-----------|
+|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|0| 禁用任何 Python 辅助角色扩展。 |
+|PYTHON\_ENABLE\_WORKER\_EXTENSIONS|1| 允许 Python 辅助角色从 requirements.txt 加载扩展。 |
 
 ## <a name="python_threadpool_thread_count"></a>PYTHON\_THREADPOOL\_THREAD\_COUNT
 
@@ -264,7 +282,7 @@ Azure Functions 运行时使用此存储帐户连接字符串执行常规操作�
 
 ## <a name="scale_controller_logging_enabled"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLED
 
-_此设置当前处于预览状态。_  
+_此设置当前处于预览状态。_
 
 此设置控制 Azure Functions 缩放控制器中的日志记录。 有关详细信息，请参阅[缩放控制器日志](functions-monitoring.md#scale-controller-logs)。
 
@@ -284,7 +302,7 @@ _此设置当前处于预览状态。_
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
-仅在部署到 Windows 运行上的高级计划或消耗计划时使用。 不支持运行 Linux 的消耗计划。 更改或删除此设置可能会导致函数应用无法启动。 若要了解详细信息，请参阅[此故障排除文章](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。 
+仅在部署到 Windows 运行上的高级计划或消耗计划时使用。 不支持运行 Linux 的消耗计划。 更改或删除此设置可能会导致函数应用无法启动。 若要了解详细信息，请参阅[此故障排除文章](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。
 
 ## <a name="website_contentovervnet"></a>WEBSITE\_CONTENTOVERVNET
 
@@ -304,23 +322,23 @@ Windows 上事件驱动的缩放计划中函数应用代码和配置的文件路
 
 仅在部署到 Windows 运行上的高级计划或消耗计划时使用。 不支持运行 Linux 的消耗计划。 更改或删除此设置可能会导致函数应用无法启动。 若要了解详细信息，请参阅[此故障排除文章](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。
 
-在部署期间使用 Azure 资源管理器模板创建函数应用时，请勿在该模板中包括 WEBSITE_CONTENTSHARE。 此应用程序设置是在部署过程中生成的。 若要了解详细信息，请参阅[为函数应用自动执行资源部署](functions-infrastructure-as-code.md#windows)。   
+在部署期间使用 Azure 资源管理器模板创建函数应用时，请勿在该模板中包括 WEBSITE_CONTENTSHARE。 此应用程序设置是在部署过程中生成的。 若要了解详细信息，请参阅[为函数应用自动执行资源部署](functions-infrastructure-as-code.md#windows)。
 
 ## <a name="website_dns_server"></a>WEBSITE\_DNS\_SERVER
 
-设置某个应用在解析 IP 地址时使用的 DNS 服务器。 在使用某些网络功能（如 [Azure DNS 专用区域](functions-networking-options.md#azure-dns-private-zones)和[专用终结点](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)）时，通常需要此设置。   
+设置应用在解析 IP 地址时使用的 DNS 服务器。 使用某些网络功能（如 [Azure DNS 专用区域](functions-networking-options.md#azure-dns-private-zones)和[专用终结点](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)）时，通常需要此设置。
 
 |键|示例值|
 |---|------------|
 |WEBSITE\_DNS\_SERVER|168.63.129.16|
 
-## <a name="website_enable_brotli_encoding"></a>WEBSITE\_ENABLE\_BROTLI\_ENCODING 
+## <a name="website_enable_brotli_encoding"></a>WEBSITE\_ENABLE\_BROTLI\_ENCODING
 
-控制是否将 Brotli 编码用于压缩，代替默认的 gzip 压缩。 当 `WEBSITE_ENABLE_BROTLI_ENCODING` 设置为 `1` 时，就会使用 Brotli 编码，否则使用 gzip 编码。 
+控制是否将 Brotli 编码用于压缩，代替默认的 gzip 压缩。 当 `WEBSITE_ENABLE_BROTLI_ENCODING` 设置为 `1` 时，就会使用 Brotli 编码，否则使用 gzip 编码。
 
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
 
-该应用可以横向扩展到的最大实例数。 默认值为无限制。
+应用可以横向扩展到的最大实例数。 默认值为无限制。
 
 > [!IMPORTANT]
 > 此设置处于预览状态。  添加了一个[函数应用横向扩展上限属性](./event-driven-scaling.md#limit-scale-out)，建议使用此方法限制横向扩展。
@@ -331,8 +349,8 @@ Windows 上事件驱动的缩放计划中函数应用代码和配置的文件路
 
 ## <a name="website_node_default_version"></a>WEBSITE\_NODE\_DEFAULT_VERSION
 
-_仅限 Windows_。  
-设置在 Windows 上运行函数应用时要使用的 Node.js 版本。 应使用波形符 (~) 让运行时使用目标主版本的最新可用版本。 例如，当设置为 `~10` 时，将使用最新版本 Node.js 10。 当目标主版本带有波形符时，无需手动更新次版本。 
+_仅限 Windows_。
+设置在 Windows 上运行函数应用时要使用的 Node.js 版本。 应使用波形符 (~) 让运行时使用目标主版本的最新可用版本。 例如，当设置为 `~10` 时，将使用最新版本 Node.js 10。 当目标主版本带有波形符时，无需手动更新次版本。
 
 |键|示例值|
 |---|------------|
@@ -350,7 +368,7 @@ _仅限 Windows_。
 
 ## <a name="website_time_zone"></a>WEBSITE\_TIME\_ZONE
 
-允许为函数应用设置时区。 
+允许为函数应用设置时区。
 
 |键|(OS)|示例值|
 |---|--|------------|
@@ -361,7 +379,7 @@ _仅限 Windows_。
 
 ## <a name="website_vnet_route_all"></a>WEBSITE\_VNET\_ROUTE\_ALL
 
-指示是否该应用中的所有出站流量都通过虚拟网络进行路由。 设置值 `1` 指示所有流量都通过虚拟网络进行路由。 使用[区域虚拟网络集成](functions-networking-options.md#regional-virtual-network-integration)功能时，需要使用此设置。 在[使用虚拟网络 NAT 网关来定义静态出站 IP 地址](functions-how-to-use-nat-gateway.md)时，也使用此设置。 
+指示是否通过虚拟网络路由应用的所有出站流量。 设置值 `1` 指示所有流量都通过虚拟网络进行路由。 使用[区域虚拟网络集成](functions-networking-options.md#regional-virtual-network-integration)功能时，需要使用此设置。 [使用虚拟网络 NAT 网关定义静态出站 IP 地址](functions-how-to-use-nat-gateway.md)时，也可以使用此设置。
 
 |键|示例值|
 |---|------------|

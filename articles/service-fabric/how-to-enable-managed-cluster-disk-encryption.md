@@ -1,21 +1,19 @@
 ---
-title: 为 Service Fabric 托管群集（预览版）节点启用磁盘加密
+title: 为 Service Fabric 托管群集节点启用磁盘加密
 description: 了解如何在 Windows 中使用 ARM 模板为 Azure Service Fabric 托管群集节点启用磁盘加密。
 ms.topic: how-to
-ms.date: 02/15/2021
-ms.openlocfilehash: b7e56ff8db9f94b8c6681a1a7d69a4751b3f43a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 5/10/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 800ebb11c1d191ca68222b1fa473cebbca0e8912
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100642356"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671316"
 ---
-# <a name="enable-disk-encryption-for-service-fabric-managed-cluster-preview-nodes"></a>为 Service Fabric 托管群集（预览版）节点启用磁盘加密
+# <a name="enable-disk-encryption-for-service-fabric-managed-cluster-nodes"></a>为 Service Fabric 托管群集节点启用磁盘加密
 
 本指南介绍如何使用适用于[虚拟机规模集](../virtual-machine-scale-sets/disk-encryption-azure-resource-manager.md)的 [Azure 磁盘加密](../virtual-machines/windows/disk-encryption-overview.md)功能，在 Windows 中通过 Azure 资源管理器 (ARM) 模板在 Service Fabric 托管群集节点上启用磁盘加密。
-
-> [!IMPORTANT]
-> 虚拟机规模集磁盘加密预览版尚不支持映像升级或映像重置。 如需升级 OS 映像，请不要使用此功能。
 
 ## <a name="register-for-azure-disk-encryption"></a>注册 Azure 磁盘加密
 
@@ -39,7 +37,7 @@ Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和
 
 ### <a name="create-key-vault-with-disk-encryption-enabled"></a>创建启用了磁盘加密的密钥保管库
 
-运行以下命令，创建启用磁盘加密的新密钥保管库。 请确保密钥保管库的区域[受 Service Fabric 托管群集支持](faq-managed-cluster.md#what-regions-are-supported-in-the-preview)，并与群集所在区域相同。
+运行以下命令，创建启用磁盘加密的新密钥保管库。 请确保密钥保管库的区域[受 Service Fabric 托管群集支持](faq-managed-cluster.md#what-regions-are-supported)，并与群集所在区域相同。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -118,7 +116,7 @@ az keyvault update --name keyvaultName --enabled-for-disk-encryption
             "properties": { 
                 "publisher": "Microsoft.Azure.Security", 
                 "type": "AzureDiskEncryption", 
-                "typeHandlerVersion": "2.1", 
+                "typeHandlerVersion": "2.2", 
                 "autoUpgradeMinorVersion": true, 
                 "settings": {                     
                     "EncryptionOperation": "EnableEncryption", 

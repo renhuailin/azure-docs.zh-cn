@@ -3,16 +3,16 @@ title: Azure Arc 上的应用服务
 description: 为 Azure 操作员介绍如何将应用服务与 Azure Arc 集成。
 ms.topic: article
 ms.date: 05/03/2021
-ms.openlocfilehash: 8119d983a891ac6a671920c745d6395f4418ce24
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: bbdb7fb1426a5c63e579929806caa1b2008f11eb
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384598"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590083"
 ---
 # <a name="app-service-functions-and-logic-apps-on-azure-arc-preview"></a>Azure Arc 上的应用服务、Functions 和逻辑应用（预览）
 
-可以在已启用 Azure Arc 的 Kubernetes 群集中运行应用服务、Functions 和逻辑应用。 Kubernetes 群集可以位于本地，也可以托管在第三方云中。 此方法使应用开发人员能够利用应用服务的功能。 同时，它使 IT 管理员能够通过将应用服务应用托管在内部基础结构上来保持公司的合规性。 它还使其他 IT 操作员能够通过在现有 Kubernetes 群集上运行应用服务来保护其先前在其他云提供商中的投资。
+可以在已启用 Azure Arc 的 Kubernetes 群集上运行应用服务、Functions 和逻辑应用。 Kubernetes 群集可以位于本地，也可以托管在第三方云中。 此方法使应用开发人员能够利用应用服务的功能。 同时，它使 IT 管理员能够通过将应用服务应用托管在内部基础结构上来保持公司的合规性。 它还使其他 IT 操作员能够通过在现有 Kubernetes 群集上运行应用服务来保护其先前在其他云提供商中的投资。
 
 > [!NOTE]
 > 若要了解如何为应用服务、Functions 和逻辑应用设置 Kubernetes 群集，请参阅[创建应用服务 Kubernetes 环境（预览）](manage-create-arc-environment.md)。
@@ -26,19 +26,19 @@ ms.locfileid: "110384598"
 
 ## <a name="public-preview-limitations"></a>公共预览版限制
 
-应用服务 Kubernetes 环境适用以下公共预览版限制。 当对更多分发进行了验证并支持更多区域时，将更新这些限制。
+应用服务 Kubernetes 环境适用以下公共预览版限制。 当更改可用时，它们就会更新。
 
-| 限制                                              | 详细信息                                                                          |
-|---------------------------------------------------------|----------------------------------------------------------------------------------|
-| 支持的 Azure 区域                                 | 美国东部、西欧                                                             |
-| 经验证的 Kubernetes 分发                      | Azure Kubernetes 服务                                                         |
-| 功能：网络                                     | [不可用（取决于群集网络）](#are-networking-features-supported) |
-| 功能：托管标识                             | [不可用](#are-managed-identities-supported)                               |
-| 功能：密钥保管库引用                           | 不可用（取决于托管标识）                                    |
-| 功能：使用托管标识从 ACR 拉取映像     | 不可用（取决于托管标识）                                    |
-| 功能：Functions 和逻辑应用的门户内编辑 | 不可用                                                                    |
-| 功能：FTP 发布                                 | 不可用                                                                    |
-| 日志                                                    | Log Analytics 必须配置群集扩展；不是按站点            |
+| 限制                                              | 详细信息                                                                               |
+|---------------------------------------------------------|---------------------------------------------------------------------------------------|
+| 支持的 Azure 区域                                 | 美国东部、西欧                                                                  |
+| 群集网络要求                          | 必须支持 `LoadBalancer` 服务类型并提供可公开寻址的静态 IP |
+| 功能：网络                                     | [不可用（取决于群集网络）](#are-networking-features-supported)      |
+| 功能：托管标识                             | [不可用](#are-managed-identities-supported)                                    |
+| 功能：密钥保管库引用                           | 不可用（取决于托管标识）                                         |
+| 功能：使用托管标识从 ACR 拉取映像     | 不可用（取决于托管标识）                                         |
+| 功能：Functions 和逻辑应用的门户内编辑 | 不可用                                                                         |
+| 功能：FTP 发布                                 | 不可用                                                                         |
+| 日志                                                    | Log Analytics 必须配置群集扩展；不是按站点                 |
 
 ## <a name="pods-created-by-the-app-service-extension"></a>应用服务扩展创建的 Pod
 
@@ -74,6 +74,7 @@ ms.locfileid: "110384598"
 - [是否支持网络功能？](#are-networking-features-supported)
 - [是否支持托管标识？](#are-managed-identities-supported)
 - [收集哪些日志？](#what-logs-are-collected)
+- [如果看到提供程序注册错误，该怎么办？](#what-do-i-do-if-i-see-a-provider-registration-error)
 
 ### <a name="how-much-does-it-cost"></a>费用是多少？
 
@@ -108,6 +109,10 @@ ms.locfileid: "110384598"
 系统组件和应用程序的日志均写入标准输出。 可以使用标准 Kubernetes 工具收集这两类日志以进行分析。 还可以使用 [Log Analytics 工作区](../azure-monitor/logs/log-analytics-overview.md)配置应用服务群集扩展，它会将所有日志发送到该工作区。
 
 默认情况下，来自系统组件的日志将发送到 Azure 团队。 不会发送应用程序日志。 可以通过将 `logProcessor.enabled=false` 设置为扩展配置设置以防止传输这些日志。 此操作还会禁止将应用程序转发到 Log Analytics 工作区。 禁用日志处理器可能会影响任何支持案例所需的时间，并且系统会要求你通过一些其他方式从标准输出中收集日志。
+
+### <a name="what-do-i-do-if-i-see-a-provider-registration-error"></a>如果看到提供程序注册错误，该怎么办？
+
+创建 Kubernetes 环境资源时，一些订阅可能会看到“找不到已注册的资源提供程序”错误。 错误详细信息可能包括一组被视为有效的位置和 API 版本。 如果发生这种情况，可能是需要向 Microsoft.Web 提供程序重新注册订阅，此操作对现有应用程序或 API 没有影响。 若要重新注册，请使用 Azure CLI 运行 `az provider register --namespace Microsoft.Web --wait`。 然后重新尝试运行 Kubernetes 环境命令。
 
 ## <a name="next-steps"></a>后续步骤
 

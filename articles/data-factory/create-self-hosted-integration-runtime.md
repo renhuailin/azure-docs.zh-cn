@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: lrtoyou1223
 ms.author: lle
 ms.date: 02/10/2021
-ms.openlocfilehash: 3e61b6a0f17d2d21aaaebc5ff42b0221cf851a4b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 92e7f2af175182886dbc5904c5a50b485ca87d64
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100389482"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681184"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 
@@ -44,15 +45,13 @@ ms.locfileid: "100389482"
 
 ![数据流概要](media/create-self-hosted-integration-runtime/high-level-overview.png)
 
-1. 数据开发人员使用 Azure 门户或 PowerShell cmdlet 在 Azure 数据工厂中创建自承载集成运行时。
+1. 数据开发人员首先使用 Azure 门户或 PowerShell cmdlet 在 Azure 数据工厂中创建自承载集成运行时。  然后为本地数据存储创建链接服务并指定该服务连接数据存储时应使用的自承载集成运行时实例。
 
-2. 数据开发人员为本地数据存储创建一个链接服务。 为此，开发人员可以指定服务用来连接数据存储的自承载集成运行时实例。
+2. 自承载集成运行时节点使用 Windows 数据保护应用程序编程接口 (DPAPI) 加密凭据，并将凭据保存在本地。 如果设置多个节点以实现高可用性，则凭据将跨其他节点进一步同步。 每个节点使用 DPAPI 加密凭据并将其存储在本地。 凭据同步对数据开发者透明并由自承载 IR 处理。
 
-3. 自承载集成运行时节点使用 Windows 数据保护应用程序编程接口 (DPAPI) 加密凭据，并将凭据保存在本地。 如果设置多个节点以实现高可用性，则凭据将跨其他节点进一步同步。 每个节点使用 DPAPI 加密凭据并将其存储在本地。 凭据同步对数据开发者透明并由自承载 IR 处理。
+3. Azure 数据工厂与自承载集成运行时通信，以计划和管理作业。 通信是通过一个使用共享 [Azure 中继](../azure-relay/relay-what-is-it.md#wcf-relay)连接的控制通道进行的。 需要运行某个活动作业时，数据工厂会将请求以及任何凭据信息排队。 如果凭据尚未存储在自承载集成运行时中，则它就会执行此操作。 自承载集成运行时在轮询队列后启动作业。
 
-4. Azure 数据工厂与自承载集成运行时通信，以计划和管理作业。 通信是通过一个使用共享 [Azure 中继](../azure-relay/relay-what-is-it.md#wcf-relay)连接的控制通道进行的。 需要运行某个活动作业时，数据工厂会将请求以及任何凭据信息排队。 如果凭据尚未存储在自承载集成运行时中，则它就会执行此操作。 自承载集成运行时在轮询队列后启动作业。
-
-5. 自承载集成运行时在本地存储与云存储之间复制数据。 复制方向取决于复制活动在数据管道中的配置方式。 对于此步骤，自承载集成运行时直接通过安全 HTTPS 通道与基于云的存储服务（如 Azure Blob 存储）通信。
+4. 自承载集成运行时在本地存储与云存储之间复制数据。 复制方向取决于复制活动在数据管道中的配置方式。 对于此步骤，自承载集成运行时直接通过安全 HTTPS 通道与基于云的存储服务（如 Azure Blob 存储）通信。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -192,7 +191,10 @@ dmgcmd ACTION args...
 
     2. 或者选择“显示身份验证密钥”，以查看密钥文本。
 
-    3. 选择“注册”  。
+    3. 选择“注册”。
+
+> [!NOTE]
+> 有关发行说明，请参阅 [Microsoft 集成运行时下载页面](https://www.microsoft.com/download/details.aspx?id=39717)。
 
 ## <a name="service-account-for-self-hosted-integration-runtime"></a>自承载集成运行时的服务帐户
 

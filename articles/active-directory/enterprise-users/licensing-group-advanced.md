@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/02/2020
+ms.date: 05/28/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72a28aebe71809f3e47f9cc6936366cd027a32bb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ffe851cc39ab8856133a5ac24508bc9b6df53a8f
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96546669"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110782324"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题
 
@@ -28,7 +28,7 @@ ms.locfileid: "96546669"
 
 ## <a name="usage-location"></a>使用位置
 
-某些 Microsoft 服务不能在所有位置使用。 在将许可证分配给用户之前，管理员必须为该用户指定“使用位置”属性。 在 [Azure 门户](https://portal.azure.com)中，你可以在“用户”&gt;“个人资料”&gt;“设置”中指定使用位置。
+某些 Microsoft 服务不能在所有位置使用。 将许可证分配给用户之前，管理员应为该用户指定“使用位置”属性。 在 [Azure 门户](https://portal.azure.com)中，你可以在“用户”&gt;“个人资料”&gt;“设置”中指定使用位置。
 
 对于组许可证分配，任何没有指定使用位置的用户将继承该目录的位置。 如果用户位于多个位置，请在将用户添加到具有许可证的组之前，在用户资源中正确反映这种状态。
 
@@ -63,40 +63,34 @@ ms.locfileid: "96546669"
 
 > [!WARNING]
 > 修改现有组的成员身份规则时请小心。 更改规则时，将重新评估组成员资格，并删除不再符合新规则的用户（在此过程中，仍然匹配新规则的用户不会受到影响）。 在此过程中，将删除这些用户的许可证，从而导致服务丢失，或在某些情况下导致数据丢失。
-> 
+>
 > 如果拥有大型动态组，并且依赖于该组进行许可证分配，请先考虑对较小的测试组验证所有主要更改，然后再将更改应用到主要组。
 
 ## <a name="multiple-groups-and-multiple-licenses"></a>多个组和多个许可证
 
 用户可能是具有许可证的多个组的成员。 以下是一些需要考虑的事项：
 
-- 相同产品的多个许可证可能重叠，从而导致向用户应用所有已启用的服务。 以下示例显示了两个许可组：*E3 基本服务* 包含首先向用户部署的基础服务。 *E3 扩展服务* 包含只向某些用户部署的其他服务（Sway 和 Planner）。 在本示例中，用户已添加到两个组：
-
-  ![启用的服务的屏幕截图](./media/licensing-group-advanced/view-enabled-services.png)
-
-  因此，该用户获得了已启用产品的 12 个服务中的 7 个，同时只需为此产品使用 1 个许可证。
+- 相同产品的多个许可证可能重叠，从而导致向用户应用所有已启用的服务。 例如，E3 基本服务包含要首先部署到所有用户的基础服务，而 E3 扩展服务包含仅部署到某些用户的其他服务（Sway 和 Planner） 。 可以将用户添加到这两个组。 因此，该用户获得了已启用产品的 12 个服务中的 7 个，同时只需为此产品使用 1 个许可证。
 
 - 选择 E3 许可证可显示更多详细信息，包括有关组许可证分配为用户启用了哪些服务的信息。
 
 ## <a name="direct-licenses-coexist-with-group-licenses"></a>直接许可证与组许可证共存
 
-如果用户从组继承许可证，则无法直接在用户属性中删除或修改该许可证分配。 更改必须在组中进行，然后传播给所有用户。
+如果用户从组继承许可证，则无法直接在用户属性中删除或修改该许可证分配。 只能在组中更改许可证分配，然后更改会传播到所有用户。 不过，可以通过组许可证分配直接向用户分配相同的产品许可证。 这样可以只为一个用户启用产品中的其他服务，而不会影响到其他用户。
 
-但是，除了继承的许可证以外，还可以将相同的产品许可证直接分配给用户。 可以只为一个用户启用产品中的其他服务，而不会影响到其他用户。
-
-可以删除直接分配的许可证，不会影响继承的许可证。 假设用户从某个组继承了 Office 365 企业版 E3 许可证。
+可以删除直接分配的许可证，不会影响用户继承的许可证。 假设用户从某个组继承了 Office 365 企业版 E3 许可证。
 
 最初，该用户只从 E3 基本服务组继承许可证，这将启用四项服务计划。
 
-1. 选择“分配”直接向该用户分配 E3 许可证。 在本例中，我们要禁用除 Yammer Enterprise 以外的所有服务计划。
+1. 选择“分配”直接向该用户分配 E3 许可证。 例如，如果想要禁用除 Yammer Enterprise 以外的所有服务计划。
 
-    因此，该用户仍然只会使用 E3 产品的 1 个许可证。 但是，直接分配只会为该用户启用 Yammer Enterprise 服务。 可以看到组成员身份与直接分配分别会启用哪些服务。
+   因此，该用户仍然只会使用 E3 产品的 1 个许可证。 但是，直接分配只会为该用户启用 Yammer Enterprise 服务。 可以看到组成员身份与直接分配分别会启用哪些服务。
 
 1. 使用直接分配时，允许执行以下操作：
 
-   - 可在用户资源中直接关闭 Yammer Enterprise。 插图中此服务的“开/关”切换器的启用方式与其他服务相反。 这是因为此服务是直接对用户启用的，因此可以修改。
+   - 对于单个用户，可以关闭 Yammer Enterprise。 由于该服务是直接分配给用户的，因此可以对其进行更改。
    - 也可以将其他服务启用为直接分配的许可证的一部分。
-   - 可以使用“删除”按钮删除用户的直接许可证。 可以看到，该用户现在只拥有继承的组许可证，并且只有原始服务保持启用状态：
+   - 可以使用“删除”按钮删除用户的直接许可证。 可以看到，该用户随即将拥有继承的组许可证，并且只有原始服务保持启用状态。
 
 ## <a name="managing-new-services-added-to-products"></a>管理添加到产品的新服务
 
@@ -138,7 +132,7 @@ ms.locfileid: "96546669"
 
 ## <a name="use-audit-logs-to-monitor-group-based-licensing-activity"></a>使用审核日志来监视基于组的许可活动
 
-可以使用 [Azure AD 审核日志](../reports-monitoring/concept-audit-logs.md#audit-logs)查看与基于组的许可相关的所有活动，其中包括：
+可以使用 [Azure AD 审核日志](../reports-monitoring/concept-audit-logs.md)查看与基于组的许可相关的所有活动，其中包括：
 - 更改组许可证的人员
 - 系统开始处理组许可证更改的时间以及完成时间
 - 基于组合许可证分配，对用户进行了哪些许可证更改。

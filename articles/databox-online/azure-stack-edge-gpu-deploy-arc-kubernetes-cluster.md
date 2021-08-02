@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 06/11/2021
 ms.author: alkohli
-ms.openlocfilehash: c845f5d5daf79a51b7d3f3305a4f005cabe6886d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9eef9a99dbf27100fdb6e1fd731ace380f7ba4fb
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372992"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072840"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备的 Kubernetes 群集上启用 Azure Arc
 
@@ -142,16 +142,18 @@ ms.locfileid: "110372992"
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
 
+    如果使用的云不是 Azure 公有云，请添加 `CloudEnvironment` 参数。 可以将此参数设置为 `AZUREPUBLICCLOUD`、`AZURECHINACLOUD`、      `AZUREGERMANCLOUD` 和 `AZUREUSGOVERNMENTCLOUD`。
 
     > [!NOTE]
     > - 若要在设备上部署 Azure Arc，请确保使用[受支持的 Azure Arc 区域](../azure-arc/kubernetes/overview.md#supported-regions)。 
     > - 使用 `az account list-locations` 命令找出要传入到 `Set-HcsKubernetesAzureArcAgent` cmdlet 的确切位置名称。 位置名称的格式通常不含任何空格。
+    > - `ClientId` 和 `ClientSecret` 为所需参数。 `ClientSecret` 是安全字符串。
     
     以下是示例：
    
     ```powershell
     [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed&quot; -ResourceGroupName &quot;myaserg1&quot; -ResourceName &quot;myasetestresarc&quot; -Location &quot;westeurope&quot; -TenantId &quot;72f988bf-86f1-41af-91ab-2d7cd011db47&quot; -ClientId &quot;aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b&quot; -ClientSecret &quot;<password>"
-        [10.128.44.240]: PS>
+    [10.128.44.240]: PS>
     ```
     
     在 Azure 门户中，带有在前一个命令中提供的名称的资源应已创建。

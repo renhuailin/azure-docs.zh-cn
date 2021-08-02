@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 774a8fa05dd5044a07450deb675a6761de9869a3
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 8d551de4e467d602c40fc40889bfc36e5cf69a1d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890629"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075594"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>设备管理入门 (Node.js)
 
@@ -54,11 +54,11 @@ ms.locfileid: "107890629"
 
 本部分的操作：
 
-* 创建一个 Node.js 控制台应用，用于响应通过云调用的直接方法
+* 创建一个 Node.js 控制台应用，用于响应通过云调用的直接方法。
 
-* 触发模拟设备重新启动
+* 触发模拟设备重新启动。
 
-* 通过报告的属性，设备孪生查询可标识设备及设备上次重新启动的时间
+* 使用报告的属性以确保设备孪生查询可以标识设备及设备上次重新启动的时间。
 
 1. 创建名为 **manageddevice** 的空文件夹。  在 **manageddevice** 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 

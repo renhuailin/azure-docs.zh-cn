@@ -5,21 +5,19 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/04/2021
+ms.date: 06/02/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 4162fe12ff54f16cd5f982f6a576905227c9a107
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: c0c170fefe85393fb3c8b443a96aaddbb98eb65e
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107820988"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111528306"
 ---
-## <a name="disk-level-bursting"></a>磁盘级突发
-
 ### <a name="on-demand-bursting-preview"></a>按需突发（预览版）
 
-使用按需磁盘突发模式的磁盘的突发需求可能会超出初始预配目标，这种情况的频率取决于其工作负荷的需要，并可能达到其最大突发目标。 例如，在 1-TiB P30 磁盘上，预配的 IOPS 为 5000 IOPS。 在此磁盘上启用磁盘突发后，工作负荷向此磁盘发出 IO 时，突发性能最高可达 30000 IOPS 和 1000 MBps。
+使用按需磁盘突发模式的高级 SSD 的突发需求可能会超出初始预配目标，这种情况的频率取决于其工作负荷的需要，并可能达到其最大突发目标。 例如，在 1-TiB P30 磁盘上，预配的 IOPS 为 5000 IOPS。 在此磁盘上启用磁盘突发后，工作负荷向此磁盘发出 IO 时，突发性能最高可达 30000 IOPS 和 1000 MBps。
 
 如果预期工作负荷运行时所需的性能会频繁超出预配的性能目标，磁盘突发的成本效益会比较低。 在这种情况下，建议将磁盘的性能层改为[较高层](../articles/virtual-machines/disks-performance-tiers.md)以获得更好的基线性能。 查看计费详细信息，并根据工作负荷的流量模式进行评估。
 
@@ -33,7 +31,7 @@ ms.locfileid: "107820988"
 
 #### <a name="billing"></a>计费
 
-使用按需突发模型的磁盘是按固定的每小时突发启用费用来计费的，并对超出预配目标的任何突发事务收取事务费。 将使用即用即付模型根据非缓存磁盘 IO（包括超过预配目标的读取和写入）收取事务费。 下面是一个计费小时内的磁盘流量模式示例：
+使用按需突发模型的高级 SSD 是按固定的每小时突发启用费用来计费的，并对超出预配目标的任何突发事务收取事务费。 将使用即用即付模型根据非缓存磁盘 IO（包括超过预配目标的读取和写入）收取事务费。 下面是一个计费小时内的磁盘流量模式示例：
 
 磁盘配置：高级 SSD - 1 TiB (P30)，已启用磁盘突发。
 
@@ -64,7 +62,7 @@ ms.locfileid: "107820988"
 
 ### <a name="credit-based-bursting"></a>基于额度的突发
 
-Azure 公有云、政府云和中国云的所有区域中为磁盘大小为 P20 和更小的磁盘提供了基于额度的突发。 默认情况下，在大小受支持的磁盘的所有新的和现有部署中均启用磁盘突发。 VM 级突发只使用基于额度的突发。
+对于高级 SSD，基于额度的突发适用于大小为 P20 和更小的磁盘。 对于标准 SSD，基于额度的突发适用于大小为 E30 和更小的磁盘。 对于标准和高级 SSD，基于额度的突发在 Azure 公有云、政府云和中国云的所有区域都可用。 默认情况下，在大小受支持的磁盘的所有新的和现有部署中均启用磁盘突发。 VM 级突发只使用基于额度的突发。
 
 ## <a name="virtual-machine-level-bursting"></a>虚拟机级突发
 

@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/08/2021
+ms.date: 06/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b05d6c5cc520dd83318203b0bf6d0d7c0ab18382
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 92f92580fdfab00e6629ac53774f57abe59828f1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127194"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755296"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 SQL Server Azure 虚拟机 DBMS 部署
 
@@ -330,7 +330,7 @@ ms.locfileid: "108127194"
 * **SQL 性能**：相比其他公有云虚拟化产品，Microsoft Azure 托管的虚拟机将运行得非常顺利，但个别结果可能不同。 请参阅 [Azure 虚拟机中 SQL Server 的性能最佳做法](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md)一文。
 * **使用来自 Azure 市场的映像**：部署新 Microsoft Azure VM 的最快方式是使用来自 Azure 市场的映像。 Azure 市场提供包含最新 SQL Server 版本的映像。 已经安装 SQL Server 的映像不能立即用于 SAP NetWeaver 应用程序。 原因是这些映像安装了默认的 SQL Server 排序规则，而不是 SAP NetWeaver 系统所需的排序规则。 若要使用此类映像，请查看[使用来自 Microsoft Azure 市场的 SQL Server 映像][dbms-guide-5.6]一章中所述的步骤。 
 *  **单个 Azure VM 内的 SQL Server 多实例支持**：支持此部署方法。 但是，请注意资源限制，尤其是所用 VM 类型的网络和存储带宽。 有关详细信息，请参阅 [Azure 中的虚拟机大小](../../sizes.md)一文。 这些配额限制可能会导致你无法实现与本地可以实现的多实例体系结构相同的体系结构。 至于在单个 VM 内共享可用资源的配置和干扰，需要考虑与本地相同的事项。
-*  **单个 VM 内单个 SQL Server 实例中的多个 SAP 数据库**：同上，支持这样的配置。 共享单个 SQL Server 实例中共享资源的多个 SAP 数据库的注意事项与本地部署相同。 另外，请注意其他限制，例如可以连接到特定 VM 类型的磁盘数。 或者，特定 VM 类型的网络和存储配额限制，详见 [Azure 中的虚拟机大小](../../sizes.md)。 
+*  **单个 VM 内单个 SQL Server 实例中的多个 SAP 数据库**：同上，支持这样的配置。 共享单个 SQL Server 实例中共享资源的多个 SAP 数据库的注意事项与本地部署相同。 另外，请注意其他限制，例如可以附加到特定 VM 类型的磁盘数。 或者，特定 VM 类型的网络和存储配额限制，详见 [Azure 中的虚拟机大小](../../sizes.md)。 
 
 
 ## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>适用于 SAP 相关 SQL Server 部署的 VM/VHD 结构建议
@@ -513,12 +513,17 @@ SAP 支持的数据库镜像（请参阅 SAP 说明 [965908]）依赖于在 SAP 
 >[!NOTE]
 > 如果要为可用性组侦听程序的虚拟 IP 地址配置 Azure 负载均衡器，请确保已配置 DirectServerReturn。 配置此选项将减少 SAP 应用层和 DBMS 层之间的网络往返延迟。 
 
+>[!NOTE]
+>阅读[介绍 Azure 虚拟机上的 SQL Server Always On 可用性组](../../../azure-sql/virtual-machines/windows/availability-group-overview.md)，你将了解 SQL Server 的[直接网络名称 (DNN) 侦听器](../../../azure-sql/virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md)。 此新功能已在 SQL Server 2019 CU8 中引入。 此新功能利用 Azure 负载均衡器来处理已过时可用性组侦听程序的虚拟 IP 地址。
+
+
 SQL Server Always On 是 Azure 中用于 SAP 工作负荷部署的最常用高可用性和灾难恢复功能。 大多数客户在单个 Azure 区域内使用 Always On 实现高可用性。 如果部署仅限于两个节点，则有两种连接选择：
 
-- 使用可用性组侦听程序。 若使用可用性组侦听程序，需要部署 Azure 负载均衡器。 这通常是默认部署方法。 SAP 应用程序将配置为针对可用性组侦听程序而不是针对单个节点进行连接
-- 使用 SQL Server 数据库镜像的连接参数。 在此情况下，需要以命名两个节点名称的方式配置 SAP 应用程序的连接。 有关此类 SAP 端 配置的确切详细信息，请参阅 SAP 说明 [#965908](https://launchpad.support.sap.com/#/notes/965908)。 通过使用此选项，无需配置可用性组侦听程序。 并且不需要任何 SQL Server 高可用性的 Azure 负载均衡器。 由于 SQL Server 实例的传入流量不通过Azure 负载均衡器路由，因此 SAP 应用层和 DBMS 层之间的网络延迟较低。 但请记住，此选项仅在将可用性组限制为跨两个实例时适用。 
+- 使用可用性组侦听程序。 若使用可用性组侦听程序，需要部署 Azure 负载均衡器。 
+- 使用 SQL Server 2019 CU8 或更高版本，在其中你可以改用[直接网络名称 (DNN) 侦听器](../../../azure-sql/virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md)。 这样就不再需要使用 Azure 负载均衡器。
+- 使用 SQL Server 数据库镜像的连接参数。 在此情况下，需要以命名两个节点名称的方式配置 SAP 应用程序的连接。 有关此类 SAP 端 配置的确切详细信息，请参阅 SAP 说明 [#965908](https://launchpad.support.sap.com/#/notes/965908)。 通过使用此选项，无需配置可用性组侦听程序。 并且不需要任何 SQL Server 高可用性的 Azure 负载均衡器。 但请记住，此选项仅在将可用性组限制为跨两个实例时适用。 
 
-不少客户正在利用 SQL Server Always On 功能在 Azure 区域之间实现灾难恢复功能。 少数客户还使用此功能从次要副本执行备份。 
+不少客户正在使用 SQL Server Always On 功能在 Azure 区域之间实现灾难恢复功能。 少数客户还使用此功能从次要副本执行备份。 
 
 ## <a name="sql-server-transparent-data-encryption"></a>SQL Server 透明数据加密
 有许多客户在 Azure 中部署 SAP SQL Server 数据库时，使用 SQL Server [透明数据加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption)。 SAP 完全支持 SQL Server TDE 功能（请参阅 SAP 说明 [#1380493](https://launchpad.support.sap.com/#/notes/1380493)）。 

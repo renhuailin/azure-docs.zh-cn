@@ -1,24 +1,24 @@
 ---
-title: 在 Windows 虚拟桌面（经典版）上部署 Windows 7 虚拟机 - Azure
-description: 如何在 Windows 虚拟桌面（经典版）上配置和部署 Windows 7 虚拟机。
+title: 在 Azure 虚拟桌面（经典版）上部署 Windows 7 虚拟机 - Azure
+description: 如何在 Azure 虚拟桌面（经典版）上配置和部署 Azure 7 虚拟机。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 2659e14490cf7d0aab32d8783a744478027f0a58
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 1b7c78ab9a518649d205bb9dc92c86d7bb71bcea
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444932"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744622"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop-classic"></a>在 Windows 虚拟桌面（经典版）上部署 Windows 7 虚拟机
+# <a name="deploy-a-windows-7-virtual-machine-on-azure-virtual-desktop-classic"></a>在 Azure 虚拟桌面（经典版）上部署 Windows 7 虚拟机
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 如果要尝试管理当前版本的 Windows 虚拟桌面中引入的 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../deploy-windows-7-virtual-machine.md)。
+>此内容适用于 Azure 虚拟桌面（经典版），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 如果要尝试管理当前版本的 Azure 虚拟桌面中引入的 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[此文](../deploy-windows-7-virtual-machine.md)。
 
-在 Windows 虚拟机上部署 Windows 7 虚拟机 (VM) 的过程与运行更高版本 Windows 的 VM 略有不同。 本指南将介绍如何部署 Windows 7。
+在 Azure 虚拟桌面上部署 Windows 7 虚拟机 (VM) 的过程与运行更高版本 Windows 的 VM 略有不同。 本指南将介绍如何部署 Windows 7。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -26,9 +26,9 @@ ms.locfileid: "106444932"
 
 ## <a name="configure-a-windows-7-virtual-machine"></a>配置 Windows 7 虚拟机
 
-完成先决条件后，即可在 Windows 虚拟桌面上配置 Windows 7 VM 以进行部署。
+完成先决条件后，即可在 Azure 虚拟桌面上配置 Windows 7 VM 以进行部署。
 
-若要在 Windows 虚拟桌面上设置 Windows 7 VM：
+若要在 Azure 虚拟桌面上设置 Windows 7 VM：
 
 1. 登录到 Azure 门户，搜索 Windows 7 Enterprise 映像或上传自己的自定义 Windows 7 Enterprise (x64) 映像。
 2. 部署一个或多个虚拟机，将 Windows 7 Enterprise 作为其主机操作系统。 请确保虚拟机允许远程桌面协议 (RDP)（TCP/3389 端口）。
@@ -47,15 +47,15 @@ ms.locfileid: "106444932"
      ```
 
 12. 按照[此处](/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo/)的说明获取注册令牌。
-13. [下载适用于 Windows 7 的 Windows 虚拟桌面代理](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm)。
-14. [下载适用于 Windows 7 的 Windows 虚拟桌面代理程序管理器](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)。
-15. 打开 Windows 虚拟桌面代理安装程序，然后按照说明进行操作。 出现提示时，请提供在步骤 12 中创建的注册密钥。
-16. 打开 Windows 虚拟桌面代理程序管理器，然后按照说明进行操作。
+13. [下载适用于 Windows 7 的 Azure 虚拟桌面代理](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm)。
+14. [下载适用于 Windows 7 的 Azure 虚拟桌面代理管理器](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)。
+15. 打开 Azure 虚拟桌面代理安装程序，然后按照说明进行操作。 出现提示时，请提供在步骤 12 中创建的注册密钥。
+16. 打开 Azure 虚拟桌面代理管理器，然后按照说明进行操作。
 17. （可选）阻止 TCP/3389 端口以移除对 VM 的直接远程桌面协议访问权限。
 18. （可选）确认 .NET framework 至少为版本 4.7.2。 如果要创建自定义映像，这尤其重要。
 
 ## <a name="next-steps"></a>后续步骤
 
-Windows 虚拟桌面部署现已准备就绪，可供使用。 [下载最新版本的 Windows 虚拟桌面客户端](https://aka.ms/wvd/clients/windows)以开始工作。
+Azure 虚拟桌面部署现已准备就绪，可供使用。 [下载最新版本的 Azure 虚拟桌面客户端](https://aka.ms/wvd/clients/windows)以开始工作。
 
-有关 Windows 虚拟桌面上 Windows 7 的已知问题和疑难解答说明的列表，请参阅疑难解答文章 [Windows 虚拟桌面中的 windows 7 虚拟机疑难解答](troubleshoot-windows-7-vm.md)。
+有关 Azure 虚拟桌面上 Windows 7 的已知问题和疑难解答说明的列表，请参阅疑难解答文章 [Azure 虚拟桌面中的 Windows 7 虚拟机疑难解答](troubleshoot-windows-7-vm.md)。

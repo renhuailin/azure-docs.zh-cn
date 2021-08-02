@@ -2,21 +2,21 @@
 title: 用于将应用迁移到 Azure Active Directory 的资源 | Microsoft Docs
 description: 帮助你将应用程序访问和身份验证迁移到 Azure Active Directory (Azure AD) 的资源。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 02/29/2020
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: baselden
-ms.openlocfilehash: 2d01c174bbfa522700773b87737b1e3da2de422e
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 1f167abc4fca3bd8d96a9fbc7a932ea296da96d0
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376641"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076935"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>用于将应用程序迁移到 Azure Active Directory 的资源
 
@@ -33,3 +33,4 @@ ms.locfileid: "107376641"
 | [部署计划：使用 Azure AD 启用 SaaS 应用程序的单一登录](https://aka.ms/SSODPDownload) | 进行单一登录 (SSO) 时，只需使用单个用户帐户登录一次，就能访问开展业务所需的全部应用和资源。 例如，用户登录后，该用户可从 Microsoft Office 移动到 SalesForce 和 Box，而无需再次进行身份验证（例如，键入密码）。 
 | [部署计划：使用应用程序代理将应用扩展到 Azure AD](https://aka.ms/AppProxyDPDownload)| 传统上，提供从员工笔记本电脑和其他设备到本地应用程序的访问权限会涉及虚拟专用网络 (VPN) 或外围安全区域 (DMZ)。 这些解决方案不仅复杂且难以确保安全性，而且设置和管理成本也很高。 使用 Azure AD 应用程序代理可更轻松地访问本地应用程序。 |
 | [部署计划](../fundamentals/active-directory-deployment-plans.md) | 查找更多部署计划，以部署多种功能，如多重身份验证、条件访问、用户预配、无缝 SSO 和自助服务密码重置！ |
+| [将应用从 Symantec SiteMinder 迁移到 Azure AD](https://azure.microsoft.com/mediahandler/files/resourcefiles/migrating-applications-from-symantec-siteminder-to-azure-active-directory/Migrating-applications-from-Symantec-SiteMinder-to-Azure-Active-Directory.pdf) | 通过示例获取有关应用程序迁移和集成选项的分步指南，该指南指导你完成将应用程序从 Symantec SiteMinder 迁移到 Azure AD 的过程。 |

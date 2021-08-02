@@ -1,17 +1,17 @@
 ---
-title: 监视任何网站的可用性和响应能力 - Azure Monitor
+title: 通过 URL ping 测试监视可用性 - Azure Monitor
 description: 在 Application Insights 中设置 ping 测试。 当网站不可用或响应速度缓慢时接收警报。
 ms.topic: conceptual
-ms.date: 04/15/2021
+ms.date: 05/25/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 60698862e26175425221940a4b69867cb414fe86
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: e7e52cb5db6db5fbd1e73713d3d3558be9e859f0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107598867"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968404"
 ---
-# <a name="monitor-the-availability-of-any-website"></a>监视任意网站的可用性
+# <a name="monitor-availability-with-url-ping-tests"></a>通过 URL ping 测试监视可用性
 
 “URL ping 测试”这个名称有点用词不当。 澄清一下，这些测试不使用 ICMP（Internet 控制消息协议）来检查站点的可用性， 而是使用更高级的 HTTP 请求功能来验证终结点是否响应。 它们还测量与该响应相关联的性能，并添加设置自定义成功标准的功能，以及更多高级功能，例如分析从属请求、允许重试。
 
@@ -64,6 +64,15 @@ ms.locfileid: "107598867"
 | US Gov 德克萨斯州    | usgov-tx-azr        |
 | USDoD 东部     | usgov-ddeast-azr    |
 | USDoD 中部  | usgov-ddcentral-azr |
+
+### <a name="azure-china"></a>Azure 中国
+
+| 显示名称   | 填充名称     |
+|----------------|---------------------|
+| 中国东部     | mc-cne-azr          |
+| 中国东部 2   | mc-cne2-azr         |
+| 中国北部    | mc-cnn-azr          |
+| 中国北部 2  | mc-cnn2-azr         |
 
 #### <a name="azure"></a>Azure
 
@@ -144,3 +153,4 @@ ms.locfileid: "107598867"
 * [可用性警报](availability-alerts.md)
 * [多步骤 Web 测试](availability-multistep.md)
 * [故障排除](troubleshoot-availability.md)
+* [Web 测试 Azure 资源管理器模板](/azure/templates/microsoft.insights/webtests?tabs=json)

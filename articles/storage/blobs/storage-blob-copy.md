@@ -2,19 +2,19 @@
 title: 使用 Azure 存储 API 复制 blob
 description: 了解如何使用 Azure 存储客户端库复制 blob。
 services: storage
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 01/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: bfd471a880e167bb2cc92bc87925b4aac91f66af
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 64bffb127c7d3fbcf56619ea17b23fc0a58d6a37
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278467"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652871"
 ---
 # <a name="copy-a-blob-with-azure-storage-client-libraries"></a>使用 Azure 存储客户端库复制 blob
 
@@ -42,7 +42,7 @@ ms.locfileid: "106278467"
 
 ## <a name="copy-a-blob"></a>复制 Blob
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 若要复制 Blob，请调用以下方法之一：
 
@@ -55,7 +55,7 @@ ms.locfileid: "106278467"
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CopyBlob.cs" id="Snippet_CopyBlob":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 若要复制 Blob，请调用以下方法之一：
 
@@ -123,7 +123,7 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 }
 ```
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 若要复制 Blob，请调用 [start_copy_from_url](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient#start-copy-from-url-source-url--metadata-none--incremental-copy-false----kwargs-) 方法。 `start_copy_from_url` 方法返回包含有关复制操作的信息的字典。
 
@@ -137,7 +137,7 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 
 中止复制操作会导致目标 Blob 长度为零。 但是，目标 Blob 的元数据将包含从源 Blob 复制的新值，或者在复制操作过程中显式设置的新值。 若要在复制之前保留原始元数据，请在调用一个复制方法之前创建目标 Blob 的快照。
 
-# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
 检查目标 Blob 中的 [BlobProperties.CopyStatus](/dotnet/api/azure.storage.blobs.models.blobproperties.copystatus) 属性，以获取复制操作的状态。 完成复制时，将提交最终的 Blob。
 
@@ -147,7 +147,7 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CopyBlob.cs" id="Snippet_StopBlobCopy":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 检查目标 Blob 中的 [CopyState.Status](/dotnet/api/microsoft.azure.storage.blob.copystate.status) 属性，以获取复制操作的状态。 完成复制时，将提交最终的 Blob。
 
@@ -167,7 +167,7 @@ if (destBlob.CopyState.Status == CopyStatus.Pending)
 }
 ```
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 检查 [get_blob_properties](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.blobclient#get-blob-properties---kwargs-) 方法返回的 [CopyProperties](/azure/developer/python/sdk/storage/azure-storage-blob/azure.storage.blob.copyproperties) 字典中的“status”条目，以获取复制操作的状态。 完成复制时，将提交最终的 Blob。
 

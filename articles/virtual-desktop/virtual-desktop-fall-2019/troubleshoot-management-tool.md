@@ -1,24 +1,24 @@
 ---
-title: Windows 虚拟桌面（经典）管理工具 - Azure
-description: 如何对 Windows 虚拟桌面（经典）管理工具的问题进行故障排除。
+title: Azure 虚拟桌面（经典）管理工具 - Azure
+description: 如何对 Azure 虚拟桌面（经典）管理工具的问题进行故障排除。
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 430ab72a3eb0cd41d707ff0eb5d10d8b97162d53
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f567a42d5363f24178594a5e98678e6794eb224e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444235"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753982"
 ---
-# <a name="troubleshoot-the-windows-virtual-desktop-classic-management-tool"></a>对 Windows 虚拟桌面管理工具进行故障排除
+# <a name="troubleshoot-the-azure-virtual-desktop-classic-management-tool"></a>对 Azure 虚拟桌面（经典）管理工具进行故障排除
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。
 
-本文介绍部署 Windows 虚拟桌面管理工具时可能出现的问题，以及如何修复这些问题。
+本文介绍在部署 Azure 虚拟桌面管理工具时可能出现的问题，以及如何修复这些问题。
 
 ## <a name="error-management-tool-services-configured-but-automated-setup-fails"></a>错误：已配置管理工具服务，但自动安装失败
 
@@ -37,7 +37,7 @@ ms.locfileid: "106444235"
 
 1. 确保为 Azure Active Directory 用户主体名称创建的用户具有“参与者”订阅级别。
 2. 用 UPN 帐户登录到<portal.azure.com>以检查帐户设置，并确保未启用多重身份验证。 如果多重身份验证已打开，请将其关闭。
-3. 访问 Windows 虚拟桌面许可页面，确保服务器和客户端应用程序已获得许可。
+3. 访问 Azure 虚拟桌面许可页面，确保服务器和客户端应用程序已获得许可。
 4. 如果问题仍然存在，请查看[部署管理工具](manage-resources-using-ui.md)教程，并重新部署工具。
 
 ## <a name="error-job-with-specified-id-already-exists"></a>错误：已存在具有指定 ID 的作业
@@ -59,5 +59,5 @@ ms.locfileid: "106444235"
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解升级跟踪，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview-2019.md)。
-- 若要了解如何报告有关 Windows 虚拟桌面工具的问题，请参阅[远程桌面服务的 ARM 模板](https://github.com/Azure/RDS-Templates/blob/master/README.md)。
+- 若要了解如何报告有关 Azure 虚拟桌面工具的问题，请参阅[远程桌面服务的 ARM 模板](https://github.com/Azure/RDS-Templates/blob/master/README.md)。
 - 若要了解如何部署管理工具，请参阅[部署管理工具](manage-resources-using-ui.md)。

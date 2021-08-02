@@ -1,33 +1,33 @@
 ---
-title: Windows 虚拟桌面（经典）中的委托访问 - Azure
-description: 如何在 Windows 虚拟桌面（经典）部署上委托管理功能，包括示例。
+title: Azure 虚拟桌面（经典）中的委托访问 - Azure
+description: 如何在 Azure 虚拟桌面（经典）部署上委托管理功能，包括示例。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 0152dc5102fd3f77418448234cab1234d25b97c6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 9db8ad454ad38f24f32e05bf2f72d67ef7db1971
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88008145"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752038"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop-classic"></a>Windows 虚拟桌面（经典）中的委托访问
+# <a name="delegated-access-in-azure-virtual-desktop-classic"></a>Azure 虚拟桌面（经典）中的委托访问
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../delegated-access-virtual-desktop.md)。
+>此内容适用于 Azure 虚拟桌面（经典版），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[此文](../delegated-access-virtual-desktop.md)。
 
-Windows 虚拟桌面有一个委托访问模型，可通过为特定用户分配角色来定义允许该用户拥有的访问量。 角色分配有三个组件：安全主体、角色定义和范围。 Windows 虚拟桌面委托访问模型基于 Azure RBAC 模型。 若要详细了解特定的角色分配及其组件，请参阅 [Azure 基于角色的访问控制概述](../../role-based-access-control/built-in-roles.md)。
+Azure 虚拟桌面有一个委托访问模型，可通过为特定用户分配角色来定义允许该用户拥有的访问量。 角色分配包含 3 个组成部分：安全主体、角色定义和范围。 Azure 虚拟桌面委托访问模型基于 Azure RBAC 模型。 若要详细了解特定的角色分配及其组成部分，请查看 [Azure 基于角色的访问控制概述](../../role-based-access-control/built-in-roles.md)。
 
-对于角色分配的各个元素，Windows 虚拟桌面委托访问支持以下值：
+对于角色分配的各个元素，Azure 虚拟桌面委托访问支持以下值：
 
 * 安全主体
     * 用户
     * 服务主体
 * 角色定义
     * 内置角色
-* 作用域
+* 范围
     * 租户组
     * 租户
     * 主机池
@@ -35,7 +35,7 @@ Windows 虚拟桌面有一个委托访问模型，可通过为特定用户分配
 
 ## <a name="built-in-roles"></a>内置角色
 
-Windows 虚拟桌面中的委托访问有多个内置角色定义，这些定义可分配到用户和服务主体。
+Azure 虚拟桌面中的委托访问有多个内置角色定义，这些定义可分配到用户和服务主体。
 
 * RDS 所有者可以管理所有内容，包括对资源的访问权限。
 * RDS 参与者可以管理所有内容，但无法访问资源。
@@ -66,6 +66,6 @@ Windows 虚拟桌面中的委托访问有多个内置角色定义，这些定义
 
 ## <a name="next-steps"></a>后续步骤
 
-有关每个角色可以使用的 PowerShell cmdlet 的更完整的列表，请参阅 [PowerShell 参考](/powershell/windows-virtual-desktop/overview)。
+有关每个角色可使用的 PowerShell cmdlet 的更完整的列表，请查看 [PowerShell 参考](/powershell/windows-virtual-desktop/overview)。
 
-有关如何设置 Windows 虚拟桌面环境的指南，请参阅 [Windows 虚拟桌面环境](environment-setup-2019.md)。
+有关如何设置 Azure 虚拟桌面环境的指南，请参阅 [Azure 虚拟桌面环境](environment-setup-2019.md)。

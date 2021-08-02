@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: f61bf635cc61a2153a7bb016ef4b4711d7ba7391
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/14/2021
+ms.openlocfilehash: 6646a2e5a074219df13f3bf373edfc53310c8104
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91355289"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556597"
 ---
 # <a name="search-over-azure-blob-storage-content"></a>对 Azure Blob 存储内容进行搜索
 
@@ -26,9 +26,9 @@ ms.locfileid: "91355289"
 
 Azure 认知搜索是一项搜索服务，它支持通过用户定义的索引进行的索引编制和查询工作负荷，其中包含在云中托管的远程可搜索内容。 为了提高性能，需将可搜索内容与查询引擎共置在一起，使返回结果的速度与用户预期的搜索查询速度相当。
 
-认知搜索在索引层与 Azure Blob 存储集成，可将 Blob 内容作为已编制成倒排索引的搜索文档导入，并可导入其他支持自由格式文本查询和筛选器表达式的查询结构。 由于 Blob 内容已索引到搜索索引中，因此可以使用 Azure 认知搜索中的所有查询功能来查找 Blob 内容中的信息。
+认知搜索在索引层与 Azure Blob 存储集成，将 Blob 内容作为搜索文档导入，并编制到反向索引和其他支持自由格式文本查询和筛选器表达式的查询结构中。 由于 Blob 内容已索引到搜索索引中，因此可以使用 Azure 认知搜索中的所有查询功能来查找 Blob 内容中的信息。
 
-输入是 Azure Blob 存储中单个容器内的 Blob。 Blob 几乎可以是任何类型的文本数据。 如果 Blob 包含图像，可[将 AI 扩充添加到 Blob 索引](search-blob-ai-integration.md)，以便从图像创建和提取文本。
+输入是 Azure Blob 存储的单个容器中的 Blob。 Blob 几乎可以是任何类型的文本数据。 如果 Blob 包含图像，可[将 AI 扩充添加到 Blob 索引](search-blob-ai-integration.md)，以便从图像创建和提取文本。
 
 输出始终是 Azure 认知搜索索引，用于在客户端应用程序中快速执行搜索、检索和浏览。 输入与输出之间是索引管道体系结构本身。 该管道基于本文将会详细介绍的索引器功能。
 
@@ -51,6 +51,10 @@ Azure 存储中的 Blob 使用 [Azure 认知搜索 Blob 存储索引器](search-
 索引器执行“文档破解”，会打开一个 Blob 来检查内容。 这是连接到数据源后，在管道中发生的第一个步骤。 对于 Blob 数据，此步骤会检测 PDF、Office 文档和其他内容类型。 文档破解和文本提取是免费的。 如果 Blob 包含图像内容，则除非[添加 AI 扩充](search-blob-ai-integration.md)，否则会忽略图像。 标准索引仅适用于文本内容。
 
 Blob 索引器附带配置参数，如果基础数据提供足够的信息，则索引器支持更改跟踪。 可以在 [Azure 认知搜索 Blob 存储索引器](search-howto-indexing-azure-blob-storage.md)中详细了解核心功能。
+
+### <a name="supported-access-tiers"></a>支持的访问层
+
+Blob 存储[访问层](../storage/blobs/storage-blob-storage-tiers.md)包括热、冷、存档访问层。 索引器只能访问热访问层和冷访问层。 
 
 ### <a name="supported-content-types"></a>支持的内容类型
 

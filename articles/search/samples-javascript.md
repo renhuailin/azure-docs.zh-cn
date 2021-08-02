@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 85a4d6390087100d8d9521f6ac20dbace3a711eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/11/2021
+ms.openlocfilehash: 073095d590e61d9e7e561339c17501f0ccee844d
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955935"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018650"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>Azure 认知搜索的 JavaScript 代码示例
 
@@ -56,10 +56,11 @@ Azure SDK 开发团队中的代码示例演示 API 用法。 可以在 GitHub �
 
 | 示例 | 项目 |
 |---------|---------|
-| [quickstart](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | [快速入门：在 JavaScript 中创建搜索索引](search-get-started-javascript.md)的源代码。 本文介绍了使用示例数据创建、加载和查询搜索索引的基本工作流。 |
+| [quickstart](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | [快速入门：在 JavaScript 中创建搜索索引](search-get-started-javascript.md)的源代码。 介绍使用示例数据来创建、加载和查询搜索索引的基本工作流。 |
+| [search-website](https://github.com/azure-samples/azure-search-javascript-samples/tree/master/search-website) | [《教程：向 Web 应用添加搜索》](tutorial-javascript-overview.md)的源代码。 演示一个端到端搜索应用，其中包含一个富客户端以及用于托管应用和处理搜索请求的组件。|
 
 > [!Tip]
-> 请尝试使用[示例浏览器](/samples/browse/?languages=javascript&products=azure-cognitive-search)来搜索 Github 中的 Microsoft 代码示例，搜索时可按产品、服务和语言进行筛选。
+> 请尝试使用[示例浏览器](/samples/browse/?languages=javascript&products=azure-cognitive-search)来搜索 GitHub 中的 Microsoft 代码示例（按产品、服务和语言进行筛选）。
 
 ## <a name="other-samples"></a>其他示例
 

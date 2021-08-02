@@ -2,26 +2,26 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 03/21/2021
+ms.date: 06/14/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 5fc36e327a9530105182f0a23b3ef22ab324e01c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7433dd53346141147f8d7f0c7bdb1b3b076d152
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803423"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112084000"
 ---
+- [必要时启用] Azure Cosmos DB 帐户应使用客户管理的密钥来加密静态数据
+- [必要时启用] Azure 机器学习工作区应使用客户管理的密钥 (CMK) 进行加密
+- [必要时启用] 认知服务帐户应启用使用客户管理的密钥 (CMK) 的数据加密
+- [必要时启用] 容器注册表应使用客户管理的密钥 (CMK) 进行加密
 - 应限制对具有防火墙和虚拟网络配置的存储帐户的访问
 - 自动化帐户变量应进行加密
 - Azure Cache for Redis 应驻留在虚拟网络中
-- Azure Cosmos DB 帐户应使用客户管理的密钥来加密静态数据
-- Azure 机器学习工作区应使用客户管理的密钥 (CMK) 进行加密
 - Azure Spring Cloud 应使用网络注入
-- 认知服务帐户应启用使用客户管理的密钥 (CMK) 进行数据加密
 - 应强制执行容器 CPU 和内存限制
 - 应只从受信任的注册表中部署容器映像
-- 容器注册表应使用客户管理的密钥 (CMK) 进行加密
 - 应避免使用特权提升的容器
 - 应避免使用共享敏感主机命名空间的容器
 - 容器应只侦听允许的端口

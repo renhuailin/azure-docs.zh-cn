@@ -4,13 +4,13 @@ description: 本文介绍如何从更改跟踪和库存中删除 VM。
 services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 0b79fa22d3203504e63161aba03b32830d74d016
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/26/2021
+ms.openlocfilehash: 3a39294c2ecfe7b26cb3ef3d65c11cbcd665d220
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93131269"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110654118"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>从“更改跟踪和清单”中删除 VM
 
@@ -32,13 +32,30 @@ ms.locfileid: "93131269"
 
 3. 在 Azure 门户中，导航到 Log Analytics 工作区。 从列表中选择你的工作区。
 
-4. 在 Log Analytics 工作区中，选择“日志”，然后从顶部的操作菜单中选择“查询资源管理器”。
+4. 在 Log Analytics 工作区中，从左侧菜单选择“计算机组”。
 
-5. 从右侧窗格中的查询资源管理器展开“已保存的查询\更新”，然后选择已保存的搜索查询 `MicrosoftDefaultComputerGroup` 进行编辑。
+5. 在右侧窗格的“计算机组”中，默认情况下会显示“已保存组”选项卡 。
 
-6. 在查询编辑器中，查看该查询并找到 VM 的 UUID。 删除 VM 的 UUID，并对要删除的任何其他 VM 重复这些步骤。
+6. 在表中，单击 MicrosoftDefaultComputerGroup 项（其“旧类别”值为“ChangeTracking”）右侧的“运行查询”图标   。
 
-7. 完成编辑操作后，通过从顶部栏中选择“保存”来保存搜索。
+7. 在查询编辑器中，查看该查询并找到 VM 的 UUID。 删除 VM 的 UUID，并对要删除的任何其他 VM 重复这些步骤。
+
+   > [!NOTE]
+   > 为了加强保护，请确保在进行编辑之前复制查询。 这样一来，如果出现问题，就可以将查询还原。
+
+   如果要从原始查询开始，并且要重新添加支持清理或维护活动的计算机，请复制以下查询：
+
+   ```kusto
+   Heartbeat
+   | where Computer in~ ("") or VMUUID in~ ("")
+   | distinct Computer
+   ```
+
+8. 编辑完保存的搜索以后，请从顶栏中选择“保存”>“另存为函数”，再次对其进行保存。 出现提示时，请指定以下项：
+
+    * **名称**：ChangeTracking__MicrosoftDefaultComputerGroup
+    * 选择“另存为计算机组”
+    * **旧类别**：ChangeTracking
 
 >[!NOTE]
 >取消注册后，系统仍会显示这些计算机，因为我们会报告在过去 24 小时内评估的所有计算机。 删除计算机后，需要等待 24 小时，系统才不会再次列出这些计算机。

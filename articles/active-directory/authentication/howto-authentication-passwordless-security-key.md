@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 06/03/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 436a972693aafd220d277d7411c0da12636e9cc6
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 3373c1f9a82f79782ed1758fd09c83bcfbe6fc03
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829793"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963713"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>启用无密码安全密钥登录 
 
@@ -32,7 +32,6 @@ ms.locfileid: "107829793"
 - WebAuthN 需要 Windows 10 版本 1903 或更高版本**
 
 若要使用安全密钥来登录 Web 应用和服务，你必须具有支持 WebAuthN 协议的浏览器。 这种浏览器包括 Microsoft Edge、Chrome、Firefox 和 Safari。
-
 
 ## <a name="prepare-devices"></a>准备设备
 
@@ -55,6 +54,43 @@ ms.locfileid: "107829793"
    1. “目标”-“所有用户”或“选择用户”
 1. 保存配置。
 
+
+### <a name="fido-security-key-optional-settings"></a>FIDO 安全密钥可选设置 
+
+有一些安全密钥的可选设置，可用于管理每个租户。  
+
+![FIDO2 安全密钥选项的屏幕截图](media/howto-authentication-passwordless-security-key/optional-settings.png) 
+
+**常规**
+
+- “允许自助设置”应保持设置为“是”。 如果设置为“否”，那么你的用户将无法通过 MySecurityInfo 门户注册 FIDO 密钥，即使通过身份验证方法策略启用也是如此。  
+- “强制证明”设置为“是”，需要 FIDO 安全密钥元数据通过 FIDO 联盟元数据服务进行发布和验证，还可以通过 Microsoft 的其他验证测试集。 有关详细信息，请参阅[何为 Microsoft 兼容的安全密钥？](/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)
+
+**密钥限制策略**
+
+- “强制实施密钥限制”设置为“是”的情况仅限于你的组织仅允许或禁止特定的 FIDO 安全密钥（由它们的 AAGuids 进行标识）。 你可以使用安全密钥提供程序来确定它们设备的 AAGuid。 如果已注册密钥，还可以通过查看每个用户的密钥的身份验证方法详细信息来找到 AAGUID。 
+
+
+## <a name="disable-a-key"></a>禁用密钥 
+
+若要删除与用户帐户关联的 FIDO2 密钥，请从用户的身份验证方法中删除该密钥。
+
+1. 登录到 Azure AD 门户，然后搜索要从中删除 FIDO 密钥的用户帐户。
+1. 选中“身份验证方法”> 右击“FIDO2 安全密钥”，然后单击“删除”。 
+
+    ![查看身份验证方法详细信息](media/howto-authentication-passwordless-deployment/security-key-view-details.png)
+
+## <a name="security-key-authenticator-attestation-guid-aaguid"></a>安全密钥身份验证器证明 GUID (AAGUID)
+
+FIDO2 规范要求每个安全密钥提供程序在证明期间提供身份验证器证明 GUID (AAGUID)。 AAGUID 是指示密钥类型的 128 位标识符，如制造商和型号。 
+
+>[!NOTE]
+>制造商必须确保该制造商所产成的所有完全相同的密钥的 AAGUID 完全相同，并且不同于（概率较高）所有其他类型密钥的 AAGUID。 为了确保这一点，应随机生成给定类型安全密钥的 AAGUID。 有关详细信息，请参阅 [Web 身份验证：用于访问公钥凭据的 API - 级别 2 (w3.org)](https://w3c.github.io/webauthn/)。
+
+可通过两种方式获取你的 AAGUID。 你可以询问安全密钥供应商，或查看每个用户的密钥的身份验证方法详细信息。
+
+![查看安全密钥的 AAGUID](media/howto-authentication-passwordless-deployment/security-key-aaguid-details.png)
+
 ## <a name="user-registration-and-management-of-fido2-security-keys"></a>FIDO2 安全密钥的用户注册和管理
 
 1. 浏览到 [https://myprofile.microsoft.com](https://myprofile.microsoft.com)。
@@ -66,7 +102,7 @@ ms.locfileid: "107829793"
 1. 选择“USB 设备”或“NFC 设备”。
 1. 准备好密钥，然后选择“下一步”。
 1. 屏幕上将会出现一个框，要求用户为你的安全密钥创建/输入 PIN，然后为该密钥执行所需的笔势（生物识别或触摸）。
-1. 用户将返回到合并注册体验，并需要为密钥提供有意义的名称，以便识别出特定密钥（如果他们有多个密钥）。 单击 **“下一步”** 。
+1. 用户将返回到合并注册体验，并需要为密钥提供有意义的名称，以便识别出特定密钥（如果他们有多个密钥）。 单击“下一步”。
 1. 单击“完成”以完成此过程。
 
 ## <a name="sign-in-with-passwordless-credential"></a>通过无密码凭据登录
@@ -91,13 +127,10 @@ ms.locfileid: "107829793"
 
 管理员预配和取消预配安全密钥不可用。
 
-### <a name="cached-logon-on-hybrid-azure-ad-joined-devices"></a>混合 Azure AD 联接设备上缓存的登录
-
-在运行 Windows 10 版本 20H2 的混合 Azure AD 联接设备上，使用 FIDO2 密钥的缓存登录失败。 因此，无法访问本地域控制器时，用户无法登录。 此问题目前正在调查中。
 
 ### <a name="upn-changes"></a>UPN 更改
 
-我们正在努力支持一项功能，该功能允许在已加入混合 Azure AD 的和已加入 Azure AD 的设备上进行 UPN 更改。 如果用户的 UPN 发生更改，你将无法再修改 FIDO2 安全密钥来消除该更改。 解决方法是重置设备，并且用户必须重新注册。
+如果用户的 UPN 发生更改，你将无法再修改 FIDO2 安全密钥来消除该更改。 为 FIDO2 安全密钥用户提供的解决方案是登录到 MySecurityInfo，删除旧密钥并添加一个新密钥。
 
 ## <a name="next-steps"></a>后续步骤
 

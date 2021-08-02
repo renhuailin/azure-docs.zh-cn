@@ -7,6 +7,7 @@ author: dplessMSFT
 editor: ''
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: performance
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: ebceb120f71c64634d005e6ca120f91ca0b1b8c5
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 84164e95d5b961392787f4011abbe553b2cb5595
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126500"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079870"
 ---
 # <a name="vm-size-performance-best-practices-for-sql-server-on-azure-vms"></a>VM 大小：Azure VM 上 SQL Server 的性能最佳做法
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,6 +28,8 @@ ms.locfileid: "108126500"
 本文针对 VM 大小提供一系列最佳做法和准则，以优化 Azure 虚拟机 (VM) 上 SQL Server 的性能。
 
 通常需要在针对成本优化和针对性能优化之间进行权衡。 这一系列性能最佳做法侧重于实现 Azure 虚拟机上 SQL Server 的最佳性能。 如果工作负荷要求较低，可能不需要每项建议的优化。 评估这些建议时应考虑性能需求、成本和工作负荷模式。
+
+如需了解更全面的详情，请参阅本系列中的其他文章：[清单](performance-guidelines-best-practices-checklist.md)、[存储](performance-guidelines-best-practices-storage.md)、[安全性](security-considerations-best-practices.md)、[HADR 配置](hadr-cluster-best-practices.md)和[收集基线](performance-guidelines-best-practices-collect-baseline.md)。 
 
 
 ## <a name="checklist"></a>清单
@@ -187,11 +190,13 @@ Lsv2 和 Ls 系列支持[高级存储](../../../virtual-machines/premium-storage
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解更多信息，请参阅本系列中的其他文章：
+若要了解详细信息，请参阅本系列中的其他文章：
 - [快速核对清单](performance-guidelines-best-practices-checklist.md)
 - [存储](performance-guidelines-best-practices-storage.md)
+- [安全性](security-considerations-best-practices.md)
+- [HADR 设置](hadr-cluster-best-practices.md)
 - [收集基线](performance-guidelines-best-practices-collect-baseline.md)
 
 有关安全最佳做法，请参阅 [Azure 虚拟机上 SQL Server 的安全注意事项](security-considerations-best-practices.md)。
 
-查看 [Azure 虚拟机上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)中的其他 SQL Server 虚拟机文章。 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.md)。
+查看 [Azure 虚拟机上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)中的其他 SQL Server 虚拟机文章。 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](frequently-asked-questions-faq.yml)。

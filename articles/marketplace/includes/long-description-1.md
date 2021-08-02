@@ -7,14 +7,14 @@ ms.topic: include
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 05/19/2020
-ms.openlocfilehash: d562ae234d251a568bd6dafc293d5a431cc9aea7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db7c869d6c2c203b9e1c4a0b2cb3a7472beeecb2
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92283693"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472053"
 ---
-提供产品/服务的较长说明（最多 3000 个字符）。 客户将在市场列表概述中看到该说明。
+提供对产品/服务的详尽说明（最多 3,000 个字符）。 客户将在市场列表概述中看到该说明。
 
 说明可能包括以下一项或多项：
 

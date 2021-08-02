@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 3b6104bcf68c720fa727d16e408a25adcba805aa
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: d8e8daba3806ad651f66324f362eb2573111dd80
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259568"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112070896"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 NFS 卷
 
@@ -102,11 +102,12 @@ Azure NetApp 文件支持使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双重协�
 
 3. 单击“协议”  ，然后完成以下操作：  
     * 选择“NFS”  作为卷的协议类型。   
-    * 指定将用来创建新卷的导出路径的“文件路径”。 导出路径用来装载并访问卷。
 
-        文件路径名只能包含字母、数字和连字符 ("-")。 它的长度必须介于 16 到 40 个字符之间。 
-
-        文件路径在每个订阅和每个区域中都必须是唯一的。 
+    * 指定卷的唯一文件路径。 当你创建装载目标时，系统将使用此路径。 路径要求如下：   
+        - 在区域中的每个子网内必须不得重复。 
+        - 必须以字母字符开头。
+        - 只能包含字母、数字或短划线 (`-`)。 
+        - 长度不能超过 80 个字符。
 
     * 选择卷的 NFS 版本（**NFSv3** 或 **NFSv4.1**）。  
 
@@ -126,11 +127,11 @@ Azure NetApp 文件支持使用 NFS（NFSv3 和 NFSv4.1）、SMB3 或双重协�
  
     卷从其容量池继承订阅、资源组和位置属性。 若要监视卷部署状态，可以使用“通知”选项卡。
 
-
 ## <a name="next-steps"></a>后续步骤  
 
 * [为 Azure NetApp 文件配置 NFSv4.1 默认域](azure-netapp-files-configure-nfsv41-domain.md)
 * [配置 NFSv 4.1 Kerberos 加密](configure-kerberos-encryption.md)
+* [通过 TLS 配置 Azure NetApp 文件的 ADDS LDAP](configure-ldap-over-tls.md)
 * [配置添加 LDAP，其中包含用于 NFS 卷访问的扩展组](configure-ldap-extended-groups.md)
 * [为 Windows 或 Linux 虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [为 NFS 卷配置导出策略](azure-netapp-files-configure-export-policy.md)

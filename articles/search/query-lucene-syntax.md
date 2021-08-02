@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: fc3662d8198e6ab6ab215ac1e9e8eac585f4250b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/08/2021
+ms.openlocfilehash: c7cc9ba4cddb21dd68af4a4e3253361e1e3e62fd
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801581"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754882"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 Lucene 查询语法
 
@@ -122,14 +122,22 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a> 通配符搜索
 
-可将通常可识别的语法用于多个 (`*`) 或单个 (`?`) 字符通配符搜索。 例如，`search=alpha*` 的查询表达式返回“alphanumeric”或“alphabetical”。 请注意，Lucene 查询分析器支持将这些符号与单个术语一起使用，但不能与短语一起使用。
+可将通常可识别的语法用于多个 (`*`) 或单个 (`?`) 字符通配符搜索。 完整的 Lucene 语法支持前缀、中缀和后缀匹配。 
 
-完整的 Lucene 语法支持前缀、中缀和后缀匹配。 但是，如果只需要前缀匹配，则可以使用简单的语法（两者都支持前缀匹配）。
+请注意，Lucene 查询分析器支持将这些符号与单个术语一起使用，但不能与短语一起使用。
 
-后缀匹配，其中 `*` 或 `?` 在字符串之前（如 `search=/.*numeric./`）或中缀匹配需要完整的 Lucene 语法以及正则表达式正斜杠 `/` 分隔符。 不得将 * 或 ? 符号作为搜索词的第一个字符，或在不含 `/` 的搜索词中。 
+| 词缀类型 | 描述和示例 |
+|------------|--------------------------|
+| 前缀 | 术语片段出现在 `*` 或 `?` 之前。  例如，`search=alpha*` 的查询表达式返回“alphanumeric”或“alphabetical”。 简单和完整的语法都支持前缀匹配。 |
+| suffix | 术语片段出现在 `*` 或 `?` 之后，使用正斜杠来分隔构造。 例如 `search=/.*numeric./` 返回“alphanumeric”。 |
+| 中辍  | 术语片段中包含 `*` 或 `?`。  例如，`search=/.non*al./` 返回“nonnumerical”和“nonsensical”。 |
+
+可以将操作符合并到一个表达式中。 例如，`980?2*` 匹配“98072-1222”和“98052-1234”，其中 `?` 匹配单个（所需的）字符，而 `*` 匹配跟在后面的任意长度的字符。
+
+后缀和中缀匹配需要正则表达式正斜杠 `/` 分隔符。 通常，在编写代码时，不能使用 * 或 ? 符号作为搜索词的第一个字符，或在不含 `/` 的搜索词中。 在某些工具（如 Postman 或 Azure 门户）中，转义是内置的，你通常可以执行一个没有分隔符的查询。
 
 > [!NOTE]  
-> 通常，模式匹配很慢，因此你可能需要使用其他方法，例如边缘 n 元标记化，为搜索词中的字符序列创建标记。 索引将更大，但是查询的执行速度可能更快，具体取决于模式构造和要编制索引的字符串的长度。
+> 通常，模式匹配很慢，因此你可能需要使用其他方法，例如边缘 n 元标记化，为搜索词中的字符序列创建标记。 使用 N 元语法词汇切分，索引将更大，但查询的执行速度可能更快，具体取决于模式构造和要编制索引的字符串的长度。
 >
 
 ### <a name="impact-of-an-analyzer-on-wildcard-queries"></a>分析器对通配符查询的影响

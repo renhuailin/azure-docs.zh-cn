@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 04/16/2021
-ms.openlocfilehash: e119d40cd0b8f482d33c3c86c644cf6a0846390a
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 7d94bd0a4a9fb50cb211fd227c3022a46beef502
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727109"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527527"
 ---
 ## <a name="generalize-the-image"></a>通用化映像
 
@@ -55,17 +55,39 @@ VM 准备就绪后，即可在 Azure 共享映像库中捕获映像。 请按照
 8. 选择“查看 + 创建”可查看选择。
 9. 传递验证后，选择“创建”。
 
-若要授予访问权限，请执行以下操作：
+## <a name="set-the-right-permissions"></a>设置适当的权限
 
-1. 转到共享映像库。
-2. 在左窗格中，选择“访问控制”(IAM)。
-3. 依次选择“添加”和“添加角色分配” 。
-4. 选择“角色”或“所有者” 。
-5. 在“分配访问权限至”下，选择“用户、组或服务主体” 。
-6. 选择将发布映像的人员的 Azure 电子邮件。
-7. 选择“保存”。
+如果合作伙伴中心帐户是托管共享映像库的订阅的所有者，则不需要进一步获取权限。
 
-:::image type="content" source="../media/create-vm/add-role-assignment.png" alt-text="显示“添加角色分配”窗口。":::
+如果只有订阅的读取访问权限，请使用以下两个选项中的一个。
+
+### <a name="option-one--ask-the-owner-to-grant-owner-permission"></a>选项 1 - 要求所有者授予所有者权限
+
+所有者授予所有者权限的步骤如下：
+
+1. 转到共享映像库 (SIG)。
+2. 在左侧窗格中选择“访问控制”(IAM)。
+3. 依次选择“添加”、“添加角色分配”。 <br>
+    :::image type="content" source="../media/create-vm/add-role-assignment.png" alt-text="已显示“添加角色分配”窗口。":::
+1. 对于“角色”，请选择“所有者”。 
+1. 对于“将访问权限分配给”，请选择“用户、组或服务主体”。 
+1. 对于“选择”，输入映像发布者的 Azure 电子邮件。
+1. 选择“保存”。 
+
+### <a name="option-two--run-a-command"></a>选项 2 - 运行命令
+
+要求所有者运行其中任一命令（在任一情况下，使用创建共享映像库的订阅的 SusbscriptionId）。
+
+```azurecli
+az login
+az provider register --namespace Microsoft.PartnerCenterIngestion --subscription {subscriptionId}
+```
+ 
+```powershell
+Connect-AzAccount
+Select-AzSubscription -SubscriptionId {subscriptionId}
+Register-AzResourceProvider -ProviderNamespace Microsoft.PartnerCenterIngestion
+```
 
 > [!NOTE]
 > 不需要生成 SAS URI，因为现在可以在合作伙伴中心发布 SIG 映像。 但是，如果仍需要参考 SAS URI 生成步骤，请参阅[如何为 VM 映像生成 SAS URI](../azure-vm-get-sas-uri.md)。

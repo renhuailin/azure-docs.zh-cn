@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 115ff1b59ecbe3f4fdb089c2bd61da955fba3984
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f346995e47c0156f546722031ebaa8734239549c
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92104540"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536701"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Functions 的 Azure 事件网格绑定
 
@@ -45,6 +45,19 @@ ms.locfileid: "92104540"
 [core tools]: ./functions-run-local.md
 [扩展捆绑包]: ./functions-bindings-register.md#extension-bundles
 [NuGet 包]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid
+[更新扩展]: ./functions-bindings-register.md
+[Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
+
+#### <a name="event-grid-extension-3x-and-higher"></a>事件网格扩展 3.x 及更高版本
+
+新版本的事件网格绑定扩展以[预览版 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/3.0.0-beta.2)的形式提供。 对于 .NET 应用程序，它会更改你可以绑定到的类型，并将 `Microsoft.Azure.EventGrid.Models` 中的类型替换为 [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid) 中的新类型。 新的事件网格扩展中也支持[云事件](/dotnet/api/azure.messaging.cloudevent)。
+
+> [!NOTE]
+> 预览包不包括在扩展捆绑包中，必须手动安装。 对于 .NET 应用，请添加对包的引用。 对于所有其他应用类型，请参阅[更新扩展]。
+
+[core tools]: ./functions-run-local.md
+[扩展捆绑包]: ./functions-bindings-register.md#extension-bundles
+[NuGet 包]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
 [更新扩展]: ./functions-bindings-register.md
 [Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 

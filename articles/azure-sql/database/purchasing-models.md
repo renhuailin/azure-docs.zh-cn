@@ -1,23 +1,23 @@
 ---
 title: 购买模型
-titleSuffix: Azure SQL Database & Azure SQL Managed Instance
+titleSuffix: Azure SQL Database & SQL Managed Instance
 description: 了解适用于 Azure SQL 数据库和 Azure SQL 托管实例的购买模型。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: features
+ms.subservice: service-overview
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: 8883263d6ddb2fb8ddc809f464288fcd282531bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a0c499ad15618d874a99be65f6d3af8d11fd88ec
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92788819"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408940"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>选择 vCore 或 DTU 购买模型 - Azure SQL 数据库和 SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -156,7 +156,7 @@ DTU 最好地解释了在不同计算大小和服务层级为数据库分配的�
 
 例如，如果应用程序对网络延迟敏感，则其在 Gen5 硬件上的性能会优于在Gen4 硬件上的性能，因为在 Gen5 中使用了加速网络；但是，如果应用程序使用密集读取 IO，则其在 Gen4 硬件上的性能会优于在 Gen5 硬件上的性能，因为 Gen4 上内存与核心的比率更高。
 
-如果客户的工作负载对硬件变化敏感，或者客户希望控制对其数据库的硬件代系的选择，则客户可以在创建和缩放数据库的过程中使用 [vCore](service-tiers-vcore.md) 模型来选择其首选的硬件代系。 在 vCore 模型中，会记录[单一数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)的每个硬件代系上每个服务目标的资源限制。 有关 vCore 模型中的硬件代系的详细信息，请参阅[硬件代系](./service-tiers-vcore.md#hardware-generations)。
+如果客户的工作负载对硬件变化敏感，或者客户希望控制对其数据库的硬件代系的选择，则客户可以在创建和缩放数据库的过程中使用 [vCore](service-tiers-vcore.md) 模型来选择其首选的硬件代系。 在 vCore 模型中，会记录[单一数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)的每个硬件代系上每个服务目标的资源限制。 有关 vCore 模型中硬件代系的详细信息，请参阅 [SQL 数据库的硬件代系](./service-tiers-sql-database-vcore.md#hardware-generations)或 [SQL 托管实例的硬件代系](../managed-instance/service-tiers-managed-instance-vcore.md#hardware-generations)。
 
 ## <a name="frequently-asked-questions-faqs"></a>常见问题 (FAQ)
 

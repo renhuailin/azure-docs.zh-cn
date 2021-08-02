@@ -1,24 +1,24 @@
 ---
-title: 适用于 Azure 数据资源管理器的 Azure Monitor（预览版）| Microsoft Docs
-description: 本文介绍适用于 Azure 数据资源管理器群集的 Azure Monitor Insights。
+title: Azure 数据资源管理器数据分析（ADX 数据分析预览版）| Microsoft Docs
+description: 本文介绍 Azure 数据资源管理器数据分析（ADX 数据分析）
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: dcfe12b30e336863c8e112d9ad675a2f57fe48f4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 274d907c4fd8d09e444b938447365a4df64af3e4
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179130"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061625"
 ---
-# <a name="azure-monitor-for-azure-data-explorer-preview"></a>适用于 Azure 数据资源管理器的 Azure Monitor（预览版）
+# <a name="azure-data-explorer-insights-preview"></a>Azure 数据资源管理器数据分析（预览版）
 
-适用于 Azure 数据资源管理器的 Azure Monitor（预览版）提供群集性能、操作、使用情况和故障的统一视图，用于对群集进行全面的监视。
-本文将帮助你了解如何加入和使用适用于 Azure 数据资源管理器的 Azure Monitor（预览版）。
+Azure 数据资源管理器数据分析（预览版）通过提供群集性能、操作、使用情况和故障的统一视图，对群集进行全面监视。
+本文将帮助你了解如何加入和使用 Azure 数据资源管理器数据分析（预览版）。
 
-## <a name="introduction-to-azure-monitor-for-azure-data-explorer-preview"></a>适用于 Azure 数据资源管理器的 Azure Monitor（预览版）简介
+## <a name="introduction-to-azure-data-explorer-insights-preview"></a>Azure 数据资源管理器数据分析（预览版）简介
 
 在深入了解此体验之前，应该了解它如何呈现和可视化信息。
 -    大规模透视图，其中显示群集主要指标的快照视图，以方便跟踪查询、引入和导出操作的性能。
@@ -73,7 +73,7 @@ ms.locfileid: "102179130"
 
 ## <a name="view-from-an-azure-data-explorer-cluster-resource-drill-down-analysis"></a>Azure 数据资源管理器群集资源中的视图（深化分析）
 
-若要直接从 Azure 数据资源管理器群集访问适用于 Azure 数据资源管理器群集的 Azure Monitor，请执行以下操作：
+直接从 Azure 数据资源管理器群集中访问 Azure 数据资源管理器数据分析：
 
 1. 在 Azure 门户中，选择“Azure 数据资源管理器群集”。
 
@@ -81,7 +81,7 @@ ms.locfileid: "102179130"
 
 还可以通过从 Azure Monitor 见解视图中选择某个 Azure 数据资源管理器群集的资源名称来访问这些视图。
 
-适用于 Azure 数据资源管理器的 Azure Monitor 将日志和指标结合起来以提供全局监视解决方案。 包含基于日志的可视化效果需要用户[启用其 Azure 数据资源管理器群集的诊断日志记录，并将日志发送到 Log Analytics 工作区](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs)。 应启用的诊断日志包括：Command、Query、TableDetails 和 TableUsageStatistics   。
+Azure 数据资源管理器数据分析结合日志和指标，提供全局监视解决方案。 包含基于日志的可视化效果需要用户[启用其 Azure 数据资源管理器群集的诊断日志记录，并将日志发送到 Log Analytics 工作区](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs)。 应启用的诊断日志包括：Command、Query、TableDetails 和 TableUsageStatistics   。
 
 ![显示文本“启用日志以进行监视”的蓝色按钮屏幕截图](./media/data-explorer/enable-logs.png)
 
@@ -114,9 +114,14 @@ ms.locfileid: "102179130"
 
 “表”选项卡显示群集中的表的最新属性和历史属性。 可以查看哪些表占用的空间最多，按表大小、热数据和行数跟踪一段时间内的增长历史记录。
 
-“缓存”选项卡可让用户分析其实际查询的回溯模式，并将其与已配置的缓存策略（针对每个表）进行比较。 可以识别由大多数查询和表使用的、但根本未查询的表，并相应地调整缓存策略。 可以基于实际查询在过去 30 天的回溯和适用于至少 95% 的查询的未优化缓存策略，在 Azure 顾问中获取有关特定表的特殊缓存策略建议（目前，只能从 [Azure 顾问主仪表板](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations)查看缓存建议）。 Azure 顾问中的缓存缩减建议适用于“受数据限制”的群集（即，这些群集的 CPU 利用率和引入利用率较低，但由于数据容量较高，群集无法横向或纵向缩减）。
+“缓存”选项卡可让用户分析其实际查询的回溯时段图，并将其与已配置的缓存策略（针对每个表）进行比较。 可以识别由大多数查询和表使用的、但根本未查询的表，并相应地调整缓存策略。 可以基于实际查询在过去 30 天的回溯时段和适用于至少 95% 查询的未优化缓存策略，在 Azure 顾问中获取有关特定表的特殊缓存策略建议（目前，只能从 [Azure 顾问主仪表板](https://docs.microsoft.com/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations)查看缓存建议）。 Azure 顾问中的缓存缩减建议适用于“受数据限制”的群集（即，这些群集的 CPU 利用率和引入利用率较低，但由于数据容量较高，群集无法横向或纵向缩减）。
 
 [![缓存详细信息的屏幕截图](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
+
+“群集边界”选项卡根据使用情况显示群集边界。 在此选项卡中，你可以检查 CPU、引入和缓存利用率。 这些指标评分为“低”、“中”或“高”。 确定群集的最佳 SKU 和实例计数时，这些指标和分数非常重要，并且在 Azure 顾问 SKU/大小建议中需考虑这些内容。 在此选项卡中，可以选择一个指标图块，深入了解其趋势以及如何确定其分数。 还可以查看群集的 Azure 顾问 SKU/大小建议。 例如，在下图中，你可以看到所有指标均评分为“低”，因此该群集会收到一项成本建议，使其能够横向缩减/按比例缩减，从而节省成本。
+
+> [!div class="mx-imgBorder"]
+> [![群集边界的屏幕截图。](./media/data-explorer/cluster-boundaries.png)](./media/data-explorer/cluster-boundaries.png#lightbox)
 
 ## <a name="pin-to-azure-dashboard"></a>固定到 Azure 仪表板
 
@@ -124,7 +129,7 @@ ms.locfileid: "102179130"
 
 ![已选择的固定图标的屏幕截图](./media/data-explorer/pin.png)
 
-## <a name="customize-azure-monitor-for-azure-data-explorer-cluster"></a>自定义适用于 Azure 数据资源管理器群集的 Azure Monitor
+## <a name="customize-azure-data-explorer-insights"></a>自定义 Azure 数据资源管理器数据分析
 
 此部分重点介绍了编辑工作簿的常见方案，以进行自定义来满足数据分析需求：
 * 限定工作簿的范围，以便始终选择特定的订阅或 Azure 数据资源管理器群集
@@ -143,7 +148,7 @@ ms.locfileid: "102179130"
 
 如需常规故障排除指南，请参阅专用的基于工作簿的见解[故障排除文章](troubleshoot-workbooks.md)。
 
-本部分将帮助你诊断和排查在使用适用于 Azure 数据资源管理器群集的 Azure Monitor（预览版）时可能会遇到的一些常见问题。 使用下面的列表来查找与具体问题相关的信息。
+本部分帮助你诊断和排查在使用 Azure 数据资源管理器数据分析（预览版）时可能遇到的一些常见问题。 使用下面的列表来查找与具体问题相关的信息。
 
 ### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>为什么在订阅选取器中看不到所有订阅？
 

@@ -3,26 +3,27 @@ title: Azure 上的 SAP HANA（大型实例）的灾难恢复原则和准备工�
 description: Azure 上的 SAP HANA（大型实例）的灾难恢复原则和准备工作
 services: virtual-machines-linux
 documentationcenter: ''
-author: saghorpa
+author: Ajayan1008
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
-ms.author: saghorpa
+ms.date: 05/10/2021
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: babd7c1dcae9d83af1f6c41e756b663d92d6d486
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1a7127477be68d931efa2b0de69961f314b88879
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101677119"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110580174"
 ---
 # <a name="disaster-recovery-principles"></a>灾难恢复原则
 
-HANA 大型实例提供不同 Azure 区域中 HANA 大型实例戳之间的灾难恢复功能。 例如，如果在 Azure 美国西部区域部署 HANA 大型实例单元，则可将美国东部区域中的 HANA 大型实例单元用作灾难恢复单元。 如前所述，不会自动配置灾难恢复，因为用户需要为 DR 区域中的另一个 HANA 大型实例单元付费。 灾难恢复设置适用于纵向扩展和横向扩展设置。 
+HANA 大型实例提供不同 Azure 区域中 HANA 大型实例戳之间的灾难恢复功能。 例如，如果在 Azure 美国西部区域部署 HANA 大型实例单元，则可将美国东部区域中的 HANA 大型实例单元用作灾难恢复单元。 如前所述，不会自动配置灾难恢复，因为你需要为 DR 区域中的另一个 HANA 大型实例单元付费。 灾难恢复设置适用于纵向扩展和横向扩展设置。 
 
 在目前已部署的方案中，客户使用 DR 区域中的单元运行非生产系统，这些系统使用已安装的 HANA 实例。 HANA 大型实例单元的 SKU 应与用于生产目的的 SKU 相同。 下图显示 Azure 生产区域与灾难恢复区域中的服务器单元之间的磁盘配置：
 
@@ -34,9 +35,9 @@ HANA 大型实例提供不同 Azure 区域中 HANA 大型实例戳之间的灾�
 - /hana/logbackups 
 - /hana/shared（包括 /usr/sap）
 
-由于从 /hana/log 卷还原的方式不需要 SAP HANA 事务日志，因此不会复制这些卷。 
+不会复制 /hana/log 卷，因为在从这些卷还原时不需要 SAP HANA 事务日志。 
 
-灾难恢复功能的提供基于 HANA 大型实例基础结构提供的存储复制功能。 存储卷发生更改时，在存储端使用的功能并不是以异步方式复制的恒定更改流。 它是依赖于以下事实的机制：定期创建这些卷的快照。 然后，已复制的快照和尚未复制的新快照之间的差量会转移到灾难恢复站点中的目标磁盘卷。  这些快照存储在卷上；如果发生了灾难恢复故障转移，需要在这些卷上还原这些快照。  
+灾难恢复功能的提供基于 HANA 大型实例基础结构提供的存储复制。 存储卷发生更改时，在存储端使用的功能并不是以异步方式复制的恒定更改流。 而是一种依赖于定期创建这些卷的快照的机制。 然后，已复制的快照和尚未复制的新快照之间的差量会转移到灾难恢复站点中的目标磁盘卷。  这些快照存储在卷上；如果发生了灾难恢复故障转移，需要在这些卷上还原这些快照。  
 
 卷中完整数据的首次传输应发生在数据量小于快照之间的差量之前。 因此，DR 站点中的卷包含在生产站点中执行的每个卷的快照。 最终可以使用该 DR 系统回到较早的状态，从而复原丢失的数据而无需回滚生产系统。
 
@@ -102,7 +103,7 @@ HANA 大型实例提供不同 Azure 区域中 HANA 大型实例戳之间的灾�
 
 在复制过程中，不会还原 DR Azure 区域中的 PRD 卷上的快照。 只会存储这些快照。 如果以这种状态装载卷，则呈现在 DR Azure 区域中的服务器单元上安装 PRD SAP HANA 实例后卸载这些卷时的状态。 此外，这些卷还会呈现尚未还原的存储备份。
 
-如果发生故障转移，还可以选择还原到旧的存储快照而不是最新的存储快照。
+如果发生故障转移，还可以选择还原到较旧的存储快照而不是最新的存储快照。
 
 ## <a name="next-steps"></a>后续步骤
 

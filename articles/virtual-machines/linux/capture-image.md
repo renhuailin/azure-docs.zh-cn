@@ -9,12 +9,12 @@ ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
 ms.collection: linux
-ms.openlocfilehash: dddbad2403734bc749497a7acca16b2a5b6076f4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b77702ea78d9b44da7843d08b2f32adeecfb9383
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792248"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440603"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>如何创建虚拟机或 VHD 的托管映像
 
@@ -26,7 +26,7 @@ ms.locfileid: "107792248"
 
 若要创建一份现有 Linux VM 的副本以用于备份或调试，或从本地 VM 上传专用 Linux VHD，请参阅[上传自定义磁盘映像并根据该映像创建 Linux VM](upload-vhd.md)。  
 
-可以使用 Azure VM 映像生成器（公共预览版）服务来生成自定义映像，无需了解任何工具或设置生成管道，只需提供映像配置，映像生成器即可创建映像。 有关详细信息，请参阅 [Azure VM 映像生成器入门](../image-builder-overview.md)。
+可以使用 Azure VM 映像生成器来构建自定义映像，无需了解任何工具或设置生成管道，只需提供映像配置，映像生成器即可创建映像。 有关详细信息，请参阅 [Azure VM 映像生成器入门](../image-builder-overview.md)。
 
 创建映像前需要以下项：
 
@@ -82,12 +82,14 @@ ms.locfileid: "107792248"
     ```azurecli
     az image create \
         --resource-group myResourceGroup \
-        --name myImage --source myVM
+    --name myImage --source myVM
     ```
    
    > [!NOTE]
    > 该映像在与源 VM 相同的资源组中创建。 可以在订阅内的任何资源组中从此映像创建虚拟机。 从管理角度来看，你可能希望为 VM 资源和映像创建特定的资源组。
    >
+   > 如果要捕获第 2 代 VM 的映像，请使用 `--hyper-v-generation V2` 参数。 有关详细信息，请参阅[第 2 代 VM](../generation-2.md)。
+   > 
    > 如果希望将映像存储在具有区域复原能力的存储中，需要在支持[可用性区域](../../availability-zones/az-overview.md)的区域中创建该快照并包括 `--zone-resilient true` 参数。
    
 此命令返回描述 VM 映像的 JSON。 保存此输出以供日后参考。

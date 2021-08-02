@@ -6,16 +6,22 @@ author: harelbr
 ms.author: harelbr
 ms.date: 02/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: e3a7b71cd8975957754ba014ecc700484c27a6d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f13bc07ce5ae6a11b59b6d18a609ca2ee259964
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726115"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949402"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Application Insights 智能检测规则
 
-可以使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)来管理和配置 Application Insights 中的智能检测规则。
+>[!NOTE]
+>你可以将 Application Insights 资源迁移到警报库智能检测（预览版）。 迁移时会为各种智能检测模块创建警报规则。 创建后就可以管理和配置这些规则，就像任何其他 Azure Monitor 警报规则一样。 你还可以为这些规则配置操作组，从而通过多种方法针对新的检测执行操作或触发通知。
+>
+> 有关迁移过程和迁移后智能检测行为的更多详细信息，请参阅[智能检测警报迁移](../alerts/alerts-smart-detections-migration.md)。
+> 
+
+可以使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)来管理和配置 Application Insights 中的智能检测规则。
 使用 Azure 资源管理器自动化部署新的 Application Insights 资源或修改现有资源的设置时，可以使用此方法。
 
 ## <a name="smart-detection-rule-configuration"></a>智能检测规则配置
@@ -195,4 +201,3 @@ ms.locfileid: "101726115"
 - [失败异常](./proactive-failure-diagnostics.md)
 - [内存泄漏](./proactive-potential-memory-leak.md)
 - [性能异常](./proactive-performance-diagnostics.md)
-

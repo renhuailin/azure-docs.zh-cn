@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 11/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f99f9d240a0a9220d3b7f57cddd0a4f8ba6b6101
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47d8acd26d1cfa9c41c2cc8770f7c7f81a3e2930
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104595974"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592099"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的计时器触发器
 
@@ -322,7 +322,7 @@ Azure Functions 使用 [NCronTab](https://github.com/atifaziz/NCrontab) 库来�
 | `0 30 9 * Jan Mon` | 在一月份每星期一的上午 9:30 |
 
 > [!NOTE]
-> NCRONTAB 表达式需要一个六字段的格式。 第六个字段的位置是秒的值，该值置于表达式的开头。 Azure 不支持五字段 cron 表达式。
+> NCRONTAB 表达式同时支持五字段和六字段格式 。 第六个字段的位置是秒的值，该值置于表达式的开头。
 
 ### <a name="ncrontab-time-zones"></a>NCRONTAB 时区
 

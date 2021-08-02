@@ -8,12 +8,13 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 39990a557315c3fcc79f2b9dab59f25f758ab2bd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 21cb737cf6168f44c1e71815d90139a04ba1d37b
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443108"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697090"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>管理 Azure Stack Edge Pro GPU 的访问、电源和连接模式
 
@@ -37,7 +38,9 @@ ms.locfileid: "102443108"
 
 可以通过使用设备密码来控制对 Azure Stack Edge Pro 设备的访问。 可以通过本地 Web UI 更改密码。 还可以在 Azure 门户中重置设备密码。
 
-对设备磁盘上数据的访问也通过静态加密密钥来控制。
+对设备磁盘上数据的访问也通过静态加密密钥来控制。 
+
+可以通过从设备的本地 Web UI 中经由 HTTP 或 HTTPS 打开远程 PowerShell 会话来访问设备。
 
 ### <a name="change-device-password"></a>更改设备密码
 
@@ -96,6 +99,21 @@ ms.locfileid: "102443108"
     将 `.json` 密钥文件保存在安全的位置。 此文件用于促进将来可能的设备恢复。
 
     ![屏幕截图显示“重置设备密码”对话框。](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+
+## <a name="enable-device-access-via-remote-powershell-over-http"></a>经由 HTTP 通过远程 PowerShell 来实现设备访问
+
+可以通过 HTTP 或 HTTPS 打开到设备的远程 PowerShell 会话。 默认情况下，通过经由 HTTPS 的 PowerShell 会话访问设备。 但在受信任的网络中，也可接受通过 HTTP 启用远程 PowerShell。
+
+在本地 UI 中按照以下步骤通过 HTTP 启用远程 PowerShell：
+
+1. 在设备的本地 UI 中，从页面的右上角转到“设置”。
+1. 选择“启用”，以允许通过 HTTP 打开设备的远程 PowerShell 会话。 应仅在受信任的网络中启用此设置。
+
+    ![屏幕截图显示“通过 HTTP 启用远程 PowerShell”设置。](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/enable-remote-powershell-http-1.png)
+
+1. 选择“应用”。 
+
+现在可以通过 HTTP 连接到设备的 PowerShell 界面。 有关详细信息，请参阅[连接到设备的 PowerShell 界面](azure-stack-edge-gpu-connect-powershell-interface.md#connect-to-the-powershell-interface)。
 
 ## <a name="manage-resource-access"></a>管理资源访问
 

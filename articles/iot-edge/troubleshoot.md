@@ -4,16 +4,16 @@ description: 通过本文了解 Azure IoT Edge 的标准诊断技能，例如检
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/01/2021
+ms.date: 05/04/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6fa49af946a1e5fc631eeb1ee9b9c7c99d3adff8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0ab6ddcf3566164746dce8e0b9ff4b4a2aa32b84
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308262"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111537985"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>排除 IoT Edge 设备故障
 
@@ -113,7 +113,15 @@ sudo iotedge support-bundle --since 6h
 :::moniker-end
 <!-- end 1.2 -->
 
-还可以对设备使用[直接方法](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)调用，将 support-bundle 命令的输出上传到 Azure Blob 存储。
+默认情况下，`support-bundle` 命令在调用该命令的目录中创建名为 support_bundle.zip 的 zip 文件。 使用标志 `--output` 为输出指定其他路径或文件名。
+
+有关命令的详细信息，请参阅其帮助信息。
+
+```bash/cmd
+iotedge support-bundle --help
+```
+
+还可以使用内置直接方法调用 [UploadSupportBundle](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)，将 support-bundle 命令的输出上传到 Azure Blob 存储。
 
 > [!WARNING]
 > `support-bundle` 命令的输出可能包含主机、设备和模块名称、模块记录的信息，等等。如果在公共论坛中共享输出，请注意这一点。
@@ -131,7 +139,7 @@ sudo iotedge support-bundle --since 6h
 若要获取最新的 edgeAgent 模块孪生，请从 [Azure Cloud Shell](https://shell.azure.com/) 运行以下命令：
 
    ```azurecli-interactive
-   az iot hub module-twin show --device-id <edge_device_id> --module-id $edgeAgent --hub-name <iot_hub_name>
+   az iot hub module-twin show --device-id <edge_device_id> --module-id '$edgeAgent' --hub-name <iot_hub_name>
    ```
 
 此命令将输出所有 edgeAgent [报告属性](./module-edgeagent-edgehub.md)。 以下是一些有用的监视设备状态的信息：
@@ -259,11 +267,32 @@ sudo iotedge support-bundle --since 6h
 
 IoT Edge 安全守护程序运行后，请查看容器日志以检测问题。 先查看你的已部署容器，然后查看构成 IoT Edge 运行时的容器：edgeAgent 和 edgeHub。 IoT Edge 代理日志通常提供有关每个容器的生命周期的信息。 IoT Edge 中心日志提供有关消息传送和路由的信息。
 
+可从多个位置检索容器日志：
+
+* 在 IoT Edge 设备上，运行以下命令以查看日志：
+
+  ```cmd
+  iotedge logs <container name>
+  ```
+
+* 在 Azure 门户上，使用内置的故障排除工具。 [在 Azure 门户中对 IoT Edge 设备进行监视和故障排除](troubleshoot-in-portal.md)
+
+* 使用 [UploadModuleLogs 直接方法](how-to-retrieve-iot-edge-logs.md#upload-module-logs)将模块的日志上传到 Azure Blob 存储。
+
+## <a name="clean-up-container-logs"></a>清理容器日志
+
+默认情况下，Moby 容器引擎不会设置容器日志大小限制。 一段时间后，这可能会导致设备中填满了日志，因此出现磁盘空间不足的情况。 如果大型容器日志影响 IoT Edge 设备性能，请使用以下命令强制删除容器及其相关日志。
+
+如果仍在进行故障排除，请等到检查容器日志后再执行此步骤。
+
+>[!WARNING]
+>如果在 edgeHub 容器有未交付的消息积压工作 (backlog) 且未设置[主机存储](how-to-access-host-storage-from-module.md)时强制删除该容器，则未交付的消息将丢失。
+
 ```cmd
-iotedge logs <container name>
+docker rm --force <container name>
 ```
 
-还可以对设备上的模块使用[直接方法](how-to-retrieve-iot-edge-logs.md#upload-module-logs)调用，将该模块的日志上传到 Azure Blob 存储。
+对于正在进行的日志维护和生产方案，请[施加日志大小限制](production-checklist.md#place-limits-on-log-size)。
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>查看通过 IoT Edge 中心的消息
 
@@ -334,7 +363,9 @@ edgeHub 和 edgeAgent 模块都具有此运行时日志环境变量，默认值�
 
 ## <a name="restart-containers"></a>重启容器
 
-在为了解信息而调查日志和消息后，可以尝试重启容器：
+在为了解信息而调查日志和消息后，可以尝试重启容器。
+
+在 IoT Edge 设备上，使用以下命令重启模块：
 
 ```cmd
 iotedge restart <container name>
@@ -345,6 +376,8 @@ iotedge restart <container name>
 ```cmd
 iotedge restart edgeAgent && iotedge restart edgeHub
 ```
+
+还可从 Azure 门户远程重启模块。 有关详细信息，请参阅[在 Azure 门户中对 IoT Edge 设备进行监视和故障排除](troubleshoot-in-portal.md)。
 
 ## <a name="check-your-firewall-and-port-configuration-rules"></a>检查防火墙和端口配置规则
 

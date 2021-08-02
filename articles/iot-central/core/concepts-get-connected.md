@@ -12,16 +12,14 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: c365f367a090f1697b71c51f24679b9ea09561d0
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: fb9c9f460b46f8dec741f4c22460cbe9d44c6a0e
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490006"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110791073"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
-
-本文适用于操作员和设备开发人员。
 
 本文介绍设备如何连接到 Azure IoT Central 应用程序。 在设备可以与 IoT Central 交换数据之前，必须执行以下操作：
 
@@ -184,7 +182,7 @@ IoT Central 应用程序使用设备发送的模型 ID [将注册的设备与设
 1. 如果设备模板未在 IoT Central 应用程序中发布，IoT Central 会在[公共模型存储库](https://github.com/Azure/iot-plugandplay-models)中查找设备模型。 如果 IoT Central 找到模型，它将使用该模型生成基本设备模板。
 1. 如果 IoT Central 在公共模型存储库中找不到模型，则设备将被标记为“未关联”。 操作员可以为设备创建设备模板，然后将未关联的设备迁移到新的设备模板。
 
-以下屏幕截图演示了如何在 IoT Central 中查看设备模板的模型 ID。 在设备模板中，选择一个组件，然后选择“查看标识”：
+以下屏幕截图演示了如何在 IoT Central 中查看设备模板的模型 ID。 在设备模板中，选择一个组件，然后选择“编辑标识”：
 
 :::image type="content" source="media/concepts-get-connected/model-id.png" alt-text="显示恒温器设备模板中的模型 ID 的屏幕截图。":::
 
@@ -213,7 +211,16 @@ IoT Central 应用程序使用设备发送的模型 ID [将注册的设备与设
     - 在“设备”页上使用“导入”添加了一组设备，但未指定设备模板。 
     - 在“设备”页上手动注册了设备，但未指定设备模板。 然后使用有效凭据连接设备。  
 
-    操作员可以在“设备”页上使用“迁移”按钮将设备关联到设备模板。 
+    操作员可以在“设备”页上使用“迁移”按钮将设备关联到设备模板。
+
+## <a name="device-connection-status"></a>设备连接状态
+当设备或边缘设备使用 MQTT 协议进行连接时，显示设备的已连接和断开连接事件。  这些事件不是由设备发送的，它们是由 IoT Central 在内部生成的。
+
+下图显示了当设备连接时，如何在一个时间窗口结束时注册连接。 如果发生多个连接和断开连接事件，IoT Central 会注册最接近时间窗口结束的那个事件。 例如，如果设备在时间窗口内断开连接并重新连接，IoT Central 将注册连接事件。 目前，时间窗口大约为一分钟。
+
+:::image type="content" source="media/concepts-get-connected/device-connectivity-diagram.png" alt-text="显示已连接和已断开连接事件的事件时间窗口的示意图。" border="false":::
+
+可以在[从 IoT Central 导出](howto-export-data.md#set-up-data-export)中包含连接和断开连接事件。 若要了解详细信息，请参阅[响应 IoT 中心事件 > 设备已连接和设备已断开连接事件的限制](../../iot-hub/iot-hub-event-grid.md#limitations-for-device-connected-and-device-disconnected-events)。
 
 ## <a name="sdk-support"></a>SDK 支持
 
@@ -261,7 +268,7 @@ Azure 设备 SDK 为实现设备代码提供最简便的方法。 以下设备 S
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你是设备开发人员，则建议执行以下后续步骤：
+一些建议的后续步骤如下：
 
 - 查看开发设备的[最佳做法](concepts-best-practices.md)。
 - 在[教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](tutorial-connect-device.md)中查看一些介绍如何使用 SAS 令牌的示例代码

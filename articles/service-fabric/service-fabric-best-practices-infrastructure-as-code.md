@@ -5,12 +5,13 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: b765d92778df40caec0864dc6f547324216fdb07
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ae7eaa628e0e3cfc256b7cd01035d9e068f47867
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102611974"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671110"
 ---
 # <a name="infrastructure-as-code"></a>基础结构即代码
 
@@ -42,7 +43,7 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -TemplateParameterFile $Parameters
 ```
 
-## <a name="azure-service-fabric-resources"></a>Azure Service Fabric 资源
+## <a name="service-fabric-resources"></a>Service Fabric 资源
 
 可以通过 Azure 资源管理器，将应用程序和服务部署到 Service Fabric 群集。 有关详细信息，请参阅[将应用程序和服务作为 Azure 资源管理器资源进行管理](./service-fabric-application-arm-resource.md)。 下面是要在资源管理器模板资源中包括的最佳做法 Service Fabric 应用程序特定资源。
 
@@ -90,8 +91,9 @@ for root, dirs, files in os.walk(self.microservices_app_package_path):
 microservices_sfpkg.close()
 ```
 
-## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Azure 虚拟机操作系统自动升级配置 
-升级虚拟机是用户启动的操作，建议使用[虚拟机规模集操作系统自动升级](service-fabric-patch-orchestration-application.md)进行 Azure Service Fabric 群集主机修补程序管理；修补业务流程应用程序是替代解决方案，适用于在 Azure 外部托管的情况。虽然 POA 可以在 Azure 中使用，但考虑到在 Azure 中托管 POA 的开销，通常会首选虚拟机操作系统自动升级而不是 POA。 下面是计算虚拟机规模集资源管理器模板属性，用于启用 OS 自动升级：
+## <a name="virtual-machine-os-automatic-upgrade-configuration"></a>虚拟机 OS 自动升级配置
+
+升级虚拟机是用户启动的操作，建议为 Service Fabric 群集节点补丁的管理[启用虚拟机规模集自动映像升级](how-to-patch-cluster-nodes-windows.md)。 补丁业务流程应用程序 (POA) 是一种替代解决方案，适用于非 Azure 托管群集。 尽管可以在 Azure 中使用 POA，但托管它需要更多的管理，而不仅仅是简单地启用规模集自动 OS 映像升级。 下面是用于启用自动 OS 升级的虚拟机规模集资源管理器模板属性：
 
 ```json
 "upgradePolicy": {
@@ -106,7 +108,7 @@ microservices_sfpkg.close()
 
 确保将以下注册表项设置为 false，以防止 Windows 主机启动不协调的更新：HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU。
 
-下面是计算虚拟机规模集资源管理器模板属性，用于将 WindowsUpdate 注册表项设置为 false：
+设置以下虚拟机规模集模板属性以禁用 Windows 更新：
 ```json
 "osProfile": {
         "computerNamePrefix": "{vmss-name}",
@@ -119,12 +121,16 @@ microservices_sfpkg.close()
       },
 ```
 
-## <a name="azure-service-fabric-cluster-upgrade-configuration"></a>Azure Service Fabric 群集升级配置
-下面是 Service Fabric 群集资源管理模板属性，用于启用自动升级：
+## <a name="service-fabric-cluster-upgrade-configuration"></a>Service Fabric 群集升级配置
+
+下面是用于启用自动升级的 Service Fabric 群集模板属性：
+
 ```json
 "upgradeMode": "Automatic",
 ```
+
 若要手动升级群集，请将 cab/deb 发行版下载到群集虚拟机，然后调用以下 PowerShell：
+
 ```powershell
 Copy-ServiceFabricClusterPackage -Code -CodePackagePath <"local_VM_path_to_msi"> -CodePackagePathInImageStore ServiceFabric.msi -ImageStoreConnectionString "fabric:ImageStore"
 Register-ServiceFabricClusterPackage -Code -CodePackagePath "ServiceFabric.msi"

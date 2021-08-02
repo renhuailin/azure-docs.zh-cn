@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 631fdba451f69e44a675d396a42e1cddaea50a3b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 05/30/2021
+ms.openlocfilehash: 67919f89167fbdb09bfed8e67dfda5fb49bb9bb0
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98013951"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592387"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure 流分析中的 Azure SQL 数据库输出
 
@@ -47,6 +47,10 @@ ms.locfileid: "98013951"
 ## <a name="output-batch-size"></a>输出批大小
 
 可以使用“最大批处理计数”来配置最大消息大小。 每次批量插入操作的默认最大值为 10,000 行，最小值为 100 行。 有关详细信息，请参阅 [Azure SQL 限制](../azure-sql/database/resource-limits-logical-server.md)。 每个批最初是按照最大批计数批量插入的。 根据 SQL 的可重试错误对半拆分批（直到达到最小批计数）。
+
+## <a name="limitation"></a>限制
+
+尝试将 ASA 作业连接到 VM 上的 SQL 时，不支持自签名 ssl 证书
 
 ## <a name="next-steps"></a>后续步骤
 

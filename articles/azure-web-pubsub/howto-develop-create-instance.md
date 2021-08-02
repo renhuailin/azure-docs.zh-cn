@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: how-to
 ms.date: 03/17/2021
-ms.openlocfilehash: 0ed91129f2093018ff34a2b3eef505eded9483cf
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f3ed823d989abcb32ad7680e902fc5d52200e726
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060699"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951047"
 ---
 # <a name="how-to-create-azure-web-pubsub-instance"></a>如何创建 Azure Web PubSub 实例
 
@@ -21,11 +21,13 @@ ms.locfileid: "110060699"
 
 Azure 门户是基于 Web 的统一控制台，提供可替代命令行工具的方法。 可以通过 Azure 门户管理 Azure 订阅。 生成、管理和监视一切内容，从简单的 Web 应用到复杂的云部署。 还可通过 Azure 门户创建 Azure Web PubSub service 实例。
 
-1. 选择 Azure 门户左上角的“新建”按钮。 在“新建”屏幕中，在搜索框中键入“Web PubSub”，然后按 Enter。
+1. 选择 Azure 门户左上角的“新建”按钮。 在“新建”屏幕中，在搜索框中键入“Web PubSub”，然后按 Enter。 （还可以从 `Web` 类别中搜索 Azure Web PubSub。）
 
-1. 在搜索结果中选择“Web PubSub”，然后选择“创建” 。
+:::image type="content" source="media/create-instance-portal/search-web-pubsub-in-portal.png" alt-text="屏幕截图显示在门户中搜索 Azure Web PubSub。":::
 
-1. 输入以下设置。
+2. 在搜索结果中选择“Web PubSub”，然后选择“创建” 。
+
+3. 输入以下设置。
 
     | 设置      | 说明                                        |
     | ------------ | -------------------------------------------------- |
@@ -36,10 +38,10 @@ Azure 门户是基于 Web 的统一控制台，提供可替代命令行工具的
     | **定价层** | 了解有关 [Azure Web PubSub 服务定价层](https://azure.microsoft.com/pricing/details/web-pubsub/)的更多详细信息。 |
     | **单位计数** |  单位计数指定 Web PubSub 服务实例可接受的连接数。 每个单位最多支持 1000 个并发连接。 它只能在标准层中配置。 |
 
-1. 选择“创建”，开始部署 Web PubSub 服务实例。
+:::image type="content" source="media/howto-develop-create-instance/create-web-pubsub-instance-in-portal.png" alt-text="屏幕截图显示在门户中创建 Azure Web PubSub 实例。":::
+
+4. 选择“创建”，开始部署 Web PubSub 服务实例。
 
 ## <a name="create-azure-web-pubsub-instance-with-azure-cli"></a>使用 Azure CLI 创建 Azure Web PubSub 实例
 
-[Azure 命令行接口 (Azure CLI)](https://docs.microsoft.com/cli/azure) 是一组用来创建和管理 Azure 资源的命令。 Azure CLI 可用于各种 Azure 服务，可用来快速使用 Azure（侧重于自动化）。 你还可以在 GA 后通过 Azure CLI 创建 Azure Web PubSub 服务实例。
-
-
+[Azure 命令行接口 (Azure CLI)](/cli/azure) 是一组用来创建和管理 Azure 资源的命令。 Azure CLI 可用于各种 Azure 服务，可用来快速使用 Azure（侧重于自动化）。 你还可以在 GA 后通过 Azure CLI 创建 Azure Web PubSub 服务实例。

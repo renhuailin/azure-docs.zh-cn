@@ -4,12 +4,12 @@ description: 本文介绍如何将 Azure VMware 解决方案订阅移动到另�
 ms.custom: subject-moving-resources
 ms.topic: how-to
 ms.date: 04/26/2021
-ms.openlocfilehash: 0cd06eb72f8ed93cc5a491070baded76f9dc9f6f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 02f35efe90d4670c4ab38155f129ec0d61c1b03d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145421"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966709"
 ---
 # <a name="move-azure-vmware-solution-subscription-to-another-subscription"></a>将 Azure VMware 解决方案订阅移动到另一个订阅
 
@@ -64,9 +64,7 @@ ms.locfileid: "108145421"
 ## <a name="next-steps"></a>后续步骤
 了解有关以下方面的详细信息：
 
-- [网络资源移动指南](/azure/azure-resource-manager/management/move-limitations/networking-move-limitations)
-- [针对虚拟机的移动指南](/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations)
-- [针对应用服务资源的移动指南](/azure/azure-resource-manager/management/move-limitations/app-service-move-limitations)
-
-
-
+- [跨区域移动 Azure VMware 解决方案](move-azure-vmware-solution-across-regions.md)
+- [网络资源移动指南](../azure-resource-manager/management/move-limitations/networking-move-limitations.md)
+- [针对虚拟机的移动指南](../azure-resource-manager/management/move-limitations/virtual-machines-move-limitations.md)
+- [针对应用服务资源的移动指南](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)

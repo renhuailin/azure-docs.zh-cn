@@ -1,10 +1,10 @@
 ---
-title: Azure Active Directory 门户中的“登录活动”报告 | Microsoft Docs
-description: Azure Active Directory 门户中的“登录活动”报告简介
+title: Azure Active Directory 中的登录日志 | Microsoft Docs
+description: Azure Active Directory 中的登录日志概述。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -13,63 +13,75 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/24/2020
+ms.date: 05/06/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d61962667953b20f4b542874e902411bb579b9c3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 85c6d8520938ffc859a7116d1dc9e61cb26534e4
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93122837"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030550"
 ---
-# <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
+# <a name="sign-in-logs-in-azure-active-directory"></a>Azure Active Directory 中的登录日志
 
-Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成：
+作为 IT 管理员，你想知道你的 IT 环境的运行状况。 你可通过有关系统运行状况的信息来评估是否需要响应潜在问题以及响应方式。 
 
-- **活动** 
-    - **登录** - 有关托管应用程序的使用情况和用户登录活动的信息。
-    - **审核日志** - [审核日志](concept-audit-logs.md) - 有关用户和组管理、托管应用程序和目录活动的系统活动信息。
-    - **预配日志** - [预配日志](./concept-provisioning-logs.md)允许客户通过预配服务监视活动，例如在 ServiceNow 中创建组或从 Workday 导入用户。 
-- **安全性** 
-    - **风险登录** - [风险登录](../identity-protection/overview-identity-protection.md)指示由非用户帐户合法所有者的人进行的登录尝试。
-    - **已标记为存在风险的用户** - [风险用户](../identity-protection/overview-identity-protection.md)是指可能已泄露的用户帐户。
+为了帮助你实现此目标，Azure Active Directory 门户为你提供了访问三个活动日志的权限：
+
+- **[登录](concept-sign-ins.md)** - 有关登录以及用户如何使用资源的信息。
+- **[审核](concept-audit-logs.md)** - 有关应用于租户的更改（如用户和组管理）或应用于租户资源的更新的信息。
+- **[预配](concept-provisioning-logs.md)** - 由预配服务执行的活动（例如在 ServiceNow 中创建组，或从 Workday 导入用户）。
 
 本文概述了登录报告。
 
-## <a name="prerequisites"></a>先决条件
 
-### <a name="who-can-access-the-data"></a>谁可以访问该数据？
+## <a name="what-can-you-do-with-it"></a>日志有哪些作用？
 
-* 具有“安全管理员”、“安全读取者”、“全局读取者”和“报告读取者”角色的用户
-* 全局管理员
-* 任何用户（非管理员）都可以访问自己的登录活动 
+你可以使用登录日志来查找以下问题的答案：
 
-### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>访问登录活动需要什么 Azure AD 许可证？
+- 什么是用户的登录模式？
+
+- 多少用户超过一周都有登录行为？
+
+- 这些登录的状态怎样？
+
+
+## <a name="who-can-access-it"></a>谁可以访问它们？
+
+始终可以使用以下链接访问你自己的登录历史记录：[https://mysignins.microsoft.com](https://mysignins.microsoft.com)
+
+若要访问登录日志，你需要是：
+
+- 全局管理员
+
+- 以下某个角色的用户：
+    - 安全管理员
+
+    - 安全读取者
+
+    - 全局读取者
+
+    - 报告读取者
+
+
+
+## <a name="what-azure-ad-license-do-you-need"></a>需要什么 Azure AD 许可证？
 
 [Azure AD 的所有版本](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)中均提供登录活动报告，也可通过 Microsoft Graph API 访问这些报告。
 
-## <a name="sign-ins-report"></a>登录报告
 
-用户登录报告提供了以下问题的答案：
+## <a name="where-can-you-find-it-in-the-azure-portal"></a>在 Azure 门户中的何处可以找到日志？
 
-* 什么是用户的登录模式？
-* 多少用户超过一周都有登录行为？
-* 这些登录的状态怎样？
+Azure 门户提供了几种用于访问日志的选项。 例如，在 Azure Active Directory 菜单上，可以在“监视”部分打开日志。  
 
-在 [Azure 门户](https://portal.azure.com)菜单中，选择“Azure Active Directory”，或从任意页搜索并选择“Azure Active Directory”   。
+![打开登录日志](./media/concept-sign-ins/sign-ins-logs-menu.png)
 
-![选择“Azure Active Directory”](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
+此外，可以使用以下链接直接访问登录日志：[https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)
 
-在“监视”  下，选择“登录”  以打开[登录报告](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)。
 
-![屏幕截图显示了从“监视”菜单选择的“登录”。](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "登录活动")
-
-某些登录记录最多可能需要两个小时才会显示在门户中。
-
-> [!IMPORTANT]
-> 登录报告仅显示“交互式”登录，即用户使用其用户名和密码进行的手动登录  。 登录报告中不会显示服务到服务身份验证等非交互式登录。 
+## <a name="what-is-the-default-view"></a>什么是默认视图？
 
 登录日志有一个默认列表视图，用于显示：
 
@@ -94,17 +106,26 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ![屏幕截图显示了详细的信息视图。](./media/concept-sign-ins/basic-sign-in.png "登录活动")
 
-> [!NOTE]
-> 客户现在可以通过所有登录报告对条件访问策略进行故障排除。 通过单击登录记录的“条件访问”  选项卡，客户可以查看条件访问状态，并深入了解应用于登录的策略的详细信息以及每个策略的结果。
-> 有关详细信息，请参阅[有关所有登录中 CA 信息的常见问题解答](reports-faq.md#conditional-access)。
+
+
+## <a name="sign-in-error-code"></a>登录错误代码
+
+如果登录失败，你可以在相关日志项的“基本信息”部分中获得有关原因的详细信息。 
+
+![登录错误代码](./media/concept-all-sign-ins/error-code.png)
+ 
+虽然日志项提供了失败原因，但在某些情况下，你可以通过使用[登录错误查找工具](https://login.microsoftonline.com/error)来获取详细信息。 例如，此工具将为你提供修正步骤（如果可用）。  
+
+![错误代码查找工具](./media/concept-all-sign-ins/error-code-lookup-tool.png)
 
 
 
-## <a name="filter-sign-in-activities"></a>筛选登录活动
+## <a name="filter-sign-in-activities&quot;></a>筛选登录活动
 
-首先，将所报告数据的范围缩小到适当的级别。 接下来，使用充当默认筛选器的日期字段筛选登录数据。 Azure AD 提供了一系列可以设置的其他筛选器：
 
-![屏幕截图显示了“添加筛选器”选项。](./media/concept-sign-ins/04.png "登录活动")
+可以筛选日志中的数据，使其缩小到适合你的级别：
+
+![屏幕截图显示了“添加筛选器”选项。](./media/concept-sign-ins/04.png &quot;登录活动")
 
 **请求 ID** - 所关注请求的 ID。
 
@@ -193,7 +214,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ## <a name="download-sign-in-activities"></a>下载登录活动
 
-单击“下载”  选项即可创建包含最近 250,000 条记录的 CSV 或 JSON 文件。 如果想要在 Azure 门户外部使用登录活动数据，请先[下载登录数据](quickstart-download-sign-in-report.md)。  
+单击“下载”  选项即可创建包含最近 250,000 条记录的 CSV 或 JSON 文件。 如果想要在 Azure 门户外部使用登录活动数据，请先[下载登录数据](./howto-download-logs.md)。  
 
 ![下载](./media/concept-sign-ins/71.png "下载")
 
@@ -240,13 +261,42 @@ Azure AD 和 Azure 门户都提供登录数据的其他入口点：
 - 登录状态
 
 > [!NOTE]
-> IP 地址的发布方式是，在 IP 地址和使用该地址的计算机所在的物理位置之间没有确定的连接。 从中心池发布 IP 地址的移动运营商和 VPN 通常与实际使用客户端设备的位置距离很远，这会导致 IP 地址映射变得复杂。 目前，在 Azure AD 报告中，最好是基于跟踪、注册表数据、反向查看和其他信息将 IP 地址转换为物理位置。
+> IP 地址的发布方式是，在 IP 地址和使用该地址的计算机所在的物理位置之间没有确定的连接。 从中心池发布 IP 地址的移动运营商和 VPN 通常与实际使用客户端设备的位置距离很远，这会导致 IP 地址映射变得复杂。 目前，最好是基于跟踪、注册表数据、反向查看和其他信息将 IP 地址转换为物理位置。
 
 在“用户”页中单击“活动”部分的“登录”即可完全了解所有用户登录活动。   
 
 ![屏幕截图显示了“活动”部分，可在其中选择“登录”。](./media/concept-sign-ins/08.png "登录活动")
 
-## <a name="usage-of-managed-applications"></a>托管应用程序的使用情况
+## <a name="authentication-details"></a>身份验证详细信息
+
+位于登录报告中的“身份验证详细信息”选项卡针对每次身份验证尝试提供以下信息：
+
+- 应用的身份验证策略的列表（例如条件访问、基于用户的 MFA、安全默认值）
+- 用于登录的身份验证方法序列
+- 身份验证尝试是否成功
+- 有关身份验证尝试成功或失败的原因的详细信息
+
+此信息让管理员能够排查用户登录中每个步骤的问题，并进行跟踪：
+
+- 受多重身份验证保护的登录数量 
+- 每个身份验证方法的使用情况和成功率 
+- 使用无密码身份验证方法（如无密码的手机登录、FIDO2 和 Windows Hello 企业版） 
+- 令牌声明满足身份验证要求的频率（不以交互方式提示用户输入密码、输入短信 OTP 等）
+
+查看登录报告时，请选择“身份验证详细信息”选项卡： 
+
+![“身份验证详细信息”选项卡的屏幕截图](media/concept-sign-ins/auth-details-tab.png)
+
+>[!NOTE]
+>OATH 验证码作为 OATH 硬件和软件令牌（如 Microsoft Authenticator 应用）的身份验证方法被记录。
+
+>[!IMPORTANT]
+>“身份验证详细信息”选项卡最初显示的数据可能不完整或不准确，直到日志信息完全汇总后才会完整且准确。 已知示例包括： 
+>- 最初记录登录事件时，会错误地显示以下消息：“满足令牌中的声明”。 
+>- 最初不会记录“主身份验证”行。 
+
+
+## <a name="usage-of-managed-applications&quot;></a>托管应用程序的使用情况
 
 通过登录数据的以应用程序为中心的视图，可以回答如下问题：
 
@@ -256,7 +306,7 @@ Azure AD 和 Azure 门户都提供登录数据的其他入口点：
 
 此数据的入口点是组织中最常用的三个应用程序。 数据包含在“企业应用程序”下“概览”部分过去 30 天的报告中   。
 
-![屏幕截图显示了你可以选择“概览”的位置。](./media/concept-sign-ins/10.png "登录活动")
+![屏幕截图显示了你可以选择“概览”的位置。](./media/concept-sign-ins/10.png &quot;登录活动")
 
 应用使用情况图显示指定时间内最常用的三个应用程序的按周汇总的登录信息。 默认时间为 30 天。
 
@@ -278,6 +328,6 @@ Azure AD 和 Azure 门户都提供登录数据的其他入口点：
 
 ## <a name="next-steps"></a>后续步骤
 
-* [登录活动报告错误代码](reference-sign-ins-error-codes.md)
 * [Azure AD 数据保留策略](reference-reports-data-retention.md)
 * [Azure AD 报告延迟](reference-reports-latencies.md)
+* [登录报表中的第一方 Microsoft 应用程序](/troubleshoot/azure/active-directory/verify-first-party-apps-sign-in#application-ids-for-commonly-used-microsoft-applications)

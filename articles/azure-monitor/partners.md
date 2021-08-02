@@ -5,12 +5,12 @@ author: rboucher
 ms.author: robb
 ms.topic: conceptual
 ms.date: 04/14/2021
-ms.openlocfilehash: d449f660fa97af8b5c24542258029834a964b3f2
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 004f99f585ca10d6ef9985b001333b2a301df740
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751609"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537029"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -101,8 +101,6 @@ Azure 使客户能够迁移其应用程序并将其现代化，以便与许多�
 -   简化到 Datadog 的单一登录 (SSO)，无需再从 Datadog 门户单独登录。 
 -   通过 Azure 订阅发票获取 Datadog 服务的统一计费。
 
-注册使用 Azure 与 Datadog 的新集成的[公共预览版](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4z3T2aGXUZPslUNJ3YpcapURFBHSUJIMVJTWDM5VUFPMVkyTVhMVlYzMS4u)。  从 2020 年 10 月开始，Azure 市场提供公共预览版。
-
 订阅 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/datadog1591740804488.dd_liftr_v2?tab=Overview)中提供的“Datadog 与 Azure 的集成”预览版
 
 如果你仍在使用之前手动配置的集成，请参阅 [DataDog 网站上的文档](https://docs.datadoghq.com/integrations/azure/)。
@@ -111,7 +109,16 @@ Azure 使客户能够迁移其应用程序并将其现代化，以便与许多�
 
 ![DynaTrace 徽标](./media/partners/dynatrace.png)
 
-Dynatrace OneAgent 通过 Azure 扩展机制来与 Azure VM 和应用服务集成。 这样，Dynatrace OneAgent 便可以收集有关主机、网络和服务的性能指标。 除了显示指标，Dynatrace 还会以端到端方式将环境可视化。 它显示从客户端到数据库层的事务。 Dynatrace 可以对问题和完全集成的根本原因分析进行基于 AI 的关联，从方法级别了解代码和数据库。 这样一来，进行故障排除和性能优化就要容易得多。
+Dynatrace 简化了云复杂性，是云平台的单一事实来源，可用于监视整个 Azure 应用程序和基础结构的运行状况。  Dynatrace 通过丰富数据并将可观测性扩展到平台，以及为云基础设施、负载均衡器、API 管理服务等提供额外的指标，实现与 Azure Monitor/App Insights 的集成。 Dynatrace 支持超过 80 种 Azure Monitor 服务，这些服务涵盖应用程序和微服务工作负载，以及与基础结构相关的服务。 
+
+跨 Azure 环境实现 AI 辅助的自动化可观测性：
+
+- 可在几分钟内观察整个堆栈，并在上下文中包含所有内容（包括指标、日志和跟踪）。
+- 自动发现、持续依赖项映射和即时响应，可自动监视 Azure 云服务（包括应用服务、数据库性能、AKS、HDInsight 等）。
+- Davis（Dynatrace 的 AI）持续分析数十亿个依赖项，以提供精确的根本原因。
+- 单一事实来源，让团队可以在任意位置进行协作和创新。
+- 加速 Azure 云迁移。
+
 
 [Dynatrace 文档](https://www.dynatrace.com/support/help/technology-support/cloud-platforms/microsoft-azure-services/)
 
@@ -160,7 +167,7 @@ LogRhythm 是下一代 SIEM 的领导者，它使六大洲的组织能够通过�
 
 Microfocus ArcSight 为 Azure Monitor 事件中心提供了一个智能连接器。
 
-[请参阅 ArcSight 文档](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)
+[请参阅 ArcSight 文档](https://community.microfocus.com/cyberres/arcsight/f/arcsight-product-announcements/163662/announcing-general-availability-of-arcsight-smart-connectors-7-10-0-8114-0)
 
 Microfocus Operations Bridge 会自动监视所有混合 IT 资源（任何设备、操作系统、数据库、应用程序或服务）而不管其在何处运行，并将 AIOps 应用于所有数据类型（事件、指标、日志和依赖项）。 它提供了服务质量监视与深度应用程序运行状况分析的独特组合，包括对 Microsoft Azure 服务的全面性能和可用性监视。 Operations Bridge 使客户能够以业务和 IT 利益干系人都能理解的方式提供一个单一虚拟管理平台，可在任何具有浏览器的设备上使用。
 
@@ -348,7 +355,7 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 |  IBM QRadar | 否 | Microsoft Azure DSM 和 Microsoft Azure 事件中心协议可从 [IBM 支持网站](https://www.ibm.com/support)下载。 可以在 [QRadar DSM 配置](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)中详细了解与 Azure 的集成。 |
 | Splunk | 否 | [适用于 Splunk 的 Microsoft Azure 附加产品](https://splunkbase.splunk.com/app/3757/)是在 Splunkbase 中提供的一个开放源代码项目。 <br><br> 如果无法在 Splunk 实例中安装加载项（例如，如果使用代理或在 Splunk Cloud 上运行），则可以使用[适用于 Splunk 的 Azure 函数](https://github.com/Microsoft/AzureFunctionforSplunkVS)（由事件中心内的新消息触发）将这些事件转发到 Splunk HTTP 事件收集器。 |
 | SumoLogic | 否 | [从事件中心收集 Azure 审核应用的日志](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)中提供了有关设置 SumoLogic，以使用事件中心数据的说明。 |
-| ArcSight | 否 | ArcSight Azure 事件中心智能连接器作为 [ArcSight 智能连接器集合](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)的一部分提供。 |
+| ArcSight | 否 | ArcSight Azure 事件中心智能连接器作为 [ArcSight 智能连接器集合](https://community.microfocus.com/cyberres/arcsight/f/arcsight-product-announcements/163662/announcing-general-availability-of-arcsight-smart-connectors-7-10-0-8114-0)的一部分提供。 |
 | Syslog 服务器 | 否 | 若要将 Azure Monitor 数据直接流式传输到 syslog 服务器，可以使用[基于 Azure 函数的解决方案](https://github.com/miguelangelopereira/azuremonitor2syslog/)。
 | LogRhythm | 否| [此处](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)提供了有关设置 LogRhythm，以从事件中心收集日志的说明。 
 |Logz.io | 是 | 有关详细信息，请参阅[开始使用用于在 Azure 上运行的 Java 应用的 Logz.io 进行监视和日志记录](/azure/developer/java/fundamentals/java-get-started-with-logzio)

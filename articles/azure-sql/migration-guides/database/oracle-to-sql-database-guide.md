@@ -6,15 +6,15 @@ ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
 ms.topic: how-to
-author: MashaMSFT
-ms.author: mathoma
+author: cawrites
+ms.author: chadam
 ms.date: 08/25/2020
-ms.openlocfilehash: bf602cabaef92bfa9096ab3225f0f6d726617776
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 85f65fa17e1fac05bd9c9040e77b2fbde104b176
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136672"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961954"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-database"></a>迁移指南：Oracle 到 Azure SQL 数据库
 
@@ -24,7 +24,7 @@ ms.locfileid: "108136672"
 
 有关其他迁移指南，请参阅 [Azure 数据库迁移指南](/data-migration)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始将 Oracle 架构迁移到 SQL 数据库之前：
 
@@ -41,11 +41,11 @@ ms.locfileid: "108136672"
 
 借助 SSMA for Oracle，可查看数据库对象和数据、评估数据库是否适合迁移、将数据库对象迁移到 SQL 数据库，最后将数据迁移到数据库。
 
-创建评估：
+若要创建评估：
 
 1. 打开 [SSMA for Oracle](https://www.microsoft.com/download/details.aspx?id=54258)。
 1. 依次选择“文件”和“新建项目” 。
-1. 输入项目名称和位置以保存项目。 然后从下拉列表中选择“Azure SQL 数据库”作为迁移目标，然后选择“确定” 。
+1. 输入项目名称和保存项目的位置。 然后从下拉列表中选择“Azure SQL 数据库”作为迁移目标，然后选择“确定” 。
 
    ![显示“连接到 Oracle”的屏幕截图。](./media/oracle-to-sql-database-guide/connect-to-oracle.png)
 
@@ -74,7 +74,7 @@ ms.locfileid: "108136672"
 
    ![显示“类型映射”的屏幕截图。](./media/oracle-to-sql-database-guide/type-mappings.png)
 
-1. 可通过在 Oracle 元数据资源管理器中选择表来更改每个表的类型映射。
+1. 通过在“Oracle 元数据资源管理器”中选择表，可以更改每个表的类型映射。
 
 ### <a name="convert-the-schema"></a>转换架构
 
@@ -122,9 +122,9 @@ ms.locfileid: "108136672"
    ![显示“迁移数据”的屏幕截图。](./media/oracle-to-sql-database-guide/migrate-data.png)
 
 1. 输入 Oracle 和 SQL 数据库的连接详细信息。
-1. 迁移完成后，查看“数据迁移报表”。
+1. 迁移完成后，查看“数据迁移报告”。
 
-   ![显示“数据迁移报表”的屏幕截图。](./media/oracle-to-sql-database-guide/data-migration-report.png)
+   ![屏幕截图，显示数据迁移报表。](./media/oracle-to-sql-database-guide/data-migration-report.png)
 
 1. 使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 连接到 SQL 数据库实例，并查看数据和架构来验证迁移。
 
@@ -168,10 +168,11 @@ ms.locfileid: "108136672"
 | **标题/链接**                                                                                                                                          | **说明**                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [数据工作负载评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | 此工具为给定工作负载提供建议的“最适合”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。                                                          |
-| [Oracle 清单脚本项目](https://github.com/Microsoft/DataMigrationTeam/tree/master/Oracle%20Inventory%20Script%20Artifacts)                 | 该资产包含一个 PL/SQL 查询，它会命中 Oracle 系统表，并按架构类型、对象类型和状态提供对象计数。 它还提供每个架构中原始数据和表大小的粗略估算，结果以 CSV 格式存储。                                                                                                               |
+| [Oracle 清单脚本项目](https://github.com/Microsoft/DataMigrationTeam/tree/master/Oracle%20Inventory%20Script%20Artifacts)                 | 该资产包含一个 PL/SQL 查询，它会命中 Oracle 系统表，并按架构类型、对象类型和状态提供对象计数。 它还提供每个架构中“原始数据”和表大小的粗略估算，结果以 CSV 格式存储。                                                                                                               |
 | [自动进行 SSMA Oracle 评估收集和整合](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Automate%20SSMA%20Oracle%20Assessment%20Collection%20%26%20Consolidation)                                             | 这组资源使用 .csv 文件作为输入（项目文件夹中的 sources.csv），来生成在控制台模式下运行 SSMA 评估所需的 xml 文件。 source.csv 是客户根据现有 Oracle 实例的清单提供的。 输出文件为 AssessmentReportGeneration_source_1.xml、ServersConnectionFile.xml 和 VariableValueFile.xml。|
 | [SSMA for Oracle 的常见错误及其解决方法](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | 借助 Oracle，可在 WHERE 子句中分配非标量条件。 但是，SQL Server 不支持这种类型的条件。 因此，SSMA for Oracle 不会在 WHERE 子句中使用非标量条件转换查询。 相反，它会生成错误 O2SS0001。 可在该白皮书中更详细地了解问题及其解决方法。          |
 | [Oracle 到 SQL Server 迁移手册](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | 本文档重点介绍在将 Oracle 架构迁移到最新版 SQL Server 数据库时所涉及的任务。 如果迁移需要更改特性/功能，则必须仔细考量每项更改可能对使用数据库的应用程序造成的影响。                                                     |
+|[Oracle 到 SQL DB - 数据库比较实用工具](https://www.microsoft.com/download/details.aspx?id=103016)|SSMA for Oracle 测试工具是推荐用于自动验证数据库对象转换和数据迁移的工具，它是数据库比较功能的超集。<br /><br />如果要查找备用的数据验证选项，则可使用数据库比较实用工具沿所有或所选表、行和列中的行或列级别比较数据。|
 
 数据 SQL 工程团队开发了这些资源。 此团队的核心章程是解锁和加速到 Microsoft 的 Azure 数据平台的数据平台迁移项目的复杂现代化进程。
 
@@ -183,7 +184,7 @@ ms.locfileid: "108136672"
   - [Azure SQL 数据库概述](../../database/sql-database-paas-overview.md)
   - [Azure 总拥有成本 (TCO) 计算器](https://azure.microsoft.com/pricing/tco/calculator/)
 
-- 要详细了解云迁移的框架和采用周期，请参阅：
+- 有关云迁移的框架和采用周期的详细信息，请参阅：
    -  [适用于 Azure 的云采用框架](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [为迁移到 Azure 的工作负载计算成本和调整大小的最佳做法](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
    -  [云迁移资源](https://azure.microsoft.com/migration/resources)

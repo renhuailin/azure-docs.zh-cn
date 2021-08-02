@@ -1,28 +1,29 @@
 ---
-title: 为 Windows 虚拟桌面用户自定义源 - Azure
-description: 如何使用 PowerShell cmdlet 为 Windows 虚拟桌面用户自定义源。
+title: 为 Azure 虚拟桌面用户自定义源 - Azure
+description: 如何使用 PowerShell cmdlet 为 Azure 虚拟桌面用户自定义源。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 09/14/2019
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: a2d5a870ee8953a4388e58d21cf941f23434382b
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 24174d7ac9fa33cb1fb3ca6e325537dde346b3c3
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447108"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752002"
 ---
-# <a name="customize-the-feed-for-windows-virtual-desktop-users"></a>为 Windows 虚拟桌面用户自定义源
+# <a name="customize-the-feed-for-azure-virtual-desktop-users"></a>为 Azure 虚拟桌面用户自定义源
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[本文](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md)。
 
 可以自定义源，以便 RemoteApp 和远程桌面资源以可识别的方式向用户显示。
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假设你已下载并安装 Windows 虚拟桌面 PowerShell 模块。 如果尚未安装，请按照[安装 PowerShell 模块](powershell-module.md)中的说明进行操作。
+本文假设你已下载并安装 Azure 虚拟桌面 PowerShell 模块。 如果尚未安装，请按照[安装 PowerShell 模块](powershell-module.md)中的说明进行操作。
 
 ## <a name="customize-the-display-name-for-a-remoteapp"></a>自定义 RemoteApp 的显示名称
 
@@ -103,11 +104,11 @@ Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName
 
 1. 通过 <https://portal.azure.com> 登录到 Azure 门户。
 
-2. 搜索“Windows 虚拟桌面”。
+2. 搜索“Azure 虚拟桌面”。
 
-3. 在“服务”下，选择“Windows 虚拟桌面”。
+3. 在“服务”下，选择“Azure 虚拟桌面”。
 
-4. 在 Windows 虚拟桌面页上，选择屏幕左侧的“应用程序组”，然后选择要编辑的应用组的名称。 （例如，如果要编辑桌面应用组的显示名称，请选择名为“桌面”的应用组。）
+4. 在“Azure 虚拟桌面”页上，选择屏幕左侧的“应用程序组”，然后选择要编辑的应用组的名称。 （例如，如果要编辑桌面应用组的显示名称，请选择名为“桌面”的应用组。）
 
 5. 在屏幕左侧的菜单中选择“应用程序”。
 
@@ -117,7 +118,7 @@ Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName
 
 ## <a name="next-steps"></a>后续步骤
 
-你已经为用户自定义源，现在可以登录到 Windows 虚拟桌面客户端进行测试。为此，请继续阅读“连接到 Windows 虚拟桌面操作指南”：
+你已经为用户自定义源，现在可以登录到 Azure 虚拟桌面客户端进行测试。为此，请继续阅读“连接到 Azure 虚拟桌面操作指南”：
 
  * [使用 Windows 10 或 Windows 7 进行连接](connect-windows-7-10.md)
  * [使用 Web 客户端进行连接](connect-web.md)

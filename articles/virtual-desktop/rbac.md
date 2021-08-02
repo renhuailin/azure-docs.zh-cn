@@ -1,6 +1,6 @@
 ---
-title: Windows 虚拟桌面内置角色 - Azure
-description: 适用于 Azure RBAC 的 Windows 虚拟桌面内置角色的概述。
+title: Azure 虚拟桌面内置角色 - Azure
+description: 适用于 Azure RBAC 的 Azure 虚拟桌面内置角色的概述。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a1094004bc523a59c3fcf7eb77c6f11bc4554080
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f19035ea08e95d5535903467ddbc11fc53c0deb7
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445850"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753100"
 ---
-# <a name="built-in-roles-for-windows-virtual-desktop"></a>Windows 虚拟桌面内置角色
+# <a name="built-in-roles-for-azure-virtual-desktop"></a>Azure 虚拟桌面内置角色
 
-Windows 虚拟桌面使用 Azure 基于角色的访问控制 (RBAC) 为用户和管理员分配角色。 这些角色授予管理员权限来执行某些任务。 若要了解有关适用于 Azure RBAC 的内置角色的详细信息，请参阅 [Azure 内置角色](../role-based-access-control/built-in-roles.md)。
+Azure 虚拟桌面使用 Azure 基于角色的访问控制 (RBAC) 为用户和管理员分配角色。 这些角色授予管理员权限来执行某些任务。 若要了解有关适用于 Azure RBAC 的内置角色的详细信息，请参阅 [Azure 内置角色](../role-based-access-control/built-in-roles.md)。
 
-Azure 的标准内置角色为所有者、参与者和读取者。 但是，Windows 虚拟桌面具有其他角色，用于将主机池、应用程序组和工作区的管理角色分离开来。 这种分离使你可以更精细地控制管理任务。 这些角色的命名遵循 Azure 的标准角色和最低特权方法。
+Azure 的标准内置角色为所有者、参与者和读取者。 但是，Azure 虚拟桌面具有其他角色，用于将主机池、应用程序组和工作区的管理角色分离开来。 这种分离使你可以更精细地控制管理任务。 这些角色的命名遵循 Azure 的标准角色和最低特权方法。
 
-Windows 虚拟桌面没有特定的所有者角色。 但是，你可以对服务对象使用标准所有者角色。
+Azure 虚拟桌面没有特定的所有者角色。 但是，你可以对服务对象使用标准所有者角色。
 
 ## <a name="desktop-virtualization-contributor"></a>桌面虚拟化参与者
 

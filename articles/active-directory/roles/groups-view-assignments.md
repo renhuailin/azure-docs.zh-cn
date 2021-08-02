@@ -8,23 +8,32 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 11/05/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dac23897f8a17c9adb4ae78736a6a8afa85a18b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e44dc442180631b0ebe11cae374a59fed37cc13
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103011997"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085736"
 ---
 # <a name="view-roles-assigned-to-a-group-in-azure-active-directory"></a>查看分配给 Azure Active Directory 中的组的角色
 
 本部分介绍如何使用 Azure AD 管理中心查看分配给组的角色。 查看组和分配的角色是默认的用户权限。
 
-1. 使用任何非管理员或管理员凭据登录到 [Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
+## <a name="prerequisites"></a>先决条件
+
+- 使用 PowerShell 时需要 AzureADPreview 模块
+- 将 Graph 浏览器用于 Microsoft Graph API 时需要管理员同意
+
+有关详细信息，请参阅[使用 PowerShell 或 Graph 浏览器的先决条件](prerequisites.md)。
+
+## <a name="azure-portal"></a>Azure 门户
+
+1. 登录到 [Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
 
 1. 选择所需的组。
 
@@ -32,7 +41,7 @@ ms.locfileid: "103011997"
 
    ![查看分配给所选组的所有角色](./media/groups-view-assignments/view-assignments.png)
 
-## <a name="using-powershell"></a>使用 PowerShell
+## <a name="powershell"></a>PowerShell
 
 ### <a name="get-object-id-of-the-group"></a>获取组的对象 ID
 
@@ -46,7 +55,7 @@ Get-AzureADMSGroup -SearchString "Contoso_Helpdesk_Administrators"
 Get-AzureADMSRoleAssignment -Filter "principalId eq '<object id of group>" 
 ```
 
-## <a name="using-microsoft-graph-api"></a>使用 Microsoft Graph API
+## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 ### <a name="get-object-id-of-the-group"></a>获取组的对象 ID
 

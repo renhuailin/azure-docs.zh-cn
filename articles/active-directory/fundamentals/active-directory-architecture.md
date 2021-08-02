@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 476cf8013f5dc8b5d54efb573cf305d81fc690b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fcbf6cd22b67f2e3776c78b166da5733e606542
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95996706"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078341"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>什么是 Azure Active Directory 体系结构？
 
@@ -105,11 +105,11 @@ Azure AD 为面向次要副本的应用程序提供读写一致性，为此，�
  >[!NOTE]
  >写入操作立即复制到逻辑会话读取操作所颁发到的次要副本。
 
-#### <a name="backup-protection"></a>备份保护
+#### <a name="service-level-backup"></a>服务级别备份
 
-目录为用户和租户实施软删除而不是硬删除，让客户在意外删除数据后轻松恢复。 如果租户管理员意外删除了用户，他们可以轻松撤消操作并还原已删除的用户。
-
-Azure AD 实施所有数据的每日备份，因此，在发生任何逻辑删除或损坏时，能够可靠地恢复数据。 数据层采用纠错代码，可以检查错误并自动更正特定类型的磁盘错误。
+Azure AD 实现了目录数据的每日备份，并且可以使用这些备份在出现任何服务范围内的问题时还原数据。
+ 
+该目录还针对所选对象类型实施了软删除，而不是硬删除。 租户管理员可以在 30 天内撤消这些对象的任何意外删除。 有关详细信息，请参阅[用于还原已删除对象的 API](/graph/api/directory-deleteditems-restore)。
 
 #### <a name="metrics-and-monitors"></a>指标和监视器
 

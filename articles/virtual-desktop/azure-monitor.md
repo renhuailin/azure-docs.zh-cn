@@ -1,177 +1,181 @@
 ---
-title: 使用 Windows Virtual Desktop Monitor 预览版 - Azure
-description: 如何使用 Azure Monitor for Windows Virtual Desktop。
+title: 使用监视器 Azure 虚拟桌面监视器 - Azure
+description: 如何使用 Azure Monitor for Azure Virtual Desktop。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/01/2020
+ms.date: 03/31/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: e9da1071686dafa003a5a49d0864b77644493344
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+manager: femila
+ms.openlocfilehash: a1ce4dcb4f180d952004d592e35bc64c5ba93dfa
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100594456"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754576"
 ---
-# <a name="use-azure-monitor-for-windows-virtual-desktop-to-monitor-your-deployment-preview"></a>使用 Azure Monitor for Windows Virtual Desktop 监视部署（预览版）
+# <a name="use-azure-monitor-for-azure-virtual-desktop-to-monitor-your-deployment"></a>使用 Azure Monitor for Azure Virtual Desktop 监视部署
 
->[!IMPORTANT]
->Azure Monitor for Windows Virtual Desktop 目前以公共预览版提供。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-Azure Monitor for Windows Virtual Desktop（预览版）是基于 Azure Monitor 工作簿的仪表板，可帮助 IT 专业人员了解其 Windows 虚拟桌面环境。 本主题将指导你设置 Azure Monitor for Windows Virtual Desktop，以监视 Windows 虚拟桌面环境。
+Azure Monitor for Azure Virtual Desktop 是基于 Azure Monitor 工作簿的仪表板，可帮助 IT 专业人员了解其 Azure 虚拟桌面环境。 本主题将指导你设置 Azure Monitor for Azure Virtual Desktop，以监视 Azure 虚拟桌面环境。
 
 ## <a name="requirements"></a>要求
 
-在开始使用 Azure Monitor for Windows Virtual Desktop 之前，需要完成以下设置：
+在开始使用 Azure Monitor for Azure Virtual Desktop 之前，需要完成以下设置：
 
-- 要监视的所有 Windows 虚拟桌面环境必须基于与 Azure 资源管理器兼容的最新版本的 Windows 虚拟桌面。
-
-- 至少配置了一个 Log Analytics 工作区。
-
+- 要监视的所有 Azure 虚拟桌面环境必须基于与 Azure 资源管理器兼容的最新版本的 Azure 虚拟桌面。
+- 至少配置了一个 Log Analytics 工作区。 使用 Azure 虚拟桌面会话主机的指定 Log Analytics 工作区，以确保仅从 Azure 虚拟机部署中的会话主机收集性能计数器和事件。
 - 在 Log Analytics 工作区中启用以下各项的数据收集：
-    - 任何所需的性能计数器
-    - 在 Azure Monitor for Windows Virtual Desktop 中使用的任何性能计数器或事件
-    - 诊断工具针对要监视的环境中所有对象提供的数据。
-    - 要监视的环境中的虚拟机 (VM)。
+    - 来自 Azure 虚拟桌面环境的诊断
+    - 来自 Azure 虚拟桌面会话主机的建议性能计数器
+    - 来自 Azure 虚拟桌面会话主机的建议 Windows 事件日志
 
-对适用于你环境的 Azure Monitor for Windows Virtual Desktop 进行监视的任何人还需要以下读取访问权限：
+ 本文中所述的数据设置过程是监视 Azure 虚拟桌面所需的唯一步骤。 可以禁用向 Log Analytics 工作区发送数据的所有其他项以节省成本。
 
-- 对环境资源所在的资源组的读取访问权限。
+对适用于环境的 Azure Monitor for Azure Virtual Desktop 进行监视的任何人还需要以下读取访问权限：
 
-- 对环境会话主机所在的资源组的读取访问权限
-
->[!NOTE]
-> 拥有读取访问权限的管理员只能查看数据。 管理员需使用不同的权限在 Windows 虚拟桌面门户中管理资源。
-
-## <a name="open-azure-monitor-for-windows-virtual-desktop"></a>打开 Azure Monitor for Windows Virtual Desktop
-
-可通过以下方法之一打开 Azure Monitor for Windows Virtual Desktop：
-
-- 转到 [aka.ms/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)。
-
-- 在 Azure 门户中搜索并选择“Windows 虚拟桌面”，然后选择“见解” 。
-
-- 在 Azure 门户中搜索并选择“Azure Monitor”。 在“见解”下选择“见解中心”，然后在“其他”下，选择“Windows 虚拟桌面”在“Azure Monitor”页中打开仪表板   。
-
-打开 Azure Monitor for Windows Virtual Desktop 后，根据你要监视的环境，选中一个或多个标有“订阅”、“资源组”、“主机池”和“时间范围”的复选框   。
+- 对保存 Azure 虚拟桌面资源的 Azure 订阅的读取访问权限
+- 对保存 Azure 虚拟桌面会话主机的订阅的资源组的读取访问权限
+- 对一个或多个 Log Analytics 工作区的读取访问权限
 
 >[!NOTE]
->Windows 虚拟桌面目前仅支持每次监视一个订阅、资源组和主机池。 如果你找不到要监视的环境，请参阅[故障排除文档](troubleshoot-azure-monitor.md)了解已知的功能请求和问题。
+> 拥有读取访问权限的管理员只能查看数据。 管理员需使用不同的权限在 Azure 虚拟桌面门户中管理资源。
 
-## <a name="set-up-with-the-configuration-workbook"></a>使用配置工作簿进行设置
+## <a name="open-azure-monitor-for-azure-virtual-desktop"></a>打开 Azure Monitor for Azure Virtual Desktop
 
-如果这是你第一次打开 Azure Monitor for Windows Virtual Desktop，则需要配置 Azure Monitor for Windows Virtual Desktop 资源。 若要配置资源，请执行以下操作：
+可通过以下方法之一打开 Azure Monitor for Azure Virtual Desktop：
 
-1. 在 Azure 门户中打开你的工作簿。
-2. 选择“打开配置工作簿”。
+- 转到 [aka.ms/azmonwvdi](https://aka.ms/azmonwvdi)。
+- 在 Azure 门户中搜索并选择“Azure 虚拟桌面”，然后选择“见解” 。
+- 在 Azure 门户中搜索并选择“Azure Monitor”。 选择“见解”下的“见解中心”，然后选择“Azure 虚拟桌面”。
+打开页面后，请输入要监视的环境的“订阅”、“资源组”、“主机池”和“时间范围”。
 
-配置工作簿将设置监视环境，并可让你在完成设置过程后检查配置。 如果仪表板中的项不正常显示，或者产品组发布了需要更多数据点的更新，则必须检查配置。
+>[!NOTE]
+>Azure 虚拟桌面目前仅支持每次监视一个订阅、资源组和主机池。 如果你找不到要监视的环境，请参阅[故障排除文档](troubleshoot-azure-monitor.md)了解已知的功能请求和问题。
 
-## <a name="host-pool-diagnostic-settings"></a>主机池诊断设置
+## <a name="log-analytics-settings"></a>Log Analytics 设置
 
-需要针对 Windows 虚拟桌面环境中支持此功能的所有对象启用 Azure Monitor 诊断设置。
+若要开始使用 Azure Monitor for Azure Virtual Desktop，至少需要一个 Log Analytics 工作区。 使用 Azure 虚拟桌面会话主机的指定 Log Analytics 工作区，以确保仅从 Azure 虚拟机部署中的会话主机收集性能计数器和事件。 如果已设置了工作区，请直接跳到[使用配置工作簿进行设置](#set-up-using-the-configuration-workbook)。 若要设置工作区，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。
 
-1. 在 [aka.ms/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks) 中打开 Azure Monitor for Windows Virtual Desktop，然后选择“配置工作簿”。
+>[!NOTE]
+>这会产生 Log Analytics 的标准数据存储费用。 我们建议先选择即用即付模型，以后在扩展部署和引入更多数据时再做出调整。 有关详细信息，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
 
-2. 在“订阅”、“资源组”和“主机池”下选择要监视的环境  。
+## <a name="set-up-using-the-configuration-workbook"></a>使用配置工作簿进行设置
 
-3. 在“主机池诊断设置”下，检查是否为主机池启用了 Windows 虚拟桌面诊断。 如果未启用，将显示一条错误消息，指出“找不到所选主机池的现有诊断配置”。 
-   
-   应启用下表中的设置：
+如果这是你第一次打开 Azure Monitor for Azure Virtual Desktop，则需要为 Azure 虚拟桌面环境设置 Azure Monitor。 若要配置资源，请执行以下操作：
+
+1. 在 Azure 门户 [aka.ms/azmonwvdi](https://aka.ms/azmonwvdi) 中打开 Azure Monitor for Azure Virtual Desktop，然后选择“配置工作簿”。
+2. 在“订阅”、“资源组”和“主机池”下选择要配置的环境  。
+
+配置工作簿将设置监视环境，并可让你在完成设置过程后检查配置。 如果仪表板中的项不正常显示，或者产品组发布了需要新设置的更新，则必须检查配置。
+
+### <a name="resource-diagnostic-settings"></a>资源诊断设置
+
+若要收集有关 Azure 虚拟桌面基础结构的信息，需要在 Azure 虚拟桌面主机池和工作区（这是 Azure 虚拟桌面工作区，而不是 Log Analytics 工作区）上启用多项诊断设置。 若要了解有关主机池、工作区和其他 Azure 虚拟桌面资源对象的详细信息，请参阅我们的[环境指南](environment-setup.md)。
+
+有关 Azure 虚拟桌面诊断和支持的诊断表的详细信息，请参阅[将 Azure 虚拟桌面诊断发送到 Log Analytics](diagnostics-log-analytics.md)。
+
+若要在配置工作簿中设置资源诊断设置，请执行以下操作： 
+
+1. 在配置工作簿中选择“资源诊断设置”选项卡。 
+2. 选择“Log Analytics 工作区”以发送 Azure 虚拟桌面诊断。 
+
+#### <a name="host-pool-diagnostic-settings"></a>主机池诊断设置
+
+若要使用配置工作簿中的“资源诊断设置”部分设置主机池诊断，请执行以下操作：
+
+1. 在“主机池”下，查看是否已启用 Azure 虚拟桌面诊断。 如果未启用，将显示一条错误消息，指出“找不到所选主机池的现有诊断配置”。 需要启用以下受支持的诊断表：
 
     - 检查点
     - 错误
     - 管理
     - 连接
     - HostRegistration
-
+    - AgentHealthStatus
+    
     >[!NOTE]
-    > 如果未出现该错误消息，则无需执行步骤 4。
+    > 如果未出现该错误消息，则无需执行步骤 2-4。
 
-4. 选择“配置主机池”。
+2. 选择“配置主机池”。
+3. 选择“部署”。
+4. 刷新配置工作簿。
 
-5. 选择“部署”。
+#### <a name="workspace-diagnostic-settings"></a>工作区诊断设置 
 
-6. 刷新工作簿。
+若要使用配置工作簿中的“资源诊断设置”部分设置工作区诊断，请执行以下操作：
 
-可以在[将 Windows 虚拟桌面诊断数据发送到 Log Analytics](diagnostics-log-analytics.md) 中详细了解如何针对 Windows 虚拟桌面环境中的所有对象启用诊断，或如何访问 Log Analytics 工作区。
+ 1. 在“工作区”下，查看 Azure 虚拟桌面工作区是否启用了 Azure 虚拟桌面诊断。 如果未启用，将显示一条错误消息，指出“找不到所选工作区的现有诊断配置”。 需要启用以下受支持的诊断表：
+ 
+    - 检查点
+    - 错误
+    - 管理
+    - 源
+    
+    >[!NOTE]
+    > 如果未出现该错误消息，则无需执行步骤 2-4。
 
-## <a name="configure-log-analytics"></a>配置 Log Analytics
+2. 选择“配置工作区”。
+3. 选择“部署”。
+4. 刷新配置工作簿。
 
-若要开始使用 Azure Monitor for Windows Virtual Desktop，还至少需要设置一个 Log Analytics 工作区，用于从你要监视的环境中收集数据并将其提供给工作簿。 如果已设置一个工作区，请直接转到[设置性能计数器](#set-up-performance-counters)。 若要为包含你的 Windows 虚拟桌面环境的 Azure 订阅设置新的 Log Analytics 工作区，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。
+### <a name="session-host-data-settings"></a>会话主机数据设置
 
->[!NOTE]
->这会产生 Log Analytics 的标准数据存储费用。 我们建议先选择即用即付模型，以后在扩展部署和引入更多数据时再做出调整。 有关详细信息，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
+若要收集有关 Azure 虚拟桌面会话主机的信息，需在主机池中的所有会话主机上安装 Log Analytics 代理，确保会话主机发送到 Log Analytics 工作区，并配置 Log Analytics 代理设置以收集性能数据和 Windows 事件日志。
 
-### <a name="set-up-performance-counters"></a>设置性能计数器
+你向其发送会话主机数据的 Log Analytics 工作区不一定要与你向其发送诊断数据的工作区相同。 如果 Azure 会话主机位于 Azure 虚拟桌面环境之外，我们建议为 Azure 虚拟桌面会话主机提供指定的 Log Analytics 工作区。 
 
-需要在 Log Analytics 工作区中启用要按相应采样间隔收集的特定性能计数器。 监视 Windows 虚拟桌面只需使用这些性能计数器。 可以禁用所有其他性能计数器以节省成本。
+若要设置希望在其中收集会话主机数据的 Log Analytics 工作区，请执行以下操作： 
 
-如果你已启用性能计数器，现在想要删除它们，请按照[配置性能计数器](../azure-monitor/agents/data-sources-performance-counters.md)中的说明重新配置性能计数器。 尽管本文介绍的是如何添加计数器，但你也可以在同一位置删除它们。
+1. 在配置工作簿中选择“会话主机数据设置”选项卡。 
+2. 选择要将会话主机数据发送到的“Log Analytics 工作区”。 
 
-如果你尚未设置性能计数器，可遵循以下步骤为 Azure Monitor for Windows Virtual Desktop 配置性能计数器：
+#### <a name="session-hosts"></a>会话主机
 
-1. 转到 [aka.ms/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks)，然后在窗口底部选择“配置工作簿”。
-
-2. 在“Log Analytics 配置”下，选择你为自己的订阅设置的工作区。
-
-3. 在“工作区性能计数器”中，将会看到监视时所需的计数器列表。 在该列表的右侧，选中“缺少的计数器”列表中的项来启用所需的计数器，以便能够开始监视工作区。
-
-4. 选择“配置性能计数器”。
-
-5. 选择“应用配置”。
-
-6. 刷新配置工作簿，并继续设置环境。
-
-每当服务已更新并需要新的监视工具时，你还可以在完成初始配置后添加新的性能计数器。 可以验证是否已启用全部所需的计数器，方法是在“缺少的计数器”列表中将其选中。
-
->[!NOTE]
->输入延迟性能计数器仅与 Windows 10 RS5 和更高版本或者 Windows Server 2019 和更高版本兼容。
-
-若要详细了解如何手动添加要收集的但尚未启用的性能计数器，请参阅[配置性能计数器](../azure-monitor/agents/data-sources-performance-counters.md)。
-
-### <a name="set-up-windows-events"></a>设置 Windows 事件
-
-接下来，需要在 Log Analytics 工作区中启用要收集的特定 Windows 事件。 Azure Monitor for Windows Virtual Desktop 只需要本部分所述的事件。 可以禁用所有其他事件以节省成本。
-
-若要设置 Windows 事件，请执行以下操作：
-
-1. 如果你已启用 Windows 事件，现在想要删除它们，请在使用配置工作簿启用监视时所需的设置之前，删除不需要的事件。
-
-2. 在 [aka.ms/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks) 中转到“Azure Monitor for Windows Virtual Desktop”，然后选择窗口底部的“配置工作簿”。
-
-3. 在“Windows 事件配置”中，提供了监视时所需的 windows 事件列表。 该列表的右侧是“缺少的事件”列表，在其中可以找到当前未为工作区启用的所需事件名称和事件类型。 请记下其中每个名称供稍后使用。
-
-4. 选择“打开工作区配置”。
-
-5. 选择“**数据**”。
-
-6. 选择“Windows 事件日志”。
-
-7. 添加在步骤 3 中记下的缺失事件名称，以及每个事件的所需事件类型。
-
-8. 刷新配置工作簿，并继续设置环境。
-
-如果监视工具更新需要启用新事件，可以在完成初始配置后添加新的 Windows 事件。 为确保已启用全部所需事件，请返回到“缺少的事件”列表，并启用其中列出的所有缺失事件。
-
-## <a name="install-the-log-analytics-agent-on-all-hosts"></a>在所有主机上安装 Log Analytics 代理
-
-最后，需要在主机池中的所有主机上安装 Log Analytics 代理，以将主机中的数据发送到所选的工作区。
-
-若要安装 Log Analytics 代理，请执行以下操作：
-
-1. 在 [aka.ms/azmonwvdi](https://portal.azure.com/#blade/Microsoft_Azure_WVD/WvdManagerMenuBlade/workbooks) 中转到“Azure Monitor for Windows Virtual Desktop”，然后选择窗口底部的“配置工作簿”。
-
-2. 如果不为主机池中的所有主机配置 Log Analytics，则 Log Analytics 配置部分的底部会出现错误，并显示消息“主机池中的某些主机未向所选 Log Analytics 工作区发送数据”。 选择“将主机添加到工作区”以添加所选的主机。 如果未出现该错误消息，请到此停止。
-
-3. 刷新配置工作簿。
+需要在主机池中的所有会话主机上安装 Log Analytics 代理，并将数据从这些主机发送到所选 Log Analytics 工作区。 如果没有为主机池中的所有会话主机配置 Log Analytics，将在“会话主机数据设置”顶部看到“会话主机”部分，并显示“主机池上的某些主机未向所选 Log Analytics 工作区发送数据。”消息。
 
 >[!NOTE]
->主机需处于运行状态才能安装 Log Analytics 扩展。 如果自动部署在某台主机上失败，你始终可以在主机上手动安装该扩展。 若要了解如何手动安装该扩展，请参阅[适用于 Windows 的 Log Analytics 虚拟机扩展](../virtual-machines/extensions/oms-windows.md)。
+> 如果看不到“会话主机”部分或错误消息，则所有会话主机均已正确设置。 直接跳到设置[工作区性能计数器](#workspace-performance-counters)的说明。
+
+若要使用配置工作簿设置剩余会话主机，请执行以下操作：
+
+1. 选择“向工作区添加主机”。 
+2. 刷新配置工作簿。
+
+>[!NOTE]
+>主机需处于运行状态才能安装 Log Analytics 扩展。 如果自动部署不起作用，则可以改为在主机上手动安装扩展。 若要了解如何手动安装该扩展，请参阅[适用于 Windows 的 Log Analytics 虚拟机扩展](../virtual-machines/extensions/oms-windows.md)。
+
+#### <a name="workspace-performance-counters"></a>工作区性能计数器
+
+你将需要启用特定性能计数器，以从会话主机收集性能信息，并将其发送到 Log Analytics 工作区。
+
+如果你已启用性能计数器，现在想要删除它们，请按照[配置性能计数器](../azure-monitor/agents/data-sources-performance-counters.md)中的说明进行操作。 可以在同一位置添加和删除性能计数器。
+
+若要使用配置工作簿设置性能计数器，请执行以下操作： 
+
+1. 在配置工作簿中的“工作区性能计数器”下，检查“已配置的计数器”，查看已启用发送到 Log Analytics 工作区的计数器。 检查“缺少的计数器”以确保已启用所有所需的计数器。
+2. 如果缺少计数器，请选择“配置性能计数器”。
+3. 选择“应用配置”。
+4. 刷新配置工作簿。
+5. 通过选中“缺少的计数器”列表确保所有必需的计数器都已启用。 
+
+#### <a name="configure-windows-event-logs"></a>配置 Windows 事件日志
+
+还需要启用特定的 Windows 事件日志来收集会话主机中的错误、警告和信息，并将其发送到 Log Analytics 工作区。
+
+如果已启用 Windows 事件日志，现在想要删除它们，请按照[配置 Windows 事件日志](../azure-monitor/agents/data-sources-windows-events.md#configuring-windows-event-logs)中的说明进行操作。  可以在同一位置添加和删除 Windows 事件日志。
+
+若要使用配置工作簿设置 Windows 事件日志，请执行以下操作：
+
+1. 在“Windows 事件日志配置”下，检查“已配置的事件日志”以查看已启用发送到 Log Analytics 工作区的事件日志。 检查“缺少的事件日志”，确保已启用所有 Windows 事件日志。
+2. 如果有缺少的 Windows 事件日志，请选择“配置事件”。
+3. 选择“部署”。
+4. 刷新配置工作簿。
+5. 通过选中“缺少的事件日志”列表，确保所有必需的 Windows 事件日志均已启用。 
+
+>[!NOTE]
+>如果自动事件部署失败，请在配置工作簿中选择“打开代理配置”以手动添加任何缺少的 Windows 事件日志。 
 
 ## <a name="optional-configure-alerts"></a>可选：配置警报
 
-可将 Azure Monitor for Windows Virtual Desktop 配置为当所选订阅中发生任何严重 Azure Monitor 警报时向你发送通知。 为此，请按照[通过 Azure Monitor 警报对事件做出响应](../azure-monitor/alerts/tutorial-response.md)中的说明进行操作。
+Azure Monitor for Azure Virtual Desktop 允许你在 Azure 虚拟桌面数据的上下文中监视所选订阅中发生的 Azure Monitor 警报。 Azure Monitor 警报是 Azure 订阅上的可选功能，需要从 Azure Monitor for Azure Virtual Desktop 中单独对其进行设置。 可以使用 Azure Monitor 警报框架对 Azure 虚拟桌面事件、诊断和资源设置自定义警报。 有关警报的详细信息，请参阅 [Azure Monitor 日志警报](../azure-monitor/alerts/alerts-log.md)。
 
 ## <a name="diagnostic-and-usage-data"></a>诊断和使用情况数据
 
@@ -186,7 +190,8 @@ Microsoft 使用 Azure Monitor 服务自动收集使用情况和性能数据。 
 
 ## <a name="next-steps"></a>后续步骤
 
-在 Azure 门户中配置 Windows 虚拟桌面后，接下来可以参阅以下可能对你有用的资源：
+现在，你已为 Azure 虚拟桌面环境配置了 Azure Monitor，下面提供了一些资源，可帮助你开始监视环境：
 
-- 查看[词汇表](azure-monitor-glossary.md)，详细了解与 Azure Monitor for Windows Virtual Desktop 相关的术语和概念。
-- 如果遇到问题，请查看[故障排除指南](troubleshoot-azure-monitor.md)以获取帮助。
+- 查看[词汇表](azure-monitor-glossary.md)，详细了解与 Azure Monitor for Azure Virtual Desktop 相关的术语和概念。
+- 若要估计、度量和管控数据存储成本，请参阅[估计 Azure Monitor 成本](azure-monitor-costs.md)。
+- 如果遇到问题，请查看[故障排除指南](troubleshoot-azure-monitor.md)，获取帮助并了解已知问题。

@@ -4,12 +4,12 @@ description: 本教程介绍如何使用 Azure 视频分析器将视频和推理
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 05/12/2021
-ms.openlocfilehash: 7b1122c098fc30150699f6c878058d37f74a007f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 89aef5db89110ee7e12a313820f8f62d0b010faf
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465810"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755153"
 ---
 # <a name="tutorial-record-and-stream-inference-metadata-with-video"></a>教程：使用视频记录并流式传输推理元数据
   
@@ -380,13 +380,9 @@ body 部分包含有关输出位置的信息，在本例中是视频录制到的
 1. 你会发现以名称 `sample-cvr-with-inference-metadata` 列出的视频。 这是在管道拓扑文件中选择的名称。
 1. 选择视频。
 1. 在视频“详细信息”页上，单击“播放”图标
-
+1. 要在视频中以边界框的形式查看推理元数据，请单击“边界框”图标（用红色圈出）
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/record-stream-inference-data-with-video/video-playback.png" alt-text="视频播放的屏幕截图":::
-   
-1. 要在视频中以边界框的形式查看推理元数据，请单击“边界框”图标
-   > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/record-stream-inference-data-with-video/bounding-box.png" alt-text="“边界框”图标":::
 
 > [!NOTE]
 > 由于视频源是模拟相机源的容器，因此视频中的时间戳与启用和停用实时管道的时间有关。

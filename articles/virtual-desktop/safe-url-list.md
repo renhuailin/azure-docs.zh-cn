@@ -1,24 +1,24 @@
 ---
-title: Windows 虚拟桌面必需的 URL 列表 - Azure
-description: 必须取消阻止的 URL 的列表。取消阻止是为了确保 Windows 虚拟桌面部署能够按预期进行。
+title: Azure 虚拟桌面必需 URL 列表 - Azure
+description: 必须取消阻止的 URL 的列表。取消阻止是为了确保 Azure 虚拟桌面部署能够按预期进行。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 183b956c0ec38101f7875fe01dd7c6ef9c8c8c8f
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 7206b035724027f346fe49c8834c2fd35ec83af9
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891673"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752956"
 ---
 # <a name="required-url-list"></a>所需的 URL 列表
 
-若要部署并使用 Windows 虚拟桌面，必须取消阻止某些 URL，以便你的虚拟机 (VM) 可以随时访问这些 URL。 本文列出了为使 Windows 虚拟桌面正常运行而需要取消阻止的 URL。 
+若要部署并使用 Azure 虚拟桌面，必须取消阻止某些 URL，以便你的虚拟机 (VM) 可以随时访问这些 URL。 本文列出了为使 Azure 虚拟桌面正常运行而需要取消阻止的必需 URL。 
 
 >[!IMPORTANT]
->Windows 虚拟桌面不支持那些会阻止本文所列 URL 的部署。
+>Azure 虚拟桌面不支持那些会阻止本文所列 URL 的部署。
 
 ## <a name="required-url-check-tool"></a>所需 URL 检查工具
 
@@ -68,7 +68,7 @@ ms.locfileid: "107891673"
 
 ## <a name="virtual-machines"></a>虚拟机
 
-为 Windows 虚拟桌面创建的 Azure 虚拟机必须能够访问 Azure 商业云中的以下 URL：
+为 Azure 虚拟桌面创建的 Azure 虚拟机必须能够访问 Azure 商业云中的以下 URL：
 
 |地址|出站 TCP 端口|目的|服务标记|
 |---|---|---|---|
@@ -87,11 +87,11 @@ ms.locfileid: "107891673"
 | 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 不适用 |
 
 >[!IMPORTANT]
->Windows 虚拟桌面现在支持 FQDN 标记。 有关详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](../firewall/protect-windows-virtual-desktop.md)。
+>Azure 虚拟桌面现在支持 FQDN 标记。 有关详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](../firewall/protect-windows-virtual-desktop.md)。
 >
->建议使用 FQDN 标记或服务标记（而不是 URL）来防止服务问题。 列出的 URL 和标记只对应于 Windows 虚拟桌面站点和资源。 这些 URL 不包含其他服务（如 Azure Active Directory）的 URL。
+>建议使用 FQDN 标记或服务标记（而不是 URL）来防止服务问题。 列出的 URL 和标记只对应于 Azure 虚拟桌面站点和资源。 这些 URL 不包含其他服务（如 Azure Active Directory）的 URL。
 
-为 Windows 虚拟桌面创建的 Azure 虚拟机必须能够访问 Azure 政府云中的以下 URL：
+为 Azure 虚拟桌面创建的 Azure 虚拟机必须能够访问 Azure 政府云中的以下 URL：
 
 |地址|出站 TCP 端口|目的|服务标记|
 |---|---|---|---|
@@ -123,7 +123,7 @@ ms.locfileid: "107891673"
 |*.azure-dns.net|443|Azure DNS 解析|无|
 
 >[!NOTE]
->Windows 虚拟桌面目前没有可通过取消阻止它们来允许网络流量的 IP 地址范围列表。 我们目前仅支持取消阻止特定 URL。
+>Azure 虚拟桌面目前没有可通过取消阻止它们来允许网络流量的 IP 地址范围列表。 我们目前仅支持取消阻止特定 URL。
 >
 >如果使用的是下一代防火墙 (NGFW)，则需要使用专门为 Azure IP 创建的动态列表来确保你可以进行连接。
 >
@@ -131,7 +131,7 @@ ms.locfileid: "107891673"
 >
 >对于涉及服务流量的 URL，必须使用通配符 (*)。 如果不希望为代理相关的流量使用 *，下面提供了有关如何在不使用通配符的情况下查找 URL 的信息：
 >
->1. 向 Windows 虚拟桌面主机池注册你的虚拟机。
+>1. 将虚拟机注册到 Azure 虚拟桌面主机池。
 >2. 打开“事件查看器”，转到“Windows 日志” > “应用程序” > “WVD-Agent”，查找事件 ID 3701。  
 >3. 取消阻止在事件 ID 3702 下找到的 URL。 事件 ID 3701 下的 URL 特定于区域。 你需要对要在其中部署虚拟机的每个区域的相关 URL 重复执行取消阻止过程。
 

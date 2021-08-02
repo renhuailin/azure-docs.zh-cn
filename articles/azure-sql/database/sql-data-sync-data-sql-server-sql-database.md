@@ -3,20 +3,20 @@ title: 什么是 Azure SQL 数据同步？
 description: 本文概述了 Azure SQL 数据同步，它可用于跨多个云端和本地数据库同步数据。
 services: sql-database
 ms.service: sql-database
-ms.subservice: data-movement
+ms.subservice: sql-data-sync
 ms.custom: data sync, sqldbrb=1, fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: MaraSteiu
+ms.author: masteiu
+ms.reviewer: mathoma
 ms.date: 08/20/2019
-ms.openlocfilehash: 660297beacb6594058a3d83fb622ddeb579c223b
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: c3a2be7a00c6718dd33b573faec4a619cbf5a1bb
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107951713"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112074838"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什么是 Azure SQL 数据同步？
 
@@ -152,6 +152,8 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 - 不支持具有用户定义数据类型的列
 - 不支持在不同订阅之间移动服务器。 
 - 如果两个主键只是大小写不同（例如 Foo 和 foo），数据同步也不支持这种情况。
+- 数据同步不支持截断表操作（不会跟踪更改）。
+- 不支持超大规模数据库。 
 
 #### <a name="unsupported-data-types"></a>不支持的数据类型
 

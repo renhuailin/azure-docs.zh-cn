@@ -2,26 +2,26 @@
 title: 配置管理员同意工作流 - Azure Active Directory | Microsoft Docs
 description: 了解如何为最终用户配置一种请求访问需要管理员同意的应用程序的方式。
 services: active-directory
-author: kenwith
-manager: daveba
+author: mtillman
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 10/29/2019
-ms.author: kenwith
+ms.author: mtillman
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95d89ea0cbc7d1e0379a9cbfce40f11d4f8ac93f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 633505f0a0419bc595ecafc706d41aa6600c63c1
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101643756"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080662"
 ---
-# <a name="configure-the-admin-consent-workflow-preview"></a>配置管理员同意工作流（预览版）
+# <a name="configure-the-admin-consent-workflow"></a>配置管理员同意工作流
 
-本文介绍如何启用管理员同意工作流（预览版）功能，最终用户可通过此功能请求访问需要管理员同意的应用程序。
+本文介绍如何启用管理员同意工作流功能，最终用户可通过此功能请求访问需要管理员同意的应用程序。
 
 如果没有管理员同意工作流，已禁用用户同意的租户中的用户在尝试访问任何需要组织数据访问权限的应用时将被阻止。 用户将看到一条常规错误消息，指出他们无权访问该应用，应请求管理员帮助。 但用户往往并不知道要与谁联系，因此他们可能会放弃访问，或者在应用程序中创建一个新的本地帐户。 即使管理员得到了通知，也不一定有一个简化的流程可帮助管理员授予访问权限并通知用户。
  
@@ -38,7 +38,7 @@ ms.locfileid: "101643756"
 3. 在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项 。
 4. 在导航菜单中，单击“企业应用程序”。 
 5. 在“管理”下，选择“用户设置” 。
-6. 在“管理员同意请求(预览版)”中，将“用户可以请求管理员同意他们无法同意的应用”设置为“是”  。
+6. 在“管理员同意请求”中，将“用户可以请求管理员同意他们无法同意的应用”设置为“是”  。
 
    ![配置管理员同意工作流设置](media/configure-admin-consent-workflow/admin-consent-requests-settings.png)
  
@@ -78,7 +78,7 @@ ms.locfileid: "101643756"
 2. 在左侧导航菜单的顶部选择“所有服务”。 此时会打开“Azure Active Directory 扩展”。
 3. 在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”项 。
 4. 在导航菜单中，单击“企业应用程序”。
-5. 在“活动”下，选择“管理员同意请求(预览版)” 。
+5. 在“活动”下，选择“管理员同意请求” 。
 
    > [!NOTE]
    > 审阅者只会看到在他们已指定为审阅者之后创建的管理员请求。
@@ -112,11 +112,7 @@ ms.locfileid: "101643756"
  
 ## <a name="audit-logs"></a>审核日志 
  
-下表概述了可用于管理员同意工作流的方案和审核值。 
-
-> [!NOTE]
-> 目前所有方案中都缺少审核参与者的用户上下文。 这是预览版中的一个已知限制。
-
+下表概述了可用于管理员同意工作流的方案和审核值。
 
 |方案  |审核服务  |审核类别  |审核活动  |审核参与者  |审核日志限制  |
 |---------|---------|---------|---------|---------|---------|

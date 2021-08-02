@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1a07acedadfaf3d5158ba8e494d4527301655425
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f0d29e55e0bf1a88f5fb787b96b5bc549107fe8f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035095"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469390"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>使用异地冗余设计高度可用的应用程序
 
@@ -148,11 +148,11 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如，不会�
 
 * 为传递到存储请求的 [**OperationContext**](/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) 对象上的 [**重试**](/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying)事件添加处理程序 - 这是本文演示的方法，且在随附的示例中使用了该方法。 每当客户端重试请求时都会触发这些事件，以便跟踪客户端在主终结点上遇到可重试错误的频率。
 
-    # <a name="net-v12"></a>[.NET v12](#tab/current)
+    # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/current)
 
     我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
-    # <a name="net-v11"></a>[.NET v11](#tab/legacy)
+    # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/legacy)
 
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
@@ -166,11 +166,11 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如，不会�
 
 * 在自定义重试策略的 [**Evaluate**](/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) 方法中，每次重试时均可运行自定义代码。 除了在重试时进行记录外，还可利用此操作修改重试行为。
 
-    # <a name="net-v12"></a>[.NET v12](#tab/current)
+    # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/current)
 
     我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
-    # <a name="net-v11"></a>[.NET v11](#tab/legacy)
+    # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/legacy)
 
     ```csharp
     public RetryInfo Evaluate(RetryContext retryContext,
@@ -233,12 +233,11 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如，不会�
 
 可以使用 [Fiddler](https://www.telerik.com/fiddler) 在脚本中截获和修改 HTTP 响应。 此脚本可以标识来自主终结点的响应，并将 HTTP 状态代码更改为存储客户端库识别为可重试错误的代码。 此代码片段显示 Fiddler 脚本的简单示例，此脚本截获响应以读取对 **employeedata** 表的读取请求，并返回 502 状态：
 
-
-# <a name="java-v12"></a>[Java v12](#tab/current)
+# <a name="java-v12-sdk"></a>[Java v12 SDK](#tab/current)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
-# <a name="java-v11"></a>[Java v11](#tab/legacy)
+# <a name="java-v11-sdk"></a>[Java v11 SDK](#tab/legacy)
 
 ```java
 static function OnBeforeResponse(oSession: Session) {

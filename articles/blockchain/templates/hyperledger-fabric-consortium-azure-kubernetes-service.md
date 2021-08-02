@@ -4,13 +4,13 @@ description: 如何在 Azure Kubernetes 服务上部署和配置 Hyperledger Fab
 ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: 42d16adbc5e6396c8d5d38176ac7681c712f4555
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: contperf-fy21q3, devx-track-azurecli
+ms.openlocfilehash: 76c18d7b11a4ac48a7ebaa77f0ae683b8de9ca44
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101097"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111422203"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>在 Azure Kubernetes 服务上部署 Hyperledger Fabric 联盟
 
@@ -20,6 +20,11 @@ ms.locfileid: "102101097"
 
 - 对 Hyperledger Fabric 以及构成 Hyperledger Fabric 区块链网络构建基块的组件有一定的了解。
 - 知道如何在 Azure Kubernetes 服务上为生产方案部署和配置 Hyperledger Fabric 联盟网络。
+
+>[!IMPORTANT] 
+>
+>该模板仅支持 Azure Kubernetes 服务版本 1.18.x 及更低版本。 由于最近 [Kubernetes 更新](https://kubernetes.io/blog/2020/12/02/dont-panic-kubernetes-and-docker/)，底层运行时环境从 docker 变为“containerd”，链码容器将无法运行，客户将不得不转而将外部链码作为服务运行，该服务仅在 HLF 2.2x 上可用。 在 Azure 支持 AKS v1.18.x 之前，你可以按照[此处](https://github.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service)的步骤部署此模板。
+
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
@@ -80,7 +85,7 @@ ms.locfileid: "102101097"
     - **托管磁盘**：Azure 托管磁盘服务的实例，用于为分类帐和对等节点的 World State 数据库提供持久存储。
     - **公共 IP**：部署的 AKS 群集的终结点，用于与群集通信。
 
-    输入以下详细信息： 
+    输入以下详细信息：
 
     ![该屏幕截图显示了 AKS 群集设置选项卡。](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
 
@@ -113,7 +118,7 @@ ms.locfileid: "102101097"
 > 此脚本仅用于帮助演示、开发和测试方案。 此脚本创建的通道和联盟具有基本的 Hyperledger Fabric 策略，以简化演示、开发和测试方案。 对于生产设置，建议根据组织的合规性需求，使用本机 Hyperledger Fabric API 来更新通道/联盟 Hyperledger Fabric 策略。
 
 
-可以通过 Azure Bash 命令行接口 (CLI) 执行所有用于运行 Azure Hyperledger Fabric 脚本的命令。 你可以通过 Azure 门户右上角的![“Azure Kubernetes 服务上的 Hyperledger Fabric”模板](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) 选项登录到 Azure Cloud Shell。 在命令提示符下键入 `bash`，并选择 Enter 键切换到 Bash CLI，或从 Cloud Shell 工具栏中选择“Bash”。
+可以通过 Azure Bash 命令行接口 (CLI) 执行所有用于运行 Azure Hyperledger Fabric 脚本的命令。 你可以通过 Azure 门户右上角的![“Azure Kubernetes 服务上的 Hyperledger Fabric”模板](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png)选项登录到 Azure Cloud Shell。 在命令提示符下键入 `bash`，并选择 Enter 键切换到 Bash CLI，或从 Cloud Shell 工具栏中选择“Bash”。
 
 有关详细信息，请参阅 [Azure Cloud Shell](../../cloud-shell/overview.md)。
 
@@ -124,7 +129,7 @@ ms.locfileid: "102101097"
 
 ![建立联盟的过程图。](./media/hyperledger-fabric-consortium-azure-kubernetes-service/process-to-build-consortium-flow-chart.png)
 
-完成初始设置后，使用客户端应用程序执行以下操作：  
+完成初始设置后，使用客户端应用程序执行以下操作：
 
 - 通道管理
 - 联盟管理
@@ -149,7 +154,7 @@ npm run setup
 
 #### <a name="set-environment-variables-for-the-orderer-organizations-client"></a>为 Orderer 组织的客户端设置环境变量
 
-```bash
+```azurecli
 ORDERER_ORG_SUBSCRIPTION=<ordererOrgSubscription>
 ORDERER_ORG_RESOURCE_GROUP=<ordererOrgResourceGroup>
 ORDERER_ORG_NAME=<ordererOrgName>
@@ -159,7 +164,7 @@ CHANNEL_NAME=<channelName>
 
 #### <a name="set-environment-variables-for-the-peer-organizations-client"></a>为对等组织的客户端设置环境变量
 
-```bash
+```azurecli
 PEER_ORG_SUBSCRIPTION=<peerOrgSubscritpion>
 PEER_ORG_RESOURCE_GROUP=<peerOrgResourceGroup>
 PEER_ORG_NAME=<peerOrgName>
@@ -171,7 +176,7 @@ CHANNEL_NAME=<channelName>
 
 #### <a name="set-environment-variables-for-an-azure-storage-account"></a>为 Azure 存储帐户设置环境变量
 
-```bash
+```azurecli
 STORAGE_SUBSCRIPTION=<subscriptionId>
 STORAGE_RESOURCE_GROUP=<azureFileShareResourceGroup>
 STORAGE_ACCOUNT=<azureStorageAccountName>
@@ -181,7 +186,7 @@ STORAGE_FILE_SHARE=<azureFileShareName>
 
 使用以下命令创建一个 Azure 存储帐户。 如果已有 Azure 存储帐户，请跳过此步骤。
 
-```bash
+```azurecli
 az account set --subscription $STORAGE_SUBSCRIPTION
 az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
@@ -189,14 +194,14 @@ az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $ST
 
 使用以下命令在 Azure 存储帐户中创建文件共享。 如果已有文件共享，请跳过此步骤。
 
-```bash
+```azurecli
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 az storage share create  --account-name $STORAGE_ACCOUNT  --account-key $STORAGE_KEY  --name $STORAGE_FILE_SHARE
 ```
 
 使用以下命令为 Azure 文件共享生成连接字符串。
 
-```bash
+```azurecli
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 SAS_TOKEN=$(az storage account generate-sas --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT --expiry `date -u -d "1 day" '+%Y-%m-%dT%H:%MZ'` --https-only --permissions lruwd --resource-types sco --services f | tr -d '"')
 AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN
@@ -209,15 +214,15 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
 
 对于 Orderer 组织：
 
-```bash
+```azurecli
 ./azhlf adminProfile import fromAzure -o $ORDERER_ORG_NAME -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION
-./azhlf connectionProfile import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME   
+./azhlf connectionProfile import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME
 ./azhlf msp import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME
 ```
 
 对于对等组织：
 
-```bash
+```azurecli
 ./azhlf adminProfile import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
 ./azhlf connectionProfile import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
 ./azhlf msp import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
@@ -225,41 +230,41 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
 
 ### <a name="create-a-channel"></a>创建频道
 
-在 Orderer 组织的客户端中，使用以下命令创建仅包含 Orderer 组织的通道。  
+在 Orderer 组织的客户端中，使用以下命令创建仅包含 Orderer 组织的通道。
 
-```bash
+```azurecli
 ./azhlf channel create -c $CHANNEL_NAME -u $ORDERER_ADMIN_IDENTITY -o $ORDERER_ORG_NAME
 ```
 
 ### <a name="add-a-peer-organization-for-consortium-management"></a>添加对等组织以进行联盟管理
 
 >[!NOTE]
-> 在开始进行任何联盟操作之前，请确保已完成客户端应用程序的初始设置。  
+> 在开始进行任何联盟操作之前，请确保已完成客户端应用程序的初始设置。
 
-按给定顺序运行以下命令，以在通道和联盟中添加对等组织： 
+按给定顺序运行以下命令，以在通道和联盟中添加对等组织：
 
-1.  在对等组织的客户端中，将对等组织的 MSP 上传到 Azure 存储。
+1.    在对等组织的客户端中，将对等组织的 MSP 上传到 Azure 存储。
 
-      ```bash
+      ```azurecli
       ./azhlf msp export toAzureStorage -f  $AZURE_FILE_CONNECTION_STRING -o $PEER_ORG_NAME
       ```
-2.  在 Orderer 组织的客户端中，从 Azure 存储下载对等组织的 MSP。 然后发出命令，将对等组织添加到通道和联盟中。
+2.    在 Orderer 组织的客户端中，从 Azure 存储下载对等组织的 MSP。 然后发出命令，将对等组织添加到通道和联盟中。
 
-      ```bash
+      ```azurecli
       ./azhlf msp import fromAzureStorage -o $PEER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
       ./azhlf channel join -c  $CHANNEL_NAME -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
       ./azhlf consortium join -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
       ```
 
-3.  在 Orderer 组织的客户端中，将 Orderer 的连接配置文件上传到 Azure 存储，以便对等组织可以使用此连接配置文件连接到 Orderer 节点。
+3.    在 Orderer 组织的客户端中，将 Orderer 的连接配置文件上传到 Azure 存储，以便对等组织可以使用此连接配置文件连接到 Orderer 节点。
 
-      ```bash
+      ```azurecli
       ./azhlf connectionProfile  export toAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
       ```
 
-4.  在对等组织的客户端中，从 Azure 存储下载 Orderer 的连接配置文件。 然后运行命令，将对等节点添加到通道中。
+4.    在对等组织的客户端中，从 Azure 存储下载 Orderer 的连接配置文件。 然后运行命令，将对等节点添加到通道中。
 
-      ```bash
+      ```azurecli
       ./azhlf connectionProfile  import fromAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
       ./azhlf channel joinPeerNodes -o $PEER_ORG_NAME  -u $PEER_ADMIN_IDENTITY -c $CHANNEL_NAME --ordererOrg $ORDERER_ORG_NAME
       ```
@@ -273,7 +278,7 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
 >[!NOTE]
 > 在运行此命令之前，请确保使用联盟管理命令在通道中添加对等组织。
 
-```bash
+```azurecli
 ./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY --ordererOrg $ORDERER_ORG_NAME
 ```
 
@@ -285,48 +290,48 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
 ## <a name="chaincode-management-commands"></a>chaincode 管理命令
 
 >[!NOTE]
-> 在开始进行任何 chaincode 操作之前，请确保已完成客户端应用程序的初始设置。  
+> 在开始进行任何 chaincode 操作之前，请确保已完成客户端应用程序的初始设置。
 
 ### <a name="set-the-chaincode-specific-environment-variables"></a>设置特定于 chaincode 的环境变量
 
-```bash
+```azurecli
 # Peer organization name where the chaincode operation will be performed
 ORGNAME=<PeerOrgName>
-USER_IDENTITY="admin.$ORGNAME"  
-# If you are using chaincode_example02 then set CC_NAME=“chaincode_example02”
-CC_NAME=<chaincodeName>  
-# If you are using chaincode_example02 then set CC_VERSION=“1” for validation
+USER_IDENTITY="admin.$ORGNAME"
+# If you are using chaincode_example02 then set CC_NAME="chaincode_example02"
+CC_NAME=<chaincodeName>
+# If you are using chaincode_example02 then set CC_VERSION="1" for validation
 CC_VERSION=<chaincodeVersion>
-# Language in which chaincode is written. Supported languages are 'node', 'golang', and 'java'  
-# Default value is 'golang'  
-CC_LANG=<chaincodeLanguage>  
+# Language in which chaincode is written. Supported languages are 'node', 'golang', and 'java'
+# Default value is 'golang'
+CC_LANG=<chaincodeLanguage>
 # CC_PATH contains the path where your chaincode is placed. This is the absolute path to the chaincode project root directory.
-# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/go”
-CC_PATH=<chaincodePath>  
-# Channel on which chaincode will be instantiated/invoked/queried  
-CHANNEL_NAME=<channelName>  
+# If you are using chaincode_example02 to validate then CC_PATH="/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/go"
+CC_PATH=<chaincodePath>
+# Channel on which chaincode will be instantiated/invoked/queried
+CHANNEL_NAME=<channelName>
 ```
 
-### <a name="install-chaincode"></a>安装 chaincode  
+### <a name="install-chaincode"></a>安装 chaincode
 
-运行以下命令以在对等组织上安装 chaincode。  
+运行以下命令以在对等组织上安装 chaincode。
 
-```bash
-./azhlf chaincode install -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION  
+```azurecli
+./azhlf chaincode install -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION
 
 ```
-该命令将在 `ORGNAME` 环境变量中设置的对等组织的所有对等节点上安装 chaincode。 如果通道中有两个或更多对等组织，并且你想在所有对等组织上安装 chaincode，请为每个对等组织单独运行此命令。  
+该命令将在 `ORGNAME` 环境变量中设置的对等组织的所有对等节点上安装 chaincode。 如果通道中有两个或更多对等组织，并且你想在所有对等组织上安装 chaincode，请为每个对等组织单独运行此命令。
 
-按照以下步骤操作：  
+按照以下步骤操作：
 
-1.  根据 `peerOrg1` 设置 `ORGNAME` 和 `USER_IDENTITY`，并运行 `./azhlf chaincode install` 命令。  
-2.  根据 `peerOrg2` 设置 `ORGNAME` 和 `USER_IDENTITY`，并运行 `./azhlf chaincode install` 命令。  
+1.    根据 `peerOrg1` 设置 `ORGNAME` 和 `USER_IDENTITY`，并运行 `./azhlf chaincode install` 命令。
+2.    根据 `peerOrg2` 设置 `ORGNAME` 和 `USER_IDENTITY`，并运行 `./azhlf chaincode install` 命令。
 
-### <a name="instantiate-chaincode"></a>实例化 chaincode  
+### <a name="instantiate-chaincode"></a>实例化 chaincode
 
-在对等客户端应用程序中，运行以下命令以实例化通道上的 chaincode。  
+在对等客户端应用程序中，运行以下命令以实例化通道上的 chaincode。
 
-```bash
+```azurecli
 ./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>
 ```
 
@@ -336,7 +341,7 @@ CHANNEL_NAME=<channelName>
 
 例如：
 
-```bash
+```azurecli
 ./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath>
 ./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath> -t <transientArgs>
 ```
@@ -345,34 +350,34 @@ CHANNEL_NAME=<channelName>
 以字符串格式将 `<transientArgs>` 作为有效 JSON 传递。 对所有特殊字符进行转义。 例如：`'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
 
 > [!NOTE]
-> 从通道中的任一对等组织运行一次命令。 将事务成功提交到 Orderer 后，Orderer 会将该事务分发给通道中的所有对等组织。 然后，在通道中所有对等组织的所有对等节点上实例化 chaincode。  
+> 从通道中的任一对等组织运行一次命令。 将事务成功提交到 Orderer 后，Orderer 会将该事务分发给通道中的所有对等组织。 然后，在通道中所有对等组织的所有对等节点上实例化 chaincode。
 
-### <a name="invoke-chaincode"></a>调用 chaincode  
+### <a name="invoke-chaincode"></a>调用 chaincode
 
-在对等组织的客户端中，运行以下命令以调用 chaincode 函数：  
+在对等组织的客户端中，运行以下命令以调用 chaincode 函数：
 
-```bash
-./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
+```azurecli
+./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>
 ```
 
-分别在 `<invokeFunction>` 和 `<invokeFuncArgs>` 中传递调用函数名称和以空格分隔的参数列表。 继续以 chaincode_example02.go chaincode 为例，若要执行调用操作，请将 `<invokeFunction>` 设置为 `invoke` ，将 `<invokeFuncArgs>` 设置为 `"a" "b" "10"`。  
+分别在 `<invokeFunction>` 和 `<invokeFuncArgs>` 中传递调用函数名称和以空格分隔的参数列表。 继续以 chaincode_example02.go chaincode 为例，若要执行调用操作，请将 `<invokeFunction>` 设置为 `invoke`，将 `<invokeFuncArgs>` 设置为 `"a" "b" "10"`。
 
 >[!NOTE]
-> 从通道中的任一对等组织运行一次命令。 将事务成功提交到 Orderer 后，Orderer 会将该事务分发给通道中的所有对等组织。 然后，在通道中所有对等组织的所有对等节点上更新 World State。  
+> 从通道中的任一对等组织运行一次命令。 将事务成功提交到 Orderer 后，Orderer 会将该事务分发给通道中的所有对等组织。 然后，在通道中所有对等组织的所有对等节点上更新 World State。
 
 
-### <a name="query-chaincode"></a>查询 chaincode  
+### <a name="query-chaincode"></a>查询 chaincode
 
-运行以下命令以查询 chaincode：  
+运行以下命令以查询 chaincode：
 
-```bash
-./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs> 
+```azurecli
+./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>
 ```
 认可对等节点是安装了 chaincode 的对等节点，在执行事务时调用。 你必须将 `<endorsingPeers>` 设置为包含当前对等组织中的对等节点名称。 列出给定 chaincode 和通道组合的认可对等节点，并用空格分隔。 例如：`-p "peer1" "peer3"`。
 
-如果使用 azhlfTool 安装 chaincode，请将任意对等节点名称作为值传递给认可对等节点参数。 chaincode 将安装在该组织的每个对等节点上。 
+如果使用 azhlfTool 安装 chaincode，请将任意对等节点名称作为值传递给认可对等节点参数。 chaincode 将安装在该组织的每个对等节点上。
 
-分别在 `<queryFunction>` 和 `<queryFuncArgs>` 中传递查询函数名称和以空格分隔的参数列表。 再次以 chaincode_example02.go chaincode 作为参考，若要查询 World State 中“a”的值，请将 `<queryFunction>` 设置为  `query`，将  `<queryArgs>` 设置为 `"a"`。  
+分别在 `<queryFunction>` 和 `<queryFuncArgs>` 中传递查询函数名称和以空格分隔的参数列表。 再次以 chaincode_example02.go chaincode 作为参考，若要查询 World State 中“a”的值，请将 `<queryFunction>` 设置为 `query`，将 `<queryArgs>` 设置为“a”。
 
 ## <a name="troubleshoot"></a>故障排除
 
@@ -380,7 +385,7 @@ CHANNEL_NAME=<channelName>
 
 运行以下命令以查找模板部署的版本。 根据部署了模板的资源组设置环境变量。
 
-```bash
+```azurecli
 SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER_SUBSCRIPTION
 kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 ```
@@ -417,8 +422,8 @@ kubectl get pods -n hlf
 
 与 Microsoft 工程师和 Azure 区块链社区专家交流：
 
-- [Microsoft Q&A 页](/answers/topics/azure-blockchain-workbench.html) 
-   
+- [Microsoft Q&A 页](/answers/topics/azure-blockchain-workbench.html)
+
   针对区块链模板的工程支持仅限于部署问题。
 - [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

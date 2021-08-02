@@ -1,21 +1,21 @@
 ---
-title: Windows 虚拟桌面 FSLogix 配置文件容器文件 - Azure
-description: 本文介绍 Windows 虚拟桌面和 Azure 文件存储中的 FSLogix 配置文件容器。
+title: Azure 虚拟桌面 FSLogix 配置文件容器文件 - Azure
+description: 本文介绍 Azure 虚拟桌面和 Azure 文件存储中的 FSLogix 配置文件容器。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 01/04/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 945bf806a813943d02fb4db1245dfb74eb7fb1f9
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: c7b8b400d2f927fa4b5d6f713b29dbda34eec959
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446887"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757672"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 配置文件容器和 Azure 文件
 
-Windows 虚拟桌面服务建议将 FSLogix 配置文件容器用作用户配置文件解决方案。 FSLogix 设计用于在远程计算环境（如 Windows 虚拟桌面）中漫游配置文件。 它将完整的用户配置文件存储在单个容器中。 登录时，此容器将动态附加到使用原生支持的虚拟硬盘 (VHD) 和 Hyper-V 虚拟硬盘 (VHDX) 的计算环境。 用户配置文件随时可用并在系统中显示，就像本机用户配置文件一样。 本文介绍如何在 Windows 虚拟桌面中将 FSLogix 配置文件容器与 Azure 文件存储功能配合使用。
+Azure 虚拟桌面服务建议将 FSLogix 配置文件容器用作用户配置文件解决方案。 FSLogix 设计用于在远程计算环境（如 Azure 虚拟桌面）中漫游配置文件。 它将完整的用户配置文件存储在单个容器中。 登录时，此容器将动态附加到使用原生支持的虚拟硬盘 (VHD) 和 Hyper-V 虚拟硬盘 (VHDX) 的计算环境。 用户配置文件随时可用并在系统中显示，就像本机用户配置文件一样。 本文介绍如何在 Azure 虚拟桌面中将 FSLogix 配置文件容器与 Azure 文件存储功能配合使用。
 
 >[!NOTE]
 >如果你正在寻找有关 Azure 上不同 FSLogix 配置文件容器存储选项的比较资料，请参阅 [FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
@@ -77,13 +77,13 @@ S2D 群集需要一个已修补、已更新并保持处于安全状态的操作�
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure 文件存储与 Azure Active Directory 域服务的集成
 
-FSLogix 配置文件容器的性能和功能利用了云。 2019 年 8 月 7 日，Microsoft Azure 文件存储宣告正式发布[使用 Azure Active Directory 域服务 (AD DS) 进行 Azure 文件存储身份验证](../storage/files/storage-files-active-directory-overview.md)的功能。 使用 Azure AD DS 身份验证的 Azure 文件存储满足了成本和管理开销方面的需求，是适用于 Windows 虚拟桌面服务中用户配置文件的高级解决方案。
+FSLogix 配置文件容器的性能和功能利用了云。 2019 年 8 月 7 日，Microsoft Azure 文件存储宣告正式发布[使用 Azure Active Directory 域服务 (AD DS) 进行 Azure 文件存储身份验证](../storage/files/storage-files-active-directory-overview.md)的功能。 使用 Azure AD DS 身份验证的 Azure 文件存储满足了成本和管理开销方面的需求，是适用于 Azure 虚拟桌面服务中用户配置文件的高级解决方案。
 
-## <a name="best-practices-for-windows-virtual-desktop"></a>有关 Windows 虚拟桌面的最佳做法
+## <a name="best-practices-for-azure-virtual-desktop"></a>有关 Azure 虚拟桌面的最佳做法
 
-Windows 虚拟桌面提供对客户所用 VM 的大小、类型和计数的完全控制。 有关详细信息，请参阅[什么是 Windows 虚拟桌面？](overview.md)。
+Azure 虚拟桌面提供对客户所用 VM 的大小、类型和计数的完全控制。 有关详细信息，请参阅[什么是 Azure 虚拟桌面？](overview.md)。
 
-若要确保 Windows 虚拟桌面环境遵循最佳做法：
+若要确保 Azure 虚拟桌面环境遵循最佳做法：
 
 - Azure 文件存储帐户必须位于会话主机 VM 所在的同一区域中。
 - Azure 文件存储权限应与[要求 - 配置文件容器](/fslogix/fslogix-storage-config-ht)中所述的权限匹配。
@@ -94,11 +94,11 @@ Windows 虚拟桌面提供对客户所用 VM 的大小、类型和计数的完�
 
 ## <a name="next-steps"></a>后续步骤
 
-使用以下指南来设置 Windows 虚拟桌面环境。
+使用以下指南来设置 Azure 虚拟桌面环境。
 
-- 若要开始构建桌面虚拟化解决方案，请参阅[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。
-- 若要在 Windows 虚拟桌面租户中创建主机池，请参阅[通过 Azure 市场创建主机池](create-host-pools-azure-marketplace.md)。
+- 若要开始构建桌面虚拟化解决方案，请参阅[在 Azure 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。
+- 若要在 Azure 虚拟桌面租户中创建主机池，请参阅[通过 Azure 市场创建主机池](create-host-pools-azure-marketplace.md)。
 - 若要在云中设置完全托管的文件共享，请参阅[设置 Azure 文件存储共享](/azure/storage/files/storage-files-active-directory-enable/)。
 - 若要配置 FSLogix 配置文件容器，请参阅[使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md)。
-- 若要将用户分配到主机池，请参阅[管理 Windows 虚拟桌面的应用组](manage-app-groups.md)。
-- 若要通过 Web 浏览器访问 Windows 虚拟桌面资源，请参阅[连接到 Windows 虚拟桌面](connect-web.md)。
+- 若要将用户分配到主机池，请参阅[管理 Azure 虚拟桌面的应用组](manage-app-groups.md)。
+- 若要通过 Web 浏览器访问 Azure 虚拟桌面资源，请参阅[连接到 Azure 虚拟桌面](connect-web.md)。

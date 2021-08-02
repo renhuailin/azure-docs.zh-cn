@@ -3,12 +3,12 @@ title: Azure Functions 的存储注意事项
 description: 了解 Azure Functions 的要求和存储数据加密。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: 8c7f5ef6e1e9c354806994e5116e40523d660e9e
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: 41e78acf37f2f5b9cc0346384fc4964187945386
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109627701"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112026446"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的存储注意事项
 
@@ -18,7 +18,7 @@ ms.locfileid: "109627701"
 |存储服务  | 函数用法  |
 |---------|---------|
 | [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)     | 维护绑定状态和函数密钥。  <br/>还由 [Durable Functions 中的任务中心](durable/durable-functions-task-hubs.md)使用。 |
-| [Azure 文件](../storage/files/storage-files-introduction.md)  | 文件共享，用于存储和运行[消耗计划](consumption-plan.md)和[高级计划](functions-premium-plan.md)中的函数应用代码。 |
+| [Azure 文件](../storage/files/storage-files-introduction.md)  | 文件共享，用于存储和运行[消耗计划](consumption-plan.md)和[高级计划](functions-premium-plan.md)中的函数应用代码。 <br/>默认情况下会设置 Azure 文件存储，但你在某些情况下可以[创建没有 Azure 文件存储的应用](#create-an-app-without-azure-files)。 |
 | Azure 队列存储     | 由 [Durable Functions 中的任务中心](durable/durable-functions-task-hubs.md)使用。   |
 | [Azure 表存储](../storage/tables/table-storage-overview.md)  |  由 [Durable Functions 中的任务中心](durable/durable-functions-task-hubs.md)使用。       |
 
@@ -66,6 +66,19 @@ ms.locfileid: "109627701"
 当必须将所有客户数据保留在单个区域内时，与函数应用关联的存储帐户必须是具有[区域内冗余](../storage/common/storage-redundancy.md)的存储帐户。 区域内冗余存储帐户还必须与 [Azure Durable Functions](./durable/durable-functions-perf-and-scale.md#storage-account-selection) 一起使用。
 
 其他由平台管理的客户数据只有托管在内部负载均衡的应用服务环境（简称 ASE）中时才会存储在该区域内。 若要了解详细信息，请参阅 [ASE 区域冗余](../app-service/environment/zone-redundancy.md#in-region-data-residency)。
+
+## <a name="create-an-app-without-azure-files"></a>创建没有 Azure 文件存储的应用
+
+默认情况下会为高级计划和非 Linux 消耗计划设置 Azure 文件存储，用作大规模方案中的共享文件系统。 文件系统由平台用于日志流式处理之类的某些功能，但它主要用于确保已部署的函数有效负载的一致性。 [使用外部包 URL 来部署](./run-functions-from-deployment-package.md)应用时，是从单独的只读文件系统提供应用内容，因此，可以根据情况省略 Azure 文件存储。 在这些情况下，会提供可写入的文件系统，但不保证与所有函数应用实例共享该系统。
+
+如果未使用 Azure 文件存储，则必须了解以下事项：
+
+* 必须从外部包 URL 进行部署
+* 应用不能依赖于共享的可写文件系统
+* 应用不能使用 Functions 运行时 v1
+* Azure 门户等客户端中的日志流式处理体验默认使用文件系统日志。 应改为依赖于 Application Insights 日志。
+
+如果正确了解了上述内容，则可以创建没有 Azure 文件存储的应用。 在不指定 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE` 应用程序设置的情况下创建函数应用。
 
 ## <a name="mount-file-shares"></a>装载文件共享
 

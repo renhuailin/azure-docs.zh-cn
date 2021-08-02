@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: bd35af7ac6602bba7e23bd10eda2f2b0fdff71db
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 41cc4c174028ff23cdcc248c6b10d746e5669349
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379743"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751228"
 ---
 # <a name="set-up-devops-deployment-for-single-tenant-azure-logic-apps"></a>设置面向单租户 Azure 逻辑应用的 DevOps 部署
 
@@ -23,7 +23,7 @@ ms.locfileid: "110379743"
 
 - 使用 [Visual Studio Code 和 Azure 逻辑应用（标准版）扩展](create-single-tenant-workflows-visual-studio-code.md#prerequisites)创建的基于单租户的逻辑应用项目。
 
-  如果尚未设置逻辑应用项目或基础结构，可以根据你想使用的源和部署选项，使用内含示例项目来部署示例应用和基础结构。 有关这些示例项目以及为运行示例逻辑应用而包含的资源的详细信息，请查看[部署基础结构](#deploy-infrastructure)。
+  如果你尚未设置逻辑应用项目或基础结构，可以根据你想使用的源和部署选项，使用内含示例项目来部署示例应用和基础结构。 有关这些示例项目以及为运行示例逻辑应用而包含的资源的详细信息，请查看[部署基础结构](#deploy-infrastructure)。
 
 - 如果要部署到 Azure，则需要已在 Azure 中创建的现有逻辑应用（标准版）资源。 若要快速创建空逻辑应用资源，请查看[创建基于单租户的逻辑应用工作流 - 门户](create-single-tenant-workflows-azure-portal.md)。
 
@@ -115,14 +115,13 @@ ms.locfileid: "110379743"
 
 ### <a name="build-your-project"></a>生成项目
 
-若要基于逻辑应用项目类型设置生成管道，请执行相应的操作：
+若要基于逻辑应用项目类型设置生成管道，请完成下表中列出的相应操作：
 
-* 基于 Nuget：基于 NuGet 的项目结构以 .NET Framework 为基础。 若要生成这些项目，请务必遵循 .NET Standard 的生成步骤。 有关详细信息，请查看[使用 MSBuild 创建 NuGet 包](/nuget/create-packages/creating-a-package-msbuild)文档。
-
-* 基于捆绑包：基于扩展捆绑包的项目并非采用特定语言，且无需任何语言特定的生成步骤。 可以使用任何方法压缩项目文件。
-
-  > [!IMPORTANT]
-  > 确保 .zip 文件包括所有工作流文件夹、配置文件（如 host.json、connections.js）和任何其他相关文件。
+| 项目类型 | 说明和步骤 |
+|--------------|-----------------------|
+| 基于 Nuget | 基于 NuGet 的项目结构以 .NET Framework 为基础。 若要生成这些项目，请务必遵循 .NET Standard 的生成步骤。 有关详细信息，请查看[使用 MSBuild 创建 NuGet 包](/nuget/create-packages/creating-a-package-msbuild)文档。 |
+| 基于捆绑包 | 基于扩展捆绑包的项目并非采用特定语言，且无需任何语言特定的生成步骤。 可以使用任何方法压缩项目文件。 <p><p>重要说明：请确保 .zip 文件包含实际的生成工件，其中包括所有工作流文件夹、配置文件（如 host.json、connections.json）以及任何其他相关文件。 |
+|||
 
 ### <a name="release-to-azure"></a>发布到 Azure
 
@@ -135,48 +134,146 @@ ms.locfileid: "110379743"
 
 对于 GitHub 部署，可以使用 [GitHub Actions](https://docs.github.com/actions) 部署逻辑应用，例如，Azure Functions 中的 GitHub Actions。 此操作要求传递以下信息：
 
-* 生成工件
-* 用于部署的逻辑应用名称
-* 发布配置文件
+- 用于部署的逻辑应用名称
+- 包含实际生成工件的 zip 文件，其中包括所有工作流文件夹、配置文件（如 host.json、connections.json）以及任何其他相关文件。
+- 用于进行身份验证的[发布配置文件](../azure-functions/functions-how-to-github-actions.md#generate-deployment-credentials)
 
 ```yaml
 - name: 'Run Azure Functions Action'
   uses: Azure/functions-action@v1
   id: fa
   with:
-   app-name: {your-logic-app-name}
-   package: '{your-build-artifact}.zip'
-   publish-profile: {your-logic-app-publish-profile}
+   app-name: 'MyLogicAppName'
+   package: 'MyBuildArtifact.zip'
+   publish-profile: 'MyLogicAppPublishProfile'
 ```
 
 有关详细信息，请查看[使用 GitHub Action 持续交付](../azure-functions/functions-how-to-github-actions.md)文档。
 
 #### <a name="azure-devops"></a>[Azure DevOps](#tab/azure-devops)
 
-对于 Azure DevOps 部署，可以通过使用 Azure Pipelines 中的 [Azure Function 应用部署任务](/devops/pipelines/tasks/deploy/azure-function-app)来部署逻辑应用。 此操作要求传递以下信息：
+对于 Azure DevOps 部署，可以通过使用 Azure Pipelines 中的 [Azure Function 应用部署任务](/azure/devops/pipelines/tasks/deploy/azure-function-app?view=azure-devops&preserve-view=true)来部署逻辑应用。 此操作要求传递以下信息：
 
-* 生成工件
-* 用于部署的逻辑应用名称
-* 发布配置文件
+- 用于部署的逻辑应用名称
+- 包含实际生成工件的 zip 文件，其中包括所有工作流文件夹、配置文件（如 host.json、connections.json）以及任何其他相关文件。
+- 用于进行身份验证的[发布配置文件](../azure-functions/functions-how-to-github-actions.md#generate-deployment-credentials)
 
 ```yaml
 - task: AzureFunctionApp@1
   displayName: 'Deploy logic app workflows'
   inputs:
-     azureSubscription: '{your-service-connection}'
+     azureSubscription: 'MyServiceConnection'
      appType: 'workflowapp'
-     appName: '{your-logic-app-name}'
-     package: '{your-build-artifact}.zip'
+     appName: 'MyLogicAppName'
+     package: 'MyBuildArtifact.zip'
      deploymentMethod: 'zipDeploy'
 ```
 
-有关详细信息，请查看[使用 Azure Pipelines 部署 Azure Function](/devops/pipelines/targets/azure-functions-windows) 文档。
+有关详细信息，请查看[使用 Azure Pipelines 部署 Azure Function](/azure/devops/pipelines/targets/azure-functions-windows) 文档。
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-如果使用其他部署工具，则可以使用面向单租户 Azure 逻辑应用的 CLI 命令部署逻辑应用。 例如，若要将压缩项目部署到 Azure 资源组，请运行以下 CLI 命令：
+如果使用其他部署工具，则可以使用 Azure CLI 部署基于单租户的逻辑应用。 在开始之前，需要具有以下项：
 
-`az logicapp deployment source config-zip -g {your-resource-group} --name {your-logic-app-name} --src {your-build-artifact}.zip`
+- 在本地计算机上安装了最新的 Azure CLI 扩展。
+
+  - 如果没有此扩展，请参阅[操作系统或平台安装指南](/cli/azure/install-azure-cli)。
+
+  - 如果不确定是否具有最新版本，请按照[检查环境和 CLI 版本的步骤](#check-environment-cli-version)操作。
+
+- Azure CLI 的预览版单租户 Azure 逻辑应用（标准）扩展。
+
+  如果没有此扩展，请按照[安装扩展的步骤](#install-logic-apps-cli-extension)操作。 虽然单租户 Azure 逻辑应用已正式发布，但 Azure CLI 的单租户 Azure 逻辑应用扩展仍处于预览阶段。
+
+- 要用于部署逻辑应用的 Azure 资源组。
+
+  如果没有此资源组，请按照[创建资源组的步骤](#create-resource-group)操作。
+
+- Azure 存储帐户（用于与逻辑应用一起保留数据和运行历史记录）。
+
+  如果没有此存储帐户，请按照[创建存储帐户的步骤](/cli/azure/storage/account#az_storage_account_create)操作。
+
+<a name="check-environment-cli-version"></a>
+
+##### <a name="check-environment-and-cli-version"></a>检查环境和 CLI 版本
+
+1. 登录 [Azure 门户](https://portal.azure.com)。 在终端或命令窗口中，通过运行 [`az login`](/cli/azure/authenticate-azure-cli) 命令来确认订阅处于活动状态：
+
+   ```azurecli-interactive
+   az login
+   ```
+
+1. 在终端或命令窗口中，通过运行 `az` 命令，并使用以下必需参数来检查 Azure CLI 的版本：
+
+   ```azurecli-interactive
+   az --version
+   ```
+
+1. 如果没有最新版本的 Azure CLI，请按照[适用于操作系统或平台的安装指南](/cli/azure/install-azure-cli)来更新安装。
+
+   有关最新版本的详细信息，请查看[最新发行说明](/cli/azure/release-notes-azure-cli?tabs=azure-cli)。
+
+<a name="install-logic-apps-cli-extension"></a>
+
+##### <a name="install-azure-logic-apps-standard-extension-for-azure-cli"></a>安装 Azure CLI Azure 逻辑应用（标准）扩展
+
+通过运行 `az extension add` 命令，并使用以下必需参数，安装 Azure CLI 的预览版单租户 Azure 逻辑应用（标准）扩展：
+
+```azurecli-interactive
+az extension add --yes --source "https://aka.ms/logicapp-latest-py2.py3-none-any.whl"
+```
+
+<a name="create-resource-group"></a>
+
+#### <a name="create-resource-group"></a>创建资源组
+
+如果还没有为逻辑应用设置资源组，请运行 `az group create` 命令创建该组。 除非你已为 Azure 帐户设置了一个默认订阅，否则请确保将 `--subscription` 参数与订阅名称或标识符一起使用。 否则，无需使用 `--subscription` 参数。
+
+> [!TIP]
+> 若要设置默认订阅，请运行以下命令，将 `MySubscription` 替换为订阅名称或标识符。
+>
+> `az account set --subscription MySubscription`
+
+例如，以下命令使用位置 `eastus` 中名为 `MySubscription` 的 Azure 订阅创建一个名为 `MyResourceGroupName` 的资源组：
+
+```azurecli
+az group create --name MyResourceGroupName 
+   --subscription MySubscription 
+   --location eastus
+```
+
+如果已成功创建资源组，输出会将 `provisioningState` 显示为 `Succeeded`：
+
+```output
+<...>
+   "name": "testResourceGroup",
+   "properties": {
+      "provisioningState": "Succeeded"
+    },
+<...>
+```
+
+<a name="deploy-logic-app"></a>
+
+##### <a name="deploy-logic-app"></a>部署逻辑应用
+
+若要将压缩生成工件部署到 Azure 资源组，请运行 `az logicapp deployment` 命令，并使用以下必需参数：
+
+> [!IMPORTANT]
+> 请确保 zip 文件在根级别包含项目的生成工件。 这些生成工件包括所有工作流文件夹、配置文件（如 host.json、connections.json）和任何其他相关文件。 不要添加任何额外的文件夹，也不要将任何生成工件放入项目结构中不存在的文件夹。 例如，下面的列表显示示例 MyBuildArtifacts.zip 文件结构：
+>
+> ```output
+> MyStatefulWorkflow1-Folder
+> MyStatefulWorkflow2-Folder
+> connections.json
+> host.json
+> ```
+
+```azurecli-interactive
+az logicapp deployment source config-zip --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --src MyBuildArtifact.zip
+```
 
 ---
 
@@ -188,7 +285,7 @@ ms.locfileid: "110379743"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [面向单租户 Azure 逻辑应用的 DevOps 部署](devops-deployment-single-tenant-azure-logic-apps.md)
+- [面向单租户 Azure 逻辑应用的 DevOps 部署](devops-deployment-single-tenant-azure-logic-apps.md)
 
 我们希望你就单租户 Azure 逻辑应用体验提供反馈！
 

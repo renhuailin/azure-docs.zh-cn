@@ -1,14 +1,14 @@
 ---
 title: 大规模监视委托资源
-description: 了解如何在你管理的客户租户之间以可伸缩方式有效使用 Azure Monitor 日志。
-ms.date: 02/11/2021
+description: Azure Lighthouse 可帮助你在客户租户间以可缩放的方式来使用 Azure Monitor 日志。
+ms.date: 05/10/2021
 ms.topic: how-to
-ms.openlocfilehash: 98fd984492276dbdfbc2f8001bca19560764a2a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 29f78eb677b17193876ec45250e639cb9086cf6b
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101742579"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082300"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>大规模监视委托资源
 
@@ -31,7 +31,19 @@ ms.locfileid: "101742579"
 您可以通过使用 [Azure 门户](../../azure-monitor/logs/quick-create-workspace.md)、[Azure CLI](../../azure-monitor/logs/quick-create-workspace-cli.md) 或 [Azure PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md) 来创建 Log Analytics 工作区。
 
 > [!IMPORTANT]
-> 即使在客户租户中创建了所有工作区，也必须在管理租户的订阅中注册 Microsoft Insights 资源提供程序。
+> 即使在客户租户中创建了所有工作区，也必须在管理租户的订阅中注册 Microsoft Insights 资源提供程序。 如果你的管理租户没有现有的 Azure 订阅，可以使用以下 PowerShell 命令手动注册资源提供程序：
+>
+> ```powershell
+> $ManagingTenantId = "your-managing-Azure-AD-tenant-id"
+> 
+> # Authenticate as a user with admin rights on the managing tenant
+> Connect-AzAccount -Tenant $ManagingTenantId
+> 
+> # Register the Microsoft.Insights resource providers Application Ids
+> New-AzADServicePrincipal -ApplicationId 1215fb39-1d15-4c05-b2e3-d519ac3feab4
+> New-AzADServicePrincipal -ApplicationId 6da94f3c-0d67-4092-a408-bb5d1cb08d2d 
+> ```
+>
 
 ## <a name="deploy-policies-that-log-data"></a>部署记录数据的策略
 

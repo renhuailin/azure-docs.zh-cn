@@ -1,15 +1,15 @@
 ---
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: include
-ms.date: 03/10/2021
-ms.author: jingwang
-ms.openlocfilehash: 699be9fde25a7dc2736f182edaac08ca56d6de47
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 06/01/2021
+ms.author: jianleishen
+ms.openlocfilehash: 0082bac41a615d078854ccfc76524c41db14c595
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110163203"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111761504"
 ---
 | 类别              | 数据存储                                                   | [复制活动](../copy-activity-overview.md)（源/接收器） | [映射数据流源](../concepts-data-flow-overview.md)（源/接收器） | [Lookup 活动](../control-flow-lookup-activity.md) | [获取元数据活动](../control-flow-get-metadata-activity.md)/[验证活动](../control-flow-validation-activity.md) | [删除活动](../delete-activity.md) |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
@@ -52,14 +52,14 @@ ms.locfileid: "110163203"
 | &nbsp;                | [SAP 表](../connector-sap-table.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Snowflake](../connector-snowflake.md) | ✓/✓                                                          | ✓/✓                                                          | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Spark](../connector-spark.md)         | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
-| &nbsp;                | [SQL Server](../connector-sql-server.md) | ✓/✓                                                          |                                                              | ✓                                                            | ✓                                                            |                                                              |
+| &nbsp;                | [SQL Server](../connector-sql-server.md) | ✓/✓                                                           | ✓/✓ <small> 使用[托管 VNET](../managed-virtual-network-private-endpoint.md)                                                             | ✓                                                            | ✓                                                            |                                                              |
 | &nbsp;                | [Sybase](../connector-sybase.md)       | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Teradata](../connector-teradata.md)   | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Vertica](../connector-vertica.md)     | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | **NoSQL**             | [Cassandra](../connector-cassandra.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Couchbase（预览）](../connector-couchbase.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
-| &nbsp;                | [MongoDB](../connector-mongodb.md)     | ✓/−                                                          |                                                              |                                                              |                                                              |                                                              |
-| &nbsp;                | [MongoDB Atlas](../connector-mongodb-atlas.md) | ✓/−                                                          |                                                              |                                                              |                                                              |                                                              |
+| &nbsp;                | [MongoDB](../connector-mongodb.md)     | ✓/✓                                                          |                                                              |                                                              |                                                              |                                                              |
+| &nbsp;                | [MongoDB Atlas](../connector-mongodb-atlas.md) | ✓/✓                                                          |                                                              |                                                              |                                                              |                                                              |
 | **File**              | [Amazon S3](../connector-amazon-simple-storage-service.md) | ✓/−                                                          |                                                              | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;              | [Amazon S3 兼容存储](../connector-amazon-s3-compatible-storage.md) | ✓/−                                                          |                                                              | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [文件系统](../connector-file-system.md) | ✓/✓                                                          |                                                              | ✓                                                            | ✓                                                            | ✓                                                            |

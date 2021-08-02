@@ -1,15 +1,15 @@
 ---
 title: 参考 - 适用于 Linux 的 Azure Policy 来宾配置基线
 description: Azure 上通过 Azure Policy 来宾配置实现的 Linux 基线的详细信息。
-ms.date: 05/11/2021
+ms.date: 06/11/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: b22f8f2d40470ed436f8502ea41351e59e7afc8b
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 692157fe7c17e013e08f74713a8c896ec29c5204
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789042"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033007"
 ---
 # <a name="azure-policy-guest-configuration-baseline-for-linux"></a>适用于 Linux 的 Azure Policy 来宾配置基线
 
@@ -19,11 +19,11 @@ ms.locfileid: "109789042"
 
 |名称<br /><sub>(ID)</sub> |详细信息 |修正检查 |
 |---|---|---|
-|确保在 /home 分区上设置 nodev 选项。<br /><sub>(1.1.4)</sub> |说明：攻击者可能在 /home 分区上装入特殊设备（例如，块或字符设备）。 |编辑 /etc/fstab 文件，并对 /home 分区的第四个字段（装载选项）执行 nodev 操作。 有关详细信息，请参阅 fstab(5) 手册页。 |
-|确保在 /tmp 分区上设置 nodev 选项。<br /><sub>(1.1.5)</sub> |说明：攻击者可能在 /tmp 分区上装入特殊设备（例如，块或字符设备）。 |编辑 /etc/fstab 文件，并对 /tmp 分区的第四个字段（装载选项）执行 nodev 操作。 有关详细信息，请参阅 fstab(5) 手册页。 |
-|确保在 /var/tmp 分区上设置 nodev 选项。<br /><sub>(1.1.6)</sub> |说明：攻击者可能在 /var/tmp 分区上装入特殊设备（例如，块或字符设备）。 |编辑 /etc/fstab 文件，并对 /var/tmp 分区的第四个字段（装载选项）执行 nodev 操作。 有关详细信息，请参阅 fstab(5) 手册页。 |
-|确保在 /tmp 分区上设置 nosuid 选项。<br /><sub>(1.1.7)</sub> |说明：由于 /tmp 文件系统仅用于临时文件存储，应设置此选项以确保用户无法在 /var/tmp 中创建 setuid 文件。 |编辑 /etc/fstab 文件，并对 /tmp 分区的第四个字段（装载选项）执行 nosuid 操作。 有关详细信息，请参阅 fstab(5) 手册页。 |
-|确保在 /var/tmp 分区上设置 nosuid 选项。<br /><sub>(1.1.8)</sub> |说明：由于 /var/tmp 文件系统仅用于临时文件存储，应设置此选项以确保用户无法在 /var/tmp 中创建 setuid 文件。 |编辑 /etc/fstab 文件，并对 /var/tmp 分区的第四个字段（装载选项）执行 nosuid 操作。 有关详细信息，请参阅 fstab(5) 手册页。 |
+|确保在 /home 分区上设置 nodev 选项。<br /><sub>(1.1.4)</sub> |说明：攻击者可能在 /home 分区上装入特殊设备（例如，块或字符设备）。 |编辑 /etc/fstab 文件，并将 nodev 添加到 /home 分区的第四个字段（装载选项）。 有关详细信息，请参阅 fstab(5) 手册页。 |
+|确保在 /tmp 分区上设置 nodev 选项。<br /><sub>(1.1.5)</sub> |说明：攻击者可能在 /tmp 分区上装入特殊设备（例如，块或字符设备）。 |编辑 /etc/fstab 文件，并将 nodev 添加到 /tmp 分区的第四个字段（装载选项）。 有关详细信息，请参阅 fstab(5) 手册页。 |
+|确保在 /var/tmp 分区上设置 nodev 选项。<br /><sub>(1.1.6)</sub> |说明：攻击者可能在 /var/tmp 分区上装入特殊设备（例如，块或字符设备）。 |编辑 /etc/fstab 文件，并将 nodev 添加到 /var/tmp 分区的第四个字段（装载选项）。 有关详细信息，请参阅 fstab(5) 手册页。 |
+|确保在 /tmp 分区上设置 nosuid 选项。<br /><sub>(1.1.7)</sub> |说明：由于 /tmp 文件系统仅用于临时文件存储，应设置此选项以确保用户无法在 /var/tmp 中创建 setuid 文件。 |编辑 /etc/fstab 文件，并将 nosuid 添加到 /tmp 分区的第四个字段（装载选项）。 有关详细信息，请参阅 fstab(5) 手册页。 |
+|确保在 /var/tmp 分区上设置 nosuid 选项。<br /><sub>(1.1.8)</sub> |说明：由于 /var/tmp 文件系统仅用于临时文件存储，应设置此选项以确保用户无法在 /var/tmp 中创建 setuid 文件。 |编辑 /etc/fstab 文件，并将 nosuid 添加到 /var/tmp 分区的第四个字段（装载选项）。 有关详细信息，请参阅 fstab(5) 手册页。 |
 |确保在 /var/tmp 分区上设置 noexec 选项。<br /><sub>(1.1.9)</sub> |说明：由于 `/var/tmp` 文件系统仅用于临时文件存储，应设置此选项以确保用户无法从 `/var/tmp` 运行可执行的二进制文件。 |编辑 /etc/fstab 文件，并将 noexec 添加到 /var/tmp 分区的第四个字段（装载选项）。 有关详细信息，请参阅 fstab(5) 手册页。 |
 |确保在 /dev/shm 分区上设置 noexec 选项。<br /><sub>(1.1.16)</sub> |说明：在文件系统上设置此选项可防止用户从共享内存中执行程序。 这可阻止用户在系统上引入可能的恶意软件。 |编辑 /dev/shm 文件，并将 noexec 添加到 /var/tmp 分区的第四个字段（装载选项）。 有关详细信息，请参阅 fstab(5) 手册页。 |
 |禁用自动装载<br /><sub>(1.1.21)</sub> |说明：如果启用了自动装载，任何人都可以通过物理访问方式接入 USB 驱动器或光盘并在系统中使用其内容，即使这些人并不具有装载驱动盘或光盘的权限。 |禁用 autofs 服务或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r disable-autofs" |
@@ -33,14 +33,14 @@ ms.locfileid: "109789042"
 |确保配置 /etc/motd 上的权限。<br /><sub>(1.7.1.4)</sub> |说明：如果 `/etc/motd` 文件没有正确的所有权，可能会有未经授权的用户用不正确的或误导性信息修改该文件。 |将 /etc/motd 的所有者和组设置为 root，并将权限设置为 0644 或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r file-permissions" |
 |确保配置 /etc/issue 上的权限。<br /><sub>(1.7.1.5)</sub> |说明：如果 `/etc/issue` 文件没有正确的所有权，可能会有未经授权的用户用不正确的或误导性信息修改该文件。 |将 /etc/issue 的所有者和组设置为 root，并将权限设置为 0644 或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r file-permissions" |
 |确保配置 /etc/issue.net 上的权限。<br /><sub>(1.7.1.6)</sub> |说明：如果 `/etc/issue.net` 文件没有正确的所有权，可能会有未经授权的用户用不正确的或误导性信息修改该文件。 |将 /etc/issue.net 的所有者和组设置为 root，并将权限设置为 0644 或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r file-permissions" |
-|应为所有可移动媒体启用 nodev 选项。<br /><sub>(2.1)</sub> |说明：攻击者可能通过可移动媒体装入特殊设备（例如，块或字符设备） |将 nodev 选项添加到 /etc/fstab 中的第四个字段（装载选项） |
-|应为所有可移动媒体启用 noexec 选项。<br /><sub>(2.2)</sub> |说明：攻击者可能通过可移动媒体加载可执行文件 |将 noexec 选项添加到 /etc/fstab 中的第四个字段（装载选项） |
-|应为所有可移动媒体启用 nosuid 选项。<br /><sub>(2.3)</sub> |说明：攻击者可能会通过可移动媒体加载通过提升的安全上下文运行的文件 |将 nosuid 选项添加到 /etc/fstab 中的第四个字段（装载选项） |
+|应为所有可移动媒体启用 nodev 选项。<br /><sub>(2.1)</sub> |说明：攻击者可能通过可移动媒体装入特殊设备（例如，块或字符设备） |将 nodev 选项添加到 /etc/fstab 中的第四个字段（装载选项）。 有关详细信息，请参阅 fstab(5) 手册页。 |
+|应为所有可移动媒体启用 noexec 选项。<br /><sub>(2.2)</sub> |说明：攻击者可能通过可移动媒体加载可执行文件 |将 noexec 选项添加到 /etc/fstab 中的第四个字段（装载选项）。 有关详细信息，请参阅 fstab(5) 手册页。 |
+|应为所有可移动媒体启用 nosuid 选项。<br /><sub>(2.3)</sub> |说明：攻击者可能会通过可移动媒体加载通过提升的安全上下文运行的文件 |将 nosuid 选项添加到 /etc/fstab 中的第四个字段（装载选项）。 有关详细信息，请参阅 fstab(5) 手册页。 |
 |确保未安装 talk 客户端。<br /><sub>(2.3.3)</sub> |说明：该软件存在安全风险，因为它使用未加密的通信协议。 |卸载 `talk` 或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r remove-talk" |
 |确保配置 /etc/hosts.allow 上的权限。<br /><sub>(3.4.4)</sub> |说明：应务必确保 `/etc/hosts.allow` 文件不会受到未经授权的写入访问，这一点非常重要。 尽管该文件默认受保护，但文件权限有可能发生意外更改或遭受恶意操作篡改。 |将 /etc/hosts.allow 的所有者和组设置为 root，并将权限设置为 0644 或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r file-permissions" |
 |确保配置 /etc/hosts.deny 上的权限。<br /><sub>(3.4.5)</sub> |说明：应务必确保 `/etc/hosts.deny` 文件不会受到未经授权的写入访问，这一点非常重要。 尽管该文件默认受保护，但文件权限有可能发生意外更改或遭受恶意操作篡改。 |将 /etc/hosts.deny 的所有者和组设置为 root，并将权限设置为 0644 或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r file-permissions" |
 |确保启用默认的“拒绝防火墙”策略<br /><sub>(3.6.2)</sub> |说明：使用默认的接受策略时，防火墙将接受任何未配置为拒绝的数据包。 使用默认的 DROP 策略可以比使用默认的 ALLOW 策略更轻松地保持防火墙的安全。 |使用防火墙软件，根据具体情况将传入的、传出的和路由的流量的默认策略设置为 `deny` 或 `reject` |
-|应为所有 NFS 装载启用 nodev/nosuid 选项。<br /><sub>(5)</sub> |说明：攻击者可能会通过远程文件系统加载通过提升的安全上下文运行的文件或特殊设备 |将 nosuid 和 nodev 选项添加到 /etc/fstab 中的第四个字段（装载选项） |
+|应为所有 NFS 装载启用 nodev/nosuid 选项。<br /><sub>(5)</sub> |说明：攻击者可能会通过远程文件系统加载通过提升的安全上下文运行的文件或特殊设备 |将 nosuid 和 nodev 选项添加到 /etc/fstab 中的第四个字段（装载选项）。 有关详细信息，请参阅 fstab(5) 手册页。 |
 |确保配置密码创建要求。<br /><sub>(5.3.1)</sub> |说明：强密码可在系统遭受暴力破解方法的攻击时为其提供保护。 |在适用于你的发行版的相应 PAM 中设置以下键/值对：minlen=14，minclass = 4，dcredit = -1，ucredit = -1，ocredit = -1，lcredit = -1，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r enable-password-requirements" |
 |确保为失败的密码尝试配置锁定。<br /><sub>(5.3.2)</sub> |说明：在连续 `n` 次不成功的登录尝试后锁定用户 ID 可缓解对系统的暴力破解密码攻击。 |应视情况为 Ubuntu 和 Debian 添加 pam_tally 和 pam_deny 模块。 对于所有其他发行版，请参阅发行版的文档 |
 |禁止安装和使用不需要的文件系统 (cramfs)<br /><sub>(6.1)</sub> |说明：攻击者可能会在 cramfs 中使用漏洞来提升权限 |将文件添加到可禁用 cramfs 的 /etc/modprob.d 目录中，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r disable-unnecessary-kernel-mods" |
@@ -54,8 +54,8 @@ ms.locfileid: "109789042"
 |确保 /etc/passwd 中的所有组也均存在于 /etc/group 中<br /><sub>(6.2.15)</sub> |说明：已在 /etc/passwd 文件中定义但在 /etc/group 文件中不存在的组会对系统安全造成威胁，因为组权限未得到正确管理。 |对于 /etc/passwd 中定义的每个组，请确保在 /etc/group 中有一个相应的组 |
 |确保不存在重复的 UID<br /><sub>(6.2.16)</sub> |说明：出于问责目的，必须为用户分配唯一的 UID，这也可确保提供适当的访问保护。 |创建唯一的 UID，并查看共享 UID 所拥有的所有文件，以确定其所属的 UID。 |
 |确保不存在重复的 GID<br /><sub>(6.2.17)</sub> |说明：出于问责目的，必须为组分配唯一的 GID，这也可确保提供适当的访问保护。 |创建唯一的 GID，并查看共享 GID 所拥有的所有文件，以确定其所属的 GID。 |
-|确保不存在重复的用户名<br /><sub>(6.2.18)</sub> |描述：如果为用户分配了重复的用户名，该用户名会使用 `/etc/passwd` 中该用户名的第一个 UID 创建和访问文件。 例如，如果 "test4" 的 UID 为1000，而后续的 "test4" 条目的 UID 为 2000，则使用 "test4" 登录时将使用 UID 1000。 这会造成 UID 的有效共享，因此存在安全隐患。 |为用户创建唯一的用户名。 只要用户具有唯一 UID，文件所有权会自动反映更改。 |
-|确保不存在重复的组<br /><sub>(6.2.19)</sub> |描述：如果为组分配了重复的组名，该用户名会使用 `/etc/group` 中该组的第一个 GID 创建和访问文件。 这会造成 GID 的有效共享，因此存在安全隐患。 |为用户组创建唯一名称。 只要组具有唯一 GID，文组件所有权会自动反映更改。 |
+|确保不存在重复的用户名<br /><sub>(6.2.18)</sub> |描述：如果为用户分配了重复的用户名，该用户名会使用 `/etc/passwd` 中该用户名的第一个 UID 创建和访问文件。 例如，如果 "test4" 的 UID 为1000，而后续的 "test4" 条目的 UID 为 2000，则使用 "test4" 登录时将使用 UID 1000。 这会造成 UID 的有效共享，因此存在安全隐患。 |为所有用户创建唯一的用户名。 只要用户具有唯一 UID，文件所有权会自动反映更改。 |
+|确保不存在重复的组<br /><sub>(6.2.19)</sub> |描述：如果为组分配了重复的组名，该用户名会使用 `/etc/group` 中该组的第一个 GID 创建和访问文件。 这会造成 GID 的有效共享，因此存在安全隐患。 |为所有用户组创建唯一名称。 只要组具有唯一 GID，文组件所有权会自动反映更改。 |
 |确保卷影组为空<br /><sub>(6.2.20)</sub> |说明：分配到卷影组的任何用户都将获得对 /etc/shadow 文件的读取访问权限。 如果攻击者可以获得对 `/etc/shadow` 文件的读取访问权限，他们可以轻松对经过哈希处理的密码运行密码破解程序，从而将密码破解。 `/etc/shadow` 文件中存储的其他安全信息（如过期信息）也可能被攻击者利用来破坏更多用户帐户。 |删除卷影组中的所有用户 |
 |禁止安装和使用不需要的文件系统 (hfs)<br /><sub>(6.3)</sub> |说明：攻击者可能会在 hfs 中使用漏洞来提升权限 |将文件添加到可禁用 hfs 的 /etc/modprob.d 目录中，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r disable-unnecessary-kernel-mods" |
 |禁止安装和使用不需要的文件系统 (hfs)<br /><sub>(6.4)</sub> |说明：攻击者可能会在 hfs 中使用漏洞来提升权限 |将文件添加到可禁用 hfsplus 的 /etc/modprob.d 目录中，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r disable-unnecessary-kernel-mods" |
@@ -71,7 +71,7 @@ ms.locfileid: "109789042"
 |/etc/group- 文件权限应设置为 0644<br /><sub>(12.4)</sub> |说明：攻击者有可能通过修改组成员资格提升权限 |设置 /etc/group- 的权限和所有权，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r set-etc-group-perms" |
 |应将通过 su 对根帐户的访问限制到 "root" 组<br /><sub>(21)</sub> |说明：如果 su 不限于 root 组中的用户，攻击者就可以通过密码猜测提升权限。 |运行命令 "/opt/microsoft/omsagent/plugin/omsremediate -r fix-su-permissions"。 这会在文件 "/etc/pam.d/su" 中添加一行 "auth required pam_wheel.so use_uid" |
 |应存在 "root" 组，且其中包含可通过 su 访问根帐户的所有成员<br /><sub>(22)</sub> |说明：如果 su 不限于 root 组中的用户，攻击者就可以通过密码猜测提升权限。 |通过命令 "groupadd -g 0 root" 创建 root 组 |
-|没有无密码的帐户<br /><sub>(23.2)</sub> |说明：攻击者有可能登录未设密码的帐户并执行任意命令。 |使用 passwd 命令为所有帐户设置密码 |
+|所有帐户都应具有密码<br /><sub>(23.2)</sub> |说明：攻击者有可能登录未设密码的帐户并执行任意命令。 |使用 passwd 命令为所有帐户设置密码 |
 |根帐户以外的帐户的唯一 UID 必须大于零 (0)<br /><sub>(24)</sub> |说明：如果根帐户以外的帐户的 uid 为 0，攻击者可能会入侵该帐户并获得 root 权限。 |使用 "usermod -u" 为所有非根帐户分配唯一的非零 uid |
 |应启用虚拟内存区域的随机放置<br /><sub>(25)</sub> |说明：攻击者可能会将可执行代码写入内存中的已知区域，导致权限提升 |在文件 "/proc/sys/kernel/randomize_va_space" 中添加值 "1" 或 "2" |
 |应该启用对 XD/NX 处理器功能的内核支持<br /><sub>(26)</sub> |说明：攻击者可能会导致系统从内存中的数据区域执行代码，从而获得权限提升。 |确认文件 "/proc/cpuinfo" 包含标志 "nx" |
@@ -91,7 +91,7 @@ ms.locfileid: "109789042"
 |应为所有接口启用 martian 数据包（地址不合理的包）的日志记录。 (net.ipv4.conf.all.log_martians = 1)<br /><sub>(45.1)</sub> |说明：攻击者有可能从假冒地址发送流量且不被检测到 |运行 `sysctl -w key=value` 并将其设置为符合要求的值，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r enable-log-martians" |
 |应为所有接口启用按反向路径执行的源验证。 (net.ipv4.conf.all.rp_filter = 1)<br /><sub>(46.1)</sub> |说明：系统会接受来自不可路由的地址的流量。 |运行 `sysctl -w key=value` 并将其设置为符合要求的值，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r enable-rp-filter" |
 |应为所有接口启用按反向路径执行的源验证。 (net.ipv4.conf.default.rp_filter = 1)<br /><sub>(46.2)</sub> |说明：系统会接受来自不可路由的地址的流量。 |运行 `sysctl -w key=value` 并将其设置为符合要求的值，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r enable-rp-filter" |
-|应启用 TCP syncookie。 (net.ipv4.tcp_syncookies = 1)<br /><sub>(47)</sub> |说明：攻击者有可能通过 TCP 执行 DoS |运行 `sysctl -w key=value` 并将其设置为符合要求的值，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r enable-tcp-syncookies" |
+|应启用 TCP SYN Cookie。 (net.ipv4.tcp_syncookies = 1)<br /><sub>(47)</sub> |说明：攻击者有可能通过 TCP 执行 DoS |运行 `sysctl -w key=value` 并将其设置为符合要求的值，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r enable-tcp-syncookies" |
 |系统不应充当网络嗅探器。<br /><sub>(48)</sub> |说明：攻击者有可能使用混杂接口来探查网络流量 |混杂模式通过 "/etc/network/interfaces" 或 "/etc/rc.local." 中的 "promisc" 条目启用。 检查这两个文件并删除此条目。 |
 |应禁用所有无线接口。<br /><sub>(49)</sub> |说明：攻击者有可能创建虚假 AP 来拦截传输的讯息。 |确认 "/etc/network/interfaces" 中的所有无线接口都已禁用 |
 |应启用 IPv6 协议。<br /><sub>(50)</sub> |说明：这对于新式网络上的通信是必需的。 |打开/etc/sysctl.conf 并确认 "net.ipv6.conf.all.disable_ipv6" 和 "net.ipv6.conf.default.disable_ipv6" 设置为 0 |
@@ -102,10 +102,10 @@ ms.locfileid: "109789042"
 |确保配置日志记录。<br /><sub>(60)</sub> |说明：大量与安全相关的重要信息通过 `rsyslog` 发送（例如，成功和失败的 su 尝试、失败的登录尝试、根登录尝试等）。 |视情况适当配置 syslog、rsyslog 或 syslog-ng |
 |应安装 syslog、rsyslog 或 syslog-ng 包。<br /><sub>(61)</sub> |说明：系统不会记录可靠性和安全性问题，这会妨碍得到正确的诊断结果。 |安装 rsyslog 包，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r install-rsyslog" |
 |确保启用日志记录服务<br /><sub>(62)</sub> |说明：应务必具备记录节点上事件的功能。 |启用 rsyslog 包，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r enable-rsyslog" |
-|所有 rsyslog 日志文件的文件权限应设置为 640 或 600。<br /><sub>(63)</sub> |说明：攻击者有可能通过操纵日志来掩盖活动信息 |在文件 "/etc/rsyslog.conf" 中添加一行 "$FileCreateMode 0640" |
+|所有 rsyslog 日志文件的文件权限应设置为 640 或 600。<br /><sub>(63)</sub> |说明：攻击者有可能通过操纵日志来隐藏活动信息 |在文件 "/etc/rsyslog.conf" 中添加一行 "$FileCreateMode 0640" |
 |确保对记录器配置文件进行限制。<br /><sub>(63.1)</sub> |说明：应务必确保日志文件存在，同时应具备正确的权限，以便确保敏感 syslog 数据得到存档和保护。 |将记录器的配置文件设置为 0640 或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r logger-config-file-permissions" |
-|所有 rsyslog 日志文件的所有权应属于 adm 组。<br /><sub>(64)</sub> |说明：攻击者有可能通过操纵日志来掩盖活动信息 |在文件 "/etc/rsyslog.conf" 中添加一行 "$FileGroup adm" |
-|所有 rsyslog 日志文件的所有权应属于 syslog 用户。<br /><sub>(65)</sub> |说明：攻击者有可能通过操纵日志来掩盖活动信息 |在文件 "/etc/rsyslog.conf" 中添加一行 "$FileOwner syslog" 或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r syslog-owner" |
+|所有 rsyslog 日志文件的所有权应属于 adm 组。<br /><sub>(64)</sub> |说明：攻击者有可能通过操纵日志来隐藏活动信息 |在文件 "/etc/rsyslog.conf" 中添加一行 "$FileGroup adm" |
+|所有 rsyslog 日志文件的所有权应属于 syslog 用户。<br /><sub>(65)</sub> |说明：攻击者有可能通过操纵日志来隐藏活动信息 |在文件 "/etc/rsyslog.conf" 中添加一行 "$FileOwner syslog" 或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r syslog-owner" |
 |Rsyslog 不应接受远程消息。<br /><sub>(67)</sub> |说明：攻击者有可能将消息注入 syslog，从而导致 DoS 或分散对其他活动的关注 |从文件 "/etc/rsyslog.conf" 中删除行 "$ModLoad imudp" 和 "$ModLoad imtcp" |
 |应启用 logrotate（syslog 轮换器）服务。<br /><sub>(68)</sub> |说明：日志文件可能会无限制地增大，并占用所有磁盘空间 |安装 logrotate 包，并确认 logrotate cron 条目为活动状态 (chmod 755 /etc/cron.daily/logrotate；chown root:root /etc/cron.daily/logrotate) |
 |应禁用 rlogin 服务。<br /><sub>(69)</sub> |说明：攻击者有可能获得访问权限，并避开严格的身份验证要求 |删除 inetd 服务。 |
@@ -121,7 +121,7 @@ ms.locfileid: "109789042"
 |应卸载 nis 包。<br /><sub>(79)</sub> |说明：攻击者有可能从 NIS 服务中检索到敏感信息 |卸载 nis 包 (apt-get remove nis) |
 |应禁用 tftp 服务。<br /><sub>(80)</sub> |说明：攻击者有可能窃听或操纵未加密的会话 |从文件 "/etc/inetd.conf" 中删除 tftp 条目 |
 |应卸载 tftpd 包。<br /><sub>(81)</sub> |说明：攻击者有可能窃听或操纵未加密的会话 |卸载 tftpd 包 (apt-get remove tftpd) |
-|应卸载 readahead-fedora 包。<br /><sub>(82)</sub> |说明：没有实质性的暴露风险，也没有实质性的优点 |卸载 readahead-fedora 包 (apt-get remove readahead-fedora) |
+|应卸载 readahead-fedora 包。<br /><sub>(82)</sub> |说明：该包不会产生实质性的暴露风险，也没有带来实质性的优点。 |卸载 readahead-fedora 包 (apt-get remove readahead-fedora) |
 |应禁用蓝牙/hidd 服务。<br /><sub>(84)</sub> |说明：攻击者有可能拦截或操纵无线通讯。 |卸载蓝牙包 (apt-get remove bluetooth) |
 |应禁用 isdn 服务。<br /><sub>(86)</sub> |说明：攻击者有可能使用调制解调器进行未经授权的访问 |卸载 isdnutils-base 包 (apt-get remove isdnutils-base) |
 |应卸载 isdnutils-base 包。<br /><sub>(87)</sub> |说明：攻击者有可能使用调制解调器进行未经授权的访问 |卸载 isdnutils-base 包 (apt-get remove isdnutils-base) |
@@ -156,7 +156,7 @@ ms.locfileid: "109789042"
 |确保 /etc/passwd 中不存在旧的 `+` 条目<br /><sub>(156.1)</sub> |说明：攻击者有可能使用无密码的用户名 "+" 来获取访问权限 |删除 /etc/passwd 中以 "+:'" 开头的所有条目 |
 |确保 /etc/shadow 中不存在旧的 `+` 条目<br /><sub>(156.2)</sub> |说明：攻击者有可能使用无密码的用户名 "+" 来获取访问权限 |删除 /etc/shadow 中以 "+:'" 开头的所有条目 |
 |确保 /etc/group 中不存在旧的 `+` 条目<br /><sub>(156.3)</sub> |说明：攻击者有可能使用无密码的用户名 "+" 来获取访问权限 |删除 /etc/group 中以 "+:'" 开头的所有条目 |
-|确保密码在 365 天或更短的时间内过期。<br /><sub>(157.1)</sub> |说明：攻击者利用泄露的凭据或通过在线暴力攻击成功破解凭据的机会在时间上受密码期限的限制。 因此，减小密码的最长期限也可以减少攻击者的机会时效。 |将 `/etc/login.defs` 中的 `PASS_MAX_DAYS` 参数设置为不超过 365，或运行 "opt/microsoft/omsagent/plugin/omsremediate -r  configure-password-policy-max-days" |
+|确保密码在 365 天或更短的时间内过期。<br /><sub>(157.1)</sub> |说明：缩短密码的最长期限还会降低攻击者利用泄露的凭据或通过在线暴力攻击成功破解凭据的机会时效。 |将 `/etc/login.defs` 中的 `PASS_MAX_DAYS` 参数设置为不超过 365，或运行 "opt/microsoft/omsagent/plugin/omsremediate -r  configure-password-policy-max-days" |
 |确保将密码过期警告天数设为 7 或更多。<br /><sub>(157.2)</sub> |说明：提前发送警告，指示密码将过期，为用户留出想出新安全密码的时间。 用户在时间仓促的情况下有可能选择简单的密码，或将其记录在有泄露风险的位置。 |将 `/etc/login.defs` 中的 `PASS_WARN_AGE` 参数设置为 7，或运行 "opt/microsoft/omsagent/plugin/omsremediate -r configure-password-policy-warn-age" |
 |请确保对密码重用进行限制。<br /><sub>(157.5)</sub> |描述：强制让用户无法重复使用过去的 5 个密码，可减小攻击者猜到密码的可能性。 |确保在 /etc/pam.d/common-password 中或同时在 /etc/pam.d/password_auth 和 /etc/pam.d/system_auth 中将 "remember" 选项至少设置为 5，或者运行 "/opt/microsoft/omsagent/plugin/omsremediate -r configure-password-policy-history" |
 |确保密码哈希算法为 SHA-512<br /><sub>(157.11)</sub> |说明：SHA-512 算法提供比 MD5 更强的哈希，可通过增加攻击者成功破解密码的难度，为系统提供额外保护。 注意：这些更改仅适用于在本地系统上配置的帐户。 |将密码哈希算法设置为 sha512。 许多分发都提供了用于更新 PAM 配置的工具，可参阅相关文档了解详细信息。 如果未提供任何工具，请编辑相应的 `/etc/pam.d/` 配置文件，在其中添加行 `pam_unix.so`，或进行修改，使其包含 sha512 选项：``` password sufficient pam_unix.so sha512 ``` |
@@ -171,9 +171,9 @@ ms.locfileid: "109789042"
 |运行 AuditD 服务<br /><sub>(163)</sub> |说明：系统事件的捕获为系统管理员提供了信息，使他们能够确定是否发生了对其系统的未经授权的访问。 |运行 AuditD 服务 (systemctl start auditd) |
 |确保启用 SNMP 服务器<br /><sub>(179)</sub> |说明：SNMP 服务器可以使用 SNMP v1 进行通信，此过程以明文传输数据，无需进行身份验证即可执行命令。 除非绝对必要，否则建议不要使用 SNMP 服务。 如果需要使用 SNMP，应将服务器配置为不允许 SNMP v1。 |运行以下命令之一以禁用 `snmpd`：``` # chkconfig snmpd off ```、``` # systemctl disable snmpd ```、``` # update-rc.d snmpd disable ``` |
 |确保未启用 rsync 服务<br /><sub>(181)</sub> |说明：`rsyncd` 服务存在安全风险，因为它使用未加密的通信协议。 |运行以下命令之一来禁用 `rsyncd`：`chkconfig rsyncd off`、`systemctl disable rsyncd`、`update-rc.d rsyncd disable`，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r disable-rsysnc" |
-|确保未启用 NIS 服务器<br /><sub>(182)</sub> |说明：NIS 服务本质上是一种不安全的系统，该系统很容易受到 DOS 攻击和缓冲区溢出的影响，且对 NIS 映射查询的身份验证的效果也不佳。 通常使用轻型目录访问协议 (LDAP) 这类协议来替代 NIS。 建议禁用该服务，并使用其他更安全的服务 |运行以下命令之一以禁用 `ypserv`：``` # chkconfig ypserv off ```、``` # systemctl disable ypserv ```、``` # update-rc.d ypserv disable ``` |
+|确保未启用 NIS 服务器<br /><sub>(182)</sub> |说明：NIS 服务本质上是一种不安全的系统，该系统很容易受到 DOS 攻击和缓冲区溢出的影响，且对 NIS 映射查询的身份验证的效果也不佳。 通常使用轻型目录访问协议 (LDAP) 这类协议来替代 NIS。 建议禁用该服务，并使用更安全的服务 |运行以下命令之一以禁用 `ypserv`：``` # chkconfig ypserv off ```、``` # systemctl disable ypserv ```、``` # update-rc.d ypserv disable ``` |
 |确保未安装 rsh 客户端<br /><sub>(183)</sub> |说明：这些旧客户端存在许多安全漏洞，已替换为更安全的 SSH 包。 删除服务器后，最好确保同时删除这些客户端，以防止用户无意中使用这些命令暴露了其凭据。 请注意，删除 `rsh ` 包会删除 `rsh`、`rcp ` 和 `rlogin` 的客户端。 |使用合适的包管理器或通过手动安装过程卸载 `rsh`：``` yum remove rsh ```、``` apt-get remove rsh ```、``` zypper remove rsh ``` |
-|禁止将 SMB V1 用于 Samba<br /><sub>(185)</sub> |说明：SMB v1 具有已知的严重漏洞，且不加密传输中的数据。 如果出于覆盖业务的原因不得不使用它，强烈建议使用其他缓解方法来抵消使用此协议所产生的不利后果。  |如果 Samba 未运行，请删除包，否则，在 /etc/samba/smb.conf 的 [global] 部分会有一行：min protocol = SMB2，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r set-smb-min-version" |
+|禁止将 SMB V1 用于 Samba<br /><sub>(185)</sub> |说明：SMB v1 具有已知的严重漏洞，且不加密传输中的数据。 如果出于业务原因必须使用它，强烈建议采取其他步骤来缓解此协议固有的风险。 |如果 Samba 未运行，请删除包，否则，在 /etc/samba/smb.conf 的 [global] 部分会有一行：min protocol = SMB2，或运行 "/opt/microsoft/omsagent/plugin/omsremediate -r set-smb-min-version" |
 
 > [!NOTE]
 > Azure Policy 来宾配置设置的具体供应情况在 Azure 政府和其他国家云中可能会有所不同。

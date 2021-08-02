@@ -1,20 +1,20 @@
 ---
 title: 通过自动执行 Azure Blob 存储访问层来优化成本
 description: 为在热层、冷层和存档层之间移动数据创建自动化规则。
-author: twooley
-ms.author: twooley
+author: tamram
+ms.author: tamram
 ms.date: 04/23/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 76ea6b916cc52292e8b56523d91d92ebfc957a94
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 19a828621f298759b87d8b0d4ca627d3ab7d27c3
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107946099"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071274"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>通过自动执行 Azure Blob 存储访问层来优化成本
 
@@ -75,7 +75,7 @@ ms.locfileid: "107946099"
 
 1. 在 Azure 门户中，搜索并选择你的存储帐户。
 
-1. 在“Blob 服务”下，选择“生命周期管理”以查看或更改规则 。
+1. 在“数据管理”下，选择“生命周期管理”以查看或更改规则。
 
 1. 选择“列表视图”选项卡。
 
@@ -86,12 +86,6 @@ ms.locfileid: "107946099"
 1. 选择“基础 Blob”以设置规则的条件。 在以下示例中，如果 Blob 有 30 天未修改，它们将转移到冷存储。
 
    :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Azure 门户中的“生命周期管理”>“基础 Blob”页":::
-
-   以下区域的预览版中提供了“上次访问时间”选项：
-
-    - 法国中部
-    - 加拿大东部
-    - 加拿大中部
 
    > [!IMPORTANT]
    > 上次访问时间跟踪预览版仅用作非生产用途。 生产服务级别协议 (SLA) 当前不可用。
@@ -327,7 +321,7 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 | blobIndexMatch | 由要匹配的 Blob 索引标记键和值条件组成的字典值数组。 每个规则最多可以定义 10 个 Blob 索引标记条件。 例如，对于某个规则，如果要匹配 `https://myaccount.blob.core.windows.net/` 下 `Project = Contoso` 的所有 Blob，则 blobIndexMatch 为 `{"name": "Project","op": "==","value": "Contoso"}`。 | 如果未定义 blobIndexMatch，则规则将应用于存储帐户中的所有 Blob。 | 否 |
 
 > [!NOTE]
-> Blob 索引为公共预览版，在“加拿大中部”、“加拿大东部”、“法国中部”和“法国南部”区域可用。 若要详细了解此功能以及已知问题和限制，请参阅[通过 Blob 索引（预览版）管理和查找 Azure Blob 存储上的数据](storage-manage-find-blobs.md)。
+> Blob 索引为公共预览版。  若要详细了解此功能以及已知问题和限制，请参阅[通过 Blob 索引（预览版）管理和查找 Azure Blob 存储上的数据](storage-manage-find-blobs.md)。
 
 ### <a name="rule-actions"></a>规则操作
 

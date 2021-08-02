@@ -6,12 +6,12 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 740930a342706eeaf3adc3b0e8ad1e01e4c70932
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 838084204ed2c1979f618bb2bfe644d1f88cd51e
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384923"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536492"
 ---
 # <a name="event-handlers-destinations-in-event-grid-on-kubernetes"></a>Kubernetes 上的事件网格中的事件处理程序和目标
 事件处理程序是用于公开终结点的系统，并且是事件网格发送事件的目标。 事件处理程序在接收到事件后会对其进行操作，并使用事件有效负载执行某些逻辑，这可能会导致新事件发生。
@@ -79,18 +79,18 @@ ms.locfileid: "110384923"
 
 要发布到 Azure 事件网格云终结点，请将 `endpointType` 设置为 `WebHook` 并提供以下信息：
 
-* endpointUrl：云中的 Azure 事件网格主题 URL
+* endpointUrl：云中的 Azure 事件网格主题 URL，API 版本参数设置为 2018-01-01，`aeg-sas-key` 设置为 URL 编码的 SAS 密钥。 
 
    ```json
-        {
-          "properties": {
+    {
+        "properties": {
             "destination": {
-              "endpointType": "WebHook",
-              "properties": {
-                 "endpointUrl": "<your-event-grid-cloud-topic-endpoint-url>?api-version=2018-01-01",
-              }
+                "endpointType": "WebHook",
+                "properties": {
+                    "endpointUrl": "<your-event-grid-cloud-topic-endpoint-url>?api-version=2018-01-01&aeg-sas-key=urlencoded(sas-key-value)"
+                }
             }
-          }
+        }
     }
    ```
 

@@ -8,18 +8,29 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 0f233bdff54822037d15fde9ac62e34193794ad3
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 68e4949fe0ef0b10018cd3827e259028c37d5b5c
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110302"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112019082"
 ---
-#     <a name="custom-entity-lookup-cognitive-skill"></a>自定义实体查找认知技能
+#     <a name="custom-entity-lookup-cognitive-skill"></a>“自定义实体查找”认知技能
 
 “自定义实体查找”技能可在用户自定义的单词和短语列表中查找文本。 它使用此列表为包含任何匹配实体的所有文档加上标签。 该技能还支持一定程度的模糊匹配，应用此匹配方法可以查找类似但不完全相同的匹配项。  
 
-此技能未绑定到认知服务 API，在预览期可免费使用。 但是，仍然应该[附加一个认知服务资源](./cognitive-search-attach-cognitive-services.md)，以覆盖每日扩充限制。 每日限制适用于通过 Azure 认知搜索免费访问认知服务的情况。
+此技能不限于认知服务 API。 但是，仍然应该[附加一个认知服务资源](./cognitive-search-attach-cognitive-services.md)，以覆盖每日扩充限制。 每日限制适用于通过 Azure 认知搜索免费访问认知服务的情况。
+
+## <a name="pricing-details"></a>定价详细信息
+
+文本记录对应的是文档中包含 1,000 个字符的单元的数量（作为技能的输入提供）。
+
+|  定价层  |        价格  |
+|--------------|----------------------|
+| 0-500,000 文本记录 | 每 1,000 文本记录 1 美元 |
+| 500,000-2,500,000 个文本记录 | 每 1,000 文本记录 0.75 美元 |
+| 2,500,000-10,000,000 文本记录 | 每 1,000 文本记录 0.30 美元 |
+| 10,000,000 个以上的文本记录 | 每 1,000 文本记录 0.25 美元 |
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.CustomEntityLookupSkill 
@@ -308,4 +319,4 @@ Satya Nadella
 
 + [内置技能](cognitive-search-predefined-skills.md)
 + [如何定义技能集](cognitive-search-defining-skillset.md)
-+ [实体识别技能（用于搜索已知实体）](cognitive-search-skill-entity-recognition.md)
++ [实体识别技能（用于搜索已知实体）](cognitive-search-skill-entity-recognition-v3.md)

@@ -8,29 +8,26 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/10/2021
+ms.date: 06/03/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 257ba16cf015705b8f6da264d9c25f28cef2ebb1
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: eb700a4432082f75cf1ddf1ce007cee801597948
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106443434"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409444"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中添加用户属性和自定义用户输入
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-::: zone pivot="b2c-custom-policy"
-
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
-::: zone-end
-
 在本文中，你将在 Azure Active Directory B2C (Azure AD B2C) 的注册过程中收集一个新属性。 你将获得用户的“city”，将其配置为下拉列表，并定义是否需要提供此项。
+
+> [!IMPORTANT]
+> 此示例使用内置声明“city”。 相反，你可以选择一个受支持的 [Azure AD B2C 内置属性](user-profile-attributes.md)或自定义属性。 若要使用自定义属性，请[启用自定义属性](user-flow-custom-attributes.md)。 若要使用不同的内置或自定义属性，请将“city”替换为所选的属性，例如内置属性“jobTitle”或“extension_loyaltyId”之类的自定义属性。  
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -89,7 +86,7 @@ ms.locfileid: "106443434"
       "ElementType": "ClaimType",
       "ElementId": "city",
       "TargetCollection": "Restriction",
-      "Override": false,
+      "Override": true,
       "Items": [
         {
           "Name": "Berlin",
@@ -122,17 +119,16 @@ ms.locfileid: "106443434"
 
 1. 选择策略（例如，“B2C_1_SignupSignin”）将其打开。
 1. 若要测试策略，请选择“运行用户流”。
-1. 对于“应用程序”，请选择前面已注册的名为 *testapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择前面已注册的名为“testapp1”的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 单击“运行用户流”
 
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
-> [!NOTE]
-> 此示例使用内置声明“city”。 相反，你可以选择一个受支持的 [Azure AD B2C 内置属性](user-profile-attributes.md)或自定义属性。 若要使用自定义属性，请[启用自定义属性](user-flow-custom-attributes.md)。 若要使用不同的内置或自定义属性，请将“city”替换为所选的属性，例如内置属性“jobTitle”或“extension_loyaltyId”之类的自定义属性。  
+## <a name="overview"></a>概述
 
-可以通过注册或登录用户旅程从用户那里收集初始数据。 稍后可以通过配置文件编辑用户旅程收集其他声明。 每当 Azure AD B2C 以交互方式直接从用户收集信息时，Identity Experience Framework 都会使用其[自断言技术配置文件](self-asserted-technical-profile.md)。 在此示例中，你将执行以下操作：
+可以通过注册或登录用户旅程从用户那里收集初始数据。 稍后可以通过配置文件编辑用户旅程收集其他声明。 每当 Azure AD B2C 以交互方式直接从用户收集信息时，都会使用[自断言技术配置文件](self-asserted-technical-profile.md)。 在此示例中，你将执行以下操作：
 
 1. 定义“city”声明。 
 1. 请求用户输入其所在城市。
@@ -164,14 +160,24 @@ ms.locfileid: "106443434"
       <DataType>string</DataType>
       <UserInputType>DropdownSingleSelect</UserInputType>
       <Restriction>
-        <Enumeration Text="Bellevue" Value="bellevue" SelectByDefault="false" />
-        <Enumeration Text="Redmond" Value="redmond" SelectByDefault="false" />
-        <Enumeration Text="Kirkland" Value="kirkland" SelectByDefault="false" />
+        <Enumeration Text="Berlin" Value="berlin" />
+        <Enumeration Text="London" Value="bondon" />
+        <Enumeration Text="Seattle" Value="seattle" />
       </Restriction>
     </ClaimType>
   <!-- 
   </ClaimsSchema>
 </BuildingBlocks>-->
+```
+
+在 `Enumeration` 元素上包含 [SelectByDefault](claimsschema.md#enumeration) 属性，使其在页面首次加载时默认选中。 例如，若要预先选择 London 项，请更改 `Enumeration` 元素，如以下示例所示：
+
+```xml
+<Restriction>
+  <Enumeration Text="Berlin" Value="berlin" />
+  <Enumeration Text="London" Value="bondon" SelectByDefault="true" />
+  <Enumeration Text="Seattle" Value="seattle" />
+</Restriction>
 ```
 
 ## <a name="add-a-claim-to-the-user-interface"></a>向用户界面添加声明
@@ -314,15 +320,20 @@ ms.locfileid: "106443434"
 </RelyingParty>
 ```
 
-## <a name="test-the-custom-policy"></a>测试自定义策略
+## <a name="upload-and-test-your-updated-custom-policy"></a>上传并测试已更新的自定义策略
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含 Azure AD 租户的目录。
-3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册” 。
-4. 选择“标识体验框架”。
-5. 选择“上传自定义策略”，然后上传已更改的两个策略文件。
-2. 选择已上传的注册或登录策略，并单击“立即运行”按钮。
-3. 现在，应该可以使用电子邮件地址注册。
+1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
+1. 搜索并选择“Azure AD B2C”。
+1. 在“策略”下，选择“Identity Experience Framework”。 
+1. 选择“上传自定义策略”。
+1. 上传之前更改的策略文件。
+
+### <a name="test-the-custom-policy"></a>测试自定义策略
+
+1. 选择信赖方策略，例如 `B2C_1A_signup_signin`。
+1. 对于“应用程序”，请选择[前面注册](tutorial-register-applications.md)的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 选择“立即运行”按钮。
+1. 从注册或登录页面，选择“立即注册”进行注册。 完成输入用户信息（包括城市名称），然后单击“创建”。 应看到返回的令牌的内容。
 
 ::: zone-end
 
@@ -351,12 +362,69 @@ ms.locfileid: "106443434"
   "email": "joe@outlook.com",
   "given_name": "Emily",
   "family_name": "Smith",
-  "city": "Bellevue"
+  "city": "Berlin"
   ...
 }
 ```
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="optional-localize-the-ui"></a>[可选] UI 本地化
+
+Azure AD B2C 允许你根据不同的语言调整策略。 有关详细信息，请参阅[了解如何自定义语言体验](language-customization.md)。 若要本地化注册页面，请参阅[设置支持语言列表](language-customization.md#set-up-the-list-of-supported-languages)和[提供特定于语言的标签](language-customization.md#provide-language-specific-labels)。
+
+> [!NOTE]
+> 将 `LocalizedCollection` 与特定于语言的标签一起使用时，可以从[声明定义](#define-a-claim)中删除 `Restriction` 集合。
+
+以下示例演示如何提供适用于英语和西班牙语的城市列表。 这两个元素都设置了声明 city 的 `Restriction` 集合，以及适用于英语和西班牙语的项列表。 [SelectByDefault](claimsschema.md#enumeration) 在页面首次加载时默认选中一个项目。
+   
+```xml
+<!-- 
+<BuildingBlocks>-->
+  <Localization Enabled="true">
+    <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+      <SupportedLanguage>en</SupportedLanguage>
+      <SupportedLanguage>es</SupportedLanguage>
+    </SupportedLanguages>
+    <LocalizedResources Id="api.localaccountsignup.en">
+      <LocalizedCollections>
+        <LocalizedCollection ElementType="ClaimType" ElementId="city" TargetCollection="Restriction">
+          <Item Text="Berlin" Value="Berlin"></Item>
+          <Item Text="London" Value="London" SelectByDefault="true"></Item>
+          <Item Text="Seattle" Value="Seattle"></Item>
+        </LocalizedCollection>
+      </LocalizedCollections>
+    </LocalizedResources>
+    <LocalizedResources Id="api.localaccountsignup.es">
+      <LocalizedCollections>
+        <LocalizedCollection ElementType="ClaimType" ElementId="city" TargetCollection="Restriction">
+          <Item Text="Berlina" Value="Berlin"></Item>
+          <Item Text="Londres" Value="London" SelectByDefault="true"></Item>
+          <Item Text="Seattle" Value="Seattle"></Item>
+        </LocalizedCollection>
+      </LocalizedCollections>
+    </LocalizedResources>
+  </Localization>
+<!-- 
+</BuildingBlocks>-->
+```
+
+添加本地化元素后，[使用本地化编辑内容定义](language-customization.md#edit-the-content-definition-with-the-localization)。 在以下示例中，英语 (en) 和西班牙语 (es) 自定义本地化资源已添加到注册页面：
+   
+```xml
+<!-- 
+<BuildingBlocks>
+  <ContentDefinitions> -->
+   <ContentDefinition Id="api.localaccountsignup">
+    <LocalizedResourcesReferences MergeBehavior="Prepend">
+        <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
+        <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
+    </LocalizedResourcesReferences>
+   </ContentDefinition>
+  <!-- 
+  </ContentDefinitions>
+</BuildingBlocks>-->
+```
 
 ## <a name="next-steps"></a>后续步骤
 

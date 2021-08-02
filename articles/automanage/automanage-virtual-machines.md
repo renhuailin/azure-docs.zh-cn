@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 1d3b2174df5dd83852ce120ec6693ae187a3e795
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 00ee1b6e9772100cbc4abf9c79260a231bbd27af
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101643504"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755134"
 ---
-# <a name="azure-automanage-for-virtual-machines"></a>适用于虚拟机的 Azure Automanage
+# <a name="preview-azure-automanage-for-virtual-machines"></a>预览版：适用于虚拟机的 Azure Automanage
 
 本文涵盖适用于虚拟机的 Azure Automanage 的相关信息，该服务具有以下优势：
 
@@ -25,7 +25,6 @@ ms.locfileid: "101643504"
 - 监视是否存在偏移，并在检测到偏移时予以纠正
 - 提供简单的体验（指向、单击、设置、遗忘）
 
-
 ## <a name="overview"></a>概述
 
 适用于虚拟机的 Azure Automanage 是一项服务，使用该服务就无需发现和了解如何在 Azure 中加入和配置对虚拟机有益的某些服务。 这些服务被视为 Azure 最佳做法服务，有助于增强虚拟机的可靠性、安全性和管理。 例如 [Azure 更新管理](../automation/update-management/overview.md)和 [Azure 备份](../backup/backup-overview.md)等服务。
@@ -33,6 +32,8 @@ ms.locfileid: "101643504"
 将虚拟机加入到 Azure Automanage 后，每项最佳做法服务都被配置为建议的设置。 每项服务的最佳做法都不同。 例如 Azure 备份的最佳做法可能是每天进行一次虚拟机备份，并使保持期为六个月。
 
 Azure Automanage 也会自动监视偏移情况，并在检测到偏移时予以纠正。 这意味着，如果你的虚拟机已加入到 Azure Automanage，我们不仅会根据 Azure 最佳做法配置它，还会监视它，以确保它在整个生命周期都继续遵循这些最佳做法。 如果虚拟机在这些做法上确实存在偏移或偏离（例如某项服务已登出），我们会进行更正并使虚拟机恢复到所需状态。
+
+Automanage 只存储/处理 VM 所在的地理位置中的客户数据。 在东南亚地区，Automanage 只存储/处理东南亚地区范围的数据。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -59,6 +60,7 @@ Automanage 仅支持位于以下区域的 VM：
 * 英国南部
 * 澳大利亚东部
 * 澳大利亚东南部
+* 东南亚
 
 ### <a name="required-rbac-permissions"></a>必需的 RBAC 权限
 你的帐户需要的 RBAC 角色会略有不同，具体取决于是不是使用新 Automanage 帐户启用的 Automanage。
@@ -70,12 +72,14 @@ Automanage 仅支持位于以下区域的 VM：
 如果是使用现有 Automanage 帐户启用 Automanage，需要：
 * 含 VM 的资源组的“参与者”角色
 
+Automanage 帐户将被授予“参与者”和“资源策略参与者”权限，使其可在 Automanage 管理的计算机上执行操作 。
+
 > [!NOTE]
 > 如果希望在连接到位于其他订阅中的工作区的 VM 上使用 Automanage，在每个订阅上都必须拥有上述权限。
 
 ## <a name="participating-services"></a>参与服务
 
-:::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services.png" alt-text="智能地加入服务。":::
+:::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services-1.png" alt-text="智能地加入服务。":::
 
 有关参与的 Azure 服务的完整列表及其支持的环境，请参阅以下内容：
 - [适用于 Linux 的 Automanage](automanage-linux.md)
@@ -94,6 +98,19 @@ Automanage 仅支持位于以下区域的 VM：
 
 只有在我们尝试修正你的 VM 但操作失败时，你可能才需要与此 VM 交互，以管理这些服务。 如果成功修正 VM，我们会将其恢复到合规性状态，甚至不需要向你发出警报。 如需了解详情，请参阅 [VM 的状态](#status-of-vms)。
 
+## <a name="enabling-automanage-for-vms-using-azure-policy"></a>使用 Azure Policy 为 VM 启用 Automanage
+还可使用内置的 Azure Policy 在 VM 上大规模启用 Automanage。 该策略具有 DeployIfNotExists 效果，这意味着位于该策略范围内的所有符合条件的 VM 都将自动加入 Automanage VM 最佳做法。
+
+[此处](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F270610db-8c04-438a-a739-e8e6745b22d3)是该策略的直接链接。
+
+### <a name="how-to-apply-the-policy"></a>如何应用策略
+1. 查看策略定义时单击“分配”按钮
+1. 选择要应用策略的范围（可以是管理组、订阅或资源组）
+1. 在“参数”下，指定 Automanage 帐户的参数、配置文件和效果（效果通常应为 DeployIfNotExists）
+    1. 如果没有 Automanage 帐户，必须[创建一个](./automanage-account.md)。
+1. 在“修正”下，选中“单击修正任务”复选框。 这将执行到 Automanage 的加入。
+1. 单击“查看 + 创建”，并确保所有设置正确无误。
+1. 单击“创建”。
 
 ## <a name="environment-configuration"></a>环境配置
 
@@ -127,21 +144,9 @@ Automanage 仅支持位于以下区域的 VM：
 
 ## <a name="automanage-account"></a>Automanage 帐户
 
-“Automanage 帐户”是执行自动化操作的安全性上下文或标识。 通常不需要选择“Automanage 帐户”选项，但如果存在你想划分资源自动化管理（可能是在两个系统管理员之间划分）的委派情况，可以使用此选项为这两个管理员各定义一个 Azure 标识。
+“Automanage 帐户”是执行自动化操作的安全性上下文或标识。 通常不需要选择“Automanage 帐户”选项，但如果存在你想划分资源自动化管理（可能是在两个系统管理员之间划分）的委派情况，可以使用启用流中的“Automanage 帐户”选项为这两个管理员各定义一个 Azure 标识。
 
-在 Azure 门户体验中，在 VM 上启用 Automanage 时，“启用 Azure VM 最佳做法”边栏选项卡上有一个“高级”下拉列表，可用于分配或手动创建 Automanage 帐户。
-
-Automanage 帐户将被授予订阅（包含加入 Automanage 的计算机）的“参与者”和“资源策略参与者”角色 。 你可以在跨多个订阅的计算机上使用同一 Automanage 帐户，这会向该 Automanage 帐户授予所有订阅的“参与者”和“资源策略参与者”权限 。
-
-如果 VM 连接到其他订阅中的 Log Analytics 工作区，则还会向 Automanage 帐户授予该订阅中的“参与者”和“资源策略参与者”权限 。
-
-如果要使用新的 Automanage 帐户启用 Automanage，则需要对订阅具有以下权限：“所有者”角色或“参与者”以及“用户访问管理员”角色  。
-
-如果要使用现有的 Automanage 帐户启用 Automanage，必须在包含 VM 的资源组上具有“参与者”角色。
-
-> [!NOTE]
-> 禁用 Automanage 最佳做法时，会保留 Automanage 帐户对任何关联订阅的权限。 转到订阅的“标识和访问管理”页手动删除权限或删除 Automanage 帐户。 如果 Automanage 帐户仍在管理任何计算机，则无法将其删除。
-
+要详细了解 Automanage 帐户以及如何创建一个帐户，请访问 [Automanage 帐户文档](./automanage-account.md)。
 
 ## <a name="status-of-vms"></a>VM 的状态
 
@@ -175,10 +180,16 @@ Automanage 帐户将被授予订阅（包含加入 Automanage 的计算机）的
 >
 > - 不会更改 VM 的配置和它要加入到的服务。
 > - 由这些服务产生的任何费用仍可计费，并将继续产生费用。
-> - 任何 Automanage 行为都会立即停止。
+> - Automanage 偏移监视会立即停止。
 
 
 首先，我们不会将虚拟机从已加入到的且已配置的任何服务中登出。 因此，由这些服务产生的任何费用都将继续保持可计费状态。 如有必要，你需要从这些服务登出。 任何 Automanage 行为都会立即停止。 例如，我们不会再监视 VM 的偏移。
+
+## <a name="automanage-and-azure-disk-encryption"></a>Automanage 和 Azure 磁盘加密
+Automanage 与启用 Azure 磁盘加密 (ADE) 的 VM 兼容。
+
+如果使用生产环境，你还将加入 Azure 备份。 要成功使用 ADE 和 Azure 备份，需要满足一个先决条件：
+* 在将启用 ADE 的 VM 加入 Automanage 的生产环境之前，请确保你已按照[本文档](../backup/backup-azure-vms-encryption.md#before-you-start)的“准备工作”部分中的步骤进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 

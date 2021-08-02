@@ -11,16 +11,16 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b659041ae4512baa1a202f872114e5dd6b90a0e
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 5dc0fc80061834c1f5aad8685f1caa558b5a34f9
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108162754"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746080"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-agent-gmsa-powershell-cmdlets"></a>Azure AD Connect 云预配代理 gMSA PowerShell cmdlet
 
-本本档旨在介绍 Azure AD Connect 云预配代理 gMSA PowerShell cmdlet。 利用这些 cmdlet，可以更细致地了解应用于服务帐户 (gmsa) 的权限。 在默认情况下，Azure AD Connect 云同步会在默认 gmsa 或自定义 gmsa 上应用与 Azure AD Connect 类似的所有权限。
+本本档旨在介绍 Azure AD Connect 云预配代理 gMSA PowerShell cmdlet。 利用这些 cmdlet，可以更细致地了解应用于服务帐户 (gMSA) 的权限。 在默认情况下，Azure AD Connect 云同步会在默认 gMSA 或自定义 gMSA 上应用与 Azure AD Connect 类似的所有权限。
 
 本文档将介绍以下 cmdlet：
 
@@ -66,7 +66,7 @@ ms.locfileid: "108162754"
 
 `Set-AADCloudSyncPermissions` 支持以下与 Azure AD Connect 使用的权限完全相同的权限类型。 支持以下权限类型：
 
-|权限类型|描述|
+|权限类型|说明|
 |-----|-----|
 |BasicRead| 请参阅 Azure AD Connect 的 [BasicRead](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#configure-basic-read-only-permissions) 权限|
 |PasswordHashSync|请参阅 Azure AD Connect 的 [PasswordHashSync](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#permissions-for-password-hash-synchronization) 权限|

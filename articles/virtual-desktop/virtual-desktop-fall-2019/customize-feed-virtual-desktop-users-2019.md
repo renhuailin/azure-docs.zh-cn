@@ -1,26 +1,26 @@
 ---
-title: 为 Windows 虚拟桌面（经典）用户自定义源 - Azure
-description: 如何使用 PowerShell cmdlet 为 Windows 虚拟桌面（经典）用户自定义源。
+title: 为 Azure 虚拟桌面（经典）用户自定义源 - Azure
+description: 如何使用 PowerShell cmdlet 为 Azure 虚拟桌面（经典）用户自定义源。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: cd7496690ec88fbe4297386c32d1b8a2c3234577
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 7a28185d16f0bc7787eccc76a9f4a0a98d5c6a38
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91540755"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754144"
 ---
-# <a name="customize-feed-for-windows-virtual-desktop-classic-users"></a>为 Windows 虚拟桌面（经典）用户自定义源
+# <a name="customize-feed-for-azure-virtual-desktop-classic-users"></a>为 Azure 虚拟桌面（经典）用户自定义源
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../customize-feed-for-virtual-desktop-users.md)。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[本文](../customize-feed-for-virtual-desktop-users.md)。
 
 可以自定义源，以便 RemoteApp 和远程桌面资源以可识别的方式向用户显示。
 
-首先[下载并导入 Windows 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做），以便在 PowerShell 会话中使用。 然后，运行以下 cmdlet 登录到你的帐户：
+首先[下载并导入 Azure 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做），以便在 PowerShell 会话中使用。 然后，运行以下 cmdlet 登录到你的帐户：
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -72,7 +72,7 @@ Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppG
 
 ## <a name="next-steps"></a>后续步骤
 
-你现在已经为用户自定义了源，可以登录到 Windows 虚拟桌面客户端对该源进行测试了。为此，请继续了解连接到 Windows 虚拟桌面的操作方法：
+你已经为用户自定义源，现在可以登录到 Azure 虚拟桌面客户端进行测试。为此，请继续阅读“连接到 Azure 虚拟桌面操作指南”：
 
  * [从 Windows 10 或 Windows 7 进行连接](connect-windows-7-10-2019.md)
  * [从 Web 浏览器进行连接](connect-web-2019.md)

@@ -3,27 +3,27 @@ title: 维护时段
 description: 了解如何配置 Azure SQL 数据库和托管实例维护时段。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: service-overview
 ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.custom: references_regions
-ms.date: 03/23/2021
-ms.openlocfilehash: 9d7ab0498673ad7006087b66575eea9371b96d11
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 05/02/2021
+ms.openlocfilehash: 765c6c79bf28ad01ab0253e85affd5d4cd95ed78
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565871"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031900"
 ---
 # <a name="maintenance-window-preview"></a>维护时段（预览版）
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-维护时段功能允许为 [Azure SQL 数据库](sql-database-paas-overview.md)和 [Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)资源配置维护计划，使有影响力的维护事件可预测且更少中断工作负荷。 
+使用维护时段功能，可以为 [Azure SQL 数据库](sql-database-paas-overview.md)和 [Azure SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)资源配置维护计划，从而使重大维护事件可预测，并减少工作负载的中断次数。 
 
 > [!Note]
-> 维护时段功能不能防止意外事件（如硬件失败），这可能会导致短暂的连接中断。
+> 维护时段功能仅保护免受升级或计划性维护产生的计划影响。 它不能保护免受所有故障转移原因影响；可能在维护时段之外导致短暂连接中断的异常包括硬件故障、群集负载均衡和数据库重新配置，这些异常是由于数据库服务级别目标变化等事件引起的。 
 
 ## <a name="overview"></a>概述
 
@@ -45,7 +45,7 @@ Azure 会定期执行 SQL 数据库和 SQL 托管实例资源的[计划内维护
 * 工作日时段，本地时间晚上 10 点到早上 6 点，星期一到星期四
 * 周末时段，本地时间晚上 10 点到早上 6 点，星期五到星期日
 
-选择维护时段并且服务配置完成后，计划内维护将仅在所选的时段中进行。   
+选择维护时段并且服务配置完成后，计划内维护将仅在所选的时段中进行。 维护事件通常是在单个时段内完成，但其中某些事件可能会跨越两个或更多相邻时段。   
 
 > [!Important]
 > 在极少数情况下，任何延迟操作都可能会导致严重影响（例如应用关键安全修补程序），可能会暂时覆盖已配置的维护时段。 
@@ -84,12 +84,14 @@ Azure 会定期执行 SQL 数据库和 SQL 托管实例资源的[计划内维护
 - 美国东部
 - 美国东部 2
 - 东亚
+- 德国中西部
 - 日本东部
 - 美国中北部
 - 北欧
 - 美国中南部
 - 东南亚
 - 英国南部
+- 英国西部
 - 西欧
 - 美国西部
 - 美国西部 2
@@ -108,7 +110,7 @@ Azure 会定期执行 SQL 数据库和 SQL 托管实例资源的[计划内维护
 
 ## <a name="considerations-for-azure-sql-managed-instance"></a>Azure SQL 托管实例的注意事项
 
-Azure SQL 托管实例由一组服务组件构成，这些组件托管在一组专用的、在客户的虚拟网络子网中运行的独立虚拟机上。 这些虚拟机构成了[虚拟群集](../managed-instance/connectivity-architecture-overview.md#high-level-connectivity-architecture)，可以托管多个托管实例。 一个子网实例上配置的维护时段可能会影响子网中的虚拟群集数量以及虚拟群集中实例的分配。 这可能需要考虑几个影响。
+Azure SQL 托管实例由一组服务组件构成，这些组件托管在一组专用的、在客户的虚拟网络子网中运行的独立虚拟机上。 这些虚拟机构成了[虚拟群集](../managed-instance/connectivity-architecture-overview.md#high-level-connectivity-architecture)，可以托管多个托管实例。 一个子网实例上配置的维护时段可能会影响子网中的虚拟群集数量、虚拟群集中实例的分配以及虚拟群集管理操作。 这可能需要考虑几个影响。
 
 ### <a name="maintenance-window-configuration-is-long-running-operation"></a>维护时段配置是长期运行的操作 
 虚拟群集中托管的所有实例共享维护时段。 默认情况下，所有托管实例都在托管在具有默认维护时段的虚拟群集中。 在托管实例创建期间或之后为其指定另一个维护时段，则意味着必须将其放置在具有相应维护时段的虚拟群集中。 如果子网中没有此类虚拟群集，则必须先创建一个新群集来容纳该实例。 在现有虚拟群集中容纳其他实例可能需要重设群集大小。 这两个操作都涉及到为托管实例配置维护时段的持续时间。
@@ -126,14 +128,18 @@ Azure SQL 托管实例由一组服务组件构成，这些组件托管在一组�
 > [!Important]
 >  请确保 IP 地址更改后 NSG 和防火墙规则不会阻止数据流量。 
 
+### <a name="serialization-of-virtual-cluster-management-operations"></a>虚拟群集管理操作序列化
+服务升级和虚拟群集大小调整（添加新计算节点或删除不需要的计算节点）等影响虚拟群集的操作均已序列化。 换句话说，在前一个虚拟群集管理操作完成之前，无法开始新虚拟群集管理操作。 如果正在执行的服务升级或维护操作尚未完成维护时段就结束了，则在此期间提交的其他所有虚拟群集管理操作都将搁置，直至下一个维护时段开放并完成服务升级或维护操作。 虚拟群集维护操作时间超出单个时段的情况并不常见，但如果维护操作很复杂，就可能会发生这种情况。
+虚拟群集管理操作序列化是常规行为，也适用于默认维护策略。 使用配置的维护时段计划时，两个相邻时段之间的时间段可能是几天。 如果维护操作跨越两个时段，则提交的操作也会搁置几天。 这种情况非常罕见，但在此期间可能会阻止创建新实例或调整现有实例的大小（如果需要更多计算节点）。
+
 ## <a name="next-steps"></a>后续步骤
 
 * [提前通知](advance-notifications.md)
 * [配置维护时段](maintenance-window-configure.md)
 
-## <a name="learn-more"></a>了解更多
+## <a name="learn-more"></a>了解更多信息
 
 * [维护时段常见问题解答](maintenance-window-faq.yml)
 * [Azure SQL 数据库](sql-database-paas-overview.md) 
 * [SQL 托管实例](../managed-instance/sql-managed-instance-paas-overview.md)
-* [在 Azure SQL 数据库和 Azure SQL 托管实例中计划 Azure维护事件](planned-maintenance.md)
+* [在 Azure SQL 数据库和 Azure SQL 托管实例中计划 Azure 维护事件](planned-maintenance.md)

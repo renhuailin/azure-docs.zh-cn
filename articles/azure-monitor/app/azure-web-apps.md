@@ -2,28 +2,28 @@
 title: 监视 Azure 应用服务性能 | Microsoft Docs
 description: Azure 应用服务的应用程序性能监视。 对加载和响应时间、依赖项信息绘制图表，并针对性能设置警报。
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 05/17/2021
 ms.custom: devx-track-js, devx-track-dotnet, devx-track-azurepowershell
-ms.openlocfilehash: e8c794e056dca42a06bdf6b7deb274e7f5f5bfd4
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 5557031080ddb7d625cc31be48c496bcbf30b7b4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315896"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967165"
 ---
-# <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
+# <a name="application-monitoring-for-azure-app-service"></a>Azure 应用服务的应用程序监视
 
-现在，可以比过去更轻松地针对 [Azure 应用服务](../../app-service/index.yml)中运行的基于 ASP.NET、ASP.NET Core 和 Node.js 的 Web 应用程序启用监视。 以前需要手动安装某个站点扩展，而现在应用服务映像中默认会内置最新的扩展/代理。 本文逐步讲解如何启用 Application Insights 监视，并提供有关如何自动完成大规模部署的初步指导。
+现在，可以比过去更轻松地针对 [Azure 应用服务](../../app-service/index.yml)中运行的基于 ASP.NET、ASP.NET Core、Java 和 Node.js 的 Web 应用启用监视。 以前需要手动检测某个应用，而现在应用服务映像中默认会内置最新的扩展/代理。 本文逐步讲解如何启用 Azure Monitor Application Insights 监视，并提供有关如何自动完成大规模部署的初步指导。
 
 > [!NOTE]
-> 通过“开发工具” > “扩展”手动添加 Application Insights 站点扩展的功能已弃用。  此扩展安装方法依赖于每个新版本的手动更新。 扩展的最新稳定版现在会[预装](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)在应用服务映像中。 这些文件位于 `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` 中，每发布一个稳定版本，它们都会自动更新。 如果在下文中遵循基于代理的说明启用监视，系统会自动删除已弃用的扩展。
+> 仅适用于 Windows 上的 .Net：通过“开发工具” > “扩展”手动添加 Application Insights 站点扩展的方法已被弃用。 此扩展安装方法依赖于每个新版本的手动更新。 扩展的最新稳定版现在会[预装](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)在应用服务映像中。 这些文件位于 `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` 中，每发布一个稳定版本，它们都会自动更新。 如果在下文中遵循基于代理的说明启用监视，系统会自动删除已弃用的扩展。
 
 ## <a name="enable-application-insights"></a>启用 Application Insights
 
 可通过两种方法为 Azure 应用服务托管的应用程序启用应用程序监视：
 
 * **基于代理的应用程序监视** (ApplicationInsightsAgent)。  
-    * 这是启用监视的最简单方法，无需完成任何高级配置。 这种监视通常称为“运行时”监视。 对于 Azure 应用服务，我们建议至少启用此级别的监视，然后可根据具体的方案，评估是否需要通过手动检测来启用更高级的监视。
+    * 此方法最容易实现，无需更改代码或进行高级配置。 这种监视通常称为“运行时”监视。 对于 Azure 应用服务，我们建议至少启用此级别的监视，然后可根据具体的方案，评估是否需要通过手动检测来启用更高级的监视。
 
 * 安装 Application Insights SDK 以 **通过代码手动检测应用程序**。
 
@@ -76,7 +76,7 @@ ms.locfileid: "108315896"
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/netcore)
 
 > [!IMPORTANT]
-> 支持以下 ASP.NET Core 版本：ASP.NET Core 2.1 和 ASP.NET Core 3.1。 版本 2.0、2.2 和 3.0 已停用，不再受支持。 请升级到 .NET Core 的[受支持版本](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)，使自动检测能够正常工作。
+> 支持以下 ASP.NET Core 版本：ASP.NET Core 2.1、3.1 和 5.0。 版本 2.0、2.2 和 3.0 已停用，不再受支持。 请升级到 .NET Core 的[受支持版本](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)，使自动检测能够正常工作。
 
 基于代理/扩展的监视目前不支持将 ASP.NET Core 提供的完整框架、独立部署和基于 Linux 的应用程序作为目标。 （在上述所有方案中，都可通过代码进行[手动检测](./asp-net-core.md)。）
 
@@ -89,20 +89,55 @@ ms.locfileid: "108315896"
      > [!NOTE]
      > 当单击“确定”来创建新资源时，将提示你 **应用监视设置**。 选择“继续”会将新的 Application Insights 资源链接到你的应用服务，这样做还会 **触发应用服务的重新启动**。 
 
-     ![检测 Web 应用](./media/azure-web-apps/create-resource-01.png)
+    ![检测 Web 应用](./media/azure-web-apps/create-resource-01.png)
 
 2. 指定要使用哪些资源后，可以选择 Application Insights 根据平台为应用程序收集数据的方式。 对于 ASP.NET Core 2.1 和 3.1，ASP.NET Core 提供“建议的集合”或“已禁用”。 
 
-    ![根据平台选择选项](./media/azure-web-apps/choose-options-new-net-core.png)
+    ![根据平台选择选项。](./media/azure-web-apps/choose-options-new-net-core.png)
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 不支持基于 Windows 代理的监视，若要与 Linux 一起使用，请访问 [Node.js 应用服务文档](../../app-service/configure-language-nodejs.md?pivots=platform-linux#monitor-with-application-insights)。
 
+只需执行几个简单的步骤，就能监视在 Azure 应用服务中运行的 Node.js 应用，无需更改任何代码。 适用于 Node.js 应用程序的 Application Insights 与 Linux 上的应用服务集成（基于代码的容器和自定义容器），以及与 Windows 上的应用服务集成（基于代码的应用）。 集成处于公开预览阶段。 集成添加了 Node.js SDK（正式版）。 
+
+1. 在应用服务的 Azure 控制面板中，选择“Application Insights”。
+
+    > [!div class="mx-imgBorder"]
+    > ![在“设置”下选择“Application Insights”。](./media/azure-web-apps/ai-enable.png)
+
+   * 除非已为此应用设置了 Application Insights 资源，否则请选择创建新资源。 
+
+     > [!NOTE]
+     > 当单击“确定”来创建新资源时，将提示你 **应用监视设置**。 选择“继续”会将新的 Application Insights 资源链接到你的应用服务，这样做还会 **触发应用服务的重新启动**。 
+
+    ![检测 Web 应用。](./media/azure-web-apps/create-resource-01.png)
+
+2. 指定要使用的资源后，就可以开始了。 
+
+    > [!div class="mx-imgBorder"]
+    > ![根据平台选择选项。](./media/azure-web-apps/app-service-node.png)
+
 # <a name="java"></a>[Java](#tab/java)
 
-遵循 [Application Insights Java 3.0 代理](./java-in-process-agent.md)的准则，在不更改代码的情况下为 Java 应用启用自动检测。
-应用服务尚不支持自动集成。
+只需单击一下，就可以为 Azure 应用服务中运行的 Java 应用启用监视，而无需更改代码。 适用于 Java 的 Application Insights 与 Linux 上的应用服务集成（基于代码的容器和自定义容器），以及与 Windows 上的应用服务集成（基于代码的应用）。 集成处于公开预览阶段。 务必要了解应用程序的监视方式。 集成添加了 [Application Insights Java 3.0](./java-in-process-agent.md)（正式版）。 你将获得它自动收集的所有遥测数据。
+
+1. 在应用服务的 Azure 控制面板中，选择“Application Insights”。
+
+    > [!div class="mx-imgBorder"]
+    > ![在“设置”下选择“Application Insights”。](./media/azure-web-apps/ai-enable.png)
+
+   * 除非已为此应用设置了 Application Insights 资源，否则请选择创建新资源。 
+
+     > [!NOTE]
+     > 当单击“确定”来创建新资源时，将提示你 **应用监视设置**。 选择“继续”会将新的 Application Insights 资源链接到你的应用服务，这样做还会 **触发应用服务的重新启动**。 
+
+    ![检测 Web 应用。](./media/azure-web-apps/create-resource-01.png)
+
+2. 指定要使用的资源后，可以配置 Java 代理。 完整的[配置集](./java-standalone-config.md)已提供，你只需粘贴有效的 JSON 文件，而无需指定连接字符串。 你已选取要连接到的 Application Insights 资源，还记得吗？ 
+
+    > [!div class="mx-imgBorder"]
+    > ![根据平台选择选项。](./media/azure-web-apps/create-app-service-ai.png)
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -167,14 +202,14 @@ ms.locfileid: "108315896"
 |应用设置名称 |  定义 | Value |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | 用于控制运行时监视的主扩展。 | `~2` |
-|XDT_MicrosoftApplicationInsights_Mode |  （仅限默认模式）已启用基本功能以确保最佳性能。 | `default` 或 `recommended`。 |
+|XDT_MicrosoftApplicationInsights_Mode |  默认模式下，仅启用基本功能以确保最佳性能。 | `default` 或 `recommended`。 |
 |InstrumentationEngine_EXTENSION_VERSION | 控制是否要启用二进制重写引擎 `InstrumentationEngine`。 此设置会对性能以及冷启动/启动时间造成影响。 | `~1` |
 |XDT_MicrosoftApplicationInsights_BaseExtensions | 控制是否要随依赖项调用一起捕获 SQL 和 Azure 表文本。 性能警告：应用程序冷启动时间将会受到影响。 此设置需要 `InstrumentationEngine`。 | `~1` |
 |XDT_MicrosoftApplicationInsights_PreemptSdk | 仅适用于 ASP.NET Core 应用。 启用与 Application Insights SDK 的互操作。 将此扩展与 SDK 并行加载，并使用它来发送遥测数据（禁用 Application Insights SDK）。 |`1`|
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>使用 Azure 资源管理器配置应用服务应用程序设置
 
-可以使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)来管理和配置应用服务的应用程序设置。 使用 Azure 资源管理器自动化部署新的应用服务资源或修改现有资源的设置时，可以使用此方法。
+可以使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/syntax.md)来管理和配置应用服务的应用程序设置。 使用 Azure 资源管理器自动化部署新的应用服务资源或修改现有资源的设置时，可以使用此方法。
 
 下面是应用服务的应用程序设置 JSON 基本结构：
 
@@ -331,9 +366,9 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 从版本 2.8.9 的升级会自动发生，无需额外的操作。 新的监视位将在后台传送到目标应用服务，应用程序重启时，会拾取这些位。
 
-若要检查正在运行的扩展版本，请访问 `http://yoursitename.scm.azurewebsites.net/ApplicationInsights`
+若要查看正在运行的扩展的版本，请转到 `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`。
 
-![URL 路径 http://yoursitename.scm.azurewebsites.net/ApplicationInsights 的屏幕截图](./media/azure-web-apps/extension-version.png)
+![用于查看正在运行的扩展版本的 URL 路径的屏幕截图](./media/azure-web-apps/extension-version.png)
 
 ### <a name="upgrade-from-versions-100---265"></a>从版本 1.0.0 - 2.6.5 升级
 
@@ -351,9 +386,6 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 ## <a name="troubleshooting"></a>故障排除
 
 下面是我们针对 Azure 应用服务中运行的基于 ASP.NET 和 ASP.NET Core 的应用程序的基于扩展/代理的监视提供的分步故障排除指南。
-
-> [!NOTE]
-> 监视 Java 应用程序的建议方法是在不更改代码的情况下使用自动检测。 请按照 [Application Insights Java 3.0 代理](./java-in-process-agent.md)指南进行操作。
 
 
 1. 通过 `ApplicationInsightsAgent` 检查应用程序是否受监视。

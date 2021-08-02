@@ -6,13 +6,14 @@ author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 04/27/2021
-ms.openlocfilehash: fad2fce019848c752217f15aaba8ba4c28a7c874
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.date: 05/12/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1b8502363d7868b32bf2576742ca443b673c5123
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177327"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971973"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -161,9 +162,15 @@ ms.locfileid: "108177327"
 
 ### <a name="updating-active-triggers"></a>更新活动触发器
 
+按[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明安装最新的 Azure PowerShell 模块。
+
+>[!WARNING]
+>如果不使用最新版的 PowerShell 和数据工厂模块，可能会在运行命令时遇到反序列化错误。 
+>
+
 如果尝试更新活动触发器，部署可能会失败。 若要更新活动触发器，需手动将其停止，并在部署后将其重启。 为此，可以使用 Azure PowerShell 任务：
 
-1.  在此发布版本的“任务”选项卡上，添加一个 **Azure PowerShell** 任务。 选择任务版本 4.*。 
+1.  在此发布版本的“任务”选项卡上，添加一个 **Azure PowerShell** 任务。 选择任务版本最新的 Azure PowerShell 版本。 
 
 1.  选择工厂所在的订阅。
 
@@ -618,6 +625,8 @@ ms.locfileid: "108177327"
 
 如果未配置 Git，可以通过“ARM 模板”列表中的“导出 ARM 模板”访问链接的模板。 
 
+部署资源时，可以指定部署为增量更新还是完整更新。 这两种模式之间的区别在于资源管理器如何处理资源组中不在模板中的现有资源。 请查看[部署模式](../azure-resource-manager/templates/deployment-modes.md)。
+
 ## <a name="hotfix-production-environment"></a>修补程序生产环境
 
 将某个工厂部署到生产环境后，如果你发现某个 bug 需要立即予以修复，但无法部署当前协作分支，则你可能需要部署一个修补程序。 此方法称作快速修复工程 (QFE)。
@@ -687,7 +696,14 @@ ms.locfileid: "108177327"
 
 ## <a name="sample-pre--and-post-deployment-script"></a><a name="script"></a> 部署前和部署后示例脚本
 
-以下示例脚本可用于在部署之前停止触发器，并在部署之后重启触发器。 此脚本还包括用于删除已移除资源的代码。 请将该脚本保存到 Azure DevOps git 存储库，并使用版本 4.* 通过 Azure PowerShell 任务引用它。
+按[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明安装最新的 Azure PowerShell 模块。
+
+>[!WARNING]
+>如果不使用最新版的 PowerShell 和数据工厂模块，可能会在运行命令时遇到反序列化错误。 
+>
+
+以下示例脚本可用于在部署之前停止触发器，并在部署之后重启触发器。 此脚本还包括用于删除已移除资源的代码。 将脚本保存在 Azure DevOps git 存储库中，并通过 Azure PowerShell 任务最新的 Azure PowerShell 版本加以引用。
+
 
 在运行部署前脚本时，需在“脚本参数”字段中指定以下参数的变体。
 

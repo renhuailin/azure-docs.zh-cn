@@ -10,12 +10,12 @@ ms.date: 12/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c2de1dc71579e6915a54e3815edd2858532ba263
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: ee77fd8ee7f9b209fa1639c787295e380e8dce0b
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075926"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901990"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>从 Azure AD 获取用于从客户端应用程序授权请求的令牌
 
@@ -31,7 +31,7 @@ ms.locfileid: "108075926"
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>将角色分配给 Azure AD 安全主体
 
-若要从 Azure 存储应用程序对安全主体进行身份验证，请先为该安全主体配置 Azure 基于角色的访问控制 (Azure RBAC) 设置。 Azure 存储定义包含容器权限和队列权限的内置角色。 如果将 Azure 角色分配给安全主体，该安全主体会获得该资源的访问权限。 有关详细信息，请参阅[使用 Azure RBAC 管理对 Azure Blob 和队列数据的访问权限](./storage-auth-aad-rbac-portal.md)。
+若要从 Azure 存储应用程序对安全主体进行身份验证，请先为该安全主体配置 Azure 基于角色的访问控制 (Azure RBAC) 设置。 Azure 存储定义包含容器权限和队列权限的内置角色。 如果将 Azure 角色分配给安全主体，该安全主体会获得该资源的访问权限。 有关详细信息，请参阅[分配用于访问 Blob 数据的 Azure 角色](../blobs/assign-azure-role-data-access.md)。
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>将应用程序注册到 Azure AD 租户
 
@@ -127,7 +127,7 @@ ms.locfileid: "108075926"
 
 若要运行代码示例，请在 Azure Active Directory 所在的同一订阅中创建一个存储帐户。 然后在该存储帐户中创建一个容器。 示例代码将在此容器中创建块 Blob。
 
-接下来，将“存储 Blob 数据参与者”角色显式分配到用于运行示例代码的用户帐户。 有关如何在 Azure 门户中分配此角色的说明，请参阅[使用 Azure 门户分配用于访问 Blob 和队列数据的 Azure 角色](storage-auth-aad-rbac-portal.md)。
+接下来，将“存储 Blob 数据参与者”角色显式分配到用于运行示例代码的用户帐户。 若要了解如何在 Azure 门户中分配此角色，请参阅[分配用于访问 Blob 数据的 Azure 角色](../blobs/assign-azure-role-data-access.md)。
 
 > [!NOTE]
 > 创建 Azure 存储帐户时，系统不会自动向你分配通过 Azure AD 访问数据的权限。 你必须为自己显式分配一个用于 Azure 存储的 Azure 角色。 可以在订阅、资源组、存储帐户、容器或队列级别分配它。
@@ -293,5 +293,5 @@ https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 ## <a name="next-steps"></a>后续步骤
 
 - [Microsoft 标识平台](../../active-directory/develop/index.yml)
-- [使用 Azure RBAC 管理对存储数据的访问权限](./storage-auth-aad-rbac-portal.md)
+- [分配 Azure 角色以访问 blob 数据](../blobs/assign-azure-role-data-access.md)
 - [使用 Azure Active Directory 和 Azure 资源的托管标识验证对 blob 和队列的访问权限](storage-auth-aad-msi.md)

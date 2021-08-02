@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 5db990fe4bf54c5604eb58af677ec4891639eb1b
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: cf1e471144ec901f82cae1217921ad0eac29b2ae
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165616"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953270"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 专用链接将网络安全地连接到 Azure Monitor
 
@@ -92,7 +92,7 @@ Azure Monitor 专用链接范围 (AMPLS) 将专用终结点连接（及包含它
 ![AMPLS 限制关系图](./media/private-link-security/ampls-limits.png)
 
 > [!NOTE]
-> 如果使用需要自动化帐户的 Log Analytics 解决方案，如更新管理、更改跟踪或清单，则还应为自动化帐户设置一个单独的专用链接。 有关详细信息，请参阅[使用 Azure 专用链接将网络安全地连接到 Azure 自动化](https://docs.microsoft.com/azure/automation/how-to/private-link-security)。
+> 如果使用需要自动化帐户的 Log Analytics 解决方案，如更新管理、更改跟踪或清单，则还应为自动化帐户设置一个单独的专用链接。 有关详细信息，请参阅[使用 Azure 专用链接将网络安全地连接到 Azure 自动化](../../automation/how-to/private-link-security.md)。
 
 
 ## <a name="example-connection"></a>示例连接
@@ -203,7 +203,7 @@ Azure Monitor 专用链接范围 (AMPLS) 将专用终结点连接（及包含它
 此区域配置与全局代理的解决方案包存储帐户的连接。 通过它，代理可以下载新的或更新的解决方案包（也称为管理包）。 无论使用多少个工作区，都只需一个条目来处理 Log Analytics 代理。
 [![专用 DNS 区域 blob-core-windows-net 的屏幕截图。](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net.png)](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net-expanded.png#lightbox)
 > [!NOTE]
-> 此条目仅会添加到 2021 年 4 月 19 日或之后创建的专用链接设置中。
+> 此条目仅添加到在 2021 年 4 月 19 日或之后（或从 2021 年 6 月开始在 Azure 主权云上）创建的专用链接设置。
 
 
 ### <a name="validating-you-are-communicating-over-a-private-link"></a>验证是否通过专用链接进行通信
@@ -226,7 +226,7 @@ Azure Monitor 专用链接范围 (AMPLS) 将专用终结点连接（及包含它
 连接到工作区的所有范围都显示在此屏幕中。 连接到范围 (AMPLSs) 后，便可以使连接到每个 AMPLS 的虚拟网络的网络流量到达此工作区。 通过这里建立连接，其效果与我们在[连接 Azure Monitor 资源](#connect-azure-monitor-resources)中所做的在范围上设置连接相同。 若要添加新连接，请选择“添加”，然后选择 Azure Monitor专用链接范围。 选择“应用”进行连接。 请注意，工作区可以连接到5个 AMPLS 对象，如[局限和限制](#restrictions-and-limitations)中所述。 
 
 ### <a name="manage-access-from-outside-of-private-links-scopes"></a>从专用链接范围外管理访问权限
-此页面底部的设置控制公用网络的访问权限，即未通过列出的范围 (AMPLS) 进行连接的网络。 将“允许引入通过公用网络访问”设置为“否”，则会阻止从连接范围之外的计算机引入日志。 将“允许查询通过公用网络访问”设置为“否”，则会阻止来自范围外的计算机的查询。 这包括通过工作簿、仪表板、基于查询 API 的客户端体验、Azure 门户中的见解等运行的查询。 对于 Azure 门户外部运行的体验，其查询 Log Analytics 数据也必须在专用链接的 VNET 中运行。
+此页面底部的设置控制公用网络的访问权限，即未连接到列出的范围 (AMPLS) 的网络。 将“允许引入通过公用网络访问”设置为“否”，则会阻止从连接范围之外的计算机引入日志。 将“允许查询通过公用网络访问”设置为“否”，则会阻止来自范围外的计算机的查询。 这包括通过工作簿、仪表板、基于查询 API 的客户端体验、Azure 门户中的见解等运行的查询。 对于 Azure 门户外部运行的体验，其查询 Log Analytics 数据也必须在专用链接的 VNET 中运行。
 
 ### <a name="exceptions"></a>例外
 如上所述的限制访问不适用于 Azure 资源管理器，因此具有以下限制：
@@ -237,7 +237,7 @@ Azure Monitor 专用链接范围 (AMPLS) 将专用终结点连接（及包含它
 > 通过[诊断设置](../essentials/diagnostic-settings.md)上传到工作区的日志和指标会通过安全的专用 Microsoft 通道，且不受这些设置控制。
 
 ### <a name="log-analytics-solution-packs-download"></a>Log Analytics 解决方案包下载
-Log Analytics 代理需要访问全局存储帐户才能下载解决方案包。 2021 年 4 月 19 日或之后创建的专用链接设置可以通过专用链接访问代理的解决方案包存储。 可通过为 [blob.core.windows.net](#privatelink-blob-core-windows-net) 创建的新 DNS 区域实现此目的。
+Log Analytics 代理需要访问全局存储帐户才能下载解决方案包。 在 2021 年 4 月 19 日或之后（或从 2021 年 6 月开始在 Azure 主权云上）创建的专用链接设置可以通过专用链接访问代理的解决方案包存储。 可通过为 [blob.core.windows.net](#privatelink-blob-core-windows-net) 创建的新 DNS 区域实现此目的。
 
 如果专用链接设置是在 2021 年 4 月 19 日之前创建的，则无法通过专用链接访问解决方案包存储。 若要处理此情况，可以执行以下操作之一：
 * 重新创建 AMPLS 和与其连接的专用终结点

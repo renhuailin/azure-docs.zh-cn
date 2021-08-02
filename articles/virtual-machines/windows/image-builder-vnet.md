@@ -1,5 +1,5 @@
 ---
-title: 使用现有 VNET 通过 Azure 映像生成器（预览版）创建 Windows VM
+title: 使用现有 VNET 通过 Azure 映像生成器创建 Windows VM
 description: 使用现有 VNET 通过 Azure 映像生成器创建 Windows VM
 author: cynthn
 ms.author: cynthn
@@ -9,36 +9,18 @@ ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.reviewer: danis
-ms.openlocfilehash: 3695732f81463efcadb3d8d8b49e367501cb6e29
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 12ec69f3976cb156bc04bf2ed7b79b1fd775b142
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034058"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031083"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>使用 Azure 映像生成器创建允许访问现有 Azure VNET 的 Windows VM
 
 本文介绍如何使用 Azure 映像生成器创建有权访问 VNET 中现有资源的基本自定义 Windows 映像。 创建的生成 VM 将部署到在订阅中指定的新的或现有的 VNET。 使用现有的 Azure VNET 时，Azure 映像生成器服务不需要公共网络连接。
 
-> [!IMPORTANT]
-> Azure 映像生成器目前提供公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-## <a name="register-the-features"></a>注册功能
-
-首先，必须注册 Azure 映像生成器服务。 注册会向该服务授予创建、管理和删除暂存资源组的权限。 该服务还拥有添加映像生成所需的组资源的权限。
-
-```powershell-interactive
-# Register for Azure Image Builder Feature
-
-Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
-
-Get-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
-
-# wait until RegistrationState is set to 'Registered'
-```
 ## <a name="set-variables-and-permissions"></a>设置变量和访问权限 
 
 你将反复使用一些信息片段。 请创建一些变量来存储这些信息。

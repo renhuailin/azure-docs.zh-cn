@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 10f01fd5943928eda1f1e4518f30c8e3ccf56b46
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 437b6621687597e56c63b9afb146c67657650e71
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737789"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569271"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>准备虚拟机用于 FCI（Azure VM 上的 SQL Server）
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,6 +26,9 @@ ms.locfileid: "98737789"
 本文介绍如何准备 Azure 虚拟机 (VM) 以将其与 SQL Server 故障转移群集实例一起使用 (FCI)。 根据 FCI 存储解决方案的不同，配置设置会有所不同，因此请验证是否选择了正确的配置以满足环境和业务需求。 
 
 若要了解详细信息，请参阅对 [Azure VM 上的 SQL Server 的 FCI](failover-cluster-instance-overview.md) 和[群集最佳做法](hadr-cluster-best-practices.md)的概述。 
+
+> [!NOTE]
+> 现在，可以使用 Azure Migrate 将故障转移群集实例解决方案直接迁移到 Azure VM 上的 SQL Server。 有关详细信息，请参阅[迁移故障转移群集实例](../../migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md)。 
 
 ## <a name="prerequisites"></a>先决条件 
 
@@ -51,7 +54,7 @@ ms.locfileid: "98737789"
 - **Azure 共享磁盘**：如果使用的是高级 SSD 或超级磁盘，则可用性选项会有所不同：
    - 高级 SSD：放置在[邻近放置组](../../../virtual-machines/windows/proximity-placement-groups-portal.md)中的高级 SSD 的不同容错域/更新域中的[可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
    - 超级磁盘：[可用性区域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)，但必须将 VM 放在同一可用性区域中，这会将群集的可用性降到 99.9%。 
-- **高级文件共享**：[可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)或[可用性区域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)。
+- **高级文件共享**：[可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)或 [可用性区域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)。
 - **存储空间直通**：[可用性集](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set)。
 
 > [!IMPORTANT]
@@ -111,7 +114,7 @@ Azure 市场中的 SQL Server VM 映像将自动注册到 SQL IaaS 代理扩展�
 
 下表详细说明了可能需要打开的端口，具体取决于 FCI 配置： 
 
-   | 用途 | 端口 | 注释
+   | 用途 | 端口 | 说明
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | SQL Server 的默认实例正常使用的端口。 如果使用了库中的某个映像，此端口会自动打开。 </br> </br> **使用者**：所有 FCI 配置。 |
    | 运行状况探测 | TCP 59999 | 任何打开的 TCP 端口。 将负载均衡器[运行状况探测](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe)和群集配置为使用此端口。 </br> </br> **使用者**：具有负载均衡器的 FCI。 |
@@ -135,8 +138,10 @@ Azure 市场中的 SQL Server VM 映像将自动注册到 SQL IaaS 代理扩展�
 - [使用高级文件共享配置 FCI](failover-cluster-instance-premium-file-share-manually-configure.md)
 - [使用存储空间直通配置 FCI](failover-cluster-instance-storage-spaces-direct-manually-configure.md)
 
-若要了解详细信息，请参阅对 [Azure VM 上的 SQL Server 的 FCI](failover-cluster-instance-overview.md) 和[支持的 HADR 配置](hadr-cluster-best-practices.md)的概述。 
 
-有关其他信息，请参阅： 
-- [Windows 群集技术](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server 故障转移群集实例](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+若要了解更多信息，请参阅以下文章：
+
+- [Azure VM 上的 SQL Server 的 Windows Server 故障转移群集](hadr-windows-server-failover-cluster-overview.md)
+- [Azure VM 上的 SQL Server 的故障转移群集实例](failover-cluster-instance-overview.md)
+- [故障转移群集实例概述](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Azure VM 上的 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)

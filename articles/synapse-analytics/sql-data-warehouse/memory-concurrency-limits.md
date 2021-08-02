@@ -7,20 +7,23 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2020
+ms.date: 04/04/2021
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: fb0ad93fb4a1269b4cca02b114c0427f0c44a31b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fd628c649d379e60ddf8ec772e1cf708f3e50d1
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96455357"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111540295"
 ---
 # <a name="memory-and-concurrency-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池的内存和并发限制
 
 查看分配给 Azure Synapse Analytics 中的各个性能级别和资源类的内存和并发限制。  
+
+> [!NOTE]
+> 与动态或静态资源类相比，工作负载管理工作负荷组为每个请求和并发性配置资源提供了更大的灵活性。  了解更多详细信息，请参阅[工作负荷组](sql-data-warehouse-workload-isolation.md)和[创建工作负荷组](/sql/t-sql/statements/create-workload-group-transact-sql)语法。
 
 ## <a name="data-warehouse-capacity-settings"></a>数据仓库容量设置
 
@@ -131,5 +134,7 @@ ms.locfileid: "96455357"
 
 若要详细了解如何利用资源类来进一步优化工作负荷，请查看以下文章：
 
+* [工作负荷管理工作负荷组](sql-data-warehouse-workload-isolation.md)
+* [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql)
 * [用于工作负荷管理的资源类](resource-classes-for-workload-management.md)
 * [分析工作负荷](analyze-your-workload.md)

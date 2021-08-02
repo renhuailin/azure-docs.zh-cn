@@ -3,15 +3,15 @@ title: 连接时启动虚拟机 - Azure
 description: 如何配置连接时启动虚拟机功能。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/23/2021
+ms.date: 05/21/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 05500ded7512b54446d153e37233e4889b3107ff
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 7e4ca9a6cfc87844bf74131b145c19aecd964554
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107949181"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752128"
 ---
 # <a name="start-virtual-machine-on-connect-preview"></a>连接时启动虚拟机（预览版）
 
@@ -22,11 +22,11 @@ ms.locfileid: "107949181"
 通过“连接时启动虚拟机 (VM)”功能（预览版），你可以让最终用户只在需要 VM 时才将其打开，从而节省成本。 然后，你可以在不需要 VM 时将其关闭。
 
 >[!NOTE]
->Windows 虚拟桌面（经典）不支持此功能。
+>Azure 虚拟桌面（经典）不支持此功能。
 
 ## <a name="requirements-and-limitations"></a>要求和限制
 
-只能为个人主机池启用连接时启动 VM 功能。 若要详细了解个人主机池，请参阅 [Windows 虚拟桌面环境](environment-setup.md#host-pools)。
+可使用 PowerShell 和 Azure 门户为个人或共用主机池启用“连接时启动 VM”功能。
 
 以下远程桌面客户端支持“连接时启动 VM”功能：
 
@@ -37,11 +37,9 @@ ms.locfileid: "107949181"
 
 可以在[技术社区论坛](https://aka.ms/wvdtc)中查看有关更新和客户端支持的公告。
 
-Azure 政府云目前不支持连接时启动 VM。
-
 ## <a name="create-a-custom-role-for-start-vm-on-connect"></a>为连接时启动 VM 创建自定义角色
 
-需要先为 VM 分配自定义 RBAC（基于角色的访问控制）角色，然后才能配置连接时启动 VM 功能。 此角色允许 Windows 虚拟桌面管理你的订阅中的 VM。 你还可以使用此角色来打开 VM、检查其状态，以及报告诊断信息。 如果你想要详细了解每个角色的作用，请查看 [Azure 自定义角色](../role-based-access-control/custom-roles.md)。
+需要先为 VM 分配自定义 RBAC（基于角色的访问控制）角色，然后才能配置连接时启动 VM 功能。 此角色允许 Azure 虚拟桌面管理订阅中的 VM。 你还可以使用此角色来打开 VM、检查其状态，以及报告诊断信息。 如果你想要详细了解每个角色的作用，请查看 [Azure 自定义角色](../role-based-access-control/custom-roles.md)。
 
 ### <a name="use-the-azure-portal"></a>使用 Azure 门户
 
@@ -63,7 +61,7 @@ Azure 政府云目前不支持连接时启动 VM。
 
 5. 完成后，选择“确定”。
 
-然后，需要分配该角色以向 Windows 虚拟桌面授予访问权限。
+然后，需要分配该角色才能向 Azure 虚拟桌面授予访问权限。
 
 若要分配自定义角色，请执行以下操作：
 
@@ -71,13 +69,13 @@ Azure 政府云目前不支持连接时启动 VM。
 
 2. 选择刚刚创建的角色。
 
-3. 在搜索栏中，输入并选择“Windows 虚拟桌面”。
+3. 在搜索栏中，输入并选择“Azure 虚拟桌面”。
 
       >[!NOTE]
-      >如果已部署 Windows 虚拟桌面（经典），则你可能会看到两个应用。 将角色分配到这两个应用。
+      >如果已部署 Azure 虚拟桌面（经典），则你可能会看到两个应用。 将角色分配到这两个应用。
       >
       > [!div class="mx-imgBorder"]
-      > ![“访问控制(IAM)”选项卡的屏幕截图。在搜索栏中，“Windows 虚拟桌面”和“Windows 虚拟桌面(经典)”都以红色突出显示。](media/add-role-assignment.png)
+      > ![“访问控制(IAM)”选项卡的屏幕截图。在搜索栏中，“Azure 虚拟桌面”和“Azure 虚拟桌面(经典)”都以红色突出显示。](media/add-role-assignment.png)
 
 ### <a name="create-a-custom-role-with-a-json-file-template"></a>使用 JSON 文件模板创建自定义角色
 
@@ -114,6 +112,8 @@ Azure 政府云目前不支持连接时启动 VM。
 
 连接时启动 VM 是一项主机池设置。 如果你希望只有选定的一组用户可以使用此功能，请确保只向你要添加的用户分配所需角色。
 
+对于个人桌面，该功能只会打开服务已分配或将分配给用户的现有 VM。 在共用主机池的场景中，该服务只会在未打开任何 VM 的情况下打开一个 VM。 仅当第一个 VM 达到会话限制时，该功能才会打开其他 VM。
+
 >[!IMPORTANT]
 > 只能在现有的主机池中配置此功能。 创建新的主机池时，此功能不可用。
 
@@ -123,12 +123,9 @@ Azure 政府云目前不支持连接时启动 VM。
 
 1. 打开浏览器，并转到 [Azure 门户](https://portal.azure.com)。
 
-2. 在 Azure 门户中转到 Windows 虚拟桌面。
+2. 在 Azure 门户中转到 Azure 虚拟桌面。
 
-3. 选择“主机池”，然后查找包含你向其分配了角色的个人桌面的主机池。
-
-   >[!NOTE]
-   > 配置有此功能的主机池必须具有直接分配了角色的个人桌面。 如果主机池中的桌面配置不正确，配置过程将不起作用。
+3. 选择“主机池”，然后转到要启用该设置的主机池。
 
 4. 在主机池中，选择“属性”。 在“连接时启动 VM”下选择“是”，然后选择“保存”以立即应用设置  。
 
@@ -161,9 +158,11 @@ Azure 政府云目前不支持连接时启动 VM。
 
 ## <a name="troubleshooting"></a>故障排除
 
-如果该功能出现任何问题，我们建议使用 Windows 虚拟桌面[诊断功能](diagnostics-log-analytics.md)检查问题。 如果收到错误消息，请确保特别注意消息内容，并将错误名称复制到某个位置以方便参考。
+如果该功能出现任何问题，建议你使用 Azure 虚拟桌面[诊断功能](diagnostics-log-analytics.md)检查问题。 如果收到错误消息，请确保特别注意消息内容，并将错误名称复制到某个位置以方便参考。
 
-还可以使用 [Azure Monitor for Windows Virtual Desktop](azure-monitor.md) 获取有关如何解决问题的建议。
+还可使用[适用于 Azure 虚拟桌面的 Azure Monitor](azure-monitor.md) 获取有关如何解决问题的建议。
+
+如果 VM 未打开，则需要在执行任何其他操作之前检查尝试打开的 VM 的运行状况。
 
 ## <a name="next-steps"></a>后续步骤
 

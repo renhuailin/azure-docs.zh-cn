@@ -4,12 +4,12 @@ description: 在设备、桌面应用、网页或服务中插入几行代码，�
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: c43ecced4c87deda3e3d92a470d6694dfd1813e2
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 75576056162bf869c20706bed22c31785a8ea2a0
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108331513"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060293"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -40,7 +40,7 @@ ms.locfileid: "108331513"
 
   * [ASP.NET 项目](./asp-net.md)
   * [ASP.NET Core 项目](./asp-net-core.md)
-  * [Java 项目](./java-get-started.md)
+  * [Java 项目](./java-in-process-agent.md)
   * [Node.js 项目](./nodejs.md)
   * [每个网页中的 JavaScript](./javascript.md)
 * 在设备或 Web 服务器代码中包含以下内容：
@@ -59,7 +59,7 @@ ms.locfileid: "108331513"
 
 对于 [ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) 应用和[用于 .NET/.NET Core 的非 HTTP/辅助角色](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected)，建议从依赖关系注入容器获取 `TelemetryClient` 的实例，如各自的相关文档中所述。
 
-如果使用的是 AzureFunctions v2 及更高版本或 Azure WebJobs v3 及更高版本，请遵循以下文档： https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
+如果使用的是 AzureFunctions v2 及更高版本或 Azure WebJobs v3 及更高版本，请参照[此文档](../../azure-functions/functions-monitoring.md)。
 
 *C#*
 
@@ -397,7 +397,7 @@ try
 }
 catch (ex)
 {
-    appInsights.trackException(ex);
+    appInsights.trackException({exception: ex});
 }
 ```
 
@@ -417,7 +417,7 @@ catch (ex)
 SDK 会自动捕获许多异常，因此不一定需要显式调用 TrackException。
 
 * ASP.NET：[编写代码来捕获异常](./asp-net-exceptions.md)。
-* Java EE：[自动捕获异常](./java-get-started.md#exceptions-and-request-failures)。
+* Java EE：[自动捕获异常](./java-in-process-agent.md)。
 * JavaScript：自动捕获异常。 若要禁用自动收集，请在插入网页的代码片段中添加一行：
 
 ```javascript
@@ -458,7 +458,7 @@ exceptions
 
 使用 .NET 时，[日志适配器](./asp-net-trace-logs.md)使用此 API 将第三方日志发送到门户。
 
-使用 Java 时，[标准记录器（如 Log4J、Logback）](./java-trace-logs.md)使用 Application Insights Log4j 或 Logback Appenders 将第三方日志发送到门户。
+在 Java 中，[Application Insights Java 代理](java-in-process-agent.md)自动收集日志并将其发送到门户。
 
 *C#*
 
@@ -602,11 +602,11 @@ finally
 
 请记住，服务器 SDK 包含[依赖项模块](./asp-net-dependencies.md)，用于自动发现和跟踪特定的依赖项调用（例如，数据库和 REST API）。 必须在服务器上安装一个代理才能让模块正常运行。
 
-使用 Java 时，可以使用 [Java 代理](./java-agent.md)自动跟踪某些依赖项调用。
+在 Java 中，可以使用 [Application Insights java 代理](java-in-process-agent.md)自动跟踪许多依赖项调用。
 
-如果想要跟踪自动跟踪未捕获的调用，或不想安装代理，可以使用此调用。
+如果想要跟踪自动跟踪未捕获的调用，可以使用此调用。
 
-要关闭 C# 中的标准依赖项跟踪模块，请编辑 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 并删除对 `DependencyCollector.DependencyTrackingTelemetryModule` 的引用。 使用 Java 时，如果不希望自动收集标准依赖项，请勿安装 java 代理。
+要关闭 C# 中的标准依赖项跟踪模块，请编辑 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 并删除对 `DependencyCollector.DependencyTrackingTelemetryModule` 的引用。 对于 Java，请参阅[取消自动收集的特定遥测数据](./java-standalone-config.md#suppressing-specific-auto-collected-telemetry)。
 
 ### <a name="dependencies-in-analytics"></a>Analytics 中的依赖项
 

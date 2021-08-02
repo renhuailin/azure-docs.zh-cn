@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b32f16d170df9963960862bc82aef1a4baf13896
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4b0daecadd3af5f1322afc97f91706098aade768
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92104438"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110080481"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -44,9 +44,120 @@ Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与 
 [更新扩展]: ./functions-bindings-register.md
 [Azure 工具扩展]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
+#### <a name="service-bus-extension-5x-and-higher"></a>服务总线扩展 5.x 及更高版本
+
+新版服务总线绑定扩展以[预览版 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/5.0.0-beta.2)的形式提供。 此预览版引入了[使用标识而不是机密进行连接](./functions-reference.md#configure-an-identity-based-connection)的功能。 对于 .NET 应用程序，它还会更改你可以绑定到的类型，并将 `Microsoft.ServiceBus.Messaging` 和 `Microsoft.Azure.ServiceBus` 中的类型替换为 [Azure.Messaging.ServiceBus](/dotnet/api/azure.messaging.servicebus) 中的新类型。
+
+> [!NOTE]
+> 预览包不包括在扩展捆绑包中，必须手动安装。 对于 .NET 应用，请添加对包的引用。 对于所有其他应用类型，请参阅[更新扩展]。
+
+[core tools]: ./functions-run-local.md
+[扩展捆绑包]: ./functions-bindings-register.md#extension-bundles
+[NuGet 包]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage
+[更新扩展]: ./functions-bindings-register.md
+[Azure 工具扩展]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
+
 ### <a name="functions-1x"></a>Functions 1.x
 
 Functions 1.x 应用会自动引用 [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet 程序包（版本 2.x）。
+
+
+<a name="host-json"></a>  
+
+## <a name="hostjson-settings"></a>host.json 设置
+
+本部分介绍版本 2.x 及更高版本中可用于此绑定的全局配置设置。 下面的示例 host.json 文件仅包含此绑定的设置。 有关全局配置设置的详细信息，请参阅 [Azure Functions 版本的 host.json 参考](functions-host-json.md)。
+
+> [!NOTE]
+> 有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md)。
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "serviceBus": {
+            "prefetchCount": 100,
+            "messageHandlerOptions": {
+                "autoComplete": true,
+                "maxConcurrentCalls": 32,
+                "maxAutoRenewDuration": "00:05:00"
+            },
+            "sessionHandlerOptions": {
+                "autoComplete": false,
+                "messageWaitTimeout": "00:00:30",
+                "maxAutoRenewDuration": "00:55:00",
+                "maxConcurrentSessions": 16
+            }
+        }
+    }
+}
+```
+
+如果将 `isSessionsEnabled` 设置为 `true`，则将采用 `sessionHandlerOptions`。  如果将 `isSessionsEnabled` 设置为 `false`，则将采用 `messageHandlerOptions`。
+
+|属性  |默认 | 说明 |
+|---------|---------|---------|
+|prefetchCount|0|获取或设置消息接收方可以同时请求的消息数。|
+|maxAutoRenewDuration|00:05:00|自动续订消息锁的最长持续时间。|
+|autoComplete|是|是触发器在处理后自动调用 complete，还是函数代码手动调用 complete。<br><br>仅在 C# 中支持将其设置为 `false`。<br><br>如果设置为 `true`，则触发器会在函数执行成功完成时自动完成该消息，否则会放弃该消息。<br><br>设置为 `false` 时，你负责调用 [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver) 方法来完成、放弃消息或将消息放入死信队列。 如果引发了异常（并且未调用任何 `MessageReceiver` 方法），则锁仍然存在。 锁到期后，消息会重新排队，同时 `DeliveryCount` 会递增，并且锁会自动续订。<br><br>在非 C# 函数中，函数中的异常会导致运行时在后台调用 `abandonAsync`。 如果未发生异常，则在后台调用 `completeAsync`。 |
+|maxConcurrentCalls|16|对于每个缩放实例，消息泵应对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。|
+|maxConcurrentSessions|2000|每个缩放实例可以并发处理的最大会话数。|
+
+### <a name="additional-settings-for-version-5x"></a>5\.x+ 版的其他设置
+
+下面的示例 host.json 文件仅包含服务总线扩展的 5.0.0 版及更高版本的设置。
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "serviceBus": {
+            "serviceBusOptions": {
+                "retryOptions":{
+                    "mode": "exponential",
+                    "tryTimeout": "00:00:10",
+                    "delay": "00:00:00.80",
+                    "maxDelay": "00:01:00",
+                    "maxRetries": 4
+                },
+                "prefetchCount": 100,
+                "autoCompleteMessages": true,
+                "maxAutoLockRenewalDuration": "00:05:00",
+                "maxConcurrentCalls": 32,
+                "maxConcurrentSessions": 10,
+                "maxMessages": 2000,
+                "sessionIdleTimeout": "00:01:00"
+            }
+        }
+    }
+}
+```
+
+使用服务总线扩展 5.x 及更高版本时，除了 `ServiceBusOptions` 中的 2.x 设置外，还支持以下全局配置设置。
+
+|属性  |默认 | 说明 |
+|---------|---------|---------|
+|prefetchCount|0|获取或设置消息接收方可以同时请求的消息数。|
+|autoCompleteMessages|true|确定是否在成功执行函数后自动完成消息。应该用来替换 `autoComplete` 配置设置。|
+|maxAutoLockRenewalDuration|00:05:00|此属性应该用来替换 `maxAutoRenewDuration`|
+|maxConcurrentCalls|16|对于每个缩放实例，消息泵应对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。|
+|maxConcurrentSessions|8|每个缩放实例可以并发处理的最大会话数。|
+|maxMessages|1000|将传递给每个函数调用的消息的最大数量。 这仅适用于接收一批消息的函数。|
+|sessionIdleTimeout|不适用|当前活动会话等待某个消息被接收的最长时间。 经过该时间后，处理器将关闭此会话并尝试处理另一个会话。|
+
+### <a name="retry-settings"></a>重试设置
+
+除了使用 5.x 版及更高版本的服务总线扩展时的上述配置属性外，你还可以从 `ServiceBusOptions` 内部配置 `RetryOptions`。 这些设置确定了是否应重试失败的操作。如果应重试，则请确定两次重试之间的等待时间。 这些选项还控制允许用于接收消息以及与服务总线服务进行的其他交互的时间。
+
+|属性  |默认 | 说明 |
+|---------|---------|---------|
+|mode|指数|用于计算重试延迟的方法。 默认指数模式将根据一个回退策略来重试带延迟的尝试，该策略规定每次尝试都会增加重试前的等待时间。 `Fixed` 模式将按固定间隔重试，每个延迟的持续时间一致。|
+|tryTimeout|00:00:10|每次尝试时等待某个操作的最大持续时间。|
+|delay|00:00:00.80|要在两次重试之间应用的延迟或回退因子。|
+|maxDelay|00:01:00|允许出现在两次重试之间的最大延迟|
+|maxRetries|3|将关联的操作视为失败之前的最大重试次数。|
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

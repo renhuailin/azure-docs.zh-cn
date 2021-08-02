@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/09/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 59e2fc1f528040515398e51d359840f6ef1bbefc
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 33e73a70db1a0fd16fae98ee5bc4bbdaa3759fe8
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107255794"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756052"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>使用 Azure 文件存储和 Azure AD DS 创建配置文件容器
 
@@ -113,7 +113,7 @@ ms.locfileid: "107255794"
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile
      ```
 
-8. 运行下面的命令，以便 Windows Virtual Desktop 用户可以创建自己的配置文件容器，同时阻止其他用户访问配置文件容器。
+8. 运行以下命令可允许 Azure 虚拟桌面用户创建自己的配置文件容器，同时阻止其他用户访问其配置文件容器。
 
      ```cmd
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
@@ -175,7 +175,7 @@ ms.locfileid: "107255794"
 
 若要分配用户，请执行以下操作：
 
-1. 以管理员身份运行 Windows PowerShell，然后使用 PowerShell 运行以下 cmdlet 来登录 Windows Virtual Desktop：
+1. 以管理员身份运行 Windows PowerShell，然后使用 PowerShell 运行以下 cmdlet 来登录 Azure虚拟桌面：
 
    ```powershell
    Import-Module Microsoft.RdInfra.RdPowershell
@@ -188,7 +188,7 @@ ms.locfileid: "107255794"
    Add-RdsAccount -DeploymentUrl $brokerurl
    ```
 
-   当系统提示输入凭据时，输入在 Windows Virtual Desktop 租户中被授予“租户创建者”、“RDS 所有者”或“RDS 参与者”角色的同一用户。
+   当系统提示输入凭据时，输入在 Azure 虚拟桌面租户中被授予“租户创建者”、“RDS 所有者”或“RDS 参与者”角色的同一用户。
 
 2. 运行下面的 cmdlet，以将用户分配到“远程桌面”组：
 
@@ -226,7 +226,7 @@ ms.locfileid: "107255794"
 
 若要验证配置文件，请执行以下操作：
 
-1. 打开浏览器，然后转到 [Windows Virtual Desktop Web 客户端](https://rdweb.wvd.microsoft.com/arm/webclient)。
+1. 打开浏览器，然后转到 [Azure 虚拟桌面 Web 客户端](https://rdweb.wvd.microsoft.com/arm/webclient)。
 
 2. 使用分配给“远程桌面”组的用户帐户来登录。
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/25/2021
+ms.date: 05/27/2021
 ms.author: alkohli
-ms.openlocfilehash: ac5ed0e5941c6251d632d029fe4c9f80bbcf12df
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5fd8dad44aa085530426168961280c4a84162ecb
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612545"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110617666"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>更新 Azure Stack Edge Pro GPU 
 
@@ -24,17 +24,17 @@ ms.locfileid: "105612545"
 本文中所述的过程是使用不同版本的软件执行的，但对于当前软件版本，该过程保持不变。
 
 > [!IMPORTANT]
-> - 更新 2103 是当前更新且对应于：
->   - 设备软件版本 - 2.2.1540.2890
->   - Kubernetes 服务器版本 - v1.17.3
->   - IoT Edge 版本：0.1.0-beta13
+> - 更新 2105 是当前更新且对应于：
+>   - 设备软件版本 - 2.2.1606.3320
+>   - Kubernetes 服务器版本 - v1.20.2
+>   - IoT Edge 版本：0.1.0-beta14
 >   - GPU 驱动程序版本：460.32.03
 >   - CUDA 版本：11.2
 >    
->    有关此更新中新增功能的信息，请转到[发行说明](azure-stack-edge-gpu-2103-release-notes.md)。
-> - 若要应用 2103 更新，设备必须正在运行 2010。 如果未运行支持的最低版本，则会看到此错误：“无法安装更新包，因为不满足其依赖项”。
+>    有关此更新中新增功能的信息，请转到[发行说明](azure-stack-edge-gpu-2105-release-notes.md)。
+> - 若要应用 2105 更新，设备必须正在运行 2010。 如果未运行支持的最低版本，则会看到此错误：“无法安装更新包，因为不满足其依赖项”。
 > - 此更新要求按顺序应用两个更新。 首先应用设备软件更新，然后应用 Kubernetes 更新。
-> - 请记住，安装更新或修补程序会重新启动设备。 此更新包含设备软件更新和 Kubernetes 更新。 假设 Azure Stack Edge Pro 是一个单节点设备，任何正在进行的 I/O 都会被中断，并且你的设备将经历长达 1.5 小时的更新停机时间。
+> - 请记住，安装更新或修补程序会重新启动设备。 此更新包含设备软件更新和 Kubernetes 更新。 如果 Azure Stack Edge Pro GPU 是一个单节点设备，则任何正在进行的 I/O 都会被中断，并且你的设备将经历长达 1.5 小时的更新停机时间。
 
 若要在设备上安装更新，首先需要配置更新服务器的位置。 配置更新服务器后，可以通过 Azure 门户 UI 或本地 Web UI 应用更新。
 
@@ -155,13 +155,13 @@ ms.locfileid: "105612545"
 
     ![搜索目录](./media/azure-stack-edge-gpu-install-update/download-update-1.png)
 
-2. 在 Microsoft 更新目录的搜索框中，输入要下载的更新的修补程序或条款的知识库 (KB) 编号。 例如，输入“Azure Stack Edge Pro”，然后单击“搜索”。
+2. 在 Microsoft 更新目录的搜索框中，输入要下载的更新的修补程序或条款的知识库 (KB) 编号。 例如，输入“Azure Stack Edge”，然后单击“搜索” 。
    
-    更新列表显示为“Azure Stack Edge 更新 2103”。
+    更新列表显示为“Azure Stack Edge 更新 2105”。
    
     <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2-b.png)-->
 
-4. 选择“下载”。 有两个包可供下载：KB 4613486 和 KB 46134867 ，它们分别对应于设备软件更新 (SoftwareUpdatePackage.exe)和 Kubernetes 更新 (Kubernetes_Package.exe)。 将包下载到本地系统的文件夹。 也可以将该文件夹复制到可通过设备访问的网络共享。
+4. 选择“下载”  。 有两个包可供下载： <!--KB 4616970 and KB 4616971--> 一个用于设备软件更新 (SoftwareUpdatePackage.exe)，另一个用于 Kubernetes 更新 (Kubernetes_Package.exe) 。 将包下载到本地系统的文件夹。 也可以将该文件夹复制到可通过设备访问的网络共享。
 
 ### <a name="install-the-update-or-the-hotfix"></a>安装更新或修补程序
 
@@ -192,7 +192,7 @@ ms.locfileid: "105612545"
 
 5. 更新开始。 成功更新设备后，该设备将重新启动。 本地 UI 在此期间不可访问。
    
-6. 重新启动完成后，会转到“登录”页。 若要验证设备软件是否已更新，请在本地 Web UI 中，转到“维护” > “软件更新”。 对于当前版本，显示的软件版本应为 Azure Stack Edge 2103。 
+6. 重新启动完成后，会转到“登录”页。 若要验证设备软件是否已更新，请在本地 Web UI 中，转到“维护” > “软件更新”。 对于当前版本，显示的软件版本应为 Azure Stack Edge 2105。 
 
    <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)-->
 

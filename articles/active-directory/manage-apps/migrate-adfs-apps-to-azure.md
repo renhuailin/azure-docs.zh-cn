@@ -2,21 +2,21 @@
 title: 将应用程序身份验证从 AD FS 移动到 Azure Active Directory
 description: 了解如何使用 Azure Active Directory 替换 Active Directory 联合身份验证服务 (AD FS)，让用户能够单一登录所有应用程序。
 services: active-directory
-author: iantheninja
+author: mtillman
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 03/01/2021
-ms.author: iangithinji
+ms.author: mtillman
 ms.reviewer: baselden
-ms.openlocfilehash: 4e9bedc63a3b1d53222c732b6611d132249b07c6
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 616550188687823438187e1e09c90d5d3c6c6835
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320792"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078808"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>将应用程序身份验证从 Active Directory 联合身份验证服务移动到 Azure Active Directory
 
@@ -27,13 +27,13 @@ ms.locfileid: "108320792"
 
 ## <a name="azure-ad-benefits"></a>Azure AD 优势
 
-如果你的本地目录包含用户帐户，则你可能有许多用户对其进行身份验证的应用程序。 其中每个应用都进行了配置，让用户使用其标识进行访问。
+如果你的本地目录包含用户帐户，你可能有许多应用程序需要验证用户身份。 其中每个应用都进行了配置，让用户使用其标识进行访问。
 
 用户还可以直接使用本地 Active Directory 进行身份验证。 Active Directory 联合身份验证服务 (AD FS) 是基于标准的本地标识服务。 它扩展了在受信任业务合作伙伴之间使用单一登录 (SSO) 功能的能力，因此用户无需单独登录每个应用程序。 这称为联合标识。
 
 许多组织都有直接与 AD FS 联合的服务型软件 (SaaS) 或自定义业务线应用，以及基于 Microsoft 365 和 Azure AD 的应用。
 
-  ![在本地直接连接的应用程序](media/migrate-adfs-apps-to-azure/app-integration-before-migration-1.png)
+  ![直接在本地连接的应用程序](media/migrate-adfs-apps-to-azure/app-integration-before-migration-1.png)
 
 > [!Important]
 > 为了提高应用程序的安全性，你的目标是在本地环境和云环境中拥有一套单一的访问控制和策略。
@@ -42,9 +42,9 @@ ms.locfileid: "108320792"
 
 ## <a name="types-of-apps-to-migrate"></a>要迁移的应用类型
 
-将所有应用程序身份验证迁移到 Azure AD 是最佳选择，因为它为你提供了一个用于标识和访问管理的单一控制平面。
+将所有应用程序身份验证迁移到 Azure AD 是最佳选择，因为它为提供了一个用于标识和访问管理的控制平面。
 
-你的应用程序可使用新式或旧版协议进行身份验证。 计划迁移到 Azure AD 时，请考虑首先迁移使用新式身份验证协议（例如 SAML 和 Open ID Connect）的应用。 可通过 Azure 应用库中的内置连接器或通过在 Azure AD 注册应用程序，将这些应用重新配置为向 Azure AD 进行身份验证。 使用旧版协议的应用可以使用应用程序代理进行集成。
+你的应用程序可以使用新式或旧式身份验证协议。 计划迁移到 Azure AD 时，请考虑首先迁移使用新式身份验证协议（例如 SAML 和 Open ID Connect）的应用。 可通过 Azure 应用库中的内置连接器或通过在 Azure AD 注册应用程序，将这些应用重新配置为向 Azure AD 进行身份验证。 使用旧版协议的应用可以使用应用程序代理进行集成。
 
 有关详细信息，请参阅：
 
@@ -326,7 +326,7 @@ AD FS 中的 MFA 规则设置：
 
 1. 创建[新的条件访问策略](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)。
 1. 将“分配”设置为“所有用户” 。
-1. [在 Azure AD 中配置命名位置](../reports-monitoring/quickstart-configure-named-locations.md)。 否则，信任来自企业网络内部的联合身份验证。
+1. [在 Azure AD 中配置命名位置](../conditional-access/location-condition.md)。 否则，信任来自企业网络内部的联合身份验证。
 1. 配置“条件”规则以指定要对其强制执行 MFA 的位置。
 
     ![屏幕截图显示“条件”规则的“位置”窗格。](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
@@ -365,7 +365,7 @@ AD FS 2016 中的内置访问控制策略：
 
 | 选项 | 如何在 Azure AD 中配置“允许”选项？| 如何在 Azure AD 中配置“排除”选项？ |
 | - | - | - |
-| 来自特定网络| 映射到 Azure AD 中的[命名位置](../reports-monitoring/quickstart-configure-named-locations.md)| 使用[受信任位置](../conditional-access/location-condition.md)的“排除”选项 |
+| 来自特定网络| 映射到 Azure AD 中的[命名位置](../conditional-access/location-condition.md)| 使用[受信任位置](../conditional-access/location-condition.md)的“排除”选项 |
 | 来自特定组| [设置用户/组分配](assign-user-or-group-access-portal.md)| 使用“用户和组”中的“排除”选项 |
 | 来自具有特定信任级别的设备| 在“分配”->“条件”下的“设备状态”控件中设置此项| 使用“设备状态”条件下的“排除”选项并包括“所有设备”  |
 | 在请求中具有特定声明| 此设置不可迁移| 此设置不可迁移 |
