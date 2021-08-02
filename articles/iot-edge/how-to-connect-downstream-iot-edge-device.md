@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 500833d1bb4fc492942c08239bd488c2d2c16d30
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: cdc7ce9fbb24dc593ebd4dedc7c2c4ce82afa3f0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484313"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094811"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>将下游 IoT Edge 设备连接到 Azure IoT Edge 网关
 
@@ -87,6 +87,11 @@ Azure CLI 的 [azure-iot](/cli/azure/iot) 扩展提供管理 IoT 资源的命令
 其他 device-identity 命令（包括 `add-children`、`list-children`、`remove-children`、`get-parent` 和 `set-parent`）用于管理现有设备的父/子关系。
 
 ---
+
+>[!NOTE]
+>如果要以编程方式建立父子关系，可以使用 C#、Java 或 Node.js [IoT 中心服务 SDK](../iot-hub/iot-hub-devguide-sdks.md)。
+>
+>下面是使用 C# SDK [分配子设备的示例](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/e2e/test/iothub/service/RegistryManagerE2ETests.cs)。 `RegistryManager_AddAndRemoveDeviceWithScope()` 任务演示如何以编程方式创建三层的层次结构。 IoT Edge 设备位于第一层，作为父项。 另一个 IoT Edge 设备位于第二层，同时充当父项和子项。 最后，IoT 设备处于第三层，作为最低层子设备。
 
 ## <a name="prepare-certificates"></a>准备证书
 
@@ -231,7 +236,7 @@ Azure CLI 的 [azure-iot](/cli/azure/iot) 扩展提供管理 IoT 资源的命令
 
 API 代理模块已经过设计，可以通过自定义来处理最常见的网关方案。 本文提供了一个以基本配置设置模块的示例。 有关详细信息和示例，请参阅[配置适用于网关层次结构方案的 API 代理模块](how-to-configure-api-proxy-module.md)。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 [Azure 门户](https://portal.azure.com)中导航到 IoT 中心。
 1. 从导航菜单中选择“IoT Edge”。
@@ -416,7 +421,7 @@ API 代理模块已经过设计，可以通过自定义来处理最常见的网�
 
 1. 输入以下命令，创建到 IoT Edge 设备的部署：
 
-   ```bash
+   ```azurecli
    az iot edge set-modules --device-id <device_id> --hub-name <iot_hub_name> --content ./<deployment_file_name>.json
    ```
 

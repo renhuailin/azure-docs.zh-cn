@@ -166,6 +166,8 @@
       items:
         - name: Azure Policy 的安全控件
           href: ./security-controls-policy.md
+        - name: Azure API for FHIR 的自动缩放
+          href: autoscale-azure-api-fhir.md
 - name: 资源
   items:
     - name: 常见问题解答

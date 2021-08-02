@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 3db9f8d895b4c13b5f969859f422e7b566722ffc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6b9bf8aea031b7dce88fbaa096d8e5996e1d6f57
+ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783064"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110189761"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS 托管的 Azure Active Directory 集成
 
@@ -188,6 +188,115 @@ az aks update -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-gr
 
 有一些当前无法通过 kubectl 执行的非交互式方案，例如持续集成管道。 你可以使用 [`kubelogin`](https://github.com/Azure/kubelogin) 通过非交互式服务主体登录来访问群集。
 
+## <a name="disable-local-accounts-preview"></a>禁用本地帐户（预览版）
+
+在部署 AKS 群集时，本地帐户在默认情况下处于启用状态。 即使是在启用 RBAC 或 Azure Active Directory 集成时，`--admin` 访问权限仍然存在，本质上是作为一个不可审核的后门选项。 考虑到这一点，AKS 为用户提供了通过 `disable-local` 标志来禁用本地帐户的功能。 另外还为托管群集 API 添加了 `properties.disableLocalAccounts` 字段，以指示该功能是否已在群集上启用。
+
+> [!NOTE]
+> 在启用了 Azure AD 集成的群集上，属于 `aad-admin-group-object-ids` 指定的组的用户仍将能够通过非管理员凭据获取访问权限。 在未启用 Azure AD 集成并且 `properties.disableLocalAccounts` 设置为 true 的群集上，获取用户凭据的操作和获取管理员凭据的操作都会失败。
+
+### <a name="register-the-disablelocalaccountspreview-preview-feature"></a>注册 `DisableLocalAccountsPreview` 预览版功能
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+若要使用没有本地帐户的 AKS 群集，则必须在订阅上启用 `DisableLocalAccountsPreview` 功能标志。 请确保使用最新版本的 Azure CLI 和 `aks-preview` 扩展。
+
+使用 [az feature register][az-feature-register] 命令注册 `DisableLocalAccountsPreview` 功能标志，如以下示例所示：
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "DisableLocalAccountsPreview"
+```
+
+状态显示为“已注册”需要几分钟时间。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/DisableLocalAccountsPreview')].{Name:name,State:properties.state}"
+```
+
+准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+### <a name="create-a-new-cluster-without-local-accounts"></a>创建没有本地帐户的新群集
+
+若要新建没有任何本地帐户的 AKS 群集，请使用带有 `disable-local` 标志的 [az aks create][az-aks-create] 命令：
+
+```azurecli-interactive
+az aks create -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --disable-local
+```
+
+在输出中，检查 `properties.disableLocalAccounts` 字段的设置是否为 true，以确认已禁用了本地帐户：
+
+```output
+"properties": {
+    ...
+    "disableLocalAccounts": true,
+    ...
+}
+```
+
+尝试获取管理员凭据的操作会失败，并且会显示错误消息，指示该功能阻止访问：
+
+```azurecli-interactive
+az aks get-credentials --resource-group <resource-group> --name <cluster-name> --admin
+
+Operation failed with status: 'Bad Request'. Details: Getting static credential is not allowed because this cluster is set to disable local accounts.
+```
+
+### <a name="disable-local-accounts-on-an-existing-cluster"></a>在现有群集上禁用本地帐户
+
+若要在现有 AKS 群集上禁用本地帐户，请使用带有 `disable-local` 标志的 [az aks update][az-aks-update] 命令：
+
+```azurecli-interactive
+az aks update -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --disable-local
+```
+
+在输出中，检查 `properties.disableLocalAccounts` 字段的设置是否为 true，以确认已禁用了本地帐户：
+
+```output
+"properties": {
+    ...
+    "disableLocalAccounts": true,
+    ...
+}
+```
+
+尝试获取管理员凭据的操作会失败，并且会显示错误消息，指示该功能阻止访问：
+
+```azurecli-interactive
+az aks get-credentials --resource-group <resource-group> --name <cluster-name> --admin
+
+Operation failed with status: 'Bad Request'. Details: Getting static credential is not allowed because this cluster is set to disable local accounts.
+```
+
+### <a name="re-enable-local-accounts-on-an-existing-cluster"></a>在现有群集上重新启用本地帐户
+
+AKS 还提供了使用 `enable-local` 标志在现有群集上重新启用本地帐户的功能：
+
+```azurecli-interactive
+az aks update -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --enable-local
+```
+
+在输出中，检查 `properties.disableLocalAccounts` 字段的设置是否为 false，以确认已重新启用了本地帐户：
+
+```output
+"properties": {
+    ...
+    "disableLocalAccounts": false,
+    ...
+}
+```
+
+尝试获取管理员凭据的操作会成功：
+
+```azurecli-interactive
+az aks get-credentials --resource-group <resource-group> --name <cluster-name> --admin
+
+Merged "<cluster-name>-admin" as current context in C:\Users\<username>\.kube\config
+```
+
 ## <a name="use-conditional-access-with-azure-ad-and-aks"></a>通过 Azure AD 和 AKS 使用条件访问
 
 将 Azure AD 与 AKS 群集集成后，还可以使用[条件访问][aad-conditional-access]来控制对群集的访问。
@@ -327,3 +436,7 @@ Error from server (Forbidden): nodes is forbidden: User "aaaa11111-11aa-aa11-a1a
 [access-cluster]: #access-an-azure-ad-enabled-cluster
 [aad-migrate]: #upgrading-to-aks-managed-azure-ad-integration
 [aad-assignments]: ../active-directory/privileged-identity-management/groups-assign-member-owner.md#assign-an-owner-or-member-of-a-group
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
+[az-aks-update]: /cli/azure/aks#az_aks_update
