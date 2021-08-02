@@ -1,20 +1,20 @@
 ---
-title: 使用适用于 Cosmos DB 的 Azure Monitor 监视 Azure Cosmos DB | Microsoft Docs
-description: 本文介绍了适用于 Cosmos DB 的 Azure Monitor 功能。使用此功能，Cosmos DB 所有者能够快速了解其 CosmosDB 帐户的性能和利用率问题。
+title: 使用 Azure Monitor Cosmos DB 见解监视 Azure Cosmos DB | Microsoft Docs
+description: 本文介绍了 Azure Monitor 的 Cosmos DB 见解功能。使用此功能，Cosmos DB 所有者能够快速了解其 CosmosDB 帐户的性能和利用率问题。
 author: lgayhardt
 ms.author: lagayhar
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: d88bf65f1bd94e29bd9f60f5597d655f0040623b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6666e43e1dc3461bf7e0cc5849d26c1a8fef70e
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101725732"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095079"
 ---
-# <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探究适用于 Azure Cosmos DB 的 Azure Monitor
+# <a name="explore-azure-monitor-cosmos-db-insights"></a>探索 Azure Monitor Cosmos DB 见解
 
-适用于 Azure Cosmos DB 的 Azure Monitor 提供了关于所有 Azure Cosmos DB 资源的整体性能、故障、容量和运行状况的统一交互式体验视图。 本文将帮助你了解这一新的监视体验的优势，以及如何修改和调整体验以满足你的组织的独特需求。   
+Cosmos DB 见解提供了关于所有 Azure Cosmos DB 资源的整体性能、故障、容量和运行状况的统一交互式体验视图。 本文将帮助你了解这一新的监视体验的优势，以及如何修改和调整体验以满足你的组织的独特需求。   
 
 ## <a name="introduction"></a>简介
 
@@ -147,7 +147,7 @@ ms.locfileid: "101725732"
 
 ![工作簿的展开图标](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cosmos-db"></a>自定义适用于 Azure Cosmos DB 的 Azure Monitor
+## <a name="customize-cosmos-db-insights"></a>自定义 Cosmos DB 见解
 
 因为此体验是基于 Azure Monitor 工作簿模板构建的，所以你能够进行“自定义” > “编辑”，并将修改后版本的副本保存为自定义工作簿。 
 
