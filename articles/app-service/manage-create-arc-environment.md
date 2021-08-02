@@ -2,13 +2,13 @@
 title: 为 Azure Arc 设置应用服务、Functions 和逻辑应用
 description: 对于启用了 Azure Arc 的 Kubernetes 群集，请了解如何启用应用服务应用、函数应用和逻辑应用。
 ms.topic: article
-ms.date: 05/03/2021
-ms.openlocfilehash: 35c58b05a1c5835028e36d8cd1afa878c803612e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 05/26/2021
+ms.openlocfilehash: e5e1b1ec8dd9a7e7ddf006222d2990bb6c354cd8
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385024"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890125"
 ---
 # <a name="set-up-an-azure-arc-enabled-kubernetes-cluster-to-run-app-service-functions-and-logic-apps-preview"></a>设置启用了 Azure Arc 的 Kubernetes 群集，以便运行应用服务、函数和逻辑应用（预览）
 
@@ -23,7 +23,7 @@ ms.locfileid: "110385024"
 <!-- ## Prerequisites
 
 - Create a Kubernetes cluster in a supported Kubernetes distribution and connect it to Azure Arc in a supported region. See [Public preview limitations](overview-arc-integration.md#public-preview-limitations).
-- [Install Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli), or use the [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+- [Install Azure CLI](/cli/azure/install-azure-cli), or use the [Azure Cloud Shell](../cloud-shell/overview.md).
 - [Install kubectl](https://kubernetes.io/docs/tasks/tools/). It's also preinstalled in the Azure Cloud Shell.
 
 ## Obtain cluster information
@@ -51,6 +51,8 @@ az extension add --upgrade --yes --name connectedk8s
 az extension add --upgrade --yes --name k8s-extension
 az extension add --upgrade --yes --name customlocation
 az provider register --namespace Microsoft.ExtendedLocation --wait
+az provider register --namespace Microsoft.Web --wait
+az provider register --namespace Microsoft.KubernetesConfiguration --wait
 az extension remove --name appservice-kube
 az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py2.py3-none-any.whl"
 ```
@@ -58,11 +60,7 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
 ## <a name="create-a-connected-cluster"></a>创建已连接的群集
 
 > [!NOTE]
-> 随着越来越多的 Kubernetes 发行版针对应用服务 Kubernetes 环境进行了验证，请参阅[快速入门：将现有 Kubernetes 群集连接到 Azure Arc](../azure-arc/kubernetes/quickstart-connect-cluster.md)，了解有关如何创建启用了 Azure Arc 的 Kubernetes 群集的常规说明。
-
-<!-- https://github.com/MicrosoftDocs/azure-docs-pr/pull/156618 -->
-
-由于 Arc 上的应用服务当前仅在 [Azure Kubernetes 服务](/azure/aks/)上进行了验证，因此请在 Azure Kubernetes 服务上创建启用了 Azure Arc 的群集。 
+> 本教程使用 [Azure Kubernetes 服务 (AKS)](../aks/index.yml) 提供从头开始设置环境的具体说明。 但是，对于生产工作负载，你可能不希望在 AKS 群集上启用 Azure Arc，因为它已在 Azure 中进行管理。 以下步骤将帮助你开始了解服务，但对于生产部署，应将它们视为说明性的，而不是规范性的。 请参阅[快速入门：将现有 Kubernetes 群集连接到 Azure Arc](../azure-arc/kubernetes/quickstart-connect-cluster.md)，了解有关如何创建启用了 Azure Arc 的 Kubernetes 群集的常规说明。
 
 1. 在 Azure Kubernetes 服务中使用公共 IP 创建群集。 将 `<group-name>` 替换为所需的资源组名称。
 
@@ -162,7 +160,7 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
         --release-train stable \
         --auto-upgrade-minor-version true \
         --scope cluster \
-        --release-namespace '${namespace}' \
+        --release-namespace $namespace \
         --configuration-settings "Microsoft.CustomLocation.ServiceAccount=default" \
         --configuration-settings "appsNamespace=${namespace}" \
         --configuration-settings "clusterName=${kubeEnvironmentName}" \
@@ -220,7 +218,7 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
 使用 `kubectl`，可查看已在 Kubernetes 群集中创建的 Pod：
 
 ```bash
-kubectl get pods -n ${namespace}
+kubectl get pods -n $namespace
 ```
 
 你可从[应用服务扩展创建的 Pod](overview-arc-integration.md#pods-created-by-the-app-service-extension) 中详细了解这些 Pod 及其在系统中的作用。
@@ -246,7 +244,7 @@ Azure 中的[自定义位置](../azure-arc/kubernetes/custom-locations.md)用于
         --resource-group $groupName \
         --name $customLocationName \
         --host-resource-id $connectedClusterId \
-        --namespace ${namespace} \
+        --namespace $namespace \
         --cluster-extension-ids $extensionId
     ```
     
@@ -281,7 +279,7 @@ Azure 中的[自定义位置](../azure-arc/kubernetes/custom-locations.md)用于
         --resource-group $groupName \
         --name $kubeEnvironmentName \
         --custom-location $customLocationId \
-        --static-ip "$staticIp"
+        --static-ip $staticIp
     ```
     
 2. 通过以下命令验证应用服务 Kubernetes 环境是否成功创建。 输出应显示 `provisioningState` 属性处于 `Succeeded` 状态。 如果不是，请在一分钟后再次运行该命令。

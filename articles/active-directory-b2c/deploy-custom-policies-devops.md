@@ -1,149 +1,142 @@
 ---
 title: 使用 Azure Pipelines 部署自定义策略
 titleSuffix: Azure AD B2C
-description: 了解如何使用 Azure DevOps Services 中的 Azure Pipelines 在 CI/CD 管道中部署 Azure AD B2C 自定义策略。
+description: 了解如何使用 Azure Pipelines 在 CI/CD 管道中部署 Azure AD B2C 自定义策略。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/14/2020
+ms.date: 06/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 913f21b90043209cae1ec9963619389bcb452781
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 470fcebf33e995d4c81d916970d80015b8f7c8f6
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529425"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110783744"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>使用 Azure Pipelines 部署自定义策略
 
-通过使用在 [Azure Pipelines][devops-pipelines] 中设置的持续集成和持续交付 (CI/CD) 管道，可在软件交付和代码控件自动化中包含 Azure AD B2C 自定义策略。 部署到不同的 Azure AD B2C 环境（例如开发、测试和生产环境）时，建议删除手动过程，并使用 Azure Pipelines 执行自动化测试。
-
-使 Azure Pipelines 可以在 Azure AD B2C 中管理自定义策略需要执行三个主要步骤：
-
-1. 在 Azure AD B2C 租户中创建 Web 应用程序注册
-1. 配置 Azure 存储库
-1. 配置 Azure 管道
+[Azure Pipelines](/azure/devops/pipelines) 支持持续集成 (CI) 以及持续交付 (CD)，以持续不断地进行测试、编译并将其交付到任意目标。 本文介绍如何使用 Azure Pipelines 对 B2C (Azure AD B2C) [自定义策略](user-flow-overview.md)的部署进程进行自动化。
 
 > [!IMPORTANT]
-> 借助 Azure 管道管理 Azure AD B2C 自定义策略目前使用 Microsoft Graph API `/beta` 终结点上提供的预览操作。 不支持在生产应用程序中使用这些 API。 有关详细信息，请参阅 [Microsoft Graph REST API beta 版本终结点参考](/graph/api/overview?toc=.%2fref%2ftoc.json&view=graph-rest-beta&preserve-view=true)。
+> 借助 Azure Pipelines 管理 Azure AD B2C 自定义策略目前使用 Microsoft Graph API `/beta` 终结点上提供的预览操作。 不支持在生产应用程序中使用这些 API。 有关详细信息，请参阅 [Microsoft Graph REST API beta 版本终结点参考](/graph/api/overview?toc=.%2fref%2ftoc.json&view=graph-rest-beta&preserve-view=true)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* [Azure AD B2C 租户](tutorial-create-tenant.md)，以及目录中具有 [B2C IEF 策略管理员](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)角色的用户的凭据
-* 已上传到租户的[自定义策略](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
-* 已在你的租户中注册了[管理应用](microsoft-graph-get-started.md)，具有 Microsoft Graph API 权限 Policy.ReadWrite.TrustFramework
-* [Azure 管道](https://azure.microsoft.com/services/devops/pipelines/)以及对 [Azure DevOps Services 项目][devops-create-project]的访问权限
-
-## <a name="client-credentials-grant-flow"></a>客户端凭据授予流
-
-此处所述的方案通过 OAuth 2.0 [客户端凭据授予流](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)，在 Azure Pipelines 与 Azure AD B2C 之间使用服务到服务调用。 此授予流允许 Web 服务（如 Azure Pipelines（机密客户端））在调用其他 Web 服务（在此例中为 Microsoft Graph API）时使用它自己的凭据（而不是模拟用户）进行身份验证。 Azure Pipelines 会以非交互方式获取令牌，然后向 Microsoft Graph API 发出请求。
+* 完成 [Active Directory B2C 中的自定义策略入门](tutorial-create-user-flows.md)中的步骤。
+* 如果你尚未创建 DevOps 组织，请按照[注册、登录到 Azure DevOps](/azure/devops/user-guide/sign-up-invite-teammates) 中的说明创建一个。  
 
 ## <a name="register-an-application-for-management-tasks"></a>为管理任务注册应用程序
 
-如[先决条件](#prerequisites)中所述，你需要 PowerShell 脚本（由 Azure Pipelines 执行）可用于访问租户中的资源的应用程序注册。
+使用 PowerShell 脚本部署 Azure AD B2C 策略。 在 PowerShell 脚本可以与 [Microsoft Graph API](microsoft-graph-operations.md) 交互之前，请在你的 Azure AD B2C 租户中创建应用程序注册。 如果你尚未进行这一步，请[注册 Microsoft Graph 应用程序](microsoft-graph-get-started.md)。
 
-如果你已有一个用于自动化任务的应用程序注册，请确保在应用注册的“API 权限”中向它授予了“Microsoft Graph” > “策略” > Policy.ReadWrite.TrustFramework”权限。
-
-有关注册管理应用程序的说明，请参阅[使用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md)。
+若要让 PowerShell 脚本访问 MS Graph 中的数据，请向已注册的应用程序授予相关[应用程序权限](/graph/permissions-reference)。 在应用程序注册的“API 权限”内授予了“Microsoft Graph” > “策略” > “Policy.ReadWrite.TrustFramework”权限。
 
 ## <a name="configure-an-azure-repo"></a>配置 Azure 存储库
 
-注册管理应用程序后，便可以为策略文件配置存储库。
+注册 Microsoft Graph 应用程序后，便可以为策略文件配置存储库。
 
-1. 登录 Azure DevOps Services 组织。
-1. [创建新项目][devops-create-project]或选择现有项目。
-1. 在项目中，导航到“存储库”，然后选择“文件”页 。 选择现有存储库，或为此练习创建一个。
-1. 创建名为 B2CAssets 的文件夹。 将所需占位符文件命名为 README.md 并“提交”文件。 以后可以根据需要删除此文件。
-1. 将 Azure AD B2C 策略文件添加到 B2CAssets 文件夹。 这包括 TrustFrameworkBase.xml、TrustFrameWorkExtensions.xml、SignUpOrSignin.xml、ProfileEdit.xml、PasswordReset.xml 和已创建的任何其他策略    。 记录每个 Azure AD B2C 策略文件的文件名，以便在后面的步骤中使用（它们用作 PowerShell 脚本参数）。
-1. 在存储库的根目录中创建名为 Scripts 的文件夹，将占位符文件命名为 DeployToB2c.ps1 。 此时请勿提交文件，你将在后面的步骤中执行此操作。
-1. 将以下 PowerShell 脚本粘贴到 DeployToB2c.ps1 中，然后“提交”文件。 该脚本会从 Azure AD 获取令牌，并调用 Microsoft Graph API 以将 B2CAssets 文件夹中的策略上传到 Azure AD B2C 租户。
+1. 登录到你的 [Azure DevOps 组织](https://azure.microsoft.com/services/devops/)。
+1. [创建新项目][devops-create-project]，或选择现有项目。
+1. 在你的项目中，导航到“存储库”，然后选择“文件”。 
+1. 选择现有存储库，或创建一个。
+1. 在你存储库的根目录中，创建一个名为 `B2CAssets` 的文件夹。 将你的 Azure AD B2C 自定义策略文件添加到“B2CAssets”文件夹。
+1. 在你存储库的根目录中，创建一个名为 `Scripts` 的文件夹。 创建一个 PowerShell 文件“DeployToB2C.ps1”。 将以下 PowerShell 脚本粘贴到“DeployToB2C.ps1”中。 
+1. 提交并推送更改。
 
-    ```PowerShell
-    [Cmdletbinding()]
-    Param(
-        [Parameter(Mandatory = $true)][string]$ClientID,
-        [Parameter(Mandatory = $true)][string]$ClientSecret,
-        [Parameter(Mandatory = $true)][string]$TenantId,
-        [Parameter(Mandatory = $true)][string]$PolicyId,
-        [Parameter(Mandatory = $true)][string]$PathToFile
-    )
+以下脚本从 Azure AD 获取访问令牌。 借助令牌，该脚本将调用 MS 图形 API 来上传“B2CAssets”文件夹中的策略。 你还可以在上载之前更改策略的内容。 例如，将 `tenant-name.onmicrosoft.com` 替换为你的租户名称。
 
-    try {
-        $body = @{grant_type = "client_credentials"; scope = "https://graph.microsoft.com/.default"; client_id = $ClientID; client_secret = $ClientSecret }
+```PowerShell
+[Cmdletbinding()]
+Param(
+    [Parameter(Mandatory = $true)][string]$ClientID,
+    [Parameter(Mandatory = $true)][string]$ClientSecret,
+    [Parameter(Mandatory = $true)][string]$TenantId,
+    [Parameter(Mandatory = $true)][string]$PolicyId,
+    [Parameter(Mandatory = $true)][string]$PathToFile
+)
 
-        $response = Invoke-RestMethod -Uri https://login.microsoftonline.com/$TenantId/oauth2/v2.0/token -Method Post -Body $body
-        $token = $response.access_token
+try {
+    $body = @{grant_type = "client_credentials"; scope = "https://graph.microsoft.com/.default"; client_id = $ClientID; client_secret = $ClientSecret }
 
-        $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
-        $headers.Add("Content-Type", 'application/xml')
-        $headers.Add("Authorization", 'Bearer ' + $token)
+    $response = Invoke-RestMethod -Uri https://login.microsoftonline.com/$TenantId/oauth2/v2.0/token -Method Post -Body $body
+    $token = $response.access_token
 
-        $graphuri = 'https://graph.microsoft.com/beta/trustframework/policies/' + $PolicyId + '/$value'
-        $policycontent = Get-Content $PathToFile
-        $response = Invoke-RestMethod -Uri $graphuri -Method Put -Body $policycontent -Headers $headers
+    $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+    $headers.Add("Content-Type", 'application/xml')
+    $headers.Add("Authorization", 'Bearer ' + $token)
 
-        Write-Host "Policy" $PolicyId "uploaded successfully."
-    }
-    catch {
-        Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__
+    $graphuri = 'https://graph.microsoft.com/beta/trustframework/policies/' + $PolicyId + '/$value'
+    $policycontent = Get-Content $PathToFile
 
-        $_
+    # Optional: Change the content of the policy. For example, replace the tenant-name with your tenant name.
+    # $policycontent = $policycontent.Replace("your-tenant.onmicrosoft.com", "contoso.onmicrosoft.com")     
 
-        $streamReader = [System.IO.StreamReader]::new($_.Exception.Response.GetResponseStream())
-        $streamReader.BaseStream.Position = 0
-        $streamReader.DiscardBufferedData()
-        $errResp = $streamReader.ReadToEnd()
-        $streamReader.Close()
+    $response = Invoke-RestMethod -Uri $graphuri -Method Put -Body $policycontent -Headers $headers
 
-        $ErrResp
+    Write-Host "Policy" $PolicyId "uploaded successfully."
+}
+catch {
+    Write-Host "StatusCode:" $_.Exception.Response.StatusCode.value__
 
-        exit 1
-    }
+    $_
 
-    exit 0
-    ```
+    $streamReader = [System.IO.StreamReader]::new($_.Exception.Response.GetResponseStream())
+    $streamReader.BaseStream.Position = 0
+    $streamReader.DiscardBufferedData()
+    $errResp = $streamReader.ReadToEnd()
+    $streamReader.Close()
 
-## <a name="configure-your-azure-pipeline"></a>配置 Azure 管道
+    $ErrResp
 
-存储库已初始化并使用自定义策略文件进行填充后，便可以设置发布管道。
+    exit 1
+}
 
-### <a name="create-pipeline"></a>创建管道
+exit 0
+```
 
-1. 登录 Azure DevOps Services 组织，并导航到你的项目。
+## <a name="configure-azure-pipelines"></a>配置 Azure Pipelines
+
+存储库已初始化并使用自定义策略文件进行填充后，便可以设置发布管道。 按照以下步骤创建管道：
+
 1. 在项目中，选择“管道” > “发布” > “新建管道”。
-1. 在“选择模板”下，选择“空作业” 。
+1. 在“选择模板”下，选择“空作业”，然后选择“应用”。
 1. 输入“阶段名称”（例如 DeployCustomPolicies），然后关闭窗格。
 1. 选择“添加项目”，然后在“源类型”下选择“Azure 存储库”  。
-    1. 选择包含使用 PowerShell 脚本填充的 Scripts 文件夹的源存储库。
-    1. 选择“默认分支”。 如果在上一部分中创建了新存储库，则默认分支为 master。
+    1. 在“项目”这一项中选择你的项目。
+    1. 选择包含“脚本”文件夹的“源（存储库）”。
+    1. 选择“默认分支”，例如“master”。
     1. 将“默认版本”设置保留为“默认分支中的最新内容”。
-    1. 为存储库的“源别名”。 例如，policyRepo。 请勿在别名中包含任何空格。
+    1. 为存储库的“源别名”。 例如，policyRepo。 
 1. 选择“添加”
 1. 重命名管道以反映其意向。 例如“部署自定义策略管道”。
 1. 选择“保存”以保存管道配置。
 
 ### <a name="configure-pipeline-variables"></a>配置管道变量
 
-1. 选择“变量”选项卡。
-1. 在“管道变量”下添加以下变量并按指定设置其值：
+管道变量为你提供了一种简便方法，可以将关键数据位导入管道的各个部分。 以下变量提供有关你 Azure AD B2C 环境的信息。
 
-    | 名称 | 值 |
-    | ---- | ----- |
-    | `clientId` | 先前注册的应用程序的应用程序（客户端）ID。 |
-    | `clientSecret` | 先前创建的客户端密码的值。 <br /> 将变量类型更改为“机密”（选择锁定图标）。 |
-    | `tenantId` | `your-b2c-tenant.onmicrosoft.com`，其中 your-b2c-tenant 是 Azure AD B2C 租户的名称。 |
+| 名称 | 值 |
+| ---- | ----- |
+| `clientId` | 先前注册的应用程序的应用程序（客户端）ID。 |
+| `clientSecret` | 先前创建的客户端密码的值。 <br /> 将变量类型更改为“机密”（选择锁定图标）。 |
+| `tenantId` | `your-b2c-tenant.onmicrosoft.com`，其中 your-b2c-tenant 是 Azure AD B2C 租户的名称。 |
 
+请按照以下步骤添加管道变量：
+
+1. 在你的管道中，选择“变量”选项卡。
+1. 在“管道变量”下，添加上面的变量以及它们的值。
 1. 选择“保存”以保存变量。
 
 ### <a name="add-pipeline-tasks"></a>添加管道任务
 
-接下来，添加一个用于部署策略文件的任务。
+管道任务是一种用于执行操作的预打包脚本。 添加一个调用“DeployToB2C.ps1”PowerShell 脚本的任务。
 
-1. 选择“任务”选项卡。
+1. 在你创建的管道中，选择“任务”选项卡。
 1. 选择“代理作业”，然后选择加号 (+) 将任务添加到代理作业 。
 1. 搜索并选择“PowerShell”。 请勿选择“Azure PowerShell”、“目标计算机上的 PowerShell”或其他 PowerShell 条目。
 1. 选择新添加的“PowerShell 脚本”任务。
@@ -154,48 +147,34 @@ ms.locfileid: "107529425"
     * 脚本路径：选择省略号 (...)，导航到 Scripts 文件夹，然后选择 DeployToB2C.ps1 文件 。
     * **参数：**
 
-        为参数输入以下值。 将 `{alias-name}` 替换为在上一部分中指定的别名。
+        为参数输入以下值。 将 `{alias-name}` 替换为在上一节中指定的别名。 将 `{policy-id}` 替换为策略名称。 将 `{policy-file-name}` 替换为策略文件名。
+
+        你上传的第一个策略必须是 TrustFrameworkBase.xml。
 
         ```PowerShell
-        # Before
-        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/{alias-name}/B2CAssets/TrustFrameworkBase.xml
+        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId {policy-id} -PathToFile $(System.DefaultWorkingDirectory)/{alias-name}/B2CAssets/{policy-file-name}
         ```
 
-        例如，如果指定的别名为 policyRepo，则参数行应为：
+        `PolicyId` 是在 TrustFrameworkPolicy 节点中的 XML 策略文件开头找到的值。 例如，以下策略 XML 中的 `PolicyId` 为 B2C_1A_TrustFrameworkBase：
+
+        ```xml
+        <TrustFrameworkPolicy
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+        PolicySchemaVersion="0.3.0.0"
+        TenantId="your-tenant.onmicrosoft.com"
+        PolicyId= "B2C_1A_TrustFrameworkBase"
+        PublicPolicyUri="http://your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
+        ```
+
+        你的最终参数应类似于以下示例：
 
         ```PowerShell
-        # After
         -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/TrustFrameworkBase.xml
         ```
 
 1. 选择“保存”以保存代理作业。
-
-刚添加的任务会将一个策略文件上传到 Azure AD B2C。 继续操作之前，请手动触发作业（“创建发布”）以确保它在创建其他任务之前成功完成。
-
-如果任务成功完成，则通过对每个自定义策略文件执行前面的步骤来添加部署任务。 为每个策略修改 `-PolicyId` 和 `-PathToFile` 参数值。
-
-`PolicyId` 是在 TrustFrameworkPolicy 节点中的 XML 策略文件开头找到的值。 例如，以下策略 XML 中的 `PolicyId` 为 B2C_1A_TrustFrameworkBase：
-
-```xml
-<TrustFrameworkPolicy
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
-PolicySchemaVersion="0.3.0.0"
-TenantId="contoso.onmicrosoft.com"
-PolicyId= "B2C_1A_TrustFrameworkBase"
-PublicPolicyUri="http://contoso.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
-```
-
-运行代理并上传策略文件时，请确保按以下顺序上传它们：
-
-1. TrustFrameworkBase.xml
-1. TrustFrameworkExtensions.xml
-1. SignUpOrSignin.xml
-1. ProfileEdit.xml
-1. PasswordReset.xml
-
-Identity Experience Framework 会强制执行此顺序，因为文件结构是基于分层链而构建。
 
 ## <a name="test-your-pipeline"></a>测试管道
 
@@ -207,11 +186,23 @@ Identity Experience Framework 会强制执行此顺序，因为文件结构是�
 
 应该会看到一个通知横幅，指出发布已排入队列。 若要查看其状态，请在通知横幅中选择链接，或在“发布”选项卡上的列表中选择它。
 
+## <a name="add-more-pipeline-tasks"></a>添加更多管道任务
+
+若要部署你的其他策略，请对每个自定义策略文件重复[上述步骤](#add-pipeline-tasks)。
+
+运行代理并上传策略文件时，请确保按正确顺序上传它们：
+
+1. TrustFrameworkBase.xml
+1. TrustFrameworkExtensions.xml
+1. SignUpOrSignin.xml
+1. ProfileEdit.xml
+1. PasswordReset.xml
+
 ## <a name="next-steps"></a>后续步骤
 
 了解有关以下方面的详细信息：
 
-* [使用客户端凭据进行服务到服务调用](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)
+* [使用客户端凭据进行服务到服务调用](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)
 * [Azure DevOps Services](/azure/devops/user-guide/)
 
 <!-- LINKS - External -->

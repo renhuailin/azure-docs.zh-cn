@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: 本文比较了 Azure SQL 数据库和 Azure SQL 托管实例的数据库引擎功能
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: features
+ms.subservice: service-overview
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: bonova, sstein, danil
-ms.date: 03/08/2021
-ms.openlocfilehash: 8c98ce661e7bb753d4e62d1eaf98702de91c5106
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: bonova, mathoma, danil
+ms.date: 05/18/2021
+ms.openlocfilehash: 1f645b8d62bc3e0acdbdd12a21b335deea3cd53e
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102489763"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690023"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>功能比较：Azure SQL 数据库和 Azure SQL 托管实例
 
@@ -35,6 +35,7 @@ Azure 管理数据库并保证其高可用性。 可能影响高可用性或无�
 如需有关差异的更多详细信息，请查看相关页面：
 - [Azure SQL 数据库与SQL Server 之间的差异](transact-sql-tsql-differences-sql-server.md)
 - [Azure SQL 托管实例与SQL Server 之间的差异](../managed-instance/transact-sql-tsql-differences-sql-server.md)
+
 
 ## <a name="features-of-sql-database-and-sql-managed-instance"></a>SQL 数据库和 SQL 托管实例的功能
 
@@ -68,7 +69,7 @@ Azure 管理数据库并保证其高可用性。 可能影响高可用性或无�
 | [分布式事务 - MS DTC](/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | 否 - 请参阅[弹性事务](elastic-transactions-overview.md) |  否 - 请参阅[链接服务器的差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#linked-servers)。 尝试在迁移过程中将多个分布式 SQL Server 实例中的数据库整合到一个 SQL 托管实例中。 |
 | [DML 触发器](/sql/relational-databases/triggers/create-dml-triggers) | 大多数 - 请参阅单个语句 |  是 |
 | [DMV](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | 大多数 - 请参阅单个 DMV |  是 - 请参阅 [T-SQL 差异](../managed-instance/transact-sql-tsql-differences-sql-server.md) |
-| [弹性查询](elastic-query-overview.md)（公共预览版） | 是，使用所需的 RDBMS 类型。 | 是，使用所需的 RDBMS 类型。 |
+| [弹性查询](elastic-query-overview.md)（公共预览版） | 是，使用所需的 RDBMS 类型。 | 否 |
 | [事件通知](/sql/relational-databases/service-broker/event-notifications) | 否 - 请参阅[警报](alerts-insights-configure-portal.md) | 否 |
 | [表达式](/sql/t-sql/language-elements/expressions-transact-sql) |是 | 是 |
 | [扩展事件 (XEvent)](/sql/relational-databases/extended-events/extended-events) | 部分 - 请参阅 [SQL 数据库中的扩展事件](xevent-db-diff-from-svr.md) | 是 - 请参阅[扩展事件的差异](../managed-instance/transact-sql-tsql-differences-sql-server.md#extended-events) |
@@ -153,6 +154,7 @@ Azure 平台提供许多 PaaS 功能，可以增大标准数据库功能的价�
 | [VNet](../../virtual-network/virtual-networks-overview.md) | 部分支持，可以使用 [VNet 终结点](vnet-service-endpoint-rule-overview.md)进行受限访问 | 是，SQL 托管实例注入到客户的 VNet 中。 请参阅[子网](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet)和 [VNet](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) |
 | VNet 服务终结点 | [是](vnet-service-endpoint-rule-overview.md) | 否 |
 | VNet 全球对等互连 | 是，使用[专用 IP 和服务终结点](vnet-service-endpoint-rule-overview.md) | 是，使用[虚拟网络对等互连](https://techcommunity.microsoft.com/t5/azure-sql/new-feature-global-vnet-peering-support-for-azure-sql-managed/ba-p/1746913)。 |
+| [专用连接](../../private-link/private-link-overview.md) | 是，使用[专用链接](/database/private-endpoint-overview.md) | 是，使用 VNet。 | 
 
 ## <a name="tools"></a>工具
 
@@ -173,7 +175,7 @@ Azure SQL 数据库和 Azure SQL 托管实例支持各种可帮助管理数据�
 | [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | 是 | 是，[18.0 和更高版本](/sql/ssms/download-sql-server-management-studio-ssms) |
 | [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | 是 | 是 |
 | [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | 否 - 请参阅[扩展事件](xevent-db-diff-from-svr.md) | 是 |
-| [System Center Operations Manager (SCOM)](/system-center/scom/welcome) | [是](https://www.microsoft.com/download/details.aspx?id=38829) | [是](https://www.microsoft.com/en-us/download/details.aspx?id=101203) |
+| [System Center Operations Manager](/system-center/scom/welcome) | [是](https://www.microsoft.com/download/details.aspx?id=38829) | [是](https://www.microsoft.com/en-us/download/details.aspx?id=101203) |
 
 ## <a name="migration-methods"></a>迁移方法
 
@@ -181,7 +183,7 @@ Azure SQL 数据库和 Azure SQL 托管实例支持各种可帮助管理数据�
 
 | **Source** | **Azure SQL 数据库** | **Azure SQL 托管实例** |
 | --- | --- | --- |
-| SQL Server（本地、Azure VM、Amazon RDS） | **联机：** [数据迁移服务 (DMS)](/sql/dma/dma-overview)、[事务复制](../managed-instance/replication-transactional-overview.md) <br/> **脱机：** [BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP | **联机：** [数据迁移服务 (DMS)](/sql/dma/dma-overview)、[事务复制](../managed-instance/replication-transactional-overview.md) <br/> **脱机：** 本机备份/还原、[BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、[快照复制](../managed-instance/replication-transactional-overview.md) |
+| SQL Server（本地、Azure VM、Amazon RDS） | 联机：[事务复制](../managed-instance/replication-transactional-overview.md) <br/> 脱机：[数据迁移服务 (DMS)](/sql/dma/dma-overview)、[BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP | **联机：** [数据迁移服务 (DMS)](/sql/dma/dma-overview)、[事务复制](../managed-instance/replication-transactional-overview.md) <br/> **脱机：** 本机备份/还原、[BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、[快照复制](../managed-instance/replication-transactional-overview.md) |
 | 单一数据库 | **脱机：** [BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP | **脱机：** [BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP |
 | SQL 托管实例 | **联机：** [事务复制](../managed-instance/replication-transactional-overview.md) <br/> **脱机：** [BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、[快照复制](../managed-instance/replication-transactional-overview.md) | **联机：** [事务复制](../managed-instance/replication-transactional-overview.md) <br/> **脱机：** 跨实例时间点还原（[Azure PowerShell](/powershell/module/az.sql/restore-azsqlinstancedatabase#examples) 或 [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)）、[本机备份/还原](../managed-instance/restore-sample-database-quickstart.md)、[BACPAC 文件（导入）](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database)、BCP、[快照复制](../managed-instance/replication-transactional-overview.md) |
 

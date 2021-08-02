@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/27/2021
+ms.date: 06/09/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 322b39f6f0356086c770efb4ef940ae0fbb85eca
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2761262950c2a10709ccfa37b35a2d3e4c556359
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130982"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903480"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -80,6 +80,10 @@ SAP 应用程序层和 DBMS 的高可用性记录在从文档 [Sap NetWeaver 的
 在本节中，可以找到有关 Microsoft Power BI 集成到 SAP 数据源中以及 Azure 数据工厂集成到 SAP BW 中的文档。
 
 ## <a name="change-log"></a>更改日志
+- 2021 年 6 月 9 日：在 [SAP HANA Azure 虚拟机存储配置](./hana-vm-operations-storage.md)中更正了 VM SKU 的名称，M192---_v2
+- 2021 年 5 月 26 日：更改了[在 SLES 上的 Azure VM 中通过 Pacemaker 使用 HSR 进行 SAP HANA 横向扩展](./sap-hana-high-availability-scale-out-hsr-suse.md)、[在 RHEL 上通过 ANF 纵向扩展 SAP HANA 的 HA](./sap-hana-high-availability-netapp-files-red-hat.md) 和[在 RHEL 上的 Azure VM 中通过 Pacemaker 使用 HSR 横向扩展 SAP HANA](./sap-hana-high-availability-scale-out-hsr-rhel.md) 中的内容，添加配置以准备 OS，以便在 ANF 上运行 HANA  
+- 2021 年 5 月 13 日，更改了[在 Azure 中的 SLES 上设置 Pacemaker](./high-availability-guide-suse-pacemaker.md) 中的内容，以阐明资源代理 azure-events 的运作方式 
+- 2021 年 4 月 30 日：更改了[在 Azure 中的 SLES 上设置 Pacemaker](./high-availability-guide-suse-pacemaker.md) 中的内容，以在包 python3-azure-mgmt-compute (SLES 15) 的版本中包含有关与 Azure 隔离代理不兼容的更改的警告  
 - 2021 年 4 月 27 日：更改了[使用 WSFC 和文件共享的 SAP ASCS/SCS 实例](./sap-high-availability-guide-wsfc-file-share.md)中的内容，以在先决条件部分中增加指向重要 SAP 说明的链接
 - 2021 年 4 月 27 日：在 [SAP HANA Azure 虚拟机存储配置](./hana-vm-operations-storage.md)中，向 HANA 存储配置增加了新的 Msv2、Mdsv2 VM
 - 2021 年 4 月 27 日：在 [SAP HANA Azure 虚拟机存储配置](./hana-vm-operations-storage.md)中增加了跨所有 HSR 配置的 VM 在 HANA 系统复制中使用相同存储类型的要求

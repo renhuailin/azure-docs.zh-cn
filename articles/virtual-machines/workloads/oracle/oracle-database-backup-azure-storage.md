@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: a6ce5446bd6470ef7a829925646d486801b28ebc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 44d1345a8c02c2cde5d0bc34d1b509af321c42c0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101670022"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952289"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-storage"></a>使用 Azure 存储在 Azure Linux VM 上备份和恢复 Oracle Database 19c 数据库
 
@@ -125,7 +125,7 @@ ms.locfileid: "101670022"
 10. 设置快速恢复区域的数据库环境变量：
 
     ```bash
-    SQL>  system set db_recovery_file_dest_size=4096M scope=both;
+    SQL> alter system set db_recovery_file_dest_size=4096M scope=both;
     SQL> alter system set db_recovery_file_dest='/u02/fast_recovery_area' scope=both;
     ```
     
@@ -368,7 +368,7 @@ ms.locfileid: "101670022"
     ORACLE instance shut down.
     ```
 
-2.  删除数据文件和备份：
+2.  删除数据库数据文件：
 
     ```bash
     cd /u02/oradata/TEST

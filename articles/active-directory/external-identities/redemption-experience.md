@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/04/2021
+ms.date: 05/27/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e436427a790a3c4ebdbbedb4570c399966ab8c95
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 80de2d30055d5a78f4a0105d33f01b4fabfbcd47
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317858"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955084"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 协作邀请兑换
 
@@ -25,7 +25,7 @@ ms.locfileid: "108317858"
 
    > [!IMPORTANT]
    > - 从 2021 年下半年开始，Google 将[弃用 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果正在对 B2B 邀请或 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 使用 Google 联合身份验证，或者正在将自助注册与 Gmail 一起使用，那么当你的应用通过嵌入的 Web 视图对用户进行身份验证时，Google Gmail 用户将无法登录。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
-   > - 从 2021 年 10 月起，Microsoft 将不再支持兑换通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行的邀请。 在准备期间，我们鼓励客户选择参与[电子邮件一次性密码身份验证](one-time-passcode.md)。 我们欢迎你提供有关此公共预览版功能的反馈，并且很乐意创建更多的协作方式。
+   > - 从 2021 年 10 月起，Microsoft 将不再支持兑换通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行的邀请。 在准备期间，我们鼓励客户选择加入现已正式发布的[电子邮件一次性密码身份验证](one-time-passcode.md)。
 
 ## <a name="redemption-and-sign-in-through-a-common-endpoint"></a>通过常用终结点进行的兑换和登录
 
@@ -59,6 +59,20 @@ ms.locfileid: "108317858"
 2. 来宾选择电子邮件中的“接受邀请”。
 3. 来宾将使用其自己的凭据登录到目录。 如果来宾没有可联合到目录的帐户，且未启用[电子邮件一次性密码 (OTP)](./one-time-passcode.md) 功能；系统将提示来宾创建个人 [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) 或 [Azure AD 自助服务帐户](../enterprise-users/directory-self-service-signup.md)。 有关详细信息，请参阅[邀请兑换流](#invitation-redemption-flow)。
 4. 将指导来宾完成下面所述的[同意体验](#consent-experience-for-the-guest)。
+
+## <a name="redemption-limitation-with-conflicting-contact-object"></a>冲突的 Contact 对象的兑换限制
+有时，受邀的外部来宾用户的电子邮件可能会与现有的 [Contact 对象](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true)冲突，从而导致创建来宾用户时没有 proxyAddress。 这是一个已知限制，可防止来宾用户： 
+- 使用 [SAML/WS-Fed IdP](/azure/active-directory/external-identities/direct-federation)、[Microsoft 帐户](/azure/active-directory/external-identities/microsoft-account)、[Google 联合身份验证](/azure/active-directory/external-identities/google-federation)或[电子邮件一次性密码](/azure/active-directory/external-identities/one-time-passcode)帐户通过直接链接兑换邀请。 
+- 使用 [SAML/WS-Fed IdP](/azure/active-directory/external-identities/direct-federation) 和[电子邮件一次性密码](/azure/active-directory/external-identities/one-time-passcode)帐户通过邀请电子邮件兑换链接兑换邀请。
+- 使用 [SAML/WS-Fed IdP](/azure/active-directory/external-identities/direct-federation) 和 [Google 联合身份验证](/azure/active-directory/external-identities/google-federation)帐户兑换后重新登录应用程序。
+
+若要取消阻止因 [Contact 对象](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true)冲突而无法兑换邀请的用户，请执行以下步骤：
+1. 删除冲突的 Contact 对象。
+2. 删除 Azure 门户中的来宾用户（用户的“已接受邀请”属性应处于挂起状态）。
+3. 重新邀请来宾用户。
+4. 等待用户兑换邀请
+5. 将用户的联系人电子邮件重新添加到 Exchange 以及他们应属于的任何 DL 中
+
 ## <a name="invitation-redemption-flow"></a>邀请兑换流
 
 当用户单击[邀请电子邮件](invitation-email-elements.md)中的“接受邀请”链接时，Azure AD 会根据兑换流自动兑换邀请，如下所示：
@@ -69,7 +83,7 @@ ms.locfileid: "108317858"
 
 1. Azure AD 执行基于用户的发现，以确定用户是否存在于[现有 Azure AD 租户](./what-is-b2b.md#easily-invite-guest-users-from-the-azure-ad-portal)中。
 
-2. 如果管理员已启用[直接联合](./direct-federation.md)，Azure AD 会检查用户的域后缀是否与已配置的 SAML/WS-Fed 标识提供程序的域相匹配，并将用户重定向到预配置的标识提供程序。
+2. 如果管理员已启用 [SAML/WS-Fed IdP 联合身份验证](./direct-federation.md)，Azure AD 会检查用户的域后缀是否与已配置的 SAML/WS-Fed 标识提供程序的域相匹配，并将用户重定向到预配置的标识提供程序。
 
 3. 如果管理员已启用 [Google 联合](./google-federation.md)，Azure AD 会检查用户的域后缀是 gmail.com 还是 googlemail.com，并将用户重定向到 Google。
 

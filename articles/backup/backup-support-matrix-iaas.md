@@ -2,14 +2,14 @@
 title: Azure VM 备份的支持矩阵
 description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支持设置和限制摘要。
 ms.topic: conceptual
-ms.date: 04/21/2021
+ms.date: 06/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: c96c80721cd66f895c9c0dade590fc11d25de346
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: be9db68720f8af1fa3c00e3919b1acd7a63969c0
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890755"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410254"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -151,20 +151,20 @@ VM 大小 |至少有 2 个 CPU 核心和 1-GB RAM 的任意 Azure VM 大小。<b
 Gen2 VM | 支持 <br> Azure 备份支持备份和还原 [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)。 从恢复点还原这些 VM 时，它们作为 [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) 还原。
 带锁的 Azure VM 的备份 | 非托管 VM 不支持。 <br><br> 托管 VM 支持。
 [点 VM](../virtual-machines/spot-vms.md) | 不支持。 Azure 备份会将现成 VM 还原为常规 Azure VM。
-[Azure 专用主机](../virtual-machines/dedicated-hosts.md) | 支持<br></br>通过[新建](backup-azure-arm-restore-vms.md#create-a-vm)选项还原 Azure VM 时，尽管还原成功，但 Azure VM 无法在专用主机中还原。 为此，我们建议你还原为磁盘。 使用模板[还原为磁盘](backup-azure-arm-restore-vms.md#restore-disks)时，请在专用主机中创建一个 VM，然后附加磁盘。<br></br>执行[跨区域还原](backup-azure-arm-restore-vms.md#cross-region-restore)时，这也适用于次要区域。
+[Azure 专用主机](../virtual-machines/dedicated-hosts.md) | 支持<br></br>通过[新建](backup-azure-arm-restore-vms.md#create-a-vm)选项还原 Azure VM 时，尽管还原成功，但 Azure VM 无法在专用主机中还原。 为此，我们建议你还原为磁盘。 使用模板[还原为磁盘](backup-azure-arm-restore-vms.md#restore-disks)时，请在专用主机中创建一个 VM，然后附加磁盘。<br></br>执行[跨区域还原](backup-azure-arm-restore-vms.md#cross-region-restore)时，这不适用于次要区域。
 独立 Azure VM 的 Windows 存储空间配置 | 支持
 [Azure VM 规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md#scale-sets-with-flexible-orchestration) | 同时支持统一的和灵活的业务流程模型，以便备份和还原单个 Azure VM。
 
 ## <a name="vm-storage-support"></a>VM 存储支持
 
-**组件** | **支持**
+组件 | **支持**
 --- | ---
 Azure VM 数据磁盘 | 支持备份最多包含 32 个磁盘的 Azure VM。<br><br> 备份包含非托管磁盘的 Azure VM 或经典 VM 时，最多支持 16 个磁盘。
 数据磁盘大小 | 对于 VM 中的所有磁盘，单个磁盘大小最大为 32 TB，组合磁盘大小最大为 256 TB。
 存储类型 | 标准 HDD、标准 SSD、高级 SSD。
 托管磁盘 | 支持。
 加密的磁盘 | 支持。<br/><br/> 可以备份已启用 Azure 磁盘加密的 Azure VM（包含或不包含 Azure AD 应用）。<br/><br/> 无法在文件/文件夹级别恢复已加密的 VM。 必须恢复整个 VM。<br/><br/> 可以在已受 Azure 备份保护的 VM 上启用加密。
-已启用写入加速器的磁盘 | 截至 2020 年 11 月 23 日，仅在韩国中部 (KRC) 和南非北部 (SAN) 区域支持有限数量的订阅。 对于那些支持的订阅，Azure 备份服务将备份其中磁盘在备份期间启用了加速写入 (WA) 的虚拟机。<br><br>对于不支持的区域，需在 VM 上建立 Internet 连接才能创建启用了 WA 的虚拟机的快照。<br><br> **重要说明**：在这些不支持的区域中，包含 WA 磁盘的虚拟机需要建立 Internet 连接才能成功进行备份（即使已从备份中排除这些磁盘）。
+已启用写入加速器的磁盘 | 截至 2020 年 11 月 23 日，仅在韩国中部 (KRC) 和南非北部 (SAN) 区域支持有限数量的订阅（受限预览版）。 对于那些支持的订阅，Azure 备份服务将备份其中磁盘在备份期间启用了加速写入 (WA) 的虚拟机。<br><br>对于不支持的区域，需在 VM 上建立 Internet 连接才能创建启用了 WA 的虚拟机的快照。<br><br> **重要说明**：在这些不支持的区域中，包含 WA 磁盘的虚拟机需要建立 Internet 连接才能成功进行备份（即使已从备份中排除这些磁盘）。
 备份和还原已删除重复数据的 VM/磁盘 | Azure 备份不支持删除重复数据。 有关详细信息，请参阅[此文](./backup-support-matrix.md#disk-deduplication-support) <br/> <br/>  - Azure 备份不会跨恢复服务保管库中的 VM 删除重复数据 <br/> <br/>  - 如果在还原期间有处于重复数据删除状态的 VM，则无法还原文件，因为保管库不能识别该格式。 但是，你能够成功执行完整的 VM 还原。
 将磁盘添加到受保护的 VM | 支持。
 调整受保护 VM 上的磁盘大小 | 支持。
@@ -172,11 +172,11 @@ Azure VM 数据磁盘 | 支持备份最多包含 32 个磁盘的 Azure VM。<br>
 [共享磁盘](../virtual-machines/disks-shared-enable.md) | 不支持。
 超级 SSD 磁盘 | 不支持。 有关详细信息，请参阅这些[限制](selective-disk-backup-restore.md#limitations)。
 [临时磁盘](../virtual-machines/managed-disks-overview.md#temporary-disk) | Azure 备份服务不会备份临时磁盘。
-NVMe/临时磁盘 | 不支持。
+NVMe/[临时磁盘](../virtual-machines/ephemeral-os-disks.md) | 不支持。
 
 ## <a name="vm-network-support"></a>VM 网络支持
 
-**组件** | **支持**
+组件 | **支持**
 --- | ---
 网络接口 (NIC) 数 | 特定 Azure VM 大小支持最大数量的 NIC。<br/><br/> NIC 是在还原过程中创建 VM 时创建的。<br/><br/> 已还原 VM 上的 NIC 数目与启用保护时 VM 上的 NIC 数目相同。 启用保护后移除 NIC 不影响计数。
 内部/外部负载均衡器 |支持。 <br/><br/> [详细了解](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations)如何还原使用特殊网络设置的 VM。

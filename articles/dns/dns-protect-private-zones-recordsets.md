@@ -2,17 +2,18 @@
 title: 保护专用 DNS 区域和记录 - Azure DNS
 description: 在此学习路径中，我们从保护 Microsoft Azure DNS 中的专用 DNS 区域和记录集着手。
 services: dns
-author: asudbring
 ms.service: dns
+author: twooley
+ms.author: twooley
 ms.topic: how-to
-ms.date: 02/18/2020
-ms.author: allensu
-ms.openlocfilehash: a68b40852750e124749ac838c50acae2212c4732
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/07/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b7867783a8c9fd95bd203fb3b1148095a2f5af03
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785825"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110691162"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>如何保护专用 DNS 区域和记录
 
@@ -36,7 +37,7 @@ Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 用户、组�
 
 打开资源组的“访问控制(标识和访问管理)”，选择“添加”，然后选择“专用 DNS 区域参与者”角色。    选择所需用户或组来授予权限。
 
-![使用 Azure 门户的资源组级别 Azure RBAC](./media/dns-protect-private-zones-recordsets/rbac1.png)
+:::image type="content" source="./media/dns-protect-private-zones-recordsets/resource-group-rbac.png" alt-text="专用 DNS 资源组的 RBAC 的屏幕截图。":::
 
 也可以[使用 Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)授予权限：
 
@@ -69,7 +70,7 @@ Azure RBAC 规则可应用于订阅，资源组或单个资源。 该资源可�
 
 可以通过 Azure 门户授予区域级别的 Azure RBAC 权限。  打开区域的“访问控制(标识和访问管理)”，选择“添加”，然后选择“专用 DNS 区域参与者”角色。    选择所需用户或组来授予权限。
 
-![使用 Azure 门户的 DNS 区域级别 Azure RBAC](./media/dns-protect-private-zones-recordsets/rbac2.png)
+:::image type="content" source="./media/dns-protect-private-zones-recordsets/zone-rbac.png" alt-text="专用 DNS 区域的 RBAC 的屏幕截图。":::
 
 也可以[使用 Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)授予权限：
 
@@ -102,9 +103,9 @@ az role assignment create \
 
 记录集级别的 Azure RBAC 权限可在 Azure 门户中使用记录集页中的“访问控制(IAM)”按钮进行配置：
 
-![屏幕截图显示了“访问控制(标识和访问管理)”按钮。](./media/dns-protect-private-zones-recordsets/rbac3.png)
+:::image type="content" source="./media/dns-protect-private-zones-recordsets/record-set-rbac-1.png" alt-text="专用 DNS 记录集的 RBAC 的屏幕截图。":::
 
-![屏幕截图显示了已选中“添加角色分配”的“访问控制”。](./media/dns-protect-private-zones-recordsets/rbac4.png)
+:::image type="content" source="./media/dns-protect-private-zones-recordsets/record-set-rbac-2.png" alt-text="专用 DNS 记录集的角色分配的屏幕截图。":::
 
 还可以[使用 Azure PowerShell 授予](../role-based-access-control/role-assignments-powershell.md)记录集级别 Azure RBAC 权限：
 
@@ -202,7 +203,7 @@ Azure 资源管理器支持另一种类型的安全控制：资源锁定功能�
 
 可通过 Azure 门户创建区域级别的资源锁。  从 DNS 区域页上，选择“锁定”  ，然后选择“+添加”  ：
 
-![使用 Azure 门户的区域级别资源锁](./media/dns-protect-private-zones-recordsets/locks1.png)
+:::image type="content" source="./media/dns-protect-private-zones-recordsets/zone-locks.png" alt-text="专用 DNS 区域的锁定的屏幕截图。":::
 
 也可通过 [Azure PowerShell](/powershell/module/az.resources/new-azresourcelock) 创建区域级别的资源锁：
 

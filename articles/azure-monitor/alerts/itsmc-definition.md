@@ -6,12 +6,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 98f53ec1b6506a6d47146377e837576254f445e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3097023c4b9d19379f44529615a10c100e794700
+ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601060"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109838658"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-solution"></a>使用 IT 服务管理解决方案将 Azure 连接到 ITSM 工具
 
@@ -88,7 +88,7 @@ ms.locfileid: "103601060"
 > [!NOTE]
 > 创建 ITSM 连接后，需要等待 30 分钟让同步过程完成。
 
-## <a name="define-a-template"></a>定义模板
+### <a name="define-a-template"></a>定义模板
 
 某些工作项类型可以使用 ITSM 工具中定义的模板。 使用模板可以定义根据操作组的固定值自动填充的字段。 可以定义要将哪个模板用作操作组定义的一部分。 可在 ServiceNow 文档中查找有关如何创建模板的信息 -（此处）[https://docs.servicenow.com/bundle/paris-platform-administration/page/administer/form-administration/task/t_CreateATemplateUsingTheTmplForm.html ]。
 
@@ -114,9 +114,7 @@ ms.locfileid: "103601060"
 
 7. 选择 **工作项** 类型
 
-8. 若要使用固定值填写现成字段，请选择“使用自定义模板”。 否则，请在“模板”列表中选择现有的[模板](#define-a-template)，然后在模板字段中输入固定值。
-
-9. 在用于创建 ITSM 操作组的界面的最后一个部分，可以定义要针对每个警报创建多少个工作项。
+8. 在用于创建 ITSM 操作组的界面的最后一个部分，可以定义要针对每个警报创建多少个工作项。
 
    > [!NOTE]
    > 此部分仅与日志搜索警报相关。 对于所有其他警报类型，请针对每个警报创建一个工作项。
@@ -143,6 +141,10 @@ ms.locfileid: "103601060"
      * 如果选择“为每个日志条目创建单独的工作项(不填充‘配置项’字段。可能生成大量工作项。)”，将为日志搜索警报查询的搜索结果中的每一行创建一个工作项。 工作项有效负载中的说明属性将包含搜索结果中的行。
       
      * 如果选择“为每个配置项创建单独的工作项”，则每条警报中的每个配置项都将创建新的工作项。 每个配置项在 ITSM 系统中可以有多个工作项。 此选项等同于选中在将“事故”选作工作项类型后出现的复选框。
+9. 在进行操作定义时，你可以将会包含常数值的预定义字段定义为有效负载的一部分。 可以根据工作项类型将下述 3 个选项用作有效负载的一部分：
+    * 无：使用将要发送到 ServiceNow 的常规有效负载，无需任何额外的预定义字段和值。
+    * 使用默认字段：使用一组将会作为有效负载的一部分自动发送到 ServiceNow 的字段和值。 这些字段不灵活，并且值是在 ServiceNow 列表中定义的。
+    * 从 Servicenow 使用保存的模板：使用一组预定义的字段和值，这些字段和值已在 ServiceNow 中作为模板定义的一部分进行定义。 如果已在 ServiceNow 中定义了模板，则可从“模板”列表中使用它，否则请在 ServiceNow 中定义它。有关详细信息，请参阅[此文](#define-a-template)。
 
 10. 选择“确定”。
 

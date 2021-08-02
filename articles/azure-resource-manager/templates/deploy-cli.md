@@ -1,20 +1,20 @@
 ---
 title: 使用 Azure CLI 和模板部署资源
-description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure。 资源在资源管理器模板或 Bicep 文件中定义。
+description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
-ms.date: 03/25/2021
-ms.openlocfilehash: ddcb9adad545f27dfe29f3a9354520b0e141e933
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 05/07/2021
+ms.openlocfilehash: 4507fe743674ac8c7ee45b53adb1e4cc543289d5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108737074"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951164"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>通过 ARM 模板和 Azure CLI 来部署资源
 
-本文介绍如何将 Azure CLI 与 Azure 资源管理器模板（ARM 模板）或 Bicep 文件配合使用，以将资源部署到 Azure。 如果你不熟悉部署和管理 Azure 解决方案的概念，请参阅[模板部署概述](overview.md)或 [Bicep 概述](bicep-overview.md)。
+本文介绍了如何将 Azure CLI 与 Azure 资源管理器模板（ARM 模板）配合使用，以便将资源部署到 Azure。 如果不熟悉部署和管理 Azure 解决方案的概念，请参阅[模版部署概述](overview.md)。
 
-部署命令在 Azure CLI 版本 2.2.0 中已更改。 本文中的示例需要 Azure CLI 2.2.0 或更高版本。 若要部署 Bicep 文件，需要安装 [Azure CLI 2.20.0 或更高版本](/cli/azure/install-azure-cli)。
+部署命令在 Azure CLI 版本 2.2.0 中已更改。 本文中的示例需要 [Azure CLI 2.20.0 或更高版本](/cli/azure/install-azure-cli)。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -27,13 +27,13 @@ ms.locfileid: "108737074"
 * 若要部署到资源组，请使用 [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create)：
 
   ```azurecli-interactive
-  az deployment group create --resource-group <resource-group-name> --template-file <path-to-template-or-bicep>
+  az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
   ```
 
 * 若要部署到订阅，请使用 [az deployment sub create](/cli/azure/deployment/sub#az_deployment_sub_create)：
 
   ```azurecli-interactive
-  az deployment sub create --location <location> --template-file <path-to-template-or-bicep>
+  az deployment sub create --location <location> --template-file <path-to-template>
   ```
 
   有关订阅级部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
@@ -41,7 +41,7 @@ ms.locfileid: "108737074"
 * 若要部署到管理组，请使用 [az deployment mg create](/cli/azure/deployment/mg#az_deployment_mg_create)：
 
   ```azurecli-interactive
-  az deployment mg create --location <location> --template-file <path-to-template-or-bicep>
+  az deployment mg create --location <location> --template-file <path-to-template>
   ```
 
   有关管理组级部署的详细信息，请参阅[在管理组级别创建资源](deploy-to-management-group.md)。
@@ -49,14 +49,14 @@ ms.locfileid: "108737074"
 * 若要部署到租户，请使用 [az deployment tenant create](/cli/azure/deployment/tenant#az_deployment_tenant_create)：
 
   ```azurecli-interactive
-  az deployment tenant create --location <location> --template-file <path-to-template-or-bicep>
+  az deployment tenant create --location <location> --template-file <path-to-template>
   ```
 
   有关租户级别部署的详细信息，请参阅[在租户级别创建资源](deploy-to-tenant.md)。
 
-对于每个范围，部署模板或 Bicep 文件的用户必须拥有创建资源所需的权限。
+对于每一个范围，部署模板的用户必须具有创建资源所必需的权限。
 
-## <a name="deploy-local-template-or-bicep-file"></a>部署本地模板或 Bicep 文件
+## <a name="deploy-local-template"></a>部署本地模板
 
 可以部署本地计算机中的模板，也可以部署存储在外部的模板。 本节介绍如何部署本地模板。
 
@@ -66,13 +66,13 @@ ms.locfileid: "108737074"
 az group create --name ExampleGroup --location "Central US"
 ```
 
-若要部署本地模板或 Bicep 文件，请在部署命令中使用 `--template-file` 参数。 以下示例还演示了如何设置参数值。
+若要部署本地模板，请在部署命令中使用 `--template-file` 参数。 以下示例还演示了如何设置参数值。
 
 ```azurecli-interactive
 az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
-  --template-file <path-to-template-or-bicep> \
+  --template-file <path-to-template> \
   --parameters storageAccountType=Standard_GRS
 ```
 
@@ -83,9 +83,6 @@ az deployment group create \
 ```
 
 ## <a name="deploy-remote-template"></a>部署远程模板
-
-> [!NOTE]
-> 目前，Azure CLI 不支持部署远程 Bicep 文件。 使用 [Bicep CLI](./bicep-install.md#development-environment) 将 Bicep 文件编译为 JSON 模板，然后将 JSON 文件加载到远程位置。
 
 你可能更愿意将 ARM 模板存储在外部位置，而不是存储在本地计算机上。 可以将模板存储在源控件存储库（例如 GitHub）中。 另外，还可以将其存储在 Azure 存储帐户中，以便在组织中共享访问。
 
@@ -123,7 +120,7 @@ az deployment group create \
 
 ## <a name="deployment-name"></a>部署名称
 
-部署 ARM 模板时，可以为部署指定名称。 此名称可以帮助你从部署历史记录中检索该部署。 如果没有为部署提供名称，将使用模板文件的名称。 例如，如果部署一个名为 `azuredeploy.json` 的模板，但未指定部署名称，则该部署将命名为 `azuredeploy`。
+部署 ARM 模板时，可以为部署指定名称。 此名称可以帮助你从部署历史记录中检索该部署。 如果没有为部署提供名称，将使用模板文件的名称。 例如，如果部署一个名为 azuredeploy.json 的模板，但未指定部署名称，则该部署将命名为 `azuredeploy`。
 
 每次运行部署时，一个包含部署名称的条目会添加到资源组的部署历史记录中。 如果运行另一个部署并为其指定了相同的名称，则会将先前的条目替换为当前部署。 如果要在部署历史记录中保持唯一条目，请为每个部署指定唯一名称。
 
@@ -148,9 +145,6 @@ deploymentName='ExampleDeployment'$(date +"%d-%b-%Y")
 为避免与并发部署冲突并确保部署历史记录中的条目是唯一的，请为每个部署指定唯一的名称。
 
 ## <a name="deploy-template-spec"></a>部署模板规格
-
-> [!NOTE]
-> 目前，Azure CLI 不支持通过提供 Bicep 文件来创建模板规格。 但是，可以使用 [Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) 资源创建 Bicep 文件来部署模板规格。下面是一个[示例](https://github.com/Azure/azure-docs-json-samples/blob/master/create-template-spec-using-template/azuredeploy.bicep)。
 
 你可以创建[模板规格](template-specs.md)，而不是部署本地或远程模板。模板规格是 Azure 订阅中包含 ARM 模板的资源。 这使你可以轻松地与组织中的用户安全地共享模板。 可使用 Azure 基于角色的访问控制 (Azure RBAC) 来授予对模板规格的访问权限。此功能目前以预览版提供。
 
@@ -177,11 +171,11 @@ az deployment group create \
   --template-spec $id
 ```
 
-有关详细信息，请参阅 [Azure 资源管理器模板规格（预览版）](template-specs.md)。
+有关详细信息，请参阅 [Azure 资源管理器模板规格](template-specs.md)。
 
 ## <a name="preview-changes"></a>预览更改
 
-在部署模板之前，可以预览模板将对环境做出的更改。 使用[假设操作](template-deploy-what-if.md)验证模板是否进行了预期的更改。 模拟操作还验证模板是否有错误。
+在部署模板之前，可以预览模板将对环境做出的更改。 使用[假设操作](./deploy-what-if.md)验证模板是否进行了预期的更改。 模拟操作还验证模板是否有错误。
 
 ## <a name="parameters"></a>parameters
 
@@ -194,7 +188,7 @@ az deployment group create \
 ```azurecli-interactive
 az deployment group create \
   --resource-group testgroup \
-  --template-file <path-to-template-or-bicep> \
+  --template-file <path-to-template> \
   --parameters exampleString='inline string' exampleArray='("value1", "value2")'
 ```
 
@@ -205,7 +199,7 @@ az deployment group create \
 ```azurecli-interactive
 az deployment group create \
   --resource-group testgroup \
-  --template-file <path-to-template-or-bicep> \
+  --template-file <path-to-template> \
   --parameters exampleString=@stringContent.txt exampleArray=@arrayContent.json
 ```
 
@@ -244,7 +238,7 @@ az deployment group create --name addstorage  --resource-group myResourceGroup \
 
 ### <a name="parameter-files"></a>参数文件
 
-你可能会发现，与在脚本中以内联值的形式传递参数相比，使用包含参数值的 JSON 文件更为容易。 参数文件必须是本地文件。 Azure CLI 不支持外部参数文件。 ARM 模板和 Bicep 文件都使用 JSON 参数文件。
+你可能会发现，与在脚本中以内联值的形式传递参数相比，使用包含参数值的 JSON 文件更为容易。 参数文件必须是本地文件。 Azure CLI 不支持外部参数文件。
 
 有关参数文件的详细信息，请参阅[创建资源管理器参数文件](parameter-files.md)。
 
@@ -255,7 +249,7 @@ az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
   --template-file storage.json \
-  --parameters @storage.parameters.json
+  --parameters '@storage.parameters.json'
 ```
 
 ## <a name="handle-extended-json-format"></a>处理扩展 JSON 格式
@@ -284,5 +278,5 @@ az deployment group create \
 
 * 若要在出错时回退到成功的部署，请参阅[出错时回退到成功的部署](rollback-on-error.md)。
 * 若要指定如何处理存在于资源组中但未在模板中定义的资源，请参阅 [Azure 资源管理器部署模式](deployment-modes.md)。
-* 若要了解如何在模板中定义参数，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 若要了解如何在模板中定义参数，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。
 * 有关解决常见部署错误的提示，请参阅[排查使用 Azure Resource Manager 时的常见 Azure 部署错误](common-deployment-errors.md)。

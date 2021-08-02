@@ -3,23 +3,22 @@ title: 什么是 Azure 密钥保管库？ | Microsoft Docs
 description: 了解 Azure Key Vault 如何保护云应用程序和服务使用的加密密钥和机密。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cc00a4f1c1551932b4a30a8ef9b27cb1d4082667
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a8f0088077d5b7d0ec9fbc4336ee68a3459845b1
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99071590"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411802"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault 基本概念
 
-Azure Key Vault 是一个用于安全地存储和访问机密的云服务。 机密是你想要严格控制对其的访问的任何内容，例如 API 密钥、密码、证书或加密密钥。 Key Vault 服务支持两种类型的容器：保管库和托管 HSM 池。 保管库支持存储软件和 HSM 支持的密钥、机密和证书。 托管 HSM 池仅支持 HSM 支持的密钥。 有关完整的详细信息，请参阅 [Azure Key Vault REST API 概述](about-keys-secrets-certificates.md)。
+Azure Key Vault 是一个用于安全地存储和访问机密的云服务。 机密是你想要严格控制对其的访问的任何内容，例如 API 密钥、密码、证书或加密密钥。 Key Vault 服务支持两种类型的容器：保管库和托管硬件安全模块 (HSM) 池。 保管库支持存储软件和 HSM 支持的密钥、机密和证书。 托管 HSM 池仅支持 HSM 支持的密钥。 有关完整的详细信息，请参阅 [Azure Key Vault REST API 概述](about-keys-secrets-certificates.md)。
 
 下面是其他重要的术语：
 
@@ -33,7 +32,7 @@ Azure Key Vault 是一个用于安全地存储和访问机密的云服务。 机
 
 - **托管 HSM 加密管理人员/用户**：通常分配给用户或服务主体的内置角色，这些角色将使用托管 HSM 中的密钥执行加密操作。 加密用户可以创建新的密钥，但不能删除密钥。
 
-- **托管 HSM 加密服务加密**：通常分配给服务帐户托管服务标识（例如存储帐户）的内置角色，用于使用客户管理的密钥对静态数据进行加密。
+- **托管 HSM 加密服务加密用户**：通常分配给服务帐户托管服务标识（例如存储帐户）的内置角色，用于使用客户管理的密钥对静态数据进行加密。
 
 - **资源**：资源是可通过 Azure 获取的可管理项。 常见示例包括虚拟机、存储帐户、Web 应用、数据库和虚拟网络。 这只是其中一小部分。
 
@@ -54,6 +53,11 @@ Azure Key Vault 是一个用于安全地存储和访问机密的云服务。 机
 - **服务主体和证书**：可以使用服务主体和具有密钥保管库访问权限的关联证书。 我们不建议使用此方法，因为应用程序所有者或开发人员必须轮换证书。
 - **服务主体和机密**：尽管可以使用服务主体和机密向密钥保管库进行身份验证，但我们不建议你这样做。 自动轮换用于向密钥保管库进行身份验证的启动机密非常困难。
 
+## <a name="encryption-of-data-in-transit"></a>传输中的数据加密
+
+Azure Key Vault 强制实施[传输层安全性](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) 协议，以在数据在 Azure Key Vault 和客户端之间传输时保护数据。 客户端协商与 Azure Key Vault 的 TLS 连接。 TLS 提供严格的身份验证，消息隐私性和完整性强（允许检测消息篡改、拦截和伪造），具有良好的互操作性，算法灵活，易于部署和使用。
+
+[完美正向保密](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) 通过唯一密钥保护客户的客户端系统与 Microsoft 云服务间的连接。 连接还使用基于 RSA 的 2,048 位加密密钥长度。 此组合使得别人难以拦截和访问传输中的数据。
 
 ## <a name="key-vault-roles"></a>Key Vault 角色
 
@@ -81,7 +85,7 @@ Azure Key Vault 是一个用于安全地存储和访问机密的云服务。 机
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[保护保管库](secure-your-key-vault.md)。
+- 了解 [Azure Key Vault 安全功能](security-features.md)。
 - 了解如何[保护托管 HSM 池](../managed-hsm/access-control.md)
 
 <!--Image references-->

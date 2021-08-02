@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/06/2018
+ms.date: 05/28/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3c1e34bb418f9be2e26afc117343f1fa50bd8566
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 727f2ce99518bb303639eca03c3690abf2e8b343
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "76308990"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110720552"
 ---
 此常见问题解答适用于使用经典部署模型的 P2S 连接。
 

@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
-ms.reviewer: MashaMSFT
+ms.reviewer: cawrites
 ms.date: 11/06/2020
-ms.openlocfilehash: 2133f3da926dfd1e92d911004393893f58d27db6
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d7c315694b5b25597abdacce74813b3578682f89
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136442"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111972061"
 ---
 # <a name="migration-guide-oracle-to-sql-server-on-azure-virtual-machines"></a>迁移指南：Oracle 到 Azure 虚拟机上的 SQL Server
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -265,6 +265,7 @@ ms.locfileid: "108136442"
 | [自动进行 SSMA Oracle 评估收集和整合](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Automate%20SSMA%20Oracle%20Assessment%20Collection%20%26%20Consolidation)                                             | 这组资源使用 .csv 文件作为输入（项目文件夹中的 sources.csv），生成在控制台模式下运行 SSMA 评估所需的 XML 文件。 可以通过清点现有 Oracle 实例来提供 source.csv 文件。 输出文件为 AssessmentReportGeneration_source_1.xml、ServersConnectionFile.xml 和 VariableValueFile.xml。|
 | [迁移 Oracle 数据库时的 SSMA 问题和可能的修正措施](https://aka.ms/dmj-wp-ssma-oracle-errors)                                                           | 使用 Oracle 时，可以在 WHERE 子句中分配非标量条件。 SQL Server 不支持这种类型的条件。 因此，适用于 Oracle 的 SSMA 不会转换在 WHERE 子句中具有非标量条件的查询， 而是会生成错误 O2SS0001。 此白皮书提供了有关该问题及其解决方法的详细信息。          |
 | [Oracle 到 SQL Server 迁移手册](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20SQL%20Server%20Migration%20Handbook.pdf)                | 此文档重点介绍在将 Oracle 架构迁移到最新版本的 SQL Server 时涉及的任务。 如果迁移要求更改特性/功能，则需要仔细考虑对使用数据库的应用程序所做的每项更改可能造成的影响。                                                     |
+|[从 Oracle 到 SQL Server - 数据库比较实用工具](https://www.microsoft.com/download/details.aspx?id=103016)|SSMA for Oracle 测试工具是推荐用于自动验证数据库对象转换和数据迁移的工具，它是数据库比较功能的超集。<br /><br />如果要查找备用的数据验证选项，则可使用数据库比较实用工具沿所有或所选表、行和列中的行或列级别比较数据。|
 
 
 数据 SQL 工程团队开发了这些资源。 此团队的核心章程是解锁和加速到 Microsoft Azure 数据平台的数据平台迁移项目的复杂现代化进程。

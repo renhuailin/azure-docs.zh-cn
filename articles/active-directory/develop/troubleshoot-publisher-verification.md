@@ -13,12 +13,12 @@ ms.date: 01/28/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: acce282dcaac971716a97d7722543d78e28b7a34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46f8df4b48dcd887bf5500ba5189374c2331047c
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517661"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408004"
 ---
 # <a name="troubleshoot-publisher-verification"></a>排查发布者验证问题
 如果无法完成这个过程，或者在[发布者验证](publisher-verification-overview.md)过程中遇到意外的行为，则在收到错误或看到意外行为时，应该首先执行以下操作： 
@@ -237,7 +237,7 @@ Microsoft 使用者帐户不支持此功能。 仅支持由 Azure AD 用户在 A
 
 首先，验证是否满足[发布者验证要求](publisher-verification-overview.md#requirements)。
 
-当你请求添加已验证的发布者时，系统会根据多个信号进行安全风险评估。 如果系统确定该请求很危险，则会返回错误。 出于安全原因，Microsoft 不会公开用于确定请求是否带有风险的具体标准。
+当你请求添加经过验证的发布者时，系统会根据多个信号进行安全风险评估。 如果系统确定该请求很危险，则会返回错误。 出于安全原因，Microsoft 不会公开用于确定请求是否带有风险的具体标准。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ec73d1363fb18d1d6c46589fe69879a8f6df1dab
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 817c3e4a9e3c6226d25e28d1aad378813369d765
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722559"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077727"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure 现成虚拟机 
 
@@ -82,7 +82,7 @@ Azure 现成虚拟机可以部署到除 Microsoft Azure 中国世纪互联以外
 
 **使用 CLI**
 
-使用 [az feature register](/cli/azure/feature#az-feature-register) 为订阅启用预览版。 
+使用 [az feature register](/cli/azure/feature#az_feature_register) 为订阅启用预览版。 
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name SpotTryRestore 
@@ -216,6 +216,8 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 ```
 
 `Response Code: 204` 意味着模拟逐出成功。 
+
+有关详细信息，请参阅[测试模拟逐出通知](../virtual-machines/windows/spot-powershell.md#simulate-an-eviction)。
 
 ## <a name="faq"></a>常见问题解答
 

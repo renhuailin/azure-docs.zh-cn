@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 9128c44b7f446ab849d2afac055005a1b5fb3fcb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1c67f9d4fda2e0ca26d8125f30e2f71213b0749
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562225"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111853075"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中创建通用 VM 的托管映像
 
@@ -31,7 +31,9 @@ Sysprep 将删除所有个人帐户和安全信息，并准备好要用作映像
 > [!IMPORTANT]
 > 在 VM 上运行 Sysprep 后，该 VM 将被视为已通用化而无法重启。 通用化 VM 的过程是不可逆的。 如果需要保持原始 VM 正常运行，请创建 [VM 的副本](create-vm-specialized.md#option-3-copy-an-existing-azure-vm)并将其副本通用化。 
 >
->Sysprep 要求对驱动器进行完全解密。 如果在 VM 上启用了加密，请在运行 Sysprep 之前将其禁用。
+>Sysprep 要求对驱动器进行完全解密。 如果在 VM 上启用了加密，请在运行 Sysprep 之前在 Azure 中将其禁用。 
+>
+>若要使用 PowerShell 禁用 Azure 磁盘加密，请使用 Disable-AzVMDiskEncryption，然后使用 Remove-AzVMDiskEncryptionExtension。 禁用加密之前，运行 Remove-AzVMDiskEncryptionExtension 会失败。 较高级别命令不仅从 VM 内解密磁盘，还会在 VM 外部更新与 VM 关联的重要平台级别加密设置和扩展设置。 如果这些设置未保持一致，则平台将无法正确报告加密状态或预配 VM。
 >
 > 如果计划在首次将虚拟硬盘 (VHD) 上传到 Azure 之前运行 Sysprep，请确保先[准备好 VM](prepare-for-upload-vhd-image.md)。  
 > 

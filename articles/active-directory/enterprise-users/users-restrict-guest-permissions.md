@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 01/14/2020
+ms.date: 06/01/2021
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df4cb32720d80dd23289be7e760c9934e9a8db8a
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: f1b9ceb41300d8a53d192602812f1e3c04017609
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501495"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371456"
 ---
-# <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>在 Azure Active Directory 中限制来宾访问权限（预览版）
+# <a name="restrict-guest-access-permissions-in-azure-active-directory"></a>在 Azure Active Directory 中限制来宾访问权限
 
-Azure Active Directory (Azure AD) 允许你在 Azure AD 中限制外部来宾用户可以在其组织中看到的内容。 默认情况下，来宾用户在 Azure AD 中设置为有限的权限级别，而成员用户的默认设置是完整的默认用户权限集。 这是 Azure AD 组织的外部协作设置中新来宾用户权限级别的预览，该级别提供限制性更强的访问权限，因此，来宾访问选项现在为：
+Azure Active Directory (Azure AD) 允许你在 Azure AD 中限制外部来宾用户可以在其组织中看到的内容。 默认情况下，系统会在 Azure AD 中为来宾用户设置有限的权限级别，而为成员用户的默认设置是完整的用户权限集。 这是 Azure AD 组织的外部协作设置中新来宾用户权限级别，该级别提供限制性更强的访问权限，因此，来宾访问级别为：
 
 权限级别         | 访问级别 | 值
 ----------------         | ------------ | -----
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 允许你在 Azure AD 中限制外部来宾用
 
 ## <a name="permissions-and-licenses"></a>权限和许可证
 
-你必须是全局管理员角色才能配置外部协作设置。 限制来宾访问权限时无额外的许可要求。
+必须是“全局管理员”或“特权角色管理员”角色才能配置来宾用户访问权限。 限制来宾访问权限时无额外的许可要求。
 
 ## <a name="update-in-the-azure-portal"></a>Azure 门户中的更新
 

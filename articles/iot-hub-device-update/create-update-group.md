@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/17/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: a0894047db1ed7687a1a0f5f87fc4020ddf7c694
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c9f1294f1d2f80689cdb417ad16357cc5fbcece
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101679103"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110089319"
 ---
 # <a name="create-device-groups-in-device-update-for-iot-hub"></a>在 IoT 中心设备更新中创建设备组
 IoT 中心设备更新允许将更新部署到一组 IoT 设备。
@@ -21,6 +21,7 @@ IoT 中心设备更新允许将更新部署到一组 IoT 设备。
 * [访问启用了 IoT 中心设备更新的 IoT 中心](create-device-update-account.md)。 建议为 IoT 中心使用 S1（标准）层或更高版本。 
 * 为 IoT 中心内的设备更新预配的 IoT 设备（或模拟器）。
 * [已为预配设备成功导入了至少一个更新](import-update.md)。
+* 在 IoT 设备上将 Device Update 代理作为[模块或设备级别标识](device-update-agent-provisioning.md)安装并启动
 
 ## <a name="add-a-tag-to-your-devices"></a>将标记添加到设备  
 
@@ -44,20 +45,20 @@ IoT 中心设备更新允许将更新部署到一组 IoT 设备。 若要创建�
 
 ### <a name="using-jobs"></a>使用作业
 
-可以按照以下[这些](../iot-hub/iot-hub-devguide-jobs.md)示例在多个设备上计划作业，以添加或更新设备更新标记。 [了解详细信息](../iot-hub/iot-hub-csharp-csharp-schedule-jobs.md)。
+可以按照以下[这些](../iot-hub/iot-hub-devguide-jobs.md)示例在多个设备上计划作业，以添加或更新设备更新标记。 可以通过作业更新设备孪生或模块孪生（如果将 Device Update 代理安装为模块标识）。 [了解详细信息](../iot-hub/iot-hub-csharp-csharp-schedule-jobs.md)。
 
   > [!NOTE] 
-  > 此操作违反了当前的 IOT 中心消息配额，建议一次最多只能更改 50,000 个设备孪生标记，否则，如果超出每日的 IoT 中心消息配额，则可能需要购买更多 IoT 中心单位。 详细信息请见[配额和限制](../iot-hub/iot-hub-devguide-quotas-throttling.md#quotas-and-throttling)。
+  > 此操作违反了当前的 IoT 中心消息配额，建议一次最多只更改 50,000 个设备或模块孪生标记。否则，如果超出每日的 IoT 中心消息配额，则可能需要购买更多 IoT 中心单位。 详细信息请见[配额和限制](../iot-hub/iot-hub-devguide-quotas-throttling.md#quotas-and-throttling)。
 
 ### <a name="direct-twin-updates"></a>直接孪生更新
 
-还可以直接在设备孪生中添加或更新标记。
+还可以直接在设备孪生或模块孪生中添加或更新标记。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)并导航到 IoT 中心。
 
-2. 从左侧导航窗格上的“IoT 设备”或“IoT Edge”中，找到 IoT 设备并导航到“设备孪生”。
+2. 从左侧导航窗格上的“IoT 设备”或“IoT Edge”中，找到你的 IoT 设备并导航到“设备孪生”或“Device Update 模块”，然后导航到其模块孪生（如果 Device Update 代理已安装为模块标识，此项将可用）。
 
-3. 在“设备孪生”中，通过将任何现有的 Device Update 标记值设置为 null 来将其删除。
+3. 在“设备孪生”或“模块孪生”中，通过将任何现有的 Device Update 标记值设置为 null 来将其删除。
 
 4. 按如下所示添加新的 Device Update 标记值。 [使用标记的示例设备孪生 JSON 文档](../iot-hub/iot-hub-devguide-device-twins.md#device-twins)。
 

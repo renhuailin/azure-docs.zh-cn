@@ -7,13 +7,13 @@ ms.subservice: extensions
 author: mgoedtel
 ms.author: magoedte
 ms.collection: linux
-ms.date: 03/29/2019
-ms.openlocfilehash: d28f0a34f47942bba8776a0acd0bfe3aaf25df12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/01/2021
+ms.openlocfilehash: 97f557ec45530de3f42dd61ee1cded57fd7c33a0
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566289"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110793739"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Azure Monitor 依赖项虚拟机扩展
 
@@ -135,9 +135,32 @@ az vm extension set \
     --version 9.5 
 ```
 
+## <a name="automatic-upgrade-preview"></a>自动升级（预览版）
+现已在公共预览版中提供了自动升级依赖项扩展的次要版本的新功能。 若要启用此功能，必须执行以下配置更改。
+
+-   使用[启用预览访问](../automatic-extension-upgrade.md#enabling-preview-access)中的方法之一来为订阅启用该功能。
+- 将 `enableAutomaticUpgrade` 属性添加到模板。
+
+Dependency Agent 扩展版本控制方案遵循以下格式：
+
+```
+<MM.mm.bb.rr> where M = Major version number, m = minor version number, b = bug number, r = revision number.
+```
+
+`enableAutomaticUpgrade` 和 `autoUpgradeMinorVersion` 属性共同确定订阅中虚拟机的升级处理方式。
+
+| enableAutomaticUpgrade | autoUpgradeMinorVersion | 效果 |
+|:---|:---|:---|
+| true | false | 如果存在更新版本的 bb.rr，则升级依赖项代理。 例如，如果你运行的是 9.6.0.1355，并且较新的版本为 9.6.2.1366，则启用的订阅中的虚拟机将升级到 9.6.2.1366。 |
+| true | true |  如果存在较新版本的 mm.bb.rr 或 bb.rr，这会升级依赖项代理。 例如，如果你运行的是 9.6.0.1355，并且较新的版本为 9.7.1.1416，则启用的订阅中的虚拟机将升级到 9.7.1.1416。 同样，如果你运行的是 9.6.0.1355，并且较新的版本为 9.6.2.1366，则启用的订阅中的虚拟机将升级到 9.6.2.1366。 |
+| false | true 或 false | 自动升级已禁用。
+
+> [!IMPORTANT]
+> 如果将 `enableAutomaticUpgrade` 添加到模板，请确保至少使用 API 版本 2019-12-01。
+
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令：
 

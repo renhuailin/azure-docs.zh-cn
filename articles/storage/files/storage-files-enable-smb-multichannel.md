@@ -4,19 +4,20 @@ description: 了解如何在 Azure 高级文件共享上启用 SMB 多通道。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/15/2021
+ms.date: 05/17/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: da4e1a58aef28e5c47100a0311ff81a5af04a918
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a7b6feb2cfb255e231b8c2f9080915195f49d29a
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718965"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663440"
 ---
 # <a name="enable-smb-multichannel-on-a-filestorage-account-preview"></a>在 FileStorage 帐户上启用 SMB 多通道（预览版） 
 
-Azure FileStorage 帐户支持 SMB 多通道（预览版），这可通过建立与高级文件共享的多个网络连接来提高 SMB 3.x 客户端的性能。 本文提供了在现有存储帐户上启用 SMB 多通道的分步指导。 有关 Azure 文件存储 SMB 多通道的详细信息，请参阅“SMB 多通道性能”。
+Azure FileStorage 帐户支持 SMB 多通道（预览版），这可通过建立与高级文件共享的多个网络连接来提高 SMB 3.x 客户端的性能。 本文提供了在现有存储帐户上启用 SMB 多通道的分步指导。 有关 Azure 文件存储 SMB 多通道的详细信息，请参阅  [SMB 多通道性能](storage-files-smb-multichannel-performance.md)。
 
 ## <a name="limitations"></a>限制
 

@@ -5,16 +5,14 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 04/12/2021
+ms.date: 05/24/2021
 ms.author: rogarana
 ms.custom: references_regions
-ms.openlocfilehash: db04f271c78083bed7e80c507ba22a8911ef2516
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b060752282654644ecf84f1ac9a1f2378f4a3724
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327049"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110486441"
 ---
-用于 Azure 文件共享的 SMB 多通道在大多数区域广泛可用。
-- LRS：除政府和主权区域外，所有区域均可用。
-- ZRS：法国中部。
+适用于 Azure 文件共享的 SMB 多通道在所有提供高级文件共享（LRS 和 ZRS 冗余）的公有云区域中可用。

@@ -4,17 +4,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: d555322c0fd4067a4232e53387d811de7b50a8f5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 745ff6fddb3b175b4b046be71668f0c85ddd1c63
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103417687"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854467"
 ---
 处理压缩音频是使用 [GStreamer](https://gstreamer.freedesktop.org) 实现的。 出于许可原因，GStreamer 二进制文件未编译，也未与语音 SDK 链接。 开发人员需要安装几个依赖项和插件。
 
 > [!NOTE]
-> 请参阅[受支持的 Linux 发行版和目标体系结构](~/articles/cognitive-services/speech-service/speech-sdk.md)的列表。
+> 有关 Linux 上的强制常规设置，请参阅[系统要求和设置说明](~/articles/cognitive-services/speech-service/speech-sdk.md#get-the-speech-sdk)。
 
 # <a name="ubuntudebian"></a>[Ubuntu/Debian](#tab/debian)
 
@@ -37,9 +37,7 @@ gstreamer1-plugins-ugly-free
 ```
 
 > [!NOTE]
-> - 在 RHEL/CentOS 7 和 RHEL/CentOS 8 上，如果使用“任何”压缩格式，则需要安装更多 gstreamer 插件（如果流媒体格式插件不在上面安装的插件中）。 
-> - 在 RHEL/CentOS 7 上，按照[如何为语音 SDK 配置 RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md) 上的说明进行操作。
-> - 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
+> - 在 RHEL/CentOS 7 和 RHEL/CentOS 8 上，如果使用“任何”压缩格式，则需要安装更多 GStreamer 插件（如果流媒体格式插件不在上面安装的插件中）。 
 
 
 ---

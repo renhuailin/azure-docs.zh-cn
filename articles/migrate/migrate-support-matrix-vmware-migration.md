@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4fb2ea534954ae6c64d0da2d992ce8b1c8a62c0c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2cd15836e69ca5174822de95e3fced3a9659096f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557558"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971082"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 迁移支持矩阵
 
@@ -43,7 +43,7 @@ ms.locfileid: "105557558"
 
 
 
-### <a name="vm-requirements-agentless"></a>VM 要求（无代理）
+### <a name="vm-requirements-agentless"></a>VM 要求（无代理） 
 
 下表汇总了 VMware VM 的无代理迁移要求。
 
@@ -51,10 +51,10 @@ ms.locfileid: "105557558"
 --- | ---
 **受支持的操作系统** | 可以迁移 Azure 支持的 [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) 和 [Linux](../virtual-machines/linux/endorsed-distros.md) 操作系统。
 **Azure 中的 Windows VM** | 在迁移之前，你可能需要对 VM [进行一些更改](prepare-for-migration.md#verify-required-changes-before-migrating)。 
-**Azure 中的 Linux VM** | 某些 VM 可能需要经过更改才能在 Azure 中运行。<br/><br/> 对于 Linux，Azure Migrate 会自动对以下操作系统做出这些更改：<br/> - Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6.x<br/> - Cent OS 7.7、7.6、7.5、7.4、6.x</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - SUSE Linux Enterprise Server 15 SP1 <br/>- Ubuntu 19.04、19.10、14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8、9 <br/> Oracle Linux 7.7、7.7-CI<br/> 对于其他操作系统，手动进行[所需的更改](prepare-for-migration.md#verify-required-changes-before-migrating)。
+**Azure 中的 Linux VM** | 某些 VM 可能需要经过更改才能在 Azure 中运行。<br/><br/> 对于 Linux，Azure Migrate 会自动对以下操作系统做出这些更改：<br/> - Red Hat Enterprise Linux 8、7.9、7.8、7.7、7.6、7.5、7.4、7.0、6.x <br/> - Cent OS 8、7.7、7.6、7.5、7.4、6.x</br> - SUSE Linux Enterprise Server 11、12、15 SP0、15 SP1 <br/>- Ubuntu 19.04、19.10、14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8、9 <br/> Oracle Linux 6、7.7、7.7-CI<br/> 对于其他操作系统，手动进行[所需的更改](prepare-for-migration.md#verify-required-changes-before-migrating)。
 **Linux 启动** | 如果 /boot 位于专用分区上，则它应驻留在 OS 磁盘上，而不是分布在多个磁盘上。<br/> 如果 /boot 是根 (/) 分区的一部分，则“/”分区应在 OS 磁盘上，而不是分布在其他磁盘上。
 **UEFI 启动** | 支持。 基于 UEFI 的 VM 将迁移到 Azure 第 2 代 VM。 
-**磁盘大小** | 2 TB OS 磁盘；32 TB 数据磁盘。
+**磁盘大小** | 第 1 代和第 2 代 VM 的 OS 磁盘最大为 2 TB；数据磁盘为 32 TB。
 **磁盘限制** |  每个 VM 最多 60 个磁盘。
 **加密磁盘/卷** | 具有加密磁盘/卷的 VM 不支持用于迁移。
 **共享磁盘群集** | 不支持。
@@ -68,7 +68,18 @@ ms.locfileid: "105557558"
 **IPv6** | 不支持。
 **目标磁盘** | VM 只能迁移到 Azure 中的托管磁盘（标准 HDD、标准 SSD、高级 SSD）。
 **同时复制** | 1 台设备中每个 vCenter Server 最多可有 300 个 VM 同时复制。 如果额外部署一个[横向扩展设备](./how-to-scale-out-for-migration.md)，每个 vCenter Server 最多可有 500 个 VM 同时复制。 
-**自动安装 Azure VM 代理（Windows 和 Linux 代理）** | 支持 Windows Server 2008 R2 及更高版本。 <br/> 支持 RHEL6、RHEL7、CentOS7、Ubuntu 14.04、Ubuntu 16.04、Ubuntu18.04。 查看这些 Linux 操作系统的[必需包](../virtual-machines/extensions/agent-linux.md#requirements)的列表。
+**自动安装 Azure VM 代理（Windows 和 Linux 代理）** | 支持 Windows Server 2008 R2 及更高版本。 <br/> 支持 RHEL6、RHEL7、CentOS7、Ubuntu 14.04、Ubuntu 16.04、Ubuntu18.04。 
+
+> [!Note]
+> 对于 Linux VM，请确保安装了以下程序包，以便成功安装 Microsoft Azure Linux 代理 (waagent)：
+>- Python 2.6+
+>- OpenSSL 1.0+
+>- OpenSSH 5.3+
+>- 文件系统实用程序：sfdisk、fdisk、mkfs、parted
+>- 密码工具：chpasswd、sudo
+>- 文本处理工具：sed、grep
+>- 网络工具：ip-route 
+>- 在源 VM 上启用 rc.local 服务
 
 > [!TIP]
 >  使用 Azure 门户，一次最多可选择 10 个 VM 来配置复制。 要复制更多的 VM，可使用门户添加要复制的 VM（按每批 10 个 VM 分批复制），也可使用 Azure Migrate PowerShell 接口配置复制。 请确保配置的同时复制的 VM 数不超过支持的同时复制的最大 VM 数量。
@@ -120,7 +131,7 @@ vSphere/ESXI 主机 | TCP 端口 902 上的入站，可便于设备从快照复�
 **UEFI 启动** | 支持。 基于 UEFI 的 VM 将迁移到 Azure 第 2 代 VM。 
 **UEFI - 安全启动**         | 不支持迁移。
 **目标磁盘** | VM 只能迁移到 Azure 中的托管磁盘（标准 HDD、标准 SSD、高级 SSD）。
-**磁盘大小** | 2 TB OS 磁盘；32 TB 数据磁盘。
+**磁盘大小** | 第 1 代 VM 的 OS 磁盘最大为 2 TB；第 2 代 VM 的 OS 磁盘最大为 4 TB；数据磁盘为 32 TB。
 **磁盘限制** |  每个 VM 最多 63 个磁盘。
 **加密磁盘/卷** | 具有加密磁盘/卷的 VM 不支持用于迁移。
 **共享磁盘群集** | 不支持。
@@ -171,7 +182,7 @@ FC 磁盘 | 不支持。
 BitLocker | 不支持。<br/><br/> 迁移计算机之前，必须先禁用 BitLocker。
 VM 名称 | 1 到 63 个字符。<br/><br/> 限制为字母、数字和连字符。<br/><br/> 计算机名称必须以字母或数字开头和结尾。 
 在迁移 Windows 后进行连接 | 若要在迁移后连接到运行 Windows 的 Azure VM，请执行以下操作：<br/><br/> - 在迁移之前，在本地 VM 上启用 RDP。<br/><br/> 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP  。<br/><br/> 为了通过站点到站点 VPN 进行访问，启用 RDP 并在“Windows 防火墙” -> “允许的应用和功能”中同意域和专用网络使用 RDP。<br/><br/> 此外，检查操作系统的 SAN 策略是否已设置为 OnlineAll。 [了解详细信息](prepare-for-migration.md)。
-在迁移 Linux 后进行连接 | 若要在使用 SSH 迁移后连接到 Azure VM，请执行以下操作：<br/><br/> 在迁移之前，请在本地计算机上检查安全外壳服务是否设置为“启动”，以及防火墙规则是否允许 SSH 连接。<br/><br/> 在 Azure VM 上执行故障转移后，允许已故障转移的 VM 及其所连接 Azure 子网上的网络安全组规则与 SSH 端口建立传入连接。<br/><br/> 此外，为 VM 添加公共 IP 地址。  
+在迁移后进行连接 - Linux | 若要在使用 SSH 迁移后连接到 Azure VM，请执行以下操作：<br/><br/> 在迁移之前，请在本地计算机上检查安全外壳服务是否设置为“启动”，以及防火墙规则是否允许 SSH 连接。<br/><br/> 在 Azure VM 上执行故障转移后，允许已故障转移的 VM 及其所连接 Azure 子网上的网络安全组规则与 SSH 端口建立传入连接。<br/><br/> 此外，为 VM 添加公共 IP 地址。  
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -6,23 +6,22 @@ documentationcenter: ''
 author: billmath
 manager: daveba
 editor: ''
-ms.reviewer: cychua
 ms.assetid: b93e595b-354a-479d-85ec-a95553dd9cc2
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/04/2021
+ms.date: 06/02/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f7466931537745fb188a3bdb05646bff19912e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b24375cd3c5566a1da4d4e1876844d6984c7985
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103466246"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965860"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect：帐户和权限
 
@@ -81,6 +80,8 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 
 ### <a name="azure-ad-global-admin-credentials"></a>Azure AD 全局管理员凭据
 这些凭据只能在安装期间使用，而不能在安装完成后使用。 它用于创建 Azure AD 连接器帐户，以便将更改同步到 Azure AD。 该帐户还会在 Azure AD 中启用同步作为功能。
+
+有关全局管理员帐户的详细信息，请参阅[全局管理员](../../active-directory/roles/permissions-reference.md#global-administrator)。
 
 ### <a name="ad-ds-connector-account-required-permissions-for-express-settings"></a>AD DS 连接器帐户需要快速设置权限
 创建 AD DS 连接器帐户，用于读取和写入 Windows Server AD，如果由快速设置创建，该帐户具有以下权限：
@@ -197,8 +198,8 @@ AD DS 企业管理员帐户用于配置本地 Active Directory。 这些凭据�
 - 非粗体 - 支持的选项
 - 本地帐户 - 服务器上的本地用户帐户
 - 域帐户 - 域用户帐户
-- sMSA - [独立托管服务帐户](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
-- gMSA - [组托管服务帐户](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))
+- sMSA - [独立托管服务帐户](../../active-directory/fundamentals/service-accounts-on-premises.md)
+- gMSA - [组托管服务帐户](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
 
 | | LocalDB</br>Express | LocalDB/LocalSQL</br>自定义 | 远程 SQL</br>自定义 |
 | --- | --- | --- | --- |
@@ -215,11 +216,11 @@ VSA 旨在当同步引擎和 SQL 位于同一服务器上时使用。 如果使�
 此功能需要 Windows Server 2008 R2 或更高版本。 如果在 Windows Server 2008 上安装 Azure AD Connect，则安装将回退改用[用户帐户](#user-account)。
 
 #### <a name="group-managed-service-account"></a>组托管服务帐户
-如果使用远程 SQL Server，则建议使用 **组托管服务帐户**。 若要详细了解如何为组托管服务帐户准备 Active Directory ，请参阅 [Group Managed Service Accounts Overview](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))（组托管服务帐户概述）。
+如果使用远程 SQL Server，则建议使用 **组托管服务帐户**。 若要详细了解如何为组托管服务帐户准备 Active Directory ，请参阅 [Group Managed Service Accounts Overview](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)（组托管服务帐户概述）。
 
 要使用此选项，请在[安装所需组件](how-to-connect-install-custom.md#install-required-components)页上，选择“使用现有服务帐户”，并选择“托管服务帐户”。  
 ![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
-还支持使用[独立托管服务帐户](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))。 但是，这些帐户只能在本地计算机上使用，因此使用这些帐户相对默认虚拟服务帐户而言并没有好处。
+还支持使用[独立托管服务帐户](../../active-directory/fundamentals/service-accounts-on-premises.md)。 但是，这些帐户只能在本地计算机上使用，因此使用这些帐户相对默认虚拟服务帐户而言并没有好处。
 
 此功能需要 Windows Server 2012 或更高版本。 如果需要使用早期版本的操作系统和远程 SQL，则必须使用[用户帐户](#user-account)。
 

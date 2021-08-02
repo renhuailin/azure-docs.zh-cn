@@ -8,12 +8,12 @@ manager: femila
 ms.topic: article
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 28f8bb6a610e13aa0e7cf76adf52f13972215365
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 71035e6d115c64eea7ceb4a4f862d8bd4f4ec874
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385187"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537254"
 ---
 # <a name="create-a-video-analyzer-for-media-account"></a>创建视频分析器媒体版帐户
 
@@ -241,6 +241,10 @@ ms.locfileid: "110385187"
 选择该帐户 ->“设置” -> “删除此帐户”。 
 
 该帐户将在 90 天内永久删除。
+
+## <a name="firewall"></a>防火墙
+
+请参阅[防火墙后的存储帐户](faq.md#can-a-storage-account-connected-to-the-media-services-account-be-behind-a-firewall)。
 
 ## <a name="next-steps"></a>后续步骤
 

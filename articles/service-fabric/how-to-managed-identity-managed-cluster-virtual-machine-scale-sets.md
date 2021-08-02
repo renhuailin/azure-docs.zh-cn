@@ -1,22 +1,21 @@
 ---
-title: 将托管标识添加到 Service Fabric 托管群集节点类型（预览版）
+title: 将托管标识添加到 Service Fabric 托管群集节点类型
 description: 本文介绍如何将托管标识添加到 Service Fabric 托管群集节点类型
 ms.topic: how-to
-ms.date: 11/24/2020
-ms.custom: references_regions
-ms.openlocfilehash: 3ff5d66160ddbb037469378634826fd9eeae0c54
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 5/10/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 221f97f6354c105c106343fe45c9e747d46e35fb
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100651640"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110671127"
 ---
-# <a name="add-a-managed-identity-to-a-service-fabric-managed-cluster-node-type-preview"></a>将托管标识添加到 Service Fabric 托管群集节点类型（预览版）
+# <a name="add-a-managed-identity-to-a-service-fabric-managed-cluster-node-type"></a>将托管标识添加到 Service Fabric 托管群集节点类型
 
 Service Fabric 托管群集中的每个节点类型都受虚拟机规模集的支持。 为了配合使用托管标识和托管群集节点类型，已将属性 `vmManagedIdentity` 添加到包含可以使用的标识列表 `userAssignedIdentities` 的节点类型定义中。 功能反映了如何在非托管群集中使用托管标识，例如配合使用托管标识与 [Azure Key Vault 虚拟机规模集扩展](../virtual-machines/extensions/key-vault-windows.md)。
 
-
-有关对节点类型使用托管标识的 Service Fabric 托管群集部署的示例，请参阅[此模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI)。 有关支持的区域的列表，请参阅[托管群集常见问题解答](./faq-managed-cluster.md#what-regions-are-supported-in-the-preview)。
+有关对节点类型使用托管标识的 Service Fabric 托管群集部署的示例，请参阅[此模板](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI)。
 
 > [!NOTE]
 > 此功能目前仅支持用户分配的标识。
@@ -28,7 +27,7 @@ Service Fabric 托管群集中的每个节点类型都受虚拟机规模集的�
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 * 如果计划使用 PowerShell，请[安装](/cli/azure/install-azure-cli) Azure CLI 来运行 CLI 参考命令。
 
-## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识 
+## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识
 
 可以在 Azure 资源管理器 (ARM) 模板的“资源”部分中定义用户分配的托管标识，以便在部署时创建：
 
@@ -52,22 +51,34 @@ az identity create --name <userAssignedIdentityName> --resource-group <resourceG
 
 使用 Service Fabric 资源提供程序应用程序将角色分配添加到托管标识。 通过这种分配，Service Fabric 资源提供程序可以将标识分配给托管群集的虚拟机规模集。 
 
-在适用的情况下必须使用以下值：
+获取 Service Fabric 资源提供程序应用程序的服务主体：
 
-|名称|对应的 Service Fabric 资源提供程序值|
-|----|-------------------------------------|
-|应用程序 ID|74cb6831-0dbb-4be1-8206-fd4df301cdc2|
-|对象 ID|fbc587f2-66f5-4459-a027-bcd908b9d278|
+```powershell
+Login-AzAccount
+Select-AzSubscription -SubscriptionId <SubId>
+Get-AzADServicePrincipal -DisplayName "Azure Service Fabric Resource Provider"
+```
 
+> [!NOTE]
+> 确保你位于正确的订阅中，如果订阅位于其他租户中，则主体 ID 将更改。
+
+```powershell
+ServicePrincipalNames : {74cb6831-0dbb-4be1-8206-fd4df301cdc2}
+ApplicationId         : 74cb6831-0dbb-4be1-8206-fd4df301cdc2
+ObjectType            : ServicePrincipal
+DisplayName           : Azure Service Fabric Resource Provider
+Id                    : 00000000-0000-0000-0000-000000000000
+Type                  :
+```
+
+当在模板或 PowerShell 命令上适用时，将上一个输出的 ID 用作 principalId，将下面的角色定义 ID 用作 roleDefinitionId ：
 
 |角色定义名称|角色定义 ID|
 |----|-------------------------------------|
-|托管的标识操作员|f1a07417-d97a-45cb-824c-7a7467783830
-|
+|托管的标识操作员|f1a07417-d97a-45cb-824c-7a7467783830|
 
 
-
-可以使用对象 ID 和角色定义 ID 在“资源”部分定义此角色分配：
+可以使用主体 ID 和角色定义 ID 在“资源”部分模板中定义此角色分配：
 
 ```JSON
 {
@@ -80,32 +91,28 @@ az identity create --name <userAssignedIdentityName> --resource-group <resourceG
     ], 
     "properties": {
         "roleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'f1a07417-d97a-45cb-824c-7a7467783830')]",
-        "principalId": "fbc587f2-66f5-4459-a027-bcd908b9d278" 
+        "principalId": "00000000-0000-0000-0000-000000000000" 
     } 
 }, 
 ```
+> [!NOTE]
+> vmIdentityRoleNameGuid 应为有效的 GUID。 如果再次部署同一模板（包括此角色分配），请确保 GUID 与最初使用的相同，如果不同则删除此资源，因为它只需创建一次。
 
-或使用应用程序 ID 和角色定义 ID 通过 PowerShell 创建：
-
-```powershell
-New-AzRoleAssignment -ApplicationId 74cb6831-0dbb-4be1-8206-fd4df301cdc2 -RoleDefinitionName "Managed Identity Operator" -Scope "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<userAssignedIdentityName>"
-```
-
-或使用对象 ID 和角色定义 ID：
+或者使用主体 ID 和角色定义名称通过 PowerShell 创建：
 
 ```powershell
-New-AzRoleAssignment -PrincipalId fbc587f2-66f5-4459-a027-bcd908b9d278 -RoleDefinitionName "Managed Identity Operator" -Scope "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<userAssignedIdentityName>"
+New-AzRoleAssignment -PrincipalId 00000000-0000-0000-0000-000000000000 -RoleDefinitionName "Managed Identity Operator" -Scope "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<userAssignedIdentityName>"
 ```
 
 ## <a name="add-managed-identity-properties-to-node-type-definition"></a>将托管标识属性添加到节点类型定义
 
-最后，将 `vmManagedIdentity` 和 `userAssignedIdentities` 属性添加到托管群集的节点类型定义。 请务必使用 2021-01-01-preview 或更高版本的 `apiVersion`。
+最后，将 `vmManagedIdentity` 和 `userAssignedIdentities` 属性添加到托管群集的节点类型定义。 请务必使用 2021-05-01 或更高版本的 `apiVersion`。
 
 ```json
 
  {
     "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
-    "apiVersion": "2021-01-01-preview",
+    "apiVersion": "2021-05-01",
     ...
     "properties": {
         "isPrimary" : true,

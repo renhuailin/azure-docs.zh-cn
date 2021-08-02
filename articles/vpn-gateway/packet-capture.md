@@ -8,12 +8,13 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alzam
-ms.openlocfilehash: 5f423b2a4a1edcfdb71fd387cae0ec8c63113627
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c7a781a497ce6b3e4511eff3ba5818bab1a1a2b8
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229173"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681618"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>为 VPN 网关配置数据包捕获
 
@@ -329,6 +330,12 @@ VPN 网关数据包捕获可在网关上运行，也可在特定的连接上运�
 
 以下示例显示使用 PowerShell 命令启动和停止数据包捕获。 有关参数选项的详细信息，请参阅 [Start-AzVirtualnetworkGatewayPacketCapture](/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture)。
 
+>
+### <a name="prerequisite"></a>先决条件
+
+* 数据包捕获数据需要记录到订阅中的存储帐户。 请参阅[创建存储帐户](../storage/common/storage-account-create.md)。
+* 若要停止数据包捕获，需要为存储帐户生成 `SASUrl`。 请参阅[创建用户委派 SAS](../storage/blobs/storage-blob-user-delegation-sas-create-powershell.md)。
+
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>启动 VPN 网关的数据包捕获
 
 ```azurepowershell-interactive
@@ -343,6 +350,8 @@ Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroup
 Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName" -SasUrl "YourSASURL"
 ```
 
+有关参数选项的详细信息，请参阅 [Stop-AzVirtualNetworkGatewayPacketCapture](/powershell/module/az.network/stop-azvirtualnetworkgatewaypacketcapture)。
+
 ### <a name="start-packet-capture-for-a-vpn-gateway-connection"></a>启动 VPN 网关连接的数据包捕获
 
 ```azurepowershell-interactive
@@ -356,6 +365,8 @@ Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourRes
 ```azurepowershell-interactive
 Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName" -SasUrl "YourSASURL"
 ```
+
+有关参数选项的详细信息，请参阅 [Stop-AzVirtualNetworkGatewayConnectionPacketCapture](/powershell/module/az.network/stop-azvirtualnetworkgatewayconnectionpacketcapture)。
 
 ## <a name="key-considerations"></a>重要注意事项
 

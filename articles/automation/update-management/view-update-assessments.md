@@ -3,14 +3,14 @@ title: 查看 Azure 自动化更新评估
 description: 本文介绍如何查看更新管理部署的更新评估。
 services: automation
 ms.subservice: update-management
-ms.date: 09/17/2020
+ms.date: 06/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 39df5888a330a92ae043e34c3043da5b1f566345
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 270a48181e8eceb7b5e851f9bc69bb5a41428573
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92221979"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111964460"
 ---
 # <a name="view-update-assessments-in-update-management"></a>查看更新管理中的更新评估
 
@@ -46,6 +46,9 @@ ms.locfileid: "92221979"
 
 [![查看更新状态](./media/view-update-assessments/missing-updates.png)](./media/view-update-assessments/missing-updates-expanded.png#lightbox)
 
+> [!NOTE]
+> 显示有关 Windows Defender 更新状态的信息汇总自 Log Analytics 工作区的最后数据，可能不是当前数据。 如想详细了解此行为，请查看 [Windows Defender 更新始终显示为缺失状态](../troubleshoot/update-management.md#windows-defender-update-missing-status)。
+ 
 单击更新的其他位置，打开“日志搜索”窗格。 日志搜索的查询是为该特定更新预定义的。 可以修改此查询或创建自己的查询，以查看详细信息。
 
 [![查看日志查询结果](./media/view-update-assessments/logsearch-results.png)](./media/view-update-assessments/logsearch-results-expanded.png#lightbox)

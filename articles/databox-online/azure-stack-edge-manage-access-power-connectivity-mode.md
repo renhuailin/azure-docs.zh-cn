@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Edge Pro 设备访问、电源和连接模式 | Microsoft Docs
-description: 介绍如何管理帮助向 Azure 传输数据的 Azure Stack Edge Pro 设备的访问、电源和连接模式
+title: Azure Stack Edge Pro FPGA 设备访问、电源和连接模式
+description: 介绍如何管理帮助向 Azure 传输数据的 Azure Stack Edge Pro FPGA 设备的访问、电源和连接模式
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,16 +8,17 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 240d3872536e6974d7f65eed22dace6816844e9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a07bf9490332ee829182900b2626dfdf99f00dda
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200208"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110703827"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>管理 Azure Stack Edge Pro 的访问、电源和连接模式
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-fpga"></a>管理 Azure Stack Edge Pro FPGA 的访问、电源和连接模式
 
-本文介绍如何管理 Azure Stack Edge Pro 的访问、电源和连接模式。 这些操作是通过本地 Web UI 或 Azure 门户执行的。
+本文介绍如何管理 Azure Stack Edge Pro FPGA 的访问、电源和连接模式。 这些操作是通过本地 Web UI 或 Azure 门户执行的。
 
 在本文中，学习如何：
 
@@ -29,7 +30,7 @@ ms.locfileid: "103200208"
 
 ## <a name="manage-device-access"></a>管理对设备的访问
 
-可以通过使用设备密码来控制对 Azure Stack Edge Pro 设备的访问。 可以通过本地 Web UI 更改密码。 还可以在 Azure 门户中重置设备密码。
+可以使用设备密码来控制对 Azure Stack Edge Pro FPGA 设备的访问。 可以通过本地 Web UI 更改密码。 还可以在 Azure 门户中重置设备密码。
 
 ### <a name="change-device-password"></a>更改设备密码
 
@@ -61,12 +62,12 @@ ms.locfileid: "103200208"
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>管理 Microsoft Graph API 权限
 
-为 Azure Stack Edge Pro 设备生成激活密钥或执行需要凭据的任何操作时，需要具有对 Azure Active Directory 图形 API 的权限。 需要凭据的操作可能是：
+为 Azure Stack Edge Pro FPGA 设备生成激活密钥或执行需要凭据的任何操作时，需要拥有对 Azure Active Directory 图形 API 的权限。 需要凭据的操作可能是：
 
 -  使用关联的存储帐户创建共享。
 -  创建可访问设备上的共享的用户。
 
-你应该对 Active Directory 租户具有 `User` 权限，因为你需要能够 `Read all directory objects`。 你不能使用“来宾”用户身份，因为这种用户没有 `Read all directory objects` 权限。 如果你是来宾，则生成激活密钥、在 Azure Stack Edge Pro 设备上创建共享、创建用户、配置 Edge 计算角色以及重置设备密码等操作都将失败。
+你应该对 Active Directory 租户具有 `User` 权限，因为你需要能够 `Read all directory objects`。 你不能使用“来宾”用户身份，因为这种用户没有 `Read all directory objects` 权限。 如果你是来宾，则生成激活密钥、在 Azure Stack Edge Pro FPGA 设备上创建共享、创建用户、配置 Edge 计算角色以及重置设备密码等操作都将失败。
 
 如需详细了解如何向用户提供对 Microsoft Graph API 的访问权限，请参阅 [Microsoft Graph 权限参考](/graph/permissions-reference)。
 
@@ -89,7 +90,7 @@ ms.locfileid: "103200208"
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-对于 Azure Stack Edge Pro 设备，应注册 `Microsoft.DataBoxEdge`。 若要注册 `Microsoft.DataBoxEdge`，订阅管理员应运行以下命令：
+对于 Azure Stack Edge Pro FPGA 设备，应注册 `Microsoft.DataBoxEdge`。 若要注册 `Microsoft.DataBoxEdge`，订阅管理员应运行以下命令：
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge

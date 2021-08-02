@@ -1,5 +1,5 @@
 ---
-title: 内容性能 http://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-quotas-throttling
+title: 了解 Azure IoT 中心配额和限制
 description: 开发人员指南 - 介绍适用于 IoT 中心的配额和预期限制行为。
 author: robinsh
 ms.author: robinsh
@@ -11,13 +11,13 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-- ms.custom:contperf-fy21q4
-ms.openlocfilehash: a18ca18a6e9f7e26c6189cf66322b16f36a42ecb
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+- contperf-fy21q4
+ms.openlocfilehash: 127e511769a7c2aface1531c9f888e9ce213b999
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277797"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407014"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -30,10 +30,6 @@ ms.locfileid: "108277797"
 每个 IoT 中心都在特定层中预配了特定单位数。 层和单位数决定了可以发送的消息的每日配额上限。 用于计算每日配额的消息大小为 0.5 KB（适用于中心的免费层）和 4 KB（适用于所有其他层）。 有关详细信息，请参阅 [Azure IoT 中心定价](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
 层还决定了 IoT 中心对所有操作强制实施的限制。
-
-## <a name="iot-plug-and-play"></a>IoT 即插即用
-
-IoT 即插即用设备会为每个接口（包括根）发送至少一条遥测消息，这可能会增加计入消息配额的消息数量。
 
 ## <a name="operation-throttles"></a>操作限制
 

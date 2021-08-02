@@ -8,18 +8,18 @@ author: ejarvi
 ms.author: ejarvi
 ms.collection: windows
 ms.date: 03/19/2020
-ms.openlocfilehash: 10268f8041f21f74e8ebcfaee41d207a53618260
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62ad5ca5d3b150aef5a83eaa4d5231e7bb5a6a62
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566237"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110100173"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>适用于 Windows 的 Azure 磁盘加密 (Microsoft.Azure.Security.AzureDiskEncryption)
 
 ## <a name="overview"></a>概述
 
-Azure 磁盘加密利用 BitLocker 在运行 Windows 的 Azure 虚拟机上提供完全磁盘加密。  此解决方案与 Azure Key Vault 集成，以管理 Key Vault 订阅中的磁盘加密密钥和机密。 
+Azure 磁盘加密利用 BitLocker 在运行 Windows 的 Azure 虚拟机上提供完全磁盘加密。  此解决方案与 Azure Key Vault 集成，以管理 Key Vault 订阅中的磁盘加密密钥和机密。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,7 +33,7 @@ Azure 磁盘加密利用 BitLocker 在运行 Windows 的 Azure 虚拟机上提�
 
 Azure 磁盘加密 (ADE) 的扩展架构有两个版本：
 - v2.2 - 建议使用的较新架构，它不使用 Azure Active Directory (AAD) 属性。
-- v1.1 - 需要 Azure Active Directory (AAD) 属性的较旧架构。 
+- v1.1 - 需要 Azure Active Directory (AAD) 属性的较旧架构。
 
 若要选择目标架构，需要将 `typeHandlerVersion` 属性设置为要使用的架构版本。
 
@@ -67,7 +67,7 @@ v2.2 架构建议用于所有新 VM，并且不需要 Azure Active Directory 属
 ```
 
 
-### <a name="schema-v11-with-aad"></a>架构 v1.1：使用 AAD 
+### <a name="schema-v11-with-aad"></a>架构 v1.1：使用 AAD
 
 1\.1 架构需要 `aadClientID` 和 `aadClientSecret` 或 `AADClientCertificate`，建议不要用于新 VM。
 
@@ -82,7 +82,7 @@ v2.2 架构建议用于所有新 VM，并且不需要 Azure Active Directory 属
   "properties": {
     "protectedSettings": {
       "AADClientSecret": "[aadClientSecret]"
-    },    
+    },
     "publisher": "Microsoft.Azure.Security",
     "type": "AzureDiskEncryption",
     "typeHandlerVersion": "1.1",
@@ -112,7 +112,7 @@ v2.2 架构建议用于所有新 VM，并且不需要 Azure Active Directory 属
   "properties": {
     "protectedSettings": {
       "AADClientCertificate": "[aadClientCertificate]"
-    },    
+    },
     "publisher": "Microsoft.Azure.Security",
     "type": "AzureDiskEncryption",
     "typeHandlerVersion": "1.1",
@@ -140,10 +140,10 @@ v2.2 架构建议用于所有新 VM，并且不需要 Azure Active Directory 属
 | publisher | Microsoft.Azure.Security | string |
 | type | AzureDiskEncryption | string |
 | typeHandlerVersion | 2.2、1.1 | string |
-| （1.1 架构）AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID | 
+| （1.1 架构）AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID |
 | （1.1 架构）AADClientSecret | password | string |
 | （1.1 架构）AADClientCertificate | thumbprint | string |
-| EncryptionOperation | EnableEncryption | string | 
+| EncryptionOperation | EnableEncryption | string |
 | （可选 - 默认 RSA-OAEP）KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
 | KeyVaultURL | url | string |
 | KeyVaultResourceId | url | string |
@@ -154,12 +154,12 @@ v2.2 架构建议用于所有新 VM，并且不需要 Azure Active Directory 属
 
 ## <a name="template-deployment"></a>模板部署
 
-有关基于架构 v2.2 的模板部署的示例，请参阅 Azure 快速入门模板 [201-encrypt-running-windows-vm-without-aad](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad)。
+有关基于架构 v2.2 的模板部署的示例，请参阅 Azure 快速入门模板 [encrypt-running-windows-vm-without-aad](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/encrypt-running-windows-vm-without-aad)。
 
 有关基于架构 v1.1 的模板部署的示例，请参阅 Azure 快速入门模板 [201-encrypt-running-windows-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)。
 
 >[!NOTE]
-> 此外，如果 `VolumeType` 参数设置为 All，则仅当数据磁盘采用正确格式时才会对其进行加密。 
+> 此外，如果 `VolumeType` 参数设置为 All，则仅当数据磁盘采用正确格式时才会对其进行加密。
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
@@ -169,7 +169,7 @@ v2.2 架构建议用于所有新 VM，并且不需要 Azure Active Directory 属
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。
 
 或者，你也可以提出 Azure 支持事件。 转到 [Azure 支持](https://azure.microsoft.com/support/options/)，然后选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。
 

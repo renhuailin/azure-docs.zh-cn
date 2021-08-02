@@ -3,20 +3,20 @@ title: Azure 中逻辑服务器的资源限制
 description: 本文概述了 Azure SQL 数据库和 Azure Synapse Analytics 所使用的 Azure 中逻辑服务器的资源限制。 它还提供了有关在达到或超过这些资源限制时会发生什么情况的信息。
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: service-overview
 ms.custom: ''
 ms.devlang: ''
 ms.topic: reference
-author: stevestein
-ms.author: sstein
-ms.reviewer: sashan,moslake,josack
-ms.date: 03/25/2021
-ms.openlocfilehash: 5e95bc50a74413389bd2583beb90128b3fd0810a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+author: dimitri-furman
+ms.author: dfurman
+ms.reviewer: mathoma
+ms.date: 04/16/2021
+ms.openlocfilehash: fa5e8bc8ec3e0ebbc93d682d8ff9988f110ffe69
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543510"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110708364"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL 数据库和 Azure Synapse Analytics 服务器的资源限制
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -49,7 +49,7 @@ ms.locfileid: "105543510"
 
 ### <a name="storage-size"></a>存储大小
 
-对于单一数据库资源存储大小，请参阅[基于 DTU 的资源限制](resource-limits-dtu-single-databases.md)或[基于 vCore 的资源限制](resource-limits-vcore-single-databases.md)，了解每个定价层的存储大小限制。
+对于单一数据库资源存储大小，请参阅[基于 DTU 的资源限制](resource-limits-dtu-single-databases.md)或[基于 vCore 的资源限制](resource-limits-vcore-single-databases.md)，了解每个定价层的存储大小限制（也称为服务目标）。
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>如果达到数据库资源限制，会发生什么？
 
@@ -63,14 +63,17 @@ ms.locfileid: "105543510"
 
 ### <a name="storage"></a>存储
 
-当使用的数据库空间到达上限时，将无法进行增加数据大小的数据库插入和更新操作，客户端会收到[错误消息](troubleshoot-common-errors-issues.md)。 SELECT 和 DELETE 语句不受影响。
+当使用的数据库空间到达数据大小上限时，将无法进行增加数据大小的数据库插入和更新操作，客户端会收到[错误消息](troubleshoot-common-errors-issues.md)。 SELECT 和 DELETE 语句不受影响。
+
+在高级和业务关键服务层中，如果数据、事务日志和 tempdb 的总存储消耗超过最大本地存储大小，客户端也会收到错误消息。 有关详细信息，请参阅[存储空间监管](#storage-space-governance)。
 
 空间使用率变高时，风险缓解选项包括：
 
-- 提高数据库或弹性池的大小上限，或添加更多存储资源。 请参阅[缩放单一数据库资源](single-database-scale.md)和[缩放弹性池资源](elastic-pool-scale.md)。
+- 增加数据库或弹性池的最大数据大小，或扩展到具有更高最大数据大小限制的服务目标。 请参阅[缩放单一数据库资源](single-database-scale.md)和[缩放弹性池资源](elastic-pool-scale.md)。
 - 如果数据库在弹性池内，可选择将数据库移出弹性池，从而避免与其他数据库共享存储空间。
-- 收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](file-space-manage.md)。
+- 收缩数据库来回收未使用的空间。 在弹性池中，收缩数据库可为池中的其他数据库提供更多存储空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](file-space-manage.md)。
 - 检查高空间利用率是否是由永久性版本存储 (PVS) 大小的峰值所造成的。 PVS 是每个数据库的一部分，用于实现[加速数据库恢复](../accelerated-database-recovery.md)。 若要确定当前的 PVS 大小，请参阅 [PVS 故障排除](/sql/relational-databases/accelerated-database-recovery-management#troubleshooting)。 PVS 大小较大的常见原因是事务长时间（数小时）开放，从而无法清理 PVS 中较旧的版本。
+- 对于高级和业务关键服务层中的大型数据库，即使数据库中的已用空间低于其最大大小限制，也可能会收到空间不足错误。 如果 tempdb 或事务日志消耗大量存储空间且即将达到最大本地存储限制，则可能会发生这种情况。 对数据库或弹性池执行[故障转移](high-availability-sla.md#testing-application-fault-resiliency)以将 tempdb 重置为其初始大小（较小），或[收缩](file-space-manage.md#shrinking-transaction-log-file)事务日志以减少本地存储消耗。
 
 ### <a name="sessions-and-workers-requests"></a>会话和辅助角色（请求）
 
@@ -132,7 +135,7 @@ Azure SQL 数据库资源治理本质上是分层的。 自上而下，使用操
 
 数据 IO 治理是 Azure SQL 数据库中的一个过程，用于限制对数据库数据文件的读取和写入物理 IO。 为每个服务级别设置 IOPS 限制，以最大限度地减少“邻近干扰”效果，在多租户服务中提供资源分配公平性，并保持在基础硬件和存储功能范围内。
 
-对于单个数据库，工作负载组限制适用于针对数据库的所有存储 IO，而资源池限制适用于同一专用 SQL 池中的所有数据库，包括 `tempdb` 数据库。 对于弹性池，工作负载组限制适用于池中的每个数据库，而资源池限制适用于整个弹性池，包括池中所有数据库共享的 `tempdb` 数据库。 一般来说，由于工作负载组限制低于资源池限制，并且限制 IOPS/吞吐量的速度更快，因此无法通过针对数据库的工作负载（单一或公用）实现资源池限制。 但是，可通过对同一池中的多个数据库的组合工作负载来达到池限制。
+对于单个数据库，工作负载组限制适用于针对数据库的所有存储 IO，而资源池限制适用于针对同一专用 SQL 池中的所有数据库的所有存储 IO，包括 tempdb 数据库。 对于弹性池，工作负载组限制适用于池中的每个数据库，而资源池限制适用于整个弹性池，包括池中所有数据库共享的 tempdb 数据库。 一般来说，由于工作负载组限制低于资源池限制，并且限制 IOPS/吞吐量的速度更快，因此无法通过针对数据库的工作负载（单一或公用）实现资源池限制。 但是，可通过对同一池中的多个数据库的组合工作负载来达到池限制。
 
 例如，如果查询在没有任何 IO 资源治理的情况下生成 1000 IOPS，但工作负载组的最大 IOPS 限制设置为 900 IOPS，则该查询将无法生成超过 900 的 IOPS。 但是，如果资源池的最大 IOPS 限制设置为 1500 IOPS，并且与资源池关联的所有工作负载组的总 IO 超过 1500 IOPS，则同一查询的 IO 可能会降低到 900 IOPS 的工作组限制以下。
 
@@ -177,11 +180,40 @@ Azure SQL 数据库资源治理本质上是分层的。 自上而下，使用操
 
 ### <a name="storage-space-governance"></a>存储空间治理
 
-在高级和业务关键服务层中，数据和事务日志文件存储在托管数据库或弹性池的计算机的本地 SSD 卷上。 这会提供高 IOPS 和吞吐量，以及低 IO 延迟。 此本地卷的大小取决于硬件功能，并且是有限的。 在给定计算机上，客户数据库（包括 `tempdb`、操作系统、管理软件、监控数据、日志等）消耗了本地卷空间。随着数据库的创建、删除和空间使用量的增加/减少，计算机上的本地空间消耗会随着时间而波动。 
+在高级和业务关键服务层中，客户数据（包括数据文件、事务日志文件和 tempdb 文件）存储在托管数据库或弹性池的计算机的本地 SSD 存储中  。 本地 SSD 存储提供高 IOPS 和吞吐量，以及低 IO 延迟。 除客户数据外，还使用本地存储来存储操作系统、管理软件、监控数据和日志以及系统运行所需的其他文件。
 
-如果系统检测到计算机上的可用自由空间较少，并且数据库或弹性池有耗尽空间的风险，它会将数据库或弹性池移动到具有足够自由空间的不同计算机，从而允许增长到配置服务目标的最大大小限制。 此移动以联机方式发生，类似于数据库缩放操作，并具有类似的[影响](single-database-scale.md#impact)，包括操作结束时的短暂（几秒）故障转移。 此故障转移会终止打开的连接并回退事务，这可能会影响当时使用数据库的应用程序。
+本地存储的大小是有限的，取决于硬件功能（决定了最大本地存储限制），或为客户数据预留的本地存储。 设置此限制是为了最大化客户数据存储，同时确保安全可靠的系统运行。 要查找每个服务目标的最大本地存储值，请参阅[单个数据库](resource-limits-vcore-single-databases.md)和[弹性池](resource-limits-vcore-elastic-pools.md)的资源限制文档。
 
-由于数据被物理复制到其他计算机中，移动较大的数据库可能需要大量时间。 在此期间，如果大型用户数据库或弹性池或 `tempdb` 数据库的本地空间消耗增长非常快，则空间耗尽的风险会增加。 该系统以平衡的方式启动数据库移动，以防止空间耗尽错误，并避免不必要的故障转移。
+还可以使用以下查询查到此值以及给定数据库或弹性池当前使用的本地存储量：
+
+```tsql
+SELECT server_name, database_name, slo_name, user_data_directory_space_quota_mb, user_data_directory_space_usage_mb
+FROM sys.dm_user_db_resource_governance
+WHERE database_id = DB_ID();
+```
+
+|列|说明|
+| :----- | :----- |
+|`server_name`|逻辑服务器名称|
+|`database_name`|数据库名称|
+|`slo_name`|服务目标名称，包括硬件代系|
+|`user_data_directory_space_quota_mb`|最大本地存储空间，以 MB 为单位|
+|`user_data_directory_space_usage_mb`|数据文件、事务日志文件和 tempdb 文件的当前本地存储消耗，以 MB 为单位。 每五分钟更新一次。|
+|||
+
+此查询应在用户数据库中执行，而不是在主数据库中。 对于弹性池，可以在池中的任何数据库中执行查询。 报告的值适用于整个池。
+
+> [!IMPORTANT]
+> 在高级和业务关键服务层中，如果工作负载尝试将数据文件、事务日志文件和 tempdb 文件的总的本地存储消耗量增加到超过最大本地存储限制，会出现空间不足错误。
+
+随着数据库的创建、删除及其大小的增加或减少，计算机上的本地存储消耗量会随着时间推移而波动。 如果系统检测到计算机上可用的本地存储空间较少，并且数据库或弹性池面临空间不足的风险，则会将数据库或弹性池移动到具有足够本地存储空间的另一台计算机上。
+
+此移动以联机方式发生，类似于数据库缩放操作，并具有类似的[影响](single-database-scale.md#impact)，包括操作结束时的短暂（几秒）故障转移。 此故障转移会终止打开的连接并回退事务，这可能会影响当时使用数据库的应用程序。
+
+由于要将所有数据都复制到另一台计算机上的本地存储卷中，因此移动较大的数据库可能需要大量时间。 在此期间，如果数据库或弹性池或 tempdb 数据库的本地空间消耗增长非常快，则空间耗尽的风险会增加。 该系统以平衡的方式启动数据库移动，以最大限度减少空间耗尽错误，同时避免不必要的故障转移。
+
+> [!NOTE]
+> 由于本地存储不足而导致的数据库移动仅发生在高级或业务关键服务层。 它不会出现在超大规模、常规用途、标准和基本服务层中，因为在这些层中，数据文件未存储在本地存储上。
 
 ## <a name="next-steps"></a>后续步骤
 

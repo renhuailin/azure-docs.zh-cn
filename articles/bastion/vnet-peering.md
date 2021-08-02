@@ -1,20 +1,20 @@
 ---
 title: VNet 对等互连和 Azure Bastion 体系结构
-description: 本文介绍了如何将 VNet 对等互连和 Azure Bastion 配合使用来连接到 VM。
+description: 了解如何将 VNet 对等互连和 Azure Bastion 配合使用来连接到 VM。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: f72a3739fac1e7d6afdafd2676ea6fcefe847b2a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d7f888c5bbb47a3690aee9b139d2516eb956a35f
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101710577"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110540378"
 ---
-# <a name="vnet-peering-and-azure-bastion-preview"></a>VNet 对等互连和 Azure Bastion（预览版）
+# <a name="vnet-peering-and-azure-bastion"></a>VNet 对等互连和 Azure Bastion
 
 Azure Bastion 和 VNet 对等互连可以一起使用。 配置 VNet 对等互连后，无需在每个对等互连的 VNet 中部署 Azure Bastion。 这就意味着，如果在一个虚拟网络 (VNet) 中配置了 Azure Bastion 主机，则可使用该主机连接到在对等互连的 VNet 中部署的 VM，而无需部署其他 Bastion 主机。 有关 VNet 对等互连的详细信息，请参阅[关于虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)。
 
@@ -40,12 +40,12 @@ Azure Bastion 使用以下类型的对等互连：
 **步骤：**
 
 1. 使用任何 HTML5 浏览器连接到 Azure 门户。
-2. 确保你对目标 VM 和对等 VNet 都有“读取”访问权限。 此外，请在 IAM 下检查你是否对以下资源具有“读取”访问权限：
+2. 确保对目标 VM 和对等 VNet 都有“读取”访问权限。 此外，请在 IAM下 检查你是否对以下资源具有“读取”访问权限：
    * 虚拟机上的读者角色。
    * NIC 上的读者角色（使用虚拟机的专用 IP）。
    * Azure Bastion 资源上的读者角色。
    * 虚拟网络上的读者角色（如果没有对等互连虚拟网络，则不需要）。
-3. 若要在“连接”下拉菜单中查看 Bastion，你必须在“订阅”>“全局订阅” 中选择你有权访问的订阅。
+3. 若要在“连接”下拉菜单中查看 Bastion，必须在“订阅”>“全局订阅”中选择有权访问的订阅。
 4. 选择要连接到的虚拟机。
 5. 在对等互连的 VNet 中会顺利检测到 Azure Bastion。
 6. 单击一下，在浏览器中打开 RDP/SSH 会话。 有关 RDP 和 SSH 并发会话的限制，请参阅 [RDP 和 SSH 会话](bastion-faq.md#limits)。

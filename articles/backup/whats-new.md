@@ -2,13 +2,13 @@
 title: Azure 备份中的新增功能
 description: 了解 Azure 备份中的新功能。
 ms.topic: conceptual
-ms.date: 11/11/2020
-ms.openlocfilehash: 48c8c189d956c4003d24511a54975fe86a982832
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/05/2021
+ms.openlocfilehash: 7be5b96a8575c0bed9208ef5d700aca747411aa2
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102095708"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959328"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure 备份中的新增功能
 
@@ -18,7 +18,12 @@ Azure 备份会持续改进并发布用于增强 Azure 中的数据保护的新�
 
 ## <a name="updates-summary"></a>更新摘要
 
+- 2021 年 5 月
+  - [Azure Blob 的备份现已推出正式版](#backup-for-azure-blobs-is-now-generally-available)
+- 2021 年 4 月
+  - [对 Azure 备份使用客户管理的密钥加密的增强功能（预览版）](#enhancements-to-encryption-using-customer-managed-keys-for-azure-backup-in-preview)
 - 2021 年 3 月
+  - [Azure 磁盘备份现已推出正式版](#azure-disk-backup-is-now-generally-available)
   - [备份中心现已推出正式版](#backup-center-is-now-generally-available)
   - [Azure 备份的存档层支持（预览版）](#archive-tier-support-for-azure-backup-in-preview)
 - 2021 年 2 月
@@ -39,6 +44,22 @@ Azure 备份会持续改进并发布用于增强 Azure 中的数据保护的新�
   - [备份 RHEL Azure 虚拟机中的 SAP HANA（预览版）](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [备份数据的区域冗余存储 (ZRS)（预览版）](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Azure VM 中 SQL Server 和 SAP HANA 工作负载的软删除](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="backup-for-azure-blobs-is-now-generally-available"></a>Azure Blob 的备份现已推出正式版
+
+Azure Blob 的操作备份是一种托管的数据保护解决方案，它使你能够保护块 blob 数据免受各种数据丢失情况的影响，如 Blob 损坏、Blob 删除和存储帐户的意外删除。
+
+作为一种操作性备份解决方案，备份数据存储在源存储帐户本地，并且可以从选定的时间点恢复，从而为你提供一种简单且经济高效的方法来保护 Blob 数据。 为此，该解决方案使用 Blob 存储提供的 Blob 时间点还原功能。
+
+Blob 的操作备份与 Azure 备份管理工具（包括备份中心）集成，可帮助你有效地大规模管理 Blob 数据的保护。 除了以前提供的功能之外，现在还可以使用存储帐户的“数据保护”视图配置和管理 Blob 的操作备份，也可以[通过 PowerShell](backup-blobs-storage-account-ps.md) 来实现。 此外，备份现在为你提供了增强的体验，可以更好地管理配置操作备份所需的角色分配。
+
+有关详细信息，请参阅 [Azure Blob 操作备份概述](blob-backup-overview.md)。
+
+## <a name="azure-disk-backup-is-now-generally-available"></a>Azure 磁盘备份现已推出正式版
+
+Azure 备份通过自动定期创建快照，并使用备份策略在配置的时间段内保留快照，为 Azure 托管磁盘提供快照生命周期管理。
+
+有关详细信息，请参阅 [Azure 磁盘备份概述](disk-backup-overview.md)。
 
 ## <a name="backup-center-is-now-generally-available"></a>备份中心现已推出正式版
 
@@ -62,7 +83,7 @@ Blob 的操作备份与备份中心集成，还包括其他备份管理功能，
 
 ## <a name="azure-disk-backup-in-preview"></a>Azure 磁盘备份（预览版）
 
-Azure 磁盘备份提供了一个统包式解决方案，通过使用备份策略自动定期创建快照并在配置的时间段内保留快照，为 [Azure 托管磁盘](../virtual-machines/managed-disks-overview.md)提供快照生命周期管理。 无需对基础结构投入任何成本，无需编写任何自定义脚本，无需产生任何管理开销，就能管理磁盘快照。 它是一个使用[增量快照](../virtual-machines/disks-incremental-snapshots.md)创建托管磁盘时间点备份的崩溃一致性备份解决方案，支持每日创建多个备份。 它也是一个无代理解决方案，不会影响生产应用程序的性能。 它支持备份和还原 OS 磁盘与数据磁盘（包括共享磁盘），不管这些磁盘当前是否已附加到正在运行的 Azure 虚拟机。
+Azure 磁盘备份提供了一个统包式解决方案，通过使用备份策略自动定期创建快照并在配置的时间段内保留快照，为 [Azure 托管磁盘](../virtual-machines/managed-disks-overview.md)提供快照生命周期管理。 无需对基础结构投入任何成本，无需编写任何自定义脚本，无需产生任何管理开销，就能管理磁盘快照。 它是一个使用[增量快照](../virtual-machines/disks-incremental-snapshots.md)创建托管磁盘时间点备份的崩溃一致性备份解决方案，并支持每日创建多个备份。 它也是一个无代理解决方案，不会影响生产应用程序的性能。 它支持备份和还原 OS 磁盘与数据磁盘（包括共享磁盘），不管这些磁盘当前是否已附加到正在运行的 Azure 虚拟机。
 
 有关详细信息，请参阅 [Azure 磁盘备份（预览版）](disk-backup-overview.md)。
 
@@ -82,7 +103,7 @@ Azure 备份现在支持使用 Azure 资源管理器 (ARM) 模板为现有的 Az
 
 Azure 备份现在支持对 Azure VM 上托管的 SAP HANA 数据库进行增量备份。 这样，就可以更快、更经济高效地备份 SAP HANA 数据。
 
-有关详细信息，请参阅[在创建备份策略期间可以使用的各种选项](sap-hana-faq-backup-azure-vm.md#policy)以及[如何为 SAP HANA 数据库创建备份策略](tutorial-backup-sap-hana-db.md#creating-a-backup-policy)。
+有关详细信息，请参阅[在创建备份策略期间可以使用的各种选项](/azure/backup/sap-hana-faq-backup-azure-vm.yml#policy)以及[如何为 SAP HANA 数据库创建备份策略](tutorial-backup-sap-hana-db.md#creating-a-backup-policy)。
 
 ## <a name="backup-center-in-preview"></a>备份中心（预览版）
 
@@ -145,6 +166,22 @@ Azure 存储凭借其各种冗余选项，在高性能、高可用性与高数�
 现在，除了针对 Azure VM 提供软删除支持以外，还可以通过软删除来保护 Azure VM 中的 SQL Server 和 SAP HANA 工作负载。
 
 有关详细信息，请参阅 [Azure VM 中的 SQL Server 以及 Azure VM 中的 SAP HANA 工作负载的软删除](soft-delete-sql-saphana-in-azure-vm.md)。
+
+## <a name="enhancements-to-encryption-using-customer-managed-keys-for-azure-backup-in-preview"></a>对 Azure 备份使用客户管理的密钥加密的增强功能（预览版）
+
+Azure 备份现在提供增强功能（预览版）以使用客户管理的密钥管理加密。 通过 Azure 备份，可以引入你自己的密钥来加密恢复服务保管库中的备份数据，从而为你提供更好的控制。
+
+- 支持用户分配的托管标识，向密钥授予权限，以管理恢复服务保管库中的数据加密。
+- 在创建恢复服务保管库时，启用使用客户管理的密钥进行加密。
+  >[!NOTE]
+  >此功能目前处于有限预览状态。 若要注册，请填写[此表](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURDNTVVhGOUxXSVBZMEwxUU5FNDkyQkU4Ny4u)，并向我们发送电子邮件，地址为：[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)。
+- 你可以使用 Azure 策略来审核和强制使用客户管理的密钥进行加密。
+>[!NOTE]
+>- 以上功能仅通过 Azure 门户提供支持，目前不支持 PowerShell。<br>如果是使用 PowerShell 来管理用于备份的加密密钥，我们不建议从门户更新密钥。<br>如果从门户更新密钥，则在支持新模型的 PowerShell 更新可用之前，将无法使用 PowerShell 进一步更新加密密钥。 但是，你可以继续从 Azure 门户更新密钥。
+>- 可以使用审核策略来审核使用客户管理的密钥（密钥为 2021 年 4 月 1 日之后启用）进行加密的保管库。  
+>- 对于在此日期之前启用 CMK 加密的保管库，该策略可能不适用，也可能显示误报结果（也就是说，即使已启用 CMK 加密，这些保管库仍可能被报告为不合规）。 [了解详细信息](encryption-at-rest-with-cmk.md#using-azure-policies-for-auditing-and-enforcing-encryption-utilizing-customer-managed-keys-in-preview)。
+
+有关详细信息，请参阅[使用客户管理的密钥对 Azure 备份进行加密](encryption-at-rest-with-cmk.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 

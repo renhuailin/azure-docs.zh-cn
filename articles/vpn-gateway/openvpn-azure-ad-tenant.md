@@ -1,24 +1,25 @@
 ---
-title: VPN 网关：用于 P2S VPN 连接的 Azure AD 租户：Azure AD 身份验证
-description: 了解如何设置用于 P2S Open VPN 身份验证的 Azure AD 租户。
+title: 创建用于 P2S VPN 连接的 Azure AD 租户：Azure AD 身份验证
+titleSuffix: Azure VPN Gateway
+description: 了解如何为 P2S Azure AD 身份验证 - OpenVPN 协议设置 Azure AD 租户。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 05/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: bff1eec0152ab0f57edd212adf6b14f7b588fb51
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 34ea18e67752ed28986a08c4132ca10fbedce3c6
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100390158"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652470"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>为 P2S OpenVPN 协议连接创建 Azure Active Directory 租户
 
-连接到 VNet 时，可以使用基于证书的身份验证或 RADIUS 身份验证。 但是，在使用开放 VPN 协议时，还可以使用 Azure Active Directory 身份验证。 本文帮助设置用于 P2S Open VPN 身份验证的 Azure AD 租户。
+使用点到站点连接到 VNet 时，可以选择使用哪种协议。 使用的协议决定了可用的身份验证选项。 如果要使用 Azure Active Directory 身份验证，则可以在使用 OpenVPN 协议时使用。 本文帮助设置 Azure AD 租户。 有关点到站点协议和身份验证的详细信息，请参阅[关于点到站点 VPN](point-to-site-about.md)。
 
-[!INCLUDE [Windows 10 and OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
+[!INCLUDE [OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
 
 ## <a name="1-verify-azure-ad-tenant"></a><a name="tenant"></a>1.验证 Azure AD 租户
 
@@ -27,11 +28,11 @@ ms.locfileid: "100390158"
 * 组织名称
 * 初始域名
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/newtenant.png" alt-text="新 Azure AD 租户" border="false":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/newtenant.png" alt-text="“创建目录”页的屏幕截图。" border="false":::
 
 ## <a name="2-create-azure-ad-tenant-users"></a><a name="users"></a>2.创建 Azure AD 租户用户
 
-Azure AD 租户需要以下帐户：全局管理员帐户和主用户帐户。 主要用户帐户用作主要嵌入帐户（服务帐户）。 创建 Azure AD 租户用户帐户时，可以根据要创建的用户类型调整目录角色。
+Azure AD 租户需要以下帐户：全局管理员帐户和用户帐户。 用户帐户用作你的嵌入帐户（服务帐户）。 创建 Azure AD 租户用户帐户时，可以根据要创建的用户类型调整目录角色。
 
 使用[添加或删除用户 - Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md) 中的步骤为 Azure AD 租户创建至少两个用户。 若要创建帐户类型，请务必更改“目录角色”：
 
@@ -42,7 +43,7 @@ Azure AD 租户需要以下帐户：全局管理员帐户和主用户帐户。 �
 
 1. 找到要用于身份验证的目录的目录 ID。 此 ID 在“Active Directory”页的“属性”部分中列出。
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/directory-id.png" alt-text="屏幕截图中显示目录属性" lightbox="./media/openvpn-create-azure-ad-tenant/directory-id.png":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/directory-id.png" alt-text="屏幕截图中显示目录属性。" lightbox="./media/openvpn-create-azure-ad-tenant/directory-id.png":::
 
 1. 复制“目录 ID”。
 
@@ -80,7 +81,7 @@ Azure AD 租户需要以下帐户：全局管理员帐户和主用户帐户。 �
 
 1. 如果出现提示，请选择“全局管理员”帐户。
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/pick.png" alt-text="选取帐户" border="false":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/pick.png" alt-text="显示“选择帐户”页的屏幕截图。" border="false":::
 1. 出现提示时选择“接受”。
 
    :::image type="content" source="./media/openvpn-create-azure-ad-tenant/accept.jpg" alt-text="屏幕截图显示“为你的组织请求接受的权限”的消息，其中包含详细信息和接受的选项。" border="false":::
@@ -96,12 +97,18 @@ Azure AD 租户需要以下帐户：全局管理员帐户和主用户帐户。 �
 
    * **租户:** Azure AD 租户的 TenantID ```https://login.microsoftonline.com/{AzureAD TenantID}/```
 
-   * **受众:** “Azure VPN”Azure AD 企业应用的 ApplicationID ```{AppID of the "Azure VPN" AD Enterprise app}```
+   * 受众：“Azure VPN”Azure AD 企业应用的应用程序 ID
+
+       * 对于 Azure 公有云，输入“41b23e61-6c1e-4545-b367-cd054e0ed4b4” 
+       * 对于 Azure 政府，输入“51bb15d4-3a4f-4ebf-9dca-40096fe32426” 
+       * 对于 Azure 德国，输入“538ee9e6-310a-468d-afef-ea97365856a9” 
+       * 对于 Azure 中国世纪互联，输入“49f817b6-84ae-4cc0-928c-73f27289b3aa” 
+
 
    * **颁发者**：安全令牌服务的 URL ```https://sts.windows.net/{AzureAD TenantID}/```
 
 
-   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azure-ad-auth-portal.png" alt-text="Azure VPN" border="false":::
+   :::image type="content" source="./media/openvpn-create-azure-ad-tenant/azure-ad-auth-portal.png" alt-text="显示隧道类型、身份验证类型和 Azure Active Directory 设置的设置的屏幕截图。" border="false":::
 
    > [!NOTE]
    > 请确保在 `AadIssuerUri` 值的末尾包含尾随斜杠。 否则，连接可能会失败。

@@ -1,6 +1,6 @@
 ---
-title: 适用于 Azure Stack Edge Pro 的 C# IoT Edge 模块 | Microsoft Docs
-description: 了解如何开发可在 Azure Stack Edge Pro 上部署的 C# IoT Edge 模块。
+title: Azure Stack Edge Pro FPGA C# IoT Edge 模块
+description: 了解如何为 Azure Stack Edge Pro FPGA 开发 C# IoT Edge 模块。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,36 +9,36 @@ ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4519bc187c4ec53294e5eef15c4ad1954b691224
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: cc7b71d644fa26c0262f2304b380827b36b6c193
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107870834"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461320"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-with-azure-stack-edge-pro"></a>使用 Azure Stack Edge Pro 开发 C# IoT Edge 模块以移动文件
+# <a name="develop-a-c-iot-edge-module-to-move-files-with-azure-stack-edge-pro-fpga"></a>开发 C# IoT Edge 模块以使用 Azure Stack Edge Pro FPGA 移动文件
 
-本文逐步讲解如何使用 Azure Stack Edge Pro 设备创建 IoT Edge 模块以供部署。 Azure Stack Edge Pro 是可用于处理数据并通过网络将其发送到 Azure 的存储解决方案。
+本文逐步讲解如何创建 IoT Edge 模块，以便将其部署在 Azure Stack Edge Pro FPGA 设备中。 Azure Stack Edge Pro FPGA 是可用于处理数据并通过网络将其发送到 Azure 的存储解决方案。
 
-可以结合使用 Azure IoT Edge 模块与 Azure Stack Edge Pro 在将数据移动到 Azure 时转换数据。 本文中使用的模块实现的逻辑可在 Azure Stack Edge Pro 设备上将文件从本地共享复制到云共享。
+Azure IoT Edge 模块可以与 Azure Stack Edge Pro FPGA 配合使用，以便在将数据移动到 Azure 时转换数据。 本文中使用的模块实现的逻辑可在 Azure Stack Edge Pro FPGA 设备上将文件从本地共享复制到云共享。
 
 在本文中，学习如何：
 
 > [!div class="checklist"]
 >
 > * 创建容器注册表来存储和管理你的模块（Docker 映像）。
-> * 创建 IoT Edge 模块以在 Azure Stack Edge Pro 设备上部署。 
+> * 创建可在 Azure Stack Edge Pro FPGA 设备上部署的 IoT Edge 模块。 
 
 
 ## <a name="about-the-iot-edge-module"></a>关于 IoT Edge 模块
 
-你的 Azure Stack Edge Pro 设备可以部署和运行 IoT Edge 模块。 Edge 模块实质上是执行特定任务的 Docker 容器，如从设备引入消息、转换消息，或将消息发送到 IoT 中心。 在本文中，你将创建一个模块，用于在 Azure Stack Edge Pro 设备上将文件从本地共享复制云共享。
+Azure Stack Edge Pro FPGA 设备可以部署并运行 IoT Edge 模块。 Edge 模块实质上是执行特定任务的 Docker 容器，如从设备引入消息、转换消息，或将消息发送到 IoT 中心。 在本文中，你将创建一个模块，用于在 Azure Stack Edge Pro FPGA 设备上将文件从本地共享复制到云共享。
 
-1. 在 Azure Stack Edge Pro 设备上，文件将写入到本地共享。
+1. 在 Azure Stack Edge Pro FPGA 设备上，文件将写入到本地共享。
 2. 文件事件生成器将为写入到本地共享的每个文件创建文件事件。 修改文件时，也会生成文件事件。 随后，将文件事件发送到 IoT Edge 中心（在 IoT Edge 运行时中）。
 3. IoT Edge 自定义模块处理文件事件，来为文件创建还包含文件相对路径的文件事件对象。 该模块将使用相对文件路径生成绝对路径，并将文件从本地共享复制到云共享。 然后，该模块从本地共享中删除文件。
 
-![Azure IoT Edge 模块在 Azure Stack Edge Pro 上如何运行](./media/azure-stack-edge-create-iot-edge-module/how-module-works-1.png)
+![Azure IoT Edge 模块在 Azure Stack Edge Pro FPGA 上如何运行](./media/azure-stack-edge-create-iot-edge-module/how-module-works-1.png)
 
 文件位于云共享中后，它会自动上传到 Azure 存储帐户。
 
@@ -46,11 +46,11 @@ ms.locfileid: "107870834"
 
 在开始之前，请确保：
 
-- 正在运行的 Azure Stack Edge Pro 设备。
+- 正在运行的 Azure Stack Edge Pro FPGA 设备。
 
     - 该设备还具有一个关联的 IoT 中心资源。
     - 该设备已配置 Edge 计算角色。
-    有关详细信息，请转到为 Azure Stack Edge Pro [配置计算](azure-stack-edge-deploy-configure-compute.md#configure-compute)。
+    有关详细信息，请转到[配置计算](azure-stack-edge-deploy-configure-compute.md#configure-compute)（针对 Azure Stack Edge Pro FPGA）。
 
 - 以下开发资源：
 
@@ -278,4 +278,4 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要在 Azure Stack Edge Pro 上部署和运行此模块，请参阅[添加模块](azure-stack-edge-deploy-configure-compute.md#add-a-module)中的步骤。
+若要在 Azure Stack Edge Pro FPGA 上部署并运行此模块，请参阅[添加模块](azure-stack-edge-deploy-configure-compute.md#add-a-module)中的步骤。

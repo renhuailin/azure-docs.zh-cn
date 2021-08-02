@@ -2,20 +2,15 @@
 title: 备份 Azure 托管磁盘
 description: 了解如何从 Azure 门户备份 Azure 托管磁盘。
 ms.topic: conceptual
-ms.date: 01/07/2021
-ms.openlocfilehash: ca86550c4dec4b51c60d9ecdef124e38783a3764
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 05/27/2021
+ms.openlocfilehash: c47499c371a9eccfd97224344a48c166d0e1f811
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98738146"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110653624"
 ---
-# <a name="back-up-azure-managed-disks-in-preview"></a>备份 Azure 托管磁盘（预览版）
-
->[!IMPORTANT]
->此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负载。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 有关区域可用性，请参阅[支持矩阵](disk-backup-support-matrix.md)。
->
->[填写此表格](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u)以便注册预览版。
+# <a name="back-up-azure-managed-disks"></a>备份 Azure 托管磁盘
 
 本文介绍如何从 Azure 门户备份 [Azure 托管磁盘](../virtual-machines/managed-disks-overview.md)。
 
@@ -33,7 +28,7 @@ ms.locfileid: "98738146"
 
 ## <a name="create-a-backup-vault"></a>创建备份保管库
 
-备份保管库是 Azure 中的一个存储实体，用于保存 Azure 备份支持的各种新型工作负荷（例如 Azure Database for PostgreSQL 服务器和 Azure 磁盘）的备份数据。 使用保管库可以方便地组织备份数据，并将管理开销降至最低。 备份保管库基于 Azure 的 Azure 资源管理器型号，提供增强的功能来帮助保护备份数据。
+备份保管库是 Azure 中的一个存储实体，用于保存 Azure 备份支持的各种新型工作负荷（例如 Azure Database for PostgreSQL 服务器和 Azure 磁盘）的备份数据。 备份保管库便于组织备份数据，并最大限度降低管理开销。 备份保管库基于 Azure 的 Azure 资源管理器型号，提供增强的功能来帮助保护备份数据。
 
 1. 在 [https://portal.azure.com](https://portal.azure.com/) 中登录 Azure 门户。
 1. 在搜索框中键入“备份中心”。
@@ -67,7 +62,7 @@ ms.locfileid: "98738146"
 
    ![选择备份计划频率](./media/backup-managed-disks/backup-schedule-frequency.png)
 
-   Azure 磁盘备份每天提供多次备份。 如果需要更频繁地进行备份，请选择“每小时”备份频率，并以每隔4、6、8 或 12 小时的间隔进行备份。 根据所选的“时间”间隔，计划备份。 例如，如果选择“每隔 4 小时”备份一次，则会在 4 小时的时间间隔内执行备份，以便在一天中平均分布备份。 如果每天备份一次，则选择“每日”备份频率。 在每天的备份频率中，可以指定备份的时间。 请注意，这一天的时间指示备份开始时间，而不是备份完成的时间。 完成备份操作所需的时间取决于各种因素，包括磁盘大小和连续备份之间的变动率。 但是，Azure 磁盘备份是使用[增量快照](../virtual-machines/disks-incremental-snapshots.md)的无代理备份，不会影响生产应用程序的性能。
+   Azure 磁盘备份每天提供多次备份。 如果需要更频繁地进行备份，请选择“每小时”备份频率，让你能够以每 4、6、8 或 12 小时的间隔进行备份。 根据所选的“时间”间隔安排备份。 例如，如果选择“每 4 小时”备份一次，则会按 4 小时的间隔执行备份，以便备份在一天中均匀分布。 如果每天备份一次即可满足需求，则选择“每日”备份频率。 可在每日备份频率中指定每日备份时间。 请注意，每日备份时间表示备份开始时间，而不是备份完成时间。 完成备份操作所需时间取决于各种因素，包括磁盘大小和连续备份的更改率。 但是，Azure 磁盘备份是使用[增量快照](../virtual-machines/disks-incremental-snapshots.md)的无代理备份，不会影响生产应用程序的性能。
 
 1. 在“备份策略”选项卡中，选择满足恢复点目标 (RPO) 要求的保留设置。
 
@@ -85,6 +80,13 @@ ms.locfileid: "98738146"
 1. 通过选择“查看 + 创建”完成备份策略创建。
 
 ## <a name="configure-backup"></a>配置备份
+
+- Azure 磁盘备份仅支持操作层备份，将备份复制到保管库存储层当前不可用。 备份保管库存储冗余设置 (LRS/GRS) 不适用于操作层中存储的备份。
+增量快照存储在标准 HDD 存储中，与父磁盘的存储类型无关。 为了提高可靠性，在支持[区域冗余存储](../storage/common/storage-redundancy.md) (ZRS) 的区域中，增量快照默认存储在 ZRS 上。
+
+- Azure 磁盘备份支持跨订阅备份，并使用一个订阅中的备份保管库和另一个订阅中的源磁盘进行还原。 但不支持跨区域备份和还原。 这允许备份保管库和要备份的磁盘位于同一订阅或不同订阅中。 但是，备份保管库和要备份的磁盘必须位于同一区域。
+
+- 在配置磁盘备份时，不能更改分配给备份实例的快照资源组。 
 
 备份保管库使用托管标识来访问其他 Azure 资源。 如要配置托管磁盘的备份，备份保管库的托管标识需要对创建和管理快照的源磁盘和资源组具有一组权限。
 
@@ -117,7 +119,24 @@ ms.locfileid: "98738146"
 
    - 无法在某一特定磁盘的订阅之外为该磁盘创建增量快照。 因此，请选择与要备份的磁盘同一订阅内的资源组。 详细了解托管磁盘的[增量快照](../virtual-machines/disks-incremental-snapshots.md#restrictions)。
 
-   如要分配角色，请执行以下步骤：
+   - 在配置磁盘备份时，不能更改分配给备份实例的快照资源组。
+
+   - 在备份操作过程中，Azure 备份服务会在存储快照的快照资源组中创建存储帐户。 每个快照资源组只创建一个存储帐户。 该帐户在使用与快照资源组相同资源组的多个磁盘备份实例中重复使用。
+     
+     - 快照不会存储在存储帐户中。 托管磁盘的增量快照是在资源组而不是存储帐户中创建的 ARM 资源。 
+     
+     - 存储帐户用于存储每个恢复点的元数据。 Azure 备份服务会为每个磁盘备份实例创建一个 Blob 容器。 对于每个恢复点，将创建一个块 blob 来存储描述恢复点（例如订阅、磁盘 ID、磁盘属性等）的元数据，这些元数据占用的空间很小（以几 KiB 为单位）。
+     
+     - 如果区域支持区域冗余，存储帐户将创建为 RA GZRS。 如果区域不支持区域冗余，存储帐户将创建为 RA GRS。<br>如果任何现有策略停止在具有 GRS 冗余的订阅或资源组中创建存储帐户，则存储帐户将创建为 LRS。 创建的存储帐户是常规用途 v2，其中块 blob 存储在 Blob 容器中的热存储层上。 
+     
+     - 恢复点的数目由用于配置磁盘备份实例备份的备份策略决定。 根据垃圾回收过程删除较旧的块 blob，这是因为删除了相应的较旧恢复点。
+   
+   - 不要对 Azure 备份服务创建的快照资源组或存储帐户应用资源锁或策略。 此服务创建并管理此快照资源组中的资源，该资源组是在配置磁盘备份时分配给备份实例的。 存储帐户和其中的资源是由服务创建的，不应删除或移动。
+
+     >[!NOTE]
+     >如果删除某个存储帐户，则备份将失败，并且对于所有现有恢复点，还原将失败。
+
+如要分配角色，请执行以下步骤：
 
    1. 转到资源组。 例如，资源组是 *SnapshotRG*，它与要备份的磁盘位于同一订阅中。
 

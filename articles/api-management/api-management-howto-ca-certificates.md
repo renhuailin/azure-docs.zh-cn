@@ -4,27 +4,25 @@ description: 了解如何在 Azure API 管理中添加自定义 CA 证书。 还
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/20/2018
+ms.topic: how-to
+ms.date: 06/01/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 51719f23302bfaa036f99e88fcd440d97ca3bc02
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: e1cb09f24f12d8c4480833995a95e1e08b5e7bbe
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817803"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111812204"
 ---
 # <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>如何在 Azure API 管理中添加自定义 CA 证书
 
 Azure API 管理允许在受信任的根证书和中间证书存储中的计算机上安装 CA 证书。 如果服务需要自定义 CA 证书，则应使用此功能。
 
-本文介绍如何在 Azure 门户中管理 Azure API 管理服务实例的 CA 证书。
+本文介绍如何在 Azure 门户中管理 Azure API 管理服务实例的 CA 证书。 例如，如果使用自签名客户端证书，可以将自定义受信任的根证书上传到 API 管理。 
+
+上传到 API 管理的 CA 证书只能用于托管 API 管理网关的证书验证。 如果使用[自承载网关](self-hosted-gateway-overview.md)，请了解如何[为自承载网关创建自定义 CA](#create-custom-ca-for-self-hosted-gateway)，本文稍后将作介绍。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -32,34 +30,35 @@ Azure API 管理允许在受信任的根证书和中间证书存储中的计算�
 
 ## <a name="upload-a-ca-certificate"></a><a name="step1"> </a>上传 CA 证书
 
-![添加 CA 证书](media/api-management-howto-ca-certificates/00.png)
+:::image type="content" source="media/api-management-howto-ca-certificates/00.png" alt-text="Azure 门户中的 CA 证书":::
 
 请按照以下步骤来上传新的 CA 证书。 如果尚未创建 API 管理服务实例，请参阅教程[创建 API 管理服务实例](get-started-create-service-instance.md)。
 
 1. 在 Azure 门户中导航到 Azure API 管理服务实例。
 
-2. 从菜单中选择“CA 证书”。
+1. 在菜单的“安全”下，选择“证书”>“CA 证书”>“+ 添加”。
 
-3. 单击“+ 添加”按钮。  
+1. 浏览证书 .cer 文件并选定证书存储。 只需要公钥，因此密码是可选的。
 
-    ![屏幕截图，显示用于添加 CA 证书的“+ 添加”按钮。](media/api-management-howto-ca-certificates/01.png)  
+    :::image type="content" source="media/api-management-howto-ca-certificates/02.png" alt-text="在 Azure 门户中添加 CA 证书"::: 
 
-4. 浏览证书并选定证书存储。 仅需要公钥，因此不需要密码。
-
-    ![显示如何浏览证书的屏幕截图。](media/api-management-howto-ca-certificates/02.png)  
-
-5. 单击“保存” 。 此操作可能需要几分钟的时间。
-
-    ![显示如何保存证书的屏幕截图。](media/api-management-howto-ca-certificates/03.png)  
+1. 选择“保存”。  此操作可能需要几分钟的时间。
 
 > [!NOTE]
-> 可以使用 `New-AzApiManagementSystemCertificate` Powershell 命令上传 CA 证书。
+> 也可以使用 `New-AzApiManagementSystemCertificate` PowerShell 命令上传 CA 证书。
 
-## <a name="delete-a-client-certificate"></a><a name="step1a"> </a>删除客户端证书
+## <a name="delete-a-ca-certificate"></a><a name="step1a"> </a>删除 CA 证书
 
-若要删除证书，请单击上下文菜单“...”并选择该证书旁边的“删除”。
+选择证书，然后选择上下文菜单 (...) 中的“删除”。
 
-![删除 CA 证书](media/api-management-howto-ca-certificates/04.png)  
+## <a name="create-custom-ca-for-self-hosted-gateway"></a>为自承载网关创建自定义 CA 
+
+如果使用[自承载网关](self-hosted-gateway-overview.md)，则不支持使用上传到 API 管理服务的 CA 根证书验证服务器和客户端证书。 若要建立信任，请配置特定的客户端证书，使其被网关作为一个自定义的证书颁发机构所信任。
+
+使用[网关证书颁发机构](/rest/api/apimanagement/2021-01-01-preview/gateway-certificate-authority) REST API 为自承载网关创建和管理自定义 CA。 创建自定义 CA 的步骤：
+
+1. 向 API 管理实例[添加证书](api-management-howto-mutual-certificates.md) .pfx 文件。
+1. 使用[网关证书颁发机构 - 创建或更新](/rest/api/apimanagement/2021-01-01-preview/gateway-certificate-authority/create-or-update) REST API，将证书与自管理网关关联。
 
 [Upload a CA certificate]: #step1
 [Delete a CA certificate]: #step1a

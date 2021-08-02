@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 04/14/2021
-ms.openlocfilehash: b523b20a3d7f22cfd5e608c6793c55583050028f
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.date: 05/21/2021
+ms.openlocfilehash: f4ef8d7d29b65af4876912e6dbbd3827693737c6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109635276"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110450332"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>使用 HTTPS 终结点管理商业市场潜在顾客
 
@@ -25,23 +25,23 @@ ms.locfileid: "109635276"
 
 ## <a name="create-a-flow-by-using-power-automate"></a>使用 Power Automate 创建流
 
-1. 打开 [Power Automate](https://flow.microsoft.com/) 网页。 选择“登录”。 如果还没有帐户，请选择“免费注册”以创建免费 Power Automate 帐户。
+1. 打开 [Power Automate](https://flow.microsoft.com/) 网页。 选择“登录”。 如果还没有帐户，请选择“免费注册”以创建一个。
 
-1. 登录并在菜单上选择“我的流”。
+1. 登录，选择“我的流”，然后将“环境”从“Microsoft (默认)”切换到你的 Dataverse (CRM) 环境。
 
-    ![登录“我的流”](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png" alt-text="说明如何登录到“我的流”。":::
 
 1. 在“+ 新建”下，选择“+ 即时云端流”。
 
-    ![“我的流”+“自动 - 从空白开始”](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-create-from-blank.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/https-my-flows-create-from-blank.png" alt-text="说明如何选择“我的流”，然后选择“即时云端流”。":::
 
 1. 命名你的流，然后在“选择触发此流的方式”下，选择“收到 HTTP 请求时”。
 
-    ![生成自动化流窗口“跳过”按钮](./media/commercial-marketplace-lead-management-instructions-https/https-my-flows-pick-request-trigger.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/https-my-flows-pick-request-trigger.png" alt-text="说明如何生成自动化流窗口“跳过”按钮。":::
 
 1. 单击流步骤以将它展开。
 
-    ![展开流步骤](./media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png" alt-text="说明如何展开流步骤。":::
 
 1. 使用以下方法之一配置“请求正文 JSON 架构”：
 
@@ -137,25 +137,25 @@ ms.locfileid: "109635276"
 ### <a name="connect-to-a-crm-system"></a>连接到 CRM 系统
 
 1. 选择“+新建步骤”。
-1. 通过在显示“搜索连接器和操作”的位置处进行搜索，来选择你所选的 CRM 系统。 以下屏幕显示了“创建新记录(Common Data Service)”作为示例。
+1. 在“搜索连接器和操作”框中搜索并选择一个 CRM 系统。 以下屏幕显示了“创建新记录(Microsoft Dataverse)”作为示例。
 
-    ![新建记录](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/create-new-record.png" alt-text="说明如何创建新记录。":::
 
-1. 在“操作”选项卡上选择该操作以创建新记录。
+1. 选择具有“添加新行”操作的“操作”选项卡。
 
-    ![选择“创建新记录”](./media/commercial-marketplace-lead-management-instructions-https/select-create-new-record.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/select-create-new-record.png" alt-text="说明如何选择“创建新记录”。":::
 
-1. 提供与 CRM 系统关联的组织名称。 从“实体名称”下拉列表中选择“潜在顾客”。 
+1. 从“表名称”下拉列表中选择“潜在顾客”。
 
-    ![选择“潜在顾客”](./media/commercial-marketplace-lead-management-instructions-https/select-leads.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/select-leads.png" alt-text="说明如何选择潜在顾客。":::
 
 1. Power Automate 将显示一个用于提供潜在顾客信息的窗体。 可以通过选择添加动态内容来映射输入请求中的项。 以下屏幕显示了 OfferTitle 作为示例。
 
-    ![添加动态内容](./media/commercial-marketplace-lead-management-instructions-https/add-dynamic-content.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/add-dynamic-content.png" alt-text="说明如何添加动态内容。":::
 
 1. 映射所需的字段，然后选择“保存”以保存你的流。 HTTP POST URL 已创建，可在“收到 HTTP 请求时”窗口中进行访问。 使用复制控件复制此 URL，该控件位于 HTTP POST URL 右侧。 使用复制控件非常重要，这样便不会错过整个 URL 的任何部分。 保存此 URL，因为在发布门户中配置潜在顾客管理时需要用到它。
 
-    ![收到 HTTP 请求时](./media/commercial-marketplace-lead-management-instructions-https/when-http-request-received.png)
+    :::image type="content" source="media/commercial-marketplace-lead-management-instructions-https/when-http-request-received.png" alt-text="展示“收到 HTTP 请求时”。":::
 
 ### <a name="set-up-email-notification"></a>设置电子邮件通知
 
@@ -222,7 +222,7 @@ ms.locfileid: "109635276"
 
    ![检查结果](./media/commercial-marketplace-lead-management-instructions-https/my-flow-check-results.png)
 
-1. 你还应收到一封电子邮件。 检查你的电子邮件邮件箱。 
+1. 你还应收到一封电子邮件。 检查你的电子邮件邮件箱。
 
     >[!NOTE] 
     >如果看不到来自测试的电子邮件，请检查垃圾邮件和垃圾文件夹。 在下面的屏幕中，你只会注意到在配置电子邮件通知时添加的字段标签。 如果这是你的产品/服务所生成的实际潜在顾客，则还会在正文和主题行中看到潜在顾客联系人的实际信息。

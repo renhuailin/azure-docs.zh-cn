@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 进行 Azure VM 灾难恢复的支持矩阵
 description: 汇总了使用 Azure Site Recovery 将 Azure VM 灾难恢复到次要区域时的支持情况。
 ms.topic: article
 ms.date: 11/29/2020
-ms.openlocfilehash: 92def8f964ec15033816cddfaa41f7e0d82ac595
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: a6b8177ea0abc3a2406937373fc6569b42ffd053
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108174553"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960959"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
 
@@ -52,7 +52,7 @@ Azure Government    | US Gov 弗吉尼亚州、US Gov 爱荷华州、US Gov 亚�
 德国    | 德国中部、德国东北部
 中国 | 中国东部、中国北部、中国北部 2、中国东部 2
 巴西 | 巴西南部
-受限区域是为国家/地区内部的灾难恢复保留的 |瑞士西部是为瑞士北部保留的，法国南部是为法国中部保留的，阿联酋中部仅限阿联酋北部客户使用，挪威西部供挪威东部客户使用，JIO 印度中部供 JIO 印度西部客户使用，巴西东南部是为巴西南部保留的
+受限区域是为国家/地区内部的灾难恢复保留的 |瑞士西部是为瑞士北部保留的，法国南部是为法国中部保留的，阿联酋中部仅限阿联酋北部客户使用，挪威西部供挪威东部客户使用，JIO 印度中部供 JIO 印度西部客户使用，巴西东南部是为巴西南部客户保留的，南非西部是为南非北部客户保留的，德国北部是为德国中西部客户保留的。
 
 在位于不同洲的两个区域之间复制和恢复 VM 仅限于以下区域对：
 
@@ -141,7 +141,7 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 --- | --- | --- |
 14.04 LTS | [9.38](https://support.microsoft.com/help/4590304/)、[9.39](https://support.microsoft.com/help/4597409/)、[9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)、[9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533)、[9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)| 3.13.0-24-generic 到 3.13.0-170-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-148-generic、<br/>4.15.0-1023-azure 到 4.15.0-1045-azure |
 |||
-16.04 LTS | [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) | 4.4.0-21-generic 到 4.4.0-206-generic，<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-140-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1111-azure|
+16.04 LTS | [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) | 4.4.0-21-generic 到 4.4.0-206-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-140-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1111-azure|
 16.04 LTS | [9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533) | 4.4.0-21-generic 到 4.4.0-201-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-133-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1106-azure <br/> 通过 9.41 热修补程序修复 4.4.0-203-generic、4.4.0-204-generic，4.4.0-206-generic、4.15.0-136-generic、4.15.0-137-generic、4.15.0-139-generic、4.15.0-140-generic、4.15.0-1108-azure、4.15.0-1109-azure、4.15.0-1110-azure、4.15.0-1111-azure**|
 16.04 LTS | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 4.4.0-21-generic 到 4.4.0-197-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-128-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1102-azure </br> 4.15.0-132-generic、4.4.0-200-generic、4.15.0-1106-azure、4.15.0-133-generic、4.4.0-201-generic 到 9.40 热修补程序**|
 16.04 LTS | [9.39](https://support.microsoft.com/help/4597409/) | 4.4.0-21-generic 到 4.4.0-194-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-123-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1098-azure </br> 4.4.0-197-generic、4.15.0-126-generic、4.15.0-128-generic、4.15.0-1100-azure、4.15.0-1102-azure 到 9.39 热修补程序**|
@@ -249,7 +249,7 @@ Tags  | 支持 | 应用于源虚拟机上的用户生成的标签会在测试故
 - 如果使用默认设置进行部署，Site Recovery 会根据源设置自动创建磁盘和存储帐户。
 - 如果自定义，请确保遵循指南。
 
-**组件** | **支持** | **详细信息**
+组件 | **支持** | **详细信息**
 --- | --- | ---
 OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/managed-disks-overview.md)VM 磁盘相关信息。
 临时磁盘 | 不支持 | 始终从复制中排除临时磁盘。<br/><br/> 请勿在临时磁盘上存储任何持久性数据。 [了解详细信息](../virtual-machines/managed-disks-overview.md)。
@@ -266,9 +266,11 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/managed
 冷存储和热存储 | 不支持 | 冷存储和热存储不支持 VM 磁盘
 存储空间 | 支持 |
 NVMe 存储接口 | 不支持
+主机加密 | 支持 | [单击此处](../virtual-machines/disks-enable-host-based-encryption-portal.md)，使用主机加密创建具有端到端加密的 VM。
 静态加密 (SSE) | 支持 | SSE 是存储帐户的默认设置。
 静态加密 (CMK) | 支持 | 托管磁盘支持软件密钥和 HSM 密钥
 静态双重加密 | 支持 | 详细了解 [Windows](../virtual-machines/disk-encryption.md) 和 [Linux](../virtual-machines/disk-encryption.md) 支持的区域
+FIPS 加密 | 不支持
 适用于 Windows OS 的 Azure 磁盘加密 (ADE) | 支持使用托管磁盘的 VM。 | 不支持使用非托管磁盘的 VM。 <br/><br/> 不支持 HSM 保护的密钥。 <br/><br/> 不支持对单个磁盘上的单个卷进行加密。 |
 适用于 Linux OS 的 Azure 磁盘加密 (ADE) | 支持使用托管磁盘的 VM。 | 不支持使用非托管磁盘的 VM。 <br/><br/> 不支持 HSM 保护的密钥。 <br/><br/> 不支持对单个磁盘上的单个卷进行加密。 <br><br> 有关启用复制的已知问题。 [了解详细信息。](./azure-to-azure-troubleshoot-errors.md#enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137) |
 SAS 密钥轮换 | 不支持 | 如果对存储帐户的 SAS 密钥进行轮换，客户需要禁用复制后再将其重新启用。 |
@@ -344,5 +346,5 @@ Tags  | 支持 | NIC 上用户生成的标签每 24 小时复制一次。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读[网络指南](./azure-to-azure-about-networking.md)，了解如何复制 Azure VM。
+- 请参阅有关复制 Azure VM 复制的[网络指南](./azure-to-azure-about-networking.md)。
 - 通过[复制 Azure VM](./azure-to-azure-quickstart.md) 来部署灾难恢复。

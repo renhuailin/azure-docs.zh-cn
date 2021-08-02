@@ -6,16 +6,16 @@ ms.author: rishjai
 ms.topic: how-to
 ms.date: 04/27/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5f55d8c4d2c361f4375c44a333c2fec6afc7ef88
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 7707fb0688a10c1791556f0605b40cacc54b5a85
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108077665"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111961018"
 ---
 # <a name="using-policy-with-azure-site-recovery-public-preview"></a>将 Policy 和 Azure Site Recovery（公共预览版）结合使用
 
-本文介绍如何使用 Azure Policy 为资源设置 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)。 [Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview) 有助于对 Azure 资源强制执行某些业务规则，并评估提及资源的合规性。
+本文介绍如何使用 Azure Policy 为资源设置 [Azure Site Recovery](./site-recovery-overview.md)。 [Azure Policy](../governance/policy/overview.md) 有助于对 Azure 资源强制执行某些业务规则，并评估提及资源的合规性。
 
 ## <a name="disaster-recovery-with-azure-policy"></a>Azure Policy 的灾难恢复
 Site Recovery 可帮助你在发生计划内或计划外的区域性故障时保持应用程序的正常运行。 通过 Azure 门户大规模地在计算机上启用 Site Recovery 可能很有难度。 现在，你可以通过门户一起在特定资源组（策略的范围）上启用 Site Recovery。
@@ -27,8 +27,8 @@ Azure Policy 解决了这一问题。 为资源组创建灾难恢复策略后，
 
 ## <a name="prerequisites"></a>先决条件
 
-- 在[此处](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)了解如何分配策略。
-- 在[此处](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture)详细了解 Azure 到 Azure 灾难恢复的体系结构。
+- 在[此处](../governance/policy/assign-policy-portal.md)了解如何分配策略。
+- 在[此处](./azure-to-azure-architecture.md)详细了解 Azure 到 Azure 灾难恢复的体系结构。
 - 查看 Azure Site Recovery 策略支持的支持矩阵：
 
 **方案** | **支持声明**
@@ -39,20 +39,18 @@ Azure Policy 解决了这一问题。 为资源组创建灾难恢复策略后，
 可用性集 | 支持
 可用性区域 | 支持
 已启用 Azure 磁盘加密 (ADE) 的 VM | 不支持
-邻近放置组 (PPG) | 不支持
+邻近放置组 (PPG) | 支持
 已启用客户管理密钥 (CMK) 的磁盘 | 不支持
 存储空间直通 (S2D) 群集 | 不支持
 Azure 资源管理器部署模型 | 支持
 经典部署模型 | 不支持
 区域到区域 DR  | 支持
-Azure 磁盘加密 v1 | 不支持
-Azure 磁盘加密 v2 | 不支持
-与 Azure 备份的互操作性 | 不支持
-热添加/删除磁盘 | 不支持
 与 Azure 默认应用的其他策略（如果有）的互操作性 | 支持
 
 >[!NOTE]
->如果在策略范围内创建了不受支持的 VM，则不会为其启用 Site Recovery。 但是，它们在资源合规性中表现为不合规。
+>在以下情况下，不会为其启用 Site Recovery。 但是，它们将在资源合规性中表现为不合规： 
+>1. 如果在策略范围内创建了不受支持的 VM。
+>1. 如果 VM 是可用性集和 PPG 的一部分。
 
 ## <a name="create-a-policy-assignment"></a>创建策略分配
 在本部分中，你将创建策略分配，以便为所有新建资源启用 Azure Site Recovery。
@@ -95,7 +93,7 @@ Azure 磁盘加密 v2 | 不支持
 ## <a name="remediation-and-other-properties"></a>修正和其他属性
 1. Azure Site Recovery 的目标属性已配置。 但是，此策略将仅对策略范围中新创建的虚拟机生效。 在分配策略后，可以通过修正任务将其应用于现有资源。 可以通过选中“创建修正任务”复选框来创建修正任务。
 
-1. Azure Policy 将创建一个[托管标识](https://aka.ms/arm-policy-identity)，该标识将拥有所有者权限，可为范围中的资源启用 Azure Site Recovery。
+1. Azure Policy 将创建一个[托管标识](../governance/policy/how-to/remediate-resources.md)，该标识将拥有所有者权限，可为范围中的资源启用 Azure Site Recovery。
 
 1. 可以在“非合规消息”选项卡上为策略配置自定义的非合规消息。
 

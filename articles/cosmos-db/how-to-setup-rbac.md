@@ -4,14 +4,14 @@ description: 了解如何使用 Azure Active Directory 为 Azure Cosmos DB 帐�
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/25/2021
+ms.date: 06/08/2021
 ms.author: thweiss
-ms.openlocfilehash: 35e3d4668fc3a5eb260bc187ec1cb6177f91911b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 246f21bb0cd4718b08c8d8a872b1707a1fea5994
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378467"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958927"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account"></a>使用 Azure Active Directory 为 Azure Cosmos DB 帐户配置基于角色的访问控制
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -113,9 +113,9 @@ Azure Cosmos DB 公开 2 个内置角色定义：
     - `/dbs/<database-name>/colls/<container-name>`（容器级别）。
 
 > [!NOTE]
-> 下面所述的操作当前在以下环境中可用：
-> - Azure PowerShell：[Az.CosmosDB 2.0.1 版-预览版](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
-> - Azure CLI：[“cosmosdb-preview”扩展版 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
+> 下面所述的操作可用于：
+> - Azure PowerShell：[Az.CosmosDB 版本 1.2.0](https://www.powershellgallery.com/packages/Az.CosmosDB/1.2.0) 或更高版本
+> - [Azure CLI](/cli/azure/install-azure-cli)：版本 2.24.0 或更高版本
 
 ### <a name="using-azure-powershell"></a>使用 Azure PowerShell
 
@@ -278,7 +278,7 @@ az cosmosdb sql role definition list --account-name $accountName --resource-grou
 
 ### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 
-有关使用 Azure 资源管理器模板创建角色定义的参考和示例，请参阅[此页](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/sqlresources2/createupdatesqlroledefinition)。
+有关使用 Azure 资源管理器模板创建角色定义的参考和示例，请参阅[此页](/rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources2/createupdatesqlroledefinition)。
 
 ## <a name="create-role-assignments"></a><a id="role-assignments"></a> 创建角色分配
 
@@ -299,9 +299,9 @@ az cosmosdb sql role definition list --account-name $accountName --resource-grou
 > 若要创建服务主体的角色分配，请确保使用“Azure Active Directory”门户边栏选项卡的“企业应用程序”部分中找到的“对象 ID”。
 
 > [!NOTE]
-> 下面所述的操作当前在以下环境中可用：
-> - Azure PowerShell：[Az.CosmosDB 2.0.1 版-预览版](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
-> - Azure CLI：[“cosmosdb-preview”扩展版 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
+> 下面所述的操作可用于：
+> - Azure PowerShell：[Az.CosmosDB 版本 1.2.0](https://www.powershellgallery.com/packages/Az.CosmosDB/1.2.0) 或更高版本
+> - [Azure CLI](/cli/azure/install-azure-cli)：版本 2.24.0 或更高版本
 
 ### <a name="using-azure-powershell"></a>使用 Azure PowerShell
 
@@ -310,12 +310,12 @@ az cosmosdb sql role definition list --account-name $accountName --resource-grou
 ```powershell
 $resourceGroupName = "<myResourceGroup>"
 $accountName = "<myCosmosAccount>"
-$readOnlyRoleDefinitionId = "<roleDefinitionId>" // as fetched above
+$readOnlyRoleDefinitionId = "<roleDefinitionId>" # as fetched above
 $principalId = "<aadPrincipalId>"
 New-AzCosmosDBSqlRoleAssignment -AccountName $accountName `
     -ResourceGroupName $resourceGroupName `
     -RoleDefinitionId $readOnlyRoleDefinitionId `
-    -Scope $accountName `
+    -Scope "/" `
     -PrincipalId $principalId
 ```
 
@@ -326,14 +326,14 @@ New-AzCosmosDBSqlRoleAssignment -AccountName $accountName `
 ```azurecli
 resourceGroupName='<myResourceGroup>'
 accountName='<myCosmosAccount>'
-readOnlyRoleDefinitionId = '<roleDefinitionId>' // as fetched above
+readOnlyRoleDefinitionId = '<roleDefinitionId>' # as fetched above
 principalId = '<aadPrincipalId>'
 az cosmosdb sql role assignment create --account-name $accountName --resource-group $resourceGroupName --scope "/" --principal-id $principalId --role-definition-id $readOnlyRoleDefinitionId
 ```
 
 ### <a name="using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板
 
-有关使用 Azure 资源管理器模板创建角色分配的参考和示例，请参阅[此页](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/sqlresources2/createupdatesqlroleassignment)。
+有关使用 Azure 资源管理器模板创建角色分配的参考和示例，请参阅[此页](/rest/api/cosmos-db-resource-provider/2021-04-15/sqlresources2/createupdatesqlroleassignment)。
 
 ## <a name="initialize-the-sdk-with-azure-ad"></a>用 Azure AD 初始化 SDK
 
@@ -400,9 +400,12 @@ REST API 的 `2021-03-15` 版本当前支持 Azure Cosmos DB RBAC。 构造[授�
 ## <a name="use-data-explorer"></a>使用数据资源管理器
 
 > [!NOTE]
-> Azure 门户中公开的数据资源管理器尚不支持 Azure Cosmos DB RBAC。 若要在浏览数据时使用 Azure AD 标识，必须改用 [Azure Cosmos DB 资源管理器](https://cosmos.azure.com/)。
+> Azure 门户中公开的数据资源管理器尚不支持 Azure Cosmos DB RBAC。 若要在浏览数据时使用 Azure AD 标识，必须改用 [Azure Cosmos DB 资源管理器](https://cosmos.azure.com/?feature.enableAadDataPlane=true)。
 
-在浏览帐户中存储的数据时，[Azure Cosmos DB 资源管理器](https://cosmos.azure.com/)最初会尝试代表登录用户提取帐户的主密钥，并使用此密钥来访问数据。 如果不允许该用户提取主密钥，则将改用其 Azure AD 标识来访问数据。
+使用特定 `?feature.enableAadDataPlane=true` 查询函数访问 [Azure Cosmos DB 资源管理器](https://cosmos.azure.com/?feature.enableAadDataPlane=true)并登录时，系统会按照以下逻辑访问数据：
+
+1. 代表已登录的标识尝试获取帐户主密钥的请求。 如果此请求成功，则系统会使用主密钥访问帐户的数据。
+1. 如果不允许登录的标识提取帐户的主密钥，则此标识将直接用于对数据访问进行身份验证。 在此模式下，必须为标识[分配适当的角色定义](#role-assignments)，以确保数据访问。
 
 ## <a name="audit-data-requests"></a>审核数据请求
 

@@ -2,13 +2,13 @@
 title: 将 Azure 事件中心命名空间移到另一个区域 | Microsoft Docs
 description: 本文介绍如何将 Azure 事件中心命名空间从当前区域移到另一个区域。
 ms.topic: how-to
-ms.date: 09/01/2020
-ms.openlocfilehash: b177c3916919e3d97325f9d8c6b6027c00cb476f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/08/2021
+ms.openlocfilehash: 9e10cd220a18849336fdc520b269c8af2cb257bd
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96019916"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111811590"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>将 Azure 事件中心命名空间移到另一个区域
 本文介绍如何导出现有事件中心命名空间的 Azure 资源管理器模板，然后使用该模板在另一个区域中创建具有相同配置设置的命名空间。 但是，此过程不会移动尚未处理的事件。 你需要先处理原始命名空间中的事件，然后再将其删除。
@@ -26,7 +26,7 @@ ms.locfileid: "96019916"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“所有资源”，然后选择你的事件中心命名空间。
-3. 选择“设置” > “导出模板”。 
+3. 在“事件中心命名空间”页上，选择左侧菜单中的“自动化”下的“导出模版”。 
 4. 选择“导出模板”页中的“下载”。 
 
     ![下载资源管理器模板](./media/move-across-regions/download-template.png)

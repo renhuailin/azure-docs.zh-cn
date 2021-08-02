@@ -4,12 +4,12 @@ description: 了解如何在 Batch 池上装载虚拟文件系统。
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 03/26/2021
-ms.openlocfilehash: dcd56a12d8728b83cdcb7cea4c16c4aedd4251a7
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 460501e30b5afd2eb7a1f67b1162b9820830454a
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105742"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968145"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>在 Batch 池上装载虚拟文件系统
 
@@ -76,7 +76,7 @@ new PoolAddParameter
 }
 ```
 
-### <a name="azure-blob-file-system"></a>Azure Blob 文件系统
+### <a name="azure-blob-container"></a>Azure Blob 容器
 
 另一种选择方案是通过 [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) 使用 Azure Blob 存储。 装载 Blob 文件系统需要为存储帐户使用 `AccountKey` 或 `SasKey`。 有关获取这些密钥的信息，请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)或[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../storage/common/storage-sas-overview.md)。 有关使用 blobfuse 的详细信息和使用技巧，请参阅 blobfuse 故障排除常见问题解答。
 
@@ -97,7 +97,7 @@ new PoolAddParameter
                 AccountName = "StorageAccountName",
                 ContainerName = "containerName",
                 AccountKey = "StorageAccountKey",
-                SasKey = "",
+                SasKey = "SasKey",
                 RelativeMountPath = "RelativeMountPath",
                 BlobfuseOptions = "-o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 "
             },
@@ -108,7 +108,7 @@ new PoolAddParameter
 
 ### <a name="network-file-system"></a>网络文件系统
 
-可将网络文件系统 (NFS) 装载到池节点，使 Azure Batch 轻松访问传统文件系统。 此类文件系统可能是部署在云中的单个 NFS 服务器，或通过虚拟网络访问的本地 NFS 服务器。 另外，还可使用 [Avere vFXT](../avere-vfxt/avere-vfxt-overview.md) 分布式内存中缓存解决方案，执行数据密集型高性能计算 (HPC) 任务
+可将网络文件系统 (NFS) 装载到池节点，使 Azure Batch 轻松访问传统文件系统。 此类文件系统可能是部署在云中的单个 NFS 服务器，或通过虚拟网络访问的本地 NFS 服务器。 NFS 装载支持 [Avere vFXT](../avere-vfxt/avere-vfxt-overview.md) 分布式内存中高性能计算 (HPC) 任务以及其他标准 NFS 兼容接口，如[适用于 Azure Blob 的 NFS](../storage/blobs/network-file-system-protocol-support.md) 和[适用于 Azure 文件存储的 NFS](../storage/files/storage-files-how-to-mount-nfs-shares.md)。
 
 ```csharp
 new PoolAddParameter
@@ -122,7 +122,7 @@ new PoolAddParameter
             {
                 Source = "source",
                 RelativeMountPath = "RelativeMountPath",
-                MountOptions = "options ver=1.0"
+                MountOptions = "options ver=3.0"
             },
         }
     }
@@ -131,7 +131,7 @@ new PoolAddParameter
 
 ### <a name="common-internet-file-system"></a>通用 Internet 文件系统
 
-将[通用 Internet 文件系统 (CIFS)](/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) 装载到池节点是访问传统文件系统的另一种方法。 CIFS 是一种文件共享协议，它提供了一种用于请求网络服务器文件和服务的开放和跨平台的机制。 CIFS 基于适用于 Internet 和 Intranet 文件共享的[服务器消息块 (SMB)](/windows-server/storage/file-server/file-server-smb-overview) 协议的增强版本，用于在 Windows 节点上装载外部文件系统。
+将[通用 Internet 文件系统 (CIFS)](/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) 装载到池节点是访问传统文件系统的另一种方法。 CIFS 是一种文件共享协议，它提供了一种用于请求网络服务器文件和服务的开放和跨平台的机制。 CIFS 基于适用于 Internet 和 Intranet 文件共享的[服务器消息块 (SMB)](/windows-server/storage/file-server/file-server-smb-overview) 协议的增强版本。
 
 ```csharp
 new PoolAddParameter
@@ -160,36 +160,28 @@ new PoolAddParameter
 
 要获取日志文件以进行调试，请使用 [OutputFiles](batch-task-output-files.md) 上传 `*.log` 文件。 `*.log` 文件包含有关在 `AZ_BATCH_NODE_MOUNTS_DIR` 位置装载文件系统的信息。 对于每个装载，装载日志文件格式：`<type>-<mountDirOrDrive>.log`。 例如，名为 `test` 的装载目录中处的 `cifs` 装载将有一个名为 `cifs-test.log` 的装载日志文件。
 
-## <a name="supported-skus"></a>支持的 SKU
+## <a name="support-matrix"></a>支持矩阵
 
-| 发布者 | 产品/服务 | SKU | Azure 文件存储共享 | Blobfuse | NFS 装载 | CIFS 装载 |
-|---|---|---|---|---|---|---|
-| 批处理 | rendering-centos73 | 呈现 | :heavy_check_mark: <br>注意：与 CentOS 7.7 兼容</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Canonical | UbuntuServer | 16.04-LTS、18.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Credativ | Debian | 8| :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: |
-| Credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>注意：与 CentOS 7.4 兼容。 </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | centos-container | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | centos-container-rdma | 7.4 | :heavy_check_mark: <br>注意：支持 A_8 或 9 存储</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | ubuntu-server-container | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-dsvm | linux-data-science-vm-ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS-HPC | 7.4、7.3、7.1 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Oracle | Oracle-Linux | 7.6 | :x: | :x: | :x: | :x: |
-| Windows | WindowsServer | 2012、2016、2019 | :heavy_check_mark: | :x: | :x: | :x: |
+Azure Batch 支持为节点代理针对其各自的发布服务器和产品/服务生成的以下虚拟文件系统类型。
+
+| OS 类型 | Azure 文件存储共享 | Azure Blob 容器 | NFS 装载 | CIFS 装载 |
+|---|---|---|---|---|
+| Linux | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Windows | :heavy_check_mark: | :x: | :x: | :x: |
 
 ## <a name="networking-requirements"></a>网络要求
 
 在[虚拟网络](batch-virtual-network.md)中使用 Azure Batch 池进行虚拟文件装载时，请记住以下要求并确保所需流量畅通无阻。
 
-- Azure 文件：
+- **Azure 文件共享**：
   - 要获得与“存储”服务标记之间的往来流量，需要打开 TCP 端口 445。 有关详细信息，请参阅[将 Azure 文件共享与 Windows 配合使用](../storage/files/storage-how-to-use-files-windows.md#prerequisites)。
-- Blobfuse：
+- **Azure Blob 容器**：
   - 要获得与“存储”服务标记之间的往来流量，需要打开 TCP 端口 443。
   - 要下载 blobfuse 和 gpg 包，VM 必须有 https://packages.microsoft.com 的访问权限。 根据配置情况，要下载更多包，可能还需要有其他 URL 的访问权限。
 - 网络文件系统 (NFS)：
   - 默认情况下，需要有端口 2049（默认情况下，配置可能有其他要求）的访问权限。
   - 要下载 nfs-common（针对 Debian 或 Ubuntu）包或 nfs-utils（针对 CentOS）包，VM 必须有相应包管理器的访问权限。 此 URL 可能因 OS 版本而异。 根据配置情况，要下载更多包，可能还需要有其他 URL 的访问权限。
+  - 通过 NFS 装载 Azure Blob 或 Azure 文件存储可能需要额外的网络要求，例如，与存储帐户共享虚拟网络的同一指定子网的计算节点。
 - 通用 Internet 文件系统 (CIFS)：
   - 需要有 TCP 端口 445 的访问权限。
   - 要下载 cifs-utils 包，VM 必须有相应包管理器的访问权限。 此 URL 可能因 OS 版本而异。

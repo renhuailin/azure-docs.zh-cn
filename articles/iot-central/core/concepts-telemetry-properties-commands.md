@@ -8,16 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: f027b2d41f63b5aa7ea3df87e06224abd629799b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2f76be3bd5a2688e91f63da5da137492190b2ccb
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100535308"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789060"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>遥测、属性和命令有效负载
-
-本文适用于设备开发人员。
 
 Azure IoT Central 中的设备模板是定义以下内容的蓝图：
 
@@ -25,7 +23,7 @@ Azure IoT Central 中的设备模板是定义以下内容的蓝图：
 * 设备与 IoT Central 同步的属性。
 * IoT Central 在设备上调用的命令。
 
-本文面向设备开发人员介绍为设备模板中定义的遥测、属性和命令发送和接收的 JSON 有效负载。
+本文介绍设备为设备模板中定义的遥测、属性和命令发送和接收的 JSON 有效负载。
 
 本文没有介绍每种类型的遥测、属性和命令有效负载，但示例演示了所有关键类型。
 
@@ -51,6 +49,10 @@ Azure IoT Central 中的设备模板是定义以下内容的蓝图：
     在此视图中，你可以选择要显示的列，并设置要查看的时间范围。 “未建模数据”列显示设备中与设备模板中的任何属性或遥测定义不匹配的数据。
 
 ## <a name="telemetry"></a>遥测
+
+### <a name="telemetry-in-components"></a>组件中的遥测
+
+如果在组件中定义遥测，请使用设备模型中定义的组件名称添加名为 `$.sub` 的自定义消息属性。 若要了解详细信息，请参阅[教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](tutorial-connect-device.md)。
 
 ### <a name="primitive-types"></a>基元类型
 
@@ -437,6 +439,21 @@ Azure IoT Central 中的设备模板是定义以下内容的蓝图：
 > [!NOTE]
 > 属性的有效负载格式适用于在 2020 年 07 月 14 日或之后创建的应用程序。
 
+### <a name="properties-in-components"></a>组件中的属性
+
+如果该属性是在组件中定义的，请将该属性包装在组件名称中。 以下示例将 `maxTempSinceLastReboot` 设置在 `thermostat2` 组件中。 标记 `__t` 指示此组件：
+
+```json
+{
+  "thermostat2" : {  
+    "__t" : "c",  
+    "maxTempSinceLastReboot" : 38.7
+    } 
+}
+```
+
+若要了解详细信息，请参阅[教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](tutorial-connect-device.md)。
+
 ### <a name="primitive-types"></a>基元类型
 
 本部分显示设备发送到 IoT Central 应用程序的原始属性类型的示例。
@@ -461,7 +478,7 @@ Azure IoT Central 中的设备模板是定义以下内容的蓝图：
 { "BooleanProperty": false }
 ```
 
-设备模型中的以下代码片段显示 `boolean` 属性类型的定义：
+设备模型中的以下代码片段显示 `long` 属性类型的定义：
 
 ```json
 {
@@ -715,11 +732,27 @@ Azure IoT Central 中的设备模板是定义以下内容的蓝图：
 }
 ```
 
-### <a name="writeable-property-types"></a>可写属性类型
+### <a name="writable-property-types"></a>可写属性类型
 
-本部分介绍设备接收自 IoT Central 应用程序的可写属性类型的示例。
+本部分介绍设备从 IoT Central 应用程序接收的可写属性类型的示例。
 
-IoT Central 要求设备对可写的属性更新作出响应。 响应消息应当包含 `ac` 和 `av` 字段。 `ad` 字段为可选。 有关示例，请参阅以下代码片段。
+如果在组件中定义了可写属性，则所需属性消息包含组件名称。 以下示例展示了请求设备更新 `thermostat2` 组件中 `targetTemperature` 的消息。 标记 `__t` 指示此组件：
+
+```json
+{
+  "thermostat2": {
+    "targetTemperature": {
+      "value": 57
+    },
+    "__t": "c"
+  },
+  "$version": 3
+}
+```
+
+若要了解详细信息，请参阅[教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](tutorial-connect-device.md)。
+
+IoT Central 要求设备对可写属性更新作出响应。 响应消息应当包含 `ac` 和 `av` 字段。 `ad` 字段为可选。 有关示例，请参阅以下代码片段。
 
 `ac` 是一个数值字段，它使用下表中的值：
 
@@ -834,6 +867,8 @@ IoT Central 要求设备对可写的属性更新作出响应。 响应消息应�
 ```
 
 ## <a name="commands"></a>命令
+
+如果在组件中定义了命令，则设备接收的命令的名称包括组件名称。 例如，如果命令名称为 `getMaxMinReport`，并且组件名称为 `thermostat2`，则设备会收到请求，执行名称为 `thermostat2*getMaxMinReport` 的命令。
 
 设备模型中的以下代码片段显示没有参数并且不要求设备返回任何内容的命令的定义：
 
@@ -1011,6 +1046,15 @@ IoT Central 要求设备对可写的属性更新作出响应。 响应消息应�
 
 脱机命令使用 [IoT 中心云到设备的消息](../../iot-hub/iot-hub-devguide-messages-c2d.md)将命令和有效负载发送到设备。
 
+设备接收的消息的有效负载是参数的原始值。 名为 `method-name` 的自定义属性存储 IoT Central 命令的名称。 下表显示了一些有效负载的示例：
+
+| IoT Central 请求架构 | 设备接收的有效负载示例 |
+| -------------------------- | ---------------------------------- |
+| 无请求参数       | `@`                                |
+| Double                     | `1.23`                             |
+| 字符串                     | `sample string`                    |
+| 对象                     | `{"StartTime":"2021-01-05T08:00:00.000Z","Bank":2}` |
+
 设备模型中的以下代码片段显示命令的定义。 该命令具有一个对象参数，其中包含日期/时间字段和枚举：
 
 ```json
@@ -1090,4 +1134,4 @@ IoT Central 要求设备对可写的属性更新作出响应。 响应消息应�
 
 ## <a name="next-steps"></a>后续步骤
 
-作为设备开发人员，现在你已经了解设备模板，建议接下来阅读[连接到 Azure IoT Central](./concepts-get-connected.md)，了解有关如何将设备注册到 IoT Central 以及 IoT Central 如何保护设备连接的详细信息。
+了解设备模板后，建议接下来阅读[连接到 Azure IoT Central](./concepts-get-connected.md)，详细了解如何使用 IoT Central 注册设备以及 IoT Central 如何保护设备连接。

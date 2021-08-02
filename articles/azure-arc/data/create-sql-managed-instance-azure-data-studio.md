@@ -4,19 +4,19 @@ description: 使用 Azure Data Studio 创建 Azure SQL 托管实例
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: rothja
-ms.author: jroth
+author: dnethi
+ms.author: dinethi
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6bc644fc96ba30cb13603edf6a90f357db4fd2f3
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 3223ec1a9538228c1b3d9f2cdcb8ea1c051e0e10
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736369"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110495941"
 ---
-# <a name="create-sql-managed-instance---azure-arc-using-azure-data-studio"></a>使用 Azure Data Studio 创建 SQL 托管实例 - Azure Arc
+# <a name="create-sql-managed-iinstance---azure-arc-using-azure-data-studio"></a>使用 Azure Data Studio 创建 SQL 托管实例 - Azure Arc
 
 本文档分步讲解如何使用 Azure Data Studio 安装 Azure SQL 托管实例 - Azure Arc
 
@@ -54,7 +54,7 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 
 
 
-- 在部署“Azure SQL 托管实例 - Azure Arc”边栏选项卡中输入以下信息：
+- 在“部署 Azure SQL 托管实例 - Azure Arc”边栏选项卡中输入以下信息：
   - 为 SQL Server 实例输入名称
   - 为 SQL Server 实例输入并确认密码
   - 选择适用于数据的存储类

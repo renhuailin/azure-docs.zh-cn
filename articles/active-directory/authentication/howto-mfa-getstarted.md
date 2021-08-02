@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 05/03/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9ee81abd7cd0268a7cbd6b16aa6065ec7b54bef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: aa57446053531ee4d3b40b617e8664eb0648c725
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96861300"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951929"
 ---
 # <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>规划 Azure AD 多重身份验证部署
 
@@ -39,7 +39,7 @@ ms.locfileid: "96861300"
 | --- | --- |
 | 具有新式身份验证的仅限云的标识环境 | 无其他先决条件任务 |
 | 混合标识方案 | 部署 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) 并将用户标识与具有 Azure Active Directory 的本地 Active Directory 域服务同步或联合。 |
-| 为云访问发布的本地旧版应用程序 | 部署 Azure AD [应用程序代理](../manage-apps/application-proxy.md)。 |
+| 为云访问发布的本地旧版应用程序 | 部署 Azure AD [应用程序代理](../app-proxy/application-proxy.md)。 |
 | 将 Azure AD MFA 与 RADIUS 身份验证结合使用 | 部署[网络策略服务器 (NPS)](howto-mfa-nps-extension.md)。 |
 | 用户具有 Microsoft Office 2010 或更早版本，或针对 iOS 11 或更早版本的 Apple Mail | 升级到 [Microsoft Office 2013 或更高版本](https://support.microsoft.com/help/4041439/modern-authentication-configuration-requirements-for-transition-from-o)和针对 iOS 12 或更高版本的 Apple Mail。 旧式身份验证协议不支持条件访问。 |
 
@@ -144,6 +144,9 @@ Azure Active Directory 标识保护检测到的某些风险检测是实时发生
 
 1. 单击“保存” 。
 1. 关闭“服务设置”选项卡。
+
+> [!WARNING]
+> 如果使用的是[安全默认设置](../fundamentals/concept-fundamentals-security-defaults.md)，请不要为你的组织禁用方法。 禁用方法可能会导致自行锁定租户。 在 MFA 服务设置门户中启用所有可供用户使用的方法。
 
 ## <a name="plan-registration-policy"></a>计划注册策略
 
@@ -264,7 +267,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 ### <a name="use-azure-ad-mfa-with-azure-ad-application-proxy"></a>将 Azure AD MFA 与 Azure AD 应用程序代理配合使用
 
-可以通过 [Azure AD 应用程序代理](../manage-apps/application-proxy.md)将驻留在本地的应用程序发布到 Azure AD 租户，并且如果将这些应用程序配置为使用 Azure AD 预身份验证，则可以利用 Azure AD 多重身份验证。
+可以通过 [Azure AD 应用程序代理](../app-proxy/application-proxy.md)将驻留在本地的应用程序发布到 Azure AD 租户，并且如果将这些应用程序配置为使用 Azure AD 预身份验证，则可以利用 Azure AD 多重身份验证。
 
 这些应用程序遵循强制执行 Azure AD 多重身份验证的条件访问策略，就像任何其他与 Azure AD 集成的应用程序一样。
 
@@ -335,7 +338,7 @@ Windows 安全日志和 AD FS 管理员日志中的标准 AD FS 2016 和 2019 �
 
 1. 满足任何必需的先决条件
    1. 为任意混合方案部署 [Azure AD Connect](../hybrid/whatis-hybrid-identity.md)
-   1. 在为云访问发布的任意本地应用上部署 [Azure AD 应用程序代理](../manage-apps/application-proxy.md)
+   1. 在为云访问发布的任意本地应用上部署 [Azure AD 应用程序代理](../app-proxy/application-proxy.md)
    1. 为任意 RADIUS 身份验证部署 [NPS](/windows-server/networking/technologies/nps/nps-top)
    1. 确保用户已升级到支持的 Microsoft Office 版本，并启用新式身份验证
 1. 配置所选的[身份验证方法](#choose-verification-options)

@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: ceb39893327af82e8dff3e82ef570727b3bdfa33
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3034f117f8efa383a9f7a5e768e8d5627ea32099
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141943"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110668398"
 ---
 # <a name="glossary-of-iot-terms"></a>IoT 术语词汇表
 
@@ -48,7 +48,7 @@ Azure IoT 中心内的自动设备管理功能可将许多复杂且重复性的�
 
 ### <a name="azure-digital-twins"></a>Azure 数字孪生
 
-Azure 数字孪生是一款平台即服务 (PaaS) 产品/服务，可用于创建现实世界物品、地点、业务流程和人员的数字表示形式。 构建代表整个环境的知识图，并使用它们来获得见解，以促成更好的产品，优化运营和成本，以及打造突破性的客户体验。 若要了解详细信息，请参阅 [Azure 数字孪生](../digital-twins/index.yml)。
+Azure 数字孪生是一款平台即服务 (PaaS) 产品/服务，可用于创建现实世界物品、地点、业务流程和人员的数字表示形式。 构建代表整个环境的孪生图，并使用它们来获得见解，以促成更好的产品，优化运营和成本，以及打造突破性的客户体验。 若要了解详细信息，请参阅 [Azure 数字孪生](../digital-twins/index.yml)。
 
 ### <a name="azure-digital-twins-instance"></a>Azure 数字孪生实例
 
@@ -85,6 +85,10 @@ Azure 数字孪生是一款平台即服务 (PaaS) 产品/服务，可用于创�
 ### <a name="cloud-gateway"></a>云网关
 
 云网关使不能直接连接到 [IoT 中心](#iot-hub)的设备能建立连接。 和在设备本地运行的 [现场网关](#field-gateway) 相反，云网关在云中托管。 云网关的一个典型用例是实现设备的协议转换。
+
+### <a name="cloud-property"></a>云属性
+
+在 IoT Central 中，云属性是[设备模板](#device-model)的一部分，但不是[设备模型](#device-model)的一部分。 云属性使解决方案开发者可以指定要存储在 IoT Central 应用程序中的任何设备元数据。 云属性不影响设备开发者为实现设备模型而编写的代码。
 
 ### <a name="cloud-to-device"></a>云到设备
 
@@ -195,6 +199,10 @@ IoT 中心设备预配服务 (DPS) 是 [IoT 中心](#iot-hub)的一项帮助程�
 ### <a name="device-rest-api"></a>设备 REST API
 
 在设备上使用[设备 REST API](/rest/api/iothub/device)，可以将设备到云消息发送到 IoT 中心，并能从 IoT 中心接收[云到设备](#cloud-to-device)消息。 通常情况下，使用 IoT 中心教程中演示的一种较高级别的 [设备 SDK](#azure-iot-device-sdks) 。
+
+### <a name="device-template"></a>设备模板
+
+在 IoT Central 中，[设备模板](../iot-central/core/concepts-device-templates.md)是一个蓝图，用于定义可连接到应用程序的某种设备的特征和行为。 例如，设备模板定义设备发送的遥测数据，以便 IoT Central 使用正确单位和数据类型创建可视化效果。 [设备模型](#device-model)是设备模板的一部分。
 
 ### <a name="device-twin"></a>设备孪生
 
@@ -368,7 +376,9 @@ Azure IoT 解决方案加速器将多个 Azure 服务一起打包到解决方案
 
 ### <a name="job"></a>作业
 
-解决方案后端可以使用[作业](../iot-hub/iot-hub-devguide-jobs.md)来计划和跟踪在 IoT 中心注册的一组设备上的活动。 活动包括更新设备孪生[所需的属性](#desired-properties)、更新设备孪生[标记](#tags)，以及调用[直接方法](#direct-method)。 [IoT 中心](#iot-hub)还用于在[标识注册表](#identity-registry)中[导入和导出](../iot-hub/iot-hub-devguide-identity-registry.md#import-and-export-device-identities)内容。
+在 [IoT 中心](#iot-hub)中，通过[作业](../iot-hub/iot-hub-devguide-jobs.md)可计划和跟踪在 IoT 中心注册的一组设备上的活动。 活动包括更新设备孪生[所需的属性](#desired-properties)、更新设备孪生[标记](#tags)，以及调用[直接方法](#direct-method)。 IoT 中心还使用作业在[标识注册表](#identity-registry)中[导入和导出](../iot-hub/iot-hub-devguide-identity-registry.md#import-and-export-device-identities)。
+
+在 IoT Central 中，借助[作业](../iot-central/core/howto-run-a-job.md)可通过设置属性和调用命令批量管理连接的设备。 通过 IoT Central 作业还可以批量更新[云属性](#cloud-property)。
 
 ## <a name="l"></a>L
 

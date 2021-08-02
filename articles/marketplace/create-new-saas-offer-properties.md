@@ -1,6 +1,6 @@
 ---
-title: 如何在 Microsoft 合作伙伴中心配置 SaaS 产品/服务属性
-description: 了解如何在合作伙伴中心配置服务型软件 (SaaS) Microsoft 商业市场产品/服务的属性。
+title: 在 Azure 市场中配置 SaaS 产品/服务属性
+description: 在 Azure 市场中配置服务型软件 (SaaS) 的属性。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 7d90c9b9b2c9aa97083e17d5ab7d20fc6b471658
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac4461d01ea020886b83e0f643bbca5c0fba5ab0
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94492117"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110614449"
 ---
-# <a name="how-to-configure-your-saas-offer-properties"></a>如何配置 SaaS 产品/服务属性
+# <a name="configure-saas-offer-properties"></a>配置 SaaS 产品/服务属性
 
 本文介绍如何在 Microsoft 商业市场中配置服务型软件 (SaaS) 产品/服务的属性。
 
@@ -48,13 +48,13 @@ ms.locfileid: "94492117"
 - [使用带有可选修订的标准协定](#use-the-standard-contract)
 - [使用自己的条款和条件](#use-your-own-terms-and-conditions)
 
-如果要了解标准协定和可选修订，请参阅《[Microsoft 商业市场的标准协定](standard-contract.md)》。 用户可以下载[标准协定](https://go.microsoft.com/fwlink/?linkid=2041178) PDF（确保弹出窗口阻止程序处于禁用状态）。
+如果要了解标准协定和可选修订，请参阅[Microsoft 商业市场的标准协定](standard-contract.md)。 可下载[标准协定](https://go.microsoft.com/fwlink/?linkid=2041178) PDF（确保弹出窗口阻止程序处于禁用状态）。
 
 ### <a name="use-the-standard-contract"></a>使用标准协定
 
 为了简化客户的采购流程并为软件供应商降低法律复杂性，Microsoft 提供了可在商业市场中用于产品/服务的标准协定。 使用标准协定提供软件时，客户只需阅读并接受此协定一次，你不必创建自定义条款和条件。
 
-1. 选择“使用 Microsoft 商业市场的标准协定”复选框。
+1. 选中“使用 Microsoft 商业市场的标准协定”复选框。
 
    ![显示“使用 Microsoft 商业市场的标准协定”复选框。](partner-center-portal/media/use-standard-contract.png)
 1. 在“确认”对话框中，选择“接受” 。 可能需要滚动才能看到它。
@@ -63,7 +63,7 @@ ms.locfileid: "94492117"
    > [!NOTE]
    > 使用商业市场的标准协定发布产品/服务后，就无法使用你自己的自定义条款和条件了。 要么根据具有可选修订的标准协定提供解决方案，要么根据你自己的条款和条件提供解决方案。
 
-### <a name="add-amendments-to-the-standard-contract-optional"></a>将修订添加到标准协定(可选)
+### <a name="add-amendments-to-the-standard-contract-optional"></a>将修订添加到标准协定（可选）
 
 可使用两种类型的修订：“通用”和“自定义” 。
 
@@ -73,11 +73,11 @@ ms.locfileid: "94492117"
 
 #### <a name="add-one-or-more-custom-amendments"></a>添加一个或多个自定义修订
 
-1. 在“Microsoft 商业市场标准协定自定义修订条款”下，选择“添加自定义修订条款（MAX 10）”链接。 
+1. 在“Microsoft 商业市场标准协定自定义修订条款”下，选择“添加自定义修订条款(最多10 条)”链接。 
 1. 在“自定义修订条款”框中输入自己的修订条款。
-1. 在“租户 ID”框中，输入租户 ID。 在 Azure 门户的产品/服务购买流程中，只有为这些自定义条款指定的租户 ID 相关联的客户会看到它们。
+1. 在“租户 ID”框中，输入租户 ID。 在 Azure 门户的产品/服务购买流程中，只有与为这些自定义条款指定的租户 ID 相关联的客户会看到它们。
    > [!TIP]
-   > 租户 ID 标识 Azure 中的客户。 用户可以向其客户索要此 ID，也可到 [ **https://portal.azure.com** ](https://portal.azure.com) > “Azure Active Directory” > “属性”中找到此 ID。 目录 ID 值是租户 ID（例如 `50c464d3-4930-494c-963c-1e951d15360e`）。 你还可以使用[我的 Microsoft Azure 和 Office 365 租户 ID 是什么？](https://www.whatismytenantid.com/)中客户的域名 URL 查找其组织的租户 ID。
+   > 租户 ID 标识 Azure 中的客户。 可向客户索要此 ID，也可转到 [https://portal.azure.com](https://portal.azure.com) > “Azure Active Directory” > “属性”找到此 ID  。 目录 ID 值是租户 ID（例如 `50c464d3-4930-494c-963c-1e951d15360e`）。 你还可以使用[我的 Microsoft Azure 和 Office 365 租户 ID 是什么？](https://www.whatismytenantid.com/)中客户的域名 URL 查找其组织的租户 ID。
 1. 在“说明”框中，可选地输入租户 ID 的易懂说明。 该说明有助于标识修订的目标客户。
 1. 如果要添加另一个租户 ID，选择“添加客户的租户 ID”链接，并重复步骤 3 和 4。 最多可添加 20 个租户 ID。
 1. 如果要添加另一修订条款，重复步骤 1 到 5。 每个产品/服务最多可以提供 10 个自定义修订条款。 
@@ -85,7 +85,7 @@ ms.locfileid: "94492117"
 
 ### <a name="use-your-own-terms-and-conditions"></a>使用自己的条款和条件
 
-可以选择提供自己的条款和条件，而不是标准协定。 客户必须接受这些条款，才能试用你的产品/服务。
+可选择提供自己的条款和条件，而不是标准协定。 客户必须接受这些条款，才能试用你的产品/服务。
 
 1. 在“法律”下，确保清除“使用 Microsoft 商业市场的标准协定”复选框。 
 1. 在“条款和条件”框中，输入最多 10000 个字符的文本。
@@ -93,4 +93,4 @@ ms.locfileid: "94492117"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [如何配置 SaaS 产品/服务列表的详细信息](create-new-saas-offer-listing.md)
+- [配置 SaaS 产品/服务列表详细信息](create-new-saas-offer-listing.md)

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 07/06/2020
-ms.openlocfilehash: 3ea6a0035a9f9354be5c14699936c6a07dea1150
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/03/2021
+ms.openlocfilehash: 856a72be8e1bb69f86c2a96b8e7b57e964d26dfa
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94492083"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410236"
 ---
 # <a name="offer-listing-best-practices"></a>套餐列出最佳做法
 
@@ -30,21 +30,23 @@ ms.locfileid: "94492083"
 
 ## <a name="online-store-listing-details"></a>在线商店商品详细信息
 
-不同在线商店的类别和行业将适用于不同的产品/服务类型。
+下表显示了哪些产品/服务类型具有适用于不同在线商店的类别和行业：Azure 市场和 Microsoft AppSource。
 
-| 在线商店 | 类别 <br>在线商店 | 类别 <br>在线商店 | 行业 <br> 适用于 AppSource |
+| 产品/服务类型 | Azure 市场类别 | AppSource 类别 | AppSource 行业 |
 | :------------------- |:----------------:|:------:|:-------------:|
-| **产品/服务类型**   |  **Azure 市场**  | **AppSource**  |
-| Azure 应用 | X | |
-| 容器 | X | |
-| 咨询服务 | | | X |
-| Dynamics 365 Customer Engagement 和 Power Platform | | X | X |
-| Dynamics 365 Finance 和 Supply Chain Management | | X | X | 
+| Azure 应用程序     | X |   |   |
+| Azure 容器       | X |   |   |
+| Azure 虚拟机 | X |   |   |
+| 咨询服务    | X<sup>*</sup> |   | X<sup>*</sup> |
+| Dynamics 365 Customer Engagement 和 Power Apps | | X | X |
+| Dynamics 365 for Operations | | X | X |
 | Dynamics 365 Business Central | | X | X |
-| IoT Edge 模块 | X | |
-| Power BI | | X | X |
+| IoT Edge 模块 | X | |  |
+| 托管服务 | X | |  |
+| Power BI 应用 | | X | X |
 | SaaS | X | X | X |
-| Azure 虚拟机 |  X |    |
+
+* 产品/服务根据主要产品发布到相关的在线商店。 如果主要产品是 Azure，则会发布到 Azure 市场。 否则，会发布到 AppSource。
 
 ### <a name="categories"></a>类别
 
@@ -61,24 +63,26 @@ Microsoft AppSource 和 Azure 市场是提供不同解决方案类型的在线�
 
 #### <a name="important-saas-offers-and-microsoft-365-add-ins"></a>重要说明：SaaS 产品/服务和 Microsoft 365 加载项
 
-请参阅[在商业市场中进行交易](marketplace-commercial-transaction-capabilities-and-considerations.md)，了解交易功能如何影响市场客户查看和购买产品/服务的方式的特定详细信息。 对于 SaaS 产品/服务，产品/服务的交易功能和类别选择将决定产品/服务将在哪个在线商店发布。
+若要了解交易功能如何影响市场客户查看和购买产品/服务的方式的特定详细信息，请参阅[在商业市场中进行交易](marketplace-commercial-transaction-capabilities-and-considerations.md)。 对于 SaaS 产品/服务，产品/服务的交易功能和类别选择将决定产品/服务将在哪个在线商店发布。
 
+下表显示了适用于不同在线商店的选项组合：Azure 市场和 Microsoft AppSource。
 
-| SaaS 套餐    | SaaS 套餐   | SaaS 套餐  | SaaS 套餐   | SaaS 套餐   | SaaS 套餐   | SaaS 套餐    | 适用的在线商店| 适用的在线商店 |
-|:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
-| 按流量计费 | Microsoft 365 加载项 | 与我联系 | 交易（至少 1 个计划） | 仅专用计划 | 仅公用计划 | 公用和专用计划 | AppSource | Azure 市场 |
-|  | X |  |  |  |  |  | X |  |
-| X |  |  | X | X |  |  |  | X |
-| X |  |  | X |  | X |  |  | X |
-| X |  |  | X |  |  | X |  | X<sup>2</sup> |
-|  |  |  | X | X |  |  |  | X |
-|  |  |  | X |  | X |  | X<sup>1</sup> | X<sup>1</sup> |
-|  |  |  | X |  |  | X | X<sup>1</sup> | X<sup>1、2</sup> |
-|  |  | X |  |  |  |  | X<sup>1</sup> | X<sup>1</sup> | 
+| 按流量计费 | Microsoft 365 加载项 | 仅专用计划 | 仅公用计划 | 公用和专用计划 | 适用的在线商店 |
+|:-------------:|:---:|:--------:|:---------:|:---------------------:|:-------------:|
+|  | X |  |  |  | AppSource |
+| X |  | X |  |  | Azure 市场 |
+| X |  |  | X |  | Azure 市场 |
+| X |  |  |  | X | Azure 市场<sup>2</sup> |
+|  |  | X |  |  | Azure 市场 |
+|  |  |  | X |  | AppSource<sup>1</sup><br>Azure 市场<sup>1</sup> |
+|  |  |  |  | X | AppSource<sup>1</sup><br>Azure 市场<sup>1,2</sup> |
+|  |  |  |  | X | AppSource<sup>1</sup><br>Azure 市场<sup>1</sup> |
 
 1. 取决于类别/子类别和行业选择
 2. 具有专用计划的产品/服务将发布到 Azure 门户
 
+> [!NOTE]
+> 无法在同一产品/服务中同时拥有上市计划和可交易计划。
 
 ### <a name="industries"></a>行业
 

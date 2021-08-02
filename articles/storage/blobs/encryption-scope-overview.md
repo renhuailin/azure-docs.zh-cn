@@ -1,65 +1,92 @@
 ---
-title: Blob 存储的加密范围（预览）
+title: Blob 存储的加密范围
 description: 可以通过加密范围在容器或单个 Blob 级别管理加密。 可以使用加密范围在驻留在同一存储帐户中但属于不同客户的数据之间创建安全边界。
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/05/2021
+ms.date: 06/01/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 35395a30f7d58b9edb3aa7622a35e8c4a62dc76f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d089ef587e209810fe0400871aba9a55cb9c0ed3
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211356"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111372650"
 ---
-# <a name="encryption-scopes-for-blob-storage-preview"></a>Blob 存储的加密范围（预览）
+# <a name="encryption-scopes-for-blob-storage"></a>Blob 存储的加密范围
 
-可以通过加密范围在容器或单个 Blob 级别管理加密。 可以使用加密范围在驻留在同一存储帐户中但属于不同客户的数据之间创建安全边界。
+通过使用加密范围，可以使用范围限定为容器或单个 blob 的密钥来管理加密。 可以使用加密范围在驻留在同一存储帐户中但属于不同客户的数据之间创建安全边界。
 
-默认情况下，使用作用域为整个存储帐户的密钥对存储帐户进行加密。 使用加密范围时，可以指定使用作用域仅为这些容器的密钥对一个或多个容器加密。
-
-你可以选择使用 Microsoft 管理的密钥或存储在 Azure Key Vault 中的客户管理的密钥来保护和控制对用于加密数据的密钥的访问。 同一存储帐户上的不同加密范围可以使用 Microsoft 管理的密钥或客户管理的密钥。
-
-创建加密范围后，可以对创建容器或 Blob 的请求指定加密范围。 有关如何创建加密范围的详细信息，请参阅[创建和管理加密范围（预览）](encryption-scope-manage.md)。
-
-> [!IMPORTANT]
-> 加密范围目前为预览版。 有关 beta 版本、预览版或尚未正式发布的版本的 Azure 功能所适用的法律条款，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
-> 为避免意外费用，请确保禁用当前不需要的任何加密范围。
->
-> 在预览期间，读取访问异地冗余存储 (RA-GRS) 或取访问异地区域冗余存储 (RA-GZRS) 帐户不支持加密范围。
+有关使用加密范围的详细信息，请参阅[创建和管理加密范围](encryption-scope-manage.md)。
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
-## <a name="create-a-container-or-blob-with-an-encryption-scope"></a>创建具有加密范围的容器或 Blob
+## <a name="how-encryption-scopes-work"></a>加密范围的工作原理
 
-在加密范围下创建的 Blob 使用为该范围指定的密钥进行加密。 在创建单个 Blob 时，可以为该 Blob 指定加密范围，也可以在创建容器时指定默认的加密范围。 若在容器级别指定了默认加密范围，该容器中的所有 Blob 都将使用与该默认范围相关联的密钥进行加密。
+默认情况下，使用作用域为整个存储帐户的密钥对存储帐户进行加密。 定义加密范围时，需要指定一个可以将范围限定为容器或单个 blob 的密钥。 将加密范围应用于 blob 后，将使用该密钥对 blob 进行加密。 将加密范围应用于容器时，它将充当该容器中 blob 的默认范围，以便可以使用相同的密钥对上传到该容器的所有 blob 进行加密。 可以将容器配置为对容器中的所有 blob 强制实施默认加密范围，或者允许将单个 blob 上传到具有非默认加密范围的容器。
 
-在具有默认加密范围的容器中创建 Blob 时，如果该容器配置为允许替代默认加密范围，则可以指定用于替代默认加密范围的加密范围。 若要防止替代默认加密范围，请将容器配置为拒绝单个 Blob 的替代。
+只要未禁用加密范围，针对使用加密范围创建的 blob 的读取操作将以透明方式执行。
 
-只要未禁用加密范围，对属于该加密范围的 Blob 执行读取操作以透明方式执行。
+### <a name="key-management"></a>密钥管理
 
-## <a name="disable-an-encryption-scope"></a>禁用加密范围
+定义加密范围时，可以指定是使用 Microsoft 管理的密钥还是使用存储在 Azure Key Vault 中的客户管理的密钥来保护该范围。 同一存储帐户上的不同加密范围可以使用 Microsoft 管理的密钥或客户管理的密钥。 你还可以随时将用于保护加密范围的密钥类型从客户管理的密钥切换到 Microsoft 管理的密钥，反之亦然。 若要详细了解客户管理的密钥，请参阅[用于 Azure 存储加密的客户管理的密钥](../common/customer-managed-keys-overview.md)。 有关 Microsoft 管理的密钥的详细信息，请参阅[关于加密密钥管理](../common/storage-service-encryption.md#about-encryption-key-management)。
+
+如果使用客户管理的密钥定义加密范围，则可以选择自动或手动更新密钥版本。 如果选择自动更新密钥版本，Azure 存储会每天检查密钥保管库或托管 HSM 以查找客户管理的密钥的新版本，并将密钥自动更新到最新版本。 若要详细了解如何更新客户管理的密钥的密钥版本，请参阅[更新密钥版本](../common/customer-managed-keys-overview.md#update-the-key-version)。
+
+Azure Policy 提供了一个内置策略，要求加密范围使用客户管理的密钥。 有关详细信息，请参阅 [Azure Policy 内置策略定义](../../governance/policy/samples/built-in-policies.md#storage)中的“存储”部分。
+
+一个存储帐户最多可以有 10,000 个加密范围由其密钥版本自动更新的客户管理密钥进行保护。 如果你的存储帐户已经有 10,000 个加密范围受自动更新的客户管理密钥的保护，则对于受客户管理密钥保护的其他加密范围，必须手动更新其密钥版本。  
+
+### <a name="infrastructure-encryption"></a>基础结构加密
+
+Azure 存储中的基础结构加密支持对数据进行双重加密。 启用基础结构加密之后，将使用两种不同的加密算法和两个不同的密钥对数据进行两次加密（一次在服务级别进行，一次在基础架构级别进行）。
+
+加密范围以及存储帐户级别支持基础结构加密。 如果为帐户启用了基础架构加密，则在该帐户上创建的任何加密范围都会自动使用基础结构加密。 如果未在帐户级别启用基础结构加密，则可以选择在创建加密范围时为该范围启用它。 创建范围后，无法更改加密范围的基础结构加密设置。
+
+有关基础结构加密的详细信息，请参阅[启用基础结构加密，对数据进行双重加密](../common/infrastructure-encryption-enable.md)。
+
+### <a name="encryption-scopes-for-containers-and-blobs"></a>容器和 blob 的加密范围
+
+创建容器时，可以为随后上传到该容器的 blob 指定默认加密范围。 指定容器的默认加密范围时，可以决定如何强制实施默认加密范围：
+
+- 你可以要求上传到容器的所有 blob 都使用默认的加密范围。 在这种情况下，容器中的每个 blob 都用相同的密钥进行加密。
+- 你可以允许客户端替代容器的默认加密范围，以便可以使用默认范围以外的加密范围上传 blob。 在这种情况下，可以用不同的密钥加密容器中的 blob。
+
+下表汇总了 blob 上传操作的行为，具体取决于为容器配置默认加密范围的方式：
+
+| 容器上定义的加密范围为… | 使用默认加密范围上传 blob… | 使用默认范围以外的加密范围上传 blob… |
+|--|--|--|
+| 允许进行替代的默认加密范围 | 成功 | 成功 |
+| 禁止替代的默认加密范围 | 成功 | 失败 |
+
+必须在创建容器时为容器指定默认加密范围。
+
+如果没有为容器指定默认加密范围，则可以使用为存储帐户定义的任何加密范围上传 blob。 必须在上传 blob 时指定加密范围。
+
+## <a name="disabling-an-encryption-scope"></a>禁用加密范围
 
 禁用加密范围时，使用该加密范围进行的任何后续读取或写入操作都将失败，并显示 HTTP 错误代码 403（已禁止）。 如果重新启用加密范围，读取和写入操作将再次正常进行。
 
 禁用加密范围后，将不再为此付费。 禁用不需要的任何加密范围以避免不必要的费用。
 
-如果你的加密范围受客户管理的密钥保护，则还可以删除密钥保管库中的关联密钥来禁用加密范围。 请记住，客户管理的密钥受到密钥保管库中的软删除和清除保护功能的保护，删除的密钥受到为这些属性定义的行为的约束。 有关详细信息，请参阅 Azure Key Vault 文档中的以下主题之一：
+如果你的加密范围受客户管理的密钥保护，而你删除了密钥保管库中的密钥，将无法访问数据。 请确保同时禁用加密范围，以避免为其付费。
+
+请记住，客户管理的密钥受到密钥保管库中的软删除和清除保护功能的保护，删除的密钥受到为这些属性定义的行为的约束。 有关详细信息，请参阅 Azure Key Vault 文档中的以下主题之一：
 
 - [如何在 PowerShell 中使用软删除](../../key-vault/general/key-vault-recovery.md)
 - [如何在 CLI 中使用软删除](../../key-vault/general/key-vault-recovery.md)
 
-> [!NOTE]
+> [!IMPORTANT]
 > 不能删除加密范围。
+
+
 
 ## <a name="next-steps"></a>后续步骤
 
 - [静态数据的 Azure 存储加密](../common/storage-service-encryption.md)
-- [创建和管理加密范围（预览）](encryption-scope-manage.md)
+- [创建和管理加密范围](encryption-scope-manage.md)
 - [用于 Azure 存储加密的客户管理的密钥](../common/customer-managed-keys-overview.md)
 - [什么是 Azure 密钥保管库？](../../key-vault/general/overview.md)

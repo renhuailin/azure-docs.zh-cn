@@ -5,17 +5,17 @@ description: 可以使用自己的加密密钥来保护存储帐户中的数据�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/30/2021
+ms.date: 06/01/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 07f8faf503bdea6be8263afa6240594956b61391
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: cd2a265c5d4c339fa6e50338949cbf643314a3ee
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059439"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371315"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>客户管理的密钥（用于 Azure 存储加密）
 
@@ -45,8 +45,18 @@ ms.locfileid: "106059439"
 1. Azure Key Vault 管理员向与存储帐户关联的托管标识授予对加密密钥的权限。
 2. Azure 存储管理员使用存储帐户的客户管理密钥配置加密。
 3. Azure 存储使用与存储帐户关联的托管标识，对通过 Azure Active Directory 访问 Azure Key Vault 的活动进行身份验证。
-4. Azure 存储使用 Azure Key Vault 中的客户密钥包装帐户加密密钥。
+4. Azure 存储使用 Azure Key Vault 中的客户管理的密钥包装帐户加密密钥。
 5. 对于读/写操作，Azure 存储将向 Azure Key Vault 发送解包帐户加密密钥的请求，以执行加密和解密操作。
+
+与存储帐户关联的托管标识必须至少具有以下权限才能访问 Azure Key Vault 中的客户管理的密钥：
+
+- wrapkey
+- unwrapkey
+- *get*  
+
+有关密钥权限的详细信息，请参阅[密钥类型、算法和操作](../../key-vault/keys/about-keys-details.md#key-access-control)。
+
+Azure Policy 提供了内置策略，要求存储帐户对 Blob 存储和 Azure 文件存储工作负载使用客户管理的密钥。 有关详细信息，请参阅 [Azure Policy 内置策略定义](../../governance/policy/samples/built-in-policies.md#storage)中的“存储”部分。
 
 ## <a name="customer-managed-keys-for-queues-and-tables"></a>用于队列和表的客户管理的密钥
 

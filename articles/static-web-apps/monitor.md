@@ -1,22 +1,25 @@
 ---
-title: 监视 Azure Static Web Apps 预览
-description: 在 Azure Static Web Apps 预览中监视请求、失败和跟踪信息
+title: 监视 Azure Static Web Apps
+description: 在 Azure Static Web Apps 中监视请求、失败和跟踪信息
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 4/23/2021
 ms.author: cshoe
-ms.openlocfilehash: 474b612d835ab415f9607f737ef219acc2e99152
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 8c97c3c008dda4269b282e89af7badda889588fe
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108077644"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110497566"
 ---
 # <a name="monitor-azure-static-web-apps"></a>创建 Azure Static Web Apps
 
 启用 [Application Insights](../azure-monitor/app/app-insights-overview.md)，以监视 API 请求、失败和跟踪信息。
+
+> [!IMPORTANT]
+> Application Insights 具有来自 Azure Static Web Apps 的[独立定价模型](https://azure.microsoft.com/pricing/details/monitor)。
 
 > [!NOTE]
 > 将 Application Insights 与 Azure Static Web Apps 配合使用时，需要使用包含 [API](./add-api.md) 的应用程序。
@@ -71,6 +74,27 @@ ms.locfileid: "108077644"
 1. 选择“运行”按钮。
 
 :::image type="content" source="media/monitoring/azure-static-web-apps-application-insights-traces.png" alt-text="查看 Application Insights 跟踪":::
+
+## <a name="limit-logging"></a>限制日志记录
+
+在某些情况下，你可能想要通过对 Azure Functions 应用的 host.json 文件进行以下更改来限制日志记录，同时仍捕获有关错误和警告的详细信息。
+
+```json
+{
+    "version": "2.0",
+    "logging": {
+        "applicationInsights": {
+            "samplingSettings": {
+              "isEnabled": true
+            },
+            "enableDependencyTracking": false
+        },
+        "logLevels": {
+            "default": "Warning"
+        }
+    }
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 

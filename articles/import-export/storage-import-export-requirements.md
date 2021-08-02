@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 04/28/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 0bfc09a372584a25c23060cef33d1f698e6d5ff3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e766b2aba1aef47b16b4351c7852bb2f457475fa
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101712600"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887593"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure 导入/导出系统要求
 
@@ -63,7 +63,7 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 |作业  |存储服务 |支持  |不支持  |
 |---------|---------|---------|---------|
 |导入     |  Azure Blob 存储 <br><br> Azure 文件存储       | 支持块 Blob 和页 Blob <br><br> 支持文件          |
-|导出     |   Azure Blob 存储       | 支持块 Blob、页 Blob 和追加 Blob         | 不支持 Azure 文件
+|导出     |   Azure Blob 存储       | 支持块 Blob、页 Blob 和追加 Blob         | 不支持 Azure 文件<br>不支持从存档层导出|
 
 
 ## <a name="supported-hardware"></a>支持的硬件

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/05/2021
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 6899edc25a55beff45d2058975008f7fe2c2bb9d
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: ef51fc0c67c938a2d0933b6032072acc24e42dd3
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107886708"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110494622"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>Azure Spring Cloud 的结构化应用程序日志
 
@@ -20,7 +20,10 @@ ms.locfileid: "107886708"
 
 ## <a name="log-schema-requirements"></a>日志架构要求
 
-若要改进日志查询体验，应用程序日志必须采用 JSON 格式，并遵循某个架构。 Azure Spring Cloud 使用此架构分析你的应用程序并流式传输到 Log Analytics。 
+若要改进日志查询体验，应用程序日志必须采用 JSON 格式，并遵循某个架构。 Azure Spring Cloud 使用此架构分析你的应用程序并流式传输到 Log Analytics。
+
+> [!NOTE]
+> 启用 JSON 日志格式会导致难以从控制台读取日志流式处理输出。 若要获取人类可读的输出，请将 `--format-json` 参数追加到 `az spring-cloud app logs` CLI 命令。 请参阅[设置 JSON 结构化日志的格式](./how-to-log-streaming.md#format-json-structured-logs)。
 
 **JSON 架构要求：**
 
@@ -47,6 +50,12 @@ ms.locfileid: "107886708"
  ```
 {"timestamp":"2021-01-08T09:23:51.280Z","logger":"com.example.demo.HelloController","level":"ERROR","thread":"http-nio-1456-exec-4","mdc":{"traceId":"c84f8a897041f634","spanId":"c84f8a897041f634"},"stackTrace":"java.lang.RuntimeException: get an exception\r\n\tat com.example.demo.HelloController.throwEx(HelloController.java:54)\r\n\","message":"Got an exception","exceptionClass":"RuntimeException"}
 ```
+
+## <a name="limitations"></a>限制
+
+每行 JSON 日志最多可以有 16K 个字节。 如果单个日志记录的 JSON 输出超过此限制，它将被强制分成多行，并将每个原始行都收集到 `Log` 列中，而不会在结构上进行分析。
+
+通常，这种情况发生在使用深度 stacktrace 的异常日志记录上（特别是已启用 [AppInsights 进程内代理](./how-to-application-insights.md)时）。  将限制设置应用到 stacktrace 输出（请参阅下面的配置示例）以确保正确分析最终输出。
 
 ## <a name="generate-schema-compliant-json-log"></a>生成遵循架构的 JSON 日志  
 
@@ -94,6 +103,12 @@ ms.locfileid: "107886708"
                     </nestedField>
                     <stackTrace>
                         <fieldName>stackTrace</fieldName>
+                        <!-- maxLength - limit the length of the stack trace -->
+                        <throwableConverter class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
+                            <maxDepthPerThrowable>200</maxDepthPerThrowable>
+                            <maxLength>14000</maxLength>
+                            <rootCauseFirst>true</rootCauseFirst>
+                        </throwableConverter>
                     </stackTrace>
                     <message />
                     <throwableClassName>
@@ -207,7 +222,8 @@ ms.locfileid: "107886708"
     <configuration>
         <appenders>
             <console name="Console" target="SYSTEM_OUT">
-                <JsonTemplateLayout eventTemplateUri="classpath:jsonTemplate.json" />
+                <!-- maxStringLength - limit the length of the stack trace -->
+                <JsonTemplateLayout eventTemplateUri="classpath:jsonTemplate.json" maxStringLength="14000" />
             </console>
         </appenders>
         <loggers>

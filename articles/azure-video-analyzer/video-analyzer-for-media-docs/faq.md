@@ -6,14 +6,14 @@ services: media-services
 author: Juliako
 manager: femila
 ms.topic: article
-ms.date: 05/06/2021
+ms.date: 05/25/2021
 ms.author: juliako
-ms.openlocfilehash: 620ebb81462f807b46c12aeee596e8873c99a1e4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1c4b96bf7874c5ade93601f7ff40238ef04cb7ee
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384954"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966670"
 ---
 # <a name="video-analyzer-for-media-frequently-asked-questions"></a>视频分析器媒体版常见问题解答
 
@@ -102,6 +102,12 @@ ms.locfileid: "110384954"
 
 如果有多个音频流，则视频分析器媒体版会使用遇到的第一个流并且仅处理此流。 在视频分析器媒体版所处理的任何音频流中，它会使用不同的通道（如果存在），并将这些通道一起像单声道那样处理。 对于流/通道操作，你可以先对文件使用 ffmpeg 命令，再对它编制索引。
 
+### <a name="can-a-storage-account-connected-to-the-media-services-account-be-behind-a-firewall"></a>连接到媒体服务帐户的存储帐户是否可以位于防火墙之后？
+
+媒体帐户的付费视频分析器使用连接到存储帐户的指定媒体服务帐户。 目前，若要使用防火墙后面的已连接存储帐户，需要联系视频分析人员以获取媒体支持，他们会提供准确的说明。 
+
+若要在 Azure 门户上打开新的支持请求，请导航到[“支持请求”](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+
 ### <a name="what-is-the-sla-for-video-analyzer-for-media"></a>视频分析器媒体版的 SLA 是什么？
 
 Azure 媒体服务的 SLA 涵盖了视频分析器媒体版，可在 [SLA](https://azure.microsoft.com/support/legal/sla/media-services/v1_2/) 页上找到。 该 SLA 仅适用于视频分析器媒体版付费帐户，而不适用于免费试用版。
@@ -134,9 +140,9 @@ Azure 媒体服务的 SLA 涵盖了视频分析器媒体版，可在 [SLA](https
     
 ### <a name="is-the-content-indexed-by-video-indexer-kept-within-the-azure-region-where-i-am-using-video-indexer"></a>由视频索引器编入索引的内容是否保留在我使用视频索引器的 Azure 区域内？
 
-是的，除非在 Azure 订阅中手动配置使用多个 Azure 区域，否则内容及其见解将保留在 Azure 区域（新加坡和巴西南部区域除外）。
+是的，除非在 Azure 订阅中手动配置使用多个 Azure 区域，否则系统会将内容及其见解保留在 Azure 区域（新加坡和巴西南部区域除外）。
 
-由于 BCDR 原因，区域中的客户数据会复制到[配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs)。
+由于 BCDR 原因，区域中的客户数据会复制到[配对区域](../../best-practices-availability-paired-regions.md#azure-regional-pairs)。
 
 ### <a name="what-is-the-privacy-policy-for-video-analyzer-for-media"></a>视频分析器媒体版的隐私策略是什么？
 

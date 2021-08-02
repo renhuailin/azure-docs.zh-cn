@@ -2,14 +2,14 @@
 title: 密钥保管库机密与模板
 description: 说明在部署期间如何以参数形式从密钥保管库传递机密。
 ms.topic: conceptual
-ms.date: 04/23/2021
+ms.date: 05/17/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f91c45792843ab62361bf47628a45529758b4029
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 1cf3b1f3433b47d029876e9676b85c5de776d455
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754184"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110795696"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署过程中使用 Azure Key Vault 传递安全参数值
 
@@ -67,7 +67,7 @@ $secret = Set-AzKeyVaultSecret -VaultName ExampleVault -Name 'ExamplePassword' -
 
 ---
 
-作为密钥保管库的所有者，你可以自动获得创建机密的权限。 如果使用机密的用户不是密钥保管库的所有者，请使用以下命令授予访问权限：
+作为密钥保管库的所有者，你可以自动获得创建机密的权限。 如果需要让其他用户创建机密，请使用：
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -91,6 +91,8 @@ Set-AzKeyVaultAccessPolicy `
 
 ---
 
+如果用户正在部署检索机密的模板，则不需要访问策略。 仅当用户需要直接使用机密时，才将该用户添加到访问策略。 下一部分定义了部署权限。
+
 若要详细了解如何创建密钥保管库和添加机密，请参阅：
 
 - [使用 CLI 设置和检索机密](../../key-vault/secrets/quick-create-cli.md)
@@ -99,11 +101,13 @@ Set-AzKeyVaultAccessPolicy `
 - [使用 .NET 设置和检索机密](../../key-vault/secrets/quick-create-net.md)
 - [使用 Node.js 设置和检索机密](../../key-vault/secrets/quick-create-node.md)
 
-## <a name="grant-access-to-the-secrets"></a>授予对机密的访问权限
+## <a name="grant-deployment-access-to-the-secrets"></a>授予对机密的部署权限
 
-部署模板的用户必须在资源组和密钥保管库范围内具有 `Microsoft.KeyVault/vaults/deploy/action` 权限。 [所有者](../../role-based-access-control/built-in-roles.md#owner)和[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色均授予该访问权限。 如果是你创建了密钥保管库，那么你就是所有者且具有相关权限。
+部署模板的用户必须在资源组和密钥保管库范围内具有 `Microsoft.KeyVault/vaults/deploy/action` 权限。 通过检查此访问权限，Azure 资源管理器通过传入密钥保管库的资源 ID 来防止未经批准的用户访问机密。 你可以向用户授予部署权限，而无需授予对机密的写入权限。
 
-以下过程展示了如何创建具有最小权限的角色，以及如何分配用户。
+[所有者](../../role-based-access-control/built-in-roles.md#owner)和[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色均授予该访问权限。 如果是你创建了密钥保管库，那么你就是所有者且具有相关权限。
+
+对于其他用户，请授予 `Microsoft.KeyVault/vaults/deploy/action` 权限。 以下过程展示了如何创建具有最小权限的角色，以及如何将其分配给用户。
 
 1. 创建自定义角色定义 JSON 文件：
 
@@ -164,8 +168,6 @@ Set-AzKeyVaultAccessPolicy `
 
 以下模板部署包含管理员密码的 SQL Server。 密码参数设置为安全字符串。 但是，此模板未指定该值的来源。
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -199,29 +201,6 @@ Set-AzKeyVaultAccessPolicy `
   }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param adminLogin string
-
-@secure()
-param adminPassword string
-
-param sqlServerName string
-
-resource sqlServer 'Microsoft.Sql/servers@2020-11-01-preview' = {
-  name: sqlServerName
-  location: resourceGroup().location
-  properties: {
-    administratorLogin: adminLogin
-    administratorLoginPassword: adminPassword
-    version: '12.0'
-  }
-}
-```
-
----
 
 现在，为上述模板创建参数文件。 在参数文件中，指定与模板中的参数名称匹配的参数。 对于参数值，请从 key vault 中引用机密。 可以通过传递密钥保管库的资源标识符和机密的名称来引用机密：
 
@@ -400,9 +379,6 @@ New-AzResourceGroupDeployment `
   }
 }
 ```
-
-> [!NOTE]
-> 从 Bicep 版本 0.3.255 开始，由于不支持 `reference` 关键字，检索密钥保管库机密需要参数文件。 添加支持的工作正在进行中，有关详细信息，请参阅 [GitHub 问题 1028](https://github.com/Azure/bicep/issues/1028)。
 
 ## <a name="next-steps"></a>后续步骤
 

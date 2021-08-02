@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: yexu
-ms.openlocfilehash: f979ca04a276f52e5f76a8e4327f9ff8ef390fe6
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: cbd2ef972753abfc9f18fed4a15c6ed0357daae0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143694"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110095655"
 ---
 #  <a name="session-log-in-copy-activity"></a>复制活动中的会话日志
 
@@ -20,6 +20,11 @@ ms.locfileid: "108143694"
 你可以在复制活动中记录复制的文件名，这有助于进一步确保数据不仅能成功地从源复制到目标存储，还可以在源和目标存储之间保持一致，方法是在复制活动会话日志中查看复制的文件。  
 
 如果在复制活动中启用容错设置以跳过出错的数据，则还可以记录跳过的文件和跳过的行。  可以在[复制活动中的容错](copy-activity-fault-tolerance.md)中获取更多详细信息。 
+
+如果你有机会通过启用会话日志来获取由 ADF 复制活动复制的所有文件名，该功能在以下情况下将会非常有用：
+-   在使用 ADF 复制活动将文件从一个存储复制到另一个存储后，你会看到目标存储中显示某些不应显示的文件。 可以扫描复制活动会话日志，以查看哪项复制活动实际复制了那些文件以及何时复制那些文件。 这样，你就可以轻松找到根本原因并在 ADF 中修复配置。   
+-   在使用 ADF 复制活动将文件从一个存储复制到另一个存储后，你认为复制到目标的文件与源存储中的文件不同。 可以扫描复制活动会话日志，以获取复制作业的时间戳，以及在 ADF 复制活动从源存储中读取文件时的文件元数据。  这样，你就可以知道那些文件在由 ADF 复制后是否已在源存储上由其他应用程序进行了更新。  
+
 
 ## <a name="configuration"></a>Configuration
 以下示例提供了一个 JSON 定义，用于在复制活动中启用会话日志： 

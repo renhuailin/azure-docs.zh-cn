@@ -2,13 +2,14 @@
 title: 模板函数 - 资源
 description: 介绍可在 Azure 资源管理器模板（ARM 模板）中用于检索资源相关值的函数。
 ms.topic: conceptual
-ms.date: 02/10/2021
-ms.openlocfilehash: da85308e7d214f198b29b40bc380a4d33947c865
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/13/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 92fd160a8ce08c8fc9969e76b74a05a87a644109
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100364556"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111959548"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 模板的资源函数
 
@@ -17,7 +18,6 @@ ms.locfileid: "100364556"
 * [extensionResourceId](#extensionresourceid)
 * [list*](#list)
 * [pickZones](#pickzones)
-* [providers](#providers)
 * [reference](#reference)
 * [resourceGroup](#resourcegroup)
 * [resourceId](#resourceid)
@@ -27,17 +27,15 @@ ms.locfileid: "100364556"
 
 若要从参数、变量或当前部署获取值，请参阅 [Deployment value functions](template-functions-deployment.md)（部署值函数）。
 
-[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
-
 ## <a name="extensionresourceid"></a>extensionResourceId
 
 `extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)`
 
 返回某个[扩展资源](../management/extension-resource-types.md)的资源 ID，该资源属于适用于其他资源的资源类型，是对其功能的补充。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | ResourceId |是 |字符串 |扩展资源应用到的资源的资源 ID。 |
 | resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
@@ -84,8 +82,6 @@ ms.locfileid: "100364556"
 
 以下示例返回资源组锁的资源 ID。
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -106,65 +102,9 @@ ms.locfileid: "100364556"
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param lockName string
-
-output lockResourceId string = extensionResourceId(resourceGroup().Id, 'Microsoft.Authorization/locks', lockName)
-```
-
----
-
 部署到管理组的自定义策略定义是作为扩展资源实现的。 若要创建和分配策略，请将以下模板部署到管理组。
 
-# <a name="json"></a>[JSON](#tab/json)
-
 :::code language="json" source="~/quickstart-templates/managementgroup-deployments/mg-policy/azuredeploy.json":::
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param targetMG string
-param allowedLocations array = [
-  'australiaeast'
-  'australiasoutheast'
-  'australiacentral'
-]
-
-var mgScope = tenantResourceId('Microsoft.Management/managementGroups', targetMG)
-var policyDefinition = 'LocationRestriction'
-
-resource myDefinition 'Microsoft.Authorization/policyDefinitions@2019-09-01' = {
-  name: policyDefinition
-  properties: {
-    policyType: 'Custom'
-    mode: 'All'
-    parameters: {}
-    policyRule: {
-      'if': {
-        'not': {
-          'field': 'location'
-          'in': allowedLocations
-        }
-      }
-      'then': {
-        'effect': 'deny'
-      }
-    }
-  }
-}
-
-resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
-  name: 'location-lock'
-  properties: {
-    scope: mgScope
-    policyDefinitionId: extensionResourceId(mgScope, 'Microsoft.Authorization/policyDefinitions', policyDefinition)
-  }
-}
-```
-
----
 
 内置策略定义是租户级别的资源。 有关部署内置策略定义的示例，请参阅 [tenantResourceId](#tenantresourceid)。
 
@@ -177,12 +117,12 @@ resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
 
 此函数的语法因列表操作的名称而异。 每个实现都为支持列表操作的资源类型返回值。 操作名称必须以 `list` 开头，并且可以有后缀。 以下是几个常见示例：`list`、`listKeys`、`listKeyValue` 和 `listSecrets`。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |字符串 |资源的唯一标识符。 |
-| apiVersion |是 |字符串 |资源运行时状态的 API 版本。 通常采用 **yyyy-mm-dd** 格式。 |
+| apiVersion |是 |字符串 |资源运行时状态的 API 版本。 通常情况下，格式为 **yyyy-mm-dd**。 |
 | functionValues |否 |object | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 |
 
 ### <a name="valid-uses"></a>有效使用
@@ -233,10 +173,10 @@ resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
 | Microsoft.DataFactory/datafactories/gateways | listauthkeys |
 | Microsoft.DataFactory/factories/integrationruntimes | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
 | Microsoft.DataLakeAnalytics/accounts/storageAccounts/Containers | [listSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
-| Microsoft.DataShare/accounts/shares | [listSynchronizations](/rest/api/datashare/shares/listsynchronizations) |
-| Microsoft.DataShare/accounts/shareSubscriptions | [listSourceShareSynchronizationSettings](/rest/api/datashare/sharesubscriptions/listsourcesharesynchronizationsettings) |
-| Microsoft.DataShare/accounts/shareSubscriptions | [listSynchronizationDetails](/rest/api/datashare/sharesubscriptions/listsynchronizationdetails) |
-| Microsoft.DataShare/accounts/shareSubscriptions | [listSynchronizations](/rest/api/datashare/sharesubscriptions/listsynchronizations) |
+| Microsoft.DataShare/accounts/shares | [listSynchronizations](/rest/api/datashare/2020-09-01/shares/listsynchronizations) |
+| Microsoft.DataShare/accounts/shareSubscriptions | [listSourceShareSynchronizationSettings](/rest/api/datashare/2020-09-01/sharesubscriptions/listsourcesharesynchronizationsettings) |
+| Microsoft.DataShare/accounts/shareSubscriptions | [listSynchronizationDetails](/rest/api/datashare/2020-09-01/sharesubscriptions/listsynchronizationdetails) |
+| Microsoft.DataShare/accounts/shareSubscriptions | [listSynchronizations](/rest/api/datashare/2020-09-01/sharesubscriptions/listsynchronizations) |
 | Microsoft.Devices/iotHubs | [listkeys](/rest/api/iothub/iothubresource/listkeys) |
 | Microsoft.Devices/iotHubs/iotHubKeys | [listkeys](/rest/api/iothub/iothubresource/getkeysforkeyname) |
 | Microsoft.Devices/provisioningServices/keys | [listkeys](/rest/api/iot-dps/iotdpsresource/listkeysforkeyname) |
@@ -245,9 +185,9 @@ resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
 | Microsoft.DevTestLab/labs/schedules | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
 | Microsoft.DevTestLab/labs/users/serviceFabrics | [ListApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
 | Microsoft.DevTestLab/labs/virtualMachines | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
-| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listconnectionstrings) |
-| Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listkeys) |
-| Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces | [listConnectionInfo](/rest/api/cosmos-db-resource-provider/2020-06-01/notebookworkspaces/listconnectioninfo) |
+| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/databaseaccounts/listconnectionstrings) |
+| Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/2021-03-01-preview/databaseaccounts/listkeys) |
+| Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces | [listConnectionInfo](/rest/api/cosmos-db-resource-provider/2021-03-15/notebookworkspaces/listconnectioninfo) |
 | Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
 | Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
@@ -287,7 +227,7 @@ resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
 | Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules | [listkeys](/rest/api/notificationhubs/notificationhubs/listkeys) |
 | Microsoft.OperationalInsights/workspaces | [list](/rest/api/loganalytics/workspaces/list) |
 | Microsoft.OperationalInsights/workspaces | listKeys |
-| Microsoft.PolicyInsights/remediations | [listDeployments](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
+| Microsoft.PolicyInsights/remediations | [listDeployments](/rest/api/policy/remediations/listdeploymentsatresourcegroup) |
 | Microsoft.RedHatOpenShift/openShiftClusters | [listCredentials](/rest/api/openshift/openshiftclusters/listcredentials) |
 | Microsoft.Relay/namespaces/authorizationRules | [listkeys](/rest/api/relay/namespaces/listkeys) |
 | Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | listkeys |
@@ -313,17 +253,17 @@ resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
 | Microsoft.Web/customApis | listWsdlInterfaces |
 | microsoft.web/locations | listwsdlinterfaces |
 | microsoft.web/apimanagementaccounts/apis/connections | listconnectionkeys |
-| microsoft.web/apimanagementaccounts/apis/connections | listsecrets |
+| microsoft.web/apimanagementaccounts/apis/connections | `listSecrets` |
 | microsoft.web/sites/backups | [list](/rest/api/appservice/webapps/listbackups) |
 | Microsoft.Web/sites/config | [list](/rest/api/appservice/webapps/listconfigurations) |
 | microsoft.web/sites/functions | [listkeys](/rest/api/appservice/webapps/listfunctionkeys)
-| microsoft.web/sites/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
+| microsoft.web/sites/functions | [listSecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
 | microsoft.web/sites/hybridconnectionnamespaces/relays | [listkeys](/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
 | microsoft.web/sites | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
-| microsoft.web/sites/slots/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
+| microsoft.web/sites/slots/functions | [listSecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
 | microsoft.web/sites/slots/backups | [list](/rest/api/appservice/webapps/listbackupsslot) |
 | Microsoft.Web/sites/slots/config | [list](/rest/api/appservice/webapps/listconfigurationsslot) |
-| microsoft.web/sites/slots/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
+| microsoft.web/sites/slots/functions | [listSecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
 
 若要确定哪些资源类型具有列表操作，请使用以下选项：
 
@@ -367,13 +307,11 @@ resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
 
 使用资源名称或 [resourceId 函数](#resourceid)来指定资源。 在部署被引用资源的同一模板中使用列表函数时，请使用资源名称。
 
-如果在有条件部署的资源中使用 **list** 函数，则会对该函数进行评估，即使资源尚未部署。 如果 list 函数引用的资源不存在，系统会显示错误。 使用 **if** 函数确保仅在部署资源时才评估函数。 请参阅 [if 函数](template-functions-logical.md#if)以获取使用 if 和 list 以及有条件部署的资源的示例模板。
+如果在有条件部署的资源中使用 `list` 函数，则即使未部署该资源，也会对该函数求值。 如果 `list` 函数引用某个不存在的资源，则会出现错误。 使用 `if` 函数来确保仅在部署资源时才对该函数求值。 请参阅 [if 函数](template-functions-logical.md#if)以获取使用 if 和 list 以及有条件部署的资源的示例模板。
 
 ### <a name="list-example"></a>List 示例
 
 以下示例在为[部署脚本](deployment-script-template.md)设置值时使用了 listKeys。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "storageAccountSettings": {
@@ -382,21 +320,7 @@ resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-storageAccountSettings: {
-  storageAccountName: storageAccountName
-  storageAccountKey: listKeys(resourceId('Microsoft.Storage/storageAccounts', storageAccountName), '2019-06-01').keys[0].value
-}
-
-```
-
----
-
 下一个示例演示采用参数的列表函数。 在本例中，函数为 listAccountSas。 请为到期时间传递一个对象。 到期时间必须是将来的时间。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "parameters": {
@@ -414,32 +338,15 @@ storageAccountSettings: {
 "sasToken": "[listAccountSas(parameters('storagename'), '2018-02-01', parameters('accountSasProperties')).accountSasToken]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param accountSasProperties object {
-  default: {
-    signedServices: 'b'
-    signedPermission: 'r'
-    signedExpiry: '2020-08-20T11:00:00Z'
-    signedResourceTypes: 's'
-  }
-}
-...
-sasToken: listAccountSas(storagename, '2018-02-01', accountSasProperties).accountSasToken
-```
-
----
-
 ## <a name="pickzones"></a>pickZones
 
 `pickZones(providerNamespace, resourceType, location, [numberOfZones], [offset])`
 
 确定资源类型是否支持某一地区的区域。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace | 是 | 字符串 | 要检查是否有区域支持的资源类型的资源提供程序命名空间。 |
 | resourceType | 是 | 字符串 | 要检查是否有区域支持的资源类型。 |
@@ -478,8 +385,6 @@ sasToken: listAccountSas(storagename, '2018-02-01', accountSasProperties).accoun
 
 以下模板显示了使用 pickZones 函数的三个结果。
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -505,16 +410,6 @@ sasToken: listAccountSas(storagename, '2018-02-01', accountSasProperties).accoun
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output supported array = pickZones('Microsoft.Compute', 'virtualMachines', 'westus2')
-output notSupportedRegion array = pickZones('Microsoft.Compute', 'virtualMachines', 'northcentralus')
-output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2')
-```
-
----
-
 上述示例的输出返回三个数组。
 
 | 名称 | 类型 | 值 |
@@ -525,107 +420,10 @@ output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2'
 
 可以使用 pickZones 的响应来确定是为区域提供 null，还是将虚拟机分配给不同的区域。 下面的示例基于区域的可用性设置区域的值。
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 "zones": {
   "value": "[if(not(empty(pickZones('Microsoft.Compute', 'virtualMachines', 'westus2'))), string(add(mod(copyIndex(),3),1)), json('null'))]"
 },
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-> [!NOTE]
-> 循环和 copyIndex() 尚未实现。  请参阅[循环](https://github.com/Azure/bicep/blob/main/docs/spec/loops.md)。
-
----
-
-## <a name="providers"></a>providers
-
-`providers(providerNamespace, [resourceType])`
-
-返回有关资源提供程序及其支持的资源类型的信息。 如果未提供资源类型，则该函数将返回资源提供程序支持的所有类型。
-
-### <a name="parameters"></a>参数
-
-| 参数 | 必需 | 类型 | 说明 |
-|:--- |:--- |:--- |:--- |
-| providerNamespace |是 |字符串 |提供程序的命名空间 |
-| resourceType |否 |字符串 |指定的命名空间中的资源类型。 |
-
-### <a name="return-value"></a>返回值
-
-将使用以下格式返回支持的每个类型：
-
-```json
-{
-  "resourceType": "{name of resource type}",
-  "locations": [ all supported locations ],
-  "apiVersions": [ all supported API versions ]
-}
-```
-
-不保证返回值的数组排序。
-
-### <a name="providers-example"></a>Provider 示例
-
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json)演示如何使用 provider 函数：
-
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "providerNamespace": {
-      "type": "string"
-    },
-    "resourceType": {
-      "type": "string"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "providerOutput": {
-      "type": "object",
-      "value": "[providers(parameters('providerNamespace'), parameters('resourceType'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param providerNamespace string
-param resourceType string
-
-output providerOutput array = providers(providerNamespace, resourceType)
-```
-
----
-
-对于 Microsoft.Web 资源提供程序和站点资源类型，上面的示例返回以下格式的对象 ：
-
-```json
-{
-  "resourceType": "sites",
-  "locations": [
-    "South Central US",
-    "North Europe",
-    "West Europe",
-    "Southeast Asia",
-    ...
-  ],
-  "apiVersions": [
-    "2016-08-01",
-    "2016-03-01",
-    "2015-08-01-preview",
-    "2015-08-01",
-    ...
-  ]
-}
 ```
 
 ## <a name="reference"></a>reference
@@ -634,9 +432,9 @@ output providerOutput array = providers(providerNamespace, resourceType)
 
 返回表示资源的运行时状态的对象。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |字符串 |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 当引用以前部署的资源或者资源名称不明确时，请提供资源 ID。 |
 | apiVersion |否 |字符串 |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，则需要此参数。 通常情况下，格式为 **yyyy-mm-dd**。 如需查看适用于你的资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
@@ -650,9 +448,7 @@ output providerOutput array = providers(providerNamespace, resourceType)
 
 reference 函数检索以前部署的资源或在当前模板中部署的资源的运行时状态。 本文展示了这两种方案的示例。
 
-通常情况下，可以使用 reference 函数返回对象的特定值，例如 blob 终结点 URI 或完全限定的域名。
-
-# <a name="json"></a>[JSON](#tab/json)
+通常情况下，可以使用 `reference` 函数返回对象的特定值，例如 blob 终结点 URI 或完全限定的域名。
 
 ```json
 "outputs": {
@@ -667,18 +463,7 @@ reference 函数检索以前部署的资源或在当前模板中部署的资源�
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output BlobUri string = reference(resourceId('Microsoft.Storage/storageAccounts', storageAccountName)).primaryEndpoints.blob
-output FQDN string = reference(resourceId('Microsoft.Network/publicIPAddresses', ipAddressName)).dnsSettings.fqdn
-```
-
----
-
 需要不属于属性架构的资源值时，请使用 `'Full'`。 例如，若要设置密钥保管库访问策略，请获取虚拟机的标识属性。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -704,42 +489,15 @@ output FQDN string = reference(resourceId('Microsoft.Network/publicIPAddresses',
     ...
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-resource myVault 'Microsoft.KeyVault/vaults@2019-09-01' = {
-  name: 'vaultName'
-  properties: {
-    tenantId: subscription().tenantId
-    accessPolicies: [
-      {
-        'tenantId': reference(resourceId('Microsoft.Compute/virtualMachines', vmName), '2019-03-01', 'Full').identity.tenantId
-        'objectId': reference(resourceId('Microsoft.Compute/virtualMachines', vmName), '2019-03-01', 'Full').identity.principalId
-        'permissions': {
-          'keys': [
-            'all'
-          ]
-          'secrets': [
-            'all'
-          ]
-        }
-      }
-    ]
-  }
-}
-```
-
----
-
 ### <a name="valid-uses"></a>有效使用
 
 reference 函数只能用在资源定义的 properties 中以及模板或部署的 outputs 节中。 与[属性迭代](copy-properties.md)一起使用时，可以将 reference 函数用于 `input`，因为该表达式是分配给资源属性的。
 
 不能使用引用函数在复制循环中设置 `count` 属性的值。 可用于在循环中设置其他属性。 count 属性的引用会被阻止，因为必须在解析引用函数之前确定该属性。
 
-若要在嵌套模板的输出部分中使用 reference 函数或任何 list* 函数，必须将 ```expressionEvaluationOptions``` 设置为使用[内层作用域](linked-templates.md#expression-evaluation-scope-in-nested-templates)计算或使用链接的而不是嵌套的模板。
+若要在嵌套模板的输出部分中使用 `reference` 函数或任何 `list*` 函数，必须将 `expressionEvaluationOptions` 设置为使用[内层作用域](linked-templates.md#expression-evaluation-scope-in-nested-templates)计算或使用链接的而不是嵌套的模板。
 
-如果在有条件部署的资源中使用 **reference** 函数，则会对该函数进行评估，即使资源尚未部署。  如果 reference 函数引用的资源不存在，系统会显示错误。 使用 **if** 函数确保仅在部署资源时才评估函数。 请参阅 [if 函数](template-functions-logical.md#if)以获取使用 if 和 reference 以及有条件部署的资源的示例模板。
+如果在有条件部署的资源中使用 `reference` 函数，则会对该函数进行评估，即使资源尚未部署。  如果 `reference` 函数引用某个不存在的资源，则会出现错误。 使用 `if` 函数确保仅在部署资源时才评估函数。 请参阅 [if 函数](template-functions-logical.md#if)以获取使用 if 和 reference 以及有条件部署的资源的示例模板。
 
 ### <a name="implicit-dependency"></a>隐式依赖项
 
@@ -749,55 +507,25 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 
 若要引用在同一模板中部署的资源，请提供资源的名称。
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-value: reference(storageAccountName)
-```
-
----
-
 引用没有部署在同一模板中的资源时，请提供资源 ID 和 `apiVersion`。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-value: reference(resourceId(storageResourceGroup, 'Microsoft.Storage/storageAccounts', storageAccountName), '2018-07-01')]"
-```
-
----
-
 若要避免所引用的资源不明确，可以提供完全限定的资源标识符。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')))]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-value: reference(resourceId('Microsoft.Network/publicIPAddresses', ipAddressName))
-```
-
----
-
 向资源构造完全限定的引用时，类型和名称的分段组合顺序并不是这两者的简单串联。 而是，在命名空间后面，使用 *类型/名称* 对的序列（从最不具体到最具体）：
 
-**{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]**
+`{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]`
 
 例如：
 
@@ -815,41 +543,19 @@ value: reference(resourceId('Microsoft.Network/publicIPAddresses', ipAddressName
 
 例如，若要获取应用于虚拟机的托管标识的主体 ID，请使用：
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 "[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')),'2019-12-01', 'Full').identity.principalId]",
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-reference(resourceId('Microsoft.Compute/virtualMachines', vmName),'2019-12-01', 'Full').identity.principalId
-```
-
----
-
 或者，若要获取应用于虚拟机规模集的托管标识的租户 ID，请使用：
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), 2019-12-01, 'Full').Identity.tenantId]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  vmNodeType0Name), 2019-12-01, 'Full').Identity.tenantId
-```
-
----
-
 ### <a name="reference-example"></a>Reference 示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json)部署一个资源并引用该资源。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -887,28 +593,6 @@ reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  vmNodeType0Na
     }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param storageAccountName string
-
-resource myStorage 'Microsoft.Storage/storageAccounts@2016-12-01' = {
-  name: storageAccountName
-  location: resourceGroup().location
-  sku: {
-    name: 'Standard_LRS'
-  }
-  kind: 'Storage'
-  tags: {}
-  properties: {}
-}
-
-output referenceOutput object = reference(storageAccountName)
-output fullReferenceOutput object = reference(storageAccountName, '2016-12-01', 'Full')
-```
-
----
 
 上面的示例返回两个对象。 属性对象采用以下格式：
 
@@ -967,8 +651,6 @@ output fullReferenceOutput object = reference(storageAccountName, '2016-12-01', 
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json)引用的存储帐户未在此模板中部署。 同一订阅内已存在该存储帐户。
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -990,17 +672,6 @@ output fullReferenceOutput object = reference(storageAccountName, '2016-12-01', 
   }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param storageResourceGroup string
-param storageAccountName string
-
-output ExistingStorage object = reference(resourceId(storageAccountName), 'Microsoft.Storage/storageAccounts', storageAccountName), '2018-07-01')
-```
-
----
 
 ## <a name="resourcegroup"></a>resourceGroup
 
@@ -1035,8 +706,6 @@ output ExistingStorage object = reference(resourceId(storageAccountName), 'Micro
 
 resourceGroup 函数的一个常见用途是在与资源组相同的位置中创建资源。 以下示例使用资源组位置作为默认参数值。
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 "parameters": {
   "location": {
@@ -1046,23 +715,13 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
+还可以使用 `resourceGroup` 函数将资源组中的标记应用于资源。 有关详细信息，请参阅[应用资源组中的标记](../management/tag-resources.md#apply-tags-from-resource-group)。
 
-```bicep
-param location string = resourceGroup().location
-```
-
----
-
-还可以使用 resourceGroup 函数将资源组中的标记应用于资源。 有关详细信息，请参阅[应用资源组中的标记](../management/tag-resources.md#apply-tags-from-resource-group)。
-
-使用嵌套模板部署到多个资源组时，可以指定评估 resourceGroup 函数的范围。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](./deploy-to-resource-group.md)。
+使用嵌套模板部署到多个资源组时，可以指定用于评估 `resourceGroup` 函数的作用域。 有关详细信息，[将 Azure 资源部署到多个订阅或资源组](./deploy-to-resource-group.md)。
 
 ### <a name="resource-group-example"></a>资源组示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json)返回资源组的属性。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -1077,14 +736,6 @@ param location string = resourceGroup().location
   }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output resourceGroupOutput object = resourceGroup()
-```
-
----
 
 上述示例返回采用以下格式的对象：
 
@@ -1106,9 +757,9 @@ output resourceGroupOutput object = resourceGroup()
 
 返回资源的唯一标识符。 如果资源名称不确定或未设置在相同的模板内，请使用此函数。 返回的标识符的格式因部署是在资源组、订阅、管理组还是租户的范围内进行而不同。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 仅在资源组或订阅的范围内部署时才提供此值。 |
 | resourceGroupName |否 |字符串 |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 仅在资源组的范围内部署时才提供此值。 |
@@ -1140,7 +791,7 @@ output resourceGroupOutput object = resourceGroup()
 /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-为避免混淆，建议你在使用部署到订阅、管理组或租户的资源时不使用 resourceId， 而改用针对范围设计的 ID 函数。
+为避免混淆，建议你在使用部署到订阅、管理组或租户的资源时不使用 `resourceId`。 而改用针对范围设计的 ID 函数。
 
 对于[订阅级别的资源](deploy-to-subscription.md)，请使用 [subscriptionResourceId](#subscriptionresourceid) 函数。
 
@@ -1154,71 +805,29 @@ output resourceGroupOutput object = resourceGroup()
 
 若要获取同一订阅和资源组中父资源的资源 ID，请提供资源的类型和名称。
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 "[resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')
-```
-
----
-
 若要获取子资源的资源 ID，请注意资源类型中段的数目。 请提供资源类型的每个段的资源名称。 段的名称对应于针对层次结构的该部分存在的资源。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "[resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')
-```
-
----
-
 对于属于同一订阅但属于不同资源组的资源，若要获取其资源 ID，请提供资源组名称。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')
-```
-
----
-
 若要获取位于不同订阅和资源组中的资源的资源 ID，请提供订阅 ID 和资源组名称。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')
-```
-
----
-
 通常，在替代资源组中使用存储帐户或虚拟网络时，需要使用此函数。 以下示例演示了如何轻松使用外部资源组中的资源：
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -1267,44 +876,10 @@ resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Micros
   ]
 }
 ```
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param location string
-param virtualNetworkName string
-param virtualNetworkResourceGroup string
-param subnet1Name string
-param nicName string
-
-var subnet1Ref = resourceId('virtualNetworkResourceGroup', 'Microsoft.Network/virtualNetworks/subnets', 'virtualNetworkName', 'subnet1Name')
-
-resource myInterface 'Microsoft.Network/networkInterfaces@2015-05-01-preview' = {
-  name: nicName
-  location: location
-  properties: {
-    ipConfigurations: [
-      {
-        name: 'ipconfig1'
-        properties: {
-          privateIPAllocationMethod: 'Dynamic'
-          subnet: {
-            id: subnet1Ref
-          }
-        }
-      }
-    ]
-  }
-}
-```
-
----
-
 
 ### <a name="resource-id-example"></a>资源 ID 示例
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json)返回资源组中存储帐户的资源 ID：
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -1332,25 +907,14 @@ resource myInterface 'Microsoft.Network/networkInterfaces@2015-05-01-preview' = 
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output sameRGOutput string = resourceId('Microsoft.Storage/storageAccounts','examplestorage')
-output differentRGOutput string = resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')
-output differentSubOutput string = resourceId('11111111-1111-1111-1111-111111111111', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')
-output nestedResourceOutput string = resourceId('Microsoft.SQL/servers/databases', 'serverName', 'databaseName')
-```
-
----
-
 上述示例中使用默认值的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | 类型 | Value |
 | ---- | ---- | ----- |
-| sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | String | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| nestedResourceOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
+| sameRGOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | 字符串 | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| nestedResourceOutput | 字符串 | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
 ## <a name="subscription"></a>订阅
 
@@ -1379,8 +943,6 @@ output nestedResourceOutput string = resourceId('Microsoft.SQL/servers/databases
 
 以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json)显示了在 outputs 节中调用的 subscription 函数。
 
-# <a name="json"></a>[JSON](#tab/json)
-
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -1395,23 +957,15 @@ output nestedResourceOutput string = resourceId('Microsoft.SQL/servers/databases
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-output subscriptionOutput object = subscription()
-```
-
----
-
 ## <a name="subscriptionresourceid"></a>subscriptionResourceId
 
 `subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)`
 
 返回在订阅级别部署的资源的唯一标识符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
 | resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
@@ -1435,8 +989,6 @@ output subscriptionOutput object = subscription()
 ### <a name="subscriptionresourceid-example"></a>subscriptionResourceID 示例
 
 以下模板分配内置角色。 可以将它部署到资源组或订阅。 它使用 subscriptionResourceId 函数获取内置角色的资源 ID。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -1487,63 +1039,15 @@ output subscriptionOutput object = subscription()
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param principalId string {
-  metadata: {
-    'description': 'principalId'
-  }
-}
-param builtInRoleType string {
-  'allowed': [
-    'Owner'
-    'Contributor'
-    'Reader'
-  ]
-  'metadata': {
-      'description': 'Built-in role to assign'
-  }
-}
-param roleNameGuid string {
-  default: newGuid()
-  metadata: {
-    'description': 'A new GUID used to identify the role assignment'
-  }
-}
-
-var roleDefinitionId = {
-  Owner: {
-    id: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')
-  }
-  Contributor: {
-    id: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')
-  }
-  Reader: {
-    id: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')
-  }
-}
-
-resource myRoleAssignment 'Microsoft.Authorization/roleAssignments@2018-09-01-preview' = {
-  name: roleNameGuid
-  properties: {
-    roleDefinitionId: roleDefinitionId[builtInRoleType].id
-    principalId: principalId
-  }
-}
-```
-
----
-
 ## <a name="tenantresourceid"></a>tenantResourceId
 
 `tenantResourceId(resourceType, resourceName1, [resourceName2], ...)`
 
 返回在租户级别部署的资源的唯一标识符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必须 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
 | resourceName1 |是 |字符串 |资源的名称。 |
@@ -1566,8 +1070,6 @@ resource myRoleAssignment 'Microsoft.Authorization/roleAssignments@2018-09-01-pr
 ### <a name="tenantresourceid-example"></a>tenantResourceId 示例
 
 内置策略定义是租户级别的资源。 若要部署引用内置策略定义的策略分配，请使用 tenantResourceId 函数。
-
-# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
@@ -1603,37 +1105,9 @@ resource myRoleAssignment 'Microsoft.Authorization/roleAssignments@2018-09-01-pr
 }
 ```
 
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param policyDefinitionID string{
-  default: '0a914e76-4921-4c19-b460-a2d36003525a'
-  metadata: {
-    'description': 'Specifies the ID of the policy definition or policy set definition being assigned.'
-  }
-}
-
-param policyAssignmentName string {
-  default: guid(policyDefinitionID, resourceGroup().name)
-  metadata: {
-    'description': 'Specifies the name of the policy assignment, can be used defined or an idempotent name as the defaultValue provides.'
-  }
-}
-
-resource myPolicyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
-  name: policyAssignmentName
-  properties: {
-    scope: subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)
-    policyDefinitionId: tenantResourceId('Microsoft.Authorization/policyDefinitions', policyDefinitionID)
-  }
-}
-```
-
----
-
 ## <a name="next-steps"></a>后续步骤
 
-* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 有关 ARM 模板中各部分的说明，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。
 * 若要合并多个模板，请参阅[部署 Azure 资源时使用链接模板和嵌套模板](linked-templates.md)。
 * 若要在创建资源类型时迭代指定的次数，请参阅 [ARM 模板中的资源迭代](copy-resources.md)。
 * 若要了解如何部署已创建的模板，请参阅[使用 ARM 模板和 Azure PowerShell 部署资源](deploy-powershell.md)。

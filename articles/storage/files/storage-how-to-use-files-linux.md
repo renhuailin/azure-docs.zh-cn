@@ -4,35 +4,37 @@ description: 了解如何在 Linux 上通过 SMB 装载 Azure 文件共享。 �
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/19/2019
+ms.date: 05/05/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4ace5620bf98b06956c294a12b6b08881422e718
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7e02d85fe5385b8918fbfdb037382aeeef444267
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952331"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110088347"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
-[Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以使用 [SMB 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)在 Linux 分发版中装载 Azure 文件共享。 本文介绍装载 Azure 文件共享的两种方法：使用 `mount` 命令按需装载，以及通过在 `/etc/fstab` 中创建一个条目在启动时装载。
+[Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以使用 [SMB 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)在 Linux 分发版中装载 Azure 文件共享。
 
-在 Linux 上装载 Azure 文件共享的建议方法是使用 SMB 3.0。 默认情况下，Azure 文件存储要求进行传输中加密，而只有 SMB 3.0 支持传输中加密。 Azure 文件存储也支持 SMB 2.1，但后者不支持传输中加密，同时出于安全原因，不可以使用 SMB 2.1 从另一 Azure 区域或本地装载 Azure 文件共享。 除非应用程序专门需要用到 SMB 2.1，否则几乎没有任何理由使用它，因为最近发布的最流行 Linux 分发版都支持 SMB 3.0：  
+在 Linux 上装载 Azure 文件共享的建议方法是使用 SMB 3.1.1。 默认情况下，Azure 文件存储要求进行传输中加密，而只有 SMB 3.0+ 支持传输中加密。 Azure 文件存储也支持 SMB 2.1（后者不支持传输中加密），但你可能出于安全原因而不会使用 SMB 2.1 从另一 Azure 区域或本地装载 Azure 文件共享。 除非应用程序专门需要用到 SMB 2.1，否则请使用 SMB 3.1.1。
 
-| Linux 分发版 | SMB 2.1 <br>（装载在同一 Azure 区域内的 VM 上） | SMB 3.0 <br>（从本地和跨区域装载） |
-| --- | :---: | :---: |
-| Ubuntu | 14.04+ | 16.04+ |
-| Red Hat Enterprise Linux (RHEL) | 7+ | 7.5+ |
-| CentOS | 7+ |  7.5+ |
-| Debian | 8+ | 10+ |
-| openSUSE | 13.2+ | 42.3+ |
-| SUSE Linux Enterprise Server | 12+ | 12 SP2+ |
+| 分发 | SMB 3.1.1 | SMB 3.0 |
+|-|-----------|---------|
+| Linux 内核版本 | <ul><li>基本 3.1.1 支持：4.17</li><li>默认装载：5.0</li><li>AES-128-GCM 加密：5.3</li></ul> | <ul><li>基本 3.0 支持：3.12</li><li>AES-128-CCM 加密：4.11</li></ul> |
+| [Ubuntu](https://wiki.ubuntu.com/Releases) | AES-128-GCM 加密：18.04.5 LTS+ | AES-128-CCM 加密：16.04.4 LTS+ |
+| [Red Hat Enterprise Linux (RHEL)](https://access.redhat.com/articles/3078) | <ul><li>基本：8.0+</li><li>默认装载：8.2+</li><li>AES-128-GCM 加密：8.2+</li></ul> | 7.5+ |
+| [Debian](https://www.debian.org/releases/) | 基本：10+ | AES-128-CCM 加密：10+ |
+| [SUSE Linux Enterprise Server](https://www.suse.com/support/kb/doc/?id=000019587) | AES-128-GCM 加密：15 SP2+ | AES-128-CCM 加密：12 SP2+ |
 
-如果使用的是上表中未列出的 Linux 分发版，可以通过检查 Linux 内核版本，来确定所用 Linux 分发版是否支持提供加密功能的 SMB 3.0。 提供加密功能的 SMB 3.0 已添加到 Linux 内核版本 4.11。 `uname` 命令将返回所用 Linux 内核的版本：
+如果上表中未列出你的 Linux 发行版，可以使用 `uname` 命令检查 Linux 内核版本：
 
 ```bash
 uname -r
 ```
+
+> [!Note]  
+> SMB 2.1 支持已添加到 Linux 内核版本 3.7。 如果所用的 Linux 内核版本高于 3.7，则此版本应该支持 SMB 2.1。
 
 ## <a name="prerequisites"></a>先决条件
 <a id="smb-client-reqs"></a>
@@ -40,36 +42,37 @@ uname -r
 * <a id="install-cifs-utils"></a>**确保已安装 cifs-utils 包。**  
     可在所选的 Linux 分发版上使用包管理器安装 cifs-utils 包。 
 
-    在 **Ubuntu** 和 **基于 Debian** 的分发版上，请使用 `apt` 包管理器：
+    在 Ubuntu 和 Debian 上，使用 `apt` 包管理器 ：
 
     ```bash
     sudo apt update
     sudo apt install cifs-utils
     ```
 
-    在“Fedora”、“Red Hat Enterprise Linux 8+”和“CentOS 8+”中，请使用 `dnf` 包管理器：  
+    在 Red Hat Enterprise Linux 8+ 上，使用 `dnf` 包管理器：
 
     ```bash
     sudo dnf install cifs-utils
     ```
 
-    在旧版的“Red Hat Enterprise Linux”和“CentOS”中，请使用 `yum` 包管理器： 
+    在旧版的 Red Hat Enterprise Linux 上，使用 `yum` 包管理器：
 
     ```bash
     sudo yum install cifs-utils 
     ```
 
-    在 **openSUSE** 上，请使用 `zypper` 包管理器：
+    在 SUSE Linux Enterprise Server 上，使用 `zypper` 包管理器：
 
     ```bash
     sudo zypper install cifs-utils
     ```
 
-    在其他分发版上，请使用相应的包管理器，或[从源编译](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
+    在其他分发版上，请使用相应的包管理器，或[从源编译](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)。
 
-* **最新版本的 Azure 命令行接口 (CLI)。** 若要详细了解如何安装 Azure CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli) 并选择操作系统。 如果你想要在 PowerShell 6+ 中使用 Azure PowerShell 模块，也可以使用，不过，下面的说明适用于 Azure CLI。
+* **最新版本的 Azure 命令行接口 (CLI)。** 若要详细了解如何安装 Azure CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli) 并选择操作系统。 如果你想要在 PowerShell 6+ 中使用 Azure PowerShell 模块，也可以使用，不过，本文中的说明适用于 Azure CLI。
 
 * **确保端口 445 处于打开状态**：SMB 通过 TCP 端口 445 通信 - 请查看防火墙是否未阻止 TCP 端口 445 与客户端计算机通信。  替换 `<your-resource-group>` 和 `<your-storage-account>`，然后运行以下脚本：
+
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
@@ -93,160 +96,211 @@ uname -r
 
     如果无法在企业网络中打开端口 445，或者 ISP 阻止此类操作，可以使用 VPN 连接或 ExpressRoute 来解决端口 445 的相关问题。 有关详细信息，请参阅[直接访问 Azure 文件共享时的网络注意事项](storage-files-networking-overview.md)。
 
-## <a name="mounting-azure-file-share"></a>装载 Azure 文件共享
-若要在 Linux 分发版中使用 Azure 文件共享，必须创建一个充当 Azure 文件共享装入点的目录。 你可以在 Linux 系统上的任何位置创建装入点，但是通常情况是在 /mount 下创建此装入点。 创建装入点之后，使用 `mount` 命令访问 Azure 文件共享。
+## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>使用 mount 按需装载 Azure 文件共享
+在 Linux OS 上装载文件共享时，远程文件共享将在本地文件系统中以文件夹的形式表示。 可将文件共享装载到系统上的任何位置。 以下示例将文件共享装载到 `/mount` 路径下。 可以通过修改 `$mntRoot` 变量将此路径更改为所需的首选路径。
 
-如果需要，可将同一个 Azure 文件共享装载到多个装入点。
+请将 `<resource-group-name>`、`<storage-account-name>` 和 `<file-share-name>` 替换为适合你的环境的信息。
 
-### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>使用 `mount` 按需装载 Azure 文件共享
-1. **为装入点创建一个文件夹**：请将 `<your-resource-group>`、`<your-storage-account>` 和 `<your-file-share>` 替换为适合你的环境的信息。
+```bash
+resourceGroupName="<resource-group-name>"
+storageAccountName="<storage-account-name>"
+fileShareName="<file-share-name>"
 
-    ```bash
-    resourceGroupName="<your-resource-group>"
-    storageAccountName="<your-storage-account>"
-    fileShareName="<your-file-share>"
+mntRoot="/mount"
+mntPath="$mntRoot/$storageAccountName/$fileShareName"
 
-    mntPath="/mount/$storageAccountName/$fileShareName"
+sudo mkdir -p $mntPath
+```
 
-    sudo mkdir -p $mntPath
-    ```
+接下来，使用 `mount` 命令装载文件共享。 在以下示例中，使用存储帐户文件终结点的完全限定域名填充了 `$smbPath` 命令，并使用存储帐户密钥填充了 `$storageAccountKey`。 
 
-1. **使用装载命令来装载 Azure 文件共享**。 在以下示例中，本地 Linux 文件和文件夹权限默认为 0755，表示所有者拥有读取、写入和执行权限（基于文件/目录 Linux 所有者），所有者组中的用户拥有读取和执行权限，系统中的其他用户拥有读取和执行权限。 可以使用 `uid` 和 `gid` 装载选项来设置装入点的用户 ID 和组 ID。 还可根据需要使用 `dir_mode` 和 `file_mode` 来设置自定义权限。 有关如何设置权限的详细信息，请参阅 Wikipedia 上的 [UNIX 数值表示法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。 
+# <a name="smb-311"></a>[SMB 3.1.1](#tab/smb311)
+> [!Note]  
+> 从 Linux 内核版本 5.0 开始，SMB 3.1.1 是默认的协商协议。 如果使用的 Linux 内核版本低于 5.0，请在装载选项列表中指定 `vers=3.1.1`。  
 
-    ```bash
-    # This command assumes you have logged in with az login
-    httpEndpoint=$(az storage account show \
-        --resource-group $resourceGroupName \
-        --name $storageAccountName \
-        --query "primaryEndpoints.file" | tr -d '"')
-    smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
+```bash
+# This command assumes you have logged in with az login
+httpEndpoint=$(az storage account show \
+    --resource-group $resourceGroupName \
+    --name $storageAccountName \
+    --query "primaryEndpoints.file" | tr -d '"')
+smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
 
-    storageAccountKey=$(az storage account keys list \
-        --resource-group $resourceGroupName \
-        --account-name $storageAccountName \
-        --query "[0].value" | tr -d '"')
+storageAccountKey=$(az storage account keys list \
+    --resource-group $resourceGroupName \
+    --account-name $storageAccountName \
+    --query "[0].value" | tr -d '"')
 
-    sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
-    ```
+sudo mount -t cifs $smbPath $mntPath -o username=$storageAccountName,password=$storageAccountKey,serverino
+```
 
-    > [!Note]  
-    > 上述装载命令装载 SMB 3.0。 如果你的 Linux 分发版不支持提供加密功能的 SMB 3.0，或者仅支持 SMB 2.1，则你只能从存储帐户所在的同一区域中的 Azure VM 进行装载。 若要在不支持提供加密功能的 SMB 3.0 的 Linux 分发版上装载 Azure 文件共享，需要[对存储帐户禁用传输中加密](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+# <a name="smb-30"></a>[SMB 3.0](#tab/smb30)
+```bash
+# This command assumes you have logged in with az login
+httpEndpoint=$(az storage account show \
+    --resource-group $resourceGroupName \
+    --name $storageAccountName \
+    --query "primaryEndpoints.file" | tr -d '"')
+smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
 
-使用完 Azure 文件共享后，可以使用 `sudo umount $mntPath` 卸载共享。
+storageAccountKey=$(az storage account keys list \
+    --resource-group $resourceGroupName \
+    --account-name $storageAccountName \
+    --query "[0].value" | tr -d '"')
 
-### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>使用 `/etc/fstab` 为 Azure 文件共享创建持久装入点
-1. **为装入点创建一个文件夹**：你可以在文件系统上的任何位置创建装入点的文件夹，但是通常情况是在 /mount 文件夹下创建此文件夹。 例如，以下命令（请将 `<your-resource-group>`、`<your-storage-account>` 和 `<your-file-share>` 替换为适用于你的环境的信息）会创建一个新目录：
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
+```
 
-    ```bash
-    resourceGroupName="<your-resource-group>"
-    storageAccountName="<your-storage-account>"
-    fileShareName="<your-file-share>"
+# <a name="smb-21"></a>[SMB 2.1](#tab/smb21)
+```bash
+# This command assumes you have logged in with az login
+httpEndpoint=$(az storage account show \
+    --resource-group $resourceGroupName \
+    --name $storageAccountName \
+    --query "primaryEndpoints.file" | tr -d '"')
+smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
 
-    mntPath="/mount/$storageAccountName/$fileShareName"
+storageAccountKey=$(az storage account keys list \
+    --resource-group $resourceGroupName \
+    --account-name $storageAccountName \
+    --query "[0].value" | tr -d '"')
 
-    sudo mkdir -p $mntPath
-    ```
+sudo mount -t cifs $smbPath $mntPath -o vers=2.1,username=$storageAccountName,password=$storageAccountKey,serverino
+```
 
-1. **创建凭据文件以存储文件共享的用户名（存储帐户名称）和密码（存储帐户密钥）。** 
+---
 
-    ```bash
-    if [ ! -d "/etc/smbcredentials" ]; then
-        sudo mkdir "/etc/smbcredentials"
-    fi
+可以在装载选项中使用 `uid`/`gid` 或 `dir_mode` 和 `file_mode`，让 `mount` 命令设置权限。 有关如何设置权限的详细信息，请参阅 Wikipedia 上的 [UNIX 数值表示法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。
 
-    storageAccountKey=$(az storage account keys list \
-        --resource-group $resourceGroupName \
-        --account-name $storageAccountName \
-        --query "[0].value" | tr -d '"')
-    
-    smbCredentialFile="/etc/smbcredentials/$storageAccountName.cred"
-    if [ ! -f $smbCredentialFile ]; then
-        echo "username=$storageAccountName" | sudo tee $smbCredentialFile > /dev/null
-        echo "password=$storageAccountKey" | sudo tee -a $smbCredentialFile > /dev/null
-    else 
-        echo "The credential file $smbCredentialFile already exists, and was not modified."
-    fi
-    ```
+如果需要，还可将同一个 Azure 文件共享装载到多个装入点。 使用完 Azure 文件共享后，使用 `sudo umount $mntPath` 卸载共享。
 
-1. **更改凭据文件的权限，以便只有 root 才能读取或修改密码文件。** 由于存储帐户密钥实质上是存储帐户的超级管理员密码，因此重要的是在文件上设置权限使只有 root 才能访问，这样较低权限的用户将无法检索存储帐户密钥。   
+## <a name="automatically-mount-file-shares"></a>自动装载文件共享
+在 Linux OS 上装载文件共享时，远程文件共享将在本地文件系统中以文件夹的形式表示。 可将文件共享装载到系统上的任何位置。 以下示例将文件共享装载到 `/mount` 路径下。 可以通过修改 `$mntRoot` 变量将此路径更改为所需的首选路径。
 
-    ```bash
-    sudo chmod 600 $smbCredentialFile
-    ```
+```bash
+mntRoot="/mount"
+sudo mkdir -p $mntRoot
+```
 
-1. **使用以下命令将以下行追加到 `/etc/fstab`** ：在以下示例中，本地 Linux 文件和文件夹权限默认为 0755，表示所有者拥有读取、写入和执行权限（基于文件/目录 Linux 所有者），所有者组中的用户拥有读取和执行权限，系统中的其他用户拥有读取和执行权限。 可以使用 `uid` 和 `gid` 装载选项来设置装入点的用户 ID 和组 ID。 还可根据需要使用 `dir_mode` 和 `file_mode` 来设置自定义权限。 有关如何设置权限的详细信息，请参阅 Wikipedia 上的 [UNIX 数值表示法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。
+若要在 Linux 上装载 Azure 文件共享，请使用存储帐户名称作为文件共享的用户名，并使用存储帐户密钥作为密码。 由于存储帐户凭据可随时更改，因此应将存储帐户的凭据与装载配置分开存储。 
 
-    ```bash
-    # This command assumes you have logged in with az login
-    httpEndpoint=$(az storage account show \
-        --resource-group $resourceGroupName \
-        --name $storageAccountName \
-        --query "primaryEndpoints.file" | tr -d '"')
-    smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
+以下示例演示如何创建一个用于存储凭据的文件。 请记得将 `<resource-group-name>` 和 `<storage-account-name>` 替换为适合你的环境的信息。
 
-    if [ -z "$(grep $smbPath\ $mntPath /etc/fstab)" ]; then
-        echo "$smbPath $mntPath cifs nofail,vers=3.0,credentials=$smbCredentialFile,serverino" | sudo tee -a /etc/fstab > /dev/null
-    else
-        echo "/etc/fstab was not modified to avoid conflicting entries as this Azure file share was already present. You may want to double check /etc/fstab to ensure the configuration is as desired."
-    fi
+```bash
+resourceGroupName="<resource-group-name>"
+storageAccountName="<storage-account-name>"
 
-    sudo mount -a
-    ```
-    
-    > [!Note]  
-    > 上述装载命令装载 SMB 3.0。 如果你的 Linux 分发版不支持提供加密功能的 SMB 3.0，或者仅支持 SMB 2.1，则你只能从存储帐户所在的同一区域中的 Azure VM 进行装载。 若要在不支持提供加密功能的 SMB 3.0 的 Linux 分发版上装载 Azure 文件共享，需要[对存储帐户禁用传输中加密](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+# Create a folder to store the credentials for this storage account and
+# any other that you might set up.
+credentialRoot="/etc/smbcredentials"
+sudo mkdir -p "/etc/smbcredentials"
 
-### <a name="using-autofs-to-automatically-mount-the-azure-file-shares"></a>使用 autofs 自动装载 Azure 文件共享
+# Get the storage account key for the indicated storage account.
+# You must be logged in with az login and your user identity must have 
+# permissions to list the storage account keys for this command to work.
+storageAccountKey=$(az storage account keys list \
+    --resource-group $resourceGroupName \
+    --account-name $storageAccountName \
+    --query "[0].value" | tr -d '"')
 
-1. 确保已安装 autofs 包。  
+# Create the credential file for this individual storage account
+smbCredentialFile="$credentialRoot/$storageAccountName.cred"
+if [ ! -f $smbCredentialFile ]; then
+    echo "username=$storageAccountName" | sudo tee $smbCredentialFile > /dev/null
+    echo "password=$storageAccountKey" | sudo tee -a $smbCredentialFile > /dev/null
+else 
+    echo "The credential file $smbCredentialFile already exists, and was not modified."
+fi
 
-    可在所选的 Linux 分发版上使用包管理器安装 utofs 包。 
+# Change permissions on the credential file so only root can read or modify the password file.
+sudo chmod 600 $smbCredentialFile
+```
 
-    在 **Ubuntu** 和 **基于 Debian** 的分发版上，请使用 `apt` 包管理器：
-    ```bash
-    sudo apt update
-    sudo apt install autofs
-    ```
-    在“Fedora”、“Red Hat Enterprise Linux 8+”和“CentOS 8+”中，请使用 `dnf` 包管理器：  
-    ```bash
-    sudo dnf install autofs
-    ```
-    在旧版的“Red Hat Enterprise Linux”和“CentOS”中，请使用 `yum` 包管理器： 
-    ```bash
-    sudo yum install autofs 
-    ```
-    在 **openSUSE** 上，请使用 `zypper` 包管理器：
-    ```bash
-    sudo zypper install autofs
-    ```
-2. 为共享创建装入点：
-   ```bash
-    sudo mkdir /fileshares
-    ```
-3. 创建新的自定义 autofs 配置文件
-    ```bash
-    sudo vi /etc/auto.fileshares
-    ```
-4. 将以下条目添加到 /etc/auto.fileshares
-   ```bash
-   echo "$fileShareName -fstype=cifs,credentials=$smbCredentialFile :$smbPath"" > /etc/auto.fileshares
-   ```
-5. 将以下条目添加到 /etc/auto.master
-   ```bash
-   /fileshares /etc/auto.fileshares --timeout=60
-   ```
-6. 重启 autofs
-    ```bash
-    sudo systemctl restart autofs
-    ```
-7.  访问为共享指定的文件夹
-    ```bash
-    cd /fileshares/$filesharename
-    ```
+若要自动装载文件共享，可以选择通过 `/etc/fstab` 实用工具使用静态装载，或者通过 `autofs` 实用工具使用动态装载。 
+
+### <a name="static-mount-with-etcfstab"></a>通过 /etc/fstab 进行静态装载
+沿用前面所述的环境，在装载文件夹下为存储帐户/文件共享创建一个文件夹。 请将 `<file-share-name>` 替换为你的 Azure 文件共享的相应名称。
+
+```bash
+fileShareName="<file-share-name>"
+
+mntPath="$mntRoot/$storageAccountName/$fileShareName"
+sudo mkdir -p $mntPath
+```
+
+最后，在 `/etc/fstab` 文件中为 Azure 文件共享创建一条记录。 在以下命令中，使用了默认的 0755 Linux 文件和文件夹权限，这表示所有者拥有读取、写入和执行权限（基于文件/目录 Linux 所有者），所有者组中的用户拥有读取和执行权限，系统中的其他用户拥有读取和执行权限。 对于装载，可以根据需要设置备用的 `uid` 和 `gid` 或者 `dir_mode` 和 `file_mode` 权限。 有关如何设置权限的详细信息，请参阅 Wikipedia 上的 [UNIX 数值表示法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。
+
+```bash
+httpEndpoint=$(az storage account show \
+    --resource-group $resourceGroupName \
+    --name $storageAccountName \
+    --query "primaryEndpoints.file" | tr -d '"')
+smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
+
+if [ -z "$(grep $smbPath\ $mntPath /etc/fstab)" ]; then
+    echo "$smbPath $mntPath cifs nofail,credentials=$smbCredentialFile,serverino" | sudo tee -a /etc/fstab > /dev/null
+else
+    echo "/etc/fstab was not modified to avoid conflicting entries as this Azure file share was already present. You may want to double check /etc/fstab to ensure the configuration is as desired."
+fi
+
+sudo mount -a
+```
+
+> [!Note]  
+> 从 Linux 内核版本 5.0 开始，SMB 3.1.1 是默认的协商协议。 可以使用 `vers` 装载选项指定备用协议版本（协议版本为 `3.1.1`、`3.0` 和 `2.1`）。
+
+### <a name="dynamically-mount-with-autofs"></a>通过 autofs 进行动态装载
+若要使用 `autofs` 实用工具动态装载文件共享，请在你选择的 Linux 发行版上使用包管理器安装该实用工具。  
+
+在 Ubuntu 和 Debian 发行版上，使用 `apt` 包管理器 ：
+
+```bash
+sudo apt update
+sudo apt install autofs
+```
+
+在 Red Hat Enterprise Linux 8+ 上，使用 `dnf` 包管理器：
+```bash
+sudo dnf install autofs
+```
+
+在旧版的 Red Hat Enterprise Linux 上，使用 `yum` 包管理器：
+
+```bash
+sudo yum install autofs 
+```
+
+在 SUSE Linux Enterprise Server 上，使用 `zypper` 包管理器：
+```bash
+sudo zypper install autofs
+```
+
+接下来，更新 `autofs` 配置文件。 
+
+```bash
+fileShareName="<file-share-name>"
+
+httpEndpoint=$(az storage account show \
+    --resource-group $resourceGroupName \
+    --name $storageAccountName \
+    --query "primaryEndpoints.file" | tr -d '"')
+smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
+
+echo "$fileShareName -fstype=cifs,credentials=$smbCredentialFile :$smbPath" > /etc/auto.fileshares
+
+echo "/fileshares /etc/auto.fileshares --timeout=60" > /etc/auto.master
+```
+
+最后一步是重启 `autofs` 服务。
+
+```bash
+sudo systemctl restart autofs
+```
+
 ## <a name="securing-linux"></a>保护 Linux
-若要在 Linux 上装载 Azure 文件共享，端口 445 必须可访问。 由于 SMB 1 固有的安全风险，许多组织会阻止端口 445。 SMB 1（也称为通用 Internet 文件系统，简称 CIFS）是许多 Linux 分发版随附的一个传统文件系统协议。 SMB 1 是一个已过时的低效协议，最重要的是，它不安全。 好消息是 Azure 文件存储不支持 SMB 1，并且从 Linux 内核版本 4.18 开始，可在 Linux 中禁用 SMB 1。 我们始终[强烈建议](https://aka.ms/stopusingsmb1)在生产环境中使用 SMB 文件共享之前，禁用 Linux 客户端上的 SMB 1。
+必须能够访问端口 445 才能使用 SMB 装载 Azure 文件共享。 由于 SMB 1 固有的安全风险，许多组织会阻止端口 445。 SMB 1（也称为通用 Internet 文件系统，简称 CIFS）是许多 Linux 分发版随附的一个传统文件系统协议。 SMB 1 是一个已过时的低效协议，最重要的是，它不安全。 好消息是 Azure 文件存储不支持 SMB 1，并且从 Linux 内核版本 4.18 开始，可在 Linux 中禁用 SMB 1。 我们始终[强烈建议](https://aka.ms/stopusingsmb1)在生产环境中使用 SMB 文件共享之前，禁用 Linux 客户端上的 SMB 1。
 
-从 Linux 内核 4.18 开始，SMB 内核模块（由于历史遗留原因，称作 `cifs`）会公开一个名为 `disable_legacy_dialects` 的新模块参数（在各种外部文档中通常名为 parm）。 尽管 Linux 内核 4.18 中已引入此项更改，但某些供应商会将此项更改向后移植到他们支持的旧内核。 为方便起见，下表详细描述了此模块参数在常用 Linux 分发版上的可用性。
+从 Linux 内核 4.18 开始，SMB 内核模块（由于历史遗留原因，称作 `cifs`）会公开一个名为 `disable_legacy_dialects` 的新模块参数（在各种外部文档中通常名为 *parm*）。 尽管 Linux 内核 4.18 中已引入此项更改，但某些供应商会将此项更改向后移植到他们支持的旧内核。 为方便起见，下表详细描述了此模块参数在常用 Linux 分发版上的可用性。
 
 | 分发 | 可以禁用 SMB 1 |
 |--------------|-------------------|

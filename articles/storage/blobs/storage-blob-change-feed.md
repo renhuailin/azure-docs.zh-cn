@@ -1,19 +1,20 @@
 ---
 title: Azure Blob 存储中的更改源 | Microsoft Docs
 description: 了解 Azure Blob 存储中的更改源日志以及如何使用这些日志。
-author: normesta
-ms.author: normesta
-ms.date: 02/08/2021
+author: tamram
+ms.author: tamram
+ms.date: 05/17/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 43aa86504d265927cb94e4333f86bb9cc9d2e2ea
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 37367cc4608c1bfbf9c621388bcbc6ecaabd8aa4
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101095561"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110679315"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob 存储中的更改源支持
 
@@ -33,16 +34,12 @@ ms.locfileid: "101095561"
 
 更改源支持非常适合基于已更改的对象处理数据的方案。 例如，应用程序可以执行以下操作：
 
-  - 更新辅助索引，与缓存、搜索引擎或任何其他内容管理方案同步。
-  
-  - 基于对象发生的更改提取业务分析见解和指标，不管是采用流式处理方式还是批处理模式。
-  
-  - 针对企业数据管理的安全性、合规性或智能，存储、审核和分析对象在任意时间段内发生的更改。
+- 更新辅助索引，与缓存、搜索引擎或任何其他内容管理方案同步。
+- 基于对象发生的更改提取业务分析见解和指标，不管是采用流式处理方式还是批处理模式。
+- 针对企业数据管理的安全性、合规性或智能，存储、审核和分析对象在任意时间段内发生的更改。
+- 生成解决方案来备份、镜像或复制帐户中的对象状态，以满足灾难管理或合规性要求。
+- 生成连接的应用程序管道，以便根据创建的或更改的对象来响应更改事件或计划执行。
 
-  - 生成解决方案来备份、镜像或复制帐户中的对象状态，以满足灾难管理或合规性要求。
-
-  - 生成连接的应用程序管道，以便根据创建的或更改的对象来响应更改事件或计划执行。
-  
 更改源是[对象复制](object-replication-overview.md)和[块 blob 的时间点还原](point-in-time-restore-overview.md)的先决条件功能。
 
 > [!NOTE]
@@ -60,21 +57,18 @@ ms.locfileid: "101095561"
 
 - 更改源会捕获帐户中发生的所有可用事件的所有更改。 客户端应用程序可根据需要筛选出事件类型。 （请参阅当前版本的[条件](#conditions)）。
 
-- 只有 GPv2 和 Blob 存储帐户可以启用更改源。 目前不支持高级 BlockBlobStorage 帐户和已启用分层命名空间的帐户。 不支持 GPv1 存储帐户，但可以在不停机的情况下将其升级到 GPv2。有关详细信息，请参阅[升级到 GPv2 存储帐户](../common/storage-account-upgrade.md)。
+- 只有常规用途 v2 和 Blob 存储帐户才能启用更改源。 目前不支持高级块 blob 帐户和已启用分层命名空间的帐户。 不支持常规用途 v1 存储帐户，但可以在不停机的情况下将其升级到常规用途 v2。有关详细信息，请参阅[升级到 GPv2 存储帐户](../common/storage-account-upgrade.md)。
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 使用 Azure 门户在存储帐户中启用更改源：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择存储帐户。
+1. 导航到“数据管理”下的“数据保护”选项 。
+1. 在“跟踪”下，选择“启用 blob 更改源” 。
+1. 选择“保存”按钮以确认数据保护设置。
 
-2. 导航到“Blob 服务”下的“数据保护”选项。
-
-3. 单击“Blob 更改源”下的“启用” 。
-
-4. 选择“保存”按钮以确认“数据保护”设置。
-
-    ![显示数据保护设置的屏幕截图。](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-configuration.png)
+    :::image type="content" source="media/storage-blob-change-feed/change-feed-enable-portal.png" alt-text="显示如何在 Azure 门户中启用更改源的屏幕截图":::
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -135,19 +129,19 @@ ms.locfileid: "101095561"
         }]
    }
    ```
-    
+
 5. 选择“保存”按钮，指定帐户的资源组，然后选择“购买”按钮来部署模板并启用更改源。 
 
 ---
 
 ## <a name="consume-the-change-feed"></a>使用更改源
 
-更改源生成多个元数据文件和日志文件。 这些文件位于存储帐户的 $blobchangefeed 容器中。 
+更改源生成多个元数据文件和日志文件。 这些文件位于存储帐户的 $blobchangefeed 容器中。
 
 > [!NOTE]
 > 在当前版本中，$blobchangefeed 容器仅在 Azure 门户中可见，而在 Azure 存储资源管理器中不可见。 目前，在调用 ListContainers API 时无法看到 $blobchangefeed 容器，但可以直接对容器调用 ListBlobs API 来查看 Blob
 
-客户端应用程序可以通过更改源处理器 SDK 随附的 Blob 更改源处理器库来使用更改源。 
+客户端应用程序可以通过更改源处理器 SDK 随附的 Blob 更改源处理器库来使用更改源。
 
 参阅[处理 Azure Blob 存储中的更改源日志](storage-blob-change-feed-how-to.md)。
 
@@ -307,13 +301,15 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 ## <a name="faq"></a>常见问题
 
-### <a name="what-is-the-difference-between-change-feed-and-storage-analytics-logging"></a>更改源与存储分析日志记录有何区别？
+### <a name="what-is-the-difference-between-the-change-feed-and-storage-analytics-logging"></a>更改源与存储分析日志记录有何区别？
+
 分析日志包含所有读取、写入、列出和删除操作的记录，以及对所有操作的成功和失败请求的记录。 分析日志的记录原则是“尽量记录”，不保证记录顺序。
 
 更改源解决方案提供对帐户成功执行的变动或更改操作（例如创建、修改和删除 Blob）的事务日志。 更改源保证按照每个 Blob 的成功更改顺序记录和显示所有事件，因此你无需从大量的读取操作或失败请求中筛选出干扰性的信息。 从根本上讲，更改源是针对需要特定保证的应用程序开发进行设计和优化的。
 
-### <a name="should-i-use-change-feed-or-storage-events"></a>应该使用更改源还是存储事件？
-可以利用这两项功能，因为更改源和 [Blob 存储事件](storage-blob-event-overview.md)以相同的交付可靠性保证提供相同的信息，其主要差别在于事件记录的延迟、排序和存储。 在更改后的几分钟内，更改源就会将记录发布到日志，同时还保证每个 Blob 的更改操作顺序。 存储事件将实时推送，可能不会排序。 更改源事件根据你自己定义的保留期，以只读的稳定日志形式持久存储在存储帐户中，而存储事件由事件处理程序即时使用，除非你显式存储这些事件。 借助更改源，任意数量的应用程序都可以通过 Blob API 或 SDK 在方便的时间使用日志。 
+### <a name="should-i-use-the-change-feed-or-storage-events"></a>应该使用更改源还是存储事件？
+
+可以利用这两项功能，因为更改源和 [Blob 存储事件](storage-blob-event-overview.md)以相同的交付可靠性保证提供相同的信息，其主要差别在于事件记录的延迟、排序和存储。 在更改后的几分钟内，更改源就会将记录发布到日志，同时还保证每个 Blob 的更改操作顺序。 存储事件将实时推送，可能不会排序。 更改源事件根据你自己定义的保留期，以只读的稳定日志形式持久存储在存储帐户中，而存储事件由事件处理程序即时使用，除非你显式存储这些事件。 借助更改源，任意数量的应用程序都可以通过 Blob API 或 SDK 在方便的时间使用日志。
 
 ## <a name="next-steps"></a>后续步骤
 

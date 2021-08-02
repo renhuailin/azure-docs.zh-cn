@@ -1,6 +1,6 @@
 ---
-title: 如何在 Microsoft 合作伙伴中心配置 SaaS 产品/服务列表详细信息
-description: 了解如何在 Microsoft 商业市场中配置服务型软件 (SaaS) 产品/服务列表详细信息。
+title: 在 Azure 市场中配置 SaaS 产品/服务列表详细信息
+description: 在 Azure 市场中配置服务型软件 (SaaS) 产品/服务列表详细信息。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 3a47ba2025bcaba542d2dbec0c89643e0900f233
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e02fccc2747403076d872fad20db0a4e92d10be4
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96746142"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616681"
 ---
-# <a name="how-to-configure-your-saas-offer-listing-details"></a>如何配置 SaaS 产品/服务列表详细信息
+# <a name="configure-saas-offer-listing-details"></a>配置 SaaS 产品/服务列表详细信息
 
 你在服务型软件 (SaaS) 产品/服务的“产品/服务列表”页上提供的信息将显示在 Microsoft 商业市场在线商店中。 显示内容包括产品/服务、屏幕截图和市场营销资产的说明。
 
@@ -28,7 +28,7 @@ ms.locfileid: "96746142"
 
 1. “名称”框中预先填充了你之前在“新建产品/服务”对话框中输入的名称。 可随时更改名称。
 1. 在“搜索结果摘要”框中输入文本，最多 50 个字符。 此摘要用于市场列表搜索结果。
-1. 在“说明”框中输入产品/服务的说明。 此文本框包含富文本编辑器控件，可以使用这些控件来使说明更具吸引力。 还可以使用 HTML 标记来设置说明的格式。 最多可在此框中输入 3000 个字符的文本，其中包括 HTML 标记和空格。 有关 HTML 格式设置的信息，请参阅[商业市场产品/服务说明中支持的 HTML 标记](supported-html-tags.md)。
+1. 在“说明”框中输入产品/服务的说明。 此文本框包含富文本编辑器控件，可以使用这些控件来使说明更具吸引力。 还可以使用 HTML 标记来设置说明的格式。 最多可在此框中输入 3000 个字符，其中包括 HTML 标记和空格。 有关 HTML 格式设置的信息，请参阅[商业市场产品/服务说明中支持的 HTML 标记](supported-html-tags.md)。
 1. 在“入门说明”框中，提供帮助客户连接到 SaaS 产品/服务的说明。 可以添加最多 3,000 个字符的文本，以及指向更详细的联机文档的链接。
 1. （可选）在“搜索关键字”框中最多可输入三个搜索关键字，客户可以使用它们在商业市场中查找你的产品/服务。 无需包含产品/服务的“名称”和“说明”：该文本自动包含在搜索中。
 1. 在“隐私策略链接”框中，输入组织的隐私策略链接（以 https 开头）。 你负责确保你的应用符合隐私法律和法规，并负责提供有效的隐私策略。
@@ -67,7 +67,7 @@ ms.locfileid: "96746142"
 1. 在出现的“名称”框中，输入此文档的名称。 客户会在产品/服务的详细信息选项卡上看到此名称。
 1. 重复上述步骤以添加其他支持文档。
 
-## <a name="add-your-marketplace-media"></a>添加市场媒体
+## <a name="add-marketplace-media"></a>添加市场媒体
 
 ### <a name="add-logos"></a>添加徽标
 
@@ -104,5 +104,5 @@ ms.locfileid: "96746142"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果你要通过 Microsoft 销售你的产品/服务，请转到[如何为 SaaS 产品/服务添加预览版受众](create-new-saas-offer-preview.md)。 
-- 否则，请转到[如何销售你的 SaaS 产品/服务](create-new-saas-offer-marketing.md)。
+- 如果要通过 Microsoft 销售你的产品/服务，请转到[添加预览版受众](create-new-saas-offer-preview.md)。 
+- 否则，请转到[销售 SaaS 产品/服务](create-new-saas-offer-marketing.md)。

@@ -1,65 +1,124 @@
 ---
-title: 概念-标识和访问
+title: 概念 - 标识和访问
 description: 了解 Azure VMware 解决方案的标识和访问概念
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 68f4ce9136cca1cf9bf0824395e31704d8ed1a17
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.date: 05/13/2021
+ms.openlocfilehash: 832e2906656ef4da6cc9ad054927f17611fbbaf4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364879"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953161"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware 解决方案标识概念
 
-Azure VMware 解决方案私有云是使用 vCenter 服务器和 NSX-T 管理器预配的。 你使用 vCenter 来管理虚拟机 (VM) 工作负荷。 你使用 NSX-T 管理器来扩展私有云。
-
-访问和身份管理使用 CloudAdmin 组权限，以便对 NSX-T 管理器使用 vCenter 和受限的管理员权限。 它确保私有云平台会自动升级到最新的功能和修补程序。  有关详细信息，请参阅 [私有云升级概念一文][concepts-upgrades]。
+Azure VMware 解决方案私有云是使用 vCenter Server 和 NSX-T Manager 进行预配的。 可以使用 vCenter 管理虚拟机 (VM) 工作负载，并使用 NSX-T Manager 来管理和扩展私有云。 访问和身份管理对 vCenter 使用 CloudAdmin 角色，对 NSX-T Manager 使用受限的管理员权限。 
 
 ## <a name="vcenter-access-and-identity"></a>vCenter 访问和标识
 
-CloudAdmin 组在 vCenter 中提供权限。 你可以在 vCenter 本地管理组。 另一种方法是通过将 vCenter LDAP 单一登录与 Azure Active Directory 集成。 部署私有云后，启用该集成。 
+在 Azure VMware 解决方案中，vCenter 具有名为 cloudadmin 的内置本地用户，并为该用户分配了 CloudAdmin 角色。 本地 cloudadmin 用户用于在 Active Directory (AD) 中设置用户。 通常，CloudAdmin 角色会在私有云中创建和管理工作负载。 但在 Azure VMware 解决方案中，CloudAdmin 角色具有与其他 VMware 云解决方案中不同的 vCenter 特权。     
 
-该表显示了 **CloudAdmin** 和 **CloudGlobalAdmin** 特权。
+- 在 vCenter 和 ESXi 本地部署中，管理员有权访问 vCenter \@ 帐户。 还可以为其分配更多的 AD 用户和组。 
 
-|  权限集           | CloudAdmin | CloudGlobalAdmin | 注释 |
-| :---                     |    :---:   |       :---:      |   :--:  |
-|  警报                  | CloudAdmin 用户对 Compute-ResourcePool 和 Vm 中的警报具有所有告警特权。     |          --        |  -- |
-|  自动部署             |  --  |        --        |  Microsoft 进行主机管理。  |
-|  证书            |  --  |        --       |  Microsoft 进行证书管理。  |
-|  内容库         | CloudAdmin 用户有权创建和使用内容库中的文件。    |         已通过 SSO 启用。         |  Microsoft 会将内容库中的文件分发到 ESXi 的主机。  |
-|  数据中心              |  --  |        --          |  Microsoft 执行所有数据中心操作。  |
-|  数据存储               | AllocateSpace、Datastore.Config、DeleteFile、FileManagement、、、UpdateVirtualMachineMetadata     |    --    |   -- |
-|  ESX 代理程序管理器       |  --  |         --       |  Microsoft 执行所有操作。  |
-|  文件夹                  |  CloudAdmin 用户具有所有文件夹特权。     |  --  |  --  |
-|  全球                  |  CancelTask、GlobalTag、global. LogEvent、global. ManageCustomFields、ServiceManagers、SetCustomField、temTag、Global.Sys         |                  |    |
-|  主机                    |  Cdb-ik-hbr. HbrManagement      |        --          |  Microsoft 执行所有其他主机操作。  |
-|  InventoryService        |  InventoryService 标记      |        --          |  --  |
-|  网络                 |  Network.Assign    |                  |  Microsoft 执行所有其他网络操作。  |
-|  权限             |  --  |        --       |  Microsoft 执行所有权限操作。  |
-|  配置文件驱动的存储  |  --  |        --       |  Microsoft 执行所有配置文件操作。  |
-|  资源                |  CloudAdmin 用户具有所有资源权限。        |      --       | --   |
-|  计划任务          |  CloudAdmin 用户具有所有 ScheduleTask 权限。   |   --   | -- |
-|  会话                |  GlobalMessage、ValidateSession      |   --   |  Microsoft 执行所有其他会话操作。  |
-|  存储视图           |  StorageViews   |        --          |  Microsoft 执行所有其他存储视图操作 (配置服务) 。  |
-|  任务                   |  --  |  --   |  Microsoft 管理管理任务的扩展。  |
-|  vApp                    |  CloudAdmin 用户具有所有 vApp 权限。  |  --  |  --  |
-|  虚拟机         |  CloudAdmin 用户具有所有 VirtualMachine 权限。  |  --  |  --  |
-|  vService                |  CloudAdmin 用户具有所有 vService 权限。  |  --  |  --  |
+- 在 Azure VMware 解决方案部署中，管理员无权访问管理员用户帐户。 但是，他们可以将 AD 用户和组分配到 vCenter 上的 CloudAdmin 角色。  
 
-## <a name="nsx-t-manager-access-and-identity"></a>NSX-T 管理器访问和标识
+私有云用户无权访问和配置由 Microsoft 支持和管理的特定管理组件。 例如，群集、主机、数据存储和分布式虚拟交换机。
 
-使用 *管理员* 帐户访问 NSX-T 管理器。 它具有完全权限，可让你创建和管理第1层 (T1) 网关、段 (逻辑交换机) 和所有服务）。 权限使你可以访问 (T0) 网关的 NSX T 层级。 更改 T0 网关可能导致网络性能下降或没有私有云访问。 在 Azure 门户中打开支持请求，请求对你的 NSX-T T0 网关进行任何更改。
-  
+> [!IMPORTANT]
+> Azure VMware 解决方案在 vCenter 上提供自定义角色，但目前不在 Azure VMware 解决方案门户中提供。 有关详细信息，请参阅本文后面的[在 vCenter 上创建自定义角色](#create-custom-roles-on-vcenter)部分。 
+
+### <a name="view-the-vcenter-privileges"></a>查看 vCenter 特权
+
+可以在 Azure VMware 解决方案私有云 vCenter 上查看授予 Azure VMware 解决方案 CloudAdmin 角色的特权。
+
+1. 登录到 vSphere 客户端，然后转到“菜单” > “管理” 。
+
+1. 在“访问控制”下，选择“角色” 。
+
+1. 从角色列表中，选择“CloudAdmin”，然后选择“特权” 。 
+
+   :::image type="content" source="media/role-based-access-control-cloudadmin-privileges.png" alt-text="如何在 vSphere 客户端中查看 CloudAdmin 角色特权":::
+
+Azure VMware 解决方案中的 CloudAdmin 角色在 vCenter 上具有以下特权。 有关详细信息，请参阅 [VMware 产品文档](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)。
+
+| Privilege | 说明 |
+| --------- | ----------- |
+| **警报** | 确认警报<br />创建警报<br />禁用警报操作<br />修改警报<br />删除警报<br />设置警报状态 |
+| **内容库** | 添加库项<br />为已发布的库创建订阅<br />创建本地库<br />创建订阅的库<br />删除库项<br />删除本地库<br />删除订阅的库<br />删除已发布的库的订阅<br />下载文件<br />逐出库项<br />逐出订阅的库<br />导入存储<br />探测订阅信息<br />将库项发布到其订阅服务器<br />将库发布到其订阅服务器<br />读取存储<br />同步库项<br />同步订阅的库<br />类型自检<br />更新配置设置<br />更新文件<br />更新库<br />更新库项<br />更新本地库<br />更新订阅的库<br />更新已发布库的订阅<br />查看配置设置 |
+| **加密操作** | 直接访问 |
+| **数据存储** | 分配空间<br />浏览数据存储<br />配置数据存储<br />低级别文件操作<br />“删除文件”<br />更新虚拟机元数据 |
+| **文件夹** | 创建文件夹<br />删除文件夹<br />移动文件夹<br />重命名文件夹 |
+| **全球** | 取消任务<br />全局标记<br />健康产业<br />记录事件<br />管理自定义属性<br />服务管理器<br />设置自定义属性<br />系统标记 |
+| **主机** | vSphere 复制<br />&#160;&#160;&#160;&#160;管理复制 |
+| **Network** | Assign network |
+| **权限** | 修改权限<br />修改角色 |
+| **Profile** | 配置文件驱动的存储视图 |
+| **资源** | 应用建议<br />将 vApp 分配到资源池<br />Assign virtual machine to resource pool<br />创建资源池<br />迁移已关闭的虚拟机<br />迁移已启动的虚拟机<br />修改资源池<br />移动资源池<br />查询 vMotion<br />删除资源池<br />重命名资源池 |
+| **计划任务** | 创建任务<br />修改任务<br />删除任务<br />运行任务 |
+| **会话** | 消息<br />验证会话 |
+| **存储视图** | 查看 |
+| **vApp** | 添加虚拟机<br />分配资源池<br />分配 vApp<br />克隆<br />创建<br />删除<br />导出<br />导入<br />移动<br />关机<br />开机<br />重命名<br />挂起<br />注销<br />查看 OVF 环境<br />vApp 应用程序配置<br />vApp 实例配置<br />vApp managedBy 配置<br />vApp 资源配置 |
+| **虚拟机** | 更改配置<br />&#160;&#160;&#160;&#160;获取磁盘租用<br />&#160;&#160;&#160;&#160;添加现有磁盘<br />&#160;&#160;&#160;&#160;添加新磁盘<br />&#160;&#160;&#160;&#160;添加或删除设备<br />&#160;&#160;&#160;&#160;高级配置<br />&#160;&#160;&#160;&#160;更改 CPU 计数<br />&#160;&#160;&#160;&#160;更改内存<br />&#160;&#160;&#160;&#160;更改设置<br />&#160;&#160;&#160;&#160;更改交换文件位置<br />&#160;&#160;&#160;&#160;更改资源<br />&#160;&#160;&#160;&#160;配置主机 USB 设备<br />&#160;&#160;&#160;&#160;配置原始设备<br />&#160;&#160;&#160;&#160;配置 managedBy<br />&#160;&#160;&#160;&#160;显示连接设置<br />&#160;&#160;&#160;&#160;扩展虚拟磁盘<br />&#160;&#160;&#160;&#160;修改设备设置<br />&#160;&#160;&#160;&#160;查询容错兼容性<br />&#160;&#160;&#160;&#160;查询无主文件<br />&#160;&#160;&#160;&#160;从路径重载<br />&#160;&#160;&#160;&#160;删除磁盘<br />&#160;&#160;&#160;&#160;重命名<br />&#160;&#160;&#160;&#160;重置来宾信息<br />&#160;&#160;&#160;&#160;设置批注<br />&#160;&#160;&#160;&#160;切换磁盘更改跟踪<br />&#160;&#160;&#160;&#160;切换分支父级<br />&#160;&#160;&#160;&#160;升级虚拟机兼容性<br />编辑清单<br />&#160;&#160;&#160;&#160;从现有创建<br />&#160;&#160;&#160;&#160;新建<br />&#160;&#160;&#160;&#160;移动<br />&#160;&#160;&#160;&#160;注册<br />&#160;&#160;&#160;&#160;删除<br />&#160;&#160;&#160;&#160;注销<br />来宾操作<br />&#160;&#160;&#160;&#160;来宾操作别名修改<br />&#160;&#160;&#160;&#160;来宾操作别名查询<br />&#160;&#160;&#160;&#160;来宾操作修改<br />&#160;&#160;&#160;&#160;来宾操作程序执行<br />&#160;&#160;&#160;&#160;来宾操作查询<br />交互<br />&#160;&#160;&#160;&#160;回答问题<br />&#160;&#160;&#160;&#160;在虚拟机上备份操作<br />&#160;&#160;&#160;&#160;配置 CD 媒体<br />&#160;&#160;&#160;&#160;配置软盘媒体<br />&#160;&#160;&#160;&#160;连接设备<br />&#160;&#160;&#160;&#160;控制台交互<br />&#160;&#160;&#160;&#160;创建屏幕截图<br />&#160;&#160;&#160;&#160;对所有磁盘进行碎片整理<br />&#160;&#160;&#160;&#160;拖放<br />&#160;&#160;&#160;&#160;通过 VIX API 管理来宾操作系统<br />&#160;&#160;&#160;&#160;插入 USB HID 扫描代码<br />&#160;&#160;&#160;&#160;安装 VMware 工具<br />&#160;&#160;&#160;&#160;暂停或取消暂停<br />&#160;&#160;&#160;&#160;擦除或收缩操作<br />&#160;&#160;&#160;&#160;关机<br />&#160;&#160;&#160;&#160;开机<br />&#160;&#160;&#160;&#160;在虚拟机上记录会话<br />&#160;&#160;&#160;&#160;在虚拟机上重播会话<br />&#160;&#160;&#160;&#160;挂起<br />&#160;&#160;&#160;&#160;挂起容错<br />&#160;&#160;&#160;&#160;测试故障转移<br />&#160;&#160;&#160;&#160;测试重新启动辅助 VM<br />&#160;&#160;&#160;&#160;关闭容错<br />&#160;&#160;&#160;&#160;启用容错<br />设置<br />&#160;&#160;&#160;&#160;允许磁盘访问<br />&#160;&#160;&#160;&#160;允许文件访问<br />&#160;&#160;&#160;&#160;允许只读磁盘访问<br />&#160;&#160;&#160;&#160;允许虚拟机下载<br />&#160;&#160;&#160;&#160;克隆模板<br />&#160;&#160;&#160;&#160;克隆虚拟机<br />&#160;&#160;&#160;&#160;从虚拟机创建模板<br />&#160;&#160;&#160;&#160;自定义来宾<br />&#160;&#160;&#160;&#160;部署模板<br />&#160;&#160;&#160;&#160;标记为模板<br />&#160;&#160;&#160;&#160;修改自定义规范<br />&#160;&#160;&#160;&#160;提升磁盘<br />&#160;&#160;&#160;&#160;读取自定义规范<br />服务配置<br />&#160;&#160;&#160;&#160;允许通知<br />&#160;&#160;&#160;&#160;允许轮询全局事件通知<br />&#160;&#160;&#160;&#160;管理服务配置<br />&#160;&#160;&#160;&#160;修改服务配置<br />&#160;&#160;&#160;&#160;查询服务配置<br />&#160;&#160;&#160;&#160;读取服务配置<br />快照管理<br />&#160;&#160;&#160;&#160;创建快照<br />&#160;&#160;&#160;&#160;删除快照<br />&#160;&#160;&#160;&#160;重命名快照<br />&#160;&#160;&#160;&#160;还原快照<br />vSphere 复制<br />&#160;&#160;&#160;&#160;配置复制<br />&#160;&#160;&#160;&#160;管理复制<br />&#160;&#160;&#160;&#160;监视复制 |
+| **vService** | 创建依赖项<br />销毁依赖项<br />重新配置依赖项配置<br />更新依赖项 |
+| **vSphere 标记** | 分配和取消分配 vSphere 标记<br />创建 vSphere 标记<br />创建 vSphere 标记类别<br />删除 vSphere 标记<br />删除 vSphere 标记类别<br />编辑 vSphere 标记<br />编辑 vSphere 标记类别<br />修改类别的 UsedBy 字段<br />修改标记的 UsedBy 字段 |
+
+### <a name="create-custom-roles-on-vcenter"></a>在 vCenter 上创建自定义角色
+
+Azure VMware 解决方案支持使用具有与 CloudAdmin 角色相同或更低特权的自定义角色。 
+
+你将使用 CloudAdmin 角色创建、修改或删除特权低于或等于其当前角色的自定义角色。 你可以创建特权高于 CloudAdmin 的角色，但不能将该角色分配给任何用户或组或删除该角色。
+
+若要阻止创建无法分配或删除的角色，请克隆 CloudAdmin 角色，作为创建新自定义角色时的基础。
+
+#### <a name="create-a-custom-role"></a>创建自定义角色
+1. 使用 cloudadmin\@vsphere.local 或具有 CloudAdmin 角色的用户登录到 vCenter。
+
+1. 导航到“角色”配置部分，然后选择“菜单” > “管理” > “访问控制” > “角色”    。
+
+1. 选择“CloudAdmin”角色，然后选择“克隆角色操作”图标 。
+
+   >[!NOTE] 
+   >不要克隆“管理员”角色，因为你无法使用它。 此外，无法通过 cloudadmin\@vsphere.local 删除创建的自定义角色。
+
+1. 为克隆的角色提供所需的名称。
+
+1. 添加或删除角色的特权，然后选择“确定”。 克隆的角色在“角色”列表中可见。
+
+
+#### <a name="apply-a-custom-role"></a>应用自定义角色
+
+1. 导航到需要添加的权限的对象。 例如，若要将权限应用于文件夹，请导航到“菜单” > “VM 和模板” > “文件夹名称”  。
+
+1. 右键单击该对象，然后选择“添加权限”。
+
+1. 在“添加权限”窗口中，在可在其中找到组或用户的“用户”下拉列表中选择标识源 。
+
+1. 在“用户”部分下选择标识源后，搜索用户或组。 
+
+1. 选择将应用于该用户或组的角色。
+
+1. 根据需要选中“传播到子项”，然后选择“确定” 。 添加的权限显示在“权限”部分。
+
+## <a name="nsx-t-manager-access-and-identity"></a>NSX-T Manager 访问和标识
+
+>[!NOTE]
+>对于所有新的私有云，当前支持 NSX-T 2.5。
+
+使用管理员帐户访问 NSX-T Manager。 它具有完整的特权，可以让你创建和管理第 1 层 (T1) 网关、片段（逻辑交换机）和所有服务。 特权使你能够访问 NSX-T 第 0 层 (T0) 网关。 更改 T0 网关可能导致网络性能下降或没有私有云访问权限。 在 Azure 门户中打开支持请求，请求对你的 NSX-T T0 网关进行任何更改。
+
+ 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已介绍 Azure VMware 解决方案访问和标识概念，你可能想要了解：
+现在，你已了解 Azure VMware 解决方案访问和标识概念，建议你了解以下内容：
 
-- [私有云升级概念](concepts-upgrades.md)。
-- [针对 Azure VMware 解决方案的基于角色的访问控制 vSphere](concepts-role-based-access-control.md)。
-- [如何启用 Azure VMware 解决方案资源](enable-azure-vmware-solution.md)。
+- [如何启用 Azure VMware 解决方案资源](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider)
+- [每个特权的详细信息](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html)
+- [Azure VMware 解决方案如何监视和修复私有云](./concepts-private-clouds-clusters.md#host-monitoring-and-remediation)
 
-<!-- LINKS - external -->
+
+
+<!-- LINKS - external-->
+[VMware product documentation]: https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-ED56F3C4-77D0-49E3-88B6-B99B8B437B62.html
 
 <!-- LINKS - internal -->
-[concepts-upgrades]: ./concepts-upgrades.md
+[concepts-upgrades]: ./concepts-private-clouds-clusters#host-maintenance-and-lifecycle-management

@@ -1,22 +1,23 @@
 ---
-title: 创建 Azure 映像生成器模板（预览版）
+title: 创建 Azure 映像生成器模板
 description: 了解如何创建与 Azure 映像生成器配合使用的模板。
-author: danielsollondon
-ms.author: danis
-ms.date: 03/02/2021
+author: kof-f
+ms.author: kofiforson
+ms.date: 05/24/2021
 ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: 77460d1675b806e04c72e5f46da0ec4274d99d41
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 07dfd9eb2dab9ae8c7e7a024bbf09c641e0910e4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762526"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967243"
 ---
-# <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
+# <a name="create-an-azure-image-builder-template"></a>创建 Azure 映像生成器模板 
 
 Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服务。 本文将会深入介绍该 json 文件的各个节，使你可以生成自己的模板。 若要查看完整 .json 文件的示例，请参阅 [Azure 映像生成器 GitHub](https://github.com/Azure/azvmimagebuilder/tree/main/quickquickstarts)。
 
@@ -38,6 +39,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
         "vmProfile": 
             {
             "vmSize": "<vmSize>",
+        "proxyVmSize": "<vmSize>",
             "osDiskSizeGB": <sizeInGB>,
             "vnetConfig": {
                 "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
@@ -54,7 +56,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 
 ## <a name="type-and-api-version"></a>类型和 API 版本
 
-`type` 是资源类型，其值必须是 `"Microsoft.VirtualMachineImages/imageTemplates"`。 `apiVersion` 会随着 API 的更改而更改，但对于预览版，其值应是 `"2020-02-14"`。
+`type` 是资源类型，其值必须是 `"Microsoft.VirtualMachineImages/imageTemplates"`。 `apiVersion` 会随着 API 的更改而更改，但现在应为 `"2020-02-14"`。
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
@@ -63,28 +65,52 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 
 ## <a name="location"></a>位置
 
-位置是要在其中创建自定义映像的区域。 映像生成器预览版支持以下区域：
+位置是要在其中创建自定义映像的区域。 支持以下区域：
 
 - 美国东部
 - 美国东部 2
 - 美国中西部
 - 美国西部
 - 美国西部 2
+- 美国中南部
 - 北欧
 - 西欧
-
+- 东南亚
+- Australia Southeast
+- 澳大利亚东部
+- 英国南部
+- 英国西部
 
 ```json
     "location": "<region>",
 ```
-## <a name="vmprofile"></a>vmProfile
-映像生成器默认使用“Standard_D1_v2”大小的生成 VM，你可以重写此大小。例如，若要自定义 GPU VM 的映像，需使用 GPU VM 大小。 此为可选项。
 
+### <a name="data-residency"></a>数据驻留
+当客户在具有严格单区域数据驻留要求的区域内请求生成时，Azure VM 映像生成器服务不会在该区域之外存储/处理客户数据。 如果具有数据驻留要求的区域发生服务中断，则需要在其他区域和地理位置创建模板。
+
+### <a name="zone-redundancy"></a>区域冗余
+分发支持区域冗余，VHD 默认分发到区域冗余存储帐户，共享映像库版本将支持 [ZRS 存储类型](../disks-redundancy.md#zone-redundant-storage-for-managed-disks-preview)（如果已指定）。
+ 
+## <a name="vmprofile"></a>vmProfile
+## <a name="buildvm"></a>buildVM
+默认情况下，映像生成器将使用“Standard_D1_v2”生成 VM，这是基于你在 `source` 中指定的映像生成的。 如果出现以下情况，可以重写此生成 VM：
+1. 执行自定义时需要增加内存、CPU 以及处理大型文件 (GB)。
+2. 运行 Windows 版本时，应使用“Standard_D2_v2”或等效的 VM 大小。
+3. 需要 [VM 隔离](../isolation.md)。
+4. 自定义需要特定硬件的映像，例如，对于 GPU VM，需要 GPU VM 大小。 
+5. 要求对生成 VM 的其余部分启用端到端加密，你需要指定不使用本地临时磁盘的支持生成 [VM 大小](../azure-vms-no-temp-disk.md)。
+ 
+此为可选项。
+
+
+## <a name="proxy-vm-size"></a>代理 VM 大小
+代理 VM 用于在 Azure 映像生成器服务和生成 VM 之间发送命令，仅在指定现有 VNET 时部署此项，有关详细信息，请查看网络选项[文档](image-builder-networking.md#why-deploy-a-proxy-vm)。
 ```json
  {
-    "vmSize": "Standard_D1_v2"
+    "proxyVmSize": "Standard A1_v2"
  },
 ```
+此为可选项。
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
@@ -117,7 +143,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
     "dependsOn": [],
 ```
 
-有关详细信息，请参阅[定义资源依赖关系](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)。
+有关详细信息，请参阅[定义资源依赖关系](../../azure-resource-manager/templates/resource-dependency.md#dependson)。
 
 ## <a name="identity"></a>标识
 
@@ -152,7 +178,7 @@ API 需要通过一个“SourceType”来定义用于生成映像的源，目前
 
 
 > [!NOTE]
-> 在使用现有的 Windows 自定义映像时，可以在单个 Windows 映像上运行 Sysprep 命令最多 8 次，有关详细信息，请参阅 [sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) 文档。
+> 使用现有的 Windows 自定义映像时，可在单个 Windows 7 或 Windows Server 2008 R2 映像上运行 Sysprep 命令（最多运行 3 次，或在更高版本的单个 Windows 映像上运行 1001 次）；有关详细信息，请参阅 [sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) 文档。
 
 ### <a name="platformimage-source"></a>PlatformImage 源 
 Azure 映像生成器支持 Windows Server 和客户端以及 Linux Azure 市场映像。有关完整列表，请参阅[此文](../image-builder-overview.md#os-support)。 
@@ -278,7 +304,7 @@ customize 节是一个数组。 Azure 映像生成器将按顺序运行各个定
  
 ### <a name="shell-customizer"></a>Shell 定制器
 
-shell 定制器支持运行 shell 脚本，这些脚本必须可公开访问，这样，IB 才能对其进行访问。
+Shell 定制器支持运行 shell 脚本。 Shell 脚本必须可公开访问，或者必须配置 [MSI](./image-builder-user-assigned-identity.md) 才能让映像生成器访问它们。
 
 ```json
     "customize": [ 
@@ -396,7 +422,7 @@ Customize 属性：
 
 ### <a name="file-customizer"></a>File 定制器
 
-映像生成器可通过 File 定制器从 GitHub 或 Azure 存储下载文件。 如果你的某个映像生成管道依赖于生成项目，则可将 File 定制器设置为从生成共享进行下载，并将项目移到映像中。  
+映像生成器可通过 File 定制器从 GitHub 存储库或 Azure 存储下载文件。 如果你的某个映像生成管道依赖于生成工件，则可将 File 定制器设置为从生成共享进行下载，并将工件移到映像中。  
 
 ```json
      "customize": [ 
@@ -425,14 +451,14 @@ Windows 目录和 Linux 路径支持此操作，但存在一些差别：
 - Linux OS - 映像生成器唯一能够写入到的路径是 /tmp。
 - Windows - 无路径限制，但路径必须存在。
  
- 
+
 如果尝试下载文件时出错或者将文件放在指定的目录中，则自定义步骤将会失败，customization.log 中会记录此状态。
 
 > [!NOTE]
-> File 定制器仅适用于下载 < 20MB 的小文件。 要下载较大的文件，请使用脚本、内联命令或代码下载文件，例如，在 Linux 中使用 `wget` 或 `curl`，在 Windows 中使用 `Invoke-WebRequest`。
+> File 定制器仅适用于下载 < 20MB 的小文件。 要下载较大的文件，请使用脚本或内联命令，然后使用代码下载文件，例如，在 Linux 中使用 `wget` 或 `curl`，在 Windows 中使用 `Invoke-WebRequest`。
 
 ### <a name="windows-update-customizer"></a>Windows Update 定制器
-此定制器是基于适用于 Packer 的[社区 Windows Update Provisioner](https://packer.io/docs/provisioners/community-supported.html)（由 Packer 社区维护的一个开源项目）生成的。 Microsoft 使用映像生成器服务来测试和验证该预配程序，支持使用该服务来调查问题，并会努力解决问题，但该开源项目不受 Microsoft 官方支持。 如需 Windows Update Provisioner 的详细文档和帮助，请参阅项目存储库。
+此定制器是基于适用于 Packer 的[社区 Windows Update Provisioner](https://packer.io/docs/provisioners/community-supported.html)（由 Packer 社区维护的一个开源项目）生成的。 Microsoft 使用映像生成器服务来测试和验证该预配程序，支持使用该服务来调查问题，并会努力解决问题，但该开源项目不受 Microsoft 官方支持。 如需获取关于 Windows Update Provisioner 的详细文档和帮助，请参阅项目存储库。
 
 ```json
      "customize": [
@@ -446,10 +472,11 @@ Windows 目录和 Linux 路径支持此操作，但存在一些差别：
                 "updateLimit": 20
             }
                ], 
-OS support: Windows
 ```
 
-Customize 属性：
+OS 支持：Windows
+
+定制器属性：
 - **type** - WindowsUpdate。
 - **searchCriteria** -（可选）定义安装的更新类型（“建议”、“重要”等），默认设置为 BrowseOnly=0 且 IsInstalled=0（建议）。
 - **filters** -（可选）用于指定一个筛选器来包含或排除更新。

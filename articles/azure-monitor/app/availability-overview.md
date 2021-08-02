@@ -2,13 +2,13 @@
 title: Application Insights 可用性概述
 description: 设置定期 Web 测试，以监视应用或网站的可用性和响应能力。
 ms.topic: conceptual
-ms.date: 04/15/2021
-ms.openlocfilehash: 3c2d248df98fcb9f75f5de9c05b9f600955cbac7
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.date: 05/04/2021
+ms.openlocfilehash: 94fe55a5bce0e915a092fd32ad5acf6936d59e61
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600788"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967006"
 ---
 # <a name="availability-tests-overview"></a>可用性测试概述
 
@@ -39,3 +39,4 @@ ms.locfileid: "107600788"
 * [多步骤 Web 测试](availability-multistep.md)
 * [URL 测试](monitor-web-app-availability.md)
 * [使用 Azure Functions 创建和运行自定义可用性测试。](availability-azure-functions.md)
+* [Web 测试 Azure 资源管理器模板](/azure/templates/microsoft.insights/webtests?tabs=json)

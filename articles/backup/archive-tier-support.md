@@ -2,13 +2,14 @@
 title: 存档层支持（预览版）
 description: 了解对 Azure 备份的存档层支持
 ms.topic: conceptual
-ms.date: 02/18/2021
-ms.openlocfilehash: 7a42b8702cfdda14a18aa3cdd4e084ed78767b0a
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 06/03/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c817e5e0fbed7ebe6c659a91e180820de3fdc677
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012142"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410092"
 ---
 # <a name="archive-tier-support-preview"></a>存档层支持（预览版）
 
@@ -77,19 +78,29 @@ ms.locfileid: "107012142"
 
         `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<dbName>' -and $_.ContainerName -match '<vmName>'}`
 
+1. 添加要查看其恢复点的日期范围。 例如，如果要查看过去 124 天到过去 95 天之间的恢复点，请使用以下命令：
+
+   ```azurepowershell
+    $startDate = (Get-Date).AddDays(-124)
+    $endDate = (Get-Date).AddDays(-95) 
+
+    ```
+    >[!NOTE]
+    >开始日期和结束日期的跨度不应超过 30 天。<br><br>若要查看不同时间范围的恢复点，请相应地修改开始日期和结束日期。
 ## <a name="use-powershell"></a>使用 PowerShell
 
 ### <a name="check-archivable-recovery-points"></a>查看可存档的恢复点
 
 ```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm  -IsReadyForMove $true -TargetTier VaultArchive
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -IsReadyForMove $true -TargetTier VaultArchive
 ```
 
-这会列出与已准备好移动到存档的特定备份项相关联的所有恢复点。
+这会列出与已准备好移动到存档的特定备份项相关联的所有恢复点（从开始日期到结束日期）。 你还可以修改开始日期和结束日期。
 
 ### <a name="check-why-a-recovery-point-cannot-be-moved-to-archive"></a>查看无法将恢复点移动到存档的原因
 
 ```azurepowershell
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -IsReadyForMove $false -TargetTier VaultArchive
 $rp[0].RecoveryPointMoveReadinessInfo["ArchivedRP"]
 ```
 
@@ -119,8 +130,10 @@ $RecommendedRecoveryPointList = Get-AzRecoveryServicesBackupRecommendedArchivabl
 ### <a name="move-to-archive"></a>移动到存档
 
 ```azurepowershell
-Move-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -RecoveryPoint $rp[2] -SourceTier VaultStandard -DestinationTier VaultArchive
+Move-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -RecoveryPoint $rp[0] -SourceTier VaultStandard -DestinationTier VaultArchive
 ```
+
+其中，`$rp[0]` 是列表中的第一个恢复点。 如果要移动其他恢复点，请使用 `$rp[1]`、`$rp[2]`依此类推。
 
 此命令将可存档的恢复点移动到存档。 它将返回一个作业，该作业可用于通过门户和 PowerShell 跟踪移动操作。
 
@@ -129,7 +142,7 @@ Move-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -RecoveryPoint $rp
 此命令返回所有存档的恢复点。
 
 ```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -Tier VaultArchive
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -Tier VaultArchive -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime()
 ```
 
 ### <a name="restore-with-powershell"></a>使用 PowerShell 进行还原
@@ -149,7 +162,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm
 Restore-AzRecoveryServicesBackupItem -VaultLocation $vault.Location -RehydratePriority "Standard" -RehydrateDuration 15 -RecoveryPoint $rp -StorageAccountName "SampleSA" -StorageAccountResourceGroupName "SArgName" -TargetResourceGroupName $vault.ResourceGroupName -VaultId $vault.ID
 ```
 
-若要还原 SQL Server，请执行[这些步骤](backup-azure-sql-automation.md#restore-sql-dbs)。 所需的其他参数为 RehydrationPriority 和 RehydrationDuration。
+若要还原 SQL Server，请执行[这些步骤](backup-azure-sql-automation.md#restore-sql-dbs)。 `Restore-AzRecoveryServicesBackupItem` 命令需要两个附加参数，即 RehydrationDuration 和 RehydrationPriority 。
 
 ### <a name="view-jobs-from-powershell"></a>通过 PowerShell 查看作业
 
@@ -291,6 +304,12 @@ Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 ### <a name="what-will-happen-to-archive-recovery-points-if-i-stop-protection-and-retain-data"></a>如果停止保护并保留数据，存档恢复点会发生什么情况？
 
 恢复点将永久保留在存档中。 有关详细信息，请参阅[停止保护对恢复点的影响](manage-recovery-points.md#impact-of-stop-protection-on-recovery-points)。
+
+### <a name="is-cross-region-restore-supported-from-archive-tier"></a>存档层是否支持跨区域还原？
+
+将 GRS 保管库中的数据从标准层移动到存档层时，数据会移动到 GRS 存档中。 即使启用了跨区域还原，也是如此。 备份数据移动到存档层后，无法将数据还原到配对区域。 但在区域故障期间，辅助区域中的备份数据将可用于还原。 
+
+从主要区域存档层中的恢复点还原时，恢复点将复制到标准层，并根据解除冻结的持续时间保留到主要区域和辅助区域。 可以从这些解除冻结的恢复点执行跨区域还原。
 
 ## <a name="next-steps"></a>后续步骤
 

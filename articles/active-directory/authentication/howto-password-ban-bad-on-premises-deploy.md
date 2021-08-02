@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b947d9169347c00b693f27a3683a76173188070
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 9f344b0f4dd93b921abc0c1c95c18c54e4486716
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175057"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951886"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>计划和部署本地 Azure Active Directory 密码保护
 
@@ -127,14 +127,14 @@ Azure AD 密码保护 DC 代理软件的设计缓解了与高可用性相关的�
     * 如果尚未安装 .NET 4.7.2，请下载并运行在[适用于 Windows 的 .NET Framework 4.7.2 脱机安装程序](https://support.microsoft.com/topic/microsoft-net-framework-4-7-2-offline-installer-for-windows-05a72734-2127-a15d-50cf-daf56d5faec2)中找到的安装程序。
 * 必须配置所有托管 Azure AD 密码保护代理服务的计算机，以授予域控制器登录代理服务的能力。 此能力通过“从网络访问此计算机”特权分配进行控制。
 * 必须配置所有托管 Azure AD 密码保护代理服务的计算机，以允许出站 TLS 1.2 HTTP 流量。
-* 拥有全局管理员或安全管理员帐户，以用来向 Azure AD 注册 Azure AD 密码保护代理服务和林。 
-* 必须为[应用程序代理环境设置过程](../app-proxy/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)中指定的一系列端口和 URL 启用网络访问。
+* 首次在给定租户中注册 Azure AD 密码保护代理服务时需要全局管理员帐户。 后续向 Azure AD 进行的代理和林注册可能会使用具有全局管理员或安全管理员凭据的帐户 。
+* 必须为[应用程序代理环境设置过程](../app-proxy/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)中指定的一系列端口和 URL 启用网络访问。 这是上述两个终结点的新增功能。
 
 ### <a name="microsoft-azure-ad-connect-agent-updater-prerequisites"></a>Microsoft Azure AD Connect 代理更新程序先决条件
 
 Microsoft Azure AD Connect 代理更新程序服务与 Azure AD 密码保护代理服务并行安装。 为了使 Microsoft Azure AD Connect 代理更新程序服务能够正常工作，还需要进行其他配置：
 
-* 如果你的环境使用 HTTP 代理服务器，请遵循[使用现有的本地代理服务器](../manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)中指定的准则。
+* 如果你的环境使用 HTTP 代理服务器，请遵循[使用现有的本地代理服务器](../app-proxy/application-proxy-configure-connectors-with-proxy-servers.md)中指定的准则。
 * 针对 Microsoft Azure AD Connect 代理更新程序服务，还需要执行 [TLS 要求](../app-proxy/application-proxy-add-on-premises-application.md#tls-requirements)中指定的 TLS 1.2 步骤。
 
 > [!WARNING]
@@ -199,7 +199,7 @@ Azure AD 密码保护代理服务通常位于你本地 AD DS 环境中的成员�
 
 1. 代理服务正在计算机上运行，但没有凭据与 Azure AD 通信。 使用 `Register-AzureADPasswordProtectionProxy` cmdlet 向 Azure AD 注册 Azure AD 密码保护代理服务器。
 
-    此 cmdlet 需要 Azure 租户的“全局管理员”或“安全管理员”凭据。 此 cmdlet 还必须使用具有本地管理员特权的帐户来运行。
+    首次为给定租户注册任何代理时，此 cmdlet 需要全局管理员凭据。 该租户中的后续代理注册，无论是针对相同的还是不同的代理，都可以使用全局管理员或安全管理员凭据 。
 
     此命令成功后，其他调用也会成功，但没有必要。
 
@@ -338,7 +338,7 @@ Azure AD 密码保护代理服务通常位于你本地 AD DS 环境中的成员�
 
 ### <a name="configure-the-proxy-service-to-listen-on-a-specific-port"></a>将代理服务配置为侦听特定的端口。
 
-Azure AD 密码保护 DC 代理软件使用基于 TCP 的 RPC 与代理服务通信。 默认情况下，Azure AD 密码保护代理服务侦听任何可用的动态 RPC 终结点。 出于环境中网络拓扑或防火墙要求，可根据需要将服务配置为侦听特定的 TCP 端口。
+Azure AD 密码保护 DC 代理软件使用基于 TCP 的 RPC 与代理服务通信。 默认情况下，Azure AD 密码保护代理服务侦听任何可用的动态 RPC 终结点。 出于环境中网络拓扑或防火墙要求，可根据需要将服务配置为侦听特定的 TCP 端口。 配置静态端口时，必须打开端口 135 和所选的静态端口。
 
 <a id="static" /></a>若要将服务配置为在静态端口下运行，请使用 `Set-AzureADPasswordProtectionProxyConfiguration` cmdlet，如下所示：
 

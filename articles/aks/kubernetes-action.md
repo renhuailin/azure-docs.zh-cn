@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/06/2020
 ms.author: atulmal
 ms.custom: github-actions-azure
-ms.openlocfilehash: 3d0b6030cc63d0d7f4eac2c72c3545cf315b1fd3
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: a4fc4c6919cc1cf2ecdfd16a35fb43401ac4928f
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832379"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891241"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>用于将容器部署到 Kubernetes 服务的 GitHub Actions
 
@@ -98,14 +98,14 @@ jobs:
     steps:
     - uses: actions/checkout@main
     
-    # Connect to Azure Container registry (ACR)
+    # Connect to Azure Container Registry (ACR)
     - uses: azure/docker-login@v1
       with:
         login-server: ${{ env.REGISTRY_NAME }}.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }} 
         password: ${{ secrets.REGISTRY_PASSWORD }}
     
-    # Container build and push to a Azure Container registry (ACR)
+    # Container build and push to a Azure Container Registry (ACR)
     - run: |
         docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
         docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
@@ -124,6 +124,8 @@ jobs:
 | **imagepullsecrets** | （可选）已在群集中设置的 docker 注册表机密的名称。 这些机密名称的每一个都在输入清单文件中的工作负载的 imagePullSecrets 字段下添加 |
 | **kubectl-version** | （可选）安装 kubectl 二进制文件的特定版本 |
 
+> [!NOTE]
+> 清单文件应由你手动创建。 目前没有任何工具可以自动生成此类文件。有关详细信息，请参阅[此示例存储库和示例清单文件](https://github.com/MicrosoftDocs/mslearn-aks-deploy-container-app/tree/master/kubernetes)。
 
 在部署到 AKS 之前，需要设置目标 Kubernetes 命名空间并创建映像拉取机密。 请参阅[将映像从 Azure 容器注册表拉取到 Kubernetes 群集](../container-registry/container-registry-auth-kubernetes.md)，以详细了解拉取映像的工作原理。 
 
@@ -165,14 +167,14 @@ jobs:
     steps:
     - uses: actions/checkout@main
     
-    # Connect to Azure Container registry (ACR)
+    # Connect to Azure Container Registry (ACR)
     - uses: azure/docker-login@v1
       with:
         login-server: ${{ env.REGISTRY_NAME }}.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }} 
         password: ${{ secrets.REGISTRY_PASSWORD }}
     
-    # Container build and push to a Azure Container registry (ACR)
+    # Container build and push to a Azure Container Registry (ACR)
     - run: |
         docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
         docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
@@ -219,6 +221,9 @@ jobs:
 
 > [!div class="nextstepaction"]
 > [了解 Azure Kubernetes 服务](/azure/architecture/reference-architectures/containers/aks-start-here)
+
+> [!div class="nextstepaction"]
+> [了解如何通过 AKS 在 GitHub Actions 上创建多个管道](/learn/modules/aks-deployment-pipeline-github-actions)
 
 ### <a name="more-kubernetes-github-actions"></a>更多 Kubernetes GitHub Actions
 

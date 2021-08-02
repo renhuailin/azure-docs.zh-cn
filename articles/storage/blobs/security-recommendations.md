@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 389d3507c3406743e14324c7b4667e045cfdb3b5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7b60913753580027d050770bc9d4909b5686bb46
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048028"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888439"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>适用于 Blob 存储的安全建议
 

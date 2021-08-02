@@ -4,12 +4,12 @@ description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 0c87be334847974627299f8e21109fe201675f0c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1560e4a0a5c413ca225ffde0ab6d24e2958c8e75
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762166"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985394"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -18,7 +18,7 @@ ms.locfileid: "107762166"
 作为 Python 开发人员，你可能还会对下列某篇文章感兴趣：
 
 | 入门 | 概念| 场景/示例 |
-| -- | -- | -- | 
+|--|--|--|
 | <ul><li>[使用 Visual Studio Code 的 Python 函数](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[使用终端/命令提示符的 Python 函数](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[性能&nbsp;注意事项](functions-best-practices.md)</li></ul> | <ul><li>[图像分类与 PyTorch](machine-learning-pytorch.md)</li><li>[Azure 自动化示例](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[将机器学习与 TensorFlow 配合使用](functions-machine-learning-tensorflow.md)</li><li>[浏览 Python 示例](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 > [!NOTE]
@@ -140,7 +140,7 @@ from ..shared_code import my_first_helper_function #(deprecated beyond top-level
 
 ## <a name="triggers-and-inputs"></a>触发器和输入
 
-在 Azure Functions 中，输入分为两种类别：触发器输入和附加输入。 虽然它们在 `function.json` 文件中并不相同，但它们在 Python 代码中的使用方法却是相同的。  在本地运行时，触发器和输入源的连接字符串或机密映射到 `local.settings.json` 文件中的值，而在 Azure 中运行时则映射到应用程序设置。
+在 Azure Functions 中，输入分为两种类别：触发器输入和其他输入。 虽然它们在 `function.json` 文件中并不相同，但它们在 Python 代码中的使用方法却是相同的。  在本地运行时，触发器和输入源的连接字符串或机密映射到 `local.settings.json` 文件中的值，而在 Azure 中运行时则映射到应用程序设置。
 
 例如，以下代码演示两者之间的差异：
 
@@ -253,7 +253,7 @@ def main(req):
     logging.info('Python HTTP trigger function processed a request.')
 ```
 
-有其他日志记录方法可用于在不同跟踪级别向控制台进行写入：
+有更多日志记录方法可用于在不同跟踪级别向控制台进行写入：
 
 | 方法                 | 说明                                |
 | ---------------------- | ------------------------------------------ |
@@ -406,7 +406,7 @@ pip install -r requirements.txt
 
 使用远程生成时，服务器上还原的依赖项和本机依赖项与生产环境匹配。 这导致要上传的部署包较小。 在 Windows 上开发 Python 应用时使用远程生成。 如果你的项目具有自定义依赖项，可[使用具有额外索引 URL 的远程生成](#remote-build-with-extra-index-url)。
 
-依赖项根据 requirements.txt 文件的内容远程获取。 [远程生成](functions-deployment-technologies.md#remote-build)是推荐的生成方法。 默认情况下，使用下面的 [func azure functionapp publish](functions-run-local.md#publish) 命令将 Python 项目发布到 Azure 时，Azure Functions Core Tools 会请求远程生成。
+依赖项根据 requirements.txt 文件的内容远程获取。 [远程生成](functions-deployment-technologies.md#remote-build)是推荐的生成方法。 默认情况下，使用下面的 [`func azure functionapp publish`](functions-run-local.md#publish) 命令将 Python 项目发布到 Azure 时，Azure Functions Core Tools 会请求远程生成。
 
 ```bash
 func azure functionapp publish <APP_NAME>
@@ -418,7 +418,7 @@ func azure functionapp publish <APP_NAME>
 
 ### <a name="local-build"></a>本地生成
 
-依赖项根据 requirements.txt 文件的内容在本地获取。 可以使用下面的 [func azure functionapp publish](functions-run-local.md#publish) 命令发布本地生成，从而防止执行远程生成。
+依赖项根据 requirements.txt 文件的内容在本地获取。 可以使用下面的 [`func azure functionapp publish`](functions-run-local.md#publish) 命令发布本地生成，从而防止执行远程生成。
 
 ```command
 func azure functionapp publish <APP_NAME> --build local
@@ -552,7 +552,7 @@ class TestFunction(unittest.TestCase):
         )
 ```
 
-在 `.venv` Python 虚拟环境中安装你最喜欢的 Python 测试框架（例如 `pip install pytest`）。 只需运行 `pytest tests` 即可检查测试结果。
+在 `.venv` Python 虚拟环境中安装你最喜欢的 Python 测试框架（例如 `pip install pytest`）。 然后运行 `pytest tests` 即可检查测试结果。
 
 ## <a name="temporary-files"></a>临时文件
 
@@ -600,6 +600,9 @@ Functions Python 辅助角色需要一组特定的库。 你也可以在函数�
 > [!NOTE]
 > 如果函数应用的 requirements.txt 包含 `azure-functions-worker` 条目，请将其删除。 函数辅助角色由 Azure Functions 平台自动管理，我们会定期更新新功能和 Bug 修补程序。 在 requirements.txt 中手动安装旧版本的辅助角色可能会导致意外问题。
 
+> [!NOTE]
+>  如果你的包包含可能与辅助角色的依赖项冲突的某些库（例如 protobuf、tensorflow、grpcio），请在应用设置中将 `PYTHON_ISOLATE_WORKER_DEPENDENCIES` 配置为 `1` 以防止应用程序引用辅助角色的依赖项。
+
 ### <a name="azure-functions-python-library"></a>Azure Functions Python 库
 
 每次 Python 辅助角色更新都包含一个新版本的 [Azure Functions Python 库 (azure.functions)](https://github.com/Azure/azure-functions-python-library)。 这种方法使持续更新 Python 函数应用变得更容易，因为每次更新都是向后兼容的。 可在 [azure-functions PyPi](https://pypi.org/project/azure-functions/#history) 中找到此库的版本列表。
@@ -620,6 +623,106 @@ getattr(azure.functions, '__version__', '< 1.2.1')
 |------------|------------|------------|
 | 版本 2.x | 拉伸  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
 | 3\.x 版 | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile)<br/> [Python 3.9](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python39/python39.Dockerfile)|
+
+## <a name="python-worker-extensions"></a>Python 辅助角色扩展  
+
+在 Azure Functions 中运行的 Python 工作进程允许将第三方库集成到函数应用中。 这些扩展库充当中间件，可以在执行函数的生命周期内注入特定操作。 
+
+在与标准 Python 库模块类似的函数代码中导入扩展。 根据以下作用域执行扩展： 
+
+| 范围 | 说明 |
+| --- | --- |
+| **应用程序级** | 导入到任何函数触发器中时，扩展适用于应用中的每个函数执行。 |
+| **函数级** | 执行仅限于导入到其中的特定函数触发器。 |
+
+查看给定扩展的信息，以了解有关扩展运行范围的详细信息。 
+
+扩展实现了 Python 辅助角色扩展接口，该接口允许 Python 工作进程在函数执行生命周期内调入扩展代码。 若要了解详细信息，请参阅[创建扩展](#creating-extensions)。
+
+### <a name="using-extensions"></a>使用扩展 
+
+可以按照以下基本步骤在 Python 函数中使用 Python 辅助角色扩展库：
+
+1. 在项目的 requirements.txt 文件中添加扩展包。
+1. 将库安装到应用中。
+1. 添加应用程序设置 `PYTHON_ENABLE_WORKER_EXTENSIONS`：
+    + 本地：在 [local.settings.json 文件](functions-run-local.md?tabs=python#local-settings-file)的 `Values` 部分中添加 `"PYTHON_ENABLE_WORKER_EXTENSIONS": "1"`
+    + Azure：将 `PYTHON_ENABLE_WORKER_EXTENSIONS=1` 添加到[应用设置](functions-how-to-use-azure-function-app-settings.md#settings)。
+1. 将扩展模块导入到函数触发器中。 
+1. 配置扩展实例（如果需要）。 应在扩展文档中调出配置要求。 
+
+> [!IMPORTANT]
+> Microsoft 不支持或保证第三方 Python 辅助角色扩展库。 必须确保函数应用中使用的任何扩展都可信，并且你将承担使用恶意或编写不当的扩展的全部风险。 
+
+第三方应提供有关如何在函数应用中安装并使用其特定扩展的特定文档。 有关如何使用扩展的基本示例，请参阅[使用扩展](develop-python-worker-extensions.md#consume-your-extension-locally)。 
+
+下面是在函数应用中按范围使用扩展的示例：
+
+# <a name="application-level"></a>[应用程序级](#tab/application-level)
+
+```python
+# <project_root>/requirements.txt
+application-level-extension==1.0.0
+```
+
+```python
+# <project_root>/Trigger/__init__.py
+
+from application_level_extension import AppExtension
+AppExtension.configure(key=value)
+
+def main(req, context):
+  # Use context.app_ext_attributes here
+```
+# <a name="function-level"></a>[函数级](#tab/function-level)
+```python
+# <project_root>/requirements.txt
+function-level-extension==1.0.0
+```
+
+```python
+# <project_root>/Trigger/__init__.py
+
+from function_level_extension import FuncExtension
+func_ext_instance = FuncExtension(__file__)
+
+def main(req, context):
+  # Use func_ext_instance.attributes here
+```
+---
+
+### <a name="creating-extensions"></a>创建扩展 
+
+扩展是由已创建可集成到 Azure Functions 中的功能的第三方库开发人员创建的。  扩展开发人员设计、实现和发布 Python 包，其中包含专为在函数执行上下文中运行而设计的自定义逻辑。 这些扩展可以发布到 PyPI 注册表或 GitHub 存储库。
+
+若要了解如何创建、打包、发布和使用 Python 辅助角色扩展包，请参阅[为 Azure Functions 开发 Python 辅助角色扩展](develop-python-worker-extensions.md)。
+
+#### <a name="application-level-extensions"></a>应用程序级扩展
+
+继承自应用程序范围内的 [`AppExtensionBase`](https://github.com/Azure/azure-functions-python-library/blob/dev/azure/functions/extension/app_extension_base.py) 运行的扩展。 
+
+`AppExtensionBase` 公开以下抽象类方法以供你实现：
+
+| 方法 | 说明 |
+| --- | --- |
+| **`init`** | 在导入扩展后调用。 |
+| **`configure`** | 需要时从函数代码中调用以配置扩展。 |
+| **`post_function_load_app_level`** | 在加载函数后立即调用。 函数名称和函数目录传递给扩展。 请记住，函数目录是只读的，在此目录中写入本地文件的任何尝试都会失败。 |
+| **`pre_invocation_app_level`** | 在触发函数前立即调用。 函数上下文和函数调用参数传递给扩展。 通常可以传递上下文对象中的其他属性，以供函数代码使用。 |
+| **`post_invocation_app_level`** | 在函数执行完成后立即调用。 函数上下文、函数调用参数和调用返回对象传递给扩展。 此实现是验证是否成功执行了生命周期挂钩的好方法。 |
+
+#### <a name="function-level-extensions"></a>函数级扩展
+
+继承自特定函数触发器中的 [FuncExtensionBase](https://github.com/Azure/azure-functions-python-library/blob/dev/azure/functions/extension/func_extension_base.py) 运行的扩展。 
+
+`FuncExtensionBase` 公开以下抽象类方法以进行实现：
+
+| 方法 | 说明 |
+| --- | --- |
+| **`__init__`** | 此方法是扩展的构造函数。 当在特定函数中初始化扩展实例时，将调用此方法。 实现此抽象方法时，可能需要接受 `filename` 参数，并将其传递给父级的方法 `super().__init__(filename)` 以进行适当的扩展注册。 |
+| **`post_function_load`** | 在加载函数后立即调用。 函数名称和函数目录传递给扩展。 请记住，函数目录是只读的，在此目录中写入本地文件的任何尝试都会失败。 |
+| **`pre_invocation`** | 在触发函数前立即调用。 函数上下文和函数调用参数传递给扩展。 通常可以传递上下文对象中的其他属性，以供函数代码使用。 |
+| **`post_invocation`** | 在函数执行完成后立即调用。 函数上下文、函数调用参数和调用返回对象传递给扩展。 此实现是验证是否成功执行了生命周期挂钩的好方法。 |
 
 ## <a name="cross-origin-resource-sharing"></a>跨域资源共享
 

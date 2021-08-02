@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0490334c759da6ef7ba7ff2535f5f561cdb7a9bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b23b4a60795dc01667df3c6a9efa8e9cde4aeda9
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92369805"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409894"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory 中基于组的许可是什么？
 
@@ -30,7 +30,7 @@ Microsoft 付费云服务（如 Microsoft 365、企业移动性 + 安全性、Dy
 为了解决这些难题，Azure AD 现在提供基于组的许可功能。 可将一个或多个产品许可证分配给某个组。 Azure AD 确保将许可证分配给该组的所有成员。 将向加入该组的任何新成员分配适当的许可证。 在这些成员离开组时，将删除相应的许可证。 使用此许可管理功能后，将不再需要通过 PowerShell 自动执行许可证管理以反映每个用户的组织和部门结构变化。
 
 ## <a name="licensing-requirements"></a>许可要求
-必须具有以下许可证之一才能使用基于组的许可：
+对于受益于基于组的许可的每个用户，你必须具有以下许可证之一：
 
 - Azure AD Premium P1 及更高版本的付费或试用订阅
 

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 04ff93f8fa19e6ec18ebf606291a09f558d93529
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 8f99516b0c93dfacfecdfa07f6f72a26effedd44
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108075908"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901936"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用 Azure 资源托管标识授予对 Blob 和队列数据的访问权限
 
@@ -71,7 +71,7 @@ Azure 标识客户端库的优点在于，它使你可以使用相同的代码�
 
 如果没有足够的权限将角色分配给服务主体，可能需要请求帐户所有者或管理员来执行相关角色分配。
 
-下面的示例使用 Azure CLI 创建新服务主体，并将帐户范围内的“存储 Blob 数据读取者”角色分配给它 
+下面的示例使用 Azure CLI 创建新服务主体，并为其分配了帐户范围内的“存储 Blob 数据参与者”角色
 
 ```azurecli-interactive
 az ad sp create-for-rbac \
@@ -168,7 +168,7 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure RBAC 管理对存储数据的访问权限](./storage-auth-aad-rbac-portal.md)。
-- [将 Azure AD 与存储应用程序一起使用](storage-auth-aad-app.md)。
+- [分配 Azure 角色以访问 blob 数据](../blobs/assign-azure-role-data-access.md)
+- [将 Azure AD 与存储应用程序一起使用](storage-auth-aad-app.md)
 - [使用 Azure AD 凭据运行 PowerShell 命令以访问 blob 数据](../blobs/authorize-data-operations-powershell.md)
 - [教程：使用托管标识从应用服务访问存储](../../app-service/scenario-secure-app-access-storage.md)

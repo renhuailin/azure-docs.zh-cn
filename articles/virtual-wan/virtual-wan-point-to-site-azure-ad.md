@@ -7,12 +7,13 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: alzam
-ms.openlocfilehash: f16a7675805fa2665c25b5d4a9c3847b710ec71b
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 59b93327aae8a400b4d1ab6c9ea3f67e5bd9dd03
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164194"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110703366"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>为用户 VPN 配置 Azure Active Directory 身份验证
 
@@ -33,9 +34,9 @@ ms.locfileid: "108164194"
 
 ![虚拟 WAN 示意图](./media/virtual-wan-about/virtualwanp2s.png)
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>准备阶段
 
-在开始配置之前，请验证你是否符合以下条件：
+在开始配置之前，请验证是否符合以下条件：
 
 * 你拥有一个要连接到的虚拟网络。 确认本地网络的任何子网都不会与要连接到的虚拟网络重叠。 要在 Azure 门户中创建虚拟网络，请参阅[快速入门](../virtual-network/quick-create-portal.md)。
 
@@ -92,27 +93,28 @@ ms.locfileid: "108164194"
 
    ![屏幕截图显示了“创建用户 VPN 配置”链接。](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
 
-3. 输入信息，然后单击“创建”。
-
+3. 在“基本”下，指定以下参数
    * **配置名称** - 输入要用来调用用户 VPN 配置的名称。
-   * **隧道类型** - 选择“OpenVPN”。
+    * **隧道类型** - 从下拉菜单中选择“OpenVPN”。
+4. 导航到“Azure Active Directory”。 将“Azure Active Directory”切换为“是”，并基于租户详细信息提供以下值。 
    * **身份验证方法** - 选择“Azure Active Directory”。
    * **受众** - 键入在 Azure AD 租户中注册的 [Azure VPN](openvpn-azure-ad-tenant.md) 企业应用程序的应用程序 ID。 
    * **颁发者** - `https://sts.windows.net/<your Directory ID>/`
    * **AAD 租户** - `https://login.microsoftonline.com/<your Directory ID>`
   
-   ![屏幕截图显示了可在其中输入值的“新建用户 VPN 配置”窗格。](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
+   ![屏幕截图显示了可在其中输入值的“新建用户 VPN 配置”窗格。](media/virtual-wan-point-to-site-azure-ad/configure-aad-profile.png)
 
 ## <a name="edit-hub-assignment"></a><a name="hub"></a>编辑中心分配
 
 1. 导航到虚拟 WAN 下的“中心”边栏选项卡。 
 2. 选择要将 VPN 服务器配置关联到的中心，然后单击省略号图标 (...)。
 
-   ![屏幕截图显示从菜单选择了“编辑虚拟中心”。](media/virtual-wan-point-to-site-azure-ad/p2s4.jpg)
+   ![屏幕截图显示从菜单选择了“编辑虚拟中心”。](media/virtual-wan-point-to-site-azure-ad/select-hub.png)
 3. 单击“编辑虚拟中心”。
 4. 选中“包括点到站点网关”复选框，然后选择所需的网关缩放单元。
 
-   ![屏幕截图显示“编辑虚拟中心”对话框，可在该对话框中选择网关缩放单元。](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
+   :::image type="content" source="./media/virtual-wan-point-to-site-azure-ad/edit-virtual-hub.png" alt-text="屏幕截图显示“编辑虚拟中心”对话框，可在该对话框中选择网关缩放单元。"lightbox="./media/virtual-wan-point-to-site-azure-ad/edit-virtual-hub.png":::
+
 5. 输入用于为 VPN 客户端分配 IP 地址的“地址池”  。
 6. 单击“确认”  。
 7. 完成此操作最多需要 30 分钟。

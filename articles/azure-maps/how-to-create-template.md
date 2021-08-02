@@ -1,17 +1,17 @@
 ---
-title: 使用 ARM 模板创建 Azure Maps 帐户 | Microsoft Azure Maps
-description: 了解如何使用 Azure 资源管理器 (ARM) 模板创建 Azure Maps 帐户。
+title: 使用 Azure 资源管理器模板在 Azure Maps 中创建 Azure Maps 帐户
+description: 了解如何使用 Azure 资源管理器模板创建 Azure Maps 帐户。
 author: philmea
 ms.author: philmea
-ms.date: 10/20/2020
+ms.date: 04/27/2021
 ms.topic: how-to
 ms.service: azure-maps
-ms.openlocfilehash: c715c0639e962f76f669515c1d2c826c8cf6cc9e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cb030eb74523d72035fd093f7766e55a2e668867
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92525057"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985339"
 ---
 # <a name="create-your-azure-maps-account-using-an-arm-template"></a>使用 ARM 模板创建 Azure Maps 帐户
 
@@ -21,7 +21,7 @@ ms.locfileid: "92525057"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-maps-create%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.maps%2Fmaps-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,9 +31,9 @@ ms.locfileid: "92525057"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-maps-create/)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/maps-create/)。
 
-:::code language="json" source="~/quickstart-templates/101-maps-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.maps/maps-create/azuredeploy.json":::
 
 Azure Maps 帐户资源在此模板中定义：
 
@@ -43,7 +43,7 @@ Azure Maps 帐户资源在此模板中定义：
 
 1. 选择下图登录到 Azure 并打开一个模板。 该模板将用于创建 Azure Maps 帐户。
 
-    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-maps-create%2Fazuredeploy.json)
+    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.maps%2Fmaps-create%2Fazuredeploy.json)
 
 2. 选择或输入以下值。
 
@@ -57,7 +57,7 @@ Azure Maps 帐户资源在此模板中定义：
     * **帐户名称**：输入 Azure Maps 帐户的名称，该名称必须是全局唯一的。
     * **定价层**：选择适当的定价层，模板的默认值为 S0。
 
-3. 选择“查看 + 创建”。 
+3. 选择“查看 + 创建”。
 4. 确认审阅页上的设置，然后单击“创建”。 Azure Maps 部署成功后，你会收到一条通知：
 
     ![ARM 模板部署门户通知](./media/how-to-create-template/resource-manager-template-portal-deployment-notification.png)

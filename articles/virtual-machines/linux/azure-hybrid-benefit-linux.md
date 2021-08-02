@@ -4,7 +4,7 @@ description: 了解 Azure 混合权益如何帮助你在 Azure 上运行的 Linu
 services: virtual-machines
 documentationcenter: ''
 author: mathapli
-manager: westonh
+manager: rochakm
 ms.service: virtual-machines
 ms.subservice: azure-hybrid-benefit
 ms.collection: linux
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 17b2e260f9a90ddda6e246058cefb1bec8b1ac5e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5b81883b8c9556500ec6b6bd994d50a1f4202808
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101695475"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949906"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Azure 混合权益如何应用于 Linux 虚拟机
 
@@ -39,7 +39,7 @@ Azure 混合权益是一种许可权益，可帮助你显著降低在云中运�
 
 Azure 混合权益适用于 Azure 市场中的所有 RHEL 和 SLES PAYG 映像。 该权益目前不适用于 RHEL 或 SLES BYOS 映像或 Azure 市场中的自定义映像。
 
-如果已在 Linux VM 上使用预留实例、Azure 专用主机实例和 SQL 混合权益，则这些权益不符合 Azure 混合权益的资格。
+如果已在 Linux VM 上使用 Azure 专用主机实例和 SQL 混合权益，则这些权益不符合 Azure 混合权益的资格。
 
 ## <a name="get-started"></a>入门
 
@@ -74,7 +74,7 @@ RHEL 的 Azure 混合权益适用于同时满足以下两个条件的 Red Hat �
 
 可以通过访问左侧的“配置”选项并按照其中的步骤进行操作，对现有 VM 启用权益。 可以在 VM 创建体验期间对新 VM 启用权益。
 
-### <a name="azure-portal-example-to-enable-the-benefit-for-an-existing-vm"></a>为现有 VM 启用权益的 Azure 门户示例：
+### <a name="azure-portal-example-to-enable-the-benefit-during-creation-of-vm"></a>在创建 VM 期间启用权益的 Azure 门户示例：
 1. 访问 [Microsoft Azure 门户](https://portal.azure.com/)
 1. 请在门户中转到“创建虚拟机”页。
  ![创建 VM 时的 AHB](./media/azure-hybrid-benefit/create-vm-ahb.png)
@@ -84,16 +84,11 @@ RHEL 的 Azure 混合权益适用于同时满足以下两个条件的 Red Hat �
 1. 检查“配置”边栏选项卡，会看到选项已启用。 
 ![创建后的 AHB 配置边栏选项卡](./media/azure-hybrid-benefit/create-configuration-blade.png)
 
-### <a name="azure-portal-example-to-enable-the-benefit-during-creation-of-vm"></a>在创建 VM 期间启用权益的 Azure 门户示例：
+### <a name="azure-portal-example-to-enable-the-benefit-for-an-existing-vm"></a>为现有 VM 启用权益的 Azure 门户示例：
 1. 访问 [Microsoft Azure 门户](https://portal.azure.com/)
 1. 打开要应用转换的虚拟机页。
 1. 在左侧转到“配置”选项。 你会看到“许可”部分。 若要启用 AHB 转换，请选中“是”单选按钮，并选中“确认”复选框。
 ![创建后的 AHB 配置边栏选项卡](./media/azure-hybrid-benefit/create-configuration-blade.png)
-
-
->[!NOTE]
-> 如果已创建 RHEL 或 SLES PAYG 市场映像的自定义快照或共享映像 (SIG)，则只能使用 Azure CLI 启用 Azure 混合权益 。 这是已知限制，当前没有在 Azure 门户上也提供此功能的日程表。
-
 
 
 ## <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>在 Azure CLI 中启用和禁用权益
@@ -179,6 +174,17 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 若要对 SLES VM 使用 Azure 混合权益，以及有关从 SLES PAYG 迁移到 BYOS 或从 SLES BYOS 迁移到 PAYG 的信息，请参阅 [SUSE Linux Enterprise 和 Azure 混合权益](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/)。 
 
+## <a name="azure-hybrid-benefit-on-reserved-instances"></a>预留实例的 Azure 混合权益 
+
+Azure 预留项（Azure 虚拟机预留实例）通过承诺多种产品的一年期或三年期计划，帮助你节省资金。 在[此处](../../cost-management-billing/reservations/save-compute-costs-reservations.md)了解有关预留实例的更多信息。 Azure 混合权益适用于[虚拟机预留实例 (RI)](/azure/cost-management-billing/reservations/save-compute-costs-reservations#charges-covered-by-reservation)。 
+
+这意味着，如果你已使用 RI 按折扣费率支付计算成本，则可对 RHEL 及其中 SUSE 的许可成本应用 AHB 权益。 将 AHB 权益应用于 RI 实例的步骤与将其应用于常规 VM 的步骤完全相同。
+![RI 的 AHB](./media/azure-hybrid-benefit/reserved-instances.png)
+
+>[!NOTE]
+>如果已在 Azure 市场为 RHEL 或 SUSE PAYG 软件购买预留服务，请等到预留期结束后再使用 Azure 混合权益。
+
+
 ## <a name="frequently-asked-questions"></a>常见问题
 问：我是否可以将 `RHEL_BYOS` 许可证类型用于 SLES 映像，或是反过来操作？
 
@@ -206,11 +212,11 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 问：是否可以在 RHEL 和 SLES 的虚拟机规模集上使用 Azure 混合权益？
 
-答：否，不能。 虚拟机规模集目前不在 RHEL 和 SLES 的 Azure 混合权益范围内。
+答：可以，RHEL 和 SLES 的虚拟机规模集 Azure 混合权益适用于所有用户。 用户可在[此处](../../virtual-machine-scale-sets/azure-hybrid-benefit-linux.md)了解有关此权益及其使用方法的更多信息。 
 
 问：是否可以在 RHEL 和 SLES 的预留实例上使用 Azure 混合权益？
 
-答：否，不能。 预留实例目前不在 RHEL 和 SLES 的 Azure 混合权益范围内。
+答：可以，RHEL 和 SLES 预留实例的 Azure 混合权益适用于所有用户。 用户可在[此处](#azure-hybrid-benefit-on-reserved-instances)了解有关此权益及其使用方法的更多信息。
 
 问：是否可以在为 RHEL 上的 SQL Server 映像部署的虚拟机上使用 Azure 混合权益？
 
@@ -230,3 +236,4 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 ## <a name="next-steps"></a>后续步骤
 * [了解如何使用 Azure CLI 创建和更新 VM 以及添加许可证类型（RHEL_BYOS、SLES_BYOS）以获得 Azure 混合权益](/cli/azure/vm)
+* RHEL 和 SLES 的虚拟机规模集 Azure 混合权益适用于所有用户。 用户可在[此处](../../virtual-machine-scale-sets/azure-hybrid-benefit-linux.md)了解有关此权益及其使用方法的更多信息。

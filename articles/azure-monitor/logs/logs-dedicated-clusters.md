@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 1fbb8f82366ee961d10ce8a6bc098128bad6555a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 3b4a98e37c16feeb2ad8203caaeb5bc231761379
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041002"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004216"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor 日志专用群集
 
@@ -21,7 +22,7 @@ Azure Monitor 日志专用群集是一个部署选项，可为 Azure Monitor 日
 - **[客户管理的密钥](../logs/customer-managed-keys.md)** - 使用由客户提供和控制的密钥对群集数据进行加密。
 - **[密码箱](../logs/customer-managed-keys.md#customer-lockbox-preview)** - 客户可以控制 Microsoft 支持工程师的数据访问请求。
 - **[双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)** 可以在其中一种加密算法或密钥可能被泄露的情况下提供保护。 在这种情况下，附加的加密层会继续保护你的数据。
-- **[多工作区](../logs/cross-workspace-query.md)** - - 如果客户使用多个工作区进行生产，则使用专用群集可能是合理的。 如果所有工作区都在同一群集上，则“跨工作区”查询会运行更快。 使用专用群集还可能更具成本效益，因为分配的产能预留层考虑了所有群集引入并应用于其所有工作区，即使其中一些工作区很小并且没有资格享受产能预留折扣。
+- **[多工作区](../logs/cross-workspace-query.md)** - - 如果客户使用多个工作区进行生产，则使用专用群集可能是合理的。 如果所有工作区都在同一群集上，则“跨工作区”查询会运行更快。 使用专用群集还可能更具成本效益，因为分配的承诺层级考虑了所有群集引入并应用于其所有工作区，即使其中一些工作区很小并且没有资格享受承诺层级折扣。
 
 专用群集要求客户使用每天至少 1 TB 的数据引入产能进行提交。 迁移到专用群集很简单。 无数据丢失或服务中断。 
 
@@ -38,19 +39,19 @@ Azure Monitor 日志专用群集是一个部署选项，可为 Azure Monitor 日
 
 ## <a name="cluster-pricing-model"></a>群集定价模型
 
-Log Analytics 专用群集使用产能预留定价模型，该模型至少为 1000 GB/天。 将按即用即付费率对超出预留级别的任何使用量进行计费。  有关产能预留的定价信息，请参阅 [Azure Monitor 定价页]( https://azure.microsoft.com/pricing/details/monitor/)。  
+Log Analytics 专用群集使用承诺层级定价模型，该模型至少为 1000 GB/天。 高于该层级别的任何使用量都将按该承诺层的每 GB 有效费率计费。  [Azure Monitor 定价页]( https://azure.microsoft.com/pricing/details/monitor/)提供了承诺层级定价信息。  
 
-群集产能预留级别将使用 `Sku` 下的 `Capacity` 参数以编程方式通过 Azure 资源管理器进行配置。 `Capacity` 指定 GB 为单位，并且值可以为 1000 GB/天或更大，增量为 100 GB/天。
+使用 `Sku` 下的 `Capacity` 参数，通过 Azure 资源管理器以编程方式配置群集承诺层级别。 `Capacity` 以 GB 为单位指定，其值可以是 1000、2000 或 5000 GB/天。
 
 对于群集上的使用情况，有两种计费模式。 配置群集时，可通过 `billingType` 参数指定这些计费模式。 
 
 1. **群集**：在此情况下（其为默认情况），引入数据的计费在群集级别完成。 每个与群集关联的工作区中的引入数据数量将进行聚合，以计算该群集的每日帐单。 
 
-2. **工作区**：群集的产能预留成本按比例分配给群集中的工作区（在考虑了为每个工作区从 [Azure 安全中心](../../security-center/index.yml)进行每节点分配之后。）
+2. **工作区**：群集的承诺层级成本按比例归属于群集中的工作区，按每个工作区的数据引入量计算（在计算了 [Azure 安全中心](../../security-center/index.yml)的每个工作区的每个节点的分配之后）。此定价模型的完整详细信息在[此处]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)说明。 
 
-如果工作区使用旧的每节点定价层，则当其链接到群集时，它将根据群集的产能预留引入到的数据来计费，而不再是按节点计费。 将继续应用来自 Azure 安全中心的每节点数据分配。
+如果工作区使用旧的每节点定价层，则当其链接到群集时，它将根据群集的承诺层级引入到的数据来计费，而不再是按节点计费。 将继续应用来自 Azure 安全中心的按节点数据分配。
 
-有关 Log Analytics 专用群集的计费的详细信息，请参阅[此处]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)。
+[此处]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)提供了 Log Analytics 专用群集计费的完整详细信息。
 
 ## <a name="asynchronous-operations-and-status-check"></a>异步操作和状态检查
 
@@ -76,7 +77,7 @@ Authorization: Bearer <token>
 - **ClusterName**：用于管理目的。 不会向用户公开此名称。
 - **ResourceGroupName**：对于任何 Azure 资源，群集都属于一个资源组。 建议使用中心 IT 资源组，因为群集通常由组织中的许多团队共享。 有关更多设计注意事项，请查看[设计 Azure Monitor 日志部署](../logs/design-logs-deployment.md)
 - **位置**：群集位于特定的 Azure 区域中。 只有位于此区域中的工作区才能链接到此群集。
-- **SkuCapacity**：创建群集资源时，必须指定产能预留级别 (SKU) 。 产能预留级别可以在每天 1000 GB 到 3000 GB 之间。 如果需要，你可以在以后按 100 进行增减。 如果你需要高于每天 3000 GB 的产能预留级别，请通过 LAIngestionRate@microsoft.com 与我们联系。 有关群集成本的更多信息，请参阅[管理 Log Analytics 群集的成本](./manage-cost-storage.md#log-analytics-dedicated-clusters)
+- **SkuCapacity**：创建群集资源时必须指定承诺层级 (sku)。 承诺层级可以设置为 1000、2000 或 5000 GB/天。 有关群集成本的更多信息，请参阅[管理 Log Analytics 群集的成本](./manage-cost-storage.md#log-analytics-dedicated-clusters)。 请注意，承诺层级以前称为产能预留。 
 
 创建群集资源后，可以编辑其他属性，如 sku、keyVaultProperties 或 billingType  。 参阅下面的更多详细信息。
 
@@ -298,8 +299,12 @@ Authorization: Bearer <token>
 
 - **keyVaultProperties** - 更新 Azure Key Vault 中的密钥。 请参阅[为群集更新密钥标识符详细信息](../logs/customer-managed-keys.md#update-cluster-with-key-identifier-details)。 它包含以下参数：KeyVaultUri、KeyName、KeyVersion  。 
 - **billingType** - billingType 属性可确定群集资源及其数据的计费归属 ：
-  - **群集**（默认）- 群集的产能预留成本归因于群集资源。
-  - **工作区** - 群集的产能预留成本按比例分配给群集中的工作区，如果当天引入的总数据在产能预留之下，则会对群集资源的一些使用进行收费。 请参阅 [Log Analytics 专用群集](./manage-cost-storage.md#log-analytics-dedicated-clusters)以了解有关群集定价模型的更多信息。 
+  - **群集**（默认）- 群集的成本归属于群集资源。
+  - **工作区** - 群集的成本按比例归属于群集中的工作区，如果一天中的引入数据总量低于承诺层级，则会向群集资源的部分使用量进行计费。 请参阅 [Log Analytics 专用群集](./manage-cost-storage.md#log-analytics-dedicated-clusters)以了解有关群集定价模型的更多信息。
+  - **标识** - 用于对 Key Vault 进行身份验证的标识。 这可以是系统分配的或用户分配的。
+
+>[!IMPORTANT]
+>群集更新不应在同一操作中同时包含标识和密钥标识符详细信息。 如果两者都需要更新，则应该在两个连续操作中进行更新。
 
 > [!NOTE]
 > PowerShell 不支持 billingType 属性。
@@ -391,9 +396,9 @@ Authorization: Bearer <token>
 
 
 
-### <a name="update-capacity-reservation-in-cluster"></a>更新群集中的容量预留
+### <a name="update-commitment-tier-in-cluster"></a>更新群集中的承诺层级
 
-链接工作区的数据量随时间变化时，建议适当地更新容量预留级别。 容量以 GB 为单位，并且值可以为 1000 GB/天或更大，增量为 100 GB/天。 请注意，无需提供完整的 REST 请求正文，但应包含 sku。
+链接工作区的数据量随时间变化时，建议适当地更新承诺层级别。 该层级以 GB 为单位指定，其值可以是 1000、2000 或 5000 GB/天。 请注意，无需提供完整的 REST 请求正文，但应包含 sku。
 
 **CLI**
 
@@ -513,6 +518,8 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName {resource-group-nam
 - 你可以将工作区链接到群集，然后将其取消链接。 在 30 天内，工作区与特定工作区的链接数限制为 2。
 
 - 目前不支持将群集移动到另一个资源组或订阅。
+
+- 群集更新不应在同一操作中同时包含标识和密钥标识符详细信息。 如果两者都需要更新，则应该在两个连续操作中进行更新。
 
 - 当前不能在中国使用密码箱。 
 

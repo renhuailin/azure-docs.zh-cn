@@ -3,21 +3,21 @@ title: Azure Maps 绘图转换错误和警告
 description: 了解在使用 Azure Maps 转换服务时可能会看到的转换错误和警告。 阅读关于如何解决这些错误和警告的建议，以及一些示例。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 05/21/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: cecc19f0984ce1801d50e5cbda73e98a01e2825b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd6c20277098d0a2d1909cfb93243dd8e3bbcca0
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96906210"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110793229"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>绘图转换错误和警告
 
-使用 [Azure Maps 转换服务](/rest/api/maps/conversion)，可以将上传的绘图包转换为定位数据。 绘图包必须符合[绘图包要求](drawing-requirements.md)。 如果不符合一个或多个要求，转换服务就会返回错误或警告。 本文列出了转换错误和警告代码，以及关于如何解决这些问题的建议。 此外，还提供了一些可能会导致转换服务返回这些代码的绘图示例。
+使用 [Azure Maps 转换服务](/rest/api/maps/v2/conversion)，可以将上传的绘图包转换为定位数据。 绘图包必须符合[绘图包要求](drawing-requirements.md)。 如果不符合一个或多个要求，转换服务就会返回错误或警告。 本文列出了转换错误和警告代码，以及关于如何解决这些问题的建议。 此外，还提供了一些可能会导致转换服务返回这些代码的绘图示例。
 
 如果有任何转换警告，转换服务也会成功。 尽管如此，仍建议你审阅并解决所有警告。 警告表示转换的一部分被忽略或自动修复。 如果不解决警告，可能会导致后续进程出错。
 
@@ -330,7 +330,7 @@ ms.locfileid: "96906210"
 若要修复 invalidUserData 错误，请验证：
 
 * 是否为已上传包提供了正确的 `udid`。
-* 是否已为用于上传绘图包的 Azure Maps 帐户启用 Azure Maps Creator（预览版）。
+* 是否为用于上传绘图包的 Azure Maps 帐户启用了 Azure Maps Creator。
 * 对转换服务的 API 请求是否包含用于上传绘图包的 Azure Maps 帐户的订阅密钥。
 
 ### <a name="dwgerror"></a>**dwgError**
@@ -506,4 +506,7 @@ manifest.json 文件因 JSON 格式或语法错误而无法读取。 若要详�
 > [如何使用 Azure Maps 绘图错误可视化工具](drawing-error-visualizer.md)
 
 > [!div class="nextstepaction"]
-> [适用于室内地图的 Creator（预览版）](creator-indoor-maps.md)
+> [绘图包指南](drawing-package-guide.md)
+
+> [!div class="nextstepaction"]
+> [适用于室内定位的 Creator](creator-indoor-maps.md)

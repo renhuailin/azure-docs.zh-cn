@@ -1,7 +1,7 @@
 ---
-title: 公共区域与主权区域之间的平等性
+title: 跨云区域的功能可用性
 titleSuffix: Azure Machine Learning
-description: 本文列出了公有云与 Azure 政府、Azure 德国和 Azure 中国世纪互联区域之间的功能平等性。
+description: 本文列出了公有云与 Azure 政府、Azure 德国和 Azure 中国世纪互联区域之间的功能可用性差异。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,34 +9,30 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: andzha
 author: Anurzeuii
-ms.date: 12/21/2020
+ms.date: 06/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: b0a720b1b51c2f1bafa581e75cb8ab00b15a4b2d
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 0e8c63827ba6e2e022e0d7876952b0a159c1e569
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750422"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984619"
 ---
-# <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure 机器学习主权云平等性
+# <a name="azure-machine-learning-feature-availability-across-clouds-regions"></a>Azure 机器学习跨云区域的功能可用性
 
-了解主权云区域中可用的 Azure 机器学习功能。 
+了解可在 Azure 政府、Azure 德国和 Azure 中国世纪互联区域使用的 Azure 机器学习功能。 
 
-在全球 Azure 区域列表中，有多个为特定市场提供服务的“主权”区域。 例如，Azure 政府和 Azure 中国世纪互联区域。 目前，Azure 机器学习部署到以下主权云区域中：
+在全球 Azure 区域列表中，除了公有云区域之外，还有多个区域为特定市场提供服务。 例如，Azure 政府和 Azure 中国世纪互联区域。 除了公有云区域外，Azure 机器学习还部署到以下区域：
 
 * Azure 政府区域 **美国-亚利桑那** 和 **美国-弗吉尼亚**。
 * Azure 中国世纪互联区域 **中国东部 2**。
 
-> [!TIP]
-> 为了区分主权和非主权区域，本文将使用术语“公有云”来指代非主权区域。
-
-我们的目标是在公有云与主权区域之间提供最大的平等性。 所有 Azure 机器学习功能在我们的公有云中正式发布后，将在 **30 天内** 在这些区域中提供。 我们还在这些区域中启用选定数量的预览功能。 下面显示了我们的主权云与公有云之间的当前平等性差异。
-
+本文档其余部分的信息提供了有关这些区域中可用的 Azure 机器学习功能的信息，以及有关使用这些功能的区域特定信息。
 ## <a name="azure-government"></a>Azure Government 
 
 | 功能 | 公有云状态  | 美国-弗吉尼亚 | 美国-亚利桑那| 
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|:-------------:|
-| **自动化机器学习** | | | |
+| **[自动化机器学习](concept-automated-ml.md)** | | | |
 | 在笔记本中创建和运行试验                                    | GA                   | YES                | YES         |
 | 在工作室 Web 体验中创建和运行试验                        | 公共预览版       | YES                | YES         |
 | 行业领先的预测功能                                  | GA                   | YES                | YES         |
@@ -44,7 +40,7 @@ ms.locfileid: "109750422"
 | 大数据支持（最多 100 GB）                                          | 公共预览版       | YES                | YES         |
 | Azure Databricks 集成                                              | GA                   | 是                 | 是          |
 | SQL、CosmosDB 和 HDInsight 集成                                   | GA                   | YES                | YES         |
-| **机器学习管道** |   |  | | 
+| **[机器学习管道](concept-ml-pipelines.md)** |   |  | | 
 | 使用 Azure ML SDK 创建、运行和发布管道                   | GA                   | YES                | YES         |
 | 使用 Azure ML SDK 创建管道终结点                           | GA                   | YES                | YES         |
 | 使用 Azure ML SDK 创建、编辑和删除计划的管道运行 | GA                   | 是*               | 是*        |
@@ -52,62 +48,62 @@ ms.locfileid: "109750422"
 | 在 Azure ML 设计器中创建、运行、可视化和发布管道          | GA      | YES                | YES         |
 | Azure Databricks 与 ML 管道的集成                             | GA                   | 是                 | 是          |
 | 在 Azure ML 设计器中创建管道终结点                             | GA      | YES                | YES         |
-| **集成式笔记本** |   |  | | 
+| **[集成式笔记本](how-to-run-jupyter-notebooks.md)** |   |  | | 
 | 工作区笔记本和文件共享                                        | GA                   | YES                | YES         |
 | R 和 Python 支持                                                       | GA                   | YES                | YES         |
 | 虚拟网络支持                                                    | 公共预览版       | 是                 | 是          |
-| **计算实例** |   |  | | 
+| **[计算实例](concept-compute-instance.md)** |   |  | | 
 | 集成式笔记本的托管计算实例                         | GA                   | YES                | YES         |
 | Jupyter、JupyterLab 集成                                            | GA                   | YES                | YES         |
 | 虚拟网络 (VNet) 支持                                             | 公共预览版       | YES                | YES         |
 | **SDK 支持** |  |  | | 
-| R SDK 支持                                                              | 公共预览版       | YES                | YES         |
-| Python SDK 支持                                                         | GA                   | YES                | YES         |
-| **安全性** |   | | | 
+| [R SDK 支持](https://azure.github.io/azureml-sdk-for-r/reference/index.html)                                                              | 公共预览版       | YES                | YES         |
+| [Python SDK 支持](/python/api/overview/azure/ml/)                                                         | GA                   | YES                | YES         |
+| **[安全性](concept-enterprise-security.md)** |   | | | 
 | 虚拟网络 (VNet) 训练支持                                | GA                   | YES                | YES         |
 | 虚拟网络 (VNet) 推理支持                               | GA                   | YES                | YES         |
 | 对终结点身份验证评分                                            | 公共预览版       | YES                | YES         |
-| 工作区专用链接                                                     | 公共预览版       | 是                 | 是          |
+| 工作区专用终结点                                                 | 公共预览版       | 是                 | 是          |
 | VNet 后的 ACI                                                            | 公共预览版       | 是                 | 是          |
 | VNet 后的 ACR                                                            | 公共预览版       | 是                 | 是          |
 | AKS 群集的专用 IP                                                  | 公共预览版       | 是                 | 是          |
 | **计算** |   | | |
-| 跨工作区配额管理                                         | GA                   | YES                | YES         |
-| **用于机器学习的数据** |   | | |
+| [跨工作区配额管理](how-to-manage-quotas.md)                                         | GA                   | YES                | YES         |
+| **[用于机器学习的数据](concept-data.md)** |   | | |
 | 通过 SDK 创建、查看或编辑数据集和数据存储                  | GA                   | YES                | YES         |
 | 通过 UI 创建、查看或编辑数据集和数据存储                   | GA                   | YES                | YES         |
 | 通过 SDK 查看、编辑或删除数据集偏移监视器                   | 公共预览版       | YES                | YES         |
 | 通过 UI 查看、编辑或删除数据集偏移监视器                    | 公共预览版       | YES                | YES         |
 | **机器学习生命周期** |   | | |
-| 模型分析                                                            | GA                   | YES                | PARTIAL     |
-| 适用于机器学习和 Azure ML CLI 的 Azure DevOps 扩展         | GA                   | YES                | YES         |
-| 基于 FPGA 的硬件加速模型                                     | GA                   | 是                 | 是          |
-| Visual Studio Code 集成                                             | 公共预览版       | 是                 | 是          |
-| 事件网格集成                                                     | 公共预览版       | 是                 | 是          |
-| 将 Azure 流分析与 Azure 机器学习集成               | 公共预览版       | 是                 | 是          |
-| **标记** |   | | |
+| [模型分析](how-to-deploy-profile-model.md)                                                            | GA                   | YES                | PARTIAL     |
+| [Azure ML CLI 1.0](reference-azure-machine-learning-cli.md)     | GA                   | YES                | YES         |
+| [基于 FPGA 的硬件加速模型](how-to-deploy-fpga-web-service.md)                                     | GA                   | 是                 | 是          |
+| [Visual Studio Code 集成](how-to-setup-vs-code.md)                                             | 公共预览版       | 是                 | 是          |
+| [事件网格集成](how-to-use-event-grid.md)                                                     | 公共预览版       | 是                 | 是          |
+| [将 Azure 流分析与 Azure 机器学习集成](../stream-analytics/machine-learning-udf.md)               | 公共预览版       | 是                 | 是          |
+| **[标记](how-to-create-labeling-projects.md)** |   | | |
 | 标记项目管理门户                                        | GA                   | YES                | YES         |
 | 标记工具门户                                                            | GA                   | YES                | YES         |
 | 使用私人劳动力进行标记                                          | GA                   | YES                | YES         |
 | ML 辅助标记（图像分类和对象检测）           | 公共预览版       | YES                | YES         |
-| **负责的 ML** |   | | |
+| **[负责的 ML](concept-responsible-ml.md)** |   | | |
 | UI 的可说明性                                                       | 公共预览版       | 是                 | 是          |
 | 差异隐私 SmartNoise 工具包                                    | OSS                  | 是                 | 是          |
 | Azure 机器学习中用于实现数据表的自定义标记              | GA                   | 是                 | 是          |
 | 公平 AzureML 集成                                               | 公共预览版       | 是                 | 是          |
 | 可解释性 SDK                                                      | GA                   | YES                | YES         |
 | **培训** |   | | |
-| 试验日志流式处理                                              | GA                   | YES                | YES         |
-| 强化学习                                                     | 公共预览版       | 是                 | 是          |
-| 试验 UI                                                         | GA                   | YES                | YES         |
-| .NET 集成 ML.NET 1.0                                                | GA                   | YES                | YES         |
+| [试验日志流式处理](how-to-track-monitor-analyze-runs.md)                                              | GA                   | YES                | YES         |
+| [强化学习](how-to-use-reinforcement-learning.md)                                                     | 公共预览版       | 是                 | 是          |
+| [试验 UI](how-to-track-monitor-analyze-runs.md)                                                         | 公共预览版                   | YES                | YES         |
+| [.NET 集成 ML.NET 1.0](/dotnet/machine-learning/tutorials/object-detection-model-builder)                                                | GA                   | YES                | YES         |
 | **推理** |   | | |
-| 批处理推理                                                          | GA                   | YES                | YES         |
-| 带 FPGA 的 Data Box Edge                                                    | 公共预览版       | 是                 | 是          |
+| [批处理推理](tutorial-pipeline-batch-scoring-classification.md)                                                          | GA                   | YES                | YES         |
+| [带 FPGA 的 Data Box Edge](how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server)                                                    | 公共预览版       | 是                 | 是          |
 | **其他** |   | | |
-| 开放数据集                                                              | 公共预览版       | YES                | YES         |
-| 自定义认知搜索                                                    | 公共预览版       | YES                | YES         |
-| 许多模型                                                                | 公共预览版       | 是                 | 是          |
+| [开放数据集](/azure/open-datasets/samples)                                                              | 公共预览版       | YES                | YES         |
+| [自定义认知搜索](how-to-deploy-model-cognitive-search.md)                                                    | 公共预览版       | YES                | YES         |
+| [多模型解决方案加速器](https://github.com/microsoft/solution-accelerator-many-models)                                                                | 公共预览版       | 是                 | 是          |
 
 
 ### <a name="azure-government-scenarios"></a>Azure 政府方案
@@ -131,14 +127,14 @@ ms.locfileid: "109750422"
 
 
 
-### <a name="additional-azure-government-limitations"></a>Azure 政府版的其他限制
+### <a name="other-azure-government-limitations"></a>Azure 政府的其他限制
 
 * 对于 Azure 机器学习计算实例，Azure 政府版中未提供对持续时间超过 24 小时的令牌进行刷新的功能。
 * 模型分析在美国-亚利桑那区域不支持 4 CPU。   
 * 示例笔记本在需要访问公共数据的情况下可能无法在 Azure 政府版中使用。
 * IP 地址：[VNet 和强制隧道](how-to-secure-training-vnet.md#forced-tunneling)指令中使用的 CLI 命令不返回 IP 范围。 请改用[适用于 Azure 政府版的 Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=57063)。
 * 对于计划的管道，我们还提供了基于 blob 的触发器机制。 CMK 工作区不支持此机制。 若要为 CMK 工作区启用基于 blob 的触发器，必须进行其他设置。 有关详细信息，请参阅[从逻辑应用触发机器学习管道的运行](how-to-trigger-published-pipeline.md)。
-* 防火墙：使用 Azure 政府区域时，请将下述其他主机添加到防火墙设置：
+* 防火墙：使用 Azure 政府区域时，请将下述主机添加到防火墙设置：
 
     * 对于亚利桑那，请使用 `usgovarizona.api.ml.azure.us`
     * 对于弗吉尼亚，请使用 `usgovvirginia.api.ml.azure.us`
@@ -224,7 +220,7 @@ ms.locfileid: "109750422"
 
 
 
-### <a name="additional-azure-china-limitations"></a>Azure 中国的其他限制
+### <a name="other-azure-china-limitations"></a>Azure 中国的其他限制
 
 * Azure 中国具有有限的 VM SKU（特别是对于 GPU SKU 而言）。 它仅包含 NCv3 系列 (V100)。
 * REST API 终结点不同于全局 Azure。 请使用下表查找 Azure 中国区域的 REST API 终结点：

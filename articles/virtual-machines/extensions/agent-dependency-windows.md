@@ -7,13 +7,14 @@ ms.subservice: extensions
 author: mgoedtel
 ms.author: magoedte
 ms.collection: windows
-ms.date: 03/29/2019
-ms.openlocfilehash: 429cc01f466c55283985729c3395bb2137e38fa6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/01/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1de4facc6cc945b5cada2201d3da667efae793aa
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566290"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110797350"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Azure Monitor 依赖项虚拟机扩展
 
@@ -134,9 +135,32 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
     -Location WestUS 
 ```
 
+## <a name="automatic-upgrade-preview"></a>自动升级（预览版）
+现已在公共预览版中提供了自动升级依赖项扩展次要版本的新功能。 若要启用此功能，必须执行以下配置更改。
+
+-   使用[启用预览访问](../automatic-extension-upgrade.md#enabling-preview-access)中的方法之一为订阅启用该功能。
+- 将 `enableAutomaticUpgrade` 特性添加到模板。
+
+Dependency Agent 扩展版本控制方案遵循以下格式：
+
+```
+<MM.mm.bb.rr> where M = Major version number, m = minor version number, b = bug number, r = revision number.
+```
+
+`enableAutomaticUpgrade` 和 `autoUpgradeMinorVersion` 特性共同确定订阅中虚拟机的升级处理方式。
+
+| enableAutomaticUpgrade | autoUpgradeMinorVersion | 效果 |
+|:---|:---|:---|
+| true | false | 如果存在较新版本的 bb.rr，则升级依赖项代理。 例如，如果你运行的是 9.6.0.1355，而较新的版本为 9.6.2.1366，则启用的订阅中的虚拟机会升级到 9.6.2.1366。 |
+| true | true |  如果存在较新版本的 mm.bb.rr 或 bb.rr，此设置会升级依赖项代理。 例如，如果你运行的是 9.6.0.1355，而较新的版本为 9.7.1.1416，则启用的订阅中的虚拟机会升级到 9.7.1.1416。 同样，如果你运行的是 9.6.0.1355，而较新的版本为 9.6.2.1366，则启用的订阅中的虚拟机会升级到 9.6.2.1366。 |
+| false | true 或 false | 自动升级已禁用。
+
+> [!IMPORTANT]
+> 如果将 `enableAutomaticUpgrade` 添加到模板，请确保至少使用 API 版本 2019-12-01。
+
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 模块进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 模块运行以下命令：
 

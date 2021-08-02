@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 3/02/2021
-ms.openlocfilehash: 3d64336184450514d52095097343a4588213f111
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cedd161a392af9df52ed94aa4ed60379cf28776a
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034891"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413505"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>了解并解决 Azure SQL 数据库阻塞问题
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "102034891"
 在本文中，术语“连接”指的是数据库的单一登录会话。 在许多 DMV 中，每个连接都显示为会话 ID (SPID) 或 session_id。 其中每个 SPID 通常称为一个进程，尽管它不是常规意义上的单独进程上下文。 而每个 SPID 都由服务器资源和数据结构组成，这些资源和数据结构是为来自给定客户端的单一连接请求提供服务所必需的。 单个客户端应用程序可能有一个或多个连接。 从 Azure SQL 数据库的角度来看，来自单个客户端计算机上的单个客户端应用程序的多个连接与来自多个客户端应用程序或多个客户端计算机的多个连接之间没有区别；它们是原子的。 不考虑源客户端，一个连接可以阻塞另一个连接。
 
 > [!NOTE]
-> 本内容主要介绍 Azure SQL 数据库。 Azure SQL 数据库基于最新稳定版本的 Microsoft SQL Server 数据库引擎，因此很多内容是相似的，尽管故障排除选项和工具可能有所不同。 有关 SQL Server 中阻塞的详细信息，请参阅[了解并解决 SQL Server 阻塞问题](/troubleshoot/sql/performance/understand-resolve-blocking)。
+> 此内容重点介绍了 Azure SQL 数据库。 Azure SQL 数据库基于最新稳定版本的 Microsoft SQL Server 数据库引擎，因此很多内容是相似的，尽管故障排除选项和工具可能有所不同。 有关 SQL Server 中阻塞的详细信息，请参阅[了解并解决 SQL Server 阻塞问题](/troubleshoot/sql/performance/understand-resolve-blocking)。
 
 ## <a name="understand-blocking"></a>了解阻塞 
  
@@ -95,17 +95,17 @@ ms.locfileid: "102034891"
 
 请记得在目标 Azure SQL 数据库中运行每个脚本。
 
-* sp_who 和 sp_who2 命令是显示所有当前会话的旧命令。 DMV sys.dm_exec_sessions 返回结果集中更易于查询和筛选的更多数据。 需要在其他查询的核心查找 sys.dm_exec_sessions。 
+* sp_who 和 sp_who2 命令是显示所有当前会话的旧命令。 DMV `sys.dm_exec_sessions` 返回结果集中更易于查询和筛选的更多数据。 需要在其他查询的核心查找 `sys.dm_exec_sessions`。 
 
-* 如果已经标识了特定会话，可以使用 `DBCC INPUTBUFFER(<session_id>)` 查找会话提交的最后一条语句。 可以通过 sys.dm_exec_input_buffer 动态管理函数 (DMF) 返回类似的结果，该结果集提供 session_id 和 request_id，更易于查询和筛选。 例如，若要返回由 session_id 66 和 request_id 0 提交的最新查询：
+* 如果已经标识了特定会话，可以使用 `DBCC INPUTBUFFER(<session_id>)` 查找会话提交的最后一条语句。 可以通过 `sys.dm_exec_input_buffer` 动态管理函数 (DMF) 返回类似的结果，该结果集提供 session_id 和 request_id，更易于查询和筛选。 例如，若要返回由 session_id 66 和 request_id 0 提交的最新查询：
 
 ```sql
 SELECT * FROM sys.dm_exec_input_buffer (66,0);
 ```
 
-* 请参阅 sys.dm_exec_requests 并引用 blocking_session_id 列。 当 blocking_session_id = 0 时，将不会阻塞会话。 虽然 sys.dm_exec_requests 只列出当前正在执行的请求，但任何连接（活动或不活动）都将列在 sys.dm_exec_sessions 中。 在下一个查询中，在 sys.dm_exec_requests 和 sys.dm_exec_sessions 之间建立此公共联接。
+* 请参阅 `sys.dm_exec_requests` 中的列 `blocking_session_id`。 当 `blocking_session_id` = 0 时，将不会阻塞会话。 虽然 `sys.dm_exec_requests` 只列出当前正在执行的请求，但任何连接（活动或不活动）都将列在 `sys.dm_exec_sessions` 中。 在下一个查询中，在 `sys.dm_exec_requests` 和 `sys.dm_exec_sessions` 之间建立此公共联接。
 
-* 使用 [sys.dm_exec_sql_text](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql) 或 [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) DMV 运行此示例查询以查找活动执行的查询及其当前 SQL 批处理文本或输入缓冲区文本。 如果 sys.dm_exec_sql_text 的 `text` 字段返回的数据为 NULL，则当前不执行查询。 在这种情况下，sys.dm_exec_input_buffer 的 `event_info` 字段将包含传递给 SQL 引擎的最后一个命令字符串。 此查询还可用于标识阻止其他会话的会话（包括按 session_id 阻止的 session_id 的列表）。 
+* 使用 [sys.dm_exec_sql_text](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql) 或 [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) DMV 运行此示例查询以查找活动执行的查询及其当前 SQL 批处理文本或输入缓冲区文本。 如果 `sys.dm_exec_sql_text` 的 `text` 字段返回的数据为 NULL，则当前不执行查询。 在这种情况下，`sys.dm_exec_input_buffer` 的 `event_info` 字段将包含传递给 SQL 引擎的最后一个命令字符串。 此查询还可以用于标识阻止其他会话的会话，包括每个 session_id 阻止的 session_id 列表。 
 
 ```sql
 WITH cteBL (session_id, blocking_these) AS 
@@ -127,7 +127,7 @@ WHERE blocking_these is not null or r.blocking_session_id > 0
 ORDER BY len(bl.blocking_these) desc, r.blocking_session_id desc, r.session_id;
 ```
 
-* 运行这个由 Microsoft 支持部门提供的更详细的示例查询，以标识多会话阻塞链的头（包括阻塞链中涉及的会话的查询文本）。
+* 运行 Microsoft 支持部门提供的更详细的示例查询，以确定多个会话阻塞链头，包括阻塞链中涉及的会话的查询文本。
 
 ```sql
 WITH cteHead ( session_id,request_id,wait_type,wait_resource,last_wait_type,is_user_process,request_cpu_time
@@ -183,14 +183,14 @@ INNER JOIN sys.dm_exec_connections [s_ec] ON [s_ec].[session_id] = [s_tst].[sess
 CROSS APPLY sys.dm_exec_sql_text ([s_ec].[most_recent_sql_handle]) AS [s_est];
 ```
 
-* 引用 [sys.dm_os_waiting_tasks](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql)（位于 SQL 的线程/任务层）。 这将返回关于当前经历的请求的 SQL 等待类型的信息。 与 sys.dm_exec_requests 一样，sys.dm_os_waiting_tasks 只返回活动请求。 
+* 引用 [sys.dm_os_waiting_tasks](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql)（位于 SQL 的线程/任务层）。 这将返回关于当前经历的请求的 SQL 等待类型的信息。 与 `sys.dm_exec_requests` 一样，`sys.dm_os_waiting_tasks` 只返回活动请求。 
 
 > [!Note]
 > 有关等待类型的详细信息（包括随时间变化的聚合的等待统计信息），请参阅 DMV [sys.dm_db_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database)。 此 DMV 仅返回当前数据库的聚合等待统计信息。
 
 * 使用 [sys.dm_tran_locks](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql) DMV，获取有关查询所放置的锁的更详尽信息。 此 DMV 可以返回生产 SQL Server 上的大量数据，这对于诊断当前保留的锁非常有用。 
 
-由于 sys.dm_os_waiting_tasks 的内联，以下查询将 sys.dm_tran_locks 的输出限制为仅当前被阻塞的请求、其等待状态以及其锁：
+由于 `sys.dm_os_waiting_tasks` 的内联，以下查询将 `sys.dm_tran_locks` 的输出限制为仅当前被阻塞的请求、其等待状态以及其锁：
 
 ```sql
 SELECT table_name = schema_name(o.schema_id) + '.' + o.name
@@ -208,7 +208,7 @@ AND object_name(p.object_id) = '<table_name>';
 
 ## <a name="gather-information-from-extended-events"></a>从扩展事件中收集信息
 
-除了上述信息，通常还需要捕获服务器上的活动的跟踪，以彻底调查 Azure SQL 数据库上的阻塞问题。 例如，如果一个会话在一个事务中执行多条语句，则只表示提交的最后一条语句。 但是，前面的语句之一可能是仍保留锁的原因。 跟踪将使你能够查看当前事务中会话执行的所有命令。
+除了上述信息，通常还需要捕获服务器上活动的跟踪，以彻底调查 Azure SQL 数据库上的阻塞问题。 例如，如果一个会话在一个事务中执行多条语句，则只表示提交的最后一条语句。 但是，前面的语句之一可能是仍保留锁的原因。 跟踪将使你能够查看当前事务中会话执行的所有命令。
 
 在 SQL Server 中捕获跟踪有两种方法：扩展事件 (XEvent) 和探查器跟踪。 但是，[SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) 是已被弃用的跟踪技术，Azure SQL 数据库不支持这种技术。 [扩展事件](/sql/relational-databases/extended-events/extended-events)是一种较新的跟踪技术，它支持更多的通用性，对观察到的系统的影响较小，并且它的接口集成到 SQL Server Management Studio (SSMS) 中。 
 
@@ -242,9 +242,9 @@ AND object_name(p.object_id) = '<table_name>';
 
 ## <a name="analyze-blocking-data"></a>分析阻塞数据 
 
-* 检查 DMV sys.dm_exec_requests 和 sys.dm_exec_sessions 的输出，以确定阻塞链的头（使用 blocking_these 和 session_id）。 此操作可清楚地标识出哪些请求已被阻塞，哪些请求即将被阻塞。 进一步了解已被阻塞和即将被阻塞的会话。 阻塞链是否有公共点或根？ 它们可能共享一个公共表，并且阻塞链中涉及的一个或多个会话正在执行写入操作。 
+* 检查 DMV `sys.dm_exec_requests` 和 `sys.dm_exec_sessions` 的输出，以确定阻塞链的头（使用 `blocking_these` 和 `session_id`）。 此操作可清楚地标识出哪些请求已被阻塞，哪些请求即将被阻塞。 进一步了解已被阻塞和即将被阻塞的会话。 阻塞链是否有公共点或根？ 它们可能共享一个公共表，并且阻塞链中涉及的一个或多个会话正在执行写入操作。 
 
-* 检查DMV sys.dm_exec_requests 和 sys.dm_exec_sessions 的输出，获取有关阻塞链头 SPID 的信息。 查找以下字段： 
+* 检查DMV `sys.dm_exec_requests` 和 `sys.dm_exec_sessions` 的输出，获取有关阻塞链头 SPID 的信息。 查找以下字段： 
 
     -    `sys.dm_exec_requests.status`  
     此列显示特定请求的状态。 通常， 睡眠状态表示 SPID 已完成执行，正在等待应用程序提交另一个查询或批处理。 可运行或正在运行状态表示 SPID 当前正在处理查询。 下表简要说明了各种状态值。
@@ -264,7 +264,7 @@ AND object_name(p.object_id) = '<table_name>';
     同样，此字段告诉你此请求中打开的事务数。 如果该值大于 0，则 SPID 位于打开的事务中，并且可能保留事务中任何语句获取的锁。
 
     -   `sys.dm_exec_requests.wait_type`、`wait_time` 和 `last_wait_type`  
-    如果  `sys.dm_exec_requests.wait_type`  为 NULL，则请求当前没有等待任何内容， `last_wait_type`  值指示请求遇到的最后一个  `wait_type` 。 有关  `sys.dm_os_wait_stats` 的详细信息和最常见的等待类型的描述，请参阅 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)。  `wait_time`  值可用于确定请求是否正在进行。 当针对 sys.dm_exec_requests 表的查询在  `wait_time`  列中返回的值小于前一个 sys.dm_exec_requests 查询中的  `wait_time`  值时，这表示已获取并释放前一个锁，现在正在等待一个新锁（假设为非零 `wait_time`）。 这可以通过比较 sys.dm_exec_requests 输出之间的 `wait_resource`  来验证，该输出显示了请求正在等待的资源。
+    如果  `sys.dm_exec_requests.wait_type`  为 NULL，则请求当前没有等待任何内容， `last_wait_type`  值指示请求遇到的最后一个  `wait_type` 。 有关  `sys.dm_os_wait_stats` 的详细信息和最常见的等待类型的描述，请参阅 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)。  `wait_time`  值可用于确定请求是否正在进行。 当针对  `sys.dm_exec_requests`  表的查询在  `wait_time`  列中返回的值小于前一个  `sys.dm_exec_requests` 查询中的  `wait_time`  值时，这表示已获取并释放前一个锁，现在正在等待一个新锁（假设为非零 `wait_time`）。 这可以通过比较  `sys.dm_exec_requests`  输出之间的 `wait_resource`  来验证，该输出显示了请求正在等待的资源。
 
     -   `sys.dm_exec_requests.wait_resource` 此字段指示已阻塞的请求正在等待的资源。 下表列出了常见的  `wait_resource`  格式及其含义：
 
@@ -272,7 +272,7 @@ AND object_name(p.object_id) = '<table_name>';
     |:-|:-|:-|:-|
     | 表 | DatabaseID:ObjectID:IndexID | TAB:5:261575970:1 | 在本例中，数据库 ID 5 是 pubs 示例数据库，对象 ID 261575970 是标题表，1 是聚集索引。 |
     | 页 | DatabaseID:FileID:PageID | 页：5:1:104 | 在此例中，数据库 ID 5 是 pubs，文件 ID 1 是主数据文件，页 104 是属于标题表的页。 若要标识该页所属的对象，请使用动态管理函数 [sys.dm_db_page_info](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-page-info-transact-sql)，从 `wait_resource` 传入 DatabaseID、FileId、PageId。 | 
-    | 键 | DatabaseID:Hobt_id（索引键的哈希值） | 键：5:72057594044284928 (3300a4f361aa) | 在此例中，数据库 ID 5 是 Pubs，Hobt_ID 72057594044284928 对应于 object_id 261575970（标题表）的 index_id 2。 使用 sys.partitions 目录视图将 hobt_id 与特定 index_id 和 object_id 相关联。 无法将索引键散列哈希解哈希为特定的键值。 |
+    | 键 | DatabaseID:Hobt_id（索引键的哈希值） | 键：5:72057594044284928 (3300a4f361aa) | 在此例中，数据库 ID 5 是 Pubs，Hobt_ID 72057594044284928 对应于 object_id 261575970（标题表）的 index_id 2。 使用 `sys.partitions` 目录视图将 hobt_id 与特定 `index_id` 和 `object_id` 关联。 无法将索引键散列哈希解哈希为特定的键值。 |
     | 行 | DatabaseID:FileID:PageID:Slot(row) | RID：5:1:104:3 | 在此例中，数据库 ID 5 是 pubs，文件 ID 1 是主数据文件，页 104 是属于标题表的页，且槽 3 指示行在页上的位置。 |
     | Compile  | DatabaseID:FileID:PageID:Slot(row) | RID：5:1:104:3 | 在此例中，数据库 ID 5 是 pubs，文件 ID 1 是主数据文件，页 104 是属于标题表的页，且槽 3 指示行在页上的位置。 |
 
@@ -309,32 +309,32 @@ AND object_name(p.object_id) = '<table_name>';
     , s.host_name, s.program_name, s.client_interface_name, s.login_name, s.is_user_process
     FROM sys.dm_tran_active_transactions tat 
     INNER JOIN sys.dm_tran_session_transactions tst  on tat.transaction_id = tst.transaction_id
-    INNER JOIN Sys.dm_exec_sessions s on s.session_id = tst.session_id 
+    INNER JOIN sys.dm_exec_sessions s on s.session_id = tst.session_id 
     LEFT OUTER JOIN sys.dm_exec_requests r on r.session_id = s.session_id
     CROSS APPLY sys.dm_exec_input_buffer(s.session_id, null) AS ib;
     ```
 
     -   其他列
 
-        [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql) 和 [sys.dm_exec_request](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 中其余的列也可以提供对根本问题的见解。 它们的用处因问题的具体情况而异。 例如，你可以确定问题是否仅发生在特定的客户端（主机名）、特定的网络库 (net_library)、SPID 在 sys.dm_exec_sessions 会话中是 `last_request_start_time` 时最后一个批处理何时提交、在 sys.dm_exec_requests 中使用 `start_time` 运行请求的时间等。
+        [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql) 和 [sys.dm_exec_request](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 中其余的列也可以提供对根本问题的见解。 它们的用处因问题的具体情况而异。 例如，你可以确定问题是否仅发生在特定的客户端（主机名）、特定的网络库 (net_library)、SPID 在 `sys.dm_exec_sessions` 会话中是 `last_request_start_time` 时最后一个批处理何时提交、在 `sys.dm_exec_requests` 中使用 `start_time` 运行请求的时间等。
 
 
 ## <a name="common-blocking-scenarios"></a>常见的阻塞情况
 
 下表列出了常见症状及其可能原因。  
 
-`wait_type`、`open_transaction_count` 和 `status` 列是指由 [sys.dm_exec_request](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 返回的信息，其他列可以由 [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql) 返回。 “Resolves?” 列指示阻塞是否将自行解决，或者是否应通过 `KILL` 命令终止会话。 有关详细信息，请参阅 [KILL (Transact-SQL)](/sql/t-sql/language-elements/kill-transact-sql)。
+Waittype、Open_Tran 和 Status 列是指由 [sys.dm_exec_request](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 返回的信息，其他列可以由 [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql) 返回。 “Resolves?” 列指示阻塞是否将自行解决，或者是否应通过 `KILL` 命令终止会话。 有关详细信息，请参阅 [KILL (Transact-SQL)](/sql/t-sql/language-elements/kill-transact-sql)。
 
 | 方案 | Waittype | Open_Tran | 状态 | Resolves? | 其他症状 |  
 |:-|:-|:-|:-|:-|:-|--|
-| 1 | NOT NULL | >= 0 | 可运行 | 是，当查询完成时。 | 在 sys.dm_exec_sessions 中，reads、cpu_time 和/或 memory_usage 列将随着时间的推移而增加  。 完成后，查询的持续时间将较长。 |
+| 1 | NOT NULL | >= 0 | 可运行 | 是，当查询完成时。 | 在 `sys.dm_exec_sessions` 中，`reads`、`cpu_time` 和/或 `memory_usage` 列将随着时间的推移而增加。 完成后，查询的持续时间将较长。 |
 | 2 | Null | \>0 | 正在睡眠 | 不可以，但可以终止 SPID。 | 在此 SPID 的扩展事件会话中可能会看到一个注意信号，表示已发生了查询超时或已取消。 |
 | 3 | Null | \>= 0 | 可运行 | 否。 在客户端获取所有行或关闭连接之前无法解析。 可以终止 SPID，但可能最多需要 30 秒。 | 如果 open_transaction_count = 0，并且 SPID 在事务隔离级别为默认 (READ COMMMITTED) 时保留锁，这可能是一个原因。 |  
-| 4 | 多种多样 | \>= 0 | 可运行 | 否。 在客户端取消查询或关闭连接之前无法解析。 可以终止 SPID，但可能最多需要 30 秒。 | sys.dm_exec_sessions 中位于阻塞链头的 SPID 的 hostname 列将与它所阻塞的 SPID 相同。 |  
+| 4 | 多种多样 | \>= 0 | 可运行 | 否。 在客户端取消查询或关闭连接之前无法解析。 可以终止 SPID，但可能最多需要 30 秒。 | `sys.dm_exec_sessions` 中位于阻塞链头的 SPID 的 `hostname` 列将与它所阻塞的 SPID 相同。 |  
 | 5 | Null | \>0 | 回滚 | 是的。 | 在此 SPID 的扩展事件会话中可能会看到一个注意信号，表示已发生了查询超时或已取消，或者只是发出了一个回滚语句。 |  
-| 6 | Null | \>0 | 正在睡眠 | 最终， 当 Windows NT 确定会话不再处于活动状态时，Azure SQL 数据库连接将断开。 | sys.dm_exec_sessions 中的 `last_request_start_time` 值比当前时间早得多。 |
+| 6 | Null | \>0 | 正在睡眠 | 最终， 当 Windows NT 确定会话不再处于活动状态时，Azure SQL 数据库连接将断开。 | `sys.dm_exec_sessions` 中的 `last_request_start_time` 值比当前时间早得多。 |
 
-## <a name="detailed-blocking-scenarios"></a>详细的阻塞方案
+## <a name="detailed-blocking-scenarios"></a>详细的阻塞场景
 
 1.  由执行时间长的正常运行查询引起的阻塞
 
@@ -346,7 +346,7 @@ AND object_name(p.object_id) = '<table_name>';
 
 1.  由具有未提交事务的睡眠 SPID 引起的阻塞
 
-    此类阻塞通常可以通过正在睡眠或等待命令的 SPID 来识别，但是其事务嵌套级别（来自 sys.dm_exec_requests 的 `@@TRANCOUNT`、`open_transaction_count`）大于零。 如果应用程序遇到查询超时，或者发出取消而不发出所需数量的 ROLLBACK 和/或 COMMIT 语句，则可能发生这种情况。 当 SPID 收到查询超时或取消时，它将终止当前查询和批处理，但不会自动回滚或提交事务。 应用程序对此负责，因为 Azure SQL 数据库不能假定由于取消单个查询而必须回滚整个事务。 查询超时或取消将在扩展事件会话中作为 SPID 的注意信号事件出现。
+    此类阻塞通常可以通过正在睡眠或等待命令的 SPID 来识别，但是其事务嵌套级别（来自 `sys.dm_exec_requests` 的 `@@TRANCOUNT`、`open_transaction_count`）大于零。 如果应用程序遇到查询超时，或者发出取消而不发出所需数量的 ROLLBACK 和/或 COMMIT 语句，则可能发生这种情况。 当 SPID 收到查询超时或取消时，它将终止当前查询和批处理，但不会自动回滚或提交事务。 应用程序对此负责，因为 Azure SQL 数据库不能假定由于取消单个查询而必须回滚整个事务。 查询超时或取消将在扩展事件会话中作为 SPID 的注意信号事件出现。
 
     若要演示未提交的显式事务，请发出以下查询：
 
@@ -366,7 +366,7 @@ AND object_name(p.object_id) = '<table_name>';
 
     第二个查询的输出指示事务嵌套级别为 1。 在提交或回滚事务之前，事务中获取的所有锁仍将保留。 如果应用程序显式打开并提交事务，则通信或其他错误可能会使会话及其事务处于打开状态。 
 
-    使用本文前面部分的脚本，根据 sys.dm_tran_active_transactions 来标识实例中当前未提交的事务。
+    使用本文前面部分的脚本，根据 `sys.dm_tran_active_transactions` 来标识实例中当前未提交的事务。
 
     **解决方法**：
 
@@ -386,16 +386,16 @@ AND object_name(p.object_id) = '<table_name>';
 
 1.  由 SPID 引起的阻塞，其对应的客户端应用程序没有将所有结果行提取到完成位置
 
-    向服务器发送查询后，所有应用程序必须立即将所有结果行提取到完成。 如果应用程序没有提取所有结果行，则表上可能会留下锁，从而阻塞其他用户。 如果你使用的应用程序透明地向服务器提交 SQL 语句，则应用程序必须提取所有结果行。 如果没有（如果无法配置为这样做），则可能无法解决阻塞问题。 若要避免此问题，你可以将表现不佳的应用程序限制在报表或决策支持数据库中，与主 OLTP 数据库分开。
+    向服务器发送查询后，所有应用程序必须立即将所有结果行提取到完成。 如果应用程序没有提取所有结果行，则表上可能会留下锁，从而阻塞其他用户。 如果你使用的应用程序透明地向服务器提交 SQL 语句，则应用程序必须提取所有结果行。 如果没有（如果无法配置为这样做），则可能无法解决阻塞问题。 若要避免此问题，你可以将性能不佳的应用程序限制在报表或决策支持数据库中，与主 OLTP 数据库分离。
     
     > [!NOTE]
     > 有关连接到 Azure SQL 数据库的应用程序，请参阅[重试逻辑指南](./troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)。 
     
     **解决方法**：必须重写应用程序才能将结果的所有行提取到完成。 这并不排除使用查询的 [ORDER BY 子句中的 OFFSET 和 FETCH](/sql/t-sql/queries/select-order-by-clause-transact-sql#using-offset-and-fetch-to-limit-the-rows-returned) 来执行服务器端分页。
 
-1.  由处于回退状态的会话导致的阻塞
+1.  由处于回滚状态的会话导致的阻塞
 
-    在用户定义事务之外终止或取消的数据修改查询将回滚。 这也可能是客户端网络会话断开连接的副作用，或者请求被选为死锁牺牲品。 这种情况通常可以通过观察 sys.dm_exec_requests 的输出来识别，这可能表示 ROLLBACK 命令，percent_complete 列可能会显示进度 。 
+    在用户定义事务之外终止或取消的数据修改查询将回滚。 这也可能是客户端网络会话断开连接的副作用，或者请求被选为死锁牺牲品。 这种情况通常可以通过观察 `sys.dm_exec_requests` 的输出来识别，这可能表示 ROLLBACK 命令，`percent_complete` 列可能会显示进度。 
 
     由于 2019 年推出的[加速数据库恢复功能](../accelerated-database-recovery.md)，冗长的回滚应该很罕见。
     
@@ -429,3 +429,4 @@ AND object_name(p.object_id) = '<table_name>';
 * [使用 Azure SQL 提供一致的性能](/learn/modules/azure-sql-performance/)
 * [排查 Azure SQL 数据库和 Azure SQL 托管实例的连接问题和其他问题](troubleshoot-common-errors-issues.md)
 * [Transient Fault Handling](/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling)
+* [在 Azure SQL 数据库中配置最大并行度 (MAXDOP)](configure-max-degree-of-parallelism.md)

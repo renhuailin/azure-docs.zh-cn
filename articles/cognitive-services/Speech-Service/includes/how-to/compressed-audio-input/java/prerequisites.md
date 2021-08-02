@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: 6f7e74a4e3a0ad208ea832798748adf7a15dfc89
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 955e79040f84f395849ab13103fd4c22693a9913
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103417688"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110163074"
 ---
 处理压缩音频是使用 [GStreamer](https://gstreamer.freedesktop.org) 实现的。 出于许可原因，GStreamer 二进制文件未编译，也未与语音 SDK 链接。 但是，需要使用适用于 Android 的预生成二进制文件。 若要下载预生成库，请参阅[为 Android 开发安装](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)。
 
-需要 `libgstreamer_android.so`。 请确保已在 `libgstreamer_android.so` 中链接所有 GStreamer 插件（来自下面的 Android.mk 文件）。 将最新的语音 SDK（1.16.0 及更高版本）与 gstreamer 版本 1.18.3 配合使用时，还需要从 android ndk 演示 `libc++_shared.so`。
+需要 `libgstreamer_android.so`。 请确保已在 `libgstreamer_android.so` 中链接所有 GStreamer 插件（来自下面的 Android.mk 文件）。 将最新的语音 SDK（1.16 及更高版本）与 gstreamer 版本 1.18.3 配合使用时，还需要从 android ndk 演示 `libc++_shared.so`。
 
 ```makefile
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \

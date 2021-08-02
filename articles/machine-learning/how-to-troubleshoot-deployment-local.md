@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 69ac47296cb4624de6cdf05ddb3e72973751f631
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8b2acc37efb497748abe5f63bd58e96b16171b21
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519616"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110538389"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>使用本地模型部署进行故障排除
 
@@ -33,6 +33,31 @@ ms.locfileid: "102519616"
    * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
    * 在本地系统上安装有效的 Docker。 
    * 若要验证 Docker 安装，请使用终端或命令提示符中的命令 `docker run hello-world`。 有关安装 Docker 或排除 Dcoker 错误的详细信息，请参阅 [Docker 文档](https://docs.docker.com/)。
+* 选项 C - 通过 Azure 机器学习推理 HTTP 服务器启用本地调试。
+    * Azure 机器学习推理 HTTP 服务器[（预览版）](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)是一种 Python 包，可用于在本地开发环境中轻松验证入口脚本 (`score.py`)。 如果评分脚本出现问题，该服务器会返回一个错误。 它还会返回发生错误的位置。
+    * 在持续集成和部署管道中创建验证入口时，也可以使用该服务器。 例如，使用候选脚本启动服务器，并针对本地终结点运行测试套件。
+
+## <a name="azure-machine-learning-inference-http-server"></a>Azure 机器学习推理 HTTP 服务器
+
+在本地推理服务器中可以快速调试入口脚本 (`score.py`)。 如果基础评分脚本存在 bug，该服务器将无法初始化或者为模型提供服务。 相反，它会引发异常并指出发生问题的位置。 [详细了解 Azure 机器学习推理 HTTP 服务器](how-to-inference-server-http.md)
+
+1. 从 [pypi](https://pypi.org/) 源安装 `azureml-inference-server-http` 包：
+
+    ```bash
+    python -m pip install azureml-inference-server-http
+    ```
+
+2. 启动服务器并将 `score.py` 设置为入口脚本：
+
+    ```bash
+    azmlinfsrv --entry_script score.py
+    ```
+
+3. 使用 `curl` 将评分请求发送到服务器：
+
+    ```bash
+    curl -p 127.0.0.1:5001/score
+    ```
 
 ## <a name="debug-locally"></a>本地调试
 
@@ -128,6 +153,7 @@ print(ws.webservices['mysvc'].get_logs())
 详细了解部署：
 
 * [如何排查远程部署问题](how-to-troubleshoot-deployment.md)
+* [Azure 机器学习推理 HTTP 服务器](how-to-inference-server-http.md)
 * [部署方式和部署位置](how-to-deploy-and-where.md)
 * [教程：训练和部署模型](tutorial-train-models-with-aml.md)
 * [如何在本地运行和调试试验](./how-to-debug-visual-studio-code.md)

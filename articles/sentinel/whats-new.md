@@ -7,28 +7,159 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 04/08/2021
-ms.openlocfilehash: 9873b3626b77a898b7bd682446e11a77b270b297
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.date: 05/26/2021
+ms.openlocfilehash: 6289a142e98b347f3295b8961ee1518ce8499eb4
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897300"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110539459"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel 中的新增功能
 
 本文列出了 Azure Sentinel 中添加的最新功能，以及相关服务中提供增强 Azure Sentinel 用户体验的新功能。
 
-若要了解所提供的更早的功能，请参阅[技术社区博客](https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog/label-name/What's%20New)。
+若要查找 6 个月之前的项目，可查看 [Azure Sentinel 的新增功能存档](whats-new-archive.md)。 若要了解所提供的更早的功能，请参阅[技术社区博客](https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog/label-name/What's%20New)。
 
-请注意，这些功能目前为预览版。 [Azure 预览版补充条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+> [!IMPORTANT]
+> 请注意，这些功能目前为预览版。 [Azure 预览版补充条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+>
 
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 > [!TIP]
 > Microsoft 中的威胁搜寻团队会向 [Azure Sentinel 社区](https://github.com/Azure/Azure-Sentinel)贡献查询、playbook、工作簿和笔记本，包括你的团队可调整和使用的特定[搜寻查询](https://github.com/Azure/Azure-Sentinel)。
 >
 > 你也可贡献内容！ 加入我们的 [Azure Sentinel 威胁猎人 GitHub 社区](https://github.com/Azure/Azure-Sentinel/wiki)吧。
 >
+
+## <a name="may-2021"></a>2021 年 5 月
+
+- [Azure Sentinel PowerShell 模块](#azure-sentinel-powershell-module)
+- [警报分组增强功能](#alert-grouping-enhancements)
+- [Azure Sentinel 解决方案（公共预览版）](#azure-sentinel-solutions-public-preview)
+- [针对 SAP 解决方案的持续威胁监视（公共预览版）](#continuous-threat-monitoring-for-sap-solution-public-preview)
+- [威胁情报集成（公共预览版）](#threat-intelligence-integrations-public-preview)
+- [定时警报融合（公共预览版）](#fusion-over-scheduled-alerts-public-preview)
+- [SOC-ML 异常（公共预览版）](#soc-ml-anomalies-public-preview)
+- [IP 实体页（公共预览版）](#ip-entity-page-public-preview)
+- [活动自定义（公共预览版）](#activity-customization-public-preview)
+- [搜寻仪表板（公共预览版）](#hunting-dashboard-public-preview)
+- [事件团队 - 在 Microsoft Teams 中开展协作（公共预览版）](#azure-sentinel-incident-team---collaborate-in-microsoft-teams-public-preview)
+- [零信任 (TIC3.0) 工作簿](#zero-trust-tic30-workbook)
+
+
+### <a name="azure-sentinel-powershell-module"></a>Azure Sentinel PowerShell 模块
+
+适用于自动化日常操作任务的官方 Azure Sentinel PowerShell 模块已经发布正式版！
+
+你可以在此处下载该模块：[PowerShell 库](https://www.powershellgallery.com/packages/Az.SecurityInsights/)。
+
+有关详细信息，请参阅 PowerShell 文档：[Az.SecurityInsights](/powershell/module/az.securityinsights/)
+
+### <a name="alert-grouping-enhancements"></a>警报分组增强功能
+
+现在，你可以将分析规则配置为将警报按单个事件分组，而且该规则不仅适用于与特定实体类型匹配的警报，还适用于与所配置实体的特定警报名称、严重性或其他自定义详细信息匹配的警报。 
+
+在分析规则向导的“事件设置”选项卡中，选择启用警报分组，然后选择“如果所选实体类型与详细信息匹配，则将警报按单个事件分组” **"** 选项。 
+
+然后，选择要匹配的实体类型及相关详细信息：
+
+:::image type="content" source="media/whats-new/alert-grouping-details.png" alt-text="按匹配实体的详细信息对警报进行分组。":::
+
+有关详细信息，请参阅[警报分组](tutorial-detect-threats-custom.md#alert-grouping)。
+
+### <a name="azure-sentinel-solutions-public-preview"></a>Azure Sentinel 解决方案（公共预览版）
+
+Azure Sentinel 现提供打包内容[解决方案](sentinel-solutions-catalog.md)，其中包含适用于 Azure Sentinel 的一个或多个数据连接器、工作簿、分析规则、playbook、搜寻查询、分析程序、监视列表以及其他组件。
+
+该解决方案改进了产品内的可发现性、单步部署以及端到端产品方案。 有关详细信息，请参阅[发现和部署 Azure Sentinel 解决方案](sentinel-solutions-deploy.md)。
+
+### <a name="continuous-threat-monitoring-for-sap-solution-public-preview"></a>针对 SAP 解决方案的持续威胁监视（公共预览版）
+
+Azure Sentinel 解决方案目前包含适用于 SAP 的持续威胁监视功能，可以让你监视 SAP 系统，从而发现业务和应用程序层中的复杂威胁。
+
+SAP 数据连接器从整个 SAP 系统环境中流式传输大量（14 个）应用程序日志，通过 NetWeaver RFC 调用从高级业务应用程序编程 (ABAP) 收集日志，并通过 OSSAP 控制接口收集文件存储数据。 SAP 数据连接器增加了 Azure Sentinels 监视 SAP 基础结构的能力。
+
+要将 SAP 日志引入 Azure Sentinel，必须在 SAP 环境中安装 Azure Sentinel SAP 数据连接器。 部署 SAP 数据连接器之后，部署丰富的 SAP 解决方案安全内容，以顺利深入了解组织的 SAP 环境并改进任何相关的安全操作功能。
+
+有关详细信息，请参阅[教程：为 SAP 部署 Azure Sentinel 解决方案（公共预览版）](sap-deploy-solution.md)。
+
+### <a name="threat-intelligence-integrations-public-preview"></a>威胁情报集成（公共预览版）
+
+Azure Sentinel 可提供一些[使用威胁情报](import-threat-intelligence.md)源的不同方法，以增强安全分析师检测及确定已知威胁优先级的能力。
+
+你现在可以从众多新发布的集成威胁情报平台 (TIP) 产品中选择使用其一连接到 TAXII 服务器，以利用可与 STIX 兼容的任何威胁情报源，以及使用可直接与 [Microsoft Graph Security tiIndicators API](/graph/api/resources/tiindicator) 通信的任何自定义解决方案。
+
+你还可以从 playbook 连接到威胁情报源，以便使用有助于直接调查和响应操作的 TI 信息来扩充事件。
+
+有关详细信息，请参阅[在 Azure Sentinel 中集成威胁情报](threat-intelligence-integration.md)。
+
+### <a name="fusion-over-scheduled-alerts-public-preview"></a>定时警报融合（公共预览版）
+
+除了从其他数据源导入的警报外，Fusion 机器学习关联引擎现还可使用一组由其关联中的[定时分析规则](tutorial-detect-threats-custom.md)生成的警报来检测多阶段攻击。
+
+有关详细信息，请参阅 [Azure Sentinel 中的高级多阶段攻击检测](fusion.md)。
+
+### <a name="soc-ml-anomalies-public-preview"></a>SOC-ML 异常（公共预览版）
+
+Azure Sentinel 提供基于 SOC-ML 机器学习的异常检测功能，该功能可以识别可能会绕过检测的异常行为。
+
+SOC-ML 使用可开箱即用的分析规则模板。 虽然异常本身并不一定表明存在恶意甚至可疑的行为，但可用于提高检测、调查和威胁搜寻的保真度。
+
+有关详细信息，请参阅[在 Azure Sentinel 中使用 SOC-ML 异常检测威胁](soc-ml-anomalies.md)。
+
+### <a name="ip-entity-page-public-preview"></a>IP 实体页（公共预览版）
+
+Azure Sentinel 现支持 IP 地址实体，你可以在新的 IP 实体页中查看 IP 实体信息。
+
+与用户和主机实体页一样，IP 页包含有关 IP 的一般信息、发现 IP 所属的活动列表等，可以为你提供更丰富的信息存储，从而加强你对安全事件的调查。
+
+有关详细信息，请参阅[实体页](identify-threats-with-entity-behavior-analytics.md#entity-pages)。
+
+### <a name="activity-customization-public-preview"></a>活动自定义（公共预览版）
+
+你现在可以通过实体页为实体创建新的自定义活动（系统会在各个活动的实体页上跟踪及显示这些活动），以及你到目前为止在实体页上看到的开箱即用型活动。
+
+有关详细信息，请参阅[在实体页时间线上自定义活动](customize-entity-activities.md)。
+
+### <a name="hunting-dashboard-public-preview"></a>搜寻仪表板（公共预览版）
+
+“搜寻”边栏选项卡已更新。 只需在新仪表板中单击一下，即可运行所有查询或所选子集。
+
+通过查看结果计数、峰值或 24 小时内结果计数的变化，便可确定开始搜寻的位置。 你还可以按收藏夹、数据源、MITRE ATT&CK 策略和技巧、结果或结果增量执行排序和筛选。 查看尚未连接必要数据源的查询，并获取有关启用此类查询的建议方法。
+
+有关详细信息，请参阅[通过 Azure Sentinel 搜寻威胁](hunting.md)。
+
+### <a name="azure-sentinel-incident-team---collaborate-in-microsoft-teams-public-preview"></a>Azure Sentinel 事件团队 - 在 Microsoft Teams 中开展协作（公共预览版）
+
+Azure Sentinel 现支持与 Microsoft Teams 直接集成，以使你能够跨组织与外部利益干系人开展无缝协作。
+
+直接从 Azure Sentinel 事件创建新的事件团队，以供中央通信和协调时使用。
+
+对于高严重性、持续性的事件，将事件团队用作专用会议桥特别有用。 已使用 Microsoft Teams 进行沟通和协作的组织可以使用 Azure Sentinel 集成将安全数据直接引入其对话和日常工作中。
+
+在 Microsoft Teams 中，新团队的事件页选项卡始终具有来自 Azure Sentinel 的最新数据，从而确保团队随手便可获得最相关的数据。
+
+[ ![Microsoft Teams 中的事件页。](media/collaborate-in-microsoft-teams/incident-in-teams.jpg) ](media/collaborate-in-microsoft-teams/incident-in-teams.jpg#lightbox)
+
+有关详细信息，请参阅[在 Microsoft Teams 中开展协作（公共预览版）](collaborate-in-microsoft-teams.md)。
+
+### <a name="zero-trust-tic30-workbook"></a>零信任 (TIC3.0) 工作簿
+
+新的 Azure Sentinel 零信任 (TIC3.0) 工作簿提供[零信任](/security/zero-trust/)原则自动可视化功能，可交叉到[受信任的 Internet 连接](https://www.cisa.gov/trusted-internet-connections) (TIC) 框架。
+
+我们知道，合规性不仅仅是一项年度要求，各组织必须如锻炼肌肉一般持续监视配置。 Azure Sentinel 零信任工作簿使用 Microsoft 全套安全产品/服务，包括 Azure、Office 365、Teams、Intune、Windows 虚拟桌面等等。
+
+[ ![零信任工作簿。](media/zero-trust-workbook.gif) ](media/zero-trust-workbook.gif#lightbox)
+
+零信任工作簿：
+
+- 可以让实现者、SecOps 分析师、评估师、安全合规决策者、MSSP 以及其他人员了解云工作负荷的安全状况。
+- 配有超过 75 张控制卡，与 TIC 3.0 安全功能匹配，提供用于导航的可选 GUI 按钮。
+- 经专门设计，可通过自动化、人工智能、机器学习、查询/警报生成、可视化效果、定制建议和相应的文档参考来增强人员配备。
+
+有关详细信息，请参阅[教程：可视化和监视数据](tutorial-monitor-your-data.md)。
 
 ## <a name="april-2021"></a>2021 年 4 月
 
@@ -75,7 +206,7 @@ Azure Sentinel 用户现在可以使用新的 [Azure Monitor 功能](https://tec
 在每个工作簿或工作簿模板中，选择 :::image type="icon" source="media/whats-new/auto-refresh-workbook.png" border="false":::“自动刷新”以显示间隔选项。 选择要用于当前视图会话的选项，然后选“应用”。
 
 - 支持的刷新间隔范围为“5 分钟”到“1 天” 。
-- 默认情况下，自动刷新处于关闭状态。 为了优化性能，每次关闭工作簿时，也会关闭自动刷新，并且不会在后台运行。 当你下次打开工作簿时，请根据需要重新启用自动刷新。
+- 默认情况下，自动刷新处于关闭状态。 为了优化性能，自动刷新会在每次关闭工作簿时被关闭，并且不会在后台运行。 当你下次打开工作簿时，请根据需要重新启用自动刷新。
 - 在编辑工作簿时，自动刷新会暂停，且每次从编辑模式切换回视图模式时，自动刷新间隔将重新开始。
 
     如果选择 :::image type="icon" source="media/whats-new/manual-refresh-button.png" border="false":::“刷新”按钮手动刷新工作簿，则间隔也将重新开始。
@@ -381,42 +512,6 @@ Azure Sentinel 使用 Log Analytics 代理向工作区发送事件，包括 Wind
 > 
 
 有关详细信息，请参阅 [Log Analytics 文档](../azure-monitor/agents/log-analytics-agent.md)和 [Log Analytics 代理发行说明](https://github.com/microsoft/OMS-Agent-for-Linux/releases)。
-## <a name="november-2020"></a>2020 年 11 月
-
-- [在 Azure Sentinel 中监视 playbook 的运行状况](#monitor-your-playbooks-health-in-azure-sentinel)
-- [Microsoft 365 Defender 连接器（公共预览版）](#microsoft-365-defender-connector-public-preview)
-
-### <a name="monitor-your-playbooks-health-in-azure-sentinel"></a>在 Azure Sentinel 中监视 playbook 的运行状况
-
-Azure Sentinel playbook 基于 [Azure 日志应用](../logic-apps/index.yml)中内置的工作流，这是一项云服务，可帮助计划、自动执行和协调任务、业务流程及工作流。 创建事件或会审和使用事件时，可自动调用 playbook。 
-
-为便于你深入了解 playbook 的运行状况、性能和使用情况，我们添加了一个名为“playbook 运行状况监视”的[工作簿](../azure-monitor/visualize/workbooks-overview.md)。 
-
-可使用“playbook 运行状况监视”工作簿监视 playbook 的运行状况，或查找成功或失败的运行数量中的异常。 
-
-“playbook 运行状况监视”工作簿现已在 Azure Sentinel 模板库中提供：
-
-:::image type="content" source="media/whats-new/playbook-monitoring-workbook.gif" alt-text="“playbook 运行状况监视”工作簿示例":::
-
-有关详细信息，请参阅：
-
-- [逻辑应用文档](../logic-apps/monitor-logic-apps-log-analytics.md#set-up-azure-monitor-logs)
-
-- [Azure Monitor 文档](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)
-
-### <a name="microsoft-365-defender-connector-public-preview"></a>Microsoft 365 Defender 连接器（公共预览版）
- 
-通过适用于 Azure Sentinel 的 Microsoft 365 Defender 连接器，可将高级搜寻日志（一种原始事件数据类型）从 Microsoft 365 Defender 流式传输到 Azure Sentinel。 
-
-通过将 [Microsoft Defender for Endpoint (MDATP)](/windows/security/threat-protection/) 集成到 [Microsoft 365 Defender](/microsoft-365/security/mtp/microsoft-threat-protection) 安全产品系列中，现可使用 Microsoft 365 Defender 连接器收集 Microsoft Defender for Endpoint 高级搜寻事件，并将它们直接流式传输到 Azure Sentinel 工作区中新的专用表中。 
-
-Azure Sentinel 表基于 Microsoft 365 Defender 门户中使用的同一架构进行构建，提供了对整个高级搜寻日志集的完整访问权限。 
-
-有关详细信息，请参阅[将数据从 Microsoft 365 Defender 连接到 Azure Sentinel](connect-microsoft-365-defender.md)。
-
-> [!NOTE]
-> Microsoft 365 Defender 以前被称为 Microsoft 威胁防护 (MTP)。 Microsoft Defender for Endpoint 以前被称为 Microsoft Defender 高级威胁防护 (MDATP)。
-> 
 
 ## <a name="next-steps"></a>后续步骤
 

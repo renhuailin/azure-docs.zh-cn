@@ -11,16 +11,16 @@ author: knicholasa
 manager: martinco
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f90edd5729ff5229be09bc3798082c33bdeead2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2595acf25b63f89f6e0e29e996548b58767e9fde
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102632095"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786146"
 ---
 # <a name="browser-support-of-fido2-passwordless-authentication"></a>浏览器对 FIDO2 无密码身份验证的支持
 
-Azure Active Directory 允许将 [FIDO2 安全密钥](./concept-authentication-passwordless.md#fido2-security-keys)用作无密码设备。 [2018 年已宣布](https://techcommunity.microsoft.com/t5/identity-standards-blog/all-about-fido2-ctap2-and-webauthn/ba-p/288910)可在 Microsoft 帐户中使用 FIDO2 身份验证。 如公告中所述，必须实现某些可选功能以及 FIDO2 CTAP 规范的扩展才能在 Microsoft 和 Azure Active Directory 帐户中支持安全身份验证。 下图显示了哪个浏览器和操作系统组合支持结合使用 Azure Active Directory 和 FIDO2 身份验证密钥进行无密码身份验证。
+Azure Active Directory 允许将 [FIDO2 安全密钥](./concept-authentication-passwordless.md#fido2-security-keys)用作无密码设备。 [2018 年已宣布](https://techcommunity.microsoft.com/t5/identity-standards-blog/all-about-fido2-ctap2-and-webauthn/ba-p/288910)可在 Microsoft 帐户中使用 FIDO2 身份验证，且 2021 年 3 月已[公开发布](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/passwordless-authentication-is-now-generally-available/ba-p/1994700)。 下图显示了哪个浏览器和操作系统组合支持结合使用 Azure Active Directory 和 FIDO2 身份验证密钥进行无密码身份验证。
 
 ## <a name="supported-browsers"></a>支持的浏览器
 
@@ -59,7 +59,7 @@ Azure Active Directory 允许将 [FIDO2 安全密钥](./concept-authentication-p
 <sup>1</sup>基于新 Chromium 的 Microsoft Edge 的所有版本均支持 Fido2。 1903 版中添加了对 Microsoft Edge 旧版的支持。
 
 ## <a name="next-steps"></a>后续步骤
-[启用无密码安全密钥登录（预览版）](./howto-authentication-passwordless-security-key.md)
+[启用无密码安全密钥登录](./howto-authentication-passwordless-security-key.md)
 
 <!--Image references-->
 [y]: ./media/fido2-compatibility/yes.png

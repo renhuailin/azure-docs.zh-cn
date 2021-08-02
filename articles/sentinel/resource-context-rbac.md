@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: fc1246d079760fd86513840aebbffa34d192f8ed
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1c4a32e79f54bd2626f2eb4f3a3cc97266d3bab0
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044169"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111958491"
 ---
 # <a name="manage-access-to-azure-sentinel-data-by-resource"></a>按资源管理对 Azure Sentinel 数据的访问
 
@@ -39,10 +39,11 @@ ms.locfileid: "105044169"
 在 Azure Monitor 中启用资源上下文 RBAC。 有关详细信息，请参阅[在 Azure Monitor 中管理对日志数据和工作区的访问](../azure-monitor/logs/manage-access.md)。
 
 > [!NOTE]
-> 如果你的数据不是 Azure 资源（例如 Syslog、CEF 或 AAD 数据，或自定义收集器收集的数据），则需要手动配置用于标识数据和启用访问权限的资源 ID。
+> 如果你的数据不是 Azure 资源（例如 Syslog、CEF 或 AAD 数据，或自定义收集器收集的数据），则需要手动配置用于标识数据和启用访问权限的资源 ID。 有关详细信息，请参阅[显式配置资源上下文 RBAC](#explicitly-configure-resource-context-rbac)。
 >
-> 有关详细信息，请参阅[显式配置资源上下文 RBAC](#explicitly-configure-resource-context-rbac)。
->
+> 此外，以资源为中心的上下文中不支持[函数](../azure-monitor/logs/functions.md)和已保存的搜索。 因此，Azure Sentinel 中的资源上下文 RBAC 不支持 Azure Sentinel 功能，如分析和[规范化](normalization.md)。
+> 
+
 ## <a name="scenarios-for-resource-context-rbac"></a>资源上下文 RBAC 的方案
 
 下表突出显示了最适合使用资源上下文 RBAC 的方案。 请注意 SOC 团队与非 SOC 团队之间访问要求的差异。

@@ -15,14 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 3df78d6b53f8e8739307e9b870aa03d76bfd6771
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d6b132fbb3aed541cc602537df1d40fa0d47702a
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101718601"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111421843"
 ---
 # <a name="connect-data-sources"></a>连接数据源
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 启用 Azure Sentinel 后，首先需要连接数据源。 Azure Sentinel 随附许多适用于 Microsoft 解决方案的开箱即用连接器，提供实时集成，包括 Microsoft 365 Defender（之前称为 Microsoft 威胁防护）解决方案、Microsoft 365 源（包括 Office 365）、Azure AD、Microsoft Defender for Identity（之前称为 Azure ATP）、Microsoft Cloud App Security 等。 此外，内置的连接器可以拓宽非 Microsoft 解决方案的安全生态系统。 也可以使用常用事件格式 (CEF)、Syslog 或 REST-API 将数据源与 Azure Sentinel 相连接。
 
@@ -46,23 +48,28 @@ Azure Sentinel 支持以下数据连接方法：
 - **服务到服务集成**：<br> 有些服务是本机互连的（如 AWS 和 Microsoft 服务），这些服务利用 Azure 基础进行现成集成，只需单击几次即可连接以下解决方案：
     - [Amazon Web Services - CloudTrail](connect-aws.md)
     - [Azure Active Directory](connect-azure-active-directory.md) - 审核日志和登录日志
+    - [Azure Active Directory 标识保护](connect-azure-ad-Identity-protection.md)
     - [Azure 活动](connect-azure-activity.md)
-    - [Azure AD 标识保护](connect-azure-ad-Identity-protection.md)
     - [Azure DDoS 防护](connect-azure-ddos-protection.md)
+    - Azure 安全中心的 [Azure Defender 警报](connect-azure-security-center.md)
     - [Azure Defender for IoT](connect-asc-iot.md)（以前称为适用于 IoT 的 Azure 安全中心）
-    - [Azure 信息保护](connect-azure-information-protection.md)
     - [Azure 防火墙](connect-azure-firewall.md)
-    - [Azure 安全中心](connect-azure-security-center.md) - 来自 Azure Defender 解决方案的警报
+    - [Azure 信息保护](connect-azure-information-protection.md)
+    - [Azure Key Vault](connect-azure-key-vault.md)
+    - [Azure Kubernetes 服务 (AKS)](connect-azure-kubernetes-service.md)
+    - [Azure SQL 数据库](connect-azure-sql-logs.md)
+    - [Azure 存储帐户](connect-azure-storage-account.md)
     - [Azure Web 应用程序防火墙 (WAF)](connect-azure-waf.md)（原 Microsoft WAF）
-    - [Cloud App Security](connect-cloud-app-security.md)
     - [域名服务器](connect-dns.md)
-    - [Microsoft 365 Defender](connect-microsoft-365-defender.md) - 包括 M365D 事件和 MDE 原始数据
+    - [Dynamics 365](connect-dynamics-365.md)
+    - [Microsoft 365 Defender](connect-microsoft-365-defender.md) - 包含用于终结点原始数据的 M365D 事件和 Defender
+    - [Microsoft Cloud App Security](connect-cloud-app-security.md)
     - [Microsoft Defender for Endpoint](connect-microsoft-defender-advanced-threat-protection.md)（原 Microsoft Defender 高级威胁防护）
     - [Microsoft Defender For Identity](connect-azure-atp.md)（原 Azure 高级威胁防护）
     - [Microsoft Defender for Office 365](connect-office-365-advanced-threat-protection.md)（原 Office 365 高级威胁防护）
-    - [Office 365](connect-office-365.md)（现带有 Teams！）
+    - [Office 365](connect-office-365.md)（包括 Teams）
     - [Windows 防火墙](connect-windows-firewall.md)
-    - [Windows 安全事件](connect-windows-security-events.md)
+    - (Windows) [安全事件](connect-windows-security-events.md)
 
 - **通过 API 连接外部解决方案**：可以使用联网数据源提供的 API 连接某些数据源。 一般情况下，大多数安全技术都会提供一组 API，通过这些 API 可以检索事件日志。这些 API 连接到 Azure Sentinel，收集特定的数据类型并将其发送到 Azure Log Analytics。 通过 API 连接的设备包括：
     
@@ -185,7 +192,7 @@ Azure Sentinel 支持以下数据连接方法：
 | Sysmon（事件） | [连接 Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [连接 Windows 事件](../azure-monitor/agents/data-sources-windows-events.md) <br> [获取 Sysmon 分析程序](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | 默认情况下，虚拟机上未安装 Sysmon 集合。 有关如何安装 Sysmon 代理的详细信息，请参阅 [Sysmon](/sysinternals/downloads/sysmon)。 |
 | ConfigurationData  | [自动执行 VM 清单](../automation/change-tracking/overview.md)| &#10007; | |
 | ConfigurationChange  | [自动执行 VM 跟踪](../automation/change-tracking/overview.md) | &#10007; | |
-| F5 BIG-IP | [连接 F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10007; | |
+| F5 BIG-IP | [连接 F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10003; | |
 | McasShadowItReporting  |  | &#10007; | |
 | Barracuda_CL | [连接 Barracuda](connect-barracuda.md) | &#10003; | |
 

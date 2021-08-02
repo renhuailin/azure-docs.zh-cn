@@ -1,35 +1,35 @@
 ---
-title: 连接到 Windows 虚拟桌面（经典）Windows 10 或 7 - Azure
-description: 如何使用 Windows 桌面客户端连接到 Windows 虚拟桌面（经典）。
+title: 连接到 Azure 虚拟桌面（经典）Windows 10 或 7 - Azure
+description: 如何使用 Windows 桌面客户端连接到 Azure 虚拟桌面（经典）。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 420c507361e3e2437366e6ccf2d46a8b78684e59
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 6fcb8b3688ea5d2a8866093fd46efb8236db3558
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88008350"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982045"
 ---
 # <a name="connect-with-the-windows-desktop-classic-client"></a>使用 Windows 桌面（经典）客户端进行连接
 
 > 适用于：Windows 7、Windows 10 和 Windows 10 IoT 企业版
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../connect-windows-7-10.md)。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[本文](../connect-windows-7-10.md)。
 
-你可以使用 Windows 桌面客户端访问装有 Windows 7、Windows 10 和 Windows 10 IoT 企业版的设备上的 Windows 虚拟桌面资源。 该客户端不支持 Window 8 或 Windows 8.1。
+你可使用 Windows 桌面客户端访问装有 Windows 7、Windows 10 和 Windows 10 IoT 企业版的设备上的 Azure 虚拟桌面资源。 该客户端不支持 Window 8 或 Windows 8.1。
 
 >[!NOTE]
->Windows 客户端自动默认为 Windows 虚拟桌面（经典）。 但是，如果客户端检测到用户还有 Azure 资源管理器资源，则会自动添加资源或通知用户这些资源可用。
+>Windows 客户端自动默认为 Azure 虚拟桌面（经典）。 但是，如果客户端检测到用户还有 Azure 资源管理器资源，则会自动添加资源或通知用户这些资源可用。
 
 > [!IMPORTANT]
-> Windows 虚拟桌面不支持 RemoteApp 和桌面连接 (RADC) 客户端或远程桌面连接 (MSTSC) 客户端。
+> Azure 虚拟桌面不支持 RemoteApp 和桌面连接 (RADC) 客户端或远程桌面连接 (MSTSC) 客户端。
 
 > [!IMPORTANT]
-> Windows 虚拟桌面目前不支持 Windows 应用商店中的远程桌面客户端。
+> Azure 虚拟桌面目前不支持 Windows 应用商店中的远程桌面客户端。
 
 ## <a name="install-the-windows-desktop-client"></a>安装 Windows 桌面客户端
 
@@ -60,9 +60,9 @@ ms.locfileid: "88008350"
 
 1. 在客户端的主页上，选择“使用 URL 进行订阅”。
 2. 输入工作区 URL 或你的电子邮件地址：
-   - 如果使用工作区 URL，请输入管理员提供给你的 URL。 如果从 Windows 虚拟桌面访问资源，可使用下列 URL 之一：
-     - Windows 虚拟桌面（经典）：`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
-     - Windows 虚拟桌面：`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
+   - 如果使用工作区 URL，请输入管理员提供给你的 URL。 如果从 Azure 虚拟桌面访问资源，可使用下列 URL 之一：
+     - Azure 虚拟桌面（经典）：`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
+     - Azure 虚拟桌面：`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
    - 如果改用“电子邮件”字段，请输入你的电子邮件地址。 这会指示客户端搜索与你的电子邮件地址关联的 URL，前提是管理员已设置[电子邮件发现](/windows-server/remote/remote-desktop-services/rds-email-discovery)。
 3. 选择“**下一页**”。
 4. 出现提示时，请使用用户帐户登录。

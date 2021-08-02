@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2020
+ms.date: 04/30/2021
 ms.author: Zhchia
-ms.openlocfilehash: 7b4dd01b74f81318338196a40949d339f13d16da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9608a3a9e086cc6c03dc80f0666becbcbc06290
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97673292"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110688401"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>教程：为 Adobe Identity Management 配置自动用户预配
 
@@ -42,6 +42,7 @@ ms.locfileid: "97673292"
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md)。
 * Azure AD 中[有权](../roles/permissions-reference.md)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。 
 * [Adobe Admin Console](https://adminconsole.adobe.com/)（Adobe 管理控制台）中具有一个包含已验证域的联合目录。
+* 查看有关用户预配的 [adobe 文档](https://helpx.adobe.com/enterprise/admin-guide.html/enterprise/using/add-azure-sync.ug.html) 
 
 > [!NOTE]
 > 如果你的组织使用用户同步工具或 UMAPI 集成，则必须先暂停该集成。 然后，通过 Azure 门户将 Azure AD 自动预配添加到自动用户管理。 配置并运行 Azure AD 自动预配后，可以彻底删除用户同步工具或 UMAPI 集成。
@@ -67,7 +68,7 @@ ms.locfileid: "97673292"
 
     ![同步](media/adobe-identity-management-provisioning-tutorial/token.png)
 
-## <a name="step-3-add-adobe-identity-management-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 Adobe Identity Management
+## <a name="step-3-add-adobe-identity-management-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Adobe Identity Management
 
 从 Azure AD 应用程序库添加 Adobe Identity Management，以开始管理到 Adobe Identity Management 的预配。 如果以前为 Adobe Identity Management 设置过 SSO，则可使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 

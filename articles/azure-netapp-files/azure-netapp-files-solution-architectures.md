@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 05/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 3db4999f1cb6185f02a40395842c30b9d77072b3
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: cb53bad331e511ea2daacc2a0fbc9c178a193a2f
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102489015"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110655129"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp 文件的解决方案体系结构
 本文提供了使用 Azure NetApp 文件的解决方案体系结构最佳做法的参考，帮助你更好地理解这个体系结构。  
@@ -41,6 +41,10 @@ ms.locfileid: "102489015"
 
 ### <a name="machine-learning"></a>机器学习
 *   [Cloudera 机器学习](https://docs.cloudera.com/machine-learning/cloud/requirements-azure/topics/ml-requirements-azure.html)
+*   [Azure 中的分布式训练：通道检测 - 解决方案设计](https://www.netapp.com/media/32427-tr-4896-design.pdf)
+
+### <a name="education"></a>教育
+* [Azure NetApp 文件 NFS 存储上的 Moodle](https://techcommunity.microsoft.com/t5/azure-architecture-blog/azure-netapp-files-for-nfs-storage-with-moodle/ba-p/2300630)
 
 ## <a name="windows-apps-and-sql-server-solutions"></a>Windows 应用和 SQL Server 解决方案
 
@@ -54,9 +58,11 @@ ms.locfileid: "102489015"
 
 ### <a name="sql-server"></a>SQL Server
 
+* [Azure 上的 SQL Server 部署指南（使用 Azure NetApp 文件）](https://www.netapp.com/pdf.html?item=/media/27154-tr-4888.pdf)
+* [使用 Azure NetApp 文件进行 SQL Server 部署的好处](solutions-benefits-azure-netapp-files-sql-server.md)
 * [使用 Azure NetApp 文件通过 SMB 部署 SQL Server](https://www.youtube.com/watch?v=x7udfcYbibs)
-<!-- * [Deploy SQL Server Always-On Failover Cluster over SMB with Azure NetApp Files](https://www.youtube.com/watch?v=zuNJ5E07e8Q) --> 
-<!-- * [Deploy Always-On Availability Groups with Azure NetApp Files](https://www.youtube.com/watch?v=y3VQmzzeyvc) --> 
+* [使用 Azure NetApp 文件通过 SMB 部署 SQL Server Always-On 故障转移群集](https://www.youtube.com/watch?v=zuNJ5E07e8Q) 
+* [使用 Azure NetApp 文件部署 Always-On 可用性组](https://www.youtube.com/watch?v=y3VQmzzeyvc) 
 
 ## <a name="sap-on-azure-solutions"></a>Azure 上的 SAP 解决方案
 
@@ -99,6 +105,8 @@ ms.locfileid: "102489015"
 * [云卷 ONTAP 和 Azure NetApp 文件：简化 SAP HANA 系统迁移](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
 * [在 HANA N+M 横向扩展体系结构中使 ANF 投资收益最大化的体系结构决策 - 第一部分](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
 * [在 HANA N+M 横向扩展体系结构中使 ANF 投资收益最大化的体系结构决策 - 第二部分](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
+* [在 HANA N+M 横向扩展体系结构中使 ANF 投资收益最大化的体系结构决策 - 第三部分](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2215948)
+* [使用 Azure NetApp 文件进行 SAP 布局大小调整和卷整合](https://techcommunity.microsoft.com/t5/sap-on-microsoft/sap-landscape-sizing-and-volume-consolidation-with-anf/m-p/2145572/highlight/true#M14)
 
 ## <a name="azure-vmware-solutions"></a>Azure VMware 解决方案
 

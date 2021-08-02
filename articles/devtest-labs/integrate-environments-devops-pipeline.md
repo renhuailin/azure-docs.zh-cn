@@ -3,12 +3,12 @@ title: 将环境集成到 Azure 开发测试实验室中的 Azure Pipelines
 description: 了解如何将 Azure 开发测试实验室环境集成到 Azure DevOps 持续集成 (CI) 和持续交付 (CD) 管道。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: be726b2a3f67fd3dada4fdc3cf794922a3c18d06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18f334fe85b6a38c38fc41d55c711ee6d6629760
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85483017"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006124"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>将环境集成到 Azure DevOps CI/CD 管道中
 你可以使用安装在 Azure DevOps Services 中的 Azure DevTest Labs Tasks 扩展，轻松地将持续集成 (CI)/持续交付 (CD) 生成和发布管道与 Azure 开发测试实验室集成。 这些扩展便于你为特定测试任务快速部署[环境](devtest-lab-test-env.md)，并在测试完成后将其删除。 
@@ -26,8 +26,8 @@ ms.locfileid: "85483017"
 
 1. [创建实验室](devtest-lab-create-lab.md)（如果还没有）。 
 2. 按照[使用 Azure 资源管理器模板创建多 VM 环境和 PaaS 资源](devtest-lab-create-environment-from-arm.md)一文中的说明配置实验室并创建环境模板。
-3. 对于此示例，请使用现有的 Azure 快速启动模板 [https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/](https://azure.microsoft.com/resources/templates/201-web-app-redis-cache-sql-database/)。
-4. 将 201-web-app-redis-cache-sql-database 文件夹复制到在步骤 2 中配置的存储库中的 ArmTemplate 文件夹 。
+3. 对于此示例，请使用现有的 Azure 快速启动模板 [https://azure.microsoft.com/resources/templates/web-app-redis-cache-sql-database](https://azure.microsoft.com/resources/templates/web-app-redis-cache-sql-database)。
+4. 将 web-app-redis-cache-sql-database 文件夹复制到在步骤 2 中配置于存储库中的 ArmTemplate 文件夹。
 
 ## <a name="create-a-release-definition"></a>创建发布定义
 要创建发布定义，请执行以下操作：

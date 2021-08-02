@@ -11,12 +11,12 @@ ms.collection: windows
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: trinadhk
-ms.openlocfilehash: 834c886c15e50870ec008dbb5ceab38132cc4649
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6dc2fb12ebd166f62f04a1ecb9833edaad18f539
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561053"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789604"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Azure 备份的 VM 快照 Windows 扩展
 
@@ -90,9 +90,19 @@ az backup protection enable-for-vm \
     --policy-name DefaultPolicy
 ```
 
+## <a name="azure-powershell-deployment"></a>Azure PowerShell 部署
+
+可以使用 Azure PowerShell 在虚拟机上启用备份。 配置备份之后，第一个计划的备份作业将在 VM 上安装 VM 快照扩展。
+
+```azurepowershell
+$targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "myResourceGroup" -Name "myRecoveryServicesVault"
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy Name DefaultPolicy -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "myVM" -ResourceGroupName "myVMResourceGroup" -VaultId $targetVault.ID
+```
+
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure CLI 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure CLI 运行以下命令。
 

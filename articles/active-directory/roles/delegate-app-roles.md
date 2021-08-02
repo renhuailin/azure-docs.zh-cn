@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9dcbb12f48a98a35013a80f986b67f75118d74c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2dd14da92eedc14a3da8e9eb0a29b08d96acd204
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060240"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110790776"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>在 Azure Active Directory 中委托应用注册权限
 
@@ -77,7 +77,7 @@ Azure AD 提供一组内置的管理员角色，用于授予 Azure AD 中所有�
 - 应用程序管理员：此角色中的用户可以创建和管理企业应用程序、应用程序注册和应用程序代理设置的所有方面。 此角色还授予同意委派权限和应用程序权限（不包括 Microsoft Graph）的能力。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
 - 云应用程序管理员：此角色中的用户具有与应用程序管理员角色相同的权限，但不包括管理应用程序代理的权限。 在创建新应用程序注册或企业应用程序时，不会将分配到此角色的用户添加为所有者。
 
-有关详细信息以及如何查看这些角色的说明，请参阅 [ 内置角色](permissions-reference.md)。
+有关详细信息以及如何查看这些角色的说明，请参阅 [Azure AD 内置角色](permissions-reference.md)。
 
 遵照[使用 Azure Active Directory 向用户分配角色](../fundamentals/active-directory-users-assign-role-azure-portal.md)操作指南中的说明分配“应用程序管理员”或“云应用程序管理员”角色。
 
@@ -95,8 +95,8 @@ Azure AD 提供一组内置的管理员角色，用于授予 Azure AD 中所有�
 借助这种隔离可以创建单个角色定义，然后在不同的范围多次分配该角色。 可以在组织范围分配自定义角色，或者在单个 Azure AD 对象范围分配自定义角色。 例如，单个应用注册就属于对象范围。 使用不同的范围可为 Sally 分配对组织中所有应用注册的相同角色定义，并只为 Naveen 分配对 Contoso Expense Reports 应用注册的角色定义。
 
 创建和使用用于委托应用程序管理权的自定义角色时的提示：
-- 自定义角色只会在 Azure AD 门户的“最近的应用注册”边栏选项卡授予访问权限。 他们不会在“旧应用注册”边栏选项卡中授予访问权限。
-- 当“限制访问 Azure AD 管理门户”用户设置指定为“是”时，自定义角色不会授予对 Azure AD 门户的访问权限。
+- 自定义角色只会在 Azure 门户的“最近的应用注册”边栏选项卡授予访问权限。 他们不会在“旧应用注册”边栏选项卡中授予访问权限。
+- 当“限制访问 Azure AD 管理门户”用户设置指定为“是”时，自定义角色不会授予对 Azure 门户的访问权限。
 - 用户有权使用角色分配访问的应用注册只会显示在“应用注册”页上的“所有应用程序”选项卡中。 它们不会显示在“拥有的应用程序”选项卡中。
 
 若要详细了解自定义角色的基础知识，请参阅[自定义角色概述](custom-overview.md)，以及[创建自定义角色](custom-create.md)和[分配角色](custom-assign-powershell.md)。
@@ -104,4 +104,4 @@ Azure AD 提供一组内置的管理员角色，用于授予 Azure AD 中所有�
 ## <a name="next-steps"></a>后续步骤
 
 - [应用程序注册子类型和权限](custom-available-permissions.md)
-- [Azure AD 管理员角色参考](permissions-reference.md)
+- [Azure AD 内置角色](permissions-reference.md)

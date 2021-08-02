@@ -1,16 +1,16 @@
 ---
 title: 使用脚本操作自定义 Azure HDInsight 群集
-description: 使用脚本操作将自定义组件添加到 HDInsight 群集。 脚本操作为 Bash 脚本，可用于自定义群集配置。 或添加其他服务和实用工具，如色相、Solr 或 R。
+description: 使用脚本操作将自定义组件添加到 HDInsight 群集。 脚本操作是可用于自定义群集配置的 Bash 脚本。 或添加其他服务和实用工具，如 Hue、Solr 或 R。
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
-ms.date: 09/02/2020
-ms.openlocfilehash: d85aa1b66170acb25bd88435b83b1d28cda954f0
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.custom: seoapr2020, contperf-fy21q2, devx-track-azurepowershell
+ms.date: 03/09/2021
+ms.openlocfilehash: 1a14a11ef1e5e5a84bded3110e9d4361865c6419
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093596"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110701610"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用脚本操作自定义 Azure HDInsight 群集
 
@@ -22,27 +22,32 @@ Azure HDInsight 提供名为脚本操作的配置方法，该方法可以调用�
 
 脚本操作是指在 HDInsight 群集的节点上运行的 Bash 脚本。 下面是脚本操作的特征和功能：
 
-- 必须存储在可从 HDInsight 群集访问的 URI 上。 下面是可能的存储位置：
+- Bash 脚本 URI（访问文件的位置）必须可从 HDInsight 资源提供程序和群集进行访问。
+- 下面是可能的存储位置：
 
-    - 对于常规（非 ESP）群集：
-      - Data Lake Storage Gen1/Gen2：用于访问 Data Lake Storage 的服务主体 HDInsight 必须具有对脚本的读取访问权限。 存储在 Data Lake Storage Gen1 中的脚本的 URI 格式为 `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`。 Data Lake Storage Gen2 脚本的 URI 格式为 `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
-      - Azure 存储帐户中的一个 Blob，该存储帐户可以是 HDInsight 群集的主存储帐户，也可以是其附加存储帐户。 在创建群集期间，已将这两种存储帐户的访问权限都授予 HDInsight。
+   - 对于常规（非 ESP）群集：
+     - Azure 存储帐户中的一个 Blob，该存储帐户可以是 HDInsight 群集的主存储帐户，也可以是其附加存储帐户。 在创建群集期间，已将这两种存储帐户的访问权限都授予 HDInsight。
+    
+       > [!IMPORTANT]  
+       > 请勿在此 Azure 存储帐户上轮换存储密钥，因为这会导致对存储在其中的脚本执行后续脚本操作失败。
 
-        > [!IMPORTANT]  
-        > 请勿在此 Azure 存储帐户上轮换存储密钥，因为这会导致对存储在其中的脚本执行后续脚本操作失败。
+     - Data Lake Storage Gen1：用于访问 Data Lake Storage 的服务主体 HDInsight 必须具有对脚本的读取访问权限。 Bash 脚本 URI 格式为 `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`。 
 
-      - 可通过 `http://` 路径访问的公共文件共享服务。 例如，Azure Blob、GitHub 或 OneDrive。 有关示例 URI，请参阅[脚本操作脚本示例](#example-script-action-scripts)。
-    - 对于具有 ESP 的群集，支持 `wasb://` 或 `wasbs://` 或 `http[s]://` URI。
+     - 建议不要将 Data Lake Storage Gen2 用于脚本操作。 Bash 脚本 URI 不支持 `abfs://`。 `https://` URI 可行，但它们适用于具有公共访问权限且防火墙不限制 HDInsight 资源提供程序的容器，因此不建议使用。
 
-- 可以限制为只对特定的节点类型运行， 例如头节点或工作节点。
-- 可以是持久化的，也可以是临时的。
+     - 可通过 `https://` 路径访问的公共文件共享服务。 例如，Azure Blob、GitHub 或 OneDrive。 有关示例 URI，请参阅[脚本操作脚本示例](#example-script-action-scripts)。
 
-    - 持久化脚本操作必须有唯一的名称。 持久化脚本用于自定义通过缩放操作添加到群集的新工作节点。 进行缩放操作时，持久化脚本还可以将更改应用于其他节点类型， 例如头节点。
-    - 临时脚本不是持久化脚本。 创建群集期间使用的脚本操作自动持久保存下来。 它们在运行后不会应用于添加到群集的工作节点。 然后，可以将临时脚本升级为持久化脚本，或将持久化脚本降级为临时脚本 。 即使明确指出应予保存，也不会持久保存失败的脚本。
+  - 对于具有 ESP 的群集，支持 `wasb://` 或 `wasbs://` 或 `http[s]://` URI。
 
-- 可以接受脚本在执行期间使用的参数。
-- 在群集节点上以根级别权限运行。
-- 可以通过 Azure 门户、Azure PowerShell、Azure CLI 或 HDInsight .NET SDK 使用。
+- 脚本操作可限制为仅在特定节点类型上运行。 例如头节点或工作节点。
+- 脚本操作可以是持久化的，也可以是临时的。
+
+  - 持久化脚本操作必须有唯一的名称。 持久化脚本用于自定义通过缩放操作添加到群集的新工作节点。 进行缩放操作时，持久化脚本还可以将更改应用于其他节点类型， 例如头节点。
+  - 临时脚本不是持久化脚本。 创建群集期间使用的脚本操作自动持久保存下来。 它们在运行后不会应用于添加到群集的工作节点。 然后，可以将临时脚本升级为持久化脚本，或将持久化脚本降级为临时脚本 。 即使明确指出应予保存，也不会持久保存失败的脚本。
+
+- 脚本操作可接受脚本在执行期间使用的参数。
+- 脚本操作在群集节点上以根级别权限运行。
+- 可通过 Azure 门户、Azure PowerShell、Azure CLI 或 HDInsight .NET SDK 使用脚本操作。
 - 删除或修改 VM 上的服务文件的脚本操作可能会影响服务的运行状况和可用性。
 
 群集保留已运行的所有脚本的历史记录。 需要查找要升级或降级的脚本的 ID 时，历史记录很有用。
@@ -68,7 +73,7 @@ Azure HDInsight 提供名为脚本操作的配置方法，该方法可以调用�
 获取有关使用访问权限管理的详细信息：
 
 - [Azure 门户中的访问管理入门](../role-based-access-control/overview.md)
-- [分配 Azure 角色以管理对 Azure 订阅资源的访问权限](../role-based-access-control/role-assignments-portal.md)
+- [分配 Azure 角色以管理对 Azure 订阅资源的访问](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="methods-for-using-script-actions"></a>使用脚本操作的方法
 
@@ -83,7 +88,8 @@ Azure HDInsight 提供名为脚本操作的配置方法，该方法可以调用�
 
 下图演示了在创建过程中运行脚本操作的时间：
 
-![群集创建期间的 HDInsight 群集自定义和阶段][img-hdi-cluster-states]
+
+:::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png" alt-text="群集创建期间的阶段" border="false":::
 
 在配置 HDInsight 时运行脚本。 脚本在群集中的所有指定节点上并行运行。 它在节点上使用 root 特权运行。
 
@@ -139,29 +145,29 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 
 1. 按照[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)中的说明，开始创建群集。 从“配置 + 定价”选项卡中，选择“+ 添加脚本操作”。
 
-    ![Azure 门户群集脚本操作](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png" alt-text="Azure 门户群集脚本操作":::
 
 1. 使用“选择脚本”条目选择预制的脚本。 若要使用自定义脚本，请选择“自定义”。 然后提供脚本的“名称”和“Bash 脚本 URI”。 
 
-    ![在“选择脚本”窗体中添加脚本](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png" alt-text="在“选择脚本”窗体中添加脚本":::
 
-    下表描述窗体中的元素：
+   下表描述窗体中的元素：
 
-    | 属性 | Value |
-    | --- | --- |
-    | 选择脚本 | 要使用自己的脚本，请选择“自定义”。 否则，请从提供的脚本中选择一个。 |
-    | 名称 |指定脚本操作的名称。 |
-    | Bash 脚本 URI |指定脚本的 URI。 |
-    | Head/Worker/ZooKeeper |指定运行脚本的节点：“头节点”、“工作节点”或“ZooKeeper 节点”。   |
-    | parameters |根据脚本的需要，请指定参数。 |
+   | 属性 | Value |
+   | --- | --- |
+   | 选择脚本 | 要使用自己的脚本，请选择“自定义”。 否则，请从提供的脚本中选择一个。 |
+   | 名称 |指定脚本操作的名称。 |
+   | Bash 脚本 URI |指定脚本的 URI。 |
+   | 头节点/工作节点/ZooKeeper 节点 |指定运行脚本的节点：“头节点”、“工作节点”或“ZooKeeper 节点”。   |
+   | parameters |根据脚本的需要，请指定参数。 |
 
-    使用“持久保存此脚本操作”条目，确保在执行缩放操作期间应用该脚本。
+   使用“持久保存此脚本操作”条目，确保在执行缩放操作期间应用该脚本。
 
 1. 选择“创建”保存脚本。 然后可以使用“+ 提交新项”再添加一个脚本。
 
-    ![HDInsight 多脚本操作](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png" alt-text="HDInsight 多脚本操作":::
 
-    添加完脚本后，将返回到“配置 + 定价”选项卡。
+   添加完脚本后，将返回到“配置 + 定价”选项卡。
 
 1. 照常完成其余的群集创建步骤。
 
@@ -198,7 +204,7 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-hdinsight-net-sdk"></a>在创建群集期间从 HDInsight .NET SDK 使用脚本操作
 
-HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDInsight。 有关代码示例，请参阅[脚本操作](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true#script-actions)。
+HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDInsight。 有关代码示例，请参阅[脚本操作](/dotnet/api/overview/azure/hdinsight#script-actions)。
 
 ## <a name="script-action-to-a-running-cluster"></a>将脚本操作应用到正在运行的群集
 
@@ -212,23 +218,23 @@ HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDI
 
 1. 在“脚本操作”页顶部，选择“+ 提交新项” 。
 
-    ![将脚本添加到正在运行的群集](./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png" alt-text="将脚本添加到正在运行的群集":::
 
 1. 使用“选择脚本”条目选择预制的脚本。 若要使用自定义脚本，请选择“自定义”。 然后提供脚本的“名称”和“Bash 脚本 URI”。 
 
-    ![在“选择脚本”窗体中添加脚本](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png" alt-text="在“选择脚本”窗体中添加脚本":::
 
-    下表描述窗体中的元素：
+   下表描述窗体中的元素：
 
-    | 属性 | Value |
-    | --- | --- |
-    | 选择脚本 | 要使用自己的脚本，请选择“自定义”。 否则，请选择提供的脚本。 |
-    | 名称 |指定脚本操作的名称。 |
-    | Bash 脚本 URI |指定脚本的 URI。 |
-    | 头节点/辅助角色/Zookeeper |指定运行脚本的节点：“头节点”、“工作节点”或“ZooKeeper 节点”。   |
-    | parameters |根据脚本的需要，请指定参数。 |
+   | 属性 | Value |
+   | --- | --- |
+   | 选择脚本 | 要使用自己的脚本，请选择“自定义”。 否则，请选择提供的脚本。 |
+   | 名称 |指定脚本操作的名称。 |
+   | Bash 脚本 URI |指定脚本的 URI。 |
+   | 头节点/辅助角色/Zookeeper |指定运行脚本的节点：“头节点”、“工作节点”或“ZooKeeper 节点”。   |
+   | parameters |根据脚本的需要，请指定参数。 |
 
-    使用“持久保存此脚本操作”条目，确保在缩放操作中应用了脚本。
+   使用“持久保存此脚本操作”条目，确保在缩放操作中应用了脚本。
 
 1. 最后，选择“创建”按钮将脚本应用到群集。
 
@@ -255,19 +261,19 @@ NodeTypes       : {HeadNode, WorkerNode}
 
 1. 对 Azure 订阅进行身份验证：
 
-    ```azurecli
-    az login
-    ```
+   ```azurecli
+   az login
+   ```
 
 1. 将脚本操作应用到正在运行的群集：
 
-    ```azurecli
-    az hdinsight script-action execute --cluster-name CLUSTERNAME --name SCRIPTNAME --resource-group RESOURCEGROUP --roles ROLES
-    ```
+   ```azurecli
+   az hdinsight script-action execute --cluster-name CLUSTERNAME --name SCRIPTNAME --resource-group RESOURCEGROUP --roles ROLES
+   ```
 
-    有效角色为 `headnode`、`workernode`、`zookeepernode`、`edgenode`。 如果应将脚本应用到多个节点类型，请用空格分隔角色。 例如，`--roles headnode workernode`。
+   有效角色为 `headnode`、`workernode`、`zookeepernode`、`edgenode`。 如果应将脚本应用到多个节点类型，请用空格分隔角色。 例如，`--roles headnode workernode`。
 
-    若要持久保存脚本，请添加 `--persist-on-success`。 以后也可以使用 `az hdinsight script-action promote` 来持久保存脚本。
+   若要持久保存脚本，请添加 `--persist-on-success`。 以后也可以使用 `az hdinsight script-action promote` 来持久保存脚本。
 
 ### <a name="apply-a-script-action-to-a-running-cluster-by-using-rest-api"></a>使用 REST API 将脚本操作应用到正在运行的群集
 
@@ -287,15 +293,15 @@ NodeTypes       : {HeadNode, WorkerNode}
 
 1. 此群集的脚本历史记录显示在“脚本操作”部分。 此信息包括持久化脚本的列表。 以下屏幕截图显示已在此群集上运行了 Solr 脚本。 该屏幕截图未显示任何持久化脚本。
 
-    ![门户脚本操作提交历史记录](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png" alt-text="门户脚本操作提交历史记录":::
 
 1. 选择历史记录中的脚本会显示此脚本的“属性”部分。 从屏幕顶部，可重新运行脚本或将它升级。
 
-    ![脚本操作属性升级](./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png" alt-text="脚本操作属性提升":::
 
 1. 还可以使用“脚本操作”部分条目右侧的省略号“...”来执行操作。
 
-    ![永久性脚本操作删除](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
+   :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png" alt-text="持久化脚本操作删除":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -314,12 +320,12 @@ NodeTypes       : {HeadNode, WorkerNode}
 
 | 命令 | 说明 |
 | --- | --- |
-| [`az hdinsight script-action delete`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-delete) |删除对群集的指定持久化脚本操作。 此命令不会撤消脚本执行的操作，而只会删除持久化标志。|
-|[`az hdinsight script-action execute`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute)|在指定的 HDInsight 群集上执行脚本操作。|
-| [`az hdinsight script-action list`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-list) |列出指定群集的所有持久化脚本操作。 |
-|[`az hdinsight script-action list-execution-history`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-list-execution-history)|列出指定群集的所有脚本的执行历史记录。|
-|[`az hdinsight script-action promote`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-promote)|将指定的即席脚本执行升级为持久化脚本。|
-|[`az hdinsight script-action show-execution-details`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-show-execution-details)|获取给定脚本执行 ID 的脚本执行详细信息。|
+| [`az hdinsight script-action delete`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_delete) |删除对群集的指定持久化脚本操作。 此命令不会撤消脚本执行的操作，而只会删除持久化标志。|
+|[`az hdinsight script-action execute`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_execute)|在指定的 HDInsight 群集上执行脚本操作。|
+| [`az hdinsight script-action list`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_list) |列出指定群集的所有持久化脚本操作。 |
+|[`az hdinsight script-action list-execution-history`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_list_execution_history)|列出指定群集的所有脚本的执行历史记录。|
+|[`az hdinsight script-action promote`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_promote)|将指定的即席脚本执行升级为持久化脚本。|
+|[`az hdinsight script-action show-execution-details`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_show_execution_details)|获取给定脚本执行 ID 的脚本执行详细信息。|
 
 ### <a name="hdinsight-net-sdk"></a>HDInsight .NET SDK
 
@@ -333,5 +339,3 @@ NodeTypes       : {HeadNode, WorkerNode}
 * [为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions-linux.md)
 * [将其他存储添加到 HDInsight 群集中](hdinsight-hadoop-add-storage.md)
 * [排查脚本操作问题](troubleshoot-script-action.md)
-
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png "群集创建期间的阶段"

@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1c4760362e7c2b3965638b3213910b5b8cd6f079
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 248d39e80aea50811050d327782b528db85d4fb4
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516172"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111813584"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge-preview"></a>使用 Azure IoT Edge 发布和订阅（预览版）
 
@@ -31,12 +31,22 @@ ms.locfileid: "107516172"
 - 含有效订阅的 Azure 帐户
 - [安装了 `azure-iot` CLI 扩展的 Azure CLI](/cli/azure/)。 有关详细信息，请参阅 [Azure Azure CLI 的 Azure IoT 扩展安装步骤](/cli/azure/azure-cli-reference-for-iot)。
 - SKU 的 IoT 中心（F1、S1、S2 或 S3）。
-- 拥有版本 1.2 或更高版本的 IoT Edge 设备。 由于 IoT Edge MQTT 中转站当前处于公共预览状态，请在 edgeHub 容器上将以下环境变量设置为 true 以启用 MQTT 中转站：
+- 具有版本为 1.2 或更高的 IoT Edge 设备，包括已部署的版本为 1.2 或更高的 edgeAgent 和 edgeHub 模块，其中的 MQTT 中转站功能处于启用状态，edgeHub 端口 1883 绑定到主机，可启用非 TLS 连接。 可以按照[此文所述步骤](how-to-install-iot-edge-ubuntuvm.md)，在 Azure VM 中自动部署 IoT Edge 1.2。 由于 IoT Edge MQTT 中转站当前为公共预览版，因此你还需要在 edgeHub 模块上将以下环境变量设置为 true 以启用 MQTT 中转站：
 
-   | “属性” | “值” |
+   | 名称 | Value |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__mqttBrokerEnabled` | `true` |
+
+   若要快速创建一个满足这些条件并包含一个有关 `test_topic` 的开放授权策略的 IoT Edge 部署，可以使用附录中的此[示例部署清单](#appendix---sample-deployment-manifest)：
+
+   - 将部署文件保存在工作文件夹中
+
+   - 使用以下 Azure CLI 命令将此部署应用到 IoT Edge 设备。 有关此命令的详细信息，请参阅[使用 Azure CLI 部署 Azure IoT Edge 模块](how-to-deploy-modules-cli.md)。
+
+    ```azurecli
+    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content [deployment file path]
+    ```
 
 - 已在 IoT Edge 设备上安装 Mosquitto 客户端。 本文使用常用的 Mosquitto 客户端 [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) 和 [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html)。 可以改用其他 MQTT 客户端。 若要在 Ubuntu 设备上安装 Mosquitto 客户端，请运行以下命令：
 
@@ -98,7 +108,7 @@ ms.locfileid: "107516172"
 
 每个授权策略语句由 `identities`、`allow` 或 `deny` 效果、`operations` 和 `resources` 的组合构成：
 
-- `identities` 描述策略的主题。 它必须映射到客户端在其 CONNECT 数据包中发送的 `client identifier`。
+- `identities` 描述策略的主题。 它必须映射到客户端在其 CONNECT 数据包中发送的 `username`，并采用 `<iot_hub_name>.azure-devices.net/<device_name>` 或 `<iot_hub_name>.azure-devices.net/<device_name>/<module_name>` 格式。
 - `allow` 或 `deny` 效果定义是允许还是拒绝操作。
 - `operations` 定义要授权的操作。 `mqtt:connect`、`mqtt:publish` 和 `mqtt:subscribe` 是目前支持的三种操作。
 - `resources` 定义策略的对象。 它可以是主题，也可以是用 [MQTT 通配符](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107)定义的主题模式。
@@ -120,7 +130,7 @@ ms.locfileid: "107516172"
             "authorizations":[
                {
                   "identities":[
-                     "rogue_client"
+                     "<iot_hub_name>.azure-devices.net/rogue_client"
                   ],
                   "deny":[
                      {
@@ -144,7 +154,7 @@ ms.locfileid: "107516172"
                },
                {
                   "identities":[
-                     "sensor_1"
+                     "<iot_hub_name>.azure-devices.net/sensor_1"
                   ],
                   "allow":[
                      {
@@ -171,7 +181,7 @@ ms.locfileid: "107516172"
 - 授权语句会按照它们在 JSON 定义中出现的顺序接受评估。 它首先查看 `identities`，然后选择与请求匹配的第一个允许或拒绝语句。 如果允许和拒绝语句之间发生冲突，则以拒绝语句为准。
 - 授权策略中可以使用多个变量（例如替换）：
 
-  - `{{iot:identity}}` 表示当前连接的客户端的标识。 例如，`myDevice` 等设备标识或 `myEdgeDevice/SampleModule` 等模块标识。
+  - `{{iot:identity}}` 表示当前连接的客户端的标识。 例如，`<iot_hub_name>.azure-devices.net/myDevice` 等设备标识或 `<iot_hub_name>.azure-devices.net/myEdgeDevice/SampleModule` 等模块标识。
   - `{{iot:device_id}}` 表示当前连接的设备的标识。 例如，`myDevice` 等设备标识或 `myEdgeDevice` 等运行模块的设备标识。
   - `{{iot:module_id}}` 表示当前连接的模块的标识。 此变量对于已连接的设备为空，或者是模块标识（如 `SampleModule`）。
   - `{{iot:this_device_id}}` 表示运行授权策略的 IoT Edge 设备的标识。 例如，`myIoTEdgeDevice`。
@@ -219,14 +229,22 @@ ms.locfileid: "107516172"
 
 在 IoT 中心创建两个 IoT 设备并获取其密码。 使用终端中的 Azure CLI 执行以下操作：
 
-1. 在 IoT 中心中创建两个 IoT 设备，将它们作为 IoT Edge 设备的父级：
+1. 在 IoT 中心创建两个 IoT 设备：
 
    ```azurecli-interactive
-   az iot hub device-identity create --device-id  sub_client --hub-name <iot_hub_name> --pd <edge_device_id>
-   az iot hub device-identity create --device-id  pub_client --hub-name <iot_hub_name> --pd <edge_device_id>
+   az iot hub device-identity create --device-id  sub_client --hub-name <iot_hub_name>
+   az iot hub device-identity create --device-id  pub_client --hub-name <iot_hub_name>
    ```
 
-2. 通过生成 SAS 令牌获取其密码：
+2. 将其父级设置为你的 IoT Edge 设备：
+
+   ```azurecli-interactive
+   az iot hub device-identity parent set --device-id  sub_client --hub-name <iot_hub_name> --pd <edge_device_id>
+   az iot hub device-identity parent set --device-id  pub_client --hub-name <iot_hub_name> --pd <edge_device_id>
+   ```
+
+
+3. 通过生成 SAS 令牌获取其密码：
 
    - 对于设备：
 
@@ -244,7 +262,7 @@ ms.locfileid: "107516172"
 
      其中 3600 是 SAS 令牌的持续时间（以秒为单位，例如 3600 = 1 小时）。
 
-3. 复制 SAS 令牌，即输出中与“sas”键对应的值。 以下是上述 Azure CLI 命令的输出示例：
+4. 复制 SAS 令牌，即输出中与“sas”键对应的值。 以下是上述 Azure CLI 命令的输出示例：
 
    ```output
    {
@@ -334,7 +352,7 @@ mosquitto_sub \
 
 在本例中为 `<edge_device_address>` = `localhost`，因为客户端与 IoT Edge 在同一设备上运行。
 
-请注意，在这第一个示例中使用了未启用 TLS 的端口 1883 (MQTT)。 下一部分中将显示另一个示例，其中使用了已启用 TLS 的端口 8883 (MQTTS)。
+请注意，在这第一个示例中使用了未启用 TLS 的端口 1883 (MQTT)。 为此，edgeHub 端口 1883 需要通过其 create 选项绑定到主机。 在先决条件部分提供了一个示例。 下一部分中将显示另一个示例，其中使用了已启用 TLS 的端口 8883 (MQTTS)。
 
 MQTT 客户端 sub_client 现在已启动，正在等待有关 `test_topic` 的传入消息。
 
@@ -362,7 +380,11 @@ mosquitto_pub \
 
 若要启用 TLS，端口必须从 1883 (MQTT) 更改为 8883 (MQTTS)，并且客户端必须具有 MQTT 中转站的根证书才能验证 MQTT 中转站发送的证书链。 这可以通过遵循[安全连接 (TLS)](#secure-connection-tls) 部分中提供的步骤来完成。
 
-在上面的示例中，因为客户端与 MQTT 中转站在同一设备上运行，所以只需将端口号从 1883 (MQTT) 更改为 8883 (MQTTS) 即可使用相同的步骤来启用 TLS。
+在上面的示例中，因为客户端与 MQTT 中转站在同一设备上运行，所以可以使用相同的步骤来启用 TLS，方法是：
+
+- 将端口号从 1883 (MQTT) 更改为 8883 (MQTTS)
+- 使用类似于 `--cafile /certs/certs/azure-iot-test-only.root.ca.cert.pem` 的参数将 CA 根证书传递到 mosquitto_pub 和 mosquitto_sub 客户端
+- 通过传递到 mosquitto_pub 和 mosquitto_sub 客户端的主机名参数来传递在 IoT Edge 中设置的实际主机名而非 `localhost`，以便启用证书链验证
 
 ## <a name="publish-and-subscribe-on-iot-hub-topics"></a>针对 IoT 中心主题进行发布和订阅
 
@@ -449,3 +471,104 @@ IoT Edge MQTT 桥通过 JSON 结构进行配置，JSON 结构通过其孪生体�
 ## <a name="next-steps"></a>后续步骤
 
 [了解 IoT Edge 中心](iot-edge-runtime.md#iot-edge-hub)
+
+## <a name="appendix---sample-deployment-manifest"></a>附录 - 示例部署清单
+
+下面是可用于在 IoT Edge 中启用 MQTT 中转站的完整部署清单。 它部署 IoT Edge 1.2 版，该版本启用了 MQTT 中转站功能和 edgeHub 端口 1883，并有一个有关 `test_topic` 的开放授权策略。
+
+```json
+{
+   "modulesContent":{
+      "$edgeAgent":{
+         "properties.desired":{
+            "schemaVersion":"1.1",
+            "runtime":{
+               "type":"docker",
+               "settings":{
+                  "minDockerVersion":"v1.25",
+                  "loggingOptions":"",
+                  "registryCredentials":{
+                     
+                  }
+               }
+            },
+            "systemModules":{
+               "edgeAgent":{
+                  "type":"docker",
+                  "settings":{
+                     "image":"mcr.microsoft.com/azureiotedge-agent:1.2",
+                     "createOptions":"{}"
+                  }
+               },
+               "edgeHub":{
+                  "type":"docker",
+                  "status":"running",
+                  "restartPolicy":"always",
+                  "settings":{
+                     "image":"mcr.microsoft.com/azureiotedge-hub:1.2",
+                     "createOptions":"{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"1883/tcp\":[{\"HostPort\":\"1883\"}]}}}"
+                  },
+                  "env":{
+                     "experimentalFeatures__mqttBrokerEnabled":{
+                        "value":"true"
+                     },
+                     "experimentalFeatures__enabled":{
+                        "value":"true"
+                     },
+                     "RuntimeLogLevel":{
+                        "value":"debug"
+                     }
+                  }
+               }
+            },
+            "modules":{
+               
+            }
+         }
+      },
+      "$edgeHub":{
+         "properties.desired":{
+            "schemaVersion":"1.2",
+            "routes":{
+               "Upstream":"FROM /messages/* INTO $upstream"
+            },
+            "storeAndForwardConfiguration":{
+               "timeToLiveSecs":7200
+            },
+            "mqttBroker":{
+               "authorizations":[
+                  {
+                     "identities":[
+                        "{{iot:identity}}"
+                     ],
+                     "allow":[
+                        {
+                           "operations":[
+                              "mqtt:connect"
+                           ]
+                        }
+                     ]
+                  },
+                  {
+                     "identities":[
+                        "{{iot:identity}}"
+                     ],
+                     "allow":[
+                        {
+                           "operations":[
+                              "mqtt:publish",
+                              "mqtt:subscribe"
+                           ],
+                           "resources":[
+                              "test_topic"
+                           ]
+                        }
+                     ]
+                  }
+               ]
+            }
+         }
+      }
+   }
+}
+```

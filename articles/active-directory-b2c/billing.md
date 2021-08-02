@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 02/01/2021
+ms.date: 05/28/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a54ed9dc6557d9b613485bf28e74af0c59fc9e5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 623799b894846034dcf3f58a4bd6e53c56d526df
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99225202"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110690497"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的计费模型
 
@@ -27,22 +27,23 @@ Azure Active Directory B2C (Azure AD B2C) 定价基于月度活跃用户 (MAU)�
 
 ## <a name="what-do-i-need-to-do"></a>我需要做些什么？
 
-若要利用 MAU 计费，必须将你的 Azure AD B2C 租户链接到 Azure 订阅。 如果要使用 Azure AD B2C Premium P2 功能，例如基于风险的条件访问，则可能还需要将 Azure AD B2C 租户切换到其他定价层。
+若要利用 MAU 计费，必须将你的 Azure AD B2C 租户链接到 Azure 订阅。 若要使用 Azure AD B2C Premium P2 功能（例如基于风险的条件访问策略），则可能还需要将 Azure AD B2C 租户切换到另一个定价层。
 
 |如果你的租户是：  |你需要：  |
 |---------|---------|
 | 一个已经按 MAU 计费的 Azure AD B2C 租户     | 不执行任何操作。 当用户向你的 Azure AD B2C 租户进行身份验证时，系统会使用基于 MAU 的计费模型自动计费。        |
 | 一个尚未链接到订阅的 Azure AD B2C 租户     |  [将你的 Azure AD B2C 租户链接到订阅](#link-an-azure-ad-b2c-tenant-to-a-subscription)，以激活 MAU 计费。     |
 | 一个在 2019 年 11 月 1 日之前链接到订阅的 Azure AD B2C 租户    | [切换到 MAU 计费（推荐）](#switch-to-mau-billing-pre-november-2019-azure-ad-b2c-tenants)，或继续使用按身份验证的计费模型。     |
-| 一个 Azure AD B2C 租户，并且你想要使用高级功能（例如基于风险的条件访问）    | [更改到支持你要使用的功能的 Azure AD 定价层](#change-your-azure-ad-pricing-tier)。        |
+| 一个 Azure AD B2C 租户，并且你想要使用高级功能（例如基于风险的条件访问策略）    | [更改到支持你要使用的功能的 Azure AD 定价层](#change-your-azure-ad-pricing-tier)。        |
 |  |  |
 
 ## <a name="about-the-monthly-active-users-mau-billing-model"></a>关于月度活跃用户 (MAU) 计费模型
 
 MAU 计费已于 **2019 年 11 月 1 日** 针对 Azure AD B2C 租户生效。 你在该日期或该日期之后创建并将其链接到某个订阅的任何 Azure AD B2C 租户都已按 MAU 计费。 如果你的 Azure AD B2C 租户尚未链接到订阅，则你现在需要执行该操作。 如果你有一个已在 2019 年 11 月 1 日之前链接到订阅的现有 Azure AD B2C 租户，我们建议你升级到月度活跃用户 (MAU) 计费模型，也可以继续使用按身份验证的计费模型。
   
-你的 Azure AD B2C 租户还必须基于你要使用的功能链接到相应的 Azure 定价层。 高级功能需要 Azure AD B2C [高级 P1 或 P2 定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。 使用新功能时，可能需要升级定价层。 例如，对于条件访问，你需要为租户选择 Azure AD B2C Premium P2 定价层。
-
+你的 Azure AD B2C 租户还必须基于你要使用的功能链接到相应的 Azure 定价层。 高级功能需要 Azure AD B2C [高级 P1 或 P2 定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。 使用新功能时，可能需要升级定价层。 例如，对于基于风险的条件访问策略，你需要为租户选择 Azure AD B2C Premium P2 定价层。
+> [!NOTE]
+>  Premium P1 和 Premium P2 功能每月免费提供前 50,000 个 MAU。 为了确定 MAU 的总数，我们合并了关联到同一订阅的所有租户（Azure AD 和 Azure AD B2C）的 MAU。
 ## <a name="link-an-azure-ad-b2c-tenant-to-a-subscription"></a>将 Azure AD B2C 租户链接到订阅
 
 Azure Active Directory B2C (Azure AD B2C) 产生的使用费将从 Azure 订阅中计收。 你需要通过在目标 Azure 订阅中创建 Azure AD B2C 资源，将 Azure AD B2C 租户显式链接到 Azure 订阅。 可在单个 Azure 订阅中创建多个 Azure AD B2C 资源及其他 Azure 资源（例如虚拟机、存储帐户和逻辑应用）。 转到与订阅关联到的 Azure Active Directory (Azure AD) 租户可以查看该订阅中的所有资源。
@@ -74,7 +75,7 @@ Azure Active Directory B2C (Azure AD B2C) 产生的使用费将从 Azure 订阅�
 
 ## <a name="change-your-azure-ad-pricing-tier"></a>更改 Azure AD 定价层
 
-租户必须根据你要对 Azure AD B2C 租户使用的功能链接到相应的 Azure 定价层。 高级功能需要 Azure AD B2C 高级 P1 或 P2，如 [Azure Active Directory B2C 定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)中所述。 在某些情况下，使用新功能时需要升级定价层。 例如，如果想要对 Azure AD B2C 使用标识保护、基于风险的条件访问以及任何将来的 Premium P2 功能，则需要为租户选择 Azure AD B2C Premium P2 定价层。
+租户必须根据你要对 Azure AD B2C 租户使用的功能链接到相应的 Azure 定价层。 高级功能需要 Azure AD B2C 高级 P1 或 P2，如 [Azure Active Directory B2C 定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)中所述。 在某些情况下，使用新功能时需要升级定价层。 例如，如果想要对 Azure AD B2C 使用标识保护、基于风险的条件访问策略以及任何将来的 Premium P2 功能，则需要为租户选择 Azure AD B2C Premium P2 定价层。
 
 若要更改定价层，请执行以下步骤。
 

@@ -6,196 +6,142 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/09/2021
+ms.date: 04/08/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a370a7f04e0e43b96e4a574313c4f24c4990ab6f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 46cd1b2d695592b97f2fe27451fe48e6e2c7be19
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100390349"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410704"
 ---
 # <a name="soft-delete-for-blobs"></a>blob 的软删除
 
-Blob 的软删除可防止意外地或错误地修改或删除数据。 如果为存储帐户启用了 Blob 的软删除，则该存储帐户中的 Blob、Blob 版本和快照被删除后可以在指定的保留期内恢复。
-
-如果你的数据有可能被应用程序或其他存储帐户用户意外修改或删除，Microsoft 建议启用软删除。 有关启用软删除的详细信息，请参阅[启用和管理 Blob 的软删除](./soft-delete-blob-enable.md)。
+Blob 软删除通过在系统中将已删除的数据保留指定的一段时间，在意外删除或覆盖单个 Blob、快照和版本时提供保护。 在保持期内，可以将软删除对象还原到它在删除时的状态。 在保持期到期后，对象将被永久删除。
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
-## <a name="about-soft-delete-for-blobs"></a>关于 Blob 的软删除
+## <a name="recommended-data-protection-configuration"></a>推荐的数据保护配置
 
-在存储帐户上启用了 Blob 的软删除时，可以在已删除对象之后（在指定的数据保留期内）恢复这些对象。 此保护可扩展到因覆盖而擦除的任何 Blob（块 Blob、追加 Blob 或页 Blob）。
+Blob 软删除是针对 Blob 数据的综合性数据保护策略的一部分。 为实现对 Blob 数据的最佳保护，Microsoft 建议启用以下所有数据保护功能：
 
-下图显示了在启用 Blob 软删除后，如何还原已删除的 Blob：
+- 容器软删除，用于还原已删除的容器。 若要了解如何启用容器软删除，请参阅[启用和管理容器的软删除](soft-delete-container-enable.md)。
+- Blob 版本控制，用于自动维护 blob 的先前版本。 启用 blob 版本控制后，如果错误地修改或删除了数据，则可以还原 blob 的先前版本以恢复数据。 若要了解如何启用 blob 版本控制，请参阅[启用和管理 blob 版本控制](versioning-enable.md)。
+- Blob 软删除，用于还原已删除的 blob、快照或版本。 若要了解如何启用 blob 软删除，请参阅[启用和管理 blob 的软删除](soft-delete-blob-enable.md)。
+
+若要详细了解 Microsoft 的数据保护建议，请参阅[数据保护概述](data-protection-overview.md)。
+
+## <a name="how-blob-soft-delete-works"></a>Blob 软删除工作原理
+
+为存储帐户启用 blob 软删除时，将为删除的对象指定一个保持期（1 至 365 天）。 保持期表示数据在被删除或覆盖后保持可用的时间。 保持期从对象被删除或覆盖的那一刻开始计算。
+
+在保持期生效期间，可通过调用[撤销删除 Blob](/rest/api/storageservices/undelete-blob) 操作还原已删除的 blob 及其快照或还原已删除的版本。 下图显示了在启用 blob 软删除后，如何还原已删除的对象：
 
 :::image type="content" source="media/soft-delete-blob-overview/blob-soft-delete-diagram.png" alt-text="显示如何还原软删除 Blob 的示意图":::
 
-如果在启用 Blob 软删除的情况下删除了现有 Blob 或快照中的数据，但未启用 Blob 版本控制，则会生成软删除快照以保存覆盖的数据的状态。 在指定的保留期到期后，对象将被永久删除。
+可随时更改软删除保持期。 更新后的保持期仅适用于在保持期更改后删除的数据。 在保持期更改之前删除的任何数据均以数据被删除当下有效的保持期为准。
 
-如果在存储帐户上同时启用 Blob 版本控制和 Blob 软删除，则删除 Blob 会创建一个新版本而不是软删除快照。 系统不会软删除新版本，并且不会在软删除保留期到期时删除该版本。 可以通过调用[撤消删除 Blob](/rest/api/storageservices/undelete-blob) 操作在保留期内还原 Blob 的软删除版本。 然后，可以通过调用[复制 Blob](/rest/api/storageservices/copy-blob) 操作，从该 Blob 的某个版本还原它。 有关如何结合使用 Blob 版本控制和软删除的详细信息，请参阅 [Blob 版本控制和软删除](versioning-overview.md#blob-versioning-and-soft-delete)。
+尝试删除某个软删除的对象不会影响其到期时间。
 
-除非显式列出，否则软删除对象不可见。
+禁用 blob 软删除后，可以在软删除保持期结束之前继续访问和恢复存储帐户中的软删除对象。
 
-Blob 软删除向后兼容，因此无需对应用程序进行任何更改即可利用此功能提供的保护。 但是，[数据恢复](#recovery)会引入新的撤销删除 Blob API。
+Blob 版本控制可用于常规用途 v2、块 blob 和 Blob 存储帐户。 当前不支持启用了分层命名空间以与 Azure Data Lake Storage Gen2 一起使用的存储帐户。
 
-Blob 软删除适用于新的和现有的常规用途 v2、常规用途 v1 和 Blob 存储帐户。 支持标准和高级帐户类型。 Blob 软删除适用于所有存储层，包括热、冷和存档层。 软删除适用于非托管磁盘（实际上是页 blob），但不可用于托管磁盘。
+Azure 存储 REST API 2017-07-29 版及更高版本支持 blob 软删除。
 
-### <a name="configuration-settings"></a>配置设置
+> [!IMPORTANT]
+> 只能使用 blob 软删除还原单个 blob、快照或版本。 若要还原容器及其内容，还必须为存储帐户启用容器软删除。 Microsoft 建议启用容器软删除和 blob 版本控制以及 blob 软删除，以确保对 blob 数据提供完整保护。 有关详细信息，请参阅[数据保护概述](data-protection-overview.md)。
+>
+> Blob 软删除并不能防止删除存储帐户。 若要防止存储帐户被删除，请在存储帐户资源上配置锁。 有关锁定存储帐户的详细信息，请参阅[将 Azure 资源管理器锁定应用于存储帐户](../common/lock-account-resource.md)。
 
-创建新帐户时，默认禁用软删除。 对于现有的存储帐户，默认情况下也禁用软删除。 可以在任何时候启用或禁用存储帐户的软删除。
+### <a name="how-deletions-are-handled-when-soft-delete-is-enabled"></a>启用软删除后，删除操作将作何处理
 
-启用软删除时，必须配置保持期。 保持期指示已软删除数据的存储和可恢复时间期限。 对于显式删除的对象，保持期从删除数据时开始计时。 对于覆盖数据时软删除功能生成的软删除版本或快照，保持期从生成版本或快照时开始计时。 保持期可能介于 1 到 365 天之间。
+启用 blob 软删除后，删除 blob 会将该 blob 标记为软删除。 不会创建快照。 保持期到期后，软删除的 blob 将被永久删除。
 
-可随时更改软删除保持期。 更新后的保持期仅适用于新删除的数据。 之前删除的数据的过期时间取决于删除该数据时配置的保持期。 尝试删除某个软删除的对象不会影响其到期时间。
+如果 blob 包含快照，则除非连同快照一起删除，否则无法删除 blob。 删除 blob 及其快照后，blob 和快照都将标记为软删除。 不会创建新的快照。
 
-如果禁用软删除，则可以继续访问和恢复启用该功能时保存在存储帐户中的软删除数据。
+可以在不删除基本 blob 的情况下删除一个或多个活动快照。 在这种情况下，快照被标记为软删除。
 
-### <a name="saving-deleted-data"></a>保存已删除的数据
+除非显式显示或列出，否则软删除对象不可见。 有关如何列出软删除对象的详细信息，请参阅[管理和还原软删除的 blob](soft-delete-blob-manage.md)。
 
-软删除在删除或覆盖对象的许多情况下保存数据。
+### <a name="how-overwrites-are-handled-when-soft-delete-is-enabled"></a>启用软删除后，覆盖操作将作何处理
 
-使用“放置 Blob”、“放置块列表”或“复制 Blob”覆盖 blob 时，将自动生成写入操作前 blob 的状态的版本或快照  。 除非显式列出，否则软删除对象不可见。 请参阅[恢复](#recovery)部分，了解如何列出软删除对象。
+调用[放置 Blob](/rest/api/storageservices/put-blob)、[放置块列表](/rest/api/storageservices/put-block-list)或[复制 Blob](/rest/api/storageservices/copy-blob) 等操作可覆盖 blob 中的数据。 启用 blob 软删除后，覆盖 blob 会自动创建写入操作前 blob 状态的软删除快照。 保持期到期后，软删除的快照将被永久删除。
 
-![此图显示了在使用“放置 Blob”、“放置块列表”或“复制 Blob”覆盖 Blob 的快照时，这些快照是如何存储的。](media/soft-delete-blob-overview/storage-blob-soft-delete-overwrite.png)
+除非显式显示或列出软删除对象，否则软删除快照不可见。 有关如何列出软删除对象的详细信息，请参阅[管理和还原软删除的 blob](soft-delete-blob-manage.md)。
 
-*软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。使用 B1 覆盖 B0 时会生成 B0 的软删除快照。使用 B2 覆盖 B1 时会生成 B1 的软删除快照。
+若要保护复制操作，必须为目标存储帐户启用 blob 软删除。
 
-> [!NOTE]  
-> 对目标 blob 的帐户启用软删除时，软删除仅对复制操作提供覆盖保护。
+Blob 软删除不能防止写入 blob 元数据或属性的操作。 更新 blob 的元数据或属性时，不会创建软删除快照。
 
-> [!NOTE]  
-> 软删除不会对存档层中的 blob 提供覆盖保护。 如果存档层中的 blob 被任何层中的新 blob 覆盖，则被覆盖的 blob 将永久过期。
+Blob 软删除不会对存档层中的 blob 提供覆盖保护。 如果存档层中的 blob 被任何层中的新 blob 覆盖，则被覆盖的 blob 将被永久删除。
 
-对快照调用“删除 Blob”时，该快照会被标记为软删除。 此时不会生成新的快照。
+对于高级存储帐户，软删除快照不计入每个 blob 100 个快照的限制。
 
-![此图显示了在使用“删除 Blob”时，Blob 的快照是如何软删除的。](media/soft-delete-blob-overview/storage-blob-soft-delete-explicit-delete-snapshot.png)
+### <a name="restoring-soft-deleted-objects"></a>还原软删除的对象
 
-*软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。调用 **Snapshot Blob** 时，B0 将变为快照，B1 成为该 blob 的活动状态。如果删除 B0 快照，它将被标记为软删除*。
+在保持期内可以通过调用[撤销删除 Blob](/rest/api/storageservices/undelete-blob) 操作还原软删除的 blob。 “撤销删除 Blob”操作将还原 blob 以及任何与其关联的软删除快照。 将还原在保持期内删除的所有快照。
 
-如果对基础 blob（本身不是快照的任何 blob）调用“删除 Blob”，该 blob 将被标记为软删除。 与以前的行为一致，对具有活动快照的 blob 调用“删除 Blob”将返回错误。 对具有软删除快照的 blob 调用“删除 Blob”不会返回错误。 启用软删除后，仍可在单个操作中删除 blob 及其所有快照。 执行该操作会将基础 blob 和快照标记为软删除。
+对未被软删除的 blob 调用“撤销删除 Blob”将还原与该 blob 关联的任何软删除快照。 如果 blob 不包含快照且未被软删除，则调用“撤销删除 Blob”不起任何作用。
 
-![此图显示了在基础 Blob 上调用“删除 Blob”时会发生的情况。](media/soft-delete-blob-overview/storage-blob-soft-delete-explicit-include.png)
+若要将软删除的快照提升到基本 blob，请先对基本 blob 调用“撤销删除 Blob”以还原 blob 及其快照。 接下来，将所需的快照复制到基本 blob 上。 也可将该快照复制到新的 blob 中。
 
-*软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。此处调用了“删除 Blob”来删除 B2 和所有相关快照 。活动 blob B2 和所有相关快照均被标记为软删除。
+在还原对象之前，无法读取软删除 blob 或快照中的数据。
 
-> [!NOTE]  
-> 覆盖软删除 blob 时，将自动生成写入操作前 blob 状态的软删除快照。 新 blob 将继承被覆盖 blob 的层级。
+有关如何还原软删除对象的详细信息，请参阅[管理和还原软删除的 blob](soft-delete-blob-manage.md)。
 
-如果删除容器或帐户，或者覆盖 blob 元数据和 blob 属性，软删除均无法保存你的数据。 若要防止存储帐户被删除，可以使用 Azure 资源管理器配置锁。 有关详细信息，请参阅 Azure 资源管理器文章[锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。  为防止意外删除容器，请为存储帐户配置容器软删除。 有关详细信息，请参阅[容器软删除（预览版）](soft-delete-container-overview.md)。
+## <a name="blob-soft-delete-and-versioning"></a>Blob 软删除和版本控制
 
-下表详述了启用软删除后的预期行为：
+如果在存储帐户上同时启用 blob 版本控制和 blob 软删除，则覆盖某个 blob 将自动创建一个新版本。 系统不会软删除新版本，并且不会在软删除保留期到期时删除该版本。 不会创建软删除的快照。 删除某个 blob 时，该 blob 的当前版本将成为先前版本，当前版本不复存在。 不会创建新版本，也不会创建软删除的快照。
 
-| REST API 操作 | 资源类型 | 说明 | 行为更改 |
-|--------------------|---------------|-------------|--------------------|
-| [删除](/rest/api/storagerp/StorageAccounts/Delete) | 帐户 | 删除存储帐户，包括它包含的所有容器和 blob。                           | 无更改。 已删除帐户中的容器和 blob 不可恢复。 |
-| [删除容器](/rest/api/storageservices/delete-container) | 容器 | 删除容器，包括它包含的所有 blob。 | 无更改。 已删除容器中的 blob 不可恢复。 |
-| [放置 Blob](/rest/api/storageservices/put-blob) | 块、追加和页 blob | 创建新的 blob 或替换容器内的现有 blob | 如果用于替换现有 blob，将自动生成调用之前的 blob 状态的快照。 对于以前软删除的 blob，当且仅当使用相同类型的 blob （块、追加或页 blob）进行替换时，才会生成快照。 如果由不同类型的 blob 替换，所有现有软删除数据都将永久过期。 |
-| [删除 Blob](/rest/api/storageservices/delete-blob) | 块、追加和页 blob | 标记要删除的 blob 或 blob 快照。 blob 或快照将稍后在垃圾回收过程中进行删除 | 如果用于删除 blob 快照，该快照将标记为软删除。 如果用于删除 blob，该 blob 将标记为软删除。 |
-| [复制 Blob](/rest/api/storageservices/copy-blob) | 块、追加和页 blob | 将源 blob 复制到相同存储帐户或其他存储帐户中的目标 blob 中。 | 如果用于替换现有 blob，将自动生成调用之前的 blob 状态的快照。 对于以前软删除的 blob，当且仅当使用相同类型的 blob （块、追加或页 blob）进行替换时，才会生成快照。 如果由不同类型的 blob 替换，所有现有软删除数据都将永久过期。 |
-| [放置块](/rest/api/storageservices/put-block) | 块 Blob | 创建新块，作为块 blob 的一部分进行提交。 | 如果用于将块提交到活动 blob 中，则不发生任何更改。 如果用于将块提交到软删除的 blob 中，将创建新的 blob 并自动生成快照，以捕获软删除 blob 的状态。 |
-| [放置块列表](/rest/api/storageservices/put-block-list) | 块 Blob | 通过指定构成块 blob 的块 ID 集来提交 blob。 | 如果用于替换现有 blob，将自动生成调用之前的 blob 状态的快照。 对于以前软删除的 blob，当且仅当其为块 blob 时，才会生成快照。 如果由不同类型的 blob 替换，所有现有软删除数据都将永久过期。 |
-| [放置页](/rest/api/storageservices/put-page) | 页 Blob | 将一系列页写入页 blob。 | 无更改。 通过该操作覆盖或清除的页 blob 数据不会保存，且不可恢复。 |
-| [追加块](/rest/api/storageservices/append-block) | 追加 Blob | 将数据块写入追加 Blob 的末尾 | 无更改。 |
-| [设置 Blob 属性](/rest/api/storageservices/set-blob-properties) | 块、追加和页 blob | 为对 blob 定义的系统属性设置值。 | 无更改。 被覆盖的 blob 属性不可恢复。 |
-| [设置 Blob 元数据](/rest/api/storageservices/set-blob-metadata) | 块、追加和页 blob | 将特定 blob 的用户定义元数据设置为一个或多个名称/值对。 | 无更改。 被覆盖的 blob 元数据不可恢复。 |
+同时启用软删除和版本控制可以防止 blob 版本被删除。 启用软删除后，删除某个版本会创建软删除版本。 在软删除保持期内，可使用“撤消删除 Blob”操作来还原软删除的版本。 “撤消删除 Blob”操作始终会还原 blob 的所有软删除版本。 无法只还原一个软删除版本。
 
-请务必注意，通过调用“Put Page”来覆盖或清除页 blob 的范围时不会自动生成快照。 虚拟机磁盘受页 blob 支持，且使用“放置页”来写入数据。
+在软删除保留期结束之后，将永久删除任何软删除的 blob 版本。
 
-### <a name="recovery"></a>恢复
+> [!NOTE]
+> 启用版本控制后，对已删除的 blob 调用“撤消删除 Blob”操作会还原所有软删除版本或快照，但不会还原当前版本。 若要还原当前版本，请通过将先前版本复制到当前版本来提升它。
 
-对软删除的基础 blob 调用[撤销删除 Blob](/rest/api/storageservices/undelete-blob) 操作会将该 blob 及所有相关软删除快照还原为活动状态。 对活动基础 blob 调用“撤销删除 Blob”操作会将所有相关软删除快照还原为活动状态。 快照还原为活动状态后与用户生成的快照相似；这些快照不会覆盖基础 blob。
+Microsoft 建议为你的存储帐户同时启用版本控制和 blob 软删除以实现最佳数据保护。 有关如何结合使用 Blob 版本控制和软删除的详细信息，请参阅 [Blob 版本控制和软删除](versioning-overview.md#blob-versioning-and-soft-delete)。
 
-若要将 blob 还原到特定的软删除快照，可对基础 blob 调用“撤销删除 Blob”。 然后可将该快照复制到现在处于活动状态的 blob。 也可将该快照复制到新的 blob 中。
+## <a name="blob-soft-delete-protection-by-operation"></a>Blob 软删除操作保护
 
-![此图显示了在使用“撤消删除 Blob”时会发生的情况。](media/soft-delete-blob-overview/storage-blob-soft-delete-recover.png)
+下表描述了启用 blob 软删除（无论是否启用 blob 版本控制）后，删除和写入操作的预期行为：
 
-*软删除数据呈现为灰色，而活动数据为蓝色。新写入的数据显示在旧数据下方。此处对 blob B 调用了 **撤销删除 Blob**，从而将基础 blob B1 和所有相关快照（此处仅为 B0）还原为活动状态。第二步中将 B0 复制到了基础 blob。此复制操作将生成 B1 的软删除快照*。
-
-若要查看软删除 blob 和 blob 快照，可选择将已删除数据包含在列表 Blob 中。 可选择仅查看软删除的基础 blob，或者也将软删除的 blob 快照包含在内。 对于所有软删除数据，可以查数据删除的时间以及数据永久过期的剩余天数。
-
-### <a name="example"></a>示例
-
-启用软删除后，对名为 *HelloWorld* 的 blob 执行上传、覆盖、拍摄快照、删除和还原操作。下面为其 .NET 脚本的控制台输出：
-
-```bash
-Upload:
-- HelloWorld (is soft deleted: False, is snapshot: False)
-
-Overwrite:
-- HelloWorld (is soft deleted: True, is snapshot: True)
-- HelloWorld (is soft deleted: False, is snapshot: False)
-
-Snapshot:
-- HelloWorld (is soft deleted: True, is snapshot: True)
-- HelloWorld (is soft deleted: False, is snapshot: True)
-- HelloWorld (is soft deleted: False, is snapshot: False)
-
-Delete (including snapshots):
-- HelloWorld (is soft deleted: True, is snapshot: True)
-- HelloWorld (is soft deleted: True, is snapshot: True)
-- HelloWorld (is soft deleted: True, is snapshot: False)
-
-Undelete:
-- HelloWorld (is soft deleted: False, is snapshot: True)
-- HelloWorld (is soft deleted: False, is snapshot: True)
-- HelloWorld (is soft deleted: False, is snapshot: False)
-
-Copy a snapshot over the base blob:
-- HelloWorld (is soft deleted: False, is snapshot: True)
-- HelloWorld (is soft deleted: False, is snapshot: True)
-- HelloWorld (is soft deleted: True, is snapshot: True)
-- HelloWorld (is soft deleted: False, is snapshot: False)
-```
-
-请参阅[后续步骤](#next-steps)部分，了解产生此输出的应用程序的指针。
+| REST API 操作 | 已启用软删除 | 同时启用软删除和版本控制 |
+|--|--|--|
+| [删除存储帐户](/rest/api/storagerp/storageaccounts/delete) | 无更改。 已删除帐户中的容器和 blob 不可恢复。 | 无更改。 已删除帐户中的容器和 blob 不可恢复。 |
+| [删除容器](/rest/api/storageservices/delete-container) | 无更改。 已删除容器中的 blob 不可恢复。 | 无更改。 已删除容器中的 blob 不可恢复。 |
+| [删除 Blob](/rest/api/storageservices/delete-blob) | 如果用于删除 blob，该 blob 将标记为软删除。 <br /><br /> 如果用于删除 blob 快照，该快照将标记为软删除。 | 如果用于删除 blob，则当前版本将成为先前版本，并且会删除当前版本。 不会创建新版本，也不会创建软删除的快照。<br /><br /> 如果用于删除 blob 版本，该版本将标记为软删除。 |
+| [取消删除 Blob](/rest/api/storageservices/undelete-blob) | 还原在保持期内删除的 blob 和所有快照。 | 还原在保持期内删除的 blob 和所有版本。 |
+| [放置 Blob](/rest/api/storageservices/put-blob)<br />[放置块列表](/rest/api/storageservices/put-block-list)<br />[复制 Blob](/rest/api/storageservices/copy-blob)<br />[从 URL 复制 Blob](/rest/api/storageservices/copy-blob) | 如果对活动 blob 调用该操作，将自动生成操作之前的 blob 状态的快照。 <br /><br /> 如果对软删除的 blob 调用该操作，则仅当该 blob 被同一类型的 blob 所替换时，才会生成该 blob 先前状态的快照。 如果 blob 属于不同类型，则所有现有软删除数据将被永久删除。 | 将自动生成捕获该操作前 blob 的状态的新版本。 |
+| [放置块](/rest/api/storageservices/put-block) | 如果用于将块提交到活动 blob 中，则不发生任何更改。<br /><br />如果用于将块提交到软删除的 blob 中，将创建新的 blob 并自动生成快照，以捕获软删除 blob 的状态。 | 无更改。 |
+| [放置页](/rest/api/storageservices/put-page)<br />[从 URL 放置页](/rest/api/storageservices/put-page-from-url) | 无更改。 通过该操作覆盖或清除的页 blob 数据不会保存，且不可恢复。 | 无更改。 通过该操作覆盖或清除的页 blob 数据不会保存，且不可恢复。 |
+| [追加块](/rest/api/storageservices/append-block)<br />[通过 URL 追加块](/rest/api/storageservices/append-block-from-url) | 无更改。 | 无更改。 |
+| [设置 Blob 属性](/rest/api/storageservices/set-blob-properties) | 无更改。 被覆盖的 blob 属性不可恢复。 | 无更改。 被覆盖的 blob 属性不可恢复。 |
+| [设置 Blob 元数据](/rest/api/storageservices/set-blob-metadata) | 无更改。 被覆盖的 blob 元数据不可恢复。 | 将自动生成捕获该操作前 blob 的状态的新版本。 |
+| [设置 Blob 层](/rest/api/storageservices/set-blob-tier) | 基本 blob 被移至新层。 任何活动或软删除的快照将保留在原始层中。 不会创建软删除的快照。 | 基本 blob 被移至新层。 任何活动或软删除的版本将保留在原始层中。 不会创建新的版本。 |
 
 ## <a name="pricing-and-billing"></a>定价和计费
 
-所有软删除数据按与活动数据相同的费率计费。 不会对在配置的保持期后永久删除的数据计费。 若要深入了解快照以及它们产生费用的方式，请参阅[了解快照如何产生费用](./snapshots-overview.md)。
+所有软删除数据按与活动数据相同的费率计费。 不会对在保持期到期后永久删除的数据计费。
 
-不会对快照自动生成相关事务进行计费。 将按写入操作费率对“撤销删除 Blob ”事务进行计费。
-
-有关 Azure Blob 存储常规价格的更多详细信息，请参阅 [Azure Blob 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
-
-初次启用软删除时，Microsoft 建议使用较短的保持期，以便更好地了解因该功能产生的费用变动。
+启用软删除时，Microsoft 建议使用较短的保持期，以便更好地了解因该功能产生的费用变动。 建议的最短保持期为七天。
 
 为频繁覆盖的数据启用软删除可能会导致在列出 Blob 时存储容量费用增加且延迟增加。 可以通过将频繁覆盖的数据存储在禁用了软删除的单独存储帐户中来缓解这种额外的成本和延迟问题。
 
-## <a name="faq"></a>常见问题
+覆盖或删除 blob 后，不会对快照或版本自动生成相关事务进行计费。 将按写入操作费率对“撤销删除 Blob”操作进行计费。
 
-### <a name="can-i-use-the-set-blob-tier-api-to-tier-blobs-with-soft-deleted-snapshots"></a>是否可以使用“设置 Blob 层 API”将 Blob 与软删除的快照置于一层？
+有关 Blob 存储定价的详细信息，请参阅 [Blob 存储定价](https://azure.microsoft.com/pricing/details/storage/blobs/)页。
 
-是的。 软删除的快照会保留在原始层中，但基础 Blob 会移到新层中。
+## <a name="blob-soft-delete-and-virtual-machine-disks"></a>Blob 软删除和虚拟机磁盘  
 
-### <a name="premium-storage-accounts-have-a-per-blob-snapshot-limit-of-100-do-soft-deleted-snapshots-count-toward-this-limit"></a>高级存储帐户每个 Blob 的快照上限为 100。 软删除快照是否计入此限制？
+Blob 软删除适用于高级和标准非托管磁盘（实际上是页 blob）。 软删除可帮助恢复由“删除 Blob”、“放置 Blob”、“放置块列表”和“复制 Blob”操作删除或覆盖的数据   。
 
-不，软删除快照不记入此限制。
-
-### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>如果在启用软删除的情况下删除整个帐户或容器，是否会保存所有相关 Blob？
-
-不会，如果删除整个帐户或容器，将永久删除所有相关 blob。 若要了详细解如何防止意外删除存储帐户，请参阅[锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
-
-### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>能否查看已删除数据的容量指标？
-
-软删除数据属于存储帐户总容量的一部分。 有关跟踪和监视存储容量的详细信息，请参阅[存储分析](../common/storage-analytics.md)。
-
-### <a name="can-i-read-and-copy-out-soft-deleted-snapshots-of-my-blob"></a>能否读取和复制 Blob 的软删除快照？  
-
-可以，但必须首先对该 blob 调用撤销删除。
-
-### <a name="is-soft-delete-available-for-virtual-machine-disks"></a>软删除是否适用于虚拟机磁盘？  
-
-软删除适用于高级和标准非托管磁盘（实际上是页 blob）。 软删除只能帮助恢复由“删除 Blob”、“放置 Blob”、“放置块列表”和“复制 Blob”操作删除的数据   。 通过调用放置页覆盖的数据不可恢复。
-
-Azure 虚拟机通过调用“放置页”来写入非托管磁盘，因此不支持使用软删除来撤消从 Azure VM 写入到非托管磁盘的操作。
-
-### <a name="do-i-need-to-change-my-existing-applications-to-use-soft-delete"></a>是否需要更改现有应用程序才能使用软删除？
-
-无论使用何种 API 版本，均可以使用软删除。 但是，若要列出和恢复软删除 blob 和 blob 快照，则需要使用 2017-07-29 版 [Azure 存储 REST API](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) 或更高版本。 Microsoft 始终建议使用最新版的 Azure 存储 API。
+通过调用“放置页”覆盖的数据不可恢复。 Azure 虚拟机通过调用“放置页”来写入非托管磁盘，因此不支持使用软删除来撤消从 Azure VM 写入到非托管磁盘的操作。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [为 blob 启用软删除](./soft-delete-blob-enable.md)
+- [管理和还原软删除的 Blob](soft-delete-blob-manage.md)
 - [Blob 版本控制](versioning-overview.md)

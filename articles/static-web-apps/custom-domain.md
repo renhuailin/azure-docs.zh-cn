@@ -1,127 +1,297 @@
 ---
-title: 在 Azure 静态 Web 应用中设置自定义域
-description: 了解如何将自定义域映射到 Azure 静态 Web 应用
+title: 在 Azure Static Web Apps 中设置自定义域
+description: 了解如何将具有免费 SSL/TLS 证书的自定义域映射到 Azure Static Web Apps
 services: static-web-apps
 author: burkeholland
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/12/2021
 ms.author: buhollan
-ms.openlocfilehash: 578860883a108bba4b4bcd8cd04e8c08f484d474
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd8df4e162b33aef8a0e929da818e8b961953d9b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92173678"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110066101"
 ---
-# <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>在 Azure 静态 Web 应用预览中设置自定义域
+# <a name="set-up-a-custom-domain-with-free-certificate-in-azure-static-web-apps"></a>在 Azure Static Web Apps 中设置具有免费证书的自定义域
 
 Azure 静态 Web 应用默认提供自动生成的域名。 本文介绍如何将自定义域名映射到 Azure 静态 Web 应用应用程序。
+
+## <a name="free-ssltls-certificate"></a>免费的 SSL/TLS 证书
+
+Azure Static Web Apps 自动为自动生成的域名以及你可以添加的任何自定义域提供免费的 SSL/TLS 证书。
+
+## <a name="walkthrough-video"></a>演练视频
+
+> [!VIDEO https://channel9.msdn.com/Shows/5-Things/Configuring-a-custom-domain-with-Azure-Static-Web-Apps/player?format=ny]
 
 ## <a name="prerequisites"></a>先决条件
 
 - 一个购买的域名
 - 访问域的 DNS 配置属性
 
-配置域名时，“A”记录用于将根域（例如 `example.com`）映射到 IP 地址。 必须将根域直接映射到 IP 地址，因为 DNS 规范不允许将一个域映射到另一个域。
-
 ## <a name="dns-configuration-options"></a>DNS 配置选项
 
 有几种不同类型的 DNS 配置可用于应用程序。
 
-| 如果你想要 | 则 |
-|--|--|
-| 支持 `www.example.com` 或 `blog.example.net` | [映射 CNAME 记录](#map-a-cname-record) |
-| 支持 `example.com` | [配置根域](#configure-a-root-domain) |
-| 将所有子域指向 `www.example.com` | [映射通配符](#map-a-wildcard-domain) |
+| 方案                                                                                 | 示例                                | 域验证方法 | DNS 记录类型 |
+| ---------------------------------------------------------------------------------------- | -------------------------------------- | ------------------------ | --------------- |
+| [添加根/顶点域](#add-domain-using-txt-record-validation)                        | `mydomain.com`, `example.co.uk`        | TXT                      | ALIAS           |
+| [添加子域](#add-domain-using-cname-record-validation)                             | `www.mydomain.com`, `foo.mydomain.com` | CNAME                    | CNAME           |
+| [转移当前正在使用的子域](#add-domain-using-txt-record-validation) | `www.mydomain.com`, `foo.mydomain.com` | TXT                      | CNAME           |
 
-## <a name="map-a-cname-record"></a>映射 CNAME 记录
+## <a name="add-domain-using-cname-record-validation"></a>使用 CNAME 记录验证添加域
 
-CNAME 记录将一个域映射到另一个域。 可以使用 CNAME 记录将 `www.example.com`、`blog.example.com` 或任何其他子域映射到由 Azure Static Web Apps 提供的自动生成域。
+CNAME 记录验证是建议用于添加自定义域的方式，但是，它仅适用于子域。 如果你要添加根域 (`mydomain.com`)，请跳转到[使用 TXT 记录验证添加域](#add-domain-using-txt-record-validation)，然后[创建 ALIAS 记录](#create-an-alias-record)。
 
-1. 打开 [Azure 门户](https://portal.azure.com)，然后使用 Azure 帐户登录。
+> [!IMPORTANT]
+> 如果子域当前已关联到实时站点，并且你尚未准备好将其转移到静态 Web 应用，请使用 [TXT 记录验证](#add-domain-using-txt-record-validation)。
 
-1. 搜索并选择“静态 Web 应用”
+### <a name="enter-your-subdomain"></a>输入子域
 
-1. 在“静态 Web 应用”页上，选择应用的名称。
+1. 在 [Azure 门户](https://portal.azure.com)中打开你的静态 Web 应用。
 
-1. 在菜单中单击“自定义域”。
+1. 在菜单中选择“自定义域”。
 
-1. 单击“添加”按钮
+1. 选择“添加”按钮。
 
-1. 在“自定义域”窗口中，将 URL 复制到“值”字段。
+1. 在“域名”字段中输入你的子域。 输入子域时，请确保不要输入任何协议。 例如 `www.mydomain.com`。
 
-### <a name="configure-dns-provider"></a>配置 DNS 提供程序
+   :::image type="content" source="media/custom-domain/add-subdomain.png" alt-text="“添加域”屏幕，其中显示了“输入”框内的自定义子域":::
+
+1. 选择“下一步”按钮转到“验证 + 配置”步骤。
+
+### <a name="configure-cname-with-your-domain-provider"></a>在域提供商的配合下配置 CNAME
+
+需要在域提供商的配合下配置 CNAME。 建议配置 Azure DNS，但这些步骤需要在任一域提供商的配合下完成。
+
+# <a name="azure-dns"></a>[Azure DNS](#tab/azure-dns)
+
+1. 确保从“主机名记录类型”下拉列表中选择“CNAME”。
+
+1. 选择“复制”图标将“值”字段中的值复制到剪贴板。
+
+   :::image type="content" source="media/custom-domain/copy-cname.png" alt-text="“验证 + 配置”屏幕，其中显示了用红框标示的选定“CNAME”和复制图标":::
+
+1. 通过另一个浏览器标签页或窗口在 Azure 门户中打开你的 Azure DNS 区域。
+
+1. 选择“+ 记录集”按钮。
+
+1. 使用以下值创建新的 CNAME 记录集。
+
+   | 设置          | 值                                     |
+   | ---------------- | ----------------------------------------- |
+   | 名称             | 你的子域，例如 `www`             |
+   | 类型             | CNAME                                     |
+   | 别名记录集 | 否                                        |
+   | TTL              | 保留为默认值                    |
+   | TTL 单位         | 保留为默认值                    |
+   | Alias            | 粘贴剪贴板中的域名 |
+
+1. 选择“确定”。
+
+   :::image type="content" source="media/custom-domain/azure-dns-cname.png" alt-text="“Azure DNS 记录集”屏幕，其中突出显示了名称、类型和别名字段":::
+
+[!INCLUDE [validate CNAME](../../includes/static-web-apps-validate-cname.md)]
+
+# <a name="other-dns"></a>[其他 DNS](#tab/other-dns)
+
+1. 确保从“主机名记录类型”下拉列表中选择“CNAME”。
+
+1. 选择“复制”图标将“值”字段中的值复制到剪贴板。
+
+   :::image type="content" source="media/custom-domain/copy-cname.png" alt-text="“验证 + 添加”屏幕，其中显示了用红框标示的选定“CNAME”和复制图标":::
+
+1. 在另一个浏览器标签页或窗口中登录到域提供商的网站。
+
+1. 查找管理 DNS 记录的页面。 每个域提供商都有自己的 DNS 记录界面，因此请查阅提供商的文档。 查找站点中标记为“域名”、“DNS”或“名称服务器管理”的区域。  
+
+1. 通常通过查看帐户信息，然后查找如“我的域”之类的链接，便可以找到 DNS 记录页面。 转到该页面，然后查找名称类似于“区域文件”、“DNS 记录”或“高级配置”的链接  。
+
+   以下屏幕截图是 DNS 记录页的一个示例：
+
+   :::image type="content" source="media/custom-domain/example-record-ui.png" alt-text="DNS 提供程序配置示例":::
+
+1. 使用以下值创建新的 CNAME 记录。
+
+   | 设置             | 值                                     |
+   | ------------------- | ----------------------------------------- |
+   | 类型                | CNAME                                     |
+   | 主机                | 你的子域，例如 `www`             |
+   | 值               | 粘贴剪贴板中的域名 |
+   | TTL（如果适用） | 保留为默认值                    |
+
+1. 保存 DNS 提供程序所做的更改。
+
+[!INCLUDE [validate CNAME](../../includes/static-web-apps-validate-cname.md)]
+
+---
+
+## <a name="add-domain-using-txt-record-validation"></a>使用 TXT 记录验证添加域
+
+Azure 使用 TXT 记录来验证你是否拥有某个域。 当你想要执行以下操作之一时，此功能非常有用...
+
+1. 你想要配置根域（即 `mydomain.com`）。 在你创建用于配置根域的 ALIAS 记录之前，需要先验证你是否拥有该域。
+
+1. 你想要在不停机的情况下转移子域。 使用 TXT 记录验证方法可以验证你自己是否拥有该域，并使静态 Web 应用能够完成颁发该域的证书的过程。 然后，可以随时使用 CNAME 记录将域切换为指向你的静态 Web 应用。
+
+#### <a name="enter-your-domain"></a>输入域
+
+1. 在 [Azure 门户](https://portal.azure.com)中打开你的静态 Web 应用。
+
+1. 在菜单中选择“自定义域”。
+
+1. 选择“添加”按钮。
+
+1. 在“域名”字段中，输入根域（即 `mydomain.com`）或子域（即 `www.mydomain.com`）。
+
+   :::image type="content" source="media/custom-domain/add-domain.png" alt-text="“添加域”屏幕，其中显示了“输入”框内的自定义域":::
+
+1. 单击“下一步”按钮转到“验证 + 配置”步骤。
+
+#### <a name="configure-txt-record-with-your-domain-provider"></a>在域提供商的配合下配置 TXT 记录
+
+需要在域提供商的配合下配置 TXT 记录。 建议配置 Azure DNS，但这些步骤需要在任一域提供商的配合下完成。
+
+# <a name="azure-dns"></a>[Azure DNS](#tab/azure-dns)
+
+1. 确保“主机名记录类型”下拉列表设置为“TXT”。
+
+1. 选择“生成代码”按钮。
+
+   :::image type="content" source="media/custom-domain/generate-code.png" alt-text="“添加自定义域”屏幕，其中突出显示了“生成代码”按钮":::
+
+   此操作将生成唯一的代码，该过程可能最多需要一分钟的时间。
+
+1. 选择代码旁边的剪贴板图标以将值复制到剪贴板。
+
+   :::image type="content" source="media/custom-domain/copy-code.png" alt-text="“添加自定义域”屏幕，其中突出显示了“复制代码”按钮":::
+
+1. 通过另一个浏览器标签页或窗口在 Azure 门户中打开你的 Azure DNS 区域。
+
+1. 选择“+ 记录集”按钮。
+
+1. 使用以下值创建新的 TXT 记录集。
+
+   | 设置  | 值                                       |
+   | -------- | ------------------------------------------- |
+   | 名称     | `@`（表示根域），或输入子域 |
+   | 类型     | TXT                                         |
+   | TTL      | 保留为默认值                      |
+   | TTL 单位 | 保留为默认值                      |
+   | 值    | 粘贴剪贴板中的代码          |
+
+1. 选择“确定”。
+
+   :::image type="content" source="media/custom-domain/azure-dns-txt.png" alt-text="“Azure DNS 记录集”屏幕，其中突出显示了名称、类型和值字段":::
+
+[!INCLUDE [validate TXT record](../../includes/static-web-apps-validate-txt.md)]
+
+# <a name="other-dns"></a>[其他 DNS](#tab/other-dns)
+
+1. 确保“主机名记录类型”下拉列表设置为“TXT”。
+
+1. 选择“生成代码”按钮。
+
+   :::image type="content" source="media/custom-domain/generate-code.png" alt-text="“添加自定义域”屏幕，其中突出显示了“生成代码”按钮":::
+
+   此操作将生成唯一的代码，该过程可能最多需要一分钟的时间。
+
+1. 选择代码旁边的剪贴板图标以将值复制到剪贴板。
+
+   :::image type="content" source="media/custom-domain/copy-code.png" alt-text="“添加自定义域”屏幕，其中突出显示了“复制代码”按钮":::
+
+1. 在另一个浏览器标签页或窗口中登录到域提供商的网站。
+
+1. 查找管理 DNS 记录的页面。 每个域提供商都有自己的 DNS 记录界面，因此请查阅提供商的文档。 查找站点中标记为“域名”、“DNS”或“名称服务器管理”的区域。  
+
+   > [!NOTE]
+   > 通常通过查看帐户信息，然后查找如“我的域”之类的链接，便可以找到 DNS 记录页面。 转到该页面，然后查找名称类似于“区域文件”、“DNS 记录”或“高级配置”的链接  。
+
+1. 使用以下值创建新的 TXT 记录...
+
+   | 设置             | 值                                       |
+   | ------------------- | ------------------------------------------- |
+   | 类型                | TXT                                         |
+   | 主机                | `@`（表示根域），或输入子域 |
+   | 值               | 粘贴剪贴板中的代码          |
+   | TTL（如果适用） | 保留为默认值                      |
+
+> [!NOTE]
+> 某些 DNS 提供程序会自动将“@”更改为你的根域（即 mydomain.com）。 这在意料之内，验证过程仍会正常进行。
+
+[!INCLUDE [create repository from template](../../includes/static-web-apps-validate-txt.md)]
+
+---
+
+## <a name="create-an-alias-record"></a>创建 ALIAS 记录
+
+ALIAS 记录将一个域映射到另一个域。 此记录专用于根域（即 `mydomain.com`）。 在本部分，你将创建一条 ALIAS 记录，用于将根域映射到自动生成的静态 Web 应用 URL。
+
+# <a name="azure-dns"></a>[Azure DNS](#tab/azure-dns)
+
+> [!IMPORTANT]
+> Azure DNS 区域应与静态 Web 应用位于同一订阅中。
+
+1. 在 Azure 门户中打开域的 Azure DNS 区域。
+
+1. 选择“+ 记录集”按钮。
+
+1. 使用以下值创建新的 A 记录集。
+
+   | 设置          | 值                              |
+   | ---------------- | ---------------------------------- |
+   | 名称             | @                                  |
+   | 类型             | A - 指向 IPv4 地址的别名记录   |
+   | 别名记录集 | 是                                |
+   | 别名类型       | Azure 资源                     |
+   | 订阅     | \<Your Subscription>               |
+   | Azure 资源   | \<Your Static Web App>             |
+   | TTL              | 保留为默认值             |
+   | TTL 单位         | 保留为默认值             |
+
+1. 选择“确定”。
+
+   :::image type="content" source="media/custom-domain/azure-dns-alias.png" alt-text="“Azure DNS 记录集”屏幕，其中突出显示了名称、类型、别名和资源字段":::
+
+现已配置根域，DNS 提供程序可能需要几个小时才能在全球范围内传播更改。
+
+# <a name="other-dns"></a>[其他 DNS](#tab/other-dns)
+
+> [!IMPORTANT]
+> 域提供程序必须支持 [ALIAS](../dns/dns-alias.md) 或 ANAME 记录，或支持 CNAME 平展。
+
+1. 在 [Azure 门户](https://portal.azure.com)中打开你的静态 Web 应用。
+
+1. 在菜单中选择“自定义域”。
+
+1. 从“自定义域”屏幕中复制自动生成的静态 Web 应用 URL。
+
+   :::image type="content" source="media/custom-domain/auto-generated.png" alt-text="静态 Web 应用的“概述”页，其中突出显示了“复制 URL”图标":::
 
 1. 请登录到域提供商的网站。
 
-2. 查找管理 DNS 记录的页面。 每个域提供商都有自己的 DNS 记录界面，因此请查阅提供商的文档。 查找站点中标记为“域名”、“DNS”或“名称服务器管理”的区域。  
+1. 查找管理 DNS 记录的页面。 每个域提供商都有自己的 DNS 记录界面，因此请查阅提供商的文档。 查找站点中标记为“域名”、“DNS”或“名称服务器管理”的区域。  
 
-3. 通常通过查看帐户信息，然后查找如“我的域”之类的链接，便可以找到 DNS 记录页面。 转到该页面，然后查找名称类似于“区域文件”、“DNS 记录”或“高级配置”的链接  。
+   > [!NOTE]
+   > 通常通过查看帐户信息，然后查找如“我的域”之类的链接，便可以找到 DNS 记录页面。 转到该页面，然后查找名称类似于“区域文件”、“DNS 记录”或“高级配置”的链接  。
 
-    以下屏幕截图是 DNS 记录页的一个示例：
+1. 使用以下值创建新的 ALIAS 记录...
 
-    :::image type="content" source="media/custom-domain/example-record-ui.png" alt-text="DNS 提供程序配置示例":::
+   | 设置             | 值                                                          |
+   | ------------------- | -------------------------------------------------------------- |
+   | 类型                | ALIAS 或 ANAME（如果 ALIAS 不可用，请使用 CNAME）                    |
+   | 主机                | @                                                              |
+   | 值               | 粘贴剪贴板中的域名                      |
+   | TTL（如果适用） | 保留为默认值                                         |
 
-4. 使用以下值创建新的 CNAME 记录...
+> [!IMPORTANT]
+> 如果域提供商不提供 ALIAS 或 ANAME 记录类型，请改用 CNAME 类型。 许多提供商通过 CNAME 记录类型以及一个称作“CNAME 平展”的功能来提供与 ALIAS 记录类型相同的功能。
 
-    | 设置             | 值                     |
-    | ------------------- | ------------------------- |
-    | 类型                | CNAME                     |
-    | 主机                | www                       |
-    | 值               | 从剪贴板粘贴 |
-    | TTL（如果适用） | 保留为默认值    |
+现已配置根域，DNS 提供程序可能需要几个小时才能在全球范围内传播更改。
 
-5. 保存 DNS 提供程序所做的更改。
-
-### <a name="validate-cname"></a>验证 CNAME
-
-1. 返回到 Azure 门户中的“自定义域”窗口。
-
-1. 输入域，包括“验证自定义域”部分中的 `www` 部分。
-
-1. 单击“验证”按钮。
-
-现在，自定义域已完成配置，DNS 提供程序可能需要几个小时才能在全球范围内传播更改。 可以通过转到 [dnspropagation.net](https://dnspropagation.net) 检查传播的状态。 输入包含 `www` 的自定义域，从下拉菜单中选择“CNAME”，然后选择“开始”。
-
-如果 DNS 更改已填充，则网站将返回静态 Web 应用的自动生成的 URL（例如 _random-name-123456789c.azurestaticapps.net_）。
-
-## <a name="configure-a-root-domain"></a>配置根域
-
-根域是域删去任何子域，包括 `www`。 例如，`www.example.com` 的根域 `example.com`。 这也称为“APEX”域。
-
-尽管根域支持在预览期间不可用，但你可以查看博客文章[在 Azure 静态 Web Apps 中配置根域](https://burkeholland.github.io/posts/static-app-root-domain)详细了解如何使用静态 Web 应用配置根域支持。
-
-## <a name="map-a-wildcard-domain"></a>映射通配符域
-
-有时，你希望发送到子域的所有流量路由到另一个域。 常见的示例是将所有子域流量映射到 `www.example.com`。 这样一来，即使有人键入 `w.example.com`（而不是 `www.example.com`），请求也将发送给 `www.example.com`。
-
-### <a name="configure-dns-provider"></a>配置 DNS 提供程序
-
-1. 请登录到域提供商的网站。
-
-2. 查找管理 DNS 记录的页面。 每个域提供商都有自己的 DNS 记录界面，因此请查阅提供商的文档。 查找站点中标记为“域名”、“DNS”或“名称服务器管理”的区域。  
-
-3. 通常通过查看帐户信息，然后查找如“我的域”之类的链接，便可以找到 DNS 记录页面。 转到该页面，然后查找名称类似于“区域文件”、“DNS 记录”或“高级配置”的链接  。
-
-    以下屏幕截图是 DNS 记录页的一个示例：
-
-    :::image type="content" source="media/custom-domain/example-record-ui.png" alt-text="DNS 提供程序配置示例":::
-
-4. 使用以下值创建新的 CNAME 记录，并将 `www.example.com` 替换为自定义域名。
-
-    | 设置 | 值                  |
-    | ------- | ---------------------- |
-    | 类型    | CNAME                  |
-    | 主机    | \*                     |
-    | 值   | www.example.com        |
-    | TTL     | 保留为默认值 |
-
-5. 保存 DNS 提供程序所做的更改。
-
-现在，通配符域已完成配置，更改可能需要几个小时才能在全球范围内传播。 可以通过转到 [dnspropagation.net](https://dnspropagation.net) 检查传播的状态。 输入包含带有任何子域（`www` 除外）的域自定义域，从下拉菜单中选择“CNAME”，然后选择“开始”。
-
-如果已填充了 DNS 更改，则网站将返回为静态 Web 应用配置的自定义域（例如 `www.example.com`）。
+---
 
 ## <a name="next-steps"></a>后续步骤
 

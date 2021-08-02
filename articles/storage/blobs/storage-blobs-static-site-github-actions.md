@@ -6,15 +6,15 @@ ms.service: storage
 ms.topic: how-to
 ms.author: jukullam
 ms.reviewer: dineshm
-ms.date: 01/11/2021
+ms.date: 05/05/2021
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 3ae0904eda2608026ad09ba8b8993008380725f4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 88ad67b03b3362b3430daefd81a4d1b0475b0980
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788522"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854641"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>在 Azure 存储中设置 GitHub Actions 工作流以部署静态网站
 
@@ -24,7 +24,7 @@ ms.locfileid: "107788522"
 > 如果你使用的是 [Azure Static Web Apps](../../static-web-apps/index.yml)，则无需手动设置 GitHub Actions 工作流。
 > Azure Static Web Apps 会自动为你创建 GitHub Actions 工作流。 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 Azure 订阅和 GitHub 帐户。 
 
@@ -117,7 +117,7 @@ Azure 订阅和 GitHub 帐户。
               creds: ${{ secrets.AZURE_CREDENTIALS }}
     ```
 
-1. 利用 Azure CLI 操作将代码上传到 blob 存储，并清除 CDN 终结点。 对于 `az storage blob upload-batch`，将占位符替换为存储帐户的名称。 脚本将上传到 `$web` 容器。 对于 `az cdn endpoint purge`，将占位符替换为 CDN 配置文件名称、CDN 终结点名称和资源组。
+1. 利用 Azure CLI 操作将代码上传到 blob 存储，并清除 CDN 终结点。 对于 `az storage blob upload-batch`，将占位符替换为存储帐户的名称。 脚本将上传到 `$web` 容器。 对于 `az cdn endpoint purge`，将占位符替换为 CDN 配置文件名称、CDN 终结点名称和资源组。 若要加快 CDN 清除的速度，可以将 `--no-wait` 选项添加到 `az cdn endpoint purge`。
 
     ```yaml
         - name: Upload to blob storage
@@ -171,6 +171,7 @@ Azure 订阅和 GitHub 帐户。
         - name: logout
           run: |
                 az logout
+          if: always()
     ```
 
 ## <a name="review-your-deployment"></a>查看部署

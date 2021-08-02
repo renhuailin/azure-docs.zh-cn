@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/11/2021
-ms.openlocfilehash: 2d247f9e1529b7667e52f33a4a22841b8933fbaf
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: d54432b482e952327083996b486ce27fc56a1c88
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108163060"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949087"
 ---
 # <a name="how-to-index-data-available-through-cosmos-db-gremlin-api-using-an-indexer-preview"></a>如何使用索引器（预览版）为 Cosmos DB Gremlin API 提供的数据编制索引
 
@@ -24,21 +24,21 @@ ms.locfileid: "108163060"
 > 对于此预览版，我们建议使用 [REST API 版本 2020-06-30-Preview](search-api-preview.md)。 目前提供有限的门户支持，不提供 .NET SDK 支持。
 
 > [!WARNING]
-> 为了使 Azure 认知搜索能够通过 Gremlin API 索引 Cosmos DB 中的数据，还必须启用 [Cosmos DB 自己的索引](https://docs.microsoft.com/azure/cosmos-db/index-overview)，并将其设置为[一致](https://docs.microsoft.com/azure/cosmos-db/index-policy#indexing-mode)。 这是 Cosmos DB 的默认配置。 如果未启用 Cosmos DB 的索引，Azure 认知搜索索引将无法正常工作。
+> 为了使 Azure 认知搜索能够通过 Gremlin API 索引 Cosmos DB 中的数据，还必须启用 [Cosmos DB 自己的索引](../cosmos-db/index-overview.md)，并将其设置为[一致](../cosmos-db/index-policy.md#indexing-mode)。 这是 Cosmos DB 的默认配置。 如果未启用 Cosmos DB 的索引，Azure 认知搜索索引将无法正常工作。
 
-[Azure Cosmos DB 索引](https://docs.microsoft.com/azure/cosmos-db/index-overview)和 [Azure 认知搜索索引](search-what-is-an-index.md)属于不同的操作，且是每项服务中特有的操作。 在启动 Azure 搜索索引前，Azure Cosmos DB 数据库必须已存在。
+[Azure Cosmos DB 索引](../cosmos-db/index-overview.md)和 [Azure 认知搜索索引](search-what-is-an-index.md)属于不同的操作，且是每项服务中特有的操作。 在启动 Azure 搜索索引前，Azure Cosmos DB 数据库必须已存在。
 
 本文演示如何将 Azure 认知搜索配置为使用 Gremlin API 索引 Azure Cosmos DB 中的内容。 此工作流会创建 Azure 认知搜索索引，并通过现有文本（使用 Gremlin API 从 Azure Cosmos DB 中提取）加载此索引。
 
 ## <a name="get-started"></a>开始使用
 
-可以遵循 Azure 认知搜索中所有索引器通用的一个三部分工作流，使用[预览 REST API](https://docs.microsoft.com/rest/api/searchservice/index-preview) 为 Gremlin API 提供的 Azure Cosmos DB 数据编制索引：创建数据源、创建索引、创建索引器。 在下面的过程中，提交创建索引器请求时便开始从 Cosmos DB 提取数据。
+可以遵循 Azure 认知搜索中所有索引器通用的一个三部分工作流，使用[预览 REST API](/rest/api/searchservice/index-preview) 为 Gremlin API 提供的 Azure Cosmos DB 数据编制索引：创建数据源、创建索引、创建索引器。 在下面的过程中，提交创建索引器请求时便开始从 Cosmos DB 提取数据。
 
 默认情况下，Azure 认知搜索 Cosmos DB Gremlin API 索引器会使图中的每个顶点都成为索引中的文档。 边缘将被忽略。 或者可以将查询设置为边缘编制索引。
 
 ### <a name="step-1---assemble-inputs-for-the-request"></a>步骤 1 - 汇集请求的输入
 
-对于每个请求，必须提供 Azure 搜索的服务名称和管理密钥（在 POST 标头中）。 可以使用 [Postman](search-get-started-postman.md) 或任何 REST API 客户端将 HTTPS 请求发送到 Azure 认知搜索。
+对于每个请求，必须提供 Azure 搜索的服务名称和管理密钥（在 POST 标头中）。 可以使用 [Postman](./search-get-started-rest.md) 或任何 REST API 客户端将 HTTPS 请求发送到 Azure 认知搜索。
 
 复制并保存以下值以在请求中使用：
 
@@ -147,6 +147,7 @@ ms.locfileid: "108163060"
 对于已分区集合，默认文档键是 Azure Cosmos DB 的 `_rid` 属性，Azure 认知搜索会自动将其重命名为 `rid`，因为字段名称不能以下划线字符开头。 此外，Azure Cosmos DB 的 `_rid` 值包含了在 Azure 认知搜索键中无效的字符。 出于此原因，如果希望将 `_rid` 值作为文档键，则应采用 Base64 编码。
 
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>JSON 数据类型与 Azure 认知搜索数据类型之间的映射
+
 | JSON 数据类型 | 兼容的目标索引字段类型 |
 | --- | --- |
 | Bool |Edm.Boolean、Edm.String |
@@ -177,7 +178,7 @@ ms.locfileid: "108163060"
 
 此索引器在创建后开始运行，并且只运行一次。 可以向请求添加可选计划参数，以将索引器设置为按计划运行。 若要详细了解如何定义索引器计划，请参阅[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
 
-有关创建索引器 API 的更多详细信息，请参阅[创建索引器](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
+有关创建索引器 API 的更多详细信息，请参阅[创建索引器](/rest/api/searchservice/create-indexer)。
 
 <a name="DataDeletionDetectionPolicy"></a>
 
@@ -292,5 +293,6 @@ Cosmos DB Gremlin API 索引器自动为你映射几段图形数据：
 
 ## <a name="next-steps"></a>后续步骤
 
-* 要了解有关 Azure Cosmos DB Gremlin API 的详细信息，请参阅 [Azure Cosmos DB：Graph API 简介](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)。
-* 若要详细了解 Azure 认知搜索，请参阅[搜索服务页](https://azure.microsoft.com/services/search/)。
++ 要了解有关 Azure Cosmos DB Gremlin API 的详细信息，请参阅 [Azure Cosmos DB：Graph API 简介]()../cosmos-db/graph-introduction.md)。
+
++ 有关 Azure 认知搜索方案和定价的详细信息，请参阅 [azure.microsoft.com 上的搜索服务页](https://azure.microsoft.com/services/search/)。

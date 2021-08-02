@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 05/07/2021
-ms.openlocfilehash: 827e860c0b25945339a9e1640b94863697e04f88
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 73cce13f296d65167ab2c45f677849b7f05f8b3a
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377134"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410110"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor 中的 Log Analytics 工作区数据导出功能（预览版）
 使用 Azure Monitor 中的 Log Analytics 工作区数据导出功能，可以在收集 Log Analytics 工作区中所选表的数据时，将数据持续导出到 Azure 存储帐户或 Azure 事件中心。 本文提供了有关此功能的详细信息以及在工作区中配置数据导出的步骤。
@@ -545,9 +545,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="supported-tables"></a>受支持的表
 受支持的表当前仅限于下面指定的那些表。 除非指定限制，否则将导出表中的所有数据。 如果添加了对其他表的支持，此列表将会更新。
 
-
 | 表 | 限制 |
 |:---|:---|
+| AACAudit |  |
+| AACHttpRequest |  |
 | AADDomainServicesAccountLogon |  |
 | AADDomainServicesAccountManagement |  |
 | AADDomainServicesDirectoryServiceAccess |  |
@@ -560,11 +561,15 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | AADServicePrincipalSignInLogs |  |
 | ABSBotRequests |  |
 | ACSBillingUsage |  |
+| ACSChatIncomingOperations |  |
 | ACSSMSIncomingOperations |  |
 | ADAssessmentRecommendation |  |
 | ADFActivityRun |  |
 | ADFPipelineRun |  |
+| ADFSSignInLogs |  |
 | ADFTriggerRun |  |
+| ADPAudit |  |
+| ADPRequests |  |
 | ADReplicationResult |  |
 | ADSecurityAssessmentRecommendation |  |
 | ADTDigitalTwinsOperation |  |
@@ -576,7 +581,6 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | AegDeliveryFailureLogs |  |
 | AegPublishFailureLogs |  |
 | 警报 |  |
-| AmlOnlineEndpointConsoleLog |  |
 | ApiManagementGatewayLogs |  |
 | AppCenterError |  |
 | AppPlatformSystemLogs |  |
@@ -595,12 +599,19 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | BehaviorAnalytics |  |
 | BlockchainApplicationLog |  |
 | BlockchainProxyLog |  |
+| CDBControlPlaneRequests |  |
+| CDBDataPlaneRequests |  |
+| CDBMongoRequests |  |
+| CDBPartitionKeyRUConsumption |  |
+| CDBPartitionKeyStatistics |  |
+| CDBQueryRuntimeStatistics |  |
 | CommonSecurityLog |  |
 | ComputerGroup |  |
 | ConfigurationData | 部分支持 - 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
 | ContainerImageInventory |  |
 | ContainerInventory |  |
 | ContainerLog |  |
+| ContainerLogV2 |  |
 | ContainerNodeInventory |  |
 | ContainerServiceLog |  |
 | CoreAzureBackup |  |
@@ -614,13 +625,41 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | DatabricksSQLPermissions |  |
 | DatabricksSSH |  |
 | DatabricksWorkspace |  |
+| DeviceFileEvents |  |
+| DeviceNetworkEvents |  |
+| DeviceNetworkInfo |  |
+| DeviceProcessEvents |  |
+| DeviceRegistryEvents |  |
 | DnsEvents |  |
 | DnsInventory |  |
+| DummyHydrationFact |  |
 | Dynamics365Activity |  |
-| 事件 | 部分支持 - 导出完全支持来自 Log Analytics 代理 (MMA) 或 Azure Monitor 代理 (AMA) 的数据。 通过诊断扩展代理到达的数据是通过存储收集的，而导出不支持此路径。 |
+| EmailAttachmentInfo |  |
+| EmailEvents |  |
+| EmailUrlInfo |  |
+| 事件 | 部分支持 - 导出完全支持来自 Log Analytics 代理 (MMA) 或 Azure Monitor 代理 (AMA) 的数据。 通过诊断扩展代理到达的数据是通过存储收集的，而导出不支持此路径。2 |
 | ExchangeAssessmentRecommendation |  |
 | FailedIngestion |  |
 | FunctionAppLogs |  |
+| HDInsightAmbariClusterAlerts |  |
+| HDInsightAmbariSystemMetrics |  |
+| HDInsightHadoopAndYarnLogs |  |
+| HDInsightHadoopAndYarnMetrics |  |
+| HDInsightHiveAndLLAPLogs |  |
+| HDInsightHiveAndLLAPMetrics |  |
+| HDInsightHiveTezAppStats |  |
+| HDInsightOozieLogs |  |
+| HDInsightSecurityLogs |  |
+| HDInsightSparkApplicationEvents |  |
+| HDInsightSparkBlockManagerEvents |  |
+| HDInsightSparkEnvironmentEvents |  |
+| HDInsightSparkExecutorEvents |  |
+| HDInsightSparkJobEvents |  |
+| HDInsightSparkLogs |  |
+| HDInsightSparkSQLExecutionEvents |  |
+| HDInsightSparkStageEvents |  |
+| HDInsightSparkStageTaskAccumulables |  |
+| HDInsightSparkTaskEvents |  |
 | 检测信号 |  |
 | HuntingBookmark |  |
 | InsightsMetrics | 部分支持 - 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
@@ -638,26 +677,28 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | MicrosoftAzureBastionAuditLogs |  |
 | MicrosoftDataShareReceivedSnapshotLog |  |
 | MicrosoftDataShareSentSnapshotLog |  |
+| MicrosoftDataShareShareLog |  |
 | MicrosoftHealthcareApisAuditLogs |  |
 | NWConnectionMonitorPathResult |  |
 | NWConnectionMonitorTestResult |  |
 | OfficeActivity | 部分支持 - 某些数据是通过 Webhook 从 O365 引入 LA 的。 当前导出中缺少此部分。 |
 | Operation | 部分支持 - 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
-| 性能 | 部分支持 - 当前仅支持 Windows 性能数据。 当前导出中缺少 Linux 性能数据。 |
-| PowerBIDatasetsTenant |  |
+| 性能 | 部分支持 – 当前仅支持 windows 性能数据。 当前导出中缺少 Linux 性能数据。 |
 | PowerBIDatasetsWorkspace |  |
-| PowerBIDatasetsWorkspacePreview |  |
+| PurviewScanStatusLogs |  |
 | SCCMAssessmentRecommendation |  |
 | SCOMAssessmentRecommendation |  |
 | SecurityAlert |  |
 | SecurityBaseline |  |
 | SecurityBaselineSummary |  |
+| SecurityCef |  |
 | SecurityDetection |  |
-| SecurityEvent | 部分支持 - 导出完全支持来自 Log Analytics 代理 (MMA) 或 Azure Monitor 代理 (AMA) 的数据。 通过诊断扩展代理到达的数据是通过存储收集的，而导出不支持此路径。 |
+| SecurityEvent | 部分支持 - 导出完全支持来自 Log Analytics 代理 (MMA) 或 Azure Monitor 代理 (AMA) 的数据。 通过诊断扩展代理到达的数据是通过存储收集的，而导出不支持此路径。2 |
 | SecurityIncident |  |
 | SecurityIoTRawEvent |  |
 | SecurityNestedRecommendation |  |
 | SecurityRecommendation |  |
+| SentinelHealth |  |
 | SfBAssessmentRecommendation |  |
 | SfBOnlineAssessmentRecommendation |  |
 | SharePointOnlineAssessmentRecommendation |  |
@@ -678,22 +719,25 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | SynapseSqlPoolRequestSteps |  |
 | SynapseSqlPoolSqlRequests |  |
 | SynapseSqlPoolWaits |  |
-| Syslog | 部分支持 - 导出完全支持来自 Log Analytics 代理 (MMA) 或 Azure Monitor 代理 (AMA) 的数据。 通过诊断扩展代理到达的数据是通过存储收集的，而导出不支持此路径。 |
+| Syslog | 部分支持 - 导出完全支持来自 Log Analytics 代理 (MMA) 或 Azure Monitor 代理 (AMA) 的数据。 通过诊断扩展代理到达的数据是通过存储收集的，而导出不支持此路径。2 |
 | ThreatIntelligenceIndicator |  |
 | 更新 | 部分支持 - 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
 | UpdateRunProgress |  |
 | UpdateSummary |  |
 | 使用情况 |  |
+| UserAccessAnalytics |  |
+| UserPeerAnalytics |  |
 | Watchlist |  |
 | WindowsEvent |  |
 | WindowsFirewall |  |
 | WireData | 部分支持 - 某些数据是通过不支持导出的内部服务引入的。 当前导出中缺少此部分。 |
+| WorkloadDiagnosticLogs |  |
+| WVDAgentHealthStatus |  |
 | WVDCheckpoints |  |
 | WVDConnections |  |
 | WVDErrors |  |
 | WVDFeeds |  |
 | WVDManagement |  |
-
 
 ## <a name="next-steps"></a>后续步骤
 

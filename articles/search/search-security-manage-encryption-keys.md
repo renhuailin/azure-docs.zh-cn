@@ -7,14 +7,14 @@ author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/02/2020
-ms.custom: references_regions
-ms.openlocfilehash: 9679157e7871b043711fff688a8cbb69cf9bb4d8
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 05/28/2021
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 3e45a2ff5db3a3ebbc0f9e2c5d9c66af43915463
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813607"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786832"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>在 Azure 认知搜索中配置客户管理的密钥以用于数据加密
 
@@ -31,15 +31,18 @@ Azure 认知搜索会自动使用[服务托管的密钥](../security/fundamental
 
 ## <a name="double-encryption"></a>双重加密
 
-对于 2020 年 8 月 1 日之后在特定区域创建的服务，客户管理的密钥加密的范围包括目前在以下区域提供的临时磁盘（实现[完全双重加密](search-security-overview.md#double-encryption)）： 
+双重加密是客户管理的密钥 (CMK) 的扩展。 这种情况可以理解为双层加密（通过 CMK 加密一次，通过服务托管密钥再次加密），并且范围全面，包含写入数据磁盘的长期存储和写入临时磁盘的短期存储。 无需任何配置。 将 CMK 应用于对象时，会自动调用双重加密。
 
-+ 美国西部 2
-+ 美国东部
-+ 美国中南部
-+ US Gov 弗吉尼亚州
-+ US Gov 亚利桑那州
+虽然双重加密在所有区域都可用，但支持分两个阶段推出。 第一次推出是在 2020 年 8 月，包括下面列出的五个区域。 第二次推出是在 2021 年 5 月，将双重加密扩展到所有剩余区域。 如果在旧版本的服务上使用 CMK 并希望进行双重加密，则需要在选择的区域中创建新的搜索服务。
 
-如果使用的是其他区域或 8 月 1 日之前创建的服务，则托管密钥加密仅限于数据磁盘，不包括服务使用的临时磁盘。
+| 区域 | 服务创建日期 |
+|--------|-----------------------|
+| 美国西部 2 | 2020 年 8 月 1 日之后 |
+| 美国东部 | 2020 年 8 月 1 日之后 |
+| 美国中南部  | 2020 年 8 月 1 日之后 |
+| US Gov 弗吉尼亚州  | 2020 年 8 月 1 日之后 |
+| US Gov 亚利桑那州  | 2020 年 8 月 1 日之后 |
+| [所有其他受支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=search#select-product) | 2021 年 5 月 13 日之后 |
 
 ## <a name="prerequisites"></a>先决条件
 

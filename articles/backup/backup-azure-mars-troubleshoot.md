@@ -2,13 +2,13 @@
 title: 排查 Azure 备份代理问题
 description: 本文介绍如何排查 Azure 备份代理的安装和注册问题。
 ms.topic: troubleshooting
-ms.date: 07/15/2019
-ms.openlocfilehash: 8320edbe2f9f5ae495246eb26276023b1b902764
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.date: 06/04/2021
+ms.openlocfilehash: dfe0f994ee6b57aa745930aee31142c996a87e26
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324772"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954358"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
 
@@ -21,7 +21,7 @@ ms.locfileid: "108324772"
 - [确保 MARS 代理是最新的](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)。
 - [确保已在 MARS 代理与 Azure 之间建立网络连接](#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)。
 - 确保 MARS 正在运行（在服务控制台中）。 如果需要，请在重启后重试操作。
-- [确保暂存文件夹位置有 5% 到 10% 的可用卷空间](/azure/backup/backup-azure-file-folder-backup-faq#what-s-the-minimum-size-requirement-for-the-cache-folder-)
+- [确保暂存文件夹位置有 5% 到 10% 的可用卷空间](./backup-azure-file-folder-backup-faq.yml#what-s-the-minimum-size-requirement-for-the-cache-folder-)
 - [检查其他进程或防病毒软件是否正在干扰 Azure 备份](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)。
 - 如果备份作业已完成但出现警告，请参阅[备份作业已完成，但出现警告](#backup-jobs-completed-with-warning)
 - 如果计划的备份失败，但手动备份可正常进行，请参阅[备份不按计划运行](#backups-dont-run-according-to-schedule)。
@@ -42,7 +42,7 @@ ms.locfileid: "108324772"
 | 原因 | 建议的操作 |
 | ---     | ---    |
 | **保管库凭据无效** <br/> <br/> 保管库凭据文件可能已损坏、可能已过期，或者其文件扩展名可能不是“.vaultCredentials”。 （例如它们可能在注册前 10 多天就下载了。）| 请从 Azure 门户上的恢复服务保管库[下载新凭据](backup-azure-file-folder-backup-faq.yml#where-can-i-download-the-vault-credentials-file-)。 然后相应地执行以下步骤： <ul><li> 如果已经安装和注册了 MARS，请打开 Microsoft Azure 备份代理 MMC 控制台。 然后，在“操作”窗格中选择“注册服务器”，以使用新凭据完成注册 。 <br/> <li> 如果新的安装失败，请尝试使用新凭据重新安装。</ul> 注意：如果已下载多个保管库凭据文件，在接下来的 10 天内，只有最新文件才有效。 我们建议下载新的保管库凭据文件。
-| **代理服务器/防火墙正在阻止注册** <br/>或 <br/>**未建立 Internet 连接** <br/><br/> 如果计算机或代理服务器限制了 Internet 连接，并且你无法确保能够访问所需的 URL，则注册将会失败。| 请执行以下步骤：<br/> <ul><li> 与 IT 团队协作，确保系统已建立 Internet 连接。<li> 如果没有代理服务器，请确保在注册代理时不要选择代理选项。 [检查代理设置](#verifying-proxy-settings-for-windows)。<li> 如果你使用了防火墙/代理服务器，请与网络团队协作，确保这些 URL 和 IP 地址能够访问：<br/> <br> **URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>`www.msftconnecttest.com`<br><br>**IP 地址**<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/></ul></ul>完成上述故障排除步骤后，再次尝试注册。<br></br> 如果通过 Azure ExpressRoute 进行连接，请确保按照 [Azure ExpressRoute 支持](backup-support-matrix-mars-agent.md#azure-expressroute-support)中所述内容配置设置。
+| **代理服务器/防火墙正在阻止注册** <br/>或 <br/>**未建立 Internet 连接** <br/><br/> 如果你的计算机具有有限的 Internet 访问权限，并且你不确保防火墙、代理和网络设置是否允许访问 FQDN 和公共 IP 地址，则注册将失败。| 请执行以下步骤：<br/> <ul><li> 与 IT 团队协作，确保系统已建立 Internet 连接。<li> 如果没有代理服务器，请确保在注册代理时不要选择代理选项。 [检查代理设置](#verifying-proxy-settings-for-windows)。<li> 如果你有防火墙/代理服务器，请与你的网络团队合作，以允许访问以下 FQDN 和公共 IP 地址。 对以下列出的所有 URL 和 IP 地址的访问都使用端口 443 上的 HTTPS 协议。<br/> <br> **URL**<br> `www.msftncsi.com` <br> `www.msftconnecttest.com` <br> \*.microsoft.com <br> \*.windowsazure.com <br> \*.microsoftonline.com <br>\*.windows.net<br><br>**IP 地址**<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/><li>如果你是美国政府客户，请确保你有权访问以下 URL：<br><br> `www.msftncsi.com` <br> \*.microsoft.com <br> \*.windowsazure.us <br> \*.microsoftonline.us <br> `*.windows.net` <br> \*.usgovcloudapi.net</li></ul></ul>完成上述故障排除步骤后，再次尝试注册。<br></br> 如果通过 Azure ExpressRoute 进行连接，请确保按照 Azure [ExpressRoute 支持](../backup/backup-support-matrix-mars-agent.md#azure-expressroute-support)中所述的内容配置设置。
 | **防病毒软件正在阻止注册** | 如果你在服务器上安装了防病毒软件，请将所需的排除规则添加到这些文件和文件夹的防病毒扫描项中： <br/><ul> <li> CBengine.exe <li> CSC.exe<li> scratch 文件夹。 其默认位置为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。 <li> bin 文件夹 C:\Program Files\Microsoft Azure Recovery Services Agent\Bin。
 
 ### <a name="additional-recommendations"></a>其他建议
@@ -99,7 +99,7 @@ ms.locfileid: "108324772"
   | 错误代码             | 原因                                             | 建议                                              |
   | ---------------------- | --------------------------------------------------- | ------------------------------------------------------------ |
   | 0x80070570             | 该文件或目录已损坏且无法读取。 | 在源卷上运行 chkdsk。                             |
-  | 0x80070002、0x80070003 | 系统找不到指定的文件。         | [确保暂存文件夹未满](/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)  <br><br>  检查在其中配置暂存空间的卷是否存在（未删除）  <br><br>   [确保从计算机上安装的防病毒软件中排除 MARS 代理](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
+  | 0x80070002、0x80070003 | 系统找不到指定的文件。         | [确保暂存文件夹未满](/azure/backup/backup-azure-file-folder-backup-faq.yml#manage-the-backup-cache-folder)  <br><br>  检查在其中配置暂存空间的卷是否存在（未删除）  <br><br>   [确保从计算机上安装的防病毒软件中排除 MARS 代理](/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)  |
   | 0x80070005             | 访问被拒绝                                    | [检查是否有防病毒软件或其他第三方软件在阻止访问](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)     |
   | 0x8007018b             | 拒绝访问云文件。                | OneDrive 文件、Git 文件或计算机上可处于脱机状态的任何其他文件 |
 
@@ -117,13 +117,13 @@ ms.locfileid: "108324772"
 
 | 错误  | 可能的原因 | 建议的操作 |
 |---------|---------|---------|
-|<br />激活未成功完成。 由于内部服务错误 [0x1FC07]，当前操作失败。 稍后重试操作。 如果该问题仍然存在，请联系 Microsoft 支持部门。     | <li> scratch 文件夹位于空间不足的卷上。 <li> 错误地移动了 scratch 文件夹。 <li> 缺少 OnlineBackup.KEK 文件。         | <li>升级到[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移到可用空间相当于备份数据总大小 5% 到 10% 的卷。 若要正确移动缓存位置，请参阅[有关备份文件和文件夹的常见问题](/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)中的步骤。<li> 确保 OnlineBackup.KEK 文件存在。 <br>scratch 文件夹的默认位置或缓存路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。        |
+|<br />激活未成功完成。 由于内部服务错误 [0x1FC07]，当前操作失败。 稍后重试操作。 如果该问题仍然存在，请联系 Microsoft 支持部门。     | <li> scratch 文件夹位于空间不足的卷上。 <li> 错误地移动了 scratch 文件夹。 <li> 缺少 OnlineBackup.KEK 文件。         | <li>升级到[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移到可用空间相当于备份数据总大小 5% 到 10% 的卷。 若要正确移动缓存位置，请参阅[有关备份文件和文件夹的常见问题](/azure/backup/backup-azure-file-folder-backup-faq.yml#manage-the-backup-cache-folder)中的步骤。<li> 确保 OnlineBackup.KEK 文件存在。 <br>scratch 文件夹的默认位置或缓存路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>未正确配置加密通行短语
 
 | 错误  | 可能的原因 | 建议的操作 |
 |---------|---------|---------|
-| <br />错误 34506。 未在此计算机上正确配置存储的加密通行短语。    | <li> scratch 文件夹位于空间不足的卷上。 <li> 错误地移动了 scratch 文件夹。 <li> 缺少 OnlineBackup.KEK 文件。        | <li>升级到[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移到可用空间相当于备份数据总大小 5% 到 10% 的卷。 若要正确移动缓存位置，请参阅[有关备份文件和文件夹的常见问题](/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)中的步骤。<li> 确保 OnlineBackup.KEK 文件存在。 <br>scratch 文件夹的默认位置或缓存路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。         |
+| <br />错误 34506。 未在此计算机上正确配置存储的加密通行短语。    | <li> scratch 文件夹位于空间不足的卷上。 <li> 错误地移动了 scratch 文件夹。 <li> 缺少 OnlineBackup.KEK 文件。        | <li>升级到[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理。<li>将 scratch 文件夹或缓存位置移到可用空间相当于备份数据总大小 5% 到 10% 的卷。 若要正确移动缓存位置，请参阅[有关备份文件和文件夹的常见问题](/azure/backup/backup-azure-file-folder-backup-faq.yml#manage-the-backup-cache-folder)中的步骤。<li> 确保 OnlineBackup.KEK 文件存在。 <br>scratch 文件夹的默认位置或缓存路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。         |
 
 ## <a name="backups-dont-run-according-to-schedule"></a>备份不按计划运行
 

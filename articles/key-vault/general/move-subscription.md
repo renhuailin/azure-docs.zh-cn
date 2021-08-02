@@ -9,12 +9,13 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1a1cd8c051f9e04c09ef2986805873d8e7fea54e
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7e1e4dd244045e86a0fb9e6d65f81a4149cf6659
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817623"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413296"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>将 Azure Key Vault 移动到另一个订阅
 
@@ -28,6 +29,10 @@ ms.locfileid: "107817623"
 > 如果使用的是托管服务标识 (MSI)，请阅读此文档末尾的移动后说明。 
 
 [Azure Key Vault](overview.md) 会自动绑定到创建它的订阅的默认 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) 租户 ID。 可以按照本[指南](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)查找与订阅关联的租户 ID。 所有访问策略条目和角色分配也都绑定到此租户 ID。  如果将 Azure 订阅从租户 A 移到租户 B，租户 B 中的服务主体（用户和应用程序）将无法访问现有的密钥保管库。若要解决此问题，需执行以下操作：
+
+> [!NOTE]
+> 如果 Key Vault 是通过 [Azure Lighthouse](../../lighthouse/overview.md) 创建的，则它与管理租户 ID 相关联。 Azure Lighthouse 仅受保管库访问策略权限模型支持。
+> 有关 Azure Lighthouse 中租户的详细信息，请参阅 [Azure Lighthouse 中的租户、用户和角色](../../lighthouse/concepts/tenants-users-roles.md)。
 
 * 将与订阅中所有现有密钥保管库关联的租户 ID 更改到租户 B。
 * 删除所有现有的访问策略条目。
@@ -87,7 +92,7 @@ Connect-AzAccount                                                          #Log 
 
 ```azurecli
 az account set -s <your-subscriptionId>                                    # Select your Azure Subscription
-tenantId=$(az account show --query tenantId)                               # Get your tenantId
+$tenantId=$(az account show --query tenantId)                               # Get your tenantId
 az keyvault update -n myvault --remove Properties.accessPolicies           # Remove the access policies
 az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Update the key vault tenantId
 ```

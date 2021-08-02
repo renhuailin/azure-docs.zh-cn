@@ -3,12 +3,12 @@ title: 事件中心高级层（预览版）概述
 description: 本文概述 Azure 事件中心高级层，它提供事件中心的多租户部署来满足高端流式处理需求。
 ms.topic: article
 ms.date: 5/25/2021
-ms.openlocfilehash: 5b55816d3e75fcbd8af070f07735b8d8ed081c4f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 7ae58a46484f6f83fdd737ac32e559a5dd90c627
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385178"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111409948"
 ---
 # <a name="overview-of-event-hubs-premium-preview"></a>事件中心高级层（预览版）概述
 
@@ -24,6 +24,8 @@ ms.locfileid: "110385178"
 高级层产品/服务按[处理单位 (PU)](event-hubs-scalability.md#processing-units) 计费，PU 对应于底层基础结构中共享的隔离资源（CPU、内存和存储）。 
 
 由于事件中心高级层在可快速转移资源的极大型多租户环境中提供隔离，因此与专用产品/服务相比，它在缩放时的弹性和速度要高得多，并且 PU 可以动态调整。 因此，对于中等范围（<120MB/秒）的吞吐量要求，事件中心高级层通常比事件中心专用层更具成本效益，尤其是当负载在一天或一周中不断变化时。 
+> [!NOTE]
+> 请注意，事件中心高级版仅支持 TLS 1.2 或更高版本。 
 
 在通过可用性区域支持提供额外的可靠性方面，事件中心专用层的最小部署规模为 8 个容量单位 (CU)，而事件中心高级层在所有 AZ 区域的第一个 PU 中即提供可用性区域支持。 
 
@@ -69,5 +71,5 @@ ms.locfileid: "110385178"
 
 ## <a name="next-steps"></a>后续步骤
 
-可以通过 [Azure 门户](https://aka.ms/eventhubsclusterquickstart)开始使用事件中心高级层（预览版）。 请参阅[事件中心高级层定价](https://azure.microsoft.com/pricing/details/event-hubs/)了解有关定价的更多详细信息，并参阅[事件中心常见问题解答](event-hubs-faq.yml)查找有关事件中心的一些常见问题的解答。 
+可以通过 [Azure 门户](https://portal.azure.com/#create/Microsoft.EventHub)开始使用事件中心高级层（预览版）。 请参阅[事件中心高级层定价](https://azure.microsoft.com/pricing/details/event-hubs/)了解有关定价的更多详细信息，并参阅[事件中心常见问题解答](event-hubs-faq.yml)查找有关事件中心的一些常见问题的解答。 
 

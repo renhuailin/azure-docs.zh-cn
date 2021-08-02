@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 2cae673dd319e55670357ae468d21ff63e4f9c72
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: fasttrack-edit, devx-track-azurepowershell
+ms.openlocfilehash: 6aab2d1d681cbfd55cc275b1f647562d54a08f0c
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104669434"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110791324"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>从 Azure 资源管理器模板部署 NSG 流日志
 
@@ -29,10 +29,10 @@ ms.locfileid: "104669434"
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
-> - [Azure 资源管理器](network-watcher-nsg-flow-logging-azure-resource-manager.md)
+> - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 
-[Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/) 是 Azure 本机的一个强大的方法，可将[基础结构作为代码](/azure/devops/learn/what-is-infrastructure-as-code)进行管理。
+[Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)是 Azure 的本机方法且功能强大，可用于管理[基础结构即代码](/azure/devops/learn/what-is-infrastructure-as-code)。
 
 本文介绍如何使用 Azure 资源管理器模板和 Azure PowerShell 以编程方式启用 [NSG 流日志](./network-watcher-nsg-flow-logging-overview.md)。 首先，提供 NSG 流日志对象属性的概述，并提供一些示例模板。 然后，使用本地 PowerShell 实例部署模板。
 
@@ -77,7 +77,7 @@ ms.locfileid: "104669434"
 
 如果是首次使用 Azure 资源管理器模板，可以通过以下链接了解有关这些模板的详细信息。
 
-* [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template-or-bicep-file)
+* [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
 * [教程：创建和部署你的第一个 Azure 资源管理器模板](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-powershell)
 
 

@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
-ms.custom: references_regions, synapse-cosmos-db
-ms.openlocfilehash: 5cfe932d4f9ea60a044ce0b594df800fa37af6f1
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.custom: references_regions, synapse-cosmos-db, devx-track-azurepowershell
+ms.openlocfilehash: bba594a6b0482457acad8bead382099a1e8e3a5b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904921"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968033"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>配置和使用 Azure Synapse Link for Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -208,7 +208,7 @@ except exceptions.CosmosResourceExistsError:
   * 打开“规模和设置”窗口。
   * 在“设置”下，找到“分析存储生存时间”。
   * 选择“启用(无默认值)”或选择“启用”，然后设置一个 TTL 值 
-  * 单击“保存”以保存更改。
+  * 单击“保存”  以保存更改。
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -270,7 +270,8 @@ container.replace(containerProperties).block();
 
 ## <a name="use-serverless-sql-pool-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>使用无服务器 SQL 池在 Power BI 中分析和可视化数据
 
-可以在 Azure Cosmos DB 的 Synapse Link 上生成无服务器 SQL 池数据库和视图。 在此之后，你可以查询 Azure Cosmos 容器，然后在那些视图中使用 Power BI 生成模型，以反映该查询。 若要详细了解，请参阅如何使用[无服务器 SQL 池通过 Synapse Link 分析 Azure Cosmos DB](synapse-link-power-bi.md) 一文。
+可以通过 Azure Cosmos DB 的 Synapse Link 创建无服务器 SQL 池数据库和视图。 在此之后，你可以查询 Azure Cosmos 容器，然后在那些视图中使用 Power BI 生成模型，以反映该查询。 对事务工作负载没有任何性能或成本影响，也不存在管理 ETL 管道的复杂性。 可以使用 [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode) 或 [import](/power-bi/connect-data/service-dataset-modes-understand#import-mode) 模式。 若要详细了解，请参阅如何使用[无服务器 SQL 池通过 Synapse Link 分析 Azure Cosmos DB](synapse-link-power-bi.md) 一文。
+
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
 

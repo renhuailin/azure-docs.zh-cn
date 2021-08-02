@@ -5,20 +5,24 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: b6689220873aaeb65337ba480e346e5d2c8020ce
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 06/10/2021
+ms.openlocfilehash: e3e468b774503b42fd46e66492f09982e8d1d9a6
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91707857"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982261"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL 灵活服务器中的逻辑复制和逻辑解码
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL 灵活服务器以预览版提供
 
-Azure Database for PostgreSQL 灵活服务器（Postgres 版本 11）支持 PostgreSQL 的逻辑复制和逻辑解码功能。
+Azure Database for PostgreSQL 灵活服务器支持以下逻辑数据提取和复制方法：
+1. **逻辑复制**
+   1. 使用 PostgreSQL [本机逻辑复制](https://www.postgresql.org/docs/12/logical-replication.html)复制数据对象。 通过逻辑复制可对数据复制进行精细控制，包括表级别数据复制。
+   <!--- 2. Using [pglogical](https://github.com/2ndQuadrant/pglogical) extension that provides logical streaming replication and additional capabilities such as copying initial schema of the database, support for TRUNCATE, ability to replicate DDL etc. -->
+2. 逻辑解码通过[解码](https://www.postgresql.org/docs/12/logicaldecoding-explanation.html)预写日志 (WAL) 的内容实现。 
 
 ## <a name="comparing-logical-replication-and-logical-decoding"></a>比较逻辑复制和逻辑解码
 逻辑复制和逻辑解码具有一些相似之处。 它们均
@@ -35,23 +39,24 @@ Azure Database for PostgreSQL 灵活服务器（Postgres 版本 11）支持 Post
 
 逻辑解码 
 * 提取数据库中所有表的更改 
-* 不能在 PostgreSQL 实例之间直接发送数据
-
+* 不能在 PostgreSQL 实例之间直接发送数据。
 
 ## <a name="pre-requisites-for-logical-replication-and-logical-decoding"></a>逻辑复制和逻辑解码的先决条件
 
-1. 将服务器参数 `wal_level` 设置为 `logical`。
-2. 重启服务器以应用 `wal_level` 更改。
-3. 确认 PostgreSQL 实例允许来自连接资源的网络流量。
-4. 授予管理员用户复制权限。
+1. 转到门户中的服务器参数页。
+2. 将服务器参数 `wal_level` 设置为 `logical`。
+<!---
+3. If you want to use pglogical extension, search for the `shared_preload_libaries` parameter, and select `pglogical` from the drop-down box. Also update `max_worker_processes` parameter value to at least 16. -->
+3. 保存更改并重启服务器以应用 `wal_level` 更改。
+4. 确认 PostgreSQL 实例允许来自连接资源的网络流量。
+5. 授予管理员用户复制权限。
    ```SQL
    ALTER ROLE <adminname> WITH REPLICATION;
    ```
 
-
 ## <a name="using-logical-replication-and-logical-decoding"></a>使用逻辑复制和逻辑解码
 
-### <a name="logical-replication"></a>逻辑复制
+### <a name="native-logical-replication"></a>本机逻辑复制
 逻辑复制使用术语“发布服务器”和“订阅服务器”。 
 * 发布服务器是从中发送数据的 PostgreSQL 数据库。 
 * 订阅服务器是向其发送数据的 PostgreSQL 数据库。
@@ -84,11 +89,62 @@ Azure Database for PostgreSQL 灵活服务器（Postgres 版本 11）支持 Post
    ```SQL
    SELECT * FROM basic;
    ```
+   可将更多的行添加到发布服务器的表中，并查看订阅服务器上的更改。
 
-可将更多的行添加到发布服务器的表中，并查看订阅服务器上的更改。
+   如果看不到数据，请启用 `azure_pg_admin` 的登录权限并检查表内容。 
+   ```SQL 
+   ALTER ROLE azure_pg_admin login;
+   ```
+
 
 请访问 PostgreSQL 文档，详细了解[逻辑复制](https://www.postgresql.org/docs/current/logical-replication.html)。
 
+<!---
+### pglogical extension
+
+Here is an example of configuring pglogical at the provider database server and the subscriber. Please refer to pglogical extension documentation for more details. Also make sure you have performed pre-requisite tasks listed above.
+
+1. Install pglogical extension in the database in both the provider and the subscriber database servers.
+    ```SQL
+   \C myDB
+   CREATE EXTENSION pglogical;
+   ```
+2. At the **provider** (source/publisher) database server, create the provider node.
+   ```SQL
+   select pglogical.create_node( node_name := 'provider1', 
+   dsn := ' host=myProviderServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=myPassword');
+   ```
+3. Create a replication set.
+   ```SQL
+   select pglogical.create_replication_set('myreplicationset');
+   ```
+4. Add all tables in the database to the replication set.
+   ```SQL
+   SELECT pglogical.replication_set_add_all_tables('myreplicationset', '{public}'::text[]);
+   ```
+
+   As an alternate method, ou can also add tables from a specific schema (for example, testUser) to a default replication set.
+   ```SQL
+   SELECT pglogical.replication_set_add_all_tables('default', ARRAY['testUser']);
+   ```
+
+5. At the **subscriber** database server, create a subscriber node.
+   ```SQL
+   select pglogical.create_node( node_name := 'subscriber1', 
+   dsn := ' host=mySubscriberServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=myPasword' );
+   ```
+6. Create a subscription to start the synchronization and the replication process.
+    ```SQL
+   select pglogical.create_subscription (
+   subscription_name := 'subscription1',
+   replication_sets := array['myreplicationset'],
+   provider_dsn := 'host=myProviderServer.postgres.database.azure.com port=5432 dbname=myDB user=myUser password=myPassword');
+   ```
+7. You can then verify the subscription status.
+   ```SQL
+   SELECT subscription_name, status FROM pglogical.show_subscription_status();
+   ```
+-->
 ### <a name="logical-decoding"></a>逻辑解码
 可以通过流式处理协议或 SQL 接口使用逻辑解码。 
 
@@ -175,6 +231,7 @@ SELECT * FROM pg_replication_slots;
 针对使用的事务 ID 上限和使用的存储灵活服务器指标[设置警报](howto-alert-on-metrics.md)，以便在值超过正常阈值时通知你 。 
 
 ## <a name="limitations"></a>限制
+* 逻辑复制限制适用，如[此处](https://www.postgresql.org/docs/12/logical-replication-restrictions.html)所述。
 * **只读副本** - 灵活服务器当前不支持 Azure Database for PostgreSQL 只读副本。
 * **槽和 HA 故障转移** - 主服务器上的逻辑复制槽在辅助 AZ 中的备用服务器上不可用。 如果服务器使用区域冗余高可用性选项，则此选项适用于你。 如果故障转移到备用服务器，则备用服务器上的逻辑复制槽将不可用。
 

@@ -1,19 +1,19 @@
 ---
 title: 跨多个 ISP 链接进行 Azure 路径选择
 titleSuffix: Azure Virtual WAN
-description: 在本文中，了解 Azure 虚拟 WAN 如何包含链路信息来利用 Azure 路径选择跨各种链路引导流量。
+description: 了解 Azure 虚拟 WAN 如何包含链接信息以利用 Azure 路径选择跨各种链接引导流量。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: a2de840d07a99ed7c135b75ef24144da642654bb
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 9938f9da91f42c8f22b1abca5f85b332321dc486
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166192"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579080"
 ---
 # <a name="azure-path-selection-across-multiple-isp-links"></a>跨多个 ISP 链接进行 Azure 路径选择
 

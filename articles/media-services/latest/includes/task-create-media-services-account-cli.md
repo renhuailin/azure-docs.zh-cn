@@ -5,17 +5,38 @@ ms.topic: include
 ms.date: 08/17/2020
 ms.author: inhenkel
 ms.custom: CLI, devx-track-azurecli
-ms.openlocfilehash: 07b0897de3fce6a108836f1e72ce956a3a8092f1
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: c52dfe33de673f6ad529a3065b9567a685acfad5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107893276"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062536"
 ---
 <!--Create a media services account -->
 
-以下 Azure CLI 命令创建新的媒体服务帐户。 可以替换以下值：`amsaccount``storageaccountforams`（必须与提供给存储帐户的值相符）和 `amsResourceGroup`（必须与提供给资源组的值相符）。
+以下 Azure CLI 命令创建新的媒体服务帐户。 可以替换以下值：`your-media-services-account-name`、`your-storage-account-name` 和 `your-resource-group-name`。 该命令假定你已创建了资源组和存储帐户。
 
-```azurecli
-az ams account create --name amsaccount -g amsResourceGroup --storage-account storageaccountforams -l westus2
+```azurecli-interactive
+az ams account create --name <your-media-services-account-name> -g <your-resource-group-name> --storage-account <your-storage-account-name> -l <your-region>
+```
+
+示例 JSON 响应：
+
+```json
+{
+  "id": "/subscriptions/00000000-0000-0000-000000000000/resourceGroups/your-resource-group-name/providers/Microsoft.Media/mediaservices/your-media-services-account-name",
+  "location": "your-region",
+  "mediaServiceId": "the-media-services-account-id",
+  "name": "your-media-services-account-name",
+  "resourceGroup": "your-resource-group-name",
+  "storageAccounts": [
+    {
+      "id": "/subscriptions/00000000-0000-0000-000000000000/resourceGroups/your-resource-group-name/providers/Microsoft.Storage/storageAccounts/your-storage-account-name",
+      "resourceGroup": "your-resource-group-name",
+      "type": "Primary"
+    }
+  ],
+  "tags": null,
+  "type": "Microsoft.Media/mediaservices"
+}
 ```

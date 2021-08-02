@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 320bd87aa78d26cee44c48f27365febd1dd426ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bdf660d57f4fa8cb3a804ff55028dc442f96b8b
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96620284"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786129"
 ---
 # <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>更改现有 Azure Active Directory 域服务托管域的 SKU
 
@@ -42,7 +42,7 @@ ms.locfileid: "96620284"
 
 例如：
 
-* 如果已在高级 SKU 上创建了两个林信任，则无法将其向下更改为标准 SKU 。 标准 SKU 不支持林信任。
+* 不能向下更改为标准 SKU。 Azure AD DS 资源林不支持标准 SKU。 
 * 或者，如果已在高级 SKU 上创建了七个林信任，则无法将其向下更改为企业 SKU 。 企业 SKU 最多支持五个信任关系。
 
 若要详细了解这些限制，请参阅 [Azure AD DS SKU 功能和限制][concepts-sku]。

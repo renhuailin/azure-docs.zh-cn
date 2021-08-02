@@ -1,39 +1,49 @@
 ---
-title: 访问 Azure 虚拟网络
-description: 关于集成服务环境 (ISE) 如何帮助逻辑应用访问 Azure 虚拟网络 (VNET) 的概述
+title: 概述 - 访问 Azure 虚拟网络
+description: 了解如何使用使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络 (VNET)
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm, azla
+ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 01/11/2021
-ms.openlocfilehash: 4d83609eea57c2350881360ef757b1a291627c23
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/16/2021
+ms.openlocfilehash: ce3526f824d34e69cf33d41ba591a8ae6a634ea5
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100374722"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985287"
 ---
-# <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络资源
+# <a name="access-to-azure-virtual-networks-from-azure-logic-apps-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络
 
-有时，逻辑应用需要访问受保护的资源（例如，虚拟机 (VM) 和其他系统或服务），这些资源可能位于 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)中，也可能是连接到该虚拟网络。 若要设置此访问权限，可以 [创建一个 *集成服务环境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。 ISE 是逻辑应用服务的实例，该实例使用专用资源并独立于“全局”多租户逻辑应用服务运行。 ISE 中的数据保留在[创建和部署该 ISE 的同一区域](https://azure.microsoft.com/global-infrastructure/data-residency/)中。
+有时，逻辑应用工作流需要访问受保护的资源（例如，虚拟机 (VM) 和其他系统或服务），这些资源可能位于 Azure 虚拟网络中，也可能连接到该虚拟网络。 若要从通常在多租户 Azure 逻辑应用中运行的工作流直接访问这些资源，可以改为在集成服务环境 (ISE) 中创建和运行逻辑应用。 ISE 实际上是一个 Azure 逻辑应用实例，在全局多租户 Azure 环境以外的专用资源上单独运行。
 
-例如，某些 Azure 虚拟网络使用专用终结点（可以通过 [Azure 专用链接](../private-link/private-link-overview.md)设置）来提供对 Azure PaaS 服务（例如 Azure 存储、Azure Cosmos DB 或 Azure SQL 数据库）、合作伙伴服务或托管在 Azure 上的客户服务的访问。 如果逻辑应用需要访问使用专用终结点的虚拟网络，则必须在 ISE 中创建、部署和运行这些逻辑应用。
+例如，某些 Azure 虚拟网络使用专用终结点（[Azure 专用链接](../private-link/private-link-overview.md)）来提供对 Azure PaaS 服务（例如 Azure 存储、Azure Cosmos DB 或 Azure SQL 数据库）、合作伙伴服务或 Azure 上托管的客户服务的访问。 如果逻辑应用工作流需要访问使用专用终结点的虚拟网络，则可以使用以下选项：
 
-当你创建 ISE 时，Azure 会将该 ISE 注入或部署到 Azure 虚拟网络中。 然后，你可以将该 ISE 用作需要进行访问的逻辑应用和集成帐户的位置。
+* 如果要使用“逻辑应用（消耗版）”资源类型来开发工作流，并且工作流需要使用专用终结点，则必须在 ISE 中创建、部署和运行逻辑应用。 有关详细信息，请参阅[使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
+
+* 如果要使用“逻辑应用（标准版）”资源类型来开发工作流，并且工作流需要使用专用终结点，则不需要 ISE。 相反，工作流可以通过将专用终结点用于入站流量并将虚拟网络集成用于出站流量，与虚拟网络进行私密且安全的通信。 有关详细信息，请参阅[使用专用终结点保护虚拟网络和单租户 Azure 逻辑应用之间的流量](secure-single-tenant-workflow-virtual-network-private-endpoint.md)。
+
+有关详细信息，请参阅[多租户 Azure 逻辑应用和集成服务环境之间的差异](logic-apps-overview.md#resource-environment-differences)。
+
+## <a name="how-an-ise-works-with-a-virtual-network"></a>ISE 如何与虚拟网络一起工作
+
+创建 ISE 时，选择希望 Azure 注入或部署 ISE 的 Azure 虚拟网络。 创建需要访问此虚拟网络的逻辑应用和集成帐户时，可以选择 ISE 作为这些逻辑应用和集成帐户的主机位置。 在 ISE 中，逻辑应用独立于多租户 Azure 逻辑应用环境中的其他资源在专用资源上运行。 ISE 中的数据保留在[创建和部署该 ISE 的同一区域](https://azure.microsoft.com/global-infrastructure/data-residency/)中。
 
 ![选择集成服务环境](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
+
+要更好地控制 Azure 存储使用的加密密钥，可以通过 [Azure 密钥保管库](../key-vault/general/overview.md)设置、使用和管理自己的密钥。 此功能也称为“创建自己的密钥”(BYOK)，密钥称为“客户管理的密钥”。 有关详细信息，请参阅[设置客户管理的密钥以便为 Azure 逻辑应用中的集成服务环境 (ISE) 加密静态数据](../logic-apps/customer-managed-keys-integration-service-environment.md)。
 
 此概述详细介绍了[为何要使用 ISE](#benefits)、[专用和多租户逻辑应用服务之间的差异](#difference)，以及如何直接访问 Azure 虚拟网络内部或与之连接的资源。
 
 <a name="benefits"></a>
 
-## <a name="why-use-an-ise"></a>为何使用 ISE？
+## <a name="why-use-an-ise"></a>为何使用 ISE
 
 在你自己的专用实例中运行逻辑应用有助于降低其他 Azure 租户对应用性能的影响，此影响也称为[“邻近干扰”影响](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)。 ISE 还带来以下好处：
 
 * 直接访问虚拟网络内部或与之连接的资源
 
-  在 ISE 中创建和运行的逻辑应用可以使用[专门设计的在 ISE 中运行的连接器](../connectors/apis-list.md#ise-connectors)。 如果某个本地系统或数据源存在 ISE 连接器，则无需使用[本地数据网关](../logic-apps/logic-apps-gateway-connection.md)即可直接连接。 有关详细信息，请参阅本主题后面部分中的[专用与多租户](#difference)以及[访问本地系统](#on-premises)。
+  在 ISE 中创建和运行的逻辑应用可以使用[专门设计的在 ISE 中运行的连接器](../connectors/managed.md#ise-connectors)。 如果某个本地系统或数据源存在 ISE 连接器，则无需使用[本地数据网关](../logic-apps/logic-apps-gateway-connection.md)即可直接连接。 有关详细信息，请参阅本主题后面部分中的[专用与多租户](#difference)以及[访问本地系统](#on-premises)。
 
 * 继续访问虚拟网络外部或未与之连接的资源
 
@@ -53,7 +63,7 @@ ms.locfileid: "100374722"
 
 * 内置触发器和操作（例如 HTTP）显示 **CORE** 标签，并在与逻辑应用相同的 ISE 中运行。
 
-* 显示 **ISE** 标签的托管连接器是专门设计用于 ISE，并且始终在与逻辑应用相同的 ISE 中运行。 例如，以下是一些[提供了 ISE 版本的连接器](../connectors/apis-list.md#ise-connectors)：<p>
+* 显示 **ISE** 标签的托管连接器是专门设计用于 ISE，并且始终在与逻辑应用相同的 ISE 中运行。 例如，以下是一些[提供了 ISE 版本的连接器](../connectors/managed.md#ise-connectors)：<p>
 
   * Azure Blob 存储、文件存储和表存储
   * Azure 服务总线、Azure 队列、Azure 事件中心
@@ -79,7 +89,7 @@ ms.locfileid: "100374722"
 
 * 适用于本地系统或数据源的 **ISE** 连接器（如果可用）
 
-  如果 ISE 连接器可用，则无需[本地数据网关](../logic-apps/logic-apps-gateway-connection.md)即可直接访问系统或数据源。 但是，如果需要从 ISE 访问 SQL Server 并使用 Windows 身份验证，则必须使用连接器的非 ISE 版本和本地数据网关。 连接器的 ISE 版本不支持 Windows 身份验证。 有关详细信息，请参阅 [ISE 连接器](../connectors/apis-list.md#ise-connectors)和[从集成服务环境连接](../connectors/apis-list.md#integration-service-environment)。
+  如果 ISE 连接器可用，则无需[本地数据网关](../logic-apps/logic-apps-gateway-connection.md)即可直接访问系统或数据源。 但是，如果需要从 ISE 访问 SQL Server 并使用 Windows 身份验证，则必须使用连接器的非 ISE 版本和本地数据网关。 连接器的 ISE 版本不支持 Windows 身份验证。 有关详细信息，请参阅 [ISE 连接器](../connectors/managed.md#ise-connectors)和[从集成服务环境连接](../connectors/managed.md#integration-account-connectors)。
 
 * 自定义连接器
 
@@ -122,13 +132,13 @@ ms.locfileid: "100374722"
 * **内部**：专用终结点允许调用 ISE 中的逻辑应用，其中只能从虚拟网络内部查看和访问逻辑应用的运行历史记录中的输入和输出。
 
   > [!IMPORTANT]
-  > 如果需要使用这些基于 Webhook 的触发器，请在创建 ISE 时使用外部终结点，而不是内部终结点：
+  > 如果需要使用这些基于 Webhook 的触发器，并且服务在虚拟网络和对等互连虚拟网络外部，请在创建 ISE 时使用外部终结点，而不是内部终结点：
   > 
   > * Azure DevOps
   > * Azure 事件网格
   > * Common Data Service
   > * Office 365
-  > * SAP（ISE 版本）
+  > * SAP（多租户版本）
   > 
   > 此外，请确保专用终结点与要从中访问运行历史记录的计算机之间存在网络连接。 否则，当尝试查看逻辑应用的运行历史记录时，会收到一条错误消息，提示“意外错误。 未能提取”。
   >

@@ -5,14 +5,14 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 6/09/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 52fa6f05db5452a2e7b8ec4f93d65525873c8c7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 383f9653de208bd00710f7a85788b60193986442
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98020564"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111967549"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>为 Azure 流分析作业开发 .NET Standard 用户定义函数（预览版）
 
@@ -26,7 +26,7 @@ Azure 流分析提供类似 SQL 的查询语言，用于对事件数据流执行
 * 美国东部 2
 * 西欧
 
-如果你希望在其他区域使用此功能，可以[请求访问](https://aka.ms/ccodereqregion)。
+如果你希望在其他区域使用此功能，可以[请求访问](https://aka.ms/ccodereqregion)。  但是，使用[流分析群集](./cluster-overview.md)时没有此类区域限制。
 
 ## <a name="package-path"></a>包路径
 
@@ -266,6 +266,8 @@ UDF 预览目前有以下限制：
 * 只能在 Visual Studio Code 或 Visual Studio 中编写 .NET Standard UDF 并将其发布到 Azure。 可以在 Azure 门户中的“Functions”下查看只读版本的 .NET Standard UDF。 Azure 门户中不支持创建 .NET Standard 函数。
 
 * 在门户中使用 .NET Standard UDF 时，Azure 门户查询编辑器显示一条错误。 
+
+* 调用外部 REST 终结点，例如，执行反向 IP 查找，或者从外部源提取引用数据
 
 * 由于自定义代码与 Azure 流分析引擎共享上下文，因此自定义代码无法引用 namespace/dll_name 与 Azure 流分析代码发生冲突的任何内容。 例如，不能引用 Newtonsoft Json。
 

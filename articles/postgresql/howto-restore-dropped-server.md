@@ -5,13 +5,13 @@ author: Bashar-MSFT
 ms.author: bahusse
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 11/03/2020
-ms.openlocfilehash: 591f01004cfba247112f702625ab05ddc0aaede3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/26/2021
+ms.openlocfilehash: 544bf2ff63b81842b942b645dc74a9f5ac838461
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97652919"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966269"
 ---
 # <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>还原已删除的 Azure Database for PostgreSQL 服务器
 
@@ -37,13 +37,13 @@ ms.locfileid: "97652919"
 3. 依次选择“删除 PostgreSQL 服务器”事件和“JSON”选项卡。复制 JSON 输出中的 `resourceId` 和 `submissionTimestamp` 属性。 resourceId 格式如下：`/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TargetResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/deletedserver`。
 
 
- 4. 转到 PostgreSQL [创建服务器 REST API](/rest/api/PostgreSQL/servers/create) 页，然后选择以绿色突出显示的“试调用”选项卡。 使用 Azure 帐户登录。
+ 1. 转到 PostgreSQL [创建服务器 REST API](/rest/api/postgresql/singleserver/servers/create) 页，然后选择以绿色突出显示的“试调用”选项卡。 使用 Azure 帐户登录。
 
- 5. 根据在上面第 3 步中捕获的 resourceId 属性 JSON 值，提供 resourceGroupName、serverName（已删除的服务器名称）、subscriptionId 属性。 api-version 属性是预先填充的，可以保持原样，如下图所示。
+ 2. 根据在上面第 3 步中捕获的 resourceId 属性 JSON 值，提供 resourceGroupName、serverName（已删除的服务器名称）、subscriptionId 属性。 api-version 属性是预先填充的，可以保持原样，如下图所示。
 
     ![使用 REST API 创建服务器](./media/howto-restore-dropped-server/create-server-from-rest-api-azure.png)
   
- 6. 滚动下面的“请求正文”部分，并粘贴以下替换“已删除的服务器位置”、“submissionTimestamp”和“resourceId”。 对于“restorePointInTime”，指定值为“submissionTimestamp”减去 15 分钟，以确保命令不会出错。
+ 3. 向下滚动到“请求正文”部分，并粘贴以下内容来替换“已删除的服务器位置”（例如 CentralUS、EastUS 等）、“submissionTimestamp”和“resourceId”。 对于“restorePointInTime”，指定值为“submissionTimestamp”减去 15 分钟，以确保命令不会出错。
     
     ```json
     {
@@ -62,7 +62,7 @@ ms.locfileid: "97652919"
     > [!Important]
     > 在服务器被删除后有五天的时间限制。 五天后，由于找不到备份文件，预计会出现错误。
     
-7. 如果看到响应代码 201 或 202，则表示已成功提交还原请求。 
+4. 如果看到响应代码 201 或 202，则表示已成功提交还原请求。 
 
     服务器创建可能需要一些时间，具体取决于原始服务器上预配的数据库大小和计算资源。 通过在活动日志中筛选以下信息，可以监视还原状态 
    - 订阅 = 你的订阅

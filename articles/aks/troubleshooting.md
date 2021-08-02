@@ -4,12 +4,12 @@ description: 了解如何排查和解决在使用 Azure Kubernetes 服务 (AKS) 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 0892f11a79c62669d77cceb2dbc4f9a9f86c623a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 257f3473da4284080d7977021cb97c6dbce0fbde
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108765928"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110535160"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -89,7 +89,7 @@ AKS 具有 HA 控制平面，可以根据内核数进行垂直缩放，以确保
 
 确保端口 22、9000 和 1194 已打开，以便连接到 API 服务器。 使用 `kubectl get pods --namespace kube-system` 命令检查 `tunnelfront` 或 `aks-link` Pod 是否正在 kube-system 命名空间中运行。 如果没有，请强制删除 Pod，它会重启。
 
-## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>当连接到 AKS API 时，我从客户端收到 `"tls: client offered only unsupported versions"`。 我该怎么办？
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>当连接到 AKS API 时，我从客户端收到 `"tls: client offered only unsupported versions"`。   应采取何种操作？
 
 AKS 支持的最低 TLS 版本是 TLS 1.2。
 
@@ -214,6 +214,10 @@ AKS 工程团队的建议是确保运行的版本至少是 1.18.x（其中包含
 ## <a name="my-watch-is-stale-or-azure-ad-pod-identity-nmi-is-returning-status-500"></a>我的手表已过时或 Azure AD Pod 标识 NMI 返回状态 500
 
 如果你像本[示例](limit-egress-traffic.md#restrict-egress-traffic-using-azure-firewall)那样使用 Azure 防火墙，则可能会遇到此问题，因为使用应用程序规则通过防火墙的长期 TCP 连接当前有一个 bug（将在 Q1CY21 中解决），这会导致 Go `keepalives` 在防火墙终止。 在解决此问题之前，可以通过将网络规则（而不是应用程序规则）添加到 AKS API 服务器 IP 来缓解此问题。
+
+## <a name="when-resuming-my-cluster-after-a-stop-operation-why-is-my-node-count-not-in-the-autoscaler-min-and-max-range"></a>在停止操作后恢复群集时，为什么节点计数不在自动缩放程序最小和最大范围内？
+
+如果使用的是群集自动缩放程序，则在启动群集备份时，当前节点计数可能不在所设置的最小和最大范围值之间。 这是预期的行为。 群集以运行其工作负载所需的节点数（不受自动缩放程序设置影响）开始。 当群集执行缩放操作时，最小值和最大值将影响当前节点计数，并且群集最终将进入并保持在所需范围内，直到停止群集为止。
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure 存储和 AKS 疑难解答
 

@@ -5,12 +5,12 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 12/11/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 6ceeb3d31652c04eb9a69c1c8bb4b114e6f38d52
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6b58b73235bba53bb174ebb17a63ad76cf71bcf1
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97347707"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110787794"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>为 Azure 应用服务配置 TLS 相互身份验证
 
@@ -44,11 +44,11 @@ az webapp update --set clientCertEnabled=true --name <app-name> --resource-group
 
 1. 在“客户端排除路径”旁边，单击编辑图标。
 
-1. 单击“新建路径”，指定路径，然后单击“确定”。
+1. 单击“新建路径”，指定路径或用 `,` 或 `;` 分隔的路径列表，然后单击“确定”。
 
 1. 单击页顶部的“保存”。 
 
-在下面的屏幕截图中，应用的 `/public` 路径下的任何内容都不会请求客户端证书。
+在下面的屏幕截图中，任何以 `/public` 开头的应用路径都不会请求客户端证书。 路径匹配不区分大小写。
 
 ![证书排除路径][exclusion-paths]
 
@@ -60,7 +60,71 @@ az webapp update --set clientCertEnabled=true --name <app-name> --resource-group
 
 对于其他应用程序堆栈（Node.js、PHP 等），可以通过 `X-ARR-ClientCert` 请求标头中的 base64 编码值在应用中提供客户端证书。
 
-## <a name="aspnet-sample"></a>ASP.NET 示例
+## <a name="aspnet-5-aspnet-core-31-sample"></a>ASP.NET 5+、ASP.NET Core 3.1 示例
+
+对于 ASP.NET Core，将提供中间件来分析转发的证书。 提供单独的中间件来使用转发的协议标头。 若要接受转发的证书，两者必须同时存在。 可在 [CertificateAuthentication 选项](/aspnet/core/security/authentication/certauth)中放置自定义证书验证逻辑。
+
+```csharp
+public class Startup
+{
+    public Startup(IConfiguration configuration)
+    {
+        Configuration = configuration;
+    }
+
+    public IConfiguration Configuration { get; }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllersWithViews();
+        // Configure the application to use the protocol and client ip address forwared by the frontend load balancer
+        services.Configure<ForwardedHeadersOptions>(options =>
+        {
+            options.ForwardedHeaders =
+                ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+        });       
+        
+        // Configure the application to client certificate forwarded the frontend load balancer
+        services.AddCertificateForwarding(options => { options.CertificateHeader = "X-ARR-ClientCert"; });
+
+        // Add certificate authentication so when authorization is performed the user will be created from the certificate
+        services.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme).AddCertificate();
+    }
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
+        else
+        {
+            app.UseExceptionHandler("/Home/Error");
+            app.UseHsts();
+        }
+        
+        app.UseForwardedHeaders();
+        app.UseCertificateForwarding();
+        app.UseHttpsRedirection();
+
+        app.UseAuthentication()
+        app.UseAuthorization();
+
+        app.UseStaticFiles();
+
+        app.UseRouting();
+        
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+        });
+    }
+}
+```
+
+## <a name="aspnet-webforms-sample"></a>ASP.NET WebForms 示例
 
 ```csharp
     using System;

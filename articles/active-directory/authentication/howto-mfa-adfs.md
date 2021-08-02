@@ -5,22 +5,25 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/11/2018
+ms.date: 04/29/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b42f920726d4b3046ab0c292e1090f5217e8b1f9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1a41c2360438158adcee9a4198a5f956012a443
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96743235"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952053"
 ---
 # <a name="securing-cloud-resources-with-azure-ad-multi-factor-authentication-and-ad-fs"></a>将 Azure AD 多重身份验证与 AD FS 配合使用来保护云资源
 
 如果组织已与 Azure Active Directory 联合，则使用 Azure AD 多重身份验证或 Active Directory 联合身份验证服务 (AD FS) 来保护通过 Azure AD 访问的资源。 使用以下过程可通过 Azure AD 多重身份验证或 Active Directory 联合身份验证服务保护 Azure Active Directory 资源。
+
+>[!NOTE]
+>若要保护 Azure AD 资源，建议通过[条件访问策略](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)来要求进行 MFA，将域设置“SupportsMfa”设置为“$True”，并在用户成功执行双重验证时[发出多重身份验证声明](#secure-azure-ad-resources-using-ad-fs)。
 
 ## <a name="secure-azure-ad-resources-using-ad-fs"></a>使用 AD FS 保护 Azure AD 资源
 

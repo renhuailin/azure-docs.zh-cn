@@ -8,12 +8,12 @@ ms.service: azure-video-analyzer
 ms.topic: article
 ms.date: 05/12/2021
 ms.author: juliako
-ms.openlocfilehash: 3b410c78e699b498f858ffb560c745942f42c16c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: aef9cb4c99385e82f86818cc106c8dc62f0fd6cf
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384978"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110538163"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -349,6 +349,10 @@ public class AccountContractSlim
 > 建议使用 .NET framework 版本 4.6.2. 或更高版本，因为较旧的 .NET framework 不会默认为 TLS 1.2。
 >
 > 如果必须使用较旧的 .NET framework，请在进行 REST API 调用之前在代码中添加一行：  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+## <a name="firewall"></a>防火墙
+
+请参阅[防火墙后的存储帐户](faq.md#can-a-storage-account-connected-to-the-media-services-account-be-behind-a-firewall)。
 
 ## <a name="next-steps"></a>后续步骤
 

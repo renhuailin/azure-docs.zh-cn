@@ -10,12 +10,13 @@ ms.collection: windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a984d044134dbd775bacb653f8590ee78724f15b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 546537003d599dc66f77ace31471e04c8cef2d43
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563551"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854821"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
 
@@ -81,7 +82,7 @@ ms.locfileid: "102563551"
       "autoUpgradeMinorVersion": true,
       "settings": {
         "secretsManagementSettings": {
-          "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
+          "pollingIntervalInS": <string specifying polling interval in seconds, e.g: "3600">,
           "certificateStoreName": <certificate store name, e.g.: "MY">,
           "linkOnRenewal": <Only Windows. This feature ensures s-channel binding when certificate renews, without necessitating a re-deployment.  e.g.: false>,
           "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
@@ -120,7 +121,7 @@ ms.locfileid: "102563551"
 | linkOnRenewal | false | boolean |
 | certificateStoreLocation  | LocalMachine 或 CurrentUser（区分大小写） | string |
 | requireInitialSync | 是 | boolean |
-| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate","https://myvault.vault.azure.net/secrets/mycertificate2"] | 字符串数组
+| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate", "https://myvault.vault.azure.net/secrets/mycertificate2"] | 字符串数组
 | msiEndpoint | http://169.254.169.254/metadata/identity | string |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | string |
 
@@ -151,7 +152,7 @@ ms.locfileid: "102563551"
       "autoUpgradeMinorVersion": true,
       "settings": {
         "secretsManagementSettings": {
-          "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
+          "pollingIntervalInS": <string specifying polling interval in seconds, e.g: "3600">,
           "certificateStoreName": <certificate store name, e.g.: "MY">,
           "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
           "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: ["https://myvault.vault.azure.net/secrets/mycertificate", "https://myvault.vault.azure.net/secrets/mycertificate2"]>
@@ -176,9 +177,20 @@ Key Vault VM 扩展支持扩展排序（如果已配置）。 默认情况下，
 > 使用此功能与 ARM 模板不兼容（该模板会创建系统分配的标识并使用该标识更新 Key Vault 访问策略）。 这样做将导致死锁，因为在所有扩展启动之前，无法更新保管库访问策略。 应改为在部署之前使用单个用户分配的 MSI 标识，并使用该标识对你的保管库进行预 ACL 操作。
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell 部署
-> [!WARNING]
-> PowerShell 客户端通常会将 `\` 添加到 settings.json 中的 `"`，这会导致 akvvm_service 失败，并出现错误：`[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
 
+> [!WARNING]
+> PowerShell 客户端通常会将 `\` 添加到 settings.json 中的 `"`，这会导致 akvvm_service 失败，并显示错误 `[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`。在门户中“设置”下的“扩展”中将显示额外的 `\` 和 `"` 字符。 为了避免这种情况，请将 `$settings` 初始化为 PowerShell `HashTable`：
+> 
+> ```powershell
+> $settings = @{
+>     "secretsManagementSettings" = @{ 
+>         "pollingIntervalInS"       = "<pollingInterval>"; 
+>         "certificateStoreName"     = "<certStoreName>"; 
+>         "certificateStoreLocation" = "<certStoreLoc>"; 
+>         "observedCertificates"     = @("<observedCert1>", "<observedCert2>") } }
+> ```
+>
+  
 可以使用 Azure PowerShell，将 Key Vault VM 扩展部署到现有虚拟机或虚拟机规模集。 
 
 * 在 VM 上部署该扩展：
@@ -261,7 +273,7 @@ Key Vault VM 扩展支持扩展排序（如果已配置）。 默认情况下，
 * 可设置的 observedCertificates 数是否有限制？
   没有，Key Vault VM 扩展对 observedCertificates 数没有限制。
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 运行以下命令。
 

@@ -6,16 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 04/29/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 257cd8dce2a080203f116a6f0d5b7c7ebd6d13f8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 91fd04f24989df64aa294690fdedfd472c79f379
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593170"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677242"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>针对发送到存储帐户的请求强制实施必需的最低版本的传输层安全性 (TLS)
 
@@ -102,10 +103,10 @@ StorageBlobLogs
 若要通过 Azure 门户为现有存储帐户配置最低 TLS 版本，请执行以下步骤：
 
 1. 导航到 Azure 门户中的存储帐户。
-1. 选择 **配置** 设置。
-1. 在“最低 TLS 版本”下，使用下拉列表选择访问此存储帐户中的数据必需的最低 TLS 版本，如下图所示。
+1. 在“设置”下，选择“配置”。
+1. 在“最低 TLS 版本”下，使用下拉列表选择访问此存储帐户中的数据必需的最低 TLS 版本。
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="屏幕截图显示了如何在 Azure 门户中配置最低版本的 TLS":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="屏幕截图：显示如何在 Azure 门户中配置最低版本的 TLS。" lightbox="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

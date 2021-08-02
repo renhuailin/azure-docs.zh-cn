@@ -10,18 +10,18 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.custom: mqtt, devx-track-js
-ms.openlocfilehash: db4f78e14696c421adaedd16b0b3f8d598f12846
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b94cd4cc5c76495cb08f743b1a6849b6eb6c77b2
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91251892"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005926"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>通过 IoT 中心将设备中的文件上传到云 (Node.js)
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
-本教程的内容基于[使用 IoT 中心发送云到设备的消息](iot-hub-node-node-c2d.md)教程中所述的代码，介绍如何使用 [IoT 中心的文件上传功能](iot-hub-devguide-file-upload.md)将文件上传到 [Azure Blob 存储](../storage/index.yml)。 本教程介绍如何：
+本教程介绍如何：
 
 * 安全提供具有 Azure blob URI 的设备，用于上传文件。
 
@@ -38,7 +38,7 @@ ms.locfileid: "91251892"
 
 在本教程结束时，会运行两个 Node.js 控制台应用：
 
-* **SimulatedDevice.js**，它使用 IoT 中心提供的 SAS URI 将文件上传到存储。
+* FileUpload.js，此应用使用 IoT 中心提供的 SAS URI 将文件上传到存储。
 
 * **ReadFileUploadNotification.js**，它可以接收来自 IoT 中心的文件上传通知。
 
@@ -55,76 +55,69 @@ ms.locfileid: "91251892"
 
 * 确保已在防火墙中打开端口 8883。 本文中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
+## <a name="create-an-iot-hub"></a>创建 IoT 中心
+
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
 ## <a name="upload-a-file-from-a-device-app"></a>从设备应用上传文件
 
-本部分中操作将会创建可将文件上传到 IoT 中心的设备应用。
+在本部分，你将复制 GitHub 中的设备应用，以将文件上传到 IoT 中心。
 
-1. 创建名为 ```simulateddevice``` 的空文件夹。  在 ```simulateddevice``` 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
+1. GitHub 上为 Node.js 提供了两个文件上传示例，一个是基本示例，一个是更高级的示例。 在[此处](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/upload_to_blob.js)存储库中复制基本示例。 高级示例位于[此处](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/upload_to_blob_advanced.js)。   
+
+2. 创建名为 ```fileupload``` 的空文件夹。  在 ```fileupload``` 文件夹的命令提示符处，使用以下命令创建 package.json 文件。  接受所有默认值：
 
     ```cmd/sh
     npm init
     ```
 
-2. 在 ```simulateddevice``` 文件夹的命令提示符处，运行下述命令以安装 azure-iot-device 设备 SDK 包和 azure-iot-device-mqtt 包：
+3. 在 ```fileupload``` 文件夹的命令提示符处，运行下述命令以安装 azure-iot-device 设备 SDK 包和 azure-iot-device-mqtt 包：
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-3. 在 ```simulateddevice``` 文件夹中，利用文本编辑器创建 SimulatedDevice.js 文件。
-
-4. 在 **SimulatedDevice.js** 文件的开头添加以下 ```require``` 语句：
+4. 使用文本编辑器，在 ```fileupload``` 文件夹中创建 FileUpload.js 文件，并将此基本示例复制到其中。
 
     ```javascript
+    // Copyright (c) Microsoft. All rights reserved.
+    // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
     'use strict';
 
+    var Protocol = require('azure-iot-device-mqtt').Mqtt;
+    var Client = require('azure-iot-device').Client;
     var fs = require('fs');
-    var mqtt = require('azure-iot-device-mqtt').Mqtt;
-    var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
-    ```
 
-5. 添加 `deviceconnectionstring` 变量，并使用它创建一个客户端实例。  将 `{deviceconnectionstring}` 替换为在“创建 IoT 中心”部分中创建的设备的名称。
+    var deviceConnectionString = process.env.ConnectionString;
+    var filePath = process.env.FilePath;
 
-    ```javascript
-    var connectionString = '{deviceconnectionstring}';
-    var filename = 'myimage.png';
-    ```
+    var client = Client.fromConnectionString(deviceConnectionString, Protocol);
+    fs.stat(filePath, function (err, fileStats) {
+      var fileStream = fs.createReadStream(filePath);
 
-    > [!NOTE]
-    > 为方便起见，代码中包含了连接字符串：这不是建议的做法，根据用例和体系结构，请考虑以更安全的方式存储此机密。
-
-6. 添加以下代码用于连接客户端：
-
-    ```javascript
-    var client = clientFromConnectionString(connectionString);
-    console.log('Client connected');
-    ```
-
-7. 创建一个回调，并使用 **uploadToBlob** 函数上传文件。
-
-    ```javascript
-    fs.stat(filename, function (err, stats) {
-        const rr = fs.createReadStream(filename);
-
-        client.uploadToBlob(filename, rr, stats.size, function (err) {
-            if (err) {
-                console.error('Error uploading file: ' + err.toString());
-            } else {
-                console.log('File uploaded');
-            }
-        });
+      client.uploadToBlob('testblob.txt', fileStream, fileStats.size, function (err, result) {
+        if (err) {
+          console.error('error uploading file: ' + err.constructor.name + ': ' + err.message);
+        } else {
+          console.log('Upload successful - ' + result);
+        }
+        fileStream.destroy();
+      });
     });
     ```
 
-8. 保存并关闭 **SimulatedDevice.js** 文件。
+5. 为设备连接字符串和要上传文件的路径添加环境变量。
 
-9. 将一个图像文件复制到 `simulateddevice` 文件夹并将其重命名为 `myimage.png`。
+6. 保存并关闭 FileUpload.js 文件。
+
+7. 将映像文件复制到 `fileupload` 文件夹，并指定一个名称，比如 `myimage.png`。 将文件路径放在 `FilePath` 环境变量中。
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
-在本文中，你将创建一项后端服务，用于从你在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-node.md)中创建的 IoT 中心接收文件上传通知消息。 若要接收文件上传通知消息，服务需要“服务连接”权限。 默认情况下，每个 IoT 中心都使用名为“服务”的共享访问策略创建，该策略会授予此权限。
+在本文中，你将创建一项后端服务，用于从你创建的 IoT 中心接收文件上传通知消息。 若要接收文件上传通知消息，服务需要服务连接权限。 默认情况下，每个 IoT 中心都使用名为“服务”的共享访问策略创建，该策略会授予此权限。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -163,7 +156,7 @@ ms.locfileid: "91251892"
     ```
 
     > [!NOTE]
-    > 为方便起见，代码中包含了连接字符串：这不是建议的做法，根据用例和体系结构，请考虑以更安全的方式存储此机密。
+    > 为方便起见，代码中包含了连接字符串：这并不是建议的做法，你可能需要根据用例和体系结构，考虑使用更安全的方式来存储此机密。
 
 6. 添加以下代码用于连接客户端：
 
@@ -205,13 +198,13 @@ ms.locfileid: "91251892"
 node FileUploadNotification.js
 ```
 
-在 `simulateddevice` 文件夹中的命令提示符下运行以下命令：
+在 `fileupload` 文件夹中的命令提示符下运行以下命令：
 
 ```cmd/sh
-node SimulatedDevice.js
+node FileUpload.js
 ```
 
-以下屏幕截图显示 **SimulatedDevice** 应用的输出：
+以下屏幕截图显示来自 FileUpload 应用的输出  ：
 
 ![simulated-device 应用的输出](./media/iot-hub-node-node-file-upload/simulated-device.png)
 
