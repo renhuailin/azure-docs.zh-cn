@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 robots: noindex
-ms.openlocfilehash: fbd1e1d652db3bbd91344ea828278d057baeb060
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 103a3bad91018a2a7b91cbc6a7839e8be56489ba
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100368806"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108741396"
 ---
 # <a name="move-data-to-and-from-sql-server-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入/移出 SQL Server
 
@@ -30,11 +30,11 @@ ms.locfileid: "100368806"
 ## <a name="supported-scenarios"></a>支持的方案
 可以将数据 **从 SQL Server 数据库** 复制到以下数据存储：
 
-[!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
+[!INCLUDE [data-factory-supported-sink](includes/data-factory-supported-sinks.md)]
 
 可以将数据从以下数据存储复制 **到 SQL Server 数据库**：
 
-[!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
+[!INCLUDE [data-factory-supported-sources](includes/data-factory-supported-sources.md)]
 
 ## <a name="supported-sql-server-versions"></a>支持的 SQL Server 版本
 此 SQL Server 连接器支持同时使用 SQL 身份验证和 Windows 身份验证，从/向本地或 Azure IaaS 中托管的以下版本的实例复制数据：SQL Server 2016、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008、SQL Server 2005
@@ -51,7 +51,7 @@ ms.locfileid: "100368806"
 
 创建管道的最简单方法是使用复制向导。 请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)，以快速了解如何使用复制数据向导创建管道。
 
-也可以使用以下工具创建管道：Visual Studio、Azure PowerShell、Azure 资源管理器模板、.NET API 和 REST API    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+也可以使用以下工具创建管道：“Visual Studio”、“Azure PowerShell”、“Azure 资源管理器模板”、“.NET API”和“REST API”    。 有关创建包含复制活动的管道的分步说明，请参阅[复制活动教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 无论使用工具还是 API，执行以下步骤都可创建管道，以便将数据从源数据存储移到接收器数据存储：
 
@@ -69,7 +69,7 @@ ms.locfileid: "100368806"
 
 下表提供了有关特定于 SQL Server 链接服务的 JSON 元素的描述。
 
-| Property | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | type |类型属性应设置为：**OnPremisesSqlServer**。 |是 |
 | connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到 SQL Server 数据库时所需的 connectionString 信息。 |是 |
@@ -126,7 +126,7 @@ ms.locfileid: "100368806"
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **SqlServerTable** 类型的数据集的 **typeProperties** 部分具有以下属性：
 
-| Property | 说明 | 必需 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | tableName |链接服务所引用的 SQL Server 数据库实例中的表或视图的名称。 |是 |
 
@@ -143,7 +143,7 @@ ms.locfileid: "100368806"
 ### <a name="sqlsource"></a>SqlSource
 复制活动中源的类型为 **SqlSource** 时，则可在 **typeProperties** 节中使用以下属性：
 
-| Property | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | sqlReaderQuery |使用自定义查询读取数据。 |SQL 查询字符串。 例如：select * from MyTable。 可引用输入数据集所引用的数据库中的多个表。 如果未指定，执行的 SQL 语句为：select from MyTable。 |否 |
 | sqlReaderStoredProcedureName |从源表读取数据的存储过程的名称。 |存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 |否 |
@@ -161,7 +161,7 @@ ms.locfileid: "100368806"
 ### <a name="sqlsink"></a>SqlSink
 **SqlSink** 支持以下属性：
 
-| properties | 说明 | 允许的值 | 必须 |
+| 属性 | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。 |timespan<br/><br/> 示例："00:30:00"（30 分钟）。 |否 |
 | writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。 |整数（行数） |否（默认值：10000） |
@@ -399,7 +399,7 @@ ms.locfileid: "100368806"
 ```
 **Azure Blob 输入数据集**
 
-每小时从新的 blob 获取数据一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月和日部分，文件名使用开始时间的小时部分。 "external": "true" 设置将告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
+每小时从新的 blob 获取数据一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月和日部分，文件名使用开始时间的小时部分。 "external": "true" 设置将告知数据工厂服务数据集在数据工厂外部且不由数据工厂中的活动生成。
 
 ```json
 {
@@ -548,7 +548,7 @@ ms.locfileid: "100368806"
 
     有关详细信息和启用 TCP/IP 协议的其他方法，请参阅[启用或禁用服务器网络协议](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol)。
 3. 在同一窗口中，双击“TCP/IP”以启动“TCP/IP 属性”窗口。
-4. 切换到“IP 地址”选项卡。向下滚动以查看 IPAll 部分。 记下 TCP 端口（默认值是 1433） 。
+4. 切换到“IP 地址”选项卡。向下滚动以显示“IPAll”部分 。 记下 TCP 端口（默认值是 1433） 。
 5. 在计算机上创建 Windows 防火墙规则，以便允许通过此端口传入流量。
 6. **验证连接**：若要使用完全限定名称连接到 SQL Server，请从另一台计算机使用 SQL Server Management Studio。 例如：“\<machine\>\<domain\>.corp\<company\>.com,1433”。
 
@@ -650,10 +650,10 @@ create table dbo.TargetTbl
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boolean |
+| bit |布尔 |
 | char |String, Char[] |
 | date |DateTime |
-| datetime |DateTime |
+| Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | 小数 |小数 |

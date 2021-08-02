@@ -1,21 +1,21 @@
 ---
 title: 存储概述 - Azure 时序见解第 2 代 | Microsoft Docs
 description: 了解 Azure 时序见解第 2 代中的数据存储。
-author: lyrana
-ms.author: lyhughes
-manager: deepakpalled
+author: tedvilutis
+ms.author: tvilutis
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 748eaca93eaee5ec858ea43261995111cef8ceda
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9c0bbf9224f8864428d46e38487f614e0c3f61f0
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98676845"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715225"
 ---
 # <a name="data-storage"></a>数据存储
 
@@ -43,7 +43,9 @@ ms.locfileid: "98676845"
 为了实现最佳查询性能，Azure 时序见解第 2 代会将数据分区并为其编制索引。 为数据编制索引后，就可以从暖存储（如果已启用）和冷存储中查询数据。 所引入的数据量和每个分区的吞吐率会影响可用性。 请查看事件源[吞吐量限制](./concepts-streaming-ingress-throughput-limits.md)和[最佳做法](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices)，以获取最佳性能。 你还可以配置一个当环境在处理数据的过程中遇到问题时要发送的延迟[警报](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts)。
 
 > [!IMPORTANT]
-> 最长可能需要等待 60 秒才能看到数据。 如果出现超过 60 秒的明显延迟，请通过 Azure 门户提交支持票证。
+> 最长可能需要经过 60 秒之后，才可以通过[时序查询 API](./concepts-query-overview.md) 获得数据。 如果出现超过 60 秒的明显延迟，请通过 Azure 门户提交支持票证。
+> 
+> 最长可能需要经过 5 分钟之后，在 Azure 时序见解第 2 代外部直接访问 Parquet 文件时才可以获得数据。 有关详细信息，请参阅 [Parquet 文件格式](#parquet-file-format-and-folder-structure)部分。
 
 ## <a name="warm-store"></a>暖存储
 
@@ -71,6 +73,9 @@ Azure 时序见解第 2 代在 Azure 存储帐户中为每个事件保留最多�
 
 你的所有数据无限期存储在 Azure 存储帐户中。
 
+> [!WARNING]
+> 不要限制通过公共 Internet 访问时序见解使用的存储帐户，否则所需的连接将会断开。
+
 #### <a name="writing-and-editing-blobs"></a>写入和编辑 blob
 
 为了确保查询性能和数据可用性，请不要编辑或删除 Azure 时序见解第 2 代创建的任何 Blob。
@@ -87,39 +92,33 @@ Azure 时序见解第 2 代在 Azure 存储帐户中为每个事件保留最多�
 
 ### <a name="parquet-file-format-and-folder-structure"></a>Parquet 文件格式和文件夹结构
 
-Parquet 是一种开源的列式文件格式，旨在提高存储效率和性能。 Azure 时序见解第 2 代使用 Parquet 来大规模启用基于时序 ID 的查询的性能。  
+Parquet 是一种开源的列式文件格式，旨在提高存储效率和性能。 Azure 时序见解第 2 代使用 Parquet 来大规模启用基于时序 ID 的查询的性能。
 
 有关 Parquet 文件类型的详细信息，请参阅 [Parquet 文档](https://parquet.apache.org/documentation/latest/)。
 
 Azure 时序见解第 2 代按如下方式存储数据的副本：
 
-* 首先，初始副本按引入时间进行分区，并按到达顺序存储数据。 该数据驻留在 `PT=Time` 文件夹中：
+* `PT=Time` 文件夹按引入时间进行分区，并按到达顺序存储数据。 此数据会不断保留，你可以直接从 Azure 时序见解第 2 代外部（例如 Spark 笔记本）访问它。 时间戳 `<YYYYMMDDHHMMSSfff>` 对应于数据引入时间。 `<MinEventTimeStamp>` 和 `<MaxEventTimeStamp>` 对应于文件中包含的事件时间戳范围。 路径和文件名的格式为：
 
-  `V=1/PT=Time/Y=<YYYY>/M=<MM>/<YYYYMMDDHHMMSSfff>_<TSI_INTERNAL_SUFFIX>.parquet`
+  `V=1/PT=Time/Y=<YYYY>/M=<MM>/<BlobCreationTimestamp>_<MinEventTimestamp>_<MaxEventTimestamp>_<TsiInternalSuffix>.parquet`
 
-* 其次，重新分区的副本按时序 ID 分组，驻留在 `PT=TsId` 文件夹中：
-
-  `V=1/PT=TsId/<TSI_INTERNAL_NAME>.parquet`
-
-`PT=Time` 文件夹中的 blob 名称中的时间戳对应于数据到达 Azure 时序见解第 2 代的时间，而不是对应于事件的时间戳。
-
-`PT=TsId` 文件夹中的数据会不断针对查询进行优化，不是静态的。 在重新分区期间，某些事件可能会出现在多个 blob 中。 不保证此文件夹中的 blob 的命名保持不变。
-
-通常，如果需要直接通过 Parquet 文件访问数据，请使用 `PT=Time` 文件夹。  将来的功能将能够有效地访问 `PT=TsId` 文件夹。
+* `PT=Live` 和 `PT=Tsid` 文件夹包含数据的另一个副本，并且已大规模重新分区以提高时序查询的性能。 此数据会不断优化，因此不是静态的。 在重新分区期间，某些事件可能会出现在多个 Blob 中，并且 Blob 名称可能会更改。  这些文件夹由 Azure 时序见解第 2 代使用，不应直接访问它们；只能出于这种目的使用 `PT=Time`。
 
 > [!NOTE]
 >
+> `PT=Time` 文件夹中包含的 2021 年 6 月之前的数据可能采用文件名格式，但不包含事件时间范围：`V=1/PT=Time/Y=<YYYY>/M=<MM>/<BlobCreationTimestamp>_<TsiInternalSuffix>.parquet`。  内部文件格式相同，使用这两种命名方案的文件可以一起使用。 
+>
 > * `<YYYY>` 映射到 4 位数的年份表示形式。
 > * `<MM>` 映射到两位数的月份表示形式。
-> * `<YYYYMMDDHHMMSSfff>` 映射到时间戳表示形式，其中包括四位数的年份 (`YYYY`)、两位数的月份 (`MM`)、两位数的日 (`DD`)、两位数的小时 (`HH`)、两位数的分钟 (`MM`)、两位数的秒 (`SS`) 和三位数的毫秒 (`fff`)。
+> * 时间戳的 `<YYYYMMDDHHMMSSfff>` 格式映射到四位数年份 (`YYYY`)、两位数月份 (`MM`)、两位数日 (`DD`)、两位数小时 (`HH`)、两位数分钟 (`MM`)、两位数秒 (`SS`) 和三位数毫秒 (`fff`)。
 
 Azure 时序见解第 2 代事件映射到 Parquet 文件内容，如下所示：
 
 * 每个事件映射到单个行。
 * 每一行包含带有事件时间戳的 **时间戳** 列。 “时间戳”属性永远不会为 null。 如果未在事件源中指定时间戳属性，该属性默认为 **事件排队时间**。 存储的时间戳始终为 UTC 时间。
 * 每一行包含创建 Azure 时序见解第 2 代环境时定义的时序 ID (TSID) 列。 TSID 属性名称包含 `_string` 后缀。
-* 作为遥测数据发送的所有其他属性映射到以 `_bool`（布尔值）、`_datetime`（时间戳）、`_long` (long)、`_double` (double)、`_string`（字符串）或 `dynamic` (dynamic) 结尾的列名称，具体取决于属性类型。  有关详细信息，请阅读[支持的数据类型](./concepts-supported-data-types.md)。
-* 此映射架构适用于文件格式的第一个版本（以 **V=1** 表示，存储在使用相同名称的基文件夹中）。 随着此功能的演变，此映射架构可能会更改，引用名称的数字会递增。
+* 作为遥测数据发送的所有其他属性映射到以 `_bool`（布尔值）、`_datetime`（时间戳）、`_long` (long)、`_double` (double)、`_string`（字符串）或 `_dynamic` (dynamic) 结尾的列名称，具体取决于属性类型。  有关详细信息，请阅读[支持的数据类型](./concepts-supported-data-types.md)。
+* 此映射架构适用于文件格式的第一个版本，作为 V=1 引用并存储在具有相同名称的基文件夹中。 随着此功能的演变，此映射架构可能会更改，引用名称的数字会递增。
 
 ## <a name="next-steps"></a>后续步骤
 

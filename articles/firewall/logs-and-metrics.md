@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/16/2021
+ms.date: 04/02/2021
 ms.author: victorh
-ms.openlocfilehash: 8922e6e0d5137a3a900e0f57f685d449c08b3f47
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4514717274cfb66fbfc0eee25b09aa9e1234ffad
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100596956"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280320"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure 防火墙日志和指标
 
@@ -181,6 +181,8 @@ Azure Monitor 中的指标是数字值，用于描述系统某些方面在特定
     单位：百分比
 
    如果你将更多公共 IP 地址添加到防火墙，则更多的 SNAT 端口可用，从而降低 SNAT 端口的利用率。 此外，当防火墙出于不同的原因（例如 CPU 或吞吐量）而横向扩展后，可用的 SNAT 端口也会变得更多。 因此，如果不添加任何公共 IP 地址，而只是横向扩展了服务，给定的 SNAT 端口利用率百分比实际上可能会下降。可以直接控制可用的公共 IP 地址数来增加防火墙上的可用端口。 但无法直接控制防火墙缩放。
+
+   如果防火墙遇到 SNAT 端口耗尽，应至少添加五个公共 IP 地址。 这会增加可用 SNAT 端口数。 有关详细信息，请参阅 [Azure 防火墙功能](features.md#multiple-public-ip-addresses)。
 
 
 ## <a name="next-steps"></a>后续步骤

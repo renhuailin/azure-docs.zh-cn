@@ -1,7 +1,7 @@
 ---
 title: 共享设备模式概述
 titleSuffix: Microsoft identity platform | Azure
-description: 了解共享设备模式，以便为一线工作人员启用设备共享。
+description: 了解共享设备模式，以便为一线员工启用设备共享。
 services: active-directory
 author: brandwe
 manager: CelesteDG
@@ -13,27 +13,27 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 3cd7074467332f89d4d6c60830be34f4e2a638c1
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
-ms.translationtype: MT
+ms.openlocfilehash: cf8869002fb3e0170331709af3da5b971a098740
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562077"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612392"
 ---
 # <a name="overview-of-shared-device-mode"></a>共享设备模式的概述
 
-共享设备模式是 Azure Active Directory 的一项功能，使用该模式可以生成能够为一线工作人员提供支持的应用程序，并在部署给这些人员的设备上启用共享设备模式。
+共享设备模式是 Azure Active Directory 的一项功能，使用该模式可以生成能够为一线员工提供支持的应用程序，并在部署给这些人员的设备上启用共享设备模式。
 
 >[!IMPORTANT]
-> 此功能 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
+> 适用于 iOS [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)] 的共享设备模式
 
-## <a name="what-are-firstline-workers"></a>什么是一线工作人员？
+## <a name="what-are-frontline-workers"></a>什么是一线员工？
 
-一线工作人员是指不操作计算机的，或者不使用企业电子邮件进行协作的零售员工、维护和现场代理人、医疗人员以及其他用户。 以下部分将介绍为一线工作人员提供支持所要注意的各个方面和挑战，然后介绍 Microsoft 所提供的功能，这些功能使你的应用程序可供组织中的一线工作人员使用。
+一线员工是指不操作计算机或者不使用企业电子邮件进行协作的零售员工、维护和现场代理人、医疗人员以及其他用户。 以下部分将介绍为一线员工提供支持所要注意的各个方面和挑战，然后介绍 Microsoft 所提供的功能，这些功能使你的应用程序可供组织中的员工使用。
 
-### <a name="challenges-of-supporting-firstline-workers"></a>为一线工作人员提供支持所要面对的挑战
+### <a name="challenges-of-supporting-frontline-workers"></a>为员工提供支持所要面对的挑战
 
-启用一线工作人员工作流涉及到普通信息工作者通常不会面临的挑战。 此类挑战可能包括较高的人事变动率，以及工作人员不太熟悉组织的核心生产力工具。 组织需要采用不同的策略来为其一线工作人员提供支持。 某些组织采用自带设备 (BYOD) 策略（在这种情况下，其员工可以在其个人手机上使用业务应用），而其他组织则为其员工提供 iPad 或 Android 平板电脑等共享设备。
+启用一线员工作流涉及到普通信息工作者通常不会面临的挑战。 此类挑战可能包括较高的人事变动率，以及工作人员不太熟悉组织的核心生产力工具。 组织需要采用不同的策略来为其一线员工提供支持。 某些组织采用自带设备 (BYOD) 策略（在这种情况下，其员工可以在其个人手机上使用业务应用），而其他组织则为其员工提供 iPad 或 Android 平板电脑等共享设备。
 
 ### <a name="supporting-multiple-users-on-devices-designed-for-one-user"></a>在专供一个用户使用的设备上支持多个用户
 
@@ -49,12 +49,12 @@ Azure Active Directory 使用称作“共享设备模式”的功能来实现这
 
 如前所述，共享设备模式是 Azure Active Directory 的一项功能，可用于：
 
-* 生成可为一线工作人员提供支持的应用程序
-* 将设备部署给一线工作人员并启用共享设备模式
+* 生成可为一线员工提供支持的应用程序
+* 将设备部署给一线员工并启用共享设备模式
 
-### <a name="build-applications-that-support-firstline-workers"></a>生成可为一线工作人员提供支持的应用程序
+### <a name="build-applications-that-support-frontline-workers"></a>生成可为一线员工提供支持的应用程序
 
-可以通过使用 Microsoft 身份验证库 (MSAL) 和 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md) 来支持应用程序中的 Firstline 工作线程，以启用名为 *共享设备模式* 的设备状态。 当设备处于共享设备模式时，Microsoft 将为应用程序提供所需的信息，使应用程序能够根据设备上用户的状态修改其行为，从而保护用户数据。
+若要在应用程序中为一线员工提供支持，可以使用 Microsoft 身份验证库 (MSAL) 和 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)来启用称作“共享设备模式”的设备状态。 当设备处于共享设备模式时，Microsoft 将为应用程序提供所需的信息，使应用程序能够根据设备上用户的状态修改其行为，从而保护用户数据。
 
 支持的功能包括：
 
@@ -69,15 +69,15 @@ Azure Active Directory 使用称作“共享设备模式”的功能来实现这
 
 有关如何修改应用程序以支持共享设备模式的详细信息，请参阅本文末尾的[后续步骤](#next-steps)部分。
 
-### <a name="deploy-devices-to-firstline-workers-and-turn-on-shared-device-mode"></a>将设备部署给一线工作人员并启用共享设备模式
+### <a name="deploy-devices-to-frontline-workers-and-turn-on-shared-device-mode"></a>将设备部署给一线员工并启用共享设备模式
 
-一旦应用程序支持共享设备模式并包含所需的数据和安全更改，你就可以播发这些更改，使其可供一线工作人员使用。
+应用程序支持共享设备模式并包含所需的数据和安全更改时，就可以播发这些更改，使其可供一线员工使用。
 
-组织的设备管理员可以通过 Microsoft Intune 等移动设备管理 (MDM) 解决方案，将其设备和你的应用程序部署到其存储和工作区中。 预配过程的一部分工作是将设备标记为共享设备  。 管理员通过部署 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md) 并通过配置参数设置共享设备模式来配置共享设备模式。 执行这些步骤后，所有支持共享设备模式的应用程序都将使用 Microsoft Authenticator 应用程序来管理其用户状态，并为设备和组织提供安全功能。
+组织的设备管理员可以通过 Microsoft Intune 等移动设备管理 (MDM) 解决方案，将其设备和你的应用程序部署到其存储和工作区中。 预配过程的一部分工作是将设备标记为共享设备  。 管理员通过部署 [Microsoft Authenticator 应用](../user-help/user-help-auth-app-overview.md)并通过配置参数设置共享设备模式来配置共享设备模式。 执行这些步骤后，所有支持共享设备模式的应用程序都将使用 Microsoft Authenticator 应用程序来管理其用户状态，并为设备和组织提供安全功能。
 
 ## <a name="next-steps"></a>后续步骤
 
-我们支持在 iOS 和 Android 平台中使用共享设备模式。 请查看以下适用于你的平台的文档，以便开始在应用程序中为一线工作人员提供支持。
+我们支持在 iOS 和 Android 平台中使用共享设备模式。 要开始在应用程序中为一线员工提供支持，请查看以下适用于你的平台的文档。
 
 * [支持适用于 iOS 的共享设备模式](msal-ios-shared-devices.md)
 * [支持适用于 Android 的共享设备模式](msal-android-shared-devices.md)

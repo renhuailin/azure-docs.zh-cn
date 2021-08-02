@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 06/01/2020
 ms.author: kegorman
-ms.openlocfilehash: b27db94775e2ba8275dbdab4bf5bd61cc0fdf5c8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 04a3fb9e4e7dd1d498714cd3b2ebd4c5f6b55bec
+ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101666870"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107210340"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>集成 Microsoft Azure 和 Oracle 云基础结构的 Oracle 应用程序解决方案
 
@@ -50,6 +50,8 @@ Microsoft 和 Oracle 合作提供低延迟、高吞吐量的跨云连接，使�
 * Azure 西欧 (WestEurope) 和 OCI 阿姆斯特丹（荷兰西北部）
 * Azure 日本东部 (JapanEast) 和 OCI 东京（日本东部）
 * Azure 美国西部 (WestUS) 和 OCI 圣何塞（美国西部）
+* 德国中西部（法兰克福）和 OCI 德国中部（法兰克福）
+
 
 ## <a name="networking"></a>网络
 

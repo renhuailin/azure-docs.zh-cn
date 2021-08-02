@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 06/14/2021
 ms.author: memildin
-ms.openlocfilehash: fff347c230b148548db94e97afd6a1ef3254f231
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 62fb48fb7517f25ceaf2b1e922ece83538157f90
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062579"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112238039"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -165,10 +165,10 @@ Azure 安全中心使用新的捆绑包扩展其 SQL 保护产品/服务，以�
 
 | 警报（警报类型）                                                                                                                                                | 说明                                                                                                                                                                                                                                                                                                                                                                                                                              | MITRE 技巧 | 严重性 |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------:|----------|
-|**针对你的 Azure 环境（预览版），以异常方式授予 RBAC 角色的权限**<br>(ARM_AnomalousRBACRoleAssignment)|在与由同一位分配人执行的其他分配/对同一位被分派人执行的分配/在你的租户中执行的其他分配比较，适用于资源管理器的 Azure Defender 检测到一项 RBAC 角色分配异常，异常原因如下：分配时间、分配地点、分配人、身份验证方法、分配的工具、使用的客户端软件、分配范围。 此操作可能是由你的组织中的合法用户执行的。 或者，这可能表示组织中的某个帐户被入侵，威胁方正在尝试向其拥有的其他用户帐户授予权限。|横向移动，防御规避|中等|
-|**以可疑方式为订阅创建的特权自定义角色（预览版）**<br>(ARM_PrivilegedRoleDefinitionCreation)|适用于资源管理器的 Azure Defender 检测到你的订阅中发生了可疑的特权自定义角色定义创建行为。 此操作可能是由你的组织中的合法用户执行的。 或者，这可能表明你的组织中的帐户被入侵，并且威胁方正在尝试创建特权角色，以在将来用于规避检测。|横向移动，防御规避|低|
-|**来自可疑 IP 地址的 Azure 资源管理器操作（预览版）**<br>(ARM_OperationFromSuspiciousIP)|适用于资源管理器的 Azure Defender 检测到来自某个 IP 地址的操作在威胁情报源中被标记为可疑。|执行|中型|
-|**来自可疑代理 IP 地址的 Azure 资源管理器操作（预览版）**<br>(ARM_OperationFromSuspiciousProxyIP)|适用于资源管理器的 Azure Defender 检测到来自某个 IP 地址的资源管理操作，而这个 IP 地址与代理服务（例如 TOR）相关联。 虽然这种行为可能是合法的，但经常出现在恶意活动中，在这些恶意活动中，攻击者会试图隐藏其源 IP。|防御规避|中|
+|**针对你的 Azure 环境（预览版），以异常方式授予 RBAC 角色的权限**<br>(ARM_AnomalousRBACRoleAssignment)|比较同一个分配者执行的其他分配、同一分配者为相同被分派人执行的其他分配以及在租户中执行的其他分配时，适用于资源管理器的 Azure Defender 检测到异常的 RBAC 角色分配，原因是存在以下异常：分配时间、分配者的地点、分配者、身份验证方法、分配的实体、使用的客户端软件、分配范围。 此操作可能是由你的组织中的合法用户执行的。 或者，这可能表示组织中的某个帐户被入侵，威胁方正在尝试向其拥有的其他用户帐户授予权限。|横向移动，防御规避|中等|
+|**以可疑方式为订阅创建的特权自定义角色（预览）**<br>(ARM_PrivilegedRoleDefinitionCreation)|适用于资源管理器的 Azure Defender 检测到你的订阅中发生了可疑的特权自定义角色定义创建行为。 此操作可能是由你的组织中的合法用户执行的。 或者，这可能表明你的组织中的帐户被入侵，并且威胁方正在尝试创建特权角色，以在将来用于规避检测。|横向移动，防御规避|低|
+|**来自可疑 IP 地址的 Azure 资源管理器操作（预览版）**<br>(ARM_OperationFromSuspiciousIP)|适用于资源管理器的 Azure Defender 检测到来自某个 IP 地址的操作，这个 IP 地址在威胁情报源中被标记为可疑。|执行|中型|
+|**Azure 资源管理器对可疑代理 IP 地址的操作（预览）**<br>(ARM_OperationFromSuspiciousProxyIP)|适用于资源管理器的 Azure Defender 检测到来自某个 IP 地址的资源管理操作，而这个 IP 地址与代理服务（如 TOR）相关联。 虽然这种行为可能是合法的，但经常出现在恶意活动中，在这些恶意活动中，攻击者会试图隐藏其源 IP。|防御规避|中|
 ||||
 
 有关详细信息，请参阅：
@@ -200,7 +200,7 @@ Azure 安全中心使用新的捆绑包扩展其 SQL 保护产品/服务，以�
 
 进行此更改后，也可以使用 **打开查询** 按钮打开显示安全发现的查询。
 
-:::image type="content" source="media/release-notes/open-query-menu-security-findings.png" alt-text="“打开查询”按钮现在提供更详细的查询选项，显示漏洞扫描器相关建议的安全发现":::
+:::image type="content" source="media/release-notes/open-query-menu-security-findings.png" alt-text="“打开查询”按钮现提供更详细的查询选项，显示漏洞扫描程序相关建议的安全发现。":::
 
 **打开查询** 按钮还提供了一些其他相关建议的附加选项。
 
@@ -540,7 +540,7 @@ Azure Defender 仪表板的覆盖区包括对应于环境相关 Azure Defender �
 
 如需了解如何使用这些报告或生成自己的报告，请参阅[创建安全中心数据的丰富的交互式报告](custom-dashboards-azure-workbooks.md)。
 
-:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-snip.png" alt-text="一段时间内的安全功能分数报告":::
+:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-snip.png" alt-text="一段时间内的安全功能分数报告。":::
 
 
 ### <a name="regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview"></a>法规合规性仪表板现在包含 Azure 审核报告（预览）
@@ -553,7 +553,7 @@ Azure Defender 仪表板的覆盖区包括对应于环境相关 Azure Defender �
 
 有关详细信息，请参阅[管理法规合规性仪表板中的标准](update-regulatory-compliance-packages.md)。
 
-:::image type="content" source="media/release-notes/audit-reports-list-regulatory-compliance-dashboard.png" alt-text="筛选可用 Azure 审核报告的列表":::
+:::image type="content" source="media/release-notes/audit-reports-list-regulatory-compliance-dashboard.png" alt-text="筛选可用 Azure 审核报告的列表。":::
 
 
 
@@ -681,13 +681,13 @@ Microsoft Defender for Endpoint 是一种整体的、云交付的终结点安全
 
 查看建议的详细信息时，能够查看基础策略通常会很有帮助。 对于策略支持的每条建议，建议详细信息页面上都有一个新链接：
 
-:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="链接到 Azure Policy 页面，了解支持建议的特定策略":::
+:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="链接到 Azure Policy 页面，了解支持建议的具体策略。":::
 
 使用此链接可查看策略定义和计算逻辑。 
 
 如果查看[安全建议参考指南](recommendations-reference.md)上的建议列表，你还将看到指向策略定义页面的链接：
 
-:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="直接从 Azure 安全中心建议参考页访问 Azure Policy 页面来了解特定策略" lightbox="media/release-notes/view-policy-definition-from-documentation.png":::
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="直接从 Azure 安全中心建议参考页访问 Azure Policy 页面来了解具体策略。" lightbox="media/release-notes/view-policy-definition-from-documentation.png":::
 
 
 ### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>SQL 数据分类建议不再影响安全功能分数
@@ -700,7 +700,7 @@ Microsoft Defender for Endpoint 是一种整体的、云交付的终结点安全
 
 了解如何使用[自动响应安全中心触发器](workflow-automation.md)中的工作流自动化工具。
 
-:::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="使用对监管合规性评估的更改来触发工作流自动化" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
+:::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="使用对监管合规性评估的更改来触发工作流自动化。" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
 
 ### <a name="asset-inventory-page-enhancements"></a>资产清单页增强功能
@@ -708,12 +708,12 @@ Microsoft Defender for Endpoint 是一种整体的、云交付的终结点安全
 
 - 页面顶部的摘要现在包括“未注册的订阅”，显示未启用安全中心的订阅数。
 
-    :::image type="content" source="media/release-notes/unregistered-subscriptions.png" alt-text="资产清单页面顶部摘要中未注册订阅的计数":::
+    :::image type="content" source="media/release-notes/unregistered-subscriptions.png" alt-text="资产清单页面顶部摘要中未注册订阅的计数。":::
 
 - 筛选器进行了扩展和增强，包括：
     - **计数** - 每个筛选器都会显示满足每一类条件的资源数
 
-        :::image type="content" source="media/release-notes/counts-in-inventory-filters.png" alt-text="Azure 安全中心“资产清单”页的筛选器中的计数":::
+        :::image type="content" source="media/release-notes/counts-in-inventory-filters.png" alt-text="Azure 安全中心“资产清单”页的筛选器中的计数。":::
 
     - **包含豁免筛选器**（可选）- 将结果范围缩小为有/没有豁免的资源。 默认情况下不会显示此筛选器，但可从 **添加筛选器** 按钮进行访问。
 
@@ -906,7 +906,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
 例如，在下图中，可以看到列表已筛选为显示两个建议。 生成的 CSV 文件包括受这两个建议影响的每项资源的状态详细信息。   
 
-:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="将经筛选的建议导出到 CSV 文件":::
+:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="将经筛选的建议导出到 CSV 文件。":::
 
 可在 [Azure 安全中心内的安全建议](security-center-recommendations.md)中了解详细信息。
 
@@ -924,7 +924,7 @@ Azure 安全中心可保护 Azure、Amazon Web Services (AWS) 和 Google Cloud P
 
 定义连续导出时，请设置导出频率：
 
-:::image type="content" source="media/release-notes/export-frequency.png" alt-text="选择连续导出的频率":::
+:::image type="content" source="media/release-notes/export-frequency.png" alt-text="选择连续导出的频率。":::
 
 - **流式处理** - 更新资源的运行状况时，将发送评估（如果没有更新，则不发送任何数据）。
 - **快照** - 每周将发送所有法规合规性评估的当前状态的快照（这是面向安全分数和法规合规性数据每周快照的一项预览功能）。

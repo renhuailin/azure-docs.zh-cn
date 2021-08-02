@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: ambapat
-ms.openlocfilehash: 0c0a0c5f62f92aaf195e207dfd505ffb017d924e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bea1ccf0777c6325bc86c15e0f88304c465d89c9
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100653894"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750277"
 ---
 # <a name="managed-hsm-access-control"></a>托管 HSM 访问控制
 
@@ -65,6 +65,7 @@ Azure Key Vault 托管 HSM 是一项保护加密密钥的云服务。 因为此�
 | 管理平面 | **全球：**<br> management.azure.com:443<br> | 创建、读取、更新、删除和移动托管 HSM<br>设置托管 HSM 标记 | Azure RBAC |
 | 数据平面 | **全球：**<br> &lt;hsm-name&gt;.managedhsm.azure.net:443<br> | **密钥**：解密、加密、<br> 解包、包装、验证、签名、获取、列出、更新、创建、导入、删除、备份、还原、清除<br/><br/> **数据平面角色管理（托管 HSM 本地 RBAC）** _：列出角色定义、分配角色、删除角色分配、定义自定义角色<br/><br/>_ *备份/还原 **：备份、还原、检查状态备份/还原操作<br/><br/>** 安全域**：下载和上传安全域 | 托管 HSM 本地 RBAC |
 |||||
+
 ## <a name="management-plane-and-azure-rbac"></a>管理平面和 Azure RBAC
 
 在管理平面中，使用 Azure RBAC 对调用方可执行的操作进行授权。 在 Azure RBAC 模型中，每个 Azure 订阅都有一个 Azure Active Directory 实例。 可以从此目录向用户、组和应用程序授予访问权限。 授予访问权限以管理 Azure 订阅中使用 Azure 资源管理器部署模型的资源。 若要授予访问权限，请使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-classic-cli)、[Azure PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure 资源管理器 REST API](/rest/api/authorization/roleassignments)。
@@ -87,6 +88,6 @@ Azure Key Vault 托管 HSM 是一项保护加密密钥的云服务。 因为此�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关面向管理员的入门教程，请参阅[什么是托管 HSM？](overview.md)。
+- 有关面向管理员的入门教程，请参阅[什么是托管 HSM？](overview.md)
 - 有关角色管理教程，请查看[托管 HSM 本地 RBAC](role-management.md)
-- 若要详细了解托管 HSM 日志记录的使用情况日志记录，请参阅[托管 HSM 日志记录](logging.md)。
+- 若要详细了解托管 HSM 日志记录的使用情况日志记录，请参阅[托管 HSM 日志记录](logging.md)

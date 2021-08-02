@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 05/06/2021
 ms.author: b-juche
-ms.openlocfilehash: 6ff87d046c60f588e133010895ec3e7ce08cb71f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2b920b7a5794e1ee56b8ccc2c1d3aef45a1b5fe2
+ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740556"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109483814"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>为 Azure NetApp 文件配置 NFSv4.1 Kerberos 加密
 
@@ -29,7 +29,7 @@ Azure NetApp 文件支持使用 AES-256 加密在 Kerberos 模式（krb5、krb5i
 
 NFSv4.1 客户端加密有以下要求： 
 
-* 建立 Active Directory 域服务 (AD DS) 连接可使 Kerberos 票证操作更便捷 
+* 连接 Active Directory 域服务 (AD DS) 或 Azure Active Directory 域服务 (AADDS)，以便使用 Kerberos 票证 
 * 同时为客户端和 Azure NetApp 文件 NFS 服务器 IP 地址创建 DNS A/PTR 记录
 * Linux 客户端  
     本文为 RHEL 和 Ubuntu 客户端提供相关指导。  其他客户端的配置步骤与此类似。 

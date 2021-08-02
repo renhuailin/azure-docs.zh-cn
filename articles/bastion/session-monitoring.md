@@ -1,18 +1,18 @@
 ---
-title: Azure Bastion 会话监视和管理 | Microsoft Docs
-description: 本文介绍了如何选择正在进行的会话并强制断开连接或将其删除。
+title: Azure Bastion 会话监视和管理
+description: 了解如何选择正在进行的会话并强制断开其连接或将其删除。
 services: bastion
-author: charwen
+author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 05/21/2020
-ms.author: charwen
-ms.openlocfilehash: beb4f8fc5b9e22bc3e2bdd4732c8321dfcd70780
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: cherylmc
+ms.openlocfilehash: 6b0df7ae98c3718ddfadf9e13354b4f961585c98
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90980719"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110540429"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Azure Bastion 的会话监视和管理
 

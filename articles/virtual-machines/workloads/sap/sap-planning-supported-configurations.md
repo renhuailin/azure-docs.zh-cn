@@ -17,10 +17,10 @@ ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 274db058f9f291d720fc350bb23f7bfdde2791e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101670930"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 虚拟机支持的方案中的 SAP 工作负载
@@ -104,7 +104,7 @@ HANA 大型实例的磁盘配置已提供，请参阅 [HANA 大型实例支持�
     - [使用 Red Hat Enterprise Linux 上的 Azure NetApp 文件在 Azure VM 上部署具有备用节点的 SAP HANA 横向扩展系统](./sap-hana-scale-out-standby-netapp-files-rhel.md)
 - 基于 Windows 横向扩展文件服务的 SQL Server 故障转移群集。 不过，对于生产系统，建议使用 SQL Server Always On 而不是群集。 SQL Server Always On 使用独立的存储提供更高的可用性。 以下文章中提供了详细信息： 
     - [在 Azure 虚拟机上配置 SQL Server 故障转移群集实例](../../../azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md)
-- SQL Server Always On 支持适用于 Azure 上的 SQL Server 的 Windows 操作系统。 这是为 Azure 上的生产 SQL Server 实例建议的默认解决方案。 以下文章中提供了详细信息：
+- SQL Server Always On 支持适用于 Azure 上的 SQL Server 的 Windows 操作系统。 这是为 Azure 上的生产 SQL Server 实例建议的默认操作系统。 以下文章中提供了详细信息：
     - [介绍 Azure 虚拟机上的 SQL Server Always On 可用性组](../../../azure-sql/virtual-machines/windows/availability-group-overview.md)。
     - [在位于不同区域的 Azure 虚拟机上配置 Always On 可用性组](../../../azure-sql/virtual-machines/windows/availability-group-manually-configure-multiple-regions.md)。
     - [在 Azure 中为 Always On 可用性组配置负载均衡器](../../../azure-sql/virtual-machines/windows/availability-group-load-balancer-portal-configure.md)。
@@ -123,7 +123,7 @@ HANA 大型实例的磁盘配置已提供，请参阅 [HANA 大型实例支持�
 > [!IMPORTANT]
 > 对于上述任何方案，我们都不支持在一个 VM 中配置多个 DBMS 实例。 也就是说，对于每个案例，在每个 VM 上只能部署一个数据库实例，并使用所述的高可用性方法对其进行保护。 目前不支持在同一 Windows 或 Pacemaker 故障转移群集下保护多个 DBMS 实例。 此外，只有每个 VM 部署包含单个实例的案例才支持 Oracle Data Guard。 
 
-有多种数据库系统允许在一个 DBMS 实例下托管多个数据库。 与使用 SAP HANA 时一样，可以在多个数据库容器 (MDC) 中托管多个数据库。 如果这些多数据库配置在一个故障转移群集资源中运行，则支持这些配置。 需要多个群集资源的案例不支持这些配置。 例如，要在一个 SQL Server 实例下定义多个 SQL Server 可用性组的配置。
+有多种数据库系统允许在一个 DBMS 实例下托管多个数据库。 与使用 SAP HANA 时一样，可以在多个数据库容器 (MDC) 中托管多个数据库。 如果这些多数据库配置在一个故障转移群集资源中运行，则支持这些配置。 不支持的配置是需要多个群集资源的配置。 例如，要在一个 SQL Server 实例下定义多个 SQL Server 可用性组的配置。
 
 
 ![DBMS HA 配置](./media/sap-planning-supported-configurations/database-high-availability-configuration.png)
@@ -212,7 +212,7 @@ SAP Central Services 是 SAP 配置的另一个单一故障点。 因此，也�
 
 
 ## <a name="sap-hana-scale-out-scenarios"></a>SAP HANA 横向扩展方案
-[SAP HANA 硬件目录](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)中列出的一部分已通过 HANA 认证的 Azure VM 支持 SAP HANA 横向扩展方案。 “群集”列中标有“是”的所有 VM 都可用于 OLAP 或 S/4HANA 横向扩展。没有备用节点的配置支持以下 Azure 存储类型： 
+[SAP HANA 硬件目录](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)中列出的一部分已通过 HANA 认证的 Azure VM 支持 SAP HANA 横向扩展方案。 在“群集”列中标有“是”的所有 VM 均可用于 OLAP 或 S/4HANA 横向扩展。以下 Azure 存储类型支持无备用节点的配置： 
 
 - Azure 高级存储，包括适用于 /hana/log 卷的 Azure 写入加速器
 - [超级磁盘](../../disks-enable-ultra-ssd.md)
@@ -278,7 +278,7 @@ SAP Central Services 是 SAP 配置的另一个单一故障点。 因此，也�
 
 
 ## <a name="non-supported-scenario"></a>不支持的方案
-Azure 体系结构上的 SAP 工作负载不支持某些方案。 “不支持”指的是 SAP 和 Microsoft 无法支持这些配置，需要将支持事宜移交给提供用于建立此类体系结构的软件的最终相关第三方。 有两种类别的第三方支持：
+Azure 体系结构上的 SAP 工作负载不支持某些方案。 “不支持”指的是 SAP 和 Microsoft 无法支持这些配置，需要将支持事宜移交给提供用于建立此类体系结构的软件的最终相关第三方。 其中两个类别是：
 
 - 存储软设备：Azure 市场中提供了许多存储软设备。 某些供应商会提供自己的文档，介绍如何在 Azure 上使用这些与 SAP 软件相关的存储软设备。 涉及此类存储软设备的配置或部署的支持需要由这些存储软设备的供应商来提供。 [SAP 支持说明 #2015553](https://launchpad.support.sap.com/#/notes/2015553) 中也表述了这一事实
 - 高可用性框架：对于 Azure 上的 SAP 工作负载，仅支持使用 Pacemaker 和 Windows Server 故障转移群集作为高可用性框架。 如前所述，Microsoft 介绍了 SIOS `Datakeeper` 解决方案并制作了其文档。 尽管如此，SIOS `Datakeeper` 的组件需要通过 SIOS（作为提供这些组件的供应商）来提供支持。 SAP 还在不同的 SAP 说明中列出了其他已通过认证的高可用性框架。 其中的某些框架也通过了 Azure 第三方供应商的认证。 尽管如此，使用这些产品的配置需要由产品供应商提供支持。 不同的供应商集成到 SAP 支持流程的方式不同。 决定在 Azure 上部署的 SAP 配置中使用产品之前，应明确知道哪种支持流程最适合特定的供应商。
