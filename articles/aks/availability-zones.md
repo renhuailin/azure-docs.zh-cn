@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 03/16/2021
-ms.openlocfilehash: 6123b040be8076c3b05f0dc81e6ac707dc38d0ed
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 13a14854f373ca7297e454ddbdc9f475849dc0b8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108017845"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110100533"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>创建使用可用性区域的 Azure Kubernetes 服务 (AKS) 群集
 
@@ -57,6 +57,12 @@ Azure Kubernetes 服务 (AKS) 群集跨基础 Azure 基础结构的逻辑部分�
 使用 Azure 托管磁盘的卷当前不是区域冗余资源。 卷不能跨区域附加，并且必须与承载目标 pod 的给定节点位于同一区域中。
 
 自版本 1.12 起，Kubernetes 开始注意到 Azure 可用性区域。 可以在多区域 AKS 群集中部署一个引用 Azure 托管磁盘的 PersistentVolumeClaim 对象，[Kubernetes 将负责计划](https://kubernetes.io/docs/setup/best-practices/multiple-zones/#storage-access-for-zones)在正确的可用性区域中声明此 PVC 的所有 Pod。
+
+### <a name="azure-resource-manager-templates-and-availability-zones"></a>Azure 资源管理器模板和可用性区域
+
+创建 AKS 群集时，如果使用 `"availabilityZones": null` 之类的语法显式定义[模板中的 null 值][arm-template-null]，则资源管理器模板会将此属性视为不存在，这意味着群集不会启用可用性区域。 此外，如果使用忽略可用性区域属性的资源管理器模板创建群集，则会禁用可用性区域。
+
+你无法更新现有群集上的可用性区域的设置，因此，在使用资源管理器模板更新 AKS 群集时，此行为会有所不同。  如果在模板中为可用性区域显式设置 null 值，并更新你的群集，则不会更改可用性区域的群集。 但是，如果使用 `"availabilityZones": []` 之类的语法忽略可用性区域属性，则部署会尝试禁用现有 AKS 群集上的可用性区域，但会失败。
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS 群集的可用性区域概述
 
@@ -205,6 +211,7 @@ Node:         aks-nodepool1-28993262-vmss000004/10.240.0.8
 [az-aks-nodepool-add]: /cli/azure/aks/nodepool#az_aks_nodepool_add
 [az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [vmss-zone-balancing]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing
+[arm-template-null]: ../azure-resource-manager/templates/template-expressions.md#null-values
 
 <!-- LINKS - external -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe

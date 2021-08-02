@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0620304de1866d24719b137836419502cd25bee9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b03b93c09ebe1c8361379dba018d7c756f409d4
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98682231"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745144"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>排查 Azure Active Directory 中的自助式密码重置写回问题
 
@@ -147,7 +147,8 @@ Azure AD Connect 需要 AD DS“重置密码”权限才能执行密码写回。
 | 尝试重置其密码的联合身份验证、直通身份验证或密码哈希同步的用户在尝试提交密码后看到错误。 该错误指示存在服务问题。 <br ><br> 除此问题以外，在密码重置期间，可能会在本地事件日志中看到有关管理代理被拒绝访问的消息。 | 如果在事件日志中看到这些错误，请确认 Active Directory 管理代理 (ADMA) 帐户（在配置时在向导中指定的帐户）具有进行密码写回所需的权限。 <br> <br> 在授予此权限后，权限可能需要最多一小时来通过域控制器 (DC) 上的 `sdprop` 后台任务进行渗透。 <br> <br> 要使密码重置工作，需要将此权限标记在为其重置密码的用户对象的安全描述符上。 在此权限显示在用户对象上之前，密码重置将持续失败并出现“访问被拒绝”消息。 |
 | 尝试重置其密码的联合身份验证、直通身份验证或密码哈希同步的用户在提交密码后看到错误。 该错误指示存在服务问题。 <br> <br> 除此问题以外，在密码重置期间，可能会在 Azure AD Connect 服务的事件日志中看到一个表示“找不到对象”错误的错误。 | 此错误通常表示同步引擎无法找到 Azure AD 连接器空间中的用户对象或者无法找到链接的 Metaverse (MV) 或 Azure AD 连接器空间对象。 <br> <br> 若要解决此问题，请确保用户确实已通过当前的 Azure AD Connect 实例从本地同步到了 Azure AD，并检查连接器空间和 MV 中的对象的状态。 通过“Microsoft.InfromADUserAccountEnabled.xxx”规则确认 Active Directory 证书服务 (AD CS) 对象是否已连接到 MV 对象。|
 | 尝试重置其密码的联合身份验证、直通身份验证或密码哈希同步的用户在提交密码后看到错误。 该错误指示存在服务问题。 <br> <br> 除此问题以外，在密码重置操作过程中，可能会在 Azure AD Connect 服务的事件日志中看到一个错误，指出发生“找到多个匹配项”错误。 | 这表示同步引擎通过“Microsoft.InfromADUserAccountEnabled.xxx”检测到 MV 对象连接到了多个 AD CS 对象。 这意味着用户在多个林具有已启用的帐户。 密码写回不支持此方案。 |
-| 密码操作因为发生配置错误而失败。 应用程序事件日志包含 Azure AD Connect 错误 6329，文本为：“0x8023061f (操作失败，因为未在此管理代理上启用密码同步)”。 | 如果在启用密码写回功能之后将 Azure AD Connect 配置更改为添加新的 Active Directory 林（或者更改为删除现有林之后再重新添加），则会发生此错误。 在这些最近添加的林中，用户的密码操作会失败。 要解决此问题，请在林配置更改完成后，先禁用密码写回功能，再重新启用它。 |
+| 密码操作因为发生配置错误而失败。 应用程序事件日志包含 Azure AD Connect 错误 6329，文本为：“0x8023061f (操作失败，因为未在此管理代理上启用密码同步)”。 | 如果在启用密码写回功能之后将 Azure AD Connect 配置更改为添加新的 Active Directory 林（或者更改为删除现有林之后再重新添加），则会发生此错误。 在这些最近添加的林中，用户的密码操作会失败。 要解决此问题，请在林配置更改完成后，先禁用密码写回功能，再重新启用它。
+| SSPR_0029：由于本地配置中的错误，无法重置你的密码。 请联系管理员，并请求他们进行调查。 | 问题：按照所有必需的步骤启用了密码写回，但在尝试更改收到的密码时，你收到“SSPR_0029: 贵组织未正确设置用于密码重置的本地配置”。 检查 Azure AD Connect 系统上的事件日志是否显示管理代理凭据被拒绝访问。可能的解决方案：在 Azure AD Connect 系统和域控制器上使用 RSOP，以查看“计算机配置”>“Windows 设置”>“安全设置”>“本地策略”>“安全选项”下的“网络访问: 限制允许对 SAM 进行远程调用的客户端”策略是否已启用。 编辑策略，将 MSOL_XXXXXXX 管理帐户作为允许用户包含在内。 |
 
 ## <a name="password-writeback-event-log-error-codes"></a>密码写回事件日志错误代码
 

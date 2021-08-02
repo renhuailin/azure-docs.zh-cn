@@ -1,22 +1,22 @@
 ---
 title: 配置 Microsoft Endpoint Configuration Manager - Azure
-description: 如何配置 Microsoft Endpoint Configuration Manager，以便将软件更新部署到 Windows 虚拟桌面上的 Windows 10 企业版多会话。
+description: 如何配置 Microsoft Endpoint Configuration Manager，以便将软件更新部署到 Azure 虚拟桌面上的 Windows 10 企业版多会话。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 06/12/2020
 ms.author: helohr
 ms.reviewer: v-cawood; clemr
-manager: lizross
-ms.openlocfilehash: bfc797e0c11a1804d27c6c97fea8cb2ba62dca7a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+manager: femila
+ms.openlocfilehash: 8266473553288584a534e8833d8c50dcb2ec40cf
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88010117"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754540"
 ---
 # <a name="configure-microsoft-endpoint-configuration-manager"></a>配置 Microsoft Endpoint Configuration Manager
 
-本文介绍如何配置 Microsoft Endpoint Configuration Manager，以便自动将更新应用到运行 Windows 10 企业版多会话的 Windows 虚拟桌面主机。
+本文介绍如何配置 Microsoft Endpoint Configuration Manager，以便自动将更新应用到运行 Windows 10 企业版多会话的 Azure 虚拟桌面主机。
 
 ## <a name="prerequisites"></a>先决条件
 

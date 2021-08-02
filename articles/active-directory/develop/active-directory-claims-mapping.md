@@ -1,7 +1,7 @@
 ---
 title: 自定义 Azure AD 租户应用声明 (PowerShell)
 titleSuffix: Microsoft identity platform
-description: 本页介绍 Azure Active Directory 声明映射。
+description: 了解如何为特定 Azure Active Directory 租户中的应用程序自定义在令牌中发出的声明。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -10,29 +10,28 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 06/10/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: e77155f8a6efd3916ae90fcb562d688bb5b5126f
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: bb44904379e7a9b784f4e2d9bb7c93673718ed37
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107598884"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111983035"
 ---
-# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
+# <a name="customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant"></a>为租户中的特定应用自定义在令牌中发出的声明
 
-> [!NOTE]
-> 此功能替换并取代了当前通过门户提供的[声明自定义](active-directory-saml-claims-customization.md)。 在同一应用程序中，如果使用门户以及本文档中详细介绍的 Graph/PowerShell 方法自定义声明，则为该应用程序颁发的令牌会忽略门户中的配置。 通过本文档中详细介绍的方法进行的配置不会在门户中进行反映。
-
-> [!NOTE]
-> 此功能目前以公共预览版提供。 应准备好还原或删除所做的任何更改。 在公共预览版推出期间，可在任何 Azure Active Directory (Azure AD) 订阅中使用此功能。 但是，在正式版推出后，某些功能可能需要使用 Azure AD Premium 订阅。 此功能支持配置适用于 WS-Fed、SAML、OAuth 和 OpenID Connect 协议的声明映射策略。
-
-此功能由租户管理员用来自定义以令牌形式针对其租户中的特定应用程序发出的声明。 可以使用声明映射策略执行以下操作：
+租户管理员使用声明自定义为其租户中的特定应用程序自定义令牌中发出的声明。 可以使用声明映射策略执行以下操作：
 
 - 选择在令牌中包含的声明。
-- 创建尚未存在的声明类型。
+- 创建尚不存在的声明类型。
 - 选择或更改在特定声明中发出的数据的源。
+
+声明自定义支持配置适用于 WS-Fed、SAML、OAuth 和 OpenID Connect 协议的声明映射策略。
+
+> [!NOTE]
+> 此功能替换并取代了通过 Azure 门户提供的[声明自定义](active-directory-saml-claims-customization.md)。 在同一应用程序中，如果使用门户以及本文档中详细介绍的 Microsoft Graph/PowerShell 方法自定义声明，则为该应用程序颁发的令牌会忽略门户中的配置。 通过本文档中详细介绍的方法进行的配置不会在门户中进行反映。
 
 在本文中，我们会演练几个常见方案，它们可帮助你理解如何使用[声明映射策略类型](reference-claims-mapping-policy-type.md)。
 
@@ -41,6 +40,9 @@ ms.locfileid: "107598884"
 ## <a name="prerequisites"></a>先决条件
 
 以下示例将创建、更新、链接和删除服务主体的策略。 声明映射策略只能分配给服务主体对象。 如果你是 Azure AD 新手，我们建议在继续学习这些示例之前，先[了解如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。
+
+> [!NOTE]
+> 配置声明映射策略需要 [Azure AD PowerShell 模块公共预览版](https://www.powershellgallery.com/packages/AzureADPreview)。 PowerShell 模块为预览版，已准备好还原或删除任何更改。 
 
 若要开始，请执行以下步骤：
 

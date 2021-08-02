@@ -5,16 +5,17 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 05/13/2021
+ms.date: 06/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: d849c3d611cefab7db20197d3c43dd9faefe9b47
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 28bb55b24cdc758906ab9aff5746e4c5d4c7bfc3
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110097884"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112059699"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-with-azure-resource-manager-templates"></a>利用 Azure 资源管理器模板管理 Azure Cosmos DB Core (SQL) API 资源
+
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 在本文中，你将了解如何使用 Azure 资源管理器模板来帮助部署和管理 Azure Cosmos DB 帐户、数据库和容器。
@@ -27,6 +28,7 @@ ms.locfileid: "110097884"
 > * 若要更改吞吐量值，请用更新的 RU/s 重新部署模板。
 > * 当你在 Azure Cosmos 帐户中添加或删除位置时，无法同时修改其他属性。 必须单独执行这些操作。
 > * 无法重命名 Azure Cosmos DB 资源，因为这违反了 Azure 资源管理器与资源 URI 的工作方式。
+> * 若要在数据库级别预配吞吐量并跨所有容器进行共享，请将吞吐量值应用于数据库选项属性。
 
 若要创建以下任何 Azure Cosmos DB 资源，请将下列示例模板复制到新的 json 文件中。 在部署具有不同名称和值的同一资源的多个实例时，可以选择创建要使用的参数 json 文件。 可以通过多种方式部署 Azure 资源管理器模板，包括 [Azure 门户](../azure-resource-manager/templates/deploy-portal.md)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md)、[Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) 和 [GitHub](../azure-resource-manager/templates/deploy-to-azure-button.md)。
 

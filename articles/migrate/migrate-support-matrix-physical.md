@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 09110bb15f853f20b0be9d8c4c6f5088e7a55d8b
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: aad800a710a1bc3942efc128f8350044a513d44f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106382974"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472017"
 ---
 # <a name="support-matrix-for-physical-server-discovery-and-assessment"></a>物理服务器发现与评估的支持矩阵 
 
@@ -66,7 +66,7 @@ Azure Migrate 使用 [Azure Migrate 设备](migrate-appliance.md)进行发现和
 **设备** | **Connection**
 --- | ---
 **设备** | TCP 端口 3389 上的入站连接，可便于通过远程桌面连接来连接到设备。<br/><br/> 端口 44368 上的入站连接，用于使用 URL ``` https://<appliance-ip-or-name>:44368 ``` 远程访问设备管理应用<br/><br/> 端口 443 (HTTPS) 上的出站连接，用于将发现和性能元数据发送到 Azure Migrate。
-**物理服务器** | **Windows：** WinRM 端口 5985 (HTTP) 或 5986 (HTTPS) 上的入站连接，用于从 Windows 服务器上拉取配置和性能元数据。 <br/><br/> **Linux：** 端口 22 (TCP) 上的入站连接，用于从 Linux 服务器上拉取配置和性能元数据。 |
+**物理服务器** | **Windows：** WinRM 端口 5985 (HTTP) 上的入站连接，用于从 Windows 服务器上拉取配置和性能元数据。 <br/><br/> **Linux：** 端口 22 (TCP) 上的入站连接，用于从 Linux 服务器上拉取配置和性能元数据。 |
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>基于代理的依赖关系分析要求
 

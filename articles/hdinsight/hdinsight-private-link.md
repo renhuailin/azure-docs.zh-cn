@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 专用链接隔离虚拟网络中的 Azure
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: bc7834a0f8272da3f8954c7dd9f3e18163795cba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe3b9617db20f445d4139c006c283bbfe537d544
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98939367"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110616472"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>通过专用链接（预览）保护和隔离 Azure HDInsight 群集
 
@@ -28,7 +28,7 @@ ms.locfileid: "98939367"
 
 将 `resourceProviderConnection` 配置为出站还允许使用专用终结点访问特定于群集的资源，如 Azure Data Lake Storage Gen2 或外部元存储。 不强制使用这些资源的专用终结点，但如果你计划为这些资源提供专用终结点，则必须配置创建 HDInsight 群集时的专用终结点和 DNS 条目 `before`。 建议在创建群集时创建并提供所需的所有外部 SQL 数据库，如 Apache Ranger、Ambari、Oozie 和 Hive 元存储。 要求是，所有这些资源都必须可通过其自带的专用终结点或以其他方式，从群集子网内部进行访问。
 
-Azure Key Vault 不支持使用专用终结点。 如果使用 Azure Key Vault 进行 CMK 静态加密，则必须可从无专用终结点的 HDInsight 子网内部访问 Azure Key Vault 终结点。
+通过专用终结点连接到 Azure Data Lake Storage Gen2 时，请确保 Gen2 存储帐户为“blob”和“dfs”设置了终结点。 有关详细信息，请参阅[创建专用终结点](../storage/common/storage-private-endpoints.md)。
 
 下图显示了在将 `resourceProviderConnection` 设置为“出站”时，HDInsight 虚拟网络体系结构可能的样子：
 
@@ -51,7 +51,7 @@ Azure Key Vault 不支持使用专用终结点。 如果使用 Azure Key Vault �
 
 使用默认情况下禁用的“专用链接”需要广泛的网络知识，以便在创建群集之前正确设置用户定义路由 (UDR) 和防火墙规则。 如前一部分中所述，可以选择使用此设置，但仅当 `resourceProviderConnection` 网络属性设置为“*出站*”时，该选项才可用。
 
-当 `privateLink` 设置为“*启用*”时，会创建内部[标准负均衡器](../load-balancer/load-balancer-overview.md) (SLB) ，并为每个 SLB 预配 Azure 专用链接服务。 专用链接服务可让你从专用终结点访问 HDInsight 群集。
+当 `privateLink` 设置为“*启用*”时，会创建内部 [标准负均衡器](../load-balancer/load-balancer-overview.md) (SLB) ，并为每个 SLB 预配 Azure 专用链接服务。 专用链接服务可让你从专用终结点访问 HDInsight 群集。
 
 标准负载均衡器不会像基本负载均衡器那样自动提供[公共出站 NAT](../load-balancer/load-balancer-outbound-connections.md)。 对于出站依赖项，你必须提供自己的 NAT 解决方案，如[虚拟网络 NAT](../virtual-network/nat-overview.md) 或[防火墙](./hdinsight-restrict-outbound-traffic.md)。 你的 HDInsight 群集仍需要其出站依赖项的访问权限。 如果不允许这些出站依赖项，则群集创建可能会失败。
 

@@ -1,19 +1,18 @@
 ---
 title: 连续导出可以将 Azure 安全中心的警报和建议发送到 Log Analytics 工作区或 Azure 事件中心
 description: 了解如何配置到 Log Analytics 工作区或 Azure 事件中心的安全警报和建议的连续导出
-services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 12/24/2020
+ms.date: 06/13/2021
 ms.author: memildin
-ms.openlocfilehash: fc3774a01665b88ccae2e25ae8382497f8010c35
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 96c83cf3ba127f88c3ea8d90f648e4c5a8ba9d66
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102096966"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112062345"
 ---
 # <a name="continuously-export-security-center-data"></a>连续导出安全中心数据
 
@@ -43,7 +42,7 @@ Azure 安全中心会生成详细的安全警报和建议。 可以通过门户�
 |----|:----|
 |发布状态：|正式发布版 (GA)|
 |定价：|免费|
-|所需角色和权限：|<ul><li>资源组的安全管理员或所有者 </li><li>对目标资源的写入权限</li><li>如果使用的是下面所述的 Azure Policy“DeployIfNotExist”策略，则还需要分配策略的权限</li></ul>|
+|所需角色和权限：|<ul><li>资源组的安全管理员或所有者 </li><li>对目标资源的写入权限</li><li>如果使用的是下面所述的 Azure Policy“DeployIfNotExist”策略，则还需要分配策略的权限</li><li>导出到 Log Analytics 工作区：<ul><li>如果具有 SecurityCenterFree 解决方案，则至少需要工作区解决方案读取权限：`Microsoft.OperationsManagement/solutions/read`</li><li>如果没有 SecurityCenterFree 解决方案，则需要工作区解决方案写入权限：`Microsoft.OperationsManagement/solutions/action`</li><li>详细了解 [Azure Monitor 和 Log Analytics 工作区解决方案](../azure-monitor/insights/solutions.md)</li></ul></li></ul>|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov，其他政府<br>![是](./media/icons/yes-icon.png) China Gov|
 |||
 
@@ -52,14 +51,16 @@ Azure 安全中心会生成详细的安全警报和建议。 可以通过门户�
 
 连续导出可以在以下数据类型发生更改时导出它们：
 
-- 安全警报
-- 安全建议 
-- 可以视为“子”建议的安全发现，例如漏洞评估扫描程序或特定系统更新的发现。 可以选择将它们包括在其“父”建议中，例如“应在计算机上安装系统更新”。
-- 安全评分（按订阅或按控制）
-- 合规性数据
+- 安全警报。
+- 安全建议。
+- 安全结果。 这些内容可被视为“子级”建议，并且属于特定“父级”建议。 例如：
+    - “应在计算机上安装系统更新”建议包含有关各未完成的系统更新的“子级”建议。
+    - “应修复虚拟机中的漏洞”建议包含有关漏洞扫描程序所识别漏洞的“子级”建议。
+    > [!NOTE]
+    > 如果使用 REST API 配置连续导出，请始终在结果中加入父级。 
+- （预览版功能）每个订阅或每个控件的安全分数。
+- （预览版功能）合规性数据。
 
-> [!NOTE]
-> 导出安全功能分数和法规合规性数据是一项预览功能，在政府云上不可用。 
 
 ## <a name="set-up-a-continuous-export"></a>设置连续导出 
 
@@ -81,7 +82,7 @@ Azure 安全中心会生成详细的安全警报和建议。 可以通过门户�
 
 1. 选择要导出的数据类型，并从每种类型的筛选器中进行选择（例如，仅导出严重程度高的警报）。
 1. 选择适当的导出频率：
-    - **流式处理** - 更新资源的运行状况时，将实时发送评估（如果没有更新，则不发送任何数据）。
+    - 流式处理 - 更新资源的运行状况状态时，将发送评估（如果没有更新，则不发送任何数据）。
     - **快照** - 每周将发送所有法规合规性评估的当前状态的快照（这是面向安全分数和法规合规性数据每周快照的一项预览功能）。
 
 1. （可选）如果你的选择包含这些建议中的一个，可以将漏洞评估结果与它们包括在一起：
@@ -171,7 +172,7 @@ API 提供了 Azure 门户中没有的其他功能，例如：
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics 表和架构
 
-安全警报和建议分别存储在 SecurityAlert 和 SecurityRecommendation 表中 。 
+安全警报和建议将分别存储在 SecurityAlert 和 SecurityRecommendation 表中 。 
 
 包含这些表的 Log Analytics 解决方案的名称取决于是否启用了 Azure Defender：Security（“安全和审核”）或 SecurityCenterFree。 
 
@@ -234,7 +235,7 @@ Azure Monitor 为各种 Azure 警报（包括诊断日志、指标警报以及�
 - 不会导出在启用导出之前收到的警报。
 - 当资源的合规性状态发生更改时就会发送建议。 例如，当某个资源的状态从正常变为不正常时。 因此，与警报一样，将不会导出针对自启用导出以来未更改状态的资源的建议。
 - 每个安全控制或订阅的安全分数（预览版）在一个安全控制的分数变化 0.01 或更大时发送。 
-- 当资源的合规性状态发生更改时，将发送“法规合规性状态（预览版）”。
+- 合规性状态（预览版）在资源的合规性状态更改时发送。
 
 
 

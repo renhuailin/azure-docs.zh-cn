@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: masnider
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5d27a09f0ff38ec7422636ef0933552aa310c387
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb012c1f0cb60e590cb38fc9e362e400439b24b3
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92911760"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479797"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>使用群集资源管理器描述 Service Fabric 群集
 
@@ -349,7 +349,7 @@ Service Fabric 预期存在特定工作负荷需要在特定硬件配置上运�
 * 出于性能、规模或安全性隔离原因，某个工作负荷必须在特定硬件上运行。
 * 出于策略或资源消耗原因，某个工作负荷应该与其他工作负荷隔离。
 
-为了支持此类配置，Service Fabric 包含可应用于节点的标记。 这些标记称为 *节点属性*。 放置约束是附加到单个服务的语句，这些服务专供 1 个或多个节点属性选择。  放置约束定义服务运行的位置。 约束集可扩展。 任何键/值对都适用。
+为了支持此类配置，Service Fabric 包含可应用于节点的标记。 这些标记称为 *节点属性*。 放置约束是附加到单个服务的语句，这些服务专供 1 个或多个节点属性选择。  放置约束定义服务运行的位置。 约束集可扩展。 任何键/值对都适用。 从 Service Fabric 8.1 开始，可以动态更新节点属性，而不会中断正在运行的工作负载。
 
 ![群集布局中的不同工作负荷][Image5]
 
@@ -473,7 +473,7 @@ Service Fabric 使用“指标”表示资源。  指标是要向 Service Fabric
 
 ## <a name="capacity"></a>容量
 
-如果关闭所有的资源均衡功能，Service Fabric 群集资源管理器仍会确保最终不会有任何节点超出其容量  。 对容量溢出进行管理是可能的，除非群集过于饱和或工作负荷大于任何节点。 容量是群集资源管理器用来了解节点包含的资源量的另一个约束  。 还会针对整个群集来追踪剩余容量。
+如果关闭所有的资源均衡功能，Service Fabric 群集资源管理器仍会确保最终不会有任何节点超出其容量  。 对容量溢出进行管理是可能的，除非群集过于饱和或工作负荷大于任何节点。 容量是群集资源管理器用来了解节点包含的资源量的另一个约束  。 还会针对整个群集来追踪剩余容量。 从 Service Fabric 8.1 开始，可以动态更新节点容量，而不会中断正在运行的工作负载。
 
 服务级别的容量和消耗量均以指标来表示。 例如，指标可能是“ClientConnections”，节点可能拥有 32,768 个单位的“ClientConnections”容量。 其他节点可能有其他限制。 在该节点上运行的某个服务可以声明其当前正在消耗 32,256 个单位的“ClientConnections”指标。
 

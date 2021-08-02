@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: adfb46894e769a23a2ac48bdb4ac3e432d9cebce
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 724c02f56b49957934deefe9f4733cda57620987
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139050"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112019982"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>创建演示证书用于测试 IoT Edge 设备功能
 
@@ -119,7 +119,7 @@ Azure IoT Edge Git 存储库包含可用于生成测试证书的脚本。
 
 ### <a name="set-up-on-linux"></a>在 Linux 上进行设置
 
-若要在 Windows 设备上创建演示证书，需要克隆生成脚本，并将其设置为在 bash 中本地运行。
+若要在 Linux 设备上创建演示证书，需要克隆生成脚本并将其设置为在 bash 中本地运行。
 
 1. 克隆 IoT Edge Git 存储库，其中包含用于生成演示证书的脚本。
 
@@ -159,7 +159,7 @@ Azure IoT Edge Git 存储库包含可用于生成测试证书的脚本。
 
 1. 导航到在其中放置了证书生成脚本的工作目录。
 
-1. 创建根 CA 证书，并使用它来签署一个中间证书。 证书全部放在工作目录中。
+1. 创建根 CA 证书，并使用它来签署一个中间证书。 证书全部放在工作目录中。 
 
    ```powershell
    New-CACertsCertChain rsa
@@ -168,6 +168,8 @@ Azure IoT Edge Git 存储库包含可用于生成测试证书的脚本。
    此脚本命令将创建多个证书和密钥文件，但当文章中提到 **根 CA 证书** 时，请使用以下文件：
 
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
+   
+   需要此证书，然后才能为 IoT Edge 设备和叶设备创建更多证书，如以下部分所述。
 
 ### <a name="linux"></a>Linux
 
@@ -206,6 +208,9 @@ New-CACertsEdgeDeviceIdentity "<name>"
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>\private\iot-edge-device-identity-<name>.key.pem`
+
+对于 DPS 中 IoT Edge 设备的单独注册，请使用 `iot-edge-device-identity-<name>.cert.pem`。 若要将 IoT Edge 设备注册到 IoT 中心，请使用 `iot-edge-device-identity-<name>-full-chain.cert.pem` 和 `iot-edge-device-identity-<name>.key.pem` 证书。 有关详细信息，请参阅[使用 X.509 证书创建和预配 IoT Edge 设备](how-to-auto-provision-x509-certs.md)。
+
 
 ### <a name="linux"></a>Linux
 
@@ -357,11 +362,11 @@ IoT 设备还需要其设备证书的副本，以便可以在 IoT 中心进行�
 
 ### <a name="ca-signed-certificates"></a>CA 签名的证书
 
-使用自签名证书对 IoT 设备进行身份验证时，需将解决方案的根 CA 证书上传到 IoT 中心。
+使用 CA 签名的证书对 IoT 设备进行身份验证时，需将解决方案的根 CA 证书上传到 IoT 中心。
 然后执行验证，以向 IoT 中心证明你拥有该根 CA 证书。
 最后，使用同一个根 CA 证书创建要放在 IoT 设备上的设备证书，使设备能够在 IoT 中心进行身份验证。
 
-本部分中的证书用于[在 Azure IoT 中心设置 X.509 安全性](../iot-hub/tutorial-x509-scripts.md)中的步骤。
+本部分中的证书适用于 IoT 中心 X.509 证书教程系列中的步骤。 有关此系列的介绍，请参阅[了解公钥加密和 X.509 公钥基础结构](../iot-hub/tutorial-x509-introduction.md)。
 
 #### <a name="windows"></a>Windows
 

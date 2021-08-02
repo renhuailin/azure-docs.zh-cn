@@ -1,6 +1,6 @@
 ---
-title: 如何在 Microsoft 合作伙伴中心添加 SaaS 产品/服务的技术详细信息
-description: 了解如何为 Microsoft 商业市场的服务型软件 (SaaS) 产品/服务提供技术详细信息。
+title: 在 Azure 市场中为 SaaS 产品/服务添加技术详细信息
+description: 在 Azure 市场中为服务型软件 (SaaS) 产品/服务提供技术详细信息。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 28c0be40387f411286230f94c19fa23a80e650af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 236a7729a8be0fb1ad20be28efd7b45f5796c1dd
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96746397"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110615156"
 ---
-# <a name="how-to-add-technical-details-for-your-saas-offer"></a>如何为 SaaS 产品/服务添加技术详细信息
+# <a name="add-technical-details-for-a-saas-offer"></a>为 SaaS 产品/服务添加技术详细信息
 
 本文介绍如何输入技术详细信息，以帮助 Microsoft 商业市场连接到你的解决方案。 使用此连接，可以为选择获取你的产品/服务的客户预配产品/服务并进行管理。 有关这些设置的详细信息，请参阅[技术信息](plan-saas-offer.md#technical-information)。
 
@@ -44,4 +44,4 @@ ms.locfileid: "96746397"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [如何为 SaaS 产品/服务创建计划](create-new-saas-offer-plans.md)。
+- [为 SaaS 产品/服务创建计划](create-new-saas-offer-plans.md)。

@@ -1,24 +1,24 @@
 ---
-title: 部署适用于 Windows 虚拟桌面（经典）的诊断工具 - Azure
-description: 如何部署适用于 Windows 虚拟桌面（经典）的诊断 UX 工具。
+title: 部署适用于 Azure 虚拟桌面（经典）的诊断工具 - Azure
+description: 如何部署适用于 Azure 虚拟桌面（经典）的诊断 UX 工具。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ed010b3eed875c8b14892a588be13a32fbbd95ac
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 92876524f036126f39a2e4e5db8eb5dbd660cee9
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445085"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754774"
 ---
-# <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>部署 Windows 虚拟桌面（经典）诊断工具
+# <a name="deploy-the-azure-virtual-desktop-classic-diagnostics-tool"></a>部署 Azure 虚拟桌面（经典）诊断工具
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。
 
-Windows 虚拟桌面诊断工具可为你实现以下目的：
+Azure 虚拟桌面诊断工具可为你实现以下目的：
 
 - 查找单个用户在一周内的诊断活动（管理、连接或源）。
 - 从 Log Analytics 工作区收集连接活动的会话主机信息。
@@ -50,7 +50,7 @@ Windows 虚拟桌面诊断工具可为你实现以下目的：
 本部分将说明如何使用 PowerShell 创建包含服务主体的 Azure Active Directory 应用并获取其 API 权限。
 
 >[!NOTE]
->API 权限是指添加到 Azure Active Directory 应用程序的 Windows 虚拟桌面、Log Analytics 和 Microsoft Graph API 权限。
+>API 权限是指添加到 Azure Active Directory 应用程序的 Azure 虚拟桌面、Log Analytics 和 Microsoft Graph API 权限。
 
 1. 以管理员身份打开 PowerShell。
 2. 使用对要用于诊断工具的 Azure 订阅拥有“所有者”或“参与者”权限的帐户登录到 Azure：
@@ -200,7 +200,7 @@ Windows 虚拟桌面诊断工具可为你实现以下目的：
 在使诊断工具可供用户使用之前，请确保他们具有以下权限：
 
 - 用户需要具有 Log Analytics 的读取访问权限。 有关详细信息，请参阅 [Azure Monitor 的角色、权限和安全入门](../../azure-monitor/roles-permissions-security.md)。
--  用户还需要具有对 Windows 虚拟桌面租户的读取访问权限（RDS 读取者角色）。 有关详细信息，请参阅 [Windows 虚拟桌面中的委托访问](delegated-access-virtual-desktop-2019.md)。
+-  用户还需要具有对 Azure 虚拟桌面租户的读取访问权限（RDS 读取者角色）。 有关详细信息，请参阅 [Azure 虚拟桌面中的委托访问](delegated-access-virtual-desktop-2019.md)。
 
 还需要为用户指定以下信息：
 

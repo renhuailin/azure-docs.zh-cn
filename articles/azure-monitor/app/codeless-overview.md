@@ -4,14 +4,14 @@ description: Azure Monitor Application Insights 自动检测功能概述 - 无�
 ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
-ms.date: 05/31/2020
+ms.date: 05/17/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: df6271f8c036d708b93d7312076f3eee585cfcba
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 1c9d3e10ebf02016a0188617567cb2e4e2eeb036
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287277"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110092703"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>什么是自动检测或无代码附加 - Azure Monitor Application Insights？
 
@@ -25,12 +25,13 @@ Application Insights 与各种资源提供程序集成，可在不同的环境�
 
 |环境/资源提供程序          | .NET            | .NET Core       | Java            | Node.js         | Python          |
 |---------------------------------------|-----------------|-----------------|-----------------|-----------------|-----------------|
-|Windows 上的 Azure 应用服务           | GA，OnBD*       | GA，选择加入      | 正在进行     | 正在进行     | 不支持   |
-|Linux 上的 Azure 应用服务             | 空值             | 不支持   | 正在学习     | 公共预览版  | 不支持   |
+|Windows 上的 Azure 应用服务           | GA，OnBD*       | GA，选择加入      | 公共预览版  | 公共预览版  | 不支持   |
+|Linux 上的 Azure 应用服务             | 空值             | 不支持   | 公共预览版  | 公共预览版  | 不支持   |
 |Azure Functions - 基本                | GA，OnBD*       | GA，OnBD*       | GA，OnBD*       | GA，OnBD*       | GA，OnBD*       |
 |Azure Functions Windows - 依赖项 | 不支持   | 不支持   | 公共预览版  | 不支持   | 不支持   |
+|Azure Spring Cloud                     | 不支持   | 不支持   | 公共预览版  | 不支持   | 不支持   |
 |Azure Kubernetes 服务               | 空值             | 设计中       | 通过代理   | 设计中       | 不支持   |
-|Azure VM (Windows)                      | 公共预览版  | 不支持   | 不支持   | 不支持   | 不支持   |
+|Azure VM (Windows)                      | 公共预览版  | 不支持   | 通过代理 | 不支持   | 不支持   |
 |本地 VM (Windows)                | GA，选择加入      | 不支持   | 通过代理   | 不支持   | 不支持   |
 |独立代理 - 任何环境            | 不支持   | 不支持   | GA              | 不支持   | 不支持   |
 
@@ -40,35 +41,24 @@ Application Insights 与各种资源提供程序集成，可在不同的环境�
 
 ### <a name="windows"></a>Windows
 
-#### <a name="net"></a>.NET
-Windows 上 Azure 应用服务的应用程序监视可用于 [.NET 应用程序](./azure-web-apps.md?tabs=net) .NET，并且默认启用。
+Windows 上 Azure 应用服务的应用程序监视可用于 [.NET](./azure-web-apps.md?tabs=net)（默认启用）、[.NET Core](./azure-web-apps.md?tabs=netcore)、[Java](./azure-web-apps.md?tabs=java)（公共预览版）和 [Node.js](./azure-web-apps.md?tabs=nodejs) 应用程序   。 若要监视 Python 应用，请将 [SDK](./opencensus-python.md) 添加到代码。
 
-#### <a name="netcore"></a>.NETCore
-只需单击一次便可启用对 [.NETCore 应用程序](./azure-web-apps.md?tabs=netcore)的监视。
-
-#### <a name="java"></a>Java
-当前，门户中未集成用于监视 Windows 上的应用服务中的 Java 应用程序的功能，但你可以在将应用部署到应用服务之前，将 Application Insights [Java 3.0 独立代理](./java-in-process-agent.md)添加到你的应用程序，无需更改任何代码。 Application Insights Java 3.0 代理已正式发布。
-
-#### <a name="nodejs"></a>Node.js
-当前无法从门户中启用对 Windows 上的 Node.js 应用程序的监视。 若要监视 Node.js 应用程序，请使用 [SDK](./nodejs.md)。
+> [!NOTE]
+> 应用程序监视当前可用于应用服务上基于 Windows 代码的应用程序。 尚不支持通过与 Application Insights 的集成来监视应用服务上的 Windows 容器上的应用。
 
 ### <a name="linux"></a>Linux
+可以通过门户在应用服务中为 Linux 上运行的 [Java](./azure-web-apps.md?tabs=java) 和 [Node.js](./azure-web-apps.md?tabs=nodejs) 应用启用监视，这两种语言的体验均为公共预览版，在所有区域中都可用 。 
 
-#### <a name="netcore"></a>.NETCore
-若要监视在 Linux 上运行的 .NETCore 应用程序，请使用 [SDK](./asp-net-core.md)。
-
-#### <a name="java"></a>Java 
-当前无法从门户中为 Linux 上的应用服务启用 Java 应用程序监视，但你可以在将应用部署到应用服务之前，将 [Application Insights Java 3.0 代理](./java-in-process-agent.md)添加到你的应用。 Application Insights Java 3.0 代理已正式发布。
-
-#### <a name="nodejs"></a>Node.js
-[监视 Linux 上应用服务中的 Node.js 应用程序](./azure-web-apps.md?tabs=nodejs)的功能目前为公共预览版，可以在 Azure 门户中启用，在所有区域中提供。 
-
-#### <a name="python"></a>Python
-使用 SDK [监视你的 Python 应用](./opencensus-python.md) 
+对于其他语言（[.Net Core](./asp-net-core.md) 和 [Python](./opencensus-python.md)），请使用 SDK。
 
 ## <a name="azure-functions"></a>Azure Functions
 
-默认启用对 Azure Functions 的基本监视功能，该功能可以收集日志、性能、错误数据和 HTTP 请求。 对于 Java 应用程序，可以使用分布式跟踪来启用更丰富的监视功能，并获取端到端事务详细信息。 适用于 Java 的此功能为公共预览版，你可以[在 Azure 门户中启用它](./monitor-functions.md)。
+默认启用对 Azure Functions 的基本监视功能，该功能可以收集日志、性能、错误数据和 HTTP 请求。 对于 Java 应用程序，可以使用分布式跟踪来启用更丰富的监视功能，并获取端到端事务详细信息。 适用于 Java 的此功能在 Windows 中为公共预览版，你可以[在 Azure 门户中启用它](./monitor-functions.md)。
+
+## <a name="azure-spring-cloud"></a>Azure Spring Cloud
+
+### <a name="java"></a>Java 
+在 Azure Spring Cloud 中运行的 Java 应用的应用程序监视已集成到门户中。对于现有的和新建的 Azure Spring Cloud 资源，你都可以直接从 Azure 门户启用 Application Insights。  
 
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes 服务
 

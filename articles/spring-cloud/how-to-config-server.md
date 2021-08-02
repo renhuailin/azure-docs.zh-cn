@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 773ae30cd888e76793bd65f8f31a8c110b128c01
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e4e4701b535e5363d0eb64f377fe4dccc3a3dd7d
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135214"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110653589"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>为服务设置 Spring Cloud 配置服务器实例
 
@@ -246,6 +246,40 @@ Azure Spring Cloud 可以访问公开、由 SSH 保护的，或使用 HTTP 基�
 
 可以选择“配置服务器”选项卡中显示的“重置”按钮，以彻底清除现有的设置 。 如果你希望将配置服务器实例连接到另一个源（例如，从 GitHub 移到 Azure DevOps），请删除配置服务器设置。
 
+## <a name="config-server-refresh"></a>配置服务器刷新
+更改属性时，需要通知使用这些属性的服务，然后才能进行更改。 Spring Cloud Config 的默认解决方案是手动触发[刷新事件](https://spring.io/guides/gs/centralized-configuration/)。如果有很多应用实例，这可能不可行。 也可在 Azure Spring Cloud 中让配置客户端根据刷新间隔来轮询更改，从而自动刷新配置服务器中的值。
+
+- 首先将 spring-cloud-starter-azure-spring-cloud-client 包括在 pom.xml 的 dependency 节中。
+
+  ```xml
+  <dependency>
+      <groupId>com.microsoft.azure</groupId>
+      <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+      <version>2.4.0</version>
+  </dependency>
+  ```
+
+- 接着在 application.yml 中启用 auto-refresh 并设置适当的刷新间隔。 在此示例中，客户端将每隔 5 秒钟轮询一次配置更改，这是可为刷新间隔设置的最小值。
+默认情况下，auto-refresh 设置为 false，refresh-interval 设置为 60 秒。
+
+  ``` yml
+  spring:
+    cloud:
+      config:
+        auto-refresh: true
+        refresh-interval: 5
+  ```
+
+- 最后在代码中添加 @refreshScope。 在此示例中，变量 connectTimeout 将每隔 5 秒钟自动刷新一次。
+
+  ``` java
+  @RestController
+  @RefreshScope
+  public class HelloController {
+      @Value("${timeout:4000}")
+      private String connectTimeout;    
+  }
+  ```
 
 
 ## <a name="next-steps"></a>后续步骤

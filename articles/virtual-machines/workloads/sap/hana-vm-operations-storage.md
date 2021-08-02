@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/03/2021
+ms.date: 06/09/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c0fbb1280fc2a7eaca1d97e7e016cf480873c8b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 818d39417689fd5fad80b69b2ee63af9114dc239
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101666588"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004630"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虚拟机存储配置
 
@@ -62,6 +62,7 @@ Azure 针对 Azure 标准和高级存储上的 VHD 提供两种部署方法。 �
 - 根据[适用于 SAP 工作负载的 Azure 存储类型](./planning-guide-storage.md)一文和[选择磁盘类型](../../disks-types.md)一文，决定存储类型
 - 在调整 VM 大小或决定 VM 时，还要考虑总体 VM I/O 吞吐量和 IOPS 限制。 [内存优化虚拟机大小](../../sizes-memory.md)一文中记录了总体 VM 存储吞吐量
 - 在决定存储配置时，请尽量使 /hana/data 卷配置低于 VM 的总体吞吐量。 通过写入保存点，SAP HANA 可以积极地发出 I/O。 写入保存点时，可能很容易达到 /hana/data 卷的吞吐量限制。 如果生成 /hana/data 卷的磁盘的吞吐量高于 VM 允许的吞吐量，则可能会出现以下情况：保存点写入所利用的吞吐量会干扰重做日志写入操作的吞吐量需求。 这种情况可能会影响应用程序吞吐量
+- 如果考虑使用 HANA 系统复制，则需要为参与 HANA 系统复制配置的所有 VM 的 /hana/data 和 /hana/log 使用完全相同的 Azure 存储类型 。 例如，在同一 HANA 系统复制配置内，不支持对一个 VM 的 /hana/data 使用 Azure 高级存储，而对另一个 VM 的 /hana/log 使用 Azure 超级磁盘 
 
 
 > [!IMPORTANT]
@@ -131,7 +132,7 @@ Azure 写入加速器是可用于 Azure M 系列 VM 的一项功能。 顾名思
 ### <a name="azure-burst-functionality-for-premium-storage"></a>适用于高级存储的 Azure 突发功能
 我们为容量低于或等于 512 GiB 的 Azure 高级存储磁盘提供突发功能。 [磁盘突发](../../disk-bursting.md)一文中介绍了磁盘突发的具体工作原理。 阅读该文章可以了解当 I/O 工作负载低于磁盘的额定 IOPS 和吞吐量时 IOPS 和吞吐量累积的概念（有关额定吞吐量的详细信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)）。 磁盘当前用量与额定值之间的 IOPS 和吞吐量增量将会累积。 突发限制为最长 30 分钟。
 
-可规划此突发功能的理想情况很大可能是在卷或磁盘中包含不同 DBMS 的数据文件。 这些卷（尤其是包含中小型系统的卷）所需的 I/O 工作负载预期类似于：
+可以计划使用此突发功能的理想情况可能是卷或磁盘包含不同 DBMS 的数据文件。 这些卷（尤其是包含中小型系统的卷）所需的 I/O 工作负载预期类似于：
 
 - 低至中等的读取工作负载，因为理想状态下数据缓存在内存中，或者像 HANA 一样，数据应该完全存储在内存中
 - 由定期发出的数据库检查点或保存点引起的写入突发
@@ -141,7 +142,7 @@ Azure 写入加速器是可用于 Azure M 系列 VM 的一项功能。 顾名思
 尤其是在工作负载每秒仅处理几百个事务的小型 DBMS 系统上，此类突发功能对于存储事务或重做日志的磁盘或卷也很有用。 此类磁盘或卷的预期工作负载类似于：
 
 - 定期写入磁盘，这取决于工作负载和工作负载性质，因为应用程序每次发出的提交都可能触发 I/O 操作
-- 吞吐量需求更高的工作负载，比如操作任务（如创建或重新生成索引）等
+- 执行操作任务（如创建或重新生成索引）时，吞吐量的工作负载会更高
 - 执行事务日志或重做日志备份时的读取突发
 
 
@@ -152,6 +153,9 @@ Azure 写入加速器是可用于 Azure M 系列 VM 的一项功能。 顾名思
 
 > [!NOTE]
 > 在涉及 Azure 高级存储的方案中，我们将在配置中实现突发功能。 无论使用什么形状或形式的存储测试工具，请随时牢记 [Azure 高级磁盘突发的工作方式](../../disk-bursting.md)。 运行通过 SAP HWCCT 或 HCMT 工具实现的存储测试时，不是所有测试都能通过标准，因为某些测试会超出你可以累积的突发额度。 尤其是在所有测试都按顺序运行而不中断时。
+
+> [!NOTE]
+> 对于 M32ts 和 M32ls VM，使用 HCMT/HWCCT 磁盘测试时，磁盘吞吐量可能低于预期。 即使在磁盘突发或基础磁盘的 I/O 吞吐量预配充足的情况下，也是如此。 观察到的行为的根本原因在于，HCMT/HWCCT 存储测试文件已完全缓存在高级存储数据磁盘的读取缓存中。 此缓存位于托管虚拟机的计算主机上，可以完全缓存 HCMT/HWCCT 的测试文件。 在这种情况下，[M 系列](../../m-series.md)文章中的“最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（缓存大小以 GiB 为单位）”列中列出的配额是相关的。 特别是对于 M32ts 和 M32ls，针对读取缓存的吞吐量配额仅为 400MB/秒。由于测试文件已完全缓存，因此尽管磁盘突发或预配的 I/O 吞吐量较高，这些测试仍可能略低于 400MB/秒的最大吞吐量。 作为替代方法，可以在 Azure 高级存储数据磁盘上不启用读取缓存的情况下进行测试。
 
 
 > [!NOTE]
@@ -166,14 +170,17 @@ SAP /hana/data 卷的配置：
 | M32ts | 192 GiB | 500 MBps | 4 x P6 | 200 MBps | 680 MBps | 960 | 14,000 |
 | M32ls | 256 GiB | 500 MBps | 4 x P6 | 200 MBps | 680 MBps | 960 | 14,000 |
 | M64ls | 512 GiB | 1,000 MBps | 4 x P10 | 400 MBps | 680 MBps | 2,000 | 14,000 |
-| M64s | 1,000 GiB | 1,000 MBps | 4 x P15 | 500 MBps | 680 MBps | 4,400 | 14,000 |
-| M64ms | 1,750 GiB | 1,000 MBps | 4 x P20 | 600 MBps | 680 MBps | 9,200 | 14,000 |  
-| M128s | 2,000 GiB | 2,000 MBps | 4 x P20 | 600 MBps | 680 MBps | 9,200| 14,000 | 
-| M128ms | 3,800 GiB | 2,000 MBps | 4 x P30 | 800 MBps | 无突发 | 20,000 | 无突发 | 
+| M32dms_v2、M32ms_v2 | 875 GiB  | 500 MBps | 4 x P15 | 500 MBps | 680 MBps | 4,400 | 14,000 |
+| M64s、M64ds_v2、M64s_v2 | 1,024 GiB | 1,000 MBps | 4 x P15 | 500 MBps | 680 MBps | 4,400 | 14,000 |
+| M64ms、M64dms_v2、M64ms_v2 | 1,792 GiB | 1,000 MBps | 4 x P20 | 600 MBps | 680 MBps | 9,200 | 14,000 |  
+| M128s、M128ds_v2、M128s_v2 | 2,048 GiB | 2,000 MBps | 4 x P20 | 600 MBps | 680 MBps | 9,200| 14,000 | 
+| M192ids_v2、M192is_v2 | 2,048 GiB | 2,000 MBps | 4 x P20 | 600 MBps | 680 MBps | 9,200| 14,000 | 
+| M128ms、M128dms_v2、M128ms_v2 | 3,892 GiB | 2,000 MBps | 4 x P30 | 800 MBps | 无突发 | 20,000 | 无突发 | 
+| M192ims、M192idms_v2 | 4,096 GiB | 2,000 MBps | 4 x P30 | 800 MBps | 无突发 | 20,000 | 无突发 | 
 | M208s_v2 | 2,850 GiB | 1,000 MBps | 4 x P30 | 800 MBps | 无突发 | 20,000| 无突发 | 
 | M208ms_v2 | 5,700 GiB | 1,000 MBps | 4 x P40 | 1,000 MBps | 无突发 | 30,000 | 无突发 |
 | M416s_v2 | 5,700 GiB | 2,000 MBps | 4 x P40 | 1,000 MBps | 无突发 | 30,000 | 无突发 |
-| M416ms_v2 | 11,400 GiB | 2,000 MBps | 4 x P50 | 2,000 MBps | 无突发 | 30,000 | 无突发 |
+| M416ms_v2 | 11,400 GiB | 2,000 MBps | 4 x P50 | 1,000 MBps | 无突发 | 30,000 | 无突发 |
 
 
 对于 /hana/log 卷， 配置如下所示：
@@ -183,10 +190,13 @@ SAP /hana/data 卷的配置：
 | M32ts | 192 GiB | 500 MBps | 3 x P10 | 300 MBps | 510 MBps | 1,500 | 10,500 | 
 | M32ls | 256 GiB | 500 MBps | 3 x P10 | 300 MBps | 510 MBps | 1,500 | 10,500 | 
 | M64ls | 512 GiB | 1,000 MBps | 3 x P10 | 300 MBps | 510 MBps | 1,500 | 10,500 | 
-| M64s | 1,000 GiB | 1,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 | 
-| M64ms | 1,750 GiB | 1,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 |  
-| M128s | 2,000 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500|  
-| M128ms | 3,800 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 | 
+| M32dms_v2、M32ms_v2 | 875 GiB | 500 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 | 
+| M64s、M64ds_v2、M64s_v2 | 1,024 GiB | 1,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 | 
+| M64ms、M64dms_v2、M64ms_v2 | 1,792 GiB | 1,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 |  
+| M128s、M128ds_v2、M128s_v2 | 2,048 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500| 
+| M192ids_v2、M192is_v2 | 2,048 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500| 
+| M128ms、M128dms_v2、M128ms_v2 | 3,892 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 |
+| M192idms_v2、M192ims_v2 | 4,096 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 | 
 | M208s_v2 | 2,850 GiB | 1,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 |  
 | M208ms_v2 | 5,700 GiB | 1,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 |  
 | M416s_v2 | 5,700 GiB | 2,000 MBps | 3 x P15 | 375 MBps | 510 MBps | 3,300 | 10,500 |  
@@ -200,10 +210,13 @@ SAP /hana/data 卷的配置：
 | M32ts | 192 GiB | 500 MBps | 1 x P15 | 1 x P6 | 1 x P6 |
 | M32ls | 256 GiB | 500 MBps |  1 x P15 | 1 x P6 | 1 x P6 |
 | M64ls | 512 GiB | 1000 MBps | 1 x P20 | 1 x P6 | 1 x P6 |
-| M64s | 1,000 GiB | 1,000 MBps | 1 x P30 | 1 x P6 | 1 x P6 |
-| M64ms | 1,750 GiB | 1,000 MBps | 1 x P30 | 1 x P6 | 1 x P6 | 
-| M128s | 2,000 GiB | 2,000 MBps | 1 x P30 | 1 x P10 | 1 x P6 | 
-| M128ms | 3,800 GiB | 2,000 MBps | 1 x P30 | 1 x P10 | 1 x P6 |
+| M32dms_v2、M32ms_v2 | 875 GiB | 500 MBps | 1 x P30 | 1 x P6 | 1 x P6 |
+| M64s、M64ds_v2、M64s_v2 | 1,024 GiB | 1,000 MBps | 1 x P30 | 1 x P6 | 1 x P6 |
+| M64ms、M64dms_v2、M64ms_v2 | 1,792 GiB | 1,000 MBps | 1 x P30 | 1 x P6 | 1 x P6 | 
+| M128s、M128ds_v2、M128s_v2 | 2,048 GiB | 2,000 MBps | 1 x P30 | 1 x P10 | 1 x P6 | 
+| M192ids_v2、M192is_v2  | 2,048 GiB | 2,000 MBps | 1 x P30 | 1 x P10 | 1 x P6 | 
+| M128ms、M128dms_v2、M128ms_v2 | 3,892 GiB | 2,000 MBps | 1 x P30 | 1 x P10 | 1 x P6 |
+| M192idms_v2、M192ims_v2  | 4,096 GiB | 2,000 MBps | 1 x P30 | 1 x P10 | 1 x P6 |
 | M208s_v2 | 2,850 GiB | 1,000 MBps |  1 x P30 | 1 x P10 | 1 x P6 |
 | M208ms_v2 | 5,700 GiB | 1,000 MBps | 1 x P30 | 1 x P10 | 1 x P6 | 
 | M416s_v2 | 5,700 GiB | 2,000 MBps |  1 x P30 | 1 x P10 | 1 x P6 | 
@@ -268,10 +281,13 @@ SAP /hana/data 卷的配置：
 | M32ts | 192 GiB | 500 MB/秒 | 250 GB | 400 MBps | 2,500 | 96 GB | 250 MBps  | 1,800 |
 | M32ls | 256 GiB | 500 MB/秒 | 300 GB | 400 MBps | 2,500 | 256 GB | 250 MBps  | 1,800 |
 | M64ls | 512 GiB | 1,000 MB/秒 | 620 GB | 400 MBps | 3,500 | 256 GB | 250 MBps  | 1,800 |
-| M64s | 1,000 GiB | 1,000 MB/秒 |  1,200 GB | 600 MBps | 5,000 | 512 GB | 250 MBps  | 2,500 |
-| M64ms | 1,750 GiB | 1,000 MB/秒 | 2,100 GB | 600 MBps | 5,000 | 512 GB | 250 MBps  | 2,500 |
-| M128s | 2,000 GiB | 2,000 MB/秒 |2,400 GB | 750 MBps | 7,000 | 512 GB | 250 MBps  | 2,500 | 
-| M128ms | 3,800 GiB | 2,000 MB/秒 | 4,800 GB | 750 MBps |9,600 | 512 GB | 250 MBps  | 2,500 | 
+| M32dms_v2、M32ms_v2 | 875 GiB | 500 MB/秒 |  1,200 GB | 600 MBps | 5,000 | 512 GB | 250 MBps  | 2,500 |
+| M64s、M64ds_v2、M64s_v2 | 1,024 GiB | 1,000 MB/秒 |  1,200 GB | 600 MBps | 5,000 | 512 GB | 250 MBps  | 2,500 |
+| M64ms、M64dms_v2、M64ms_v2 | 1,792 GiB | 1,000 MB/秒 | 2,100 GB | 600 MBps | 5,000 | 512 GB | 250 MBps  | 2,500 |
+| M128s、M128ds_v2、M128s_v2 | 2,048 GiB | 2,000 MB/秒 |2,400 GB | 750 MBps | 7,000 | 512 GB | 250 MBps  | 2,500 |
+| M192ids_v2、M192is_v2 | 2,048 GiB | 2,000 MB/秒 |2,400 GB | 750 MBps | 7,000 | 512 GB | 250 MBps  | 2,500 | 
+| M128ms、M128dms_v2、M128ms_v2 | 3,892 GiB | 2,000 MB/秒 | 4,800 GB | 750 MBps |9,600 | 512 GB | 250 MBps  | 2,500 | 
+| M192idms_v2、M192ims_v2 | 4,096 GiB | 2,000 MB/秒 | 4,800 GB | 750 MBps |9,600 | 512 GB | 250 MBps  | 2,500 | 
 | M208s_v2 | 2,850 GiB | 1,000 MB/秒 | 3,500 GB | 750 MBps | 7,000 | 512 GB | 250 MBps  | 2,500 | 
 | M208ms_v2 | 5,700 GiB | 1,000 MB/秒 | 7,200 GB | 750 MBps | 14,400 | 512 GB | 250 MBps  | 2,500 | 
 | M416s_v2 | 5,700 GiB | 2,000 MB/秒 | 7,200 GB | 1,000 MBps | 14,400 | 512 GB | 400 MBps  | 4,000 | 
@@ -308,11 +324,14 @@ SAP /hana/data 卷的配置：
 | E64v3 | 432 GiB | 1,200 MB/秒 | 6 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 不会实现低于 1 毫秒的存储延迟<sup>1</sup> |
 | E64ds_v4 | 504 GiB | 1200 MB/秒 |  7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 不会实现低于 1 毫秒的存储延迟<sup>1</sup> |
 | M64ls | 512 GiB | 1,000 MB/秒 | 7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 10,000<sup>2</sup> |
-| M64s | 1,000 GiB | 1,000 MB/秒 | 7 x P15 | 1 x E30 | 1 x E6 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 10,000<sup>2</sup> |
-| M64ms | 1,750 GiB | 1,000 MB/秒 | 6 x P20 | 1 x E30 | 1 x E6 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 10,000<sup>2</sup> |
-| M128s | 2,000 GiB | 2,000 MB/秒 |6 x P20 | 1 x E30 | 1 x E10 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 20,000<sup>2</sup> |
+| M32dms_v2、M32ms_v2 | 875 GiB | 500 MB/秒 | 6 x P15 | 1 x E30 | 1 x E6 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 5,000<sup>2</sup> |
+| M64s、M64ds_v2、M64s_v2 | 1,024 GiB | 1,000 MB/秒 | 7 x P15 | 1 x E30 | 1 x E6 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 10,000<sup>2</sup> |
+| M64ms、M64dms_v2、M64ms_v2| 1,792 GiB | 1,000 MB/秒 | 6 x P20 | 1 x E30 | 1 x E6 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 10,000<sup>2</sup> |
+| M128s、M128ds_v2、M128s_v2 | 2,048 GiB | 2,000 MB/秒 |6 x P20 | 1 x E30 | 1 x E10 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 20,000<sup>2</sup> |
+| M192ids_v2、M192is_v2 | 2,048 GiB | 2,000 MB/秒 |6 x P20 | 1 x E30 | 1 x E10 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 20,000<sup>2</sup> |
+| M128ms、M128dms_v2、M128ms_v2  | 3,800 GiB | 2,000 MB/秒 | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 20,000<sup>2</sup> |
+| M192idms_v2、M192ims_v2  | 4,096 GiB | 2,000 MB/秒 | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 20,000<sup>2</sup> |
 | M208s_v2 | 2,850 GiB | 1,000 MB/秒 | 4 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 10,000<sup>2</sup> |
-| M128ms | 3,800 GiB | 2,000 MB/秒 | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 20,000<sup>2</sup> |
 | M208ms_v2 | 5,700 GiB | 1,000 MB/秒 | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 10,000<sup>2</sup> |
 | M416s_v2 | 5,700 GiB | 2,000 MB/秒 | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 20,000<sup>2</sup> |
 | M416ms_v2 | 11400 GiB | 2,000 MB/秒 | 7 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 20,000<sup>2</sup> |

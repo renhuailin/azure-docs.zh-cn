@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/03/2021
+ms.date: 06/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 47947945759faee9f38393f06f7ec9396d9c715b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 17be85bd21a61ced7772786bb1fdaad1c947e4d1
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749098"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962292"
 ---
 # <a name="manage-your-azure-active-directory-b2c-tenant"></a>管理你的 Azure Active Directory B2C 租户
 
@@ -29,11 +29,13 @@ Azure AD B2C 依赖于 Azure AD 平台。 以下 Azure AD 功能可在 Azure AD 
 
 |功能  |Azure AD  | Azure AD B2C |
 |---------|---------|---------|
-| [组](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) | 组可用于管理管理帐户和用户帐户。| 组可用于管理管理帐户。 [使用者帐户](user-overview.md#consumer-user)不支持组。 |
+| [组](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) | 组可用于管理管理帐户和用户帐户。| 组可用于管理管理帐户。 [使用者帐户](user-overview.md#consumer-user)不能是任何组的成员。 |
 | [邀请外部标识来宾](../active-directory//external-identities/add-users-administrator.md)| 你可以邀请来宾用户并配置外部标识功能（如联合身份验证），以及使用 Facebook 和 Google 帐户登录。 | 你只能邀请 Microsoft 帐户或 Azure AD 用户作为来宾访问你的 Azure AD 租户，以访问应用程序或管理租户。 对于[使用者帐户](user-overview.md#consumer-user)，你可以使用 Azure AD B2C 用户流和自定义策略来管理用户，并使用外部标识提供程序（如 Google 或 Facebook）注册或登录。 |
 | [角色和管理员](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)| 完全支持管理帐户和用户帐户。 | [使用者帐户](user-overview.md#consumer-user)不支持角色。 使用者帐户无权访问任何 Azure 资源。|
-| [自定义域名](../active-directory/roles/permissions-reference.md#) |  只能对管理帐户使用 Azure AD 自定义域。 | [使用者帐户](user-overview.md#consumer-user)可以使用用户名、电话号码或任何电子邮件地址登录。 可以在重定向 URL 中使用[自定义域](custom-domain.md)。|
-| [条件访问](../active-directory/roles/permissions-reference.md#) | 完全支持管理帐户和用户帐户。 | [使用者帐户](user-overview.md#consumer-user)支持一部分 Azure AD 条件访问功能。了解如何配置 Azure AD B2C [自定义域](conditional-access-user-flow.md)。|
+| [自定义域名](../active-directory/fundamentals/add-custom-domain.md) |  只能对管理帐户使用 Azure AD 自定义域。 | [使用者帐户](user-overview.md#consumer-user)可以使用用户名、电话号码或任何电子邮件地址登录。 可以在重定向 URL 中使用[自定义域](custom-domain.md)。|
+| [条件访问](../active-directory/conditional-access/overview.md) | 完全支持管理帐户和用户帐户。 | [使用者帐户](user-overview.md#consumer-user)支持一部分 Azure AD 条件访问功能。了解如何配置 Azure AD B2C [条件访问](conditional-access-user-flow.md)。|
+| [高级 P1](https://azure.microsoft.com/pricing/details/active-directory) | 充分支持 Azure AD 高级 P1 功能。 例如，[密码保护](../active-directory/authentication/concept-password-ban-bad.md)、[混合标识](../active-directory/hybrid/whatis-hybrid-identity.md)、[条件访问](../active-directory/roles/permissions-reference.md#)、[动态组](../active-directory/enterprise-users/groups-create-rule.md)等。 | [使用者帐户](user-overview.md#consumer-user)支持一部分 Azure AD 条件访问功能。 了解如何配置 Azure AD B2C [条件访问](conditional-access-user-flow.md)。|
+| [高级 P2](https://azure.microsoft.com/pricing/details/active-directory.md) | 充分支持 Azure AD 高级 P2 功能。 例如，[标识保护](../active-directory/identity-protection/overview-identity-protection.md)和[标识治理](../active-directory/governance/identity-governance-overview.md)。  | [使用者帐户](user-overview.md#consumer-user)支持一部分 Azure AD 标识保护功能。 了解如何[使用标识保护调查风险](identity-protection-investigate-risk.md)，并配置 Azure AD B2C [条件访问](conditional-access-user-flow.md)。 |
 
 ## <a name="other-azure-resources-in-your-tenant"></a>租户中的其他 Azure 资源
 
@@ -179,7 +181,27 @@ Azure AD B2C 依赖于 Azure AD 平台。 以下 Azure AD 功能可在 Azure AD 
 
 可以启用 [Azure AD 安全默认值](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)，以强制所有管理帐户均使用 MFA。
 
+## <a name="get-your-tenant-name"></a>获取租户名称
 
+若要获取 Azure AD B2C 租户名称，请执行以下步骤：
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
+1. 在“概述”中，复制“域名” 。
+
+![屏幕截图演示如何获取 Azure AD B2C 租户名称。](./media/tenant-management/get-azure-ad-b2c-tenant-name.png)  
+
+## <a name="get-your-tenant-id"></a>获取租户 ID
+
+若要获取 Azure AD B2C 租户 ID，请执行以下步骤：
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。
+1. 在“概述”中，复制“租户 ID” 。
+
+![屏幕截图演示如何获取 Azure AD B2C 租户 ID。](./media/tenant-management/get-azure-ad-b2c-tenant-id.png)  
 
 ## <a name="next-steps"></a>后续步骤
 

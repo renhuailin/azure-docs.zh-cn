@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 383bd00bb0daf165f37ed98e48a5d36708367920
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2eb74dccb01bb599a40bbf9c606661d4661a37f3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130856"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111953637"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>操作方法：计划 Azure AD 联接实现
 
@@ -164,7 +164,7 @@ Azure AD 联接设备的设备管理基于 MDM 平台（如 Intune）和 MDM CSP
 
 如果设备有权访问域控制器，则用户从 Azure AD 联接设备获取 SSO。 
 
-**建议：** 部署 [Azure AD 应用代理](../manage-apps/application-proxy.md)，以启用这些应用程序的安全访问。
+**建议：** 部署 [Azure AD 应用代理](../app-proxy/application-proxy.md)，以启用这些应用程序的安全访问。
 
 ### <a name="on-premises-network-shares"></a>本地网络共享
 
@@ -185,6 +185,11 @@ Azure AD 联接设备不支持依赖计算机身份验证的本地应用程序�
 Azure AD 联接设备的远程桌面连接需要主机是 Azure AD 联接或混合 Azure AD 联接。 不支持未联接设备或非 Windows 设备的远程桌面。 有关详细信息，请参阅 [Connect to remote Azure Active Directory-joined PC](/windows/client-management/connect-to-remote-aadj-pc)（连接到远程 Azure AD 联接电脑）
 
 从 Windows 10 2004 更新开始，用户还可以使用远程桌面从注册了 Azure AD 的 Windows 10 设备连接到 Azure AD 联接设备。 
+
+### <a name="radius-and-wi-fi-authentication"></a>RADIUS 和 Wi-Fi 身份验证
+
+目前，Azure AD 联接的设备不支持通过 RADIUS 身份验证连接到 Wi-Fi 访问点，因为 RADIUS 依赖于本地计算机对象的存在。 作为替代方法，可以使用通过 Intune 或用户凭据推送的证书来向 Wi-Fi 进行身份验证。 
+
 
 ## <a name="understand-your-provisioning-options"></a>了解预配选项
 **注意**：不能使用系统准备工具 (Sysprep) 或类似的映像工具部署 Azure AD 联接设备

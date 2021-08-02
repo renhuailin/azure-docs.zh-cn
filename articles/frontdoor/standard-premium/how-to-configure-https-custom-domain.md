@@ -6,19 +6,19 @@ author: duongau
 ms.service: frontdoor
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 02/18/2021
+ms.date: 06/10/2021
 ms.author: amsriva
-ms.openlocfilehash: c2edf11939996156c2b589b0b7876ae1b01466e5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0e8c597037ac769c293a2f04cb2e300658db93b4
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740811"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005224"
 ---
 # <a name="configure-https-on-a-front-door-standardpremium-sku-preview-custom-domain-using-the-azure-portal"></a>使用 Azure 门户在 Front Door 标准/高级版 SKU（预览版）自定义域中配置 HTTPS
 
 > [!NOTE]
-> 本文档适用于 Azure Front Door 标准版/高级版（预览版）。 正在寻找有关 Azure Front Door 的信息？ 请查看[此处](../front-door-overview.md)。
+> 本文档适用于 Azure Front Door 标准/高级（预览版）。 正在寻找有关 Azure Front Door 的信息？ 请查看[此处](../front-door-overview.md)。
 
 默认情况下，Azure Front Door 标准/高级版允许在添加自定义域时，将安全 TLS 传递到应用程序。 通过在自定义域上使用 HTTPS 协议，可以确保敏感数据在通过 Internet 发送时可以通过 TLS/SSL 加密安全地进行分发。 Web 浏览器通过 HTTPS 连接到网站时，它会验证网站的安全证书并验证该证书是否是由合法的证书颁发机构颁发的。 此过程提供安全性并保护 Web 应用程序免受攻击。
 
@@ -49,11 +49,11 @@ Azure Front Door 标准/高级版同时支持 Azure 托管证书和客户管理�
 
 1. 按照启用[自定义域](how-to-add-custom-domain.md)中的步骤，验证自定义域并将其与终结点关联。
 
-1. 成功将自定义域关联到终结点后，会将 Azure 托管证书部署到 Front Door。 此过程可能需要几分钟才能完成。
+1. 成功将自定义域关联到终结点后，会将 Azure 托管证书部署到 Front Door。 此过程可能需要几分钟到一小时才能完成。
 
 ## <a name="using-your-own-certificate"></a>使用自己的证书
 
-还可以选择使用自己的 TLS 证书。 必须先将此证书导入到 Azure 密钥保管库，然后才能将其与 Azure Front Door 标准/高级版结合使用。 有关如何导入到 Azure 密钥保管库中，请参阅[导入证书](../../key-vault/certificates/tutorial-import-certificate.md)。 
+还可以选择使用自己的 TLS 证书。  创建 TLS/SSL 证书时，必须使用 [Microsoft 受信任 CA 列表](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)中允许的证书颁发机构 (CA) 创建完整的证书链。 如果使用不允许的 CA，请求会被拒绝。  证书必须具有包含叶证书和中间证书的完整证书链，根 CA 必须是 [Microsoft 受信任 CA 列表](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)的一部分。 如果提供的是没有完整链的证书，则不能保证涉及该证书的请求实现预期效果。 必须先将此证书导入到 Azure 密钥保管库，然后才能将其与 Azure Front Door 标准/高级版结合使用。 有关如何导入到 Azure 密钥保管库中，请参阅[导入证书](../../key-vault/certificates/tutorial-import-certificate.md)。
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>准备 Azure Key Vault 帐户和证书
  
@@ -65,7 +65,7 @@ Azure Front Door 标准/高级版同时支持 Azure 托管证书和客户管理�
 1. 如果你已经有了证书，可以直接将其上传到 Azure 密钥保管库帐户。 否则，请直接通过 Azure 密钥保管库集成的某个伙伴证书颁发机构中的 Azure 密钥保管库来创建新证书。 将证书上传为 **证书** 对象，而不是 **机密**。
 
     > [!NOTE]
-    > 对于你自己的 TLS/SSL 证书，Front Door 不支持带有 EC 加密算法的证书。
+    > 对于你自己的 TLS/SSL 证书，Front Door 不支持带有 EC 加密算法的证书。 证书必须具有包含叶证书和中间证书的完整证书链，根 CA 必须是 [Microsoft 受信任 CA 列表](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)的一部分。 
 
 #### <a name="register-azure-front-door"></a>注册 Azure Front Door
 

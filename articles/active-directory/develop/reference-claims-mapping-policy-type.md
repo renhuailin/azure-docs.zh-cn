@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/16/2021
+ms.date: 06/03/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 56e855bafa70360711f3e30a7c4527091af7b34c
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 66af0fa248f3ead5755ed3fb27cd3bfd6bb19452
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107601220"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060887"
 ---
 # <a name="claims-mapping-policy-type"></a>声明映射策略类型
 
@@ -33,7 +33,7 @@ ms.locfileid: "107601220"
 | 声明集 | 说明 |
 |---|---|
 | 核心声明集 | 存在于每个令牌中，与策略无关。 这些声明也被视为受限制的，无法修改。 |
-| 基本声明集 | 包括默认情况下为令牌发出的声明（除了核心声明集之外）。 可以省略或通过使用声明映射策略来修改基本声明。 |
+| 基本声明集 | 包括默认情况下为令牌发出的声明（除了核心声明集之外）。 可以使用声明映射策略来[省略或修改基本声明](active-directory-claims-mapping.md#omit-the-basic-claims-from-tokens)。 |
 | 受限声明集 | 无法使用策略进行修改。 无法更改数据源，并且在生成这些声明时不应用任何转换。 |
 
 ### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>表 1：JSON Web 令牌 (JWT) 受限制声明集
@@ -273,7 +273,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3：每个 Source 的有效 ID 值
 
-| 源 | ID | 说明 |
+| Source | ID | 说明 |
 |-----|-----|-----|
 | 用户 | surname | 家族名称 |
 | 用户 | givenname | 名 |
@@ -376,7 +376,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5：允许作为 SAML NameID 数据源的属性
 
-|源|ID|说明|
+|Source|ID|说明|
 |-----|-----|-----|
 | 用户 | mail|电子邮件地址|
 | 用户 | userprincipalname|用户主体名称|
@@ -412,6 +412,6 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何使用 PowerShell 为租户中的特定应用程序自定义在令牌中发出的声明，请参阅[操作指南：为租户中的特定应用自定义在令牌中发出的声明（预览版）](active-directory-claims-mapping.md)
+- 若要了解如何使用 PowerShell 为租户中的特定应用程序自定义在令牌中发出的声明，请参阅[操作指南：为租户中的特定应用自定义在令牌中发出的声明](active-directory-claims-mapping.md)
 - 若要了解如何通过 Azure 门户自定义 SAML 令牌中颁发的声明，请参阅[如何：为企业应用程序自定义 SAML 令牌中颁发的声明](active-directory-saml-claims-customization.md)
 - 若要详细了解扩展属性，请参阅[在声明中使用目录架构扩展属性](active-directory-schema-extensions.md)。

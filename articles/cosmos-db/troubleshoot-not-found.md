@@ -4,16 +4,16 @@ description: 了解如何诊断和修复“未找到”异常。
 author: j82w
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 07/13/2020
+ms.date: 05/26/2021
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 22cce2c620d23ab477de5d92bb8c6d4f5ef5a493
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b9a78c1adeb5aa833c7c60be1dc4e553ae7d5393
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425118"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110538838"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>诊断和排查 Azure Cosmos DB 的“未找到”异常
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -37,6 +37,12 @@ HTTP 状态代码 404 表示资源不再存在。
 #### <a name="solution"></a>解决方案：
 1. Azure Cosmos DB 的默认帐户一致性为会话一致性。 创建或更新项时，响应将返回一个会话令牌，该令牌可以在 SDK 实例之间传递，以确保读取请求在从具有该更改的副本中进行读取。
 1. 将[一致性级别](./consistency-levels.md)更改为[更高级别](./consistency-levels.md)。
+
+### <a name="reading-throughput-for-a-container-or-database-resource"></a>读取容器或数据库资源的吞吐量
+使用 PowerShell 或 Azure CLI 并收到“未找到”错误消息。
+
+#### <a name="solution"></a>解决方案：
+可以在数据库级别和/或容器级别预配吞吐量。 如果收到“未找到”错误，请尝试读取父数据库资源或子容器资源的吞吐量。
 
 ### <a name="invalid-partition-key-and-id-combination"></a>分区键和 ID 组合无效
 分区键和 ID 组合无效。

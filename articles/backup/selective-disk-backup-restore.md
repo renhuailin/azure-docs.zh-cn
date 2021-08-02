@@ -2,14 +2,14 @@
 title: 适用于 Azure 虚拟机的选择性磁盘备份和还原
 description: 本文介绍如何使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。
 ms.topic: conceptual
-ms.date: 07/17/2020
-ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: e82c959dc63222e8565243cc9ac805283cab6617
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/13/2021
+ms.custom: references_regions , devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: cee95941aa091f77fe128457434a66398188a0a4
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501817"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678195"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>适用于 Azure 虚拟机的选择性磁盘备份和还原
 
@@ -22,7 +22,7 @@ Azure 备份支持使用虚拟机备份解决方案同时备份 VM 中的所有�
 1. 如果仅将关键数据备份在一个磁盘或一部分磁盘中，并且不想备份附加到 VM 的其余磁盘，以最大程度地减少备份存储成本。
 2. 如果对部分 VM 或数据使用其他备份解决方案。 例如，如果使用其他工作负荷备份解决方案备份数据库或数据，并且想对其余数据或磁盘使用 Azure VM 级备份，以使用可用的最佳功能来生成高效可靠的系统。
 
-借助 PowerShell 或 Azure CLI，可以配置 Azure VM 的选择性磁盘备份。  借助脚本，可以通过 LUN 编号包含或排除数据磁盘。  目前，只有“仅备份 OS 磁盘”选项才具有通过 Azure 门户配置选择性磁盘备份的功能。 因此，可以使用 OS 磁盘配置 Azure VM 的备份，并排除附加到该 VM 的所有数据磁盘。
+借助 PowerShell 或 Azure CLI，可以配置 Azure VM 的选择性磁盘备份。 借助脚本，可以通过 LUN 编号包含或排除数据磁盘。 目前，只有“仅备份 OS 磁盘”选项才具有通过 Azure 门户配置选择性磁盘备份的功能。 因此，可以使用 OS 磁盘配置 Azure VM 的备份，并排除附加到该 VM 的所有数据磁盘。
 
 >[!NOTE]
 > 默认情况下，OS 磁盘已添加到 VM 备份中，不能排除。
@@ -47,6 +47,9 @@ az account set -s {subscriptionID}
 ### <a name="configure-backup-with-azure-cli"></a>使用 Azure CLI 配置备份
 
 在配置保护操作期间，需要使用 inclusion / exclusion 参数指定磁盘列表设置，以提供要在备份中包含或排除的磁盘的 LUN 编号。
+
+>[!NOTE]
+>“配置保护”操作将覆盖以前的设置，而不会累积。
 
 ```azurecli
 az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
@@ -124,6 +127,11 @@ az backup job show --vault-name {vaultname} --resource-group {resourcegroup} -n 
    "Excluded disk(s)": "diskextest_DataDisk_2",
 ```
 
+BackupJobID 是备份作业名称。 若要提取作业名称，请运行以下命令：
+
+```azurecli
+az backup job list --resource-group {resourcegroup} --vault-name {vaultname}
+```
 ### <a name="list-recovery-points-with-azure-cli"></a>使用 Azure CLI 列出恢复点
 
 ```azurecli
@@ -190,6 +198,9 @@ az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-
 确保使用 Azure PowerShell 3.7.0 或更高版本。
 
 在配置保护操作期间，需要使用 inclusion/exclusion 参数指定磁盘列表设置，以提供要在备份中包含或排除的磁盘的 LUN 编号。
+
+>[!NOTE]
+>“配置保护”操作将覆盖以前的设置，而不会累积。
 
 ### <a name="enable-backup-with-powershell"></a>使用 PowerShell 启用备份
 
@@ -311,6 +322,8 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 启用了选择性磁盘备份功能的 VM 不支持用于“新建 VM”和“替换现有项”的还原选项。
 
 目前，Azure VM 备份不支持附加有超级磁盘或共享磁盘的 VM。 在这种情况下，不能使用选择性磁盘备份，那样会排除磁盘并备份 VM。
+
+如果在备份 Azure VM 时使用磁盘排除设置或选择性磁盘，请[停止保护并保留备份数据](backup-azure-manage-vms.md#stop-protection-and-retain-backup-data)。 恢复此资源的备份时，需要再次设置磁盘排除设置。
 
 ## <a name="billing"></a>计费
 

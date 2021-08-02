@@ -1,25 +1,25 @@
 ---
 title: 生成并导出用于 P2S 的证书：PowerShell
 titleSuffix: Azure VPN Gateway
-description: 在 Windows 10 或 Windows Server 2016 上使用 PowerShell 创建自签名根证书、导出公钥和生成用于 P2S 的客户端证书。
+description: 了解如何为 VPN 网关点到站点连接创建自签名根证书、导出公钥以及生成客户端证书。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 06/03/2021
 ms.author: cherylmc
-ms.openlocfilehash: c1c69b301199b054fe6b1ef42cfcf7878a7a161c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 48240793cee233d8e97ab79e6421b02eddc86f23
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91306678"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527561"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>使用 PowerShell 为点到站点连接生成和导出证书
 
 点到站点连接使用证书进行身份验证。 本文介绍如何在 Windows 10 或 Windows Server 2016 上使用 PowerShell 创建自签名根证书并生成客户端证书。 如果正在查找不同的证书说明，请参阅[证书 - Linux](vpn-gateway-certificates-point-to-site-linux.md) 或[证书 - MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)。
 
-必须在运行 Windows 10 或 Windows Server 2016 的计算机上执行本文中的步骤。 用于生成证书的 PowerShell cmdlet 是操作系统的一部分，在其他版本的 Windows 上不正常工作。 只需 Windows 10 或 Windows Server 2016 计算机即可生成证书。 生成证书后，可上传证书，或在任何支持的客户端操作系统上安装该证书。
+本文中的步骤适用于 Windows 10 或 Windows Server 2016。 用于生成证书的 PowerShell cmdlet 是操作系统的一部分，在其他版本的 Windows 上不正常工作。 只需 Windows 10 或 Windows Server 2016 计算机即可生成证书。 生成证书后，可上传证书，或在任何支持的客户端操作系统上安装该证书。
 
 如果无法访问 Windows 10 或 Windows Server 2016 计算机，则可使用 [Makecert](vpn-gateway-certificates-point-to-site-makecert.md) 生成证书。 使用任一方法生成的证书均可安装在[支持的](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)所有客户端操作系统上。
 

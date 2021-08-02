@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/23/2021
+ms.date: 05/18/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9cb84d15c12ae823462291b2e7008653306b2b55
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e514154b650ec2baaa8ebc547d54ad744ed1971b
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773712"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888475"
 ---
 # <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -147,7 +147,7 @@ az login
 | 安全 | 启用安全传输 | 可选 | 启用安全传输，要求仅通过 HTTPS（默认值）发出对此存储帐户的传入请求。 推荐此设置以获取最佳安全性。 有关详细信息，请参阅[要求采用安全传输以确保安全连接](storage-require-secure-transfer.md)。 |
 | 安全性 | 启用基础结构加密 | 可选 | 默认情况下，未启用基础结构加密。 启用基础结构加密，可在服务级别和基础结构级别对数据进行加密。 有关详细信息，请参阅[创建启用了基础结构加密的存储帐户，以便对数据进行双重加密](infrastructure-encryption-enable.md)。 |
 | 安全性 | 启用 Blob 公共访问 | 可选 | 启用此设置后，具有相应权限的用户可以启用对存储帐户中容器的匿名公共访问（默认值）。 禁用此设置将阻止对存储帐户进行所有匿名公共访问。 有关详细信息，请参阅[阻止对容器和 Blob 的匿名公共读取访问](../blobs/anonymous-read-access-prevent.md)。<br> <br> 启用 blob 公共访问不会使 blob 数据可供公共访问，除非用户采取额外步骤显式配置了容器的公共访问设置。 |
-| 安全性 | 启用存储帐户密钥访问（预览版） | 可选 | 启用此设置后，客户端可使用帐户访问密钥或 Azure Active Directory (Azure AD) 帐户（默认值）向存储帐户授予请求。 禁用此设置将阻止使用帐户访问密钥进行授权。 有关详细信息，请参阅[阻止对 Azure 存储帐户进行共享密钥授权（预览版）](shared-key-authorization-prevent.md)。 |
+| 安全性 | 启用存储帐户密钥访问（预览版） | 可选 | 启用此设置后，客户端可使用帐户访问密钥或 Azure Active Directory (Azure AD) 帐户（默认值）向存储帐户授予请求。 禁用此设置将阻止使用帐户访问密钥进行授权。 有关详细信息，请参阅[阻止对 Azure 存储帐户进行共享密钥授权](shared-key-authorization-prevent.md)。 |
 | 安全性 | 最低 TLS 版本 | 必需 | 对于存储帐户的传入请求，请选择最低版本的传输层安全性 (TLS)。 默认值为 TLS 版本 1.2。 当设置为默认值时，使用 TLS 1.0 或 TLS 1.1 发出的传入请求将被拒绝。 有关详细信息，请参阅[针对发送到存储帐户的请求强制实施必需的最低版本的传输层安全性 (TLS)](transport-layer-security-configure-minimum-version.md)。 |
 | Data Lake Storage Gen2 | 启用分层命名空间 | 可选 | 若要将此存储帐户用于 Azure Data Lake Storage Gen2 工作负载，请配置分层命名空间。 有关详细信息，请参阅 [Azure Data Lake Storage Gen2 简介](../blobs/data-lake-storage-introduction.md)。 |
 | Blob 存储 | 启用网络文件共享 (NFS) v3（预览版） | 可选 | NFS v3 在对象存储规模上提供 Linux 文件系统兼容性，使 Linux 客户端能够从 Azure 虚拟机 (VM) 或本地计算机将容器装载在 Blob 存储中。 有关详细信息，请参阅 [Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持（预览版）](../blobs/network-file-system-protocol-support.md)。 |
@@ -217,11 +217,11 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Kind StorageV2
 ```
 
-若要为存储帐户启用分层命名空间以使用 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，请在调用 New-AzStorageAccount 命令时包含 `-EnableHierarchicalNamespace $True` 参数。
+若要为存储帐户启用分层命名空间以使用 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，请在调用 New-AzStorageAccount 命令时加入 `EnableHierarchicalNamespace' parameter to ` 参数。
 
-下表显示了用于 `-SkuName` 和 `-Kind` 参数的值，以创建具有所需冗余配置的特定类型的存储帐户。
+下表显示了用于 `SkuName` 和 `Kind` 参数的值，以创建具有所需冗余配置的特定类型的存储帐户。
 
-| 存储帐户的类型 | 受支持的冗余配置 | -Kind 参数的值 | -SkuName 参数的可能值 | 支持分层命名空间 |
+| 存储帐户的类型 | 受支持的冗余配置 | Kind 参数支持的值 | SkuName 参数支持的值 | 支持分层命名空间 |
 |--|--|--|--|--|
 | 标准常规用途 v2 | LRS/GRS/RA-GRS/ZRS/GZRS/RA-GZRS | StorageV2 | Standard_LRS/Standard_GRS/Standard_RAGRS/Standard_ZRS/Standard_GZRS/Standard_RAGZRS | 是 |
 | 高级块 blob | LRS/ZRS | BlockBlobStorage | Premium_LRS/Premium_ZRS | 是 |
@@ -259,11 +259,11 @@ az storage account create \
   --kind StorageV2
 ```
 
-若要为存储帐户启用分层命名空间以使用 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，请在调用 az storage account create 命令时包含 `--enable-hierarchical-namespace true` 参数。 创建分层命名空间需要 Azure CLI 2.0.79 或更高版本。
+若要为存储帐户启用分层命名空间以使用 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，请在调用 **az storage account create** 命令时将 `enable-hierarchical-namespace` 参数设置为 `true`。 创建分层命名空间需要 Azure CLI 2.0.79 或更高版本。
 
-下表显示了用于 `-sku` 和 `-kind` 参数的值，以创建具有所需冗余配置的特定类型的存储帐户。
+下表显示了用于 `sku` 和 `kind` 参数的值，以创建具有所需冗余配置的特定类型的存储帐户。
 
-| 存储帐户的类型 | 受支持的冗余配置 | -kind 参数的值 | -sku 参数的可能值 | 支持分层命名空间 |
+| 存储帐户的类型 | 受支持的冗余配置 | kind 参数支持的值 | sku 参数支持的值 | 支持分层命名空间 |
 |--|--|--|--|--|
 | 标准常规用途 v2 | LRS/GRS/RA-GRS/ZRS/GZRS/RA-GZRS | StorageV2 | Standard_LRS/Standard_GRS/Standard_RAGRS/Standard_ZRS/Standard_GZRS/Standard_RAGZRS | 是 |
 | 高级块 blob | LRS/ZRS | BlockBlobStorage | Premium_LRS/Premium_ZRS | 是 |
@@ -274,7 +274,7 @@ az storage account create \
 
 # <a name="template"></a>[模板](#tab/template)
 
-可以使用 Azure PowerShell 或 Azure CLI 来部署资源管理器模板以创建存储帐户。 本操作指南文章中使用的模板来自 [Azure 资源管理器快速入门模板](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 若要运行脚本，请选择“试用”打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”。
+可以使用 Azure PowerShell 或 Azure CLI 来部署资源管理器模板以创建存储帐户。 本操作指南文章中使用的模板来自 [Azure 资源管理器快速入门模板](https://azure.microsoft.com/resources/templates/storage-account-create/)。 若要运行脚本，请选择“试用”打开 Azure Cloud Shell。 若要粘贴脚本，请右键单击 shell，然后选择“粘贴”。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -306,10 +306,9 @@ az deployment group create --resource-group $resourceGroupName --template-uri "h
 
 ## <a name="delete-a-storage-account"></a>删除存储帐户
 
-删除存储帐户将删除整个帐户，包括该帐户中的所有数据。 通常，此操作不可撤消。 只有在某些情况下才可能恢复存储帐户，但不保证成功。 有关详细信息，请参阅[恢复已删除的存储帐户](storage-account-recover.md)。
+删除存储帐户将删除整个帐户，包括该帐户中的所有数据。 在删除帐户之前请务必备份要保存的任何数据。
 
-> [!WARNING]
-> 请在删除帐户之前务必备份要保存的任何内容。 通常不可能恢复已删除的存储帐户，也无法检索删除之前该存储帐户包含的任何资源。
+在某些情况下，可以恢复已删除的存储帐户，但不能保证所有情况下都可以恢复已删除的存储帐户。 有关详细信息，请参阅[恢复已删除的存储帐户](storage-account-recover.md)。
 
 如果尝试删除与 Azure 虚拟机关联的存储帐户，则会显示一条错误消息，指出存储帐户仍在使用。 有关排除此错误的帮助信息，请参阅[删除存储帐户时排除错误](/troubleshoot/azure/virtual-machines/storage-resource-deletion-errors)。
 

@@ -1,32 +1,32 @@
 ---
-title: Windows 虚拟桌面（经典）诊断问题 - Azure
-description: 如何使用 Windows 虚拟桌面（经典）诊断功能来诊断问题。
+title: Azure 虚拟桌面（经典）诊断问题 - Azure
+description: 如何使用 Azure 虚拟桌面（经典）诊断功能来诊断问题。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e23a1e9a2a0118402df0d9b8869f170762a52284
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 29826aba135c2d409a99489aeb9e2c71f6d6a7c4
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444949"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754702"
 ---
-# <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>在 Windows 虚拟桌面（经典）中识别和诊断问题
+# <a name="identify-and-diagnose-issues-in-azure-virtual-desktop-classic"></a>在 Azure 虚拟桌面（经典）中识别和诊断问题
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../diagnostics-role-service.md)。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[本文](../diagnostics-role-service.md)。
 
-Windows 虚拟桌面提供了一项诊断功能，使管理员能够通过单个界面识别问题。 每当用户与系统交互时，Windows 虚拟桌面角色就会记录诊断活动。 每个日志都包含相关信息，例如事务中涉及的 Windows 虚拟桌面角色、错误消息、租户信息和用户信息。 诊断活动由最终用户和管理操作创建，可分为三个主要的存储桶：
+Azure 虚拟桌面提供了一项诊断功能，使管理员能够通过单个界面识别问题。 每当用户与系统交互时，Azure 虚拟桌面角色都会记录诊断活动。 每个日志都包含相关信息，例如事务中涉及的 Azure 虚拟桌面角色、错误消息、租户信息和用户信息。 诊断活动由最终用户和管理操作创建，可分为三个主要的存储桶：
 
 * 源订阅活动：最终用户每当尝试通过 Microsoft 远程桌面应用程序连接到其源时都会触发这些活动。
 * 连接活动：最终用户每当尝试通过 Microsoft 远程桌面应用程序连接到桌面或 RemoteApp 时都会触发这些活动。
 * 管理活动：管理员每当在系统上执行管理操作（如创建主机池、将用户分配到应用组和创建角色分配）时都会触发这些活动。
 
-由于诊断角色服务本身是 Windows 虚拟桌面的一部分，因此无法访问 Windows 虚拟桌面的连接将不会显示在诊断结果中。 当最终用户遇到网络连接问题时，可能会出现 Windows 虚拟桌面连接问题。
+由于诊断角色服务本身是 Azure 虚拟桌面的一部分，因此无法访问 Azure 虚拟桌面的连接将不会显示在诊断结果中。 当最终用户遇到网络连接问题时，可能会出现 Azure 虚拟桌面连接问题。
 
-首先，[下载并导入 Windows 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做），以便在 PowerShell 会话中使用。 然后，运行以下 cmdlet 登录到你的帐户：
+首先，[下载并导入 Azure 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做），以便在 PowerShell 会话中使用。 然后，运行以下 cmdlet 登录到你的帐户：
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -34,7 +34,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="diagnose-issues-with-powershell"></a>诊断 PowerShell 问题
 
-Windows 虚拟桌面诊断只使用一个 PowerShell cmdlet，但包含许多可选参数来帮助缩小问题范围和隔离问题。 以下部分列出了可用于诊断问题的 cmdlet。 大多数筛选器可以一起应用。 括在括号中的值（如 `<tenantName>`）应替换为适用于你的情况的值。
+Azure 虚拟桌面诊断只使用一个 PowerShell cmdlet，但包含许多可帮助缩小问题范围和隔离问题的可选参数。 以下部分列出了可用于诊断问题的 cmdlet。 大多数筛选器可以一起应用。 括在括号中的值（如 `<tenantName>`）应替换为适用于你的情况的值。
 
 >[!IMPORTANT]
 >诊断功能适用于单用户故障排除。 使用 PowerShell 的所有查询都必须包含 -UserName 或 -ActivityID 参数。  对于监视功能，请使用 Log Analytics。 有关如何向工作区发送诊断数据的详细信息，请参阅[将 Log Analytics 用于诊断功能](diagnostics-log-analytics-2019.md)。
@@ -123,10 +123,10 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 
 ## <a name="common-error-scenarios"></a>常见错误方案
 
-错误方案分类为服务的内部和 Windows 虚拟桌面的外部。
+错误方案分类为服务内部和 Azure 虚拟桌面外部。
 
-* 内部问题：指定租户管理员无法缓解并且需要作为支持问题进行解决的方案。 当通过 [Windows 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)提供反馈时，请包括活动 ID 和问题发生的大概时间范围。
-* 外部问题：与系统管理员可以缓解的方案相关。 这些问题发生在 Windows 虚拟桌面的外部。
+* 内部问题：指定租户管理员无法缓解并且需要作为支持问题进行解决的方案。 当通过 [Azure 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)提供反馈时，请包括活动 ID 和问题发生的大概时间范围。
+* 外部问题：与系统管理员可以缓解的方案相关。 这些问题发生在 Azure 虚拟桌面外部。
 
 下表列出了管理员可能会遇到的常见错误。
 
@@ -153,7 +153,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 |8000|InvalidAuthorizationRoleScope|输入的角色名称与任何现有的角色名称都不匹配。 请查看角色名称是否有拼写错误，然后重试。 |
 |8001|UserNotFound |输入的用户名与任何现有的用户名都不匹配。 请查看名称是否有拼写错误，然后重试。|
 |8005|UserNotFoundInAAD |输入的用户名与任何现有的用户名都不匹配。 请查看名称是否有拼写错误，然后重试。|
-|8008|TenantConsentRequired|请按照[此处](tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop)的说明为租户提供许可。|
+|8008|TenantConsentRequired|请按照[此处](tenant-setup-azure-active-directory.md#grant-permissions-to-azure-virtual-desktop)的说明为租户提供许可。|
 
 ### <a name="external-connection-error-codes"></a>外部连接错误代码
 
@@ -174,6 +174,6 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> 
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Windows 虚拟桌面中的角色的详细信息，请参阅 [Windows 虚拟桌面环境](environment-setup-2019.md)。
+若要了解有关 Azure 虚拟桌面中的角色的详细信息，请参阅 [Azure 虚拟桌面环境](environment-setup-2019.md)。
 
-若要查看适用于 Windows 虚拟桌面的可用 PowerShell cmdlet 的列表，请参阅 [PowerShell 参考](/powershell/windows-virtual-desktop/overview)。
+若要查看适用于 Azure 虚拟桌面的可用 PowerShell cmdlet 的列表，请参阅 [PowerShell 参考](/powershell/windows-virtual-desktop/overview)。

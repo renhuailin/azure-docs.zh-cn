@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 03/09/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 3f94b22d4f439769b27d38943603f7c726bfc40d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f0f75a305a411e49a29124599dfa90aa0aee9056
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110468401"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112004271"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商业市场权益
 
 你已将产品/服务发布到 Microsoft 商业市场，现在希望看到它们获得成功。 我们提供销售、技术和营销权益，帮助你加快产品/服务的增加。
 
-在 Microsoft AppSource 或 Azure 市场上发布产品/服务后，请转到[合作伙伴中心](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace)，访问并激活你有资格享受的营销、销售和技术权益。 Marketplace Rewards 权益根据商业市场参与度和销售情况而逐渐增多。 参与得越多，回馈就越多。
+在 Microsoft AppSource 或 Azure 市场上发布产品/服务后，请转到[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165457)，访问并激活你有资格享受的营销、销售和技术权益。 Marketplace Rewards 权益根据商业市场参与度和销售情况而逐渐增多。 参与得越多，回馈就越多。
 
 ## <a name="marketplace-rewards"></a>Marketplace Rewards
 
@@ -38,10 +38,10 @@ Rewards 团队成员将在产品/服务上线时联系你，具体取决于你�
 
 有关所有计划权益的详细说明，可查看 [Marketplace Rewards 计划内容](https://aka.ms/marketplacerewards)。
 
-## <a name="getting-started-is-easy"></a>入门很轻松：
+## <a name="getting-started-is-easy"></a>轻松入门
 
 1. 在 Microsoft AppSource 或 Azure 市场中发布产品/服务。
-2. 请转到合作伙伴中心的 [Marketplace Rewards](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)，然后选择“注册 Marketplace Rewards 计划”。
+2. 请转到合作伙伴中心的 [Marketplace Rewards](https://go.microsoft.com/fwlink/?linkid=2165388)，然后选择“注册 Marketplace Rewards 计划”。
 3. 若要激活销售和营销权益，请分配一名公司营销联系人。 此联系人将收到有关 Marketplace Rewards 的跟进信息。
 4. 若要添加或更新营销联系人信息，请转到“Marketplace Rewards”页顶部的“销售和营销权益”选项卡，然后选择“添加”、“更新”或“更改”。  接下来，请执行以下操作：
     1. 从列表中选择用户。 如果要分配的用户不在列表中，则可以在“帐户设置”中添加新用户。
@@ -50,7 +50,7 @@ Rewards 团队成员将在产品/服务上线时联系你，具体取决于你�
     1. 更新营销联系人后，选择“激活”以激活要开始使用的权益。 激活权益后，Rewards 团队的成员将在一周内与你的营销联系人联系。
 
 > [!NOTE]
-> 如果产品/服务已上线了四周以上，但没有收到消息，请查看合作伙伴中心，了解组织中相关产品/服务的所有者。 他们应该有跟进信息和后续步骤。<br><br>如果无法确定所有者，或者所有者已离开公司，则可以在[帮助和支持](https://aka.ms/marketplacepublishersupport)上提出支持票证。
+> 如果产品/服务已上线了四周以上，但没有收到消息，请查看合作伙伴中心，了解组织中相关产品/服务的所有者。 他们应该有跟进信息和后续步骤。<br><br>如果无法确定所有者，或者所有者已离开公司，则可以在[帮助和支持](https://go.microsoft.com/fwlink/?linkid=2165533)上提出支持票证。
 
 随着你在商业市场中产品/服务的不断增加，你可操作的活动范围也会不断扩大。 所有列表都会收到基本级别的优化建议和促销，这属于资源和最佳做法自助服务电子邮件的一部分。
 

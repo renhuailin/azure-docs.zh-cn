@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/07/2020
-ms.openlocfilehash: 139852949a3744fd603cb197b2e27fa32679aae0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 187e51d049d965d0fb9cef1af93a5036819e957f
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042413"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110665803"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>自动注册到 SQL IaaS 代理扩展
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,9 +29,9 @@ ms.locfileid: "102042413"
 
 向 [SQL IaaS 代理扩展](sql-server-iaas-agent-extension-automate-management.md)注册 SQL Server VM，以释放完整功能集权益。 
 
-启用自动注册后，作业将每天运行，检测订阅中所有未注册 VM 上是否安装了 SQL Server。 完成此操作的方法是：将 SQL IaaS 代理扩展二进制文件复制到 VM，然后运行一个用于检查 SQL Server 注册表配置单元的一次性实用程序。 如果检测到 SQL Server 配置单元，则会以轻型模式向扩展注册虚拟机。 如果注册表中不存在任何 SQL Server 配置单元，则将删除二进制文件。
+启用自动注册后，作业将每天运行，检测订阅中所有未注册 VM 上是否安装了 SQL Server。 完成此操作的方法是：将 SQL IaaS 代理扩展二进制文件复制到 VM，然后运行一个用于检查 SQL Server 注册表配置单元的一次性实用程序。 如果检测到 SQL Server 配置单元，则会以轻型模式向扩展注册虚拟机。 如果注册表中不存在任何 SQL Server 配置单元，则将删除二进制文件。 自动注册可能需要多达 4 天的时间来检测新创建的 SQL Server VM。
 
-为订阅启用自动注册后，将以轻型模式向 SQL IaaS 代理扩展注册已安装 SQL Server 的所有当前和未来 VM，且无需停机和重启 SQL Server 服务。 你仍需要[手动升级到完全可管理性模式](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full)，才能利用完整功能集。 
+为订阅启用自动注册后，将以轻型模式向 SQL IaaS 代理扩展注册已安装 SQL Server 的所有当前和未来 VM，且无需停机和重启 SQL Server 服务。 你仍需要[手动升级到完全可管理性模式](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full)，才能利用完整功能集。 许可证类型自动默认为 VM 映像的类型。 如果对 VM 使用即用即付映像，则许可证类型将为 `PAYG`，否则许可证类型将默认为 `AHUB`。 
 
 > [!IMPORTANT]
 > SQL IaaS 代理扩展会收集数据，目的只是当客户在 Azure 虚拟机中使用 SQL Server 时为他们提供可选权益。 在未经得客户事先同意的情况下，Microsoft 不会将此数据用于许可审核。 有关详细信息，请参阅 [SQL Server 隐私补充条款](/sql/sql-server/sql-server-privacy#non-personal-data)。
@@ -87,7 +88,7 @@ Unregister-AzProviderFeature -FeatureName BulkRegistration -ProviderNamespace Mi
 
 为此，请执行下列步骤：
 
-1. 将[此脚本](https://github.com/microsoft/tigertoolbox/blob/master/AzureSQLVM/RegisterSubscriptionsToSqlVmAutomaticRegistration.ps1)保存到 `.ps1` 文件，例如 `EnableBySubscription.ps1`。 
+1. 保存[此脚本](https://github.com/microsoft/tigertoolbox/blob/master/AzureSQLVM/AutoRegTools.psm1)。
 1. 使用管理命令提示符或 PowerShell 窗口导航到保存脚本的位置。 
 1. 连接到 Azure (`az login`)。
 1. 执行此脚本，并传入 SubscriptionIds 作为参数，例如   

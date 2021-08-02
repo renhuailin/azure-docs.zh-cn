@@ -1,15 +1,15 @@
 ---
 title: 了解适用于 Kubernetes 的 Azure Policy
 description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管理在 Azure 或本地运行 Kubernetes 的群集。
-ms.date: 03/22/2021
+ms.date: 05/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9ca33c3a937b0a155928f20469830388a95a08e3
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 5a479c6f6bf22f416b3508c08dff5d60a8297d1a
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107506017"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985015"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解用于 Kubernetes 群集的 Azure Policy
 
@@ -130,16 +130,6 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 
   1. 在主页中，选择“启用加载项”按钮。
 
-     <a name="migrate-from-v1"></a>
-     > [!NOTE]
-     > 如果“禁用加载项”按钮已启用，并且显示了迁移警告 v2 消息，则说明 v1 加载项已安装，必须在分配 v2 策略定义之前将其删除。 从 8 月 24 日起，已弃用的 v1 加载项将自动替换为 v2 加载项，
-     > 2020. 然后必须分配策略定义的新 v2 版本。 若要立即升级，请执行以下步骤：
-     >
-     > 1. 验证 AKS 群集是否已安装 v1 加载项（方法是访问 AKS 群集上的“策略”页），以及是否具有“当前群集使用 Azure Policy 加载项 v1...”消息。
-     > 1. [删除加载项](#remove-the-add-on-from-aks)。
-     > 1. 选择“启用加载项”按钮以安装加载项的 v2 版本。
-     > 1. [分配 v1 内置策略定义的 v2 版本](#assign-a-built-in-policy-definition)
-
 - Azure CLI
 
   ```azurecli-interactive
@@ -158,17 +148,13 @@ kubectl get pods -n kube-system
 kubectl get pods -n gatekeeper-system
 ```
 
-最后，通过运行此 Azure CLI 命令，并将 `<rg>` 替换为资源组名称，将 `<cluster-name>` 替换为 AKS 群集名称 `az aks show --query addonProfiles.azurepolicy -g <rg> -n <cluster-name>`，来验证是否已安装最新的加载项。 结果应类似于以下输出，config.version 应为 `v2`：
+最后，通过运行此 Azure CLI 命令，并将 `<rg>` 替换为资源组名称，将 `<cluster-name>` 替换为 AKS 群集名称 `az aks show --query addonProfiles.azurepolicy -g <rg> -n <cluster-name>`，来验证是否已安装最新的加载项。 结果应类似于以下输出：
 
 ```output
-"addonProfiles": {
-    "azurepolicy": {
-        "config": {
-            "version": "v2"
-        },
+{
+        "config": null,
         "enabled": true,
         "identity": null
-    },
 }
 ```
 
@@ -501,7 +487,6 @@ helm uninstall azure-policy-addon
 - 如果设置 AKS 引擎群集定义中的“加载项”属性进行安装：
 
   将 azure-policy 的“加载项”属性更改为 false 后，将群集定义重新部署到 AKS 引擎：
-
 
   ```json
   "addons": [{

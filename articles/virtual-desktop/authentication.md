@@ -1,27 +1,27 @@
 ---
-title: Windows 虚拟桌面身份验证 - Azure
-description: 适用于 Windows 虚拟桌面的身份验证方法。
+title: Azure 虚拟桌面身份验证 - Azure
+description: 适用于 Azure 虚拟桌面的身份验证方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 02/26/2021
+ms.date: 05/26/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 32e113bf02a2cbd21b70805396c212a1f9467382
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: bb5341f1f80350ce14b99a6ca5cf27343bd20675
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448230"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745378"
 ---
 # <a name="supported-authentication-methods"></a>支持的身份验证方法
 
-本文简要概述了适用于 Windows 虚拟桌面的身份验证类型。
+本文简要概述了适用于 Azure 虚拟桌面的身份验证类型。
 
 ## <a name="session-host-authentication"></a>会话主机身份验证
 
-Windows 虚拟桌面支持使用 NT LAN Manager (NTLM) 和 Kerberos 进行会话主机身份验证。 但是，在使用 Kerberos 时，客户端需从域控制器上运行的密钥分发中心 (KDC) 服务获取 Kerberos 安全票证。 若要获取票证，客户端需要直线连接到域控制器。 通过使用企业网络，即可实现直连。 还可以通过 VPN 连接至企业网络，或者设置 [KDC 代理服务器](key-distribution-center-proxy.md)。
+Azure 虚拟桌面支持使用 NT LAN Manager (NTLM) 和 Kerberos 进行会话主机身份验证。 但是，在使用 Kerberos 时，客户端需从域控制器上运行的密钥分发中心 (KDC) 服务获取 Kerberos 安全票证。 若要获取票证，客户端需要直线连接到域控制器。 通过使用企业网络，即可实现直连。 还可以通过 VPN 连接至企业网络，或者设置 [KDC 代理服务器](key-distribution-center-proxy.md)。
 
 以下是当前受支持的登录方法：
 
@@ -45,13 +45,13 @@ Windows 虚拟桌面支持使用 NT LAN Manager (NTLM) 和 Kerberos 进行会话
 
 ## <a name="hybrid-identity"></a>混合标识
 
-Windows 虚拟桌面支持使用 Azure Active Directory (AD) 的[混合标识](../active-directory/hybrid/whatis-hybrid-identity.md)，包括使用 Active Directory 联合身份验证服务 (ADFS) 进行联合身份验证的标识。 由于用户必须要能通过 Azure AD 被发现，因此 Windows 虚拟桌面不支持使用 ADFS 的独立 Active Directory 部署。
+Azure 虚拟桌面支持使用 Azure Active Directory (AD) 的[混合标识](../active-directory/hybrid/whatis-hybrid-identity.md)，包括使用 Active Directory 联合身份验证服务 (ADFS) 进行联合身份验证的标识。 由于用户必须要能通过 Azure AD 被发现，因此 Azure 虚拟桌面不支持使用 ADFS 的独立 Active Directory 部署。
 
 ## <a name="single-sign-on-sso"></a>单一登录 (SSO)
 
-Windows 虚拟桌面目前不支持通过 Active Directory 联合身份验证服务 (ADFS) 进行 SSO。
+Azure 虚拟桌面支持[将 Active Directory 联合身份验证服务 (ADFS) 用于 Windows 和 Web 客户端的 SSO](configure-adfs-sso.md)。
 
-想要避免系统提示输入会话主机的凭据，唯一方法是将其保存在客户端中。 建议仅在安全设备上执行此操作，以防其他用户访问你的资源。
+否则，想要避免系统提示输入会话主机的凭据，唯一方法是将其保存在客户端中。 建议仅在安全设备上执行此操作，以防其他用户访问你的资源。
 
 ## <a name="next-steps"></a>后续步骤
 

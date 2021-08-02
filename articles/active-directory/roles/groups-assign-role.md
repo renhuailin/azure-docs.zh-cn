@@ -8,27 +8,36 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 11/05/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 816009abb688525cd7663311c79300a6d12cf146
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e585624cac534634f4927fcbb61993ca98aab4a6
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98742941"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085881"
 ---
 # <a name="assign-a-role-to-a-cloud-group-in-azure-active-directory"></a>将角色分配到 Azure Active Directory 中的云组
 
 本部分介绍 IT 管理员如何将 Azure Active Directory (Azure AD) 角色分配到 Azure AD 组。
 
-## <a name="using-azure-ad-admin-center"></a>使用 Azure AD 管理中心
+## <a name="prerequisites"></a>先决条件
+
+- Azure AD Premium P1 或 P2 许可证
+- 特权角色管理员或全局管理员
+- 使用 PowerShell 时需要 AzureADPreview 模块
+- 将 Graph 浏览器用于 Microsoft Graph API 时需要管理员同意
+
+有关详细信息，请参阅[使用 PowerShell 或 Graph 浏览器的先决条件](prerequisites.md)。
+
+## <a name="azure-portal"></a>Azure 门户
 
 向 Azure AD 角色分配组类似于分配用户和服务主体，只不过只能使用可分配角色的组。 在 Azure 门户中，只显示可分配角色的组。
 
-1. 使用 Azure AD 组织中的特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
+1. 登录到 [Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
 
 1. 选择“Azure Active Directory” > “角色和管理员”，然后选择要分配的角色 。
 
@@ -44,7 +53,7 @@ ms.locfileid: "98742941"
 
 有关分配角色权限的详细信息，请参阅[将管理员和非管理员角色分配给用户](../fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
-## <a name="using-powershell"></a>使用 PowerShell
+## <a name="powershell"></a>PowerShell
 
 ### <a name="create-a-group-that-can-be-assigned-to-role"></a>创建可分配给角色的组
 
@@ -64,7 +73,7 @@ $roleDefinition = Get-AzureADMSRoleDefinition -Filter "displayName eq 'Helpdesk 
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope '/' -RoleDefinitionId $roleDefinition.Id -PrincipalId $group.Id 
 ```
 
-## <a name="using-microsoft-graph-api"></a>使用 Microsoft Graph API
+## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 ### <a name="create-a-group-that-can-be-assigned-azure-ad-role"></a>创建可被分配 Azure AD 角色的组
 

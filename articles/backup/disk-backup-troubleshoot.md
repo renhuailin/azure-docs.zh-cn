@@ -2,20 +2,15 @@
 title: 对 Azure 磁盘备份中的备份失败进行故障排除
 description: 了解如何对 Azure 磁盘备份中的备份失败进行故障排除
 ms.topic: conceptual
-ms.date: 01/07/2021
-ms.openlocfilehash: 855c6c5b19b10bdb699a25f89ebc29001b7941ac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 06/08/2021
+ms.openlocfilehash: a749c87949d53781dc810148d01cc5d179d70f77
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737721"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754108"
 ---
-# <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>对 Azure 磁盘备份上的备份失败进行故障排除（预览版）
-
->[!IMPORTANT]
->Azure 磁盘备份预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负载。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 有关区域可用性，请参阅[支持矩阵](disk-backup-support-matrix.md)。
->
->[填写此表格](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u)以便注册预览版。
+# <a name="troubleshooting-backup-failures-in-azure-disk-backup"></a>对 Azure 磁盘备份中的备份失败进行故障排除
 
 本文提供了有关使用 Azure 磁盘时面临的备份和还原问题的故障排除信息。 有关 [Azure 磁盘备份](disk-backup-overview.md)区域可用性、支持的方案和限制的详细信息，请参阅[支持矩阵](disk-backup-support-matrix.md)。
 
@@ -157,7 +152,7 @@ ms.locfileid: "98737721"
 
 错误消息：在尝试配置保护的备份保管库的区域中，还无法使用磁盘备份。
 
-建议的操作：备份保管库必须位于预览版支持的区域中。 有关区域可用性，请参阅[支持矩阵](disk-backup-support-matrix.md)。
+建议的操作：备份保管库必须位于支持的区域中。 有关区域可用性，请参阅[支持矩阵](disk-backup-support-matrix.md)。
 
 ### <a name="error-code-usererrordppdatasourcealreadyhasbackupinstance"></a>错误代码：UserErrorDppDatasourceAlreadyHasBackupInstance
 
@@ -177,6 +172,12 @@ ms.locfileid: "98737721"
 
 建议的操作：等待上一个运行的备份完成。
 
+### <a name="error-code-usererrormissingsubscriptionregistration"></a>错误代码：UserErrorMissingSubscriptionRegistration
+
+错误消息：该订阅未注册，无法使用命名空间“Microsoft.Compute”。
+
+建议的操作：尚未为订阅注册所需的资源提供程序。 使用[解决方案 3](../azure-resource-manager/templates/error-register-resource-provider.md#solution-3---azure-portal) 中的步骤注册两个资源提供程序的命名空间（Microsoft.Compute 和 Microsoft.Storage） 。
+
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 磁盘备份支持矩阵](disk-backup-support-matrix.md)
+[Azure 磁盘备份支持矩阵](disk-backup-support-matrix.md)

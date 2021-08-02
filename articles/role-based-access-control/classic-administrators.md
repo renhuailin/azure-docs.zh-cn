@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 05/20/2021
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b61636d6048f63ae962d4f755a29c02e6785d5e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1f997ff34703e95c498a0f3c1646bf3acb0129e
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100557528"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469971"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 经典订阅管理员
 
@@ -42,7 +42,7 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 
 1. 单击“经典管理员”选项卡。
 
-    ![打开经典管理员的屏幕截图](./media/classic-administrators/classic-administrators.png)
+    ![打开经典管理员的屏幕截图](./media/shared/classic-administrators.png)
 
 1. 单击“添加” > “添加共同管理员”打开“添加共同管理员”窗格。 
 
@@ -97,7 +97,9 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 
 ## <a name="change-the-service-administrator"></a>更改服务管理员
 
-只有帐户管理员可以更改订阅的服务管理员。 默认情况下，当你注册 Azure 订阅时，服务管理员即是帐户管理员。 具有帐户管理员角色的用户无权访问 Azure 门户。 具有服务管理员角色的用户拥有 Azure 门户的完全访问权限。 如果帐户管理员和服务管理员是同一个用户，而你将服务管理员更改为其他用户，则帐户管理员会失去 Azure 门户的访问权限。 但是，帐户管理员可始终使用帐户中心将服务管理员重新更改为自己。
+只有帐户管理员可以更改订阅的服务管理员。 默认情况下，当你注册 Azure 订阅时，服务管理员即是帐户管理员。
+
+具有帐户管理员角色的用户可以访问Azure 门户和管理计费，但不能取消订阅。 具有服务管理员角色的用户拥有 Azure 门户的完全访问权限，可以取消订阅。 帐户管理员可以使自己成为服务管理员。
 
 请按照这些步骤在 Azure 门户中更改服务管理员。
 
@@ -109,7 +111,7 @@ Microsoft 建议使用 Azure 基于角色的访问控制 (Azure RBAC) 来管理�
 
 1. 在左侧导航栏中，单击“属性”。
 
-1. 单击“服务管理员”。
+1. 单击“更改服务管理员”。
 
     ![此屏幕截图显示了 Azure 门户中的订阅属性](./media/classic-administrators/service-admin.png)
 

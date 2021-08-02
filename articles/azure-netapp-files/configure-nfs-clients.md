@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/10/2021
+ms.date: 05/17/2021
 ms.author: b-juche
-ms.openlocfilehash: 695dd379e0b9f02f5ec6a08f2a037d071259d2b7
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: effca5e663f91489bc534934d26faec8c18e7460
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734508"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110090616"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>为 Azure NetApp 文件配置 NFS 客户端
 
@@ -258,9 +258,42 @@ ms.locfileid: "109734508"
 `root@cbs-k8s-varun4-04:/home/cbs# getent passwd hari1`   
 `hari1:*:1237:1237:hari1:/home/hari1:/bin/bash`   
 
+## <a name="configure-two-vms-with-the-same-hostname-to-access-nfsv41-volumes"></a>配置两个具有相同主机名的 VM 以访问 NFSv4.1 卷 
+
+本部分介绍如何配置两个主机名相同的 VM，以访问 Azure NetApp 文件 NFSv4.1 卷。 执行灾难恢复 (DR) 测试并且需要一个其主机名与主 DR 系统相同的测试系统时，可以使用此过程。 只有访问相同 Azure NetApp 文件卷的两个 VM 上的主机名相同时，才需要使用此过程。  
+
+NFSv4.x 要求每个客户端使用唯一字符串向服务器表明自身身份。 在一个客户端和一个服务器之间共享的文件打开和锁定状态与此身份相关联。 为了支持实现可靠的 NFSv4.x 状态恢复和透明状态迁移，此身份字符串不得在客户端重启时更改。
+
+1. 使用以下命令在 VM 客户端上显示 `nfs4_unique_id` 字符串：
+    
+    `# systool -v -m nfs | grep -i nfs4_unique`     
+    `    nfs4_unique_id      = ""`
+
+    若要在具有相同主机名的其他 VM 上装载同一卷（例如 DR 系统），请创建一个 `nfs4_unique_id`，这样它就能够以独一无二的方式向 Azure NetApp 文件 NFS 服务表明自身身份。  此步骤可以让服务能够区分两个主机名相同的 VM 并允许在两个 VM 上装载 NFSv4.1 卷。  
+
+    只需在测试 DR 系统上执行此步骤。 为了保持一致性，可以考虑在每个涉及的虚拟机上应用唯一设置。
+
+2. 在测试 DR 系统中，将以下行添加到 `nfsclient.conf` 文件（通常位于 `/etc/modprobe.d/` 中）：
+
+    `options nfs nfs4_unique_id=uniquenfs4-1`  
+
+    字符串 `uniquenfs4-1` 可以是任何字母数字字符串，只要它在要连接到服务的 VM 中是唯一的即可。
+
+    查看发行版的文档，了解如何配置 NFS 客户端设置。
+
+    重启 VM，使更改生效。
+
+3. 在测试 DR 系统中，验证 VM 重启后是否设置了 `nfs4_unique_id`：       
+
+    `# systool -v -m nfs | grep -i nfs4_unique`   
+    `   nfs4_unique_id      = "uniquenfs4-1"`   
+
+4. 在两个 VM 上正常[装载 NFSv4.1 卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)。
+
+    现在，两个主机名相同的 VM 都可以装载和访问 NFSv4.1 卷。  
 
 ## <a name="next-steps"></a>后续步骤  
 
 * [创建用于 Azure NetApp 文件的 NFS 卷](azure-netapp-files-create-volumes.md)
 * [为 Azure NetApp 文件创建双重协议卷](create-volumes-dual-protocol.md)
-
+* [为 Windows 或 Linux 虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) 

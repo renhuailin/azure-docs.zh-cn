@@ -1,14 +1,30 @@
 ---
-ms.openlocfilehash: 69f0da2f1528ad1f45762a8f754cc2020b4cb880
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5208f497fc5423cd0e9c2343af2a5757088399b1
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98900772"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111450004"
 ---
-本文列出了已发布的 Azure Active Directory Connect 预配代理的版本和功能。 Azure AD 团队会定期更新预配代理的新特性和功能。 发布新版本时，会自动更新预配代理。 
+本文列出了已发布的 Azure Active Directory Connect 预配代理的版本和功能。 Azure AD 团队会定期更新预配代理的新特性和功能。 
 
 Microsoft 为最新代理版本和之前的一个版本提供直接支持。
+
+## <a name="113590"></a>1.1.359.0
+
+### <a name="new-features-and-improvements"></a>新增功能和改进
+- 要设置/重置权限的 GMSA Cmdlet
+
+### <a name="fixed-issues"></a>修复的问题
+- GMSA 文件夹权限 Bug 修复（起初，该问题导致了启动问题）
+- 用于处理对单值引用属性（例如，manager）的多个更改的 Bug 修复
+- 初始枚举失败的 Bug 修复，以及对故障的增强跟踪
+- 优化对范围组的组成员身份更新。 这样，客户现在可以使用组范围筛选器同步最多包含 50000 位成员的组。 
+- 支持使用按需预配所用的范围按 DN 检索单个对象，以遵循范围逻辑
+
+
+
+
 
 ## <a name="113540"></a>1.1.354.0
 
@@ -97,5 +113,4 @@ Microsoft 为最新代理版本和之前的一个版本提供直接支持。
 ### <a name="new-features-and-improvements"></a>新增功能和改进
 
 * 修改了预配代理和连接器体系结构，以提高性能、稳定性和可靠性 
-* 使用 UI 驱动的安装向导简化了预配代理配置 
-* 添加了对自动代理更新的支持
+* 使用 UI 驱动的安装向导简化了预配代理配置

@@ -5,12 +5,12 @@ description: 查看在 Azure Kubernetes 服务 (AKS) 中运行 Windows Server �
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: cc5a5ec2bbfb64a1e787277bf67579bad0543cd6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5d3d78eb20a9ca8b663fa0cf381fcce1bd528345
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739570"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463297"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS 中 Windows Server 节点池的常见问题
 
@@ -83,6 +83,24 @@ Windows 节点池不支持服务主体轮换。 若要更新服务主体，请�
 
 请改为使用托管标识，它们本质上是服务主体的包装器。 有关详细信息，请参阅[在 Azure Kubernetes 服务中使用托管标识][managed-identity]。
 
+## <a name="how-do-i-change-the-administrator-password-for-windows-server-nodes-on-my-cluster"></a>如何为群集上的 Windows Server 节点更改管理员密码？
+
+在创建 AKS 群集时，请指定 `--windows-admin-password` 和 `--windows-admin-username` 参数，以便为群集上的任何 Windows Server 节点设置管理员凭据。 如果你未在执行特定操作时（例如，在使用 Azure 门户创建群集时，或在使用 Azure CLI 设置 `--vm-set-type VirtualMachineScaleSets` 和 `--network-plugin azure` 时）指定管理员凭据，则用户名会默认设置为 azureuser，并会使用一个随机密码。
+
+若要更改管理员密码，请使用 `az aks update` 命令：
+
+```azurecli
+az aks update \
+    --resource-group $RESOURCE_GROUP \
+    --name $CLUSTER_NAME \
+    --windows-admin-password $NEW_PW
+```
+
+> [!IMPORTANT]
+> 执行此操作会升级所有 Windows Server 节点池。 Linux 节点池不受影响。
+> 
+> 在更改 `--windows-admin-password` 时，新密码必须至少为 14 个字符，并且必须符合 [Windows Server 密码要求][windows-server-password]。
+
 ## <a name="how-many-node-pools-can-i-create"></a>我可以创建多少个节点池？
 
 AKS 群集最多可以包含 10 个节点池。 这些节点池中最多可以有 1000 个节点。 [节点池限制][nodepool-limitations]。
@@ -98,10 +116,6 @@ Windows 节点目前不支持 Kubenet。
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>我是否可以在 Windows 节点上运行入口控制器？
 
 是，支持 Windows Server 容器的入口控制器可以在 AKS 中的 Windows 节点上运行。
-
-## <a name="can-i-use-azure-dev-spaces-with-windows-nodes"></a>我是否可以将 Azure Dev Spaces 与 Windows 节点配合使用？
-
-Azure Dev Spaces 当前仅可用于基于 Linux 的节点池。
 
 ## <a name="can-my-windows-server-containers-use-gmsa"></a>我的 Windows Server 容器是否可以使用 gMSA？
 
@@ -162,6 +176,22 @@ az vmss show --name myAKSCluster --resource-group MC_CLUSTERNAME
 
 是的，你可以使用 [Kubernetes Web 仪表板][kubernetes-dashboard]来访问有关 Windows 容器的信息，但目前不能直接从 Kubernetes Web 仪表板将 kubectl exec 运行到正在运行的 Windows 容器中。 若要详细了解如何连接到正在运行的 Windows 容器，请参阅[使用 RDP 连接到 Azure Kubernetes 服务 (AKS) 群集 Windows Server 节点以进行维护或故障排除][windows-rdp]。
 
+## <a name="how-do-i-change-the-time-zone-of-a-running-container"></a>如何更改正在运行的容器的时区？
+
+若要更改正在运行的 Windows Server 容器的时区，请通过 PowerShell 会话连接到正在运行的容器。 例如：
+    
+```azurecli-interactive
+kubectl exec -it CONTAINER-NAME -- powershell
+```
+
+在正在运行的容器中，使用 [Set-TimeZone](/powershell/module/microsoft.powershell.management/set-timezone) 来设置正在运行的容器的时区。 例如：
+
+```powershell
+Set-TimeZone -Id "Russian Standard Time"
+```
+
+若要查看正在运行的容器的当前时区或可用时区列表，请使用 [Get-TimeZone](/powershell/module/microsoft.powershell.management/get-timezone)。
+
 ## <a name="what-if-i-need-a-feature-thats-not-supported"></a>如果需要使用不受支持的功能，应该怎么办？
 
 我们致力于在 AKS 中引入你需要的所有 Windows 功能，但如果确实遇到功能差距，开源的上游 [aks-engine][aks-engine] 项目提供了在 Azure 中运行 Kubernetes 的完全可自定义的简便方法，其中包括 Windows 支持。 请确保查看即将推出的 [AKS 路线图][aks-roadmap]中的功能路线图。
@@ -200,3 +230,4 @@ az vmss show --name myAKSCluster --resource-group MC_CLUSTERNAME
 [hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
 [resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks
 [dsr]: ../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip
+[windows-server-password]: /windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference

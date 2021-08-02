@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/30/2021
+ms.date: 06/08/2021
 ms.author: b-juche
-ms.openlocfilehash: d1cc59fe2eb3a2938dc776fd62e6645aec62bb1f
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 46db9181657e5271f5aee567365e1f616caddc3f
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291783"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061499"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -58,9 +58,9 @@ ms.locfileid: "108291783"
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>能否对 Azure VM 和存储之间的网络流量进行加密？
 
-可以使用 Kerberos AES-256 加密对 NFSv4.1 客户端和 Azure NetApp 文件卷之间的数据流量进行加密。 有关详细信息，请参阅[为 Azure NetApp 文件配置 NFSv4.1 Kerberos 加密](configure-kerberos-encryption.md)。   
+根据设计，Azure NetApp 文件数据流量本质上是安全的，因为它不提供公共终结点，并且数据流量仍在客户拥有的 VNet 中。 默认情况下，不会对传输中数据进行加密。 但是，从 Azure VM（运行 NFS 或 SMB 客户端）到 Azure NetApp 文件的数据流量与任何其他 Azure VM 到 VM 流量一样安全。 
 
-NFSv3 或 SMB3 客户端与 Azure NetApp 文件卷之间的数据流量未加密。 但是，从 Azure VM（运行 NFS 或 SMB 客户端）到 Azure NetApp 文件的流量与任何其他 Azure VM 到 VM 流量一样安全。 此流量是 Azure 数据中心网络的本地流量。 
+NFSv3 协议不支持加密，因此无法对此传输中数据进行加密。 不过，也可以选择启用 NFSv4.1 和 SMB3 传输中数据加密。 可以使用 Kerberos AES-256 加密对 NFSv4.1 客户端和 Azure NetApp 文件卷之间的数据流量进行加密。 有关详细信息，请参阅[为 Azure NetApp 文件配置 NFSv4.1 Kerberos 加密](configure-kerberos-encryption.md)。 SMB3 客户端和 Azure NetApp 文件卷之间的数据流量可使用 SMB 3.0 的 AES-CCM 算法和 SMB 3.1.1 连接的 AES-GCM 算法进行加密。 有关详细信息，请参阅[创建用于 Azure NetApp 文件的 SMB 卷](azure-netapp-files-create-volumes-smb.md)。 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>能否对存储进行静态加密？
 
@@ -130,6 +130,18 @@ Azure NetApp 文件提供卷性能指标。 你还可以使用 Azure Monitor 来
 
 有关 NFSv4.1 的安全选项、测试的性能向量以及预期性能影响的信息，请参阅[对 NFSv4.1 卷上的 Kerberos 的性能影响](performance-impact-kerberos.md)。 
 
+### <a name="does-azure-netapp-files-support-smb-direct"></a>Azure NetApp 文件是否支持 SMB Direct？
+
+不支持，Azure NetApp 文件不支持 SMB Direct。 
+
+### <a name="is-nic-teaming-supported-in-azure"></a>Azure 中是否支持 NIC 组合？
+
+Azure 中不支持 NIC 组合。 虽然 Azure 虚拟机支持多个网络接口，但它们表示的是一种逻辑构造，而不是物理构造。 因此 Azure 虚拟机不提供容错功能。  此外，Azure 虚拟机的可用带宽是针对虚拟机本身计算的，而不是针对任何单个网络接口计算。
+
+### <a name="are-jumbo-frames-supported"></a>是否支持 jumbo 帧？
+
+Azure 虚拟机不支持 jumbo 帧。
+
 ## <a name="nfs-faqs"></a>NFS 常见问题解答
 
 ### <a name="i-want-to-have-a-volume-mounted-automatically-when-an-azure-vm-is-started-or-rebooted--how-do-i-configure-my-host-for-persistent-nfs-volumes"></a>我希望在启动或重新启动 Azure VM 时自动装载卷。  如何针对永久 NFS 卷配置我的主机？
@@ -184,9 +196,9 @@ Azure NetApp 文件支持 SMB 2.1 和 SMB 3.1（其中包括对 SMB 3.0 的支�
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>支持多少个 Active Directory 连接？
 
-Azure NetApp 文件在单个区域中不支持多个 Active Directory (AD) 连接，即使 AD 连接位于不同的 NetApp 帐户中也是如此。 但是，只要 AD 连接位于不同的区域中，就可以在单个订阅中拥有多个 AD 连接。 如果在单个区域中需要多个 AD 连接，则可以使用单独的订阅来执行此操作。 
+对于每个订阅和每个区域，只能配置一个 Active Directory (AD) 连接。 有关更多信息，请参阅 [Active Directory 连接的要求](create-active-directory-connections.md#requirements-for-active-directory-connections)。 
 
-每个 NetApp 帐户都配置了一个 AD 连接；AD 连接仅通过创建它的 NetApp 帐户可见。
+但是，可以将同一订阅和同一区域下的多个 NetApp 帐户映射到其中一个 NetApp 帐户中创建的通用 AD 服务器。 请参阅[将同一订阅和区域中的多个 NetApp 帐户映射到 AD 连接](create-active-directory-connections.md#shared_ad)。 
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp 文件是否支持 Azure Active Directory？ 
 
@@ -197,10 +209,6 @@ Azure NetApp 文件在单个区域中不支持多个 Active Directory (AD) 连�
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>支持哪些版本的 Windows Server Active Directory？
 
 Azure NetApp 文件支持 Windows Server 2008r2SP1-2019 版本的 Active Directory 域服务。
-
-### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>为什么我的 SMB 客户端上的可用空间不显示预配的大小？
-
-SMB 客户端报告的卷大小是 Azure NetApp 文件卷可以增长到的最大大小。 SMB 客户端上显示的 Azure NetApp 文件卷的大小不反映卷的配额或大小。 可以通过 Azure 门户或 API 获取 Azure NetApp 文件卷大小或配额。
 
 ### <a name="im-having-issues-connecting-to-my-smb-share-what-should-i-do"></a>连接到我的 SMB 共享时出现问题。 应采取何种操作？
 
@@ -216,45 +224,8 @@ SMB 客户端报告的卷大小是 Azure NetApp 文件卷可以增长到的最�
 
 ### <a name="can-an-azure-netapp-files-smb-share-act-as-an-dfs-namespace-dfs-n-root"></a>Azure NetApp 文件 SMB 共享是否可以充当 DFS 命名空间 (DFS-N) 根？
 
-不是。 但是，Azure NetApp 文件 SMB 共享可以充当 DFS 命名空间 (DFS-N) 文件夹目标。   
+否。 但是，Azure NetApp 文件 SMB 共享可以充当 DFS 命名空间 (DFS-N) 文件夹目标。   
 若要使用 Azure NetApp 文件 SMB 共享作为 DFS-N 文件夹目标，请使用 [DFS 添加文件夹目标](/windows-server/storage/dfs-namespaces/add-folder-targets#to-add-a-folder-target)过程提供 Azure NETAPP 文件 SMB 共享的通用命名约定 (UNC) 装载路径。  
-
-### <a name="smb-encryption-faqs"></a>SMB 加密常见问题解答
-
-本部分解答有关 SMB 加密（SMB 3.0 和 SMB 3.1.1）的常见问题。
-
-#### <a name="what-is-smb-encryption"></a>什么是 SMB 加密？  
-
-[SMB 加密](/windows-server/storage/file-server/smb-security)提供 SMB 数据的端对端加密，并防止数据在不受信任网络中遭到窃听。 SMB 3.0 及更高版本支持 SMB 加密。 
-
-#### <a name="how-does-smb-encryption-work"></a>SMB 加密的工作原理是什么？
-
-向存储发送请求时，客户端会对该请求进行加密，随后存储会进行解密。 同样，响应由服务器加密并由客户端解密。
-
-#### <a name="which-clients-support-smb-encryption"></a>哪些客户端支持 SMB 加密？
-
-Windows 10、Windows 2012 及更高版本支持 SMB 加密。
-
-#### <a name="with-azure-netapp-files-at-what-layer-is-smb-encryption-enabled"></a>借助 Azure NetApp 文件，在哪个层启用了 SMB 加密？  
-
-在共享级别启用 SMB 加密。
-
-#### <a name="what-forms-of-smb-encryption-are-used-by-azure-netapp-files"></a>Azure NetApp 文件使用哪些形式的 SMB 加密？
-
-SMB 3.0 采用 AES-CCM 算法，而 SMB 3.1.1 采用 AES-GCM 算法
-
-#### <a name="is-smb-encryption-required"></a>SMB 加密是必需的吗？
-
-SMB 加密不是必需的。 因此，只有当用户要求 Azure NetApp 文件对特定共享启用加密时，才会启用它。 Azure NetApp 文件共享从不在 Internet 中公开。 它们只能从特定 VNet 中通过 VPN 或快速路由进行访问，因此，Azure NetApp 文件共享本质上是安全的。 启用 SMB 加密的选择完全由用户决定。 在启用此功能之前，请注意预期的性能损失。
-
-#### <a name="what-is-the-anticipated-impact-of-smb-encryption-on-client-workloads"></a><a name="smb_encryption_impact"></a>SMB 加密对客户端工作负载的预期影响有哪些？
-
-尽管 SMB 加密会对客户端（加密和解密消息的 CPU 开销）和存储（降低吞吐量）产生影响，但下表只重点介绍了存储影响。 在将工作负载部署到生产环境之前，应测试加密性能对应用程序的影响。
-
-|     I/O 配置文件       |     影响        |
-|-  |-  |
-|     读取和写入工作负载      |     10% 到 15%        |
-|     元数据密集型        |     5%    |
 
 ## <a name="capacity-management-faqs"></a>容量管理常见问题解答
 
@@ -326,6 +297,10 @@ NetApp 提供基于 SaaS 的解决方案，即 [NetApp 云同步](https://cloud.
 - 创建目标 Azure NetApp 文件卷。
 - 使用首选的文件复制工具将源数据传输到目标卷。
 
+### <a name="where-does-azure-netapp-files-store-customer-data"></a>Azure NetApp 文件将客户数据存储在何处？   
+
+默认情况下，你的数据保留在部署 Azure NetApp 文件卷的区域内。 不过，你可选择使用[跨区域复制](cross-region-replication-introduction.md)将数据逐卷复制到可用目标区域。
+
 ### <a name="how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region"></a>如何在另一个 Azure 区域中创建 Azure NetApp 文件卷的副本？
     
 Azure NetApp 文件提供 NFS 和 SMB 卷。  可以使用任何基于文件的复制工具在 Azure 区域之间复制数据。 
@@ -362,7 +337,7 @@ NetApp 提供基于 SaaS 的解决方案，即 [NetApp 云同步](https://cloud.
 
 ### <a name="does-azure-netapp-files-work-with-azure-policy"></a>Azure NetApp 文件是否适用于 Azure Policy？
 
-是。 Azure NetApp 文件是第一方服务。 其完全遵循 Azure 资源提供程序标准。 因此，可以通过自定义策略定义将 Azure NetApp 文件集成到 Azure Policy 中。 有关如何为 Azure NetApp 文件实现自定义策略的信息，请参阅 Microsoft 技术社区中的 [Azure Netapp 文件现可使用的 Azure Policy](https://techcommunity.microsoft.com/t5/azure/azure-policy-now-available-for-azure-netapp-files/m-p/2282258)。 
+是的。 Azure NetApp 文件是第一方服务。 其完全遵循 Azure 资源提供程序标准。 因此，可以通过自定义策略定义将 Azure NetApp 文件集成到 Azure Policy 中。 有关如何为 Azure NetApp 文件实现自定义策略的信息，请参阅 Microsoft 技术社区中的 [Azure Netapp 文件现可使用的 Azure Policy](https://techcommunity.microsoft.com/t5/azure/azure-policy-now-available-for-azure-netapp-files/m-p/2282258)。 
 
 ## <a name="next-steps"></a>后续步骤  
 

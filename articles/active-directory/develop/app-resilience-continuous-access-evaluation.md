@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: 5b00cca584958f3e7d741a2a4f9e6669ff0d241e
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 970985193245a4d7482979c2fc753c2c0b67834b
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107904309"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111406726"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>如何在应用程序中使用启用了连续访问评估的 API
 
 [连续访问评估](../conditional-access/concept-continuous-access-evaluation.md) (CAE) 是一项 Azure AD 功能，它可以根据[关键事件](../conditional-access/concept-continuous-access-evaluation.md#critical-event-evaluation)和[策略评估](../conditional-access/concept-continuous-access-evaluation.md#conditional-access-policy-evaluation-preview)撤销访问令牌，而不用依赖基于生存期的令牌过期。 对于某些资源 API，由于风险和策略是实时评估的，因此这可能会将令牌生存期提高到最多 28 小时。 Microsoft 身份验证库 (MSAL) 将主动刷新这些生存期较长的令牌，从而提高应用程序的复原能力。
 
-本文介绍如何在应用程序中使用启用了 CAE 的 API。
+本文介绍如何在应用程序中使用启用了 CAE 的 API。 不使用 MSAL 的应用程序可以添加对[声明质询、声明请求和客户端功能](claims-challenge.md)的支持以使用 CAE。
 
 ## <a name="implementation-considerations"></a>实现注意事项
 
@@ -116,4 +116,5 @@ _clientApp = PublicClientApplicationBuilder.Create(App.ClientId)
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解详细信息，请参阅[连续访问评估](../conditional-access/concept-continuous-access-evaluation.md)。
+- [持续访问评估](../conditional-access/concept-continuous-access-evaluation.md)概念概述
+- [声明质询、声明请求和客户端功能](claims-challenge.md)

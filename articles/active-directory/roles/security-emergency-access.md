@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6a1e4b3b44004ec6d03c293bbd10617b3d3af69
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd4b836fa0f9628fa3a7d4f6b6064091db7289bc
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98740816"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796420"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>在 Azure AD 中管理紧急访问帐户
 
@@ -78,7 +78,7 @@ ms.locfileid: "98740816"
 
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>获取破窗式帐户的对象 ID
 
-1. 使用分配给“用户管理员”角色的帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用分配给用户管理员角色的帐户登录 [Azure 门户](https://portal.azure.com)。
 1. 选择“Azure Active Directory” > “用户”。 
 1. 搜索破窗式帐户并选择用户的名称。
 1. 复制并保存“对象 ID”属性，以便以后可以使用。

@@ -8,23 +8,23 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 5/12/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: cf441108c9fd0ae87f265604f6f0706d92516746
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 219cb793da7835922ad707d0ad1ee7e122990ba8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101646548"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962187"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 配置 Microsoft Dynamics 365 Fraud Protection
 
-本示例教程提供有关如何将 [Microsoft Dynamics 365 Fraud Protection](/dynamics365/fraud-protection/overview) (DFP) 与 Azure Active Directory (AD) B2C 集成的指南。
+本示例教程介绍如何将 [Microsoft Dynamics 365 Fraud Protection](/dynamics365/fraud-protection/overview) (DFP) 与 Azure Active Directory (AD) B2C 集成。
 
-Microsoft DFP 为客户端提供了评估尝试创建新帐户和尝试登录客户端生态系统的行为是否具有欺诈性的能力。 客户可以使用 Microsoft DFP 评估来阻止或质询尝试创建新的虚假帐户或损害现有帐户的可疑行为。 帐户保护包括人工智能提供支持的设备指纹、用于实时风险评估的 API、根据客户业务需求优化风险策略的规则和列表经验，以及用于监视欺诈保护效果和客户端生态系统中趋势的记分卡。
+Microsoft DFP 为组织提供了评估尝试创建欺诈性帐户和登录的风险的能力。客户可以使用 Microsoft DFP 评估来阻止或质询尝试创建新的虚假帐户或损害现有帐户的可疑行为。
 
-在本示例中，我们会将 Microsoft DFP 的帐户保护功能与 Azure AD B2C 用户流集成。 该服务将在每次登录或注册尝试使用外部指纹，并监视任何过去或现在的可疑行为。 Azure AD B2C 从 Microsoft DFP 调用决策终结点，该终结点根据标识的用户的所有过去和现在行为，以及 Microsoft DFP 服务中指定的自定义规则返回结果。 Azure AD B2C 根据此结果做出审批决策，并将相同的结果传回 Microsoft DFP。
+该示例演示如何将 Microsoft DFP 设备指纹以及帐户创建和登录评估 API 终结点合并到 Azure AD B2C 自定义策略中。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,17 +40,13 @@ Microsoft DFP 为客户端提供了评估尝试创建新帐户和尝试登录客
 
 Microsoft DFP 集成包括以下组件：
 
-- **Azure AD B2C 租户**：对用户进行身份验证，并充当 Microsoft DFP 的客户端。 承载一个指纹脚本，该脚本收集每个执行目标策略的用户的标识和诊断数据。 如果发现可疑行为，Microsoft DFP 稍后会阻止或质询登录或注册尝试。
+- **Azure AD B2C 租户**：对用户进行身份验证，并充当 Microsoft DFP 的客户端。 承载一个指纹脚本，该脚本收集每个执行目标策略的用户的标识和诊断数据。 根据 Microsoft DFP 返回的规则评估结果，稍后会阻止或质询登录或注册尝试。
 
-- **自定义应用服务**：用于实现两个目的的 Web 应用程序。
-
-  - 提供用作 Identity Experience Framework UI 的 HTML 页面。 负责嵌入 Microsoft Dynamics 365 指纹脚本。
-
-  - 一个 API 控制器，其中包含用于将 Microsoft DFP 连接到 Azure AD B2C 的 RESTful 终结点。 句柄的数据处理、结构，并遵循两者的安全要求。
+- 自定义 UI 模板：用于自定义 Azure AD B2C 呈现的页面的 HTML 内容。 这些页面包含 Microsoft DFP 指纹所需的 JavaScript 代码片段
 
 - **Microsoft DFP 指纹服务**：动态嵌入的脚本，它记录设备遥测和自断言用户详细信息，以创建唯一可识别的指纹，供稍后在决策过程中使用。
 
-- **Microsoft DFP API 终结点**：提供决策结果，并接受反映客户端应用程序采取的操作的最终状态。 由于不同的安全性和 API 有效负载要求，Azure AD B2C 不直接与终结点通信，而是使用应用服务作为中间层。
+- **Microsoft DFP API 终结点**：提供决策结果，并接受反映客户端应用程序采取的操作的最终状态。 Azure AD B2C 使用 REST API 连接器直接与 Microsoft DFP 终结点进行通信。 通过向 Azure AD 租户授予 client_credentials 进行 API 身份验证，在该租户中，Microsoft DFP 已获得许可并进行安装，以获取持有者令牌。
 
 以下体系结构图体现了实施详情。
 
@@ -59,96 +55,92 @@ Microsoft DFP 集成包括以下组件：
 |步骤 | 说明 |
 |:-----| :-----------|
 | 1. | 用户访问登录页。 用户选择“注册”以创建新帐户，并在页面中输入信息。 Azure AD B2C 收集用户属性。
-| 2. | Azure AD B2C 调用中间层 API 并传递用户属性。
-| 3. | 中间层 API 收集用户属性，并将其转换为 Microsoft DFP API 可以使用的格式。 然后，系统会将它发送到 Microsoft DFP API。
-| 4. | Microsoft DFP API 使用这些信息并对其进行处理，然后将结果返回中间层 API。
-| 5. | 中间层 API 处理信息并将相关信息发回 Azure AD B2C。
-| 6. | Azure AD B2C 接收从中间层 API 返回的信息。 如果它显示“失败”响应，则会向用户显示错误消息。 如果它显示“成功”响应，则会对用户进行身份验证并将该用户写入目录。
+| 2. | Azure AD B2C 调用 Microsoft DFP API 并传递用户属性。
+| 3. | Microsoft DFP API 使用这些信息并对其进行处理，然后将结果返回 Azure AD B2C。
+| 4. | Azure AD B2C 接收从 Microsoft DFP API 返回的信息。 如果它显示“失败”响应，则会向用户显示错误消息。 如果它显示“成功”响应，则会对用户进行身份验证并将该用户写入目录。
 
 ## <a name="set-up-the-solution"></a>设置解决方案
 
 1. [创建 Facebook 应用程序](./identity-provider-facebook.md#create-a-facebook-application)，该应用程序配置为允许与 Azure AD B2C 联合。
-2. [添加创建的 Facebook 机密](./custom-policy-get-started.md#create-the-facebook-key)作为 Identity Experience Framework 策略密钥。
+2. [添加创建的 Facebook 机密](./tutorial-create-user-flows.md?pivots=b2c-custom-policy#create-the-facebook-key)作为 Identity Experience Framework 策略密钥。
 
 ## <a name="configure-your-application-under-microsoft-dfp"></a>在 Microsoft DFP 下配置应用程序
 
 [设置 Azure AD 租户](/dynamics365/fraud-protection/integrate-real-time-api)以使用 Microsoft DFP。
 
-## <a name="deploy-to-the-web-application"></a>部署到 Web 应用程序
+## <a name="set-up-your-custom-domain"></a>设置自定义域
 
-### <a name="implement-microsoft-dfp-service-fingerprinting"></a>实现 Microsoft DFP 服务指纹
+在生产环境中，必须[对 Azure AD B2C 使用自定义域](./custom-domain.md?pivots=b2c-custom-policy)并[对 Microsoft DFP 指纹服务使用自定义域](/dynamics365/fraud-protection/device-fingerprinting#set-up-dns)。 这两个服务的域应位于同一个根 DNS 区域中，以防止浏览器隐私设置阻止跨域 cookie，这在非生产环境中不是必需的。
 
-Microsoft DFP 帐户保护需要 [Microsoft DFP 设备指纹](/dynamics365/fraud-protection/device-fingerprinting)。
+下面是一个示例：
 
->[!NOTE]
->除了 Azure AD B2C UI 页，客户还可以在应用代码内实现指纹服务，从而进行更全面的设备分析。 此示例不包括应用代码中的指纹服务。
+| 环境 | 服务 | 域 |
+|:------------|:---------------|:---------------|
+| 开发 | Azure AD B2C | contoso-dev.b2clogin.com |
+| 开发 | Microsoft DFP 指纹 | fpt.dfp.microsoft-int.com |
+| UAT | Azure AD B2C | contoso-uat.b2clogin.com |
+| UAT | Microsoft DFP 指纹 | fpt.dfp.microsoft.com |
+| 生产 | Azure AD B2C | login.contoso.com |
+| 生产 | Microsoft DFP 指纹 | fpt.login.contoso.com |
 
-### <a name="deploy-the-azure-ad-b2c-api-code"></a>部署 Azure AD B2C API 代码
+## <a name="deploy-the-ui-templates"></a>部署 UI 模板
 
-将[提供的 API 代码](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/API)部署到 Azure 服务。 该代码可以[发布自 Visual Studio](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)。
+1. 将提供的 [Azure AD B2C UI 模板](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/ui-templates)部署到面向公众的 Internet 托管服务（例如 Azure Blob 存储）。
 
-设置 CORS，添加允许的源 `https://{your_tenant_name}.b2clogin.com`
+2. 将值 `https://<YOUR-UI-BASE-URL>/` 替换为部署位置的根 URL。
 
->[!NOTE]
->稍后，你将需要已部署的服务的 URL，以便为 Azure AD 配置所需设置。
+  >[!NOTE]
+  >稍后需要基 URL 来配置 Azure AD B2C 策略。
 
-若要了解详细信息，请参阅[应用服务文档](../app-service/app-service-web-tutorial-rest-api.md)。
+3. 在 `ui-templates/js/dfp.js` 文件中，将 `<YOUR-DFP-INSTANCE-ID>` 替换为 Microsoft DFP 实例 ID。
 
-### <a name="add-context-dependent-configuration-settings"></a>添加与上下文相关的配置设置
+4. 确保为 Azure AD B2C 域名 `https://{your_tenant_name}.b2clogin.com` 或 `your custom domain` 启用了 CORS。
 
-在 [Azure 的应用服务中](../app-service/configure-common.md#configure-app-settings)配置应用程序设置。 这能够实现安全地配置设置，而无需将其签入存储库。 Rest API 需要提供以下设置：
-
-| 应用程序设置 | Source | 注释 |
-| :-------- | :------------| :-----------|
-|FraudProtectionSettings:InstanceId | Microsoft DFP 配置 |     |
-|FraudProtectionSettings:DeviceFingerprintingCustomerId | Microsoft 设备指纹客户 ID |     |
-| FraudProtectionSettings:ApiBaseUrl |  Microsoft DFP 门户中的基本 URL   | 删除“-int”以改为调用生产 API
-|  TokenProviderConfig: Resource | https://api.dfp.dynamics-int.com |   删除“-int”以改为调用生产 API  |
-|   TokenProviderConfig:ClientId       |Fraud Protection 商家 Azure AD 客户端应用 ID      |       |
-| TokenProviderConfig:Authority | https://login.microsoftonline.com/<directory_ID> | Fraud Protection 商家 Azure AD 租户颁发机构 |
-| TokenProviderConfig:CertificateThumbprint* | 用于对商家 Azure AD 客户端应用进行身份验证的证书指纹 |
-| TokenProviderConfig:ClientSecret* | 商家 Azure AD 客户端应用的机密 | 建议使用机密管理器 |
-
-\* 仅设置标记的两个参数其中一个，具体取决于使用证书还是机密（例如密码）进行身份验证。
+有关详细信息，请参阅 [UI 自定义文档](./customize-ui-with-html.md?pivots=b2c-custom-policy)。
 
 ## <a name="azure-ad-b2c-configuration"></a>Azure AD B2C 配置
 
+### <a name="add-policy-keys-for-your-microsoft-dfp-client-app-id-and-secret"></a>为 Microsoft DFP 客户端应用 ID 和机密添加策略密钥
+
+1. 在设置了 Microsoft DFP 的 Azure AD 租户中，创建 [Azure AD 应用程序并授予管理员许可](/dynamics365/fraud-protection/integrate-real-time-api#create-azure-active-directory-applications)。
+2. 为此应用程序注册创建一个机密值，并记下应用程序的客户端 ID 和客户端机密值。
+3. 将客户端 ID 和客户端机密值另存为 [Azure AD B2C 租户中的策略密钥](./policy-keys-overview.md)。
+
+ >[!NOTE]
+ >稍后需要策略密钥来配置 Azure AD B2C 策略。
+
 ### <a name="replace-the-configuration-values"></a>替换配置值
 
-在提供的[自定义策略](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies)中，查找以下占位符，并将它们替换为你实例中的相应值。
+在提供的[自定义策略](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/policies)中，查找以下占位符，并将它们替换为你实例中的相应值。
 
 | 占位符 | 替换为 | 说明 |
 | :-------- | :------------| :-----------|
-|{your_tenant_name} | 你的租户短名称 |  来自 yourtenant.onmicrosoft.com 的“yourtenant”   |
-|{your_tenantId} | Azure AD B2C 租户的租户 ID |  01234567-89ab-cdef-0123-456789abcdef   |
-|  {your_tenant_IdentityExperienceFramework_appid}    |   Azure AD B2C 租户中配置的 IdentityExperienceFramework 应用的应用 ID    |  01234567-89ab-cdef-0123-456789abcdef   |
-|  {your_tenant_ ProxyIdentityExperienceFramework _appid}     |  Azure AD B2C 租户中配置的 ProxyIdentityExperienceFramework 应用的应用 ID      |   01234567-89ab-cdef-0123-456789abcdef     |
-|  {your_tenant_extensions_appid}   |  租户的存储应用程序的应用 ID   |  01234567-89ab-cdef-0123-456789abcdef  |
-|   {your_tenant_extensions_app_objectid}  | 租户的存储应用程序的对象 ID    | 01234567-89ab-cdef-0123-456789abcdef   |
-|   {your_app_insights_instrumentation_key}  |   应用见解实例的检测密钥*  |   01234567-89ab-cdef-0123-456789abcdef |
-|  {your_ui_base_url}   | 应用服务中提供 UI 文件的终结点    | https://yourapp.azurewebsites.net/B2CUI/GetUIPage   |
-|   {your_app_service_url}  | 应用服务的 URL    |  https://yourapp.azurewebsites.net  |
-|   {your-facebook-app-id}  |  配置用于与 Azure AD B2C 进行联接的 Facebook 应用的应用 ID   | 000000000000000   |
-|  {your-facebook-app-secret}   |  将 Facebook 应用机密另存为的策略密钥的名称   | B2C_1A_FacebookAppSecret   |
+|{Settings:Production} | 是否在生产模式下部署策略 | `true` 或 `false`  |
+|{Settings:Tenant} | 你的租户短名称 |  `your-tenant` - 来自 your-tenant.onmicrosoft.com  |
+| {Settings:DeploymentMode}    |  要使用的 Application Insights 部署模式   |  `Production` 或 `Development`  |
+|  {Settings:DeveloperMode}    | 是否在 Application Insights 开发人员模式下部署策略      |   `true` 或 `false`    |
+|  {Settings:AppInsightsInstrumentationKey}  |  Application Insights 实例的检测密钥*   |  `01234567-89ab-cdef-0123-456789abcdef` |
+|  {Settings:IdentityExperienceFrameworkAppId}  | Azure AD B2C 租户中配置的 IdentityExperienceFramework 应用的应用 ID  | `01234567-89ab-cdef-0123-456789abcdef`|
+|  {Settings:ProxyIdentityExperienceFrameworkAppId}  |   Azure AD B2C 租户中配置的 ProxyIdentityExperienceFramework 应用的应用 ID |   `01234567-89ab-cdef-0123-456789abcdef`|
+| {Settings:FacebookClientId}  | 配置用于与 B2C 进行联接的 Facebook 应用的应用 ID    | `000000000000000`   |
+|   {Settings:FacebookClientSecretKeyContainer}  | 将 Facebook 应用机密另存为的策略密钥的名称    |  `B2C_1A_FacebookAppSecret` |
+|   {Settings:ContentDefinitionBaseUri} |  部署 UI 文件的终结点   | `https://<my-storage-account>.blob.core.windows.net/<my-storage-container>`   |
+|  {Settings:DfpApiBaseUrl}   |  DFP API 实例的基路径 - 在 DFP 门户中找到   | `https://tenantname-01234567-89ab-cdef-0123-456789abcdef.api.dfp.dynamics.com/v1.0/`   |
+| {Settings:DfpApiAuthScope} | DFP API 服务的 client_credentials 范围 | `https://api.dfp.dynamics-int.com/.default or https://api.dfp.dynamics.com/.default` |
+| {Settings:DfpTenantId} | Azure AD 租户（而不是 B2C）的 ID，其中 DFP 已获得许可并进行安装 | `01234567-89ab-cdef-0123-456789abcdef` 或 `consoto.onmicrosoft.com` |
+| {Settings:DfpAppClientIdKeyContainer} | 将 DFP 客户端 ID 另存为的策略密钥的名称 | `B2C_1A_DFPClientId` |
+| {Settings:DfpAppClientSecretKeyContainer} | 将 DFP 客户端机密另存为的策略密钥的名称 | `B2C_1A_DFPClientSecret` |
 
-*应用见解可以在不同的租户中。 此步骤是可选的。 删除相应的 TechnicalProfiles 和 OrechestrationSteps（如果不需要）。
-
-### <a name="call-microsoft-dfp-label-api"></a>调用 Microsoft DFP 标签 API
-
-客户需要[实现标签 API](/dynamics365/fraud-protection/integrate-ap-api)。 若要了解详细信息，请参阅 [Microsoft DFP API](https://apidocs.microsoft.com/services/dynamics365fraudprotection#/AccountProtection/v1.0)。
-
-`URI: < API Endpoint >/v1.0/label/account/create/<userId>`
-
-UserID 的值需要与对应的 Azure AD B2C 配置值 (ObjectID) 的值相同。
+*可以在任何 Azure AD 租户/订阅中设置 Application Insights。 此值是可选的，但[建议使用它来帮助调试](./troubleshoot-with-application-insights.md)。
 
 >[!NOTE]
 >将许可通知添加到“属性集合”页。 请注意，系统将记录用户的遥测和用户标识信息，以便进行帐户保护。
 
 ## <a name="configure-the-azure-ad-b2c-policy"></a>配置 Azure AD B2C 策略
 
-1. 转到 Policies 文件夹中的 [Azure AD B2C 策略](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies)。
+1. 转到 Policies 文件夹中的 [Azure AD B2C 策略](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/policies)。
 
-2. 按照此[文档](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)的说明，下载 [LocalAccounts 入门包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)
+2. 按照此[文档](./tutorial-create-user-flows.md?pivots=b2c-custom-policy?tabs=applications#custom-policy-starter-pack)的说明，下载 [LocalAccounts 入门包](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)
 
 3. 为 Azure AD B2C 租户配置策略。
 
@@ -184,4 +176,4 @@ UserID 的值需要与对应的 Azure AD B2C 配置值 (ObjectID) 的值相同�
 
 - [Azure AD B2C 中的自定义策略](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自定义策略入门](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C 中的自定义策略入门](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)

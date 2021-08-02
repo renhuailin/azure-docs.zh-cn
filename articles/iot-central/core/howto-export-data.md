@@ -4,27 +4,24 @@ description: 如何使用新的数据导出功能将 IoT 数据导出到 Azure �
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 01/27/2021
+ms.date: 05/03/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 7152012c7c4a342c7491e5f8b835eaede4269c4c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cdfe633e8a1a081e088dc696c67ed7da8c50e61b
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100522608"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061203"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>使用数据导出功能将 IoT 数据导出到云目标
 
-> [!Note]
-> 本文介绍了 IoT Central 中的数据导出功能。 若要了解旧数据导出功能，请参阅[使用数据导出功能将 IoT 数据导出到云目标（旧）](./howto-export-data-legacy.md)。
-
-本文介绍了如何使用 Azure IoT Central 中的新数据导出功能。 使用此功能，可以从 IoT Central 应用程序连续导出已筛选和扩充的 IoT 数据。 数据导出功能将更改准实时地推送到云解决方案的其他部分，以提供暖路径见解、分析和存储。
+本文介绍如何使用 Azure IoT Central 中的数据导出。 使用此功能，可以从 IoT Central 应用程序连续导出已筛选和扩充的 IoT 数据。 数据导出功能将更改准实时地推送到云解决方案的其他部分，以提供暖路径见解、分析和存储。
 
 例如，你能够：
 
-- 以 JSON 格式准实时地连续导出遥测数据和属性更改。
+- 近实时连续导出 JSON 格式的遥测、属性更改、设备连接、设备生命周期和设备模板生命周期数据。
 - 筛选数据流，以导出与自定义条件匹配的数据。
 - 使用设备中的自定义值和属性值来扩充数据流。
 - 将数据发送到 Azure 事件中心、Azure 服务总线、Azure Blob 存储和 Webhook 终结点等目标。
@@ -133,21 +130,21 @@ ms.locfileid: "100522608"
     | :------------- | :---------- | :----------- |
     |  遥测 | 准实时地从设备中导出遥测消息。 每个导出的消息都包含原始设备消息的完整内容（经过规范化处理）。   |  [遥测消息格式](#telemetry-format)   |
     | 属性更改 | 准实时地导出设备和云属性的更改。 对于只读设备属性，将导出对报告值的更改。 对于读写属性，报告值和所需值都会被导出。 | [属性更改消息格式](#property-changes-format) |
+    | 设备连接 | 导出设备已连接和断开连接事件。 | [设备连接消息格式](#device-connectivity-changes-format) |
+    | 设备生命周期 | 导出设备已注册、已删除、已预配、已启用、已禁用、displayNameChanged 和 deviceTemplateChanged 事件。 | [设备生命周期更改消息格式](#device-lifecycle-changes-format) |
+    | 设备模板生命周期 | 导出发布的设备模板更改，包括已创建、已更新和已删除事件。 | [设备模板生命周期更改消息格式](#device-template-lifecycle-changes-format) | 
 
-<a name="DataExportFilters"></a>
-1. （可选）添加筛选器来减少导出的数据量。 对于每种数据导出类型，都有不同类型的筛选器可用：
-
-    若要筛选遥测，可以：
-
-    - 筛选导出的流，使其只包含与设备名称、设备 ID 和设备模板筛选条件匹配的设备中的遥测数据。
-    - 筛选功能：如果在“名称”下拉列表中选择了遥测项，则导出的流只包含符合筛选条件的遥测数据。 如果在“名称”下拉列表中选择设备或云属性项，则导出的流只包含属性与筛选条件匹配的设备中的遥测数据。
-    - 消息属性筛选器：使用设备 SDK 的设备可以在每个遥测消息上发送消息属性或应用程序属性。 属性是使用自定义标识符来标记消息的键值对包。 若要创建消息属性筛选器，请输入要查找的消息属性键，并指定条件。 只导出属性与指定筛选条件匹配的遥测消息。 支持以下字符串比较运算符：等于、不等于、包含、不包含、存在、不存在。 [从 IoT 中心文档中详细了解应用程序属性](../../iot-hub/iot-hub-devguide-messages-construct.md)。
-
-    若要筛选属性更改，请使用功能筛选器。 在下拉列表中选择属性项。 导出的流只包含对符合筛选条件的选定属性的更改。
-
-<a name="DataExportEnrichmnents"></a>
-1. （可选）使用额外的键值对元数据来扩充导出的消息。 以下扩充适用于遥测和属性更改数据导出类型：
-
+1. （可选）添加筛选器来减少导出的数据量。 对于每种数据导出类型，都有不同类型的筛选器可用：<a name="DataExportFilters"></a>
+    
+    | 数据类型 | 可用的过滤器| 
+    |--------------|------------------|
+    |遥测|<ul><li>按设备名称、设备 ID 和设备模板进行筛选</li><li>筛选流以仅包含符合筛选条件的遥测数据</li><li>筛选流以仅包含设备中其属性与筛选条件匹配的遥测数据</li><li>筛选流以仅包含消息属性符合筛选条件的遥测数据。 消息属性（也称为应用程序属性）将在每个遥测消息上的键值对包中发送，该消息由使用设备 SDK 的设备选择性发送 。 若要创建消息属性筛选器，请输入要查找的消息属性键，并指定条件。 只导出属性与指定筛选条件匹配的遥测消息。 [从 IoT 中心文档中详细了解应用程序属性](../../iot-hub/iot-hub-devguide-messages-construct.md) </li></ul>|
+    |属性更改|<ul><li>按设备名称、设备 ID 和设备模板进行筛选</li><li>筛选流以仅包含符合筛选条件的属性更改</li></ul>|
+    |设备连接|<ul><li>按设备名称、设备 ID 和设备模板进行筛选</li><li>筛选流以仅包含设备中其属性与筛选条件匹配的更改</li></ul>|
+    |设备生命周期|<ul><li>按设备名称、设备 ID 和设备模板进行筛选</li><li>筛选流以仅包含设备中其属性与筛选条件匹配的更改</li></ul>|
+    |设备模板生命周期|<ul><li>按设备模板进行筛选</li></ul>|
+    
+1. （可选）使用额外的键值对元数据来扩充导出的消息。 以下扩充适用于遥测和属性更改数据导出类型：<a name="DataExportEnrichmnents"></a>
     - 自定义字符串：向每条消息添加一个自定义静态字符串。 输入任意键，并输入任意字符串值。
     - 属性：将当前设备报告的属性或云属性值添加到每条消息中。 输入任意键，并选择设备或云属性。 如果导出的消息来自没有指定属性的设备，则导出的消息不会得到扩充。
 
@@ -207,6 +204,7 @@ ms.locfileid: "100522608"
 - `deviceId`：发送遥测消息的设备的 ID。
 - `schema`：有效负载架构的名称和版本。
 - `templateId`：与设备关联的设备模板的 ID。
+- `enqueuedTime`：IoT Central 收到此消息的时间。
 - `enrichments`：在导出中设置的任何扩充。
 - `messageProperties`：设备随消息一起发送的附加属性。 这些属性有时亦称为“应用程序属性”。 [从 IoT 中心文档中了解详细信息](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
@@ -251,6 +249,9 @@ ms.locfileid: "100522608"
 如果需要向遥测消息中添加自定义元数据，则可以向遥测消息添加属性。 例如，需要在设备创建消息时添加时间戳。
 
 下面的代码片段展示了如何在设备上创建消息时将 `iothub-creation-time-utc` 属性添加到消息中：
+
+> [!IMPORTANT]
+> 此时间戳的格式必须为 UTC（不含时区信息）。 例如，`2021-04-21T11:30:16Z` 有效，`2021-04-21T11:30:16-07:00` 无效。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -349,6 +350,7 @@ async def send_telemetry_from_thermostat(device_client, telemetry_msg):
 - `messageType`：`cloudPropertyChange`、`devicePropertyDesiredChange` 或 `devicePropertyReportedChange`。
 - `deviceId`：发送遥测消息的设备的 ID。
 - `schema`：有效负载架构的名称和版本。
+- `enqueuedTime`：IoT Central 检测到此更改的时间。
 - `templateId`：与设备关联的设备模板的 ID。
 - `enrichments`：在导出中设置的任何扩充。
 
@@ -376,6 +378,104 @@ async def send_telemetry_from_thermostat(device_client, telemetry_msg):
     }
 }
 ```
+## <a name="device-connectivity-changes-format"></a>设备连接更改格式
+
+每条消息或记录表示单个设备遇到的连接事件。 导出的消息中的信息包括：
+
+- `applicationId`：IoT Central 应用程序的 ID。
+- `messageSource`：消息源 - `deviceConnectivity`。
+- `messageType`：`connected` 或 `disconnected`。
+- `deviceId`：已更改的设备的 ID。
+- `schema`：有效负载架构的名称和版本。
+- `templateId`：与设备关联的设备模板的 ID。
+- `enqueuedTime`：在 IoT Central 中发生此更改的时间。
+- `enrichments`：在导出中设置的任何扩充。
+
+对于事件中心和服务总线，IoT Central 将新消息数据准实时地导出到事件中心或服务总线队列/主题。 在每个消息的用户属性（亦称为“应用程序属性”）中，自动包含了 `iotcentral-device-id`、`iotcentral-application-id`、`iotcentral-message-source` 和 `iotcentral-message-type`。
+
+对于 Blob 存储，消息被批处理并每分钟导出一次。
+
+以下示例演示了在 Azure Blob 存储中收到的已导出设备连接消息。
+
+```json
+{
+  "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+  "messageSource": "deviceConnectivity",
+  "messageType": "connected",
+  "deviceId": "1vzb5ghlsg1",
+  "schema": "default@v1",
+  "templateId": "urn:qugj6vbw5:___qbj_27r",
+  "enqueuedTime": "2021-04-05T22:26:55.455Z",
+  "enrichments": {
+    "userSpecifiedKey": "sampleValue"
+  }
+}
+
+```
+## <a name="device-lifecycle-changes-format"></a>设备生命周期更改格式
+
+每条消息或记录表示对单个设备的一项更改。 导出的消息中的信息包括：
+
+- `applicationId`：IoT Central 应用程序的 ID。
+- `messageSource`：消息源 - `deviceLifecycle`。
+- `messageType`：发生的更改类型。 `registered`、`deleted`、`provisioned`、`enabled`、`disabled`、`displayNameChanged` 和 `deviceTemplateChanged` 之一。
+- `deviceId`：已更改的设备的 ID。
+- `schema`：有效负载架构的名称和版本。
+- `templateId`：与设备关联的设备模板的 ID。
+- `enqueuedTime`：在 IoT Central 中发生此更改的时间。
+- `enrichments`：在导出中设置的任何扩充。
+
+对于事件中心和服务总线，IoT Central 将新消息数据准实时地导出到事件中心或服务总线队列/主题。 在每个消息的用户属性（亦称为“应用程序属性”）中，自动包含了 `iotcentral-device-id`、`iotcentral-application-id`、`iotcentral-message-source` 和 `iotcentral-message-type`。
+
+对于 Blob 存储，消息被批处理并每分钟导出一次。
+
+以下示例演示了在 Azure Blob 存储中收到的已导出设备生命周期消息。
+
+```json
+{
+  "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+  "messageSource": "deviceLifecycle",
+  "messageType": "registered",
+  "deviceId": "1vzb5ghlsg1",
+  "schema": "default@v1",
+  "templateId": "urn:qugj6vbw5:___qbj_27r",
+  "enqueuedTime": "2021-01-01T22:26:55.455Z",
+  "enrichments": {
+    "userSpecifiedKey": "sampleValue"
+  }
+}
+```
+## <a name="device-template-lifecycle-changes-format"></a>设备模板生命周期更改格式
+
+每条消息或记录表示对单个已发布设备模板的一项更改。 导出的消息中的信息包括：
+
+- `applicationId`：IoT Central 应用程序的 ID。
+- `messageSource`：消息源 - `deviceTemplateLifecycle`。
+- `messageType`：`created`、`updated` 或 `deleted`。
+- `schema`：有效负载架构的名称和版本。
+- `templateId`：与设备关联的设备模板的 ID。
+- `enqueuedTime`：在 IoT Central 中发生此更改的时间。
+- `enrichments`：在导出中设置的任何扩充。
+
+对于事件中心和服务总线，IoT Central 将新消息数据准实时地导出到事件中心或服务总线队列/主题。 在每个消息的用户属性（亦称为“应用程序属性”）中，自动包含了 `iotcentral-device-id`、`iotcentral-application-id`、`iotcentral-message-source` 和 `iotcentral-message-type`。
+
+对于 Blob 存储，消息被批处理并每分钟导出一次。
+
+以下示例演示了在 Azure Blob 存储中收到的已导出设备生命周期消息。
+
+```json
+{
+  "applicationId": "1dffa667-9bee-4f16-b243-25ad4151475e",
+  "messageSource": "deviceTemplateLifecycle",
+  "messageType": "created",
+  "schema": "default@v1",
+  "templateId": "urn:qugj6vbw5:___qbj_27r",
+  "enqueuedTime": "2021-01-01T22:26:55.455Z",
+  "enrichments": {
+    "userSpecifiedKey": "sampleValue"
+  }
+}
+```
 
 ## <a name="comparison-of-legacy-data-export-and-data-export"></a>新旧数据导出功能比较
 
@@ -383,7 +483,7 @@ async def send_telemetry_from_thermostat(device_client, telemetry_msg):
 
 | 功能  | 旧数据导出 | 新数据导出 |
 | :------------- | :---------- | :----------- |
-| 可用数据类型 | 遥测、设备、设备模板 | 遥测、属性更改 |
+| 可用数据类型 | 遥测、设备、设备模板 | 遥测、属性更改、设备连接性更改、设备生命周期更改、设备模板生命周期更改 |
 | 筛选 | None | 取决于导出的数据类型。 对于遥测，按遥测、消息属性和属性值筛选 |
 | 扩充 | None | 使用设备上的自定义字符串或属性值进行扩充 |
 | Destinations | Azure 事件中心、Azure 服务总线队列和主题、Azure Blob 存储 | 与旧数据导出加上 Webhook 相同|

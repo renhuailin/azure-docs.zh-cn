@@ -4,15 +4,15 @@ description: 本文介绍了如何删除不同配置方案中的自动化帐户�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-ms.date: 04/15/2021
+ms.date: 06/04/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fe2d99a610be3877b4a347e4bd0dd17df53ba326
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 00401c7afd4fff1fcea7c5097d31ccf440e09049
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834149"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572508"
 ---
 # <a name="how-to-delete-your-azure-automation-account"></a>如何删除 Azure 自动化帐户
 
@@ -31,8 +31,11 @@ ms.locfileid: "107834149"
 
 本文介绍如何通过 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 彻底删除自动化帐户。
 
+## <a name="prerequisite"></a>先决条件
+确认订阅、资源组或资源上没有应用任何[资源管理器锁](../azure-resource-manager/management/lock-resources.md)，此类锁用于防止意外删除或修改关键资源。 如果已部署“在空闲时间启动/停止 VM”解决方案，该解决方案会针对自动化帐户中的多个从属资源（特别是其 runbook 和变量）将锁定级别设置为“CanNotDelete”。 删除自动化帐户之前，请删除任何锁。
+
 > [!NOTE]
-> 在继续之前，请确认订阅、资源组或资源上没有应用任何[资源管理器锁](../azure-resource-manager/management/lock-resources.md)，以防止意外删除或修改关键资源。 如果已部署“在空闲时间启动/停止 VM”解决方案，该解决方案将针对自动化帐户中的多个从属资源（特别是其 runbook 和变量）将锁定级别设置为“CanNotDelete”。 删除自动化帐户之前，需要删除任何锁。
+> 如果收到类似于“`The link cannot be updated or deleted because it is linked to Update Management and/or ChangeTracking Solutions`”的错误消息，则表明你的自动化帐户已关联到 Log Analytics 工作区，并已启用“更新管理”和/或“更改跟踪和清单”功能。 有关详细信息，请参阅下面的[删除共享功能自动化帐户](#delete-a-shared-capability-automation-account)。
 
 ## <a name="delete-the-dedicated-resource-group"></a>删除专用资源组
 
@@ -40,13 +43,13 @@ ms.locfileid: "107834149"
 
 ## <a name="delete-a-standalone-automation-account"></a>删除独立自动化帐户
 
-如果自动化帐户未与 Log Analytics 工作区相链接，请执行以下步骤将其删除。
+如果自动化帐户未与 Log Analytics 工作区关联，请执行以下步骤将其删除。
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/azure-portal)
 
 1. 通过[https://portal.azure.com](https://portal.azure.com)登录 Azure。
 
-2. 在 Azure 门户导航到“自动化账户”。
+2. 在 Azure 门户中，导航到“自动化帐户”。
 
 3. 打开自动化帐户并从菜单中选择“删除”。
 
@@ -70,7 +73,7 @@ Remove-AzAutomationAccount -Name "automationAccountName" -Force -ResourceGroupNa
 
 若要取消与自动化帐户的链接，请执行以下步骤。
 
-1. 在 Azure 门户导航到“自动化账户”。
+1. 在 Azure 门户中，导航到“自动化帐户”。
 
 2. 请打开自动化帐户，然后选择左侧“相关资源”下的“关联的工作区” 。
 
@@ -102,11 +105,11 @@ Remove-AzAutomationAccount -Name "automationAccountName" -Force -ResourceGroupNa
 
 1. 通过[https://portal.azure.com](https://portal.azure.com)登录 Azure。
 
-2. 导航到自动化帐户并选择 "**相关资源** " 下的 "**链接的工作区**"。
+2. 导航到自动化帐户，选择“相关资源”下的“链接的工作区” 。
 
 3. 选择“转到工作区”。
 
-4. 单击“常规”下的“解决方案” 。
+4. 选择“常规”下的“解决方案” 。
 
 5. 在“解决方案”页面，根据帐户中部署的功能选择以下项之一：
 
@@ -134,7 +137,7 @@ Remove-AzMonitorLogAnalyticsSolution -ResourceGroupName "resourceGroupName" -Nam
 
 若要取消与自动化帐户的链接，请执行以下步骤。
 
-1. 在 Azure 门户导航到“自动化账户”。
+1. 在 Azure 门户中，导航到“自动化帐户”。
 
 2. 请打开自动化帐户，然后选择左侧“相关资源”下的“关联的工作区” 。
 

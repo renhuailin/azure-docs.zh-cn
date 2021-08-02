@@ -1,25 +1,26 @@
 ---
-title: 使用 Azure 门户排查 Azure Stack Edge Pro GPU 问题 | Microsoft Docs
-description: 介绍如何排查 Azure Stack Edge Pro GPU 问题。
+title: 运行诊断，收集日志以对 Azure Stack Edge 设备进行故障排除 | Microsoft Docs
+description: 介绍如何运行诊断，使用日志排查 Azure Stack Edge Pro GPU 设备问题。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 02/22/2021
+ms.date: 06/10/2021
 ms.author: alkohli
-ms.openlocfilehash: e108c2fade911c0b0c2f11548004ebbe3c958c51
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: 82f8fe0574ec98c71ace2aaddda2d0bc2bc6e99f
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139392"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006340"
 ---
-# <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>排查 Azure Stack Edge Pro GPU 设备问题 
+# <a name="run-diagnostics-collect-logs-to-troubleshoot-azure-stack-edge-device-issues"></a>运行诊断，收集日志以对 Azure Stack Edge 设备进行故障排除
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-本文介绍如何排查 Azure Stack Edge Pro GPU 设备上的问题。 
+本文介绍如何运行诊断、收集日志包、高级安全日志以及查看日志，以排查 Azure Stack Edge 设备的上传和刷新问题。
 
 
 ## <a name="run-diagnostics"></a>运行诊断
@@ -108,7 +109,7 @@ ms.locfileid: "108139392"
     09/04/2019 15:51:30 system Ok The chassis is closed while the power is off.
     ```
 
-## <a name="use-logs-to-troubleshoot"></a>使用日志进行故障排除
+## <a name="troubleshoot-device-upload-and-refresh-errors"></a>排查设备上传和刷新错误
 
 相关错误文件中包含上传和刷新过程中遇到的任何错误。
 
@@ -132,78 +133,10 @@ ms.locfileid: "108139392"
 
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
 
-## <a name="use-error-lists-to-troubleshoot"></a>使用错误列表排查故障
-
-错误列表根据标识的方案进行编译，可用于自行诊断和排查故障。 
-
-## <a name="azure-resource-manager"></a>Azure 资源管理器
-
-下面是在配置 Azure 资源管理器以访问设备时可能出现的错误。 
-
-| **问题 / 错误** |  **分辨率** | 
-|------------|-----------------|
-|常规问题|<li>[验证 Edge 设备是否已正确配置](#verify-the-device-is-configured-properly)。<li> [验证客户端是否已正确配置](#verify-the-client-is-configured-properly)|
-|Add-AzureRmEnvironment：发送请求时出错。<br>位置：line:1 char:1<br>+ Add-AzureRmEnvironment -Name Az3 -ARMEndpoint "https://management.dbe ...|此错误表示无法访问 Azure Stack Edge Pro 设备或配置不正确。 验证是否正确配置了 Edge 设备和客户端。 有关指南，请参阅此表中的“常规问题”行。|
-|服务返回了错误。 查看 InnerException 了解详情：基础连接已关闭：无法为 SSL/TLS 安全通道建立信任关系。 |   出现此错误的原因可能是一个或多个自带证书步骤未正确执行。 可以在[此处](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates)找到指南。 |
-|操作返回了无效状态代码“ServiceUnavailable” <br> 响应状态代码不指明成功：503（服务不可用）。 | 此错误可能是由以下任何一种状况导致的。<li>ArmStsPool 处于停止状态。</li><li>Azure 资源管理器/安全令牌服务网站均已关闭。</li><li>Azure 资源管理器群集资源已关闭。</li><br>注意：重新启动设备可能会解决这个问题，但你应收集支持包，以便进一步调试。|
-|AADSTS50126：用户名或密码无效。<br>跟踪 ID：29317da9-52fc-4ba0-9778-446ae5625e5a<br>相关 ID：1b9752c4-8cbf-4304-a714-8a16527410f4<br>时间戳：2019-11-15 09:21:57Z：远程服务器返回了错误：(400) 错误的请求。<br>位置：line:1 char:1 |此错误可能是由以下任何一种状况导致的。<li>对于无效的用户名和密码，请按照[此处](./azure-stack-edge-gpu-set-azure-resource-manager-password.md)的步骤操作，然后使用正确的密码来验证客户是否从 Azure 门户更改了密码。<li>对于无效的租户 ID，租户 ID 是固定 GUID，应设置为 `c0257de7-538f-415c-993a-1b87a031879d`</li>|
-|connect-AzureRmAccount：AADSTS90056：资源已禁用或不存在。 请检查应用代码，确保为尝试访问的资源指定了确切的资源 URL。<br>跟踪 ID：e19bdbc9-5dc8-4a74-85c3-ac6abdfda115<br>相关 ID：75c8ef5a-830e-48b5-b039-595a96488ff9 时间戳：2019-11-18 07:00:51Z：远程服务器返回了错误：(400) 错误 |`Add-AzureRmEnvironment` 命令中使用的资源终结点不正确。|
-|无法从云中获取终结点。<br>请确保已连接网络。 错误详细信息：HTTPSConnectionPool(host='management.dbg-of4k6suvm.microsoftdatabox.com', port=30005)：超过了最大重试次数，URL：/metadata/endpoints?api-version=2015-01-01 (Caused by SSLError(SSLError("bad handshake: Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')],)",),)) |此错误主要出现在 Mac/Linux 环境中，原因如下：<li>未将 PEM 格式证书添加到 Python 证书存储中。</li> |
-
-### <a name="verify-the-device-is-configured-properly"></a>验证是否已正确配置设备
-
-1. 从本地 UI 验证是否已正确配置设备网络。
-
-2. 验证是否已为所有终结点更新证书，如[此处](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates)所述。
-
-3. 从本地 UI 的“设备”页获取 Azure 资源管理器管理和登录终结点。
-
-4. 验证是否在 Azure 中激活并注册了设备。
-
-
-### <a name="verify-the-client-is-configured-properly"></a>验证是否已正确配置客户端
-
-1. 验证是否安装了正确的 PowerShell 版本，如[此处](./azure-stack-edge-gpu-connect-resource-manager.md#step-3-install-powershell-on-the-client)所述。
-
-2. 验证是否安装了正确的 PowerShell 模块，如[此处](./azure-stack-edge-gpu-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client)所述。
-
-3. 验证是否可访问 Azure 资源管理器和登录终结点。 可以尝试对终结点执行 ping 操作。 例如：
-
-   `ping management.28bmdw2-bb9.microsoftdatabox.com`
-   `ping login.28bmdw2-bb9.microsoftdatabox.com`
-   
-   如果均无法访问，请按[此处](./azure-stack-edge-gpu-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)所述添加 DNS / 主机文件条目。
-   
-4. 验证是否已按[此处](./azure-stack-edge-gpu-connect-resource-manager.md#import-certificates-on-the-client-running-azure-powershell)所述安装客户端证书。
-
-5. 如果客户使用的是 PowerShell，则应启用调试首选项以查看详细消息，方法是运行以下 PowerShell 命令。 
-
-    `$debugpreference = "continue"`
-
-## <a name="blob-storage-on-device"></a>设备上的 Blob 存储 
-
-下面列出了与 Azure Stack Edge Pro / Data Box Gateway 设备上的 Blob 存储相关的错误。
-
-| **问题 / 错误** |  **分辨率** | 
-|--------------------|-----------------|
-|无法检索子资源。 其中一个 HTTP 标头的值的格式不正确。| 在“编辑”菜单中，选择“目标 Azure Stack API”。  然后，重启 Azure 存储资源管理器。|
-|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com`|检查是否已在以下路径将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 添加到 hosts 文件：`C:\Windows\System32\drivers\etc\hosts` (Windows)，或 `/etc/hosts` (Linux)。|
-|无法检索子资源。<br> 详细信息：自签名证书 |将设备的 SSL 证书导入 Azure 存储资源管理器： <ol><li>从 Azure 门户下载证书。 有关详细信息，请参阅[下载证书](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate)。</li><li>在“编辑”菜单中，选择“SSL 证书”，然后选择“导入证书”。</li></ol>|
-|AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达一分钟：<br>`Failed to enumerate directory https://… The remote name could not be resolved <accountname>.blob.<serialnumber>.microsoftdatabox.com`|检查是否已在 `C:\Windows\System32\drivers\etc\hosts` 将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 添加到 hosts 文件。|
-|AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达一分钟：<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |将设备的 SSL 证书导入系统的证书存储中。 有关详细信息，请参阅[下载证书](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate)。|
-|AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达 20 分钟：<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`. |检查是否已在 `/etc/hosts` 将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 添加到 hosts 文件。|
-|AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达 20 分钟：<br>`Error parsing source location… The SSL connection could not be established`. |将设备的 SSL 证书导入系统的证书存储中。 有关详细信息，请参阅[下载证书](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate)。|
-|AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达 20 分钟：<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|检查是否已在 `/etc/hosts` 将终结点名称 `<accountname>.blob.<serialnumber>.microsoftdatabox.com` 添加到 hosts 文件。|
-|AzCopy 命令在显示以下错误之前，似乎停止了响应，时间长达 20 分钟：`Error parsing source location… The SSL connection could not be established`。|将设备的 SSL 证书导入系统的证书存储中。 有关详细信息，请参阅[下载证书](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate)。|
-|其中一个 HTTP 标头的值的格式不正确。|Data Box 不支持用于 Python 的 Microsoft Azure 存储库的已安装版本。 请查看 Azure Data Box Blob 存储要求，了解支持的版本。|
-|… [SSL:CERTIFICATE_VERIFY_FAILED] …| 在运行 Python 之前，请将 REQUESTS_CA_BUNDLE 环境变量设置为 Base64 编码的 SSL 证书文件的路径（请参阅如何[下载证书](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate)）。 例如：<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>也可将证书添加到系统的证书存储，然后将此环境变量设置为该存储的路径。 例如，在 Ubuntu 上为：<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
-|连接超时。|登录到 Azure Stack Edge Pro，然后检查它是否已解锁。 设备在重启后会保持锁定状态，直到有人登录为止。|
-
-## <a name="troubleshoot-iot-edge-errors"></a>排查 IoT Edge 错误
-
-[!INCLUDE [Troubleshoot IoT Edge runtime](../../includes/azure-stack-edge-iot-troubleshoot-compute.md)]
-
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何[排查设备激活问题](azure-stack-edge-gpu-troubleshoot-activation.md)。
+- [排查设备激活问题](azure-stack-edge-gpu-troubleshoot-activation.md)。
+- [排查 Azure 资源管理器问题](azure-stack-edge-gpu-troubleshoot-azure-resource-manager.md)。
+- [排查 Blob 存储问题](azure-stack-edge-gpu-troubleshoot-blob-storage.md)。
+- [排查 IoT Edge 中的计算问题](azure-stack-edge-gpu-troubleshoot-iot-edge.md)。

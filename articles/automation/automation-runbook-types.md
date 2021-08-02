@@ -3,15 +3,15 @@ title: Azure 自动化 Runbook 类型
 description: 本文介绍可以在 Azure 自动化中使用的不同 Runbook 类型，以及在确定要使用的具体类型时的注意事项。
 services: automation
 ms.subservice: process-automation
-ms.date: 05/17/2021
+ms.date: 06/10/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9528443e7e89ecb91db70736d2051f813b130cce
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c64a712cc916cad0f6f6fec77f33fcb422f834fb
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073173"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982963"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自动化 Runbook 类型
 
@@ -126,7 +126,10 @@ Python Runbook 在 Python 2 和 Python 3 下编译。 Python 3 Runbook 目前处
 
 ### <a name="known-issues"></a>已知问题
 
-Python 3 作业有时会失败，并弹出异常消息“无效解释器可执行路径”。 如果作业延迟，启动超过 10 分钟或使用 Start-AutomationRunbook 来启动 Python 3 Runbook，可能会看见此异常。 如果作业延迟，请重新启动 Runbook。
+对于云作业，Python 3 作业有时会失败，并出现异常消息 `invalid interpreter executable path`。 如果作业延迟、启动时间超过 10 分钟，或者使用 Start-AutomationRunbook 启动 Python 3 Runbook，则可能会看到此异常。 如果作业延迟，请重新启动 Runbook。 如果使用以下步骤，混合作业应可以正常工作：
+
+1. 创建名为 `PYTHON_3_PATH` 的新环境变量，并指定安装文件夹。 例如，如果安装文件夹为 `C:\Python3`，则需要将此路径添加到该变量中。
+1. 设置环境变量后重启计算机。
 
 ## <a name="next-steps"></a>后续步骤
 

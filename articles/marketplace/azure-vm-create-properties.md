@@ -1,22 +1,22 @@
 ---
 title: 在 Azure 市场上配置虚拟机产品/服务属性
-description: 了解如何在 Azure 市场上配置虚拟机产品/服务属性。
+description: 在 Azure 市场上配置虚拟机产品/服务属性。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 281553782774c31ec8cfaf614542fd739c4d3dd9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f59bd0798347e39c696a8a774f2e9a85dfae6dfa
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94629523"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111525347"
 ---
-# <a name="how-to-configure-virtual-machine-offer-properties"></a>如何配置虚拟机产品/服务属性
+# <a name="configure-virtual-machine-offer-properties"></a>配置虚拟机产品/服务属性
 
-在“属性”页（从合作伙伴中心的左侧导航菜单中选择），定义用于对 Azure 市场上的虚拟机 (VM) 产品/服务进行分组的类别、应用程序版本以及支持产品/服务的法律协定。
+在“属性”页（从左侧导航菜单中选择），定义用于对 Azure 市场上的虚拟机 (VM) 产品/服务进行分组的类别、应用程序版本以及支持产品/服务的法律协定。
 
 ## <a name="select-a-category"></a>选择类别
 
@@ -75,7 +75,7 @@ ms.locfileid: "94629523"
 
 ### <a name="use-your-own-terms-and-conditions"></a>使用自己的条款和条件
 
-可选择提供自己的条款和条件，而不是标准协定。 客户必须接受这些条款，才能试用你的产品/服务。
+可提供自己的条款和条件，而不是使用标准协定。 客户必须接受这些条款，才能试用你的产品/服务。
 
 1. 在“法律”下，清除“使用 Microsoft 商业市场的标准协定”复选框 。
 1. 在“条款和条件”框中，输入最多 10,000 个字符的文本。

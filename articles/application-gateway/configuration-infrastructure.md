@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 06/14/2021
 ms.author: surmb
-ms.openlocfilehash: f214b0b0751f44ea1357f569fd814a7621af61ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 785741c029fa3b44fffca5140906689f478fb247
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93397614"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081220"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>应用程序网关基础结构配置
 
@@ -35,7 +35,13 @@ ms.locfileid: "93397614"
 
 应用程序网关（标准或 WAF）SKU 最多可支持 32 个实例（已预留 32 个实例 IP 地址 + 1 个专用前端 IP + 5 个 Azure）- 因此建议使用的最小子网大小为 /26
 
-应用程序网关（Standard_v2 或 WAF_v2 SKU）最多可支持 125 个实例（已预留 125 个实例 IP 地址 + 1 个专用前端 IP + 5 个 Azure）- 因此建议使用的最小子网大小为 /24
+应用程序网关（Standard_v2 或 WAF_v2 SKU）最多可支持 125 个实例（已预留 125 个实例 IP 地址 + 1 个专用前端 IP 地址 + 5 个 Azure IP 地址）。 建议使用的最小子网大小为 /24。
+
+> [!IMPORTANT]
+> 尽管 /24 子网不是应用程序网关 v2 SKU 部署所需的，但强烈建议使用它。 这是为了确保应用程序网关 v2 有足够的空间用于自动缩放扩展和维护升级。 应确保应用程序网关 v2 子网有足够的地址空间来容纳处理最大预期流量所需的实例数。 如果指定最大实例计数，则子网的容量应至少能够容纳那么多的地址。 有关实例计数的容量计划，请参阅[实例计数详细信息](understanding-pricing.md#instance-count)。
+
+> [!TIP]
+> 可以更改同一虚拟网络中现有应用程序网关的子网。 可以通过 Azure PowerShell 或 Azure CLI 来实现此目的。 有关详细信息，请参阅[有关应用程序网关的常见问题解答](application-gateway-faq.yml#can-i-change-the-virtual-network-or-subnet-for-an-existing-application-gateway)
 
 ## <a name="network-security-groups"></a>网络安全组
 

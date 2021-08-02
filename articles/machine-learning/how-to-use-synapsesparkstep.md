@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: how-to
 ms.custom: synapse-azureml
-ms.openlocfilehash: 8ef4eca10971f9f7f405292fa7b722b26c7d53cd
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 046a38da67db86592e91f103f3139b425e59f6a0
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896758"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110578891"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>如何在机器学习管道中使用由 Azure Synapse Analytics 提供支持的 Apache Spark（预览版）
 
@@ -35,21 +35,23 @@ ms.locfileid: "107896758"
 
 在 Azure Synapse Analytics 工作区中创建和管理 Apache Spark 池。 若要将 Apache Spark 池与 Azure 机器学习工作区集成，必须[链接到 Azure Synapse Analytics 工作区](how-to-link-synapse-ml-workspaces.md)。 
 
-可以使用“链接服务”页通过 Azure 机器学习工作室 UI 附加 Apache Spark 池。 还可以通过“计算”页使用“附加计算”选项来执行此操作。
-
-还可通过 SDK（如下详述）或通过 ARM 模板（请参阅此 [ARM 模板示例](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)）附加 Apache Spark 池。 
-
-可使用以下代码，通过命令行来遵循 ARM 模板，添加链接服务，并附加 Apache Spark 池：
-
-```bash
-az deployment group create --name --resource-group <rg_name> --template-file "azuredeploy.json" --parameters @"azuredeploy.parameters.json"
-```
+将 Azure 机器学习工作区和 Azure Synapse Analytics 工作区链接起来后，你可以通过以下方式连接 Apache Spark 池： 
+* [Azure 机器学习工作室](how-to-link-synapse-ml-workspaces.md#attach-a-pool-via-the-studio)
+* Python SDK（[如下所述](#attach-your-apache-spark-pool-as-a-compute-target-for-azure-machine-learning)）
+* Azure 资源管理器 (ARM) 模板（请参阅此[示例 ARM 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)）。 
+    * 可使用以下代码，通过命令行来遵循 ARM 模板，添加链接服务，并附加 Apache Spark 池：
+    ```azurecli
+    az deployment group create --name --resource-group <rg_name> --template-file "azuredeploy.json" --parameters @"azuredeploy.parameters.json"
+    ```
 
 > [!Important]
 > 若要成功链接到 Azure Synapse Analytics 工作区，必须在 Azure Synapse Analytics 工作区资源中拥有“所有者”角色。 查看 Azure 门户中的访问权限。
-> 创建获取系统分配的标识 (SAI) 时，链接服务将获取此标识。 必须给此链接服务 SAI 分配 Synapse Studio 中的“Synapse Apache Spark 管理员”角色，使其可以提交 Spark 作业（请参阅[如何在 Synapse Studio 中管理 Synapse RBAC 角色分配](../synapse-analytics/security/how-to-manage-synapse-rbac-role-assignments.md)）。 还必须向 Azure 机器学习工作区的用户授予资源管理 Azure 门户的“参与者”角色。
+>
+> 当你创建系统分配的托管标识 (SAI) 时，链接服务将获取此标识。 必须给此链接服务 SAI 分配 Synapse Studio 中的“Synapse Apache Spark 管理员”角色，使其可以提交 Spark 作业（请参阅[如何在 Synapse Studio 中管理 Synapse RBAC 角色分配](../synapse-analytics/security/how-to-manage-synapse-rbac-role-assignments.md)）。 
+> 
+> 还必须向 Azure 机器学习工作区的用户授予资源管理 Azure 门户的“参与者”角色。
 
-## <a name="create-or-retrieve-the-link-between-your-azure-synapse-analytics-workspace-and-your-azure-machine-learning-workspace"></a>创建或检索 Azure Synapse Analytics 工作区与 Azure 机器学习工作区之间的链接
+## <a name="retrieve-the-link-between-your-azure-synapse-analytics-workspace-and-your-azure-machine-learning-workspace"></a>检索 Azure Synapse Analytics 工作区与 Azure 机器学习工作区之间的链接
 
 可以使用以下代码检索工作区中的链接服务：
 
@@ -65,7 +67,7 @@ for service in LinkedService.list(ws) :
 linked_service = LinkedService.get(ws, 'synapselink1')
 ```
 
-首先，`Workspace.from_config()` 使用 `config.json` 中的配置访问 Azure 机器学习工作区（请参阅[教程：开发环境中 Azure 机器学习入门](tutorial-1st-experiment-sdk-setup-local.md)）。 然后，该代码将输出工作区中所有可用的链接服务。 最后，`LinkedService.get()` 检索名为 `'synapselink1'` 的链接服务。 
+首先，`Workspace.from_config()` 使用 `config.json` 中的配置访问 Azure 机器学习工作区（请参阅[创建工作区配置文件](how-to-configure-environment.md#workspace)）。 然后，该代码将输出工作区中所有可用的链接服务。 最后，`LinkedService.get()` 检索名为 `'synapselink1'` 的链接服务。 
 
 ## <a name="attach-your-apache-spark-pool-as-a-compute-target-for-azure-machine-learning"></a>附加 Apache spark 池为 Azure 机器学习的计算目标
 

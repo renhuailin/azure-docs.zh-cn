@@ -1,7 +1,7 @@
 ---
 title: 配置专用终结点。
 titleSuffix: Azure Machine Learning
-description: 使用 Azure 专用链接从虚拟网络安全地访问 Azure 机器学习工作区。
+description: 使用专用终结点从虚拟网络安全地访问 Azure 机器学习工作区。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,34 +10,45 @@ ms.custom: devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 05/06/2021
-ms.openlocfilehash: 894e25d0ee44bd057c95efba3b6389ec116c8e07
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 06/10/2021
+ms.openlocfilehash: 9a8e4351b88c1b9c4f166dff71fe906177870d9a
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486244"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984691"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>为 Azure 机器学习工作区配置 Azure 专用链接
+# <a name="configure-a-private-endpoint-for-an-azure-machine-learning-workspace"></a>为 Azure 机器学习工作区配置专用终结点
 
-本文档介绍如何将 Azure 专用链接与 Azure 机器学习工作区配合使用。 有关创建 Azure 机器学习虚拟网络的信息，请参阅[虚拟网络隔离和隐私概述](how-to-network-security-overview.md)
+本文档介绍如何为 Azure 机器学习工作区配置专用终结点。 有关创建 Azure 机器学习虚拟网络的信息，请参阅[虚拟网络隔离和隐私概述](how-to-network-security-overview.md)
 
-使用 Azure 专用链接，可以通过专用终结点连接到工作区。 专用终结点是虚拟网络中的一组专用 IP 地址。 然后，你可以限制工作区访问权限，只允许通过专用 IP 地址访问你的工作区。 专用链接有助于降低数据外泄风险。 若要详细了解专用终结点，请参阅 [Azure 专用链接](../private-link/private-link-overview.md)一文。
+使用 Azure 专用链接，可以通过专用终结点连接到工作区。 专用终结点是虚拟网络中的一组专用 IP 地址。 然后，你可以限制工作区访问权限，只允许通过专用 IP 地址访问你的工作区。 专用终结点有助于降低数据泄露风险。 若要详细了解专用终结点，请参阅 [Azure 专用链接](../private-link/private-link-overview.md)一文。
 
-> [!IMPORTANT]
-> Azure 专用链接不影响 Azure 控制平面（管理操作），例如删除工作区或管理计算资源。 例如，创建、更新或删除计算目标。 这些操作像往常一样通过公共 Internet 执行。 数据平面操作（如使用 Azure 机器学习工作室）、API（包括已发布管道）或 SDK 使用专用终结点。
+> [!WARNING]
+> 使用专用终结点保护工作区本身不能确保端到端安全。 必须保护解决方案的所有组件。 例如，如果为工作区使用专用终结点，但 Azure 存储帐户不支持 VNet，则工作区和存储之间的流量出于安全原因不会使用 VNet。
 >
-> 如果使用的是 Mozilla Firefox，则在尝试访问工作区的专用终结点时可能会遇到问题。 此问题可能与 Mozilla 中 HTTPS 上的 DNS 有关。 建议使用 Microsoft Edge 或 Google Chrome 来避开此问题。
+> 若要详细了解如何保护 Azure 机器学习所用的资源，请参阅以下文章：
+>
+> * [虚拟网络隔离和隐私概述](how-to-network-security-overview.md)。
+> * [保护工作区资源](how-to-secure-workspace-vnet.md)。
+> * [保护训练环境](how-to-secure-training-vnet.md)。
+> * [保护推理环境](how-to-secure-inferencing-vnet.md)。
+> * [在 VNet 中使用 Azure 机器学习工作室](how-to-enable-studio-virtual-network.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果计划将启用了专用链接的工作区与客户管理的密钥配合使用，需要使用支持票证请求此功能。 有关详细信息，请参阅[管理和增加配额](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
+[!INCLUDE [cli-version-info](../../includes/machine-learning-cli-version-1-only.md)]
+
+* 如果计划将启用了专用终结点的工作区与客户管理的密钥配合使用，需要使用支持票证请求此功能。 有关详细信息，请参阅[管理和增加配额](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
 
 * 必须具有用于创建专用终结点的现有虚拟网络。 在添加专用终结点之前，还需要[对专用终结点禁用网络策略](../private-link/disable-private-endpoint-network-policy.md)。
+
 ## <a name="limitations"></a>限制
 
-* Azure 政府区域不支持使用具有专用链接的 Azure 机器学习工作区。
-* 如果为使用私有链接保护的工作区启用公共访问，并通过公共 Internet 使用 Azure 机器学习工作室，则设计器等某些功能可能无法访问你的数据。 如果数据存储在 VNet 保护的服务中，则会出现此问题。 例如 Azure 存储帐户。
+* Azure 政府区域不支持使用具有专用终结点的 Azure 机器学习工作区。
+* 如果为使用专用终结点保护的工作区启用公共访问，并通过公共 Internet 使用 Azure 机器学习工作室，则设计器等某些功能可能无法访问你的数据。 如果数据存储在 VNet 保护的服务中，则会出现此问题。 例如 Azure 存储帐户。
+* 如果使用的是 Mozilla Firefox，则在尝试访问工作区的专用终结点时可能会遇到问题。 此问题可能与 Mozilla 中 HTTPS 上的 DNS 有关。 建议使用 Microsoft Edge 或 Google Chrome 来避开此问题。
+* 使用专用终结点不影响 Azure 控制平面（管理操作），例如删除工作区或管理计算资源。 例如，创建、更新或删除计算目标。 这些操作像往常一样通过公共 Internet 执行。 数据平面操作（如使用 Azure 机器学习工作室）、API（包括已发布管道）或 SDK 使用专用终结点。
 
 ## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>创建使用专用终结点的工作区
 
@@ -66,7 +77,7 @@ ws = Workspace.create(name='myworkspace',
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[用于机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)提供了 [az ml workspace create](/cli/azure/ml/workspace#az_ml_workspace_create) 命令。 此命令的以下参数可用于创建具有专用网络的工作区，但它需要现有虚拟网络：
+[用于机器学习的 Azure CLI 扩展 1.0](reference-azure-machine-learning-cli.md) 提供了 [az ml workspace create](/cli/azure/ml/workspace#az_ml_workspace_create) 命令。 此命令的以下参数可用于创建具有专用网络的工作区，但它需要现有虚拟网络：
 
 * `--pe-name`：创建的专用终结点的名称。
 * `--pe-auto-approval`：是否应自动批准专用终结点与工作区的连接。
@@ -116,7 +127,7 @@ ws.add_private_endpoint(private_endpoint_config=pe, private_endpoint_auto_approv
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[用于机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)提供了 [az ml workspace private-endpoint add](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_add) 命令。
+[用于机器学习的 Azure CLI 扩展 1.0](reference-azure-machine-learning-cli.md) 提供了 [az ml workspace private-endpoint add](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_add) 命令。
 
 ```azurecli
 az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval --pe-vnet-name myvnet
@@ -153,7 +164,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[用于机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)提供了 [az ml workspace private-endpoint delete](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_delete) 命令。
+[用于机器学习的 Azure CLI 扩展 1.0](reference-azure-machine-learning-cli.md) 提供了 [az ml workspace private-endpoint delete](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_delete) 命令。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -166,7 +177,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 由于仅允许从虚拟网络到工作区的通信，因此，使用该工作区的任何开发环境都必须是虚拟网络的成员。 例如，虚拟网络中的虚拟机。
 
 > [!IMPORTANT]
-> 为了避免暂时中断连接，Microsoft 建议你在启用专用链接后在连接到工作区的计算机上刷新 DNS 缓存。 
+> 为了避免暂时中断连接，Microsoft 建议你在启用专用终结点后在连接到工作区的计算机上刷新 DNS 缓存。 
 
 有关 Azure 虚拟机的信息，请参阅[虚拟机文档](../virtual-machines/index.yml)。
 
@@ -177,7 +188,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 > [!WARNING]
 > 通过公共终结点进行连接时，工作室的某些功能将无法访问你的数据。 如果数据存储在 VNet 保护的服务中，则会出现此问题。 例如 Azure 存储帐户。 另请注意，计算实例 Jupyter/JupyterLab/RStudio 功能和正在运行的笔记本将不起作用。
 
-若要对启用了专用链接的工作区启用公共访问，请使用以下步骤：
+若要对启用了专用终结点的工作区启用公共访问，请使用以下步骤：
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -192,7 +203,7 @@ ws.update(allow_public_access_when_behind_vnet=True)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[用于机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)提供了 [az ml workspace update](/cli/azure/ml/workspace#az_ml_workspace_update) 命令。 若要启用对工作区的公共访问，请添加参数 `--allow-public-access true`。
+[用于机器学习的 Azure CLI 扩展 1.0](reference-azure-machine-learning-cli.md) 提供了 [az ml workspace update](/cli/azure/ml/workspace#az_ml_workspace_update) 命令。 若要启用对工作区的公共访问，请添加参数 `--allow-public-access true`。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

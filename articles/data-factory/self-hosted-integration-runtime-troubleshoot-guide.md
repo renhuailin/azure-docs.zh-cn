@@ -4,14 +4,14 @@ description: 了解如何在 Azure 数据工厂中排查自承载集成运行时
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 01/25/2021
+ms.date: 05/31/2021
 ms.author: lle
-ms.openlocfilehash: 2cb0e0870b32270340e37d54dc54a43b22ee014a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7abdd532e20a2514fcf96d97973a8fbfdd87d0df
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100376456"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796265"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>排查自承载集成运行时问题
 
@@ -289,6 +289,61 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
     ```
     certutil -importpfx FILENAME.pfx AT_KEYEXCHANGE
     ```
+
+### <a name="self-hosted-integration-runtime-nodes-out-of-the-sync-issue"></a>自承载集成运行时节点不同步问题
+
+#### <a name="symptoms"></a>症状
+
+自承载集成运行时节点尝试跨节点同步凭据，但在此过程中卡住并在一段时间后遇到以下错误消息：
+
+“集成运行时（自承载）节点正在尝试跨节点同步凭据。 此过程可能需要几分钟时间。”
+
+>[!Note]
+>如果此错误出现超过 10 分钟，请检查与调度程序节点的连接。
+
+#### <a name="cause"></a>原因
+
+原因是工作器节点无权访问私钥。 这可以从下面的自承载集成运行时日志中确认：
+
+`[14]0460.3404::05/07/21-00:23:32.2107988 [System] A fatal error occurred when attempting to access the TLS server credential private key. The error code returned from the cryptographic module is 0x8009030D. The internal error state is 10001.`
+
+在 ADF 链接服务中使用服务主体身份验证时，同步过程没有问题。 但是，将身份验证类型切换为帐户密钥时，同步问题就出现了。 这是因为自承载集成运行时服务在服务帐户 (NT SERVICE\DIAHostService) 下运行，需要将其添加到私钥权限中。
+ 
+
+#### <a name="resolution"></a>解决方法
+
+若要解决此问题，你需要将自承载集成运行时服务帐户 (NT SERVICE\DIAHostService) 添加到私钥权限中。 你可以应用以下步骤：
+
+1. 打开 Microsoft 管理控制台 (MMC) 运行命令。
+
+    :::image type="content" source="./media/self-hosted-integration-runtime-troubleshoot-guide/management-console-run-command.png" alt-text="显示 MMC 运行命令的屏幕截图":::
+
+1. 在 MMC 窗格中，应用以下步骤：
+
+    :::image type="content" source="./media/self-hosted-integration-runtime-troubleshoot-guide/add-service-account-to-private-key-1.png" alt-text="显示将自承载 IR 服务帐户添加到私钥权限的第二步的屏幕截图。" lightbox="./media/self-hosted-integration-runtime-troubleshoot-guide/add-service-account-to-private-key-1-expanded.png":::
+
+    1. 选择“文件”。
+    1. 在下拉菜单中选择“添加/删除管理单元”。
+    1. 在“可用管理单元”窗格中选择“证书”。
+    1. 选择 **添加** 。
+    1. 在弹出的“证书管理单元”窗格中，选择“计算机帐户”。
+    1. 选择“**下一页**”。
+    1. 在“选择计算机”窗格中，选择“本地计算机: 运行此控制台的计算机”。
+    1. 选择“完成”  。
+    1. 在“添加或删除管理单元”窗格中选择“确定”。
+
+1. 在 MMC 窗格中，继续执行以下步骤：
+
+    :::image type="content" source="./media/self-hosted-integration-runtime-troubleshoot-guide/add-service-account-to-private-key-2.png" alt-text="显示将自承载 IR 服务帐户添加到私钥权限的第三步的屏幕截图。" lightbox="./media/self-hosted-integration-runtime-troubleshoot-guide/add-service-account-to-private-key-2-expanded.png":::
+
+    1. 从左侧文件夹列表中，选择“控制台根节点 -> 证书(本地计算机) -> 个人 -> 证书”。
+    1. 右键单击“Microsoft Intune Beta MDM”。
+    1. 在下拉列表中选择“所有任务”。
+    1. 选择“管理私钥”。
+    1. 在“组或用户名”下选择“添加”。
+    1. 选择“NT SERVICE\DIAHostService”，授予其对此证书的完全控制访问权限。 
+    1. 选择“检查名称”，然后选择“确定” 。
+    1. 在“权限”窗格中，选择“应用”，然后选择“确定”。
 
 ## <a name="self-hosted-ir-setup"></a>自承载 IR 设置
 
@@ -779,18 +834,6 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 如果此证书不在受信任的根 CA 中，请在[此处下载](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt )。 
 
 
-## <a name="self-hosted-ir-sharing"></a>自承载 IR 共享
-
-### <a name="sharing-a-self-hosted-ir-from-a-different-tenant-is-not-supported"></a>不支持从其他租户共享自承载 IR 
-
-#### <a name="symptoms"></a>症状
-
-尝试从 Azure 数据工厂 UI 共享自承载 IR 时，你可能会注意到其他数据工厂（位于不同租户），但你无法在位于不同租户的数据工厂之间共享自承载 IR。
-
-#### <a name="cause"></a>原因
-
-不能跨租户共享自承载 IR。
-
 ## <a name="next-steps"></a>后续步骤
 
 有关故障排除的更多帮助，请尝试以下资源：
@@ -800,5 +843,5 @@ System.ValueTuple.dll 位于 %windir%\Microsoft.NET\assembly 和 %windir%\assemb
 *  [Azure 视频](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Microsoft Q&A 页](/answers/topics/azure-data-factory.html)
 *  [数据工厂 Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-data-factory)
-*  [Twitter 中有关数据工厂的信息](https://twitter.com/hashtag/DataFactory)
+*  [关于数据工厂的 Twitter 信息](https://twitter.com/hashtag/DataFactory)
 *  [映射数据流性能指南](concepts-data-flow-performance.md)

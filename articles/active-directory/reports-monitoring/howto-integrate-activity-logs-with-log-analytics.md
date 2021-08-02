@@ -4,7 +4,7 @@ description: 了解如何将 Azure Active Directory 日志与 Azure Monitor 日�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 06/11/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f328ed44252f7fb314552d6d05df9806f59d972
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c29b631d3002f0c79fb2dd1b1f26dfa65051368c
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591128"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018940"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>将 Azure AD 日志与 Azure Monitor 日志集成
 
@@ -63,7 +63,11 @@ Ignite 会话中的以下视频通过实际用户方案演示了将 Azure Monito
 
 ## <a name="licensing-requirements"></a>许可要求
 
-使用此功能需要 Azure AD Premium P1 或 P2 许可证。 若要根据需要查找合适的许可证，请参阅[比较免费版、基本版和高级版的正式发布功能](https://azure.microsoft.com/pricing/details/active-directory/)。
+使用此功能需要 Azure AD Premium P1 或 P2 租户。 可以在 Azure Active Directory 的[“概述”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)页上找到租户的许可证类型。
+
+![租户信息](./media/howto-integrate-activity-logs-with-log-analytics/tenant-information.png)
+ 
+如果想要了解活动数据在高级租户中的存储时间，请参阅[数据在 Azure AD 中的存储时长](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)
 
 ## <a name="send-logs-to-azure-monitor"></a>将日志发送到 Azure Monitor
 

@@ -7,21 +7,28 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
-ms.reviewer: mathoma, sstein
-ms.date: 08/27/2020
-ms.openlocfilehash: 3a678f6280b5f2d0fd372e75bfbeb6eb2e9b1577
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+author: BustosMSFT
+ms.author: robustos
+ms.reviewer: mathoma
+ms.date: 04/28/2021
+ms.openlocfilehash: 820c69135acbecde8c2c918e26a7b8cf9dc69428
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100634288"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110699890"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>创建并使用活动异地复制 - Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 活动异地复制是一项 Azure SQL 数据库功能，可用于在相同或不同的数据中心（区域）的服务器上创建各个数据库的可读辅助数据库。
+
+> [!NOTE]
+> Azure SQL 超大规模的活动异地复制[现提供公共预览版](https://aka.ms/hsgeodr)。 当前限制包括：仅允许在同一区域或另一个区域中存在一个异地辅助数据库；当前不支持强制和计划故障转移；不支持从异地辅助数据库还原数据库；不支持使用异地辅助数据库作为数据库复制的源数据库，或作为其他异地辅助数据库的主数据库。
+> 如果需要使异地辅助数据库可写，可以通过以下步骤断开异地复制链接来实现：
+> 1. 使用 cmdlet [Remove-AzSqlDatabaseSecondary](/powershell/module/az.sql/remove-azsqldatabasesecondary)，使辅助数据库成为独立的读写数据库。 任何提交到主数据库但尚未复制到辅助数据库的数据更改都将丢失。 当旧的主数据库可用时，或在某些情况下通过将旧的主数据库还原到最新的可用时间点，可以恢复这些更改。
+> 2. 如果旧的主数据库可用，请将其删除，然后为新的主数据库设置异地复制（将为新的辅助数据库设定种子）。 
+> 3. 在应用程序中相应地更新连接字符串。
 
 > [!NOTE]
 > Azure SQL 托管实例不支持活动异地复制。 对于 SQL 托管实例的实例的地理故障转移，请使用[自动故障转移组](auto-failover-group-overview.md)。
@@ -140,6 +147,9 @@ ms.locfileid: "100634288"
 有关 SQL 数据库计算大小的详细信息，请参阅[什么是 SQL 数据库服务层级](purchasing-models.md)。
 
 ## <a name="cross-subscription-geo-replication"></a>跨订阅异地复制
+
+> [!NOTE]
+> 当主或辅助逻辑服务器上的 [Azure Active Directory](https://techcommunity.microsoft.com/t5/azure-sql/support-for-azure-ad-user-creation-on-behalf-of-azure-ad/ba-p/2346849) 身份验证处于活动（已启用）状态时，不支持在其他 Azure 租户的逻辑服务器上创建异地复制。
 
 若要在属于不同订阅（是在同一租户下还是不在同一租户下）的两个数据库之间设置活动异地复制，必须执行本部分中所述的特殊过程。  此过程基于 SQL 命令，要求：
 

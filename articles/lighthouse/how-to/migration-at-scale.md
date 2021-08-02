@@ -1,14 +1,14 @@
 ---
 title: 大规模管理 Azure Migrate 项目
-description: 了解如何在委派的客户资源上有效地使用 Azure Migrate。
+description: Azure Lighthouse 可帮助你跨委派的客户资源有效地使用 Azure Migrate。
 ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: a449244de1a834b8b85396d716c49415ac32c6f3
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: d93bc9127f59d5ff67424fc967e9126d06a989b2
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784244"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112082039"
 ---
 # <a name="manage-azure-migrate-projects-at-scale-with-azure-lighthouse"></a>使用 Azure Lighthouse 大规模管理 Azure Migrate 项目
 

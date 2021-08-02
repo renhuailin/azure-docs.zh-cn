@@ -4,15 +4,15 @@ description: 了解如何使用虚拟网络中的专用 IP 地址设置 Azure �
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 06/08/2021
 ms.author: thweiss
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: d21943c90e1f77bd4a43cdfd27b183df018f6cc7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 633148279332c8d2b30cae525dfa7cc6b14f849e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690662"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744298"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>为 Azure Cosmos 帐户配置 Azure 专用链接
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "101690662"
 
 可以使用自动或手动批准方法连接到配置了专用链接的 Azure Cosmos 帐户。 有关详细信息，请参阅“专用链接”文档的[批准工作流](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)部分。
 
-本文介绍如何为 Azure Cosmos DB 事务性存储设置专用终结点。 它假设你使用的是自动审批方法。 如果使用的是分析存储区，请参阅 [分析存储的专用终结点](analytical-store-private-endpoints.md) 一文。
+本文介绍如何为 Azure Cosmos DB 事务存储设置专用终结点。 它假设你使用的是自动审批方法。 如果使用的是分析存储，请参阅[分析存储的专用终结点](analytical-store-private-endpoints.md)一文。
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>使用 Azure 门户创建专用终结点
 
@@ -67,10 +67,10 @@ ms.locfileid: "101690662"
     | 设置 | Value |
     | ------- | ----- |
     |**网络**| |
-    | 虚拟网络| 选择虚拟网络。 |
+    | 虚拟网络| 选择你的虚拟网络。 |
     | 子网 | 选择你的子网。 |
     |**专用 DNS 集成**||
-    |与专用 DNS 区域集成 |请选择“是”。 <br><br/> 若要以私密方式连接到专用终结点，需有一条 DNS 记录。 建议将专用终结点与专用 DNS 区域集成。 你也可以使用自己的 DNS 服务器，或者使用虚拟机上的主机文件创建 DNS 记录。 |
+    |与专用 DNS 区域集成 |请选择“是”。 <br><br/> 若要以私密方式连接到专用终结点，需有一条 DNS 记录。 建议将专用终结点与专用 DNS 区域集成。 你也可以使用自己的 DNS 服务器，或者使用虚拟机上的主机文件创建 DNS 记录。 <br><br/> 为此选项选择“是”时，还将创建一个专用 DNS 区域组。 DNS 区域组是专用 DNS 区域和专用终结点之间的链接。 当专用终结点进行了更新时，此链接可帮助你自动更新专用 DNS 区域。 例如，添加或删除区域后，会自动更新专用 DNS 区域。 |
     |专用 DNS 区域 |选择 privatelink.documents.azure.com"。 <br><br/> 专用 DNS 区域是自动确定的。 无法使用 Azure 门户更改此区域。|
     |||
 
@@ -78,6 +78,8 @@ ms.locfileid: "101690662"
 1. 看到“验证通过”消息时，选择“创建” 。
 
 如果已批准 Azure Cosmos 帐户的专用链接，则 Azure 门户上“防火墙和虚拟网络”窗格中的“所有网络”选项将不可用。 
+
+## <a name="api-types-and-private-zone-names"></a><a id="private-zone-name-mapping"></a>API 类型和专用区域名称
 
 下表显示了不同的 Azure Cosmos 帐户 API 类型、支持的子资源与相应的专用区域名称之间的映射。 还可以通过 SQL API 访问 Gremlin 和表 API 帐户，因此这些 API 有两个条目。
 
@@ -145,6 +147,8 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $ResourceGroupName -
 
 ```azurepowershell-interactive
 Import-Module Az.PrivateDns
+
+# Zone name differs based on the API type and group ID you are using. 
 $zoneName = "privatelink.documents.azure.com"
 $zone = New-AzPrivateDnsZone -ResourceGroupName $ResourceGroupName `
   -Name $zoneName
@@ -159,19 +163,19 @@ $pe = Get-AzPrivateEndpoint -Name $PrivateEndpointName `
 
 $networkInterface = Get-AzResource -ResourceId $pe.NetworkInterfaces[0].Id `
   -ApiVersion "2019-04-01"
- 
-foreach ($ipconfig in $networkInterface.properties.ipConfigurations) { 
-foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) { 
-Write-Host "$($ipconfig.properties.privateIPAddress) $($fqdn)"  
-$recordName = $fqdn.split('.',2)[0] 
-$dnsZone = $fqdn.split('.',2)[1] 
-New-AzPrivateDnsRecordSet -Name $recordName `
-  -RecordType A -ZoneName $zoneName  `
-  -ResourceGroupName $ResourceGroupName -Ttl 600 `
-  -PrivateDnsRecords (New-AzPrivateDnsRecordConfig `
-  -IPv4Address $ipconfig.properties.privateIPAddress)  
-}
-}
+
+# Create DNS configuration
+
+$PrivateDnsZoneId = $zone.ResourceId
+
+$config = New-AzPrivateDnsZoneConfig -Name $zoneName`
+ -PrivateDnsZoneId $PrivateDnsZoneId
+
+## Create a DNS zone group
+New-AzPrivateDnsZoneGroup -ResourceGroupName $ResourceGroupName`
+ -PrivateEndpointName $PrivateEndpointName`
+ -Name "MyPrivateZoneGroup"`
+ -PrivateDnsZoneConfig $config
 ```
 
 ### <a name="fetch-the-private-ip-addresses"></a>提取专用 IP 地址
@@ -242,6 +246,7 @@ az network private-endpoint create \
 创建专用终结点后，可以使用以下 Azure CLI 脚本将其与专用 DNS 区域集成：
 
 ```azurecli-interactive
+#Zone name differs based on the API type and group ID you are using. 
 zoneName="privatelink.documents.azure.com"
 
 az network private-dns zone create --resource-group $ResourceGroupName \
@@ -253,15 +258,13 @@ az network private-dns link vnet create --resource-group $ResourceGroupName \
    --virtual-network $VNetName \
    --registration-enabled false 
 
-#Query for the network interface ID  
-networkInterfaceId=$(az network private-endpoint show --name $PrivateEndpointName --resource-group $ResourceGroupName --query 'networkInterfaces[0].id' -o tsv)
- 
-# Copy the content for privateIPAddress and FQDN matching the Azure Cosmos account 
-az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json 
- 
-#Create DNS records 
-az network private-dns record-set a create --name recordSet1 --zone-name privatelink.documents.azure.com --resource-group $ResourceGroupName
-az network private-dns record-set a add-record --record-set-name recordSet2 --zone-name privatelink.documents.azure.com --resource-group $ResourceGroupName -a <Private IP Address>
+#Create a DNS zone group
+az network private-endpoint dns-zone-group create \
+   --resource-group $ResourceGroupName \
+   --endpoint-name $PrivateEndpointName \
+   --name "MyPrivateZoneGroup" \
+   --private-dns-zone $zoneName \
+   --zone-name "myzone"
 ```
 
 ## <a name="create-a-private-endpoint-by-using-a-resource-manager-template"></a>使用资源管理器模板创建专用终结点
@@ -460,38 +463,6 @@ $deploymentOutput
 }
 ```
 
-使用以下代码创建名为“PrivateZoneRecords_template.json”的资源管理器模板。
-
-```json
-{
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "DNSRecordName": {
-            "type": "string"
-        },
-        "IPAddress": {
-            "type":"string"
-        }        
-    },
-    "resources": [
-         {
-            "type": "Microsoft.Network/privateDnsZones/A",
-            "apiVersion": "2018-09-01",
-            "name": "[parameters('DNSRecordName')]",
-            "properties": {
-                "ttl": 300,
-                "aRecords": [
-                    {
-                        "ipv4Address": "[parameters('IPAddress')]"
-                    }
-                ]
-            }
-        }    
-    ]
-}
-```
-
 **定义模板的参数文件**
 
 为该模板创建以下两个参数文件。 创建“PrivateZone_parameters.json”，为此请 使用以下代码：
@@ -511,18 +482,65 @@ $deploymentOutput
 }
 ```
 
-创建“PrivateZoneRecords_parameters.json”，为此请 使用以下代码：
+使用以下代码创建名为“PrivateZoneGroup_template.json”的资源管理器模板。 此模板在现有虚拟网络中为现有的 Azure Cosmos SQL API 帐户创建专用 DNS 区域组。
+
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "privateZoneName": {
+            "type": "string"
+        },
+        "PrivateEndpointDnsGroupName": {
+            "value": "string"
+        },
+        "privateEndpointName":{
+            "value": "string"
+        }        
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups",
+            "apiVersion": "2020-06-01",
+            "name": "[parameters('PrivateEndpointDnsGroupName')]",
+            "location": "global",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateZoneName'))]",
+                "[variables('privateEndpointName')]"
+            ],
+          "properties": {
+            "privateDnsZoneConfigs": [
+              {
+                "name": "config1",
+                "properties": {
+                  "privateDnsZoneId": "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateZoneName'))]"
+                }
+              }
+            ]
+          }
+        }
+    ]
+}
+```
+
+**定义模板的参数文件**
+
+为该模板创建以下两个参数文件。 创建“PrivateZoneGroup_parameters.json”，为此请 使用以下代码：
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "DNSRecordName": {
+        "privateZoneName": {
             "value": ""
         },
-        "IPAddress": {
-            "type":"object"
+        "PrivateEndpointDnsGroupName": {
+            "value": ""
+        },
+        "privateEndpointName":{
+            "value": ""
         }
     }
 }
@@ -555,15 +573,18 @@ $PrivateZoneName = "myPrivateZone.documents.azure.com"
 # Name of the private endpoint to create
 $PrivateEndpointName = "myPrivateEndpoint"
 
+# Name of the DNS zone group to create
+$PrivateEndpointDnsGroupName = "myPrivateDNSZoneGroup"
+
 $cosmosDbResourceId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.DocumentDB/databaseAccounts/$($CosmosDbAccountName)"
 $VNetResourceId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.Network/virtualNetworks/$($VNetName)"
 $SubnetResourceId = "$($VNetResourceId)/subnets/$($SubnetName)"
 $PrivateZoneTemplateFilePath = "PrivateZone_template.json"
 $PrivateZoneParametersFilePath = "PrivateZone_parameters.json"
-$PrivateZoneRecordsTemplateFilePath = "PrivateZoneRecords_template.json"
-$PrivateZoneRecordsParametersFilePath = "PrivateZoneRecords_parameters.json"
 $PrivateEndpointTemplateFilePath = "PrivateEndpoint_template.json"
 $PrivateEndpointParametersFilePath = "PrivateEndpoint_parameters.json"
+$PrivateZoneGroupTemplateFilePath = "PrivateZoneGroup_template.json"
+$PrivateZoneGroupParametersFilePath = "PrivateZoneGroup_parameters.json"
 
 ## Step 2: Login your Azure account and select the target subscription
 Login-AzAccount 
@@ -594,21 +615,15 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
     -PrivateEndpointName $PrivateEndpointName
 $deploymentOutput
 
-## Step 6: Map the private endpoint to the private zone
-$networkInterface = Get-AzResource -ResourceId $deploymentOutput.Outputs.privateEndpointNetworkInterface.Value -ApiVersion "2019-04-01"
-foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
-    foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) {
-        $recordName = $fqdn.split('.',2)[0]
-        $dnsZone = $fqdn.split('.',2)[1]
-        Write-Output "Deploying PrivateEndpoint DNS Record $($PrivateZoneName)/$($recordName) Template on $($resourceGroupName)"
-        New-AzResourceGroupDeployment -Name "PrivateEndpointDNSDeployment" `
-            -ResourceGroupName $ResourceGroupName `
-            -TemplateFile $PrivateZoneRecordsTemplateFilePath `
-            -TemplateParameterFile $PrivateZoneRecordsParametersFilePath `
-            -DNSRecordName "$($PrivateZoneName)/$($RecordName)" `
-            -IPAddress $ipconfig.properties.privateIPAddress
-    }
-}
+## Step 6: Create the private zone
+New-AzResourceGroupDeployment -Name "PrivateZoneGroupDeployment" `
+    -ResourceGroupName $ResourceGroupName `
+    -TemplateFile $PrivateZoneGroupTemplateFilePath `
+    -TemplateParameterFile $PrivateZoneGroupParametersFilePath `
+    -PrivateZoneName $PrivateZoneName `
+    -PrivateEndpointName $PrivateEndpointName`
+    -PrivateEndpointDnsGroupName $PrivateEndpointDnsGroupName
+
 ```
 
 ## <a name="configure-custom-dns"></a>配置自定义 DNS
@@ -636,7 +651,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 如前一部分所述，除非已设置特定的防火墙规则，否则添加专用终结点将使 Azure Cosmos 帐户仅可通过专用终结点访问。 这意味着，在创建 Azure Cosmos 帐户之后、添加专用终结点之前，可以通过公共流量访问该帐户。 若要确保在创建专用终结点之前禁用公共网络访问，可以在创建帐户期间将 `publicNetworkAccess` 标志设置为 `Disabled`。 请注意，此标志优先于任何 IP 或虚拟网络规则；如果将此标志设置为 `Disabled`，即使防火墙配置中允许源 IP 或虚拟网络，也会阻止所有公共和虚拟网络流量。
 
-有关演示如何使用此标志的示例，请参阅[此 Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/)。
+有关演示如何使用此标志的示例，请参阅[此 Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/cosmosdb-private-endpoint/)。
 
 ## <a name="adding-private-endpoints-to-an-existing-cosmos-account-with-no-downtime"></a>在不停机的情况下将专用终结点添加到现有 Cosmos 帐户
 
@@ -653,13 +668,17 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>在添加或删除区域时更新专用终结点
 
-除非使用的是专用 DNS 区域组，否则向 Azure Cosmos 帐户添加或删除区域需要你为该帐户添加或删除 DNS 条目。 添加或删除区域后，可以更新子网的专用 DNS 区域，使之反映已添加或删除的 DNS 条目及其相应的专用 IP 地址。
+例如，如果你在三个区域部署 Azure Cosmos 帐户：“美国西部”、“美国中部”和“西欧”。 为帐户创建专用终结点时，子网中会保留四个专用 IP。 这三个区域中的每个区域都有一个 IP，而全局终结点/与区域无关的终结点有一个 IP。 稍后，你可以向 Azure Cosmos 帐户添加一个新区域（例如，“美国东部”）。 专用 DNS 区域更新如下：
 
-例如，假设你在三个区域部署 Azure Cosmos 帐户：“美国西部”、“美国中部”和“西欧”。 为帐户创建专用终结点时，子网中会保留四个专用 IP。 这三个区域中的每个区域都有一个 IP，而全局终结点/与区域无关的终结点有一个 IP。
+* **如果使用了专用 DNS 区域组：**
 
-稍后，你可以向 Azure Cosmos 帐户添加一个新区域（例如，“美国东部”）。 添加新区域后，需要将相应的 DNS 记录添加到专用 DNS 区域或自定义 DNS。
+  如果使用的是专用 DNS 区域组，则在更新专用终结点时，专用 DNS 区域会自动更新。 在上一个示例中，添加新区域后，专用 DNS 区域将自动更新。
 
-删除区域时可以使用相同的步骤。 删除区域后，需要从专用 DNS 区域或自定义 DNS 中删除相应的 DNS 记录。
+* **如果未使用专用 DNS 区域组：**
+
+  如果没有使用专用 DNS 区域组，向 Azure Cosmos 帐户添加或删除区域需要添加或删除该帐户的 DNS 条目。 添加或删除区域后，可以更新子网的专用 DNS 区域，使之反映已添加或删除的 DNS 条目及其相应的专用 IP 地址。
+
+  在上一个示例中，添加新区域后，需要将相应的 DNS 记录添加到专用 DNS 区域或自定义 DNS。 删除区域时可以使用相同的步骤。 删除区域后，需要从专用 DNS 区域或自定义 DNS 中删除相应的 DNS 记录。
 
 ## <a name="current-limitations"></a>当前限制
 
@@ -669,9 +688,9 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 * 通过直接模式连接对 Azure Cosmos 帐户使用专用链接时，只能使用 TCP 协议。 HTTP 协议目前不受支持。
 
-* 当你使用 Azure Cosmos DB 的用于 MongoDB 的 API 帐户时，仅服务器版本 3.6 上的帐户支持专用终结点（即使用 `*.mongo.cosmos.azure.com` 格式的终结点的帐户）。 服务器版本 3.2 上的帐户（即，使用格式为 `*.documents.azure.com` 的终结点的帐户）不支持专用链接。 若要使用专用链接，应将旧帐户迁移到新版本。
+* 当你使用 Azure Cosmos DB 的用于 MongoDB 的 API 帐户时，服务器 3.6 或更高版本上的帐户（即使用 `*.mongo.cosmos.azure.com` 格式的终结点的帐户）支持专用终结点。 服务器版本 3.2 上的帐户（即，使用格式为 `*.documents.azure.com` 的终结点的帐户）不支持专用链接。 若要使用专用链接，应将旧帐户迁移到新版本。
 
-* 如果 Azure Cosmos DB 使用的是具有专用链接的 MongoDB 帐户的 API，则工具/库必须支持) 名称标识 (SNI 或者传递 `appName` 连接字符串的参数以正确连接。 一些较旧的工具/库可能与使用私有链接功能不兼容。
+* 当你使用具有专用链接的 Azure Cosmos DB 的用于 MongoDB 的 API 帐户时，工具/库必须支持服务名称标识 (SNI) 或从连接字符串中传递 `appName` 参数以正确连接。 一些较旧的工具/库可能与使用专用链接功能不兼容。
 
 * 应在 Azure Cosmos 帐户范围内向网络管理员至少授予 `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` 权限，以创建自动批准的专用终结点。
 

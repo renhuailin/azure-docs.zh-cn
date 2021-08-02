@@ -3,12 +3,12 @@ title: Azure 视频分析器发行说明 - Azure
 description: 本主题提供 Azure 视频分析器版本的发行说明、改进、bug 修复和已知问题。
 ms.topic: conceptual
 ms.date: 05/25/2021
-ms.openlocfilehash: ffb6381fafd4aabed3bd27b14f4778d23fa7441e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: ef1c395bb10000599f901e62cf77b3573146aeee
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385206"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591217"
 ---
 # <a name="azure-video-analyzer-release-notes"></a>Azure 视频分析器发行说明
 
@@ -23,13 +23,30 @@ ms.locfileid: "110385206"
 
 <hr width=100%>
 
+## <a name="june-3-2021"></a>2021 年 6 月 3 日
+
+该模块 2021 年 6 月刷新的版本标记为：
+
+```
+     mcr.microsoft.com/media/video-analyzer:1.0.1
+```
+> [!NOTE]
+> 在快速入门和教程中，部署清单使用标记 1 (video-analyzer:1)。 因此，只需重新部署此类清单，即可在更新的标记发布时在边缘设备上更新该模块。
+
+### <a name="module-updates"></a>模块更新
+* 支持用于连接到 RTSP 相机的凭据中的 unicode 字符
+* 在调试模式下启用详细日志的更新
+
+<hr width=100%>
+
 ## <a name="may-25-2021"></a>2021 年 5 月 25 日
 
 此版本是 Azure 视频分析器的第一个公共预览版本。 发行标记为
 
 ```
-     mcr.microsoft.com/media/video-analyzer:1.0.0
+mcr.microsoft.com/media/video-analyzer:1.0.0
 ```
+
 > [!NOTE]
 > 在快速入门和教程中，部署清单使用标记 1 (video-analyzer:1)。 因此，只需重新部署此类清单，即可在更新的标记发布时在边缘设备上更新该模块。
 

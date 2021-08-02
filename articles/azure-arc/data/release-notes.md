@@ -7,20 +7,116 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 05/04/2021
+ms.date: 06/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 58dd7baa612e2dcf302ce87b2d77cd0e71f90187
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: fc4dd4bcdb18b33fa9c6098c32e0aefecb7c46ee
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763840"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439631"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>发行说明 - 已启用 Azure Arc 的数据服务（预览版）
 
 本文重点介绍了已启用 Azure Arc 的数据服务的最近发布或改进的功能、特性和增强功能。 
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+## <a name="may-2021"></a>2021 年 5 月
+
+此预览版本发布于 2021 年 6 月 2 日。
+
+作为预览版功能，本文中介绍的技术受制于 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+### <a name="breaking-change"></a>重大更改
+
+- Kubernetes 本机部署模板已修改。 更新你的 .yml 模板。
+    - 数据控制器、启动程序，以及 SQL 托管实例的更新模板：[GitHub microsoft/azure-arc pr 574](https://github.com/microsoft/azure_arc/pull/574)
+    - 更新的 PostgreSQL 超大规模模板：[GitHub microsoft/azure-arc pr 574](https://github.com/microsoft/azure_arc/pull/574)
+
+### <a name="whats-new"></a>新增功能
+
+#### <a name="platform"></a>平台
+
+- 从 Azure 门户创建和删除数据控制器、SQL 托管实例和 PostgreSQL 超大规模服务器组。 
+- 删除 Azure Arc 数据服务时验证门户操作。 例如，如果存在使用数据控制器部署的 SQL 托管实例，当你尝试删除数据控制器时，门户就会发出警报。
+- 在你使用 Azure 门户部署已启用 Arc 的数据控制器时，创建自定义配置文件以支持自定义设置。
+- （可选）在直接连接模式下自动将日志上传到 Azure Log analytics 工作区。
+
+####    <a name="azure-arc-enabled-postgresql-hyperscale"></a>已启用 Azure Arc 的超大规模 PostgreSQL
+
+此版本引入了以下功能或能力：
+
+- 当 Azure Arc 超大规模 PostgreSQL 的数据控制器配置为直接连接模式时，请从 Azure 门户中将该 PostgreSQL 删除。
+- 在 Azure 门户中，在 Azure Database for Postgres 的部署页面中，部署已启用 Azure Arc 的超大规模 PostgreSQL。 请参阅[选择 Azure Database for PostgreSQL 部署选项 - Microsoft Azure](https://ms.portal.azure.com/#create/Microsoft.PostgreSQLServer)。
+- 从 Azure 门户部署已启用 Azure Arc 的超大规模 PostgreSQL 时，请指定存储类和 Postgres 扩展。
+- 减少已启用 Azure Arc 的超大规模 PostgreSQL 中的工作器节点数。 你可以通过 `azdata` 命令行来执行此操作（当你增加工作器节点数时，称为横向缩减，而不是横向扩展）。
+
+#### <a name="azure-arc-enabled-sql-managed-instance"></a>已启用 Azure Arc 的 SQL 托管实例
+
+- 已启用 Arc 的 SQL 托管实例的新 [Azure CLI 扩展](/cli/azure/azure-cli-extensions-overview)具有与 `azdata arc sql mi <command>` 相同的命令。 所有已启用 Arc 的 SQL 托管实例命令位于 `az sql mi-arc`。 在未来的版本中，将弃用所有与 Arc 相关的 `azdata` 命令并将其移动到 Azure CLI。
+
+   添加扩展：
+  
+   ```azurecli
+   az extension add --source https://azurearcdatacli.blob.core.windows.net/cli-extensions/arcdata-0.0.1-py2.py3-none-any.whl -y
+   az sql mi-arc --help
+   ```
+
+- 使用 Transact-SQL 手动触发一个故障转移。 按顺序执行以下命令：
+
+   1. 在主副本终结点连接上：
+   
+      ```sql
+       ALTER AVAILABILITY GROUP current SET (ROLE = SECONDARY);
+      ```
+
+   1. 在次要副本终结点连接上：
+   
+      ```sql
+      ALTER AVAILABILITY GROUP current SET (ROLE = PRIMARY);
+      ```
+    
+- 如果不使用 `COPY_ONLY` 设置，Transact-SQL `BACKUP` 命令就会受到阻止。 此操作支持时间点还原功能。
+
+### <a name="known-issues"></a>已知问题
+
+#### <a name="platform"></a>平台
+
+- 你可以使用 Azure 门户在连接的群集上创建数据控制器、SQL 托管实例或 PostgreSQL 超大规模服务器组。 不支持通过其他已启用 Azure Arc 的数据服务工具进行部署。 具体而言，在此版本中，你不能使用以下任何工具在直接连接模式下部署数据控制器。
+   - Azure Data Studio
+   - Azure Data CLI (`azdata`)
+   - Kubernetes 本机工具 (`kubectl`)
+
+   [部署 Azure Arc 数据控制器 | 直接连接模式](deploy-data-controller-direct-mode.md)说明了如何在门户中创建数据控制器。 
+
+- 你仍可以使用 `kubectl` 直接在 Kubernetes 群集上创建资源，但它们不会在 Azure 门户中得到反映。
+
+- 在直接连接模式下，使用 `azdata arc dc upload` 上传使用量、指标和日志当前已被阻止。 使用量会自动上传。 在间接连接模式下创建的数据控制器的上传应继续工作。
+- 如果通过 `–proxy-cert <path-t-cert-file>` 使用代理，则在直接连接模式下自动上传使用量数据将失败。
+- 已启用 Azure Arc 的 SQL 托管实例和已启用 Azure Arc 的超大规模 PostgreSQL 均未通过 GB18030 认证。
+- 目前，在直接连接模式下仅支持每个 kubernetes 群集有一个 Azure Arc 数据控制器。
+
+#### <a name="azure-arc-enabled-postgresql-hyperscale"></a>已启用 Azure Arc 的超大规模 PostgreSQL
+
+- 目前不支持在 NFS 存储进行时间点还原。
+- 不能同时启用和配置 `pg_cron` 扩展。 为此，你需要使用两个命令，分别是 启用命令和配置命令。 例如：
+
+   1. 启用扩展：
+   
+      ```console
+      azdata arc postgres server edit -n myservergroup --extensions pg_cron 
+      ```
+
+   1. 重启服务器组。
+
+   1. 配置扩展：
+   
+      ```console
+      azdata arc postgres server edit -n myservergroup --engine-settings cron.database_name='postgres'
+      ```
+
+   如果在重启之前执行第二个命令，该命令将失败。 如果命令失败，只需等待一段时间，然后再次执行第二个命令。
+
+- 在编辑服务器组的配置以启用其他扩展时，向 `--extensions` 参数传递无效值会错误地将启用的扩展列表重置为创建服务器组时的列表，并阻止用户创建其他扩展。 如发生该情况，唯一的解决方法是删除服务器组，然后重新部署。
 
 ## <a name="april-2021"></a>2021 年 4 月
 
@@ -47,47 +143,6 @@ ms.locfileid: "108763840"
 
 - 你在可将数据库还原为包含 3 个副本的 SQL 托管实例，它将自动添加到可用性组。 
 - 连接到部署有 3 个副本的 SQL 托管实例上的只读辅助终结点。 使用 `azdata arc sql endpoint list` 查看只读辅助连接终结点。
-
-### <a name="known-issues"></a>已知问题
-
-- 你可以使用 Azure 门户在直接连接模式下创建数据控制器。 不支持通过其他已启用 Azure Arc 的数据服务工具进行部署。 具体而言，在此版本中，你不能使用以下任何工具在直接连接模式下部署数据控制器。
-   - Azure Data Studio
-   - Azure Data CLI (`azdata`)
-   - Kubernetes 本机工具 (`kubectl`)
-
-   [部署 Azure Arc 数据控制器 | 直接连接模式](deploy-data-controller-direct-mode.md)说明了如何在门户中创建数据控制器。 
-
-- 在直接连接模式下，使用 `azdata arc dc upload` 上传使用量、指标和日志当前已被阻止。 使用量会自动上传。 在间接连接模式下创建的数据控制器的上传应继续工作。
-- 如果通过 `–proxy-cert <path-t-cert-file>` 使用代理，则在直接连接模式下自动上传使用量数据将失败。
-- 已启用 Azure Arc 的 SQL 托管实例和已启用 Azure Arc 的超大规模 PostgreSQL 均未通过 GB18030 认证。
-- 目前，在直接连接模式下仅支持每个 kubernetes 群集有一个 Azure Arc 数据控制器。
-
-#### <a name="azure-arc-enabled-sql-managed-instance"></a>已启用 Azure Arc 的 SQL 托管实例
-
-- 直接模式下的已启用 Azure Arc 的 SQL 托管实例的部署只能通过 Azure 门户完成，而不能通过 azdata、Azure Data Studio 或 kubectl 等工具进行。
-
-#### <a name="azure-arc-enabled-postgresql-hyperscale"></a>已启用 Azure Arc 的超大规模 PostgreSQL
-
-- 目前不支持在 NFS 存储进行时间点还原。
-- 不能同时启用和配置 `pg_cron` 扩展。 为此，你需要使用两个命令，分别是 启用命令和配置命令。 例如：
-
-   1. 启用扩展：
-   
-      ```console
-      azdata arc postgres server edit -n myservergroup --extensions pg_cron 
-      ```
-
-   1. 重启服务器组。
-
-   1. 配置扩展：
-   
-      ```console
-      azdata arc postgres server edit -n myservergroup --engine-settings cron.database_name='postgres'
-      ```
-
-   如果在重启之前执行第二个命令，该命令将失败。 如果命令失败，只需等待一段时间，然后再次执行第二个命令。
-
-- 在编辑服务器组的配置以启用其他扩展时，向 `--extensions` 参数传递无效值会错误地将启用的扩展列表重置为创建服务器组时的列表，并阻止用户创建其他扩展。 如发生该情况，唯一的解决方法是删除服务器组，然后重新部署。
 
 ## <a name="march-2021"></a>2021 年 3 月
 

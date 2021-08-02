@@ -2,14 +2,14 @@
 title: 有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 description: 查找有关 Azure Kubernetes 服务 (AKS) 的某些常见问题的解答。
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 05/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 6d7ea48722e6604fe67d7a4ddcb12870623d9354
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8feda70f346347a3559e2696d2912d2a976b0a63
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739621"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111890298"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -49,6 +49,12 @@ Azure 会按照夜间计划自动将安全修补程序应用于群集中的 Linu
 ### <a name="windows-server-nodes"></a>Windows Server 节点
 
 对于 Windows Server 节点，Windows 更新不会自动运行和应用最新的更新。 在 Windows 更新的发布周期和你自己的验证过程中，你需要定期升级 AKS 群集以及群集中的 Windows Server 节点池。 此升级过程会创建运行最新 Windows Server 映像和修补程序的节点，然后删除旧节点。 有关此过程的详细信息，请参阅[升级 AKS 中的节点池][nodepool-upgrade]。
+
+### <a name="are-there-additional-security-threats-relevant-to-aks-that-customers-should-be-aware-of"></a>是否存在客户应注意的与 AKS 相关的其他安全威胁？
+
+Microsoft 针对通过 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)等服务保护工作负载可以采取的额外操作提供了相关指导。 下面列出了客户应注意的与 AKS 和 Kubernetes 相关的其他安全威胁：
+
+* [新的大规模市场活动目标 Kubeflow](https://techcommunity.microsoft.com/t5/azure-security-center/new-large-scale-campaign-targets-kubeflow/ba-p/2425750) - 2021 年 6 月 8 日
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>为什么使用 AKS 创建两个资源组？
 
@@ -199,7 +205,7 @@ AKS 代理节点按标准 Azure 虚拟机计费，因此，如果你已为在 AK
 
 ## <a name="can-i-use-custom-vm-extensions"></a>是否可以使用自定义 VM 扩展？
 
-支持 Log Analytics 代理，因为它是由 Microsoft 管理的扩展。 在其他情况下不支持。AKS 是一项托管服务，不支持操作 IaaS 资源。 若要安装自定义组件，请使用 Kubernetes API 和机制。 例如，使用 DaemonSets 安装所需组件。
+不可以，AKS 是托管服务，不支持操作 IaaS 资源。 若要安装自定义组件，请使用 Kubernetes API 和机制。 例如，使用 DaemonSets 安装所需组件。
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS 是否将任何客户数据存储在群集区域之外？
 
@@ -277,6 +283,9 @@ spec:
 
 此问题已由 Kubernetes v1.20 解决，有关详细信息，请参阅 [Kubernetes 1.20：批量许可更改的粒度控制](https://kubernetes.io/blog/2020/12/14/kubernetes-release-1.20-fsgroupchangepolicy-fsgrouppolicy/)。
 
+## <a name="can-i-use-fips-cryptographic-libraries-with-deployments-on-aks"></a>是否可以将 FIPS 加密库用于 AKS 上的部署？
+
+已启用 FIPS 的节点目前在基于 Linux 的节点池上提供预览版。 有关更多详细信息，请参阅[添加已启用 FIPS 的节点池（预览版）](use-multiple-node-pools.md#add-a-fips-enabled-node-pool-preview)。
 
 <!-- LINKS - internal -->
 
@@ -285,8 +294,8 @@ spec:
 [aks-advanced-networking]: ./configure-azure-cni.md
 [aks-rbac-aad]: ./azure-ad-integration-cli.md
 [node-updates-kured]: node-updates-kured.md
-[aks-preview-cli]: /cli/azure/ext/aks-preview/aks
-[az-aks-create]: /cli/azure/aks#az-aks-create
+[aks-preview-cli]: /cli/azure/aks
+[az-aks-create]: /cli/azure/aks#az_aks_create
 [aks-rm-template]: /azure/templates/microsoft.containerservice/2019-06-01/managedclusters
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

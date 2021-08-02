@@ -1,38 +1,38 @@
 ---
-title: Windows 虚拟桌面 RDP 短路径（预览版）
+title: Azure 虚拟桌面 RDP 短路径（预览版）
 titleSuffix: Azure
-description: 如何设置适用于 Windows 虚拟桌面的 RDP 短路径（预览版）。
+description: 如何设置适用于 Azure 虚拟桌面的 RDP 短路径（预览版）。
 author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 295a46f6d1074ddf8422233ea3ccfa4d65c28fd8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf4612afa0e75d4a63a13358095027c68c93e6da
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100571596"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755865"
 ---
-# <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows 虚拟桌面 RDP 短路径（预览版）
+# <a name="azure-virtual-desktop-rdp-shortpath-preview"></a>Azure 虚拟桌面 RDP 短路径（预览版）
 
 > [!IMPORTANT]
 > RDP 短路径目前以公共预览版提供。
 > 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-RDP 短路径是 Windows 虚拟桌面的一项功能，它可在远程桌面客户端和会话主机之间建立基于 UDP 的直接传输。 RDP 使用此传输实现远程桌面和 RemoteApp，同时提供更好的可靠性和一致的延迟。
+RDP 短路径是 Azure 虚拟桌面的一项功能，它可在远程桌面客户端和会话主机之间建立基于 UDP 的直接传输。 RDP 使用此传输实现远程桌面和 RemoteApp，同时提供更好的可靠性和一致的延迟。
 
 ## <a name="key-benefits"></a>主要优点
 
 * RDP 短路径传输基于高效率的[通用速率控制协议 (URCP)](https://www.microsoft.com/en-us/research/publication/urcp-universal-rate-control-protocol-for-real-time-communication-applications/)。 URCP 通过主动监视网络状况来增强 UDP，并提供合理且完整的链接利用率。 URCP 以远程桌面需要的低延迟和低损耗级别运行。 它还通过动态地学习网络参数并提供具有速率控制机制的协议实现最佳性能。
-* RDP 短路径在远程桌面客户端和会话主机之间建立直接连接。 直接连接可以减少对 Windows 虚拟桌面网关的依赖，提高连接可靠性，并增加每个用户会话可用的带宽。
+* RDP 短路径在远程桌面客户端和会话主机之间建立直接连接。 直接连接可以减少对 Azure 虚拟桌面网关的依赖，提高连接可靠性，并增加每个用户会话可用的带宽。
 * 消除额外的中继可减少往返时间，从而提高对延迟敏感的应用程序和输入法的用户体验。
 * RDP 短路径支持通过差分服务代码点 (DSCP) 标记为 RDP 连接[配置服务质量 (QoS)](./rdp-quality-of-service-qos.md) 优先级。
 * RDP 短路径传输允许通过为每个会话指定限制速率来[限制出站网络流量](./rdp-bandwidth.md#limit-network-bandwidth-use-with-throttle-rate)。
 
 ## <a name="connection-security"></a>连接安全性
 
-RDP 短路径正在扩展 RDP 多传输功能。 它不会取代反向连接传输，而是对其进行补充。 所有初始会话中转都是通过 Windows 虚拟桌面基础结构管理的。
+RDP 短路径正在扩展 RDP 多传输功能。 它不会取代反向连接传输，而是对其进行补充。 所有初始会话中转都是通过 Azure 虚拟桌面基础结构管理的。
 
 UDP 端口 3390 仅适用于通过反向连接传输进行身份验证的传入短路径流量。 RDP 短路径侦听器会忽略与该侦听器的所有连接尝试，除非它们匹配反向连接会话。
 
@@ -55,8 +55,9 @@ RDP 短路径借助会话主机证书在客户端和会话主机之间使用 TLS
 
 ## <a name="requirements"></a>要求
 
-若要支持 RDP 短路径，Windows 虚拟桌面客户端需要与会话主机的直接连接。 你可以使用以下技术之一实现直接连接：
+若要支持 RDP 短路径，Azure 虚拟桌面客户端需要与会话主机的直接连接。 你可以使用以下技术之一实现直接连接：
 
+* 远程客户端计算机必须运行 Windows 10 或 Windows 7，并且安装了 [Windows 桌面客户端](/windows-server/remote/remote-desktop-services/clients/windowsdesktop)。 目前不支持 Web 客户端。
 * [ExpressRoute 专用对等互连](../expressroute/expressroute-circuit-peerings.md)
 * [站点到站点 VPN（基于 IPsec）](../vpn-gateway/tutorial-site-to-site-portal.md)
 * [点到站点 VPN（基于 IPsec）](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)
@@ -177,13 +178,13 @@ Save-NetGPO -GPOSession $gpoSession
 
 验证会话是否正在使用 RDP 短路径传输：
 
-1. 使用 Windows 虚拟桌面客户端连接到 VM 的桌面。
+1. 使用 Azure 虚拟桌面客户端连接到 VM 的桌面。
 2. 启动“事件查看器”并导航到以下节点：“应用程序和服务日志”>“Microsoft”>“Windows”>“RemoteDesktopServices-RdpCoreCDV”>“Microsoft-Windows-RemoteDesktopServices-RdpCoreCDV/Operational”
 3. 若要确定是否使用了 RDP 短路径传输，请查找事件 ID 131。
 
 ### <a name="using-log-analytics-to-verify-shortpath-connectivity"></a>使用 Log Analytics 验证短路径连接
 
-如果正在使用 [Azure Log Analytics](./diagnostics-log-analytics.md)，则可以通过查询 [WVDConnections 表](/azure/azure-monitor/reference/tables/wvdconnections)来监视连接。 名为 UdpUse 的列指示 Windows 虚拟桌面 RDP 堆栈是否对当前用户连接使用 UDP 协议。
+如果正在使用 [Azure Log Analytics](./diagnostics-log-analytics.md)，则可以通过查询 [WVDConnections 表](/azure/azure-monitor/reference/tables/wvdconnections)来监视连接。 名为 UdpUse 的列指示 Azure 虚拟桌面 RDP 堆栈是否对当前用户连接使用 UDP 协议。
 可能的值包括：
 
 * 0 - 用户连接未使用 RDP 短路径
@@ -256,5 +257,5 @@ Get-Process -id (Get-NetUDPEndpoint  -LocalPort 3390 -LocalAddress 0.0.0.0).Owni
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解 Windows 虚拟桌面网络连接，请参阅[了解 Windows 虚拟桌面网络连接](network-connectivity.md)。
-* 若要开始使用 Windows 虚拟桌面的服务质量 (QoS)，请参阅[实现 Windows 虚拟桌面的服务质量 (QoS)](rdp-quality-of-service-qos.md)。
+* 若要了解 Azure 虚拟桌面网络连接，请参阅[了解 Azure 虚拟桌面网络连接](network-connectivity.md)。
+* 若要开始使用 Azure 虚拟桌面的服务质量 (QoS)，请参阅[实现 Azure 虚拟桌面的服务质量 (QoS)](rdp-quality-of-service-qos.md)。

@@ -1,21 +1,22 @@
 ---
 title: Azure Active Directory 和 Workday 集成参考
-description: 技术深入探讨 Workday-HR 驱动的预配
+description: Azure Active Directory 中 Workday-HR 驱动的预配的技术深入研究
 services: active-directory
-author: cmmdesai
-manager: daveba
+author: kenwith
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 02/09/2021
-ms.author: chmutali
-ms.openlocfilehash: 2b1a43ee6b13d32c0eaed92538cf9c25405e061b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/01/2021
+ms.author: kenwith
+ms.reviewer: arvinh, chmutali
+ms.openlocfilehash: a67026238c0a3cf469cb7d6bc3112eb269cf5a13
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100104325"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110785890"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Azure Active Directory 预配与 Workday 的集成方式
 
@@ -408,7 +409,7 @@ Get_Workers API 可以返回与工作人员关联的不同数据集。 Azure AD 
 
 下面是有关如何扩展 Workday 集成以满足特定要求的一些示例。 
 
-**示例 1**
+### <a name="example-1-retrieving-cost-center-and-pay-group-information"></a>示例 1：检索成本中心和支付组信息
 
 假设你想要从 Workday 检索以下数据集，并将其用于预配规则：
 
@@ -437,19 +438,31 @@ Get_Workers API 可以返回与工作人员关联的不同数据集。 Azure AD 
      >| CostCenterCode | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data/wd:Organization_Data[wd:Organization_Type_Reference/@wd:Descriptor='Cost Center']/wd:Organization_Code/text() |
      >| PayGroup | wd:Worker/wd:Worker_Data/wd:Organization_Data/wd:Worker_Organization_Data/wd:Organization_Data[wd:Organization_Type_Reference/@wd:Descriptor='Pay Group']/wd:Organization_Name/text() |
 
-**示例 2**
+### <a name="example-2-retrieving-qualification-and-skills-data"></a>示例 2：检索资格和技能数据
 
 假设你想要检索与用户关联的认证。 此信息是限定数据集的一部分。 若要将此数据集作为 Get_Workers 响应的一部分获取，请使用以下 XPATH： 
 
 `wd:Worker/wd:Worker_Data/wd:Qualification_Data/wd:Certification/wd:Certification_Data/wd:Issuer/text()`
 
-**示例 3**
+### <a name="example-3-retrieving-provisioning-group-assignments"></a>示例 3：检索预配组分配
 
-假设你要检索分配给某个工作人员的预配组。 此信息是帐户预配数据集的一部分。 若要将此数据集作为 Get_Workers 响应的一部分获取，请使用以下 XPATH： 
+假设你要检索分配给某个工作人员的预配组。 此信息是帐户预配数据集的一部分。 若要将此数据作为 Get_Workers 响应的一部分获取，请使用以下 XPATH： 
 
 `wd:Worker/wd:Worker_Data/wd:Account_Provisioning_Data/wd:Provisioning_Group_Assignment_Data[wd:Status='Assigned']/wd:Provisioning_Group/text()`
 
 ## <a name="handling-different-hr-scenarios"></a>处理不同的 HR 方案
+
+### <a name="support-for-worker-conversions"></a>支持辅助角色转换
+
+当辅助角色从员工转换为临时辅助角色或从临时辅助角色转换为员工时，Workday 连接器会自动检测此更改并将 AD 帐户链接到活动辅助角色配置文件，以便所有 AD 属性与活动辅助角色配置文件同步。 无需更改配置即可启用此功能。 下面是发生转换时预配行为的说明。 
+
+* 假设 John Smith 在 1 月作为临时辅助角色加入。 由于没有与 John 的 WorkerID（匹配属性）关联的 AD 帐户，预配服务会为用户创建一个新的 AD 帐户并将 John 的临时辅助角色 WID (WorkdayID) 链接到他的 AD 帐户。
+* 三个月后，John 转换为全职员工。 在 Workday 中，为 John 创建了一个新的辅助角色配置文件。 虽然 John 在 Workday 中的 WorkerID 保持不变，但现在 John 在 Workday 中有两个 WID，一个与临时辅助角色配置文件相关联，另一个与员工辅助角色配置文件相关联。 
+* 在增量同步期间，当预配服务检测到同一 WorkerID 的两个辅助角色配置文件时，它会自动将 AD 帐户的所有权转移到活动辅助角色配置文件。 在这种情况下，它会从 AD 帐户中取消链接临时辅助角色配置文件，并在 John 的活动员工辅助角色配置文件和其 AD 帐户之间建立新的链接。 
+
+>[!NOTE]
+>在初始完全同步期间，你可能会注意到，与上一个非活动辅助角色配置文件关联的属性值流向转换后的辅助角色的 AD 帐户。 这是暂时性的，在完全同步过程中，它最终会被活动辅助角色配置文件中的属性值覆盖。 完全同步完成并且预配作业达到稳定状态后，将始终在增量同步期间选取活动辅助角色配置文件。 
+
 
 ### <a name="retrieving-international-job-assignments-and-secondary-job-details"></a>检索国际作业分配和辅助作业详细信息
 

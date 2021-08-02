@@ -14,12 +14,13 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: bf5445f6ca04e56aab466e97967a58c3e4b735a4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c46a8306004fc052cd33cd13d7026934c24e3325
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100556934"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110691004"
 ---
 # <a name="list-azure-role-assignments-using-azure-powershell"></a>使用 Azure PowerShell 列出 Azure 角色分配
 
@@ -28,7 +29,7 @@ ms.locfileid: "100556934"
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> 如果你的组织已将管理功能外包给使用 [Azure 委托资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服务提供商，则此处将不会显示该服务提供商授权的角色分配。
+> 如果组织已将管理功能外包给使用 [Azure Lighthouse](../lighthouse/overview.md) 的服务提供商，则此处将不会显示该服务提供商授权的角色分配。
 
 ## <a name="prerequisites"></a>先决条件
 

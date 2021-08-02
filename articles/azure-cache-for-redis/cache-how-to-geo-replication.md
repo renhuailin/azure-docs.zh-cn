@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 0be2bb59b46dc827001d89f8e0f1be23f35a714d
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 534efc4723c0a526bd8d607299bbf3ec4effaa86
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536088"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111895003"
 ---
 # <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>为高级 Azure Cache for Redis 实例配置异地复制
 
@@ -33,6 +33,9 @@ ms.locfileid: "107536088"
 - 辅助链接缓存的大小等于或大于主链接缓存的大小。
 - 这两个缓存都已创建且处于运行状态。
 
+> [!NOTE]
+> Azure 区域之间的数据传输将按标准[带宽费率](https://azure.microsoft.com/pricing/details/bandwidth/)收费。
+
 异地复制不支持某些功能：
 
 - 异地复制不支持持久性。
@@ -42,7 +45,7 @@ ms.locfileid: "107536088"
 
 完成异地复制配置后，链接缓存对会有以下限制：
 
-- 辅助链接缓存为只读状态；这意味着只能从中读取，但不能向其写入任何数据。 如果选择从 Geo-Secondary 实例读取，务必要注意在 Geo-Primary 和 Geo-Secondary 之间发生完整的数据同步（当 Geo-Primary 或 Geo-Secondary 更新时发生，也会在一些重启情况中发生）时，则 Geo-Secondary 实例将在任何针对它的 Redis 操作中引发错误（表明完整的数据同步正在进行中），直到 Geo-Primary 和 Geo-Secondary 之间完成完整的数据同步。 应生成从 Geo-Seocndary 读取的应用程序，以便在 Geo-Seocndary 引发此类错误时回退到 Geo-Primary。 
+- 辅助链接缓存为只读状态；这意味着只能从中读取，但不能向其写入任何数据。 如果选择从 Geo-Secondary 实例读取，务必要注意在 Geo-Primary 和 Geo-Secondary 之间发生完整的数据同步（当 Geo-Primary 或 Geo-Secondary 更新时发生，也会在一些重启情况中发生）时，则 Geo-Secondary 实例将在任何针对它的 Redis 操作中引发错误（表明完整的数据同步正在进行中），直到 Geo-Primary 和 Geo-Secondary 之间完成完整的数据同步。 应生成从异地辅助数据库读取的应用程序，以便在异地辅助数据库引发此类错误时回退到异地主数据库。 
 - 添加链接前辅助链接缓存中的任何数据都会被删除。 但如果以后删除了异地复制，复制的数据则会保留在辅助链接缓存中。
 - 链接缓存时无法[缩放](cache-how-to-scale.md)任一缓存。
 - 如果缓存已启用群集功能，则无法[更改分片数目](cache-how-to-premium-clustering.md)。
@@ -152,7 +155,7 @@ ms.locfileid: "107536088"
   - 如果 VNET 位于同一区域，则可以使用 [VNET 对等互连](../virtual-network/virtual-network-peering-overview.md)或 [VPN 网关 VNET 到 VNET 连接](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)来连接 VNET。
   - 如果 VNET 位于不同的区域，则使用 VNET 对等互连进行异地复制会受支持，但是由于基本内部负载均衡器的约束，VNET 1（区域 1）中的客户端 VM 将无法通过其 DNS 名称访问 VNET 2（区域 2）中的缓存。 有关 VNET 对等互连约束的详细信息，请参阅[虚拟网络 - 对等互连 - 要求和约束](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 建议的解决方法是使用 VPN 网关 VNET 到 VNET 连接。
   
-使用[此 Azure 模板](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)可以快速将两个异地复制的缓存部署到通过 VPN 网关 VNET 到 VNET 连接进行连接的 VNET 中。
+使用[此 Azure 模板](https://azure.microsoft.com/resources/templates/redis-vnet-geo-replication/)可以快速将两个异地复制的缓存部署到通过 VPN 网关 VNET 到 VNET 连接进行连接的 VNET 中。
 
 ### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>什么是 Redis 异地复制的复制计划？
 

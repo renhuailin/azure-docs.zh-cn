@@ -1,17 +1,17 @@
 ---
-title: 监视 Windows 虚拟桌面成本定价估算 — Azure
-description: 如何评估使用 Windows 虚拟桌面 Azure Monitor 的成本和定价。
+title: 监视 Azure 虚拟桌面成本定价估算 - Azure
+description: 如何评估使用适用于 Azure 虚拟桌面的 Azure Monitor 的成本和定价。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d3c65c08691a234934a1641af9cc8203f655ef8c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9011e22359e7df72f1754ec4f588f41e5342e868
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144306"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745324"
 ---
 # <a name="estimate-azure-monitor-costs"></a>估计 Azure Monitor 成本
 
@@ -29,11 +29,11 @@ Azure Monitor 日志是收集、索引和存储环境生成的数据的服务。
 
 建议在 Log Analytics 工作区中使用以日志形式编写的预定义数据集。 在下面的示例中，我们将以默认配置查看计费数据
 
-Windows 虚拟桌面 Azure Monitor 的预定义数据集包括：
+适用于 Azure 虚拟桌面的 Azure Monitor 的预定义数据集包括：
 
 - 会话主机的性能计数器
 - 会话主机的 Windows 事件日志
-- 服务基础结构中的 Windows 虚拟桌面诊断
+- 服务基础结构中的 Azure 虚拟桌面诊断
 
 数据引入和存储成本取决于你的环境规模、健康状况和使用情况。 本文所使用的示例，建立在正常运行的虚拟机从轻到强运行的基础之上，基于[虚拟机大小调整准则](/windows-server/remote/remote-desktop-services/virtual-machine-recs)计算所需的成本范围，以计算一系列数据引入和存储成本。
 
@@ -53,7 +53,7 @@ Windows 虚拟桌面 Azure Monitor 的预定义数据集包括：
 
 ## <a name="estimating-performance-counter-ingestion"></a>估计性能计数器的引入
 
-性能计数器显示系统资源的执行情况。 性能计数器的数据引入取决于你的环境规模和使用情况。 在大多数情况下，性能计数器将占到 Windows 虚拟桌面 Azure Monitor 数据引入的 80-99%。
+性能计数器显示系统资源的执行情况。 性能计数器的数据引入取决于你的环境规模和使用情况。 在大多数情况下，性能计数器将占到适用于 Azure 虚拟桌面的 Azure Monitor 数据引入的 80-99%。
 
 开始估计之前，请知悉每个性能计数器都按特定频率发送数据。 我们将采样率（每分钟）设置为默认（你还可以在设置中编辑此速率），但会根据计数器的不同会以不同的乘法因子应用该速率。 以下因素会影响速率：
 
@@ -87,7 +87,7 @@ Windows 虚拟桌面 Azure Monitor 的预定义数据集包括：
 
    默认的每分钟采样率×每日会话数×平均会话持续时间×每个会话的平均进程数=每天发送的记录数
 
-下表列出了收集到的 20 个适用于 Windows 虚拟桌面 Azure Monitor 的性能计数器及其默认采样率：
+下表列出了收集到的 20 个适用于 Azure 虚拟桌面的 Azure Monitor 的性能计数器及其默认采样率：
 
 | 计数器名称 | 默认采样速率 | 频率系数 |
 |--------------|---------------------|------------------|
@@ -120,7 +120,7 @@ Windows 虚拟桌面 Azure Monitor 的预定义数据集包括：
 
 Windows 事件日志是在 Windows 虚拟机上的 Log Analytics 代理收集的数据源。 除了由需要监视的应用程序创建的自定义日志，还可以从标准日志，如“系统”和“应用程序”中收集事件。
 
-下面是适用于 Windows 虚拟桌面 Azure Monitor 的默认 Windows 事件：
+下面是适用于 Azure 虚拟桌面的 Azure Monitor 的默认 Windows 事件：
 
 - 应用程序
 - Microsoft-Windows-TerminalServices-RemoteConnectionManager/Admin
@@ -150,7 +150,7 @@ Windows 事件日志是在 Windows 虚拟机上的 Log Analytics 代理收集的
 
 例如，如果我们将此示例中的每个诊断记录大小估算为 200 字节，则每天每个 VM 引入数据的总量将小于每个 1 MB。
 
-若要了解更多有关活动日志类别的信息，请参阅 [Windows 虚拟桌面诊断](diagnostics-log-analytics.md)。
+若要详细了解活动日志类别，请参阅 [Azure 虚拟桌面诊断](diagnostics-log-analytics.md)。
 
 ## <a name="estimating-total-costs"></a>估算总成本
 
@@ -160,9 +160,9 @@ Windows 事件日志是在 Windows 虚拟机上的 Log Analytics 代理收集的
 |-------------------------------------|------------------------------------------|
 | 性能计数器   | 90-130 |
 | 事件    | 2-15 |
-| Windows 虚拟桌面诊断 | \< 1 |
+| Azure 虚拟桌面诊断 | \< 1 |
 
-在此示例中，Windows 虚拟桌面 Azure Monitor 的总引入数据为每天每个 VM 92-145 MB。 换言之，每 31 天，每个 VM 引入约 3-5 GB 数据。
+在此示例中，适用于 Azure 虚拟桌面的 Azure Monitor 的总引入数据为每天每个 VM 92-145 MB。 换言之，每 31 天，每个 VM 引入约 3-5 GB 数据。
 
 使用 [Log Analytics 定价](https://azure.microsoft.com/pricing/details/monitor/)的默认即用即付模型，可以估算每月 Azure Monitor 的数据收集和存储成本。 根据你的数据引入，还可以考虑 Log Analytics 定价的产能预留模型。
 
@@ -173,24 +173,24 @@ Windows 事件日志是在 Windows 虚拟机上的 Log Analytics 代理收集的
 若要了解如何管理工作簿的权限，请参阅[访问控制](../azure-monitor/visualize/workbooks-access-control.md)。
 
 >[!NOTE]
->删除数据点将影响其 Windows 虚拟桌面 Azure Monitor 中对应的视觉对象。
+>删除数据点将影响其适用于 Azure 虚拟桌面的 Azure Monitor 中对应的视觉对象。
 
 ### <a name="log-analytics-settings"></a>Log Analytics 设置
 
 下面是优化 Log Analytics 设置以管理数据引入的一些建议：
 
-- 使用 Windows 虚拟桌面资源的指定 Log Analytics 工作区确保 Log Analytics 只收集 Windows 虚拟桌面部署中的性能计数器和虚拟机事件。
+- 使用 Azure 虚拟桌面资源的指定 Log Analytics 工作区，可确保 Log Analytics 只收集 Azure 虚拟桌面部署中的性能计数器和虚拟机事件。
 - 调整 Log Analytics 存储设置以管理成本。 可以缩短保持期，评估固定的存储定价层是否会更具成本效益，或对引入数据量的多少设置边界，减轻不正常部署的影响。 想了解更多信息，请参阅[管理 Azure Monitor 日志的使用和成本](../azure-monitor/logs/manage-cost-storage.md)。
 
 ### <a name="remove-excess-data"></a>删除过量数据
 
-默认配置是我们唯一建议用于 Windows 虚拟桌面 Azure Monitor 的数据集。 你始终可以选择添加其它数据点，并在“主机诊断：主机浏览器”中查看它们或为它们自定义图表，但添加的数据会增加你的 Log Analytics 成本。 为了节省成本，可以将其删除。
+默认配置是我们唯一建议用于适用于 Azure 虚拟桌面的 Azure Monitor 的数据集。 你始终可以选择添加其它数据点，并在“主机诊断：主机浏览器”中查看它们或为它们自定义图表，但添加的数据会增加你的 Log Analytics 成本。 为了节省成本，可以将其删除。
 
 ### <a name="measure-and-manage-your-performance-counter-data"></a>测量和管理性能计数器数据
 
 实际监视成本将取决于你的环境规模、使用情况和健康状况。 若要了解如何测量 Log Analytics 工作区中的数据引入，请参阅[了解引入日志数据量](../azure-monitor/logs/manage-cost-storage.md#understanding-ingested-data-volume)。
 
-会话主机所使用的性能计数器可能是 Windows 虚拟桌面 Azure Monitor 的最大引入数据源。 以下 Log Analytics 工作区的自定义查询模板可以跟踪前一天每个性能计数器的频率和引入数据量：
+会话主机所使用的性能计数器可能是适用于 Azure 虚拟桌面的 Azure Monitor 的最大引入数据源。 以下 Log Analytics 工作区的自定义查询模板可以跟踪前一天每个性能计数器的频率和引入数据量：
 
 ```azure
 let WVDHosts = dynamic(['Host1.MyCompany.com', 'Host2.MyCompany.com']);
@@ -206,7 +206,7 @@ Perf
 >[!NOTE]
 >请确保将模板的占位符值替换为你的环境使用的值，否则查询将不起作用。
 
-此查询将显示在环境中启用的所有性能计数器，而不只是 Windows 虚拟桌面 Azure Monitor 的默认计数器。 该信息可帮助你了解哪些领域要降低成本，比如降低计数器的频率或将其全部删除。
+此查询将显示在环境中启用的所有性能计数器，而不只是适用于 Azure 虚拟桌面的 Azure Monitor 的默认计数器。 该信息可帮助你了解哪些领域要降低成本，比如降低计数器的频率或将其全部删除。
 
 你还可以通过删除性能计数器来降低成本。 若要了解如何删除性能计数器或编辑以降低现有计数器频率，请参阅[配置性能计数器](../azure-monitor/agents/data-sources-performance-counters.md#configuring-performance-counters)。
 
@@ -216,13 +216,13 @@ Perf
 
 ### <a name="manage-diagnostics"></a>管理诊断
 
-Windows 虚拟桌面诊断占数据存储成本的比例应不足 1%，因此，我们不建议将它们删除。 管理 Windows 虚拟桌面诊断，请[使用 Log Analytics 诊断功能](diagnostics-log-analytics.md)。
+Azure 虚拟桌面诊断占数据存储成本的比例应不足 1%，因此，我们不建议将它们删除。 若要管理 Azure 虚拟桌面诊断，请[将 Log Analytics 用于诊断功能](diagnostics-log-analytics.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-在下列文章中了解更多有关 Windows 虚拟桌面 Azure Monitor 的详细信息：
+在下列文章中详细了解适用于 Azure 虚拟桌面的 Azure Monitor：
 
-- [使用 Windows 虚拟桌面 Azure Monitor 监视部署](azure-monitor.md)。
+- [使用适用于 Azure 虚拟桌面的 Azure Monitor 监视部署](azure-monitor.md)。
 - 使用[词汇表](azure-monitor-glossary.md)了解有关术语和概念的详细信息。
 - 如果遇到问题，请查看[故障排除指南](troubleshoot-azure-monitor.md)以获取帮助。
 - 查看 [Azure Monitor 中的监视使用情况和估计成本](../azure-monitor/usage-estimated-costs.md)，了解更多有关管理监视成本的详细信息。

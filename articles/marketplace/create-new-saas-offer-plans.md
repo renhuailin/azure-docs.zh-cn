@@ -1,6 +1,6 @@
 ---
-title: 如何在 Microsoft 合作伙伴中心为 SaaS 产品/服务创建计划
-description: 如何使用合作伙伴中心内的 Microsoft 商业市场门户为服务型软件 (SaaS) 产品/服务创建计划。
+title: 在 Azure 市场中为 SaaS 产品/服务创建计划
+description: 在 Azure 市场中为新的服务型软件 (SaaS) 产品/服务创建计划。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,28 +8,25 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 238ef9ec80b01470e28535d0eb42dbb3a377b005
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 714197288708691cb35e887975d1fabbe27cb406
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96746431"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555373"
 ---
-# <a name="how-to-create-plans-for-your-saas-offer"></a>如何为 SaaS 产品/服务创建计划
+# <a name="create-plans-for-a-saas-offer"></a>为 SaaS 产品/服务创建计划
 
 通过 Microsoft 商业市场销售的产品/服务必须至少有一种计划。 可以为同一个产品/服务创建包含多种计划，每种计划包含不同的选项。 这些计划（有时称为 SKU）在版本、盈利或服务层级方面可能有所不同。 有关计划的详细指南，请参阅[商业市场产品/服务的计划和定价](plans-pricing.md)。
 
 > [!NOTE]
-> 如果选择单独处理事务，则不会看到此选项， 而是会跳到[如何销售 SaaS 产品/服务](create-new-saas-offer-marketing.md)。
+> 如果选择单独处理事务，则不会看到此选项， 而是会跳到[销售 SaaS 产品/服务](create-new-saas-offer-marketing.md)。
 
 ## <a name="create-a-plan"></a>创建计划
 
 1. 在“计划概述”选项卡的顶部附近，选择“+ 创建新计划”。 
-
 1. 在出现的对话框的“计划 ID”框中，输入唯一的计划 ID。 最大长度为 50，可以使用小写字母数字字符、短划线或下划线。 选择“创建”后，不能修改计划 ID。
-
 1. 在“计划名称”框中，输入此计划的名称。 最可以使用 50 个字符。
-
 1. 选择“创建”  。
 
 ## <a name="define-the-plan-listing"></a>定义计划列表
@@ -37,7 +34,6 @@ ms.locfileid: "96746431"
 在“计划列表”选项卡上，可以定义你希望显示在商业市场中的计划名称和描述。
 
 1. “计划名称”框中显示你之前为此计划提供的名称。 可以随时更改该名称。 该名称在商业市场中显示为产品/服务的软件计划的标题。
-
 1. 在“计划描述”框中，解释该软件计划的独特之处以及你与产品/服务中的其他计划的任何差异。 说明最多可包含 500 个字符。
 1. 选择“保存草稿”，然后转到下一选项卡：“定价和可用性”。
 
@@ -150,7 +146,11 @@ ms.locfileid: "96746431"
 - 如果计划状态为“草稿”，则“操作”列中的链接将显示“删除草稿”。
 - 如果计划状态为“实时”，则“操作”列中的链接将为“停止销售计划”或“同步私有受众”。 “同步私有受众”链接将仅向你的私有受众发布更改，而不会发布你可能对产品/服务进行的任何其他更新。
 
+## <a name="before-you-publish-your-offer"></a>发布产品/服务的准备工作
+
+在发布产品服务之前，请先创建一个开发和测试 (DEV) 产品/服务以测试你的产品/服务（如果尚未这样做）。 若要了解详细信息，请参阅[创建测试 SaaS 产品/服务](create-saas-dev-test-offer.md)。
+
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何通过“与 Microsoft 进行联合销售”以及“通过 CSP 合作伙伴转售”计划来[销售你的 SaaS 产品/服务](create-new-saas-offer-marketing.md)。 
-- [如何测试 SaaS 产品/服务并将其发布到商业市场](test-publish-saas-offer.md)。
+- 通过“与 Microsoft 进行联合销售”以及“通过 CSP 合作伙伴转售”计划来[销售你的 SaaS 产品/服务](create-new-saas-offer-marketing.md) 。
+- [测试和发布 SaaS 产品/服务](test-publish-saas-offer.md)。

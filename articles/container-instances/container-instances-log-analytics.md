@@ -3,12 +3,12 @@ title: 收集和分析资源日志
 description: 了解如何从 Azure 容器实例中的容器组将资源日志和事件数据发送到 Azure Monitor 日志
 ms.topic: article
 ms.date: 07/13/2020
-ms.openlocfilehash: e46a1df65a4cfe5d10a58704aff485aa2834b55f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0c95535c80425abb8bdc904132581531b8cdd24e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107763912"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029056"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>使用 Azure Monitor 日志进行容器组和实例日志记录
 
@@ -146,6 +146,53 @@ ContainerInstanceLog_CL
 | where (ContainerGroup_s == "mycontainergroup001")
 | where (TimeGenerated > ago(1h))
 ```
+
+## <a name="log-schema"></a>日志架构
+
+> [!NOTE]
+> 下面列出的某些列只作为架构的组成部分存在，不会在日志中发出任何数据。 下面用“空”来表示这些列。
+
+### <a name="containerinstancelog_cl"></a>ContainerInstanceLog_CL
+
+|列|类型|说明|
+|-|-|-|
+|Computer|string|空|
+|ContainerGroup_s|字符串|与记录关联的容器组的名称|
+|ContainerID_s|字符串|与记录关联的容器的唯一标识符|
+|ContainerImage_s|字符串|与记录关联的容器映像的名称|
+|Location_s|字符串|与记录关联的资源的位置|
+|消息|string|容器中的消息（如果适用）|
+|OSType_s|字符串|容器所基于的操作系统的名称|
+|RawData|string|空|
+|ResourceGroup|字符串|记录所关联的资源组的名称|
+|Source_s|字符串|日志记录组件“LoggingAgent”的名称|
+|SubscriptionId|字符串|与记录关联的订阅的唯一标识符|
+|TimeGenerated|datetime|由处理与事件对应的请求的 Azure 服务生成事件时的时间戳|
+|类型|字符串|表的名称|
+|_ResourceId|字符串|与记录关联的资源的唯一标识符|
+|_SubscriptionId|字符串|与记录关联的订阅的唯一标识符|
+
+### <a name="containerevent_cl"></a>ContainerEvent_CL
+
+|列|类型|说明|
+|-|-|-|
+|Computer|string|空|
+|ContainerGroupInstanceId_g|字符串|与记录关联的容器组的唯一标识符|
+|ContainerGroup_s|字符串|与记录关联的容器组的名称|
+|ContainerName_s|字符串|与记录关联的容器的名称|
+|Count_d|real|自上次轮询后事件发生的次数|
+|FirstTimestamp_t|datetime|第一次发生事件时的时间戳|
+|Location_s|字符串|与记录关联的资源的位置|
+|消息|string|容器中的消息（如果适用）|
+|OSType_s|字符串|容器所基于的操作系统的名称|
+|RawData|string|空|
+|Reason_s|string|空|
+|ResourceGroup|字符串|记录所关联的资源组的名称|
+|SubscriptionId|字符串|与记录关联的订阅的唯一标识符|
+|TimeGenerated|datetime|由处理与事件对应的请求的 Azure 服务生成事件时的时间戳|
+|类型|字符串|表的名称|
+|_ResourceId|字符串|与记录关联的资源的唯一标识符|
+|_SubscriptionId|字符串|与记录关联的订阅的唯一标识符|
 
 ## <a name="next-steps"></a>后续步骤
 

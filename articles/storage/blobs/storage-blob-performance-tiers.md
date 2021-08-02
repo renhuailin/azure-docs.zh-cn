@@ -1,19 +1,19 @@
 ---
 title: 块 Blob 存储性能层 — Azure 存储
 description: 介绍 Azure 块 Blob 存储的高级与标准性能层之间的差异。
-author: twooley
-ms.author: twooley
-ms.date: 11/12/2019
+author: normesta
+ms.author: normesta
+ms.date: 05/17/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 93e6fcc11703fc24d97bc19ab9cc0d2129ff666f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: faf26ce78e0d6137c93e150d31bd49b9e72b6b8b
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143316"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110655095"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>块 Blob 存储的性能层
 
@@ -26,14 +26,14 @@ Azure 块 Blob 存储提供两个不同的性能层：
 
 以下注意事项适用于不同的性能层：
 
-| 区域 |标准性能  |高级性能层  |
-|---------|---------|---------|
-|上市区域     |   所有区域      | [特定区域](https://azure.microsoft.com/global-infrastructure/services/?products=storage)       |
-|支持的[存储帐户类型](../common/storage-account-overview.md#types-of-storage-accounts)     |     常规用途 v2、Blob 存储、常规用途 v1    |    BlockBlobStorage     |
-|支持[高吞吐量块 Blob](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)     |    是，在大于 4 MiB PutBlock 或 PutBlob 大小时     |    是，在大于 256 KiB PutBlock 或 PutBlob 大小时    |
-|冗余     |     请参阅[存储帐户的类型](../common/storage-account-overview.md#types-of-storage-accounts)   |  目前仅支持本地冗余存储 (LRS) 和区域冗余存储 (ZRS)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>1</sup></div>     |
+| 区域 | 标准性能 | 高级性能层 |
+|--|--|--|
+| 上市区域 | 所有区域 | [特定区域](https://azure.microsoft.com/global-infrastructure/services/?products=storage) |
+| 支持的[存储帐户类型](../common/storage-account-overview.md#types-of-storage-accounts) | 常规用途 v2、常规用途 v1、旧版 blob | 高级块 blob |
+| 支持[高吞吐量块 Blob](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) | 是，在大于 4 MiB PutBlock 或 PutBlob 大小时 | 是，在大于 256 KiB PutBlock 或 PutBlob 大小时 |
+| 冗余 | 请参阅[存储帐户的类型](../common/storage-account-overview.md#types-of-storage-accounts) | 目前仅支持本地冗余存储 (LRS) 和区域冗余存储 (ZRS)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>1</sup></div> |
 
-<div id="zone-redundant-storage"><sup>1</sup>区域冗余存储 (ZRS) 可用于高级性能块 blob 存储帐户的选择区域。</div>
+<div id="zone-redundant-storage"><sup>1</sup>区域冗余存储 (ZRS) 可用于高级块 blob 存储帐户的选择区域。</div>
 
 在成本方面，高级性能层为具有高事务率的应用程序提供优化的定价，以帮助[降低这些工作负荷的总存储成本](https://azure.microsoft.com/blog/reducing-overall-storage-costs-with-azure-premium-blob-storage/)。
 
@@ -63,7 +63,7 @@ Azure 块 Blob 存储提供两个不同的性能层：
 
 ## <a name="migrate-from-standard-to-premium"></a>从标准层迁移到高级层
 
-无法将现有的标准性能存储帐户转换为使用高级性能层的块 Blob 存储帐户。 若要迁移到高级性能存储帐户，必须创建一个块 Blob 存储帐户，并将数据迁移到新帐户。 有关详细信息，请参阅[创建块 Blob 存储帐户](../common/storage-account-create.md)。
+无法将现有的标准性能存储帐户转换为使用高级性能层的块 Blob 存储帐户。 若要迁移到高级性能存储帐户，必须创建一个高级块 Blob 帐户，并将数据迁移到新帐户。 有关详细信息，请参阅[创建块 Blob 存储帐户](../common/storage-account-create.md)。
 
 若要在存储帐户之间复制 Blob，可以使用最新版本的 [AzCopy](../common/storage-use-azcopy-v10.md#transfer-data) 命令行工具。 Azure 数据工厂等其他工具也可用于数据移动和转换。
 

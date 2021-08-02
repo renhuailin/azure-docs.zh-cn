@@ -1,18 +1,18 @@
 ---
-title: 什么是体验版？ Microsoft 商业市场
-description: 对市场体验版功能的说明
+title: 什么是 Microsoft AppSource 中的体验版？
+description: Microsoft AppSource 体验版功能的说明。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 06/19/2020
-ms.openlocfilehash: 193e7bd78046a1d73cb55171c15c9cb6a7278297
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 12/08/2020
+ms.openlocfilehash: 5fba64beff10f59be42776cc87cf6f37922295dd
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96490034"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949066"
 ---
 # <a name="what-is-a-test-drive"></a>什么是体验版？
 
@@ -60,8 +60,8 @@ ms.locfileid: "96490034"
 
 托管的体验版由 Microsoft 托管并维护用于执行体验版用户预配和取消预配的服务，不需复杂的设置。 如果你在 Microsoft AppSource 上有产品/服务，请构建你的体验版以连接 Dynamics AX/CRM 实例。 你可以使用以下 AppSource 产品/服务类型：
 
-- 将 [Dynamics 365 for Customer Engagement](partner-center-portal/create-new-customer-engagement-offer.md) 用于客户参与系统，例如销售、服务、项目服务和现场服务。
-- 将 [Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md) 用于财务和运营企业资源规划系统，例如财务、运营、制造、供应链。
+- 将 [Dynamics 365 for Customer Engagement 和 Power Apps](dynamics-365-customer-engage-offer-setup.md) 用于客户参与系统，例如销售、服务、项目服务和现场服务。
+- 将 [Dynamics 365 for Operations](./dynamics-365-operations-offer-setup.md) 用于财务和运营企业资源规划系统，例如财务、运营、制造、供应链。
 
 ### <a name="logic-app-test-drive"></a>逻辑应用体验版
 
@@ -94,6 +94,6 @@ ms.locfileid: "96490034"
 - [体验版最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [概述](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)（PDF；确保弹出窗口阻止程序处于禁用状态）
 
-## <a name="next-step"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 - [体验版技术配置](test-drive-technical-configuration.md)

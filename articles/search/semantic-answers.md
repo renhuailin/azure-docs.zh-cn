@@ -7,44 +7,44 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/12/2021
-ms.openlocfilehash: 9bb62544887e0bc0269b98cd98fbf97fc477352f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 05/27/2021
+ms.openlocfilehash: d0390bd70080ea0174a81cce9538396321dec658
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722423"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111539346"
 ---
 # <a name="return-a-semantic-answer-in-azure-cognitive-search"></a>在 Azure 认知搜索中返回语义答案
 
 > [!IMPORTANT]
-> 语义搜索功能目前为公共预览版，仅可通过预览版 REST API 使用。 根据[使用条款补充](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，预览版功能按原样提供，不保证与正式版实现的功能相同。 这些功能将计费。 有关详细信息，请参阅[可用性和定价](semantic-search-overview.md#availability-and-pricing)。
+> 语义搜索根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)处于公开预览状态。 可通过 Azure 门户、预览版 REST API 和 beta 版本的 SDK 获得。 这些功能将计费。 有关详细信息，请参阅[可用性和定价](semantic-search-overview.md#availability-and-pricing)。
 
-在表述[语义查询](semantic-how-to-query-request.md)时，可以选择性地从最匹配的文档中直接提取能够“回答”查询的内容。 可以在响应中包含一个或多个答案，然后可以在搜索页上呈现这些答案，以改善应用的用户体验。
+调用[语义排名和标题](semantic-how-to-query-request.md)时，可选择性地从最匹配的文档中直接提取能够“回答”查询的内容。 可以在响应中包含一个或多个答案，然后可以在搜索页上呈现这些答案，以改善应用的用户体验。
 
 本文介绍如何请求语义答案、解包响应，以及哪些内容特征最有利于生成高质量的答案。
 
 ## <a name="prerequisites"></a>先决条件
 
-适用于[语义查询](semantic-how-to-query-request.md)的所有先决条件（包括服务层和区域）同样适用于答案。
+适用于[语义查询](semantic-how-to-query-request.md#prerequisites)的所有先决条件（包括[服务层和区域](semantic-search-overview.md#availability-and-pricing)）同样适用于答案。
 
-+ 查询逻辑必须包括语义查询参数和“answers”参数。 本文将介绍所需的参数。
++ 查询逻辑必须包括语义查询参数“queryType=semantic”和“answers”参数。 本文将介绍所需的参数。
 
-+ 必须使用具有提问特征（什么、何处、何时、如何）的语言来表述用户输入的查询字符串。
++ 用户输入的查询字符串必须可识别为一个问题（什么、何处、何时、如何）。
 
-+ 搜索文档必须包含具有回答特征的文本，并且该文本必须存在于“searchFields”中列出的某个字段内。 例如，给定查询“what is a hash table”，如果没有一个 searchFields 包含其中有“A hash table is ...”的段落，则不太可能返回答案。
++ 索引中的搜索文档必须包含具有回答特征的文本，并且该文本必须存在于“searchFields”中列出的某个字段内。 例如，给定查询“what is a hash table”，如果没有一个 searchFields 包含其中有“A hash table is ...”的段落，则不太可能返回答案。
 
 ## <a name="what-is-a-semantic-answer"></a>什么是语义答案？
 
 语义答案是[语义查询响应](semantic-how-to-query-request.md)的子结构。 它由搜索文档中的一个或多个字面段落构成，表述为对类似于提问的查询给出的答案。 若要使答案能够返回，短语或句子必须存在于具有回答语言特征的搜索文档中，并且查询本身必须以提问的形式表示。
 
-认知搜索使用机器阅读理解模型来选取最佳答案。 该模型从可用的内容生成一组潜在答案，在达到足够高的置信度级别后，它便会给出答案。
+认知搜索使用机器阅读理解模型来选取最佳答案。 该模型根据可用的内容生成一组潜在答案，在达到足够高的置信度级别后，它便会给出一个答案。
 
 答案将在查询响应有效负载中作为独立的顶级对象返回，你可以选择在搜索页上将此对象与搜索结果一起呈现。 从结构上讲，它是响应中的一个数组元素，由文本、文档键和置信度分数组成。
 
 <a name="query-params"></a>
 
-## <a name="how-to-request-semantic-answers-in-a-query"></a>如何在查询中请求语义答案
+## <a name="how-to-specify-answers-in-a-query-request"></a>如何在查询请求中指定“answers”
 
 若要返回语义答案，查询中必须包含“queryType”、“queryLanguage”、“searchFields”和“answers”语义参数。 指定“answers”参数并不保证会获得答案，但如果要在任何情况下都调用回答处理过程，请求中必须包含此参数。
 
@@ -61,11 +61,15 @@ ms.locfileid: "104722423"
 }
 ```
 
-+ 查询字符串不得为 null，并且应表述为提问形式。 在此预览版中，必须严格按照示例中所示设置“queryType”和“queryLanguage”。
++ 查询字符串不得为 null，并且应表述为提问形式。
 
-+ “searchFields”参数确定哪些字符串字段向提取模型提供标记。 生成标题的字段也会生成答案。 有关如何设置此字段以使其同时适用于标题和答案的精确指导，请参阅[设置 searchFields](semantic-how-to-query-request.md#searchfields)。 
++ “queryType”必须设置为“semantic”。
 
-+ 对于“answers”，参数构造为 `"answers": "extractive"`，其中，返回的默认答案数为 1。 可以通过添加计数（如上例所示）来增加答案的数量（最多 5 个）。  是否需要多个答案取决于应用的用户体验以及呈现结果的方式。
++ “queryLanguage”必须是[支持的语言列表 (REST API)](/rest/api/searchservice/preview-api/search-documents#queryLanguage) 中的值之一。
+
++ “searchFields”确定哪些字符串字段向提取模型提供标记。 生成标题的字段也会生成答案。 有关如何设置此字段以使其同时适用于标题和答案的精确指导，请参阅[设置 searchFields](semantic-how-to-query-request.md#searchfields)。 
+
++ 对于“answers”，参数构造为 `"answers": "extractive"`，其中，返回的默认答案数为 1。 可通过添加 `count`（如上例所示）来增加答案的数量（最多 5 个）。  是否需要多个答案取决于应用的用户体验以及呈现结果的方式。
 
 ## <a name="deconstruct-an-answer-from-the-response"></a>解构响应中的答案
 
@@ -108,7 +112,10 @@ ms.locfileid: "104722423"
                 "North America",
                 "Vancouver"
             ]
+    ]
         }
+}
+
 ```
 
 ## <a name="tips-for-producing-high-quality-answers"></a>有关生成高质量答案的提示
