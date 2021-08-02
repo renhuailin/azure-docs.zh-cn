@@ -11,18 +11,52 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: 0334e259f75440cae25f1e165c0621c85f7c7705
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a42db5b6787f56f981ea1afa34958fecf6b2f9fc
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97803997"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477007"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>为 Azure 应用服务配置 Java 应用
 
 Azure 应用服务可让 Java 开发人员在完全托管服务中快速生成、部署和缩放其 Java SE、Tomcat 和 JBoss EAP Web 应用程序。 可以在命令行或者 IntelliJ、Eclipse 或 Visual Studio Code 等编辑器中使用 Maven 插件部署应用程序。
 
 本指南为使用应用服务的 Java 开发人员提供了重要概念和说明。 如果你从未用过 Azure 应用服务，首先应该通读 [Java 快速入门](quickstart-java.md)。 [应用服务常见问题解答](faq-configuration-and-management.md)中解答了有关使用应用服务且非特定于 Java 开发的一般问题。
+
+## <a name="show-java-version"></a>显示 Java 版本
+
+::: zone pivot="platform-windows"  
+
+要显示当前的 Java 版本，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
+
+```azurecli-interactive
+az webapp config show --name <app-name> --resource-group <resource-group-name> --query "[javaVersion, javaContainer, javaContainerVersion]"
+```
+
+要显示所有受支持的 Java 版本，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
+
+```azurecli-interactive
+az webapp list-runtimes | grep java
+```
+
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+要显示当前的 Java 版本，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
+
+```azurecli-interactive
+az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
+```
+
+要显示所有受支持的 Java 版本，请在 [Cloud Shell](https://shell.azure.com) 中运行以下命令：
+
+```azurecli-interactive
+az webapp list-runtimes --linux | grep "JAVA\|TOMCAT\|JBOSSEAP"
+```
+
+::: zone-end
 
 ## <a name="deploying-your-app"></a>部署应用
 
@@ -32,7 +66,10 @@ Azure 应用服务可让 Java 开发人员在完全托管服务中快速生成�
 
 ### <a name="java-se"></a>Java SE
 
-若要将 .jar 文件部署到 Java SE，请使用 Kudu 站点的 `/api/zipdeploy/` 终结点。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#rest)。
+若要将 .jar 文件部署到 Java SE，请使用 Kudu 站点的 `/api/zipdeploy/` 终结点。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#rest)。 
+
+> [!NOTE]
+>  必须将 .jar 应用程序命名为 `app.jar`，应用服务才能识别和运行应用程序。 Maven 插件（如上所述）将在部署期间自动对应用程序进行重命名。 如果不希望将 JAR 重命名为 app.jar，可上传含有该命令的 shell 脚本来运行 .jar 应用。 将此脚本的绝对路径粘贴到门户“配置”部分的[启动文件](faq-app-service-linux.md#built-in-images)文本框中。 启动脚本不从放置它的目录运行。 因此，请始终使用绝对路径在启动脚本中引用文件（例如：`java -jar /home/myapp/myapp.jar`）。
 
 ### <a name="tomcat"></a>Tomcat
 
@@ -44,7 +81,7 @@ Azure 应用服务可让 Java 开发人员在完全托管服务中快速生成�
 
 若要将 .war 文件部署到 JBoss，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](./deploy-zip.md#deploy-war-file)。
 
-若要部署 .ear 文件，请[使用 FTP](deploy-ftp.md)。
+若要部署 .ear 文件，请[使用 FTP](deploy-ftp.md)。 .ear 应用程序将部署到应用程序配置中定义的上下文根。 例如，如果应用的上下文根是 `<context-root>myapp</context-root>`，则可以在 `/myapp` 路径中浏览该站点：`http://my-app-name.azurewebsites.net/myapp`。 如果希望在根路径中为 Web 应用提供服务，请确保应用将上下文根设置为根路径：`<context-root>/</context-root>`。 有关详细信息，请参阅[设置 Web 应用程序的上下文根](https://docs.jboss.org/jbossas/guides/webguide/r2/en/html/ch06.html)。
 
 ::: zone-end
 
@@ -141,18 +178,18 @@ jcmd <pid> JFR.dump name=continuous_recording filename="/home/recording1.jfr"
 
 ::: zone pivot="platform-windows"
 
-通过 Azure 门户或 [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) 启用[应用程序日志记录](troubleshoot-diagnostic-logs.md#enable-application-logging-windows)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 在完成配置并经过 12 个小时后，将禁用记录到应用服务本地文件系统实例。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。 Java 和 Tomcat 应用日志位于 /home/LogFiles/Application/ 目录中。
+通过 Azure 门户或 [Azure CLI](/cli/azure/webapp/log#az_webapp_log_config) 启用[应用程序日志记录](troubleshoot-diagnostic-logs.md#enable-application-logging-windows)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 在完成配置并经过 12 个小时后，将禁用记录到应用服务本地文件系统实例。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。 Java 和 Tomcat 应用日志位于 /home/LogFiles/Application/ 目录中。
 
 ::: zone-end
 ::: zone pivot="platform-linux"
 
-通过 Azure 门户或 [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) 启用[应用程序日志记录](troubleshoot-diagnostic-logs.md#enable-application-logging-linuxcontainer)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。 Java 和 Tomcat 应用日志位于 /home/LogFiles/Application/ 目录中。
+通过 Azure 门户或 [Azure CLI](/cli/azure/webapp/log#az_webapp_log_config) 启用[应用程序日志记录](troubleshoot-diagnostic-logs.md#enable-application-logging-linuxcontainer)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。 Java 和 Tomcat 应用日志位于 /home/LogFiles/Application/ 目录中。
 
 只能使用 [Azure Monitor（预览版）](./troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor-preview)配置适用于基于 Linux 的应用服务的 Azure Blob 存储日志记录功能 
 
 ::: zone-end
 
-如果应用程序使用 [Logback](https://logback.qos.ch/) 或 [Log4j](https://logging.apache.org/log4j) 进行跟踪，则你可以遵照[在 Application Insights 中浏览 Java 跟踪日志](../azure-monitor/app/java-trace-logs.md)中的日志记录框架配置说明，将这些用于审查的跟踪写入到 Azure Application Insights。
+如果应用程序使用 [Logback](https://logback.qos.ch/) 或 [Log4j](https://logging.apache.org/log4j) 进行跟踪，则你可以遵照[在 Application Insights 中浏览 Java 跟踪日志](../azure-monitor/app/java-2x-trace-logs.md)中的日志记录框架配置说明，将这些用于审查的跟踪写入到 Azure Application Insights。
 
 ## <a name="customization-and-tuning"></a>自定义和优化
 
@@ -324,7 +361,54 @@ keyStore.load(
 
 ## <a name="configure-apm-platforms"></a>配置 APM 平台
 
-本部分介绍如何使用 NewRelic 和 AppDynamics 应用程序性能监视 (APM) 平台连接在 Linux 上的 Azure 应用服务上部署的 Java 应用程序。
+本部分介绍如何将 Azure 应用服务上部署的 Java 应用程序与 Azure Monitor Application Insights、NewRelic 和 AppDynamics 应用程序性能监视 (APM) 平台进行连接。
+
+### <a name="configure-application-insights"></a>配置 Application Insights
+
+Azure Monitor Application Insights 是一项云本机应用程序监视服务，它使客户能够观察故障、瓶颈和使用模式，以便提高应用程序性能并减少平均解决时间 (MTTR)。 只需单击几下或使用 CLI 命令，就可以启用对 Node.js 或 Java 应用的监视，自动收集日志、指标和分布式跟踪，而无需在应用中包含 SDK。
+
+#### <a name="azure-portal"></a>Azure 门户
+
+要从 Azure 门户启用 Application Insights，请转到左侧菜单的“Application Insights”，选择“启用 Application Insights” 。 默认情况下，将使用与 Web 应用名称相同的新 Application Insights 资源。 可以选择使用现有的 Application Insights 资源，也可以更改名称。 单击底部的“应用”
+
+#### <a name="azure-cli"></a>Azure CLI
+
+要通过 Azure CLI 启用，需要创建一个 Application Insights 资源并在门户上设置几个应用设置，以将 Application Insights 连接到 Web 应用。
+
+1. 启用 Applications Insights 扩展
+
+    ```bash
+    az extension add -n application-insights
+    ```
+
+2. 使用下面的 CLI 命令创建 Application Insights 资源。 将占位符替换为所需的资源名称和组。
+
+    ```bash
+    az monitor app-insights component create --app <resource-name> -g <resource-group> --location westus2  --kind web --application-type web
+    ```
+
+    记下 `connectionString` 和 `instrumentationKey` 的值，你将在下一步中使用这些值。
+
+    > 要检索其他位置的列表，请运行 `az account list-locations`。
+
+::: zone pivot="platform-windows"
+    
+3. 将检测密钥、连接字符串和监视代理版本作为 Web 应用上的应用设置进行设置。 将 `<instrumentationKey>` 和 `<connectionString>` 替换为上一步中的值。
+
+    ```bash
+    az webapp config appsettings set -n <webapp-name> -g <resource-group> --settings "APPINSIGHTS_INSTRUMENTATIONKEY=<instrumentationKey>" "APPLICATIONINSIGHTS_CONNECTION_STRING=<connectionString>" "ApplicationInsightsAgent_EXTENSION_VERSION=~3" "XDT_MicrosoftApplicationInsights_Mode=default" "XDT_MicrosoftApplicationInsights_Java=1"
+    ```
+
+::: zone-end
+::: zone pivot="platform-linux"
+    
+3. 将检测密钥、连接字符串和监视代理版本作为 Web 应用上的应用设置进行设置。 将 `<instrumentationKey>` 和 `<connectionString>` 替换为上一步中的值。
+
+    ```bash
+    az webapp config appsettings set -n <webapp-name> -g <resource-group> --settings "APPINSIGHTS_INSTRUMENTATIONKEY=<instrumentationKey>" "APPLICATIONINSIGHTS_CONNECTION_STRING=<connectionString>" "ApplicationInsightsAgent_EXTENSION_VERSION=~3" "XDT_MicrosoftApplicationInsights_Mode=default"
+    ```
+
+::: zone-end
 
 ### <a name="configure-new-relic"></a>配置 NewRelic
 
@@ -417,7 +501,7 @@ keyStore.load(
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [下载](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [下载](https://dev.mysql.com/downloads/connector/j/)（选择“独立于平台”） |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [下载](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [下载](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server#download)                                                           |
 
 若要将 Tomcat 配置为使用 Java Database Connectivity (JDBC) 或 Java 持久性 API (JPA)，请先自定义在启动时由 Tomcat 读取的 `CATALINA_OPTS` 环境变量。 在[应用服务 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)中通过某个应用设置来设置这些值：
 
@@ -453,7 +537,7 @@ keyStore.load(
     </Context>
     ```
 
-3. 更新应用程序的 *web.xml*，以便在应用程序中使用该数据源。
+3. 更新应用程序的 web.xml以便在应用程序中使用该数据源。
 
     ```xml
     <resource-env-ref>
@@ -461,6 +545,236 @@ keyStore.load(
         <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
     </resource-env-ref>
     ```
+
+#### <a name="shared-server-level-resources"></a>共享的服务器级资源
+
+Windows 上的应用服务的 Tomcat 安装位于应用服务计划的共享空间中。 不能直接修改 Tomcat 安装以进行服务器范围的配置。 要对 Tomcat 安装进行服务器级别的配置更改，必须将 Tomcat 复制到本地文件夹，可在其中修改 Tomcat 的配置。 
+
+##### <a name="automate-creating-custom-tomcat-on-app-start"></a>在应用启动时自动创建自定义 Tomcat
+
+可以使用启动脚本在 Web 应用启动之前执行操作。 用于自定义 Tomcat 的启动脚本需要完成以下步骤：
+
+1. 检查是否已在本地复制并配置 Tomcat。 如果是，启动脚本可以在此处结束。
+2. 在本地复制 Tomcat。
+3. 进行所需的配置更改。
+4. 表示配置已成功完成。
+
+下面是完成这些步骤的 PowerShell 脚本：
+
+```powershell
+    # Check for marker file indicating that config has already been done
+    if(Test-Path "$Env:LOCAL_EXPANDED\tomcat\config_done_marker"){
+        return 0
+    }
+
+    # Delete previous Tomcat directory if it exists
+    # In case previous config could not be completed or a new config should be forcefully installed
+    if(Test-Path "$Env:LOCAL_EXPANDED\tomcat"){
+        Remove-Item "$Env:LOCAL_EXPANDED\tomcat" --recurse
+    }
+
+    # Copy Tomcat to local
+    # Using the environment variable $AZURE_TOMCAT90_HOME uses the 'default' version of Tomcat
+    Copy-Item -Path "$Env:AZURE_TOMCAT90_HOME\*" -Destination "$Env:LOCAL_EXPANDED\tomcat" -Recurse
+
+    # Perform the required customization of Tomcat
+    {... customization ...}
+
+    # Mark that the operation was a success
+    New-Item -Path "$Env:LOCAL_EXPANDED\tomcat\config_done_marker" -ItemType File
+```
+
+##### <a name="transforms"></a>转换
+
+自定义 Tomcat 版本的一个常见用例是修改 `server.xml`、`context.xml` 或 `web.xml` Tomcat 配置文件。 应用服务已修改这些文件以提供平台功能。 要继续使用这些功能，请务必在更改这些文件时保留其内容。 为此，建议使用 [XSL 转换 (XSLT)](https://www.w3schools.com/xml/xsl_intro.asp)。 使用 XSL 转换对 XML 文件进行更改，同时保留文件的原始内容。
+
+###### <a name="example-xslt-file"></a>XSLT 文件示例
+
+此转换示例将一个新的连接器节点添加到 `server.xml`。 请记住标识转换，它会保留文件的原始内容。
+
+```xml
+    <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:output method="xml" indent="yes"/>
+  
+    <!-- Identity transform: this ensures that the original contents of the file are included in the new file -->
+    <!-- Ensure that your transform files include this block -->
+    <xsl:template match="@* | node()" name="Copy">
+      <xsl:copy>
+        <xsl:apply-templates select="@* | node()"/>
+      </xsl:copy>
+    </xsl:template>
+  
+    <xsl:template match="@* | node()" mode="insertConnector">
+      <xsl:call-template name="Copy" />
+    </xsl:template>
+  
+    <xsl:template match="comment()[not(../Connector[@scheme = 'https']) and
+                                   contains(., '&lt;Connector') and
+                                   (contains(., 'scheme=&quot;https&quot;') or
+                                    contains(., &quot;scheme='https'&quot;))]">
+      <xsl:value-of select="." disable-output-escaping="yes" />
+    </xsl:template>
+  
+    <xsl:template match="Service[not(Connector[@scheme = 'https'] or
+                                     comment()[contains(., '&lt;Connector') and
+                                               (contains(., 'scheme=&quot;https&quot;') or
+                                                contains(., &quot;scheme='https'&quot;))]
+                                    )]
+                        ">
+      <xsl:copy>
+        <xsl:apply-templates select="@* | node()" mode="insertConnector" />
+      </xsl:copy>
+    </xsl:template>
+  
+    <!-- Add the new connector after the last existing Connnector if there is one -->
+    <xsl:template match="Connector[last()]" mode="insertConnector">
+      <xsl:call-template name="Copy" />
+  
+      <xsl:call-template name="AddConnector" />
+    </xsl:template>
+  
+    <!-- ... or before the first Engine if there is no existing Connector -->
+    <xsl:template match="Engine[1][not(preceding-sibling::Connector)]"
+                  mode="insertConnector">
+      <xsl:call-template name="AddConnector" />
+  
+      <xsl:call-template name="Copy" />
+    </xsl:template>
+  
+    <xsl:template name="AddConnector">
+      <!-- Add new line -->
+      <xsl:text>&#xa;</xsl:text>
+      <!-- This is the new connector -->
+      <Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true" 
+                 maxThreads="150" scheme="https" secure="true" 
+                 keystroreFile="${{user.home}}/.keystore" keystorePass="changeit"
+                 clientAuth="false" sslProtocol="TLS" />
+    </xsl:template>
+
+    </xsl:stylesheet>
+```
+
+###### <a name="function-for-xsl-transform"></a>用于 XSL 转换的函数
+
+PowerShell 具有使用 XSL 转换来转换 XML 文件的内置工具。 以下脚本是一个示例函数，可在 `startup.ps1` 中使用该函数来执行转换：
+
+```powershell
+    function TransformXML{
+        param ($xml, $xsl, $output)
+
+        if (-not $xml -or -not $xsl -or -not $output)
+        {
+            return 0
+        }
+
+        Try
+        {
+            $xslt_settings = New-Object System.Xml.Xsl.XsltSettings;
+            $XmlUrlResolver = New-Object System.Xml.XmlUrlResolver;
+            $xslt_settings.EnableScript = 1;
+
+            $xslt = New-Object System.Xml.Xsl.XslCompiledTransform;
+            $xslt.Load($xsl,$xslt_settings,$XmlUrlResolver);
+            $xslt.Transform($xml, $output);
+
+        }
+
+        Catch
+        {
+            $ErrorMessage = $_.Exception.Message
+            $FailedItem = $_.Exception.ItemName
+            Write-Host  'Error'$ErrorMessage':'$FailedItem':' $_.Exception;
+            return 0
+        }
+        return 1
+    }
+```
+
+##### <a name="app-settings"></a>应用设置
+
+平台还需要知道 Tomcat 的自定义版本的安装位置。 可以在 `CATALINA_BASE` 应用设置中设置安装位置。
+
+可以使用 Azure CLI 更改此设置：
+
+```powershell
+    az webapp config appsettings set -g $MyResourceGroup -n $MyUniqueApp --settings CATALINA_BASE="%LOCAL_EXPANDED%\tomcat"
+```
+
+或者，可以在 Azure 门户中手动更改此设置：
+
+1. 转到“设置” > “配置” > “应用程序设置”  。
+1. 选择“新建应用程序设置”。
+1. 使用以下值创建运行此设置：
+   1. **名称**：`CATALINA_BASE`
+   1. **值**：`"%LOCAL_EXPANDED%\tomcat"`
+
+##### <a name="example-startupps1"></a>示例 startup.ps1
+
+下面的示例脚本将自定义 Tomcat 复制到本地文件夹，执行 XSL 转换，并指示转换已成功：
+
+```powershell
+    # Locations of xml and xsl files
+    $target_xml="$Env:LOCAL_EXPANDED\tomcat\conf\server.xml"
+    $target_xsl="$Env:HOME\site\server.xsl"
+    
+    # Define the transform function
+    # Useful if transforming multiple files
+    function TransformXML{
+        param ($xml, $xsl, $output)
+    
+        if (-not $xml -or -not $xsl -or -not $output)
+        {
+            return 0
+        }
+    
+        Try
+        {
+            $xslt_settings = New-Object System.Xml.Xsl.XsltSettings;
+            $XmlUrlResolver = New-Object System.Xml.XmlUrlResolver;
+            $xslt_settings.EnableScript = 1;
+    
+            $xslt = New-Object System.Xml.Xsl.XslCompiledTransform;
+            $xslt.Load($xsl,$xslt_settings,$XmlUrlResolver);
+            $xslt.Transform($xml, $output);
+        }
+    
+        Catch
+        {
+            $ErrorMessage = $_.Exception.Message
+            $FailedItem = $_.Exception.ItemName
+            echo  'Error'$ErrorMessage':'$FailedItem':' $_.Exception;
+            return 0
+        }
+        return 1
+    }
+    
+    $success = TransformXML -xml $target_xml -xsl $target_xsl -output $target_xml
+    
+    # Check for marker file indicating that config has already been done
+    if(Test-Path "$Env:LOCAL_EXPANDED\tomcat\config_done_marker"){
+        return 0
+    }
+    
+    # Delete previous Tomcat directory if it exists
+    # In case previous config could not be completed or a new config should be forcefully installed
+    if(Test-Path "$Env:LOCAL_EXPANDED\tomcat"){
+        Remove-Item "$Env:LOCAL_EXPANDED\tomcat" --recurse
+    }
+    
+    md -Path "$Env:LOCAL_EXPANDED\tomcat"
+    
+    # Copy Tomcat to local
+    # Using the environment variable $AZURE_TOMCAT90_HOME uses the 'default' version of Tomcat
+    Copy-Item -Path "$Env:AZURE_TOMCAT90_HOME\*" "$Env:LOCAL_EXPANDED\tomcat" -Recurse
+    
+    # Perform the required customization of Tomcat
+    $success = TransformXML -xml $target_xml -xsl $target_xsl -output $target_xml
+    
+    # Mark that the operation was a success if successful
+    if($success){
+        New-Item -Path "$Env:LOCAL_EXPANDED\tomcat\config_done_marker" -ItemType File
+    }
+```
 
 #### <a name="finalize-configuration"></a>完成配置
 
@@ -495,7 +809,7 @@ keyStore.load(
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [下载](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [下载](https://dev.mysql.com/downloads/connector/j/)（选择“独立于平台”） |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [下载](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [下载](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server#download)                                                           |
 
 若要将 Tomcat 配置为使用 Java Database Connectivity (JDBC) 或 Java 持久性 API (JPA)，请先自定义在启动时由 Tomcat 读取的 `CATALINA_OPTS` 环境变量。 在[应用服务 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)中通过某个应用设置来设置这些值：
 
@@ -689,13 +1003,18 @@ xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /
 
 ## <a name="choosing-a-java-runtime-version"></a>选择 Java 运行时版本
 
-通过应用服务，用户可以选择 JVM 的主要版本（如 Java 8 或 Java 11）和次要版本（如 1.8.0_232 或 11.0.5）。 还可以选择在新的次要版本可用时自动更新次要版本。 在大多数情况下，生产站点应使用 JVM 的固定次要版本。 这将防止在次要版本自动更新期间发生意外中断。
+通过应用服务，用户可以选择 JVM 的主要版本（如 Java 8 或 Java 11）和次要版本（如 1.8.0_232 或 11.0.5）。 还可以选择在新的次要版本可用时自动更新次要版本。 在大多数情况下，生产站点应使用 JVM 的固定次要版本。 这将防止在次要版本自动更新期间发生意外中断。 所有 Java Web 应用都使用 64 位 JVM，这是不可配置的。
 
 如果选择固定次要版本，则需要定期更新站点上 JVM 的次要版本。 为了确保应用程序在较新的次要版本上运行，请创建一个过渡槽并在暂存站点上递增次要版本。 确认应用程序在新的次要版本上正常运行后，可以交换过渡槽和生产槽。
 
-## <a name="jboss-eap-hardware-options"></a>JBoss EAP 硬件选项
+::: zone pivot="platform-linux"
 
-JBoss EAP 仅适用于高级和独立硬件选项。 在公共预览期间在免费层、共享层、基本层或标准层上创建了 JBoss EAP 站点的客户应纵向扩展到“高级”或“独立”硬件层，以避免出现意外行为。
+## <a name="jboss-eap-app-service-plans"></a>JBoss EAP 应用服务计划
+<a id="jboss-eap-hardware-options"></a>
+
+JBoss EAP 仅适用于高级 v3 和独立 v2 应用服务计划类型。 在公共预览期间在不同层上创建了 JBoss EAP 站点的客户应纵向扩展到“高级”或“独立”硬件层，以避免出现意外行为。
+
+::: zone-end
 
 ## <a name="java-runtime-statement-of-support"></a>Java 运行时支持声明
 

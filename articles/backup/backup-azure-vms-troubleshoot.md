@@ -3,13 +3,13 @@ title: 排查 Azure VM 备份错误
 description: 在本文中，学习如何排查在备份和还原 Azure 虚拟机时遇到的错误。
 ms.reviewer: srinathv
 ms.topic: troubleshooting
-ms.date: 08/30/2019
-ms.openlocfilehash: 2cda13ea089ac08dff7c1ba5ca93ba56ab3c23cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 06/02/2021
+ms.openlocfilehash: b604b98410d61d61bdb8a24e81872cb2c1caf1b4
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97831544"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410291"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -33,6 +33,8 @@ ms.locfileid: "97831544"
   * 如果 Azure 备份正常运行，则问题可能出在其他备份解决方案。
   * 下面是一个示例，介绍了事件查看器错误 517，其中的 Azure 备份正常运行，但“Windows Server 备份”发生故障：![Windows Server 备份故障](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * 如果 Azure 备份故障，则请在本文的“常见 VM 备份错误”部分查找相应的错误代码。
+  * 如果在 Azure VM 上看到 Azure 备份选项显示为灰色，请将鼠标悬停在“禁用”菜单上以查找原因。 原因可能是“不支持 EphemeralDisk”或“不支持超级磁盘”。
+   ![禁用 Azure 备份选项的原因](media/backup-azure-vms-troubleshoot/azure-backup-disable-reasons.png)
 
 ## <a name="common-issues"></a>常见问题
 
@@ -50,7 +52,7 @@ ms.locfileid: "97831544"
 
 ### <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime - 从保管库复制已备份数据已超时
 
-错误代码：CopyingVHDsFromBackUpVaultTakingLongTime <br/>
+错误代码：CopyingVHDsFromBackUpVaultTakingLongTime <br/>
 错误消息：从保管库复制备份的数据超时
 
 发生这种情况可能是因为暂时性的存储错误或存储帐户 IOPS 不足，导致备份服务无法在超时范围内将数据传输到保管库。 使用以下[最佳做法](backup-azure-vms-introduction.md#best-practices)配置 VM 备份，然后重试备份操作。
@@ -74,7 +76,7 @@ ms.locfileid: "97831544"
 * 使用 **fsck** 命令在这些设备上运行文件系统一致性检查。
 * 再次装载设备，并重试备份操作。</ol>
 
-如果无法卸载设备，则可以更新 VM 备份配置以忽略某些装入点。 例如，如果“/mnt/resource”装入点无法卸载并导致 VM 备份失败，则可按如下所示使用 ```MountsToSkip``` 属性更新 VM 备份配置文件。
+如果无法卸载设备，则可以更新 VM 备份配置以忽略某些装入点。 例如，如果“/mnt/resource”装入点无法卸载并导致 VM 备份失败，则可按如下所示使用 `MountsToSkip` 属性更新 VM 备份配置文件。
 
 ```bash
 cat /var/lib/waagent/Microsoft.Azure.RecoveryServices.VMSnapshotLinux-1.0.9170.0/main/tempPlugin/vmbackup.conf[SnapshotThread]
@@ -82,7 +84,6 @@ fsfreeze: True
 MountsToSkip = /mnt/resource
 SafeFreezeWaitInSeconds=600
 ```
-
 
 ### <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM / ExtensionInstallationFailedCOM / ExtensionInstallationFailedMDTC - COM+ 错误导致扩展安装/操作失败
 
@@ -116,12 +117,12 @@ SafeFreezeWaitInSeconds=600
 
 步骤 1：请重启处于错误状态的 VSS 编写器。
 
-* 在提升的命令提示符处，运行 ```vssadmin list writers```。
+* 在提升的命令提示符处，运行 `vssadmin list writers`。
 * 输出包含所有 VSS 编写器及其状态。 对于状态不是“[1] 稳定”的每个 VSS 编写器，请重启相应 VSS 编写器的服务。
 * 若要重启服务，请从提升的命令提示符处运行以下命令：
 
- ```net stop serviceName``` <br>
- ```net start serviceName```
+  `net stop serviceName` <br>
+  `net start serviceName`
 
 > [!NOTE]
 > 重启某些服务可能会影响生产环境。 请确保遵循批准过程，并在计划的停机时间重启服务。
@@ -139,7 +140,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 解决方案：
 
-* 检查是否可以跨 VM 磁盘分配负载。 这将减少单个磁盘上的负载。 可以[通过在存储级别启用诊断指标来检查 IOP 限制](../virtual-machines/troubleshooting/performance-diagnostics.md#install-and-run-performance-diagnostics-on-your-vm)。
+* 检查是否可以跨 VM 磁盘分配负载。 这将减少单个磁盘上的负载。 可以[通过在存储级别启用诊断指标来检查 IOP 限制](/troubleshoot/azure/virtual-machines/performance-diagnostics#install-and-run-performance-diagnostics-on-your-vm)。
 * 更改备份策略，以在非高峰时段（VM 上的负载最低时）执行备份。
 * 升级 Azure 磁盘以支持更高的 IOP。 [在此处了解详细信息](../virtual-machines/disks-types.md)
 
@@ -156,8 +157,8 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 （或者）<br>
 * 在提升的命令提示符下运行以下命令：
 
- ```net stop VSS``` <br>
- ```net start VSS```
+  `net stop VSS` <br>
+  `net start VSS`
 
 如果问题仍然存在，请在计划的停机时间重启 VM。
 
@@ -178,7 +179,7 @@ Azure 备份支持备份和还原 Azure 市场中可用的 VM。 尝试还原 Az
 * 若要解决此问题，请在还原操作过程中使用[还原磁盘](./backup-azure-arm-restore-vms.md#restore-disks)选项，然后使用 [PowerShell](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks) 或 [Azure CLI](./tutorial-restore-disk.md) cmdlet 创建 VM，其中包含与该 VM 对应的最新市场信息。
 * 如果发布者没有任何市场信息，你可以使用数据磁盘来检索数据，并将其附加到现有 VM。
 
-### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - 无法分析备份扩展的配置
+### <a name="extensionconfigparsingfailure---failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - 无法分析备份扩展的配置
 
 错误代码：ExtensionConfigParsingFailure<br/>
 错误消息：无法分析备份扩展的配置。
@@ -211,7 +212,7 @@ Azure 备份支持备份和还原 Azure 市场中可用的 VM。 尝试还原 Az
 
 ### <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState - 扩展状态不支持备份操作
 
-错误代码：ExtensionStuckInDeletionState <br/>
+错误代码：ExtensionStuckInDeletionState <br/>
 错误消息：扩展状态不支持备份操作
 
 备份操作由于备份扩展出现不一致状态而失败。 若要解决此问题，请执行以下步骤：
@@ -224,7 +225,7 @@ Azure 备份支持备份和还原 Azure 市场中可用的 VM。 尝试还原 Az
 
 ### <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError - 由于某些附加的磁盘已超出快照限制，因此快照操作失败
 
-错误代码：ExtensionFailedSnapshotLimitReachedError  <br/>
+错误代码：ExtensionFailedSnapshotLimitReachedError   <br/>
 错误消息：由于某些附加的磁盘已超出快照限制，因此快照操作失败
 
 由于某些附加的磁盘已超出快照限制，因此快照操作失败。 完成以下故障排除步骤，然后重试操作。
@@ -331,7 +332,7 @@ VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机�
 
 如果还原后发现磁盘处于脱机状态，请执行以下操作：
 
-* 验证执行脚本的计算机是否满足 OS 要求。 [了解详细信息](./backup-azure-restore-files-from-vm.md#step-3-os-requirements-to-successfully-run-the-script)。  
+* 验证执行脚本的计算机是否满足 OS 要求。 [了解详细信息](./backup-azure-restore-files-from-vm.md#step-3-os-requirements-to-successfully-run-the-script)。
 * 确保不会还原到同一个源，[了解详细信息](./backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script)。
 
 ### <a name="usererrorinstantrpnotfound---restore-failed-because-the-snapshot-of-the-vm-was-not-found"></a>UserErrorInstantRpNotFound - 还原失败，因为找不到 VM 的快照
@@ -343,7 +344,8 @@ VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机�
 <br>
 若要解决此问题，请尝试从其他还原点还原 VM。<br>
 
-#### <a name="common-errors"></a>常见错误 
+#### <a name="common-errors"></a>常见错误
+
 | 错误详细信息 | 解决方法 |
 | --- | --- |
 | 还原失败，发生云内部错误。 |<ol><li>尝试还原的云服务使用 DNS 设置进行配置。 可以检查： <br>“$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings”。<br>如果配置了“地址”，则配置了 DNS 设置。<br> <li>尝试还原的云服务配置了“ReservedIP”，且云服务中的现有 VM 处于停止状态。 可以使用以下 PowerShell cmdlet 检查云服务是否已保留 IP：$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName。 <br><li>正在尝试将具有以下特殊网络配置的虚拟机还原到同一个云服务中： <ul><li>采用负载均衡器配置的虚拟机（内部和外部）。<li>具有多个保留 IP 的虚拟机。 <li>具有多个 NIC 的虚拟机。 </ul><li>请在 UI 中选择新的云服务，或参阅[还原注意事项](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations)，了解具有特殊网络配置的 VM。</ol> |
@@ -371,12 +373,12 @@ VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机�
 #### <a name="windows-vms---set-up-the-agent"></a>Windows VM - 设置代理
 
 * 下载并安装 [代理 MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要有管理员权限才能完成安装。
-* 对于使用经典部署模型创建的虚拟机，请[更新 VM 属性](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms)以指示已安装代理。 Azure 资源管理器虚拟机不需要此步骤。
+* 对于使用经典部署模型创建的虚拟机，请[更新 VM 属性](/troubleshoot/azure/virtual-machines/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms)以指示已安装代理。 Azure 资源管理器虚拟机不需要此步骤。
 
 #### <a name="linux-vms---set-up-the-agent"></a>Linux VM - 设置代理
 
 * 从分发存储库安装最新版本的代理。 有关包名称的详细信息，请参阅 [Linux 代理存储库](https://github.com/Azure/WALinuxAgent)。
-* 对于使用经典部署模型创建的 VM，请[更新 VM 属性](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms)并验证是否已安装代理。 无需对资源管理器虚拟机执行此步骤。
+* 对于使用经典部署模型创建的 VM，请[更新 VM 属性](/troubleshoot/azure/virtual-machines/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms)并验证是否已安装代理。 无需对资源管理器虚拟机执行此步骤。
 
 ### <a name="update-the-vm-agent"></a>更新 VM 代理
 

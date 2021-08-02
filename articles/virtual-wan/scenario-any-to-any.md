@@ -1,20 +1,20 @@
 ---
 title: 场景：任意位置到任意位置
 titleSuffix: Azure Virtual WAN
-description: 用于路由的方案 - 任意位置到任意位置
+description: 了解虚拟 WAN 任意到任意路由场景，其中任何分支都可以访问另一个分支。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3b5002873160490dfb7b8d3ad9790f9c6f1e8ae6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b27d1327eac8e108c462fd3c0f19a257a5385428
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99525782"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575983"
 ---
 # <a name="scenario-any-to-any"></a>方案：任意位置到任意位置
 

@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 07/23/2020
-ms.openlocfilehash: 729879bb472786165b21a47a7baf058294a4db1f
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.date: 05/26/2021
+ms.openlocfilehash: 03f0ab53b4d2db74a18073808295e12fe5adaaaa
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961517"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110494777"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-postgresql"></a>使用 PostgreSQL 通过 Azure Active Directory 进行身份验证
 
@@ -32,6 +32,7 @@ ms.locfileid: "105961517"
 
 > [!IMPORTANT]
 > 设置管理员时，将向具有完全管理员权限的 Azure Database for PostgreSQL 服务器添加新用户。 Azure Database for PostgreSQL 中的 Azure AD 管理员用户将拥有角色 `azure_ad_admin`。
+> 每个 PostgreSQL 服务器只能创建一个 Azure AD 管理员，选择另一个管理员将覆盖为服务器配置的现有 Azure AD 管理员。 可以指定 Azure AD 组（而不是单个用户）来拥有多个管理员。 
 
 每个 PostgreSQL 服务器只能创建一个 Azure AD 管理员，选择另一个管理员将覆盖为服务器配置的现有 Azure AD 管理员。 可以指定 Azure AD 组（而不是单个用户）来拥有多个管理员。 请注意，你随后将用该组名称登录，以进行管理。
 
@@ -43,14 +44,12 @@ ms.locfileid: "105961517"
 
 我们将 Azure AD 集成设计为可与常见 PostgreSQL 工具（例如 psql）结合使用，这些工具并非 Azure AD 感知工具，并且在连接到 PostgreSQL 时仅支持指定用户名和密码。 我们会将 Azure AD 令牌作为密码传递，如上图所示。
 
-我们当前已测试以下客户端：
+目前已测试以下客户端：
 
-- psql 命令行（利用 PGPASSWORD 变量传递令牌，请参阅下文）
+- psql 命令行（利用 PGPASSWORD 变量传递令牌，有关详细信息，请参阅步骤 3）
 - Azure Data Studio（使用 PostgreSQL 扩展）
 - 其他基于 libpq 的客户端（例如常见的应用程序框架和 ORM）
-
-> [!NOTE]
-> 请注意，目前不支持将 Azure AD 令牌与 pgAdmin 结合使用，因为这对密码有 256 个字符的硬编码限制（令牌超过了该限制）。
+- PgAdmin（在创建服务器时取消选中“立即连接”。 有关详细信息，请参阅步骤 4）
 
 以下是用户/应用程序使用 Azure AD 进行身份验证所需的步骤：
 
@@ -58,7 +57,9 @@ ms.locfileid: "105961517"
 
 可以在 Azure Cloud Shell、Azure VM 或本地计算机上继续操作。 请确保已[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-### <a name="step-1-authenticate-with-azure-ad"></a>步骤 1：使用 Azure AD 进行身份验证
+## <a name="authenticate-with-azure-ad-as-a-single-user"></a>作为单个用户使用 Azure AD 进行身份验证
+
+### <a name="step-1-login-to-the-users-azure-subscription"></a>步骤 1：登录到用户的 Azure 订阅
 
 首先使用 Azure CLI 工具进行 Azure AD 的身份验证。 对于 Azure Cloud Shell 不需要执行此步骤。
 
@@ -104,10 +105,8 @@ az account get-access-token --resource-type oss-rdbms
 
 该令牌是一个 Base 64 字符串，该字符串对有关经过身份验证的用户的所有信息进行编码，并且针对的是 Azure Database for PostgreSQL 服务。
 
-> [!NOTE]
-> 访问令牌的有效期介于 5 分钟到 60 分钟之间。 建议你就在启动 Azure Database for PostgreSQL 登录之前获取访问令牌。
 
-### <a name="step-3-use-token-as-password-for-logging-in-with-postgresql"></a>步骤 3：使用令牌作为密码以使用 PostgreSQL 登录
+### <a name="step-3-use-token-as-password-for-logging-in-with-client-psql"></a>步骤 3：使用令牌作为密码以使用客户端 psql 登录
 
 在连接时，需要将访问令牌用作 PostgreSQL 用户密码。
 
@@ -134,17 +133,92 @@ export PGPASSWORD=<copy/pasted TOKEN value from step 2>
 ```shell
 psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
+### <a name="step-4-use-token-as-a-password-for-logging-in-with-pgadmin"></a>步骤 4：使用令牌作为密码以使用 PgAdmin 登录
+
+要使用 Azure AD 令牌和 pgAdmin 进行连接，需要执行以下步骤：
+1. 创建服务器时取消选中“立即连接”选项。
+2. 在“连接”选项卡中输入服务器详细信息并保存。
+3. 在浏览器菜单中，单击“连接到 Azure Database for PostgreSQL 服务器”
+4. 出现提示时，输入 AD 令牌。
+
 
 连接时的重要注意事项如下：
 
-* `user@tenant.onmicrosoft.com` 是你尝试要以其身份连接的 Azure AD 用户或组的名称
-* 在 Azure AD 用户/组名称的后面始终要追加服务器名称（例如 `@mydb`）
-* 请确保使用 Azure AD 用户或组名称的确切拼写方式
-* Azure AD 的用户名和组的名称区分大小写
-* 在作为组进行连接时，请只使用组名称（例如 `GroupName@mydb`）
-* 如果名称包含空格，请在每个空格前使用 `\` 对该空格进行转义
+* `user@tenant.onmicrosoft.com` 是 Azure AD 用户的名称 
+* 由于 Azure AD 用户和组名称区分大小写，因此请确保使用 Azure 用户的准确拼写方式。
+* 如果名称包含空格，请在每个空格前使用 `\` 以对空格进行转义。
+* 访问令牌的有效期介于 5 分钟到 60 分钟之间。 建议你就在启动 Azure Database for PostgreSQL 登录之前获取访问令牌。
 
+现在可以使用 Azure AD 身份验证向 Azure Database for PostgreSQL 服务器进行身份验证。
+
+## <a name="authenticate-with-azure-ad-as-a-group-member"></a>作为组成员使用 Azure AD 进行身份验证
+
+### <a name="step-1-create-azure-ad-groups-in-azure-database-for-postgresql"></a>步骤 1：在 Azure Database for PostgreSQL 中创建 Azure AD 组
+
+若要启用 Azure AD 组以访问数据库，请使用与用户相同的机制，只不过要指定组名称：
+
+示例：
+
+```
+CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
+```
+登录时，组成员将使用其个人访问令牌，但使用指定为用户名的组名称进行签名。
+
+### <a name="step-2-login-to-the-users-azure-subscription"></a>步骤 2：登录到用户的 Azure 订阅
+
+通过 Azure CLI 工具使用 Azure AD 进行身份验证。 对于 Azure Cloud Shell 不需要执行此步骤。 用户需要是 Azure AD 组的成员。
+
+```
+az login
+```
+
+### <a name="step-3-retrieve-azure-ad-access-token"></a>步骤 3：检索 Azure AD 访问令牌
+
+调用 Azure CLI 工具，获取步骤 2 中经过 Azure AD 身份验证的用户的访问令牌，以访问 Azure Database for PostgreSQL。
+
+示例（适用于公有云）：
+
+```azurecli-interactive
+az account get-access-token --resource https://ossrdbms-aad.database.windows.net
+```
+
+上述资源值必须完全按所示方式指定。 对于其他云，可以使用以下命令查看资源值：
+
+```azurecli-interactive
+az cloud show
+```
+
+对于 Azure CLI 版本 2.0.71 和更高版本，可以在以下更为方便的版本中为所有云指定命令：
+
+```azurecli-interactive
+az account get-access-token --resource-type oss-rdbms
+```
+
+身份验证成功后，Azure AD 将返回访问令牌：
+
+```json
+{
+  "accessToken": "TOKEN",
+  "expiresOn": "...",
+  "subscription": "...",
+  "tenant": "...",
+  "tokenType": "Bearer"
+}
+```
+
+### <a name="step-4-use-token-as-password-for-logging-in-with-psql-or-pgadmin-see-above-steps-for-user-connection"></a>步骤 4：使用令牌作为密码通过 psql 或 PgAdmin 登录（请参阅上述用户连接步骤）
+
+作为组成员进行连接时的重要注意事项：
+* groupname@mydb 是尝试以其身份连接的 Azure AD 组的名称
+* 在 Azure AD 用户/组名称的后面始终要追加服务器名称（例如 @mydb）
+* 请确保使用 Azure AD 组名称的准确拼写方式。
+* Azure AD 的用户名和组的名称区分大小写
+* 作为组进行连接时，请仅使用组名称（例如 GroupName@mydb），而不要使用组成员的别名。
+* 如果名称包含空格，请在每个空格前使用 \ 以对空格进行转义。
+* 访问令牌的有效期介于 5 分钟到 60 分钟之间。 建议你就在启动 Azure Database for PostgreSQL 登录之前获取访问令牌。
+  
 现在可以使用 Azure AD 身份验证向 PostgreSQL 服务器进行身份验证。
+
 
 ## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>在 Azure Database for PostgreSQL 中创建 Azure AD 用户
 
@@ -163,18 +237,6 @@ CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
 
 > [!NOTE]
 > 通过 Azure AD 对用户进行身份验证时，不会向用户授予访问 Azure Database for PostgreSQL 数据库中的对象的任何权限。 必须手动向用户授予所需的权限。
-
-## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>在 Azure Database for PostgreSQL 中创建 Azure AD 组
-
-若要启用 Azure AD 组以访问数据库，请使用与用户相同的机制，但请指定组名称：
-
-**示例：**
-
-```sql
-CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
-```
-
-登录时，组成员将使用其个人访问令牌，但使用指定为用户名的组名称进行签名。
 
 ## <a name="token-validation"></a>令牌验证
 

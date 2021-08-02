@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 33661eafee6b180819b18d9a9a980eff1e2aeceb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c322ebcbda0d123a9048e92971e20c6b7c7c5fee
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100371543"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064497"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure 应用程序配置最佳做法
 
@@ -92,8 +92,10 @@ configBuilder.AddAzureAppConfiguration(options => {
 
 ## <a name="client-applications-in-app-configuration"></a>应用配置中的客户端应用程序 
 
-对应用程序配置的请求过多可能会导致限制或超额费用。 应用程序利用当前可用的高速缓存和智能刷新来优化其发送的请求数。 通过避免直接连接到配置存储，可以在大量客户端应用程序中镜像此进程。 但是，客户端应用程序会连接到一个自定义服务，该服务与配置存储进行通信。 此代理解决方案可以确保客户端应用程序不会接近配置存储上的限制。 有关限制的详细信息，请参阅[常见问题解答](./faq.yml#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration)。  
+在客户端应用程序中使用应用配置时，请确保考虑两个主要因素。 第一，如果要在客户端应用程序中使用连接字符串，则存在向公众公开应用配置存储的访问密钥的风险。 第二，客户端应用程序的典型规模可能会导致向应用配置存储发出的请求过多，这可能会导致费用超额或导致限制。 有关限制的详细信息，请参阅[常见问题解答](./faq.yml#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration)。
+
+为了解决这些问题，建议在客户端应用程序和应用配置存储之间使用代理服务。 该代理服务可以安全地向应用配置存储进行身份验证，而不会有泄露身份验证信息的安全问题。 可以通过使用应用配置提供程序库之一来生成代理服务，这样就可以利用内置缓存和刷新功能来优化发送到应用配置的请求量。 若要详细了解如何使用应用配置提供程序，请参阅快速入门和教程中的文章。 该代理服务会将其缓存中的配置提供给客户端应用程序，这样你就可以避免此部分介绍的两个潜在问题。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [键和值](./concept-key-value.md)
+* [键和值](./concept-key-value.md) 

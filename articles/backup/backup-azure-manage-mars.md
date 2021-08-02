@@ -3,13 +3,13 @@ title: 管理和监视 MARS 代理备份
 description: 了解如何使用 Azure 备份服务管理和监视 Microsoft Azure 恢复服务 (MARS) 代理备份。
 ms.reviewer: srinathv
 ms.topic: conceptual
-ms.date: 10/07/2019
-ms.openlocfilehash: 25f0c41b535f9403d0a7027687cc5261cd437275
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 06/08/2021
+ms.openlocfilehash: c7a696c4059ebc7cc28a34a299060039ac1c0c62
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97368590"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902896"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 备份服务管理 Microsoft Azure 恢复服务 (MARS) 代理备份
 
@@ -94,9 +94,8 @@ ms.locfileid: "97368590"
   - 可以还原尚未过期的恢复点的备份数据。
   - 如果你决定恢复保护，可以使用“重新启用备份计划”选项。 然后，系统会根据新的保留策略保留数据。
 - **停止保护并删除备份数据**。
-  - 此选项将使所有将来的备份作业停止保护你的数据，并会删除所有恢复点。
-  - 你将收到一封有关删除备份数据的警报电子邮件，其中包含消息“已删除此备份项的数据。此数据将暂时保留 14 天，此后将永久删除”，以及建议的操作“在 14 天内重新保护备份项以恢复数据”。
-  - 若要恢复保护，请在执行删除操作后的 14 天内重新保护备份项。
+  - 此选项会停止将来所有备份作业对数据的保护。 如果未启用保管库安全功能，则会立即删除所有恢复点。<br>如果启用安全功能，删除会延迟 14 天，你将收到一封警报电子邮件，其中包含消息“已删除此备份项的数据。此数据将暂时保留 14 天，此后将永久删除”，以及建议的操作“在 14 天内重新保护备份项以恢复数据” 。<br>在此状态下，保留策略继续应用，备份数据仍可计费。 [详细了解](backup-azure-security-feature.md#enable-security-features)如何启用保管库安全功能。
+  - 若要恢复保护，请在执行删除操作后的 14 天内重新保护服务器。 在此期间，还可以将数据恢复到备用服务器。
 
 ### <a name="stop-protection-and-retain-backup-data"></a>停止保护并保留备份数据
 
@@ -196,15 +195,43 @@ ms.locfileid: "97368590"
 
 1. **添加路径排除**：为避免性能下降和可能的冲突，请从防病毒软件实时监视中排除以下路径：
     1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent` 和子文件夹
-    1. **Scratch 文件夹**：如果 scratch 文件夹不在标准位置，请将其添加到排除项。  [请参阅此处的步骤](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)，确定 scratch 文件夹的位置。
+    1. **Scratch 文件夹**：如果 scratch 文件夹不在标准位置，请将其添加到排除项。  [请参阅此处的步骤](backup-azure-file-folder-backup-faq.yml#how-to-check-if-scratch-folder-is-valid-and-accessible-)，确定 scratch 文件夹的位置。
 1. **添加二进制排除**：为避免备份和控制台活动减少，请从防病毒软件实时监视中排除以下二进制文件的进程：
     1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent\bin\cbengine.exe`
 
 >[!NOTE]
 >尽管排除这些路径足以应对大多数防病毒软件，但某些路径可能仍会继续干扰 MARS 代理操作。 如果出现意外故障，请暂时卸载防病毒软件，并进行监视以查看问题是否消失。 如果这样可以解决问题，请与防病毒软件供应商联系，以获取正确配置其产品方面的帮助。
 
+## <a name="monitor-using-backup-reports"></a>使用备份报告进行监视
+
+Azure 备份提供使用 Azure Monitor 日志和 Azure 工作簿的报告解决方案。 要开始使用，必须为保管库[配置备份报告](configure-reports.md)。 配置后，数据将开始流入工作区，并可以使用备份报告进行查询。
+
+要监控备份数据使用情况和每日流失，请执行以下步骤：
+
+1. 导航到保管库的“概述”窗格并单击“备份报告” 。
+
+1. 在“备份报告”边栏选项卡的“概述”部分下，选择配置的日志分析工作区 。 
+
+1. 将报告筛选器“备份解决方案”设置为“Azure 备份代理”以仅查看 MARS 代理备份 。 
+
+   根据需要设置“订阅名称”、“保管库位置”和“保管库名称”  。
+ 
+    ![设置报告筛选器备份解决方案。](./media/backup-azure-manage-mars/set-report-filter-backup-solution.png)
+
+1. 若要查看按计费实体的使用情况，请导航到“使用情况”选项卡。 
+
+   已计费的受保护实例总数。 并显示存储使用情况数据。 你还可以查看趋势信息。
+ 
+    ![按计费实体查看使用情况。](./media/backup-azure-manage-mars/view-usage-by-billed-entity.png)
+
+1. 要查看受保护服务器中每个卷的备份作业添加的平均备份数据，请导航到“作业”选项卡。 
+ 
+    ![查看平均备份数据。](./media/backup-azure-manage-mars/view-average-backup-data.png)
+
+详细了解[其他报告选项卡](configure-reports.md)并[通过电子邮件](backup-reports-email.md)接收这些报告。
+
 ## <a name="next-steps"></a>后续步骤
 
 - 有关支持的方案和限制的详细信息，请参阅 [MARS 代理的支持矩阵](./backup-support-matrix-mars-agent.md)。
 - 详细了解[按需备份策略保留行为](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior)。
-- 有关更多常见问题，请参阅 [MARS 代理常见问题解答](backup-azure-file-folder-backup-faq.md)。
+- 有关更多常见问题，请参阅 [MARS 代理常见问题解答](backup-azure-file-folder-backup-faq.yml)。

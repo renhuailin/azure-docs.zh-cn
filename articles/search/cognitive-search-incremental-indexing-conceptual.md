@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/09/2021
-ms.openlocfilehash: 2448609b1184c8e91947bffbd13cfea8e3fe5d52
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f3d9d9481821902246721c5c27ed99451f323ba3
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100390855"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111539827"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Azure 认知搜索中的增量扩充和缓存
 
@@ -40,6 +40,9 @@ ms.locfileid: "100390855"
 增量扩充将缓存添加到扩充管道。 索引器将缓存文档破解结果，以及针对每个文档运行每个技能后的输出。 更新技能集后，只会重新运行已更改的技能或下游技能。 更新的结果将写入缓存，文档将在搜索索引或知识存储中更新。
 
 在物理上，缓存存储在 Azure 存储帐户中的 Blob 容器内。 缓存还使用表存储来保存处理更新的内部记录。 搜索服务中的所有索引可以共享索引器缓存的同一存储帐户。 为每个索引器分配了它所用的容器的唯一不可变缓存标识符。
+
+> [!NOTE]
+> 索引器缓存需要常规用途存储帐户。 有关详细信息，请参阅[不同类型的存储帐户](/storage/common/storage-account-overview#types-of-storage-accounts)。
 
 ## <a name="cache-configuration"></a>缓存配置
 
@@ -115,6 +118,30 @@ PUT https://[search service].search.windows.net/datasources/[data source name]?a
 ### <a name="reset-documents"></a>重置文档
 
 [重置索引器](/rest/api/searchservice/reset-indexer)将导致重新处理搜索语料库中的所有文档。 在只需要重新处理几个文档的情况下，无法更新数据源时，请使用[重置文档（预览）](/rest/api/searchservice/preview-api/reset-documents)强制执行对特定文档的重新处理。 重置文档时，索引器将使该文档的缓存失效，并通过从数据源中读取它来重新处理文档。 有关详细信息，请参阅[运行或重置索引器、技能和文档](search-howto-run-reset-indexers.md)。
+
+若要重置特定文档，请求有效负载应包含从索引中读取的文档键列表。 根据调用 API 的方式，请求将追加、覆盖键列表或对其排队：
+
++ 结合不同的键多次调用 API 会将新键追加到文档键重置列表。 
+
++ 如果调用 API 并将 `overwrite` querystring 参数设置为 true，则会覆盖要使用请求有效负载重置的文档键的当前列表。
+
++ 调用 API 只会导致将文档键添加到索引器执行的工作队列中。 下一次调用索引器时，无论是按计划还是按需调用，它都将优先处理重置文档键，然后再处理数据源中的任何其他更改。
+
+以下示例演示重置文档请求：
+
+```http
+POST https://[search service name].search.windows.net/indexers/[indexer name]/resetdocs?api-version=2020-06-30-Preview
+Content-Type: application/json
+api-key: [admin key]
+
+{
+    "documentKeys" : [
+        "key1",
+        "key2",
+        "key3"
+    ]
+}
+```
 
 ## <a name="change-detection"></a>更改检测
 

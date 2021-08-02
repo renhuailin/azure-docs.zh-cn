@@ -3,12 +3,12 @@ title: 更改 Azure Service Fabric 群集设置
 description: 本文介绍可以自定义的结构设置和结构升级策略。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 65ae2337ac7dbe4370411a154463a6ddc37f83b2
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ef89cb50770eecb7b61798562ba6228f0ecd0071
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107255965"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479814"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -399,7 +399,7 @@ ms.locfileid: "107255965"
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|已启用 |Bool，默认值为 false |静态|ImageStoreService 的已启用标志。 默认值：false |
+|Enabled |Bool，默认值为 false |静态|ImageStoreService 的已启用标志。 默认值：false |
 |MinReplicaSetSize | Int，默认值为 3 |静态|ImageStoreService 的 MinReplicaSetSize。 |
 |PlacementConstraints | string，默认值为“” |静态| ImageStoreService 的 PlacementConstraints。 |
 |QuorumLossWaitDuration | 以秒为单位的时间，默认值为 MaxValue |静态| 指定以秒为单位的时间范围。 ImageStoreService 的 QuorumLossWaitDuration。 |
@@ -490,7 +490,7 @@ ms.locfileid: "107255965"
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|PropertyGroup |NodeCapacityCollectionMap |静态|不同指标的节点容量集合。 |
+|PropertyGroup |NodeCapacityCollectionMap | 动态 |不同指标的节点容量集合。 从 Service Fabric 8.1 开始是动态的，早期版本中为静态。 |
 
 ## <a name="nodedomainids"></a>NodeDomainIds
 
@@ -503,7 +503,7 @@ ms.locfileid: "107255965"
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|PropertyGroup |NodePropertyCollectionMap |静态|节点属性的字符串键值对的集合。 |
+|PropertyGroup |NodePropertyCollectionMap | 动态 |节点属性的字符串键值对的集合。 从 Service Fabric 8.1 开始是动态的，早期版本中为静态。 |
 
 ## <a name="paas"></a>Paas
 
@@ -698,7 +698,7 @@ ms.locfileid: "107255965"
 |SettingsX509StoreName| string，默认值为“MY”| 动态|结构用于保护配置的 X509 证书存储 |
 |UseClusterCertForIpcServerTlsSecurity|bool，默认值为 FALSE|静态|是否使用群集证书保护 IPC 服务器 TLS 传输单元 |
 |X509Folder|string，默认值为 /var/lib/waagent|静态|X509 证书和私钥所在的文件夹 |
-|TLS1_2_CipherList| string| 静态|对于 TLS1.2 及更低版本，如果设置为非空字符串，则替代受支持的密码列表。 请参阅“openssl-ciphers”文档来检索受支持的密码列表和列表格式。TLS1.2 的强密码列表的示例为：“ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256”。仅适用于 Linux。 |
+|TLS1_2_CipherList| 字符串| 静态|对于 TLS1.2 及更低版本，如果设置为非空字符串，则替代受支持的密码列表。 请参阅“openssl-ciphers”文档来检索受支持的密码列表和列表格式。TLS1.2 的强密码列表的示例为：“ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256”。仅适用于 Linux。 |
 
 ## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
 
@@ -723,7 +723,7 @@ ms.locfileid: "107255965"
 |CreateVolume|string，默认值为“Admin”|动态|创建卷 |
 |DeactivateNode |string，默认值为“Admin” |动态| 用于停用节点的安全性配置。 |
 |DeactivateNodesBatch |string，默认值为“Admin” |动态| 用于停用多个节点的安全性配置。 |
-|删除 |string，默认值为“Admin” |动态| 用于映像存储区客户端删除操作的安全性配置。 |
+|Delete |string，默认值为“Admin” |动态| 用于映像存储区客户端删除操作的安全性配置。 |
 |DeleteApplication |string，默认值为“Admin” |动态| 用于应用程序删除的安全性配置。 |
 |DeleteComposeDeployment|string，默认值为“Admin”| 动态|删除组合部署 |
 |DeleteGatewayResource|string，默认值为“Admin”| 动态|删除网关资源 |

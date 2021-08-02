@@ -1,18 +1,18 @@
 ---
 title: Azure VPN 网关常见问题解答
-description: VPN 网关常见问题。 Microsoft Azure 虚拟网络跨界连接、混合配置连接和 VPN 网关的常见问题。
+description: 了解 VPN 网关跨界连接、混合配置连接和虚拟网络网关的常见问题。 此常见问题解答包含有关点到站点、站点到站点和 VNet 到 VNet 配置设置的全面信息。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 06/07/2021
 ms.author: yushwang
-ms.openlocfilehash: 467c2b9fe8758db5c1da43a65c1bfde133df0823
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: MT
+ms.openlocfilehash: 56f10ec6178281deaa529e5c94f1cd4b565a381c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880095"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111746602"
 ---
 # <a name="vpn-gateway-faq"></a>VPN 网关常见问题
 
@@ -20,11 +20,15 @@ ms.locfileid: "98880095"
 
 ### <a name="can-i-connect-virtual-networks-in-different-azure-regions"></a>是否可以连接不同 Azure 区域中的虚拟网络？
 
-是的。 事实上，没有任何区域约束。 一个虚拟网络可以连接到同一区域中的其他虚拟网络，也可以连接到其他 Azure 区域中的其他虚拟网络。 
+是的。 事实上，没有任何区域约束。 一个虚拟网络可以连接到同一区域中的其他虚拟网络，也可以连接到其他 Azure 区域中的其他虚拟网络。
 
 ### <a name="can-i-connect-virtual-networks-in-different-subscriptions"></a>是否可以连接不同订阅中的虚拟网络？
 
 是的。
+
+### <a name="can-i-specify-private-dns-servers-in-my-vnet-when-configuring-vpn-gateway"></a>配置 VPN 网关时，我能否在 VNet 中指定专用的 DNS 服务器？
+
+如果你在创建 VNet 时指定了一个或多个 DNS 服务器，VPN 网关将使用你指定的 DNS 服务器。 如果指定 DNS 服务器，请验证 DNS 服务器是否可解析 Azure 所需的域名。
 
 ### <a name="can-i-connect-to-multiple-sites-from-a-single-virtual-network"></a>是否可以从一个虚拟网络连接到多个站点？
 
@@ -32,7 +36,7 @@ ms.locfileid: "98880095"
 
 ### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>将 VPN 网关设置为“主动-主动”是否需要额外费用？
 
-否。 
+否。
 
 ### <a name="what-are-my-cross-premises-connection-options"></a>我的跨界连接选项有哪些？
 
@@ -54,6 +58,12 @@ ms.locfileid: "98880095"
 
 可以将虚拟网络配置为同时使用站点到站点连接和点到站点连接，前提是使用基于路由的 VPN 类型为网关创建站点到站点连接。 在经典部署模型中，基于路由的 VPN 类型称为动态网关。
 
+## <a name="privacy"></a><a name="privacy"></a>隐私
+
+### <a name="does-the-vpn-service-store-customer-data"></a>VPN 服务是否存储客户数据？
+
+不是。
+
 ## <a name="virtual-network-gateways"></a><a name="gateways"></a>虚拟网关
 
 ### <a name="is-a-vpn-gateway-a-virtual-network-gateway"></a>VPN 网关是否为虚拟网络网关？
@@ -70,13 +80,16 @@ VPN 网关是一种虚拟网络网关。 VPN 网关通过公共连接在虚拟�
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>能否将基于策略的 VPN 网关更新为基于路由？
 
-否。 Azure Vnet 网关类型不能从基于策略更改为基于路由，反之亦然。 必须先删除该网关，然后再重新创建，此过程需时约 60 分钟。 不会保留网关的 IP 地址，也不会保留预共享密钥 (PSK)。
-1. 删除与要删除的网关相关联的任何连接。
-1. 删除网关：
-   - [Azure 门户](vpn-gateway-delete-vnet-gateway-portal.md)
-   - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-   - [Azure PowerShell - 经典](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [创建所需类型的新网关并完成 VPN 设置](./tutorial-site-to-site-portal.md#VNetGateway)。
+否。 不能将网关类型从基于策略更改为基于路由，也不能从基于路由更改为基于策略。 若要更改网关类型，必须删除再新创建网关。 此过程大约需要 60 分钟。 创建新网关时，不能保留原始网关的 IP 地址。
+
+1. 删除与该网关相关联的所有。
+
+1. 请按照下列文章之一删除网关：
+
+   * [Azure 门户](vpn-gateway-delete-vnet-gateway-portal.md)
+   * [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+   * [Azure PowerShell - 经典](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. 使用所需的网关类型创建新网关，然后完成 VPN 设置。 有关步骤，请参阅[站点到站点教程](./tutorial-site-to-site-portal.md#VNetGateway)。
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>是否需要“GatewaySubnet”？
 
@@ -90,19 +103,19 @@ VPN 网关是一种虚拟网络网关。 VPN 网关通过公共连接在虚拟�
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>是否可以先获得 VPN 网关 IP 地址，再创建网关？
 
-区域冗余和区域性网关 (的网关 Sku，其中 _AZ_ in name) 均依赖于 _标准 SKU_ Azure 公共 IP 资源。 Azure 标准 SKU 公共 IP 资源必须使用静态分配方法。 因此，在创建了要用于它的标准 SKU 公共 IP 资源后，就会获得 VPN 网关的公共 IP 地址。
+区域冗余和区域网关（名称中包含 AZ 的网关 SKU）都依赖于标准 SKU Azure 公共 IP 资源。  Azure 标准 SKU 公共 IP 资源必须使用静态分配方法。 因此，在创建了要用于 VPN 网关的标准 SKU 公共 IP 资源后，就会获得 VPN 网关的公共 IP 地址。
 
-对于不包含 _AZ_ in name) 的非区域冗余和非区域性网关 (，在创建 VPN 网关 IP 地址 _之前无法获取_ 该地址。 仅当你删除并重新创建 VPN 网关时，IP 地址才会更改。
+对于非区域冗余和非区域网关（名称中不含 AZ 的网关 SKU），无法在创建 VPN 网关之前获取 VPN 网关 IP 地址。  仅当先删除再重新创建 VPN 网关，IP 地址才会更改。
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>能否为 VPN 网关请求静态公共 IP 地址？
 
-如上所述，区域冗余和区域性网关 (包含 _AZ_ in name) 的网关 sku 依赖于 _标准 SKU_ Azure 公共 IP 资源。 Azure 标准 SKU 公共 IP 资源必须使用静态分配方法。
+综上所述，区域冗余和区域网关（名称中包含 AZ 的网关 SKU）都依赖于标准 SKU Azure 公共 IP 资源。  Azure 标准 SKU 公共 IP 资源必须使用静态分配方法。
 
-对于 _不包含_ _AZ_ in name)  (网关 sku 的非区域冗余和非区域性网关，仅支持动态 IP 地址分配。 但是，这并不意味着 IP 地址在分配到 VPN 网关后会更改。 VPN 网关 IP 地址只在删除并重新创建网关时更改。 当重设大小、重置或完成其他 VPN 网关内部维护和升级时，VPN 网关公共 IP 地址不会更改。
+对于非区域冗余和非区域网关（名称中没有 AZ 的网关 SKU），仅支持动态 IP 地址分配。  但这并不意味着 IP 地址在分配到 VPN 网关后会更改。 VPN 网关 IP 地址只在删除并重新创建网关时更改。 当重设大小、重置或完成其他 VPN 网关内部维护和升级时，VPN 网关公共 IP 地址不会更改。
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>VPN 隧道如何进行身份验证？
 
-Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 隧道时生成一个预共享密钥 (PSK)。 可以使用设置预共享密钥 PowerShell cmdlet 或 REST API 自动生成的 PSK 更改成你自己的 PSK。
+Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 隧道时生成一个预共享密钥 (PSK)。 可使用“设置预共享密钥”PowerShell cmdlet 或 REST API 将自动生成的 PSK 更改为你自己的 PSK。
 
 ### <a name="can-i-use-the-set-pre-shared-key-api-to-configure-my-policy-based-static-routing-gateway-vpn"></a>是否可以使用“设置预共享密钥 API”配置基于策略的（静态路由）网关 VPN？
 
@@ -121,15 +134,11 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 隧
 
 #### <a name="classic-deployment-model"></a>经典部署模型
 
-* Azure 门户：导航到“经典虚拟网络”>“VPN 连接”>“站点到站点 VPN 连接”>“本地站点名称”>“本地站点”>“客户端地址空间”。 
-
-### <a name="can-i-configure-force-tunneling"></a>是否可以配置强制隧道？
-
-是的。 请参阅[配置强制隧道](vpn-gateway-about-forced-tunneling.md)。
+* Azure 门户：导航到“经典虚拟网络”>“VPN 连接”>“站点到站点 VPN 连接”>“本地站点名称”>“本地站点”>“客户端地址空间”。
 
 ### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>可在 VPN 连接上使用 NAT-T 吗？
 
-可以，支持 NAT 遍历 (NAT-T)。 Azure VPN 网关不会对来自 IPsec 隧道的内部数据包执行类似于 NAT 的任何功能。  在此配置中，请确保本地设备启动 IPSec 隧道。
+可以，支持 NAT 遍历 (NAT-T)。 Azure VPN 网关将不在指向/来自 IPsec 隧道的内部数据包上执行任何类似 NAT 的功能。  在此配置中，请确保本地设备启动 IPSec 隧道。
 
 ### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>是否可以在 Azure 中设置自己的 VPN 服务器，并使用它连接到本地网络？
 
@@ -173,17 +182,13 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 隧
 
 其他软件 VPN 解决方案只要遵循行业标准 IPsec 实现，就会与我们的网关兼容。 有关配置和支持说明，请与该软件的供应商联系。
 
-## <a name="how-do-i-change-the-authentication-type-for-my-point-to-site-connections"></a>如何更改点到站点连接的身份验证类型？
-
-可以转到“VPN 网关”下的“点到站点配置”  部分并选中所需的单选按钮，以更改点到站点连接的身份验证方法。 当前选项为“Azure 证书”、“RADIUS 身份验证”和“Azure Active Directory”  。 请注意，更改之后，当前客户端可能无法连接  ，直到在客户端上下载并配置了新的配置文件为止。
-
-## <a name="point-to-site-using-native-azure-certificate-authentication"></a><a name="P2S"></a>点到站点 - 使用本机 Azure 证书身份验证
+## <a name="point-to-site---certificate-authentication"></a><a name="P2S"></a>点到站点 - 证书身份验证
 
 本部分适用于资源管理器部署模型。
 
 [!INCLUDE [P2S Azure cert](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="point-to-site-using-radius-authentication"></a><a name="P2SRADIUS"></a>点到站点 - 使用 RADIUS 身份验证
+## <a name="point-to-site---radius-authentication"></a><a name="P2SRADIUS"></a>点到站点 - RADIUS 身份验证
 
 本部分适用于资源管理器部署模型。
 
@@ -192,6 +197,10 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 隧
 ## <a name="vnet-to-vnet-and-multi-site-connections"></a><a name="V2VMulti"></a>VNet 到 VNet 和多站点连接
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq-include](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
+
+### <a name="how-do-i-enable-routing-between-my-site-to-site-vpn-connection-and-my-expressroute"></a>如何在站点到站点 VPN 连接和 ExpressRoute 之间启用路由？
+
+如果要在连接到 ExpressRoute 的分支与连接到站点到站点 VPN 连接的分支之间启用路由，则需要设置 [Azure 路由服务器](../route-server/expressroute-vpn-support.md)。
 
 ### <a name="can-i-use-azure-vpn-gateway-to-transit-traffic-between-my-on-premises-sites-or-to-another-virtual-network"></a>是否可以使用 Azure VPN 网关在我的本地站点之间传输流量或将流量传输到其他虚拟网络？
 
@@ -213,6 +222,10 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 隧
 
 是，但必须在两个通向同一位置的隧道上配置 BGP。
 
+### <a name="does-azure-vpn-gateway-honor-as-path-prepending-to-influence-routing-decisions-between-multiple-connections-to-my-on-premises-sites"></a>Azure VPN 网关是否遵循 AS Path 追加，以影响本地站点的多个连接之间的路由决策？
+
+是的，Azure VPN 网关将遵循 AS 路径追加，以帮助在启用 BGP 时做出路由决策。 在 BGP 路径选择中将首选较短的 AS 路径。
+
 ### <a name="can-i-use-point-to-site-vpns-with-my-virtual-network-with-multiple-vpn-tunnels"></a>是否可以将点到站点 VPN 用于具有多个 VPN 隧道的虚拟网络？
 
 是，可以将点到站点 (P2S) VPN 用于连接到多个本地站点的 VPN 网关和其他虚拟网络。
@@ -225,10 +238,13 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 隧
 
 [!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
-
-## <a name="bgp"></a><a name="bgp"></a>BGP
+## <a name="bgp-and-routing"></a><a name="bgp"></a>BGP 和路由
 
 [!INCLUDE [vpn-gateway-faq-bgp-include](../../includes/vpn-gateway-faq-bgp-include.md)]
+
+### <a name="can-i-configure-forced-tunneling"></a>是否可以配置强制隧道？
+
+是的。 请参阅 [配置强制隧道](vpn-gateway-about-forced-tunneling.md)。
 
 ## <a name="cross-premises-connectivity-and-vms"></a><a name="vms"></a>跨界连接和 VM
 
@@ -246,10 +262,9 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 隧
 
 [!INCLUDE [Troubleshoot VM connection](../../includes/vpn-gateway-connect-vm-troubleshoot-include.md)]
 
-
 ## <a name="virtual-network-faq"></a><a name="faq"></a>虚拟网络常见问题解答
 
-请在[虚拟网络常见问题](../virtual-network/virtual-networks-faq.md)中查看更多虚拟网络信息。
+可以在[虚拟网络常见问题](../virtual-network/virtual-networks-faq.md)中查看更多虚拟网络信息。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,36 +5,36 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 05/18/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fecf3f1a302a6734d92335bc15722df4d5288a56
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.openlocfilehash: 1e0aaac1c52a2def624f8bc8736219685458ad42
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100362414"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070276"
 ---
 # <a name="conditional-access-conditions"></a>条件访问：Conditions
 
 在条件访问策略中，管理员可以利用风险、设备平台或位置等条件的信号来增强其策略决策。 
 
-[ ![定义条件访问策略并指定条件](./media/concept-conditional-access-conditions/conditional-access-conditions.png)](./media/concept-conditional-access-conditions/conditional-access-conditions.png#lightbox)
+[![定义条件访问策略并指定条件](./media/concept-conditional-access-conditions/conditional-access-conditions.png)](./media/concept-conditional-access-conditions/conditional-access-conditions.png#lightbox)
 
 可以结合多个条件来创建精细且具体的条件访问策略。
 
-例如，在访问敏感应用程序时，管理员可能会将登录风险信息从标识保护和位置考虑到其他控件（如多重身份验证）。
+例如，在访问敏感应用程序时，管理员除了考虑其他控制措施（例如多重身份验证）以外，还可以在其访问决策中考虑到标识保护和各个位置的登录风险信息。
 
 ## <a name="sign-in-risk"></a>登录风险
 
-对于有权访问 [Identity Protection](../identity-protection/overview-identity-protection.md)的客户，可将登录风险评估为条件访问策略的一部分。 登录风险表示给定的身份验证请求未由标识所有者授权的概率。 有关登录风险的详细信息，请参阅文章： [风险](../identity-protection/concept-identity-protection-risks.md#sign-in-risk) 和 [如何：配置和启用风险策略](../identity-protection/howto-identity-protection-configure-risk-policies.md)。
+对于有权访问[标识保护](../identity-protection/overview-identity-protection.md)的客户，可以将登录风险作为条件访问策略的一部分进行评估。 登录风险表示给定身份验证请求未经标识所有者授权的概率。 有关登录风险的详细信息，请参阅以下文章：[什么是风险](../identity-protection/concept-identity-protection-risks.md#sign-in-risk)和[操作说明：配置和启用风险策略](../identity-protection/howto-identity-protection-configure-risk-policies.md)。
 
 ## <a name="user-risk"></a>用户风险 
 
-对于有权访问 [Identity Protection](../identity-protection/overview-identity-protection.md)的客户，可将用户风险评估为条件访问策略的一部分。 用户风险表示给定标识或帐户被泄露的概率。 有关用户风险的详细信息，请参阅文章： [风险](../identity-protection/concept-identity-protection-risks.md#user-risk) 和 [如何：配置和启用风险策略](../identity-protection/howto-identity-protection-configure-risk-policies.md)。
+对于有权访问[标识保护](../identity-protection/overview-identity-protection.md)的客户，可以将用户风险作为条件访问策略的一部分进行评估。 用户风险表示给定标识或帐户遭入侵的概率。 有关用户风险的详细信息，请参阅以下文章：[什么是风险](../identity-protection/concept-identity-protection-risks.md#user-risk)和[操作说明：配置和启用风险策略](../identity-protection/howto-identity-protection-configure-risk-policies.md)。
 
 ## <a name="device-platforms"></a>设备平台
 
@@ -82,9 +82,9 @@ Azure AD 条件访问支持以下设备平台：
       -  此选项包括 Office 桌面和手机应用程序等应用程序。
 - 旧式身份验证客户端
    - Exchange ActiveSync 客户端
-      - 这包括所有使用 Exchange ActiveSync (EAS) 协议的情况。
+      - 此选择包括所有使用 Exchange ActiveSync (EAS) 协议的情况。
       - 当策略阻止使用 Exchange ActiveSync 时，受影响的用户将收到一封隔离电子邮件。 此电子邮件将提供受阻原因，并提供修正说明（如果可以修正）。
-      - 管理员可以通过条件访问 MS Graph API 将策略仅应用到受支持的平台（例如 iOS、Android 和 Windows）。
+      - 管理员可以通过条件访问 Microsoft Graph API 将策略仅应用到受支持的平台（例如 iOS、Android 和 Windows）。
    - 其他客户端
       - 此选项包括使用那些不支持新式身份验证的基本/旧式身份验证协议的客户端。
          - 经身份验证的 SMTP - 由 POP 和 IMAP 客户端用来发送电子邮件。
@@ -120,7 +120,7 @@ Azure AD 条件访问支持以下设备平台：
 | macOS | Chrome、Safari |
 
 > [!NOTE]
-> Edge 85+ 要求用户登录到浏览器，以正确传递设备标识。 否则，其行为类似于没有帐户扩展的 Chrome。 在混合 Azure AD 联接方案中，此登录可能不会自动发生。 
+> Edge 85+ 要求用户登录到浏览器，以正确传递设备标识。 否则，其行为类似于没有帐户扩展的 Chrome。 在混合 Azure AD 联接方案中，此登录可能不会自动发生。 Safari 支持基于设备的条件访问，但无法满足“需要经过批准的客户端应用”或“需要应用保护策略”条件 。 Microsoft Edge 之类的托管浏览器会满足经过批准的客户端应用和应用保护策略要求。
 
 #### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>为何我在浏览器中看到证书提示
 
@@ -128,7 +128,7 @@ Azure AD 条件访问支持以下设备平台：
 
 #### <a name="chrome-support"></a>Chrome 支持
 
-对于 **windows 10 创意者更新 (版本 1703)** 或更高版本中的 Chrome 支持，请安装 [Windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 当条件访问策略需要特定于设备的详细信息时，此扩展是必需的。
+如需在 Windows 10 创意者更新（版本 1703）或更高版本中获得 Chrome 支持，请安装 [Windows 10 Accounts 扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。 当条件访问策略需要特定于设备的详细信息时，此扩展是必需的。
 
 若要自动将此扩展部署到 Chrome 浏览器，请创建以下注册表项：
 
@@ -157,7 +157,7 @@ Azure AD 条件访问支持以下设备平台：
 | Dynamics CRM 应用 | Dynamics CRM | Windows 10、Windows 8.1、iOS 和 Android |
 | “邮件/日历/联系人”应用、Outlook 2016、Outlook 2013（使用新式身份验证）| Exchange Online | Windows 10 |
 | 用于应用的 MFA 和位置策略。 不支持基于设备的策略。| 任何“我的应用”应用服务 | Android 和 iOS |
-| Microsoft Teams 服务 - 控制支持 Microsoft Teams 及其所有客户端应用（Windows 桌面、iOS、Android、WP 和 Web 客户端）的所有服务 | Microsoft Teams | Windows 10、Windows 8.1、Windows 7、iOS、Android 和 macOS |
+| Microsoft Teams 服务 - 此客户端应用控制所有支持 Microsoft Teams 及其全部客户端应用（Windows 桌面、iOS、Android、WP 和 Web 客户端）的服务 | Microsoft Teams | Windows 10、Windows 8.1、Windows 7、iOS、Android 和 macOS |
 | Office 2016 应用、Office 2013（采用新式身份验证）、[OneDrive 同步客户端](/onedrive/enable-conditional-access) | SharePoint | Windows 8.1、Windows 7 |
 | Office 2016 应用、通用 Office 应用、Office 2013（采用新式身份验证）、[OneDrive 同步客户端](/onedrive/enable-conditional-access) | SharePoint Online | Windows 10 |
 | Office 2016（仅限 Word、Excel、PowerPoint、OneNote）。 | SharePoint | macOS |
@@ -174,11 +174,11 @@ Azure AD 条件访问支持以下设备平台：
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync 客户端
 
-- 组织在将策略分配给用户或组时，只能选择 Exchange ActiveSync 客户端。 选择“所有用户”、“所有来宾和外部用户”或“目录角色”会导致所有用户遭到阻止。  
+- 组织在将策略分配给用户或组时，只能选择 Exchange ActiveSync 客户端。 选择“所有用户”、“所有来宾和外部用户”或“目录角色”会使所有用户成为策略的使用者。
 - 创建分配给 Exchange ActiveSync 客户端的策略时，Exchange Online 应为唯一分配给该策略的云应用程序。 
 - 组织可以使用“设备平台”条件将此策略的范围缩小为特定的平台。
 
-如果分配给策略的访问控制使用“需要已批准的客户端应用”，则会将用户定向到相应的位置让他们安装并使用 Outlook 移动客户端。 如果需要 **多重身份验证**，受影响的用户将被阻止，因为基本身份验证不支持多重身份验证。
+如果分配给策略的访问控制使用“需要已批准的客户端应用”，则会将用户定向到相应的位置让他们安装并使用 Outlook 移动客户端。 如果需要“多重身份验证”、“使用条款”或“自定义控件”，则受影响的用户会被阻止，因为基本身份验证不支持这些控制。
 
 有关详细信息，请参阅以下文章：
 
@@ -193,8 +193,15 @@ Azure AD 条件访问支持以下设备平台：
 
 设备状态条件可用于在组织的条件访问策略中，排除已加入混合 Azure AD 的设备和/或标记为符合 Microsoft Intune 合规策略的设备。
 
-例如，所有访问 *Microsoft Azure 管理* 云应用程序的 *用户*（**包括****设备混合 Azure AD 加入设备**，并将设备 **标记为合规**，并将设备标记为合规，并 **阻止***访问控制*。 
-   - 此示例将创建一个策略，该策略仅允许从已加入混合 Azure AD 的设备或标记为合规的设备访问 Microsoft Azure 管理。
+例如，访问“Microsoft Azure 管理”云应用的“所有用户”，包括“所有设备状态”，排除“已加入混合 Azure AD 的设备”和“标记为合规的设备”，“访问控制”为“阻止”   。 
+   - 此示例将创建一个仅允许从已加入混合 Azure AD 的设备或标记为合规的设备访问 Microsoft Azure 管理的策略。
+
+> [!IMPORTANT]
+> 设备状态和设备筛选器不能在条件访问策略中一起使用。 设备筛选器提供更精细的目标控制，包括支持通过 `trustType` 和 `isCompliant` 属性将设备状态信息指定为目标。
+
+## <a name="filters-for-devices-preview"></a>适用于设备的筛选器（预览版）
+
+条件访问中新增了一个可选条件，称为“适用于设备的筛选器”。 在将“适用于设备的筛选器”配置为条件时，组织可以使用针对设备属性的规则表达式来根据筛选器选择包括或排除设备。 可以使用规则生成器或规则语法来创作“适用于设备的筛选器”的规则表达式。 此体验类似于用于组的动态成员身份规则的体验。 有关详细信息，请参阅[条件访问：适用于设备的筛选器（预览版）](concept-condition-filters-for-devices.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

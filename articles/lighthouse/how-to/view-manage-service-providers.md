@@ -1,14 +1,14 @@
 ---
 title: 查看和管理服务提供商
-description: 客户可以使用 Azure 门户中的“服务提供商”页面来查看有关服务提供商、服务提供商产品/服务和委派资源的信息。
+description: 客户可以在 Azure 门户中查看有关 Azure Lighthouse 服务提供商、服务提供商产品/服务和委派资源的信息。
 ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: f6ee5fb154d75ff715acf99c5184cd1652ccdb80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 23fe84132b3c2dbee584f452b14503adfdb6db7d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100555574"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080914"
 ---
 # <a name="view-and-manage-service-providers"></a>查看和管理服务提供商
 

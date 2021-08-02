@@ -3,12 +3,12 @@ title: 使用 Windows 安全性保护 Windows 上运行的群集
 description: 了解如何使用 Windows 安全性在 Windows 上运行的独立群集中配置节点到节点安全性和客户端到节点安全性。
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: a34c7084a9faaf0d676d4f6c68da53b2bc84f01b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b0de9799e09b0f5812c85380191bb24b0a12c7a
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574605"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110781660"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>使用 Windows 安全性保护 Windows 上的独立群集
 为了防止有人未经授权访问某个 Service Fabric 群集，必须保护该群集。 当群集运行生产工作负荷时，安全性就尤为重要。 本文介绍如何在 *ClusterConfig.JSON* 文件中使用 Windows 安全性配置节点到节点和客户端到节点的安全性。  该过程对应于 [Create a standalone cluster running on Windows](service-fabric-cluster-creation-for-windows-server.md)（创建在 Windows 上运行的独立群集）中的安全性配置步骤。 有关 Service Fabric 如何使用 Windows 安全性的详细信息，请参阅[群集安全方案](service-fabric-cluster-security.md)。
@@ -43,14 +43,11 @@ gMSA 是首选安全模型。 随 [Microsoft.Azure.ServiceFabric.WindowsServer\<
 | ClusterCredentialType |设置为“Windows”可为节点到节点的通信启用 Windows 安全性。  | 
 | ServerCredentialType |设置为“Windows”可为客户端到节点的通信启用 Windows 安全性。 |
 | WindowsIdentities |包含群集和客户端标识。 |
-| ClustergMSAIdentity |配置节点到节点安全性。 组托管服务帐户。 |
+| ClustergMSAIdentity |配置节点到节点安全性。 组托管服务帐户。 必须采用“mysfgmsa@mydomain”格式。 |
 | ClusterSPN |gMSA 帐户的已注册 SPN|
 | ClientIdentities |配置客户端到节点安全性。 客户端用户帐户的数组。 |
 | 标识 |为客户端标识添加域用户 domain\username。 |
 | IsAdmin |设置为 true 可指定域用户具有管理员客户端访问权限，设置为 false 可指定域用户具有用户客户端访问权限。 |
-
-> [!NOTE]
-> ClustergMSAIdentity 值的格式必须为“mysfgmsa@mydomain”。
 
 若需要在 gMSA 下运行 Service Fabric，可通过设置“ClustergMSAIdentity”来配置[节点到节点安全性](service-fabric-cluster-security.md#node-to-node-security)。 若要在节点之间建立信任关系，这些节点必须能够相互识别。 可通过两种方式完成此操作：指定包含集群中所有节点的组托管服务帐户，或者指定包含集群中所有节点的域计算机组。 强烈建议使用[组托管服务帐户 (gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) 方法，尤其针对拥有 10 个以上节点的较大群集或可能会增大或收缩的群集。  
 此方法不需要创建群集管理员对其有访问权限、可在其中添加和删除成员的域组。 这些帐户对于自动密码管理也同样有用。 有关详细信息，请参阅[组托管服务帐户入门](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11))。  

@@ -1,24 +1,25 @@
 ---
 title: Azure SAP HANA（大型实例）的支持方案 | Microsoft Docs
-description: Azure SAP HANA（大型实例）的支持方案及其体系结构详细信息
+description: 了解 Azure SAP HANA（大型实例）的支持方案及其体系结构详细信息。
 services: virtual-machines-linux
 documentationcenter: ''
-author: saghorpa
+author: Ajayan1008
 manager: juergent
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/26/2019
-ms.author: saghorpa
+ms.date: 05/18/2021
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a49c55da0bb8018b3faa7c6f70b02e79d9478603
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7dfe81348b300f6b1b407898684316f668791d32
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101666683"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577971"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA 大型实例的支持方案
 本文介绍了 HANA 大型实例 (HLI) 的支持方案和体系结构详细信息。
@@ -28,24 +29,24 @@ ms.locfileid: "101666683"
 设置 HLI 单元之前，请先验证 SAP 或服务实现合作伙伴的设计。
 
 ## <a name="terms-and-definitions"></a>术语和定义
-让我们来理解本文中使用的术语和定义：
+我们来一起了解本文中使用的术语和定义：
 
-- **SID**：HANA 系统的系统标识符
-- **HLI**：Hana 大型实例
-- **DR**：灾难恢复
-- **常规 DR**：一种系统设置，具有仅用于 DR 目的的专用资源
-- **多用途 DR**：配置为使用非生产环境的 DR 站点系统，以及为 DR 事件配置的生产实例 
-- **单个 SID**：安装了一个实例的系统
-- **多 SID**：配置了多个实例的系统；也称为 MCOS 环境
-- **HSR**：SAP HANA 系统复制
+- **SID**：HANA 系统的系统标识符。
+- **HLI**：Hana 大型实例。
+- **DR**：灾难恢复 (DR)。
+- **常规 DR**：一种系统设置，具有仅用于 DR 目的的专用资源。
+- **多用途 DR**：配置为使用非生产环境的 DR 站点系统，以及为 DR 事件配置的生产实例。 
+- **单个 SID**：安装了一个实例的系统。
+- **多 SID**：配置了多个实例的系统；也称为 MCOS 环境。
+- **HSR**：SAP HANA 系统复制。
 
 ## <a name="overview"></a>概述
 HANA 大型实例支持多种体系结构，可帮助满足你的业务需求。 以下部分介绍体系结构方案及其配置详细信息。 
 
-派生体系结构设计仅基于对基础结构的考虑，必须咨询 SAP 或实现合作伙伴才能进行 HANA 部署。 如果你的方案未在本文中列出，请联系 Microsoft 帐户团队查看体系结构并为你派生解决方案。
+派生的体系结构设计完全是从基础结构的角度出发的。 请咨询 SAP 或实现合作伙伴，了解 HANA 部署。 如果你的方案未在本文中列出，请联系 Microsoft 帐户团队查看体系结构并为你派生解决方案。
 
 > [!NOTE]
-> 这些体系结构完全符合定制的数据集成 (TDI) 设计和 SAP 支持。
+> 这些体系结构完全符合定制的数据集成 (TDI) 设计，并受 SAP 支持。
 
 本文介绍了每个受支持的体系结构中的两个组件的详细信息：
 
@@ -57,7 +58,7 @@ HANA 大型实例支持多种体系结构，可帮助满足你的业务需求。
 每个预配的服务器都预配置了一组以太网接口。 每个 HLI 单元配置的以太网接口分为四种类型：
 
 - **A**：用于或由客户端访问。
-- **B**：用于节点到节点通信。 所有服务器上都配置此接口（与请求的拓扑无关），但仅用于横向扩展场景。
+- **B**：用于节点到节点通信。 所有服务器上都配置了此接口（不论所请求的拓扑为何）。 然而，它仅用于横向扩展方案。
 - **C**：用于节点到存储连接。
 - **D**：用于 STONITH 设置的节点到 iSCSI 设备连接。 仅当请求 HSR 设置时才配置此接口。  
 
@@ -72,16 +73,16 @@ HANA 大型实例支持多种体系结构，可帮助满足你的业务需求。
 | C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
 | D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | STONITH |
 
-基于 HLI 单元上配置的拓扑来选择接口。 例如，接口“B”设置为用于节点到节点的通信，这在配置横向扩展拓扑时非常有用。 此接口不用于单节点、纵向扩展配置。 有关接口使用情况的详细信息，请查看所需的方案（本文档的后文）。 
+基于 HLI 单元上配置的拓扑来选择接口。 例如，接口“B”设置为用于节点到节点的通信，这在配置横向扩展拓扑时非常有用。 此接口不用于单节点纵向扩展配置。 有关接口使用情况的详细信息，请查看所需的方案（本文档的后文）。 
 
-如果需要，可自行定义其他 NIC 卡。 但是，无法更改现有 NIC 的配置。
+如果需要，可自行定义更多 NIC 卡。 但是，无法更改现有 NIC 的配置。
 
 >[!NOTE]
 >你可能会发现其他接口是物理接口或捆绑。 对于用例，你应仅考虑前面提到的接口。 其他的都可以忽略。
 
 分配有两个 IP 地址的单元的分布应如下所示：
 
-- 以太网“A”应具有一个位于提交给 Microsoft 的服务器 IP 池地址范围内的已分配 IP 地址。 此 IP 地址应在 OS 的 /etc/hosts 目录中进行维护。
+- 以太网“A”应具有一个位于提交给 Microsoft 的服务器 IP 池地址范围内的已分配 IP 地址。 此 IP 地址应在操作系统 (OS) 的 /etc/hosts 目录中进行维护。
 
 - 以太网“C”应具有一个用于与 NFS 通信的已分配 IP 地址。 无需在 etc/hosts 目录中维护此地址以允许租户内的实例间的流量 。
 
@@ -97,7 +98,7 @@ HANA 大型实例支持多种体系结构，可帮助满足你的业务需求。
 
 
 ### <a name="storage"></a>存储
-根据请求的拓扑结构预配置存储。 根据服务器的数量、SKU 数量和配置的拓扑，卷大小和装入点会有所不同。 有关详细信息，请查看所需的方案（本文档的后文）。 如果需要更多存储空间，可以按 1-TB 的增量购买。
+根据请求的拓扑结构预配置存储。 根据服务器和 SKU 的数量和配置的拓扑，卷大小和装入点会有所不同。 有关详细信息，请查看所需的方案（本文档的后文）。 如果需要更多存储空间，可以按 1-TB 的增量购买。
 
 >[!NOTE]
 >装入点 /usr/sap/\<SID> 是 /hana/shared 装入点的符号链接。
@@ -440,7 +441,7 @@ HANA 大型实例支持多种体系结构，可帮助满足你的业务需求。
 
 ## <a name="scale-out-with-standby"></a>使用备用节点的横向扩展
  
-此拓扑支持横向扩展配置中的多个节点。 其中一个节点具有主角色，一个或多个节点具有辅助角色，一个或多个节点作为备用节点。 但是，在任何单个时间点，只能有一个主节点。
+此拓扑支持横向扩展配置中的多个节点。 其中一个节点具有主角色，一个或多个节点具有辅助角色，一个或多个节点作为备用节点。 但是，在任何时间点，只能有一个主节点。
 
 
 ### <a name="architecture-diagram"></a>体系结构关系图  
@@ -475,7 +476,7 @@ HANA 大型实例支持多种体系结构，可帮助满足你的业务需求。
 
 ## <a name="scale-out-without-standby"></a>不使用备用节点的横向扩展
  
-此拓扑支持横向扩展配置中的多个节点。 其中一个节点具有主角色，一个或多个节点具有辅助角色。 但是，在任何单个时间点，只能有一个主节点。
+此拓扑支持横向扩展配置中的多个节点。 其中一个节点具有主角色，一个或多个节点具有辅助角色。 但是，在任何时间点，只能有一个主节点。
 
 
 ### <a name="architecture-diagram"></a>体系结构关系图  
@@ -793,5 +794,8 @@ HANA 大型实例支持多种体系结构，可帮助满足你的业务需求。
 
 
 ## <a name="next-steps"></a>后续步骤
+
+学习内容：
+
 - HANA 大型实例的[基础结构和连接](./hana-overview-infrastructure-connectivity.md)
 - HANA 大型实例的[高可用性和灾难恢复](./hana-overview-high-availability-disaster-recovery.md)

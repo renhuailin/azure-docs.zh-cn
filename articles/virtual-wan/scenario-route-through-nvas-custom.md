@@ -1,20 +1,20 @@
 ---
 title: 使用自定义设置通过 NVA 路由流量
 titleSuffix: Azure Virtual WAN
-description: 本方案帮助你针对发往 Internet 的流量使用不同的 NVA，以通过 NVA 路由流量。
+description: 了解虚拟 WAN 路由场景，以通过网络虚拟设备 (NVA) 来路由流量。 在此场景中，你将针对发往 Internet 的流量和自定义设置使用不同的 NVA，以通过 NVA 路由流量。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6291964aff7c215df7f738ab103947dcb9b1b1d4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4eba226fbbe3ef6d9791f2f098a24fdf217debaa
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036843"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575367"
 ---
 # <a name="scenario-route-traffic-through-nvas-by-using-custom-settings"></a>方案：使用自定义设置通过 NVA 路由流量
 

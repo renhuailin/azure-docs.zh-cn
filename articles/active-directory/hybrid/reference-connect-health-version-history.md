@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 44ef48fe75d7070d3f471b06d548c06dc5d972b6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89279408"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110479780"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health：版本发布历史记录
 Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特性和功能。 本文列出已发布的版本和功能。  
@@ -32,12 +32,31 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 
 适用于同步的 Azure AD Connect Health 与 Azure AD Connect 安装相集成。 详细了解 [Azure AD Connect 版本历史记录](./reference-connect-version-history.md)有关功能反馈，请在 [Connect Health User Voice 频道](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)进行投票
 
+## <a name="may-2021"></a>2021 年 5 月
+**代理更新**
+- 适用于 AD FS 的 Azure AD Connect Health 代理（版本 3.1.99.0）
+  - 针对 AD FS 应用程序活动报表中唯一用户计数值低进行修复
+  - 针对使用空或默认 GUID CorrelationId 登录进行修复
+
+## <a name="march-2021"></a>2021 年 3 月
+**代理更新**
+
+- 适用于 AD FS 的 Azure AD Connect Health 代理（版本 3.1.95.0）
+
+  - 修复为在登录事件期间将 NT4 格式的用户名解析为 UPN。
+  - 修复为使用专用错误代码来标识不正确的应用程序标识符方案。
+  - 更改为针对 OAuth 客户端标识符添加新属性。
+  - 修复为在 Azure AD 登录报表的“协议”和“身份验证类型”字段中针对某些登录方案显示正确的值 。
+  - 修复为按请求顺序在 Azure AD 登录报表的 IP 链字段中显示 IP 地址。
+  - 更改为引入新字段，以区分是否在登录期间请求了辅助身份验证。
+  - 针对要在 Azure AD 登录报表中显示的 AD FS 应用程序标识符属性进行修复。
+
 ## <a name="april-2020"></a>2020 年 4 月
 **代理更新**
 
 - 适用于 AD FS 的 Azure AD Connect Health 代理（版本 3.1.77.0）
 
-   1.   修复了“AD FS 服务的服务主体名称 (SPN) 无效”警报的 Bug，因为该警报报告错误。
+   - 修复了“AD FS 服务的服务主体名称 (SPN) 无效”警报的 Bug，因为该警报报告错误。
 
 
 ## <a name="july-2019"></a>2019 年 7 月

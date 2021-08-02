@@ -2,25 +2,22 @@
 title: 使用主页领域发现策略配置登录自动加速
 description: 了解如何为联合用户配置关于 Azure Active Directory 身份验证的主页领域发现策略，包括自动加速和域提示。
 services: active-directory
-documentationcenter: ''
-author: kenwith
-manager: daveba
+author: mtillman
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.author: kenwith
+ms.author: mtillman
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ed101282a69120162d6e3b526693c0a83df45b6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2729ec3ca445fa53503a1968e1fee639bd990f6b
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104607103"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112081490"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为
 
@@ -42,16 +39,16 @@ ms.locfileid: "104607103"
 
 ## <a name="auto-acceleration"></a>自动加速
 
-某些组织在其 Azure Active Directory 租户中配置域，以便与其他 IdP（例如 AD FS）联合进行用户身份验证。  
+某些组织在其 Azure Active Directory 租户中配置域，以便与其他 IdP（例如 AD FS）联合进行用户身份验证。
 
 当用户登录到应用程序时，首先会看到 Azure AD 登录页。 键入 UPN 后，如果用户位于联合域中，则会转到为该域提供服务的 IdP 的登录页。 某些情况下，当用户尝试登录特定应用程序时，管理员可能希望将其定向到登录页。
 
-因此，用户可以跳过 Azure Active Directory 初始页。 这个过程称为“登录自动加速”。
+因此，用户可以跳过 Azure Active Directory 初始页。 此过程称为“登录自动加速”。
 
 在租户被联合到另一个 IdP 以进行登录的情况下，自动加速可进一步简化用户登录。  可以为单个应用程序配置自动加速。
 
->[!NOTE]
->如果你为应用程序配置自动加速，那么用户就不能使用托管凭据（如 FIDO），来宾用户也不能登录。 如果将用户直接转到联合 IdP 进行身份验证，他们将无法返回到 Azure Active Directory 登录页。 来宾用户可能需要进入其他租户或外部 IdP（如 Microsoft 帐户），而不能登录该应用程序，因为他们会跳过主领域发现步骤。  
+> [!NOTE]
+> 如果你为应用程序配置自动加速，那么用户就不能使用托管凭据（如 FIDO），来宾用户也不能登录。 如果将用户直接转到联合 IdP 进行身份验证，他们将无法返回到 Azure Active Directory 登录页。 来宾用户可能需要进入其他租户或外部 IdP（如 Microsoft 帐户），而不能登录该应用程序，因为他们会跳过主领域发现步骤。
 
 有三种方法可以控制自动加速到联合 IdP：
 
@@ -61,7 +58,7 @@ ms.locfileid: "104607103"
 
 ### <a name="domain-hints"></a>域提示
 
-域提示是应用程序的身份验证请求中包含的指令。 它们可用于加速将用户转到其联合的 IdP 登录页。 或者可由多租户应用程序用来帮助用户更快地直接转到其租户的品牌 Azure AD 登录页。  
+域提示是应用程序的身份验证请求中包含的指令。 它们可用于加速将用户转到其联合的 IdP 登录页。 或者可由多租户应用程序用来帮助用户更快地直接转到其租户的品牌 Azure AD 登录页。
 
 例如，应用程序“largeapp.com”可使其客户通过 URL“contoso.largeapp.com”访问应用程序。 该应用可能在身份验证请求中包含了 Contoso.com 的域提示。
 
@@ -82,16 +79,16 @@ ms.locfileid: "104607103"
 
 有关使用 Azure Active Directory 支持的域提示实现自动加速的详细信息，请参阅[企业移动性 + 安全性博客](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/11/using-azure-ad-to-land-users-on-their-custom-login-page-from-within-your-app/)。
 
->[!NOTE]
->如果域提示包含在身份验证请求中并且[应生效](#home-realm-discovery-policy-to-prevent-auto-acceleration)，那么它会替代在 HRD 策略中为应用程序设置的自动加速。
+> [!NOTE]
+> 如果域提示包含在身份验证请求中并且[应生效](#home-realm-discovery-policy-to-prevent-auto-acceleration)，那么它会替代在 HRD 策略中为应用程序设置的自动加速。
 
 ### <a name="home-realm-discovery-policy-for-auto-acceleration"></a>自动加速的主领域发现策略
 
-某些应用程序不提供配置其发出的身份验证请求的方法。 在此情况下，域提示不能用来控制自动加速。 自动加速可以通过主页领域发现策略进行配置，以实现相同的行为。  
+某些应用程序不提供配置其发出的身份验证请求的方法。 在此情况下，域提示不能用来控制自动加速。 自动加速可以通过主页领域发现策略进行配置，以实现相同的行为。
 
 ### <a name="home-realm-discovery-policy-to-prevent-auto-acceleration"></a>用于阻止自动加速的主页领域发现策略
 
-一些 Microsoft 和 SaaS 应用程序自动包含 domain_hint（例如，`https://outlook.com/contoso.com` 会生成追加了 `&domain_hint=contoso.com` 的登录请求），这可能会中断 FIDO 等托管凭据的推出。  在托管凭据的推出期间，可以使用[主页领域发现策略](/graph/api/resources/homeRealmDiscoveryPolicy)来忽略来自特定应用或特定域的域提示。  
+一些 Microsoft 和 SaaS 应用程序自动包含 domain_hint（例如，`https://outlook.com/contoso.com` 会生成追加了 `&domain_hint=contoso.com` 的登录请求），这可能会中断 FIDO 等托管凭据的推出。  在托管凭据的推出期间，可以使用[主页领域发现策略](/graph/api/resources/homeRealmDiscoveryPolicy)来忽略来自特定应用或特定域的域提示。
 
 ## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>为旧的应用程序启用对联合用户进行直接 ROPC 身份验证
 
@@ -112,21 +109,21 @@ ms.locfileid: "104607103"
 
 只有在将策略附加到服务主体后，策略才会对特定的应用程序生效。
 
-服务主体中每次只有一个 HRD 策略处于活动状态。  
+服务主体中每次只有一个 HRD 策略处于活动状态。
 
 可以使用 Azure Active Directory PowerShell cmdlet 来创建和管理 HRD 策略。
 
 以下是 HRD 策略定义示例：
 
- ```JSON
-   {  
-    "HomeRealmDiscoveryPolicy":
-    {  
+```json
+{  
+  "HomeRealmDiscoveryPolicy":
+  {  
     "AccelerateToFederatedDomain":true,
     "PreferredDomain":"federated.example.edu",
     "AllowCloudPasswordValidation":false,    
-    }
-   }
+  }
+}
 ```
 
 策略类型为“[HomeRealmDiscoveryPolicy](/graph/api/resources/homeRealmDiscoveryPolicy)”。
@@ -177,13 +174,13 @@ ms.locfileid: "104607103"
 
 2. 下载 Azure AD PowerShell Cmdlet 后，运行 Connect 命令，使用管理员帐户登录 Azure AD：
 
-    ``` powershell
+    ```powershell
     Connect-AzureAD -Confirm
     ```
 
 3. 运行以下命令，查看组织中的所有策略：
 
-    ``` powershell
+    ```powershell
     Get-AzureADPolicy
     ```
 
@@ -201,25 +198,25 @@ ms.locfileid: "104607103"
 
 当租户中包含单个域时，在用户登录到应用程序期间，以下策略自动加速将用户转到 AD FS 登录屏幕的过程。
 
-``` powershell
+```powershell
 New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true}}") -DisplayName BasicAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
 当租户中包含多个联合域时，以下策略自动加速将用户转到 AD FS 登录屏幕的过程。 如果有多个联合域对应用程序的用户进行身份验证，则需要指定要自动加速的域。
 
-``` powershell
+```powershell
 New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true, `"PreferredDomain`":`"federated.example.edu`"}}") -DisplayName MultiDomainAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
 若要创建一个策略，使特定应用程序的联合用户能够在 Azure Active Directory 中进行用户名/密码身份验证，请运行以下命令：
 
-``` powershell
+```powershell
 New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuthPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
 若要查看新策略并获取其“ObjectID”，请运行以下命令：
 
-``` powershell
+```powershell
 Get-AzureADPolicy
 ```
 
@@ -229,11 +226,11 @@ Get-AzureADPolicy
 
 需要要向其分配策略的服务主体的“ObjectID”。 可通过多种方法查找服务主体的“ObjectID”。
 
-可以使用门户，或查询 [Microsoft Graph](/graph/api/resources/serviceprincipal?view=graph-rest-beta)。 还可以转到 [Graph 浏览器工具](https://developer.microsoft.com/graph/graph-explorer)，并登录到 Azure AD 帐户，查看组织的所有服务主体。
+可以使用门户，或查询 [Microsoft Graph](/graph/api/resources/serviceprincipal)。 还可以转到 [Graph 浏览器工具](https://developer.microsoft.com/graph/graph-explorer)，并登录到 Azure AD 帐户，查看组织的所有服务主体。
 
 由于使用的是 PowerShell，因此可以运行下面的 cmdlet 来列出服务主体及其 ID。
 
-``` powershell
+```powershell
 Get-AzureADServicePrincipal
 ```
 
@@ -241,7 +238,7 @@ Get-AzureADServicePrincipal
 
 在获取了要配置自动加速的应用程序的服务主体的“ObjectID”后，请运行以下命令。 该命令将步骤 1 中创建的 HRD 策略与步骤 2 中找到的服务主体关联起来。
 
-``` powershell
+```powershell
 Add-AzureADServicePrincipalPolicy -Id <ObjectID of the Service Principal> -RefObjectId <ObjectId of the Policy>
 ```
 
@@ -253,7 +250,7 @@ Add-AzureADServicePrincipalPolicy -Id <ObjectID of the Service Principal> -RefOb
 
 若要检查为其配置了 HRD 策略的应用程序，请使用 **Get-AzureADPolicyAppliedObject** cmdlet。 并向其传递要检查的策略的“ObjectID”。
 
-``` powershell
+```powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
@@ -265,15 +262,15 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 
 #### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>步骤 1：列出在组织中创建的所有策略
 
-``` powershell
+```powershell
 Get-AzureADPolicy
 ```
 
 记下要列出其分配情况的策略的“ObjectID”。
 
-#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>步骤 2：列出向其分配了策略的服务主体  
+#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>步骤 2：列出向其分配了策略的服务主体
 
-``` powershell
+```powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
@@ -283,15 +280,15 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 
 使用前一个示例获取策略的“ObjectID”，以及希望从中删除策略的应用程序服务主体的“ObjectID”。
 
-#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>步骤 2：从应用程序服务主体中删除策略分配  
+#### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>步骤 2：从应用程序服务主体中删除策略分配
 
-``` powershell
+```powershell
 Remove-AzureADServicePrincipalPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
 #### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>步骤 3：通过列出向其分配了策略的服务主体检查删除情况
 
-``` powershell
+```powershell
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 

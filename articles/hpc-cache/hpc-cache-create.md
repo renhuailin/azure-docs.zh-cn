@@ -4,14 +4,15 @@ description: 如何创建 Azure HPC 缓存实例
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 05/05/2021
 ms.author: v-erkel
-ms.openlocfilehash: 02934a1943ef37d282dd2a2e7862c5695bbd6ecb
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 72c9590cca805d0a6e22d42f482ad80935e842d3
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107862698"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110706790"
 ---
 # <a name="create-an-azure-hpc-cache"></a>创建 Azure HPC 缓存
 
@@ -42,7 +43,7 @@ ms.locfileid: "107862698"
 
 在“缓存”页上，必须设置缓存的容量。 此处设置的值确定缓存可以容纳多少数据，以及为客户端请求提供服务的速度。
 
-容量还会影响缓存的成本。
+容量还会影响缓存的成本，以及它可以支持的存储目标数。
 
 通过设置以下两个值选择容量：
 
@@ -50,6 +51,9 @@ ms.locfileid: "107862698"
 * 为缓存数据分配的存储量 (TB)
 
 选择可用吞吐量值和缓存存储大小之一。
+
+> [!TIP]
+> 如果要对缓存使用 10 个以上存储目标，则必须为吞吐量大小选择最高的可用缓存存储大小值。 有关详细信息，请参阅[添加存储目标](hpc-cache-add-storage.md#size-your-cache-correctly-to-support-your-storage-targets)。
 
 请记住，实际的数据传输速率取决于工作负荷、网络速度和存储目标的类型。 你选择的值设置整个缓存系统的最大吞吐量，但其中一些用于开销任务。 例如，如果客户端请求尚未存储在缓存中的文件，或者该文件被标记为过期，则缓存将使用其部分吞吐量从后端存储中提取该文件。
 
@@ -137,6 +141,8 @@ nets/<cache_subnet_name>"``
   | 12288 GB   | 是         | 是         | 是         |
   | 24576 GB   | 否          | 是         | 是         |
   | 49152 GB   | 否          | 否          | 是         |
+
+  如果要对缓存使用 10 个以上存储目标，请为 SKU 选择最高的可用缓存大小值。 这些配置最多支持 20 个存储目标。
 
   有关定价、吞吐量以及如何为工作流适当调整缓存大小的重要信息，请阅读“门户说明”选项卡上的“设置缓存容量”部分。
 

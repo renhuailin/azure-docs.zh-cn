@@ -1,25 +1,25 @@
 ---
 title: 创建并安装 P2S VPN 客户端配置文件：证书身份验证
 titleSuffix: Azure VPN Gateway
-description: 了解如何为 P2S 证书身份验证创建并安装 Windows、Linux、Linux (strongSwan) 和 macOS X VPN 客户端配置文件。
+description: 了解如何为 Windows、Linux (strongSwan) 和 macOS 生成和安装 VPN 客户端配置文件。 本文适用于使用证书身份验证的 VPN 网关 P2S 配置。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 06/03/2021
 ms.author: cherylmc
-ms.openlocfilehash: 239166c872578b310fe8eb0393a7a37f4d25129f
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 80425670d40a32c229d6c9cf5aceab9a37072962
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202544"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558825"
 ---
-# <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
+# <a name="generate-and-install-vpn-client-configuration-files-for-p2s-certificate-authentication"></a>生成并安装用于 P2S 证书身份验证的 VPN 客户端配置文件
 
-VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供了本机 Windows、Mac IKEv2 VPN 或 Linux 客户端通过使用本机 Azure 证书身份验证的点到站点连接连接到虚拟网络所需的设置。
+使用点到站点和证书身份验证连接到 Azure VNet 时，可以使用在连接的操作系统上本机安装的 VPN 客户端。 VPN 客户端的所有必需配置设置均包含在 VPN 客户端配置 zip 文件中。 zip 文件中的设置有助于轻松配置 Windows、Mac IKEv2 VPN 或 Linux 的 VPN 客户端。
 
-客户端配置文件特定于虚拟网络的 VPN 配置。 如果在生成 VPN 客户端配置文件后，点到站点 VPN 配置（例如 VPN 协议类型或身份验证类型）发生变化，请务必为用户设备生成新的 VPN 客户端配置文件。
+生成的 VPN 客户端配置文件特定于虚拟网络的 P2S VPN 网关配置。 如果生成文件后点到站点 VPN 配置发生任何更改，例如 VPN 协议类型变更或身份验证类型变更，则需生成新的 VPN 客户端配置文件并在要连接的所有 VPN 客户端中应用新的配置。
 
 * 有关点到站点连接的详细信息，请参阅[关于点到站点 VPN](point-to-site-about.md)。
 * 有关 OpenVPN 说明，请参阅[为 P2S 配置 OpenVPN](vpn-gateway-howto-openvpn.md) 和[配置 OpenVPN 客户端](vpn-gateway-howto-openvpn-clients.md)。
@@ -30,8 +30,6 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供了�
 
 ## <a name="generate-vpn-client-configuration-files"></a><a name="generate"></a>生成 VPN 客户端配置文件
 
-在开始之前，请确保所有连接方用户的设备上安装了有效的证书。 有关安装客户端证书的详细信息，请参阅[安装客户端证书](point-to-site-how-to-vpn-client-install-azure-cert.md)。
-
 可使用 PowerShell 或使用 Azure 门户生成客户端配置文件。 两种方法之一都会返回相同的 zip 文件。 解压缩该文件，查看以下文件夹：
 
 * **WindowsAmd64** 和 **WindowsX86**：分别包含 Windows 32 位和 64 位安装程序包。 **WindowsAmd64** 安装程序包适用于所有受支持的 64 位 Windows 客户端，而不仅仅是 Amd。
@@ -40,11 +38,11 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供了�
 ### <a name="generate-files-using-the-azure-portal"></a><a name="zipportal"></a>使用 Azure 门户生成文件
 
 1. 在 Azure 门户中，导航到要连接到的虚拟网络的虚拟网络网关。
-1. 在虚拟网络网关页面上，选择“点到点配置”。
+1. 在虚拟网络网关页面上，选择“点到站点配置”，打开点到站点配置页面。
+1. 在“点到站点配置”页的顶部，选择“下载 VPN 客户端”。 该操作不会下载 VPN 客户端软件，而是生成用于配置 VPN 客户端的配置包。 需要几分钟才能生成客户端配置包。
 
-   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/download-client.png" alt-text="下载 VPN 客户端":::
-1. 在“点到站点配置”页的顶部，选择“下载 VPN 客户端”。 需要几分钟才能生成客户端配置包。
-1. 浏览器会指示客户端配置 zip 文件可用。 其名称与网关名称相同。 解压缩该文件，查看文件夹。
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/download-client.png" alt-text="下载 VPN 客户端配置。":::
+1. 生成配置包后，浏览器将显示客户端配置 zip 文件可用。 其名称与网关名称相同。 解压缩该文件，查看文件夹。
 
 ### <a name="generate-files-using-powershell"></a><a name="zipps"></a>使用 PowerShell 生成文件
 
@@ -62,9 +60,9 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供了�
 
 [!INCLUDE [Windows instructions](../../includes/vpn-gateway-p2s-client-configuration-windows.md)]
 
-## <a name="mac-os-x"></a><a name="installmac"></a>Mac (OS X)
+## <a name="mac-macos"></a><a name="installmac"></a>Mac (macOS)
 
- 必须在将连接到 Azure 的每个 Mac 上手动配置本机 IKEv2 VPN 客户端。 Azure 不提供用于本机 Azure 证书身份验证的 mobileconfig 文件。 **Generic** 包含需要用于配置的所有信息。 如果在下载中没有看到 Generic 文件夹，则可能 IKEv2 未选作隧道类型。 请注意，VPN 网关基本 SKU 不支持 IKEv2。 选择 IKEv2 后，再次生成 zip 文件，检索 Generic 文件夹。<br>Generic 文件夹包含以下文件：
+ 必须在将连接到 Azure 的每个 Mac 上手动配置本机 IKEv2 VPN 客户端。 Azure 不提供用于本机 Azure 证书身份验证的 mobileconfig 文件。 Generic 文件夹包含需要用于配置的所有信息。 如果在下载中没有看到 Generic 文件夹，则可能 IKEv2 未选作隧道类型。 请注意，VPN 网关基本 SKU 不支持 IKEv2。 选择 IKEv2 后，再次生成 zip 文件，检索 Generic 文件夹。<br>Generic 文件夹包含以下文件：
 
 * **VpnSettings.xml**：包含服务器地址和隧道类型等重要设置。 
 * **VpnServerRoot.cer**：包含在 P2S 连接设置过程中验证 Azure VPN 网关所需的根证书。

@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Bastion 连接到 Windows VM
-description: 本文介绍如何使用 Azure Bastion 连接到运行 Windows 的 Azure 虚拟机。
+description: 了解如何使用 Azure Bastion 连接到运行 Windows 的 Azure VM。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 10/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: 708bd1f61da2f3973333f8e68cabdceee0717bee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fac6d5a0b7d7c8817dadead7e2a9269027140991
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92521522"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110535297"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>使用 Azure Bastion 连接到 Windows 虚拟机
 

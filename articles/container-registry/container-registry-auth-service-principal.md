@@ -2,17 +2,17 @@
 title: 使用服务主体进行身份验证
 description: 使用 Azure Active Directory 服务主体允许访问专用容器注册表中的映像。
 ms.topic: article
-ms.date: 10/04/2019
-ms.openlocfilehash: 8d49628576a1c337efaea3e5286fef00e39def17
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/15/2021
+ms.openlocfilehash: 7d64f63de3227394d1f69b2049f0a58dda35e6e6
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86259151"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111440711"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>使用服务主体的 Azure 容器注册表身份验证
 
-可以使用 Azure Active Directory (Azure AD) 服务主体提供对容器注册表的容器映像 `docker push` 和 `pull` 访问权限。 通过使用服务主体，可以提供对“无外设”服务和应用程序的访问权限。
+可以使用 Azure Active Directory (Azure AD) 服务主体提供对容器注册表的推送、拉取或其他访问权限。 通过使用服务主体，可以提供对“无外设”服务和应用程序的访问权限。
 
 ## <a name="what-is-a-service-principal"></a>什么是服务主体？
 
@@ -30,8 +30,10 @@ Azure AD“服务主体”提供对订阅中的 Azure 资源的访问权限。 �
 
 在 **无外设方案** 中，应当使用服务主体来提供注册表访问。 即，任何必须以自动或其他无人参与方式来推送或拉取容器映像的应用程序、服务或脚本。 例如：
 
-  * 拉取：将容器从注册表部署到业务流程系统（包括 Kubernetes、DC/OS 和 Docker Swarm）。 还可以从容器注册表拉取到相关的 Azure 服务，例如 [Azure Kubernetes 服务 (AKS)](../aks/cluster-container-registry-integration.md)、[Azure 容器实例](container-registry-auth-aci.md)、[应用服务](../app-service/index.yml)、[Batch](../batch/index.yml)、[Service Fabric](../service-fabric/index.yml)，等等。
+  * 拉取：将容器从注册表部署到业务流程系统（包括 Kubernetes、DC/OS 和 Docker Swarm）。 还可从容器注册表拉取到相关的 Azure 服务，例如 [Azure 容器实例](container-registry-auth-aci.md)、[应用服务](../app-service/index.yml)、[Batch](../batch/index.yml)、[Service Fabric](../service-fabric/index.yml) 等。
 
+    > [!TIP]
+    > 建议在多个 [Kubernetes 方案](authenticate-kubernetes-options.md)中使用服务主体从 Azure 容器注册表中拉取映像。 借助 Azure Kubernetes 服务 (AKS)，还可通过启用群集的[托管标识](../aks/cluster-container-registry-integration.md)，使用自动化机制对目标注册表进行身份验证。 
   * 推送：构建容器映像并使用持续集成和部署解决方案（例如 Azure Pipelines 或 Jenkins）将它们推送到注册表。
 
 若要对注册表进行个人访问，例如手动将容器映像拉取到开发工作站时，我们建议改用你自己的 [Azure AD 标识](container-registry-authentication.md#individual-login-with-azure-ad)进行注册表访问（例如使用 [az acr login][az-acr-login]）。
@@ -50,12 +52,12 @@ Azure AD“服务主体”提供对订阅中的 Azure 资源的访问权限。 �
 你拥有已授予对容器注册表的访问权限的服务主体后，就可以配置其凭据以访问“无外设”服务和应用程序，或者使用 `docker login` 命令输入它们。 使用以下值：
 
 * 用户名 - 服务主体应用程序 ID（也称为“客户端 ID”）
-* 密码 - 服务主体密码（也称为“客户端密码”）
+* **密码** - 服务主体密码（也称为 *客户端密码*）
 
-每个值都是格式为 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 的 GUID。 
+每个值的格式均为 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。 
 
 > [!TIP]
-> 可通过运行 [az ad sp reset-credentials](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) 命令重新生成服务主体的密码。
+> 可通过运行 [az ad sp reset-credentials](/cli/azure/ad/sp/credential#az_ad_sp_credential_reset) 命令重新生成服务主体的密码。
 >
 
 ### <a name="use-credentials-with-azure-services"></a>在 Azure 服务中使用凭据
@@ -66,7 +68,7 @@ Azure AD“服务主体”提供对订阅中的 Azure 资源的访问权限。 �
 
 ### <a name="use-with-docker-login"></a>在 docker login 中使用
 
-可以使用服务主体运行 `docker login`。 在以下示例中，服务主体应用程序 ID 将传入到环境变量 `$SP_APP_ID` 中，密码将传入到变量 `$SP_PASSWD` 中。 有关管理 Docker 凭据的最佳做法，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令参考。
+可以使用服务主体运行 `docker login`。 在以下示例中，服务主体应用程序 ID 将传入到环境变量 `$SP_APP_ID` 中，密码将传入到变量 `$SP_PASSWD` 中。 有关管理 Docker 凭据的建议做法，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令参考。
 
 ```bash
 # Log in to Docker with service principal credentials
@@ -95,6 +97,19 @@ az acr login --name myregistry
 
 CLI 使用你运行 `az login` 时创建的令牌，通过注册表对会话进行身份验证。
 
+## <a name="create-service-principal-for-cross-tenant-scenarios"></a>为跨租户方案创建服务主体
+
+服务主体还可用于这样一种 Azure 方案，即需要将映像从一个 Azure Active Directory（租户）中的容器注册表拉取到另一个中的服务或应用。 例如，组织可能在租户 A 中运行一个应用，该应用需要从租户 B 的共享容器注册表中拉取映像。
+
+创建可以在跨租户方案中使用容器注册表进行身份验证的服务主体：
+
+*  在租户 A 中创建一个[多租户应用](../active-directory/develop/single-and-multi-tenant-apps.md)（服务主体） 
+* 在租户 B 中预配应用
+* 授予服务主体从租户 B 的注册表中拉取内容的权限
+* 更新租户 A 中的服务或应用，以使用新的服务主体进行身份验证
+
+有关示例步骤，请参阅[将映像从容器注册表拉取到不同 AD 租户中的 AKS 群集](authenticate-aks-cross-tenant.md)。
+
 ## <a name="next-steps"></a>后续步骤
 
 * 有关使用 Azure 容器注册表进行身份验证的其他方案，请参阅[身份验证概述](container-registry-authentication.md)。
@@ -106,6 +121,6 @@ CLI 使用你运行 `az login` 时创建的令牌，通过注册表对会话进�
 [acr-scripts-psh]: https://github.com/Azure/azure-docs-powershell-samples/tree/master/container-registry
 
 <!-- LINKS - Internal -->
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-login]: /cli/azure/reference-index#az-login
-[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
+[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-login]: /cli/azure/reference-index#az_login
+[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az_ad_sp_credential_reset

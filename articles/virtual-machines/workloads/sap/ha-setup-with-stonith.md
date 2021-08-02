@@ -3,27 +3,28 @@ title: 使用 STONITH 为 Azure 上的 SAP HANA（大型实例）进行高可用
 description: 使用 STONITH 在 SUSE 中为 Azure 上的 SAP HANA（大型实例）建立高可用性
 services: virtual-machines-linux
 documentationcenter: ''
-author: saghorpa
+author: Ajayan1008
 manager: juergent
 editor: ''
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/21/2017
-ms.author: saghorpa
+ms.date: 05/10/2021
+ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83bf6b6123cf7e0d57296f1f344a264c8a18ed77
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 471d2cf7f7a1dc5f7809b4391928206cbfa037eb
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101671057"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577833"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>使用 STONITH 在 SUSE 中进行高可用性设置
 本文档将针对如何使用 STONITH 设备在 SUSE 操作系统上设置高可用性，进行详细的分步说明。
 
-免责声明：*本指南是通过测试成功运行的 Microsoft HANA 大型实例环境中的设置得出的。由于面向 HANA 大型实例的 Microsoft 服务管理团队不支持操作系统，因此，你可能需要联系 SUSE，以进一步了解操作系统层面的疑难解答或说明。* Microsoft 服务管理团队对 STONITH 设备进行设置并提供全力支持，可以对有关 STONITH 设备的问题进行疑难解答。
+**免责声明：** 本指南通过在 Microsoft HANA 大型实例环境中成功测试设置而得出。由于 Microsoft HANA 大型实例的服务管理团队不支持此操作系统，因此，你可能需要联系 SUSE，以进一步了解操作系统层面的疑难解答或说明。Microsoft 服务管理团队负责对 STONITH 设备进行设置并提供全力支持，并且可对有关 STONITH 设备的问题进行疑难解答。
 ## <a name="overview"></a>概述
 要使用 SUSE 群集设置高可用性，必须满足以下先决条件。
 ### <a name="pre-requisites"></a>先决条件
@@ -43,7 +44,7 @@ ms.locfileid: "101671057"
 - STONITH 设备：基于 iSCSI 的 STONITH 设备
 - HANA 大型实例节点之一上的 NTP 设置
 
-在使用 HSR 设置 HANA 大型实例时，可以请求 Microsoft 服务管理团队设置 STONITH。 如果你已经是预配了 HANA 大型实例的现有客户，且需要为现有的边栏选项卡设置 STONITH 设备，则需要以服务申请表 (SRF) 的形式向 Microsoft 服务管理团队提供以下信息。 可以通过技术部客户经理或 HANA 大型实例载入的 Microsoft 联系人来申请 SRF 表。 在预配时，新客户可以申请 STONITH 设备。 在预配申请表中提供有各种输入。
+在使用 HSR 设置 HANA 大型实例时，可以请求 Microsoft 服务管理团队设置 STONITH。 如果你已经是预配了 HANA 大型实例的现有客户，且需要为现有的边栏选项卡设置 STONITH 设备，则需要通过服务请求表 (SRF) 向 Microsoft 服务管理团队提供以下信息。 可以通过技术部客户经理或 HANA 大型实例载入的 Microsoft 联系人来申请 SRF 表。 在预配时，新客户可以申请 STONITH 设备。 在预配申请表中提供有各种输入。
 
 - 服务器名称和服务器 IP 地址（例如，myhanaserver1，10.35.0.1）
 - 位置（例如，美国东部）
@@ -52,16 +53,16 @@ ms.locfileid: "101671057"
 
 配置 STONITH 设备后，Microsoft 服务管理团队会向你提供 SBD 设备名称，以及可用于配置 STONITH 设置的 iSCSI 存储的 IP 地址。 
 
-要使用 STONITH 设置端到端 HA，必须按照以下步骤进行操作：
+要使用 STONITH 设置端到端 HA，需要按照以下步骤进行操作：
 
-1.  标识 SBD 设备
-2.  初始化 SBD 设备
-3.  配置群集
-4.  设置 Softdog 监视器
-5.  将节点加入到群集
-6.  验证群集
-7.  将资源配置为群集
-8.  测试故障转移过程
+1.  标识 SBD 设备。
+2.  初始化 SBD 设备。
+3.  配置群集。
+4.  设置 softdog 监视器。
+5.  将节点加入群集。
+6.  验证群集。
+7.  将资源配置为群集。
+8.  测试故障转移过程。
 
 ## <a name="1---identify-the-sbd-device"></a>1. 标识 SBD 设备
 本部分将介绍如何在 Microsoft 服务管理团队配置 STONITH 后确定适用于设置的 SBD 设备。 本部分仅适用于现有客户。 如果你是新客户，Microsoft 服务管理团队会向你提供 SBD 设备名称，所以，可以跳过此部分。
@@ -92,7 +93,7 @@ iscsiadm -m node -l
 ```
 ![屏幕截图显示了控制台窗口，其中显示了 iscsiadm node 命令的结果。](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
 
-1.5 执行重新扫描脚本：rescan-scsi-bus.sh。此脚本显示创建的新磁盘。  在两个节点上都运行该脚本。 应会看到一个大于零的 LUN 编号（例如，1、2 等）
+1.5 执行重新扫描脚本：rescan-scsi-bus.sh。此脚本显示创建的新磁盘。  在两个节点上都运行该脚本。 应会看到一个大于零的 LUN 编号（例如 1、2 等）
 
 ```
 rescan-scsi-bus.sh
@@ -125,7 +126,7 @@ sbd -d <SBD Device Name> dump
 ## <a name="3---configuring-the-cluster"></a>3. 配置群集
 本部分介绍设置 SUSE HA 群集的步骤。
 ### <a name="31-package-installation"></a>3.1 包安装
-3.1.1   请确认已安装 ha_sles 和 SAPHanaSR-doc 模式。 如果未安装，请先安装。 在这两个节点上都安装。
+3.1.1   请确认是否已安装 ha_sles 和 SAPHanaSR-doc 模式。 如果未安装，请先进行安装。 在这两个节点都上安装它们。
 ```
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
@@ -139,34 +140,39 @@ zypper in SAPHanaSR SAPHanaSR-doc
 单击“yast2”>“高可用性”>“群集”![屏幕截图显示了 YaST 控制中心，其中选中了“高可用性”和“群集”。](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
 ![屏幕截图显示了包含“安装”和“取消”选项的对话框。](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
 
-由于已安装 halk2 包，请单击“取消”。
+由于已安装 halk2 包，请选择“取消”。
 
 ![屏幕截图显示了有关你的取消选项的消息。](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
 
-单击“继续”
+选择“继续”。
 
-预期值=已部署的节点数（在本例中为 2）![屏幕截图显示了“群集安全性”，其中包含“启用安全性身份验证”复选框。](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png)
-单击“下一步”
-![屏幕截图显示了“群集配置”窗口，其中显示了“同步主机”和“同步文件”列表。](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png)
-添加节点名称，然后单击“添加建议的文件”
+预期值=已部署的节点数（在本例中为 2）
 
-单击“打开 csync2”
+![屏幕截图显示了“群集安全性”，其中包含“启用安全身份验证”复选框。](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png)
 
-单击“生成预共享密钥”，它会显示下面的弹出窗口
+选择“**下一页**”。
+
+![屏幕截图显示了“群集配置”窗口，其中包含“同步主机”和“同步文件”列表。](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png)
+
+添加节点名称，然后选择“添加建议的文件”。
+
+选择“开启 csync2”。
+
+选择“生成预共享密钥”，它会显示下面的弹出窗口。
 
 ![屏幕截图显示了一条消息，指出你的密钥已生成。](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
 
-单击 **“确定”**
+选择“确定”。
 
 使用 Csync2 中的 IP 地址和预共享密钥执行身份验证。 使用 csync2 -k /etc/csync2/key_hagroup 生成密钥文件。 在创建文件 key_hagroup 后，应将其手动复制到群集的所有成员。 确保将文件从 node1 复制到 node2。
 
 ![屏幕截图显示了“群集配置”对话框，其中包含将密钥复制到群集的所有成员所需的选项。](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
 
-单击“下一步”
+选择“下一步”
 ![屏幕截图显示了“群集服务”窗口。](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
 在默认选项中，启动已关闭，将其更改为“打开”，以便 pacemaker 在启动时开始。 可以基于设置需求做出选择。
-单击“下一步”，完成群集配置。
+选择“下一步”，完成群集配置。
 
 ## <a name="4---setting-up-the-softdog-watchdog"></a>4. 设置 Softdog 监视器
 本部分将介绍监视器 (softdog) 的配置。
@@ -355,7 +361,7 @@ Service pacemaker stop
 service iscsid start
 ```
 
-现在，应能够登录到该 iSCSI 节点
+现在，应能够登录到该 iSCSI 节点。
 ```
 iscsiadm -m node -l
 ```
@@ -400,11 +406,11 @@ Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal
 
 包安装继续![屏幕截图显示了控制台窗口，其中显示了安装进度。](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
 
-单击“下一步”
+选择“下一步”。
 
 ![屏幕截图显示了控制台窗口，其中显示了一条成功消息。](media/HowToHLI/HASetupWithStonith/yast-installation-report.png)
 
-单击“完成”
+选择“完成”
 
 另外，还需要安装 libqt4 和 libyui qt 包。
 ```
@@ -440,15 +446,15 @@ Yast2 现在应当能够打开图形视图，如下所示。
 ![屏幕截图显示了在“C/C++ 编译器和工具”项中选择第一种模式。](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
 ![屏幕截图显示了在“C/C++ 编译器和工具”项中选择第二种模式。](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
 
-单击“接受”
+选择“接受”
 
 ![屏幕截图显示了“已更改的包”对话框，已更改了其中的包来解析依赖项。](media/HowToHLI/HASetupWithStonith/yast-changed-packages.png)
 
-单击“继续”
+选择“继续”
 
 ![屏幕截图显示了“正在执行安装”状态页。](media/HowToHLI/HASetupWithStonith/yast2-performing-installation.png)
 
-安装完成后，单击“下一步”
+安装完成后，选择“下一步”
 
 ![屏幕截图显示了安装报告。](media/HowToHLI/HASetupWithStonith/yast2-installation-report.png)
 
@@ -540,7 +546,7 @@ cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
 ## <a name="10-general-documentation"></a>10.常规文档
 可以在以下文章中找到有关 SUSE HA 设置的详细信息： 
 
-- [SAP HANA SR 性能优化方案](https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf )
+- [SAP HANA SR 性能优化方案](https://www.suse.com/support/kb/doc/?id=000019450 )
 - [基于存储的隔离](https://www.suse.com/documentation/sle_ha/book_sleha/data/sec_ha_storage_protect_fencing.html)
 - [博客 - 使用适用于 SAP HANA 的 Pacemaker 群集- 第 1 部分](https://blogs.sap.com/2017/11/19/be-prepared-for-using-pacemaker-cluster-for-sap-hana-part-1-basics/)
 - [博客 - 使用适用于 SAP HANA 的 Pacemaker 群集- 第 2 部分](https://blogs.sap.com/2017/11/19/be-prepared-for-using-pacemaker-cluster-for-sap-hana-part-2-failure-of-both-nodes/)

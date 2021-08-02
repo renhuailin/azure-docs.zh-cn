@@ -3,12 +3,12 @@ title: 描述 Azure Service Fabric 应用和服务
 description: 介绍如何使用清单来描述 Service Fabric 应用程序和服务。
 ms.topic: conceptual
 ms.date: 8/12/2019
-ms.openlocfilehash: fcf4c7611f0a6f52c28b234717b9244ac58ad2d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22a04f94dfcd1ee4592e281ebd75efb0a8d0133a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86248214"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476537"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric 应用程序和服务清单
 本文介绍如何使用 ApplicationManifest.xml 和 ServiceManifest.xml 文件定义 Service Fabric 应用程序和服务并对其进行版本控制。  有关更多详细示例，请参阅[应用程序和服务清单示例](service-fabric-manifest-examples.md)。  这些清单文件的 XML 架构记录在 [ServiceFabricServiceModel.xsd 架构文档](service-fabric-service-model-schema.md)中。
@@ -182,6 +182,7 @@ For more information about other features supported by application manifests, re
 
 ## <a name="next-steps"></a>后续步骤
 - [打包应用程序](service-fabric-package-apps.md)并准备好进行部署。
+- [在应用程序中使用 StartupServices.xml](service-fabric-startupservices-model.md)。
 - [部署和删除应用程序](service-fabric-deploy-remove-applications.md)。
 - [配置不同应用程序实例的参数和环境变量](service-fabric-manage-multiple-environment-app-configuration.md)。
 - [配置应用程序的安全策略](service-fabric-application-runas-security.md)。

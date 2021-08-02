@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: a1b317b651b0e17c07eb17dbdb8a7c6657d39564
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8164a6ee56a332528cdce8e81cd85460af0c1db
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90971611"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752380"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中为增量扩充配置缓存
 
@@ -73,6 +73,9 @@ api-key: [YOUR-ADMIN-KEY]
     "parameters": []
 }
 ```
+
+> [!NOTE]
+> 索引器缓存需要常规用途 v2 存储帐户。 有关详细信息，请参阅[不同类型的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。
 
 ### <a name="step-3-reset-the-indexer"></a>步骤 3：重置索引器
 

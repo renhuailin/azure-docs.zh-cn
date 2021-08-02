@@ -1,20 +1,20 @@
 ---
 title: 在 Azure 市场中创建虚拟机产品/服务。
-description: 了解如何在 Microsoft 商业市场中创建虚拟机产品/服务。
+description: 在 Azure 市场中创建虚拟机产品/服务。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/08/2021
-ms.openlocfilehash: f0c1d9d528ed4fbf61786042fb6fb34f05fec5d5
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 626ee3d9fb7ec193e1384712a03c23feefef67af
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812586"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111525023"
 ---
-# <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>如何在 Azure 市场中创建虚拟机产品/服务
+# <a name="create-a-virtual-machine-offer-on-azure-marketplace"></a>在 Azure 市场中创建虚拟机产品/服务
 
 本文介绍如何在 [Azure 市场](https://azuremarketplace.microsoft.com/)中创建 Azure 虚拟机产品/服务。 它介绍基于 Windows 和基于 Linux 的虚拟机（包含操作系统、虚拟硬盘 (VHD) 以及多达 16 个数据磁盘）。
 
@@ -47,16 +47,16 @@ ms.locfileid: "107812586"
 
 选择“创建”，以生成产品/服务，并继续操作。 将打开合作伙伴中心的“产品/服务设置”页。
 
-## <a name="enable-a-test-drive-optional"></a>启用体验版（可选）
+## <a name="test-drive-optional"></a>体验版（可选）
 
 体验版可让潜在客户在固定的小时数内访问预配置的环境，是向他们展示你的产品/服务的极佳方式。 提供体验版可以提高潜在客户转变为实际客户的比率，并带来非常适合建立合作关系的潜在顾客。 若要详细了解体验版，请参阅[什么是体验版？](./what-is-test-drive.md)。
 
 > [!TIP]
 > 体验版不同于免费试用版。 你可以提供体验版、免费试用版，或提供此两者。 这两个版本都让客户使用你的解决方案固定的一段时间。 但是，体验版还为产品在真实的实现场景中所展示的重要功能和优势提供自我引导式的动手实践教导。
 
-若要启用体验版，请选中“启用体验版”复选框。 稍后你将配置体验版。 使用体验版时，需要配置 CRM（参阅下一部分）。
+若要启用体验版，请选中“启用体验版”复选框。 稍后你将配置体验版。 使用体验版时，需要配置 CRM（参阅下一部分）。 若要从产品/服务中删除体验版，请清除此复选框。
 
-## <a name="configure-customer-leads-management"></a>配置潜在客户管理
+## <a name="customer-leads"></a>潜在顾客
 
 [!INCLUDE [Customer leads](includes/customer-leads.md)] 
 
@@ -64,5 +64,5 @@ ms.locfileid: "107812586"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [如何配置虚拟机产品/服务属性](azure-vm-create-properties.md)
+- [配置虚拟机产品/服务属性](azure-vm-create-properties.md)
 - [套餐列出最佳做法](gtm-offer-listing-best-practices.md)

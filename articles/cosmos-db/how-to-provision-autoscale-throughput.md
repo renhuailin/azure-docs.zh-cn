@@ -6,14 +6,14 @@ ms.author: dech
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 05/18/2021
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2f47e86b89244cdc2ac41d72203a51b0d91effdb
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: ce17b54905861759c437c2df735dd5515991b507
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227463"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456610"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>在 Azure Cosmos DB SQL API 中的数据库或容器上预配自动缩放吞吐量
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "108227463"
 
 1. 导航到你的 Azure Cosmos DB 帐户，打开“数据资源管理器”选项卡。
 
-1. 选择“新建容器”。 为你的数据库、容器输入一个名称并输入分区键。 在“吞吐量”下选择“自动缩放”选项，并设置希望数据库或容器缩放到的[最大吞吐量（RU/秒）](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works)。 
+1. 选择“新建容器”。 为你的数据库、容器输入一个名称并输入分区键。 在数据库或容器吞吐量下选择“自动缩放”选项，并设置希望数据库或容器缩放到的[最大吞吐量（RU/秒）](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works)。
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="创建容器并配置自动缩放预配吞吐量":::
 
@@ -39,9 +39,6 @@ ms.locfileid: "108227463"
 若要在共享吞吐量数据库上预配自动缩放，请在创建新数据库时选择“预配数据库吞吐量”选项。 
 
 ### <a name="enable-autoscale-on-existing-database-or-container"></a>在现有的数据库或容器上启用自动缩放
-
-> [!IMPORTANT]
-> 在当前版本中，只能通过 Azure 门户在自动缩放与标准（手动）预配吞吐量之间进行迁移。 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)或 [Azure Cosmos DB 资源管理器](https://cosmos.azure.com/)。
 
@@ -54,14 +51,14 @@ ms.locfileid: "108227463"
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="在现有容器上启用自动缩放":::
 
 > [!NOTE]
-> 在现有数据库或容器上启用自动缩放时，最大 RU/秒的起始值由系统根据当前手动预配的吞吐量设置和存储确定。 在操作完成后，你可以根据需要更改最大 RU/秒。 [了解详细信息。](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
+> 在现有数据库或容器上启用自动缩放时，最大 RU/秒的起始值由系统根据当前手动预配的吞吐量设置和存储确定。 在操作完成后，你可以根据需要更改最大 RU/秒。 [了解详细信息。](autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-) 
 
 ## <a name="azure-cosmos-db-net-v3-sdk"></a>Azure Cosmos DB .NET V3 SDK
 
 可以使用适用于 SQL API 的 Azure Cosmos DB .NET SDK [3.9 或更高版本](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)来管理自动缩放资源。 
 
 > [!IMPORTANT]
-> 可以使用该 .NET SDK 创建新的自动缩放资源。 该 SDK 不支持在自动缩放与标准（手动）吞吐量之间迁移。 目前只有 Azure 门户支持迁移方案。 
+> 可以使用该 .NET SDK 创建新的自动缩放资源。 该 SDK 不支持在自动缩放与标准（手动）吞吐量之间迁移。 目前只有 [Azure 门户](#enable-autoscale-on-existing-database-or-container)、[CLI](#azure-cli) 和 [PowerShell](#azure-powershell) 支持迁移方案。
 
 ### <a name="create-database-with-shared-throughput"></a>创建具有共享吞吐量的数据库
 
@@ -118,8 +115,7 @@ await container.ReplaceThroughputAsync(ThroughputProperties.CreateAutoscaleThrou
 可以使用适用于 SQL API 的 Azure Cosmos DB Java SDK [4.0 或更高版本](https://mvnrepository.com/artifact/com.azure/azure-cosmos)来管理自动缩放资源。
 
 > [!IMPORTANT]
-> 可以使用该 Java SDK 创建新的自动缩放资源。 该 SDK 不支持在自动缩放与标准（手动）吞吐量之间迁移。 目前只有 Azure 门户支持迁移方案。
-
+> 可以使用该 Java SDK 创建新的自动缩放资源。 该 SDK 不支持在自动缩放与标准（手动）吞吐量之间迁移。 目前只有 [Azure 门户](#enable-autoscale-on-existing-database-or-container)、[CLI](#azure-cli) 和 [PowerShell](#azure-powershell) 支持迁移方案。
 ### <a name="create-database-with-shared-throughput"></a>创建具有共享吞吐量的数据库
 
 # <a name="async"></a>[异步](#tab/api-async)
@@ -249,18 +245,18 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 
 ## <a name="azure-resource-manager"></a>Azure 资源管理器
 
-Azure 资源管理器模板可用于在数据库或容器级资源上为所有 Azure Cosmos DB API 预配自动缩放吞吐量。 有关示例，请参阅 [Azure Cosmos DB 的 Azure 资源管理器模板](./templates-samples-sql.md)。
+Azure 资源管理器模板可用于在新数据库或容器级别的资源上为所有 Azure Cosmos DB API 预配自动缩放吞吐量。 有关示例，请参阅 [Azure Cosmos DB 的 Azure 资源管理器模板](./templates-samples-sql.md)。 按照设计，Azure 资源管理器模板不能用于在现有资源上进行预配吞吐量和自动缩放吞吐量之间的迁移。 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Azure CLI 可用于在数据库或容器级资源上为所有 Azure Cosmos DB API 预配自动缩放吞吐量。 有关示例，请参阅[用于 Azure Cosmos DB 的 Azure CLI 示例](cli-samples.md)。
+Azure CLI 可用于为所有 Azure Cosmos DB API 在新数据库或容器级资源上预配自动缩放吞吐量，或在现有资源上启用自动缩放。 有关示例，请参阅[用于 Azure Cosmos DB 的 Azure CLI 示例](cli-samples.md)。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell 可用于在数据库或容器级资源上为所有 Azure Cosmos DB API 预配自动缩放吞吐量。 有关示例，请参阅[适用于 Azure Cosmos DB 的 Azure PowerShell 示例](powershell-samples.md)。
+Azure PowerShell 可用于在新数据库或容器级别的资源上为所有 Azure Cosmos DB API 预配自动缩放吞吐量，或在现有资源上启用自动缩放。 有关示例，请参阅[适用于 Azure Cosmos DB 的 Azure PowerShell 示例](powershell-samples.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[使用自动缩放预配吞吐量的优势](provision-throughput-autoscale.md#benefits-of-autoscale)。
 * 了解如何[在手动与自动缩放吞吐量之间进行选择](how-to-choose-offer.md)。
-* 查看[自动缩放常见问题解答](autoscale-faq.md)。
+* 查看[自动缩放常见问题解答](autoscale-faq.yml)。

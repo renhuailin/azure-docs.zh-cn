@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2021
 ms.author: yelevin
-ms.openlocfilehash: 1ff9fbbb6cd4b8827555a6cb1b222ed4eb0a5299
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 869693765463589c3e94aef9a1cee17867117c5d
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608510"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072661"
 ---
 # <a name="automate-incident-handling-in-azure-sentinel-with-automation-rules"></a>在 Azure Sentinel 中使用自动化规则自动处理事件
 
@@ -42,7 +42,7 @@ ms.locfileid: "104608510"
 
 自动化规则由于生成事件而触发。 
 
-复习一下，事件由分析规则根据警报生成，其中包括四种类型，如“[使用 Azure Sentinel 中的内置分析规则检测威胁](tutorial-detect-threats-built-in.md)”教程中所述。
+复习一下，事件由分析规则根据警报生成，其中包括多种类型，如“[使用 Azure Sentinel 中的内置分析规则检测威胁](tutorial-detect-threats-built-in.md)”教程中所述。
 
 ### <a name="conditions"></a>条件
 
@@ -54,7 +54,7 @@ ms.locfileid: "104608510"
 
 - 更改事件的状态，使工作流保持最新。
 
-  - 当更改为“已关闭”时，指定[关闭原因](tutorial-investigate-cases.md#closing-an-incident)并添加注释。 这可以有助于跟踪性能和有效性，并进行优化以减少误报。
+  - 当更改为“已关闭”时，指定[关闭原因](tutorial-investigate-cases.md#closing-an-incident)并添加注释。 这有助于跟踪性能和有效性，并进行优化以减少[误报](false-positives.md)。
 
 - 更改事件的严重性 – 可以基于事件中所涉及实体的现状、缺席、值或属性重新评估，以及重新确定优先级。
 
@@ -62,7 +62,7 @@ ms.locfileid: "104608510"
 
 - 对事件添加标记 - 有利于按主题、攻击者或任何其他常见标准对事件进行分类。
 
-此外，还可以定义操作来运行 [playbook](tutorial-respond-threats-playbook.md)，以便执行更复杂的响应操作，包括涉及外部系统的任何操作。 自动化规则中只能使用[事件触发器](automate-responses-with-playbooks.md#azure-logic-apps-basic-concepts)激活的 playbook。 可以定义操作来包括多个 playbook 或 playbook 与其他操作的组合，还可以定义它们的运行顺序。
+此外，还可以定义操作来[运行 playbook](tutorial-respond-threats-playbook.md)，以便执行更复杂的响应操作，包括涉及外部系统的任何操作。 自动化规则中只能使用由[事件触发器](automate-responses-with-playbooks.md#azure-logic-apps-basic-concepts)激活的 playbook 。 可以定义操作来包括多个 playbook 或 playbook 与其他操作的组合，还可以定义它们的运行顺序。
 
 ### <a name="expiration-date"></a>到期日期
 
@@ -132,12 +132,27 @@ Microsoft 安全警报包括以下各项：
 
 在配置自动化规则和添加“运行 playbook”操作时，将显示一个 playbook 的下拉列表。 Azure Sentinel 没有权限访问的 playbook 将显示为不可用（“灰显”）。 可以通过选择“管理 playbook 权限”链接，现场对 Azure Sentinel 授予访问 playbook 资源组的权限。
 
-> [!NOTE]
-> **多租户体系结构中的权限**
->
-> 自动化规则完全支持跨工作区和多租户部署（对于多租户，使用 [Azure Lighthouse](extend-sentinel-across-workspaces-tenants.md#managing-workspaces-across-tenants-using-azure-lighthouse)）。
->
-> 因此，如果 Azure Sentinel 部署使用多租户体系结构（假如你是 MSSP），则可以用一个租户中的自动化规则运行其他租户中的 playbook，但必须在 playbook 所在的租户中定义 Sentinel 运行该 playbook 的权限（而不是在自动化规则所在的租户中定义）。
+#### <a name="permissions-in-a-multi-tenant-architecture"></a>多租户体系结构中的权限
+
+自动化规则完全支持跨工作区和[多租户部署](extend-sentinel-across-workspaces-tenants.md#managing-workspaces-across-tenants-using-azure-lighthouse)（对于多租户，使用 [Azure Lighthouse](../lighthouse/index.yml)）。
+
+因此，如果 Azure Sentinel 部署使用多租户体系结构，则可以用一个租户中的自动化规则运行其他租户中的 playbook，但必须在 playbook 所在的租户中定义 Sentinel 运行该 playbook 的权限（而不是在自动化规则所在的租户中定义）。
+
+在安全托管服务提供商 (MSSP) 的特定情况下，服务提供商租户将管理客户租户中的 Azure Sentinel 工作区，但有两种特殊情况值得注意：
+
+- **在客户租户中创建的自动化规则配置为运行位于服务提供商租户中的 playbook。** 
+
+    这种方法通常用于保护 playbook 中的知识产权。 此方案无需进行特殊设置即可运行。 在自动化规则中定义 playbook 操作时，如果进入为 Azure Sentinel 授予对 playbook 所在的相关资源组的权限的阶段（使用“管理 playbook 权限”面板），你将看到属于服务提供商租户的资源组，可从中进行选择。 [查看此处概述的整个过程](tutorial-respond-threats-playbook.md#respond-to-incidents)。
+
+- **在客户工作区中创建（同时登录到服务提供商租户）的自动化规则配置为运行位于客户租户中的 playbook**。
+
+    无需保护知识产权时使用此配置。 要使此方案有效，需要在这两个租户中为 Azure Sentinel 授予执行 playbook 的权限。 在客户租户中，可在“管理 playbook 权限”面板中授予权限，就像上述方案一样。 若要在服务提供商租户中授予相关权限，需要添加一个额外的 Azure Lighthouse 委派，该委派将在 playbook 所在的资源组上使用“Azure Sentinel 自动化参与者”角色授予对 Azure Security Insights 应用的访问权限 。
+
+    场景如下所示：
+
+    :::image type="content" source="./media/automate-incident-handling-with-automation-rules/automation-rule-multi-tenant.png" alt-text="多租户自动化规则体系结构":::
+
+    请参阅[相关说明](tutorial-respond-threats-playbook.md#permissions-to-run-playbooks)进行设置。
 
 ## <a name="creating-and-managing-automation-rules"></a>创建和管理自动化规则
 

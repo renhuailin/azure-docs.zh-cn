@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和配
 services: container-service
 ms.topic: article
 ms.date: 04/23/2021
-ms.openlocfilehash: 0f10edc6683889489df719d92ff44c8c0fff2f66
-ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.openlocfilehash: 91c6c64d5aecf9bd4ce7b4b700ead03e23cd9b9f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108007423"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110452338"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>创建 HTTPS 入口控制器并在 Azure Kubernetes 服务 (AKS) 中使用自己的 TLS 证书
 
@@ -27,7 +27,9 @@ ms.locfileid: "108007423"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-本文使用 [Helm 3][helm] 安装 NGINX 入口控制器。 确保使用最新版本的 Helm，并且有权访问 ingress-nginx Helm 存储库。 有关升级说明，请参阅 [Helm 安装文档][helm-install]。有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
+本文使用 [Helm 3][helm] 在 [支持的 Kubernetes 版本][支持 aks 的版本] 上安装 NGINX 入口控制器。 确保使用最新版本的 Helm，并且有权访问 ingress-nginx Helm 存储库。 本文中概述的步骤可能与 Helm 图表、NGINX 入口控制器或 Kubernetes 的先前版本不兼容。
+
+有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
 
 本文还要求运行 Azure CLI 2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 

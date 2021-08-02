@@ -8,32 +8,37 @@ ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 089d7d7990f0f94135f629a5cd7a461700aa3433
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 8232582231a359ea6a9cf49b20685a3c9e4ef0d0
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830765"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006304"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>使用模板创建 Web 应用和 Azure Redis 缓存
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-本主题介绍如何创建 Azure 资源管理器模板来部署包含 Azure Redis 缓存的 Azure Web 应用。 将了解如何定义要部署的资源以及如何定义执行部署时指定的参数。 可将此模板用于自己的部署，或自定义此模板以满足要求。
+本文介绍如何创建 Azure 资源管理器模板来部署包含 Azure Cache for Redis 的 Azure Web 应用。 你将了解以下部署详细信息：
 
-有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/templates/template-syntax.md)。 若要了解缓存资源类型的 JSON 语法和属性，请参阅 [Microsoft.Cache 资源类型](/azure/templates/microsoft.cache/allversions)。
+- 如何定义部署的资源 
+- 如何定义执行部署时指定的参数
+
+可将此模板用于自己的部署，或自定义此模板以满足要求。
+
+有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板](../azure-resource-manager/templates/syntax.md)。 若要了解缓存资源类型的 JSON 语法和属性，请参阅 [Microsoft.Cache 资源类型](/azure/templates/microsoft.cache/allversions)。
 
 有关完整的模板，请参阅[包含 Azure Redis 缓存的 Web 应用模板](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json)。
 
 ## <a name="what-you-will-deploy"></a>将部署的内容
-在此模板中，将部署：
+在此模板中，你将部署：
 
 * Azure Web 应用
 * 用于 Redis 的 Azure 缓存
 
-若要自动运行部署，请单击以下按钮：
+若要自动运行部署，请选择以下按钮：
 
-[![部署到 Azure](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
+[![部署到 Azure](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.web%2Fweb-app-with-redis-cache%2Fazuredeploy.json)
 
 ## <a name="parameters-to-specify"></a>要指定的参数
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
@@ -81,7 +86,7 @@ ms.locfileid: "107830765"
 ```
 
 
-### <a name="web-app"></a>Web 应用
+### <a name="web-app-azure-cache-for-redis"></a>Web 应用 (Azure Cache for Redis)
 使用 **webSiteName** 变量中指定的名称创建 Web 应用。
 
 请注意，在 Web 应用中配置的应用设置属性使其可与 Azure Redis 缓存配合工作。 这些应用设置是根据部署期间提供的值动态创建的。
@@ -93,8 +98,7 @@ ms.locfileid: "107830765"
   "type": "Microsoft.Web/sites",
   "location": "[resourceGroup().location]",
   "dependsOn": [
-    "[concat('Microsoft.Web/serverFarms/', variables('hostingPlanName'))]",
-    "[concat('Microsoft.Cache/Redis/', variables('cacheName'))]"
+    "[concat('Microsoft.Web/serverFarms/', variables('hostingPlanName'))]"
   ],
   "tags": {
     "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty",
@@ -114,7 +118,45 @@ ms.locfileid: "107830765"
         "[concat('Microsoft.Cache/Redis/', variables('cacheName'))]"
       ],
       "properties": {
-       "CacheConnection": "[concat(variables('cacheName'),'.redis.cache.windows.net,abortConnect=false,ssl=true,password=', listKeys(resourceId('Microsoft.Cache/Redis', variables('cacheName')), '2015-08-01').primaryKey)]"
+       "CacheConnection": "[concat(variables('cacheHostName'),'.redis.cache.windows.net,abortConnect=false,ssl=true,password=', listKeys(resourceId('Microsoft.Cache/Redis', variables('cacheName')), '2015-08-01').primaryKey)]"
+      }
+    }
+  ]
+}
+```
+
+
+### <a name="web-app-redisenterprise"></a>Web 应用 (RedisEnterprise)
+对于 RedisEnterprise，由于资源类型略有不同，执行 listKeys 的方式有所不同：
+
+```json
+{
+  "apiVersion": "2015-08-01",
+  "name": "[variables('webSiteName')]",
+  "type": "Microsoft.Web/sites",
+  "location": "[resourceGroup().location]",
+  "dependsOn": [
+    "[concat('Microsoft.Web/serverFarms/', variables('hostingPlanName'))]"
+  ],
+  "tags": {
+    "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty",
+    "displayName": "Website"
+  },
+  "properties": {
+    "name": "[variables('webSiteName')]",
+    "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-08-01",
+      "type": "config",
+      "name": "appsettings",
+      "dependsOn": [
+        "[concat('Microsoft.Web/Sites/', variables('webSiteName'))]",
+        "[concat('Microsoft.Cache/RedisEnterprise/databases/', variables('cacheName'), "/default")]",
+      ],
+      "properties": {
+       "CacheConnection": "[concat(variables('cacheHostName'),abortConnect=false,ssl=true,password=', listKeys(resourceId('Microsoft.Cache/RedisEnterprise', variables('cacheName'), 'default'), '2020-03-01').primaryKey)]"
       }
     }
   ]
@@ -127,11 +169,11 @@ ms.locfileid: "107830765"
 ### <a name="powershell"></a>PowerShell
 
 ```azurepowershell
-New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup
+New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.web/web-app-with-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
-azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -g ExampleDeployGroup
+azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.web/web-app-with-redis-cache/azuredeploy.json -g ExampleDeployGroup
 ```

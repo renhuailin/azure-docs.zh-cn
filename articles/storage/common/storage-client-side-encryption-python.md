@@ -11,12 +11,12 @@ ms.date: 02/18/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: ffdfd4dc8a81587d757e3f9853f1bb34e0b93c0d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b76a1b8fa3a7d42f8b649adc225af89b4a40f15c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043739"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110461804"
 ---
 # <a name="client-side-encryption-with-python"></a>使用 Python 进行客户端加密
 
@@ -150,7 +150,7 @@ KEK 必须实现以下方法才能成功加密数据：
 ### <a name="blob-service-encryption"></a>Blob 服务加密
 设置 blockblobservice 对象中的加密策略字段。 其他所有事项均由客户端库在内部处理。
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
@@ -182,7 +182,7 @@ blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
 ### <a name="queue-service-encryption"></a>队列服务加密
 设置 queueservice 对象中的加密策略字段。 其他所有事项均由客户端库在内部处理。
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
@@ -215,7 +215,7 @@ retrieved_message_list = my_queue_service.get_messages(queue_name)
 
 ### <a name="using-the-resolver"></a>使用解析程序
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 
@@ -258,7 +258,7 @@ my_table_service.get_entity(
 ### <a name="using-attributes"></a>使用特性
 如上所述，可能通过将某个属性存储在 EntityProperty 对象中并设置 encrypt 字段，将该属性标记为进行加密。
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 我们目前正在努力创建反映 Azure 存储客户端库 12.x 版的代码片段。 有关详细信息，请参阅[宣布推出 Azure 存储 v12 客户端库](https://techcommunity.microsoft.com/t5/azure-storage/announcing-the-azure-storage-v12-client-libraries/ba-p/1482394)。
 

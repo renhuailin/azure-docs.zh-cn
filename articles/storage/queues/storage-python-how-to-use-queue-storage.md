@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: 32dc54673674ac10f8dc1e3351133ca33ef7665c
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 11b50ad391c5b73b7f986ddb7ad2972ebeaf2c58
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277413"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477261"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>如何通过 Python 使用 Azure 队列存储
 
@@ -38,7 +38,7 @@ ms.locfileid: "106277413"
 
 要通过 Python 包索引 (PyPI) 安装，请键入：
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 ```console
 pip install azure-storage-queue
@@ -61,7 +61,7 @@ pip install azure-storage-queue==2.1.0
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>配置应用程序以访问队列存储
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 可通过 [`QueueClient`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient) 对象来处理队列。 在你希望以编程方式访问服务总线的任何 Python 文件中，将以下代码添加到顶部附近：
 
@@ -88,7 +88,7 @@ import os, uuid
 
 连接字符串是从前面设置的 `AZURE_STORAGE_CONNECTION_STRING` 环境变量检索的。
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 以下代码使用存储连接字符串创建 `QueueClient` 对象。
 
@@ -119,7 +119,7 @@ queue_service.create_queue(queue_name)
 
 Azure 队列消息以文本形式存储。 如果要存储二进制数据，请在将消息放入队列之前设置 Base64 编码和解码函数。
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 在创建客户端对象时配置 Base64 编码和解码函数。
 
@@ -139,7 +139,7 @@ queue_service.decode_function = QueueMessageFormat.binary_base64decode
 
 ## <a name="insert-a-message-into-a-queue"></a>在队列中插入消息
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 若要在队列中插入消息，请使用 [`send_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) 方法。
 
@@ -159,7 +159,7 @@ queue_service.put_message(queue_name, message)
 
 ## <a name="peek-at-messages"></a>扫视消息
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 可以通过调用 [`peek_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) 方法来速览消息，而不会将其从队列中删除。 默认情况下，此方法会速览单个消息。
 
@@ -182,7 +182,7 @@ for peeked_message in messages:
 
 可以更改队列中现有消息的内容。 如果消息表示某个任务，则可以使用此功能来更新该任务的状态。
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 下面的代码使用 [`update_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) 方法来更新消息。 可见性超时设为 0，这意味着消息会立刻出现且内容将更新。
 
@@ -206,7 +206,7 @@ for message in messages:
 
 可以获取队列中消息的估计数。
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 [get_queue_properties](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#get-queue-properties---kwargs-) 方法返回包括 `approximate_message_count` 在内的队列属性。
 
@@ -230,7 +230,7 @@ print("Message count: " + str(count))
 
 通过两个步骤从队列中删除消息。 如果你的代码未能处理消息，此两步过程可确保你可以获取同一消息并重试。 在消息成功处理后调用 `delete_message`。
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 在调用 [receive_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) 时，默认情况下会获得队列中的下一条消息。 从 `receive_messages` 返回的消息对于从此队列读取消息的任何其他代码都是不可见的。 默认情况下，此消息持续 30 秒不可见。 若要完成从队列中删除消息，还必须调用 [delete_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#delete-message-message--pop-receipt-none----kwargs-)。
 
@@ -252,7 +252,7 @@ for message in messages:
 
 可通过两种方式自定义队列中消息的检索。 首先，可获取一批消息（最多 32 条）。 其次，可以设置更长或更短的不可见超时时间，从而允许代码使用更多或更少时间来完全处理每个消息。
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 以下代码示例使用 [`receive_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) 方法成批获取消息。 然后，它使用嵌套的 `for` 循环来处理每批中的每条消息。 它还将每条消息的不可见超时时间设置为 5 分钟。
 
@@ -274,7 +274,7 @@ for message in messages:
 
 ## <a name="delete-a-queue"></a>删除队列
 
-# <a name="python-v12"></a>[Python v12](#tab/python)
+# <a name="python-v12-sdk"></a>[Python v12 SDK](#tab/python)
 
 若要删除队列及其包含的所有消息，请调用 [`delete_queue`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) 方法。
 

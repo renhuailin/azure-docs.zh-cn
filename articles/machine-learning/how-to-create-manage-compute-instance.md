@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: db6414ecf4b1b5fcbdf52d59c0c79b72998e610a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: c678c36ff653d8975f7a0fe1a82395c3093758f6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375209"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110458545"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>创建和管理 Azure 机器学习计算实例
 
@@ -163,8 +163,19 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 如果脚本执行了特定于 azureuser 的某项操作（例如安装 Conda 环境或 Jupyter 内核），则必须将它放入 sudo -u azureuser 块中，如下所示
 
 ```shell
-sudo -u azureuser -i <<'EOF'
+#!/bin/bash
 
+set -e
+
+# This script installs a pip package in compute instance azureml_py38 environment
+
+sudo -u azureuser -i <<'EOF'
+# PARAMETERS
+PACKAGE=numpy
+ENVIRONMENT=azureml_py38 
+conda activate "$ENVIRONMENT"
+pip install "$PACKAGE"
+conda deactivate
 EOF
 ```
 请注意，sudo -u azureuser 确实会将当前工作目录更改为 /home/azureuser 。 此外，无法访问此块中的脚本参数。
@@ -208,6 +219,7 @@ EOF
     }
 }
 ```
+上面的 scriptData 指定了笔记本文件共享中创建脚本的位置，例如 Users/admin/testscript.sh。scriptArguments 是可选的，用于指定创建脚本的参数  。
 
 可以改为为资源管理器模板提供内联脚本。  Shell 命令可以引用上传到笔记本文件共享中的任何依赖项。  使用内联字符串时，脚本的工作目录为 /mnt/batch/tasks/shared/LS_root/mounts/clusters/ciname/code/Users。
 

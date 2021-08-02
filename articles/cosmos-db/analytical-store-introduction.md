@@ -4,15 +4,15 @@ description: 了解 Azure Cosmos DB 事务性（基于行）和分析（基于�
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 04/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 77c84e4b4a8129a95ee18b4ae89b48a687e9fce1
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 9328b8159b04d4e7e7bc2383739c86c76dbf156a
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104951583"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111985879"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>什么是 Azure Cosmos DB 分析存储？
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -39,7 +39,7 @@ Azure Cosmos DB 分析存储解决了传统 ETL 管道所具有的复杂和延�
 
 在 Azure Cosmos DB 容器中启用分析存储时，将基于容器中的操作数据在内部创建新的列存储。 此列存储将与该容器的面向行的事务性存储分开保存。 对操作数据的插入、更新和删除将自动同步到分析存储。 你无需更改源或 ETL，即可同步数据。
 
-### <a name="column-store-for-analytical-workloads-on-operational-data"></a>用于操作数据分析工作负荷的列存储
+## <a name="column-store-for-analytical-workloads-on-operational-data"></a>用于操作数据分析工作负荷的列存储
 
 分析工作负荷通常涉及聚合和按顺序扫描选定字段。 通过按以列为主的顺序存储数据，分析存储可以将每个字段的值组合在一起序列化。 此格式减少了扫描或计算特定字段中统计信息所需的 IOPS。 它极大地改进了扫描大型数据集所需的查询响应时间。 
 
@@ -55,33 +55,75 @@ Azure Cosmos DB 分析存储解决了传统 ETL 管道所具有的复杂和延�
 
 :::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Azure Cosmos DB 中的事务性行存储与分析列存储" border="false":::
 
-### <a name="decoupled-performance-for-analytical-workloads"></a>分析工作负荷性能已分离
+## <a name="decoupled-performance-for-analytical-workloads"></a>分析工作负荷性能已分离
 
 分析查询不会影响事务性工作负荷的性能，因为分析存储已与事务性存储分开。  分析存储无需分配单独的请求单位 (RU)。
 
-### <a name="auto-sync"></a>自动同步
+## <a name="auto-sync"></a>自动同步
 
 自动同步是指 Azure Cosmos DB 的完全托管功能，对操作数据执行的插入、更新、删除将准实时自动从事务存储同步到分析存储。 自动同步延迟通常在 2 分钟内。 如果共享吞吐量数据库拥有大量容器，则单个容器的自动同步延迟可能会更高，最长可能达 5 分钟。 我们希望详细了解此延迟如何适应你的场景。 请联系 [Azure Cosmos DB 团队](mailto:cosmosdbsynapselink@microsoft.com)提供相关反馈。
 
-自动同步功能与分析存储一起提供了以下主要优势：
+每次执行自动同步过程结束时，事务数据将立即可用于 Azure Synapse Analytics 运行时：
 
-### <a name="scalability--elasticity"></a>可伸缩性和弹性
+* Azure Synapse Analytics Spark 池可以通过自动更新的 Spark 表读取所有数据（包括最新更新），也可以通过始终读取数据最新状态的 `spark.read` 命令读取。
+
+*  Azure Synapse Analytics SQL 无服务器池可以通过自动更新的视图读取所有数据（包括最新更新），也可以通过始终读取数据最新状态的 `SELECT` 和 ` OPENROWSET` 命令读取。
+
+> [!NOTE]
+> 即使事务 TTL 小于 2 分钟，事务数据也会同步到分析存储。 
+
+## <a name="scalability--elasticity"></a>可伸缩性和弹性
 
 通过使用水平分区，Azure Cosmos DB 事务性存储无需停机即可弹性缩放存储和吞吐量。 事务性存储中的水平分区为自动同步提供了可伸缩性和弹性，确保数据以接近实时的速度同步到分析存储。 无论事务性流量吞吐量如何数据同步都会执行（无论是 1000 个操作/秒还是 1 百万个操作/秒），并且它不会影响事务性存储的预配吞吐量。 
 
-### <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>自动处理架构更新
+## <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>自动处理架构更新
 
-Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性应用程序，而无需处理架构或索引管理。 与此相反，Azure Cosmos DB 分析存储已架构化，以便优化分析查询性能。 借助自动同步功能，Azure Cosmos DB 可管理对事务存储中最新更新的架构推断。  它还管理现成分析存储中的架构表示形式，其中包括处理嵌套数据类型。
+Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性应用程序，而无需处理架构或索引管理。 与此相反，Azure Cosmos DB 分析存储已架构化，以便优化分析查询性能。 借助自动同步功能，Azure Cosmos DB 可管理对事务存储中最新更新的架构推断。 它还管理现成分析存储中的架构表示形式，其中包括处理嵌套数据类型。
 
 随着架构不断演化，并且将随时间推移添加新属性，分析存储会自动跨事务存储中的所有历史架构呈现联合架构。
 
-#### <a name="schema-constraints"></a>架构约束
+> [!NOTE]
+> 在分析存储的上下文中，我们将以下结构视为属性：
+> * JSON“元素”或“由 `:` 分隔的字符串值对”。
+> * JSON 对象，由 `{` 和 `}` 分隔。
+> * JSON 数组，由 `[` 和 `]` 分隔。
+
+
+### <a name="schema-constraints"></a>架构约束
 
 当启用分析存储以自动推断并正确表示架构时，以下约束适用于 Azure Cosmos DB 中的操作数据：
 
 * 架构的任何嵌套级别最多可以有 1000 个属性，最大嵌套深度为 127 个级别。
   * 分析存储中只表示前 1000 个属性。
   * 分析存储中只表示前 127 个嵌套层级。
+  * JSON 文档的第一个级别是它的 `/` 根级别。
+  * 文档中第一级的属性将以列的形式表示。
+
+
+* 示例方案：
+  * 如果文档的第一个级别具有 2000 个属性，则只表示前 1000 个属性。
+  * 如果文档有 5 个级别，每个级别包含 200 个属性，则将表示所有属性。
+  * 如果文档有 10 个级别，每个级别包含 400 个属性，则只有前 2 个级别将在分析存储中完全表示。 还将表示第三个级别一半的属性。
+
+* 下面的假设文档包含 4 个属性和 3 个级别。
+  * 其中的级别为 `root`、`myArray` 和 `myArray` 中的嵌套结构。
+  * 其中的属性为 `id`、`myArray`、`myArray.nested1` 和 `myArray.nested2`。
+  * 分析存储表示形式将具有两列：`id` 和 `myArray`。 使用 Spark 或 T-SQL 函数也可以将嵌套结构作为列公开。
+
+
+```json
+{
+  "id": "1",
+  "myArray": [
+    "string1",
+    "string2",
+    {
+      "nested1": "abc",
+      "nested2": "cde"
+    }
+  ]
+}
+```
 
 * 尽管从唯一性角度来看，JSON 文档（和 Cosmos DB 集合/容器）区分大小写，但分析存储不区分大小写。
 
@@ -102,24 +144,14 @@ Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性�
 
 
 * 集合的第一个文档定义初始分析存储架构。
-  * 文档中第一级的属性将以列的形式表示。
   * 属性数量超过初始架构的文档将在分析存储中生成新列。
   * 不能删除列。
   * 删除集合中的所有文档不会重置分析存储架构。
   * 架构没有版本控制。 用户将在分析存储中看到的版本是从事务存储中推断出的最后一个版本。
 
-* 目前，我们不支持 Azure Synapse Spark 读取包含空格的列名称。
+* 目前，我们不支持 Azure Synapse Spark 读取名称中含有空白（空格）的属性。 需要使用 Spark 函数（如 `cast` 或 `replace`）才能将数据加载到 Spark DataFrame 中。
 
-* 对于显式 `null` 值，需要不同的行为：
-  * Azure Synapse 中的 Spark 池会将这些值作为 `0`（零）读取。
-  * 如果集合中第一个文档对于相同属性，包含不同数据类型 `integer` 的值，则 Azure Synapse 中的 SQL 无服务器池会将这些值作为 `NULL` 读取。
-  * 如果集合中第一个文档对于相同属性包含整数型值，则 Azure Synapse 中的 SQL 无服务器池会将这些值作为 `0` 读取。
-
-* 对于缺失列，需要不同的行为：
-  * Azure Synapse 中的 Spark 池会将这些列表示为 `undefined`。
-  * Azure Synapse 中的 SQL 无服务器池会将这些列表示为 `NULL`。
-
-#### <a name="schema-representation"></a>架构表示形式
+### <a name="schema-representation"></a>架构表示形式
 
 在分析存储中，架构表示形式有两种模式。 这些模式在简化列式表示形式、处理多态架构和简化查询体验之间进行了权衡：
 
@@ -127,13 +159,14 @@ Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性�
 * 完全保真架构表示形式
 
 > [!NOTE]
-> 对于 SQL（核心）API 帐户，启用分析存储后，将明确定义分析存储中的默认架构表示形式。 而对于用于 MongoDB 帐户的 Azure Cosmos DB API，分析存储中的默认架构表示形式是完全保真架构表示形式。 如果你的场景需要与每个 API 的默认产品/服务不同的架构表示形式，请与 [Azure Cosmos DB 团队](mailto:cosmosdbsynapselink@microsoft.com)联系，以启用它。
+> 对于 SQL（核心）API 帐户，启用分析存储后，将明确定义分析存储中的默认架构表示形式。 而对于用于 MongoDB 帐户的 Azure Cosmos DB API，分析存储中的默认架构表示形式是完全保真架构表示形式。 
 
 **定义明确的架构表示形式**
 
 定义明确的架构表示形式可在事务存储中创建与架构无关的数据的简单表格表示形式。 定义明确的架构表示形式具有以下注意事项：
 
 * 一个属性在多个项中的类型始终相同。
+* 我们仅允许一种类型更改，就是从 null 更改为任何其他数据类型。列数据类型由第一个出现的非 null 项进行定义。
 
   * 例如，`{"a":123} {"a": "str"}` 没有完善定义的架构，因为 `"a"` 有时是字符串，有时是数值。 在这种情况下，分析存储会将 `"a"` 的数据类型注册为容器生存期期间第一个出现的项中的 `“a”` 的数据类型。 该文档仍将包含在分析存储中，但是呈不同数据类型 `"a"` 的项将不会包括在内。
   
@@ -150,12 +183,22 @@ Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性�
   * Azure Synapse 中的 Spark 池会将这些值表示为 `undefined`。
   * Azure Synapse 中的 SQL 无服务器池会将这些值表示为 `NULL`。
 
+* 对于显式 `null` 值，需要不同的行为：
+  * Azure Synapse 中的 Spark 池会将这些值作为 `0`（零）读取。 一旦该列具有非 null 值，它就会更改为 `undefined`。
+  * Azure Synapse 中的 SQL 无服务器池将这些值读取为 `NULL`。
+    
+* 对于缺少的列，预期存在不同的行为：
+  * Azure Synapse 中的 Spark 池会将这些列表示为 `undefined`。
+  * Azure Synapse 中的 SQL 无服务器池会将这些列表示为 `NULL`。
+
 
 **完全保真架构表示形式**
 
 完全保真架构表示形式旨在处理与架构无关的操作数据中的各种多态架构。 在此架构表示形式中，即使违反定义明确的架构约束（也就是既没有混合数据类型字段也没有混合数据类型数组），也不会从分析存储中删除任何项。
 
 这是通过根据属性中值的数据类型将操作数据的叶属性转换为具有不同列的分析存储来实现的。 叶属性名称在分析存储架构中使用数据类型作为后缀进行扩展，以便它们可以无歧义地进行查询。
+
+在完全保真架构表示形式中，每个属性的每个数据类型都将生成该数据类型的列。 每个属性都计为最多 1000 个属性的其中之一。
 
 例如，我们来看事务存储中的以下示例文档：
 
@@ -194,28 +237,39 @@ salary: 1000000
 |ObjectId   |".objectId"    | ObjectId("5f3f7b59330ec25c132623a2")|
 |文档   |".object" |    {"a": "a"}|
 
-### <a name="cost-effective-archival-of-historical-data"></a>以经济高效的方式将历史数据存档
+* 对于显式 `null` 值，需要不同的行为：
+  * Azure Synapse 中的 Spark 池会将这些值作为 `0`（零）读取。
+  * Azure Synapse 中的 SQL 无服务器池将这些值读取为 `NULL`。
+  
+* 对于缺少的列，预期存在不同的行为：
+  * Azure Synapse 中的 Spark 池会将这些列表示为 `undefined`。
+  * Azure Synapse 中的 SQL 无服务器池会将这些列表示为 `NULL`。
+
+## <a name="cost-effective-archival-of-historical-data"></a>以经济高效的方式将历史数据存档
 
 数据分层指在存储基础结构之间分隔数据，以适用于不同的方案， 从而提高端到端数据堆栈的整体性能和经济高效性。 Azure Cosmos DB 借助分析存储，现在支持使用不同的数据布局将事务性存储中的数据自动分层到分析存储。 相对于事务性存储，分析存储在存储成本方面实现了优化，你可以将操作数据保留更长时间，来进行历史分析。
 
 启用分析存储后，你可以根据事务性工作负荷的数据保留需求，配置“事务性存储生存时间(事务性 TTL)”属性，以便超过特定时间后即自动从事务性存储删除记录。 同样，你可以通过“分析存储生存时间(分析 TTL)”管理分析存储（独立于事务性存储）中保留的数据的生命周。 通过启用分析存储并配置 TTL 属性，你可以进行无缝分层，并定义两个存储的数据保留期。
 
-### <a name="global-distribution"></a>全局分发
+> [!NOTE]
+>目前，分析存储不支持备份和还原。 不能依赖分析存储来计划备份策略。 有关详细信息，请参阅[本文档](synapse-link.md#limitations)的限制部分。 需要注意的是，分析存储中数据的架构不同于事务存储中已存在的架构。 虽然可以生成分析存储数据的快照，而不会产生任何 RU 成本，但我们不能保证使用此快照可以为事务存储提供反馈。 此过程不受支持。
+
+## <a name="global-distribution"></a>全局分发
 
 若你拥有全局分发的 Azure Cosmos DB 帐户，为容器启用分析存储后，它将适用于该帐户的所有区域。  对操作数据的任何更改均将全局复制到所有区域。 你可以高效地对 Azure Cosmos DB 中距离最近的区域的数据副本运行分析查询。
 
-### <a name="security"></a>安全性
+## <a name="security"></a>安全性
 
 对分析存储进行身份验证的方式，与对给定数据库的事务性存储进行身份验证的方式相同。 可以使用主密钥或只读密钥进行身份验证。 可以利用 Synapse Studio 中的链接服务，以防止粘贴 Spark 笔记本中的 Azure Cosmos DB 密钥。 有权访问工作区的任何用户都可以访问此链接服务。
 
-### <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>支持多个 Azure Synapse Analytics 运行时
+## <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>支持多个 Azure Synapse Analytics 运行时
 
 分析存储已经过优化，无需依赖计算运行时即可为分析工作负荷提供可伸缩性、弹性和性能。 存储技术是自行管理，无需手动操作即可优化分析工作负荷。
 
 通过将分析存储系统与分析计算系统分离，可以同时从 Azure Synapse Analytics 支持的不同分析运行时中查询 Azure Cosmos DB 分析存储中的数据。 目前，Azure Synapse Analytics 支持 Apache Spark 和无服务器 SQL 池使用 Azure Cosmos DB 分析存储。
 
 > [!NOTE]
-> 只能使用 Azure Synapse Analytics 运行时从分析存储中读取内容。 可以将数据重写入事务性存储，将其作为服务层。
+> 只能使用 Azure Synapse Analytics 运行时从分析存储中读取内容。 反过来也是如此，Azure Synapse Analytics 运行时只能从分析存储中读取内容。 只有自动同步过程才能更改分析存储中的数据。 可以使用 Azure Synapse Analytics Spark 池通过内置的 Azure Cosmos DB OLTP SDK 将数据写回到 Cosmos DB 事务存储。
 
 ## <a name="pricing"></a><a id="analytical-store-pricing"></a> 定价
 
@@ -230,6 +284,10 @@ salary: 1000000
 分析存储定价与事务性存储定价模型不同。 分析存储中没有预配 RU 这一概念。 有关分析存储定价模型的完整详细信息，请参阅 [Azure Cosmos DB 定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 
 若要为在 Azure Cosmos DB 容器中启用分析存储进行高级别成本估算，可以使用 [Azure Cosmos DB 容量规划器](https://cosmos.azure.com/capacitycalculator/)，来获得分析存储和写入操作成本的估算值。 分析读取操作成本取决于分析工作负荷特性，但按照高级别估算，扫描分析存储中的 1 TB 的数据通常引发 130,000 个分析读取操作，产生的成本为 0.065 美元。
+
+> [!NOTE]
+> Cosmos DB 成本计算器不包括分析存储读取操作估计，因为它们是分析工作负载的函数。 尽管上述估计可用于扫描分析存储中 1 TB 的数据，但应用筛选器可减少扫描的数据量，并且可在给定消耗定价模型的情况下分析读取操作的确切数目。 围绕分析工作负载的概念证明可为分析读取操作提供更精细的估计。
+
 
 ## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a> 分析生存时间 (TTL)
 
@@ -252,11 +310,11 @@ salary: 1000000
 *   将容器级别的分析 TTL 设置为大于或等于事务性 TTL，即可将操作数据存档在分析存储中更长时间。
 *   将分析 TTL 设置为等于事务性 TTL，分析存储即可镜像事务存储。
 
-在容器上启用分析存储时：
+如何在容器上启用分析存储：
 
-* 在 Azure 门户中，分析 TTL 选项设置为默认值 -1。 可以通过导航到数据资源管理器下的容器设置，将此值更改为“n”秒。 
+* 在 Azure 门户中，当打开分析 TTL 选项时，它设置为默认值 -1。 可以通过导航到数据资源管理器下的容器设置，将此值更改为“n”秒。 
  
-* 在 Azure SDK 或 PowerShell 或 CLI 中，可以通过将分析 TTL 选项设置为 -1 或“n”来启用该选项。 
+* 在 Azure 管理 SDK、Azure Cosmos DB SDK、PowerShell 或 CLI 中，可以通过将分析 TTL 选项设置为 -1 或“n”秒来启用该选项。 
 
 若要了解详细信息，请参阅[如何对容器配置分析 TTL](configure-synapse-link.md#create-analytical-ttl)。
 
@@ -268,6 +326,6 @@ salary: 1000000
 
 * [开始使用 Azure Synapse Link for Azure Cosmos DB](configure-synapse-link.md)
 
-* [有关 Synapse Link for Azure Cosmos DB 的常见问题](synapse-link-frequently-asked-questions.md)
+* [有关 Synapse Link for Azure Cosmos DB 的常见问题](synapse-link-frequently-asked-questions.yml)
 
 * [Azure Synapse Link for Azure Cosmos DB 用例](synapse-link-use-cases.md)

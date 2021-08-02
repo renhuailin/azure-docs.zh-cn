@@ -1,15 +1,15 @@
 ---
 title: Connected Machine 代理概述
 description: 本文详细介绍了已启用 Azure Arc 的服务器代理，该代理支持监视混合环境中托管的虚拟机。
-ms.date: 05/10/2021
+ms.date: 06/04/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 31316fae541464d9b1c25b303593948b7e45b5b3
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 3d5c3640147a9c23fb05c0156edf012815466189
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713875"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538213"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>已启用 Azure Arc 的服务器代理概述
 
@@ -17,6 +17,9 @@ ms.locfileid: "109713875"
 
 >[!NOTE]
 >自 2020 年 9 月正式发行已启用 Azure Arc 的服务器开始，所有预发行版本的 Azure Connected Machine 代理（版本低于 1.0 的代理）将在 2021 年 2 月 2 日前弃用 。  在这段期限内，你可以升级到版本 1.0 或更高版本，这段期限后，预发行的代理将无法再与启用了 Azure Arc 的服务器服务通信。
+
+>[!NOTE]
+> [Azure Monitor 代理](../../azure-monitor/agents/azure-monitor-agent-overview.md) (AMA)（当前为预览版）不会取代 Connected Machine 代理。 Azure Monitor 代理将取代 Windows 和 Linux 计算机上的 Log Analytics 代理、诊断扩展和 Telegraf 代理。 有关更多详细信息，请查看有关新代理的 Azure Monitor 文档。
 
 ## <a name="agent-component-details"></a>代理组件详细信息
 
@@ -58,7 +61,7 @@ Azure Connected Machine 代理包包含捆绑在一起的多个逻辑组件。
 
 * 资源位置（区域）
 * 虚拟机 ID
-* Tags
+* 标记
 * Azure Active Directory 托管标识证书
 * Guest Configuration 策略分配
 * 扩展请求 - 安装、更新和删除。
@@ -83,7 +86,7 @@ Azure Connected Machine 代理包包含捆绑在一起的多个逻辑组件。
 
 Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操作系统：
 
-- Windows Server 2008 R2、Windows Server 2012 R2 和更高版本（包括 Server Core）
+- Windows Server 2008 R2 SP1、Windows Server 2012 R2 和更高版本（包括 Server Core）
 - Ubuntu 16.04、18.04 和 20.04 LTS (x64)
 - CentOS Linux 7 和 8 (x64)
 - SUSE Linux Enterprise Server (SLES) 12 和 15 (x64)
@@ -93,6 +96,17 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 
 > [!WARNING]
 > Linux 主机名或 Windows 计算机名不能使用名称中的保留字或商标之一，否则尝试使用 Azure 注册连接的计算机将失败。 若要获取保留字的列表，请参阅[解决保留的资源名称错误](../../azure-resource-manager/templates/error-reserved-resource-name.md)。
+
+> [!NOTE]
+> 虽然启用了 Arc 的服务器支持 Amazon Linux，但以下内容不支持此发行版：
+> * Azure Monitor 使用的代理（即 Log Analytics 和依赖关系代理）
+> * Azure 自动化更新管理
+> * VM 见解
+
+### <a name="software-requirements"></a>软件要求
+
+* 需要 .NET Framework 4.6 或更高版本。 [下载 .NET Framework](/dotnet/framework/install/guide-for-developers)。
+* 需要 Windows PowerShell 5.1。 [下载 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。
 
 ### <a name="required-permissions"></a>所需的权限
 
@@ -133,6 +147,7 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 * AzureTrafficManager
 * AzureResourceManager
 * AzureArcInfrastructure
+* 存储
 
 URL：
 
@@ -144,7 +159,7 @@ URL：
 |`dc.services.visualstudio.com`|Application Insights|
 |`*.guestconfiguration.azure.com` |来宾配置|
 |`*.his.arc.azure.com`|混合标识服务|
-|`www.office.com`|Office 365|
+|`*.blob.core.windows.net`|下载启用了 Arc 的服务器扩展的源|
 
 预览版代理（版本 0.11 和更低版本）还要求访问以下 URL：
 
@@ -279,7 +294,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     |Service name |显示名称 |进程名称 |说明 |
     |-------------|-------------|-------------|------------|
     |himdsd.service |Azure Connected Machine Agent Service |himds |此服务实现 Azure Instance Metadata Service (IMDS)，以管理 Azure 的连接和已连接计算机的 Azure 标识。|
-    |gcad.servce |GC Arc Service |gc_linux_service |监视计算机所需的状态配置。 |
+    |gcad.service |GC Arc Service |gc_linux_service |监视计算机所需的状态配置。 |
     |extd.service |Extension Service |gc_linux_service | 安装以计算机为目标的所需扩展。|
 
 * 有几个日志文件可用于故障排除。 下表对它们进行了说明。

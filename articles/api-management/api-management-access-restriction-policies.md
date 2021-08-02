@@ -4,17 +4,16 @@ description: 了解可在 Azure API 管理中使用的访问限制策略。
 services: api-management
 documentationcenter: ''
 author: vladvino
-ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
 ms.topic: article
-ms.date: 02/26/2021
+ms.date: 06/02/2021
 ms.author: apimpm
-ms.openlocfilehash: 882d96271b6976db1ffc0dde181d5699c5cc27de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 55e87d6f0e2708e94beb1e2f9391bfa7aff44ceb
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688240"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111814073"
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
 
@@ -29,6 +28,7 @@ ms.locfileid: "101688240"
 -   [按订阅设置使用量配额](#SetUsageQuota) - 允许根据订阅强制实施可续订或有生存期的调用量和/或带宽配额。
 -   [按密钥设置使用量配额](#SetUsageQuotaByKey) - 允许根据密钥强制消耗可续订或有生存期的调用量和/或带宽配额。
 -   [验证 JWT](#ValidateJWT) - 强制从指定 HTTP 标头或指定查询参数提取的 JWT 必须存在且有效。
+-  [验证客户端证书](#validate-client-certificate) - 强制客户端提供给 API 管理实例的证书与指定的验证规则和声明相匹配。
 
 > [!TIP]
 > 可以在不同的范围内为不同的目的使用访问限制策略。 例如，可以通过在 API 级别上应用 `validate-jwt` 策略来使用 AAD 身份验证保护整个 API，也可以在 API 操作级别上应用它并使用 `claims` 进行更细粒度的控制。
@@ -576,6 +576,95 @@ ms.locfileid: "101688240"
 | separator                       | 字符串。 指定要用于从多值声明中提取一组值的分隔符（例如 ","）。                                                                                                                                                                                                                                                                                                                                          | 否                                                                               | 空值                                                                               |
 | url                             | Open ID 配置终结点 URL，可以从其获取 Open ID 配置元数据。 响应应符合以下 URL 中定义的规范：`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 对于 Azure Active Directory，请使用以下 URL：`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`，代之以目录租户名称，例如 `contoso.onmicrosoft.com`。 | 是                                                                              | 空值                                                                               |
 | output-token-variable-name      | 字符串。 成功进行令牌验证后，将作为 [`Jwt`](api-management-policy-expressions.md) 类型的对象接收令牌值的上下文变量的名称                                                                                                                                                                                                                                                                                     | 否                                                                               | 空值                                                                               |
+
+### <a name="usage"></a>使用情况
+
+此策略可在以下策略[节](./api-management-howto-policies.md#sections)和[范围](./api-management-howto-policies.md#scopes)中使用。
+
+-   **策略节：** 入站
+-   **策略范围：** 所有范围
+
+
+## <a name="validate-client-certificate"></a>验证客户端证书
+
+使用 `validate-client-certificate` 策略强制客户端提供给 API 管理实例的证书与指定的验证规则和声明（例如一个或多个证书标识的使用者或颁发者）相匹配。
+
+要被视为有效，客户端证书必须匹配由顶级元素的属性定义的所有验证规则，并匹配至少一个已定义身份的所有已定义声明。 
+
+使用此策略根据所需的属性检查传入的证书属性。 在这些情况下，还可以使用此策略替代客户端证书的默认验证：
+
+* 如果已上传自定义 CA 证书以验证对托管网关的客户端请求
+* 如果已将自定义证书颁发机构配置为验证对自托管网关的客户端请求
+
+有关自定义 CA 证书和证书颁发机构的详细信息，请参阅[如何在 Azure API 管理中添加自定义 CA 证书](api-management-howto-ca-certificates.md)。 
+
+### <a name="policy-statement"></a>策略语句
+
+```xml
+<validate-client-certificate> 
+    validate-revocation="true|false" 
+    validate-trust="true|false" 
+    validate-not-before="true|false" 
+    validate-not-after="true|false" 
+    ignore-error="true|false"> 
+    <identities> 
+        <identity  
+            thumbprint="certificate thumbprint"  
+            serial-number="certificate serial number" 
+            common-name="certificate common name"  
+            subject="certificate subject string"  
+            dns-name="certificate DNS name" 
+            issuer="certificate issuer" 
+            issuer-thumbprint="certificate issuer thumbprint"  
+            issuer-certificate-id="certificate identifier" /> 
+    </identities> 
+</validate-client-certificate> 
+```
+
+### <a name="example"></a>示例
+
+以下示例验证客户端证书以匹配策略的默认验证规则，并检查使用者和颁发者是否匹配指定值。
+
+```xml
+<validate-client-certificate> 
+    validate-revocation="true" 
+    validate-trust="true" 
+    validate-not-before="true" 
+    validate-not-after="true" 
+    ignore-error="false"
+    <identities> 
+        <identity 
+            subject="C=US, ST=Illinois, L=Chicago, O=Contoso Corp., CN=*.contoso.com"
+            issuer="C=BE, O=FabrikamSign nv-sa, OU=Root CA, CN=FabrikamSign Root CA" />
+    </identities> 
+</validate-client-certificate> 
+```
+
+### <a name="elements"></a>元素
+
+| 元素             | 说明                                  | 必须 |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| validate-client-certificate        | 根元素。      | 是      |
+|   identities      |  包含对客户端证书具有定义声明的标识列表。       |    否        |
+
+### <a name="attributes"></a>属性
+
+| 名称                            | 说明      | 必须 |  默认    |
+| ------------------------------- |   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| validate-revocation  | 布尔值。 指定是否根据在线吊销列表验证证书。  | 否   | True  |
+| validate-trust | 布尔值。 指定在无法成功建立到受信任 CA 的链的情况下验证是否应失败。 | 否 | True |
+| validate-not-before | 布尔值。 根据当前时间验证值。 | 否 | True | 
+| validate-not-after  | 布尔值。 根据当前时间验证值。 | 否 | True| 
+| ignore-error  | 布尔值。 指定在验证失败时，策略是继续执行下一个处理程序还是跳转到错误状态。 | 编号 | False |  
+| 标识 | 字符串。 使证书有效的证书声明值的组合。 | 是 | 空值 | 
+| thumbprint | 证书指纹。 | 否 | 空值 |
+| 序列号 | 证书序列号。 | 否 | 空值 |
+| 公用名 | 证书公用名（Subject 字符串的一部分）。 | 否 | 空值 |
+| subject | Subject 字符串。 必须遵循可分辨名称的格式。 | 否 | 空值 |
+| dns-name | 使用者可选名称声明中 dnsName 条目的值。 | 否 | 空值 | 
+| 颁发者 | 颁发者的 subject。 必须遵循可分辨名称的格式。 | 否 | 空值 | 
+| issuer-thumbprint | 颁发者指纹。 | 否 | 空值 | 
+| issuer-certificate-id | 表示颁发者公钥的现有证书实体的标识符。 | 否 | 空值 | 
 
 ### <a name="usage"></a>使用情况
 

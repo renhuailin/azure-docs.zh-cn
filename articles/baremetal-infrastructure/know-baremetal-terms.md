@@ -1,26 +1,30 @@
 ---
-title: 了解 Azure BareMetal 基础结构的条款
-description: 了解 Azure BareMetal 基础结构的条款。
+title: 了解 Azure 裸机基础结构的术语
+description: 了解 Azure 裸机基础结构的术语。
 ms.topic: conceptual
-ms.date: 1/4/2021
-ms.openlocfilehash: fd7a39854c86f728ef152f8e7d858157e1ad26f4
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
-ms.translationtype: MT
+ms.date: 04/06/2021
+ms.openlocfilehash: 91270b2c16a1b642b697fd4ffb6a9c635608110e
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861920"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576308"
 ---
-# <a name="know-the-terms-for-baremetal-infrastructure"></a>了解 BareMetal 基础结构的条款
+# <a name="know-the-terms-for-baremetal-infrastructure"></a>了解裸机基础结构的术语
 
-在本文中，我们将介绍一些重要的 BareMetal 术语。
+本文介绍与 BareMetal 基础结构相关的一些重要术语。
 
-- **修订**：存在称为修订版 3 (Rev 3) 的原始标记修订，以及 BareMetal 实例标记的两个不同的戳记修订版本。 每个 stamp 在体系结构和邻近性上不同于 Azure 虚拟主机：
-    - **修订版 4** (Rev 4) ：一种较新的设计，更接近 azure 虚拟机 (VM) 主机，并降低 azure Vm 和 BareMetal 实例单位之间的延迟。 
-    - **修订版 4.2** (Rev 4.2) ：最新的更名 BareMetal 基础结构，使用现有的 Rev 4 体系结构。 修订版4更接近于 Azure 虚拟机 (VM) 主机。 它显著改进了在修订版4戳记或 rows 中部署的 Azure Vm 和 BareMetal 实例单位之间的网络延迟。 可以通过 Azure 门户访问和管理 BareMetal 实例。    
+- **修订**：BareMetal 基础结构（HANA 大型实例）缩放单元有两个不同的缩放单元修订。 这两个修订在体系结构方面不同，接近于 Azure 虚拟机主机：
+    - “修订 3”(Rev 3)：2016 年年中部署的原始设计。
+    - “修订 4.2”(Rev 4.2)：一种新的设计，可提供与 Azure 虚拟机主机更接近的网络延迟，并大大降低 Azure VM 与 HANA 大型实例之间的网络延迟。 Azure 门户中的资源称为“BareMetal 基础结构"，客户可以从 Azure 门户中作为 BareMetal 实例访问其资源。
 
-- **Stamp**：定义 BareMetal 实例的 Microsoft 内部部署大小。 在部署实例单元之前，必须在数据中心位置部署包含计算、网络和存储机架的 BareMetal 实例标记。 此类部署称为 BareMetal 实例标记或从修订版本4.2。
+- **戳**：定义 BareMetal 实例的 Microsoft 内部部署大小。 必须先在数据中心位置部署一个由计算、网络和存储机架组成的 BareMetal 实例戳，才能部署实例。 此类部署称为 BareMetal 实例戳。
 
-- **租户**：在 BareMetal 实例标记中部署的客户隔离到 *租户中。* 租户在网络、存储和计算层中相互隔离。 分配给不同租户的存储和计算单元在 BareMetal 实例的标记级别上无法相互查看或相互通信。 客户可以选择部署到不同的租户中。 即使这样，BareMetal 实例的标记级别上的租户之间也不会进行通信。
+- **租户**：部署 BareMetal 实例戳的客户被隔离为租户。 租户在网络、存储和计算层中相互隔离。 分配给不同租户的存储和计算单位在 BareMetal 实例戳级别上不能相互可见或通信。 客户可以选择部署到不同的租户中。 即使这样，在 BareMetal 实例戳级别上租户之间也没有通信。
 
 ## <a name="next-steps"></a>后续步骤
-了解有关 [BareMetal 基础结构](workloads/sap/baremetal-overview-architecture.md) 的详细信息，或者如何 [识别 BareMetal 实例单元并与之交互](workloads/sap/baremetal-infrastructure-portal.md)。 
+
+现在，你已了解了 BareMetal 基础结构的重要术语，你可能想要了解：
+- [BareMetal 基础结构](concepts-baremetal-infrastructure-overview.md)的更多详细信息。
+- 如何[在 Azure 中连接 BareMetal 基础结构实例](connect-baremetal-infrastructure.md)。
+

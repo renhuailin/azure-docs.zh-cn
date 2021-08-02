@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: cc55cd17a547b9c63f2c26479d5797fae016d8d7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 422ba2ecaed8803a49c0a82b85d821d3f55c9bbd
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102044062"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071962"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>使用 Azure Policy 大规模部署 Azure Monitor
 虽然某些 Azure Monitor 功能仅配置一次或有限的几次，但另一些功能必须针对要监视的每个资源重复配置。 本文介绍了如何使用 Azure Policy 大规模实施 Azure Monitor 以确保为所有 Azure 资源一致且准确地配置监视功能。
@@ -41,6 +41,29 @@ Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以
 3. 对于“类型”，请选择“内置”；对于“类别”，请选择“监视”。
 
   ![Azure 门户中“Azure Policy 定义”页的屏幕截图，其中显示了用于监视类别和内置类型的策略定义的列表。](media/deploy-scale/builtin-policies.png)
+
+## <a name="azure-monitor-agent-preview"></a>Azure Monitor 代理（预览版）
+[Azure Monitor 代理](agents/azure-monitor-agent-overview.md)从 Azure 虚拟机的来宾操作系统中收集监视数据并将数据交付给 Azure Monitor。 它按照[数据收集规则](agents/data-collection-rule-overview.md)将数据配置为从每个代理收集，从而实现大规模收集设置的可管理性，同时仍为部分计算机启用独特的范围配置。  
+创建虚拟机时，使用以下策略和策略计划自动安装代理并将其与数据收集规则关联。
+
+### <a name="built-in-policy-initiatives"></a>内置策略计划
+可在[此处](agents/azure-monitor-agent-install.md#prerequisites)查看代理安装的先决条件。 
+
+以下是针对 Windows 和 Linux 虚拟机的策略计划，其中包含可执行以下操作的各个策略：
+- 在虚拟机上安装 Azure Monitor 代理扩展
+- 创建并部署关联，以将虚拟机链接到数据收集规则
+
+  ![“Azure Policy 定义”页面的部分屏幕截图，其中显示了用于配置 Azure Monitor 代理的两个内置策略计划。](media/deploy-scale/built-in-ama-dcr-initiatives.png)  
+
+### <a name="built-in-policy"></a>内置策略  
+可以根据自己的需要从各个策略计划中选用各个策略。 例如，如果只想自动安装代理，只需使用计划中的第一个策略，如下所示：  
+
+  ![“Azure Policy 定义”页面的部分屏幕截图，其中显示了用于配置 Azure Monitor 代理的计划中包含的策略。](media/deploy-scale/built-in-ama-dcr-policy.png)  
+
+### <a name="remediation"></a>补救
+这些计划或策略将在创建时应用于每个虚拟机。 [补救任务](../governance/policy/how-to/remediate-resources.md)会将计划中的策略定义部署到现有资源，因此你可以为任何已创建的资源配置 Azure Monitor 代理。 当使用 Azure 门户创建分配时，你可以选择同时创建修正任务。 有关修正的详细信息，请参阅[使用 Azure Policy 修正不合规资源](../governance/policy/how-to/remediate-resources.md)。
+
+![AMA 的计划补救](media/deploy-scale/built-in-ama-dcr-remediation.png)
 
 
 ## <a name="diagnostic-settings"></a>诊断设置

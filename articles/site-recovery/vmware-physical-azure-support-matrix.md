@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/物理灾难恢复支持列表
 description: 汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的支持。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 374a605e9d1009c9cabeb142bfa818d6f7d98f96
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 30c214e4268f12bad59755ffe92e22686e16e115
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166498"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784791"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -93,7 +93,7 @@ Linux：CentOS | 5.2 到 5.11</b><br/> 6.1 到 6.10</b><br/> </br> 7.0、7.1、7
 Ubuntu | Ubuntu 14.04* LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions)<br/>Ubuntu 16.04* LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions) </br> Ubuntu 18.04* LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions) </br> Ubuntu 20.04* LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions) </br> （包括对所有 14.04.x、16.04.x、18.04.x、20.04.x* 版本的支持）   
 Debian | Debian 7/Debian 8（包括对所有 7. x、8. x 版本）；Debian 9（包括对 9.1 到 9.13 的版本的支持。 Debian 9.0 不受支持。），Debian 10 [（查看支持的内核版本）](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4、[SP5](https://support.microsoft.com/help/4570609)[（查看支持的内核版本）](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15、15 SP1 [（查看支持的内核版本）](#suse-linux-enterprise-server-15-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 11 SP3。 [请确保在配置服务器上下载最新的移动代理安装程序](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server)。 </br> SUSE Linux Enterprise Server 11 SP4 </br> **注意**：不支持将复制计算机从 SUSE Linux Enterprise Server 11 SP3 升级到 SP4。 若要升级，请禁用复制并在升级后重新启用它。 <br/>|
-Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、[7.8](https://support.microsoft.com/help/4573888/)、[7.9](https://support.microsoft.com/help/4597409/)、[8.0](https://support.microsoft.com/help/4573888/)、[8.1](https://support.microsoft.com/help/4573888/)、[8.3](https://support.microsoft.com/help/4597409/)  <br/> 运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3、4 和 5（UEK3、UEK4、UEK5）<br/><br/>8.1<br/>[9.35](https://support.microsoft.com/help/4573888/) 支持在版本 <= 3.10.0-1062* 的所有 UEK 内核和 RedHat 内核上运行。[9.36](https://support.microsoft.com/help/4578241/) 提供了对其余 RedHat 内核的支持
+Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)、[7.8](https://support.microsoft.com/help/4573888/)、[7.9](https://support.microsoft.com/help/4597409/)、[8.0](https://support.microsoft.com/help/4573888/)、[8.1](https://support.microsoft.com/help/4573888/)、[8.2](https://support.microsoft.com/topic/b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)、[8.3](https://support.microsoft.com/topic/b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8)  <br/> 运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3、4 和 5（UEK3、UEK4、UEK5）<br/><br/>8.1<br/>[9.35](https://support.microsoft.com/help/4573888/) 支持在版本 <= 3.10.0-1062* 的所有 UEK 内核和 RedHat 内核上运行。[9.36](https://support.microsoft.com/help/4578241/) 提供了对其余 RedHat 内核的支持
 
 > [!Note]
 >- 对于每个 Windows 版本，Azure Site Recovery 仅支持[长期服务渠道 (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) 生成。  目前不支持[半年渠道](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel)版本。
@@ -105,7 +105,7 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 --- | --- | --- |
 14.04 LTS | [9.37](https://support.microsoft.com/help/4582666/)、[9.38](https://support.microsoft.com/help/4590304/)、[9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)、[9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533) | 3.13.0-24-generic 到 3.13.0-170-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-148-generic、<br/>4.15.0-1023-azure 到 4.15.0-1045-azure |
 |||
-16.04 LTS | [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) | 4.4.0-21-generic 到 4.4.0-206-generic，<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-140-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1111-azure|
+16.04 LTS | [9.42](https://support.microsoft.com/en-us/topic/update-rollup-55-for-azure-site-recovery-kb5003408-b19c8190-5f88-43ea-85b1-d9e0cc5ca7e8) | 4.4.0-21-generic 到 4.4.0-206-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-140-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1111-azure|
 16.04 LTS | [9.41](https://support.microsoft.com/en-us/topic/update-rollup-54-for-azure-site-recovery-50873c7c-272c-4a7a-b9bb-8cd59c230533) | 4.4.0-21-generic 到 4.4.0-201-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-133-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1106-azure|
 16.04 LTS | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | 4.4.0-21-generic 到 4.4.0-197-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-128-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1102-azure |
 16.04 LTS | [9.39](https://support.microsoft.com/help/4597409/) | 4.4.0-21-generic 到 4.4.0-194-generic、<br/>4.8.0-34-generic 到 4.8.0-58-generic、<br/>4.10.0-14-generic 到 4.10.0-42-generic、<br/>4.11.0-13-generic 到 4.11.0-14-generic、<br/>4.13.0-16-generic 到 4.13.0-45-generic、<br/>4.15.0-13-generic 到 4.15.0-123-generic<br/>4.11.0-1009-azure 到 4.11.0-1016-azure、<br/>4.13.0-1005-azure 到 4.13.0-1018-azure <br/>4.15.0-1012-azure 到 4.15.0-1098-azure|
@@ -234,6 +234,7 @@ Docker 磁盘配置 | 否
 来宾/服务器 VMDK | 是
 来宾/服务器共享群集磁盘 | 否
 来宾/服务器加密磁盘 | 否
+FIPS 加密 | 否
 来宾/服务器 NFS | 否
 来宾/服务器 iSCSI | 对于迁移 - 是<br/>对于灾难恢复 - 否，iSCSI 将作为附加磁盘故障回复到 VM
 来宾/服务器 SMB 3.0 | 否

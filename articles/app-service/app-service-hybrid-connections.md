@@ -4,15 +4,15 @@ description: 了解如何在 Azure 应用服务中创建混合连接来访问不
 author: ccompy
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
-ms.date: 02/05/2020
+ms.date: 05/05/2021
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 1b3fc4a254c1157f2c2336e6360ba7621f31364d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c8b0377207dc811358db14285a7e287cd7c72525
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594225"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111412594"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure 应用服务混合连接
 
@@ -21,9 +21,9 @@ ms.locfileid: "99594225"
 在应用服务中，混合连接可用于访问任何网络中的应用程序资源，这些网络可以通过端口 443 对 Azure 进行出站调用。 混合连接提供从应用到 TCP 终结点的访问权限，而不会启用新的访问应用的方式。 在应用服务中使用时，每个混合连接与单个 TCP 主机和端口组合相关联。 这样，应用就可以访问任何 OS 上的资源，前提是它是 TCP 终结点。 混合连接功能不知道、也不关心应用程序协议或者要访问的内容是什么。 它只提供网络访问。  
 
 ## <a name="how-it-works"></a>工作原理 ##
-混合连接要求将中继代理部署到可以同时到达所需终结点和 Azure 的位置。 中继代理混合连接管理器 (HCM) 通过端口 443 调用 Azure 中继。 在 Web 应用站点上，应用服务基础结构还代表应用程序连接到 Azure 中继。 通过已联接的连接，应用可以访问所需的终结点。 连接使用 TLS 1.2 来确保安全，使用共享访问签名 (SAS) 密钥进行身份验证和授权。    
+混合连接要求将中继代理部署到可以同时到达所需终结点和 Azure 的位置。 中继代理混合连接管理器 (HCM) 通过端口 443 调用 Azure 中继。 在 Web 应用站点上，应用服务基础结构还代表应用程序连接到 Azure 中继。 通过已联接的连接，应用可以访问所需的终结点。 连接使用 TLS 1.2 来确保安全，使用共享访问签名 (SAS) 密钥进行身份验证和授权。
 
-![混合连接高级别流示意图][1]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-connectiondiagram.png" alt-text="混合连接高级别流示意图":::
 
 如果应用发出了与配置的混合连接终结点匹配的 DNS 请求，则会通过混合连接重定向出站 TCP 流量。  
 
@@ -58,11 +58,11 @@ ms.locfileid: "99594225"
 
 若要创建混合连接，请转到 [Azure 门户][portal]，并选择应用。 选择“网络” > “配置混合连接终结点”。  在此处，可以看到为应用配置的混合连接。  
 
-![混合连接列表的屏幕截图][2]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-portal.png" alt-text="混合连接列表的屏幕截图":::
 
-若要添加新的混合连接，请选择“[+] 添加混合连接”。  此时会显示已创建的混合连接的列表。 要将其中的一个或多个混合连接添加到应用，请选择所需的混合连接，然后选择“添加选定的混合连接”。  
+若要添加新的混合连接，请选择“[+] 添加混合连接”。  此时会显示已创建的混合连接的列表。 要将其中的一个或多个混合连接添加到应用，请选择所需的混合连接，然后选择“添加选定的混合连接”。
 
-![混合连接门户的屏幕截图][3]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-addhc.png" alt-text="混合连接门户的屏幕截图":::
 
 如果想要创建新的混合连接，请选择“创建新的混合连接”。 指定： 
 
@@ -71,7 +71,7 @@ ms.locfileid: "99594225"
 - 终结点端口。
 - 要使用的服务总线命名空间。
 
-![“创建新的混合连接”对话框屏幕截图][4]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-createhc.png" alt-text="“创建新的混合连接”对话框屏幕截图":::
 
 每个混合连接已绑定到服务总线命名空间，每个服务总线命名空间在 Azure 区域中。 请尽量使用应用所在的同一区域中的服务总线命名空间，这一点非常重要，目的是避免网络造成的延迟。
 
@@ -79,7 +79,7 @@ ms.locfileid: "99594225"
 
 将混合连接添加到应用后，选择该混合连接即可查看其详细信息。 
 
-![“混合连接详细信息”屏幕截图][5]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-properties.png" alt-text="“混合连接详细信息”屏幕截图":::
 
 ### <a name="create-a-hybrid-connection-in-the-azure-relay-portal"></a>在 Azure 中继门户中创建混合连接 ###
 
@@ -96,12 +96,12 @@ ms.locfileid: "99594225"
 |----|----|
 | 基本 | 每个计划 5 个 |
 | 标准 | 每个计划 25 个 |
-| PremiumV2 | 每个应用 200 个 |
-| 隔离 | 每个应用 200 个 |
+| 高级 (v1-v3) | 每个应用 220 个 |
+| 独立 (v1-v2) | 每个应用 220 个 |
 
-应用服务计划 UI 会显示使用了多少个混合连接以及是由哪些应用使用的。  
+应用服务计划 UI 会显示使用了多少个混合连接以及是由哪些应用使用的。
 
-![应用服务计划属性的屏幕截图][6]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-aspproperties.png" alt-text="应用服务计划属性的屏幕截图":::
 
 选择该混合连接可查看详细信息。 可以看到应用视图中显示的所有信息。 还可以查看同一计划中还有其他多少个应用正在使用该混合连接。
 
@@ -117,28 +117,28 @@ ms.locfileid: "99594225"
 
 此工具可在 Windows Server 2012 和更高版本上运行。 HCM 作为服务运行，并且在端口 443 上出站连接到 Azure 中继。  
 
-安装 HCM 后，可以运行 HybridConnectionManagerUi.exe 来使用该工具的 UI。 此文件位于混合连接管理器的安装目录中。 在 Windows 10 上，也可以在搜索框中搜索“混合连接管理器 UI”即可。  
+安装 HCM 后，可以运行 HybridConnectionManagerUi.exe 来使用该工具的 UI。 此文件位于混合连接管理器的安装目录中。 在 Windows 10 上，也可以在搜索框中搜索“混合连接管理器 UI”即可。
 
-![混合连接管理器的屏幕截图][7]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-hcm.png" alt-text="混合连接管理器的屏幕截图":::
 
 启动 HCM UI 时，出现的第一个界面是一个表格，其中列出了为此 HCM 实例配置的所有混合连接。 如果想要进行任何更改，请先在 Azure 中完成身份验证。 
 
 要将一个或多个混合连接添加到 HCM，请执行以下操作：
 
 1. 启动 HCM UI。
-2. 选择“配置另一个混合连接”。
-![配置新混合连接的屏幕截图][8]
+2. 选择“添加新的混合连接”。
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-hcmadd.png" alt-text="配置新混合连接的屏幕截图":::
 
 1. 使用 Azure 帐户登录，以使你的订阅可以使用混合连接。 除此之外，HCM 不会继续使用你的 Azure 帐户。 
 1. 选择订阅。
 1. 选择 HCM 要中继的混合连接。
-![混合连接的屏幕截图][9]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-hcmadded.png" alt-text="混合连接的屏幕截图":::
 
 1. 选择“保存” 。
 
 现在，可以看到已添加的混合连接。 还可以选择配置的混合连接查看详细信息。
 
-![混合连接详细信息的屏幕截图][10]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-hcmdetails.png" alt-text="混合连接详细信息的屏幕截图":::
 
 若要支持配置的混合连接，HCM 需要：
 
@@ -158,7 +158,7 @@ ms.locfileid: "99594225"
 
 若要让订阅外部的某人托管给定混合连接的 HCM 实例，可与他（她）共享该混合连接的网关连接字符串。 可以在 [Azure 门户][portal]的“混合连接”属性中看到网关连接字符串。 要使用该字符串，请在 HCM 中选择“手动输入”，并粘贴网关连接字符串。
 
-![手动添加混合连接][11]
+:::image type="content" source="media/app-service-hybrid-connections/hybridconn-manual.png" alt-text="手动添加混合连接":::
 
 ### <a name="upgrade"></a>升级 ###
 
@@ -206,6 +206,8 @@ Commands:
 * 你的主机是否在端口 443 上有对 Azure 的出站访问权限？ 可以从 HCM 主机使用 PowerShell 命令“Test-NetConnection Destination -P Port”进行测试 
 * 你的 HCM 是否可能处于错误状态？ 尝试重启“Azure 混合连接管理器服务”本地服务。
 
+* 是否安装了冲突的软件？ 混合连接管理器无法与 Biztalk 混合连接管理器或适用于 Windows Server 的服务总线共存。 因此，在安装 HCM 时，应首先删除这些包的所有版本。
+
 如果状态显示“已连接”，但应用无法访问终结点，请执行以下操作：
 
 * 请确保在混合连接中使用 DNS 名称。 如果使用 IP 地址，则可能无法进行所需的客户端 DNS 查找。 如果在 Web 应用中运行的客户端未执行 DNS 查找，则混合连接将不起作用
@@ -216,20 +218,6 @@ Commands:
 
 如果你的终结点有命令行客户端，则可以从应用控制台测试连接。 例如，可以使用 curl 测试对 Web 服务器终结点的访问。
 
-
-<!--Image references-->
-[1]: ./media/app-service-hybrid-connections/hybridconn-connectiondiagram.png
-[2]: ./media/app-service-hybrid-connections/hybridconn-portal.png
-[3]: ./media/app-service-hybrid-connections/hybridconn-addhc.png
-[4]: ./media/app-service-hybrid-connections/hybridconn-createhc.png
-[5]: ./media/app-service-hybrid-connections/hybridconn-properties.png
-[6]: ./media/app-service-hybrid-connections/hybridconn-aspproperties.png
-[7]: ./media/app-service-hybrid-connections/hybridconn-hcm.png
-[8]: ./media/app-service-hybrid-connections/hybridconn-hcmadd.png
-[9]: ./media/app-service-hybrid-connections/hybridconn-hcmadded.png
-[10]: ./media/app-service-hybrid-connections/hybridconn-hcmdetails.png
-[11]: ./media/app-service-hybrid-connections/hybridconn-manual.png
-[12]: ./media/app-service-hybrid-connections/hybridconn-bt.png
 
 <!--Links-->
 [HCService]: /azure/service-bus-relay/relay-hybrid-connections-protocol/

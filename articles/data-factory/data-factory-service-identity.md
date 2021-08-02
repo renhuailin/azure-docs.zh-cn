@@ -1,17 +1,18 @@
 ---
 title: 数据工厂的托管标识
 description: 了解 Azure 数据工厂的托管标识。
-author: linda33wj
+author: nabhishek
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 07/06/2020
-ms.author: jingwang
-ms.openlocfilehash: e0d3b551265a480a700f374ddfcf89dd4d93333f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
-ms.translationtype: MT
+ms.date: 03/25/2021
+ms.author: abnarain
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d175bf7123cc8fdab336594c0ef05f13562a5622
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100389155"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681047"
 ---
 # <a name="managed-identity-for-data-factory"></a>数据工厂的托管标识
 
@@ -28,8 +29,7 @@ ms.locfileid: "100389155"
 数据工厂的托管标识对以下功能有益：
 
 - [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)，在这种情况下，数据工厂托管标识用于 Azure Key Vault 身份验证。
-- 连接器（包括 [Azure Blob 存储](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [azure SQL 数据库](connector-azure-sql-database.md)和 [azure Synapse 分析](connector-azure-sql-data-warehouse.md)）。
-- [Web 活动](control-flow-web-activity.md)。
+- 使用托管标识身份验证访问数据存储或计算，包括 Azure Blob 存储、Azure 数据资源管理器、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL 数据库、Azure SQL 托管实例、Azure Synapse Analytics、REST、Databricks 活动、Web 活动等。 有关详细信息，请查看连接器和活动文章。
 
 ## <a name="generate-managed-identity"></a>生成托管标识
 
@@ -157,11 +157,10 @@ client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 
 - 托管标识对象 ID
 - 托管标识租户
-- 托管标识应用程序 ID
 
 当你创建支持托管标识身份验证的链接服务（如 Azure Blob、Azure Data Lake Storage、Azure Key Vault 等）时，托管标识信息也会显示。
 
-授予权限时，请使用对象 ID 或数据工厂名称（作为托管标识名称）来查找此标识。
+授予权限时，在 Azure 资源的访问控制 (IAM) 选项卡 -> 添加角色分配 -> 将访问权限分配到 -> 在“系统分配的托管标识”下选择“数据工厂”-> 按工厂名称选择；或是一般而言，可以使用对象 ID 或数据工厂名称（作为托管标识名称）查找此标识。 如果需要获取托管标识的应用程序 ID，可以使用 PowerShell。
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>使用 PowerShell 检索托管标识
 

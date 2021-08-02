@@ -3,12 +3,13 @@ title: Azure 服务总线故障排除指南 | Microsoft Docs
 description: 了解你在使用 Azure 服务总线时可能遇到的一些问题的故障排除技巧和建议。
 ms.topic: article
 ms.date: 03/03/2021
-ms.openlocfilehash: 7de39e5a3a7b6cbb8e5fa504f073023853e18366
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0afb1d7a14867e616623519ec5de2c43e9beba2d
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179691"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663650"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服务总线故障排除指南
 本文提供的故障排除技巧和建议适用于你在使用 Azure 服务总线时可能会遇到的一些问题。 
@@ -45,14 +46,14 @@ ms.locfileid: "102179691"
     ```shell
     telnet <yournamespacename>.servicebus.windows.net 5671
     ```
-- 存在间歇性连接问题时，请运行以下命令，检查是否有丢弃的数据包。 此命令会尝试通过服务每隔 1 秒建立 25 个不同的 TCP 连接。 然后，可以检查其中有多少成功/失败，还可以查看 TCP 连接延迟。 可以从[此处](/sysinternals/downloads/psping)下载 `psping` 工具。
+- 出现间歇性连接问题时，请运行以下命令，检查是否存在任何丢弃的数据包。 此命令会尝试通过服务每隔 1 秒建立 25 个不同的 TCP 连接。 然后，可以检查其中有多少成功/失败，还可以查看 TCP 连接延迟。 可以从[此处](/sysinternals/downloads/psping)下载 `psping` 工具。
 
     ```shell
     .\psping.exe -n 25 -i 1 -q <yournamespace>.servicebus.windows.net:5671 -nobanner     
     ```
     如果使用的是其他工具（如 `tnc`、`ping` 等），则可以使用等效的命令。 
 - 如果上述步骤没有帮助，请获取网络跟踪，并使用 [Wireshark](https://www.wireshark.org/) 之类的工具对其进行分析。 如果需要，请联系 [Microsoft 支持部门](https://support.microsoft.com/)。 
-- 若要查找要添加到连接允许列表的正确 IP 地址，请参阅[我需要添加到允许列表的 IP 地址](service-bus-faq.md#what-ip-addresses-do-i-need-to-add-to-allow-list)。 
+- 若要查找要添加到连接允许列表的正确 IP 地址，请参阅[我需要添加到允许列表的 IP 地址](service-bus-faq.yml#what-ip-addresses-do-i-need-to-add-to-allow-list-)。 
 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>服务升级/重启时可能出现的问题
@@ -98,6 +99,25 @@ Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perfor
 
 ### <a name="resolution"></a>解决方法
 打开到服务总线命名空间的新连接以发送更多消息。
+
+## <a name="adding-virtual-network-rule-using-powershell-fails"></a>使用 PowerShell 添加虚拟网络规则失败
+
+### <a name="symptoms"></a>症状
+你已从虚拟网络规则中的单个虚拟网络配置了两个子网。 尝试使用 [Remove-AzServiceBusVirtualNetworkRule](/powershell/module/az.servicebus/remove-azservicebusvirtualnetworkrule) cmdlet 删除一个子网时，不会从虚拟网络规则中删除该子网。 
+
+```azurepowershell-interactive
+Remove-AzServiceBusVirtualNetworkRule -ResourceGroupName $resourceGroupName -Namespace $serviceBusName -SubnetId $subnetId
+```
+
+### <a name="cause"></a>原因
+为子网指定的 Azure 资源管理器 ID 可能无效。 如果虚拟网络所在的资源组与包含服务总线命名空间的资源组不同，则可能会发生这种情况。 如果未明确指定虚拟网络的资源组，CLI 命令将使用服务总线命名空间的资源组构造 Azure 资源管理器 ID。 因此，无法从网络规则中删除子网。 
+
+### <a name="resolution"></a>解决方法
+指定子网的完整 Azure 资源管理器 ID，该子网包含具有虚拟网络的资源组名称。 例如：
+
+```azurepowershell-interactive
+Remove-AzServiceBusVirtualNetworkRule -ResourceGroupName myRG -Namespace myNamespace -SubnetId "/subscriptions/SubscriptionId/resourcegroups/ResourceGroup/myOtherRG/providers/Microsoft.Network/virtualNetworks/myVNet/subnets/mySubnet"
+```
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章： 

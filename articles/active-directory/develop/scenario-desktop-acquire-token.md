@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 99a36eec959fc3f0c669f50b77d7707011e8dac0
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 797b7e376774f0295fa0d7e158cd9ea3df68d25d
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165094"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575966"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>用于调用 Web API 的桌面应用：获取令牌
 
@@ -286,7 +286,7 @@ WithParentActivityOrWindow(object parent).
 - 应用程序开发人员可以使用 ``ForceLogin`` 来让服务向用户显示凭据提示，即使可能不需要这种用户提示。 如果获取令牌失败，可以使用此选项让用户重新登录。 在这种情况下，MSAL 会将 `prompt=login` 发送到标识提供者。 有时，此选项会在某些注重安全的应用程序中使用，其中的组织监管机制要求用户每次在访问应用程序的特定部分时重新登录。
 - ``Create`` 通过向标识提供程序发送 `prompt=create` 触发用于外部标识的注册体验。 不应为 Azure AD B2C 应用发送此提示。 有关详细信息，请参阅[向应用添加自助注册用户流](../external-identities/self-service-sign-up-user-flow.md)。
 - ``Never``（仅适用于 .NET 4.5 和 WinRT）不会提示用户，而是尝试使用隐藏的嵌入式 Web 视图中存储的 Cookie。 有关详细信息，请参阅“MSAL.NET 中的 Web 视图”。 使用此选项可能会失败。 在这种情况下，`AcquireTokenInteractive` 会引发异常来告知需要 UI 交互。 需要使用另一个 `Prompt` 参数。
-- ``NoPrompt`` 不会向标识提供者发送任何提示。 此选项仅适用于 Azure Active Directory (Azure AD) B2C 编辑配置文件策略。 有关详细信息，请参阅 [Azure AD B2C 细节](https://aka.ms/msal-net-b2c-specificities)。
+- ``NoPrompt`` 不会向标识提供者发送任何提示，因此将决定向用户提供最佳登录体验（单一登录或选择帐户）。 此选项对于 Azure Active Directory (Azure AD) B2C 编辑配置文件策略也是必需的。 有关详细信息，请参阅 [Azure AD B2C 细节](https://aka.ms/msal-net-b2c-specificities)。
 
 #### <a name="withuseembeddedwebview"></a>WithUseEmbeddedWebView
 
@@ -513,7 +513,7 @@ pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
 
 # <a name="python"></a>[Python](#tab/python)
 
-MSAL Python 不直接提供以交互方式获取令牌的方法。 它要求应用程序在其实现用户交互流时发送授权请求，以获取授权代码。 然后，可以将此代码传递到 `acquire_token_by_authorization_code` 方法以获取令牌。
+MSAL Python 1.7+ 提供交互式获取令牌方法。
 
 ```python
 result = None
@@ -524,8 +524,7 @@ if accounts:
     result = app.acquire_token_silent(config["scope"], account=accounts[0])
 
 if not result:
-    result = app.acquire_token_by_authorization_code(
-         request.args['code'],
+    result = app.acquire_token_interactive(  # It automatically provides PKCE protection
          scopes=config["scope"])
 ```
 
@@ -538,7 +537,6 @@ if not result:
 ### <a name="constraints"></a>约束
 
 - Windows 集成身份验证仅适用于“联合+”用户，即，在 Active Directory 中创建的、由 Azure AD 支持的用户。 直接在 Azure AD 中创建的但不是由 Active Directory 支持的用户（称为“托管用户”）不能使用此身份验证流。 此项限制不影响用户名和密码流。
-- IWA 适用于针对 .NET Framework、.NET Core 和通用 Windows 平台 (UWP) 等平台编写的应用。
 - IWA 不会绕过[多重身份验证 (MFA)](../authentication/concept-mfa-howitworks.md)。 如果已配置 MFA，则在需要 MFA 质询的情况下，IWA 可能失败，因为 MFA 需要用户交互。
 
     IWA 是非交互式的，但 MFA 需要用户交互。 标识提供者何时请求执行 MFA 并不由你控制，而是由租户管理员控制。 根据观察，在以下情况下需要 MFA：当你从不同国家/地区登录时；未通过 VPN 连接到公司网络时；有时甚至通过 VPN 连接也需要 MFA。 规则并不确定。 Azure AD 使用 AI 来持续判断是否需要执行 MFA。 如果 IWA 失败，则回退到用户提示，例如交互式身份验证或设备代码流。

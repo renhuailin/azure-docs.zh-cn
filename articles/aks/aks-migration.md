@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 03/25/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 53c6431f6f2d5ac6f5e7a6c28cb843d386c5206d
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 39f1245883c7d296de5b2bad77f1558be9b49910
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108203066"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887413"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>迁移到 Azure Kubernetes 服务 (AKS)
 
@@ -52,27 +52,27 @@ ms.locfileid: "108203066"
 
 Azure Migrate 提供了一个统一平台来评估本地服务器、基础结构、应用程序和数据并将其迁移到 Azure。 对于 AKS，可以使用 Azure Migrate 进行以下任务：
 
-* [将 ASP.NET 应用程序容器化并迁移到 AKS](/azure/aks/tutorial-app-containerization-aspnet-kubernetes)
+* [将 ASP.NET 应用程序容器化并迁移到 AKS](../migrate/tutorial-app-containerization-aspnet-kubernetes.md)
 * [将Java Web 应用程序容器化并迁移到 AKS](../migrate/tutorial-containerize-java-kubernetes.md)
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>包含标准负载均衡器和虚拟机规模集的 AKS
 
-AKS 是一个托管服务，它提供独特的功能和较低的管理开销。 由于 AKS 是托管服务，必须从 AKS 支持的一系列[区域](./quotas-skus-regions.md)中进行选择。 可能需要修改现有应用程序，使其在从现有群集转换到 AKS 期间在 AKS 托管的控制平面上保持正常运行。
+AKS 是一个托管服务，它提供独特的功能和较低的管理开销。 由于 AKS 是托管服务，因此必须从 AKS 支持的一系列[区域](./quotas-skus-regions.md)中进行选择。 可能需要修改现有应用程序，使其在从现有群集转换到 AKS 期间在 AKS 托管的控制平面上保持正常运行。
 
-我们建议使用[虚拟机规模集](../virtual-machine-scale-sets/index.yml)和 [Azure 标准负载均衡器](./load-balancer-standard.md)支持的 AKS 群集，以确保获得各种功能，例如：
+建议使用[虚拟机规模集](../virtual-machine-scale-sets/index.yml)和 [Azure 标准负载均衡器](./load-balancer-standard.md)支持的 AKS 群集，以确保获得各种功能，例如：
 * [多个节点池](./use-multiple-node-pools.md)，
 * [可用性区域](../availability-zones/az-overview.md)，
 * [授权的 IP 范围](./api-server-authorized-ip-ranges.md)，
 * [群集自动缩放程序](./cluster-autoscaler.md)，
 * [适用于 AKS 的 Azure Policy](../governance/policy/concepts/policy-for-kubernetes.md)，以及
-* 其他新功能（在它们发布时）。
+* 其他新功能（如果发布）。
 
 [虚拟机可用性集](../virtual-machines/availability.md#availability-sets)支持的 AKS 群集缺少上述许多功能的支持。
 
 以下示例创建了一个 AKS 群集，其中包含一个虚拟机 (VM) 规模集支持的单一节点池。 群集：
 * 使用标准负载均衡器。 
 * 在群集的节点池中启用群集自动缩放程序。
-* 设置至少 1 个且最多 3 个节点 。
+* 设置节点（最少 1 个，最多 3 个） 。
 
 ```azurecli-interactive
 # First create a resource group
@@ -103,7 +103,7 @@ az aks create \
 
 ## <a name="ensure-valid-quotas"></a>确保有效配额
 
-由于在迁移期间要将其他虚拟机部署到订阅中，因此，应该检查配额和限制是否足以应对这些资源。 如有必要，可请求增加 [vCPU 配额](../azure-portal/supportability/per-vm-quota-requests.md)。
+由于在迁移期间要将其他 VM 部署到订阅中，因此，应该验证配额和限制是否足以应对这些资源。 如有必要，可请求增加 [vCPU 配额](../azure-portal/supportability/per-vm-quota-requests.md)。
 
 可能需要请求提高[网络配额](../azure-portal/supportability/networking-quota-requests.md)，以确保不会耗尽 IP。 有关详细信息，请参阅 [AKS 的网络和 IP 范围](./configure-kubenet.md)。
 
@@ -192,7 +192,7 @@ kubectl get deployment -o=yaml --export > deployments.yaml
 
 你可能需要将 AKS 群集移到 [AKS 支持的不同区域][region-availability]。 我们建议你在其他区域中创建一个新群集，然后将资源和应用程序部署到新群集。 
 
-此外，如果在 AKS 群集上运行任何服务（例如 [Azure Dev Spaces][azure-dev-spaces]），则需要在新区域中的群集上安装和配置这些服务。
+此外，如果在 AKS 群集上运行任何服务，则需要在新区域中的群集上安装和配置这些服务。
 
 
 本文汇总了以下各项的迁移详细信息：
@@ -208,4 +208,3 @@ kubectl get deployment -o=yaml --export > deployments.yaml
 
 
 [region-availability]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[azure-dev-spaces]: ../dev-spaces/index.yml

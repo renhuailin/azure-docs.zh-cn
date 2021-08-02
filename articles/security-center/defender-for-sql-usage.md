@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2021
 ms.author: memildin
-ms.openlocfilehash: a497e5bc9d04577f4b4f9d373aa68d07b5a08043
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: b375ad72d3ef459635c4a786391ef7b9836d8a99
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905047"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411577"
 ---
 # <a name="enable-azure-defender-for-sql-servers-on-machines"></a>启用计算机上的 Azure Defender for SQL 服务器 
 
@@ -40,15 +40,23 @@ ms.locfileid: "107905047"
 
 若要启用此计划：
 
-[步骤 1. 在 SQL 服务器的主机上预配 Log Analytics 代理：](#step-1-provision-the-log-analytics-agent-on-your-sql-servers-host)
+[步骤 1：安装代理扩展](#step-1-install-the-agent-extension)
 
-[步骤 2. 在安全中心的“定价和设置”页中启用可选计划：](#step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
+[步骤 2：在 SQL 服务器的主机上预配 Log Analytics 代理：](#step-2-provision-the-log-analytics-agent-on-your-sql-servers-host)
+
+[步骤 3：在安全中心的“定价和设置”页中启用可选计划：](#step-3-enable-the-optional-plan-in-security-centers-pricing-and-settings-page)
 
 
-### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>步骤 1。 在 SQL 服务器的主机上预配 Log Analytics 代理：
+### <a name="step-1-install-the-agent-extension"></a>步骤 1。 安装代理扩展
+
+- **Azure VM 上的 SQL Server** - 向 SQL IaaS 代理扩展注册你的 SQL Server VM，如[向 SQL IaaS 代理扩展注册 SQL Server VM](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) 中所述。
+
+- **Azure Arc 上的 SQL Server** - 按照 [Azure Arc 文档](../azure-arc/servers/manage-vm-extensions.md)中描述的安装方法安装 Azure Arc 代理。
+
+### <a name="step-2-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>步骤 2。 在 SQL 服务器的主机上预配 Log Analytics 代理：
 
 - **Azure VM 上的 SQL Server** - 如果 SQL 计算机托管在 Azure VM 上，则可以 [启用 Log Analytics 代理的自动预配 <a name="auto-provision-mma"></a>](security-center-enable-data-collection.md#auto-provision-mma)。 或者，可以按照手动过程来[加入 Azure Stack Hub VM](quickstart-onboard-machines.md?pivots=azure-portal#onboard-your-azure-stack-hub-vms)。
-- **Azure Arc 上的 SQL Server** - 如果 SQL Server 由启用了 [Azure Arc](../azure-arc/index.yml) 的服务器管理，则可以使用安全中心建议“Log Analytics 代理应安装在基于 Windows 的 Azure Arc 计算机上（预览版）”部署 Log Analytics 代理。 或者，可以遵循 [Azure Arc 文档](../azure-arc/servers/manage-vm-extensions.md)中所述的安装方法进行操作。
+- **Azure Arc 上的 SQL Server** - 如果 SQL Server 由启用了 [Azure Arc](../azure-arc/index.yml) 的服务器管理，则可以使用安全中心建议“Log Analytics 代理应安装在基于 Windows 的 Azure Arc 计算机上（预览版）”部署 Log Analytics 代理。
 
 - **本地 SQL Server** - 如果 SQL Server 托管在不带 Azure Arc 的本地 Windows 计算机上，可使用两个选项将其连接到 Azure：
     
@@ -57,7 +65,7 @@ ms.locfileid: "107905047"
     - **连接不带 Azure Arc 的 Windows 计算机** - 如果选择在不使用 Azure Arc 的情况下连接在 Windows 计算机上运行的 SQL Server，请按照 [将 Windows 计算机连接到 Azure Monitor](../azure-monitor/agents/agent-windows.md) 中的说明进行操作。
 
 
-### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>步骤 2。 在安全中心的“定价和设置”页中启用可选计划：
+### <a name="step-3-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>步骤 3. 在安全中心的“定价和设置”页中启用可选计划：
 
 1. 从安全中心的菜单中，打开“定价和设置”页。
 
@@ -86,7 +94,7 @@ ms.locfileid: "107905047"
 
 ## <a name="explore-and-investigate-security-alerts"></a>浏览并调查安全警报
 
-可以在安全中心的警报页、资源的安全选项卡、[Azure Defender 仪表板](azure-defender-dashboard.md)或通过警报电子邮件中的直接链接获取 Azure Defender for SQL 警报。
+可以在安全中心的警报页、计算机的安全页、[Azure Defender 仪表板](azure-defender-dashboard.md)或通过警报电子邮件中的直接链接获取 Azure Defender for SQL 警报。
 
 1. 若要查看警报，请从安全中心的菜单中选择“安全警报”，然后选择一个警报。
 

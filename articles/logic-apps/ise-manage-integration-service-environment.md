@@ -3,21 +3,21 @@ title: 在 Azure 逻辑应用中管理集成服务环境
 description: 在适用于 Azure 逻辑应用的集成服务环境 (ISE) 中查看网络运行状况并管理逻辑应用、连接、自定义连接器和集成帐户
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, jonfan, logicappspm
+ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 10/25/2020
-ms.openlocfilehash: 4df9543e5e747de640562b7e5be224e257e0cfd1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f4cc844cc12383d5ccc3a3a12f48431d34b4872d
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92676108"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984817"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure 逻辑应用中管理集成服务环境 (ISE)
 
 本文介绍如何为[集成服务环境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 执行管理任务，例如：
 
-* 管理 ISE 中的资源，如逻辑应用、连接、集成帐户和连接器。
+* 管理 ISE 中的资源，如基于多租户的逻辑应用、连接、集成帐户和连接器。
 
 * 检查 ISE 的网络运行状况。
 
@@ -46,7 +46,7 @@ ms.locfileid: "92676108"
 ![检查网络运行状况](./media/ise-manage-integration-service-environment/ise-check-network-health.png)
 
 > [!CAUTION]
-> 如果 ISE 的网络变得不正常，则 ISE 使用的内部应用服务环境 (ASE) 也可能会变得不正常。 如果 ASE 运行状态不正常的时间超过 7 天，则会挂起该 ASE。 若要解决此状态问题，请检查虚拟网络设置。 解决发现的任何问题，然后重启 ISE。 否则，在 90 天后，挂起的 ASE 会被删除，并你的 ISE 会变为不可用。 因此，请确保 ISE 始终处于正常状态，以允许必要的流量。
+> 如果 ISE 的网络变得不正常，则 ISE 使用的内部应用服务环境 (ASE) 也可能会变得不正常。 如果 ASE 运行状态不正常的时间超过7天，则会挂起该 ASE。 若要解决此状态问题，请检查虚拟网络设置。 解决发现的任何问题，然后重启 ISE。 否则，在 90 天后，挂起的 ASE 会被删除，而你的 ISE 将不可用。 因此，请确保 ISE 始终处于正常状态，以允许必要的流量。
 > 
 > 有关详细信息，请参阅以下主题：
 >

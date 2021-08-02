@@ -8,17 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 09/30/2020
-ms.openlocfilehash: 49954224fbdb2d100a809ea5c1d975e1b2e46f56
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 05/25/2021
+ms.openlocfilehash: 8cabf22e909b5e3e891c0265f952ec6476732ca6
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372923"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110462690"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 进行交互式调试
-
-
 
 了解如何使用 Visual Studio Code (VS Code) 和 [debugpy](https://github.com/microsoft/debugpy/) 以交互方式调试 Azure 机器学习试验、管道和部署。
 
@@ -29,21 +27,26 @@ ms.locfileid: "110372923"
 ### <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习 VS Code 扩展（预览版）。 有关详细信息，请参阅[设置 Azure 机器学习 VS Code 扩展](how-to-setup-vs-code.md)。
+
+    > [!IMPORTANT]
+    > 在默认情况下，Azure 机器学习 VS Code 扩展使用 2.0 CLI。 本指南中的说明使用 1.0 CLI。 若要切换到 1.0 CLI，请将 Visual Studio Code 中的 `azureML.CLI Compatibility Mode` 设置指定为 `1.0`。 有关在 Visual Studio 中修改设置的详细信息，请参阅[用户和工作区设置文档](https://code.visualstudio.com/docs/getstarted/settings)。
+
 * [Docker](https://www.docker.com/get-started)
   * 适用于 Mac 和 Windows 的 Docker Desktop
   * 适用于 Linux 的 Docker 引擎。
+
+    > [!NOTE]
+    > 在 Windows 上，确保[将 Docker 配置为使用 Linux 容器](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)。
+
+    > [!TIP]
+    > 对于 Windows，虽然不是必需的，但强烈建议[将 Docker 与适用于 Linux 的 Windows 子系统 (WSL) 2 配合使用](/windows/wsl/tutorials/wsl-containers#install-docker-desktop)。
+
 * [Python 3](https://www.python.org/downloads/)
 
-> [!NOTE]
-> 在 Windows 上，确保[将 Docker 配置为使用 Linux 容器](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)。
-
-> [!TIP]
-> 对于 Windows，虽然不是必需的，但强烈建议[将 Docker 与适用于 Linux 的 Windows 子系统 (WSL) 2 配合使用](/windows/wsl/tutorials/wsl-containers#install-docker-desktop)。
+### <a name="debug-experiment-locally"></a>在本地调试试验
 
 > [!IMPORTANT]
 > 在本地运行试验之前，确保 Docker 正在运行。
-
-### <a name="debug-experiment-locally"></a>在本地调试试验
 
 1. 在 VS Code 中打开 Azure 机器学习扩展视图。
 1. 展开包含你的工作区的订阅节点。 如果还没有工作区，可使用该扩展[创建一个 Azure 机器学习工作区](how-to-manage-resources-vscode.md#create-a-workspace)。

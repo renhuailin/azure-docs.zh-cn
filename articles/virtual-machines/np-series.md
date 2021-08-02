@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: 69af7e2129136128e87b4c9b28806b2f02f09e27
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 0592af3d5f73476b1dd479fde2651be07ba8aa33
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205388"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949793"
 ---
 # <a name="np-series"></a>NP 系列 
 NP 系列虚拟机由 [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) FPGA 提供支持，以加速工作负载，包括机器学习推理、视频转码以及数据库搜索和分析。 NP 系列 VM 还由全核 Turbo 时钟频率为 3.2GHz 的 Intel Xeon 8171M (Skylake) CPU 提供支持。
@@ -23,7 +23,7 @@ NP 系列虚拟机由 [Xilinx U250 ](https://www.xilinx.com/products/boards-and-
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 VM 代系支持：第 1 代<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
-[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持（[预览版](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks)）<br>
 <br>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | FPGA | FPGA 内存：GiB | 最大数据磁盘数 | 最大 NIC 数/预期网络带宽 (MBps) | 
@@ -39,13 +39,17 @@ VM 代系支持：第 1 代<br>
 
 ##  <a name="frequently-asked-questions"></a>常见问题
 
+问：如何请求 NP VM 的配额？
+
+答：请按照此页面[按 VM 系列增加限制](../azure-portal/supportability/per-vm-quota-requests.md)。 NP VM 在美国东部、美国西部 2、西欧和东南亚提供。
+
 问：我应使用哪个 Vitis 版本？ 
 
-答：Xilinx 建议使用 [Vitis 2020.2](https://www.xilinx.com/products/design-tools/vitis/vitis-platform.html)
+答：Xilinx 推荐 [Vitis 2020.2](https://www.xilinx.com/products/design-tools/vitis/vitis-platform.html)，你也可以使用开发 VM 市场选项（Vitis 2020.2 Development VM for Ubuntu 18.04 和 Centos 7.8）
 
 问：是否需要使用 NP VM 来开发解决方案？ 
 
-答：否，可以在本地开发并部署到云中！ 要在 NP VM 上部署，请确保按[证明文档](https://docs.microsoft.com/azure/virtual-machines/field-programmable-gate-arrays-attestation)操作。 
+答：否，可以在本地开发并部署到云中！ 要在 NP VM 上部署，请确保按[证明文档](./field-programmable-gate-arrays-attestation.md)操作。 
 
 问：在 NP VM 中对 FPGA 进行编程时，应使用从证明返回的哪个文件？
 
@@ -118,11 +122,22 @@ VM 代系支持：第 1 代<br>
 
 答：可放心忽略此警告。 
 
-问：本地 VM 与 NP VM 在 XRT 方面有哪些差异？ 
+问：本地 VM 与 NP VM 有哪些差异？
 
-答：在 Azure 上，XDMA 2.1 平台仅支持 Host_Mem(SB) 和 DDR 数据保留功能。 
+答： 
+<br>
+<b>- 关于 XOCL/XCLMGMT：</b>
+<br>
+在 Azure NP VM 上，仅存在使用 XOCL 驱动程序的角色终结点（设备 ID 5005）。
 
-若要启用 Host_Mem(SB) (1Gb RAM)，请运行：sudo xbutil host_mem --enable --size 1g 
+OnPrem FPGA 存在管理终结点（设备 ID 5004）和角色终结点（设备 ID 5005），它们分别使用 XCLMGMT 和 XOCL 驱动程序。
+
+<br>
+<b>- 关于 XRT：</b>
+<br>
+在 Azure NP VM 上，XDMA 2.1 平台仅支持 Host_Mem(SB) 和 DDR 数据保留功能。 
+<br>
+若要启用 Host_Mem(SB)（高达 1Gb RAM），请运行：sudo xbutil host_mem --enable --size 1g 
 
 若要禁用 Host_Mem(SB)，请运行：sudo xbutil host_mem --disable 
 
@@ -143,14 +158,7 @@ VM 代系支持：第 1 代<br>
 
 答：需要运行 xbutil 查询并查看下半部分。 
 
-问： 如果我自行创建 VM 并手动部署 XRT，需要额外作出哪些更改？ 
 
-答：在 /opt/xilinx/xrt/setup.sh 中，添加指向 /opt/xilinx/xrt/xrt.ini 的 XRT_INI_PATH 条目
-
- 
-/Opt/xilinx/xrt/xrt.ini 的内容应包含： <br>
-[Runtime]<br>
-ert=false <br>
 
 ## <a name="other-sizes"></a>其他大小
 

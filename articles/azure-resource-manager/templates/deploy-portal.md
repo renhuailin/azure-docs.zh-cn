@@ -2,13 +2,13 @@
 title: 使用 Azure 门户部署资源
 description: 使用 Azure 门户和 Azure 资源管理器将资源部署到订阅中的资源组。
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: d8467bb4e51fc4e6ba89a84f1260a8d2743758d2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 05/05/2021
+ms.openlocfilehash: 718d8be4e51bf41467bea398440b24f98ac1f6e9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98028669"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957891"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>使用 ARM 模板和 Azure 门户部署资源
 
@@ -75,7 +75,7 @@ ms.locfileid: "98028669"
 
 ## <a name="deploy-resources-from-custom-template"></a>从自定义模板部署资源
 
-如果想要执行部署，但不使用市场中的任何模板，可以创建自定义模板来针对解决方案定义基础结构。 若要了解如何创建模板，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+如果想要执行部署，但不使用市场中的任何模板，可以创建自定义模板来针对解决方案定义基础结构。 若要了解如何创建模板，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。
 
 > [!NOTE]
 > 门户界面不支持引用[来自 Key Vault 的密码](key-vault-parameter.md)。 请改用 [PowerShell](deploy-powershell.md) 或 [Azure CLI](deploy-cli.md)，从本地或从外部 URI 部署模板。
@@ -95,7 +95,7 @@ ms.locfileid: "98028669"
 
     本教程提供了加载快速入门模板的说明。
 
-1. 在“加载 GitHub 快速入门模板”下，键入或选择 **101-storage-account-create**。
+1. 在“加载 GitHub 快速入门模板”下，键入或选择“storage-account-create” 。
 
     可以使用两个选项：
 
@@ -118,7 +118,7 @@ ms.locfileid: "98028669"
     - **订阅**：选择 Azure 订阅。
     - **资源组**：选择“新建”并指定名称。
     - **位置**：选择 Azure 位置。
-    - **存储帐户类型**：使用默认值。
+    - **存储帐户类型**：使用默认值。 在门户上显示时，模板中定义的驼峰式大小写参数名称 storageAccountType 将转换为以空格分隔的字符串。
     - **位置**：使用默认值。
     - **我同意上述条款和条件**：（选中）
 
@@ -129,4 +129,3 @@ ms.locfileid: "98028669"
 - 若要查看审核日志，请参阅[使用资源管理器审核操作](../management/view-activity-logs.md)。
 - 若要排查部署错误，请参阅[查看部署操作](deployment-history.md)。
 - 若要从部署或资源组中导出模板，请参阅[导出 ARM 模板](export-template-portal.md)。
-- 若要跨多个区域安全地推出服务，请参阅 [Azure 部署管理器](deployment-manager-overview.md)。

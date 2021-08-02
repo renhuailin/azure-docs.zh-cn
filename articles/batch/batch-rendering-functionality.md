@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 3dcb66c0659c8d76ab53c7537f1b9a4343bd17a1
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: c39417697dd88d3faa64ce47493ab5e7c08faa0d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987463"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481340"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 的渲染功能
 
@@ -37,7 +37,7 @@ ms.locfileid: "107987463"
 
 有一个 Windows 映像和一个 CentOS 映像。  在 [Azure 市场](https://azuremarketplace.microsoft.com)中，可以通过搜索“batch 渲染”找到 VM 映像。
 
-有关示例池配置，请参阅 [Azure CLI 渲染教程](./tutorial-rendering-cli.md)。  Azure 门户和 Batch Explorer 提供了 GUI 工具用于在创建池时选择渲染 VM 映像。  如果使用 Batch API，请在创建池时，为 [ImageReference](/rest/api/batchservice/pool/add#imagereference) 指定以下属性值：
+Azure 门户和 Batch Explorer 提供了 GUI 工具用于在创建池时选择渲染 VM 映像。  如果使用 Batch API，请在创建池时，为 [ImageReference](/rest/api/batchservice/pool/add#imagereference) 指定以下属性值：
 
 | 发布者 | 产品/服务 | SKU | 版本 |
 |---------|---------|---------|--------|
@@ -98,7 +98,5 @@ ms.locfileid: "107987463"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Batch 渲染的示例，请尝试学习以下两篇教程：
-
-* [使用 Azure CLI 进行渲染](./tutorial-rendering-cli.md)
-* [使用 Batch Explorer 进行渲染](./tutorial-rendering-batchexplorer-blender.md)
+* 了解如何[将渲染应用程序与 Batch 一起使用](batch-rendering-applications.md)。
+* 了解[用于渲染资产和输出文件的存储与数据移动选项](batch-rendering-storage-data-movement.md)。

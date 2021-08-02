@@ -8,16 +8,16 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: 79d5583f8c9e562a0d21a91c210aa6259472661d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d06a63c91c25f97e9d1a10b6b72a33b2fc7d859d
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100383528"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111558955"
 ---
 # <a name="change-and-deletion-detection-in-blob-indexing-azure-cognitive-search"></a>Blob 索引中的更改和删除检测（Azure 认知搜索）
 
-创建初始搜索索引后，你可能希望后续索引器作业仅选取新的和已更改的文档。 对于源自 Azure Blob 存储的搜索内容，当你使用计划触发索引时，将自动执行更改检测。 默认情况下，服务仅为已更改的 Blob 重新编制索引，正如由 Blob 的 `LastModified` 时间戳所确定。 与搜索索引器支持的其他数据源不同，Blob 始终具有时间戳，无需手动设置更改检测策略。
+创建初始搜索索引后，你可能希望后续索引器作业仅选取新的和已更改的文档。 对于源自 Azure Blob 存储或 Azure Data Lake Storage Gen2 的搜索内容，当你使用计划触发索引时，将自动执行更改检测。 默认情况下，服务仅为已更改的 Blob 重新编制索引，正如由 Blob 的 `LastModified` 时间戳所确定。 与搜索索引器支持的其他数据源不同，Blob 始终具有时间戳，无需手动设置更改检测策略。
 
 虽然更改检测是指定的，但删除检测不是。 如果要检测已删除的文档，请确保使用“软删除”方法。 如果彻底删除 Blob，相应的文档不会从搜索索引中删除。
 
@@ -25,6 +25,9 @@ ms.locfileid: "100383528"
 
 + 本机 blob 软删除（预览版）（接下来描述）
 + [使用自定义元数据的软删除](#soft-delete-using-custom-metadata)
+
+> [!NOTE] 
+> Azure Data Lake Storage Gen2 允许重命名目录。 重命名目录时，该目录中的 blob 的时间戳不会更新。 因此，索引器不会重新索引这些 blob。 如果需要在目录重命名之后重新编制索引目录中的 blob（因为它们现在有新的 URL），则需更新目录中所有 blob 的 `LastModified` 时间戳，使索引器知道在以后运行时将其重新编制索引。 Azure Blob 存储中的虚拟目录无法更改，因此它们没有此问题。
 
 ## <a name="native-blob-soft-delete-preview"></a>本机 Blob 软删除（预览版）
 

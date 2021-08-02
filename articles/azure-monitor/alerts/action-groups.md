@@ -3,14 +3,14 @@ title: 在 Azure 门户中创建和管理器操作组
 description: 了解如何在 Azure 门户中创建和管理操作组。
 author: dkamstra
 ms.topic: conceptual
-ms.date: 04/07/2021
+ms.date: 05/28/2021
 ms.author: dukek
-ms.openlocfilehash: 1486415c5d225163dd2b2c7e79cd008ad0a76588
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 2f5244fd8ef414a1bed6781c702014e805f47a76
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107514863"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060311"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 
@@ -121,7 +121,7 @@ ms.locfileid: "107514863"
 
 操作组中的 Azure 应用操作数可能有限。
 
-### <a name="email"></a>Email
+### <a name="email"></a>电子邮件
 将从以下电子邮件地址发送电子邮件。 确保电子邮件筛选正确配置
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -154,9 +154,13 @@ ms.locfileid: "107514863"
 2. 需要在“订阅”级别完成分配。
 3. 用户需要在其“AAD 配置文件”中配置电子邮件。 
 
+> [!NOTE]
+> 在将新的 ARM 角色添加到订阅之后，客户可能需要多达 24 小时才能开始接收通知。
 
 ### <a name="function"></a>函数
 调用 [Azure Functions](../../azure-functions/functions-get-started.md) 中的现有 HTTP 触发器终结点。 若要处理请求，终结点必须处理 HTTP POST 谓词。
+
+定义函数操作时，函数的 httptrigger 终结点和访问密钥会保存在操作定义中。 例如：https://azfunctionurl.azurewebsites.net/api/httptrigger?code=this_is_access_key。 如果更改函数的访问密钥，则需要在操作组中删除并重新创建函数操作。
 
 操作组中的函数操作数可能有限。
 
@@ -302,12 +306,14 @@ Write-Host $myApp.AppRoles
 | 351 | 葡萄牙 |
 | 1 | 波多黎各 |
 | 40 | 罗马尼亚 |
+| 7  | 俄罗斯  |
 | 65 | 新加坡 |
 | 27 | 南非 |
 | 82 | 韩国 |
 | 34 | 西班牙 |
 | 41 | 瑞士 |
 | 886 | 台湾 |
+| 971 | 阿拉伯联合酋长国    |
 | 44 | 英国 |
 | 1 | 美国 |
 

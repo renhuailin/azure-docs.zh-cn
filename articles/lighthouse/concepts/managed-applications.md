@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse 和 Azure 托管应用程序
 description: 了解 Azure Lighthouse 和 Azure 托管应用程序如何配合使用。
-ms.date: 12/18/2020
+ms.date: 05/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5c30c3234a57e25ceaa521ad485f58d4d663ebe9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 09e07aca77fc53cb9eab2ba0c980b6c838ef6726
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97693965"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962632"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse 和 Azure 托管应用程序
 
@@ -33,9 +33,9 @@ Azure 托管应用程序和 Azure Lighthouse 都可以使服务提供商能够�
 
 借助 [Azure Lighthouse](../overview.md)，服务提供商可以直接在客户的订阅（或资源组）上执行各种管理任务。 这种访问是通过逻辑投影实现的，它允许服务提供商登录到自己的租户并访问属于客户租户的资源。 客户可以确定要委派给服务提供商的订阅或资源组，并且可以保持对这些资源的完全访问权限。 他们还可以随时删除服务提供商的访问权限。
 
-若要使用 Azure Lighthouse，客户可通过[部署 ARM 模板](../how-to/onboard-customer.md)或通过 [Azure 市场中的托管服务产品/服务](managed-services-offers.md)加入 [Azure 委托的资源管理](azure-delegated-resource-management.md)。 你可以通过[关联合作伙伴 ID](../how-to/partner-earned-credit.md) 来跟踪对客户参与度的影响。
+若要使用 Azure Lighthouse，客户可通过[部署 ARM 模板](../how-to/onboard-customer.md)或通过 [Azure 市场中的托管服务](managed-services-offers.md)来加入。 你可以通过[关联合作伙伴 ID](../how-to/partner-earned-credit.md) 来跟踪对客户参与度的影响。
 
-服务提供商为客户持续执行管理任务时通常会使用 Azure Lighthouse。
+服务提供商为客户持续执行管理任务时通常会使用 Azure Lighthouse。 若要详细了解 Azure Lighthouse 在技术级别的工作原理，请参阅 [Azure Lighthouse 体系结构](architecture.md)。
 
 ### <a name="azure-managed-applications"></a>Azure 托管应用程序
 
@@ -45,7 +45,7 @@ Azure 托管应用程序和 Azure Lighthouse 都可以使服务提供商能够�
 
 托管应用程序支持[自定义的 Azure 门户体验](../../azure-resource-manager/managed-applications/concepts-view-definition.md)和[与自定义提供程序的集成](../../azure-resource-manager/managed-applications/tutorial-create-managed-app-with-custom-provider.md)。 这些方案可用于提供自定义和集成程度更高的体验，使客户自己能够更轻松地执行一些管理任务。
 
-可以将托管应用程序[发布到 Azure 市场](../../marketplace/create-new-azure-apps-offer.md)，作为专用产品/服务供特定客户使用，或作为多个客户可以购买的公共产品/服务。 还可以通过[将托管应用程序发布到服务目录](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)，将它们交付给组织中的用户。 可以使用 ARM 模板部署服务目录和市场实例，其中可以包含商业市场合作伙伴的唯一标识符，以跟踪[客户使用情况归属](../../marketplace/azure-partner-customer-usage-attribution.md)。
+可以将托管应用程序[发布到 Azure 市场](../../marketplace/azure-app-offer-setup.md)，作为专用产品/服务供特定客户使用，或作为多个客户可以购买的公共产品/服务。 还可以通过[将托管应用程序发布到服务目录](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)，将它们交付给组织中的用户。 可以使用 ARM 模板部署服务目录和市场实例，其中可以包含商业市场合作伙伴的唯一标识符，以跟踪[客户使用情况归属](../../marketplace/azure-partner-customer-usage-attribution.md)。
 
 Azure 托管应用程序通常用于特定客户需求，这可通过完全由服务提供商管理的统包式解决方案来实现。
 

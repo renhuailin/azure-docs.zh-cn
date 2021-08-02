@@ -16,12 +16,12 @@ ms.date: 02/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 108f81be678eb666b6f79ebbecc93f7bc88dc1d6
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: afb12328a02a08bfcde4c431ff584a85dc48d31e
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107905"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613640"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本文介绍 Azure Active Directory (Azure AD) Connect 的先决条件和硬件要求。
@@ -231,7 +231,7 @@ Azure AD Connect 在安装了 Azure AD Connect 的服务器上安装以下组件
 | 少于 10,000 个 |1.6 GHz |4 GB |70 GB |
 | 10,000–50,000 |1.6 GHz |4 GB |70 GB |
 | 50,000–100,000 |1.6 GHz |16 GB |100 GB |
-| 如果对象数超过 100,000 个，则需要使用完整版本的 SQL Server | | | |
+| 如果对象数超过 100,000 个，则需要使用完全版本的 SQL Server。 出于性能原因，首选本地安装。 | | | |
 | 100,000–300,000 |1.6 GHz |32 GB |300 GB |
 | 300,000–600,000 |1.6 GHz |32 GB |450 GB |
 | 超过 600,000 个 |1.6 GHz |32 GB |500 GB |

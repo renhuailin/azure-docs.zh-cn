@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/29/2021
+ms.date: 06/11/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00c6fc7916355586787bb91225e71c4db280ed26
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 34fdc2ba8880a0da3324fce07eb1fc3763424cee
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315907"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017714"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码身份验证选项
 
@@ -110,42 +110,55 @@ FIDO2 安全密钥可用于登录到其 Azure AD 或已建立混合 Azure AD 联
 
 尽管有很多密钥都是通过 FIDO 联盟认证的 FIDO2，但 Microsoft 还是需要由供应商实现的 FIDO2 客户端到身份验证器协议 (Client-to-Authenticator Protocol, CTAP) 的一些可选扩展规范，以确保最高的安全性和最佳体验。
 
-安全密钥必须实现 FIDO2 CTAP 协议中的以下功能和扩展，才能与 Microsoft 兼容：
+安全密钥必须实现 FIDO2 CTAP 协议中的以下功能和扩展，才能与 Microsoft 兼容。 验证器供应商必须同时实现规范的 FIDO_2_0 和 FIDO_2_1 版本。有关详细信息，请参阅[客户端到身份验证器协议](https://fidoalliance.org/specs/fido-v2.1-rd-20210309/fido-client-to-authenticator-protocol-v2.1-rd-20210309.html)。
 
 | # | 功能/扩展信任 | 为什么需要此功能或扩展？ |
 | --- | --- | --- |
-| 1 | 常驻密钥 | 此功能使安全密钥可移植，其中凭据存储在安全密钥中。 |
-| 2 | 客户端 Pin | 利用此功能，你可以使用另一个因素来保护凭据，并将其应用于没有用户界面的安全密钥。 |
+| 1 | 常驻/可发现密钥 | 此功能使安全密钥可移植，其中凭据存储在安全密钥中并且是可发现的，这使得无用户名流成为可能。 |
+| 2 | 客户端 Pin | 利用此功能，你可以使用另一个因素来保护凭据，并将其应用于没有用户界面的安全密钥。<br>必须同时实现 [PIN 协议 1](https://fidoalliance.org/specs/fido-v2.1-rd-20210309/fido-client-to-authenticator-protocol-v2.1-rd-20210309.html#pinProto1) 和 [PIN 协议 2](https://fidoalliance.org/specs/fido-v2.1-rd-20210309/fido-client-to-authenticator-protocol-v2.1-rd-20210309.html#pinProto2)。 |
 | 3 | hmac-secret | 此扩展可确保你可以在设备处于离线状态或处于飞行模式时登录到你的设备。 |
 | 4 | 每个 RP 多个帐户 | 此功能可确保你可以在多个服务（如 Microsoft 帐户和 Azure Active Directory）上使用相同的安全密钥。 |
+| 5 | 凭据管理    | 此功能允许用户在平台上管理安全密钥的凭据，适用于未内置此功能的安全密钥。  |
+| 6 | 生物识别注册           | 此功能允许用户在验证器上注册生物识别，适用于未内置此功能的安全密钥。<br> 验证器必须为此功能实现 [authenicatorBioEnrollment](https://fidoalliance.org/specs/fido-v2.1-rd-20210309/fido-client-to-authenticator-protocol-v2.1-rd-20210309.html#authenticatorBioEnrollment) 命令。 强烈建议验证器供应商还实现 [userVerificationMgmtPreview](https://fidoalliance.org/specs/fido-v2.1-rd-20210309/fido-client-to-authenticator-protocol-v2.1-rd-20210309.html#prototypeAuthenticatorBioEnrollment) 命令，以便用户可以在所有早期 OS 版本上注册生物识别模板。 |
+| 7 | pinUvAuthToken           | 此功能允许平台使用 PIN 或生物识别匹配获得身份验证令牌，这有助于在验证器上存在多个凭据时提供更好的用户体验。  |
+| 8 | forcePinChange           | 此功能允许企业要求用户在远程部署中更改其 PIN。  |
+| 9 | setMinPINLength          | 此功能允许企业为其用户自定义最小 PIN 长度。 验证器还必须实现 minPinLength 扩展。  |
+| 10 | alwaysUV                | 此功能允许企业或用户始终要求用户进行验证才能使用此安全密钥。 验证器必须实现 toggleAlwaysUv 子命令。  |
+| 11 | credBlob                | 此扩展允许网站存储少量信息以及安全密钥。  |
 
 ### <a name="fido2-security-key-providers"></a>FIDO2 安全密钥提供商
 
 以下提供商提供了 FIDO2 安全密钥，它们具有已知兼容无密码体验的不同外形规格。 建议你通过联系供应商以及 FIDO 联盟来评估这些密钥的安全属性。
 
-| 提供程序 | 联系人 |
-| --- | --- |
-| Yubico | [https://www.yubico.com/solutions/passwordless/](https://www.yubico.com/solutions/passwordless/) |
-| Feitian | [https://ftsafe.us/pages/microsoft](https://ftsafe.us/pages/microsoft) |
-| HID | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
-| Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
-| TrustKey Solutions | [https://www.trustkeysolutions.com/security-keys/](https://www.trustkeysolutions.com/security-keys/) |
-| AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
-| Gemalto (Thales Group) | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
-| OneSpan Inc. | [https://www.onespan.com/products/fido](https://www.onespan.com/products/fido) |
-| IDmelon Technologies Inc. | [https://www.idmelon.com/#idmelon](https://www.idmelon.com/#idmelon) |
-| Hypersecu | [https://www.hypersecu.com/hyperfido](https://www.hypersecu.com/hyperfido) |
-| VinCSS | [https://passwordless.vincss.net](https://passwordless.vincss.net) |
-| KONA I | [https://konai.com/business/security/fido](https://konai.com/business/security/fido) |
-| Excelsecu | [https://www.excelsecu.com/productdetail/esecufido2secu.html](https://www.excelsecu.com/productdetail/esecufido2secu.html) |
-| Token2 Switzerland | [https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key](https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key) |
-| GoTrustID Inc. | [https://www.gotrustid.com/idem-key](https://www.gotrustid.com/idem-key) |
-| Kensington | [https://www.kensington.com/solutions/product-category/why-biometrics/](https://www.kensington.com/solutions/product-category/why-biometrics/) |
+| 提供程序                  |     生物识别     | USB | NFC | BLE | FIPS 认证 | 联系人                                                                                             |
+|---------------------------|:-----------------:|:---:|:---:|:---:|:--------------:|-----------------------------------------------------------------------------------------------------|
+| AuthenTrend               | ![y]              | ![y]| ![y]| ![y]| ![n]           | https://authentrend.com/about-us/#pg-35-3                                                           |
+| Ensurity                  | ![y]              | ![y]| ![n]| ![n]| ![n]           | https://www.ensurity.com/contact                                                                    |
+| Excelsecu                 | ![n]              | ![y]| ![n]| ![n]| ![n]           | https://www.excelsecu.com/productdetail/esecufido2secu.html                                         |
+| Feitian                   | ![y]              | ![y]| ![y]| ![y]| ![n]           | https://shop.ftsafe.us/pages/microsoft                                                                   |
+| Gemalto (Thales Group)    | ![n]              | ![y]| ![y]| ![n]| ![n]           | https://safenet.gemalto.com/access-management/authenticators/fido-devices                           |
+| GoTrustID Inc.            | ![n]              | ![y]| ![y]| ![y]| ![n]           | https://www.gotrustid.com/idem-key                                                                  |
+| HID                       | ![n]              | ![y]| ![y]| ![n]| ![n]           | https://www.hidglobal.com/contact-us                                                                |
+| Hypersecu                 | ![n]              | ![y]| ![n]| ![n]| ![n]           | https://www.hypersecu.com/hyperfido                                                                 |
+| IDmelon Technologies Inc. | ![y]              | ![y]| ![y]| ![y]| ![n]           | https://www.idmelon.com/#idmelon                                                                    |
+| Kensington                | ![y]              | ![y]| ![n]| ![n]| ![n]           | https://www.kensington.com/solutions/product-category/why-biometrics/                               |
+| KONA I                    | ![y]              | ![n]| ![y]| ![y]| ![n]           | https://konai.com/business/security/fido                                                            |
+| Nymi                      | ![y]              | ![n]| ![y]| ![y]| ![n]           | https://www.nymi.com/product                                                                        | 
+| OneSpan Inc.              | ![y]              | ![n]| ![n]| ![y]| ![n]           | https://www.onespan.com/products/fido                                                               |
+| Token2 Switzerland        | ![y]              | ![y]| ![y]| ![n]| ![n]           | https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key               |
+| TrustKey Solutions        | ![y]              | ![y]| ![n]| ![n]| ![n]           | https://www.trustkeysolutions.com/security-keys/                                                    |
+| VinCSS                    | ![n]              | ![y]| ![n]| ![n]| ![n]           | https://passwordless.vincss.net                                                                     |
+| Yubico                    | ![n]              | ![y]| ![y]| ![n]| ![y]           | https://www.yubico.com/solutions/passwordless/                                                      |
+
+
+<!--Image references-->
+[y]: ./media/fido2-compatibility/yes.png
+[n]: ./media/fido2-compatibility/no.png
 
 > [!NOTE]
 > 如果你购买并计划使用基于 NFC 的安全密钥，则需要为安全密钥提供支持的 NFC 读卡器。 Azure 未要求或限制使用 NFC 读卡器。 有关支持的 NFC 读卡器的列表，请与供应商联系以获取基于 NFC 的安全密钥。
 
-如果你是供应商，并且想要获取此支持的设备列表上的设备，请联系 [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com)。
+如果你是供应商，并且希望你的设备列入此受支持设备列表，请查看有关如何[成为与 Microsoft 兼容的 FIDO2 安全密钥供应商](/security/zero-trust/isv/fido2-hardware-vendor)的指导。
 
 若要开始使用 FIDO2 安全密钥，请完成以下操作方法：
 
@@ -156,12 +169,20 @@ FIDO2 安全密钥可用于登录到其 Azure AD 或已建立混合 Azure AD 联
 
 请注意以下事项：
 
-- 管理员可以为其租户启用无密码身份验证方法
-- 对于每种方法，管理员都可面向所有用户或选择其租户中的用户/组
-- 最终用户可以在其帐户门户中注册和管理这些无密码身份验证方法
-- 最终用户可以通过以下无密码身份验证方法登录：
+- 管理员可以为其租户启用无密码身份验证方法。
+
+- 对于每种方法，管理员都可面向所有用户或选择其租户中的用户/组。
+
+- 用户可以在其帐户门户中注册和管理这些无密码身份验证方法。
+
+- 用户可以通过以下无密码身份验证方法登录：
    - Microsoft Authenticator 应用：适用于使用 Azure AD 身份验证的情况，包括跨所有浏览器、在 Windows 10 安装期间以及与任何操作系统上集成的移动应用使用。
-   - 安全密钥：适用于 OOBE 中的 Windows 10 安装程序（无论是否使用 Windows AutoILO）、Windows 10 的锁屏界面，以及受支持的浏览器（例如旧版和新版 Microsoft Edge）中的 Web。
+   - 安全密钥：适用于 Windows 10 的锁屏界面和受支持的浏览器（如旧版和新版 Microsoft Edge）中的 Web。
+
+- 用户可以使用无密码凭据访问他们在其中为来宾身份的租户中的资源，但仍可能需要在该资源租户中执行 MFA。 有关详细信息，请参阅[可能需要进行两次多重身份验证](../external-identities/current-limitations.md#possible-double-multi-factor-authentication)。  
+
+- 用户不得在他们为来宾身份的租户中注册无密码凭据，正如他们不能在该租户中管理密码一样。  
+
 
 ## <a name="choose-a-passwordless-method"></a>选择无密码方法
 

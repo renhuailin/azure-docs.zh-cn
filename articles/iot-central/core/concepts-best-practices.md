@@ -9,16 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom:
 - device-developer
-ms.openlocfilehash: e8ae8b0173e53c0a46ded1a2690175e367997c9f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a3cbfa17d3b063ddcef90820dc31a080a768cbcd
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054461"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110493756"
 ---
 # <a name="best-practices-for-device-development"></a>设备开发最佳做法
-
-本文适用于设备开发人员。
 
 这些建议说明了如何实现设备，以便充分利用 IoT Central 中内置的灾难恢复和自动缩放。
 
@@ -59,9 +57,41 @@ ms.locfileid: "102054461"
 
 若要了解有关设备错误代码的详细信息，请参阅[设备连接故障排除](troubleshoot-connection.md)。
 
+## <a name="test-failover-capabilities"></a>测试故障转移功能
+
+通过 Azure CLI，可以测试设备客户端代码的故障转移功能。 CLI 命令的工作原理是将设备注册临时切换到不同的内部 IoT 中心。 可以通过检查设备是否仍在发送遥测数据并响应 IoT Central 应用程序中的命令来验证设备故障转移是否有效。
+
+若要为设备运行故障转移测试，请运行以下命令：
+
+```azurecli
+az iot central device manual-failover \
+    --app-id {Application ID of your IoT Central application} \
+    --device-id {Device ID of the device you're testing} \
+    --ttl-minutes {How to wait before moving the device back to it's original IoT hub}
+```
+
+> [!TIP]
+> 若要查找“应用程序 ID”，请导航到 IoT Central 应用程序中的“管理”>“应用程序” 。
+
+如果命令成功，则会看到如下所示的输出：
+
+```output
+Command group 'iot central device' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+{
+  "hubIdentifier": "6bd4...bafa",
+  "message": "Success! This device is now being failed over. You can check your device'’'s status using 'iot central device registration-info' command. The device will revert to its original hub at Tue, 18 May 2021 11:03:45 GMT. You can choose to failback earlier using device-manual-failback command. Learn more: https://aka.ms/iotc-device-test"
+}
+```
+
+若要详细了解 CLI 命令，请参阅 [az iot central device manual-failover](/cli/azure/iot/central/device#az_iot_central_device_manual_failover)。
+
+现在，可以检查设备中的遥测数据是否仍到达 IoT Central 应用程序。
+
+若要查看以各种编程语言处理故障转移的示例设备代码，请参阅 [IoT 高可用性客户端](https://github.com/iot-for-all/iot-central-high-availability-clients)。
+
 ## <a name="next-steps"></a>后续步骤
 
-如果你是设备开发人员，则建议执行以下后续步骤：
+一些建议的后续步骤如下：
 
 - 在[教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](tutorial-connect-device.md)中查看一些介绍如何使用 SAS 令牌的示例代码
 - 了解[如何使用用于 IoT Central 应用程序的 Node.js 设备 SDK 通过 X.509 证书连接设备](how-to-connect-devices-x509.md)

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2d89759438cb625a0e220af10ab6b287096f6390
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a31d32a4888e50cdfccf1bf609418fb31ef69e3
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359874"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569577"
 ---
 # <a name="configure-load-balancer-for-ag-vnn-listener"></a>为 AG VNN 侦听器配置负载均衡器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,9 +37,9 @@ ms.locfileid: "97359874"
 
 在完成本文中的步骤之前，应已做好以下准备：
 
-- 确定了 Azure 负载均衡器是适合[用于你的 HADR 解决方案的连接选项](hadr-cluster-best-practices.md#connectivity)。
+- 已确定 Azure 负载均衡器是[适用于你的可用性组的连接选项](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn)。
 - 配置了你的[可用性组侦听程序](availability-group-overview.md)。
-- 安装了最新版本的 [PowerShell](/powershell/azure/install-az-ps)。 
+- 安装了最新版本的 [PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows)。 
 
 
 ## <a name="create-load-balancer"></a>创建负载均衡器
@@ -50,7 +50,7 @@ ms.locfileid: "97359874"
 
 1. 选择 **添加** 。 在 Azure 市场中搜索“负载均衡器”。 选择“负载均衡器”。
 
-1. 选择“创建”。
+1. 选择“创建”  。
 
 1. 使用以下值设置负载均衡器：
 
@@ -125,7 +125,7 @@ ms.locfileid: "97359874"
 
 ```powershell
 $ClusterNetworkName = "<Cluster Network Name>"
-$IPResourceName = "<SQL Server FCI / AG Listener IP Address Resource Name>" 
+$IPResourceName = "<Availability group Listener IP Address Resource Name>" 
 $ILBIP = "<n.n.n.n>" 
 [int]$ProbePort = <nnnnn>
 
@@ -152,12 +152,28 @@ Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"
 Get-ClusterResource $IPResourceName | Get-ClusterParameter
 ```
 
+## <a name="modify-connection-string"></a>修改连接字符串 
+
+对于支持它的客户端，请将 `MultiSubnetFailover=True` 添加到连接字符串。 在不需要 MultiSubnetFailover 连接选项时，它将提供更快进行子网故障转移的优势。 这是因为客户端驱动程序会尝试为每个 IP 地址并行打开一个 TCP 套接字。 客户端驱动程序将等待第一个 IP 响应成功，一旦成功，就将其用于连接。
+
+如果客户端不支持 MultiSubnetFailover 参数，则可以修改 RegisterAllProvidersIP 和 HostRecordTTL 设置，以防止在故障转移之后出现连接延迟。 
+
+使用 PowerShell 修改 RegisterAllProvidersIp 和 HostRecordTTL 设置： 
+
+```powershell
+Get-ClusterResource yourListenerName | Set-ClusterParameter RegisterAllProvidersIP 0  
+Get-ClusterResource yourListenerName|Set-ClusterParameter HostRecordTTL 300 
+```
+
+若要了解详细信息，请参阅 SQL Server [侦听器连接超时](/troubleshoot/sql/availability-groups/listener-connection-times-out)文档。 
+
+> [!TIP]
+> - 即使是跨越单个子网的 HADR 解决方案，也可以在连接字符串中将 MultiSubnetFailover 参数设置为 true，以支持将来的跨越子网而无需更新连接字符串的功能。  
+> - 默认情况下，客户端缓存 20 分钟的群集 DNS 记录。 通过减小 HostRecordTTL 来缩短缓存记录的生存时间 (TTL)，旧客户端重新连接的速度可以更快。 因此，减小 HostRecordTTL 设置可能导致到 DNS 服务器的流量增加。
 
 ## <a name="test-failover"></a>测试故障转移
 
-
 测试群集化资源的故障转移以验证群集功能。 
-
 
 执行以下步骤：
 
@@ -178,7 +194,14 @@ Get-ClusterResource $IPResourceName | Get-ClusterParameter
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure 中的 SQL Server HADR 功能，请参阅[可用性组](availability-group-overview.md)和[故障转移群集实例](failover-cluster-instance-overview.md)。 你还可以了解对环境进行配置以实现高可用性和灾难恢复的[最佳做法](hadr-cluster-best-practices.md)。 
+在创建 VNN 后，请考虑优化 [SQL Server VM 的群集设置](hadr-cluster-best-practices.md)。 
+
+若要了解更多信息，请参阅以下文章：
+
+- [Azure VM 上的 SQL Server 的 Windows Server 故障转移群集](hadr-windows-server-failover-cluster-overview.md)
+- [Azure VM 上的 SQL Server 的 Always On 可用性组](availability-group-overview.md)
+- [Always On 可用性组概述](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
+- [Azure VM 上的 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)
 
 
 

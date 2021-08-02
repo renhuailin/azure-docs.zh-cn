@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 3ddd84f2f73546b42a3925802b3357df16485488
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ed1bb0a91504c871cd82777f1759d6dca95f1ab
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100521435"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903358"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -31,13 +31,15 @@ ms.locfileid: "100521435"
 
 ## <a name="core-tools-versions"></a>Core Tools 版本
 
-Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开发环境、[所选的语言](supported-languages.md)以及所需的支持级别：
+有三个版本的 Azure Functions Core Tools。<sup>*</sup>你使用的版本取决于你的本地开发环境、[选择的语言](supported-languages.md)和所需的支持级别：
 
 + [版本 3.x/2.x](#v2)：支持 [3.x 或 2.x 版的 Azure Functions 运行时](functions-versions.md)。 这些版本支持 [Windows](?tabs=windows#v2)、[macOS](?tabs=macos#v2) 和 [Linux](?tabs=linux#v2)，并使用特定于平台的包管理器或 npm 进行安装。
 
 + **版本 1.x**：支持 1.x 版的 Azure Functions 运行时。 此 Tools 版本仅在 Windows 计算机上受支持，需从 [npm 包](https://www.npmjs.com/package/azure-functions-core-tools)安装。
 
 你只能在给定计算机上安装一个版本的核心工具。 除非另有说明，否则本文中的示例适用于版本 3.x。
+
+<sup>*</sup>提供 Azure Functions 的试验版本，让你可以在 .NET 6.0 预览版上运行 C# 函数。 若要了解详细信息，请参阅 [Azure Functions v4 早期预览版](https://aka.ms/functions-dotnet6earlypreview-wiki)页面。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -336,7 +338,7 @@ func new --template "Queue Trigger" --name QueueTriggerJS
 # <a name="c"></a>[C\#](#tab/csharp)
 
 ```
-func start --build
+func start
 ```
 
 # <a name="java"></a>[Java](#tab/java)
@@ -369,11 +371,7 @@ npm start
 ---
 
 >[!NOTE]  
-> 1\.x 版的 Functions 运行时需要 `host` 命令，如下例所示：
->
-> ```
-> func host start
-> ```
+> 版本 1.x 的 Functions 运行时需要 `func host start`。 
 
 `func start` 支持以下选项：
 

@@ -3,12 +3,12 @@ title: Azure 资源运行状况概述
 description: 了解 Azure 资源运行状况如何帮助你诊断和获得对影响 Azure 资源的服务问题的支持。
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 25425eadfaf54ba56cde3b377a44cd85c2b68959
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 903a86d216e118f783411b38ef7ad75ad004df7f
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90967872"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786249"
 ---
 # <a name="resource-health-overview"></a>资源运行状况概述
  
@@ -52,7 +52,7 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 ### <a name="unknown"></a>未知
 
-“未知”表示资源运行状况未收到此资源的相关信息已超过 10 分钟。 尽管此状态不是资源状态的最终指示，但它是故障排除过程中一个重要的数据点。
+“未知”表示资源运行状况未收到此资源的相关信息已超过 10 分钟。 这通常发生在虚拟机已解除分配时。 尽管此状态不是资源状态的最终指示，但它可能是故障排除过程中一个重要的数据点。
 
 如果资源正在按预期方式运行，资源状态会在几分钟后更改为“可用”。
 
@@ -68,17 +68,15 @@ Azure 资源运行状况有助于在服务问题影响到 Azure 资源时进行�
 
 ![虚拟机的“已降级”状态](./media/resource-health-overview/degraded.png)
 
-## <a name="reporting-an-incorrect-status"></a>报告不正确的状态
-
-如果你认为当前运行状况不正确，可以通过选择“报告不正确的运行状况”告知我们。 如果某个 Azure 问题正在影响你，建议通过“资源运行状况”来联系支持人员。
-
-![用于提交不正确状态相关信息的表单](./media/resource-health-overview/incorrect-status.png)
-
 ## <a name="history-information"></a>历史记录信息
 
 可在资源运行状况的“运行状况历史记录”部分中访问最多 30 天的历史记录。
 
 ![过去两周内的“资源运行状况”事件列表](./media/resource-health-overview/history-blade.png)
+
+## <a name="root-cause-information"></a>根本原因信息
+
+如果 Azure 具有关于平台启动的不可用性的根本原因的进一步信息，则该信息可能会在最初不可用后 72 小时内发布到资源运行状况。 此信息目前仅适用于虚拟机。 
 
 ## <a name="get-started"></a>入门
 

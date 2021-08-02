@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 93f7f7a3c59beca362145ac16f7cf727df773f81
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1355f6e6120f77ead063bb9246bf1c2864341373
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102174055"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007564"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>在 Azure Kubernetes 服务 (AKS) 中使用 Azure 文件存储容器存储接口 (CSI) 驱动程序（预览版）
 
@@ -20,7 +20,7 @@ CSI 是有关对 Kubernetes 上的容器化工作负载公开任意块和文件�
 
 若要创建提供 CSI 驱动程序支持的 AKS 群集，请参阅[在 AKS 上为 Azure 磁盘和 Azure 文件存储启用 CSI 驱动程序](csi-storage-drivers.md)。
 
->[!NOTE]
+> [!NOTE]
 > “树中驱动程序”是指包含在核心 Kubernetes 代码中的当前存储驱动程序，而不是新的 CSI 驱动程序（插件）。
 
 ## <a name="use-a-persistent-volume-with-azure-files"></a>通过 Azure 文件存储使用永久性卷
@@ -121,10 +121,8 @@ volumesnapshotclass.snapshot.storage.k8s.io/csi-azurefile-vsc created
 
 基于[我们在本教程开头动态创建](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes)的 PVC `pvc-azurefile` 创建[卷快照](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml)。
 
-
 ```bash
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml
-
 
 volumesnapshot.snapshot.storage.k8s.io/azurefile-volume-snapshot created
 ```
@@ -167,7 +165,7 @@ Events:                                <none>
 
 在 AKS 中，内置的 `azurefile-csi` 存储类已经能够支持扩展，因此请使用[先前通过此存储类创建的 PVC](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes)。 PVC 请求了 100Gi 文件共享。 可通过运行以下命令来确认一点：
 
-```console 
+```console
 $ kubectl exec -it nginx-azurefile -- df -h /mnt/azurefile
 
 Filesystem                                                                                Size  Used Avail Use% Mounted on
@@ -194,42 +192,13 @@ Filesystem                                                                      
 //f149b5a219bd34caeb07de9.file.core.windows.net/pvc-5e5d9980-da38-492b-8581-17e3cad01770  200G  128K  200G   1% /mnt/azurefile
 ```
 
-
 ## <a name="nfs-file-shares"></a>NFS 文件共享
+
 [Azure 文件存储现在支持 NFS v4.1 协议。](../storage/files/storage-files-how-to-create-nfs-shares.md) Azure 文件存储的 NFS 4.1 支持以服务形式提供了一个完全托管的 NFS 文件系统，该系统建立在高度可用且高度持久的分布式弹性存储平台基础之上。
 
  此选项已针对包含就地数据更新的随机访问工作负载进行优化，提供全面的 POSIX 文件系统支持。 本部分将介绍如何在 AKS 群集上通过 Azure 文件存储 CSI 驱动程序使用 NFS 共享。
 
-请务必查看预览阶段的[限制](../storage/files/storage-files-compare-protocols.md#limitations)和[区域可用性](../storage/files/storage-files-compare-protocols.md#regional-availability)。
-
-### <a name="register-the-allownfsfileshares-preview-feature"></a>注册 `AllowNfsFileShares` 预览版功能
-
-若要创建利用 NFS 4.1 的文件共享，必须在订阅中启用 `AllowNfsFileShares` 功能标志。
-
-使用 [az feature register][az-feature-register] 命令注册 `AllowNfsFileShares` 功能标志，如以下示例所示：
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
-```
-
-状态显示为“已注册”需要几分钟时间。 使用 [az feature list][az-feature-list] 命令验证注册状态：
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
-```
-
-准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.Storage 资源提供程序的注册状态：
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Storage
-```
-
-### <a name="create-a-storage-account-for-the-nfs-file-share"></a>为 NFS 文件共享创建存储帐户
-
-使用以下配置[创建一个 `Premium_LRS` Azure 存储帐户](../storage/files/storage-how-to-create-file-share.md)用于支持 NFS 共享：
-- 帐户类型：FileStorage
-- 需要安全传输(仅启用 HTTPS 流量)：false
-- 需要在防火墙和虚拟网络中选择你的代理节点的虚拟网络 - 因此，你可能希望在 MC_ 资源组中创建存储帐户。
+请务必查看[限制](../storage/files/storage-files-compare-protocols.md#limitations)和[区域可用性](../storage/files/storage-files-compare-protocols.md#regional-availability)。
 
 ### <a name="create-nfs-file-share-storage-class"></a>创建 NFS 文件共享存储类
 
@@ -242,8 +211,6 @@ metadata:
   name: azurefile-csi-nfs
 provisioner: file.csi.azure.com
 parameters:
-  resourceGroup: EXISTING_RESOURCE_GROUP_NAME  # optional, required only when storage account is not in the same resource group as your agent nodes
-  storageAccount: EXISTING_STORAGE_ACCOUNT_NAME
   protocol: nfs
 ```
 
@@ -252,14 +219,15 @@ parameters:
 ```console
 $ kubectl apply -f nfs-sc.yaml
 
-storageclass.storage.k8s.io/azurefile-csi created
+storageclass.storage.k8s.io/azurefile-csi-nfs created
 ```
 
 ### <a name="create-a-deployment-with-an-nfs-backed-file-share"></a>使用 NFS 支持的文件共享创建部署
-可使用以下 [kubectl apply][kubectl-apply] 命令，部署一个可将时间戳保存到 `data.txt` 文件中的示例 [StatefulSet](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml)：
 
- ```console
-$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/statefulset.yaml
+可使用以下 [kubectl apply][kubectl-apply] 命令，部署一个可将时间戳保存到 `data.txt` 文件中的示例 [StatefulSet](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/nfs/statefulset.yaml)：
+
+```console
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/nfs/statefulset.yaml
 
 statefulset.apps/statefulset-azurefile created
 ```
@@ -276,9 +244,8 @@ accountname.file.core.windows.net:/accountname/pvc-fa72ec43-ae64-42e4-a8a2-55660
 ...
 ```
 
->[!NOTE]
+> [!NOTE]
 > 请注意，由于 NFS 文件共享是高级帐户，因此最小文件共享大小为100GB。 如果使用较小的存储大小创建 PVC，可能会遇到错误“无法创建文件共享 ...大小 (5)...”。
-
 
 ## <a name="windows-containers"></a>Windows 容器
 
@@ -286,7 +253,7 @@ Azure 文件存储 CSI 驱动程序还支持 Windows 节点和容器。 如果�
 
 添加 Windows 节点池后，使用内置的存储类（例如 `azurefile-csi`）或创建自定义的存储类。 可使用以下 [kubectl apply][kubectl-apply] 命令，部署一个可将时间戳保存到 `data.txt` 文件中的[基于 Windows 的示例 StatefulSet](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml)：
 
- ```console
+```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
 
 statefulset.apps/busybox-azurefile created
@@ -309,7 +276,6 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 - 若要了解如何为 Azure 磁盘使用 CSI 驱动程序，请参阅[通过 CSI 驱动程序使用 Azure 磁盘](azure-disk-csi.md)。
 - 有关存储最佳做法的详细信息，请参阅[有关 Azure Kubernetes 服务中存储和备份的最佳做法][operator-best-practices-storage]。
 
-
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
@@ -319,25 +285,24 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 [managed-disk-pricing-performance]: https://azure.microsoft.com/pricing/details/managed-disks/
 [smb-overview]: /windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview
 
-
 <!-- LINKS - internal -->
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
 [premium-storage]: ../virtual-machines/disks-types.md
-[az-disk-list]: /cli/azure/disk#az-disk-list
-[az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
-[az-disk-create]: /cli/azure/disk#az-disk-create
-[az-disk-show]: /cli/azure/disk#az-disk-show
+[az-disk-list]: /cli/azure/disk#az_disk_list
+[az-snapshot-create]: /cli/azure/snapshot#az_snapshot_create
+[az-disk-create]: /cli/azure/disk#az_disk_create
+[az-disk-show]: /cli/azure/disk#az_disk_show
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [storage-skus]: ../storage/common/storage-redundancy.md

@@ -7,12 +7,13 @@ ms.topic: troubleshooting
 ms.date: 4/20/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 386a95b46bd4787ea9ad2925ea1d2b2a0627a05e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 633926710e4f6b92e2cd19aaf852135c07929966
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107795885"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110677123"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -46,9 +47,9 @@ CAQuietExec64:  + FullyQualifiedErrorId : UnauthorizedAccess
 CAQuietExec64:  Error 0x80070001: Command line returned an error.
 ```
 
-如果使用组策略配置 [PowerShell 执行策略](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy)，并且策略设置是“仅允许签名脚本”，则会出现此问题。 Azure 文件同步代理随附的所有脚本均已签名。 Azure 文件同步代理安装失败，因为安装程序使用“跳过执行”策略设置来完成脚本执行。
+如果使用组策略配置 [PowerShell 执行策略](/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy)，并且策略设置是“仅允许签名脚本”，则会出现此问题。 Azure 文件同步代理随附的所有脚本均已签名。 Azure 文件同步代理安装失败，因为安装程序使用跳过执行策略设置来完成脚本执行。
 
-若要解决此问题，请暂时禁用服务器上的[启用脚本执行](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy)组策略设置。 代理安装完成后，可以重新启用组策略设置。
+若要解决此问题，请暂时禁用服务器上的[启用脚本执行](/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy)组策略设置。 代理安装完成后，就可以重新启用组策略设置了。
 
 <a id="agent-installation-on-DC"></a>**Active Directory 域控制器上的代理安装失败**  
 如果尝试在 Active Directory 域控制器上安装同步代理，且该控制器中 PDC 角色所有者位于 Windows Server 2008 R2 上或更低的 OS 版本上，则可能遇到同步代理安装失败的问题。
@@ -358,6 +359,7 @@ PerItemErrorCount: 1006.
 | 0x80c80205 | -2134375931 | ECS_E_SYNC_ITEM_SKIP | 文件或目录已跳过，但会在下一个同步会话期间进行同步。 如果在下载此项时报告此错误，则文件或目录名称很可能无效。 | 如果在上传文件时报告此错误，则无需采取任何措施。 如果在下载文件时报告此错误，请重命名相关文件或目录。 有关详细信息，请参阅[处理不支持的字符](?tabs=portal1%252cazure-portal#handling-unsupported-characters)。 |
 | 0x800700B7 | -2147024713 | ERROR_ALREADY_EXISTS | 无法同步创建文件或目录，因为该项已在目标中存在，而同步不知道此项更改。 | 无需采取措施。 在目标上运行更改检测且同步了解此新项目时，同步会停止记录此错误。 |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | 无法同步该文件，因为已达到 Azure 文件共享限制。 | 要解决此问题，请参阅疑难解答指南中的[达到 Azure 文件共享存储限制](?tabs=portal1%252cazure-portal#-2134351810)部分。 |
+| 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | 文件是使用不受支持的解决方案（如 NTFS EFS）加密的。 | 解密该文件并使用支持的加密解决方案。 有关支持解决方案的列表，请参阅计划指南的[加密](file-sync-planning.md#encryption)部分。 |
 | 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | 文件位于一个 DFS-R 只读复制文件夹中。 | 文件位于一个 DFS-R 只读复制文件夹中。 Azure 文件同步不支持 DFS-R 只读复制文件夹中的服务器终结点。 请参阅[规划指南](file-sync-planning.md#distributed-file-system-dfs)以获取详细信息。 |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | 文件处于“删除挂起”状态。 | 无需采取措施。 一旦关闭所有打开的文件句柄，就会删除文件。 |
 | 0x80c86044 | -2134351804 | ECS_E_AZURE_AUTHORIZATION_FAILED | 文件不能同步，原因是存储帐户上的防火墙和虚拟网络设置已启用，服务器不能访问存储帐户。 | 按照部署指南中的[配置防火墙和虚拟网络设置](file-sync-deployment-guide.md?tabs=azure-portal#configure-firewall-and-virtual-network-settings)部分中所述的步骤添加服务器 IP 地址或虚拟网络。 |

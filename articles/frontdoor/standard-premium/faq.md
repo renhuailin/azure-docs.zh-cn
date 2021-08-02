@@ -6,14 +6,14 @@ author: duongau
 ms.service: frontdoor
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/18/2021
+ms.date: 05/18/2021
 ms.author: duau
-ms.openlocfilehash: 6f6d71dec9726f009ab9a56e0a49ba21f5d218fd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ca91e7298486cc92ae8a4444869f0b71c91ae2ab
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181017"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112034222"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Azure Front Door 标准版/高级版（预览版）常见问题解答
 
@@ -69,11 +69,11 @@ HTTP/2 协议支持仅适用于连接到 Azure Front Door 的客户端。 与后
 
 ### <a name="what-regions-is-the-service-available-in"></a>该服务已在哪些区域推出？
 
-Azure Front Door 是一个全球性的服务，并不局限于任何特定的 Azure 区域。 在创建 Front Door 时唯一需要指定的位置是资源组的位置。 该位置在本质上是指定资源组元数据要存储到的位置。 Front Door 资源本身是作为全局资源创建的，其配置将全局部署到所有 POP（接入点）。 
+Azure Front Door 是一个全球性的服务，并不局限于任何特定的 Azure 区域。 在创建 Front Door 时唯一需要指定的位置是资源组的位置。 该位置在本质上是指定资源组元数据要存储到的位置。 Front Door 资源本身是作为全局资源创建的，其配置将全局部署到所有边缘位置。 
 
-### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Azure Front Door 的 POP 位置有哪些？
+### <a name="where-are-the-edge-locations-for-azure-front-door"></a>Azure Front Door 的边缘位置在哪儿？
 
-Azure Front Door 的 POP（接入点）位置与 Microsoft 的 Azure CDN 相同。 有关 POP 的完整列表，请参阅 [Microsoft 的 Azure CDN POP 位置](../../cdn/cdn-pop-locations.md)。
+有关 Azure Front Door 边缘位置的完整列表，请参阅 [Azure Front Door 边缘位置](edge-locations.md)。
 
 ### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Azure Front Door 是应用程序的专用部署还是在客户之间共享？
 
@@ -138,9 +138,10 @@ Front Door 的前端任意播 IP 通常不会更改，在 Front Door 的生存�
 
 ### <a name="how-long-does-it-take-to-deploy-an-azure-front-door-does-my-front-door-still-work-when-being-updated"></a>部署 Azure Front Door 需要多长时间？ 更新 Front Door 时，它是否仍可正常工作？
 
-对于全局部署，创建新的 Front Door 或者对现有 Front Door 进行任何更新大约需要 3 到 5 分钟。 这意味着，在大约 3 到 5 分钟后，Front Door 配置将会全局部署到所有 POP 中。
+大多数规则引擎配置更新在 20 分钟内完成。 更新完成后，规则应该就会立即生效。 
 
-注意 - 全局部署自定义 TLS/SSL 证书更新需要大约 30 分钟。
+ > [!Note]  
+  > 大多数自定义 TLS/SSL 证书更新需要大约 30 分钟才能全局部署。
 
 对路由或后端池的任何更新是无缝的，完全不会导致停机（如果新配置正确）。 除非你从“Azure Front Door 托管”切换到“使用自己的证书”或采用其他方法，否则证书更新不会导致任何服务中断。
 
@@ -157,7 +158,7 @@ Azure Front Door (AFD) 需要通过一个公共 IP 或可公开解析的 DNS 名
 
 ### <a name="how-long-does-it-take-for-a-rule-to-take-effect-after-being-added-to-the-front-door-rules-engine"></a>将某个规则添加到 Front Door 规则引擎后，该规则在多久后生效？
 
-规则引擎配置需要大约 10 到 15 分钟时间来完成更新。 更新完成后，规则应该就会立即生效。 
+大多数规则引擎配置更新在 20 分钟内完成。 更新完成后，规则应该就会立即生效。 
 
 ### <a name="can-i-configure-azure-cdn-behind-my-front-door-profile-or-front-door-behind-my-azure-cdn"></a>是否可以在 Front Door 配置文件后面配置 Azure CDN，或者在 Azure CDN 后面配置 Front Door？
 
@@ -249,7 +250,7 @@ Front Door 托管选项通过 Digicert 预配标准的 TLS/SSL 证书，并将�
 
 * 证书使用者名称不匹配：对于 HTTPS 连接，Front Door 预期后端会出示来自有效 CA 的证书，该证书中的使用者名称与后端主机名匹配。 例如，如果后端主机名设置为 `myapp-centralus.contosonews.net`，而后端在 TLS 握手期间出示的证书的使用者名称不包含 `myapp-centralus.contosonews.net` 或 `*myapp-centralus*.contosonews.net`。 那么，Front Door 将拒绝连接并生成错误。 
     * 解决方法：对 Front Door 禁用证书使用者名称检查可以解决此错误，不过，从合规的角度讲，我们不建议这样做。 可以在 Azure 门户中的“设置”下以及在 API 中的“BackendPoolsSettings”下找到此选项。
-* 后端宿主证书来自无效的 CA：在包含 Front Door 的后端上只能使用来自[有效证书颁发机构](troubleshoot-allowed-certificate-authority.md)的证书。 不允许来自内部 CA 的证书或自签名证书。
+* 后端宿主证书来自无效的 CA：在包含 Front Door 的后端上只能使用来自[有效证书颁发机构](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)的证书。 不允许来自内部 CA 的证书或自签名证书。
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>是否可以对 Azure Front Door 使用客户端/相互身份验证？
 
@@ -272,6 +273,12 @@ Front Door 托管选项通过 Digicert 预配标准的 TLS/SSL 证书，并将�
 ### <a name="can-i-set-alerts-with-azure-front-door"></a>是否可对 Azure Front Door 设置警报？
 
 是，Azure Front Door 支持警报。 警报是针对指标配置的。 
+
+## <a name="billing"></a>计费
+
+### <a name="will-i-be-billed-for-the-azure-front-door-resources-that-are-disabled"></a>是否会对已禁用的 Azure Front Door 资源计费？
+
+Azure Front Door 资源（如 Front Door 配置文件）在禁用时不计费。
 
 ## <a name="next-steps"></a>后续步骤
 

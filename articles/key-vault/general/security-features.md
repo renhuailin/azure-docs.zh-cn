@@ -9,16 +9,16 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: fe88933049ad39de57f879789e8c1b86ed7a54f5
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: cb3c503000e895344368f09dfdceac1156628bb9
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107820072"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969987"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
-Azure Key Vault 可用于在云中保护加密密钥和机密（例如证书、连接字符串和密码）。 存储敏感数据和关键业务数据时，必须采取措施以最大限度提高保管库及其中存储的数据的安全性。
+Azure Key Vault 保护云中的加密密钥、证书（以及与证书关联的私钥）和机密（例如连接字符串和密码）。 存储敏感数据和关键业务数据时，必须采取措施以最大限度提高保管库及其中存储的数据的安全性。
 
 本文概述了 Azure Key Vault 的安全功能和最佳做法。
 
@@ -50,7 +50,7 @@ Azure Key Vault 可用于在云中保护加密密钥和机密（例如证书、�
 
 在所有类型的访问中，应用程序都使用 Azure AD 进行身份验证。 应用程序根据应用程序类型使用任何[支持的身份验证方法](../../active-directory/develop/authentication-vs-authorization.md)。 应用程序通过获取平面中资源的令牌来授予访问权限。 资源是管理平面或数据平面中基于 Azure 环境的终结点。 应用程序使用令牌并向密钥保管库发送 REST API 请求。 若要了解详细信息，请查看[整个身份验证流](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
 
-有关完整的详细信息，请参阅 [Key Vault 身份验证基础知识](authentication-fundamentals.md)
+有关完整的详细信息，请参阅 [Key Vault 身份验证基础知识](/azure/key-vault/general/authentication.md)
 
 ## <a name="key-vault-authentication-options"></a>Key Vault 身份验证选项
 
@@ -58,7 +58,7 @@ Azure Key Vault 可用于在云中保护加密密钥和机密（例如证书、�
 
 - 仅应用程序：该应用程序表示服务主体或托管标识。 对于需要定期从密钥保管库中访问证书、密钥或机密的应用程序而言，此标识是最常见的方案。 为了让这种方案起作用，必须在访问策略中指定应用程序的 `objectId`，并且不能指定 `applicationId`，或者它必须为 `null`。
 - 仅用户：用户从租户中注册的任何应用程序访问密钥保管库。 此类访问的示例包括 Azure PowerShell 和 Azure 门户。 这了让这种该方案起作用，必须在访问策略中指定用户的 `objectId`，并且不能指定 `applicationId`，或者它必须为 `null`。
-- 应用程序和用户（有时称为“复合标识”）：用户需要从特定应用程序访问密钥保管库，并且该应用程序必须使用代理身份验证 (OBO) 流来模拟用户。 要使此方案起作用，必须在访问策略中指定 `applicationId` 和 `objectId`。 `applicationId` 标识所需的应用程序，`objectId` 标识用户。 目前，此选项不可用于数据平面 Azure RBAC（预览版）。
+- 应用程序和用户（有时称为“复合标识”）：用户需要从特定应用程序访问密钥保管库，并且该应用程序必须使用代理身份验证 (OBO) 流来模拟用户。 要使此方案起作用，必须在访问策略中指定 `applicationId` 和 `objectId`。 `applicationId` 标识所需的应用程序，`objectId` 标识用户。 目前，此选项不可用于数据平面 Azure RBAC。
 
 在所有类型的访问中，应用程序都使用 Azure AD 进行身份验证。 应用程序根据应用程序类型使用任何[支持的身份验证方法](../../active-directory/develop/authentication-vs-authorization.md)。 应用程序通过获取平面中资源的令牌来授予访问权限。 资源是管理平面或数据平面中基于 Azure 环境的终结点。 应用程序使用令牌并向密钥保管库发送 REST API 请求。 若要了解详细信息，请查看[整个身份验证流](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
 

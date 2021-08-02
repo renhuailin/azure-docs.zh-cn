@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 02/11/2021
+ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: ebc8405a2afe9a6e2d802b68c59142f6fbf01de5
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: d5e9b449aaff6bb14283184c2182d0e9de2ef0c5
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288105"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407554"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>创建启用了 Azure Arc 的 PostgreSQL 超大规模服务器组
 
@@ -80,7 +80,18 @@ azdata arc postgres server create --help
 
 - 要部署的 PostgreSQL 引擎的版本：默认情况下为版本 12。 要部署版本 12，可以省略此参数或传递以下参数之一：`--engine-version 12` 或 `-ev 12`。 要部署版本 11，请指示 `--engine-version 11` 或 `-ev 11`。
 
-- 要部署的工作器节点数，以进行横向扩展并可能达到更好的性能。 在继续操作之前，请先阅读[有关超大规模 Postgres 的概念](concepts-distributed-postgres-hyperscale.md)。 若要指示要部署的工作器节点数，请使用参数 `--workers` 或 `-w`，后跟一个大于或等于 2 的整数。 例如，如果要部署包含 2 个工作器节点的服务器组，则指示 `--workers 2` 或 `-w 2`。 这将创建三个 pod：一个用于协调器节点/实例，两个用于工作器节点/实例（一个工作器一个）。
+- 要部署的工作器节点数，以进行横向扩展并可能达到更好的性能。 在继续操作之前，请先阅读[有关超大规模 Postgres 的概念](concepts-distributed-postgres-hyperscale.md)。 若要指示要部署的工作器节点数，请使用参数 `--workers` 或 `-w`，后跟一个整数。 下表显示支持值的范围以及可使用它们获得的 Postgres 部署形式。 例如，如果要部署包含 2 个工作器节点的服务器组，则指示 `--workers 2` 或 `-w 2`。 这将创建三个 pod：一个用于协调器节点/实例，两个用于工作器节点/实例（一个工作器一个）。
+
+
+
+|需要：   |要部署的服务器组的形状   |-w 要使用的参数   |注意   |
+|---|---|---|---|
+|Postgres 的横向扩展形式，可满足应用程序的可伸缩性需求。   |3 个或更多 Postgres 实例，其中 1 个是协调器，n 个工作器，n >= 2。   |使用 -w n，其中 n >= 2。   |加载了提供超大规模功能的 Citus 扩展。   |
+|Postgres 超大规模的基本形式，用于以最低成本对应用程序执行功能验证。 对性能和可伸缩性验证无效。 为此，你需要使用上述部署类型。   |1 个既充当协调器又充当工作器的 Postgres 实例。   |使用 -w 0 并加载 Citus 扩展。 如果从命令行部署，请使用以下参数：-w 0 --extensions Citus。   |加载了提供超大规模功能的 Citus 扩展。   |
+|一个 Postgres 简单实例，可随时根据需要横向扩展。   |1 个 Postgres 实例。 它尚不了解协调器与工作器的语义。 若要在部署后横向扩展，请编辑配置、增加工作器节点数并分发数据。   |使用 -w 0 或不指定 -w。   |提供超大规模功能的 Citus 扩展存在于部署中，但尚未加载。   |
+|   |   |   |   |
+
+虽然使用 -w 1 有效，但不建议使用它。 此部署不会带来多大价值。 使用它可以获取 2 个 Postgres 实例：1 个协调器和 1 个工作器。 使用此设置，实际上不会横向扩展数据，因为你只部署了一个工作器。 因此，你不会看到性能和可伸缩性水平有所提高。 我们将在将来的版本中删除对此部署的支持。
 
 - 希望服务器组使用的存储类。 请务必在部署服务器组时设置存储类，因为在部署后便无法更改此设置。 如果要在部署后更改存储类，则需要提取数据、删除服务器组、创建新的服务器组，然后导入数据。 可以指定用于数据、日志和备份的存储类。 默认情况下，如果不指示存储类，则将使用数据控制器的存储类。
     - 要设置数据的存储类，请指示参数 `--storage-class-data` 或 `-scd`，后跟存储类的名称。
@@ -246,7 +257,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
 
     > 在上述文档中，跳过“登录到 Azure 门户”和“创建 Azure Database for PostgreSQL - 超大规模 (Citus)”部分\* 。 在 Azure Arc 部署中执行剩余步骤。 这些部分特定于在 Azure 云中作为 PaaS 服务提供的 Azure Database for PostgreSQL 超大规模 (Citus)，但文档的其他部分直接适用于已启用 Azure Arc 的超大规模 PostgreSQL。
 
-- [横向扩展已启用 Azure Arc 的超大规模 PostgreSQL 服务器组](scale-out-postgresql-hyperscale-server-group.md)
+- [横向扩展已启用 Azure Arc 的超大规模 PostgreSQL 服务器组](scale-out-in-postgresql-hyperscale-server-group.md)
 - [存储配置和 Kubernetes 存储概念](storage-configuration.md)
 - [扩展永久性卷声明](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Kubernetes 资源模型](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)

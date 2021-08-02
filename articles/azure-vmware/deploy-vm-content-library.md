@@ -3,12 +3,12 @@ title: 创建内容库以在 Azure VMware 解决方案中部署 VM
 description: 创建内容库以在 Azure VMware 解决方案私有云中部署 VM。
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: a50b12ef8e139bf7de171398fd28f74fc3f310c9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5ebd60b3c2fc8350478125e756413d0ba750a0ed
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100381998"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756826"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>创建内容库以在 Azure VMware 解决方案中部署 VM
 
@@ -18,7 +18,7 @@ ms.locfileid: "100381998"
 
 ## <a name="prerequisites"></a>先决条件
 
-学习本教程需要具备 NSX-T 段（逻辑交换机）和托管式 DHCP 服务。  有关详细信息，请参阅[如何管理 Azure VMware 解决方案中的 DHCP](manage-dhcp.md) 一文。
+学习本教程需要具备 NSX-T 段（逻辑交换机）和托管式 DHCP 服务。  有关详细信息，请参阅[为 Azure VMware 解决方案配置 DHCP](configure-dhcp-azure-vmware-solution.md) 一文。  
 
 ## <a name="create-a-content-library"></a>创建内容库
 
@@ -94,8 +94,8 @@ ms.locfileid: "100381998"
 
 了解如何在 Azure VMware 解决方案中创建内容库以部署 VM 后，接下来你可能想要了解以下内容：
 
-- [部署和配置 VMware HCX](tutorial-deploy-vmware-hcx.md) 以将 VM 工作负载迁移到私有云。
-- [Azure VMware 解决方案 VM 的生命周期管理](lifecycle-management-of-azure-vmware-solution-vms.md)。
+- [如何将 VM 工作负载迁移到私有云](tutorial-deploy-vmware-hcx.md)
+- [在 Azure VMware 解决方案中集成 Azure 原生服务](integrate-azure-native-services.md)
 
 <!-- LINKS - external-->
 

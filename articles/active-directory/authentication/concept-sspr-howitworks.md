@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 06/14/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 496a8dba9b9ea7fb82ad9016479154d6a61cb767
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a46d77b088d854bdd6ee8781b545d1236f357853
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98703269"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071472"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>工作原理：Azure AD 自助密码重置
 
-Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够更改或重置其密码，而不需要管理员或支持人员的干预。 如果用户的帐户被锁定或用户忘记了自己的密码，他们可以按照提示取消对自己的阻止，回到工作状态。 当用户无法登录到其设备或应用程序时，此功能可减少呼叫支持人员的次数，降低生产力损失。
+Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够更改或重置其密码，而不需要管理员或支持人员的干预。 如果用户的帐户被锁定或用户忘记了自己的密码，他们可以按照提示取消对自己的阻止，回到工作状态。 当用户无法登录到其设备或应用程序时，此功能可减少呼叫支持人员的次数，降低生产力损失。 建议观看[如何在 Azure AD 中启用和配置 SSPR](https://www.youtube.com/watch?v=rA8TvhNcCvQ) 这段视频。
 
 > [!IMPORTANT]
 > 此概念文章向管理员介绍了自助式密码重置的工作原理。 如果你是已注册了自助式密码重置的最终用户并且需要返回到你的帐户，请转到 [https://aka.ms/sspr](https://aka.ms/sspr)。
@@ -72,7 +72,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
 
 ## <a name="require-users-to-register-when-they-sign-in"></a>要求用户在登录时注册
 
-可以启用此选项在用户使用 Azure AD 登录到任何应用程序时要求用户完成 SSPR 注册。 此工作流包括以下应用程序：
+可以启用此选项在用户使用新式身份验证或 web 浏览器登录到任何使用 Azure AD 的应用程序时要求用户完成 SSPR 注册。 此工作流包括以下应用程序：
 
 * Microsoft 365
 * Azure 门户
@@ -93,7 +93,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
 
 为了在需要使用身份验证方法来重置或更改用户的密码时确保身份验证方法正确，你可以要求用户在某段时间过后确认其已注册的信息。 仅当你启用了“要求用户在登录时注册”选项时，此选项才可用。
 
-有效值（用于提示用户确认其注册的方法）的范围为 0 到 730 天。 将此值设置为 0 意味着永远不会要求用户确认其身份验证信息。
+有效值（用于提示用户确认其注册的方法）的范围为 0 到 730 天。 将此值设置为 0 意味着永远不会要求用户确认其身份验证信息。 使用组合注册体验时，用户需在重新确认其信息之前确认其身份。
 
 ## <a name="authentication-methods"></a>身份验证方法
 
@@ -105,7 +105,7 @@ Azure Active Directory (Azure AD) 自助式密码重置 (SSPR) 使用户能够�
 * 移动应用代码
 * 电子邮件
 * 移动电话
-* 办公电话
+* Office 电话（仅适用于具有付费订阅的租户）
 * 安全性问题
 
 用户只有在注册了管理员启用的身份验证方法时才能重置其密码。

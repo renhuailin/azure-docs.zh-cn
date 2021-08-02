@@ -2,32 +2,31 @@
 title: 在 Azure 安全中心中将订阅组织到管理组中，并为用户分配角色
 description: 了解如何在 Azure 安全中心将 Azure 订阅组织到管理组中，并向组织中的用户分配角色
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 06/11/2021
+ms.custom: subject-rbac-steps
 ms.author: memildin
-ms.openlocfilehash: 3508d508a19d6ce7fba4f3ef3a4fa545a58a167d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 14cad6e5d95492b889a4e1a09abac9bd3ee8e603
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099380"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111887272"
 ---
 # <a name="organize-subscriptions-into-management-groups-and-assign-roles-to-users"></a>将订阅组织到管理组中，并为用户分配角色
 
-本文介绍如何通过将安全策略应用于关联到 Azure Active Directory 租户的所有 Azure 订阅来大规模管理组织的安全状况。
+此页介绍如何对所有关联到 Azure Active Directory 租户的 Azure 订阅应用安全策略，以便大规模管理组织的安全态势。
 
-若要了解在 Azure AD 租户中注册的所有订阅的安全状态，必须对根管理组分配拥有足够读取权限的 Azure 角色。
-
+若要查看所有关联到 Azure AD 租户的订阅的安全态势，需要有一个针对根管理组分配了足够读取权限的 Azure 角色。
 
 ## <a name="organize-your-subscriptions-into-management-groups"></a>将订阅组织到管理组中
 
 ### <a name="introduction-to-management-groups"></a>管理组简介
 
-借助 Azure 管理组，可以对各组订阅高效管理访问、策略和报告，并能对根管理组执行操作，从而有效管理整个 Azure 资产。 可以将订阅整理到管理组中，并向管理组应用治理策略。 管理组中的所有订阅都会自动继承应用于管理组的策略。 
+管理组用于针对订阅组高效地管理访问、策略和报告，并通过对根管理组执行操作来有效地管理整个 Azure 资产。 可以将订阅整理到管理组中，并向管理组应用治理策略。 管理组中的所有订阅都会自动继承应用于管理组的策略。 
 
 每个 Azure AD 租户都指定有一个顶级管理组，称为“根管理组”。 此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 借助此组，可以在目录级别应用全局策略和 Azure 角色分配。 
 
@@ -36,8 +35,7 @@ ms.locfileid: "102099380"
 - 通过 API 调用来创建管理组。
 - 通过 PowerShell 创建管理组。 有关 PowerShell 的说明，请参阅[创建管理组以管理资源和组织](../governance/management-groups/create-management-group-portal.md)。
 
-虽然不一定要在安全中心内创建管理组，但建议至少创建一个，以便创建根管理组。 创建管理组后，Azure AD 租户下的所有订阅都会与它关联。 
-
+虽然加入安全中心并不需要管理组，但建议你至少创建一个，以便创建根管理组。 创建管理组后，Azure AD 租户下的所有订阅都会与它关联。 
 
 有关管理组的详细概述，请参阅[使用 Azure 管理组整理资源](../governance/management-groups/overview.md)一文。
 
@@ -60,17 +58,16 @@ ms.locfileid: "102099380"
 ### <a name="add-subscriptions-to-a-management-group"></a>向管理组添加订阅
 可以向创建的管理组添加订阅。
 
-1. 在“管理组”下，为你的订阅选择管理组。
+1. 从 Azure 门户打开“管理组”，并选择你的订阅的管理组。
 
     :::image type="content" source="./media/security-center-management-groups/management-group-subscriptions.png" alt-text="为你的订阅选择管理组":::
 
-1. 当组的页面打开时，选择“详细信息”
+1. 在组的页打开时，选择“订阅”。
 
-    :::image type="content" source="./media/security-center-management-groups/management-group-details-page.png" alt-text="打开管理组的“详细信息”页":::
-
-1. 从组的“详细信息”页中，选择“添加订阅”，然后选择你的订阅，再选择“保存” 。 重复执行上述步骤，直到已添加范围内的所有订阅。
+1. 从订阅页依次选择“添加”、你的订阅、“保存” 。 重复执行上述步骤，直到已添加范围内的所有订阅。
 
     :::image type="content" source="./media/security-center-management-groups/management-group-add-subscriptions.png" alt-text="向管理组添加订阅":::
+
    > [!IMPORTANT]
    > 管理组可以包含订阅和子管理组。 向父管理组分配拥有 Azure 角色的用户时，子管理组的订阅继承访问权限。 子管理组还继承在父管理组设置的策略。 
 
@@ -79,19 +76,30 @@ ms.locfileid: "102099380"
 ## <a name="assign-azure-roles-to-other-users"></a>将 Azure 角色分配给其他用户
 
 ### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>通过 Azure 门户向用户分配 Azure 角色： 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 
-1. 若要查看管理组，请在 Azure 主菜单下选择“所有服务”，然后选择“管理组”。
-1.  选择一个管理组，然后选择“详细信息”。
 
-    :::image type="content" source="./media/security-center-management-groups/management-group-details.PNG" alt-text="管理组详细信息屏幕截图":::
+1. 从 [Azure 门户](https://portal.azure.com)中，使用顶部栏中的“搜索”框找到并打开“管理组”。
 
-1. 选择“访问控制(IAM)”，然后选择“角色分配” 。
-1. 选择“添加角色分配”。
-1. 选择要分配的角色和用户，然后选择“保存”。  
-   
-   ![添加安全读取者角色屏幕截图](./media/security-center-management-groups/asc-security-reader.png)
+    :::image type="content" source="./media/security-center-management-groups/open-management-groups-service.png" alt-text="访问管理组":::
+
+    此时将显示管理组的列表。
+
+1.  选择相关的管理组。
+
+1. 选择“访问控制(IAM)”，打开“角色分配”选项卡，然后选择“添加” > “添加角色分配”   。
+
+    :::image type="content" source="./media/security-center-management-groups/add-user.png" alt-text="将用户添加到管理组":::
+
+1. 从“添加角色分配”页中选择相关角色。
+
+    :::image type="content" source="./media/security-center-management-groups/add-role-assignment-page.png" alt-text="“添加角色分配”页":::
+
+1. 从“成员”选项卡中选择“+ 选择成员”，并将角色分配到相关成员 。
+
+1. 在“查看 + 分配”选项卡上，选择“查看 + 分配”，以分配角色 。
+
 
 ### <a name="assign-azure-roles-to-users-with-powershell"></a>使用 PowerShell 向用户分配 Azure 角色： 
+
 1. 安装 [Azure PowerShell](/powershell/azure/install-az-ps)。
 2. 运行以下命令： 
 
@@ -132,6 +140,7 @@ ms.locfileid: "102099380"
 
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何将订阅组织到管理组中，以及如何为用户分配角色。 如需相关信息，请参阅：
+
+本页介绍了如何将订阅组织到管理组中，以及如何为用户分配角色。 如需相关信息，请参阅：
 
 - [Azure 安全中心中的权限](security-center-permissions.md)

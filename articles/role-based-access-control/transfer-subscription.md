@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 366692113872856852fd933ca32ab51ca608de14
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: a12f3ca25df2d4473361e0a1ef596384813dc6a8
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291273"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854731"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>将 Azure 订阅转移到其他 Azure AD 目录
 
@@ -94,7 +94,7 @@ ms.locfileid: "108291273"
 
 - [Azure Cloud Shell Bash](../cloud-shell/overview.md) 或 [Azure CLI](/cli/azure)
 - 要在源目录中转移的订阅的帐户管理员
-- 目标目录中的[所有者](built-in-roles.md#owner)角色
+- 进行目录更改的用户在源目录和目标目录中的用户帐户
 
 ## <a name="step-1-prepare-for-the-transfer"></a>步骤 1：准备转移
 
@@ -252,7 +252,7 @@ ms.locfileid: "108291273"
 1. 使用 [az account show](/cli/azure/account#az_account_show) 获取订阅 ID。
 
     ```azurecli
-    subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"$//')
+    subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"//')
     ```
 
 1. 使用 [az graph](/cli/azure/graph) 扩展列出具有已知 Azure AD 目录依赖项的其他 Azure 资源。

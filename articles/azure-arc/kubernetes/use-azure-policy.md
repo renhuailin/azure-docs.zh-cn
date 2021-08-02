@@ -8,25 +8,31 @@ author: mlearned
 ms.author: mlearned
 description: 使用 Azure 策略大规模应用群集配置
 keywords: Kubernetes、Arc、Azure、K8s、容器
-ms.openlocfilehash: 05a6665a985ef8b229ee58082dc9b2c10cdcece3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4619c84f88ee87b0b63e8c0cbe36b85a25f2dfb9
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121450"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463053"
 ---
-# <a name="use-azure-policy-to-apply-cluster-configurations-at-scale"></a>使用 Azure 策略大规模应用群集配置
+# <a name="use-azure-policy-to-apply-gitops-configurations-at-scale"></a>使用 Azure Policy 大规模应用 GitOps 配置
 
 可以使用 Azure Policy 大规模地对已启用 Azure Arc 的 Kubernetes 群集 (`Microsoft.Kubernetes/connectedclusters`) 应用配置（`Microsoft.KubernetesConfiguration/sourceControlConfigurations` 资源类型）。
 
-若要使用 Azure Policy，请选择现有策略定义并创建策略分配。 创建策略分配时：
+若要使用 Azure Policy，请选择内置 GitOps 策略定义并创建策略分配。 创建策略分配时：
 1. 设置分配的范围。
-    * 范围是 Azure 资源组或订阅。 
-2. 为将创建的配置设置参数。 
+    * 范围将是订阅或管理组中的所有资源组或特定的资源组。
+2. 为将创建的 GitOps 配置设置参数。 
 
-创建分配后，Azure Policy 引擎会标识范围内所有已启用 Azure Arc 的 Kubernetes 群集，并将配置应用到每个群集。
+创建分配后，Azure Policy 引擎会标识范围内所有已启用 Azure Arc 的 Kubernetes 群集，并将 GitOps 配置应用到每个群集。
 
-可以创建多个配置，每个配置都指向不同的 Git 存储库，并使用多个策略分配。 例如，一个存储库用于中心 IT/群集操作员，另一个存储库用于应用程序团队。
+为了实现关注点分离，可以创建多个策略分配，每个策略分配都有一个指向不同 Git 存储库的不同 GitOps 配置。 例如，群集管理员可能会使用一个存储库，而应用程序团队可能会使用其他存储库。
+
+>[!TIP]
+> 我们针对这些方案提供了内置策略：
+> * 公用存储库或专用存储库，使用 Flux 创建的 SSH 密钥：`Configure Kubernetes clusters with specified GitOps configuration using no secrets`
+> * 专用存储库，使用用户提供的 SSH 密钥：`Configure Kubernetes clusters with specified GitOps configuration using SSH secrets`
+> * 专用存储库，使用用户提供的 HTTPS 密钥：`Configure Kubernetes clusters with specified GitOps configuration using HTTPS secrets`
 
 ## <a name="prerequisite"></a>先决条件
 
@@ -36,7 +42,7 @@ ms.locfileid: "102121450"
 
 1. 在 Azure 门户中，导航到“策略”。
 1. 在边栏的“创作”部分，选择“定义” 。
-1. 在“Kubernetes”类别中，选择“将 GitOps 部署到 Kubernetes 群集”内置策略。 
+1. 在“Kubernetes”类别中，选择“使用指定 GitOps 配置来配置 Kubernetes 群集，不使用机密”内置策略。 
 1. 单击 **分配**。
 1. 将“范围”设置为将应用策略分配的管理组、订阅或资源组。
     * 如果要从策略范围中排除任何资源，请设置“排除”。
@@ -44,6 +50,7 @@ ms.locfileid: "102121450"
 1. 确保“策略实施”设置为“已启用” 。
 1. 选择“下一步”。
 1. 设置要在创建 `sourceControlConfiguration` 时使用的参数值。
+    * 有关参数的详细信息，请参阅[教程：部署 GitOps 配置](./tutorial-use-gitops-connected-cluster.md)。
 1. 选择“**下一页**”。
 1. 启用“创建修正任务”。
 1. 验证已选中“创建托管标识”，并确保标识具有“参与者”权限 。 
@@ -59,11 +66,11 @@ ms.locfileid: "102121450"
 1. 在 Azure 门户中，导航到已启用 Azure Arc 的 Kubernetes 群集之一。
 1. 在边栏的“设置”部分中，选择“策略” 。 
     * 在策略列表中，应会看到之前创建的策略分配，并且“符合性状态”应设为“符合”。
-1. 在边栏的“设置”部分中，选择“配置” 。
+1. 在边栏的“设置”部分中，选择“GitOps” 。
     * 在配置列表中，应会看到策略分配创建的配置。
 1. 使用 `kubectl` 来询问群集。 
-    * 应会看到配置资源创建的命名空间和项目。
-    * 在 5 分钟内（假设群集已通过网络连接到 Azure），应会看到 Git 存储库中的清单描述的对象，这些对象是在集群上创建的。
+    * 应会看到 GitOps 配置创建的命名空间和项目。
+    * 应该会看到群集上部署了 Git 存储库中的清单所描述的对象。
 
 ## <a name="next-steps"></a>后续步骤
 

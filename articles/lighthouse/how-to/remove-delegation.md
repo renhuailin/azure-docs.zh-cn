@@ -1,18 +1,19 @@
 ---
 title: 删除对委派的访问权限
 description: 了解如何删除对委派给 Azure Lighthouse 服务提供商的资源的访问权限。
-ms.date: 02/16/2021
+ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: c53b678ba6e37ece1bcaf2860abceb9eea980532
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e9456d7b910c71305f321d0a4874aab0f4f368cd
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100555788"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110700134"
 ---
 # <a name="remove-access-to-a-delegation"></a>删除对委派的访问权限
 
-在将客户的订阅或资源组委派给 [Azure Lighthouse](../overview.md) 的服务提供商后，可以根据需要删除委派。 删除委派后，先前向服务提供商租户中的用户授予的 [Azure 委托资源管理](../concepts/azure-delegated-resource-management.md)访问权限将不再适用。
+在将客户的订阅或资源组委派给 [Azure Lighthouse](../overview.md) 的服务提供商后，可以根据需要删除委派。 删除委派后，先前向服务提供商租户中的用户授予的 [Azure 委托资源管理](../concepts/architecture.md)访问权限将不再适用。
 
 只要用户具有适当的权限，客户租户或服务提供商租户中的用户就可以删除委派。
 
@@ -97,6 +98,6 @@ az managedservices assignment delete --assignment <id or full resourceId>
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解 [Azure 委派资源管理](../concepts/azure-delegated-resource-management.md)。
+- 了解 [Azure Lighthouse 体系结构](../concepts/architecture.md)。
 - 在 Microsoft Azure 门户中转到“我的客户”，以[查看和管理客户](view-manage-customers.md)。
 - 了解如何[更新先前的委托](update-delegation.md)。

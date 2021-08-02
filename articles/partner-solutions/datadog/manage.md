@@ -3,15 +3,15 @@ title: 管理 Datadog 资源 - Azure 合作伙伴解决方案
 description: 本文介绍如何在 Azure 门户中管理 Datadog 资源。 如何设置单一登录、删除 Confluent 组织并获得支持。
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 02/19/2021
+ms.date: 05/28/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: 04aef540bc134e5ec307be6a232ce47f0923e528
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e964fd436795e19cc77a25efa95de5f6fcac87ca
+ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046345"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110652421"
 ---
 # <a name="manage-the-datadog-resource"></a>管理 Datadog 资源
 
@@ -130,6 +130,16 @@ Azure 门户提供 API 密钥的只读视图。 要管理密钥，请选择 Data
  
 :::image type="content" source="media/manage/reconfigure-single-sign-on.png" alt-text="重新配置单一登录应用程序。" border="true":::
  
+## <a name="change-plan"></a>更改计划
+
+若要更改 Datadog 计费计划，请转到“概述”并选择“更改计划” 。
+
+:::image type="content" source="media/manage/datadog-select-change-plan.png" alt-text="选择更改 Datadog 计费计划。" border="true":::
+
+门户将检索租户的所有可用 Datadog 计划。 选择适当的计划，然后单击“更改计划”。
+
+:::image type="content" source="media/manage/datadog-change-plan.png" alt-text="选择要更改的 Datadog 计费计划。" border="true":::
+  
 ## <a name="disable-or-enable-integration"></a>禁用或启用集成
 
 可以停止将日志和指标从 Azure 发送到 Datadog。 对于与监视指标和日志无关的其他 Datadog 服务，将继续计费。
@@ -151,12 +161,6 @@ Azure 门户提供 API 密钥的只读视图。 要管理密钥，请选择 Data
 如果只有一个 Datadog 资源映射到 Datadog 组织，则不再将日志和指标发送到 Datadog。 Datadog 的所有账单都通过 Azure 市场停止。
 
 如果有多个 Datadog 资源映射到 Datadog 组织，则删除 Datadog 资源仅停止发送该 Datadog 资源的日志和指标。 由于 Datadog 组织已链接到其他 Azure 资源，因此将通过 Azure 市场继续计费。
-
-## <a name="getting-support"></a>获取支持
-
-要联系 Azure Datadog 集成方面的支持人员，请在左侧窗格中选择“新建支持请求”。 选择 Datadog 门户的链接。
-
-:::image type="content" source="media/manage/support-request.png" alt-text="创建新的 Datadog 支持请求" border="true":::
 
 ## <a name="next-steps"></a>后续步骤
 

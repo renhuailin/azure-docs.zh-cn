@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: cf15d6f669718cca8b99d67a7912d3959d9c191f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 06/08/2021
+ms.openlocfilehash: 523a87c3adb77c55440392381ebe43ea24627c14
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732498"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756614"
 ---
 # <a name="prepare-data-with-data-wrangling"></a>使用数据整理准备数据
 
@@ -37,13 +37,19 @@ ms.locfileid: "105732498"
 
 ## <a name="author-a-power-query-data-wrangling-activity"></a>创作 Power Query 数据整理活动
 
-为 Power Query 混合添加“源数据集”。 可以选择现有数据集，也可以创建新数据集。 还可以选择接收器数据集。 可以选择一个或多个源数据集，但此时只允许选择一个接收器。 接收器数据集是可选选项，但源数据集至少要选择一个。
+为 Power Query 混合添加“源数据集”。 可以选择现有数据集，也可以创建新数据集。 保存混合后，可以将 Power Query 数据整理活动添加到管道，并选择一个接收器数据集来指示 ADF 将数据放置到何处。 虽然可以选择一个或多个源数据集，但此时只允许选择一个接收器。 接收器数据集是可选选项，但源数据集至少要选择一个。
 
 ![整理](media/wrangling-data-flow/tutorial4.png)
 
 单击“创建”以打开 Power Query 在线混合编辑器。
 
-![创建按钮的屏幕截图，该按钮用于打开 Power Query 在线混合编辑器。](media/wrangling-data-flow/tutorial5.png)
+首先，为混合编辑器选择数据集源。
+
+![Power Query 源。](media/wrangling-data-flow/pq-new-source.png)
+
+完成 Power Query 的构建后，可以保存它并将混合作为活动添加到管道中。 此时将设置接收器数据集属性。
+
+![Power Query 接收器。](media/wrangling-data-flow/pq-new-sink.png)
 
 使用无代码数据准备来创作整理 Power Query。 有关可用函数的列表，请参阅[转换函数](wrangling-functions.md)。 ADF 将 M 脚本转换为数据流脚本，以便可以使用 Azure 数据工厂数据流 Spark 环境大规模执行 Power Query。
 
@@ -53,7 +59,7 @@ ms.locfileid: "105732498"
 
 若要执行 Power Query 活动的管道调试运行，请在管道画布中单击“调试”。 一旦发布管道，“触发器”就会执行最后发布管道的按需运行。 可以通过所有现有的 Azure 数据工厂触发器来安排 Power Query 管道。
 
-![显示如何添加 Power Query 数据整理活动的屏幕截图。](media/wrangling-data-flow/tutorial3.png)
+![显示如何添加 Power Query 数据整理活动的屏幕截图。](media/data-flow/pq-activity-001.png)
 
 转到“监视”选项卡，以可视化被触发的 Power Query 活动运行的输出。
 

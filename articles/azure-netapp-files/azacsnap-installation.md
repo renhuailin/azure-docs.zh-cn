@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 05/19/2021
 ms.author: phjensen
-ms.openlocfilehash: 16e758ac520c8584a11c88c0823fac7cfec43c0b
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 0eae929d60ce852e7a98f12430de796aa664d86f
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226293"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110481443"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool"></a>安装 Azure 应用程序一致性快照工具
 
@@ -42,6 +42,12 @@ ms.locfileid: "108226293"
 1. “已安装 HANA”：请参阅 [HANA 数据库上的 SAP NetWeaver 安装](/archive/blogs/saponsqlserver/sap-netweaver-installation-on-hana-database)中的 HANA 安装说明。
 1. “[启用与存储的通信](#enable-communication-with-storage)”（有关更多详细信息，请参阅单独章节）：客户必须使用私钥/公钥对设置 SSH 并为每个节点提供公钥，在该节点上计划将快照工具执行至 Microsoft Operations 以用于设置在存储后端。
    1. “对于 Azure NetApp 文件（有关更多详细信息，请参阅单独章节）”：客户必须生成服务主体身份验证文件。
+      
+      > [!IMPORTANT]
+      > 当验证与 Azure NetApp 文件的通信时，通信可能会失败或超时。请检查以确保防火墙规则不会阻止从运行 AzAcSnap 的系统到以下地址和 TCP/IP 端口的出站流量：
+      > - (https://)management.azure.com:443
+      > - (https://)login.microsoftonline.com:443
+      
    1. “对于 Azure 大型实例（有关更多详细信息，请参阅单独章节）”：客户必须使用私钥/公钥对设置 SSH 并为每个节点提供公钥，在该节点上计划将快照工具执行至 Microsoft Operations 以用于设置在存储后端。
 
       通过使用 SSH 连接到其中一个节点（例如 `ssh -l <Storage UserName> <Storage IP Address>`）来对此进行测试。

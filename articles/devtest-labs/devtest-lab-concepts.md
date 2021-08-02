@@ -2,13 +2,13 @@
 title: 开发测试实验室概念 | Microsoft Docs
 description: 了解开发测试实验室的基本概念及其如何轻松地创建、管理和监视 Azure 虚拟机
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: b184f835ee99d47ddb843e5b02136299c26bfcdc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/13/2021
+ms.openlocfilehash: e505ecb8ce4dc070b4ed79cd55514c4ef8ba0ead
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92327852"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111954108"
 ---
 # <a name="devtest-labs-concepts"></a>开发测试实验室概念
 ## <a name="overview"></a>概述
@@ -28,7 +28,7 @@ Azure 可认领 VM 是可供具备权限的任何实验室用户使用的虚拟�
 可认领 VM 最初并未分配给任何特定用户，但会显示在“可认领虚拟机”下每个用户的列表中。 用户认领 VM 后，该 VM 会移动到“我的虚拟机”区域，并且任何其他用户都无法再对其进行认领。
 
 ## <a name="environment"></a>环境
-在开发测试实验室中，环境是指实验室中 Azure 资源的集合。 [此博客文章](./devtest-lab-faq.md#blog-post)讨论如何基于 Azure 资源管理器模板创建多 VM 环境。
+在开发测试实验室中，环境是指实验室中 Azure 资源的集合。 [本文](./devtest-lab-create-environment-from-arm.md)讨论如何基于 Azure 资源管理器模板创建多 VM 环境。
 
 ## <a name="base-images"></a>基础映像
 基础映像为 VM 映像，包含预安装和配置为快速创建 VM 的所有工具和设置。 可通过选取现有基并添加项目来对 VM 进行预配，进而安装测试代理。 然后可将预配的 VM 保存为基，这样无需为每个 VM 的预配重新安装测试代理即可使用该基。
@@ -74,7 +74,7 @@ Azure 可认领 VM 是可供具备权限的任何实验室用户使用的虚拟�
 ## <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
 本文中所述的所有概念都可以使用 Azure 资源管理器模板配置，这些模板可用于定义 Azure 解决方案的基础结构/配置，并以一致的状态反复部署该解决方案。
 
-[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/template-syntax.md#template-format)描述了 Azure 资源管理器模板的结构，以及模板的不同节中提供的属性。
+[了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/templates/syntax.md#template-format)描述了 Azure 资源管理器模板的结构，以及模板的不同节中提供的属性。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

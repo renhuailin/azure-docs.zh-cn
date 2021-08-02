@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 03/29/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d01a750948f8e3c264b9bcffdaad3ae72fa40ac0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 70cc20b51587a70e8a124b6f3b5d047ff827db83
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579104"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112034582"
 ---
 # <a name="conditional-access-grant"></a>条件访问：授予
 
@@ -74,7 +74,7 @@ ms.locfileid: "104579104"
 
 为了利用此授权控制，条件访问要求在 Azure Active Directory 中注册设备，这需要使用代理应用。 代理应用可以是适用于 iOS 的 Microsoft Authenticator，也可以是 Microsoft Authenticator 或适用于 Android 设备的 Microsoft 公司门户。 如果用户尝试进行身份验证时设备上未安装代理应用，则会将用户重定向到相应的应用商店来安装所需的代理应用。
 
-此设置适用于以下 iOS 和 Android 应用：
+已确认以下客户端应用支持此设置：
 
 - Microsoft Azure 信息保护
 - Microsoft Bookings
@@ -86,6 +86,7 @@ ms.locfileid: "104579104"
 - Microsoft Invoicing
 - Microsoft Kaizala
 - Microsoft Launcher
+- Microsoft 列表
 - Microsoft Office
 - Microsoft OneDrive
 - Microsoft OneNote
@@ -130,6 +131,7 @@ ms.locfileid: "104579104"
 - Microsoft Cortana
 - Microsoft Edge
 - Microsoft Excel
+- Microsoft 列表 (iOS)
 - Microsoft Office
 - Microsoft OneDrive
 - Microsoft OneNote

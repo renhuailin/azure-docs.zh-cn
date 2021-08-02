@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: StefArroyo
 ms.author: esarroyo
-ms.date: 05/25/2021
-ms.openlocfilehash: fe14c28d817d9c0a2e832d331af9130c935affb8
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/04/2021
+ms.openlocfilehash: 6e3fd0c2dafd9d174b79206cb5482450fee74f8e
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384602"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984041"
 ---
 # <a name="run-the-emulator-on-docker-for-linux-preview"></a>在用于 Linux 的 Docker（预览版）上运行仿真器
 
@@ -67,27 +67,13 @@ Azure Cosmos DB Linux 仿真器提供对 Azure Cosmos DB 服务的高保真仿�
     ```bash
     curl -k https://$ipaddr:8081/_explorer/emulator.pem > emulatorcert.crt
     ```
-    或者，在仿真器终结点准备好接收来自其他应用程序的请求时，还可以使用上面下载自签名仿真器证书的终结点来发送信号。
 
-1. 将 CRT 文件复制到你的 Linux 分发版中包含自定义证书的文件夹。 在 Debian 分发版中，它通常位于 `/usr/local/share/ca-certificates/`。
-
-   ```bash
-   cp YourCTR.crt /usr/local/share/ca-certificates/
-   ```
-
-1. 更新 TLS/SSL 证书，这将更新 `/etc/ssl/certs/` 文件夹。
-
-   ```bash
-   update-ca-certificates
-   ```
-
-对于基于 Java 的应用程序，必须将证书导入到 [Java 受信任存储](local-emulator-export-ssl-certificates.md)中。
 
 ## <a name="consume-the-endpoint-via-ui"></a><a id="consume-endpoint-ui"></a>通过 UI 使用终结点
 
 仿真器使用自签名证书来确保到其终结点的连接安全，并且需要手动信任。 使用以下步骤通过 UI 使用所需的 Web 浏览器来使用终结点：
 
-1. 请确保下载仿真器自签名证书
+1. 请确保已下载仿真器自签名证书
 
    ```bash
    curl -k https://$ipaddr:8081/_explorer/emulator.pem > emulatorcert.crt
@@ -100,6 +86,8 @@ Azure Cosmos DB Linux 仿真器提供对 Azure Cosmos DB 服务的高保真仿�
 1. 将 emulatorcert.crt 加载到 KeyChain 后，双击 localhost 名称，将信任设置更改为“始终信任” 。
 
 1. 现在可以浏览到 `https://localhost:8081/_explorer/index.html` 或 `https://{your_local_ip}:8081/_explorer/index.html`，并检索仿真器的连接字符串。
+
+还可以选择对应用程序禁用 SSL 验证。 建议仅用于开发目的，并且在生产环境中运行时不应这样做。
 
 ## <a name="run-the-linux-emulator-on-linux-os"></a><a id="run-on-linux"></a>在 Linux OS 上运行 Linux 仿真器
 
@@ -189,9 +177,35 @@ sudo apt-get install net-tools
 
 - 请确保已将仿真器自签名证书正确添加到 [KeyChain](#consume-endpoint-ui)。
 
-- 确保已将仿真器自签名证书正确导入到预期位置：
-  - .NET：请参阅[证书部分](#run-on-linux)。
-  - Java：请参阅 [Java 证书存储部分](#run-on-linux)
+- 对于 Java 应用程序，请确保已将证书导入到 [Java 证书存储部分](#run-on-linux)。
+
+- 对于 .NET 应用程序，可以禁用 SSL 验证：
+
+# <a name="net-standard-21"></a>[.NET Standard 2.1+](#tab/ssl-netstd21)
+
+对于在与 .NET Standard 2.1 或更高版本兼容的框架中运行的任何应用程序，我们可以利用 `CosmosClientOptions.HttpClientFactory`：
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard21)]
+
+# <a name="net-standard-20"></a>[.NET Standard 2.0](#tab/ssl-netstd20)
+
+对于在与 .NET Standard 2.0 兼容的框架中运行的任何应用程序，我们可以利用 `CosmosClientOptions.HttpClientFactory`：
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard20)]
+
+---
+
+#### <a name="my-nodejs-app-is-reporting-a-self-signed-certificate-error"></a>我的 Node.js 应用正在报告自签名证书错误
+
+如果尝试通过 `localhost` 以外的地址（例如容器 IP 地址）连接到仿真器，Node.js 将引发有关证书自签名的错误，即使已安装了证书也是如此。
+
+可以通过将环境变量 `NODE_TLS_REJECT_UNAUTHORIZED` 设置为 `0` 来禁用 TLS 验证：
+
+```bash
+NODE_TLS_REJECT_UNAUTHORIZED=0
+```
+
+此标志仅建议用于本地开发，因为它禁用 Node.js 的 TLS。 有关详细信息，请参阅 [Node.js 文档](https://nodejs.org/api/cli.html#cli_node_tls_reject_unauthorized_value)和 [Cosmos DB 仿真器证书文档](local-emulator-export-ssl-certificates.md#how-to-use-the-certificate-in-nodejs)。
 
 #### <a name="the-docker-container-failed-to-start"></a>Docker 容器无法启动
 

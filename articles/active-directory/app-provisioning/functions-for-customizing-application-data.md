@@ -1,24 +1,24 @@
 ---
-title: 有关在 Azure Active Directory 中编写特性映射表达式的参考
+title: 有关在 Azure Active Directory 应用程序预配中编写特性映射表达式的参考
 description: 了解如何在 Azure Active Directory 中自动预配 SaaS 应用对象期间，使用表达式映射将属性值转换为可接受的格式。 包括函数参考列表。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 0334f52b87071c8f363a0dfcc793170316747096
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.reviewer: arvinh
+ms.openlocfilehash: 3cd910cac906af54e039e38c9ccdd9d563cd9b8c
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198500"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111570308"
 ---
-# <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>有关为 Azure AD 中的属性映射编写表达式的参考
+# <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>有关在 Azure Active Directory 中编写特性映射表达式的参考
 
 将预配配置到 SaaS 应用程序时，表达式映射是可指定的属性映射类型之一。 对于这些映射，必须编写一个类似于脚本的表达式，以便能够将用户的数据转换为 SaaS 应用程序更可接受的格式。
 
@@ -49,7 +49,7 @@ ms.locfileid: "102198500"
 
 **参数：**
 
-| 名称 | 必选/重复 | 类型 | 注释 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是来自源对象的属性的名称。 |
 | **suffix** |必须 |String |要附加到源值末尾的字符串。 |
@@ -142,7 +142,7 @@ ms.locfileid: "102198500"
 
 **参数：** 
 
-| 名称 | 必选/重复 | 类型 | 注释 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |要转换为 base64 的字符串|
 
@@ -159,7 +159,7 @@ ms.locfileid: "102198500"
 
 **参数：** 
 
-| 名称 | 必选/重复 | 类型 | 注释 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |要转换为 UTF8 十六进制值的字符串|
 
@@ -224,7 +224,7 @@ ms.locfileid: "102198500"
 
 **参数：** 
 
-| 名称 | 必选/重复 | 类型 | 注释 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是来自源对象的属性的名称。 |
 | dateTimeStyles | 可选 | String | 使用此参数可以指定格式设置选项，这些选项可自定义用于某些日期和时间分析方法的字符串分析。 有关支持的值，请参阅 [DateTimeStyles 文档](/dotnet/api/system.globalization.datetimestyles)。如果留空，则使用的默认值为 DateTimeStyles.RoundtripKind, DateTimeStyles.AllowLeadingWhite, DateTimeStyles.AllowTrailingWhite  |
@@ -368,8 +368,8 @@ ms.locfileid: "102198500"
 | attribute |必需 |属性 |要搜索的多值特性。 |
 | **index** |必需 |整数 | 多值字符串中某个项的索引|
 
-示例：
-`Item([proxyAddresses], 1)` 返回多值特性中的第二个项。
+**示例：** 
+`Item([proxyAddresses], 1)` 返回多值特性中的第一个项。 不得使用索引 0。 
 
 ---
 ### <a name="join"></a>加入
@@ -381,10 +381,10 @@ ms.locfileid: "102198500"
 
 **参数：** 
 
-| 名称 | 必选/重复 | 类型 | 注释 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | separator  |必须 |String |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
-| **source1  … sourceN** |必选，次数可变 |String |要联接在一起的字符串值。 |
+| **source1  … sourceN** |必选，次数可变 |字符串 |要联接在一起的字符串值。 |
 
 ---
 ### <a name="left"></a>Left
@@ -415,7 +415,7 @@ ms.locfileid: "102198500"
 
 **参数：** 
 
-| 名称 | 必选/重复 | 类型 | 注释 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是属性的名称。 |
 | **start** |必需 |integer |**source** 字符串中的索引，子字符串应从这里开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
@@ -429,7 +429,7 @@ ms.locfileid: "102198500"
 
 **参数：** 
 
-| 名称 | 必选/重复 | 类型 | 注释 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String | 通常是名字或姓氏属性。 |
 
@@ -453,7 +453,7 @@ ms.locfileid: "102198500"
 
 **参数：** 
 
-| 名称 | 必选/重复 | 类型 | 注释 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必需 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
 
@@ -517,15 +517,15 @@ ms.locfileid: "102198500"
 
 **参数：** 
 
-| 名称 | 必选/重复 | 类型 | 注释 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是 **source** 对象中的属性的名称。 |
-| **oldValue** |可选 |String |要在 **source** 或 **template** 中替换的值。 |
-| **regexPattern** |可选 |String |**source** 中要替换的值的正则表达式模式。 或者，当使用 **replacementPropertyName** 时，从 **replacementPropertyName** 中提取值的模式。 |
-| **regexGroupName** |可选 |String |**regexPattern** 中的组名称。 仅当使用 **replacementPropertyName** 时，才会从 **replacementPropertyName** 中以 **replacementValue** 的形式提取此组的值。 |
-| **replacementValue** |可选 |String |用于替换旧值的新值。 |
-| **replacementAttributeName** |可选 |String |用于替换值的属性的名称 |
-| **template** |可选 |String |当提供 **template** 值时，会在模板中查找 **oldValue** 并将其替换为 **source** 值。 |
+| **oldValue** |可选 |字符串 |要在 **source** 或 **template** 中替换的值。 |
+| **regexPattern** |可选 |字符串 |**source** 中要替换的值的正则表达式模式。 或者，当使用 **replacementPropertyName** 时，从 **replacementPropertyName** 中提取值的模式。 |
+| **regexGroupName** |可选 |字符串 |**regexPattern** 中的组名称。 仅当使用 **replacementPropertyName** 时，才会从 **replacementPropertyName** 中以 **replacementValue** 的形式提取此组的值。 |
+| **replacementValue** |可选 |字符串 |用于替换旧值的新值。 |
+| **replacementAttributeName** |可选 |字符串 |用于替换值的属性的名称 |
+| **template** |可选 |字符串 |当提供 **template** 值时，会在模板中查找 **oldValue** 并将其替换为 **source** 值。 |
 
 ### <a name="replace-characters-using-a-regular-expression"></a>使用正则表达式替换字符
 示例：你需要查找与正则表达式值匹配的字符并将其删除。
@@ -555,9 +555,9 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 **参数：** 
 
-| 名称 | 必选/重复 | 类型 | 注释 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
-| **uniqueValueRule1  … uniqueValueRuleN** |需要至少 2 个，没有上限 |String | 要评估的唯一值生成规则的列表。 |
+| **uniqueValueRule1  … uniqueValueRuleN** |需要至少 2 个，没有上限 |字符串 | 要评估的唯一值生成规则的列表。 |
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>为 userPrincipalName (UPN) 属性生成唯一值
 示例：你需要根据用户的名字、中间名和姓氏为 UPN 特性生成值，并在将该值分配给 UPN 特性之前在目标 AD 目录中检查其唯一性。
@@ -590,7 +590,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 **参数：** 
 
-| 名称 | 必选/重复 | 类型 | 注释 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **[appRoleAssignments]** |必须 |String |**[appRoleAssignments]** 对象。 |
 
@@ -602,7 +602,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 **参数：** 
 
-| 名称 | 必选/重复 | 类型 | 注释 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |要更新的 **source** 值。 |
 | **delimiter** |必须 |String |指定将用来拆分字符串的字符（示例：“,”） |
@@ -614,7 +614,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 **示例输入/输出：** 
 
-* 输入 (extensionAttribute5): "PermissionSetOne, PermissionSetTwo"
+* **输入** (extensionAttribute5)："PermissionSetOne, PermissionSetTwo"
 * **OUTPUT**:  ["PermissionSetOne", "PermissionSetTwo"]
 
 
@@ -626,7 +626,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 **参数：** 
 
-| 名称 | 必选/重复 | 类型 | 注释 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |要更新的 **source** 值。 |
 
@@ -638,10 +638,10 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 **参数：** 
 
-| 名称 | 必选/重复 | 类型 | 注释 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |要更新的 **source** 值。 |
-| **defaultValue** |可选 |String |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |
+| **defaultValue** |可选 |字符串 |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |
 | key  |必须 |String |用来比较 **source** 值的 **key**。 |
 | value  |必须 |String |与该 key 匹配的 **source** 的替换值。 |
 
@@ -665,10 +665,10 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 **参数：** 
 
-| 名称 | 必选/重复 | 类型 | 注释 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是来自源对象的属性的名称 |
-| **culture** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
+| **culture** |可选 |字符串 |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
 
 ### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>将生成的 userPrincipalName (UPN) 值转换为小写
 示例：你要通过连接 PreferredFirstName 和 PreferredLastName 源字段并将所有字符转换为小写，来生成 UPN 值。 
@@ -690,10 +690,10 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 
 **参数：** 
 
-| 名称 | 必选/重复 | 类型 | 注释 |
+| 名称 | 必选/重复 | 类型 | 说明 |
 | --- | --- | --- | --- |
 | **source** |必须 |String |通常是来自源对象的属性的名称。 |
-| **culture** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
+| **culture** |可选 |字符串 |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
 
 ---
 ### <a name="word"></a>Word

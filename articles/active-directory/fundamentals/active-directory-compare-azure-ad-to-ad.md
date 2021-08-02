@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
-ms.openlocfilehash: 64a8dabaedc3922ebd8d163b1ea162b7d1584de2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bca37a0e30240732443bcc08ca76dc9b875af37d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92371913"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955021"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>将 Active Directory 与 Azure Active Directory 进行比较
 
@@ -36,7 +36,7 @@ Azure Active Directory 是适用于云的标识和访问管理解决方案的下
 | 凭据管理| Active Directory 中的凭据基于密码、证书身份验证和智能卡身份验证。 密码是使用基于密码长度、有效期和复杂性的密码策略管理的。|Azure AD 对云和本地都使用智能[密码保护](../authentication/concept-password-ban-bad.md)。 保护包括智能锁定，以及阻止通用和自定义密码短语和替换。 </br>Azure AD [通过多重身份验证](../authentication/concept-mfa-howitworks.md)和[无密码](../authentication/concept-authentication-passwordless.md)技术（例如 FIDO2）显著提高了安全性。 </br>Azure AD 通过向用户提供[自助式密码重置](../authentication/concept-sspr-howitworks.md)系统来降低支持成本。 |
 | 应用|||
 | 基础结构应用|Active Directory 构成了许多基础结构本地组件的基础，例如 DNS、DHCP、IPSec、WiFi、NPS 和 VPN 访问|在新的云环境中，Azure AD 是用于访问应用的新控制平面，而不是依赖于网络控制。 当用户进行身份验证时，[条件访问 (CA)](../conditional-access/overview.md) 将控制在所需条件下哪些用户可以访问哪些应用。|
-| 传统应用和旧式应用| 大多数本地应用都使用 LDAP、Windows 集成身份验证（NTLM 和 Kerberos）或基于标头的身份验证来控制对用户的访问。| Azure AD 可使用在本地运行的 [Azure AD 应用程序代理](../manage-apps/application-proxy.md)程序来访问这些类型的本地应用。 通过此方法，Azure AD 可在你进行迁移或需要与旧式应用共存时，在本地使用 Kerberos 对 Active Directory 用户进行身份验证。 |
+| 传统应用和旧式应用| 大多数本地应用都使用 LDAP、Windows 集成身份验证（NTLM 和 Kerberos）或基于标头的身份验证来控制对用户的访问。| Azure AD 可使用在本地运行的 [Azure AD 应用程序代理](../app-proxy/application-proxy.md)程序来访问这些类型的本地应用。 通过此方法，Azure AD 可在你进行迁移或需要与旧式应用共存时，在本地使用 Kerberos 对 Active Directory 用户进行身份验证。 |
 | SaaS 应用|Active Directory 不提供对 SaaS 应用的本机支持，而且需要联合系统（例如 AD FS）。|可集成支持 OAuth2、SAML 和 WS 身份验证的 SaaS 应用来使用 Azure AD 进行身份验证。 |
 | 采用新式身份验证的业务线 (LOB) 应用|组织可以将 AD FS 与 Active Directory 配合使用来支持需要新式身份验证的 LOB 应用。| 需要新式身份验证的 LOB 应用可以配置为使用 Azure AD 进行身份验证。 |
 | 中间层级/守护程序服务|在本地环境中运行的服务通常使用 AD 服务帐户或组托管服务帐户 (gMSA) 来运行。 然后，这些应用将继承服务帐户的权限。| Azure AD 提供[托管标识](../managed-identities-azure-resources/index.yml)，以在云中运行其他工作负荷。 这些标识的生命周期由 Azure AD 管理，并绑定到资源提供程序，无法用于其他目的以获得后门访问。|
@@ -50,5 +50,5 @@ Azure Active Directory 是适用于云的标识和访问管理解决方案的下
 
 - [什么是 Azure Active Directory？](./active-directory-whatis.md)
 - [自我管理型 Azure Active Directory 域服务、Azure Active Directory 和托管型 Azure Active Directory 域服务的比较](../../active-directory-domain-services/compare-identity-solutions.md)
-- [有关 Azure Active Directory 的常见问题](./active-directory-faq.md)
+- [有关 Azure Active Directory 的常见问题](./active-directory-faq.yml)
 - [Azure Active Directory 中的新增功能](./whats-new.md)

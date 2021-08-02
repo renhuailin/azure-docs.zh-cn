@@ -3,7 +3,7 @@ title: 规划 Azure Active Directory 访问评审部署
 description: 成功进行访问评审部署所需的规划指南
 services: active-directory
 documentationCenter: ''
-author: BarbaraSelden
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 12/23/2020
-ms.author: barclayn
+ms.date: 04/16/2021
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: db1878c2760cfcaa157d0ef233bb1931a5f310b3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97932429"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111970903"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>规划 Azure Active Directory 访问评审部署
 
@@ -71,9 +71,12 @@ ms.locfileid: "97932429"
 
 * [How to create Access Reviews in Azure AD](https://youtu.be/6KB3TZ8Wi40)（如何在 Azure AD 中创建访问评审）
 
+* [如何为有权访问 Azure AD 中的 Microsoft 365 组的所有来宾用户创建自动访问评审](https://www.youtube.com/watch?v=3D2_YW2DwQ8)
+
 * [How to enable Access Reviews in Azure AD](https://youtu.be/X1SL2uubx9M)（如何在 Azure AD 中启用访问评审）
 
 * [How to review access using My Access](https://youtu.be/tIKdQhdHLXU)（如何使用“我的访问权限”评审访问权限）
+
 
 ### <a name="licenses"></a>许可证
 
@@ -136,17 +139,13 @@ ms.locfileid: "97932429"
 
 #### <a name="customize-email-communication"></a>自定义电子邮件通信
 
-计划某个评审时，可指定将执行该评审的用户。 然后，这些审阅者会收到一封关于已向他们分配的新评审的电子邮件通知，并且会在分配给他们的评审过期之前收到提醒。
-
-管理员可以选择在评审过期时间还剩一半的时候发送该通知，也可以选择在过期之前的一天发送。 
+计划某个评审时，可指定将执行该评审的用户。 然后，这些审阅者会收到一封关于已向他们分配的新评审的电子邮件通知，并且会在分配给他们的评审过期之前收到提醒。 
 
 可以自定义发送给审阅者的电子邮件，使其包含一条建议他们对评审进行操作的自定义短消息。 建议使用附加文本来执行以下操作：
 
 * 包括一条要发送给审阅者的个人消息，让他们知道这是由合规部门或 IT 部门发送的。
 
-* 包括有关评审预期的内部信息的超链接或引用，以及其他参考或培训材料。
-
-* 包括一个有关[如何对访问权限进行自我评审](review-your-access.md)的说明的链接。 
+* 包括有关评审预期的内部信息的引用，以及其他参考或培训材料。
 
   ![审阅者电子邮件](./media/deploy-access-review/2-plan-reviewer-email.png)
 
@@ -164,7 +163,7 @@ ms.locfileid: "97932429"
 
 * 记录在试点过程中删除的任何访问权限，以备快速还原之需。
 
-* 监视审核日志以确保对所有事件进行适当的审核。
+* 监视审核日志，确保所有事件都经过适当的审核。
 
 有关详细信息，请参阅[试点的最佳做法](../fundamentals/active-directory-deployment-plans.md)。
 
@@ -197,7 +196,6 @@ ms.locfileid: "97932429"
 | Azure 中的特权角色（资源）| 全局管理员<p>用户管理员<p>资源所有者| 创建者 |
 | 访问包| 全局管理员<p>访问包的创建者| 仅限全局管理员 |
 
-
 有关详细信息，请参阅 [Azure Active Directory 中的管理员角色权限](../roles/permissions-reference.md)。
 
 ### <a name="who-will-review-the-access-to-the-resource"></a>谁将评审对资源的访问权限？
@@ -209,6 +207,8 @@ ms.locfileid: "97932429"
 * 一组单独选择的委托，由访问评审管理员选择。
 
 * 将要分别自证需要持续访问权限的最终用户。
+
+* 管理员评审其直接下属对资源的访问权限。 
 
 创建访问评审时，管理员可以选择一个或多个审阅者。 所有审阅者都可以启动并执行评审，选择可以持续访问某个资源的用户或将其删除。 
 
@@ -238,7 +238,6 @@ ms.locfileid: "97932429"
 
 * 应根据所采取的操作发送哪些通信内容？
 
-
 **访问评审计划示例**
 
 | 组件| “值” |
@@ -246,14 +245,10 @@ ms.locfileid: "97932429"
 | **要评审的资源**| 对 Microsoft Dynamics 的访问权限 |
 | **评审频率**| 每月一次 |
 | **谁执行评审**| Dynamics 业务组项目经理 |
-| **通知**| 在评审前的 24 小时内向 Dynamics-Pms（别名）发送电子邮件<p>包括向审阅者发出的鼓励性自定义消息以获得其认同 |
+| **通知**| 在评审开始时发送给别名 Dynamics-Pms 的电子邮件<p>包括向审阅者发出的鼓励性自定义消息以获得其认同 |
 | **时间线**| 通知发出后的 48 小时内 |
 |**自动操作**| 删除在 90 天内没有交互式登录的任何帐户的访问权限，方法是：从安全组 dynamics access 中删除用户。 <p>如果未在时间线内进行评审，则执行相关操作。 |
 | **手动操作**| 审阅者可以根据需要在自动操作之前执行删除审批。 |
-| **通信**| 向被删除的内部（成员）用户发送一封电子邮件，将他们已被删除的事实告知他们，并说明如何重新获得访问权限。 |
-
-
- 
 
 ### <a name="automate-actions-based-on-access-reviews"></a>基于访问评审自动执行操作
 
@@ -318,6 +313,8 @@ ms.locfileid: "97932429"
 
 * 组的成员，允许自证
 
+* 管理员评审其直接下属访问权限 
+
 ### <a name="group-ownership"></a>组所有权
 
 建议组所有者对成员身份进行评审，因为他们最了解谁需要访问权限。 组的所有权因组的类型而异：
@@ -335,19 +332,11 @@ ms.locfileid: "97932429"
 
 ### <a name="review-membership-of-exclusion-groups-in-conditional-access-policies"></a>评审条件访问策略中排除组的成员身份 
 
-有时，不得将旨在确保网络安全的条件访问策略应用给所有用户。 例如，仅允许用户在公司网络上登录的条件访问策略可能不适用于需要到处出差的销售团队。 在这种情况下，需要将销售团队成员置于一个从条件访问策略中排除的组中。 
+转到[使用 Azure AD 访问评审管理已从条件访问策略中排除的用户](conditional-access-exclusion.md)，了解如何评审排除组的成员身份。
 
-请定期评审此类组成员身份，因为如果从要求中排除了错误的成员，则排除意味着潜在风险。
+### <a name="review-guest-users-group-memberships"></a>评审来宾用户的组成员身份
 
-可以[使用 Azure AD 访问评审管理从条件访问策略中排除的用户](conditional-access-exclusion.md)。
-
-### <a name="review-external-users-group-memberships"></a>评审外部用户的组成员身份
-
-若要最大限度地减少手动工作和相关的潜在错误，请考虑使用[动态组](../enterprise-users/groups-create-rule.md)根据用户的属性分配组成员身份。 需要为外部用户创建一个或多个动态组。 内部发起人可充当审阅者来审阅组中的成员资格。 
-
-注意：由于访问评审而从组中删除的外部用户不会从租户中删除。 
-
-可以通过手动方式或脚本方式将他们从租户中删除。
+转到[使用 Azure AD 访问评审管理来宾访问权限](./manage-guest-access-with-access-reviews.md)，了解如何评审来宾用户对组成员身份的访问权限。
 
 ### <a name="review-access-to-on-premises-groups"></a>评审对本地组的访问权限
 
@@ -405,7 +394,7 @@ ms.locfileid: "97932429"
 
 * 所有 Microsoft 365 和 Dynamics 服务管理角色
 
-此处选择的角色包括永久角色和符合条件的角色。 
+评审的角色包括永久和合格分配。 
 
 在“审阅者”部分选择一人或多人来评审所有用户。 也可以选择让成员评审自己的访问权限。
 
@@ -425,7 +414,6 @@ ms.locfileid: "97932429"
 | [执行访问评审](entitlement-management-access-reviews-review-access.md)| 针对分配到访问包的其他用户执行访问评审。 |
 | [自我评审分配的访问包](entitlement-management-access-reviews-self-review.md)| 自我评审分配的访问包 |
 
-
 > [!NOTE]
 > 系统不会立即将进行自我评审并声明不再需要访问权限的最终用户从访问包中删除。 系统会在评审结束或管理员停止评审时将其从访问包中删除。
 
@@ -440,7 +428,6 @@ ms.locfileid: "97932429"
 | [自我评审你的访问权限](review-your-access.md)| 成员可以评审自己对组或应用程序的访问权限 |
 | [完成访问评审](complete-access-review.md)| 查看访问评审并应用结果 |
 | [对本地组执行操作](https://github.com/microsoft/access-reviews-samples/tree/master/AzureADAccessReviewsOnPremises)| 用于对本地组的访问评审执行操作的示例 PowerShell 脚本。 |
-
 
 ### <a name="review-azure-ad-roles"></a>评审 Azure AD 角色
 
@@ -474,7 +461,7 @@ ms.locfileid: "97932429"
 
 ## <a name="use-the-access-reviews-api"></a>使用访问评审 API
 
-请参阅 [Graph API 方法](/graph/api/resources/accessreviews-root?view=graph-rest-beta)和[角色和应用程序授权检查](/graph/api/resources/accessreviews-root?view=graph-rest-beta)，了解如何与可评审资源交互并对其进行管理。 Microsoft Graph API 中的访问评审方法可用于应用程序和用户上下文。 在应用程序上下文中运行脚本时，必须为用于运行 API 的帐户（服务主体）授予查询访问评审信息所需的“AccessReview.Read.All”权限。
+请参阅 [Graph API 方法](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true)和[角色和应用程序授权检查](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true)，了解如何与可评审资源交互并对其进行管理。 Microsoft Graph API 中的访问评审方法可用于应用程序和用户上下文。 在应用程序上下文中运行脚本时，必须为用于运行 API 的帐户（服务主体）授予查询访问评审信息所需的“AccessReview.Read.All”权限。
 
 可自动通过 Graph API 进行访问评审的常见访问评审任务包括：
 
