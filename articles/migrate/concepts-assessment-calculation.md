@@ -6,16 +6,16 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 7d756b53247206ab4dd4f955c954e6bd105afa1d
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: c8d625095fc979151ed904fb355b5953e41309b4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104778485"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078700"
 ---
 # <a name="assessment-overview-migrate-to-azure-vms"></a>评估概述（迁移到 Azure VM）
 
-本文概述了 [Azure Migrate：服务器发现和评估](migrate-services-overview.md)工具中的评估。 该工具可对 VMware 虚拟环境和 Hyper-V 环境中的本地服务器以及要迁移到 Azure 的物理服务器进行评估。
+本文概述了 [Azure Migrate：发现和评估](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool)工具中的评估。 该工具可对 VMware 虚拟环境和 Hyper-V 环境中的本地服务器以及要迁移到 Azure 的物理服务器进行评估。
 
 ## <a name="whats-an-assessment"></a>什么是评估？
 
@@ -33,6 +33,9 @@ ms.locfileid: "104778485"
 **Azure VM** | 将本地服务器迁移到 Azure 虚拟机的评估。 使用这种评估类型，可以对 [VMware](how-to-set-up-appliance-vmware.md) 和 [Hyper-V](how-to-set-up-appliance-hyper-v.md) 环境中的本地服务器以及要迁移到 Azure VM 的[物理服务器](how-to-set-up-appliance-physical.md)进行评估。
 **Azure SQL** | 将本地 SQL Server 从 VMware 环境迁移到 Azure SQL 数据库或 Azure SQL 托管实例的评估。
 **Azure VMware 解决方案 (AVS)** | 将本地服务器迁移到 [Azure VMware 解决方案 (AVS)](../azure-vmware/introduction.md) 的评估。 可使用此评估类型评估要迁移到 Azure VMware 解决方案 (AVS) 的本地 [VMware VM](how-to-set-up-appliance-vmware.md)。 [了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
+
+> [!NOTE]
+> 如果“发现和评估”工具上的 Azure VM 或 AVS 评估数不正确，请单击评估总数以导航到所有评估并重新计算 Azure VM 或 AVS 评估数。 然后，“发现和评估”工具将显示该评估类型的正确计数。 
 
 使用 Azure Migrate 创建的评估是数据的时间点快照。 Azure VM 评估提供了两个调整大小条件选项：
 
@@ -121,13 +124,13 @@ Azure VM 评估中包括以下内容：
 **目标位置** | 要迁移到的位置。 评估目前支持以下目标 Azure 区域：<br/><br/> 澳大利亚东部、澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、印度中部、美国中部、中国东部、中国北部、东亚、美国东部、美国东部 2、德国中部、德国东北部、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、东南亚、印度南部、英国南部、英国西部、US Gov 亚利桑那州、US Gov 德克萨斯州、US Gov 弗吉尼亚州、美国中西部、西欧、印度西部、美国西部和美国西部 2。
 目标存储磁盘（按原样调整大小） | 要用于 Azure 中存储的磁盘类型。 <br/><br/> 将目标存储磁盘指定为高级托管、标准 SSD 托管或标准 HDD 托管类型。
 目标存储磁盘（基于性能的调整大小） | 将目标存储磁盘的类型指定为自动、高级托管、标准 HDD 托管或标准 SSD 托管类型。<br/><br/> 自动：磁盘建议是基于磁盘的性能数据，即 IOPS 和吞吐量。<br/><br/>高级或标准：评估建议选择存储类型中的磁盘 SKU。<br/><br/> 如果希望单实例 VM 服务级别协议 (SLA) 达到 99.9%，请考虑使用高级托管磁盘。 这样可确保将评估中的所有磁盘都推荐为高级托管磁盘。<br/><br/> Azure Migrate 仅支持使用托管磁盘进行迁移评估。
-Azure 虚拟机预留实例 | 指定[预留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/)，以便在评估的成本估算中将它们考虑在内。<br/><br/> 选择“预留实例”时，“折扣 (%)”和“VM 运行时间”属性不适用。<br/><br/> Azure Migrate 当前仅支持对即用即付产品/服务选择“Azure 虚拟机预留实例”。
+**Azure 虚拟机预留实例** | 指定[预留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/)，以便在评估的成本估算中将它们考虑在内。<br/><br/> 选择“预留实例”时，“折扣 (%)”和“VM 运行时间”属性不适用。<br/><br/> Azure Migrate 当前仅支持对即用即付产品/服务选择“Azure 虚拟机预留实例”。
 **调整大小标准** | 用于调整 Azure VM 大小。<br/><br/> 使用按原样调整大小或基于性能的调整大小。
 **性能历史记录** | 搭配基于性能的调整大小。 性能历史记录指定了评估性能数据时使用的持续时间。
 **百分位使用率** | 搭配基于性能的调整大小。 百分位使用率指定了用于合理调整大小的性能样本的百分位值。
 **VM 系列** | 要考虑用于合理调整大小的 Azure VM 系列。 例如，如果不需要将生产环境迁移到 Azure 中的 A 系列 VM，可以从系列的列表中排除 A 系列。
 **舒适因子** | 评估过程中使用的缓冲区。 它应用于 VM 的 CPU、RAM、磁盘和网络数据。 此因子用于解决季节性使用情况、短期性能历史记录以及未来使用量可能会增加等问题。<br/><br/> 例如，一个使用率为 20% 的 10 核 VM 通常相当于一个双核 VM。 而如果舒适因子是 2.0，则结果是一个四核 VM。
-**产品/服务** | 注册的 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/)。 评估会预估该产品/服务的成本。
+**产品/服务** | 注册的 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/)。 评估会估计该产品/服务的费用。
 **货币** | 帐户的计费货币。
 **折扣 (%)** | 基于 Azure 产品/服务获得的任何特定于订阅的折扣。 默认设置是 0%。
 **VM 运行时间** | 不连续运行的 Azure VM 每月的持续时间（以天为单位）和每天的持续时间（以小时为单位）。 成本估算就是基于该持续时间。<br/><br/> 默认值是每月 31 天和每天 24 小时。
@@ -264,7 +267,7 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
    61-80% | 4 星
    81-100% | 5 星
 
-### <a name="low-confidence-ratings"></a>低置信度分级
+### <a name="low-confidence-ratings"></a>低置信度评级
 
 以下列出了评估可能获得较低置信度分级的一些原因：
 

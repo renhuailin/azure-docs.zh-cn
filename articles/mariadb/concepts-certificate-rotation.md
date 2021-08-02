@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/18/2021
 ms.openlocfilehash: 105bc7f14f9ddcc4a64564edc1eebcd17b898bc6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101698988"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>了解 Azure Database for MariaDB 的根 CA 更改中的更改
@@ -116,7 +116,7 @@ Azure database for MariaDB 用户只能使用位于[此处](https://www.digicert
 对于连接到 Azure Database for MariaDB 的 Azure 应用服务，可以采用两种可能的方案，具体取决于你在应用程序中使用 SSL 的方式。
 
 - 此新证书已在平台级别添加到应用服务。 如果你在应用程序中使用应用服务平台上包含的 SSL 证书，则无需执行任何操作。 这是最常见的情况。 
-- 如果你在代码中显式包含 SSL 证书文件的路径，则需要下载新证书并更新代码以使用新证书。这种情况的一个很好的示例是在应用服务中使用自定义容器，如同[应用服务文档](../app-service/tutorial-multi-container-app.md#configure-database-variables-in-wordpress)中所述。 这是不常见的情况，但我们已了解到一些用户正在使用它。
+- 如果在代码中显式包含 SSL 证书文件的路径，则需要下载新证书并更新代码以使用新证书。这种情况的一个很好的示例是在应用服务中使用[应用服务文档](../app-service/tutorial-multi-container-app.md#configure-database-variables-in-wordpress)中共享的自定义容器。 这是不常见的情况，但我们已了解到一些用户正在使用它。
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mariadb"></a>5.如果将 Azure Kubernetes 服务 (AKS) 与 Azure Database for MariaDB 一起使用，会产生什么影响？
 

@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: a30a42e8a8c4049b53274da512089dd29965e775
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a6950907e6ff52088030844a509f91193bc329dc
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96573147"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113215570"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Azure 负载均衡器中的新增功能有哪些？
 
@@ -29,8 +29,10 @@ Azure 负载均衡器会定期更新。 随时了解最新公告。 本文提供
 
 | 类型 |名称 |说明  |添加日期  |
 | ------ |---------|---------|---------|
+| Feature | [支持基于 IP 的后端池（正式发布版）](https://azure.microsoft.com/updates/iplbga/) | Azure 负载均衡器支持通过 IPv4 或 IPv6 地址从后端池中添加和删除资源。 这样就可以轻松管理与负载均衡器关联的容器、虚拟机和虚拟机规模集。 它还允许在创建关联资源之前将 IP 地址作为后端池的一部分保留。 在[此处](backend-pool-management.md)了解详细信息|2021 年 3 月 |
+| Feature | [标准 SKU 负载均衡器和公共 IP 的实例元数据支持](https://azure.microsoft.com/updates/standard-load-balancer-and-ip-addresses-metadata-now-available-through-azure-instance-metadata-service-imds/)|标准公共 IP 地址和标准负载均衡器的元数据现在可以通过 Azure 实例元数据服务 (IMDS) 进行检索。 元数据可从虚拟机 (VM) 的运行实例和虚拟机规模集 (VMSS) 实例中获得。 可以利用元数据来管理虚拟机。 在[此处](instance-metadata-service-load-balancer.md)了解详细信息| 2021 年 2 月 |
+| Feature | [公共 IP SKU 从“基本”升级到“标准”，而不会丢失 IP 地址](https://azure.microsoft.com/updates/public-ip-sku-upgrade-generally-available/) | 从“基本”升级到“标准”负载均衡器时，请保留公共 IP 地址。 在[此处](../virtual-network/virtual-network-public-ip-address-upgrade.md)了解详细信息| 2021 年 1 月|
 | Feature | 支持跨资源组移动 | 标准负载均衡器和标准公共 IP 支持[资源组移动](https://azure.microsoft.com/updates/standard-resource-group-move/)。 | 2020 年 10 月 |
-| Feature | 支持基于 IP 的后端池管理（预览版） | Azure 负载均衡器支持通过 IPv4 或 IPv6 地址从后端池中添加和删除资源。 这样就可以轻松管理与负载均衡器关联的容器、虚拟机和虚拟机规模集。 它还允许在创建关联资源之前将 IP 地址作为后端池的一部分保留。 在[此处](backend-pool-management.md)了解详细信息|2020 年 7 月 |
 | Feature| 使用 Azure Monitor 的 Azure 负载均衡器见解 | 作为 Azure 网络监视器一部分，客户现在拥有所有负载平衡器配置的拓扑图，以及在 Azure 门户中预配置了指标的标准负载平衡器的运行状况仪表板。 [开始使用并了解详细信息](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | 2020 年 6 月 |
 | 验证 | 添加了 HA 端口验证 | 添加了验证，以确保仅当启用了浮动 IP 时才可配置 HA 端口规则和非 HA 端口规则。 之前此配置会执行，但不会按预期方式工作。 未对功能进行任何更改。 可在[此处](load-balancer-ha-ports-overview.md#limitations)了解详细信息| 2020 年 6 月 |
 | Feature| 对 Azure 负载均衡器的 IPv6 支持（正式发布版） | 可以将 IPv6 地址作为 Azure 负载均衡器的前端。 了解如何[在此处创建双堆栈应用程序](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) |2020 年 4 月|
@@ -40,12 +42,12 @@ Azure 负载均衡器会定期更新。 随时了解最新公告。 本文提供
 
 产品小组正在积极开发针对下列已知问题的解决方案：
 
-|问题 |说明  |缓解操作  |
+|问题 |说明  |缓解措施  |
 | ---------- |---------|---------|
-| 负载均衡器警报事件和运行状况探测状态日志 | 日志记录不适用于针对基本和标准负载均衡器的负载均衡器警报事件，也不适用于针对基本负载均衡器的运行状况探测状态日志  | [使用 Azure Monitor 为标准负载均衡器提供多维度指标](load-balancer-standard-diagnostics.md)。 Azure Monitor 可为一组丰富的多维指标提供可视化效果，该可视化效果可导出为日志。 可通过负载均衡器的“见解”子边栏选项卡使用预配置的指标仪表板。 如果使用的是基本负载均衡器，请[升级到标准版](upgrade-basic-standard.md)来实现生产级别的指标监视。
+| 基于 IP 的 LB 出站 IP | 未配置出站规则时，基于 IP 的 LB 利用 Azure 的默认出站访问 IP 进行出站 | 为了防止从此 IP 进行出站访问并防止 SNAT 端口耗尽，请利用出站规则或 NAT 网关获取可预测的 IP 地址 |
 
   
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure 负载均衡器的详细信息，请参阅[什么是 Azure 负载均衡器？](load-balancer-overview.md)和[常见问题解答](load-balancer-faqs.md)。
+有关 Azure 负载均衡器的详细信息，请参阅[什么是 Azure 负载均衡器？](load-balancer-overview.md)和[常见问题解答](load-balancer-faqs.yml)。

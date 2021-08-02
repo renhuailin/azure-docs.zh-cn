@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: b15ee7091a68f7fcc79c71877c4af28b511b84de
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97680143"
 ---
 # <a name="add-a-heat-map-layer"></a>添加热度地图层
@@ -70,7 +70,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 * `radius`：定义要呈现每个数据点的像素半径。 可将半径设置为固定数字或表达式。 使用表达式可以根据缩放级别来缩放半径，并在地图上表示一个一致的空间区域（例如，5 英里半径）。
 * `color`：指定如何为热度地图赋色。 颜色渐变是热度地图的常用功能。 可以使用 `interpolate` 表达式来实现该效果。 还可以使用 `step` 表达式为热度地图赋色，直观地将密度分解到类似于等高线或雷达式地图的范围中。 这些调色板定义了从最小到最大密度值的颜色。 
 
-  将热度地图的颜色值指定为基于 `heatmap-density` 值的表达式。 内插表达式中索引 0 处的颜色或递阶色的默认颜色定义了没有数据的区域的颜色。 可以使用此值来定义背景色。 通常此值设置为“透明”，或“半透明的黑色”。 
+  将热度地图的颜色值指定为基于 `heatmap-density` 值的表达式。 “内插”表达式的索引 0 处定义了没有数据的颜色区域，或“递阶”表达式的默认颜色。 可以使用此值来定义背景色。 通常此值设置为“透明”，或“半透明的黑色”。 
    
   下面是颜色表达式示例：
 

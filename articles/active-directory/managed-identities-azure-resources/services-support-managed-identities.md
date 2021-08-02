@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: ea3f5cb896bb023a38474be71aa1570d9f5b4806
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: e5bf54426f3aeedbeeaae7ff4a232e46a1ebf3e3
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108176659"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110064641"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -236,11 +236,11 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 托管标识类型 | 所有正式发布版<br>全球 Azure 区域 | Azure Government | Azure 德国 | Azure 中国世纪互联 |
 | --- | :-: | :-: | :-: | :-: |
 | 系统分配 | ![可用][check] | ![可用][check] | 不可用 | ![可用][check] |
-| 用户分配 | 不可用 | 不可用 | 不可用 | 不可用 |
+| 用户分配 | ![可用][check] | 不可用 | 不可用 | 不可用 |
 
 请参阅以下列表，为 Azure IoT 中心配置托管标识（在可用的区域中）：
 
-- [Azure 门户](../../iot-hub/virtual-network-support.md#turn-on-managed-identity-for-iot-hub)
+- 有关详细信息，请参阅 [Azure IoT 中心对托管标识的支持](../../iot-hub/iot-hub-managed-identity.md)。
 
 ### <a name="azure-importexport"></a>Azure 导入/导出
 
@@ -302,7 +302,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - [Azure 门户](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
 - [Azure CLI](/cli/azure/policy/assignment#az_policy_assignment_create)
-- [Azure Resource Manager 模板](/azure/templates/microsoft.authorization/policyassignments)
+- [Azure 资源管理器模板](/azure/templates/microsoft.authorization/policyassignments)
 - [REST](/rest/api/policy/policyassignments/create)
 
 
@@ -348,7 +348,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - [Azure 门户](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager 模板](qs-configure-template-windows-vm.md)
+- [Azure 资源管理器模板](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 
@@ -365,7 +365,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - [Azure 门户](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager 模板](qs-configure-template-windows-vm.md)
+- [Azure 资源管理器模板](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 - [Azure SDK](qs-configure-sdk-windows-vm.md)
 

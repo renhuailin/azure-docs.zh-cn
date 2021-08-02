@@ -6,17 +6,17 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 05/07/2021
 ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 21f22f9aa31210b1690d0be562643d94901ce58a
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 547152e5c74d8953ae206d9ff3b6076013b0ade1
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079040"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110091623"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
 
@@ -61,8 +61,30 @@ IoT 中心消息由以下部分组成：
 | iothub-connection-module-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **moduleId**。 | 否 | connectionModuleId |
 | iothub-connection-auth-generation-id |IoT 中心对设备到云的消息设置的 ID。 它包含发送消息的设备的 **connectionDeviceGenerationId**（根据 [设备标识属性](iot-hub-devguide-identity-registry.md#device-identity-properties)）。 | 否 |connectionDeviceGenerationId |
 | iothub-connection-auth-method |由 IoT 中心对设备到云的消息设置的身份验证方法。 此属性包含用于验证发送消息的设备的身份验证方法的相关信息。| 否 | connectionAuthMethod |
-| dt-dataschema | 此值是由 IoT 中心对设备到云的消息设置的。 它包含在设备连接中设置的设备型号 ID。 | 否 | 空值 |
-| dt-subject | 正在发送设备到云的消息的组件的名称。 | 是 | 空值 |
+| dt-dataschema | 此值是由 IoT 中心对设备到云的消息设置的。 它包含在设备连接中设置的设备型号 ID。 | 否 | $dt-dataschema |
+| dt-subject | 正在发送设备到云的消息的组件的名称。 | 是 | $dt-subject |
+
+## <a name="application-properties-of-d2c-iot-hub-messages"></a>D2C IoT 中心消息的应用程序属性
+
+应用程序属性的一个常见用途是使用 `iothub-creation-time-utc` 属性从设备发送时间戳，以记录设备发送消息的时间。 此时间戳的格式必须为 UTC（不含时区信息）。 例如，`2021-04-21T11:30:16Z` 有效，`2021-04-21T11:30:16-07:00` 无效：
+
+```json
+{
+  "applicationId":"5782ed70-b703-4f13-bda3-1f5f0f5c678e",
+  "messageSource":"telemetry",
+  "deviceId":"sample-device-01",
+  "schema":"default@v1",
+  "templateId":"urn:modelDefinition:mkuyqxzgea:e14m1ukpn",
+  "enqueuedTime":"2021-01-29T16:45:39.143Z",
+  "telemetry":{
+    "temperature":8.341033560421833
+  },
+  "messageProperties":{
+    "iothub-creation-time-utc":"2021-01-29T16:45:39.021Z"
+  },
+  "enrichments":{}
+}
+```
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT 中心消息的系统属性
 
@@ -71,7 +93,7 @@ IoT 中心消息由以下部分组成：
 | message-id |用户可设置的消息标识符，用于请求-答复模式。 格式：ASCII 7 位字母数字字符 + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` 的区分大小写字符串（最长为 128 个字符）。  |是|
 | sequence-number |IoT 中心分配给每条云到设备消息的编号（对每个设备队列是唯一的）。 |否|
 | to |[云到设备](iot-hub-devguide-c2d-guidance.md)消息中指定的目标。 |否|
-| absolute-expiry-time |消息过期的日期和时间。 |否| 
+| absolute-expiry-time |消息过期的日期和时间。 |是| 
 | correlation-id |响应消息中的字符串属性，通常包含采用“请求-答复”模式的请求的 MessageId。 |是|
 | user-id |用于指定消息的源的 ID。 如果消息是由 IoT 中心生成的，则设置为 `{iot hub name}`。 |是|
 | iothub-ack |反馈消息生成器。 此属性在云到设备的消息中用于请求 IoT 中心因为设备使用消息而生成反馈消息。 可能的值：**none**（默认值）：不生成任何反馈消息；**positive**：如果消息已完成，则接收反馈消息；**negative**：如果消息未由设备完成就过期（或已达到最大传送计数），则收到反馈消息；**full**：positive 和 negative。 |是|

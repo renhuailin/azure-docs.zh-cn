@@ -7,12 +7,12 @@ author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: 2a799fed92bea627d5974f27d5328b6c62825556
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: e023eacd173ce23e3f88fa97f8c0127132c953ea
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102562395"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108744526"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 系列 
 
@@ -23,11 +23,12 @@ NCasT4_v3 系列虚拟机采用 [Nvidia Tesla T4](https://www.nvidia.com/en-us/d
 [ACU](acu.md)：230-260<br>
 [高级存储](premium-storage-performance.md)：支持<br>
 [高级存储缓存](premium-storage-performance.md)：支持<br>
+[超级磁盘](disks-types.md#ultra-disk)：支持（[详细了解](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)可用性、使用情况和性能） <br>
 [实时迁移](maintenance-and-updates.md)：不支持<br>
 [内存保留更新](maintenance-and-updates.md)：不支持<br>
 [VM 代系支持](generation-2.md)：第 1 代和第 2 代<br>
 [加速网络](../virtual-network/create-vm-accelerated-networking-cli.md)：支持<br>
-[临时 OS 磁盘](ephemeral-os-disks.md)：不支持 <br>
+[临时 OS 磁盘](ephemeral-os-disks.md)：支持（[预览版](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks)）<br>
 Nvidia NVLink 互连：不支持<br>
 <br>
 
@@ -46,6 +47,8 @@ Nvidia NVLink 互连：不支持<br>
 若要利用运行 Windows 或 Linux 的 Azure NCasT4_v3 系列 VM 的 GPU 功能，必须安装 Nvidia GPU 驱动程序。
 
 若要手动安装 Nvidia GPU 驱动程序，请参阅[适用于 Windows 的 N 系列 GPU 驱动程序安装](./windows/n-series-driver-setup.md)，了解受支持的操作系统、驱动程序、安装和验证步骤。
+
+Azure Nvidia GPU 驱动程序扩展将在 NCasT4_v3 系列 VM 上部署 CUDA 驱动程序。 对于图形和可视化工作负荷，手动安装 Azure 支持的 GRID 驱动程序。
 
 ## <a name="other-sizes"></a>其他大小
 

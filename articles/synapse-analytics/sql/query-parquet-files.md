@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 72bf8e76217e8a3bcecd381d8d61815c539dd196
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: d9025038727c6f71022f30f80ee67db6ccc5289b
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209581"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108740314"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用无服务器 SQL 池查询 Parquet 文件
 
@@ -40,7 +40,9 @@ from openrowset(
 > [!IMPORTANT]
 > 请确保使用 UTF-8 数据库排序规则（例如 `Latin1_General_100_BIN2_UTF8`），因为 PARQUET 文件中的字符串值使用 UTF-8 编码进行编码。
 > PARQUET 文件中的文本编码与排序规则不匹配可能会导致意外的转换错误。
-> 可以使用 T-SQL 语句 `alter database current collate Latin1_General_100_BIN2_UTF8` 轻松地更改当前数据库的默认排序规则
+> 可以使用以下 T-SQL 语句轻松更改当前数据库的默认排序规则：`alter database current collate Latin1_General_100_BIN2_UTF8`
+
+如果使用 BIN2 排序规则，你将获得额外的性能提升。 BIN2 排序规则与 parquet 字符串排序规则兼容，因此我们可以消除 parquet 文件中不会包含查询所需数据的某些部分（文件/列段修剪）。 如果使用非 BIN2 排序规则，则 parquet 填充的所有数据都会加载到 Synapse SQL 中，并在 SQL 过程中进行筛选，这可能比在文件中消除不需要的数据慢得多。 BIN2 排序规则提供仅适用于 parquet 和 CosmosDB 的额外性能优化。 缺点是会丢失细粒度的比较规则，比如不区分大小写。
 
 ### <a name="data-source-usage"></a>数据源使用情况
 

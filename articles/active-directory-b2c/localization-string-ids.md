@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b60b447d8302b89813ca462c3220603ef926eb26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50bf5f3188728db41f74b6fefe5946ef2127efe3
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102631177"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110062301"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
@@ -258,43 +258,46 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 以下 ID 适用于 ID 为 `api.phonefactor` 的内容定义以及[电话因素技术配置文件](phone-factor-technical-profile.md)。
 
-| ID | 默认值 |
-| -- | ------------- |
-| **button_verify** | 致电我 |
-| **country_code_label** | 国家/地区代码 |
-| **cancel_message** | 用户已取消多重身份验证 |
-| **text_button_send_second_code** | 发送新验证码 |
-| **code_pattern** | \\d{6} |
-| **intro_mixed** | 我们记录了以下号码。 我们能够发送短信验证码或致电来验证你的身份。 |
-| **intro_mixed_p** | 我们记录了以下号码。 选择一个号码，以便我们能够通过电话或发送短信验证码来验证你的身份。 |
-| **button_verify_code** | 验证验证码 |
-| **requiredField_code** | 请输入收到的验证码 |
-| **invalid_code** | 请输入收到的 6 位验证码 |
-| **button_cancel** | 取消 |
-| **local_number_input_placeholder_text** | 电话号码 |
-| **button_retry** | 重试 |
-| **alternative_text** | 我没有电话 |
-| **intro_phone_p** | 我们记录了以下号码。 选择一个号码，以便我们能够通过电话来验证你的身份。 |
-| **intro_phone** | 我们记录了以下号码。 我们将通过电话来验证你的身份。 |
-| **enter_code_text_intro** | 请在下面输入验证码，或  |
-| **intro_entry_phone** | 请在下面输入一个号码，以便我们能够通过电话来验证你的身份。 |
-| **intro_entry_sms** | 请在下面输入一个号码，以便我们能够发送短信验证码来验证你的身份。 |
-| **button_send_code** | 发送验证码 |
-| **invalid_number** | 请输入有效电话号码 |
-| **intro_sms** | 我们记录了以下号码。 我们将发送短信验证码来验证你的身份。 |
-| **intro_entry_mixed** | 请在下面输入一个号码，以便我们能够发送短信验证码或通过电话来验证你的身份。 |
-| **number_pattern** | ^\\+(?:[0-9][\\x20-]?){6,14}[0-9]$ |
-| **intro_sms_p** |我们记录了以下号码。 选择一个号码，以便我们能够发送短信验证码来验证你的身份。 |
-| **requiredField_countryCode** | 请选择国家/地区代码 |
-| **requiredField_number** | 请输入电话号码 |
-| **country_code_input_placeholder_text** |国家或地区 |
-| **number_label** | 电话号码 |
-| **error_tryagain** | 你提供的电话号码占线或不可用。 请检查号码并重试。 |
-| **error_incorrect_code** | 你输入的验证码与我们的记录不一致。 请重试，或请求获取新验证码。 |
-| **countryList** | 请参阅[国家/地区列表](#phone-factor-authentication-page-example)。 |
-| **error_448** | 你提供的电话号码打不通。 |
-| **error_449** | 用户已超出重试次数上限。 |
-| **verification_code_input_placeholder_text** | 验证码 |
+| ID | 默认值 | 页面布局版本 |
+| -- | ------------- | ------ |
+| **button_verify** | 致电我 | `All` |
+| **country_code_label** | 国家/地区代码 | `All` |
+| **cancel_message** | 用户已取消多重身份验证 | `All` |
+| **text_button_send_second_code** | 发送新验证码 | `All` |
+| **code_pattern** | \\d{6} | `All` |
+| **intro_mixed** | 我们记录了以下号码。 我们能够发送短信验证码或致电来验证你的身份。 | `All` |
+| **intro_mixed_p** | 我们记录了以下号码。 选择一个号码，以便我们能够通过电话或发送短信验证码来验证你的身份。 | `All` |
+| **button_verify_code** | 验证验证码 | `All` |
+| **requiredField_code** | 请输入收到的验证码 | `All` |
+| **invalid_code** | 请输入收到的 6 位验证码 | `All` |
+| **button_cancel** | 取消 | `All` |
+| **local_number_input_placeholder_text** | 电话号码 | `All` |
+| **button_retry** | 重试 | `All` |
+| **alternative_text** | 我没有电话 | `All` |
+| **intro_phone_p** | 我们记录了以下号码。 选择一个号码，以便我们能够通过电话来验证你的身份。 | `All` |
+| **intro_phone** | 我们记录了以下号码。 我们将通过电话来验证你的身份。 | `All` |
+| **enter_code_text_intro** | 请在下面输入验证码，或  | `All` |
+| **intro_entry_phone** | 请在下面输入一个号码，以便我们能够通过电话来验证你的身份。 | `All` |
+| **intro_entry_sms** | 请在下面输入一个号码，以便我们能够发送短信验证码来验证你的身份。 | `All` |
+| **button_send_code** | 发送验证码 | `All` |
+| **invalid_number** | 请输入有效电话号码 | `All` |
+| **intro_sms** | 我们记录了以下号码。 我们将发送短信验证码来验证你的身份。 | `All` |
+| **intro_entry_mixed** | 请在下面输入一个号码，以便我们能够发送短信验证码或通过电话来验证你的身份。 | `All` |
+| **number_pattern** | ^\\+(?:[0-9][\\x20-]?){6,14}[0-9]$ | `All` |
+| **intro_sms_p** |我们记录了以下号码。 选择一个号码，以便我们能够发送短信验证码来验证你的身份。 | `All` |
+| **requiredField_countryCode** | 请选择国家/地区代码 | `All` |
+| **requiredField_number** | 请输入电话号码 | `All` |
+| **country_code_input_placeholder_text** |国家或地区 | `All` |
+| **number_label** | 电话号码 | `All` |
+| **error_tryagain** | 你提供的电话号码占线或不可用。 请检查号码并重试。 | `All` |
+| error_sms_throttled | 已达到短信数量的限制。 请稍后再试。 | `>= 1.2.3` |
+| error_phone_throttled | 已达到呼叫尝试次数的限制。 请稍后再试。 | `>= 1.2.3` |
+| error_throttled | 已达到验证尝试次数的限制。 请稍后再试。 | `>= 1.2.3` |
+| **error_incorrect_code** | 你输入的验证码与我们的记录不一致。 请重试，或请求获取新验证码。 | `All` |
+| **countryList** | 请参阅[国家/地区列表](#phone-factor-authentication-page-example)。 | `All` |
+| **error_448** | 你提供的电话号码打不通。 | `All` |
+| **error_449** | 用户已超出重试次数上限。 | `All` |
+| **verification_code_input_placeholder_text** | 验证码 | `All` |
 
 下面的示例演示如何在 MFA 注册页中使用某些用户界面元素：
 
@@ -339,6 +342,9 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
     <LocalizedString ElementType="UxElement" StringId="country_code_input_placeholder_text">Country or region</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="number_label">Phone Number</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="error_tryagain">The phone number you provided is busy or unavailable. Please check the number and try again.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_sms_throttled">You hit the limit on the number of text messages. Try again shortly.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_phone_throttled">You hit the limit on the number of call attempts. Try again shortly.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="error_throttled">You hit the limit on the number of verification attempts. Try again shortly.</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="error_incorrect_code">The verification code you have entered does not match our records. Please try again, or request a new code.</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="countryList">{"DEFAULT":"Country/Region","AF":"Afghanistan","AX":"Åland Islands","AL":"Albania","DZ":"Algeria","AS":"American Samoa","AD":"Andorra","AO":"Angola","AI":"Anguilla","AQ":"Antarctica","AG":"Antigua and Barbuda","AR":"Argentina","AM":"Armenia","AW":"Aruba","AU":"Australia","AT":"Austria","AZ":"Azerbaijan","BS":"Bahamas","BH":"Bahrain","BD":"Bangladesh","BB":"Barbados","BY":"Belarus","BE":"Belgium","BZ":"Belize","BJ":"Benin","BM":"Bermuda","BT":"Bhutan","BO":"Bolivia","BQ":"Bonaire","BA":"Bosnia and Herzegovina","BW":"Botswana","BV":"Bouvet Island","BR":"Brazil","IO":"British Indian Ocean Territory","VG":"British Virgin Islands","BN":"Brunei","BG":"Bulgaria","BF":"Burkina Faso","BI":"Burundi","CV":"Cabo Verde","KH":"Cambodia","CM":"Cameroon","CA":"Canada","KY":"Cayman Islands","CF":"Central African Republic","TD":"Chad","CL":"Chile","CN":"China","CX":"Christmas Island","CC":"Cocos (Keeling) Islands","CO":"Colombia","KM":"Comoros","CG":"Congo","CD":"Congo (DRC)","CK":"Cook Islands","CR":"Costa Rica","CI":"Côte d'Ivoire","HR":"Croatia","CU":"Cuba","CW":"Curaçao","CY":"Cyprus","CZ":"Czech Republic","DK":"Denmark","DJ":"Djibouti","DM":"Dominica","DO":"Dominican Republic","EC":"Ecuador","EG":"Egypt","SV":"El Salvador","GQ":"Equatorial Guinea","ER":"Eritrea","EE":"Estonia","ET":"Ethiopia","FK":"Falkland Islands","FO":"Faroe Islands","FJ":"Fiji","FI":"Finland","FR":"France","GF":"French Guiana","PF":"French Polynesia","TF":"French Southern Territories","GA":"Gabon","GM":"Gambia","GE":"Georgia","DE":"Germany","GH":"Ghana","GI":"Gibraltar","GR":"Greece","GL":"Greenland","GD":"Grenada","GP":"Guadeloupe","GU":"Guam","GT":"Guatemala","GG":"Guernsey","GN":"Guinea","GW":"Guinea-Bissau","GY":"Guyana","HT":"Haiti","HM":"Heard Island and McDonald Islands","HN":"Honduras","HK":"Hong Kong SAR","HU":"Hungary","IS":"Iceland","IN":"India","ID":"Indonesia","IR":"Iran","IQ":"Iraq","IE":"Ireland","IM":"Isle of Man","IL":"Israel","IT":"Italy","JM":"Jamaica","JP":"Japan","JE":"Jersey","JO":"Jordan","KZ":"Kazakhstan","KE":"Kenya","KI":"Kiribati","KR":"Korea","KW":"Kuwait","KG":"Kyrgyzstan","LA":"Laos","LV":"Latvia","LB":"Lebanon","LS":"Lesotho","LR":"Liberia","LY":"Libya","LI":"Liechtenstein","LT":"Lithuania","LU":"Luxembourg","MO":"Macao SAR","MK":"North Macedonia","MG":"Madagascar","MW":"Malawi","MY":"Malaysia","MV":"Maldives","ML":"Mali","MT":"Malta","MH":"Marshall Islands","MQ":"Martinique","MR":"Mauritania","MU":"Mauritius","YT":"Mayotte","MX":"Mexico","FM":"Micronesia","MD":"Moldova","MC":"Monaco","MN":"Mongolia","ME":"Montenegro","MS":"Montserrat","MA":"Morocco","MZ":"Mozambique","MM":"Myanmar","NA":"Namibia","NR":"Nauru","NP":"Nepal","NL":"Netherlands","NC":"New Caledonia","NZ":"New Zealand","NI":"Nicaragua","NE":"Niger","NG":"Nigeria","NU":"Niue","NF":"Norfolk Island","KP":"North Korea","MP":"Northern Mariana Islands","NO":"Norway","OM":"Oman","PK":"Pakistan","PW":"Palau","PS":"Palestinian Authority","PA":"Panama","PG":"Papua New Guinea","PY":"Paraguay","PE":"Peru","PH":"Philippines","PN":"Pitcairn Islands","PL":"Poland","PT":"Portugal","PR":"Puerto Rico","QA":"Qatar","RE":"Réunion","RO":"Romania","RU":"Russia","RW":"Rwanda","BL":"Saint Barthélemy","KN":"Saint Kitts and Nevis","LC":"Saint Lucia","MF":"Saint Martin","PM":"Saint Pierre and Miquelon","VC":"Saint Vincent and the Grenadines","WS":"Samoa","SM":"San Marino","ST":"São Tomé and Príncipe","SA":"Saudi Arabia","SN":"Senegal","RS":"Serbia","SC":"Seychelles","SL":"Sierra Leone","SG":"Singapore","SX":"Sint Maarten","SK":"Slovakia","SI":"Slovenia","SB":"Solomon Islands","SO":"Somalia","ZA":"South Africa","GS":"South Georgia and South Sandwich Islands","SS":"South Sudan","ES":"Spain","LK":"Sri Lanka","SH":"St Helena, Ascension, Tristan da Cunha","SD":"Sudan","SR":"Suriname","SJ":"Svalbard","SZ":"Swaziland","SE":"Sweden","CH":"Switzerland","SY":"Syria","TW":"Taiwan","TJ":"Tajikistan","TZ":"Tanzania","TH":"Thailand","TL":"Timor-Leste","TG":"Togo","TK":"Tokelau","TO":"Tonga","TT":"Trinidad and Tobago","TN":"Tunisia","TR":"Turkey","TM":"Turkmenistan","TC":"Turks and Caicos Islands","TV":"Tuvalu","UM":"U.S. Outlying Islands","VI":"U.S. Virgin Islands","UG":"Uganda","UA":"Ukraine","AE":"United Arab Emirates","GB":"United Kingdom","US":"United States","UY":"Uruguay","UZ":"Uzbekistan","VU":"Vanuatu","VA":"Vatican City","VE":"Venezuela","VN":"Vietnam","WF":"Wallis and Futuna","YE":"Yemen","ZM":"Zambia","ZW":"Zimbabwe"}</LocalizedString>
     <LocalizedString ElementType="UxElement" StringId="error_448">The phone number you provided is unreachable.</LocalizedString>

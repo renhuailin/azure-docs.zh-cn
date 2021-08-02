@@ -5,24 +5,24 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 06/02/2021
 ms.author: cherylmc
-ms.openlocfilehash: be8a8dbe94404141781af4abf6cc8ec5bb9c2712
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 0119d9b1938698ed27d9c1539c1366859d0fc7f9
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060612"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411946"
 ---
-# <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>如何在 Azure 虚拟 WAN 中心（预览版）中创建网络虚拟设备
+# <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub"></a>如何在 Azure 虚拟 WAN 中心创建网络虚拟设备
 
 本文介绍如何使用虚拟 WAN 通过 Azure 中的网络虚拟设备 (NVA) 连接到 Azure 中的资源。 此类型的连接要求位于本地的 VPN 设备分配有一个面向外部的公共 IP 地址。 有关虚拟 WAN 的详细信息，请参阅[什么是虚拟 WAN？](virtual-wan-about.md)。
 
 本文中的步骤可帮助你在虚拟 WAN 中心中创建 Barracuda CloudGen WAN 网络虚拟设备。 要完成此练习，在开始之前，必须具有 Barracuda 云本地设备 (CPE) 和要部署到中心中的 Barracuda CloudGen WAN 设备的许可证。
 
-有关 Azure 虚拟 WAN 中 Cisco SD-WAN 的部署文档，请参阅[适用于多云的 Cisco Cloud OnRamp](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701)。 
+有关 Azure 虚拟 WAN 中“Cisco SD-WAN”的部署文档，请参阅[适用于多云的 Cisco Cloud OnRamp](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701)。 
 
-有关 Azure 虚拟 WAN 中 VMware SD-WAN 的部署文档，请参阅[虚拟 WAN 中心中 VMware SD-WAN 的部署指南](https://kb.vmware.com/s/article/82746)
+有关 Azure 虚拟 WAN 中“VMware SD-WAN”的部署文档，请参阅[虚拟 WAN 中心中 VMware SD-WAN 的部署指南](https://kb.vmware.com/s/article/82746)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -34,7 +34,7 @@ ms.locfileid: "106060612"
 
 * 虚拟网络不包含任何虚拟网络网关。 如果虚拟网络包含网关（VPN 或 ExpressRoute），则必须删除所有网关。 此配置要求将虚拟网络改为连接到虚拟 WAN 中心网关。
 
-* 获取中心区域的 IP 地址范围。 该中心是虚拟 WAN 创建和使用的虚拟网络。 为中心指定的地址范围不能与要连接到的任何现有虚拟网络重叠。 此外，它也不能与本地连接到的地址范围重叠。 如果不熟悉本地网络配置中的 IP 地址范围，则咨询能够提供此类详细信息的人员。
+* 获取中心区域的 IP 地址范围。 该中心是虚拟 WAN 创建和使用的虚拟网络。 为中心指定的地址范围不能与要连接到的任何现有虚拟网络重叠。 此外，它也不能与连接到本地站点的地址范围重叠。 如果不熟悉本地网络配置中的 IP 地址范围，则咨询能够提供此类详细信息的人员。
 
 * 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -99,4 +99,4 @@ ms.locfileid: "106060612"
 ## <a name="next-steps"></a>后续步骤
 
 * 若要详细了解虚拟 WAN，请参阅[什么是虚拟 WAN？](virtual-wan-about.md)页。
-* 若要详细了解虚拟 WAN 中心中的 NVA，请参阅[关于虚拟 WAN 中心中的网络虚拟设备（预览版）](about-nva-hub.md)。
+* 若要详细了解虚拟 WAN 中心中的 NVA，请参阅[关于虚拟 WAN 中心中的网络虚拟设备](about-nva-hub.md)。

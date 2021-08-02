@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: ccabffc0e5a65e41f31c3c80703e67f78e8b5f9e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 87cd32dcace6fd38180cc09ba999efca76f5ae16
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100995"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105605461"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map-android-sdk"></a>向地图添加多边形挤压层 (Android SDK)
 
@@ -106,7 +106,7 @@ map.layers.add(layer, "labels")
 
 ::: zone-end
 
-下面的屏幕截图显示了上面使用多边形挤压层呈现垂直拉伸的多边形的代码。
+以下屏幕截图显示了上述使用多边形挤压层呈现垂直拉伸的多边形的代码。
 
 ![带有使用多边形挤压层垂直拉伸的多边形的地图](media/map-extruded-polygon-android/polygon-extrusion-layer.jpg)
 

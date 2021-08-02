@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure 机器学习文档
-summary: 了解如何使用 Azure 机器学习训练和部署模型以及管理机器学习生命周期。 教程、代码示例、API 参考和其他资源介绍了操作方法。
+summary: 了解如何使用 Azure 机器学习训练和部署模型以及管理 ML 生命周期 (MLOps)。 教程、代码示例、API 参考和其他资源。
 metadata:
   title: Azure 机器学习文档
-  description: 了解如何使用 Azure 机器学习训练和部署模型以及管理机器学习生命周期。 教程、代码示例、API 参考和其他资源介绍了操作方法。
+  description: 了解如何使用 Azure 机器学习训练和部署模型以及管理 ML 生命周期 (MLOps)。 教程、代码示例、API 参考和其他资源。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -11,55 +11,81 @@ metadata:
   ms.collection: collection
   ms.author: sgilley
   author: sdgilley
-  ms.date: 06/11/2021
+  ms.date: 07/09/21
   ms.custom: jordan-changes
-  ms.openlocfilehash: 8ca3c770daa74b2f9f8f8dfd2edd0e22b6659538
-  ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+  ms.openlocfilehash: a6c9062be083260dd7a492363cb0dd79b2f37cdf
+  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/11/2021
-  ms.locfileid: "112030064"
+  ms.lasthandoff: 07/10/2021
+  ms.locfileid: "113595896"
 landingContent:
-- title: 入门：训练模型
+- title: 入门
   linkLists:
-  - linkListType: tutorial
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 机器学习？
+      url: overview-what-is-azure-ml.md
+  - linkListType: quickstart
     links:
     - text: 设置资源
       url: quickstart-create-resources.md
+  - linkListType: tutorial
+    links:
     - text: 使用 Python SDK 进行训练
       url: tutorial-1st-experiment-hello-world.md
     - text: 使用 v2 CLI（预览版）进行训练
       url: how-to-train-cli.md
-- title: 其他模型训练选项
+- title: 训练模型
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 通过超参数扫描优化模型
+    - text: 优化超参数以进行模型训练
       url: how-to-tune-hyperparameters.md
-    - text: 创建多步骤 ML 管道
+    - text: 从可重用组件生成管道
       url: how-to-create-machine-learning-pipelines.md
+  - linkListType: tutorial
+    links:
     - text: 使用 AutoML 进行训练
       url: tutorial-first-experiment-automated-ml.md
-    - text: 使用设计器进行训练
-      url: tutorial-designer-automobile-price-train-score.md
+    - text: 在云中运行训练代码（v2 CLI 预览版）
+      url: how-to-train-cli.md
 - title: 部署模型
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 如何部署模型
       url: how-to-deploy-and-where.md
-    - text: 托管联机评分（预览版）
+    - text: 使用托管终结点进行实时评分（预览版）
       url: how-to-deploy-managed-online-endpoints.md
-    - text: 托管批量评分（预览版）
+    - text: 使用托管终结点进行批量评分（预览版）
       url: how-to-use-batch-endpoint.md
-- title: 管理 ML 生命周期
+- title: 管理 ML 生命周期 (MLOps)
   linkLists:
+  - linkListType: concept
+    links:
+    - text: 模型管理、世系和监视
+      url: concept-model-management-and-deployment.md
   - linkListType: how-to-guide
     links:
-    - text: 跟踪 ML 试验
+    - text: 跟踪、监视、分析训练运行
       url: how-to-track-monitor-analyze-runs.md
-    - text: ML 生命周期管理 (MLOps)
-      url: concept-model-management-and-deployment.md
+    - text: 数据引入管道的 DevOps
+      url: how-to-cicd-data-ingestion.md
+- title: ML 项目的安全性
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 企业安全和治理
+      url: concept-enterprise-security.md
+  - linkListType: tutorial
+    links:
+    - text: 创建安全的工作区
+      url: tutorial-create-secure-workspace.md
+  - linkListType: how-to-guide
+    links:
+    - text: 连接到数据源
+      url: how-to-access-data.md
 - title: 参考文档
   linkLists:
   - linkListType: reference
@@ -68,13 +94,21 @@ landingContent:
       url: /python/api/overview/azure/ml/
     - text: REST API
       url: /rest/api/azureml/
-    - text: 机器学习 CLI
+    - text: 机器学习 v2 CLI
       url: /cli/azure/ml
-- title: 查找工作室（经典版）
+- title: 资源
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Python SDK 代码示例
+      url: https://github.com/Azure/azureml-examples/blob/main/python-sdk/README.md
+    - text: v2 CLI 代码示例（预览版）
+      url: https://github.com/Azure/azureml-examples/blob/main/cli/README.md
+- title: 查找 ML 工作室（经典版）？
   linkLists:
   - linkListType: overview
     links:
-    - text: 工作室（经典版）登陆
+    - text: ML 工作室（经典版）文档
       url: classic/index.yml
-    - text: 工作室（经典版）与工作室
+    - text: Azure 机器学习与工作室（经典）
       url: overview-what-is-machine-learning-studio.md

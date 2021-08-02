@@ -3,14 +3,14 @@ title: 在 Azure Kubernetes 服务 (AKS) 中使用门户创建虚拟节点
 description: 了解如何通过 Azure 门户创建使用虚拟节点运行 Pod 的 Azure Kubernetes 服务 (AKS) 群集。
 services: container-service
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 06a3e7263b2e03cfc37f7ba3c733e07536b5d473
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.date: 03/15/2021
+ms.custom: references_regions
+ms.openlocfilehash: fad021dc92753013234a3b0831e76e87fa25db10
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102501798"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769294"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为使用 Azure 门户中的虚拟节点
 
@@ -54,15 +54,15 @@ az provider register --namespace Microsoft.ContainerInstance
 在“基本信息”页面上，配置以下选项：
 
 - *项目详细信息*：选择 Azure 订阅，然后选择或创建 Azure 资源组，例如 *myResourceGroup*。 输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。
-- *群集详细信息*：选择 AKS 群集的区域、Kubernetes 版本和 DNS 名称前缀。
+- 群集详细信息：选择 AKS 群集的区域和 Kubernetes 版本。
 - *主节点池*：选择 AKS 节点的 VM 大小。 一旦部署 AKS 群集，不能更改 VM 大小。
      - 选择要部署到群集中的节点数。 在本文中，将“节点计数”设置为 *1*。 部署群集后，可以调整节点计数。
 
-单击“下一步:**缩放”** 。
+单击“下一步: 节点池”。
 
-在“缩放”页的“虚拟节点”下选择“已启用”。
+在“节点池”页上，选择“启用虚拟节点”。
 
-![创建 AKS 群集并启用虚拟节点](media/virtual-nodes-portal/enable-virtual-nodes.png)
+:::image type="content" source="media/virtual-nodes-portal/enable-virtual-nodes.png" alt-text="在浏览器中，展示如何在 Azure 门户上创建启用虚拟节点的群集。突出显示“启用虚拟节点”选项。":::
 
 默认情况下，将创建一个群集标识。 此群集标识用于群集通信以及与其他 Azure 服务集成。 默认情况下，此群集标识为托管标识。 有关详细信息，请参阅[使用托管标识](use-managed-identity.md)。 还可以使用服务主体作为群集标识。
 
@@ -158,7 +158,7 @@ virtual-node-helloworld-9b55975f-bnmfl   1/1       Running   0          4m      
 若要测试虚拟节点上运行的 Pod，请使用 Web 客户端浏览到演示应用程序。 由于为该 Pod 分配了一个内部 IP 地址，因此，可以从 AKS 群集上的另一个 Pod 快速测试此连接。 创建一个测试 Pod，并在其上附加一个终端会话：
 
 ```console
-kubectl run -it --rm virtual-node-test --image=debian
+kubectl run -it --rm virtual-node-test --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
 ```
 
 使用 `apt-get` 在 Pod 中安装 `curl`：
@@ -210,9 +210,9 @@ curl -L http://10.241.0.4
 
 <!-- LINKS - internal -->
 [aks-network]: ./configure-azure-cni.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
-[az-provider-list]: /cli/azure/provider#az-provider-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-provider-list]: /cli/azure/provider#az_provider_list
+[az-provider-register]: /cli/azure/provider#az_provider_register

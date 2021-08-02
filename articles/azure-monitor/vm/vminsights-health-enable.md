@@ -4,27 +4,30 @@ description: 介绍如何在订阅中启用 VM 见解来宾运行状况以及如
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/16/2020
-ms.custom: references_regions
-ms.openlocfilehash: 5d4ff622f69445880c0de8cb74dc1aeee422c89b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 04/05/2021
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 472700f50175c115305bad332efa6b0e77fb74ce
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102052154"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108315284"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>启用 VM 见解来宾运行状况（预览）
-利用 VM 见解来宾运行状况，可以查看虚拟机的运行状况，该运行状况是由一组定期取样的性能测量值定义的。 本文介绍如何在订阅中启用此功能，以及如何为每个虚拟机启用来宾监视。
+利用 VM 见解来宾运行状况，可以查看虚拟机的运行状况，该运行状况是由一组定期取样的性能测量值定义。 本文介绍如何在订阅中启用此功能，以及如何为每个虚拟机启用来宾监视。
 
 ## <a name="current-limitations"></a>当前限制
 VM 见解来宾运行状况在公共预览版中存在以下限制：
 
 - 目前仅支持 Azure 虚拟机。 当前不支持 Azure Arc for servers。
+- 当前不支持网络代理。
 
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 虚拟机必须运行下列操作系统之一： 
 
+  - CentOS 7.5、7.6、7.7、7.8、7.9
+  - RedHat 7.5、7.6、7.7、7.8、7.9
   - Ubuntu 16.04 LTS、Ubuntu 18.04 LTS
   - Windows Server 2012 或更高版本
 

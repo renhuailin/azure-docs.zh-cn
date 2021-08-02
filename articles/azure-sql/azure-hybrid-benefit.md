@@ -4,19 +4,19 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: 使用现有 SQL Server 许可证，享受 Azure SQL 数据库和 SQL 托管实例折扣。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: features
+ms.subservice: service-overview
 ms.custom: sqldbrb=4
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: MashaMSFT
+ms.author: mathoma
 ms.reviewer: sashan, moslake
 ms.date: 02/16/2021
-ms.openlocfilehash: b5f85e0dcb8ca70d5773b8f1c3b53e0b449ef013
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d8557c24b1f6ef46559f57d09c6e273dd4041272
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779194"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112018164"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure 混合权益 - Azure SQL 数据库和 SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -33,8 +33,8 @@ ms.locfileid: "107779194"
 使用 Azure 混合权益，可以选择通过使用适用于 SQL Server 数据库引擎自身的现有 SQL Server 许可证仅为底层 Azure 基础结构付费（基本计算定价），或者可以选择同时为底层基础结构和 SQL Server 许可证付费（许可证涵盖的定价）。
 
 可以在 Azure 门户中选择或更改许可证模型： 
-- 对于新数据库，在创建过程中，在“基础”选项卡上选择“配置数据库”，并选择有助于节省资金的选项 。
-- 对于现有数据库，在“设置”菜单中选择“配置”，然后选择有助于节省资金的选项 。
+- 对于新数据库，在创建过程中，在“基础”选项卡上选择“配置数据库”，并选择“节省资金”的选项。
+- 对于现有数据库，在“设置”菜单中选择“计算 + 存储”，然后选择“节省资金”的选项。
 
 还可以使用以下 API 之一配置新的或现有的数据库：
 

@@ -7,12 +7,13 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 15a18cbfc3a80bbfea0b92e5b616104dc0f593af
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
-ms.translationtype: MT
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9b06213416241f671dd0e6ef56a7660a3af5f6e8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580998"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123890"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>排查混合 Runbook 辅助角色问题
 
@@ -42,7 +43,7 @@ Runbook 在尝试执行三次后很快暂停。 在某些情况下，Runbook 可
 
 #### <a name="resolution"></a>解决方法
 
-验证计算机是否在端口443上有到 azure-automation.net 的出站访问权限 **\* 。**
+验证计算机的端口 443 是否具有对“\*.azure-automation.net”的出站访问权限。
 
 运行混合 Runbook 辅助角色的计算机应满足最低硬件要求，然后才能将辅助角色配置为托管此功能。 它们使用的 Runbook 和后台进程可能会导致系统过度使用，造成 Runbook 作业延迟或超时。
 
@@ -136,21 +137,21 @@ Log Analytics 工作区和自动化帐户必须位于链接的区域中。 有�
 
 可能还需要更新计算机的日期或时区。 如果选择自定义时间范围，请确保该范围采用 UTC，它可能与你的本地时区不同。
 
-### <a name="scenario-set-azstorageblobcontent-fails-on-a-hybrid-runbook-worker"></a><a name="set-azstorageblobcontent-execution-fails"></a>方案：混合 Runbook 辅助角色上的 Set-AzStorageBlobContent 失败 
+### <a name="scenario-set-azstorageblobcontent-fails-on-a-hybrid-runbook-worker"></a><a name="set-azstorageblobcontent-execution-fails"></a>场景：Set-AzStorageBlobContent 在混合 Runbook 辅助角色上失败 
 
 #### <a name="issue"></a>问题
 
-Runbook 在尝试执行时失败 `Set-AzStorageBlobContent` ，并且你收到以下错误消息：
+Runbook 在尝试执行 `Set-AzStorageBlobContent` 时失败，并且出现以下错误消息：
 
 `Set-AzStorageBlobContent : Failed to open file xxxxxxxxxxxxxxxx: Illegal characters in path`
 
 #### <a name="cause"></a>原因
 
- 此错误是由调用的长文件名行为引起的， `[System.IO.Path]::GetFullPath()` 后者将添加 UNC 路径。
+ 此错误是由对 `[System.IO.Path]::GetFullPath()` 的调用（添加 UNC 路径）的长文件名行为所导致。
 
 #### <a name="resolution"></a>解决方法
 
-作为一种解决方法，你可以使用以下内容创建一个名为的配置文件 `OrchestratorSandbox.exe.config` ：
+作为解决方法，可以创建一个名为 `OrchestratorSandbox.exe.config` 的配置文件，其内容如下：
 
 ```azurecli
 <configuration>
@@ -160,12 +161,12 @@ Runbook 在尝试执行时失败 `Set-AzStorageBlobContent` ，并且你收到�
 </configuration>
 ```
 
-将此文件放在与可执行文件相同的文件夹中 `OrchestratorSandbox.exe` 。 例如，
+将此文件与可执行文件 `OrchestratorSandbox.exe` 放在同一文件夹中。 例如，
 
 `%ProgramFiles%\Microsoft Monitoring Agent\Agent\AzureAutomation\7.3.702.0\HybridAgent`
 
 >[!Note]
-> 如果升级代理，此配置文件将被删除，并需要重新创建。
+> 如果升级代理，此配置文件将被删除并需要重新创建。
 
 ## <a name="linux"></a>Linux
 
@@ -249,7 +250,7 @@ Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics �
 
 #### <a name="cause"></a>原因
 
-这可能是因为代理或网络防火墙阻止与 Microsoft Azure 通信。 验证计算机是否在端口443上有到 azure-automation.net 的出站访问权限 **\* 。**
+这可能是因为代理或网络防火墙阻止与 Microsoft Azure 通信。 验证计算机的端口 443 是否具有对“\*.azure-automation.net”的出站访问权限。
 
 #### <a name="resolution"></a>解决方法
 
@@ -257,11 +258,11 @@ Windows 混合 Runbook 辅助角色依靠[适用于 Windows 的 Log Analytics �
 
 混合辅助角色将 [Runbook 输出和消息](../automation-runbook-output-and-messages.md)发送到 Azure 自动化，其发送方式与云中运行的 Runbook 作业发送输出和消息的方式相同。 可以像使用 Runbook 时一样启用“详细”流和“进度”流。
 
-### <a name="scenario-orchestratorsandboxexe-cant-connect-to-microsoft-365-through-proxy"></a>方案： Orchestrator.Sandbox.exe 无法通过代理连接到 Microsoft 365
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-microsoft-365-through-proxy"></a>场景：Orchestrator.Sandbox.exe 无法通过代理连接到 Microsoft 365
 
 #### <a name="issue"></a>问题
 
-在 Windows 混合 Runbook 辅助角色上运行的脚本不能按预期方式连接到 Orchestrator 沙盒上的 Microsoft 365。 脚本使用 [Connect-MsolService](/powershell/module/msonline/connect-msolservice) 进行连接。 
+Windows 混合 Runbook 辅助角色上运行的脚本无法按预期方式连接到业务流程协调程序沙盒中的 Microsoft 365。 脚本使用 [Connect-MsolService](/powershell/module/msonline/connect-msolservice) 进行连接。 
 
 即使调整 **Orchestrator.Sandbox.exe.config** 来设置代理和“绕过列表”，沙盒仍然无法正常连接。 包含相同代理和“绕过列表”设置的某个 **Powershell_ise.exe.config** 文件看起来却能按预期方式工作。 Service Management Automation (SMA) 日志和 PowerShell 日志未提供有关代理的任何信息。
 

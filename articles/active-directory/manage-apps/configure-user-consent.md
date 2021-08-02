@@ -2,22 +2,22 @@
 title: 使用 Azure AD 配置最终用户如何对应用程序表示同意
 description: 对于将有权访问你组织数据的应用程序，了解管理用户如何及何时对这些应用表示同意的方式。
 services: active-directory
-author: kenwith
-manager: daveba
+author: mtillman
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/01/2020
-ms.author: kenwith
+ms.date: 06/01/2021
+ms.author: mtillman
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 68bb846ebb0199691161bc501441df908eb8ad87
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 59a7799ce7c0c1fd8261324351f425e76e3b4d44
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101643603"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075963"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>配置最终用户如何对应用程序表示同意
 
@@ -97,11 +97,11 @@ Set-AzureADMSAuthorizationPolicy `
 ---
 
 > [!TIP]
-> 请[启用管理员同意工作流](configure-admin-consent-workflow.md)，以允许用户请求管理员评审和批准不允许用户同意的应用程序，例如当用户同意已被禁用或应用程序请求用户无法授予的权限时。
+> [启用管理员同意工作流](configure-admin-consent-workflow.md)，以允许用户请求管理员评审和批准不允许用户同意的应用程序，例如当用户同意已被禁用或应用程序请求用户无法授予的权限时。
 
 ## <a name="risk-based-step-up-consent"></a>基于风险的升级同意
 
-基于风险的升级同意有助于减少用户遭受发出[非法同意请求](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)的恶意应用的攻击。 如果 Microsoft 检测到最终用户同意请求存在风险，该请求将需要“升级”，改为管理员同意。 此功能默认启用，但如果启用了最终用户同意，则它只会导致行为的更改。
+基于风险的升级同意有助于减少用户遭受发出[非法同意请求](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)的恶意应用的攻击。 例如，以下行为被视为有风险：针对新注册的多租户应用的同意请求，而且这些应用[未经过发行商验证](../develop/publisher-verification-overview.md)且要求非基本权限。 如果 Microsoft 检测到最终用户同意请求存在风险，该请求将需要“升级”，改为管理员同意。 此功能默认启用，但如果启用了最终用户同意，则它只会导致行为的更改。
 
 当检测到同意请求存在风险时，同意提示将显示一条消息，指示需要管理员批准。 如果已启用[管理员同意请求工作流](configure-admin-consent-workflow.md)，则用户可将请求发送给管理员，使其直接从同意提示中进一步评审。 如果未启用，则将显示以下消息：
 

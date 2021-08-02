@@ -8,10 +8,10 @@ ms.date: 10/12/2020
 ms.author: victorh
 ms.topic: how-to
 ms.openlocfilehash: 3d905dd1e6acab8f9f6d3885c882dd9c32133cb4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100596441"
 ---
 # <a name="using-azure-sentinel-with-azure-web-application-firewall"></a>结合使用 Azure Sentinel 与 Azure Web 应用程序防火墙
@@ -74,7 +74,7 @@ WAF 工作簿适用于所有 Azure Front Door、应用程序网关和 CDN WAF。
    :::image type="content" source="media//waf-sentinel/data-connectors.png" alt-text="数据连接器":::
 
 8. 如果以前未执行过此操作，请按照“配置”下的说明，为要具有其日志分析数据的每个 WAF 资源执行操作。
-6. 配置完单个 WAF 资源后，选择“下一步”选项卡。选择推荐的工作簿之一。 该工作簿将使用以前启用的所有日志分析数据。 WAF 资源现在应存在一个有效的 WAF 工作簿。
+6. 完成配置单个 WAF 资源后，请选择“后续步骤”选项卡。选择推荐的其中一个工作簿。 该工作簿将使用以前启用的所有日志分析数据。 WAF 资源现在应存在一个有效的 WAF 工作簿。
 
    :::image type="content" source="media//waf-sentinel/waf-workbooks.png" alt-text="WAF 工作簿":::
 

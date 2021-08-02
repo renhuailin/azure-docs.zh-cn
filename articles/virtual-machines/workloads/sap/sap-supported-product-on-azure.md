@@ -17,10 +17,10 @@ ms.date: 12/12/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: dfd560754d92c97b435ff7643f6da4d3e62e8cfd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101673543"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure 部署支持的 SAP 软件
@@ -117,7 +117,7 @@ ms.locfileid: "101673543"
 
 
 ## <a name="certified-azure-vms-and-hana-large-instance-units-and-business-transaction-throughput"></a>已认证的 Azure VM 和 HANA 大型实例单元及业务事务吞吐量
-除了评估 Azure 基础结构单元支持的操作系统版本、DBMS 版本和相关的 SAP 支持软件版本以外，还需要认定这些单元的业务事务吞吐量（SAP 使用单位“SAPS”表示）是否符合条件。 所有的 SAP 大小调整都依赖于 SAPS 计算。 评估现有的 SAP 系统通常可以在基础结构提供商的帮助下计算出单元的 SAPS。 这一点适用于 DBMS 层以及应用程序层。 在创建了新功能的其他用例中，在 SAP 中进行大小调整可以找出应用程序层和 DBMS 层所需的 SAPS 数。 作为基础结构提供商，Microsoft 有义务提供已通过 NetWeaver 和/或 HANA 认证的不同单元的 SAP 吞吐量特征。
+除了评估 Azure 基础结构单元支持的操作系统版本、DBMS 版本和相关支持的 SAP 软件版本外，还需要认定这些单元的业务事务吞吐量（SAP 使用单元“SAP”表示）是否符合条件。 所有的 SAP 大小调整都依赖于 SAPS 计算。 评估现有的 SAP 系统通常可以在基础结构提供商的帮助下计算出单元的 SAPS。 这一点适用于 DBMS 层以及应用程序层。 在创建了新功能的其他用例中，在 SAP 中进行大小调整可以找出应用程序层和 DBMS 层所需的 SAPS 数。 作为基础结构提供商，Microsoft 有义务提供已通过 NetWeaver 和/或 HANA 认证的不同单元的 SAP 吞吐量特征。
 
 对于 Azure VM，这些 SAPS 吞吐量数字已在 [SAP 支持说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533) 中阐述。 对于 Azure HANA 大型实例单元，SAPS 吞吐量数字已在 [SAP 支持说明 #2316233](https://launchpad.support.sap.com/#/notes/2316233) 中阐述
 
@@ -144,7 +144,7 @@ ms.locfileid: "101673543"
 [Hybris 文档](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html)中详细说明了 Azure 对 SAP Hybris Commerce Platform 的支持。 SAP Hybris Commerce Platform 支持的 DBMS 列表包括：
 
 - Windows 操作系统平台上的 SQL Server 和 Oracle。 适用的最低版本与 SAP NetWeaver 相同。 有关详细信息，请参阅 [SAP 支持说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533)
-- Red Hat 和 SUSE Linux 上的 SAP HANA。 如[本文档前面](#sap-hana-support)所述，必须使用 SAP HANA 认证的 VM 类型。 SAP (Hybris) Commerce Platform 被视为 OLTP 工作负载
+- Red Hat 和 SUSE Linux 上的 SAP HANA。 如[本文档](#sap-hana-support)前面所述，必须使用 SAP HANA 认证的 VM 类型。 SAP (Hybris) Commerce Platform 被视为 OLTP 工作负载
 - 在 SAP (Hybris) Commerce Platform 1811 和更高版本中支持的 SQL Azure DB
 
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: duau
 ms.openlocfilehash: b80392231dba26a10141dcd8247b092e8171894c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96011976"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API 开发和集成
@@ -24,7 +24,7 @@ expressRouteCrossConnections 资源是 ExpressRoute 线路的影子资源。 当
 
 ExpressRoute 合作伙伴通过针对 expressRouteCrossConnections 资源发出 REST 操作来管理第 2 层和第 3 层配置。
 
-## <a name="benefits"></a>好处
+## <a name="benefits"></a>优点
 
 移动到 expressRouteCrossConnections 资源的好处：
 
@@ -40,7 +40,7 @@ ExpressRoute 合作伙伴通过针对 expressRouteCrossConnections 资源发出 
 
 为了针对合作伙伴 API 进行开发，ExpressRoute 合作伙伴可利用测试客户和测试合作伙伴设置。 测试客户设置将用于在映射到虚拟设备和端口的测试对等互连位置中创建 ExpressRoute 线路。 测试合作伙伴设置用于管理在测试对等互连位置中创建的 ExpressRoute 线路。
 
-### <a name="1-enlist-subscriptions"></a>1.登记订阅
+### <a name="1-enlist-subscriptions"></a>1. 登记订阅
 
 若要请求测试合作伙伴和测试客户设置，请为 ExpressRoute 工程联系人登记两个即用即付 Azure 订阅：
 * **ExpressRoute_API_Dev_Provider_Sub：** 此订阅将用于管理虚拟设备和端口上测试对等互连位置中创建的 ExpressRoute 线路。
@@ -49,11 +49,11 @@ ExpressRoute 合作伙伴通过针对 expressRouteCrossConnections 资源发出 
 
 测试对等互连位置：默认情况下，不向生产客户公开虚拟设备和端口。 若要创建映射到测试设置的 ExpressRoute 线路，需要启用订阅功能标志。
 
-### <a name="2-register-the-dev_provider-subscription-to-access-the-expressroutecrossconnections-api"></a>2.注册 Dev_Provider 订阅以访问 expressRouteCrossConnections API
+### <a name="2-register-the-dev_provider-subscription-to-access-the-expressroutecrossconnections-api"></a>2. 注册 Dev_Provider 订阅以访问 expressRouteCrossConnections API
 
 为了访问 expressRouteCrossConnections API，需要在 **Microsoft.Network 资源提供程序** 中注册合作伙伴订阅。 请遵循 [Azure 资源提供程序和类型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)一文中的步骤完成注册过程。
 
-### <a name="3-set-up-authentication-for-azure-resource-manager-rest-api-calls"></a>3.为 Azure 资源管理器 REST API 调用设置身份验证
+### <a name="3-set-up-authentication-for-azure-resource-manager-rest-api-calls"></a>3. 为 Azure 资源管理器 REST API 调用设置身份验证
 
 在调用服务 API 之前，大多数 Azure 服务都要求客户端代码使用有效凭据通过资源管理器进行身份验证。 身份验证由 Azure AD 在各个操作者之间进行协调，并为客户端提供访问令牌作为身份验证的证明。
 
@@ -62,7 +62,7 @@ ExpressRoute 合作伙伴通过针对 expressRouteCrossConnections 资源发出 
 1. [注册客户端](/rest/api/azure/#register-your-client-application-with-azure-ad)。
 2. [创建访问请求](/rest/api/azure/#create-the-request)。
 
-### <a name="4-provide-network-contributor-permission-to-the-client-application"></a>4.向客户端应用程序提供网络参与者权限
+### <a name="4-provide-network-contributor-permission-to-the-client-application"></a>4. 向客户端应用程序提供网络参与者权限
 
 成功配置身份验证后，需要在 Dev_Provider_Sub 下向网络参与者授予对客户端应用程序的访问权限。 若要授予权限，请登录到 [Azure 门户](https://ms.portal.azure.com/#home) 并完成以下步骤：
 
@@ -74,7 +74,7 @@ ExpressRoute 合作伙伴通过针对 expressRouteCrossConnections 资源发出 
 6. 选择你的客户端应用程序
 7. 保存更改
 
-### <a name="5-develop"></a>5.开发
+### <a name="5-develop"></a>5. 开发
 
 针对 [expressRouteCrossConnections API](/rest/api/expressroute/expressroutecrossconnections) 进行开发。
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 06/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 057f80049b13a265925f2d6f24a008d1e1e04c96
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: eac9154d4308700eaa6ea8faf0bf94fabc80bce4
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102636895"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111982513"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>在 Azure Stack Edge Pro GPU 上管理计算
 
@@ -27,8 +27,8 @@ ms.locfileid: "102636895"
 
 事件是在云环境中或者在设备上发生的、可能需要采取措施的情况。 例如，在共享中创建文件就是一个事件。 触发器引发这些事件。 对于 Azure Stack Edge Pro，触发器可用于响应文件事件或计划。
 
-- 文件：这些触发器可用于响应文件创建、文件修改等文件事件。
-- 计划：这些触发器可用于响应某个计划，对于该计划，可以定义开始日期、开始时间和重复间隔。
+- **文件**：这些触发器可用于响应文件创建、文件修改等文件事件。
+- **计划**：这些触发器可用于响应某个计划，对于该计划，可以定义开始日期、开始时间和重复间隔。
 
 
 ### <a name="add-a-trigger"></a>添加触发器
@@ -144,4 +144,4 @@ Kubernetes 外部服务 IP 用于访问 Kubernetes 群集外部公开的服务�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[对 Azure Stack Edge Pro 进行故障排除](azure-stack-edge-gpu-troubleshoot.md)。
+- 了解如何[排查 Azure Stack Edge Pro GPU 设备上的 IoT Edge 问题](azure-stack-edge-gpu-troubleshoot-iot-edge.md)。

@@ -1,19 +1,19 @@
 ---
 title: 向 VNet 添加多个 VPN 网关站点到站点连接：Azure 门户
-description: 将多站点 S2S 连接添加到包含现有连接的 VPN 网关
+description: 了解如何将其他站点到站点连接添加到 VPN 网关。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 04/29/2021
 ms.author: cherylmc
-ms.openlocfilehash: 92d39b0d39511571701fd092f641cb8ca3ae42c7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d65367b561ed94c4872ce86edede2043f99cced4
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92890136"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292677"
 ---
 # <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>将其他 S2S 连接添加到 VNet：Azure 门户
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 06/08/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a397c17821d16594ccfb48175a8a141cb9f390b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c21e03870a53858fe877410a7cd75fdc7e82a83b
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101687815"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963513"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>将 Google 添加为 B2B 来宾用户的标识提供者
 
@@ -28,17 +28,17 @@ ms.locfileid: "101687815"
 ![Google 用户的登录选项](media/google-federation/sign-in-with-google-overview.png)
 
 > [!NOTE]
-> Google 联合专为 Gmail 用户设计。 要与 G Suite 域进行联合身份验证，请使用[直接联合身份验证](direct-federation.md)。
+> Google 联合专为 Gmail 用户设计。 若要与 G Suite 域联合，请使用 [SAML/WS-Fed 标识提供者联合](direct-federation.md)。
 
 > [!IMPORTANT]
-> 从 2021 年 1 月 4 日开始，Google 将[弃用 WebView 登录支持](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果要通过 Gmail 使用 Google 联合身份验证或自助服务注册，则应[测试业务线本机应用程序的兼容性](google-federation.md#deprecation-of-webview-sign-in-support)。
+> 从 2021 年下半年开始，Google 将[弃用 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果正在对 B2B 邀请或 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 使用 Google 联合身份验证，或者正在将自助注册与 Gmail 一起使用，那么当你的应用通过嵌入的 Web 视图对用户进行身份验证时，Google Gmail 用户将无法登录。 [了解详细信息](#deprecation-of-web-view-sign-in-support)。
 
 ## <a name="what-is-the-experience-for-the-google-user"></a>Google 用户体验是什么？
 
 当 Google 用户兑换邀请时，其体验因是否已登录到 Google 而异：
 
 - 系统将提示未登录到 Google 的来宾用户执行此操作。
-- 如果来宾用户已登录到 Google，则系统会提示他们选择要使用的帐户。 他们必须选择你在邀请他们时所用的帐户。
+- 系统将提示已登录 Google 的来宾用户选择他们要使用的帐户。 他们必须选择你在邀请他们时所用的帐户。
 
 如果来宾用户看到“标头过长”错误，可以清除其 Cookie，或者打开私密或 Incognito 窗口并再次尝试登录。
 
@@ -56,34 +56,45 @@ Google 来宾用户还可以使用包含租户信息的应用程序终结点，�
 
 还可以通过添加租户信息，为 Google 来宾用户提供指向应用程序或资源的直接链接，例如 `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`。
 
-## <a name="deprecation-of-webview-sign-in-support"></a>弃用 WebView 登录支持
+## <a name="deprecation-of-web-view-sign-in-support"></a>弃用 web-view 登录支持
 
-从 2021 年 1 月 4 日开始，Google 将[弃用 WebView 登录支持](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果你使用的是 Google 联合身份验证或[通过 Gmail 自助服务注册](identity-providers.md)，则应测试业务线本机应用程序的兼容性。 如果应用包括需要身份验证的 Web 视图内容，Google Gmail 用户将无法进行身份验证。 以下是将影响 Gmail 用户的已知方案：
+从 2021 年下半年开始，Google 将[弃用嵌入式 web-view 登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果正在对 B2B 或 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 使用 Google 联合身份验证，正在将[自助注册与 Gmail 一起使用](identity-providers.md)，如果你的应用通过嵌入的 Web 视图对用户进行身份验证，那么 Google Gmail 用户将无法进行身份验证。
 
-- 在较旧版本的 Windows 上使用嵌入式 WebView 或 WebAccountManager (WAM) 的 Windows 应用。
-- 你开发的使用嵌入式浏览器框架进行身份验证的其他本机应用。
+以下是将影响 Gmai l用户的已知方案：
+- 使用 [WebView](/windows/communitytoolkit/controls/wpf-winforms/webview) 控件、[WebView2](/microsoft-edge/webview2/) 或陈旧的 WebBrowser 控件进行身份验证的 Windows 应用。 这些应用应迁移到使用 Web 帐户管理器 (WAM) 流。
+- 使用 WebView UI 元素的 Android 应用程序 
+- 使用 UIWebView/WKWebview 的 iOS 应用程序 
+- 使用 ADAL 的应用
 
 此更改不会影响：
 
-- 在最新版本的 Windows 上使用嵌入式 WebView 或 WebAccountManager (WAM) 的 Windows 应用。
-- Microsoft iOS 应用
-- G Suite 标识，例如，将基于 SAML 的[直接联合身份验证](direct-federation.md)与 G Suite 联合身份验证使用时
+- Windows 上的 Microsoft 应用
+- Web 应用
+- 使用系统 web-view 进行身份验证的移动应用（iOS 上的 [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller)、Android 上的[自定义标签](https://developer.chrome.com/docs/android/custom-tabs/overview/)）。  
+- G Suite 标识，例如，将[基于 SAML 的联合](direct-federation.md)与 G Suite 结合使用时
+
+我们正在向 Google 确认此更改是否会影响以下内容：
+- 使用 Web 帐户管理器(WAM)或 Web 身份验证代理 (WAB) 的 Windows 应用。  
 
 我们将继续测试各种平台和方案，并将相应地更新本文。
-### <a name="to-test-your-apps-for-compatibility"></a>测试应用的兼容性
+### <a name="action-needed-for-embedded-web-views"></a>嵌入式 web-view 所需的操作
+修改应用以使用系统浏览器进行登录。 有关详细信息，请参阅 MSAL.NET 文档中的[嵌入式与系统 Web UI](../develop/msal-net-web-browsers.md#embedded-vs-system-web-ui)。 默认情况下，所有 MSAL SDK 都使用系统 web-view。
+### <a name="what-to-expect"></a>期望
+在 Google 于 2021 年下半年实施这些更改之前，Microsoft 将为仍在使用嵌入式 web-view 的应用部署解决方法，以确保身份验证不会被阻止。
 
-1. 遵循 [Google 指导](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)，确定应用是否受影响。
-2. 使用 Fiddler 或其他测试工具，在登录过程中插入标头并使用 Google 外部标识测试登录：
+迁移到允许使用 web-view 进行身份验证的应用程序将不会受到影响，并且像往常一样，将不允许用户通过 Google 进行身份验证。
 
-   1. 当请求发送到 accounts.google.com 时，向 HTTP 请求头添加 Google-Accounts-Check-OAuth-Login:true。
-   1. 尝试登录到应用，方法是在 accounts.google.com 登录页中输入 Gmail 地址。
-   1. 如果登录失败，出现错误，如“此浏览器或应用可能不安全”，则会阻止你的 Google 外部标识登录。
+如果应用程序未迁移到允许 web-view 进行身份验证，则受影响的 Gmail 用户将看到以下屏幕。
 
-3. 使用以下方法之一解决该问题：
+![Google 登录错误（如果应用没有迁移到系统浏览器）](media/google-federation/google-sign-in-error-ewv.png)
 
-   - 如果 Windows 应用在较旧版本的 Windows 上使用嵌入式 Web 视图或 WebAccountManager (WAM)，请更新到最新版本的 Windows。
-   - 修改应用以使用系统浏览器进行登录。 有关详细信息，请参阅 MSAL.NET 文档中的[嵌入式与系统 Web UI](../develop/msal-net-web-browsers.md#embedded-vs-system-web-ui)。  
+当 Google 分享了更多细节时，我们将更新这份文档。
 
+### <a name="distinguishing-between-cefelectron-and-embedded-web-views"></a>区分 CEF/Electron 和嵌入式 web-view
+除了[弃用嵌入式 web-view 和框架登录支持](#deprecation-of-web-view-sign-in-support)之外，Google 还将[弃用基于 Chromium 嵌入式框架 (CEF) 的 Gmail 身份验证](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 对于基于 CEF 构建的应用程序（如 Electron 应用），Google 将于 2021 年 6 月 30 日禁用身份验证。 受影响的应用程序已直接从 Google 收到通知，本文档中未涵盖这些这些应用程序。  本文档涉及上述嵌入式 web-view，Google 将在 2021 年晚些时候的某个单独日期限制这些 web-view。
+
+### <a name="action-needed-for-embedded-frameworks"></a>嵌入式框架所需的操作
+按照 [Google 指南](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)操作，以确定应用是否受到影响。
 
 ## <a name="step-1-configure-a-google-developer-project"></a>步骤 1：配置 Google 开发人员项目
 首先，在 Google Developers Console 中创建一个新项目，以获取稍后要添加到 Azure Active Directory (Azure AD) 的客户端 ID 和客户端密码。 
@@ -96,7 +107,7 @@ Google 来宾用户还可以使用包含租户信息的应用程序终结点，�
 
 4. 在“API 和服务”页上，选择新项目下的“查看”。
 
-5. 选择 API 卡上的“转到 API 概述”。 选择“OAuth 同意屏幕”。
+5. 在 API 卡上选择“转到 API 概述”。 选择“OAuth 同意屏幕”。
 
 6. 依次选择“外部”、“创建”。 
 
@@ -114,7 +125,7 @@ Google 来宾用户还可以使用包含租户信息的应用程序终结点，�
 
     ![显示 Google API“创建凭据”菜单的屏幕截图。](media/google-federation/google-api-credentials.png)
 
-11. 在“应用程序类型”下，选择“Web 应用程序”。 为应用程序指定适当的名称，如“Azure AD B2B”。 在“已授权的重定向 URI”下，输入以下 URI：
+11. 在“应用程序类型”下，选择“Web 应用程序”。 为应用程序指定合适的名称，例如 Azure AD B2B。 在“已授权的重定向 URI”下，输入以下 URI：
     - `https://login.microsoftonline.com`
     - `https://login.microsoftonline.com/te/<tenant ID>/oauth2/authresp` <br>（其中 `<tenant ID>` 是租户 ID）
    
@@ -128,13 +139,13 @@ Google 来宾用户还可以使用包含租户信息的应用程序终结点，�
     ![显示 OAuth 客户端 ID 和客户端密码的屏幕截图。](media/google-federation/google-auth-client-id-secret.png)
 
 ## <a name="step-2-configure-google-federation-in-azure-ad"></a>步骤 2：在 Azure AD 中配置 Google 联合 
-现在，你将设置 Google 客户端 ID 和客户端密码。 可以使用 Azure 门户或 PowerShell 执行此操作。 请务必通过邀请自己测试 Google 联合身份验证配置。 使用 Gmail 地址，尝试使用受邀的 Google 帐户兑换邀请。 
+现在，你将设置 Google 客户端 ID 和客户端密码。 可以使用 Azure 门户或 PowerShell 执行此操作。 务必通过邀请自己来测试 Google 联合身份验证配置。 使用 Gmail 地址，并尝试使用受邀的 Google 帐户兑换邀请。 
 
 **在 Azure 门户中配置 Google 联合身份验证** 
 1. 转到 [Azure 门户](https://portal.azure.com)。 在左侧窗格中，选择“Azure Active Directory”。 
 2. 选择“外部标识”。
-3. 选择“所有标识提供者”，然后选择“Google”按钮。
-4. 输入前面获取的客户端 ID 和客户端密码。 选择“保存”： 
+3. 选择“所有标识提供者”，然后选择 Google 按钮。
+4. 输入之前获得的客户端 ID 和客户端密码。 选择“保存”： 
 
    ![显示“添加 Google 标识提供者”页面的屏幕截图。](media/google-federation/google-identity-provider.png)
 
@@ -147,10 +158,10 @@ Google 来宾用户还可以使用包含租户信息的应用程序终结点，�
    `New-AzureADMSIdentityProvider -Type Google -Name Google -ClientId <client ID> -ClientSecret <client secret>`
  
    > [!NOTE]
-   > 使用在“步骤 1：配置 Google 开发人员项目”中创建的应用客户端 ID 和客户端密码。 有关详细信息，请参阅 [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview)。 
+   > 使用在“步骤 1：配置 Google 开发人员项目”中创建的应用客户端 ID 和客户端密码。 有关详细信息，请参阅 [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview&preserve-view=true)。 
  
 ## <a name="how-do-i-remove-google-federation"></a>如何删除 Google 联合？
-可以删除 Google 联合设置。 如果这样做，已兑换邀请的 Google 来宾用户将无法登录。 不过，你可以通过从目录中删除用户并重新邀请，再次向用户授予对资源的访问权限。 
+可以删除 Google 联合设置。 如果这样做，那么已兑现邀请的 Google 来宾用户将无法登录。 但您可以通过[重置这些用户的兑换状态](reset-redemption-status.md)，让这些用户能够再次访问你的资源。
  
 **在 Azure AD 门户中删除 Google 联合身份验证**
 1. 转到 [Azure 门户](https://portal.azure.com)。 在左侧窗格中，选择“Azure Active Directory”。 
@@ -171,4 +182,4 @@ Google 来宾用户还可以使用包含租户信息的应用程序终结点，�
     `Remove-AzureADMSIdentityProvider -Id Google-OAUTH`
 
    > [!NOTE]
-   > 有关详细信息，请参阅 [Remove-AzureADMSIdentityProvider](/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview)。
+   > 有关详细信息，请参阅 [Remove-AzureADMSIdentityProvider](/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview&preserve-view=true)。

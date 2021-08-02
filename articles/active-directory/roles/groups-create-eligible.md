@@ -8,25 +8,34 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 11/05/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d69662ca24ab135db549ee108e93f9276e154e58
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 4fb616bce2f169061a6384148e3cbbe463c83be8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106902"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110085899"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>在 Azure Active Directory 中创建可分配角色的组
 
-只能将角色分配到在创建时“isAssignableToRole”属性设置为 True 的组，或是在 Azure AD 门户中创建时打开了“Azure AD 角色可以分配到组”的组。 具有此组属性，组才会成为你可以在 Azure Active Directory (Azure AD) 中为其分配角色的组。 本文介绍如何创建这种特殊类型的组。 注意：isAssignableToRole 属性设置为 true 的组不能是动态成员身份类型。 有关详细信息，请参阅[使用组来管理 Azure AD 角色分配](groups-concept.md)。
+只能将角色分配到在创建时“isAssignableToRole”属性设置为 True 的组，或是在 Azure 门户中创建时打开了“Azure AD 角色可以分配到组”的组。 具有此组属性，组才会成为你可以在 Azure Active Directory (Azure AD) 中为其分配角色的组。 本文介绍如何创建这种特殊类型的组。 注意：isAssignableToRole 属性设置为 true 的组不能是动态成员身份类型。 有关详细信息，请参阅[使用组来管理 Azure AD 角色分配](groups-concept.md)。
 
-## <a name="using-azure-ad-admin-center"></a>使用 Azure AD 管理中心
+## <a name="prerequisites"></a>先决条件
 
-1. 使用 Azure AD 组织中的特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
+- Azure AD Premium P1 或 P2 许可证
+- 特权角色管理员或全局管理员
+- 使用 PowerShell 时需要 AzureADPreview 模块
+- 将 Graph 浏览器用于 Microsoft Graph API 时需要管理员同意
+
+有关详细信息，请参阅[使用 PowerShell 或 Graph 浏览器的先决条件](prerequisites.md)。
+
+## <a name="azure-portal"></a>Azure 门户
+
+1. 登录到 [Azure AD 管理中心](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)。
 1. 选择“组” > “所有组” > “新建组”  。
 
     [![打开 Azure Active Directory 并创建新组。](./media/groups-create-eligible/new-group.png "打开 Azure Active Directory 并创建新组。")](./media/groups-create-eligible/new-group.png#<lightbox>)
@@ -46,20 +55,7 @@ ms.locfileid: "106106902"
 
 该组创建完成，具有你可能已经分配给它的角色。
 
-## <a name="using-powershell"></a>使用 PowerShell
-
-### <a name="install-the-azure-ad-preview-module"></a>安装 Azure AD 预览版模块
-
-```powershell
-Install-Module -Name AzureADPreview
-Import-Module -Name AzureADPreview
-```
-
-若要验证该模块是否已可供使用，请发出以下命令：
-
-```powershell
-Get-Module -Name AzureADPreview
-```
+## <a name="powershell"></a>PowerShell
 
 ### <a name="create-a-group-that-can-be-assigned-to-role"></a>创建可分配给角色的组
 
@@ -103,7 +99,7 @@ Add-AzureADGroupMember -ObjectId $roleAssignablegroup.Id -RefObjectId $member.Ob
 }
 ```
 
-## <a name="using-microsoft-graph-api"></a>使用 Microsoft Graph API
+## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 ### <a name="create-a-role-assignable-group-in-azure-ad"></a>在 Azure AD 中创建可分配角色的组
 

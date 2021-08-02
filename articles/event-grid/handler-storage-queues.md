@@ -3,12 +3,12 @@ title: 存储队列作为 Azure 事件网格事件的事件处理程序
 description: 介绍如何将 Azure 存储队列用作 Azure 事件网格事件的事件处理程序。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 502b44f276253be69362424c9de0fd516d20ad9a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7c8b7a111c29fe11cc11ee191d78ae2a5f13610
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91270179"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111421727"
 ---
 # <a name="storage-queue-as-an-event-handler-for-azure-event-grid-events"></a>存储队列作为 Azure 事件网格事件的事件处理程序
 事件处理程序是发送事件的位置。 处理程序将执行一些进一步的操作来处理事件。 多个 Azure 服务已自动配置为处理事件，Azure 队列存储就是其中之一。 
@@ -71,7 +71,7 @@ ms.locfileid: "91270179"
 }
 ```
 
-### <a name="storage-queue-as-a-deadletter-destination"></a>存储队列用作死信目标
+### <a name="storage-queue-as-the-event-handler-with-a-deadletter-destination"></a>存储队列用作具有死信目标的事件处理程序
 
 ```json
 {
@@ -101,7 +101,7 @@ ms.locfileid: "91270179"
 }
 ```
 
-### <a name="storage-queue-as-a-deadletter-destination---managed-identity"></a>存储队列用作死信目标 - 托管标识
+### <a name="storage-queue-as-the-event-handler-with-a-deadletter-destination---managed-identity"></a>存储队列用作具有死信目标的事件处理程序 - 托管标识
 
 ```json
 {

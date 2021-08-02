@@ -1,6 +1,6 @@
 ---
-title: 如何在 Microsoft 商业市场中创建 SaaS 产品/服务
-description: 了解如何使用 Microsoft 合作伙伴中心的商业市场门户创建新的服务型软件 (SaaS) 产品/服务，以在 Microsoft AppSource、Azure 市场或通过云解决方案提供商 (CSP) 计划列出或销售。
+title: 在商业市场中创建 SaaS 产品/服务
+description: 在 Microsoft AppSource、Azure 市场中或通过 Azure 市场中的云解决方案提供商 (CSP) 计划创建新的服务型软件 (SaaS) 产品/服务进行上市销售。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,25 +8,25 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 03/19/2021
-ms.openlocfilehash: 74d30b7c42002c8f134520e0198774eba1519bcd
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 05512c247f26dc8e6d41876bc3a09acdd278caac
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553832"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559261"
 ---
-# <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>如何在商业市场中创建 SaaS 产品/服务
+# <a name="create-a-saas-offer"></a>创建 SaaS 产品/服务
 
 作为商业市场发布者，你可以创建服务型软件 (SaaS) 产品/服务，以便潜在客户购买你的基于 SaaS 的技术解决方案。 本文介绍针对 Microsoft 商业市场创建 SaaS 产品/服务的过程。
 
 ## <a name="before-you-begin"></a>在开始之前
 
-如果尚未执行此操作，请参阅[为商业市场计划 SaaS 产品/服务](plan-saas-offer.md)。 其中说明了 SaaS 应用的技术要求，并列出了创建产品/服务时所需的信息和资产。 除非你计划在商业市场中发布简单的列表（**与我联系** 列表选项），否则 SaaS 应用程序必须满足有关身份验证的技术要求。
+如果尚未执行此操作，请阅读[计划 SaaS 产品/服务](plan-saas-offer.md)。 其中说明了 SaaS 应用的技术要求，并列出了创建产品/服务时所需的信息和资产。 除非你计划在商业市场中发布简单的列表（**与我联系** 列表选项），否则 SaaS 应用程序必须满足有关身份验证的技术要求。
 
 > [!IMPORTANT]
-> 我们建议创建单独的开发/测试 (DEV) 产品/服务，以及单独的生产 (PROD) 产品/服务。 本文介绍如何创建 PROD 产品/服务。 有关创建 DEV 产品/服务的详细信息，请参阅[创建开发和测试产品/服务](create-saas-dev-test-offer.md)。
+> 我们建议创建单独的开发/测试 (DEV) 产品/服务，以及单独的生产 (PROD) 产品/服务。 本文介绍如何创建 PROD 产品/服务。 有关创建 DEV 产品/服务的详细信息，请参阅[创建测试 SaaS 产品/服务](create-saas-dev-test-offer.md)。
 
-## <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
+## <a name="create-a-saas-offer"></a>创建 SaaS 产品/服务
 
 1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 1. 在左侧导航菜单中，选择“商业市场” > “概述” 。
@@ -50,10 +50,9 @@ ms.locfileid: "106553832"
 在“产品/服务设置”选项卡的“设置详细信息”下，选择是通过 Microsoft 销售你的产品/服务还是独立管理你的交易。 通过 Microsoft 销售的产品/服务称为“可交易的产品/服务”，意味着 Microsoft 代表发布者销售软件许可证。 有关这些选项的详细信息，请参阅[列出选项](plan-saas-offer.md#listing-options)和[确定发布选项](determine-your-listing-type.md)。
 
 1. 若要通过 Microsoft 销售并由我们辅助交易，请选择“是”。 继续[启用体验版](#enable-a-test-drive-optional)。
-
 1. 若要通过商业市场列出你的产品/服务但独立处理交易，请选择“否”，然后执行以下操作之一：
-   + 若要为你的产品/服务提供免费订阅，请选择“立即获取(免费)”。 然后在显示的“产品/服务 URL”框中输入 URL（以 http 或 https开头），通过该 URL，客户可以[使用 Azure Active Directory (Azure AD) 进行一键式身份验证](azure-ad-saas.md)以获取试用版。 例如，`https://contoso.com/saas-app`。
-   + 若要提供 30 天的免费试用版，请选择“免费试用版”，然后在显示的“试用版 URL”框中输入 URL（以 http 或 https 开头），通过该 URL，客户可以[使用 Azure Active Directory (Azure AD) 进行一键式身份验证](azure-ad-saas.md)来访问免费试用版。 例如，`https://contoso.com/trial/saas-app`。
+   + 若要为你的产品/服务提供免费订阅，请选择“立即获取(免费)”。 然后在显示的“产品/服务 URL”框中输入 URL（以 http 或 https开头），通过该 URL，客户可以[使用 Azure Active Directory (Azure AD) 进行一键式身份验证](azure-ad-saas.md)以获取试用版。 例如 `https://contoso.com/saas-app`。
+   + 若要提供 30 天的免费试用版，请选择“免费试用版”，然后在显示的“试用版 URL”框中输入 URL（以 http 或 https 开头），通过该 URL，客户可以[使用 Azure Active Directory (Azure AD) 进行一键式身份验证](azure-ad-saas.md)来访问免费试用版。 例如 `https://contoso.com/trial/saas-app`。
    + 若要让潜在客户联系你购买产品/服务，请选择“与我联系”。
 
 ## <a name="enable-a-test-drive-optional"></a>启用体验版（可选）
@@ -61,9 +60,10 @@ ms.locfileid: "106553832"
 体验版可让潜在客户在固定的小时数内访问预配置的环境，是向他们展示你的产品/服务的极佳方式。 提供体验版可以提高潜在客户转变为实际客户的比率，并带来非常适合建立合作关系的潜在顾客。 若要详细了解体验版，请参阅[什么是体验版？](./what-is-test-drive.md)。
 
 > [!TIP]
-> 体验版不同于免费试用版。 你可以提供体验版、免费试用版，或提供此两者。 这两种版本都可以让客户在固定时间段内使用你的解决方案。 但是，体验版还为产品在真实的实现场景中所展示的重要功能和优势提供自我引导式的动手实践教导。
+> 体验版不同于免费试用版。 你可以提供体验版、免费试用版，或提供此两者。 这两个版本都让客户使用你的解决方案固定的一段时间。 但是，体验版还为产品在真实的实现场景中所展示的重要功能和优势提供自我引导式的动手实践教导。
 
-**若要启用体验版，请执行以下操作**
+### <a name="to-enable-a-test-drive"></a>启用体验版
+
 1.  在“体验版”下，选中“启用体验版”复选框。
 1.  从显示的列表中选择体验版类型。
 
@@ -76,49 +76,29 @@ ms.locfileid: "106553832"
 
 ### <a name="configure-the-connection-details-in-partner-center"></a>在合作伙伴中心配置连接详细信息
 
-1.  在“潜在顾客”下，选择“连接”链接。 
-1. 在“连接详细信息”对话框中，从列表选择潜在顾客目标。
-1. 填写显示的字段。 有关详细步骤，请参阅以下文章：
-
-   - [将你的产品/服务配置为将潜在顾客发送到 Azure 表](./partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md#configure-your-offer-to-send-leads-to-the-azure-table)
-   - [配置产品/服务以将潜在顾客发送到 Dynamics 365 Customer Engagement](./partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md#configure-your-offer-to-send-leads-to-dynamics-365-customer-engagement)（以前称为 Dynamics CRM Online）
-   - [配置产品/服务以将潜在顾客发送到 HTTPS 终结点](./partner-center-portal/commercial-marketplace-lead-management-instructions-https.md#configure-your-offer-to-send-leads-to-the-https-endpoint)
-   - [配置你的产品/服务以将潜在顾客发送到 Marketo](./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md#configure-your-offer-to-send-leads-to-marketo)
-   - [配置你的产品/服务以将潜在顾客发送到 Salesforce](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
-
-1. 若要验证你提供的配置，请选择“验证”链接。
-1. 要关闭该对话框，请选择“确定”。
+[!INCLUDE [Customer leads](includes/customer-leads.md)]
 
 ## <a name="configure-microsoft-365-app-integration"></a>配置 Microsoft 365 应用集成
 
-你可通过链接来了解 SaaS 产品/服务的[统一发现和交付](./plan-SaaS-offer.md)，以及任何相关的 Microsoft 365 应用使用情况。
+你可通过链接来了解 SaaS 产品/服务的[统一发现和交付](plan-SaaS-offer.md)，以及任何相关的 Microsoft 365 应用使用情况。
 
 ### <a name="integrate-with-microsoft-api"></a>与 Microsoft API 集成
 
 1. 如果你的 SaaS 产品/服务未与 Microsoft Graph API 集成，请选择“否”。 请转到“链接已发布的 Microsoft 365 应用使用情况客户端”。  
-
 1. 如果你的 SaaS 产品/服务与 Microsoft Graph API 集成，请选择“是”，然后提供你创建并注册的 Azure Active Directory 应用 ID，以便与 Microsoft Graph API 集成。 
 
 ### <a name="link-published-microsoft-365-app-consumption-clients"></a>链接已发布的 Microsoft 365 应用使用情况客户端
 
 1. 如果没有适用于你的 SaaS 产品/服务的已发布 Office 外接程序、“团队”应用或 SharePoint Framework 解决方案，请选择“否”。
-
 1. 如果你已发布适用于 SaaS 产品/服务的 Office 外接程序、“团队”应用或 SharePoint Framework 解决方案，请选择“是”，然后选择“+ 添加另一个 AppSource 链接”以添加新链接。   
-
 1. 提供有效的 AppSource 链接。
-
 1. 继续通过选择“+ 添加另一个 AppSource 链接”，并提供有效的 AppSource 链接，添加所有的链接。  
-
 1. SaaS 产品/服务列表页上显示链接产品的顺序由“排名”值指出，你可通过选择、按住并在列表中上下移动 = 图标更改顺序。 
-
 1. 可以通过在“产品”行中选择“删除”来删除链接的产品。  
-
 
 > [!IMPORTANT]
 > 你停止销售链接的产品时，它不会自动取消 SaaS 产品/服务上的链接，你必须从链接产品列表中删除该产品，然后重新提交 SaaS 产品/服务。  
 
- 
-
 ## <a name="next-steps"></a>后续步骤
 
-- [如何配置 SaaS 产品/服务属性](create-new-saas-offer-properties.md)
+- [配置 SaaS 产品/服务属性](create-new-saas-offer-properties.md)

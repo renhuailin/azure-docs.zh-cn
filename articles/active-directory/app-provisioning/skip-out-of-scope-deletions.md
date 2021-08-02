@@ -1,24 +1,24 @@
 ---
-title: 跳过删除超出范围的用户
-description: 了解如何替代取消预配超出范围用户的默认行为。
+title: 在 Azure Active Directory 应用程序预配中跳过删除超出范围的用户
+description: 了解如何在 Azure Active Directory 中替代取消预配超出范围用户的默认行为。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: celested
-ms.openlocfilehash: a6cbabe35b223020528d1cf48aa9e0ef9b9f7c05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: arvinh
+ms.openlocfilehash: 37196dafd094f997bc5fe2ea165cefb9099562a0
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256113"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784874"
 ---
-# <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>跳过删除超出范围的用户帐户
+# <a name="skip-deletion-of-user-accounts-that-go-out-of-scope-in-azure-active-directory"></a>在 Azure Active Directory 中跳过删除超出范围的用户帐户
 
 默认情况下，Azure AD 预配引擎软删除或禁用超出范围的用户。 但是，对于 Workday 到 AD 用户入站预配之类的特定方案，此行为可能不是预期的，可能需要替代此默认行为。  
 

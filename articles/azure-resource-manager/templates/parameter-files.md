@@ -2,18 +2,18 @@
 title: 创建参数文件
 description: 创建用于在 Azure 资源管理器模板部署过程中传入值的参数文件
 ms.topic: conceptual
-ms.date: 04/15/2021
+ms.date: 05/11/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 50404df278da22352344bbd12e139cc86f0a0615
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 8b7d9afc91462ec3dc61b25135460e347b121e5c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321638"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111960281"
 ---
 # <a name="create-resource-manager-parameter-file"></a>创建资源管理器参数文件
 
-可使用包含参数值的 JSON 文件，而不是在脚本中以内联值的形式传递参数。 本文介绍如何创建用于 JSON 模板或 Bicep 文件的参数文件。
+可使用包含参数值的 JSON 文件，而不是在脚本中以内联值的形式传递参数。 本文介绍如何创建用于 JSON 模板的参数文件。
 
 ## <a name="parameter-file"></a>参数文件
 
@@ -62,9 +62,7 @@ ms.locfileid: "108321638"
 
 ## <a name="define-parameter-values"></a>定义参数值
 
-若要确定如何定义参数名称和值，请打开 JSON 或 Bicep 模板。 查看该模板的参数节。 下面的示例显示 JSON 和 Bicep 模板中的参数。
-
-# <a name="json"></a>[JSON](#tab/json)
+若要确定如何定义参数名称和值，请打开 JSON 模板并查看 `parameters` 部分。 下面的示例显示了 JSON 模板的参数。
 
 ```json
 "parameters": {
@@ -84,23 +82,6 @@ ms.locfileid: "108321638"
   }
 }
 ```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-@maxLength(11)
-param storagePrefix string
-
-@allowed([
-  'Standard_LRS'
-  'Standard_GRS'
-  'Standard_ZRS'
-  'Premium_LRS'
-])
-param storageAccountType string = 'Standard_LRS'
-```
-
----
 
 在参数文件中，要注意的第一个详细信息是每个参数的名称。 参数文件中的参数名必须与模板中的参数名匹配。
 
@@ -207,7 +188,7 @@ param storageAccountType string = 'Standard_LRS'
 
 ## <a name="deploy-template-with-parameter-file"></a>使用参数文件部署模板
 
-在 Azure CLI 中，使用 `@` 和参数文件名传递本地参数文件。 例如，`@storage.parameters.json`。
+在 Azure CLI 中，使用 `@` 和参数文件名传递本地参数文件。 例如 `@storage.parameters.json`。
 
 ```azurecli
 az deployment group create \
@@ -217,7 +198,7 @@ az deployment group create \
   --parameters @storage.parameters.json
 ```
 
-有关详细信息，请参阅[使用 ARM 模板和 Azure CLI 部署资源](./deploy-cli.md#parameters)。 若要部署 .bicep 文件，需要 Azure CLI 2.20 或更高版本。
+有关详细信息，请参阅[使用 ARM 模板和 Azure CLI 部署资源](./deploy-cli.md#parameters)。
 
 在 Azure PowerShell 中，使用 `TemplateParameterFile` 参数传递本地参数文件。
 
@@ -227,7 +208,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterFile C:\MyTemplates\storage.parameters.json
 ```
 
-有关详细信息，请参阅[使用 ARM 模板和 Azure PowerShell 部署资源](./deploy-powershell.md#pass-parameter-values)。 若要部署 .bicep 文件，需要 Azure PowerShell 5.6.0 或更高版本。
+有关详细信息，请参阅[使用 ARM 模板和 Azure PowerShell 部署资源](./deploy-powershell.md#pass-parameter-values)。
 
 > [!NOTE]
 > 不能在门户中将参数文件与自定义模板边栏选项卡一起使用。
@@ -253,5 +234,5 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关如何在模板中定义参数的详细信息，请参阅 [ARM 模板中的参数](template-parameters.md)。
+- 有关如何在模板中定义参数的详细信息，请参阅 [ARM 模板中的参数](./parameters.md)。
 - 有关使用 Key Vault 中的值的详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](key-vault-parameter.md)。

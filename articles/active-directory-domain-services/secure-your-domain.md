@@ -9,21 +9,26 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 05/27/2021
 ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ea087513cf628c42362a295c51913b0a31c6db3f
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 6f344496bab8f2864c8ccbdff4f98b57e1d6f432
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285693"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110613242"
 ---
-# <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>禁用弱密码和密码哈希同步以保护 Azure Active Directory 域服务托管域
+# <a name="harden-an-azure-active-directory-domain-services-managed-domain"></a>强化 Azure Active Directory 域服务托管域
 
 默认情况下，Azure Active Directory 域服务 (Azure AD DS) 允许使用 NTLM v1 和 TLS v1 等密码。 某些旧版应用程序可能需要这些密码，但这些密码视为弱密码，如果不需要，可以将其禁用。 如果使用 Azure AD Connect 进行本地混合连接，则还可以禁用 NTLM 密码哈希的同步。
 
-本文介绍如何禁用 NTLM v1 和 TLS v1 密码以及禁用 NTLM 密码哈希同步。
+本文说明如何使用设置来强化托管域，例如： 
+
+- 禁用 NTLM v1 和 TLS v1 密码
+- 禁用 NTLM 密码哈希同步
+- 禁用通过 RC4 加密更改密码的功能
+- 启用 Kerberos 保护
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,20 +41,31 @@ ms.locfileid: "108285693"
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
     * 如果需要，请[创建并配置 Azure Active Directory 域服务托管域][create-azure-ad-ds-instance]。
 
-## <a name="use-security-settings-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>使用“安全设置”禁用弱密码和 NTLM 密码哈希同步
+## <a name="use-security-settings-to-harden-your-domain"></a>使用安全设置强化你的域
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择“Azure AD 域服务”。
 1. 选择你的托管域，例如 *aaddscontoso.com*。
 1. 在左侧，选择“安全设置”。
-1. 对于下列设置，请单击“禁用”：
+1. 对以下设置单击“启用”或“禁用” ：
    - **仅限 TLS 1.2 模式**
    - **NTLM 身份验证**
    - **从本地进行 NTLM 密码同步**
+   - RC4 加密
+   - **Kerberos 保护**
 
    ![禁用弱密码和 NTLM 密码哈希同步的安全设置的屏幕截图](media/secure-your-domain/security-settings.png)
 
-## <a name="use-powershell-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>使用 PowerShell 禁用弱密码和 NTLM 密码哈希同步
+## <a name="assign-azure-policy-compliance-for-tls-12-usage"></a>针对 TLS 1.2 的使用分配 Azure Policy 合规性
+
+除了“安全性设置”外，Microsoft Azure Policy 还有一项“合规性”设置，可强制使用 TLS 1.2。 策略在分配之前不会产生任何影响。 策略在分配后显示在“合规性”中：
+
+- 如果分配为“审核”，则合规性会报告 Azure AD DS 实例是否合规。
+- 如果分配为“拒绝”，则合规性会阻止在不需要 TLS 1.2 的情况下创建 Azure AD DS 实例，并阻止在需要 TLS 1.2 之前对 Azure AD DS 实例进行任何更新。
+
+![合规性设置的屏幕截图](media/secure-your-domain/policy-tls.png)
+
+## <a name="use-powershell-to-harden-your-domain"></a>使用 PowerShell 强化你的域
 
 如果需要，请[安装并配置 Azure PowerShell](/powershell/azure/install-az-ps)。 确保使用 [Connect-AzAccount][Connect-AzAccount] cmdlet 登录到 Azure 订阅。 
 
@@ -76,13 +92,13 @@ $DomainServicesResource = Get-AzResource -ResourceType "Microsoft.AAD/DomainServ
 > 如果在 Azure AD DS 托管域中禁用了 NTLM 密码哈希同步，则用户和服务帐户将无法执行 LDAP 简单绑定。 如果需要执行 LDAP 简单绑定，请不要在下面的命令中设置 "SyncNtlmPasswords"="Disabled"; 安全配置选项。
 
 ```powershell
-$securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPasswords"="Disabled";"TlsV1"="Disabled"}}
+$securitySettings = @{"DomainSecuritySettings"=@{"NtlmV1"="Disabled";"SyncNtlmPasswords"="Disabled";"TlsV1"="Disabled";"KerberosRc4Encryption"="Disabled";"KerberosArmoring"="Disabled"}}
 ```
 
 最后，使用 [Set-AzResource][Set-AzResource] cmdlet 将定义的安全设置应用于托管域。 指定第一步中的 Azure AD DS 资源和上一步中的安全设置。
 
 ```powershell
-Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -Verbose -Force
+Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySettings -ApiVersion “2021-03-01” -Verbose -Force
 ```
 
 将安全设置应用到托管域需要一些时间。

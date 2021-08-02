@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 05132e4c7e644e681e2e4cfdedaa2b04a066ebeb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86259962"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
@@ -17,7 +17,7 @@ ms.locfileid: "86259962"
 
 ## <a name="commands"></a>命令
 
-|Command|说明|
+|命令|说明|
 | --- | --- |
 | code-versions | 获取 Service Fabric 群集中预配的结构代码版本的列表。 |
 | config-versions | 获取 Service Fabric 群集中预配的结构配置版本的列表。 |
@@ -110,7 +110,7 @@ ms.locfileid: "86259962"
 ## <a name="sfctl-cluster-manifest"></a>sfctl cluster manifest
 获取 Service Fabric 群集清单。
 
-获取 Service Fabric 群集清单。 群集清单包含群集的属性，包括群集上的不同节点类型、安全配置、错误和升级域拓扑，等等。这些属性是在部署独立群集时作为 ClusterConfig.JSON 文件的一部分指定的。 但是，群集清单中的大部分信息是在其他部署方案中部署群集期间由 Service Fabric 在内部生成的（例如，使用 Azure 门户时）。 群集清单的内容仅供参考，用户不应依赖于文件内容的格式或其解释。
+获取 Service Fabric 群集清单。 群集清单包含群集的属性，这些属性包括群集上的不同节点类型、安全配置、故障和升级域拓扑等。在部署独立群集时，会将这些属性指定为 ClusterConfig.JSON 文件的一部分。 但是，群集清单中的大部分信息是在其他部署方案中部署群集期间由 Service Fabric 在内部生成的（例如，使用 Azure 门户时）。 群集清单的内容仅供参考，用户不应依赖于文件内容的格式或其解释。
 
 ### <a name="arguments"></a>参数
 

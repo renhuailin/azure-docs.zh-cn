@@ -13,12 +13,12 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 69df3dc8ef9f2ab4519f5bcb8947da221908f5a7
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: eb9a6e1f3044492b09dac3fb3168a9bd26aeff0f
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126734"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110494605"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>适用于 Apple 设备的 Microsoft 企业 SSO 插件（预览版）
 
@@ -75,9 +75,9 @@ ms.locfileid: "108126734"
 
 ### <a name="manual-configuration-for-other-mdm-services"></a>其他 MDM 服务的手动配置
 
-如果未将 Intune 用于 MDM，请使用以下参数配置适用于 Apple 设备的 Microsoft 企业 SSO 插件。
+如果不将 Intune 用于 MDM，可以为 Apple 设备配置可扩展单一登录配置文件有效负载。 使用以下参数来配置 Microsoft 企业 SSO 插件及其配置选项。
 
-iOS 设置：
+。iOS 设置：
 
 - **扩展 ID**：`com.microsoft.azureauthenticator.ssoextension`
 - 团队 ID：iOS 不需要此字段。

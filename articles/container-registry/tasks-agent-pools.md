@@ -4,12 +4,12 @@ description: 在注册表中设置专用的计算池（代理池），以运行 
 ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: eeb9a71854f52da5c1a9f4befae93c377ad67b05
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c23d2ab866f621db27488860ab62a41765faef40
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98920301"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763696"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>在专用的代理池上运行 ACR 任务
 
@@ -31,7 +31,7 @@ ms.locfileid: "98920301"
 ## <a name="preview-limitations"></a>预览版限制
 
 - 任务代理池目前支持 Linux 节点。 目前不支持 Windows 节点。
-- 任务代理池以预览版形式在以下区域中提供：美国西部 2、美国中南部、美国东部 2、美国东部、美国中部、USGov 亚利桑那、USGov 德克萨斯和 USGov 弗吉尼亚。
+- 任务代理池以预览版形式在以下区域中提供：美国西部 2、美国中南部、美国东部 2、美国东部、美国中部、欧洲西部、欧洲北部、加拿大中部、US Gov 亚利桑那州、US Gov 德克萨斯州和 US Gov 弗吉尼亚州。
 - 对于每个注册表，所有标准代理池的默认 vCPU（核心）总配额为 16，独立代理池的此总配额则为 0。 如需更多分配，请提出[支持请求][open-support-ticket]。
 - 目前无法取消代理池上的任务运行。
 
@@ -185,11 +185,11 @@ az acr agentpool show \
 [azure-cli]:           /cli/azure/install-azure-cli
 [open-support-ticket]: https://aka.ms/acr/support/create-ticket
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
-[az-configure]: /cli/azure#az-configure
-[az-acr-agentpool-create]: /cli/azure/acr/agentpool#az-acr-agentpool-create
-[az-acr-agentpool-update]: /cli/azure/acr/agentpool#az-acr-agentpool-update
-[az-acr-agentpool-show]: /cli/azure/acr/agentpool#az-acr-agentpool-show
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
+[az-configure]: /cli/azure#az_configure
+[az-acr-agentpool-create]: /cli/azure/acr/agentpool#az_acr_agentpool_create
+[az-acr-agentpool-update]: /cli/azure/acr/agentpool#az_acr_agentpool_update
+[az-acr-agentpool-show]: /cli/azure/acr/agentpool#az_acr_agentpool_show
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
 [create-reg-cli]: container-registry-get-started-azure-cli.md

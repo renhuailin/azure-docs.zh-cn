@@ -10,18 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: 7cf0d31895eaeaa41c23f9f07664b27bed1d3126
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13b1e22f1e1e5f51d524e80d0bf102b744fbec3d
+ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96006381"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109684588"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>将 RuuviTag 传感器连接到 Azure IoT Central 应用程序
 
-本文适用于解决方案构建人员。
-
-本文为解决方案构建人员介绍如何将 RuuviTag 传感器连接到 Microsoft Azure IoT Central 应用程序。
+本文介绍如何将 RuuviTag 传感器连接到 Microsoft Azure IoT Central 应用程序。
 
 什么是 RuuviTag？
 
@@ -35,9 +33,12 @@ RuuviTag 通过 BLE（低能耗蓝牙）通信，要求网关设备与 Azure IoT
 
 若要连接 RuuviTag 传感器，需准备好以下资源：
 
-* 一个 RuuviTag 传感器。 有关详细信息，请访问 [RuuviTag](https://ruuvi.com/)。
-* Rigado Cascade 500 设备或其他 BLE 网关。 有关详细信息，请访问 [Rigado](https://www.rigado.com/)。
-* Azure IoT Central 应用程序。 有关详细信息，请参阅[创建新应用程序](./quick-deploy-iot-central.md)。
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
+
+- 一个 RuuviTag 传感器。 有关详细信息，请访问 [RuuviTag](https://ruuvi.com/)。
+
+- Rigado Cascade 500 设备或其他 BLE 网关。 有关详细信息，请访问 [Rigado](https://www.rigado.com/)。
+
 
 ## <a name="add-a-ruuvitag-device-template"></a>添加 RuuviTag 设备模板
 
@@ -76,7 +77,7 @@ RuuviTag 通过 BLE（低能耗蓝牙）通信，要求网关设备与 Azure IoT
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你是设备开发人员，则建议执行以下后续步骤：
+一些建议的后续步骤如下：
 
 - 阅读有关 [Azure IoT Central 中的设备连接](./concepts-get-connected.md)的信息
 - 了解如何[使用 Azure CLI 监视设备连接](./howto-monitor-devices-azure-cli.md)

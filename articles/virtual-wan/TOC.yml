@@ -75,10 +75,6 @@
           href: scenario-route-between-vnets-firewall.md
         - name: 应用程序网关和后端池
           href: scenario-secured-hub-app-gateway.md
-    - name: 监视
-      items:
-        - name: 关于虚拟 WAN 的 Azure Monitor 见解
-          href: azure-monitor-insights.md
     - name: 站点到站点
       items:
         - name: 关于 S2S IPsec 策略
@@ -185,10 +181,12 @@
           href: howto-private-link.md
         - name: 管理对资源的访问 - Spoke VNet P2S
           href: manage-secure-access-resources-spoke-p2s.md
-    - name: 监视
+    - name: 运行状况监视
       items:
-        - name: 日志和指标
-          href: logs-metrics.md
+        - name: 监视虚拟 WAN
+          href: monitor-virtual-wan.md
+        - name: 虚拟 WAN 的 Azure Monitor 见解
+          href: azure-monitor-insights.md
 - name: 参考
   items:
     - name: Azure PowerShell

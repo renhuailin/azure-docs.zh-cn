@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: sideeksh
 ms.openlocfilehash: 42d3c74229ab7eeec0ac716073a9e631775fd002
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96187334"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 复制中的出行服务自动更新
@@ -458,7 +458,7 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 ### <a name="manage-updates-manually"></a>手动管理更新
 
-1. 如果 VM 上安装了出行服务的新更新，将看到以下通知：“新的 Site Recovery 复制代理更新可用。请单击此处安装”。
+1. 如果 VM 上安装了出行服务的新更新，将看到以下通知：“新的 Site Recovery 复制代理更新可用。单击以安装。
 
    :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="“复制的项”窗口":::
 

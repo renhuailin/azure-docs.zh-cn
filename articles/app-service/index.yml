@@ -7,12 +7,12 @@ metadata:
   ms.topic: landing-page
   ms.service: app-service
   ms.date: 08/06/2020
-  ms.openlocfilehash: 9ed958c7656d6101824a14ed8e39f41df2ce63e5
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.openlocfilehash: a1d7e11716478fd061104667f9adeb2511b4721e
+  ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110375226"
+  ms.lasthandoff: 06/25/2021
+  ms.locfileid: "112895294"
 landingContent:
 - title: 关于应用服务
   linkLists:
@@ -50,7 +50,7 @@ landingContent:
     links:
     - text: 将自定义域映射到应用
       url: app-service-web-tutorial-custom-domain.md
-    - text: 使用 SSL 绑定确保自定义域安全
+    - text: 使用 TLS/SSL 绑定确保自定义域安全
       url: configure-ssl-bindings.md
     - text: 在过渡环境中运行应用
       url: deploy-staging-slots.md
@@ -196,11 +196,11 @@ landingContent:
     links:
     - text: Azure Arc 上的应用服务、函数和逻辑应用（预览版）
       url: overview-arc-integration.md
-  - linkListType: tutorial
-    links:
-    - text: 设置启用了 Azure Arc 的 Kubernetes 群集，以便运行应用服务、函数和逻辑应用（预览）
-      url: manage-create-arc-environment.md
   - linkListType: quickstart
     links:
     - text: 在 Azure Arc 上创建应用服务应用（预览）
       url: quickstart-arc.md
+  - linkListType: tutorial
+    links:
+    - text: 设置启用了 Azure Arc 的 Kubernetes 群集，以便运行应用服务、函数和逻辑应用（预览）
+      url: manage-create-arc-environment.md
