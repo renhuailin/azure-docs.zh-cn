@@ -6,17 +6,17 @@ ms.date: 12/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 0978bd669855d264ed6dfa5eeddc45ad499aa2a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5d704ed2213a77873780a005823f25541e6563d0
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101734581"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111895339"
 ---
 # <a name="telemetry-processor-examples---azure-monitor-application-insights-for-java"></a>遥测处理器示例 - 适用于 Java 的 Azure Monitor Application Insights
 
 本文提供适用于 Java 的 Application Insights 中的遥测处理器示例。 其中提供了包含和排除配置的示例。 此外，还提供了特性处理器和范围处理器的示例。
-## <a name="include-and-exclude-samples"></a>包含和排除示例
+## <a name="include-and-exclude-span-samples"></a>包括和排除范围示例
 
 本部分介绍如何包含和排除范围。 此外，介绍如何排除多个范围和应用选择性处理。
 ### <a name="include-spans"></a>包含范围
@@ -104,7 +104,7 @@ ms.locfileid: "101734581"
 本部分演示如何排除特性处理器的范围。 此处理器不会处理与属性匹配的范围。
 
 必须满足以下条件才视为匹配：
-* 某个特性（例如 `env` 或 `dev`）必须存在于范围中。
+* 范围中必须存在一个特性（例如值为 `dev` 的 `env`）。
 * 范围必须具有一个键为 `test_request` 的特性。
 
 以下范围与排除属性匹配，将不应用处理器操作。
@@ -202,11 +202,12 @@ ms.locfileid: "101734581"
   }
 }
 ```
+
 ## <a name="attribute-processor-samples"></a>特性处理器示例
 
 ### <a name="insert"></a>插入
 
-以下示例将新特性 `{"attribute1": "attributeValue1"}` 插入到不存在键 `attribute1` 的范围中。
+以下示例将新特性 `{"attribute1": "attributeValue1"}` 插入到不存在键 `attribute1` 的范围和日志中。
 
 ```json
 {
@@ -230,7 +231,7 @@ ms.locfileid: "101734581"
 
 ### <a name="insert-from-another-key"></a>从另一个键插入
 
-以下示例使用 `anotherkey` 特性中的值将新特性 `{"newKey": "<value from attribute anotherkey>"}` 插入到不存在键 `newKey` 的范围中。 如果特性 `anotherkey` 不存在，则不会将新特性插入到范围中。
+以下示例使用 `anotherkey` 特性中的值将新特性 `{"newKey": "<value from attribute anotherkey>"}` 插入到不存在键 `newKey` 的范围和日志中。 如果特性 `anotherkey` 不存在，则不会将任何新特性插入到范围和日志中。
 
 ```json
 {
@@ -254,7 +255,7 @@ ms.locfileid: "101734581"
 
 ### <a name="update"></a>更新
 
-以下示例将特性更新为 `{"db.secret": "redacted"}`。 它使用特性 `foo` 中的值更新特性 `boo`。 没有特性 `boo` 的范围不会更改。
+以下示例将特性更新为 `{"db.secret": "redacted"}`。 它使用特性 `foo` 中的值更新特性 `boo`。 没有特性 `boo` 的范围和日志不会更改。
 
 ```json
 {
@@ -477,6 +478,66 @@ ms.locfileid: "101734581"
             ]
           }
         }
+      }
+    ]
+  }
+}
+```
+
+
+## <a name="log-processor-samples"></a>日志处理器示例
+
+### <a name="extract-attributes-from-a-log-message-body"></a>从日志消息正文中提取特性
+
+假设输入日志消息正文为“`Starting PetClinicApplication on WorkLaptop with PID 27984 (C:\randompath\target\classes started by userx in C:\randompath)`”。 以下示例会生成输出消息正文“`Starting PetClinicApplication on WorkLaptop with PID {PIDVALUE} (C:\randompath\target\classes started by userx in C:\randompath)`”。 它将新特性 `PIDVALUE=27984` 添加到日志。
+
+```json
+{
+  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
+  "preview": {
+    "processors": [
+      {
+        "type": "log",
+        "body": {
+          "toAttributes": {
+            "rules": [
+              "^Starting PetClinicApplication on WorkLaptop with PID (?<PIDVALUE>\\d+) .*"
+            ]
+          }
+        }
+      }
+    ]
+  }
+}
+```
+
+### <a name="masking-sensitive-data-in-log-message"></a>屏蔽日志消息中的敏感数据
+
+以下示例演示如何使用日志处理器和特性处理器屏蔽日志消息正文中的敏感数据。
+假设输入日志消息正文为“`User account with userId 123456xx failed to login`”。 日志处理器会将输出消息正文更新为“`User account with userId {redactedUserId} failed to login`”，特性处理器会删除在上一步添加的新特性 `redactedUserId`。
+```json
+{
+  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000",
+  "preview": {
+    "processors": [
+      {
+        "type": "log",
+        "body": {
+          "toAttributes": {
+            "rules": [
+              "^User account with userId (?<redactedUserId>\\d+) .*"
+            ]
+          }
+        }
+      },
+      {
+        "type": "attribute",
+        "actions": [
+          {
+            "key": "redactedUserId",
+            "action": "delete"
+          }
+        ]
       }
     ]
   }

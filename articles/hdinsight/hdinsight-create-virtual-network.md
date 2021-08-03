@@ -3,14 +3,14 @@ title: 为 Azure HDInsight 群集创建虚拟网络
 description: 了解如何创建 Azure 虚拟网络，以将 HDInsight 连接到其他云资源或数据中心内的资源。
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive, devx-track-azurecli
-ms.date: 04/16/2020
-ms.openlocfilehash: 43d57eac94cabb5c648183911e0c0bf72889946d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: hdinsightactive, devx-track-azurecli, devx-track-azurepowershell
+ms.date: 05/12/2021
+ms.openlocfilehash: 28d2cc40d1272fdf29b6df3f08469418ecbc36da
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946068"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559387"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>为 Azure HDInsight 群集创建虚拟网络
 
@@ -38,7 +38,7 @@ ms.locfileid: "98946068"
 
 以下资源管理模板创建一个虚拟网络，该网络限制入站流量，但允许来自 HDInsight 所需的 IP 地址的流量。 该模板还在虚拟网络中创建 HDInsight 群集。
 
-* [部署安全的 Azure 虚拟网络和 HDInsight Hadoop 群集](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/)
+* [部署安全的 Azure 虚拟网络和 HDInsight Hadoop 群集](https://azure.microsoft.com/resources/templates/hdinsight-secure-vnet/)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -366,6 +366,60 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 4. 若要使用此配置，请重启 Bind。 例如，两个 DNS 服务器上的 `sudo service bind9 restart`。
 
 完成这些步骤后，即可使用完全限定的域名 (FQDN) 连接到虚拟网络中的资源。 现在可以将 HDInsight 安装到虚拟网络。
+
+## <a name="test-your-settings-before-deploying-an-hdinsight-cluster"></a>在部署 HDInsight 群集之前测试设置
+
+在部署群集之前，可以通过在与计划群集相同的 VNet 和子网中的虚拟机上运行 [networkValidator 工具](https://github.com/Azure-Samples/hdinsight-diagnostic-scripts/blob/main/HDInsightNetworkValidator)来检查你的许多网络配置设置是否正确。
+
+**部署虚拟机以运行 networkValidator.sh 脚本**
+
+1. 打开 [Azure 门户 Ubuntu Server 18.04 LTS 页](https://portal.azure.com/?feature.customportal=false#create/Canonical.UbuntuServer1804LTS-ARM)，然后单击“创建”。
+
+1. 在“基本信息”选项卡的“项目详细信息”下，选择你的订阅，然后选择现有资源组或创建新资源组 。
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/project-details.png" alt-text="“项目详细信息”部分的屏幕截图，显示为虚拟机选择 Azure 订阅和资源组的位置。":::
+
+1. 在“实例详细信息”下，输入唯一的虚拟机名称，选择与 VNet 相同的区域，为“可用性选项”选择“不需要基础结构冗余”，为“映像”选择“Ubuntu 18.04 LTS”，将“Azure Spot 实例”留空，并为“大小”选择 Standard_B1s（或更大的大小）    。
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/instance-details.png" alt-text="“实例详细信息”部分的屏幕截图，可在其中提供虚拟机的名称并选择其区域、映像和大小。":::
+
+1. 在“管理员帐户”下，选择“密码”并输入管理员帐户的用户名和密码 。 
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/administrator-account.png" alt-text="“管理员帐户”部分的屏幕截图，可以在其中选择身份验证类型并提供管理员凭据。":::
+
+1. 在“入站端口规则” > “公共入站端口”下，选择“允许所选端口”，然后从下拉列表中选择“SSH (22)”，然后单击“下一步: 磁盘 >”    
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/inbound-port-rules.png" alt-text="“入站端口规则”部分的屏幕截图，可在其中选择允许建立入站连接的端口。":::
+
+1. 在“磁盘选项”下，为“OS 磁盘类型”选择“标准 SSD”，然后单击“下一步: 网络 >”。
+
+1. 在“网络”页上的“网络接口”下，选择计划将 HDInsight 群集添加到的“虚拟网络”和“子网”，然后选择页面底部的“查看 + 创建”按钮    。
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/vnet.png" alt-text="“网络接口”部分的屏幕截图，可在其中选择要向其中添加虚拟机的 VNet 和子网。":::
+
+1. 在“创建虚拟机”页上，可以查看要创建的 VM 的详细信息。 准备好以后，选择“创建”。
+
+1. 部署完成后，选择“转到资源”。
+
+1. 在新 VM 的页面上，选择公共 IP 地址并将其复制到剪贴板。
+
+    :::image type="content" source="./media/hdinsight-create-virtual-network/ip-address.png" alt-text="显示如何复制虚拟机 IP 地址的屏幕截图。":::
+
+**运行 /networkValidator.sh 脚本**
+
+1. 通过 SSH 连接到新虚拟机。
+1. 使用以下命令将所有文件从 [github](https://github.com/Azure-Samples/hdinsight-diagnostic-scripts/tree/main/HDInsightNetworkValidator) 复制到虚拟机：
+
+    `wget -i https://raw.githubusercontent.com/Azure-Samples/hdinsight-diagnostic-scripts/main/HDInsightNetworkValidator/all.txt`
+
+1. 在文本编辑器中打开 params.txt 文件，并向所有变量添加值。 如果要忽略相关验证，请使用空字符串 ("")。
+1. 运行 `sudo chmod +x ./setup.sh` 以使 setup.sh 可执行，并将其与 `sudo ./setup.sh` 一起运行以安装 Python 2.x 的 pip 并安装所需的 Python 2.x 模块。
+1. 使用 `sudo python2 ./networkValidator.py` 运行主脚本。
+1. 脚本完成后，“摘要”部分会指示检查是否成功以及是否可以创建群集，或者指示是否遇到任何问题，如果遇到了问题，则应查看错误输出和相关文档以修复错误。
+
+    尝试修复错误后，可以再次运行脚本来检查进度。
+1. 完成检查后，摘要显示“成功: 可以在此 VNet/子网中创建 HDInsight 群集”。 你可以创建群集。 
+1. 运行完验证脚本后，请删除新虚拟机。 
 
 ## <a name="next-steps"></a>后续步骤
 

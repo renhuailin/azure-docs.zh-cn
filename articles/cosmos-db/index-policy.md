@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 05/25/2021
 ms.author: tisande
-ms.openlocfilehash: 26465eb9826c60daad7b44e1c2fe6ae3c19b1ed0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 20798fc438f037ca7372822ea8bd54117b8936ee
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100378802"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456562"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -97,7 +97,7 @@ Azure Cosmos DB 支持两种索引模式：
 
 - `dataType` 可以是 `String` 或 `Number`。 这表示要编制索引的 JSON 属性的类型。
 
-如果未指定，这些属性将使用以下默认值：
+不再需要设置这些属性。 如果未指定，这些属性将使用以下默认值：
 
 | **属性名称**     | **默认值** |
 | ----------------------- | -------------------------------- |
@@ -131,7 +131,7 @@ Azure Cosmos DB 支持两种索引模式：
 
 在索引策略中定义空间路径时，应定义要将哪个索引 ```type``` 应用到该路径。 空间索引的可能类型包括：
 
-* 点
+* Point
 
 * Polygon
 
@@ -337,7 +337,7 @@ ORDER BY c.firstName, c.lastName
 > 索引转换是一种使用[请求单位](request-units.md)的操作。 如果使用[无服务器](serverless.md)容器，索引转换使用的请求单位目前不会计费。 在无服务器模式正式提供之后，这些请求单位将会计费。
 
 > [!NOTE]
-> 可以[使用某个 SDK](how-to-manage-indexing-policy.md) 跟踪索引转换的进度。
+> 可以在 Azure 门户中或[使用其中一个 SDK](how-to-manage-indexing-policy.md) 跟踪索引转换的进度。
 
 在任何索引转换过程中，对写入可用性都没有影响。 索引转换使用预配的 RU，但优先级低于 CRUD 操作或查询。
 

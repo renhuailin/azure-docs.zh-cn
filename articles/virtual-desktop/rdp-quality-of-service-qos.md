@@ -1,27 +1,27 @@
 ---
-title: 实现适用于 Windows 虚拟桌面的服务质量 (QoS)（预览版）
+title: 实现适用于 Azure 虚拟桌面的服务质量 (QoS)（预览版）
 titleSuffix: Azure
-description: 如何设置适用于 Windows 虚拟桌面的 QoS（预览版）。
+description: 如何设置适用于 Azure 虚拟桌面的 QoS（预览版）。
 author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: b61faf74d96e2571e91f7bf9d10eac88cdbf8345
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c90811009a38db0874589dc828059277b9ae285c
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94639191"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753029"
 ---
-# <a name="implement-quality-of-service-qos-for-windows-virtual-desktop-preview"></a>实现适用于 Windows 虚拟桌面的服务质量 (QoS)（预览版）
+# <a name="implement-quality-of-service-qos-for-azure-virtual-desktop-preview"></a>实现适用于 Azure 虚拟桌面的服务质量 (QoS)（预览版）
 
 > [!IMPORTANT]
-> 适用于 Windows 虚拟桌面的服务质量 (QoS) 策略支持目前以公共预览版提供。
-> 此预览版未提供服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。
+> 适用于 Azure 虚拟桌面的服务质量 (QoS) 策略支持目前提供公共预览版。
+> 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 [RDP 短路径](./shortpath.md)可在远程桌面客户端和会话主机之间建立基于 UDP 的直接传输。 RDP 短路径支持对 RDP 数据启用服务质量 (QoS) 策略的配置。
-通过使用 Windows 虚拟桌面中的 QoS，对网络延迟敏感的实时 RDP 流量可以“插队”到不那么敏感的流量前面。 此类不太敏感的流量的示例会下载一个新应用，在这种情况下，下载额外的应用并不是什么大问题。 QoS 使用 Windows 组策略对象来识别并标记实时流中的所有数据包，帮助网络为 RDP 流量分配一部分专用带宽。
+通过使用 Azure 虚拟桌面中的 QoS，对网络延迟敏感的实时 RDP 流量可以“插队”到不那么敏感的流量前面。 此类不太敏感的流量的示例会下载一个新应用，在这种情况下，下载额外的应用并不是什么大问题。 QoS 使用 Windows 组策略对象来识别并标记实时流中的所有数据包，帮助网络为 RDP 流量分配一部分专用带宽。
 
 如果你支持一大批用户遇到本文中所述的任何问题，则可能需要实现 QoS。 只有少量用户的小型企业可能不需要 QoS，即便这样，实现 QoS 也是有用的。
 
@@ -62,7 +62,7 @@ ms.locfileid: "94639191"
 
 如果你要考虑实现 QoS，则应已确定带宽要求和其他[网络要求](/windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context)。
   
-跨网络的流量拥塞会显著影响媒体质量。 缺少带宽会导致性能下降，使用户体验不佳。 随着 Windows 虚拟桌面的采用和使用的增长，请使用 [Log Analytics](./diagnostics-log-analytics.md) 确定问题所在，然后通过 QoS 和选择性增加带宽进行调整。
+跨网络的流量拥塞会显著影响媒体质量。 缺少带宽会导致性能下降，使用户体验不佳。 随着 Azure 虚拟桌面的采用和使用的增长，请使用 [Log Analytics](./diagnostics-log-analytics.md) 确定问题所在，然后通过 QoS 和选择性增加带宽进行调整。
 
 ### <a name="vpn-considerations"></a>VPN 注意事项
 
@@ -131,5 +131,5 @@ New-NetQosPolicy -Name "RDP Shortpath" -AppPathNameMatchCondition "svchost.exe" 
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解 Windows 虚拟桌面的带宽要求，请参阅[了解 Windows 虚拟桌面的远程桌面协议 (RDP) 带宽要求](rdp-bandwidth.md)。
-* 若要了解 Windows 虚拟桌面网络连接，请参阅[了解 Windows 虚拟桌面网络连接](network-connectivity.md)。
+* 若要了解 Azure 虚拟桌面的带宽要求，请参阅[了解 Azure 虚拟桌面的远程桌面协议 (RDP) 带宽要求](rdp-bandwidth.md)。
+* 若要了解 Azure 虚拟桌面网络连接，请参阅[了解 Azure 虚拟桌面网络连接](network-connectivity.md)。

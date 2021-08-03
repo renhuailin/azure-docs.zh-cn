@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f2fe29ede2bf0f92049d1ae82bae87326057a63
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fe8024650909ef3f48057c572fba2a70f2d611e2
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100594284"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110796386"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -37,10 +37,10 @@ ms.locfileid: "100594284"
 * 流程、管理做法和知识管理
 * 技术组件，例如主机防御、帐户保护和标识管理
 
-在你关注的 Microsoft 服务中以一种管理加报告的方式保护你的特权访问。 如果你有本地管理员帐户，请参阅[保护特权访问](/windows-server/identity/securing-privileged-access/securing-privileged-access)中提供的有关 Active Directory 中的本地和混合特权访问的指导。
+在你关注的 Microsoft 服务中以一种管理加报告的方式保护你的特权访问。 如果你拥有本地管理员帐户，请在[保护特权访问](/windows-server/identity/securing-privileged-access/securing-privileged-access)查看 Active Directory 中的本地和混合特权访问指导。
 
 > [!NOTE]
-> 本文中的指南主要讲述 Azure Active Directory Premium 计划 P1 和 P2 中包括的 Azure Active Directory 功能。 Azure Active Directory Premium P2 包括在 EMS E5 套件和 Microsoft 365 E5 套件中。 本指南假定你的组织已经为你的用户购买 Azure AD Premium P2 许可证。 如果没有这些许可证，某些指南内容可能不适用于你的组织。 另外，本文中的“全局管理员”一词与“公司管理员”或“租户管理员”同义。
+> 本文中的指导主要讲述 Azure AD Premium P1 和 P2 中包括的 Azure Active Directory 功能。 Azure AD Premium P2 包括在 EMS E5 套件和 Microsoft 365 E5 套件中。 本指南假定你的组织已经为你的用户购买 Azure AD Premium P2 许可证。 如果没有这些许可证，某些指南内容可能不适用于你的组织。 另外，本文中的“全局管理员”一词与“公司管理员”或“租户管理员”同义。
 
 ## <a name="develop-a-roadmap"></a>制定路线图
 
@@ -52,7 +52,7 @@ Microsoft 建议你制定并遵循一个路线图，防止特权访问受到网�
 
 * 阶段 2（2-4 周）：减轻最常用攻击手段的危害
 
-* 阶段 3（1-3 个月）：构建管理活动的可见性和完全控制
+* 阶段 3（1-3 个月）：构建管理员活动的可见性和完全控制
 
 * 阶段 4（至少六个月）：继续构建防御措施，进一步强化安全平台
 
@@ -82,7 +82,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 4. 打开“所有服务”列表中的 Open Privileged Identity Management，将其固定到仪表板。
 
-确保组织中第一个要使用 PIM 的人员已分配到“安全管理员”和“特权角色管理员”角色 。 只有特权角色管理员才能管理用户的 Azure AD 目录角色分配。 PIM 安全向导会引导你完成初始发现和分配体验。 现在可以退出向导，不做任何其他的更改。
+确保组织中第一个要使用 PIM 的人员已分配到安全管理员和特权角色管理员角色。 只有特权角色管理员才能管理用户的 Azure AD 目录角色分配。 PIM 安全向导会引导你完成初始发现和分配体验。 现在可以退出向导，不做任何其他的更改。
 
 #### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>对特许权限高的角色中的帐户进行标识和分类
 
@@ -112,7 +112,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 评估已经获得或有资格获得全局管理员角色的帐户。 如果使用 \*.onmicrosoft.com 域（用于“破窗式”紧急访问）看不到任何仅限云的帐户，请创建此类帐户。 有关详细信息，请参阅[在 Azure AD 中管理紧急访问管理帐户](security-emergency-access.md)。
 
-#### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>启用多重身份验证，并注册所有其他的特许权限高的单用户非联合管理员帐户
+#### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-administrator-accounts"></a>启用多重身份验证，并注册所有其他的特许权限高的单用户非联合管理员帐户
 
 对于永久分配给一个或多个 Azure AD 管理员角色的所有个人用户，要求其在登录时进行 Azure AD 多重身份验证 (MFA)：全局管理员、特权角色管理员、Exchange 管理员和 SharePoint 管理员。 根据指南启用[针对管理员帐户的多重身份验证 (MFA)](../authentication/howto-mfa-userstates.md)，确保所有这些用户都已注册到 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 有关详细信息，可参阅[保护对 Microsoft 365 中数据和服务的访问权限](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)指南的步骤 2 和步骤 3。 
 
@@ -124,12 +124,12 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 ### <a name="general-preparation"></a>常规准备
 
-#### <a name="conduct-an-inventory-of-services-owners-and-admins"></a>制作一个包括服务、所有者和管理员在内的清单
+#### <a name="conduct-an-inventory-of-services-owners-and-administrators"></a>制作一个包括服务、所有者和管理员在内的清单
 
 随着“自带设备”和在家办公策略实施人数的增加以及无线连接人数的增加，对连接到网络的人员进行监视至关重要。 安全审核可以揭示网络中不受组织支持且存在高风险的设备、应用程序和程序。 有关详细信息，请参阅 [Azure 安全管理和监视概述](../../security/fundamentals/management-monitoring-overview.md)。 请确保在清单进程中包括所有下述任务。
 
 * 标识具有管理角色的用户及其可以在其中进行管理的服务。
-* 使用 Azure AD PIM 找出组织中的哪些用户对 Azure AD 拥有管理访问权限。
+* 使用 Azure AD PIM 找出组织中的哪些用户对 Azure AD 拥有管理员访问权限。
 * 除了在 Azure AD 中定义的角色，Microsoft 365 还带有一组可以分配给组织中用户的管理员角色。 每个管理员角色都映射到常用业务功能，为组织中的人员提供在 [Microsoft 365 管理中心](https://admin.microsoft.com)执行特定任务的权限。 通过 Microsoft 365 管理中心找出组织中哪些用户可以通过管理员身份来访问 Microsoft 365，包括通过不在 Azure AD 中管理的角色进行访问。 有关详细信息，请参阅[关于 Microsoft 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)和 [Office 365 安全做法](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)。
 * 在组织所依赖的服务（例如 Azure、Intune 或 Dynamics 365）中进行盘点。
 * 确保用于管理目的的帐户：
@@ -178,7 +178,7 @@ Azure AD 标识保护是一种基于算法的监视和报告工具，可用于�
 
 #### <a name="obtain-your-microsoft-365-secure-score-if-using-microsoft-365"></a>获取 Microsoft 365 安全分数（如果使用 Microsoft 365）
 
-安全评分会查看你正在使用的 Microsoft 365 服务的设置和活动，并将其与 Microsoft 建立的基线进行比较。 将会根据你遵循安全做法的情况对你评分。 对 Microsoft 365 业务标准版或企业版订阅拥有管理员权限的任何人都可以通过 [https://securescore.office.com](https://securescore.office.com/) 访问安全评分。
+安全评分会查看你正在使用的 Microsoft 365 服务的设置和活动，并将其与 Microsoft 建立的基线进行比较。 将会根据你遵循安全做法的情况对你评分。 具有企业标准版或企业版订阅 Microsoft 365 管理员权限的任何用户都可以访问 [https://securescore.office.com](https://securescore.office.com/) 的安全分数。
 
 #### <a name="review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365"></a>查看 Microsoft 365 安全性和合规性指南（如果使用 Microsoft 365）
 
@@ -206,9 +206,9 @@ Azure AD 标识保护是一种基于算法的监视和报告工具，可用于�
 
 通过企业门户和 Azure 门户确定组织中用于托管生产应用程序的订阅。
 
-#### <a name="remove-microsoft-accounts-from-admin-roles"></a>从管理员角色中删除 Microsoft 帐户
+#### <a name="remove-microsoft-accounts-from-administrator-roles"></a>从管理员角色中删除 Microsoft 帐户
 
-不应将其他程序（例如 Xbox、Live、Outlook）的 Microsoft 帐户用作组织订阅的管理员帐户。 从所有 Microsoft 帐户中删除管理员状态，将其替换为 Azure AD 工作或学校帐户（例如，chris@contoso.com）。 若要进行管理，请依赖于已在 Azure AD（而不是其他服务）中进行身份验证的帐户。
+不应将其他程序（例如 Xbox、Live、Outlook）的 Microsoft 帐户用作组织订阅的管理员帐户。 从所有 Microsoft 帐户中删除管理员状态，将其替换为 Azure AD（例如，chris@contoso.com）工作或学校帐户。 为实现管理员目的，请依赖于已在 Azure AD（而不是其他服务）中进行身份验证的帐户。
 
 #### <a name="monitor-azure-activity"></a>监视 Azure 活动
 
@@ -220,9 +220,9 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 为本地应用程序和托管在云中的应用程序准备条件访问策略。 如果你有加入了用户工作区的设备，请参阅[使用 Azure Active Directory 设备注册设置本地条件访问](../../active-directory-b2c/overview.md)中提供的详细信息。
 
-## <a name="stage-3-take-control-of-admin-activity"></a>阶段 3：控制管理活动
+## <a name="stage-3-take-control-of-administrator-activity"></a>阶段 3：控制管理员活动
 
-![阶段 3：控制管理活动](./media/security-planning/stage-three.png)
+![阶段 3：控制管理员活动](./media/security-planning/stage-three.png)
 
 阶段 3 以阶段 2 的缓解措施为基础，应在大约 1-3 个月内实施。 此阶段的安全特权访问路线图包括以下组件。
 
@@ -232,11 +232,11 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 更多的公司用户是通过云服务获得特许访问权限的，因此可能会导致访问不受管理。 当今的用户可以成为 Microsoft 365 全局管理员、Azure 订阅管理员，或者获取对 VM 的管理访问权限或通过 SaaS 应用获取管理访问权限。
 
-组织应让所有员工以非特权用户身份处理日常的业务事务，只在有需要时才向其授予管理权限。 完成访问评审，识别并确认有资格激活管理特权的用户。
+组织应让所有员工以非特权用户身份处理日常的业务事务，只在有需要时才向其授予管理员权限。 完成访问评审，识别并确认有资格激活管理员特权的用户。
 
 建议：
 
-1. 确定哪些用户是 Azure AD 管理员，启用按需恰时管理访问权限以及基于角色的安全控制。
+1. 确定哪些用户是 Azure AD 管理员，启用按需恰时管理员访问权限以及基于角色的安全控制。
 2. 将没有明确理由使用管理员特许访问权限的用户转换为其他角色（如果没有符合条件的角色，则删除这些用户）。
 
 #### <a name="continue-rollout-of-stronger-authentication-for-all-users"></a>针对所有用户持续推出更强的身份验证
@@ -266,15 +266,15 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 对于 Azure Active Directory，请使用 [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md) 功能。 对特权角色进行有时间限制的激活时，可执行以下操作：
 
-* 激活执行特定任务所需的管理特权
+* 激活执行特定任务所需的管理员特权
 * 在激活过程中强制实施 MFA
-* 使用警报将所做的带外更改通知给管理员
+* 使用警报通知管理员有关带外更改
 * 允许用户在预配置的时限内保留其访问特权
-* 允许安全管理员执行以下操作：
+* 允许安全管理员：
 
   * 发现所有特权标识
   * 查看审核报告
-  * 创建访问评审，用于识别每个有资格激活管理特权的用户
+  * 创建访问评审，用于识别每个有资格激活管理员特权的用户
 
 如果已在使用 Azure AD Privileged Identity Management，请根据需要调整时限性特权的时间范围（例如，维护时段）。
 
@@ -341,7 +341,7 @@ Microsoft Cloud App Security 允许根据 Azure 信息保护分类标签来调�
 
 #### <a name="monitor-activity-in-connected-cloud-apps"></a>监视连接的云应用中的活动
 
-建议使用 [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) 来确保用户访问在连接的应用程序中也受保护。 此功能可以保护企业对云应用的访问并保护管理员帐户，使你可以：
+建议使用 [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) 来确保用户访问在连接的应用程序中也受保护。 此功能可以保护企业对云应用的访问并保护管理员帐户，让你可以：
 
 * 扩展对云应用的可见性和控制
 * 针对访问权限、活动和数据共享创建策略
@@ -380,9 +380,9 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 ### <a name="general-preparation"></a>常规准备
 
-#### <a name="review-admin-roles-in-azure-ad"></a>评审 Azure AD 中的管理员角色
+#### <a name="review-administrator-roles-in-azure-ad"></a>评审 Azure AD 中的管理员角色
 
-确定当前的内置 Azure AD 管理员角色是否仍为最新，并确保用户只充当所需的角色。 使用 Azure AD 时，可以分配不同的管理员来履行不同的职责。 有关详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](permissions-reference.md)。
+确定当前的内置 Azure AD 管理员角色是否仍为最新，并确保用户只充当所需的角色。 使用 Azure AD 时，可以分配不同的管理员来履行不同的职责。 有关详细信息，请参阅 [Azure AD 内置角色](permissions-reference.md)。
 
 #### <a name="review-users-who-have-administration-of-azure-ad-joined-devices"></a>审核那些可以管理已加入 Azure AD 的设备的用户
 
@@ -431,13 +431,13 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 **问**：如果还没有实施任何安全访问组件，该怎么办？
 
-**答：** 定义至少两个“不受限”帐户，指定对特权管理员帐户实施 MFA，并将用户帐户与全局管理员帐户分开。
+答：定义至少两个不受限帐户，指定对特权管理员帐户实施 MFA，并将用户帐户与全局管理员帐户分开。
 
 **问：** 在遭到攻击后，首先需要解决的最重要问题是什么？
 
 **答：** 务必要求对身份暴露可能性高的个人进行最强的身份验证。
 
-**问：** 如果停用了特权管理员，该怎么办？
+问：如果停用了特权管理员，会发生什么？
 
 **答：** 请创建一个始终保持最新的全局管理员帐户。
 
@@ -445,25 +445,25 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 **答：** 使用其中一个“不受限”帐户，立即获取特许访问权限。
 
-**问：** 如何保护组织中的管理员？
+问：如何保护组织中的管理员？
 
-**答：** 让管理员始终以标准的“非特权”用户身份执行日常业务操作。
+答：让管理员始终以标准的“非特权”用户身份执行日常业务操作。
 
-**问：** 在 Azure AD 中创建管理员帐户的最佳做法是什么？
+问：在 Azure AD 中创建管理员帐户的最佳做法是什么？
 
-**答：** 针对特定的管理任务保留特许访问权限。
+答：针对特定的管理员任务保留特权访问权限。
 
-**问：** 可以通过哪些现有工具减少持久进行的管理访问？
+问：可以通过哪些现有工具减少持久进行的管理员访问？
 
-**答：** Privileged Identity Management (PIM) 和 Azure AD 管理员角色。
+答：Privileged Identity Management (PIM) 和 Azure AD 管理员角色。
 
-**问：** 对于将管理员帐户同步到 Azure AD，Microsoft 的态度是什么？
+问：对于将管理员帐户同步到 Azure AD，Microsoft 的态度是什么？
 
-**答：** 第 0 层管理员帐户仅用于本地 AD 帐户。 此类帐户通常不会与云中的 Azure AD 同步。 第 0 层管理员帐户包括对本地 Active Directory 林、域、域控制器和资产拥有直接或间接管理控制权的帐户、组和其他资产。
+答：第 0 层管理员帐户仅用于本地 AD 帐户。 此类帐户通常不会与云中的 Azure AD 同步。 第 0 层管理员帐户包括对本地 Active Directory 林、域、域控制器和资产拥有直接或间接管理控制权的帐户、组和其他资产。
 
-**问：** 如何防止管理员在门户中分配随机的管理员访问权限？
+问：如何让管理员在门户中分配随机管理员访问权限？
 
-**答：** 要求所有用户和大多数管理员使用非特权帐户。 一开始确定组织的占用空间，从而确定应该向哪些管理员帐户授予特权。 监视新建的管理用户。
+答：要求所有用户和大多数管理员使用非特权帐户。 一开始确定组织的占用空间，从而确定应该向哪些管理员帐户授予特权。 监视新建的管理用户。
 
 ## <a name="next-steps"></a>后续步骤
 

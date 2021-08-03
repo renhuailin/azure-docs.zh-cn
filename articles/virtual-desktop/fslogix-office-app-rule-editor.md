@@ -1,17 +1,17 @@
 ---
-title: 在 Windows 虚拟桌面中安装 Microsoft Office FSLogix 应用程序容器 - Azure
-description: 如何使用应用规则编辑器在 Windows 虚拟桌面中使用 Office 创建 FSLogix 应用程序容器。
+title: 在 Azure 虚拟桌面中安装 Microsoft Office FSLogix 应用程序容器 - Azure
+description: 如何使用应用规则编辑器在 Azure 虚拟桌面中使用 Office 创建 FSLogix 应用程序容器。
 author: Heidilohr
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a144adcfbf6c7cefc6b946f95bdb734868de801f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 4e145e8ff578d7e8663e45aa550906a1594f5228
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106446802"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757654"
 ---
 # <a name="install-microsoft-office-using-fslogix-application-containers"></a>使用 FSLogix 应用程序容器安装 Microsoft Office
 
@@ -22,7 +22,7 @@ ms.locfileid: "106446802"
 - 若要将 Office 应用卸载到应用容器，可减少对 C 驱动器大小的要求。
 - VM 的快照或备份会占用较少资源。
 - 通过更新单个映像来实现自动化管道可以更轻松地更新 VM。
-- 只需一个映像即可将 Office（和其他应用）安装到 Windows 虚拟桌面部署中的所有 VM。
+- 只需一个映像即可将 Office（和其他应用）安装到 Azure 虚拟桌面部署中的所有 VM。
 
 本文介绍如何使用 Office 设置 FSLogix 应用程序容器。
 
@@ -40,7 +40,7 @@ ms.locfileid: "106446802"
 若要在 VHD 或 VHDX 上安装 Office，请在 VM 中启用远程桌面协议，然后按照[在 VHD 主映像上安装 Office](install-office-on-wvd-master-image.md) 中的说明操作。 安装时，请确保使用[正确的许可证](overview.md#requirements)。
 
 >[!NOTE]
->Windows 虚拟桌面需要共享计算机激活 (SCA)。
+>Azure 虚拟桌面需要共享计算机激活 (SCA)。
 
 ## <a name="install-fslogix"></a>安装 FSLogix
 

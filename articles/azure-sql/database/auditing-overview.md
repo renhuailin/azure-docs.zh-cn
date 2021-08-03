@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/17/2021
+ms.date: 06/14/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8513127f4a79c9c94323140462ad2d2648a0130d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f7bdadaf8570fe06d7573ff622ed921137229ae1
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104577589"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061553"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的审核
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "104577589"
 - **分析** 报告。 可以查找可疑事件、异常活动和趋势。
 
 > [!IMPORTANT]
-> Azure SQL 数据库和 Azure Synapse 的审核已针对可用性和性能进行优化。 在活动量极高或网络负载较高的情况下，Azure SQL 数据库和 Azure Synapse 允许操作继续进行，并且可能不会记录某些已审核的事件。
+> Azure SQL 数据库、Azure Synapse 与 Azure SQL 托管实例的审核已针对可用性和性能进行优化。 在活动量极高或网络负载较高的情况下，Azure SQL 数据库、Azure Synapse 与 Azure SQL 托管实例允许操作继续进行，并且可能不会记录某些已审核的事件。
 
 ### <a name="auditing-limitations"></a>审核限制
 
@@ -81,7 +81,7 @@ ms.locfileid: "104577589"
 - 可以将审核日志写入到 VNet 或防火墙后面的 Azure 存储帐户。 有关具体说明，请参阅[将审核写入 VNet 和防火墙后面的存储帐户](audit-write-storage-account-behind-vnet-firewall.md)。
 - 有关日志格式、存储文件夹的层次结构和命名约定的详细信息，请参阅 [Blob 审核日志格式参考](./audit-log-format.md)。
 - 对[只读副本](read-scale-out.md)的审核会自动启用。 有关存储文件夹的层次结构、命名约定和日志格式的详细信息，请参阅 [SQL 数据库审核日志格式](audit-log-format.md)。
-- 使用 Azure AD 身份验证时，失败的登录记录将不会出现在 SQL 审核日志中。 若要查看失败的登录审核记录，需要访问 [Azure Active Directory 门户](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)，该门户记录这些事件的详细信息。
+- 使用 Azure AD 身份验证时，失败的登录记录将不会出现在 SQL 审核日志中。 若要查看失败的登录审核记录，需要访问 [Azure Active Directory 门户](../../active-directory/reports-monitoring/concept-sign-ins.md)，该门户记录这些事件的详细信息。
 - 通过网关将登录信息路由到数据库所在的特定实例。  对于 AAD 登录，在尝试使用该用户名登录到请求的数据库之前，将验证凭据。  如果失败，则绝不会访问请求的数据库，因此不会进行审核。  对于 SQL 登录，将根据请求的数据对凭据进行验证，因此在这种情况下可以对其进行审核。  在这两种情况下，都将审核已明显到达数据库的成功登录。
 - 配置审核设置后，可打开新威胁检测功能，并配置电子邮件用于接收安全警报。 使用威胁检测时，会接收针对异常数据库活动（可能表示潜在的安全威胁）发出的前瞻性警报。 有关详细信息，请参阅[威胁检测入门](threat-detection-overview.md)。
 
@@ -290,9 +290,9 @@ AzureDiagnostics
 
 可以使用 [Azure 资源管理器](../../azure-resource-manager/management/overview.md)模板管理 Azure SQL 数据库审核，如以下示例中所示：
 
-- [部署启用了审核的 Azure SQL 数据库，以将审核日志写入 Azure Blob 存储帐户](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
-- [部署启用了审核的 Azure SQL 数据库，以将审核日志写入 Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
-- [部署启用了审核的 Azure SQL 数据库，以将审核日志写入事件中心](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
+- [部署启用了审核的 Azure SQL 数据库，以将审核日志写入 Azure Blob 存储帐户](https://azure.microsoft.com/resources/templates/sql-auditing-server-policy-to-blob-storage/)
+- [部署启用了审核的 Azure SQL 数据库，以将审核日志写入 Log Analytics](https://azure.microsoft.com/resources/templates/sql-auditing-server-policy-to-oms/)
+- [部署启用了审核的 Azure SQL 数据库，以将审核日志写入事件中心](https://azure.microsoft.com/resources/templates/sql-auditing-server-policy-to-eventhub/)
 
 > [!NOTE]
 > 链接的示例位于外部公共存储库中，按“原样”提供，不含任何担保，在任何 Microsoft 支持计划/服务下均不受支持。

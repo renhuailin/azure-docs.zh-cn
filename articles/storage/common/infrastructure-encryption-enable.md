@@ -1,94 +1,36 @@
 ---
-title: 创建存储帐户，帐户启用基础结构加密用于双重加密数据
+title: 启用基础结构加密，对数据进行双重加密
 titleSuffix: Azure Storage
-description: 如果客户要求更高级别的数据安全保证，则还可以在 Azure 存储基础结构级别启用 256 位 AES 加密。 启用基础结构加密后，存储帐户中的数据将使用两个不同的加密算法和两个不同的密钥进行两次加密。
+description: 如果客户要求更高级别的数据安全保证，则还可以在 Azure 存储基础结构级别启用 256 位 AES 加密。 启用基础结构加密后，存储帐户或加密范围中的数据将使用两个不同的加密算法和两个不同的密钥进行两次加密。
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 06/01/2021
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 23b3ca919be030490cca06f31dac623d7f80be44
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 5c87ed5222b5bb95660b6e63e259a2b5e14b7b47
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790376"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111372667"
 ---
-# <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>创建存储帐户，帐户启用基础结构加密用于双重加密数据
+# <a name="enable-infrastructure-encryption-for-double-encryption-of-data"></a>启用基础结构加密，对数据进行双重加密
 
-Azure 存储使用 256 位 AES 加密（可用的最强大分组加密法之一），在服务级别自动加密存储帐户中的所有数据，并且符合 FIPS 140-2 规范。 如果客户要求更高级别的数据安全保证，则还可以在 Azure 存储基础结构级别启用 256 位 AES 加密。 启用基础结构加密后，将使用两种不同的加密算法和两个不同的密钥&mdash;分别在服务级别和基础架构级别&mdash;对存储帐户中的数据进行两次加密。 Azure 存储数据的双重加密可以在其中一种加密算法或密钥可能泄露的情况下提供保护。 在此方案中，附加的加密层会继续保护你的数据。
+Azure 存储使用 256 位 AES 加密（可用的最强大分组加密法之一），在服务级别自动加密存储帐户中的所有数据，并且符合 FIPS 140-2 规范。 如果客户要求更高级别的数据安全保证，则还可以在 Azure 存储基础结构级别启用 256 位 AES 加密，以进行双重加密。 Azure 存储数据的双重加密可以在其中一种加密算法或密钥可能泄露的情况下提供保护。 在此方案中，附加的一层加密会继续保护你的数据。
+
+可以为整个存储帐户或帐户内的加密范围启用基础结构加密。 为存储帐户或加密范围启用基础结构加密后，将对数据进行两次加密 &mdash; 分别在服务级别和基础架构级别 &mdash; 使用两种不同的加密算法和两个不同的密钥。
 
 服务级别加密支持将 Microsoft 管理的密钥或客户管理的密钥与 Azure Key Vault 或 Key Vault 托管硬件安全模型 (HSM)（预览版）一起使用。 基础结构级别的加密依赖于 Microsoft 管理的密钥并始终使用单独的密钥。 有关 Azure 存储加密的密钥管理的详细信息，请参阅[关于加密密钥管理](storage-service-encryption.md#about-encryption-key-management)。
 
-若要对数据进行双重加密，必须首先创建为基础结构加密配置的存储帐户。 本文介绍如何创建启用基础结构加密的存储帐户。
-
-## <a name="register-to-use-infrastructure-encryption"></a>注册使用基础结构加密
-
-若要创建启用了基础结构加密的存储帐户，首先必须使用 PowerShell 或 Azure CLI 注册使用此 Azure 功能。
-
-# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
-
-不可用
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-若要使用 PowerShell 注册，请调用 [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) 命令。
-
-```powershell
-Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowRequireInfraStructureEncryption
-```
-
-若要使用 PowerShell 检查注册状态，请调用 [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) 命令。
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
-    -FeatureName AllowRequireInfraStructureEncryption
-```
-
-注册得到批准后，必须重新注册 Azure 存储资源提供程序。 若要使用 PowerShell 重新注册资源提供程序，请调用 [Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider) 命令。
-
-```powershell
-Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-若要使用 Azure CLI 注册，请调用 [az feature register](/cli/azure/feature#az_feature_register) 命令。
-
-```azurecli
-az feature register --namespace Microsoft.Storage \
-    --name AllowRequireInfraStructureEncryption
-```
-
-若要使用 Azure CLI 查看注册状态，请调用 [az feature](/cli/azure/feature#az_feature_show) 命令。
-
-```azurecli
-az feature show --namespace Microsoft.Storage \
-    --name AllowRequireInfraStructureEncryption
-```
-
-注册得到批准后，必须重新注册 Azure 存储资源提供程序。 若要使用 Azure CLI 重新注册资源提供程序，请调用 [az provider register](/cli/azure/provider#az_provider_register) 命令。
-
-```azurecli
-az provider register --namespace 'Microsoft.Storage'
-```
-
-# <a name="template"></a>[模板](#tab/template)
-
-空值
-
----
+若要对数据进行双重加密，必须首先创建为基础结构加密配置的存储帐户或加密范围。 本文介绍如何启用基础结构加密。
 
 ## <a name="create-an-account-with-infrastructure-encryption-enabled"></a>创建启用了基础结构加密的帐户
 
-必须配置存储帐户，以便在创建帐户时使用基础结构加密。 存储帐户必须是常规用途 v2 类型。
-
-帐户创建后，无法启用或禁用基础结构加密。
+若要为存储帐户启用基础结构加密，必须配置存储帐户，以便在创建帐户时使用基础结构加密。 帐户创建后，无法启用或禁用基础结构加密。 存储帐户必须是常规用途 v2 类型。
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
@@ -100,6 +42,13 @@ az provider register --namespace 'Microsoft.Storage'
 1. 选择“查看 + 创建”，完成存储帐户的创建。
 
     :::image type="content" source="media/infrastructure-encryption-enable/create-account-infrastructure-encryption-portal.png" alt-text="显示如何在创建帐户时启用基础结构加密的屏幕截图":::
+
+若要验证是否通过 Azure 门户为存储帐户启用了基础结构加密，请执行以下步骤：
+
+1. 导航到 Azure 门户中的存储帐户。
+1. 在“设置”下，选择“加密”。 
+
+    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="显示如何验证是否已为帐户启用基础结构加密的屏幕截图":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -118,6 +67,16 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
     -RequireInfrastructureEncryption
 ```
 
+若要验证是否为存储帐户启用了基础结构加密，请调用 [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) 命令。 此命令返回一组存储帐户属性及其值。 在 `Encryption` 属性内检索 `RequireInfrastructureEncryption` 字段，并验证其是否设置为 `True`。
+
+下面的示例检索 `RequireInfrastructureEncryption` 属性的值。 请务必将尖括号中的占位符值替换为你自己的值：
+
+```powershell
+$account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
+    -StorageAccountName <storage-account>
+$account.Encryption.RequireInfrastructureEncryption
+```
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要使用 Azure CLI 创建启用了基础结构加密的存储帐户，请确保已安装 Azure CLI 2.8.0 或更高版本。 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
@@ -134,6 +93,16 @@ az storage account create \
     --sku Standard_RAGRS \
     --kind StorageV2 \
     --require-infrastructure-encryption
+```
+
+若要验证是否为存储帐户启用了基础结构加密，请调用 [az storage account show](/cli/azure/storage/account#az-storage-account-show) 命令。 此命令返回一组存储帐户属性及其值。 在 `encryption` 属性内查找 `requireInfrastructureEncryption` 字段，并验证其是否设置为 `true`。
+
+下面的示例检索 `requireInfrastructureEncryption` 属性的值。 请务必将尖括号中的占位符值替换为你自己的值：
+
+```azurecli-interactive
+az storage account show /
+    --name <storage-account> /
+    --resource-group <resource-group>
 ```
 
 # <a name="template"></a>[模板](#tab/template)
@@ -172,48 +141,15 @@ az storage account create \
 
 ---
 
-## <a name="verify-that-infrastructure-encryption-is-enabled"></a>验证是否已启用基础结构加密
+Azure Policy 提供了一个内置策略，要求为存储帐户启用基础结构加密。 有关详细信息，请参阅 [Azure Policy 内置策略定义](../../governance/policy/samples/built-in-policies.md#storage)中的“存储”部分。
 
-# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
-若要验证是否通过 Azure 门户为存储帐户启用了基础结构加密，请执行以下步骤：
+## <a name="create-an-encryption-scope-with-infrastructure-encryption-enabled"></a>创建启用了基础结构加密的加密范围
 
-1. 导航到 Azure 门户中的存储帐户。
-1. 在“设置”下，选择“加密”。 
-
-    :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="显示如何验证是否已为帐户启用基础结构加密的屏幕截图":::
-
-# <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-若要验证是否通过 PowerShell 为存储帐户启用了基础结构加密，请调用 [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) 命令。 此命令返回一组存储帐户属性及其值。 在 `Encryption` 属性内检索 `RequireInfrastructureEncryption` 字段，并验证其是否设置为 `True`。
-
-下面的示例检索 `RequireInfrastructureEncryption` 属性的值。 请务必将尖括号中的占位符值替换为你自己的值：
-
-```powershell
-$account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
-    -StorageAccountName <storage-account>
-$account.Encryption.RequireInfrastructureEncryption
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-若要验证是否通过 Azure CLI 为存储帐户启用了基础结构加密，请调用 [az storage account show](/cli/azure/storage/account#az_storage_account_show) 命令。 此命令返回一组存储帐户属性及其值。 在 `encryption` 属性内查找 `requireInfrastructureEncryption` 字段，并验证其是否设置为 `true`。
-
-下面的示例检索 `requireInfrastructureEncryption` 属性的值。 请务必将尖括号中的占位符值替换为你自己的值：
-
-```azurecli-interactive
-az storage account show /
-    --name <storage-account> /
-    --resource-group <resource-group>
-```
-
-# <a name="template"></a>[模板](#tab/template)
-
-空值
-
----
+如果为帐户启用了基础架构加密，则在该帐户上创建的任何加密范围都会自动使用基础结构加密。 如果未在帐户级别启用基础结构加密，则可以选择在创建加密范围时为该范围启用它。 创建范围后，无法更改加密范围的基础结构加密设置。 有关详细信息，请参阅[创建加密范围](../blobs/encryption-scope-manage.md#create-an-encryption-scope)。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [静态数据的 Azure 存储加密](storage-service-encryption.md)
 - [用于 Azure 存储加密的客户管理的密钥](customer-managed-keys-overview.md)
+- [Blob 存储的加密范围](../blobs/encryption-scope-overview.md)

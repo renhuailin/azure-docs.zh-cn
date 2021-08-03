@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 11/15/2020
+ms.date: 05/11/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 04c9bc429d9663f7ac36b6ba8f40abf225eb71c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 329ddb32282d91ec5e990753057aea606622a266
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359094"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110535178"
 ---
 # <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>将工作或学校帐户添加到 Microsoft Authenticator 应用
 
@@ -35,7 +35,7 @@ ms.locfileid: "97359094"
 ### <a name="sign-in-with-your-credentials"></a>使用凭据登录
 
 >[!Note]
->只有管理员使用 Authenticator 应用为其启用了手机登录的用户才可以使用此功能。
+>现在可以登录 Microsoft Authenticator 应用并添加工作或学校帐户。
 
 使用你的凭据登录到工作或学校帐户来添加帐户：
 
@@ -43,15 +43,15 @@ ms.locfileid: "97359094"
 
 1. 输入工作或学校帐户凭据。 如果拥有“临时访问密码”(TAP)，则可以使用该密码登录。 此时，可能会因为以下其中一种情形而被阻止继续后续操作：
 
-   - 如果帐户的身份验证方法不足以获取强身份验证令牌，则将无法继续添加帐户。
+   - 如果帐户的身份验证方法不足以获取强身份验证令牌，则无法继续添加帐户。
 
-   - 如果收到消息 `You might be signing in from a location that is restricted by your admin`，则会被阻止，需要管理员在[安全信息](https://mysignins.microsoft.com/security-info)中解除阻止。
+   - 如果收到消息 `You might be signing in from a location that is restricted by your admin`，则表示管理员尚未为你启用此功能。 可以尝试通过扫描“其他安全性验证”页面或 [安全信息](https://mysignins.microsoft.com/security-info)页面中的 QR 码来设置帐户。
 
-   - 如果管理员未阻止你使用 Authenticator 应用进行手机登录，则可以进行设备注册来设置无密码手机登录和 Azure 多重身份验证 (MFA)。
+1. 如果管理员允许你使用 Authenticator 应用进行手机登录，则可以进行设备注册来设置无密码手机登录和 Azure 多重身份验证 (MFA)。 但无论是否可以进行手机登录，你都可以设置 MFA。
 
 1. 此时，系统可能会要求扫描组织提供的 QR 代码，以在应用中设置本地多重身份验证帐户。 仅当组织使用本地 MFA 服务器时，才需要进行此操作。
 
-1. 在设备上，点击帐户，然后在全屏视图中验证帐户是否正确，以及是否有关联的六位数验证码。 为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个代码。
+1. 在设备上，点击帐户，然后在全屏视图中验证帐户是否正确。 为了提高安全性，验证码每 30 秒更改一次，以防有人多次使用一个代码。
 
 ## <a name="sign-in-with-a-qr-code"></a>使用 QR 码登录
 
@@ -71,7 +71,17 @@ ms.locfileid: "97359094"
 
 如果系统未提示使用相机来扫描 QR 码，请在手机的设置中确保 Authenticator 应用有权访问手机相机。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="sign-in-on-a-remote-computer"></a>在远程计算机上登录
+
+许多应用允许在其他设备（例如电脑）上通过输入代码进行身份验证。 如果要在远程计算机上登录并安装 Microsoft Authenticator 应用，请执行以下操作：
+
+1. 打开 Microsoft Authenticator 应用并选择 + 按钮，然后依次单击“添加工作或学校帐户”和“登录”&gt;&gt;  。
+1. 选择“从另一台设备登录”。
+1. 在远程屏幕上，打开[“登录帐户”页面](https://microsoft.com/devicelogin)，然后输入 Authenticator 应用中显示的代码。
+1. 在远程屏幕上，使用工作或学校帐户凭据登录。 如果拥有“临时访问密码”(TAP)，则可以使用该密码登录。
+1. 在远程屏幕上完成身份验证后，返回到 Authenticator 应用，完成设置。
+
+ ## <a name="next-steps"></a>后续步骤
 
 - 将帐户添加到应用后，可以在设备上使用 Authenticator 应用登录。 有关详细信息，请参阅[使用应用登录](user-help-auth-app-sign-in.md)。
 

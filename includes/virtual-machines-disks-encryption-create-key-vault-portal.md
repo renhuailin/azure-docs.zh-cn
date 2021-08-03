@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/23/2020
+ms.date: 05/17/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a967777b65c06cf23239a47e8e691fb3a29231b4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f6cf40e7b384c9b0e88db679f9de8ac9bbba1607
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "88815464"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "112078756"
 ---
 如果你是第一次执行此操作，则为磁盘设置客户托管密钥时将要求你按特定顺序创建资源。 首先，需要创建并设置 Azure Key Vault。
 
@@ -49,6 +49,13 @@ ms.locfileid: "88815464"
 
     ![选择“生成/导入”按钮后出现的“创建密钥”边栏选项卡的屏幕截图](./media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-generate.png)
 
+### <a name="add-an-azure-rbac-role"></a>添加 Azure RBAC 角色
+
+你已创建 Azure 密钥保管库和密钥，现在必须添加 Azure RBAC 角色，以便可以将 Azure 密钥保管库用于磁盘加密集。
+
+1. 选择“访问控制(IAM)”并添加角色。
+1. 添加“Key Vault 管理员”、“所有者”或“参与者”角色。
+
 ## <a name="set-up-your-disk-encryption-set"></a>设置磁盘加密集
 
 1. 搜索“磁盘加密集”并选择它。
@@ -57,22 +64,14 @@ ms.locfileid: "88815464"
     ![磁盘加密门户主屏幕的屏幕截图。 突出显示“添加”按钮](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-create-disk-encryption-set.png)
 
 1. 选择资源组，命名加密集，然后选择与 Key Vault 相同的区域。
-1. 对于“加密类型”，请选择“使用客户管理的密钥进行静态加密” 。
+1. 对于“加密类型”，请选择“使用客户管理的密钥进行静态加密”。
 
     > [!NOTE]
     > 一旦创建了具有特定加密类型的磁盘加密集，就无法对其进行更改。 如果要使用其他加密类型，则必须创建新的磁盘加密集。
 
 1. 选择“单击以选择密钥”。
-1. 选择先前创建的 Key Vault 和密钥，以及版本。
+1. 选择先前创建的密钥保管库和密钥，以及版本。
 1. 按“选择”。
 1. 选择“审阅 + 创建”，然后选择“创建” 。
 
     ![磁盘加密创建边栏选项卡的屏幕截图。 显示订阅、资源组、磁盘加密集名称、区域以及 Key Vault + 密钥选择器。](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)
-
-1. 完成创建后，打开磁盘加密集，然后选择弹出的警报。
-
-    ![警报弹出窗口的屏幕截图：“若要将磁盘、映像或快照与磁盘加密设置相关联，必须向 Key Vault 授予权限”。 选择此警报以继续](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-encryption-set-alert-fix.png)
-
-    应弹出两个通知并成功。 这将使你能够将磁盘加密集与 Key Vault 协同使用。
-
-    ![Key Vault 的成功权限和角色分配的屏幕截图。](./media/virtual-machines-disk-encryption-portal/disk-encryption-notification-success.png)

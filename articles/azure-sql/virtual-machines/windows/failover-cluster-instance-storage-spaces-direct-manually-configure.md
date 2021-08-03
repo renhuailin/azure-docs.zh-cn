@@ -8,18 +8,18 @@ editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.subservice: hadr
-ms.custom: na
+ms.custom: na, devx-track-azurepowershell
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: aa19cf6b59b1efa4b14501fbf64e319da3e4c0b3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4ca8e2285cafee5cabfe884f5214ffacaec95721
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048635"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111569158"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>使用存储空间直通创建 FCI（Azure VM 上的 SQL Server）
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,6 +27,9 @@ ms.locfileid: "102048635"
 本文介绍了如何使用[存储空间直通](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)为 Azure 虚拟机 (VM) 上的 SQL Server 创建故障转移群集实例 (FCI)。 存储空间直通充当基于软件的虚拟存储区域网络 (VSAN)，在 Windows 群集中的节点 (Azure VM) 之间同步存储（数据磁盘）。 
 
 若要了解详细信息，请参阅对 [Azure VM 上的 SQL Server 的 FCI](failover-cluster-instance-overview.md) 和[群集最佳做法](hadr-cluster-best-practices.md)的概述。 
+
+> [!NOTE]
+> 现在，可以使用 Azure Migrate 将故障转移群集实例解决方案直接迁移到 Azure VM 上的 SQL Server。 有关详细信息，请参阅[迁移故障转移群集实例](../../migration-guides/virtual-machines/sql-server-failover-cluster-instance-to-sql-on-azure-vm.md)。 
 
 
 ## <a name="overview"></a>概述 
@@ -84,37 +87,6 @@ ms.locfileid: "102048635"
 
 有关后续步骤的详细信息，请参阅[Windows Server 2016 中使用存储空间直通的超融合解决方案](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-3-configure-storage-spaces-direct)中的“步骤 3：配置存储空间直通”部分。
 
-
-## <a name="validate-the-cluster"></a>验证群集
-
-使用 UI 或 PowerShell 验证群集。
-
-若要使用 UI 来验证群集，请在某个虚拟机中执行以下步骤：
-
-1. 在“服务器管理器”下，依次选择“工具”、“故障转移群集管理器”。  
-1. 在“故障转移群集管理器”下，依次选择“操作”、“验证配置”。  
-1. 选择“**下一页**”。
-1. 在“选择服务器或群集”下，输入两个虚拟机的名称。
-1. 在“测试选项”下，选择“仅运行选择的测试”。  
-1. 选择“**下一页**”。
-1. 在“测试选择”下，选择除“存储”以外的所有测试，如下所示： 
-
-   ![选择群集验证测试](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/10-validate-cluster-test.png)
-
-1. 选择“**下一页**”。
-1. 在“确认”下，选择“下一步”。 
-
-    “验证配置”向导会运行验证测试。
-
-若要使用 PowerShell 验证群集，请在某个虚拟机上通过管理员 PowerShell 会话运行以下脚本：
-
-   ```powershell
-   Test-Cluster –Node ("<node1>&quot;,&quot;<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
-   ```
-
-验证群集后，创建故障转移群集。
-
-
 ## <a name="create-failover-cluster"></a>创建故障转移群集
 
 若要创建故障转移群集，需要：
@@ -147,7 +119,37 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ## <a name="configure-quorum"></a>配置仲裁
 
-配置最符合业务需求的仲裁解决方案。 你可以配置[磁盘见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)、[云见证](/windows-server/failover-clustering/deploy-cloud-witness)或[文件共享见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。 有关详细信息，请参阅 [SQL Server VM 上的仲裁](hadr-cluster-best-practices.md#quorum)。 
+虽然磁盘见证是最具复原能力的仲裁选项，但配置了存储空间直通的故障转移群集实例不支持该选项。 因此，对于 Azure VM 上的 SQL Server 的此类群集配置，云见证是建议的仲裁解决方案。 否则，请配置文件共享见证。 
+
+如果群集中的投票数为偶数，请配置最适合你的业务需求的[仲裁解决方案](hadr-cluster-quorum-configure-how-to.md)。 有关详细信息，请参阅 [SQL Server VM 上的仲裁](hadr-windows-server-failover-cluster-overview.md#quorum)。 
+
+## <a name="validate-the-cluster"></a>验证群集
+
+使用 UI 或 PowerShell 验证群集。
+
+若要使用 UI 来验证群集，请在某个虚拟机中执行以下步骤：
+
+1. 在“服务器管理器”下，依次选择“工具”、“故障转移群集管理器”。  
+1. 在“故障转移群集管理器”下，依次选择“操作”、“验证配置”。  
+1. 选择“**下一页**”。
+1. 在“选择服务器或群集”下，输入两个虚拟机的名称。
+1. 在“测试选项”下，选择“仅运行选择的测试”。  
+1. 选择“**下一页**”。
+1. 在“测试选择”下，选择除“存储”以外的所有测试，如下所示： 
+
+   ![选择群集验证测试](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/10-validate-cluster-test.png)
+
+1. 选择“**下一页**”。
+1. 在“确认”下，选择“下一步”。 
+
+    “验证配置”向导会运行验证测试。
+
+若要使用 PowerShell 验证群集，请在某个虚拟机上通过管理员 PowerShell 会话运行以下脚本：
+
+   ```powershell
+   Test-Cluster –Node ("<node1>&quot;,&quot;<node2>") –Include "Storage Spaces Direct", "Inventory", "Network", "System Configuration"
+   ```
+
 
 ## <a name="add-storage"></a>添加存储
 
@@ -234,15 +236,14 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="configure-connectivity"></a>配置连接 
 
-若要将流量正确路由到当前主节点，请配置适用于你的环境的连接选项。 你可以创建 [Azure 负载均衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md)，也可以在使用 SQL Server 2019 CU2（或更高版本）和 Windows Server 2016（或更高版本）的情况下改用[分布式网络名称](failover-cluster-instance-distributed-network-name-dnn-configure.md)功能。 
-
-有关群集连接选项的更多详细信息，请参阅[将 HADR 连接路由到 Azure VM 上的 SQL Server](hadr-cluster-best-practices.md#connectivity)。 
+可为故障转移群集实例配置虚拟网络名称或分布式网络名称。 [查看两者之间的差异](hadr-windows-server-failover-cluster-overview.md#virtual-network-name-vnn)；然后，为故障转移群集实例部署[分布式网络名称](failover-cluster-instance-distributed-network-name-dnn-configure.md)或[虚拟网络名称](failover-cluster-instance-vnn-azure-load-balancer-configure.md)。  
 
 ## <a name="limitations"></a>限制
 
 - Azure 虚拟机支持 Windows Server 2019 上的 Microsoft 分布式事务处理协调器 (MSDTC)，其中的存储位于 CSV 和[标准负载均衡器](../../../load-balancer/load-balancer-overview.md)上。
 - 如果将存储添加到群集，则仅当未选中或清除了磁盘资格选项时，已作为 NTFS 格式的磁盘附加的磁盘才能与存储空间直通一起使用。 
 - 仅支持在[轻型管理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)下注册到 SQL IaaS 代理扩展。
+- 使用存储空间直通作为共享存储的故障转移群集实例不支持对群集仲裁使用磁盘见证。 请改用云见证。 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -250,8 +251,9 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 如果存储空间直通不是适合你的 FCI 存储解决方案，请考虑改用 [Azure 共享磁盘](failover-cluster-instance-azure-shared-disks-manually-configure.md)或[高级文件共享](failover-cluster-instance-premium-file-share-manually-configure.md)来创建 FCI。 
 
-若要了解详细信息，请参阅对 [Azure VM 上的 SQL Server 的 FCI](failover-cluster-instance-overview.md) 和[群集配置最佳做法](hadr-cluster-best-practices.md)的概述。 
+若要了解更多信息，请参阅以下文章：
 
-有关详细信息，请参阅： 
-- [Windows 群集技术](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server 故障转移群集实例](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Azure VM 上的 SQL Server 的 Windows Server 故障转移群集](hadr-windows-server-failover-cluster-overview.md)
+- [Azure VM 上的 SQL Server 的故障转移群集实例](failover-cluster-instance-overview.md)
+- [故障转移群集实例概述](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Azure VM 上的 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)

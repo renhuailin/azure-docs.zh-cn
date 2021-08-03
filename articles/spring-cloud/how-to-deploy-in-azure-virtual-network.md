@@ -7,16 +7,16 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/21/2020
 ms.custom: devx-track-java, devx-track-azurecli, subject-rbac-steps
-ms.openlocfilehash: 2ff56857eca112ebd808a96f3aaa097ab4be5c18
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 0921c3d9bf254e3d486ec381c3243a8035bb6f50
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291525"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750346"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>在虚拟网络中部署 Azure Spring Cloud
 
-这篇文章适用于：âœ”ï¸ Java âœ”ï¸ C#
+本文适用于：✔️ Java ✔️ C#
 
 本教程介绍如何在虚拟网络中部署 Azure Spring Cloud 实例。 此部署有时称为 VNet 注入。
 
@@ -62,7 +62,7 @@ az provider register --namespace Microsoft.ContainerService
 
 1. 在“创建虚拟网络”对话框中，输入或选择以下信息：
 
-    |设置          |值                                             |
+    |设置          |Value                                             |
     |-----------------|--------------------------------------------------|
     |订阅     |选择订阅。                         |
     |资源组   |选择你的资源组，或新建一个资源组。  |
@@ -88,9 +88,7 @@ Azure Spring Cloud 要求对虚拟网络具有“所有者”权限，以便在�
 
     ![屏幕截图显示“访问控制”屏幕。](./media/spring-cloud-v-net-injection/access-control.png)
 
-1. 在[管理组 | 订阅 | 资源组 | 资源]范围中向[用户 | 组 | 服务主体 | 托管标识]分配“[azure-spring-cloud-data-reader](../role-based-access-control/built-in-roles.md#azure-spring-cloud-data-reader)”角色。
-
-    有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
+1. 将“所有者”角色分配给 Azure Spring Cloud 资源提供程序。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 还可以通过运行以下 Azure CLI 命令来执行此步骤：
 
@@ -189,7 +187,7 @@ Azure Spring Cloud 支持使用现有的子网和路由表。
 
 * 仅当创建新的 Azure Spring Cloud 服务实例时，才能将 Azure 路由表与 VNet 相关联。 创建 Azure Spring Cloud 后，无法改用其他路由表。
 * 微服务应用程序子网和服务运行时子网必须与不同的路由表相关联，或者不与任何路由表相关联。
-* 在创建实例之前必须分配权限。 确保授予对路由表的 Azure Spring Cloud“所有者”权限。
+* 在创建实例之前必须分配权限。 确保授予对路由表的 Azure Spring Cloud 资源提供程序“所有者”权限。
 * 创建群集后，无法更新关联的路由表资源。 虽然无法更新路由表资源，但可以在路由表上修改自定义规则。
 * 不能重复使用具有多个实例的路由表，因为这可能导致路由规则冲突。
 

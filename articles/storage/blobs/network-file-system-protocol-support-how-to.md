@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
-ms.custom: references_regions
-ms.openlocfilehash: 1c71c6b55049d81d5c1ff3e26cba3436f0e2dd23
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: d184569fd28e23b14ff3cb24a0c8e68477b9842d
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890737"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111888727"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>使用网络文件系统 (NFS) 3.0 协议（预览版）装载 Blob 存储
 
@@ -124,10 +124,10 @@ az feature show --namespace Microsoft.Storage --name AllowNFSV3 --subscription <
 
 |设置 | 高级性能层 | 标准性能  
 |----|---|---|
-|位置|所有可用区域 |以下区域之一：澳大利亚东部、韩国中部、美国东部和美国中南部   
+|位置|所有可用区域 |所有可用区域    
 |性能|高级| 标准
 |帐户种类|BlockBlobStorage| 常规用途 V2
-|复制|本地冗余存储 (LRS)| 本地冗余存储 (LRS)
+|复制|本地冗余存储 (LRS)| 本地冗余存储 (LRS)、区域冗余存储 (ZRS)
 |连接方法|公共终结点（选定网络）或专用终结点 |公共终结点（选定网络）或专用终结点
 |需要安全传输|已禁用|已禁用
 |分层命名空间|Enabled|Enabled

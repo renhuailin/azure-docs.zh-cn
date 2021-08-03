@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: cb91d269f6b166510db54637d17d776e71137408
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 247ae926dde9b07b1d627621c456333282f00a42
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102456144"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060026"
 ---
 # <a name="map-data-fields-to-entities-in-azure-sentinel"></a>将数据字段映射到 Azure Sentinel 中的实体 
 
@@ -41,17 +41,23 @@ ms.locfileid: "102456144"
 
 1. 从 Azure Sentinel 导航菜单中，选择“分析”。
 
-1. 选择计划的查询规则，再单击“编辑”。 或者单击屏幕顶部的“创建”&#10132;“计划的查询规则”，创建一个新规则。
+1. 选择计划的查询规则，再单击“编辑”。 或者单击屏幕顶部的“创建”>“计划的查询规则”，新建规则。
 
-1. 单击“设置规则逻辑”选项卡。
+1. 单击“设置规则逻辑”选项卡。 
 
-    :::image type="content" source="media/map-data-fields-to-entities/map-entities.png" alt-text="将字段映射到实体":::
+1. 在“警报扩充（预览）”部分中，展开“实体映射”。
 
-1. 在“警报增强”部分的“实体映射”下，从“实体类型”下拉列表中选择一个实体类型  。
+    :::image type="content" source="media/map-data-fields-to-entities/alert-enrichment.png" alt-text="展开实体映射":::
+
+1. 在当前展开的“实体映射”部分，从“实体类型”下拉列表中选择一个实体类型。
+
+    :::image type="content" source="media/map-data-fields-to-entities/choose-entity-type.png" alt-text="选择实体类型":::
 
 1. 选择实体的“标识符”。 标识符是可充分标识实体的实体属性。 从“标识符”下拉列表中选择一个标识符，然后从“值”下拉列表中选择一个与标识符相对应的数据字段 。 除了一些例外情况，“值”列表中填充的是定义为规则查询主题的表中的数据字段。
 
     最多可为给定实体定义三个标识符。 有些标识符是必需的；而有些是可选的。 必须至少选择一个必需标识符。 否则，会出现一条警告消息，指示需要哪些标识符。 为了获得最佳结果（为了获得最佳唯一标识），应尽可能使用“强标识符”，使用多个强标识符可使数据源之间的关联度更高。 查看可用[实体和标识符](entities-reference.md)的完整列表。
+
+    :::image type="content" source="media/map-data-fields-to-entities/map-entities.png" alt-text="将字段映射到实体":::
 
 1. 单击“添加新实体”以映射多个实体。 你最多可以在一个分析规则中映射五个实体。 还可以映射多个相同类型的实体。 例如，可以映射两个 IP 实体，一个来自“源 IP 地址”字段，另一个来自“目标 IP 地址”字段 。 这样就可以同时跟踪两者。
 

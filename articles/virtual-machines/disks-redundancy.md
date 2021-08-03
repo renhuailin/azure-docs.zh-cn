@@ -3,17 +3,17 @@ title: Azure 托管磁盘的冗余选项
 description: 了解 Azure 托管磁盘的区域冗余存储和本地冗余存储。
 author: roygara
 ms.author: rogarana
-ms.date: 03/02/2021
+ms.date: 05/26/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: f0f3baf1bf56f958408f789961812c0555f289f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 5bb6d0b66e365904e7f0fe4f523f3c19a48d5361
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043637"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110673424"
 ---
 # <a name="redundancy-options-for-managed-disks"></a>托管磁盘的冗余选项
 
@@ -36,28 +36,154 @@ Azure 托管磁盘提供两个存储冗余选项：本地冗余存储和预览�
 
 ZRS 磁盘使你可以在可用性区域从故障中恢复。 如果整个区域出现故障，可将 ZRS 磁盘附加到另一个区域的 VM。 还可将 ZRS 磁盘用作共享磁盘，为群集或分散式应用程序（如 SQL FCI、SAP ASCS/SCS 或 GFS2）提供更高的可用性。 你可将 ZRS 共享磁盘附加到不同区域中的主 VM 和辅助 VM，充分利用 ZRS 和[可用性区域](../availability-zones/az-overview.md)。 如果主区域发生故障，就可使用 [SCSI 永久预留](disks-shared-enable.md#supported-scsi-pr-commands)功能快速故障转移到辅助 VM。
 
-### <a name="limitations"></a>限制
-
-预览期间，托管磁盘的 ZRS 具有以下限制：
-
-- 仅支持高级固态硬盘 (SSD) 和标准 SSD。
-- 当前仅在 EastUS2EUAP 区域中可用。
-- 只能使用 `2020-12-01` API 通过 Azure 资源管理器模板创建 ZRS 磁盘。
-
-请在[此处](https://aka.ms/ZRSDisksPreviewSignUp)注册预览版。
-
 ### <a name="billing-implications"></a>计费影响
 
 有关详细信息，请参阅 [Azure 定价页](https://azure.microsoft.com/pricing/details/managed-disks/)。
 
 ### <a name="comparison-with-other-disk-types"></a>与其他磁盘类型的比较
 
-除了写入延迟更长之外，使用 ZRS 的磁盘与使用 LRS 的磁盘完全相同。 它们的性能目标相同。
+除了写入延迟更长之外，使用 ZRS 的磁盘与使用 LRS 的磁盘完全相同。 它们的性能目标相同。 建议执行[磁盘基准测试](disks-benchmarks.md)来模拟应用程序的工作负载，以比较 LRS 和 ZRS 磁盘之间的延迟。 
+
+### <a name="limitations"></a>限制
+
+预览期间，托管磁盘的 ZRS 具有以下限制：
+
+- 仅支持高级固态硬盘 (SSD) 和标准 SSD。
+- 目前仅在美国西部 2、西欧、北欧和法国中部区域可用。
+- 只能使用下列方法之一创建 ZRS 磁盘：
+    -  Azure 资源管理器模板使用公共预览版 `2020-12-01` API。
+    - 最新 Azure CLI
+
 
 ### <a name="create-zrs-managed-disks"></a>创建 ZRS 托管磁盘
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+#### <a name="prerequisites"></a>先决条件
+
+必须为订阅启用该功能。 使用以下步骤为订阅启用该功能：
+
+1.  执行以下命令，为订阅注册此功能
+
+    ```azurecli
+    az feature register --namespace Microsoft.Compute --name SsdZrsManagedDisks
+    ```
+ 
+2.  在试用该功能之前，请使用以下命令确认注册状态是否为“已注册”（可能需要几分钟）。
+
+    ```azurecli
+    az feature show --namespace Microsoft.Compute --name SsdZrsManagedDisks
+    ```
+
+#### <a name="create-a-vm-with-zrs-disks"></a>创建具有 ZRS 磁盘的 VM
+
+```azurecli
+rgName=yourRGName
+vmName=yourVMName
+location=westus2
+vmSize=Standard_DS2_v2
+image=UbuntuLTS 
+osDiskSku=StandardSSD_ZRS
+dataDiskSku=Premium_ZRS
+
+
+az vm create -g $rgName \
+-n $vmName \
+-l $location \
+--image $image \
+--size $vmSize \
+--generate-ssh-keys \
+--data-disk-sizes-gb 128 \
+--storage-sku os=$osDiskSku 0=$dataDiskSku
+```
+#### <a name="create-vms-with-a-shared-zrs-disk-attached-to-the-vms-in-different-zones"></a>创建其 ZRS 共享磁盘附加到了位于不同区域的虚拟机的 VM
+```azurecli
+
+location=westus2
+rgName=yourRGName
+vmNamePrefix=yourVMNamePrefix
+vmSize=Standard_DS2_v2
+image=UbuntuLTS
+osDiskSku=StandardSSD_LRS
+sharedDiskName=yourSharedDiskName
+sharedDataDiskSku=Premium_ZRS
+
+
+az disk create -g $rgName \
+-n $sharedDiskName \
+-l $location \
+--size-gb 1024 \
+--sku $sharedDataDiskSku \
+--max-shares 2
+
+
+sharedDiskId=$(az disk show -g $rgName -n $sharedDiskName --query 'id' -o tsv)
+
+az vm create -g $rgName \
+-n $vmNamePrefix"01" \
+-l $location \
+--image $image \
+--size $vmSize \
+--generate-ssh-keys \
+--zone 1 \
+--attach-data-disks $sharedDiskId \
+--storage-sku os=$osDiskSku \
+--vnet-name $vmNamePrefix"_vnet" \
+--subnet $vmNamePrefix"_subnet"
+
+az vm create -g $rgName \
+-n $vmNamePrefix"02" \
+-l $location \
+--image $image \
+--size $vmSize \
+--generate-ssh-keys \
+--zone 2 \
+--attach-data-disks $sharedDiskId \
+--storage-sku os=$osDiskSku \
+--vnet-name $vmNamePrefix"_vnet" \
+--subnet $vmNamePrefix"_subnet"
+
+```
+#### <a name="create-a-virtual-machine-scale-set-with-zrs-disks"></a>创建具有 ZRS 磁盘的虚拟机规模集
+```azurecli
+location=westus2
+rgName=yourRGName
+vmssName=yourVMSSName
+vmSize=Standard_DS3_V2
+image=UbuntuLTS 
+osDiskSku=StandardSSD_ZRS
+dataDiskSku=Premium_ZRS
+
+az vmss create -g $rgName \
+-n $vmssName \
+--encryption-at-host \
+--image UbuntuLTS \
+--upgrade-policy automatic \
+--generate-ssh-keys \
+--data-disk-sizes-gb 128 \
+--storage-sku os=$osDiskSku 0=$dataDiskSku
+```
+
+# <a name="resource-manager-template"></a>[资源管理器模板](#tab/azure-resource-manager)
+
 搭配 `2020-12-01` API 使用 Azure 资源管理器模板来创建 ZRS 磁盘。
 
+#### <a name="prerequisites"></a>先决条件
+
+必须为订阅启用该功能。 使用以下步骤为订阅启用该功能：
+
+1.  执行以下命令，为订阅注册此功能
+
+    ```powershell
+     Register-AzProviderFeature -FeatureName "SsdZrsManagedDisks" -ProviderNamespace "Microsoft.Compute" 
+    ```
+
+2.  在试用该功能之前，请使用以下命令确认注册状态是否为“已注册”（可能需要几分钟）。
+
+    ```powershell
+     Get-AzProviderFeature -FeatureName "SsdZrsManagedDisks" -ProviderNamespace "Microsoft.Compute"  
+    ```
+    
 #### <a name="create-a-vm-with-zrs-disks"></a>创建具有 ZRS 磁盘的 VM
 
 ```
@@ -120,7 +246,8 @@ New-AzResourceGroupDeployment -ResourceGroupName zrstesting `
 -osDiskType "StandardSSD_LRS" `
 -dataDiskType "Premium_ZRS" `
 ```
+---
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请使用这些示例 [Azure 资源管理器模板创建具有 ZRS 磁盘的 VM](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/ZRSDisks)。
+- 查看更多[用于创建具有 ZRS 磁盘的 VM 的 Azure 资源管理器模板](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/ZRSDisks)。

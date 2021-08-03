@@ -1,30 +1,30 @@
 ---
-title: Windows 虚拟桌面（经典）诊断日志分析 - Azure
-description: 如何将日志分析与 Windows 虚拟桌面（经典）诊断功能配合使用。
+title: Azure 虚拟桌面（经典）诊断日志分析 - Azure
+description: 如何将日志分析与 Azure 虚拟桌面（经典）诊断功能配合使用。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 9cfa50e13756692295c84b02d02dd71228b16eb9
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 5c1bdadf92d72ebec7ffa122b3c49c5878e2d2b8
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444991"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745162"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>在 Windows 虚拟桌面（经典）中使用 Log Analytics 诊断功能
+# <a name="use-log-analytics-for-the-diagnostics-feature-in-azure-virtual-desktop-classic"></a>在 Azure 虚拟桌面（经典）中使用 Log Analytics 诊断功能
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../diagnostics-log-analytics.md)。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[本文](../diagnostics-log-analytics.md)。
 
-Windows 虚拟桌面提供了一项诊断功能，使管理员能够通过单个界面识别问题。 每当被分配了 Windows 虚拟桌面角色的用户使用该服务时，此功能就会记录诊断信息。 每个日志都包含有关活动中涉及的 Windows 虚拟桌面角色的信息，还包括在会话过程中出现的任何错误消息，以及租户信息和用户信息。 诊断功能用于为用户和管理操作创建活动日志。 每个活动日志都会归属于三个主要类别：
+Azure 虚拟桌面提供了一项诊断功能，使管理员能够通过单个界面识别问题。 每当被分配了 Azure 虚拟桌面角色的用户使用该服务时，此功能就会记录诊断信息。 每个日志都包含有关活动中涉及的 Azure 虚拟桌面角色的信息，还包括在会话过程中出现的任何错误消息，以及租户信息和用户信息。 诊断功能用于为用户和管理操作创建活动日志。 每个活动日志都会归属于三个主要类别：
 
 - 源订阅活动：当用户尝试通过 Microsoft 远程桌面应用程序连接到其源时。
 - 连接活动：当用户尝试通过 Microsoft 远程桌面应用程序连接到桌面或 RemoteApp 时。
 - 管理活动：当管理员在系统上执行管理操作（如创建主机池、将用户分配到应用组和创建角色分配）时。
 
-由于诊断角色服务本身是 Windows 虚拟桌面的一部分，因此无法访问 Windows 虚拟桌面的连接将不会显示在诊断结果中。 在用户遇到网络连接问题时，可能会出现 Windows 虚拟桌面连接问题。
+由于诊断角色服务本身是 Azure 虚拟桌面的一部分，因此无法访问 Azure 虚拟桌面的连接将不会显示在诊断结果中。 在用户遇到网络连接问题时，可能会出现 Azure 虚拟桌面连接问题。
 
 ## <a name="why-you-should-use-log-analytics"></a>为什么要使用 Log Analytics
 
@@ -43,9 +43,9 @@ Windows 虚拟桌面提供了一项诊断功能，使管理员能够通过单个
 
 ## <a name="push-diagnostics-data-to-your-workspace"></a>将诊断数据推送到工作区
 
-可以将诊断数据从 Windows 虚拟桌面租户推送到工作区的 Log Analytics 中。 首次创建租户时，你可以立即设置此功能，方法是将你的工作区链接到你的租户，也可以稍后使用现有租户进行设置。
+可以将诊断数据从 Azure 虚拟桌面租户推送到工作区的 Log Analytics 中。 首次创建租户时，你可以立即设置此功能，方法是将你的工作区链接到你的租户，也可以稍后使用现有租户进行设置。
 
-若要在设置新租户时将租户链接到 Log Analytics 工作区，请运行以下 cmdlet，以通过 TenantCreator 用户帐户登录到 Windows 虚拟桌面：
+若要在设置新租户时将租户链接到 Log Analytics 工作区，请运行以下 cmdlet，以通过 TenantCreator 用户帐户登录到 Azure 虚拟桌面：
 
 ```powershell
 Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com

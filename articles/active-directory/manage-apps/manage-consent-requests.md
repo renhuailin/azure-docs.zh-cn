@@ -2,21 +2,21 @@
 title: 在 Azure Active Directory 中管理应用程序的同意和评估同意请求
 description: 了解在 Azure Active Directory 中如何在禁用或限制用户同意时管理同意请求，以及如何评估对应用程序的租户范围管理员同意请求。
 services: active-directory
-author: kenwith
-manager: daveba
+author: mtillman
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.author: kenwith
+ms.author: mtillman
 ms.reviewer: phsignor
-ms.openlocfilehash: 189a89276d922665dd1ad0fbacc77ba499137048
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4b533c7e12cf62ac633b4988774d7cff71b3e677
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99253096"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079258"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>管理应用程序的同意和评估同意请求
 
@@ -26,7 +26,7 @@ Microsoft [建议](../../security/fundamentals/steps-secure-identity.md#restrict
 
 ## <a name="process-changes-and-education"></a>流程更改和教育
 
- 1. 请考虑启用[管理员同意工作流（预览版）](configure-admin-consent-workflow.md)，以允许用户直接从同意屏幕请求管理员审批。
+ 1. 请考虑启用[管理员同意工作流](configure-admin-consent-workflow.md)，以允许用户直接从同意屏幕请求管理员审批。
 
  2. 确保所有管理员都了解[权限和同意框架](../develop/consent-framework.md)、[同意提示](../develop/application-consent-experience.md)的工作方式以及[如何评估对租户范围管理员同意的请求](#evaluating-a-request-for-tenant-wide-admin-consent)。
  3. 查看组织的现有流程，以便用户请求对应用程序进行管理员审批，并在必要时进行更新。 如果流程发生更改：
@@ -67,9 +67,9 @@ Microsoft [建议](../../security/fundamentals/steps-secure-identity.md#restrict
 
 以下列表提供了一些在评估授予管理员同意的请求时要考虑的建议。
 
-* **了解 Microsoft 标识平台中的[权限和同意框架](../develop/consent-framework.md)。**
+* **了解 Microsoft 标识平台中的 [权限和同意框架](../develop/consent-framework.md)。**
 
-* **了解[委托的权限与应用程序权限](../develop/v2-permissions-and-consent.md#permission-types)之间的区别。**
+* **了解 [委托的权限与应用程序权限](../develop/v2-permissions-and-consent.md#permission-types)之间的区别。**
 
    应用程序权限允许应用程序访问整个组织的数据，而无需任何用户交互。 委托的权限允许应用程序代表在某个时候已登录应用程序的用户进行操作。
 

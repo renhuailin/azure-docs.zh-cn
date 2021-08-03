@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2021
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 3e9baedafb436bc92f734bf39519918686cec58d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2e54eb0ea8166b32dd4bcc794bfcf401d9196884
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124466"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469238"
 ---
 # <a name="azure-storage-migration-overview"></a>Azure 存储迁移概述
 
@@ -37,7 +37,9 @@ ms.locfileid: "108124466"
 
 整个迁移过程由多个不同的阶段组成：发现、评估和迁移。
 
-![显示迁移过程的发现、评估和迁移阶段的示意图](./media/storage-migration-overview/migration-phases.png)
+| 发现 | 评估 | 迁移 |
+| --------- | ---------- | --------- |
+| - 发现要迁移的源 | - 评估适用的目标服务 <br> - 技术与成本注意事项 | - 初始迁移 <br> - 重新同步 <br> - 最终切换 |
 
 #### <a name="discovery-phase"></a>发现阶段
 
@@ -49,7 +51,7 @@ ms.locfileid: "108124466"
 
 | 评估阶段的步骤                     | 选项                                                                          |
 |--------------------------------------------|----------------------------------------------------------------------------------|
-| **选择目标存储服务**            | - Azure Blob 存储和 Data Lake Storage<br>- Azure 文件存储<br>- Azure NetApp 文件<br>- ISV 解决方案 |
+| 选择目标存储服务            | - Azure Blob 存储和 Data Lake Storage<br>- Azure 文件存储<br>- Azure NetApp 文件<br>- ISV 解决方案 |
 | **选择迁移方法**                  | - 联机<br>- 脱机<br> - 上述两种方法的组合                                  |
 | **为作业选择最佳迁移工具** | - 商用工具（Azure 和 ISV）<br> - 开源                             
 
@@ -86,7 +88,7 @@ ms.locfileid: "108124466"
 可使用两种基本迁移方法进行存储迁移。
 
 - **联机映像服务**。 联机方法使用网络进行数据迁移。 可以使用公共 Internet 或 [Azure ExpressRoute](../../expressroute/expressroute-introduction.md)。 如果服务没有公共终结点，则必须将 VPN 与公共 Internet 配合使用。
-- **脱机。** 脱机方法使用 [Azure Data Box](https://azure.microsoft.com/services/databox/) 设备之一。
+- **脱机**。 脱机方法使用 [Azure Data Box](https://azure.microsoft.com/services/databox/) 设备之一。
 
 是要使用联机方法还是脱机方法取决于可用的网络带宽。 如果有足够的网络带宽可供在所需时间线内执行迁移，则联机方法是首选方法。
 

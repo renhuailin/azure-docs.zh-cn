@@ -1,14 +1,14 @@
 ---
-title: 利用 Azure VMware 解决方案预留实例节省成本
-description: 了解如何购买 Azure VMware 解决方案的预留实例。
+title: Azure VMware 解决方案的预留实例
+description: 了解如何购买 Azure VMware 解决方案的预留实例。 预留实例仅涵盖使用情况的计算部分，并包括软件许可成本。
 ms.topic: how-to
-ms.date: 02/03/2021
-ms.openlocfilehash: 227ea9274f70cc58468e7e0b3ddcf8239f5b7f5b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/13/2021
+ms.openlocfilehash: 8407d4e85718660bfcf17b3597710ed5237b41e1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99550969"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745810"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>利用 Azure VMware 解决方案节省成本
 
@@ -18,9 +18,9 @@ ms.locfileid: "99550969"
 
 预留实例有一些例外情况。
 
--   **云** - 预留仅在[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware)页上列出的区域中可用。
+-   **云** - 预留仅在 [按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware)页上列出的区域中可用。
 
--   **配额不足** - 范围限定为单个/共享订阅的预留实例必须在订阅中具有可用于新预留实例的主机配额。 你可以[创建配额增加请求](enable-azure-vmware-solution.md)以解决此问题。
+-   **配额不足** - 范围限定为单个/共享订阅的预留实例必须在订阅中具有可用于新预留实例的主机配额。 你可以[创建配额增加请求](request-host-quota-azure-vmware-solution.md)以解决此问题。
 
 -   **产品/服务资格** - 你将需要 Microsoft 的 [Azure 企业协议 (EA)](../cost-management-billing/manage/ea-portal-agreements.md)。
 
@@ -77,7 +77,7 @@ ms.locfileid: "99550969"
 
 5. 选择“立即购买”，然后选择“Azure VMware 解决方案”。
 
-   :::image type="content" source="media/reserved-instances/csp-buy-ri-azure-portal.png" alt-text="Microsoft Azure 门户预留" lightbox="media/reserved-instances/csp-buy-ri-azure-portal.png":::
+   :::image type="content" source="media/reserved-instances/csp-buy-reserved-instance-azure-portal.png" alt-text="Microsoft Azure 门户预留" lightbox="media/reserved-instances/csp-buy-reserved-instance-azure-portal.png":::
 
 6. 输入必填字段。 与正在运行的 Azure VMware 解决方案主机相匹配的所选属性可享受预留折扣。  属性包括 SKU、区域（如果适用）和范围。 预留范围选择预留节省的应用场合。
 
@@ -125,7 +125,7 @@ ms.locfileid: "99550969"
 > - 数量
 > - 持续时间
 >
->但是，如果想要进行更改，可以交换预留。
+>但是，如果你要进行更改，可以交换预留项。
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>对预留执行取消、交换或退款操作
 
@@ -135,9 +135,9 @@ CSP 可以取消、交换为其客户购买的预留或退款，但有一些限�
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解如何购买 Azure VMware 解决方案的预留实例，接下来你可能想要了解以下内容：
+现在，你已了解 Azure VMware 解决方案的预留实例，接下来你可能想要了解以下内容：
 
 - [创建 Azure VMware 解决方案评估](../migrate/how-to-create-azure-vmware-solution-assessment.md)。
-- [管理适用于 Azure VMware 解决方案的 DHCP](manage-dhcp.md)。
-- [Azure VMware 解决方案 VM 的生命周期管理](lifecycle-management-of-azure-vmware-solution-vms.md)。
+- [配置适用于 Azure VMware 解决方案的 DHCP](configure-dhcp-azure-vmware-solution.md)。
+- [在 Azure VMware 解决方案中集成 Azure 原生服务](integrate-azure-native-services.md)。
  

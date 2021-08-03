@@ -1,20 +1,20 @@
 ---
 title: Azure Lighthouse 方案中的租户、用户和角色
-description: 了解 Azure Active Directory 租户、用户和角色的概念，以及如何在 Azure Lighthouse 方案中使用它们。
-ms.date: 01/14/2021
+description: 了解如何在 Azure Lighthouse 场景中使用 Azure Active Directory 租户、用户和角色。
+ms.date: 05/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: d78828cc739030f8e456c64885d77ddf59dd13fb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bcb3c250d0973174e7356bd489b84938238af6e7
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98233910"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112074820"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Azure Lighthouse 方案中的租户、用户和角色
 
 在将客户加入 [Azure Lighthouse](../overview.md) 之前，请务必了解 Azure Active Directory (Azure AD) 租户、用户和角色的工作原理以及如何在 Azure Lighthouse 方案中使用它们。
 
-租户是 Azure AD 的专用受信任的实例。 通常，每个租户表示一个组织。 通过 [Azure 委派资源管理](azure-delegated-resource-management.md)，可以将资源从一个租户逻辑投影到另一个租户。 这样一来，管理租户中的用户（例如属于服务提供商的用户）可以访问客户租户中的委派资源，或者让[具有多个租户的企业集中其管理操作](enterprise.md)。
+租户是 Azure AD 的专用受信任的实例。 通常，每个租户表示一个组织。 Azure Lighthouse 支持将资源从一个租户[逻辑投影](architecture.md#logical-projection)到另一个租户。 这样一来，管理租户中的用户（例如属于服务提供商的用户）可以访问客户租户中的委派资源，或者让[具有多个租户的企业集中其管理操作](enterprise.md)。
 
 为了实现此逻辑投影，必须将客户租户中的订阅（或订阅中的一个或多个资源组）加入 Azure Lighthouse。 可以[通过 Azure 资源管理器模板](../how-to/onboard-customer.md)或[将公共或私有产品/服务发布到 Azure 市场](../how-to/publish-managed-services-offers.md)来完成此加入过程。
 

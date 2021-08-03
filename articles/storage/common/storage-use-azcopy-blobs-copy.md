@@ -4,18 +4,18 @@ description: 本文包含 AzCopy 示例命令的集合，可帮助你在存储�
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 524e3f70f9588cfae2c739722fc1a44e683f9a7f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 980c4da25e681b8bb2fb7a608481160a2c0857f2
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97617283"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854551"
 ---
-# <a name="copy-blobs-between-azure-storage-accounts-by-using-azcopy-v10"></a>使用 AzCopy v10 在 Azure 存储帐户之间复制 Blob
+# <a name="copy-blobs-between-azure-storage-accounts-by-using-azcopy"></a>使用 AzCopy 在 Azure 存储帐户之间复制 Blob
 
 可以使用 AzCopy v10 命令行实用程序在存储帐户之间复制 Blob、目录和容器。 
 
@@ -41,7 +41,7 @@ AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-ur
 
 - 如果复制到具有分层命名空间的帐户或从其中复制，请在 URL 语法中使用 `blob.core.windows.net` 而不是 `dfs.core.windows.net`。 [Data Lake Storage 上的多协议访问](../blobs/data-lake-storage-multi-protocol-access.md)使你可以使用 `blob.core.windows.net`，这是帐户间复制方案的唯一受支持的语法。 
 
-- 可以通过设置 `AZCOPY_CONCURRENCY_VALUE` 环境变量的值来提高复制操作的吞吐量。 有关详细信息，请参阅[优化吞吐量](storage-use-azcopy-configure.md#optimize-throughput)。 
+- 可以通过设置 `AZCOPY_CONCURRENCY_VALUE` 环境变量的值来提高复制操作的吞吐量。 若要了解详细信息，请参阅[提高并发性](storage-use-azcopy-optimize.md#increase-concurrency)。 
 
 - 如果源 Blob 具有索引标记，并且你想要保留这些标记，则必须将它们重新应用于目标 blob。 有关如何设置索引标记的信息，请参阅本文的[将 Blob 复制到其他具有索引标记的存储帐户](#copy-between-accounts-and-add-index-tags)部分。
 
@@ -52,10 +52,15 @@ AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-ur
 > [!TIP]
 > 此示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
-|    |     |
-|--------|-----------|
-| **语法** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>'` |
-| **示例** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
+**语法**
+
+`azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>'`
+
+**示例**
+
+```azcopy
+azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'
+```
 
 复制操作是同步的，因此，当命令返回时，表示已复制所有文件。 
 
@@ -66,10 +71,15 @@ AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-ur
 > [!TIP]
 > 此示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
-|    |     |
-|--------|-----------|
-| **语法** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
-| **示例** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+**语法**
+
+`azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive`
+
+**示例**
+
+```azcopy
+azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive
+```
 
 复制操作是同步的，因此，当命令返回时，表示已复制所有文件。
 
@@ -80,10 +90,15 @@ AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-ur
 > [!TIP]
 > 此示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
-|    |     |
-|--------|-----------|
-| **语法** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
-| **示例** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+**语法**
+
+`azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive`
+
+**示例**
+
+```azcopy
+azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive
+```
 
 复制操作是同步的，因此，当命令返回时，表示已复制所有文件。
 
@@ -94,10 +109,15 @@ AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-ur
 > [!TIP]
 > 此示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
-|    |     |
-|--------|-----------|
-| **语法** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive` |
-| **示例** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
+**语法**
+
+`azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive`
+
+**示例**
+
+```azcopy
+azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive
+```
 
 复制操作是同步的，因此，当命令返回时，表示已复制所有文件。
 
@@ -107,25 +127,43 @@ AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-ur
 
 将 Blob 复制到其他存储帐户，并向目标 Blob 中添加 [Blob 索引标记（预览版）](../blobs/storage-manage-find-blobs.md)。
 
-如果使用 Azure AD 授权，则必须向安全主体分配[存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)角色，或者必须通过自定义 Azure 角色向其授予 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write`[Azure 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md#microsoftstorage)权限。 如果使用共享访问签名 (SAS) 令牌，则该令牌必须通过 `t` SAS 权限提供对 Blob 标记的访问权限。
+如果使用 Azure AD 授权，则必须向安全主体分配[存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)角色，或者必须通过自定义 Azure 角色向其授予 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write`[Azure 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md#microsoftstorage)权限。 如果使用共享访问签名 (SAS) 令牌，则该令牌必须通过 SAS 权限 `t` 提供对 Blob 标记的访问权限。
 
 要添加标记，请使用 `--blob-tags` 选项以及 URL 编码的键值对。 
 
 例如，要添加键 `my tag` 和值 `my tag value`，可将 `--blob-tags='my%20tag=my%20tag%20value'` 添加到目标参数。 
 
-使用 & (`&`) 号分隔多个索引标记。  例如，如果要添加键 `my second tag` 和值 `my second tag value`，则完整选项字符串将为 `--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'`。
+使用与号 (`&`) 分隔多个索引标记。  例如，如果要添加键 `my second tag` 和值 `my second tag value`，则完整选项字符串将为 `--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'`。
 
 以下示例演示如何使用 `--blob-tags` 选项。
 
 > [!TIP]
 > 这些示例将路径参数括在单引号 ('') 内。 在除 Windows 命令 Shell (cmd.exe) 以外的所有命令 shell 中，都请使用单引号。 如果使用 Windows 命令 Shell (cmd.exe)，请用双引号 ("") 而不是单引号 ('') 括住路径参数。
 
-|    |     |
-|--------|-----------|
-| **Blob** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt' --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` |
-| **Directory** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` |
-| **容器** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive --blob-tags="--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` |
-| **帐户** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive --blob-tags="--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` |
+**Blob 示例**
+
+```azcopy
+
+azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt' --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'
+```
+
+**目录示例**
+
+```azcopy
+azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'
+```
+
+ **容器示例**
+
+```azcopy
+azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'
+```
+
+**帐户示例**
+
+```azcopy
+azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'
+```
 
 复制操作是同步的，因此，当命令返回时，表示已复制所有文件。
 
@@ -146,12 +184,18 @@ AzCopy 使用[服务器到服务器](/rest/api/storageservices/put-block-from-ur
 
 ## <a name="next-steps"></a>后续步骤
 
-在以下文章中查找更多示例：
+如需了解更多示例，请参阅以下文章：
 
 - [示例：上载](storage-use-azcopy-blobs-upload.md)
 - [示例：下载](storage-use-azcopy-blobs-download.md)
 - [示例：同步](storage-use-azcopy-blobs-synchronize.md)
 - [示例：Amazon S3 存储桶](storage-use-azcopy-s3.md)
+- [示例：Google Cloud Storage](storage-use-azcopy-google-cloud.md)
 - [示例：Azure 文件存储](storage-use-azcopy-files.md)
 - [教程：使用 AzCopy 将本地数据迁移到云存储](storage-use-azcopy-migrate-on-premises-data.md)
-- [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
+
+请参阅以下文章，配置设置、优化性能和排查问题：
+
+- [AzCopy 配置设置](storage-ref-azcopy-configuration-settings.md)
+- [优化 AzCopy 的性能](storage-use-azcopy-optimize.md)
+- [使用日志文件对 Azure 存储中的 AzCopy V10 问题进行故障排除](storage-use-azcopy-configure.md)

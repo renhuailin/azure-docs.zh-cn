@@ -3,12 +3,12 @@ title: 排查 Azure 文件共享备份问题
 description: 本文提供在保护 Azure 文件共享时所发生的问题的故障排除信息。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 4908b8ed97bad43d9d24427660a8691ee43d7eaf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 86324c80f0df70713c6ea76a43e4b9da50c1fae6
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89376972"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555013"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>排查备份 Azure 文件共享时出现的问题
 
@@ -42,6 +42,7 @@ ms.locfileid: "89376972"
 - 确保未删除你要保护的文件共享。
 - 确保存储帐户是支持进行文件共享备份的存储帐户。 可以参考 [Azure 文件共享备份的支持矩阵](azure-file-share-support-matrix.md)来查找支持的存储帐户。
 - 检查是否已在同一恢复服务保管库中对文件共享进行保护。
+- 检查存储帐户的网络路由设置，确保将路由首选项设置为 Microsoft 网络路由。
 
 ### <a name="backup-file-share-configuration-or-the-protection-policy-configuration-is-failing"></a>备份文件共享配置（或保护策略配置）失败
 
@@ -126,6 +127,14 @@ ms.locfileid: "89376972"
 - 文件共享备份不支持针对同一文件共享的并行快照请求。
 
 - 等待现有备份作业完成，然后重试。 如果在恢复服务保管库中找不到某个备份作业，请查看同一订阅中的其他恢复服务保管库。
+
+### <a name="usererrorstorageaccountinternetroutingnotsupported--storage-accounts-with-internet-routing-configuration-are-not-supported-by-azure-backup"></a>UserErrorStorageAccountInternetRoutingNotSupported- Azure 备份不支持具有 Internet 路由配置的存储帐户
+
+错误代码：UserErrorStorageAccountInternetRoutingNotSupported
+
+错误消息：Azure 备份不支持具有 Internet 路由配置的存储帐户
+
+请确保为托管备份文件共享的存储帐户设置的路由首选项为 Microsoft 网络路由。
 
 ### <a name="filesharebackupfailedwithazurerprequestthrottling-filesharerestorefailedwithazurerprequestthrottling--file-share-backup-or-restore-failed-due-to-storage-service-throttling-this-may-be-because-the-storage-service-is-busy-processing-other-requests-for-the-given-storage-account"></a>FileshareBackupFailedWithAzureRpRequestThrottling/FileshareRestoreFailedWithAzureRpRequestThrottling - 文件共享备份或还原因存储服务限制而失败。 这可能是因为存储服务正忙于处理给定存储帐户的其他请求
 
@@ -323,4 +332,4 @@ ms.locfileid: "89376972"
 有关备份 Azure 文件共享的详细信息，请参阅：
 
 - [备份 Azure 文件共享](backup-afs.md)
-- [备份 Azure 文件共享常见问题解答](backup-azure-files-faq.md)
+- [备份 Azure 文件共享常见问题解答](backup-azure-files-faq.yml)

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/21/2021
+ms.date: 05/12/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1d4b6c8d442d1a0d6e9451b314ee95ae50c20ede
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: a95f83dbfa0574aa88b964538f329c7d9075a50b
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891476"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111593633"
 ---
 目前，超级磁盘有其他限制，如下所示：
 
@@ -62,8 +62,8 @@ ms.locfileid: "107891476"
     - [Dsv4](../articles/virtual-machines/dv4-dsv4-series.md#dsv4-series)
     - [FSv2](../articles/virtual-machines/fsv2-series.md)
     - [LSv2](../articles/virtual-machines/lsv2-series.md)
-    - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
-    - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
+    - [M](../articles/virtual-machines/m-series.md)
+    - [Mv2](../articles/virtual-machines/mv2-series.md)
     - [HBv2](../articles/virtual-machines/hbv2-series.md)
     - [HB](../articles/virtual-machines/hb-series.md)
     - [HC](../articles/virtual-machines/hc-series.md)
@@ -79,7 +79,7 @@ ms.locfileid: "107891476"
 - 仅作为数据磁盘提供。 
 - 默认情况下支持 4k 物理扇区大小。 512E 扇区大小作为一种正式发布的产品/服务提供（无需注册）。 大多数应用程序都与 4k 扇区大小兼容，但某些应用程序需要 512 字节扇区大小。 另一个示例为 Oracle Database，它需要 12.2 版或更高版本才能支持 4k 本机磁盘。 对于较旧版本的 Oracle DB，需要 512 字节扇区大小。
 - 只能以空磁盘的形式创建。
-- 当前不支持磁盘快照、VM 映像、可用性集、Azure 专用主机或 Azure 磁盘加密。
+- 当前不支持磁盘快照、磁盘导出、更改磁盘类型、VM 映像、可用性集、Azure 专用主机或 Azure 磁盘加密。
 - 当前不支持与 Azure 备份或 Azure Site Recovery 的集成。
 - 仅支持未缓存的读取和未缓存的写入。
 - GA VM 上 IOPS 的当前最大限制为 80,000。
