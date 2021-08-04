@@ -9,13 +9,13 @@ ms.author: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 03/29/2021
-ms.openlocfilehash: d19a080ef596975dd3377207b84bade6ef0d3b12
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 06/21/2021
+ms.openlocfilehash: 02249fc08dc661a31a461116dab3ab08e230cbc6
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537580"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112520908"
 ---
 # <a name="what-is-spatial-analysis"></a>什么是空间分析？
 
@@ -43,9 +43,7 @@ ms.locfileid: "111537580"
 
 ## <a name="get-started"></a>入门
 
-### <a name="follow-a-quickstart"></a>按照快速入门操作
-
-有权访问空间分析后，请按照[快速入门](spatial-analysis-container.md)中的步骤设置容器并开始分析视频。
+按照[快速入门](spatial-analysis-container.md)中的步骤设置容器并开始分析视频。
 
 ## <a name="responsible-use-of-spatial-analysis-technology"></a>合理使用空间分析技术
 

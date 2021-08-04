@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 57760443746e111750e74ef55fc18729f6ba32c4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3453d1a0d06fd9918f3f1ae49a519d676ab26785
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102100332"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110468420"
 ---
 # <a name="review-your-security-recommendations"></a>查看安全建议
 
@@ -39,11 +39,12 @@ ms.locfileid: "102100332"
     1. 对于支持的建议，顶部工具栏将显示以下任意或所有按钮：
         - “强制执行”和“拒绝”（请参阅[使用“强制执行/拒绝”建议防止错误配置](prevent-misconfigurations.md)）
         - **查看策略定义**，用于直接进入基础策略的 Azure 策略条目
+        - 打开查询 - 所有建议都提供使用 Azure Resource Graph 浏览器查看受影响资源相关详细信息的选项
     1. 严重性指标
     1. 刷新间隔（如果相关）
     1. 已豁免资源计数 如果此建议存在豁免，则显示已豁免的资源数
     1. 描述 - 问题简述
-    1. 修正步骤 - 修正受影响资源的安全问题时所需的手动步骤的说明。 对于带有“快速修复”的建议，可以先选择“查看修正逻辑”，然后再为资源应用建议的修补程序。 
+    1. 修正步骤 - 修正受影响资源的安全问题时所需的手动步骤的说明。 对于带有“修复”选项的建议，可以先选择“查看修正逻辑”，然后再为资源应用建议的修补程序 。
     1. 受影响的资源 - 资源会分组到不同的选项卡中：
         - 正常资源 - 相关的资源，这些资源要么未受影响，要么已经修正了问题。
         - 不正常的资源 - 已确定问题仍会影响的资源。
@@ -51,6 +52,24 @@ ms.locfileid: "102100332"
 
             :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="不适用的资源及其原因。":::
     1. 用于修正建议或触发逻辑应用的操作按钮。
+
+
+## <a name="review-recommendation-data-in-azure-resource-graph-explorer-arg"></a>在 Azure Resource Graph 浏览器 (ARG) 中查看建议数据
+
+建议详细信息页上的工具栏包含一个“打开查询”按钮，可用于在 [Azure Resource Graph (ARG)](../governance/resource-graph/index.yml)（一项 Azure 服务，可用于在多个订阅中查询安全中心的安全状态数据）中浏览详细信息。
+
+ARG 旨在提高资源探索的效率，能够通过强大的筛选、分组和排序功能跨云环境进行大规模查询。 这是以编程方式或从 Azure 门户中查询 Azure 订阅中的信息的一种快速且有效的方式。
+
+使用 [Kusto 查询语言 (KQL)](/azure/data-explorer/kusto/query/)，可以交叉引用 ASC 数据与其他资源属性。
+
+例如，此建议详细信息页显示了十五个受影响的资源：
+
+:::image type="content" source="./media/security-center-recommendations/open-query.png" alt-text="建议详细信息页上的“打开查询”按钮。":::
+
+打开基础查询并运行它后，Azure Resource Graph 浏览器会返回与此建议相同的 15 个资源及其运行状况： 
+
+:::image type="content" source="./media/security-center-recommendations/run-query.png" alt-text="Azure Resource Graph 浏览器显示了上一屏幕截图中所示的建议的结果。":::
+
 
 ## <a name="preview-recommendations"></a>预览建议
 

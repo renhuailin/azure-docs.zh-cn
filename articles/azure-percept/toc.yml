@@ -10,16 +10,6 @@
       href: overview-azure-percept-dk.md
     - name: Azure Percept 音频
       href: overview-azure-percept-audio.md
-    - name: Azure Percept AI 模型
-      href: overview-ai-models.md
-    - name: 高级开发
-      href: overview-advanced-code.md
-    - name: Azure Percept 安全性
-      href: overview-percept-security.md
-    - name: 80/20 集成
-      href: overview-8020-integration.md
-    - name: 设备更新
-      href: overview-update-experience.md
 - name: 快速入门
   items:
     - name: 安装 Azure Percept 设备
@@ -42,14 +32,28 @@
   items:
     - name: Azure Percept DK
       items:
+        - name: 80/20 集成
+          href: overview-8020-integration.md
         - name: 通过手机网络连接
           href: connect-over-cellular.md
+        - name: 设备更新
+          href: overview-update-experience.md
     - name: Azure Percept 音频
       items:
         - name: LED 和按钮行为
           href: audio-button-led-behavior.md
+    - name: 高级开发
+      items:
+        - name: 高级开发
+          href: overview-advanced-code.md
+        - name: Azure Percept AI 模型
+          href: overview-ai-models.md
+        - name: 语音模块接口和工作流
+          href: speech-module-interface-workflow.md
     - name: 安全性
       items:
+        - name: Azure Percept 安全性
+          href: overview-percept-security.md
         - name: 防火墙配置和安全建议
           href: concept-security-configuration.md
 - name: 操作指南
@@ -84,6 +88,8 @@
       items:
         - name: 通过以太网连接
           href: how-to-connect-over-ethernet.md
+        - name: 设置高级网络设置
+          href: how-to-set-up-advanced-network-settings.md
         - name: 通过 SSH 连接
           href: how-to-ssh-into-percept-dk.md
         - name: 通过串口连接
@@ -104,6 +110,8 @@
           href: troubleshoot-audio-accessory-speech-module.md
         - name: 已知问题
           href: known-issues.md
+        - name: 获取硬件支持
+          href: how-to-get-hardware-support.md
 - name: 参考
   items:
     - name: Azure Percept 设备数据表
