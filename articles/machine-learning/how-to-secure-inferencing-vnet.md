@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 10/23/2020
+ms.date: 05/14/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 610ab82bfc4665fbb30aa3d3bc0448fa9338689c
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 23caf21da3914dfa1af18ab96ec7cfe52e944f1c
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107872544"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069738"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习推理环境
 
@@ -61,25 +61,29 @@ ms.locfileid: "107872544"
 若要将虚拟网络中的 AKS 添加到工作区，请执行以下步骤：
 
 1. 登录 [Azure 机器学习工作室](https://ml.azure.com/)，然后选择你的订阅和工作区。
+1. 在左侧选择“计算”，从中心选择“推理群集”，然后选择“+ 新建”  。
 
-1. 选择左侧的“计算”。
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-inference.png" alt-text="“创建推理群集”对话框的屏幕截图":::
 
-1. 在中心内选择“推理群集”，然后选择“+”。
+1. 从“创建推理群集”对话框中选择“新建”以及要用于该群集的 VM 大小 。 最后，选择“下一步”。
 
-1. 在“新建推理群集”对话框中，选择“网络配置”下的“高级”。
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-inference-vm.png" alt-text="VM 设置的屏幕截图":::
 
-1. 若要将此计算资源配置为使用虚拟网络，请执行以下操作：
+1. 在“配置设置”部分，输入计算名称，选择“群集用途”和“节点数”，然后选择“高级”，以显示网络设置。     在“配置虚拟网络”区域中，设置以下值：
 
-    1. 在“资源组”下拉列表中，选择包含虚拟网络的资源组。
-    1. 在“虚拟网络”下拉列表中，选择包含子网的虚拟网络。
-    1. 在“子网”下拉列表中选择子网。
-    1. 在“Kubernetes 服务地址范围”中，输入 Kubernetes 服务地址范围。 此地址范围使用无类域间路由 (CIDR) 表示法表示的 IP 范围来定义群集可用的 IP 地址。 此范围不得与任何子网 IP 范围重叠（例如 10.0.0.0/16）。
-    1. 在“Kubernetes DNS 服务 IP 地址”框中，输入 Kubernetes DNS 服务 IP 地址。 此 IP 地址将分配给 Kubernetes DNS 服务。 此 IP 地址必须在 Kubernetes 服务地址范围内（例如 10.0.0.10）。
-    1. 在“Docker 网桥地址”框中，输入 Docker 网桥地址。 此 IP 地址将分配给 Docker 网桥。 此 IP 地址不得在任何子网 IP 范围或 Kubernetes 服务地址范围内（例如 172.17.0.1/16）。
+    * 设置要使用的“虚拟网络”。
 
-   ![Azure 机器学习：机器学习计算虚拟网络设置](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
+        > [!TIP]
+        > 如果工作区使用专用终结点来连接到虚拟网络，则“虚拟网络”选择字段会灰显。
 
-1. 将模型作为 Web 服务部署到 AKS 时，将创建一个评分终结点来处理推理请求。 若要从虚拟网络外部调用评分终结点，确保用于控制虚拟网络的 NSG 组包含一条已为该终结点的 IP 地址启用的入站安全规则。
+    * 设置要在其中创建该群集的“子网”。
+    * 在“Kubernetes 服务地址范围”字段中，输入 Kubernetes 服务地址范围。 此地址范围使用无类域间路由 (CIDR) 表示法表示的 IP 范围来定义群集可用的 IP 地址。 此范围不得与任何子网 IP 范围重叠（例如 10.0.0.0/16）。
+    * 在“Kubernetes DNS 服务 IP 地址”字段中，输入 Kubernetes DNS 服务 IP 地址。 此 IP 地址将分配给 Kubernetes DNS 服务。 此 IP 地址必须在 Kubernetes 服务地址范围内（例如 10.0.0.10）。
+    * 在“Docker 桥地址”字段中，输入 Docker 桥地址。 此 IP 地址将分配给 Docker 网桥。 该地址不得在任何子网 IP 范围或 Kubernetes 服务地址范围（例如，172.18.0.1/16）内。
+
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-inference-settings.png" alt-text="配置网络设置的屏幕截图":::
+
+1. 将模型作为 Web 服务部署到 AKS 时，将创建一个评分终结点来处理推理请求。 如果需要从虚拟网络外部调用评分终结点，请确保用于控制虚拟网络的网络安全组 (NSG) 包含一条已为该终结点的 IP 地址启用的入站安全规则。
 
     若要查找评分终结点的 IP 地址，请查看已部署服务的评分 URI。 有关查看评分 URI 的详细信息，请参阅[使用部署为 Web 服务的模型](how-to-consume-web-service.md#connection-information)。
 
@@ -154,9 +158,6 @@ aks_target = ComputeTarget.create(workspace=ws,
 * __专用 AKS 群集__：此方法使用 Azure 专用链接来保护与群集的通信，以便进行部署/管理操作。
 * __内部 AKS 负载均衡器__：此方法将终结点（用于将项目部署到 AKS）配置为在虚拟网络中使用专用 IP。
 
-> [!WARNING]
-> 内部负载均衡器不适用于使用 kubenet 的 AKS 群集。 若要同时使用内部负载均衡器和专用 AKS 群集，请使用 Azure 容器网络接口 (CNI) 配置专用 AKS 群集。 有关详细信息，请参阅[在 Azure Kubernetes 服务中配置 Azure CNI 网络](../aks/configure-azure-cni.md)。
-
 ### <a name="private-aks-cluster"></a>专用 AKS 群集
 
 默认情况下，AKS 群集具有一个带有公共 IP 地址的控制平面（或 API 服务器）。 可以通过创建专用 AKS 群集，将 AKS 配置为使用专用控制平面。 有关详细信息，请参阅[创建专用 Azure Kubernetes 服务群集](../aks/private-clusters.md)。
@@ -218,10 +219,18 @@ except:
 az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalancer
 ```
 
-> [!IMPORTANT]
-> 使用 CLI，只能创建带有内部负载均衡器的 AKS 群集。 没有可以升级现有群集以使用内部负载均衡器的 az ml 命令。
+若要升级现有 AKS 群集以使用内部负载均衡器，请使用以下命令：
 
-有关详细信息，请参阅 [az ml computetarget create aks](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_aks) 参考文档。
+```azurecli
+az ml computetarget update aks \
+                           -n myaks \
+                           --load-balancer-subnet mysubnet \
+                           --load-balancer-type InternalLoadBalancer \
+                           --workspace-name myworkspace \
+                           -g myresourcegroup
+```
+
+有关详细信息，请查看 [az ml computetarget create aks](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_aks) 和 [az ml computetarget update aks](/cli/azure/ml/computetarget/update#az_ml_computetarget_update_aks) 参考。
 
 ---
 

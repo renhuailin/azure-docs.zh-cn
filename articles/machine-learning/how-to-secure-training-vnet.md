@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 07/16/2020
+ms.date: 05/14/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 4b3692884da921eeabcafc5a72419278af2d5440
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 8233edd12d4bde5c71d69cfbeab49ebdc8137dbc
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888649"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071953"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虚拟网络保护 Azure 机器学习训练环境
 
@@ -61,9 +61,10 @@ ms.locfileid: "107888649"
 > * 若要将多个计算实例或群集放入一个虚拟网络，可能需要请求提高一个或多个资源的配额。
 > * 如果工作区的一个或多个 Azure 存储帐户也在虚拟网络中受保护，它们必须与 Azure 机器学习计算实例或群集位于同一虚拟网络和子网中。 请配置存储防火墙设置，以允许与虚拟网络和计算所在的子网通信。 请注意，选择“允许信任的 Microsoft 服务访问此帐户”复选框不足以允许来自计算的通信。
 > * 为了让计算实例 Jupyter 功能可以正常运行，请确保没有禁用 Web 套接字通信。 请确保网络允许到 *.instances.azureml.net 和 *.instances.azureml.ms 的 websocket 连接。 
-> * 在专用链接工作区中部署计算实例时，只能从虚拟网络内部访问。 如果使用自定义 DNS 或主机文件，请为 `<instance-name>.<region>.instances.azureml.ms` 添加一个条目，该条目具有工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅[自定义 DNS](./how-to-custom-dns.md) 一文。
+> * 在专用链接工作区中部署计算实例时，只能从虚拟网络内部访问。 如果使用自定义 DNS 或主机文件，请为 `<instance-name>.<region>.instances.azureml.ms` 添加一个条目，该条目具有工作区专用终结点的专用 IP 地址。 有关详细信息，请参阅 [自定义 DNS](./how-to-custom-dns.md) 一文。
 > * 用于部署计算群集/实例的子网不应委托给 ACI 等任何其他服务
 > * 虚拟网络服务终结点策略不适用于计算群集/实例系统存储帐户
+> * 如果存储和计算实例位于不同的区域，则可能会看到间歇性超时
 
     
 > [!TIP]
@@ -118,7 +119,7 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
    - Azure 存储 - 使用 __服务标记__ __Storage.RegionName__。 其中 `{RegionName}` 是 Azure 区域的名称。
    - Azure 容器注册表 - 使用 __服务标记__ __AzureContainerRegistry.RegionName__。 其中 `{RegionName}` 是 Azure 区域的名称。
    - Azure 机器学习，通过使用服务标记 AzureMachineLearning
-   - Azure 资源管理器，通过使用服务标记 AzureResourceManager
+   - Azure 资源管理器 - 使用 __服务标记__ __Azure Resource Manager__
    - Azure Active Directory - 使用 __服务标记__ __AzureActiveDirectory__
 
 下图展示了 Azure 门户中的 NSG 规则配置：
@@ -159,11 +160,11 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
 
 若要将[强制隧道](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)与机器学习计算配合使用，必须允许从包含计算资源的子网与公共 Internet 进行通信。 此通信用于计划和访问 Azure 存储的任务。
 
-可以通过两种方式来实现此目的：
+可以通过两种方式来允许此通信：
 
 * 使用[虚拟网络 NAT](../virtual-network/nat-overview.md)。 NAT 网关为虚拟网络中的一个或多个子网提供出站 Internet 连接。 有关信息，请参阅[设计使用 NAT 网关资源的虚拟网络](../virtual-network/nat-gateway-resource.md)。
 
-* 将[用户定义的路由 (UDR)](../virtual-network/virtual-networks-udr-overview.md) 添加到包含计算资源的子网。 为资源所在区域中的 Azure Batch 服务使用的每个 IP 地址建立一个 UDR。 借助这些 UDR，Batch 服务可以与计算节点进行通信，以便进行任务计划编制。 还要添加 Azure 机器学习服务的 IP 地址，因为这是访问计算实例所必需的。 添加 Azure 机器学习服务的 IP 时，必须同时添加主要和次要 Azure 区域的 IP。 主要区域是工作区所在的区域。
+* 将[用户定义的路由 (UDR)](../virtual-network/virtual-networks-udr-overview.md) 添加到包含计算资源的子网。 为资源所在区域中的 Azure Batch 服务使用的每个 IP 地址建立一个 UDR。 借助这些 UDR，Batch 服务可以与计算节点进行通信，以便进行任务计划编制。 还要添加 Azure 机器学习服务 IP 地址，因为 IP 是访问计算实例所必需的。 添加 Azure 机器学习服务的 IP 时，必须同时添加主要和次要 Azure 区域的 IP。 主要区域是工作区所在的区域。
 
     若要查找次要区域，请参阅[使用 Azure 配对区域确保业务连续性和灾难恢复](../best-practices-availability-paired-regions.md#azure-regional-pairs)。 例如，如果 Azure 机器学习服务位于“美国东部 2”，则次要区域是“美国中部”。 
 
@@ -203,20 +204,22 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
 若要创建机器学习计算群集，请按照以下步骤操作：
 
 1. 登录 [Azure 机器学习工作室](https://ml.azure.com/)，然后选择你的订阅和工作区。
+1. 在左侧选择“计算”，从中心选择“计算群集”，然后选择“+ 新建”。  
 
-1. 选择左侧的“计算”。
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-compute-cluster.png" alt-text="创建群集的屏幕截图":::
 
-1. 在中心内选择“训练群集”，然后选择“+”。
+1. 在“创建计算群集”对话中，选择所需的 VM 大小和配置，然后选择“下一步”。 
 
-1. 在“新建训练群集”对话框中，展开“高级设置”部分。
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-compute-cluster-vm.png" alt-text="设置 VM 配置的屏幕截图":::
 
-1. 若要将此计算资源配置为使用虚拟网络，请在“配置虚拟网络”部分中执行以下操作：
+1. 在“配置设置”部分中，设置“计算名称”、“虚拟网络”和“子网”。   
 
-    1. 在“资源组”下拉列表中，选择包含虚拟网络的资源组。
-    1. 在“虚拟网络”下拉列表中，选择包含子网的虚拟网络。
-    1. 在“子网”下拉列表中，选择要使用的子网。
+    > [!TIP]
+    > 如果工作区使用专用终结点连接到虚拟网络，则“虚拟网络”选择字段将显示为灰色。
 
-   ![机器学习计算的虚拟网络设置](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
+    :::image type="content" source="./media/how-to-enable-virtual-network/create-compute-cluster-config.png" alt-text="虚拟网络设置的屏幕快照":::
+
+1. 选择“创建”以创建计算群集。
 
 也可以使用 Azure 机器学习 SDK 创建机器学习计算群集。 以下代码在名为 `mynetwork` 的虚拟网络的 `default` 子网中创建新的机器学习计算群集：
 
@@ -260,7 +263,7 @@ except ComputeTargetException:
 
 ### <a name="access-data-in-a-compute-instance-notebook"></a>访问计算实例笔记本中的数据
 
-如果要在 Azure 计算实例上使用笔记本，则必须确保笔记本在与数据相同的虚拟网络和子网后的计算资源上运行。 
+如果要在 Azure 机器学习计算实例上使用笔记本，则必须确保笔记本在与数据相同的虚拟网络和子网后的计算资源上运行。 
 
 在创建过程中，你必须在“高级设置” > “配置虚拟网络”下将你的计算实例配置为位于同一虚拟网络中。 。 无法将现有计算实例添加到虚拟网络中。
 

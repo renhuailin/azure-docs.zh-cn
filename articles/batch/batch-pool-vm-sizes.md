@@ -2,25 +2,20 @@
 title: 为池选择 VM 大小和映像
 description: 如何选择 Azure Batch 池中计算节点的可用 VM 大小和 OS 版本
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 06/01/2021
 ms.custom: seodec18
-ms.openlocfilehash: 42b8743fac6a6c64e98271490f0bfc4671fa7698
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: b5314d3672da87ac1d2fadca61046348a369e218
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455189"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110789110"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小和映像
 
 为 Azure Batch 池选择节点大小时，可以在 Azure 中提供的几乎所有 VM 大小中进行选择。 Azure 针对不同工作负荷，为 Linux 和 Windows VM 提供一系列大小。
 
 ## <a name="supported-vm-series-and-sizes"></a>支持的 VM 系列和大小
-
-选择 Batch 池的 VM 大小时有几个例外和限制：
-
-- Batch 不支持某些 VM 系列或 VM 大小。
-- 某些 VM 大小受到限制，需要专门启用才能进行分配。
 
 ### <a name="pools-in-virtual-machine-configuration"></a>虚拟机配置中的池
 
@@ -32,7 +27,7 @@ ms.locfileid: "102455189"
 | A | 除 Standard_A0、Standard_A8、Standard_A9、Standard_A10、Standard_A11 以外的所有大小 |
 | Av2 | 所有大小 |
 | B | 不支持 |
-| DC | 不支持 |
+| DCsv2 | 所有大小 |
 | Dv2, DSv2 | 所有大小 |
 | Dv3, Dsv3 | 所有大小 |
 | Dav4、Dasv4 | 所有大小 |
@@ -40,7 +35,7 @@ ms.locfileid: "102455189"
 | Dv4、Dsv4 | 不支持 |
 | Ev3, Esv3 | 除 E64is_v3 之外的所有大小 |
 | Eav4、Easv4 | 所有大小 |
-| Edv4, Edsv4 |  所有大小 |
+| Edv4, Edsv4 |  除 Standard_E20d_v4、Standard_E20ds_v4、Standard_E80ids_v4 之外的所有大小 |
 | Ev4、Esv4 | 不支持 |
 | F, Fs | 所有大小 |
 | Fsv2 | 所有大小 |
@@ -48,6 +43,7 @@ ms.locfileid: "102455189"
 | H | 所有大小 |
 | HB | 所有大小 |
 | HBv2 | 所有大小 |
+| HBv3 | 所有大小 |
 | HC | 所有大小 |
 | Ls | 所有大小 |
 | Lsv2 | 所有大小 |
@@ -59,6 +55,7 @@ ms.locfileid: "102455189"
 | NCasT4_v3 | 所有大小 |
 | ND | 所有大小 |
 | NDv2 | 无（尚不可用） |
+| NP | 所有大小 |
 | NV | 所有大小 |
 | NVv3 | 所有大小 |
 | NVv4 | 所有大小 |
@@ -70,9 +67,12 @@ ms.locfileid: "102455189"
 
 一些 VM 系列（如 [Mv2](../virtual-machines/mv2-series.md)）只能与[第 2 代 VM 映像](../virtual-machines/generation-2.md)一起使用。 第 2 代 VM 映像的指定方式与任何 VM 映像的指定方式一样，都是使用[“imageReference”](/rest/api/batchservice/pool/add#imagereference)配置的“sku”属性；“sku”字符串具有后缀，如“-g2”或”-gen2”。 若要获得 Batch 支持的 VM 映像列表（包括第 2 代映像），请使用[“列表支持的映像”](/rest/api/batchservice/account/listsupportedimages)API、[PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage) 或 [Azure CLI](/cli/azure/batch/pool/supported-images)。
 
-### <a name="pools-in-cloud-service-configuration"></a>云服务配置中的池
+### <a name="pools-in-cloud-services-configuration"></a>云服务配置中的池
 
-云服务配置中的 Batch 池支持所有 [云服务的 VM 大小](../cloud-services/cloud-services-sizes-specs.md)，但以下项 **除外**：
+> [!WARNING]
+> 云服务配置池[已被弃用](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/)。 请改用虚拟机配置池。
+
+云服务配置中的 Batch 池支持所有[云服务的 VM 大小](../cloud-services/cloud-services-sizes-specs.md)，但以下项除外：
 
 | VM 系列  | 不支持的大小 |
 |------------|-------------------|
@@ -100,6 +100,8 @@ ms.locfileid: "102455189"
 - Batch 服务 REST API：[列出支持的映像](/rest/api/batchservice/account/listsupportedimages)
 - PowerShell：[Get-AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
 - Azure CLI：[az batch pool supported-images](/cli/azure/batch/pool/supported-images)
+
+强烈建议避免使用 Batch 支持终止 (EOL) 日期临近的映像。 可通过 [`ListSupportedImages` API](/rest/api/batchservice/account/listsupportedimages)、[PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage) 或 [Azure CLI](/cli/azure/batch/pool/supported-images) 发现这些日期。 有关 Batch 池 VM 映像选择的详细信息，请参阅 [Batch 最佳做法指南](best-practices.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

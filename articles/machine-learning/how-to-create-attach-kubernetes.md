@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/08/2021
-ms.openlocfilehash: 904074759d2b8f197a0df0377071e95203fabba9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 7825942ce692e83f2305e4c9f9b1a31cdadaea71
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373168"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111901600"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>创建并附加 Azure Kubernetes 服务群集
 
@@ -44,7 +44,7 @@ Azure 机器学习可以将经过训练的机器学习模型部署到 Azure Kube
 
     授权 IP 范围仅适用于标准负载均衡器。
 
-- 附加 AKS 群集时，它必须与 Azure 机器学习工作区位于同一 Azure 订阅中。
+- > 若要从不同 Azure 订阅附加 AKS 群集，你（你的 Azure AD 帐户）必须被授予 AKS 群集上的“参与者”角色。 查看 [Azure 门户](https://ms.portal.azure.com/)中的访问权限。
 
 - 如果要使用专用 AKS 群集（使用 Azure 专用链接），则必须先创建群集，然后再将其附加到工作区。 有关详细信息，请参阅[创建专用 Azure Kubernetes 服务群集](../aks/private-clusters.md)。
 

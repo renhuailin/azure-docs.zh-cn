@@ -2,13 +2,13 @@
 title: 充当事件网格源的 Azure Blob 存储
 description: 介绍为 Azure 事件网格 Blob 存储事件提供的属性
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: 909b70c65704d798bf0446732959f50b179c4bca
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.date: 05/12/2021
+ms.openlocfilehash: 37637a486bd80e9d0018495e6fd4713bab36e8ff
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073262"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111541968"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>充当事件网格源的 Azure Blob 存储
 
@@ -29,11 +29,9 @@ ms.locfileid: "108073262"
 
  |事件名称 |说明|
  |----------|-----------|
- |**Microsoft.Storage.BlobCreated** |创建或替换 Blob 时触发。 <br>具体而言，当客户端使用 Blob REST API 中可用的 `PutBlob`、`PutBlockList` 或 `CopyBlob` 操作时，将触发此事件。   |
+ |**Microsoft.Storage.BlobCreated** |创建或替换 Blob 时触发。 <br>具体而言，当客户端使用 Blob REST API 中可用的 `PutBlob`、`PutBlockList` 或 `CopyBlob` 操作，并且当块 blob 完全提交时，将触发此事件。 <br>如果客户端对启用了分层命名空间功能的帐户使用 `CopyBlob` 操作，则 `CopyBlob` 操作的工作方式略有不同。 在这种情况下，Microsoft.Storage.BlobCreated 事件会在 `CopyBlob` 操作启动时触发，而不是在块 blob 完全提交时触发。   |
  |**Microsoft.Storage.BlobDeleted** |删除 Blob 时触发。 <br>具体而言，当客户端调用 Blob REST API 中可用的 `DeleteBlob` 操作时，将触发此事件。 |
-
-> [!NOTE]
-> 对于 Azure Blob 存储，若要确保 Microsoft.Storage.BlobCreated 事件仅在块 Blob 完全提交后触发，请为 `CopyBlob`、`PutBlob` 和 `PutBlockList` REST API 调用筛选此事件。 这些 API 调用仅在数据已完全提交到块 Blob 后才触发 **Microsoft.Storage.BlobCreated** 事件。 若要了解如何创建筛选器，请参阅[筛选事件网格的事件](./how-to-filter-events.md)。
+ |**Microsoft.Storage.BlobTierChanged** |在更改 blob 访问层时触发。 具体而言，当客户端调用 Blob REST API 中可用的 `Set Blob Tier` 操作时，在层更改完成后会触发此事件。 |
 
 ### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure Data Lake Storage Gen 2 REST API 的事件列表
 
@@ -184,6 +182,33 @@ ms.locfileid: "108073262"
   "dataVersion": "2",
   "metadataVersion": "1"
 }]
+```
+
+### <a name="microsoftstorageblobtierchanged-event"></a>Microsoft.Storage.BlobTierChanged 事件
+
+```json
+{
+    "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+    "subject": "/blobServices/default/containers/testcontainer/blobs/Auto.jpg",
+    "eventType": "Microsoft.Storage.BlobTierChanged",
+    "id": "0fdefc06-b01e-0034-39f6-4016610696f6",
+    "data": {
+        "api": "SetBlobTier",
+        "clientRequestId": "68be434c-1a0d-432f-9cd7-1db90bff83d7",
+        "requestId": "0fdefc06-b01e-0034-39f6-401661000000",
+        "contentType": "image/jpeg",
+        "contentLength": 105891,
+        "blobType": "BlockBlob",
+        "url": "https://my-storage-account.blob.core.windows.net/testcontainer/Auto.jpg",
+        "sequencer": "000000000000000000000000000089A4000000000018d6ea",
+        "storageDiagnostics": {
+            "batchId": "3418f7a9-7006-0014-00f6-406dc6000000"
+        }
+    },
+    "dataVersion": "",
+    "metadataVersion": "1",
+    "eventTime": "2021-05-04T15:00:00.8350154Z"
+}
 ```
 
 ### <a name="microsoftstorageblobrenamed-event"></a>Microsoft.Storage.BlobRenamed 事件
@@ -518,7 +543,7 @@ ms.locfileid: "108073262"
 | `subject` | string | 事件主题的发布者定义路径。 |
 | `eventType` | string | 此事件源的一个注册事件类型。 |
 | `eventTime` | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| `id` | string | 事件的唯一标识符。 |
+| `id` | 字符串 | 事件的唯一标识符。 |
 | `data` | object | Blob 存储事件数据。 |
 | `dataVersion` | string | 数据对象的架构版本。 发布者定义架构版本。 |
 | `metadataVersion` | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
@@ -533,7 +558,7 @@ ms.locfileid: "108073262"
 | `subject` | string | 事件主题的发布者定义路径。 |
 | `type` | string | 此事件源的一个注册事件类型。 |
 | `time` | string | 基于提供程序 UTC 时间的事件生成时间。 |
-| `id` | string | 事件的唯一标识符。 |
+| `id` | 字符串 | 事件的唯一标识符。 |
 | `data` | object | Blob 存储事件数据。 |
 | `specversion` | 字符串 | CloudEvents 架构规范版本。 |
 

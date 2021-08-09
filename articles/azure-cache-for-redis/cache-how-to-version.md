@@ -6,15 +6,23 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: d9f48de7ef5d9525a995af4ebbd12c5f14f40189
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 23bc9f92f405fe29aa43b266c0b18b8620e1d18c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93349131"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110463073"
 ---
 # <a name="set-redis-version-for-azure-cache-for-redis-preview"></a>设置 Azure Cache for Redis 的 Redis 版本（预览）
 本文介绍如何配置要与缓存实例一起使用的 Redis 软件版本。 Azure Cache for Redis 提供 Redis 的最新主版本和至少一个早期版本。 由于会发布新的 Redis 软件，它将定期更新这些版本。 可在两个可用版本之间进行选择。 请记住，如果缓存当前使用的版本不再受支持，缓存会自动升级到下一版本。
+
+> [!NOTE]
+> Redis 6 目前为预览版。 目前，Redis 6 不支持群集、区域冗余、ACL、PowerShell、Azure CLI、Terraform，以及在 Redis 4.0 与 6.0 缓存之间进行的异地复制。 创建缓存后，也无法更改 Redis 版本。 
+>
+
+> [!IMPORTANT]
+> Redis 6.0 在正式发布 (GA) 后将成为新缓存的默认 Redis 版本。 你仍然可以选择创建 Redis 4.0 缓存，还可以将 Redis 4.0 缓存升级到正式发布的 Redis 6.0 缓存。 
+>
 
 ## <a name="prerequisites"></a>先决条件
 * Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)

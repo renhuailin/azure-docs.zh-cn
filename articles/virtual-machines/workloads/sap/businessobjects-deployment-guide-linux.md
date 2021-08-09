@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: faaed05a52708ed1c2563e6476a1e86faa02dcf7
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: a97454abdf91ddaaf355283a5bbed99adc184e0d
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107946730"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112020414"
 ---
-# <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure 上的 SAP BusinessObjects BI 平台部署指南
+# <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Linux on Azure 的 SAP BusinessObjects BI 平台部署指南
 
 本文将介绍在 Azure 上部署适用于 Linux 的 SAP BusinessObjects BI 平台的策略。 在此示例中，配置了两个以高级 SSD 托管磁盘作为安装目录的虚拟机。 Azure Database for MySQL 用于 CMS 数据库，文件存储库服务器的 Azure NetApp 文件在两个服务器之间共享。 默认 Tomcat Java Web 应用和 BI 平台应用程序一起安装在这两个虚拟机上。 为了对用户请求进行负载均衡，使用应用程序网关，该网关具有本机 TLS/SSL 卸载功能。
 
@@ -106,10 +106,10 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
 3. Azure NetApp 文件和所有虚拟机（将装载 Azure NetApp 文件卷）必须位于同一 Azure 虚拟网络中或同一区域中的[对等虚拟网络](../../../virtual-network/virtual-network-peering-overview.md)中。 现在支持通过同一区域中的 VNET 对等互连进行 Azure NetApp 文件访问。 尚不支持通过全球对等互连进行 Azure NetApp 访问。
 4. 所选的虚拟网络必须具有一个委派给 Azure NetApp 文件的子网。
 5. 通过 Azure NetApp 文件[导出策略](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)，可以对允许的客户端、访问类型（读写、只读等）进行控制。
-6. Azure NetApp 文件功能尚没有区域感知性。 当前，该功能未部署在 Azure 区域中的所有可用性区域中。 请注意某些 Azure 区域的潜在延迟影响。
+6. Azure NetApp 文件功能尚没有区域感知性。 目前，该功能未在 Azure 区域中的所有可用性区域中部署。 请注意某些 Azure 区域的潜在延迟影响。
 7. Azure NetApp 文件卷可以部署为 NFSv3 或 NFSv4.1 卷。 SAP BI 平台应用程序支持这两种协议。
 
-## <a name="configure-file-systems-on-linux-servers"></a>在 linux 服务器上配置文件系统
+## <a name="configure-file-systems-on-linux-servers"></a>在 Linux 服务器上配置文件系统
 
 本部分中的步骤使用以下前缀：
 
@@ -371,7 +371,7 @@ Azure NetApp 文件在多个 [Azure 区域](https://azure.microsoft.com/global-i
    +----------------------------------------------------------------------------+
    ```
 
-### <a name="install-mysql-c-api-connector-libmysqlclient-on-linux-server"></a>在 linux 服务器上安装 MySQL C API 连接器 (libmysqlclient)
+### <a name="install-mysql-c-api-connector-libmysqlclient-on-a-linux-server"></a>在 Linux 服务器上安装 MySQL C API 连接器 (libmysqlclient)
 
 要使 SAP BOBI 应用程序服务器能够访问数据库，需要数据库客户端/驱动程序。 必须使用适用于 Linux 的 MySQL C API 连接器访问 CMS 和审核数据库。 不支持与 CMS 数据库的 ODBC 连接。 本部分提供有关如何在 Linux 上设置 MySQL C API 连接器的说明。
 
@@ -574,7 +574,7 @@ SAP BusinessObjects BI 平台包含不同的层，这些层针对特定任务和
 
 本指南将探讨应如何将 Azure 的原生功能与 SAP BOBI 平台配置相结合，以改进 SAP 部署的可用性。 本节将重点介绍在 Azure 上实现 SAP BOBI 平台可靠性的以下选项：
 
-- 备份和还原：将数据和应用程序的副本定期创建到单独位置的过程。 这样，如果原始数据或应用程序丢失或损坏，可将其还原或恢复到以前的状态。
+- **备份和还原：** 将数据和应用程序的副本定期创建到单独位置的过程。 这样，如果原始数据或应用程序丢失或损坏，可将其还原或恢复到以前的状态。
 
 - **高可用性：** 高可用平台的所有组件在 Azure 区域中都至少有两个实例，这样，即使其中一个服务器不可用，也能使应用程序保持正常运行。
 - **灾难恢复：** 这是在出现灾难性损失（例如由于某些自然灾害而导致整个 Azure 区域不可用）时还原应用程序功能的过程。

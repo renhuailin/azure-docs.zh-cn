@@ -1,33 +1,29 @@
 ---
-title: 实现 Azure Maps Creator（预览版）室内地图的动态样式
-description: 了解如何实现 Creator（预览版）室内地图的动态样式
+title: 实现 Azure Maps Creator 室内定位的动态样式
+description: 了解如何实现 Creator 室内定位的动态样式
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 05/20/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a23c492d4a81703c0dc6612928a56b5b31d52cae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 85b64f52fc1832ec1d25767c1cdfef8977d96fe8
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726303"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030316"
 ---
-# <a name="implement-dynamic-styling-for-creator-preview-indoor-maps"></a>实现 Creator（预览版）室内地图的动态样式
+# <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>实现 Creator 室内定位的动态样式
 
-> [!IMPORTANT]
-> Azure Maps Creator 服务目前处于公共预览状态。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-借助 Azure Maps Creator [特征状态服务](/rest/api/maps/featurestate)，可以根据室内定位数据特征的动态属性来应用样式。  例如，可以使用特定颜色来渲染设施会议室，以反映占用状态。 本文将介绍如何使用[特征状态服务](/rest/api/maps/featurestate)和[室内 Web 模块](how-to-use-indoor-module.md)来动态渲染室内定位特征。
+你可以使用 Azure Maps Creator [特征状态服务](/rest/api/maps/v2/feature-state)，应用基于室内定位数据特征动态属性的样式。  例如，可以使用特定颜色来渲染设施会议室，以反映占用状态。 本文介绍如何使用[特征状态服务](/rest/api/maps/v2/feature-state)和[室内 Web 模块](how-to-use-indoor-module.md)动态渲染室内定位特征。
 
 ## <a name="prerequisites"></a>先决条件
 
 1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
-3. [创建 Creator（预览版）资源](how-to-manage-creator.md)
+3. [创建 Creator 资源](how-to-manage-creator.md)
 4. 下载[示例绘图包](https://github.com/Azure-Samples/am-creator-indoor-data-examples)。
 5. [创建室内定位](tutorial-creator-indoor-maps.md)，以获取 `tilesetId` 和 `statesetId`。
 6. 按照[如何使用“室内定位”模块](how-to-use-indoor-module.md)中的步骤操作，以生成 Web 应用。
@@ -36,17 +32,17 @@ ms.locfileid: "101726303"
 
 ## <a name="implement-dynamic-styling"></a>实现动态样式
 
-完成先决条件后，应该有一个配置有订阅密钥、`tilesetId` 和 `statesetId` 的简单 Web 应用。
+满足先决条件后，应该使用订阅密钥、`tilesetId` 和 `statesetId` 配置一个简单的 Web 应用。
 
 ### <a name="select-features"></a>选择特征
 
-必须按特征 `id` 引用特征（如会议室），才能实现动态样式。 将使用特征 `id` 来更新相应特征的动态属性或状态。 若要查看数据集中定义的特征，可以使用以下方法之一：
+若要实现动态样式，必须按特征 `id` 引用特征（比如会议室）。 可以使用特征 `id` 更新相应特征的动态属性或状态。 若要查看数据集中定义的特征，可以使用以下方法之一：
 
-* WFS API（Web 特征服务）。 可以使用 WFS API 查询数据集。 WFS 沿用开放地理空间信息联盟 API 特征。 WFS API 有助于查询数据集中的特征。 例如，可以使用 WFS 来查找给定设施和楼层的所有中型会议室。
+* WFS API（Web 特征服务）。 可以使用 [WFS API](/rest/api/maps/v2/wfs) 查询数据集。 WFS 遵循[开放地理空间信息联盟 API 功能](http://docs.opengeospatial.org/DRAFTS/17-069r1.html)。 WFS API 有助于查询数据集中的特征。 例如，可以使用 WFS 查找特定设施和楼层的所有中型会议室。
 
-* 实现自定义代码，让用户能够使用 Web 应用来选择定位上的特征。 本文将使用这种方法。  
+* 实现自定义代码，让用户能够使用 Web 应用选择定位的特征。 本文使用此选项。  
 
-下面的脚本实现鼠标单击事件。 此代码根据单击点来检索特征 `id`。 在应用中，可以在室内管理器代码块下面插入此代码。 运行应用，然后检查控制台，以获取单击点的特征 `id`。
+下面的脚本实现鼠标单击事件。 此代码根据单击点来检索特征 `id`。 在应用中，可以在室内管理器代码块之后插入此代码。 运行应用，然后检查控制台，以获取单击点的特征 `id`。
 
 ```javascript
 /* Upon a mouse click, log the feature properties to the browser's console. */
@@ -64,21 +60,41 @@ map.events.add("click", function(e){
 
 [创建室内定位](tutorial-creator-indoor-maps.md)教程将特征状态集配置为接受 `occupancy` 的状态更新。
 
-下一部分将把办公室 `UNIT26` 的占用状态设置为 `true`， 而办公室 `UNIT27` 的占用状态则设置为 `false`。
+在下一部分，我们将办公室 `UNIT26` 的占用状态设置为 `true`，将办公室 `UNIT27` 的占用状态设置为 `false`。
 
 ### <a name="set-occupancy-status"></a>设置占用状态
 
  现在要更新 `UNIT26` 和 `UNIT27` 这两间办公室的状态：
 
-1. 在 Postman 应用中，选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中输入名称，然后选择一个集合。 单击“保存”
+1. 在 Postman 应用中，选择“新建”。
 
-2. 使用[特征更新状态 API](/rest/api/maps/featurestate/updatestatespreview) 来更新状态。 为两个单元之一传递状态集 ID 和 `UNIT26`。 追加 Azure Maps 订阅密钥。 以下是用于更新状态的 POST 请求的 URL：
+2. 在“新建”窗口中，选择“集合”。
+
+3. 再次选择“新建”。
+
+4. 在“新建”窗口中，选择“请求”。
+
+5. 在“请求名称”中输入请求名称，比如 POST Data Upload。
+
+6. 选择之前创建的集合，然后选择“保存”。
+
+7. 在[特征更新状态 API](/rest/api/maps/v2/feature-state/update-states) 中输入以下 URL（将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥，将 `statesetId` 替换为 `statesetId`）：
 
     ```http
-    https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetId}&featureID=UNIT26&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT26?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. 在 POST 请求的“头”中，将“`Content-Type`”设置为“`application/json`”。 在 POST 请求的“正文”中，编写以下包含特征更新的原始 JSON。 只有当 POST 请求的时间戳晚于同一特征 `ID` 的上一特征状态更新请求的时间戳时，才会保存更新。 传递“occupied”`keyName`来更新它的值。
+8. 选择“标头”选项卡  。
+
+9. 在“键”字段中，选择 `Content-Type`。 在“值”字段中，选择 `application/json`。
+
+     :::image type="content" source="./media/indoor-map-dynamic-styling/stateset-header.png"alt-text="用于创建状态集的“标头”选项卡信息。":::
+
+10. 选择“正文”选项卡。
+
+11. 在下拉列表中，选择“原始”和“JSON”。
+
+12. 复制以下 JSON 样式，然后将其粘贴到“正文”窗口中：
 
     ```json
     {
@@ -86,13 +102,22 @@ map.events.add("click", function(e){
             {
                 "keyName": "occupied",
                 "value": true,
-                "eventTimestamp": "2019-11-14T17:10:20"
+                "eventTimestamp": "2020-11-14T17:10:20"
             }
         ]
     }
     ```
 
-4. 使用 `UNIT27` 重做第 2 步和第 3 步，JSON 如下所示。
+    >[!IMPORTANT]
+    >只有当 POST 请求的时间戳晚于同一特征 `ID` 的上一特征状态更新请求的时间戳时，才会保存更新。
+
+13. 通过将 `UNIT26` 替换为 `UNIT27`，更改步骤 7 中使用的 URL：
+
+    ```http
+    https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT27?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    ```
+
+14. 复制以下 JSON 样式，然后将其粘贴到“正文”窗口中：
 
     ``` json
     {
@@ -100,7 +125,7 @@ map.events.add("click", function(e){
             {
                 "keyName": "occupied",
                 "value": false,
-                "eventTimestamp": "2019-11-14T17:10:20"
+                "eventTimestamp": "2020-11-14T17:10:20"
             }
         ]
     }
@@ -108,7 +133,9 @@ map.events.add("click", function(e){
 
 ### <a name="visualize-dynamic-styles-on-a-map"></a>可视化定位上的动态样式
 
-之前在浏览器中打开的 Web 应用现在应该会反映定位特征的更新后状态。 `UNIT27`(142) 应显示为绿色，而 `UNIT26`(143) 应显示为红色。
+之前在浏览器中打开的 Web 应用现在应该会反映定位特征的已更新状态：
+- 办公室 `UNIT27`(142) 应显示为绿色。
+- 办公室 `UNIT26`(143) 应显示为红色。
 
 ![可用会议室显示为绿色，被占用的会议室显示为红色](./media/indoor-map-dynamic-styling/room-state.png)
 
@@ -119,7 +146,7 @@ map.events.add("click", function(e){
 若要了解详细信息，请阅读以下文章：
 
 > [!div class="nextstepaction"]
-> [适用于室内地图的 Creator（预览版）](creator-indoor-maps.md)
+> [适用于室内定位的 Creator](creator-indoor-maps.md)
 
 有关本文中提到的 API，请参阅以下参考资料：
 

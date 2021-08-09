@@ -3,13 +3,14 @@ title: 配置自定义容器
 description: 了解如何在 Azure App Service 中配置自定义容器。 本文介绍最常见的配置任务。
 ms.topic: article
 ms.date: 02/23/2021
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 8083c3c0c88d904ccb3ec75ae69a699867bd0f25
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7648482fcf1d3618c02e4c8c8cf18aa521013baf
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101704865"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078262"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>为 Azure 应用服务配置自定义容器
 
@@ -112,6 +113,8 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB
 ```
 
 当应用运行时，应用服务应用设置会自动作为环境变量注入到进程中。 可以通过 URL `https://<app-name>.scm.azurewebsites.net/Env)` 来验证容器环境变量。
+
+如果应用使用专用注册表或 Docker Hub 中的映像，则用于访问存储库的凭据保存在环境变量 `DOCKER_REGISTRY_SERVER_URL`、`DOCKER_REGISTRY_SERVER_USERNAME`、`DOCKER_REGISTRY_SERVER_PASSWORD` 中。 由于存在安全风险，这些保留变量名都不会向应用程序公开。
 
 ::: zone pivot="container-windows"
 对于基于 IIS 或 .NET Framework（4.0 或更高版本）的容器，应用服务会将它们作为 .NET 应用设置和连接字符串自动注入到 `System.ConfigurationManager` 中。 对于所有其他语言或框架，它们作为该进程的环境变量提供，其中包含以下相应的前缀之一：
@@ -356,7 +359,7 @@ SSH 实现容器和客户端之间的安全通信。 为了使自定义容器支
 
 多容器应用（如 WordPress）需要持久存储才能正常工作。 要启用持久存储，你的 Docker Compose 配置必须指向容器 *外部* 的存储位置。 在应用重新启动后，容器中的存储位置不会保存更改。
 
-通过在 [Cloud Shell](https://shell.azure.com) 中使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令来设置 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 应用设置，以此启用持久存储。
+通过在 [Cloud Shell](https://shell.azure.com) 中使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令来设置 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 应用设置，以此启用持久存储。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
@@ -368,7 +371,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 ```yaml
 wordpress:
-  image: wordpress:latest
+  image: <image name:tag>
   volumes:
   - ${WEBAPP_STORAGE_HOME}/site/wwwroot:/var/www/html
   - ${WEBAPP_STORAGE_HOME}/phpmyadmin:/var/www/phpmyadmin
@@ -382,6 +385,7 @@ wordpress:
 - 身份验证/授权
 - 托管标识
 - CORS
+- Docker Compose 方案不支持 VNET 集成
 
 ### <a name="docker-compose-options"></a>Docker Compose 选项
 

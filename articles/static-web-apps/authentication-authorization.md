@@ -7,26 +7,29 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 8b8f42d75a0d214bdc504c8cc0adb6f234ea036e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0ed20af6b27822f1f437f584e9b73eb416941d6f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751114"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110065991"
 ---
-# <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure 静态 Web 应用预览版的身份验证和授权
+# <a name="authentication-and-authorization-for-azure-static-web-apps"></a>Azure 静态 Web 应用的身份验证和授权
 
-Azure 静态 Web 应用通过使用以下提供程序管理身份验证来简化身份验证体验：
+Azure 静态 Web 应用提供简化的身份验证体验。 默认情况下，访问一系列已预配置的提供程序或用于 [注册自定义提供程序](./authentication-custom.md) 的选项。
 
-- Azure Active Directory
-- GitHub
-- Twitter
+- 任何用户都可以使用已启用的提供程序进行身份验证。
+- 登录后，用户默认属于 `anonymous` 和 `authenticated` 角色。
+- 授权用户可以通过在 [staticwebapp.config.json 文件](./configuration.md) 中定义的规则获取对受限 [路由](configuration.md#routes) 的访问权限。
+- 用户通过特定于提供程序的 [邀请](#invitations)或通过 [自定义的 Azure Active Directory 提供程序注册](./authentication-custom.md) 来加入自定义角色。
+- 默认情况下，将启用所有身份验证提供程序。
+  - 若要限制身份验证提供程序，请使用自定义路由规则[阻止访问](#block-an-authorization-provider)。
+- 已预配置的提供程序包括：
+  - Azure Active Directory
+  - GitHub
+  - Twitter
 
-特定于提供程序的[邀请](#invitations)将用户与角色关联，并根据 staticwebapp.config.json 文件中定义的规则向授权用户授予对[路由](configuration.md#routes)的访问权限。
-
-默认情况下，将启用所有身份验证提供程序。 若要限制身份验证提供程序，请使用自定义路由规则[阻止访问](#block-an-authorization-provider)。
-
-身份验证和授权的主题明显与路由概念重叠。 请务必阅读本文附带的[配置指南](configuration.md#routes)。
+身份验证和授权的主题明显与路由概念重叠，这在 [应用程序配置指南](configuration.md#routes) 中进行了详细介绍。
 
 ## <a name="roles"></a>角色
 
@@ -41,7 +44,10 @@ Azure 静态 Web 应用通过使用以下提供程序管理身份验证来简化
 
 ### <a name="add-a-user-to-a-role"></a>将用户添加到角色
 
-若要将用户添加到你的网站，请生成允许你将用户关联到特定角色的邀请。 角色在 staticwebapp.config.json 文件中定义和维护。
+若要将用户添加到角色，请生成允许将用户关联到特定角色的邀请。 角色在 staticwebapp.config.json 文件中定义和维护。
+
+> [!NOTE]
+> 可以选择 [注册自定义的 Azure Active Directory 提供程序](./authentication-custom.md)，以避免发出组管理邀请。
 
 <a name="invitations" id="invitations"></a>
 
@@ -123,7 +129,7 @@ Azure 静态 Web 应用使用 `/.auth` 系统文件夹来提供对与授权相�
 
 ## <a name="login"></a>登录
 
-使用下表查找特定于提供程序的登录路由。
+使用下表查找特定于提供程序的路由。
 
 | 授权提供程序 | 登录路由             |
 | ---------------------- | ----------------------- |
@@ -131,7 +137,7 @@ Azure 静态 Web 应用使用 `/.auth` 系统文件夹来提供对与授权相�
 | GitHub                 | `/.auth/login/github`   |
 | Twitter                | `/.auth/login/twitter`  |
 
-例如，若要使用 GitHub 登录，可以包含类似于以下代码片段的登录链接：
+例如，若要使用 GitHub 登录，可以包含类似于以下代码片段的链接：
 
 ```html
 <a href="/.auth/login/github">Login</a>

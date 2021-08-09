@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 ms.custom: references_regions, devx-track-azurecli
 description: 使用自定义位置在已启用 Azure Arc 的 Kubernetes 群集上部署 Azure PaaS 服务
-ms.openlocfilehash: 15309599b12b10344b59d46c47c11dfa243726db
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 5f25260041fe7d5998d7f1716c9d20e288168e9d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367179"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951655"
 ---
 # <a name="create-and-manage-custom-locations-on-azure-arc-enabled-kubernetes"></a>创建和管理已启用 Azure Arc 的 Kubernetes 上的自定义位置
 
@@ -77,16 +77,29 @@ ms.locfileid: "110367179"
 
 ## <a name="enable-custom-locations-on-cluster"></a>在群集上启用自定义位置
 
-若要在群集上启用此功能，请执行以下命令：
+如果你以 Azure AD 用户身份登录到 Azure CLI，要在集群上启用此功能，请执行以下命令：
 
 ```console
 az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --features cluster-connect custom-locations
 ```
 
+如果使用服务主体登录到 Azure CLI，要在集群上启用此功能，请执行以下步骤：
+
+1. 获取 Azure Arc 服务使用的 Azure AD 应用程序的对象 ID：
+
+    ```console
+    az ad sp show --id 'bc313c14-388c-4e7d-a58e-70017303ee3b' --query objectId -o tsv
+    ```
+
+1. 使用上面步骤中的 `<objectId>` 值在群集上启用自定义位置功能：
+
+    ```console
+    az connectedk8s enable-features -n <cluster-name> -g <resource-group-name> --custom-locations-oid <objectId> --features cluster-connect custom-locations
+    ```
+
 > [!NOTE]
 > 1. 自定义位置功能依赖于群集连接功能。 因此必须启用这两项功能，才能使自定义位置正常工作。
 > 2. `az connectedk8s enable-features` 需在一台计算机上运行，该计算机中的 `kubeconfig` 文件指向要在其上启用这些功能的群集。
-> 3. 如果使用服务主体登录到 Azure CLI，则在启用自定义位置功能之前，必须向服务主体授予[其他权限](troubleshooting.md#enable-custom-locations-using-service-principal)。
 
 ## <a name="create-custom-location"></a>创建自定义位置
 
@@ -107,7 +120,7 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
         az k8s-extension create --name <extensionInstanceName> --extension-type 'Microsoft.Web.Appservice' --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace appservice-ns --configuration-settings "Microsoft.CustomLocation.ServiceAccount=default" --configuration-settings "appsNamespace=appservice-ns" 
         ```
 
-    * [Kubernetes 上的事件网格](/azure/event-grid/kubernetes/overview)
+    * [Kubernetes 上的事件网格](../../event-grid/kubernetes/overview.md)
 
         ```azurecli
           az k8s-extension create --name <extensionInstanceName> --extension-type Microsoft.EventGrid --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace eventgrid-ext --configuration-protected-settings-file protected-settings-extension.json --configuration-settings-file settings-extension.json
@@ -135,6 +148,5 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
 
 - 使用[群集连接](cluster-connect.md)安全连接到群集。
 - 继续阅读 [Azure Arc 上的 Azure 应用服务](../../app-service/overview-arc-integration.md)，以获取有关安装扩展、创建自定义位置以及创建应用服务 Kubernetes 环境的端到端说明。 
-- 为 [Kubernetes 上的事件网格](/azure/event-grid/kubernetes/overview)创建事件网格主题和事件订阅。
+- 为 [Kubernetes 上的事件网格](../../event-grid/kubernetes/overview.md)创建事件网格主题和事件订阅。
 - 详细了解当前可用的[已启用 Azure Arc 的 Kubernetes 扩展](extensions.md#currently-available-extensions)。
-

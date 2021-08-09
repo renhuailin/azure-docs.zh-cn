@@ -4,18 +4,19 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 AAD Pod 托
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.openlocfilehash: f090f5e11688f35ce090bb07ec0d23530bf9d90e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1b1e8ab4e95a0f721f83f933b527cc40b9d5747c
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777844"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592589"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>在 Azure Kubernetes 服务中使用 Azure Active Directory Pod 托管标识（预览）
 
 Azure Active Directory Pod 托管标识使用 Kubernetes 基元将[Azure 资源标识托管][az-managed-identities]和 Azure Active Directory (AAD) 中的标识与 Pod 关联到一起。 管理员创建 Kubernetes 基元形式的标识和绑定，使 Pod 能够以标识提供者的身份访问依赖于 AAD 的 Azure 资源。
 
 > [!NOTE]
+>本文档中介绍的 Pod 托管标识（预览）功能将被替换为 Pod 托管标识 V2（预览）。
 > 如果你有现有的 AADPODIDENTITY 安装，必须删除现有安装。 启用此功能意味着不需要 MIC 组件。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
@@ -85,7 +86,13 @@ az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --netwo
 
 ## <a name="mitigation"></a>缓解措施
 
-若要缓解群集级别的漏洞，可将 OpenPolicyAgent 许可控制器和 Gatekeeper 验证 Webhook 结合使用。 如果已在群集中安装了 Gatekeeper，请添加 K8sPSPCapabilities 类型的 ConstraintTemplate：
+为了缓解群集级别的漏洞，可以使用 Azure 内置策略“Kubernetes 群集容器应仅使用允许的功能”来限制 CAP_NET_RAW 攻击。  
+
+将 NET_RAW 添加到“需要删除功能”
+
+![image](https://user-images.githubusercontent.com/50749048/118558790-206b8880-b735-11eb-9e48-236b81116812.png)
+
+如果没有使用 Azure Policy，可以将 OpenPolicyAgent 许可控制器与验证 Webhook 的 Gatekeeper 一起使用。 如果已在群集中安装了 Gatekeeper，请添加 K8sPSPCapabilities 类型的 ConstraintTemplate：
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/capabilities/template.yaml
@@ -118,7 +125,7 @@ az aks create -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --enabl
 
 ## <a name="update-an-existing-aks-cluster-with-kubenet-network-plugin"></a>更新使用 Kubenet 网络插件的现有 AKS 群集
 
-更新使用 Kubnet 网络插件的现有 AKS 群集以包含 Pod 托管标识。
+更新使用 Kubenet 网络插件的现有 AKS 群集以包含 Pod 托管标识。
 
 ```azurecli-interactive
 az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --enable-pod-identity-with-kubenet
@@ -139,12 +146,12 @@ export IDENTITY_RESOURCE_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n
 
 ## <a name="assign-permissions-for-the-managed-identity"></a>为托管标识分配权限
 
-*IDENTITY_CLIENT_ID* 托管标识必须在包含 AKS 群集虚拟机规模集的资源组中拥有“读取者”权限。
+IDENTITY_CLIENT_ID 托管标识必须在包含 AKS 群集虚拟机规模集的资源组中拥有“托管标识操作员”权限。
 
 ```azurecli-interactive
 NODE_GROUP=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
 NODES_RESOURCE_ID=$(az group show -n $NODE_GROUP -o tsv --query "id")
-az role assignment create --role "Reader" --assignee "$IDENTITY_CLIENT_ID" --scope $NODES_RESOURCE_ID
+az role assignment create --role "Managed Identity Operator" --assignee "$IDENTITY_CLIENT_ID" --scope $NODES_RESOURCE_ID
 ```
 
 ## <a name="create-a-pod-identity"></a>创建 Pod 标识
@@ -165,7 +172,7 @@ az aks pod-identity add --resource-group myResourceGroup --cluster-name myAKSClu
 
 ## <a name="run-a-sample-application"></a>运行示例应用程序
 
-要使某个 Pod 能够使用 AAD Pod 托管标识，该 Pod 需要一个 *aadpodidbinding* 标签，其值与 *AzureIdentityBinding* 中的选择器相匹配。 若要使用 AAD Pod 托管标识运行示例应用程序，请创建包含以下内容的 `demo.yaml` 文件。 请将 *POD_IDENTITY_NAME*、*IDENTITY_CLIENT_ID* 和 *IDENTITY_RESOURCE_GROUP* 替换为前面步骤中使用的值。 请将 *SUBSCRIPTION_ID* 替换为你的订阅 ID。
+要使某个 Pod 能够使用 AAD Pod 托管标识，该 Pod 需要一个 *aadpodidbinding* 标签，其值与 *AzureIdentityBinding* 中的选择器相匹配。 若要使用 AAD Pod 托管标识运行示例应用程序，请创建包含以下内容的 `demo.yaml` 文件。 请将 *POD_IDENTITY_NAME*、*IDENTITY_CLIENT_ID* 和 *IDENTITY_RESOURCE_GROUP* 替换为前面步骤中使用的值。 请将 SUBSCRIPTION_ID 替换为你的订阅 ID。
 
 > [!NOTE]
 > 在前面的步骤中，你已创建 *POD_IDENTITY_NAME*、*IDENTITY_CLIENT_ID* 和 *IDENTITY_RESOURCE_GROUP* 变量。 可以使用诸如 `echo` 的命令来显示你为变量设置的值（例如 `echo $IDENTITY_NAME`）。
@@ -226,10 +233,122 @@ successfully acquired a token, userAssignedID MSI, msiEndpoint(http://169.254.16
 successfully made GET on instance metadata
 ...
 ```
+## <a name="run-an-application-with-multiple-identities"></a>运行具有多个标识的应用程序
 
-## <a name="clean-up"></a>清理
+## <a name="create-multiple-identities"></a>创建多个标识
 
-若要从群集中删除 AAD Pod 托管标识，请从群集中删除示例应用程序和 Pod 标识。 然后删除该托管标识。
+使用 [az identity create][az-identity-create] 创建标识，并设置 IDENTITY_CLIENT_ID 和 IDENTITY_RESOURCE_ID 变量。
+
+```azurecli-interactive
+az group create --name myIdentityResourceGroup --location eastus
+export IDENTITY_RESOURCE_GROUP="myIdentityResourceGroup"
+export IDENTITY_NAME_1="application-identity_1"
+az identity create --resource-group ${IDENTITY_RESOURCE_GROUP} --name ${IDENTITY_NAME_1}
+export IDENTITY_NAME_2="application-identity_2"
+az identity create --resource-group ${IDENTITY_RESOURCE_GROUP} --name ${IDENTITY_NAME_2}
+export IDENTITY_CLIENT_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME_1} --query clientId -otsv)"
+export IDENTITY_RESOURCE_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME_1} --query id -otsv)"
+export IDENTITY_CLIENT_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME_2} --query clientId -otsv)"
+export IDENTITY_RESOURCE_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME_2} --query id -otsv)"
+```
+
+## <a name="assign-permissions-for-the-managed-identities"></a>为托管标识分配权限
+
+*IDENTITY_CLIENT_ID* 托管标识必须在包含 AKS 群集虚拟机规模集的资源组中拥有“读取者”权限。
+
+```azurecli-interactive
+NODE_GROUP=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
+NODES_RESOURCE_ID=$(az group show -n $NODE_GROUP -o tsv --query "id")
+az role assignment create --role "Reader" --assignee "$IDENTITY_CLIENT_ID_1" --scope $NODES_RESOURCE_ID
+az role assignment create --role "Reader" --assignee "$IDENTITY_CLIENT_ID_2" --scope $NODES_RESOURCE_ID
+```
+
+## <a name="create-pod-identities"></a>创建 Pod 标识
+
+使用 `az aks pod-identity add` 为群集创建 Pod 标识。
+
+> [!IMPORTANT]
+> 必须在订阅中拥有相应的权限（例如 `Owner`）才能创建标识和角色绑定。
+
+```azurecli-interactive
+export POD_IDENTITY_NAME="my-pod-identity"
+export POD_IDENTITY_NAMESPACE="my-app"
+az aks pod-identity add --resource-group myResourceGroup --cluster-name myAKSCluster --namespace ${POD_IDENTITY_NAMESPACE}  --name ${POD_IDENTITY_NAME} --identity-resource-id ${IDENTITY_RESOURCE_ID_1} --binding-selector foo
+az aks pod-identity add --resource-group myResourceGroup --cluster-name myAKSCluster --namespace ${POD_IDENTITY_NAMESPACE}  --name ${POD_IDENTITY_NAME} --identity-resource-id ${IDENTITY_RESOURCE_ID_2} --binding-selector foo
+```
+
+> [!NOTE]
+> 在 AKS 群集上启用 Pod 托管标识时，会将名为 *aks-addon-exception* 的 AzurePodIdentityException 添加到 *kube-system* 命名空间。 AzurePodIdentityException 允许带有特定标签的 Pod 访问 Azure 实例元数据服务 (IMDS) 终结点，而不会被节点托管标识 (NMI) 服务器拦截。 *aks-addon-exception* 允许 AKS 第一方加载项（例如 AAD Pod 托管标识）正常运行，而无需手动配置 AzurePodIdentityException。 （可选）可以使用 `az aks pod-identity exception add`、`az aks pod-identity exception delete`、`az aks pod-identity exception update` 或 `kubectl` 添加、删除和更新 AzurePodIdentityException。
+
+## <a name="run-a-sample-application-with-multiple-identities"></a>运行具有多个标识的示例应用程序
+
+要使某个 Pod 能够使用 AAD Pod 托管标识，该 Pod 需要一个 *aadpodidbinding* 标签，其值与 *AzureIdentityBinding* 中的选择器相匹配。 若要使用 AAD Pod 托管标识运行示例应用程序，请创建包含以下内容的 `demo.yaml` 文件。 请将 *POD_IDENTITY_NAME*、*IDENTITY_CLIENT_ID* 和 *IDENTITY_RESOURCE_GROUP* 替换为前面步骤中使用的值。 请将 SUBSCRIPTION_ID 替换为你的订阅 ID。
+
+> [!NOTE]
+> 在前面的步骤中，你已创建 *POD_IDENTITY_NAME*、*IDENTITY_CLIENT_ID* 和 *IDENTITY_RESOURCE_GROUP* 变量。 可以使用诸如 `echo` 的命令来显示你为变量设置的值（例如 `echo $IDENTITY_NAME`）。
+
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo
+  labels:
+    aadpodidbinding: foo
+spec:
+  containers:
+  - name: demo
+    image: mcr.microsoft.com/oss/azure/aad-pod-identity/demo:v1.6.3
+    args:
+      - --subscriptionid=SUBSCRIPTION_ID
+      - --clientid=IDENTITY_CLIENT_ID
+      - --resourcegroup=IDENTITY_RESOURCE_GROUP
+    env:
+      - name: MY_POD_NAME
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.name
+      - name: MY_POD_NAMESPACE
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.namespace
+      - name: MY_POD_IP
+        valueFrom:
+          fieldRef:
+            fieldPath: status.podIP
+  nodeSelector:
+    kubernetes.io/os: linux
+```
+
+请注意，Pod 定义包含一个 *aadpodidbinding* 标签，其值与你在前一步骤中运行 `az aks pod-identity add` 时使用的 Pod 标识的名称相匹配。
+
+使用 `kubectl apply` 将 `demo.yaml` 部署到 Pod 标识所在的同一命名空间：
+
+```azurecli-interactive
+kubectl apply -f demo.yaml --namespace $POD_IDENTITY_NAMESPACE
+```
+
+使用 `kubectl logs` 确认示例应用程序是否成功运行。
+
+```azurecli-interactive
+kubectl logs demo --follow --namespace $POD_IDENTITY_NAMESPACE
+```
+
+确认日志中是否显示已成功获取令牌并且 *GET* 操作成功。
+ 
+```output
+...
+successfully doARMOperations vm count 0
+successfully acquired a token using the MSI, msiEndpoint(http://169.254.169.254/metadata/identity/oauth2/token)
+successfully acquired a token, userAssignedID MSI, msiEndpoint(http://169.254.169.254/metadata/identity/oauth2/token) clientID(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
+successfully made GET on instance metadata
+...
+```
+export IDENTITY_CLIENT_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME} --query clientId -otsv)" export IDENTITY_RESOURCE_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME} --query id -otsv)"
+```
+
+## Clean up
+
+To remove AAD pod-managed identity from your cluster, remove the sample application and the pod identity from the cluster. Then remove the identity.
 
 ```azurecli-interactive
 kubectl delete pod demo --namespace $POD_IDENTITY_NAMESPACE

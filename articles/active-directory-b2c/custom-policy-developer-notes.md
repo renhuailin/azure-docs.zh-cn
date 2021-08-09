@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/30/2021
+ms.date: 06/07/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e6261699166e0157750fc691bc0c1726d8cefd50
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 295dfa5a02ce3f46049805339a4f7918ce20361e
+ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324052"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111565187"
 ---
 # <a name="developer-notes-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的开发人员说明
 
@@ -37,8 +37,44 @@ Azure Active Directory B2C [用户流和自定义策略](user-flow-overview.md)�
 | 使用用户名和密码[注册并登录](add-sign-up-and-sign-in-policy.md)。| GA | GA | |
 | [配置文件编辑流](add-profile-editing-policy.md) | GA | GA | |
 | [自助式密码重置](add-password-reset-policy.md) | GA| GA| |
-| [强制执行密码重置](force-password-reset.md) | 预览 | NA | |
+| [强制执行密码重置](force-password-reset.md) | GA | NA | |
 | [电话注册和登录](phone-authentication-user-flows.md) | GA | GA | |
+| [条件访问和标识保护](conditional-access-user-flow.md) | GA | GA | 不适用于 SAML 应用程序 |
+
+## <a name="oauth-20-application-authorization-flows"></a>OAuth 2.0 应用程序授权流
+
+下表总结了可以与 Azure AD B2C 集成的 OAuth 2.0 和 OpenId Connect 应用程序身份验证流。
+
+|Feature  |用户流  |自定义策略  |注释  |
+|---------|:---------:|:---------:|---------|
+[授权代码](authorization-code-flow.md) | GA | GA | 允许用户登录到 Web 应用程序。 Web 应用程序接收授权代码。 兑换该授权代码可获取用于调用 Web API 的令牌。|
+[采用 PKCE 的授权代码](authorization-code-flow.md)| GA | GA | 允许用户登录到移动和单页应用程序。 应用程序接收采用代码交换证明密钥 (PKCE) 的授权代码。 兑换该授权代码可获取用于调用 Web API 的令牌。  |
+[客户端凭据授予](https://tools.ietf.org/html/rfc6749#section-4.4)| GA | GA | 允许使用应用程序的标识访问 Web 托管的资源。 通常用于必须在后台运行的服务器间交互，不需要立即与用户交互。  <br />  <br />  若要在 Azure AD B2C 租户中使用此功能，请使用 Azure AD B2C 租户的 Azure AD 终结点。 有关详细信息，请参阅 [OAuth 2.0 客户端凭据流](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。 此流不使用 Azure AD B2C [用户流或自定义策略](user-flow-overview.md)设置。 |
+[设备授权授予](https://tools.ietf.org/html/rfc8628)| NA | NA | 允许用户登录到智能电视、IoT 设备或打印机等输入受限的设备。  |
+[隐式流](implicit-flow-single-page-application.md) | GA | GA |  允许用户登录到单页应用程序。 应用直接获取令牌，无需执行后端服务器凭据交换。|
+[代理](../active-directory/develop/v2-oauth2-on-behalf-of-flow.md)| NA | NA | 应用程序调用某个服务或 Web API，而后者又需要调用另一个服务或 Web API。 <br />  <br /> 若要使中间层服务向下游服务发出经过身份验证的请求，请在授权标头中传递一个客户端凭据令牌。 可以有选择地将自定义标头包含在 Azure AD B2C 用户令牌中。  |
+[OpenId Connect](openid-connect.md) | GA | GA | OpenID Connect 引入了 ID 令牌的概念，这是一种安全令牌，可让客户端验证用户的标识。 |
+[OpenId Connect 混合流](openid-connect.md) | GA | GA | 允许 Web 应用程序检索授权请求上的 ID 令牌以及授权代码。  |
+[资源所有者密码凭据 (ROPC)](add-ropc-policy.md) | 预览 | 预览 | 允许移动应用程序通过直接处理用户的密码让用户登录。 |
+
+### <a name="oauth-20-options"></a>OAuth 2.0 选项
+
+|Feature  |用户流  |自定义策略  |备注  |
+|---------|:---------:|:---------:|---------|
+| [将登录重定向到社交提供者](direct-signin.md#redirect-sign-in-to-a-social-provider) | GA | GA | 查询字符串参数 `domain_hint`。 |
+| [预填充登录名](direct-signin.md#prepopulate-the-sign-in-name) | GA | GA | 查询字符串参数 `login_hint`。 |
+| 通过 `client_assertion` 将 JSON 插入用户历程| NA| 已放弃 |  |
+| 将 JSON 作为 [id_token_hint](id-token-hint.md) 插入到用户旅程中 | NA | GA | |
+| [向应用程序传递标识提供者令牌](idp-pass-through-user-flow.md)| 预览| 预览| 例如，从 Facebook 到应用。 |
+
+## <a name="saml2-application-authentication-flows"></a>SAML2 应用程序身份验证流
+
+下表总结了可以与 Azure AD B2C 集成的安全断言标记语言 (SAML) 应用程序身份验证流。
+
+|Feature  |用户流  |自定义策略  |注释  |
+|---------|:---------:|:---------:|---------|
+[SP 启动的](saml-service-provider.md) | NA | GA | POST 和重定向绑定。 |
+[IDP 启动的](saml-service-provider-options.md#identity-provider-initiated-flow) | NA | GA | 其中发起的标识提供程序为 Azure AD B2C。  |
 
 ## <a name="user-experience-customization"></a>用户体验自定义
 
@@ -48,24 +84,13 @@ Azure Active Directory B2C [用户流和自定义策略](user-flow-overview.md)�
 | [自定义电子邮件验证](custom-email-mailjet.md) | NA | GA| |
 | [使用内置模板自定义用户界面](customize-ui.md) | GA| GA| |
 | [使用自定义模板自定义用户界面](customize-ui-with-html.md) | GA| GA| 通过使用 HTML 模板。 |
+| [页面布局版本](page-layout.md) | GA | GA | |
 | [JavaScript](javascript-and-page-layout.md) | GA | GA | |
 | [嵌入的登录体验](embedded-login.md) | NA |  预览| 通过使用内联框架元素 `<iframe>`。 |
 | [密码复杂性](password-complexity.md) | GA | GA | |
 | [禁用电子邮件验证](disable-email-verification.md) | GA|  GA| 不建议在生产环境中使用。 在注册过程中禁用电子邮件验证可能会导致垃圾邮件。 |
 
 
-## <a name="protocols-and-authorization-flows"></a>协议和授权流
-
-|Feature  |用户流  |自定义策略  |注释  |
-|---------|:---------:|:---------:|---------|
-|[OAuth2 授权代码](authorization-code-flow.md) | GA | GA |
-|[具有 PKCE 的 OAuth2 授权代码](authorization-code-flow.md)| GA | GA | 公共客户端和单页应用程序。 |
-|[OAuth2 隐式流](implicit-flow-single-page-application.md) | GA | GA | |
-|[OAuth2 资源所有者密码凭据](add-ropc-policy.md) | 预览 | 预览 | |
-|OAuth1 | NA | NA | 不支持。 |
-|[OpenId Connect](openid-connect.md) | GA | GA | |
-|[SAML2](saml-service-provider.md) | NA | GA | POST 和重定向绑定。 |
-| WSFED | NA | NA | 不支持。 |
 
 ## <a name="identity-providers"></a>标识提供者
 
@@ -110,16 +135,6 @@ Azure Active Directory B2C [用户流和自定义策略](user-flow-overview.md)�
 |[通过客户端证书身份验证进行保护](secure-rest-api.md#https-client-certificate-authentication) | 预览 | GA | |
 |[通过 OAuth2 持有者身份验证进行保护](secure-rest-api.md#oauth2-bearer-authentication) | NA | GA | |
 |[通过 API 密钥身份验证进行保护](secure-rest-api.md#api-key-authentication) | NA | GA | |
-
-### <a name="application-and-azure-ad-b2c-integration"></a>应用程序和 Azure AD B2C 集成
-
-|Feature  |用户流  |自定义策略  |备注  |
-|---------|:---------:|:---------:|---------|
-| [将登录重定向到社交提供者](direct-signin.md#redirect-sign-in-to-a-social-provider) | GA | GA | 查询字符串参数 `domain_hint`。 |
-| [预填充登录名](direct-signin.md#prepopulate-the-sign-in-name) | GA | GA | 查询字符串参数 `login_hint`。 |
-| 通过 `client_assertion` 将 JSON 插入用户历程| NA| 已放弃 |  |
-| 将 JSON 作为 [id_token_hint](id-token-hint.md) 插入到用户旅程中 | NA | GA | |
-| [向应用程序传递标识提供者令牌](idp-pass-through-user-flow.md)| 预览| 预览| 例如，从 Facebook 到应用。 |
 
 
 ## <a name="custom-policy-features"></a>自定义策略功能

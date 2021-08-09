@@ -7,21 +7,17 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
-ms.openlocfilehash: d8acab17e9d8dfc078b46f6a279cc671a70b0a50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b804536c54cce64ace2605999c7cc28cef357a4d
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91974832"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072318"
 ---
-# <a name="preview-maintenance-control-for-os-image-upgrades-on-azure-virtual-machine-scale-sets-using-powershell"></a>预览：使用 PowerShell 为 Azure 虚拟机规模集上的 OS 映像升级进行维护控制
+# <a name="maintenance-control-for-os-image-upgrades-on-azure-virtual-machine-scale-sets-using-powershell"></a>使用 PowerShell 为 Azure 虚拟机规模集上的 OS 映像升级进行维护控制
 
 利用维护控制，可以决定何时将自动来宾 OS 映像升级应用到虚拟机规模集。 本主题介绍维护控制的 Azure PowerShell 选项。 若要了解如何使用维护控制，请参阅 [Azure 虚拟机规模集的维护控制](virtual-machine-scale-sets-maintenance-control.md)。
-
-> [!IMPORTANT]
-> Azure 虚拟机规模集上 OS 映像升级的维护控制目前处于公共预览版阶段。
-> 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
 ## <a name="enable-the-powershell-module"></a>启用 PowerShell 模块
@@ -112,12 +108,10 @@ New-AzConfigurationAssignment `
 
 ## <a name="enable-automatic-os-upgrade"></a>启动自动 OS 升级
 
-可以为每个要使用维护控制的虚拟机规模集启用自动 OS 升级。 请参考文档 [Azure 虚拟机规模集自动 os 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)，以了解如何在虚拟机规模集上启用自动 OS 升级。 
+可以为每个要使用维护控制的虚拟机规模集启用自动 OS 升级。 有关在虚拟机规模集上启用自动 OS 升级的信息，请参阅 [Azure 虚拟机规模集自动 OS 映像升级](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 Azure 中运行的虚拟机的维护和更新。
-
 > [!div class="nextstepaction"]
-> [维护和更新](maintenance-and-updates.md)
+> [了解 Azure 中运行的虚拟机的维护和更新](maintenance-and-updates.md)

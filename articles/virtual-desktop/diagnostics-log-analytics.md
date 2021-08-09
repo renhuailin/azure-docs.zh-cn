@@ -1,27 +1,27 @@
 ---
-title: Windows 虚拟桌面诊断日志分析 - Azure
-description: 如何将日志分析与 Windows 虚拟桌面诊断功能配合使用。
+title: Azure 虚拟桌面诊断日志分析 - Azure
+description: 如何将日志分析与 Azure 虚拟桌面诊断功能配合使用。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 98f9ffdfa7addd8689b01332b88261311a525c81
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: caaaded204fbc433a77d7f5a9ccf6a356195e5b9
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469322"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757906"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>将 Log Analytics 用于诊断功能
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)。
+>本内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)。
 
-就像使用许多其他 Azure 服务一样，Windows 虚拟桌面使用 [Azure Monitor](../azure-monitor/overview.md) 进行监视和发出警报。 这样，管理员便可以集中通过一个界面识别问题。 该服务为用户活动和管理活动创建活动日志。 每个活动日志都会归属于以下类别：
+就像使用许多其他 Azure 服务一样，Azure 虚拟桌面使用 [Azure Monitor](../azure-monitor/overview.md) 进行监视和发出警报。 这样，管理员便可以集中通过一个界面识别问题。 该服务为用户活动和管理活动创建活动日志。 每个活动日志都会归属于以下类别：
 
 - 管理活动：
-    - 对使用 API 或 PowerShell 更改 Windows 虚拟桌面对象的尝试是否成功进行跟踪。 例如，是否有人可以使用 PowerShell 成功创建主机池？
+    - 对使用 API 或 PowerShell 更改 Azure 虚拟桌面对象的尝试是否成功进行跟踪。 例如，是否有人可以使用 PowerShell 成功创建主机池？
 - 源：
     - 用户是否可以成功订阅工作区？
     - 用户是否能看到远程桌面客户端中发布的所有资源？
@@ -34,9 +34,9 @@ ms.locfileid: "110469322"
 - 检查点：
     - 已到达的某个活动生存期的特定步骤。 例如，在某个会话过程中，将某个用户负载均衡到了某个特定主机，然后该用户在某个连接过程中登录了，等等。
 
-由于诊断角色服务本身是 Windows 虚拟桌面的一部分，因此无法访问 Windows 虚拟桌面的连接将不会显示在诊断结果中。 在用户遇到网络连接问题时，可能会出现 Windows 虚拟桌面连接问题。
+由于诊断角色服务本身是 Azure 虚拟桌面的一部分，因此无法访问 Azure 虚拟桌面的连接将不会显示在诊断结果中。 在用户遇到网络连接问题时，可能会出现 Azure 虚拟桌面连接问题。
 
-利用 Azure Monitor，可以分析 Windows 虚拟桌面数据并查看虚拟机 (VM) 性能计数器，所有操作都在同一工具内进行。 本文将介绍如何为 Windows 虚拟桌面环境启用诊断。
+利用 Azure Monitor，可以分析 Azure 虚拟桌面数据并查看虚拟机 (VM) 性能计数器，所有操作都在同一工具内进行。 本文将详细介绍如何为 Azure 虚拟桌面环境启用诊断。
 
 >[!NOTE]
 >若要了解如何在 Azure 中监视 VM，请参阅[利用 Azure Monitor 监视 Azure 虚拟机](../azure-monitor/vm/monitor-vm-azure.md)。 此外，请确保[查看性能计数器阈值](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds)，以便更好地了解你在会话主机上的用户体验。
@@ -55,15 +55,15 @@ ms.locfileid: "110469322"
 
 稍后在设置过程中将会需要这些信息。
 
-请确保查看 Azure Monitor 的权限管理，以便让监视和维护你的 Windows 虚拟桌面环境的人员能够进行数据访问。 有关详细信息，请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/roles-permissions-security.md)。
+请确保查看 Azure Monitor 的权限管理，使那些监视和维护你的 Azure 虚拟桌面环境的人员能够访问数据。 有关详细信息，请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/roles-permissions-security.md)。
 
 ## <a name="push-diagnostics-data-to-your-workspace"></a>将诊断数据推送到工作区
 
-可以将诊断数据从 Windows 虚拟桌面对象推送到工作区的 Log Analytics 中。 在首次创建对象时，可以立即设置此功能。
+可以将诊断数据从 Azure 虚拟桌面对象推送到工作区的 Log Analytics 中。 在首次创建对象时，可以立即设置此功能。
 
 若要为新对象设置 Log Analytics，请执行以下操作：
 
-1. 登录到 Azure 门户并转到 Windows 虚拟桌面。
+1. 登录到 Azure 门户并转到 Azure 虚拟桌面。
 
 2. 导航到要捕获其日志和事件的对象（例如主机池、应用组或工作区）。
 
@@ -97,7 +97,7 @@ ms.locfileid: "110469322"
 
 3. 在“服务”下，选择“Log Analytics 工作区”。
 
-4. 从列表中选择为 Windows 虚拟桌面对象配置的工作区。
+4. 从列表中选择为 Azure 虚拟桌面对象配置的工作区。
 
 5. 在工作区中，选择“日志”。 可以使用“搜索”功能来筛选菜单列表。
 
@@ -114,7 +114,7 @@ ms.locfileid: "110469322"
 5. 你已准备就绪，可以查询诊断了。 所有的诊断表都有“WVD”前缀。
 
 >[!NOTE]
->有关 Azure Monitor 日志中存储的表的更多详细信息，请参阅 [Azure Monitor 数据参考](/azure/azure-monitor/reference/)。 所有与 Windows 虚拟桌面相关的表都会标记为“WVD”。
+>有关 Azure Monitor 日志中存储的表的更多详细信息，请参阅 [Azure Monitor 数据参考](/azure/azure-monitor/reference/)。 所有与 Azure 虚拟桌面相关的表都会标记为“WVD”。
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>发送诊断事件的节奏
 
@@ -131,7 +131,7 @@ Log Analytics 只在连接活动的以下中间状态进行报告：
 通过 Azure Monitor Log Analytics UI 访问示例查询：
 1. 转到 Log Analytics 工作区，然后选择“日志”。 该示例查询 UI 会自动显示。
 1. 将筛选器更改为“类别”。
-1. 选择”Windows 虚拟桌面”来查看可用查询。
+1. 选择“Azure 虚拟桌面”来查看可用查询。
 1. 选择“运行”以运行所选查询。
 
 请在 [Azure Monitor Log Analytics 中保存的查询](../azure-monitor/logs/queries.md)中详细了解该示例查询界面。

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-september2019, devx-track-js
-ms.openlocfilehash: 161000f2860a1153424a628a2b303f3717f828da
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: ec0f439e8ad098e1fe2d14c3f61f98b387edf625
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275934"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110477200"
 ---
 # <a name="how-to-use-azure-queue-storage-from-nodejs"></a>如何通过 Node.js 使用 Azure 队列存储
 
@@ -42,7 +42,7 @@ ms.locfileid: "106275934"
 
 1. 使用 PowerShell (Windows)、Terminal (Mac) 或 Bash (Unix) 等命令行界面，导航到在其中创建了示例应用程序的文件夹。
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 1. 在命令窗口中键入 `npm install @azure/storage-queue`。
 
@@ -60,7 +60,7 @@ ms.locfileid: "106275934"
 
 使用你的代码编辑器，将以下内容添加到要在其中使用队列的 JavaScript 文件的顶部。
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_ImportStatements":::
 
@@ -74,7 +74,7 @@ var azure = require('azure-storage');
 
 ## <a name="how-to-create-a-queue"></a>如何创建队列
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 以下代码获取名为 `AZURE_STORAGE_CONNECTION_STRING` 的环境变量的值并使用它创建一个 [`QueueServiceClient`](/javascript/api/@azure/storage-queue/queueserviceclient) 对象。 然后，将使用此对象创建一个 [`QueueClient`](/javascript/api/@azure/storage-queue/queueclient) 对象，后者用于处理特定队列。
 
@@ -108,7 +108,7 @@ queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>如何在队列中插入消息
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 若要向队列添加消息，请调用 [`sendMessage`](/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) 方法。
 
@@ -132,7 +132,7 @@ queueSvc.createMessage('myqueue', "Hello, World", function(error, results, respo
 
 可以通过调用 `peekMessages` 方法来速览队列中的消息，而不必将其从队列中删除。
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 默认情况下，[`peekMessages`](/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) 扫视单条消息。 以下示例速览队列中的前五条消息。 如果可见消息少于五条，则只返回这些可见消息。
 
@@ -160,7 +160,7 @@ queueSvc.peekMessages('myqueue', function(error, results, response){
 
 以下示例将更新消息的文本。
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 通过调用 [`updateMessage`](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--number--queueupdatemessageoptions-) 在队列中就地更改消息的内容。
 
@@ -196,7 +196,7 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 
 以下示例获取一条消息，然后将其删除。
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 若要获取消息，请调用 [`receiveMessages`](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) 方法。 此调用会使消息在队列中不可见，使其他客户端无法处理它们。 当应用程序处理完某条消息后，请调用 [`deleteMessage`](/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) 将其从队列中删除。
 
@@ -232,7 +232,7 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 
 ## <a name="additional-options-for-dequeuing-messages"></a>用于取消对消息进行排队的其他选项
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 可以通过两种方式自定义队列中的消息检索：
 
@@ -273,7 +273,7 @@ queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, 
 
 ## <a name="how-to-get-the-queue-length"></a>如何获取队列长度
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 [`getProperties`](/javascript/api/@azure/storage-queue/queueclient#getproperties-queuegetpropertiesoptions-) 方法返回有关队列的元数据，其中包括在队列中等待的消息的大致数目。
 
@@ -295,7 +295,7 @@ queueSvc.getQueueMetadata('myqueue', function(error, results, response){
 
 ## <a name="how-to-list-queues"></a>如何列出队列
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 若要检索队列的列表，请调用 [`QueueServiceClient.listQueues`](/javascript/api/@azure/storage-queue/servicelistqueuesoptions#prefix)。 若要检索按特定前缀筛选的列表，请在调用 `listQueues` 时设置 [options.prefix](/javascript/api/@azure/storage-queue/servicelistqueuesoptions#prefix)。
 
@@ -319,7 +319,7 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 
 ## <a name="how-to-delete-a-queue"></a>如何删除队列
 
-# <a name="javascript-v12"></a>[JavaScript v12](#tab/javascript)
+# <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
 若要删除队列及其包含的所有消息，请对 `QueueClient` 对象调用 [`DeleteQueue`](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) 方法。
 

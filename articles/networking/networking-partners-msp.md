@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: 2ce2d84a52a03dc08d73c7538a462a2b010f3c6e
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: b2e526d4462a21d40073e57292cce7eb075b9d3d
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228021"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110470175"
 ---
 # <a name="about-azure-networking-msp-partners"></a>关于 Azure 网络 MSP 合作伙伴
 
@@ -43,7 +43,8 @@ Azure 网络 MSP 是一组专门的托管服务提供商，可解决云和混合
 |[IIJ](https://www.iij.ad.jp/biz/cloudex/)|[ExpressRoute 实现：1 小时简报](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxm_consulting)|[ExpressRoute：2 周实现](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxmer_consulting)||||
 |[Infosys](https://www.infosys.com/services/microsoft-cloud-business/pages/index.aspx)|[适用于 Azure 的 Infosys 集成+](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/infosysltd.infosys-integrate-for-azure?tab=Overview)|||||
 |[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/)|[Azure 网络评估 -5 天](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/interxionhq.inxn_azure_networking_assessment)|||||
-|[IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/)；||[ExpressRoute by IX Reach，一家 BSO 公司](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/ixreach.cloudconnect?tab=Overview)||||
+|[IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/)||[ExpressRoute by IX Reach，一家 BSO 公司](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/ixreach.cloudconnect?tab=Overview)||||
+|[KoçSistem](https://azure.kocsistem.com.tr/en)|[适用于 Azure 的 KoçSistem 托管云服务](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kocsistem.kocsistemcloudmanagementtool?tab=Overview)|[KoçSistem Azure ExpressRoute 管理](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kocsistem.ks_azure_express_route?tab=Overview)|[KoçSistem Azure 虚拟 WAN 管理](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kocsistem.ks_azure_virtual_wan?tab=Overview)||[KoçSistem Azure 安全中心托管服务](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kocsistem.ks_azure_security_center?tab=Overview)|
 |[Liquid Telecom](https://liquidcloud.africa/)|[云就绪 - 2 小时评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/liquidtelecommunicationsoperationslimited.liquid_cloud_readiness_assessment)；[Liquid Azure 专家服务](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/liquidtelecommunicationsoperationslimited.5dab29ab-bb14-4df8-8978-9a8608a41ad7?tab=Overview)|[适用于 Azure 的 Liquid 托管 ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/liquidtelecommunicationsoperationslimited.42cfee0b-8f07-4948-94b0-c9fc3e1ddc42?tab=Overview)||||
 |[Lumen](https://www.lumen.com/en-us/solutions/hybrid-cloud.html)||[ExpressRoute 咨询 Svcs：8 周实现](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/centurylink2362604-2362604.centurylink_consultingservicesforexpressroute)；[适用于 ExpressRoute 的 Lumen 登陆区域 1 天](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/centurylinklimited.centurylink_landing_zone_for_azure_expressroute)||||
 |[Macquarie Telecom](https://macquariecloudservices.com/azure-managed-services/)|[Macquarie Cloud 的 Azure 托管服务](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.managed_services?tab=Overview)；[Macquarie Cloud 服务的 Azure 扩展](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.azure_extend?tab=Overview)||[Macquarie Cloud 服务的 Azure 部署](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.azure_deploy_vedge?tab=Overview)；[Macquarie Cloud 的 SD-WAN 虚拟 Edge 安装](https://azuremarketplace.microsoft.com/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)||[Macquarie Cloud 服务的托管安全性](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.managed_security?tab=Overview)|

@@ -10,12 +10,12 @@ ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: c73c6ce641e5e8386d636f87253cb111c17ae69c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 987ab6346788f78316b0682631b7cefde12cad29
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466071"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111437658"
 ---
 # <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>教程：使用租户颁发和识别可验证凭据（预览）
 
@@ -66,36 +66,6 @@ ms.locfileid: "110466071"
 
    ![颁发者终结点](media/issue-verify-verifable-credentials-your-tenant/application-endpoints.png)
 
-## <a name="set-up-your-node-app-with-access-to-azure-key-vault"></a>设置节点应用以访问 Azure Key Vault
-
-为验证用户的凭据颁发请求，颁发者网站会使用 Azure Key Vault 中的加密密钥。 若要访问 Azure Key Vault，你的网站需要可用来向 Azure Key Vault 进行身份验证的客户端 ID 和客户端密码。
-
-1. 查看 VC Wallet App 概述页面时，请选择“证书和密码”。
-    ![证书和密码](media/issue-verify-verifable-credentials-your-tenant/vc-wallet-app-certs-secrets.png)
-1. 在“客户端密码”部分，选择“新建客户端密码” 
-    1. 添加说明，例如“节点 VC 客户端密码”
-    1. 过期时间：一年。
-  ![有效期为一年的应用程序密码](media/issue-verify-verifable-credentials-your-tenant/add-client-secret.png)
-1. 将该密码抄下来。 更新示例节点应用时需要用到此信息。
-
->[!WARNING]
-> 你只有一次抄下该密码的机会， 在此之后，系统会对该密码进行单向哈希处理。 请勿抄下 ID。 
-
-在 Azure AD 中创建应用程序和客户端密码后，需要将必要的权限授予该应用程序，以便其对你的 Key Vault 执行操作。 要让网站能够访问和使用存储在该处的私钥，必须进行这些权限更改。
-
-1. 转到 Key Vault。
-2. 选择我们在这些教程中使用的密钥保管库。
-3. 在左侧导航栏上，选择“访问策略”
-4. 选择“+添加访问策略”。
-5. 在“密钥权限”部分，选择“获取”，然后选择“签名”。  
-6. 选择“主体”，然后使用应用程序 ID 搜索我们早先注册的应用程序。 选择该文件夹。
-7. 选择 **添加** 。
-8. 选择“保存”。
-
-有关 Key Vault 权限和访问控制的详细信息，请参阅[密钥保管库 RBAC 指南](../../key-vault/general/rbac-guide.md)
-
-![分配密钥保管库权限](media/issue-verify-verifable-credentials-your-tenant/key-vault-permissions.png)
-## <a name="make-changes-to-match-your-environment"></a>根据你的环境进行更改
 
 到目前为止，我们一直在使用示例应用。 该应用使用 [Azure Active Directory B2C](../../active-directory-b2c/overview.md)，现在我们要切换为使用 Azure AD，因此需要进行一些更改，这不仅仅是为了符合你的环境，同时还是为了支持以前未曾使用过的其他声明。
 
@@ -160,7 +130,54 @@ ms.locfileid: "110466071"
 1. 从可验证凭据页面中，使用旧显示文件和新规则文件 (modified-credentialExpert.json) 创建名为 modifiedCredentialExpert 的新凭据。 
 1. 创建凭据的过程完成后，请从“概述”页面复制“颁发凭据 URL”并保存，下一节需要用到该信息。 
 
-## <a name="before-we-continue"></a>在继续操作之前
+## <a name="set-up-your-node-app-with-access-to-azure-key-vault"></a>设置节点应用以访问 Azure Key Vault
+
+为验证用户的凭据颁发请求，颁发者网站会使用 Azure Key Vault 中的加密密钥。 若要访问 Azure Key Vault，你的网站需要可用来向 Azure Key Vault 进行身份验证的客户端 ID 和客户端密码。
+
+首先，我们需要注册另一个应用程序。 此注册适用于网站。 之前的钱包应用注册只是为了允许用户使用钱包应用登录到目录，在我们的例子中它恰好在同一目录中，但钱包应用注册也可以在不同的目录中完成。 如果应用程序的责任不同，则一种很好的做法是将应用注册分开。 在这种情况下，我们需要我们的网站可以访问密钥保管库。
+
+1. 请按照有关向 [Azure AD](../develop/quickstart-register-app.md) 注册应用程序的说明进行操作。注册时，请使用下列值。
+
+   - 名称：“VC 网站”
+   - 支持的帐户类型：仅限此组织目录中的帐户
+
+   :::image type="content" source="media/issue-verify-verifable-credentials-your-tenant/vc-website-app-app-registration.png" alt-text="显示如何注册应用程序的屏幕截图。":::
+
+1. 注册该应用程序后，请记下应用程序（客户端）ID。 稍后需要用到此值。
+
+   :::image type="content" source="media/issue-verify-verifable-credentials-your-tenant/vc-website-app-app-details.png" alt-text="显示应用程序客户端 ID 的屏幕截图。":::
+
+1. 查看 VC 网站应用概述页面时，请选择“证书和密码”。
+
+    :::image type="content" source="media/issue-verify-verifable-credentials-your-tenant/vc-website-app-certificates-secrets.png" alt-text="显示“证书和密码”窗格的屏幕截图。":::
+
+1. 在“客户端密码”部分，选择“新建客户端密码” 
+    1. 添加说明，例如“节点 VC 客户端密码”
+    1. 过期时间：一年。
+
+    ![有效期为一年的应用程序密码](media/issue-verify-verifable-credentials-your-tenant/add-client-secret.png)
+
+1. 将该密码抄下来。 更新示例节点应用时需要用到此信息。
+
+>[!WARNING]
+> 你只有一次抄下该密码的机会， 在此之后，系统会对该密码进行单向哈希处理。 请勿抄下 ID。 
+
+在 Azure AD 中创建应用程序和客户端密码后，需要将必要的权限授予该应用程序，以便其对你的 Key Vault 执行操作。 要让网站能够访问和使用存储在该处的私钥，必须进行这些权限更改。
+
+1. 转到 Key Vault。
+2. 选择我们在这些教程中使用的密钥保管库。
+3. 在左侧导航栏上，选择“访问策略”
+4. 选择“+添加访问策略”。
+5. 在“密钥权限”部分，选择“获取”，然后选择“签名”。  
+6. 选择“主体”，然后使用应用程序 ID 搜索我们早先注册的应用程序。 选择该文件夹。
+7. 选择 **添加** 。
+8. 选择“保存”。
+
+:::image type="content" source="media/issue-verify-verifable-credentials-your-tenant/key-vault-permissions.png" alt-text="显示添加访问策略的屏幕截图。":::
+
+有关密钥保管库权限和访问控制的详细信息，请参阅[密钥保管库 RBAC 指南](../../key-vault/general/rbac-guide.md)。
+
+## <a name="make-changes-to-the-sample-app"></a>对示例应用进行更改
 
 我们必须先将几个值放在一起，然后才能进行必要的代码更改。 我们在下一节会用到这些值，让示例代码使用你自己的存储在保管库中的密钥。 到目前为止，我们应该已准备好下列值。
 
@@ -190,7 +207,7 @@ ms.locfileid: "110466071"
 2. 将你的 DID 粘贴到搜索栏中。
 
 4. 从格式化响应中，找到名为 verificationMethod 的部分
-5. 在“verificationMethod”下，复制 ID，并将其标记为 kvSigningKeyId
+5. 在“verificationMethod”下复制 `id`，并将其标记为 kvSigningKeyId
     
     ```json=
     "verificationMethod": [

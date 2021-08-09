@@ -7,12 +7,12 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 04/27/2021
-ms.openlocfilehash: e5745f195fe7620aeb7ffe009c13c52cd5f02e62
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 72f58258f427c5a9414bd7627d4d121c6a89c365
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108228629"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112060851"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>在 ADF 中对 CI CD、Azure DevOps 和 GitHub 问题进行故障排除 
 
@@ -233,6 +233,27 @@ Azure 资源管理器将模板大小限制为 4 MB。 将模板大小限制为 4
 ```
 应将 DataFactory 包含在 customCommand 中，例如“run build validate $(Build.Repository.LocalPath)/DataFactory/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testResourceGroup/providers/Microsoft.DataFactory/factories/yourFactoryName”。 请确保生成的用于更高阶段的 YAML 文件包含必需的 JSON 项目。
 
+### <a name="git-repository-or-purview-connection-disconnected"></a>Git 存储库或 Purview 连接已断开
+
+#### <a name="issue"></a>问题
+部署数据工厂时，git 存储库或 purview 连接已断开。
+
+#### <a name="cause"></a>原因
+如果部署全局参数时选择“包含在 ARM 模板中”，则系统会将你的工厂包含在 ARM 模板中。 因此，部署后将删除其他工厂属性。
+
+#### <a name="resolution"></a>解决方法
+取消选择“包含在 ARM 模板中”，并按 CI/CD 中的“全局参数”中所述，使用 PowerShell 部署全局参数。 
+ 
+### <a name="extra--left--displayed-in-published-json-file"></a>已发布的 JSON 文件中显示额外的左“[”
+
+#### <a name="issue"></a>问题
+通过 DevOps 发布 ADF 时，多显示一个左“[”。 ADF 自动在 DevOps 的 ARMTemplate 中多添加一个左“[”。 
+
+#### <a name="cause"></a>原因
+由于 [ 是 ARM 的保留字符，自动添加额外的 [ 可对“[”进行转义。
+
+#### <a name="resolution"></a>解决方法
+对于 CI/CD，这是 ADF 发布过程中的正常行为。
 
 ## <a name="next-steps"></a>后续步骤
 

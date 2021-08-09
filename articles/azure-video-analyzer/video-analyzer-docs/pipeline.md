@@ -3,12 +3,12 @@ title: Azure 视频分析器管道
 description: 使用 Azure 视频分析器管道可以定义应从何处捕获输入数据、应如何处理这些数据以及应将结果传送到何处。 管道由连接的用于实现所需数据流的节点组成。
 ms.topic: conceptual
 ms.date: 05/13/2021
-ms.openlocfilehash: 9e3945624a52b64612c7edca2f3380b072f60bec
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: deed7eec980272dd3dd001219016eee139f22ad6
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385222"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591235"
 ---
 # <a name="pipeline"></a>管道
 
@@ -74,11 +74,11 @@ ms.locfileid: "110385222"
 
 #### <a name="http-extension-processor"></a>HTTP 扩展处理器
 
-使用 HTTP 扩展处理器节点可以将管道扩展到你自己的 IoT Edge 模块。 此节点采用解码的视频帧作为输入，并将此类帧中继到模块公开的 HTTP REST 终结点，在该终结点中可以使用 AI 模型分析帧并返回推理结果。 请在[此处](pipeline-extension.md#http-extension-processor)详细了解处理器。 此外，此节点还具有内置的图像格式化程序，用于在视频帧中继到 HTTP 终结点之前对它们进行缩放和编码。 缩放程序提供了选项，用于保留、填充或拉伸图像纵横比。 图像编码器支持 JPEG、PNG、BMP 和 RAW 格式。 请在[此处](/pipeline-extension.md#grpc-extension-processor)详细了解处理器。
+使用 HTTP 扩展处理器节点可以将管道扩展到你自己的 IoT Edge 模块。 此节点采用解码的视频帧作为输入，并将此类帧中继到模块公开的 HTTP REST 终结点，在该终结点中可以使用 AI 模型分析帧并返回推理结果。 此外，此节点还具有内置的图像格式化程序，用于在视频帧中继到 HTTP 终结点之前对它们进行缩放和编码。 缩放程序提供了选项，用于保留、填充或拉伸图像纵横比。 图像编码器支持 JPEG、PNG、BMP 和 RAW 格式。 请在[此处](pipeline-extension.md#http-extension-processor)详细了解处理器。
 
 #### <a name="grpc-extension-processor"></a>gRPC 扩展处理器
 
-此 gRPC 扩展处理器节点以解码的视频帧作为输入，并将此类帧中继到模块公开的 [gRPC](pipeline-extension.md#grpc-extension-processor) 终结点。 节点支持使用[共享内存](https://en.wikipedia.org/wiki/Shared_memory)传输数据，或将帧直接嵌入 gRPC 消息的正文中。 与 HTTP 扩展进程一样，此节点也具有内置的图像格式化程序，用于在将视频帧中继到 gRPC 终结点之前对它们进行缩放和编码。 请在[此处](/pipeline-extension.md#grpc-extension-processor)详细了解处理器。
+此 gRPC 扩展处理器节点以解码的视频帧作为输入，并将此类帧中继到模块公开的 [gRPC](terminology.md#grpc) 终结点。 节点支持使用[共享内存](https://en.wikipedia.org/wiki/Shared_memory)传输数据，或将帧直接嵌入 gRPC 消息的正文中。 与 HTTP 扩展进程一样，此节点也具有内置的图像格式化程序，用于在将视频帧中继到 gRPC 终结点之前对它们进行缩放和编码。 请在[此处](pipeline-extension.md#grpc-extension-processor)详细了解处理器。
 
 #### <a name="cognitive-services-extension-processor"></a>认知服务扩展处理器
 
@@ -86,7 +86,7 @@ ms.locfileid: "110385222"
 
 #### <a name="signal-gate-processor"></a>信号门处理器
 
-通过信号门处理器节点，你可以有条件地将媒体从一个节点转发到另一个节点。 示例用例是将信号门处理器节点插入 RTSP 源节点和视频接收器节点之间，并使用运动检测器处理器节点的输出触发门。 使用此类管道时，只会在检测到运动时才录制视频。 还可使用 HTTP 或 gRPC 扩展节点（而不是运动检测处理器节点）的输出来触发门，从而在检测到有趣的事物时启用视频录制。
+通过信号门处理器节点，你可以有条件地将媒体从一个节点转发到另一个节点。 信号门处理器节点必须紧跟在视频接收器或文件接收器之后。 示例用例是将信号门处理器节点插入 RTSP 源节点和视频接收器节点之间，并使用运动检测器处理器节点的输出触发门。 使用此类管道时，只会在检测到运动时才录制视频。 还可使用 HTTP 或 gRPC 扩展节点（而不是运动检测处理器节点）的输出来触发门，从而在检测到有趣的事物时启用视频录制。
 
 #### <a name="object-tracker-processor"></a>对象跟踪器处理器
 

@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 6c5371a98900e000b15cde669fcfaea4a7c676b4
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: cda3ad4cd6ecf0c7a72a3dfb05aae2a6541dd43b
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112240203"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710237"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v4-driver"></a>生成 Java 应用以管理 Azure Cosmos DB Cassandra API 数据（v4 驱动程序）
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -36,6 +36,9 @@ ms.locfileid: "112240203"
 - [Java 开发工具包 (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk)。 将 `JAVA_HOME` 环境变量指向其中安装了 JDK 的文件夹。
 - [Maven 二进制存档](https://maven.apache.org/download.cgi)。 在 Ubuntu 上运行 `apt-get install maven`，以安装 Maven。
 - [Git](https://www.git-scm.com/downloads)。 在 Ubuntu 上运行 `sudo apt-get install git`，以安装 Git。
+
+> [!NOTE]
+> 这是一个简单的快速入门，使用适用于 Java 的开源 Apache Cassandra 驱动程序的[版本 4](https://github.com/datastax/java-driver/tree/4.x)。 在大多数情况下，你应该能够将现有的 Apache Cassandra 相关 Java 应用程序连接到 Azure Cosmos DB Cassandra API，而无需对现有代码进行任何更改。 但是，建议添加[自定义 Java 扩展](https://github.com/Azure/azure-cosmos-cassandra-extensions/tree/release/java-driver-4/1.0.1)，其中包括自定义重试和负载均衡策略，以及建议的连接设置，以获得更好的整体体验。 这是为了在需要时在 Azure Cosmos DB 中处理[速率限制](manage-scale-cassandra.md#handling-rate-limiting-429-errors)和应用程序级别故障转移。 可在[此处](https://github.com/Azure-Samples/azure-cosmos-cassandra-extensions-java-sample-v4)找到实现该扩展的综合性示例。
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 

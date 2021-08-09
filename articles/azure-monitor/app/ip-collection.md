@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Application Insights 处理 IP 地址和�
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-js, devx-track-azurepowershell
-ms.openlocfilehash: d5bacde864d42dfefab9c4b0d5dc90072081a25f
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 8115ea2334d0ea90ef0e31bb857f3e76154912ce
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321350"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110082533"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>地理位置和 IP 地址处理
 
@@ -58,7 +58,7 @@ ms.locfileid: "108321350"
 }
 ```
 
-### <a name="portal"></a>门户 
+### <a name="portal"></a>门户
 
 如果只需修改单个 Application Insights 资源的行为，请使用 Azure 门户。 
 
@@ -79,15 +79,14 @@ ms.locfileid: "108321350"
     > [!WARNING]
     > 如果遇到了包含以下消息的错误：“资源组所在的位置不受模板中的一个或多个资源支持。请选择其他资源组。” 请从下拉列表中暂时选择另一个资源组，然后重新选择原始资源组来解决此错误。
 
-5. 选择“我同意” > “购买”。  
+5. 选择“查看 + 创建” > “创建”。
 
-    ![在按钮（用红色标注，带有“购买”字样）上方用红色标注的带有“我同意上述条款和条件”字样的复选框。](media/ip-collection/purchase.png)
-
-    在这种情况下，实际上没有购买任何新东西。 我们仅更新现有 Application Insights 资源的配置。
+    > [!NOTE]
+    > 如果看到“部署失败”，请查看部署详细信息，查找类型为“microsoft.insights/components”的部署详细信息，并检查状态。 如果成功，则部署对 DisableIpMasking 做的更改。
 
 6. 部署完成后，将会记录新的遥测数据。
 
-    如果再次选择并编辑模板，则仅显示默认模板，而不会显示新添加的属性。 如果未看到 IP 地址数据并希望确认是否已设置 `"DisableIpMasking": true`，请运行以下 PowerShell： 
+    如果再次选择并编辑模板，则仅显示默认模板，而不会显示新添加的属性。 如果未看到 IP 地址数据并希望确认是否已设置 `"DisableIpMasking": true`，请运行以下 PowerShell：
     
     ```powershell
     # Replace `Fabrikam-dev` with the appropriate resource and resource group name.

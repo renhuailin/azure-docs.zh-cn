@@ -1,21 +1,21 @@
 ---
-title: 使用按环境配置
+title: 使用标签提供按环境配置值。
 titleSuffix: Azure App Configuration
-description: 使用标签提供按环境配置值。
+description: 本文介绍如何使用标签检索当前运行应用的环境的应用配置值。
 ms.service: azure-app-configuration
 author: AlexandraKemperMS
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 3/12/2020
 ms.author: alkemper
-ms.openlocfilehash: 84286df063994f3def15079cb9b190550d5bd977
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6d9aadff5fba66aef260c674f5a01904b289da2
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96929610"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592351"
 ---
-# <a name="use-labels-to-enable-configurations-for-different-environments"></a>使用标签为不同的环境启用配置
+# <a name="use-labels-to-provide-per-environment-configuration-values"></a>使用标签提供按环境配置值。
 
 许多应用程序需要针对不同的环境使用不同的配置。 假设应用程序有一个配置值，该配置值定义了用于其后端数据库的连接字符串。 应用程序开发者使用的数据库与生产环境中使用的数据库不同。 当应用程序从开发环境转移到生产环境时，应用程序使用的数据库连接字符串必须进行更改。
 
@@ -38,29 +38,80 @@ ms.locfileid: "96929610"
 
 在上一部分中，你为开发环境创建了一个不同的配置值。 使用 `HostingEnvironment.EnvironmentName` 变量来动态确定应用当前在哪个环境中运行。 若要了解详细信息，请参阅[在 ASP.NET Core 中使用多个环境](/aspnet/core/fundamentals/environments)。
 
-通过将环境名称传递给 `Select` 方法，加载其标签与当前环境对应的配置值：
+添加对 [Microsoft.Extensions.Configuration.AzureAppConfiguration](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration) 命名空间的引用，以便访问 [KeyFilter](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.keyfilter) 和 [LabelFilter](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.labelfilter) 类。
 
 ```csharp
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                var settings = config.Build();
-                config.AddAzureAppConfiguration(options =>
-                    options
-                        .Connect(Environment.GetEnvironmentVariable("AppConfigConnectionString"))
-                        // Load configuration values with no label
-                        .Select(KeyFilter.Any, LabelFilter.Null)
-                        // Override with any configuration values specific to current hosting env
-                        .Select(KeyFilter.Any, hostingContext.HostingEnvironment.EnvironmentName)
-                );
-            })
-            .UseStartup<Startup>());
+using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+``` 
+
+通过将环境名称传递给 `Select` 方法，加载其标签与当前环境对应的配置值：
+
+### <a name="net-core-5x"></a>[.NET Core 5.x](#tab/core5x)
+
+```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+        {
+            var settings = config.Build();
+            config.AddAzureAppConfiguration(options =>
+                options
+                    .Connect(settings.GetConnectionString("AppConfig"))
+                    // Load configuration values with no label
+                    .Select(KeyFilter.Any, LabelFilter.Null)
+                    // Override with any configuration values specific to current hosting env
+                    .Select(KeyFilter.Any, hostingContext.HostingEnvironment.EnvironmentName)
+            );
+        })
+        .UseStartup<Startup>());
 ```
 
+### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+
+```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+        {
+            var settings = config.Build();
+            config.AddAzureAppConfiguration(options =>
+                options
+                    .Connect(settings.GetConnectionString("AppConfig"))
+                    // Load configuration values with no label
+                    .Select(KeyFilter.Any, LabelFilter.Null)
+                    // Override with any configuration values specific to current hosting env
+                    .Select(KeyFilter.Any, hostingContext.HostingEnvironment.EnvironmentName)
+            );
+        })
+        .UseStartup<Startup>());
+```
+
+### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+
+```csharp
+public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+        .ConfigureAppConfiguration((hostingContext, config) =>
+        {
+            var settings = config.Build();
+            config.AddAzureAppConfiguration(options =>
+                options
+                    .Connect(settings.GetConnectionString("AppConfig"))
+                    // Load configuration values with no label
+                    .Select(KeyFilter.Any, LabelFilter.Null)
+                    // Override with any configuration values specific to current hosting env
+                    .Select(KeyFilter.Any, hostingContext.HostingEnvironment.EnvironmentName)
+            );
+        })
+        .UseStartup<Startup>();
+```
+---
+
+
 > [!IMPORTANT]
-> 前面的代码片段从名为 `AppConfigConnectionString` 的环境变量加载应用配置连接字符串。 请确保正确设置了此环境变量。
+> 前面的代码片段使用机密管理器工具加载应用配置连接字符串。 有关使用机密管理器存储连接字符串的信息，请参阅[将 Azure 应用配置与 ASP.NET Core 结合使用的快速入门](quickstart-aspnet-core-app.md)。
 
 `Select` 方法将调用两次。 第一次，它加载没有标签的配置值。 然后，它加载其标签与当前环境对应的配置值。 这些特定于环境的值会替代没有标签的任何对应值。 不需要为每个键都定义特定于环境的值。 如果某个键没有值具有与当前环境对应的标签，它将使用没有标签的值。
 

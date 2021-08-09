@@ -4,19 +4,19 @@ description: 描述如何验证 HTTP 终结点，以及随后如何接收和反�
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 75c80fb85d39298f1130537971bc700897c039d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93494bc35099c2ef9cbc93ed6713d8a2608f2c4c
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023699"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110473432"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>将事件接收到 HTTP 终结点
 
 本文介绍如何[验证 HTTP 终结点](webhook-event-delivery.md)以接收来自事件订阅的事件并随后接收和反序列化事件。 本文使用 Azure 函数进行演示，但无论应用程序托管在何处，这些概念都适用。
 
 > [!NOTE]
-> 强烈推荐在通过事件网格触发 Azure 函数时使用[事件网格触发器](../azure-functions/functions-bindings-event-grid.md)。 此处使用泛型 WebHook 触发器进行演示。
+> 建议在通过事件网格触发 Azure 函数时使用[事件网格触发器](../azure-functions/functions-bindings-event-grid.md)。 它在事件网格和 Azure Functions 之间提供了更简单、更快速的集成。 但是请注意，Azure Functions 的事件网格触发器不支持托管代码需要控制返回给事件网格的 HTTP 状态代码的场景。 鉴于此限制，例如，在 Azure Function 上运行的代码将无法返回 5XX 错误，以通过事件网格启动事件传送重试。
 
 ## <a name="prerequisites"></a>先决条件
 

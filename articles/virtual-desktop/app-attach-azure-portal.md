@@ -1,40 +1,31 @@
 ---
-title: Windows 虚拟桌面 MSIX 应用附加门户预览 - Azure
-description: 如何使用 Azure 门户设置 Windows 虚拟桌面的 MSIX 应用附加。
+title: Azure 虚拟桌面 MSIX 应用附加门户 - Azure
+description: 如何使用 Azure 门户设置 Azure 虚拟桌面的 MSIX 应用附加。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 02/11/2021
+ms.date: 04/13/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: c775d81b88c891d6d8ea0a4597b4fa4fee29c86a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+manager: femila
+ms.openlocfilehash: 0fe61e5ef36064234b65da4d059f02beed18f9a6
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101737539"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745702"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>通过 Azure 门户设置 MSIX 应用附加
 
-> [!IMPORTANT]
-> MSIX 应用附加目前为公共预览版。
-> 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-本文将引导你了解如何在 Windows 虚拟桌面环境中设置 MSIX 应用附加（预览版）。
+本文将引导你了解如何在 Azure 虚拟桌面环境中设置 MSIX 应用附加。
 
 ## <a name="requirements"></a>要求
 
->[!IMPORTANT]
->在开始之前，请确保填写并提交[此表单](https://aka.ms/enablemsixappattach)，以便在订阅中启用 MSIX 应用附加。 如果没有已批准的请求，MSIX 应用附加将无法正常工作。 在工作日审批请求需要长达 24 小时。 请求被接受并完成后，你会收到一封电子邮件。
-
 配置 MSIX 应用附加需要以下各项：
 
-- 正常运行的 Windows 虚拟桌面部署。 要了解如何部署 Windows 虚拟桌面（经典版），请参阅[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 要了解如何使用 Azure 资源管理器集成部署 Windows 虚拟桌面，请参阅[使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
-- 至少具有一个活动会话主机的 Windows 虚拟桌面主机池。
-- 此主机池必须处于验证环境。 
+- 正常运行的 Azure 虚拟桌面部署。 要了解如何部署 Azure 虚拟桌面（经典），请参阅[在 Azure 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 要了解如何使用 Azure 资源管理器集成部署 Azure 虚拟桌面，请参阅[使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
+- 至少具有一个活动会话主机的 Azure 虚拟桌面主机池。
 - MSIX 打包工具。
 - 展开到已上传到文件共享中的 MSIX 映像的 MSIX 打包应用程序。
-- Windows 虚拟桌面部署中将存储 MSIX 包的文件共享。
+- Azure 虚拟桌面部署中将存储 MSIX 包的文件共享。
 - 上传了 MSIX 映像的文件共享还必须可由主机池中的所有虚拟机 (VM) 访问。 用户需要只读权限才能访问该映像。
 - 如果证书不受公开信任，请按照[安装证书](app-attach.md#install-certificates)中的说明进行操作。
 
@@ -57,9 +48,6 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\De
 
 ```
 
->[!NOTE]
->建议在启用 Hyper-V 后重启虚拟机。
-
 ## <a name="configure-the-msix-app-attach-management-interface"></a>配置 MSIX 应用附加管理接口
 
 接下来，需要下载并配置 Azure 门户的 MSIX 应用附加管理接口。
@@ -81,10 +69,7 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\De
 
 1. 打开 Azure 门户。
 
-2. 在搜索栏中输入“Windows 虚拟桌面”，然后选择服务名称。
-
-      > [!div class="mx-imgBorder"]
-      > ![屏幕截图，用户从 Azure 门户的搜索栏下拉菜单中选择“Windows 虚拟桌面”。 “Windows 虚拟桌面”以红色突出显示。](media/find-and-select.png)
+2. 在搜索栏中输入“Azure 虚拟桌面”，然后选择服务名称。
 
 3. 选择计划在其中放置 MSIX 应用的主机池。
 
@@ -112,7 +97,7 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\De
 
 7.  对于“状态”，请选择你喜欢的状态。
     -  “活动”状态允许用户与包交互。
-    -  “非活动”状态会导致 Windows 虚拟桌面忽略包，而不会将其传递给用户。
+    -  “非活动”状态会导致 Azure 虚拟桌面忽略包，而不会将其传递给用户。
 
 8. 完成后，选择“添加”。
 
@@ -124,7 +109,7 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\De
 
 若要发布应用：
 
-1. 在 Windows 虚拟桌面资源提供程序中，选择“应用程序组”选项卡。
+1. 在 Azure 虚拟桌面资源提供程序中，选择“应用程序组”选项卡。
 
 2. 选择要将应用发布到的应用程序组。
 
@@ -178,7 +163,7 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\De
 
 ## <a name="change-msix-package-state"></a>更改 MSIX 包状态
 
-接下来，你需要根据要对包执行的操作将 MSIX 包状态更改为“活动”或“非活动” 。 活动包是在发布后用户可与之交互的包。 Windows 虚拟桌面将忽略非活动包，因此用户无法与内部的应用进行交互。
+接下来，你需要根据要对包执行的操作将 MSIX 包状态更改为“活动”或“非活动” 。 活动包是在发布后用户可与之交互的包。 Azure 虚拟桌面将忽略非活动包，因此用户无法与内部的应用进行交互。
 
 ### <a name="change-state-with-the-applications-list"></a>通过应用程序列表更改状态
 
@@ -230,9 +215,9 @@ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\De
 
 ## <a name="next-steps"></a>后续步骤
 
-请在 [Windows 虚拟桌面 TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 向社区咨询有关此功能的问题。
+请在 [Azure 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)询问有关此功能的问题。
 
-还可以在 [Windows 虚拟桌面反馈中心](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)提供关于 Windows 虚拟桌面的反馈。
+还可以在 [Azure 虚拟桌面反馈中心](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)提供关于 Azure 虚拟桌面的反馈。
 
 下面是一些可能有用的其他文章：
 

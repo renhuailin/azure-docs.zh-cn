@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jianleishen
-ms.openlocfilehash: 44c60305519c2464df56c3b5a9228161548d4bd6
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: c6ce2d796bbe679f73804fef91079db2ca44c28b
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482878"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111748870"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SharePoint Online 列表复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -107,7 +107,7 @@ SharePoint Online 列表链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 以下部分提供 SAP 表数据集支持的属性列表。
 
-| properties | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 SharePointOnlineLResource。  | 是 |
 | listName | SharePoint Online 列表的名称。 | 是 |
@@ -140,7 +140,7 @@ SharePoint Online 列表链接的服务支持以下属性：
 
 若要从 SharePoint Online 列表复制数据，复制活动“源”部分支持以下属性：
 
-| properties | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 SharePointOnlineListSource。  | 是 |
 | query | 用于筛选数据的自定义 OData 查询选项。 示例：`"$top=10&$select=Title,Number"`。 | 否 |
@@ -217,7 +217,7 @@ SharePoint Online 列表链接的服务支持以下属性：
     - **方法**：POST
     - 标头：
         - 内容类型：application/x-www-form-urlencoded
-    - 正文：`grant_type=client_credentials&client_id=[Client-ID]@[Tenant-ID]&client_secret=[Client-Secret]&resource=00000003-0000-0ff1-ce00-000000000000/[Tenant-Name].sharepoint.com@[Tenant-ID]` 替换客户端 ID、客户端密码、租户 ID 和租户名称。
+    - 正文：`grant_type=client_credentials&client_id=[Client-ID]@[Tenant-ID]&client_secret=[Client-Secret]&resource=00000003-0000-0ff1-ce00-000000000000/[Tenant-Name].sharepoint.com@[Tenant-ID]` 替换客户端 ID（应用程序 ID）、客户端密码（应用程序密钥）、租户 ID 和（SharePoint 租户的）租户名称。
 
     > [!CAUTION]
     > 在 Web 活动中，将“安全输出”选项设置为 true，以防止令牌值以纯文本格式记录。 使用此值的任何其他活动都应将其“安全输入”选项设置为 true。

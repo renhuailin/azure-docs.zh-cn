@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 367dd261e9147c2dc14f1085af553222b621d91e
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 2744a1dd36751175e7bd421210bdb5b92b53dfe5
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279777"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110456914"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报
 
@@ -26,7 +26,7 @@ ms.locfileid: "108279777"
 
 ## <a name="prerequisites"></a>先决条件
 
-日志警报运行对 Log Analytics 数据的查询。 首先，你应开始[收集日志数据](../essentials/resource-logs.md)，并查询日志数据以查找问题。 可以使用 Log Analytics 中的[警报查询示例主题](../logs/example-queries.md)来了解可发现的内容或[开始编写你自己的查询](../logs/log-analytics-tutorial.md)。
+日志警报运行对 Log Analytics 数据的查询。 首先，你应开始[收集日志数据](../essentials/resource-logs.md)，并查询日志数据以查找问题。 可以通过 Log Analytics 中的[警报查询示例文章](../logs/queries.md)来了解可发现的内容，也可以[开始编写你自己的查询](../logs/log-analytics-tutorial.md)。
 
 [Azure 监视参与者](../roles-permissions-security.md)是创建、修改和更新日志警报所需的常见角色。 还需要具有对资源日志的访问和查询执行权限。 对资源日志具有部分访问权限可能会导致查询失败或返回部分结果。 [详细了解如何在 Azure 中配置日志警报](./alerts-log.md)。
 
@@ -120,7 +120,7 @@ requests
 
 通过将警报分组为唯一的组合，按数字或字符串列将警报拆分为单独的警报。 当大规模（在订阅或资源组范围内）创建以资源为中心的警报时，可以按 Azure 资源 ID 列进行拆分。 按 Azure 资源 ID 列进行拆分会将警报的目标更改为指定的资源。
 
-如果想要在多个 Azure 资源上监视相同的条件，建议按 Azure 资源 ID 列进行拆分。 例如，监视所有虚拟机的 CPU 使用率超过 80%。 如果希望对范围中的多个资源设置条件，例如监视资源组范围中至少有 5 台计算机的 CPU 使用率超过 80%，也可决定不拆分。
+如果想要在多个 Azure 资源上监视相同的条件，建议按 Azure 资源 ID 列进行拆分。 例如，监视所有虚拟机的 CPU 使用率超过 80%。 在需要范围内的多个资源的条件时，你也可能会决定不进行拆分。 例如，监视到在资源组范围内至少有五台计算机的 CPU 使用率超过 80%。
 
 在工作区和 Application Insights 中，它仅在“指标度量”度量值类型中受支持。 此字段称为“聚合依据”。 它限制为三个列。 查询中的分组依据列超过三个可能会导致意外的结果。 在所有其他资源类型中，它是在条件的“拆分依据维度”部分中配置的（限制为六个拆分）。
 
@@ -166,13 +166,11 @@ requests
 ### <a name="frequency"></a>频率
 
 > [!NOTE]
-> 当前不对频率为 1 分钟的日志警报收取额外费用。 未来将公布预览版中的功能的定价以及开始计费之前提供的通知。 如果在通知期后选择继续使用频率为 1 分钟的日志警报，则将按适当的费率付费。
+> 目前不对频率为 1 分钟 1 次的日志警报（预览版）收取额外费用。 未来将公布预览版中的功能的定价以及开始计费之前提供的通知。 如果在通知期后选择继续使用频率为 1 分钟的日志警报，则将按适当的费率付费。
 
-运行查询的间隔。 可以设置为 1 分钟到 1 天。 必须等于或小于[查询时间范围](#query-time-range)才不会错过日志记录。
+运行查询的间隔。 可以设置为一分钟至一天。 必须等于或小于[查询时间范围](#query-time-range)才不会错过日志记录。
 
 例如，如果你将时间段设置为 30 分钟，将频率设置为 1 小时 1 次。  如果查询在 00:00 运行，则会返回 23:30 到 00:00 之间的记录。 下次运行查询的时间将是 01:00，将返回 00:30 到 01:00 之间的记录。 从不会评估在 00:00 到 00:30 之间创建的任何记录。
-
-若要使用频率为 1 分钟的警报，需要通过 API 设置属性。 在 API 版本 `2020-05-01-preview` 中创建新的日志警报规则或更新现有日志警报规则时，请在 `properties` 部分添加 `evaluationFrequency`，其值为 `PT1M`，类型为 `String`。 在 API 版本 `2018-04-16` 中创建新的日志警报规则或更新现有日志警报规则时，请在 `schedule` 部分添加 `frequencyInMinutes`，其值为 `1`，类型为 `Int`。 
 
 ### <a name="number-of-violations-to-trigger-alert"></a>触发警报的违规次数
 
@@ -182,11 +180,11 @@ requests
 
 ## <a name="state-and-resolving-alerts"></a>状态和解决警报
 
-日志警报可以是无状态或有状态的（当前在使用 API 时处于预览状态）。 
+日志警报可以是无状态的，也可以是有状态的（目前处于预览版阶段）。
 
 每次满足条件时都会触发无状态警报，即使之前已触发过。 警报实例解除后，可以[将警报标记为已关闭](../alerts/alerts-managing-alert-states.md)。 你还可以对操作进行“静音”，以防它们在警报规则触发后的一段时间内触发。 在 Log Analytics 工作区和 Application Insights 中，这称为“抑制警报”。 在所有其他资源类型中，它称为“将操作‘静音’”。 
 
-请参阅此警报评估示例：
+请参阅这个警报无状态评估示例：
 
 | 时间    | 日志条件评估 | 结果 
 | ------- | ----------| ----------| ------- 
@@ -195,7 +193,13 @@ requests
 | 00:15 | TRUE  | 警报触发，操作组被调用。 新警报处于活动状态。
 | 00:20 | FALSE | 警报不会触发。 没有调用任何操作。 以前的警报保持活动状态。
 
-有状态警报会在每次事件后触发一次并解决。 创建新的日志警报规则或更新现有日志警报规则时，请在 `properties` 部分下添加 `autoMitigate` 标志，其值为 `true`，类型为 `Boolean`。 可以在以下 API 版本中使用此功能：`2018-04-16` 和 `2020-05-01-preview`。
+有状态警报会在每次事件后触发一次并解决。 此功能目前在 Azure 公有云中处于预览版阶段。 可以使用警报详细信息部分的“自动解决警报”进行设置。
+
+## <a name="location-selection-in-log-alerts"></a>日志警报中的位置选择
+
+日志警报允许设置警报规则的位置。 在 Log Analytics 工作区中，规则位置必须与工作区位置匹配。 在所有其他资源中，可以选择任何受支持的位置，这些位置与 [Log Analytics 支持的区域列表](https://azure.microsoft.com/global-infrastructure/services/?products=monitor)相符。
+
+位置会对在哪个区域中评估警报规则造成影响。 查询会针对所选区域中的日志数据执行，但警报服务端到端是全局的。 这意味着警报规则定义、触发的警报、通知和操作不会绑定到警报规则中的位置。 数据会从设置的区域传输，因为 Azure Monitor 警报服务是[非区域性服务](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=non-regional)。
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>日志警报的定价和计费
 

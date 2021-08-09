@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 06/03/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d332c831cc764c61a4672ea5ad1db231b68e106
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70c441cc2bae0c318e312ccfa64b5161937c2457
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952365"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111963809"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Azure Active Directory 自助式密码重置的许可要求
 
@@ -25,8 +25,6 @@ ms.locfileid: "104952365"
 本文详细介绍了可以许可和使用自助式密码重置的各种方法。 有关定价和计费的具体详细信息，请参阅 [Azure AD 定价页](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 ## <a name="compare-editions-and-features"></a>比较版本和功能
-
-SSPR 仅要求租户使用许可证。 
 
 下表概述了需要进行密码更改、重置或本地写回的各种 SSPR 场景，以及哪些 SKU 提供此功能。
 
@@ -41,6 +39,8 @@ SSPR 仅要求租户使用许可证。
 
 有关其他许可信息（包括成本），请参阅以下页面：
 
+
+* [Microsoft 365 安全性与合规性许可指南](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance)
 * [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Azure Active Directory 特性和功能](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [企业移动性 + 安全性](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)

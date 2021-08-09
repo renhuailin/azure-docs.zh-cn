@@ -7,36 +7,34 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/26/2021
+ms.date: 05/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: 52ac3ee4ea2f71e285d21c7b6d082e84fa090da1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 28dc63729a946e7b14b950f5082752d78c5992f4
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625902"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110452677"
 ---
 # <a name="add-spell-check-to-queries-in-cognitive-search"></a>在认知搜索中向查询添加拼写检查
 
 > [!IMPORTANT]
-> 拼写更正以公共预览版提供，只能通过预览版 REST API 使用。 根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，预览功能按原样提供。 在初始预览版推出期间，拼写检查器不收取任何费用。 有关详细信息，请参阅[可用性和定价](semantic-search-overview.md#availability-and-pricing)。
+> 拼写更正以公共预览版提供，只能通过预览版 REST API 使用。 根据[使用条款补充](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，预览功能按原样提供。 在初始预览版推出期间，拼写检查器不收取任何费用。 有关详细信息，请参阅[可用性和定价](semantic-search-overview.md#availability-and-pricing)。
 
-在单个搜索查询字词进入搜索引擎之前，可以通过对其进行拼写更正来改善召回率。 所有查询类型都支持 **拼写检查器** 参数：[简单](query-simple-syntax.md)、[完整](query-lucene-syntax.md)和新的[语义](semantic-how-to-query-request.md)选项当前为公共预览版。
+在单个搜索查询字词进入搜索引擎之前，可以通过对其进行拼写更正来改善召回率。 所有查询类型都支持 **拼写检查器** 参数：[简单](query-simple-syntax.md)、[完整](query-lucene-syntax.md)和新的 [语义](semantic-how-to-query-request.md)选项当前为公共预览版。
 
 ## <a name="prerequisites"></a>先决条件
 
-+ 包含英文内容的现有搜索索引。 目前，拼写更正不适用于[同义词](search-synonyms.md)。 请避免在任何字段定义中指定同义词映射的索引上使用它。
++ 现有搜索索引，其中包含使用[支持的语言](#supported-languages)的内容。 目前，拼写校正不能用于[同义词](search-synonyms.md)。 避免在任何字段定义中指定同义词映射的索引上使用它。
 
 + 用于发送查询的搜索客户端
 
-  搜索客户端必须支持查询请求的预览 REST API。 你可以使用已修改的 [Postman](search-get-started-rest.md)、[Visual Studio Code](search-get-started-vs-code.md) 或代码，以便对预览 API 进行 REST 调用。
+  搜索客户端必须支持查询请求的预览版 REST API。 你可以使用 [Postman](search-get-started-rest.md)、[Visual Studio Code](search-get-started-vs-code.md) 或已修改的代码对预览版 API 发出 REST 调用。
 
-+ 使用拼写更正的[查询请求](/rest/api/searchservice/preview-api/search-documents)具有 "api-version=2020-06-30-Preview"、"speller=lexicon" 和 "queryLanguage=en-us"。
-
-  queryLanguage 是拼写检查器所必需的，当前“en-us”是唯一有效的值。
++ 调用拼写更正的[查询请求](/rest/api/searchservice/preview-api/search-documents)必须将“api-version=2020-06-30-Preview”、“speller=lexicon”和“queryLanguage”设为[支持的语言](#supported-languages)。
 
 > [!Note]
-> 拼写检查器参数在提供语义搜索的同一区域中的所有层上都可用。 你不需要注册即可访问此预览功能。 有关详细信息，请参阅[可用性和定价](semantic-search-overview.md#availability-and-pricing)。
+> 拼写检查器参数在提供语义搜索的同一区域中的所有层上都可用。 需要注册，但无需付费，也不存在层级限制。 有关详细信息，请参阅[可用性和定价](semantic-search-overview.md#availability-and-pricing)。
 
 ## <a name="spell-correction-with-simple-search"></a>对简单搜索的拼写更正
 
@@ -92,26 +90,37 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 }
 ```
 
+## <a name="supported-languages"></a>支持的语言
+
+对于拼写检查，可在下表中查找 queryLanguage 的有效值。 此列表是[支持的语言（REST API 参考）](/rest/api/searchservice/preview-api/search-documents#queryLanguage)的子集。 如果使用不含拼写检查的语义标题和答案，则可以选择更大的语言和变体列表。
+
+| 语言 | queryLanguage |
+|----------|---------------|
+| 英语 [EN] | EN、EN-US（默认） |
+| 西班牙语 [ES] | ES、ES-ES（默认）|
+| 法语 [FR] | FR、FR-FR（默认） |
+| 德语 [DE] | DE、DE-DE（默认） |
+
 ## <a name="language-considerations"></a>语言注意事项
 
-拼写检查器所需的 queryLanguage 参数必须与分配给索引架构中的字段定义的任何[语言分析器](index-add-language-analyzers.md)一致。 
+拼写检查器所需的 queryLanguage 参数必须与分配给索引中的字段定义的任何[语言分析器](index-add-language-analyzers.md)一致。 例如，如果字段内容的索引是使用“fr.microsoft”语言分析器编制的，则查询、拼写检查、语义标题和语义答案均应使用某种形式的法语语言库。
 
-+ queryLanguage 确定哪些词典用于拼写检查，如果使用了“queryType=semantic”，则它还用作[语义排名算法](semantic-answers.md)的输入。
+回顾如何在认知搜索中使用语言库：
 
-+ 在编制索引和执行查询期间将使用语言分析器在搜索索引中查找匹配的文档。 使用语言分析器的字段定义的示例是 `"name": "Description", "type": "Edm.String", "analyzer": "en.microsoft"`。
++ 语言分析器可以在索引编制和查询执行期间调用，并且可以是完整 Lucene（例如“de.lucene”）或 Microsoft（“de.microsoft）。
 
-为了在使用拼写检查器时获得最佳结果，如果 queryLanguage 为“en-us”，则任何语言分析器也必须是英语变体（“en.microsoft”或“en.lucene”）。
++ 拼写检查期间调用的语言词典是使用上表中的语言代码之一指定的。
+
+在查询请求中，queryLanguage 以同等方式应用于拼写检查器、[答案](semantic-answers.md)和标题。 语义响应的各个部分不存在重写。 
 
 > [!NOTE]
-> 与语言无关的分析器（例如关键字、简单、标准、非索引字、空白或 `standardasciifolding.lucene` 分析器）不会与 queryLanguage 设置冲突。
-
-在查询请求中，你设置的 queryLanguage 以同等方式应用于拼写检查器、答案和标题。 对于单个部分，不存在重写。
+> 仅在使用语言分析器时才需注意各属性值之间的语言一致性。 如果使用与语言无关的分析器（例如关键字、简单、标准、停止、空格或 `standardasciifolding.lucene`），则 queryLanguage 值可以是所需的任意值。
 
 尽管搜索索引中的内容可以用多种语言撰写，但查询输入很可能用一种语言。 搜索引擎不检查 queryLanguage、语言分析器以及撰写内容所用的语言的兼容性，因此请确保对查询范围进行相应的限定以避免产生不正确的结果。
 
 ## <a name="next-steps"></a>后续步骤
 
-+ [创建语义查询](semantic-how-to-query-request.md)
++ [调用语义排名和标题](semantic-how-to-query-request.md)
 + [创建基本查询](search-query-create.md)
 + [使用完整的 Lucene 查询语法](query-Lucene-syntax.md)
 + [使用简单查询语法](query-simple-syntax.md)

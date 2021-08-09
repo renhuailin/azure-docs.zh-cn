@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8cea26bcb0926cd3af360a6489377767d681079
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 394565c857320c8fd94d72a0ca15358c83b0d09d
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532557"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109714379"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中创建和管理资源目录
 
@@ -29,7 +29,7 @@ ms.locfileid: "107532557"
 
 目录是资源和访问包的容器。 需要将相关的资源和访问包分组时，可以创建目录。 创建目录的任何人将成为第一个目录所有者。 目录所有者可以添加其他目录所有者。
 
-**必备角色：** 全局管理员、用户管理员或目录创建者
+**必备角色**：全局管理员、标识治理管理员、用户管理员或目录创建者
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
@@ -116,7 +116,7 @@ ms.locfileid: "107532557"
 
 遵循以下步骤将用户分配到目录所有者角色：
 
-**必备角色：** 全局管理员、用户管理员或目录所有者
+**必备角色**：全局管理员、标识治理管理员、用户管理员或目录所有者
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
@@ -134,7 +134,7 @@ ms.locfileid: "107532557"
 
 可以编辑目录的名称和说明。 用户将在访问包的详细信息中看到此信息。
 
-**必备角色：** 全局管理员、用户管理员或目录所有者
+**必备角色**：全局管理员、标识治理管理员、用户管理员或目录所有者
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
@@ -152,7 +152,7 @@ ms.locfileid: "107532557"
 
 可以删除目录，但前提是它不包含任何访问包。
 
-**必备角色：** 全局管理员、用户管理员或目录所有者
+**必备角色**：全局管理员、标识治理管理员、用户管理员或目录所有者
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 

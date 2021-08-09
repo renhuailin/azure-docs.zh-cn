@@ -6,13 +6,13 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/23/2020
-ms.openlocfilehash: c176fcafe13749ba89c04b34854f036aa5aea516
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/04/2021
+ms.openlocfilehash: 812c7871a6fd9501164530f0e9feee92f275426b
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101677645"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111526481"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>排查 Azure Purview 中的连接问题
 
@@ -24,6 +24,7 @@ ms.locfileid: "101677645"
 
 下面是每个源类型的特定说明：
 
+- [Azure 多个源](register-scan-azure-multiple-sources.md#set-up-authentication-to-scan-resources-under-a-subscription-or-resource-group)
 - [Azure Blob 存储](register-scan-azure-blob-storage-source.md#setting-up-authentication-for-a-scan)
 - [Azure Cosmos DB](register-scan-azure-cosmos-database.md#setting-up-authentication-for-a-scan)
 - [Azure 数据资源管理器](register-scan-azure-data-explorer.md#setting-up-authentication-for-a-scan)
@@ -35,6 +36,37 @@ ms.locfileid: "101677645"
 - [SQL Server](register-scan-on-premises-sql-server.md#setting-up-authentication-for-a-scan)
 - [Power BI](register-scan-power-bi-tenant.md)
 - [Amazon S3](register-scan-amazon-s3.md#create-a-purview-credential-for-your-aws-bucket-scan)
+
+## <a name="verifying-azure-role-based-access-control-to-enumerate-azure-resources-in-azure-purview-studio"></a>验证 Azure 基于角色的访问控制，以枚举 Azure Purview Studio 中的 Azure 资源
+
+### <a name="registering-single-azure-data-source"></a>注册单个 Azure 数据源
+若要在 Azure Purview 中注册单个数据源（如 Azure 博客存储或 Azure SQL 数据库），必须至少具有对该资源的“读者”角色或从更高范围（例如资源组或订阅）继承。 请注意，某些 Azure RBAC 角色（如安全管理员）没有在控制平面中查看 Azure 资源的读取访问权限。  
+
+按照以下步骤对此进行验证：
+
+1. 在 [Azure 门户](https://portal.azure.com)中，导航到要在 Azure Purview 中注册的资源。 如果可以查看该资源，那么你可能至少已对该资源具有读者角色。 
+2. 选择“访问控制(IAM)” > “角色分配” 。
+3. 按尝试在 Azure Purview 中注册数据源的用户的姓名或电子邮件地址进行搜索。
+4. 验证在列表中是否存在任何角色分配（如“读者”），或者根据需要添加新的角色分配。
+
+### <a name="scanning-multiple-azure-data-sources"></a>扫描多个 Azure 数据源
+1. 在 [Azure 门户中](https://portal.azure.com)，导航到订阅或资源组。  
+2. 从左侧菜单中选择“访问控制(IAM)” **** 。  
+3. 选择“+添加”  。 
+4. 在“选择输入”框中选择“读者”角色，然后输入 Azure Purview 帐户名称（表示其 MSI 名） 。 
+5. 选择“保存”以完成角色分配。
+6. 重复上述步骤，添加在 Azure Purview 中尝试为多个数据源创建新扫描的用户的标识。
+
+## <a name="scanning-data-sources-using-private-link"></a>使用专用链接扫描数据源 
+如果对数据源限制了公共终结点，若要使用专用链接扫描 Azure 数据源，需要设置自承载集成运行时并创建凭据。 
+
+> [!IMPORTANT]
+> 扫描包含如 Azure SQL 数据库这样具有“拒绝公共网络访问权限”的数据库的多个数据源将失败。 若要使用专用终结点扫描这些数据源，请改为使用注册单个数据源选项。
+
+有关设置自承载集成运行时的详细信息，请参阅[在专用网络、Vnet 中和专用终结点之后的引入专用终结点和扫描源](catalog-private-link.md#ingestion-private-endpoints-and-scanning-sources-in-private-networks-vnets-and-behind-private-endpoints)
+
+有关如何在 Azure Purview 中创建新凭据的详细信息，请参阅 [Azure Purview 中的源身份验证凭据](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)
+
 ## <a name="storing-your-credential-in-your-key-vault-and-using-the-right-secret-name-and-version"></a>将凭据存储在 Key Vault 中，并使用正确的机密名称和版本
 
 还必须将凭据存储在 Azure Key Vault 实例中，并使用正确的机密名称和版本。

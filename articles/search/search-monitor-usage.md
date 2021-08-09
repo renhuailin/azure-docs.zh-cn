@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 3f348a5005f28fdd1d02be706ca2742d77368288
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5cd9438eecc973524d8e5f7218ad0c92ab627f87
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100592373"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111559871"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>监视 Azure 认知搜索的操作和活动
 
@@ -38,9 +38,9 @@ Azure 认知搜索按照连续 30 天的计划维护内部数据，以便报告�
 
 * 主概述页上的“监视”选项卡显示查询量、延迟以及服务是否面临压力。
 * 左侧导航窗格中的“活动日志”已连接到 Azure 资源管理器。 活动日志报告资源管理器未执行的操作：服务可用性和状态、对容量（副本和分区）的更改以及与 API 密钥相关的活动。
-* 下方的“监视”设置提供可配置的警报、指标和诊断日志。 可按需创建这些内容。 收集并存储数据后，可以查询或可视化信息以获取见解。
+* 下方的“监视”设置提供可配置的警报、指标可视化和诊断日志。 可按需创建这些内容。 收集并存储数据后，可以查询或可视化信息以获取见解。
 
-![搜索服务中的 Azure Monitor 集成](./media/search-monitor-usage/azure-monitor-search.png
+  ![搜索服务中的 Azure Monitor 集成](./media/search-monitor-usage/azure-monitor-search.png
  "搜索服务中的 Azure Monitor 集成")
 
 > [!NOTE]
@@ -94,7 +94,7 @@ Azure Monitor 具有其自己的计费结构，此部分中引用的诊断日志
 
 ## <a name="monitor-user-access"></a>监视用户的访问
 
-由于搜索索引是较大客户端应用程序的一个组件，因此，没有任何内置方法可用于控制或监视每个用户对索引的访问。 对于管理请求或查询请求，假设请求来自客户端应用程序。 管理读写操作包括在整个服务中创建、更新和删除对象。 只读操作是针对文档集合运行的查询，范围限定为单个索引。 
+由于搜索索引是较大客户端应用程序的一个组件，因此，没有任何内置方法可用于控制或监视每个用户对索引的访问。 假设请求来自提供管理或查询请求的客户端应用程序。 管理读写操作包括在整个服务中创建、更新和删除对象。 只读操作是针对文档集合运行的查询，范围限定为单个索引。 
 
 因此，活动日志中显示的内容是对使用管理密钥或查询密钥的调用的引用。 相应的密钥包含在源自客户端代码的请求中。 服务中未配备用于处理标识令牌或模拟的功能。
 

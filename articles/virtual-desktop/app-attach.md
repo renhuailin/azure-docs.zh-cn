@@ -1,48 +1,40 @@
 ---
-title: 配置 Windows 虚拟桌面 .MSIX 应用附加 PowerShell 脚本-Azure
-description: 如何为 Windows 虚拟桌面创建适用于 .MSIX 应用程序的 PowerShell 脚本。
+title: 配置 Azure 虚拟桌面 MSIX 应用附加 PowerShell 脚本 - Azure
+description: 如何为 Azure 虚拟桌面的 MSIX 应用附加创建 PowerShell 脚本。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/13/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 5e45c51735e0b7ab4b263d3f3047b5848c82439d
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
-ms.translationtype: MT
+manager: femila
+ms.openlocfilehash: 1ff5ea8c4bb0af326b37d0e4ff2185be22393f16
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185761"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745432"
 ---
-# <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>创建 PowerShell 脚本以 .MSIX 应用附加 (预览) 
+# <a name="create-powershell-scripts-for-msix-app-attach"></a>为 MSIX 应用附加创建 PowerShell 脚本
 
-> [!IMPORTANT]
-> .MSIX 应用附加当前为公共预览版。
-> 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-本主题将指导你完成设置 .MSIX 应用附加的 PowerShell 脚本的步骤。
-
->[!IMPORTANT]
->在开始之前，请确保填写并提交 [此表单](https://aka.ms/enablemsixappattach) ，以便在你的订阅中启用 .msix 应用附件。 如果没有已批准的请求，.MSIX 应用附加将不起作用。 在工作日内批准请求可能需要长达24小时。 请求被接受并完成后，会收到一封电子邮件。
+本主题介绍如何为 MSIX 应用附加设置 PowerShell 脚本。
 
 ## <a name="install-certificates"></a>安装证书
 
-你必须在主机池中的所有会话主机上安装证书，该主机将从 .MSIX 应用附加包托管 ap。
+必须在主机池中的所有会话主机上安装证书，该主机池将托管来自 MSIX 应用附加包的应用。
 
 如果你的应用使用的证书不是受公共信任的或是自签名的，请按以下方法安装证书：
 
 1. 右键单击该包，选择“属性”。
-2. 在出现的窗口中，选择“数字签名”选项卡。选项卡上的列表中应该只有一个项，如下图所示。 选择该项以突出显示该项，然后选择“详细信息”。
-3. 当 "数字签名详细信息" 窗口出现时，选择 " **常规** " 选项卡，然后选择 " **查看证书**"，然后选择 " **安装证书**"。
+2. 在出现的窗口中，选择“数字签名”选项卡。选项卡上的列表中应该只有一个项。选择该项以突出显示该项，然后选择“详细信息”。
+3. 出现“数字签名详细信息”窗口时，选择“常规”选项卡，然后依次选择“查看证书”、“安装证书”  。
 4. 当安装程序打开时，选择“本地计算机”作为存储位置，然后选择“下一步” 。
 5. 如果安装程序询问你是否允许应用对设备进行更改，请选择“是”。
 6. 选择“将所有证书放入以下存储区”，然后选择“浏览” 。
 7. 当“选择证书存储”窗口出现时，选择“受信任的人员”，然后选择“确定” 。
-8. 选择 " **下一步** " 和 " **完成**"。
+8. 依次选择“下一步”、“完成” 。
 
 ## <a name="enable-microsoft-hyper-v"></a>启用 Microsoft Hyper-V
 
-必须启用 Microsoft Hyper-V，因为需要执行此 `Mount-VHD` 命令才能进行暂存并 `Dismount-VHD` 需要转储。
+必须启用 Microsoft Hyper-V，因为需要使用 `Mount-VHD` 命令进行暂存，使用 `Dismount-VHD` 进行转储。
 
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
@@ -87,7 +79,7 @@ MSIX 应用附加有四个不同的阶段，必须按以下顺序执行：
     Possible values for VolumeName along with current mount points are:
 
     \\?\Volume{a12b3456-0000-0000-0000-10000000000}\
-    **_ NO MOUNT POINTS _*_
+    *** NO MOUNT POINTS ***
 
     \\?\Volume{c78d9012-0000-0000-0000-20000000000}\
         E:\
@@ -98,7 +90,7 @@ MSIX 应用附加有四个不同的阶段，必须按以下顺序执行：
     ```
 
 
-6.  将 _ *$volumeGuid** 变量更新为刚复制的卷 GUID。
+6.  用刚才复制的卷 GUID 更新“$volumeGuid”变量。
 
 7. 打开管理员 PowerShell 提示符并使用应用于环境的变量更新以下 PowerShell 脚本。
 
@@ -143,7 +135,7 @@ MSIX 应用附加有四个不同的阶段，必须按以下顺序执行：
     $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where { $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult] AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
     $asTaskAsyncOperation = $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult], [Windows.Management.Deployment.DeploymentProgress])
     $packageManager = [Windows.Management.Deployment.PackageManager]::new()
-    $path = $msixJunction + $parentFolder + $packageName # needed if we do the pbisigned.vhd
+    $path = $msixJunction + $parentFolder + $packageName 
     $path = ([System.Uri]$path).AbsoluteUri
     $asyncOperation = $packageManager.StagePackageAsync($path, $null, "StageInPlace")
     $task = $asTaskAsyncOperation.Invoke($null, @($asyncOperation))
@@ -269,6 +261,6 @@ catch [Exception]
 
 ## <a name="next-steps"></a>后续步骤
 
-当前不支持此功能，但可以在 [Windows 虚拟桌面 TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 处向社区提问。
+当前不支持此功能，但可以在 [Azure 虚拟桌面 TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 向社区提问。
 
-还可以在 [Windows 虚拟桌面反馈中心](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)提供关于 Windows 虚拟桌面的反馈。
+还可以在 [Azure 虚拟桌面反馈中心](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)提供关于 Azure 虚拟桌面的反馈。

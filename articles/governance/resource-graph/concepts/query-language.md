@@ -1,14 +1,14 @@
 ---
 title: 理解查询语言
 description: 介绍 Resource Graph 表以及可用于 Azure Resource Graph 的 Kusto 数据类型、运算符和函数。
-ms.date: 03/10/2021
+ms.date: 06/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5e600439d54a89dd9bd2510b2e47b71b60ee93a7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f9a9d6b937256787d0457f150d5f3dfaca81d9cd
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557677"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112020234"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -38,10 +38,10 @@ Resource Graph 为其存储的有关 Azure 资源管理器资源类型及其属�
 |MaintenanceResources |部分可以，仅限联接到。 （预览版） |包括与 `Microsoft.Maintenance` 相关的资源。 |
 |PatchAssessmentResources|否 |包括与 Azure 虚拟机补丁评估相关的资源。 |
 |PatchInstallationResources|否 |包括与 Azure 虚拟机补丁安装相关的资源。 |
-|PolicyResources |否 |包括与 `Microsoft.PolicyInsights` 相关的资源。 （**预览版**）|
+|PolicyResources |否 |包括与 `Microsoft.PolicyInsights` 相关的资源。 （**预览版**） |
 |RecoveryServicesResources |部分可以，仅限联接到。 （预览版） |包括与 `Microsoft.DataProtection` 和 `Microsoft.RecoveryServices` 相关的资源。 |
-|SecurityResources |部分可以，仅限联接到。 （预览版） |包括与 `Microsoft.Security` 相关的资源。 |
-|ServiceHealthResources |否 |包括与 `Microsoft.ResourceHealth` 相关的资源。 |
+|SecurityResources |是（预览版） |包括与 `Microsoft.Security` 相关的资源。 |
+|ServiceHealthResources |否（预览版） |包括与 `Microsoft.ResourceHealth` 相关的资源。 |
 |WorkloadMonitorResources |否 |包括与 `Microsoft.WorkloadMonitor` 相关的资源。 |
 
 有关包含资源类型的完整列表，请参阅[参考：支持的表和资源类型](../reference/supported-tables-resources.md)。
@@ -135,7 +135,7 @@ Resource Graph 支持部分 KQL [数据类型](/azure/kusto/query/scalar-data-ty
 |[join](/azure/kusto/query/joinoperator) |[具有订阅名称的密钥保管库](../samples/advanced.md#join) |支持的联接类型：[innerunique](/azure/kusto/query/joinoperator#default-join-flavor)、[inner](/azure/kusto/query/joinoperator#inner-join)、[leftouter](/azure/kusto/query/joinoperator#left-outer-join)。 单个查询中最多只能有 3 个 `join`（其中 1 个可以是跨表 `join`）。 如果所有跨表 `join` 都在 Resource 与 ResourceContainers 之间使用，则会允许 3 个跨表 `join`。 不允许使用自定义联接策略，如广播联接。 有关哪些表可以使用 `join`，请参阅 [Resource Graph 表](#resource-graph-tables)。 |
 |[limit](/azure/kusto/query/limitoperator) |[列出所有公共 IP 地址](../samples/starter.md#list-publicip) |Synonym of `take`. 无法与 [Skip](./work-with-data.md#skipping-records)配合使用。 |
 |[mvexpand](/azure/kusto/query/mvexpandoperator) | | 旧运算符，请改用 `mv-expand`。 RowLimit 最大值为 400。 默认值为 128。 |
-|[mv-expand](/azure/kusto/query/mvexpandoperator) |[列出具有特定写入位置的 Cosmos DB](../samples/advanced.md#mvexpand-cosmosdb) |RowLimit 最大值为 400。 默认值为 128。 单个查询中的 `mv-expand` 数限制为 2。|
+|[mv-expand](/azure/kusto/query/mvexpandoperator) |[列出具有特定写入位置的 Cosmos DB](../samples/advanced.md#mvexpand-cosmosdb) |RowLimit 最大值为 400。 默认值为 128。 单个查询中的 `mv-expand` 数量限制为 2 个。|
 |[order](/azure/kusto/query/orderoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) |`sort` 的同义词 |
 |[project](/azure/kusto/query/projectoperator) |[列出按名称排序的资源](../samples/starter.md#list-resources) | |
 |[project-away](/azure/kusto/query/projectawayoperator) |[删除结果中的列](../samples/advanced.md#remove-column) | |
@@ -155,7 +155,7 @@ Resource Graph 支持部分 KQL [数据类型](/azure/kusto/query/scalar-data-ty
 查询返回的资源的订阅范围取决于访问 Resource Graph 的方法。 Azure CLI 和 Azure PowerShell 会根据授权用户的上下文填充要在请求中加入的订阅列表。 可以分别使用 subscriptions 和 Subscription 参数为每个订阅手动定义订阅列表 。
 在 REST API 和所有其他 SDK 中，包括资源的订阅列表必须显式定义为请求的一部分。
 
-作为预览版，REST API 版本 `2020-04-01-preview` 会添加一个属性，将查询范围限定到[管理组](../../management-groups/overview.md)。 此预览 API 也使订阅属性成为可选属性。 如果未定义管理组或订阅列表，则查询范围为经过身份验证的用户可以访问的所有资源（包括 [Azure Lighthouse](../../../lighthouse/concepts/azure-delegated-resource-management.md) 委托的资源）。 新的 `managementGroupId` 属性采用管理组 ID，该 ID 不同于管理组的名称。 指定 `managementGroupId` 时，将包含在指定管理组层次结构中或其下的前 5000 个订阅的资源。 `managementGroupId` 与 `subscriptions` 不能同时使用。
+作为预览版，REST API 版本 `2020-04-01-preview` 会添加一个属性，将查询范围限定到[管理组](../../management-groups/overview.md)。 此预览 API 也使订阅属性成为可选属性。 如果未定义管理组或订阅列表，则查询范围为经过身份验证的用户可以访问的所有资源（包括 [Azure Lighthouse](../../../lighthouse/overview.md) 委托的资源）。 新的 `managementGroupId` 属性采用管理组 ID，该 ID 不同于管理组的名称。 指定 `managementGroupId` 时，将包含在指定管理组层次结构中或其下的前 5,000 个订阅的资源。 `managementGroupId` 与 `subscriptions` 不能同时使用。
 
 示例：使用 ID“myMG”查询管理组层次结构中名为“我的管理组”的所有资源。
 
@@ -179,7 +179,7 @@ Resource Graph 支持部分 KQL [数据类型](/azure/kusto/query/scalar-data-ty
 某些属性名称（例如，包含 `.` 或 `$` 的名称）必须在查询中进行包装或转义，否则属性名称将被错误解释，并且不会提供预期结果。
 
 - `.` - 包装属性名称，如下所示：`['propertyname.withaperiod']`
-  
+
   用于包装属性 odata.type 的示例查询：
 
   ```kusto
@@ -190,7 +190,7 @@ Resource Graph 支持部分 KQL [数据类型](/azure/kusto/query/scalar-data-ty
 
   - bash - `\`
 
-    用于在 bash 中转义属性 \$type 的示例查询：
+    在 Bash 中对 \$type 属性进行转义的示例查询：
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type

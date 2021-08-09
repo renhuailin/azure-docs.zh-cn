@@ -3,24 +3,22 @@ title: 创建自动化任务以管理和监视 Azure 资源
 description: 通过创建在 Azure 逻辑应用上运行的工作流来设置自动化任务，以帮助你管理 Azure 资源和监视成本。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
-ms.topic: conceptual
-ms.date: 04/05/2021
-ms.openlocfilehash: 0a98f9e4b108d2498fa19bc0b041f9d52272c7d2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.reviewer: azla
+ms.topic: how-to
+ms.date: 06/09/2021
+ms.openlocfilehash: bd8ac7857d5be31aafd9a1e91cbd276d79823ed2
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774910"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111747142"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>通过创建自动化任务（预览版）来管理 Azure 资源和监视成本
 
 > [!IMPORTANT]
-> 此功能现为公共预览版，在提供时不附带服务级别协议，建议不要用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此功能为预览版，不建议用于生产工作负载，并将排除在服务水平协议之外。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 为了帮助你更轻松地管理 [Azure 资源](../azure-resource-manager/management/overview.md#terminology)，你可以使用自动化任务模板为特定资源或资源组创建自动化管理任务，这些模板的可用性因资源类型而异。 例如，对于 [Azure 存储帐户](../storage/common/storage-account-overview.md)，你可以设置一个自动化任务，向你发送该存储帐户的每月费用。 对于 [Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/)，你可以创建一个自动化任务，按预定义计划打开或关闭该虚拟机。
-
-在后台，自动化任务实际上就是在 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)服务上运行的工作流，并且使用相同的[定价费率](https://azure.microsoft.com/pricing/details/logic-apps/)和[定价模型](../logic-apps/logic-apps-pricing.md)进行计费。 创建任务后，可以通过在逻辑应用设计器中打开任务来查看和编辑基础工作流。 某项任务完成至少一次运行后，你可以查看每次运行的状态、历史记录、输入和输出。
 
 下面是此预览版中当前可用的任务模板：
 
@@ -45,9 +43,22 @@ ms.locfileid: "107774910"
 
 ## <a name="how-do-automation-tasks-differ-from-azure-automation"></a>自动化任务与 Azure 自动化有何不同？
 
-目前，只能在资源级别创建自动化任务、查看任务的运行历史记录，以及编辑任务的基础逻辑应用工作流，该任务由 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)服务提供支持。 与 [Azure 自动化](../automation/automation-intro.md)相比，自动化任务更加基础和精简。
+与 [Azure 自动化](../automation/automation-intro.md)相比，自动化任务更加基础和精简。 目前，只能在 Azure 资源级别创建自动化任务。 在后台，自动化任务实际上是运行工作流的逻辑应用资源，由[多租户 Azure 逻辑应用服务](../logic-apps/logic-apps-overview.md)提供支持。 创建自动化任务后，可以通过在工作流设计器中打开任务来查看和编辑基础工作流。 某项任务完成至少一次运行后，你可以查看任务状态、工作流运行历史记录、每次运行的输入和输出。
 
 相比之下，Azure 自动化是一种基于云的自动化和配置服务，用于支持 Azure 环境和非 Azure 环境之间的一致管理。 该服务包括[用于通过使用 [runbook](../automation/automation-runbook-execution.md) 来编排流程的流程自动化](../automation/automation-intro.md#process-automation)、具有[更改跟踪和清单](../automation/change-tracking/overview.md)的配置管理、更新管理、共享功能以及异类功能。 在部署、操作和解除工作负荷与资源期间，自动化可以提供全面的控制。
+
+<a name="pricing"></a>
+
+## <a name="pricing"></a>定价
+
+仅创建自动化任务不会自动产生费用。 在下方，自动化任务是一个基于多租户的逻辑应用，因此[消耗定价](logic-apps-pricing.md)模型也适用于自动化任务。 计量和计费基于基础逻辑应用工作流中的触发器和操作执行。
+
+无论工作流是否成功运行或者甚至是否已实例化，都会对此类执行进行计量和计费。 例如，假设你的自动化任务使用轮询触发器，该触发器定期对终结点进行传出调用。 无论是否激发或跳过触发器，此出站请求都会作为执行进行计量和计费，这会影响是否创建工作流实例。
+
+触发器和操作遵循[消耗计划费率](https://azure.microsoft.com/pricing/details/logic-apps/)，具体费率根据这些操作是[“内置”](../connectors/built-in.md)还是[“托管”](../connectors/managed.md)（标准或企业）而异。 触发器和操作还进行存储交易，这使用[消耗计划数据费率](https://azure.microsoft.com/pricing/details/logic-apps/)。
+
+> [!TIP]
+> 作为每月的额外奖励，消耗计划包含数千次免费的内置执行。 有关特定信息，请查看[消耗计划费率](https://azure.microsoft.com/pricing/details/logic-apps/)。
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -1,24 +1,24 @@
 ---
-title: Azure AD 中的应用预配的已知问题
-description: 了解在 Azure AD 中处理自动应用预配时的已知问题。
+title: Azure Active Directory 中的应用程序预配的已知问题
+description: 了解在 Azure Active Directory 中处理自动应用程序预配时的已知问题。
 author: kenwith
 ms.author: kenwith
-manager: daveba
+manager: mtillman
 services: active-directory
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 01/05/2021
+ms.date: 05/28/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: 9eba671f6c824c8c88388f2b9d61512dfb1d122f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1674e3aae978c16b8ef736dc6605bd30e7201e10
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256637"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962020"
 ---
-# <a name="known-issues-application-provisioning"></a>已知问题：应用程序预配
+# <a name="known-issues-for-application-provisioning-in-azure-active-directory"></a>Azure Active Directory 中的应用程序预配的已知问题
 处理应用预配时应注意的已知问题。 可以在 UserVoice 上提供有关应用预配服务的反馈，请参阅 [Azure AD 应用预配 UserVoice](https://aka.ms/appprovisioningfeaturerequest)。 我们密切关注 UserVoice，以便改进服务。 
 
 > [!NOTE]
@@ -98,6 +98,40 @@ Azure AD 当前无法预配 null 属性。 如果用户对象上的属性为 nul
 **管理器未预配**
 
 如果用户及其管理器都处于预配范围内，则该服务将预配用户，然后更新管理器。 但是，如果在第一天，用户处于范围内并且管理器超出范围，我们将在不进行管理器引用的情况下预配用户。 当管理器进入范围时，在重启预配并使服务重新评估所有用户之前，将不会更新管理器引用。 
+
+## <a name="on-premises-application-provisioning"></a>本地应用程序预配
+以下信息是当前 Azure AD ECMA 连接器主机和本地应用程序预配的已知限制列表。
+
+### <a name="application-and-directories"></a>应用程序和目录
+目前尚不支持以下应用程序和目录。
+
+AD DS -（用户/组使用本地预配预览，从 Azure AD 中写回）
+   - 如果用户是通过 Azure AD Connect 管理的，则授权来源为本地 Active Directory。 因此，无法在 Azure AD 中更改用户属性。 此预览版不会更改 Azure AD Connect 管理的用户的授权来源。
+   - 尝试使用 Azure AD Connect 和本地预配将组/用户预配至 AD DS，会导致创建循环，其中 Azure AD Connect 可以覆盖云中预配服务所做的更改。 Microsoft 正致力于提供组/用户的专用写回功能。  在[此处](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/16887037-enable-user-writeback-to-on-premise-ad-from-azure)投票赞成 UserVoice 反馈以跟踪预览状态。 或者，你可以使用 [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) 用户/组从 Azure AD 写回到 AD。
+
+**非 SQL 连接器**
+   - 对于泛型 SQL (GSQL) 连接器，正式支持 Azure AD ECMA 连接器主机。 尽管可以使用其他连接器（如 Web 服务连接器或自定义 ECMA 连接器），但它尚不受支持。
+
+**Azure Active Directory**
+   - 本地预配让你可以将 Azure AD 中已存在的用户预配到第三方应用程序中。 它不允许用户进入第三方应用程序的目录。 客户需要依赖于我们的本机 HR 集成、Azure AD Connect、MIM 或 Microsoft Graph 让用户进入目录。
+
+### <a name="attributes-and-objects"></a>属性和对象 
+不支持以下属性和对象：
+   - 多值属性
+   - 引用属性（例如，管理员）。
+   - 组
+   - 复杂定位点（例如，ObjectTypeName + UserName）。
+   - 本地应用程序有时不与 Azure AD 联合，且需要本地密码。 本地预配预览不支持预配一次性密码或在 Azure AD 与第三方应用程序之间同步密码。
+   - 不支持 export_password’ virtual attribute、SetPassword 和 ChangePassword 操作
+
+#### <a name="ssl-certificates"></a>SSL 证书数
+   - Azure AD ECMA 连接器主机当前需要 Azure 信任的 SSL 证书或要使用的预配代理。 证书主体必须与安装 Azure AD ECMA 连接器主机的主机名匹配。
+
+#### <a name="anchor-attributes"></a>定位点属性
+   - 当前Azure AD ECMA 连接器主机不支持定位点属性更改（重命名）或目标系统，这需要多个属性来形成定位点。 
+
+#### <a name="attribute-discovery-and-mapping"></a>属性发现和映射
+   - 目标应用程序支持的属性在属性映射的 Azure 门户中显示。 将继续发现新添加的属性。 但是，如果属性类型已更改（例如，字符串更改为布尔值），并且该属性是映射的一部分，Azure 门户中的类型不会自动改变。 客户需要进入映射中的高级设置并手动更新属性类型。
 
 ## <a name="next-steps"></a>后续步骤
 - [预配工作原理](how-provisioning-works.md)

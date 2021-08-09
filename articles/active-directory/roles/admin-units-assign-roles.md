@@ -9,23 +9,32 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
-ms.date: 04/14/2021
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e24bf5df84015ada6b62c35fdd29571c66e06ebd
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 932fc71617846f2839767546a8fac00a3d16008c
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505252"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792248"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>向管理单元分配限定范围的角色
 
 若要在 Azure Active Directory (Azure AD) 中实现更精细的管理控制，可向用户分配范围限定为一个或多个管理单元的 Azure AD 角色。
 
-若要准备将 PowerShell 和 Microsoft Graph 用于管理单元的管理，请参阅[入门](admin-units-manage.md#get-started)。
+## <a name="prerequisites"></a>先决条件
+
+- 每个管理单元管理员具有 Azure AD Premium P1 或 P2 许可证
+- 管理单元成员具有 Azure AD Free 许可证
+- 特权角色管理员或全局管理员
+- 使用 PowerShell 时需要 AzureAD 模块
+- 将 Graph 浏览器用于 Microsoft Graph API 时需要管理员同意
+
+有关详细信息，请参阅[使用 PowerShell 或 Graph 浏览器的先决条件](prerequisites.md)。
+
 
 ## <a name="available-roles"></a>可用的角色
 
@@ -50,7 +59,7 @@ ms.locfileid: "107505252"
 
 可使用 Azure 门户、PowerShell 或 Microsoft Graph 分配限定范围的角色。
 
-### <a name="use-the-azure-portal"></a>使用 Azure 门户
+### <a name="azure-portal"></a>Azure 门户
 
 1. 在 Azure 门户中，转到“Azure AD”。
 
@@ -69,7 +78,7 @@ ms.locfileid: "107505252"
 > [!Note]
 > 若要使用 Azure AD Privileged Identity Management (PIM) 在管理单元上分配角色，请参阅[在 PIM 中分配 Azure AD 角色](../privileged-identity-management/pim-how-to-add-role-to-user.md?tabs=new#assign-a-role-with-restricted-scope)。
 
-### <a name="use-powershell"></a>使用 PowerShell
+### <a name="powershell"></a>PowerShell
 
 ```powershell
 $adminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
@@ -82,7 +91,7 @@ Add-AzureADMSScopedRoleMembership -Id $adminUnitObj.Id -RoleId $role.ObjectId -R
 
 可以根据特定环境的需要更改突出显示的部分。
 
-### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 请求
 
@@ -105,7 +114,7 @@ POST /directory/administrativeUnits/{admin-unit-id}/scopedRoleMembers
 
 可使用 Azure 门户、PowerShell 或 Microsoft Graph 查看限定范围的管理员列表。
 
-### <a name="use-the-azure-portal"></a>使用 Azure 门户
+### <a name="azure-portal"></a>Azure 门户
 
 可在 [Azure AD 的“管理单元”部分](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit)中查看使用管理单元范围创建的所有角色分配。 
 
@@ -115,7 +124,7 @@ POST /directory/administrativeUnits/{admin-unit-id}/scopedRoleMembers
 
 1. 选择“角色和管理员”，然后打开一个角色查看该管理单元中的分配。
 
-### <a name="use-powershell"></a>使用 PowerShell
+### <a name="powershell"></a>PowerShell
 
 ```powershell
 $adminUnitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
@@ -124,7 +133,7 @@ Get-AzureADMSScopedRoleMembership -Id $adminUnitObj.Id | fl *
 
 可以根据特定环境的需要更改突出显示的部分。
 
-### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
+### <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 请求
 

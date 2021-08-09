@@ -1,20 +1,20 @@
 ---
 title: 在 Azure 市场上配置虚拟机产品/服务一览详细信息
-description: 了解如何在 Azure 市场上配置虚拟机产品/服务一览详细信息。
+description: 在 Azure 市场上配置虚拟机产品/服务列表详细信息。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 7030ffeb49c0a3919894f6dcf81e7252777267c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ce7b1302a290bb4a7fefa3077e0937c7544015a
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629591"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111525419"
 ---
-# <a name="how-to-configure-virtual-machine-offer-listing-details"></a>如何配置虚拟机产品/服务一览详细信息
+# <a name="configure-virtual-machine-offer-listing-details"></a>配置虚拟机产品/服务列表详细信息
 
 在“产品/服务一览”页（从合作伙伴中心内的左侧导航菜单中选择）上，定义产品/服务详细信息，如产品/服务名称、说明、链接和联系人。
 
@@ -25,7 +25,7 @@ ms.locfileid: "94629591"
 
 ### <a name="name"></a>名称
 
-在此处输入的名称作为产品/服务列表的标题向客户显示。 此字段自动填充你在创建产品/服务时在“产品/服务别名”框中输入的名称。 名称：
+在此处输入的名称将作为产品/服务列表的标题向客户显示。 此字段自动填充你在创建产品/服务时在“产品/服务别名”框中输入的名称。 名称：
 
 - 可以包含商标和版权符号。
 - 不得超过 50 个字符。
@@ -80,8 +80,6 @@ ms.locfileid: "94629591"
 ## <a name="marketplace-media"></a>市场媒体
 
 提供要用于产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 模糊图像会导致提交遭到拒绝。
-
-[!INCLUDE [logo tips](includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >如果上传文件时遇到问题，请确保本地网络未阻止合作伙伴中心所使用的 https://upload.xboxlive.com 服务。

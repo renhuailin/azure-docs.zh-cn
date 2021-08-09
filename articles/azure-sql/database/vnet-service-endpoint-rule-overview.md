@@ -10,13 +10,13 @@ ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
-ms.date: 11/14/2019
-ms.openlocfilehash: 0dcffe6731c177d1d45c569361fcb200f23af86c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 05/26/2021
+ms.openlocfilehash: b1748de761ad5180e2ddb670f31874620e4c5ae8
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99095352"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971991"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>使用适用于 Azure SQL 数据库中的服务器的虚拟网络服务终结点和规则
 
@@ -182,7 +182,7 @@ PolyBase 和 COPY 语句通常用于将数据从 Azure 存储帐户加载到 Azu
 
 ### <a name="sql-database-blob-auditing"></a>Azure SQL 数据库 Blob 审核
 
-Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储帐户使用虚拟网络服务终结点功能，则会断开从 Azure SQL 数据库到存储帐户的连接。
+Azure SQL 审核可将 SQL 审核日志写入你自己的存储帐户。 如果此存储帐户使用虚拟网络服务终结点功能，请参阅[将审核写入 VNet 和防火墙后面的存储帐户](./audit-write-storage-account-behind-vnet-firewall.md)的具体操作。
 
 ## <a name="add-a-virtual-network-firewall-rule-to-your-server"></a>向服务器添加虚拟网络防火墙规则
 
@@ -225,7 +225,7 @@ Blob 审核将审核日志推送到你自己的存储帐户。 如果此存储�
 
 ## <a name="powershell-alternative"></a>PowerShell 备用
 
-脚本还可以使用 PowerShell cmdlet New-AzSqlServerVirtualNetworkRule 或 [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) 来创建虚拟网络规则。 如果有兴趣，可以参阅[使用 PowerShell 创建 Azure SQL 数据库的虚拟网络服务终结点和规则][sql-db-vnet-service-endpoint-rule-powershell-md-52d]。
+脚本还可以使用 PowerShell cmdlet New-AzSqlServerVirtualNetworkRule 或 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) 来创建虚拟网络规则。 如果有兴趣，可以参阅[使用 PowerShell 创建 Azure SQL 数据库的虚拟网络服务终结点和规则][sql-db-vnet-service-endpoint-rule-powershell-md-52d]。
 
 ## <a name="rest-api-alternative"></a>REST API 替代项
 

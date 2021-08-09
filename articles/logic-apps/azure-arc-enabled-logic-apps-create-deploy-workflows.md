@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, ladolan, reylons, archidda, sopai, azla
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: 2eabd6462edd609d70fc302ce2d0d64cb99dbdc3
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 06/03/2021
+ms.openlocfilehash: a3ccea075dd4ce4bce06b31fdbe6dc2a55812ebc
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475355"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754072"
 ---
 # <a name="create-and-deploy-single-tenant-based-logic-app-workflows-with-azure-arc-enabled-logic-apps-preview"></a>使用已启用 Azure Arc 的逻辑应用（预览版）创建和部署基于单租户的逻辑应用工作流
 
@@ -39,20 +39,21 @@ ms.locfileid: "110475355"
 
 - 具有活动订阅的 Azure 帐户。 如果没有 Azure 订阅，可以[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-- 具有启用了 Azure Arc 的 Kubernetes 群集和自定义位置的 Kubernetes 环境，可在其中托管和运行 Azure 逻辑应用、Azure 应用服务和 Azure Functions。 对于 Kubernetes 环境、自定义位置和逻辑应用资源，请确保使用相同的位置。
+- 具有启用了 Azure Arc 的 Kubernetes 群集和自定义位置的 Kubernetes 环境，可在其中托管和运行 Azure 逻辑应用、Azure 应用服务和 Azure Functions。
 
-  例如，若要在欧洲西部部署和运行，请使用欧洲西部作为这三个资源的位置。
+  > [!IMPORTANT]
+  > 对于 Kubernetes 环境、自定义位置和逻辑应用，请确保使用相同的资源位置。
 
-  此外，在 Kubernetes 群集上创建应用服务捆绑扩展时，可[更改运行逻辑应用工作流的默认缩放行为](#change-scaling)。 使用 Azure CLI 命令 [`az k8s-extension create`](/cli/azure/k8s-extension) 创建扩展时，请确保添加配置设置 `keda.enabled=true`：
+  在 Kubernetes 群集上创建应用服务捆绑扩展时，可以[更改默认缩放行为](#change-scaling)用于运行逻辑应用工作流。 使用 Azure CLI 命令 [`az k8s-extension create`](/cli/azure/k8s-extension) 创建扩展时，请确保添加配置设置 `keda.enabled=true`：
 
   `az k8s-extension create {other-command-options} --configuration-settings "keda.enabled=true"`
 
   有关详细信息，请查看以下文档：
 
-  * [Azure Arc 上的应用服务、函数和逻辑应用（预览版）](../app-service/overview-arc-integration.md)
-  * [已启用 Azure Arc 的 Kubernetes 的群集扩展](../azure-arc/kubernetes/conceptual-extensions.md)
-  * [设置启用了 Azure Arc 的 Kubernetes 群集，以便运行应用服务、函数和逻辑应用（预览）](../app-service/manage-create-arc-environment.md)
-  * [更改默认缩放行为](#change-scaling)
+  - [Azure Arc 上的应用服务、函数和逻辑应用（预览版）](../app-service/overview-arc-integration.md)
+  - [已启用 Azure Arc 的 Kubernetes 的群集扩展](../azure-arc/kubernetes/conceptual-extensions.md)
+  - [设置启用了 Azure Arc 的 Kubernetes 群集，以便运行应用服务、函数和逻辑应用（预览）](../app-service/manage-create-arc-environment.md)
+  - [更改默认缩放行为](#change-scaling)
 
 - 自己的 Azure Active Directory (Azure AD) 标识
 
@@ -62,15 +63,22 @@ ms.locfileid: "110475355"
   > 对于已启用 Azure Arc 的逻辑应用，托管标识支持当前不可用。
 
   若要使用 Azure CLI 创建 Azure Active Directory (Azure AD) 应用注册，请遵循以下步骤：
-    1. 使用 [`az ad sp create`](/cli/azure/ad/sp#az_ad_sp_create) 命令创建应用注册。
-    1. 若要查看所有详细信息，请运行 [`az ad sp show`](/cli/azure/ad/sp#az_ad_sp_show) 命令。
-    1. 从这两个命令的输出中，查找并保存需要保留供稍后使用的客户端 ID、对象 ID、租户 ID 和客户端密码值。
+
+  1. 使用 [`az ad sp create`](/cli/azure/ad/sp#az_ad_sp_create) 命令创建应用注册。
+
+  1. 若要查看所有详细信息，请运行 [`az ad sp show`](/cli/azure/ad/sp#az_ad_sp_show) 命令。
+
+  1. 从这两个命令的输出中，查找并保存需要保留供稍后使用的客户端 ID、对象 ID、租户 ID 和客户端密码值。
 
   若要使用 Azure 门户创建 Azure Active Directory (Azure AD) 应用注册，请遵循以下步骤：
-    1. 使用 [Azure 门户](../active-directory/develop/quickstart-register-app.md)创建新的 Azure AD 应用注册。
-    1. 创建完成后，在门户中找到新的应用注册。
-    1. 在注册菜单中，选择“概述”，然后保存客户端 ID、租户 ID 和客户端密码值。
-    1. 若要查找对象 ID，请在“本地目录中的托管应用程序”字段旁边选择自己应用注册的名称。 在属性视图中，复制对象 ID。
+
+  1. 使用 [Azure 门户](../active-directory/develop/quickstart-register-app.md)创建新的 Azure AD 应用注册。
+
+  1. 创建完成后，在门户中找到新的应用注册。
+
+  1. 在注册菜单中，选择“概述”，然后保存客户端 ID、租户 ID 和客户端密码值。
+
+  1. 若要查找对象 ID，请在“本地目录中的托管应用程序”字段旁边选择自己应用注册的名称。 在属性视图中，复制对象 ID。
 
 ## <a name="create-and-deploy-logic-apps"></a>创建和部署逻辑应用
 
@@ -78,12 +86,29 @@ ms.locfileid: "110475355"
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-#### <a name="prerequisites"></a>先决条件
+在开始之前，需要具有以下项：
 
-- 在本地计算机上[安装的 Azure CLI](/cli/azure/install-azure-cli)。
-- 要在其中创建逻辑应用的 [Azure 资源组](#create-resource-group)。
+- 在本地计算机上安装了最新的 Azure CLI 扩展。
 
-开始之前检查环境：
+  - 如果没有此扩展，请参阅[操作系统或平台安装指南](/cli/azure/install-azure-cli)。
+
+  - 如果不确定是否具有最新版本，请按照[检查环境和 CLI 版本的步骤](#check-environment-cli-version)操作。
+
+- Azure CLI 的预览版 Azure 逻辑应用（标准）扩展。
+
+  虽然单租户 Azure 逻辑应用已正式发布，但 Azure 逻辑应用扩展仍处于预览状态。
+
+- 可用于在其中创建逻辑应用的 [Azure 资源组](#create-resource-group)。
+
+  如果没有此资源组，请按照[创建资源组的步骤](#create-resource-group)操作。
+
+- Azure 存储帐户（用于与逻辑应用一起保留数据和运行历史记录）。
+
+  如果没有此存储帐户，可以在创建逻辑应用时创建此帐户，也可以按照[创建存储帐户的步骤](/cli/azure/storage/account#az_storage_account_create)操作。
+
+<a name="check-environment-cli-version"></a>
+
+#### <a name="check-environment-and-cli-version"></a>检查环境和 CLI 版本
 
 1. 登录到 Azure 门户。 运行以下命令，检查订阅是否处于活动状态：
 
@@ -101,28 +126,36 @@ ms.locfileid: "110475355"
 
 1. 如果没有最新版本，请按照[适用于你操作系统或平台的安装指南](/cli/azure/install-azure-cli)来更新安装。
 
-#### <a name="install-logic-apps-extension"></a>安装逻辑应用扩展
+<a name="install-logic-apps-cli-extension"></a>
 
-安装适用于 Azure CLI 的逻辑应用扩展（预览版）：
+##### <a name="install-azure-logic-apps-standard-extension-for-azure-cli"></a>安装 Azure CLI Azure 逻辑应用（标准）扩展
 
-```azurecli
+通过运行以下命令，安装 Azure CLI 的预览版单租户 Azure 逻辑应用（标准）扩展：
+
+```azurecli-interactive
 az extension add --yes --source "https://aka.ms/logicapp-latest-py2.py3-none-any.whl"
 ```
 
+<a name="create-resource-group"></a>
+
 #### <a name="create-resource-group"></a>创建资源组
 
-如果还没有用于逻辑应用的资源组，请使用命令 `az group create` 创建该组。 请确保使用订阅名称或标识符替换 `--subscription` 参数。 例如，以下命令在位置 `eastus` 创建名为 `MyResourceGroupName` 的资源组：
-
-```azurecli
-az group create --name MyResourceGroupName --location eastus --subscription MySubscription
-```
+如果还没有用于逻辑应用的资源组，请运行命令 `az group create` 创建该组。 除非你已为 Azure 帐户设置了一个默认订阅，否则请确保将 `--subscription` 参数与订阅名称或标识符一起使用。 否则，无需使用 `--subscription` 参数。
 
 > [!TIP]
-> 如果为 Azure 帐户设置了默认订阅，则无需使用 `--subscription` 参数。
 > 若要设置默认订阅，请运行以下命令，将 `MySubscription` 替换为订阅名称或标识符。
+>
 > `az account set --subscription MySubscription`
 
-已成功创建资源组时，输出会将 `provisioningState` 显示为 `Succeeded`：
+例如，以下命令使用位置 `eastus` 中名为 `MySubscription` 的 Azure 订阅创建一个名为 `MyResourceGroupName` 的资源组：
+
+```azurecli
+az group create --name MyResourceGroupName 
+   --subscription MySubscription 
+   --location eastus
+```
+
+如果已成功创建资源组，输出会将 `provisioningState` 显示为 `Succeeded`：
 
 ```output
 <...>
@@ -135,40 +168,35 @@ az group create --name MyResourceGroupName --location eastus --subscription MySu
 
 #### <a name="create-logic-app"></a>创建逻辑应用
 
-若要使用 Azure CLI 创建已启用 Azure Arc 的逻辑应用，请运行 `az logicapp create` 命令，如下所示：
+若要创建已启用 Azure Arc 的逻辑应用，请使用以下必需参数运行命令 `az logicapp create`。 逻辑应用资源位置、自定义位置和 Kubernetes 环境必须相同。
 
-```azurecli
-az logicapp create --resource-group MyResourceGroupName --name MyLogicAppName 
-   --storage-account MyStorageAccount --custom-location MyCustomLocation 
-   --subscription MySubscription
-```
-
-> [!IMPORTANT]
-> 请确保使用与自定义位置和 Kubernetes 环境相同的资源位置（Azure 区域）。 逻辑应用资源位置、自定义位置和 Kubernetes 环境必须相同。 此值与自定义位置的名称不同 。
-
-请确保在命令中提供以下必需参数：
-
-| 参数 | 说明 |
+| parameters | 说明 |
 |------------|-------------|
 | `--name -n` | 逻辑应用的唯一名称 |
 | `--resource-group -g` | 要在其中创建逻辑应用的[资源组](../azure-resource-manager/management/manage-resource-groups-cli.md)。 如果没有可用的资源组，请[创建一个资源组](#create-resource-group)。 |
 | `--storage-account -s` | 要用于逻辑应用的[存储帐户](/cli/azure/storage/account)。 对于同一资源组中的存储帐户，请使用字符串值。 对于不同资源组中的存储帐户，请使用资源 ID。 |
 |||
 
-若要使用专用 Azure 容器注册表映像在 Azure Arc 中创建逻辑应用，请运行 `az logicapp create`，如下所示：
+```azurecli
+az logicapp create --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --storage-account MyStorageAccount --custom-location MyCustomLocation
+```
+
+若要使用专用 Azure 容器注册表映像创建启用了 Azure Arc 的逻辑应用，请使用以下必需参数运行命令 `az logicapp create`：
 
 ```azurecli
-az logicapp create --resource-group MyResourceGroupName --name MyLogicAppName 
-   --storage-account MyStorageAccount --subscription MySubscription
-   --custom-location MyCustomLocation 
+az logicapp create --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --storage-account MyStorageAccount --custom-location MyCustomLocation 
    --deployment-container-image-name myacr.azurecr.io/myimage:tag
-   --docker-registry-server-password passw0rd 
-   --docker-registry-server-user MyUser
+   --docker-registry-server-password MyPassword 
+   --docker-registry-server-user MyUsername
 ```
 
 #### <a name="show-logic-app-details"></a>显示逻辑应用详细信息
 
-若要显示有关已启用 Azure Arc 的逻辑应用的详细信息，请运行命令 `az logicapp show`，如下所示：
+若要显示已启用 Azure Arc 的逻辑应用的详细信息，请使用以下必需参数运行命令 `az logicapp show`：
 
 ```azurecli
 az logicapp show --name MyLogicAppName 
@@ -177,13 +205,22 @@ az logicapp show --name MyLogicAppName
 
 #### <a name="deploy-logic-app"></a>部署逻辑应用
 
-若要使用 Kudu 的 zip 部署来部署逻辑应用，请运行命令 `az logicapp deployment source config-zip`。 例如：
+若要使用 [Azure 应用服务的 Kudu zip 部署](../app-service/resources-kudu.md)来部署启用了 Azure Arc 的逻辑应用，请使用以下必需参数运行命令 `az logicapp deployment source config-zip`：
+
+> [!IMPORTANT]
+> 请确保 zip 文件在根级别包含项目的生成工件。 这些生成工件包括所有工作流文件夹、配置文件（如 host.json、connections.json）和任何其他相关文件。 不要添加任何额外的文件夹，也不要将任何生成工件放入项目结构中不存在的文件夹。 例如，下面的列表显示示例 MyBuildArtifacts.zip 文件结构：
+>
+> ```output
+> MyStatefulWorkflow1-Folder
+> MyStatefulWorkflow2-Folder
+> connections.json
+> host.json
+> ```
 
 ```azurecli
 az logicapp deployment source config-zip --name MyLogicAppName 
-   --resource-group MyResourceGroupName 
-   --src C:\uploads\v22.zip 
-   --subscription MySubscription
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --src MyBuildArtifact.zip
 ```
 
 #### <a name="start-logic-app"></a>启动逻辑应用
@@ -217,17 +254,14 @@ az logicapp restart --name MyLogicAppName
 
 若要删除已启用 Azure Arc 的逻辑应用，请使用以下必需参数运行命令 `az logicapp delete`：
 
-例如： 
-
 ```azurecli
-az logicapp delete --name MyLogicAppName --resource-group MyResourceGroupName --subscription MySubscription
+az logicapp delete --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription
 ```
 
 ### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 可在 Visual Studio Code 中创建、部署和监视完整的逻辑应用工作流。 开发在单租户 Azure 逻辑应用中和已启用 Azure Arc 的逻辑应用中运行的逻辑应用工作流的设计器体验不会有任何变化或不同。
-
-#### <a name="create-and-deploy-logic-app-workflows"></a>创建和部署逻辑应用工作流
 
 1. 若要创建逻辑应用项目，请遵循[通过 Visual Studio Code 在单租户 Azure 逻辑应用中创建集成工作流](create-single-tenant-workflows-visual-studio-code.md)文档中的先决条件和步骤。
 
@@ -260,16 +294,14 @@ az logicapp delete --name MyLogicAppName --resource-group MyResourceGroupName --
 
 ### <a name="azure-portal"></a>[Azure 门户](#tab/azure-portal)
 
-#### <a name="create-and-deploy-logic-app-workflows"></a>创建和部署逻辑应用工作流
-
 适用于已启用 Azure Arc 的逻辑应用的基于门户的设计器的编辑功能目前正在开发中。 可使用基于门户的设计器创建、部署和查看逻辑应用，但在部署后无法在门户中编辑。 目前，可以在 Visual Studio Code 本地创建和编辑逻辑应用项目，然后使用 Visual Studio Code、Azure CLI 或自动化部署进行部署。
 
-1. [在门户中创建逻辑应用（标准）资源](create-single-tenant-workflows-azure-portal.md)，但要确保使用之前创建的自定义位置作为应用的位置。
+1. 在 Azure 门户中，[创建一个逻辑应用（标准）资源](create-single-tenant-workflows-azure-portal.md)。 但对于“发布”目标，请选择“Docker 容器”。 在“区域”中，选择先前创建的自定义位置作为应用的位置。
+
+   默认情况下，逻辑应用（标准）资源在单租户 Azure 逻辑应用中运行。 但是，对于已启用 Azure Arc 的逻辑应用，逻辑应用资源在为 Kubernetes 环境创建的自定义位置中运行。 此外，因为已为你创建应用服务计划，所以无需再创建该计划。
 
    > [!IMPORTANT]
    > 逻辑应用资源位置、自定义位置和 Kubernetes 环境必须相同。
-
-   默认情况下，逻辑应用（标准）资源在单租户 Azure 逻辑应用中运行。 但是，对于已启用 Azure Arc 的逻辑应用，逻辑应用资源在为 Kubernetes 环境创建的自定义位置中运行。 此外，因为已为你创建应用服务计划，所以无需再创建该计划。
 
 1. [使用 Visual Studio Code 编辑和部署逻辑应用](create-single-tenant-workflows-visual-studio-code.md)。
 
@@ -358,7 +390,7 @@ az logicapp delete --name MyLogicAppName --resource-group MyResourceGroupName --
 }
 ```
 
-有关详细信息，请查看 [Microsoft.Web/connections/accesspolicies（ARM 模板）](/templates/microsoft.web/connections?tabs=json)文档。 
+有关详细信息，请查看 [Microsoft.Web/connections/accesspolicies（ARM 模板）](/azure/templates/microsoft.web/connections?tabs=json)文档。 
 
 #### <a name="azure-portal"></a>Azure 门户
 
@@ -369,7 +401,7 @@ az logicapp delete --name MyLogicAppName --resource-group MyResourceGroupName --
 1. 在“API 连接”下，选择一个连接，在本例中为 `office365`。
 
 1. 在连接的菜单的“设置”下，选择“访问策略” > “添加”  。
- 
+
 1. 在“添加访问策略”窗格的搜索框中，找到并选择以前保存的客户端 ID。
 
 1. 完成后，选择“添加”。
@@ -400,7 +432,7 @@ az logicapp delete --name MyLogicAppName --resource-group MyResourceGroupName --
 
 #### <a name="arm-template"></a>ARM 模板
 
-以下示例介绍了可在 ARM 模板中使用的已启用 Azure Arc 的逻辑应用资源定义示例。 有关详细信息，请查看 [Microsoft.Web/sites 模板格式 (JSON)](/templates/microsoft.web/sites?tabs=json)文档。
+以下示例介绍了可在 ARM 模板中使用的已启用 Azure Arc 的逻辑应用资源定义示例。 有关详细信息，请查看 [Microsoft.Web/sites 模板格式 (JSON)](/azure/templates/microsoft.web/sites?tabs=json)文档。
 
 ```json
 {
@@ -483,7 +515,7 @@ az logicapp delete --name MyLogicAppName --resource-group MyResourceGroupName --
 
 #### <a name="arm-template"></a>ARM 模板
 
-以下示例介绍了可在 ARM 模板中使用的已启用 Azure Arc 的逻辑应用资源定义示例。 有关详细信息，请查看 [Microsoft.Web/sites 模板格式（ARM 模板）](/templates/microsoft.web/sites?tabs=json)文档。
+以下示例介绍了可在 ARM 模板中使用的已启用 Azure Arc 的逻辑应用资源定义示例。 有关详细信息，请查看 [Microsoft.Web/sites 模板格式（ARM 模板）](/azure/templates/microsoft.web/sites?tabs=json)文档。
 
 ```json
 {
@@ -568,7 +600,7 @@ az logicapp delete --name MyLogicAppName --resource-group MyResourceGroupName --
 
 #### <a name="arm-template"></a>ARM 模板
 
-以下示例介绍了可用于应用部署的应用服务计划资源定义示例。 有关详细信息，请查看 [Microsoft.Web/serverfarms 模板格式（ARM 模板）](/templates/microsoft.web/serverfarms?tabs=json)文档。
+以下示例介绍了可用于应用部署的应用服务计划资源定义示例。 有关详细信息，请查看 [Microsoft.Web/serverfarms 模板格式（ARM 模板）](/azure/templates/microsoft.web/serverfarms?tabs=json)文档。
 
 ```json
 {
@@ -634,12 +666,12 @@ az logicapp delete --name MyLogicAppName --resource-group MyResourceGroupName --
 
 #### <a name="azure-cli"></a>Azure CLI
 
-对于新的逻辑应用，请运行 Azure CLI 命令 `az logicapp create`，例如：
+若要创建新的逻辑应用，请使用以下参数运行命令 `az logicapp create`：
 
 ```azurecli
-az logicapp create --resource-group MyResourceGroupName 
-   --name MyLogicAppName --storage-account MyStorageAccount 
-   --custom-location --subscription MySubscription  MyCustomLocation 
+az logicapp create --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --storage-account MyStorageAccount --custom-location MyCustomLocation 
    [--plan MyHostingPlan] [--min-worker-count 1] [--max-worker-count 4]
 ```
 
@@ -647,9 +679,8 @@ az logicapp create --resource-group MyResourceGroupName
 
 ```azurecli
 az logicapp config appsettings set --name MyLogicAppName 
-   --resource-group MyResourceGroupName 
-   --settings "K8SE_APP_MAX_INSTANCE_COUNT=10" 
-   --subscription MySubscription
+   --resource-group MyResourceGroupName --subscription MySubscription
+   --settings "K8SE_APP_MAX_INSTANCE_COUNT=10"
 ```
 
 #### <a name="azure-portal"></a>Azure 门户
@@ -657,7 +688,9 @@ az logicapp config appsettings set --name MyLogicAppName
 在基于单租户的逻辑应用设置中，执行以下步骤以添加或编辑 `K8SE_APP_MAX_INSTANCE_COUNT` 设置的值：
 
 1. 在 Azure 门户中，找到并打开基于单租户的逻辑应用。
+
 1. 在逻辑应用菜单上的“设置”下，选择“配置” 。
+
 1. 在“配置”窗格的“应用设置”下，可添加新的应用程序设置，或者编辑现有的值（如果已添加） 。
 
    1. 选择“新建应用程序设置”，添加采用所需最大值的 `K8SE_APP_MAX_INSTANCE_COUNT` 设置。
@@ -674,19 +707,20 @@ az logicapp config appsettings set --name MyLogicAppName
 
 #### <a name="azure-cli"></a>Azure CLI
 
-对于现有的逻辑应用资源，请运行 Azure CLI 命令 `az logicapp scale`，例如：
+对于现有逻辑应用资源，请使用以下参数运行命令 `az logicapp scale`：
 
 ```azurecli
-az logicapp scale --name MyLogicAppName --resource-group MyResourceGroupName 
-   --instance-count 5 --subscription MySubscription
+az logicapp scale --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --instance-count 5 
 ```
 
-对于新的逻辑应用，请运行 Azure CLI 命令 `az logicapp create`，例如：
+若要创建新的逻辑应用，请使用以下参数运行命令 `az logicapp create`：
 
 ```azurecli
-az logicapp create --resource-group MyResourceGroupName --name MyLogicAppName 
-   --storage-account MyStorageAccount --custom-location 
-   --subscription MySubscription MyCustomLocation 
+az logicapp create --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --storage-account MyStorageAccount --custom-location MyCustomLocation 
    [--plan MyHostingPlan] [--min-worker-count 2] [--max-worker-count 4]
 ```
 
@@ -695,8 +729,11 @@ az logicapp create --resource-group MyResourceGroupName --name MyLogicAppName
 在基于单租户的逻辑应用的设置中，按照以下步骤更改“横向扩展”属性值：
 
 1. 在 Azure 门户中，找到并打开基于单租户的逻辑应用。
+
 1. 在逻辑应用菜单的“设置”下，选择“横向扩展” 。
+
 1. 在“横向扩展”窗格中，将最小实例数滑块拖动到所需的值。
+
 1. 完成后，保存所做的更改。
 
 ## <a name="troubleshoot-problems"></a>排查问题
@@ -705,37 +742,36 @@ az logicapp create --resource-group MyResourceGroupName --name MyLogicAppName
 
 ### <a name="access-app-settings-and-configuration"></a>访问应用设置和配置
 
-若要访问应用设置，请运行以下 Azure CLI 命令：
+若要访问应用设置，请使用以下参数运行命令 `az logicapp config appsettings`：
 
 ```azurecli
 az logicapp config appsettings list --name MyLogicAppName 
    --resource-group MyResourceGroupName --subscription MySubscription
 ```
 
-若要配置应用设置，请运行 `az logicapp config appsettings set` 命令，如下所示。 确保使用 `--settings` 参数替换设置的名称和值。
+若要配置应用设置，请使用以下参数运行命令 `az logicapp config appsettings set`。 确保使用 `--settings` 参数替换设置的名称和值。
 
 ```azurecli
 az logicapp config appsettings set --name MyLogicAppName 
-   --resource-group MyResourceGroupName 
-   --settings "MySetting=1" 
-   --subscription MySubscription
+   --resource-group MyResourceGroupName --subscription MySubscription 
+   --settings "MySetting=1"
 ```
 
-若要删除应用设置，请运行命令 `az logicapp config appsettings delete`，如下所示。 确保使用 `--setting-names` 参数替换要删除的设置的名称。
+若要删除应用设置，请使用以下参数运行命令 `az logicapp config appsettings delete`。 确保使用 `--setting-names` 参数替换要删除的设置的名称。
 
 ```azurecli
 az logicapp config appsettings delete --name MyLogicAppName 
-   --resource-group MyResourceGroupName 
-   --setting-names MySetting 
-   --subscription MySubscription
+   --resource-group MyResourceGroupName --subscription MySubscription
+   --setting-names MySetting
 ```
 
 ### <a name="view-logic-app-properties"></a>查看逻辑应用属性
 
-若要查看应用的信息和属性，请运行以下 Azure CLI 命令： 
+若要查看应用的信息和属性，请使用以下参数运行命令 `az logicapp show`：
 
 ```azurecli
-az logicapp show --name MyLogicAppName --resource-group MyResourceGroupName --subscription MySubscription
+az logicapp show --name MyLogicAppName 
+   --resource-group MyResourceGroupName --subscription MySubscription
 ```
 
 ### <a name="monitor-workflow-activity"></a>监视工作流活动
@@ -754,4 +790,4 @@ az logicapp show --name MyLogicAppName --resource-group MyResourceGroupName --su
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[已启用 Azure Arc 的逻辑应用](azure-arc-enabled-logic-apps-overview.md)
+- [有关已启用 Azure Arc 的逻辑应用](azure-arc-enabled-logic-apps-overview.md)

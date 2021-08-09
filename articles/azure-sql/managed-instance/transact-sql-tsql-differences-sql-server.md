@@ -3,20 +3,20 @@ title: SQL Server 与 Azure SQL 托管实例之间的 T-SQL 差异
 description: 本文讨论 Azure SQL 托管实例与 SQL Server 之间的 Transact-SQL (T-SQL) 差异。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
+ms.subservice: service-overview
 ms.devlang: ''
 ms.topic: reference
 author: danimir
 ms.author: danil
-ms.reviewer: sstein, bonova, danil
+ms.reviewer: mathoma, bonova, danil
 ms.date: 3/16/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1a2ef6000a10c9b6879547377e26b6982e820ef1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 8c3ab997aeb179754e4c365dc41b795cf5c3bdc7
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108745773"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111528551"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server 与 Azure SQL 托管实例之间的 T-SQL 差异
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -406,10 +406,12 @@ SQL 托管实例中的链接服务器支持有限数量的目标：
 - `OPENDATASOURCE` 函数只能用于在 SQL Server 实例上执行查询。 它们可以是托管的、位于本地或位于虚拟机中。 仅支持将 `SQLNCLI`、`SQLNCLI11` 和 `SQLOLEDB` 值用作提供程序。 例如 `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`。 请参阅 [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql)。
 - 不能使用链接服务器从网络共享读取文件（Excel、CSV）。 尝试使用从 Azure Blob 存储读取 CSV 文件的 [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file)、[OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file)，或使用[引用 Synapse Analytics 中的无服务器 SQL 池的链接服务器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)。 在 [SQL 托管实例反馈项](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)中跟踪此请求|
 
+Azure SQL 托管实例上的链接服务器仅支持 SQL 身份验证。 尚不支持 AAD 身份验证。
+
 ### <a name="polybase"></a>PolyBase
 
-唯一可用的外部源类型是 Azure SQL 数据库、Azure SQL 托管实例和 Azure Synapse 池的 RDBMS（公共预览版）。 可以使用[引用 Synapse Analytics 中的无服务器 SQL 池的外部表](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)作为直接从 Azure 存储进行读取的 Polybase 外部表的解决方法。 在 Azure SQL 托管实例中，可以使用链接服务器连接到 [Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)，也可以使用 SQL Server 来读取 Azure 存储数据。
-有关 PolyBase 的信息，请参阅 [PolyBase](/sql/relational-databases/polybase/polybase-guide)。
+在 SQL 托管实例中启用 Polybase 支持的工作[正在进行中](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35698078-enable-polybase-on-sql-managed-instance)。 同时，作为一种解决方法，你可以使用链接到 [Synapse Analytics 中的无服务器 SQL 池](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)的服务器或 SQL Server 来查询存储在 Azure Data Lake 或 Azure 存储中的文件中的数据。   
+有关 PolyBase 的一般信息，请参阅 [PolyBase](/sql/relational-databases/polybase/polybase-guide)。
 
 ### <a name="replication"></a>复制
 
@@ -434,7 +436,7 @@ SQL 托管实例中的链接服务器支持有限数量的目标：
 - 不支持的语法：
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
-- 来源： 
+- 源： 
   - `FROM URL`（Azure Blob 存储）是唯一受支持的选项。
   - 不支持 `FROM DISK`/`TAPE`/备份设备。
   - 不支持备份集。

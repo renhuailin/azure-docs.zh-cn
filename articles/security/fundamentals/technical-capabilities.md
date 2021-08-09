@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 00a44bd0a6176270e70eca030fcfada46effe3a5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0337a9aec4991dddbf95cf1ac2e2ec6adf7d28ea
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735771"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110471583"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 本文介绍了 Azure 中的安全服务，这些服务可帮助保护云中的数据、资源和应用程序，并满足业务的安全需求。
@@ -147,7 +147,7 @@ Azure Active Directory (Azure AD) 在安全方面的益处包括以下能力：
 
 ## <a name="secure-resource-access"></a>保护资源访问
 
-Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者（可通过访问 [Azure 帐户中心](https://account.windowsazure.com/subscriptions)进行访问）是帐户管理员 (AA)。 订阅是计费容器，但它们也可充当安全边界：每个订阅都有一个服务管理员 (SA)，此管理员可以使用 Azure 门户在该订阅中添加、删除和修改 Azure 资源。 新订阅的默认 SA 是 AA，但 AA 可以在 Azure 帐户中心更改 SA。
+Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者（可通过访问 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)进行访问）是帐户管理员 (AA)。 订阅是计费容器，但它们也可充当安全边界：每个订阅都有一个服务管理员 (SA)，此管理员可以使用 Azure 门户在该订阅中添加、删除和修改 Azure 资源。 新订阅的默认 SA 是 AA，但 AA 可以在 Azure 门户中更改 SA。
 
 ![Azure 中受保护的资源访问](./media/technical-capabilities/azure-security-technical-capabilities-fig3.png)
 
@@ -278,7 +278,7 @@ Azure 网络支持在 Azure 虚拟网络上为网络流量自定义路由行为�
 
 Azure 支持通过 [ExpressRoute](../../expressroute/expressroute-introduction.md) 使用专用 WAN 链路连接本地网络和 Azure 虚拟网络。 Azure 和站点之间的链接使用专用连接，不需要通过公共 Internet。 如果 Azure 应用程序在多个数据中心运行，则可以使用 [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md)智能地跨应用程序实例路由来自用户的请求。 如果可以通过 Internet 访问未在 Azure 中运行的服务，还可以将流量路由到这些服务。
 
-Azure 还支持通过 [Azure 专用链接](https://docs.microsoft.com/azure/private-link/private-link-overview)从 Azure 虚拟网络与 PaaS 资源（例如，Azure 存储和 SQL 数据库）建立专用且安全的连接。 PaaS 资源映射到虚拟网络中的[专用终结点](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)。 虚拟网络中的专用终结点与 PaaS 资源之间的链接使用 Microsoft 主干网络，而不使用公共 Internet。 不再需要向公共 Internet 公开服务。 你还可以使用 Azure 专用链接访问虚拟网络中 Azure 托管的客户自有服务和合作伙伴服务。  此外，借助 Azure 专用链接，你可以在虚拟网络中创建自己的[专用链接服务](https://docs.microsoft.com/azure/private-link/private-link-service-overview)，并在客户的虚拟网络中将其以私密方式交付给客户。 使用 Azure 专用链接的设置和使用体验在 Azure PaaS、客户自有服务和共享合作伙伴服务中是一致的。
+Azure 还支持通过 [Azure 专用链接](../../private-link/private-link-overview.md)从 Azure 虚拟网络与 PaaS 资源（例如，Azure 存储和 SQL 数据库）建立专用且安全的连接。 PaaS 资源映射到虚拟网络中的[专用终结点](../../private-link/private-endpoint-overview.md)。 虚拟网络中的专用终结点与 PaaS 资源之间的链接使用 Microsoft 主干网络，而不使用公共 Internet。 不再需要向公共 Internet 公开服务。 你还可以使用 Azure 专用链接访问虚拟网络中 Azure 托管的客户自有服务和合作伙伴服务。  此外，借助 Azure 专用链接，你可以在虚拟网络中创建自己的[专用链接服务](../../private-link/private-link-service-overview.md)，并在客户的虚拟网络中将其以私密方式交付给客户。 使用 Azure 专用链接的设置和使用体验在 Azure PaaS、客户自有服务和共享合作伙伴服务中是一致的。
 
 ## <a name="virtual-machine-security"></a>虚拟机安全
 

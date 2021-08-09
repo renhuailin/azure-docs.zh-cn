@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Monitor 配置监视和度量值
 titleSuffix: Azure Bastion
-description: 了解如何使用 Azure Monitor 配置 Azure Bastion 的监视和指标。
+description: 了解使用 Azure Monitor（Azure 中指标、警报和诊断日志的解决方案）的 Azure Bastion 监视和指标。
 services: bastion
 author: mialdrid
 ms.service: bastion
 ms.topic: how-to
 ms.date: 03/12/2021
 ms.author: mialdrid
-ms.openlocfilehash: bed26390a2a64b7bbb39f1df014d0d63ccce6a5f
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 3a5beba3938b5a845a378ede155f2f64e6baac7a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110534766"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103417937"
 ---
 # <a name="how-to-configure-monitoring-and-metrics-for-azure-bastion-using-azure-monitor"></a>如何使用 Azure Monitor 配置 Azure Bastion 的监视和指标
 
@@ -29,7 +29,7 @@ Azure Bastion 有多种可用指标。 下表显示了每个可用指标的类�
 
 |**指标**|**类别**|**维度**|
 | --- | --- | --- |
-|Bastion 通信状态**|[可用性](#availability)|空值|
+|Bastion 通信状态**|[可用性](#availability)|不适用|
 |总内存量|[可用性](#availability)|实例|
 |已用 CPU|[交通](#traffic)|实例
 |已用内存|[交通](#traffic)|实例
@@ -58,7 +58,7 @@ Azure Bastion 有多种可用指标。 下表显示了每个可用指标的类�
 
 #### <a name="used-cpu"></a><a name="used-cpu"></a>已用 CPU
 
-可以查看 Azure Bastion 的 CPU，按每个堡垒实例进行拆分。 监视此指标将有助于测量组成 Azure Bastion 的实例的可用性和容量
+可以查看 Azure Bastion 的 CPU，按每个堡垒实例进行拆分。 监视此指标将有助于度量组成 Azure Bastion 的实例的可用性和容量。
 
 :::image type="content" source="./media/metrics-monitor-alert/used-cpu.png" alt-text="显示已用 CPU 的屏幕截图。":::
 
@@ -73,12 +73,6 @@ Azure Bastion 有多种可用指标。 下表显示了每个可用指标的类�
 #### <a name="session-count"></a>会话计数
 
 可以查看每个堡垒实例的活动会话计数，按每个会话类型（RDP 和 SSH）聚合。 每个 Azure Bastion 都可支持一系列的活动 RDP 和 SSH 会话。 监视此指标将帮助你了解是否需要调整运行堡垒服务的实例数。 有关 Azure Bastion 可支持的会话计数的详细信息，请参阅 [Azure Bastion 常见问题解答](bastion-faq.md)。
-
-此指标配置的建议值如下：
-
-* **聚合**：平均值
-* **粒度**：5 或 15 分钟
-* 建议按实例拆分以获取更准确的计数
 
 :::image type="content" source="./media/metrics-monitor-alert/session-count.png" alt-text="显示会话计数的屏幕截图。":::
 

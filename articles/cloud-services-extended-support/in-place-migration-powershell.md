@@ -8,12 +8,13 @@ ms.reviwer: mimckitt
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: aab67914b1317bc0cc443f333932ecef924176b6
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d813cc32d3b635e6da767e3f04386c0e35ea503c
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293019"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111949370"
 ---
 # <a name="migrate-to-azure-cloud-services-extended-support-using-powershell"></a>使用 PowerShell 迁移到 Azure 云服务（外延支持）
 
@@ -86,7 +87,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 
 使用以下命令检查注册状态：  
 ```powershell
-Get-AzProviderFeature -FeatureName CloudServices
+Get-AzProviderFeature -FeatureName CloudServices -ProviderNamespace Microsoft.Compute
 ```
 
 在继续操作之前，请确保上述两项的 RegistrationState 为 `Registered`。
@@ -119,6 +120,8 @@ Select-AzureSubscription –SubscriptionName "My Azure Subscription"
 
 
 ## <a name="5-migrate-your-cloud-services"></a>5) 迁移云服务 
+在开始迁移之前，请了解[迁移步骤](./in-place-migration-overview.md#migration-steps)的工作原理以及每个步骤的目的。 
+
 * [迁移不在虚拟网络中的云服务](#51-option-1---migrate-a-cloud-service-not-in-a-virtual-network)
 * [迁移虚拟网络中的云服务](#51-option-2---migrate-a-cloud-service-in-a-virtual-network)
 
@@ -141,17 +144,27 @@ $deployment = Get-AzureDeployment -ServiceName $serviceName
 $deploymentName = $deployment.DeploymentName
 ```
 
-首先，使用以下命令验证是否可以迁移云服务：
+首先，使用以下命令验证是否可以迁移云服务。 此命令会显示任何阻止迁移的错误。 
 
 ```powershell
 $validate = Move-AzureService -Validate -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
 $validate.ValidationMessages
  ```
 
-以下命令会显示任何阻止迁移的警告和错误。 如果验证成功，可继续执行“准备”步骤。
+如果验证成功或只有警告，可继续执行“准备”步骤。 
 
 ```powershell
 Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
+```
+
+使用 Azure PowerShell 或 Azure 门户检查已准备好的云服务（外延支持）的配置。 如果尚未做好迁移准备，因此想要回到旧的状态，请中止迁移。
+```powershell
+Move-AzureService -Abort -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
+```
+如果已准备好完成迁移，请提交该迁移
+
+```powershell
+Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
 ```
 
 ### <a name="51-option-2---migrate-a-cloud-service-in-a-virtual-network"></a>5.1) 选项 2 - 迁移虚拟网络中的云服务
@@ -179,7 +192,7 @@ Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
 Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
 ```
 
-使用 Azure PowerShell 或 Azure 门户检查已准备好的云服务的配置。 如果尚未做好迁移准备，因此想要回到旧的状态，请使用以下命令：
+使用 Azure PowerShell 或 Azure 门户检查已准备好的云服务（外延支持）的配置。 如果尚未做好迁移准备，因此想要回到旧的状态，请使用以下命令：
 
 ```powershell
 Move-AzureVirtualNetwork -Abort -VirtualNetworkName $vnetName

@@ -3,20 +3,20 @@ title: 规划 Azure 维护事件
 description: 了解如何为在 Azure SQL 数据库和 Azure SQL 托管实例中执行计划内维护事件做准备。
 services: sql-database
 ms.service: sql-db-mi
-ms.subservice: service
+ms.subservice: service-overview
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
-ms.reviewer: sstein
-ms.date: 1/21/2021
-ms.openlocfilehash: d38ac9731959cf9a23052753b09c9e7819846705
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.reviewer: mathoma
+ms.date: 3/23/2021
+ms.openlocfilehash: 7de0db8245908e8342abbbe6a8f7cc4f2359e7f5
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101664111"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017858"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>规划在 Azure SQL 数据库和 Azure SQL 托管实例中的 Azure 维护事件
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,19 +27,19 @@ ms.locfileid: "101664111"
 
 为了保持 Azure SQL 数据库和 Azure SQL 托管实例服务的安全、合规性、稳定性和高性能，将持续通过服务组件进行更新。 得益于新式可靠的服务体系结构和创新技术（如[热修补](https://aka.ms/azuresqlhotpatching)），大多数更新在服务可用性方面都是完全透明且不会产生不良影响的。 尽管如此，少数类型的更新会导致短暂的服务中断并需要特殊处理。 
 
-Azure SQL 数据库和 Azure SQL 托管实例为每个数据库维护了一组正常运营所需的最低数量的数据库副本，其中一个副本是主副本。 主副本在任何时间都必须处于联机运行提供服务的状态，且至少要有一个辅助副本处于正常可用的状态。 在计划内维护期间，所维护的数据库副本将进入脱机状态，一次脱机一个，目的是要有一个能够响应的主副本和至少一个辅助副本处于联机状态，确保不发生客户端停机。 当主副本需要进入脱机状态时，将启动重新配置/故障转移进程，其间，会有一个辅助副本变为新的主副本。  
+在计划内维护期间，所维护的数据库副本将进入脱机状态，一次脱机一个，目的是要有一个能够响应的主要副本。 对于业务关键型和高级数据库，还应至少有一个次要副本处于联机状态，确保不发生客户端停机。 当主要副本需要进入脱机状态时，将启动重新配置进程。 对于业务关键型和高级数据库，其中会有一个辅助副本变为新的主要副本。 对于常规用途、标准和基本数据库，主要副本将迁移到具有足够可用容量的另一个无状态计算节点。
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>计划内维护事件期间会发生什么
 
-维护事件可能产生单个或多个故障转移，具体取决于维护事件开始时主要副本和次要副本的集合。 平均而言，每个计划内维护事件会出现 1.7 个故障转移。 重新配置/故障转移通常在 30 秒内完成。 平均值为 8 秒。 如果应用程序处于已连接状态，则必须重新连接至新的数据库主要副本。 如果在进行连接时数据库正在进行重新配置，且新的主副本尚未处于联机状态，会显示错误 40613（数据库不可用）： *“服务器 '{servername}' 上的数据库 '{databasename}' 当前不可用。请稍后重试连接”错误。* 如果数据库有一个长时间运行的查询，重新配置期间此查询会中断，需要重新启动。
+维护事件可能产生单个或多个重新配置，具体取决于维护事件开始时主要副本和次要副本的集合。 平均而言，每个计划内维护事件会出现 1.7 个重新配置。 重新配置通常在 30 秒内完成。 平均 8 秒。 如果应用程序处于已连接状态，则必须重新连接至新的数据库主要副本。 如果在进行连接时数据库正在进行重新配置，且新的主副本尚未处于联机状态，会显示错误 40613（数据库不可用）： *“服务器 '{servername}' 上的数据库 '{databasename}' 当前不可用。请稍后重试连接”错误。* 如果数据库有一个长时间运行的查询，重新配置期间此查询会中断，需要重新启动。
 
 ## <a name="how-to-simulate-a-planned-maintenance-event"></a>如何模拟计划内维护事件
 
-在部署到生产环境之前，确保客户端应用程序对于维护事件是可复原的，这有助于降低应用程序故障的风险，并可帮助提升最终用户的应用程序可用性。 可在计划内维护事件期间通过 PowerShell、CLI 或 REST API [启动手动故障转移](https://aka.ms/mifailover-techblog)来测试客户端应用程序的行为。 这将生成与使主要副本脱机的维护事件相同的行为。
+在部署到生产环境之前，确保客户端应用程序对于维护事件是可复原的，这有助于降低应用程序故障的风险，并可帮助提升最终用户的应用程序可用性。可在计划内维护事件期间通过 PowerShell、CLI 或 REST API [测试应用程序的故障复原能力](./high-availability-sla.md#testing-application-fault-resiliency)，来测试客户端应用程序的行为。 另请参阅为托管实例[启动手动故障转移](https://aka.ms/mifailover-techblog)。 这将生成与使主要副本脱机的维护事件相同的行为。
 
 ## <a name="retry-logic"></a>重试逻辑
 
-连接到云数据库服务的任何客户端生产应用程序均应实现一个可靠的连接[重试逻辑](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)。 这将有助于使故障转移对最终用户透明，或至少最大程度地减少负面影响。
+连接到云数据库服务的任何客户端生产应用程序均应实现一个可靠的连接[重试逻辑](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)。 这将有助于使重新配置对最终用户透明，或至少最大程度地减少负面影响。
 
 ## <a name="resource-health"></a>资源运行状况
 

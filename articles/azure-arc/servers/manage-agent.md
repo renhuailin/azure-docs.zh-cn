@@ -1,14 +1,14 @@
 ---
 title: 管理已启用 Azure Arc 的服务器代理
 description: 本文介绍在已启用 Azure Arc 的服务器 Connected Machine 代理的生命周期内通常会执行的不同管理任务。
-ms.date: 04/27/2021
+ms.date: 05/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 25cd997bc1b90da07fd9c463f0097c7bdf53b885
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 728e67930366f1b62b405f503a775b6d14a90bd0
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076610"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110068223"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理并维护 Connected Machine 代理
 
@@ -234,7 +234,10 @@ Azcmagent 工具 (Azcmagent.exe) 用于在安装过程中配置已启用 Azure A
 
 ## <a name="remove-the-agent"></a>删除代理
 
-执行以下方法之一，从计算机中卸载 Windows 或 Linux Connected Machine 代理。 删除代理不会在已启用 Arc 的服务器中注销计算机，也不会删除已安装的 Azure VM 扩展。 当不再需要在 Azure 中管理计算机时，分别注销计算机并删除安装的 VM 扩展，并且应在卸载代理之前完成这些步骤。
+执行以下方法之一，从计算机中卸载 Windows 或 Linux Connected Machine 代理。 删除代理不会在已启用 Arc 的服务器中注销计算机，也不会删除已安装的 Azure VM 扩展。 对于不再希望通过已启用 Azure Arc 的服务器进行管理的服务器或计算机，需要执行以下步骤来成功停止对它们的管理： 
+
+1. 使用 [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) 或使用 [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) 删除从 [Azure 门户](manage-vm-extensions-portal.md#uninstall-extension)安装的不想保留在计算机上的 VM 扩展。
+1. 通过运行 `azcmagent disconnect` 取消注册计算机，以删除 Azure 中已启用 Arc 的服务器资源。 如果此命令失败，可以在 Azure 中手动删除该资源。 否则，如果该资源已在 Azure 中删除，你需要在服务器上运行 `azcmagent disconnect --force-local-only` 以删除本地配置。
 
 ### <a name="windows-agent"></a>Windows 代理
 
@@ -355,7 +358,7 @@ sudo azcmagent_proxy remove
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在 [Connected Machine 代理问题故障排除指南](troubleshoot-agent-onboard.md)中可以找到故障排除信息。
+* 在 [Connected Machine 代理故障排除指南](troubleshoot-agent-onboard.md)中可以找到故障排除信息。
 
 * 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) 启用监视等。
 
