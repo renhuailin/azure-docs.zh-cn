@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/27/2021
+ms.date: 06/30/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c5741ab0207d5631aab4abd594f5ff557ebfe23b
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 82db4939b6f980e1d9fb9a82a6cd255bb10c04cb
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110658169"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126335"
 ---
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在“搜索资源、服务和文档(G+/)”中，键入“虚拟网络”。  
@@ -47,7 +47,7 @@ ms.locfileid: "110658169"
 
 1. 暂时在“安全”选项卡上保留默认值：
 
-   - **DDoS 防护**：基本
+   - DDos 防护：已禁用
    - **防火墙**：已禁用
 1. 选择“审阅 + 创建”，验证虚拟网络设置。
 1. 验证设置后，选择“创建”。

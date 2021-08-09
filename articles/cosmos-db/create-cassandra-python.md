@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 129d66f762966f55567793d6a39589585f194b35
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: d6a4feb5f758753ad4750d59f4e7ca379c624844
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113223426"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297489"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>快速入门：使用 Python SDK 和 Azure Cosmos DB 构建 Cassandra 应用
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -127,7 +127,7 @@ ms.locfileid: "113223426"
     
 ## <a name="use-the-x509-certificate"></a>使用 X509 证书
 
-1. 从 [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) 在本地下载 Baltimore CyberTrust 根证书。 使用文件扩展名“.cer”重命名该文件。
+1. 将 Baltimore CyberTrust 根证书详细信息从 [https://baltimore-cybertrust-root.chain-demos.digicert.com/info/index.html](https://baltimore-cybertrust-root.chain-demos.digicert.com/info/index.html) 复制到一个文本文件。 使用文件扩展名“.cer”保存该文件。
 
    证书的序列号为 `02:00:00:b9`，SHA1 指纹为 `d4:de:20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`。
 

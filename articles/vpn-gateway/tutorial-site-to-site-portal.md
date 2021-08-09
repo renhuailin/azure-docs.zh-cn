@@ -6,13 +6,13 @@ author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 04/28/2021
-ms.openlocfilehash: 83c2e42db4cc3e1a287341592f4917afce7309e2
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.date: 07/21/2021
+ms.openlocfilehash: f035f1dce7639d8d90ca3edbe3e6cc548b68cf2a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204218"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439891"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-in-the-azure-portal"></a>教程：在 Azure 门户中创建站点到站点连接
 
@@ -68,8 +68,8 @@ Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程�
 * **区域：** 美国东部
 * **网关类型：** VPN
 * **VPN 类型：** 基于路由
-* **SKU：** VpnGw1
-* **代系：** 第 1 代
+* SKU：VpnGw2
+* 代系：第 2 代
 * **虚拟网络：** VNet1
 * **网关子网地址范围：** 10.1.255.0/27
 * **公共 IP 地址**：新建
@@ -77,7 +77,10 @@ Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程�
 * **启用主动-主动模式：** 已禁用
 * **配置 BGP：** 已禁用
 
-[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-portal-include.md)]
+[!INCLUDE [Configure PIP settings](../../includes/vpn-gateway-add-gw-pip-portal-include.md)]
+
+可以在网关的“概述”页上查看部署状态。 网关可能需要长达 45 分钟才能完全创建和部署。 创建网关后，可以通过在门户中查看虚拟网络，来查看已分配给网关的 IP 地址。 网关显示为连接的设备。
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 

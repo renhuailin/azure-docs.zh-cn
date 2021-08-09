@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 06/10/2021
+ms.date: 06/15/2021
 ms.author: aahi
-ms.openlocfilehash: 3fdd5db4abc2b16153f6758827e152337887a095
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 989045e552a42d6ebf06d6c0ecadcb1a1f0bb5ff
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962799"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113549969"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
@@ -35,7 +35,7 @@ PII 功能是 NER 的一部分，可以识别和标记文本中与个人相关�
 
 ## <a name="named-entity-recognition-features-and-versions"></a>命名实体识别功能和版本
 
-| 功能                                                         | NER v3.0 | NER v3.1-preview.5 |
+| 功能                                                         | NER v3.0 | NER v3.1 |
 |-----------------------------------------------------------------|--------|----------|
 | 用于单个请求和批量请求的方法                          | X      | X        |
 | 跨多个类别展开的实体识别           | X      | X        |
@@ -47,8 +47,8 @@ PII 功能是 NER 的一部分，可以识别和标记文本中与个人相关�
 
 命名实体识别 v3 提供跨多种类型的扩展检测。 目前，NER v3.0 可以识别[常规实体类别](../named-entity-types.md)中的实体。
 
-命名实体识别 v3.1-preview.5 包括了 v3.0 的检测功能，以及： 
-* 使用 `v3.1-preview.5/entities/recognition/pii` 终结点检测个人信息 (`PII`) 的功能。 
+命名实体识别 v3.1 包括了 v3.0 的检测功能，以及： 
+* 使用 `v3.1/entities/recognition/pii` 终结点检测个人信息 (`PII`) 的功能。 
 * 用于检测机密的健康状况信息 (`PHI`) 的可选的 `domain=phi` 参数。
 * 使用 `/analyze` 终结点的[异步操作](text-analytics-how-to-call-api.md)。
 
@@ -72,40 +72,43 @@ PII 功能是 NER 的一部分，可以识别和标记文本中与个人相关�
 
 ### <a name="request-endpoints"></a>请求终结点
 
-#### <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-preview)
+#### <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
-命名实体识别 `v3.1-preview.5` 对 NER、PII 和实体链接请求使用不同的终结点。 根据你的请求使用以下 URL 格式。
+命名实体识别 `v3.1` 对 NER、PII 和实体链接请求使用不同的终结点。 根据你的请求使用以下 URL 格式。
 
 **实体链接**
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/linking`
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/entities/linking`
 
-[`Linking` 的命名实体识别版本 3.1-preview 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-5/operations/EntitiesLinking)
+[`Linking` 的命名实体识别版本 3.1 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/EntitiesLinking)
 
 **命名实体识别**
-* 常规实体 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/recognition/general`
+* 常规实体 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/entities/recognition/general`
 
-[`General` 的命名实体识别版本 3.1-preview 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-5/operations/EntitiesRecognitionGeneral)
+[`General` 的命名实体识别版本 3.1 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/EntitiesRecognitionGeneral)
 
 **个人身份信息 (PII)**
-* 个人 (`PII`) 信息 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/recognition/pii`
+* 个人 (`PII`) 信息 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/entities/recognition/pii`
 
 还可以使用可选的 `domain=phi` 参数来检测文本中的健康状况 (`PHI`) 信息。 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/recognition/pii?domain=phi`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/entities/recognition/pii?domain=phi`
 
-从 `v3.1-preview.5` 开始，JSON 响应中将包含 `redactedText` 属性，该属性包含修改后的输入文本，其中检测到的 PII 实体的每个字符将被替换为 `*`。
+从 `v3.1` 开始，JSON 响应中将包含 `redactedText` 属性，该属性包含修改后的输入文本，其中检测到的 PII 实体的每个字符将被替换为 `*`。
 
-[`PII` 的命名实体识别版本 3.1-preview 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-5/operations/EntitiesRecognitionPii)
+[`PII` 的命名实体识别版本 3.1 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/EntitiesRecognitionPii)
 
-此 API 会尝试检测给定文档语言[列出的实体类别](../named-entity-types.md?tabs=personal)。 如果要指定将检测并返回哪些实体，请使用可选的 pii-categories 参数指定相应的实体类别。 此参数还可以检测默认情况下未为文档语言启用的实体。 例如，可能出现在英文文本中的法国驾照号码。
+此 API 会尝试检测给定文档语言[列出的实体类别](../named-entity-types.md?tabs=personal)。 如果要指定将检测并返回哪些实体，请使用可选的 `piiCategories` 参数指定相应的实体类别。 此参数还可以检测默认情况下未为文档语言启用的实体。 以下示例将检测可能以英语文本出现的法国驾照编号，以及默认的英语实体。
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/recognition/pii?piiCategories=[FRDriversLicenseNumber]`
+> [!TIP]
+> 如果在指定实体类别时不包括 `default`，则 API 将仅返回指定的实体类别。
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/entities/recognition/pii?piiCategories=default,FRDriversLicenseNumber`
 
 **异步操作**
 
-从 `v3.1-preview.5` 开始，可以使用 `/analyze` 终结点异步发送 NER 和实体链接请求。
+从 `v3.1` 开始，可以使用 `/analyze` 终结点异步发送 NER 和实体链接请求。
 
-* 异步操作 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/analyze`
+* 异步操作 - `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/analyze`
 
 有关发送异步请求的信息，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。
 
@@ -116,7 +119,7 @@ PII 功能是 NER 的一部分，可以识别和标记文本中与个人相关�
 **实体链接**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/linking`
 
-[`Linking` 的命名实体识别版本 3.0 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
+[`Linking` 的命名实体识别版本 3.1 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/EntitiesRecognitionGeneral)
 
 **命名实体识别**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
@@ -129,7 +132,7 @@ PII 功能是 NER 的一部分，可以识别和标记文本中与个人相关�
 
 ## <a name="example-requests"></a>示例请求
 
-#### <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-preview)
+#### <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 ### <a name="example-synchronous-ner-request"></a>同步 NER 请求示例 
 
@@ -142,6 +145,22 @@ PII 功能是 NER 的一部分，可以识别和标记文本中与个人相关�
         "id": "1",
         "language": "en",
         "text": "Our tour guide took us up the Space Needle during our trip to Seattle last week."
+    }
+  ]
+}
+```
+
+### <a name="example-synchronous-pii-request"></a>同步 PII 请求示例
+
+以下 JSON 是可能发送到 API 以检测文本中的 PII 的内容示例。
+
+```json
+{
+  "documents": [
+    {
+        "id": "1",
+        "language": "en",
+        "text": "You can even pre-order from their online menu at www.contososteakhouse.com, call 312-555-0176 or send email to order@contososteakhouse.com!"
     }
   ]
 }
@@ -170,8 +189,7 @@ PII 功能是 NER 的一部分，可以识别和标记文本中与个人相关�
         "entityRecognitionTasks": [
             {
                 "parameters": {
-                    "model-version": "latest",
-                    "stringIndexType": "TextElements_v8"
+                    "model-version": "latest"
                 }
             }
         ],
@@ -220,7 +238,7 @@ PII 功能是 NER 的一部分，可以识别和标记文本中与个人相关�
 
 版本 3 为常规 NER、PII 和实体链接提供不同的终结点。 版本 3.1-pareview 包括异步分析模式。 这些操作的响应如下所示。 
 
-#### <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-preview)
+#### <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 ### <a name="synchronous-example-results"></a>同步结果示例
 
@@ -228,53 +246,46 @@ PII 功能是 NER 的一部分，可以识别和标记文本中与个人相关�
 
 ```json
 {
-  "documents": [
-    {
-      "id": "1",
-      "entities": [
+    "documents": [
         {
-          "text": "tour guide",
-          "category": "PersonType",
-          "offset": 4,
-          "length": 10,
-          "confidenceScore": 0.45
-        },
-        {
-          "text": "Space Needle",
-          "category": "Location",
-          "offset": 30,
-          "length": 12,
-          "confidenceScore": 0.38
-        },
-        {
-          "text": "trip",
-          "category": "Event",
-          "offset": 54,
-          "length": 4,
-          "confidenceScore": 0.78
-        },
-        {
-          "text": "Seattle",
-          "category": "Location",
-          "subcategory": "GPE",
-          "offset": 62,
-          "length": 7,
-          "confidenceScore": 0.78
-        },
-        {
-          "text": "last week",
-          "category": "DateTime",
-          "subcategory": "DateRange",
-          "offset": 70,
-          "length": 9,
-          "confidenceScore": 0.8
+            "id": "1",
+            "entities": [
+                {
+                    "text": "tour guide",
+                    "category": "PersonType",
+                    "offset": 4,
+                    "length": 10,
+                    "confidenceScore": 0.94
+                },
+                {
+                    "text": "Space Needle",
+                    "category": "Location",
+                    "offset": 30,
+                    "length": 12,
+                    "confidenceScore": 0.96
+                },
+                {
+                    "text": "Seattle",
+                    "category": "Location",
+                    "subcategory": "GPE",
+                    "offset": 62,
+                    "length": 7,
+                    "confidenceScore": 1.0
+                },
+                {
+                    "text": "last week",
+                    "category": "DateTime",
+                    "subcategory": "DateRange",
+                    "offset": 70,
+                    "length": 9,
+                    "confidenceScore": 0.8
+                }
+            ],
+            "warnings": []
         }
-      ],
-      "warnings": []
-    }
-  ],
-  "errors": [],
-  "modelVersion": "2020-04-01"
+    ],
+    "errors": [],
+    "modelVersion": "2021-06-01"
 }
 ```
 
@@ -282,38 +293,38 @@ PII 响应的示例：
 
 ```json
 {
-  "documents": [
-    {
-    "redactedText": "You can even pre-order from their online menu at *************************, call ************ or send email to ***************************!",
-    "id": "0",
-    "entities": [
+    "documents": [
         {
-        "text": "www.contososteakhouse.com",
-        "category": "URL",
-        "offset": 49,
-        "length": 25,
-        "confidenceScore": 0.8
-        }, 
-        {
-        "text": "312-555-0176",
-        "category": "Phone Number",
-        "offset": 81,
-        "length": 12,
-        "confidenceScore": 0.8
-        }, 
-        {
-        "text": "order@contososteakhouse.com",
-        "category": "Email",
-        "offset": 111,
-        "length": 27,
-        "confidenceScore": 0.8
+            "redactedText": "You can even pre-order from their online menu at www.contososteakhouse.com, call ************ or send email to ***************************!",
+            "id": "1",
+            "entities": [
+                {
+                    "text": "312-555-0176",
+                    "category": "PhoneNumber",
+                    "offset": 81,
+                    "length": 12,
+                    "confidenceScore": 0.8
+                },
+                {
+                    "text": "order@contososteakhouse.com",
+                    "category": "Email",
+                    "offset": 111,
+                    "length": 27,
+                    "confidenceScore": 0.8
+                },
+                {
+                    "text": "contososteakhouse",
+                    "category": "Organization",
+                    "offset": 117,
+                    "length": 17,
+                    "confidenceScore": 0.45
+                }
+            ],
+            "warnings": []
         }
-      ],
-    "warnings": []
-    }
-  ],
-  "errors": [],
-  "modelVersion": "2020-07-01"
+    ],
+    "errors": [],
+    "modelVersion": "2021-01-15"
 }
 ```
 
@@ -321,48 +332,48 @@ PII 响应的示例：
 
 ```json
 {
-  "documents": [
-    {
-      "id": "1",
-      "entities": [
+    "documents": [
         {
-          "bingId": "f8dd5b08-206d-2554-6e4a-893f51f4de7e", 
-          "name": "Space Needle",
-          "matches": [
-            {
-              "text": "Space Needle",
-              "offset": 30,
-              "length": 12,
-              "confidenceScore": 0.4
-            }
-          ],
-          "language": "en",
-          "id": "Space Needle",
-          "url": "https://en.wikipedia.org/wiki/Space_Needle",
-          "dataSource": "Wikipedia"
-        },
-        {
-          "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
-          "name": "Seattle",
-          "matches": [
-            {
-              "text": "Seattle",
-              "offset": 62,
-              "length": 7,
-              "confidenceScore": 0.25
-            }
-          ],
-          "language": "en",
-          "id": "Seattle",
-          "url": "https://en.wikipedia.org/wiki/Seattle",
-          "dataSource": "Wikipedia"
+            "id": "1",
+            "entities": [
+                {
+                    "bingId": "f8dd5b08-206d-2554-6e4a-893f51f4de7e",
+                    "name": "Space Needle",
+                    "matches": [
+                        {
+                            "text": "Space Needle",
+                            "offset": 30,
+                            "length": 12,
+                            "confidenceScore": 0.4
+                        }
+                    ],
+                    "language": "en",
+                    "id": "Space Needle",
+                    "url": "https://en.wikipedia.org/wiki/Space_Needle",
+                    "dataSource": "Wikipedia"
+                },
+                {
+                    "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
+                    "name": "Seattle",
+                    "matches": [
+                        {
+                            "text": "Seattle",
+                            "offset": 62,
+                            "length": 7,
+                            "confidenceScore": 0.25
+                        }
+                    ],
+                    "language": "en",
+                    "id": "Seattle",
+                    "url": "https://en.wikipedia.org/wiki/Seattle",
+                    "dataSource": "Wikipedia"
+                }
+            ],
+            "warnings": []
         }
-      ],
-      "warnings": []
-    }
-  ],
-  "errors": [],
-  "modelVersion": "2020-02-01"
+    ],
+    "errors": [],
+    "modelVersion": "2021-06-01"
 }
 ```
 
@@ -370,51 +381,83 @@ PII 响应的示例：
 
 ```json
 {
-  "displayName": "My Analyze Job",
-  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
-  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
-  "createdDateTime": "2020-11-13T04:01:13Z",
-  "expirationDateTime": "2020-11-14T04:01:13Z",
-  "status": "running",
-  "errors": [],
-  "tasks": {
-      "details": {
-          "name": "My Analyze Job",
-          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
-      },
-      "completed": 1,
-      "failed": 0,
-      "inProgress": 2,
-      "total": 3,
-      "keyPhraseExtractionTasks": [
-          {
-              "name": "My Analyze Job",
-              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
-              "results": {
-                  "inTerminalState": true,
-                  "documents": [
-                      {
-                          "id": "doc1",
-                          "keyPhrases": [
-                              "sunny outside"
-                          ],
-                          "warnings": []
-                      },
-                      {
-                          "id": "doc2",
-                          "keyPhrases": [
-                              "favorite Seattle attraction",
-                              "Pike place market"
-                          ],
-                          "warnings": []
-                      }
-                  ],
-                  "errors": [],
-                  "modelVersion": "2020-07-01"
-              }
-          }
-      ]
-  }
+    "jobId": "f480e1f9-0b61-4d47-93da-240f084582cf",
+    "lastUpdateDateTime": "2021-07-06T19:03:15Z",
+    "createdDateTime": "2021-07-06T19:02:47Z",
+    "expirationDateTime": "2021-07-07T19:02:47Z",
+    "status": "succeeded",
+    "errors": [],
+    "displayName": "My Job",
+    "tasks": {
+        "completed": 2,
+        "failed": 0,
+        "inProgress": 0,
+        "total": 2,
+        "entityRecognitionTasks": [
+            {
+                "lastUpdateDateTime": "2021-07-06T19:03:15.212633Z",
+                "taskName": "NamedEntityRecognition_latest",
+                "state": "succeeded",
+                "results": {
+                    "documents": [
+                        {
+                            "id": "doc1",
+                            "entities": [],
+                            "warnings": []
+                        },
+                        {
+                            "id": "doc2",
+                            "entities": [
+                                {
+                                    "text": "Pike place market",
+                                    "category": "Location",
+                                    "offset": 0,
+                                    "length": 17,
+                                    "confidenceScore": 0.95
+                                },
+                                {
+                                    "text": "Seattle",
+                                    "category": "Location",
+                                    "subcategory": "GPE",
+                                    "offset": 33,
+                                    "length": 7,
+                                    "confidenceScore": 0.99
+                                }
+                            ],
+                            "warnings": []
+                        }
+                    ],
+                    "errors": [],
+                    "modelVersion": "2021-06-01"
+                }
+            }
+        ],
+        "entityRecognitionPiiTasks": [
+            {
+                "lastUpdateDateTime": "2021-07-06T19:03:03.2063832Z",
+                "taskName": "PersonallyIdentifiableInformation_latest",
+                "state": "succeeded",
+                "results": {
+                    "documents": [
+                        {
+                            "redactedText": "It's incredibly sunny outside! I'm so happy",
+                            "id": "doc1",
+                            "entities": [],
+                            "warnings": []
+                        },
+                        {
+                            "redactedText": "Pike place market is my favorite Seattle attraction.",
+                            "id": "doc2",
+                            "entities": [],
+                            "warnings": []
+                        }
+                    ],
+                    "errors": [],
+                    "modelVersion": "2021-01-15"
+                }
+            }
+        ]
+    }
 }
 ```
 

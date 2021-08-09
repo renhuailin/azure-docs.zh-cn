@@ -5,17 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 04/28/2021
+ms.date: 07/08/2021
 ms.author: cherylmc
 ms.custom:
 - contperf-fy21q1
 - e2e-hybrid
-ms.openlocfilehash: bdaa61aa45c357e95e35196a5be7774f0af95ec0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ae7c9ee5357e09dcf7c33cd2ae3111cce15b6641
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202328"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721201"
 ---
 # <a name="what-is-vpn-gateway"></a>什么是 VPN 网关？
 
@@ -27,7 +27,7 @@ VPN 网关是特定类型的虚拟网关，用于跨公共 Internet 在 Azure �
 
 配置虚拟网络网关时，将配置用于指定网关类型的设置。 网关类型确定如何使用虚拟网络网关以及网关所采取的操作。 网关类型“Vpn”指定创建的虚拟网关类型为“VPN 网关”。 这将它与使用其他网关类型的 ExpressRoute 网关区分开来。 一个虚拟网络可以有两个虚拟网络网关：一个 VPN 网关和一个 ExpressRoute 网关。 有关详细信息，请参阅[网关类型](vpn-gateway-about-vpn-gateway-settings.md#gwtype)。
 
-创建虚拟网关可能需要多达 45 分钟才能完成。 创建虚拟网关时，会将网关 VM 部署到网关子网，并使用指定的设置进行配置。 在创建 VPN 网关以后，即在一个 VPN 网关和另一个 VPN 网关之间（VNet 到 VNet）创建 IPsec/IKE VPN 隧道连接，或者在 VPN 网关和本地 VPN 设备（站点到站点）之间创建跨界 IPsec/IKE VPN 隧道连接。 也可创建点到站点 VPN 连接（基于 OpenVPN、IKEv2 或 SSTP 的 VPN），以便从远程位置（例如从会议室或家）连接到虚拟网络。
+创建网关通常需要 45 分钟或更长的时间，具体取决于所选网关 SKU。 创建虚拟网关时，会将网关 VM 部署到网关子网，并使用指定的设置进行配置。 在创建 VPN 网关以后，即在一个 VPN 网关和另一个 VPN 网关之间（VNet 到 VNet）创建 IPsec/IKE VPN 隧道连接，或者在 VPN 网关和本地 VPN 设备（站点到站点）之间创建跨界 IPsec/IKE VPN 隧道连接。 也可创建点到站点 VPN 连接（基于 OpenVPN、IKEv2 或 SSTP 的 VPN），以便从远程位置（例如从会议室或家）连接到虚拟网络。
 
 ## <a name="configuring-a-vpn-gateway"></a><a name="configuring"></a>配置 VPN 网关
 
@@ -82,6 +82,7 @@ VPN 网关可以部署在 Azure 可用性区域中。 这样可以提高虚拟�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关更多信息，请查看 [VPN 网关常见问题](vpn-gateway-vpn-faq.md)。
-- 查看[订阅和服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
-- 了解 Azure 的一些其他关键[网络功能](../networking/fundamentals/networking-overview.md)。
+- [教程：创建和管理 VPN 网关](tutorial-create-gateway-portal.md)。
+- [Learn 模块：使用 VPN 网关将本地网络连接到 Azure](/learn/modules/connect-on-premises-network-with-vpn-gateway/)。
+- [订阅和服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
+

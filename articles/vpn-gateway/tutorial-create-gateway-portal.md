@@ -6,13 +6,13 @@ author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 04/28/2021
-ms.openlocfilehash: 29f479444679d1f76dc90eec4546539faea5337f
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.date: 07/21/2021
+ms.openlocfilehash: d0723d4a5e77fe9bcf52f515a1310dfc270338f6
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108202562"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721832"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>教程：使用 Azure 门户创建和管理 VPN 网关
 
@@ -50,7 +50,7 @@ Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程�
 
 ## <a name="create-a-vpn-gateway"></a><a name="VNetGateway"></a>创建 VPN 网关
 
-在此步骤中，为 VNet 创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
+在此步骤中，为 VNet 创建虚拟网络网关（VPN 网关）。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。
 
 使用以下值创建虚拟网络网关：
 
@@ -58,16 +58,17 @@ Azure VPN 网关在客户本地与 Azure 之间提供跨界连接。 本教程�
 * **区域：** 美国东部
 * **网关类型：** VPN
 * **VPN 类型：** 基于路由
-* **SKU：** VpnGw1
-* **代系：** 第 1 代
+* SKU：VpnGw2
+* 代系：第 2 代
 * **虚拟网络：** VNet1
 * **网关子网地址范围：** 10.1.255.0/27
 * **公共 IP 地址**：新建
 * 公共 IP 地址名称：VNet1GWpip
-* **启用主动-主动模式：** 已禁用
-* **配置 BGP：** 已禁用
 
-[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+[!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-portal-include.md)]
+[!INCLUDE [Configure PIP settings](../../includes/vpn-gateway-add-gw-pip-portal-include.md)]
+
+网关可能需要 45 分钟或更长时间才能完全创建和部署。 可以在网关的“概述”页上查看部署状态。 创建网关后，可以通过在门户中查看虚拟网络，来查看已分配给网关的 IP 地址。 网关显示为连接的设备。
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
