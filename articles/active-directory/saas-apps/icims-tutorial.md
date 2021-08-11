@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 3ede24767f0355d9b8dcf6cd70d76e7af65aed74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e99bb8a65bc8da38a2b823bbf379ed4ee6fbb8f7
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101651514"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114689790"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-icims"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ICIMS 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "101651514"
 * 让用户使用其 Azure AD 帐户自动登录到 ICIMS。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -79,7 +79,7 @@ ms.locfileid: "101651514"
 
     b. 在“标识符”文本框中键入 URL：`icims.com`
 
-    c. 在“回复 URL”文本框中键入 URL：`https://.icims.com/`
+    c. 在“回复 URL”文本框中键入 URL：`https://*.icims.com/*`
 
     > [!NOTE]
     > “登录 URL”值不是实际值。 请使用实际登录 URL 更新此值。 请联系 [ICIMS 客户端支持团队](https://www.icims.com/contact-us)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -100,7 +100,7 @@ ms.locfileid: "101651514"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 

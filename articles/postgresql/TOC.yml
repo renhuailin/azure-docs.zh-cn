@@ -459,6 +459,10 @@
         - name: 网络
           href: flexible-server/concepts-networking.md
           displayName: 'virtual networks, vnet, IP address, public access'
+        - name: 防火墙规则
+          href: flexible-server/concepts-firewall-rules.md
+        - name: 安全性
+          href: flexible-server/concepts-security.md
         - name: 限制
           href: flexible-server/concepts-limits.md
         - name: 扩展
@@ -645,6 +649,8 @@
               href: concepts-hyperscale-high-availability.md
         - name: 复制
           href: concepts-hyperscale-read-replicas.md
+        - name: 连接池
+          href: concepts-hyperscale-connection-pool.md
         - name: 监视和优化
           items:
             - name: 监视和优化

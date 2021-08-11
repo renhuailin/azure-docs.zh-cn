@@ -6,23 +6,22 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: a05ebf00b03ee393aac08e89924e9a15b3e488ef
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 5cc27cd600d8e8717a70deefc801b3f500792e11
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560564"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112535901"
 ---
 本快速入门介绍如何使用适用于 JavaScript 的 Azure 通信服务通话 SDK 加入 Teams 会议。
 
-> [!NOTE]
-> 在 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/join-calling-to-teams-meeting) 上查找此快速入门的最终代码
+## <a name="sample-code"></a>代码示例
+在 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/join-calling-to-teams-meeting) 上查找此快速入门的最终代码。
 
 ## <a name="prerequisites"></a>先决条件
 
 - 正常工作的[通信服务通话 Web 应用](../../getting-started-with-calling.md)。
 - [Teams 部署](/deployoffice/teams-install)。
-
 
 ## <a name="add-the-teams-ui-controls"></a>添加 Teams UI 控件
 

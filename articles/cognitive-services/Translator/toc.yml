@@ -122,6 +122,8 @@
           href: document-translation/reference/get-translation-status.md
         - name: 取消翻译
           href: document-translation/reference/cancel-translation.md
+    - name: 常见问题解答
+      href: document-translation/faq.md
 - name: 自定义翻译
   items:
     - name: 自定义翻译是什么？
@@ -142,7 +144,7 @@
           href: custom-translator/how-to-view-document-details.md
         - name: 训练模型
           href: custom-translator/how-to-train-model.md
-        - name: Viewmodel 详细信息
+        - name: 查看模型详细信息
           href: custom-translator/how-to-view-model-details.md
         - name: 查看系统测试结果
           href: custom-translator/how-to-view-system-test-results.md

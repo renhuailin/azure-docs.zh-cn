@@ -11,12 +11,12 @@ ms.date: 05/14/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-may-2021
 keywords: 文档处理
-ms.openlocfilehash: b30dbd58e0a9c440f51386052529850d9ce9adc4
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 7696a7e1d62aae556d93fa5bccc23376d1ba9a25
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111894067"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112461922"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -61,7 +61,7 @@ ms.locfileid: "111894067"
 
     :::image type="content" source="../media/label-tool/layout-2.jpg" alt-text="布局表单识别器工具的连接设置。":::
 
-5. 选择源 URL，粘贴示例文档 https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/layout-page-001.jpg 的以下 URL，然后单击“提取”按钮。
+5. 选择源 URL，粘贴示例文档 `https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/layout-page-001.jpg` 的以下 URL，然后单击“提取”按钮。
 
 1. 单击“运行布局”，表单识别器示例标记工具将调用分析布局 API 并分析文档。
 
@@ -88,7 +88,7 @@ ms.locfileid: "111894067"
 4. 从以下选项中选择要分析的文件：
 
     * 账单图像的 URL。 在本快速入门中，可使用[示例发票文档](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf)。
-    * 回执图像的 URL。 在本快速入门中，可使用[示例 ID 文档](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-us-driver-license-wa.jpg)。
+    * 回执图像的 URL。 在本快速入门中，可使用[示例 ID 文档](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-license.jpg)。
     * 回执图像的 URL。 在本快速入门中，可使用[示例收据图像](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg)。
     * 名片图像的 URL。 在本快速入门中，可使用[示例名片图像](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/business_cards/business-card-english.jpg)。
 

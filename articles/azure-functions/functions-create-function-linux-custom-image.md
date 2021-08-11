@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: 3eb0c54fda14711e45af3974638d53807994df91
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f3f4af97309326fe761ea58a7927df19522e4f60
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459589"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486744"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自定义容器创建函数
 
@@ -407,6 +407,9 @@ Azure 上的函数应用管理托管计划中函数的执行。 在本部分，�
     ::: zone-end
     
     *deployment-container-image-name* 参数指定用于函数应用的映像。 可以使用 [az functionapp config container show](/cli/azure/functionapp/config/container#az_functionapp_config_container_show) 命令查看用于部署的映像的相关信息。 还可以使用 [az functionapp config container set](/cli/azure/functionapp/config/container#az_functionapp_config_container_set) 命令从另一映像进行部署。
+    
+    > [!TIP]  
+    > 可以使用 host.json 文件中的 [`DisableColor` 设置](functions-host-json.md#console)来防止将 ANSI 控制字符写入容器日志。 
 
 1. 使用 [az storage account show-connection-string](/cli/azure/storage/account) 命令显示创建的存储帐户的连接字符串。 将 `<storage-name>` 替换为前面创建的存储帐户的名称：
 

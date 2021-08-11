@@ -2,25 +2,26 @@
 title: 用于 Azure Active Directory 应用程序管理的 PowerShell 示例
 description: 这些 PowerShell 示例用于在 Azure Active Directory 租户中管理的应用。 可以使用这些示例脚本来查找有关机密和证书的过期信息。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: sample
 ms.date: 02/18/2021
-ms.author: mtillman
+ms.author: davidmu
 ms.reviewer: mifarca
-ms.openlocfilehash: 6fac606877a36a5b571096342289cc0369cd50e4
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: c0e6969b0d6814e74e99a6ad893284bc407b269d
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077421"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113568417"
 ---
 # <a name="azure-active-directory-powershell-examples-for-application-management"></a>应用程序管理的 Azure Active Directory PowerShell 示例
 
 下表包含 Azure AD 应用程序管理的 PowerShell 脚本示例的链接。 这些示例需要：
+
 - [适用于 Graph 的 AzureAD V2 PowerShell 模块](/powershell/azure/active-directory/install-adv2)或
 - [适用于 Graph 的 AzureAD V2 PowerShell 模块预览版](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)，除非另有说明。
 

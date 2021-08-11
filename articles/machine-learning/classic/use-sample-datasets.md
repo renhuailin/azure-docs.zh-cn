@@ -9,21 +9,21 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 8a848f6589902c2eabf5b4e14a4d000dc4ed081e
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 815b43e88118a67f4e1c0f86ab0e7a10dcc70407
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518430"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583479"
 ---
-# <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典）中使用示例数据集
+# <a name="use-the-sample-datasets-in-machine-learning-studio-classic"></a>在机器学习工作室（经典）中使用示例数据集
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 [top]: #machine-learning-sample-datasets
 
-在 Azure 机器学习工作室（经典）中创建新工作区时，默认包含大量的示例数据集和试验。 其中许多示例数据集由 [Azure AI 库](https://gallery.azure.ai/)中的示例模型使用。 其他示例数据集作为通常在机器学习中使用的各种类型数据的示例包含在内。
+在机器学习工作室（经典）中创建新工作区时，默认包含大量的示例数据集和试验。 其中许多示例数据集由 [Azure AI 库](https://gallery.azure.ai/)中的示例模型使用。 其他示例数据集作为通常在机器学习中使用的各种类型数据的示例包含在内。
 
 一些数据集可在 Azure Blob 存储中使用。 对于这些数据集，下表提供了直接链接。 可以在试验中通过使用[导入数据][import-data]模块来使用这些数据集。
 
@@ -172,7 +172,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
   <td>
 从美国的 TranStats 数据收集中获得的客运航班正常率数据。交通部（<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">准时</a>）。
 <p></p>
-数据集涵盖 2013 年 4 月到 10 月的时间段。 在上传到 Azure 机器学习工作室（经典）之前，数据集已按如下所述进行处理：
+数据集涵盖 2013 年 4 月到 10 月的时间段。 在上传到机器学习工作室（经典）之前，数据集的处理如下所示：
 <ul>
   <li>数据集经筛选，仅包含美国本土 70 个最繁忙的机场</li>
   <li>取消的航班标记为延误超过 15 分钟</li>
@@ -332,7 +332,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
   <td>
 美国国家海洋和大气局每小时发布的陆基天气观测（<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">从 201304 到 201310 的合并数据</a>）。
 <p></p>
-该天气数据包括从机场气象站获取的观测结果，涵盖的时间段为 2013 年 4 月到 10 月。 在上传到 Azure 机器学习工作室（经典）之前，数据集已按如下所述进行处理：
+该天气数据包括从机场气象站获取的观测结果，涵盖的时间段为 2013 年 4 月到 10 月。 在上传到机器学习工作室（经典）之前，数据集的处理如下所示：
 <ul>
   <li>气象站 ID 已映射到相应的机场 ID</li>
   <li>与 70 个最繁忙的机场无关的气象站已筛选掉</li>
@@ -347,7 +347,7 @@ Yeh, I-Cheng, Yang, King-Jang, 和 Ting, Tao-Ming, “Knowledge discovery on RFM
   <td>
 数据来自维基百科 (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>)，基于每个标准普尔 500 强公司的文章，存储为 XML 数据。
 <p></p>
-在上传到 Azure 机器学习工作室（经典）之前，数据集已按如下所述进行处理：
+在上传到机器学习工作室（经典）之前，数据集的处理如下所示：
 <ul>
   <li>提取每个特定公司的文本内容</li>
   <li>去除维基百科的格式设置</li>

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/19/2021
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 9491a5dd8f4ab90c97d33770de8a3b609a371b50
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 90a2eb4f3171023e041216dfac052905a6319df6
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110478202"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112239325"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>教程：使用 JavaScript SDK 生成 Node.js Web 应用，以便在 Azure Cosmos DB 中管理 SQL API 帐户 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "110478202"
 
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
-  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+  [!INCLUDE [cosmos-db-emulator-docdb-api](includes/cosmos-db-emulator-docdb-api.md)]
 
 * [Node.js][Node.js] 6.10 或更高版本。
 * [Express 生成器](https://www.expressjs.com/starter/generator.html)（可以通过 `npm install express-generator -g` 安装 Express）
@@ -54,9 +54,9 @@ ms.locfileid: "110478202"
 ## <a name="create-an-azure-cosmos-db-account"></a><a name="create-account"></a>创建 Azure Cosmos DB 帐户
 让我们首先创建一个 Azure Cosmos DB 帐户。 如果已有一个帐户，或者要在本教程中使用 Azure Cosmos DB 模拟器，可以跳到[步骤 2：创建新的 Node.js 应用程序](#create-new-app)。
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+[!INCLUDE [cosmos-db-create-dbaccount](includes/cosmos-db-create-dbaccount.md)]
 
-[!INCLUDE [cosmos-db-keys](../../includes/cosmos-db-keys.md)]
+[!INCLUDE [cosmos-db-keys](includes/cosmos-db-keys.md)]
 
 ## <a name="create-a-new-nodejs-application"></a><a name="create-new-app"></a>创建新的 Node.js 应用程序
 现在让我们来了解如何使用 Express 框架创建基本的 Hello World Node.js 项目。

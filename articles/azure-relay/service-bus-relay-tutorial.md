@@ -3,13 +3,13 @@ title: 使用 Azure 中继向客户端公开本地 WCF REST 服务
 description: 本教程介绍如何使用 Azure WCF 中继向外部客户端公开本地 WCF REST 服务。
 ms.topic: tutorial
 ms.custom: devx-track-dotnet
-ms.date: 06/23/2020
-ms.openlocfilehash: 7669bc07ad91933cd31bd2ccd10eaf830d98de7c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/23/2021
+ms.openlocfilehash: bfdcd59320d965f933fdf367ed60ec80dbfa7122
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101710781"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669747"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>教程：使用 Azure WCF 中继向外部客户端公开本地 WCF REST 服务
 
@@ -45,7 +45,7 @@ ms.locfileid: "101710781"
 
 第一步是创建命名空间并获取[共享访问签名 (SAS)](../service-bus-messaging/service-bus-sas.md) 密钥。 命名空间为每个通过中继服务公开的应用程序提供应用程序边界。 创建服务命名空间时，系统会自动生成 SAS 密钥。 服务命名空间与 SAS 密钥的组合为 Azure 提供了用于验证应用程序访问权限的凭据。
 
-[!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
+[!INCLUDE [relay-create-namespace-portal](./includes/relay-create-namespace-portal.md)]
 
 ## <a name="define-a-wcf-service-contract"></a>定义 WCF 服务协定
 

@@ -6,13 +6,13 @@ ms.author: jianleishen
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: fe4841307ba94a7c3f8ac1d2aa13b43c07df4456
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 07/08/2021
+ms.openlocfilehash: 55ddb188abfd43dbb782beef5f99d4058004922f
+ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488440"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113515486"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>使用“复制数据”工具，将数据从 Azure Blob 存储复制到 SQL 数据库
 
@@ -107,65 +107,65 @@ ms.locfileid: "109488440"
 
 1. 创建完以后，会显示“数据工厂”  主页。
 
-   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含“创作和监视”磁贴。":::
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂主页，其中包含“打开 Azure 数据工厂工作室”磁贴。":::
 
-1. 若要在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)，请选择“创作和监视”磁贴。
+1. 若要在单独的选项卡中登录 Azure 数据工厂用户界面 (UI)，请在“打开 Azure 数据工厂工作室”磁贴上选择“打开” 。
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>使用“复制数据”工具创建管道
 
-1. 在“开始使用”页中选择“复制数据”磁贴，启动“复制数据”工具。 
+1. 在 Azure 数据工厂的主页中，选择“引入”磁贴来启动“复制数据”工具。
 
-   ![“复制数据”工具磁贴](./media/doc-common-process/get-started-page.png)
+   ![屏幕截图显示 Azure 数据工厂主页。](./media/doc-common-process/get-started-page.png)
 
-1. 在“属性”页的“任务名称”下，输入 **CopyFromBlobToSqlPipeline**。  然后，选择“下一步”。 数据工厂 UI 将使用指定的任务名称创建一个管道。
+1. 在“复制数据”工具的“属性”页上，选择“任务类型”下的“内置复制任务”，然后选择“下一步”   。
 
-   ![创建管道](./media/tutorial-copy-data-tool/create-pipeline.png)
-
+     ![显示“属性”页面的屏幕截图](./media/tutorial-copy-data-tool/copy-data-tool-properties-page.png)
+    
 1. 在“源数据存储”  页上，完成以下步骤：
 
-   a. 选择“+ 创建新连接”添加一个连接
+   a. 选择“+ 创建新连接”，添加一个连接。
 
    b. 从库中选择“Azure Blob 存储” ，然后选择“继续”。
 
-   c. 在“新建链接服务”页面上，选择你的 Azure 订阅，从“存储帐户名称”列表中选择你的存储帐户。  测试连接，然后选择“创建”。
+   c. 在“新连接(Azure Blob 存储)”页中，从“Azure 订阅”列表中选择你的 Azure 订阅，然后从“存储帐户名称”列表中选择你的存储帐户  。 测试连接，然后选择“创建”。
 
-   d. 选择新创建的链接服务作为源，然后选择“下一步”。
+   d. 在“连接”块中选择新创建的链接服务作为源。
 
-   ![选择源链接服务](./media/tutorial-copy-data-tool/select-source-linked-service.png)
+   e. 在“文件或文件夹”部分中，选择“浏览”导航到“adfv2tutorial”文件夹，选择“inputEmp.txt”文件，然后选择“确定”    。
 
-1. 在“选择输入文件或文件夹”页中完成以下步骤：
+   f. 选择“下一步”转到下一步骤。
 
-   a. 选择“浏览”导航到“adfv2tutorial/input”文件夹，选择 inputEmp.txt 文件，然后选择“选择”   。
+   :::image type="content" source="./media/tutorial-copy-data-tool/source-data-store.png" alt-text="配置源。":::
 
-   b. 选择“下一步”转到下一步骤。
-
-1. 在“文件格式设置”页面上，选中“第一行作为标题”复选框。 注意，该工具会自动检测列分隔符与行分隔符。 选择“**下一页**”。 还可以在此页中预览数据，以及查看输入数据的架构。
+1. 在“文件格式设置”页面上，选中“第一行作为标题”复选框。 请注意，该工具会自动检测列和行分隔符，可以通过选择此页面上的“预览数据”按钮来预览数据和查看输入数据的架构。 然后，选择“下一步”。 
 
    ![文件格式设置](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 
 1. 在“目标数据存储”页上，完成以下步骤：
 
-   a. 选择“+ 创建新连接”添加一个连接
+   a. 选择“+ 创建新连接”，添加一个连接。
 
    b. 从库中选择“Azure SQL 数据库”，然后选择“继续” 。
 
-   c. 在“新建链接服务”页面上，从下拉列表中选择你的服务器名称和 DB 名称，指定用户名和密码，然后选择“创建”。
+   c. 在“新连接(Azure SQL 数据库)”页中，从下拉列表中选择你的 Azure 订阅、服务器名称和数据库名称。 然后在“身份验证类型”下选择“SQL 身份验证”，指定用户名和密码 。 测试连接并选择“创建”。
 
-      ![配置 Azure SQL DB](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
+   ![配置 Azure SQL DB](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
 
    d. 选择新创建的链接服务作为接收器，然后选择“下一步”。
 
-1. 在“表映射”页中，选择 **[dbo].[emp]** 表，然后选择“下一步”。 
+1. 在“目标数据存储”页中，选择“使用现有表”并选择“dbo.emp”表  。 然后，选择“下一步”。
 
 1. 在“列映射”页中，请注意，输入文件中的第二个和第三个列已映射到 **emp** 表的 **FirstName** 和 **LastName** 列。 请调整映射，确保没有错误，然后选择“下一步”。
 
    ![“列映射”页](./media/tutorial-copy-data-tool/column-mapping.png)
 
-1. 在“设置”页中，选择“下一步”。 
+1. 在“设置”页的“任务名称”下，输入“CopyFromBlobToSqlPipeline”，然后选择“下一步”   。
 
-1. 在“摘要”页中检查设置，然后选择“下一步”。
+   :::image type="content" source="./media/tutorial-copy-data-tool/settings.png" alt-text="配置设置。":::
 
-1. 在“部署”页中，选择“监视”可以监视管道（任务） 。
+1. 在“摘要”  页中检查设置，然后选择“下一步”  。
+
+1. 在“部署”页中，选择“监视”以监视管道（任务） 。
 
    ![监视管道](./media/tutorial-copy-data-tool/monitor-pipeline.png)
 
@@ -173,7 +173,7 @@ ms.locfileid: "109488440"
 
    ![管道运行](./media/tutorial-copy-data-tool/pipeline-run.png)
 
-1. 在“活动运行”页上，选择“活动名称”列下的“详细信息”链接（眼镜图标），以获取有关复制操作的更多详细信息。 若要回到“管道运行”视图，请选择痕迹导航菜单中的“所有管道运行”链接。 若要刷新视图，请选择“刷新”。
+1. 在“活动运行”页上，选择“活动名称”列下的“详细信息”链接（眼镜图标），以获取有关复制操作的更多详细信息 。 若要返回到“管道运行”视图，请选择痕迹导航菜单中的“所有管道运行”链接。 若要刷新视图，请选择“刷新”。
 
    ![监视活动运行](./media/tutorial-copy-data-tool/activity-monitoring.png)
 

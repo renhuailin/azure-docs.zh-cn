@@ -7,12 +7,12 @@ ms.date: 08/12/2020
 ms.topic: quickstart
 ms.custom:
 - mode-portal
-ms.openlocfilehash: f73a2b79c4bb74dc5c10171cfd3e4a7bf6098b64
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: a52142737146299f78f5e3581830121726cedc05
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479052"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416078"
 ---
 # <a name="use-azure-portal-to-create-a-service-bus-namespace-and-a-queue"></a>使用 Azure 门户创建服务总线命名空间和队列
 本快速入门介绍如何使用 [Azure 门户][Azure portal]创建服务总线命名空间和队列。 本快速入门还介绍了如何获取客户端应用程序向队列发送消息或从队列接收消息所使用的授权凭据。 
@@ -23,9 +23,9 @@ ms.locfileid: "110479052"
 
 若要完成本快速入门，请确保你有一个 Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户][]。
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+[!INCLUDE [service-bus-create-namespace-portal](./includes/service-bus-create-namespace-portal.md)]
 
-[!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
+[!INCLUDE [service-bus-create-queue-portal](./includes/service-bus-create-queue-portal.md)]
 
 ## <a name="next-steps"></a>后续步骤
 在本文中，你创建了服务总线命名空间并在其中创建了队列。 若要了解如何向队列发送消息或从队列接收消息，请参阅“发送和接收消息”部分中的以下某个快速入门。 

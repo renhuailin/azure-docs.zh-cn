@@ -11,16 +11,14 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 843db24707b8c826fe48e9d50aa7ec5bc135399f
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 27fde7dab5c5f16f941fd223e1e08a58948133ea
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107863598"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731883"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用 Azure CLI 监视该数据
-
-[!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
 IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引入云中进行存储或处理。 在本快速入门中，你将使用 Azure CLI 创建 IoT 中心和模拟设备、将设备遥测数据发送到中心，以及发送云到设备的消息。 还将使用 Azure 门户可视化设备指标。 这是一个基本工作流，适用于使用 CLI 与 IoT 中心应用程序交互的开发人员。
 
@@ -200,5 +198,7 @@ Azure CLI 要求你登录到 Azure 帐户。 Azure CLI Shell 会话与 IoT 中�
 
 如果你是设备开发人员，建议执行的下一步骤是查看使用适用于 C 的 Azure IoT 设备 SDK 的遥测快速入门。（可选）使用首选语言或 SDK 查看可用的 Azure IoT 中心遥测快速入门文章之一。
 
+若要了解如何从后端应用程序控制模拟设备，请继续阅读下一快速入门教程。
+
 > [!div class="nextstepaction"]
-> [快速入门：将遥测数据从设备发送到 IoT 中心 (C)](quickstart-send-telemetry-c.md)
+> [快速入门：控制连接到 IoT 中心的设备](quickstart-control-device.md)

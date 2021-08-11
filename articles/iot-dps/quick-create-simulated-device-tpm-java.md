@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 7a0e15ac3c08f55e817eb6a6300d58ab4af6029c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a49d15ee09f3a16c8a3a791c0fb0c4331ef425a
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94966652"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288700"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 Azure IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 TPM 设备
 
@@ -27,7 +27,7 @@ ms.locfileid: "94966652"
 - 熟悉[预配](about-iot-dps.md#provisioning-process)概念。
 - 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
 - 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [Java SE 开发工具包 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
+- [Java SE 开发工具包 8](/azure/developer/java/fundamentals/java-support-on-azure)。
 - [Maven](https://maven.apache.org/install.html)。
 - [Git](https://git-scm.com/download/)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "94966652"
 
 ## <a name="prepare-the-environment"></a>准备环境 
 
-1. 确保已在计算机上安装 [Java SE 开发工具包 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
+1. 确保已在计算机上安装 [Java SE 开发工具包 8](/azure/developer/java/fundamentals/java-support-on-azure)。
 
 1. 下载并安装 [Maven](https://maven.apache.org/install.html)。
 

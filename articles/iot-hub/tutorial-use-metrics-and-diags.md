@@ -12,18 +12,18 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: 96a9f7c50f3e30d86497c7a612ddda248db3f703
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: beab67a209c177c91a1c4fcfa44934234b6dbc06
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107865686"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294804"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>教程：通过 IoT 中心设置和使用指标和日志
 
 可以使用 Azure Monitor 为 IoT 中心收集指标和日志，这些指标和日志可以帮助你监视解决方案的操作，并在问题发生时进行故障排除。 在本文中，你将了解如何基于指标创建图表，如何创建触发指标的警报，如何将 IoT 中心操作和错误发送到 Azure Monitor 日志，以及如何检查日志以发现错误。
 
-本教程使用 [.NET Send 遥测快速入门](quickstart-send-telemetry-dotnet.md)中的 Azure 示例，将消息发送到 IoT 中心。 你可以始终使用设备或其他示例来发送消息，但可能需要相应地修改一些步骤。
+本教程使用 [.NET Send 遥测快速入门](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)中的 Azure 示例，将消息发送到 IoT 中心。 你可以始终使用设备或其他示例来发送消息，但可能需要相应地修改一些步骤。
 
 在开始本教程之前，熟悉 Azure Monitor 概念可能会有所帮助。 有关详细信息，请参阅[监视 IoT 中心](monitor-iot-hub.md)。 若要了解 IoT 中心发出的指标和资源日志的详细信息，请参阅[监视数据参考](monitor-iot-hub-reference.md)。
 

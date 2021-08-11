@@ -2,19 +2,17 @@
 title: 教程：从 Power Apps 查询
 titleSuffix: Azure Cognitive Search
 description: 此分步指南介绍了如何构建 Power App 来连接 Azure 认知搜索索引、发送查询以及呈现结果。
-author: luiscabrer
-manager: eladz
-ms.author: luisca
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
-ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 11/17/2020
-ms.openlocfilehash: e8c16f02cf6b77fa54d2a19abac48e9914aa99bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9bf5ec0f1cac61a65ef0a24ae3f7825c2a950c2
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96008559"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729543"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>教程：从 Power Apps 查询认知搜索索引
 
@@ -265,4 +263,4 @@ Power Apps 中的连接器是一个数据源连接。 在此步骤中，你将�
 使用 Power Apps 可以快速开发自定义应用。 了解如何连接到搜索索引后，接下来请详细了解如何在自定义 Power App 中创建丰富的可视化体验。
 
 > [!div class="nextstepaction"]
-> [Power Apps 学习目录](/powerapps/learning-catalog/get-started)
+> [Power Apps 学习目录](/powerapps/learning-catalog/bdm#get-started)

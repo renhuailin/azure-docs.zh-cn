@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 03/16/2021
-ms.openlocfilehash: 8fccd508d5d6dbe380b21a85faa3889e99b9942f
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 8ad3cabbc97d869fa5e8a9e8ad7f5b0b5888949e
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579522"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112542267"
 ---
 # <a name="azure-data-factory-tutorials"></a>Azure 数据工厂教程
 
@@ -62,6 +62,8 @@ ms.locfileid: "106579522"
 [托管 VNet 中的数据流](tutorial-data-flow-private.md)
 
 [ADLS Gen2 中数据湖的最佳做法](tutorial-data-flow-write-to-lake.md)
+
+[动态设置列名称](data-flow-tutorials.md)
 
 ## <a name="external-data-services"></a>外部数据服务
 

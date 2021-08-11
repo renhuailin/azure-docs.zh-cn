@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 8591220eb80d9c60ed7873be546007449ab46f89
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc2fbd6473886b5b9c5eb5ed5112c988fba60433
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96463030"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288529"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>快速入门：使用 Java 将 X.509 设备注册到设备预配服务
 
@@ -26,7 +26,7 @@ ms.locfileid: "96463030"
 
 - 完成[使用 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
 - 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [Java SE 开发工具包 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)。 本快速入门将在下面安装 [Java 服务 SDK](https://azure.github.io/azure-iot-sdk-java/master/service/)。 它可以在 Windows 和 Linux 上运行。 本快速入门使用 Windows。
+- [Java SE 开发工具包 8](/azure/developer/java/fundamentals/java-support-on-azure)。 本快速入门将在下面安装 [Java 服务 SDK](https://azure.github.io/azure-iot-sdk-java/master/service/)。 它可以在 Windows 和 Linux 上运行。 本快速入门使用 Windows。
 - [Maven 3](https://maven.apache.org/download.cgi)。
 - [Git](https://git-scm.com/download/)。
 

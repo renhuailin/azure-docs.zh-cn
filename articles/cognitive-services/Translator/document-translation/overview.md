@@ -5,29 +5,30 @@ ms.topic: overview
 manager: nitinme
 ms.author: lajanuar
 author: laujan
-ms.date: 05/20/2021
-ms.openlocfilehash: 7359be792d8a832f6dcddc2c4d3caaf000930e83
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 06/20/2021
+ms.openlocfilehash: 267109bcacd8fcb9ff7d44ca6f9a74ca4dc39fda
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453555"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582935"
 ---
 # <a name="what-is-document-translation"></a>什么是文档翻译？
 
-文档翻译是 [Azure Translator](../translator-info-overview.md) 服务的一项基于云的功能，属于 REST API 的 Azure 认知服务系列。 文档翻译 API 可在保留文档结构和数据格式的同时，将文档与 90 种语言和方言进行互译。
+文档翻译是 [Azure Translator](../translator-info-overview.md) 服务的一项基于云的功能，属于 REST API 的 Azure 认知服务系列。 文档翻译 API 可翻译所有[支持的语言和方言](../../language-support.md)的文档，同时保留文档结构和数据格式。 
 
 本文档包含以下文章类型：  
 
 * [**快速入门**](get-started-with-document-translation.md)介绍了入门说明，指导您完成向服务发出请求。
-* [**操作指南**](create-sas-tokens.md)包含以更具体的方式或自定义方式使用功能的说明。  
+* [**操作指南**](create-sas-tokens.md)包含以更具体的方式或自定义方式使用功能的说明。 
+* [参考](reference/rest-api-guide.md)提供 REST API 设置、值、关键字和配置。
 
 ## <a name="document-translation-key-features"></a>文档翻译主要功能
 
 | 功能 | 说明 |
 | ---------| -------------|
 | **翻译大型文件**| 异步翻译整个文档。|
-|**翻译大量文件**|将多个文件与 90 种语言和方言进行互译。|
+|**翻译大量文件**|在保留文档结构和数据格式的同时，翻译所有支持的语言和方言的多个文件。|
 |**保留源文件显式**| 在保留原始布局和格式的同时翻译文件。|
 |**应用自定义翻译**| 使用常规和[自定义翻译](../customization.md#custom-translator)模型翻译文档。|
 |应用自定义词汇表|使用自定义词汇表翻译文档。|
@@ -54,6 +55,8 @@ ms.locfileid: "110453555"
 |逗号分隔值 |.csv| 电子表格程序使用的且以逗号分隔的原始数据文件。|
 |HTML|.html、.htm|超文本标记语言。|
 |本地化交换文件格式|.xlf 、xliff| 并行文档格式，是翻译记忆系统的导出格式。 使用的语言在该文件中定义。|
+|Markdown| .markdown、.mdown、.mkdn、.md、.mkd、.mdwn、.mdtxt、.mdtext、.rmd| 用于创建带格式文本的轻型标记语言。|
+|MHTML|.mthml、.mht| 一种网页存档格式，用于组合 HTML 代码及其配套资源。|
 |Microsoft Excel|.xls, .xlsx|用于数据分析和文档的电子表格文件。|
 |Microsoft Outlook|.msg|在 Microsoft Outlook 中创建或保存的电子邮件。|
 |Microsoft PowerPoint|.ppt, .pptx| 用于以幻灯片格式显示内容的演示文稿文件。|
@@ -71,8 +74,9 @@ ms.locfileid: "110453555"
 
 | 文件类型| 文件扩展名|说明|
 |---|---|--|
+|逗号分隔值| .csv |电子表格程序使用的且以逗号分隔的原始数据文件。|
 |本地化交换文件格式|.xlf 、xliff| 并行文档格式，是翻译记忆系统的导出格式。 使用的语言在该文件中定义。|
-|制表符分隔值/TAB|.tsv/.tab| 电子表格程序使用的且以制表符分隔的原始数据文件。|
+|制表符分隔值/TAB|.tsv、.tab| 电子表格程序使用的且以制表符分隔的原始数据文件。|
 
 ## <a name="next-steps"></a>后续步骤
 

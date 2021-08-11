@@ -3,14 +3,14 @@ title: 使用 OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）分析�
 description: 在本教程中，你将使用由 Intel 提供的 AI 模型服务器和预训练的模型来分析（模拟的）IP 相机中的实时视频源。
 ms.service: azure-video-analyzer
 ms.topic: tutorial
-ms.date: 05/18/2021
+ms.date: 06/01/2021
 titleSuffix: Azure
-ms.openlocfilehash: d9c7beeb75d8a8785f58b1d0b9b3a93dfc6e53f1
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: a36de6ac835b3ed9f4188b6f8d2bf3b5178be087
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110383841"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604724"
 ---
 # <a name="tutorial-analyze-live-video-using-openvino-model-server--ai-extension-from-intel"></a>教程：使用 OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）分析实时视频 
 
@@ -18,8 +18,7 @@ ms.locfileid: "110383841"
 
 本教程将 Azure VM 用作 IoT Edge 设备，并使用模拟的实时视频流。 它基于用 C# 编写的示例代码。
 
-> [!NOTE]
-> 本教程要求使用 x86-64 计算机作为你的 Edge 设备。
+[!INCLUDE [use-x86-64](./includes/common-includes/use-x86-64.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -83,7 +82,7 @@ HTTP 扩展处理器节点充当代理的角色。 它选择一部分传入的�
 1. 右键单击 src/edge/config/deployment.openvino.amd64.json，然后选择“为单个设备创建部署”。
 1. 如果系统提示你选择 IoT 中心设备，请选择“avasample-iot-edge-device”。
 1. 大约 30 秒后，在该窗口的左下角刷新 Azure IoT 中心。 边缘设备现在显示以下已部署的模块：
-    * 视频分析器 Edge 模块（名为“avaedge”）。
+    * 视频分析器 Edge 模块（名称为“avaedge”）。
     * rtspsim 模块，可模拟 RTSP 服务器，充当实时视频源的源。 
     * openvino 模块，即 OpenVINO™ Model Server（由 Intel 提供的 AI 扩展）。
  

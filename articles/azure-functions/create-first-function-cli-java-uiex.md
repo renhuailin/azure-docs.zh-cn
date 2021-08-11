@@ -7,12 +7,12 @@ ms.custom:
 - devx-track-java
 - devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 910e19137873ed5c34584b3293ebd4248c5fe2f8
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 4923ba6ead6b13f6b919c72304d4f389bac41386
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831899"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287809"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中通过命令行创建 Java 函数
 
@@ -40,7 +40,7 @@ ms.locfileid: "107831899"
 
 + [Azure CLI](/cli/azure/install-azure-cli) 2.4 或更高版本。
 
-+ [Java 开发人员工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support)版本 8 或 11。 `JAVA_HOME` 环境变量必须设置为正确版本的 JDK 的安装位置。
++ [Java 开发人员工具包](/azure/developer/java/fundamentals/java-support-on-azure)版本 8 或 11。 `JAVA_HOME` 环境变量必须设置为正确版本的 JDK 的安装位置。
 
 + [Apache Maven](https://maven.apache.org) 3.0 或更高版本。
 

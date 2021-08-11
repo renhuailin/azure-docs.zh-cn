@@ -1,7 +1,7 @@
 ---
-title: 快速入门：向 ASP.NET Web 应用添加 Microsoft 登录功能 | Azure
+title: 快速入门：用于登录用户的 ASP.NET Web 应用
 titleSuffix: Microsoft identity platform
-description: 本快速入门介绍如何使用 OpenID Connect 在 ASP.NET Web 应用上实现 Microsoft 登录。
+description: 下载并运行一个代码示例，该示例演示了 ASP.NET Web 应用如何让 Azure AD 用户登录。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: 87948ed04f7b50820d94993d4c4fbcf2dfd94b31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 08c53f816b151026c03068451aa440f12a2cbc15
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578679"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112677797"
 ---
-# <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 标识平台登录功能
+# <a name="quickstart-aspnet-web-app-that-signs-in-azure-ad-users"></a>快速入门：用于让 Azure AD 用户登录的 ASP.NET Web 应用
 
-在本快速入门中，你将下载并运行一个代码示例，该示例演示 ASP.NET Web 应用如何从任何 Azure Active Directory (Azure AD) 组织中登录用户。 
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 ASP.NET Web 应用程序如何使用 Azure Active Directory (Azure AD) 帐户让用户登录。
 
 > [!div renderon="docs"]
 > 下图显示了该示例应用的工作原理：

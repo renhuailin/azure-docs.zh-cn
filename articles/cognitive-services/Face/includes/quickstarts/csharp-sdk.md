@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 3387e5d1fd64771b8be012b421da4b32007155f0
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: ee861896020f41dd841f538f546242a65992b8d3
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109858062"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113364866"
 ---
 开始使用适用于 .NET 的人脸客户端库进行人脸识别。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
@@ -25,7 +25,7 @@ ms.locfileid: "109858062"
 * [创建人员组](#create-a-persongroup)
 * [识别人脸](#identify-a-face)
 
-[参考文档](/dotnet/api/overview/azure/cognitiveservices/client/faceapi) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.7.0-preview.1) | [示例](/samples/browse/?products=azure&term=face)
+[参考文档](/dotnet/api/overview/azure/cognitiveservices/face-readme) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [包 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.7.0-preview.1) | [示例](/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>先决条件
 

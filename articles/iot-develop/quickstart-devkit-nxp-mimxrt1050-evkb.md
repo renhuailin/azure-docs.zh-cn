@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/04/2021
-ms.openlocfilehash: 69879548be28ec02df8ba958243a97ee1925e3ae
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 7dcba5490d3f341e68b07aa798e9ca0ffa1666e7
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904135"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112122087"
 ---
 # <a name="quickstart-connect-an-nxp-mimxrt1050-evkb-evaluation-kit-to-iot-central"></a>快速入门：将 NXP MIMXRT1050-EVKB 评估工具包连接到 IoT Central
 
@@ -46,7 +46,7 @@ ms.locfileid: "111904135"
 
 ### <a name="clone-the-repo-for-the-quickstart"></a>克隆本快速入门所需的存储库
 
-克隆以下存储库以下载所有示例设备代码、安装脚本和文档的脱机版本。 如果你以前在另一篇快速入门中克隆过此存储库，则无需再次执行此操作。
+克隆以下存储库以下载所有示例设备代码、安装脚本和文档的脱机版本。 如果以前在另一篇快速入门中克隆过此存储库，则无需再次执行此操作。
 
 要克隆存储库，请运行以下命令：
 
@@ -56,7 +56,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="install-the-tools"></a>安装工具
 
-克隆的存储库包含用于安装和配置所需工具的安装脚本。 如果你在另一篇嵌入式设备快速入门中安装了这些工具，则无需再次执行此操作。
+克隆的存储库包含用于安装和配置所需工具的安装脚本。 如果在另一篇嵌入式设备快速入门中安装了这些工具，则无需再次执行此操作。
 
 > [!NOTE]
 > 安装脚本将安装以下工具：
@@ -111,7 +111,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="flash-the-image"></a>刷写映像
 
-1. 在 NXP EVK 上，找到 **Reset**（重置）按钮、Micro USB 端口和以太网端口。 可在以下步骤中使用这两个组件。 下图突出显示了所有这三个组件：
+1. 在 NXP EVK 上，找到“Reset”（重置）按钮、Micro USB 端口和以太网端口。 可在以下步骤中使用这两个组件。 下图突出显示了所有这三个组件：
 
     :::image type="content" source="media/quickstart-devkit-nxp-mimxrt1050-evkb/nxp-1050-evkb-board.png" alt-text="在 NXP EVK 板上找到关键组件":::
 
@@ -131,11 +131,11 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 1. 启动 **Termite**。
     > [!TIP]
-    > 如果刷写后在设备中进行初始化或连接时遇到问题，请参阅[故障排除](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)。
+    > 如果刷写后在设备进行初始化或连接时遇到问题，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)。
 1. 选择“设置”。
 1. 在“串行端口设置”对话框中，检查以下设置并根据需要进行更新：
     * **波特率**：115,200
-    * **端口**：NXP EVK 连接到的端口。 如果下拉列表中有多个端口选项，则可以找到要使用的正确端口。 打开 Windows **设备管理器**，查看“端口”以确定要使用的端口。
+    * 端口：NXP EVK 连接到的端口。 如果下拉列表中有多个端口选项，则可以找到要使用的正确端口。 打开 Windows **设备管理器**，查看“端口”以确定要使用的端口。
 
     :::image type="content" source="media/quickstart-devkit-nxp-mimxrt1050-evkb/termite-settings.png" alt-text="Termite 应用中串行端口设置的屏幕截图":::
 
@@ -205,7 +205,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ## <a name="call-a-direct-method-on-the-device"></a>在设备上调用直接方法
 
-还可以使用 IoT Central 来调用在设备上实现的直接方法。 直接方法有一个名称，可以选择包含 JSON 有效负载、可配置的连接和方法超时。 在本节中，将调用一个方法让你可以打开或关闭 LED。
+还可以使用 IoT Central 来调用已在设备上实现的直接方法。 直接方法有一个名称，可以选择包含 JSON 有效负载、可配置的连接和方法超时。 在本节中，将调用一个方法让你可以打开或关闭 LED。
 
 要在 IoT Central 门户中调用方法，请执行以下操作：
 
@@ -214,7 +214,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
     :::image type="content" source="media/quickstart-devkit-nxp-mimxrt1050-evkb/iot-central-invoke-method.png" alt-text="在 IoT Central 中调用设备上的直接方法的屏幕截图":::
 
-1. 在 **状态** 下拉列表中选择 **False**，然后选择 **运行**。
+1. 在“状态”下拉列表中选择“False”，然后选择“运行”  。
 
 ## <a name="view-device-information"></a>查看设备信息
 
@@ -226,7 +226,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ## <a name="troubleshoot-and-debug"></a>故障排除和调试
 
-如果在生成设备代码、刷写设备或连接时遇到问题，请参阅[故障排除](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)。
+如果在生成设备代码、刷写设备或进行连接时遇到问题，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)。
 
 要调试应用程序，请参阅[使用 Visual Studio Code 进行调试](https://github.com/azure-rtos/getting-started/blob/master/docs/debugging.md)。
 

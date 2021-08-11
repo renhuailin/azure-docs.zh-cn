@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 03/02/2021
+ms.date: 07/13/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d64fd91d3f033c0a04c4936f11d096aa640942a1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 56fd9449e3954f7fe7cf3ab43a62df05869e2112
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743878"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729589"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Azure Active Directory 中的外部标识是什么？
 
@@ -44,7 +44,7 @@ Azure AD 外部标识在用户与组织的关系上关注较少，而更多地�
 | **单一登录 (SSO)**      | 支持 SSO 到所有 Azure AD 连接的应用。 例如，可允许访问 Microsoft 365 或本地应用以及其他 SaaS 应用（例如 Salesforce 或 Workday）。    | 支持在 Azure AD B2C 租户中单一登录到客户自有应用。 不支持单一登录到 Microsoft 365 或其他 Microsoft SaaS 应用。    |
 | 安全策略和合规性        | 由主办/邀请组织管理（例如，通过[条件访问策略](conditional-access.md)）。 | 由组织通过条件访问和标识保护进行管理。        |
 | **品牌打造**  | 使用主办/邀请组织的品牌。    | 每个应用程序或组织可完全自定义的品牌。   |
-| **计费模式** | 基于月度活跃用户 (MAU) 的[外部标识定价](https://azure.microsoft.com/en-us/pricing/details/active-directory/external-identities/)。 <br>（另请参阅：[B2B 设置详细信息](external-identities-pricing.md)） | 基于月度活跃用户 (MAU) 的[外部标识定价](https://azure.microsoft.com/en-us/pricing/details/active-directory/external-identities/)。 <br>（另请参阅：[B2C 设置详细信息](../../active-directory-b2c/billing.md)） |
+| **计费模式** | 基于月度活跃用户 (MAU) 的[外部标识定价](https://azure.microsoft.com/pricing/details/active-directory/external-identities/)。 <br>（另请参阅：[B2B 设置详细信息](external-identities-pricing.md)） | 基于月度活跃用户 (MAU) 的[外部标识定价](https://azure.microsoft.com/pricing/details/active-directory/external-identities/)。 <br>（另请参阅：[B2C 设置详细信息](../../active-directory-b2c/billing.md)） |
 | **详细信息** | [博客文章](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/)、[文档](what-is-b2b.md)                   | [产品页](https://azure.microsoft.com/services/active-directory-b2c/)、[文档](../../active-directory-b2c/index.yml)       |
 
 使用 Azure AD 外部标识保护和管理超出组织边界的客户和合作伙伴。

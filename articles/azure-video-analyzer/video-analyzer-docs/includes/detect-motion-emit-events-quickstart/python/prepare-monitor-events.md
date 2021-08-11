@@ -4,12 +4,12 @@ ms.service: azure-video-analyzer
 ms.topic: include
 ms.date: 05/03/2021
 ms.author: faneerde
-ms.openlocfilehash: e3d480842451b6bb9544765df1eded9f94c29070
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e98039dfe4c8c44be2fc375956339956a495da4f
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385136"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113559542"
 ---
 你将使用 Azure 视频分析器模块来检测传入的实时视频流中的运动并将事件发送到 IoT 中心。 若要查看这些事件，请执行以下步骤：
 
@@ -19,5 +19,4 @@ ms.locfileid: "110385136"
 
 ![开始监视内置事件终结点](../../../media/vscode-common-screenshots/start-monitoring.png)
 
-> [!NOTE]
-> 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示： <br/>`Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>`
+[!INCLUDE [provide-builtin-endpoint](../../common-includes/provide-builtin-endpoint.md)]

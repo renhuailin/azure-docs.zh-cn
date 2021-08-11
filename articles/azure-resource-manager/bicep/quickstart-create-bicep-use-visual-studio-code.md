@@ -1,35 +1,35 @@
 ---
 title: 创建 Bicep 文件 - Visual Studio Code
 description: 使用 Visual Studio Code 和适用于 Bicep 文件的 Bicep 扩展来部署 Azure 资源
-ms.date: 06/01/2021
+ms.date: 06/25/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8369d0185977ae85e561b809200f1e7d733ea556
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 8167516a41943ea17fdeb47bce84767178593e85
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026004"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112970096"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Bicep 文件
 
-本快速入门引导你完成使用 Visual Studio Code 创建 [Bicep 文件](overview.md)的步骤。 你将创建一个存储帐户和一个虚拟网络。 你还将了解 Bicep 扩展如何通过提供类型安全性、语法验证和自动完成来简化开发。
+本快速入门逐步讲解使用 Visual Studio Code 创建 [Bicep 文件](overview.md)的步骤。 你将创建一个存储帐户和一个虚拟网络。 你还将了解 Bicep 扩展如何通过提供类型安全性、语法验证和自动完成来简化开发。
 
 ## <a name="prerequisites"></a>先决条件
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-若要设置环境以进行 Bicep 开发，请参阅[安装 Bicep 工具](install.md)。 完成这些步骤后，你将获得 [Visual Studio Code](https://code.visualstudio.com/) 和 [Bicep 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep)。 你还将获得最新的 [Azure CLI](/cli/azure/) 或最新的 [Azure PowerShell 模块](/powershell/azure/new-azureps-module-az)。
+若要设置环境以进行 Bicep 开发，请参阅[安装 Bicep 工具](install.md)。 完成这些步骤后，你将具备 [Visual Studio Code](https://code.visualstudio.com/) 和 [Bicep 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep)。 你还将具备最新的[Azure CLI](/cli/azure/) 或最新的 [Azure PowerShell 模块](/powershell/azure/new-azureps-module-az)。
 
 ## <a name="add-resource-snippet"></a>添加资源代码片段
 
 启动 Visual Studio Code 并创建名为 main.bicep 的新文件。
 
-包含 Bicep 扩展的 VS Code 通过提供预定义的代码片段来简化开发。 在本快速入门中，你将添加用于创建虚拟网络的代码片段。
+带有 Bicep 扩展的 VS Code 通过提供预定义的代码片段来简化开发。 在本快速入门中，你将添加用于创建虚拟网络的代码片段。
 
 在 main.bicep 中，键入 vnet。 从列表中选择“res-vnet”，然后按 Tab 或 Enter 键。
 
-:::image type="content" source="./media/quickstart-create-bicep-use-visual-studio-code/add-snippet.png" alt-text="添加虚拟网络的代码片段":::
+:::image type="content" source="./media/quickstart-create-bicep-use-visual-studio-code/add-snippet.png" alt-text="添加用于创建虚拟网络的代码片段":::
 
 Bicep 文件现在包含以下代码：
 
@@ -61,7 +61,7 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = {
 }
 ```
 
-此代码片段包含用于定义虚拟网络的所有值。 但是，你可以根据自己的要求修改此代码。 例如，`name` 并不是很适合用作虚拟网络的名称。 将 `name` 属性更改为 `examplevnet`。
+此代码片段包含定义虚拟网络所需的所有值。 不过，你可以根据自己的需求修改此代码。 例如，`name` 并不是很适合用作虚拟网络的名称。 将 `name` 属性更改为 `examplevnet`。
 
 ```bicep
 name: 'examplevnet'
@@ -71,7 +71,7 @@ name: 'examplevnet'
 
 ## <a name="add-parameter"></a>添加参数
 
-现在，我们要添加一个用作存储帐户名称的参数。 在虚拟网络上方添加几行，然后键入：
+现在，我们添加一个要用作存储帐户名称的参数。 在虚拟网络上方添加几行，然后键入：
 
 ```bicep
 param storageName
@@ -138,7 +138,7 @@ exampleStorage 是要部署的资源的符号名称。 它可让你轻松在 Bic
 
 :::image type="content" source="./media/quickstart-create-bicep-use-visual-studio-code/select-required-properties.png" alt-text="添加所需属性":::
 
-此选项用于添加部署时所需的所有资源类型属性。 选择此选项后，存储帐户具有以下属性：
+此选项用于添加在部署时所需的所有资源类型属性。 选择此选项后，存储帐户具有以下属性：
 
 ```bicep
 resource exampleStorage 'Microsoft.Storage/storageAccounts@2021-02-01' = {
@@ -154,9 +154,9 @@ resource exampleStorage 'Microsoft.Storage/storageAccounts@2021-02-01' = {
 
 即将完成。 只需为这些属性提供值。
 
-同样，Intellisense 可为你提供帮助。 对于 `name`，请提供包含存储帐户名称的参数。 对于 `location`，请将其设置为 `eastus`。 添加 SKU 名称和类型时，Intellisense 会显示有效选项。 
+同样，Intellisense 可为你提供帮助。 对于 `name`，请提供包含存储帐户名称的参数。 对于 `location`，请将其设置为 `eastus`。 添加 SKU 名称和类型时，Intellisense 会显示有效选项。
 
-完成后，你将获得：
+完成后，你的 Bicep 文件将如下所示：
 
 ```bicep
 @minLength(3)
@@ -232,6 +232,9 @@ New-AzResourceGroupDeployment -ResourceGroupName exampleRG -TemplateFile ./main.
 ```
 
 ---
+
+> [!NOTE]
+> 将 {your-unique-name}（包括大括号）替换为唯一的存储帐户名称。
 
 部署完成后，应会看到一条指出部署成功的消息。 如果收到错误消息，指出存储帐户已被占用，则表示提供的存储名称已被使用。 请提供更有可能是唯一的名称。
 

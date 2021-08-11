@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: f6d52f75b3e4f1c703125a8f9172e9f8b6fc6ece
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1ac03b354abf179061adad80cb5fe05ee3d549df
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081525"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540261"
 ---
 # <a name="sql-authentication"></a>SQL 身份验证
 
@@ -73,7 +73,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
 在创建登录名和用户后，可以使用常规 SQL Server 语法来授予权限。
 
-## <a name="sql-pool"></a>[SQL 池](#tab/provisioned)
+## <a name="dedicated-sql-pool"></a>[专用 SQL 池](#tab/provisioned)
 
 ### <a name="administrator-access-path"></a>管理员访问路径
 

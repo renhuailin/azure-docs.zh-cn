@@ -1,0 +1,88 @@
+- name: 指标顾问文档
+  href: index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: 什么是指标顾问？
+      href: overview.md
+    - name: 定价
+      href: 'https://aka.ms/ma-pricing'
+    - name: 新增功能
+      href: whats-new.md
+    - name: 指标顾问常见问题解答
+      href: faq.yml
+- name: 快速入门
+  items:
+    - name: Web 门户
+      href: quickstarts/web-portal.md
+    - name: REST API 和客户端库
+      href: quickstarts/rest-api-and-client-library.md
+- name: 示例
+  href: /samples/browse/?products=azure&terms=metrics-advisor
+- name: 操作指南
+  items:
+    - name: 载入数据
+      href: how-tos/onboard-your-data.md
+    - name: 创建凭据实体
+      href: how-tos/credential-entity.md
+    - name: 连接不同的数据源
+      href: data-feeds-from-different-sources.md
+    - name: 管理数据馈送
+      href: how-tos/manage-data-feeds.md
+    - name: 配置指标并微调检测配置
+      href: how-tos/configure-metrics.md
+    - name: 配置警报并使用挂钩获取通知
+      href: how-tos/alerts.md
+    - name: 诊断事件
+      href: how-tos/diagnose-an-incident.md
+    - name: 使用反馈调整异常检测
+      href: how-tos/anomaly-feedback.md
+    - name: 生成指标图
+      href: how-tos/metrics-graph.md
+    - name: 企业就绪情况
+      items:
+        - name: 使用客户管理的密钥
+          href: encryption.md
+- name: 概念
+  items:
+    - name: 指标顾问主要术语
+      href: glossary.md
+    - name: 成本管理
+      href: cost-management.md
+      displayname: 'cost, pricing, price, billing, bill'
+- name: 负责使用 AI
+  items:
+    - name: 透明度说明
+      items:
+        - name: 指标顾问的用例
+          href: /legal/cognitive-services/anomaly-detector/transparency-note?context=/azure/applied-ai-services/metrics-advisor/context/context
+        - name: 特征和限制
+          href: /legal/cognitive-services/anomaly-detector/characteristics-and-limitations?context=/azure/applied-ai-services/metrics-advisor/context/context
+    - name: 集成和负责使用
+      href: /legal/cognitive-services/anomaly-detector/guidance-integration-responsible-use?context=/azure/applied-ai-services/metrics-advisor/context/context
+    - name: 数据、隐私和安全
+      href: /legal/cognitive-services/anomaly-detector/data-privacy-security?context=/azure/applied-ai-services/metrics-advisor/context/context
+- name: 教程
+  items:
+    - name: 通过不同通道启用通知
+      href: tutorials/enable-anomaly-notification.md
+    - name: 写入有效查询
+      href: tutorials/write-a-valid-query.md
+- name: 参考
+  items:
+    - name: 指标顾问 REST API
+      href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
+    - name: Azure CLI 参考
+      href: /cli/azure/cognitiveservices#az_cognitiveservices_list
+    - name: PowerShell 参考
+      href: /powershell/module/azurerm.cognitiveservices/
+- name: 资源
+  items:
+    - name: 企业就绪情况
+      items:
+        - name: 区域支持
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: 符合性和认证
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 支持和帮助选项
+      href: ../../cognitive-services/cognitive-services-support-options.md?context=/azure/applied-ai-services/metrics-advisor/context/context

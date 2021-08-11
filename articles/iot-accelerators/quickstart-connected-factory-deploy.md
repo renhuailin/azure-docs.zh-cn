@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: dbb49d990581c6b38d0eff32b01dd9b115e6794c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f65f9ea1778aba1ff60cdb4cc4b4eba3fa7562cf
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057813"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113758157"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>快速入门：尝试使用基于云的解决方案来管理工业 IoT 设备
 
@@ -98,7 +98,7 @@ OEE 使用与生产相关的运营参数来评价制造过程的效率。 OEE �
 
 ### <a name="factory-locations"></a>工厂位置
 
-一个“工厂位置”面板，显示解决方案中的状态、位置和当前生产配置。 首次运行解决方案加速器时，仪表板中会显示一组模拟工厂。 每个生产线模拟由三个运行模拟任务和共享数据的实际 OPC UA 服务器组成。 有关 OPC UA 的详细信息，请参阅[联网工厂常见问题解答](iot-accelerators-faq-cf.md)：
+一个“工厂位置”面板，显示解决方案中的状态、位置和当前生产配置。 首次运行解决方案加速器时，仪表板中会显示一组模拟工厂。 每个生产线模拟由三个运行模拟任务和共享数据的实际 OPC UA 服务器组成。 有关 OPC UA 的详细信息，请参阅[联网工厂常见问题解答](iot-accelerators-faq-cf.yml)：
 
 [![工厂位置](./media/quickstart-connected-factory-deploy/factorylocations-inline.png)](./media/quickstart-connected-factory-deploy/factorylocations-expanded.png#lightbox)
 
@@ -116,7 +116,7 @@ OEE 使用与生产相关的运营参数来评价制造过程的效率。 OEE �
 
 ### <a name="map"></a>映射
 
-如果订阅可以访问[必应地图 API](iot-accelerators-faq-cf.md)，则“工厂”视图会显示解决方案中所有工厂的地理位置和状态。 单击地图上显示的位置即可了解位置详细信息。
+如果订阅可以访问[必应地图 API](iot-accelerators-faq-cf.yml)，则“工厂”视图会显示解决方案中所有工厂的地理位置和状态。 单击地图上显示的位置即可了解位置详细信息。
 
 [![映射](./media/quickstart-connected-factory-deploy/map-inline.png)](./media/quickstart-connected-factory-deploy/map-expanded.png#lightbox)
 

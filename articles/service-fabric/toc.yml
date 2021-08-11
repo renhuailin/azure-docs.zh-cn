@@ -104,7 +104,7 @@
           href: service-fabric-tutorial-standalone-install-an-application.md
         - name: 4- 清理群集和删除基础结构
           href: service-fabric-tutorial-standalone-clean-up.md
-- name: 最佳实践
+- name: 最佳做法
   items:
     - name: 安全性
       href: service-fabric-best-practices-security.md
@@ -917,7 +917,7 @@
       href: ./policy-reference.md
 - name: 资源
   items:
-    - name: Service Fabric 托管群集常见问题
+    - name: Service Fabric 托管群集常见问题解答
       href: faq-managed-cluster.yml
     - name: 常见问题
       href: service-fabric-common-questions.md

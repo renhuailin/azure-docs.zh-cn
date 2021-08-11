@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 Tic-Tac Mobile 配置自动用
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Tic-Tac Mobile 及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: d0f24e81-fecf-4e71-bd8a-ab911366fdf5
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/08/2020
-ms.author: Zhchia
-ms.openlocfilehash: 91ae51b9a2785dbc40c55fa58b26763916e8d16c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: a0784eebbabe302ecb610c702ae1b8900e05f858
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644538"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113758872"
 ---
 # <a name="tutorial-configure-tic-tac-mobile-for-automatic-user-provisioning"></a>教程：为 Tic-Tac Mobile 配置自动用户预配
 

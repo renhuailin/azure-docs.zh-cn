@@ -13,14 +13,14 @@ ms.date: 09/22/2020
 ms.author: mbullwin
 keywords: 异常情况检测, 算法
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
-ms.openlocfilehash: dc6e0689a295798d7397e5e40c390b0e165984c0
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: e9ef8e7af4814dee437ead4f90ef2c43e3b259ae
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705026"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296912"
 ---
-# <a name="quickstart-use-the-anomaly-detector-client-library"></a>快速入门：使用异常检测器客户端库
+# <a name="quickstart-use-the-anomaly-detector-univariate-client-library"></a>快速入门：使用异常检测器单变量客户端库
 
 ::: zone pivot="programming-language-csharp"
 

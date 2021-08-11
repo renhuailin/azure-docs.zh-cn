@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Snowflake 配置自动用户预配 | Microsoft Docs
 description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Snowflake 和取消其预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: 06f11763498e3e8393d688a71e1c37b466be3f6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: c7eced7fb6c073eece1edbee93da0d9f33e3ed27
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99539529"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690287"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>教程：为 Snowflake 配置自动用户预配
 
@@ -44,8 +44,8 @@ ms.locfileid: "99539529"
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1：规划预配部署
 1. 了解[预配服务的工作原理](../app-provisioning/user-provisioning.md)。
-2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
-3. 确定[在 Azure AD 与 Snowflake 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
+1. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
+1. 确定[在 Azure AD 与 Snowflake 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
 
 ## <a name="step-2-configure-snowflake-to-support-provisioning-with-azure-ad"></a>步骤 2：配置 Snowflake 以支持通过 Azure AD 进行预配
 
@@ -53,15 +53,27 @@ ms.locfileid: "99539529"
 
 1. 登录到 Snowflake 管理控制台。 在突出显示的工作表中输入以下查询，然后选择“运行”。
 
-    ![带有“查询”和“运行”按钮的 Snowflake 管理控制台的屏幕截图。](media/Snowflake-provisioning-tutorial/image00.png)
+   ![带有“查询”和“运行”按钮的 Snowflake 管理控制台的屏幕截图。](media/Snowflake-provisioning-tutorial/image00.png)
+    
+   ```
+   use role accountadmin;
+   
+   create or replace role aad_provisioner;
+   grant create user on account to aad_provisioner;
+   grant create role on account to aad_provisioner;
+   grant role aad_provisioner to role accountadmin;
+   create or replace security integration aad_provisioning type=scim scim_client=azure run_as_role='AAD_PROVISIONER';
+   
+   select SYSTEM$GENERATE_SCIM_ACCESS_TOKEN('AAD_PROVISIONING');
+   ```
 
-2.  随即将为你的 Snowflake 租户生成 SCIM 访问令牌。 若要检索它，请选择下面的屏幕截图中突出显示的链接。
+1.  随即将为你的 Snowflake 租户生成 SCIM 访问令牌。 若要检索它，请选择下面的屏幕截图中突出显示的链接。
 
-    ![Snowflake UI 中工作表的屏幕截图，其中突出显示了 SCIM 访问令牌。](media/Snowflake-provisioning-tutorial/image01.png)
+   ![Snowflake UI 中工作表的屏幕截图，其中突出显示了 SCIM 访问令牌。](media/Snowflake-provisioning-tutorial/image01.png)
 
-3. 复制生成的令牌值并选择“完成”。 将在 Azure 门户中 Snowflake 应用程序“预配”选项卡的“机密令牌”框输入此值 。
+1. 复制生成的令牌值并选择“完成”。 将在 Azure 门户中 Snowflake 应用程序“预配”选项卡的“机密令牌”框输入此值 。
 
-    ![“详细信息”部分的屏幕截图，显示了复制到文本字段中的令牌并突出显示了“完成”选项。](media/Snowflake-provisioning-tutorial/image02.png)
+   ![“详细信息”部分的屏幕截图，显示了复制到文本字段中的令牌并突出显示了“完成”选项。](media/Snowflake-provisioning-tutorial/image02.png)
 
 ## <a name="step-3-add-snowflake-from-the-azure-ad-application-gallery"></a>步骤 3：从 Azure AD 应用程序库中添加 Snowflake
 

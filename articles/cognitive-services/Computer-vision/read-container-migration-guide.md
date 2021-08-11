@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 05/24/2021
 ms.author: aahi
-ms.openlocfilehash: d648acb3ff9a1f7c2076a4b7c1fcf9755a9ea05d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f8913bc75688184d30711e4ee33b5d3601557ee7
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465186"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113303663"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>迁移到 Read v3.x OCR 容器
 
@@ -83,5 +83,5 @@ Read v3.2 容器使用计算机视觉 API 版本 3，并具有以下终结点：
 * 查看[配置容器](computer-vision-resource-container-config.md)了解配置设置
 * 查看 [OCR 概述](overview-ocr.md)，了解有关识别印刷文本和手写文本的详细信息
 * 如需详细了解该容器支持的方法，请参阅[读取 API](//westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)。
-* 参阅[常见问题解答 (FAQ)](FAQ.md)，以解决与计算机视觉功能相关的问题。
+* 参阅[常见问题解答 (FAQ)](FAQ.yml)，以解决与计算机视觉功能相关的问题。
 * 使用更多[认知服务容器](../cognitive-services-container-support.md)

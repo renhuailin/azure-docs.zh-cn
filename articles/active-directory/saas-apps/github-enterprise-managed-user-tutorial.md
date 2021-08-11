@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/15/2021
 ms.author: jeedes
-ms.openlocfilehash: ffdd6c30e279cc5df7f97e5ab5bb77a87c18dd8b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6038db88610e1fde8d95c2c31a9bcfa2c5ad5ac2
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480487"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111904240"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-managed-user"></a>教程：Azure Active Directory 单一登录 (SSO) 与 GitHub Enterprise Managed User 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "110480487"
 * 让用户使用其 Azure AD 帐户自动登录到 GitHub Enterprise Managed User。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -117,7 +117,7 @@ ms.locfileid: "110480487"
 1. 转到 https://github.com
 1. 单击右上角的“登录”
 1. 输入第一个管理员用户帐户的凭据。 登录句柄应采用以下格式：`<your enterprise short code>_admin`
-1. 导航到 https://github.com/enterprises/ `<your enterprise name>`。 此信息应由解决方案工程联系人提供。
+1. 导航到 `https://github.com/enterprises/` `<your enterprise name>`。 此信息应由解决方案工程联系人提供。
 1. 在左侧导航菜单中，依次选择“设置”、“安全性” 。
 1. 单击“启用 SAML 身份验证”复选框
 1. 填写“登录 URL”。 此 URL 是前面从 AAD 复制的“登录 URL”。

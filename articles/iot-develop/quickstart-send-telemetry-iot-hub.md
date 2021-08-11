@@ -8,18 +8,16 @@ ms.topic: quickstart
 ms.date: 05/04/2021
 ms.collection: embedded-developer, application-developer
 zone_pivot_groups: iot-develop-set1
-ms.openlocfilehash: dc59905351da364ed23b5cbc59b972feb0497a9e
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 04d7883088a4f8f9c12e384b3dcc3b4c0dfa6edf
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112294924"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730795"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-hub"></a>快速入门：将设备中的遥测数据发送到 Azure IoT 中心
 
 **适用对象**：[设备应用程序开发人员](about-iot-develop.md#device-application-development)
-
-本快速入门介绍一个基本的 Azure IoT 应用程序开发工作流。 你将使用 Azure CLI 创建 Azure IoT 中心和设备。 然后，使用 Azure IoT 设备 SDK 示例来运行模拟的温度控制器，将此控制器安全连接到中心，并发送遥测数据。
 
 :::zone pivot="programming-language-ansi-c"
 
@@ -54,7 +52,7 @@ ms.locfileid: "112294924"
 ## <a name="view-telemetry"></a>查看遥测数据
 模拟设备在连接到 IoT 中心后，将开始发送遥测数据。 可以在 Azure 门户中查看有关 IoT 中心和设备的遥测指标及其他详细信息。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 单击你的 IoT 中心将其打开。  可以在“最近使用的资源”下找到你的 IoT 中心，或者可以在左侧导航栏上的“所有资源”中找到它 。
 
@@ -88,7 +86,7 @@ ms.locfileid: "112294924"
 接下来，请浏览以下这些文章，以详细了解如何使用 Azure IoT 构建设备解决方案。 
 
 > [!div class="nextstepaction"]
-> [控制连接到 IoT 中心的设备](../iot-hub/quickstart-control-device-dotnet.md)
+> [控制连接到 IoT 中心的设备](../iot-hub/quickstart-control-device.md)
 > [!div class="nextstepaction"]
 > [将遥测数据发送到 IoT Central](quickstart-send-telemetry-central.md)
 > [!div class="nextstepaction"]

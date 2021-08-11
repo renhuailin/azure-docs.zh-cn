@@ -10,12 +10,12 @@ metadata:
   author: KumudD
   ms.author: kumud
   ms.date: 03/30/2021
-  ms.openlocfilehash: aff3552a239bb3ed2859001ae02bcabefc66ff39
-  ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+  ms.openlocfilehash: 53df9518ab157a18cca16dea64aedbfb7d68ed3d
+  ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/07/2021
-  ms.locfileid: "107030366"
+  ms.lasthandoff: 07/16/2021
+  ms.locfileid: "114296029"
 landingContent:
 - title: 关于 Azure 网络
   linkLists:
@@ -50,13 +50,13 @@ landingContent:
     - text: 什么是公共 IP 地址？
       url: ../../virtual-network/virtual-networks-overview.md
     - text: 什么是虚拟网络 NAT 网关？
-      url: ../../virtual-network/nat-overview.md
+      url: ../../virtual-network/nat-gateway/nat-overview.md
   - linkListType: how-to-guide
     links:
     - text: 创建公共 IP 地址
       url: ../../virtual-network/create-public-ip-portal.md
     - text: 创建 NAT 网关
-      url: ../../virtual-network/tutorial-create-nat-gateway-portal.md
+      url: ../../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md
   - linkListType: learn
     links:
     - text: 为 Azure 部署设计 IP 寻址方案

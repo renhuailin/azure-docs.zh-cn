@@ -4,12 +4,12 @@ description: 本文演练如何创建一个可使用最新 azure/event-hubs 包�
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 8bf0b284a4434b15ae818693276cd04712496116
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 20308c54b7013015b92b013dc74768361660145e
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113003187"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296822"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs"></a>使用 JavaScript (azure/event-hubs) 向/从事件中心发送/接收事件
 本快速入门介绍如何使用 azure/event-hubs JavaScript 包向事件中心发送事件以及从事件中心接收事件。 
@@ -96,7 +96,7 @@ npm install @azure/eventhubs-checkpointstore-blob
     [![验证事件中心是否已收到消息](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
 
     > [!NOTE]
-    > 有关完整源代码（包括附加的参考注释），请参阅 [GitHub sendEvents.js 页](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/samples/javascript/sendEvents.js)。
+    > 有关完整源代码（包括附加的参考注释），请参阅 [GitHub sendEvents.js 页](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/eventhub/event-hubs/samples/v5/javascript/sendEvents.js)。
 
 祝贺你！ 现已向事件中心发送事件。
 
@@ -193,5 +193,5 @@ npm install @azure/eventhubs-checkpointstore-blob
 ## <a name="next-steps"></a>后续步骤
 查看 GitHub 中的以下示例：
 
-- [JavaScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/javascript)
-- [TypeScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/typescript)
+- [JavaScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/event-hubs/samples/v5/javascript)
+- [TypeScript 示例](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/event-hubs/samples/v5/typescript)

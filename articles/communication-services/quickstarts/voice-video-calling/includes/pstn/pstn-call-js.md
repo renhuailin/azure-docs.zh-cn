@@ -4,17 +4,17 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: nikuklic
-ms.openlocfilehash: ab5741e12bea83893f871487f92a5495b1dd08c9
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 7506f2c42066cb26532f815f2b77b240caea1993
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560313"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112535568"
 ---
 [!INCLUDE [Emergency Calling Notice](../../../../includes/emergency-calling-notice-include.md)]
 
-> [!NOTE]
-> 在 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-phone-calling) 上查找此快速入门的最终代码
+## <a name="sample-code"></a>代码示例
+在 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-phone-calling) 上查找此快速入门的最终代码
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -22,7 +22,6 @@ ms.locfileid: "111560313"
 - 已部署的通信服务资源。 [创建通信服务资源](../../../create-communication-resource.md)。
 - 在通信服务资源中获取的电话号码。 [如何获取电话号码](../../../telephony-sms/get-phone-number.md)。
 - 用于启用呼叫客户端的`User Access Token`。 详细了解[如何获取`User Access Token`](../../../access-tokens.md)
-
 
 [!INCLUDE [Calling with JavaScript](../get-started/get-started-javascript-setup.md)]
 
@@ -125,7 +124,6 @@ hangUpPhoneButton.addEventListener("click", () => {
 ## <a name="run-the-code"></a>运行代码
 
 使用 `webpack-dev-server` 生成并运行应用。 运行以下命令，在本地 Web 服务器上捆绑应用程序主机：
-
 
 ```console
 npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map

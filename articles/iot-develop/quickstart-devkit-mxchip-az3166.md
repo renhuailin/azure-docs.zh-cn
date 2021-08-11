@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: 4c1c6303727e503bcf5596edcc7b7a6aa5dcdb2c
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: d36f400e18566abf0631b5bec24fbfe6801fd299
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904132"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112575129"
 ---
 # <a name="quickstart-connect-an-mxchip-az3166-devkit-to-iot-central"></a>快速入门：将 MXCHIP AZ3166 Devkit 连接到 IoT Central
 
@@ -35,7 +35,7 @@ ms.locfileid: "111904132"
 * 用于克隆存储库的 [Git](https://git-scm.com/downloads)
 * 硬件
 
-    * [MXCHIP AZ3166 IoT DevKit](https://aka.ms/iot-devkit)（简称 MXCHIP DevKit）
+    * [MXCHIP AZ3166 IoT DevKit](https://www.seeedstudio.com/AZ3166-IOT-Developer-Kit.html)（简称 MXCHIP DevKit）
     * Wi-Fi 2.4 GHz
     * USB 2.0 A 公头转 Micro USB 公头电缆
 
@@ -45,7 +45,7 @@ ms.locfileid: "111904132"
 
 ### <a name="clone-the-repo-for-the-quickstart"></a>克隆本快速入门所需的存储库
 
-克隆以下存储库以下载所有示例设备代码、安装脚本和文档的脱机版本。 如果你以前在另一篇快速入门中克隆过此存储库，则无需再次执行此操作。
+克隆以下存储库以下载所有示例设备代码、安装脚本和文档的脱机版本。 如果以前在另一篇快速入门中克隆过此存储库，则无需再次执行此操作。
 
 要克隆存储库，请运行以下命令：
 
@@ -55,7 +55,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="install-the-tools"></a>安装工具
 
-克隆的存储库包含用于安装和配置所需工具的安装脚本。 如果你在另一篇嵌入式设备快速入门中安装了这些工具，则无需再次执行此操作。
+克隆的存储库包含用于安装和配置所需工具的安装脚本。 如果在另一篇嵌入式设备快速入门中安装了这些工具，则无需再次执行此操作。
 
 > [!NOTE]
 > 安装脚本将安装以下工具：
@@ -137,7 +137,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 1. 启动 **Termite**。
     > [!TIP]
-    > 如果无法将 Termite 连接到 devkit，请安装 [ST-LINK 驱动程序](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip)，然后重试。 有关其他步骤，请参阅[故障排除](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)。
+    > 如果无法将 Termite 连接到 devkit，请安装 [ST-LINK 驱动程序](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip)，然后重试。 有关其他步骤，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)。
 1. 选择“设置”。
 1. 在“串行端口设置”对话框中，检查以下设置并根据需要进行更新：
     * **波特率**：115,200
@@ -236,7 +236,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ## <a name="troubleshoot-and-debug"></a>故障排除和调试
 
-如果在生成设备代码、刷写设备或进行连接时遇到问题，请参阅[故障排除](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)。
+如果在生成设备代码、刷写设备或进行连接时遇到问题，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)。
 
 要调试应用程序，请参阅[使用 Visual Studio Code 进行调试](https://github.com/azure-rtos/getting-started/blob/master/docs/debugging.md)。
 

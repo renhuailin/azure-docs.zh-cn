@@ -7,18 +7,19 @@ author: MashaMSFT
 tags: azure-service-management
 ms.assetid: c505089e-6bbf-4d14-af0e-dd39a1872767
 ms.service: virtual-machines-sql
+ms.subservice: service-overview
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bdb890ac70d60e7742c4818fef27d5959c2df801
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c5d3b5c1838883f3e12114f348c73bed246e0c2d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142290"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112079564"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure 虚拟机 (Windows) 上的 SQL Server 是什么？
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -132,7 +133,7 @@ Azure 门户提供了一个页面，可以在其中管理[所有 Azure SQL 资�
 - [创建 SQL Server 虚拟机](sql-vm-create-portal-quickstart.md)
 
 ## <a name="sql-server-vm-image-refresh-policy"></a><a id="lifecycle"></a> SQL Server VM 映像刷新策略
-对于每种支持的操作系统和版本的组合，Azure 只保留一个虚拟机映像。 这意味着，随着时间的推移，映像会进行刷新，旧映像会被删除。 有关详细信息，请参阅[SQL Server VM 常见问题解答](frequently-asked-questions-faq.md#images)的“映像”部分。
+对于每种支持的操作系统和版本的组合，Azure 只保留一个虚拟机映像。 这意味着，随着时间的推移，映像会进行刷新，旧映像会被删除。 有关详细信息，请参阅[SQL Server VM 常见问题解答](/azure/azure-sql/virtual-machines/windows/frequently-asked-questions-faq#images)的“映像”部分。
 
 ## <a name="customer-experience-improvement-program-ceip"></a>客户体验改善计划 (CEIP)
 客户体验改善计划 (CEIP) 默认情况下已启用。 这样会定期将报告发送至 Microsoft，帮助改进 SQL Server。 CEIP 不需要执行管理任务，除非用户想要在预配后将其禁用。 可以通过远程桌面连接到 VM，以自定义或禁用 CEIP。 然后运行 **SQL Server 错误和使用情况报告** 实用工具。 请按照说明禁用报告功能。 有关数据收集的详细信息，请参阅 [SQL Server 隐私声明](/sql/sql-server/sql-server-privacy)。
@@ -161,7 +162,7 @@ Azure 虚拟机上的 SQL Server 入门：
 
 获取有关 SQL Server VM 的常见问题的解答：
 
-* [Azure 虚拟机中的 SQL Server 常见问题](frequently-asked-questions-faq.md)
+* [Azure 虚拟机中的 SQL Server 常见问题](frequently-asked-questions-faq.yml)
 
 查看在 IaaS 中的 SQL Server 上运行的 N 层应用程序的参考体系结构
 
