@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 03/30/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 0d5749894fd277ff6a2f77e3db9721e6989d72ac
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 029913125104f1c4eaa6ed627feae6a4ec207bd9
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109231"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112379204"
 ---
 # <a name="managed-hsm-logging"></a>托管 HSM 日志记录 
 
@@ -35,7 +35,7 @@ ms.locfileid: "106109231"
 若要完成本文中的步骤，必须准备好以下项：
 
 * Microsoft Azure 订阅。 如果没有，可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial)。
-* Azure CLI 版本 2.12.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+* Azure CLI 版本 2.25.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 * 订阅中的托管 HSM。 请参阅[快速入门：使用 Azure CLI 预配和激活托管 HSM](quick-create-cli.md)，预配和激活托管 HSM。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]

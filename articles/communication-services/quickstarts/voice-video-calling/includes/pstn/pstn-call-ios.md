@@ -4,15 +4,16 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: nikuklic
-ms.openlocfilehash: 841fde9b7c68fcadb88a14e01c34f115ab0f84fb
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 2a257ea54ca3e083f9ddf1a8898dc2cf69d22391
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560311"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114593280"
 ---
 [!INCLUDE [Emergency Calling Notice](../../../../includes/emergency-calling-notice-include.md)]
-## <a name="prerequisites"></a>先决条件
+
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 - 已部署的通信服务资源。 [创建通信服务资源](../../../create-communication-resource.md)。
@@ -37,17 +38,21 @@ ms.locfileid: "111560311"
 
 ```swift
 func startCall() {
-    // Ask permissions
-    AVAudioSession.sharedInstance().requestRecordPermission { (granted) in
-        if granted {
-            let startCallOptions = ACSStartCallOptions()
-            startCallOptions!.alternateCallerID = PhoneNumber(phoneNumber: "+12223334444")
-            self.call = self.callAgent!.startCall([PhoneNumber(phoneNumber: self.callee)], options: startCallOptions)
-            self.callDelegate = CallDelegate(self)
-            self.call!.delegate = self.callDelegate
+        // Ask permissions
+        AVAudioSession.sharedInstance().requestRecordPermission { (granted) in
+            if granted {
+                let startCallOptions = StartCallOptions()
+                startCallOptions.alternateCallerId = PhoneNumberIdentifier(phoneNumber: "<YOUR AZURE REGISTERED PHONE NUMBER>")
+                self.callAgent!.startCall(participants: [PhoneNumberIdentifier(phoneNumber: self.callee)], options: startCallOptions) { (call, error) in
+                    if (error == nil) {
+                        self.call = call
+                    } else {
+                        print("Failed to get call object")
+                    }
+                }
+            }
         }
     }
-}
 ```
 
 ## <a name="run-the-code"></a>运行代码

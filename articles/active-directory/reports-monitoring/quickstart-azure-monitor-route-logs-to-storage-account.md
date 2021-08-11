@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 05/05/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd278968eeb430bf57f279bb8b7e5d4ee9248ce1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a50ef779dd65696ae62b6b08b04e65ca19291944
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965718"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113233389"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>教程：将 Azure AD 日志存档到 Azure 存储帐户
 
@@ -40,38 +40,38 @@ ms.locfileid: "111965718"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
 
-2. 选择“Azure Active Directory” > “活动” > “审核日志”。   
+2. 选择“Azure Active Directory” > “监视” > “审核日志”。   
 
-3. 选择“导出设置”。 
+3. 选择“导出数据设置”。 
 
 4. 在“诊断设置”窗格中，执行下述操作之一：
-   * 若要更改现有设置，请选择“编辑设置”。
-   * 若要添加新设置，请选择“添加诊断设置”。  
-     最多可以有三个设置。 
+    1. 若要更改现有设置，请选择要更新的诊断设置旁边的“编辑设置”。
+    1. 若要添加新设置，请选择“添加诊断设置”。  
+
+    最多可以有三个设置。
 
      ![导出设置](./media/quickstart-azure-monitor-route-logs-to-storage-account/ExportSettings.png)
 
-5. 为设置输入一个可以让你记住其用途的友好名称（例如，“发送到 Azure 存储帐户”）。 
+5. 若要创建新设置，请在“诊断设置”窗格中输入设置名称以提醒其用途（例如，“发送到 Azure 存储帐户”）。 无法更改现有设置的名称。
 
-6. 选中“存档到存储帐户”复选框，然后选择“存储帐户”。 
+6. 在“目标详细信息”下，选中“存档到存储帐户”复选框 。 
 
-7. 选择要将日志路由到的 Azure 订阅和存储帐户。
- 
-8. 选择“确定”以退出配置。
+7. 在“订阅”下拉菜单中选择 Azure 订阅，并在“存储帐户”下拉菜单中选择要将日志路由到的存储帐户 。
 
-9. 执行下列两项操作或之一：
-    * 若要将审核日志发送到存储帐户，请选中“AuditLogs”复选框。 
-    * 若要将登录日志发送到存储帐户，请选中“SignInLogs”复选框。
+8. 在“类别详细信息”下，选择所有相关类别：
 
-10. 使用滑块来设置日志数据的保留期。 默认情况下，此值为 *0*，这意味着日志将无限期地保留在存储帐户中。 如果设置其他值，早于所选天数的事件会自动清除。
-
-11. 选择“保存”，保存设置。
+    执行下列两项操作或之一：
+    1. 选中“AuditLogs”复选框，将审核日志发送到存储帐户。
+    
+    1. 选中“SignInLogs”复选框，将登录日志发送到存储帐户。
 
     ![诊断设置](./media/quickstart-azure-monitor-route-logs-to-storage-account/DiagnosticSettings.png)
 
-12. 在大约 15 分钟后，验证日志是否已推送到存储帐户。 转到 [Azure 门户](https://portal.azure.com)，依次选择“存储帐户”、之前使用的存储帐户、“Blob”。  对于“审核日志”，请选择“insights-log-audit”。 对于“登录日志”，请选择“insights-logs-signin”。
+9. 选择类别后，在“保留天数”字段中，输入需要日志数据保留的天数。 默认情况下，此值为 *0*，这意味着日志将无限期地保留在存储帐户中。 如果设置其他值，早于所选天数的事件会自动清除。
+ 
+10. 选择“保存”，保存设置。
 
-    ![存储帐户](./media/quickstart-azure-monitor-route-logs-to-storage-account/StorageAccount.png)
+11. 关闭窗口以返回到“诊断设置”窗格。
 
 ## <a name="next-steps"></a>后续步骤
 

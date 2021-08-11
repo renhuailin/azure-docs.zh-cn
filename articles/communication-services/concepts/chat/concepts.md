@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3026cb66579fc228c890c6649a5fb9253405020a
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: a1dc0e266fc51d9e6ac85578f248b7df5deaadaa
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113112502"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114451287"
 ---
 # <a name="chat-concepts"></a>聊天概念 
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include-chat.md)]
 
 Azure 通信服务聊天 SDK 可用于向应用程序添加实时文本聊天。 此页汇总了重要的聊天概念和功能。    
 

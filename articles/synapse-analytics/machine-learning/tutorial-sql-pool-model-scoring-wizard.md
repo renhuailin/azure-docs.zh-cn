@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: d8db9257ad6eed98b39cd2c9a52351f013453365
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f21fb2d35dc7cb7383d756b4177924420961945f
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98935233"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113506361"
 ---
 # <a name="tutorial-machine-learning-model-scoring-wizard-preview-for-dedicated-sql-pools"></a>教程：用于专用 SQL 池的机器学习模型评分向导（预览版）
 
@@ -119,7 +119,7 @@ ms.locfileid: "98935233"
 
    ![将数据加载到专用 SQL 池](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00b.png)
 
-1. 转到“数据” > “工作区”。 通过右键单击专用 SQL 池表打开 SQL 评分向导。 选择“机器学习” > “使用现有模型进行扩充”。 
+1. 转到“数据” > “工作区”。 通过右键单击专用 SQL 池表打开 SQL 评分向导。 选择“机器学习” > “使用模型进行预测”。
 
    > [!NOTE]
    > 除非为 Azure 机器学习创建了链接服务，否则不会出现机器学习选项。 （请参阅本教程开头部分的[先决条件](#prerequisites)。）

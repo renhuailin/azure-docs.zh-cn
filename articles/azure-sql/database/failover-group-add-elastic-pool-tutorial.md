@@ -11,12 +11,12 @@ author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
 ms.date: 08/27/2019
-ms.openlocfilehash: 998eff87f590b8bf875bb0acd49006b247c74b91
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 0bd944f6e34383ea68dbf7fc410f6ae8b1050b2c
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690156"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112541835"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>教程：将 Azure SQL 数据库弹性池添加到故障转移组
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -209,11 +209,11 @@ ms.locfileid: "110690156"
    # Create a failover group between the servers
    Write-host "Creating failover group..."
    New-AzSqlDatabaseFailoverGroup `
-     â€“ResourceGroupName $resourceGroupName `
+     ResourceGroupName $resourceGroupName `
       -ServerName $serverName `
       -PartnerServerName $drServerName  `
-      â€“FailoverGroupName $failoverGroupName `
-      â€“FailoverPolicy Automatic `
+      FailoverGroupName $failoverGroupName `
+      FailoverPolicy Automatic `
       -GracePeriodWithDataLossHours 2
    Write-host "Failover group created successfully."
 

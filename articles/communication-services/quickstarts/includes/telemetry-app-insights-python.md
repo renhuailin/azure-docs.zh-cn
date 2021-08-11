@@ -1,28 +1,28 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: azure-communication-services
 author: jbeauregardb
 manager: vravikumar
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 06/01/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: jbeauregardb
-ms.openlocfilehash: f473b3dbc898a19ad9ef3118f86c7e0ab0e23229
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 6671cd542ece13385c99a7c3b5787d37703894af
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593090"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292433"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Python](https://www.python.org/downloads/) 2.7 或 3.6+。
 - 活动的通信服务资源和连接字符串。 [创建通信服务资源](../create-communication-resource.md)。
-- 在 Azure 门户中创建 [Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。
+- 在 Azure 门户中创建 [Application Insights 资源](../../../azure-monitor/app/create-new-resource.md)。
 
 ## <a name="setting-up"></a>设置
 

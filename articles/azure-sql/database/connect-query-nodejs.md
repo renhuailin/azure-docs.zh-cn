@@ -12,12 +12,12 @@ ms.author: drskwier
 ms.reviewer: mathoma, v-masebo
 ms.date: 05/19/2021
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2, devx-track-js
-ms.openlocfilehash: 0e0ec8f4cc5106ac0e9a9e72f4d9b6c0186c5fe3
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 65b4d70d9b88ec3c4275c5154bf5977bdf5dd59b
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706403"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112554669"
 ---
 # <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>快速入门：使用 Node.js 查询 Azure SQL 数据库中的数据库或 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "110706403"
 
   | 操作 | SQL 数据库 | SQL 托管实例 | Azure VM 上的 SQL Server |
   |:--- |:--- |:---|:---|
-  | 创建| [门户](single-database-create-quickstart.md) | [门户](../managed-instance/instance-create-quickstart.md) | [门户](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
+  | 创建| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
   | 配置 | [服务器级别 IP 防火墙规则](firewall-create-server-level-portal-quickstart.md)| [从 VM 进行连接](../managed-instance/connect-vm-instance-configure.md)|
@@ -117,29 +117,30 @@ ms.locfileid: "110706403"
     
     /* 
         //Use Azure VM Managed Identity to connect to the SQL database
-        const connection = new Connection({
-        server: process.env["db_server"],
-        authentication: {
-            type: 'azure-active-directory-msi-vm',
-        },
-        options: {
-            database: process.env["db_database"],
-            encrypt: true,
-            port: 1433
-        }
-    });
+        const config = {
+            server: process.env["db_server"],
+            authentication: {
+                type: 'azure-active-directory-msi-vm',
+            },
+            options: {
+                database: process.env["db_database"],
+                encrypt: true,
+                port: 1433
+            }
+        };
+        
         //Use Azure App Service Managed Identity to connect to the SQL database
-        const connection = new Connection({
-        server: process.env["db_server"],
-        authentication: {
-            type: 'azure-active-directory-msi-app-service',
-        },
-        options: {
-            database: process.env["db_database"],
-            encrypt: true,
-            port: 1433
-        }
-    });
+        const config = {
+            server: process.env["db_server"],
+            authentication: {
+                type: 'azure-active-directory-msi-app-service',
+            },
+            options: {
+                database: process.env["db_database"],
+                encrypt: true,
+                port: 1433
+            }
+        });
 
     */
 

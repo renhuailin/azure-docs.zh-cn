@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ff888cd98cc79f3e2d508b01f092102eaa038c86
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: c7e25529803b99adb4ce3a375f041b989dda3fe3
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95494754"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "113225599"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>教程：使用 Azure Cosmos DB 后端在会话和设备间共享 Azure 空间定位点
 
@@ -27,7 +27,7 @@ ms.locfileid: "95494754"
 
 将 Azure Cosmos 数据库添加到之前创建的资源组。
 
-[!INCLUDE [cosmos-db-create-dbaccount-table](../../../includes/cosmos-db-create-dbaccount-table.md)]
+[!INCLUDE [cosmos-db-create-dbaccount-table](../../cosmos-db/includes/cosmos-db-create-dbaccount-table.md)]
 
 复制 `Connection String`，因为你会需要它。
 

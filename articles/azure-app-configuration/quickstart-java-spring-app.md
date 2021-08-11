@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
 ms.author: alkemper
-ms.openlocfilehash: 40c8fae292f465b3ecc8778a21e4903bdf423a3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 301aab272d719bb89124f83d0dde0c616c37e031
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96932024"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450525"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 Java Spring 应用
 
@@ -62,25 +62,18 @@ ms.locfileid: "96932024"
 
 1. 在文本编辑器中打开 *pom.xml* 文件，将 Spring Cloud Azure Config Starter 添加到 `<dependencies>` 列表：
 
-    **Spring Cloud 1.1.x**
+    **Spring Boot 2.4**
 
     ```xml
     <dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
-        <version>1.1.5</version>
+        <groupId>com.azure.spring</groupId>
+        <artifactId>azure-spring-cloud-appconfiguration-config</artifactId>
+        <version>2.0.0</version>
     </dependency>
     ```
 
-    **Spring Cloud 1.2.x**
-
-    ```xml
-    <dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
-        <version>1.2.7</version>
-    </dependency>
-    ```
+   > [!NOTE]
+   > 如果需要支持旧版本的 Spring Boot，请参阅我们的[旧库](https://github.com/Azure/azure-sdk-for-java/blob/spring-cloud-starter-azure-appconfiguration-config_1.2.9/sdk/appconfiguration/spring-cloud-starter-azure-appconfiguration-config/README.md)。
 
 1. 在应用的包目录中创建名为 MessageProperties.java 的新 Java 文件  。 添加以下行：
 

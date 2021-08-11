@@ -2,14 +2,14 @@
 title: 检测运动并在边缘设备上录制视频 - Azure
 description: 使用 Azure 视频分析器分析来自（模拟）IP 相机的实时视频源。 本快速入门介绍如何检测是否存在任何运动，如果存在，则将 MP4 视频剪辑录制到边缘设备上的本地文件系统中。 本快速入门将 Azure VM 用作 IoT Edge 设备，并且还使用模拟的实时视频流。
 ms.topic: quickstart
-ms.date: 04/01/2021
+ms.date: 06/01/2021
 zone_pivot_groups: video-analyzer-programming-languages
-ms.openlocfilehash: 38886673f57c4142dc1fd8cd5bd397a375aca4db
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e79a2aa9027309838fd0a0fcc79096e27651e7be
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385090"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601627"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>快速入门：检测运动并在边缘设备上录制视频
 
@@ -68,7 +68,13 @@ ms.locfileid: "110385090"
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/vscode-common-screenshots/verbose-message.png" alt-text= "Show Verbose Message":::
 
-1. 通过选择 F5 键启动调试会话。 “终端”窗口会打印一些消息。
+1.  ::: zone pivot="programming-language-csharp"
+    [!INCLUDE [header](includes/common-includes/csharp-run-program.md)]
+    ::: zone-end
+
+    ::: zone pivot="programming-language-python"
+    [!INCLUDE [header](includes/common-includes/python-run-program.md)]
+    ::: zone-end
 1. operations.json 代码调用直接方法 `pipelineTopologyList` 和 `livePipelineList`。 如果在学完先前的快速入门后清理了资源，则该过程将返回空列表，然后暂停。 按 Enter 键。
 
    ```

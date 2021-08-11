@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 25a308f3a162e675b4d0ae3f7a706f6b85a5ce57
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: fbe5fc8d11763f036a9991d3e2fefcd183feadbb
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110163247"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113280108"
 ---
 语音服务的核心功能之一是能够识别并转录人类语音（通常称为语音转文本）。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音转文本转换。
 
@@ -45,10 +45,10 @@ import azure.cognitiveservices.speech as speechsdk
 
 ## <a name="create-a-speech-configuration"></a>创建语音配置
 
-若要使用语音 SDK 调用语音服务，需要创建 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)。 此类包含有关你的订阅的信息，例如你的密钥和关联的区域、终结点、主机或授权令牌。 使用密钥和区域创建 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)。 请参阅[查找密钥和区域](../../../overview.md#find-keys-and-region)页面，查找密钥区域对。
+若要使用语音 SDK 调用语音服务，需要创建 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)。 此类包含有关订阅的信息，例如密钥和关联的位置/区域、终结点、主机或授权令牌。 使用密钥和位置/区域创建 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)。 请参阅[查找密钥和位置/区域](../../../overview.md#find-keys-and-locationregion)页面，查找密钥位置/区域对。
 
 ```Python
-speech_config = speechsdk.SpeechConfig(subscription="<paste-your-subscription-key>", region="<paste-your-region>")
+speech_config = speechsdk.SpeechConfig(subscription="<paste-your-speech-key-here>", region="<paste-your-speech-location/region-here>")
 ```
 
 可以通过以下其他几种方法初始化 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)：
@@ -68,7 +68,7 @@ speech_config = speechsdk.SpeechConfig(subscription="<paste-your-subscription-ke
 import azure.cognitiveservices.speech as speechsdk
 
 def from_mic():
-    speech_config = speechsdk.SpeechConfig(subscription="<paste-your-subscription-key>", region="<paste-your-region>")
+    speech_config = speechsdk.SpeechConfig(subscription="<paste-your-speech-key-here>", region="<paste-your-speech-location/region-here>")
     speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
     
     print("Speak into your microphone.")
@@ -88,7 +88,7 @@ from_mic()
 import azure.cognitiveservices.speech as speechsdk
 
 def from_file():
-    speech_config = speechsdk.SpeechConfig(subscription="<paste-your-subscription-key>", region="<paste-your-region>")
+    speech_config = speechsdk.SpeechConfig(subscription="<paste-your-speech-key-here>", region="<paste-your-speech-location/region-here>")
     audio_input = speechsdk.AudioConfig(filename="your_file_name.wav")
     speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_input)
     
@@ -103,7 +103,7 @@ from_file()
 前面的示例只从 `result.text` 获取已识别的文本，但要处理错误和其他响应，需要编写一些代码来处理结果。 以下代码评估 [`result.reason`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.resultreason) 属性并：
 
 * 输出识别结果：`speechsdk.ResultReason.RecognizedSpeech`
-* 如果没有识别匹配项，请通知用户：`speechsdk.ResultReason.NoMatch `
+* 如果没有识别匹配项，请通知用户：`speechsdk.ResultReason.NoMatch`
 * 如果遇到错误，则输出错误消息：`speechsdk.ResultReason.Canceled`
 
 ```Python
@@ -209,7 +209,7 @@ speech_config.speech_recognition_language="de-DE"
 > [!IMPORTANT]
 > “短语列表”功能适用于以下语言：en-US、de-DE、en-AU、en-CA、en-GB、en-IN、es-ES、fr-FR、it-IT、ja-JP、pt-BR、zh-CN
 >
-> 对于其他区域设置，如果有大量短语，那么提高准确性的一个更好的做法是[训练自定义模型](../../../custom-speech-overview.md)。
+> 应在短语数量只有几百的情况下使用短语列表功能。 如果列表较大或语言当前不受支持，则[训练自定义模型](../../../custom-speech-overview.md)可能是提高准确性的更好选择。
 >
 > 不要对自定义终结点使用“短语列表”功能。 而是训练包含短语的自定义模型。
 

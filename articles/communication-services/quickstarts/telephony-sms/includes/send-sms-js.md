@@ -1,21 +1,21 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: azure-communication-services
 author: bertong
 manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/11/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: bertong
-ms.openlocfilehash: b618a2d33b812d964d48618b42421bdce109f28d
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 321e9ae3ccfb994a324b653c3e67fbae9b6b6f4c
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111430257"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113111950"
 ---
 通过使用通信服务 JavaScript 短信 SDK 发送短信，开始使用 Azure 通信服务。
 

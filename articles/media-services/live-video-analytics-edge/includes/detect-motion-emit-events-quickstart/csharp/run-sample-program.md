@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 766dd13f58268c044435a22fb30c1de816d4d151
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b173a5fe639ff21cc8a475edd16d0e3885dacef
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97531890"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113280043"
 ---
 若要运行该示例代码，请按照以下步骤执行：
 
@@ -26,6 +26,14 @@ ms.locfileid: "97531890"
     `"topologyName" : "MotionDetection"`
     
 1. 通过选择 F5 键启动调试会话。 “终端”窗口将显示一些消息。
+
+    当你首次使用 F5 启动调试会话时，系统会提示你输入环境类型和项目。 这样就会在文件夹中创建和配置 launch.json 文件。 在此演示中，请使用以下项：
+    * 环境 - .Net Core
+    * 项目 - c2d-console-app
+    
+    创建 launch.json 文件后对其进行编辑。 将控制台配置更改为“integratedTeminal”。
+    
+    `"console": "integratedTerminal"`
 1. operations.json 文件首先调用 `GraphTopologyList` 和 `GraphInstanceList`。 如果在完成先前的快速入门后清理了资源，则该过程将返回空列表，然后暂停。 若要继续，请选择 Enter 键。
 
     ```

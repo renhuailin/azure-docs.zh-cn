@@ -6,17 +6,17 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 20226c4c0e750a7a5167f00d5804a5aac76307ce
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: dd8b4872f60b274741808033d73492130710a066
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560562"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112535648"
 ---
 本快速入门介绍如何使用适用于 Android 的 Azure 通信服务通话 SDK 加入 Teams 会议。
 
-> [!NOTE]
-> 在 [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/join-call-to-teams-meeting) 上查找此快速入门的最终代码
+## <a name="sample-code"></a>代码示例
+在 [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/join-call-to-teams-meeting) 上查找此快速入门的最终代码。
 
 ## <a name="prerequisites"></a>先决条件
 

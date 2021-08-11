@@ -7,13 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/11/2018
-ms.openlocfilehash: a1e30bb59d81e949720560f2ce5da796a2c7fbe2
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 06/07/2021
+ms.openlocfilehash: 3891cf49f536cea11049e4bcea05f90eb7892ac2
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905335"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113216992"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>使用 Azure 门户对 Azure 数据工厂管道中的活动进行分支和链接
 
@@ -166,9 +166,9 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 - 将一个活动连接到另一个活动（成功和失败时）
 - 使用一个活动的输出作为后续活动的输入
 
-1. 在数据工厂 UI 的“入门”页中，单击“创建管道”磁贴。  
+1. 在数据工厂 UI 的主页中，单击“协调”磁贴。  
 
-   ![“入门”页](./media/tutorial-control-flow-portal/get-started-page.png)
+   ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
 3. 在管道的属性窗口中切换到“参数”选项卡，并使用“新建”按钮添加字符串类型的以下三个参数：sourceBlobContainer、sinkBlobContainer 和 receiver。
 
     - **sourceBlobContainer** – 源 Blob 数据集使用的管道中的参数。

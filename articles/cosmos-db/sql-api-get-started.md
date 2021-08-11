@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ece9ed5cb6eb6ea706db1ed615a64d001f2b17c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c317987d382ba5e52e99bbd2a775bf080a51b11f
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102423945"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112239457"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>教程：生成一个用于在 Azure Cosmos DB SQL API 帐户中管理数据的 .NET 控制台应用
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -50,15 +50,15 @@ ms.locfileid: "102423945"
 
 * 有效的 Azure 帐户。 如果没有，可以注册 [免费帐户](https://azure.microsoft.com/free/)。
 
-  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+  [!INCLUDE [cosmos-db-emulator-docdb-api](includes/cosmos-db-emulator-docdb-api.md)]
 
-* [!INCLUDE [cosmos-db-emulator-vs](../../includes/cosmos-db-emulator-vs.md)]
+* [!INCLUDE [cosmos-db-emulator-vs](includes/cosmos-db-emulator-vs.md)]
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>步骤 1：创建 Azure Cosmos DB 帐户
 
 让我们创建一个 Azure Cosmos DB 帐户。 如果已经有要使用的帐户，请跳过此部分。 若要使用 Azure Cosmos DB 模拟器，请按照 [Azure Cosmos DB 模拟器](local-emulator.md)中的步骤设置该模拟器。 然后跳转到[步骤 2：设置 Visual Studio 项目](#SetupVS)。
 
-[!INCLUDE [create-dbaccount-preview](../../includes/cosmos-db-create-dbaccount.md)]
+[!INCLUDE [create-dbaccount-preview](includes/cosmos-db-create-dbaccount.md)]
 
 ## <a name="step-2-set-up-your-visual-studio-project"></a><a id="SetupVS"></a>步骤 2：设置 Visual Studio 项目
 
@@ -154,7 +154,7 @@ ms.locfileid: "102423945"
 
     控制台会显示消息“演示结束，请按任意键退出”。 此消息确认应用程序已连接到 Azure Cosmos DB。 然后即可关闭控制台窗口。
 
-祝贺你！ 你已成功连接到 Azure Cosmos DB 帐户。
+祝贺！ 你已成功连接到 Azure Cosmos DB 帐户。
 
 ## <a name="step-4-create-a-database"></a>步骤 4：创建数据库
 
@@ -270,7 +270,7 @@ ms.locfileid: "102423945"
             });
    ```
 
-祝贺你！ 你已成功创建 Azure Cosmos 数据库。  
+祝贺！ 你已成功创建 Azure Cosmos 数据库。  
 
 ## <a name="step-5-create-a-container"></a><a id="CreateColl"></a>步骤 5：创建容器
 
@@ -301,7 +301,7 @@ ms.locfileid: "102423945"
 
 1. 选择 F5 来运行应用程序。
 
-祝贺你！ 你已成功创建 Azure Cosmos 容器。  
+祝贺！ 你已成功创建 Azure Cosmos 容器。  
 
 ## <a name="step-6-add-items-to-the-container"></a><a id="CreateDoc"></a>步骤 6：向容器添加项
 
@@ -342,7 +342,7 @@ ms.locfileid: "102423945"
 
 1. 选择 F5 来运行应用程序。
 
-祝贺你！ 你已成功创建两个 Azure Cosmos 项。  
+祝贺！ 你已成功创建两个 Azure Cosmos 项。  
 
 ## <a name="step-7-query-azure-cosmos-db-resources"></a><a id="Query"></a>步骤 7：查询 Azure Cosmos DB 资源
 
@@ -370,7 +370,7 @@ Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查�
 
 1. 选择 F5 来运行应用程序。
 
-祝贺你！ 你已成功查询 Azure Cosmos 容器。
+祝贺！ 你已成功查询 Azure Cosmos 容器。
 
 ## <a name="step-8-replace-a-json-item"></a><a id="ReplaceItem"></a>步骤 8：替换 JSON 项
 
@@ -399,7 +399,7 @@ Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查�
 
 1. 选择 F5 来运行应用程序。
 
-祝贺你！ 你已成功替换 Azure Cosmos 项。
+祝贺！ 你已成功替换 Azure Cosmos 项。
 
 ## <a name="step-9-delete-item"></a><a id="DeleteDocument"></a>步骤 9：删除项目
 
@@ -429,7 +429,7 @@ Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查�
 
 1. 选择 F5 来运行应用程序。
 
-祝贺你！ 你已成功删除 Azure Cosmos 项。
+祝贺！ 你已成功删除 Azure Cosmos 项。
 
 ## <a name="step-10-delete-the-database"></a><a id="DeleteDatabase"></a>步骤 10：删除数据库
 
@@ -445,7 +445,7 @@ Azure Cosmos DB 支持对存储在每个容器中的 JSON 文档进行各种查�
 
 1. 选择 F5 来运行应用程序。
 
-祝贺你！ 你已成功删除 Azure Cosmos 数据库。
+祝贺！ 你已成功删除 Azure Cosmos 数据库。
 
 ## <a name="step-11-run-your-c-console-application-all-together"></a><a id="Run"></a>步骤 11：一起运行 C# 控制台应用程序！
 
@@ -478,7 +478,7 @@ Deleted Database: FamilyDatabase
 End of demo, press any key to exit.
 ```
 
-祝贺你！ 已经完成了本教程，并且获得了一个正常工作的 C# 控制台应用程序！
+祝贺！ 已经完成了本教程，并且获得了一个正常工作的 C# 控制台应用程序！
 
 ## <a name="get-the-complete-tutorial-solution"></a><a id="GetSolution"></a>获取完整的教程解决方案
 

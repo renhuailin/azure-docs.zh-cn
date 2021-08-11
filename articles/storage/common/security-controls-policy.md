@@ -1,18 +1,18 @@
 ---
 title: Azure 存储的 Azure Policy 法规遵从性控制措施
 description: 列出可用于 Azure 存储的 Azure Policy 法规遵从性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 06/11/2021
+ms.date: 07/16/2021
 ms.topic: sample
 author: twooley
 ms.author: twooley
 ms.service: storage
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 094bfe33753a5410e89bb582a971728284885793
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: b01d6ca2e42bf063b2d20c3534e0abea76f613e3
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027707"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114401795"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-storage"></a>Azure 存储的 Azure Policy 法规遵从性控制措施
 

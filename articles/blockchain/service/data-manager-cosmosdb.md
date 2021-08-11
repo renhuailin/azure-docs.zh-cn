@@ -4,12 +4,12 @@ description: 使用适用于 Azure 区块链服务的区块链数据管理器向
 ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: b054688fb524d82e758f2ac1a9ff643293bc3b29
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 22b9d881064749fa7f2a17460a9fb1cb6d0f71df
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "110465741"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112239902"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>教程：使用区块链数据管理器向 Azure Cosmos DB 发送数据
 
@@ -164,7 +164,7 @@ ms.locfileid: "110465741"
 
 ## <a name="create-azure-cosmos-db"></a>创建 Azure Cosmos DB
 
-[!INCLUDE [cosmos-db-create-storage-account](../../../includes/cosmos-db-create-dbaccount.md)]
+[!INCLUDE [cosmos-db-create-storage-account](../../cosmos-db/includes/cosmos-db-create-dbaccount.md)]
 
 ### <a name="add-a-database-and-container"></a>添加数据库和容器
 
@@ -294,7 +294,7 @@ SendRequest 函数设置 **RequestMessage** 和 **State** 字段。 **RequestMes
 当不再需要时，可以删除用于本教程的资源和资源组。 删除资源组的步骤：
 
 1. 在 Azure 门户中，导航至左侧导航窗格中的“资源组”  ，然后选择要删除的资源组。
-1. 选择“删除资源组”。 输入资源组名称确认删除并选择“删除”  。
+1. 选择“删除资源组”  。 输入资源组名称确认删除并选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

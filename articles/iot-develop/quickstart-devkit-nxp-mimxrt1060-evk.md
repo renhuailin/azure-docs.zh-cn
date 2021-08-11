@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/04/2021
-ms.openlocfilehash: 9d843b2a75c5e5dff21c27f3c486c372408719d5
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 58986ee94998dde88f8113449b460a0208156463
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904114"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112122045"
 ---
 # <a name="quickstart-connect-an-nxp-mimxrt1060-evk-evaluation-kit-to-iot-central"></a>快速入门：将 NXP MIMXRT1060-EVK 评估工具包连接到 IoT Central
 
@@ -46,7 +46,7 @@ ms.locfileid: "111904114"
 
 ### <a name="clone-the-repo-for-the-quickstart"></a>克隆本快速入门所需的存储库
 
-克隆以下存储库以下载所有示例设备代码、安装脚本和文档的脱机版本。 如果你以前在另一篇快速入门中克隆过此存储库，则无需再次执行此操作。
+克隆以下存储库以下载所有示例设备代码、安装脚本和文档的脱机版本。 如果以前在另一篇快速入门中克隆过此存储库，则无需再次执行此操作。
 
 要克隆存储库，请运行以下命令：
 
@@ -56,7 +56,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="install-the-tools"></a>安装工具
 
-克隆的存储库包含用于安装和配置所需工具的安装脚本。 如果你在另一篇嵌入式设备快速入门中安装了这些工具，则无需再次执行此操作。
+克隆的存储库包含用于安装和配置所需工具的安装脚本。 如果在另一篇嵌入式设备快速入门中安装了这些工具，则无需再次执行此操作。
 
 > [!NOTE]
 > 安装脚本将安装以下工具：
@@ -131,7 +131,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 1. 启动 **Termite**。
     > [!TIP]
-    > 如果刷写后在设备进行初始化或连接时遇到问题，请参阅[故障排除](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)。
+    > 如果刷写后在设备进行初始化或连接时遇到问题，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)。
 1. 选择“设置”。
 1. 在“串行端口设置”对话框中，检查以下设置并根据需要进行更新：
     * **波特率**：115,200
@@ -226,7 +226,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ## <a name="troubleshoot-and-debug"></a>故障排除和调试
 
-如果在生成设备代码、刷写设备或进行连接时遇到问题，请参阅[故障排除](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)。
+如果在生成设备代码、刷写设备或进行连接时遇到问题，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)。
 
 要调试应用程序，请参阅[使用 Visual Studio Code 进行调试](https://github.com/azure-rtos/getting-started/blob/master/docs/debugging.md)。
 

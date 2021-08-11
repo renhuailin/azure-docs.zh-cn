@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: effab14316c4a959f22467b9cc50984b6571da55
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: f01b75cac9fba9e0975882560920f6c6ceee7dc7
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107872148"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136636"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>快速入门：在 .NET Framework 中使用 Azure Cache for Redis
 
@@ -51,9 +51,9 @@ ms.locfileid: "107872148"
 
 ## <a name="create-a-console-app"></a>创建控制台应用
 
-在 Visual Studio 中，单击“文件”   > “新建”   > “项目”  。
+在 Visual Studio 中，选择“文件” > “新建” > “项目”。
 
-选择“控制台应用(.NET Framework)”  ，然后选择“下一步”  以配置应用。 键入 **项目名称**，验证是否已选择 **.NET Framework 4.6.1** 或更高版本，然后单击 **创建** 以创建新的控制台应用程序。
+选择“控制台应用(.NET Framework)”  ，然后选择“下一步”  以配置应用。 键入项目名称，验证是否已选中 .NET Framework 4.6.1 或更高版本，然后选择“创建”以创建新的控制台应用程序。
 
 <a name="configure-the-cache-clients"></a>
 
@@ -61,7 +61,7 @@ ms.locfileid: "107872148"
 
 在本部分，请配置控制台应用程序，以便将 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) 客户端用于 .NET。
 
-在 Visual Studio 中单击“工具”   >   “NuGet 包管理器” >   “包管理器控制台”，然后在“包管理器控制台”窗口中运行以下命令。
+在 Visual Studio 中，选择“工具” > “NuGet 包管理器” > “包管理器控制台”，然后从“包管理器控制台”窗口运行以下命令。  
 
 ```powershell
 Install-Package StackExchange.Redis
@@ -85,7 +85,7 @@ Install-Package StackExchange.Redis
 </configuration>
 ```
 
-在解决方案资源管理器中右键单击“引用”，然后单击“添加引用”。   添加对 **System.Configuration** 程序集的引用。
+在解决方案资源管理器中，右键单击“引用”并选择“添加引用”。  添加对 **System.Configuration** 程序集的引用。
 
 将以下 `using` 语句添加到 *Program.cs*：
 
@@ -325,7 +325,7 @@ static void Main(string[] args)
 }
 ```
 
-Azure Redis 缓存具有可配置的数据库数量（默认为 16 个），因此可以通过逻辑方式隔离 Azure Redis 缓存中的数据。 该代码连接到默认数据库 DB 0。 有关详细信息，请参阅[什么是 Redis 数据库？](cache-development-faq.md#what-are-redis-databases)和[默认 Redis 服务器配置](cache-configure.md#default-redis-server-configuration)。
+Azure Redis 缓存具有可配置的数据库数量（默认为 16 个），因此可以通过逻辑方式隔离 Azure Redis 缓存中的数据。 该代码连接到默认数据库 DB 0。 有关详细信息，请参阅[什么是 Redis 数据库？](cache-development-faq.yml#what-are-redis-databases-)和[默认 Redis 服务器配置](cache-configure.md#default-redis-server-configuration)。
 
 可以使用 `StringSet` 和 `StringGet` 方法来存储和检索缓存项。
 
@@ -344,7 +344,7 @@ Azure Redis 缓存可以缓存 .NET 对象以及基元数据类型，但在缓�
 
 将对象序列化的一种简单方式是使用 [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) 中的 `JsonConvert` 序列化方法，并与 JSON 相互序列化。 在本部分中，将向缓存中添加一个 .NET 对象。
 
-在 Visual Studio 中单击“工具”   >   “NuGet 包管理器” >   “包管理器控制台”，然后在“包管理器控制台”窗口中运行以下命令。
+在 Visual Studio 中，选择“工具” > “NuGet 包管理器” > “包管理器控制台”，然后从“包管理器控制台”窗口运行以下命令。  
 
 ```powershell
 Install-Package Newtonsoft.Json
@@ -402,16 +402,16 @@ class Employee
 如果已完成快速入门示例应用程序，可以删除本快速入门中创建的 Azure 资源，以免产生费用。 
 
 > [!IMPORTANT]
-> 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
+> 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可在左侧逐个删除这些资源，而不是删除资源组。
 >
 
-登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
+登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。 
 
-在“按名称筛选...”文本框中键入资源组的名称。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组” 。
+在“按名称筛选...”文本框中键入资源组的名称。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，选择“...”，然后选择“删除资源组”   。
 
 ![删除](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 
-系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”。
+系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后选择“删除”。
 
 片刻之后，将会删除该资源组及其包含的所有资源。
 

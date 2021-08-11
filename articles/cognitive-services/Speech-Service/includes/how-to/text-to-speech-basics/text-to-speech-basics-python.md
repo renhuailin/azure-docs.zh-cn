@@ -2,14 +2,14 @@
 author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/25/2020
+ms.date: 07/02/2021
 ms.author: trbye
-ms.openlocfilehash: 9d6d6ec36d5ab7d29b3050dafda5fd711b01f1f4
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: f7e57b90b7d81c27d8e8fa2eda63203968f641d7
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107108858"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113280122"
 ---
 本快速入门介绍使用语音 SDK 进行文本到语音合成的常见设计模式。 首先，请进行基本的配置和合成，然后通过更高级的示例来了解自定义应用程序开发，其中包括：
 
@@ -49,22 +49,22 @@ from azure.cognitiveservices.speech.audio import AudioOutputConfig
 
 ## <a name="create-a-speech-configuration"></a>创建语音配置
 
-若要使用语音 SDK 调用语音服务，需要创建 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)。 此类包含有关你的订阅的信息，例如你的密钥和关联的区域、终结点、主机或授权令牌。
+若要使用语音 SDK 调用语音服务，需要创建 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)。 此类包含有关你的订阅的信息，例如你的语音密钥和关联的位置/区域、终结点、主机或授权令牌。
 
 > [!NOTE]
 > 无论你是要执行语音识别、语音合成、翻译，还是意向识别，都需要创建一个配置。
 
 可以通过以下几种方法初始化 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)：
 
-* 使用订阅：传入密钥和关联的区域。
-* 使用终结点：传入语音服务终结点。 密钥或授权令牌是可选的。
-* 使用主机：传入主机地址。 密钥或授权令牌是可选的。
-* 使用授权令牌：传入授权令牌和关联的区域。
+* 使用订阅：传入语音密钥和关联的位置/区域。
+* 使用终结点：传入语音服务终结点。 语音密钥或授权令牌是可选项。
+* 使用主机：传入主机地址。 语音密钥或授权令牌是可选项。
+* 使用授权令牌：传入授权令牌和关联的位置/区域。
 
-在此示例中，你将使用订阅密钥和区域创建一个 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)。 按照[免费试用语音服务](../../../overview.md#try-the-speech-service-for-free)中的以下步骤获取这些凭据。
+在此示例中，使用语音密钥和位置/区域创建 [`SpeechConfig`](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)。 按照[免费试用语音服务](../../../overview.md#try-the-speech-service-for-free)中的以下步骤获取这些凭据。
 
 ```python
-speech_config = SpeechConfig(subscription="YourSubscriptionKey", region="YourServiceRegion")
+speech_config = SpeechConfig(subscription="<paste-your-speech-key-here>", region="<paste-your-speech-location/region-here>")
 ```
 
 ## <a name="synthesize-speech-to-a-file"></a>将语音合成到文件中

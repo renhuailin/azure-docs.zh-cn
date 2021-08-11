@@ -5,13 +5,13 @@ author: dcstwh
 ms.author: weetok
 ms.service: data-factory
 ms.topic: overview
-ms.date: 09/30/2019
-ms.openlocfilehash: f5259294734b3b0c33835759beadb2ad4e1089a9
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 06/08/2021
+ms.openlocfilehash: 0a11f8954637fe93aa8d0dc5ee8266347d822ded
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744712"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114362462"
 ---
 # <a name="what-is-azure-data-factory"></a>什么是 Azure 数据工厂？
 
@@ -37,11 +37,11 @@ Azure 数据工厂是解决此类数据方案的平台。 它是基于云的 ETL
 
 数据工厂包含一系列为数据工程师提供完整端到端平台的互连系统。
 
-本图解指南在高层次概述了数据工厂体系结构：
+本视觉指南简要概述了数据工厂体系结构：
 
 :::image type="content" source="media\introduction\data-factory-visual-guide-small.png" alt-text="完整系统体系结构的详细图解指南，用一张高分辨率图片来表示。" lightbox="media\introduction\data-factory-visual-guide.png":::
 
-若要查看更多详细信息，请单击前面的图像进行放大，或浏览到[高分辨率图像](/azure/data-factory/media/introduction/data-factory-visual-guide.png#lightbox)。 
+若要查看更多详细信息，请单击前面的图像进行放大，或浏览到[高分辨率图像](/azure/data-factory/media/introduction/data-factory-visual-guide.png)。 
 
 ### <a name="connect-and-collect"></a>连接和收集
 
@@ -97,13 +97,16 @@ Azure 数据工厂是解决此类数据方案的平台。 它是基于云的 ETL
 
 - 代表可托管活动执行的 **计算资源**。 例如，HDInsightHive 活动在 HDInsight Hadoop 群集上运行。 有关转换活动列表和支持的计算环境，请参阅[转换数据](transform-data.md)一文。
 
+### <a name="integration-runtime"></a>Integration Runtime
+在数据工厂中，活动定义要执行的操作。 链接服务定义目标数据存储或计算服务。 集成运行时提供活动和链接服务之间的桥梁。  它被链接服务或活动引用，提供运行或分派活动的计算环境。 这样一来，可以在最接近目标数据存储的区域中执行活动，或者，以最优性能计算服务的同时满足安全和合规性需求。
+
 ### <a name="triggers"></a>触发器
 触发器代表处理单元，用于确定何时需要启动管道执行。 不同类型的事件有不同类型的触发器类型。
 
 ### <a name="pipeline-runs"></a>管道运行
 管道运行是管道执行实例。 管道运行通常是通过将自变量传递给管道中定义的参数来实例化的。 自变量可手动传递，也可在触发器定义中传递。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 参数是只读配置的键值对。  参数是在管道中定义的。 所定义的参数的自变量是在执行期间通过由触发器创建的运行上下文传递的或通过手动执行的管道传递的。 管道中的活动使用参数值。
 
 数据集是强类型参数和可重用/可引用的实体。 活动可以引用数据集并且可以使用数据集定义中所定义的属性。

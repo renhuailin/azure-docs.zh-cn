@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 7c19c4963ad8c378e1282180800fd839e20edfdd
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a0952301da222282ff5f1e283a9326328da2715e
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056328"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "114289604"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建公共负载均衡器，以便对 VM 进行负载均衡
 
@@ -279,6 +279,8 @@ ms.locfileid: "106056328"
     | 可用性区域 | **2** |**3**|
     | 网络安全组 | 选择现有的“myNSG”| 选择现有的“myNSG”|
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="create-outbound-rule-configuration"></a>创建出站规则配置
 负载均衡器出站规则为后端池中的 VM 配置出站 SNAT。 
 
@@ -458,7 +460,7 @@ ms.locfileid: "106056328"
     | 时间间隔 | 输入 **15** 作为两次探测尝试之间的 **时间间隔**（以秒为单位）。 |
     | 不正常阈值 | 选择“2”，作为将 VM 视为不正常所要达到的 **不正常阈值** 或连续探测失败次数。|
 
-3. 选择“确定” 。
+3. 选择“确定”  。
 
 ### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 
@@ -564,6 +566,8 @@ ms.locfileid: "106056328"
     | 名称 |  **myVM2** |**myVM3**|
     | 可用性集| 选择“myAvailabilitySet” | 选择“myAvailabilitySet”|
     | 网络安全组 | 选择现有的“myNSG”| 选择现有的“myNSG”|
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ### <a name="add-virtual-machines-to-the-backend-pool"></a>向后端池添加虚拟机
 

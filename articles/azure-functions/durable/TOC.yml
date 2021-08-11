@@ -29,7 +29,7 @@
   items:
     - name: 函数链
       href: durable-functions-sequence.md
-    - name: 扇入/扇出
+    - name: 扇出/扇入
       href: durable-functions-cloud-backup.md
     - name: 监视器（C#、JavaScript）
       href: durable-functions-monitor.md

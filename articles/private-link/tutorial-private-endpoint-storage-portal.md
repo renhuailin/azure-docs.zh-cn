@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: eefef0eb61df9aa0597206b537f3d58e8b8b3213
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65874a66fd6e3843f7d1a3dc1e7d088d392df645
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96484815"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "114284996"
 ---
 # <a name="tutorial-connect-to-a-storage-account-using-an-azure-private-endpoint"></a>教程：使用 Azure 专用终结点连接到存储帐户
 
@@ -28,7 +28,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅
 
@@ -131,6 +131,8 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 5. 选择“查看 + 创建”。 
   
 6. 检查设置，然后选择“创建”。
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="create-storage-account-with-a-private-endpoint"></a>创建采用专用终结点的存储帐户
 

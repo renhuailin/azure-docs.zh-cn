@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: 8d634cf7cb5a500e8ff36222419600b6059c9a74
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: d6cb1980c93e5161f02b79b05f1128ba777027c6
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489320"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112281946"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-azure-powershell-preview"></a>教程：使用 Azure PowerShell 添加角色分配条件以限制对 Blob 的访问（预览版）
 
@@ -30,7 +30,7 @@ ms.locfileid: "109489320"
 
 > [!div class="checklist"]
 > * 将条件添加到角色分配
-> * 基于 Blob 索引标记限制对 Blob 的访问
+> * 基于 blob 索引标记限制对 blob 的访问
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,13 +38,13 @@ ms.locfileid: "109489320"
 
 ## <a name="condition"></a>条件
 
-在本教程中，你将使用特定的标记来限制对 Blob 的访问。 例如，将条件添加到角色分配，使 Chandra 只能读取带有 Project=Cascade 标记的文件。
+在本教程中，你将使用特定的标记来限制对 blob 的访问。 例如，将条件添加到角色分配，使 Chandra 只能读取带有 Project=Cascade 标记的文件。
 
 ![使用条件的角色分配的示意图。](./media/shared/condition-role-assignment-rg.png)
 
-如果 Chandra 尝试读取不带 Project=Cascade 标记的 Blob，则访问将被拒绝。
+如果 Chandra 尝试读取不带 Project=Cascade 标记的 blob，则访问将被拒绝。
 
-![显示对带有 Project=Cascade 标记的 Blob 进行读取访问的示意图。](./media/shared/condition-access.png)
+![显示对带有 Project=Cascade 标记的 blob 进行读取访问的示意图。](./media/shared/condition-access.png)
 
 下面是条件在代码中的大致形式：
 
@@ -110,8 +110,6 @@ ms.locfileid: "109489320"
     $context = Get-AzSubscription -SubscriptionId $subscriptionId
     Set-AzContext $context
     ```
-
-1. 如果尚未这样做，请注册你的订阅以使用 Blob 索引标记。 有关详细信息，请参阅[注册订阅（预览版）](../blobs/storage-manage-find-blobs.md#register-your-subscription-preview)。
 
 ## <a name="step-3-create-a-user"></a>步骤 3：创建用户
 
@@ -258,7 +256,7 @@ ms.locfileid: "109489320"
     Get-AzStorageBlob -Container $containerName -Blob $blobNameBaker -Context $bearerCtx 
     ```
 
-    下面是一个输出示例。 你会发现，由于添加了上述条件，无法读取该文件。
+    下面是一个输出示例。 请注意，由于添加了上述条件，因此无法读取该文件。
     
     ```azurepowershell
     Get-AzStorageBlob : This request is not authorized to perform this operation using this permission. HTTP Status Code:

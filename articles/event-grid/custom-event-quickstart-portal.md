@@ -1,18 +1,25 @@
 ---
-title: 快速入门：将自定义事件发送到 Web 终结点 - 事件网格，Azure 门户
+title: 将自定义事件发送到 Web 终结点 - 事件网格，Azure 门户
 description: 快速入门：使用 Azure 事件网格和 Azure 门户发布自定义主题，然后订阅该主题的事件。 事件由 Web 应用程序处理。
-ms.date: 04/22/2021
+ms.date: 07/01/2021
 ms.topic: quickstart
-ms.openlocfilehash: 91ac5cfd65910a6297f78f34943331d5b911559b
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: a2d259707e6bfbcc5216b345107507413da71523
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107895732"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113232441"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>快速入门：使用 Azure 门户和事件网格将自定义事件路由到 Web 终结点
+# <a name="route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>使用 Azure 门户和事件网格将自定义事件路由到 Web 终结点
+事件网格是一项全面托管的服务，可用于在许多不同的 Azure 服务和应用程序中轻松管理事件。 它简化了生成事件驱动的应用程序和无服务器应用程序的过程。 有关服务的概述，请参阅[事件网格概述](overview.md)。
 
-Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 Azure 门户创建一个自定义主题，然后订阅该自定义主题，再触发可查看结果的事件。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
+在本文中，你将使用 Azure 门户执行以下任务： 
+
+1. 创建自定义主题。
+1. 订阅自定义主题。
+1. 触发事件。
+1. 查看结果。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
+
 
 ## <a name="prerequisites"></a>先决条件
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
@@ -20,16 +27,13 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
 
 ## <a name="create-a-custom-topic"></a>创建自定义主题
-
 事件网格主题提供用户定义的终结点，可向其发布事件。 
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在主题的搜索栏中，键入“事件网格主题”，然后从下拉列表中选择“事件网格主题” 。 
 
     :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="搜索并选择“事件网格主题”":::
-3. 在“事件网格主题”页上的工具栏中选择“添加”。  
-
-    :::image type="content" source="./media/custom-event-quickstart-portal/add-event-grid-topic-button.png" alt-text="“添加事件网格主题”按钮":::
+3. 在“事件网格主题”页上的工具栏中选择“+ 创建”。  
 4. 在“创建主题”页上执行以下步骤：
     1. 选择 **Azure 订阅**。
     2. 选择现有的资源组，或者选择“新建”并输入 **资源组** 的 **名称**。
@@ -41,14 +45,9 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
     6. 在“创建主题”页的“查看 + 创建”选项卡上，选择“创建”  。 
     
         :::image type="content" source="./media/custom-event-quickstart-portal/review-create-page.png" alt-text="查看设置并创建":::
-5. 部署成功后，在搜索栏中再次键入“事件网格主题”，然后像之前一样从下拉列表中选择“事件网格主题” 。 
-6. 选择从列表中创建的主题。 
+5. 部署成功后，选择“转到资源”以导航到主题的“事件网格主题”页。 请将此页保持打开状态， 稍后在本快速入门中需要使用此页。 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="从列表中选择主题":::
-
-7. 此时会显示主题的“事件网格主题”页。 请将此页保持打开状态， 稍后在本快速入门中需要使用此页。 
-
-    :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="“事件网格主题”主页":::
+    :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="屏幕截图，显示“事件网格主题”主页":::
 
 ## <a name="create-a-message-endpoint"></a>创建消息终结点
 在为自定义主题创建订阅之前，请先创建事件消息的终结点。 通常情况下，终结点基于事件数据执行操作。 为了简化此快速入门，将部署用于显示事件消息的[预建的 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 所部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
@@ -56,12 +55,27 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 1. 在项目页中，选择“部署到 Azure”以将解决方案部署到订阅。 在 Azure 门户中，为参数提供值。
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
-1. 部署可能需要几分钟才能完成。 部署成功后，请查看 Web 应用以确保它正在运行。 在 Web 浏览器中导航到 `https://<your-site-name>.azurewebsites.net`
+2. 在“自定义部署”页上执行以下步骤： 
+    1. 对于“资源组”，请选择你在创建存储帐户时创建的资源组。 这样就可以在完成本教程后，通过删除资源组来更轻松地清理资源。  
+    2. 对于“站点名称”，请输入 Web 应用的名称。
+    3. 对于“托管计划名称”，请输入用于托管 Web 应用的应用服务计划的名称。
+    5. 选择“查看 + 创建”。 
 
-    如果部署失败，请查看错误消息。 这是因为网站名称已被占用。 再次部署模板，然后为网站选择其他名称。 
-1. 查看站点，但是尚未有事件发布到它。
+        :::image type="content" source="./media/blob-event-quickstart-portal/template-deploy-parameters.png" alt-text="显示“自定义部署”页的屏幕截图。":::
+1. 在“查看 + 创建”页面上，选择“创建”。  
+1. 部署可能需要几分钟才能完成。 在门户中选择“警报”（钟形图标），然后选择“转到资源组”。 
 
-   ![查看新站点](./media/custom-event-quickstart-portal/view-site.png)
+    ![警报 - 导航到资源组。](./media/blob-event-quickstart-portal/navigate-resource-group.png)
+4. 在“资源组”页上，在资源列表中，选择你创建的 Web 应用。 在此列表中还可以看到应用服务计划和存储帐户。 
+
+    ![选择网站。](./media/blob-event-quickstart-portal/resource-group-resources.png)
+5. 在 Web 应用的“应用服务”页上，选择相应的 URL 以导航到该网站。 URL 应采用以下格式：`https://<your-site-name>.azurewebsites.net`。
+    
+    ![导航到网站。](./media/blob-event-quickstart-portal/web-site.png)
+
+6. 确认你可以看到站点，但尚未有任何事件发布到站点。
+
+   ![查看新站点。](./media/blob-event-quickstart-portal/view-site.png)
 
 ## <a name="subscribe-to-custom-topic"></a>订阅自定义主题
 
@@ -71,7 +85,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，将使用 
 
     :::image type="content" source="./media/custom-event-quickstart-portal/new-event-subscription.png" alt-text="添加“事件订阅”按钮":::
 2. 在“创建事件订阅”页上执行以下步骤：
-    1. 输入事件订阅的“名称”  。
+    1. 输入事件订阅的“名称”。
     3. 对于“终结点类型”，请选择“Web Hook”。  
     4. 选择“选择终结点”。 
 

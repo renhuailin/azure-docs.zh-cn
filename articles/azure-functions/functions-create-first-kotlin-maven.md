@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 721fbaf1a3b2418677d07e8ac39fa733164c1459
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ad52f889cdf3d4d1faaf83ee87154b6a51a2860d
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179555"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287233"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>快速入门：使用 Kotlin 和 Maven 创建第一个函数
 
@@ -24,7 +24,7 @@ ms.locfileid: "102179555"
 
 若要使用 Kotlin 开发函数，必须安装以下软件：
 
-- [Java 开发人员工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support)版本 8
+- [Java 开发人员工具包](/azure/developer/java/fundamentals/java-support-on-azure)版本 8
 - [Apache Maven](https://maven.apache.org) 版本 3.0 或更高版本
 - [Azure CLI](/cli/azure)
 - [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 2.6.666 或更高版本

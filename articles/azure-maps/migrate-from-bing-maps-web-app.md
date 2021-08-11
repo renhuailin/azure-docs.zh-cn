@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 2b072107275fba1ff83ab3ddac63ed8bf7766356
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8726f6211ef792064e9e180a8c2e34383eeb6d53
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389104"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441565"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>教程：从必应地图迁移 Web 应用
 
@@ -33,7 +33,7 @@ ms.locfileid: "100389104"
 
 如果迁移现有的 Web 应用程序，请检查该应用程序是否使用 Cesium、Leaflet 和 OpenLayers 等开源地图控件库。 如果使用上述某个库，并且你希望继续使用该库，那么可将其连接到 Azure Maps 图块服务（[道路图块](/rest/api/maps/render/getmaptile) \| [卫星图块](/rest/api/maps/render/getmapimagerytile)）。 可在下面的链接中详细了解如何在一些常用开源地图控件库中使用 Azure Maps。
 
-* [Cesium](https://cesiumjs.org/) - 适用于 Web 的 3D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/?search=Cesium) \| [插件存储库]()
+* [Cesium](https://www.cesium.com/) - 适用于 Web 的 3D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/?search=Cesium) \| [插件存储库]()
 * [Leaflet](https://leafletjs.com/) - 适用于 Web 的轻型 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/?search=leaflet) \| [插件存储库]()
 * [OpenLayers](https://openlayers.org/) - 支持投影的适用于 Web 的 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/?search=openlayers) \| [插件存储库]()
 
@@ -1255,7 +1255,7 @@ map.setTraffic({
 
 **前者：必应地图**
 
-在必应地图中创建地面叠加层时，需指定要叠加的图像的 URL，以及用于在地图上限定图像的边界框。 此示例在地图上叠加 [1922 年新泽西州纽瓦克市](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)的地图图像。
+在必应地图中创建地面叠加层时，需指定要叠加的图像的 URL，以及用于在地图上限定图像的边界框。 此示例在地图上叠加 1922 年新泽西州纽瓦克市的地图图像。
 
 ```html
 <!DOCTYPE html>

@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: a91d26139fae80b38383e7f65f7ae2f58358e6f6
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 16bb319086792808a912cbb6511897d2a3a12368
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795305"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457620"
 ---
 # <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>使用 Azure SDK 部署云服务（外延支持）
 
@@ -153,7 +153,7 @@ ms.locfileid: "108795305"
     m_NrpClient.VirtualNetworks.CreateOrUpdate(resourceGroupName, “ContosoVNet”, vnet);
     ```
 
-7. 创建公共 IP 地址，并设置公共 IP 地址的 DNS 标签属性。 云服务（外延支持）仅支持[基本] (https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU 公共 IP 地址。 标准 SKU 公共 IP 不适用于云服务。
+7. 创建公共 IP 地址，并设置公共 IP 地址的 DNS 标签属性。 云服务（外延支持）仅支持[基本](/azure/virtual-network/public-ip-addresses#basic) SKU 公共 IP 地址。 标准 SKU 公共 IP 不适用于云服务。
 如果使用的是静态 IP，则需要在服务配置 (.cscfg) 文件中将其作为保留 IP 引用。
 
     ```csharp
@@ -336,6 +336,6 @@ ms.locfileid: "108795305"
     ```
 
 ## <a name="next-steps"></a>后续步骤
-- 请参阅云服务（外延支持）的[常见问题解答](faq.md)。
+- 请参阅云服务（外延支持）的[常见问题解答](faq.yml)。
 - 使用 [Azure 门户](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[模板](deploy-template.md)或 [Visual Studio](deploy-visual-studio.md) 部署云服务（外延支持）。
 - 访问[云服务（外延支持）的示例存储库](https://github.com/Azure-Samples/cloud-services-extended-support)

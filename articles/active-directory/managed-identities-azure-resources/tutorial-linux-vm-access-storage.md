@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e927415e0a1d2ce7d52e602eddfffb0eae5387b5
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 77b41a73ca092f36f38d35f525bc381e29848396
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076557"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113037951"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure 存储 
 
@@ -79,7 +79,7 @@ ms.locfileid: "112076557"
 
 可以使用 VM 的托管标识检索 Azure 存储 blob 中的数据。 Azure 资源的托管标识可以用来对支持 Azure AD 身份验证的资源进行身份验证。  通过向包含存储帐户的资源组范围中的托管标识分配 [storage-blob-data-reader](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader) 角色来授予访问权限。
  
-有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。”
+有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 >[!NOTE]
 > 有关可用于授予存储权限的各种角色的信息，请查看[使用 Azure Active Directory 对 Blob 和队列授予访问权限](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)

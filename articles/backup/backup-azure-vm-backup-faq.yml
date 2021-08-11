@@ -4,12 +4,12 @@ metadata:
   description: 本文解答有关使用 Azure 备份服务备份 Azure VM 的常见问题。
   ms.topic: conceptual
   ms.date: 06/02/2021
-  ms.openlocfilehash: b829855ad97e702f4a005375a1e70bd0869289ad
-  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+  ms.openlocfilehash: 7c9743c71a505c586745117d48b3b23537db1d77
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/22/2021
-  ms.locfileid: "112467331"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114458008"
 title: 常见问题 - 备份 Azure VM
 summary: >
   本文解答有关使用 [Azure 备份](./backup-overview.md)服务备份 Azure VM 的常见问题。
@@ -106,7 +106,7 @@ sections:
   - question: 虚拟机备份中存储了哪些 VM 配置？
     answer: 执行还原操作所需的所有 VM 配置均存储在 VM 备份中。 其中包括 VM 加密密钥的加密副本，你可以在还原时对其进行访问。 只能使用密钥保管库对加密副本进行解密。 快照中不捕获临时磁盘和内存状态。
   - question: 是否可以通过 Azure VM 备份标记？ 如果可以，能备份多少个标记？
-    answer: Azure 备份可以备份和还原标记（除 NIC 和 IP 以外）。 Azure 备份支持 Azure 资源组的订阅限制，最多可还原 50 个标记。<br><br>有关详细信息，请参阅[订阅限制](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)。
+    answer: Azure 备份可以备份和还原标记（NIC 和 IP 除外）。 Azure 备份支持 Azure 资源组的订阅限制，最多可还原 50 个标记。<br><br>有关详细信息，请参阅[订阅限制](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)。
 - name: 还原
   questions:
   - question: 如何确定是仅还原磁盘还是要还原整个 VM？
@@ -215,7 +215,7 @@ sections:
     answer: Azure VM 备份[使用 HTTPS 通信进行传输中加密](guidance-best-practices.md#encryption-of-data-in-transit-and-at-rest)。 数据传输使用 Azure 结构（而不是公共终结点），该结构无需访问 Internet 即可进行 VM 备份。
   - question: 如何禁用“文件恢复”选项？
     answer: >-
-      [此 API](/rest/api/backup/2021-02-10/item-level-recovery-connections/provision) 可预配脚本来调用 iSCSI 连接，以便通过 Azure 备份进行文件恢复。
+      [此 API](/rest/api/backup/item-level-recovery-connections/provision) 可预配脚本来调用 iSCSI 连接，以便通过 Azure 备份进行文件恢复。
 
       - 可以通过排除 API 操作，使用“自定义角色定义”禁用此选项。
 

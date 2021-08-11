@@ -3,13 +3,13 @@ title: Azure PowerShell - 订阅 Azure 订阅
 description: 本文提供了一个示例 Azure PowerShell 脚本，演示如何订阅 Azure 订阅的事件网格事件。
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 07/08/2020
-ms.openlocfilehash: 0aae1d64b789cedab6420ac1f323a2379bff17be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/22/2021
+ms.openlocfilehash: b14d1a07725b015b436f48dc03f0c21ce1e74226
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87460807"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467408"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-powershell"></a>使用 PowerShell 订阅 Azure 订阅的事件
 

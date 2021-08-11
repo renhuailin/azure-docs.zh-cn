@@ -140,7 +140,7 @@
     - name: Azure Migrate 安全基线
       href: ../../migrate/security-baseline.md
     - name: Azure 对等互连服务安全基线
-      href: ../../peering-service/security-baseline.md
+      href: /security/benchmark/azure/baselines/peering-service-security-baseline
     - name: Azure Policy 安全基线
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
     - name: Azure 专用链接安全基线
@@ -206,7 +206,7 @@
     - name: 网络观察程序安全基线
       href: ../../network-watcher/security-baseline.md
     - name: Power BI 基线
-      href: /power-bi/fundamentals/security-baseline
+      href: /security/benchmark/azure/baselines/power-bi-security-baseline
     - name: 安全中心基线
       href: ../../security-center/security-baseline.md
     - name: 服务总线基线

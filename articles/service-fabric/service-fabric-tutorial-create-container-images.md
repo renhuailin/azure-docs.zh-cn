@@ -4,12 +4,12 @@ description: 本教程介绍如何创建多容器 Service Fabric 应用程序的
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 0bbe5bbe8ed12902541e40e9d78a7e7cdd21f9f1
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 831d96534bbdb0a90c89d0e76fc1aeb48ce2f69e
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413133"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112201493"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>教程：在 Linux Service Fabric 群集上创建容器映像
 
@@ -59,19 +59,10 @@ docker build -t azure-vote-front .
 > [!Note]
 > 如果你的权限被拒绝，请按照[此](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user)文档操作，了解如何在没有 sudo 的情况下使用 docker。
 
-此命令可能需要一些时间，因为需要从 Docker 中心拉取所有必需的依赖项。 完成后，使用 [docker images](https://docs.docker.com/engine/reference/commandline/images/) 命令查看创建的映像。
+此命令可能需要一些时间，因为需要从 Docker 中心拉取所有必需的依赖项。 完成后，请使用 [docker images](https://docs.docker.com/engine/reference/commandline/images/) 命令查看刚创建的 azure-vote-front 映像。
 
 ```bash
 docker images
-```
-
-请注意，已下载或创建两个映像。 *azure-vote-front* 映像包含应用程序。 它派生自 Docker 中心的 python 映像  。
-
-```bash
-REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
-azure-vote-front             latest              052c549a75bf        About a minute ago   708MB
-mcr.microsoft.com/azuredocs/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago           707MB
-
 ```
 
 ## <a name="deploy-azure-container-registry"></a>部署 Azure 容器注册表
@@ -128,8 +119,7 @@ docker images
 
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
-azure-vote-front             latest              052c549a75bf        About a minute ago   708MB
-mcr.microsoft.com/azuredocs/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago           707MB
+azure-vote-front             latest              052c549a75bf        About a minute ago   913MB
 ```
 
 要获取 loginServer 名称，请运行以下命令：
@@ -158,15 +148,14 @@ docker tag azure-vote-front <acrName>.azurecr.io/azure-vote-front:v1
 
 ```output
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
-azure-vote-front                       latest              052c549a75bf        23 minutes ago      708MB
-<acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf       23 minutes ago      708MB
-mcr.microsoft.com/azuredocs/uwsgi-nginx-flask             python3.6           590e17342131        5 days ago          707MB
+azure-vote-front                       latest              052c549a75bf        23 minutes ago      913MB
+<acrName>.azurecr.io/azure-vote-front  v1                  052c549a75bf        23 minutes ago      913MB
 
 ```
 
 ## <a name="push-images-to-registry"></a>将映像推送到注册表
 
-将 azure-vote-front  映像推送到注册表。 
+将 azure-vote-front  映像推送到注册表。
 
 使用以下示例，将 ACR loginServer 名称替换为环境中的 loginServer。
 

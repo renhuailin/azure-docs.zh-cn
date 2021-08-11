@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 02/08/2021
-ms.openlocfilehash: 556bab6d1302aebbc6a6d8c338a42d7bd78e1275
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 5debf0fdd82132ece890f29967e345ab5b134635
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113106871"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297577"
 ---
 # <a name="about-azure-cache-for-redis"></a>关于用于 Redis 的 Azure 缓存
 
@@ -45,16 +45,16 @@ Azure Cache for Redis 在下面各层中提供：
 | 层 | 说明 |
 |---|---|
 | 基本 | 在单个 VM 上运行的 OSS Redis 缓存。 该层没有服务级别协议 (SLA)，非常适用于开发/测试和非关键工作负载。 |
-| 标准 | 在配置完全相同的两个 VM 上运行的 OSS Redis 缓存。 |
+| Standard | 在配置完全相同的两个 VM 上运行的 OSS Redis 缓存。 |
 | 高级 | 高性能 OSS Redis 缓存。 该层提供更高的吞吐量、更低的延迟、更好的可用性和更多功能。 与基本或标准缓存相比，高级缓存部署在功能更强大的 VM 上。 |
-| 企业 | 高性能缓存由 Redis 实验室的 Redis Enterprise 软件提供支持。 该层支持 Redis 模块，包括 RediSearch、RedisBloom 和 RedisTimeSeries。 此外，它甚至提供比高级层更高的可用性。 |
+| Enterprise | 高性能缓存由 Redis 实验室的 Redis Enterprise 软件提供支持。 该层支持 Redis 模块，包括 RediSearch、RedisBloom 和 RedisTimeSeries。 此外，它甚至提供比高级层更高的可用性。 |
 | Enterprise Flash | 经济高效的大型缓存由 Redis 实验室的 Redis Enterprise 软件提供支持。 该层将 Redis 数据存储扩展到 VM 上的非易失存储器，该存储器的价格低于 DRAM 的价格。 它总体上降低了每 GB 内存的成本。 |
 
 ### <a name="feature-comparison"></a>功能比较
 
 [Azure Cache for Redis 定价](https://azure.microsoft.com/pricing/details/cache/)提供了每个层的详细比较。 下表介绍了每个层支持的部分功能：
 
-| 功能说明 | 基本 | 标准 | 高级 | 企业 | Enterprise Flash |
+| 功能说明 | 基本 | Standard | 高级 | Enterprise | Enterprise Flash |
 | ------------------- | :-----: | :------: | :---: | :---: | :---: |
 | [服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) |-|✔|✔|✔|✔|
 | 数据加密 |✔|✔|✔|✔|✔|
@@ -74,9 +74,9 @@ Azure Cache for Redis 在下面各层中提供：
 选择 Azure Cache for Redis 层时，请考虑以下选项：
 
 * **内存**：基本层和标准层提供 250 MB - 53 GB；高级层提供 6 GB - 1.2 TB；企业层提供 12 GB - 14 TB。  若要创建大于 120 GB 的高级层缓存，可以使用 Redis OSS 群集。 有关详细信息，请参阅 [Azure Redis 缓存定价](https://azure.microsoft.com/pricing/details/cache/)。 有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置群集功能](cache-how-to-premium-clustering.md)。
-* **性能**：高级层和企业层中的缓存部署在处理器速度更快的硬件上，可提供比基本层或标准层更好的性能。 高级级别缓存的吞吐量更高，延迟更低。 有关详细信息，请参阅 [Azure Cache for Redis 性能](/azure/azure-cache-for-redis/cache-planning-faq#azure-cache-for-redis-performance)。
+* **性能**：高级层和企业层中的缓存部署在处理器速度更快的硬件上，可提供比基本层或标准层更好的性能。 高级级别缓存的吞吐量更高，延迟更低。 有关详细信息，请参阅 [Azure Cache for Redis 性能](./cache-planning-faq.yml#azure-cache-for-redis-performance)。
 * **针对 Redis 服务器的专用核心**：除 C0 之外的所有缓存均运行专用 VM 核心。 根据设计，Redis 只使用一个线程进行命令处理。 Azure Cache for Redis 使用其他核心进行 I/O 处理。 拥有更多的内核可能不会产生线性缩放，但可提高吞吐量性能。 而且，较大 VM 的带宽限制通常比较小 VM 的更高。 这有助于避免网络饱和，从而避免应用程序超时。
-* **网络性能**：如果工作负载需要较高的吞吐量，则可使用高级层或企业层，这两层可提供比基本层或标准层更高的带宽。 另外，在每个层中，缓存大小越大，带宽越高，因为是由基础 VM 托管缓存。 有关详细信息，请参阅 [Azure Cache for Redis 性能](/azure/azure-cache-for-redis/cache-planning-faq#azure-cache-for-redis-performance)。
+* **网络性能**：如果工作负载需要较高的吞吐量，则可使用高级层或企业层，这两层可提供比基本层或标准层更高的带宽。 另外，在每个层中，缓存大小越大，带宽越高，因为是由基础 VM 托管缓存。 有关详细信息，请参阅 [Azure Cache for Redis 性能](./cache-planning-faq.yml#azure-cache-for-redis-performance)。
 * **客户端连接的最大数量**：高级层和企业层提供的可以连接到 Redis 的客户端数量是最大的，缓存大小越大，连接数量越大。 群集会增加可用于群集缓存的总网络带宽量。
 * **高可用性**：Azure Cache for Redis 提供了多个 [高可用性](cache-high-availability.md)选项。 它保证标准、高级或企业缓存的可用性符合我们的 [SLA](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)。 SLA 仅涉及与缓存终结点的连接。 SLA 不涉及对数据丢失的防护。 我们建议使用高级层和企业层中的 Redis 数据暂留功能来提高复原能力，防止数据丢失。
 * **数据暂留**：高级层和企业层可用于分别在 Azure 存储账户和托管磁盘中暂留缓存数据。 底层基础结构问题可能会导致潜在的数据丢失。 我们建议使用这些层中的 Redis 数据暂留功能来提高复原能力，防止数据丢失。 Azure Cache for Redis 同时提供 RDB 和 AOF（预览版）选项。 可通过 Azure 门户和 CLI 启用数据持久性。 对于高级层，请参阅[如何为高级 Azure Cache for Redis 配置暂留](cache-how-to-premium-persistence.md)。

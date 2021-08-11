@@ -1,31 +1,33 @@
 ---
-title: 使用专用终结点从数据工厂托管 VNET 访问本地 SQL Server
-description: 本教程分步介绍如何使用 Azure 门户设置专用链接服务，并使用专用终结点从托管 VNET 访问本地 SQL Server。
+title: 使用专用终结点从数据工厂托管 VNet 访问本地 SQL Server
+description: 本教程分步介绍如何使用 Azure 门户设置专用链接服务，并使用专用终结点从托管 VNet 访问本地 SQL Server。
 author: lrtoyou1223
 ms.author: lle
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 05/06/2021
-ms.openlocfilehash: c389eab986fa317174db08a3e33d54d595c50c4c
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: bb29c7712bdbe629ff3aa8704c0c4654404f0da3
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109657310"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971837"
 ---
-# <a name="tutorial-how-to-access-on-premises-sql-server-from-data-factory-managed-vnet-using-private-endpoint"></a>教程：如何使用专用终结点从数据工厂托管 VNET 访问本地 SQL Server
+# <a name="tutorial-how-to-access-on-premises-sql-server-from-data-factory-managed-vnet-using-private-endpoint"></a>教程：如何使用专用终结点从数据工厂托管 VNet 访问本地 SQL Server
 
-本教程分步介绍如何使用 Azure 门户设置专用链接服务，并使用专用终结点从托管 VNET 访问本地 SQL Server。
+本教程分步介绍如何使用 Azure 门户设置专用链接服务，并使用专用终结点从托管 VNet 访问本地 SQL Server。
+
+> [!NOTE]
+> 本文中提供的解决方案介绍了 SQL Server 连接，但你可以使用类似的方法来连接和查询 Azure 数据工厂支持的其他可用[本地连接器](connector-overview.md)。
 
 :::image type="content" source="./media/tutorial-managed-virtual-network/sql-server-access-model.png" alt-text="显示 SQL Server 访问模型的屏幕截图。" lightbox="./media/tutorial-managed-virtual-network/sql-server-access-model-expanded.png":::
-
 
 ## <a name="prerequisites"></a>先决条件
 
 * **Azure 订阅**。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-* **虚拟网络**。 如果你没有虚拟网络，请按照[创建虚拟网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)中所述创建一个。
-* **虚拟网络到本地网络**。 使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager?toc=/azure/virtual-network/toc.json) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/tutorial-site-to-site-portal?toc=/azure/virtual-network/toc.json) 在虚拟网络与本地网络之间创建连接。
-* **启用了托管 VNET 的数据工厂**。 如果你没有数据工厂或者未启用托管 VNET，请按照[创建具有托管 VNET 的数据工厂](https://docs.microsoft.com/azure/data-factory/tutorial-copy-data-portal-private)中所述创建一个。
+* **虚拟网络**。 如果你没有虚拟网络，请按照[创建虚拟网络](../virtual-network/quick-create-portal.md)中所述创建一个。
+* **虚拟网络到本地网络**。 使用 [ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=/azure/virtual-network/toc.json) 或 [VPN](../vpn-gateway/tutorial-site-to-site-portal.md?toc=/azure/virtual-network/toc.json) 在虚拟网络与本地网络之间创建连接。
+* 启用了托管 VNet 的数据工厂。 如果你没有数据工厂或者未启用托管 VNet，请按照[创建具有托管 VNet 的数据工厂](tutorial-copy-data-portal-private.md)一文所述创建一个。
 
 ## <a name="create-subnets-for-resources"></a>创建资源的子网
 
@@ -54,7 +56,7 @@ ms.locfileid: "109657310"
     |区域|选择“美国东部”。|
     |类型|选择“内部”。|
     |SKU|选择“标准”。|
-    |虚拟网络|选择虚拟网络。|
+    |虚拟网络|选择你的虚拟网络。|
     |子网|选择在上一步骤中创建的“fe-subnet”。|
     |IP 地址分配|选择“动态”。|
     |可用性区域|选择“区域冗余”。|
@@ -191,7 +193,7 @@ ms.locfileid: "109657310"
     | 设置 |值|
     |---------|--------|
     |**网络接口**||
-    |虚拟网络 |选择虚拟网络。|
+    |虚拟网络 |选择你的虚拟网络。|
     |子网 |be-subnet。|
     |公共 IP |选择“无”。|
     |NIC 网络安全组 |选择“无”。|
@@ -212,8 +214,10 @@ ms.locfileid: "109657310"
 2. 使用以下选项运行该脚本：<br/>
     sudo ./ip_fwd.sh -i eth0 -f 1433 -a <FQDN/IP> -b 1433<br/>
     <FQDN/IP> 是目标 SQL Server IP。<br/>
-    >[!Note] 
-    >除非在 Azure DNS 区域中添加记录，否则 FQDN 不适用于本地 SQL Server。
+    
+    > [!Note] 
+    > 除非在 Azure DNS 区域中添加记录，否则 FQDN 不适用于本地 SQL Server。
+    
 3. 运行以下命令并检查后端服务器 VM 中的 iptables。 在 iptables 中，可以看到一条包含目标 IP 的记录。<br/>
     sudo iptables -t nat -v -L PREROUTING -n --line-number
 
@@ -224,8 +228,8 @@ ms.locfileid: "109657310"
     >
     >|                  |负载均衡器规则中的端口|负载均衡器规则中的后端端口|在后端服务器 VM 中运行的命令|
     >|------------------|---------|--------|---------|
-    >|**SQL Server 1**|1433 |1433 |sudo ./ip_fwd.sh -i eth0 -f 1433 -a <FQDN/IP> -b 1433|
-    >|**SQL Server 2**|1434 |1434 |sudo ./ip_fwd.sh -i eth0 -f 1434 -a <FQDN/IP> -b 1433|
+    >|SQL Server 1|1433 |1433 |sudo ./ip_fwd.sh -i eth0 -f 1433 -a <FQDN/IP> -b 1433|
+    >|SQL Server 2|1434 |1434 |sudo ./ip_fwd.sh -i eth0 -f 1434 -a <FQDN/IP> -b 1433|
     
 ## <a name="create-a-private-endpoint-to-private-link-service"></a>创建用于连接专用链接服务的专用终结点
 
@@ -266,7 +270,7 @@ ms.locfileid: "109657310"
 
 ## <a name="next-steps"></a>后续步骤
 
-请继续学习以下教程，了解如何使用专用终结点从数据工厂托管 VNET 访问 Microsoft Azure SQL 托管实例：
+请继续学习以下教程，了解如何使用专用终结点从数据工厂托管 VNet 访问 Microsoft Azure SQL 托管实例：
 
 > [!div class="nextstepaction"]
-> [从数据工厂托管 VNET 访问 SQL 托管实例](tutorial-managed-virtual-network-sql-managed-instance.md)
+> [从数据工厂托管 VNet 访问 SQL 托管实例](tutorial-managed-virtual-network-sql-managed-instance.md)

@@ -1,19 +1,19 @@
 ---
 title: 快速入门 - 生成应用并将其部署到 Azure Spring Cloud
 description: 介绍如何将应用部署到 Azure Spring Cloud。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: fc005e8d94a0c6ddb7f21de05872f12bdb7f2177
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b82e36b798611aad20044592cd3bec60cdf2e871
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965127"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469250"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>快速入门：生成应用并将其部署到 Azure Spring Cloud
 
@@ -213,7 +213,6 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 
     ```azurecli
     az configure --defaults group=<resource group name> spring-cloud=<service name>  
-    az spring-cloud config-server git set -n <service instance name> --uri https://github.com/azure-samples/spring-petclinic-microservices-config
     ```
 
 1. 创建 PetClinic 的 2 核微服务：API 网关和客户服务。
@@ -245,7 +244,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 
 ## <a name="verify-the-services"></a>验证服务
 
-使用如上所示的公共 URL（格式为“https://<service name>-api-gateway.azuremicroservices.io”）从浏览器访问应用网关和客户服务。
+使用如上所示的公共 URL（格式为 `https://<service name>-api-gateway.azuremicroservices.io`）从浏览器访问应用网关和客户服务。
 
 ![访问 PetClinic 客户服务](media/build-and-deploy/access-customers-service.png)
 
@@ -282,7 +281,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
 1. 通过在包含父 POM 的 PetClinic 的根文件夹中运行以下命令来生成配置。 如果已使用 Azure CLI 登录，则该命令将自动提取凭据。 否则，它将提示你登录。 有关详细信息，请参阅我们的 [wiki 页面](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)。
 
     ```azurecli
-    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.5.0:config
+    mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.6.0:config
     ```
     
     系统会提示你选择：
@@ -298,7 +297,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
             <plugin>
                 <groupId>com.microsoft.azure</groupId>
                 <artifactId>azure-spring-cloud-maven-plugin</artifactId>
-                <version>1.5.0</version>
+                <version>1.6.0</version>
                 <configuration>
                     <subscriptionId>xxxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx</subscriptionId>
                     <clusterName>v-spr-cld</clusterName>
@@ -317,7 +316,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
     
 ## <a name="verify-the-services"></a>验证服务
 
-成功的部署命令将返回以下格式的 URL：“https://<service name>-spring-petclinic-api-gateway.azuremicroservices.io”。 使用该 URL 导航到正在运行的服务。
+成功的部署命令将返回以下格式的 URL：`https://<service name>-spring-petclinic-api-gateway.azuremicroservices.io`。 使用该 URL 导航到正在运行的服务。
 
 ![访问 PetClinic](media/build-and-deploy/access-customers-service.png)
 

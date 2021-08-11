@@ -7,12 +7,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: b25d9846f3bb678c182fa22d824f7b4171d2d803
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: cf08f1baf2a2fb32e22cf07ae27c5122d6459294
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515625"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285351"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>快速入门：设置适用于 Linux (Ubuntu) 的 Data Science Virtual Machine
 
@@ -38,7 +38,7 @@ ms.locfileid: "100515625"
    
 1. 输入以下信息以配置向导的每个步骤：
 
-    1. **基本信息**：
+    1. 基本信息：
     
        * **订阅**：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。 必须具有此订阅的资源创建权限。
        * **资源组**：新建资源组，或使用现有资源组。
@@ -101,10 +101,10 @@ Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 �
    * **共享文件夹**：使用此选项卡添加要装载到 VM 上的客户端计算机目录。 
 
    ![X2go 配置](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
-1. 选择“确定” 。
+1. 选择“确定”。
 1. 单击 X2Go 窗口右窗格中的框以调出 VM 的登录屏幕。
 1. 输入 VM 的密码。
-1. 选择“确定” 。
+1. 选择“确定”。
 1. 可能必须授予 X2Go 绕过防火墙的权限才能完成连接。
 1. 现在应会看到 Ubuntu DSVM 的图形界面。 
 
@@ -145,6 +145,6 @@ c.Spawner.default_url = '/lab'
 
 * [适用于 Linux 的 Data Science Virtual Machine 上的数据科学](linux-dsvm-walkthrough.md)演练演示了如何使用此处预配的 Linux DSVM 执行多种常见的数据科学任务。 
 * 请在 DSVM 上尝试探索本文中所述的各种数据科学工具。 还可以在虚拟机上的 shell 中运行 `dsvm-more-info`，获取有关 VM 上安装的工具的基本介绍和信息指南。  
-* 了解如何使用 [Team Data Science Process](../team-data-science-process/index.yml) 系统地生成分析解决方案。
+* 了解如何使用 [Team Data Science Process](/azure/architecture/data-science-process/overview) 系统地生成分析解决方案。
 * 访问 [Azure AI 库](https://gallery.azure.ai/)，获取使用 Azure AI 服务的机器学习和数据分析示例。
 * 请参阅此虚拟机的相应[参考文档](./reference-ubuntu-vm.md)。

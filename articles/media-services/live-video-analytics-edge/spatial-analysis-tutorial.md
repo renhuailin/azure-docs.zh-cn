@@ -3,12 +3,12 @@ title: 使用实时视频分析并通过用于空间分析的计算机视觉分�
 description: 本教程介绍如何结合使用 Azure 实时视频分析和 Azure 认知服务中的计算机视觉空间分析 AI 功能，分析来自（模拟）IP 相机的实时视频源。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 549c1405e7deb3531da65ff4425befa2d29aaeef
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 824ff93e1411563b07bea9f30bbd2cf4ecad457c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373556"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456129"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-and-live-video-analytics-preview"></a>将用于空间分析的计算机视觉与实时视频分析结合用于分析实时视频（预览版）
 
@@ -63,7 +63,7 @@ MediaGraphCognitiveServicesVisionExtension 节点充当代理角色。 它将视
 
 ## <a name="create-the-computer-vision-resource"></a>创建计算机视觉资源
 
-你需要通过 [Azure 门户](../../iot-edge/how-to-deploy-modules-portal.md)或 Azure CLI 创建计算机视觉类型的 Azure 资源。 如果对容器的访问请求获得批准并且你已注册 Azure 订阅 ID，你将能够创建资源。 转到 https://aka.ms/csgate 提交你的用例和你的 Azure 订阅 ID。  你需要使用在“请求访问”窗体上提供的同一 Azure 订阅来创建 Azure 资源。
+你需要通过 [Azure 门户](../../iot-edge/how-to-deploy-modules-portal.md)或 Azure CLI 创建计算机视觉类型的 Azure 资源。
 
 ### <a name="gathering-required-parameters"></a>收集必需的参数
 

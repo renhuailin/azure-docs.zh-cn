@@ -9,12 +9,12 @@ ms.custom:
 - devx-track-java
 - devx-track-azurecli
 - mode-api
-ms.openlocfilehash: 4d805458d90c73de879a9b87d5b08c98a8f1a250
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 9686b99a7c13ef3103513efab759e6295ef052c3
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537305"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288889"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>快速入门：生成 Java 容器映像并将其推送到 Azure 容器注册表
 
@@ -24,7 +24,7 @@ ms.locfileid: "107537305"
 
 * Azure 订阅；如果没有 Azure 订阅，可激活 [MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)或注册[免费的 Azure 帐户](https://azure.microsoft.com/pricing/free-trial)。
 * [Azure 命令行接口 (CLI)](/cli/azure/overview)。
-* 一个受支持的 Java 开发工具包 (JDK)。 有关在 Azure 上进行开发时可供使用的 JDK 的详细信息，请参阅 <https://aka.ms/azure-jdks>。
+* 一个受支持的 Java 开发工具包 (JDK)。 有关在 Azure 上进行开发时可供使用的 JDK 的详细信息，请参阅 [Azure 和 Azure Stack 上的 Java 支持](/azure/developer/java/fundamentals/java-support-on-azure)。
 * Apache 的 [Maven](http://maven.apache.org) 生成工具（版本 3 或以上）。
 * [Git](https://git-scm.com) 客户端。
 * [Docker](https://www.docker.com) 客户端。
@@ -104,11 +104,11 @@ ms.locfileid: "107537305"
 1. 在 Azure CLI 中使用以下命令登录到 Azure 容器注册表。 请务必将占位符替换为自己的注册表名称。
 
    ```azurecli
-   az configure --defaults acr=<your registry name>
+   az config set defaults.acr=<your registry name>
    az acr login
    ```
 
-   `az configure` 命令设置要在 `az acr` 命令中使用的默认注册表名称。
+   `az config` 命令设置要在 `az acr` 命令中使用的默认注册表名称。
 
 1. 导航到 Spring Boot 应用程序的完整项目目录（例如，“C:\SpringBoot\gs-spring-boot-docker\complete”或“/users/robert/SpringBoot/gs-spring-boot-docker/complete”），并使用文本编辑器打开 pom.xml 文件    。
 
