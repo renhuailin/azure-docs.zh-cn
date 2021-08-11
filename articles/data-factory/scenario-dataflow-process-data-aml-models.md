@@ -11,10 +11,10 @@ ms.date: 1/31/2021
 ms.author: amberz
 ms.co-author: Donnana
 ms.openlocfilehash: 45cd44cc0678b7f3a006a88bf66be2bca091af76
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104595373"
 ---
 # <a name="process-data-from-automated-machine-learning-models-by-using-data-flows"></a>通过使用数据流处理自动化机器学习模型中的数据
@@ -41,7 +41,7 @@ AutoML 项目包含以下三种数据处理方案：
 
     可能想要删除不符合条件的数据，如行数为 0 的 Parquet 文件。 在本教程中，我们将使用聚合活动获取行计数。 行计数将是删除不符合条件的数据的条件。
 
-## <a name="preparation"></a>准备
+## <a name="preparation"></a>准备工作
 
 使用以下 Azure SQL 数据库表。
 
@@ -72,7 +72,7 @@ CREATE TABLE [dbo].[MyProducts](
 
     ![显示配置聚合活动以获取行计数的屏幕截图。](./media/scenario-dataflow-process-data-aml-models/aggregate-activity-addrowcount.png)
 
-1. 使用接收器活动，在“接收器”选项卡上，选择“接收器类型”作为“缓存”。然后从“设置”选项卡上的“键列”下拉列表中，选择需要的列。
+1. 使用接收器活动，在“接收器”选项卡上，选择“缓存”作为“接收器类型”。然后在“设置”选项卡上的“键列”下拉列表中，选择所需的列    。
 
     ![显示配置 CacheSink 活动以获取缓存接收器中行计数的屏幕截图。](./media/scenario-dataflow-process-data-aml-models/cachesink-activity-addrowcount.png)
 

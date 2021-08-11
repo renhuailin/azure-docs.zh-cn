@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 740201b84323f5a01ab01bb21ec458a19832e499
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100652014"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>使用 Azure Active Directory 密码保护来消除错误密码
@@ -208,11 +208,11 @@ Azure AD 密码保护可以有效地阻止可能在密码喷洒攻击中使用�
 
 用户尝试将密码重置为某些会被禁止的密码时，系统显示以下错误消息：
 
-“很遗憾，密码中包含的单词、短语或模式使密码很容易被猜出。*请使用其他密码重试。”*
+“很遗憾，密码中包含的单词、短语或模式使密码很容易被猜出。请使用其他密码重试。”
 
 ## <a name="license-requirements"></a>许可要求
 
-| 用户 | 带有全局受禁密码列表的 Azure AD 密码保护 | 带有自定义受禁密码列表的 Azure AD 密码保护|
+| 用户 | 带有全局禁止密码列表的 Azure AD 密码保护 | 带有自定义禁止密码列表的 Azure AD 密码保护|
 |-------------------------------------------|---------------------------|---------------------------|
 | 仅限云的用户                          | Azure AD Free             | Azure AD Premium P1 或 P2 |
 | 从本地 AD DS 同步的用户 | Azure AD Premium P1 或 P2 | Azure AD Premium P1 或 P2 |

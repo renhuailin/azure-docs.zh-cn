@@ -4,16 +4,16 @@ description: 了解如何开发使用 Azure 文件来存储文件数据的 Java 
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 05/26/2021
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 115c55a5833906aa0dcc616a5b1b659468647282
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 76bbc39cc1bb53d51c35b4afde13de15842801e2
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814543"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110576000"
 ---
 # <a name="develop-for-azure-files-with-java"></a>使用 Java 针对 Azure 文件进行开发
 
@@ -40,7 +40,7 @@ ms.locfileid: "107814543"
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_ImportStatements":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 ```java
 // Include the following imports to use Azure Files APIs v11
@@ -60,7 +60,7 @@ import com.microsoft.azure.storage.file.*;
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_ConnectionString":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 将 your_storage_account_name 和 your_storage_account_key 替换为存储帐户的实际值。
 
@@ -82,7 +82,7 @@ public static final String storageConnectionString =
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createClient":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 若要访问存储帐户，请使用 CloudStorageAccount 对象，将连接字符串传递到其 parse 方法。
 
@@ -109,7 +109,7 @@ Azure 文件存储中的所有文件和目录都存储在名为共享的容器�
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createFileShare":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 若要获取对共享及其内容的访问权限，请创建 Azure 文件存储客户端。
 
@@ -147,7 +147,7 @@ if (share.createIfNotExists()) {
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteFileShare":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 通过对 CloudFileShare 对象调用 deleteIfExists 方法来删除共享。
 
@@ -183,7 +183,7 @@ try
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createDirectory":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 以下代码会在根目录下创建名为 sampledir 的子目录。
 
@@ -213,7 +213,7 @@ if (sampleDir.createIfNotExists()) {
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteDirectory":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 ```java
 // Get a reference to the root directory for the share.
@@ -238,7 +238,7 @@ if ( containerDir.deleteIfExists() ) {
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_enumerateFilesAndDirs":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 通过对 CloudFileDirectory 引用调用 listFilesAndDirectories，获取文件和目录的列表。 该方法会返回可循环访问的 ListFileItem 对象的列表。 以下代码将列出根目录中的文件和目录。
 
@@ -263,7 +263,7 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_uploadFile":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 通过对共享对象调用 getRootDirectoryReference 方法，获取对文件上传目录的引用。
 
@@ -294,7 +294,7 @@ cloudFile.uploadFromFile(filePath);
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_downloadFile":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 以下示例将下载 SampleFile.txt 并显示其内容。
 
@@ -324,7 +324,7 @@ System.out.println(file.downloadText());
 
 :::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteFile":::
 
-# <a name="azure-java-sdk-v11"></a>[Azure Java SDK v11](#tab/java11)
+# <a name="azure-java-sdk-v8"></a>[Azure Java SDK v8](#tab/java8)
 
 下面的代码会删除名为 SampleFile.txt 的文件，该文件存储在名为 **sampledir** 的目录中。
 

@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 配置从本地到 CloudSimple VPN 网关的高可用性
 description: 介绍如何配置从本地环境到启用了高可用性的 CloudSimple VPN 网关的高可用性连接
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 80805aaa172518c40c7ad123ca24361ee0f15e69
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 44bbee4e179cd77159cd269e69dba4cd0812624e
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97895693"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108176785"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>配置从本地到 CloudSimple VPN 网关的高可用性连接
 
@@ -21,7 +21,7 @@ ms.locfileid: "97895693"
 
 本指南介绍为 IPsec 站点到站点 VPN 高可用性连接配置本地防火墙的步骤。 详细步骤具体针对本地防火墙的类型。 作为示例，本指南介绍了两种类型的防火墙的步骤：Cisco ASA 和 Palo Alto Networks。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 在配置本地防火墙之前，请完成以下任务。
 
@@ -36,13 +36,13 @@ ms.locfileid: "97895693"
 
 要使站点到站点 VPN 正常工作，必须在本地 Cisco ASA VPN 网关的外部接口上允许来自 CloudSimple 主公共 IP 和辅助公共 IP（对等 IP）的 UDP 500/4500 和 ESP（IP 协议 50）。
 
-### <a name="1-configure-phase-1-ikev1"></a>1.配置阶段 1 (IKEv1)
+### <a name="1-configure-phase-1-ikev1"></a>1. 配置阶段 1 (IKEv1)
 
 要启用阶段 1 (IKEv1)，请在 Cisco ASA 防火墙中输入以下 CLI 命令。
 
 ```crypto ikev1 enable outside```
 
-### <a name="2-create-an-ikev1-policy"></a>2.创建 IKEv1 策略
+### <a name="2-create-an-ikev1-policy"></a>2. 创建 IKEv1 策略
 
 创建一个 IKEv1 策略，以定义用于哈希、身份验证、Diffie-Hellman 组、生存期和加密的算法和方法。
 
@@ -55,7 +55,7 @@ group 2
 lifetime 28800
 ```
 
-### <a name="3-create-a-tunnel-group"></a>3.创建隧道组
+### <a name="3-create-a-tunnel-group"></a>3. 创建隧道组
 
 在 IPsec 属性下创建一个隧道组。 配置对等节点 IP 地址和隧道预共享密钥（这些是在[配置站点到站点 VPN 网关](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)时设置的）。
 
@@ -69,7 +69,7 @@ tunnel-group <secondary peer ip> ipsec-attributes
 ikev1 pre-shared-key *****
 ```
 
-### <a name="4-configure-phase-2-ipsec"></a>4.配置阶段 2 (IPsec)
+### <a name="4-configure-phase-2-ipsec"></a>4. 配置阶段 2 (IPsec)
 
 若要配置阶段 2 (IPsec) ，请创建用于定义要加密和隧道化的流量的访问控制列表 (ACL)。 在下面的示例中，相关流量来自从本地子网 (10.16.1.0/24) 到私有云远程子网 (192.168.0.0/24) 的隧道。 如果站点之间存在多个子网，则 ACL 可包含多个条目。
 
@@ -95,7 +95,7 @@ subnet 192.168.0.0 255.255.255.0
 access-list ipsec-acl extended permit ip object AZ_inside object CS_inside
 ```
 
-### <a name="5-configure-the-transform-set"></a>5.配置转换集
+### <a name="5-configure-the-transform-set"></a>5. 配置转换集
 
 配置转换集 (TS)，它必须包含关键字 ```ikev1```。 TS 中指定的加密和哈希属性必须与 [CloudSimple VPN 网关的默认配置](cloudsimple-vpn-gateways.md)中列出的参数匹配。
 
@@ -103,7 +103,7 @@ access-list ipsec-acl extended permit ip object AZ_inside object CS_inside
 crypto ipsec ikev1 transform-set devtest39 esp-aes-256 esp-sha-hmac 
 ```
 
-### <a name="6-configure-the-crypto-map"></a>6.配置加密映射
+### <a name="6-configure-the-crypto-map"></a>6. 配置加密映射
 
 配置加密映射，其中包含以下组件：
 
@@ -117,13 +117,13 @@ crypto map mymap 1 match address ipsec-acl
 crypto map mymap 1 set ikev1 transform-set devtest39
 ```
 
-### <a name="7-apply-the-crypto-map"></a>7.应用加密映射
+### <a name="7-apply-the-crypto-map"></a>7. 应用加密映射
 
 在外部接口上应用加密映射：
 
 ```crypto map mymap interface outside```
 
-### <a name="8-confirm-applicable-nat-rules"></a>8.确认适用的 NAT 规则
+### <a name="8-confirm-applicable-nat-rules"></a>8. 确认适用的 NAT 规则
 
 下面是所使用的 NAT 规则。 确保 VPN 流量不会传入任何其他 NAT 规则。
 
@@ -145,20 +145,20 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 要使站点到站点 VPN 正常工作，必须在本地 Palo Alto Networks 网关的外部接口上允许来自 CloudSimple 主公共 IP 和辅助公共 IP（对等 IP）的 UDP 500/4500 和 ESP（IP 协议 50）。
 
-### <a name="1-create-primary-and-secondary-tunnel-interfaces"></a>1.创建主要和辅助隧道接口
+### <a name="1-create-primary-and-secondary-tunnel-interfaces"></a>1. 创建主要和辅助隧道接口
 
 登录到 Palo Alto 防火墙，选择“网络” > “接口” > “隧道” > “添加”，配置以下字段，然后单击“确定”。
 
 * 接口名称。 第一个字段会自动填充关键字“tunnel”。 在相邻字段中输入介于 1 到 9999 之间的任意数字。 此接口将用作主隧道接口，用于在本地数据中心和私有云之间传输站点到站点通信。
 * 备注。 输入注释以方便识别隧道的用途
 * Netflow 配置文件。 保留默认值。
-* Config。将接口分配到：虚拟路由器：选择“默认值”。 
+* 配置。将接口分配到：虚拟路由器：选择“默认值”。 
         安全区域：为受信任的 LAN 流量选择区域。 在此示例中，LAN 通信区域的名称是“信任”。
 * IPv4。 单击“添加”，然后在你的环境中添加任何不重叠的未使用的 /32 ip 地址，该地址将分配到主隧道接口，并将用于监视隧道（稍后将对此进行说明）。
 
 由于此配置适用于高可用性 VPN，因此需要两个隧道接口：一个主接口和一个辅助接口。 重复前面的步骤以创建辅助隧道接口。 选择其他隧道 ID 和其他未使用的 /32 ip 地址。
 
-### <a name="2-set-up-static-routes-for-private-cloud-subnets-to-be-reached-over-the-site-to-site-vpn"></a>2.为要通过站点到站点 VPN 访问的私有云子网设置静态路由
+### <a name="2-set-up-static-routes-for-private-cloud-subnets-to-be-reached-over-the-site-to-site-vpn"></a>2. 为要通过站点到站点 VPN 访问的私有云子网设置静态路由
 
 本地子网访问 CloudSimple 私有云子网需要路由。
 
@@ -176,7 +176,7 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 重复前面的步骤，通过辅助隧道接口为私有云子网创建另一个路由作为辅助/备份路由。 这一次，请为主路由选择不同的隧道 ID 和更高的指标。
 
-### <a name="3-define-the-cryptographic-profile"></a>3.定义加密配置文件
+### <a name="3-define-the-cryptographic-profile"></a>3. 定义加密配置文件
 
 定义一个加密配置文件，该配置文件指定用于在 IKEv1 阶段 1 中设置 VPN 隧道的标识、身份验证和加密的协议和算法。
 
@@ -189,7 +189,7 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 * 密钥生存期。 保留默认值。
 * IKEv2 多重身份验证。 保留默认值。
 
-### <a name="4-define-ike-gateways"></a>4.定义 IKE 网关
+### <a name="4-define-ike-gateways"></a>4. 定义 IKE 网关
 
 定义 IKE 网关，以在每个 VPN 隧道端之间建立对等节点之间的通信。
 
@@ -222,7 +222,7 @@ IKEv1：
 
 重复前面的步骤以创建辅助 IKE 网关。
 
-### <a name="5-define-ipsec-crypto-profiles"></a>5.定义 IPSEC 加密配置文件
+### <a name="5-define-ipsec-crypto-profiles"></a>5. 定义 IPSEC 加密配置文件
 
 选择“网络” > “展开网络配置文件” > “IPSEC 加密” > “添加”，配置以下字段，然后单击“确定”。
 
@@ -236,7 +236,7 @@ IKEv1：
 
 重复前面的步骤以创建另一个 IPsec 加密配置文件，该配置文件将用作辅助 CloudSimple VPN 对等机。 同一 IPSEC 加密配置文件也可以同时用于主辅 IPsec 隧道（参见以下过程）。
 
-### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6.为隧道监视定义监视器配置文件
+### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6. 为隧道监视定义监视器配置文件
 
 选择“网络” > “展开网络配置文件” > “监视” > “添加”，配置以下字段，然后单击“确定”。
 
@@ -245,7 +245,7 @@ IKEv1：
 * 间隔。 输入值 3。
 * 阈值。 输入值 7。
 
-### <a name="7-set-up-primary-and-secondary-ipsec-tunnels"></a>7.设置主辅 IPsec 隧道。
+### <a name="7-set-up-primary-and-secondary-ipsec-tunnels"></a>7. 设置主要和辅助 IPsec 隧道。
 
 选择“网络” > “IPsec 隧道” > “添加”，配置以下字段，然后单击“确定”。
 

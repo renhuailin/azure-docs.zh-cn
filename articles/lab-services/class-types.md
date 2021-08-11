@@ -3,21 +3,31 @@ title: Azure 实验室服务中的示例类类型 | Microsoft Docs
 description: 提供可以使用 Azure 实验室服务为其设置实验室的某些类型的类。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5a90fb128f5954f3eb713714ff22ff40a3beab36
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 81b3426446894b9dd7bfccc942e04c3d9a7ea492
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99627427"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278751"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>类类型概述 - Azure 实验室服务
 
 使用 Azure 实验室服务可以在云中快速设置课堂实验室环境。 本部分列出的文章提供了有关如何使用 Azure 实验室服务设置多种类型的实验室的指导。
 
+## <a name="adobe-creative-cloud"></a>Adobe Creative Cloud
+[Adobe Creative Cloud](https://www.adobe.com/creativecloud.html) 系列的应用程序通常用于数字艺术和媒体课程。  
+
+有关如何设置此类实验室的详细信息，请参阅[为 Adobe Creative Cloud 设置实验室](class-type-adobe-creative-cloud.md)。
+
 ## <a name="arcgis"></a>ArcGIS
 [ArcGIS](https://www.esri.com/en-us/arcgis/products/arcgis-solutions/overview) 是地理信息系统 (GIS) 的一个类型。  你可以设置一个使用 ArcGIS Desktop 的各种应用程序（如 [ArcMap](https://desktop.arcgis.com/en/arcmap/latest/map/main/what-is-arcmap-.htm)）创建、编辑和分析 2D 地图的实验室。
 
 有关如何设置此类实验室的详细信息，请参阅[设置 ArcMap\ArcGIS Desktop 实验室](class-type-arcgis.md)。
+
+## <a name="autodesk"></a>Autodesk
+[AutoDesk](https://www.autodesk.com/) 提供有关体系结构、工程、建设、设计、制造等方面的软件解决方案。  这些解决方案通常用于工程课程和[项目导向](class-type-pltw.md)课程。
+
+有关如何设置此类实验室的详细信息，请参阅 [Autodesk](class-type-autodesk.md)。
 
 ## <a name="big-data-analytics"></a>大数据分析
 你可以设置 GPU 实验室以教授大数据分析课程。 通过此类课程，学生可以了解如何处理大量数据，并应用计算机和统计学习算法来获取数据见解。 学生的主要目标是了解如何使用数据分析工具，例如 Apache Hadoop 的开源软件包，该软件包提供用于存储、管理和处理大数据的工具。 

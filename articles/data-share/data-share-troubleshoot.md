@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 12/16/2020
-ms.openlocfilehash: 3aa1c0b8579bd37d2bb51cbde70997131c696813
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/22/2021
+ms.openlocfilehash: 57b5e5f483ce8076622e4705a3a5b566e2e3aa1f
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97964501"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987877"
 ---
 # <a name="troubleshoot-common-problems-in-azure-data-share"></a>排查 Azure Data Share 中的常见问题 
 
@@ -20,11 +20,7 @@ ms.locfileid: "97964501"
 
 ## <a name="azure-data-share-invitations"></a>Azure Data Share 邀请 
 
-在某些情况下，当新用户在电子邮件邀请中选择“接受邀请”时，可能会看到一个空的邀请列表。 
-
-:::image type="content" source="media/no-invites.png" alt-text="显示空邀请列表的屏幕截图。":::
-
-导致此问题的原因可能是以下之一：
+在某些情况下，当新用户在电子邮件邀请中选择“接受邀请”时，可能会看到一个空的邀请列表。 导致此问题的原因可能是以下之一：
 
 * **Azure Data Share 服务未在 Azure 租户中注册为任何 Azure 订阅的资源提供程序**。 当 Azure 租户没有 Data Share 资源时，就会出现此问题。 
 
@@ -73,15 +69,35 @@ ms.locfileid: "97964501"
 
 对于 SQL 源，快照可能因以下原因而失败：
 
-* 授予 Data Share 权限的源 SQL 脚本或目标 SQL 脚本未运行。 或者对于 Azure SQL 数据库或 Azure Synapse Analytics（以前称为 Azure SQL 数据仓库），该脚本将使用 SQL 身份验证而不是 Azure Active Directory 身份验证来运行。  
+* 授予 Data Share 权限的源 SQL 脚本或目标 SQL 脚本未运行。 或者对于 Azure SQL 数据库或 Azure Synapse Analytics（以前称为 Azure SQL 数据仓库），该脚本将使用 SQL 身份验证而不是 Azure Active Directory 身份验证来运行。 你可以运行以下查询来检查 Data Share 帐户是否拥有访问 SQL 数据库的适当权限。 对于源 SQL 数据库，查询结果应显示 Data Share 帐户拥有 db_datareader 角色。 对于目标 SQL 数据库，查询结果应显示 Data Share 帐户拥有 db_datareader、db_datawriter 和 db_dlladmin 角色。
+
+    ```sql
+        SELECT DP1.name AS DatabaseRoleName,
+        isnull (DP2.name, 'No members') AS DatabaseUserName
+        FROM sys.database_role_members AS DRM
+        RIGHT OUTER JOIN sys.database_principals AS DP1
+        ON DRM.role_principal_id = DP1.principal_id
+        LEFT OUTER JOIN sys.database_principals AS DP2
+        ON DRM.member_principal_id = DP2.principal_id
+        WHERE DP1.type = 'R'
+        ORDER BY DP1.name; 
+     ``` 
+
 * 源数据存储或目标 SQL 数据存储已暂停。
 * 快照进程或目标数据存储不支持 SQL 数据类型。 有关详细信息，请参阅[从 SQL 源共享](how-to-share-from-sql.md#supported-data-types)。
 * 源数据存储或目标 SQL 数据存储被其他进程锁定。 Azure Data Share 不会锁定这些数据存储。 但这些数据存储中的现有锁可能导致快照失败。
 * 目标 SQL 表由外键约束引用。 在快照过程中，如果目标表具有与源数据中的表相同的名称，则 Azure Data Share 将删除该表并创建新表。 如果目标 SQL 表由外键约束引用，则无法删除此表。
 * 将生成目标 CSV 文件，但无法在 Excel 中读取数据。 如果源 SQL 表包含的数据中存在包含非英语字符的数据，则可能会出现此问题。 在 Excel 中，选择“获取数据”选项卡，然后选择 CSV 文件。 选择文件来源“65001: Unicode (UTF-8)”，然后加载数据。
 
-## <a name="updated-snapshot-schedules"></a>已更新快照计划
-数据提供者更新所发送共享的快照计划后，数据使用者需要禁用以前的快照计划。 然后为接收的共享启用更新的快照计划。 
+## <a name="update-snapshot-schedule"></a>更新快照计划
+数据提供者更新所发送共享的快照计划后，数据使用者需要禁用以前的快照计划，然后为接收的共享启用已更新的快照计划。 快照计划以 UTC 格式存储，并在用户界面中显示为计算机的本地时间。 它不会根据夏令时自动调整。  
+
+## <a name="in-place-sharing"></a>就地共享
+由于以下原因，Azure 数据资源管理器群集的数据集映射可能会失败：
+
+* 用户不具有对 Azure 数据资源管理器群集的写入权限。 此权限通常是参与者角色的一部分。 
+* 源/目标 Azure 数据资源管理器群集已暂停。
+* 源 Azure 数据资源管理器群集为 EngineV2，目标 Azure 数据资源管理器群集为 EngineV3，反之亦然。 不支持不同引擎版本的 Azure 数据资源管理器群集之间的共享。
 
 ## <a name="next-steps"></a>后续步骤
 

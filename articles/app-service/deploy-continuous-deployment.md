@@ -6,19 +6,19 @@ ms.topic: article
 ms.date: 03/12/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 633d62fc69c516b482d5749a07052337dc71f567
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: aa058f0de74941a8ac9fe711c7b6de59240680bb
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789476"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110536666"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>持续部署到 Azure 应用服务
 
 [Azure 应用服务](overview.md)通过拉取最新的更新，让你能够从 [GitHub](https://help.github.com/articles/create-a-repo)、[BitBucket](https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html)和 [Azure Repos](/azure/devops/repos/git/creatingrepo) 存储库进行持续部署。
 
 > [!NOTE]
-> Azure 门户中的“开发中心(经典)”页面（旧部署体验）将于 2021 年 3 月弃用。 此更改不会影响应用中的任何现有部署设置，你可以继续在“部署中心”页中管理应用部署。
+> Azure 门户中的“开发中心(经典)”页面（部署体验的较早版本）已于 2021 年 3 月弃用。 此更改不会影响应用中的现有部署设置，你可以继续在门户中的“部署中心”页中管理应用部署。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
@@ -43,7 +43,7 @@ ms.locfileid: "107789476"
 
 1. 如果你是第一次从 GitHub 进行部署，请单击“授权”并按授权提示操作。 如果要从另一个用户的存储库进行部署，请单击“更改帐户”。
 
-1. 通过 GitHub 授权 Azure 帐户后，选择要为其配置 CI/CD 的“组织”、“存储库”和“分支”。  
+1. 通过 GitHub 授权 Azure 帐户后，选择要为其配置 CI/CD 的“组织”、“存储库”和“分支”。   如果找不到组织或存储库，可能需要在 GitHub 上启用附加权限。 有关详细信息，请参阅[管理对组织的存储库的访问权限](https://docs.github.com/organizations/managing-access-to-your-organizations-repositories)
 
 1. 当 GitHub Actions 是所选的生成提供程序时，你可以在“运行时堆栈”和“版本”下拉列表中选择所需的工作流文件。 Azure 会将此工作流文件提交到选定的 GitHub 存储库中来处理生成和部署任务。 若要在保存更改之前查看文件，请单击“预览文件”。
 

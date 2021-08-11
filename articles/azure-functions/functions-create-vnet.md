@@ -3,12 +3,12 @@ title: 使用专用终结点将 Azure Functions 与虚拟网络集成
 description: 本教程介绍如何使用专用终结点将函数连接到 Azure 虚拟网络并将其锁定。
 ms.topic: article
 ms.date: 2/22/2021
-ms.openlocfilehash: e1ed944250f05f52860c47f6cb61130f50b08e7c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 0f18712e9881c60754d5729751609f6458104daf
+ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078768"
+ms.lasthandoff: 05/10/2021
+ms.locfileid: "109715477"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>教程：使用专用终结点将 Azure Functions 与 Azure 虚拟网络集成
 
@@ -103,8 +103,8 @@ ms.locfileid: "106078768"
     | ------------ | ---------------- | ---------------- |
     | **订阅** | 订阅 | 要在其下创建资源的订阅。 |
     | **[资源组](../azure-resource-manager/management/overview.md)**  | myResourceGroup | 用函数应用创建的资源组。 |
-    | **名称** | myServiceBus| 将应用专用终结点的服务总线的名称。 |
-    | **[区域](https://azure.microsoft.com/regions/)** | myFunctionRegion | 创建函数应用的区域。 |
+    | **命名空间名称** | myServiceBus| 将应用专用终结点的服务总线的名称。 |
+    | **[位置](https://azure.microsoft.com/regions/)** | myFunctionRegion | 创建函数应用的区域。 |
     | **定价层** | 高级 | 选择此层将专用终结点与 Azure 服务总线一起使用。 |
 
 1. 选择“查看 + 创建”。 通过验证后，选择“创建”。
@@ -183,9 +183,13 @@ Azure 专用终结点用于通过专用 IP 地址连接到特定 Azure 资源。
     | ------------ | ---------------- | ---------------- |
     | **订阅** | 订阅 | 要在其下创建资源的订阅。 | 
     | **资源类型**  | Microsoft.Storage/storageAccounts | 存储帐户的资源类型。 |
+    | **名称** | blob-endpoint | 存储帐户中 blob 专用终结点的名称。 |
     | **资源** | mysecurestorage | 创建的存储帐户。 |
     | **目标子资源** | blob | 将用于存储帐户中的 blob 的专用终结点。 |
+1. 创建专用终结点后，返回到存储帐户的“防火墙和虚拟网络”部分。  
+1. 确保“所选网络”处于选中状态。  无需添加现有虚拟网络。
 
+虚拟网络中的资源现可使用专用终结点与存储帐户通信。
 ## <a name="lock-down-your-service-bus"></a>锁定服务总线
 
 创建专用终结点以锁定服务总线：
@@ -212,13 +216,30 @@ Azure 专用终结点用于通过专用 IP 地址连接到特定 Azure 资源。
     | **订阅** | 订阅 | 要在其下创建资源的订阅。 | 
     | **资源类型**  | Microsoft.ServiceBus/namespaces | 服务总线的资源类型。 |
     | **资源** | myServiceBus | 在本教程前面创建的服务总线。 |
-    | **目标子资源** | namespace | 将用于服务总线命名空间的专用终结点。 |
+    | **目标子资源** | 命名空间 | 将用于服务总线命名空间的专用终结点。 |
 
 1. 在“配置”选项卡上，在“子网”设置中，选择“默认”。
 
 1. 选择“查看 + 创建”。 通过验证后，选择“创建”。 
+1. 创建专用终结点后，返回到服务总线命名空间的“防火墙和虚拟网络”部分。
+1. 确保“所选网络”处于选中状态。
+1. 选择“+ 添加现有虚拟网络”，添加最近创建的虚拟网络。
+1. 在“添加网络”选项卡上，使用下表中的网络设置：
 
-虚拟网络中的资源现可与服务总线通信。
+    | 设置 | 建议的值 | 说明|
+    |---------|-----------------|------------|
+    | **订阅** | 订阅 | 要在其下创建资源的订阅。 |
+    | **虚拟网络** | myVirtualNet | 函数应用将连接到的虚拟网络的名称。 |
+    | **子网** | functions | 函数应用将连接到的子网的名称。 |
+
+1. 选择“添加客户端 IP 地址”，使当前客户端 IP 可以访问命名空间。
+    > [!NOTE]
+    > 允许客户端 IP 地址是必要的，以便 Azure 门户能够[在本教程后面将消息发布到队列](#test-your-locked-down-function-app)。
+1. 选择“启用”以启用服务终结点。
+1. 选择“添加”，将所选虚拟网络和子网添加到服务总线的防火墙规则。
+1. 选择“保存”，保存更新的防火墙规则。
+
+虚拟网络中的资源现可使用专用终结点与服务总线通信。
 
 ## <a name="create-a-file-share"></a>创建文件共享
 
@@ -244,11 +265,11 @@ Azure 专用终结点用于通过专用 IP 地址连接到特定 Azure 资源。
 
 1. 在服务总线中，在左侧菜单中选择“队列”。
 
-1. 选择“共享访问策略”。 出于本教程的目的，请将列表命名为“队列”。
+1. 选择“队列”。 出于本教程的目的，将新队列命名为“队列”。
 
     :::image type="content" source="./media/functions-create-vnet/6-create-queue.png" alt-text="介绍如何创建服务总线队列的屏幕截图。":::
 
-1. 选择“创建”。
+1. 选择“创建”  。
 
 ## <a name="get-a-service-bus-connection-string"></a>获取服务总线连接字符串
 
@@ -272,7 +293,7 @@ Azure 专用终结点用于通过专用 IP 地址连接到特定 Azure 资源。
 
 1. 在“虚拟网络”下，选择前面创建的虚拟网络。
 
-1. 选择前面创建的“函数”子网。 函数应用现已与虚拟网络集成！
+1. 选择前面创建的“函数”子网。 选择“确定”。  函数应用现已与虚拟网络集成！
 
     :::image type="content" source="./media/functions-create-vnet/9-connect-app-subnet.png" alt-text="介绍如何将函数应用连接到子网的屏幕截图。":::
 
@@ -316,9 +337,10 @@ Azure 专用终结点用于通过专用 IP 地址连接到特定 Azure 资源。
     | ------------ | ---------------- | ---------------- |
     | **Source** | GitHub | 应该已为步骤 2 中的示例代码创建了 GitHub 存储库。 | 
     | 组织  | myOrganization | 要签入存储库的组织。 它通常是你的帐户。 |
-    | 存储库 | myRepo | 为示例代码创建的存储库。 |
+    | 存储库 | functions-vnet-tutorial | 从 https://github.com/Azure-Samples/functions-vnet-tutorial 分叉的存储库。 |
     | 分支 | 主要 | 创建的存储库的主分支。 |
     | **运行时堆栈** | .NET | 示例代码是用 C# 编写的。 |
+    | **版本** | .NET Core 3.1 | 运行时版本。 |
 
 1. 选择“保存”。 
 
@@ -402,11 +424,9 @@ Azure 专用终结点用于通过专用 IP 地址连接到特定 Azure 资源。
 
 在本教程中，你创建了高级函数应用、存储帐户和服务总线。 你保护了专用终结点后面的所有资源。 
 
-使用以下链接来了解有关可用网络功能的详细信息：
+使用以下链接详细了解 Azure Functions 网络选项和专用终结点：
 
-> [!div class="nextstepaction"]
-> [Azure Functions 中的网络选项](./functions-networking-options.md)
-
-
-> [!div class="nextstepaction"]
-> [Azure Functions 高级计划](./functions-premium-plan.md)
+- [Azure Functions 中的网络选项](./functions-networking-options.md)
+- [Azure Functions 高级计划](./functions-premium-plan.md)
+- [服务总线专用终结点](../service-bus-messaging/private-link-service.md)
+- [Azure 存储专用终结点](../storage/common/storage-private-endpoints.md)

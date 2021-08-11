@@ -4,12 +4,12 @@ description: 使用 Application Insights 监视来自本地或 Microsoft Azure W
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 124b8d3de59d1645379d50360e69a5fdbd5587e5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e832da335453151ee60a458cb259d4add15d6e1d
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102045286"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228168"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>在 Azure Application Insights 中跟踪依赖项 
 
@@ -90,7 +90,7 @@ ms.locfileid: "102045286"
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>使用高级 SQL 跟踪获取完整的 SQL 查询
 
 > [!NOTE]
-> Azure Functions 需要单独的设置才能启用 SQL 文本收集，请参阅为 [Azure Functions 配置监视](../../azure-functions/configure-monitoring.md)以了解详细信息。
+> Azure Functions 需要单独的设置才能启用 SQL 文本收集：在 `applicationInsights` 的 [host.json](../../azure-functions/functions-host-json.md#applicationinsights) 集 `"EnableDependencyTracking": true,` 和 `"DependencyTrackingOptions": { "enableSqlCommandTextInstrumentation": true }` 中进行设置。
 
 对于 SQL 调用，始终会收集服务器和数据库的名称，并将其存储为收集的 `DependencyTelemetry` 的名称。 有一个名为“data”的附加字段，其中可以包含完整的 SQL 查询文本。
 

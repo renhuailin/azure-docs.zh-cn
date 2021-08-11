@@ -1,0 +1,47 @@
+### YamlMime:FAQ
+metadata:
+  title: 备份中心 - 常见问题解答
+  description: 本文解答了有关备份中心的常见问题。
+  ms.date: 01/12/2021
+  ms.topic: conceptual
+  ms.openlocfilehash: 34665180ab089151e3ab6cc0b818fac645b9842b
+  ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 04/15/2021
+  ms.locfileid: "111907028"
+title: 备份中心 - 常见问题
+summary: 本文解答了有关备份中心的常见问题。
+sections:
+- name: 管理
+  questions:
+  - question: 能否跨租户使用备份中心？
+    answer: >
+      可以，如果你使用的是 [Azure Lighthouse](../lighthouse/overview.md) 并跨不同租户委托了对订阅的访问权限，那么你就可以使用备份中心作为单一管理平台来管理租户之间的备份。
+  - question: 备份中心能否用于管理恢复服务保管库和备份保管库？
+    answer: >
+      可以，备份中心可以管理[恢复服务保管库](./backup-azure-recovery-services-vault-overview.md)和[备份保管库](backup-vault-overview.md)。
+  - question: 数据在备份中心出现之前是否有延迟？
+    answer: >
+      备份中心旨在提供实时信息。 实体显示在单个保管库屏幕中的时间与同一实体在备份中心中显示的时间之间可能有几秒钟的延迟。
+- name: 配置
+  questions:
+  - question: 是否需要配置任何内容来查看备份中心的数据？
+    answer: >
+      不能。 备份中心已准备就绪。 但是，若要查看备份中心下的[备份报告](./configure-reports.md)，你需要为保管库配置报告。
+  - question: 是否需要具有任何特殊权限才能使用备份中心？
+    answer: >
+      此类备份中心不需要任何新权限。 只要你对所管理的资源具有适当的 Azure RBAC 访问权限级别，就可以将备份中心用于这些资源。 例如，若要查看有关备份的信息，需要具有对保管库的读者访问权限。 若要配置备份并执行其他与备份相关的操作，需要备份参与者或备份操作员角色。 详细了解[适用于 Azure 备份的 Azure 角色](./backup-rbac-rs-vault.md)。 请注意，如果你在备份中心下使用备份报告，则需要对 Log Analytics 工作区（你的保管库向该工作区发送数据）具有读取访问权限。
+- name: 定价
+  questions:
+  - question: 是否需要支付额外的费用来使用备份资源管理器？
+    answer: "目前，使用备份中心没有额外成本（除了你的备份成本）。 但是，如果你在备份中心下使用[备份报告](./configure-reports.md)，则会产生为备份中心使用 Azure Monitor 日志的[成本](https://azure.microsoft.com/pricing/details/monitor/)。   \n"
+additionalContent: >-
+  ## <a name="next-steps"></a>后续步骤
+
+  阅读其他常见问题：
+
+
+  - [有关恢复服务保管库的常见问题](./backup-azure-backup-faq.yml)
+
+  - [有关 Azure VM 备份的常见问题](./backup-azure-vm-backup-faq.yml)

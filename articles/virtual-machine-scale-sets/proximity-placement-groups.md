@@ -1,5 +1,5 @@
 ---
-title: 虚拟机规模集的邻近放置组预览版
+title: 虚拟机规模集的邻近放置组
 description: 了解如何在 Azure 中为 Windows 虚拟机规模集创建和使用邻近放置组。
 author: cynthn
 ms.author: cynthn
@@ -8,25 +8,19 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: proximity-placement-groups
 ms.date: 07/01/2019
 ms.reviewer: zivr
-ms.custom: mimckitt
-ms.openlocfilehash: eeb0dd6cd5ce838c0f3a68763c40612038ee82f0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: 767ce9c132c7ca5f322175c54875a6870490052e
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933485"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111556039"
 ---
-# <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>预览版：使用 PowerShell 创建和使用邻近放置组
+# <a name="creating-and-using-proximity-placement-groups-using-powershell"></a>通过 PowerShell 创建和使用邻近放置组
 
 为了使 VM 尽可能接近，以尽可能降低延迟，应该在[邻近放置组](../virtual-machines/co-location.md#proximity-placement-groups)中部署规模集。
 
-邻近放置组是一种逻辑分组，用于确保 Azure 计算资源的物理位置彼此接近。 邻近放置组适用于要求低延迟的工作负荷。
-
-> [!IMPORTANT]
-> 邻近放置组目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
-> 预览版的邻近放置组在以下区域中不可用：日本东部、澳大利亚东部和印度中部。
+邻近放置组是一种逻辑分组，用于确保 Azure 计算资源的物理位置彼此接近。 邻近放置组用于要求低延迟的工作负荷。
 
 
 ## <a name="create-a-proximity-placement-group"></a>创建邻近放置组

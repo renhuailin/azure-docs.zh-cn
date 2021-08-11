@@ -1,16 +1,16 @@
 ---
-title: 为 Azure VMware 解决方案设置 vRealize Operations
+title: 为 Azure VMware 解决方案配置 vRealize Operations
 description: 了解如何为 Azure VMware 解决方案私有云设置 vRealize Operations。
 ms.topic: how-to
 ms.date: 01/26/2021
-ms.openlocfilehash: 8015bb61a7401b4c97807e0256e06d4967c39026
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 127280d22e26a88b81016aeb53432dade45dc010
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802482"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108769302"
 ---
-# <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>为 Azure VMware 解决方案设置 vRealize Operations
+# <a name="configure-vrealize-operations-for-azure-vmware-solution"></a>为 Azure VMware 解决方案配置 vRealize Operations
 
 
 vRealize Operations Manager 是一个操作管理平台，可让 VMware 基础结构管理员监视系统资源。 这些系统资源可以是应用程序级或基础结构级（物理和虚拟）对象。 大多数 VMware 管理员已使用 vRealize Operations 来监视和管理 VMware 私有云组件 - vCenter、ESXi、NSX-T、vSAN 和 VMware HCX。  每个预配的 Azure VMware 解决方案私有云都包括专用 vCenter、NSX-T、vSAN 和 HCX 部署。 

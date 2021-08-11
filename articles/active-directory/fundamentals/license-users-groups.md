@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6900647acf7182529f34c8cc065dbb039de38be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b1e8ea30ddfcaeff1a177a14a0b1d911d14b76b4
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97504400"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111526039"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>在 Azure Active Directory 门户中分配或删除许可证
 
@@ -49,8 +49,6 @@ ms.locfileid: "97504400"
 
 1. 选择“Azure Active Directory”，然后选择“许可证”   。
 
-    :::image type="content" source="media/license-users-groups/license-details-blade.png" alt-text="“许可证”页，显示已购买服务和已分配许可证数量":::
-
 1. 选择“所有产品”可查看“所有产品”**页，以及查看许可计划的“总计”** 、“已分配”、“可用”和“即将到期”数。
 
     :::image type="content" source="media/license-users-groups/license-products-blade-with-products.png" alt-text="“服务”页 - 包含服务许可计划 - 关联的许可证信息":::
@@ -72,11 +70,9 @@ ms.locfileid: "97504400"
 
 1. 在“产品”  页上，选择要分配给用户的许可计划的名称。
 
-    ![“服务”页，其中突出显示了服务许可计划](media/license-users-groups/license-products-blade-with-product-highlight.png)
+1. 选择许可证计划后，选择“分配”。
 
-1. 在“许可计划概览”页上，选择“分配”。 
-
-    ![“服务”页，突出显示了“分配”选项](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
+    ![突出显示了许可证计划选择和“分配”选项的服务页面](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
 1. 在“分配”  页上，选择“用户和组”  ，然后搜索并选择向其分配许可证的用户。
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.author: tisande
-ms.openlocfilehash: f857d9945cc52aa192838d58066a7fcc005a622d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: ddfdd4897a0cd194465828bba4bea0c002a4e434
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384917"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110797662"
 ---
 # <a name="how-to-configure-the-azure-cosmos-db-integrated-cache-preview"></a>如何配置 Azure Cosmos DB 集成缓存（预览版）
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -65,6 +65,27 @@ ms.locfileid: "110384917"
 
 > [!NOTE]
 > 如果使用的是 Python SDK，则必须显式设置每个请求的一致性级别。 默认不会自动应用帐户级别的设置。
+
+## <a name="adjust-maxintegratedcachestaleness"></a>调整 MaxIntegratedCacheStaleness
+
+配置 `MaxIntegratedCacheStaleness`，这是愿意容忍过时缓存数据的最大时间。 建议将 `MaxIntegratedCacheStaleness` 设置得尽可能高，因为这会增加可缓存命中重复点读取和查询的可能性。 如果将 `MaxIntegratedCacheStaleness` 设置为 0，则无论一致性级别如何，读取请求都决不会使用集成缓存。 未配置时，默认 `MaxIntegratedCacheStaleness` 为 5 分钟。
+
+**.NET**
+
+```csharp
+FeedIterator<Food> myQuery = container.GetItemQueryIterator<Food>(new QueryDefinition("SELECT * FROM c"), requestOptions: new QueryRequestOptions
+        {
+            ConsistencyLevel = ConsistencyLevel.Eventual,
+            DedicatedGatewayRequestOptions = new DedicatedGatewayRequestOptions 
+            { 
+                MaxIntegratedCacheStaleness = TimeSpan.FromMinutes(30) 
+            }
+        }
+);
+```
+
+> [!NOTE]
+> 目前，只能使用最新的 .NET 和 Java 预览 SDK 来调整 MaxIntegratedCacheStaleness。
 
 ## <a name="verify-cache-hits"></a>验证缓存命中数
 

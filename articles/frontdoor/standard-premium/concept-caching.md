@@ -8,17 +8,17 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 73b2e8e59774e12ddb9aa684382510d1f2c151b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 63ea252a4b4c673ae3028adb7ab793ac21fb2e99
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101098776"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564579"
 ---
 # <a name="caching-with-azure-front-door-standardpremium-preview"></a>使用 Azure Front Door 标准版/高级版（预览版）进行缓存
 
 > [!Note]
-> 本文档适用于 Azure Front Door 标准版/高级版（预览版）。 正在寻找有关 Azure Front Door 的信息？ 请查看[此处](../front-door-overview.md)。
+> 本文档适用于 Azure Front Door 标准/高级（预览版）。 正在寻找有关 Azure Front Door 的信息？ 请查看[此处](../front-door-overview.md)。
 
 本文介绍启用缓存时 Front Door 标准版/高级版（预览版）路由和规则集的行为。 Azure Front Door 是具有动态站点加速和负载均衡功能的新式内容分发网络 (CDN)。
 
@@ -26,6 +26,10 @@ ms.locfileid: "101098776"
 > Azure Front Door 标准版/高级版（预览版）目前以公共预览版提供。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+## <a name="request-methods"></a>请求方法
+
+只有 GET 请求方法可在 Azure Front Door 中生成缓存的内容。 所有其他请求方法始终通过网络进行代理。
 
 ## <a name="delivery-of-large-files"></a>大型文件交付
 
@@ -42,7 +46,7 @@ Front Door 会在收到任何区块后将区块缓存，因此整个文件无需
 
 ## <a name="query-string-behavior"></a>查询字符串行为
 
-借助 Front Door，可控制如何对包含查询字符串的 Web 请求缓存文件。 在包含查询字符串的 Web 请求中，查询字符串是问号 (?) 后出现的请求部分。 查询字符串可以包含一个或多个键值对，其中字段名称和其值由等号 (=) 分隔。 每个键值对由与号 (&) 分隔。 例如 `http://www.contoso.com/content.mov?field1=value1&field2=value2`。 如果请求的查询字符串中有多个键值对，其顺序并不重要。
+借助 Front Door，可控制如何对包含查询字符串的 Web 请求缓存文件。 在包含查询字符串的 Web 请求中，查询字符串是问号 (?) 后出现的请求部分。 查询字符串可以包含一个或多个键值对，其中字段名称和其值由等号 (=) 分隔。 每个键值对由与号 (&) 分隔。 例如，`http://www.contoso.com/content.mov?field1=value1&field2=value2`。 如果请求的查询字符串中有多个键值对，其顺序并不重要。
 
 * **忽略查询字符串**：在此模式下，Front Door 将来自请求者的查询字符串传递到第一个请求上的源并缓存该资产。 由 Front Door 环境处理的资产的所有后续请求都将忽略查询字符串，直到所缓存的资产过期。
 

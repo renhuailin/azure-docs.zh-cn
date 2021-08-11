@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 0dea30723a3ebe1598d6304ac3c98bfe1b55b466
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bcd0992347033fa355db1f952e775a5077fecabe
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563007"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554481"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>使用维护控制和 Azure 门户来控制更新
 
@@ -24,28 +24,34 @@ ms.locfileid: "102563007"
 1. 登录到 Azure 门户。
 
 1. 搜索“维护配置”。
-
-   ![屏幕截图显示了如何打开“维护配置”](media/virtual-machines-maintenance-control-portal/maintenance-configurations-search.png)
+    
+    :::image type="content" source="media/virtual-machines-maintenance-control-portal/maintenance-configurations-search-bar.png" alt-text="屏幕截图显示了如何打开“维护配置”":::
 
 1. 单击“添加”。
 
-   ![屏幕截图显示了如何添加维护配置](media/virtual-machines-maintenance-control-portal/maintenance-configurations-add.png)
+    :::image type="content" source="media/virtual-machines-maintenance-control-portal/maintenance-configurations-add-2.png" alt-text="屏幕截图显示了如何添加维护配置":::
 
-1. 选择订阅和资源组，提供配置名称，然后选择区域。 单击“下一步” 。
+1. 在“基本信息”选项卡中，选择订阅和资源组，为配置提供名称，选择一个区域，然后选择“主机”作为范围。 单击“下一步” 。
+    
+    :::image type="content" source="media/virtual-machines-maintenance-control-portal/maintenance-configurations-basics-tab.png" alt-text="屏幕截图显示了维护配置基本信息":::
 
-   ![屏幕截图显示了维护配置基本信息](media/virtual-machines-maintenance-control-portal/maintenance-configurations-basics.png)
+1. 在“计划”选项卡中，声明 Azure 将对资源应用更新的计划时段。 设置开始日期、维护时段和重复周期。 在创建计划时段后，不再需要手动应用更新。 单击“下一步”  。 
+
+    > [!IMPORTANT]
+    > 维护时段持续时间必须为 2 小时或更长时间。 必须将维护重复周期设置为每 35 天至少一次。 
+
+    :::image type="content" source="media/virtual-machines-maintenance-control-portal/maintenance-configurations-schedule-tab.png" alt-text="显示维护配置计划的屏幕截图":::
+
+1. 在“分配”选项卡中，立即分配资源，或跳过此步骤，稍后在维护配置部署后再分配资源。 单击“下一步”  。
 
 1. 添加标记和值。 单击“下一步” 。
-
-   ![屏幕截图显示了如何向维护配置添加标记](media/virtual-machines-maintenance-control-portal/maintenance-configurations-tags.png)
+    
+    :::image type="content" source="media/virtual-machines-maintenance-control-portal/maintenance-configurations-tags-tab.png" alt-text="屏幕截图显示了如何向维护配置添加标记":::
 
 1. 查看摘要。 单击“创建”。
 
-   ![屏幕截图显示了如何创建维护配置](media/virtual-machines-maintenance-control-portal/maintenance-configurations-create.png)
-
 1. 部署完成后，单击“转到资源”。
 
-   ![屏幕截图显示了维护配置部署完成](media/virtual-machines-maintenance-control-portal/maintenance-configurations-deployment-complete.png)
 
 ## <a name="assign-the-configuration"></a>分配此配置
 

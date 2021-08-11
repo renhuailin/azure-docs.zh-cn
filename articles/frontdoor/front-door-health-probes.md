@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 05/17/2021
 ms.author: duau
-ms.openlocfilehash: 4cbeea8ad20d41daff3d4ad086a36df5e988991f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6fb47cf8c3bea7080151d635620bde549070060d
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91449238"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110084981"
 ---
 # <a name="health-probes"></a>运行状况探测
 
@@ -24,6 +24,9 @@ ms.locfileid: "91449238"
 
 > [!WARNING]
 > 由于 Front Door 在全局范围内存在许多边缘环境，因此针对后端的运行状况探测量可能非常大 - 从每分钟 25 个请求到最高每分钟 1200 个请求不等，具体取决于配置的运行状况探测频率。 如果默认探测频率为 30 秒，则后端的探测量应在每分钟 200 个请求左右。
+
+> [!NOTE]
+> Front Door HTTP/HTTPS 探测在发送时带 `User-Agent` 标头，其值设置为 `Edge Health Probe`。 
 
 ## <a name="supported-protocols"></a>支持的协议
 
@@ -37,13 +40,13 @@ Front Door 支持使用以下 HTTP 方法发送运行状况探测：
 2. **HEAD：** 在 HEAD 方法中，除了服务器不能在响应中返回消息正文，其他都与 GET 方法相同。 对于新的 Front Door 配置文件，默认的探测方法设置为 HEAD。
 
 > [!NOTE]
-> 为了降低后端上的负载和成本，Front Door 建议使用 HEAD 请求进行运行状况探测。
+> 为了降低后端的负载和成本，Front Door 建议将 HEAD 请求用于运行状况探测。
 
 ## <a name="health-probe-responses"></a>运行状况探测响应
 
 | 响应  | 说明 | 
 | ------------- | ------------- |
-| 确定运行状况  |  200 OK 状态代码指示后端运行状况良好。 所有其他状态均视为失败。 如果出于任何原因（包括网络故障），探测未接收到有效的 HTTP 响应，则该探测被视为失败。|
+| 确定运行状况  | 200 OK 状态代码指示后端运行状况良好。 所有其他状态均视为失败。 如果出于任何原因（包括网络故障），探测未接收到有效的 HTTP 响应，则该探测被视为失败。|
 | 测量延迟  | 延迟是指从我们发送探测请求前的一刻到我们收到响应的最后一个字节的一刻所测得的时钟时间。 我们为每个请求都使用新的 TCP 连接，所以该度量不会偏向使用现有热连接的后端。  |
 
 ## <a name="how-front-door-determines-backend-health"></a>Front Door 如何确定后端运行状况

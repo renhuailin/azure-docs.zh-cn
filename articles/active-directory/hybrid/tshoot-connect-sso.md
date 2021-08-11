@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eef58f6e84fb3b4dec947fa3614b6ec1043ff89e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 28dcf6a34621b0cc72d600d33af1cf63be875126
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101644640"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108289743"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
@@ -29,15 +29,15 @@ ms.locfileid: "101644640"
 - 在一些情况下，启用无缝 SSO 最多可能需要 30 分钟。
 - 如果对租户禁用并重新启用无缝 SSO，则用户在其缓存的 Kerberos 票证（通常 10 小时有效）过期前，将不会获得单一登录体验。
 - 如果无缝 SSO 成功，用户将没有机会选择“使我保持登录状态”。 由于此行为，[SharePoint 和 OneDrive 映射方案](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec)无法正常工作。
-- Microsoft 365 Win32 客户端（Outlook、Word、Excel 等）版本 16.0.8730.xxxx 及更高版本支持使用非交互式流。 不支持其他版本；在这些版本中，用户需输入用户名而不是密码登录。 对于 OneDrive，必须激活 [OneDrive 无提示配置功能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)才能获得无提示登录体验。
+- 使用非交互式流支持版本为 16.0.8730.xxxx 及更高版本的 Microsoft 365 Win32 客户端（Outlook、Word、Excel 等）。 不支持其他版本；在这些版本中，用户需输入用户名而不是密码登录。 对于 OneDrive，必须激活 [OneDrive 无提示配置功能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)才能获得无提示登录体验。
 - 无缝 SSO 在 Firefox 的隐私浏览模式下不起作用。
 - 开启增强保护模式时，无缝 SSO 在 Internet Explorer 中不起作用。
-- 无缝 SSO 在 Microsoft Edge（旧版）的隐身浏览模式下无法运行。
+- 不再支持 Microsoft Edge（旧版）
 - 无缝 SSO 在 iOS 和 Android 的移动浏览器上不起作用。
 - 如果某个用户属于 Active Directory 中过多的组，则该用户的 Kerberos 票证可能会太大而无法处理，这会导致无缝 SSO 失败。 Azure AD HTTPS 请求可以具有最大大小为 50 KB 的标头；Kerberos 票证需要远小于该限制，才能容纳其他 Azure AD 项目（通常 2 - 5 KB），比如 cookie。 我们的建议是减少用户的组成员身份，然后重试。
 - 如果你要同步 30 个或更多的 Active Directory 林，则不能通过 Azure AD Connect 启用无缝 SSO。 作为一种解决方法，可以在租户中[手动启用](#manual-reset-of-the-feature)该功能。
 - 将 Azure AD 服务 URL (`https://autologon.microsoftazuread-sso.com`) 添加到“受信任的站点”区域（而不是“本地 Intranet”区域）会阻止用户登录。
-- 无缝 SSO 支持的 Kerberos 加密类型为 AES256_HMAC_SHA1、AES128_HMAC_SHA1 和 RC4_HMAC_MD5。 建议将 AzureADSSOAcc$ 帐户的加密类型设置为 AES256_HMAC_SHA1 或 AES 类型与RC4 之一，以提高安全性。 加密类型存储在 Active Directory 帐户的 msDS-SupportedEncryptionTypes 属性中。  如果 AzureADSSOAcc$ 帐户加密类型设置为 RC4_HMAC_MD5，并且你要将其更改为 AES 加密类型之一，请确保先滚动更新 AzureADSSOAcc$ 帐户的 Kerberos 解密密钥，如 [FAQ 文档](how-to-connect-sso-faq.md)中的相关问题下所述，否则无缝 SSO 不会运行。
+- 无缝 SSO 支持的 Kerberos 加密类型为 AES256_HMAC_SHA1、AES128_HMAC_SHA1 和 RC4_HMAC_MD5。 建议将 AzureADSSOAcc$ 帐户的加密类型设置为 AES256_HMAC_SHA1 或 AES 类型与 RC4 的其中一个类型，以增强安全性。 加密类型存储在 Active Directory 帐户的 msDS-SupportedEncryptionTypes 属性中。  如果 AzureADSSOAcc$ 帐户加密类型设置为 RC4_HMAC_MD5，并且你要将其更改为 AES 加密类型之一，请确保先滚动更新 AzureADSSOAcc$ 帐户的 Kerberos 解密密钥，如 [FAQ 文档](how-to-connect-sso-faq.md)中的相关问题下所述，否则无缝 SSO 不会运行。
 -  如果多个林中有林信任，那么在其中一个林中启用 SSO 将在所有受信任的林中启用 SSO。 如果在已启用 SSO 的林中启用 SSO，则会收到一条错误消息，指明林中已启用 SSO。
 
 ## <a name="check-status-of-feature"></a>检查功能状态
