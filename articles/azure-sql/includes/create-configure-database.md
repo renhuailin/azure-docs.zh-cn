@@ -1,22 +1,22 @@
 ---
-author: jovanpop-msft
 ms.service: sql-database
 ms.subservice: deployment-configuration
 ms.topic: include
 ms.date: 12/17/2020
-ms.author: jovanpop
-ms.openlocfilehash: a253cae49bcb8fff1b14736302810bffc9d1ecb0
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+author: MashaMSFT
+ms.author: mathoma
+ms.openlocfilehash: e57370bdceed2b22120985cc68da12152ed7032c
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593576"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112255433"
 ---
   可以根据下述快速入门之一，创建数据库，然后对其进行配置：
 
   | 操作 | SQL 数据库 | SQL 托管实例 | Azure VM 上的 SQL Server | Azure Synapse Analytics |
   |:--- |:--- |:---|:---|:---|
-  | 创建| [门户](../database/single-database-create-quickstart.md) | [门户](../managed-instance/instance-create-quickstart.md) | [门户](../virtual-machines/windows/sql-vm-create-portal-quickstart.md) | [门户](../../synapse-analytics/quickstart-create-workspace.md) |
+  | 创建| [Portal](../database/single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md) | [Portal](../../synapse-analytics/quickstart-create-workspace.md) |
   || [CLI](../database/scripts/create-and-configure-database-cli.md) | | | [CLI](../../synapse-analytics/quickstart-create-workspace-cli.md) |
   || [PowerShell](../database/scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md) | [PowerShell](../../synapse-analytics/quickstart-create-workspace-powershell.md) |
   || | | [部署模板](../virtual-machines/windows/create-sql-vm-resource-manager-template.md) | [部署模板](../../synapse-analytics/quickstart-deployment-template-workspaces.md) | 

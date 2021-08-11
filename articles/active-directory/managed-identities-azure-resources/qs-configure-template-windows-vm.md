@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/15/2020
+ms.date: 07/13/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fdaa61e7b02121dcafaba758be2734eabf0e09d
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 1412b0ff7703d5bcc9950c80d5ab59b4c33cc7ae
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112295410"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113732217"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-templates"></a>使用模板在 Azure VM 上配置 Azure 资源的托管标识
 
@@ -83,49 +83,8 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 ### <a name="assign-a-role-the-vms-system-assigned-managed-identity"></a>向 VM 的系统分配的托管标识分配一个角色
 
-在 VM 上启用系统分配的托管标识后，建议向其授予一个角色，例如对创建它的资源组的“读者”访问权限。
+在 VM 上启用系统分配的托管标识后，建议向其授予一个角色，例如对创建它的资源组的“读取者”访问权限。 可以在[使用 Azure 资源管理器模板分配 Azure 角色](../../role-based-access-control/role-assignments-template.md)一文中找到有助于完成此步骤的详细信息。
 
-若要为 VM 的系统分配标识分配角色，你的帐户需要[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色分配。
-
-1. 无论是在本地登录到 Azure 还是通过 Azure 门户登录，请使用与包含 VM 的 Azure 订阅关联的帐户。
-
-2. 将模板加载到[编辑器](#azure-resource-manager-templates)并添加以下信息，向 VM 授予对创建它的资源组的“读者”访问权限。  模板结构可能会有所不同，具体取决于所选的编辑器和部署模型。
-
-   在 `parameters` 部分下添加以下代码：
-
-    ```json
-    "builtInRoleType": {
-        "type": "string",
-        "defaultValue": "Reader"
-    },
-    "rbacGuid": {
-        "type": "string"
-    }
-    ```
-
-    在 `variables` 部分下添加以下代码：
-
-    ```json
-    "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
-    ```
-
-    在 `resources` 部分下添加以下代码：
-
-    ```json
-    {
-        "apiVersion": "2017-09-01",
-        "type": "Microsoft.Authorization/roleAssignments",
-        "name": "[parameters('rbacGuid')]",
-        "properties": {
-            "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
-            "principalId": "[reference(variables('vmResourceId'), '2017-12-01', 'Full').identity.principalId]",
-            "scope": "[resourceGroup().id]"
-        },
-         "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
-        ]
-    }
-    ```
 
 ### <a name="disable-a-system-assigned-managed-identity-from-an-azure-vm"></a>从 Azure VM 中禁用系统分配的托管标识
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/21/2021
 ms.author: raynew
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3489d7359b7557f0a2305a30ff3d28f05863504d
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 865b4e7f93d70b9ba77e773dd3a599e8eed01376
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110702258"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112466881"
 ---
 # <a name="move-resources-across-regions-in-powershell"></a>使用 PowerShell 在区域之间移动资源
 
@@ -49,7 +49,7 @@ ms.locfileid: "110702258"
 
 无论是使用 Azure 门户还是 PowerShell，大多数移动资源操作是相同的，只有几个例外。
 
-**操作** | **PowerShell** | **Portal**
+**操作** | **Portal** | **PowerShell**
 --- | --- | ---
 创建移动集合 | 移动集合（要移动的所有资源的列表）会自动创建。 所需的标识权限会由门户在后端中分配。 | 使用 PowerShell cmdlet 执行以下操作：<br/><br/> - 为移动集合创建资源组，并指定其位置。<br/><br/> - 为集合分配托管标识。<br/><br/> - 为集合添加资源。
 删除移动集合 | 无法直接在门户中删除移动集合。 | 使用 PowerShell cmdlet 删除移动集合。
@@ -404,7 +404,7 @@ Invoke-AzResourceMoverDiscard -ResourceGroupName "RG-MoveCollection-demoRMS" -Mo
 
 ## <a name="delete-source-resources"></a>删除源资源
 
-提交移动并验证资源可在目标区域中按预期工作后，可以[使用 PowerShell](../azure-resource-manager/management/manage-resources-powershell.md#delete-resources) 或 [Azure CLI](../azure-resource-manager/management/manage-resources-cli.md#delete-resources) 删除 [Azure 门户](../azure-resource-manager/management/manage-resources-portal.md#delete-resources)中的每个源资源。
+提交移动并验证资源可在目标区域中按预期工作后，可以使用 [PowerShell](../azure-resource-manager/management/manage-resources-powershell.md#delete-resources) 或 [Azure CLI](../azure-resource-manager/management/manage-resources-cli.md#delete-resources) 删除 [Azure 门户](../azure-resource-manager/management/manage-resources-portal.md#delete-resources)中的每个源资源。
 
 ## <a name="next-steps"></a>后续步骤
 

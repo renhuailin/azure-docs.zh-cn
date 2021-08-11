@@ -2,18 +2,17 @@
 title: 教程：基于 Azure Blob 的 REST 和 AI
 titleSuffix: Azure Cognitive Search
 description: 通过一个示例来逐步了解如何使用 Postman 和 Azure 认知搜索 REST API 基于 Blob 存储中的内容进行文本提取和自然语言处理。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/17/2020
-ms.openlocfilehash: 878bdc1224134f7b9de684635cde77d057b221a7
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: cc1be51c506123ae18d0006be693b100f2e5af1b
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555985"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727127"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 REST 和 AI 从 Azure Blob 生成可搜索的内容
 
@@ -69,7 +68,7 @@ ms.locfileid: "111555985"
 
 1. 在“基本信息”选项卡中，必须填写以下项。 对于其他任何字段，请接受默认设置。
 
-   + 资源组  。 选择现有的资源组或创建新资源组，但对于所有服务请使用相同的组，以便可以统一管理这些服务。
+   + 资源组。 选择现有的资源组或创建新资源组，但对于所有服务请使用相同的组，以便可以统一管理这些服务。
 
    + **存储帐户名称**。 如果你认为将来可能会用到相同类型的多个资源，请使用名称来区分类型和区域，例如 *blobstoragewestus*。 
 
@@ -200,7 +199,7 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
       "skills":
       [
         {
-          "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+          "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
           "categories": [ "Person", "Organization", "Location" ],
           "defaultLanguageCode": "en",
           "inputs": [

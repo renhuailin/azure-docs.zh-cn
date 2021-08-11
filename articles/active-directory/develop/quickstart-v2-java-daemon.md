@@ -3,25 +3,25 @@ title: 快速入门：从 Java 守护程序调用 Microsoft Graph | Microsoft
 titleSuffix: Microsoft identity platform
 description: 在本快速入门中，你将学习 Java 应用如何使用应用自己的标识获取访问令牌并调用受 Microsoft 标识平台终结点保护的 API
 services: active-directory
-author: navyasric
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 01/22/2021
-ms.author: nacanuma
+ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 196b80a704b8a270a4cbb7d3505d5f9be1e23479
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1ef66472d878d33f78ec6ef67c9d7de060f4f292
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99820308"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113357690"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-java-console-app-using-apps-identity"></a>快速入门：使用应用的标识获取令牌并从 Java 控制台应用中调用 Microsoft Graph API
 
-在本快速入门中，你将下载并运行一个代码示例，该示例演示 Java 应用程序如何使用应用的标识获取访问令牌来调用 Microsoft Graph API 并在目录中显示[用户列表](/graph/api/user-list)。 代码示例演示无人参与的作业或 Windows 服务如何使用应用程序标识而不是用户标识运行。 
+在本快速入门中，你将下载并运行一个代码示例，该示例演示 Java 应用程序如何使用应用的标识获取访问令牌来调用 Microsoft Graph API 并在目录中显示[用户列表](/graph/api/user-list)。 代码示例演示无人参与的作业或 Windows 服务如何使用应用程序标识而不是用户标识运行。
 
 > [!div renderon="docs"]
 > ![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-java-daemon/java-console-daemon.svg)
@@ -54,7 +54,7 @@ ms.locfileid: "99820308"
 >
 > 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-> 1. 搜索并选择“Azure Active Directory”。
+> 1. 搜索并选择“Azure Active Directory”  。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. 输入应用程序的名称（例如 `Daemon-console`）。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 > 1. 选择“注册”  。

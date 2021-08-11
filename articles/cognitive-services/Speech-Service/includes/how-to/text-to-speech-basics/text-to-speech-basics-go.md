@@ -2,14 +2,14 @@
 author: yulin-li
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/17/2021
+ms.date: 07/02/2021
 ms.author: yulili
-ms.openlocfilehash: 759fca1d323c72fe5e336a3211a9fb68fc1804b9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 54647867ab0a0d2c1333f80121aeab49a2efc959
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110085476"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113280214"
 ---
 本快速入门介绍使用语音 SDK 进行文本到语音合成的常见设计模式。
 
@@ -29,7 +29,7 @@ ms.locfileid: "110085476"
 ## <a name="text-to-speech-to-speaker"></a>文本转语音输出到扬声器
 
 使用以下代码示例在默认音频输出设备上运行合成语音。
-将变量 `subscription` 和 `region` 替换为你的订阅和区域密钥。
+将变量 `subscription` 和 `region` 替换为你的语音密钥和位置/区域。
 运行该脚本会使用默认扬声器朗读输入文本。
 
 ```go
@@ -68,8 +68,8 @@ func cancelledHandler(event speech.SpeechSynthesisEventArgs) {
 }
 
 func main() {
-    subscription :=  "YOUR_SUBSCRIPTION_KEY"
-    region := "YOUR_SUBSCRIPTIONKEY_REGION"
+    subscription := "<paste-your-speech-key-here>"
+    region := "<paste-your-speech-location/region-here>"
 
     audioConfig, err := audio.NewAudioConfigFromDefaultSpeakerOutput()
     if err != nil {
@@ -167,7 +167,7 @@ go run quickstart
 `AudioData` 属性返回输出数据的 `[]byte`。 可以手动使用此 `[]byte`，也可以使用 [`AudioDataStream`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go/speech#AudioDataStream) 类来管理内存中流。
 此示例使用 `NewAudioDataStreamFromSpeechSynthesisResult()` 静态函数从结果中获取流。
 
-将变量 `subscription` 和 `region` 替换为你的订阅和区域密钥。
+将变量 `subscription` 和 `region` 替换为你的语音密钥和位置/区域。
 
 ```go
 package main
@@ -184,8 +184,8 @@ import (
 )
 
 func main(subscription string, region string) {
-    subscription :=  "YOUR_SUBSCRIPTION_KEY"
-    region := "YOUR_SUBSCRIPTIONKEY_REGION"
+    subscription := "<paste-your-speech-key-here>"
+    region := "<paste-your-speech-location/region-here>"
 
     config, err := speech.NewSpeechConfigFromSubscription(subscription, region)
     if err != nil {

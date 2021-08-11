@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
 ms.date: 04/26/2021
-ms.custom: seodec18, devx-track-python, contperf-fy21q4
-ms.openlocfilehash: 544b3ac4702f8ecaa66735f8e0b836cc6f004f42
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.custom: seodec18, devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: d1ad8e4af0d3fdb0abb95fc12ec4a445afabbb1f
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028246"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112459237"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-an-example-jupyter-notebook"></a>教程：使用示例 Jupyter Notebook 训练图像分类模型 
 
@@ -33,7 +33,7 @@ ms.locfileid: "112028246"
 
 你会在[本教程的第二部分](tutorial-deploy-models-with-aml.md)学习如何选择模型并对其进行部署。
 
-如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 
 >[!NOTE]
 > 本文中的代码已使用 [Azure 机器学习 SDK](/python/api/overview/azure/ml/intro) 版本 1.13.0 进行测试。

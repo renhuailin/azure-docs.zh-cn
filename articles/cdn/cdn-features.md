@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 9aa394cda245bd3a457a16c19660bfe08553d14d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: a4544b2ec632f763fdc2324f1323881ff4947f3e
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058878"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113595214"
 ---
 # <a name="what-are-the-comparisons-between-azure-cdn-product-features"></a>Azure CDN 产品功能之间有哪些比较？
 
@@ -53,7 +53,7 @@ Azure 内容分发网络 (CDN) 包括四个产品：
 | 对 CDN 终结点的 HTTPS 支持 | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [自定义域 HTTPS](cdn-custom-ssl.md)  | **&#x2713;** | **&#x2713;** ，需要使用直接 CNAME 来启用 |**&#x2713;** |**&#x2713;** |
 | [自定义域名支持](cdn-map-content-to-custom-domain.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [地理筛选](cdn-restrict-access-by-country.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| [地理筛选](cdn-restrict-access-by-country-region.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [令牌身份验证](cdn-token-auth.md)  |  |  |  |**&#x2713;**| 
 | [DDOS 保护](https://www.us-cert.gov/ncas/tips/ST04-015)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [使用自己的证书](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates) |**&#x2713;** |  | **&#x2713;** | **&#x2713;** |
@@ -71,7 +71,7 @@ Azure 内容分发网络 (CDN) 包括四个产品：
 | **易于使用** | **标准版 Microsoft** | **标准 Akamai** | **标准 Verizon** | **高级 Verizon** | 
 | 轻松与[存储](cdn-create-a-storage-account-with-cdn.md)、[Web 应用](cdn-add-to-web-app.md)和[媒体服务](../media-services/previous/media-services-portal-manage-streaming-endpoints.md)等 Azure 服务集成  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | 通过 [REST API](/rest/api/cdn/)、[.NET](cdn-app-dev-net.md)、[Node.js](cdn-app-dev-node.md) 或 [PowerShell](cdn-manage-powershell.md) 进行管理  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [压缩 MIME 类型](./cdn-improve-performance.md)  |可配置性 |可配置性 |可配置性  |可配置性  |
+| [压缩 MIME 类型](./cdn-improve-performance.md)  |可配置 |可配置 |可配置  |可配置性  |
 | 压缩编码  |gzip、brotli |gzip |gzip、deflate、bzip2、brotli  |gzip、deflate、bzip2、brotli  |
 
 ## <a name="migration"></a>迁移

@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Envoy 配置自动用户设置 | Microsoft Docs
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Envoy 及如何取消预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/3/2019
-ms.author: Zhchia
-ms.openlocfilehash: b18ec2531b26574357f56c11558f2afd84467495
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 06/28/2021
+ms.author: thwimmer
+ms.openlocfilehash: f33f9e04781344cd0bb926cecd81f31a2b645bba
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102437683"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113763940"
 ---
 # <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>教程：为 Envoy 配置自动用户设置
 
@@ -52,19 +52,19 @@ ms.locfileid: "102437683"
 
 1. 登录到 [Envoy 管理控制台](https://dashboard.envoy.com/login)。 单击“集成”。 
 
-    ![Envoy 集成](media/envoy-provisioning-tutorial/envoy01.png)
+    ![Envoy 集成](media/envoy-provisioning-tutorial/envoy-01.png)
 
 2. 单击“安装”，安装 Microsoft Azure SCIM 集成 。
 
-    ![Envoy 安装](media/envoy-provisioning-tutorial/envoy02.png)
+    ![Envoy 安装](media/envoy-provisioning-tutorial/integrations.png)
 
 3. 单击“保存”，执行“同步所有用户” 。 
 
-    ![Envoy 保存](media/envoy-provisioning-tutorial/envoy03.png)
+    ![Envoy 保存](media/envoy-provisioning-tutorial/microsoft-azure.png)
 
 4. 复制“OAUTH 持有者令牌”。 将在 Azure 门户中 Envoy 应用程序的“预配”选项卡的“机密令牌”字段中输入此值。
     
-    ![Envoy OAUTH](media/envoy-provisioning-tutorial/envoy04.png)
+    ![Envoy OAUTH](media/envoy-provisioning-tutorial/token.png)
 
 ## <a name="step-3-add-envoy-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Envoy
 
@@ -97,7 +97,7 @@ ms.locfileid: "102437683"
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 

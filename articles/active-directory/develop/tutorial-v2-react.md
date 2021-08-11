@@ -3,21 +3,21 @@ title: 教程：创建使用身份验证代码流的 React 单页应用 | Azure
 titleSuffix: Microsoft identity platform
 description: 在本教程中，你将创建一个 React SPA，它可以使用户登录，并使用身份验证代码流从 Microsoft 标识平台获取访问令牌，并调用 Microsoft Graph API。
 services: active-directory
-author: tnorling
+author: j-mantu
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
 ms.date: 04/16/2021
-ms.author: thnorlin
+ms.author: jamesmantu
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 82a484964992809dc7e27744035ec19ed3a9e3db
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 1b8e822c72bdf2af8b20950944fb93686524b797
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109657296"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112072336"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-react-single-page-app-spa-using-auth-code-flow"></a>教程：使用授权代码流让用户登录并从 React 单页应用 (SPA) 调用 Microsoft Graph API
 
@@ -31,7 +31,7 @@ ms.locfileid: "109657296"
 > * 添加代码以调用 Microsoft Graph API
 > * 测试应用
 
-MSAL React 支持浏览器中的授权代码流，而不是隐式授权流。 MSAL React“不”支持隐式流。
+MSAL React 支持浏览器中的授权代码流，而不是隐式授权流。 MSAL React 不支持隐式流。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -82,7 +82,7 @@ npm install react-bootstrap bootstrap # Install Bootstrap for styling
 npm start
 ```
 
-浏览器窗口应会自动打开到应用。 如果没有，请打开浏览器并导航到 http://localhost:3000 。 每次使用更新的代码保存文件时，页面都会重新加载以反映更改。
+应会自动打开到应用的浏览器窗口。 如果没有，请打开浏览器并导航到 http://localhost:3000 。 每次使用更新的代码保存文件时，页面都会重新加载以反映更改。
 
 ## <a name="register-your-application"></a>注册应用程序
 
@@ -387,7 +387,7 @@ export const PageLayout = (props) => {
     }
     ```
 
-1. 若要仅为未经过身份验证的用户呈现某些组件，如建议登陆，请用以下代码更新“src/App.js”中的 `App` 函数： 
+1. 若要仅为未经过身份验证的用户呈现某些组件，如建议登录，请用以下代码更新“src/App.js”中的 `App` 函数： 
 
     ```jsx
     function App() {
@@ -588,7 +588,7 @@ export const PageLayout = (props) => {
    ```console
    npm start
    ```
-1. 浏览器窗口应会自动打开到应用。 如果没有，请打开浏览器并导航到 `http://localhost:3000`。 应会看到如下所示的页面。
+1. 应会自动打开到应用的浏览器窗口。 如果没有，请打开浏览器并导航到 `http://localhost:3000`。 应会看到如下所示的页面。
 
     :::image type="content" source="media/tutorial-v2-react/react-01-unauthenticated.png" alt-text="显示登录对话框的 Web 浏览器":::
 

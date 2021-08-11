@@ -10,12 +10,12 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: 00d5fa43245fb25b8ee99a0523d680bef891b71e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 409936f98dab0fa975c1314a84096b7b46df7613
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386996"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112459399"
 ---
 # <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-jupyter-notebook-part-1-of-2"></a>Tutorial:Power BI 集成 - 使用 Jupyter Notebook 创建预测模型（第 1 部分，共 2 部分）
 
@@ -40,7 +40,7 @@ ms.locfileid: "100386996"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 如果没有订阅，可使用[免费试用版](https://aka.ms/AMLFree)。 
+- Azure 订阅。 如果没有订阅，可使用[免费试用版](https://azure.microsoft.com/free/)。 
 - Azure 机器学习工作区。 如果没有工作区，请参阅[创建和管理 Azure 机器学习工作区](./how-to-manage-workspace.md#create-a-workspace)。
 - Python 语言和机器学习工作流的入门知识。
 

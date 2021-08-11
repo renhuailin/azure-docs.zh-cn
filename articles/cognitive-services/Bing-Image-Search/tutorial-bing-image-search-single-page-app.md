@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: bcb82ffcf4c4ad861c6523f507c816c666a71772
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5147d26f468a611b4d27c5a7c2d0a9c8f65755fb
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351378"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913502"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>教程：使用必应图像搜索 API 创建单页应用
 
@@ -418,4 +418,4 @@ cors-proxy-server
 
 ## <a name="see-also"></a>另请参阅
 
-* [必应图像搜索 API 参考](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [必应图像搜索 API 参考](/rest/api/cognitiveservices/bing-images-api-v7-reference)

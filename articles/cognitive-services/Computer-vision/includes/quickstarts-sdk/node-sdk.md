@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 7eadec693c1ec1adee4b6a6dffdf5ce211dfce91
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 41a0b65133b438908548881b0e16c612c4496bd4
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112083657"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112361883"
 ---
 <a name="HOLTop"></a>
 
@@ -104,11 +104,9 @@ npm install async
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_client)]
 
-然后定义函数 `computerVision`，并声明一个包含主函数和回调函数的异步系列。 我们会将快速入门代码添加到主函数中，并调用脚本底部的 `computerVision`。 此快速入门中的其余代码位于 `computerVision` 函数内部。
+然后定义函数 `computerVision`，并声明一个包含主函数和回调函数的异步系列。 在脚本的末尾，你将完成此函数定义并进行调用。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_begin)]
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_end)]
 
 > [!div class="nextstepaction"]
 > [我执行了客户端身份验证](?success=authenticate-client#read-printed-and-handwritten-text) [我遇到问题](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Javascript&Section=authenticate-client&product=computer-vision&page=node-sdk)
@@ -149,6 +147,12 @@ OCR 服务可以提取图像中的可见文本，并将其转换为字符流。 
 > [!div class="nextstepaction"]
 > [我阅读了文字](?success=read-printed-handwritten-text#run-the-application) [我遇到问题](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Javascript&Section=read-printed-handwritten-text&product=computer-vision&page=node-sdk)
 
+## <a name="close-the-function"></a>关闭函数
+
+关闭 `computerVision` 函数并调用它。
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_end)]
+
 ## <a name="run-the-application"></a>运行应用程序
 
 在快速入门文件中使用 `node` 命令运行应用程序。
@@ -164,7 +168,7 @@ node index.js
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 > [!div class="nextstepaction"]

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e867901fb90e4e6d6c3a6b8fa7ca6cd28a5e7178
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: da6923d77c866d7123599dc9f242dd18f45964eb
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755926"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113033832"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>教程：设置服务警报
 
@@ -53,4 +53,4 @@ ms.locfileid: "111755926"
 本教程介绍了如何设置和使用 Azure 服务运行状况来监视 Azure 虚拟桌面的服务问题和运行状况公告。 若要了解如何登录到 Azure 虚拟桌面，请继续学习“连接到 Azure 虚拟桌面”操作指南。
 
 > [!div class="nextstepaction"]
-> [连接到 Windows 7 和 Windows 10 上的远程桌面客户端](./connect-windows-7-10.md)
+> [连接到 Windows 7 和 Windows 10 上的远程桌面客户端](./user-documentation/connect-windows-7-10.md)

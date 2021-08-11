@@ -4,17 +4,17 @@ description: 可以使用 Azure 成本管理和计费功能执行计费管理任
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2021
+ms.date: 07/13/2021
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9fe658a1755ce3731f220ec656845da1f861fa9b
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8eb040183f1a207410c5e093009878845a61f261
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050523"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768480"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>什么是 Azure 成本管理和计费？
 
@@ -75,10 +75,6 @@ Azure 门户当前支持以下类型的计费帐户：
 
 如果你使用外部系统来访问或查看成本管理数据，则可以轻松地从 Azure 导出数据。 你可以设置一个每日计划导出，将数据文件以 CSV 格式导出并存储在 Azure 存储中。 然后，即可从外部系统访问数据。
 
-### <a name="cloudyn-deprecation"></a>Cloudyn 弃用
-
-Cloudyn 是与成本管理相关的 Azure 服务，将在 2020 年底弃用。 在可能的情况下，我们会将现有的 Cloudyn 功能直接集成到 Azure 门户中。 暂时不会登记任何新客户，但对 Cloudyn 的支持将保持到该产品完全被弃用为止。
- 
 ### <a name="additional-azure-tools"></a>其他 Azure 工具
 
 Azure 还包含其他一些工具，虽然这些工具不属于 Azure 成本管理和计费功能集， 但它们在成本管理过程中都发挥着重要作用。 若要详细了解这些工具，请参阅以下链接。

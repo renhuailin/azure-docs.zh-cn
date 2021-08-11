@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: f6b6e53440556fb7b9c0d7a774aa1b6786609461
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: d323fd5a3faf5811e88fd924ab767ec20568b917
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668051"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113435463"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建 Windows VM 映像
 
-映像可用于启动部署并确保多个 VM 的一致性。 在本教程中，我们使用 PowerShell 创建自己的 Azure 虚拟机专用化映像，并将其存储在共享映像库中。 学习如何：
+映像可用于启动部署并确保多个 VM 的一致性。 在本教程中，我们使用 PowerShell 创建自己的 Azure 虚拟机专用化映像，并将其存储在共享映像库中。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建共享映像库
@@ -29,7 +29,7 @@ ms.locfileid: "110668051"
 
 
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 下列步骤详细说明如何将现有 VM 转换为可重用自定义映像，以便将其用于创建新的 VM。
 
@@ -93,7 +93,7 @@ $gallery = New-AzGallery `
 
 映像定义为映像创建一个逻辑分组。 它们用于管理有关映像版本的信息，这些版本是在其中创建的。 映像定义名称可能包含大写或小写字母、数字、点、短划线和句点。 若要详细了解可以为映像定义指定的值，请参阅[映像定义](../shared-image-galleries.md#image-definitions)。
 
-使用 [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) 创建映像定义。 在此示例中，库映像名为 myGalleryImage，它是为专用化映像创建的。 
+使用 [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimagedefinition) 创建映像定义。 在此示例中，库映像名为 myGalleryImage，它是为专用化映像创建的。 
 
 ```azurepowershell-interactive
 $galleryImage = New-AzGalleryImageDefinition `

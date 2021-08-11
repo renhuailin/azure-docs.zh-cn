@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperf-fy20q4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15872acea0ebb6b2f1e54c9d9d91a6f11d621fd5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b2a4a5d8591eb4c35ccf9c0957d2a26e1ff23c53
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966131"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730327"
 ---
 # <a name="what-is-azure-active-directory"></a>什么是 Azure Active Directory？
 
@@ -45,7 +45,7 @@ Microsoft Online 业务服务（例如 Microsoft 365 或 Microsoft Azure）要�
 为了增强 Azure AD 实现，还可以通过升级到 Azure Active Directory Premium P1 或 Premium P2 许可证添加付费功能。 Azure AD 付费许可证建立在现有免费目录基础之上，提供自助服务、增强型监视、安全报告和移动用户安全访问。
 
 >[!Note]
->有关这些许可证的定价选项，请参阅 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
+>有关这些许可证的定价选项，请参阅 [Azure Active Directory 定价](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
 >
 >中国地区目前不支持 Azure Active Directory Premium P1 和 Premium P2。 有关 Azure AD 定价的详细信息，请访问 [Azure Active Directory 论坛](https://azure.microsoft.com/support/community/?product=active-directory)。
 

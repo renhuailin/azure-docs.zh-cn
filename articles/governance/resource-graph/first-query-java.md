@@ -1,15 +1,15 @@
 ---
 title: 快速入门：第一个 Java 查询
 description: 本快速入门介绍为 Java 启用 Resource Graph Maven 包并运行第一个查询的步骤。
-ms.date: 03/30/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
 ms.custom: devx-track-java
-ms.openlocfilehash: 04e32a3e147ed68248f7fead488a1f630ffcdb4d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 1d6d3dfb309b359e4b999d06671db7dc541d5f32
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751744"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459974"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-java"></a>快速入门：使用 Java 运行你的第一个 Resource Graph 查询
 
@@ -26,7 +26,7 @@ ms.locfileid: "108751744"
   > [!NOTE]
   > 在下面的示例中需要使用 Azure CLI，这样适用于 Java 的 Azure SDK 才能使用基于 CLI 的身份验证。 有关其他选项信息，请参阅[适用于 Java 的 Azure 标识客户端库](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity)。
 
-- [Java 开发人员工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support)版本
+- [Java 开发人员工具包](/azure/developer/java/fundamentals/java-support-on-azure)版本
   8.
 
 - [Apache Maven](https://maven.apache.org/) 版本 3.6 或更高版本。
@@ -52,7 +52,7 @@ ms.locfileid: "108751744"
     <dependency>
         <groupId>com.azure.resourcemanager</groupId>
         <artifactId>azure-resourcemanager-resourcegraph</artifactId>
-        <version>1.0.0-beta.1</version>
+        <version>1.0.0</version>
     </dependency>
    ```
 

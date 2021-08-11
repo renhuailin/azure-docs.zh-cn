@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd71944d0c29b9e796c4e5508f6b5116df99ec2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2d7c0c7c5a0fe5ff3100e754c99b476676cab222
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092811"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733369"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Azure Active Directory 中基于角色的访问控制概述
 
@@ -81,7 +81,7 @@ Azure AD 支持两种类型的角色定义：
 
 ## <a name="license-requirements"></a>许可要求
 
-在 Azure AD 中可免费使用内置角色，而使用自定义角色则需要 Azure AD Premium P1 许可证。 若要根据需要查找合适的许可证，请参阅[比较免费版和高级版的正式发布功能](https://azure.microsoft.com/pricing/details/active-directory/)。
+在 Azure AD 中可免费使用内置角色，而使用自定义角色则需要 Azure AD Premium P1 许可证。 若要根据需要查找合适的许可证，请参阅[比较免费版和高级版的正式发布功能](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
 
 ## <a name="next-steps"></a>后续步骤
 

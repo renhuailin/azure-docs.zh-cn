@@ -90,7 +90,7 @@
     - name: Microsoft Q&A 问题页面
       href: /answers/topics/azure-active-directory.html
     - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+      href: 'https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing'
     - name: 服务更新
       href: ../fundamentals/whats-new.md
     - name: Stack Overflow

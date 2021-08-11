@@ -10,13 +10,13 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 06/11/2021
-ms.custom: devx-track-python, automl
-ms.openlocfilehash: 243dd16cc70a77a0d1da0adf190dc92d83ad1ab4
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.custom: devx-track-python, automl, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 6a909d5742a582776f1467f5053b217876885bf7
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112033430"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112462768"
 ---
 # <a name="tutorial-train-a-regression-model-with-automl-and-python"></a>教程：使用 AutoML 和 Python 训练回归模型
 
@@ -41,11 +41,11 @@ ms.locfileid: "112033430"
 
 ## <a name="prerequisites"></a>先决条件
 
-如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版](https://aka.ms/AMLFree)的 Azure 机器学习。
+如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版](https://azure.microsoft.com/free/)的 Azure 机器学习。
 
 * 如果还没有 Azure 机器学习工作区或计算实例，请完成[快速入门：Azure 机器学习入门](quickstart-create-resources.md)。
-* 完成快速入门后：
-    1. 在工作室中选择“Notebooks”。
+* 完成快速入门后，请执行以下操作：
+    1. 在工作室中选择“笔记本”。
     1. 选择“示例”选项卡。
     1. 打开 tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb 笔记本。
 

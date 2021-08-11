@@ -8,14 +8,14 @@ metadata:
   manager: nitinme
   ms.service: cognitive-services
   ms.topic: conceptual
-  ms.date: 03/02/2021
+  ms.date: 07/21/2021
   ms.author: aahi
-  ms.openlocfilehash: 9a9fd4fd2502971579634ab9581341939037fc91
-  ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+  ms.openlocfilehash: e4bef1836b9faaf8d2315fd296a165988a6a3979
+  ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/16/2021
-  ms.locfileid: "114295743"
+  ms.lasthandoff: 07/24/2021
+  ms.locfileid: "114665744"
 title: Azure 认知服务容器常见问题解答 (FAQ)
 summary: ''
 sections:
@@ -105,8 +105,6 @@ sections:
 
       * 客户应参考其 [Azure 支持计划](https://azure.microsoft.com/support/plans/)来确定要向谁请求支持。
 
-      * 客户可以任意浏览 [Azure 知识中心](https://azure.microsoft.com/resources/knowledge-center/)以解答问题和帮助解决问题。
-
       * [Stack Overflow](https://en.wikipedia.org/wiki/Stack_Overflow) 是面向专业和发烧级程序员的问答站点。
         * [Azure 认知服务](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
         * [Microsoft 认知](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
@@ -138,7 +136,7 @@ sections:
 
       * [语音服务 API](../speech-service/speech-container-howto.md#container-requirements-and-recommendations)
 
-      * [文本分析](../text-analytics/how-tos/text-analytics-how-to-install-containers.md#container-requirements-and-recommendations)
+      * [文本分析](../text-analytics/how-tos/text-analytics-how-to-install-containers.md#host-computer-requirements-and-recommendations)
   - question: Windows 当前是否支持这些容器？
     answer: >
       认知服务容器属于 Linux 容器，但 Windows 对 Linux 容器提供一定的支持。 有关 Windows 上的 Linux 容器的详细信息，请参阅 [Docker 文档](https://blog.docker.com/2017/09/preview-linux-containers-on-windows/)。

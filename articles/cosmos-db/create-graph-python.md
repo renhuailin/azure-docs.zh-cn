@@ -1,20 +1,20 @@
 ---
 title: 快速入门：将 Gremlin API 与 Python 配合使用 - Azure Cosmos DB
 description: 本快速入门介绍如何在 Azure 门户和 Python 中使用 Azure Cosmos DB Gremlin API 创建控制台应用程序
-author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 03/29/2021
-ms.author: chrande
+author: manishmsfte
+ms.author: mansha
 ms.custom: devx-track-python
-ms.openlocfilehash: 479b65deec8ef7a7c313be2844495e4ed29d4d7d
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 08c8025bbb98fc9061df8ff4bc5c8abbc8fdd0eb
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "113225491"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113355044"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>快速入门：在 Azure Cosmos DB 中使用 Python 和 Azure 门户创建图形数据库
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -187,7 +187,7 @@ ms.locfileid: "113225491"
 
 5. 选择“添加属性”，以添加下列每个属性。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
 
-    key|值|注释
+    key|value|说明
     ----|----|----
     pk|/pk| 
     id|ashley|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
@@ -197,7 +197,7 @@ ms.locfileid: "113225491"
     > [!NOTE]
     > 在本快速入门中创建未分区的集合。 但是，如果在创建集合过程中通过指定分区键创建了分区的集合，则需在每个新顶点中包括该分区键作为键。 
 
-6. 选择“确定”  。 可能需要展开屏幕才能在屏幕底部看到“确定”。
+6. 选择“确定”。 可能需要展开屏幕才能在屏幕底部看到“确定”。
 
 7. 再次选择“新建顶点”，添加其他新用户。 
 
@@ -205,14 +205,14 @@ ms.locfileid: "113225491"
 
 9. 选择“添加属性”，以添加下列每个属性：
 
-    key|值|注释
+    key|value|说明
     ----|----|----
     pk|/pk| 
     id|rakesh|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
     gender|男| 
     school|MIT| 
 
-10. 选择“确定”  。 
+10. 选择“确定”。 
 
 11. 选择“应用筛选器”按钮（使用默认 `g.V()` 筛选器），显示图中的所有值。 所有用户此时会显示在“结果”列表中。 
 

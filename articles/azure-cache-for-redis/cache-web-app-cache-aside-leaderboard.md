@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: 689a9f38199184d56c9442aabae01ba7c60e4842
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 2c274ffa263ac2313171ac7adc08f2ea2120c57c
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951812"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112234656"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>教程：在 ASP.NET 中创建缓存端排行榜
 
@@ -669,7 +669,7 @@ ms.locfileid: "111951812"
    | 设置       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **服务器名称** | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
-   | 服务器管理员登录名 | 任何有效的名称 | 如需有效的登录名，请参阅 [Database Identifiers](/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
+   | **服务器管理员登录名** | 任何有效的名称 | 如需有效的登录名，请参阅 [Database Identifiers](/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
    | **密码** | 任何有效的密码 | 密码必须至少有 8 个字符，且必须包含以下类别中的三个类别的字符：大写字符、小写字符、数字以及非字母数字字符。 |
    | **位置** | *美国东部* | 选择创建缓存和应用服务的同一区域。 |
 
@@ -725,7 +725,7 @@ ms.locfileid: "111951812"
 完成示例性教程应用程序后，即可删除 Azure 资源，以节省成本和资源。 所有资源都应包含在同一资源组中。 可以通过删除资源组这一项操作将这些资源一并删除。 本文的说明使用了名为“TestResources”的资源组。
 
 > [!IMPORTANT]
-> 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，则可从各自的边栏选项卡逐个删除这些资源。
+> 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在包含要保留的资源的现有资源组中创建了用于托管此示例的资源，则可以在左侧单独删除每个资源。
 >
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。 

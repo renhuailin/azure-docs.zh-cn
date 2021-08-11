@@ -6,13 +6,13 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 04/16/2021
-ms.openlocfilehash: 392b1a1650ab40951704d003f2a5e5337cf3c0f5
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.date: 06/04/2021
+ms.openlocfilehash: 0f295a2c628a7ca931287463a75ad441bc40ee24
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566676"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113214941"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>使用 Azure 数据工厂和 Azure Data Share 实现数据集成
 
@@ -60,7 +60,7 @@ ms.locfileid: "107566676"
     ![门户 3](media/lab-data-flow-data-share/portal3.png)
 1. 你将重定向到 ADF UX 的主页。 此页包含快速入门、指导视频和教程链接，以帮助你了解数据工厂的概念。 若要开始创作，请单击左侧栏中的铅笔图标。
 
-    ![门户配置](media/lab-data-flow-data-share/configure1.png)
+    ![门户配置](./media/doc-common-process/get-started-page-author-button.png)
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
 

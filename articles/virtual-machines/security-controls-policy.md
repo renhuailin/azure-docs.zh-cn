@@ -1,22 +1,22 @@
 ---
 title: Azure 虚拟机的 Azure Policy 法规遵从性控制措施
 description: 列出可用于 Azure 虚拟机的 Azure Policy 法规遵从性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 06/11/2021
+ms.date: 07/16/2021
 ms.topic: sample
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 612f5adb160cd2f054062b616909afb8fdaa8b59
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 4c532a384fb780bb7ee083930f0ce1b2669fb68e
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032675"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400472"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-virtual-machines"></a>Azure 虚拟机的 Azure Policy 法规遵从性控制措施 
 
-[Azure Policy 中的法规遵从性](../governance/policy/concepts/regulatory-compliance.md)为与不同合规性标准相关的“合规性域”和“安全控制”提供由 Microsoft 创建和管理的计划定义，称为“内置项” 。 此页列出 Azure 虚拟机的“符合域”和“安全控制措施” 。 可以分别为“安全控件”分配内置项，以帮助 Azure 资源符合特定的标准。
+[Azure Policy 中的法规遵从性](../governance/policy/concepts/regulatory-compliance.md)为与不同合规性标准相关的“合规性域”和“安全控制”提供由 Microsoft 创建和管理的计划定义，称为“内置项” 。 此页列出 Azure 虚拟机的“符合域”和“安全控制措施” 。 可以分别为“安全控制”分配内置项，以帮助 Azure 资源符合特定的标准。
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 

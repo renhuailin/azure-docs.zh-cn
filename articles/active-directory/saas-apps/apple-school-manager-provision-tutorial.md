@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 Apple School Manager 配置自
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Apple School Manager 以及如何解除预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: f006c177-7b35-4af1-84f2-db4a4e2bf96a
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.author: Zhchia
-ms.openlocfilehash: be21151be719098dd6ec65f369ea6fc81ff45a98
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 5031da3751d596228a40a354b527b718920b86e5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97591814"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764947"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>教程：为 Apple School Manager 配置自动用户预配
 
@@ -116,7 +116,7 @@ ms.locfileid: "97591814"
    |name.givenName|字符串|
    |name.familyName|字符串|
    |name.givenName|字符串|
-   |externalId|字符串|
+   |externalId|String|
    |区域设置|字符串|
    |timezone|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|

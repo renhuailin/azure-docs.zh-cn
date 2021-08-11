@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: 70793c997979be1c94dda0a5198df8c450e16496
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 521a6a159bd86b7480ce705a83ac3b56ee8c150f
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031000"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114689115"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>教程：使用 DMS 将 SQL Server 联机迁移到 Azure SQL 托管实例
 
-可使用 Azure 数据库迁移服务以最少停机时间将数据库从 SQL Server 实例迁移到 [Azure SQL 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)。 有关需要一些手动操作的其他方法，请参阅[将 SQL Server 实例迁移到 Azure SQL 托管实例](../azure-sql/managed-instance/migrate-to-instance-from-sql-server.md)一文。
+可使用 Azure 数据库迁移服务以最少停机时间将数据库从 SQL Server 实例迁移到 [Azure SQL 托管实例](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)。 有关需要一些手动操作的其他方法，请参阅[将 SQL Server 实例迁移到 Azure SQL 托管实例](../azure-sql/migration-guides/managed-instance/sql-server-to-managed-instance-guide.md)一文。
 
 本教程介绍如何使用 Azure 数据库迁移服务，以最少停机时间将 Adventureworks2012 数据库从 SQL Server 的本地实例迁移到 SQL 托管实例。
 
@@ -173,7 +173,7 @@ ms.locfileid: "112031000"
 
    ![源详细信息](media/tutorial-sql-server-to-managed-instance-online/dms-source-details2.png)
 
-3. 选择“保存” 。
+3. 选择“保存”  。
 
 4. 在“选择源数据库”屏幕上，选择用于迁移的“Adventureworks2012”数据库 。
 
@@ -182,7 +182,7 @@ ms.locfileid: "112031000"
     > [!IMPORTANT]
     > 如果使用 SQL Server Integration Services (SSIS)，则 DMS 目前不支持将 SSIS 项目/包的目录数据库 (SSISDB) 从 SQL Server 迁移到 SQL 托管实例。 但是，你可以在 Azure 数据工厂 (ADF) 中预配 SSIS 并将 SSIS 项目/包重新部署到由 SQL 托管实例托管的目标 SSISDB。 有关如何迁移 SSIS 包的详细信息，请参阅[将 SQL Server Integration Services 包迁移到 Azure](./how-to-migrate-ssis-packages.md)。
 
-5. 选择“保存” 。
+5. 选择“保存”  。
 
 ## <a name="specify-target-details"></a>指定目标详细信息
 
@@ -198,7 +198,7 @@ ms.locfileid: "112031000"
 
     ![选择目标](media/tutorial-sql-server-to-managed-instance-online/dms-target-details3.png)
 
-4. 选择“保存” 。
+4. 选择“保存”  。
 
 ## <a name="select-source-databases"></a>选择源数据库
 
@@ -206,7 +206,7 @@ ms.locfileid: "112031000"
 
     ![选择源数据库](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
 
-2. 选择“保存” 。
+2. 选择“保存”  。
 
 ## <a name="configure-migration-settings"></a>配置迁移设置
 
@@ -228,7 +228,7 @@ ms.locfileid: "112031000"
     > [!IMPORTANT]
     > 如果启用了环回检查功能，并且源 SQL Server 和文件共享位于同一台计算机上，则源将无法使用 FQDN 访问文件共享。 若要解决此问题，请按照[此处](https://support.microsoft.com/help/926642/error-message-when-you-try-to-access-a-server-locally-by-using-its-fqd)的说明禁用环回检查功能。
 
-2. 选择“保存” 。
+2. 选择“保存”  。
 
 ## <a name="review-the-migration-summary"></a>查看迁移摘要
 

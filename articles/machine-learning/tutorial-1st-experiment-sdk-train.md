@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/27/2021
 ms.custom: devx-track-python, contperf-fy21q3, FY21Q4-aml-seo-hack, contperf-fy21q
-ms.openlocfilehash: 616723e66dceeb3c0de21b36e3af3039dafbe63e
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: c96936635898f9173b7eb8e60502ea059420cf0b
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028264"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113758867"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-2-of-3"></a>教程：训练你的第一个机器学习模型（第 2 部分，共 3 部分）
 
@@ -135,10 +135,6 @@ ms.locfileid: "112028264"
 1. 现在你拥有以下文件夹结构：
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-train/directory-structure.png" alt-text="目录结构显示 src 子目录中的 train.py":::
-    
-
-> [!div class="nextstepaction"]
-> [我创建了训练脚本](?success=create-scripts#test-local) [我遇到了一个问题](https://www.research.net/r/7CTJQQN?issue=create-scripts)
 
 
 ## <a name="test-locally"></a><a name="test-local"></a> 本地测试
@@ -148,9 +144,6 @@ ms.locfileid: "112028264"
 脚本完成后，选择文件文件夹上方的“刷新”。 你将看到名为 get-started/data 的新数据文件夹。展开此文件夹，查看已下载的数据。  
 
 :::image type="content" source="media/tutorial-1st-experiment-hello-world/directory-with-data.png" alt-text="文件夹的屏幕截图显示通过在本地运行文件创建的新数据文件夹。":::
-
-> [!div class="nextstepaction"]
-> [我在本地运行代码](?success=test-local#create-local) [我遇到了一个问题](https://www.research.net/r/7CTJQQN?issue=test-local)
 
 
 ## <a name="create-the-control-script"></a><a name="create-local"></a> 创建控制脚本
@@ -205,10 +198,6 @@ if __name__ == "__main__":
    :::column-end:::
 :::row-end:::
 
-> [!div class="nextstepaction"]
-> [我创建了控制脚本](?success=control-script#submit) [我遇到了一个问题](https://www.research.net/r/7CTJQQN?issue=control-script)
-
-
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> 将该运行提交到 Azure 机器学习
 
 选择“保存并在终端中运行脚本”来运行 run-pytorch.py 脚本。
@@ -245,11 +234,6 @@ Finished Training
 > 如果看到错误 `Your total snapshot size exceeds the limit`，则表明数据文件夹位于在 `ScriptRunConfig` 中使用的 `source_directory` 中。
 >
 > 选择文件夹末尾的“...”，然后选择“移动”，将“数据”移动到 get-started 文件夹   。  
-
-
-
-> [!div class="nextstepaction"]
-> [我提交了运行](?success=test-w-environment#log) [我遇到了一个问题](https://www.research.net/r/7CTJQQN?issue=test-w-environment)
 
 ## <a name="log-training-metrics"></a><a name="log"></a> 记录训练指标
 
@@ -334,10 +318,6 @@ Azure 机器学习中的指标具有以下特点：
 - 配备了一个 UI，使你能够在工作室中可视化训练性能。
 - 设计用于进行扩展，因此即使在运行数百个试验的情况下，你也始终有这些优势。
 
-> [!div class="nextstepaction"]
-> [我修改了 train.py](?success=modify-train#log) [我遇到了一个问题](https://www.research.net/r/7CTJQQN?issue=modify-train)
-
-
 ### <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-again"></a> 将该运行提交到 Azure 机器学习
 
 选择 run-pytorch.py 脚本的选项卡，然后选择“保存并在终端中运行脚本”，来重新运行 run-pytorch.py 脚本。 
@@ -345,9 +325,6 @@ Azure 机器学习中的指标具有以下特点：
 这一次，当你访问工作室时，请转到“指标”选项卡，此时可以看到有关模型训练损失的实时更新！ 训练开始之前可能需要 1 到 2 分钟。  
 
 :::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="“指标”选项卡中的训练损失图。":::
-
-> [!div class="nextstepaction"]
-> [我重新提交了运行](?success=resubmit-with-logging#next-steps) [我遇到了一个问题](https://www.research.net/r/7CTJQQN?issue=resubmit-with-logging)
 
 ## <a name="next-steps"></a>后续步骤
 

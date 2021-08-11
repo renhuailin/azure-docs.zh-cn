@@ -4,12 +4,12 @@ description: 本快速入门介绍如何使用 Azure 资源管理器模板（ARM
 ms.date: 04/28/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
-ms.openlocfilehash: 8d7d62c05586032bc73c41ef671862a4aa211334
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: a4905742f2c8f3d325cbe32f35e06d9aab27222d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903162"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450284"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>快速入门：使用 ARM 模板创建恢复服务保管库
 
@@ -34,7 +34,7 @@ ms.locfileid: "111903162"
 该模板中定义了两个 Azure 资源：
 
 - [Microsoft.RecoveryServices 保管库](/azure/templates/microsoft.recoveryservices/vaults)：创建保管库。
-- [Microsoft.RecoveryServices/vaults/backupstorageconfig](/rest/api/backup/backupresourcestorageconfigs)：配置保管库的备份冗余设置。
+- [Microsoft.RecoveryServices/vaults/backupstorageconfig](/rest/api/backup/backup-resource-storage-configs)：配置保管库的备份冗余设置。
 
 该模板包含保管库备份配置的可选参数。 存储冗余设置是本地冗余存储 (LRS) 或异地冗余存储 (GRS)。 有关详细信息，请参阅[设置存储冗余](../backup/backup-create-rs-vault.md#set-storage-redundancy)。
 

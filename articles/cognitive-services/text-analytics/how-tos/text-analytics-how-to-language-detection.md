@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 06/10/2021
+ms.date: 07/02/2021
 ms.author: aahi
-ms.openlocfilehash: c9ff3bdc7e7076846ffb44239bf5654512f88eea
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 33dbcfb3faa046eeeec2dc19a45ece9bcf270b76
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967970"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113549771"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>示例：通过文本分析检测语言
 
-Azure 文本分析 REST API 的[语言检测](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)功能评估每个文档的文本输入，并返回带有指示分析强度的分数的语言标识符。
+Azure 文本分析 REST API 的[语言检测](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Languages)功能评估每个文档的文本输入，并返回带有指示分析强度的分数的语言标识符。
 
 此功能对于用于收集语言未知的任意文本的内容存储非常有用。 可以解析此分析的结果，确定输入文档中使用的语言。 响应还返回一个分数，反映模型的置信度。 分数值介于 0 到 1 之间。
 
@@ -67,16 +67,16 @@ Azure 文本分析 REST API 的[语言检测](https://westus2.dev.cognitive.micr
 
 有关请求定义的详细信息，请参阅[调用文本分析 API](text-analytics-how-to-call-api.md)。 为方便起见，特重申以下几点：
 
-+ 创建 POST 请求。 若要查看此请求的 API 文档，请参阅[语言检测 API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)。
++ 创建 POST 请求。 若要查看此请求的 API 文档，请参阅[语言检测 API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Languages)。
 
-+ 设置语言检测的 HTTP 终结点。 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)。 必须在 URL 中包括 `/text/analytics/v3.0/languages`。 例如：`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages`。
++ 设置语言检测的 HTTP 终结点。 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)。 必须在 URL 中包括 `/text/analytics/v3.1/languages`。 例如：`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/languages`。
 
 + 设置请求头以包含文本分析操作的[访问密钥](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 
 + 在请求正文中，提供为此分析准备的 JSON 文档集合。
 
 > [!Tip]
-> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)中的“API 测试控制台”来构造请求并将其 POST 到该服务。
+> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Languages)中的“API 测试控制台”来构造请求并将其 POST 到该服务。
 
 ## <a name="step-2-post-the-request"></a>步骤 2：POST 请求
 
@@ -91,73 +91,61 @@ Azure 文本分析 REST API 的[语言检测](https://westus2.dev.cognitive.micr
 
 系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中。 然后，将输出导入到可以用来对数据进行排序、搜索和操作的应用程序。
 
-示例请求的结果应类似于以下 JSON 文档。 请注意，这是一个包含多个项的 JSON 文档，其中每个项代表提交的每个文档的检测结果。 输出采用英文。 
+示例请求的结果应类似于以下 JSON 文档。 请注意，这是一个包含多项的 JSON 文档，其中每项代表提交的每个文档的检测结果。 输出采用英文。 
 
 语言检测将为一个文档返回一种主要语言，以及 [ISO 639-1](https://www.iso.org/standard/22109.html) 名称、易记名称和置信度分数。 正分 1.0 表示分析可能达到的最高可信度。
 
 ```json
 {
-    "documents":[
+    "documents": [
         {
-            "detectedLanguage":{
-                "confidenceScore":0.99,
-                "iso6391Name":"en",
-                "name":"English"
+            "id": "1",
+            "detectedLanguage": {
+                "name": "English",
+                "iso6391Name": "en",
+                "confidenceScore": 0.99
             },
-            "id":"1",
-            "warnings":[
-                
-            ]
+            "warnings": []
         },
         {
-            "detectedLanguage":{
-                "confidenceScore":1.0,
-                "iso6391Name":"es",
-                "name":"Spanish"
+            "id": "2",
+            "detectedLanguage": {
+                "name": "Spanish",
+                "iso6391Name": "es",
+                "confidenceScore": 0.91
             },
-            "id":"2",
-            "warnings":[
-                
-            ]
+            "warnings": []
         },
         {
-            "detectedLanguage":{
-                "confidenceScore":1.0,
-                "iso6391Name":"fr",
-                "name":"French"
+            "id": "3",
+            "detectedLanguage": {
+                "name": "French",
+                "iso6391Name": "fr",
+                "confidenceScore": 0.78
             },
-            "id":"3",
-            "warnings":[
-                
-            ]
+            "warnings": []
         },
         {
-            "detectedLanguage":{
-                "confidenceScore":1.0,
-                "iso6391Name":"zh_chs",
-                "name":"Chinese_Simplified"
+            "id": "4",
+            "detectedLanguage": {
+                "name": "Chinese_Simplified",
+                "iso6391Name": "zh_chs",
+                "confidenceScore": 1.0
             },
-            "id":"4",
-            "warnings":[
-                
-            ]
+            "warnings": []
         },
         {
-            "detectedLanguage":{
-                "confidenceScore":1.0,
-                "iso6391Name":"ru",
-                "name":"Russian"
+            "id": "5",
+            "detectedLanguage": {
+                "name": "Russian",
+                "iso6391Name": "ru",
+                "confidenceScore": 1.0
             },
-            "id":"5",
-            "warnings":[
-                
-            ]
+            "warnings": []
         }
     ],
-    "errors":[
-        
-    ],
-    "modelVersion":"2020-09-01"
+    "errors": [],
+    "modelVersion": "2021-01-05"
 }
 ```
 
@@ -226,23 +214,19 @@ Azure 文本分析 REST API 的[语言检测](https://westus2.dev.cognitive.micr
 
 ```json
 {
-    "documents":[
+    "documents": [
         {
-            "detectedLanguage":{
-                "confidenceScore":0.0,
-                "iso6391Name":"(Unknown)",
-                "name":"(Unknown)"
+            "id": "1",
+            "detectedLanguage": {
+                "name": "(Unknown)",
+                "iso6391Name": "(Unknown)",
+                "confidenceScore": 0.0
             },
-            "id":"1",
-            "warnings":[
-                
-            ]
+            "warnings": []
         }
     ],
-    "errors":[
-        
-    ],
-    "modelVersion":"2020-09-01"
+    "errors": [],
+    "modelVersion": "2021-01-05"
 }
 ```
 
@@ -269,23 +253,19 @@ Azure 文本分析 REST API 的[语言检测](https://westus2.dev.cognitive.micr
 
 ```json
 {
-    "documents":[
+    "documents": [
         {
-            "detectedLanguage":{
-                "confidenceScore":0.94,
-                "iso6391Name":"es",
-                "name":"Spanish"
+            "id": "1",
+            "detectedLanguage": {
+                "name": "Spanish",
+                "iso6391Name": "es",
+                "confidenceScore": 0.88
             },
-            "id":"1",
-            "warnings":[
-                
-            ]
+            "warnings": []
         }
     ],
-    "errors":[
-        
-    ],
-    "modelVersion":"2020-09-01"
+    "errors": [],
+    "modelVersion": "2021-01-05"
 }
 ```
 
@@ -293,7 +273,7 @@ Azure 文本分析 REST API 的[语言检测](https://westus2.dev.cognitive.micr
 
 本文介绍了使用 Azure 认知服务中的文本分析进行语言检测的概念和工作流。 其中解释并演示了以下要点：
 
-+ [语言检测](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)可用于多种语言、变体、方言和某些区域或文化语言。
++ [语言检测](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Languages)可用于多种语言、变体、方言和某些区域或文化语言。
 + 请求正文中的 JSON 文档包括 ID 和文本。
 + POST 请求的目标是 `/languages` 终结点，方法是使用对订阅有效的个性化[访问密钥和终结点](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)。
 + 响应输出包含每个文档 ID 的语言标识符。 输出可以流式传输到接受 JSON 的任何应用。 示例应用包括 Excel 和 Power BI（仅举几例）。

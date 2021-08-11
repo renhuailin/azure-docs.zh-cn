@@ -6,17 +6,17 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: a958e42f3afab3dccd2a989c9d824a37ed9d9a6c
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: fdc8c60f2c2cae7368a2e35317de2cfb8274a060
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110536804"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414946"
 ---
 # <a name="event-grid-on-kubernetes-with-azure-arc-preview---overview"></a>具有 Azure Arc 的 Kubernetes 上的事件网格（预览）- 概述
 本文概括性介绍 Kubernetes 上的事件网格、其用例、其提供的功能以及其与 Azure 事件网格的不同之处。
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="what-is-event-grid"></a>什么是事件网格？
 事件网格是一个事件代理，用于集成使用事件驱动的体系结构的工作负载。 事件驱动的体系结构使用事件来传达系统状态的更改，是分离式体系结构（例如使用微服务的体系结构）中的常见集成方法。 事件网格提供发布-订阅通信模型，也称为推送-推送通信模型，在该模型中，系统会向订阅者发送（推送）事件，而那些订阅者不一定知道发送事件的发布者是谁。 此模型与经典推送-拉取模型（例如，Azure 服务总线或 Azure 事件中心使用的模型）形成对比，在后者中，客户端从消息代理拉取消息，因此，消息代理与使用消息的客户端之间存在更强的耦合。

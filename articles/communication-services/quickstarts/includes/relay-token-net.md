@@ -1,21 +1,21 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: Communication Services
 author: shahen
 manager: anvalent
 ms.service: Communication Services
 ms.subservice: Communication Services
-ms.date: 05/21/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: shahen
-ms.openlocfilehash: fa3ecf3fa6b74bdbd52a9b077cde04c6f98dde86
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: df8298416c6acf159d9bdec13e5dfc50db54ed50
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111025925"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "114471417"
 ---
 ### <a name="prerequisite-check"></a>先决条件检查
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/06/2021
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7ee10327ab95a3e66e5592593ae72d6e5cd8d606
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 76561e0b19d3d42421a73ddc178ad12cd83d5e25
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060595"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "114297595"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>快速入门：使用 PowerShell 创建虚拟网络
 
@@ -26,7 +26,7 @@ ms.locfileid: "106060595"
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 本地安装的 Azure PowerShell 或 Azure Cloud Shell
 
-如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+如果选择在本地安装并使用 PowerShell，则本文需要 Azure PowerShell 模块 5.4.1 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>创建资源组和虚拟网络
 
@@ -127,6 +127,8 @@ New-AzVM @vm2
 
 > [!IMPORTANT]
 > 请在 Azure 创建完 VM 之后再继续下一步骤。  Azure 将输出返回到 PowerShell 时，即完成创建。
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 

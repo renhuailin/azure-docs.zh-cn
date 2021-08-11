@@ -195,7 +195,7 @@
     - name: Az.LabServices PowerShell 模块（预览版）
       href: reference-powershell-module.md
     - name: Azure CLI
-      href: /cli/azure/hack
+      href: 'https://github.com/Azure/azure-cli-extensions/tree/main/src/hack'
 - name: 资源
   items:
     - name: Azure 实验室服务博客

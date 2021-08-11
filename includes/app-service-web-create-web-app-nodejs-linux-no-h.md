@@ -1,5 +1,5 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: app-service
 author: cephalin
@@ -8,22 +8,19 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: de37cad3552263fdb8c1de07406f7d1769edace0
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 940e7e787d92538325ef4e507f93b09476838b59
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107893099"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113688614"
 ---
 在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](../articles/app-service/overview.md#app-service-on-linux)。 
 
-在 Cloud Shell 中可以使用 [`az webapp create`](/cli/azure/webapp) 命令。 在以下示例中，将 `<app-name>` 替换为全局唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）。 运行时设置为 `NODE|6.9`。 若要查看所有受支持的运行时，请运行 [`az webapp list-runtimes --linux`](/cli/azure/webapp)。 
+在 Cloud Shell 中可以使用 [`az webapp create`](/cli/azure/webapp) 命令。 在以下示例中，将 `<app-name>` 替换为全局唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）。 运行时设置为 `NODE|14-lts`。 若要查看所有受支持的运行时，请运行 [`az webapp list-runtimes --linux`](/cli/azure/webapp)。 
 
 ```azurecli-interactive
-# Bash
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "NODE|6.9" --deployment-local-git
-# PowerShell
-az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "NODE|6.9" --deployment-local-git
+az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime 'NODE|14-lts' --deployment-local-git
 ```
 
 创建 Web 应用后，Azure CLI 会显示类似于以下示例的输出：
@@ -34,8 +31,11 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;app-name&gt;.s
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
   "clientCertEnabled": false,
+  "clientCertExclusionPaths": null,
+  "clientCertMode": "Required",
   "cloningInfo": null,
   "containerSize": 0,
+  "customDomainVerificationId": "54184270DF7B3B4BF30221B6303E789C324E4783C8DF1FBAA3D111FC72328CE9",
   "dailyMemoryTimeQuota": 0,
   "defaultHostName": "&lt;app-name&gt;.azurewebsites.net",
   "deploymentLocalGitUrl": "https://&lt;username&gt;@&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git",

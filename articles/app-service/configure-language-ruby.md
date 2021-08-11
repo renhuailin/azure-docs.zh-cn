@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 038d62573b491325adc60647debf17fa87e06cfe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b71b6867221a2cae6bf5b8751a848413b6f8d20a
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92743686"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112963773"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Ruby 应用
 
@@ -63,7 +63,7 @@ ENV['WEBSITE_SITE_NAME']
 
 ## <a name="customize-deployment"></a>自定义部署
 
-部署 [Git 存储库](deploy-local-git.md)或者部署启用了生成过程的 [Zip 包](deploy-zip.md)时，部署引擎 (Kudu) 会默认运行以下后期部署步骤：
+部署 [Git 存储库](deploy-local-git.md)或者部署[启用了生成自动化](deploy-zip.md#enable-build-automation)的 [Zip 包](deploy-zip.md)时，部署引擎 (Kudu) 会默认运行以下后期部署步骤：
 
 1. 检查 Gemfile 是否存在。
 1. 运行 `bundle clean`。 
@@ -155,4 +155,4 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 > [教程：使用 PostgreSQL 的 Rails 应用](tutorial-ruby-postgres-app.md)
 
 > [!div class="nextstepaction"]
-> [应用服务 Linux 常见问题解答](faq-app-service-linux.md)
+> [应用服务 Linux 常见问题解答](faq-app-service-linux.yml)

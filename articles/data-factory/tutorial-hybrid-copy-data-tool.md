@@ -6,13 +6,13 @@ author: nabhishek
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 03/26/2021
-ms.openlocfilehash: 70905d23b61ee9fee319bae41aeb421d808fa4d0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 07/08/2021
+ms.openlocfilehash: 143fa6c8d6d0d09d48de03b6d627c996268b5260
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566738"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113665783"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>使用“复制数据”工具将数据从 SQL Server 数据库复制到 Azure Blob 存储
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -108,42 +108,42 @@ ms.locfileid: "105566738"
         
      若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。
 1. 在“版本”下选择“V2”。 
-1. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置/区域。
+1. 在“位置”下选择数据工厂的位置。  下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他位置/区域。
 1. 选择“创建”。
 
 1. 创建完以后，会看到图中所示的“数据工厂”页：
 
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含“创作和监视”磁贴。":::
-1. 选择“创作和监视”，在单独的选项卡中启动数据工厂用户界面。
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂主页，其中包含“打开 Azure 数据工厂工作室”磁贴。":::
+
+1. 在“打开 Azure 数据工厂工作室”磁贴上选择“打开”，在单独的选项卡中启动数据工厂用户界面 。
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>使用“复制数据”工具创建管道
 
-1. 在“开始使用”页中选择“复制数据”，启动“复制数据”工具 。
+1. 在 Azure 数据工厂主页上，选择“引入”磁贴来启动“复制数据”工具。
 
-   ![“入门”页](./media/doc-common-process/get-started-page.png)
+   ![屏幕截图显示 Azure 数据工厂主页。](./media/doc-common-process/get-started-page.png)
 
-1. 在“复制数据”工具的“属性”页的“任务名称”下，输入 **CopyFromOnPremSqlToAzureBlobPipeline**。  然后，选择“下一步”。 “复制数据”工具将使用在此字段中指定的名称创建一个管道。
-  ![任务名称](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
+1. 在“复制数据”工具的“属性”页上，选择“任务类型”下的“内置复制任务”，然后选择“任务节奏或任务计划”下的“立即运行一次”，再选择“下一步”     。
 
-1. 在“源数据存储”页面上，单击“创建新连接”。
+1. 在“源数据存储”页上，选择“+ 创建新连接” 。
 
-1. 在“新建链接服务”下，搜索“SQL Server”，然后选择“继续”。
+1. 在“新建连接”下，搜索“SQL Server”，然后选择“继续”  。
 
-1. 在“新建链接服务(SQL Server)”对话框中的“名称”下输入“SqlServerLinkedService”  。 在“通过集成运行时连接”下选择“+新建”。  必须创建自承载的 Integration Runtime，将其下载到计算机，然后将其注册到数据工厂。 自承载的 Integration Runtime 时可在本地环境与云之间复制数据。
+1. 在“新建连接(SQL Server)”对话框中的“名称”下输入“SqlServerLinkedService”  。 在“通过集成运行时连接”下选择“+新建”。  必须创建自承载的 Integration Runtime，将其下载到计算机，然后将其注册到数据工厂。 自承载的 Integration Runtime 时可在本地环境与云之间复制数据。
 
-1. 在“集成运行时安装”对话框中选择“自承载”。  然后选择“继续”。
+1. 在“集成运行时安装”对话框中选择“自承载” 。 然后选择“继续”。
 
    ![创建集成运行时](./media/tutorial-hybrid-copy-data-tool/create-self-hosted-integration-runtime.png)
 
-1. 在“集成运行时安装”对话框中的“名称”下输入 **TutorialIntegrationRuntime**。  然后选择“创建”。
+1. 在“集成运行时安装”对话框中的“名称”下输入“TutorialIntegrationRuntime”  。 然后选择“创建”。
 
-1. 在“集成运行时安装”对话框中，选择“单击此处对此计算机启动快速安装”。  此操作在计算机上安装集成运行时，并将其注册到数据工厂。 或者，可以使用手动安装选项来下载安装文件、运行该文件，并使用密钥来注册集成运行时。
+1. 在“集成运行时安装”对话框中，选择“单击此处对此计算机启动快速安装” 。 此操作在计算机上安装集成运行时，并将其注册到数据工厂。 或者，可以使用手动安装选项来下载安装文件、运行该文件，并使用密钥来注册集成运行时。
 
 1. 运行下载的应用程序。 窗口中会显示快速安装的状态。
 
     ![快速安装状态](./media/tutorial-hybrid-copy-data-tool/express-setup-status.png)
 
-1. 在“新建链接服务(SQL Server)”对话框中，确认为“集成运行时”字段选择了 **TutorialIntegrationRuntime**。 然后执行以下步骤：
+1. 在“新建连接(SQL Server)”对话框中，确认“通过集成运行时连接”下的“TutorialIntegrationRuntime”处于选中状态  。 然后执行以下步骤：
 
     a. 在“名称”下输入 **SqlServerLinkedService**。
 
@@ -155,57 +155,61 @@ ms.locfileid: "105566738"
 
     e. 在“用户名”下输入有权访问 SQL Server 的用户名。
 
-    f. 输入该用户的 **密码**。
+    f. 输入该用户的密码。
 
-    g. 测试连接并选择“完成”。
+    g. 测试连接并选择“创建”。
 
       ![选择的集成运行时](./media/tutorial-hybrid-copy-data-tool/integration-runtime-selected.png)
 
-1. 在“源数据存储”页中选择“下一步” 。
+1. 在“源数据存储”页上，确保“连接”块中新创建的“SQL Server”连接处于选中状态  。 然后，在“源表”部分中，选择“现有表”，然后选择列表中的“dbo.emp”表，再选择“下一步”   。 可以根据你的数据库选择任何其他表。
 
-1. 在“选择要从中复制数据的表或使用自定义查询”页中，从列表中选择“[dbo].[emp]”表，然后选择“下一步”。   可以根据你的数据库选择任何其他表。
+1. 在“应用筛选器”页上，可以选择“预览数据”按钮来预览数据并查看输入数据的架构 。 然后，选择“下一步”。
 
 1. 在“目标数据存储”页面上，选择“创建新连接”
 
-
-1. 在“新建链接服务”中，搜索并选择“Azure Blob”，然后选择“继续”。
+1. 在“新建连接”中，搜索并选择“Azure Blob”，然后选择“继续”  。
 
    ![Blob 存储选择](./media/tutorial-hybrid-copy-data-tool/select-destination-data-store.png)
 
-1. 在“新建链接服务(Azure Blob 存储)”对话框中，执行以下步骤：
+1. 在“新建连接(Azure Blob 存储)”对话框中，执行以下步骤：
 
    a. 在“名称”下输入 **AzureStorageLinkedService**。
 
-   b. 在“通过集成运行时连接”下，选择 **TutorialIntegrationRuntime**
+   b. 在“通过集成运行时连接”下选择“TutorialIntegrationRuntime”，并选择“身份验证方法”下的“帐户密钥”   。
+   
+   c. 在 Azure 订阅下，从下拉列表中选择自己的 Azure 订阅。
 
-   c. 在“存储帐户名称”下的下拉列表中选择自己的存储帐户。
+   d. 在“存储帐户名称”下的下拉列表中选择自己的存储帐户。
 
-   d. 选择“完成”。
+   e. 测试连接并选择“创建”。
 
-1. 在“目标数据存储”对话框中，确保选择了“Azure Blob 存储”。 然后，选择“下一步”。
+1. 在“目标数据存储”对话框中，确保“连接”块中新创建的“Azure Blob 存储”连接处于选中状态  。 在“文件夹路径”中输入“adftutorial/fromonprem” 。 在执行先决条件中的步骤时，你已创建了 **adftutorial** 容器。 如果输出文件夹（在本例中为 **fromonprem**）不存在，则数据工厂会自动创建它。 也可以使用“浏览”按钮来浏览 Blob 存储及其容器/文件夹。 如果没有在“文件名”下指定任何值，则默认情况下将使用源中的名称（在本例中为 **dbo.emp**）。
 
-1. 在“选择输出文件或文件夹”对话框中，在“文件夹路径”下，输入 **adftutorial/fromonprem**。  在执行先决条件中的步骤时，你已创建了 **adftutorial** 容器。 如果输出文件夹（在本例中为 **fromonprem**）不存在，则数据工厂会自动创建它。 也可以使用“浏览”按钮来浏览 Blob 存储及其容器/文件夹。 如果没有在“文件名”下指定任何值，则默认情况下将使用源中的名称（在本例中为 **dbo.emp**）。
-
-   ![选择输出文件或文件夹](./media/tutorial-hybrid-copy-data-tool/choose-output-file-folder.png)
+   :::image type="content" source="./media/tutorial-hybrid-copy-data-tool/destination-data-store.png" alt-text="显示“目标数据存储”页配置的屏幕截图。":::
 
 1. 在“文件格式设置”对话框中，选择“下一步”。 
 
-1. 在“设置”对话框中，选择“下一步”。 
+1. 在“设置”对话框中的“任务名称”下，输“CopyFromOnPremSqlToAzureBlobPipeline”，然后选择“下一步”   。 “复制数据”工具将使用在此字段中指定的名称创建一个管道。
 
 1. 在“摘要”对话框中，复查所有设置的值，然后选择“下一步”。 
 
-1. 在“部署”页中，选择“监视”可以监视管道（任务） 。 
+1. 在“部署”页中，选择“监视”以监视管道（任务） 。 
 
 1. 管道运行完成后，可以查看所创建的管道的状态。 
 
-1. 在“管道运行”页上，选择“刷新”来刷新列表。 单击“管道名称”下的链接，查看活动运行详细信息或重新运行管道。 
+1. 在“管道运行”页上，选择“刷新”来刷新列表。 选择“管道名称”下的链接，查看活动运行详细信息或重新运行管道。 
 
-1. 在“活动运行”页上，选择“活动名称”列下的“详细信息”链接（眼镜图标），以获取有关复制操作的更多详细信息。 若要回到“管道运行”视图，请选择痕迹导航菜单中的“所有管道运行”链接。 若要刷新视图，请选择“刷新”。
+    :::image type="content" source="./media/tutorial-hybrid-copy-data-tool/pipeline-runs.png" alt-text="显示“管道运行”页的屏幕截图。":::
+
+1. 在“活动运行”页上，选择“活动名称”列下的“详细信息”链接（眼镜图标），以获取有关复制操作的更多详细信息 。 若要返回到“管道运行”页，请选择痕迹导航菜单中的“所有管道运行”链接。 若要刷新视图，请选择“刷新”。
+
+    :::image type="content" source="./media/tutorial-hybrid-copy-data-tool/activity-details.png" alt-text="显示活动详细信息的屏幕截图。":::
 
 1. 确认可以在 **adftutorial** 容器的 **fromonprem** 文件夹中看到输出文件。
 
-1. 选择左侧的“编辑”选项卡可以切换到编辑器模式。 可以使用编辑器来更新该工具创建的链接服务、数据集和管道。 选择“代码”可以查看与编辑器中打开的实体相关联的 JSON 代码。 有关如何在数据工厂 UI 中编辑这些实体的详细信息，请参阅[此教程的 Azure 门户版本](tutorial-copy-data-portal.md)。
+1. 选择左侧的“创作”选项卡切换到编辑器模式。 可以使用编辑器来更新该工具创建的链接服务、数据集和管道。 选择“代码”可以查看与编辑器中打开的实体相关联的 JSON 代码。 有关如何在数据工厂 UI 中编辑这些实体的详细信息，请参阅[此教程的 Azure 门户版本](tutorial-copy-data-portal.md)。
 
+    :::image type="content" source="./media/tutorial-hybrid-copy-data-tool/author-tab.png" alt-text="显示“作者”选项卡的屏幕截图。":::
 
 ## <a name="next-steps"></a>后续步骤
 此示例中的管道可将数据从 SQL Server 数据库复制到 Blob 存储。 你已了解如何执行以下操作：

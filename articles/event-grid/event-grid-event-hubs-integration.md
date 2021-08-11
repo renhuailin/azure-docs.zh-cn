@@ -4,17 +4,17 @@ description: 介绍如何通过 Azure Functions 和事件网格触发器将事�
 ms.topic: tutorial
 ms.date: 12/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 094cf874c072e0e59a04447d26070d8ac1a0deef
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 2887cdc1b4666daf73a21a76907f80d50d345d82
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073478"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112413961"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>教程：将大数据流式传输到数据仓库
 Azure [事件网格](overview.md)是一项智能事件路由服务，可用于对应用和服务的通知或事件作出响应。 例如，它可以触发 Azure Function 来处理已捕获到 Blob 存储或 Data Lake Store 的事件中心数据。 本[示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)演示了如何使用事件网格和 Azure Functions 将捕获的事件中心数据从 Blob 存储迁移到 Azure Synapse Analytics（特别是专用的 SQL 池）。
 
-[!INCLUDE [event-grid-event-hubs-functions-synapse-analytics.md](../../includes/event-grid-event-hubs-functions-synapse-analytics.md)]
+[!INCLUDE [event-grid-event-hubs-functions-synapse-analytics.md](./includes/event-grid-event-hubs-functions-synapse-analytics.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

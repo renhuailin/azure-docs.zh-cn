@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 222505b03aac5bfc4e8d00b8c8977bece34dee85
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 22d68d02cb73b2889cb1ba645ebd70dab9face6a
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567502"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112539081"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 连接到 Synapse SQL
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
-> * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+> * [Visual Studio](../sql/get-started-visual-studio.md)
 > * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 > 
@@ -89,7 +89,7 @@ ms.locfileid: "107567502"
 现在已经建立了数据库连接，可以查询数据了。
 
 1. 在 SQL Server 对象资源管理器中右键单击数据库。
-2. 选择“新建查询”。 “新建查询”窗口随即打开。
+2. 选择“新建查询”  。 “新建查询”窗口随即打开。
    
     ![新建查询 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
 3. 将以下 T-SQL 查询复制到查询窗口中：
@@ -109,7 +109,7 @@ ms.locfileid: "107567502"
 现在已经建立了数据库连接，可以查询数据了。
 
 1. 在 SQL Server 对象资源管理器中右键单击数据库。
-2. 选择“新建查询”。 “新建查询”窗口随即打开。
+2. 选择“新建查询”  。 “新建查询”窗口随即打开。
    
     ![新建查询 2](./media/get-started-ssms/new-query.png)
 3. 将以下 T-SQL 查询复制到查询窗口中：
@@ -127,5 +127,5 @@ ms.locfileid: "107567502"
 ## <a name="next-steps"></a>后续步骤
 可以进行连接和查询后，接下来请尝试[使用 Power BI 可视化数据](get-started-power-bi-professional.md)。
 
-若要为 Azure Active Directory 身份验证配置环境，请参阅[向 Synapse SQL 进行身份验证](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+若要为 Azure Active Directory 身份验证配置环境，请参阅[向 Synapse SQL 进行身份验证](../sql/sql-authentication.md)。
 

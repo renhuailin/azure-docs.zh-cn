@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/26/2021
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: c0a232dc0541ea8626cdb40a9b3497a686a5ee11
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 475d7d25bf0d4a373fd2cb630ee7f2a643581b04
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074489"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090666"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教程：在 Azure 应用服务中对用户进行端到端身份验证和授权
 
@@ -53,7 +53,7 @@ ms.locfileid: "108074489"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 - <a href="https://git-scm.com/" target="_blank">安装 Git</a>
 - <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">安装最新的 .NET Core 3.1 SDK</a>
@@ -313,13 +313,13 @@ git push frontend master
 
 现在已配置好了应用。 前端现在可以通过适当的访问令牌访问后端了。
 
-若要了解如何为其他提供程序配置访问令牌，请参阅[刷新标识提供者令牌](app-service-authentication-how-to.md#refresh-identity-provider-tokens)。
+若要了解如何为其他提供程序配置访问令牌，请参阅[刷新标识提供者令牌](configure-authentication-oauth-tokens.md#refresh-auth-tokens)。
 
 ## <a name="call-api-securely-from-server-code"></a>通过服务器代码安全地调用 API
 
 在此步骤中，请允许以前修改过的服务器代码对后端 API 进行经身份验证的调用。
 
-现在，前端应用已经有了必需的权限，并且还将后端的客户端 ID 添加到了登录参数中， 因此可以获取访问令牌，通过后端应用进行身份验证。 应用服务可以将此令牌提供给服务器代码，方法是将 `X-MS-TOKEN-AAD-ACCESS-TOKEN` 标头注入每个经身份验证的请求（请参阅[在应用代码中检索令牌](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)）。
+现在，前端应用已经有了必需的权限，并且还将后端的客户端 ID 添加到了登录参数中， 因此可以获取访问令牌，通过后端应用进行身份验证。 应用服务可以将此令牌提供给服务器代码，方法是将 `X-MS-TOKEN-AAD-ACCESS-TOKEN` 标头注入每个经身份验证的请求（请参阅[在应用代码中检索令牌](configure-authentication-oauth-tokens.md#retrieve-tokens-in-app-code)）。
 
 > [!NOTE]
 > 所有支持的语言都可以注入这些标头。 对于每种相应的语言，可以使用标准模式来访问它们。
@@ -357,7 +357,7 @@ git push frontend master
 
 在此步骤中，请将前端 Angular.js 应用指向后端 API。 这样就可以了解如何检索访问令牌，并使用它向后端应用进行 API 调用。
 
-服务器代码可以访问请求标头，而客户端代码则可以访问 `GET /.auth/me` 以获取相同的访问令牌（请参阅[在应用代码中检索令牌](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)）。
+服务器代码可以访问请求标头，而客户端代码则可以访问 `GET /.auth/me` 以获取相同的访问令牌（请参阅[在应用代码中检索令牌](configure-authentication-oauth-tokens.md#retrieve-tokens-in-app-code)）。
 
 > [!TIP]
 > 此部分使用标准的 HTTP 方法来演示安全的 HTTP 调用。 但是，可以使用[适用于 JavaScript 的 Microsoft 身份验证库](https://github.com/AzureAD/microsoft-authentication-library-for-js)来帮助简化 Angular.js 应用程序模式。
@@ -437,7 +437,7 @@ git push frontend master
 
 ## <a name="when-access-tokens-expire"></a>当访问令牌过期时
 
-访问令牌在一段时间后会过期。 若要了解如何在不需用户通过应用重新进行身份验证的情况下刷新访问令牌，请参阅[刷新标识提供者令牌](app-service-authentication-how-to.md#refresh-identity-provider-tokens)。
+访问令牌在一段时间后会过期。 若要了解如何在不需用户通过应用重新进行身份验证的情况下刷新访问令牌，请参阅[刷新标识提供者令牌](configure-authentication-oauth-tokens.md#refresh-auth-tokens)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

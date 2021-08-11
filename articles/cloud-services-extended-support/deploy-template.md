@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 7c013cbaf8a64d12b132e3dd4c599920bd3f6a2a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 10ebb60caed4bb42bb8e8d8351b465d692eaaf0a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108736103"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445086"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>使用 ARM 模板部署云服务（外延支持）
 
@@ -456,6 +456,6 @@ ms.locfileid: "108736103"
 
 ## <a name="next-steps"></a>后续步骤 
 
-- 请参阅云服务（外延支持）的[常见问题解答](faq.md)。
+- 请参阅云服务（外延支持）的[常见问题解答](faq.yml)。
 - 使用 [Azure 门户](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[模板](deploy-template.md)或 [Visual Studio](deploy-visual-studio.md) 部署云服务（外延支持）。
 - 访问[云服务（外延支持）示例存储库](https://github.com/Azure-Samples/cloud-services-extended-support)

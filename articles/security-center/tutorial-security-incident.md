@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 41f96202bffc0169be9705cd7e67c1eedbecbc05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d11384a3a1cab1ef5145a8e29a64e26552862da
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453438"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236870"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>教程：会审、调查和响应安全警报
 安全中心使用高级分析和威胁情报来持续分析混合云工作负载，在云资源中出现潜在恶意活动时发出警报。 你还可以将其他安全产品和服务中的警报集成到安全中心。 发出警报后，需采取快速行动进行调查和修正潜在安全问题。 
@@ -60,7 +60,7 @@ ms.locfileid: "102453438"
 1. 从“警报概述”页中，选择要首先调查的资源。
 1. 从左窗格开始调查，该窗格显示有关安全警报的基本信息。
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="“警报详细信息”页的左窗格中突出显示了基本信息":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="“警报详细信息”页的左窗格中突出显示了基本信息。":::
 
     此窗格显示：
     - 警报严重性、状态和活动时间
@@ -80,7 +80,7 @@ ms.locfileid: "102453438"
 
 1.  打开“执行操作”选项卡以查看建议的响应。
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="安全警报“执行操作”选项卡" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="安全警报“执行操作”选项卡。" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
 
 1.  查看“缓解威胁”部分，了解缓解该问题所需的手动调查步骤。
 1.  若要强化资源并防止将来出现此类攻击，请在“防止将来的攻击”部分中修正安全建议。
@@ -97,7 +97,7 @@ ms.locfileid: "102453438"
     1. 将警报标记为“有用”或“无用” 。
     1. 选择原因并添加注释。
 
-        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="向 Microsoft 提供有关警报用途的反馈":::
+        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="向 Microsoft 提供有关警报用途的反馈。":::
 
     > [!TIP]
     > 我们会查看你的反馈，以改进算法并提供更好的安全警报。

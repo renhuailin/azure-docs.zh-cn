@@ -3,12 +3,12 @@ title: Azure Arc 概述
 description: 了解什么是 Azure Arc，以及它如何帮助客户使用其他 Azure 服务和功能对混合资源进行管理和治理。
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: b67c01f666916508946b49b0ad45d7151ed179ef
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: ddab135ffe98675a498c4a364bc9e04ce57b92fe
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112287292"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113732037"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc 概述
 
@@ -48,7 +48,7 @@ Azure Arc 的主要功能包括：
 
 * 在任何 Kubernetes 环境（特别是 Azure SQL 托管实例和 Azure Database for PostgreSQL 超大规模，其中包含升级/更新、安全性和监视等权益）上运行 [Azure 数据服务](../azure-arc/kubernetes/custom-locations.md)，就像在 Azure 中运行一样。 使用弹性缩放，应用更新，而不会导致任何应用程序停机，即使没有持续连接到 Azure。
 
-* 在[已启用 Azure Arc 的 Kubernetes](./kubernetes/overview.md) 群集上创建[自定义位置](./kubernetes/custom-locations.md)，将它们用作部署 Azure 服务实例的目标位置。 为[已启用 Azure Arc 的数据服务](./data/deploy-data-controller-direct-mode.md)、[Azure Arc 上的应用服务](../app-service/overview-arc-integration.md)（包括 Web、功能和逻辑应用）和 [Kubernetes 上的事件网格](../event-grid/kubernetes/overview.md)部署 Azure 服务群集扩展。
+* 在[已启用 Azure Arc 的 Kubernetes](./kubernetes/overview.md) 群集上创建[自定义位置](./kubernetes/custom-locations.md)，将它们用作部署 Azure 服务实例的目标位置。 为[已启用 Azure Arc 的数据服务](./data/create-data-controller-direct-azure-portal.md)、[Azure Arc 上的应用服务](../app-service/overview-arc-integration.md)（包括 Web、功能和逻辑应用）和 [Kubernetes 上的事件网格](../event-grid/kubernetes/overview.md)部署 Azure 服务群集扩展。
 
 * 无论使用的是 Azure 门户、Azure CLI、Azure PowerShell 还是 Azure REST API，都可以查看已启用 Azure Arc 的资源的统一体验。
 

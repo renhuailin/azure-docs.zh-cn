@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 06/14/2021
 ms.author: marsma
-ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
-ms.openlocfilehash: 546e7bafe34352ff8968ce1df7cd3386f60eae59
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2, contperf-fy21q4
+ms.openlocfilehash: 340e7f1b026605a06799dcc79f9fe99e2ad080cf
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075486"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112578948"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>快速入门：将应用程序注册到 Microsoft 标识平台
 
@@ -108,7 +108,7 @@ Microsoft 标识平台在重定向 URI 处重定向用户客户端并在身份�
 
 ## <a name="add-credentials"></a>添加凭据
 
-凭据供访问 Web API 的[机密客户端应用程序](msal-client-applications.md)使用。 [Web 应用](scenario-web-app-call-api-overview.md)、其他 [Web API](scenario-protected-web-api-overview.md) 或[服务类型和守护程序类型的应用程序](scenario-daemon-overview.md)都是机密客户端。 通过凭据，应用程序可以自己的身份进行身份验证，无需用户在运行时进行任何交互。
+凭据供访问 Web API 的[机密客户端应用程序](msal-client-applications.md)使用。 Web 应用、其他 Web API 或服务类型和守护程序类型的应用程序都是机密客户端。 通过凭据，应用程序可以自己的身份进行身份验证，无需用户在运行时进行任何交互。
 
 可将证书和客户端密码（字符串）作为凭据添加到机密客户端应用注册。
 

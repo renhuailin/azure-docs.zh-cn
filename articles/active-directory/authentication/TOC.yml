@@ -82,8 +82,6 @@
           href: howto-sspr-windows.md
     - name: Azure AD 多重身份验证
       items:
-        - name: 规划指南
-          href: concept-mfa-plan.md
         - name: 部署指南
           href: howto-mfa-getstarted.md
         - name: 配置设置
@@ -272,7 +270,7 @@
     - name: Microsoft Q&A 问题页面
       href: /answers/topics/azure-active-directory.html
     - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+      href: 'https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing'
     - name: 服务更新
       href: ../fundamentals/whats-new.md
     - name: Stack Overflow

@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-java-uiex
-ms.openlocfilehash: 69c4129feacf36b6b98cdcd7c2f4f5f36d7839b2
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 8f52ba7008b2a7b3f7734f652c92014e110e3df4
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831917"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287791"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中通过命令行创建 Java 函数
 
@@ -24,10 +24,12 @@ ms.locfileid: "107831917"
 
 在本文中，我们使用命令行工具创建一个响应 HTTP 请求的 Java 函数。 在本地测试代码后，将代码部署到 Azure Functions 的无服务器环境。
 
-完成本快速入门会从你的 Azure 帐户中扣取最多几美分的费用。
+如果 Maven 不是首选开发工具，请查看面向 Java 开发人员的类似教程：
++ [Gradle](./functions-create-first-java-gradle.md)
++ [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions)
++ [Visual Studio Code](create-first-function-vs-code-java.md)
 
-> [!NOTE]
-> 如果 Maven 不是你的首选开发工具，请查看面向使用 [Gradle](./functions-create-first-java-gradle.md)、[IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 和 [Visual Studio Code](create-first-function-vs-code-java.md) 的 Java 开发人员的类似教程。
+完成本快速入门会从你的 Azure 帐户中扣取最多几美分的费用。
 
 ## <a name="configure-your-local-environment"></a>配置本地环境
 
@@ -39,7 +41,7 @@ ms.locfileid: "107831917"
 
 + [Azure CLI](/cli/azure/install-azure-cli) 2.4 或更高版本。
 
-+ [Java 开发人员工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support)版本 8 或 11。 `JAVA_HOME` 环境变量必须设置为正确版本的 JDK 的安装位置。     
++ [Java 开发人员工具包](/azure/developer/java/fundamentals/java-support-on-azure)版本 8 或 11。 `JAVA_HOME` 环境变量必须设置为正确版本的 JDK 的安装位置。     
 
 + [Apache Maven](https://maven.apache.org) 3.0 或更高版本。
 

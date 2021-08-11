@@ -89,4 +89,4 @@
     - name: Internet 对等互连常见问题解答
       href: faqs.md
     - name: 对等互连服务常见问题解答
-      href: service-faqs.md
+      href: service-faqs.yml

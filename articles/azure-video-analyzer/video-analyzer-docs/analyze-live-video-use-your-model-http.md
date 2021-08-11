@@ -3,14 +3,14 @@ title: 使用自己的模型 (HTTP) 分析实时视频
 description: 本快速入门介绍如何借助视频分析器使用自己的模型 (HTTP) 分析实时视频。
 ms.service: azure-video-analyzer
 ms.topic: quickstart
-ms.date: 04/01/2021
+ms.date: 06/01/2021
 zone_pivot_groups: video-analyzer-programming-languages
-ms.openlocfilehash: 1b83fd1e58d719054e2788f641d37b6340bdc0ff
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: a587191a0e5fd80174b3d288d1a9a1d8fd1d2e82
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371781"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114605228"
 ---
 # <a name="quickstart-analyze-live-video-with-your-own-model---http"></a>快速入门：使用自己的模型分析实时视频 - HTTP
 
@@ -50,13 +50,13 @@ ms.locfileid: "110371781"
 
 ## <a name="generate-and-deploy-the-iot-edge-deployment-manifest"></a>生成并部署 IoT Edge 部署清单
 
-1. 右键单击“src/edge/deployment.yolov3.template.json”文件，然后选择“生成 IoT Edge 部署清单”。
+1. 右键单击 src/edge/deployment.yolov3.template.json 文件，然后选择“生成 IoT Edge 部署清单”。
 
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/analyze-live-video-use-your-model-http/generate-deployment-manifest.png" alt-text="生成 IoT Edge 部署清单的屏幕截图":::
 
 1. 随即将在 src/edge/config 文件夹中创建一个清单文件 deployment.yolov3.amd64.json 。
-1. 右键单击“src/edge/config/deployment.yolov3.amd64.json”，并选择“为单个设备创建部署”。
+1. 右键单击 src/edge/config/deployment.yolov3.amd64.json，然后选择“为单个设备创建部署”。
 
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/analyze-live-video-use-your-model-http/deployment-single-device.png" alt-text= "Screenshot of Create Deployment for Single Device":::
@@ -73,7 +73,13 @@ ms.locfileid: "110371781"
 
 ## <a name="run-the-sample-program"></a>运行示例程序
 
-1. 若要启动调试会话，请选择 F5 键。 你可在“终端”窗口中看到打印的消息。
+1. ::: zone pivot="programming-language-csharp"
+    [!INCLUDE [header](includes/common-includes/csharp-run-program.md)]
+    ::: zone-end
+
+    ::: zone pivot="programming-language-python"
+    [!INCLUDE [header](includes/common-includes/python-run-program.md)]
+    ::: zone-end
 1. operations.json 代码首先调用直接方法 `pipelineTopologyList` 和 `livePipelineList`。 如果你在完成先前的快速入门后清理了资源，则该过程将返回空列表，然后暂停。 若要继续，请选择 Enter 键。
 
    ```

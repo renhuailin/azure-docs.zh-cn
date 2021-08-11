@@ -2,15 +2,15 @@
 author: mikben
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.author: mikben
 ms.custom: private_preview
-ms.openlocfilehash: 96037e5aa0de62a2aecbcd5d95fd6aeb5c79980c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d1ea647ce1fdceb9afacc0d608162a9aafa9010e
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105152798"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113106510"
 ---
 > [!IMPORTANT]
 > 本文档中所述的功能目前提供个人预览版。 个人预览版包括对测试用 SDK 和文档的访问权限，这些资源尚未公开提供。

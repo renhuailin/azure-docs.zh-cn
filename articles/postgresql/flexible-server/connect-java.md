@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 01/16/2021
-ms.openlocfilehash: 6c61e26ca858c5eb12ffe0219993f7477b0e8133
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1bb5cb11928b31356dc61d27cc0847e6c575050d
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98605901"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288097"
 ---
 # <a name="quickstart-use-java-and-jdbc-with-azure-database-for-postgresql-flexible-server"></a>快速入门：将 Java和 JDBC 与 Azure Database for PostgreSQL 灵活服务器配合使用
 
@@ -25,7 +25,7 @@ JDBC 是标准的 Java API，用于连接到传统的关系数据库。
 
 - 一个 Azure 帐户。 如果没有帐户，可[获取一个免费试用帐户](https://azure.microsoft.com/free/)。
 - [Azure Cloud Shell](../../cloud-shell/quickstart.md) 或 [Azure CLI](/cli/azure/install-azure-cli)。 建议使用 Azure Cloud Shell，这样你便可自动登录且有权访问所需的所有工具。
-- 受支持的 [Java 开发工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support)，版本 8（已在 Azure Cloud Shell 中包括）。
+- 受支持的 [Java 开发工具包](/azure/developer/java/fundamentals/java-support-on-azure)，版本 8（已在 Azure Cloud Shell 中包括）。
 - [Apache Maven](https://maven.apache.org/) 生成工具。
 
 ## <a name="prepare-the-working-environment"></a>准备工作环境
