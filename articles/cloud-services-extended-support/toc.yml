@@ -92,7 +92,7 @@
         - name: 角色启动失败
           href: role-startup-failure.md
         - name: 常见问题
-          href: faq.md
+          href: faq.yml
 - name: 示例
   items:
     - name: 示例模板

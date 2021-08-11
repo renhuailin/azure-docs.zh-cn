@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: a2cf4c19e21ad13a2a79343713e9a0494eff0704
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: b05dbeeb69cee8afd3c237b3fbc2c3e59fef238f
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489362"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112288048"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-azure-cli-preview"></a>教程：使用 Azure CLI（预览版）添加角色分配条件以限制对 Blob 的访问（预览版）
 
@@ -83,8 +83,6 @@ ms.locfileid: "109489362"
     subscriptionId="<subscriptionId>"
     ```
 
-1. 如果尚未这样做，请注册你的订阅以使用 blob 索引标记。 有关详细信息，请参阅[注册订阅（预览版）](../blobs/storage-manage-find-blobs.md#register-your-subscription-preview)。
-
 ## <a name="step-2-create-a-user"></a>步骤 2：创建用户
 
 1. 使用 [az ad user create](/cli/azure/ad/user#az_ad_user_create) 创建用户或查找现有用户。 本教程使用 Chandra 作为示例。
@@ -108,7 +106,7 @@ ms.locfileid: "109489362"
 1. 将以下 Blob 索引标记添加到文本文件。 有关详细信息，请参阅[使用 Blob 索引标记（预览版）管理和查找 Azure Blob 存储中的数据](../blobs/storage-blob-index-how-to.md)。
 
     > [!NOTE]
-    > Blob 还支持存储用户定义的任意键-值元数据。 尽管元数据与 blob 索引标记类似，但必须将 blob 索引标记与条件配合使用。 
+    > Blob 还支持存储用户定义的任意键-值元数据。 尽管元数据与 Blob 索引标记类似，但你也必须将 Blob 索引标记与条件配合使用。 
 
     | 密钥 | 值 |
     | --- | --- |

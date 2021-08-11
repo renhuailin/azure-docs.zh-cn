@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/08/2021
 ms.author: amgowda
 ms.custom: contentperf-fy21q3, devx-track-azurecli
-ms.openlocfilehash: b7dd9685be5e0928743eaf9a541c88de6a49a36c
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 950f6fa47de273534a4636796351dd3640628dda
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891242"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551229"
 ---
 # <a name="quickstart-deploy-an-aks-cluster-with-confidential-computing-nodes-by-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署具有机密计算节点的 AKS 群集
 
@@ -25,8 +25,8 @@ AKS 是一种使开发人员或群集操作员能够快速部署和管理群集�
 
 - 支持 Linux 容器的 Linux 工作器节点。
 - 带有 Ubuntu 18.04 虚拟机 (VM) 节点的第 2 代 VM。
-- 支持 Intel SGX 的 CPU，它利用加密页高速缓存 (EPC) 来帮助在受机密性保护的 enclave 中运行容器。 有关详细信息，请参阅 [Azure 机密计算常见问题解答](./faq.md)。
-- 在机密计算节点上预装了 Intel SGX DCAP 驱动程序。 有关详细信息，请参阅 [Azure 机密计算常见问题解答](./faq.md)。
+- 支持 Intel SGX 的 CPU，它利用加密页高速缓存 (EPC) 来帮助在受机密性保护的 enclave 中运行容器。 有关详细信息，请参阅 [Azure 机密计算常见问题解答](./faq.yml)。
+- 在机密计算节点上预装了 Intel SGX DCAP 驱动程序。 有关详细信息，请参阅 [Azure 机密计算常见问题解答](./faq.yml)。
 
 > [!NOTE]
 > DCsv2 VM 使用定价较高、可用性受区域限制的专用硬件。 有关详细信息，请参阅[可用的 SKU 和受支持的区域](virtual-machine-solutions.md)。

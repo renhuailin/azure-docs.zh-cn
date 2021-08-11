@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: adcabf8427f515a1814dd740bc5c70b8b0e7b9b7
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 2fefa04a6ba00d788d39d850431234c490734dd5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109858008"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114593848"
 ---
 开始使用适用于 Python 的人脸客户端库进行人脸识别。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过人脸服务，可以访问用于检测和识别图像中的人脸的高级算法。
 
@@ -26,7 +26,7 @@ ms.locfileid: "109858008"
 * [识别人脸](#identify-a-face)
 * [验证人脸](#verify-faces)
 
-[参考文档](/python/api/azure-cognitiveservices-vision-face/) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [包 (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [示例](/samples/browse/?products=azure&term=face)
+[参考文档](/python/api/overview/azure/cognitiveservices/face-readme) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [包 (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [示例](/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -235,7 +235,7 @@ python quickstart-file.py
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已了解如何使用适用于 Python 的人脸客户端库来执行基本人脸识别任务。 接下来，了解不同的人脸检测模型以及如何为你的用例指定适当的模型。
+在本快速入门中，你已了解如何使用适用于 Python 的人脸客户端库来执行基本人脸识别任务。 接下来，了解不同的人脸检测模型，以及如何为用例指定正确的模型。
 
 > [!div class="nextstepaction"]
 > [指定人脸检测模型版本](../../Face-API-How-to-Topics/specify-detection-model.md)

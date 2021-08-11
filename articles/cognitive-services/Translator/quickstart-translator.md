@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 07/06/2021
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: translator, translator 服务, 翻译文本, 音译文本, 语言检测
-ms.openlocfilehash: 6d10b954bbb5663d5e63f4b38fc49d8a3953f10a
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 10e879df320d527ab6c853a03e9eb49d1b4d50de
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537558"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113355874"
 ---
 # <a name="quickstart-get-started-with-translator"></a>快速入门：Translator 入门
 
@@ -33,8 +33,11 @@ ms.locfileid: "111537558"
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
 * 有了 Azure 订阅后，请在 Azure 门户中[创建 Translator 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)，以获取密钥和终结点。 部署后，选择”转到资源”。
-  * 你需要从资源获取密钥和终结点，以便将应用程序连接到 Translator 服务。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
-  * 可以使用免费定价层 (F0) 试用该服务，然后再升级到付费层进行生产。
+  * 你需要从资源获取密钥和终结点，以便将应用程序连接到 Translator 服务。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。 可以在 Azure 门户的“密钥和终结点”页面上找到这些值：
+
+    :::image type="content" source="media/keys-and-endpoint-portal.png" alt-text="屏幕截图：Azure 门户的“密钥和终结点”页面。":::
+
+* 可以使用免费定价层 (F0) 试用该服务，然后再升级到付费层进行生产。
 
 ## <a name="platform-setup"></a>平台设置
 
@@ -2820,9 +2823,19 @@ print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separat
 
 ## <a name="troubleshooting"></a>疑难解答
 
+### <a name="common-http-status-codes"></a>常见的 HTTP 状态代码
+
+| HTTP 状态代码 | 说明 | 可能的原因 |
+|------------------|-------------|-----------------|
+| 200 | OK | 请求已成功。 |
+| 400 | 错误的请求 | 必需参数缺失、为空或为 null。 或者，传递给必需参数或可选参数的值无效。 常见问题是标头太长。 |
+| 401 | 未授权 | 请求未经授权。 确保订阅密钥或令牌有效并在正确的区域中。 另请参阅[身份验证](reference/v3-0-reference.md#authentication)。|
+| 429 | 请求过多 | 已经超过了订阅允许的配额或请求速率。 |
+| 502 | 错误的网关    | 网络或服务器端问题。 也可能表示标头无效。 |
+
 ### <a name="java-users"></a>Java 用户
 
-如果遇到连接问题，可能是因为你的 SSL 证书已过期。 若要解决此问题，请将 [DigiCertGlobalRootG2.crt](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt) 安装到专用存储中。 
+如果遇到连接问题，可能是因为你的 SSL 证书已过期。 若要解决此问题，请将 [DigiCertGlobalRootG2.crt](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt) 安装到专用存储中。
 
 ## <a name="next-steps"></a>后续步骤
 

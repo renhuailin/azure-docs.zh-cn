@@ -1,18 +1,18 @@
 ---
 title: 有关使用 Azure 应用程序配置将功能标志添加到 Spring Boot 的快速入门
 description: 将功能标志添加到 Spring Boot 应用并使用 Azure 应用配置对其进行管理
-author: AlexandraKemperMS
+author: mrm9084
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 08/06/2020
-ms.author: alkemper
+ms.date: 06/25/2021
+ms.author: mametcal
 ms.custom: devx-track-java
-ms.openlocfilehash: e931b974fc48d07237b2698e7782c48be20745d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86a4d97f387124b7c0043ec49f00b818c8b34a19
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96930700"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114450577"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>快速入门：将功能标志添加到 Spring Boot 应用
 
@@ -58,18 +58,16 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
 
 1. 在文本编辑器中打开 pom.xml  文件，将以下内容添加到 `<dependencies>` 列表中：
 
-    **Spring Cloud 1.1.x**
-
     ```xml
     <dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-        <version>1.1.5</version>
+        <groupId>com.azure.spring</groupId>
+        <artifactId>azure-spring-cloud-appconfiguration-config-web</artifactId>
+        <version>2.0.0</version>
     </dependency>
     <dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.1.5</version>
+        <groupId>com.azure.spring</groupId>
+        <artifactId>azure-spring-cloud-feature-management-web</artifactId>
+        <version>2.0.0</version>
     </dependency>
     <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -77,27 +75,9 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
     </dependency>
     ```
 
-    **Spring Cloud 1.2.x**
-
-    ```xml
-    <dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-        <version>1.2.7</version>
-    </dependency>
-    <dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.2.7</version>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-thymeleaf</artifactId>
-    </dependency>
-    ```
-
-> [!Note]
-> 有一个非 Web 功能管理库不依赖于 spring-web。 请参阅 GitHub 的[文档](https://github.com/microsoft/spring-cloud-azure)来了解差异。
+> [!NOTE]
+> * 如需支持较旧版本的 Spring Boot，请参阅我们的[旧 appconfiguration 库](https://github.com/Azure/azure-sdk-for-java/blob/spring-cloud-starter-azure-appconfiguration-config_1.2.9/sdk/appconfiguration/spring-cloud-starter-azure-appconfiguration-config/README.md)和[旧功能标记库](https://github.com/Azure/azure-sdk-for-java/blob/spring-cloud-starter-azure-appconfiguration-config_1.2.9/sdk/appconfiguration/spring-cloud-azure-feature-management/README.md)。
+> * 有一个非 Web 功能管理库不依赖于 spring-web。 请参阅 GitHub 的[文档](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/appconfiguration/azure-spring-cloud-feature-management)来了解差异。
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
@@ -163,7 +143,7 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
     import org.springframework.stereotype.Controller;
     import org.springframework.ui.Model;
 
-    import com.microsoft.azure.spring.cloud.feature.manager.FeatureManager;
+    import com.azure.spring.cloud.feature.manager.FeatureManager;
     import org.springframework.web.bind.annotation.GetMapping;
 
 

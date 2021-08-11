@@ -12,14 +12,14 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: 异常检测, 机器学习, 算法
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 52ed294146edbd70f21af4f706ad68f3aa6662dc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 30764913ae92670a9034f709f9bb3f50a309374f
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110076809"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296876"
 ---
-# <a name="what-is-the-anomaly-detector-api"></a>什么是异常检测器 API？
+# <a name="what-is-the-anomaly-detector-univariate-api"></a>什么是异常检测器单变量 API？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
@@ -99,7 +99,6 @@ ms.locfileid: "110076809"
 ## <a name="join-the-anomaly-detector-community"></a>加入“异常检测器”社区
 
 * 加入 [Microsoft Teams 中的异常检测器顾问组](https://aka.ms/AdAdvisorsJoin)
-* 请参阅选定的[用户生成的内容](user-generated-content.md)
 
 ## <a name="next-steps"></a>后续步骤
 

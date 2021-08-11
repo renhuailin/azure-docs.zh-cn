@@ -6,12 +6,12 @@ ms.author: lle
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 05/06/2021
-ms.openlocfilehash: 8d0abcef8ac5f139ce120443475a67217455b0a8
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 5c9396cdfe8296b4869f6713ff0022bc896dc733
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109657304"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111957236"
 ---
 # <a name="tutorial-how-to-access-sql-managed-instance-from-data-factory-managed-vnet-using-private-endpoint"></a>教程：如何使用专用终结点从数据工厂托管 VNET 访问 SQL 托管实例
 
@@ -22,13 +22,13 @@ ms.locfileid: "109657304"
 ## <a name="prerequisites"></a>先决条件
 
 * **Azure 订阅**。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-* **虚拟网络**。 如果你没有虚拟网络，请按照[创建虚拟网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)中所述创建一个。
-* 虚拟网络到本地网络。 使用 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager?toc=/azure/virtual-network/toc.json) 或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/tutorial-site-to-site-portal?toc=/azure/virtual-network/toc.json) 在虚拟网络与本地网络之间创建连接。
-* 启用了托管 VNET 的数据工厂。 如果你没有数据工厂或者未启用托管 VNET，请按照[创建具有托管 VNET 的数据工厂](https://docs.microsoft.com/azure/data-factory/tutorial-copy-data-portal-private)中所述创建一个此类数据工厂。
+* **虚拟网络**。 如果你没有虚拟网络，请按照[创建虚拟网络](../virtual-network/quick-create-portal.md)中所述创建一个。
+* **虚拟网络到本地网络**。 使用 [ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [VPN](../vpn-gateway/tutorial-site-to-site-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 在虚拟网络与本地网络之间创建连接。
+* **启用了托管 VNET 的数据工厂**。 如果你没有数据工厂或者未启用托管 VNET，请按照[创建具有托管 VNET 的数据工厂](./tutorial-copy-data-portal-private.md)中所述创建一个。
 
 ## <a name="create-subnets-for-resources"></a>创建资源的子网
 
-使用门户在虚拟网络中创建子网。
+**使用门户在虚拟网络中创建子网**。
 
 | 子网 | 说明 |
 |:--- |:--- |
@@ -53,7 +53,7 @@ ms.locfileid: "109657304"
     |区域|选择“美国东部”。|
     |类型|选择“内部”。|
     |SKU|选择“标准”。|
-    |虚拟网络|选择虚拟网络。|
+    |虚拟网络|选择你的虚拟网络。|
     |子网|选择在上一步骤中创建的“fe-subnet”。|
     |IP 地址分配|选择“动态”。|
     |可用性区域|选择“区域冗余”。|
@@ -174,12 +174,12 @@ ms.locfileid: "109657304"
     |区域  |选择“美国东部”。|
     |可用性选项  |选择“可用性区域”。|
     |可用性区域  |选择“1”。 | 
-    |映像  |选择“Ubuntu Server 18.04LTS – Gen1”。| 
+    |映像  |选择“Ubuntu Server 18.04LTS - Gen1”。| 
     |Azure Spot 实例  |请选择“否”。| 
     |大小   |选择 VM 大小或采用默认设置。| 
     |**管理员帐户**||
     |用户名 |输入用户名。|
-    |SSH 公钥源  |生成新密钥对。|
+    |SSH 公钥源  |生成新的密钥对。|
     |密钥对名称  |mySSHKey。|    
     |**入站端口规则**||
     |公共入站端口 |无。|   
@@ -190,7 +190,7 @@ ms.locfileid: "109657304"
     | 设置 |值|
     |---------|--------|
     |**网络接口**||
-    |虚拟网络 |选择虚拟网络。|
+    |虚拟网络 |选择你的虚拟网络。|
     |子网 |be-subnet。|
     |公共 IP |选择“无”。|
     |NIC 网络安全组 |选择“无”。|
@@ -203,12 +203,12 @@ ms.locfileid: "109657304"
 
 5. 选择“查看 + 创建”。
 6. 检查设置，然后选择“创建”。
-7. 可以重复步骤 1 至 6，以创建多个后端服务器 VM 来实现高可用性。
+7. 可重复步骤 1 至 6，创建多个后端服务器 VM 来实现高可用性。
 
 ## <a name="creating-forwarding-rule-to-endpoint"></a>创建到终结点的转发规则
 
 1. 登录并将脚本 [ip_fwd.sh](https://github.com/sajitsasi/az-ip-fwd/blob/main/ip_fwd.sh) 复制到后端服务器 VM。 
-2. 结合以下选项运行该脚本：<br/>
+2. 使用以下选项运行该脚本：<br/>
     sudo ./ip_fwd.sh -i eth0 -f 1433 -a <FQDN/IP> -b 1433<br/>
     <FQDN/IP> 是 SQL 托管实例的主机。
     
@@ -232,7 +232,7 @@ ms.locfileid: "109657304"
 1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择你的数据工厂。
 2. 选择“创作和监视”，在单独的选项卡中启动数据工厂 UI。
 3. 转到“管理”选项卡，然后转到“托管专用终结点”部分 。
-4. 选择“托管专用终结点”下的“+ 新建” 。
+4. 在“托管专用终结点”下选择“+新建” 。
 5. 在列表中选择“专用链接服务”磁贴，然后选择“继续” 。
 6. 输入专用终结点的名称，然后在专用链接服务列表中选择“myPrivateLinkService”。
 7. 添加目标 SQL 托管实例的 FQDN 以及专用链接服务的 NAT IP。

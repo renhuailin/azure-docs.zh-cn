@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 06/16/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.custom: azureday1, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a37b189ae98332b2d6c557b6bdfad98266002e9e
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.custom: azureday1, devx-track-azurecli, devx-track-azurepowershell, subject-rbac-steps
+ms.openlocfilehash: b6d04053d4b63552c2329a675c2557e6f1cd8fee
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833897"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290027"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>教程：从 Web 应用访问 Azure 存储
 
@@ -172,11 +172,9 @@ az storage container create \
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-在 [Azure 门户](https://portal.azure.com)中，进入你的存储帐户，向 Web 应用授予访问权限。 依次选择左侧窗格中的“访问控制(IAM)”、“角色分配” 。 你将看到有权访问存储帐户的用户的列表。 现在，你要向机器人（需要访问存储帐户的应用服务）添加角色分配。 选择“添加” > “添加角色分配”。
+在 [Azure 门户](https://portal.azure.com)中，进入你的存储帐户，向 Web 应用授予访问权限。 依次选择左侧窗格中的“访问控制(IAM)”、“角色分配” 。 你将看到有权访问存储帐户的用户的列表。 现在，你要向机器人（需要访问存储帐户的应用服务）添加角色分配。 选择“添加” > “添加角色分配”，打开“添加角色分配”页面  。
 
-在“角色”中，选择“存储 Blob 数据参与者”，授予 Web 应用读取存储 Blob 的权限 。 在“分配访问权限到”中，选择“应用服务” 。 在“订阅”中，选择你的订阅。 然后选择你想要授予其访问权限的应用服务。 选择“保存”。
-
-:::image type="content" alt-text="屏幕截图中显示“添加角色分配”屏幕。" source="./media/scenario-secure-app-access-storage/add-role-assignment.png":::
+在订阅范围将“存储 Blob 数据参与者”角色分配给应用服务。   有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
 Web 应用现在可以访问存储帐户。
 

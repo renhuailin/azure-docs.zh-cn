@@ -5,13 +5,13 @@ ms.service: data-factory
 ms.topic: tutorial
 author: nabhishek
 ms.author: abnarain
-ms.date: 01/10/2018
-ms.openlocfilehash: 2e2a50a96402f01fe914c79d5257fc5bb4dc57a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/07/2021
+ms.openlocfilehash: 7e4ad47f933757c4ebce66acd7ddc5e0033b601e
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377782"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113215769"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换云中的数据
 
@@ -118,9 +118,9 @@ ms.locfileid: "100377782"
 
 ### <a name="create-an-azure-storage-linked-service"></a>创建 Azure 存储链接服务
 
-1. 在“入门”页的左侧面板中，切换到“编辑”选项卡。   
+1. 在主页上，切换到左侧面板中的“管理”选项卡。 
 
-   ![“入门”页](./media/tutorial-transform-data-spark-portal/get-started-page.png)
+   ![屏幕截图显示了“管理”选项卡。](media/doc-common-process/get-started-page-manage-button.png)
 
 1. 选择窗口底部的“连接”，然后选择“+ 新建”。   
 

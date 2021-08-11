@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: f155868483a0b00ed5ecb6f02ad3ee5440e6e45a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: a07d6c6b397f8461202ffebe081b2fde91b53547
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625210"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113289660"
 ---
 在本快速入门中，你将使用必应图像搜索客户端库（它是 API 的包装器并包含相同的功能）进行你的第一次图像搜索。 这个简单的 Java 应用程序会发送图像搜索查询、分析 JSON 响应，并显示所返回的第一个图像的 URL。
 
@@ -22,7 +22,7 @@ ms.locfileid: "94625210"
 
 ## <a name="prerequisites"></a>先决条件
 
-最新版的 [Java 开发工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK)
+最新版的 [Java 开发工具包](/azure/developer/java/fundamentals/java-support-on-azure) (JDK)
 
 通过使用 Maven、Gradle 或其他依赖项管理系统安装必应图像搜索客户端库依赖项。 Maven POM 文件需要以下声明：
 

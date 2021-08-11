@@ -7,14 +7,14 @@ ms.author: sujie
 ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 104dfe7b2ce253d7ae42c7484532cfd5b2993aec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd74787c1e9ad158becf54f4b2b00bb71317e81d
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98014605"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221779"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>快速入门：在 Visual Studio Code 中创建 Azure 流分析作业（预览）
+# <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code"></a>快速入门：在 Visual Studio Code 中创建 Azure 流分析作业
 
 本快速入门介绍如何使用用于 Visual Studio Code 的 Azure 流分析工具扩展创建和运行 Azure 流分析作业。 示例作业从 Azure IoT 中心设备中读取流式处理数据。 你将定义一个作业，用以计算超过 27° 时的平均温度并将生成的输出事件写入到 blob 存储中的一个新文件。
 

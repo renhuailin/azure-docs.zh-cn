@@ -2,18 +2,18 @@
 title: 教程：在 Azure Static Web Apps 中部署静态呈现的 Next.js 网站
 description: 使用 Azure 静态 Web 应用生成并部署 Next.js 动态站点。
 services: static-web-apps
-author: christiannwamba
+author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.author: chnwamba
+ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 940ea0b96d4e369ceb4ba21c0d31fad36501c24f
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: eb4a9c69ed29b1f13ab2769044c0067779a5e195
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814021"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112454125"
 ---
 # <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps"></a>在 Azure Static Web Apps 中部署静态呈现的 Next.js 网站
 

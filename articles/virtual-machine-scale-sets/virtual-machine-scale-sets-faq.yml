@@ -9,12 +9,12 @@ metadata:
   ms.date: 06/30/2020
   ms.reviewer: jushiman
   ms.custom: mimckitt
-  ms.openlocfilehash: 3fd3f0f7af11a2354a89fc86344bef44b0cffa07
-  ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+  ms.openlocfilehash: 38037844a12f268d6942e9e78b821f2ec7ba040e
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/24/2021
-  ms.locfileid: "112676448"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114456301"
 title: Azure 虚拟机规模集常见问题解答
 summary: 获取有关 Azure 虚拟机规模集常见问题的解答。
 sections:
@@ -31,6 +31,8 @@ sections:
 
 
       * Azure 文件（SMB 共享驱动器）
+
+      * Azure 共享磁盘
 
       * OS 驱动器
 

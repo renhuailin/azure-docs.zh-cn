@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2021
 ms.author: jeedes
-ms.openlocfilehash: be61dad30d7c8670442612faf928d5aa82e64d56
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d168c2c442fba70d021e90daeecce5844adfb274
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065739"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463420"
 ---
 # <a name="tutorial-implement-federated-authentication-between-azure-active-directory-and-sharepoint-on-premises"></a>教程：在 Azure Active Directory 与本地 SharePoint 之间实现联合身份验证
 
@@ -105,7 +105,7 @@ $realm = "urn:sharepoint:federation"
 $loginUrl = "https://login.microsoftonline.com/dc38a67a-f981-4e24-ba16-4443ada44484/wsfed"
 
 # Define the claim types used for the authorization
-$userIdentifier = New-SPClaimTypeMapping -IncomingClaimType `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` -IncomingClaimTypeDisplayName "name" -LocalClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"
+$userIdentifier = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" -IncomingClaimTypeDisplayName "name" -LocalClaimType "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"
 $role = New-SPClaimTypeMapping "http://schemas.microsoft.com/ws/2008/06/identity/claims/role" -IncomingClaimTypeDisplayName "Role" -SameAsIncoming
 
 # Let SharePoint trust the Azure AD signing certificate
@@ -140,7 +140,7 @@ $trust = New-SPTrustedIdentityTokenIssuer -Name "AzureADTrust" -Description "Azu
             ```
         1. 打开 **SharePoint 管理中心** 站点。
         1. 在“系统设置”下，选择“配置备用访问映射”。 此时将打开“备用访问映射集合”框。
-        1. 筛选新 Web 应用程序的显示内容，确认看到了如下所示的内容：
+        1. 用新 Web 应用筛选显示内容，并确认自己是否看到类似下面的内容：
     
            ![Web 应用程序的备用访问映射](./media/sharepoint-on-premises-tutorial/sp-alternate-access-mappings-new-web-app.png)
 
@@ -196,7 +196,7 @@ $trust = New-SPTrustedIdentityTokenIssuer -Name "AzureADTrust" -Description "Azu
 
 ## <a name="sign-in-as-a-member-user"></a>以成员用户的身份登录
 
-Azure Active Directory 有[两种类型的用户](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-user-properties)：来宾用户和成员用户。 让我们从成员用户开始，它只是归属于你的组织的某个用户。
+Azure Active Directory 有[两种类型的用户](../external-identities/user-properties.md)：来宾用户和成员用户。 让我们从成员用户开始，它只是归属于你的组织的某个用户。
 
 ### <a name="create-a-member-user-in-azure-active-directory"></a>在 Azure Active Directory 中创建成员用户
 

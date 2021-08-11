@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/13/2020
+ms.date: 06/29/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2e8bf2ccbf7a53563013c7ba653a6f6e8905337
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a91010f100aa0a464ec61f763b38150ebb4efcf4
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97881304"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090342"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-ad-multi-factor-authentication"></a>教程：使用 Azure AD 多重身份验证保护用户登录事件
 
@@ -41,7 +41,7 @@ ms.locfileid: "97881304"
 
 * 一个至少启用了 Azure AD Premium P1 或试用版许可证的有效 Azure AD 租户。
     * 如果需要，[可免费创建一个](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 一个拥有全局管理员特权的帐户。
+* 一个拥有全局管理员特权的帐户。  某些 MFA 设置也可由身份验证策略管理员管理。 有关详细信息，请参阅[身份验证策略管理员](../roles/permissions-reference.md#authentication-policy-administrator)。
 * 你知道其密码的非管理员测试用户，例如 *testuser*。 本教程将使用此帐户测试最终用户的 Azure AD 多重身份验证体验。
     * 如果需要创建用户，请参阅[快速入门：向 Azure Active Directory 添加新用户](../fundamentals/add-users-azure-active-directory.md)。
 * 该非管理员用户所属的组，例如 *MFA-Test-Group*。 本教程将为此组启用 Azure AD 多重身份验证。

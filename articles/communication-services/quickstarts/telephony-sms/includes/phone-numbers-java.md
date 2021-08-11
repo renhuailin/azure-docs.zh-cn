@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: c312b33a63c179d9af8347e268d400c5e48b3921
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 7c45bc634b725c29e1bf98138f3bc831e85bea55
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111430137"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112536169"
 ---
 > [!NOTE]
 > 在 [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/PhoneNumbers) 上查找此快速入门的最终代码
@@ -32,6 +32,12 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 在文本编辑器中打开 pom.xml 文件。 将以下依赖项元素添加到依赖项组。
 
 ```xml
+<dependency>
+    <groupId>com.azure</groupId>
+    <artifactId>azure-communication-common</artifactId>
+    <version>1.0.0</version>
+</dependency>
+
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-phonenumbers</artifactId>

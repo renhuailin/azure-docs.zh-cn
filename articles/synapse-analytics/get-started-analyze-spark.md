@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: de48f906f4dc86bf6297cfb3b76f406df49feec3
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 1c6f676ba6f4c689a34baf2119a4179e3a5200ad
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363846"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113038257"
 ---
 # <a name="analyze-with-apache-spark"></a>使用 Apache Spark 进行分析
 
@@ -75,7 +75,7 @@ ms.locfileid: "107363846"
    ```
 
 1. 运行该单元以显示我们加载到 nyctaxi Spark 数据库中的纽约市出租车数据。
-1. 创建新代码单元并输入以下代码。 我们将分析此数据，并将结果保存到名为“nyctaxi.passengercountstats”的表中。
+1. 创建新代码单元并输入以下代码。 我们会分析此数据，并将结果保存到名为“nyctaxi.passengercountstats”的表中。
 
    ```py
    %%pyspark

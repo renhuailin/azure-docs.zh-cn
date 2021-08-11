@@ -1,18 +1,18 @@
 ---
 title: 快速入门 - 与 Azure Database for MySQL 集成
 description: 介绍如何预配和准备 Azure Database for MySQL 实例，然后仅通过一条命令在 Azure Spring Cloud 上配置 Pet Clinic，以将其用作永久数据库。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 05/13/2021
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: e4a9dc4d01cb2ea0aea42f00e6ece436194ce498
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 223a3ba0fdb11824cd7c45218dc72271054db428
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965005"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114470670"
 ---
 # <a name="quickstart-integrate-azure-spring-cloud-with-azure-database-for-mysql"></a>快速入门：将 Azure Spring Cloud 与 Azure Database for MySQL 集成
 

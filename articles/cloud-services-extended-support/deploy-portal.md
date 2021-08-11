@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 306294cc654e46dbe8af80b25cb9c709071fad20
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: a147d4ca7b947c6a1cdfeec1587e9ae6b2d27fa0
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166320"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448900"
 ---
 # <a name="deploy-a-azure-cloud-services-extended-support-using-the-azure-portal"></a>使用 Azure 门户部署 Azure 云服务（外延支持）
 本教程介绍如何使用 Azure 门户创建云服务（外延支持）部署。 
@@ -63,6 +63,6 @@ ms.locfileid: "106166320"
 7. 完成所有字段后，移动到“查看和创建”选项卡，来验证部署配置并创建云服务（外延支持）。
 
 ## <a name="next-steps"></a>后续步骤 
-- 请参阅云服务（外延支持）的[常见问题解答](faq.md)。
+- 请参阅云服务（外延支持）的[常见问题解答](faq.yml)。
 - 使用 [Azure 门户](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[模板](deploy-template.md)或 [Visual Studio](deploy-visual-studio.md) 部署云服务（外延支持）。
 - 访问[云服务（外延支持）示例存储库](https://github.com/Azure-Samples/cloud-services-extended-support)

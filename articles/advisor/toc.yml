@@ -21,6 +21,10 @@
   items:
     - name: 顾问入门
       href: advisor-get-started.md
+- name: 示例
+  items:
+    - name: Azure Resource Graph 查询
+      href: ./resource-graph-samples.md
 - name: 操作指南
   items:
     - name: 可靠性

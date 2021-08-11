@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd215f0c10f8aebd2a7494ecb5894484ce7bedb9
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: e0558be2ea1defb2a09e6461ba838e328cb293d6
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714037"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112201709"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>什么是 Azure AD Identity Governance？
 
@@ -108,13 +108,13 @@ Identity Governance 可帮助组织在以下需求之间实现平衡：工作效
 
 | Feature | 最小特权角色 |
 | ------- | --------------------- |
-| 权利管理 | 用户管理员（例外：将 SharePoint Online 站点添加到目录需要使用全局管理员角色） |
+| 权利管理 | Identity Governance 管理员 |
 | 访问评审 | 用户管理员（例外：对 Azure 或 Azure AD 角色进行访问评审需要使用特权角色管理员角色） |
 |Privileged Identity Management | 特权角色管理员 |
 | 使用条款 | 安全管理员或者条件访问管理员 |
 
 >[!NOTE]
->权利管理的最低权限角色将从用户管理员角色更改为身份治理管理员角色。
+>权利管理的最低特权角色已从“用户管理员”角色更改为“标识治理管理员”角色。
 
 ## <a name="next-steps"></a>后续步骤
 

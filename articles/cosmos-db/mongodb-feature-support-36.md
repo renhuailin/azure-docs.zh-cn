@@ -5,14 +5,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
 ms.date: 03/02/2021
-author: sivethe
-ms.author: sivethe
-ms.openlocfilehash: 0b6f85a675dc98928309870ea177629203db39e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: gahl-levy
+ms.author: gahllevy
+ms.openlocfilehash: 5fb7be4b3fdee881bcfd6d5cc1c3e396bd49225f
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557329"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359274"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.6 版本）：支持的功能和语法
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -341,7 +341,7 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 |---------|---------|
 | Double | 是 |
 | String | 是 |
-| 对象 | 是 |
+| Object | 是 |
 | Array | 是 |
 | Binary Data | 是 | 
 | ObjectId | 是 |

@@ -162,6 +162,6 @@
     - name: 可用区域
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=video-analyzer&regions=all'
     - name: 常见问题
-      href: faq-edge.md
+      href: faq-edge.yml
     - name: 配额和限制
       href: quotas-limitations.md

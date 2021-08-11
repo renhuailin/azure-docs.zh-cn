@@ -5,13 +5,13 @@ author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
 ms.topic: quickstart
-ms.date: 06/04/2021
-ms.openlocfilehash: d78b915fc9efffd52f31b75edcb35d91fb529e4a
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.date: 07/05/2021
+ms.openlocfilehash: 75b33003a62bd9a686ab8e0f2a8934333a4430ff
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113219782"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436972"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>快速入门：使用“复制数据”工具复制数据
 
@@ -55,9 +55,9 @@ ms.locfileid: "113219782"
 
 1. 选择“创建”。
 
-1. 创建完成后，会显示“数据工厂”页。 选择“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI) 应用程序。
+1. 创建完成后，会显示“数据工厂”页。 在“打开 Azure 数据工厂工作室”磁贴上选择“打开”，在单独的选项卡上启动 Azure 数据工厂用户界面 (UI) 应用程序。 
    
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含“创作和监视”磁贴。":::
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂主页，其中包含“打开 Azure 数据工厂工作室”磁贴。":::
     
 ## <a name="start-the-copy-data-tool"></a>启动“复制数据”工具
 

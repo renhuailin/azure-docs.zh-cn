@@ -9,12 +9,6 @@
     - name: 工业 IoT
       href: overview-iot-industrial.md
       items:
-        - name: 什么是 OPC 孪生
-          href: overview-opc-twin.md
-        - name: 什么是 OPC 保管库
-          href: overview-opc-vault.md
-        - name: 什么是 OPC 发布服务器
-          href: overview-opc-publisher.md
         - name: 什么是互联工厂
           href: iot-accelerators-connected-factory-features.md
 - name: 快速入门
@@ -22,14 +16,6 @@
     - name: 尝试连接工厂解决方案
       href: quickstart-connected-factory-deploy.md
   expanded: true
-- name: 概念
-  items:
-    - name: 工业 IoT
-      items:
-        - name: OPC 孪生体系结构
-          href: overview-opc-twin-architecture.md
-        - name: OPC 保管库体系结构
-          href: overview-opc-vault-architecture.md
 - name: 操作指南
   items:
     - name: 工业 IoT
@@ -42,30 +28,6 @@
               href: iot-accelerators-connected-factory-configure.md
             - name: 自定义解决方案加速器
               href: iot-accelerators-connected-factory-customize.md
-        - name: OPC 孪生
-          items:
-            - name: 部署 OPC 孪生服务
-              href: howto-opc-twin-deploy-existing.md
-            - name: 将 OPC 孪生模块部署到 IoT Edge
-              href: howto-opc-twin-deploy-modules.md
-            - name: 仅部署 OPC 孪生依赖项
-              href: howto-opc-twin-deploy-dependencies.md
-        - name: OPC 保管库
-          items:
-            - name: 部署 OPC 保管库服务
-              href: howto-opc-vault-deploy.md
-            - name: 管理 OPC 保管库服务
-              href: howto-opc-vault-manage.md
-            - name: 保护 OPC UA 设备与 OPC 保管库的通信
-              href: howto-opc-vault-secure.md
-            - name: 安全运行 OPC 保管库服务
-              href: howto-opc-vault-secure-ca.md
-        - name: OPC 发布服务器
-          items:
-            - name: 配置 OPC 发布服务器
-              href: howto-opc-publisher-configure.md
-            - name: 运行 OPC 发布服务器
-              href: howto-opc-publisher-run.md
 - name: 资源
   items:
     - name: 支持和帮助选项
@@ -85,7 +47,7 @@
         - name: IoT 解决方案加速器
           href: ./index.yml
         - name: IoT 即插即用
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: 时序见解
@@ -108,8 +70,8 @@
     - name: 常见问题解答
       items:
         - name: 解决方案加速器常见问题解答
-          href: iot-accelerators-faq.md
+          href: iot-accelerators-faq.yml
         - name: 连接的工厂常见问题解答
-          href: iot-accelerators-faq-cf.md
+          href: iot-accelerators-faq-cf.yml
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-iot-suite'

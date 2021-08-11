@@ -93,7 +93,7 @@ items:
           - name: 探索图像处理应用
             href: Tutorials/CSharpTutorial.md
           - name: 其他示例
-            href: /samples/browse/?products=azure&terms=computer-vision
+            href: /samples/browse/?products=azure&terms=analyze-image
       - name: 操作指南
         items:
           - name: 调用图像分析 API

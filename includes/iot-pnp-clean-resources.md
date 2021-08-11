@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dominicbetts
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/15/2019
-ms.openlocfilehash: 647226091c3e15a19bf8262c23e62d95018488b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4e4d6858ce03c0a7015f6754018c509c738f8da
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831191"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400018"
 ---
 如果打算继续学习其他 IoT 即插即用文章，则可保留并重复使用在本文中使用的资源。 否则，可删除在本文中创建的资源，以免产生额外的费用。
 

@@ -3,21 +3,21 @@ title: 快速入门：在 JavaScript 单页应用中登录用户 | Azure
 titleSuffix: Microsoft identity platform
 description: 本快速入门介绍 JavaScript 应用如何调用 API，该 API 需要 Microsoft 标识平台颁发的访问令牌。
 services: active-directory
-author: mtillman
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
-ms.author: mtillman
+ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: ae6fdc989f70cee387c818a147e52408650cc783
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: c266fe52620cd91f1e09f06d7468181b0d584df3
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075432"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113357636"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：在 JavaScript SPA 中登录用户并获得访问令牌
 
@@ -49,14 +49,14 @@ ms.locfileid: "112075432"
 >
 > 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 > 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-> 1. 搜索并选择“Azure Active Directory”。
+> 1. 搜索并选择“Azure Active Directory”  。
 > 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 > 1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
 > 1. 选择“注册”。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
 > 1. 本快速入门要求启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在“管理”下，选择“身份验证”。 
 > 1. 在“平台配置” > “添加平台”下 。 选择“Web”。
-> 1. 将“重定向 URI”值设为 `http://localhost:3000/` 
+> 1. 将“重定向 URI”值设为 `http://localhost:3000/`
 > 1. 在“隐式授权和混合流”下，选择“访问令牌”和“ID 令牌”  。
 > 1. 选择“配置” 。
 
@@ -207,7 +207,7 @@ npm install msal
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
 
-|其中  | 说明 |
+|Where  | 说明 |
 |---------|---------|
 |`clientId`     | 在 Azure 门户中注册的应用程序的应用程序 ID|
 |`authority`    | （可选）支持帐户类型的颁发机构 URL，如前面的配置部分所述。 默认颁发机构为 `https://login.microsoftonline.com/common`。 |
@@ -235,7 +235,7 @@ myMSALObj.loginPopup(loginRequest)
 });
 ```
 
-|其中  | 说明 |
+|Where  | 说明 |
 |---------|---------|
 | `scopes`   | （可选）包含在登录时为了获得用户许可而请求的范围。 例如：`[ "user.read" ]`（针对 Microsoft Graph）或 `[ "<Application ID URL>/scope" ]`（针对自定义 Web API，即 `api://<Application ID>/access_as_user`）。 |
 
@@ -264,7 +264,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
     });
 ```
 
-|其中  | 说明 |
+|Where  | 说明 |
 |---------|---------|
 | `scopes`   | 包含请求的需要在 API 的访问令牌中返回的作用域。 例如：`[ "mail.read" ]`（针对 Microsoft Graph）或 `[ "<Application ID URL>/scope" ]`（针对自定义 Web API，即 `api://<Application ID>/access_as_user`）。|
 

@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 SAP Analytics 配置自动用�
 description: 了解如何将用户帐户从 Azure AD 自动预配到 SAP Analytics Cloud 及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 27d12989-efa8-4254-a4ad-8cb6bf09d839
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/13/2020
-ms.author: Zhchia
-ms.openlocfilehash: 31e5393cb5de627ebf8832e43302583d6eacbf59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 16fbc64f77407c02ec189e9f0bd0de40d9a7f2bd
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181469"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113759638"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>教程：为 SAP Analytics Cloud 配置自动用户预配
 
@@ -103,7 +103,7 @@ ms.locfileid: "96181469"
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 

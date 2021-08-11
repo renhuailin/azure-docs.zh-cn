@@ -1,19 +1,23 @@
 ---
-title: include 文件
-description: include 文件
+title: 包含文件
+description: 包含文件
 author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 05/05/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 501b1383bbc4fb3e20a675b3dca7186d0fe4548e
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: d0f1a0bed557e27da113dcb6177c75198b47e6ad
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112041959"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114712883"
 ---
+[![浏览代码](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp)
+
+本快速入门介绍一个基本的 Azure IoT 应用程序开发工作流。 你将使用 Azure CLI 创建 Azure IoT 中心和设备。 然后，使用 Azure IoT 设备 SDK 示例来运行模拟的温度控制器，将此控制器安全连接到中心，并发送遥测数据。
+
 ## <a name="prerequisites"></a>先决条件
 - 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Git](https://git-scm.com/downloads)。
@@ -89,7 +93,7 @@ ms.locfileid: "112041959"
     node pnpTemperatureController.js
     ```
     > [!NOTE]
-    > 此代码示例使用 Azure IoT 即插即用，这使你无需任何手动配置即可将智能设备集成到你的解决方案中。  默认情况下，本文档中的大多数示例都使用 IoT 即插即用。 若要详细了解 IoT PnP 的优点以及使用或不使用它的案例，请参阅[什么是 IoT 即插即用？](../articles/iot-pnp/overview-iot-plug-and-play.md)。
+    > 此代码示例使用 Azure IoT 即插即用，这使你无需任何手动配置即可将智能设备集成到你的解决方案中。  默认情况下，本文档中的大多数示例都使用 IoT 即插即用。 若要详细了解 IoT PnP 的优点以及使用或不使用它的案例，请参阅[什么是 IoT 即插即用？](../articles/iot-develop/overview-iot-plug-and-play.md)。
 
 当 Node.js 代码将模拟的遥测消息从设备发送到 IoT 中心时，该消息将显示于正在监视事件的 CLI 应用中：
 

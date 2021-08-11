@@ -1,21 +1,21 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: azure-communication-services
 author: pvicencio
 manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/12/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: pvicencio
-ms.openlocfilehash: 68d815faa79e0b018bd3d2125ea88cd4a33dea51
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ea5e7c4c502e7a31fddac78e1931d172acce7b9d
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111430663"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113111952"
 ---
 通过使用通信服务 Java 短信 SDK 发送短信，开始使用 Azure 通信服务。
 

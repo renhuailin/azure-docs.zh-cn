@@ -9,12 +9,13 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 5caa41b852bf55a11489db6c0bab871b20720e05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: c0be8241b438a010a44c4b9dbabbb05d5ac290b3
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670668"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217082"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>教程：使用 Apache Spark MLlib 和 Azure Synapse Analytics 构建机器学习应用
 
@@ -195,9 +196,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 现在有了两个数据帧，下一个任务就是创建模型公式并针对训练数据帧运行公式。 然后，可针对测试数据帧进行验证。 试验不同版本的模型公式，了解不同组合的影响。
 
 > [!Note]
-> 若要保存模型，需要 Azure 角色“存储 Blob 数据参与者”。 在存储帐户下，转到“访问控制(IAM)”，然后选择“添加角色分配” 。 向 Azure SQL Database 服务器分配“存储 Blob 数据参与者”角色。 只有具有所有者权限的成员才能执行此步骤。 
->
->有关各种 Azure 内置角色，请参阅[本指南](../../role-based-access-control/built-in-roles.md)。
+> 若要保存模型，请将“存储 Blob 数据参与者”角色分配到 Azure SQL 数据库服务器资源范围。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。 只有具有所有者权限的成员才能执行此步骤。
 
 ```python
 ## Create a new logistic regression object for the model

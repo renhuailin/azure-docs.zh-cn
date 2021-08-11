@@ -2,14 +2,14 @@
 title: Azure 视频分析器入门
 description: 本教程将指导你完成使用 IoT Edge 上的 Azure 视频分析器和 Azure 自定义视觉来分析实时视频的步骤。
 ms.topic: tutorial
-ms.date: 04/21/2021
+ms.date: 06/01/2021
 zone_pivot_groups: video-analyzer-programming-languages
-ms.openlocfilehash: 3ba8fe19b08a17e2d2e35cfc34cda3a65795dea5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: efb89b8ac28ca2d4ddfb72c75d420ace705d92ba
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110383682"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603399"
 ---
 # <a name="tutorial-analyze-live-video-with-azure-video-analyzer-on-iot-edge-and-azure-custom-vision"></a>教程：使用 IoT Edge 上的 Azure 视频分析器和 Azure 自定义视觉分析实时视频
 
@@ -112,24 +112,16 @@ HTTP 扩展节点扮演代理的角色。 它对使用 `samplingOptions` 字段�
    2. `docker image ls`
 
       此命令检查新映像是否在本地注册表中。
-   3. `docker run -p 127.0.0.1:80:80 -d cvtruck`
+   
+## <a name="set-up-your-development-environment"></a>设置开发环境
 
-      此命令应该会将 Docker 的公开端口 (80) 发布到本地计算机的端口 (80)。
-   4. `docker container ls`
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [setup development environment](./includes/set-up-dev-environment/csharp/csharp-set-up-dev-env.md)]
+::: zone-end
 
-      此命令检查端口映射并检查 Docker 容器是否在你的计算机上成功运行。 输出应类似于以下内容：
-      
-      ```
-      CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                      NAMES
-      8b7505398367        cvtruck             "/bin/sh -c 'python …"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
-      ```
-   5. `curl -X POST http://127.0.0.1:80/score -F imageData=@<path to any image file that has the toy delivery truck in it>`
-
-      此命令测试本地计算机上的容器。 如果该图像中具有训练模型时使用的同一运货卡车，则输出应类似于以下示例。 它表示检测到运货卡车的概率为 90.12%。
-
-      ```
-      {"created":"2020-03-20T07:10:47.827673","id":"","iteration":"","predictions":[{"boundingBox":{"height":0.66167289,"left":-0.03923762,"top":0.12781593,"width":0.70003178},"probability":0.90128148,"tagId":0,"tagName":"delivery truck"},{"boundingBox":{"height":0.63733053,"left":0.25220079,"top":0.0876643,"width":0.53331227},"probability":0.59745145,"tagId":0,"tagName":"delivery truck"}],"project":""}
-      ```
+::: zone pivot="programming-language-python"
+[!INCLUDE [setup development environment](./includes/set-up-dev-environment/python/python-set-up-dev-env.md)]
+::: zone-end
 
 ## <a name="examine-the-sample-files"></a>检查示例文件
 
@@ -151,7 +143,7 @@ HTTP 扩展节点扮演代理的角色。 它对使用 `samplingOptions` 字段�
    1. `"topologyName" : "InferencingWithHttpExtension"`
    2. 在 parameters 数组的顶部，添加以下内容：`{"name": "inferencingUrl","value": "http://cv/score"},`
    3. 将 `rtspUrl` 参数值更改为 `"rtsp://rtspsim:554/media/t2.mkv"`。
-4. 在 `livePipelineDelete` 下，确保 `"name": "InferencingWithHttpExtension"`。
+4. 在 `pipelineTopologyDelete` 下，确保 `"name": "InferencingWithHttpExtension"`。
 5. 右键单击“src/edge/ deployment.customvision.template.json”文件，然后选择“生成 IoT Edge 部署清单”。
 
    ![显示生成 IoT Edge 部署清单的屏幕截图。](./media/custom-vision/deployment-template-json.png)
@@ -188,15 +180,11 @@ HTTP 扩展节点扮演代理的角色。 它对使用 `samplingOptions` 字段�
     - 名为 `rtspsim` 的模块，可模拟 RTSP 服务器（充当实时视频源的源）。
     - 一个名为 `cv` 的模块。顾名思义，这是自定义视觉玩具卡车检测模型，它向图像应用自定义视觉，并返回多个标记类型。 （我们的模型仅使用一个标记（即“delivery truck”）进行了训练）。
 
-## <a name="prepare-for-monitoring-events"></a>准备监视事件
 
-右键单击“ava-sample-device”，然后选择“开始监视内置事件终结点”。 需要执行此步骤，以在 Visual Studio Code 的“输出”窗口中监视 IoT 中心事件。
-
-![显示开始监视内置事件终结点的屏幕截图。](./media/custom-vision/start-monitoring.png)
 
 ## <a name="run-the-sample-program"></a>运行示例程序
 
-如果在浏览器中打开本教程的拓扑，将看到 `inferencingUrl` 的值已设置为 `http://cv/image`。 此设置表示推理服务器在实时视频中检测到玩具卡车后，将返回结果。
+如果在浏览器中打开本教程的拓扑，将看到 `inferencingUrl` 的值已设置为 `http://cv/score`。 此设置表示推理服务器在实时视频中检测到玩具卡车后，将返回结果。
 
 1. 在 Visual Studio Code 中，打开“扩展”选项卡（或选择 Ctrl+Shift+X），然后搜索“Azure IoT 中心” 。
 2. 右键单击并选择“扩展设置”。
@@ -205,7 +193,14 @@ HTTP 扩展节点扮演代理的角色。 它对使用 `samplingOptions` 字段�
 3. 搜索并启用“显示详细消息”。
 
    ![显示“显示详细消息”的屏幕截图。](./media/custom-vision/show-verbose-message.png)
-4. 若要启动调试会话，请选择 F5 键。 你可在“终端”窗口中看到打印的消息。
+4.  ::: zone pivot="programming-language-csharp"
+    [!INCLUDE [header](includes/common-includes/csharp-run-program.md)]
+    ::: zone-end
+
+    ::: zone pivot="programming-language-python"
+    [!INCLUDE [header](includes/common-includes/python-run-program.md)]
+    ::: zone-end  
+
 5. operations.json 代码首先调用直接方法 `livePipelineList` 和 `livePipelineList`。 如果你在完成先前的快速入门后清理了资源，则该过程将返回空列表，然后暂停。 若要继续，请选择 Enter 键。
 
    “终端”窗口将显示下一组直接方法调用：
@@ -223,7 +218,7 @@ HTTP 扩展节点扮演代理的角色。 它对使用 `samplingOptions` 字段�
             "parameters": [
               { 
                 "name": "inferencingUrl",
-                "value": "http://cv/image"
+                "value": "http://cv/score"
               },
               {
                 "name": "rtspUrl",

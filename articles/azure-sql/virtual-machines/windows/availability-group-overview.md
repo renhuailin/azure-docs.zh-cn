@@ -12,15 +12,15 @@ ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/07/2020
+ms.date: 06/01/2021
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7d91d6e528127740039e1e21ca0b4cb8635e7e10
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: d26a95a5db616be89eac89e140e20bd371088716
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569631"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580901"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 上的 SQL Server 的 Always On 可用性组
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -59,8 +59,8 @@ Azure 虚拟机上的 Always On 可用性组类似于[本地 Always On 可用性
 此外，VNN 侦听器和 DNN 侦听器功能之间有一些行为差异，必须注意，具体包括： 
 
 - **故障转移时间**：使用 DNN 侦听器时，故障转移时间更快，因为不需要等待网络负载均衡器来检测失败事件和更改其路由。 
-- **现有连接**：与故障转移可用性组中 *特定数据库* 之间的连接将会关闭，但与主副本的其他连接将保持打开状态，因为在故障转移过程中，DNN 将保持联机状态。 这不同于传统的 VNN 环境，在传统 VNN 环境中，主副本的所有连接通常在可用性组故障转移时关闭，侦听器进入脱机状态，而主副本转换为次要角色。 使用 DNN 侦听器时，可能需要调整应用程序连接字符串，以确保在故障转移时将连接重定向到新的主副本。
-- **开放事务**：针对故障转移可用性组中的数据库的开放事务将关闭并回滚，你需要 *手动* 重新连接。 例如，在 SQL Server Management Studio 中，关闭查询窗口并打开一个新窗口。 
+- 现有连接：与故障转移可用性组中特定数据库之间的连接将会关闭，但与主要副本的其他连接将保持打开状态，因为在故障转移过程中，DNN 将保持联机状态。 这不同于传统的 VNN 环境。在传统 VNN 环境中，主要副本的所有连接通常在可用性组故障转移时关闭，侦听器进入脱机状态，而主要副本转换为次要角色。 使用 DNN 侦听器时，可能需要调整应用程序连接字符串，以确保在故障转移时将连接重定向到新的主要副本。
+- 开放事务：针对故障转移可用性组中的数据库的开放事务将关闭并回滚，你需要手动重新连接。 例如，在 SQL Server Management Studio 中，关闭查询窗口并打开一个新窗口。 
 
 在 Azure 中设置 VNN 侦听器时需要负载均衡器。 对于 Azure 中的负载平衡器，有两个主要选项：外部（公共）或内部。 外部（公共）负载均衡器是面向 Internet 的，并与可通过 Internet 访问的公共虚拟 IP 相关联。 内部负载均衡器仅支持同一虚拟网络内的客户端。 对于任一负载均衡器类型，都必须启用[直接服务器返回](../../../load-balancer/load-balancer-multivip-overview.md#rule-type-2-backend-port-reuse-by-using-floating-ip)。 
 
