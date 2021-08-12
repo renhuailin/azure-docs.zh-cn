@@ -3,33 +3,26 @@ title: 在 Azure Kubernetes 服务 (AKS) 中使用 Pod 安全策略
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 PodSecurityPolicy 控制 Pod 许可
 services: container-service
 ms.topic: article
-ms.date: 02/12/2021
-ms.openlocfilehash: cb317e5e0d1f558121e675f569bad37811768ca6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/25/2021
+ms.openlocfilehash: 260b7a0811db4e3c33894d1b43d7fbd38c26214f
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102180303"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015325"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>预览 - 在 Azure Kubernetes 服务 (AKS) 中使用 Pod 安全策略保护群集
 
 > [!WARNING]
-> 本文档中所述的功能“Pod 安全策略（预览版）”已设置为弃用，在 2021 年 6 月 30 日之后将不再提供，以支持[适用于 AKS 的 Azure Policy](use-azure-policy.md)。 弃用日期已在原来日期（2020 年 10 月 15 日）的基础上延长。
+> 本文档中所述的 Pod 安全策略（预览版）功能将从 Kubernetes 1.21 版开始[弃用](https://kubernetes.io/blog/2021/04/06/podsecuritypolicy-deprecation-past-present-and-future/)，并在 1.25 版中删除。 随着 Kubernetes Upstream 接近该里程碑，Kubernetes 社区将努力记录可行的替代方案。 先前在没有针对客户的可行方案时才发布弃用公告。 现在，Kubernetes 社区正在研究替代方案，不再迫切需要在 Kubernetes 之前弃用。 
 >
 > 弃用 Pod 安全策略（预览版）之后，必须在使用已弃用功能的任何现有群集上禁用该功能，以执行将来的群集升级并保留在 Azure 支持范围内。
->
-> 强烈建议使用适用于 AKS 的 Azure Policy 开始测试方案，这提供用于保护 Pod 的内置策略以及映射到 Pod 安全策略的内置计划。 若要从 Pod 安全策略迁移，需要在群集上执行以下操作。
-> 
-> 1. 在群集上[禁用 Pod 安全策略](#clean-up-resources)
-> 1. 启用 [Azure Policy 加载项][kubernetes-policy-reference]
-> 1. 启用[可用内置策略][policy-samples]中的 Azure 策略
-> 1. 了解 [Pod 安全策略与 Azure Policy 之间的行为变更](#behavior-changes-between-pod-security-policy-and-azure-policy)
 
 若要提高 AKS 群集的安全性，可以限制可进行计划的 Pod。 请求不允许的资源的 Pod 无法在 AKS 群集中运行。 可使用 Pod 安全策略定义此访问权限。 本文介绍如何在 AKS 中使用 Pod 安全策略来限制 Pod 的部署。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
@@ -462,20 +455,20 @@ kubectl delete namespace psp-aks
 [kubectl-logs]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [kubernetes-policy-reference]: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#policy-reference
-
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [network-policies]: use-network-policies.md
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-aks-update]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-update
-[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-aks-update]: /cli/azure/aks#az_aks_update
+[az-extension-add]: /cli/azure/extension#az_extension_add
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
 [policy-samples]: ./policy-reference.md#microsoftcontainerservice
+[azure-policy-add-on]: ../governance/policy/concepts/policy-for-kubernetes.md

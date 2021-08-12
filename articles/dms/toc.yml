@@ -156,6 +156,6 @@
         - name: 监视联机迁移并执行直接转换
           href: 'https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/'
         - name: 将 Oracle 迁移到 Azure SQL DB
-          href: /azure/postgresql/howto-migrate-from-oracle
+          href: ../postgresql/howto-migrate-from-oracle.md
         - name: 将 MongoDB 迁移到 Azure Cosmos DB
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/'

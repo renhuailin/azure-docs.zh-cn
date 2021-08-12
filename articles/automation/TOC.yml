@@ -68,10 +68,14 @@
           href: quickstart-create-automation-account-template.md
         - name: 托管标识
           items:
-            - name: 启用托管标识
+            - name: 使用系统分配的托管标识
               href: enable-managed-identity-for-automation.md
-            - name: 禁用托管标识
+            - name: 使用用户分配的托管标识
+              href: add-user-assigned-identity.md
+            - name: 禁用系统分配的托管标识
               href: disable-managed-identity-for-automation.md
+            - name: 删除用户分配的托管标识
+              href: remove-user-assigned-identity.md
             - name: 排查托管标识问题
               href: troubleshoot/managed-identity.md
         - name: 运行方式帐户

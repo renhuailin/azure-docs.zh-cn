@@ -1,13 +1,10 @@
 ---
-title: 快速入门：通过 Azure IoT 控制设备 (Node.js)
-description: 本快速入门会运行两个示例 Node.js 应用程序。 一个为后端应用程序，可远程控制连接到中心的设备。 另一个应用程序可模拟连接到中心的可受远程控制的设备。
-author: wesmc7777
-manager: philmea
-ms.author: wesmc
+author: philmea
+ms.author: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
-ms.topic: quickstart
+ms.topic: include
 ms.custom:
 - mvc
 - seo-javascript-september2019
@@ -17,18 +14,14 @@ ms.custom:
 - devx-track-js
 - devx-track-azurecli
 ms.date: 06/21/2019
-ms.openlocfilehash: 26a17febf1804a0acc94fd4f484aae34e44af132
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 3ffcfdb156f222cf1eb7134b271550eac4c9fcb3
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114295336"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114732105"
 ---
-# <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>快速入门：使用 Node.js 控制连接到 Azure IoT 中心的设备
-
-[!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
-
-在本快速入门中，会使用直接方法来控制连接到 Azure IoT 中心的模拟设备。 IoT 中心是一项 Azure 服务，使你可以从云管理 IoT 设备，并将大量设备遥测引入云以进行存储或处理。 可使用直接方法远程更改连接到 IoT 中心的设备的行为。 本快速入门使用两个 Node.js 应用程序：一个是模拟设备应用程序，用于响应从后端应用程序调用的直接方法；另一个是后端应用程序，用于在模拟设备上调用直接方法。
+本快速入门使用两个 Node.js 应用程序：一个是模拟设备应用程序，用于响应从后端应用程序调用的直接方法；另一个是后端应用程序，用于在模拟设备上调用直接方法。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,21 +37,21 @@ ms.locfileid: "114295336"
 
 * [一个示例 Node.js 项目](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip)。
 
-* 端口 8883 在防火墙中处于打开状态。 本快速入门中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 端口 8883 在防火墙中处于打开状态。 本快速入门中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](../articles/iot-hub/iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](azure-cli-prepare-your-environment-no-header.md)]
 
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
+[!INCLUDE [iot-hub-cli-version-info](iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-如果已完成上一[快速入门：将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)，则可以跳过此步骤。
+如果已完成上一[快速入门：将遥测数据从设备发送到 IoT 中心](../articles/iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)，则可以跳过此步骤。
 
-[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+[!INCLUDE [iot-hub-include-create-hub](iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>注册设备
 
-如果已完成上一[快速入门：将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)，则可以跳过此步骤。
+如果已完成上一[快速入门：将遥测数据从设备发送到 IoT 中心](../articles/iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)，则可以跳过此步骤。
 
 必须先将设备注册到 IoT 中心，然后该设备才能进行连接。 在本快速入门中，将使用 Azure Cloud Shell 来注册模拟设备。
 
@@ -151,16 +144,3 @@ ms.locfileid: "114295336"
     运行后端应用程序后，在运行模拟设备的控制台窗口中会出现一条消息，且其发送消息的速率也会发生变化：
 
     ![模拟客户端发生更改时的输出](./media/quickstart-control-device-node/simulated-device-message-change.png)
-
-## <a name="clean-up-resources"></a>清理资源
-
-[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
-
-## <a name="next-steps"></a>后续步骤
-
-在本快速入门中，已从后端应用程序调用了设备上的直接方法，并在模拟设备应用程序中响应了直接方法调用。
-
-若要了解如何将设备到云的消息路由到云中的不同目标，请继续学习下一教程。
-
-> [!div class="nextstepaction"]
-> [教程：将遥测路由到不同的终结点进行处理](tutorial-routing.md)

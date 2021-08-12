@@ -4,6 +4,10 @@
   items:
     - name: 什么是 QnA Maker？
       href: Overview/overview.md
+    - name: 语言支持
+      href: Overview/language-support.md
+    - name: 定价和限制
+      href: 'https://aka.ms/qnamaker-pricing'
     - name: 新增功能
       href: whats-new.md
     - name: 自定义问答（预览版）
@@ -16,41 +20,20 @@
           href: Quickstarts/create-publish-knowledge-base.md
         - name: 客户端库或 REST API
           href: Quickstarts/quickstart-sdk.md
-- name: 教程
+- name: 示例
+  href: /samples/browse/?products=azure&term=face&terms=qna-maker
+- name: 负责使用 AI
   items:
-    - name: 使用 Azure 机器人服务创建 FAQ 机器人
-      href: Tutorials/create-faq-bot-with-azure-bot-service.md
-    - name: 自定义机器人
+    - name: 透明度说明
       items:
-        - name: 向 FAQ 机器人添加多个域
-          href: Tutorials/create-faq-bot-for-multiple-domains.md
-    - name: 与 Power Virtual Agent 集成
-      href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
-- name: 概念
-  items:
-    - name: 规划知识库
-      href: Concepts/plan.md
-    - name: 规划 QnA Maker 资源
-      href: Concepts/azure-resources.md
-    - name: 数据源和内容
-      href: Concepts/data-sources-and-content.md
-    - name: Azure 基于角色的访问控制 (Azure RBAC)
-      href: Concepts/role-based-access-control.md
-    - name: 精确应答
-      href: reference-precise-answering.md
-    - name: 启用主动学习
-      href: How-To/use-active-learning.md
-    - name: 排名程序进程
-      displayName: 'DefaultAnswer, Default answer'
-      href: Concepts/query-knowledge-base.md
-    - name: 开发生命周期
-      href: Concepts/development-lifecycle-knowledge-base.md
-      displayName: 'version control, test, index, publish, monitor usage, create'
-    - name: 最佳做法
-      href: Concepts/best-practices.md
-      displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
-    - name: 使用 QnA Maker 和 LUIS
-      href: choose-natural-language-processing-service.md
+        - name: QnA Maker 的用例
+          href: /legal/cognitive-services/qnamaker/transparency-note-qnamaker?context=/azure/cognitive-services/qnamaker/context/context
+        - name: 特征和限制
+          href: /legal/cognitive-services/qnamaker/characteristics-and-limitations-qnamaker?context=/azure/cognitive-services/qnamaker/context/context
+    - name: 集成和负责使用
+      href: /legal/cognitive-services/qnamaker/guidance-integration-responsible-use-qnamaker?context=/azure/cognitive-services/qnamaker/context/context
+    - name: 数据、隐私和安全
+      href: /legal/cognitive-services/qnamaker/data-privacy-security-qnamaker?context=/azure/cognitive-services/qnamaker/context/context
 - name: 操作指南
   items:
     - name: 管理 QnA Maker 资源
@@ -111,51 +94,59 @@
           href: encrypt-data-at-rest.md
         - name: 使用 Azure AD 身份验证
           href: ../authentication.md?context=/azure/cognitive-services/qnamaker/context/context
-- name: 负责使用 AI
+- name: 概念
   items:
-    - name: 透明度说明
+    - name: 规划知识库
+      href: Concepts/plan.md
+    - name: 规划 QnA Maker 资源
+      href: Concepts/azure-resources.md
+    - name: 数据源和内容
+      href: Concepts/data-sources-and-content.md
+    - name: Azure 基于角色的访问控制 (Azure RBAC)
+      href: Concepts/role-based-access-control.md
+    - name: 精确应答
+      href: reference-precise-answering.md
+    - name: 启用主动学习
+      href: How-To/use-active-learning.md
+    - name: 排名程序进程
+      displayName: 'DefaultAnswer, Default answer'
+      href: Concepts/query-knowledge-base.md
+    - name: 开发生命周期
+      href: Concepts/development-lifecycle-knowledge-base.md
+      displayName: 'version control, test, index, publish, monitor usage, create'
+    - name: 最佳做法
+      href: Concepts/best-practices.md
+      displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
+    - name: 使用 QnA Maker 和 LUIS
+      href: choose-natural-language-processing-service.md
+- name: 教程
+  items:
+    - name: 使用 Azure 机器人服务创建 FAQ 机器人
+      href: Tutorials/create-faq-bot-with-azure-bot-service.md
+    - name: 与 Power Virtual Agent 集成
+      href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
+    - name: 自定义常见问题解答机器人
       items:
-        - name: QnA Maker 的用例
-          href: /legal/cognitive-services/qnamaker/transparency-note-qnamaker?context=/azure/cognitive-services/qnamaker/context/context
-        - name: 特征和限制
-          href: /legal/cognitive-services/qnamaker/characteristics-and-limitations-qnamaker?context=/azure/cognitive-services/qnamaker/context/context
-    - name: 集成和负责使用
-      href: /legal/cognitive-services/qnamaker/guidance-integration-responsible-use-qnamaker?context=/azure/cognitive-services/qnamaker/context/context
-    - name: 数据、隐私和安全
-      href: /legal/cognitive-services/qnamaker/data-privacy-security-qnamaker?context=/azure/cognitive-services/qnamaker/context/context
+        - name: 使用多轮次提示创建引导式对话
+          href: Tutorials/guided-conversations.md
+        - name: 向机器人添加多个域
+          href: Tutorials/create-faq-bot-for-multiple-domains.md
+        - name: 通过主动学习增强知识库
+          href: Tutorials/active-learning.md
+        - name: 添加多种语言的知识库
+          href: Tutorials/multiple-languages.md
+        - name: 添加同义词以提高相关性
+          href: Tutorials/adding-synonyms.md
 - name: 参考
   items:
-    - name: 语言支持
-      href: Overview/language-support.md
-    - name: 限制
-      href: limits.md
-    - name: 置信度分数
-      href: Concepts/confidence-score.md
-    - name: 疑难解答
-      href: troubleshooting.md
-    - name: 添加受保护的 SharePoint 文件
-      href: How-To/add-sharepoint-datasources.md
-      displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
-    - name: 服务配置
-      href: reference-app-service.md
-    - name: 内容格式指南
-      href: reference-document-format-guidelines.md
-    - name: 显示格式
-      href: reference-markdown-format.md
-    - name: 专用链接
-      href: reference-private-endpoint.md
-    - name: 批量测试格式
-      href: reference-tsv-format-batch-testing.md
-    - name: 加密
-      href: encrypt-data-at-rest.md
-    - name: REST API 参考
+    - name: REST API
       items:
         - name: QnA Maker 4.0
           href: /rest/api/cognitiveservices/qnamaker4.0/alterations
         - name: QnA Maker 5.0 预览版 1
-          href: /rest/api/cognitiveservices-qnamaker/qnamakerv5.0-preview.1/alterations
+          href: /rest/api/cognitiveservices-qnamaker/qnamaker5.0preview1/alterations
         - name: QnA Maker 5.0 预览版 2
-          href: /rest/api/cognitiveservices-qnamaker/qnamakerv5.0-preview2/alterations
+          href: /rest/api/cognitiveservices-qnamaker/qnamaker5.0preview2/alterations
     - name: SDK
       items:
         - name: C#
@@ -196,6 +187,27 @@
           items:
             - name: Gem
               href: 'https://rubygems.org/gems/azure_cognitiveservices_qnamaker'
+    - name: 限制
+      href: limits.md
+    - name: 置信度分数
+      href: Concepts/confidence-score.md
+    - name: 疑难解答
+      href: troubleshooting.md
+    - name: 添加受保护的 SharePoint 文件
+      href: How-To/add-sharepoint-datasources.md
+      displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+    - name: 服务配置
+      href: reference-app-service.md
+    - name: 内容格式指南
+      href: reference-document-format-guidelines.md
+    - name: 显示格式
+      href: reference-markdown-format.md
+    - name: 专用链接
+      href: reference-private-endpoint.md
+    - name: 批量测试格式
+      href: reference-tsv-format-batch-testing.md
+    - name: 加密
+      href: encrypt-data-at-rest.md
 - name: 资源
   items:
     - name: 企业就绪情况
@@ -208,11 +220,11 @@
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/qnamaker/context/context
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 定价和限制
-      href: 'https://aka.ms/qnamaker-pricing'
     - name: 搜索
       href: /search/index?search=QnAMaker
     - name: 博客
       href: 'https://blog.botframework.com/category/QnAMaker/'
+    - name: 隐私和 Cookie
+      href: 'https://privacy.microsoft.com/privacystatement'
 - name: QnA Maker 门户
   href: 'https://www.qnamaker.ai'

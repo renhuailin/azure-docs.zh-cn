@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
-ms.date: 10/15/2020
-ms.openlocfilehash: f5c5d6da239d302b57bdb37e9d49116a29c1ccb4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: a832c8956f7a3d4f8669209d7ed311e7555e1e75
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100558121"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644254"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share 的角色和要求 
 
@@ -19,42 +19,33 @@ ms.locfileid: "100558121"
 
 ## <a name="roles-and-requirements"></a>角色和要求
 
-使用 Azure Data Share 服务，无需在数据提供程序和使用者之间交换凭据即可共享数据。 Azure Data Share 服务使用托管标识（以前称为 MSI）对 Azure 数据存储进行身份验证。 
+使用 Azure Data Share 服务，无需在数据提供程序和使用者之间交换凭据即可共享数据。 对于基于快照的共享，Azure Data Share 服务使用托管标识（以前称为 MSI）对 Azure 数据存储进行身份验证。 需要为 Azure Data Share 资源的托管标识授予对 Azure 数据存储的访问权限，以便读取或写入数据。
 
-需要为 Azure Data Share 资源的托管标识授予对 Azure 数据存储的访问权限。 然后，Azure Data Share 服务使用此托管标识来读取和写入数据，以进行基于快照的共享，并建立符号链接以进行就地共享。 
-
-若要从 Azure 数据存储共享或接收数据，用户需要至少具有以下权限。 若要进行基于 SQL 的共享，需要其他权限。
+若要从 Azure 数据存储共享或接收数据，用户需要至少具有以下权限。 
 
 * 写入 Azure 数据存储的权限。 通常，“参与者”角色有此权限。
-* 在 Azure 数据存储中创建角色分配的权限。 通常，“所有者”角色、“用户访问管理员”角色或被分配了 Microsoft.Authorization/role assignments/write 权限的自定义角色都有创建角色分配的权限。 如果已为 Data Share 资源的托管标识分配了对 Azure 数据存储的访问权限，则不需要此权限。 请参阅下表了解必需的角色。
 
-下面汇总了分配给 Data Share 资源的托管标识的角色：
+对于存储和基于数据湖快照的共享，你还需获取在 Azure 数据存储中创建角色分配的权限。 通常，“所有者” 角色、“用户访问管理员”角色或被分配了“Microsoft.Authorization/role assignments/write”权限的自定义角色都有创建角色分配的权限。 如果已为 Data Share 资源的托管标识分配了对 Azure 数据存储的访问权限，则不需要此权限。 下面汇总了分配给 Data Share 资源的托管标识的角色：
 
 |数据存储类型|数据提供程序源数据存储|数据使用者目标数据存储|
 |---|---|---|
 |Azure Blob 存储| 存储 Blob 数据读取者 | 存储 Blob 数据参与者
 |Azure Data Lake Gen1 | “所有者” | 不支持
 |Azure Data Lake Gen2 | 存储 Blob 数据读取者 | 存储 Blob 数据参与者
-|Azure 数据资源管理器群集 | 参与者 | 参与者
 |
 
-对于基于 SQL 的共享，需要从 Azure SQL 数据库中的外部提供程序创建一个与 Azure Data Share 资源同名的 SQL 用户。 需要 Azure Active Directory 管理员权限才能创建此用户。 下面汇总了 SQL 用户所需的权限。
+对于基于 SQL 快照的共享，需要从 Azure SQL 数据库中的外部提供程序创建一个与 Azure Data Share 资源同名的 SQL 用户。 需要 Azure Active Directory 管理员权限才能创建此用户。 下面汇总了 SQL 用户所需的权限。
 
 |SQL 数据库类型|数据提供程序 SQL 用户权限|数据使用者 SQL 用户权限|
 |---|---|---|
-|Azure SQL 数据库 | db_datareader | db_datareader、db_datawriter、db_ddladmin
+|Azure SQL Database | db_datareader | db_datareader、db_datawriter、db_ddladmin
 |Azure Synapse Analytics | db_datareader | db_datareader、db_datawriter、db_ddladmin
 |
 
 ### <a name="data-provider"></a>数据提供程序
+对于存储和基于数据湖快照的共享，若要在 Azure Data Share 中添加数据集，需要为提供程序 Data Share 资源的托管身份授予对源 Azure Data Share 的访问权限。 例如，如为存储帐户，则需要为 Data Share 资源的托管标识授予“存储 Blob 数据读取者”角色。 当用户通过 Azure 门户添加数据集，并且用户具有适当的权限时，Azure Data Share 服务会自动完成此操作。 例如，用户是 Azure 数据存储的所有者，或者是被分配了“Microsoft.Authorization/role assignments/write”权限的自定义角色的成员。 
 
-若要在 Azure Data Share 中添加数据集，需要为提供程序 Data Share 资源的托管身份授予对源 Azure 数据存储的访问权限。 例如，如为存储帐户，则需要为 Data Share 资源的托管标识授予“存储 Blob 数据读取者”角色。 
-
-当用户通过 Azure 门户添加数据集，并且用户具有适当的权限时，Azure Data Share 服务会自动完成此操作。 例如，用户是 Azure 数据存储的所有者，或者是被分配了 Microsoft.Authorization/role assignments/write 权限的自定义角色的成员。 
-
-或者，用户可以让 Azure 数据存储的所有者将 Data Share 资源的托管标识手动添加到 Azure 数据存储。 每个 Data Share 资源只需要执行一次此操作。
-
-若要为 Data Share 资源的托管标识手动创建角色分配，请执行以下步骤。  
+或者，用户可以让 Azure 数据存储的所有者将 Data Share 资源的托管标识手动添加到 Azure 数据存储。 每个 Data Share 资源只需要执行一次此操作。 若要为 Data Share 资源的托管标识手动创建角色分配，请执行以下步骤。  
 
 1. 导航到 Azure 数据存储。
 1. 选择“访问控制 (IAM)”。
@@ -65,16 +56,12 @@ ms.locfileid: "100558121"
 
 若要了解有关角色分配的详细信息，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。 如果要使用 REST API 共享数据，可以通过参阅[使用 REST API 分配 Azure 角色](../role-based-access-control/role-assignments-rest.md)来使用 API 创建角色分配。 
 
-对于基于 SQL 的源，在使用 Azure Active Directory 身份验证连接到 SQL 数据库时，需要从 SQL 数据库中的外部提供程序创建一个与 Azure Data Share 资源同名的 SQL 用户。 需要为此用户授予 db_datareader 权限。 可以在[从 Azure SQL 数据库或 Azure Synapse Analytics 共享](how-to-share-from-sql.md)教程中找到示例脚本以及基于 SQL 共享的其他先决条件。 
+对于基于 SQL 快照的共享，在使用 Azure Active Directory 身份验证连接到 SQL 数据库时，需要从 SQL 数据库中的外部提供程序创建一个与 Azure Data Share 资源同名的 SQL 用户。 需要为此用户授予 db_datareader 权限。 可以在[从 Azure SQL 数据库或 Azure Synapse Analytics 共享](how-to-share-from-sql.md)教程中找到示例脚本以及基于 SQL 共享的其他先决条件。 
 
 ### <a name="data-consumer"></a>数据使用者
-若要接收数据，需要为使用者 Data Share 资源的托管标识授予对目标 Azure 数据存储的访问权限。 例如，如为存储帐户，则需要为 Data Share 资源的托管标识授予“存储 Blob 数据参与者”角色。 
+若要将数据接收到存储帐户，需要向使用者数据共享资源的托管标识授予对目标存储帐户的访问权限。 需要向数据共享资源的托管标识授予“存储 Blob 数据参与者”角色。 如果用户通过 Azure 门户指定目标数据存储，并且用户具有适当的权限，则 Azure Data Share 服务会自动完成此操作。 例如，用户是 Azure 数据存储的所有者，或者是被分配了“Microsoft.Authorization/role assignments/write”权限的自定义角色的成员。 
 
-如果用户通过 Azure 门户指定目标数据存储，并且用户具有适当的权限，则 Azure Data Share 服务会自动完成此操作。 例如，用户是 Azure 数据存储的所有者，或者是被分配了 Microsoft.Authorization/role assignments/write 权限的自定义角色的成员。 
-
-或者，用户可以让 Azure 数据存储的所有者将 Data Share 资源的托管标识手动添加到 Azure 数据存储。 每个 Data Share 资源只需要执行一次此操作。
-
-若要为 Data Share 资源的托管标识手动创建角色分配，请执行以下步骤。 
+或者，用户可以要求存储帐户的所有者将数据共享资源的托管标识手动添加到存储帐户。 每个 Data Share 资源只需要执行一次此操作。 若要为 Data Share 资源的托管标识手动创建角色分配，请执行以下步骤。 
 
 1. 导航到 Azure 数据存储。
 1. 选择“访问控制 (IAM)”。

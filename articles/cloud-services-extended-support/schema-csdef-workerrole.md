@@ -1,5 +1,5 @@
 ---
-title: Azure 云服务（外延支持）定义WorkerRole 架构 |Microsoft Docs
+title: Azure 云服务（外延支持）默认 WorkerRole 架构 | Microsoft Docs
 description: 与云服务（外延支持）的工作器角色架构相关的信息
 ms.topic: article
 ms.service: cloud-services-extended-support
@@ -9,10 +9,10 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 8d55f17ba0fe42dab5ac9c7d2e3c09400b3d7029
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98744231"
 ---
 # <a name="azure-cloud-services-extended-support-definition-workerrole-schema"></a>Azure 云服务（外延支持）定义 WorkerRole 架构

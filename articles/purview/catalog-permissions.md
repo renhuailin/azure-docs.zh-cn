@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: b351be1e7212dc9923f701599dd951a73254afe0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9c27287f661c133641f7b3da45784478c8fc597e
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98610363"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015998"
 ---
 # <a name="role-based-access-control-in-azure-purviews-data-plane"></a>Azure Purview 的数据平面中基于角色的访问控制
 

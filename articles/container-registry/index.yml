@@ -12,12 +12,12 @@ metadata:
   author: dlepow
   ms.author: danlep
   ms.date: 11/08/2019
-  ms.openlocfilehash: 53c66bd6dc7e9be548533650d9d3ee7540e1e5c3
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: c4820bef73e2dac03f2b400ff4c802f9e7cb8e65
+  ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "86260046"
+  ms.lasthandoff: 07/15/2021
+  ms.locfileid: "114219015"
 landingContent:
 - title: 关于 Azure 容器注册表
   linkLists:
@@ -72,7 +72,7 @@ landingContent:
     - text: 最佳做法
       url: container-registry-best-practices.md
     - text: 常见问题解答
-      url: container-registry-faq.md
+      url: container-registry-faq.yml
 - title: ACR 任务
   linkLists:
   - linkListType: overview

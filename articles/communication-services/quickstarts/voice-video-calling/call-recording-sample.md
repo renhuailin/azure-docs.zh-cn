@@ -10,14 +10,17 @@ ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-csharp-java
-ms.openlocfilehash: f4dfd0701c2eeeaa5ba3b2be20b9448ca2093601
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 87a658c077a93d852e2a1e03faedf1fa5064e3dc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111785"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114473120"
 ---
 # <a name="call-recording-api-quickstart"></a>通话记录 API 快速入门
+
+[!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
+
 本快速入门介绍了如何开始录制语音和视频通话。 本快速入门假定你已使用[通话客户端 SDK](get-started-with-video-calling.md) 来构建最终用户通话体验。 使用通话服务器 API 和 SDK 可以启用和管理录制。 
 
 ::: zone pivot="programming-language-csharp"

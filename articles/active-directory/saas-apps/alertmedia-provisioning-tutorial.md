@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 AlertMedia 配置自动用户�
 description: 了解如何将用户帐户从 Azure AD 自动预配到 AlertMedia 以及如何解除预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: a5df0dd7-05a3-4744-9d51-ec33e89a934f
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/15/2020
-ms.author: Zhchia
-ms.openlocfilehash: b15b20ee8e643dc260578d17913810aaf68cc929
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 6e4e04e935e1e743cb40c771cdf1cf5cdfe6d21c
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181083"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765012"
 ---
 # <a name="tutorial-configure-alertmedia-for-automatic-user-provisioning"></a>教程：为 AlertMedia 配置自动用户预配
 

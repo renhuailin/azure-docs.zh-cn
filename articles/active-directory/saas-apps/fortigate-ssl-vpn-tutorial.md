@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/26/2020
+ms.date: 06/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 9852752799fd010ebb069637f55008d9c4f68bf8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9663ee95b8ae9b109016e409855ef171c368793
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98732033"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690856"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>教程：Azure Active Directory 与 FortiGate SSL VPN 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "98732033"
 * 让用户使用其 Azure AD 帐户自动登录到 FortiGate SSL VPN。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -76,7 +76,7 @@ FortiGate SSL VPN 支持 SP 发起的 SSO。
 
 1. 在“设置 SAML 单一登录”页面上，输入以下值：
 
-    a. 在“登录 URL”框中，输入采用 `https://<FQDN>/remote/login` 模式的 URL。
+    a. 在“登录 URL”框中，输入采用 `https://<FQDN>/remote/saml/login` 模式的 URL。
 
     b. 在“标识符”框中，输入采用 `https://<FQDN>/remote/saml/metadata` 模式的 URL。
 
@@ -136,7 +136,7 @@ FortiGate SSL VPN 支持 SP 发起的 SSO。
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中，完成以下步骤：
    1. 在“名称”框中，输入 **B.Simon**。  
-   1. 在“用户名”框中，输入 \<username>@\<companydomain>.\<extension>。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”框中，输入 \<username>@\<companydomain>.\<extension>。 例如，`B.Simon@contoso.com` 。
    1. 选择“显示密码”，然后记下“密码”框中显示的值。 
    1. 选择“创建”。
 
@@ -203,6 +203,7 @@ FortiGate SSL VPN 支持 SP 发起的 SSO。
    ```console
     config user saml
     edit azure
+    set cert <FortiGate VPN Server Certificate Name>
     set entity-id <Entity ID>
     set single-sign-on-url <Reply URL>
     set single-logout-url <Logout URL>

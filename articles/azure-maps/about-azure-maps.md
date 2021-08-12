@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 9b93ac2973fdf45c5ec395cf30490a820848bad9
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 970223c0514651ddcdf373aa6638abf17b06d01c
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027160"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669099"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
@@ -77,7 +77,7 @@ Azure Maps 出行服务缩短了具有公共交通功能（例如公交路线规
 
 ### <a name="render-service"></a>呈现服务
 
-[呈现服务 V2（预览版）](/rest/api/maps/renderv2)引入了 [Get Map Tile V2 API](/rest/api/maps/renderv2/getmaptilepreview) 的新版本。 现在，客户可以使用 Get Map Tile V2 API 请求 Azure Maps 道路图块、天气图块或使用 Azure Maps Creator 创建的地图图块。 建议使用新的 Get Map Tile V2 API。  
+[呈现服务 V2（预览版）](/rest/api/maps/renderv2)引入了 [Get Map Tile V2 API](/rest/api/maps/render-v2/get-map-tile) 的新版本。 现在，客户可以使用 Get Map Tile V2 API 请求 Azure Maps 道路图块、天气图块或使用 Azure Maps Creator 创建的地图图块。 建议使用新的 Get Map Tile V2 API。  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="来自呈现服务 V2 的地图示例":::
 
@@ -175,7 +175,7 @@ Azure Maps 出行服务缩短了具有公共交通功能（例如公交路线规
 
 开发人员可以使用[获取沿路天气 API](/rest/api/maps/weather/getweatheralongroute) 来检索沿特定路线的天气信息。 此外，该服务还支持为受洪水或暴雨等天气灾害影响的中途点生成天气通知。
 
-使用 [Get Map Tile V2 API](/rest/api/maps/renderv2/getmaptilepreview)，你可以请求过去、当前和将来的雷达图块和卫星图块。
+使用 [Get Map Tile V2 API](/rest/api/maps/render-v2/get-map-tile)，你可以请求过去、当前和将来的雷达图块和卫星图块。
 
 ![带有实时天气雷达图块的地图示例](media/about-azure-maps/intro_weather.png)
 

@@ -8,18 +8,16 @@ ms.topic: quickstart
 ms.date: 04/27/2021
 ms.collection: embedded-developer, application-developer
 zone_pivot_groups: iot-develop-set1
-ms.openlocfilehash: 52bd27122bee20377975bb7ce87f23aeb892dedf
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 376d26a591fb2cbe0d33fb9bdc261bcb535203e5
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952799"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114712948"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-central"></a>快速入门：将来自设备的遥测数据发送到 Azure IoT Central
 
 **适用对象**：[设备应用程序开发人员](about-iot-develop.md#device-application-development)
-
-本快速入门介绍一种基本的 Azure IoT 应用程序开发工作流。 首先，创建适用于托管设备的 Azure IoT Central 应用程序。 然后，使用 Azure IoT 设备 SDK 示例来运行模拟的温度控制器，将此控制器安全连接到 IoT Central，并发送遥测数据。
 
 :::zone pivot="programming-language-ansi-c"
 

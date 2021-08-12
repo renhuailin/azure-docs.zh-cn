@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 04/19/2021
+ms.date: 05/03/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 094b2ee101b10da4ec6eda9d6537656e5de28e54
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 357a9f7e3e498a477d6cadf3742e11696eafa896
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891026"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110786542"
 ---
 # <a name="identity-protection-and-b2b-users"></a>标识保护和 B2B 用户
 
 标识保护检测到 Azure AD 用户的凭据已泄露。 如果检测到你的凭据已泄露，则表示其他人可能拥有你的密码，并且正在非法使用它。 若要防止帐户面临进一步的风险，请务必安全地重置密码，使不良参与者无法再使用你已泄露的密码。 标识保护会将可能被泄露的帐户标记为“存在风险”。
 
-你可以使用组织凭据以来宾身份登录到其他组织；此过程称为 B2B 身份验证。 组织可以配置策略，以便在用户的凭据存在风险时阻止用户登录。 如果你的帐户存在风险，且被阻止以来宾身份登录到另一个组织，则可以使用以下步骤自行修正你的帐户。 如果你的组织尚未启用自助式密码重置，则管理员将需要手动修正你的帐户。
+你可以使用组织凭据以来宾身份登录到其他组织。 这个过程称为[企业到企业或 B2B 协作](../external-identities/what-is-b2b.md)。 组织可以配置策略，以便在用户的凭据[存在风险](concept-identity-protection-risks.md)时阻止用户登录。 如果你的帐户存在风险，且被阻止以来宾身份登录到另一个组织，则可以使用以下步骤自行修正你的帐户。 如果你的组织尚未启用自助式密码重置，则管理员将需要手动修正你的帐户。
 
 ## <a name="how-to-unblock-your-account"></a>如何取消阻止帐户 
 
@@ -65,8 +65,8 @@ B2B 协作用户的用户风险在其主目录中进行评估。 用户尝试访
 由于 B2B 协作用户的身份存在于其主目录中，因此在对资源目录中的 B2B 协作用户实施身份保护时存在一定的限制。 主要限制如下：
 
 - 如果来宾用户触发身份保护用户风险策略来强制重置密码，则“将阻止用户访问”。 阻止的原因是无法在资源目录中重置密码。
-- “来宾用户不会出现在风险用户报表中”。 这种失去可见性的原因在 B2B 用户主目录中发生的风险评估。
-- 管理员无法在其资源目录中 **消除或修正有风险的 B2B 协作用户**。 这种功能损失是因为资源目录中的管理员无法访问 B2B 用户的主目录。
+- “来宾用户不会出现在风险用户报表中”。 这种限制是因为 B2B 用户主目录中发生的风险评估。
+- 管理员无法在其资源目录中 **消除或修正有风险的 B2B 协作用户**。 这种限制是因为资源目录中的管理员无法访问 B2B 用户的主目录。
 
 ### <a name="why-cant-i-remediate-risky-b2b-collaboration-users-in-my-directory"></a>为什么无法在我的目录中修正有风险的 B2B 协作用户？
 
