@@ -11,12 +11,12 @@ ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 64e4c05e9439c164329dede5d714bec160bc5ae2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 79cf3c2764035ef2e8c4418d172ba991a72bf3ff
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102050369"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113285901"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>快速入门：在 Azure 应用服务中创建 Java 应用
 
@@ -32,7 +32,7 @@ ms.locfileid: "102050369"
 
 + [Azure CLI](/cli/azure/install-azure-cli)。
 
-+ [Java 开发人员工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support)版本 8 或 11。
++ [Java 开发人员工具包](/azure/developer/java/fundamentals/java-support-on-azure)版本 8 或 11。
 
 + [Apache Maven](https://maven.apache.org) 3.0 或更高版本。
 
@@ -225,7 +225,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 如果需要，可以直接在 `pom.xml` 中修改应用服务的配置。 下面列出了一些常见配置：
 
-属性 | 必须 | 说明 | 版本
+属性 | 必选 | 说明 | 版本
 ---|---|---|---
 `<schemaVersion>` | false | 指定配置架构的版本。 支持的值是：`v1`、`v2`。 | 1.5.2
 `<subscriptionId>` | false | 指定订阅 ID。 | 0.1.0+

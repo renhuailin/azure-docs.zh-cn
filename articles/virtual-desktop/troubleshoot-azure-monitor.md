@@ -1,27 +1,27 @@
 ---
-title: 排查 Windows 虚拟桌面监视器的问题 - Azure
-description: 如何排查 Azure Monitor for Windows Virtual Desktop 的问题。
+title: 排查适用于 Azure 虚拟桌面的 Azure Monitor 的问题 - Azure
+description: 如何排查适用于 Azure 虚拟桌面的 Azure Monitor 的问题。
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 03/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a104f4d33e1bd38e130101b34d3fd2021de27cd2
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 27234cab8ebd6beefdd3766b3dca234ba5b41515
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445476"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111755350"
 ---
-# <a name="troubleshoot-azure-monitor-for-windows-virtual-desktop"></a>Azure Monitor for Windows Virtual Desktop 故障排除
+# <a name="troubleshoot-azure-monitor-for-azure-virtual-desktop"></a>适用于 Azure 虚拟桌面的 Azure Monitor 故障排除
 
-本文介绍 Azure Monitor for Windows Virtual Desktop 的已知问题和常见问题解决方法。
+本文介绍适用于 Azure 虚拟桌面的 Azure Monitor 的已知问题和常见问题解决方法。
 
 ## <a name="issues-with-configuration-and-setup"></a>配置和设置方面的问题
 
 如果配置工作簿无法正常自动完成设置，可使用以下资源来手动设置环境：
 
-- 若要手动启用诊断或访问 Log Analytics 工作区，请参阅[将 Windows 虚拟桌面诊断发送到 Log Analytics](diagnostics-log-analytics.md)。
+- 若要手动启用诊断或访问 Log Analytics 工作区，请参阅[将 Azure 虚拟桌面诊断发送到 Log Analytics](diagnostics-log-analytics.md)。
 - 若要在会话主机上手动安装 Log Analytics 扩展，请参阅[适用于 Windows 的 Log Analytics 虚拟机扩展](../virtual-machines/extensions/oms-windows.md)。
 - 若要设置新 Log Analytics 工作区，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../azure-monitor/logs/quick-create-workspace.md)。
 - 若要添加、删除或编辑性能计数器，请参阅[配置性能计数器](../azure-monitor/agents/data-sources-performance-counters.md)。
@@ -31,10 +31,10 @@ ms.locfileid: "106445476"
 
 如果你的数据未正确显示，请检查以下常用解决方法：
 
-- 首先，请确保按照[使用 Azure Monitor for Windows Virtual Desktop 监视部署](azure-monitor.md)中的说明，使用配置工作簿正确进行设置。 如果缺少任何计数器或事件，则与它们关联的数据不会出现在 Azure 门户中。
-- 请检查访问权限并联系资源所有者以请求缺少的权限；任何监视 Windows 虚拟桌面的人都需要以下权限：
-    - 对保存 Windows 虚拟桌面资源的 Azure 订阅的读取访问权限
-    - 对保存 Windows 虚拟桌面会话主机的订阅的资源组的读取访问权限 
+- 首先，请确保按照[使用适用于 Azure 虚拟桌面的 Azure Monitor 监视部署](azure-monitor.md)中的说明，使用配置工作簿正确进行设置。 如果缺少任何计数器或事件，则与它们关联的数据不会出现在 Azure 门户中。
+- 请检查访问权限并联系资源所有者以请求缺少的权限；任何监视 Azure 虚拟桌面的人都需要以下权限：
+    - 对保存 Azure 虚拟桌面资源的 Azure 订阅的读取访问权限
+    - 对保存 Azure 虚拟桌面会话主机的订阅的资源组的读取访问权限 
     - 对你所使用的任何 Log Analytics 工作区的读访问权
 - 你可能需要在服务器的防火墙中打开传出端口，以允许 Azure Monitor 和 Log Analytics 向门户发送数据。 若要了解如何执行此操作，请参阅下列文章：
       - [Azure Monitor 传出端口](../azure-monitor/app/ip-addresses.md)
@@ -43,9 +43,9 @@ ms.locfileid: "106445476"
 
 如果没有缺少任何信息，但数据仍未正确显示，则可能是查询或数据源存在问题。 查看[已知问题和限制](#known-issues-and-limitations)。 
 
-## <a name="i-want-to-customize-azure-monitor-for-windows-virtual-desktop"></a>我需要自定义 Azure Monitor for Windows Virtual Desktop
+## <a name="i-want-to-customize-azure-monitor-for-azure-virtual-desktop"></a>我需要自定义适用于 Azure 虚拟桌面的 Azure Monitor
 
-Azure Monitor for Windows Virtual Desktop 使用 Azure Monitor 工作簿。 使用工作簿，可以保存 Windows 虚拟桌面工作簿模板的副本并制作自己的自定义内容。
+适用于 Azure 虚拟桌面的 Azure Monitor 使用 Azure Monitor 工作簿。 使用工作簿，可以保存 Azure 虚拟桌面工作簿模板的副本并制作自己的自定义内容。
 
 按照设计，自定义工作簿模板将不会自动采用产品组中的更新。 有关详细信息，请参阅[排查基于工作簿的见解的问题](../azure-monitor/insights/troubleshoot-workbooks.md)和[工作簿概述](../azure-monitor/visualize/workbooks-overview.md)。
 
@@ -62,8 +62,8 @@ Azure Monitor for Windows Virtual Desktop 使用 Azure Monitor 工作簿。 使�
 
 找不到用于帮助诊断问题的数据点？ 请向我们发送反馈！
 
-- 若要了解如何留下反馈，请参阅 [Windows 虚拟桌面的故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
-- 还可以在 [Windows 虚拟桌面反馈中心](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)提供关于 Windows 虚拟桌面的反馈。
+- 若要了解如何留下反馈，请参阅 [Azure 虚拟桌面的故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
+- 还可以在 [Azure 虚拟桌面反馈中心](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)提供关于 Azure 虚拟桌面的反馈。
 
 ## <a name="known-issues-and-limitations"></a>已知问题和限制
 
@@ -81,6 +81,6 @@ Azure Monitor for Windows Virtual Desktop 使用 Azure Monitor 工作簿。 使�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要开始，请参阅[使用 Azure Monitor for Windows Virtual Desktop 监视部署](azure-monitor.md)。
+- 若要开始，请参阅[使用适用于 Azure 虚拟桌面的 Azure Monitor 监视部署](azure-monitor.md)。
 - 若要估计、度量和管控数据存储成本，请参阅[估计 Azure Monitor 成本](azure-monitor-costs.md)。
-- 查看[词汇表](azure-monitor-glossary.md)，详细了解与 Azure Monitor for Windows Virtual Desktop 相关的术语和概念。
+- 查看[词汇表](azure-monitor-glossary.md)，详细了解与适用于 Azure 虚拟桌面的 Azure Monitor 相关的术语和概念。

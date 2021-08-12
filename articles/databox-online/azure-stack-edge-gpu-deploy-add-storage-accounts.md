@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/12/2021
 ms.author: alkohli
-ms.openlocfilehash: d20ade0fdf6262c08a4ae961d17b1ec8a9ba39f2
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 68dc83e9954875b5f9b5adab37d7ddd212534eaa
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065797"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359778"
 ---
 # <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>教程：使用 Azure Stack Edge Pro GPU 通过存储帐户传输数据 
 
@@ -95,7 +95,7 @@ myasetiered1       myasetiered1      DBELocal StandardLRS Storage            11/
 
 若要获取访问密钥，请运行以下 cmdlet：
 
-`Get-AzureRmStorageAccountAccessKey`
+`Get-AzureRmStorageAccountKey`
 
 下面显示了示例输出：
 
@@ -136,7 +136,7 @@ key2    6VANuHzHcJV04EFeyPiWRsFWnHPkgmX1+a3bt5qOQ2qIzohyskIF/2gfNMqp9rlNC/w+mBqQ
 
 通过 HTTPS 访问 Blob 存储需要设备的 SSL 证书。 此外，还要将此证书作为 .pfx 文件（附加了私钥）上传到 Azure Stack Edge Pro 设备。 有关如何创建（仅用于测试和开发目的）这些证书并将其上传到 Azure Stack Edge Pro 设备的详细信息，请转到：
 
-- [创建 blob 终结点证书](azure-stack-edge-gpu-manage-certificates.md#create-certificates-optional)。
+- [创建 blob 终结点证书](azure-stack-edge-gpu-create-certificates-powershell.md#create-certificates)。
 - [上传 blob 终结点证书](azure-stack-edge-gpu-manage-certificates.md#upload-certificates)。
 - [在访问设备的客户端上导入证书](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)。
 

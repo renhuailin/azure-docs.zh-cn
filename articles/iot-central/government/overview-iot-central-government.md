@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a903622f698107f7f1a593946f083fca1573d53e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8957db7112363e4245e6610890ed6e4644c4a9dd
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99834334"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586466"
 ---
 # <a name="what-are-the-iot-central-government-solutions"></a>什么是 IoT Central 政府解决方案？
 
@@ -27,7 +27,7 @@ ms.locfileid: "99834334"
 ![水质监测应用模板](./media/overview-iotcentral-government/waterqualitymonitoring-dashboard-full.png)
 
 该应用模板包括：
-* 示例操作员仪表板
+* 示例仪表板
 * 示例水质监测设备模板
 * 模拟的水质监测设备
 * 预配置的规则和作业
@@ -45,7 +45,7 @@ ms.locfileid: "99834334"
   ![用水量监测应用模板](./media/overview-iotcentral-government/waterconsumptionmonitoring-dashboardfull.png)
 
 用水量监测应用模板包括预配置的：
-* 示例操作员仪表板
+* 示例仪表板
 * 示例水质监测设备模板
 * 模拟的水质监测设备
 * 预配置的规则和作业
@@ -61,7 +61,7 @@ ms.locfileid: "99834334"
 
 
 联网废弃物管理应用模板包括预配置的：
-* 示例操作员仪表板
+* 示例仪表板
 * 示例联网垃圾箱设备模板
 * 模拟的联网垃圾箱设备
 * 预配置的规则和作业

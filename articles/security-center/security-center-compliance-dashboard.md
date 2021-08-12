@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: 06a42629df1f22eeb7a90ef5ce4da2ef53162391
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 970329753d6dd6c6175c26da4288c304e27e3982
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123152"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237620"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教程：提高合规性
 
@@ -51,17 +51,17 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
     屏幕顶部是一个仪表板，其中概述了你的合规性状态以及一组支持的合规性法规。 你将看到总体合规性分数，以及与每个标准相关联的已通过评估的数目和失败的评估的数目。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="法规符合性仪表板" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="法规合规性仪表板。" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
 1. 针对与自己相关的符合性标准，选择一个选项卡 (1)。 你可看到该标准应用于哪些订阅 (2)，以及该标准的所有控件列表 (3)。 对于适用控件，你可查看与控件关联的及格评估和未及格评估的详细信息 (4)，以及受影响的资源数量 (5)。 某些控件为灰显状态。这些控件没有任何与之关联的安全中心评估。 查看其要求并在环境中对其进行评估。 其中一部分可能与进程相关，与技术无关。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="浏览特定标准的符合性详细信息":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="浏览特定标准的合规性详细信息。":::
 
 1. 要生成总结特定标准的当前合规性状态的 PDF 报告，请选择“下载报告”。
 
     该报告根据安全中心评估数据，就所选标准提供你的合规性状态的大致汇总。 该报告按照该特定标准的控件进行整理。 该报告可与相关利益干系人共享，并可能为内部和外部审计员提供证据。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="下载符合性报告":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="下载合规性报告。":::
 
 ## <a name="improve-your-compliance-posture"></a>改进符合性情况
 
@@ -71,11 +71,11 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 1.  选择特定的资源，查看更多详细信息，然后解决与该资源的建议相关的问题。 <br>例如，在“Azure CIS 1.1.0 标准”中，选择“应对虚拟机应用磁盘加密”建议。
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/sample-recommendation.png" alt-text="从标准中选择一个建议会直接转到相关建议的详细信息页面":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/sample-recommendation.png" alt-text="从标准中选择一个建议会直接转到相关建议的详细信息页面。":::
 
 1. 在此示例中，当你在建议详细信息页面中选择“执行操作”时，将进入 Azure 门户的 Azure 虚拟机页，可在其中启用“安全”选项卡中的加密：
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/encrypting-vm-disks.png" alt-text="建议详细信息页上的“执行操作”按钮会转到修正选项":::
+    :::image type="content" source="./media/security-center-compliance-dashboard/encrypting-vm-disks.png" alt-text="建议详细信息页上的“执行操作”按钮会转到修正选项。":::
 
     有关如何应用建议的详细信息，请参阅[在 Azure 安全中心实施安全建议](security-center-recommendations.md)。
 
@@ -93,15 +93,15 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 - 在“连续流”中导出所有法规合规性数据：
 
-    :::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-stream.png" alt-text="持续导出法规合规性数据流" lightbox="media/security-center-compliance-dashboard/export-compliance-data-stream.png":::
+    :::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-stream.png" alt-text="持续导出法规合规性数据流。" lightbox="media/security-center-compliance-dashboard/export-compliance-data-stream.png":::
 
 - 导出法规合规性数据的每周快照：
 
-    :::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png" alt-text="持续导出法规合规性数据的每周快照" lightbox="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png":::
+    :::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png" alt-text="持续导出法规合规性数据的每周快照。" lightbox="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png":::
 
 还可以直接从法规合规性仪表板导出法规合规性数据的 PDF/CSV 报表：
 
-:::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-report.png" alt-text="将法规合规性数据导出为 PDF 或 CSV 报表" lightbox="media/security-center-compliance-dashboard/export-compliance-data-report.png":::
+:::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-report.png" alt-text="将法规合规性数据导出为 PDF 或 CSV 报表。" lightbox="media/security-center-compliance-dashboard/export-compliance-data-report.png":::
 
 有关详细信息，请参阅[连续导出安全中心数据](continuous-export.md)。
 
@@ -112,7 +112,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 例如，在合规性评估失败时，你可能希望安全中心向特定用户发送电子邮件。 首先需要创建逻辑应用（使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)），然后在新的工作流自动化中设置触发器，如[自动响应安全中心触发器](workflow-automation.md)中所述。
 
-:::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="使用对监管合规性评估的更改来触发工作流自动化" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
+:::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="使用对监管合规性评估的更改来触发工作流自动化。" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
 
 
@@ -168,7 +168,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 ### <a name="how-can-i-view-a-report-of-passing-and-failing-controls-per-standard-in-my-dashboard"></a>可如何在仪表板中按照每种标准查看有关及格和不及格控件的报表？
 在主仪表板上，可查看仪表板中有关 (1) 和“排名前 4”的最低合规性标准的及格和不及格控件的报表。 若要查看各项及格/不及格控件状态，请选择 (2)“显示所有 x”（其中，x 是你正在跟踪的标准数目）。 上下文平面会显示你跟踪的各项标准的合规性状态。
 
-:::image type="content" source="media/security-center-compliance-dashboard/summaries-of-compliance-standards.png" alt-text="法规合规性仪表板的摘要部分":::
+:::image type="content" source="media/security-center-compliance-dashboard/summaries-of-compliance-standards.png" alt-text="法规合规性仪表板的摘要部分。":::
 
 
 ### <a name="how-can-i-download-a-report-with-compliance-data-in-a-format-other-than-pdf"></a>可如何以非 PDF 的格式下载带有合规性数据的报表？

@@ -5,25 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 06/28/2019
+ms.date: 06/02/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16edc850382ba9023b54eb34cebb7ebafb539161
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: abc3c8123450c7962d25eb7112638a296d09fc01
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286665"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111809669"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理陈旧的设备
 
 理想情况下，若要完成生命周期，应该注销不再需要的已注册设备。 但是，在发生遗失、失窃、设备损坏或 OS 重装等情况下，环境中通常就会出现陈旧的设备。 IT 管理员可能希望通过某种方法来删除陈旧的设备，以便将资源重点投放在真正需要管理的设备上。
 
 本文介绍如何有效地在环境中管理陈旧的设备。
-  
 
 ## <a name="what-is-a-stale-device"></a>什么是陈旧的设备？
 
@@ -89,7 +88,7 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 ### <a name="system-managed-devices"></a>系统管理的设备
 
-不要删除系统管理的设备。 这些通常是 Autopilot 之类的设备。 这些设备一旦删除便无法重新进行预配。 默认情况下，新的 `Get-AzureADDevice` cmdlet 可以排除系统管理的设备。 
+不要删除系统管理的设备。 这些设备通常是 Autopilot 之类的设备。 这些设备一旦删除便无法重新进行预配。 默认情况下，新的 `Get-AzureADDevice` cmdlet 可以排除系统管理的设备。 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>已加入混合 Azure AD 的设备
 
@@ -105,7 +104,6 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 >* 如果仅在 Azure AD 中删除 Windows 10 设备，则将使用 Azure AD Connect（但作为处于“挂起”状态的新对象）从本地重新同步该设备。 需要在设备上重新注册。
 >* 从 Windows 10/Server 2016 设备的同步作用域中删除该设备将删除 Azure AD 设备。 将其重新添加到同步作用域会将新对象置于“挂起”状态。 需要重新注册该设备。
 >* 如果未使用 Windows 10 设备的 Azure AD Connect 进行同步（例如，仅使用 AD FS 进行注册），则必须管理类似于 Windows 7/8 设备的生命周期。
-
 
 ### <a name="azure-ad-joined-devices"></a>Azure AD 加入设备
 
@@ -140,31 +138,40 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 获取所有设备并将返回的数据存储在 CSV 文件中：
 
 ```PowerShell
-Get-AzureADDevice -All:$true | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-summary.csv
+Get-AzureADDevice -All:$true | select-object -Property AccountEnabled, DeviceId, DeviceOSType, DeviceOSVersion, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-summary.csv -NoTypeInformation
 ```
 
-如果目录中包含大量的设备，请使用时间戳筛选器缩小返回的设备数。 获取时间戳超过特定日期的所有设备并将返回的数据存储在 CSV 文件中： 
+如果目录中包含大量的设备，请使用时间戳筛选器缩小返回的设备数。 获取 90 天内未登录的所有设备并将返回的数据存储在 CSV 文件中： 
 
 ```PowerShell
-$dt = [datetime]’2017/01/01’
-Get-AzureADDevice -All:$true | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
+$dt = (Get-Date).AddDays(-90)
+Get-AzureADDevice -All:$true | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property AccountEnabled, DeviceId, DeviceOSType, DeviceOSVersion, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-90days-summary.csv -NoTypeInformation
+```
+
+#### <a name="set-devices-to-disabled"></a>将设备设置为“已禁用”
+
+使用相同的命令，我们可以将输出通过管道传递给 set 命令，以禁用超过特定年限的设备。
+
+```powershell
+$dt = (Get-Date).AddDays(-90)
+Get-AzureADDevice -All:$true | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | Set-AzureADDevice -AccountEnabled $false
 ```
 
 ## <a name="what-you-should-know"></a>要点
 
 ### <a name="why-is-the-timestamp-not-updated-more-frequently"></a>为何时间戳不经常更新？
 
-更新时间戳是为了支持设备生命周期方案。 这并非审核。 使用登录审核日志可以在设备上进行更频繁的更新。
+更新时间戳是为了支持设备生命周期方案。 此属性不是审核。 使用登录审核日志可以在设备上进行更频繁的更新。
 
 ### <a name="why-should-i-worry-about-my-bitlocker-keys"></a>为何需要注意保管 BitLocker 密钥？
 
-为 Windows 10 设备配置的 BitLocker 密钥存储在 Azure AD 中的设备对象上。 如果删除某个陈旧设备，则也会删除该设备上存储的 BitLocker 密钥。 在删除陈旧设备之前，应该确定清理策略是否与设备的实际生命周期相一致。 
+为 Windows 10 设备配置的 BitLocker 密钥存储在 Azure AD 中的设备对象上。 如果删除某个陈旧设备，则也会删除该设备上存储的 BitLocker 密钥。 在删除陈旧设备之前，请确认清理策略是否与设备的实际生命周期一致。 
 
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>为何需要注意 Windows Autopilot 设备？
 
 删除与 Windows Autopilot 对象关联的 Azure AD 设备后，如果在将来重新使用该设备，则可能会出现以下三种情况：
 - 使用 Windows Autopilot 用户驱动的部署而不使用预配置，将创建一个新的 Azure AD 设备，但它不会被标记为 ZTDID。
-- 使用 Windows Autopilot 自部署模式部署时，它们将失败，因为找不到关联的 Azure AD 设备。  （这是一种安全机制，用于确保没有“冒名顶替者”设备尝试在没有凭据的情况下联接 Azure AD。）失败则表明 ZTDID 不匹配。
+- 使用 Windows Autopilot 自部署模式部署时，它们将失败，因为找不到关联的 Azure AD 设备。  （这种失败是一种安全机制，用于确保没有“冒名顶替者”设备尝试在没有凭据的情况下联接 Azure AD。）失败则表明 ZTDID 不匹配。
 - 使用 Windows Autopilot 预配部署时，它们将失败，因为找不到关联的 Azure AD 设备。 （后台预配部署使用相同的自部署模式进程，因此它们强制实施相同的安全机制。）
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>如何知道所有已加入的设备类型？

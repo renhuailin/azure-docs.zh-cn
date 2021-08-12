@@ -14,18 +14,18 @@ ms.custom:
 - contentperf:fy21q3
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 95247a1485bac7282ffe95ddcc2ddd37883738dd
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 8e491e6fc8d0eb93a3d9696f68f045191c2da20b
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783813"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400896"
 ---
 # <a name="what-is-azure-iot-hub"></a>什么是 Azure IoT 中心
 
 IoT 中心是托管在云中的托管服务，充当中央消息中心，用于 IoT 应用程序及其连接设备之间双向通信。 可以安全可靠地连接数百万台设备及其后端解决方案。 几乎任何设备都可以连接到 IoT 中心。 
 
-支持若干消息传递模式，包括设备到云遥测、从设备上传文件，以及从云中控制设备的请求-答复方法。 IoT 中心还支持监视，以帮助跟踪创建设备、连接设备和设备故障。
+支持多种消息传递模式，包括“设备到云”遥测、从设备上传文件，以及用于从云中控制设备的请求-答复方法。 IoT 中心还支持监视，以帮助跟踪创建设备、连接设备和设备故障。
 
 借助 IoT 中心的功能，你可以生成可缩放且功能完整的 IoT 解决方案，例如管理制造业中使用的工业设备、跟踪医疗保健中宝贵的资产以及监视办公大楼使用情况。
 
@@ -106,7 +106,7 @@ IoT 中心和设备 SDK 支持用于连接设备的以下协议：
 * MQTT
 * 基于 WebSocket 的 MQTT
 
-IoT 中心和设备 SDK 支持用于连接设备的 [Azure IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)约定。 IoT 即插即用设备使用设备模型向支持 IoT 即插即用的应用程序播发其功能。 通过设备模型，解决方案构建者无需进行任何手动配置即可将智能设备集成到解决方案中。
+IoT 中心和设备 SDK 支持用于连接设备的 [Azure IoT 即插即用](../iot-develop/overview-iot-plug-and-play.md)约定。 IoT 即插即用设备使用设备模型向支持 IoT 即插即用的应用程序播发其功能。 通过设备模型，解决方案构建者无需进行任何手动配置即可将智能设备集成到解决方案中。
 
 如果解决方案无法使用设备库，则设备可以使用 MQTT v3.1.1、HTTPS 1.1 或 AMQP 1.0 协议，以本地化的方式连接到中心。
 
@@ -134,7 +134,7 @@ Azure Stack Hub 上的 IoT 中心（预览）允许创建混合 IoT 解决方案
 
 若要尝试端对端的 IoT 解决方案，请参阅 IoT 中心快速入门：
 
-* [快速入门：将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-node.md)
+* [快速入门：将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)
 
 若要详细了解如何通过 Azure IoT 构建和部署 IoT 解决方案，请访问：
 

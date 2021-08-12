@@ -1,18 +1,18 @@
 ---
 title: Azure Database for MariaDB 的 Azure Policy 法规遵从性控制措施
 description: 列出可用于 Azure Database for MariaDB 的 Azure Policy 法规遵从性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 06/11/2021
+ms.date: 07/16/2021
 ms.topic: sample
 author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 31b4e5fffd6886ed96e9585508429daa1b2ff1a0
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: ff2bc9d6957cdf44a9f2d722f7ab6e5d408c5e5f
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026700"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403965"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 的 Azure Policy 法规遵从性控制措施
 

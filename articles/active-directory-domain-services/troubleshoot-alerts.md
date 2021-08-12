@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 07/09/2020
+ms.date: 06/07/2021
 ms.author: justinha
-ms.openlocfilehash: 4caf804a274956556d6e9ca396c8f08594b11a87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8ed66f1c6a7b52015778239e1d8afc2af2f6d06
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101092873"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111744748"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>已知问题：Azure Active Directory 域服务中的常见警报和解决方法
 
@@ -138,7 +138,8 @@ Azure AD DS 会创建附加资源以供其正常运行，例如公共 IP 地址�
 1. 在运行状况页上，选择 ID 为“AADDS109”的警报。
 1. 警报包含一个时间戳，指出了首次发出该警报的时间。 如果该时间戳还不到 4 小时，则 Azure 平台也许能自动重新创建资源并解除警报。
 
-    如果警报超过 4 小时，则托管域将处于不可恢复状态。 [删除托管域](delete-aadds.md)，然后[创建替换托管域](tutorial-create-instance.md)。
+    出于不同的原因，警报的时间可能超过 4 小时。 在这种情况下，可以[删除托管域](delete-aadds.md)，然后[创建替换托管域](tutorial-create-instance.md)以立即修复，也可以提交支持请求来修复实例。 根据问题的性质，支持可能需要从备份还原。
+
 
 ## <a name="aadds110-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS110：与托管域关联的子网已满
 

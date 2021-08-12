@@ -1,20 +1,20 @@
 ---
 title: 在 Azure Cosmos DB 中使用 Java 生成图形数据库
 description: 演示一个可以用来连接到 Azure Cosmos DB 并使用 Gremlin 查询其中图形数据的 Java 代码示例。
-author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
-ms.author: chrande
+author: manishmsfte
+ms.author: mansha
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 2fe051342877ea8b35248cbf7ddea0512a9bb99d
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 45781a407a6e79071e6b33f6db9d0c9357de3339
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "113225563"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113355157"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>快速入门：使用 Java SDK 和 Azure Cosmos DB Gremlin API 构建图形数据库
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -184,7 +184,7 @@ ms.locfileid: "113225563"
 
 5. 选择“添加属性”，以添加下列每个属性。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
 
-    key|值|注释
+    key|value|说明
     ----|----|----
     id|ashley|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
     gender|女| 
@@ -193,7 +193,7 @@ ms.locfileid: "113225563"
     > [!NOTE]
     > 在本快速入门中，将创建未分区的集合。 但是，如果在创建集合过程中通过指定分区键创建了分区的集合，则需在每个新顶点中包括该分区键作为键。 
 
-6. 选择“确定”  。 可能需要展开屏幕才能在屏幕底部看到“确定”。
+6. 选择“确定”。 可能需要展开屏幕才能在屏幕底部看到“确定”。
 
 7. 再次选择“新建顶点”，添加其他新用户。 
 
@@ -201,13 +201,13 @@ ms.locfileid: "113225563"
 
 9. 选择“添加属性”，以添加下列每个属性：
 
-    key|值|注释
+    key|value|说明
     ----|----|----
     id|rakesh|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
     gender|男| 
     school|MIT| 
 
-10. 选择“确定”  。 
+10. 选择“确定”。 
 
 11. 选择“应用筛选器”按钮（使用默认 `g.V()` 筛选器），显示图中的所有值。 所有用户此时会显示在“结果”列表中。 
 

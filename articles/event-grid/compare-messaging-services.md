@@ -2,13 +2,13 @@
 title: 比较 Azure 消息传送服务
 description: 介绍三种 Azure 消息传递服务 - Azure 事件网格、事件中心和服务总线。 推荐不同场景使用的服务。
 ms.topic: overview
-ms.date: 07/01/2021
-ms.openlocfilehash: f4980ca3c3741645af03874c5d75d9ef8da6084b
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.date: 07/22/2021
+ms.openlocfilehash: 91f0eb53421cf61275a09582621dc1b5bbb8d2d1
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113218702"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114442693"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>在 Azure 消息传递服务之间进行选择 - 事件网格、事件中心和服务总线
 

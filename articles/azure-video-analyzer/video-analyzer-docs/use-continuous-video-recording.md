@@ -2,13 +2,13 @@
 title: 连续视频录制和播放教程 - Azure 视频分析器
 description: 本教程介绍如何使用 Azure 视频分析器将视频连续录制到云中并播放该录制内容。
 ms.topic: tutorial
-ms.date: 04/01/2021
-ms.openlocfilehash: d62b9f413f0613d8152d3b0106fd398f89d3b95c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 2f3fc2421a2341974aa7ea7bdafeaf0123ea983e
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110383858"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602921"
 ---
 # <a name="tutorial-continuous-video-recording-and-playback"></a>教程：连续视频录制和播放
 
@@ -282,12 +282,11 @@ body 部分包含有关输出位置的信息，在本例中是视频录制到的
 1. 选择视频。
 1. 视频“详细信息”页随即将打开并自动开始播放。
 
-> [!NOTE]
-> 由于视频源是模拟相机源的容器，因此视频中的时间戳与启用和停用实时管道的时间有关。
+[!INCLUDE [activate-deactivate-pipeline](./includes/common-includes/activate-deactivate-pipeline.md)]
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果想学习其他教程，请保留创建的资源。 如果不想，请转到 Azure 门户，浏览到资源组，选择运行本教程时所用的资源组，然后删除该资源组。
+[!INCLUDE [prerequisites](./includes/common-includes/clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

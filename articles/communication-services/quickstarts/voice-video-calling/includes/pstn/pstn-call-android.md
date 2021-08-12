@@ -4,17 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: nikuklic
-ms.openlocfilehash: 7b8e0e5710b81a5ce332f9a1fb6dc42d40369004
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: acfba31896f7a658e08d5765812c09d78b662b0d
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560309"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112536314"
 ---
 [!INCLUDE [Emergency Calling Notice](../../../../includes/emergency-calling-notice-include.md)]
 
-> [!NOTE]
-> 在 [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/Add%20Telephone%20Calling) 上查找此快速入门的最终代码
+## <a name="sample-code"></a>代码示例
+
+在 [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/Add%20Telephone%20Calling) 上查找此快速入门的最终代码
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -34,14 +35,13 @@ ms.locfileid: "111560309"
 
 通过修改 MainActivity.java，将 `PhoneNumber` 类型添加到应用中：
 
-
 ```java
 import com.azure.android.communication.common.PhoneNumberIdentifier;
 ```
 
 <!--
 > [!TBD]
-> Namespace based on input from Komivi Agbakpem. But it does not correlates with other use namespaces in Calling Quickstart. E.g: "com.azure.communication.calling.CommunicationUserIdentifier" or "com.azure.communication.common.client.CommunicationTokenCredential". Double-chek this.
+> Namespace based on input from Komivi Agbakpem. But it does not correlates with other use namespaces in Calling Quickstart. E.g: "com.azure.communication.calling.CommunicationUserIdentifier" or "com.azure.communication.common.client.CommunicationTokenCredential". Double-check this.
 -->
 
 ## <a name="start-a-call-to-phone"></a>发起电话呼叫

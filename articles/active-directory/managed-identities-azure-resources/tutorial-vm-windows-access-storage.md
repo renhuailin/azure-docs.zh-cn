@@ -6,21 +6,22 @@ documentationcenter: ''
 author: barclayn
 manager: daveba
 editor: daveba
+ms.custom: subject-rbac-steps
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/14/2020
+ms.date: 06/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de1cc69b3cfdac307edf6dfe999a5d538c2cb811
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 202cbca5795ef877794c42f1fcc57c51835e5118
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89263172"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112966385"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>教程：使用 Windows VM 系统分配的托管标识访问 Azure 存储
 
@@ -85,14 +86,18 @@ ms.locfileid: "89263172"
 本部分介绍如何授予 VM 访问 Azure 存储容器的权限。 可以使用 VM 的系统分配的托管标识检索 Azure 存储 blob 中的数据。
 
 1. 导航回新创建的存储帐户。
-2. 单击左侧面板中的“访问控制(IAM)”  链接。
-3. 单击页面顶部的“+ 添加角色分配”，为 VM 添加新的角色分配。
-4. 在“角色”下，从下拉列表中，选择“存储 Blob 数据读取器”。
-5. 在下一个下拉列表中，在“将访问权限分配到”下，选择“虚拟机”。
-6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。  
-7. 在“选择”下，选择你的 VM 并单击“保存”。
+1. 单击“访问控制(IAM)”  。
+1. 单击“添加” > “添加角色分配”以打开“添加角色分配”页。 
+1. 分配以下角色。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
+    
+    | 设置 | 值 |
+    | --- | --- |
+    | 角色 | 存储 Blob 数据读取者 |
+    | 将访问权限分配到 | 托管标识 |
+    | 系统分配 | 虚拟机 |
+    | Select | &lt;你的虚拟机&gt; |
 
-    ![分配权限](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
+    ![Azure 门户中的“添加角色分配”页。](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 ## <a name="access-data"></a>访问数据 
 

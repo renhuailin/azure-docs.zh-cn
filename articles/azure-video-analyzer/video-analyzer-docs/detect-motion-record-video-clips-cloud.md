@@ -2,13 +2,13 @@
 title: 检测运动，使用 Azure 视频分析器录制视频
 description: 本快速入门介绍如何使用 Azure 视频分析器边缘模块来检测实时视频流中的运动，并将视频录制到视频分析器帐户。
 ms.topic: quickstart
-ms.date: 04/03/2021
-ms.openlocfilehash: 9643ed3a7bbcc23757110033be1dbc3780ddafb5
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.date: 06/01/2021
+ms.openlocfilehash: 7772a32a529eeba36378e9ffb7568912ae66c7a2
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565925"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601500"
 ---
 # <a name="quickstart-detect-motion-record-video-to-video-analyzer"></a>快速入门：检测运动，将视频录制到视频分析器
 
@@ -18,8 +18,7 @@ ms.locfileid: "111565925"
 
 * 包含活动订阅的 Azure 帐户。 如果没有帐户，可免费[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-    > [!NOTE]    
-    > 你将需要 Azure 订阅，可以在其中访问[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色和[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色。 如果没有适当的权限，请联系帐户管理员，让其授予此类权限。
+    [!INCLUDE [azure-subscription-permissions](./includes/common-includes/azure-subscription-permissions.md)]
 * 包含以下扩展的 [Visual Studio Code](https://code.visualstudio.com/)：
     * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
@@ -94,11 +93,7 @@ ms.locfileid: "111565925"
 1. 展开“设备”节点。
 1. 右键单击 `avasample-iot-edge-device`，然后选择“开始监视内置事件终结点”。
 
-    > [!NOTE]
-    > 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：  
-        ```
-        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
-        ```
+    [!INCLUDE [provide-builtin-endpoint](./includes/common-includes/provide-builtin-endpoint.md)]
 
 ## <a name="use-direct-method-calls-to-analyze-live-video"></a>使用直接方法调用来分析实时视频
 
@@ -1000,9 +995,7 @@ ms.locfileid: "111565925"
     <!--TODO: add image -- ![Video playback]() TODO: new screenshot is needed here -->
 
 
-> [!NOTE]
-> 由于视频源是模拟相机源的容器，因此视频中的时间戳与启用和停用实时管道的时间有关。
-    
+[!INCLUDE [activate-deactivate-pipeline](./includes/common-includes/activate-deactivate-pipeline.md)]    
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 45906fd6199f870b8a5f5fc4087d6dd063e42905
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: f0cf672f98cc01911e8a4a73368ebf7a3a19a419
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110656195"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112457149"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-astra-schedule"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Astra Schedule 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "110656195"
 * 让用户使用其 Azure AD 帐户自动登录到 Astra Schedule。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -84,7 +84,7 @@ ms.locfileid: "110656195"
     c. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://www.aaiscloud.com/<CUSTOMER_INSTANCE>`。
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Astra Schedule 客户端支持团队](mailto:cloudoperations@aais.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Astra Schedule 客户端支持团队](https://help.adastra.live)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
@@ -102,7 +102,7 @@ ms.locfileid: "110656195"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 

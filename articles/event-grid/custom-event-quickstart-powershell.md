@@ -1,15 +1,15 @@
 ---
 title: 快速入门：将自定义事件发送到 Web 终结点 - 事件网格、PowerShell
 description: 快速入门：使用 Azure 事件网格和 PowerShell 发布自定义主题，然后订阅该主题的事件。 事件由 Web 应用程序处理。
-ms.date: 04/22/2021
+ms.date: 07/01/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 72c121bab73f5006a52f63468a26f823274f0265
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 1262331b6dec0d5e87d54b13a4b641b38359c1fe
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897948"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113232387"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>快速入门：使用 PowerShell 和事件网格将自定义事件路由到 Web 终结点
 

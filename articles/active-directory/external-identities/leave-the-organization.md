@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/13/2019
+ms.date: 05/05/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc3ef7d168c17ec10fe64925adbda7044a2a4c82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 239778455f049822bd92a92c811fcacad270ae3e
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87908227"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112076503"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>以来宾用户身份离开组织
 
@@ -29,21 +29,19 @@ ms.locfileid: "87908227"
 
 若要离开组织，请执行以下步骤。
 
-1. 通过执行下列步骤之一，转到“访问面板配置文件”页：
-   
-   - 在 [Azure 门户](https://portal.azure.com)中的右上角单击你的姓名，然后选择“查看帐户”  。
-   - 打开[访问面板](https://myapps.microsoft.com)，在右上角单击你的姓名，并在“组织”  旁边选择设置图标（齿轮）。
- 
-   ![显示访问面板中用户设置的屏幕截图](media/leave-the-organization/UserSettings.png) 
-
+1. 执行以下操作之一，转到“我的帐户”页：
+- 如果使用工作或学校帐户，请转到 https://myaccount.microsoft.com 并登录。
+- 如果使用个人帐户，请转到 https://myapps.microsoft.com 并登录，单击右上角的帐户图标，然后选择“查看帐户”。
    > [!NOTE]
-   > 如果尚未登录到你要离开的组织，请在“组织”  下单击组织名称旁边的“在登录后离开组织”  链接。 在登录后，再次在右上角单击你的姓名，并在“组织”  旁边选择设置图标（齿轮）。
+   > 使用个人帐户时，另一个选项是直接转到“我的帐户”页，将租户名称或租户 ID 添加到 URL，例如： `https://myaccount.microsoft.com?tenantId=wingtiptoys.onmicrosoft.com` 或 `https://myaccount.microsoft.com?tenantId=ab123456-cd12-ef12-gh12-ijk123456789`
 
-3. 在“组织”下，找到要离开的组织，然后选择“离开组织”   。
+2. 在“组织”下，找到要离开的组织，然后选择“离开组织”   。
 
-   ![显示用户界面中“离开组织”选项的屏幕截图](media/leave-the-organization/LeaveOrg.png)
+   ![显示用户界面中“离开组织”选项的屏幕截图](media/leave-the-organization/leave-org.png)
+3. 系统要求确认时，请选择“离开”  。
 
-4. 系统要求确认时，请选择“离开”  。 
+> [!NOTE]
+   > 无法离开本组织。
 
 ## <a name="account-removal"></a>删除帐户
 

@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 91e75b60f5324288c9f1adac59e31b9c1a1b0e9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac260f2fa8cd4f1fd469e3529b7ad6d55a965538
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89289165"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555710"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>使用 Power BI 连接知识存储
 
@@ -37,7 +37,7 @@ ms.locfileid: "89289165"
 ![示例 Azure 认知搜索 Power BI 模板](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "示例 Power BI 模板")
 
 > [!NOTE]
-> 尽管该模板是在向导运行到中途时下载的，但必须等到 Azure 表存储中实际创建了知识存储后，才能使用它。
+> 尽管该模板是在向导运行到中途时下载的，但必须等到系统在 Azure 表存储中实际创建了知识存储后，才能加以使用。
 
 ## <a name="connect-with-power-bi"></a>使用 Power BI 进行连接
 

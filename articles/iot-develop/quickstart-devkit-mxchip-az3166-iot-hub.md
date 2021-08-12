@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/09/2021
-ms.openlocfilehash: a14f00585eede96814627c941050c3179436ab06
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 21e7e54e346d24758711990bfa5f71d387ba4956
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112059717"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403909"
 ---
 # <a name="quickstart-connect-an-mxchip-az3166-devkit-to-iot-hub"></a>快速入门：将 MXCHIP AZ3166 devkit 连接到 IoT 中心
 
@@ -23,7 +23,7 @@ ms.locfileid: "112059717"
 
 本快速入门介绍如何使用 Azure RTOS 将 MXCHIP AZ3166 IoT DevKit（随后将 MXCHIP DevKit）连接到 Azure IoT。 
 
-还将使用 IoT Explorer 和 IoT 即插即用来管理 MXCHIP DevKit。 IoT 即插即用提供一个开放设备模型，允许应用程序以编程方式查询设备的功能并与之进行交互。 设备使用该模型将其功能广播到启用 IoT 即插即用的应用程序。 通过使用此模型，可以简化和增强添加、配置和管理设备的任务。 有关详细信息，请参阅 [IoT 即插即用文档](/azure/iot-pnp)。
+还将使用 IoT Explorer 和 IoT 即插即用来管理 MXCHIP DevKit。 IoT 即插即用提供一个开放设备模型，允许应用程序以编程方式查询设备的功能并与之进行交互。 设备使用该模型将其功能广播到启用 IoT 即插即用的应用程序。 通过使用此模型，可以简化和增强添加、配置和管理设备的任务。 有关详细信息，请参阅 [IoT 即插即用文档](../iot-develop/index.yml)。
 
 将完成以下任务：
 
@@ -38,13 +38,13 @@ ms.locfileid: "112059717"
 * 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 用于克隆存储库的 [Git](https://git-scm.com/downloads)
 * Azure CLI。 在本快速入门中，有两个选项可用于运行 Azure CLI 命令：
-    * 使用 Azure Cloud Shell，这是一个交互式 Shell，可在浏览器中运行 CLI 命令。 建议使用此选项，因为无需安装任何插件。 如果是首次使用 Cloud Shell，请登录到 [Azure 门户](https://portal.azure.com)。 按照 [Cloud Shell 快速入门](/azure/cloud-shell/quickstart)中的步骤启动 Cloud Shell 并选择 Bash 环境。
+    * 使用 Azure Cloud Shell，这是一个交互式 Shell，可在浏览器中运行 CLI 命令。 建议使用此选项，因为无需安装任何插件。 如果是首次使用 Cloud Shell，请登录到 [Azure 门户](https://portal.azure.com)。 按照 [Cloud Shell 快速入门](../cloud-shell/quickstart.md)中的步骤启动 Cloud Shell 并选择 Bash 环境。
     * （可选）在本地计算机上运行 Azure CLI。 如果已安装 Azure CLI，请运行 `az upgrade` 以将 CLI 和扩展升级到当前版本。 若要安装 Azure CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 * [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases)：用于监视和管理 Azure IoT 的跨平台实用工具 
 * 硬件
 
-    * [MXCHIP AZ3166 IoT DevKit](https://aka.ms/iot-devkit)（简称 MXCHIP DevKit）
+    * [MXCHIP AZ3166 IoT DevKit](https://www.seeedstudio.com/AZ3166-IOT-Developer-Kit.html)（简称 MXCHIP DevKit）
     * Wi-Fi 2.4 GHz
     * USB 2.0 A 公头转 Micro USB 公头电缆
 
@@ -243,7 +243,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 1. 启动 **Termite**。
     > [!TIP]
-    > 如果无法将 Termite 连接到 devkit，请安装 [ST-LINK 驱动程序](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip)，然后重试。 有关其他步骤，请参阅[故障排除](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)。
+    > 如果无法将 Termite 连接到 devkit，请安装 [ST-LINK 驱动程序](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip)，然后重试。 有关其他步骤，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)。
 1. 选择“设置”。
 1. 在“串行端口设置”对话框中，检查以下设置并根据需要进行更新：
     * **波特率**：115,200
@@ -426,7 +426,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ## <a name="troubleshoot-and-debug"></a>故障排除和调试
 
-如果在生成设备代码、刷写设备或连接时遇到问题，请参阅[故障排除](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)。
+如果在生成设备代码、刷写设备或进行连接时遇到问题，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)。
 
 要调试应用程序，请参阅[使用 Visual Studio Code 进行调试](https://github.com/azure-rtos/getting-started/blob/master/docs/debugging.md)。
 
@@ -466,4 +466,3 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 > [!IMPORTANT]
 > Azure RTOS 为 OEM 提供了一些组件，通过这些组件可以保护通信以及使用底层 MCU/MPU 硬件保护机制创建代码和数据隔离。 但是，每个 OEM 最终负责确保其设备满足不断变化的安全要求。
-

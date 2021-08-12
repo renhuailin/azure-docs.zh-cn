@@ -4,20 +4,22 @@ titleSuffix: An Azure Communication Services quickstart
 description: 在本快速入门中，你将了解如何使用 Azure 通信服务将呼叫功能添加到应用中。
 author: mikben
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android-windows
-ms.openlocfilehash: d0abb3cae3c1bf8521460ae5bcbb31c84f0f50af
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: e902e88596c24b991da1b17b85b18a96546d5773
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560777"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113107788"
 ---
 # <a name="quickstart-add-voice-calling-to-your-app"></a>快速入门：在应用中添加语音呼叫
 
 通过使用通信服务呼叫 SDK 向应用添加语音和视频呼叫，开启 Azure 通信服务使用旅程。
+
+[!INCLUDE [SDP Plan B Deprecation Notice](../../includes/plan-b-sdp-deprecation.md)]
 
 [!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 

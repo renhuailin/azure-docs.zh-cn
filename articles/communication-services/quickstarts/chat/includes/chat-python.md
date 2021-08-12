@@ -1,26 +1,24 @@
 ---
-title: include 文件
-description: include 文件
+title: 包含文件
+description: 包含文件
 services: azure-communication-services
 author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 4f0eb345a51091ca354887fd3a798ae6e6da3ec7
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: e0c2deba9bdd69c6a4c9c9c5f0974a181c6c2472
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111430028"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113113322"
 ---
-[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
-
-> [!NOTE]
-> 在 [GitHub](https://github.com/Azure-Samples/communication-services-python-quickstarts/tree/main/add-chat) 上查找此快速入门的最终代码
+## <a name="sample-code"></a>代码示例
+在 [GitHub](https://github.com/Azure-Samples/communication-services-python-quickstarts/tree/main/add-chat) 上查找此快速入门的最终代码。
 
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：

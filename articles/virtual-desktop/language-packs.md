@@ -1,21 +1,21 @@
 ---
-title: 在 Windows 虚拟桌面中在 Windows 10 虚拟机上安装语言包 - Azure
-description: 如何在 Windows 虚拟桌面中安装适用于 Windows 10 多会话 VM 的语言包。
+title: 在 Azure 虚拟桌面的 Windows 10 VM 上安装语言包 - Azure
+description: 如何在 Azure 虚拟桌面中安装适用于 Windows 10 多会话 VM 的语言包。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 87a12ec80c19e34cfb1bebfe29d14b118ae1eb93
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 63565af9775779d89c44384e0bd45c8d01e4147c
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317228"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112006538"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>将语言包添加到 Windows 10 多会话映像
 
-Windows 虚拟桌面一种服务，用户可以随时随地进行部署。 这就是用户最好可以自定义其 Windows 10 企业版多会话映像显示的语言的原因。
+Azure 虚拟桌面是一种用户可以随时随地进行部署的服务。 这就是用户最好可以自定义其 Windows 10 企业版多会话映像显示的语言的原因。
 
 可以通过两种方式来满足用户的语言需求：
 
@@ -34,28 +34,30 @@ Windows 虚拟桌面一种服务，用户可以随时随地进行部署。 这�
      
      - 语言 ISO：
         - [Windows 10 版本 1903 或 1909 语言包 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
-        - [Windows 10 版本 2004 或 20H2 语言包 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
+        - [2004、20H2 或 21H1 版本的 Windows 10 语言包 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
 
      - FOD 磁盘 1 ISO：
         - [Windows 10 版本 1903 或 1909 FOD 磁盘 1 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
-        - [Windows 10 版本 2004 或 20H2 FOD 磁盘 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+        - [2004、20H2 或 21H1 版本的 Windows 10 FOD 磁盘 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
         
      - 收件箱应用 ISO：
         - [Windows 10 版本 1903 或 1909 收件箱应用 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
         - [Windows 10 版本 2004 收件箱应用 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
         - [Windows 10 版本 20H2 收件箱应用 ISO](https://software-download.microsoft.com/download/pr/19041.508.200905-1327.vb_release_svc_prod1_amd64fre_InboxApps.iso)
+        - [21H1 版本的 Windows 10 收件箱应用 ISO](https://software-download.microsoft.com/download/sg/19041.928.210407-2138.vb_release_svc_prod1_amd64fre_InboxApps.iso)
      
      - 如果使用本地体验包 (LXP) ISO 文件来本地化映像，则还需要下载适当的 LXP ISO 以获得最佳语言体验
         - 如果使用的是 Windows 10 版本 1903 或 1909：
           - [Windows 10 版本 1903 或 1909 LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_1903_32_64_ARM64_MultiLng_LngPkAll_LXP_ONLY.iso)
-        - 如果使用的是 Windows 10 版本 2004 或 20H2，请使用[在 Windows 10 中添加语言：已知问题](/windows-hardware/manufacture/desktop/language-packs-known-issue)中的信息，了解以下哪一个 LXP ISO 适合你：
-          - [Windows 10 版本 2004 或 20H2 9B LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
-          - [Windows 10 版本 2004 或 20H2 9C LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY)
-          - [Windows 10 版本 2004 或 20H2 10C LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
-          - [Windows 10 版本 2004 或 20H2 11C LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
-          - [Windows 10 版本 2004 或 20H2 1C LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2101C.iso)
-          - [Windows 10 版本 2004 或 20H2 2C LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2102C.iso)
-          - [Windows 10 版本 2004 或 20H2 4B LXP ISO](https://software-download.microsoft.com/download/sg/LanguageExperiencePack.2104B.iso)
+        - 如果使用的是 2004、20H2 或 21H1 版本的 Windows 10，请参阅[“在 Windows 10 中添加语言：已知问题”](/windows-hardware/manufacture/desktop/language-packs-known-issue)中的信息，了解以下哪一个 LXP ISO 适合你：
+          - [2004、20H2 或 21H1 版本的 Windows 10 **9B** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
+          - [2004、20H2 或 21H1 版本的 Windows 10 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY)
+          - [2004、20H2 或 21H1 版本的 Windows 10 **10C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
+          - [2004、20H2 或 21H1 版本的 Windows 10 **11C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
+          - [2004、20H2 或 21H1 版本的 Windows 10 **1C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2101C.iso)
+          - [2004、20H2 或 21H1 版本的 Windows 10 **2C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2102C.iso)
+          - [2004、20H2 或 21H1 版本的 Windows 10 **4B** LXP ISO](https://software-download.microsoft.com/download/sg/LanguageExperiencePack.2104B.iso)
+          - [2004、20H2 或 21H1 版本的 Windows 10 **5C** LXP ISO](https://software-download.microsoft.com/download/sg/LanguageExperiencePack.2105C.iso)
 
 - Azure 文件共享或 Windows 文件服务器虚拟机上的文件共享
 
@@ -231,7 +233,7 @@ foreach ($App in (Get-AppxProvisionedPackage -Online)) {
 
 2. 按照[在 Azure 中创建通用化 VM 的托管映像](../virtual-machines/windows/capture-image-resource.md)中的说明，停止 VM，然后将其捕获到托管映像中。
 
-3. 你现在可以使用自定义映像来部署 Windows 虚拟桌面主机池。 若要了解如何部署主机池，请参阅[教程：使用 Azure 门户创建主机池](create-host-pools-azure-marketplace.md)。
+3. 你现在可以使用自定义映像来部署 Azure 虚拟桌面主机池。 若要了解如何部署主机池，请参阅[教程：使用 Azure 门户创建主机池](create-host-pools-azure-marketplace.md)。
 
 ## <a name="enable-languages-in-windows-settings-app"></a>在 Windows 设置应用中启用语言
 
@@ -247,7 +249,7 @@ $LanguageList.Add("zh-cn")
 Set-WinUserLanguageList $LanguageList -force
 ```
 
-用户更改其语言设置后，需要注销其 Windows 虚拟桌面会话，并再次登录以使更改生效。 
+用户更改其语言设置后，需要注销其 Azure 虚拟桌面会话，并再次登录以使更改生效。 
 
 ## <a name="next-steps"></a>后续步骤
 
