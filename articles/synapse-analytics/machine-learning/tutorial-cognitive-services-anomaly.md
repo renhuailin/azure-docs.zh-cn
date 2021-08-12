@@ -6,15 +6,15 @@ ms.service: synapse-analytics
 ms.subservice: machine-learning
 ms.topic: tutorial
 ms.reviewer: jrasnick, garye
-ms.date: 11/20/2020
+ms.date: 07/01/2021
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: c54300bf37f6f4526c525b1502d902e5f4336ed7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed86453b76d7f7afa0ba7fcccd2e4d7519621fb8
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943499"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114362053"
 ---
 # <a name="tutorial-anomaly-detection-with-cognitive-services-preview"></a>Tutorial:使用认知服务进行异常情况检测（预览版）
 
@@ -56,7 +56,7 @@ ms.locfileid: "98943499"
 
 ## <a name="open-the-cognitive-services-wizard"></a>打开认知服务向导
 
-1. 右键单击在上一步中创建的 Spark 表。 选择“机器学习” > “使用现有模型进行扩充”，打开向导 。
+1. 右键单击在上一步中创建的 Spark 表。 选择“机器学习” > “使用新模型进行预测”打开向导。
 
    ![显示用于打开评分向导的选项的屏幕截图。](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00g.png)
 

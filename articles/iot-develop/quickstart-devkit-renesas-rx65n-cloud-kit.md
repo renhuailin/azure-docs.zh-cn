@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/04/2021
-ms.openlocfilehash: ed6106a8967c177428abf7727b43f8fba33d580d
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 38227e47154e280fc34624b4f92a4f75261b7004
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903988"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112121959"
 ---
 # <a name="quickstart-connect-a-renesas-rx65n-cloud-kit-to-iot-central"></a>快速入门：将 Renesas RX65N 云工具包连接到 IoT Central
 
@@ -45,7 +45,7 @@ ms.locfileid: "111903988"
 
 ### <a name="clone-the-repo-for-the-quickstart"></a>克隆本快速入门所需的存储库
 
-克隆以下存储库以下载所有示例设备代码、安装脚本和文档的脱机版本。 如果你以前在另一篇快速入门中克隆过此存储库，则无需再次执行此操作。
+克隆以下存储库以下载所有示例设备代码、安装脚本和文档的脱机版本。 如果以前在另一篇快速入门中克隆过此存储库，则无需再次执行此操作。
 
 要克隆存储库，请运行以下命令：
 
@@ -55,7 +55,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="install-the-tools"></a>安装工具
 
-克隆的存储库包含用于安装和配置所需工具的安装脚本。 如果你在另一篇嵌入式设备快速入门中安装了这些工具，则无需再次执行此操作。
+克隆的存储库包含用于安装和配置所需工具的安装脚本。 如果在另一篇嵌入式设备快速入门中安装了这些工具，则无需再次执行此操作。
 
 > [!NOTE]
 > 安装脚本将安装以下工具：
@@ -173,7 +173,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 可以使用 **Termite** 应用来监视通信，并确认设备已正确设置。
 > [!TIP]
-> 如果刷写后在设备进行初始化或连接时遇到问题，请参阅[故障排除](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)。
+> 如果刷写后在设备进行初始化或连接时遇到问题，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)。
 
 1. 启动 **Termite**。
 1. 选择“设置”。
@@ -272,7 +272,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ## <a name="troubleshoot"></a>疑难解答
 
-如果在生成设备代码、刷写设备或进行连接时遇到问题，请参阅[故障排除](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)。
+如果在生成设备代码、刷写设备或进行连接时遇到问题，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

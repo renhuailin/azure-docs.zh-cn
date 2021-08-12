@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 03/15/2021
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 19a4c6697c161a78bfb1425009bd0b142dece876
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 0b420b55800d1ef17f3b01d291bec3073b236e3c
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057229"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112200125"
 ---
 # <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？ 
 使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的客户拥有的服务/合作伙伴服务。
@@ -66,7 +66,7 @@ Azure 专用链接可与 Azure Monitor 集成。 通过这种组合可以：
 有关定价详细信息，请参阅 [Azure 专用链接定价](https://azure.microsoft.com/pricing/details/private-link/)。
  
 ## <a name="faqs"></a>常见问题  
-有关常见问题解答，请参阅 [Azure 专用链接常见问题解答](private-link-faq.md)。
+有关常见问题解答，请参阅 [Azure 专用链接常见问题解答](private-link-faq.yml)。
  
 ## <a name="limits"></a>限制  
 有关限制，请参阅 [Azure 专用链接的限制](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits)。

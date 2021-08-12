@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: allensu
 ms.date: 09/14/2020
-ms.openlocfilehash: 4781782812d6bce34cb1db7dc4d494f352df5c80
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: a1fee5dd57568a77355315dc0a0ff89bd05775aa
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004999"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112467556"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建内部负载均衡器，以对 VM 进行负载均衡
 
@@ -31,7 +31,7 @@ ms.locfileid: "112004999"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/2-vms-internal-load-balancer)。
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/2-vms-internal-load-balancer/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.compute/2-vms-internal-load-balancer/azuredeploy.json":::
 

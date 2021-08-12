@@ -68,6 +68,10 @@
       href: tutorial-security-policy.md
     - name: 调查资源的运行状况
       href: investigate-resource-health.md
+- name: 示例
+  items:
+    - name: Azure Resource Graph 查询
+      href: ./resource-graph-samples.md
 - name: 概念
   items:
     - name: 云安全态势管理概念

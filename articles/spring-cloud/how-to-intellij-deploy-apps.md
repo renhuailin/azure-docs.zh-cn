@@ -1,18 +1,18 @@
 ---
 title: 教程：使用 IntelliJ 部署 Azure Spring Cloud 应用程序
 description: 使用 IntelliJ 将应用程序部署到 Azure Spring Cloud。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 45528c95fd4ce60e267870798585428e9b2bf44b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 61b20c2cbc96c4d440ba9e0ee2c8a5b777f4c6fe
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135016"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114449804"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>使用 IntelliJ 部署 Azure Spring Cloud 应用程序
 

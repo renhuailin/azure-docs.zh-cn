@@ -3,14 +3,14 @@ title: 使用自己的 gRPC 模型分析实时视频
 description: 本快速入门介绍如何借助视频分析器使用自己的 gRPC 模型分析实时视频。
 ms.service: azure-video-analyzer
 ms.topic: quickstart
-ms.date: 04/21/2021
+ms.date: 06/01/2021
 zone_pivot_groups: video-analyzer-programming-languages
-ms.openlocfilehash: a9b086f4b2d856e3e534ac2603f61dfbfef31db0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cb901ca96cde0d0a113b07429338464e24720650
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371778"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601676"
 ---
 # <a name="quickstart-analyze-live-video-with-your-own-model---grpc"></a>快速入门：使用自己的模型 (gRPC) 模型分析实时视频
 
@@ -76,7 +76,13 @@ ms.locfileid: "110371778"
 
 ## <a name="run-the-sample-program"></a>运行示例程序
 
-1. 若要启动调试会话，请选择 F5 键。 你可在“终端”窗口中看到打印的消息。
+1. ::: zone pivot="programming-language-csharp"
+    [!INCLUDE [header](includes/common-includes/csharp-run-program.md)]
+    ::: zone-end
+
+    ::: zone pivot="programming-language-python"
+    [!INCLUDE [header](includes/common-includes/python-run-program.md)]
+    ::: zone-end
 1. operations.json 代码首先调用直接方法 pipelineTopologyList 和 livePipelineList。 如果你在完成先前的快速入门后清理了资源，则该过程将返回空列表，然后暂停。 若要继续，请选择 Enter 键。
 
    ```
@@ -131,7 +137,7 @@ ms.locfileid: "110371778"
    ```
 
    - 对 livePipelineActivate 的调用，用于启动实时管道和视频流。
-   - 对 livePipelineList 的第二次调用，用于显示实时管道处于运行状态。
+   - 对 livePipelineList 的第二个调用，显示实时管道处于运行状态。
 
 1. “终端”窗口中的输出暂停并显示“按 Enter 继续”提示。 暂时不要选择 Enter。 向上滚动，查看调用的直接方法的 JSON 响应有效负载。
 1. 切换到 Visual Studio Code 中的“输出”窗口。 可看到视频分析器模块正发送到 IoT 中心的消息。 本快速入门中的以下部分将讨论这些消息。

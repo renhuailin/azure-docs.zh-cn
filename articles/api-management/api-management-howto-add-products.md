@@ -6,12 +6,12 @@ ms.service: api-management
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: d0420b92fc94e0a1a9c8a4057f419a57a9909223
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c0d24c667d2c7c46f65d8c6f3bf6e6e3b52fd00
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100545150"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669642"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>教程：创建和发布产品  
 
@@ -29,7 +29,7 @@ ms.locfileid: "100545150"
 ## <a name="prerequisites"></a>先决条件
 
 + 了解 [Azure API 管理术语](api-management-terminology.md)。
-+ 完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
++ 完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
 + 此外，请完成以下教程：[导入和发布第一个 API](import-and-publish.md)。
 
 ## <a name="create-and-publish-a-product"></a>创建和发布产品
@@ -163,7 +163,7 @@ az apim product api delete --resource-group apim-hello-word-resource-group \
 ---
 
 > [!TIP]
-> 可以通过 [REST API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) 或 PowerShell 命令使用自定义订阅密钥来创建或更新用户对产品的订阅。
+> 可以通过 [REST API](/rest/api/apimanagement/2020-12-01/subscription/create-or-update) 或 PowerShell 命令使用自定义订阅密钥来创建或更新用户对产品的订阅。
 
 ## <a name="next-steps"></a>后续步骤
 

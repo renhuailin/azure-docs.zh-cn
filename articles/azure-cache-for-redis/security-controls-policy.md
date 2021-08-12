@@ -1,18 +1,18 @@
 ---
 title: Azure Cache for Redis 的 Azure Policy 法规遵从性控制
 description: 列出可用于 Azure Cache for Redis 的 Azure Policy 法规遵从性控制。 这些内置的策略定义提供了管理 Azure 资源合规性的常用方法。
-ms.date: 06/11/2021
+ms.date: 07/16/2021
 ms.topic: sample
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 054723ceb7b90d57daa8cf0bef4274b7b2a5d26a
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 33ca234acb207f1171f79ae06c176753985d998b
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112033865"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114402313"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cache-for-redis"></a>Azure Cache for Redis 的 Azure Policy 法规遵从性控制
 

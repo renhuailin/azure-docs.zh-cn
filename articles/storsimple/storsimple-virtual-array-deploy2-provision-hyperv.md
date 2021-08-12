@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d6dfc95820e911781ffa88e2207601703f165839
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87070594"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>部署 StorSimple 虚拟阵列 - 在 Hyper-V 中预配
@@ -168,11 +168,11 @@ ms.locfileid: "87070594"
    ![“vSphere 客户端控制台”选项卡的屏幕截图，其中展示了登录框中的不确定字符。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image23.png)
 4. 出于安全原因，设备管理员密码在第一次登录后过期。 系统会提示用户更改密码。
 
-   ![“vSphere 客户端控制台”选项卡的屏幕截图。页面上的文本说明必须更改密码。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image24.png)
+   ![“vSphere 客户端控制台”选项卡的屏幕截图。页面上的文本表明必须更改密码。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image24.png)
 
    请输入至少包含 8 个字符的密码。 密码必须满足以下 4 个要求中的至少 3 个：大写、小写、数字、特殊字符。 再次输入密码进行确认。 用户会收到密码已更改的通知。
 
-   ![“vSphere 客户端控制台”选项卡的屏幕截图。页面上的文本说明密码已经更改。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image25.png)
+   ![“vSphere 客户端控制台”选项卡的屏幕截图。页面上的文本表明密码已更改。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image25.png)
 5. 成功更改密码后，虚拟阵列会重新启动。 等待设备启动。
 
    ![StorSimpleAdmin 主页的屏幕截图。 页面上的文本要求用户等待系统事件通知服务。](./media/storsimple-virtual-array-deploy2-provision-hyperv/image26.png)

@@ -3,13 +3,13 @@ title: 教程：使用 Azure 中继的 REST 教程
 description: 教程：生成一个公开基于 REST 的接口的 Azure 中继主机应用程序。
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.date: 06/23/2020
-ms.openlocfilehash: 0620f55650d0e4da0cd7a616649df952f3017455
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/23/2021
+ms.openlocfilehash: ed9068b6105d30d789b848a99325db389b42fec4
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88922321"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669729"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>教程：Azure WCF 中继 REST 教程
 
@@ -53,7 +53,7 @@ WCF 协定和 REST 样式的协定的主要区别在于是否向 [OperationContr
 
 1. 以管理员身份启动 Microsoft Visual Studio。 为此，请右键单击 Visual Studio 程序图标，并选择“以管理员身份运行”。
 1. 在 Visual Studio 中选择“创建新项目”。
-1. 在“创建新项目”中，选择适用于 C# 的“控制台应用(.NET Framework)”，然后选择“下一步”。
+1. 在“创建新项目”中，选择适用于 C# 的“控制台应用(.NET Framework)”，然后选择“下一步”。  
 1. 将项目命名为 *ImageListener*。 使用默认的 **位置**，然后选择“创建”。
 
    对于 C# 项目，Visual Studio 会创建 *Program.cs* 文件。 此类包含一个空的 `Main()` 方法，需要此方法才能正确生成控制台应用程序项目。

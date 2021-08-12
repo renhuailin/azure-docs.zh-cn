@@ -11,15 +11,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/30/2019
+ms.date: 5/19/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b84c38b28b51f867160272883465242fc81ff2bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9cde3940f09d3612ebe6411804fe4780e5bcfc18
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100588049"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110469191"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>如何将 Azure Monitor 工作簿用于 Azure Active Directory 报表
 
@@ -36,13 +36,13 @@ ms.locfileid: "100588049"
 
 - 是否需要了解条件访问策略在租户中所造成的影响？
 
-- 是否希望能够查看以下内容：登录日志查询、显示获得或未获得访问权限用户数的工作簿报表，以及访问资源时绕过条件访问策略的用户数？
+- 是否希望能够查看以下内容：登录日志查询、报告获得或未获得访问权限的用户数，以及访问资源时绕过条件访问策略的用户数的工作簿？
 
-- 是否需要深入了解：每个条件的工作簿详细信息，以便根据条件将策略的影响置于背景中考虑，包括设备平台、设备状态、客户端应用、登录风险、位置和应用程序？
+- 是否需要深入了解：条件访问、每个条件的工作簿详细信息，以便根据条件将策略的影响置于背景中考虑，包括设备平台、设备状态、客户端应用、登录风险、位置和应用程序？
 
-- 深入了解登录日志查询、显示获得或未获得访问权限用户数的工作簿报表，以及访问资源时绕过条件访问策略的用户数。
+- 存档和报告超过一年的历史应用程序角色和[访问包分配活动](../governance/entitlement-management-logs-and-reporting.md)？
 
-- 为帮助解决这些问题，Azure Active Directory 提供了用于监视的工作簿。 [Azure Monitor 工作簿](../../azure-monitor/visualize/workbooks-overview.md)可将文本、分析查询、指标和参数合并到丰富的交互式报表中。
+为帮助解决这些问题，Azure Active Directory 提供了用于监视的工作簿。 [Azure Monitor 工作簿](../../azure-monitor/visualize/workbooks-overview.md)可将文本、分析查询、指标和参数合并到丰富的交互式报表中。
 
 
 
@@ -298,4 +298,5 @@ ms.locfileid: "100588049"
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 Monitor 工作簿创建交互式报表](../../azure-monitor/visualize/workbooks-overview.md)。
+* [使用 Monitor 工作簿创建交互式报表](../../azure-monitor/visualize/workbooks-overview.md)。
+* [使用 Azure PowerShell 创建自定义 Azure Monitor 查询](../governance/entitlement-management-logs-and-reporting.md)。

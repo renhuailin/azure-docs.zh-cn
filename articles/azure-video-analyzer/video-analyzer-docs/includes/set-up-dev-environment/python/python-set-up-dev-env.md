@@ -4,12 +4,12 @@ ms.topic: include
 ms.service: azure-video-analyzer
 ms.date: 05/03/2021
 ms.author: juliako
-ms.openlocfilehash: 8e9992c6005c0bd3ba86bae005a1252a753e0c99
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0847bff1925e465c076048db924ee80f5d976b0c
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371788"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113559623"
 ---
 ### <a name="get-the-sample-code"></a>获取示例代码
 
@@ -17,6 +17,7 @@ ms.locfileid: "110371788"
 1. 启动 Visual Studio Code，然后打开下载的存储库所在的文件夹。
 1. 在 Visual Studio Code 中，浏览到 src/cloud-to-device-console-app 文件夹，然后创建一个名为 appsettings.json 的文件。 该文件包含运行程序所需的设置。
 1. 浏览到上述设置步骤中创建的存储帐户中的文件共享，并找到“deployment-output”文件共享下的“appsettings.json”文件。 单击该文件，然后点击“下载”按钮。 应在新的浏览器选项卡中打开内容，如下所示：
+
    ```json
    {
      "IoThubConnectionString": "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",
@@ -24,9 +25,11 @@ ms.locfileid: "110371788"
      "moduleId": "avaedge"
    }
    ```
+
    借助 IoT 中心连接字符串，可以使用 Visual Studio Code 通过 Azure IoT 中心将命令发送到 Edge 模块。 将上述 JSON 复制到“src/cloud-to-device-console-app/appsettings.json”文件中。
 1. 接下来，浏览到 src/edge 文件夹并创建一个名为 .env 的文件。 此文件包含 Visual Studio Code 用来将模块部署到边缘设备的属性。
 1. 浏览到上述设置步骤中创建的存储帐户中的文件共享，并找到“deployment-output”文件共享下的“env.txt”文件。 单击该文件，然后点击“下载”按钮。 应在新的浏览器选项卡中打开内容，如下所示：
+
    ```
         SUBSCRIPTION_ID="<Subscription ID>"
         RESOURCE_GROUP="<Resource Group>"
@@ -37,6 +40,7 @@ ms.locfileid: "110371788"
         CONTAINER_REGISTRY_USERNAME_myacr="<your container registry username>"
         CONTAINER_REGISTRY_PASSWORD_myacr="<your container registry password>"
    ```
+
    将 JSON 从“env.txt”文件复制到“src/edge/.env”文件中 。
 
 ### <a name="connect-to-the-iot-hub"></a>连接到 IoT 中心
@@ -45,14 +49,8 @@ ms.locfileid: "110371788"
 
     <!-- commenting out the image for now ![Set IoT Hub connection string]()./media/quickstarts/set-iotconnection-string.png-->
 
-    > [!NOTE]
-    > 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示： <br/>
-
-    ```
-    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
-    ```
-
-1.  大约 30 秒后，在左下部分刷新 Azure IoT 中心。 你应会看到已部署以下模块的边缘设备 `avasample-iot-edge-device`：
+    [!INCLUDE [provide-builtin-endpoint](../../common-includes/provide-builtin-endpoint.md)]
+1. 大约 30 秒后，在左下部分刷新 Azure IoT 中心。 你应会看到已部署以下模块的边缘设备 `avasample-iot-edge-device`：
     - Edge 中心（模块名称为“edgeHub”）
     - Edge 代理（模块名称为“edgeAgent”）
     - 视频分析器（模块名称为“avaedge”）
@@ -62,13 +60,8 @@ ms.locfileid: "110371788"
 
 运行本快速入门或教程时，事件将发送到 IoT 中心。 若要查看这些事件，请执行以下步骤：
 
-1.  在 Visual Studio Code 中打开“资源管理器”窗格，然后在左下角查找“Azure IoT 中心”。
-1.  展开“设备”节点。
-1.  右键单击 `avasample-iot-edge-device`，然后选择“开始监视内置事件终结点”。
+1. 在 Visual Studio Code 中打开“资源管理器”窗格，然后在左下角查找“Azure IoT 中心”。
+1. 展开“设备”节点。
+1. 右键单击 `avasample-iot-edge-device`，然后选择“开始监视内置事件终结点”。
 
-    > [!NOTE]
-    > 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：
-
-    ```
-    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
-    ```
+    [!INCLUDE [provide-builtin-endpoint](../../common-includes/provide-builtin-endpoint.md)]

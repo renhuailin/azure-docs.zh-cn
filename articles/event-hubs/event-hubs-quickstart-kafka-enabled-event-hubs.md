@@ -3,12 +3,12 @@ title: 快速入门：通过 Kafka 协议使用 Azure 事件中心进行数据�
 description: 快速入门：本文介绍了如何使用 Kafka 协议和 API 流式传输到 Azure 事件中心。
 ms.topic: quickstart
 ms.date: 05/10/2021
-ms.openlocfilehash: 601f9293c99ab68e10b39e33d036961900835db5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b88515ee0d1bc46eb41585d05f61a2a246cfab44
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379056"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288385"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>快速入门：使用 Kafka 协议通过事件中心进行数据流式传输
 此快速入门介绍如何在不更改协议客户端或运行自己的群集的情况下将数据流式传输到事件中心。 你将了解如何只需更改应用程序配置，即可使用生产者和使用者与事件中心通信。 
@@ -22,7 +22,7 @@ ms.locfileid: "110379056"
 
 * 通读[用于 Apache Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)一文。
 * Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-* [Java 开发工具包 (JDK) 1.7+](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
+* [Java 开发工具包 (JDK) 1.7+](/azure/developer/java/fundamentals/java-support-on-azure)。
 * [下载](https://maven.apache.org/download.cgi)并[安装](https://maven.apache.org/install.html) Maven 二进制存档。
 * [Git](https://www.git-scm.com/)
 

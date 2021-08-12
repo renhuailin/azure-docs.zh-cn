@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Site Recovery 安装 Linux VM 故障恢复的主目标服务器
 description: 了解如何设置 Linux 主目标服务器，以便在使用 Azure Site Recovery 将 VMware VM 灾难恢复到 Azure 期间故障回复到本地站点。
-author: mayurigupta13
 services: site-recovery
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.author: mayg
-ms.openlocfilehash: 1404b2dd035b7fd4b06c5f959fd9ba45f6be9c75
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.author: sharrai
+ms.date: 05/27/2021
+ms.openlocfilehash: b8264221db1fcfee8d47ac0d8f159d6b7a6140fe
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164968"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577080"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>安装用于故障回复的 Linux 主目标服务器
 将虚拟机故障转移到 Azure 后，可将虚拟机故障回复到本地站点。 若要故障回复，需要在本地站点中重新保护 Azure 中的虚拟机。 对于此过程，需要安装一个本地主目标服务器用于接收流量。 
@@ -335,7 +335,16 @@ Azure Site Recovery 主目标服务器需要特定版本的 Ubuntu，请确保�
 
 ### <a name="upgrade-the-master-target-server"></a>升级主目标服务器
 
-运行安装程序。 它会自动检测是否在 master 目标服务器上安装了代理。 选择“是”进行升级。安装完成后，可运行下列命令，检查安装的主目标版本：
+运行该安装程序会自动检测是否在主目标上安装了代理。 若要完成升级，请完成以下步骤：
+1. 将 tar.gz 从配置服务器复制到 Linux 主目标
+2. 运行以下命令来验证运行的版本：cat /usr/local/.vx_version
+3. 提取 tar：tar -xvf latestlinuxmobsvc.tar.gz
+4. 授予执行更改的权限：chmod 755 ./install
+5. 运行升级脚本：sudo ./install
+6. 安装程序应检测到代理已安装在主目标上。 选择“是”进行升级。
+7. 验证代理是否正在运行新版本：cat /usr/local/.vx_version
+
+安装完成后，可运行下列命令，检查安装的主目标版本：
 
 `cat /usr/local/.vx_version`
 

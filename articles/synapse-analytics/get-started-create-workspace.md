@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 4b7251be220c012ca51970863ac2eed55d46d711
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: cb00337446df3062fe640127a37adfb522e45345
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751141"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113300981"
 ---
 # <a name="creating-a-synapse-workspace"></a>创建 Synapse 工作区
 
@@ -65,8 +65,14 @@ ms.locfileid: "107751141"
 
 创建 Azure Synapse 工作区后，可以通过两种方式打开 Synapse Studio：
 
-* 在 [Azure 门户](https://portal.azure.com)中打开 Synapse 工作区，在 Synapse 工作区的“概述”部分中，在“打开 Synapse Studio”框中选择“打开” 。
-* 转到 `https://web.azuresynapse.net`，然后登录到工作区。
+1. 在 [Azure 门户](https://portal.azure.com)中打开 Synapse 工作区，在 Synapse 工作区的“概述”部分中，在“打开 Synapse Studio”框中选择“打开” 。
+1. 转到 `https://web.azuresynapse.net`，然后登录到工作区。
+
+    ![登录到工作区](./security/media/common/login-workspace.png)
+
+> [!NOTE]
+> 若要登录到工作区，可以使用两种帐户选择方法。 一种是从 Azure 订阅进行选择，另一种是通过手动输入选择帐户 。 如果你有 Synapse Azure 角色或更高级别的 Azure 角色，可以使用这两种方法登录到工作区。 如果没有相关的 Azure 角色，而被授予了 Synapse RBAC 角色，则只有手动输入才能登录到工作区。 若要详细了解 Synapse RBAC，请参阅[什么是 Synapse 基于角色的访问控制 (RBAC)](./security/synapse-workspace-synapse-rbac.md)。
+
 
 ## <a name="place-sample-data-into-the-primary-storage-account"></a>将示例数据放入主存储帐户
 在本入门指南中，我们将使用一个纽约市出租车的 10 万行小型示例数据集。 首先，将其放在为工作区创建的主存储帐户中。

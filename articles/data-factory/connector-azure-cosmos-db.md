@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Cosmos DB (SQL API) 中复制和转换数据
 description: 了解如何使用数据工厂向/从 Azure Cosmos DB (SQL API) 复制数据，以及如何在 Azure Cosmos DB (SQL API) 中转换数据。
-ms.author: jingwang
-author: linda33wj
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: d42f30ebd72dca81255ddc02a9440db19979536d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 05/18/2021
+ms.openlocfilehash: 36fae5b71e9aa5c2c6c252ad1aa306bb64d9aecb
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608056"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480073"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Cosmos DB (SQL API) 中复制和转换数据
 
@@ -39,7 +39,7 @@ ms.locfileid: "104608056"
 
 对于复制活动，此 Azure Cosmos DB(SQL API) 连接器支持：
 
-- 在 Azure Cosmos DB [SQL API](../cosmos-db/introduction.md) 中复制和粘贴数据。
+- 使用密钥身份验证、服务主体身份验证或 Azure 资源的托管标识身份验证，将数据从 Azure Cosmos DB [SQL API](../cosmos-db/introduction.md) 进行复制以及复制到其中。
 - 以 **insert** 或 **upsert** 的形式写入 Azure Cosmos DB。
 - 按原样导入和导出 JSON 文档，或在表格数据集中复制或粘贴数据。 示例包括 SQL 数据库和 CSV 文件。 若要在 JSON 文件或另一个 Azure Cosmos DB 集合中按原样复制或粘贴文档，请参阅[导入和导出 JSON 文档](#import-and-export-json-documents)。
 
@@ -50,15 +50,21 @@ ms.locfileid: "104608056"
 
 ## <a name="get-started"></a>入门
 
-[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](includes/data-factory-v2-connector-get-started.md)]
 
 对于特定于 Azure Cosmos DB (SQL API) 的数据工厂实体，以下部分提供有关可用于定义这些实体的属性的详细信息。
 
 ## <a name="linked-service-properties"></a>链接服务属性
 
-Azure Cosmos DB (SQL API) 链接服务支持以下属性：
+Azure Cosmos DB (SQL API) 连接器支持以下身份验证类型。 请参阅相应部分的了解详细信息：
 
-| properties | 说明 | 必需 |
+- [密钥身份验证](#key-authentication)
+- [服务主体身份验证（预览版）](#service-principal-authentication)
+- [Azure 资源的托管标识身份验证（预览版）](#managed-identity)
+
+### <a name="key-authentication"></a>密钥身份验证
+
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | **type** 属性必须设置为 **CosmosDb**。 | 是 |
 | connectionString |指定连接 Azure Cosmos DB 数据库所需的信息。<br />**注意**：必须如以下示例所示，在连接字符串中指定数据库信息。 <br/> 还可以将帐户密钥放在 Azure 密钥保管库中，并从连接字符串中拉取 `accountKey` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
@@ -108,13 +114,140 @@ Azure Cosmos DB (SQL API) 链接服务支持以下属性：
 }
 ```
 
+### <a name="service-principal-authentication-preview"></a><a name="service-principal-authentication"></a> 服务主体身份验证（预览版）
+
+>[!NOTE]
+>目前，不支持在数据流中进行服务主体身份验证。
+
+若要使用服务主体身份验证，请按照以下步骤操作。
+
+1. 遵循[将应用程序注册到 Azure AD 租户](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)，在 Azure Active Directory (Azure AD) 中注册一个应用程序实体。 记下下面的值，这些值用于定义链接服务：
+
+    - 应用程序 ID
+    - 应用程序密钥
+    - 租户 ID
+
+2. 向服务主体授予适当权限。 有关 Cosmos DB 中的权限工作原理的示例，请参阅[文件和目录上的访问控制列表](../cosmos-db/how-to-setup-rbac.md)。 更具体地说，请先创建角色定义，然后通过服务主体对象 ID 将角色分配给服务主体。 
+
+链接服务支持以下属性：
+
+| 属性 | 说明 | 必须 |
+|:--- |:--- |:--- |
+| type | type 属性必须设置为 **CosmosDb**。 |是 |
+| accountEndpoint | 指定 Azure Cosmos DB 的帐户终结点 URL。 | 是 |
+| database | 指定数据库的名称。 | 是 |
+| servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
+| servicePrincipalCredentialType | 要用于服务主体身份验证的凭据类型。 允许的值为“ServicePrincipalKey”和“ServicePrincipalCert” 。 | 是 |
+| servicePrincipalCredential | 服务主体凭据。 <br/> 使用“ServicePrincipalKey”作为凭据类型时，请指定应用程序的密钥。 将此字段标记为 SecureString 以将其安全地存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 <br/> 使用“ServicePrincipalCert”作为凭据时，请引用 Azure Key Vault 中的证书。 | 是 |
+| tenant | 指定应用程序的租户信息（域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 是 |
+| azureCloudType | 对于服务主体身份验证，请指定 Azure Active Directory 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为“AzurePublic”、“AzureChina”、“AzureUsGovernment”和“AzureGermany”。 默认情况下，使用数据工厂的云环境。 | 否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+
+**示例：使用服务主体密钥身份验证**
+
+也可以将服务主体密钥存储在 Azure Key Vault 中。
+
+```json
+{
+    "name": "CosmosDbSQLAPILinkedService",
+    "properties": {
+        "type": "CosmosDb",
+        "typeProperties": {
+            "accountEndpoint": "<account endpoint>",
+            "database": "<database name>",
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalCredentialType": "ServicePrincipalKey",
+            "servicePrincipalCredential": {
+                "type": "SecureString",
+                "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**示例：使用服务主体证书身份验证**
+```json
+{
+    "name": "CosmosDbSQLAPILinkedService",
+    "properties": {
+        "type": "CosmosDb",
+        "typeProperties": {
+            "accountEndpoint": "<account endpoint>",
+            "database": "<database name>", 
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalCredentialType": "ServicePrincipalCert",
+            "servicePrincipalCredential": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<AKV reference>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<certificate name in AKV>" 
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="managed-identities-for-azure-resources-authentication-preview"></a><a name="managed-identity"></a> Azure 资源的托管标识身份验证（预览版）
+
+>[!NOTE]
+>目前，不支持在数据流中进行托管标识身份验证。
+
+可将数据工厂与代表此特定数据工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 可以像使用你自己的服务主体一样，直接使用此托管标识进行 Cosmos DB 身份验证。 此指定工厂可通过此方法访问以及向/从 Cosmos DB 复制数据。
+
+若要使用 Azure 资源托管标识身份验证，请按照以下步骤操作。
+
+1. 通过复制与工厂一起生成的 **托管标识对象 ID** 的值，[检索数据工厂托管标识信息](data-factory-service-identity.md#retrieve-managed-identity)。
+
+2. 向托管标识授予适当权限。 有关 Cosmos DB 中的权限工作原理的示例，请参阅[文件和目录上的访问控制列表](../cosmos-db/how-to-setup-rbac.md)。 更具体地说，请先创建角色定义，然后将角色分配给托管标识。
+
+链接服务支持以下属性：
+
+| 属性 | 说明 | 必须 |
+|:--- |:--- |:--- |
+| type | type 属性必须设置为 **CosmosDb**。 |是 |
+| accountEndpoint | 指定 Azure Cosmos DB 的帐户终结点 URL。 | 是 |
+| database | 指定数据库的名称。 | 是 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 可使用 Azure Integration Runtime 或自承载集成运行时（如果数据存储位于专用网络）。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+
+**示例：**
+
+```json
+{
+    "name": "CosmosDbSQLAPILinkedService",
+    "properties": {
+        "type": "CosmosDb",
+        "typeProperties": {
+            "accountEndpoint": "<account endpoint>",
+            "database": "<database name>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
 ## <a name="dataset-properties"></a>数据集属性
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。
 
 Azure Cosmos DB (SQL API) 数据集支持以下属性： 
 
-| properties | 说明 | 必需 |
+| properties | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 **type** 属性必须设置为 **CosmosDbSqlApiCollection**。 |是 |
 | collectionName |Azure Cosmos DB 文档集合的名称。 |是 |
@@ -150,7 +283,7 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 
 复制活动 **source** 节支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 **type** 属性必须设置为 **CosmosDbSqlApiSource**。 |是 |
 | query |指定要读取数据的 Azure Cosmos DB 查询。<br/><br/>示例：<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，则执行此 SQL 语句：`select <columns defined in structure> from mycollection` |
@@ -203,13 +336,13 @@ Azure Cosmos DB (SQL API) 数据集支持以下属性：
 
 复制活动 **sink** 节支持以下属性：
 
-| properties | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 **type** 属性必须设置为 **CosmosDbSqlApiSink**。 |是 |
 | writeBehavior |描述如何将数据写入 Azure Cosmos DB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 ID 的文档，则替换该文档；否则将插入该文档。<br /><br />**注意**：如果未在原始文档中指定 ID，或未通过列映射指定 ID，则数据工厂会自动为文档生成 ID。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
 | writeBatchSize | 数据工厂使用 [Azure Cosmos DB 批量执行程序库](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)将数据写入 Azure Cosmos DB。 **writeBatchSize** 属性控制 ADF 提供给库的文档的大小。 可尝试增加 writeBatchSize 的值以提高性能，并在文档大小较大时降低该值 - 请参阅下面的提示。 |否<br />（默认值为 **10,000**） |
 | disableMetricsCollection | 数据工厂收集指标（如 Cosmos DB RU），以获取复制性能优化和建议。 如果你担心此行为，请指定 `true` 将其关闭。 | 否（默认值为 `false`） |
-| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的上限。 仅在要限制并发连接的数量时，才指定具体值。| 否 |
+| maxConcurrentConnections |活动运行期间与数据存储建立的并发连接的上限。 仅在要限制并发连接时指定一个值。| 否 |
 
 
 >[!TIP]

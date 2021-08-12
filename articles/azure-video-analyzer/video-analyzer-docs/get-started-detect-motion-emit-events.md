@@ -3,13 +3,13 @@ title: 开始使用 Azure 视频分析器 - Azure
 description: 本快速入门将引导你完成开始使用 Azure 视频分析器的步骤。 它将 Azure VM 用作 IoT Edge 设备和模拟的实时视频流。
 ms.service: azure-video-analyzer
 ms.topic: quickstart
-ms.date: 04/21/2021
-ms.openlocfilehash: 3606442101c8e20173ed3cd18c583fce02a45da1
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 335890f4bb939123290e5dfe9cccbf9f9aef1242
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385020"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114605173"
 ---
 # <a name="quickstart-get-started-with-azure-video-analyzer"></a>快速入门：开始使用 Azure 视频分析器
 
@@ -24,14 +24,12 @@ ms.locfileid: "110385020"
 
 * 具有活动订阅的 Azure 帐户。 如果没有帐户，可[免费创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-    > [!NOTE]    
-    > 你将需要一个 Azure 订阅，可以在其中访问[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色和[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色。 如果没有适当的权限，请联系帐户管理员，让其授予此类权限。  
+    [!INCLUDE [azure-subscription-permissions](./includes/common-includes/azure-subscription-permissions.md)]
 * 包含以下扩展的 [Visual Studio Code](https://code.visualstudio.com/)：
 
     * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
-> [!TIP] 
-> 安装 Azure IoT Tools 扩展时，系统可能会提示你安装 Docker。 可以忽略此提示。
+[!INCLUDE [install-docker-prompt](./includes/common-includes/install-docker-prompt.md)]
 
 ## <a name="set-up-azure-resources"></a>设置 Azure 资源
 
@@ -40,7 +38,7 @@ ms.locfileid: "110385020"
 部署过程大约需要 20 分钟。 完成部署后，Azure 订阅中会部署某些 Azure 资源，包括：
 1. **视频分析器帐户** - 此 [云服务](overview.md)用于注册视频分析器边缘模块，并用于播放录制的视频和视频分析。
 1. **存储帐户** - 用于存储录制的视频和视频分析。
-1. **托管标识** - 这是分配给用户的 [托管标识]../../active-directory/managed-identities-azure-resources/overview.md)，用于管理对上述存储帐户的访问。
+1. **托管标识** - 这是用户分配的 [托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，用于管理对上述存储帐户的访问。
 1. **虚拟机** - 这是将用作模拟边缘设备的虚拟机。
 1. **IoT 中心** - 这充当消息中心，用于在 IoT 应用程序、IoT Edge 模块以及它管理的设备之间进行双向通信。
 
@@ -89,11 +87,7 @@ ms.locfileid: "110385020"
 1. 展开“设备”节点。
 1. 右键单击 `avasample-iot-edge-device`，然后选择“开始监视内置事件终结点”。
 
-    > [!NOTE]
-    > 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：  
-        ```
-        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
-        ```
+    [!INCLUDE [provide-builtin-endpoint](./includes/common-includes/provide-builtin-endpoint.md)]
 
 ## <a name="use-direct-method-calls"></a>使用直接方法调用
 

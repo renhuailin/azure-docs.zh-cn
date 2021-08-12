@@ -3,19 +3,25 @@ title: 管理 Azure 自动化运行方式帐户
 description: 本文介绍如何使用 PowerShell 或 Azure 门户管理 Azure 自动化运行方式帐户。
 services: automation
 ms.subservice: ''
-ms.date: 04/29/2021
+ms.date: 05/17/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9ba7ae8218b730408361b6787517b72f2fb5c33b
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: d2d615df07e89e1fc2d4e63066d320002718d200
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278625"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110059673"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>管理 Azure 自动化运行方式帐户
 
-Azure 自动化中的运行方式帐户提供身份验证，以使用自动化 runbook 和其他自动化功能管理 Azure 资源管理器或 Azure 经典部署模型上的资源。 本文提供有关如何管理运行方式帐户或经典运行方式帐户的指导。
+Azure 自动化中的运行方式帐户提供身份验证，以使用自动化 runbook 和其他自动化功能管理 Azure 资源管理器或 Azure 经典部署模型上的资源。 
+
+本文介绍如何管理运行方式或经典运行方式帐户，包括：
+
+   * 如何续订自签名证书
+   * 如何从企业或第三方证书颁发机构 (CA) 续订证书
+   * 管理运行方式帐户的权限
 
 若要详细了解 Azure 自动化帐户身份验证以及有关流程自动化方案的指导，请参阅[自动化帐户身份验证概述](automation-security-overview.md)。
 
@@ -29,7 +35,7 @@ Azure 自动化中的运行方式帐户提供身份验证，以使用自动化 r
 >如果认为运行方式帐户已遭到入侵，可以删除该自签名证书然后重新创建。
 
 >[!NOTE]
->如果已将运行方式帐户配置为使用企业或第三方证书颁发机构 (CA) 颁发的证书，并且使用此选项来续订自签名证书选项，该企业证书会被自签名证书替换。
+>如果已将运行方式帐户配置为使用企业或第三方 CA 颁发的证书，并且使用此选项来续订自签名证书选项，该企业证书会被自签名证书替换。 若要在这种情况下续订证书，请参阅[续订企业或第三方证书](#renew-an-enterprise-or-third-party-certificate)。
 
 使用以下步骤来续订自签名证书。
 
@@ -47,6 +53,31 @@ Azure 自动化中的运行方式帐户提供身份验证，以使用自动化 r
 
 1. 证书续订过程中，可以在菜单的“通知”下面跟踪进度。
 
+## <a name="renew-an-enterprise-or-third-party-certificate"></a>续订企业或第三方证书
+
+每个证书都有一个内置的到期日期。 如果分配给运行方式帐户的证书是由证书颁发机构 (CA) 颁发的，则需要执行一组不同的步骤，在运行方式帐户证书过期之前为其配置新证书。 可以在该证书过期之前的任何时间续订。
+
+1. 按照[创建新证书](./shared-resources/certificates.md#create-a-new-certificate)的步骤导入续订的证书。 自动化要求证书具有以下配置：
+
+   * 指定提供程序：Microsoft 增强型 RSA 和 AES 加密提供程序
+   * 标记为可导出
+   * 配置为使用 SHA256 算法
+   * 以 `*.pfx` 或 `*.cer` 格式保存。 
+
+   导入证书后，请记下或复制证书 Thumbprint 值。 此值用于使用新证书更新运行方式连接属性。 
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+
+1. 搜索并选择“自动化帐户”。
+
+1. 在“自动化帐户”页上，从列表中选择你的自动化帐户。
+
+1. 在左窗格中，选择“连接”。
+
+1. 在“连接”页上，选择“AzureRunAsConnection”，然后使用新的证书指纹更新证书指纹。
+
+1. 选择“保存”，以提交更改。
+
 ## <a name="grant-run-as-account-permissions-in-other-subscriptions"></a>授予运行方式帐户在其他订阅中的权限
 
 Azure 自动化支持在一个订阅中使用单个自动化帐户，并针对多个订阅中的 Azure 资源管理器资源执行 runbook。 此配置不支持 Azure 经典部署模型。
@@ -58,7 +89,7 @@ Azure 自动化支持在一个订阅中使用单个自动化帐户，并针对�
 
 在授予运行方式帐户权限之前，需要先记下要分配的服务主体的显示名称。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在“自动化帐户”的“帐户设置”下，选择“运行方式帐户” 。
 1. 选择“Azure 运行方式帐户”。
 1. 复制或记下“Azure 运行方式帐户”页上的“显示名称”的值。

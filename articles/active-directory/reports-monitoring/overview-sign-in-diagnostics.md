@@ -13,165 +13,135 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/15/2020
+ms.date: 07/07/2021
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdef3e1f1a60c9eb0c751855837e9cbe77e015e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30ec59a2b74ffb1a9de8bbf03271bf4699c98b6b
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98572283"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113552570"
 ---
 # <a name="what-is-the-sign-in-diagnostic-in-azure-ad"></a>什么是 Azure AD 中的登录诊断？
 
-Azure Active Directory (Azure AD) 提供了灵活的安全模型，可使用此模板控制用户可以对受管理资源执行的操作。 对这些资源的访问不仅受访问者标识控制，还受访问方式控制 。 通常，由于有许多配置选项，因此灵活模型伴随着一定程度的复杂性。 复杂性可能会增加出错的风险。
+确定登录失败原因可能会迅速成为一项具有挑战性的任务。 需要分析登录尝试期间发生的情况，并研究可用的建议来解决问题。 理想情况下，你希望能够自行解决问题，而无需 Microsoft 支持人员等其他人的帮助。 如果遇到这种情况，可以使用 Azure AD 中的登录诊断，该工具可帮助调查 Azure AD 中的登录情况。 
 
-作为 IT 管理员，你需要一个解决方案来了解系统中的活动。 这样，你可以在发生问题时诊断并解决问题。 Azure AD 的登录诊断就是这种解决方案的一个示例。 可以使用诊断在没有 Microsoft 支持人员参与的情况下分析登录过程中发生的情况并获取解决问题的建议。
+本文概述诊断的定义以及如何使用诊断来解决与登录相关的错误。 
 
-本文概述该解决方案的功能以及如何使用它。
 
-## <a name="requirements"></a>要求
+## <a name="how-it-works"></a>工作原理  
 
-所有版本的 Azure AD 都提供登录诊断。
+在 Azure AD 中，登录尝试由以下项控制：
 
-需要具有 Azure AD 中的全局管理员身份才能使用登录诊断。
+- 用户 - 执行登录尝试的用户。
+- 方式 - 执行登录尝试的方式。
 
-## <a name="how-it-works"></a>工作原理
+例如，可以配置条件访问策略，使管理员能够在从公司网络登录时配置租户的所有方面。 但是，当同一用户从不受信任的网络登录同一帐户时，可能会遭到阻止。 
 
-在 Azure AD 中，对登录尝试的响应与访问者标识和访问租户的方式有关 。 例如，当从公司网络登录时，管理员通常可以配置租户的所有方面。 但是，当使用同一帐户从不受信任的网络登录时，甚至可能会遭到阻止。
+由于系统可以更灵活地响应登录尝试，因此可能最终需要解决登录问题。登录诊断是一种工具，旨在通过以下方式自助诊断登录问题：  
 
-由于系统可以灵活地响应登录尝试，因此可能最终需要解决登录问题。登录诊断具有以下功能：
+- 分析登录事件数据。  
 
-- 分析登录事件数据。
+- 显示有关所发生情况的信息。  
 
-- 显示发生了什么。
+- 提供解决问题的建议。  
 
-- 提供有关如何解决问题的建议。
+若要开始并完成诊断过程，需执行以下操作：   
 
-Azure AD 的登录诊断旨在启用登录错误的自我诊断。 若要完成诊断过程，需执行以下操作：
+1. 标识事件 - 输入有关登录事件的信息 
 
-![显示登录诊断的关系图。](./media/overview-sign-in-diagnostics/process.png)
+2. 选择事件 - 根据共享的信息选择事件。 
 
-1. 定义你所关心的登录事件的范围。
+3. 采取措施 - 查看诊断结果并执行相关步骤。
 
-2. 选择要查看的登录。
 
-3. 查看诊断结果。
+### <a name="identify-event"></a>标识事件 
 
-4. 执行操作。
+若要标识相关事件，可以根据以下选项进行筛选：
 
-### <a name="define-scope"></a>定义范围
+- 用户的名称
+- 应用程序 
+- 相关 ID 或请求 ID 
+- 日期和时间
 
-此步骤旨在定义要调查的登录事件的范围。 范围基于用户或标识符（correlationId、requestId）和时间范围。 要进一步缩小范围，可以指定应用名称。 Azure AD 使用范围信息来查找合适的事件。  
+![显示筛选器的屏幕截图。](./media/overview-sign-in-diagnostics/sign-in-diagnostics.png)
 
-### <a name="select-sign-in"></a>选择登录  
 
-根据搜索条件，Azure AD 检索所有匹配的登录事件并将其显示在身份验证摘要列表视图中。
 
-![显示“身份验证摘要”部分的局部屏幕截图。](./media/overview-sign-in-diagnostics/authentication-summary.png)
+### <a name="select-event"></a>选择事件  
 
-可以自定义在此视图中显示的列。
+根据搜索条件，Azure AD 检索所有匹配的登录事件并将其显示在身份验证摘要列表视图中。  
 
-### <a name="review-diagnostic"></a>查看诊断结果
+![显示身份验证摘要列表的屏幕截图。](./media/overview-sign-in-diagnostics/review-sign-ins.png)
 
-对于所选登录事件，Azure AD 可提供诊断结果。
+可以根据自己的偏好更改列中显示的内容。 示例如下：
 
-![显示“诊断结果”部分的局部屏幕截图。](./media/overview-sign-in-diagnostics/diagnostics-results.png)
-
-这些结果以评估开头，该评估用几句话解释发生的情况。 解释有助于了解系统的行为。
-
-接下来，获取应用于所选登录事件的相关条件访问策略的摘要。 诊断结果还包括用于解决问题的建议修正步骤。 由于并非总是可以在不借助其他帮助的情况下解决问题，因此可能建议创建支持工单。
+- 风险详细信息
+- 条件访问状态
+- 位置
+- 资源 ID
+- 用户类型
+- 身份验证详细信息
 
 ### <a name="take-action"></a>执行操作
 
-此时，应拥有解决问题所需的信息。
+对于选定的登录事件，你会获得诊断结果。 浏览结果，确定可以采取哪些措施来解决问题。 这些结果会添加建议步骤并阐明相关信息，例如相关策略、登录详细信息和支持文档。 由于并非总是可以在不借助其他帮助的情况下解决问题，因此可能建议创建支持工单。 
 
-## <a name="scenarios"></a>方案
 
-登录诊断包括以下方案：
+![显示诊断结果的屏幕截图。](./media/overview-sign-in-diagnostics/diagnostic-results.png)
 
-- 被条件访问阻止
 
-- 因条件访问失败
 
-- 条件访问中的多重身份验证 (MFA)
+## <a name="how-to-access-it"></a>如何访问
 
-- 来自其他要求的 MFA
+若要使用诊断，必须以全局管理员或全局读者的身份登录租户。 如果没有此级别的访问权限，请使用 [Privileged Identity Management (PIM)](../privileged-identity-management/pim-resource-roles-activate-your-roles.md) 提升租户内全局管理员/读者的访问权限。 这使你可以临时访问诊断。  
 
-- 需要 MFA 证明
+借助正确级别的访问权限，可以在不同位置查找诊断： 
 
-- 需要 MFA 证明（风险登录位置）
+选项 A：诊断和解决问题 
 
-- 成功登录
+![显示如何从条件访问启动登录诊断的屏幕截图。](./media/overview-sign-in-diagnostics/troubleshoot-link.png)
 
-### <a name="blocked-by-conditional-access"></a>被条件访问阻止
 
-在本方案中，登录尝试已被条件访问策略阻止。
+1. 打开 Azure Active Directory AAD 或 Azure AD 条件访问。 
 
-![显示访问配置的屏幕截图，其中已选中“阻止访问”。](./media/overview-sign-in-diagnostics/block-access.png)
+2. 从主菜单中，单击“诊断和解决问题”。  
 
-此方案的诊断部分显示有关用户登录事件和所应用策略的详细信息。
+3. 在“排查器”下，有一个登录诊断磁贴。 
 
-### <a name="failed-conditional-access"></a>因条件访问失败
+4. 单击“排查”按钮。  
 
-此方案通常是由于登录尝试失败造成的，失败原因是未满足条件访问策略的要求。 常见示例包括：
+ 
 
-![显示访问配置的屏幕截图，其中已选中常用策略示例和“授权访问”。](./media/overview-sign-in-diagnostics/require-controls.png)
+ 
 
-- 要求使用已建立混合 Azure AD 联接的设备
+选项 B：登录事件 
 
-- 需要批准的客户端应用
+![显示如何从 Azure AD 启动登录诊断的屏幕截图。](./media/overview-sign-in-diagnostics/sign-in-logs-link.png)
 
-- 需要应用保护策略
 
-此方案的诊断部分显示有关用户登录尝试和所应用策略的详细信息。
 
-### <a name="mfa-from-conditional-access"></a>通过条件访问进行 MFA
 
-在此方案中，条件访问策略要求使用多重身份验证集登录。
+1. 打开 Azure Active Directory。 
 
-![显示访问配置的屏幕截图，其中已选中“需要多重身份验证”。](./media/overview-sign-in-diagnostics/require-mfa.png)
+2. 在主菜单的“监视”部分，选择“登录” 。 
 
-此方案的诊断部分显示有关用户登录尝试和所应用策略的详细信息。
+3. 从登录列中表，选择状态为“失败”的登录。 可以按“状态”筛选列表，以便更轻松地查找失败的登录。 
 
-### <a name="mfa-from-other-requirements"></a>来自其他要求的 MFA
+4. 系统将打开选定登录的“活动详细信息: 登录”选项卡。 单击虚线图标，查看更多菜单图标。 选择“排查和支持”选项卡。 
 
-在此方案中，条件访问策略未强制实施多重身份验证要求。 例如，基于每个用户的多重身份验证。
+5. 单击“启动登录诊断”链接。 
 
-![显示基于每个用户配置的多重身份验证的屏幕截图。](./media/overview-sign-in-diagnostics/mfa-per-user.png)
+ 
 
-此诊断方案的目的是提供有关以下内容的更多详细信息：
+选项 C：支持案例 
 
-- 多重身份验证中断的源
-- 客户端交互的结果
+创建支持案例时也可以使用诊断，你可以在提交案例之前进行自助诊断。 
 
-你还可以查看用户登录尝试的所有详细信息。
 
-### <a name="mfa-proof-up-required"></a>需要 MFA 证明
-
-在此方案中，登录尝试被设置多重身份验证的请求中断。 此设置也称为“证明”。
-
-当要求用户使用多重身份验证但尚未对其进行配置，或管理员已要求用户对其进行配置时，则会发生多重身份验证证明。
-
-此诊断方案旨在表明多重身份验证中断是由于缺乏用户配置导致的。 建议的解决方案是要求用户完成“证明”。
-
-### <a name="mfa-proof-up-required-risky-sign-in-location"></a>需要 MFA 证明（风险登录位置）
-
-在此方案中，登录尝试被从风险登录位置发出的设置多重身份验证的请求中断。
-
-此诊断方案旨在表明多重身份验证中断是由于缺乏用户配置导致的。 建议的解决方案是要求用户完成“证明”，具体而言，需要通过没有风险的网络位置完成。
-
-例如，如果将公司网络定义为命名位置，则用户应改为尝试通过公司网络进行证明。
-
-### <a name="successful-sign-in"></a>成功登录
-
-在此方案中，登录事件没有被条件访问或多重身份验证中断。
-
-此诊断方案详细介绍了会因条件访问策略或多重身份验证而中断的用户登录事件。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure Active Directory 报表？](overview-reports.md)
-- [什么是 Azure Active Directory 监视？](overview-monitoring.md)
+- [Azure AD 方案的登录诊断](concept-sign-in-diagnostics-scenarios.md)

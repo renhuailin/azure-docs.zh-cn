@@ -2,14 +2,14 @@
 author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/25/2020
+ms.date: 07/02/2021
 ms.author: trbye
-ms.openlocfilehash: 7b1bc00e54abed70d4cbb769e15ff0f304c62b85
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 9c04f4dbc9a426e69040822bda5c7db581761061
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107108901"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113364969"
 ---
 本快速入门介绍使用语音 SDK 进行文本到语音合成的常见设计模式。 首先，请进行基本的配置和合成，然后通过更高级的示例来了解自定义应用程序开发，其中包括：
 
@@ -51,17 +51,17 @@ using namespace Microsoft::CognitiveServices::Speech::Audio;
 
 ## <a name="create-a-speech-configuration"></a>创建语音配置
 
-若要使用语音 SDK 调用语音服务，需要创建 [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig)。 此类包含有关你的订阅的信息，例如你的密钥和关联的区域、终结点、主机或授权令牌。
+若要使用语音 SDK 调用语音服务，需要创建 [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig)。 此类包含有关你的订阅的信息，例如你的语音密钥和关联的位置/区域、终结点、主机或授权令牌。
 
 > [!NOTE]
 > 无论你是要执行语音识别、语音合成、翻译，还是意向识别，都需要创建一个配置。
 
 可以通过以下几种方法初始化 [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig)：
 
-* 使用订阅：传入密钥和关联的区域。
+* 使用订阅：传入密钥和关联的位置/区域。
 * 使用终结点：传入语音服务终结点。 密钥或授权令牌是可选的。
 * 使用主机：传入主机地址。 密钥或授权令牌是可选的。
-* 使用授权令牌：传入授权令牌和关联的区域。
+* 使用授权令牌：传入授权令牌和关联的位置/区域。
 
 在此示例中，你将使用订阅密钥和区域创建一个 [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig)。 按照[免费试用语音服务](../../../overview.md#try-the-speech-service-for-free)中的以下步骤获取这些凭据。 此外，你将创建一些基本的样板代码，在本文的余下部分，你将修改这些代码以进行不同的自定义操作。
 
@@ -81,7 +81,7 @@ int wmain()
 
 void synthesizeSpeech()
 {
-    auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    auto config = SpeechConfig::FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
 }
 ```
 
@@ -94,7 +94,7 @@ void synthesizeSpeech()
 ```cpp
 void synthesizeSpeech()
 {
-    auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    auto config = SpeechConfig::FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     auto audioConfig = AudioConfig::FromWavFileOutput("path/to/write/file.wav");
 }
 ```
@@ -104,7 +104,7 @@ void synthesizeSpeech()
 ```cpp
 void synthesizeSpeech()
 {
-    auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    auto config = SpeechConfig::FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     auto audioConfig = AudioConfig::FromWavFileOutput("path/to/write/file.wav");
     auto synthesizer = SpeechSynthesizer::FromConfig(config, audioConfig);
     auto result = synthesizer->SpeakTextAsync("A simple test to write to a file.").get();
@@ -120,7 +120,7 @@ void synthesizeSpeech()
 ```cpp
 void synthesizeSpeech()
 {
-    auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    auto config = SpeechConfig::FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     auto synthesizer = SpeechSynthesizer::FromConfig(config);
     auto result = synthesizer->SpeakTextAsync("Synthesizing directly to speaker output.").get();
 }
@@ -144,7 +144,7 @@ void synthesizeSpeech()
 ```cpp
 void synthesizeSpeech()
 {
-    auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    auto config = SpeechConfig::FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     auto synthesizer = SpeechSynthesizer::FromConfig(config, NULL);
 
     auto result = synthesizer->SpeakTextAsync("Getting the response as an in-memory stream.").get();
@@ -171,7 +171,7 @@ void synthesizeSpeech()
 ```cpp
 void synthesizeSpeech()
 {
-    auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    auto config = SpeechConfig::FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     config->SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat::Riff24Khz16BitMonoPcm);
 
     auto synthesizer = SpeechSynthesizer::FromConfig(config, NULL);
@@ -204,7 +204,7 @@ void synthesizeSpeech()
 ```cpp
 void synthesizeSpeech()
 {
-    auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+    auto config = SpeechConfig::FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     auto synthesizer = SpeechSynthesizer::FromConfig(config, NULL);
 
     std::ifstream file("./ssml.xml");

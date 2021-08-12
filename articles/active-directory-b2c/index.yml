@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   ms.date: 01/28/2020
-  ms.openlocfilehash: 024c9b54fbbf0a14f8d8ca15862c102d1936bdaa
-  ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+  ms.openlocfilehash: 268d211e2b37b510ceb2d89f4aba62628643ecbb
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/28/2021
-  ms.locfileid: "110613345"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114445326"
 landingContent:
 - title: Azure AD B2C
   linkLists:
@@ -68,11 +68,11 @@ landingContent:
     - text: 快速入门：Web 应用
       url: quickstart-web-app-dotnet.md
     - text: 本机/移动应用
-      url: code-samples.md#mobile-and-desktop-apps
+      url: integrate-with-app-code-samples.md#mobile-and-desktop-apps
     - text: 单页应用
-      url: code-samples.md#single-page-apps
+      url: integrate-with-app-code-samples.md#single-page-apps
     - text: Web 应用
-      url: code-samples.md#web-apps-and-apis
+      url: integrate-with-app-code-samples.md#web-apps-and-apis
 - title: Authorization:调用和保护 API
   linkLists:
   - linkListType: how-to-guide
@@ -82,7 +82,7 @@ landingContent:
     - text: 注册和保护 API
       url: tutorial-web-api-dotnet.md
     - text: 示例：Web 应用和 API
-      url: code-samples.md#web-apps-and-apis
+      url: integrate-with-app-code-samples.md#web-apps-and-apis
     - text: 与 API 网关集成
       url: secure-api-management.md?tabs=app-reg-ga
 - title: 安全性、隐私性和符合性

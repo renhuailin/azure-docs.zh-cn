@@ -37,7 +37,7 @@
     - name: 演示项目
       href: avere-vfxt-demo-links.md
     - name: Avere vFXT for Azure FAQ
-      href: avere-vfxt-faq.md
+      href: avere-vfxt-faq.yml
     - name: 灾难恢复指南
       href: disaster-recovery.md
     - name: 其他文档

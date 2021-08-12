@@ -2,25 +2,25 @@
 title: 什么是 Azure Active Directory 中的应用程序管理
 description: 将 Azure Active Directory (AD) 用作云和本地应用程序的标识和访问管理 (IAM) 系统的概述。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
 ms.date: 01/22/2021
-ms.author: mtillman
+ms.author: davidmu
 ms.reviewer: ''
-ms.openlocfilehash: 31bfbe1405e1180f8909333da8947d72d68dd7db
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: e483efc2beae5ddf76c135aaa785b32732aa2f62
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079348"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113566401"
 ---
 # <a name="what-is-application-management"></a>什么是应用程序管理？
 
-Azure AD 是一个标识和访问管理 (IAM) 系统。 它提供了一个用于存储数字标识相关信息的单一位置。 你可以将软件应用程序配置为使用 Azure AD 来作为存储用户信息的位置。 
+Azure AD 是一个标识和访问管理 (IAM) 系统。 它提供了一个用于存储数字标识相关信息的单一位置。 你可以将软件应用程序配置为使用 Azure AD 来作为存储用户信息的位置。
 
 Azure AD 必须配置为与应用程序相集成。 换句话说，它需要知道哪些应用正在使用它进行标识。 使 Azure AD 意识到这些应用的存在以及应如何处理它们的过程称为“应用程序管理”。
 
@@ -29,6 +29,7 @@ Azure AD 必须配置为与应用程序相集成。 换句话说，它需要知�
 ![Azure AD 门户的“管理”部分下的“企业应用程序”选项。](media/what-is-application-management/enterprise-applications-in-nav.png)
 
 ## <a name="what-is-an-identity-and-access-management-iam-system"></a>什么是标识和访问管理 (IAM) 系统？
+
 应用程序是一种用于某种用途的软件。 大多数应用都要求用户登录。
 
 集中式标识系统提供单一的位置来存储可供所有应用程序使用的用户信息。 这些系统渐渐被称作了标识和访问管理 (IAM) 系统。 Azure Active Directory 是 Microsoft 云的 IAM 系统。
@@ -45,18 +46,18 @@ Azure AD 必须配置为与应用程序相集成。 换句话说，它需要知�
 
 ## <a name="how-does-azure-ad-work-with-apps"></a>Azure AD 如何与应用一起工作？
 
-Azure AD 位于中间，它为云和本地应用提供标识管理。 
+Azure AD 位于中间，它为云和本地应用提供标识管理。
 
 ![显示通过 Azure AD 进行联合的应用的关系图](media/what-is-application-management/app-management-overview.png)
 
 >[!TIP]
->通过[自动执行用户预配](../app-provisioning/user-provisioning.md)来降低管理成本，使得在将用户添加到公司 HR 系统时，他们会自动添加到 Azure AD 中。 
+>通过[自动执行用户预配](../app-provisioning/user-provisioning.md)来降低管理成本，使得在将用户添加到公司 HR 系统时，他们会自动添加到 Azure AD 中。
 
 ## <a name="what-types-of-applications-can-i-integrate-with-azure-ad"></a>可将哪些类型的应用程序与 Azure AD 集成？
 
-可将 Azure AD 用作几乎任何应用的标识系统。 许多应用已经过预先配置，稍微操作一下即可进行设置好。 这些预配置的应用在 [Azure AD 应用库](/azure/active-directory/saas-apps/)中发布。 
+可将 Azure AD 用作几乎任何应用的标识系统。 许多应用已经过预先配置，稍微操作一下即可进行设置好。 这些预配置的应用在 [Azure AD 应用库](/azure/active-directory/saas-apps/)中发布。
 
-如果应用尚未在库中，你也可手动配置大多数应用的单一登录。 Azure AD 提供了多种 SSO 选项。 其中最常用的一些是基于 SAML 的 SSO 和基于 OIDC 的 SSO。 若要详细了解如何集成应用来启用 SSO，请参阅[单一登录选项](sso-options.md)。 
+如果应用尚未在库中，你也可手动配置大多数应用的单一登录。 Azure AD 提供了多种 SSO 选项。 其中最常用的一些是基于 SAML 的 SSO 和基于 OIDC 的 SSO。 若要详细了解如何集成应用来启用 SSO，请参阅[单一登录选项](sso-options.md)。
 
 你的组织使用的是本地应用吗？ 你可使用应用代理来集成它们。 若要了解详细信息，请参阅[通过 Azure AD 应用程序代理远程访问本地应用程序](../app-proxy/application-proxy.md)。
 
@@ -65,7 +66,7 @@ Azure AD 位于中间，它为云和本地应用提供标识管理。
 
 ## <a name="manage-risk-with-conditional-access-policies"></a>利用条件访问策略管理风险
 
-将 Azure AD 单一登录 (SSO) 与[条件访问](../conditional-access/concept-conditional-access-cloud-apps.md)相结合可以提供访问应用程序时的高级安全性。 条件访问策略基于你设置的条件提供对应用的精细控制。 
+将 Azure AD 单一登录 (SSO) 与[条件访问](../conditional-access/concept-conditional-access-cloud-apps.md)相结合可以提供访问应用程序时的高级安全性。 条件访问策略基于你设置的条件提供对应用的精细控制。
 
 ## <a name="improve-productivity-with-single-sign-on"></a>使用单一登录提高工作效率
 

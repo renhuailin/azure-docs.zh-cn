@@ -9,12 +9,12 @@ ms.date: 06/24/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: a2a73c081a24d0efc8197a2d6808f4dfee94481a
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 9aa776b52d3303d7721d900476f606c3ab38d7a5
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591667"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378702"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教程：使用 Azure 存储在云中上传图像数据
 
@@ -51,26 +51,48 @@ ms.locfileid: "111591667"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。  
-
 以下示例创建名为 `myResourceGroup` 的资源组。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+
+```powershell
+New-AzResourceGroup -Name myResourceGroup -Location southeastasia
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
 ```azurecli
 az group create --name myResourceGroup --location southeastasia
 ```
 
-```powershell
-az group create --name myResourceGroup --location southeastasia
-```
+---
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-此示例将图像上传到 Azure 存储帐户中的 blob 容器。 存储帐户提供唯一的命名空间来存储和访问 Azure 存储数据对象。 使用 [az storage account create](/cli/azure/storage/account) 命令在创建的资源组中创建存储帐户。
+此示例将图像上传到 Azure 存储帐户中的 blob 容器。 存储帐户提供唯一的命名空间来存储和访问 Azure 存储数据对象。
 
 > [!IMPORTANT]
 > 在本教程的第 2 部分中，你将 Azure 事件网格与 Blob 存储配合使用。 请确保在支持事件网格的 Azure 区域中创建你的存储帐户。 有关受支持区域的列表，请参阅 [Azure 产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)。
 
 在以下命令中，请将 `<blob_storage_account>` 占位符替换为你自己的 Blob 存储帐户的全局唯一名称。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) 命令在创建的资源组中创建存储帐户。
+
+```powershell
+$blobStorageAccount="<blob_storage_account>"
+
+New-AzStorageAccount -ResourceGroupName myResourceGroup -Name $blobStorageAccount -SkuName Standard_LRS -Location southeastasia -Kind StorageV2 -AccessTier Hot
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用 [az storage account create](/cli/azure/storage/account) 命令在创建的资源组中创建存储帐户。
 
 ```azurecli
 blobStorageAccount="<blob_storage_account>"
@@ -79,22 +101,31 @@ az storage account create --name $blobStorageAccount --location southeastasia \
   --resource-group myResourceGroup --sku Standard_LRS --kind StorageV2 --access-tier hot
 ```
 
-```powershell
-$blobStorageAccount="<blob_storage_account>"
-
-az storage account create --name $blobStorageAccount --location southeastasia `
-  --resource-group myResourceGroup --sku Standard_LRS --kind StorageV2 --access-tier hot
-```
+---
 
 ## <a name="create-blob-storage-containers"></a>创建 Blob 存储容器
 
-应用使用 Blob 存储帐户中的两个容器。 容器类似于文件夹，用于存储 blob。 images 容器是应用在其中上传完整分辨率图像的位置。 在本系列的后面部分中，一个 Azure 函数应用将调整大小后的图像缩略图上传到 thumbnails 容器。
-
-使用 [az storage account keys list](/cli/azure/storage/account/keys) 命令获取存储帐户密钥。 然后，使用此密钥通过 [az storage container create](/cli/azure/storage/container) 命令创建两个容器。
+应用使用 Blob 存储帐户中的两个容器。 容器类似于文件夹，用于存储 blob。 images 容器是应用在其中上传完整分辨率图像的位置。 在本系列的后面部分，一个 Azure 函数应用会将重设大小后的图像缩略图上传到“缩略图”
 
 *images* 容器的公共访问权限设置为 `off`。 *thumbnails* 容器的公共访问权限设置为 `container`。 `container` 公共访问权限设置允许访问网页的用户查看缩略图。
 
-```bash
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+使用 [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) 命令获取存储帐户密钥。 然后，使用此密钥通过 [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer) 命令创建两个容器。
+
+```powershell
+$blobStorageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName myResourceGroup -Name $blobStorageAccount).Key1
+$blobStorageContext = New-AzStorageContext -StorageAccountName $blobStorageAccount -StorageAccountKey $blobStorageAccountKey
+
+New-AzStorageContainer -Name images -Context $blobStorageContext
+New-AzStorageContainer -Name thumbnails -Permission Container -Context $blobStorageContext
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用 [az storage account keys list](/cli/azure/storage/account/keys) 命令获取存储帐户密钥。 然后，使用此密钥通过 [az storage container create](/cli/azure/storage/container) 命令创建两个容器。
+
+```azurecli
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
   -n $blobStorageAccount --query "[0].value" --output tsv)
 
@@ -107,18 +138,7 @@ az storage container create --name thumbnails \
   --account-key $blobStorageAccountKey --public-access container
 ```
 
-```powershell
-$blobStorageAccountKey=$(az storage account keys list -g myResourceGroup `
-  -n $blobStorageAccount --query "[0].value" --output tsv)
-
-az storage container create --name images `
-  --account-name $blobStorageAccount `
-  --account-key $blobStorageAccountKey
-
-az storage container create --name thumbnails `
-  --account-name $blobStorageAccount `
-  --account-key $blobStorageAccountKey --public-access container
-```
+---
 
 记下 Blob 存储帐户名称和密钥。 示例应用使用这些设置连接到存储帐户以上传图像。 
 
@@ -126,23 +146,45 @@ az storage container create --name thumbnails `
 
 [应用服务计划](../../app-service/overview-hosting-plans.md)指定托管应用的 Web 服务器场的位置、大小和功能。
 
-使用 [az appservice plan create](/cli/azure/appservice/plan) 命令创建应用服务计划。
-
 以下示例在免费定价层中创建名为 `myAppServicePlan` 的应用服务计划：
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+使用 [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) 命令创建应用服务计划。
+
+```powershell
+New-AzAppServicePlan -ResourceGroupName myResourceGroup -Name myAppServicePlan -Tier "Free"
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用 [az appservice plan create](/cli/azure/appservice/plan) 命令创建应用服务计划。
 
 ```azurecli
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
 ```
 
-```powershell
-az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
-```
+---
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-Web 应用为从 GitHub 示例存储库部署的示例应用代码提供承载空间。 使用 [az webapp create](/cli/azure/webapp) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../../app-service/overview.md)。  
+Web 应用为从 GitHub 示例存储库部署的示例应用代码提供承载空间。
 
 在以下命令中，将 `<web_app>` 替换为唯一名称。 有效的字符是 `a-z`、`0-9` 和 `-`。 如果 `<web_app>` 不唯一，你将收到错误消息：*具有给定名称 `<web_app>` 的网站已存在。* Web 应用的默认 URL 为 `https://<web_app>.azurewebsites.net`。  
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+使用 [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) 命令在 `myAppServicePlan` 应用服务计划中创建一个 [Web 应用](../../app-service/overview.md)。  
+
+```powershell
+$webapp="<web_app>"
+
+New-AzWebApp -ResourceGroupName myResourceGroup -Name $webapp -AppServicePlan myAppServicePlan
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用 [az webapp create](/cli/azure/webapp) 命令在 `myAppServicePlan` 应用服务计划中创建 [Web 应用](../../app-service/overview.md)。  
 
 ```azurecli
 webapp="<web_app>"
@@ -150,11 +192,7 @@ webapp="<web_app>"
 az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
 ```
 
-```powershell
-$webapp="<web_app>"
-
-az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
-```
+---
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>从 GitHub 存储库部署示例应用
 
@@ -198,7 +236,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
-示例 Web 应用使用[适用于 .NET 的 Azure 存储 API](/dotnet/api/overview/azure/storage) 上传图像。 存储帐户凭据在 Web 应用的应用设置中进行设置。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令将应用设置添加到已部署的应用。
+示例 Web 应用使用[适用于 .NET 的 Azure 存储 API](/dotnet/api/overview/azure/storage) 上传图像。 存储帐户凭据在 Web 应用的应用设置中进行设置。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 或 [New-AzStaticWebAppSetting](/powershell/module/az.websites/new-azstaticwebappsetting) 命令将应用设置添加到已部署的应用。
 
 ```azurecli
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
@@ -218,7 +256,7 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
 
 # <a name="javascript-v12-sdk"></a>[JavaScript v12 SDK](#tab/javascript)
 
-示例 Web 应用使用[适用于 JavaScript 的 Azure 存储客户端库](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage)来上传图像。 存储帐户凭据是在 Web 应用的应用设置中设置的。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令将应用设置添加到已部署的应用。
+示例 Web 应用使用[适用于 JavaScript 的 Azure 存储客户端库](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage)来上传图像。 存储帐户凭据是在 Web 应用的应用设置中设置的。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 或 [New-AzStaticWebAppSetting](/powershell/module/az.websites/new-azstaticwebappsetting) 命令将应用设置添加到已部署的应用。
 
 ```azurecli
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \

@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 54ee903b490e10f7ea4ca3bca91f742b5811404d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3420acbccf8066b6a40669103f253a4fc6f06fa
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102563296"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113595289"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>什么是 Azure 上的内容分发网络？
 内容分发网络 (CDN) 是高效地向用户分发 Web 内容的分布式服务器网络。 CDN 将缓存的内容存储在位于靠近最终用户的入网点 (POP) 位置的边缘服务器，以最大程度地降低延迟。 
@@ -69,7 +69,7 @@ Azure CDN 提供以下重要功能：
 - [HTTPS 自定义域支持](cdn-custom-ssl.md)
 - [Azure 诊断日志](cdn-azure-diagnostic-logs.md)
 - [文件压缩](cdn-improve-performance.md)
-- [地理筛选](cdn-restrict-access-by-country.md)
+- [地理筛选](cdn-restrict-access-by-country-region.md)
 
 如需每个 Azure CDN 产品支持的功能的完整列表，请参阅[比较 Azure CDN 产品功能](cdn-features.md)。
 

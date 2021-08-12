@@ -21,6 +21,8 @@
       href: work-remotely-support.md
     - name: Bastion 常见问题解答
       href: bastion-faq.md
+    - name: 配置设置
+      href: configuration-settings.md
     - name: Bastion 和 VNet 对等互连
       href: vnet-peering.md
     - name: 安全
@@ -43,6 +45,10 @@
           href: bastion-connect-vm-ssh.md
         - name: RDP (Windows)
           href: bastion-connect-vm-rdp.md
+    - name: 升级 SKU
+      href: upgrade-sku.md
+    - name: 配置主机缩放
+      href: configure-host-scaling.md
     - name: 连接到虚拟机规模集
       href: bastion-connect-vm-scale-set.md
     - name: 连接到开发测试实验室虚拟机
@@ -79,6 +85,8 @@
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: 博客
       href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/azure-bastion'
     - name: Microsoft Q&A 问题页面
       href: /answers/topics/azure-virtual-network.html
     - name: 预览版 SLA

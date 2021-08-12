@@ -2,8 +2,8 @@
 title: 教程：使用 Azure Active Directory 为 Zscaler ZSCloud 配置自动用户预配 | Microsoft Docs
 description: 本教程介绍如何将 Azure Active Directory 配置为自动为 Zscaler ZSCloud 预配和取消设置用户帐户。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: fa90cbf1e467416010ae0ba83e9344a84ce52e21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b1997fd23121613010f8465ad895adba9b3c57c
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936492"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760357"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>教程：为 Zscaler ZSCloud 配置自动用户预配
 

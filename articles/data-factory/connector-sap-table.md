@@ -6,13 +6,13 @@ ms.author: jingwang
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/12/2021
-ms.openlocfilehash: 5a455def13bbf65d01f2f22972c18d39c2b15f3c
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.date: 05/26/2021
+ms.openlocfilehash: 6ab548c2b12d36e4b1741042a78c68112a93c8f3
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788114"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110580124"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP 表复制数据
 
@@ -66,7 +66,7 @@ ms.locfileid: "109788114"
 - 在数据工厂 SAP 表连接器中使用的 SAP 用户必须拥有以下权限：
 
   - 使用远程函数调用 (RFC) 目标的授权。
-  - 对 S_SDSAUTH 授权对象拥有“执行”活动权限。 有关多数授权对象，请参阅“SAP 说明 40089”。 基础 NCo 连接器需要某些 RFC，例如 RFC_FUNCTION_SEARCH。 
+  - 对 S_SDSAUTH 授权对象拥有“执行”活动权限。 有关多数授权对象，请参阅“SAP 说明 460089”。 基础 NCo 连接器需要某些 RFC，例如 RFC_FUNCTION_SEARCH。 
 
 ## <a name="get-started"></a>入门
 

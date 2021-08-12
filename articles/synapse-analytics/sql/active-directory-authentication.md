@@ -9,16 +9,16 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 92d06a95dcd32501a05dfd50e81f768f59742bd5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c547f3b2657d31e4d25dbb884a5a75c2c8b9c5f2
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674339"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112452577"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>结合使用 Azure Active Directory 身份验证与 Synapse SQL 进行身份验证
 
-Azure Active Directory 身份验证是一种使用 Azure Active Directory (Azure AD) 中的标识连接到 [Azure Synapse Analytics](../overview-faq.md) 的机制。
+Azure Active Directory 身份验证是一种使用 Azure Active Directory (Azure AD) 中的标识连接到 [Azure Synapse Analytics](../overview-faq.yml) 的机制。
 
 使用 Azure AD 身份验证，你可以集中管理有权访问 Azure Synapse 的用户标识，以简化权限管理。 包括如下优点：
 

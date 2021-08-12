@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 16c89a37ad232f356c4d7857bfb3c35f8c644acd
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.openlocfilehash: 6a16845afbf0e846191c0f0c1c4d28b7e0ab40fa
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565907"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112464334"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>教程：使用 Azure 快速入门模板
 
@@ -35,7 +35,7 @@ ms.locfileid: "111565907"
 
 1. 打开 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)
 1. 在“搜索”中，输入“部署 linux web 应用”。  
-1. 选择标题为“部署基本的 linux web 应用”的磁贴。 如果找不到它，请单击此处的[直接链接](https://azure.microsoft.com/en-us/resources/templates/webapp-basic-linux/)。
+1. 选择标题为“部署基本的 linux web 应用”的磁贴。 如果找不到它，请单击此处的[直接链接](https://azure.microsoft.com/resources/templates/webapp-basic-linux/)。
 1. 选择“在 GitHub 上浏览”。 
 1. 选择“azuredeploy.json”。 
 1. 查看模板。 具体说来，请查找 `Microsoft.Web/sites` 资源。

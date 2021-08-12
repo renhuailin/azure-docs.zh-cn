@@ -10,12 +10,12 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: 6dc99d58f15653e9d3f991622de3bb3388690459
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 4d760f5017c20ac88d3329bb79937c971d4fba75
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814799"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112459417"
 ---
 # <a name="tutorial-power-bi-integration---create-the-predictive-model-by-using-automated-machine-learning-part-1-of-2"></a>教程：Power BI 集成 - 使用自动化机器学习创建预测模型（第 1 部分，共 2 部分）
 
@@ -39,7 +39,7 @@ ms.locfileid: "97814799"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 如果没有订阅，可使用[免费试用版](https://aka.ms/AMLFree)。 
+- Azure 订阅。 如果没有订阅，可使用[免费试用版](https://azure.microsoft.com/free/)。 
 - Azure 机器学习工作区。 如果没有工作区，请参阅[创建和管理 Azure 机器学习工作区](./how-to-manage-workspace.md#create-a-workspace)。
 
 ## <a name="create-a-compute-cluster"></a>创建计算群集

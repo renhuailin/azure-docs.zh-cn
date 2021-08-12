@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: 4d594115139321c8a4ad2b3aa6b065474bd426fa
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: a99595405872ff1b341dfc9277583417564ef6b7
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556165"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112465072"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>用于 Azure 机器学习设计器的管道和数据集示例
 
@@ -23,7 +23,7 @@ ms.locfileid: "98556165"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请创建一个[免费帐户](https://aka.ms/AMLFree)
+* Azure 订阅。 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/)
 * Azure 机器学习工作区 
 
 [!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]

@@ -5,14 +5,14 @@ author: jianleishen
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 04/14/2021
+ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: 555316ddf722e857914d5e99d7fadcd6539e1b8b
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 0159226abb904d73262011e16fbc52fe760be123
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482572"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436813"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>使用专用终结点将数据从 Azure Blob 存储安全复制到 SQL 数据库
 
@@ -94,7 +94,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 创建完成后，通知中心内会显示通知。 选择“转到资源”，转到“数据工厂”页 。
 
-1. 选择“创作和监视”，在单独的选项卡中启动数据工厂 UI。
+1. 在“打开 Azure 数据工厂工作室”磁贴上选择“打开”，在单独的选项卡中启动数据工厂 UI。 
 
 ## <a name="create-an-azure-integration-runtime-in-data-factory-managed-virtual-network"></a>在数据工厂托管的虚拟网络中创建 Azure 集成运行时
 在此步骤中，你将创建一个 Azure 集成运行时并启用数据工厂托管的虚拟网络。
@@ -120,9 +120,9 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 在本教程中，你将从创建管道开始。 然后在配置管道时根据需要创建链接服务和数据集。
 
-1. 在“开始使用”页中，选择“创建管道”。 
+1. 在主页上，选择“协调”。
 
-   ![屏幕截图显示正在创建管道。](./media/doc-common-process/get-started-page.png)
+   ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
 1. 在管道的属性窗格中，输入“CopyPipeline”作为管道名称。
 
 1. 在“活动”工具箱中，展开“移动和转换”类别，然后将“复制数据”活动从工具箱拖动到管道设计器图面  。 输入“CopyFromBlobToSql”作为名称。

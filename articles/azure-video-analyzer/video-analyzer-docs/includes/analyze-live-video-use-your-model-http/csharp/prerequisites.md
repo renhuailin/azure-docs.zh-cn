@@ -4,12 +4,12 @@ ms.service: azure-video-analyzer
 ms.topic: include
 ms.date: 04/07/2021
 ms.author: juliako
-ms.openlocfilehash: abd3705bb8d847786502c380f88ed7f8c8dd82f5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f77651e8e8cb10ba22eba3ed0f5e643a2eebd217
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371774"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113735591"
 ---
 * 包含活动订阅的 Azure 帐户。 如果没有帐户，可[免费创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -18,8 +18,7 @@ ms.locfileid: "110371774"
 * 包含以下扩展的 [Visual Studio Code](https://code.visualstudio.com/)：
     * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
-    > [!TIP]
-    > 在安装 Azure IoT Tools 时，系统可能会提示安装 Docker。 可以忽略此提示。    
+    [!INCLUDE [install-docker-prompt](../../common-includes/install-docker-prompt.md)]   
     * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
 * 阅读[检测运动并发出事件](../../../detect-motion-emit-events-quickstart.md)快速入门

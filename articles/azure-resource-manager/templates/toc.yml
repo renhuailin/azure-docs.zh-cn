@@ -92,7 +92,7 @@
           href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 机器学习
           href: ../../machine-learning/how-to-create-workspace-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-    - name: Analytics
+    - name: 分析
       items:
         - name: Analysis Services
           href: ../../analysis-services/analysis-services-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
@@ -311,7 +311,7 @@
           href: syntax.md
         - name: 编写模板表达式
           href: template-expressions.md
-        - name: parameters
+        - name: 参数
           href: parameters.md
         - name: 变量
           href: variables.md
@@ -411,10 +411,14 @@
       items:
         - name: 测试工具包
           href: test-toolkit.md
-        - name: 测试事例
-          href: test-cases.md
+        - name: 模板测试用例
+          href: template-test-cases.md
+        - name: 参数文件测试用例
+          href: parameter-file-test-cases.md
         - name: CreateUiDefinition 测试用例
           href: createuidefinition-test-cases.md
+        - name: 所有文件的测试用例
+          href: all-files-test-cases.md
     - name: 模板规格
       items:
         - name: 创建和部署模板规格

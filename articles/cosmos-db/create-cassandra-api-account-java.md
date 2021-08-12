@@ -1,20 +1,20 @@
 ---
 title: 教程：生成 Java 应用以创建 Azure Cosmos DB Cassandra API 帐户
 description: 本教程介绍如何使用 Java 应用程序创建 Cassandra API 帐户，以及如何向该帐户添加数据库（也称键空间）和表。
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: ca1fdbd9aa2c98358489d91fe0839c98adec293b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b17734e83a6a096aedfdfa6aa1485cbddc6642f0
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212699"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113355116"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>教程：使用 Java 应用程序在 Azure Cosmos DB 中创建 Cassandra API 帐户，以便存储键/值数据
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -41,23 +41,7 @@ ms.locfileid: "102212699"
 
 ## <a name="create-a-database-account"></a>创建数据库帐户 
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。 
-
-2. 选择“创建资源” > “数据库” > “Azure Cosmos DB”。 
-
-3. 在“新建帐户”窗格上，输入新 Azure Cosmos 帐户的设置。 
-
-   |设置   |建议的值  |说明  |
-   |---------|---------|---------|
-   |ID   |   输入唯一的名称    | 输入标识此 Azure Cosmos 帐户的唯一名称。 <br/><br/>由于 cassandra.cosmosdb.azure.com 将追加到所提供的用于创建接触点的 ID 后面，因此，请使用唯一但可识别的 ID。         |
-   |API    |  Cassandra   |  API 确定要创建的帐户的类型。 <br/> 选择“Cassandra”，因为在本文中，你将创建可使用 Cassandra 查询语言 (CQL) 语法查询的宽列数据库。  |
-   |订阅    |  你的订阅        |  选择要用于此 Azure Cosmos 帐户的 Azure 订阅。        |
-   |资源组   | 输入名称    |  选择“新建”，然后输入帐户的新资源组名称。 为简单起见，可以使用与 ID 相同的名称。    |
-   |位置    |  选择离用户最近的区域    |  选择要在其中托管 Azure Cosmos 帐户的地理位置。 使用离用户最近的位置，使他们能够以最快的速度访问数据。    |
-
-   :::image type="content" source="./media/create-cassandra-api-account-java/create-account.png" alt-text="使用门户创建帐户":::
-
-4. 选择“创建”。 <br/>创建帐户需要几分钟时间。 创建资源后，可以在门户右侧看到“部署成功”通知。
+[!INCLUDE [cosmos-db-create-dbaccount-cassandra](includes/cosmos-db-create-dbaccount-cassandra.md)]
 
 ## <a name="get-the-connection-details-of-your-account"></a>获取帐户的连接详细信息  
 

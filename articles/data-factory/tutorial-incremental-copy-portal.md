@@ -6,13 +6,13 @@ ms.author: yexu
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 310182a3b46f0682efe420387bba0da311707e8a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 07/05/2021
+ms.openlocfilehash: a7730a12f6e017c23e5007b030cb4b6b05be4761
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606593"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436257"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>使用 Azure 门户以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
@@ -170,15 +170,16 @@ END
 8. 单击“创建”。      
 9. 创建完成后，可以看到图中所示的“数据工厂”页。
 
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含“创作和监视”磁贴。":::
-10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂主页，其中包含“打开 Azure 数据工厂工作室”磁贴。":::
+
+10. 在“打开 Azure 数据工厂工作室”磁贴上选择“打开”，以便在单独的标签页中启动 Azure 数据工厂用户界面 (UI)。 
 
 ## <a name="create-a-pipeline"></a>创建管道
 本教程创建包含两个 Lookup 活动、一个 Copy 活动和一个 StoredProcedure 活动的管道，这些活动链接在一个管道中。
 
-1. 在数据工厂 UI 的“入门”页中，单击“创建管道”磁贴。
+1. 在数据工厂 UI 的主页上，单击“协调”磁贴。
 
-   ![数据工厂 UI 的“入门”页](./media/doc-common-process/get-started-page.png)    
+   ![此屏幕截图显示了数据工厂 UI 的主页。](./media/doc-common-process/get-started-page.png)    
 3. 在“常规”面板的“属性”中，将名称指定为 IncrementalCopyPipeline  。 然后通过单击右上角的“属性”图标来折叠面板。
 
 4. 请添加第一个查找活动，获取旧水印值。 在“活动”工具箱中展开“常规”， 将 **查找** 活动拖放到管道设计器图面。 将活动的名称更改为 **LookupOldWaterMarkActivity**。
@@ -211,8 +212,8 @@ END
 
 12. 在第二个“复制”活动的属性窗口中切换到“设置”选项卡，然后单击“新建”。 请创建一个数据集，使之指向源表，该表包含新的水印值（LastModifyTime 的最大值）。
 
-13. 在“新建数据集”窗口中，选择“Azure SQL 数据库”，然后单击“继续”。
-14. 在属性窗口的“常规”选项卡中，对于“名称”输入“SourceDataset” 。 为“链接服务”选择“AzureSqlDatabaseLinkedService”。
+13. 在“新建数据集”窗口中，选择“Azure SQL 数据库”，然后单击“继续”。  
+14. 在属性窗口的“常规”选项卡中，对于“名称”输入“SourceDataset” 。 为“链接服务”选择“AzureSqlDatabaseLinkedService”。 
 15. 对于“表”，请选择“[dbo].[data_source_table]”。 本教程后面需指定一个针对此数据集的查询。 此查询优先于在此步骤中指定的表。
 16. 选择“完成”。
 17. 通过单击顶部的管道选项卡，或者单击左侧树状视图中管道的名称，切换到管道编辑器。 在 **查找** 活动的属性窗口中，确认对于“源数据集”字段，是否已选择 **SourceDataset**。
@@ -272,7 +273,7 @@ END
         | 名称 | 类型 | 值 |
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
-        | TableName | 字符串 | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
+        | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
         ![存储过程活动 - 存储过程设置](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. 若要验证管道设置，请单击工具栏中的“验证”。 确认没有任何验证错误。 若要关闭“管道验证报告”窗口，请单击 >>。   

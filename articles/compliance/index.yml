@@ -390,11 +390,11 @@ additionalContent:
         - title: 隐私和 GDPR
           links:
             - text: 清单
-              url: /compliance/regulatory/gdpr-arc-azure-dynamics
+              url: /compliance/regulatory/gdpr-arc-azure-dynamics-windows
             - text: 数据主体请求
               url: /compliance/regulatory/gdpr-dsr-Azure
             - text: 违规通知
-              url: /compliance/regulatory/gdpr-breach-azure-dynamics
+              url: /compliance/regulatory/gdpr-breach-azure-dynamics-windows
             - text: 数据保护影响评估
               url: /microsoft-365/compliance/gdpr-dpia-azure
             - text: Azure 中的数据驻留

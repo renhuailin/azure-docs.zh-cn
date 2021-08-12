@@ -7,12 +7,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-vs-code-java-uiex
-ms.openlocfilehash: 10ac677fb65428e8b8855c43b319bbebe7bbbb71
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f429c6feda62c6572c25e4f8e2513123ff6ef03
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101701426"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287766"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>快速入门：在 Azure 中使用 Visual Studio Code 创建 Java 函数
 
@@ -27,10 +27,12 @@ ms.locfileid: "101701426"
 
 在本文中，我们使用 Visual Studio Code 来创建一个响应 HTTP 请求的 Java 函数。 在本地测试代码后，将代码部署到 Azure Functions 的无服务器环境。
 
-完成本快速入门会从你的 Azure 帐户中扣取最多几美分的费用。
+如果 Visual Studio Code 不是你的首选开发工具，请查看我们面向 Java 开发人员的类似教程：
++ [Gradle](./functions-create-first-java-gradle.md)
++ [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions)
++ [Maven](create-first-function-cli-java.md)
 
-> [!NOTE]
-> 如果 Visual Studio Code 不是首选开发工具，请查看面向使用 [Maven](create-first-function-cli-java.md)、[Gradle](./functions-create-first-java-gradle.md) 和 [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) 的 Java 开发人员的类似教程。
+完成本快速入门会从你的 Azure 帐户中扣取最多几美分的费用。
 
 ## <a name="configure-your-environment"></a>配置环境
 
@@ -38,7 +40,7 @@ ms.locfileid: "101701426"
 
 + 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-+ [Java 开发人员工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support)版本 8 或 11。
++ [Java 开发人员工具包](/azure/developer/java/fundamentals/java-support-on-azure)版本 8 或 11。
 
 + [Apache Maven](https://maven.apache.org) 3.0 或更高版本。
 

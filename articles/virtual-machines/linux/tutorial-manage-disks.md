@@ -1,20 +1,20 @@
 ---
 title: 教程 - 使用 Azure CLI 管理 Azure 磁盘
 description: 本教程介绍如何使用 Azure CLI 为虚拟机创建和管理 Azure 磁盘
-author: cynthn
-ms.service: virtual-machines
+author: roygara
+ms.author: rogarana
+ms.service: storage
+ms.subservice: disks
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 08/20/2020
-ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.subservice: disks
-ms.openlocfilehash: 56e804bc0d479f09ef2900c42361fbd24eed1d98
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1c4a006a12e9708b35ea15ff68728569822ae26d
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765946"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114390745"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>教程 - 使用 Azure CLI 管理 Azure 磁盘
 

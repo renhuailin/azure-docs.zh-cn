@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 7ab17f0d34ba7682778120e11aab562e106b5df7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd296000f95ee6a2bb73567a0de46472a7c05492
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95487778"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403570"
 ---
 IoT 即插即用简化了 IoT 的使用，使你无需了解底层设备实现，就能与某个设备的功能交互。 本快速入门介绍如何使用 Node.js 来连接和控制已与解决方案连接的 IoT 即插即用设备。
 
@@ -59,7 +59,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 ## <a name="run-the-sample-solution"></a>运行示例解决方案
 
-在[为 IoT 即插即用快速入门和教程设置环境](../articles/iot-pnp/set-up-environment.md)中，已创建了两个环境变量以将示例配置为连接到 IoT 中心和设备：
+在[为 IoT 即插即用快速入门和教程设置环境](../articles/iot-develop/set-up-environment.md)中，已创建了两个环境变量以将示例配置为连接到 IoT 中心和设备：
 
 * **IOTHUB_CONNECTION_STRING**：之前记下的 IoT 中心连接字符串。
 * **IOTHUB_DEVICE_ID**：`"my-pnp-device"`。
@@ -156,7 +156,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 在本方案中，此代码输出 `Model Id: dtmi:com:example:Thermostat;1`。
 
 > [!NOTE]
-> 这些服务示例使用来自 IoT 中心服务客户端的 Registry 类 。 若要了解有关 API（包括数字孪生 API）的详细信息，请参阅[服务开发人员指南](../articles/iot-pnp/concepts-developer-guide-service.md)。
+> 这些服务示例使用来自 IoT 中心服务客户端的 Registry 类 。 若要了解有关 API（包括数字孪生 API）的详细信息，请参阅[服务开发人员指南](../articles/iot-develop/concepts-developer-guide-service.md)。
 
 ### <a name="update-a-writable-property"></a>更新可写属性
 

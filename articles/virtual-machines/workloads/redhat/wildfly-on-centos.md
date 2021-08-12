@@ -11,12 +11,12 @@ ms.subservice: redhat
 ms.custom:
 - mode-api
 ms.collection: linux
-ms.openlocfilehash: 7c80634e78a8c37551a57fc8597831898646ef8e
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 1f7bc4bcefe7535e531fcd8288a6dce0e93696e0
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111900928"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486114"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>快速入门：CentOS 8 上的 WildFly
 
@@ -104,12 +104,12 @@ Azure CentOS 8 映像是即用即付 (PAYG) VM 映像，不要求用户获取许
 
 包含示例应用程序的独立 RHEL 虚拟机：
 
-*  <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/jboss-eap-standalone-rhel" target="_blank"> RHEL 上的 JBoss EAP（独立 VM）</a>
+*  <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/jboss/jboss-eap-standalone-rhel" target="_blank"> RHEL 上的 JBoss EAP（独立 VM）</a>
 
 包含示例应用程序的群集 RHEL 虚拟机：
 
-* <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/jboss-eap-clustered-multivm-rhel" target="_blank"> RHEL 上的 JBoss EAP（群集 VM）</a>
+* <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/jboss/jboss-eap-clustered-multivm-rhel" target="_blank"> RHEL 上的 JBoss EAP（群集 VM）</a>
 
 包含示例应用程序的群集 RHEL 虚拟机规模集：
 
-* <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/jboss-eap-clustered-vmss-rhel" target="_blank"> RHEL 上的 JBoss EAP（群集虚拟机规模集）</a>
+* <a href="https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/jboss/jboss-eap-clustered-vmss-rhel" target="_blank"> RHEL 上的 JBoss EAP（群集虚拟机规模集）</a>
