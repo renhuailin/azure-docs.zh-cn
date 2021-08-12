@@ -2,16 +2,16 @@
 title: 配置 VM 见解的 Log Analytics 工作区
 description: 介绍如何创建和配置 VM 见解使用的 Log Analytics 工作区。
 ms.topic: conceptual
-ms.custom: references_regions
+ms.custom: references_regions, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
-ms.openlocfilehash: 5a0e04772cfc1c9be77c0ad8b32b0e93be8b9f54
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0a4b6e1f90e24b3289b453e849b4ad979b10e202
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046714"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108319910"
 ---
 # <a name="configure-log-analytics-workspace-for-vm-insights"></a>配置 VM 见解的 Log Analytics 工作区
 VM 见解从 Azure Monitor 中的一个或多个 Log Analytics 工作区收集其数据。 在加入代理之前，必须创建并配置一个工作区。 本文介绍工作区的要求，以及如何为 VM 见解配置工作区。
@@ -40,7 +40,7 @@ VM 见解从 Azure Monitor 中的一个或多个 Log Analytics 工作区收集�
 * [Azure 门户](../logs/quick-create-workspace.md)
 * [Azure CLI](../logs/quick-create-workspace-cli.md)
 * [PowerShell](../logs/powershell-workspace-configuration.md)
-* [Azure 资源管理器](../logs/resource-manager-workspace.md)
+* [Azure Resource Manager](../logs/resource-manager-workspace.md)
 
 ## <a name="supported-regions"></a>支持的区域
 VM 见解支持 [Log Analytics 所支持的任何区域](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all)中的 Log Analytics 工作区，但以下区域除外：
@@ -67,7 +67,7 @@ VM 见解支持 [Log Analytics 所支持的任何区域](https://azure.microsoft
 
 [![配置工作区](../vm/media/vminsights-enable-policy/configure-workspace.png)](../vm/media/vminsights-enable-policy/configure-workspace.png#lightbox)
 
-若要配置多个工作区，请在 Azure 门户上的“Monitor”菜单中，选择“虚拟机”选项中的“工作区配置”选项卡  。 设置筛选器值以显示现有工作区的列表。 选中要启用的每个工作区旁边的框，然后单击“配置选定项”。
+若要配置多个工作区，请在 Azure 门户上的“监视器”菜单中，选择“虚拟机”菜单中的“工作区配置”选项卡。 设置筛选器值以显示现有工作区的列表。 选中要启用的每个工作区旁边的框，然后单击“配置选定项”。
 
 [![工作区配置](../vm/media/vminsights-enable-policy/workspace-configuration.png)](../vm/media/vminsights-enable-policy/workspace-configuration.png#lightbox)
 

@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d28a20a6afc78939491e56f46a32782b4c0844cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bd221215d6be3c14ce1200e8bd374a97cb7608a0
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98878997"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503008"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -30,7 +30,6 @@ azcopy remove [resourceURL] [flags]
 - [AzCopy 入门](storage-use-azcopy-v10.md)
 - [使用 AzCopy 和 Blob 存储传输数据](./storage-use-azcopy-v10.md#transfer-data)
 - [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
-- [对 AzCopy 进行配置、优化和故障排除](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>示例
 
@@ -103,7 +102,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 --list-of-files 字符串：定义要删除的文件和目录列表所在文件的位置。 相对路径应由换行符分隔，路径不应进行 URL 编码。 
 
-**--list-of-versions** 字符串指定一个文件，其中每个版本 ID 都列在单独的一行中。 确保源必须指向单个 Blob，并且使用此标志在文件中指定的所有版本 ID 必须仅属于源 Blob。 给定 Blob 的指定版本 ID 将从 Azure 存储中删除。 
+--list-of-versions 字符串   指定一个文件，其中每个版本 ID 都列在单独的一行中。 确保源必须指向单个 Blob，并且使用此标志在文件中指定的所有版本 ID 必须仅属于源 Blob。 给定 Blob 的指定版本 ID 将从 Azure 存储中删除。 
 
 --log-level 字符串：定义日志文件的日志详细程度。 可用级别包括：`INFO`（所有请求/响应）、`WARNING`（缓慢的响应）、`ERROR`（仅失败的请求）和 `NONE`（无输出日志）。 （默认值为 `INFO`）（默认值为 `INFO`）
 

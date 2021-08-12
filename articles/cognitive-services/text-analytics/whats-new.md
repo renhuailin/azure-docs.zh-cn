@@ -8,29 +8,41 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2021
+ms.date: 07/12/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 63063ef205b456c368cec2d5c1a8ce1f456aaa59
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: f79c9cb7381f2325de2efca5e20b37c60ab72013
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756466"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113652469"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
 文本分析 API 会持续更新。 为了让大家随时了解最新的开发成果，本文介绍了新版本和新功能。
 
+## <a name="july-2021"></a>2021 年 7 月
+
+### <a name="ga-release-updates"></a>正式发布版本更新
+
+* 正式发布针对容器和托管 API 的[运行状况文本分析](how-tos/text-analytics-for-health.md?tabs=ner) (/health)。
+* 正式发布[观点挖掘](how-tos/text-analytics-how-to-sentiment-analysis.md?tabs=version-3-1#opinion-mining)。
+* 正式发布 [PII 提取和编修](how-tos/text-analytics-how-to-entity-linking.md?tabs=version-3-1#personally-identifiable-information-pii)。
+* 正式发布[异步 (`/analyze`) 终结点](how-tos/text-analytics-how-to-call-api.md?tabs=synchronous#using-the-api-asynchronously)。
+* 使用新的 SDK 更新了[快速入门](quickstarts/client-libraries-rest-api.md)示例。 
+
 ## <a name="june-2021"></a>2021 年 6 月
 
 ### <a name="general-api-updates"></a>常规 API 更新
 
-* 用于关键短语提取的新模型版本 `2021-06-01`，增加了对简体中文的支持。
+* 基于转换器的关键短语提取的新模型版本 `2021-06-01`。 提供以下功能：
+  * 支持 10 种语言（拉丁语和 CJK）。 
+  * 改进了关键短语提取。
 * [命名实体识别](how-tos/text-analytics-how-to-entity-linking.md) v3.x 的 `2021-06-01` 模型版本，其中提供 
   * 改进了 AI 质量并扩展了对技能实体类别的语言支持。 
   * 为技能实体类别添加了西班牙语、法语、德语、意大利语和葡萄牙语语言支持
-* 异步操作和健康状况文本分析在所有地区可用 
+* 异步 (/analyze) 操作和运行状况文本分析（非封闭预览版）在所有区域可用。 
 
 ### <a name="text-analytics-for-health-updates"></a>健康状况文本分析更新
 
@@ -40,7 +52,7 @@ ms.locfileid: "111756466"
     * 14 种新关系类型，
     * 针对新实体类型进行了扩展的断言检测以及
     * 对 ALLERGEN 实体类型的链接支持
-
+* 带有标签 `3.0.016230002-onprem-amd64` 和模型版本 `2021-05-15` 的运行状况文本分析容器的新图像。 此容器可从 Microsoft Container Registry 下载。
  
 ## <a name="may-2021"></a>2021 年 5 月
 
@@ -293,7 +305,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
     * 日期（作为 DateTime 下的子类型）
     * 电子邮件 
     * 电话号码（仅限美国）
-    * 代码
+    * URL
     * IP 地址
 
 ### <a name="october-2019"></a>2019 年 10 月

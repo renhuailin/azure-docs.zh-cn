@@ -3,17 +3,17 @@ title: 在 Azure 门户中管理 Azure Maps 帐户 | Microsoft Azure Maps
 description: 了解如何使用 Azure 门户管理 Azure Maps 帐户。 了解如何创建新帐户和如何删除现有帐户。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/27/2020
+ms.date: 04/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c618e8193bed1f35cbbe884d5725c4ecfb25dd75
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9c18af6904a474164544962acf381014bfaa38b1
+ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96013082"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108325134"
 ---
 # <a name="manage-your-azure-maps-account"></a>管理 Azure Maps 帐户
 
@@ -31,7 +31,7 @@ ms.locfileid: "96013082"
 
 4. 输入新帐户的信息。
 
-[![在 Azure 门户中输入 Azure Maps 帐户信息](./media/how-to-manage-account-keys/new-account-portal.png)](./media/how-to-manage-account-keys/new-account-portal.png#lightbox)
+:::image type="content" source="./media/how-to-manage-account-keys/create-account.png" border="true" alt-text="在 Azure 门户中输入 Azure Maps 帐户信息。":::
 
 ## <a name="delete-an-account"></a>删除帐户
 

@@ -6,16 +6,16 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 72372e6365a2535e449681549a515c3f8594f2f1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f7014f8a403614740bdbc05abab4e7024f83c196
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786594"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111570513"
 ---
-# <a name="create-an-azure-vmware-solution-avs-assessment"></a>创建 Azure VMware 解决方案 (AVS) 评估
+# <a name="create-an-azure-vmware-solution-assessment"></a>创建 Azure VMware 解决方案评估
 
-本文介绍如何使用“Azure Migrate：发现和评估”为 VMware 环境中的本地服务器创建 Azure VMware 解决方案 (AVS) 评估。
+本文介绍如何使用“Azure Migrate：发现和评估”为 VMware 环境中的本地服务器创建 Azure VMware 解决方案评估。
 
 [Azure Migrate](migrate-services-overview.md) 可帮助你迁移到 Azure。 Azure Migrate 提供了一个中心，用于跟踪 Azure 的本地基础结构、应用程序和数据的发现、评估以及迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。
 
