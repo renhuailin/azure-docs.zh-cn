@@ -1,0 +1,80 @@
+### YamlMime:Landing
+title: Azure 指标顾问文档
+summary: 指标顾问是一个时序监视平台，它提供一组用于数据引入、异常检测和诊断的 API，无需了解机器学习即可使用它们。
+metadata:
+  title: Azure 指标顾问文档 - 教程和 API 参考 - Azure 应用 AI 服务 | Microsoft Docs
+  titleSuffix: Azure Applied AI Services
+  services: cognitive-services
+  description: 指标顾问是一个时序监视平台，它提供一组用于数据引入、异常检测和诊断的 API，无需了解机器学习即可使用它们。
+  author: mrbullwinkle
+  manager: nitinme
+  ms.service: applied-ai-services
+  ms.subservice: metrics-advisor
+  ms.topic: landing-page
+  ms.date: 08/13/2020
+  ms.author: mbullwin
+  ms.openlocfilehash: bbd4ba2cb2d310dd8ff6a46576173826a91c17b3
+  ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/15/2021
+  ms.locfileid: "114340731"
+landingContent:
+- title: 关于指标顾问
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是指标顾问？
+      url: overview.md
+    - text: 什么是 Azure 应用 AI 服务？
+      url: ../../applied-ai-services/what-are-applied-ai-services.md
+  - linkListType: quickstart
+    links:
+    - text: 监视你关于 web 的第一个指标
+      url: quickstarts/web-portal.md
+    - text: 使用 REST API 或客户端库
+      url: quickstarts/rest-api-and-client-library.md
+  - linkListType: video
+    links:
+    - text: 指标顾问简介
+      url: https://www.youtube.com/watch?v=0Y26cJqZMIM
+    - text: 初次使用认知服务
+      url: https://www.youtube.com/watch?v=7tCLJHdBZgM
+- title: 操作方法文章
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 载入数据
+      url: how-tos/onboard-your-data.md
+    - text: 连接不同的数据馈送源
+      url: data-feeds-from-different-sources.md
+    - text: 管理数据馈送
+      url: how-tos/manage-data-feeds.md
+    - text: 配置指标并微调检测配置
+      url: how-tos/configure-metrics.md
+    - text: 配置警报并使用挂钩获取通知
+      url: how-tos/alerts.md
+    - text: 诊断事件
+      url: how-tos/diagnose-an-incident.md
+    - text: 使用反馈调整异常检测
+      url: how-tos/anomaly-feedback.md
+    - text: 生成指标图
+      url: how-tos/metrics-graph.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 术语表
+      url: glossary.md
+    - text: 指标顾问 API
+      url: https://go.microsoft.com/fwlink/?linkid=2141634
+    - text: Azure PowerShell
+      url: /powershell/module/az.cognitiveservices
+    - text: Azure CLI
+      url: /cli/azure/cognitiveservices
+- title: 帮助和反馈
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 支持和帮助选项
+      url: ../../cognitive-services/cognitive-services-support-options.md?context=/azure/cognitive-services/metrics-advisor/context/context

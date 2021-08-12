@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Figma 配置自动用户设置 | Microsoft Docs
 description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Figma 和取消其预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
-ms.author: zhchia
-ms.openlocfilehash: ec509cc04db87602b3e29230253d9b363a5e30d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 98e8e4a0b46834f09f36c27ff3b3b81419effddf
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96353912"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764041"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>教程：为 Figma 配置自动用户设置
 
@@ -112,7 +112,7 @@ Azure Active Directory 使用“分配”这一概念来确定哪些用户应收
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 

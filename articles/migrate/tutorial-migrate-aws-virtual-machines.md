@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 3b7b752af1456996f847b1aa367939a61b4c61bd
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 05d617b39160a55a15eb3e74b6b515ce053baf6c
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470492"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113769068"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>发现、评估 Amazon Web Services (AWS) VM 并将其迁移到 Azure
 
@@ -31,7 +31,7 @@ ms.locfileid: "110470492"
 > * 设置复制设备并部署配置服务器。
 > * 在要迁移的 AWS VM 上安装移动服务。
 > * 为 VM 启用复制。
-> * 跟踪和监视复制状态。 
+> * 跟踪和监视复制状态。
 > * 运行测试迁移，确保一切按预期正常进行。
 > * 运行到 Azure 的完整迁移。
 
@@ -64,7 +64,7 @@ ms.locfileid: "110470492"
 
 
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>先决条件
 
 - 确保要迁移的 AWS VM 正在运行受支持的操作系统版本。 出于迁移目的，AWS VM 将被视为物理计算机。 请参阅[受支持的操作系统和内核版本](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)，了解物理服务器迁移工作流。 可以使用标准命令（如 hostnamectl 或 uname -a）检查 Linux VM 的 OS 和内核版本 。  建议执行测试迁移（测试故障转移），验证 VM 是否按预期运行，然后再继续实际的迁移。
 - 要迁移到 Azure，请确保 AWS VM 符合[支持的配置](./migrate-support-matrix-physical-migration.md#physical-server-requirements)。
@@ -97,7 +97,7 @@ ms.locfileid: "110470492"
 
 - 在所选资源组中创建 VM。
 - 在所选虚拟网络中创建 VM。
-- 写入 Azure 托管磁盘。 
+- 写入 Azure 托管磁盘。
 
 ### <a name="create-an-azure-network"></a>创建 Azure 网络
 
@@ -122,8 +122,8 @@ ms.locfileid: "110470492"
 - 源 AWS VM 在端口 HTTPS 443（控制通道业务流程）和 TCP 9443（数据传输）上与复制设备进行入站通信，从而管理复制和传输复制数据。 然后，复制设备会通过端口 HTTPS 443 出站来协调复制数据并将该数据发送到 Azure。 若要配置这些规则，请编辑安全组入站/出站规则，在其中加入相应的端口和源 IP 信息。
 
    ![AWS 安全组 ](./media/tutorial-migrate-aws-virtual-machines/aws-security-groups.png)
-     
- 
+
+
    ![编辑安全设置 ](./media/tutorial-migrate-aws-virtual-machines/edit-security-settings.png)
 
 - 复制设备使用 MySQL。 查看在设备上安装 MySQL 的[选项](migrate-replication-appliance.md#mysql-installation)。
@@ -147,7 +147,7 @@ ms.locfileid: "110470492"
     - 单击此按钮后，无法更改此项目的目标区域。
     - 若要将 VM 迁移到其他区域，需要创建一个新的/不同的 Azure Migrate 项目。  
     > [!NOTE]
-    > 如果在创建 Azure Migrate 项目时选择了专用终结点作为该项目的连接方法，则还将为专用终结点连接配置恢复服务保管库。 确保可从复制设备访问专用终结点。 [**了解详细信息**](how-to-use-azure-migrate-with-private-endpoints.md#troubleshoot-network-connectivity)
+    > 如果在创建 Azure Migrate 项目时选择了专用终结点作为该项目的连接方法，则还将为专用终结点连接配置恢复服务保管库。 确保可从复制设备访问专用终结点。 [**了解详细信息**](troubleshoot-network-connectivity.md)
 
 6. 在“是否安装新的复制设备?”中，选择“安装复制设备”。 
 7. 在“下载并安装复制设备软件”中，下载设备安装程序和注册密钥。 需要使用该密钥来注册设备。 下载的密钥有效期为 5 天。
@@ -168,7 +168,9 @@ ms.locfileid: "110470492"
     9.10 在“摘要”中选择“安装” 。   
     9.11 “安装进度”显示有关安装过程的信息。 完成后，选择“完成”。 此时会出现一个显示重启消息的窗口。 选择“确定”。   
     9.12 接下来会出现一个窗口，显示有关配置服务器连接通行短语的消息。 将通行短语复制到剪贴板，并将它保存在源 VM 上的临时文本文件中。 在稍后的移动服务安装过程中，需要用到此通行短语。
-10. 安装完成后，设备配置向导将自动启动（也可使用在设备的桌面上创建的 cspsconfigtool 快捷方式手动启动该向导）。 在本教程中，我们将在要复制的源 VM 上手动安装移动服务，因此请在此步骤中创建一个虚拟帐户，然后继续。 可以提供以下详细信息来创建虚拟帐户：“guest”作为友好名称，“username”作为用户名，“password”作为帐户密码。 你将在“启用复制”阶段使用此虚拟帐户。 
+
+10. 安装完成后，设备配置向导将自动启动（也可使用在设备的桌面上创建的 cspsconfigtool 快捷方式手动启动该向导）。 在本教程中，我们将在要复制的源 VM 上手动安装移动服务，因此请在此步骤中创建一个虚拟帐户，然后继续。 可以提供以下详细信息来创建虚拟帐户：“guest”作为友好名称，“username”作为用户名，“password”作为帐户密码。 你将在“启用复制”阶段使用此虚拟帐户。
+
 11. 设备已安装并重启后，在“发现计算机”中的“选择配置服务器”内选择新设备，然后单击“完成注册”。   “完成注册”步骤会执行最终的几个任务来准备复制设备。
 
     ![完成注册](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
@@ -236,9 +238,9 @@ ms.locfileid: "110470492"
 
 2. 在“复制”>“源设置” > “你的计算机是否已虚拟化?”中，选择“未虚化/其他”   。
 3. 在“本地设备”中，选择已设置的 Azure Migrate 设备的名称。
-4. 在“进程服务器”中，选择复制设备的名称。 
+4. 在“进程服务器”中，选择复制设备的名称。
 5. 在“来宾凭据”中，请选择以前在[复制安装程序设置](#download-the-replication-appliance-installer)过程中创建的虚拟帐户，以手动安装出行服务（不支持推送安装）。 然后单击“下一页:虚拟机”。   
- 
+
     ![复制设置](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 6. 在“虚拟机”中的“从评估中导入迁移设置?”内，保留默认设置“否，我将手动指定迁移设置”。  
 7. 检查要迁移的每个 VM。 然后单击“下一页:目标设置”。
@@ -247,16 +249,16 @@ ms.locfileid: "110470492"
 
 8. 在“目标设置”中，选择订阅以及要迁移到的目标区域，并指定迁移之后 Azure VM 所在的资源组。
 9. 在“虚拟网络”中，选择迁移之后 Azure VM 要加入到的 Azure VNet/子网。  
-10. 在“缓存存储帐户”中，保留默认选项，以使用为项目自动创建的缓存存储帐户。 如果要指定其他存储帐户用作复制的缓存存储帐户，请使用下拉列表。 <br/> 
+10. 在“缓存存储帐户”中，保留默认选项，以使用为项目自动创建的缓存存储帐户。 如果要指定其他存储帐户用作复制的缓存存储帐户，请使用下拉列表。 <br/>
     > [!NOTE]
     >
     > - 如果选择了专用终结点作为 Azure Migrate 项目的连接方法，请向恢复服务保管库授予对缓存存储帐户的访问权限。 [**了解详细信息**](how-to-use-azure-migrate-with-private-endpoints.md#grant-access-permissions-to-the-recovery-services-vault)
-    > - 若要使用结合专用对等互连的 ExpressRoute 进行复制，请为缓存存储帐户创建专用终结点。 [**了解详细信息**](how-to-use-azure-migrate-with-private-endpoints.md#create-a-private-endpoint-for-the-storage-account-optional) 
+    > - 若要使用结合专用对等互连的 ExpressRoute 进行复制，请为缓存存储帐户创建专用终结点。 [**了解详细信息**](how-to-use-azure-migrate-with-private-endpoints.md#create-a-private-endpoint-for-the-storage-account-optional)
 11. 在“可用性选项”中，选择：
     -  可用性区域，将迁移的计算机固定到区域中的特定可用性区域。 使用此选项可跨可用性区域分配形成多节点应用程序层的服务器。 如果选择此选项，则需要在“计算”选项卡中指定用于每个选定计算机的可用性区域。仅当为迁移选择的目标区域支持可用性区域时，此选项才可用
     -  可用性集，将迁移的计算机放入可用性集。 若要使用此选项，所选的目标资源组必须具有一个或多个可用性集。
     - 如果不需要为迁移的计算机使用其中任何可用性配置，则选择“无需基础结构冗余”选项。
-    
+
 12. 在“磁盘加密类型”中，选择以下类型：
     - 使用平台管理的密钥进行静态加密
     - 使用客户管理的密钥进行静态加密
@@ -264,7 +266,7 @@ ms.locfileid: "110470492"
 
    > [!NOTE]
    > 若要使用 CMK 复制 VM，需要在目标资源组下[创建磁盘加密集](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set)。 磁盘加密集对象将托管磁盘映射到包含 CMK 的密钥保管库，以用于 SSE。
-  
+
 13. 在“Azure 混合权益”中：
 
     - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”。
@@ -283,7 +285,7 @@ ms.locfileid: "110470492"
 
 15. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”。
     - 可以从复制中排除磁盘。
-    - 如果排除了磁盘，迁移后，这些磁盘将不会出现在 Azure VM 中。 
+    - 如果排除了磁盘，迁移后，这些磁盘将不会出现在 Azure VM 中。
 
     ![磁盘设置](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
@@ -329,6 +331,10 @@ ms.locfileid: "110470492"
 
     ![清理迁移](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
 
+    > [!NOTE]
+    > 现在可以使用 SQL VM RP 注册运行 SQL Server 的服务器，以利用自动修补、自动备份和使用 SQL IaaS 代理扩展简化的许可证管理。
+    >- 选择“管理” > “复制服务器” > “包含 SQL Server 的计算机” > “计算和网络”，然后选择“是”，注册 SQL VM RP。
+    >- 如果你的 SQL Server 实例享有有效软件保障或 SQL Server 订阅的权益，并且你需要将此权益应用到所要迁移的计算机，请选择“面向 SQL Server 的 Azure 混合权益”。
 
 ## <a name="migrate-aws-vms"></a>迁移 AWS VM
 
@@ -354,7 +360,7 @@ ms.locfileid: "110470492"
 3. 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。
 4. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。
 5. 将流量交接到已迁移的 Azure VM 实例。
-6. 更新所有内部文档，以显示新的位置和 Azure VM 的 IP 地址。 
+6. 更新所有内部文档，以显示新的位置和 Azure VM 的 IP 地址。
 
 
 
@@ -370,7 +376,7 @@ ms.locfileid: "110470492"
     - 部署[Azure 磁盘加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)以帮助保护磁盘，并保护数据以防被盗和未经授权的访问。
     - 详细了解[保护 IaaS 资源的安全](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)，并访问[Azure 安全中心](https://azure.microsoft.com/services/security-center/)。
 - 为了便于监视和管理，请执行以下操作：
-    - 考虑部署[Azure 成本管理](../cost-management-billing/cloudyn/overview.md)以监视资源使用率和支出。
+    - 考虑部署[Azure 成本管理](../cost-management-billing/cost-management-billing-overview.md)以监视资源使用率和支出。
 
 
 
@@ -384,7 +390,7 @@ ms.locfileid: "110470492"
 
 **问题：** 我无法从之前创建的服务器评估结果中导入 VM 进行迁移   
 **答：** 目前，我们不支持为此工作流导入评估。 临时解决方法是，导出评估，然后在“启用复制”步骤期间手动选择 VM 建议。
-  
+
 **问题：** 我在尝试发现我的 AWS VM 时收到“未能提取 BIOS GUID”错误   
 **答：** 始终使用根登录进行身份验证，而不是使用任何伪用户。 另外，请查看 AWS VM 支持的操作系统。  
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/29/2021
 ms.author: jeedes
-ms.openlocfilehash: 3a65ba052f8cca1509def5a6bd36436673c292c6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 303946b7d9eeebef79bbae6fc9489534a10195a5
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108775962"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892303"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-equisolve"></a>教程：Azure Active Directory 与 Equisolve 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "108775962"
 * 让用户使用其 Azure AD 帐户自动登录到 Equisolve。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -76,7 +76,7 @@ ms.locfileid: "108775962"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://clients.equisolve.com/auth/saml/<ID>/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://clients.equisolve.com/auth/saml/<ID>/metadata`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://clients.equisolve.com/auth/saml/<ID>/auth`
 
@@ -105,7 +105,7 @@ ms.locfileid: "108775962"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -143,10 +143,8 @@ ms.locfileid: "108775962"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Equisolve 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 当你在“我的应用”中单击“Equisolve”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页面来启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 Equisolve。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 当你在“我的应用”中单击“Equisolve”磁贴时，如果该应用程序是在 SP 模式下配置的，则你会重定向到应用程序登录页面来启动登录流；如果它是在 IDP 模式下配置的，则你应会自动登录到为其设置了 SSO 的 Equisolve。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Equisolve 后，即可强制实施会话控制，从而实时保护组织的敏感数据，使其免遭外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 Equisolve 后，即可强制实施会话控制，从而实时保护组织的敏感数据，使其免遭外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

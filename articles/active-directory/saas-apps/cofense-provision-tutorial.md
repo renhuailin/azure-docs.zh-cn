@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 Cofense Recipient Sync 配置�
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Cofense Recipient Sync 及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 84fe20ef-0de0-4f7c-9b42-6385f3d834db
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2020
-ms.author: Zhchia
-ms.openlocfilehash: 70766fd93f0a70ecf6b5ee54dbdba3571f783878
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: a2e3ebb1c1062e989e159a69bd08042c269d91f2
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646038"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764086"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>教程：为 Cofense Recipient Sync 配置自动用户预配
 

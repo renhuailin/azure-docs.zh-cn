@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41d1be35d2add24cbbc171c3da3bd4d06bce4337
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0102ea602cb6e6778940c77aec444d412fa4ed6d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93359657"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114452637"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>使用 Azure SDK 为 VM 配置具有 Azure 资源托管标识
 
@@ -40,8 +40,8 @@ Azure 通过一系列 [Azure SDK](https://azure.microsoft.com/downloads) 支持�
 
 | SDK 中 IsInRole 中的声明 | 示例 |
 | --- | ------ | 
-| .NET   | [从具有已启用的 Azure 资源托管标识的已启用的 VM 中管理资源](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
-| Java   | [从具有 Azure 资源托管标识的已启用的 VM 中管理存储](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
+| .NET   | [从具有已启用的 Azure 资源托管标识的已启用的 VM 中管理资源](https://github.com/Azure-Samples/aad-dotnet-manage-resources-from-vm-with-msi) |
+| Java   | [从具有 Azure 资源托管标识的已启用的 VM 中管理存储](https://github.com/Azure-Samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group)|
 | Node.js| [创建启用了系统分配托管标识的 VM](https://azure.microsoft.com/resources/samples/compute-node-msi-vm/) |
 | Python | [创建启用了系统分配托管标识的 VM](https://azure.microsoft.com/resources/samples/compute-python-msi-vm/) |
 | Ruby   | [创建启用了系统分配托管标识的 Azure VM](https://github.com/Azure-Samples/compute-ruby-msi-vm/) |

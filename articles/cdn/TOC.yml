@@ -149,7 +149,7 @@
         - name: 文件压缩
           href: cdn-troubleshoot-compression.md
         - name: 允许的证书颁发机构
-          href: cdn-troubleshoot-allowed-ca.md
+          href: 'https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT'
         - name: 订阅套餐和带宽限制
           href: subscription-offerings.md
 - name: 参考

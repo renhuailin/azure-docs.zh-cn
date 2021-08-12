@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Fuze 配置自动用户预配 | Microsoft Docs
 description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Fuze 和取消其预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/05/2021
-ms.author: zhchia
-ms.openlocfilehash: 809b32fcf6f39ba9dec2980a79e8824e282b54b7
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.author: thwimmer
+ms.openlocfilehash: ab0bb459ca2119dce115f683c04b6a072ca9c4f6
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450083"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113763772"
 ---
 # <a name="tutorial-configure-fuze-for-automatic-user-provisioning"></a>教程：为 Fuze 配置自动用户预配
 
@@ -92,7 +92,7 @@ ms.locfileid: "106450083"
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 

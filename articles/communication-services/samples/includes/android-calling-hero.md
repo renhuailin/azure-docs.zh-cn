@@ -1,21 +1,21 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: azure-communication-services
 author: ddematheu2
 manager: chpalm
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 9/1/2020
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: 2a573a4df8abcdc2b32204faadbaa0df8c3dac15
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: cc6264e00cb627815f4008f147266357c625b72a
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108313683"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "114201125"
 ---
 适用于 Android 的 Azure 通信服务群组通话主图示例演示了如何使用通信服务通话 Android SDK 来创造一个包括语音和视频的群组通话体验。 在这篇示例快速入门中，你将了解如何设置和运行该示例。 针对上下文提供了此示例的概述。
 
@@ -52,7 +52,7 @@ ms.locfileid: "108313683"
 
 - 具有活动订阅的 Azure 帐户。 有关详细信息，请参阅[创建免费账户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 计算机上运行的 [Android Studio](https://developer.android.com/studio)
-- 一个 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信资源](../../quickstarts/create-communication-resource.md)。
+- 一个 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信服务资源](../../quickstarts/create-communication-resource.md)。
 - 运行[身份验证终结点](../../tutorials/trusted-service-tutorial.md)以获取访问令牌的 Azure Function。
 
 ## <a name="running-sample-locally"></a>在本地运行示例

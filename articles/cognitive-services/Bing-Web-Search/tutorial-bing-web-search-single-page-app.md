@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: ca542ac6c5184a0307a9293fada305a6c6356edd
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 5c4165c981ce272b16a068014f9678ad82d3d4b5
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102434162"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112914078"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>教程：使用必应 Web 搜索 API 创建单页应用
 
@@ -473,4 +473,4 @@ cors-proxy-server
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [必应 Web 搜索 API v7 参考](//docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)
+> [必应 Web 搜索 API v7 参考](/rest/api/cognitiveservices/bing-web-api-v7-reference)

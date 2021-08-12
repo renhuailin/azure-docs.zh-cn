@@ -6,20 +6,18 @@ ms.author: nimag
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: eb0f596a2da9b501f57ca1b2795bffa338e3234c
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: f394448f0b488f468ce09c13d036585db032bda9
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560778"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112536019"
 ---
 本快速入门将介绍如何使用适用于 JavaScript 的 Azure 通信服务通话 SDK 开始通话。
 
-> [!NOTE]
-> 本文档使用 1.1.0-beta.1 版通话 SDK。
+## <a name="sample-code"></a>代码示例
 
-> [!NOTE]
-> 在 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-voice-calling) 上查找此快速入门的最终代码
+可以从 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-voice-calling) 下载示例应用。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -27,7 +25,6 @@ ms.locfileid: "111560778"
 - [Node.js](https://nodejs.org/)，活动 LTS 和维护 LTS 版本（建议使用 8.11.1 和 10.14.1）。
 - 活动的通信服务资源。 [创建通信服务资源](../../../create-communication-resource.md)。
 - 用于实例化呼叫客户端的用户访问令牌。 了解如何[创建和管理用户访问令牌](../../../access-tokens.md)。
-
 
 [!INCLUDE [Calling with JavaScript](./get-started-javascript-setup.md)]
 
@@ -98,10 +95,11 @@ const hangUpButton = document.getElementById("hang-up-button");
 | CallAgent                        | CallAgent 用于启动和管理呼叫。                                                                                            |
 | AzureCommunicationTokenCredential | AzureCommunicationTokenCredential 类实现用于实例化 CallAgent 的 CommunicationTokenCredential 接口。 |
 
-
 ## <a name="authenticate-the-client"></a>验证客户端
 
-你需要在文本字段中输入资源的有效用户访问令牌，并单击“提交”。 如果还没有可用的令牌，请参阅[用户访问令牌](../../../access-tokens.md)文档。 使用 `CallClient`，通过 `CommunicationTokenCredential` 初始化 `CallAgent` 实例，这将使我们能够启动和接收呼叫。 将下面的代码添加到 client.js：
+你需要在文本字段中输入资源的有效用户访问令牌，并单击“提交”。 如果还没有可用的令牌，请参阅[用户访问令牌](../../../access-tokens.md)文档。 使用 `CallClient`，通过 `CommunicationTokenCredential` 初始化 `CallAgent` 实例，这将使我们能够启动和接收呼叫。 
+
+将下面的代码添加到 client.js：
 
 ```javascript
 submitToken.addEventListener("click", async () => {
@@ -167,7 +165,3 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 :::image type="content" source="../../media/javascript/calling-javascript-app-2.png" alt-text="已完成的 JavaScript 应用程序的屏幕截图。":::
 
 可以通过在相应文本字段中提供有效用户访问令牌和用户 ID 并单击“开始呼叫”按钮，启动出站 VOIP 呼叫。 呼叫 `8:echo123` 会将你连接到回显机器人，这对于入门和验证音频设备是否正常运行非常有用。
-
-## <a name="sample-code"></a>代码示例
-
-可以从 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-voice-calling) 下载示例应用。

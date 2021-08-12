@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1a39b963fa88866e02e9813c68d1b6504d3e98c7
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c8a93ce59927144ce02edb8c1193406a29b18530
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956528"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913772"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中通过无服务器 SQL 池使用 OPENROWSET
 
@@ -189,7 +189,10 @@ ROWTERMINATOR ='row_terminator'`
 
 指定要使用的行终止符。 如果未指定行终止符，将使用默认终止符之一。 PARSER_VERSION = '1.0' 的默认终止符为 \r\n、\n 和 \r。 PARSER_VERSION = '2.0' 的默认终止符为 \r\n 和 \n。
 
-ESCAPECHAR = 'char'
+> [!NOTE]
+> 使用 PARSER_VERSION='1.0' 并指定 \n（换行符）作为行终止符时，它将自动以 \r（回车符）作为前缀，从而形成行终止符 \r\n。
+
+ESCAPE_CHAR = 'char'
 
 指定文件中用于将自身及文件中所有分隔符值转义的字符。 如果转义字符后接除本身以外的某个值或者任何分隔符值，则读取值时会删除该转义字符。 
 
@@ -221,6 +224,8 @@ CSV 分析器版本 1.0 是默认版本且功能丰富。 版本 2.0 是为提�
 CSV 分析器版本 1.0 详细信息：
 
 - 不支持以下选项：HEADER_ROW。
+- 默认终止符为 \r\n、\n 和 \r。 
+- 如果指定 \n（换行符）作为行终止符，它将自动以 \r（回车符）作为前缀，从而形成行终止符 \r\n。
 
 CSV 分析器版本 2.0 详细信息：
 
@@ -233,6 +238,7 @@ CSV 分析器版本 2.0 详细信息：
 - DATE 数据类型支持的格式：YYYY-MM-DD
 - TIME 数据类型支持的格式：HH:MM:SS[.fractional seconds]
 - DATETIME2 数据类型支持的格式：YYYY-MM-DD HH:MM:SS[.fractional seconds]
+- 默认终止符为 \r\n 和 \n。
 
 HEADER_ROW = { TRUE | FALSE }
 
@@ -279,10 +285,10 @@ Parquet 文件和 Delta Lake 文件包含每一列的类型说明。 下表介�
 | BINARY |STRING |varchar \*（UTF8 排序规则） |
 | BINARY |ENUM|varchar \*（UTF8 排序规则） |
 | FIXED_LEN_BYTE_ARRAY |UUID |uniqueidentifier |
-| BINARY |DECIMAL |Decimal |
+| BINARY |DECIMAL |decimal |
 | BINARY |JSON |varchar(8000) \*（UTF8 排序规则） |
 | BINARY |BSON | 不支持 |
-| FIXED_LEN_BYTE_ARRAY |DECIMAL |Decimal |
+| FIXED_LEN_BYTE_ARRAY |DECIMAL |decimal |
 | BYTE_ARRAY |INTERVAL | 不支持 |
 | INT32 |INT(8, true) |smallint |
 | INT32 |INT(16, true) |smallint |
@@ -291,11 +297,11 @@ Parquet 文件和 Delta Lake 文件包含每一列的类型说明。 下表介�
 | INT32 |INT(16, false) |int |
 | INT32 |INT(32, false) |bigint |
 | INT32 |DATE |date |
-| INT32 |DECIMAL |Decimal |
+| INT32 |DECIMAL |decimal |
 | INT32 |TIME (MILLIS)|time |
 | INT64 |INT(64, true) |bigint |
 | INT64 |INT(64, false) |decimal(20,0) |
-| INT64 |DECIMAL |Decimal |
+| INT64 |DECIMAL |decimal |
 | INT64 |TIME (MICROS) |time - 不支持 TIME(NANOS) |
 |INT64 |TIMESTAMP (MILLIS/MICROS) |datetime2 - 不支持 TIMESTAMP(NANOS) |
 |[复杂类型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |列表 |varchar(8000)，序列化为 JSON |

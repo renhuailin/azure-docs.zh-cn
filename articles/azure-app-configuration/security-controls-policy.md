@@ -1,18 +1,18 @@
 ---
 title: Azure 应用程序配置的 Azure Policy 法规合规性控制措施
 description: 列出可用于 Azure 应用程序配置的 Azure Policy 法规合规性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 06/11/2021
+ms.date: 07/16/2021
 ms.topic: sample
 author: AlexandraKemperMS
 ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 584473eae8a9b655dc1dda996927962ef76822fd
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: abc3dd4d68e4054cb80f92474a6b6a5bf49c5083
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112033143"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114404725"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-app-configuration"></a>Azure 应用程序配置的 Azure Policy 法规合规性控制措施
 

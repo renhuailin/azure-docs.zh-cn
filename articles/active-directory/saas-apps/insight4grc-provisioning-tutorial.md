@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Insight4GRC 配置自动用户预配 | Microsoft Docs
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Insight4GRC 以及如何取消预配。
 services: active-directory
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2020
-ms.author: Zhchia
-ms.openlocfilehash: 7d5904461d642f47e691d0a1aaa1f1faf439df1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: d3172f571afbcdbac83a527ef1de5e56283b7438
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96178094"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766957"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>教程：为 Insight4GRC 配置自动用户预配
 
@@ -82,7 +82,7 @@ ms.locfileid: "96178094"
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 

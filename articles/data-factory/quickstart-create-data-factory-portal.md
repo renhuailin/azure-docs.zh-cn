@@ -4,14 +4,14 @@ description: 创建包含管道的数据工厂。该管道可将数据从 Azure 
 author: jianleishen
 ms.service: data-factory
 ms.topic: quickstart
-ms.date: 12/14/2020
+ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: 888350dacd2437f585c6571b991ae06eed2d32ab
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 9d8bf0d62518c94458a5b989c040f8eaefea11cd
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482158"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436993"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入门：使用 Azure 数据工厂 UI 创建数据工厂 
 
@@ -65,12 +65,12 @@ ms.locfileid: "109482158"
 
 1. 选择“查看 + 创建”，然后在通过验证后选择“创建” 。 创建完成后，选择“转到资源”导航到“数据工厂”页。 
 
-1. 选择“创作和监视”磁贴，在单独的浏览器选项卡中启动 Azure 数据工厂用户界面 (UI) 应用程序。
+1. 在“打开 Azure 数据工厂工作室”磁贴上选择“打开”，在单独的浏览器选项卡上启动 Azure 数据工厂用户界面 (UI) 应用程序。 
    
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含“创作和监视”磁贴。":::
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂主页，其中包含“打开 Azure 数据工厂工作室”磁贴。":::
    
    > [!NOTE]
-   > 如果你看到 Web 浏览器停留在“正在授权”状态，请清除“阻止第三方 Cookie 和站点数据”复选框。 或者使其保持选中状态，为 **login.microsoftonline.com** 创建一个例外，然后再次尝试打开该应用。
+   > 如果看到 Web 浏览器停留在“正在授权”状态，请清除“阻止第三方 Cookie 和站点数据”复选框。 或者使其保持选中状态，为 **login.microsoftonline.com** 创建一个例外，然后再次尝试打开该应用。
    
 
 ## <a name="create-a-linked-service"></a>创建链接服务

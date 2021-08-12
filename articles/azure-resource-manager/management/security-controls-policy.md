@@ -1,18 +1,18 @@
 ---
 title: Azure 资源管理器的 Azure Policy 法规遵从性控制
 description: 列出可用于 Azure 资源管理器的 Azure Policy 法规遵从性控制。 这些内置的策略定义提供了管理 Azure 资源合规性的常用方法。
-ms.date: 06/11/2021
+ms.date: 07/16/2021
 ms.topic: sample
 author: tfitzmac
 ms.author: tomfitz
 ms.service: azure-resource-manager
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 3c3a42ced171a6f939a07278f219a5654adbfae8
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: dda547aa35c0cc8ad8b300d46d32c7a44031783d
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112034511"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114404360"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-resource-manager"></a>Azure 资源管理器的 Azure Policy 法规遵从性控制
 

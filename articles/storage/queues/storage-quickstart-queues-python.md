@@ -3,19 +3,19 @@ title: 快速入门：Azure 队列存储客户端库 v12 - Python
 description: 介绍如何使用适用于 Python 的 Azure 队列存储客户端库 v12 创建队列并在其中添加消息。 然后介绍如何在队列中读取和删除消息。 另外还介绍如何删除队列。
 author: twooley
 ms.author: twooley
-ms.date: 12/10/2019
+ms.date: 07/23/2021
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: 68f68c32b160757e82d59b1dd5ee4847a06ec698
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: cafd9059139dc4ee1d194bd57696ef204921bcd7
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534363"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114674360"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>快速入门：适用于 Python 的 Azure 队列存储客户端库 v12
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9fecf4e32da13964f8c27dc559c78921b22bcb4c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 44a3577fede7985dcc073a73ea6ad76eba381987
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110166293"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113280240"
 ---
 语音服务的核心功能之一是能够识别并转录人类语音（通常称为语音转文本）。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音转文本转换。
 
@@ -36,7 +36,7 @@ ms.locfileid: "110166293"
 
 ## <a name="create-a-speech-configuration"></a>创建语音配置
 
-若要使用语音 SDK 调用语音服务，需要创建 [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig)。 此类包含有关你的订阅的信息，例如你的密钥和关联的区域、终结点、主机或授权令牌。 通过使用密钥和区域创建 [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig)。 请参阅[查找密钥和区域](../../../overview.md#find-keys-and-region)页面，查找密钥区域对。
+若要使用语音 SDK 调用语音服务，需要创建 [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig)。 此类包含有关订阅的信息，例如密钥和关联的位置/区域、终结点、主机或授权令牌。 使用密钥和位置/区域创建 [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig)。 请参阅[查找密钥和位置/区域](../../../overview.md#find-keys-and-locationregion)页面，查找密钥位置/区域对。
 
 ```csharp
 using System;
@@ -49,7 +49,7 @@ class Program
 {
     async static Task Main(string[] args)
     {
-        var speechConfig = SpeechConfig.FromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+        var speechConfig = SpeechConfig.FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
     }
 }
 ```
@@ -58,7 +58,7 @@ class Program
 
 * 使用终结点：传入语音服务终结点。 密钥或授权令牌是可选的。
 * 使用主机：传入主机地址。 密钥或授权令牌是可选的。
-* 使用授权令牌：传入授权令牌和关联的区域。
+* 使用授权令牌：传入授权令牌和关联的区域/位置。
 
 > [!NOTE]
 > 无论你是要执行语音识别、语音合成、翻译，还是意向识别，都需要创建一个配置。
@@ -88,7 +88,7 @@ class Program
 
     async static Task Main(string[] args)
     {
-        var speechConfig = SpeechConfig.FromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+        var speechConfig = SpeechConfig.FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
         await FromMic(speechConfig);
     }
 }
@@ -120,7 +120,7 @@ class Program
 
     async static Task Main(string[] args)
     {
-        var speechConfig = SpeechConfig.FromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+        var speechConfig = SpeechConfig.FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
         await FromFile(speechConfig);
     }
 }
@@ -163,7 +163,7 @@ class Program
 
     async static Task Main(string[] args)
     {
-        var speechConfig = SpeechConfig.FromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+        var speechConfig = SpeechConfig.FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
         await FromStream(speechConfig);
     }
 }
@@ -197,7 +197,7 @@ switch (result.Reason)
         {
             Console.WriteLine($"CANCELED: ErrorCode={cancellation.ErrorCode}");
             Console.WriteLine($"CANCELED: ErrorDetails={cancellation.ErrorDetails}");
-            Console.WriteLine($"CANCELED: Did you update the subscription info?");
+            Console.WriteLine($"CANCELED: Did you update the speech key and location/region info?");
         }
         break;
 }
@@ -255,7 +255,7 @@ recognizer.Canceled += (s, e) =>
     {
         Console.WriteLine($"CANCELED: ErrorCode={e.ErrorCode}");
         Console.WriteLine($"CANCELED: ErrorDetails={e.ErrorDetails}");
-        Console.WriteLine($"CANCELED: Did you update the subscription info?");
+        Console.WriteLine($"CANCELED: Did you update the speech key and location/region info?");
     }
 
     stopRecognition.TrySetResult(0);
@@ -311,7 +311,7 @@ speechConfig.SpeechRecognitionLanguage = "it-IT";
 > [!IMPORTANT]
 > “短语列表”功能适用于以下语言：en-US、de-DE、en-AU、en-CA、en-GB、en-IN、es-ES、fr-FR、it-IT、ja-JP、pt-BR、zh-CN
 >
-> 对于其他区域设置，如果有大量短语，那么提高准确性的一个更好的做法是[训练自定义模型](../../../custom-speech-overview.md)。
+> 应在短语数量只有几百的情况下使用短语列表功能。 如果列表较大或语言当前不受支持，则[训练自定义模型](../../../custom-speech-overview.md)可能是提高准确性的更好选择。
 >
 > 不要对自定义终结点使用“短语列表”功能。 而是训练包含短语的自定义模型。
 

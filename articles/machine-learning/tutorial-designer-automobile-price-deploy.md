@@ -1,26 +1,28 @@
 ---
-title: 教程：使用设计器部署 ML 模型
+title: 教程：设计器 - 部署无代码模型
 titleSuffix: Azure Machine Learning
-description: 在 Azure 机器学习设计器中生成预测分析解决方案。 使用拖放式模块训练、评分和部署机器学习模型。
+description: 使用 Azure 机器学习设计器部署机器学习模型来预测汽车价格。
 author: likebupt
 ms.author: keli19
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 05/25/2021
-ms.custom: designer
-ms.openlocfilehash: 73cc893815cf591812c95c8d8b092a4b58697917
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 06/11/2021
+ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: a9fe604673ee53aa6772e6f382a4a3e3a53fb903
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457641"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115004"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>教程：使用设计器部署机器学习模型
+# <a name="tutorial-designer---deploy-a-machine-learning-model"></a>教程：设计器 - 部署机器学习模型
+
+使用设计器部署机器学习模型来预测汽车的价格。 本教程是由两个部分构成的系列教程的第二部分。
 
 
-可以部署在[本教程第一部分](tutorial-designer-automobile-price-train-score.md)开发的预测模型供其他人使用。 在第一部分中，你已定型了模型。 现在，让我们基于用户输入来生成预测。 本教程的此部分介绍如何：
+在[本教程的第一部分](tutorial-designer-automobile-price-train-score.md)，你训练了有关汽车价格的线性回归模型。 在第二部分，你将部署该模型供其他人使用。 在本教程中，你将了解：
 
 > [!div class="checklist"]
 > * 创建实时推理管道。

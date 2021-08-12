@@ -9,12 +9,12 @@ metadata:
   ms.date: 06/08/2021
   ms.author: victorh
   ms.custom: references_regions
-  ms.openlocfilehash: afbd0c7fbbe6565a2f8e80c394d8ac608d1aa27a
-  ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+  ms.openlocfilehash: 7bef7a0cbc81f4d72a28d74feb5a526789c0ff59
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/09/2021
-  ms.locfileid: "111907127"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114469714"
 title: 应用程序网关常见问题
 summary: >
   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -126,8 +126,8 @@ sections:
       只要建立 IP 连接，应用程序网关就能与其所在的虚拟网络外部的实例进行通信。 应用程序网关还能与其所在订阅外部的实例通信。 如果你打算使用内部 IP 作为后端池成员，请使用[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)或 [Azure VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)。
   - question: 是否可以在应用程序网关子网中部署其他任何组件？
     answer: 否。 但可以在子网中部署其他应用程序网关。
-  - question: 能否更改现有应用程序网关的虚拟网络或子网？
-    answer: "只能跨同一虚拟网络中的子网移动应用程序网关。 另请务必注意，只有在应用程序网关进入“已停止”状态后才能执行此操作。 此操作只能使用 Azure PowerShell 和 Azure CLI 运行以下命令完成：\n\n**Azure PowerShell**\n\n```azurepowershell-interactive\n$VNet = Get-AzVirtualNetwork -Name \"<VNetName>\" -ResourceGroupName \"<ResourceGroup>\"\n$Subnet = Get-AzVirtualNetworkSubnetConfig -Name \"<NewSubnetName>\" -VirtualNetwork $VNet\n$AppGw = Get-AzApplicationGateway -Name \"<ApplicationGatewayName>\" -ResourceGroupName \"<ResourceGroup>\"\nStop-AzApplicationGateway -ApplicationGateway $AppGw\n$AppGw = Set-AzApplicationGatewayIPConfiguration -ApplicationGateway $AppGw -Name \"<IPConfigurationName>\" -Subnet $Subnet\nSet-AzApplicationGateway -ApplicationGateway $AppGw\n```\n有关详细信息，请参阅 [Set-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/Set-AzApplicationGatewayIPConfiguration)。\n\n**Azure CLI**\n\n```azurecli-interactive\naz network application-gateway stop -g <ResourceGroup> -n <ApplicationGatewayName>\naz network application-gateway update -g <ResourceGroup> -n <ApplicationGatewayName> --set gatewayIpConfigurations[0].subnet.id=<subnetID>\n``` \n"
+  - question: 是否可以更改现有应用程序网关的虚拟网络或子网？
+    answer: "只能在同一虚拟网络中的子网之间移动应用程序网关。 具有公共和专用前端的 V1 以及仅具有公共前端的 V2 支持此操作。 还需要注意的是，只有在应用程序网关处于“已停止”状态时，才能执行此操作。 请记住，停止/启动 V1 将更改公共 IP。 此操作只能使用 Azure PowerShell 和 Azure CLI 通过运行以下命令来完成：\n\n**Azure PowerShell**\n\n```azurepowershell-interactive\n$VNet = Get-AzVirtualNetwork -Name \"<VNetName>\" -ResourceGroupName \"<ResourceGroup>\"\n$Subnet = Get-AzVirtualNetworkSubnetConfig -Name \"<NewSubnetName>\" -VirtualNetwork $VNet\n$AppGw = Get-AzApplicationGateway -Name \"<ApplicationGatewayName>\" -ResourceGroupName \"<ResourceGroup>\"\nStop-AzApplicationGateway -ApplicationGateway $AppGw\n$AppGw = Set-AzApplicationGatewayIPConfiguration -ApplicationGateway $AppGw -Name $AppGw.GatewayIPConfigurations.Name -Subnet $Subnet\n#If you have a private frontend IP configuration, uncomment and run the next line:\n#$AppGw = Set-AzApplicationGatewayFrontendIPConfig -Name $AppGw.FrontendIPConfigurations.Name[1] -Subnet $Subnet -ApplicationGateway $AppGw\nSet-AzApplicationGateway -ApplicationGateway $AppGw\n```\n有关详细信息，请参阅 [Set-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/Set-AzApplicationGatewayIPConfiguration)。\n\n**Azure CLI**\n\n```azurecli-interactive\naz network application-gateway stop -g <ResourceGroup> -n <ApplicationGatewayName>\naz network application-gateway update -g <ResourceGroup> -n <ApplicationGatewayName> --set gatewayIpConfigurations[0].subnet.id=<subnetID>\n``` \n"
   - question: 应用程序网关子网是否支持网络安全组？
     answer: >
       请参阅[应用程序网关子网中的网络安全组](./configuration-infrastructure.md#network-security-groups)。
@@ -242,7 +242,7 @@ sections:
       可通过多种方式查看和分析访问日志。 可以使用 Azure Monitor 日志、Excel、Power BI 等。
 
 
-      还可以使用一个资源管理器模板，针对应用程序网关访问日志安装和运行常用的 [GoAccess](https://goaccess.io/) 日志分析器。 GoAccess 提供宝贵的 HTTP 流量统计信息，例如唯一访问者、请求的文件、主机、操作系统、浏览器和 HTTP 状态代码。 有关详细信息，请参阅 GitHub 中的[资源管理器模板文件夹中的自述文件](https://aka.ms/appgwgoaccessreadme)。
+      还可以使用一个资源管理器模板，针对应用程序网关访问日志安装和运行常用的 [GoAccess](https://goaccess.io/) 日志分析器。 GoAccess 提供宝贵的 HTTP 流量统计信息，例如唯一访问者、请求的文件、主机、操作系统、浏览器和 HTTP 状态代码。 有关详细信息，请参阅 GitHub 中的[资源管理器模板文件夹中的自述文件](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/application-gateway-logviewer-goaccess)。
   - question: 有哪些原因可能会导致后端运行状况返回未知状态？
     answer: >
       通常，如果对后端的访问被应用程序网关子网中的网络安全组 (NSG)、自定义 DNS 或用户定义的路由 (UDR) 阻止，则会看到未知状态。 有关详细信息，请参阅[应用程序网关的后端运行状况、诊断日志记录和指标](application-gateway-diagnostics.md)。

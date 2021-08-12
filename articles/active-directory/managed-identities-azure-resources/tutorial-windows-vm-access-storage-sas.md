@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/15/2020
+ms.date: 06/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4f8b23d8f717e430e865e391a40692773f0beace
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell, subject-rbac-steps
+ms.openlocfilehash: 7f5ae30f7bb476b5bc3c76c2a22d4dda2fc402d8
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776386"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112966313"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>教程：使用 Windows VM 系统分配的托管标识通过 SAS 凭据访问 Azure 存储
 
@@ -75,14 +75,18 @@ ms.locfileid: "107776386"
 Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用托管标识从资源管理器检索存储 SAS，然后使用 SAS 来访问存储。  在此步骤中，将向 VM 的系统分配的托管标识授予对存储帐户 SAS 的访问权限。   
 
 1. 导航回新创建的存储帐户。   
-2. 单击左侧面板中的“访问控制(IAM)”  链接。  
-3. 单击页面顶部的“+ 添加角色分配”，为 VM 添加新的角色分配
-4. 在页面左侧，将“角色”设置为“存储帐户参与者”。  
-5. 在下一个下拉列表中，把“将访问权限分配给”设置为资源“虚拟机”。  
-6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。   
-7. 最后，在“选择”下，从下拉列表中选择 Windows 虚拟机，然后单击“保存”。  
+1. 单击“访问控制(IAM)”  。
+1. 单击“添加” > “添加角色分配”以打开“添加角色分配”页。 
+1. 分配以下角色。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
+    
+    | 设置 | 值 |
+    | --- | --- |
+    | 角色 | 存储帐户参与者 |
+    | 将访问权限分配到 | 托管标识 |
+    | 系统分配 | 虚拟机 |
+    | Select | &lt;你的 Windows 虚拟机&gt; |
 
-    ![Alt 图像文本](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
+    ![Azure 门户中的“添加角色分配”页。](../../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 标识获取访问令牌，并使用它调用 Azure 资源管理器 
 

@@ -1,16 +1,16 @@
 ---
 author: dominicbetts
 ms.author: dominicbetts
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 04/29/2021
-ms.openlocfilehash: 3a0746854088dc328e38c3f894da895b5d27f273
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: ed2e3283ab6e2c708dd2aef41b8cf282ffaacbb0
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278124"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403717"
 ---
 ## <a name="clean-up-resources"></a>清理资源
 
-如果已完成快速入门和教程，请参阅[清理资源](../articles/iot-pnp/set-up-environment.md#clean-up-resources)。
+如果已完成快速入门和教程，请参阅[清理资源](../articles/iot-develop/set-up-environment.md#clean-up-resources)。

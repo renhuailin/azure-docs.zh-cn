@@ -1,52 +1,51 @@
 ---
 title: Azure 安全中心的权限 | Microsoft Docs
-description: 本文介绍 Azure 安全中心如何使用基于角色的访问控制将权限分配给用户，并辨别每个角色允许的操作。
+description: 本文介绍 Azure 安全中心如何使用基于角色的访问控制为用户分配权限并确定每个角色允许的操作。
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 01/03/2021
+ms.date: 07/04/2021
 ms.author: memildin
-ms.openlocfilehash: fbd7b13e07a19c75c4f41ff4f3e2bdc66e585c9e
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: 50a907625d9ef2db84289165f377b9ebf5f5d56e
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903517"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113297489"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure 安全中心的权限
 
-Azure 安全中心使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 提供可在 Azure 中分配给用户、组和服务的[内置角色](../role-based-access-control/built-in-roles.md)。
+安全中心使用 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 提供可在 Azure 中分配给用户、组和服务的[内置角色](../role-based-access-control/built-in-roles.md)。
 
-安全中心会评估资源的配置以识别安全问题和漏洞。 如果分配有资源所属的订阅或资源组的“所有者”、“参与者”或“读取者”角色，则仅可在安全中心看到与资源相关的信息。
+安全中心会评估资源的配置以识别安全问题和漏洞。 在安全中心，只有在为订阅或资源的资源组分配了“所有者”、“参与者”或“读取者”角色时，你才能看到与资源相关的信息。
 
-除这些角色外，还有两个特定的安全中心角色：
+除了内置角色外，还有两个特定于安全中心的角色：
 
 * **安全读取者**：属于此角色的用户对安全中心具有查看权限。 该用户可查看建议、警报、安全策略和安全状态，但不能更改。
 * **安全管理员**：属于此角色的用户具有与安全读取者相同的权限，此外，还可以更新安全策略、关闭警报和建议。
 
 > [!NOTE]
-> 安全角色（安全读取者和安全管理员）只能访问安全中心。 安全角色无权访问存储、Web 和移动或物联网等其他 Azure 服务区域。
->
+> 安全角色（安全读取者和安全管理员）只能访问安全中心。 安全角色无权访问存储、Web 和移动或物联网等其他 Azure 服务。
 
 ## <a name="roles-and-allowed-actions"></a>角色和允许的操作
 
 下表显示安全中心的角色和允许的操作。
 
-| 操作                                                                                                                                        | 安全读取者/ <br> 读取器 | 安全管理员 | 资源组参与者/ <br> 资源组所有者 | 订阅参与者 | 订阅所有者 |
-|:----------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------:|:--------------:|:------------------------------------------------------:|:------------------------:|:------------------:|
-| 编辑安全策略                                                                                                                          | -                             | ✔             | -                                                      | -                        | ✔                 |
-| 添加/分配计划（包括合规性标准）                                                                           | -                             | -              | -                                                      | -                        | ✔                 |
-| 启用/禁用 Azure Defender                                                                                                               | -                             | ✔             | -                                                      | -                        | ✔                 |
-| 启用/禁用自动预配                                                                                                            | -                             | ✔             | -                                                      | ✔                       | ✔                  |
+| **操作**                                                                                                                      | [安全读取者](../role-based-access-control/built-in-roles.md#security-reader) / <br> [读者](../role-based-access-control/built-in-roles.md#reader) | [安全管理员](../role-based-access-control/built-in-roles.md#security-admin) | [参与者](../role-based-access-control/built-in-roles.md#contributor) / [所有者](../role-based-access-control/built-in-roles.md#owner)| [参与者](../role-based-access-control/built-in-roles.md#contributor)| [所有者](../role-based-access-control/built-in-roles.md#owner)|
+|:----------------------------------------------------------------------------------------------------------------------------|:-----------------------------:|:--------------:|:------------------------------------------------------:|:------------------------:|:------------------:|
+||||（资源组级别）|（订阅级别）|（订阅级别）|
+| 添加/分配计划（包括合规性标准）                                                         | -                             | -              | -                                                      | -                        | ✔                 |
+| 编辑安全策略                                                                                                        | -                             | ✔             | -                                                      | -                        | ✔                 |
+| 启用/禁用 Azure Defender 计划                                                                                             | -                             | ✔             | -                                                      | -                        | ✔                 |
+| 启用/禁用自动预配                                                                                          | -                             | ✔             | -                                                      | ✔                       | ✔                  |
+| 消除警报                                                                                                              | -                             | ✔             | -                                                      | ✔                       | ✔                  |
 | 应用资源的安全建议</br> （和使用[修补程序](security-center-remediate-recommendations.md#fix-button)） | -                             | -              | ✔                                                     | ✔                        | ✔                 |
-| 消除警报                                                                                                                                | -                             | ✔             | -                                                      | ✔                       | ✔                  |
-| 查看警报和建议                                                                                                               | ✔                            | ✔              | ✔                                                     | ✔                        | ✔                 |
+| 查看警报和建议                                                                                             | ✔                            | ✔              | ✔                                                     | ✔                        | ✔                 |
+||||||
 
 > [!NOTE]
 > 对于需要完成任务的用户，建议尽可能为其分配权限最小的角色。 例如，将“读者”角色分配到只需查看有关资源的安全运行状况而不执行操作（例如应用建议或编辑策略）的用户。
->
->
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍安全中心如何使用 Azure RBAC 将权限分配给用户，并辨别每个角色允许的操作。 现在，已熟悉监视订阅安全状态所需的角色分配，请编辑安全策略，并应用建议，了解如何：

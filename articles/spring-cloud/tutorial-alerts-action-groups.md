@@ -1,18 +1,18 @@
 ---
 title: 教程：使用警报和操作组监视 Azure Spring Cloud 资源 | Microsoft Docs
 description: 了解如何使用 Spring Cloud 警报。
-author: MikeDodaro
-ms.author: barbkess
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 919c72453b4fcbe3b7decc7a045a6656171ecb06
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 25ff0361c960cac45b4bbeef089ff97fee07da8f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132442"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114470268"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>教程：使用警报和操作组监视 Spring Cloud 资源
 

@@ -6,13 +6,13 @@ author: dearandyxu
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 1fad6274b1dbbc4bf255caabd79352b3c836e352
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 07/05/2021
+ms.openlocfilehash: b003a6efba93e35d39601a33449cadb212f17c28
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606680"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436435"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>使用 Azure 门户以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库中的数据库
 
@@ -253,13 +253,14 @@ END
 8. 单击“创建”。      
 9. 创建完成后，可以看到图中所示的“数据工厂”页。
    
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含“创作和监视”磁贴。":::
-10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂主页，其中包含“打开 Azure 数据工厂工作室”磁贴。":::
+
+10. 在“打开 Azure 数据工厂工作室”磁贴上选择“打开”，在单独的选项卡中登录 Azure 数据工厂用户界面 (UI)。 
 
 ## <a name="create-self-hosted-integration-runtime"></a>创建自承载的 Integration Runtime
 在将数据从专用网络（本地）中的数据存储移至 Azure 数据存储时，请在本地环境中安装自承载的 Integration Runtime (IR)。 自承载的 IR 可在专用网络和 Azure 之间移动数据。 
 
-1. 在 Azure 数据工厂 UI 的“开始使用”页上，从最左侧的窗格选择[“管理”选项卡](./author-management-hub.md)。
+1. 在 Azure 数据工厂 UI 的主页上，从最左侧的窗格选择[“管理”选项卡](./author-management-hub.md)。
 
    ![主页“管理”按钮](media/doc-common-process/get-started-page-manage-button.png)
 
@@ -476,7 +477,7 @@ END
         | 名称 | 类型 | 值 | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | 字符串 | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![存储过程活动 - 存储过程设置](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. 选择“全部发布”，以便将创建的实体发布到数据工厂服务。 

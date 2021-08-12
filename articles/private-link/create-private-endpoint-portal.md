@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: 395912ae70c5a01bd7de9a80cf8a507dd516028e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02d9ca3ba6a16e06c4357a46a050f8803147aaaf
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96018063"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "114292876"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建专用终结点
 
@@ -127,6 +127,8 @@ ms.locfileid: "96018063"
 5. 选择“查看 + 创建”。 
   
 6. 检查设置，然后选择“创建”。
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="create-a-private-endpoint"></a>创建专用终结点
 

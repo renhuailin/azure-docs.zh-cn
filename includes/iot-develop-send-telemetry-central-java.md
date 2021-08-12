@@ -1,19 +1,23 @@
 ---
 title: 包含文件
-description: include 文件
+description: 包含文件
 author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 04/28/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: d9f4c0458cb0765706b110996e7c7df391ed2bf2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f01d02fb2d11f6d2ec7e068d8f8aea5191734371
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061133"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114712994"
 ---
+[![浏览代码](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample)
+
+本快速入门介绍一种基本的 Azure IoT 应用程序开发工作流。 首先，创建适用于托管设备的 Azure IoT Central 应用程序。 然后，使用 Azure IoT 设备 SDK 示例来运行模拟的温度控制器，将此控制器安全连接到 IoT Central，并发送遥测数据。
+
 ## <a name="prerequisites"></a>先决条件
 - 具有 Java SE 开发工具包 8 或更高版本的开发计算机。 你可以从[下载 OpenJDK 的 Zulu 版本](https://www.azul.com/downloads/zulu-community/)为多个平台下载 Java 8 (LTS) JDK。 在安装程序中，选择“添加到路径”选项。
 - [Apache Maven 3](https://maven.apache.org/download.cgi)。 将下载内容提取到本地文件夹后，将 Maven /bin 文件夹的完整路径添加到 Windows PATH 变量中。
@@ -28,7 +32,7 @@ ms.locfileid: "110061133"
 
 1. 使用 Windows CMD、PowerShell 或 Bash 打开控制台。
 
-1. 为控制台使用合适的命令，设置以下环境变量。 模拟设备使用这些值连接到 IoT Central。 对于 `IOTHUB_DEVICE_DPS_ID_SCOPE`、`IOTHUB_DEVICE_DPS_DEVICE_KEY` 和 `IOTHUB_DEVICE_DPS_DEVICE_ID`，请使用之前保存的设备连接值。
+1. 使用适用于你的控制台的适当命令设置以下环境变量。 模拟设备使用这些值连接到 IoT Central。 对于 `IOTHUB_DEVICE_DPS_ID_SCOPE`、`IOTHUB_DEVICE_DPS_DEVICE_KEY` 和 `IOTHUB_DEVICE_DPS_DEVICE_ID`，请使用之前保存的设备连接值。
 
     **Windows CMD**
 

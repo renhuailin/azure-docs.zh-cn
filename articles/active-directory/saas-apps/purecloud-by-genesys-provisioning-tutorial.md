@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 PureCloud by Genesys 配置自动用户预配 | Microsoft Docs
 description: 了解如何将用户帐户从 Azure AD 自动预配到 PureCloud by Genesys 以及如何解除预配。
 services: active-directory
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2020
-ms.author: Zhchia
-ms.openlocfilehash: b4643efd197734ff7f12fb7806e474e0419843ed
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.author: thwimmer
+ms.openlocfilehash: 24145b8aa4398b8020fad8ef9e269be3eb70c045
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078555"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766199"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>教程：为 PureCloud by Genesys 配置自动用户预配
 

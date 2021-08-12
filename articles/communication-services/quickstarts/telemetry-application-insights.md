@@ -6,20 +6,20 @@ author: peiliu
 manager: vravikumar
 services: azure-communication-services
 ms.author: peiliu
-ms.date: 06/01/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 8c9468510e68f29816e52e74cb9a311e3834f107
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: cddff62f911339e7b2ddb76535acda09e1793137
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593076"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292362"
 ---
 # <a name="quickstart-using-azure-opentelemetry-exporter-to-export-sdk-telemetry-data-to-application-insights"></a>快速入门：使用 Azure OpenTelemetry 导出程序将 SDK 遥测数据导出到 Application Insights
 
-Azure OpenTelemetry 导出程序是 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) 中的 SDK。 通过此导出程序，可以使用 OpenTelemetry 导出跟踪数据并将数据发送到 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)。 OpenTelemetry 为应用程序和框架提供了一种标准化方法来收集遥测信息。
+Azure OpenTelemetry 导出程序是 [Azure Monitor](../../azure-monitor/index.yml) 中的 SDK。 通过此导出程序，可以使用 OpenTelemetry 导出跟踪数据并将数据发送到 [Application Insights](../../azure-monitor/app/app-insights-overview.md)。 OpenTelemetry 为应用程序和框架提供了一种标准化方法来收集遥测信息。
 
 Azure Application Insights 是用于监视实时应用程序的 Azure Monitor 的一项功能。 这一功能可显示关于 Microsoft Azure 资源中应用程序的遥测数据。 标准化遥测模型可以创建不依赖于平台和语言的监测。
 
@@ -71,4 +71,4 @@ Issued an access token with 'chat' scope that expires at <expiry-data>
 
 你可能还想要：
 
-- [了解有关在 Application Insights 中分析数据的详细信息](https://docs.microsoft.com/powerapps/maker/canvas-apps/application-insights)
+- [了解有关在 Application Insights 中分析数据的详细信息](/powerapps/maker/canvas-apps/application-insights)

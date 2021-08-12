@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c1ccd2df3a1fd6b2f1f1cb5b2d3250e8bbfcc327
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca04b3bc0a71dfde11fe6c830912d95b7e9f537d
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549730"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "114288238"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Linux 虚拟机
 
@@ -63,6 +63,8 @@ ms.locfileid: "102549730"
 
 
     ![显示如何复制虚拟机的 IP 地址的屏幕截图](./media/quick-create-portal/ip-address.png)
+
+[!INCLUDE [ephemeral-ip-note.md](../../../includes/ephemeral-ip-note.md)]
 
 ## <a name="connect-to-virtual-machine"></a>连接到虚拟机
 

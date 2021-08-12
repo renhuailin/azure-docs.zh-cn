@@ -2,8 +2,8 @@
 title: 教程：使用 Azure Active Directory 为 Templafy SAML2 配置自动用户预配 | Microsoft Docs
 description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Templafy SAML2 和取消其预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.assetid: 8a966ef5-e364-435b-9e29-3caf27ffb498
 ms.service: active-directory
@@ -11,13 +11,13 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
-ms.author: zhchia
-ms.openlocfilehash: 4cc89c1ad94ae738b25e4ea18d5fe687880969c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: c64d487bdf6bca0e4c9dc601e662a4b9419e6a26
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648197"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113759093"
 ---
 # <a name="tutorial-configure-templafy-saml2-for-automatic-user-provisioning"></a>教程：为 Templafy SAML2 配置自动用户预配
 
@@ -113,7 +113,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 

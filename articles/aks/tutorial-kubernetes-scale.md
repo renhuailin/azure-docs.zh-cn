@@ -3,18 +3,18 @@ title: Kubernetes on Azure 教程 - 缩放应用程序
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何缩放 Kubernetes 中的节点和 Pod，以及如何实施水平 Pod 自动缩放。
 services: container-service
 ms.topic: tutorial
-ms.date: 01/12/2021
-ms.custom: mvc
-ms.openlocfilehash: a268d39ec514fc7b88b555221ece7dc044ca49ba
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/24/2021
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 0c577a316e5034e4a21599b0806be534c5f6888a
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767504"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697779"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中缩放应用程序
 
-如果已按照教程执行，则在 AKS 中已有可正常工作的 Kubernetes 群集，并且已部署了示例 Azure 投票应用。 在本教程第 5 部分（共 7 部分）中，会在应用中扩大 Pod 并尝试 Pod 自动缩放。 还会了解如何缩放 Azure VM 节点数以更改群集用于托管工作负荷的容量。 学习如何：
+如果已按照教程执行，则在 AKS 中已有可正常工作的 Kubernetes 群集，并且已部署了示例 Azure 投票应用。 在本教程第 5 部分（共 7 部分）中，会在应用中扩大 Pod 并尝试 Pod 自动缩放。 还会了解如何缩放 Azure VM 节点数以更改群集用于托管工作负荷的容量。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 缩放 Kubernetes 节点
@@ -27,7 +27,15 @@ ms.locfileid: "107767504"
 
 上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，应用程序部署到了 AKS 群集。 如果尚未完成这些步骤，并且想要逐一完成，请先阅读[教程 1 – 创建容器映像][aks-tutorial-prepare-app]。
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 此教程需要运行 Azure CLI 2.0.53 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+此教程需要运行 Azure PowerShell 5.9.0 版或更高版本。 运行 `Get-InstalledModule -Name Az` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell][azure-powershell-install]。
+
+---
 
 ## <a name="manually-scale-pods"></a>手动缩放 Pod
 
@@ -67,15 +75,27 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>自动缩放 Pod
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 Kubernetes 支持[水平 Pod 自动缩放][kubernetes-hpa]以根据 CPU 利用率或其他选择指标调整部署中的 Pod 数。 [指标服务器][metrics-server]用来将资源利用率提供给 Kubernetes，可自动部署在 AKS 群集 1.10 及更高版本中。 若要查看 AKS 群集的版本，请使用 [az aks show][az-aks-show] 命令，如以下示例所示：
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query kubernetesVersion --output table
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Kubernetes 支持[水平 Pod 自动缩放][kubernetes-hpa]以根据 CPU 利用率或其他选择指标调整部署中的 Pod 数。 [指标服务器][metrics-server]用来将资源利用率提供给 Kubernetes，可自动部署在 AKS 群集 1.10 及更高版本中。 若要查看 AKS 群集的版本，请使用 [Get-AzAksCluster][get-azakscluster] cmdlet，如以下示例所示：
+
+```azurepowershell
+(Get-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster).KubernetesVersion
+```
+
+---
+
 > [!NOTE]
 > 如果 AKS 群集小于 *1.10*，则不会自动安装指标服务器。 指标服务器安装清单在指标服务器发行版中以 `components.yaml` 资产的形式提供，这意味着你可以通过 URL 安装这些清单。 若要详细了解这些 YAML 定义，请参阅自述文件的[部署][metrics-server-github]部分。
-> 
+>
 > 示例安装：
 > ```console
 > kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
@@ -152,6 +172,8 @@ azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        
 
 下面的示例将名为 myAKSCluster 的 Kubernetes 群集中的节点数增加到 3 个。 该命令需要几分钟时间完成。
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 ```
@@ -174,9 +196,46 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
   }
 ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Get-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster | Set-AzAksCluster -NodeCount 3
+```
+
+当群集成功缩放时，输出类似于以下示例：
+
+```output
+ProvisioningState       : Succeeded
+MaxAgentPools           : 100
+KubernetesVersion       : 1.19.9
+DnsPrefix               : myAKSCluster
+Fqdn                    : myakscluster-000a0aa0.hcp.eastus.azmk8s.io
+PrivateFQDN             :
+AgentPoolProfiles       : {default}
+WindowsProfile          : Microsoft.Azure.Commands.Aks.Models.PSManagedClusterWindowsProfile
+AddonProfiles           : {}
+NodeResourceGroup       : MC_myresourcegroup_myAKSCluster_eastus
+EnableRBAC              : True
+EnablePodSecurityPolicy :
+NetworkProfile          : Microsoft.Azure.Commands.Aks.Models.PSContainerServiceNetworkProfile
+AadProfile              :
+ApiServerAccessProfile  :
+Identity                :
+LinuxProfile            : Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile
+ServicePrincipalProfile : Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile
+Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myresourcegroup/providers/Micros
+                          oft.ContainerService/managedClusters/myAKSCluster
+Name                    : myAKSCluster
+Type                    : Microsoft.ContainerService/ManagedClusters
+Location                : eastus
+Tags                    : {}
+```
+
+---
+
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，在 Kubernetes 群集中使用了不同的缩放功能。 你已了解如何：
+在本教程中，在 Kubernetes 群集中使用了不同的缩放功能。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 手动缩放运行应用程序的 Kubernetes Pod
@@ -202,3 +261,5 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 [az-aks-scale]: /cli/azure/aks#az_aks_scale
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az_aks_show
+[azure-powershell-install]: /powershell/azure/install-az-ps
+[get-azakscluster]: /powershell/module/az.aks/get-azakscluster

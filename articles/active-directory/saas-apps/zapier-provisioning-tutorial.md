@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Zapier 配置自动用户预配 | Microsoft Docs
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Zapier 及如何取消预配。
 services: active-directory
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/24/2020
-ms.author: Zhchia
-ms.openlocfilehash: d2c1704182a2a59f8e3f79c2d4e671167ce661d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: e742e323932304da3fd25ad45087c2910490b839
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96183067"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760534"
 ---
 # <a name="tutorial-configure-zapier-for-automatic-user-provisioning"></a>教程：为 Zapier 配置自动用户预配
 
@@ -89,7 +89,7 @@ ms.locfileid: "96183067"
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 

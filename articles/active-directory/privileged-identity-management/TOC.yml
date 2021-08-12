@@ -44,7 +44,7 @@
     - name: 批准
       items:
         - name: Azure AD 角色
-          href: pim-how-to-activate-role.md
+          href: azure-ad-pim-approval-workflow.md
         - name: Azure 角色
           href: pim-resource-roles-approval-workflow.md
         - name: 特权访问组

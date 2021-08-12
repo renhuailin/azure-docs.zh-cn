@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18, devx-track-azurecli
-ms.openlocfilehash: 4c617c9bb5e45df1ebf3f6274ed88e05f28cfe4c
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 8317db1b7c4e71f05694ab902738dca87925a4d6
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751952"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112992182"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>教程：在 Azure 应用服务中托管启用了 CORS 的 RESTful API
 
@@ -30,7 +30,7 @@ ms.locfileid: "109751952"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 * <a href="https://git-scm.com/" target="_blank">安装 Git</a>
  * <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">安装最新的 .NET Core 3.1 SDK</a>
@@ -170,6 +170,9 @@ az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-
 
 > [!NOTE]
 > 如果应用要求发送凭据（例如 Cookie 或身份验证令牌），则浏览器会要求在响应中包含 `ACCESS-CONTROL-ALLOW-CREDENTIALS` 标头。 若要在应用服务中启用此功能，请在 CORS 配置中将 `properties.cors.supportCredentials` 设置为 `true`。当 `allowedOrigins` 包含 `'*'` 时，不能启用此功能。
+
+> [!NOTE]
+> 指定 `AllowAnyOrigin` 和 `AllowCredentials` 是不安全的配置，可能会导致跨网站请求伪造。 同时使用这两种方法来配置应用时，CORS 服务会返回无效的 CORS 响应。
 
 ### <a name="test-cors-again"></a>再次测试 CORS
 

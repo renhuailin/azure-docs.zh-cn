@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 0d5d285812aa61cf9fe684b268dc07718f6d1a1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce87685977e3a5f15fb02062ab4601593f25ffc3
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708741"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113285955"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>教程：使用事件中心触发器和 Azure Cosmos DB 输出绑定在 Java 中创建函数
 
@@ -30,7 +30,7 @@ ms.locfileid: "101708741"
 
 若要完成本教程，必须安装以下各项：
 
-- [Java 开发人员工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support)版本 8
+- [Java 开发人员工具包](/azure/developer/java/fundamentals/java-support-on-azure)版本 8
 - [Apache Maven](https://maven.apache.org) 版本 3.0 或更高版本
 - [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) 版本 2.6.666 或更高版本 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 

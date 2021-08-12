@@ -1,28 +1,28 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: azure-communication-services
 author: peiliu
 manager: vravikumar
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 06/01/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: peiliu
-ms.openlocfilehash: fc76538023af79d84becc1662bf2402a3daadff4
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 983ce28f736bd36255e65073b202ff6c5761b059
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593086"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292434"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 适用于操作系统的最新版本 [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。
 - 活动的通信服务资源和连接字符串。 [创建通信服务资源](../create-communication-resource.md)。
-- 在 Azure 门户中创建 [Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。
+- 在 Azure 门户中创建 [Application Insights 资源](../../../azure-monitor/app/create-new-resource.md)。
 
 ## <a name="setting-up"></a>设置
 
@@ -124,7 +124,7 @@ public static async Task TracedSample()
         activity?.SetTag("Token value", tokenResponse.Value.Token);
         activity?.SetTag("Expires on", tokenResponse.Value.ExpiresOn);
 
-        Console.WriteLine($"\nIssued an access token with 'chat' scope that expires at {expiresOn}:");
+        Console.WriteLine($"\nIssued an access token with 'chat' scope that expires at {tokenResponse.Value.ExpiresOn}:");
     }
 }
 ```

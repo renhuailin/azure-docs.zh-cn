@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 03/30/2021
+ms.date: 06/21/2021
 ms.author: pafarley
 keywords: computer vision, computer vision applications, computer vision service
-ms.openlocfilehash: 6e4be05d6b1c930c66c775d7b3c893e5bad4da7e
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: eb7aba4367b7f8ce54141613e0d1f52ded1c26bb
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714523"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284792"
 ---
 # <a name="what-is-image-analysis"></a>什么是图像分析？
 
@@ -25,6 +25,9 @@ ms.locfileid: "109714523"
 计算机视觉图像分析服务可以从图像中提取各种视觉特征。 例如，该服务可以确定图像是否包含成人内容、查找特定的品牌或对象，或查找人脸。
 
 你可以通过客户端库 SDK，或者直接调用 [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) 使用图像分析。 按[快速入门](quickstarts-sdk/image-analysis-client-library.md)的说明开始使用。
+
+> [!div class="nextstepaction"]
+> [入门](quickstarts-sdk/image-analysis-client-library.md)
 
 本文档包含以下类型的文章：
 * [快速入门](./quickstarts-sdk/image-analysis-client-library.md)是分步说明，可按照其调用服务，并在短时间内获得结果。 
@@ -41,9 +44,15 @@ ms.locfileid: "109714523"
 
 根据数千个可识别对象、生物、风景和操作识别并标记图像中的视觉特征。 如果标记含混不清或者不常见，API 响应会做出提示，阐明上下文或标记。 标记并不局限于主体（如前景中的人员），还包括设置（室内或室外）、家具、工具、植物、动物、附件、小配件等。 [标记视觉特性](concept-tagging-images.md)
 
+:::image type="content" source="Images/tagging.png" alt-text="一个玩滑板的人的图像，在右侧列出了多个标记":::
+
+
 ### <a name="detect-objects"></a>检测物体
 
 对象检测类似于添加标记，但 API 返回应用于每个标记的边框坐标。 例如，如果图像包含狗、猫和人，检测操作将列出这些对象及其在图像中的坐标。 可以使用此功能进一步处理图像中各对象之间的关系。 当图像中有多个相同标记的实例时，还会通知你。 [检测物体](concept-object-detection.md)
+
+:::image type="content" source="Images/detect-objects.png" alt-text="一个办公室的图像，在笔记本电脑周围绘有一个矩形":::
+
 
 ### <a name="detect-brands"></a>检测品牌
 
@@ -56,6 +65,8 @@ ms.locfileid: "109714523"
 ### <a name="describe-an-image"></a>描述图像
 
 使用完整的句子，以人类可读语言生成整个图像的说明。 计算机视觉算法可根据图像中标识的对象生成各种说明。 分别对这些说明进行评估并生成置信度分数。 然后将返回置信度分数从高到低的列表。 [描述图像](concept-describing-images.md)
+
+:::image type="content" source="Images/description.png" alt-text="奶牛的图像，右侧有简单说明":::
 
 ### <a name="detect-faces"></a>检测人脸
 
@@ -73,15 +84,20 @@ ms.locfileid: "109714523"
 
 分析图像中的颜色使用情况。 计算机视觉可以确定图像是黑白的还是彩色的，而对于彩色图像，又可以确定主色和主题色。 [检测颜色方案](concept-detecting-color-schemes.md)
 
+
+
 ### <a name="generate-a-thumbnail"></a>生成缩略图
 
 分析图像的内容，生成该图像的相应缩略图。 计算机视觉首先生成高质量缩略图，然后通过分析图像中的对象来确定“感兴趣区域”。 然后，计算机视觉会裁剪图像以满足感兴趣区域的要求。 可以根据用户需求，使用与原始图像的纵横比不同的纵横比显示生成的缩略图。 [生成缩略图](concept-generating-thumbnails.md)
+
+:::image type="content" source="Images/thumbnail-demo.png" alt-text="一个人站在山上的图像，右侧是裁剪过的版本":::
+
 
 ### <a name="get-the-area-of-interest"></a>获取感兴趣区域
 
 分析图像内容，以返回“感兴趣区域”的坐标。 计算机视觉并没有裁剪图像和生成缩略图，而是返回该区域的边框坐标，因此，进行调用的应用程序可以根据需要修改原始图像。 [获取感兴趣区域](concept-generating-thumbnails.md#area-of-interest)
 
-## <a name="moderate-content-in-images"></a>管理图像中的内容
+### <a name="moderate-content-in-images"></a>管理图像中的内容
 
 可以使用计算机视觉[检测图像中的成人内容](concept-detecting-adult-content.md)，并返回不同分类的置信度分数。 可以在滑尺上设置标记内容的阈值，以适应首选项。
 

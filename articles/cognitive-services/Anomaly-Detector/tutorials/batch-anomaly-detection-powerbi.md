@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: fc2667dfddf4442acaf39f6783190e8640b22a89
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6b95e471d3ac003991a131cf1e04b1384a7454e3
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561723"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296606"
 ---
-# <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>教程：使用批量检测和 Power BI 将异常可视化
+# <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi-univariate"></a>教程：使用批量检测和 Power BI 将异常可视化（单变量）
 
 使用本教程查找设置为批的时序数据中的异常。 使用 Power BI Desktop 时，需获取一个 Excel 文件，为异常检测器 API 准备数据，然后将其中的统计异常可视化。
 
@@ -171,8 +171,3 @@ Power BI 会将第一列中的时间戳转换为 `Date/Time` 数据类型。 这
 为图表应用颜色，方法是：单击“格式”工具和“数据颜色”。  图表的外观应如下所示：
 
 ![最终图表的图像](../media/tutorials/final-chart.png)
-
-## <a name="next-steps"></a>后续步骤
-
-> [!div class="nextstepaction"]
->[使用 Azure Databricks 流式处理异常检测](../overview.md)

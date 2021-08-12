@@ -2,13 +2,13 @@
 title: 将基于事件的视频录制到云中并从云播放教程 - Azure
 description: 本教程介绍如何使用 Azure 视频分析器将基于事件的视频录制到云中并从云中播放。
 ms.topic: tutorial
-ms.date: 04/13/2021
-ms.openlocfilehash: 6ecbaf794530e80837c2d2a5f9f3fca11e3c93ae
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.date: 06/01/2021
+ms.openlocfilehash: 9b5935b9b06a1e48ac106c7736390e39612b0af4
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565637"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602169"
 ---
 # <a name="tutorial-event-based-video-recording-and-playback"></a>教程：基于事件的视频录制和播放
 
@@ -35,8 +35,7 @@ ms.locfileid: "111565637"
 本教程的先决条件如下：
 * 包含活动订阅的 Azure 帐户。 如果没有帐户，可免费[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-    > [!NOTE]    
-    > 你将需要 Azure 订阅，可以在其中访问[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色和[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色。 如果没有适当的权限，请联系帐户管理员，让其授予此类权限。
+    [!INCLUDE [azure-subscription-permissions](./includes/common-includes/azure-subscription-permissions.md)]
 * 在计算机上[安装 Docker](https://docs.docker.com/desktop/#download-and-install)。
 * 包含以下扩展的 [Visual Studio Code](https://code.visualstudio.com/)：
     * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
@@ -136,11 +135,7 @@ ms.locfileid: "111565637"
 
 如果这是你第一次接触有关视频分析器的教程，Visual Studio Code 将提示你输入 IoT 中心连接字符串。 可以从 appsettings.json 文件中复制字符串。
 
-> [!NOTE]
-> 系统可能会要求你提供 IoT 中心的内置终结点信息。 若要获取此信息，请在 Azure 门户中导航到 IoT 中心，然后在左侧导航窗格中查找“内置终结点”选项。 单击此处，在“与事件中心兼容的终结点”部分下查找“与事件中心兼容的终结点” 。 复制并使用框中的文本。 终结点将如下所示：  
-    ```
-    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
-    ```
+[!INCLUDE [provide-builtin-endpoint](./includes/common-includes/provide-builtin-endpoint.md)]
 
 接下来，Visual Studio Code 会要求你选择 IoT 中心设备。 选择 IoT Edge 设备（应为 avasample-iot-edge-device）。
 
@@ -170,7 +165,7 @@ ms.locfileid: "111565637"
 1. 接下来，在 livePipelineSet 和 pipelineTopologyDelete 节点下，确保 topologyName 的值与上述管道拓扑中的 name 属性的值匹配   ：
 
     `"pipelineTopologyName" : "EVRtoVideosOnObjDetect"`
-1. 在浏览器中打开[管道拓扑](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-hubMessage-videos/topology.json)，查看 videoName（硬编码为 `sample-evr-video`）。 对于教程来说，这是可以接受的。 在生产环境中，应注意确保每个唯一的 RTSP 相机都会录制到一个具有唯一名称的视频资源中。
+1. 在浏览器中打开[管道拓扑](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-hubMessage-video-sink/topology.json)，查看 videoName（硬编码为 `sample-evr-video`）。 对于教程来说，这是可以接受的。 在生产环境中，应注意确保每个唯一的 RTSP 相机都会录制到一个具有唯一名称的视频资源中。
 1. 选择 F5 以启动调试会话。 在“终端”窗口中，你将看到一些输出的消息。
 1. operations.json 文件首先调用 pipelineTopologyList 和 livePipelineList。 如果在先前的快速入门或教程后清理了资源，此操作会返回空列表，然后暂停以便你能够选择 Enter，如下所示：
     ```
@@ -367,13 +362,11 @@ applicationProperties 中的 subject 部分引用实时管道中的视频接收�
 
     <!--TODO: add image -- ![Video playback]() TODO: new screenshot is needed here -->
 
+[!INCLUDE [activate-deactivate-pipeline](./includes/common-includes/activate-deactivate-pipeline.md)]
 
-> [!NOTE]
-> 由于视频源是模拟相机源的容器，因此视频中的时间戳与启用和停用实时管道的时间有关。
-> 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果想学习其他教程，请保留创建的资源。 如果不想，请转到 Azure 门户，浏览到资源组，选择运行本教程时所用的资源组，然后删除该资源组。
+[!INCLUDE [clean-up-resources](./includes/common-includes/clean-up-resources.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

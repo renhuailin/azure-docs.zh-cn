@@ -17,12 +17,12 @@ ms.date: 09/30/2020
 ms.author: markvi
 ms.reviewer: sarbar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f9a51c10a4f390e5627bccf35ab5dc74689e9c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b67e8f7ae06f9cb3becb849df41210cb6e7791d0
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91566816"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113731713"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>什么是 Azure Active Directory 报表？
 
@@ -87,7 +87,7 @@ ms.locfileid: "91566816"
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>访问审核日志报表需要什么 Azure AD 许可证？  
 
-对于你有其许可证的功能，会提供审核日志报表。 如果有特定功能的许可证，则还可以访问其审核日志信息。 [不同类型的许可证的](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses)特征详细比较可以在 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/)上查看。 有关更多详细信息，请参阅 [Azure Active Directory 特性和功能](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad)。
+对于你有其许可证的功能，会提供审核日志报表。 如果有特定功能的许可证，则还可以访问其审核日志信息。 [不同类型的许可证的](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses)特征详细比较可以在 [Azure Active Directory 定价页](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)上查看。 有关更多详细信息，请参阅 [Azure Active Directory 特性和功能](../fundamentals/active-directory-whatis.md#which-features-work-in-azure-ad)。
 
 ### <a name="sign-ins-report"></a>登录报告
 

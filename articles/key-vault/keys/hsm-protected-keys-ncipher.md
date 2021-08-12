@@ -2,21 +2,21 @@
 title: 如何为 Azure Key Vault 生成和传输受 HSM 保护的密钥 - Azure Key Vault
 description: 使用这篇文章可帮助你规划、生成然后传输自己的受 HSM 保护的密钥，以便与 Azure 密钥保管库一起使用。 也称为 BYOK 或自带密钥。
 services: key-vault
-author: amitbapat
+author: mbaldwin
 manager: devtiw
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.author: ambapat
+ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fc2db49b11f0a209c013527afde56c0830ac990c
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 7a8570d7b1ac2b6896c4dc265ae6b294b63f090e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539252"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471363"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>导入 Key Vault 的受 HSM 保护的密钥 (nCipher)
 

@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 SolarWinds Service Desk（以前称为 Samanage）配置自动用户预配 | Microsoft Docs
 description: 了解如何将用户帐户从 Azure AD 自动预配到 SolarWinds Service Desk（以前称为 Samanage）及如何取消预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2020
-ms.author: Zhchia
-ms.openlocfilehash: d68811c5e7b92698944d7b1b1736eef864d97d20
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.author: thwimmer
+ms.openlocfilehash: 3999575e13a1bb12478f6a9270dafa7c18c22f35
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802295"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113759650"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>教程：为 SolarWinds Service Desk（以前称为 Samanage）配置自动用户预配
 
@@ -156,7 +156,7 @@ ms.locfileid: "104802295"
 
 ## <a name="change-log"></a>更改日志
 
-* 2020/09/14 - 对于 https://github.com/ravitmorales ，将两个 SaaS 教程中的公司名称从 Samanage 更改为 SolarWinds Service Desk（以前称为 Samanage）。
+* 2020/09/14 - 对于 `https://github.com/ravitmorales` ，将两个 SaaS 教程中的公司名称从 Samanage 更改为 SolarWinds Service Desk（以前称为 Samanage）。
 * 2020/04/22 - 将授权方法从基本身份验证更新为长期机密令牌。
 
 ## <a name="additional-resources"></a>其他资源

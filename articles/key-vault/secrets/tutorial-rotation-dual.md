@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 93bf6f1a7026a7557eb1ec2a8b6f8644e959eb82
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: e2da033484d84ecce26a4882c082dfdee8c355c6
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887209"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113550887"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>自动轮换使用两组身份验证凭据的资源的机密
 
@@ -102,7 +102,7 @@ vaultrotationstorage2    vaultrotation      westus      Microsoft.Storage/storag
 1. 在“机密名称”框中，输入要在其中存储访问密钥的机密的名称。
 1. 在“存储库 URL”框中，输入函数代码的 GitHub 位置。 在本教程中，你可以使用 https://github.com/Azure-Samples/KeyVault-Rotation-StorageAccountKey-PowerShell.git。
 1. 选择“查看 + 创建”。
-1. 选择“创建”  。
+1. 选择“创建”。
 
    ![演示如何创建和部署函数的屏幕截图。](../media/secrets/rotation-dual/dual-rotation-2.png)
 
@@ -267,13 +267,13 @@ Get-AzStorageAccountKey -Name vaultrotationstorage2 -ResourceGroupName vaultrota
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
-$tomorrowDate = (Get-Date).AddDays(+1).ToString('yyy-MM-ddTHH:mm:ssZ')
+$tomorrowDate = (Get-Date).AddDays(+1).ToString('yyyy-MM-ddTHH:mm:ssZ')
 az keyvault secret set --name storageKey2 --vault-name vaultrotation-kv --value <key2Value> --tags "CredentialId=key2" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
 
 ```azurepowershell
-$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
+$tomorrowDate = (get-date).AddDays(+1).ToString("yyyy-MM-ddTHH:mm:ssZ")
 $secretVaule = ConvertTo-SecureString -String '<key1Value>' -AsPlainText -Force
 $tags = @{
     CredentialId='key2';

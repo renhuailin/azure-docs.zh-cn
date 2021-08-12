@@ -4,12 +4,12 @@ ms.service: azure-video-analyzer
 ms.topic: include
 ms.date: 04/07/2021
 ms.author: juliako
-ms.openlocfilehash: be49e1b80742fc49a60122de822626ab4c09a1db
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: dfedba441cc4df8436f32d3985182c16ef2cbb5e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371796"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465672"
 ---
 作为先决条件的一部分，请将示例代码下载到一个文件夹中。 按照以下步骤检查并编辑示例文件。
 
@@ -27,8 +27,8 @@ ms.locfileid: "110371796"
         * 调用直接方法以清理资源。
 1. 编辑 operations.json 文件：
 
-    * 将链接更改为 pipelineTopology<br/>`"pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/httpExtension/topology.json"`
-    * 在 livePipelineSet 下，编辑 pipelineTopology 的名称以匹配前面链接中的值：<br/>`"pipelineTopologyName" : "InferencingWithHttpExtension"`
-    * 在 PipelineTopologyDelete 下，编辑名称：<br/>`"name": "InferencingWithHttpExtension"`
+    * 将链接更改为 pipelineTopology<br/>`"pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/motion-with-httpExtension/topology.json"`
+    * 在 livePipelineSet 下，编辑 pipelineTopology 的名称以匹配前面链接中的值：<br/>`"pipelineTopologyName" : "EVROnMotionPlusHttpExtension"`
+    * 在 PipelineTopologyDelete 下，编辑名称：<br/>`"name": "EVROnMotionPlusHttpExtension"`
 
 

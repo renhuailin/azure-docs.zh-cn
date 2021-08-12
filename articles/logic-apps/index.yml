@@ -10,12 +10,12 @@ metadata:
   author: ecfan
   ms.author: estfan; logicappspm
   ms.date: 03/24/2021
-  ms.openlocfilehash: 536cb1aac1d2fa309f4530d150ade8f9eb5dc9d2
-  ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
+  ms.openlocfilehash: 89a61d7ed018ebfd72a64661da1bad9671a39c53
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/17/2021
-  ms.locfileid: "112321713"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114456641"
 landingContent:
 - title: 关于 Azure 逻辑应用
   linkLists:
@@ -108,7 +108,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: 示例：连接到集成帐户并通过 Azure DevOps 进行部署
-      url: /samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/
+      url: https://github.com/Azure-Samples/azure-logic-apps-deployment-samples/tree/master/storage-account-connections
   - linkListType: architecture
     links:
     - text: 基本企业集成
@@ -143,10 +143,8 @@ landingContent:
     links:
     - text: 使用资源管理器模板创建和部署
       url: /learn/modules/create-deploy-logic-apps-using-arm-templates/
-    - text: 示例：连接到 Azure 存储并通过 Azure DevOps 进行部署
-      url: /samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/
-    - text: 示例：连接到 Azure 服务总线并通过 Azure DevOps 进行部署
-      url: /samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/
+    - text: 示例：使用 Azure 逻辑应用协调 Azure Pipelines
+      url: https://github.com/Azure-Samples/azure-logic-apps-pipeline-orchestration
 - title: 详细信息
   linkLists:
   - linkListType: reference

@@ -1,7 +1,6 @@
 ---
-title: 使用托管联机终结点访问 Azure 资源
-titleSuffix: Azure Machine Learning
-description: 使用托管联机终结点和系统分配的托管标识安全访问用于机器学习模型部署的 Azure 资源。
+title: 教程：用于访问资源的托管联机终结点
+description: 使用托管联机终结点和系统分配的托管标识来安全地访问用于机器学习模型部署的 Azure 资源。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +9,17 @@ ms.reviewer: laobri
 author: rsethur
 ms.date: 05/25/2021
 ms.topic: tutorial
-ms.custom: tutorial
-ms.openlocfilehash: 731d9a64c9ef144e8e51e9bce319a031056958ae
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.custom: tutorial, devplatv2
+ms.openlocfilehash: 78cbec0c8f4805794062b6fd525567f8aebcb2b6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071544"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448829"
 ---
-# <a name="tutorial-access-azure-resources-with-a-managed-online-endpoint-and-system-managed-identity-preview"></a>教程：使用托管联机终结点和系统托管标识访问 Azure 资源（预览版）
+# <a name="tutorial-access-resources-with-managed-online-endpoints-and-identity-preview"></a>教程：使用托管联机终结点和标识（预览版）访问资源
 
-本教程介绍如何使用托管联机终结点和系统分配的托管标识从评分脚本安全访问 Azure 资源。
+本教程介绍如何使用托管联机终结点和系统分配的托管标识从评分脚本安全地访问 Azure 资源。
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 本教程将演示如何使用 Azure CLI 及其 ML 扩展执行以下操作：
@@ -36,7 +35,7 @@ ms.locfileid: "112071544"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 若要使用 Azure 机器学习，必须有一个 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* 若要使用 Azure 机器学习，必须有一个 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 
 * 必须安装并配置 Azure CLI 和 ML 扩展。 有关详细信息，请参阅[安装、设置和使用 2.0 CLI（预览版）](how-to-configure-cli.md)。 
 
@@ -73,6 +72,7 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/2-sai-deployment.yml":::
 
+有关 YAML 的参考，请参阅[托管联机终结点（预览版）YAML 参考](reference-online-endpoint-yaml.md)。
 
 ## <a name="configure-variables-for-your-deployment"></a>为部署配置变量
 
@@ -120,6 +120,7 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 ::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_endpoint_Status" :::
 
+如果遇到任何问题，请参阅[排查托管联机终结点部署和评分问题（预览版）](how-to-troubleshoot-managed-online-endpoints.md)。
 
 ## <a name="give-storage-permission-to-system-assigned-managed-identity"></a>向系统分配的托管标识授予存储权限
 
@@ -193,3 +194,8 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 * 要详细了解如何使用 CLI，请参阅[将 CLI 扩展用于 Azure 机器学习](reference-azure-machine-learning-cli.md)。
 * 若要将 JSON 查询细化为仅返回特定数据，请参阅[查询 Azure CLI 命令输出](/cli/azure/query-azure-cli)。
 * 有关 YAML 架构的详细信息，请参阅[联机终结点 YAML 参考](reference-online-endpoint-yaml.md)文档。
+* 若要查看可使用哪些计算资源，请参阅[托管联机终结点 SKU 列表（预览版）](reference-managed-online-endpoints-vm-sku-list.md)。
+* 有关成本的详细信息，请参阅[查看 Azure 机器学习托管联机终结点（预览版）的成本](how-to-view-online-endpoints-costs.md)。
+* 有关部署的详细信息，请参阅[联机终结点（预览版）的安全推出](how-to-safely-rollout-managed-endpoints.md)。
+* 有关监视终结点的信息，请参阅[监视托管联机终结点（预览版）](how-to-monitor-online-endpoints.md)。
+* 有关托管终结点限制的信息，请参阅[管理和增大 Azure 机器学习资源的配额](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)。

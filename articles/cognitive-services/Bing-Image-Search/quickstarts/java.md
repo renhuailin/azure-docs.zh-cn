@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: c806780664576c424665d1d58c69d164f8504d3f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3bb52491e7835e44425b7ad31e790edb098849c1
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96341914"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113286117"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-api-and-java"></a>快速入门：使用必应图像搜索 API 和 Java 搜索图像 
 
@@ -32,7 +32,7 @@ ms.locfileid: "96341914"
 
 ## <a name="prerequisites"></a>先决条件
 
-* [Java 开发工具包 (JDK)](/azure/developer/java/fundamentals/java-jdk-long-term-support)
+* [Java 开发工具包 (JDK)](/azure/developer/java/fundamentals/java-support-on-azure)
 
 * [Gson 库](https://github.com/google/gson)
 

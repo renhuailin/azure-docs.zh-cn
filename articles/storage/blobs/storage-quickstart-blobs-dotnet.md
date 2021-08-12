@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f913b33d0bea425a24d2fd336c9d065978606e82
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 08545e4db44c9901ef1059c2115f6677e93ab729
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107869250"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436003"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v12
 
@@ -108,7 +108,6 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 * [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient)：`BlobServiceClient` 类可用于操纵 Azure 存储资源和 blob 容器。
 * [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient)：`BlobContainerClient` 类可用于操纵 Azure 存储容器及其 blob。
 * [BlobClient](/dotnet/api/azure.storage.blobs.blobclient)：`BlobClient` 类可用于操纵 Azure 存储 blob。
-* [BlobDownloadInfo](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo)：`BlobDownloadInfo` 类表示从下载 blob 返回的属性和内容。
 
 ## <a name="code-examples"></a>代码示例
 
@@ -148,7 +147,7 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 1. 在本地 data 目录中创建文本文件。
 1. 对在[创建容器](#create-a-container)部分创建的容器调用 [GetBlobClient](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobclient) 方法，获取对 [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) 对象的引用。
-1. 通过调用 [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync#Azure_Storage_Blobs_BlobClient_UploadAsync_System_IO_Stream_System_Boolean_System_Threading_CancellationToken_) 方法将本地文本文件上传到 blob。 此方法将创建 Blob（如果该 Blob 尚不存在），或者覆盖 Blob（如果该 Blob 已存在）。
+1. 通过调用 [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync#Azure_Storage_Blobs_BlobClient_UploadAsync_System_String_System_Boolean_System_Threading_CancellationToken_) 方法将本地文本文件上传到 blob。 此方法将创建 Blob（如果该 Blob 尚不存在），或者覆盖 Blob（如果该 Blob 已存在）。
 
 将此代码添加到 `Main` 方法的末尾：
 
@@ -164,7 +163,7 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 ### <a name="download-blobs"></a>下载 Blob
 
-通过调用 [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) 方法，下载以前创建的 blob。 示例代码将向文件名添加后缀“DOWNLOADED”，这样你就可以在本地文件系统中看到这两个文件。
+通过调用 [DownloadToAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) 方法，下载以前创建的 blob。 示例代码将向文件名添加后缀“DOWNLOADED”，这样你就可以在本地文件系统中看到这两个文件。
 
 将此代码添加到 `Main` 方法的末尾：
 

@@ -25,7 +25,7 @@
     - name: 网络功能管理器产品页
       href: 'https://go.microsoft.com/fwlink/?linkid=2166098'
     - name: Azure 专用 MEC 文档
-      href: 'https://go.microsoft.com/fwlink/?linkid=2165316'
+      href: ../private-multi-access-edge-compute-mec/index.yml
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: 博客

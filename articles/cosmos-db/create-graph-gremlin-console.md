@@ -1,18 +1,18 @@
 ---
 title: 使用 TinkerPop Gremlin 控制台通过 Azure Cosmos DB Gremlin API 进行查询：教程
 description: 有关使用 Azure Cosmos DB Gremlin API 创建顶点、边缘和查询的 Azure Cosmos DB 快速入门教程。
-author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/10/2020
-ms.author: chrande
-ms.openlocfilehash: f9e6b8df0acc552970d52cc8fa66d3577577ab77
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+author: manishmsfte
+ms.author: mansha
+ms.openlocfilehash: 0b93b2bf166b1a0d1c1b1c4b6c74e2b05bb2660f
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "113225725"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113355123"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>快速入门：使用 Gremlin 控制台创建、查询和遍历 Azure Cosmos DB 图形数据库
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]

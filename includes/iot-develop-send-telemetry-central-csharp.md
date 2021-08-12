@@ -1,22 +1,26 @@
 ---
-title: include 文件
-description: include 文件
+title: 包含文件
+description: 包含文件
 author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 04/28/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 9b1460819a496a141260aede32c519e2e2271c95
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4715c007ea9c86b623eab63b83cb83514cf16866
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776403"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114712922"
 ---
+[![浏览代码](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/device/PnpDeviceSamples)
+
+本快速入门介绍一种基本的 Azure IoT 应用程序开发工作流。 首先，创建适用于托管设备的 Azure IoT Central 应用程序。 然后，使用 Azure IoT 设备 SDK 示例来运行模拟的温度控制器，将此控制器安全连接到 IoT Central，并发送遥测数据。
+
 ## <a name="prerequisites"></a>先决条件
 - [Visual Studio（Community、Professional 或 Enterprise 版）2019](https://visualstudio.microsoft.com/downloads/)。
-- [适用于 C# (.NET) 的 Microsoft Azure IoT 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存储库的本地副本。 下载存储库的副本并将其解压缩：[下载 ZIP](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。
+- [适用于 C# (.NET) 的 Microsoft Azure IoT 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存储库的本地副本。 下载存储库的副本并提取它：[下载 ZIP](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。
 
 [!INCLUDE [iot-develop-create-central-app-with-device](iot-develop-create-central-app-with-device.md)]
 

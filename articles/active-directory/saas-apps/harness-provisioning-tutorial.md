@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Harness 配置自动用户预配 | Microsoft Docs
 description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Harness 和取消其预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/29/2019
-ms.author: Zhchia
-ms.openlocfilehash: 13ae960f5d259314f00f8f09b2999a36c0919bc5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: thwimmer
+ms.openlocfilehash: 9a6c88ebbe0244dadc440e66a2d8423be66731ee
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94353707"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767750"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>教程：为 Harness 配置自动用户预配
 

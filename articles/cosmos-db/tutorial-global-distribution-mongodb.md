@@ -1,20 +1,20 @@
 ---
 title: 教程：使用 Azure Cosmos DB API for MongoDB 设置全局分发
 description: 了解如何使用 Azure Cosmos DB 的用于 MongoDB 的 API 设置全局分发。
-author: markjbrown
-ms.author: mjbrown
+author: gahl-levy
+ms.author: gahllevy
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 89826eab7b1686ae695a2716a03b2f5d03da277f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a68557e02444a7524ee69fc95e9ca66b2aabf7a9
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93099243"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113354270"
 ---
 # <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 设置全局分布式数据库
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "93099243"
 > * 使用 Azure 门户配置全局分发
 > * 使用 [Azure Cosmos DB 的用于 MongoDB 的 API](mongodb-introduction.md) 配置全局分发
 
-[!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
+[!INCLUDE [cosmos-db-tutorial-global-distribution-portal](includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 ## <a name="verifying-your-regional-setup"></a>验证区域设置 
 检查 Azure Cosmos DB 的用于 MongoDB 的 API 中的全局配置的一种简单方法是从 Mongo Shell 运行 *isMaster()* 命令。

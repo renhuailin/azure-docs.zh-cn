@@ -2,8 +2,8 @@
 title: 教程：使用 Azure Active Directory 为 Zscaler One 配置自动用户预配 | Microsoft Docs
 description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Zscaler One 和取消其预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: f6725045064b74079e00ca5bbe1d560f3b19f3ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74f04491d1fd27fbe99aea8c84a8feb5d9280f2e
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97937121"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760475"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>教程：为 Zscaler One 配置自动用户预配
 

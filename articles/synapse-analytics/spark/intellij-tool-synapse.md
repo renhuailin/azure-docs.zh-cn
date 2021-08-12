@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: a4512a8f75d59f617058a50846d7578a90b9d062
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ccc36bb9f940fd018fe6d96b5338a7178657aa2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675821"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469374"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>教程：使用 Synapse 工作区通过 IntelliJ 创建 Apache Spark 应用程序
 
@@ -40,7 +40,7 @@ ms.locfileid: "101675821"
 - 以下先决条件仅适用于 Windows 用户：
 
   在 Windows 计算机上运行本地 Spark Scala 应用程序时，可能会发生 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中所述的异常。 发生此异常的原因是 Windows 中缺少 WinUtils.exe。
-  若要解决此错误，请将 [WinUtils 可执行文件](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)下载到某个位置（例如 C:\WinUtils\bin）。 然后，必须添加环境变量 HADOOP_HOME，并将其值设置为 C:\WinUtils。
+  若要解决此错误，请将 [WinUtils 可执行文件](https://github.com/steveloughran/winutils/releases/download/tag_2017-08-29-hadoop-2.8.1-native/hadoop-2.8.1.zip)下载到某个位置（例如 C:\WinUtils\bin）。 然后，必须添加环境变量 HADOOP_HOME，并将其值设置为 C:\WinUtils。
 
 ## <a name="create-a-spark-scala-application-for-a-spark-pool"></a>为 Spark 池创建 Spark Scala 应用程序
 
@@ -213,9 +213,9 @@ ms.locfileid: "101675821"
 
 确保符合 WINUTILS.EXE 先决条件。
 
-1. 从菜单栏中，导航到“运行” > “编辑配置...” 。
+1. 从菜单栏中，导航到“运行” > “编辑配置...”   。
 2. 在“运行/调试配置”窗口中的左侧窗格内，导航到“Synapse 上的 Apache Spark” > “[Synapse 上的 Spark] myApp”。  
-3. 在主窗口中，选择“在本地运行”选项卡。
+3. 在主窗口中，选择“在本地运行”选项卡  。
 4. 提供以下值，然后选择“确定”：
 
     |属性 |值 |
@@ -225,7 +225,7 @@ ms.locfileid: "101675821"
 
     ![本地控制台设置配置](./media/intellij-tool-synapse/local-console-synapse01.png)
 
-5. 从项目中，导航到“myApp” > “src” > “main” > “scala” > “myApp”    。
+5. 从项目中，导航到“myApp” > “src” > “main” > “scala” > “myApp”      。
 6. 在菜单栏中，导航到“工具” > “Spark 控制台” > “运行 Spark 本地控制台(Scala)”。  
 7. 然后，系统可能会显示两个对话框，询问你是否要自动修复依赖项。 如果出现对话框，请选择“自动修复”。
 
@@ -241,11 +241,11 @@ ms.locfileid: "101675821"
 
 它仅在 IntelliJ 2018.2 和 2018.3 上受支持。
 
-1. 从菜单栏中，导航到“运行” > “编辑配置...” 。
+1. 从菜单栏中，导航到“运行” > “编辑配置...”   。
 
 2. 在“运行/调试配置”窗口中的左侧窗格内，导航到“Synapse 上的 Apache Spark” > “[Synapse 上的 Spark] myApp”。  
 
-3. 在主窗口中，选择“在群集中远程运行”选项卡。
+3. 在主窗口中，选择“在群集中远程运行”选项卡  。
 
 4. 提供以下值，然后选择“确定”：
 
@@ -257,7 +257,7 @@ ms.locfileid: "101675821"
 
     ![交互式控制台设置配置](./media/intellij-tool-synapse/interactive-console-configuration.png)
 
-5. 从项目中，导航到“myApp” > “src” > “main” > “scala” > “myApp”    。
+5. 从项目中，导航到“myApp” > “src” > “main” > “scala” > “myApp”      。
 
 6. 在菜单栏中，导航到“工具” > “Spark 控制台” > “运行 Spark Livy 交互式会话控制台(Scala)”。  
 7. 控制台应如下图所示。 在“控制台”窗口中键入 `sc.appName`，然后按 Ctrl+Enter。 系统将显示结果。 可以选择红色按钮来停止本地控制台。

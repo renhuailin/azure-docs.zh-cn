@@ -4,16 +4,14 @@ description: 本教程介绍如何通过 PHP 应用程序使用 Azure 服务总�
 ms.devlang: PHP
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 706f523fdfb3c710bb16b048cfc68ce98875adb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7cdb6ca30b2c9abf2c2525057a90888b2c5d1c78
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88066196"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302529"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>快速入门：如何通过 PHP 使用服务总线主题和订阅
-
-[!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
 本文说明如何使用服务总线主题和订阅。 示例采用 PHP 编写并使用 [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php)。 涉及的方案包括：
 
@@ -22,6 +20,10 @@ ms.locfileid: "88066196"
 - 将消息发送到主题 
 - 从订阅接收消息
 - 删除主题和订阅
+
+> [!IMPORTANT]
+> 截至 2021 年 2 月，适用于 PHP 的 Azure SDK 已进入停用阶段，不再受到 Microsoft 的正式支持。 有关详细信息，请参阅 GitHub 上的[此公告](https://github.com/Azure/azure-sdk-for-php#important-annoucement)。 本文将很快停用。 
+ 
 
 ## <a name="prerequisites"></a>先决条件
 1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。

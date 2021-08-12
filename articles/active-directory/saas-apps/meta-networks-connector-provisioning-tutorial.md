@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Meta Networks Connector 配置自动用户预配 | Microsoft 文档
 description: 了解如何配置 Azure Active Directory 来使其自动将用户帐户预配到 Meta Networks Connector 和取消其预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/01/2019
-ms.author: Zhchia
-ms.openlocfilehash: b6a8f192cd26639431cc9fcb6b43e1bc5e8e2843
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 6582997e4c2ea5b10618c2f073e633d21b4123f9
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96353623"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113761195"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>教程：为 Meta Networks Connector 配置自动用户预配
 
@@ -131,7 +131,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 

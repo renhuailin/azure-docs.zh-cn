@@ -2,8 +2,8 @@
 title: 教程：使用 Azure Active Directory 为 Bonusly 配置自动用户预配 | Microsoft Docs
 description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Bonusly 和取消其预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: d8c3f64e5cb5269bfe7e555615f874ac3443c6eb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bf14a381f58b484fd45060ed354b418d3f94d195
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94357821"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764687"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>教程：为 Bonusly 配置自动用户预配
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/28/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: b38b5303f21cb31115a2279648c8d631e31aa8bf
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f0f2e63a32c30c807f865a46154123643809de74
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459307"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114442838"
 ---
 # <a name="tutorial-create-logical-data-warehouse-with-serverless-sql-pool"></a>教程：使用无服务器 SQL 池创建逻辑数据仓库
 
@@ -41,7 +41,7 @@ CREATE DATABASE Ldw
 
 数据源表示连接字符串信息，用于描述放置数据的位置以及对数据源进行身份验证的方式。
 
-以下示例演示了一个引用公共 [ECDC COVID 19 Azure 开放式数据集](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/)的数据源定义示例：
+以下示例演示了一个引用公共 [ECDC COVID 19 Azure 开放式数据集](/azure/open-datasets/dataset-ecdc-covid-cases)的数据源定义示例：
 
 ```sql
 CREATE EXTERNAL DATA SOURCE ecdc_cases WITH (
@@ -54,7 +54,7 @@ CREATE EXTERNAL DATA SOURCE ecdc_cases WITH (
 可以显式定义在访问外部数据源上的数据时使用的自定义凭据。
 - Synapse 工作区的[托管标识](develop-storage-files-storage-access-control.md?tabs=managed-identity)
 - Azure 存储的[共享访问签名](develop-storage-files-storage-access-control.md?tabs=shared-access-signature)
-- 只读的 Cosmos DB 帐户密钥，可用于读取 Cosmos DB 分析存储。
+- 只读 Cosmos DB 帐户密钥，可用于读取 Cosmos DB 分析存储。
 
 作为先决条件，需要在数据库中创建一个主密钥：
 ```sql
@@ -211,7 +211,7 @@ GO
 - 应只为某些用户能够使用的表提供 `SELECT` 权限。
 - 如果提供对使用视图的数据的访问权限，对于将用于访问外部数据源的凭据，应为其授予 `REFERENCES` 权限。
 
-此用户拥有查询外部数据所需的最低权限。 如果你要创建可以设置权限、外部表和视图的超级用户，可以向该用户授予 `CONTROL` 权限：
+此用户具有查询外部数据所需的最小权限。 如果要创建可以设置权限、外部表和视图的 Power User，可以向该用户授予 `CONTROL` 权限：
 
 ```sql
 GRANT CONTROL TO [jovan@contoso.com]
@@ -246,4 +246,3 @@ DENY ADMINISTER DATABASE BULK OPERATIONS TO [CovidAnalyst];
 
 - 若要了解如何将无服务器 SQL 池连接到 Power BI Desktop 并创建报表，请参阅[将无服务器 SQL 池连接到 Power BI Desktop 并创建报表](tutorial-connect-power-bi-desktop.md)。
 - 若要了解如何在无服务器 SQL 池中使用外部表，请参阅[通过 Synapse SQL 使用外部表](develop-tables-external-tables.md?tabs=sql-pool)
-

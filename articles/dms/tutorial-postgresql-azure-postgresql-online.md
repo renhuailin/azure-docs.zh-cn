@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 6384962e0591c4bc3245d0f204f9ad0cec0d1177
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 52d5c7a500652b0090cf9b21400a9c45f2bf54e7
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069897"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113033724"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>教程：通过 Azure CLI 使用 DMS 将 PostgreSQL 联机迁移到 Azure DB for PostgreSQL
 
@@ -69,13 +69,13 @@ ms.locfileid: "110069897"
 
        ![Azure 门户中的“Cloud Shell”按钮](media/tutorial-postgresql-to-azure-postgresql-online/cloud-shell-button.png)
 
-  * 在本地安装并运行 CLI。 CLI 2.0 是用于管理 Azure 资源的命令行工具。
+  * 在本地安装并运行 CLI。 若要管理此迁移所需的 Azure 资源，必须安装命令行工具 CLI 2.18 或更高版本。
 
-       若要下载 CLI，请按照[安装 Azure CLI 2.0](/cli/azure/install-azure-cli) 一文中的说明操作。 本文还列出了支持 CLI 2.0 的平台。
+       若要下载 CLI，请按照[安装 Azure CLI](/cli/azure/install-azure-cli) 一文中的说明操作。 该文章还列出了支持 Azure CLI 的平台。
 
        若要设置适用于 Linux 的 Windows 子系统 (WSL)，请按照 [Windows 10 Installation Guide](/windows/wsl/install-win10)（Windows 10 安装指南）中的说明操作
 
-* 在 postgresql.config 文件中启用逻辑复制，并设置以下参数：
+* 通过编辑 postgresql.config 文件并设置以下参数，在源服务器上启用逻辑复制：
 
   * wal_level = **logical**
   * max_replication_slots = [槽数]，建议设置为“5 个槽” 
@@ -126,34 +126,28 @@ ms.locfileid: "110069897"
        ```
 
    * 系统提示时，请打开 Web 浏览器并输入用于对设备进行身份验证的代码。 按照列出的说明操作。
-   * 添加 dms 扩展：
-       * 若要列出可用的扩展，请运行以下命令：
 
-           ```azurecli
-           az extension list-available –otable
-           ```
+   * PostgreSQL 联机迁移现已在常规 CLI 包（2.18.0 和更高版本）中提供，无需 `dms-preview` 扩展。 如果你过去安装了该扩展，可使用以下步骤将其删除：
+        * 若要检查是否已安装 `dms-preview` 扩展，请运行以下命令：
+        
+            ```azurecli
+            az extension list -o table
+            ```
 
-       * 若要安装扩展，请运行以下命令：
+        * 如果已安装 `dms-preview` 扩展，若要将其卸载，请运行以下命令：
+        
+            ```azurecli
+            az extension remove --name dms-preview
+            ```
 
-           ```azurecli
-           az extension add –n dms-preview
-           ```
+        * 若要验证是否已正确卸载 `dms-preview` 扩展，请运行以下命令，然后，列表中不应会出现 `dms-preview` 扩展：
 
-   * 若要验证是否已正确安装 dms 扩展，请运行以下命令：
-
-       ```azurecli
-       az extension list -otable
-       ```
-       应会看到以下输出：
-
-       ```output
-       ExtensionType    Name
-       ---------------  ------
-       whl              dms
-       ```
+            ```azurecli
+            az extension list -o table
+            ```
 
       > [!IMPORTANT]
-      > 确保扩展版本高于 0.11.0。
+      > 对于 Azure DMS 支持的其他迁移路径，仍可能需要 `dms-preview` 扩展。 请查看特定迁移路径的文档以确定是否需要该扩展。 此文档介绍了扩展的要求，其内容专门与从 PostgreSQL 联机迁移到 Azure Database for PostgreSQL 相关。
 
    * 任何时候都可以通过运行以下命令来查看所有在 DMS 中受支持的命令：
 
@@ -170,7 +164,7 @@ ms.locfileid: "110069897"
 2. 通过运行以下命令来预配 DMS 的实例：
 
    ```azurecli
-   az dms create -l [location] -n <newServiceName> -g <yourResourceGroupName> --sku-name Premium_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
+   az dms create -l <location> -n <newServiceName> -g <yourResourceGroupName> --sku-name Premium_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
    ```
 
    例如，以下命令会创建一项具有下述参数的服务：
@@ -224,12 +218,12 @@ ms.locfileid: "110069897"
 
     例如，以下命令会创建一个使用下述参数的项目：
 
-   * 位置：美国中西部
-   * 资源组名称：PostgresDemo
-   * 服务名称：PostgresCLI
-   * 项目名称：PGMigration
-   * 源平台：PostgreSQL
-   * 目标平台：AzureDbForPostgreSql
+    * 位置：美国中西部
+    * 资源组名称：PostgresDemo
+    * 服务名称：PostgresCLI
+    * 项目名称：PGMigration
+    * 源平台：PostgreSQL
+    * 目标平台：AzureDbForPostgreSql   
 
      ```azurecli
      az dms project create -l westcentralus -n PGMigration -g PostgresDemo --service-name PostgresCLI --source-platform PostgreSQL --target-platform AzureDbForPostgreSql
@@ -239,195 +233,226 @@ ms.locfileid: "110069897"
 
     此步骤包括使用源 IP、UserID 和密码，目标 IP、UserID 和密码以及任务类型来建立连接。
 
-   * 若要查看选项的完整列表，请运行以下命令：
+    * 若要查看选项的完整列表，请运行以下命令：
 
-       ```azurecli
-       az dms project task create -h
-       ```
-
-       源和目标连接的输入参数都引用一个包含对象列表的 json 文件。
-
-       适用于 PostgreSQL 连接的连接 JSON 对象的格式。
-        
-       ```json
-       {
-                   "userName": "user name",    // if this is missing or null, you will be prompted
-                   "password": null,           // if this is missing or null (highly recommended) you will
-               be prompted
-                   "serverName": "server name",
-                   "databaseName": "database name", // if this is missing, it will default to the 'postgres'
-               server
-                   "port": 5432                // if this is missing, it will default to 5432
-               }
-       ```
-
-   * 此外还有一个数据库选项 json 文件，该文件列出 json 对象。 对于 PostgreSQL，数据库选项 JSON 对象的格式如下所示：
-
-       ```json
-       [
-           {
-               "name": "source database",
-               "target_database_name": "target database",
-           },
-           ...n
-       ]
-       ```
-
-   * 使用记事本创建一个 json 文件，复制以下命令并将其粘贴到文件中，然后将文件保存在 C:\DMS\source.json 中。
-
-        ```json
-       {
-                   "userName": "postgres",    
-                   "password": null,           
-               be prompted
-                   "serverName": "13.51.14.222",
-                   "databaseName": "dvdrental", 
-                   "port": 5432                
-               }
+        ```azurecli
+        az dms project task create -h
         ```
 
-   * 创建另一个名为 target.json 的文件，将其另存为 C:\DMS\target.json。 包括以下命令：
+        源和目标连接的输入参数都引用一个包含对象列表的 json 文件。
 
-       ```json
-       {
-               "userName": " dms@builddemotarget",    
-               "password": null,           
-               "serverName": " builddemotarget.postgres.database.azure.com",
-               "databaseName": "inventory", 
-               "port": 5432                
-           }
-       ```
+        适用于 PostgreSQL 连接的连接 JSON 对象的格式。
+        
+        ```json
+        {
+            // if this is missing or null, you will be prompted
+            "userName": "user name",
+            // if this is missing or null (highly recommended) you will  be prompted  
+            "password": null,
+            "serverName": "server name",
+            // if this is missing, it will default to the 'postgres' database
+            "databaseName": "database name",
+            // if this is missing, it will default to 5432 
+            "port": 5432                
+        }
+        ```
 
-   * 创建一个数据库选项 json 文件，该文件将要迁移的数据库的选项以清单形式列出：
+        此外还有一个数据库选项 json 文件，该文件列出 json 对象。 对于 PostgreSQL，数据库选项 JSON 对象的格式如下所示：
 
-       ```json
-       [
-           {
-               "name": "dvdrental",
-               "target_database_name": "dvdrental",
-           }
-       ]
-       ```
+        ```json
+        [
+            {
+                "name": "source database",
+                "target_database_name": "target database",
+                "selectedTables": [
+                    "schemaName1.tableName1",
+                    ...n
+                ]
+            },
+            ...n
+        ]
+        ```
 
-   * 运行以下命令，其中包含源、目标和 DB 选项 json 文件。
+    * 若要创建源连接 JSON，请打开记事本，复制以下 JSON 并将其粘贴到文件中。 根据源服务器修改该文件后，将其保存到 C:\DMS\source.json。
 
-       ```azurecli
-       az dms project task create -g PostgresDemo --project-name PGMigration --source-platform postgresql --target-platform azuredbforpostgresql --source-connection-json c:\DMS\source.json --database-options-json C:\DMS\option.json --service-name PostgresCLI --target-connection-json c:\DMS\target.json –task-type OnlineMigration -n runnowtask    
-       ```
+        ```json
+        {
+            "userName": "postgres",    
+            "password": null,
+            "serverName": "13.51.14.222",
+            "databaseName": "dvdrental", 
+            "port": 5432                
+        }
+        ```
 
-     现在已成功提交一个迁移任务。
+    * 若要创建目标连接 JSON，请打开记事本，复制以下 JSON 并将其粘贴到文件中。 根据目标服务器修改该文件后，将其保存到 C:\DMS\target.json。
+    
+        ```json
+        {
+            "userName": " dms@builddemotarget",    
+            "password": null,           
+            "serverName": " builddemotarget.postgres.database.azure.com",
+            "databaseName": "inventory", 
+            "port": 5432                
+        }
+        ```
+
+    * 创建一个数据库选项 JSON 文件，用于列出要迁移的数据库的清单和映射：
+
+        * 创建要迁移的表的列表，或者可以使用 SQL 查询从源数据库生成该列表。 下面提供了一个用于生成表列表的示例查询。 如果使用此查询，请记得删除最后一个表名称末尾的最后一个逗号，使之成为有效的 JSON 数组。 
+        
+            ```sql
+            SELECT
+                FORMAT('%s,', REPLACE(FORMAT('%I.%I', schemaname, tablename), '"', '\"')) AS SelectedTables
+            FROM 
+                pg_tables
+            WHERE 
+                schemaname NOT IN ('pg_catalog', 'information_schema');
+            ```
+
+        * 为每个数据库创建包含一个条目的数据库选项 JSON 文件，该条目包含源数据库和目标数据库名称，以及要迁移的选定表的列表。 可以使用上述 SQL 查询的输出来填充“selectedTables”数组。 请注意，如果选定表列表为空，则服务将包含所有要迁移的、具有匹配架构和表名称的表。
+        
+            ```json
+            [
+                {
+                    "name": "dvdrental",
+                    "target_database_name": "dvdrental",
+                    "selectedTables": [
+                        "schemaName1.tableName1",
+                        "schemaName1.tableName2",                    
+                        ...
+                        "schemaNameN.tableNameM"
+                    ]
+                },
+                ... n
+            ]
+            ```
+
+    * 运行以下命令并在其中指定源连接、目标连接和数据库选项 JSON 文件。
+
+        ```azurecli
+        az dms project task create -g PostgresDemo --project-name PGMigration --source-connection-json c:\DMS\source.json --database-options-json C:\DMS\option.json --service-name PostgresCLI --target-connection-json c:\DMS\target.json --task-type OnlineMigration -n runnowtask    
+        ```
+
+    现在已成功提交一个迁移任务。
 
 7. 若要显示任务进度，请运行以下命令：
 
-   ```azurecli
-   az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
-   ```
+    * 查看简短的常规任务状态
+        ```azurecli
+        az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name runnowtask
+        ```
 
-   OR
+    * 查看详细的任务状态，包括迁移进度信息
 
-    ```azurecli
-   az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output
-    ```
+        ```azurecli
+        az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name runnowtask --expand output
+        ```
 
-8. 也可从 expand output 中查询 migrationState：
+    * 还可以使用 [JMESPATH](https://jmespath.org/) 查询格式来仅提取 expand 命令输出中的 migrationState：
 
-    ```azurecli
-    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output --query 'properties.output[].migrationState | [0]' "READY_TO_COMPLETE"
-    ```
+        ```azurecli
+        az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name runnowtask --expand output --query 'properties.output[].migrationState'
+        ```
 
-在输出文件中，有多个指示迁移进度的参数。 有关示例，请查看下面的输出文件：
+        在输出中，有多个参数指示了不同迁移步骤的进度。 例如，查看以下输出：
 
-  ```output
-    "output": [                                 // Database Level
-          {
-            "appliedChanges": 0,         // Total incremental sync applied after full load
-            "cdcDeleteCounter": 0        // Total delete operation  applied after full load
-            "cdcInsertCounter": 0,       // Total insert operation applied after full load
-            "cdcUpdateCounter": 0,       // Total update operation applied after full load
-            "databaseName": "inventory",
-            "endedOn": null,
-            "fullLoadCompletedTables": 2,   //Number of tables completed full load
-            "fullLoadErroredTables": 0,     //Number of tables that contain migration error
-            "fullLoadLoadingTables": 0,     //Number of tables that are in loading status
-            "fullLoadQueuedTables": 0,      //Number of tables that are in queued status
-            "id": "db|inventory",
-            "incomingChanges": 0,           //Number of changes after full load
-            "initializationCompleted": true,
-            "latency": 0,
-            "migrationState": "READY_TO_COMPLETE",    //Status of migration task. READY_TO_COMPLETE means the database is ready for cutover
-            "resultType": "DatabaseLevelOutput",
-            "startedOn": "2018-07-05T23:36:02.27839+00:00"
-          },
-          {
-            "databaseCount": 1,
-            "endedOn": null,
-            "id": "dd27aa3a-ed71-4bff-ab34-77db4261101c",
-            "resultType": "MigrationLevelOutput",
-            "sourceServer": "138.91.123.10",
-            "sourceVersion": "PostgreSQL",
-            "startedOn": "2018-07-05T23:36:02.27839+00:00",
-            "state": "PENDING",
-            "targetServer": "builddemotarget.postgres.database.azure.com",
-            "targetVersion": "Azure Database for PostgreSQL"
-          },
-          {                                        // Table 1
-            "cdcDeleteCounter": 0,
-            "cdcInsertCounter": 0,
-            "cdcUpdateCounter": 0,
-            "dataErrorsCount": 0,
-            "databaseName": "inventory",
-            "fullLoadEndedOn": "2018-07-05T23:36:20.740701+00:00",    //Full load completed time
-            "fullLoadEstFinishTime": "1970-01-01T00:00:00+00:00",
-            "fullLoadStartedOn": "2018-07-05T23:36:15.864552+00:00",    //Full load started time
-            "fullLoadTotalRows": 10,                     //Number of rows loaded in full load
-            "fullLoadTotalVolumeBytes": 7056,            //Volume in Bytes in full load
-            "id": "or|inventory|public|actor",
-            "lastModifiedTime": "2018-07-05T23:36:16.880174+00:00",
-            "resultType": "TableLevelOutput",
-            "state": "COMPLETED",                       //State of migration for this table
-            "tableName": "public.catalog",              //Table name
-            "totalChangesApplied": 0                    //Total sync changes that applied after full load
-          },
-          {                                            //Table 2
-            "cdcDeleteCounter": 0,
-            "cdcInsertCounter": 50,
-            "cdcUpdateCounter": 0,
-            "dataErrorsCount": 0,
-            "databaseName": "inventory",
-            "fullLoadEndedOn": "2018-07-05T23:36:23.963138+00:00",
-            "fullLoadEstFinishTime": "1970-01-01T00:00:00+00:00",
-            "fullLoadStartedOn": "2018-07-05T23:36:19.302013+00:00",
-            "fullLoadTotalRows": 112,
-            "fullLoadTotalVolumeBytes": 46592,
-            "id": "or|inventory|public|address",
-            "lastModifiedTime": "2018-07-05T23:36:20.308646+00:00",
-            "resultType": "TableLevelOutput",
-            "state": "COMPLETED",
-            "tableName": "public.orders",
-            "totalChangesApplied": 0
-          }
-        ],                                      // DMS migration task state
-        "state": "Running",    //Migration task state – Running means it is still listening to any changes that might come in
-        "taskType": null
-      },
-      "resourceGroup": "PostgresDemo",
-      "type": "Microsoft.DataMigration/services/projects/tasks"
-  ```
+        ```json
+        {
+            "output": [
+                // Database Level
+                {
+                    "appliedChanges": 0, // Total incremental sync applied after full load
+                    "cdcDeleteCounter": 0, // Total delete operation  applied after full load
+                    "cdcInsertCounter": 0, // Total insert operation applied after full load
+                    "cdcUpdateCounter": 0, // Total update operation applied after full load
+                    "databaseName": "inventory",
+                    "endedOn": null,
+                    "fullLoadCompletedTables": 2, //Number of tables completed full load
+                    "fullLoadErroredTables": 0, //Number of tables that contain migration error
+                    "fullLoadLoadingTables": 0, //Number of tables that are in loading status
+                    "fullLoadQueuedTables": 0, //Number of tables that are in queued status
+                    "id": "db|inventory",
+                    "incomingChanges": 0, //Number of changes after full load
+                    "initializationCompleted": true,
+                    "latency": 0,
+                    //Status of migration task
+                    "migrationState": "READY_TO_COMPLETE", //READY_TO_COMPLETE => the database is ready for cutover
+                    "resultType": "DatabaseLevelOutput",
+                    "startedOn": "2018-07-05T23:36:02.27839+00:00"
+                }, {
+                    "databaseCount": 1,
+                    "endedOn": null,
+                    "id": "dd27aa3a-ed71-4bff-ab34-77db4261101c",
+                    "resultType": "MigrationLevelOutput",
+                    "sourceServer": "138.91.123.10",
+                    "sourceVersion": "PostgreSQL",
+                    "startedOn": "2018-07-05T23:36:02.27839+00:00",
+                    "state": "PENDING",
+                    "targetServer": "builddemotarget.postgres.database.azure.com",
+                    "targetVersion": "Azure Database for PostgreSQL"
+                },
+                // Table 1
+                {
+                    "cdcDeleteCounter": 0,
+                    "cdcInsertCounter": 0,
+                    "cdcUpdateCounter": 0,
+                    "dataErrorsCount": 0,
+                    "databaseName": "inventory",
+                    "fullLoadEndedOn": "2018-07-05T23:36:20.740701+00:00", //Full load completed time
+                    "fullLoadEstFinishTime": "1970-01-01T00:00:00+00:00",
+                    "fullLoadStartedOn": "2018-07-05T23:36:15.864552+00:00", //Full load started time
+                    "fullLoadTotalRows": 10, //Number of rows loaded in full load
+                    "fullLoadTotalVolumeBytes": 7056, //Volume in Bytes in full load
+                    "id": "or|inventory|public|actor",
+                    "lastModifiedTime": "2018-07-05T23:36:16.880174+00:00",
+                    "resultType": "TableLevelOutput",
+                    "state": "COMPLETED", //State of migration for this table
+                    "tableName": "public.catalog", //Table name
+                    "totalChangesApplied": 0 //Total sync changes that applied after full load
+                },
+                //Table 2
+                {
+                    "cdcDeleteCounter": 0,
+                    "cdcInsertCounter": 50,
+                    "cdcUpdateCounter": 0,
+                    "dataErrorsCount": 0,
+                    "databaseName": "inventory",
+                    "fullLoadEndedOn": "2018-07-05T23:36:23.963138+00:00",
+                    "fullLoadEstFinishTime": "1970-01-01T00:00:00+00:00",
+                    "fullLoadStartedOn": "2018-07-05T23:36:19.302013+00:00",
+                    "fullLoadTotalRows": 112,
+                    "fullLoadTotalVolumeBytes": 46592,
+                    "id": "or|inventory|public|address",
+                    "lastModifiedTime": "2018-07-05T23:36:20.308646+00:00",
+                    "resultType": "TableLevelOutput",
+                    "state": "COMPLETED",
+                    "tableName": "public.orders",
+                    "totalChangesApplied": 0
+                }
+            ],
+            // DMS migration task state
+            "state": "Running", //Running => service is still listening to any changes that might come in
+            "taskType": null
+        }
+        ```
 
 ## <a name="cutover-migration-task"></a>直接转换迁移任务
 
 完全加载以后，即可对数据库进行直接转换。 完全加载以后，当新事务传入时，DMS 任务可能仍在应用所做的更改，具体取决于源服务器的繁忙程度。
 
-若要确保所有数据都已捕获，请验证源和目标数据库的行计数。 例如，可以使用以下命令：
+若要确保所有数据都已捕获，请验证源和目标数据库的行计数。 例如，可以验证状态输出中的以下详细信息：
 
 ```
-"migrationState": "READY_TO_COMPLETE", //Status of migration task. READY_TO_COMPLETE means database is ready for cutover
- "incomingChanges": 0, //continue to check for a period of 5-10 minutes to make sure no new incoming changes that need to be applied to the target server
-   "fullLoadTotalRows": 10, //full load for table 1
-    "cdcDeleteCounter": 0, //delete, insert and update counter on incremental sync after full load
-    "cdcInsertCounter": 50,
-    "cdcUpdateCounter": 0,
-     "fullLoadTotalRows": 112, //full load for table 2
+Database Level
+"migrationState": "READY_TO_COMPLETE" => Status of migration task. READY_TO_COMPLETE means database is ready for cutover
+"incomingChanges": 0 => Check for a period of 5-10 minutes to ensure no new incoming changes need to be applied to the target server
+
+Table Level (for each table)
+"fullLoadTotalRows": 10    => The row count matches the initial row count of the table
+"cdcDeleteCounter": 0      => Number of deletes after the full load
+"cdcInsertCounter": 50     => Number of inserts after the full load
+"cdcUpdateCounter": 0      => Number of updates after the full load
 ```
 
 1. 使用以下命令执行直接转换数据库迁移任务：
@@ -436,16 +461,16 @@ ms.locfileid: "110069897"
     az dms project task cutover -h
     ```
 
-    例如：
+    例如，以下命令将对“Inventory”数据库启动切换：
 
     ```azurecli
-    az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask  --object-name Inventory
+    az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name runnowtask  --object-name Inventory
     ```
 
 2. 若要监视直接转换进度，请运行以下命令：
 
     ```azurecli
-    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
+    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name runnowtask
     ```
 3. 当数据库迁移状态显示“已完成”时[重新创建序列](https://wiki.postgresql.org/wiki/Fixing_Sequences)（如适用），并将应用程序连接到 Azure Database for PostgreSQL 的新目标实例。
 
@@ -461,12 +486,12 @@ ms.locfileid: "110069897"
 1. 若要取消正在运行的任务，请使用以下命令：
 
     ```azurecli
-    az dms project task cancel --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
+    az dms project task cancel --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name runnowtask
      ```
 
 2. 若要删除正在运行的任务，请使用以下命令：
     ```azurecli
-    az dms project task delete --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
+    az dms project task delete --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name runnowtask
     ```
 
 3. 若要取消正在运行的项目，请使用以下命令：

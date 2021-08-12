@@ -7,13 +7,13 @@ ms.reviewer: douglasl, jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
-ms.date: 02/18/2021
-ms.openlocfilehash: 182d9d08041b2d32253b935a5171be6d399c80a6
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 07/05/2021
+ms.openlocfilehash: ae7f83e397822eb52a9fdfca7011d4228cb3b625
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110679057"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436328"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>使用 PowerShell 以递增方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 
@@ -815,10 +815,11 @@ END
 
 3. 在数据工厂列表中搜索你的数据工厂，然后选择它来打开“数据工厂”页。 
 
-4. 在“数据工厂”页上，选择“创作和监视”以在单独的选项卡中启动 Azure 数据工厂。
+4. 在“数据工厂”页上，选择“打开 Azure 数据工厂工作室”磁贴上的“打开”，以在单独的选项卡中启动 Azure 数据工厂。
 
-5. 在“开始使用”页上，选择左侧的“监视”。 
-![屏幕截图显示了 Azure 数据工厂的“开始使用”页。](media/doc-common-process/get-started-page-monitor-button.png)    
+5. 在 Azure 数据工厂主页上，选择左侧的“监视”。 
+
+    ![屏幕截图显示了 Azure 数据工厂主页。](media/doc-common-process/get-started-page-monitor-button.png)    
 
 6. 可以看到所有管道运行及其状态。 请注意，在以下示例中，管道运行的状态为“成功”。 选择“参数”列中的链接即可查看传递至管道的参数。 如果出现错误，请查看“错误”列中的链接。
 

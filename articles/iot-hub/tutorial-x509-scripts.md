@@ -6,18 +6,18 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 02/26/2021
+ms.date: 06/26/2021
 ms.author: robinsh
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: ff4b63f49a87dd9ca6b0ef458bdcf1c285a34a18
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 8170b6529ca38c54d3030514a79948678861f3bd
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378204"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113214899"
 ---
 # <a name="tutorial-using-microsoft-supplied-scripts-to-create-test-certificates"></a>教程：使用 Microsoft 提供的脚本创建测试证书
 
@@ -61,13 +61,15 @@ Microsoft 提供了 PowerShell 和 Bash 脚本来帮助你了解如何创建你�
 
 1. 输入 CA 证书的显示名字。
 
+1. 要跳过所有权证明，请选中“在上传时将证书状态设置已验证”旁边的框。
+
 1. 上传 CA 证书。
 
 1. 选择“保存”。
 
-### <a name="step-3---prove-possession"></a>步骤 3 — 证明所有权
+### <a name="optional-step-3---prove-possession"></a>（可选）步骤 3 - 证明所有权
 
-现在，你已将 CA 证书上传到 IoT 中心，你需要证明你的所有权：
+如果未选择在上传时自动验证证书，请手动证明所有权：
 
 1. 选择新的 CA 证书。
 

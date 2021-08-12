@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/27/2021
 ms.custom: devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: ccc28c5a20fd31d3200f6473210150587fd5b4ad
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 40fdfcec5e74c7b86807f5cd1577d12ed4904632
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028624"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765747"
 ---
 # <a name="tutorial-get-started-with-a-python-script-in-azure-machine-learning-part-1-of-3"></a>教程：开始在 Azure 机器学习中使用 Python 脚本（第 1 部分，共 3 部分）
 
@@ -77,9 +77,6 @@ print("Hello world!")
 :::image type="content" source="media/tutorial-1st-experiment-hello-world/save-run-in-terminal.png" alt-text="屏幕截图显示工具栏中的“保存并在终端中运行脚本”工具":::
 
 将在打开的终端窗口中看到该脚本的输出。 关闭选项卡，选择“终止”以关闭会话。
-
-> [!div class="nextstepaction"]
-> [我在本地运行脚本](?success=run-local#control-script) [我遇到了一个问题](https://www.research.net/r/7C2NTH7?issue=run-local)
 
 ## <a name="create-a-control-script"></a><a name="control-script"></a> 创建控制脚本
 
@@ -149,8 +146,6 @@ print(aml_url)
    :::column-end:::
 :::row-end:::
 
-> [!div class="nextstepaction"]
-> [我创建了控制脚本](?success=create-control-script#submit) [我遇到了一个问题](https://www.research.net/r/7C2NTH7?issue=create-control-script)
 
 ## <a name="submit-and-run-your-code-in-the-cloud"></a><a name="submit"></a> 在云中提交并运行代码
 
@@ -161,8 +156,6 @@ print(aml_url)
 > [!TIP]
 > 如果刚创建完计算群集，则可能会看到错误“UserError: 未找到必需的 Docker 映像...”请等待大约 5 分钟，然后重试。  计算群集可能需要更多时间才能准备好启动节点。
 
-> [!div class="nextstepaction"]
-> [我在云中提交了代码](?success=submit-to-cloud#monitor) [我遇到了一个问题](https://www.research.net/r/7C2NTH7?issue=submit-to-cloud)
 
 ## <a name="monitor-your-code-in-the-cloud-in-the-studio"></a><a name="monitor"></a>在工作室的云中监视代码
 
@@ -204,8 +197,6 @@ print(aml_url)
 
 `70_driver_log.txt` 文件包含来自运行的标准输出。 当你在云中调试远程运行时，此文件会很有用。
 
-> [!div class="nextstepaction"]
-> [我在工作室看到了该日志](?success=monitor-in-studio#next-steps) [我遇到了一个问题](https://www.research.net/r/7C2NTH7?issue=monitor-in-studio)
 
 ## <a name="next-steps"></a>后续步骤
 

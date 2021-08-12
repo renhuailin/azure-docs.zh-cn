@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: bf60f512416007137e71119fa7474b1393099ebf
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: cffd8e0347f501e82ca6e62d5c120b232869cbc0
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718874"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114653314"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>浏览 Azure IoT Central UI
 
@@ -22,7 +22,7 @@ ms.locfileid: "107718874"
 
 ## <a name="iot-central-homepage"></a>IoT Central 主页
 
-可在 [IoT Central 主页](https://aka.ms/iotcentral-get-started)上详细了解有关 IoT Central 的最新消息和可用功能，创建新的应用程序以及查看和启动现有的应用程序。
+可在 [IoT Central 主页](https://apps.azureiotcentral.com/)上详细了解有关 IoT Central 的最新消息和可用功能，创建新的应用程序以及查看和启动现有的应用程序。
 
 :::image type="content" source="media/overview-iot-central-tour/iot-central-homepage.png" alt-text="IoT Central 主页":::
 
@@ -36,7 +36,7 @@ ms.locfileid: "107718874"
 
 ### <a name="launch-your-application"></a>启动应用程序
 
-通过导航到在应用创建过程中选择的 URL 来启动 IoT Central 应用程序。 你还可以在 [IoT Central 应用管理器](https://aka.ms/iotcentral-apps)中看到有权访问的所有应用程序的列表。
+通过导航到在应用创建过程中选择的 URL 来启动 IoT Central 应用程序。 你还可以在 [IoT Central 应用管理器](https://apps.azureiotcentral.com/myapps)中看到有权访问的所有应用程序的列表。
 
 :::image type="content" source="media/overview-iot-central-tour/app-manager.png" alt-text="IoT Central 应用管理器":::
 
@@ -84,7 +84,7 @@ ms.locfileid: "107718874"
 
 * 若要搜索设备，请输入“搜索”值。
 * 若要更改 UI 语言或主题，请选择“设置”图标。 详细了解[管理应用程序首选项](howto-manage-preferences.md)
-* 若要获取帮助和支持，请选择 **帮助** 下拉列表以显示资源列表。 你可从“关于你的应用”链接中[获取有关应用程序的信息](./howto-get-app-info.md)。 在针对免费定价计划的应用程序中，支持资源包括对[实时聊天](howto-show-hide-chat.md)的访问权限。
+* 若要获取帮助和支持，请选择 **帮助** 下拉列表以显示资源列表。 你可从“关于你的应用”链接中[获取有关应用程序的信息](howto-faq.yml#how-do-i-get-information-about-my-application-)。 在针对免费定价计划的应用程序中，支持资源包括对[实时聊天](howto-show-hide-chat.md)的访问权限。
 * 若要从应用程序中注销，请选择“帐户”图标。
 
 可以为 UI 选择浅色主题或深色主题：
@@ -98,9 +98,9 @@ ms.locfileid: "107718874"
 
 :::image type="content" source="Media/overview-iot-central-tour/dashboard.png" alt-text="IoT Central 仪表板的屏幕截图。":::
 
-* “仪表板”是登录到 IoT Central 应用程序后看到的第一个页面。 可以创建和自定义多个应用程序仪表板。 详细了解[将磁贴添加到仪表板](howto-add-tiles-to-your-dashboard.md)
+* “仪表板”是登录到 IoT Central 应用程序后看到的第一个页面。 可以创建和自定义多个应用程序仪表板。 详细了解[将磁贴添加到仪表板](howto-manage-dashboards.md)
 
-* 还可以创建个人仪表板来监视你关注的内容。 若要了解详细信息，请参阅[创建 Azure IoT Central 个人仪表板](howto-create-personal-dashboards.md)操作指南文章。
+* 还可以创建个人仪表板来监视你关注的内容。 若要了解详细信息，请参阅[创建 Azure IoT Central 个人仪表板](howto-manage-dashboards.md)操作指南文章。
 
 ### <a name="devices"></a>设备
 
@@ -110,8 +110,6 @@ ms.locfileid: "107718874"
 
 * 设备模板定义可以连接到应用程序的设备类型。
 * 设备表示应用程序中的真实或模拟设备。
-
-若要了解更多信息，请参阅[监视设备](./quick-monitor-devices.md)快速入门。 
 
 ### <a name="device-groups"></a>设备组
 
@@ -134,7 +132,7 @@ ms.locfileid: "107718874"
 
 :::image type="content" source="Media/overview-iot-central-tour/jobs.png" alt-text="“作业”页":::
 
-使用此页可以查看和创建作业，这些作业可用于设备上的批量设备管理操作。 可以更新设备属性、设置，并对设备组执行命令。 若要了解详细信息，请参阅[运行作业](howto-run-a-job.md)文章。
+使用此页可以查看和创建作业，这些作业可用于设备上的批量设备管理操作。 可以更新设备属性、设置，并对设备组执行命令。 若要了解详细信息，请参阅[运行作业](howto-manage-devices-in-bulk.md)文章。
 
 ### <a name="device-templates"></a>设备模板
 

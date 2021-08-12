@@ -2,15 +2,15 @@
 title: 使用 Azure CLI 创建事件中心 - Azure 事件中心 | Microsoft Docs
 description: 本快速入门介绍如何使用 Azure CLI 创建事件中心，然后使用 Java 发送和接收事件。
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 06/18/2021
 ms.author: spelluru
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9a47548fb1f94ac7fe9b561e798b010fa9176e9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 779d83cbf53423c3b4b6c6d8ce2c27c0c9674da7
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566293"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414802"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-cli"></a>快速入门：使用 Azure CLI 创建事件中心
 
@@ -58,7 +58,7 @@ az eventhubs namespace create --name <Event Hubs namespace> --resource-group <re
 az eventhubs eventhub create --name <event hub name> --resource-group <resource group name> --namespace-name <Event Hubs namespace>
 ```
 
-祝贺你！ 现已使用 Azure CLI 创建了一个事件中心命名空间，并在该命名空间中创建了一个事件中心。 
+祝贺！ 现已使用 Azure CLI 创建了一个事件中心命名空间，并在该命名空间中创建了一个事件中心。 
 
 ## <a name="next-steps"></a>后续步骤
 

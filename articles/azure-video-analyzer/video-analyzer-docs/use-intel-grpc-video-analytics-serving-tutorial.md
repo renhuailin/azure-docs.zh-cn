@@ -3,13 +3,13 @@ title: 将 Intel OpenVINO™ DL Streamer Edge AI 扩展与 Azure 视频分析器
 description: 本教程介绍如何使用由 Intel 提供的 Intel OpenVINO™ DL Streamer Edge AI 扩展来分析（模拟）IP 相机中的实时视频源。
 ms.topic: tutorial
 ms.service: azure-video-analyzer
-ms.date: 05/18/2021
-ms.openlocfilehash: 9f3a313b1dc99fd86bc2ee764a78a151e8d88f96
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.date: 06/01/2021
+ms.openlocfilehash: f666ac772d85fb1501c54001511e25cd941ee7c3
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111440551"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604776"
 ---
 # <a name="tutorial-analyze-live-video-with-intel-openvino-dl-streamer--edge-ai-extension"></a>教程：使用 Intel OpenVINO™ DL Streamer Edge AI 扩展来分析实时视频 
 
@@ -17,8 +17,7 @@ ms.locfileid: "111440551"
 
 本教程将 Azure VM 用作模拟 IoT Edge 设备，并使用模拟的实时视频流。 它基于用 C# 编写的示例代码，并以[检测运动并发出事件](detect-motion-emit-events-quickstart.md)快速入门为基础。
 
-> [!NOTE]
-> 本教程要求使用 x86-64 计算机作为你的 Edge 设备。
+[!INCLUDE [use-x86-64](./includes/common-includes/use-x86-64.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -64,7 +63,7 @@ OpenVINO™ DL Streamer Edge AI 扩展模块是一项基于 Intel 视频分析�
 
 - object_tracking for person_vehicle_bike_tracking ![用于人员车辆的对象跟踪](./media/use-intel-openvino-tutorial/object-tracking.png)
 
-它使用预先加载的对象检测、对象分类和对象跟踪管道来快速启动。 此外，它还附带预先加载的 [person-vehicle-bike-detection-crossroad-0078](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/person-vehicle-bike-detection-crossroad-0078/description/person-vehicle-bike-detection-crossroad-0078.md) 和 [vehicle-attributes-recognition-barrier-0039 models](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/vehicle-attributes-recognition-barrier-0039/description/vehicle-attributes-recognition-barrier-0039.md)。
+它使用预先加载的对象检测、对象分类和对象跟踪管道来快速启动。 此外，它还附带预先加载的 [person-vehicle-bike-detection-crossroad-0078](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/person-vehicle-bike-detection-crossroad-0078/README.md) 和 [vehicle-attributes-recognition-barrier-0039 models](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/vehicle-attributes-recognition-barrier-0039/README.md)。
 
 > [!NOTE]
 > 下载和使用 Edge 模块（Intel 提供的 OpenVINO™ DL Streamer Edge AI 扩展）及包含的软件，即表示你同意[许可协议](https://www.intel.com/content/www/us/en/legal/terms-of-use.html)下的条款和条件。

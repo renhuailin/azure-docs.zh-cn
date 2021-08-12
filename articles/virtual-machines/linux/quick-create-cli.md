@@ -14,12 +14,12 @@ ms.custom:
 - seo-javascript-october2019
 - seo-python-october2019
 - devx-track-azurecli
-ms.openlocfilehash: 3e8c1a06244c46f5789506e8a77d410f5493bbf3
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 14dbf2580b8dc114ea1c2706a682541bbd0aecc9
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058572"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "114288199"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建 Linux 虚拟机
 
@@ -76,6 +76,8 @@ az vm create \
 ```
 
 记下 VM 输出中自己的 `publicIpAddress`。 在后续步骤中，将使用此地址访问 VM。
+
+[!INCLUDE [ephemeral-ip-note.md](../../../includes/ephemeral-ip-note.md)]
 
 ## <a name="open-port-80-for-web-traffic"></a>为 Web 流量打开端口 80
 

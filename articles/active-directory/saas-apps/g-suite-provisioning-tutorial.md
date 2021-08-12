@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 G Suite 配置自动用户预配 | Microsoft Docs
 description: 了解如何将用户帐户从 Azure AD 自动预配到 G Suite 及如何取消预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/18/2021
-ms.author: Zhchia
-ms.openlocfilehash: ffc7aea2323f356c924c9d19b160d42a2bf59a69
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.author: thwimmer
+ms.openlocfilehash: eb283ab73180bed43c90f57fd7ad09c045f82bc4
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146178"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113763819"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教程：为 G Suite 配置自动用户预配
 

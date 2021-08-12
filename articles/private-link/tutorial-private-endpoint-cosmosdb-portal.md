@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: 3a7e75641f6bb84b490231fcd06e04c3cbad06d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c7c9caf5bbfd842c635b0cb887540457f15c081f
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99063461"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "114297030"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>教程：使用 Azure 专用终结点连接到 Azure Cosmos 帐户
 
@@ -28,7 +28,7 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅
 
@@ -130,6 +130,8 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 5. 选择“查看 + 创建”。 
   
 6. 检查设置，然后选择“创建”。
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="create-a-cosmos-db-account-with-a-private-endpoint"></a>创建采用专用终结点的 Cosmos DB 帐户
 

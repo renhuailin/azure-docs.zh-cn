@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: da026012c4084783d30f548cbdffc8951d74bcd6
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d1b7f941fbd7d9c6a6b654992e86ab0379e11e28
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751210"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113303807"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中通过无服务器 SQL 池创建和使用视图
 
@@ -81,6 +81,8 @@ from openrowset(
            ) as rows
 ```
 
+Delta Lake 目前为公共预览版，存在一些已知问题和限制。 在 [Synapse 无服务器 SQL 池自助页](resources-self-help-sql-on-demand.md#delta-lake)上查看已知问题。
+
 ## <a name="partitioned-views"></a>分区视图
 
 如果你有一组在分层文件夹结构中分区的文件，则可以在文件路径中使用通配符来描述分区模式。 使用 `FILEPATH` 函数可以将文件夹路径的一部分公开为分区列。
@@ -120,7 +122,9 @@ FROM
 > [!div class="mx-imgBorder"]
 >![Yellow Taxi Delta Lake 文件夹](./media/shared/yellow-taxi-delta-lake.png)
 
-查询已分区的 Delta Lake 数据时，请勿在 `OPENROWSET` 函数中使用 `WITH` 子句。 由于预览版中的已知问题，`WITH` 子句无法正确返回基础分区列中的值。 如果直接将 `OPENROWSET` 函数与子 `WITH` 子句一起使用（不带视图），则分区消除工作会正常运行。  
+查询已分区的 Delta Lake 数据时，请勿在 `OPENROWSET` 函数中使用 `WITH` 子句。 由于预览版中的已知问题，`WITH` 子句[无法正确返回基础分区列中的值](resources-self-help-sql-on-demand.md#partitioning-column-returns-null-values)。 如果直接将 `OPENROWSET` 函数与子 `WITH` 子句一起使用（不带视图），则分区消除工作会正常运行。  
+
+Delta Lake 目前为公共预览版，存在一些已知问题和限制。 在 [Synapse 无服务器 SQL 池自助页](resources-self-help-sql-on-demand.md#delta-lake)上查看已知问题。
 
 ## <a name="use-a-view"></a>使用视图
 

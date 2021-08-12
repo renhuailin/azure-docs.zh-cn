@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f4817e53cb36bc96add19d855750a73a151b4891
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: dd480102ab456552265f0f5bf521e9d653721b98
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772291"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "113225689"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>通过 .NET SDK 开始使用 Azure Cosmos DB 表 API 和 Azure 表存储
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "104772291"
 
 ## <a name="create-an-azure-cosmos-db-table-api-account"></a>创建 Azure Cosmos DB 表 API 帐户
 
-[!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
+[!INCLUDE [cosmos-db-create-dbaccount-table](includes/cosmos-db-create-dbaccount-table.md)]
 
 ## <a name="create-a-net-console-project"></a>创建 .NET 控制台项目
 

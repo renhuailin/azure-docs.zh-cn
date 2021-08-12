@@ -58,7 +58,9 @@
       items:
         - name: .NET Core
           href: enable-dynamic-configuration-dotnet-core-push-refresh.md
-    - name: Key Vault 引用
+        - name: Java Spring
+          href: enable-dynamic-configuration-java-spring-push-refresh.md
+    - name: 使用 Key Vault 引用
       items:
         - name: 使用 Key Vault 引用
           items:

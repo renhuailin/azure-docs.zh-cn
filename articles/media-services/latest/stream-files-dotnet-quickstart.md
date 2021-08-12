@@ -11,14 +11,14 @@ ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 08/31/2020
+ms.date: 07/23/2021
 ms.author: inhenkel
-ms.openlocfilehash: e7c35e079a6f4bf6c40992debace60e10631a8ba
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 9b45671496f114eaf708aad92def220a3b81349e
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962034"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690202"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - .NET
 
@@ -35,9 +35,10 @@ ms.locfileid: "105962034"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果没有安装 Visual Studio，可下载 [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。
-- [创建媒体服务帐户](./account-create-how-to.md)。<br/>请务必记住用于资源组名称和媒体服务帐户名称的值。
-- 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](./access-api-howto.md) 中的步骤并保存凭据。 需要使用这些凭据来访问 API。
+- 安装[适用于 Windows/macOS/Linux 的 Visual Studio Code](https://code.visualstudio.com/) 或[适用于 Windows 或 Mac 的 Visual Studio 2019](https://visualstudio.microsoft.com/)。
+- 安装 [.NET 5.0 SDK](https://dotnet.microsoft.com/download)
+- [创建媒体服务帐户](./account-create-how-to.md)。 请务必以 JSON 格式复制 API 访问详细信息，或以此示例中使用的 .env 文件格式存储连接到媒体服务帐户所需的值。
+- 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](./access-api-howto.md) 中的步骤并保存凭据。 你需要使用它们来访问此示例中的 API，或将它们输入为 .env 文件格式。
 
 ## <a name="download-and-configure-the-sample"></a>下载并配置示例
 
@@ -49,7 +50,7 @@ ms.locfileid: "105962034"
 
 该示例位于 [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles) 文件夹。
 
-打开下载的项目中的 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json)。 将值替换为在[访问 API](./access-api-howto.md) 中获取的凭据。
+[!INCLUDE [appsettings or .env file](./includes/note-appsettings-or-env-file.md)]
 
 该示例执行以下操作：
 

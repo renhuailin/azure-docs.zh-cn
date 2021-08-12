@@ -4,12 +4,12 @@ description: 快速入门：本文演练如何创建可将事件发送到 Azure 
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3c2ce58f86fa27544641c0917e96fa3172017232
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0f4f45f46707f6d373f332733464317b449bcd38
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309350"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112413030"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>快速入门：使用 .NET Framework 向/从 Azure 事件中心发送/接收事件
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
@@ -94,7 +94,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 ## <a name="receive-events"></a>接收事件
 在本部分，你将编写一个使用[事件处理器主机](event-hubs-event-processor-host.md)从事件中心接收消息的 .NET Framework 控制台应用程序。 [事件处理程序主机](event-hubs-event-processor-host.md)是一个 .NET 类，它通过从事件中心管理持久检查点和并行接收来简化从那些事件中心接收事件的过程。 使用事件处理程序主机，可跨多个接收方拆分事件，即使在不同节点中托管时也是如此。 
 
-[!INCLUDE [event-hubs-create-storage](../../includes/event-hubs-create-storage.md)]
+[!INCLUDE [event-hubs-create-storage](./includes/event-hubs-create-storage.md)]
 
 ### <a name="create-a-console-application"></a>创建控制台应用程序
 

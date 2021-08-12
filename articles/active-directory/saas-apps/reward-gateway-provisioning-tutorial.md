@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Reward Gateway 配置自动用户预配 | Microsoft Docs
 description: 了解如何配置 Azure Active Directory 来自动将用户帐户预配到 Reward Gateway 以及取消其预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: 2d51903aff6f3fd1cd53d85a980f1b5dc2a893e9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: thwimmer
+ms.openlocfilehash: 7d46c0115f5e9ef3432a188c1f1ffba89c0b04af
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94354248"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766206"
 ---
 # <a name="tutorial-configure-reward-gateway-for-automatic-user-provisioning"></a>教程：为 Reward Gateway 配置自动用户预配
 
@@ -106,7 +106,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 

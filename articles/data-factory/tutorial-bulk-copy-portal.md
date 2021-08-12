@@ -7,13 +7,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/29/2021
-ms.openlocfilehash: 73162ebdb28f8b8fa743ea4bb310b92b64f27557
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/06/2021
+ms.openlocfilehash: 4d3e767b14ad60f703cde59ab69cfea3f60b3759
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110076738"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436885"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>在 Azure 门户中使用 Azure 数据工厂批量复制多个表
 
@@ -83,7 +83,7 @@ ms.locfileid: "110076738"
 1. 单击“创建”。
 1. 创建完成后，选择“转到资源”导航到“数据工厂”页。 
    
-1. 单击“创作和监视”磁贴，在单独的选项卡中启动数据工厂 UI 应用程序。
+1. 在“打开 Azure 数据工厂工作室”磁贴上选择“打开”，以便在单独的标签页中启动数据工厂 UI 应用程序。 
 
 
 ## <a name="create-linked-services"></a>创建链接服务
@@ -254,7 +254,7 @@ ms.locfileid: "110076738"
     1. 单击“复制前脚本”输入框，选择下方的“添加动态内容”，输入以下表达式作为脚本，然后选择“完成”。 
 
         ```sql
-        IF EXISTS (SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}) TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
+        IF EXISTS (SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]) TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ```
 
         ![复制接收器设置](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)

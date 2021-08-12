@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 4199e82ee5b32fe3e34df421a9ca54136b8cbfb7
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: c9f738f95e11ab29fc5163b69812037410e79e8a
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109846385"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114361086"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services-preview"></a>Tutorial:使用认知服务进行情绪分析（预览版）
 
@@ -69,7 +69,7 @@ Azure Synapse 中的用户可以直接选择包含文本列的表，以扩充情
 
 ## <a name="open-the-cognitive-services-wizard"></a>打开认知服务向导
 
-1. 右键单击在上一步中创建的 Spark 表。 选择“机器学习” > “使用现有模型进行扩充”，打开向导 。
+1. 右键单击在上一步中创建的 Spark 表。 选择“机器学习” > “使用新模型进行预测”打开向导。
 
    ![显示用于打开评分向导的选项的屏幕截图。](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00d.png)
 

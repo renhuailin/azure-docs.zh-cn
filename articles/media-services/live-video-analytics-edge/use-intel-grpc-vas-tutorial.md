@@ -6,12 +6,12 @@ ms.date: 02/04/2021
 ms.service: media-services
 ms.author: faneerde
 author: fvneerden
-ms.openlocfilehash: d6d842a59a184470720da50917726eae069c6b02
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: c2a704d5e87e5b5813a59f9c5951688f5c3b893a
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368502"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113300909"
 ---
 # <a name="tutorial-analyze-live-video-by-using-live-video-analytics-with-intel-openvino-dl-streamer--edge-ai-extension"></a>教程：将实时视频分析与 Intel OpenVINO™ DL Streamer Edge AI 扩展搭配用于分析实时视频 
 
@@ -78,7 +78,7 @@ OpenVINO™ DL Streamer Edge AI 扩展模块是一项基于 Intel 视频分析�
 
 - object_tracking for person_vehicle_bike_tracking ![用于人员车辆的对象跟踪](./media/use-intel-openvino-tutorial/object-tracking.png)
 
-它使用预先加载的对象检测、对象分类和对象跟踪管道来快速启动。 此外，它还附带预先加载的 [person-vehicle-bike-detection-crossroad-0078](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/person-vehicle-bike-detection-crossroad-0078/description/person-vehicle-bike-detection-crossroad-0078.md) 和 [vehicle-attributes-recognition-barrier-0039 models](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/vehicle-attributes-recognition-barrier-0039/description/vehicle-attributes-recognition-barrier-0039.md)。
+它使用预先加载的对象检测、对象分类和对象跟踪管道来快速启动。 此外，它还附带预先加载的 [person-vehicle-bike-detection-crossroad-0078](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/person-vehicle-bike-detection-crossroad-0078/README.md) 和 [vehicle-attributes-recognition-barrier-0039 models](https://github.com/openvinotoolkit/open_model_zoo/blob/master/models/intel/vehicle-attributes-recognition-barrier-0039/README.md)。
 
 > [!NOTE]
 > 下载和使用 Edge 模块（Intel 提供的 OpenVINO™ DL Streamer Edge AI 扩展）及包含的软件，即表示你同意[许可协议](https://www.intel.com/content/www/us/en/legal/terms-of-use.html)下的条款和条件。

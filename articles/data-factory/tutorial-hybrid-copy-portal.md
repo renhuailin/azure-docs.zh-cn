@@ -6,13 +6,13 @@ author: nabhishek
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 4bfbd83f3f3910e1231bcce4043d9b59ccc512db
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 07/05/2021
+ms.openlocfilehash: 2b9f37d6f45591a43849c8d61787513702982e5b
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104606644"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436402"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>将数据从 SQL Server 数据库复制到 Azure Blob 存储
 
@@ -125,20 +125,21 @@ ms.locfileid: "104606644"
         
      若要了解资源组，请参阅[使用资源组管理 Azure 资源](../azure-resource-manager/management/overview.md)。
 1. 在“版本”下选择“V2”。 
-1. 在“位置”下选择数据工厂的位置。 下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他区域。
-1. 选择“创建”  。
+1. 在“位置”下选择数据工厂的位置。  下拉列表中仅显示支持的位置。 数据工厂使用的数据存储（例如，Azure 存储和 SQL 数据库）和计算资源（例如，Azure HDInsight）可以位于其他区域。
+1. 选择“创建”。
 
 1. 创建完以后，会看到图中所示的“数据工厂”页：
 
-    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂的主页，其中包含“创作和监视”磁贴。":::
-1. 选择“创作和监视”磁贴，在单独的选项卡中启动数据工厂 UI。
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂主页，其中包含“打开 Azure 数据工厂工作室”磁贴。":::
+
+1. 在“打开 Azure 数据工厂工作室”磁贴上选择“打开”，在单独的标签页中启动数据工厂 UI。 
 
 
 ## <a name="create-a-pipeline"></a>创建管道
 
-1. 在“开始使用”页中，选择“创建管道”。  系统会自动创建一个管道。 可以在树状视图中看到该管道，并且其编辑器已打开。
+1. 在 Azure 数据工厂主页上，选择“协调”。 系统会自动创建一个管道。 可以在树状视图中看到该管道，并且其编辑器已打开。
 
-   ![“开始使用”页](./media/doc-common-process/get-started-page.png)
+   ![屏幕截图显示 Azure 数据工厂主页。](./media/doc-common-process/get-started-page.png)
 
 1. 在“常规”面板的“属性”中，将“名称”指定为 SQLServerToBlobPipeline  。 然后通过单击右上角的“属性”图标来折叠面板。
 
@@ -194,9 +195,9 @@ ms.locfileid: "104606644"
 
 1. 转到“属性”窗口底部的“接收器”选项卡，选择“+ 新建”。  
 
-1. 在“新建数据集”对话框中，选择“Azure Blob 存储”，  然后选择“继续”。 
+1. 在“新建数据集”对话框中，选择“Azure Blob 存储”，  然后选择“继续”。
 
-1. 在“选择格式”对话框中，选择数据的格式类型。 然后选择“继续”。 
+1. 在“选择格式”对话框中，选择数据的格式类型。 然后选择“继续”。
 
     ![数据格式选择](./media/doc-common-process/select-data-format.png)
 

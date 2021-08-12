@@ -1,13 +1,23 @@
 - name: 概述
   href: overview.md
-- name: Red Hat Enterprise Linux 映像
+- name: Azure 上的 Red Hat Enterprise Linux 映像
   items:
-    - name: RHEL 映像概述
-      href: redhat-images.md
+    - name: RHEL 就地升级
+      href: redhat-in-place-upgrade.md
+    - name: RHEL BYOS 映像产品/服务
+      href: byos.md
+    - name: RHEL 扩展生命周期支持
+      href: redhat-extended-lifecycle-support.md
     - name: RHEL 映像列表
       href: redhat-imagelist.md
-- name: Red Hat Java 快速入门
+    - name: RHEL 映像概述
+      href: redhat-images.md
+    - name: Azure 中的 RHUI
+      href: redhat-rhui.md
+- name: Azure 上的 Red Hat Enterprise Java
   items:
+    - name: Azure 上的 JBoss EAP
+      href: /azure/developer/java/ee/jboss-on-azure
     - name: VM 上的 JBoss EAP + RHEL
       href: jboss-eap-on-rhel.md
     - name: JBoss EAP 市场映像
@@ -17,14 +27,6 @@
     - name: 将 JBoss EAP 迁移到 Azure VM
       href: jboss-eap-on-azure-migration.md
     - name: 将 JBoss EAP 迁移到应用服务
-      href: /azure/developer/java/migration/migrate-jboss-eap-to-jboss-eap-on-azure-app-service.md
+      href: ./overview.md
     - name: VM 上的 WildFly + CentOS
       href: wildfly-on-centos.md
-- name: Azure 中的 Red Hat 更新基础结构
-  href: redhat-rhui.md
-- name: Red Hat Enterprise Linux BYOS 映像套餐
-  href: byos.md
-- name: Red Hat Enterprise Linux 扩展生命周期支持
-  href: redhat-extended-lifecycle-support.md
-- name: Azure 上的 Red Hat Enterprise 映像就地升级
-  href: redhat-in-place-upgrade.md

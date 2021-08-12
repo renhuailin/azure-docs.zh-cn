@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/10/2021
+ms.date: 07/14/2021
 ms.author: duau
-ms.openlocfilehash: 7f2a5faebb56cfb12a62a8bdae4e6b7e56e88b57
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 97a96d439773d7332fda3fe545d950dfe0077ad1
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004702"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765416"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
@@ -181,7 +181,7 @@ webmaster@&lt;your-domain-name.com&gt;
 hostmaster@&lt;your-domain-name.com&gt;  
 postmaster@&lt;your-domain-name.com&gt;  
 
-应会在几分钟内收到如以下所示的电子邮件，要求你批准请求。 如果使用垃圾邮件筛选器，请将 admin@digicert.com 添加到其允许列表。 如果未在 24 小时内收到电子邮件，请与 Microsoft 支持部门联系。
+应会在几分钟内收到如以下所示的电子邮件，要求你批准请求。 如果使用垃圾邮件筛选器，请将 no-reply@digitalcertvalidation.com 添加到其允许列表。 如果未在 24 小时内收到电子邮件，请与 Microsoft 支持部门联系。
 
 选择批准链接时，将定向到在线批准表单。 按表中的说明操作；有两种验证选项：
 

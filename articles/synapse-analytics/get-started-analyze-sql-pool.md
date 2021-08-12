@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 03/24/2021
-ms.openlocfilehash: 0def1f957842417c3936e3f1c7bb5bc023109818
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 56115e977603e1f2148f84569373dcf4d351e0c4
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536326"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113038203"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>使用专用 SQL 池分析数据
 
@@ -94,7 +94,7 @@ ms.locfileid: "107536326"
     )
     ```
 1. 单击“运行”按钮以执行脚本。
-1. 此脚本将在 60 秒内完成。 它将 2 百万行纽约市出租车数据加载到一个名为 dbo.Trip 的表中。
+1. 此脚本将在 60 秒内完成。 它将 2 百万行纽约市出租车数据加载到一个名为 dbo.NYCTaxiTripSmall 的表中。
 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>浏览专用 SQL 池中的纽约市出租车数据
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 489f4aad78437edad2184e773d97d35af24f3249
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 267850c14aa64776ae57613e13755453c14dcdfc
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285988"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112239494"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>教程：使用 Azure Cosmos DB 和 SQL API 构建 Java Web 应用程序
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "106285988"
 
 * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
-  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+  [!INCLUDE [cosmos-db-emulator-docdb-api](includes/cosmos-db-emulator-docdb-api.md)]
 
 * [Java 开发工具包 (JDK) 7+](/java/azure/jdk/)。
 * [Eclipse IDE for Java EE Developers。](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
@@ -57,9 +57,9 @@ ms.locfileid: "106285988"
 
 让我们首先创建一个 Azure Cosmos DB 帐户。 如果已有一个帐户，或者要在本教程中使用 Azure Cosmos DB 模拟器，可以跳到[步骤 2：创建 Java JSP 应用程序](#CreateJSP)。
 
-[!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+[!INCLUDE [create-dbaccount](includes/cosmos-db-create-dbaccount.md)]
 
-[!INCLUDE [keys](../../includes/cosmos-db-keys.md)]
+[!INCLUDE [keys](includes/cosmos-db-keys.md)]
 
 ## <a name="create-the-java-jsp-application"></a><a id="CreateJSP"></a>创建 Java JSP 应用程序
 

@@ -6,13 +6,13 @@ author: nabhishek
 ms.author: abnarain
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 01/04/2018
-ms.openlocfilehash: 4c8ae67720cf6ac9d577286898b95cdd10f38152
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/07/2021
+ms.openlocfilehash: 90166f1a6716d9ed6b30ca002836d03d26c1ee3b
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100377952"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113215887"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>通过 Azure 门户在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
 
@@ -99,9 +99,9 @@ ms.locfileid: "100377952"
    
     ![数据工厂主页](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
 10. 单击“创作和监视”，在单独的选项卡中启动数据工厂用户界面 (UI)。
-11. 在“入门”页的左侧面板中，切换到“编辑”选项卡，如下图所示：  
+11. 在主页中，切换到左侧面板中的“管理”选项卡，如下图所示： 
 
-    ![“编辑”选项卡](./media/tutorial-transform-data-using-hive-in-vnet-portal/get-started-page.png)
+    ![此屏幕截图显示了“管理”选项卡。](media/doc-common-process/get-started-page-manage-button.png)
 
 ## <a name="create-a-self-hosted-integration-runtime"></a>创建自承载 Integration Runtime
 由于 Hadoop 群集位于虚拟网络中，因此需要在同一个虚拟网络中安装自承载集成运行时 (IR)。 在本部分，我们将创建一个新的 VM、将其加入到同一个虚拟网络，然后在其上安装自承载 IR。 数据工厂服务可以使用自承载 IR 将处理请求分发到虚拟网络中的某个计算服务，例如 HDInsight。 自承载 IR 还可用于将数据移入/移出虚拟网络中的数据存储，以及移到 Azure。 当数据存储或计算资源位于本地环境中时，也可以使用自承载 IR。 
@@ -165,7 +165,7 @@ ms.locfileid: "100377952"
     2. 为“通过集成运行时连接”选择“MySelfHostedIR”。 
     3. 对于“存储帐户名称”，请选择自己的 Azure 存储帐户。 
     4. 若要测试与存储帐户的连接，请单击“测试连接”。
-    5. 单击“保存”  。
+    5. 单击“ **保存**”。
    
         ![指定 Azure Blob 存储帐户](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-storage-account.png)
 

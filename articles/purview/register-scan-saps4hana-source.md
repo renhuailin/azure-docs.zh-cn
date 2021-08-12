@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: a061f3afbfb3a114ec22bcfba123aa326b6ac3fd
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a0e6a02aed59cbe968abb0df5c3fb612c8f2d3b0
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110067089"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551679"
 ---
 # <a name="register-and-scan-a-sap-s4hana-source"></a>注册并扫描 SAP S/4HANA 源
 
@@ -103,6 +103,8 @@ SAP S/4HANA 源支持完全扫描（用于从 SAP S/4HANA 实例中提取元数�
     e.  **JCo 库路径**：指定 JCo 库所在的文件夹的路径。
 
     f.  **最大可用内存：** 客户 VM 上可供扫描进程使用的最大内存 (GB)。 这取决于要扫描的 SAP S/4HANA 源的大小。
+    > [!Note] 
+    > 根据经验，每 1000 张表应提供 1GB 内存
 
     :::image type="content" source="media/register-scan-saps4hana-source/scan-saps-4-hana.png" alt-text="扫描 SAP S/4HANA" border="true":::
 
