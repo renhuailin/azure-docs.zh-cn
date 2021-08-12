@@ -3,21 +3,22 @@ title: 将属性同步到 Azure Active Directory 以进行映射
 description: 通过 Azure Active Directory 和 SaaS 应用来配置用户预配时，请使用目录扩展功能添加默认情况下不同步的源属性。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 03/31/2021
 ms.author: kenwith
-ms.openlocfilehash: f7a2429161cebe867d844b4ca7aa08ec3613edcd
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.reviewer: arvinh
+ms.openlocfilehash: 2cc6c3ec2b58a64491b0741658db325e808f0fa5
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388204"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109784640"
 ---
-# <a name="syncing-extension-attributes-for-app-provisioning"></a>为应用预配同步扩展属性
+# <a name="syncing-extension-attributes-for-azure-active-directory-application-provisioning"></a>为 Azure Active Directory 应用程序预配同步扩展属性
 
 将用户帐户从 Azure AD 预配到 [SaaS 应用](../saas-apps/tutorial-list.md)时，Azure Active Directory (Azure AD) 必须包含创建用户配置文件所需的所有数据（属性）。 在为用户预配自定义属性映射时，你可能会发现要映射的属性没有显示在“源属性”列表中。 本文介绍了如何添加缺少的属性。
 

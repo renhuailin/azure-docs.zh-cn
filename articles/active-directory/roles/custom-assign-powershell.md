@@ -8,46 +8,31 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/04/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f0fb81a4daa57b473e8b2b4b937426eafbf903d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60517714e0aa19a2cf465c22c6511b0c89648942
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103014530"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110792436"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>在 Azure Active Directory 中使用 PowerShell 分配具有资源范围的自定义角色
 
 本文介绍如何在 Azure Active Directory (Azure AD) 中创建组织范围的角色分配。 在组织范围分配角色会跨 Azure AD 组织授予访问权限。 若要创建范围为一个 Azure AD 资源的角色分配，请参阅[如何创建自定义角色并在资源范围内进行分配](custom-create.md)。 本文使用 [Azure Active Directory PowerShell 版本 2](/powershell/module/azuread/#directory_roles) 模块。
 
-有关 Azure AD 管理员角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](permissions-reference.md)。
+有关 Azure AD 角色的详细信息，请参阅 [Azure AD 内置角色](permissions-reference.md)。
 
-## <a name="required-permissions"></a>所需的权限
+## <a name="prerequisites"></a>先决条件
 
-连接到 Azure AD 组织，使用全局管理员帐户分配或删除角色。
+- Azure AD Premium P1 或 P2 许可证
+- 特权角色管理员或全局管理员
+- 使用 PowerShell 时需要 AzureADPreview 模块
 
-## <a name="prepare-powershell"></a>准备 PowerShell
-
-安装 [PowerShell 库](https://www.powershellgallery.com/packages/AzureADPreview)中的 Azure AD PowerShell 模块。 然后使用以下命令导入 Azure AD PowerShell 预览版模块：
-
-``` PowerShell
-Import-Module -Name AzureADPreview
-```
-
-若要验证该模块是否可供使用，请将以下命令返回的版本与此处列出的版本之一进行匹配：
-
-``` PowerShell
-Get-Module -Name AzureADPreview
-  ModuleType Version      Name                         ExportedCommands
-  ---------- ---------    ----                         ----------------
-  Binary     2.0.0.115    AzureADPreview               {Add-AzureADMSAdministrati...}
-```
-
-现在可以开始使用模块中的 cmdlet 了。 有关 AzureAD 模块中 cmdlet 的完整说明，请参阅 [Azure AD 预览版模块](https://www.powershellgallery.com/packages/AzureADPreview)的联机参考文档。
+有关详细信息，请参阅[使用 PowerShell 或 Graph 浏览器的先决条件](prerequisites.md)。
 
 ## <a name="assign-a-directory-role-to-a-user-or-service-principal-with-resource-scope"></a>将目录角色分配给具有资源范围的用户或服务主体
 

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: b5b5a506b2f932d20a617634ace7ebf02093fbfa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 99f7f6561df16cfad6b0cc001395fa3ad7b2f6dc
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98664242"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259466"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB 定价层
 
@@ -22,7 +22,7 @@ ms.locfileid: "98664242"
 | 计算的代 | 第 5 代 |第 5 代 | 第 5 代 |
 | vCore 数 | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | 每个 vCore 的内存 | 2 GB | 5 GB | 10 GB |
-| 存储大小 | 5 GB 到 1 TB | 5GB 到 4TB | 5GB 到 4TB |
+| 存储大小 | 5 GB 到 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
 | 数据库备份保留期 | 7 到 35 天 | 7 到 35 天 | 7 到 35 天 |
 
 可以从下表着手来选择定价层。
@@ -46,9 +46,13 @@ ms.locfileid: "98664242"
 | 存储属性   | 基本 | 常规用途 | 内存优化 |
 |:---|:----------|:--------------------|:---------------------|
 | 存储类型 | 基本存储 | 常规用途存储 | 常规用途存储 |
-| 存储大小 | 5 GB 到 1 TB | 5GB 到 4TB | 5GB 到 4TB |
+| 存储大小 | 5 GB 到 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
 | 存储增量大小 | 1 GB | 1 GB | 1 GB |
 | IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 6000 IOPS |
+
+>[!IMPORTANT]
+> 在以下区域支持最大 16 TB 的存储和 20,000 IOPS：美国东部、美国东部 2、美国中部、巴西南部、美国西部、美国中北部、美国中南部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚东南部、美国西部 2、美国中西部、加拿大东部和加拿大中部。
+> 其他所有区域支持最大 4TB 的存储，最高可达 6000 IOPS。
 
 在创建服务器的过程中和之后，可以添加更多的存储容量，这样系统就可以根据工作负荷的存储使用情况自动增加存储。
 
@@ -58,23 +62,6 @@ ms.locfileid: "98664242"
 “基本”层不提供 IOPS 保证。 在“常规用途”和“内存优化”定价层中，IOPS 与预配的存储大小按 3:1 的比例缩放。
 
 可以通过 Azure 门户或 Azure CLI 命令监视 I/O 使用情况。 要监视的相关指标是[存储上限、存储百分比、已用存储和 IO 百分比](concepts-monitoring.md)。
-
-### <a name="large-storage-preview"></a>大型存储（预览版）
-
-我们正在提高“常规用途”和“内存优化”层中的存储上限。 选择加入预览版的新建服务器可以预配高达 16 TB 的存储。 IOPS 按 3:1 的比率缩放，最高可达 20,000 IOPS。 与使用当前已正式发布的存储一样，在创建服务器之后，可以添加更多的存储容量，这样系统就可以根据工作负荷的存储使用情况自动增加存储。
-
-| 存储属性 | 常规用途 | 内存优化 |
-|:-------------|:--------------------|:---------------------|
-| 存储类型 | Azure 高级存储 | Azure 高级存储 |
-| 存储大小 | 32 GB 到 16 TB| 32 到 16 TB |
-| 存储增量大小 | 1 GB | 1 GB |
-| IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS| 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20,000 IOPS |
-
-> [!IMPORTANT]
-> 大型存储目前在以下区域以公共预览版提供：美国东部、美国东部 2、巴西南部、美国中部、美国西部、美国中北部、美国中南部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚东南部、美国西部 2、美国中西部、加拿大东部和加拿大中部。
->
-> 其他所有区域支持最大 4TB 的存储，最高可达 6000 IOPS。
->
 
 ### <a name="reaching-the-storage-limit"></a>达到存储限制
 

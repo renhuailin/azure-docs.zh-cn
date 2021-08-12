@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 7e85df8ae67624a253a9fb617629d7355109c210
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c61f378dd9121c727fc245d177e11921a8a8e26
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019595"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110094377"
 ---
 # <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Azure 流分析中的 Azure Synapse Analytics 输出
 
@@ -21,7 +21,8 @@ Azure 流分析作业可以输出到 Azure Synapse Analytics 中的专用 SQL �
 
 专用 SQL 池表必须存在，然后才能将其作为输出添加到流分析作业。 表架构必须与作业输出中的字段及类型匹配。 
 
-若要使用 Azure Synapse 作为输出，需要确保已配置存储帐户。 导航到“存储帐户设置”，以配置存储帐户。 仅允许支持表的存储帐户类型：常规用途 V2 和常规用途 V1。 仅选择标准层。 不支持高级层。
+> [!NOTE] 
+> 若要使用 Azure Synapse Analytics 作为输出，请确保在作业级别而不是输出级别配置存储帐户。 若要更改存储帐户设置，请在流分析作业的“配置”菜单中转到“存储帐户设置”。 仅使用支持表的存储帐户类型：常规用途 V2 和常规用途 V1。 仅选择标准层。 此方案不支持高级层。
 
 ## <a name="output-configuration"></a>输出配置
 

@@ -1,26 +1,27 @@
 ---
-title: 改变会话主机规模 Azure 自动化 Windows 虚拟桌面（经典） - Azure
-description: 如何利用 Azure 自动化自动改变 Windows 虚拟桌面（经典）会话主机规模。
+title: 改变会话主机规模 Azure 自动化 Azure 虚拟桌面（经典） - Azure
+description: 如何利用 Azure 自动化自动改变 Azure 虚拟桌面（经典）会话主机规模。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 907871a85680202a4a8b5f73b4454a9b2f2fe103
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 781ac1e84fb742908ca020806b04135f35b3a65d
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106444303"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751822"
 ---
-# <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>利用 Azure 自动化改变 Windows 虚拟桌面（经典）会话主机规模
+# <a name="scale-azure-virtual-desktop-classic-session-hosts-using-azure-automation"></a>利用 Azure 自动化改变 Azure 虚拟桌面（经典）会话主机规模
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。
 
-可以通过改变虚拟机 (VM) 规模来降低 Windows 虚拟桌面总部署成本。 这是指在非高峰使用时段关闭和取消分配会话主机 VM，并在高峰时段重新启用和重新分配。
+可以通过改变虚拟机 (VM) 规模来降低 Azure 虚拟桌面总部署成本。 这是指在非高峰使用时段关闭和取消分配会话主机 VM，并在高峰时段重新启用和重新分配。
 
-本文介绍使用 Azure 自动化帐户和 Azure 逻辑应用构建的缩放工具，该工具可在 Windows 虚拟桌面环境中自动缩放会话主机 VM。 若要了解如何使用缩放工具，请转至[先决条件](#prerequisites)。
+本文介绍使用 Azure 自动化帐户和 Azure 逻辑应用构建的缩放工具，该工具可在 Azure 虚拟桌面环境中自动缩放会话主机 VM。 若要了解如何使用缩放工具，请转至[先决条件](#prerequisites)。
 
 ## <a name="how-the-scaling-tool-works"></a>缩放工具的工作原理
 
@@ -48,7 +49,7 @@ ms.locfileid: "106444303"
 
 在任何时候，作业还会考虑主机池的 MaxSessionLimit，以确定当前会话数是否超过最大容量的 90%。 如果超过，该作业将启动其他会话主机 VM。
 
-作业基于所设置的重复周期间隔定期运行。 可以根据 Windows 虚拟桌面环境的大小来更改此间隔，但请记住，启动和关闭 VM 可能需要一些时间，所以应将延迟考虑在内。 建议将重复周期间隔设置为每 15 分钟一次。
+作业基于所设置的重复周期间隔定期运行。 可以根据 Azure 虚拟桌面环境的大小来更改此间隔，但请记住，启动和关闭 VM 可能需要一些时间，所以应将延迟考虑在内。 建议将重复周期间隔设置为每 15 分钟一次。
 
 然而，该工具还存在以下限制：
 
@@ -63,8 +64,8 @@ ms.locfileid: "106444303"
 
 开始设置缩放工具之前，请确保已准备好以下内容：
 
-- 一个 [Windows 虚拟桌面租户和主机池](create-host-pools-arm-template.md)
-- 已配置了 Windows 虚拟桌面服务并向其注册了的会话主机池 VM
+- 一个 [Azure 虚拟桌面租户和主机池](create-host-pools-arm-template.md)
+- 已配置了 Azure 虚拟桌面服务并向其注册了的会话主机池 VM
 - 对 Azure 订阅具有[参与者访问权限](../../role-based-access-control/role-assignments-portal.md)的用户
 
 用于部署此工具的计算机必须具有：
@@ -150,11 +151,11 @@ ms.locfileid: "106444303"
 
 6. 创建过程完成后，它会在指定的 Azure 自动化帐户中创建名为 AzureRunAsConnection 的资产。 选择“Azure 运行方式帐户”。 该连接资产保存应用程序 ID、租户 ID、订阅 ID 和证书指纹。 请记住应用程序 ID，因为稍后会用到它。 还可以在“连接”页上找到同样的信息。 若要转到此页，在窗口左侧的窗格中，选择“共享资源”部分下的“连接”，并单击名为 AzureRunAsConnection 的连接资产  。
 
-### <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>在 Windows 虚拟桌面中创建角色分配
+### <a name="create-a-role-assignment-in-azure-virtual-desktop"></a>在 Azure 虚拟桌面中创建角色分配
 
-接下来，需要创建一个角色分配，以便 AzureRunAsConnection 可以与 Windows 虚拟桌面进行交互。 请确保使用 PowerShell 并使用有权创建角色分配的帐户登录。
+接下来，需要创建一个角色分配，以便 AzureRunAsConnection 可以与 Azure 虚拟桌面进行交互。 请确保使用 PowerShell 并使用有权创建角色分配的帐户登录。
 
-首先[下载并导入 Windows 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做），以便在 PowerShell 会话中使用。 运行以下 PowerShell cmdlet 连接到 Windows 虚拟桌面，并显示你的租户。
+首先[下载并导入 Azure 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做），方便在 PowerShell 会话中使用。 运行以下 PowerShell cmdlet 以连接到 Azure 虚拟桌面，并显示你的租户。
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -165,7 +166,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Get-RdsTenant
 ```
 
-找到含有要缩放的主机池的租户后，按照[创建 Azure 自动化运行方式帐户](#create-an-azure-automation-run-as-account)中的说明进行操作，收集 AzureRunAsConnection 应用 ID，并在以下 cmdlet 中使用从上一个 cmdlet 中获取的租户名称创建角色分配：
+找到含有要缩放的主机池的租户后，按照[创建 Azure 自动化运行方式帐户](#create-an-azure-automation-run-as-account)中的说明进行操作，收集 AzureRunAsConnection 应用 ID，并在以下 cmdlet 中使用从上一个 cmdlet 中获取的 Azure 虚拟桌面租户名称以创建角色分配：
 
 ```powershell
 New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId "<applicationid>" -TenantName "<tenantname>"
@@ -193,7 +194,7 @@ New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId "<app
     Invoke-WebRequest -Uri $Uri -OutFile ".\CreateOrUpdateAzLogicApp.ps1"
     ```
 
-4. 运行以下 cmdlet，以使用具有 RDS 所有者或 RDS 参与者权限的帐户登录到 Windows 虚拟桌面。
+4. 运行以下 cmdlet，以使用具有 RDS 所有者或 RDS 参与者权限的帐户登录到 Azure 虚拟桌面。
 
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

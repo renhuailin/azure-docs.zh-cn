@@ -6,16 +6,16 @@ ms.date: 03/16/2021
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 020278bf6e5a823f6b3caa22d03f4b5dd003c0d9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8b5db7861a3488fb71e709d17679e8d54911b0c9
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608447"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110069177"
 ---
 # <a name="configuring-jmx-metrics"></a>配置 JMX 指标
 
-Application Insights Java 3.0 代理默认会收集一些 JMX 指标，但在许多情况下并不充分。 本文档详细介绍了 JMX 配置选项。
+Application Insights Java 3.x 默认会收集一些 JMX 指标，但在许多情况下并不充分。 本文档详细介绍了 JMX 配置选项。
 
 ## <a name="how-do-i-collect-additional-jmx-metrics"></a>如何收集其他 JMX 指标？
 

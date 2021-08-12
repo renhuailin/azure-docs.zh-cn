@@ -1,6 +1,6 @@
 ---
-title: 使用适用于 Azure NetApp 文件 Azure 应用程序一致性快照工具的提示和技巧 |Microsoft Docs
-description: 提供使用适用于 Azure NetApp 文件的 Azure 应用程序一致快照工具的提示和技巧。
+title: 有关使用 Azure NetApp 文件的 Azure 应用程序一致性快照工具的提示和技巧 | Microsoft Docs
+description: 提供有关使用可与 Azure NetApp 文件一起使用 Azure 应用程序一致性快照工具的提示和技巧。
 services: azure-netapp-files
 documentationcenter: ''
 author: Phil-Jensen
@@ -12,26 +12,26 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 08edd86fd19e7698a791e411f42a2a89084a91f7
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
-ms.translationtype: MT
+ms.openlocfilehash: 857bcba07b281f58d7c7c044a56763b61b5d4456
+ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737127"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109810059"
 ---
-# <a name="tips-and-tricks-for-using-azure-application-consistent-snapshot-tool-preview"></a>有关使用 Azure 应用程序一致性快照工具的提示和技巧 (预览版) 
+# <a name="tips-and-tricks-for-using-azure-application-consistent-snapshot-tool"></a>有关使用 Azure 应用程序一致性快照工具的提示和技巧
 
-本文提供了一些提示和技巧，在使用 AzAcSnap 时可能会有所帮助。
+本文提供了在使用 AzAcSnap 时可能会有所帮助的提示和技巧。
 
 ## <a name="limit-service-principal-permissions"></a>限制服务主体权限
 
-可能需要限制 AzAcSnap 服务主体的作用域。  查看 [AZURE RBAC 文档](../role-based-access-control/index.yml) ，详细了解 azure 资源的精细访问管理。  
+可能需要限制 AzAcSnap 服务主体的范围。  查看 [Azure RBAC 文档](../role-based-access-control/index.yml)以详细了解 Azure 资源的精细访问管理。  
 
-下面是使用 AzAcSnap 所需的最少所需操作所需的角色定义的示例。
+下面是具有使 AzAcSnap 正常运行所需的最少必需操作的示例角色定义。
 
-```bash
+```azurecli
 az role definition create --role-definition '{ \
   "Name": "Azure Application Consistent Snapshot tool", \
   "IsCustom": "true", \
@@ -48,14 +48,35 @@ az role definition create --role-definition '{ \
 }'
 ```
 
+若要使还原选项成功工作，AzAcSnap 服务主体还需要能够创建卷。  在这种情况下，角色定义需要附加操作，因此完整服务主体应类似于以下示例。
+
+```azurecli
+az role definition create --role-definition '{ \
+  "Name": "Azure Application Consistent Snapshot tool", \
+  "IsCustom": "true", \
+  "Description": "Perform snapshots and restores on ANF volumes.", \
+  "Actions": [ \
+    "Microsoft.NetApp/*/read", \
+    "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/write", \
+    "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/delete", \
+    "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/write" \
+  ], \
+  "NotActions": [], \
+  "DataActions": [], \
+  "NotDataActions": [], \
+  "AssignableScopes": ["/subscriptions/<insert your subscription id>"] \
+}'
+```
+
+
 ## <a name="take-snapshots-manually"></a>手动拍摄快照
 
-在执行 () 的任何备份命令之前 `azacsnap -c backup` ，请通过运行测试命令并验证是否已成功执行这些命令来检查配置。  正确执行这些测试 `azacsnap` 可与 **Azure 大型实例** 或 **azure NetApp 文件** 系统上已安装的 SAP HANA 数据库和 SAP HANA 的基础存储系统通信。
+在执行任何备份命令 (`azacsnap -c backup`) 之前，请通过运行测试命令来检查配置并验证是否成功执行了这些命令。  这些测试的正确执行证明 `azacsnap` 可以与 Azure 大型实例或 Azure NetApp 文件系统上的已安装 SAP HANA 数据库和 SAP HANA 基础存储系统通信 。
 
 - `azacsnap -c test --test hana`
 - `azacsnap -c test --test storage`
 
-然后，若要获取手动数据库快照备份，请运行以下命令：
+随后若要获取手动数据库快照备份，请运行以下命令：
 
 ```bash
 azacsnap -c backup --volume data --prefix hana_TEST --retention=1
@@ -63,9 +84,9 @@ azacsnap -c backup --volume data --prefix hana_TEST --retention=1
 
 ## <a name="setup-automatic-snapshot-backup"></a>设置自动快照备份
 
-Unix/Linux 系统常见的做法是使用 Unix/Linux 系统 `cron` 在系统上自动运行命令。 快照工具的标准做法是设置用户的 `crontab` 。
+Unix/Linux 系统上的常见做法是使用 `cron` 自动在在系统上运行命令。 快照工具的标准做法是设置用户的 `crontab`。
 
-`crontab` `azacsnap` 下面是用于自动执行快照的用户的示例。
+下面是供用户 `azacsnap` 自动拍摄快照的 `crontab` 示例。
 
 ```output
 MAILTO=""
@@ -78,26 +99,26 @@ MAILTO=""
 @daily (. /home/azacsnap/.profile ; cd /home/azacsnap/bin ; azacsnap -c backup --volume other --prefix DailyBootVol --retention=7 --configfile boot-vol.json)
 ```
 
-上述 crontab 的说明。
+上面 crontab 的说明。
 
-- `MAILTO=""`：通过使用空值，可以在执行 crontab 条目时防止 cron 自动尝试向用户发送电子邮件，因为它可能最终会出现在本地用户的邮件文件中。
-- Crontab 条目的速记时间版本是一目了然的：
-  - `@monthly` = 每月运行一次，即 "0 0 1 * *"。
-  - `@weekly`  = 每周运行一次，即 "0 0 * * 0"。
-  - `@daily`   = 一天运行一次，即 "0 0 * * *"。
-  - `@hourly`  = 每小时运行一次，即 "0 * * * *"。
+- `MAILTO=""`：使用空值可在执行 crontab 条目时防止 cron 自动尝试向用户发送电子邮件，因为它可能最终会出现在本地用户的邮件文件中。
+- crontab 条目的速记时间版本不言自明：
+  - `@monthly` = 每月运行一次，即“0 0 1 * *”。
+  - `@weekly`  = 每周运行一次，即“0 0 * * 0”。
+  - `@daily`   = 每天运行一次，即“0 0 * * *”。
+  - `@hourly`  = 每小时运行一次，即“0 * * * *”。
 - 前五列用于指定时间，请参阅下面的列示例：
-  - `0,15,30,45`：每15分钟
+  - `0,15,30,45`：每 15 分钟
   - `0-23`：每小时
-  - `*` ：每天
-  - `*` ：每月
-  - `*` ：每周的某一天
-- 要执行的命令行包含在括号 " ( # A1" 中
-  - `. /home/azacsnap/.profile` = 请求用户的. 配置文件以设置其环境，包括 $PATH 等。
-  - `cd /home/azacsnap/bin` = 更改执行目录到配置文件所在位置的 "/home/azacsnap/bin"。
+  - `*`：每天
+  - `*`：每月
+  - `*`：一周的每一天
+- 要执行的命令行包含在括号“()”中
+  - `. /home/azacsnap/.profile` = 拉取用户的 .profile 以设置其环境，包括 $PATH 等。
+  - `cd /home/azacsnap/bin` = 将执行目录更改为配置文件所处的位置“/home/azacsnap/bin”。
   - `azacsnap -c .....` = 要运行的完整 azacsnap 命令，包括所有选项。
 
-下面是有关 cron 和 crontab 文件格式的进一步说明： <https://en.wikipedia.org/wiki/Cron>
+此处进一步说明了 cron 和 crontab 文件的格式：<https://en.wikipedia.org/wiki/Cron>
 
 > [!NOTE]
 > 用户负责监视 cron 作业，以确保成功生成快照。
@@ -106,48 +127,48 @@ MAILTO=""
 
 应监视以下条件以确保系统正常：
 
-1. 可用磁盘空间。 快照会慢慢地消耗磁盘空间，因为保留旧的磁盘块将保留在快照中。
-    1. 若要帮助自动执行磁盘空间管理，请使用 `--retention` 和 `--trim` 选项来自动清理旧快照和数据库日志文件。
+1. 可用磁盘空间。 快照会缓慢占用磁盘空间，因为较旧磁盘块会保留在快照中。
+    1. 若要帮助自动进行磁盘空间管理，请使用 `--retention` 和 `--trim` 选项自动清理旧快照和数据库日志文件。
 1. 快照工具的成功执行
-    1. 检查 `*.result` 文件以了解最新运行的是否成功 `azacsnap` 。
-    1. 检查 `/var/log/messages` 命令的输出 `azacsnap` 。
-1. 快照的一致性：将它们定期还原到另一个系统。
+    1. 检查 `*.result` 文件，了解 `azacsnap` 的最新运行是成功还是失败。
+    1. 在 `/var/log/messages` 中检查 `azacsnap` 命令的输出。
+1. 通过定期将快照还原到另一个系统来保持快照的一致性。
 
 > [!NOTE]
-> 若要列出快照详细信息，请执行命令 `azacsnap -c details` 。
+> 若要列出快照详细信息，请执行命令 `azacsnap -c details`。
 
 ## <a name="delete-a-snapshot"></a>删除快照
 
-若要删除快照，请执行命令 `azacsnap -c delete` 。 无法从操作系统级别删除快照。 必须使用正确的命令 (`azacsnap -c delete`) 才能删除存储快照。
+若要删除快照，请执行命令 `azacsnap -c delete`。 无法从操作系统级别删除快照。 必须使用正确的命令 (`azacsnap -c delete`) 才能删除存储快照。
 
 > [!IMPORTANT]
-> 请在删除快照时小心。 删除后， **无法** 恢复已删除的快照。
+> 删除快照时请保持警惕。 删除后，无法恢复已删除的快照。
 
 ## <a name="restore-a-snapshot"></a>还原快照
 
-可以将存储卷快照还原到 () 的新卷 `-c restore --restore snaptovol` 。  对于 Azure 大型实例，可以将卷还原到 () 的快照 `-c restore --restore revertvolume` 。
+可以将存储卷快照还原到新卷 (`-c restore --restore snaptovol`)。  对于 Azure 大型实例，可以将卷还原到快照 (`-c restore --restore revertvolume`)。
 
 > [!NOTE]
-> **未** 提供数据库恢复命令。
+> 未提供数据库恢复命令。
 
-可以将快照复制回 SAP HANA 的数据区域，但是 () 时，SAP HANA 不得运行 `cp /hana/data/H80/mnt00001/.snapshot/hana_hourly.2020-06-17T113043.1586971Z/*` 。
+可以将快照复制回 SAP HANA 数据区域，但是在进行复制时 (`cp /hana/data/H80/mnt00001/.snapshot/hana_hourly.2020-06-17T113043.1586971Z/*`)，不得运行 SAP HANA。
 
-对于 Azure 大型实例，你可以通过打开服务请求从现有可用快照还原所需的快照，联系 Microsoft 运营团队。 可以从 Azure 门户中打开服务请求： <https://portal.azure.com>
+对于 Azure 大型实例，可以通过打开服务请求联系 Microsoft 操作团队，要求从现有可用快照还原所需快照。 可以从 Azure 门户打开服务请求：<https://portal.azure.com>
 
-如果决定执行灾难恢复故障转移， `azacsnap -c restore --restore revertvolume` DR 站点上的命令将自动提供最新 (`/hana/data` ，并 `/hana/logbackups`) 卷快照以允许 SAP HANA 恢复。 请小心使用此命令，因为它会破坏生产和灾难恢复站点之间的复制。
+如果决定执行灾难恢复故障转移，则 DR 站点上的 `azacsnap -c restore --restore revertvolume` 命令会自动提供最新（`/hana/data` 和 `/hana/logbackups`）卷快照以便可以进行 SAP HANA 恢复。 请谨慎使用此命令，因为它会中断生产与 DR 站点之间的复制。
 
-## <a name="set-up-snapshots-for-boot-volumes-only"></a>仅为 "启动" 卷设置快照
+## <a name="set-up-snapshots-for-boot-volumes-only"></a>仅为“引导”卷设置快照
 
 > [!IMPORTANT]
 > 此操作仅适用于 Azure 大型实例。
 
-在某些情况下，客户已经具有保护 SAP HANA 的工具，并且只需要配置 "启动" 卷快照。  在这种情况下，将简化任务，应采取以下步骤。
+在某些情况下，客户已具有保护 SAP HANA 的工具，只需要配置“引导”卷快照。  在这种情况下，任务会简化，应采取以下步骤。
 
-1. 完成安装先决条件的步骤1-4。
+1. 完成安装先决条件的步骤 1-4。
 1. 启用与存储的通信。
-1. 下载运行安装程序以安装快照工具。
+1. 下载并运行安装程序以安装快照工具。
 1. 完成快照工具的设置。
-1. 创建新的配置文件，如下所示。 启动卷详细信息必须在 OtherVolume stanza (用户条目中以 <span style="color:red">红色</span>) ：
+1. 按如下所示创建新配置文件。 引导卷详细信息必须处于 OtherVolume stanza 中（<span style="color:red">红色</span>的用户条目）：
     ```output
     > <span style="color:red">azacsnap -c configure --configuration new --configfile BootVolume.json</span>
     Building new config file
@@ -181,7 +202,7 @@ MAILTO=""
 
     ```output
     {
-      "version": "5.0 Preview",
+      "version": "5.0",
       "logPath": "./logs",
       "securityPath": "./security",
       "comments": [
@@ -202,7 +223,7 @@ MAILTO=""
                   {
                     "backupName": "shoasnap",
                     "ipAddress": "10.1.1.10",
-                    "volume": "t210_sles_boot_azsollabbl20a31_vol"
+                    "volume&quot;: &quot;t210_sles_boot_azsollabbl20a31_vol"
                   }
                 ]
               }
@@ -214,13 +235,13 @@ MAILTO=""
     }
     ```
 
-1. 测试启动卷备份
+1. 测试引导卷备份
 
     ```bash
     azacsnap -c backup --volume other --prefix TestBootVolume --retention 1 --configfile BootVolume.json
     ```
 
-1. 选中它，请注意添加了 `--snapshotfilter` 限制返回的快照列表的选项。
+1. 检查它是否列出，请注意添加了 `--snapshotfilter` 选项以限制返回的快照列表。
 
     ```bash
     azacsnap -c details --snapshotfilter TestBootVolume --configfile BootVolume.json
@@ -230,48 +251,48 @@ MAILTO=""
     ```output
     List snapshot details called with snapshotFilter 'TestBootVolume'
     #, Volume, Snapshot, Create Time, HANA Backup ID, Snapshot Size
-    #1, t210_sles_boot_azsollabbl20a31_vol, TestBootVolume.2020-07-03T034651.7059085Z, "Fri Jul 03 03:48:24 2020", "otherVolume Backup|azacsnap version: 5.0 Preview (20200617.75879)", 200KB
+    #1, t210_sles_boot_azsollabbl20a31_vol, TestBootVolume.2020-07-03T034651.7059085Z, "Fri Jul 03 03:48:24 2020", "otherVolume Backup|azacsnap version: 5.0 (Build: 20210421.6349)", 200KB
     , t210_sles_boot_azsollabbl20a31_vol, , , Size used by Snapshots, 1.31GB
     ```
 
 1. 设置自动快照备份。
 
 > [!NOTE]
-> 不需要设置与 SAP HANA 的通信。
+> 无需设置与 SAP HANA 的通信。
 
-## <a name="restore-a-boot-snapshot"></a>还原 "启动" 快照
+## <a name="restore-a-boot-snapshot"></a>还原“引导”快照
 
 > [!IMPORTANT]
-> 此操作适用于 Azure 大型实例只能。
-> 在拍摄快照时，服务器将还原到该点。
+> 此操作仅适用于 Azure 大型实例。
+> 服务器会还原到拍摄快照时的时间点。
 
-"启动" 快照可以恢复，如下所示：
+可以按如下所示恢复“引导”快照：
 
 1. 客户需要关闭服务器。
-1. 关闭服务器后，客户将需要打开包含要还原的计算机 ID 和快照的服务请求。
-    > 客户可以从 Azure 门户中打开服务请求： <https://portal.azure.com>
-1. Microsoft 将使用指定的计算机 ID 和快照还原操作系统 LUN，然后启动服务器。
-1. 然后，客户将需要确认服务器已启动并且运行正常。
+1. 服务器关闭后，客户需要打开包含要还原的计算机 ID 和快照的服务请求。
+    > 客户可以从 Azure 门户打开服务请求：<https://portal.azure.com>
+1. Microsoft 会使用指定计算机 ID 和快照还原操作系统 LUN，然后启动服务器。
+1. 客户随后需要确认服务器是否已启动且正常。
 
-还原后，不需要执行其他步骤。
+还原后无需执行附加步骤。
 
-## <a name="key-facts-to-know-about-snapshots"></a>了解快照的关键事实
+## <a name="key-facts-to-know-about-snapshots"></a>需要了解的有关快照的关键事实
 
 存储卷快照的关键属性：
 
-- **快照的位置**：快照可以在卷中 () 中找到 `.snapshot` 。  请参阅下面的 **Azure 大型实例** 示例：
-  - 数据 `/hana/data/<SID>/mnt00001/.snapshot`
-  - 共享 `/hana/shared/<SID>/.snapshot`
-  - 登录 `/hana/logbackups/<SID>/.snapshot`
-  - 启动： B-HLI 的启动快照在操作系统级别中 **不可见** ，但可以使用来列出 `azacsnap -c details` 。
+- 快照位置：可以在卷内的虚拟目录 (`.snapshot`) 中找到快照。  对于 Azure 大型实例，请参阅以下示例：
+  - 数据库：`/hana/data/<SID>/mnt00001/.snapshot`
+  - 共享：`/hana/shared/<SID>/.snapshot`
+  - 日志：`/hana/logbackups/<SID>/.snapshot`
+  - 引导：HLI 的引导快照在操作系统级别不可见，但可以使用 `azacsnap -c details` 列出。
 
   > [!NOTE]
-  >  `.snapshot` 是一个只读 *虚拟* 文件夹，提供对快照的只读访问。
+  >  `.snapshot` 是只读隐藏虚拟文件夹，提供对快照的只读访问。
 
-- **最大快照：** 硬件可以承受每个卷最多250快照。 Snapshot 命令将根据命令行的保留集，为前缀保留最大数量的快照，如果快照超出了要保留的最大数目，则会删除最早的快照。
-- **快照名称：** 快照名称包含客户提供的前缀标签。
-- **快照的大小：** 取决于数据库级别的大小/更改。
-- **日志文件位置：** 由命令生成的日志文件输出到 JSON 配置文件中定义的文件夹，默认情况下，该命令是在其下运行命令的子文件夹 (例如 `./logs`) 。
+- 最大快照：硬件可以对每个卷支持最多 250 个快照。 快照命令会根据命令行上设置的保留期，为前缀保留最大数量的快照，如果快照超出要保留的最大数量，则会删除最早快照。
+- 快照名称：快照名称包含客户提供的前缀标签。
+- 快照大小：取决于数据库级别的大小/更改。
+- 日志文件位置：命令生成的日志文件会输出到 JSON 配置文件中定义的文件夹，这在默认情况下是在其下运行命令的子文件夹（例如 `./logs`）。
 
 ## <a name="next-steps"></a>后续步骤
 

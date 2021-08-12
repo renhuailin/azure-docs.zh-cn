@@ -1,22 +1,22 @@
 ---
-title: 为 Azure AD 库应用程序配置用户预配时遇到的问题
-description: 当为在 Azure AD 应用程序库中列出的某个应用程序配置用户预配时，如何解决面对的常见问题
+title: 为 Azure Active Directory 库应用配置用户预配时遇到问题
+description: 如何排查在为 Azure Active Directory 应用程序库中已列出的应用程序配置用户预配时遇到的常见问题
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/03/2019
+ms.date: 05/11/2021
 ms.author: kenwith
-ms.reviewer: asteen
-ms.openlocfilehash: 651bc199a43881add7faa00a9d1cf78000de6944
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: asteen, arvinh
+ms.openlocfilehash: 8267aa64ebdeefa12ac7f948314b4174d40049ce
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99256266"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109783236"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>为 Azure AD 库应用程序配置用户预配时遇到的问题
 

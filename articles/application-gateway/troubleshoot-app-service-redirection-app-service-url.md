@@ -3,17 +3,18 @@ title: 排查重定向到应用服务 URL 的问题
 titleSuffix: Azure Application Gateway
 description: 本文介绍如何排查将 Azure 应用程序网关与 Azure 应用服务配合使用时出现的重定向问题
 services: application-gateway
-author: abshamsft
+author: jaesoni
 ms.service: application-gateway
 ms.topic: troubleshooting
-ms.date: 11/14/2019
-ms.author: absha
-ms.openlocfilehash: 1cc7df755198461643703cac988c8c31f2ac25db
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/15/2021
+ms.author: jaysoni
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 83ad2e7a8f138451063eef1746555563970e125e
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96182880"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110681805"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>排查应用程序网关中的应用服务问题
 
@@ -80,37 +81,35 @@ X-Powered-By: ASP.NET
 
 ## <a name="solution-rewrite-the-location-header"></a>解决方案：重写 location 标头
 
-将 location 标头中的主机名设置为应用程序网关的域名。 要执行此操作，请创建一个[重写规则](./rewrite-http-headers.md)，其中包含评估响应的 location 标头是否包含 azurewebsites.net 的条件。 该规则还必须执行相应的操作来重写 location 标头，使其包含应用程序网关的主机名。 有关详细信息，请参阅有关[如何重写 location 标头](./rewrite-http-headers.md#modify-a-redirection-url)的说明。
+将 location 标头中的主机名设置为应用程序网关的域名。 要执行此操作，请创建一个[重写规则](./rewrite-http-headers-url.md)，其中包含评估响应的 location 标头是否包含 azurewebsites.net 的条件。 该规则还必须执行相应的操作来重写 location 标头，使其包含应用程序网关的主机名。 有关详细信息，请参阅有关[如何重写 location 标头](./rewrite-http-headers-url.md#modify-a-redirection-url)的说明。
 
 > [!NOTE]
-> HTTP 标头重写支持仅适用于应用程序网关的 [Standard_v2 和 WAF_v2 SKU](./application-gateway-autoscaling-zone-redundant.md)。 如果使用 v1 SKU，我们建议[从 v1 迁移到 v2](./migrate-v1-v2.md)。 需要使用 v2 SKU 中提供的重写和其他[高级功能](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)。
+> HTTP 标头重写支持仅适用于应用程序网关的 [Standard_v2 和 WAF_v2 SKU](./application-gateway-autoscaling-zone-redundant.md)。 建议[迁移到 v2](./migrate-v1-v2.md)，以获得标头重写和其他 v2 SKU [的高级功能](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)。
 
-## <a name="alternate-solution-use-a-custom-domain-name"></a>备用解决方案：使用自定义域名
+## <a name="alternate-solution-use-a-custom-domain-name"></a>替代解决方案：使用自定义域名
 
-如果使用 v1 SKU，则无法重写 location 标头。 此功能仅适用于 v2 SKU。 若要解决重定向问题，请将应用程序网关接收的同一主机名传递给应用服务，而不要执行主机替代。
+另一种解决方案是使用应用服务的“自定义域”功能，始终将流量重定向到应用程序网关域名（在示例中为 `www.contoso.com`）。 此配置还可以作为 ARR 相关性 Cookie 问题的解决方案。 默认情况下，ARRAffinity Cookie 域设置为应用服务的默认主机名 (example.azurewebsites.net)，而不是应用程序网关的域名。 因此，在这种情况下，浏览器将由于请求域名和 Cookie 不同而拒绝 Cookie。
 
-现在，应用服务会在指向应用程序网关而不是指向自身的同一原始主机标头中执行重定向（如果有）。
+可以按照指定方法来处理重定向和 ARRAffinity 的 Cookie 域不匹配问题。 此方法需要你拥有自定义域的 DNS 区域访问权限。
 
-必须拥有一个自定义域并执行以下过程：
+**步骤 1**：在应用服务中设置自定义域，并通过添加 [CNAME & TXT DNS 记录](../app-service/app-service-web-tutorial-custom-domain.md#3-get-a-domain-verification-id)来验证域所有权。
+记录看起来类似于
+-  `www.contoso.com` IN CNAME `contoso.azurewebsite.net`
+-  `asuid.www.contoso.com` IN TXT "`<verification id string>`"
 
-- 将该域注册到应用服务的自定义域列表。 必须在自定义域中创建一个指向应用服务 FQDN 的 CNAME。 有关详细信息，请参阅[将现有的自定义 DNS 名称映射到 Azure 应用服务](../app-service/app-service-web-tutorial-custom-domain.md)。
 
-    ![应用服务自定义域列表](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
+**步骤 2**：仅域验证需要上一步中的 CNAME 记录。 最后需要通过应用程序网关路由的流量。 因此，可以立即修改 `www.contoso.com` 的CNAME 以指向应用程序网关的 FQDN。 要为应用程序网关设置 FQDN，请导航到其公共 IP 地址资源并为其分配“DNS 名称标签”。 更新后的 CNAME 记录现在应如下所示 
+-  `www.contoso.com` IN CNAME `contoso.eastus.cloudapp.azure.com`
 
-- 应用服务现已准备好接受主机名 `www.contoso.com`。 更改 DNS 中的 CNAME 条目，使其重新指向应用程序网关的 FQDN，例如 `appgw.eastus.cloudapp.azure.com`。
 
-- 确保执行 DNS 查询时，域 `www.contoso.com` 解析为应用程序网关的 FQDN。
+**步骤 3**：为关联的 HTTP 设置禁用“从后端地址中选择主机名”。
 
-- 设置自定义探测以禁用“从后端 HTTP 设置中选取主机名”。 在 Azure 门户中，清除探测设置中的复选框。 在 PowerShell 中，请不要在 **Set-AzApplicationGatewayProbeConfig** 命令中使用 **-PickHostNameFromBackendHttpSettings** 开关。 在探测的主机名字段中，输入应用服务的 FQDN：example.azurewebsites.net。 从应用程序网关发送的探测请求会在 host 标头中携带此 FQDN。
+在 PowerShell 中，请勿在 `Set-AzApplicationGatewayBackendHttpSettings` 命令中使用 `-PickHostNameFromBackendAddress` 开关。
 
-  > [!NOTE]
-  > 对于下一步骤，请确保自定义探测未关联到后端 HTTP 设置。 此时，HTTP 设置中仍已启用“从后端地址中选取主机名”开关。
 
-- 将应用程序网关的 HTTP 设置为禁用“从后端地址中选取主机名”。 在 Azure 门户中清除相应的复选框。 在 PowerShell 中，请不要在 **Set-AzApplicationGatewayBackendHttpSettings** 命令中使用 **-PickHostNameFromBackendAddress** 开关。
+**步骤 4**：为使探测确定后端是否正常运行和操作流量，请将自定义“主机的运行状况探测”字段设置为应用服务的自定义域或默认域。
 
-- 将自定义探测重新关联到后端 HTTP 设置，并验证后端是否正常。
-
-- 现在，应用程序网关应会将同一主机名 `www.contoso.com` 转发到应用服务。 重定向在同一主机名中发生。 检查以下示例请求和响应标头。
+在 PowerShell 中，请勿在 `Set-AzApplicationGatewayProbeConfig` 命令中使用 `-PickHostNameFromBackendHttpSettings` 开关，改为在探测的 -HostName 开关中使用应用服务的自定义域或默认域。
 
 若要使用 PowerShell 对现有设置执行上述步骤，请使用以下示例 PowerShell 脚本。 请注意，我们没有在探测和 HTTP 设置配置中使用 **-PickHostname** 开关。
 

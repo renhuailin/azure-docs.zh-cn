@@ -7,12 +7,13 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 04/14/2020
 ms.author: victorh
-ms.openlocfilehash: 9a5f64687937479d65f94010bbe4f0a5f1cf5ca2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: dcce15618159b9d6a06a513435f0e091e02a2b2c
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548217"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111411245"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure 应用程序网关上 Web 应用程序防火墙 v2 的自定义规则
 
@@ -22,7 +23,7 @@ Azure 应用程序网关 Web 应用程序防火墙 (WAF) v2 附带了一个预�
 
 例如，可以阻止来自 192.168.5.4/24 范围内的某个 IP 地址的所有请求。 在此规则中，运算符是 *IPMatch*，matchValues 是 IP 地址范围 (192.168.5.4/24)，操作是阻止流量。 还可以设置规则的名称和优先级。
 
-自定义规则支持使用复合逻辑创建更高级的规则来解决安全需求。 例如，（条件 1 **and** 条件 2，**or** 条件 3）。 这意味着，如果满足条件 1 **和** 条件 2，**或者** 满足条件 3，则 WAF 应执行自定义规则中指定的操作。
+自定义规则支持使用复合逻辑创建更高级的规则来解决安全需求。 例如，（条件 1 and 条件 2 or 条件 3）。 这意味着，如果满足条件 1 **和** 条件 2，**或者** 满足条件 3，则 WAF 应执行自定义规则中指定的操作。
 
 同一规则中的不同匹配条件始终使用 **and** 来组合。 例如，仅当发送方使用特定浏览器时，才阻止来自特定 IP 地址的流量。
 

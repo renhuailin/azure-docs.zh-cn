@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: f4d65c97bfccd223453583b25ee0586c5bc0b1ec
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
-ms.translationtype: MT
+ms.openlocfilehash: 29240f371d39ef2d3234e3207cc91768478bf3ff
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091442"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748496"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>有关使用 Azure 数据库迁移服务的常见问题解答
 
@@ -32,9 +32,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 * 无摩擦迁移中的持续投资。
 
 **问：Azure 数据库迁移服务目前支持哪些源-目标对？**
-该服务目前支持各种源/目标对或迁移方案。 有关每个可用迁移方案的状态的完整列表，请参阅文章 [Azure 数据库迁移服务支持的迁移方案的状态](./resource-scenario-status.md)。
-
-其他迁移方案处于预览状态，需要通过 DMS 预览站点提交提名。 有关预览版中的方案的完整列表以及如何注册以参与其中一个产品/服务，请参阅 [DMS 预览站点](https://aka.ms/dms-preview/)。
+该服务目前支持各种源/目标对或迁移方案。 有关每个可用迁移方案的状态的完整列表，请参阅文章 [Azure 数据库迁移服务支持的迁移方案的状态](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/dms/resource-scenario-status.md)。
 
 **问：Azure 数据库迁移服务支持将什么版本的 SQL Server 用作源？**
 从 SQL Server 迁移时，Azure 数据库迁移服务支持的源为 SQL Server 2005 至 SQL Server 2019。
@@ -46,7 +44,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 > 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。 有关详细信息，请参阅 Azure 数据库迁移服务[定价](https://azure.microsoft.com/pricing/details/database-migration/)页。
 
 **问：Azure 数据库迁移服务与其他 Microsoft 数据库迁移工具（例如数据库迁移助手 (DMA) 或 SQL Server 迁移助手 (SSMA)）有何差别？**
-Azure 数据库迁移服务是用于大规模 Microsoft Azure 数据库迁移的首选方法。 有关 Azure 数据库迁移服务与其他 Microsoft 数据库迁移工具的差别，以及对各种方案使用不同服务的建议，请参阅博客文章 [Differentiating Microsoft’s Database Migration Tools and Services](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529)（Microsoft 数据库迁移工具和服务的差别）。
+Azure 数据库迁移服务是将数据库大规模迁移到 Microsoft Azure 的首选方法。 有关 Azure 数据库迁移服务与其他 Microsoft 数据库迁移工具的差别，以及对各种方案使用不同服务的建议，请参阅博客文章 [Differentiating Microsoft’s Database Migration Tools and Services](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529)（Microsoft 数据库迁移工具和服务的差别）。
 
 **问：Azure 数据库迁移服务与 Azure 迁移产品/服务有何差别？**
 Azure 迁移服务可以帮助将本地虚拟机迁移到 Azure IaaS。 该服务会评估是否适合迁移以及需要根据性能进行哪些大小调整，并提供在 Azure 中运行本地虚拟机的成本估算。 Azure Migrate 适合用于将基于本地 VM 的工作负荷直接迁移到 Azure IaaS VM。 但是，与 Azure 数据库迁移服务不同，Azure Migrate 不是适用于 Azure SQL 数据库或 Azure SQL 托管实例等 Azure PaaS 关系数据库平台的专用数据库迁移服务产品。
@@ -62,10 +60,10 @@ Azure 迁移服务可以帮助将本地虚拟机迁移到 Azure IaaS。 该服�
 在所有支持的迁移方案中通用的 Azure 数据库迁移服务先决条件包括需要：
 
 * 使用 Azure 资源管理器部署模型创建适合 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，它将使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 为本地源服务器提供站点到站点连接。
-* 确保虚拟网络安全组规则不会阻止端口443用于 ServiceTags 的空间、存储和 AzureMonitor。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
+* 请确保虚拟网络的网络安全组规则不阻止 ServiceBus、存储服务和 AzureMonitor 的 ServiceTag 的端口 443。 有关虚拟网络 NSG 流量筛选的更多详细信息，请参阅[使用网络安全组筛选网络流量](../virtual-network/virtual-network-vnet-plan-design-arm.md)一文。
 * 在源数据库的前面使用了防火墙设备时，可能需要添加防火墙规则以允许 Azure 数据库迁移服务访问要迁移的源数据库。
 
-有关使用 Azure 数据库迁移服务来竞争特定迁移方案所需的所有先决条件的列表，请参阅 docs.microsoft.com 上的 Azure 数据库迁移服务 [文档](./dms-overview.md) 中的相关教程。
+有关使用 Azure 数据库迁移服务完成特定迁移方案所要满足的所有先决条件列表，请参阅 docs.microsoft.com 上的 Azure 数据库迁移服务[文档](./dms-overview.md)中的相关教程。
 
 **问：如何查找 Azure 数据库迁移服务的 IP 地址，以便可以创建防火墙规则的允许列表用于访问要迁移的源数据库？**
 可能需要添加防火墙规则，以允许 Azure 数据库迁移服务访问要迁移的源数据库。 该服务的 IP 地址是动态的，但如果你使用 ExpressRoute，则企业网络会专门分配此地址。 标识相应 IP 地址的最简单方法是查看预配的 Azure 数据库迁移服务资源所在的同一个资源组，找到关联的网络接口。 通常，网络接口资源的名称以 NIC 前缀开头，后接唯一的字符和序号，例如 NIC-jj6tnztnmarpsskr82rbndyp。 选择此网络接口资源后，可以看到需要包含在 Azure 门户资源概述页上的允许列表中的 IP 地址。
@@ -88,8 +86,8 @@ Azure 迁移服务可以帮助将本地虚拟机迁移到 Azure IaaS。 该服�
     GO
 ```
 
-**：.如何实现设置 Microsoft Azure 虚拟网络？**
-尽管有多个 Microsoft 教程可以指导你完成设置虚拟网络的过程，但官方文档出现在 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)一文中。
+问：如何设置 Microsoft Azure 虚拟网络？
+虽然有多篇 Microsoft 教程可以指导你完成设置虚拟网络的过程，但官方文档出现在 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)一文中。
 
 ## <a name="usage"></a>使用情况
 

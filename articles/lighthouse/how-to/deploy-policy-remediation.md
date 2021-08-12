@@ -1,18 +1,18 @@
 ---
 title: 部署可修正的策略
 description: 若要通过 Azure Lighthouse 部署使用修正任务的策略，需要在客户租户中创建托管标识。
-ms.date: 01/14/2021
+ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 01070133241117596bdf2b8e1e7c3fa101fc656c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 65fb11ff98d51ca6ee9f9280bdd50997e6eeef26
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98233876"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "109788654"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>部署可以在委派的订阅中修正的策略
 
-服务提供商可以通过 [Azure Lighthouse](../overview.md) 在委托订阅中创建和编辑策略定义。 但是，若要部署使用[修正任务](../../governance/policy/how-to/remediate-resources.md)的策略（即，具有 [deployIfNotExists](../../governance/policy/concepts/effects.md#deployifnotexists) 或 [modify](../../governance/policy/concepts/effects.md#modify) 效果的策略），需在客户租户中创建[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 此托管标识可供 Azure Policy 用来在策略中部署模板。 在载入 Azure 委托资源管理的客户时，以及部署策略本身时，需要执行相关步骤来启用此方案。
+服务提供商可以通过 [Azure Lighthouse](../overview.md) 在委托订阅中创建和编辑策略定义。 但是，若要部署使用[修正任务](../../governance/policy/how-to/remediate-resources.md)的策略（即，具有 [deployIfNotExists](../../governance/policy/concepts/effects.md#deployifnotexists) 或 [modify](../../governance/policy/concepts/effects.md#modify) 效果的策略），需在客户租户中创建[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 此托管标识可供 Azure Policy 用来在策略中部署模板。 在载入 Azure Lighthouse 的客户时以及部署策略本身时，需要执行相关步骤来启用此方案。
 
 > [!TIP]
 > 尽管本主题中只是提到了服务提供商和客户，但[管理多个租户的企业](../concepts/enterprise.md)也可以使用相同的过程。

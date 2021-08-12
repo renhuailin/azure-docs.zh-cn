@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 03/29/2021
-ms.openlocfilehash: 0d1ba3de5686e161fbd118f78bd4734034dbc1bb
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: c7a7aaa47d40c9d49065f71bc9bebc998adbfc12
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166876"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111410470"
 ---
 # <a name="billing-model-of-azure-web-pubsub-service"></a>Azure Web PubSub 服务的计费模型
 
@@ -60,7 +60,7 @@ Azure Web PubSub 服务的计费模型基于单元数量和出站流量（消息
 
 例如，假设你有一个使用 Azure Web PubSub 服务和 Azure Functions 的应用程序。 一个用户向一组中的 10 个连接广播 4 KB 数据。 从服务发送到函数的上游流量为 4 KB，从服务向 10 个连接广播的流量为 40 KB。
 
-> 用于计费的出站流量 = 4 KB + 40 KB = 44 KB
+> 计费的出站流量 = 4 KB（上游流量）+ 4 KB * 10（服务广播到客户端的流量）= 44 KB
 
 > 等效的消息计数 = 44 KB/2 KB = 22
 

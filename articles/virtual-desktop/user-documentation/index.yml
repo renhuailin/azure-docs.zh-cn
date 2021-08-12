@@ -1,0 +1,61 @@
+### YamlMime:Landing
+title: 面向用户的 Azure 虚拟桌面文档
+summary: 可以轻松连接到 Azure 虚拟桌面。
+metadata:
+  title: Azure 虚拟桌面用户文档
+  description: 借助 Azure 虚拟桌面，你可在云中使用 Windows 10 企业版。
+  ms.service: virtual-desktop
+  services: virtual-desktop
+  ms.topic: landing-page
+  author: Heidilohr
+  ms.author: helohr
+  ms.date: 06/15/2021
+  ms.openlocfilehash: 09025c9bd7d12791f61496463e02cc8866fa9d37
+  ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/29/2021
+  ms.locfileid: "113034135"
+landingContent:
+- title: 使用 Windows 桌面客户端进行连接
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 如何使用 Windows 桌面客户端进行连接
+      url: connect-windows-7-10.md
+- title: 使用 Microsoft Store 客户端进行连接
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 如何使用 Microsoft Store 客户端进行连接
+      url: connect-microsoft-store.md
+- title: 使用 Web 客户端进行连接
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 如何使用 Web 客户端进行连接
+      url: connect-web.md
+- title: 使用 macOS 客户端进行连接
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 如何使用 macOS 客户端进行连接
+      url: connect-macos.md
+- title: 使用 iOS 客户端进行连接
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 如何使用 iOS 客户端进行连接
+      url: connect-ios.md
+- title: 使用 Android 客户端进行连接
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 如何使用 Android 客户端进行连接
+      url: connect-android.md
+- title: 使用 Linux 或瘦客户端进行连接
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 如何使用 Linux 或瘦客户端进行连接
+      url: linux-overview.md

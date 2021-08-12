@@ -6,12 +6,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: thvankra
-ms.openlocfilehash: ea28bf21424f0624b4f1bb5856a17672c1c7b106
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: ee35faf70066ece0f1c799b7d04317a8cd28729d
+ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107875442"
+ms.lasthandoff: 05/07/2021
+ms.locfileid: "109517201"
 ---
 # <a name="manage-azure-managed-instance-for-apache-cassandra-resources-using-azure-cli-preview"></a>使用 Azure CLI 管理 Azure Managed Instance for Apache Cassandra 资源（预览版）
 
@@ -132,8 +132,10 @@ az managed-cassandra cluster list
 * [创建数据中心](#create-datacenter)
 * [删除数据中心](#delete-datacenter)
 * [获取数据中心详细信息](#get-datacenter-details)
-* [更新或缩放数据中心](#update-datacenter)
 * [获取群集中的数据中心](#get-datacenters-cluster)
+* [更新或缩放数据中心](#update-datacenter)
+* [更新 Cassandra 配置](#update-yaml)
+
 
 ### <a name="create-a-datacenter"></a><a id="create-datacenter"></a>创建数据中心
 
@@ -194,13 +196,50 @@ resourceGroupName='MyResourceGroup'
 clusterName='cassandra-hybrid-cluster'
 dataCenterName='dc1'
 dataCenterLocation='eastus'
-delegatedSubnetId= '/subscriptions/<Subscription_ID>/resourceGroups/customer-vnet-rg/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/dc1-subnet'
 
 az managed-cassandra datacenter update \
     --resource-group $resourceGroupName \
     --cluster-name $clusterName \
     --data-center-name $dataCenterName \
     --node-count 13 
+```
+
+### <a name="update-cassandra-configuration"></a><a id="update-yaml"></a>更新 Cassandra 配置
+
+使用 [az managed-cassandra datacenter update](/cli/azure/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#az_managed_cassandra_datacenter_update) 命令更改数据中心中的 Cassandra 配置。 需使用[在线工具](https://www.base64encode.org/)对 YAML 片段进行 base64 编码。 支持以下 YAML 设置：
+
+- column_index_size_in_kb
+- compaction_throughput_mb_per_sec
+- read_request_timeout_in_ms
+- range_request_timeout_in_ms
+- aggregated_request_timeout_in_ms
+- write_request_timeout_in_ms
+- internode_compression
+- batchlog_replay_throttle_in_kb
+
+例如，以下 YAML 片段：
+
+```yaml
+column_index_size_in_kb: 16
+read_request_timeout_in_ms: 10000
+```
+
+编码后，该 YAML 将转换为：`Y29sdW1uX2luZGV4X3NpemVfaW5fa2I6IDE2CnJlYWRfcmVxdWVzdF90aW1lb3V0X2luX21zOiAxMDAwMA==`。 
+
+请参见下图：
+
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+clusterName='cassandra-hybrid-cluster'
+dataCenterName='dc1'
+dataCenterLocation='eastus'
+yamlFragment='Y29sdW1uX2luZGV4X3NpemVfaW5fa2I6IDE2CnJlYWRfcmVxdWVzdF90aW1lb3V0X2luX21zOiAxMDAwMA=='
+
+az managed-cassandra datacenter update \
+    --resource-group $resourceGroupName \
+    --cluster-name $clusterName \
+    --data-center-name $dataCenterName \
+    --base64-encoded-cassandra-yaml-fragment $yamlFragment
 ```
 
 ### <a name="get-the-datacenters-in-a-cluster"></a><a id="get-datacenters-cluster"></a>获取群集中的数据中心

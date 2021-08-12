@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: 0fe1470661c006399ea176af1112d271524b2a1f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb3a7b66d27fcf7669d3d2f863f104a46387e90f
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100390957"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111902476"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure 数据工厂中复制活动的容错
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -73,7 +73,7 @@ ADF 在复制二进制文件时支持以下容错方案。 在以下情况下，
     }
 } 
 ```
-属性 | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | -------- 
 skipErrorFile | 一组属性，用于指定在数据移动过程中要跳过的失败类型。 | | 否
 fileMissing | SkipErrorFile 属性包中的一个键值对，用于确定是否要跳过在复制 ADF 时被其他应用程序删除的文件。 <br/> -True：跳过其他应用程序正在删除的文件，复制其余内容。 <br/> -False：在数据移动过程中，一旦从源存储中删除任何文件则中止复制活动。 <br/>默认情况下，该属性设置为 True。 | True（默认值） <br/>False | 否
@@ -196,7 +196,7 @@ Timestamp,Level,OperationName,OperationItem,Message
 }, 
 ```
 
-属性 | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | 指定是否在复制期间跳过不兼容的行。 | True<br/>False（默认值） | 否
 logSettings | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否
@@ -246,7 +246,7 @@ Timestamp, Level, OperationName, OperationItem, Message
 
 ## <a name="copying-tabular-data-legacy"></a>复制表格数据（旧版）：
 
-下面是仅对复制表格数据启用容错的传统方法。 如果你正在创建新的管道或活动，建议你从[此处](#copying-tabular-data)开始。
+以下方法是仅对复制表格数据操作启用容错的传统方法。 如果你正在创建新的管道或活动，建议你从[此处](#copying-tabular-data)开始。
 
 ### <a name="configuration"></a>配置
 下面的 JSON 定义示例用于配置在复制活动中跳过不兼容行：
@@ -270,7 +270,7 @@ Timestamp, Level, OperationName, OperationItem, Message
 }
 ```
 
-属性 | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必须
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | 指定是否在复制期间跳过不兼容的行。 | True<br/>False（默认值） | 否
 redirectIncompatibleRowSettings | 若要记录不兼容行，可以指定的一组属性。 | &nbsp; | 否

@@ -1,22 +1,22 @@
 ### YamlMime:Landing
-title: 开始使用 Microsoft 客户协议
-summary: 开始根据 Microsoft 客户协议管理账单和订阅。 了解如何理解和优化成本，同时确保对计费环境进行安全访问。
+title: Microsoft 客户协议文档
+summary: 开始根据 Microsoft 客户协议 (MCA) 管理账单和订阅。 了解如何理解和优化成本，同时确保对计费环境进行安全访问。
 metadata:
-  title: 开始使用 Microsoft 客户协议
-  description: 了解如何开始使用 Microsoft 客户协议。
+  title: Microsoft 客户协议文档
+  description: 了解如何开始使用 Microsoft 客户协议 (MCA)。
   ms.service: cost-management-billing
   ms.subservice: billing
   ms.topic: landing-page
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 05/21/2021
-  ms.openlocfilehash: 5c64dcb1c96357128dc7a1cf86847472edf611e3
-  ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+  ms.date: 06/16/2021
+  ms.openlocfilehash: b59028a13d3d7dfcbfdebfef803db36a660b5364
+  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/26/2021
-  ms.locfileid: "110470703"
+  ms.lasthandoff: 06/17/2021
+  ms.locfileid: "112291522"
 landingContent:
 - title: 入门
   linkLists:
@@ -40,6 +40,10 @@ landingContent:
       url: ../costs/migrate-cost-management-api.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
     - text: EA 与 MCA 之间的 API 差异
       url: /rest/api/billing/
+    - text: 成本管理 Power BI 连接器
+      url: /power-bi/connect-data/desktop-connect-azure-cost-management?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
+    - text: 导出成本管理数据
+      url: ../costs/tutorial-export-acm-data.md?toc=/azure/cost-management-billing/microsoft-customer-agreement/toc.json
 - title: 管理账单
   linkLists:
   - linkListType: concept

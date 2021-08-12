@@ -35,12 +35,20 @@
           href: performance-oracle-single-volumes.md
         - name: Azure NetApp 文件的性能参考
           items:
+            - name: Linux 直接 I/O 最佳做法
+              href: performance-linux-direct-io.md
+            - name: Linux 文件系统缓存最佳做法
+              href: performance-linux-filesystem-cache.md
             - name: Linux NFS 装载选项最佳做法
               href: performance-linux-mount-options.md
             - name: Linux 并发最佳做法
               href: performance-linux-concurrency-session-slots.md
+            - name: Linux NFS 文件预读最佳做法
+              href: performance-linux-nfs-read-ahead.md
             - name: SMB 性能最佳做法
               href: azure-netapp-files-smb-performance.md
+            - name: Azure 虚拟机 SKU 最佳做法
+              href: performance-virtual-machine-sku.md
     - name: Azure NetApp 文件的成本模型
       href: azure-netapp-files-cost-model.md
     - name: 了解卷配额
@@ -211,5 +219,7 @@
       href: 'https://azure.microsoft.com/support/legal/sla/netapp/'
     - name: 视频
       href: azure-netapp-files-videos.md
+    - name: 比较使用 NFS 对 Azure Blob 存储、Azure 文件存储和 Azure NetApp 文件的访问
+      href: ../storage/common/nfs-comparison.md?toc=%2fazure%2fazure-netapp-files%2ftoc.json
     - name: Azure 文件存储和 Azure NetApp 文件的比较
       href: ../storage/files/storage-files-netapp-comparison.md

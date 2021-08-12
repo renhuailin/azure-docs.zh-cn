@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 888afdc2764fed9f0b2c8b548c3e2b1c48e9a31e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ebf502fc2ae83651e8f69472b3b2042cef723d8
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97094670"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110537237"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 Azure 事件网格输出绑定
 
@@ -28,6 +28,8 @@ ms.locfileid: "97094670"
 ## <a name="example"></a>示例
 
 # <a name="c"></a>[C#](#tab/csharp)
+
+### <a name="c-2x-and-higher"></a>C#（2.x 及更高版本）
 
 以下示例演示了一个 [C# 函数](functions-dotnet-class-library.md)它使用方法返回值作为输出，将消息写入到事件网格自定义主题：
 
@@ -53,6 +55,64 @@ public static async Task Run(
     {
         var myEvent = new EventGridEvent("message-id-" + i, "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
         await outputEvents.AddAsync(myEvent);
+    }
+}
+```
+
+### <a name="version-3x-preview"></a>版本 3.x（预览版）
+
+以下示例演示绑定到 `CloudEvent` 的 Functions 3.x [C# 函数](functions-dotnet-class-library.md)：
+
+```cs
+using System.Threading.Tasks;
+using Azure.Messaging;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+
+namespace Azure.Extensions.WebJobs.Sample
+{
+    public static class CloudEventBindingFunction
+    {
+        [FunctionName("CloudEventBindingFunction")]
+        public static async Task<IActionResult> RunAsync(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            [EventGrid(TopicEndpointUri = "EventGridEndpoint", TopicKeySetting = "EventGridKey")] IAsyncCollector<CloudEvent> eventCollector)
+        {
+            CloudEvent e = new CloudEvent("IncomingRequest", "IncomingRequest", await req.ReadAsStringAsync());
+            await eventCollector.AddAsync(e);
+            return new OkResult();
+        }
+    }
+}
+```
+
+以下示例演示绑定到 `EventGridEvent` 的 Functions 3.x [C# 函数](functions-dotnet-class-library.md)：
+
+```cs
+using System.Threading.Tasks;
+using Azure.Messaging.EventGrid;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+
+namespace Azure.Extensions.WebJobs.Sample
+{
+    public static class EventGridEventBindingFunction
+    {
+        [FunctionName("EventGridEventBindingFunction")]
+        public static async Task<IActionResult> RunAsync(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            [EventGrid(TopicEndpointUri = "EventGridEndpoint", TopicKeySetting = "EventGridKey")] IAsyncCollector<EventGridEvent> eventCollector)
+        {
+            EventGridEvent e = new EventGridEvent(await req.ReadAsStringAsync(), "IncomingRequest", "IncomingRequest", "1.0.0");
+            await eventCollector.AddAsync(e);
+            return new OkResult();
+        }
     }
 }
 ```
@@ -328,7 +388,7 @@ PowerShell 不支持特性。
 |---------|---------|----------------------|
 |type | 不适用 | 必须设置为“eventGrid”。 |
 |direction | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
-|**name** | 不适用 | 函数代码中使用的表示事件的变量名称。 |
+|name | 不适用 | 函数代码中使用的表示事件的变量名称。 |
 |**topicEndpointUri** |**TopicEndpointUri** | 包含自定义主题 URI 的应用设置的名称，例如 `MyTopicEndpointUri`。 |
 |**topicKeySetting** |**TopicKeySetting** | 包含自定义主题访问密钥的应用设置的名称。 |
 
@@ -343,9 +403,15 @@ PowerShell 不支持特性。
 
 可以使用 `out EventGridEvent paramName` 等方法参数发送消息。 若要编写多条消息，可以使用 `ICollector<EventGridEvent>` 或 `IAsyncCollector<EventGridEvent>` 代替 `out EventGridEvent`。
 
+### <a name="additional-types"></a>其他类型 
+使用事件网格扩展 3.0.0 或更高版本的应用使用 [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent) 命名空间中的 `EventGridEvent` 类型。 此外，还可以绑定到 [Azure.Messaging](/dotnet/api/azure.messaging.cloudevent) 命名空间中的 `CloudEvent` 类型。
+
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
 可以使用 `out EventGridEvent paramName` 等方法参数发送消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<EventGridEvent>` 或 `IAsyncCollector<EventGridEvent>` 代替 `out EventGridEvent`。
+
+### <a name="additional-types"></a>其他类型 
+使用事件网格扩展 3.0.0 或更高版本的应用使用 [Azure.Messaging.EventGrid](/dotnet/api/azure.messaging.eventgrid.eventgridevent) 命名空间中的 `EventGridEvent` 类型。 此外，还可以绑定到 [Azure.Messaging](/dotnet/api/azure.messaging.cloudevent) 命名空间中的 `CloudEvent` 类型。
 
 # <a name="java"></a>[Java](#tab/java)
 

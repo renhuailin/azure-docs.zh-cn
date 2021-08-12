@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 2/22/2021
+ms.date: 6/4/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c5e7f556f37a1d6d53e0a938490f1099a7be776a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
-ms.translationtype: MT
+ms.openlocfilehash: 8efc5f44c1383ebcde397b810ba69c547afd692f
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647415"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555442"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能
 
 > 通过将此 URL 粘贴到 RSS 源阅读器中即可在此页面更新时获得通知：<br/>`https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us`
 
-身份验证系统会持续更改和添加功能，以增强安全性并提高标准符合性。 为了及时了解最新的开发，本文提供了有关以下详细信息的信息：
+身份验证系统会持续更改和添加功能，以增强安全性并提高标准符合性。 为了让大家随时了解最新的开发成果，本文将提供有关以下详细信息的信息：
 
 - 最新功能
 - 已知问题
@@ -35,46 +35,73 @@ ms.locfileid: "101647415"
 
 ## <a name="upcoming-changes"></a>即将推出的更改
 
-### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>只有显式请求的作用域才会触发条件性访问
+### <a name="the-device-code-flow-ux-will-now-include-an-app-confirmation-prompt"></a>设备代码流 UX 现在将包括应用确认提示
 
-**生效日期**：2021年3月
+生效日期：2021 年 6 月。
 
-**受影响的终结点**： v2。0
+影响的终结点：v2.0 和 v1.0
 
-**受影响的协议**：所有使用 [动态许可](v2-permissions-and-consent.md#requesting-individual-user-consent)的流
+影响的协议：[设备代码流](v2-oauth2-device-code.md)
 
-现在，使用动态同意的应用程序将获得他们同意的所有权限，即使未按名称在参数中请求也是如此 `scope` 。  这可能会导致应用程序请求（仅 `user.read` 同意） `files.read` 传递为权限分配的条件性访问 `files.read` 权限。 
+作为一项安全改进，设备代码流已更新，增加了其他提示，用于将验证用户是否正在登录他们期望的应用。 添加这一功能是为了帮助防止网络钓鱼攻击。
 
-为了减少不必要的条件性访问提示的数量，Azure AD 更改向应用程序提供未请求的作用域的方式，以便仅显式请求的作用域触发条件访问。 此更改可能会导致应用依赖于 Azure AD 以前的行为 (即，即使未请求) 中断，也会提供所有权限，因为他们请求的令牌将是缺少的权限。
+出现的提示如下所示：
 
-现在，应用程序将接收具有此类权限的访问令牌：请求的权限，以及他们同意不需要条件性访问提示的用户。  访问令牌的作用域反映在令牌响应的 `scope` 参数中。 
+:::image type="content" source="media/breaking-changes/device-code-flow-prompt.png" alt-text="新提示，内容为“是否尝试登录到 Azure CLI？”":::
+
+### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>仅会为显式请求的范围触发条件访问
+
+生效日期：2021 年 8 月，从 4 月开始逐步推出。 
+
+受影响的终结点：v2.0
+
+受影响的协议：所有使用[动态许可](v2-permissions-and-consent.md#requesting-individual-user-consent)的流
+
+现在，使用动态许可的应用程序将获得它们被许可的所有权限，即使未按名称在 `scope` 参数中请求也是如此。  例如，这可能会导致只请求 `user.read` 但被许可 `files.read` 的应用强制通过为 `files.read` 权限分配的条件访问。 
+
+为了减少不必要的条件访问提示次数，Azure AD 将更改向应用程序提供未请求的范围的方式，以便仅显式请求的范围触发条件访问。 此更改可能会导致应用依赖于 Azure AD 以前的行为（即，即使未请求也提供所有权限）中断，因为它们请求的令牌将缺少权限。
+
+现在，应用将收到包含所请求权限组合的访问令牌，以及它们已被许可且不需要条件访问提示的权限。  访问令牌的范围反映在令牌响应的 `scope` 参数中。 
+
+此更改将对所有应用进行，但被观察到对此行为具有依赖项的应用除外。  如果开发人员由于可能依赖于其他条件访问提示而被排除在此更改计划外，将与他们取得联系。 
 
 **示例**
 
-应用已同意 `user.read` 、 `files.readwrite` 和 `tasks.read` 。 `files.readwrite` 应用了条件性访问策略，而另两个策略不具有条件访问策略。 如果应用向发出令牌请求 `scope=user.read` ，且当前登录用户尚未通过任何条件性访问策略，则生成的令牌将用于 `user.read` 和 `tasks.read` 权限。 `tasks.read` 包括，因为应用程序已同意该应用程序，并且不需要强制实施条件性访问策略。 
+应用已获得 `user.read`、`files.readwrite` 和 `tasks.read` 许可。 `files.readwrite` 应用了条件访问策略，而另两个未应用。 如果应用请求 `scope=user.read` 的令牌，且当前登录用户尚未通过任何条件访问策略，则生成的令牌将用于 `user.read` 和 `tasks.read` 权限。 将包括 `tasks.read`，因为应用已获得许可，且它无需强制实施条件访问策略。 
 
-如果应用随后请求 `scope=files.readwrite` ，则租户所需的条件性访问将触发，并强制应用显示交互式身份验证提示，在该提示中可满足条件访问策略。  返回的令牌将包含全部三个作用域。 
+如果应用随后请求 `scope=files.readwrite`，则将触发租户所需的条件访问，并强制应用显示可满足条件访问策略的交互式身份验证提示。  返回的令牌将包含全部三个范围。 
 
-如果应用程序最后一次请求三个作用域中的任何一个请求 (假设， `scope=tasks.read`) ，Azure AD 将看到用户已完成所需的条件性访问策略 `files.readwrite` ，并再次颁发包含所有三个权限的令牌。 
-
+如果应用最后一次请求三个范围中的任何一个范围（例如 `scope=tasks.read`），Azure AD 会发现用户已完成 `files.readwrite` 所需的条件访问策略，并再次颁发包含所有三个权限的令牌。 
 
 ## <a name="may-2020"></a>2020 年 5 月
 
+### <a name="bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice"></a>Bug 修复：Azure AD 将不再对状态参数进行两次 URL 编码
+
+**生效日期**：2021 年 5 月
+
+**受影响的终结点**：v1.0 和 v2.0
+
+**受影响的协议**：所有访问 `/authorize` 终结点的流（隐式流和授权代码流）
+
+在 Azure AD 授权响应中发现并修复了 bug。 在身份验证的 `/authorize` 阶段中，请求中的 `state` 参数包含在响应中，以便保持应用状态并帮助防止 CSRF 攻击。 Azure AD 在将 `state` 参数插入响应之前对参数进行了错误的 URL 编码，而该参数在响应中再次进行了编码。  这会导致应用程序错误地拒绝 Azure AD 的响应。 
+
+Azure AD 将不再对此参数进行双重编码，从而允许应用正确分析结果。 将对所有应用程序进行此更改。 
+
 ### <a name="azure-government-endpoints-are-changing"></a>Azure 政府版终结点正在更改
 
-**生效日期**：5月 (晚5月 2020)  
+**生效日期**：5月 5 日（2020 年 6 月完成） 
 
 **受影响的终结点**：全部
 
 **受影响的协议**：所有流
 
-2018年6月1日，Azure 政府 (AAD) 机构的官方 Azure Active Directory 从更改 `https://login-us.microsoftonline.com` 为 `https://login.microsoftonline.us` 。 此更改也适用于 Microsoft 365 GCC 高和 DoD，Azure 政府版 AAD 也服务。 如果你拥有美国政府租户中的应用程序，则必须更新应用程序，以便登录到终结点上的用户 `.us` 。  
+在 2018 年 6 月 1 日，Azure 政府的官方 Azure Active Directory (AAD) 授权已从 `https://login-us.microsoftonline.com` 更改为 `https://login.microsoftonline.us`。 此更改也应用于 Microsoft 365 GCC High 和 DoD，Azure 政府版 AAD 同样提供服务。 如果你在美国政府租户中拥有应用程序，则必须更新应用程序以在 `.us` 终结点让用户登录。  
 
-从5月5日开始，Azure AD 将开始强制终结点更改，阻止政府用户使用公共终结点 () 登录到在美国政府租户中托管的应用 `microsoftonline.com` 。  受影响的应用将开始显示错误 `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` 。 此错误表示应用正尝试在公有云终结点上登录美国政府用户。 如果你的应用处于公有云租户中，并旨在支持我们的政府用户，则需要 [更新你的应用以明确支持它们](./authentication-national-cloud.md)。 这可能需要在美国政府云中创建新的应用注册。 
+从 5 月 5 日开始，Azure AD 将开始强制更改终结点，阻止政府用户使用公用终结点 (`microsoftonline.com`) 登录托管在美国政府租户中的应用。  受影响的应用将开始出现错误 `AADSTS900439` - `USGClientNotSupportedOnPublicEndpoint`。 此错误表示应用正尝试在公有云终结点上登录美国政府用户。 如果你的应用处于公有云租户中，并旨在支持美国政府用户，则需要[更新应用以显式支持它们](./authentication-national-cloud.md)。 这可能需要在美国政府云中创建新的应用注册。 
 
-此更改的执行将通过以下方式进行：使用逐步推出：美国政府版中的用户登录到应用程序时，不经常会看到强制执行，而美国政府用户经常使用的应用将在最后应用强制实施。 预计会在6月2020的所有应用中完成强制。 
+此更改的实施将根据美国政府云用户登录应用程序的频率逐步展开 - 不经常登录美国政府用户的应用将首先得到实施，而美国政府用户经常使用的应用将最后得到实施。 我们预计将于 2020 年 6 月在所有应用中完成实施。 
 
-有关更多详细信息，请参阅 [此迁移中的 Azure 政府博客文章](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)。 
+有关详细信息，请参阅 [Azure 政府关于此迁移的博客文章](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)。 
 
 ## <a name="march-2020"></a>2020 年 3 月
 
@@ -108,7 +135,7 @@ ms.locfileid: "101647415"
 
 **受影响的协议**：使用 response_type=query 的 OAuth 和 OIDC 流 - ，这涵盖了 [授权代码流](v2-oauth2-auth-code-flow.md)（在某些情况下）和 [隐式流](v2-oauth2-implicit-grant-flow.md)。
 
-当通过 HTTP 重定向将身份验证响应从 login.microsoftonline.com 发送到应用程序时，该服务会将一个空片段追加到回复 URL。  这可以确保浏览器擦除身份验证请求中的任何现有片段，防止出现重定向攻击类。  任何应用都不应依赖于此行为。
+通过 HTTP 重定向将身份验证响应从 login.microsoftonline.com 发送到应用程序时，该服务会将一个空片段追加到回复 URL。  这可以确保浏览器擦除身份验证请求中的任何现有片段，防止出现重定向攻击类。  任何应用都不应依赖于此行为。
 
 
 ## <a name="august-2019"></a>2019 年 8 月

@@ -1,5 +1,5 @@
 ---
-title: 应用品牌准则 | Azure
+title: Microsoft 登录品牌准则 | Azure AD
 titleSuffix: Microsoft identity platform
 description: 了解 Microsoft 标识平台的应用程序品牌准则。
 services: active-directory
@@ -13,14 +13,14 @@ ms.date: 08/31/2020
 ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 236e82ab97244e1428441f83295f6a5d4ed56350
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: beccbb77f27ef462f8725cf6b2ffb6966c68e23b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99581986"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110471357"
 ---
-# <a name="branding-guidelines-for-applications"></a>适用于应用程序的品牌准则
+# <a name="sign-in-with-microsoft-branding-guidelines-for-applications"></a>Microsoft 登录：应用程序的品牌准则
 
 使用 Microsoft 标识平台开发应用程序时，如果你的客户想要使用工作或学校帐户（在 Azure AD 中托管）或其个人账户注册和登录到你的应用程序，你需要指导客户进行相关操作。
 

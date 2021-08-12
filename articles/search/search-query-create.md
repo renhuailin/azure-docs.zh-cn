@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: 4f5cc0d5eefd5969566040e4148ca7358d348736
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53428a0185b003e22fd0ad68001b2b1588f994b1
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951498"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750742"
 ---
 # <a name="creating-queries-in-azure-cognitive-search"></a>在 Azure 认知搜索中创建查询
 
@@ -23,9 +23,9 @@ ms.locfileid: "104951498"
 
 查询是针对单个搜索索引的文档集合的只读请求。 它指定“search”参数，其中包含由字词、括在引号中的短语和运算符组成的查询表达式。
 
-其他参数提供对查询和响应的更多定义。 例如，“searchFields”将查询执行限制为特定字段，“select”指定在结果中返回的字段，“count”返回在索引中找到的匹配项数。
+请求的其他参数提供对查询和响应的更多定义。 例如，“searchFields”将查询执行限制为特定字段，“select”指定在结果中返回的字段，“count”返回在索引中找到的匹配项数。
 
-以下示例通过显示可用参数的子集，使你全面了解查询请求。 有关查询组合的详细信息，请参阅[查询类型和组合](search-query-overview.md)和[搜索文档 (REST)](/rest/api/searchservice/search-documents)。
+以下示例通过显示一些可用参数，使你全面了解查询请求。 有关查询组合的详细信息，请参阅[查询类型和组合](search-query-overview.md)和[搜索文档 (REST)](/rest/api/searchservice/search-documents)。
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -45,7 +45,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ### <a name="permissions"></a>权限
 
-任何操作（包括查询请求）都将在[管理 API 密钥](search-security-api-keys.md)下执行，但查询请求可以选择使用[查询 API 密钥](search-security-api-keys.md#create-query-keys)。 强烈建议使用查询 API 密钥。 最多可为每个服务创建 50 个，并为不同的应用程序分配不同的密钥。
+查询请求需要通过标头中传递的 API 密钥授予的读取权限。 任何操作（包括查询请求）都将在[管理 API 密钥](search-security-api-keys.md)下执行，但查询请求可以选择使用[查询 API 密钥](search-security-api-keys.md#create-query-keys)。 强烈建议使用查询 API 密钥。 最多可为每个服务创建 50 个，并为不同的应用程序分配不同的密钥。
 
 在 Azure 门户中，访问工具、向导和对象需要具有服务的参与者角色或更高级别的成员身份。 
 
