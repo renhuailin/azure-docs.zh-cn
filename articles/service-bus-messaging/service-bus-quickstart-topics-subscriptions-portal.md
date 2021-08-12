@@ -7,12 +7,12 @@ ms.date: 06/23/2020
 ms.topic: quickstart
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 48a2ee6b817a16cf85768ab047dd9e1c361a79df
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 99d7fd283ecd6c1872922c0298d334d254dd9656
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466469"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112413645"
 ---
 # <a name="use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>使用 Azure 门户创建一个服务总线主题和多个对该主题的订阅
 在本快速入门中，将使用 Azure 门户创建服务总线主题，然后创建对该主题的订阅。 
@@ -26,9 +26,9 @@ ms.locfileid: "110466469"
 
 利用服务总线主题和订阅，可以进行扩展以处理跨大量用户和应用程序的许多消息。
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+[!INCLUDE [service-bus-create-namespace-portal](./includes/service-bus-create-namespace-portal.md)]
 
-[!INCLUDE [service-bus-create-topics-three-subscriptions-portal](../../includes/service-bus-create-topics-three-subscriptions-portal.md)]
+[!INCLUDE [service-bus-create-topics-three-subscriptions-portal](./includes/service-bus-create-topics-three-subscriptions-portal.md)]
 
 > [!NOTE]
 > 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 服务总线资源管理器允许用户连接到服务总线命名空间并以一种简单的方式管理消息传送实体。 该工具提供高级功能，如导入/导出功能或用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 

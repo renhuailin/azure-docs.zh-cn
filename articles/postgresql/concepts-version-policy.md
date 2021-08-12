@@ -5,14 +5,14 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/05/2020
+ms.date: 05/25/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 62fe1b3391eb4cb2d409a92b936fd3f1ae56d992
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7f4cf4c0109d524d0a8fe62ae1930165173db170
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100518413"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111407050"
 ---
 # <a name="azure-database-for-postgresql-versioning-policy"></a>Azure Database for PostgreSQL 版本策略
 
@@ -22,13 +22,16 @@ ms.locfileid: "100518413"
 
 Azure Database for PostgreSQL 支持以下数据库版本。
 
-| 版本 | 单台服务器 | 灵活服务器（预览版） |
-| ----- | :------: | :----: |
-| PostgreSQL 12 |  | X  | 
-| PostgreSQL 11 | X | X |
-| PostgreSQL 10 | X |  |
-| PostgreSQL 9.6 | X |  |
-| *PostgreSQL 9.5（已停用）* | X |  |
+| 版本 | 单台服务器 | 灵活服务器（预览版） | 超大规模 (Citus) |
+| ----- | :------: | :----: | :----: |
+| PostgreSQL 13 |  | X  | X\* |
+| PostgreSQL 12 |  | X  | X\* |
+| PostgreSQL 11 | X | X | X |
+| PostgreSQL 10 | X |  |  |
+| PostgreSQL 9.6 | X |  |  |
+| *PostgreSQL 9.5（已停用）* | X |  |  |
+
+（\* PostgreSQL 12 和 13 作为超大规模 (Citus) 中的预览功能提供。）
 
 ## <a name="major-version-support"></a>主要版本支持
 如 [PostgreSQL 社区版本控制策略](https://www.postgresql.org/support/versioning/)所述，从 Azure 开始支持该版本之日起，到 PostgreSQL 社区停用该版本之日结束，在此期间，Azure Database for PostgreSQL 将支持 PostgreSQL 的每个主版本。
@@ -46,6 +49,7 @@ Azure Database for PostgreSQL 支持以下数据库版本。
 | [PostgreSQL 10](https://www.postgresql.org/about/news/postgresql-10-released-1786/) | [功能](https://wiki.postgresql.org/wiki/New_in_postgres_10) | 2018 年 6 月 4 日  | 2022 年 11 月 10 日
 | [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/) | [功能](https://www.postgresql.org/docs/11/release-11.html) | 2019 年 7 月 24 日  | 2023 年 11 月 9 日
 | [PostgreSQL 12](https://www.postgresql.org/about/news/postgresql-12-released-1976/) | [功能](https://www.postgresql.org/docs/12/release-12.html) | 2020 年 9 月 22 日  | 2024 年 11 月 14 日
+| [PostgreSQL 13](https://www.postgresql.org/about/news/postgresql-13-released-2077/) | [功能](https://www.postgresql.org/docs/13/release-13.html) | 2021 年 5 月 25 日   | 2025 年 11 月 13 日
 
 ## <a name="retired-postgresql-engine-versions-not-supported-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 不支持已停用的 PostgreSQL 引擎版本
 

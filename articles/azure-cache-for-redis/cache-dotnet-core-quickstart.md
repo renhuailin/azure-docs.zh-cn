@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 198580ad41b62cf044ade7b525728c38aabd0f9e
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8b2909d608578cf2ceff926bba5f3aa1b569b025
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720983"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136618"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-core"></a>快速入门：在 .NET Core 中使用 Azure Cache for Redis
 
@@ -360,7 +360,7 @@ static void Main(string[] args)
 
 保存 Program.cs。
 
-Azure Redis 缓存具有可配置的数据库数量（默认为 16 个），因此可以通过逻辑方式隔离 Azure Redis 缓存中的数据。 该代码连接到默认数据库 DB 0。 有关详细信息，请参阅[什么是 Redis 数据库？](cache-development-faq.md#what-are-redis-databases)和[默认 Redis 服务器配置](cache-configure.md#default-redis-server-configuration)。
+Azure Redis 缓存具有可配置的数据库数量（默认为 16 个），因此可以通过逻辑方式隔离 Azure Redis 缓存中的数据。 该代码连接到默认数据库 DB 0。 有关详细信息，请参阅[什么是 Redis 数据库？](cache-development-faq.yml#what-are-redis-databases-)和[默认 Redis 服务器配置](cache-configure.md#default-redis-server-configuration)。
 
 可以使用 `StringSet` 和 `StringGet` 方法来存储和检索缓存项。
 
@@ -457,16 +457,16 @@ dotnet run
 如果已完成快速入门示例应用程序，可以删除本快速入门中创建的 Azure 资源，以免产生费用。 
 
 > [!IMPORTANT]
-> 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
+> 删除资源组的操作不可逆，资源组以及其中的所有资源将被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可在左侧逐个删除这些资源，而不是删除资源组。
 >
 
-登录到 [Azure 门户](https://portal.azure.com)，并单击“资源组”。
+登录到 [Azure 门户](https://portal.azure.com)，然后选择“资源组”。 
 
-在“按名称筛选...”文本框中键入资源组的名称。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，单击“...”，然后单击“删除资源组” 。
+在“按名称筛选...”文本框中键入资源组的名称。 本文的说明使用了名为 *TestResources* 的资源组。 在结果列表中的资源组上，选择“...”，然后选择“删除资源组”   。
 
 ![删除](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
 
-系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后单击“删除”。
+系统会要求确认是否删除资源组。 键入资源组的名称进行确认，然后选择“删除”。
 
 片刻之后，将会删除该资源组及其包含的所有资源。
 

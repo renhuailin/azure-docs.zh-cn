@@ -1,30 +1,30 @@
 ---
 title: 使用 Azure Active Directory 凭据登录到 Linux VM
 description: 了解如何创建并配置 Linux VM，以使用 Azure Active Directory 身份验证进行登录。
-author: SanDeo-MSFT
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 11/17/2020
-ms.author: sandeo
-ms.openlocfilehash: 654d47102685c04d6440d7c155e4d6eb931abcae
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/11/2021
+ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
+ms.reviewer: sandeo
+ms.custom: references_regions
+ms.openlocfilehash: 109e6f9a1cbc39e1382d73acacfb163940e72a0f
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788108"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111962452"
 ---
-# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
+# <a name="deprecated-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-device-code-flow-authentication"></a>已弃用：使用 Azure Active Directory 设备代码流身份验证登录到 Azure 中的 Linux 虚拟机
+
+> [!CAUTION]
+> 本文中所述的公共预览版功能将于 2021 年 8 月 15 日弃用。
+> 
+> 此功能将被替换为通过基于证书的身份验证使用 Azure AD 和 SSH 的能力。 有关详细信息，请参阅[预览版：使用基于 SSH 证书的身份验证在 Azure 中使用 Azure Active Directory 登录到 Azure 中的 Linux 虚拟机](../../active-directory/devices/howto-vm-sign-in-azure-ad-linux.md)。 若要从旧版本迁移到此版本，请参阅[从以前的预览版迁移](../../active-directory/devices/howto-vm-sign-in-azure-ad-linux.md#migration-from-previous-preview)
 
 若要改进 Azure 中 Linux 虚拟机 (VM) 的安全性，可以与 Azure Active Directory (AD) 身份验证集成。 将 Azure AD 身份验证用于 Linux VM 时，可以通过集中控制和强制实施策略来允许或拒绝对 VM 的访问。 本文介绍如何创建和配置 Linux VM，以便使用 Azure AD 身份验证。
-
-
-> [!IMPORTANT]
-> Azure Active Directory 身份验证目前为公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-> 请在测试后就丢弃的测试性虚拟机上使用此功能。
->
-
 
 在 Azure 中使用 Azure AD 身份验证登录到 Linux VM 有许多好处，其中包括：
 
@@ -50,16 +50,10 @@ ms.locfileid: "107788108"
 | SUSE Linux Enterprise Server | SLES 12 |
 | Ubuntu Server | Ubuntu 14.04 LTS、Ubuntu Server 16.04 和 Ubuntu Server 18.04 |
 
-
-下面是目前（此功能的预览期间）受支持的 Azure 区域：
-
-- 所有全局 Azure 区域
-
->[!IMPORTANT]
-> 若要使用此预览版功能，请只部署受支持的 Linux 发行版，并且只在受支持的 Azure 区域部署。 此功能在 Azure 政府版或主权云中不受支持。
+> [!IMPORTANT]
+> 此预览在 Azure 政府版或主权云中不受支持。
 >
 > 不支持在 Azure Kubernetes 服务 (AKS) 群集上使用此扩展。 有关详细信息，请参阅 [AKS 的支持策略](../../aks/support-policies.md)。
-
 
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -182,7 +176,6 @@ ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```bash
 %aad_admins ALL=(ALL) NOPASSWD:ALL
 ```
-
 
 ## <a name="troubleshoot-sign-in-issues"></a>排查登录问题
 

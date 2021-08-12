@@ -1,24 +1,27 @@
 ---
 title: 在 Azure Cosmos DB 中管理区域之间的冲突
 description: 了解如何在 Azure Cosmos DB 中通过创建“以最后写入者为准”或自定义冲突解决策略来管理冲突
-author: anfeldma-ms
+author: fsautomata
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
-ms.author: anfeldma
+ms.author: elioda
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8f98c2201159350f5774f4d2b05102384f31f3af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd4743657e6ac45b37d1e5eb7b2687ab6fc52270
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93339336"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591631"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的冲突解决策略
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 对于多区域写入，当多个客户端写入同一项时，可能会发生冲突。 发生冲突时，可以通过使用不同的冲突解决策略来解决冲突。 本文介绍如何管理冲突解决策略。
+
+> [!TIP]
+> 冲突解决策略只能在容器创建时指定，并且不得在容器创建后修改。
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>创建“以最后写入者为准”冲突解决策略
 

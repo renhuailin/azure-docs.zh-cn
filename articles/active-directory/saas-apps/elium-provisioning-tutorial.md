@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Elium 配置自动用户预配 | Microsoft Docs
 description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Elium 和取消其预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/19/2019
-ms.author: Zhchia
-ms.openlocfilehash: e8f027ccc577df79e561fca7194c20b6cc7ef2c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 6c97bd16978295b34e671a0af2598869f0218993
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96005497"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767970"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>教程：为 Elium 配置自动用户预配
 

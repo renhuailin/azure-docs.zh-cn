@@ -13,13 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 865ee3a5aeb8a2dd06d8759ba04d02259d2b4bee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.custom: seo-lt-2019, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 060d09d17bf622af5ca5c062e00d2961a0a2b566
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97359959"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111572460"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>使用 PowerShell 或 Az CLI 在 Azure VM 上为 SQL Server 配置可用性组 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,6 +29,9 @@ ms.locfileid: "97359959"
 始终通过 SQL Server Management Studio (SSMS) 或 Transact-SQL (T-SQL) 手动完成可用性组的部署。 
 
 尽管本文使用 PowerShell 和 Az CLI 来配置可用性组环境，但也可使用 [Azure 快速启动模板](availability-group-quickstart-template-configure.md)或以[手动](availability-group-manually-configure-tutorial.md)方式从 [Azure 门户](availability-group-azure-portal-configure.md)进行配置。 
+
+> [!NOTE]
+> 现在，可以使用 Azure Migrate 将可用性组解决方案直接迁移到 Azure VM 上的 SQL Server。 有关详细信息，请参阅[迁移可用性组](../../migration-guides/virtual-machines/sql-server-availability-group-to-sql-on-azure-vm.md)。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -85,7 +88,7 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
 
 ## <a name="define-cluster-metadata"></a>定义群集元数据
 
-Azure CLI [az sql vm group](/cli/azure/sql/vm/group) 命令组管理托管可用性组的 Windows Server 故障转移群集 (WSFC) 服务的元数据。 群集元数据包括 Active Directory 域、群集帐户、要用作云见证的存储帐户和 SQL Server 版本。 使用 [az sql vm group create](/cli/azure/sql/vm/group#az-sql-vm-group-create) 定义 WSFC 的元数据，以便在添加第一个 SQL Server VM 时，按定义创建群集。 
+Azure CLI [az sql vm group](/cli/azure/sql/vm/group) 命令组管理托管可用性组的 Windows Server 故障转移群集 (WSFC) 服务的元数据。 群集元数据包括 Active Directory 域、群集帐户、要用作云见证的存储帐户和 SQL Server 版本。 使用 [az sql vm group create](/cli/azure/sql/vm/group#az_sql_vm_group_create) 定义 WSFC 的元数据，以便在添加第一个 SQL Server VM 时，按定义创建群集。 
 
 下面的代码片段定义群集的元数据：
 
@@ -130,7 +133,7 @@ $group = New-AzSqlVMGroup -Name <name> -Location <regio>
 
 ## <a name="add-vms-to-the-cluster"></a>向群集添加 VM
 
-将第一个 SQL Server VM 添加到群集将创建群集。 [az sql vm add-to-group](/cli/azure/sql/vm#az-sql-vm-add-to-group) 命令使用先前指定的名称创建群集，在 SQL Server VM 上安装群集角色，然后将其添加到群集中。 继续使用 `az sql vm add-to-group` 命令将更多 SQL Server VM 添加到新创建的群集中。 
+将第一个 SQL Server VM 添加到群集将创建群集。 [az sql vm add-to-group](/cli/azure/sql/vm#az_sql-vm_add_to_group) 命令使用先前指定的名称创建群集，在 SQL Server VM 上安装群集角色，然后将其添加到群集中。 继续使用 `az sql vm add-to-group` 命令将更多 SQL Server VM 添加到新创建的群集中。 
 
 以下代码片段会创建群集，并将第一个 SQL Server VM 添加到其中： 
 
@@ -186,6 +189,12 @@ Update-AzSqlVM -ResourceId $sqlvm2.ResourceId -SqlVM $sqlvmconfig2
 ```
 
 ---
+
+## <a name="configure-quorum"></a>配置仲裁
+
+虽然磁盘见证是最具复原能力的仲裁选项，但它需要 Azure 共享磁盘，这对可用性组施加了一些限制。 因此，对于在 Azure VM 上的 SQL Server 中托管可用性组的群集，推荐使用云见证作为仲裁解决方案。 
+
+如果群集中的投票数为偶数，请配置最适合业务需求的[仲裁解决方案](hadr-cluster-quorum-configure-how-to.md)。 有关详细信息，请参阅 [SQL Server VM 上的仲裁](hadr-windows-server-failover-cluster-overview.md#quorum)。 
 
 
 ## <a name="validate-cluster"></a>验证群集 
@@ -245,7 +254,7 @@ New-AzLoadBalancer -name sqlILB -ResourceGroupName <resource group name> `
 
 ## <a name="create-listener"></a>创建侦听器
 
-手动创建可用性组后，可以使用 [az sql vm ag-listener](/cli/azure/sql/vm/group/ag-listener#az-sql-vm-group-ag-listener-create) 命令创建侦听器。 
+手动创建可用性组后，可以使用 [az sql vm ag-listener](/cli/azure/sql/vm/group/ag-listener#az_sql_vm_group_ag_listener_create) 命令创建侦听器。 
 
 子网资源 ID 是 `/subnets/<subnetname>` 附加到虚拟网络资源的资源 ID 的值。 标识子网资源 ID：
    1. 转到 [Azure 门户](https://portal.azure.com)中的资源组。 
@@ -299,7 +308,7 @@ New-AzAvailabilityGroupListener -Name <listener name> -ResourceGroupName <resour
 ---
 
 ## <a name="modify-number-of-replicas"></a>修改副本数 
-将可用性组部署到 Azure 中托管的 SQL Server VM，这会增加复杂性。 现在可使用资源提供程序和虚拟机组管理资源。 因此，将副本添加到可用性组或从中删除副本时，还有一个附加步骤，即使用有关 SQL Server VM 的信息来更新侦听器元数据。 修改可用性组中的副本数时，还必须使用 [az sql vm group ag-listener update](/cli/azure/sql/vm/group/ag-listener#az-sql-vm-group-ag-listener-update) 命令，以使用 SQL Server VM 的元数据更新侦听器。 
+将可用性组部署到 Azure 中托管的 SQL Server VM，这会增加复杂性。 现在可使用资源提供程序和虚拟机组管理资源。 因此，将副本添加到可用性组或从中删除副本时，还有一个附加步骤，即使用有关 SQL Server VM 的信息来更新侦听器元数据。 修改可用性组中的副本数时，还必须使用 [az sql vm group ag-listener update](/cli/azure/sql/vm/group/ag-listener#az_sql_vm_group_ag_listener_update) 命令，以使用 SQL Server VM 的元数据更新侦听器。 
 
 
 ### <a name="add-a-replica"></a>添加副本
@@ -511,15 +520,11 @@ Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster n
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅以下文章： 
+部署可用性组后，请考虑优化 [Azure VM 上 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)。 
 
-* [SQL Server VM 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [SQL Server VM 的常见问题解答](frequently-asked-questions-faq.md)
-* [SQL Server VM 的发行说明](../../database/doc-changes-updates-release-notes.md)
-* [切换 SQL Server VM 的许可模型](licensing-model-azure-hybrid-benefit-ahb-change.md)
-* [AlwaysOn 可用性组概述 (SQL Server)](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)   
-* [为 AlwaysOn 可用性组配置服务器实例 (SQL Server)](/sql/database-engine/availability-groups/windows/configuration-of-a-server-instance-for-always-on-availability-groups-sql-server)   
-* [管理可用性组 (SQL Server)](/sql/database-engine/availability-groups/windows/administration-of-an-availability-group-sql-server)   
-* [监视可用性组 (SQL Server)](/sql/database-engine/availability-groups/windows/monitoring-of-availability-groups-sql-server)
-* [AlwaysOn 可用性组的 Transact-SQL 语句概述 (SQL Server)](/sql/database-engine/availability-groups/windows/transact-sql-statements-for-always-on-availability-groups)   
-* [AlwaysOn 可用性组的 PowerShell cmdlet 概述 (SQL Server)](/sql/database-engine/availability-groups/windows/overview-of-powershell-cmdlets-for-always-on-availability-groups-sql-server)
+
+若要了解更多信息，请参阅以下文章：
+
+- [Windows Server 故障转移群集与 Azure VM 上的 SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [Always On 可用性组与 Azure VM 上的 SQL Server](availability-group-overview.md)
+- [Always On 可用性组概述](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)

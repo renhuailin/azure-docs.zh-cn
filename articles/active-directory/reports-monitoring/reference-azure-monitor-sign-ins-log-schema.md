@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/12/2021
+ms.date: 05/21/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bad8ae86827144269e816a6c2e01d6af3f4d88ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa9bc861ffdc2c8671f062bb41499c8ffee1123d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225412"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111965617"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>解释 Azure Monitor 中的 Azure AD 登录日志架构
 
@@ -151,8 +151,8 @@ ms.locfileid: "103225412"
 | OperationVersion | - | 客户端请求的 REST API 版本。 |
 | Category | - | 对于登录，此值始终为“登录”。 | 
 | TenantId | - | 与日志关联的租户 GUID。 |
-| ResultType | - | 登录操作的结果，可以是“成功”或“失败” 。 | 
-| ResultSignature | - | 包含登录操作的错误代码（如果有）。 |
+| ResultType | - | 如果登录操作成功，则显示 `0`，如果登录操作失败则显示错误代码。 | 
+| ResultSignature | - | 此值始终为 None。 |
 | ResultDescription | 空值或空白 | 提供登录操作的错误说明。 |
 | riskDetail | riskDetail | 提供特定风险用户、风险登录或风险检测状态背后的“原因”。 可能的值有：`none`、`adminGeneratedTemporaryPassword`、`userPerformedSecuredPasswordChange`、`userPerformedSecuredPasswordReset`、`adminConfirmedSigninSafe`、`aiConfirmedSigninSafe`、`userPassedMFADrivenByRiskBasedPolicy`、`adminDismissedAllRiskForUser`、`adminConfirmedSigninCompromised`、`unknownFutureValue`。 值 `none` 表示到目前为止尚未对用户或登录执行任何操作。 <br>**注意：** 此属性的详细信息需要 Azure AD Premium P2 许可证。 其他许可证返回值 `hidden`。 |
 | riskEventTypes | riskEventTypes | 与登录相关的风险检测类型。 可能的值有：`unlikelyTravel`、`anonymizedIPAddress`、`maliciousIPAddress`、`unfamiliarFeatures`、`malwareInfectedIPAddress`、`suspiciousIPAddress`、`leakedCredentials`、`investigationsThreatIntelligence`、`generic` 和 `unknownFutureValue`。 |
@@ -171,5 +171,5 @@ ms.locfileid: "103225412"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [解释 Azure Monitor 中的审核日志架构](reference-azure-monitor-audit-log-schema.md)
+* [解释 Azure Monitor 中的审核日志架构](./overview-reports.md)
 * [详细了解 Azure 平台日志](../../azure-monitor/essentials/platform-logs-overview.md)

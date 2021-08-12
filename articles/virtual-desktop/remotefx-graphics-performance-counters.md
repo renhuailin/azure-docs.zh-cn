@@ -1,17 +1,17 @@
 ---
 title: 诊断远程桌面图形性能问题 - Azure
-description: 本文介绍如何在远程桌面协议会话中使用 RemoteFX 图形计数器诊断 Windows 虚拟桌面中的图形性能问题。
+description: 本文介绍如何在远程桌面协议会话中使用 RemoteFX 图形计数器诊断 Azure 虚拟桌面中的图形性能问题。
 author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: fc1bb9d6dbdb024fba6544c25951ba94384132b0
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 86d5aa82aaf51d0d2407799050f92a04a12c4a58
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445724"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111752920"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>诊断远程桌面图形性能问题
 
@@ -100,6 +100,6 @@ ms.locfileid: "106445724"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要创建已优化 GPU 的 Azure 虚拟机，请参阅[为 Windows 虚拟桌面环境配置图形处理单元 (GPU) 加速](configure-vm-gpu.md)。
+- 若要创建已优化 GPU 的 Azure 虚拟机，请参阅[为 Azure 虚拟桌面环境配置图形处理单元 (GPU) 加速](configure-vm-gpu.md)。
 - 如需简要了解如何排查和跟踪升级，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
 - 若要详细了解服务，请参阅 [Windows 虚拟桌面环境](environment-setup.md)。

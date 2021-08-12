@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 OpenText Directory Services �
 description: 了解如何将用户帐户从 Azure AD 自动预配到 OpenText Directory Services 及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: ad55ba5f-c56c-4ed0-bdfd-163d2883ed80
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
-ms.author: Zhchia
-ms.openlocfilehash: 2f31eddab1070d073d3fd5a4761dad597e42a2e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: f82c46c6853f33e2137cd54c03b2bfa1df9dca8a
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181877"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760253"
 ---
 # <a name="tutorial-configure-opentext-directory-services-for-automatic-user-provisioning"></a>教程：为 OpenText Directory Services 配置自动用户预配
 

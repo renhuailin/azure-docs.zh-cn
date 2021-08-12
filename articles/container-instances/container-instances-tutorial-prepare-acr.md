@@ -4,12 +4,12 @@ description: Azure 容器实例教程第 2 部分（共 3 部分）- 准备 Azur
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 36c2e6cda728a85ccab080bbbb6f1a0b74824f2d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 513db28ebe4ed87429fffe2faa75c2859b988efe
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786974"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220878"
 ---
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>教程：创建 Azure 容器注册表并推送容器映像
 
@@ -132,7 +132,6 @@ az acr repository show-tags --name <acrName> --repository aci-tutorial-app --out
 应该会看到与下面类似的输出：
 
 ```console
-az acr repository show-tags --name mycontainerregistry082 --repository aci-tutorial-app --output table
 Result
 --------
 v1

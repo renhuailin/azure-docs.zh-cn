@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB Gremlin 支持并兼容 TinkerPop 功能
 description: 了解 Apache TinkerPop 的 Gremlin 语言。 了解 Azure Cosmos DB 中可用的功能和步骤，以及 TinkerPop Graph 引擎兼容性差异。
-author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 11/11/2020
-ms.author: sngun
-ms.openlocfilehash: 036338e90a3e7b466924d419400c0dcc692dec5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/06/2021
+author: manishmsfte
+ms.author: mansha
+ms.openlocfilehash: a2e868fa6054681f37d699bdc469db9ded0b8ee9
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97630745"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113356358"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Azure Cosmos DB Gremlin 图形支持并兼容 TinkerPop 功能
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -102,6 +102,12 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
 | `_partition` | 顶点的分区键。 用于[图形分区](graph-partitioning.md)。 |
 | `outE` | 此属性包含顶点中外部边缘的列表。 存储顶点的相邻信息，以便快速执行遍历。 边缘根据其标签分组。 |
 
+每个属性可在一个数组中存储多个值。
+
+| properties | 说明 |
+| --- | --- |
+| `value` | 属性的值 |
+
 边缘包含以下信息，以方便导航到图形的其他部件。
 
 | properties | 说明 |
@@ -109,13 +115,7 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
 | `id` | 边缘的 ID。 必须唯一（在适用的情况下，可与 `_partition` 的值合并） |
 | `label` | 边缘的标签。 此属性是可选的，用于描述关系类型。 |
 | `inV` | 此属性包含边缘的一系列顶点。 存储顶点的相邻信息可以快速执行遍历。 顶点根据其标签分组。 |
-| `properties` | 与边缘关联的用户定义属性包。 每个属性可以有多个值。 |
-
-每个属性可在一个数组中存储多个值。 
-
-| properties | 说明 |
-| --- | --- |
-| `value` | 属性的值
+| `properties` | 与边缘关联的用户定义属性包。 |
 
 ## <a name="gremlin-steps"></a>Gremlin 的步骤
 

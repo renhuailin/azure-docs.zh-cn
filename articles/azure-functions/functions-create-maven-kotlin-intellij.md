@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: f02643ee28d76d4f90206a1aa2879b4672da2a38
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f2ec995334069dc707c8eb09fae3601f58c6c549
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179436"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287251"
 ---
 # <a name="create-your-first-kotlin-function-in-azure-using-intellij"></a>在 Azure 中使用 IntelliJ 创建第一个 Kotlin 函数
 
@@ -23,7 +23,7 @@ ms.locfileid: "102179436"
 
 若要使用 IntelliJ 创建 Kotlin 函数并将其发布到 Azure，请安装以下软件：
 
-- [Java 开发人员工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK) 版本 8
+- [Java 开发人员工具包](/azure/developer/java/fundamentals/java-support-on-azure) (JDK) 版本 8
 - [Apache Maven](https://maven.apache.org) 3.0 或更高版本
 - 带有 Maven 的 [IntelliJ IDEA](https://www.jetbrains.com/idea/download) 社区版或旗舰版
 - [Azure CLI](/cli/azure)

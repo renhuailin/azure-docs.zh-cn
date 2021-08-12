@@ -1,19 +1,23 @@
 ---
-title: include 文件
-description: include 文件
+title: 包含文件
+description: 包含文件
 author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 04/28/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 984849cddceb2476bd9d0870da47a33770c4a36a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d4a571e1553e3a9e3dd9f5df63c8ecc16fa07abf
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776407"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114712982"
 ---
+[![浏览代码](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp)
+
+本快速入门介绍一种基本的 Azure IoT 应用程序开发工作流。 首先，创建适用于托管设备的 Azure IoT Central 应用程序。 然后，使用 Azure IoT 设备 SDK 示例来运行模拟的温度控制器，将此控制器安全连接到 IoT Central，并发送遥测数据。
+
 ## <a name="prerequisites"></a>先决条件
 - [Python](https://www.python.org/downloads/) 版本 3.7 或更高版本。 若要检查 Python 版本，请运行 `python --version`。
 - [Git](https://git-scm.com/downloads)。

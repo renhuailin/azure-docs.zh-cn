@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: trbye
-ms.openlocfilehash: 4848f698490f6a79f9f1664b0011e5aec465ed81
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f4f5d64dc68644fa29d687992017180050ed4c07
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110165482"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113279942"
 ---
 语音服务的核心功能之一是能够识别并转录人类语音（通常称为语音转文本）。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音转文本转换。
 
@@ -31,13 +31,13 @@ ms.locfileid: "110165482"
 
 ## <a name="create-a-speech-configuration"></a>创建语音配置
 
-若要使用语音 SDK 调用语音服务，需要创建 [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig)。 此类包含有关你的订阅的信息，例如你的密钥和关联的区域、终结点、主机或授权令牌。 通过使用密钥和区域创建 [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig)。 请参阅[查找密钥和区域](../../../overview.md#find-keys-and-region)页面，查找密钥区域对。
+若要使用语音 SDK 调用语音服务，需要创建 [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig)。 此类包含有关订阅的信息，例如密钥和关联的位置/区域、终结点、主机或授权令牌。 通过使用密钥和区域创建 [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig)。 请参阅[查找密钥和位置/区域](../../../overview.md#find-keys-and-locationregion)页面，查找密钥位置/区域对。
 
 ```cpp
 using namespace std;
 using namespace Microsoft::CognitiveServices::Speech;
 
-auto config = SpeechConfig::FromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+auto config = SpeechConfig::FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
 ```
 
 可以通过以下其他几种方法初始化 [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig)：
@@ -115,7 +115,7 @@ switch (result->Reason)
             if (cancellation->Reason == CancellationReason::Error) {
                 cout << "CANCELED: ErrorCode= " << (int)cancellation->ErrorCode << std::endl;
                 cout << "CANCELED: ErrorDetails=" << cancellation->ErrorDetails << std::endl;
-                cout << "CANCELED: Did you update the subscription info?" << std::endl;
+                cout << "CANCELED: Did you update the speech key and location/region info?" << std::endl;
             }
         }
         break;
@@ -174,7 +174,7 @@ recognizer->Canceled.Connect([&recognitionEnd](const SpeechRecognitionCanceledEv
         {
             cout << "CANCELED: ErrorCode=" << (int)e.ErrorCode << "\n"
                  << "CANCELED: ErrorDetails=" << e.ErrorDetails << "\n"
-                 << "CANCELED: Did you update the subscription info?" << std::endl;
+                 << "CANCELED: Did you update the speech key and location/region info?" << std::endl;
 
             recognitionEnd.set_value(); // Notify to stop recognition.
         }
@@ -231,7 +231,7 @@ config->SetSpeechRecognitionLanguage("de-DE");
 > [!IMPORTANT]
 > “短语列表”功能适用于以下语言：en-US、de-DE、en-AU、en-CA、en-GB、en-IN、es-ES、fr-FR、it-IT、ja-JP、pt-BR、zh-CN
 >
-> 对于其他区域设置，如果有大量短语，那么提高准确性的一个更好的做法是[训练自定义模型](../../../custom-speech-overview.md)。
+> 应在短语数量只有几百的情况下使用短语列表功能。 如果列表较大或语言当前不受支持，则[训练自定义模型](../../../custom-speech-overview.md)可能是提高准确性的更好选择。
 >
 > 不要对自定义终结点使用“短语列表”功能。 而是训练包含短语的自定义模型。
 

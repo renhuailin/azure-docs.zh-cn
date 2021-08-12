@@ -1,97 +1,59 @@
 ---
 title: 什么是 Azure Active Directory 中的设备标识？
-description: 了解设备标识管理如何帮助你管理正在访问环境中的资源的设备。
+description: 设备标识及其用例
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: overview
-ms.date: 07/20/2020
+ms.date: 06/09/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: sandeo
+ms.reviewer: sandeo, ravenn, spunukol, jogro, jploegert
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8399f7101697af429b8c073c101dbfea203e98ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ccb47e7600b50223ea0247c678a73ced4c86be3
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87025585"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302962"
 ---
 # <a name="what-is-a-device-identity"></a>什么是设备标识？
 
-随着各种形状和大小的设备不断问世以及自带设备 (BYOD) 概念的出现，IT 专业人员面临着两个有所对立的目标：
-
-- 使用户能够随时随地保持高效的工作
-- 保护组织的资产
-
-若要保护这些资产，IT 人员首先需要管理设备标识。 IT 工作人员可以使用 Microsoft Intune 等工具基于设备标识生成解决方案，以确保符合安全与合规标准。 Azure Active Directory (Azure AD) 允许从任何位置通过这些设备以单一登录方式登录到设备、应用和服务。
-
-- 用户可以访问你的组织中他们所需的资产。 
-- IT 工作人员可以使用所需的控制措施来保护组织的安全。
-
-设备标识管理是[基于设备的条件访问](../conditional-access/require-managed-devices.md)的基础。 通过基于设备的条件访问策略，可确保只有受管理设备才能访问环境中的资源。
-
-## <a name="getting-devices-in-azure-ad"></a>在 Azure AD 中获取设备
-
-若要获取 Azure AD 中的设备，可以使用多个选项：
-
-- **已注册到 Azure AD**
-   - 已注册 Azure AD 的设备通常是个人拥有设备或移动设备，并已登录到个人 Microsoft 帐户或其他本地帐户。
-      - Windows 10
-      - iOS
-      - Android
-      - MacOS
-- **已加入 Azure AD**
-   - 已加入 Azure AD 的设备由组织拥有，并已登录到属于该组织的 Azure AD 帐户。 这些设备位于云中。
-      - Windows 10 
-      - [在 Azure 中运行的 Windows Server 2019 虚拟机](howto-vm-sign-in-azure-ad-windows.md)（不支持服务器核心）
-- **已加入混合 Azure AD**
-   - 已加入混合 Azure AD 的设备由组织拥有，并已登录到属于该组织的 Active Directory 域服务帐户。 这些设备位于云中和本地。
-      - Windows 7、8.1 或 10
-      - Windows Server 2008 或更高版本
+[设备标识](/graph/api/resources/device?view=graph-rest-1.0)是 Azure Active Directory (Azure AD) 中的一个对象。 此设备对象类似于用户、组或应用程序。 设备标识为管理员提供信息，供其在做出访问或配置决策时使用。
 
 ![“Azure AD 设备”边栏选项卡中显示的设备](./media/overview/azure-active-directory-devices-all-devices.png)
 
-> [!NOTE]
-> 混合状态不仅指设备的状态。 要使混合状态有效，还需要有效的 Azure AD 用户。
+有三种方法可以获取设备标识：
 
-## <a name="device-management"></a>设备管理
+- Azure AD 注册
+- Azure AD 加入
+- 混合 Azure AD 加入
 
-可以使用 Microsoft Intune、Microsoft Endpoint Configuration Manager、组策略（混合 Azure AD 联接）、移动应用管理 (MAM) 工具等移动设备管理 (MDM) 工具或其他第三方工具来管理 Azure AD 中的设备。
+设备标识是[基于设备的条件访问策略](../conditional-access/require-managed-devices.md)和[具有 Microsoft Endpoint Manager 的移动设备管理](/mem/endpoint-manager-overview)等方案的先决条件。
+
+## <a name="modern-device-scenario"></a>新式设备方案
+
+新式设备方案侧重于以下两种方法： 
+
+- [Azure AD 注册](concept-azure-ad-register.md) 
+   - 自带设备办公 (BYOD)
+   - 移动设备（手机和平板电脑）
+- [Azure AD 加入](concept-azure-ad-register.md)
+   - 组织拥有的 Windows 10 设备
+   - [组织中作为 Azure 中的 VM 运行的 Windows Server 2019 及更高版本的服务器](howto-vm-sign-in-azure-ad-windows.md)
+
+[混合 Azure AD 联接](concept-azure-ad-join-hybrid.md)被视为实现 Azure AD 联接的过渡步骤。 混合 Azure AD 联接为组织提供对下层 Windows 版本（Windows 7 和 Server 2008）的支持。 这三种方案可以在单个组织中共存。
 
 ## <a name="resource-access"></a>资源访问
 
-将设备注册并加入到 Azure AD，可以让用户能够无缝登录 (SSO) 到云资源。 此过程还使管理员可以基于用于访问资源的设备将条件访问策略应用于资源。 
+将设备注册并联接到 Azure AD，可以让用户无缝登录 (SSO) 到基于云的资源。
 
-> [!NOTE]
-> 基于设备的条件访问策略需要已加入混合 Azure AD 的设备或已加入 Azure AD 或已注册到 Azure AD 的合规设备。
-
-主刷新令牌 (PRT) 包含有关设备的信息，是 SSO 所必需的。 如果在没有 PRT 的应用程序上设置了基于设备的条件访问策略，则访问将被拒绝。 混合条件访问策略需要一个混合状态设备和已登录的有效用户。
-
-已加入 Azure AD 或加入混合 Azure AD 的设备可受益于组织本地资源以及云资源的 SSO。 在[本地资源的 SSO 在已加入 Azure AD 的设备上的工作原理](azuread-join-sso.md)一文中可以找到详细信息。
-
-## <a name="device-security"></a>设备安全性
-
-- **已注册到 Azure AD 的设备** 利用最终用户管理的帐户，此帐户是使用以下一项或多项措施保护的 Microsoft 帐户或其他本地管理的凭据。
-   - 密码
-   - PIN
-   - 模式
-   - Windows Hello
-- **已加入 Azure AD 或混合 Azure AD 的设备** 利用 Azure AD 中受以下一项或多项措施保护的组织帐户。
-   - 密码
-   - Windows Hello for Business
+已建立 Azure AD 联接的设备受益于[对组织的本地资源的 SSO](azuread-join-sso.md)。
 
 ## <a name="provisioning"></a>设置
 
-可通过自助方式或者由管理员执行的受控预配流程，将设备加入 Azure AD。
-
-## <a name="summary"></a>总结
-
-使用 Azure AD 中的设备标识管理能够：
-
-- 简化在 Azure AD 中引入和管理设备的过程
-- 方便用户访问组织中基于云的资源
+可通过自助方式或者或由管理员管理的受控过程，将设备加入 Azure AD。
 
 ## <a name="license-requirements"></a>许可要求
 

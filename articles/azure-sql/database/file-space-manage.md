@@ -3,20 +3,20 @@ title: Azure SQL 数据库文件空间管理
 description: 本页介绍了如何管理 Azure SQL 数据库中的单一数据库和共用数据库的文件空间，并提供了代码示例来演示如何确定是否需要收缩单一数据库或共用数据库，以及如何执行数据库收缩操作。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
-ms.custom: sqldbrb=1
+ms.subservice: deployment-configuration
+ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, sstein
-ms.date: 12/22/2020
-ms.openlocfilehash: 7bb754b892715adffc6ead99f3d866f9f9d8af9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/28/2021
+ms.openlocfilehash: fb5ee8b096f64faa47756642b4e94bae429fb879
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99096485"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111591253"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>管理 Azure SQL 数据库中的数据库的文件空间
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "99096485"
 
 ### <a name="monitoring-file-space-usage"></a>监视文件空间用量
 
-Azure 门户和以下 API 中显示的大多数存储空间指标仅度量已用数据页面的大小：
+以下 API 中显示的大多数存储空间指标仅度量已用数据页面的大小：
 
 - 基于 Azure 资源管理器的指标 API，包括 PowerShell [get-metrics](/powershell/module/az.monitor/get-azmetric)
 - T-SQL：[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
@@ -52,8 +52,15 @@ Azure 门户和以下 API 中显示的大多数存储空间指标仅度量已用
 
 由于对数据库性能的潜在影响，Azure SQL 数据库不会自动收缩数据文件以回收已分配但未使用的空间。  但是，客户可遵循[回收未使用的分配空间](#reclaim-unused-allocated-space)中所述的步骤，在其选定的时间通过自助式操作收缩数据文件。
 
-> [!NOTE]
-> 与数据文件不同，Azure SQL 数据库会自动收缩日志文件，因为该操作不会影响数据库的性能。
+### <a name="shrinking-transaction-log-file"></a>收缩事务日志文件
+
+与数据文件不同的是，Azure SQL 数据库会自动收缩事务日志文件，避免过度使用空间而导致空间不足错误。 客户通常不需要收缩事务日志文件。
+
+在“高级”和“业务关键”服务层中，如果事务日志变得很大，则可能会显著影响本地存储消耗，直至达到[最大本地存储](resource-limits-logical-server.md#storage-space-governance)限制。 如果本地存储消耗接近于限制，客户可以选择使用 [DBCC SHRINKFILE](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql) 命令收缩事务日志，如以下示例所示。 此命令完成后，将立即释放本地存储，而无需等待定期自动收缩操作。
+
+```tsql
+DBCC SHRINKFILE (2);
+```
 
 ## <a name="understanding-types-of-storage-space-for-a-database"></a>了解数据库存储空间的类型
 
@@ -61,7 +68,7 @@ Azure 门户和以下 API 中显示的大多数存储空间指标仅度量已用
 
 |数据库数量|定义|注释|
 |---|---|---|
-|**已用数据空间**|用于存储数据库数据的空间量，以 8 KB 页面数为单位。|通常，已用空间会在执行插入操作时增大，在执行删除操作时减小。 在某些情况下，已用空间不会在执行插入或删除操作时发生变化，具体取决于该操作涉及的数据数量和模式，以及是否有任何碎片。 例如，从每个数据页中删除一行不一定会减小已用空间。|
+|**已用数据空间**|用于存储数据库数据的空间量。|通常，已用空间会在执行插入操作时增大，在执行删除操作时减小。 在某些情况下，已用空间不会在执行插入或删除操作时发生变化，具体取决于该操作涉及的数据数量和模式，以及是否有任何碎片。 例如，从每个数据页中删除一行不一定会减小已用空间。|
 |**已分配的数据空间**|可用于存储数据库数据的格式化文件空间量。|已分配的空间量会自动增长，但执行删除操作后永远不会减小。 此行为可确保将来的插入操作速度更快，因为不需要重新设置空间的格式。|
 |**已分配但未使用的数据空间**|已分配的数据空间量与已使用的数据空间量之间的差值。|此数量表示通过收缩数据库数据文件可回收的最大可用空间量。|
 |**数据最大大小**|可用于存储数据库数据的最大空间量。|已分配的数据空间量在增长后不能超过数据最大大小。|
@@ -223,21 +230,22 @@ Shrink 命令在运行时可能会影响数据库的性能，请尽量在使用�
 
 ### <a name="auto-shrink"></a>自动收缩
 
-或者，可以为数据库启用自动收缩。  自动收缩可降低文件管理的复杂性，并且与 `SHRINKDATABASE` 或 `SHRINKFILE` 相比，对数据库性能的影响更小。  在管理包含多个数据库的弹性池时，自动收缩可能特别有用。  但是，与 `SHRINKDATABASE` 和 `SHRINKFILE` 相比，自动收缩在回收文件空间方面的效率更低。
-默认情况下，建议为大多数数据库禁用“自动收缩”。 有关详细信息，请参阅 [AUTO_SHRINK 注意事项](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink)。
+或者，可以为数据库启用自动收缩。  自动收缩可降低文件管理的复杂性，并且与 `SHRINKDATABASE` 或 `SHRINKFILE` 相比，对数据库性能的影响更小。 如果在管理弹性池时，有许多数据库使用的空间显著增减，则自动收缩尤其有用。 但是，与 `SHRINKDATABASE` 和 `SHRINKFILE` 相比，自动收缩在回收文件空间方面的效率更低。
 
-若要启用自动收缩，请修改以下命令中的数据库名称。
+默认情况下，自动收缩处于禁用状态，这是适用于大多数数据库的建议设置。 如果有必要启用自动收缩，建议在达到空间管理目标后禁用它，而不是将其永久启用。 有关详细信息，请参阅 [AUTO_SHRINK 注意事项](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink)。
+
+若要启用自动收缩，请在你的数据库中（而非在 master 数据库中）执行以下命令。
 
 ```sql
--- Enable auto-shrink for the database.
-ALTER DATABASE [db1] SET AUTO_SHRINK ON;
+-- Enable auto-shrink for the current database.
+ALTER DATABASE CURRENT SET AUTO_SHRINK ON;
 ```
 
 有关此命令的详细信息，请参阅 [DATABASE SET](/sql/t-sql/statements/alter-database-transact-sql-set-options) 选项。
 
 ### <a name="rebuild-indexes"></a>重建索引
 
-收缩数据库数据文件后，索引可能会碎片化，失去其性能优化效力。 如果性能降低，请考虑重建数据库索引。 有关碎片和重新生成索引的详细信息，请参阅[重新组织和重新生成索引](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)。
+收缩数据文件后，索引可能会碎片化，失去其性能优化效力。 如果性能降低，请考虑重建数据库索引。 有关碎片和索引维护详细信息，请参阅[优化索引维护以提高查询性能并减少资源消耗](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)。
 
 ## <a name="next-steps"></a>后续步骤
 

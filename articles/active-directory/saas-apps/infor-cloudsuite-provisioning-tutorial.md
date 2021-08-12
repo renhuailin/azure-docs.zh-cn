@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Infor CloudSuite 配置自动用户设置 | Microsoft Docs
 description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Infor CloudSuite 和取消其预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
-ms.author: Zhchia
-ms.openlocfilehash: cea5b360abc265601a366f73a92a5340713fccac
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.author: thwimmer
+ms.openlocfilehash: 1d52a53798c80d59ffaab86319afdc68eff345a9
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074288"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767098"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>教程：为 Infor CloudSuite 配置自动用户设置
 
@@ -122,7 +122,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 

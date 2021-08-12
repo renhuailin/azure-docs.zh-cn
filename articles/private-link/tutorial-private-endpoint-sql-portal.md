@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8bb227bdc4bbcdf986c2ed64e1f89e1dfa289b83
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a18c9e0dc8f7d6f78985b626fa36c84fe15876c
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554966"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "114292870"
 ---
 # <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-portal"></a>教程：使用 Azure 专用终结点连接到 Azure SQL 服务器 - Azure 门户
 
@@ -130,6 +130,8 @@ Azure 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure �
 5. 选择“查看 + 创建”。 
   
 6. 检查设置，然后选择“创建”。
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="create-an-azure-sql-server-and-private-endpoint"></a><a name ="create-a-private-endpoint"></a>创建 Azure SQL 服务器和专用终结点
 

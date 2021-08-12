@@ -1,15 +1,15 @@
 ---
 title: 容器映像存储
 description: 详述如何在 Azure 容器注册表中存储容器映像和其他项目，包括安全性、冗余和容量。
-ms.topic: article
-ms.date: 03/03/2021
+ms.topic: conceptual
+ms.date: 03/24/2021
 ms.custom: references_regions
-ms.openlocfilehash: ec4328b44d5493b8d765fa30c548adc3d747d446
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a9c8ec877ddb17603e82b763223278a2e5e36714
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183261"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047739"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure 容器注册表中的容器映像存储
 
@@ -21,11 +21,9 @@ ms.locfileid: "102183261"
 
 ## <a name="regional-storage"></a>区域存储
 
-Azure 容器注册表将数据存储在创建注册表的区域内，以帮助客户满足数据驻留和合规性要求。
+Azure 容器注册表将数据存储在创建注册表的区域内，以帮助客户满足数据驻留和合规性要求。 在除巴西南部和东南亚以外的所有区域中，Azure 还可将注册表数据存储在同一地理区域的配对区域中。 在巴西南部和东南亚地区，根据相应的数据驻留要求，注册表数据一律受限于该区域。
 
-为了帮助防范数据中心故障，某些区域提供了[区域冗余](zone-redundancy.md)，在特定区域的多个数据中心之间复制数据。
-
-如果客户希望将其数据存储在多个区域以在不同的地理位置获得更好的性能，或在发生区域性服务中断时希望具有复原能力，则应启用[异地复制](container-registry-geo-replication.md)。
+如果发生区域性服务中断，注册表数据可能会变得不可用，并且不会自动恢复。 如果客户希望将其注册表数据存储在多个区域，以便在不同的地理位置获得更好的性能，或在发生区域性服务中断时希望具有复原能力，则应启用[异地复制](container-registry-geo-replication.md)。
 
 ## <a name="geo-replication"></a>异地复制
 

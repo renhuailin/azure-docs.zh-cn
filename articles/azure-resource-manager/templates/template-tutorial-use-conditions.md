@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3bd4099610e61e7eb24b4464a0fd4ab80a010135
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 38567f89e550f5b97599f823e8963f603785c665
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110697723"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113650190"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>教程：在 ARM 模板中使用条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "110697723"
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文，需要做好以下准备：
 
@@ -55,7 +55,7 @@ ms.locfileid: "110697723"
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
-Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)。
+Azure 快速入门模板是 ARM 模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://azure.microsoft.com/resources/templates/vm-simple-windows/)。
 
 1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。 
 1. 在“文件名”中粘贴以下 URL：

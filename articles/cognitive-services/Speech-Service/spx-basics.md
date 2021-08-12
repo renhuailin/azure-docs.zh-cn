@@ -3,19 +3,19 @@ title: 语音 CLI 快速入门 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 开始使用 Azure 语音 CLI。 无需编写代码，即可与语音转文本、文本转语音和语音翻译等语音服务进行交互。
 services: cognitive-services
-author: trevorbye
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/28/2021
-ms.author: trbye
-ms.openlocfilehash: 4157deb7a9f7aa2bb48346619cae258a1927361c
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.author: nitinme
+ms.openlocfilehash: 8a58c1e9aab722496f5cdb481d2da52aca2ca74e
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854695"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114706708"
 ---
 # <a name="get-started-with-the-azure-speech-cli"></a>开始使用 Azure 语音 CLI
 

@@ -1,20 +1,22 @@
 ---
 title: 创建 Azure 自动化运行方式帐户
-description: 本文介绍如何使用 PowerShell 或从 Azure 门户创建运行方式帐户。
+description: 本文介绍如何使用 PowerShell 或 Azure 门户创建 Azure 自动化运行方式帐户。
 services: automation
 ms.subservice: process-automation
-ms.date: 01/06/2021
+ms.date: 05/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: ef6afff30da48b79b42e5fb4b3c72c3500f22dd1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7ed16e9bbd1071e4831e814e617d69dc4a638510
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172297"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110078249"
 ---
 # <a name="how-to-create-an-azure-automation-run-as-account"></a>如何创建 Azure 自动化运行方式帐户
 
 Azure 自动化中的运行方式帐户提供身份验证，以使用自动化 runbook 和其他自动化功能管理 Azure 资源管理器或 Azure 经典部署模型上的资源。 本文介绍如何从 Azure 门户或 Azure PowerShell 创建运行方式帐户或经典运行方式帐户。
+
+在 Azure 门户中创建运行方式帐户或经典运行方式帐户时，默认使用自签名证书。 如果要使用企业或第三方证书颁发机构颁发的证书 (CA)，可以使用[用于创建运行方式帐户的 PowerShell 脚本](#powershell-script-to-create-a-run-as-account)。
 
 ## <a name="create-account-in-azure-portal"></a>在 Azure 门户中创建帐户
 
@@ -45,6 +47,13 @@ Azure 自动化中的运行方式帐户提供身份验证，以使用自动化 r
 * 一个自动化帐户，将其作为 `AutomationAccountName` 和 `ApplicationDisplayName` 参数的值引用。
 * 与[配置运行方式帐户时所需的权限](automation-security-overview.md#permissions)中所列权限相当的权限。
 
+如果打算使用企业或第三方证书颁发机构 (CA) 的证书，则需满足自动化对证书提出的以下配置要求：
+
+   * 指定提供程序：Microsoft 增强型 RSA 和 AES 加密提供程序
+   * 标记为可导出
+   * 配置为使用 SHA256 算法
+   * 以 `*.pfx` 或 `*.cer` 格式保存。
+
 若要获取 PowerShell 脚本的必需参数 `AutomationAccountName`、`SubscriptionId` 和 `ResourceGroupName` 的值，请完成以下步骤。
 
 1. 登录到 Azure 门户。
@@ -63,9 +72,8 @@ Azure 自动化中的运行方式帐户提供身份验证，以使用自动化 r
 
 PowerShell 脚本包含对多个配置的支持。
 
-* 使用自签名证书创建运行方式帐户。
 * 使用自签名证书创建运行方式帐户和/或经典运行方式帐户。
-* 使用企业证书颁发机构 (CA) 颁发的证书创建运行方式帐户和/或经典运行方式帐户。
+* 使用企业或第三方证书颁发机构 (CA) 颁发的证书创建运行方式帐户和/或经典运行方式帐户。
 * 在 Azure 政府云中使用自签名证书创建运行方式帐户和/或经典运行方式帐户。
 
 1. 使用以下命令下载脚本并保存到本地文件夹。
@@ -108,6 +116,6 @@ PowerShell 脚本包含对多个配置的支持。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解图形创作，请参阅[在 Azure 自动化中创作图形 Runbook](automation-graphical-authoring-intro.md)。
 * 若要开始使用 PowerShell Runbook，请参阅[教程：创建 PowerShell Runbook](learn/automation-tutorial-runbook-textual-powershell.md)。
+
 * 若要开始使用 Python 3 runbook，请参阅[教程：创建 Python 3 runbook](learn/automation-tutorial-runbook-textual-python-3.md)。

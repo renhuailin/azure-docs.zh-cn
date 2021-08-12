@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 444639d9e36b67f25ed9b82bd68102273c66ae00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec614f74a0b7894be8b8d0d867056d0506d3ef9d
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951226"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113596346"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>快速入门：将 Azure 存储帐户与 Azure CDN 集成
 
@@ -78,7 +78,7 @@ ms.locfileid: "104951226"
 
 在存储帐户的“Azure CDN”页面中，从列表中选择 CDN 终结点以打开 CDN 终结点配置页面。
 
-从此页面中，可以为交付内容启用其他 CDN 功能，例如[压缩](cdn-improve-performance.md)、[查询字符串缓存](cdn-query-string.md)和[地区筛选](cdn-restrict-access-by-country.md)。 
+从此页面中，可以为交付内容启用其他 CDN 功能，例如[压缩](cdn-improve-performance.md)、[查询字符串缓存](cdn-query-string.md)和[地区筛选](cdn-restrict-access-by-country-region.md)。 
     
 ## <a name="enable-sas"></a>启用 SAS
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 2d3c7026fd221b1a17b8efe56b03b2a26358c7ab
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 09fa626e77e20feff55f7b17807754ac1d2b873f
+ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364374"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111568839"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java 批量执行程序库：下载信息
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -49,6 +49,26 @@ ms.locfileid: "107364374"
 |受支持的最小运行时|[Java 开发工具包 (JDK) 7+](/java/azure/jdk/)|
 
 ## <a name="release-notes"></a>发行说明
+### <a name="2123"></a><a name="2.12.3"></a>2.12.3
+
+* 修复了当 `GoneException` 包装在 `IllegalStateException` 中时的重试策略 - 此更改是确保在出现 410 时刷新网关缓存所必需的，这样 Spark 连接器（适用于 Spark 2.4）便可以使用自定义重试策略，使查询能够在分区拆分期间获得成功
+
+### <a name="2122"></a><a name="2.12.2"></a>2.12.2
+
+* 修复了导致文档在出现暂时性错误时不始终导入的问题。
+
+### <a name="2121"></a><a name="2.12.1"></a>2.12.1
+
+* 升级到使用最新的 Cosmos Core SDK 版本。
+
+### <a name="2120"></a><a name="2.12.0"></a>2.12.0
+
+* 改进了通过 Spark 连接器为批量操作提供的 RU 预算的处理。 最初的一次性批量导入是使用 baseBatchSize 从 spark 连接器执行的，并且会收集上述批量导入的 RU 消耗量。
+  基于以上 RU 消耗计算 miniBatchSizeAdjustmentFactor，并据此调整小型批处理大小。 根据每个批量导入的运行时间和消耗的 RU，计算休眠持续时间，以限制每秒 RU 消耗量，并用于在下次批量导入之前暂停线程。
+
+### <a name="2110"></a><a name="2.11.0"></a>2.11.0
+
+* 修复了在使用嵌套分区键时阻止批量更新的 bug
 
 ### <a name="2100"></a><a name="2.10.0"></a>2.10.0
 

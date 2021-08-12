@@ -1,19 +1,23 @@
 ---
-title: include 文件
-description: include 文件
+title: 包含文件
+description: 包含文件
 author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 05/05/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 81ab51ccf589aadb6f79891811bf512baa6fadda
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 4874da0fc3f4ee6265725c0af509d2664ec79a63
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112040774"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114712784"
 ---
+[![浏览代码](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/device/PnpDeviceSamples)
+
+本快速入门介绍一个基本的 Azure IoT 应用程序开发工作流。 你将使用 Azure CLI 创建 Azure IoT 中心和设备。 然后，使用 Azure IoT 设备 SDK 示例来运行模拟的温度控制器，将此控制器安全连接到中心，并发送遥测数据。
+
 ## <a name="prerequisites"></a>先决条件
 - 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Visual Studio（Community、Professional 或 Enterprise 版）2019](https://visualstudio.microsoft.com/downloads/)。
@@ -35,7 +39,7 @@ ms.locfileid: "112040774"
 
 1. 右键单击“TemperatureController”项目，依次选择“属性”、调试”选项卡，然后将以下环境变量添加到该项目中  ：
 
-    | 名称 | Value |
+    | 名称 | 值 |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | *connectionString* |
     | IOTHUB_DEVICE_CONNECTION_STRING | 以前保存的连接字符串。 |

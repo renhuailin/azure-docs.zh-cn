@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25426605b0fe5ced21d373f255e3872d2d0d280e
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 47278f47d3f66e79ed980d752fb7a383bd995c07
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079132"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113087335"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>教程：使用 Linux VM 系统分配的标识通过 SAS 凭据访问 Azure 存储
 
@@ -71,12 +71,12 @@ ms.locfileid: "112079132"
 
 ## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-a-storage-sas"></a>授权 VM 的系统分配的托管标识使用存储 SAS
 
-Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 VM 的系统分配的托管标识从资源管理器检索存储 SAS，然后使用 SAS 来访问存储。  在此步骤中，将向 VM 的系统分配的托管标识授予对存储帐户 SAS 的访问权限。 通过向包含存储帐户的资源组范围中的托管标识分配[存储帐户参与者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)角色来授予访问权限。
+Azure 存储原生支持 Azure AD 身份验证，因此你可以使用 VM 的系统分配的托管标识从资源管理器检索存储 SAS，然后使用 SAS 来访问存储。  在此步骤中，将向 VM 的系统分配的托管标识授予对存储帐户 SAS 的访问权限。 通过向包含存储帐户的资源组范围中的托管标识分配[存储帐户参与者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)角色来授予访问权限。
  
-有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。”
+有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 >[!NOTE]
-> 有关可用于授予存储权限的各种角色的信息，请查看[使用 Azure Active Directory 对 Blob 和队列授予访问权限](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)
+> 有关可用于授予存储权限的各种角色的信息，请查看[使用 Azure Active Directory 对 Blob 和队列授予访问权限](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)。
 
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 标识获取访问令牌，并使用它调用 Azure 资源管理器

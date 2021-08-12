@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 05/04/2021
 ms.author: jeffme
-ms.openlocfilehash: b4c22f8b6825b2955ba7c50e2ef1ff5f3ee00464
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b4ec1ea076994622e4e687c3f6f4a4f3826ad385
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958191"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220444"
 ---
 # <a name="what-are-azure-applied-ai-services"></a>什么是 Azure 应用 AI 服务？
 
@@ -33,7 +33,7 @@ Azure 应用 AI 服务是一项高级服务，旨在让开发人员能够将 AI 
 
 让组织能够根据来自业务、服务和物理资产指标的情报做出正确决策，从而保护组织的发展。  Azure 指标顾问使用 AI 在时序数据中执行数据监视和异常情况检测。 该服务自动执行将模型应用于数据的过程，并提供了一组 API 和基于 Web 的工作区，用于数据引入、异常检测和诊断，无需了解机器学习即可使用。 开发人员可以在服务之上构建 AIOps、预测性维护和业务监视应用程序。  Azure 指标顾问使用 Azure 认知服务中的异常检测器构建而成。
 
-[详细了解 Azure 指标顾问](../cognitive-services/metrics-advisor/index.yml)
+[详细了解 Azure 指标顾问](./metrics-advisor/index.yml)
 
 ## <a name="azure-cognitive-search"></a>Azure 认知搜索
 

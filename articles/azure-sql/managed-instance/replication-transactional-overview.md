@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: 了解如何对 Azure SQL 托管实例使用 SQL Server 事务复制（预览）。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: data-movement
+ms.subservice: replication
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: MashaMSFT
-ms.author: mathoma
-ms.reviewer: sstein
-ms.date: 04/20/2020
-ms.openlocfilehash: e08fe67dece02b936aa3a22e9cac58d809f19f46
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+author: ferno-ms
+ms.author: ferno
+ms.reviewer: mathoma
+ms.date: 05/10/2020
+ms.openlocfilehash: bad663dd0101a4e42f761256bf5fb9d32ac09320
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285677"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110693940"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Azure SQL 托管实例的事务复制（预览）
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -152,8 +152,6 @@ Azure SQL 托管实例可以支持成为以下版本的 SQL Server 的订阅服�
 
 ## <a name="with-failover-groups"></a>使用故障转移组
 
-使用事务复制的 SQL 托管实例不支持[活动异地复制](../database/active-geo-replication-overview.md)。 使用[自动故障转移组](../database/auto-failover-group-overview.md)而不是活动异地复制，但请注意，必须从主托管实例中[手动删除](transact-sql-tsql-differences-sql-server.md#replication)发布，并在故障转移后在辅助 SQL 托管实例上重新创建。
-
 如果“发布服务器”或“分发服务器”SQL 托管实例位于[故障转移组](../database/auto-failover-group-overview.md)中，则 SQL 托管实例管理员必须清理旧的主节点上的所有发布内容，然后在故障转移后，在新的主节点上重新配置这些发布内容 。 在此方案中，需要执行以下活动：
 
 1. 停止数据库上运行的所有复制作业（如果有）。
@@ -184,7 +182,7 @@ Azure SQL 托管实例可以支持成为以下版本的 SQL Server 的订阅服�
    EXEC sp_dropdistributor 1,1
    ```
 
-如果对故障转移组中的 **订阅服务器** 实例启用了异地复制，则应将发布配置为连接到订阅服务器托管实例的故障转移组侦听器终结点。 发生故障转移时，托管实例管理员执行的后续操作取决于发生的故障转移类型：
+如果订阅方 SQL 托管实例在故障转移组中，则应将发布配置为连接到订阅服务器托管实例的故障转移组侦听器终结点。 发生故障转移时，托管实例管理员执行的后续操作取决于发生的故障转移类型：
 
 - 如果在不丢失数据的情况下进行故障转移，则故障转移后复制将继续工作。
 - 如果在丢失数据的情况下进行故障转移，复制也能正常工作。 它会再次复制丢失的更改。

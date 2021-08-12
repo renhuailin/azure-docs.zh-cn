@@ -1,19 +1,19 @@
 ---
 title: 快速入门 - 设置 Azure Spring Cloud Config Server
 description: 描述用于应用部署的 Azure Spring Cloud Config Server 的设置。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java, fasttrack-edit
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 8c71e76213011beaa63deeaadfa3d6d2dc0d4ce2
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 95f4e7e9dcc8c9f16465d2a577d4bdf425dae4a8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286522"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114470548"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>快速入门：设置 Azure Spring Cloud Config Server
 
@@ -79,41 +79,42 @@ Azure Spring Cloud Config Server 是分布式系统的集中式配置服务。 �
 运行以下命令来设置默认存储库。
 
 ```azurecli
-
 az spring-cloud config-server git set -n <service instance name> --uri https://github.com/azure-samples/spring-petclinic-microservices-config
+```
+
 ::: zone-end
 
 > [!TIP]
-> If you are using a private repository for config server, please refer to our [tutorial on setting up authentication](./how-to-config-server.md).
+> 如果将专用存储库用于配置服务器，请参阅[介绍设置身份验证的教程](./how-to-config-server.md)。
 
-## Troubleshooting of Azure Spring Cloud config server
+## <a name="troubleshooting-of-azure-spring-cloud-config-server"></a>Azure Spring Cloud Config Server 的故障排除
 
-The following procedure explains how to troubleshoot config server settings.
+以下过程说明如何对 Config Server 设置进行故障排除。
 
-1. In the Azure portal, go to the service **Overview** page and select **Logs**. 
-1. Select **Queries** and **Show the application logs that contain the "error" or "exception" terms"**. 
-1. Click **Run**. 
-1. If you find the error **java.lang.illegalStateException** in logs, this indicates that spring cloud service cannot locate properties from config server.
+1. 在 Azure 门户中，转到服务“概览”页，然后选择“日志” 。 
+1. 选择“查询”和“显示包含‘错误’或‘异常’术语的应用程序日志” 。 
+1. 单击 **“运行”** 。 
+1. 如果在日志中发现错误“java.lang.illegalStateException”，则表明 Spring Cloud Service 无法从 Config Server 中找到属性。
 
-    [ ![ASC portal run query](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png)
+    [ ![ASC 门户运行查询](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png)
 
-1. Go to the service **Overview** page.
-1. Select **Diagnose and solve problems**. 
-1. Select **Config Server** detector.
+1. 转到服务“概述”页。
+1. 选择“诊断并解决问题”。 
+1. 选择“Config Server”检测程序。
 
-    [ ![ASC portal diagnose problems](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png)
+    [ ![ASC 门户诊断问题](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png)
 
-3. Click **Config Server Health Check**.
+3. 单击“Config Server 运行状况检查”。
 
-    [ ![ASC portal genie](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png)
+    [ ![ASC 门户精灵](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png)
 
-4. Click **Config Server Status** to see more details from the detector.
+4. 单击“Config Server 状态”以查看来自检测程序的详细信息。
 
-    [ ![ASC portal health status](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)
+    [ ![ASC 门户运行状况状态](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)
 
-## Next steps
+## <a name="next-steps"></a>后续步骤
 
-In this quickstart, you created Azure resources that will continue to accrue charges if they remain in your subscription. If you don't intend to continue on to the next quickstart, see [Clean up resources](./quickstart-logs-metrics-tracing.md#clean-up-resources). Otherwise, advance to the next quickstart:
+在此快速入门中，你创建了 Azure 资源，如果这些资源保留在订阅中，将继续产生费用。 如果不打算继续学习下一个快速入门，请参阅[清理资源](./quickstart-logs-metrics-tracing.md#clean-up-resources)。 否则，请继续学习下一个快速入门：
 
 > [!div class="nextstepaction"]
-> [Build and deploy apps](./quickstart-deploy-apps.md)
+> [构建和部署应用](./quickstart-deploy-apps.md)

@@ -4,20 +4,20 @@ titleSuffix: Azure SQL Managed Instance
 description: 本文介绍如何创建和管理 Azure SQL 托管实例池（预览版）。
 services: sql-database
 ms.service: sql-managed-instance
-ms.subservice: operations
-ms.custom: ''
+ms.subservice: deployment-configuration
+ms.custom: devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
-author: bonova
-ms.author: bonova
-ms.reviewer: sstein
+author: urosmil
+ms.author: urmilano
+ms.reviewer: mathoma
 ms.date: 09/05/2019
-ms.openlocfilehash: 732a9bab018103321a9a3a759b31495bd67a209e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 60afa287a96425ec0a3aead7e5affa6e046b7cbd
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92793103"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110689718"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>将 Azure SQL 托管实例部署到实例池
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -166,7 +166,7 @@ $databases = Get-AzSqlInstanceDatabase -InstanceName "pool-mi-001" -ResourceGrou
 
 
 > [!NOTE]
-> 每个池（并非每个实例）最多只能有 100 个数据库。
+> 若要查看每个实例池和池内部署的托管实例的数据库数量限制，请访问[实例池资源限制](instance-pools-overview.md#resource-limitations)部分。
 
 
 ## <a name="scale"></a>缩放 

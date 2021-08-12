@@ -8,25 +8,29 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67e77c2dd08386279beeb06ff9081fa2669afa73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2913665d2cc834bd3b88f23ce81b46ca7a7dfbbe
+ms.sourcegitcommit: 5c136a01bddfccb2cc9f7e7e7741e2cf2651ddbe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102487828"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111352743"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>在 Azure Active Directory 中使用 Microsoft 图形 API 分配自定义管理员角色 
 
 你可以使用 Microsoft Graph API 自动执行将角色分配给用户帐户的过程。 本文介绍了 roleAssignment 上的 POST、GET 和 DELETE 操作。
 
-## <a name="required-permissions"></a>所需的权限
+## <a name="prerequisites"></a>先决条件
 
-使用全局管理员或特权角色管理员帐户连接到 Azure AD 组织，以分配或删除角色。
+- Azure AD Premium P1 或 P2 许可证
+- 特权角色管理员或全局管理员
+- 将 Graph 浏览器用于 Microsoft Graph API 时需要管理员同意
+
+有关详细信息，请参阅[使用 PowerShell 或 Graph 浏览器的先决条件](prerequisites.md)。
 
 ## <a name="post-operations-on-roleassignment"></a>RoleAssignment 上的 POST 操作
 
@@ -305,5 +309,5 @@ HTTP/1.1 400 Bad Request
 ## <a name="next-steps"></a>后续步骤
 
 * 欢迎在 [Azure AD 管理角色论坛](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上与我们分享你的观点
-* 有关角色以及管理员角色分配的详细信息，请参阅[分配管理员角色](permissions-reference.md)
+* 有关角色权限的详细信息，请参阅 [Azure AD 内置角色](permissions-reference.md)
 * 有关默认用户权限，请参阅[默认来宾和成员用户权限的比较](../fundamentals/users-default-permissions.md)

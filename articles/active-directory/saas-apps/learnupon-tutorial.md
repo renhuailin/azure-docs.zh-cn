@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 5f789baf7467af863c59a44ab9a256c9f6d7fd15
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 84da4c02ec4631e9d9f33ac745c3721894cc5f29
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075179"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469471"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>教程：Azure Active Directory 与 LearnUpon 的集成
 
@@ -83,7 +83,7 @@ ms.locfileid: "110075179"
     在“回复 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.learnupon.com/saml/consumer`
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际回复 URL 更新此值。 若要获取此值，请与 [LearnUpon 客户端支持团队](https://www.learnupon.com/features/support/)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 此值不是真实值。 请使用实际回复 URL 更新此值。 若要获取此值，请与 [LearnUpon 客户端支持团队](https://www.learnupon.com/contact/)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 5. 在“使用 SAML 设置单一登录”页上找到“指纹”   - 这将添加到 LearnUpon SAML 设置。
 
@@ -101,7 +101,7 @@ ms.locfileid: "110075179"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -159,7 +159,7 @@ ms.locfileid: "110075179"
 
 ### <a name="create-learnupon-test-user"></a>创建 LearnUpon 测试用户
 
-在本部分中，我们会在 LearnUpon 中创建一个名为 Britta Simon 的用户。 LearnUpon 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 LearnUpon 中尚不存在用户，身份验证后会创建一个新用户。 如果需要手动创建用户，则需联系 [LearnUpon 支持团队](https://www.learnupon.com/features/support/)。
+在本部分中，我们会在 LearnUpon 中创建一个名为 Britta Simon 的用户。 LearnUpon 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 LearnUpon 中尚不存在用户，身份验证后会创建一个新用户。 如果需要手动创建用户，则需联系 [LearnUpon 支持团队](https://www.learnupon.com/contact/)。
 
 ## <a name="test-sso"></a>测试 SSO 
 

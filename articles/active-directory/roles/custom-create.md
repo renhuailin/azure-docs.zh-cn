@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e0e1543f18c18c7fdf97c39f35ba38ded658392
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: bef0dc016b2b216d51a4844c469d14a24e11068b
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103007811"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111437759"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>在 Azure Active Directory 中创建和分配自定义角色
 
@@ -26,11 +26,20 @@ ms.locfileid: "103007811"
 
 自定义角色可以在 Azure AD 概述页上的[角色和管理员](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators)选项卡中创建。
 
+## <a name="prerequisites"></a>先决条件
+
+- Azure AD Premium P1 或 P2 许可证
+- 特权角色管理员或全局管理员
+- 使用 PowerShell 时需要 AzureADPreview 模块
+- 将 Graph 浏览器用于 Microsoft Graph API 时需要管理员同意
+
+有关详细信息，请参阅[使用 PowerShell 或 Graph 浏览器的先决条件](prerequisites.md)。
+
 ## <a name="create-a-role-in-the-azure-portal"></a>在 Azure 门户中创建角色
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>创建新的自定义角色，授予管理应用注册所需的访问权限
 
-1. 使用 Azure AD 组织中的特权角色管理员或全局管理员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
+1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
 1. 选择“Azure Active Directory” > “角色和管理员” > “新建自定义角色”。
 
    ![从“角色和管理员”页创建或编辑角色](./media/custom-create/new-custom-role.png)
@@ -50,27 +59,6 @@ ms.locfileid: "103007811"
 你的自定义角色将显示在要分配的可用角色列表中。
 
 ## <a name="create-a-role-using-powershell"></a>使用 PowerShell 创建角色
-
-### <a name="prepare-powershell"></a>准备 PowerShell
-
-首先，必须[下载 Azure AD 预览版 PowerShell 模块](https://www.powershellgallery.com/packages/AzureADPreview)。
-
-若要安装 Azure AD PowerShell 模块，请使用以下命令：
-
-``` PowerShell
-Install-Module -Name AzureADPreview 
-Import-Module -Name AzureADPreview 
-```
-
-若要验证模块是否可供使用，请运行下面的命令：
-
-``` PowerShell
-Get-Module -Name AzureADPreview 
-
-  ModuleType Version      Name                         ExportedCommands 
-  ---------- ---------    ----                         ---------------- 
-  Binary     2.0.0.115    AzureADPreview               {Add-AzureADAdministrati...} 
-```
 
 ### <a name="connect-to-azure"></a>连接到 Azure
 
@@ -102,7 +90,7 @@ $rolePermissions = @{'allowedResourceActions'= $allowedResourceAction}
 $customAdmin = New-AzureADMSRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
 ```
 
-### <a name="assign-the-custom-role-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 分配自定义角色
+### <a name="assign-the-custom-role-using-powershell"></a>使用 PowerShell 分配自定义角色
 
 使用以下 PowerShell 脚本分配角色：
 
@@ -119,7 +107,7 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-## <a name="create-a-role-with-graph-api"></a>使用图形 API 创建角色
+## <a name="create-a-role-with-the-microsoft-graph-api"></a>使用 Microsoft Graph API 创建角色
 
 1. 创建角色定义。
 
@@ -175,9 +163,9 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
 ## <a name="assign-a-custom-role-scoped-to-a-resource"></a>分配资源范围的自定义角色
 
-与内置角色一样，默认情况下，在默认的组织范围内分配自定义角色，以授予对组织中所有应用注册的访问权限。 但与内置角色不同，自定义角色也可以在单个 Azure AD 资源的范围内分配。 这样你就可以被用户分配权限，使之可以更新单个应用的凭据和基本属性，不需创建另一个自定义角色。
+与内置角色一样，默认情况下，在默认的组织范围内分配自定义角色，以授予对组织中所有应用注册的访问权限。 此外，还可以在单个 Azure AD 资源的范围中分配自定义角色和一些相关的内置角色（具体取决于 Azure AD 资源的类型）。 这样你就可以被用户分配权限，使之可以更新单个应用的凭据和基本属性，不需创建另一个自定义角色。
 
-1. 使用 Azure AD 组织中的应用程序开发人员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
+1. 使用应用程序开发人员权限登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
 1. 选择“应用注册” 。
 1. 选择要授予其管理权限的应用注册。 可能必须选择“所有应用程序”，以便在 Azure AD 组织中查看应用注册的完整列表。
 
@@ -191,5 +179,5 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 ## <a name="next-steps"></a>后续步骤
 
 - 欢迎在 [Azure AD 管理角色论坛](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上与我们分享知识。
-- 有关角色以及管理员角色分配的详细信息，请参阅[分配管理员角色](permissions-reference.md)。
+- 有关角色权限的详细信息，请参阅 [Azure AD 内置角色](permissions-reference.md)。
 - 有关默认用户权限，请参阅[默认来宾和成员用户权限的比较](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context)。

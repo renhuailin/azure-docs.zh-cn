@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: bb53dfe1978e11f1025e66d598f199bc5bd4aa33
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 12a0becf7cec5dea032d6038aa5c09fdcf58de59
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112083938"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112362553"
 ---
 <a name="HOLTop"></a>
 
@@ -54,7 +54,7 @@ gradle init --type basic
 
 本快速入门使用 Gradle 依赖项管理器。 可以在 [Maven 中央存储库](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision)中找到客户端库以及其他依赖项管理器的信息。
 
-找到 *build.gradle.kts*，并使用喜好的 IDE 或文本编辑器将其打开。 然后在该文件中复制以下生成配置。 此配置将项目定义为一个 Java 应用程序，其入口点为 ComputerVisionQuickstart 类。 它将导入计算机视觉库。
+找到 *build.gradle.kts*，并使用喜好的 IDE 或文本编辑器将其打开。 然后在该文件中复制以下生成配置。 此配置将项目定义为一个 Java 应用程序，其入口点为 ImageAnalysisQuickstart 类。 它将导入计算机视觉库。
 
 ```kotlin
 plugins {
@@ -62,13 +62,13 @@ plugins {
     application
 }
 application { 
-    mainClassName = "ComputerVisionQuickstart"
+    mainClass.set("ImageAnalysisQuickstart")
 }
 repositories {
     mavenCentral()
 }
 dependencies {
-    compile(group = "com.microsoft.azure.cognitiveservices", name = "azure-cognitiveservices-computervision", version = "1.0.4-beta")
+    implementation(group = "com.microsoft.azure.cognitiveservices", name = "azure-cognitiveservices-computervision", version = "1.0.6-beta")
 }
 ```
 
@@ -80,22 +80,22 @@ dependencies {
 mkdir -p src/main/java
 ```
 
-导航到新文件夹，创建名为 ComputerVisionQuickstart.java 的文件。 在喜好的编辑器或 IDE 中打开该文件并添加以下 `import` 语句：
+导航到新文件夹，并创建名为 ImageAnalysisQuickstart.java 的文件。 在喜好的编辑器或 IDE 中打开该文件并添加以下 `import` 语句：
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imports)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_imports)]
 
 > [!TIP]
-> 想要立即查看整个快速入门代码文件？ 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 上找到它，其中包含此快速入门中的代码示例。
+> 想要立即查看整个快速入门代码文件？ 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java) 上找到它，其中包含此快速入门中的代码示例。
 
-定义 ComputerVisionQuickstart 类。
+定义类 ImageAnalysisQuickstart。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_classdef_1)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_classdef_1)]
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_classdef_2)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_classdef_2)]
 
-在 ComputerVisionQuickstart 类中，为资源的密钥和终结点创建变量。
+在 ImageAnalysisQuickstart 类中，为资源的密钥和终结点创建变量。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_creds)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_creds)]
 
 
 > [!IMPORTANT]
@@ -105,7 +105,7 @@ mkdir -p src/main/java
 
 在应用程序的 main 方法中，添加对本快速入门中使用的方法的调用。 稍后将对这些调用进行定义。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_main)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_main)]
 
 
 > [!div class="nextstepaction"]
@@ -132,7 +132,7 @@ mkdir -p src/main/java
 
 在新方法中，使用终结点和密钥实例化客户端 [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient) 对象。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_auth)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_auth)]
 
 > [!div class="nextstepaction"]
 > [我执行了客户端身份验证](?success=authenticate-client#analyze-an-image) [我遇到问题](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Java&Section=authenticate-client&product=computer-vision&page=image-analysis-java-sdk)
@@ -142,24 +142,24 @@ mkdir -p src/main/java
 以下代码定义方法 `AnalyzeLocalImage`，该方法使用客户端对象分析本地图像并输出结果。 该方法返回文本说明、分类、标记列表、检测到的人脸、成人内容标志、主颜色和图像类型。
 
 > [!TIP]
-> 还可以使用其 URL 分析远程图像。 请参阅 [ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision) 方法，例如 AnalyzeImage。 或者，请参阅 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 上的示例代码以了解涉及远程图像的方案。
+> 还可以使用其 URL 分析远程图像。 请参阅 [ComputerVision](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision) 方法，例如 AnalyzeImage。 或者，请参阅 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java) 上的示例代码以了解涉及远程图像的方案。
 
 ### <a name="set-up-test-image"></a>设置测试图像
 
-首先，在项目的 **src/main/** 文件夹中创建 **resources/** 文件夹，并添加要分析的图像。 然后，将以下方法定义添加到 ComputerVisionQuickstart 类。 请更改 `pathToLocalImage` 的值，使之与图像文件相匹配。 
+首先，在项目的 **src/main/** 文件夹中创建 **resources/** 文件夹，并添加要分析的图像。 然后，将以下方法定义添加到 ImageAnalysisQuickstart 类。 请更改 `pathToLocalImage` 的值，使之与图像文件相匹配。 
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_refs)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_analyzelocal_refs)]
 
 ### <a name="specify-visual-features"></a>指定视觉特性
 
 接下来，指定要在分析中提取的视觉特征。 有关完整列表，请参阅 [VisualFeatureTypes](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes) 枚举。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_features)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_analyzelocal_features)]
 
 ### <a name="analyze"></a>分析
 此块根据每个图像分析范围将详细结果输出到控制台。 **analyzeImageInStream** 方法将返回包含所有提取信息的 **ImageAnalysis** 对象。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_analyze)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_analyzelocal_analyze)]
 
 以下部分说明如何详细分析此信息。
 
@@ -167,38 +167,38 @@ mkdir -p src/main/java
 
 下面的代码获取为图像生成的描述文字列表。 有关详细信息，请参阅[描述图像](../../concept-describing-images.md)。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_captions)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_analyzelocal_captions)]
 
 ### <a name="get-image-category"></a>获取图像类别
 
 下面的代码获取所检测到的图像类别。 有关详细信息，请参阅[对图像进行分类](../../concept-categorizing-images.md)。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_category)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_analyzelocal_category)]
 
 ### <a name="get-image-tags"></a>获取图像标记
 
 以下代码获取图像中检测到的标记集。 有关详细信息，请参阅[内容标记](../../concept-tagging-images.md)。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_tags)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_analyzelocal_tags)]
 
 ### <a name="detect-faces"></a>检测人脸
 
 下面的代码返回图像中检测到的人脸及其矩形坐标，并选择人脸属性。 有关详细信息，请参阅[人脸检测](../../concept-detecting-faces.md)。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_faces)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_analyzelocal_faces)]
 
 ### <a name="detect-objects"></a>检测物体
 
 下面的代码返回图像中检测到的对象及其坐标。 有关详细信息，请参阅[物体检测](../../concept-object-detection.md)。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_objects)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_analyzelocal_objects)]
 
 
 ### <a name="detect-brands"></a>检测品牌
 
 下面的代码返回图像中检测到的品牌徽标及其坐标。 有关详细信息，请参阅[品牌检测](../../concept-brand-detection.md)。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_brands)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_analyzelocal_brands)]
 
 
 
@@ -206,13 +206,13 @@ mkdir -p src/main/java
 
 以下代码输出图像中检测到的成人内容。 有关详细信息，请参阅[成人、色情或血腥内容](../../concept-detecting-adult-content.md)。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_adult)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_analyzelocal_adult)]
 
 ### <a name="get-image-color-scheme"></a>获取图像配色方案
 
 以下代码输出图像中检测到的颜色属性，如主色和主题色。 有关详细信息，请参阅[配色方案](../../concept-detecting-color-schemes.md)。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_colors)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_analyzelocal_colors)]
 
 ### <a name="get-domain-specific-content"></a>获取特定于域的内容
 
@@ -220,17 +220,17 @@ mkdir -p src/main/java
 
 以下代码分析了图像中检测到的名人的相关数据。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_celebrities)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_analyzelocal_celebrities)]
 
 以下代码分析了图像中检测到的地标的相关数据。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_landmarks)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_analyzelocal_landmarks)]
 
 ### <a name="get-the-image-type"></a>获取图像类型
 
 以下代码输出有关图像类型的信息&mdash;无论它是剪贴画还是线条图。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imagetype)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_imagetype)]
 
 > [!div class="nextstepaction"]
 > [我分析了图像](?success=analyze-image#run-the-application) [我遇到问题](https://microsoft.qualtrics.com/jfe/form/SV_0Cl5zkG3CnDjq6O?PLanguage=Java&Section=analyze-image&product=computer-vision&page=image-analysis-java-sdk)
@@ -239,7 +239,7 @@ mkdir -p src/main/java
 
 完成 try/catch 块并关闭方法。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyze_catch)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java?name=snippet_analyze_catch)]
 
 
 ## <a name="run-the-application"></a>运行应用程序
@@ -263,7 +263,7 @@ gradle run
 
 如果想要清理并删除认知服务订阅，可以删除资源或资源组。 删除资源组同时也会删除与之相关联的任何其他资源。
 
-* [门户](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 > [!div class="nextstepaction"]
@@ -277,4 +277,4 @@ gradle run
 >[调用分析 API](../../Vision-API-How-to-Topics/HowToCallVisionAPI.md)
 
 * [图像分析概述](../../overview-image-analysis.md)
-* 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 上找到此示例的源代码。
+* 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ImageAnalysisQuickstart.java) 上找到此示例的源代码。

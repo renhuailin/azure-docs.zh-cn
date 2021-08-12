@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: f8fa0344a6959025856f002e1de4eb8700c32da5
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 00d3c2a73e6e6cd569143d9a26eda672e9ff99b2
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311305"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751264"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics 数据安全
 本文档旨在提供特定于 Azure Log Analytics 的信息（Azure Monitor 的功能），用于补充有关 [Azure 信任中心](https://www.microsoft.com/en-us/trust-center?rtc=1)的信息。  
@@ -36,7 +36,7 @@ Log Analytics 服务使用以下方法安全地管理你基于云的数据：
 
 ## <a name="sending-data-securely-using-tls-12"></a>使用 TLS 1.2 安全地发送数据 
 
-为了确保传输到 Log Analytics 的数据的安全性，我们强烈建议你将代理配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管出于向后兼容，这些协议仍可正常工作，但我们 **不建议使用**，并且行业即将放弃对这些旧协议的支持。 
+为了确保传输到 Log Analytics 的数据的安全性，强烈建议你将代理配置为至少使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管出于向后兼容，这些协议仍可正常工作，但我们 **不建议使用**，并且行业即将放弃对这些旧协议的支持。 
 
 [PCI 安全标准委员会](https://www.pcisecuritystandards.org/)规定 [2018 年 6 月 30 日](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf)是停用旧版 TLS/SSL 并升级到更安全协议的截止时间。 在 Azure 放弃旧版支持后，如果代理无法通过最低版本 TLS 1.2 进行通信，则你无法将数据发送到 Log Analytics。 
 

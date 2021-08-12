@@ -1,6 +1,6 @@
 ---
 title: 更改 Azure IoT Central 应用程序设置 | Microsoft Docs
-description: 本文介绍管理员如何通过更改应用程序名称和 URL 来管理 Azure IoT Central 应用程序，以及如何上传映像和删除应用程序
+description: 了解如何通过更改应用程序名称和 URL ，上传映像和删除应用程序来管理 Azure IoT Central 应用程序
 author: viv-liu
 ms.author: viviali
 ms.date: 12/19/2020
@@ -8,18 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 81cd2ca1cb47e6fdfb4858df930b73c1bd10118a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7b72fd3c47e6f3013c0f9eb39707a1e55c78cac0
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101091822"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110788992"
 ---
 # <a name="change-iot-central-application-settings"></a>更改 IoT Central 应用程序设置
 
-
-
-本文为管理员介绍如何通过更改应用程序名称和 URL 以及上传图像来管理应用程序，以及在 Azure IoT Central 应用程序中删除应用程序。
+本文介绍如何通过在 Azure IoT Central 应用程序中更改应用程序名称和 URL，上传映像，以及删除应用程序来管理应用程序。
 
 只有 Azure IoT Central 应用程序的“管理员”角色才能访问和使用“管理”部分。 如果你创建了 Azure IoT Central 应用程序，则会自动分配到该应用程序的“管理员”角色。
 
@@ -27,7 +25,7 @@ ms.locfileid: "101091822"
 
 在“应用程序设置”页中，可以更改应用程序的名称和 URL，然后选择“保存”。
 
-![“应用程序设置”页](media/howto-administer/image0-a.png)
+![“应用程序设置”页](media/howto-administer/image-a.png)
 
 如果管理员为应用程序创建了自定义主题，此页将包含一个用于在 UI 中隐藏“应用程序名称”的选项。 如果自定义主题中的应用程序徽标包含应用程序名称，则此选项非常有用。 有关详细信息，请参阅[自定义 Azure IoT Central UI](./howto-customize-ui.md)。
 

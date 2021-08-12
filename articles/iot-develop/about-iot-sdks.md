@@ -6,12 +6,12 @@ ms.author: philmea
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 02/11/2021
-ms.openlocfilehash: 2e8a503731cc8e3774b898241140ef1bfaa72619
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: cdf20d65347792af4136ea407dd58e563354301d
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591198"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729217"
 ---
 # <a name="overview-of-azure-iot-device-sdks"></a>Azure IoT 设备 SDK 概述
 
@@ -125,7 +125,7 @@ Azure IoT 还提供服务 SDK，使你能够生成解决方案端应用程序来
 
 通过 IoT 中心服务 SDK，可以生成可以与 IoT 中心轻松交互的应用程序，以管理设备和安全性。 可以使用这些 SDK 发送云到设备的消息、调用设备上的直接方法，以及更新设备属性等。
 
-[详细了解 IoT 中心](https://azure.microsoft.com/services/iot-hub/) | [尝试控制设备](../iot-hub/quickstart-control-device-python.md) 
+[详细了解 IoT 中心](https://azure.microsoft.com/services/iot-hub/) | [尝试控制设备](../iot-hub/quickstart-control-device.md) 
 
 C# IoT 中心服务 SDK：[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) | [包](https://www.nuget.org/packages/Microsoft.Azure.Devices/) | [示例](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service/samples) | [参考文档](/dotnet/api/microsoft.azure.devices)
 

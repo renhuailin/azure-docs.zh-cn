@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: fc1bca1265139a438fad86bfce770026866d9a2f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/07/2021
+ms.openlocfilehash: 5a7b8c2f76abc9dd41894280e7cf610d0cae85ea
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90933339"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111554854"
 ---
 # <a name="manage-zone-redundant-high-availability-in-flexible-server"></a>在灵活服务器中管理区域冗余高可用性
 
@@ -28,7 +28,7 @@ ms.locfileid: "90933339"
 
 ## <a name="enable-high-availability-during-server-creation"></a>在服务器创建过程中启用高可用性
 
-本部分专门提供了与 HA 相关的字段的详细信息。 创建灵活服务器时，可以按照以下步骤部署高可用性。
+本部分详细介绍了 HA 相关的字段。 创建灵活服务器时，可以按照以下步骤部署高可用性。
 
 1.  在 [Azure 门户](https://portal.azure.com/)中，选择“灵活服务器”，然后单击“创建”。  有关如何填写“订阅”、“资源组”、“服务器名称”、“区域”和其他字段等详细信息的详细信息，请参阅服务器创建的操作方法文档   。
    
@@ -95,6 +95,46 @@ ms.locfileid: "90933339"
 5.  单击“禁用 HA”按钮，以禁用高可用性。
 
 6.  此时将显示一条通知，指出正在解除高可用性部署。
+
+## <a name="forced-failover"></a>强制故障转移
+
+按照以下步骤，强制将主灵活服务器故障转移到备用灵活服务器。 这样会使主服务器立即停机，并触发故障转移至备用服务器。 这适用于测试工作负载的计划外停机故障转移时间等情况。
+
+1.  在 [Azure 门户](https://portal.azure.com/)中，选择已启用高可用性功能的现有灵活服务器。
+2.  在“灵活服务器”页面上，单击前面板中的“高可用性”以打开“高可用性”页面。
+3.  检查“主可用性区域”和“备用可用性区域”
+4.  单击“强制故障转移”以启动手动故障转移过程。 在故障转移完成之前，弹出窗口会通知潜在故障时间。 阅读消息，并单击“确定”。
+5.  系统将显示一条通知，指出正在进行故障转移。
+6.  在故障转移到备用服务器后，系统将弹出一条通知。
+7.  检查新的“主可用性区域”和“备用可用性区域”。
+    
+    :::image type="content" source="./media/how-to-manage-high-availability-portal/ha-forced-failover.png" alt-text="按需强制故障转移"::: 
+
+>[!IMPORTANT] 
+> * 请不要一个紧接一个地执行故障转移。 在两次故障转移之间等待至少 15-20 分钟，这样还有助于充分构建新备用服务器。
+>
+> * 门户上报告的整个端到端操作时间可能比应用程序的实际故障时间长。 请从应用程序的角度衡量故障时间。 
+
+## <a name="planned-failover"></a>计划的故障转移
+
+按照以下步骤，执行从主服务器到备用灵活服务器的计划的故障转移。 此操作需先准备备用服务器再执行故障转移。 这样可最大程度地减少故障时间，因为在某些情况（比如在故障转移事件后，要将主副本移回到首选的可用性区域）下，此操作可将故障正常转移到备用服务器。
+1.  在 [Azure 门户](https://portal.azure.com/)中，选择已启用高可用性功能的现有灵活服务器。
+2.  在“灵活服务器”页面上，单击前面板中的“高可用性”以打开“高可用性”页面。
+3.  检查“主可用性区域”和“备用可用性区域”
+4.  单击“计划的故障转移”以启动手动故障转移过程。 弹出窗口会通知相关进程。 阅读消息，并单击“确定”。
+5.  系统将显示一条通知，指出正在进行故障转移。
+6.  在故障转移到备用服务器后，系统将弹出一条通知。
+7.  检查新的“主可用性区域”和“备用可用性区域”。
+        :::image type="content" source="./media/how-to-manage-high-availability-portal/ha-planned-failover.png" alt-text="按需计划的故障转移"::: 
+
+>[!IMPORTANT] 
+>
+> * 请不要一个紧接一个地执行故障转移。 在两次故障转移之间等待至少 15-20 分钟，这样还有助于充分构建新备用服务器。
+>
+> * 建议在少量活动期间执行计划的故障转移。
+>
+> * 整个端到端操作时间可能比应用程序的实际故障时间长。 请从应用程序的角度衡量故障时间。
+
 
 ## <a name="next-steps"></a>后续步骤
 

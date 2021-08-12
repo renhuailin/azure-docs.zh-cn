@@ -8,12 +8,12 @@ metadata:
   ms.topic: conceptual
   ms.service: applied-ai-services
   ms.date: 05/28/2021
-  ms.openlocfilehash: e424501e4b5ce6f6731f093394a6536c332b3cbc
-  ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+  ms.openlocfilehash: fbb8d236f106e318ef0689d787e5f8401f8f6808
+  ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/02/2021
-  ms.locfileid: "111907101"
+  ms.lasthandoff: 07/02/2021
+  ms.locfileid: "113231046"
 title: Azure 应用 AI 服务常见问题
 summary: >
   以下是有关使用 Azure 应用 AI 服务的常见问题解答。
@@ -28,7 +28,7 @@ sections:
 
       - [表单识别器静态数据加密](../cognitive-services/form-recognizer/encrypt-data-at-rest.md)
 
-      - [对静态数据的指标顾问加密](../cognitive-services/metrics-advisor/encryption.md#customer-managed-keys-with-azure-key-vault)
+      - [对静态数据的指标顾问加密](../cognitive-services/metrics-advisor/encryption.md)
 
       - [视频分析器静态数据加密](../azure-video-analyzer/video-analyzer-docs/customer-managed-keys.md)
 additionalContent: >-
