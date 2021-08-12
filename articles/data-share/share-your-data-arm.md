@@ -7,12 +7,12 @@ ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 08/19/2020
-ms.openlocfilehash: f8a211c6cb3a405b1d3f022dfa02673d6a6db942
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 97f902b31b4beb45017c7a93c3c0397ae409b3af
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110705177"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112377595"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-and-arm-template"></a>快速入门：使用 Azure Data Share 和 ARM 模板共享数据
 
@@ -22,7 +22,7 @@ ms.locfileid: "110705177"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-data-share-share-storage-account%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.datashare%2Fdata-share-share-storage-account%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,7 +32,7 @@ ms.locfileid: "110705177"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-data-share-share-storage-account/)。
 
-:::code language="json" source="~/quickstart-templates/101-data-share-share-storage-account/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.datashare/data-share-share-storage-account/azuredeploy.json":::
 
 该模板中定义了以下资源：
 
@@ -66,7 +66,7 @@ ms.locfileid: "110705177"
 
 1. 选择下图登录到 Azure 并打开模板。
 
-    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-data-share-share-storage-account%2Fazuredeploy.json)
+    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.datashare%2Fdata-share-share-storage-account%2Fazuredeploy.json)
 1. 选择或输入以下值：
 
     * 订阅：选择用于创建数据共享和其他资源的 Azure 订阅。

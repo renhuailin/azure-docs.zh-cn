@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperf-fy20q4, devx-track-python
-ms.openlocfilehash: 75e87e004190ebe86c983c5956105ec629dcc673
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0fee13de8a1af520564004f029fa616f5ebb1119
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772272"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112459471"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教程：生成用于批量评分的 Azure 机器学习管道
 
@@ -36,7 +36,7 @@ ms.locfileid: "108772272"
 > * 生成、运行并发布管道
 > * 为管道启用 REST 终结点
 
-如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 

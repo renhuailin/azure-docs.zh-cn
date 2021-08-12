@@ -1,0 +1,132 @@
+### YamlMime:FAQ
+metadata:
+  title: B2B 协作常见问题解答 - Azure Active Directory | Microsoft Docs
+  description: 获取有关 Azure Active Directory B2B 协作的常见问题的解答。
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: B2B
+  ms.topic: reference
+  ms.date: 05/27/2021
+  ms.author: mimart
+  author: msmimart
+  manager: celestedg
+  ms.reviewer: mal
+  ms.custom: it-pro, seo-update-azuread-jan
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 91048761eaaf81d2bdb582669e926cf106cdca4c
+  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/10/2021
+  ms.locfileid: "111953459"
+title: Azure Active Directory B2B 协作常见问题解答
+summary: >
+  有关 Azure Active Directory (Azure AD) 企业到企业 (B2B) 协作的常见问题解答 (FAQ) 会定期更新，以包含新主题。
+
+
+  > [!IMPORTANT]
+
+  > - 从 2021 年 1 月 4 日开始，Google 将[弃用 WebView 登录支持](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果要通过 Gmail 使用 Google 联合身份验证或自助服务注册，则应[测试业务线本机应用程序的兼容性](google-federation.md#deprecation-of-web-view-sign-in-support)。
+
+  > - 从 2021 年 10 月起，Microsoft 将不再支持兑换通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行的邀请。 在准备期间，我们鼓励客户选择加入现已正式发布的[电子邮件一次性密码身份验证](one-time-passcode.md)。
+sections:
+- name: 常规
+  questions:
+  - question: >
+      是否可以自定义登录页，以便 B2B 协作来宾用户获得更直观的体验？
+    answer: >
+      当然！ 请参阅[有关此功能的博客文章](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)。 有关如何自定义组织登录页的详细信息，请参阅[在登录页和访问面板页中添加公司品牌](../fundamentals/customize-branding.md)。
+  - question: >
+      B2B 协作用户能否访问 SharePoint Online 和 OneDrive？
+    answer: >
+      是的。 不过，在 SharePoint Online 中使用人员选取器搜索现有来宾用户的功能默认已 **关闭**。 要启用该选项来搜索现有来宾用户，请将 **ShowPeoplePickerSuggestionsForGuestUsers** 为 **On**。 可以在租户级别或站点集合级别启用此设置。 可以使用 Set-SPOTenant 和 Set-SPOSite cmdlet 更改此设置。 使用这些 cmdlet，成员可以搜索目录中的所有现有来宾用户。 租户范围中的更改不会影响已经预配的 SharePoint Online 站点。
+  - question: >
+      是否仍支持 CSV 上传功能？
+    answer: >
+      是的。 有关使用 .csv 文件上传功能的详细信息，请参阅[此 PowerShell 示例](code-samples.md)。
+  - question: >
+      我能否自定义邀请电子邮件？
+    answer: >
+      使用 [B2B 邀请 API](customize-invitation-api.md)，几乎可以自定义有关邀请者过程的所有内容。
+  - question: >
+      来宾用户是否可以重置其多重身份验证方法？
+    answer: >
+      是的。 来宾用户可以像普通用户一样重置其多重身份验证方法。
+  - question: >
+      哪家组织负责提供多重身份验证许可证？
+    answer: >
+      邀请方组织执行多重身份验证。 邀请方组织必须确保为其使用多重身份验证的 B2B 用户提供足够的许可证。
+  - question: >
+      如果合作伙伴组织已设置多重身份验证会怎样？ 我们是否可以信任他们的多重身份验证，而不使用我们自己的多重身份验证？
+    answer: >
+      目前不支持此功能。 如果需要进行多重身份验证才能访问你的组织的资源，则合作伙伴组织需要在（发出邀请的）组织中注册多重身份验证。
+  - question: >
+      如何使用延迟的邀请？
+    answer: >
+      某家组织想要添加 B2B 协作用户，根据需要将这些用户预配到应用程序中，然后发送邀请。 可以使用 B2B 协作邀请 API 自定义载入工作流。
+  - question: >
+      能否在 Exchange 全局地址列表中显示来宾用户？
+    answer: >
+      是的。 默认情况下，来宾对象在组织的全局地址列表 (GAL) 中不可见，但你可以使用 Azure Active Directory PowerShell 使其可见。 请参阅[能否在全局地址列表中显示来宾对象？](/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
+  - question: >
+      是否可将来宾用户指定为受限制的管理员？
+    answer: >
+      绝对是。 有关详细信息，请参阅[将来宾用户添加到角色](./add-users-administrator.md)。
+  - question: >
+      Azure AD B2B 协作是否允许 B2B 用户访问 Azure 门户？
+    answer: >
+      除非 B2B 协作用户分配有受限管理员角色，否则他们不需要对 Azure 门户的访问权限。 但是，分配有受限管理员角色的 B2B 协作用户可以访问门户。 另外，如果未被分配这些管理员角色之一的来宾用户访问门户，该用户可以访问某些部分的体验。 来宾用户角色具有目录中的某些权限。
+  - question: >
+      我能否阻止来宾用户访问 Azure 门户？
+    answer: "能！ 你可以创建一个条件访问策略，阻止所有来宾用户和外部用户访问 Azure 门户。 配置此策略时请小心，避免意外阻止成员和管理员的访问。\n\n1. 以安全管理员或条件访问管理员的身份登录到 [Azure 门户](https://portal.azure.com/)。\n2. 在 Azure 门户中，选择“Azure Active Directory”。  \n3. 在“管理”下，选择“安全性”   。\n4. 在“保护”下，选择“条件访问”   。 选择“新策略”  。\n5. 在“新建”  页的“名称”  文本框中，为策略输入一个名称（例如“阻止来宾访问门户”）。\n6. 在“分配”  下，选择“用户和组”  。\n7. 在“包括”选项卡上，选择“选择用户和组”，然后选择“所有来宾和外部用户(预览版)”    。\n9. 选择“完成”  。\n10. 在“新建”页的“分配”部分，选择“云应用或操作”    。\n11. 在“云应用或操作”页上，选择“选择应用”，然后选择“选择”    。\n12. 在“选择”页面上，选择“Microsoft Azure 管理”，然后勾选“选择”。\n13. 在“云应用或操作”页上，选择“完成”   。\n"
+  - question: >
+      Azure AD B2B 协作是否支持多重身份验证和使用者电子邮件帐户？
+    answer: >
+      是的。 Azure AD B2B 协作同时支持多重身份验证和使用者电子邮件帐户。
+  - question: >
+      是否支持 Azure AD B2B 协作用户的密码重置？
+    answer: "如果 Azure AD 租户是用户的主目录，则可以从 Azure 门户[重置用户的密码](../fundamentals/active-directory-users-reset-password-azure-portal.md)。 但是，对于使用由其他 Azure AD 目录或外部标识提供者管理的帐户登录的来宾用户，无法直接重置其密码。 只有用户主目录中的来宾用户或管理员可以重置密码。 以下示例演示来宾用户如何重置密码：\n \n* Azure AD 租户中标记为“来宾”(UserType==Guest) 的来宾用户无法通过 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) 注册 SSPR。 这些类型的来宾用户只能通过 [https://aka.ms/sspr](https://aka.ms/sspr) 执行 SSPR。 \n* 使用 Microsoft 帐户（例如 guestuser@live.com）登录的来宾用户可以使用 Microsoft 帐户自助密码重置 (SSPR) 来重置其自己的密码。 请参阅[如何重置 Microsoft 帐户密码](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password)。\n* 使用 Google 帐户或其他外部标识提供者登录的来宾用户可以使用其标识提供者的 SSPR 方法来重置自己的密码。 例如，使用 Google 帐户 guestuser@gmail.com 的来宾用户可以遵照[更改或重置密码](https://support.google.com/accounts/answer/41078)中的说明重置其密码。\n* 如果标识租户是实时 (JIT) 或“病毒性”租户（独立的不受管 Azure 租户），则只有来宾用户可以重置其密码。 有时，组织将[接管在员工使用其工作电子邮件地址注册服务时创建的病毒性租户的管理](../enterprise-users/domains-admin-takeover.md)。 组织接管病毒性租户后，只有该组织中的管理员可以重置用户密码或启用 SSPR。 如果需要，作为邀请方组织，你可以从目录中删除来宾用户帐户并重新发送邀请。\n\n* 如果来宾用户的主目录是 Azure AD 租户，则你可以重置该用户的密码。 例如，你可能在本地 Active Directory 中创建了用户或同步了用户，并将其 UserType 设置为 Guest。 由于此用户位于你的目录中，因此，可以从 Azure 门户重置其密码。\n"
+  - question: >
+      Microsoft Dynamics 365 是否为 Azure AD B2B 协作提供联机支持？
+    answer: >
+      是的，Dynamics 365 (Online) 支持 Azure AD B2B 协作。 有关详细信息，请参阅 Dynamics 365 文章[通过 Azure AD B2B 协作邀请用户](/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration)。
+  - question: >
+      新创建的 B2B 协作用户的初始密码的生存期是什么？
+    answer: "Azure AD 具有固定的字符集、密码强度和帐户锁定要求，同样适用于所有 Azure AD 云用户帐户。 云用户帐户是没有与其他标识提供者联合的帐户，例如 \n* Microsoft 帐户\n* Facebook\n* Active Directory 联合身份验证服务\n* 其他云租户（用于 B2B 协作）\n\n对于联合帐户，密码策略取决于在本地租户中应用的策略和用户的 Microsoft 帐户设置。\n"
+  - question: >
+      组织可能希望在其应用程序中为租户用户和来宾用户提供不同的体验。 是否有针对此事项的标准指南？ 标识提供者声明是否是可用的适当模型？
+    answer: >
+      来宾用户可以使用任何标识提供者进行身份验证。 有关详细信息，请参阅 [B2B 协作用户的属性](user-properties.md)。 使用 **UserType** 属性确定用户体验。 令牌中当前未包括 **UserType** 声明。 应用程序应当使用 Microsoft Graph API 从目录中查询用户并获取其 UserType。
+  - question: >
+      可在何处找到 B2B 协作社区以共享解决方案和提交意见？
+    answer: "我们会在改进 B2B 协作的过程中不断听取反馈。 请分享你的用户方案和最佳做法，并分享 Azure AD B2B 协作中让你钟意的方面。 欢迎在 [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b)参与讨论。\n \n我们还力邀你在 [B2B 协作意见](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas)中提交意见并为未来的功能投票。\n"
+  - question: >
+      是否可以发送自动兑换的邀请，以便用户只需“准备前往”即可？ 或者，用户始终需要单击到达兑换 URL？
+    answer: >
+      可以使用 UI、PowerShell 脚本或 API 邀请合作伙伴组织中的其他用户。 然后，可以向来宾用户发送指向共享应用的直接链接。 在大多数情况下，不再需要打开电子邮件邀请并单击兑换 URL。 请参阅 [Azure Active Directory B2B 协作邀请兑换](redemption-experience.md)。
+  - question: >
+      受邀合作伙伴使用联合添加自己的本地身份验证时，B2B 协作如何工作？
+    answer: "如果合作伙伴具有联合到本地身份验证基础架构的 Azure AD 租户，则会自动实现本地单一登录 (SSO)。 如果合作伙伴没有 Azure AD 租户，则会为新用户创建 Azure AD 帐户。 \n"
+  - question: >
+      Azure AD B2B 是否不接受 gmail.com 和 outlook.com 电子邮件地址，此类帐户是否使用 B2C？
+    answer: >
+      我们将去除 B2B 和企业对消费者 (B2C) 的协作在所支持的标识这方面的差异。 根据所使用的标识决定使用 B2B 还是 B2C 并不是一个合理的原因。 有关选择协作选项的信息，请参阅[在 Azure Active Directory 中比较 B2B 协作和 B2C](compare-with-b2c.md)。
+  - question: >
+      是否可以邀请 Azure AD B2C 本地帐户加入 Azure AD 租户进行 B2B 协作？
+    answer: >
+      错误。 Azure AD B2C 本地帐户只能用于登录 Azure AD B2C 租户。 该帐户不能用于登录 Azure AD 租户。 不支持邀请 Azure AD B2C 本地帐户加入 Azure AD 租户来进行 B2B 协作。
+  - question: >
+      哪些应用程序和服务支持 Azure B2B 来宾用户？
+    answer: "所有与 Azure AD 集成的应用程序都可以支持 Azure B2B 来宾用户，但必须使用设置为租户的终结点对来宾用户进行身份验证。 可能还需要在来宾用户对应用进行身份验证时颁发的 SAML 令牌中[自定义声明](claims-mapping.md)。 \n"
+  - question: >
+      如果合作伙伴未启用多重身份验证，我们是否可以强制 B2B 来宾用户使用多重身份验证？
+    answer: >
+      是的。 有关详细信息，请参阅 [B2B 协作用户的条件访问](conditional-access.md)。
+  - question: >
+      在 SharePoint 中，可以为外部用户定义“允许”和“拒绝”列表。 在 Azure 中是否可以执行此操作？
+    answer: "是的。 Azure AD B2B 协作支持允许列表和拒绝列表。 \n"
+  - question: >
+      使用 Azure AD B2B 需要哪些许可证？
+    answer: >
+      若要了解组织使用 Azure AD B2B 所需的许可证，请参阅[外部标识定价](external-identities-pricing.md)。
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n[什么是 Azure AD B2B 协作？](what-is-b2b.md)"

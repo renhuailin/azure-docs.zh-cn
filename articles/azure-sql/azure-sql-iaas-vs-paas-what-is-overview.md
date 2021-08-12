@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: dabfe4c3416d1595d8f030d3c671fe2aa0b0c7a3
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: b8f55a720583713fad59fc07495dcab070d19fa7
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110708935"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378085"
 ---
 # <a name="what-is-azure-sql"></a>什么是 Azure SQL？ 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -158,7 +158,7 @@ Azure SQL 数据库提供了以下部署选项：
 
 对于许多 IT 部门而言，首要任务是达到服务级别协议 (SLA) 规定的正常运行时间。 本部分会说明 SLA 对每个数据库托管选项代表的含义。
 
-对于 Azure SQL 数据库和 Azure SQL 托管实例，Microsoft 提供 99.99% 的可用性 SLA。 有关最新信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/sql-database/)。
+对于 Azure SQL 数据库和 Azure SQL 托管实例，Microsoft 提供 99.99% 的可用性 SLA。 有关最新信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/azure-sql-database)。
 
 对于 Azure VM 上的 SQL，Microsoft 提供 99.95% 的可用性 SLA（仅涵盖虚拟机）。 此 SLA 不涵盖 VM 上运行的进程（例如 SQL Server），并且要求你在可用性集中托管至少两个 VM 实例。 有关最新信息，请参阅 [VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)。 为了在 VM 中实现数据库高可用性 (HA)，应在 SQL Server 中配置受支持的高可用性选项之一，例如 [Always On 可用性组](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)。 使用支持的高可用性选项不会提供更多 SLA，但使用户能够实现 >99.99% 的数据库可用性。
 

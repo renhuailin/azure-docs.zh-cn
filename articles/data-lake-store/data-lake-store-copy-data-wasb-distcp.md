@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
 ms.openlocfilehash: c608f357eb1eff9fd36e583b98d26250a71cb923
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85515677"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>使用 DistCp 在 Azure 存储 Blob 与 Azure Data Lake Storage Gen1 之间复制数据
@@ -83,7 +83,7 @@ HDInsight 群集附带了 DistCp 工具，它可用于将数据从不同的源�
 
 * **步骤 1：确定总 YARN 内存** - 第一步是确定可供运行 DistCp 作业的群集使用的 YARN 内存。 可在与群集关联的 Ambari 门户中获取此信息。 转到 YARN 并查看“配置”选项卡，以查看 YARN 内存。 要获取总 YARN 内存，可将每个节点的 YARN 内存与你在群集中拥有的节点数相乘。
 
-* **步骤 2：计算映射器数** - **m** 的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小信息也可以在 Ambari 门户中找到。 转到 YARN 并查看“配置”选项卡。YARN 容器大小显示在此窗口中。 用于计算映射器数量 (m) 的公式是：
+* **步骤 2：计算映射器数** - **m** 的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小信息也可以在 Ambari 门户中找到。 导航到 YARN 并查看“配置”选项卡。YARN 容器大小显示在此窗口中。 用于计算映射器数量 (m) 的公式是：
 
    `m = (number of nodes * YARN memory for each node) / YARN container size`
 

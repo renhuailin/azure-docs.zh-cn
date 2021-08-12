@@ -9,12 +9,12 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f5682302ea0fa83c04a8560ba3f0f98ea075e072
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: ba85f51e821faf1c4704d7295dd6ddfcb977c3c9
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565536"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112539045"
 ---
 # <a name="connect-to-synapse-sql"></a>连接到 Synapse SQL
 连接到 Azure Synapse Analytics 中的 Synapse SQL 功能。
@@ -94,4 +94,4 @@ Synapse SQL 在连接和创建对象期间会标准化一些设置。 这些设�
 若要执行无服务器 SQL 池查询，建议使用 [Azure Data Studio](get-started-azure-data-studio.md) 和 Azure Synapse Studio 这两个工具。
 
 ## <a name="next-steps"></a>后续步骤
-若要使用 Visual Studio 进行连接和查询，请参阅[使用 Visual Studio 进行查询](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 若要详细了解身份验证选项，请参阅[向 Synapse SQL 进行身份验证](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+若要使用 Visual Studio 进行连接和查询，请参阅[使用 Visual Studio 进行查询](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 若要详细了解身份验证选项，请参阅[向 Synapse SQL 进行身份验证](sql-authentication.md?tabs=provisioned)。

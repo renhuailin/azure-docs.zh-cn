@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集上启用和配
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 7dbe0a75ce2079bdec752f7fee0c3e97e3ae2ffa
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d42834252416a2aeed40db5fe307cd97f1bbada9
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767342"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007294"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>使用 Azure Kubernetes 服务上的 Azure 超级磁盘（预览）
 
@@ -21,30 +21,6 @@ ms.locfileid: "107767342"
 
 > [!IMPORTANT]
 > 如果要使用 Azure 超级磁盘，需要在支持这些磁盘的可用性区域和其他区域中以及特定的 VM 系列上部署节点池。 查看[超级磁盘 GA 范围和限制](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)。
-
-### <a name="register-the-enableultrassd-preview-feature"></a>注册 `EnableUltraSSD` 预览功能
-
-若要创建可利用超级磁盘的 AKS 群集或节点池，需要在订阅上启用 `EnableUltraSSD` 功能标志。
-
-使用 [az feature register][az-feature-register] 命令注册 `EnableUltraSSD` 功能标志，如以下示例所示：
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "EnableUltraSSD"
-```
-
-状态显示为“已注册”需要几分钟时间。 可以使用 [az feature list][az-feature-list] 命令检查注册状态：
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableUltraSSD')].{Name:name,State:properties.state}"
-```
-
-准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
 
@@ -64,7 +40,7 @@ az extension update --name aks-preview
 
 ## <a name="create-a-new-cluster-that-can-use-ultra-disks"></a>创建可以使用超级磁盘的新群集
 
-使用以下 CLI 命令创建能够利用超级磁盘的 AKS 群集。 使用 `--aks-custom-headers` 标志设置 `EnableUltraSSD` 功能。
+使用以下 CLI 命令创建能够利用超级磁盘的 AKS 群集。 使用 `--enable-ultra-ssd` 标志设置 `EnableUltraSSD` 功能。
 
 创建 Azure 资源组：
 
@@ -77,20 +53,20 @@ az group create --name myResourceGroup --location westus2
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
-az aks create -g MyResourceGroup -n MyManagedCluster -l westus2 --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
+az aks create -g MyResourceGroup -n MyManagedCluster -l westus2 --node-vm-size Standard_D2s_v3 --zones 1 2 --node-count 2 --enable-ultra-ssd
 ```
 
-如果要创建不支持超级磁盘的群集，可以省略自定义 `--aks-custom-headers` 参数。
+如果要创建不支持超级磁盘的群集，可以省略 `--enable-ultra-ssd` 参数。
 
 ## <a name="enable-ultra-disks-on-an-existing-cluster"></a>启用现有群集上的超级磁盘
 
-可以通过将新的节点池添加到支持超级磁盘的群集上，在现有群集上启用超级磁盘。 使用 `--aks-custom-headers` 标志将新的节点池配置为使用超级磁盘。
+可以通过将新的节点池添加到支持超级磁盘的群集上，在现有群集上启用超级磁盘。 使用 `--enable-ultra-ssd` 标志将新的节点池配置为使用超级磁盘。
 
 ```azurecli
-az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
+az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_D2s_v3 --zones 1 2 --node-count 2 --enable-ultra-ssd
 ```
 
-如果要创建不支持超级磁盘的新节点池，可以省略自定义 `--aks-custom-headers` 参数。
+如果要创建不支持超级磁盘的新节点池，可以省略 `--enable-ultra-ssd` 参数。
 
 ## <a name="use-ultra-disks-dynamically-with-a-storage-class"></a>通过存储类动态使用超级磁盘
 

@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 04/28/2021
-ms.openlocfilehash: f37ef6f968542c1f8fc1ef2f328cd2a78c024852
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 813a49cbb2937da19dd0b71029cc172f632e7dab
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108278125"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403723"
 ---
 如果要针对受限制设备进行开发，可以将 IoT 即插即用与以下内容一起使用：
 
@@ -24,7 +24,7 @@ ms.locfileid: "108278125"
 
 ## <a name="use-the-sdk-for-embedded-c"></a>使用 SDK for Embedded C
 
-SDK for Embedded C 提供了一种将受限制设备连接到 Azure IoT 服务的轻量级解决方案，包括使用 [IoT 即插即用约定](../articles/iot-pnp/concepts-convention.md)。 以下链接包括基于 MCU 的设备的示例，用于教育和调试目的。
+SDK for Embedded C 提供了一种将受限制设备连接到 Azure IoT 服务的轻量级解决方案，包括使用 [IoT 即插即用约定](../articles/iot-develop/concepts-convention.md)。 以下链接包括基于 MCU 的设备的示例，用于教育和调试目的。
 
 ### <a name="use-an-mcu-based-device"></a>使用基于 MCU 的设备
 

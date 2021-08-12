@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: aacb8d4ffb98d553b17aa52e4c4b11a4837dc1c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7e04e7d5700315595aa20d40526e7bd348b55c4
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93337857"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112233850"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>教程：使用 SQL API 设置 Azure Cosmos DB 全局分发
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "93337857"
 > * 使用 [SQL API](./introduction.md) 配置全局分发
 
 <a id="portal"></a>
-[!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
+[!INCLUDE [cosmos-db-tutorial-global-distribution-portal](includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 ## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a> 使用 SQL API 连接到首选区域
 

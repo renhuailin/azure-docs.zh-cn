@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 04/12/2021
 ms.author: yuajia
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 3b64efab10a9d52209f04dfd43a43654eb55467a
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: ee721a56da41c4a5ff9184c6bc716784f858507d
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706945"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112467628"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>教程：将自定义域添加到终结点
 
@@ -23,7 +23,7 @@ ms.locfileid: "110706945"
 
 CDN 配置文件中的终结点名称是 azureedge.net 的子域。 默认情况下，交付内容时，URL 中包含 CDN 配置文件域。
 
-例如， **https://contoso.azureedge.net/photo.png** 。
+例如，`https://contoso.azureedge.net/photo.png` 。
 
 Azure CDN 提供了用于将自定义域与 CDN 终结点相关联的选项。 使用此选项时，会在 URL 中使用自定义域（而不是默认域）来交付内容。
 
@@ -83,7 +83,7 @@ Azure DNS 将别名记录用于同一订阅中的 Azure 资源。
 
 4. 在“添加记录集”中，输入或选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 名称  | 输入要用于 CDN 终结点的别名。 例如 **www**。 |
     | 类型  | 选择“CNAME”。 |

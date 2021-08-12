@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Juno Journey 配置自动用户预配 | Microsoft 文档
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Juno Journey 及如何解除预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
-ms.author: Zhchia
-ms.openlocfilehash: 0efb451997b0ed842e6757a7e6b30dd88b33f4aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 58466aabebb7a69a2c17a9ac4be9afc30ccd00af
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96177842"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767494"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>教程：为 Juno Journey 配置自动用户预配
 
@@ -79,7 +79,7 @@ ms.locfileid: "96177842"
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 

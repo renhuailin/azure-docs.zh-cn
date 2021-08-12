@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f2e11fa1bb9f1d3a3986a19da8ed44229829ec81
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96741773"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>启用本地 Azure Active Directory 密码保护
@@ -26,7 +26,7 @@ ms.locfileid: "96741773"
 
 有关 Azure AD 密码保护在本地环境中的工作原理的详细信息，请参阅[如何为 Windows Server Active Directory 强制实施 Azure AD 密码保护](concept-password-ban-bad-on-premises.md)。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本文介绍如何为本地环境启用 Azure AD 密码保护。 在完成本文之前，请在本地 AD DS 环境中[安装并注册 Azure AD 密码保护代理服务和 DC 代理](howto-password-ban-bad-on-premises-deploy.md)。
 

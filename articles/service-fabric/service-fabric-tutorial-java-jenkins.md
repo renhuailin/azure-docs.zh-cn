@@ -4,12 +4,12 @@ description: 本教程介绍如何设置使用 Jenkins 部署 Java Service Fabri
 ms.topic: tutorial
 ms.date: 08/27/2018
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: a969db374a5645f5920a5871c26619d36ae3f194
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 2f09472d52faa4fd9147fb3f660467218f3b032b
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413098"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983747"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>教程：配置 Jenkins 环境以便为 Service Fabric 上的 Java 应用程序启用 CI/CD
 
@@ -40,12 +40,14 @@ ms.locfileid: "111413098"
 
 可在 Service Fabric 群集内部或外部设置 Jenkins。 以下说明介绍如何使用提供的 Docker 映像在群集外部设置 Jenkins。 但也可以使用预配置的 Jenkins 生成环境。 以下容器映像已连同 Service Fabric 插件一起安装，随时可与 Service Fabric 配合使用。
 
-1. 拉取 Service Fabric Jenkins 容器映像：`docker pull mcr.microsoft.com/azuredocs/jenkins:v10`。 此映像附带了预安装的 Service Fabric Jenkins 插件。
+[!INCLUDE [pull-image-include](../../includes/pull-image-include.md)]
+
+1. 拉取 Service Fabric Jenkins 容器映像：`docker pull rapatchi/jenkins:v10`。 此映像附带了预安装的 Service Fabric Jenkins 插件。
 
 1. 结合 Azure 证书存储在已装载本地计算机上的位置运行容器映像。
 
     ```bash
-    docker run -itd -p 8080:8080 -v /service-fabric-java-quickstart/AzureCluster mcr.microsoft.com/azuredocs/jenkins:v10
+    docker run -itd -p 8080:8080 -v /service-fabric-java-quickstart/AzureCluster rapatchi/jenkins:v10
     ```
 
 1. 获取容器映像实例的 ID。 可以使用命令 ``docker ps –a`` 列出所有 Docker 容器

@@ -4,12 +4,12 @@ description: 了解如何对 Azure Monitor Application Insights 的 Java 代理�
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9bcd0ead2516b040a5a5aee4a7fae042a5f678a2
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: cea6e93999477f7f33daaf5440e161a0da6fb2a2
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449981"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112027832"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>故障排除指南：适用于 Java 的 Azure Monitor Application Insights
 
@@ -17,7 +17,7 @@ ms.locfileid: "106449981"
 
 ## <a name="check-the-self-diagnostic-log-file"></a>检查自诊断日志文件
 
-默认情况下，Application Insights 的 Java 3.0 代理在 `applicationinsights-agent-3.0.3.jar` 文件所在的目录中生成名为 `applicationinsights.log` 的日志文件。
+默认情况下，Application Insights Java 3.x 在保存 `applicationinsights-agent-3.1.1.jar` 文件的同一目录中生成名为 `applicationinsights.log` 的日志文件。
 
 针对你可能遇到的问题查找线索时，此日志文件是要检查的第一个位置。
 
@@ -27,7 +27,9 @@ ms.locfileid: "106449981"
 
 ## <a name="upgrade-from-the-application-insights-java-2x-sdk"></a>从 Application Insights Java 2.x SDK 进行升级
 
-如果你已在应用程序中使用 Application Insights Java 2.x SDK，则可以继续使用它。 Java 3.0 代理会检测到它。 有关详细信息，请参阅[从 Java 2.x SDK 进行升级](./java-standalone-upgrade-from-2x.md)。
+如果你已在应用程序中使用 Application Insights Java 2.x SDK，则可以继续使用它。
+Application Insights Java 3.x 代理会检测到它，并捕获和关联你通过 2.x SDK 发送的任何自定义遥测，同时禁止 2.x SDK 执行的任何自动收集以防止重复遥测。
+有关详细信息，请参阅[从 Java 2.x SDK 进行升级](./java-standalone-upgrade-from-2x.md)。
 
 ## <a name="upgrade-from-application-insights-java-30-preview"></a>从 Application Insights Java 3.0 预览版进行升级
 
@@ -59,9 +61,9 @@ ms.locfileid: "106449981"
 * 如果使用的是默认 Java 密钥存储
 * 如果使用的是自定义 Java 密钥存储
 
-如果不确定要遵循哪个路径，请检查是否有 JVM 参数 `-Djavax.net.ssl.trustStore=...`。
+如果不确定要使用哪种方法，请检查是否有 JVM 参数 `-Djavax.net.ssl.trustStore=...`。
 如果没有这样的 JVM 参数，则可能使用的是默认 Java 密钥存储。
-如果确实有这样的 JVM 参数，则可能使用的是自定义密钥存储，并且 JVM 参数会将你指向自定义密钥存储。
+如果确实有这样的 JVM 参数，则可能使用的是自定义密钥存储，JVM 参数会将你指向自定义密钥存储。
 
 ### <a name="if-using-the-default-java-keystore"></a>如果使用的是默认 Java 密钥存储：
 

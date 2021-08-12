@@ -3,12 +3,12 @@ title: Azure 事件中心 - 处理 Apache Kafka 事件
 description: 教程：本文介绍如何使用 Azure 流分析处理通过事件中心引入的 Kafka 事件
 ms.topic: tutorial
 ms.date: 05/10/2021
-ms.openlocfilehash: 449301effbbb8fb92a873bd90d95da4653bfd8a2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0a14a4f8a4e82faebe232ac072ebe61e2db427b7
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373591"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113286366"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>教程：使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件 
 本文介绍如何将数据流式传输到事件中心，并使用 Azure 流分析对其进行处理。 其中包括以下步骤： 
@@ -25,7 +25,7 @@ ms.locfileid: "110373591"
 若要完成本快速入门，请确保符合以下先决条件：
 
 * Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-* [Java 开发工具包 (JDK) 1.7+](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
+* [Java 开发工具包 (JDK) 1.7+](/azure/developer/java/fundamentals/java-support-on-azure)。
 * [下载](https://maven.apache.org/download.cgi)并[安装](https://maven.apache.org/install.html) Maven 二进制存档。
 * [Git](https://www.git-scm.com/)
 * **Azure 存储帐户**。 如果没有帐户，[先创建一个帐户](../storage/common/storage-account-create.md)，然后再继续进行操作。 本演练中的流分析作业将输出数据存储在 Azure Blob 存储中。 

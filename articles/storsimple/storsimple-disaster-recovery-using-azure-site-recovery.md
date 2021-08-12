@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
 ms.openlocfilehash: c6152d4b9ee28554efcb5b08b7a2d161a0723852
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "104670898"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>使用 Azure Site Recovery 针对 StorSimple 上托管的文件共享创建自动灾难恢复解决方案
@@ -93,7 +93,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
       
 1. 单击“下一步”。
 1. 接受 **协议条款**，并单击“下一步”。
-1. 单击“完成”  。
+1. 单击“完成”。
 1. 使用从 StorSimple 存储中划分出来的卷创建文件共享。 有关详细信息，请参阅 [Use the StorSimple Manager service to manage volumes](./index.yml)（使用 StorSimple Manager 服务管理卷）。
    
    1. 在本地 VM 上，按 Windows 键 + Q 并搜索 **iSCSI**。
@@ -361,5 +361,5 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
   > 请在设备故障转移完成后重新运行恢复计划。
 
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 使用 Azure Site Recovery，可以针对在 StorSimple 存储中托管文件共享的文件服务器 VM 创建完整的自动化灾难恢复计划。 发生服务中断时，可以在数秒内从任何位置启动故障转移，在数分钟内启动和运行应用程序。
