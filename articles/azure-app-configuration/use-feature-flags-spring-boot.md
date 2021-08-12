@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 09/26/2019
+ms.date: 06/25/2021
 ms.author: mametcal
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 0dcf85add4e1c9f1d701c4ce4a122c8d6b31382a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc101eac5d3829d8f4bcb84c79481b2053f82965
+ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92077824"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113037645"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>教程：在 Spring Boot 应用中使用功能标志
 
@@ -51,25 +51,16 @@ public HelloController(FeatureManager featureManager) {
 
 将 Spring Boot 应用程序连接到应用程序配置的最简单方法是使用配置提供程序：
 
-### <a name="spring-cloud-11x"></a>Spring Cloud 1.1.x
-
 ```xml
 <dependency>
-    <groupId>com.microsoft.azure</groupId>
-    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-    <version>1.1.2</version>
+    <groupId>com.azure.spring</groupId>
+    <artifactId>azure-spring-cloud-feature-management-web</artifactId>
+    <version>2.0.0</version>
 </dependency>
 ```
 
-### <a name="spring-cloud-12x"></a>Spring Cloud 1.2.x
-
-```xml
-<dependency>
-    <groupId>com.microsoft.azure</groupId>
-    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-    <version>1.2.2</version>
-</dependency>
-```
+> [!NOTE]
+> 如果需要支持旧版本的 Spring Boot，请参阅我们的[旧库](https://github.com/Azure/azure-sdk-for-java/blob/spring-cloud-starter-azure-appconfiguration-config_1.2.9/sdk/appconfiguration/spring-cloud-azure-feature-management/README.md)。
 
 ## <a name="feature-flag-declaration"></a>功能标志声明
 
@@ -183,7 +174,7 @@ public String getOldFeature() {
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程已介绍如何使用 `spring-cloud-azure-feature-management-web` 库在 Spring Boot 应用程序中实施功能标志。 有关 Spring Boot 和应用程序配置中的功能管理支持的详细信息，请参阅以下资源：
+本教程已介绍如何使用 `azure-spring-cloud-feature-management-web` 库在 Spring Boot 应用程序中实施功能标志。 有关 Spring Boot 和应用程序配置中的功能管理支持的详细信息，请参阅以下资源：
 
 * [Spring Boot 功能标记示例代码](./quickstart-feature-flag-spring-boot.md)
 * [管理功能标志](./manage-feature-flags.md)

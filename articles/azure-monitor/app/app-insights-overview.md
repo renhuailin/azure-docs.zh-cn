@@ -4,12 +4,12 @@ description: 应用程序性能管理和实时 Web 应用程序的使用情况�
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 1da89ea574c34e457b18c39cdad32061c85f1a14
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: a22bbad35fad5c5c4b231636fa2ac434b186a660
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112289398"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616480"
 ---
 # <a name="what-is-application-insights"></a>什么是 Application Insights？
 Application Insights 是 [Azure Monitor](../overview.md) 的一项功能，是面向开发人员和 DevOps 专业人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时应用程序。 它将自动检测性能异常，并且包含了强大的分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。  它旨在帮助持续提高性能与可用性。 它适用于本地云、混合云或任何公有云中托管的各种平台（包括 .NET、Node.js、Java 和 Python）上的应用。 它与 DevOps 进程集成，并且具有与不同开发工具的连接点。 可以通过与 Visual Studio App Center 集成来监视和分析移动应用的遥测数据。
@@ -95,7 +95,7 @@ Application Insights 是 Microsoft Azure 中托管的众多服务之一，遥测
 * **运行时：检测服务器上的 Web 应用。** 非常适合已部署的应用程序。 避免任何代码更新。
   * [**在 Azure Web 应用中托管的 ASP.NET 或 ASP.NET Core 应用程序**](./azure-web-apps.md)
   * [在 Azure VM 或 Azure 虚拟机规模集的 IIS 中托管的 ASP.NET 应用程序](./azure-vm-vmss-apps.md)
-  * [在 VM 的 IIS 中托管的 ASP.NET 应用程序](./monitor-performance-live-website-now.md)
+  * [在本地服务器的 IIS 中托管的 ASP.NET 应用程序](./status-monitor-v2-overview.md)
 * **开发时：将 Application Insights 添加到代码。** 可以自定义遥测数据收集和发送其他遥测数据。
   * [ASP.NET 应用程序](./asp-net.md)
   * [ASP.NET Core 应用程序](./asp-net-core.md)
@@ -112,7 +112,7 @@ Application Insights 是 Microsoft Azure 中托管的众多服务之一，遥测
 在运行时开始使用：
 
 * [Azure VM 和 Azure 虚拟机规模集的托管 IIS 应用](./azure-vm-vmss-apps.md)
-* [IIS 服务器](./monitor-performance-live-website-now.md)
+* [IIS 服务器](./status-monitor-v2-overview.md)
 * [Azure Web 应用](./azure-web-apps.md)
 
 在开发时开始使用：
@@ -148,5 +148,5 @@ Application Insights 是 Microsoft Azure 中托管的众多服务之一，遥测
 [platforms]: ./platforms.md
 [portal]: https://portal.azure.com/
 [qna]: ../faq.yml
-[redfield]: ./monitor-performance-live-website-now.md
+[redfield]: ./status-monitor-v2-overview.md
 

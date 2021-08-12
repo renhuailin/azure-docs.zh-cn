@@ -1,19 +1,19 @@
 ---
-title: include 文件
-description: include 文件
+title: 包含文件
+description: 包含文件
 services: active-directory
-author: daveba
+author: barclayn
 ms.service: msi
 ms.topic: include
-ms.date: 05/29/2018
-ms.author: daveba
+ms.date: 07/20/2021
+ms.author: barclayn
 ms.custom: include file
-ms.openlocfilehash: 874dd2613cda70ae96b11fe99ee2944af02c2369
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a5544d481974a9c9ff176104dda0816950ed970
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95997356"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114593210"
 ---
 > [!IMPORTANT]
-> 创建用户分配标识时，只能使用字母数字字符（0-9、a-z、A-Z）、下划线 (\_) 和连字符 (-)。 另外，为了确保能够正常分配给 VM/VMSS，名称长度应该为 3 到 128 个字符。 请关注后续更新。 有关详细信息，请参阅 [FAQ 和已知问题](../articles/active-directory/managed-identities-azure-resources/known-issues.md)。
+> 创建用户分配的托管标识时，只能使用字母数字字符（0-9、a-z、A-Z）和连字符 (-)。 要使虚拟机或虚拟机规模集的分配正常工作，该名称限制为 24 个字符。 有关详细信息，请参阅 [FAQ 和已知问题](../articles/active-directory/managed-identities-azure-resources/known-issues.md)。

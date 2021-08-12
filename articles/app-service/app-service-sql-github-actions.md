@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 04/22/2021
 ms.author: jukullam
 ms.custom: github-actions-azure
-ms.openlocfilehash: 5f27a0cbfedd9b5021be2aa54ab5fb021b48d0b2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f8048dab26451fea85b52caa3ffdc27d7e0a677a
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110103164"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111894139"
 ---
 # <a name="tutorial-use-github-actions-to-deploy-to-app-service-for-containers-and-connect-to-a-database"></a>教程：使用 GitHub Actions 部署到用于容器的应用服务并连接到数据库
 
-本教程逐步介绍如何设置一个 GitHub Actions 工作流，以使用 [Azure SQL 数据库](../azure-sql/database/sql-database-paas-overview.md)后端部署容器化的 ASP.NET Core 应用程序。 完成后，你便拥有了一个在 Azure 中运行并连接到 SQL 数据库的 ASP.NET 应用。 首先，你将使用 [ARM 模板](/azure/azure-resource-manager/templates/overview) GitHub Actions 工作流创建 Azure资源。
+本教程逐步介绍如何设置一个 GitHub Actions 工作流，以使用 [Azure SQL 数据库](../azure-sql/database/sql-database-paas-overview.md)后端部署容器化的 ASP.NET Core 应用程序。 完成后，你便拥有了一个在 Azure 中运行并连接到 SQL 数据库的 ASP.NET 应用。 首先，你将使用 [ARM 模板](../azure-resource-manager/templates/overview.md) GitHub Actions 工作流创建 Azure资源。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -85,7 +85,7 @@ https://github.com/Azure-Samples/dotnetcore-containerized-sqldb-ghactions/
 
 ## <a name="create-azure-resources"></a>创建 Azure 资源
 
-“创建 Azure 资源”工作流运行一个 [ARM 模板](/azure/azure-resource-manager/templates/overview)以将资源部署到 Azure。 该工作流：
+“创建 Azure 资源”工作流运行一个 [ARM 模板](../azure-resource-manager/templates/overview.md)以将资源部署到 Azure。 该工作流：
 
 - 通过[签出操作](https://github.com/marketplace/actions/checkout)签出源代码。
 - 通过 [Azure 登录操作](https://github.com/marketplace/actions/azure-login)登录到 Azure，并收集环境和 Azure 资源的信息。
@@ -119,7 +119,7 @@ https://github.com/Azure-Samples/dotnetcore-containerized-sqldb-ghactions/
 
 ## <a name="build-push-and-deploy-your-image"></a>生成、推送和部署映像
 
-生成、推送和部署工作流生成一个包含最新应用更改的容器，将该容器推送到 [Azure 容器注册表](/azure/container-registry/)，并将 Web 应用程序过渡槽更新为指向所推送的最新容器。 该工作流包含生成和部署作业：
+生成、推送和部署工作流生成一个包含最新应用更改的容器，将该容器推送到 [Azure 容器注册表](../container-registry/index.yml)，并将 Web 应用程序过渡槽更新为指向所推送的最新容器。 该工作流包含生成和部署作业：
 
 - 生成作业通过[签出操作](https://github.com/marketplace/actions/checkout)签出源代码。 然后，该作业使用 [Docker 登录操作](https://github.com/marketplace/actions/docker-login)和自定义脚本向 Azure 容器注册表进行身份验证，生成容器映像，并将其部署到 Azure 容器注册表。
 - 部署作业通过 [Azure 登录操作](https://github.com/marketplace/actions/azure-login)登录到 Azure，并收集环境和 Azure 资源的信息。 然后，该作业通过 [Azure 应用服务设置操作](https://github.com/marketplace/actions/azure-app-service-settings)更新 Web 应用设置，并通过 [Azure Web 部署操作](https://github.com/marketplace/actions/azure-webapp)部署到应用服务过渡槽。 最后，该作业运行自定义脚本来更新 SQL 数据库，并从过渡槽交换到生产槽。

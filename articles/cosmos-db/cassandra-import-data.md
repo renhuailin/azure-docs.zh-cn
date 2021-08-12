@@ -1,20 +1,20 @@
 ---
 title: 将数据迁移到 Azure Cosmos DB 中的 Cassandra API 帐户 - 教程
 description: 本教程介绍如何使将数据从 Apache Cassandra 复制到 Azure Cosmos DB 的 Cassandra API 帐户中。
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7c55cbf4b8739a885c499c820a7e68825522ea4e
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 1f38c0f37daebae0a0320882c7232444819dae39
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449284"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113587798"
 ---
 # <a name="tutorial-migrate-your-data-to-a-cassandra-api-account"></a>教程：将数据迁移到 Cassandra API 帐户
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -97,7 +97,7 @@ ms.locfileid: "106449284"
 
 1. 预配 [Azure Databricks 群集](cassandra-spark-databricks.md)或 [Azure HDInsight 群集](cassandra-spark-hdinsight.md)。 
 
-1. 使用[表复制操作](cassandra-spark-table-copy-ops.md)将数据移动到目标 Cassandra API 终结点。 
+1. 将数据移到目标 Cassandra API 终结点。 有关使用 Azure Databricks 进行迁移的信息，请参阅[此操作指南](cassandra-migrate-cosmos-db-databricks.md)。
 
 如果有数据驻留在 Azure 虚拟机或任何其他云的现有群集中，则建议使用 Spark 作业迁移数据。 若要执行此操作，必须将 Spark 设置为用于一次性引入或常规引入的中介。 你可以通过使用本地环境和 Azure 之间的 Azure ExpressRoute 连接加速此迁移。 
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 94568eb5d64f07133ebb9992cdae59400830dd5e
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: b6dce9f84ff78a7caaf5f5f7ef702053640cee7a
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226882"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112519094"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>教程：使用 Azure IoT 中心设备预配服务将设备预配到 IoT 中心
 
@@ -71,8 +71,6 @@ ms.locfileid: "107226882"
 IoT 设备可以是真实设备，也可以是模拟设备。 因为 IoT 设备现在已向设备预配服务实例进行了注册，设备现在可以启动，并且可以调用预配服务，以便该服务使用认证机制来识别此设备。 在预配服务识别设备后，设备将被分配给一个 IoT 中心。 
 
 针对 C、Java、C#、Node.js 和 Python 提供了模拟设备示例（使用 TPM 和 X.509 认证）。 例如，使用 TPM 和 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 的模拟设备将遵循[模拟设备的首次引导顺序](quick-create-simulated-device.md#simulate-first-boot-sequence-for-the-device)部分中介绍的流程。 使用 X.509 证书认证的相同设备将参考此[引导顺序](quick-create-simulated-device-x509.md#simulate-first-boot-sequence-for-the-device)部分。
-
-有关适用于真实设备的示例，请参阅 [MXChip IoT DevKit 操作指南](how-to-connect-mxchip-iot-devkit.md)。
 
 启动该设备可以让设备的客户端应用程序开始注册到设备预配服务。  
 

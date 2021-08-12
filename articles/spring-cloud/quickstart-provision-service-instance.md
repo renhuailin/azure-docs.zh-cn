@@ -1,19 +1,19 @@
 ---
 title: 快速入门 - 预配 Azure Spring Cloud 服务
 description: 介绍如何创建 Azure Spring Cloud 服务实例以实现应用部署。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 779f1bead820af99b7f0bba859518eaa5d0ea2fc
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 243f176fd906ecfe33c38bebc7e7745a7dc15e1e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286630"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114470584"
 ---
 # <a name="quickstart-provision-an-azure-spring-cloud-service"></a>快速入门：预配 Azure Spring Cloud 服务
 
@@ -78,11 +78,11 @@ az extension add --name spring-cloud
 1. 设置默认资源组名称和服务实例名称，这样就不必在后续命令中重复指定这些值。
 
    ```azurecli
-   az configure --defaults group=<resource group name>
+   az config set defaults.group=<resource group name>
    ```
 
    ```azurecli
-   az configure --defaults spring-cloud=<service instance name>
+   az config set defaults.spring-cloud=<service instance name>
    ```
 ::: zone-end
 
@@ -160,7 +160,7 @@ az extension add --name spring-cloud
 1. 使用以下命令设置默认的资源组名称和 Spring Cloud 服务名称：
 
     ```azurecli
-    az configure --defaults group=<resource group name> spring-cloud=<service name>
+    az config set defaults.group=<resource group name> defaults.spring-cloud=<service name>
     ```
 ---
 ::: zone-end

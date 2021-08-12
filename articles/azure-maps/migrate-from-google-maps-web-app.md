@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: fcb8090427530271600a6699fafa5c488c426784
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f034d5e4edd1e99605f3620cdf99084ae8c4ea86
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97680879"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114437204"
 ---
 # <a name="tutorial-migrate-a-web-app-from-google-maps"></a>教程：从 Google Maps 迁移 Web 应用
 
@@ -40,7 +40,7 @@ ms.locfileid: "97680879"
 
 如果迁移现有的 Web 应用程序，请检查该应用程序是否使用开源地图控件库。 开源地图控件库的示例包括：Cesium、Leaflet 和 OpenLayers。 即使应用程序使用开源地图控件库，而你不想要使用 Azure Maps Web SDK，也仍可以迁移该应用程序。 在这种情况下，请将应用程序连接到 Azure Maps 图块服务（[道路图块](/rest/api/maps/render/getmaptile) \| [卫星图块](/rest/api/maps/render/getmapimagerytile)）。 下面指出了有关如何在某些常用开源地图控件库中使用 Azure Maps 的详细信息。
 
-* Cesium - 适用于 Web 的 3D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [文档](https://cesiumjs.org/)
+* Cesium - 适用于 Web 的 3D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [文档](https://www.cesium.com/)
 * Leaflet - 适用于 Web 的轻型 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [文档](https://leafletjs.com/)
 * OpenLayers - 支持投影的适用于 Web 的 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [文档](https://openlayers.org/)
 
@@ -1318,12 +1318,12 @@ map.overlayMapTypes.insertAt(0, new google.maps.ImageMapType({
 
 ![Google Maps 图块层](media/migrate-google-maps-web-app/google-maps-tile-layer.png)
 
-#### <a name="after-azure-maps"></a>后者：Azure Maps
+#### <a name="after-azure-maps&quot;></a>后者：Azure Maps
 
 可以像添加任何其他层一样将图块层添加到地图中。 使用包含 x 轴、y 轴、缩放比例占位符的带格式 URL；`{x}`、`{y}`、`{z}` 用于告知层要在何处访问图块。 Azure Maps 图块层还支持 `{quadkey}`、`{bbox-epsg-3857}` 和 `{subdomain}` 占位符。
 
 > [!TIP]
-> 在 Azure Maps 中，可以轻松地在其他层（包括基础地图层）下面呈现层。 通常，最好是在地图标签下面呈现图块层，以便于阅读。 `map.layers.add` 方法采用另一个参数，该参数是要在其中插入新层的层的 ID。 若要在地图标签下面插入图块层，请使用以下代码：`map.layers.add(myTileLayer, "labels");`
+> 在 Azure Maps 中，可以轻松地在其他层（包括基础地图层）下面呈现层。 通常，最好是在地图标签下面呈现图块层，以便于阅读。 `map.layers.add` 方法采用另一个参数，该参数是要在其中插入新层的层的 ID。 若要在地图标签下面插入图块层，请使用以下代码：`map.layers.add(myTileLayer, &quot;labels");`
 
 ```javascript
 //Create a tile layer and add it to the map below the label layer.
@@ -1390,7 +1390,7 @@ Azure Maps 和 Google Maps 都支持在地图上叠加地理围栏图像。 平�
 
 #### <a name="before-google-maps"></a>前者：Google Maps
 
-指定要叠加的图像的 URL，以及用于在地图上限定图像的边界框。 此示例在地图上叠加 [1922 年新泽西州纽瓦克市](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)的地图图像。
+指定要叠加的图像的 URL，以及用于在地图上限定图像的边界框。 此示例在地图上叠加 1922 年新泽西州纽瓦克市的地图图像。
 
 ```html
 <!DOCTYPE html>

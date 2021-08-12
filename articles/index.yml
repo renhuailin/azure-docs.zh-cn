@@ -230,7 +230,7 @@ productDirectory:
       imageSrc: ./media/index/metrics-advisor.svg
       azureCategories:
         - ai-machine-learning
-      url: cognitive-services/metrics-advisor/index.yml
+      url: applied-ai-services/metrics-advisor/index.yml
     - title: 个性化体验创建服务
       summary: 一项 AI 服务，用于提供个性化的用户体验
       imageSrc: 'https://static.docs.com/ui/media/product/azure/cognitive-services.svg'
@@ -552,11 +552,11 @@ productDirectory:
       url: app-service/index.yml
     - title: Azure 虚拟桌面
       summary: Azure 上提供的最佳虚拟桌面体验
-      imageSrc: 'https://static.docs.com/ui/media/product/azure/windows-virtual-desktop.svg'
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-desktop.svg'
       azureCategories:
         - featured
         - compute
-        - windows-virtual-desktop
+        - azure-virtual-desktop
       url: virtual-desktop/index.yml
     - title: Windows 虚拟机
       summary: 在数秒内预配好 Windows 虚拟机
@@ -571,7 +571,7 @@ productDirectory:
       azureCategories:
         - containers
         - developer-tools
-      url: dev-spaces/index.yml
+      url: /previous-versions/azure/dev-spaces/
     - title: Azure Red Hat OpenShift
       summary: 与 Red Hat 联合运营的一项完全托管的 OpenShift 服务
       imageSrc: 'https://static.docs.com/ui/media/product/azure/openshift.svg'

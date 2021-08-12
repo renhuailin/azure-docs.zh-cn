@@ -5,13 +5,13 @@ ms.author: yexu
 author: dearandyxu
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 02/18/2021
-ms.openlocfilehash: 6c7bfaf6bd6ca11593a986ca8d929faf063be720
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 07/05/2021
+ms.openlocfilehash: 927d913122203383b4279d68059040b6bf4be5e7
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905767"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436759"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>使用变更数据捕获 (CDC)，以增量方式将 Azure SQL 托管实例中的数据加载到 Azure 存储
 
@@ -127,11 +127,12 @@ ms.locfileid: "107905767"
    ![屏幕截图显示了一条指示部署已完成的消息和一个可以转到资源的选项。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
 9. 创建完成后，可以看到图中所示的“数据工厂”页。
 
-   ![屏幕截图显示了已部署的数据工厂。](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
-10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
-11. 在“入门”页的左侧面板中，切换到“编辑”选项卡，如下图所示：
+      :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂主页，其中包含“打开 Azure 数据工厂工作室”磁贴。":::
 
-    ![“创建管道”按钮](./media/tutorial-incremental-copy-change-data-capture-feature-portal/get-started-page.png)
+10. 在“打开 Azure 数据工厂工作室”磁贴上选择“打开”，以便在单独的标签页中启动 Azure 数据工厂用户界面 (UI)。 
+11. 在主页中，切换到左侧面板中的“管理”选项卡，如下图所示：
+
+    ![显示“管理”按钮的屏幕截图。](media/doc-common-process/get-started-page-manage-button.png)
 
 ## <a name="create-linked-services"></a>创建链接服务
 可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分中，请创建 Azure 存储帐户和 Azure SQL MI 的链接服务。

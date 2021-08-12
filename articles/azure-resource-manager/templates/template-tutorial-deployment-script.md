@@ -8,15 +8,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/16/2020
+ms.date: 07/02/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 65c94346725123913cc2ea53be9b95a7c1bb0fda
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 2abbcb2d6b6ecd26c1ec44bfdca1f9a995d61e38
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889573"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113231352"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>教程：使用部署脚本创建自签名证书
 
@@ -222,8 +222,6 @@ ms.locfileid: "111889573"
             # private key is added as a secret that can be retrieved in the Resource Manager template
             Add-AzKeyVaultCertificate -VaultName $vaultName -Name $certificateName -CertificatePolicy $policy -Verbose
 
-            $newCert = Get-AzKeyVaultCertificate -VaultName $vaultName -Name $certificateName
-
             # it takes a few seconds for KeyVault to finish
             $tries = 0
             do {
@@ -243,6 +241,7 @@ ms.locfileid: "111889573"
               }
             } while ($operation.Status -ne 'completed')
 
+            $newCert = Get-AzKeyVaultCertificate -VaultName $vaultName -Name $certificateName
             $DeploymentScriptOutputs['certThumbprint'] = $newCert.Thumbprint
             $newCert | Out-String
           }
@@ -324,7 +323,7 @@ ms.locfileid: "111889573"
 
 ## <a name="debug-the-failed-script"></a>调试失败的脚本
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 打开资源组。 资源组是追加了 rg 的项目名称。 你会看到，该资源组中总共有两个其他资源。 这些资源称为 *部署脚本资源*。
 
     ![资源管理器模板部署脚本资源](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-js
-ms.openlocfilehash: cb9e68efd27deb3bf66d3c286c0cd7a128d8bf59
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 2e3af0068902735c4114893d859c04f6ca9f1829
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102430575"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112914294"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>教程：创建单页 Web 应用
 
@@ -431,4 +431,4 @@ cors-proxy-server
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
-> [必应新闻搜索 API 参考](//docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference)
+> [必应新闻搜索 API 参考](/rest/api/cognitiveservices/bing-news-api-v7-reference)

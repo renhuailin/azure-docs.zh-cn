@@ -9,12 +9,12 @@ ms.author: joseys
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e7a114c5ce31ff4df96648ba2545c2222ba4893d
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 303e6363d7a7abbf933e4a49428158118712aa3e
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111602"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707624"
 ---
 # <a name="record-and-download-calls-with-event-grid"></a>使用事件网格录制和下载通话
 
@@ -71,7 +71,7 @@ public async Task<ActionResult> PostAsync([FromBody] object request)
 2. 选择 `Event Subscription`，如下所示。
 ![显示事件网格 UI 的屏幕截图](./media/call-recording/image1-event-grid.png)
 3. 配置事件订阅，并选择 `Call Recording File Status Update` 作为 `Event Type`。 选择 `Webhook` 作为 `Endpoint type`。
-![创建事件订阅](./media/call-recording/image2-create-subscription.png)
+![创建事件订阅](./media/call-recording/image2-create-event-subscription.png)
 4. 将 webhook 的 URL 输入到 `Subscriber Endpoint`。
 ![订阅事件](./media/call-recording/image3-subscribe-to-event.png)
 

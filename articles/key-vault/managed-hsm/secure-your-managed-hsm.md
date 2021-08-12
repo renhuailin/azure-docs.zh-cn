@@ -2,19 +2,19 @@
 title: 保护对托管 HSM 的访问 - Azure Key Vault 托管 HSM
 description: 了解如何使用 Azure RBAC 和托管 HSM 本地 RBAC 保护对托管 HSM 的访问
 services: key-vault
-author: amitbapat
+author: mbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.author: ambapat
-ms.openlocfilehash: 07602bfefbbd38538973c799e2306d21b7a840f1
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.author: mbaldwin
+ms.openlocfilehash: d374df5e0e072fbcc64ddc5e376fb558b3b4fb86
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411982"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440270"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>保护对托管 HSM 的访问
 
@@ -27,7 +27,7 @@ Azure Key Vault 托管 HSM 是一项保护加密密钥的云服务。 因为此�
 若要完成本文中的步骤，必须准备好以下项：
 
 * Microsoft Azure 订阅。 如果没有，可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial)。
-* Azure CLI 版本 2.12.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+* Azure CLI 版本 2.25.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 * 订阅中的托管 HSM。 请参阅[快速入门：使用 Azure CLI 预配和激活托管 HSM](quick-create-cli.md)，预配和激活托管 HSM。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]

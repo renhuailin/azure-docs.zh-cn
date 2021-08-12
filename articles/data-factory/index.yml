@@ -12,19 +12,21 @@ metadata:
   ms.author: jburchel
   ms.date: 06/14/2021
   ms.custom: contperf-fy21q4
-  ms.openlocfilehash: 2cf3843234051d51b681ca8ccb4f0ce88613bd9f
-  ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+  ms.openlocfilehash: 1b0408d7b8d2a9bf766c4e32e418370ad2b458cc
+  ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/16/2021
-  ms.locfileid: "112239619"
+  ms.lasthandoff: 07/15/2021
+  ms.locfileid: "114221573"
 landingContent:
 - title: 关于 Azure 数据工厂
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是 Azure 数据工厂？
+    - text: Azure 数据工厂简介
       url: ./introduction.md
+    - text: Azure 数据工厂的新增功能
+      url: ./whats-new.md
   - linkListType: reference
     links:
     - text: 白皮书

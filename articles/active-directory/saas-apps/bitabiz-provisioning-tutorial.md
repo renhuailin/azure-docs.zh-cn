@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 BitaBIZ 配置自动用户设置 | Microsoft Docs
 description: 了解如何配置 Azure Active Directory 来使其自动将用户帐户预配到 BitaBIZ 和取消其预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: 8eccc3be7da201ee1e2af046c6b515871ef05adc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 23d3249c598c63d36fcc5f06ecca3e0051f863b6
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96350766"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764888"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>教程：为 BitaBIZ 配置自动用户设置
 
@@ -108,7 +108,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 

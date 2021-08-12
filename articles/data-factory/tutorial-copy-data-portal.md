@@ -5,14 +5,14 @@ author: jianleishen
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
+ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: aa8ccdde19dadeb1864037ed13082e42a27b8f59
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 766572462c2596856258f2f154845b940c6b5c1c
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483310"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436795"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂，将数据从 Azure Blob 存储复制到 Azure SQL 数据库中的数据库
 
@@ -96,7 +96,7 @@ ms.locfileid: "109483310"
 8. 选择顶部的“Git 配置”选项卡，然后选择“稍后配置 Git”复选框 。
 9. 选择“查看 + 创建”，然后在通过验证后选择“创建” 。
 10. 创建完成后，通知中心内会显示通知。 选择“转到资源”导航到“数据工厂”页。
-11. 选择“创作和监视”，在单独的选项卡中启动 Azure 数据工厂 UI。
+11. 在“打开 Azure 数据工厂工作室”磁贴上选择“打开”，在单独的选项卡中启动 Azure 数据工厂 UI。 
 
 
 ## <a name="create-a-pipeline"></a>创建管道
@@ -108,11 +108,11 @@ ms.locfileid: "109483310"
 
 在本教程中，请首先创建管道， 然后在配置管道时根据需要创建链接服务和数据集。
 
-1. 在“开始使用”页中，选择“创建管道”。 
+1. 在主页上，选择“协调”。
 
-   ![创建管道](./media/doc-common-process/get-started-page.png)
+   ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
 
-1. 在“常规”面板的“属性”中，将“名称”指定为 CopyPipeline  。 然后通过单击右上角的“属性”图标来折叠面板。
+1. 在“常规”面板的“属性”中，将名称指定为 CopyPipeline  。 然后通过单击右上角的“属性”图标来折叠面板。
 
 1. 在“活动”工具箱中，展开“移动和转换”类别，然后将“复制数据”活动从工具箱拖放到管道设计器图面。   指定 **CopyFromBlobToSql** 作为 **名称**。
 
@@ -171,7 +171,7 @@ ms.locfileid: "109483310"
 
     ![保存新建链接服务](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-1. 将自动导航到“设置属性”对话框。 在“表”中选择“[dbo].[emp]”。 然后选择“确定”。
+1. 将自动导航到“设置属性”对话框。 在“表”中选择“[dbo].[emp]”。 然后选择“确定”。 
 
 1. 转到包含管道的选项卡。在“接收器数据集”中，确认已选中“OutputSqlDataset”。 
 

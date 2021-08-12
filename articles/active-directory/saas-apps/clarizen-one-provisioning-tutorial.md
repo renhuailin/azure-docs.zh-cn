@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 Clarizen One 配置自动用�
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Clarizen One 及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: d8021105-eb5b-4a20-8739-f02e0e22c147
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
-ms.author: Zhchia
-ms.openlocfilehash: f3a19d3c3bf3e4340bb36fd683453541fa15eb6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 1e1ea7a7207486a9fced1cbd330df6b00153a14c
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101650808"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764258"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>教程：为 Clarizen One 配置自动用户预配
 
@@ -135,7 +135,7 @@ ms.locfileid: "101650808"
    |phoneNumbers[type eq "other"].value|字符串|
    |phoneNumbers[type eq "pager"].value|字符串|
    |externalId|字符串|
-   |nickName|字符串|
+   |nickName|String|
    |区域设置|字符串|
    |roles[primary eq "True".type]|字符串|
    |roles[primary eq "True".value]|字符串|

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 06/10/2021
+ms.date: 07/07/2021
 ms.author: aahi
-ms.openlocfilehash: a8645552cba0bb687b5d9a9dc93bc917d7ee38af
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 00ffe7d9911e10dad26976b36954be5fe61c3474
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969325"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113549681"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>如何：情绪分析和观点挖掘
 
@@ -25,7 +25,7 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 
 ## <a name="sentiment-analysis-versions-and-features"></a>情绪分析版本和功能
 
-| Feature                                   | 情绪分析 v3 | 情绪分析 v3.1（预览） |
+| Feature                                   | 情绪分析 v3.0 | 情绪分析 v3.1 |
 |-------------------------------------------|-----------------------|-----------------------------------|
 | 用于单个请求和批量请求的方法    | X                     | X                                 |
 | 情绪分析分数和标记             | X                     | X                                 |
@@ -49,7 +49,7 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 
 ## <a name="opinion-mining"></a>观点挖掘
 
-观点挖掘是情绪分析的一项功能，从版本 3.1 的预览版开始提供。 此功能在自然语言处理 (NLP) 中也称为基于特性的情绪分析，它更加精细地描述了对文本中某些产品或服务属性的观点。 API 将观点作为目标（名词或动词）和评估（形容词）。
+观点挖掘是情绪分析的一项功能，从版本 3.1 开始提供。 此功能在自然语言处理 (NLP) 中也称为基于特性的情绪分析，它更加精细地描述了对文本中某些产品或服务属性的观点。 API 将观点作为目标（名词或动词）和评估（形容词）。
 
 例如，如果客户评论某家酒店，例如“房间很好，但员工不友好”，观点挖掘将查找文本中的目标（方面）及其相关的评估（观点）和情绪。 情绪分析可能只报告消极情绪。
 
@@ -64,7 +64,7 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 
 当为情绪分析提供较少的文本时，会得到更高质量的结果。 这与关键短语提取相反，关键短语提取在处理较大的文本块时表现更好。 要从两个操作获取最佳结果，请考虑相应地重建输入。
 
-必须拥有以下格式的 JSON 文档：ID、文本和语言 情绪分析支持多种语言，并在预览版中提供了更多的语言。 有关详细信息，请参阅[支持的语言](../language-support.md)。
+必须拥有以下格式的 JSON 文档：ID、文本和语言 情绪分析支持多种语言。 有关详细信息，请参阅[支持的语言](../language-support.md)。
 
 每个文档的大小必须少于 5,120 个字符， 对于集合中允许的最大文档数，请参阅“概念”下的[数据限制](../concepts/data-limits.md?tabs=version-3)一文。 集合在请求正文中提交。
 
@@ -72,9 +72,9 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 
 创建 POST 请求。 可[使用 Postman](text-analytics-how-to-call-api.md) 或以下参考链接中的“API 测试控制台”来快速构建并发送请求。 
 
-#### <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
+#### <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
-[情绪分析 v3.1 参考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/Sentiment)
+[情绪分析 v3.1 参考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Sentiment)
 
 #### <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
@@ -89,17 +89,17 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 > [!NOTE]
 > 可以在 Azure 门户上找到文本分析资源的密钥和终结点。 它们将位于资源的“快速启动”页上的“资源管理”下。 
 
-#### <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
+#### <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 **情绪分析**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/sentiment`
 
 **观点挖掘**
 
 若要获取观点挖掘结果，必须包含 `opinionMining=true` 参数。 例如：
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/sentiment?opinionMining=true`
 
 默认情况下，此参数设置为 `false`。 
 
@@ -117,7 +117,7 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 
 ### <a name="example-request-for-sentiment-analysis-and-opinion-mining"></a>情绪分析和观点挖掘的请求示例  
 
-下面是可能提交用于情绪分析的内容示例。 `v3.0` 和 `v3.1-preview` 的请求格式相同。
+下面是可能提交用于情绪分析的内容示例。 `v3.0` 和 `v3.1` 的请求格式相同。
     
 ```json
 {
@@ -142,7 +142,7 @@ API 使用的 AI 模型由该服务提供，只需发送内容即可进行分析
 
 系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中。 然后，将输出导入到可以用来对数据进行排序、搜索和操作的应用程序。 由于多语言和表情符号支持，响应可能包含文本偏移。 有关详细信息，请参阅[如何处理偏移](../concepts/text-offsets.md)。
 
-#### <a name="version-31-preview"></a>[版本 3.1-preview](#tab/version-3-1)
+#### <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>情绪分析和观点挖掘示例响应
 

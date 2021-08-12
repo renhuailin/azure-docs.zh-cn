@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: seoapr2020, devx-track-azurepowershell
 ms.date: 04/24/2020
-ms.openlocfilehash: 3cf8b53cdabbd9360c3e57e5e633327dd4e8a4ad
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: f652c83a6f218fae34ae75cbc70c12a3c85e5da9
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110698506"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112282594"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>教程：使用 Azure 数据工厂在 HDInsight 中创建按需 Apache Hadoop 群集
 
-[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
+[!INCLUDE [selector](includes/hdinsight-create-linux-cluster-selector.md)]
 
 本教程将介绍如何使用 Azure 数据工厂在 Azure HDInsight 中按需创建 [Apache Hadoop](../hdinsight/hdinsight-overview.md#cluster-types-in-hdinsight) 群集。 然后使用 Azure 数据工厂中的数据管道运行 Hive 作业并删除该群集。 本教程结束时，你便知道如何将大数据作业运行`operationalize`，其中的群集创建、作业运行和群集删除操作都是按计划执行的。
 
@@ -189,7 +189,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 3. 为“新建数据工厂”磁贴输入或选择以下值：
 
-    |属性  |Value  |
+    |属性  |值  |
     |---------|---------|
     |名称 | 输入数据工厂的名称。 此名称必须全局唯一。|
     |版本 | 保留为“V2”。 |
@@ -231,7 +231,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 4. 为存储链接服务提供以下值：
 
-    |属性 |Value |
+    |属性 |值 |
     |---|---|
     |名称 |输入 `HDIStorageLinkedService`。|
     |Azure 订阅 |从下拉列表中选择你的订阅。|
@@ -253,7 +253,7 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 4. 在“新建链接服务”窗口中，输入以下值，并将其余项保留为默认值：
 
-    | 属性 | Value |
+    | 属性 | 值 |
     | --- | --- |
     | 名称 | 输入 `HDInsightLinkedService`。|
     | 类型 | 选择“按需 HDInsight”。 |
