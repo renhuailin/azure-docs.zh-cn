@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: a32811b439a569a8f8f82fcc046e0f4b89e47a38
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2441b64d730064c0678eb9fc85945d956448248
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94966694"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288664"
 ---
 # <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>快速入门：使用对称密钥向 IoT 中心预配模拟设备
 
@@ -34,7 +34,7 @@ ms.locfileid: "94966694"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 确保已在计算机上安装 [Java SE 开发工具包 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) 或更高版本。
+* 确保已在计算机上安装 [Java SE 开发工具包 8](/azure/developer/java/fundamentals/java-support-on-azure) 或更高版本。
 
 * 下载并安装 [Maven](https://maven.apache.org/install.html)。
 

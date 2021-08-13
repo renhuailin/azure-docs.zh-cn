@@ -13,6 +13,10 @@
         - name: ARM 模板
           displayName: Resource Manager
           href: alerts-activity-log-service-notifications-arm.md
+- name: 示例
+  items:
+    - name: Azure Resource Graph 查询
+      href: ./resource-graph-samples.md
 - name: 概念
   items:
     - name: Azure 状态页

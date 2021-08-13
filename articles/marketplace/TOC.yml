@@ -86,7 +86,7 @@
         - name: Azure 使用承诺注册
           href: azure-consumption-commitment-enrollment.md
         - name: 首选解决方案
-          href: /marketplace/appsource-overview#microsoft-preferred-solutions
+          href: preferred-solution.md
         - name: 集成的解决方案
           href: integrated-solutions-for-publishers.md
     - name: 激活商城奖励
@@ -311,13 +311,15 @@
                   href: iot-edge-plan-technical-configuration.md
     - name: 托管服务产品
       items:
-        - name: 规划托管服务套餐
+        - name: 计划产品/服务
           href: plan-managed-service-offer.md
-        - name: 创建托管服务产品
+        - name: 创建套餐
           href: create-managed-service-offer.md
-        - name: 配置托管服务列表
+        - name: 属性
+          href: create-managed-service-offer-properties.md
+        - name: 产品/服务一览
           href: create-managed-service-offer-listing.md
-        - name: 添加预览受众
+        - name: 预览版受众
           href: create-managed-service-offer-preview.md
         - name: 创建计划
           href: create-managed-service-offer-plans.md

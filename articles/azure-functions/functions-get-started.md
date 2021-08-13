@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: cshoe
 zone_pivot_groups: programming-languages-set-functions-lang-workers
-ms.openlocfilehash: 77d370b895c777278d3136c7d2c511e7f9e23b36
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 559703401fa87980a5937e81eeab27ef44769c20
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179249"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113651472"
 ---
 # <a name="getting-started-with-azure-functions"></a>Azure Functions 入门
 
@@ -66,7 +66,7 @@ ms.locfileid: "102179249"
 ::: zone pivot="programming-language-python"
 | 操作 | 资源 |
 | --- | --- |
-| **创建第一个函数** | 使用以下工具之一：<br><br><li>[Visual Studio Code](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)<li>[终端/命令提示符](./create-first-function-cli-csharp.md?pivots=programming-language-python) |
+| **创建第一个函数** | 使用以下工具之一：<br><br><li>[Visual Studio Code](./create-first-function-vs-code-python.md)<li>[终端/命令提示符](./create-first-function-cli-python.md) |
 | **查看正在运行的函数** | <li>[Azure 示例浏览器](/samples/browse/?expanded=azure&languages=python&products=azure-functions)<li>[Azure 社区库](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=Python) |
 | **了解交互式教程** | <li>[为业务场景选择最佳的 Azure 无服务器技术](/learn/modules/serverless-fundamentals/)<li>[结构良好的框架 - 性能效率](/learn/modules/azure-well-architected-performance-efficiency/)<li>[使用 Azure Functions 构建无服务器 API](/learn/modules/build-api-azure-functions/)<li>[使用 Azure Functions 创建无服务器逻辑](/learn/modules/create-serverless-logic-with-azure-functions/) <br><br>请参阅 Microsoft Learn，查看[一系列完整的交互式教程](/learn/browse/?expanded=azure&products=azure-functions)。|
 | **查看最佳实践** |<li>[性能和可靠性](./functions-best-practices.md)<li>[管理连接](./manage-connections.md)<li>[错误处理和函数重试](./functions-bindings-error-pages.md?tabs=python)<li>[安全性](./security-concepts.md)<li>[提高吞吐量性能](./python-scale-performance-reference.md)|

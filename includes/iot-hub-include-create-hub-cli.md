@@ -1,17 +1,17 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 author: timlt
 ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: 45a9a0821dec98637ade4940bee915483d5e9aa1
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 324e1d3c9d86f8c17581665507ebe52b946bd006
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112040413"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114407699"
 ---
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 在本部分中，使用 Azure CLI 创建 IoT 中心和资源组。  Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 IoT 中心充当中央消息中心，用于 IoT 应用程序与设备之间的双向通信。
@@ -22,7 +22,7 @@ ms.locfileid: "112040413"
     - 如果使用 Cloud Shell，请在 CLI 命令上选择 **试用** 按钮，以在拆分浏览器窗口中启动 Cloud Shell。 或者，你可以在单独的浏览器选项卡中打开 [Cloud Shell](https://shell.azure.com/bash) 。
     - 如果要在本地使用 Azure CLI，请启动 CLI 控制台应用程序并登录到 Azure CLI。
 
-1. 运行 [az extension add](/cli/azure/extension?view=azure-cli-latest#az_extension_add)，安装 *azure-iot* 扩展或将其升级到当前版本。
+1. 运行 [az extension add](/cli/azure/extension#az_extension_add)，安装 *azure-iot* 扩展或将其升级到当前版本。
 
     ```azurecli-interactive
     az extension add --upgrade --name azure-iot
@@ -44,7 +44,7 @@ ms.locfileid: "112040413"
     az iot hub create --resource-group MyResourceGroup --name {YourIoTHubName}
     ```
     > [!TIP]
-    > 创建 IoT 中心后，在本快速入门的其余部分，你可以继续使用 CLI 命令与中心交互。 或者，可以使用 Azure IoT 资源管理器替代 CLI 命令。 IoT 资源管理器是一种 GUI 应用程序，让你可以连接到现有的 IoT 中心并添加、管理和监视设备。 若要了解详细信息，请参阅[安装并使用 Azure IoT 资源管理器](../articles/iot-pnp/howto-use-iot-explorer.md)。
+    > 创建 IoT 中心后，在本快速入门的其余部分，你可以继续使用 CLI 命令与中心交互。 或者，可以使用 Azure IoT 资源管理器替代 CLI 命令。 IoT 资源管理器是一种 GUI 应用程序，让你可以连接到现有的 IoT 中心并添加、管理和监视设备。 若要了解详细信息，请参阅[安装并使用 Azure IoT 资源管理器](../articles/iot-fundamentals/howto-use-iot-explorer.md)。
 
 ## <a name="create-a-simulated-device"></a>创建模拟设备
 在本部分中，你将创建一个连接到 IoT 中心的模拟 IoT 设备。 

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: alkemper
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 7c5534ab836968bc4e72a54db1ddb9667d366558
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 956aa33f8152c8e07ebc8d04a91242eba88362cf
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768842"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441437"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>教程：在 Java Spring 应用中使用 Key Vault 引用
 
@@ -152,16 +152,14 @@ ms.locfileid: "107768842"
     export AZURE_TENANT_ID ='tenantId'
     ```
 
-
 > [!NOTE]
 > 这些 Key Vault 凭据仅在应用程序中使用。  应用程序使用这些凭据直接通过 Key Vault 进行身份验证，而不涉及应用配置服务。  Key Vault 同时为应用程序和应用配置服务提供身份验证，而无需共享或公开密钥。
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>更新代码以使用 Key Vault 引用
 
-1. 创建一个名为“APP_CONFIGURATION_ENDPOINT”  的环境变量。 将其值设为你的应用配置存储的终结点。 可以在 Azure 门户的“访问密钥”  边栏选项卡上找到该终结点。 重启命令提示符以使更改生效。 
+1. 创建一个名为“APP_CONFIGURATION_ENDPOINT”  的环境变量。 将其值设为你的应用配置存储的终结点。 可以在 Azure 门户的“访问密钥”  边栏选项卡上找到该终结点。 重启命令提示符以使更改生效。
 
-
-1. 打开“resources”  文件夹中的 bootstrap.properties  。 更新此文件以使用 APP_CONFIGURATION_ENDPOINT 值。 删除对此文件中的连接字符串的任何引用。 
+1. 打开“resources”  文件夹中的 bootstrap.properties  。 更新此文件以使用 APP_CONFIGURATION_ENDPOINT 值。 删除对此文件中的连接字符串的任何引用。
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
@@ -197,8 +195,8 @@ ms.locfileid: "107768842"
 
     import com.azure.core.credential.TokenCredential;
     import com.azure.identity.EnvironmentCredentialBuilder;
-    import com.microsoft.azure.spring.cloud.config.AppConfigurationCredentialProvider;
-    import com.microsoft.azure.spring.cloud.config.KeyVaultCredentialProvider;
+    import com.azure.spring.cloud.config.AppConfigurationCredentialProvider;
+    import com.azure.spring.cloud.config.KeyVaultCredentialProvider;
 
     public class AzureCredentials implements AppConfigurationCredentialProvider, KeyVaultCredentialProvider{
 

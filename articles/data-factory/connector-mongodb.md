@@ -1,24 +1,24 @@
 ---
-title: 从 MongoDB 复制数据
-description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Mongo DB 复制到支持的接收器数据存储。
+title: 从 MongoDB 复制数据或将数据复制到其中
+description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 MongoDB 复制到支持的接收器数据存储，或者从支持的源数据存储复制到 MongoDB。
 author: jianleishen
 ms.author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/08/2021
-ms.openlocfilehash: 58a1301205bc299d396644558c14579b1d97378d
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 06/01/2021
+ms.openlocfilehash: c566b3d13a58b1ad6095f9e2443e10d6db33dedb
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484282"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111749520"
 ---
-# <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 复制数据
+# <a name="copy-data-from-or-to-mongodb-by-using-azure-data-factory"></a>通过使用 Azure 数据工厂从 MongoDB 复制数据或将数据复制到其中
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从 MongoDB 数据库复制数据。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何使用 Azure 数据工厂中的复制活动从 MongoDB 数据库复制数据和将数据复制到其中。 它是基于概述复制活动总体的[复制活动概述](copy-activity-overview.md)一文。
 
 >[!IMPORTANT]
 >ADF 发布了这个新版本的 MongoDB 连接器，它提供更好的本机 MongoDB 支持。 如果在解决方案中使用的是以前的 MongoDB 连接器，且该连接器“按原样”支持后向兼容性，请参阅 [MongoDB 连接器（旧版）](connector-mongodb-legacy.md)一文。
@@ -26,7 +26,7 @@ ms.locfileid: "109484282"
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-可以将数据从 MongoDB 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
+可以从 MongoDB 数据库将数据复制到任何受支持的接收器数据存储，或从任何受支持的源数据存储将数据复制到 MongoDB 数据库。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 具体而言，此 MongoDB 连接器最高支持版本 4.2。
 
@@ -47,7 +47,7 @@ ms.locfileid: "109484282"
 
 MongoDB 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：MongoDbV2  |是 |
 | connectionString |指定 MongoDB 连接字符串，例如 `mongodb://[username:password@]host[:port][/[database][?options]]`。 请参阅 [MongoDB 连接字符串手册](https://docs.mongodb.com/manual/reference/connection-string/)获取详细信息。 <br/><br /> 还可以将连接字符串置于 Azure Key Vault 中。 有关更多详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
@@ -77,7 +77,7 @@ MongoDB 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 MongoDB 数据集支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：MongoDbV2Collection  | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
@@ -104,13 +104,13 @@ MongoDB 链接的服务支持以下属性：
 
 ## <a name="copy-activity-properties"></a>复制活动属性
 
-有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供 MongoDB 源支持的属性列表。
+有关可用于定义活动的各部分和属性的完整列表，请参阅[管道](concepts-pipelines-activities.md)一文。 本部分提供了 MongoDB 源和接收器支持的属性的列表。
 
 ### <a name="mongodb-as-source"></a>以 MongoDB 作为源
 
 复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：MongoDbV2Source  | 是 |
 | filter | 使用查询运算符指定选择筛选器。 若要返回集合中的所有文档，请省略此参数或传递空文档 ({})。 | 否 |
@@ -161,15 +161,66 @@ MongoDB 链接的服务支持以下属性：
 ]
 ```
 
+### <a name="mongodb-as-sink"></a>MongoDB 作为接收器
 
-## <a name="export-json-documents-as-is"></a>按原样导出 JSON 文档
+复制活动 **sink** 节支持以下属性：
 
-可以使用此 MongoDB 连接器将 JSON 文档按原样从 MongoDB 集合导出到各种基于文件的存储或 Azure Cosmos DB。 若要实现这种架构不可知的复制，请跳过数据集中的“结构”（也称为“架构”）节和复制活动中的架构映射  。
+| 属性 | 说明 | 必须 |
+|:--- |:--- |:--- |
+| type | 复制活动接收器的“type”属性必须设置为“MongoDbV2Sink” 。 |是 |
+| writeBehavior |介绍如何将数据写入 MongoDB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 `_id` 的文档，则替换该文档；否则将插入该文档。<br /><br />备注：如果未在原始文档中或通过列映射指定 `_id`，则数据工厂会自动为文档生成 `_id`。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
+| writeBatchSize | **writeBatchSize** 属性控制每个批中可写入的文档大小。 可尝试增大 **writeBatchSize** 的值以提高性能，并在文档大小较大时减小该值。 |否<br />（默认值为 **10,000**） |
+| writeBatchTimeout | 超时前等待批插入操作完成的时间。允许的值为 timespan。 | 否<br/>（默认值为 **00:30:00** - 30 分钟） |
+
+>[!TIP]
+>若要按原样导入 JSON 文档，请参阅[导入或导出 JSON 文档](#import-and-export-json-documents)部分；若要从表格形数据复制，请参阅[架构映射](#schema-mapping)。
+
+**示例**
+
+```json
+"activities":[
+    {
+        "name": "CopyToMongoDB",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<Document DB output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "MongoDbV2Sink",
+                "writeBehavior": "upsert"
+            }
+        }
+    }
+]
+```
+
+## <a name="import-and-export-json-documents"></a>导入和导出 JSON 文档
+
+可以使用此 MongoDB 连接器轻松完成以下操作：
+
+* 在两个 MongoDB 集合之间按原样复制文档。
+* 将各种源（包括 Azure Cosmos DB、Azure Blob 存储、Azure Data Lake Store 和 Azure 数据工厂所支持的其他基于文件的存储）中的 JSON 文档导入到 MongoDB。
+* 将 JSON 文档从 MongoDB 集合导出到各种基于文件的存储。
+
+若要实现这种架构不可知的复制，请跳过数据集中的“结构”（也称为“架构”）节和复制活动中的架构映射  。
 
 
 ## <a name="schema-mapping"></a>架构映射
 
-若要将数据从 MongoDB 复制到表格接收器，请参阅[架构映射](copy-activity-schema-and-type-mapping.md#schema-mapping)。
+若要将数据从 MongoDB 复制到表格接收器或进行反向复制，请参阅[架构映射](copy-activity-schema-and-type-mapping.md#schema-mapping)。
 
 
 ## <a name="next-steps"></a>后续步骤

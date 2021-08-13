@@ -5,12 +5,12 @@ author: RiyazPishori
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: riyazp
-ms.openlocfilehash: 1fd204086d9cc039c4e6cafe8dc4c1ebc69e71e7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 571c10dc44922f98c28e1f536a9eb965733bf30d
+ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108750178"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112422545"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Azure FarmBeats（预览版）概述
 
@@ -33,7 +33,7 @@ Azure FarmBeats 预览版的功能包括：
 ## <a name="datahub"></a>数据中心
 
 Azure FarmBeats 数据中心一个 API 层，可以跨提供商对各种农业数据集进行聚合、规范化和语境化。 可以使用 Azure FarmBeats 获取以下内容：
-- 三个传感器提供商（[Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/)、[Teralytic](https://teralytic.com/)、[Pessl Instruments](https://metos.at/)）提供的 **传感器数据**
+- 三个传感器提供商（[Davis Instruments](https://www.davisinstruments.com/products/enviromonitor-gateway-us-lte)、[Teralytic](https://teralytic.com/)、[Pessl Instruments](https://metos.at/)）提供的 **传感器数据**
 - 欧洲空间代理商的 [Sentinel-2](https://sentinel.esa.int/web/sentinel/home) 卫星任务提供的 **卫星影像**
 - 三家无人机图像提供商（[senseFly](https://www.sensefly.com/)、[SlantRange](https://slantrange.com/)、[DJI](https://dji.com/)）提供的 **无人机图像**
 

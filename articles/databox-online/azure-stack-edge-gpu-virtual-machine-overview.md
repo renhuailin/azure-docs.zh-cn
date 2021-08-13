@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 7e225f3f58e6e24d21c3100fd182934f9caae40b
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 775cb6f7cfc19b0009fc92cc5afbd3ac383b3ea3
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108210157"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110663852"
 ---
 # <a name="virtual-machines-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 设备上的虚拟机
 
@@ -78,7 +78,7 @@ Azure Stack Edge 解决方案提供了由 Microsoft 提供的专用硬件即服�
 
 有关详细信息，请参阅[在设备上运行的 VM 上部署自定义脚本扩展](azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md)
 
-如果要在预配 GPU VM 时安装 GPU 驱动程序，还可以为 VM 使用 GPU 扩展。 有关详细信息，请参阅[创建 GPU VM](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#create-gpu-vms) 和[安装 GPU 扩展](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#install-gpu-extension)。
+如果要在预配 GPU VM 时安装 GPU 驱动程序，还可以为 VM 使用 GPU 扩展。 有关详细信息，请参阅[创建 GPU VM](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#create-gpu-vms) 和[安装 GPU 扩展](azure-stack-edge-gpu-deploy-virtual-machine-install-gpu-extension.md)。
 
 ## <a name="create-a-vm"></a>创建 VM
 

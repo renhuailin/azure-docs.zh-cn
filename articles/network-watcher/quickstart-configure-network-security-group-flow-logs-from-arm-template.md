@@ -8,12 +8,12 @@ ms.date: 01/07/2021
 ms.topic: quickstart
 ms.service: network-watcher
 ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
-ms.openlocfilehash: 9d541294ff20047f9041b58b3ce971c76adb6737
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 953e61febcd965786f2a53f2769c1d52c85f83a3
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982675"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112452667"
 ---
 # <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>快速入门：使用 ARM 模板配置网络安全组流日志
 
@@ -33,7 +33,7 @@ ms.locfileid: "111982675"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/networkwatcher-flowlogs-create)。
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/networkwatcher-flowlogs-create/)。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/networkwatcher-flowLogs-create/azuredeploy.json":::
 

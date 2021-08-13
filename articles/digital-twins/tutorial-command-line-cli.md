@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/26/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: eb1549b94ac2b1e1d1b37183e12d063a0f84f73c
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 93dbdb8384a37e2f104f1ab99caf1ab6d8464c06
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792988"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461895"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>教程：使用 Azure CLI 创建 Azure 数字孪生图
 
@@ -52,7 +52,7 @@ ms.locfileid: "110792988"
 
 若要在本文中使用 Azure 数字孪生，首先需要设置一个 Azure 数字孪生实例，还需具备使用它所必需的权限。 如果已有通过以前的工作设置的 Azure 数字孪生实例，则可以使用该实例。
 
-否则，请按照如何：[设置实例和身份验证](how-to-set-up-instance-cli.md)中的说明设置实例和身份验证。 说明中还包含用于验证是否已成功完成每个步骤并准备好继续使用新实例的步骤。
+如果没有，请按照[设置实例和身份验证](how-to-set-up-instance-cli.md)中的说明操作。 说明中还包含用于验证是否已成功完成每个步骤并准备好继续使用新实例的步骤。
 
 设置 Azure 数字孪生实例后，请记下以下值，稍后需要这些值来连接到该实例：
 * 实例的 **主机名**。
@@ -320,4 +320,4 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 请继续学习下一篇教程，将 Azure 数字孪生与其他 Azure 服务结合使用来实现数据驱动的端到端方案：
 > [!div class="nextstepaction"]
-> [教程：连接端到端解决方案](tutorial-end-to-end.md)
+> [连接端到端解决方案](tutorial-end-to-end.md)

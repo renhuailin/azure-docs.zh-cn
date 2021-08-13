@@ -4,12 +4,12 @@ description: 了解如何创建 Java 函数，然后使用 Visual Studio Code �
 ms.topic: quickstart
 ms.date: 11/03/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 6c84bf4ebc73857fa0280ffbcbf46b68c2da630f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27268e53f86dd5cc25baac11a11f903f0d4c47eb
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031712"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287738"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>快速入门：在 Azure 中使用 Visual Studio Code 创建 Java 函数
 
@@ -27,7 +27,7 @@ ms.locfileid: "102031712"
 
 + 具有有效订阅的 Azure 帐户 <abbr title="在 Azure 中管理资源的基本组织结构，通常与组织中的个人或部门关联。">订阅</abbr>. [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-+ [Java 开发人员工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support)版本 8 或 11。
++ [Java 开发人员工具包](/azure/developer/java/fundamentals/java-support-on-azure)版本 8 或 11。
 
 + [Apache Maven](https://maven.apache.org) 3.0 或更高版本。
 

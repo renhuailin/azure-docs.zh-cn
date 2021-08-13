@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7071d180efe9f7da088f30106c879fd10ed9051
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f0cdaefcc92a1a690ae3e3e222053976c3aa3178
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110087105"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730795"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Azure Active Directory 中的管理单元
 
@@ -40,7 +40,7 @@ ms.locfileid: "110087105"
 
 ## <a name="license-requirements"></a>许可要求
 
-使用管理单元要求每个管理单元管理员具有 Azure AD Premium P1 许可证，要求管理单元成员具有 Azure AD Free 许可证。 若要根据需要查找合适的许可证，请参阅[比较免费版和高级版的正式发布功能](https://azure.microsoft.com/pricing/details/active-directory/)。
+使用管理单元要求每个管理单元管理员具有 Azure AD Premium P1 许可证，要求管理单元成员具有 Azure AD Free 许可证。 若要根据需要查找合适的许可证，请参阅[比较免费版和高级版的正式发布功能](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
 
 ## <a name="manage-administrative-units"></a>对管理单元进行管理
 
@@ -64,7 +64,7 @@ ms.locfileid: "110087105"
 
 ## <a name="currently-supported-scenarios"></a>当前支持的场景
 
-作为全局管理员或特权角色管理员，你可以使用 Azure 门户：
+作为全局管理员或特权角色管理员，你可以使用 Azure 门户来执行以下操作：
 
 - 创建管理单元
 - 添加管理单元的用户和组成员
