@@ -745,6 +745,14 @@
               href: migrate-dotnet-v3.md
             - name: 迁移到 .NET V2 SDK
               href: migrate-dotnet-v2.md
+        - name: 连接器
+          items:
+            - name: Kafka Connect
+              href: kafka-connector.md
+            - name: Kafka Connect - 源
+              href: kafka-connector-source.md
+            - name: Kafka Connect - 接收器
+              href: kafka-connector-sink.md
         - name: 疑难解答
           items:
             - name: 常见错误
@@ -867,6 +875,10 @@
               href: certificate-based-authentication.md
             - name: 使用“始终加密”
               href: how-to-always-encrypted.md
+        - name: 客户端开发
+          items:
+            - name: 会话状态和缓存提供程序
+              href: session-state-and-caching-provider.md
         - name: 与其他 Azure 服务集成
           items:
             - name: 更改源电子商务解决方案
@@ -1017,7 +1029,7 @@
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge-cassandra.md
         - name: 存储和管理 Spring Data
-          href: /azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+          href: configure-spring-data-apache-cassandra-with-cosmos-db.md
         - name: 排查常见问题
           href: cassandra-troubleshoot.md
         - name: 使用诊断日志进行监视
@@ -1371,6 +1383,10 @@
           href: /rest/api/storageservices/table-service-rest-api
         - name: Azure CLI
           href: /cli/azure/azure-cli-reference-for-cosmos-db
+- name: 示例
+  items:
+    - name: Azure Resource Graph 查询
+      href: ./resource-graph-samples.md
 - name: 操作指南
   items:
     - name: 免费层

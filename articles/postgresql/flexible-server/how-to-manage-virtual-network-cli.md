@@ -5,13 +5,13 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: 0a4bf648551be723007b0d8856fe0857896aad94
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/25/2021
+ms.openlocfilehash: f00a1c8f8901d16a0aefa376f145fd2a4cbf2cf5
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778384"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952402"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>使用 Azure CLI 为 Azure Database for PostgreSQL 灵活服务器创建和管理虚拟网络
 
@@ -72,11 +72,17 @@ az account set --subscription <subscription id>
     > [!Note]
     > 虚拟网络和子网应与你的灵活服务器位于同一区域和订阅中。
 
+    > [!IMPORTANT]
+    > 包括 `AzureFirewallSubnet`、`AzureFirewallManagementSubnet`、`AzureBastionSubnet` 和 `GatewaySubnet` 在内的名称是 Azure 中的保留名称。 请不要使用这些名称作为子网名称。
+
 - 使用具有非默认地址前缀的新虚拟网络、子网创建灵活服务器
     ```azurecli-interactive
     az postgres flexible-server create --vnet myVnet --address-prefixes 10.0.0.0/24 --subnet mySubnet --subnet-prefixes 10.0.0.0/24
     ```
 请参阅 Azure CLI [参考文档](/cli/azure/postgres/flexible-server)以获取可配置 CLI 参数的完整列表。
+
+>[!Important]
+> 如果收到错误“`The parameter PrivateDnsZoneArguments is required, and must be provided by customer`”，则意味着你可能正在运行旧版本的 Azure CLI。 请[升级 Azure CLI](/cli/azure/update-azure-cli) 并重试操作。
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解 [Azure Database for PostgreSQL 灵活服务器中的网络](./concepts-networking.md)。

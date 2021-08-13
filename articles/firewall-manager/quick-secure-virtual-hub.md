@@ -8,12 +8,12 @@ ms.date: 08/28/2020
 ms.topic: quickstart
 ms.service: firewall-manager
 ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
-ms.openlocfilehash: 733d0874c72bca32238494e4987ee889c8e2f196
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 01b42b78a8ecb1746bad8aae8adbd8131ec6c80d
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110700575"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112461433"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>快速入门：使用 Azure 防火墙管理器保护虚拟中心安全 - ARM 模板
 
@@ -25,7 +25,7 @@ ms.locfileid: "110700575"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Ffwm-docs-qs%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "110700575"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/fwm-docs-qs/)。
 
-:::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/fwm-docs-qs/azuredeploy.json":::
 
 模板中定义了多个 Azure 资源：
 
@@ -59,7 +59,7 @@ ms.locfileid: "110700575"
 
 1. 选择“部署到 Azure”，登录到 Azure 并打开模板。 此模板会创建 Azure 防火墙、虚拟 WAN 和虚拟中心、网络基础结构和两个虚拟机。
 
-   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
+   [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Ffwm-docs-qs%2Fazuredeploy.json)
 
 2. 在门户中的“安全虚拟中心”页上，键入或选择以下值：
    - 订阅：从现有订阅中选择 

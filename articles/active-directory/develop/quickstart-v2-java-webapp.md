@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: a7337175241834cef862b4af07c7bcf7c8b845d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ba0052aec7e0938443560f5f0868431907c1b27
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103764"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580847"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
 
@@ -163,10 +163,7 @@ ms.locfileid: "100103764"
 
 若要将 Web 示例部署到 Tomcat，请对源代码进行一些更改。
 
-1. 打开 ms-identity-java-webapp/pom.xml。
-    - 在 `<name>msal-web-sample</name>` 下添加 `<packaging>war</packaging>`。
-
-2. 打开 ms-identity-java-webapp/src/main/java/com.microsoft.azure.msalwebsample/MsalWebSampleApplication。
+1. 打开 ms-identity-java-webapp/src/main/java/com.microsoft.azure.msalwebsample/MsalWebSampleApplication。
 
     - 删除所有源代码并用以下代码替换：
 
@@ -192,7 +189,7 @@ ms.locfileid: "100103764"
        }
       ```
 
-3.   Tomcat 的默认 HTTP 端口是 8080，但需要通过端口 8443 建立 HTTPS 连接。 配置此设置：
+2.   Tomcat 的默认 HTTP 端口是 8080，但需要通过端口 8443 建立 HTTPS 连接。 配置此设置：
         - 转到 tomcat/conf/server.xml。
         - 搜索 `<connector>` 标记，并用此连接器替换现有连接器：
 
@@ -205,13 +202,13 @@ ms.locfileid: "100103764"
                    clientAuth="false" sslProtocol="TLS"/>
           ```
 
-4. 打开命令提示符窗口。 转到此示例的根文件夹（pom.xml 位于其中），然后运行 `mvn package` 以生成项目。
+3. 打开命令提示符窗口。 转到此示例的根文件夹（pom.xml 位于其中），然后运行 `mvn package` 以生成项目。
     - 此命令将在 /targets 目录中生成一个 msal-web-sample-0.1.0.war 文件 。
     - 将此文件重命名为 msal4jsample.war。
     - 使用 Tomcat 或任何其他 J2EE 容器解决方案部署 WAR 文件。
         - 若要部署 msal4jsample.war 文件，请将其复制到 Tomcat 安装中的 /webapps/ 目录，然后启动 Tomcat 服务器。
 
-5. 部署完文件后，使用浏览器转到 https://localhost:8443/msal4jsample 。
+4. 部署完文件后，使用浏览器转到 https://localhost:8443/msal4jsample 。
 
 
 > [!IMPORTANT]

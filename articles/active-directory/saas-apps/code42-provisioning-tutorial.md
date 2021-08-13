@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 Code42 配置自动用户预�
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Code42 以及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: ddcb950b-3f9a-4ebb-bf78-4ec42d16d52d
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/23/2020
-ms.author: Zhchia
-ms.openlocfilehash: ffae286437a476d5ebe08c3ee442d0d52af84eb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: e3291a34e0c7cb0aeff159e495497c89d90074dd
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96179327"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764133"
 ---
 # <a name="tutorial-configure-code42-for-automatic-user-provisioning"></a>教程：为 Code42 配置自动用户预配
 

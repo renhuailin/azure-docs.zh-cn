@@ -1,18 +1,18 @@
 ---
 title: Azure 认知搜索的 Azure Policy 法规遵从性控制
 description: 列出可用于 Azure 认知搜索的 Azure Policy 法规遵从性控制。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 06/11/2021
+ms.date: 07/16/2021
 ms.topic: sample
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 8897575d06341130c054c610d1ce0a979437fb6b
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 16b801d07466152a884f09b8db14fcac9b5fadf1
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029237"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114404324"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cognitive-search"></a>Azure 认知搜索的 Azure Policy 法规遵从性控制
 

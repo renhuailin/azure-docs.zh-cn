@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: b7b0cfa20257ad07d8418c39af68724d613adf41
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: b858916f9a359994eb04bc79728ede46566114f7
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107821001"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403719"
 ---
 本快速入门介绍如何生成示例 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure IoT 资源管理器工具来查看它发送的遥测数据。 该示例应用程序以 C# 编写，包含在用于 C# 的 Azure IoT 示例中。 解决方案构建者可以使用 Azure IoT 资源管理器工具来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
 
@@ -46,9 +46,9 @@ git clone  https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
-    | IOTHUB_DEVICE_DPS_ID_SCOPE | 在完成[设置环境](../articles/iot-pnp/set-up-environment.md)时记下的值 |
+    | IOTHUB_DEVICE_DPS_ID_SCOPE | 在完成[设置环境](../articles/iot-develop/set-up-environment.md)时记下的值 |
     | IOTHUB_DEVICE_DPS_DEVICE_ID | my-pnp-device |
-    | IOTHUB_DEVICE_DPS_DEVICE_KEY | 在完成[设置环境](../articles/iot-pnp/set-up-environment.md)时记下的值 |
+    | IOTHUB_DEVICE_DPS_DEVICE_KEY | 在完成[设置环境](../articles/iot-develop/set-up-environment.md)时记下的值 |
 
 现在可以在 Visual Studio 中生成示例，并在调试模式下运行它。
 
@@ -66,7 +66,7 @@ git clone  https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 ## <a name="review-the-code"></a>查看代码
 
-此示例实现了一个简单的 IoT 即插即用恒温器设备。 此示例实现的模型不使用 IoT 即插即用[组件](../articles/iot-pnp/concepts-modeling-guide.md)。 [恒温器设备的数字孪生定义语言 (DTDL) 模型文件](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)定义了设备实现的遥测、属性和命令。
+此示例实现了一个简单的 IoT 即插即用恒温器设备。 此示例实现的模型不使用 IoT 即插即用[组件](../articles/iot-develop/concepts-modeling-guide.md)。 [恒温器设备的数字孪生定义语言 (DTDL) 模型文件](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)定义了设备实现的遥测、属性和命令。
 
 设备代码使用标准 `CreateFromConnectionString` 方法连接到 IoT 中心。 设备发送在连接请求中实现的 DTDL 模型的模型 ID。 发送模型 ID 的设备是 IoT 即插即用设备：
 

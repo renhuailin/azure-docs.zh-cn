@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: 3d24fa1ea046a860feb40d09a6d0a57c79371450
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9346cc79943676f4dc3fe99f111002b8e7bee9d6
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99807591"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110586520"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>将 Azure Sentinel 连接到 AWS CloudTrail
 
@@ -27,6 +27,7 @@ ms.locfileid: "99807591"
 
 > [!NOTE]
 > AWS CloudTrail 在其 LookupEvents API 中具有[内置限制](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html)。 它允许的每个帐户的每秒事务数 (TPS) 不超过两个，且每个查询最多可以返回 50 个记录。 因此，如果单个租户在一个区域中每秒持续生成的记录超过 100 条，则会导致数据引入出现积压和延迟。
+> 目前，只能将 AWS Commercial CloudTrail 连接到 Azure Sentinel，而不是 AWS GovCloud CloudTrail。
 
 ## <a name="prerequisites"></a>先决条件
 

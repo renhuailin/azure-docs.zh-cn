@@ -1,21 +1,21 @@
 ---
-title: Windows 虚拟桌面 FSLogix 配置文件容器共享 - Azure
-description: 如何使用基于虚拟机的文件共享为 Windows 虚拟桌面主机池设置 FSLogix 配置文件容器。
+title: Azure 虚拟桌面 FSLogix 配置文件容器共享 - Azure
+description: 如何使用基于虚拟机的文件共享为 Azure 虚拟桌面主机池设置 FSLogix 配置文件容器。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 33e1b069221331aed8f8ca13bd088ba067a85ba7
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: a1398c23adcadaf245bae7271ed91e7d2a6763da
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752456"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111756088"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>使用文件共享为主机池创建配置文件容器
 
-Windows 虚拟桌面服务提供 FSLogix 配置文件容器作为推荐的用户配置文件解决方案。 不建议使用用户配置文件磁盘 (UPD) 解决方案，未来版本的 Windows 虚拟桌面将弃用该解决方案。
+Azure 虚拟桌面服务提供 FSLogix 配置文件容器作为推荐的用户配置文件解决方案。 不建议使用用户配置文件磁盘 (UPD) 解决方案，未来版本的 Azure 虚拟桌面将弃用该解决方案。
 
 本文将介绍如何使用基于虚拟机的文件共享为主机池设置 FSLogix 配置文件容器共享。 强烈建议使用 Azure 文件存储，不要使用文件共享。 有关更多 FSLogix 文档，请参阅 [FSLogix 站点](https://docs.fslogix.com/)。
 
@@ -42,12 +42,12 @@ Windows 虚拟桌面服务提供 FSLogix 配置文件容器作为推荐的用户
 
 下面是有关如何准备虚拟机以充当用户配置文件的文件共享的常规说明：
 
-1. 将 Windows 虚拟桌面 Active Directory 域服务用户添加到 [Active Directory 域服务安全组](/windows/security/identity-protection/access-control/active-directory-security-groups/)。 此安全组将用于向你刚刚创建的文件共享虚拟机验证 Windows 虚拟桌面用户的身份。
+1. 将 Azure 虚拟桌面 Active Directory 用户添加到 [Active Directory 域服务安全组](/windows/security/identity-protection/access-control/active-directory-security-groups/)。 此安全组将用于向你刚刚创建的文件共享虚拟机验证 Azure 虚拟桌面用户的身份。
 2. [连接到文件共享虚拟机](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
 3. 在文件共享虚拟机上，在将用作配置文件共享的“C 驱动器”上创建一个文件夹。
 4. 右键单击新文件夹，选择“属性”，选择“共享”，然后选择“高级共享...”。
 5. 选择“共享此文件夹”，选择“权限...”，然后选择“添加...”。
-6. 搜索向其中添加了 Windows 虚拟桌面用户的安全组，并确保该组具有“完全控制”。
+6. 搜索向其中添加了 Azure 虚拟桌面用户的安全组，并确保该组具有“完全控制”权限。
 7. 添加安全组后，右键单击该文件夹，选择“属性”，选择“共享”，然后复制要稍后使用的“网络路径”。
 
 有关权限的详细信息，请参阅 [FSLogix 文档](/fslogix/fslogix-storage-config-ht/)。
@@ -66,8 +66,8 @@ Windows 虚拟桌面服务提供 FSLogix 配置文件容器作为推荐的用户
 
 | 名称                | 类型               | 数据/值                        |
 |---------------------|--------------------|-----------------------------------|
-| Enabled             | DWORD              | 1                                 |
+| 已启用             | DWORD              | 1                                 |
 | VHDLocations        | 多字符串值 | “文件共享的网络路径”     |
 
 >[!IMPORTANT]
->为了帮助保护 Azure 中的 Windows 虚拟桌面环境，我们建议你不要在 VM 上打开入站端口 3389。 Windows 虚拟机不需要打开入站端口 3389，用户就可以访问主机池的 VM。 如果必须打开端口 3389 以进行故障排除，我们建议你使用[实时 VM 访问](../security-center/security-center-just-in-time.md)。
+>为了帮助保护 Azure 中的 Azure 虚拟桌面环境，建议不要在 VM 上打开入站端口 3389。 Azure 虚拟桌面不需要打开入站端口 3389，就能让用户访问主机池的 VM。 如果必须打开端口 3389 以进行故障排除，我们建议你使用[实时 VM 访问](../security-center/security-center-just-in-time.md)。

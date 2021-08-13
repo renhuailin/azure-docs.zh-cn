@@ -5,15 +5,15 @@ description: 了解如何创建支持 Azure 通信服务的基线 Web 应用
 author: nmurav
 services: azure-communication-services
 ms.author: nmurav
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a5a23d6a06c8cdff4deabac5251597b7ffe0c833
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: aa65887b1d4c2fc7a6fcc0b99a572df62af1fb47
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728039"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113107552"
 ---
 # <a name="tutorial-prepare-a-web-app-for-azure-communication-services-nodejs"></a>Tutorial:为 Azure 通信服务准备 Web 应用 (Node.js)
 

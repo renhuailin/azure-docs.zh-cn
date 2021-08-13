@@ -40,7 +40,7 @@ productDirectory:
     - title: Azure 指标顾问
       imageSrc: ./media/metrics-advisor.svg
       summary: 主动监视指标并诊断问题
-      url: ../cognitive-services/metrics-advisor/index.yml
+      url: ./metrics-advisor/index.yml
     - title: Azure 视频分析器
       imageSrc: ./media/video-analytics.svg
       summary: 从视频中提取切实可行的见解
@@ -66,7 +66,7 @@ additionalContent:
             - text: Azure 表单识别器
               url: ../cognitive-services/form-recognizer/quickstarts/get-started-with-form-recognizer.md
             - text: Azure 指标顾问
-              url: ../cognitive-services/metrics-advisor/quickstarts/web-portal.md
+              url: ./metrics-advisor/quickstarts/web-portal.md
             - text: Azure 沉浸式阅读器
               url: ../cognitive-services/immersive-reader/quickstarts/client-libraries.md
             - text: Azure 认知搜索

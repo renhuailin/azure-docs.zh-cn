@@ -4,23 +4,22 @@ description: 在本教程中，你将创建 .NET Core C# 应用程序，用于�
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 06/29/2021
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: 3225b04ea99b300967353975bb92ab76804ed58a
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: b2b2fc806020c665e7658226cb11c086aa816127
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113108382"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433424"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>向/从服务总线队列发送/接收消息 (.NET)
 本快速入门指南显示如何使用 [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) .NET 库向服务总线队列发送消息和接收来自该队列的消息。
 
 
 ## <a name="prerequisites"></a>先决条件
-如果你是首次使用该服务，请在使用本快速入门之前先参阅[服务总线概述](service-bus-messaging-overview.md)。 
 
 - **Azure 订阅**。 若要使用 Azure 服务（包括 Azure 服务总线），需要一个订阅。 如果没有现成的 Azure 帐户，可以注册[免费试用版](https://azure.microsoft.com/free/)。
-- Microsoft Visual Studio 2019。 Azure 服务总线客户端库利用 C# 8.0 中引入的新功能。  你仍可使用以前的 C# 语言版本的库，但新语法将不可用。 若要使用完整语法，建议使用 .NET Core SDK 3.0 或更高版本进行编译，并将语言版本设置为 `latest`。 如果使用 Visual Studio，Visual Studio 2019 以前的版本与生成 C# 8.0 项目时所需的工具将不兼容。 可在[此处](https://visualstudio.microsoft.com/vs/)下载 Visual Studio 2019（包括免费的 Community Edition）。
+- Microsoft Visual Studio 2019。 Azure 服务总线客户端库利用 C# 8.0 中引入的新功能。  你仍可使用以前的 C# 语言版本的库，但新语法将不可用。 若要使用完整语法，建议使用 .NET Core SDK 3.0 或更高版本进行编译，并将语言版本设置为 `latest`。 如果使用 Visual Studio，Visual Studio 2019 以前的版本与生成 C# 8.0 项目时所需的工具将不兼容。
 - **创建服务总线命名空间和队列**。 按照[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文的步骤创建服务总线命名空间和队列。 
 
     > [!IMPORTANT]
@@ -37,7 +36,7 @@ ms.locfileid: "113108382"
 1. 在“创建新项目”对话框中执行以下步骤：如果看不到此对话框，请在菜单中选择“文件”，然后依次选择“新建”、“项目”。   
     1. 选择“C#”作为编程语言。
     1. 选择“控制台”作为应用程序类型。 
-    1. 从结果列表中选择 **控制台应用程序**。 
+    1. 从结果列表中选择“控制台应用程序”。 
     1. 然后，选择“下一步”  。 
 
         :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/new-send-project.png" alt-text="显示使用 C# 和所选的控制台创建新项目对话框的图像":::
@@ -59,12 +58,12 @@ ms.locfileid: "113108382"
 
 1. 将 Program.cs 中的代码替换为以下代码。 下面是代码中的重要步骤。  
     1. 使用命名空间的连接字符串创建 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象。 
-    1. 对 `ServiceBusClient` 对象调用 [CreateSender](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender) 方法，从而为特定的“服务总线”队列创建 [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender) 对象。     
-    1. 使用 [ServiceBusSender.CreateMessageBatchAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.createmessagebatchasync) 创建 [ServiceBusMessageBatch](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch) 对象。
-    1. 使用 [ServiceBusMessageBatch.TryAddMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch.tryaddmessage) 将消息添加到该批次。 
-    1. 使用 [ServiceBusSender.SendMessagesAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.sendmessagesasync) 方法将批量消息发送到“服务总线”队列。
+    1. 对 `ServiceBusClient` 对象调用 `CreateSender` 方法，从而为特定的“服务总线”队列创建 `ServiceBusSender` 对象。     
+    1. 使用 `ServiceBusSender.CreateMessageBatchAsync` 方法创建 `ServiceBusMessageBatch` 对象。
+    1. 使用 `ServiceBusMessageBatch.TryAddMessage` 将消息添加到该批次。 
+    1. 使用 `ServiceBusSender.SendMessagesAsync` 方法将批量消息发送到“服务总线”队列。
     
-        有关更多信息，请参见代码注释。
+        有关更多信息，请参阅代码注释。
     
         ```csharp
         using System;
@@ -182,12 +181,12 @@ ms.locfileid: "113108382"
 1. 将 Program.cs 中的代码替换为以下代码。 下面是代码中的重要步骤。
     下面是代码中的重要步骤：
     1. 使用命名空间的连接字符串创建 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象。 
-    1. 对 `ServiceBusClient` 对象调用 [CreateProcessor](/dotnet/api/azure.messaging.servicebus.servicebusclient.createprocessor) 方法，从而为指定的“服务总线”队列创建 [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) 对象。 
-    1. 为 `ServiceBusProcessor` 对象的 [ProcessMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync) 和 [ProcessErrorAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processerrorasync) 事件指定处理程序。 
-    1. 通过对 `ServiceBusProcessor` 对象调用 [StartProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.startprocessingasync) 以开始处理消息。 
-    1. 当用户按下某个键结束处理时，将对 `ServiceBusProcessor` 对象调用 [StopProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.stopprocessingasync)。 
+    1. 对 `ServiceBusClient` 对象调用 `CreateProcessor` 方法，从而为指定的“服务总线”队列创建 `ServiceBusProcessor` 对象。 
+    1. 为 `ServiceBusProcessor` 对象的 `ProcessMessageAsync` 和 `ProcessErrorAsync` 事件指定处理程序。 
+    1. 通过对 `ServiceBusProcessor` 对象调用 `StartProcessingAsync` 以开始处理消息。 
+    1. 当用户按下某个键结束处理时，将对 `ServiceBusProcessor` 对象调用 `StopProcessingAsync`。 
 
-        有关更多信息，请参见代码注释。
+        有关更多信息，请参阅代码注释。
 
         ```csharp
         using System;
@@ -297,4 +296,4 @@ ms.locfileid: "113108382"
 
 - [适用于 .NET 的 Azure 服务总线客户端库 - 自述文件](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)
 - [GitHub 上的示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)
-- [.NET API 参考](/dotnet/api/azure.messaging.servicebus?preserve-view=true)
+- [.NET API 参考](/dotnet/api/azure.messaging.servicebus)

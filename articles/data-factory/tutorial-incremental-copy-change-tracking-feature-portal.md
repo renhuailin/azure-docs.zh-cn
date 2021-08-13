@@ -6,13 +6,13 @@ author: dearandyxu
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: c79d96e016459732ce71019511fa429d62d91f9d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 07/05/2021
+ms.openlocfilehash: 9dbeeaa10fc755b978a1819a0af181da47149921
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740131"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436831"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>使用 Azure 门户根据更改跟踪信息，以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
@@ -179,11 +179,12 @@ ms.locfileid: "101740131"
     ![“正在部署数据工厂”磁贴](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
 9. 创建完成后，可以看到图中所示的“数据工厂”页。
 
-   ![数据工厂主页](./media/tutorial-incremental-copy-change-tracking-feature-portal/data-factory-home-page.png)
-10. 单击“创作和监视”磁贴，在单独的选项卡中启动 Azure 数据工厂用户界面 (UI)。
-11. 在“入门”页的左侧面板中，切换到“编辑”选项卡，如下图所示：
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂主页，其中包含“打开 Azure 数据工厂工作室”磁贴。":::
 
-    ![“创建管道”按钮](./media/tutorial-incremental-copy-change-tracking-feature-portal/get-started-page.png)
+10. 在“打开 Azure 数据工厂工作室”磁贴上选择“打开”，以便在单独的标签页中启动 Azure 数据工厂用户界面 (UI)。 
+11. 在主页中，切换到左侧面板中的“管理”选项卡，如下图所示：
+
+    ![显示“管理”按钮的屏幕截图。](media/doc-common-process/get-started-page-manage-button.png)
 
 ## <a name="create-linked-services"></a>创建链接服务
 可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分中，创建 Azure 存储帐户和 Azure SQL 数据库中数据库的链接服务。
@@ -210,7 +211,7 @@ ms.locfileid: "101740131"
 在此步骤中，请将数据库链接到数据工厂。
 
 1. 依次单击“连接”、“+ 新建”。 
-2. 在“新建链接服务”窗口中，选择“Azure SQL 数据库”，然后单击“继续”。
+2. 在“新建链接服务”窗口中，选择“Azure SQL 数据库”，然后单击“继续”。  
 3. 在“新建链接服务”窗口中执行以下步骤：
 
     1. 对于“名称”字段，请输入 **AzureSqlDatabaseLinkedService**。
@@ -240,7 +241,7 @@ ms.locfileid: "101740131"
    ![源数据集名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/source-dataset-name.png)    
 4. 切换到“连接”选项卡，然后执行以下步骤：
 
-    1. 为“链接服务”选择“AzureSqlDatabaseLinkedService”。
+    1. 为“链接服务”选择“AzureSqlDatabaseLinkedService”。 
     2. 为“表”选择“[dbo].[data_source_table]”。
 
    ![源连接](./media/tutorial-incremental-copy-change-tracking-feature-portal/source-dataset-connection.png)
@@ -273,7 +274,7 @@ ms.locfileid: "101740131"
 3. 此时会显示用于配置数据集的新选项卡。 树状视图中也会显示数据集。 在“属性”窗口中，将数据集的名称更改为 **ChangeTrackingDataset**。
 4. 切换到“连接”选项卡，然后执行以下步骤：
 
-    1. 为“链接服务”选择“AzureSqlDatabaseLinkedService”。
+    1. 为“链接服务”选择“AzureSqlDatabaseLinkedService”。 
     2. 为“表”选择“[dbo].[table_store_ChangeTracking_version]”。
 
 ## <a name="create-a-pipeline-for-the-full-copy"></a>创建用于完整复制的管道
@@ -387,7 +388,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     ![复制活动 - 名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-activity-name.png)
 8. 在“属性”窗口中切换到“源”选项卡，然后执行以下步骤：
 
-   1. 为“源数据集”选择“SourceDataset”。
+   1. 为“源数据集”选择“SourceDataset”。 
    2. 为“使用查询”选择“查询”。
    3. 为“查询”输入以下 SQL 查询。
 
@@ -402,7 +403,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 10. 逐个地 **将两个“查找”活动连接到“复制”活动**。 将附加到“查找”活动的 **绿色** 按钮拖放到“复制”活动。
 
     ![连接“查找”和“复制”活动](./media/tutorial-incremental-copy-change-tracking-feature-portal/connect-lookup-and-copy.png)
-11. 将“存储过程”活动从“活动”工具箱拖放到管道设计器图面。 将活动的名称设置为 **StoredProceduretoUpdateChangeTrackingActivity**。 此活动更新 **table_store_ChangeTracking_version** 表中的更改跟踪版本。
+11. 将“存储过程”活动从“活动”工具箱拖放到管道设计器图面。  将活动的名称设置为 **StoredProceduretoUpdateChangeTrackingActivity**。 此活动更新 **table_store_ChangeTracking_version** 表中的更改跟踪版本。
 
     ![存储过程活动 - 名称](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-activity-name.png)
 12. 切换到“SQL 帐户”\*选项卡，为“链接服务”选择“AzureSqlDatabaseLinkedService”。

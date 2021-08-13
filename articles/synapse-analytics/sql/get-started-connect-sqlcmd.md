@@ -9,19 +9,19 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3abdd44f0684282e92da147dff996ff54f0ef23f
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 3972b82c3477e6ac75574ce9110ad90435bbf8a3
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565468"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112538874"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>使用 sqlcmd 连接到 Synapse SQL
 
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
-> * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+> * [Visual Studio](../sql/get-started-visual-studio.md)
 > * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
@@ -72,7 +72,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 ```
 
 > [!NOTE]
-> 需要 [启用 Azure Active Directory 身份验证](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 才能使用 Active Directory 进行身份验证。
+> 需要 [启用 Azure Active Directory 身份验证](../sql/active-directory-authentication.md) 才能使用 Active Directory 进行身份验证。
 
 ## <a name="2-query"></a>2.查询
 

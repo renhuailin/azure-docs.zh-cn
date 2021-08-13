@@ -3,12 +3,12 @@ title: 快速入门：使用 cURL 和 REST 管理知识库 - QnA Maker
 description: 本快速入门介绍如何使用 REST API 创建、发布和查询知识库。
 ms.date: 1/22/2021
 ms.topic: quickstart
-ms.openlocfilehash: 45af4dbe28720a614cc64cb7567ec8f96f3f40cb
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0467004b8188f0187fa4e565e3637f5e765a510d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110487263"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111993723"
 ---
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -17,7 +17,7 @@ ms.locfileid: "110487263"
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA（稳定版本）](#tab/v1)
 
 * 最新版本的 [cURL](https://curl.haxx.se/)。 快速入门中使用了 [cURL 文档](https://curl.haxx.se/docs/manpage.html)中所述的多个命令行开关。
-* 必须有 [QnA Maker 资源](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure?tabs=v1#create-a-new-qna-maker-service)，才能使用密钥和资源名称。 你在资源创建过程中输入了资源“名称”  ，然后系统为你创建了密钥。 资源名称将用作终结点的子域。 若要检索密钥和资源名称，请在 Azure 门户中选择资源对应的“快速入门”。  资源名称是终结点 URL 的第一个子域：
+* 必须有 [QnA Maker 资源](../how-to/set-up-qnamaker-service-azure.md?tabs=v1#create-a-new-qna-maker-service)，才能使用密钥和资源名称。 你在资源创建过程中输入了资源“名称”  ，然后系统为你创建了密钥。 资源名称将用作终结点的子域。 若要检索密钥和资源名称，请在 Azure 门户中选择资源对应的“快速入门”。  资源名称是终结点 URL 的第一个子域：
 
     `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
 
@@ -27,7 +27,7 @@ ms.locfileid: "110487263"
 # <a name="custom-question-answering-preview-release"></a>[自定义问答（预览版）](#tab/v2)
 
 * 最新版本的 [cURL](https://curl.haxx.se/)。 快速入门中使用了 [cURL 文档](https://curl.haxx.se/docs/manpage.html)中所述的多个命令行开关。
-* 自定义问答需要启用了自定义问答功能的[文本分析资源](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/set-up-qnamaker-service-azure?tabs=v2#create-a-new-qna-maker-service)来生成 API 密钥和终结点。 创建资源时选择的“名称”用作终结点的子域。 若要检索密钥和资源名称，请在 Azure 门户中选择资源对应的“快速入门”。 资源名称是终结点 URL 的第一个子域：
+* 自定义问答需要启用了自定义问答功能的[文本分析资源](../how-to/set-up-qnamaker-service-azure.md?tabs=v2#create-a-new-qna-maker-service)来生成 API 密钥和终结点。 创建资源时选择的“名称”用作终结点的子域。 若要检索密钥和资源名称，请在 Azure 门户中选择资源对应的“快速入门”。 资源名称是终结点 URL 的第一个子域：
 
     `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v5.0-preview.2`
 
@@ -300,7 +300,7 @@ curl https://REPLACE-WITH-YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker/knowledg
 |信息|cURL 配置|目的|
 |--|--|--|
 |启用了自定义问答功能的文本分析资源。|代码|用于构造 URL|
-|文本分析资源密钥|`Ocp-Apim-Subscription-Key` 标头的 `-h` 参数|对文本分析服务进行身份验证|
+|文本分析资源密钥|`Ocp-Apim-Subscription-Key` 标头的 `-h` 参数|向文本分析服务进行身份验证|
 |知识库 ID|URL 路由|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
 |描述查询的 JSON|`-d` 参数|[请求正文参数](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body)和 JSON [示例](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
 |JSON 大小（字节）|`Content-Size` 标头的 `-h` 参数||

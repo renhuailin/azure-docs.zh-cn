@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.date: 05/26/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: f29be1807dfcc314c89d30301107670a970263ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: aad92516841be1fc8552bbea8fc6b256cd080160
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172869"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112028984"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>使用 Azure Active Directory 授予对 Azure 应用程序配置的访问权限
 除了使用基于哈希的消息验证码 (HMAC)，Azure 应用程序配置还支持使用 Azure Active Directory (Azure AD) 授权对应用程序配置实例的请求。  Azure AD 允许使用 Azure 基于角色的访问控制 (Azure RBAC) 向安全主体授予权限。  安全主体可以是用户、[托管标识](../active-directory/managed-identities-azure-resources/overview.md)或[应用程序服务主体](../active-directory/develop/app-objects-and-service-principals.md)。  若要了解有关角色和角色分配的详细信息，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
@@ -28,15 +28,18 @@ ms.locfileid: "102172869"
 ## <a name="assign-azure-roles-for-access-rights"></a>分配 Azure 角色以授予访问权限
 Azure Active Directory (Azure AD) 通过 [Azure 基于角色的访问控制 (Azure RBAC)](../role-based-access-control/overview.md) 授予对受保护资源的访问权限。
 
-将 Azure 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 访问范围仅限于应用程序配置资源。 Azure AD 安全主体可以是用户、应用程序服务主体或 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
+将 Azure 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 访问范围仅限于应用程序配置资源。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
 ## <a name="azure-built-in-roles-for-azure-app-configuration"></a>Azure 应用程序配置的 Azure 内置角色
-Azure 提供下列 Azure 内置角色，用于使用 Azure AD 和 OAuth 授予对应用程序配置数据的访问权限：
+Azure 提供下列 Azure 内置角色，用于使用 Azure AD 授予对应用程序配置数据的访问权限：
 
 - 应用程序配置数据所有者：使用此角色授予对应用程序配置数据的读取/写入/删除访问权限。 这不会授予对应用程序配置资源的访问权限。
 - 应用程序配置数据读取者：使用此角色授予对应用程序配置数据的读取访问权限。 这不会授予对应用程序配置资源的访问权限。
-- **参与者**：使用此角色管理应用程序配置资源。 虽然可以使用访问密钥访问应用程序配置数据，但此角色不会使用 Azure AD 授予对数据的直接访问权限。
+- 参与者或所有者：使用此角色管理应用配置资源。 它负责授予对资源的访问密钥的访问权限。 虽然可以使用访问密钥访问应用程序配置数据，但此角色不会使用 Azure AD 授予对数据的直接访问权限。
 - **读者**：使用此角色授予对应用程序配置资源的读取访问权限。 这不会授予对资源的访问密钥的访问权限，也不会授予对存储在应用程序配置中的数据的访问权限。
+
+> [!NOTE]
+> 为不同标识分配角色后，在使用此标识访问存储在应用配置中的数据之前，该权限的传播时长上限为 15 分钟。
 
 ## <a name="next-steps"></a>后续步骤
 了解有关使用[托管标识](howto-integrate-azure-managed-service-identity.md)管理应用程序配置服务的详细信息。

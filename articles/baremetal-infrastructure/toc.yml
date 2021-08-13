@@ -78,7 +78,7 @@
             - name: 部署 Azure Monitor for SAP Solutions - Azure PowerShell
               href: ../virtual-machines/workloads/sap/azure-monitor-sap-quickstart-powershell.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
             - name: 适用于 SAP 的 Azure Monitor 解决方案常见问题解答
-              href: ../virtual-machines/workloads/sap/azure-monitor-faq.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
+              href: ../virtual-machines/workloads/sap/azure-monitor-faq.yml?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
         - name: 如何
           items:
             - name: 使用 STONITH 进行 HA 设置
