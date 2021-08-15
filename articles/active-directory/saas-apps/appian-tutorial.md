@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/17/2020
+ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: aef8eb429bf772dff4d4b0de629cb1118b140e10
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c2ac93e198dc9f8f3e7f2d2e5038e6ad25003e6
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96180381"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112457581"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appian"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Appian 的集成
 
@@ -26,19 +26,22 @@ ms.locfileid: "96180381"
 * 让用户使用其 Azure AD 帐户自动登录到 Appian。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 已启用 Appian 单一登录 (SSO) 的订阅。
 
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
+
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Appian 支持 SP 和 IDP 发起的 SSO
-* Appian 支持实时用户预配
+* Appian 支持 SP 和 IDP 发起的 SSO。
+* Appian 支持实时用户预配。
 
 ## <a name="adding-appian-from-the-gallery"></a>从库中添加 Appian
 
@@ -50,7 +53,6 @@ ms.locfileid: "96180381"
 1. 若要添加新的应用程序，请选择“新建应用程序”。
 1. 在“从库中添加”部分的搜索框中，键入“Appian” 。
 1. 在结果面板中选择 Appian，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-appian"></a>配置并测试 Appian 的 Azure AD SSO
 
@@ -71,13 +73,13 @@ ms.locfileid: "96180381"
 
 1. 在 Azure 门户的 Appian 应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.appiancloud.com`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.appiancloud.com`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.appiancloud.com/suite/saml/AssertionConsumer`
 
@@ -95,6 +97,7 @@ ms.locfileid: "96180381"
 1. 在“设置 Appian”部分中，根据要求复制相应 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -103,7 +106,7 @@ ms.locfileid: "96180381"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -145,7 +148,6 @@ ms.locfileid: "96180381"
 
 1.  成功验证你仍可以登录后，单击“保存更改”。
 
-
 ### <a name="create-appian-test-user"></a>创建 Appian 测试用户
 
 在本部分，我们将在 Appian 中创建名为 Britta Simon 的用户。 Appian 支持默认启用的实时用户预配。 此部分不存在任何操作项。 如果 Appian 中尚不存在用户，身份验证后系统会创建一个新用户。
@@ -162,10 +164,9 @@ ms.locfileid: "96180381"
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，你应该会自动登录到为其设置了 SSO 的 Appian 
+* 在 Azure 门户中单击“测试此应用程序”后，你应该会自动登录到为其设置了 SSO 的 Appian。 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在访问面板中单击 Appian 磁贴时，如果是在 SP 模式下配置的，则系统会将你重定向到应用程序登录页，以便启动登录流；而如果是在 IDP 模式下配置的，你应该会自动登录到为其设置了 SSO 的 Appian。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
-
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的“Appian”磁贴时，如果是在 SP 模式下配置的，则系统会将你重定向到应用程序登录页，以便启动登录流；而如果是在 IDP 模式下配置的，你应该会自动登录到为其设置了 SSO 的 Appian。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

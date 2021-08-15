@@ -1,25 +1,26 @@
 ---
-title: 快速入门：查看使用 Azure Active Directory (Azure AD) 租户进行标识管理的应用程序列表
-description: 本快速入门使用 Azure 门户查看已注册以便使用 Azure Active Directory (Azure AD) 租户进行标识管理的应用程序列表。
+title: 快速入门：查看租户中应用程序的列表
+titleSuffix: Azure AD
+description: 在本快速入门中，请使用 Azure 门户来查看应用程序的列表，这些应用程序已注册为使用 Azure Active Directory (Azure AD) 租户进行标识管理。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 04/09/2019
-ms.author: mtillman
-ms.reviewer: arvinh
+ms.date: 07/22/2021
+ms.author: davidmu
+ms.reviewer: alamaral
 ms.custom: it-pro
-ms.openlocfilehash: c1022ddae7fdd00731f17a1e62e024a6ebfaebcb
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: b5b9c84a5cbadd7d3661a2109223c43dbff7da7a
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080590"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114605703"
 ---
-# <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>快速入门：查看使用 Azure Active Directory (Azure AD) 租户进行标识管理的应用程序列表
+# <a name="quickstart-view-the-list-of-applications-in-your-tenant"></a>快速入门：查看租户中应用程序的列表
 
 将 Azure AD 用作组织使用的应用程序的标识和访问管理 (IAM) 系统以开始使用。 在本快速入门中，你将查看已设置为使用 Azure AD 租户作为其标识提供者 (IdP) 的应用程序（也称为应用）。
 
@@ -34,7 +35,7 @@ ms.locfileid: "112080590"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-若要在本地安装和使用 CLI，请运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
+若要在本地安装和使用 CLI，请运行 Azure CLI 2.0.4 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="find-the-list-of-applications-in-your-tenant"></a>查找租户中的应用程序列表
 
@@ -45,10 +46,9 @@ ms.locfileid: "112080590"
 向 Azure AD 租户注册的应用程序可以在 Azure 门户的“企业应用”部分中查看。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在左侧导航面板中选择“Azure Active Directory”。
-3. 在“Azure Active Directory”窗格中，选择“企业应用程序”。 
-4. 在“应用程序类型”下拉菜单中选择“所有应用程序”，然后选择“应用”  。 此时会显示租户应用程序的随机示例。
-5. 若要查看更多应用程序，请选择列表底部的“加载更多”。 如果租户中有大量应用程序，则也许搜索特定应用程序要比滚动浏览整个列表容易些。 搜索特定的应用程序将在本快速入门的后面部分进行介绍。
+2. 在“Azure 服务”窗格中，选择“企业应用程序”。 
+3. 在“应用程序类型”下拉菜单中选择“所有应用程序”，然后选择“应用”  。 此时会显示租户应用程序的随机示例。
+4. 若要查看更多应用程序，请选择列表底部的“加载更多”。 如果租户中有大量应用程序，则也许搜索特定应用程序要比滚动浏览整个列表容易些。 搜索特定的应用程序将在本快速入门的后面部分进行介绍。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -94,7 +94,7 @@ az ad app list --filter "displayname eq 'test' and servicePrincipalType eq 'Appl
 1. 在“应用程序类型”菜单中，选择“所有应用程序”，然后选择“应用”  。
 2. 输入要查找的应用程序的名称。 如果该应用程序已添加到 Azure AD 租户中，则会显示在搜索结果中。 此示例显示 GitHub 尚未添加到租户应用程序中。
     ![示例演示尚未添加到租户的应用](media/view-applications-portal/search-for-tenant-application.png)
-3. 尝试输入应用程序名称的头几个字母。 此示例显示以 **Sales** 开头的所有应用程序。
+3. 尝试输入应用程序名称的头几个字母。 此示例显示以“Office”开头的所有应用程序。
     ![示例演示以 Sales 开头的所有应用](media/view-applications-portal/search-by-prefix.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)

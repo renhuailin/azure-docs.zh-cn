@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: apedward
-ms.openlocfilehash: 393b8857b3602d914143787cc9ea46074ff59c05
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 17a41bd64f1bba4a5ae4d6d9d497c03afae037e7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813895"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114444219"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>教程：使用 Azure DevOps 发布 Azure Static Web Apps
 
@@ -21,20 +21,21 @@ ms.locfileid: "109813895"
 在本教程中，学习：
 
 - 设置 Azure Static Web Apps 站点
-- 创建 Azure DevOps 管道以生成并发布静态 Web 应用
+- 创建 Azure 管道以生成并发布静态 Web 应用
 
 ## <a name="prerequisites"></a>先决条件
 
 - **有效的 Azure 帐户：** 如果你没有帐户，可以 [免费创建一个帐户](https://azure.microsoft.com/free/)。
-- **Azure DevOps 项目：** 如果你没有项目，可以 [免费创建一个项目](https://azure.microsoft.com/pricing/details/devops/azure-devops-services/)。
-- **Azure DevOps 管道：** 如需帮助入门，请参阅 [创建第一个管道](/azure/devops/pipelines/create-first-pipeline?preserve-view=true&view=azure-devops)。
+- Azure DevOps 项目：如果你没有此项目，可以[免费创建一个项目](https://azure.microsoft.com/pricing/details/devops/azure-devops-services/)。
+  - Azure DevOps 包括 Azure Pipelines。 如需 Azure Pipelines 入门方面的帮助，请参阅[创建第一个管道](/azure/devops/pipelines/create-first-pipeline?preserve-view=true&view=azure-devops)。
+  - 静态 Web 应用管道任务目前只适用于 Linux 计算机。 在运行下面提到的管道时，请确保它在 Linux VM 上运行。
 
-## <a name="create-a-static-web-app-in-an-azure-devops-repository"></a>在 Azure DevOps 存储库中创建静态 Web 应用
+## <a name="create-a-static-web-app-in-an-azure-devops"></a>在 Azure DevOps 中创建静态 Web 应用
 
   > [!NOTE]
   > 如果你的存储库中已有一个应用，则可以跳到下一部分。
 
-1. 导航到你的 Azure DevOps 存储库。
+1. 导航到 Azure Repos 中的存储库。
 
 1. 选择“导入”开始导入示例应用程序。
   
@@ -56,7 +57,7 @@ ms.locfileid: "109813895"
 
 1. 选择“创建”  。
 
-1. 在“部署详细信息”下，确保选择“其他”。 这样，便可以使用 Azure DevOps 存储库中的代码。
+1. 在“部署详细信息”下，确保选择“其他”。 这样你就可以使用 Azure Repos 中的代码。
 
     :::image type="content" source="media/publish-devops/create-resource.png" alt-text="部署详细信息 - 其他":::
 
@@ -73,7 +74,7 @@ ms.locfileid: "109813895"
 
 ## <a name="create-the-pipeline-task-in-azure-devops"></a>在 Azure DevOps 中创建管道任务
 
-1. 导航到前面创建的 Azure DevOps 存储库。
+1. 导航到前面创建的 Azure Repos 中的存储库。
 
 1. 选择“设置生成”。
 
@@ -87,7 +88,7 @@ ms.locfileid: "109813895"
 
     ```yaml
     trigger:
-    - main
+      - main
 
     pool:
       vmImage: ubuntu-latest
@@ -100,7 +101,6 @@ ms.locfileid: "109813895"
           app_location: '/'
           api_location: 'api'
           output_location: ''
-        env:
           azure_static_web_apps_api_token: $(deployment_token)
     ```
 

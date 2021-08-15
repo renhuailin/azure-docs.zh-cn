@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/29/2021
 ms.custom: tracking-python, contperf-fy21q3, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: dbbd71a40419ee3472b01be11c101567e6945634
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 4d4c7fcb824d57b46df1353f30d3136e129af293
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028210"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765792"
 ---
 # <a name="tutorial-upload-data-and-train-a-model-part-3-of-3"></a>教程：上传数据和训练模型（第 3 部分，共 3 部分）
 
@@ -161,9 +161,6 @@ optimizer = optim.SGD(
 )
 ```
 
-> [!div class="nextstepaction"]
-> [我调整了训练脚本](?success=adjust-training-script#upload) [我遇到了一个问题](https://www.research.net/r/7C6W7BQ?issue=adjust-training-script)
-
 
 ## <a name="upload-the-data-to-azure"></a><a name="upload"></a> 将数据上传到 Azure
 
@@ -203,9 +200,6 @@ optimizer = optim.SGD(
     Uploaded ./data\cifar-10-batches-py\data_batch_5, 9 files out of an estimated total of 9
     Uploaded 9 files
     ```
-
-> [!div class="nextstepaction"]
-> [我上传了数据](?success=upload-data#control-script) [我遇到了一个问题](https://www.research.net/r/7C6W7BQ?issue=upload-data)
 
 ## <a name="create-a-control-script"></a><a name="control-script"></a> 创建控制脚本
 
@@ -271,17 +265,12 @@ if __name__ == "__main__":
    :::column-end:::
 :::row-end:::
 
-> [!div class="nextstepaction"]
-> [我创建了控制脚本](?success=control-script#submit-to-cloud) [我遇到了一个问题](https://www.research.net/r/7C6W7BQ?issue=control-script)
-
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-to-cloud"></a> 将该运行提交到 Azure 机器学习
 
 选择“保存并在终端中运行脚本”来运行 run-pytorch-data.py 脚本。  此运行将使用你上传的数据在计算群集上训练模型。
 
 此代码将会在 Azure 机器学习工作室中输出一个指向试验的 URL。 如果访问该链接，就可以看到代码在运行。
 
-> [!div class="nextstepaction"]
-> [我重新提交了运行](?success=submit-to-cloud#inspect-log) [我遇到了一个问题](https://www.research.net/r/7C6W7BQ?issue=submit-to-cloud)
 
 ### <a name="inspect-the-log-file"></a><a name="inspect-log"></a> 检查日志文件
 
@@ -324,8 +313,6 @@ LIST FILES IN DATA PATH...
 - Azure 机器学习已自动为你将 Blob 存储装载到计算群集。
 - 控制脚本中使用的 ``dataset.as_named_input('input').as_mount()`` 将解析为装入点。
 
-> [!div class="nextstepaction"]
-> [我检查了日志文件](?success=inspect-log#clean-up-resources) [我遇到了一个问题](https://www.research.net/r/7C6W7BQ?issue=inspect-log)
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -355,4 +342,5 @@ LIST FILES IN DATA PATH...
 
 有了模型后，接下来请学习：
 
-* 如何[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
+> [!div class="nextstepaction"]
+> [如何使用 Azure 机器学习来部署模型](how-to-deploy-and-where.md)。

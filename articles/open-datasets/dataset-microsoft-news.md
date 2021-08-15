@@ -7,12 +7,12 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 04/16/2021
-ms.openlocfilehash: ecbad0a8c23bd2781373923ffa470a06509ee852
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 29a7865a06fd96ce4d27892775fb5af728633a02
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112038526"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982467"
 ---
 # <a name="microsoft-news-recommendation"></a>Microsoft 资讯推荐
 
@@ -102,7 +102,7 @@ entity_embedding.vec 和 relation_embedding.vec 文件包含 TransE 方法从子
 
 ## <a name="storage-location"></a>存储位置
 
-数据存储在美国西部/东部数据中心的 blob 的以下 blob 容器中：https://mind201910small.blob.core.windows.net/release/。
+数据存储在美国西部/东部数据中心的 Blob 的以下 Blob 容器中： https://mind201910small.blob.core.windows.net/release/ 。
 
 在该容器中，训练和验证数据集分别被压缩为 MINDlarge_train.zip 和 MINDlarge_dev.zip。
 

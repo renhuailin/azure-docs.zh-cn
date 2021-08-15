@@ -1,17 +1,17 @@
 ---
-ms.openlocfilehash: 340635f273c20c9d8b42fde0c07a7aa97d9f348a
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: a04d7dde8b6f2a492538d2012de5222686fd7fcf
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293220"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762391"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/dotnet/)。
 - 安装 [Azure Az PowerShell 模块](/powershell/azure/)
 
-## <a name="create-azure-communication-resource"></a>创建 Azure 通信资源
+## <a name="create-azure-communication-services-resource"></a>创建 Azure 通信服务资源
 
 若要创建 Azure 通信服务资源，请先[登录 Azure CLI](/cli/azure/authenticate-azure-cli)。 你可以通过使用命令 ```Connect-AzAccount``` 和提供凭据在终端完成此操作。 运行以下命令以创建资源：
 

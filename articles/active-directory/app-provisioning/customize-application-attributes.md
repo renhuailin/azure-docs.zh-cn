@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/11/2021
+ms.date: 07/07/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 78e2b01da1b47a51309a9e26500514aea396190b
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 79f001ef1483ccdc8b9a4f2e2bfde9ca87db705f
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783002"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113507065"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>教程 - 为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
@@ -151,15 +151,14 @@ SCIM RFC 定义一个核心用户和组模式，同时还允许对模式进行�
 
 这些说明仅适用于启用了 SCIM 的应用程序。 诸如 ServiceNow 和 Salesforce 之类的应用程序不与使用 SCIM 的 Azure AD 集成，因此它们在添加自定义属性时不需要这一特定的命名空间。
 
-自定义属性不能是引用属性、多值属性或复杂类型的属性。 当前，库中的应用程序仅支持自定义多值和复杂类型的扩展属性。  
+自定义属性不能是引用属性、多值属性或复杂类型的属性。 当前，库中的应用程序仅支持自定义多值和复杂类型的扩展属性。 下面的示例中省略了自定义扩展架构标头，因为在来自 Azure AD SCIM 客户端的请求中不会发送该标头。 将来会修复此问题，请求中将会发送该标头。  
  
 具有扩展属性的用户的示例表示形式：
 
 ```json
    {
      "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
-      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
-      "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"],
      "userName":"bjensen",
      "id": "48af03ac28ad4fb88478",
      "externalId":"bjensen",

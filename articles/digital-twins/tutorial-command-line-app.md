@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 1cee1a33f74b11793d9b12db0b8bc6f65fda29a3
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 1d4faa9ad8bce084fdd011fb9a79fd867f02aa27
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787666"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446900"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-a-sample-client-app"></a>教程：使用示例客户端应用创建 Azure 数字孪生图
 
 [!INCLUDE [digital-twins-tutorial-selector.md](../../includes/digital-twins-tutorial-selector.md)]
 
-在本教程中，你将使用模型、孪生和关系在 Azure 数字孪生中生成一个图。 本教程使用的工具是可与 Azure 数字孪生实例交互的一个 **示例命令行客户端应用程序**。 客户端应用与[教程：编写客户端应用](tutorial-code.md)中编写的应用类似。
+在本教程中，你将使用模型、孪生和关系在 Azure 数字孪生中生成一个图。 本教程的工具是用于与 Azure 数字孪生实例交互的示例命令行客户端应用程序。 该客户端应用类似于[为客户端应用编写代码](tutorial-code.md)中编写的应用。
 
 可以使用此示例执行基本的 Azure 数字孪生操作，例如上传模型、创建和修改孪生以及创建关系。 还可查看[示例的代码](https://github.com/Azure-Samples/digital-twins-samples/tree/master/)来了解 Azure 数字孪生 API，并按你想要的方式修改示例项目来练习实现你自己的命令。
 
@@ -40,7 +40,6 @@ ms.locfileid: "109787666"
 :::image type="content" source="media/tutorial-command-line/app/start-button-sample.png" alt-text="Visual Studio 开始按钮的屏幕截图（SampleClientApp 项目）。" lightbox="media/tutorial-command-line/app/start-button-sample.png":::
 
 控制台窗口随即打开，执行身份验证，然后等待命令。 
-* 通过浏览器处理身份验证：默认的 Web 浏览器将打开，并显示身份验证提示。 根据此提示使用 Azure 凭据登录。 然后，可以关闭浏览器选项卡或窗口。
 
 下面是项目控制台的外观的屏幕截图：
 
@@ -49,7 +48,7 @@ ms.locfileid: "109787666"
 > [!TIP]
 > 有关在此项目中可以使用的所有可能命令的列表，请在项目控制台中输入 `help`，然后按回车键。
 
-使项目控制台保持运行状态，以完成本教程中的其余步骤。
+在确认该应用运行成功后，请关闭控制台窗口，暂时停止运行该应用。 在本文后面需再次运行它。
 
 ## <a name="model-a-physical-environment-with-dtdl"></a>使用 DTDL 为物理环境建模
 
@@ -71,6 +70,8 @@ ms.locfileid: "109787666"
 ### <a name="upload-models-to-azure-digital-twins"></a>将模型上传到 Azure 数字孪生
 
 设计模型后，需要将其上传到 Azure 数字孪生实例。 这将使用你自己的自定义域词汇来配置 Azure 数字孪生服务实例。 上传模型后，可以创建使用这些模型的孪生实例。
+
+1. 在编辑上一部分的 Room.json 文件后，再次开始运行控制台应用。
 
 1. 在项目控制台窗口中，运行以下命令以上传更新后的 Room 模型和 Floor 模型，你将在下一节中使用这些模型创建不同类型的孪生 。
 
@@ -95,7 +96,7 @@ CreateModels Room
 ```
 
 由于无法覆盖模型，此操作现在将返回服务错误。
-有关如何删除现有模型的详细信息，请参阅[操作说明：管理 DTDL 模型](how-to-manage-model.md)。
+有关如何删除现有模型的详细信息，请参阅[管理 DTDL 模型](how-to-manage-model.md)。
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)
@@ -219,7 +220,7 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
     :::image type="content" source="media/tutorial-command-line/app/output-query-all.png" alt-text="显示孪生查询部分结果的屏幕截图，其中包括 room0 和 floor1。":::
 
     >[!NOTE]
-    >在示例项目中，不带任何附加参数的命令 `Query` 相当于 `Query SELECT * FROM DIGITALTWINS`。 若要使用[查询 API](/rest/api/digital-twins/dataplane/query) 或 [CLI 命令](concepts-cli.md)查询实例中的所有孪生体，请使用较长的（完整）查询。
+    >在示例项目中，不带任何附加参数的命令 `Query` 相当于 `Query SELECT * FROM DIGITALTWINS`。 若要使用[查询 API](/rest/api/digital-twins/dataplane/query) 或 [CLI 命令](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)查询实例中的所有孪生体，请使用较长的（完整）查询。
 
 1. **我的环境中的所有房间都有哪些？** （按模型查询）
 
@@ -279,4 +280,4 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 
 请继续学习下一篇教程，将 Azure 数字孪生与其他 Azure 服务结合使用来实现数据驱动的端到端方案：
 > [!div class="nextstepaction"]
-> [教程：连接端到端解决方案](tutorial-end-to-end.md)
+> [连接端到端解决方案](tutorial-end-to-end.md)

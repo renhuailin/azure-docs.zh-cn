@@ -3,12 +3,12 @@ title: 教程：使用 Azure 事件网格自动调整上载图像的大小
 description: 教程：Azure 事件网格可以触发 Azure 存储中的 blob 上传。 你可以用其将上传到 Azure 存储的图像文件发送到其他服务（如 Azure Functions），以调整大小并进行其他改进。
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 5b5630fe969f248f10065f1fb5049112da03e391
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 21fea4c248cebe94bc237b8bc0256ed3e94c08ab
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457745"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113492750"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>教程：使用事件网格自动调整上传图像的大小
 
@@ -39,158 +39,139 @@ ms.locfileid: "110457745"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-完成本教程：
+为完成此教程：
 
-必须已完成以前的 Blob 存储教程：[使用 Azure 存储将映像数据上传到云中][previous-tutorial]。
-
-需要一个 [Azure 订阅](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)。 本教程不适用于免费订阅。 
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果选择在本地安装并使用 CLI，本教程要求使用 Azure CLI 2.0.14 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
-
-如果不使用 Cloud Shell，必须先使用 `az login` 进行登录。
-
-如果之前未在订阅中注册事件网格资源提供程序，请确保已注册。
-
-```bash
-az provider register --namespace Microsoft.EventGrid
-```
-
-```powershell
-az provider register --namespace Microsoft.EventGrid
-```
+- 需要一个 [Azure 订阅](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)。 本教程不适用于免费订阅。 
+- 必须已完成以前的 Blob 存储教程：[使用 Azure 存储将映像数据上传到云中][previous-tutorial]。  
 
 ## <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
+Azure Functions 需要一个常规存储帐户。 除了在上一教程中创建的 Blob 存储帐户之外，请在资源组中再另外创建一个单独的常规存储帐户。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。
 
-Azure Functions 需要一个常规存储帐户。 除了在上一教程中创建的 Blob 存储帐户，另请使用 [az storage account create](/cli/azure/storage/account) 命令在资源组中创建一个常规的独立存储帐户。 存储帐户名称必须为 3 到 24 个字符，并且只能包含数字和小写字母。
+请设置变量，以保存你在上一教程中创建的资源组的名称、要创建的资源的位置，以及 Azure Functions 所需新存储帐户的名称。 然后，请为 Azure 函数创建存储帐户。
 
-1. 设置一个变量，用于存储在上一教程中创建的资源组的名称。
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-    ```bash
-    resourceGroupName="myResourceGroup"
-    ```
+使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) 命令。
 
-    ```powershell
+1. 为资源组指定名称。 
+
+    ```azurepowershell-interactive
     $resourceGroupName="myResourceGroup"
     ```
+2. 指定存储帐户的位置。
 
-1. 设置变量以保存要创建资源的位置。 
+    ```azurepowershell-interactive
+    $location="eastus"    
+    ```
+3. 指定该函数要使用的存储帐户的名称。
 
-    ```bash
+    ```azurepowershell-interactive
+    $functionstorage="<name of the storage account to be used by the function>"    
+    ```
+4. 创建存储帐户。 
+
+    ```azurepowershell-interactive
+    New-AzStorageAccount -ResourceGroupName $resourceGroupName -AccountName $functionstorage -Location $location -SkuName Standard_LRS -Kind StorageV2        
+    ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用 [az storage account create](/cli/azure/storage/account) 命令。
+
+> [!NOTE]
+> 在 Cloud Shell 的 Bash shell 中使用以下命令。 如果需要，请使用 Cloud Shell 左上角的下拉列表来切换到 Bash shell。 
+
+1. 为资源组指定名称。 
+
+    ```azurecli-interactive
+    resourceGroupName="myResourceGroup"    
+    ```
+2. 指定存储帐户的位置。
+
+    ```azurecli-interactive
     location="eastus"
     ```
+3. 指定该函数要使用的存储帐户的名称。
 
-    ```powershell
-    $location="eastus"
-    ```
-
-1. 为 Azure Functions 所需的新存储帐户的名称设置一个变量。
-
-    ```bash
+    ```azurecli-interactive
     functionstorage="<name of the storage account to be used by the function>"
     ```
+4. 创建存储帐户。 
 
-    ```powershell
-    $functionstorage="<name of the storage account to be used by the function>"
+    ```azurecli-interactive
+    az storage account create --name $functionstorage --location $location --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
     ```
 
-1. 为 Azure 函数创建存储帐户。
-
-    ```bash
-    az storage account create --name $functionstorage --location $location \
-    --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
-    ```
-
-    ```powershell
-    az storage account create --name $functionstorage --location $location `
-    --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
-    ```
+---
 
 ## <a name="create-a-function-app"></a>创建函数应用  
 
-必须使用 Function App 托管函数的执行。 Function App 提供一个环境，以便在不使用服务器的情况下执行函数代码。 使用 [az functionapp create](/cli/azure/functionapp) 命令创建 Function App。
+必须使用 Function App 托管函数的执行。 Function App 提供一个环境，以便在不使用服务器的情况下执行函数代码。
 
 在以下命令中，请提供你自己的唯一的函数应用名称。 函数应用名称用作该函数应用的默认 DNS 域，因此，该名称需要在 Azure 的所有应用中保持唯一。
 
-1. 为将要创建的函数应用指定一个名称。
+为将要创建的函数应用指定名称，然后创建 Azure 函数。
 
-    ```bash
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+通过使用 [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) 命令来创建函数应用。
+
+1. 指定该函数应用的名称。 
+
+    ```azurepowershell-interactive
+    $functionapp="<name of the function app>"    
+    ```
+2. 创建函数应用。 
+
+    ```azurepowershell-interactive
+    New-AzFunctionApp -Location $location -Name $functionapp -ResourceGroupName $resourceGroupName -Runtime PowerShell -StorageAccountName $functionstorage    
+    ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用 [az functionapp create](/cli/azure/functionapp) 命令创建 Function App。
+
+1. 指定该函数应用的名称。 
+
+    ```azurecli-interactive
     functionapp="<name of the function app>"
     ```
+2. 创建函数应用。 
 
-    ```powershell
-    $functionapp="<name of the function app>"
+    ```azurecli-interactive
+    az functionapp create --name $functionapp --storage-account $functionstorage --resource-group $resourceGroupName --consumption-plan-location $location --functions-version 2    
     ```
 
-1. 创建 Azure 函数。
-
-    ```bash
-    az functionapp create --name $functionapp --storage-account $functionstorage \
-      --resource-group $resourceGroupName --consumption-plan-location $location \
-      --functions-version 2
-    ```
-
-    ```powershell
-    az functionapp create --name $functionapp --storage-account $functionstorage `
-      --resource-group $resourceGroupName --consumption-plan-location $location `
-      --functions-version 2
-    ```
+---
 
 现在配置函数应用，以连接到你在[上一教程][previous-tutorial]中创建的 Blob 存储帐户。
 
 ## <a name="configure-the-function-app"></a>配置函数应用
 
-该函数需要 Blob 存储帐户的凭据，这些凭据是使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) 命令添加到函数应用的应用程序设置的。
+该函数需要 Blob 存储帐户的凭据，你可以使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) 或 [Update-AzFunctionAppSetting](/powershell/module/az.functions/update-azfunctionappsetting) 命令将这些凭据添加到函数应用的应用程序设置。
 
 # <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
-```bash
-storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
-  --name $blobStorageAccount --query connectionString --output tsv)
+```azurecli-interactive
+storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName --name $blobStorageAccount --query connectionString --output tsv)
 
-az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName \
-  --settings AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails \
-  THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName --settings AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
 ```
 
-```powershell
-$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName `
-  --name $blobStorageAccount --query connectionString --output tsv)
+```azurepowershell-interactive
+$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName --name $blobStorageAccount --query connectionString --output tsv)
 
-az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName `
-  --settings AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails `
-  THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
+Update-AzFunctionAppSetting -Name $functionapp -ResourceGroupName $resourceGroupName -AppSetting AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
 ```
 
 # <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
-```bash
-blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
-  -n $blobStorageAccount --query [0].value --output tsv)
+```azurecli-interactive
+blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName -n $blobStorageAccount --query [0].value --output tsv)
 
-storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
-  --name $blobStorageAccount --query connectionString --output tsv)
+storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName --name $blobStorageAccount --query connectionString --output tsv)
 
-az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName \
-  --settings FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails \
-  AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
-  AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey \
-  AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
-```
-
-```powershell
-$blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName `
-  -n $blobStorageAccount --query [0].value --output tsv)
-
-$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName `
-  --name $blobStorageAccount --query connectionString --output tsv)
-
-az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName `
-  --settings FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails `
-  AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount `
-  AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey `
-  AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName --settings FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
 ```
 
 ---
@@ -205,31 +186,17 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
 
 [GitHub](https://github.com/Azure-Samples/function-image-upload-resize) 上提供示例 C# 重设大小函数。 使用 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) 命令将此代码项目部署到函数应用。
 
-```bash
-az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName \
-  --branch master --manual-integration \
-  --repo-url https://github.com/Azure-Samples/function-image-upload-resize
-```
-
-```powershell
-az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName `
-  --branch master --manual-integration `
-  --repo-url https://github.com/Azure-Samples/function-image-upload-resize
+```azurecli-interactive
+az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName --branch master --manual-integration --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
 
 # <a name="nodejs-v10-sdk"></a>[Node.js v10 SDK](#tab/nodejsv10)
 
 [GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10) 上提供示例 Node.js 重设大小函数。 使用 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) 命令将此函数代码项目部署到函数应用。
 
-```bash
+```azurecli-interactive
 az functionapp deployment source config --name $functionapp \
   --resource-group $resourceGroupName --branch master --manual-integration \
-  --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
-```
-
-```powershell
-az functionapp deployment source config --name $functionapp `
-  --resource-group $resourceGroupName --branch master --manual-integration `
   --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
 ```
 
@@ -329,4 +296,3 @@ az functionapp deployment source config --name $functionapp `
 + 若要尝试了解有关 Azure Functions 的其他教程，请参阅[创建与 Azure 逻辑应用集成的函数](../azure-functions/functions-twitter-email.md)。
 
 [previous-tutorial]: ../storage/blobs/storage-upload-process-images.md
-

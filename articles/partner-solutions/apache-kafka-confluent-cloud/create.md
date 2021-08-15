@@ -1,19 +1,19 @@
 ---
-title: 创建 Apache Kafka for Confluent Cloud - Azure 合作伙伴解决方案
+title: 通过 Azure 门户创建 Apache Kafka for Confluent Cloud - Azure 合作伙伴解决方案
 description: 本文介绍如何使用 Azure 门户创建 Apache Kafka for Confluent Cloud 实例。
 ms.service: partner-services
 ms.topic: quickstart
-ms.date: 01/15/2021
+ms.date: 06/07/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: f4c6dacf63b1be44e826fe6841c87ccec4bf9b1a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d2326d330dca9111a68edcc81c8c45f7525c1b0
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98253629"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112521031"
 ---
-# <a name="quickstart-get-started-with-apache-kafka-for-confluent-cloud"></a>快速入门：Apache Kafka for Confluent Cloud 入门
+# <a name="quickstart-get-started-with-apache-kafka-for-confluent-cloud---azure-portal"></a>快速入门：Apache Kafka for Confluent Cloud 入门 - Azure 门户
 
 在本快速入门中，你将使用 Azure 门户创建 Apache Kafka for Confluent Cloud 实例。
 

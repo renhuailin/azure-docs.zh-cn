@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: mathoma, vanto
 ms.date: 01/14/2021
-ms.openlocfilehash: c0d199678aefbf2aa08f8fcbcb27376762dd39b5
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 6f47e9d43008f004bc529b0a3251bf252e0039b9
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110707267"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690799"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>什么是 Azure SQL 托管实例？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -155,7 +155,7 @@ Azure SQL 托管实例提供一组可用于保护数据的高级安全功能。
 - 使用[行级别安全性](/sql/relational-databases/security/row-level-security) (RLS) 可根据执行查询的用户特征（例如按组成员身份或执行上下文），控制对数据库表中的行的访问。 RLS 简化了应用程序中的安全性设计和编程。 使用 RLS 可针对数据行访问实施限制。 例如，确保工作人员只能访问与其部门相关的数据行，或者将可访问的数据限制为相关的数据。
 - [透明数据加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) 可以加密 SQL 托管实例数据文件，称为静态数据加密。 TDE 针对数据和日志文件执行实时 I/O 加密和解密。 加密使用数据库加密密钥 (DEK)，它存储在数据库引导记录中，可在恢复时使用。 可使用透明数据加密保护托管实例中的所有数据库。 TDE 是 SQL Server 中经验证的静态加密技术，许多符合性标准都需要它来防止存储介质被盗。
 
-通过 Azure 数据库迁移服务或本机还原来支持将加密数据库迁移到 SQL 托管实例。 如果打算使用本机还原迁移加密数据库，则必须将现有 TDE 证书从 SQL Server 实例迁移到 SQL 托管实例。 有关迁移选项的详细信息，请参阅[将 SQL Server 迁移到 SQL 托管实例](migrate-to-instance-from-sql-server.md)。
+通过 Azure 数据库迁移服务或本机还原来支持将加密数据库迁移到 SQL 托管实例。 如果打算使用本机还原迁移加密数据库，则必须将现有 TDE 证书从 SQL Server 实例迁移到 SQL 托管实例。 有关迁移选项的详细信息，请参阅[将 SQL Server 实例迁移到 Azure SQL 托管实例指南](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md)。
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory 集成
 
@@ -233,7 +233,7 @@ SQL 托管实例可以减少系统管理员花费在管理任务上的时间，�
 
 下表显示了可通过 Transact-SQL 访问的几个属性。使用这些属性可以检测应用程序是否正在使用 SQL 托管实例以及检索重要属性。
 
-|属性|Value|注释|
+|属性|值|注释|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|此值与 SQL 数据库中的值相同。 此值 **并不** 表示 SQL 引擎版本 12 (SQL Server 2014)。 SQL 托管实例始终运行最新稳定的 SQL 引擎版本，此版本与最新可用的 SQL Server RTM 版本相同或更高。  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|此值与 SQL 数据库中的值相同。|

@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 04/19/2021
+ms.date: 07/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 6da5dfcded067420fd6d43f4a5b2841da060898a
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 7ecd8cf1330cec20131e5015a62691d7cf704f03
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738115"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114688542"
 ---
 # <a name="what-is-azure-data-box"></a>什么是 Azure Data Box？
 
@@ -71,7 +71,7 @@ Data Box 旨在几乎不影响网络的情况下将大量数据移至 Azure。 �
 | 重量                                                  | < 22.68 千克                |
 | 维度                                              | 设备 - 宽度：309.0 毫米 高度：430.4 毫米 深度：502.0 毫米 |            
 | 机架空间                                              | 放在机架侧面时为 7 U（不能安装在机架上）|
-| 所需的电缆                                         | 1 根电源线（附送） <br> 2 根 RJ45 电缆 <br> 2 根 SFP+ Twinax 铜缆线|
+| 所需的电缆                                         | 1 根电源线（附送） <br> 2 条 RJ45 电缆（未附送）<br> 2 条 SFP + Twinax 铜电缆（未附送）|
 | 存储容量                                        | 100 TB 设备在进行 RAID 5 保护后有 80 TB 的可用容量|
 | 功率分级                                            | 电源设备的概率为 700 瓦。 <br> 通常情况下，设备为 375 瓦。|
 | 网络接口                                      | 2 个 1 GbE 接口 - MGMT 和 DATA 3。 <br> MGMT - 适用于管理，用户不可配置，用于初始设置 <br> DATA3 - 适用于数据，用户可配置，且默认为动态 <br> MGMT 和 DATA 3 也可作为 10 GbE 接口使用 <br> 2 个 10 GbE 接口 - DATA 1 和 DATA 2 <br> 两者都用于数据，可以配置为动态（默认）或静态 |
@@ -119,7 +119,7 @@ Data Box 包括以下组件：
 
 1. **订购** - 在 Azure 门户中创建订单，提供发货信息和数据的目标 Azure 存储帐户。 如果设备可用，则 Azure 会准备，然后寄送设备并随附发货跟踪 ID。
 
-2. **接收** - 交付设备后，使用指定的电缆为设备连接网络和电源。 打开并连接到设备。 在要从中复制数据的主机上配置设备网络并装载共享。
+2. **接收** - 交付设备后，使用指定的电缆为设备连接网络和电源。 （设备附送了电源线。 你需要购买数据线。）打开并连接到设备。 在要从中复制数据的主机上配置设备网络并装载共享。
 
 3. **数据复制** - 将数据复制到 Data Box 共享。
 
@@ -134,7 +134,7 @@ Data Box 包括以下组件：
 
 1. **订购** - 在 Azure 门户中创建导出订单，提供发货信息和数据的源 Azure 存储帐户。 如果设备可用，Azure 将准备一台设备。 将数据从 Azure 存储帐户复制到 Data Box。 数据复制完成后，Microsoft 将寄送设备并随附发货跟踪 ID。
 
-2. **接收** - 交付设备后，使用指定的电缆为设备连接网络和电源。 打开并连接到设备。 在要将数据复制到的主机上配置设备网络并装载共享。
+2. **接收** - 交付设备后，使用指定的电缆为设备连接网络和电源。 （设备附送了电源线。 你需要购买数据线。）打开并连接到设备。 在要将数据复制到的主机上配置设备网络并装载共享。
 
 3. **复制数据** - 将数据从 Data Box 共享复制到本地数据服务器。
 

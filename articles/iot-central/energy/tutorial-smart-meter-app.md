@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d9b5af45ab9a1003cc25e8b1ea2059b83bc715c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42e88d322bd4d2b174d7a52e4892970caf5b1a5e
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99833297"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112963232"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>教程：创建并演练智能计量监视应用模板 
 
@@ -63,7 +63,7 @@ ms.locfileid: "99833297"
 成功部署应用模板之后，附带了示例智能计量设备、设备型号和仪表板。 
 
 Adatum 是一家虚构的能源公司，负责监视和管理智能计量。 在智能计量监视仪表板上，可以看到智能计量属性、数据和示例命令。 它使操作员和支持团队能够在转变为支持事件之前主动执行以下活动： 
-* 查看地图上的最新计量信息及其安装位置
+* 查看地图上的最新计量信息及其安装[位置](../core/howto-use-location-data.md)
 * 主动检查计量网络和连接状态 
 * 监视网络运行状况的最小和最大电压读数 
 * 查看能源、电源和电压趋势，以捕获任何异常模式 

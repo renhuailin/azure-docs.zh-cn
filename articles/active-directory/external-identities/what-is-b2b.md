@@ -5,25 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 07/01/2021
+ms.date: 07/13/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ddda3abea3eab3e959494475ebdef4270ea9a98
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 357049d855aacbacb4b1455304e4fb84565bfb27
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113213752"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113759816"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>什么是 Azure Active Directory B2B 中的来宾用户访问权限？
 
-Azure Active Directory (Azure AD) 企业到企业 (B2B) 协作是外部标识的一项功能，使你能够邀请来宾用户同组织一起协作。 使用 B2B 协作，可以安全地将公司的应用程序和服务与来自任何其他组织的来宾用户共享，同时保持对自己公司数据的控制。 与外部合作伙伴安全放心地合作，不论其规模是大是小，甚至就算他们没有 Azure AD 或 IT 部门也无妨。 合作伙伴通过一个简单的邀请和兑换过程即可使用自己的凭据来访问公司资源。 开发人员可以使用 Azure AD 企业到企业 API 自定义邀请处理或编写自助注册门户之类的应用程序。 有关与来宾用户相关的许可和定价信息，请参阅 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。  
+Azure Active Directory (Azure AD) 企业到企业 (B2B) 协作是外部标识的一项功能，使你能够邀请来宾用户同组织一起协作。 使用 B2B 协作，可以安全地将公司的应用程序和服务与来自任何其他组织的来宾用户共享，同时保持对自己公司数据的控制。 与外部合作伙伴安全放心地合作，不论其规模是大是小，甚至就算他们没有 Azure AD 或 IT 部门也无妨。 合作伙伴通过一个简单的邀请和兑换过程即可使用自己的凭据来访问公司资源。 开发人员可以使用 Azure AD 企业到企业 API 自定义邀请处理或编写自助注册门户之类的应用程序。 若要了解与来宾用户相关的许可和定价信息，请参阅 [Azure Active Directory 外部标识定价](https://azure.microsoft.com/pricing/details/active-directory/external-identities/)。  
 
 > [!IMPORTANT]
-> - 从 2021 年 9 月 30 日开始，Google 将[弃用 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果正在对 B2B 邀请或 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 使用 Google 联合身份验证，或者正在将自助注册与 Gmail 一起使用，那么当你的应用通过嵌入的 Web 视图对用户进行身份验证时，Google Gmail 用户将无法登录。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
+>
+> - 从 2021 年 7 月 12 日开始，如果 Azure AD B2B 客户设置了新的 Google 集成，将其用于自定义应用程序或业务线应用程序的自助注册，则在身份验证转移到系统 Web 视图之前，无法使用 Google 标识进行身份验证。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
+> - 从 2021 年 9 月 30 日开始，Google 将[弃用嵌入式 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果你的应用使用嵌入式 Web 视图对用户进行身份验证，而你将 Google 联合身份验证与 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 或 Azure AD B2B 配合使用来进行[外部用户邀请](google-federation.md)或[自助注册](identity-providers.md)，则 Google Gmail 用户将无法进行身份验证。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
 > - 从 2021 年 10 月起，Microsoft 将不再支持兑换通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行的邀请。 在准备期间，我们鼓励客户选择加入现已正式发布的[电子邮件一次性密码身份验证](one-time-passcode.md)。
 
 ## <a name="collaborate-with-any-partner-using-their-identities"></a>与使用自己标识的任何合作伙伴协作

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 087640433d592c7e2885e68240e98e7283bf3407
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: e55b4329105230f023d890983c79aa6c5244009d
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110164799"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114339641"
 ---
 开始使用适用于 JavaScript 的异常检测器多变量客户端库。 请按照以下步骤安装软件包并开始使用服务提供的算法。 新的多变量异常情况检测 API 使开发人员能够轻松地集成高级 AI 来检测指标组中的异常，且无需机器学习知识或标记的数据。 不同信号之间的依赖关系和相互关联会自动计为关键因素。 这可以帮助你主动防范复杂系统发生故障。
 
@@ -23,7 +23,7 @@ ms.locfileid: "110164799"
 * 当任何单独的时序都不能告知太多信息时，而你不得不查看所有信号来检测问题。
 * 使用数十到数百种不同类型的传感器对昂贵的物理资产进行预测维护，以测量系统运行状况的各个方面。
 
-[库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/anomalydetector/ai-anomaly-detector) | [包 (npm)](https://www.npmjs.com/package/@azure/ai-anomaly-detector) | [示例代码](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/anomalydetector/ai-anomaly-detector/samples/v3/javascript/sample_multivariate_detection.js)
+[库参考文档](/javascript/api/overview/azure/ai-anomaly-detector-readme) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/anomalydetector/ai-anomaly-detector) | [包 (npm)](https://www.npmjs.com/package/@azure/ai-anomaly-detector) | [示例代码](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/anomalydetector/ai-anomaly-detector/samples/v3/javascript/sample_multivariate_detection.js)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -220,4 +220,4 @@ node index.js
 ## <a name="next-steps"></a>后续步骤
 
 * [什么是异常检测器 API？](../../overview-multivariate.md)
-* [使用异常检测器 API 时的最佳做法](../../concepts/best-practices-multivariate.md)。 
+* [使用异常检测器 API 时的最佳做法](../../concepts/best-practices-multivariate.md)。

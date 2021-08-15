@@ -9,28 +9,28 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 06/11/2021
-ms.custom: automl
-ms.openlocfilehash: e088184cadea64b769faf75c6455b720f45d91cc
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.date: 07/01/2021
+ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 69cbb3923f3a29085b0999bdce44efe99245b3eb
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028710"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113491364"
 ---
 # <a name="tutorial-train-a-classification-model-with-no-code-automl-in-the-azure-machine-learning-studio"></a>教程：在 Azure 机器学习工作室中使用无代码 AutoML 训练分类模型
 
 了解如何在 Azure 机器学习工作室中使用 Azure 机器学习自动化 ML，通过无代码 AutoML 来训练分类模型。 此分类模型预测某个金融机构的客户是否会认购定期存款产品。
 
-利用自动机器学习，可以自动完成耗时的任务。 自动机器学习会快速循环访问算法和超参数的多个组合，以帮助你根据所选的成功指标找到最佳模型。
+利用自动 ML，可以自动完成耗时密集型任务。 自动机器学习会快速循环访问算法和超参数的多个组合，以帮助你根据所选的成功指标找到最佳模型。
 
 在本教程中，不会编写任何代码，你将使用工作室界面来执行训练。  你将了解如何执行以下任务：
 
 > [!div class="checklist"]
 > * 创建 Azure 机器学习工作区。
 > * 运行自动机器学习试验。
-> * 查看试验详细信息。
-> * 部署模型。
+> * 浏览模型详细信息。
+> * 部署建议的模型。
 
 此外，请为其他这些模型类型尝试自动化机器学习：
 
@@ -39,7 +39,7 @@ ms.locfileid: "112028710"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 * 下载 [**bankmarketing_train.csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) 数据文件。 **y** 列指示客户是否认购了定期存款产品，该列稍后在本教程中将标识为预测目标列。 
 
@@ -92,7 +92,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
     1. 在底部左侧选择“下一步”，将其上传到在创建工作区期间自动设置的默认容器。  
     
-       上传完成后，系统会根据文件类型预先填充“设置和预览”窗体。 
+       在上传完成后，系统会根据文件类型预先填充“设置和预览”表单。 
        
     1. 验证“设置和预览”窗体是否已填充如下，然后选择“下一步”。
         
@@ -142,7 +142,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
             ----|---|---
             计算名称 |  用于标识计算上下文的唯一名称。 | automl-compute
             最小/最大节点数| 若要分析数据，必须指定一个或多个节点。|最小节点数：1<br>最大节点数：6
-            缩减前的空闲秒数 | 群集自动缩减到最小节点数之前的空闲时间。|120（默认值）
+            缩减前的空闲秒数 | 群集自动缩减到最小节点数之前的空闲时间。|1800（默认值）
             高级设置 | 用于为试验配置虚拟网络并对其进行授权的设置。| 无               
 
         1. 选择“创建”，创建计算目标。 
@@ -155,7 +155,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
     1. 选择“**下一步**”。
 
-1. 在“任务类型和设置”窗体上，通过指定机器学习任务类型和配置设置来完成自动化 ML 试验的设置。
+1. 在“选择任务和设置”窗体上，通过指定机器学习任务类型和配置设置来完成自动化 ML 试验的设置。
     
     1.  选择“分类”作为机器学习任务类型。
 
@@ -231,7 +231,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 按如下所示填充“部署模型”窗格：
 
-    字段| Value
+    字段| 值
     ----|----
     部署名称| my-automl-deploy
     部署说明| 我的第一个自动化机器学习试验部署

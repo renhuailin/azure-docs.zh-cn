@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 994dc02b0d61eff715b1368e8ea7bd592cc79d70
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 69bc44fcffd760b0c98264c43c02f8dfffd8b853
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133630"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448453"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>Device Update for IoT Hub（预览版）概述
 
@@ -52,7 +52,7 @@ Device Update for IoT Hub 功能提供了功能强大且灵活的体验，其中
 * 异质设备群中一目了然的更新合规性和状态视图
 * 支持弹性设备更新 (A/B) 以提供无缝回滚
 * 通过 Azure.com 门户提供订阅和基于角色的访问控制
-* 支持本地内容缓存和嵌套边缘，实现更新云断开连接的设备
+* 支持本地内容缓存和嵌套边缘，以便能够更新云端离线设备
 * 详细的更新管理和报告工具 
 
 借助 Device Update for IoT Hub 管理和部署控件，用户可以最大程度地提高工作效率并节省宝贵的时间。 使用 Device Update for IoT Hub，可以对设备分组，并指定应将更新部署到的设备。 用户还可以查看更新部署的状态，并确保每个设备都能成功应用更新。

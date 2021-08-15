@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: alkohli
-ms.openlocfilehash: e58473f5c3bc4bc6314fb0dc5c532e24daa225d6
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 81c11665db1ee1f7c73e8abee95f01b8ea62d2fe
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065695"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113504884"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>教程：准备部署 Azure Stack Edge Pro with GPU 
 
@@ -154,11 +154,11 @@ ms.locfileid: "106065695"
 
     ![创建资源 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
 
-    你还会收到通知，了解到在资源创建期间启用了一个托管服务标识 (MSI)，你可通过它对云服务进行身份验证。 只要资源存在，就会存在此标识。
+    你还会收到通知，了解到在资源创建期间启用了托管标识，可通过它向云服务进行身份验证。 只要资源存在，就会存在此标识。
 
 11. 选择“创建”。
 
-    创建资源需要几分钟时间。 还会创建一个 MSI，Azure Stack Edge 设备可通过它与 Azure 中的资源提供程序进行通信。
+    创建资源需要几分钟时间。 还会创建一个托管标识，Azure Stack Edge 设备可通过它与 Azure 中的资源提供程序通信。
 
     成功创建并部署资源后，你会收到通知。 选择“转到资源”。
 

@@ -1,15 +1,15 @@
 ---
 title: 快速入门：使用事件网格和 Azure CLI 发送自定义事件
 description: 快速入门使用 Azure 事件网格和 Azure CLI 发布自定义主题，然后订阅该主题的事件。 事件由 Web 应用程序处理。
-ms.date: 04/22/2021
+ms.date: 07/01/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2790cead3455a24a3ec75c677138e6e3eeb4efa2
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 0217887821d6fe905db92bfdd5e999d46f77839d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897930"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457533"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Web 终结点
 
@@ -43,7 +43,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>创建自定义主题
 
-事件网格主题提供用户定义的终结点，可向其发布事件。 以下示例在资源组中创建自定义主题。 用主题的唯一名称替换 `<your-topic-name>`。 自定义主题名称必须唯一，因为它是 DNS 条目的一部分。 此外，它必须介于 3 到 50 个字符之间，并且只包含值 a-z、A-Z、0-9 和“-”
+事件网格主题提供用户定义的终结点，可向其发布事件。 以下示例在 Azure Cloud Shell 中使用 Bash 在资源组中创建自定义主题。 用主题的唯一名称替换 `<your-topic-name>`。 自定义主题名称必须唯一，因为它是 DNS 条目的一部分。 此外，它必须介于 3 到 50 个字符之间，并且只包含值 a-z、A-Z、0-9 和“-”
 
 ```azurecli-interactive
 topicname=<your-topic-name>

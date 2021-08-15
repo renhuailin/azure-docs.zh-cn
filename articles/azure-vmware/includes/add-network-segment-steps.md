@@ -1,20 +1,20 @@
 ---
 title: 添加 NSX-T 网段
-description: 用于为 Azure VMware 解决方案添加 NSX-T 网段的步骤。
+description: 在 NSX-T Manager 中为 Azure VMware 解决方案添加 NSX-T 网段的步骤。
 ms.topic: include
 ms.date: 03/13/2021
-ms.openlocfilehash: 10b04c8000b8ef440a2a729be671630b4382f3a8
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: ad02977e422a3bdbe0158dd92761ae91a6260fd5
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110794938"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114229288"
 ---
 <!-- Used in configure-dhcp-azure-vmware-solution.md and tutorial-nsx-t-network-segment.md -->
 
 1. 在 NSX-T Manager 中，选择“网络” > “段”，然后选择“添加段”  。 
 
-   :::image type="content" source="../media/nsxt/nsxt-segments-overview.png" alt-text="显示如何添加新段的屏幕截图":::
+   :::image type="content" source="../media/nsxt/nsxt-segments-overview.png" alt-text="显示如何在 NSX-T Manager 中添加新段的屏幕截图。":::
 
 1. 输入段的名称。
 
@@ -22,27 +22,17 @@ ms.locfileid: "110794938"
 
 1. 选择预配置的覆盖“传输区域”(TNTxx-OVERLAY-TZ)，然后选择“设置子网” 。 
 
-   :::image type="content" source="../media/nsxt/nsxt-create-segment-specs.png" alt-text="设置网段名称、连接的网关和类型以及传输区域，然后选择“设置子网”。":::
+   :::image type="content" source="../media/nsxt/nsxt-create-segment-specs.png" alt-text="屏幕截图，显示用于添加新 NSX-T 网段的“段”详细信息。":::
 
 1. 输入网关 IP 地址，然后选择“添加”。 
 
    >[!IMPORTANT]
    >IP 地址需要位于不重叠的 RFC1918 地址块上，这样可确保连接到新段上的 VM。
 
-   :::image type="content" source="../media/nsxt/nsxt-create-segment-gateway.png" alt-text="设置新网段的网关 IP 地址，然后选择“添加”。":::
+   :::image type="content" source="../media/nsxt/nsxt-create-segment-gateway.png" alt-text="显示新段的网关 IP 地址的屏幕截图。":::
 
 1. 依次选择“应用”、“保存” 。
 
 1. 选择“否”以拒绝继续配置段的选项。 
 
-   :::image type="content" source="../media/nsxt/nsxt-create-segment-continue-no.png" alt-text="通过选择“否”，拒绝进一步配置新创建的网段。":::
 
-1. 确认新网段是否存在。 此示例中，ls01 是新网段。
-
-   1. 在 NSX-T Manager 中，选择“网络” > “段” 。 
-
-      :::image type="content" source="../media/nsxt/nsxt-new-segment-overview-2.png" alt-text="确认 NSX-T 中存在新网段。":::
-
-   1. 在 vCenter 中，选择“网络”>“SDDC 数据中心”。
-
-      :::image type="content" source="../media/nsxt/vcenter-with-ls01-2.png" alt-text="确认 vCenter 中存在新网段。":::

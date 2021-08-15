@@ -7,12 +7,12 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 04/16/2021
-ms.openlocfilehash: 384eb565882cf5f62cec1c6d38769647a82ec712
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: e5bad3f24d5692bbebb668e29b5ea229294b46f9
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112038645"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982737"
 ---
 # <a name="clinvar-annotations"></a>ClinVar 注释
 

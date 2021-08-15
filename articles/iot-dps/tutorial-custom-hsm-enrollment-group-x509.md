@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 8e7d024d4d5b1e058e7a0b895faae5d2e7425f44
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f2e6918e6cdc6eb87fe80e9110183ed5a0a3693b
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472120"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113106688"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>教程：使用注册组预配多个 X.509 设备
 
@@ -248,6 +248,10 @@ Azure IoT 设备预配服务支持两种类型的预配设备注册：
 
 ## <a name="verify-ownership-of-the-root-certificate"></a>验证根证书的所有权
 
+> [!NOTE]
+> 从 2021 年 7 月 1 日起，可以通过[自动验证](how-to-verify-certificates.md#automatic-verification-of-intermediate-or-root-ca-through-self-attestation)来执行证书的自动验证
+>
+
 1. 使用[注册 X.509 证书的公共部分并获取验证码](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code)中的说明，上传根证书 (`./certs/azure-iot-test-only.root.ca.cert.pem`) 并从 DPS 获取验证码。
 
 2. 从 DPS 获取根证书的验证码后，从证书脚本工作目录运行以下命令以生成验证证书。
@@ -328,7 +332,7 @@ Azure IoT 设备预配服务支持两种类型的预配设备注册：
     | **证明类型** | 选择“证书” |
     | **IoT Edge 设备** | 选择“False” |
     | **证书类型** | 选择“中间证书” |
-    | **主要证书 .pem 或 .cer 文件** | 导航到前面创建的中间证书 (./certs/azure-iot-test-only.intermediate.cert.pem) |
+    | **主要证书 .pem 或 .cer 文件** | 导航到前面创建的中间证书 (./certs/azure-iot-test-only.intermediate.cert.pem)。 此中间证书由已经上传并经过验证的根证书签名。 DPS 会在该根证书通过验证后信任该根证书。 DPS 可以验证为此注册组提供的中间证书是否确实由受信任的根证书签名。 DPS 会信任每一个确实由该根证书签名的中间证书，因此能够验证和信任由中间证书签名的叶证书。  |
 
 
 ## <a name="configure-the-provisioning-device-code"></a>配置预配设备代码

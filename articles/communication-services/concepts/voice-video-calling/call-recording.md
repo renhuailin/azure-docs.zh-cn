@@ -10,20 +10,16 @@ ms.date: 06/30/2021
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 292210c12589bed6075378ba4fd38153c4fe10f1
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 898346d69b656656c93889002109bae0f15b2dbc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105338"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464330"
 ---
 # <a name="calling-recording-overview"></a>通话录制概述
 
-> [!NOTE]
-> 许多国家和地区都有适用于录制 PSTN、语音通话和视频通话的法律和法规，通常要求用户同意录制其通话。 你有责任在遵守法律的前提下使用通话录制功能。 必须以符合适用于每个参与者的法律的方式获得录制的通信的参与方的同意。
-
-> [!NOTE]
-> 针对个人数据维护的法规要求能够导出用户数据。 为了满足这些要求，在 `participants` 数组中记录包含每个通话参与者 participantId 的元数据文件。 可以在 `participants` 中交叉引用 MRI，通过内部用户标识来标识通话中的参与者。 下面提供了一个记录元数据文件的示例供你参考。
+[!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
 
 > [!NOTE]
 > 通话记录当前仅适用于在美国境内创建的通信服务资源。
@@ -86,6 +82,11 @@ ms.locfileid: "113105338"
     "eventTime": string // ISO 8601 date time for when the event was created
 }
 ```
+## <a name="regulatory-and-privacy-concerns"></a>法规和隐私问题
+
+许多国家和地区都有适用于录制 PSTN、语音通话和视频通话的法律和法规，通常要求用户同意录制其通话。 你有责任在遵守法律的前提下使用通话录制功能。 必须以符合适用于每个参与者的法律的方式获得录制的通信的参与方的同意。
+
+针对个人数据维护的法规要求能够导出用户数据。 为了满足这些要求，在 `participants` 数组中记录包含每个通话参与者 participantId 的元数据文件。 可以在 `participants` 中交叉引用 MRI，通过内部用户标识来标识通话中的参与者。 下面提供了一个记录元数据文件的示例供你参考。
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请查看[通话录制快速入门示例](../../quickstarts/voice-video-calling/call-recording-sample.md)。

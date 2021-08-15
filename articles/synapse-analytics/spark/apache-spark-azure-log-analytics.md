@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 03/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: e9c1299c0847aa30e1e3e198d2165e2674164458
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3ed74340c4e234ae1ea4781d8b91451be6e366c4
+ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960837"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113515605"
 ---
 # <a name="tutorial-use-azure-log-analytics-to-collect-and-visualize-metrics-and-logs-preview"></a>教程：使用 Azure Log Analytics 收集和可视化指标和日志（预览版）
 
@@ -117,11 +117,11 @@ spark.synapse.logAnalytics.keyVault.linkedServiceName <LINKED_SERVICE_NAME>
 | spark.synapse.logAnalytics.keyVault.name            | -                            | Azure Log Analytics ID 和密钥的 Azure 密钥保管库名称                                                                                                                                                |
 | spark.synapse.logAnalytics.keyVault.key.workspaceId | SparkLogAnalyticsWorkspaceId | Azure Log Analytics 工作区 ID 的 Azure 密钥保管库机密名称                                                                                                                                       |
 | spark.synapse.logAnalytics.keyVault.key.secret      | SparkLogAnalyticsSecret      | Azure Log Analytics 工作区密钥的 Azure 密钥保管库机密名称                                                                                                                                      |
-| spark.synapse.logAnalytics.keyVault.uriSuffix       | ods.opinsights.azure.com     | 目标 Azure Log Analytics 工作区 [URI 后缀][uri_suffix]。 如果 Azure Log Analytics 工作区不在 Azure 全局中，则需要根据相应的云更新 URI 后缀。 |
+| spark.synapse.logAnalytics.uriSuffix       | ods.opinsights.azure.com     | 目标 Azure Log Analytics 工作区 [URI 后缀][uri_suffix]。 如果 Azure Log Analytics 工作区不在 Azure 全局中，则需要根据相应的云更新 URI 后缀。 |
 
 > [!NOTE]  
-> - 对于 Azure 中国云，“spark.synapse.logAnalytics.keyVault.uriSuffix”参数应为“ods.opinsights.azure.cn”。 
-> - 对于 Azure 政府云，“spark.synapse.logAnalytics.keyVault.uriSuffix”参数应为“ods.opinsights.azure.us”。 
+> - 对于 Azure 中国云，“spark.synapse.logAnalytics.uriSuffix”参数应为“ods.opinsights.azure.cn”。 
+> - 对于 Azure 政府云，“spark.synapse.logAnalytics.uriSuffix”参数应为“ods.opinsights.azure.us”。 
 
 [uri_suffix]: ../../azure-monitor/logs/data-collector-api.md#request-uri
 
@@ -205,6 +205,30 @@ spark.synapse.logAnalytics.keyVault.linkedServiceName <LINKED_SERVICE_NAME>
    | summarize max(value_d) by bin(TimeGenerated, 30s), executorId_s
    | order by TimeGenerated asc
    ```
+
+## <a name="write-custom-application-logs"></a>编写自定义应用程序日志
+
+可以使用 Apache Log4j 库编写自定义日志。
+
+Scala 的示例：
+
+```scala
+%%spark
+val logger = org.apache.log4j.LogManager.getLogger("com.contoso.LoggerExample")
+logger.info("info message")
+logger.warn("warn message")
+logger.error("error message")
+```
+
+PySpark 的示例：
+
+```python
+%%pyspark
+logger = sc._jvm.org.apache.log4j.LogManager.getLogger("com.contoso.PythonLoggerExample")
+logger.info("info message")
+logger.warn("warn message")
+logger.error("error message")
+```
 
 ## <a name="create-and-manage-alerts-using-azure-log-analytics"></a>使用 Azure Log Analytics 创建和管理警报
 

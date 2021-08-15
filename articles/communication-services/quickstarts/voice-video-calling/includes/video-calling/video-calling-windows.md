@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 05d7ac0fc46ddbe279208e9d60fb9f039985ad06
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 5fa934ea2dc29004057ffbd3bad7c5f7b5afe935
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560661"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114593588"
 ---
 本快速入门介绍如何使用适用于 Windows 的 Azure 通信服务通话 SDK 开始 1:1 视频通话。
 
@@ -27,15 +27,15 @@ ms.locfileid: "111560661"
 
 ### <a name="install-the-package"></a>安装包
 
-右键单击你的项目，转到 `Manage Nuget Packages` 来安装 `Azure.Communication.Calling`。 
+右键单击你的项目，转到 `Manage Nuget Packages` 来安装 `[Azure.Communication.Calling](https://www.nuget.org/packages/Azure.Communication.Calling)`。 请确保选中“包括预发行版”，并且程序包是来自 https://www.nuget.org/api/v2/ 。 
 
 ### <a name="request-access"></a>请求访问权限
 
 转到 `Package.appxmanifest` 并单击 `Capabilities`。
 勾选 `Internet (Client & Server)`，获取 Internet 的入站和出站访问权限。 勾选 `Microphone` 以访问麦克风的音频源。 勾选 `WebCam` 以访问设备的摄像头。 
 
-将以下代码添加到 `Package.appxmanifest`。 
-```
+通过右键单击并选择“查看代码”，将以下代码添加到 `Package.appxmanifest`。 
+```XML
 <Extensions>
 <Extension Category="windows.activatableClass.inProcessServer">
 <InProcessServer>
@@ -63,25 +63,35 @@ ms.locfileid: "111560661"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <StackPanel>
-        <TextBox Text="Who would you like to call?" TextWrapping="Wrap" x:Name="CalleeTextBox" Margin="10,10,10,10"></TextBox>
-        <Button Content="Start Call" Click="CallButton_ClickAsync" x:Name="CallButton" Margin="10,10,10,10"></Button>
-        <Button Content="Hang Up" Click="HangupButton_Click" x:Name="HangupButton" Margin="10,10,10,10"></Button>
+        <StackPanel>
+            <TextBox Text="Who would you like to call?" TextWrapping="Wrap" x:Name="CalleeTextBox" Margin="10,10,10,10"></TextBox>
+            <Button Content="Start Call" Click="CallButton_ClickAsync" x:Name="CallButton" Margin="10,10,10,10"></Button>
+            <Button Content="Hang Up" Click="HangupButton_Click" x:Name="HangupButton" Margin="10,10,10,10"></Button>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+            <MediaElement x:Name="RemoteVideo" AutoPlay="True" Stretch="UniformToFill"/>
+            <MediaElement x:Name="LocalVideo" AutoPlay="True"  Stretch="UniformToFill" HorizontalAlignment="Right"  VerticalAlignment="Bottom"/>
+        </StackPanel>
     </StackPanel>
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-        <MediaElement x:Name="RemoteVideo" AutoPlay="True" Stretch="UniformToFill"/>
-        <MediaElement x:Name="LocalVideo" AutoPlay="True"  Stretch="UniformToFill" HorizontalAlignment="Right"  VerticalAlignment="Bottom"/>
-    </StackPanel>   
 </Page>
 ```
 
-打开 `MainPage.xaml.cs`，并将内容替换为以下实现： 
+打开 `App.xaml.cs`（右键单击并选择“查看代码”），并将此行添加到顶部：
+```C#
+using CallingQuickstart;
+```
+
+打开 `MainPage.xaml.cs`（右键单击并选择“查看代码”），并将内容替换为以下实现： 
 ```C#
 using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-using Azure.Communication;
+using Azure.WinRT.Communication;
 using Azure.Communication.Calling;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace CallingQuickstart
 {
@@ -138,7 +148,11 @@ namespace CallingQuickstart
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-通过用户访问令牌初始化 `CallAgent` 实例，这使我们可以发出和接收呼叫。 为了访问设备上的摄像头，我们还需要获取设备管理器实例。 
+若要初始化 `CallAgent`，需要有用户访问令牌。 通常，此令牌从具有特定于应用程序的身份验证的服务生成。 有关用户访问令牌的详细信息，请查看[用户访问令牌](../../../access-tokens.md)指南。 
+
+对于快速入门，请使用为你的 Azure 通信服务资源生成的用户访问令牌替换 `<USER_ACCESS_TOKEN>`。
+
+有了令牌后，使用该令牌来初始化 `CallAgent` 实例，以便发出和接收呼叫。 为了访问设备上的摄像头，我们还需要获取设备管理器实例。 
 
 ```C#
 private async void InitCallAgentAndDeviceManager()
@@ -226,7 +240,7 @@ private async void Agent_OnIncomingCall(object sender, IncomingCall incomingcall
     AcceptCallOptions acceptCallOptions = new AcceptCallOptions();
     acceptCallOptions.VideoOptions = new VideoOptions(localVideoStream);
 
-    call = await incomingcall.Accept(acceptCallOptions);
+    call = await incomingcall.AcceptAsync(acceptCallOptions);
 }
 ```
 
@@ -297,7 +311,7 @@ private async void Call_OnStateChanged(object sender, PropertyChangedEventArgs a
             });
             break;
         default:
-            System.Console.WriteLine(((Call)sender).State);
+            Debug.WriteLine(((Call)sender).State);
             break;
     }
 }
@@ -311,7 +325,7 @@ private async void Call_OnStateChanged(object sender, PropertyChangedEventArgs a
 private async void HangupButton_Click(object sender, RoutedEventArgs e)
 {
     var hangUpOptions = new HangUpOptions();
-    await call.HangUp(hangUpOptions);
+    await call.HangUpAsync(hangUpOptions);
 }
 ```
 
@@ -320,3 +334,5 @@ private async void HangupButton_Click(object sender, RoutedEventArgs e)
 可在 Visual Studio 中生成并运行代码。 请注意，对于解决方案平台，我们支持 `ARM64`、`x64` 和 `x86`。 
 
 通过在文本字段中提供用户 ID 并单击 `Start Call` 按钮，可以启动出站视频呼叫。 
+
+有关用户 ID（标识）的详细信息，请查看[用户访问令牌](../../../access-tokens.md)指南。 

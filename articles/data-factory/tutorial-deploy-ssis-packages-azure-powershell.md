@@ -5,15 +5,15 @@ ms.service: data-factory
 ms.devlang: powershell
 ms.topic: tutorial
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.date: 10/13/2020
+ms.date: 07/19/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: a0a6e115d2b76ab3f060ee1bcb197da58f2c8fa6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b8352581786cc6d9927f38fef786374072bd233
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100391280"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447731"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>使用 PowerShell 在 Azure 数据工厂中设置 Azure-SSIS IR
 
@@ -59,7 +59,7 @@ ms.locfileid: "100391280"
 
   - 将客户端计算机的 IP 地址或一系列包括客户端计算机 IP 地址的 IP 地址添加到数据库服务器的防火墙设置中的客户端 IP 地址列表。 有关详细信息，请参阅 [Azure SQL 数据库服务器级和数据库级防火墙规则](../azure-sql/database/firewall-configure.md)。
 
-  - 若要连接到数据库服务器，可以结合服务器管理员凭据使用 SQL 身份验证，或者结合数据工厂的托管标识使用 Azure AD 身份验证。 对于后者，需将数据工厂的托管标识添加到有权访问数据库服务器的 Azure AD 组中。 有关详细信息，请参阅[使用 Azure AD 身份验证创建 Azure-SSIS IR](./create-azure-ssis-integration-runtime.md)。
+  - 若要连接到数据库服务器，可以通过使用 SQL 身份验证（使用服务器管理员凭据）的方式，也可以通过使用 Azure AD 身份验证（使用为数据工厂指定的系统/用户分配的托管标识）的方式。 对于后一种方式，需要将为数据工厂指定的系统/用户分配的托管标识添加到有权访问数据库服务器的 Azure AD 组中。 有关详细信息，请参阅[使用 Azure AD 身份验证创建 Azure-SSIS IR](./create-azure-ssis-integration-runtime.md)。
 
   - 确认你的数据库服务器还没有 SSISDB 实例。 预配 Azure-SSIS IR 时不支持使用现有的 SSISDB 实例。
 

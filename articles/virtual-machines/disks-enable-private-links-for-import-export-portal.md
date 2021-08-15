@@ -2,18 +2,18 @@
 title: Azure 门户 - 使用专用链接限制对托管磁盘的导入/导出访问
 description: 使用 Azure 门户为托管磁盘启用专用链接。 允许在虚拟网络中安全地导出和导入磁盘。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: overview
-ms.date: 08/24/2020
+ms.date: 07/15/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: b686eac137a0531befea6fe42c31112c46b18cc9
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: af8b44cbd229fc2bdf28d2885356e219b3a8198a
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028642"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114288304"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>使用 Azure 门户限制通过专用链接对托管磁盘的导入/导出访问
 
@@ -60,13 +60,13 @@ ms.locfileid: "112028642"
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="专用终结点创建工作流的屏幕截图，第一个边栏选项卡。如果不选择合适的区域，以后可能会遇到问题。":::
 
-1. 在“资源”边栏选项卡中，选择“连接到目录中的 Azure 资源” 。
+1. 在“资源”窗格中，选择“连接到我的目录中的 Azure 资源” 。
 1. 对于“资源类型”，请选择“Microsoft.Compute/diskAccesses” 
 1. 为“资源”选择先前创建的磁盘访问资源
 1. 将“目标子资源”保留为“磁盘” 
 1. **选择“下一步:** 配置 >”。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="专用终结点创建工作流的屏幕截图，第二个边栏选项卡。突出显示所有值（资源类型、资源、目标子资源）":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="创建专用终结点的工作流（第二个窗格）的屏幕截图。突出显示了所有值（资源类型、资源、目标子资源）":::
 
 1. 选择要仅限其为磁盘导出位置的虚拟网络，其他虚拟网络将无法导出磁盘。
 
@@ -76,7 +76,7 @@ ms.locfileid: "112028642"
 1. 选择相应的子网
 1. 选择“查看 + 创建”。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="专用终结点创建工作流的屏幕截图，第三个边栏选项卡。已强调虚拟网络和子网。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="创建专用终结点的工作流（第三个窗格）的屏幕截图。强调了虚拟网络和子网。":::
 
 ## <a name="enable-private-endpoint-on-your-disk"></a>启用磁盘上的专用终结点
 
@@ -85,11 +85,13 @@ ms.locfileid: "112028642"
 1. 选择“专用终结点(通过磁盘访问)”并选择之前创建的磁盘访问权限。
 1. 选择“保存”。
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="托管磁盘网络边栏选项卡的屏幕截图突出显示专用终结点选择以及所选磁盘访问。保存此选择即为实现此访问配置了磁盘。":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="托管磁盘网络窗格的屏幕截图。突出显示了专用终结点选择以及所选的磁盘访问。保存此选择会将磁盘配置为使用这种访问方式。":::
 
 现在，已经完成了在导入/导出托管磁盘时可以使用的专用链接的配置。
 
 ## <a name="next-steps"></a>后续步骤
 
+- 将 VHD 上传到 Azure 或将托管磁盘复制到其他区域 - [Azure CLI](linux/disks-upload-vhd-to-managed-disk-cli.md) 或 [Azure PowerShell 模块](windows/disks-upload-vhd-to-managed-disk-powershell.md)
+- 下载 VHD - [Windows](windows/download-vhd.md) 或 [Linux](linux/download-vhd.md)
 - [专用链接常见问题解答](/azure/virtual-machines/faq-for-disks#private-links-for-securely-exporting-and-importing-managed-disks)
 - [使用 PowerShell 将托管快照作为 VHD 导出/复制到不同区域中的存储帐户](/previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account)

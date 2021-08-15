@@ -6,13 +6,13 @@ ms.author: sidram
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/20/2021
-ms.openlocfilehash: e14c900d8acdd88191fde268fe832034f8dad2cf
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 06/22/2021
+ms.openlocfilehash: 7223d497a6bd1f91bcf5f313d793184026b9fe0c
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454254"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540485"
 ---
 # <a name="overview-of-azure-stream-analytics-cluster"></a>Azure 流分析群集概述
 
@@ -68,7 +68,7 @@ Azure 流分析群集为复杂且要求苛刻的流式处理场景提供单租�
 
 ### <a name="which-inputs-and-outputs-can-i-privately-connect-to-from-my-stream-analytics-cluster"></a>我可以私下从流分析群集连接到哪些输入和输出？
 
-流分析支持多种输入和输出类型。 你可以在群集中[创建专用终结点](private-endpoints.md)，以允许作业访问输入和输出资源。 目前支持创建托管专用终结点的服务为：Azure SQL 数据库、Azure Synapse Analytics、Azure Cosmos DB、Azure 存储、Azure Data Lake Storage Gen2、Azure 事件中心、Azure IoT 中心、Azure Functions 和 Azure 服务总线。 
+流分析支持多种输入和输出类型。 你可以在群集中[创建专用终结点](private-endpoints.md)，以允许作业访问输入和输出资源。 目前，允许用户为其创建托管专用终结点的服务为 Azure SQL 数据库、Azure Cosmos DB、Azure 存储、Azure Data Lake Storage Gen2、Azure 事件中心、Azure IoT 中心、Azure Functions 和 Azure 服务总线。 
 
 ## <a name="next-steps"></a>后续步骤
 

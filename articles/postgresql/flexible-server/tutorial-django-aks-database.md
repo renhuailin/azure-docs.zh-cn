@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9315e6fd7dd9880d20108e3f0ed28cd32904f1a3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4cea156f52538a58ba5eea86ace6272848a05ae9
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791528"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467163"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>教程：使用 Azure Database for PostgreSQL 灵活服务器在 AKS 上部署 Django 应用
 
@@ -27,20 +27,12 @@ ms.locfileid: "107791528"
 ## <a name="pre-requisites"></a>先决条件
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-- 在 bash 环境中使用 [Azure Cloud Shell](../../cloud-shell/quickstart.md)。
-
-   [![嵌入式启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)  
-- 如果需要，请[安装](/cli/azure/install-azure-cli) Azure CLI 来运行 CLI 参考命令。
-  - 如果使用的是本地安装，请通过 Azure CLI 使用 [az login](/cli/azure/reference-index#az_login) 命令登录。  若要完成身份验证过程，请遵循终端中显示的步骤。  有关其他登录选项，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)。
-  - 出现提示时，请在首次使用时安装 Azure CLI 扩展。  有关扩展详细信息，请参阅[使用 Azure CLI 的扩展](/cli/azure/azure-cli-extensions-overview)。
-  - 运行 [az version](/cli/azure/reference-index?#az_version) 以查找安装的版本和依赖库。 若要升级到最新版本，请运行 [az upgrade](/cli/azure/reference-index?#az_upgrade)。 本文需要 Azure CLI 的最新版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
-
-> [!NOTE]
-> 如果在本地运行此快速入门中的命令（而不是 Azure Cloud Shell），请确保以管理员身份运行命令。
+- 在新的浏览器窗口中启动 [Azure Cloud Shell](https://shell.azure.com)。 也可以在本地计算机上[安装 Azure CLI](/cli/azure/install-azure-cli#install)。 如果使用本地安装，请通过 Azure CLI 使用 [az login](/cli/azure/reference-index#az_login) 命令登录。  若要完成身份验证过程，请遵循终端中显示的步骤。 
+- 运行 [az version](/cli/azure/reference-index?#az_version) 以查找安装的版本和依赖库。 若要升级到最新版本，请运行 [az upgrade](/cli/azure/reference-index?#az_upgrade)。 本文需要 Azure CLI 的最新版本。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 我们来使用 [az group create][az-group-create] 命令在 eastus 位置中创建资源组 django-project 。
+Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 我们来使用 [az-group-create](/cli/azure/group#az_group_create) 命令在“eastus”位置创建资源组 django-project 。
 
 ```azurecli-interactive
 az group create --name django-project --location eastus
@@ -80,20 +72,16 @@ az aks create --resource-group django-project --name djangoappcluster --node-cou
 
 ## <a name="connect-to-the-cluster"></a>连接到群集
 
-若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)。 如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 若要在本地安装 `kubectl`，请使用 [az aks install-cli](/cli/azure/aks#az_aks_install_cli) 命令：
+若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)。 如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 
 
-```azurecli-interactive
-az aks install-cli
-```
+> [!NOTE] 
+> 如果在本地运行 Azure CLI，请运行 [az aks install-CLI](/cli/azure/aks#az_aks_install_cli) 命令来安装 `kubectl`。
 
 若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials](/cli/azure/aks#az_aks_get_credentials) 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group django-project --name djangoappcluster
 ```
-
-> [!NOTE]
-> 以上命令使用 [Kubernetes 配置文件](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)的默认位置，即 `~/.kube/config`。 可以使用 --file 为 Kubernetes 配置文件指定其他位置。
 
 若要验证到群集的连接，请使用 [kubectl get]( https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) 命令返回群集节点列表。
 
@@ -109,23 +97,25 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
 ## <a name="create-an-azure-database-for-postgresql---flexible-server"></a>创建 Azure Database for PostgreSQL 灵活服务器
-使用 [az postgreSQL flexible-server create](/cli/azure/postgres/flexible-server#az_postgres_flexible_server_create) 命令创建灵活服务器。 以下命令使用服务默认值和 Azure CLI 本地上下文中的值创建服务器：
+使用 [az postgreSQL flexible-server create](/cli/azure/postgres/flexible-server#az_postgres_flexible_server_create) 命令来创建灵活服务器。 以下命令使用服务默认值和 Azure CLI 本地上下文中的值创建服务器：
 
 ```azurecli-interactive
-az postgres flexible-server create --public-access <YOUR-IP-ADDRESS>
+az postgres flexible-server create --public-access all
 ```
 
 创建的服务器具有以下属性：
 - 首次预配服务器时，将创建一个新的空数据库 ```postgres```。 在本快速入门中，我们将使用此数据库。
 - 自动生成的服务器名称、管理员用户名、管理员密码、资源组名称（如果尚未在本地上下文中指定），并且与资源组位于同一位置
-- 其余服务器配置的服务默认值：计算层（常规用途）、计算大小/SKU（使用 2vCore 的 Standard_D2s_v3）、备份保持期（7 天）和 PostgreSQL 版本 (12)
-- 使用公共访问参数，你可以创建具有受防火墙规则保护的公共访问权限的服务器。 通过提供 IP 地址来添加防火墙规则，以允许从客户端计算机进行访问。
-- 由于该命令使用本地上下文，因此它会在资源组```django-project``` 和区域 ```eastus``` 中创建服务器。
+- 使用 public-access 参数可以创建对任何具有正确用户名和密码的客户端具有公共访问权限的服务器。
+- 由于该命令使用本地上下文，因此它会在资源组 ```django-project``` 和区域 ```eastus``` 中创建该服务器。
 
 
 ## <a name="build-your-django-docker-image"></a>生成 Django Docker 映像
 
-新建 [Django 应用程序](https://docs.djangoproject.com/en/3.1/intro/)，或使用现有的 Django 项目。 确保代码位于该文件夹结构中。
+新建 [Django 应用程序](https://docs.djangoproject.com/en/3.1/intro/)，或使用现有的 Django 项目。 确保代码位于该文件夹结构中。 
+
+> [!NOTE] 
+> 如果没有应用程序，可以直接转到[创建 Kubernetes 清单文件](./tutorial-django-aks-database.md#create-kubernetes-manifest-file)，以使用示例映像 [mksuni/django-aks-app:latest](https://hub.docker.com/r/mksuni/django-aks-app)。 
 
 ```
 └───my-djangoapp
@@ -223,12 +213,11 @@ docker build --tag myblog:latest .
 
 ## <a name="create-kubernetes-manifest-file"></a>创建 Kubernetes 清单文件
 
-Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 我们来创建名为 ```djangoapp.yaml``` 的清单文件，并将其复制到以下 YAML 定义中。
+Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容器映像。 我们来创建名为 ```djangoapp.yaml``` 的清单文件，并将其复制到以下 YAML 定义中。 
 
 >[!IMPORTANT]
-> - 将 ```[DOCKER-HUB-USER/ACR ACCOUNT]/[YOUR-IMAGE-NAME]:[TAG]``` 替换为实际的 Django docker 映像名称和标记，例如 ```docker-hub-user/myblog:latest```。
+> - 将 ```[DOCKER-HUB-USER/ACR ACCOUNT]/[YOUR-IMAGE-NAME]:[TAG]``` 替换为实际的 Django docker 映像名称和标记，例如 ```docker-hub-user/myblog:latest```。  可以使用清单文件中的演示示例应用 ```mksuni/django-aks-app:latest```。
 > - 使用 postgres 灵活服务器的 ```SERVERNAME```、```YOUR-DATABASE-USERNAME``` 和 ```YOUR-DATABASE-PASSWORD``` 更新下面的 ```env``` 部分。
-
 
 ```yaml
 apiVersion: apps/v1

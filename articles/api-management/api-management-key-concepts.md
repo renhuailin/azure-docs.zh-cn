@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 85fa79cdfc7036be5b0ab20e49986a1d075152c5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3258bc59146d6e5fbdb3532005d9b9da5334af5c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86254650"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468528"
 ---
 # <a name="about-api-management"></a>关于 API 管理
 
@@ -105,7 +105,7 @@ API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发�
 在任何 API 管理策略中，策略表达式可以用作属性值或文本值，除非该策略另外指定。 某些策略（如[控制流](./api-management-advanced-policies.md#choose)和[设置变量](./api-management-advanced-policies.md#set-variable)策略）基于策略表达式。 有关详细信息，请参阅[高级策略](./api-management-advanced-policies.md#AdvancedPolicies)和[策略表达式](./api-management-policy-expressions.md)。
 
 
-有关 API 管理策略的完整列表，请参阅 [策略参考][Policy reference]。 有关使用和配置策略的详细信息，请参阅 [API 管理策略][API Management policies]。 有关使用速率限制和配额策略创建产品的教程，请参阅 [如何创建和配置高级产品设置][How create and configure advanced product settings]。
+有关 API 管理策略的完整列表，请参阅 [策略参考][Policy reference]。 有关使用和配置策略的详细信息，请参阅 [API 管理策略][API Management policies]。 有关如何创建具有速率限制和配额策略的产品的教程，请参阅[如何创建和配置高级产品设置][How to create and configure advanced product settings]。
 
 
 ## <a name="developer-portal"></a><a name="developer-portal"> </a> 开发人员门户
@@ -140,7 +140,7 @@ API 是 API 管理服务实例的基础。 每个 API 表示一组可供开发�
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to create and use groups]: api-management-howto-create-groups.md
 [How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
-[How create and configure advanced product settings]: transform-api.md
+[How to create and configure advanced product settings]: transform-api.md
 [How to create or invite developers]: api-management-howto-create-or-invite-developers.md
 [Policy reference]: ./api-management-policies.md
 [API Management policies]: api-management-howto-policies.md

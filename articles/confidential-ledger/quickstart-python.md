@@ -7,12 +7,12 @@ ms.date: 04/27/2021
 ms.service: confidential-ledger
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 92014d161d0ef70b163494b617545287c7e39818
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 552e8a4565710cb22f65ee5abf493c5471d89f3c
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111855001"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113585512"
 ---
 # <a name="quickstart-microsoft-azure-confidential-ledger-client-library-for-python"></a>快速入门：适用于 Python 的 Microsoft Azure 机密账本客户端库
 
@@ -22,7 +22,7 @@ Microsoft Azure 机密账本是用于管理敏感数据记录的高度安全的�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[API 参考文档](/python/api/overview/azure/keyvault-secrets-readme) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets) | [包（Python 包索引）](https://pypi.org/project/azure-keyvault-secrets/)
+[API 参考文档](/python/api/overview/azure/keyvault-secrets-readme) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/confidentialledger) | [包（Python 包索引）管理库](https://pypi.org/project/azure-mgmt-confidentialledger/)| [包（Python 包索引）客户端库](https://pypi.org/project/azure-confidentialledger/)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -107,7 +107,7 @@ ledger_name = "<your-unique-ledger-name>"
 subscription_id = "<azure-subscription-id>"
 
 identity_url = "https://identity.confidential-ledger.core.azure.com"
-ledger_url = "https://" + ledger_name + ".eastus.cloudapp.azure.com"
+ledger_url = "https://" + ledger_name + ".confidential-ledger.azure.com"
 ```
 
 ### <a name="use-the-control-plane-client-library"></a>使用控制平面客户端库
@@ -148,7 +148,7 @@ confidential_ledger_mgmt.ledger.begin_create(resource_group, ledger_name, ledger
 若要验证账本是否成功创建，请使用 `get` 函数查看其详细信息。
 
 ```python
-myledger = ledger = confidential_ledger_mgmt.ledger.get(resource_group, ledger_name)
+myledger = confidential_ledger_mgmt.ledger.get(resource_group, ledger_name)
 
 print("Here are the details of your newly created ledger:")
 print (f"- Name: {myledger.name}")

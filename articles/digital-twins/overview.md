@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 8213bd8e819e3a6c4a84a95f7c996912ac28ec2b
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 519a64ac9e921624f4e8c03fc91f842eacd2672c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539430"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472948"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure 数字孪生是什么？
 
@@ -40,7 +40,7 @@ Azure 数字孪生是一个服务型平台 (PaaS)，可用于基于整个环境�
 * 模型定义实体之间的语义关系，以便可以将孪生连接到反映其交互的图。 可以将模型视为描述你世界的名词，将关系视为动词。
 * 还可以使用模型继承来专用化孪生。 一个模型可以继承自另一个模型。
 
-DTDL 用于其他 Azure IoT 服务中的数据模型，包括 [IoT 即插即用 (PnP)](../iot-pnp/overview-iot-plug-and-play.md) 和[时序见解 (TSI)](../time-series-insights/overview-what-is-tsi.md)。 这有助于使 Azure 数字孪生解决方案与 Azure 生态系统的其他部分保持连接并兼容。
+DTDL 用于其他 Azure IoT 服务中的数据模型，包括 [IoT 即插即用 (PnP)](../iot-develop/overview-iot-plug-and-play.md) 和[时序见解 (TSI)](../time-series-insights/overview-what-is-tsi.md)。 这有助于使 Azure 数字孪生解决方案与 Azure 生态系统的其他部分保持连接并兼容。
 
 ### <a name="live-execution-environment"></a>实时执行环境
 
@@ -101,6 +101,6 @@ Azure 数字孪生通常与其他 Azure 服务结合使用，作为较大 IoT �
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在[快速入门：Azure Digital Twins Explorer 入门](quickstart-azure-digital-twins-explorer.md)中深入了解如何使用 Azure 数字孪生。
+* 在 [Azure Digital Twins Explorer 入门](quickstart-azure-digital-twins-explorer.md)中深入了解如何使用 Azure 数字孪生。
 
-* 或者，通过概念：自定义模型，开始了解有关 Azure 数字孪生概念的信息。
+* 或者，通过[自定义模型](concepts-models.md)开始了解 Azure 数字孪生概念。

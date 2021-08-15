@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/26/2021
+ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: a70f88857bdbff825271793b58b442e6ea78c8ee
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8dc52348967963cbe5fd23b2ce01224c99e913e7
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145927"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603027"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>教程：Azure Active Directory 与 Greenhouse 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "108145927"
 * 让用户使用其 Azure AD 帐户自动登录到 Greenhouse。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -79,22 +79,16 @@ ms.locfileid: "108145927"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<COMPANYNAME>.greenhouse.io`
+    a. 在“标识符”文本框中键入以下值：`greenhouse.io`
 
-    b. 在“回复 URL”文本框中，使用以下模式之一键入 URL：
-    
-    | 回复 URL|
-    | -------------- |
-    | `https://<COMPANYNAME>.greenhouse.io/users/saml/consume` |
-    | `https://app.greenhouse.io/<ENTITY ID>/users/saml/consume` |
-    |
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<COMPANYNAME>.greenhouse.io/<ENTITY ID>/users/saml/consume`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<COMPANYNAME>.greenhouse.io`
+    在“登录 URL”文本框中，键入 URL：`https://app.greenhouse.io`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际标识符、回复 URL 和登录 URL 更新这些值。 请联系 [Greenhouse 客户端支持团队](https://www.greenhouse.io/contact)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 此值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Greenhouse 客户端支持团队](https://www.greenhouse.io/contact)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 
@@ -113,7 +107,7 @@ ms.locfileid: "108145927"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 

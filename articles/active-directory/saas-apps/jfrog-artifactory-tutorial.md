@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: b943be684d84e1e193d9318e9f1c6423dcd38795
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2fb9d5be9068731607550eb904a8bf3d43044510
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648911"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469538"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>教程：将 JFrog Artifactory 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "101648911"
 * 让用户使用其 Azure AD 帐户自动登录到 JFrog Artifactory。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -74,31 +74,31 @@ ms.locfileid: "101648911"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`<servername>.jfrog.io`
+    a. 在“标识符”文本框中，输入反映 Artifactory URL 的 URL。
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
     
-    - 对于 Artifactory 6.x，使用模式 `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse`
-    - 对于 Artifactory 7.x，使用模式 `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
+    - 对于自承载 Artifactory：`https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse`
+    - 对于 Artifactory SaaS：`https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL： 
-    - 对于 Artifactory 6.x，使用模式 `https://<servername>.jfrog.io/<servername>/webapp/`
-    - 对于 Artifactory 7.x，使用模式 `https://<servername>.jfrog.io/ui/login`
+    - 对于自承载 Artifactory：`https://<servername>.jfrog.io/<servername>/webapp/`
+    - 对于 Artifactory SaaS：`https://<servername>.jfrog.io/ui/login`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [JFrog Artifactory 客户端支持团队](https://support.jfrog.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. JFrog Artifactory 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框。
+1. JFrog Artifactory 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性和声明”对话框。
 
     ![显示“用户属性”部分的屏幕截图，其中标出了编辑控件。](common/edit-attribute.png)
 
-1. 除上述属性以外，JFrog Artifactory 还要求在 SAML 响应中传回其他几个属性。 在“组声明(预览)”对话框中的“用户属性和声明”部分，执行以下步骤   ：
+1. 除上述属性以外，JFrog Artifactory 还要求在 SAML 响应中传回其他几个属性。 在“用户属性和声明”部分，单击“添加组声明”并执行以下步骤 ：
 
-    a. 单击“声明中返回的组”旁边的 **笔**。 
+    a. 单击“声明中返回的组”旁边的“打开” 。
 
     ![显示“用户属性和声明”部分的屏幕截图，其中标出了“编辑”图标。](./media/jfrog-artifactory-tutorial/configuration-4.png)
 
@@ -114,8 +114,8 @@ ms.locfileid: "101648911"
 
 6. 使用“标识符”字段配置 Artifactory（SAML 服务提供程序名称）（请参见步骤 4）。 在“设置 JFrog Artifactory”部分，根据要求复制相应的 URL。
 
-   - 对于 Artifactory 6.x，使用模式 `https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse` 
-   - 对于 Artifactory 7.x，使用模式 `https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
+   - 对于自承载 Artifactory：`https://<servername>.jfrog.io/artifactory/webapp/saml/loginResponse` 
+   - 对于 Artifactory SaaS：`https://<servername>.jfrog.io/<servername>/webapp/saml/loginResponse`
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -127,7 +127,7 @@ ms.locfileid: "101648911"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 

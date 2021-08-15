@@ -4,12 +4,12 @@ ms.service: azure-video-analyzer
 ms.topic: include
 ms.date: 05/05/2021
 ms.author: faneerde
-ms.openlocfilehash: edf0e4b8ddb3ca4361296856672fd92c92c40254
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9544a69da1c8ba0e3c2fd248a0bbbc7cbc13206f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385137"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114594630"
 ---
 若要运行该示例代码，请按照以下步骤执行：
 
@@ -28,14 +28,16 @@ ms.locfileid: "110385137"
 1. 在 `pipelineTopologySet` 节点上，确保你看到以下值：
 
    ```
-   "topologyUrl" : "https://raw.githubusercontent.com/azure/azure-video-analyzer/main/pipelines/live/topologies/motion-detection/topology.json"
+   "pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/motion-detection/topology.json"
    ```
 
 1. 在 `livePipelineSet` 和 `livePipelineDelete` 节点上，确保 topologyName 的值与管道拓扑中的 name 属性的值匹配 ：
 
    `"topologyName" : "MotionDetection"`
 
-1. 通过选择 F5 键启动调试会话。 “终端”窗口将显示一些消息。
+1. * 导航到 VS Code 中的 `TERMINAL` 窗口
+   * 使用 cd 命令导航到 /video-analyzer-iot-edge-python-main/src/cloud-to-device-console-app 目录
+   * 运行“python main.py”，然后你会看到在 `TERMINAL` 窗口中输出的消息
 1. operations.json 文件首先调用 `pipelineTopologyList` 和 `livePipelineList`。 如果在完成先前的快速入门后清理了资源，则该过程将返回空列表。
 
    ```
@@ -86,7 +88,7 @@ ms.locfileid: "110385137"
    ```
 
    - 对 `livePipelineActivate` 的调用，用于启动实时管道和视频流。
-   - 对 `livePipelineList` 的第二次调用，显示实时管道处于正在运行状态。
+   - 对 `livePipelineList` 的第二次调用，显示实时管道处于运行状态。
 
 1. “终端”窗口中的输出会在出现 `Press Enter to continue` 时暂停。 暂时不要选择 Enter。 向上滚动，查看调用的直接方法的 JSON 响应有效负载。
 1. 切换到 Visual Studio Code 中的“输出”窗口。 可看到 Azure 视频分析器模块正发送到 IoT 中心的消息。 本快速入门中的以下部分将讨论这些消息。

@@ -1,28 +1,29 @@
 ---
-title: 教程：使用设计器预测汽车价格
+title: 教程：设计器 - 训练无代码回归模型
 titleSuffix: Azure Machine Learning
-description: 训练机器学习模型，使用线性回归预测汽车价格。 本教程是由两个部分构成的系列教程的第一部分。
+description: 使用 Azure 机器学习设计器训练用于预测汽车价格的回归模型。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 09/28/2020
-ms.custom: designer
-ms.openlocfilehash: 7f602f82063e2a8092eecf533a75449231c1e900
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.date: 06/11/2021
+ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: f8e544681f940e649e1d04d148caafb875c69952
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660978"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472913"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer"></a>教程：使用设计器预测汽车价格
+# <a name="tutorial-designer---train-a-no-code-regression-model"></a>教程：设计器 - 训练无代码回归模型
 
+使用 Azure 机器学习设计器训练用于预测汽车价格的线性回归模型。 本教程是由两个部分构成的系列教程的第一部分。
 
-本教程分为两部分，介绍如何使用 Azure 机器学习设计器来训练并部署一个可预测汽车价格的机器学习模型。 该设计器是一个拖放式的工具，在其中可以创建机器学习模型，而无需编写任何代码。
+本教程使用 Azure 机器学习设计器。有关详细信息，请参阅[什么是 Azure 机器学习设计器](concept-designer.md)。
 
-本教程的第一部分介绍如何：
+本教程的第一部分介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建新管道。
@@ -31,7 +32,7 @@ ms.locfileid: "101660978"
 > * 训练机器学习模型。
 > * 评估机器学习模型。
 
-在本教程的[第二部分](tutorial-designer-automobile-price-deploy.md)，你要将模型部署为实时推理终结点，以根据发送它的技术规范来预测任何汽车的价格。 
+在本教程的[第二部分](tutorial-designer-automobile-price-deploy.md)中，请将模型部署为实时推理终结点，以根据你发送给它的技术规格来预测任何汽车的价格。 
 
 > [!NOTE]
 >我们提供了本教程的已完成版本作为示例管道。

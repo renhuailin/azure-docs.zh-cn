@@ -1,30 +1,31 @@
 ---
-title: 快速入门：Azure 机器学习入门
+title: 快速入门：创建工作区资源
 titleSuffix: Azure Machine Learning
-description: Azure 机器学习入门。  设置工作区并添加计算资源以创建开发环境。
+description: 创建可用于训练机器学习模型的 Azure 机器学习工作区和云资源。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
-ms.date: 04/26/2021
+ms.date: 06/10/2021
 adobe-target: true
-ms.openlocfilehash: 596c6252b1ed7a0aa4d6f9554e6b417ccf131755
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: FY21Q4-aml-seo-hack, contperf-fy21q4
+ms.openlocfilehash: 0d4c85ec1075e3925fa5657783ffce618faaa6ea
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785293"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760154"
 ---
-# <a name="quickstart-create-resources-youll-need-to-get-started-with-azure-machine-learning"></a>快速入门：创建开始使用 Azure 机器学习所需的资源
+# <a name="quickstart-create-workspace-resources-you-need-to-get-started-with-azure-machine-learning"></a>快速入门：创建 Azure 机器学习入门所需的工作区资源
 
-在本快速入门中，将创建一个工作区，然后向该工作区添加计算资源。 然后你就拥有了开始使用 Azure 机器学习所需的所有资源。  
+在本快速入门中，你将创建一个工作区，然后将计算资源添加到该工作区。 然后你就拥有了开始使用 Azure 机器学习所需的所有资源。  
 
 工作区是机器学习活动的顶级资源，为使用 Azure 机器学习时创建的所有项目提供一个集中的查看和管理位置。 计算资源提供预配置的基于云的环境，可用于训练、部署、自动执行、管理和跟踪机器学习模型。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -35,10 +36,6 @@ ms.locfileid: "109785293"
 如果还没有工作区，现在请创建一个：
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
-
-> [!div class="nextstepaction"]
-> [我创建了工作区](?success=create-workspace#instance) [我遇到了一个问题](https://www.research.net/r/7C8Z3DN?issue=create-workspace)
-
 
 ## <a name="create-compute-instance"></a><a name="instance"></a>创建计算实例
 
@@ -53,9 +50,6 @@ ms.locfileid: "109785293"
 1. 提供名称并选择“创建”。
  
 大约两分钟后，你将看到计算实例的状态从“正在创建”更改为“正在运行” 。  现已准备就绪。  
-
-> [!div class="nextstepaction"]
-> [我创建了计算实例](?success=create-instance#cluster)[我遇到了一个问题](https://www.research.net/r/7C8Z3DN?issue=create-instance)
 
 ## <a name="create-compute-clusters"></a><a name="cluster"></a>创建计算群集
 
@@ -77,16 +71,13 @@ ms.locfileid: "109785293"
 > [!NOTE]
 > 该群集在创建之后将会预配 0 个节点。 因此在你提交作业之前，该群集不会产生成本。 此群集在空闲 2,400 秒（40 分钟）之后将会纵向缩减。  这将为你留一些时间在一些教程中使用它（如果你需要这样做的话），而无需等待它进行纵向扩展。
 
-> [!div class="nextstepaction"]
-> [我创建了计算群集](?success=create-compute-cluster#clean-up) [我遇到了一个问题](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)
-
 ## <a name="quick-tour-of-the-studio"></a><a name="studio"></a>工作室快速导览
 
 工作室是 Azure 机器学习的 Web 门户。 此门户将无代码和代码优先体验结合起来，打造包容的数据科学平台。
 
 查看左侧导航栏上的工作室部分：
 
-* 工作室的“创建者”部分包含多个创建机器学习模型的方法。  你可以：
+* 工作室的“创建者”部分包含多个创建机器学习模型的方法。  方法：
 
     * 通过“笔记本”部分，可以创建 Jupyter 笔记本、复制示例笔记本以及运行笔记本和 Python 脚本。
     * 通过“自动化 ML”步骤，可以创建机器学习模型，而无需编写代码。
@@ -102,11 +93,11 @@ ms.locfileid: "109785293"
 
 ### <a name="stop-compute-instance"></a>停止计算实例
 
-如果现在不打算使用计算实例，请将其停止：
+如果不打算现在使用它，请停止计算实例：
 
 1. 在工作室的左侧，选择“计算”。
 1. 在顶部选项卡中，选择“计算实例”
-1. 选择列表中的计算实例。
+1. 在列表中选择该计算实例。
 1. 在顶部工具栏中，选择“停止”。
 
 ### <a name="delete-all-resources"></a>删除所有资源

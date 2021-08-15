@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a8080720480beaeb7bc8692f2dcddddad5da0e3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b534924be82d7ab6118f0b01b42bfd5e7242082
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548455"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460582"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics 共享元数据表
 
@@ -48,7 +48,7 @@ Spark 提供两种类型的、由 Azure Synapse 在 SQL 中自动公开的表：
 
   Spark 还可让用户通过提供 `LOCATION` 选项或使用 Hive 格式，来基于现有数据创建外部表。 可以基于各种数据格式（包括 Parquet）创建此类外部表。
 
-Azure Synapse 目前仅共享通过 SQL 引擎以 Parquet 格式存储数据的托管 Spark 表和外部 Spark 表。 其他格式支持的表不会自动同步。 你可以在自己的 SQL 数据库中自行显式将此类表作为外部表进行同步，前提是 SQL 引擎支持这些表的基础格式。
+Azure Synapse 目前只共享使用 SQL 引擎以 Parquet 或 CSV 格式存储其数据的托管 Spark 表和外部 Spark 表。 其他格式支持的表不会自动同步。 你可以在自己的 SQL 数据库中自行显式将此类表作为外部表进行同步，前提是 SQL 引擎支持这些表的基础格式。
 
 ### <a name="share-spark-tables"></a>共享 Spark 表
 

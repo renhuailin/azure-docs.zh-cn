@@ -8,12 +8,12 @@ ms.service: firewall-manager
 ms.date: 10/22/2020
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9161eee3fe892092d06080a3a5ce1e11c4fa1764
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 0a8973887f179f2b05f2694e932f50cafa26c69c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110701910"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469392"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-powershell"></a>教程：使用 Azure PowerShell 保护虚拟中心
 
@@ -33,9 +33,6 @@ ms.locfileid: "110701910"
 - PowerShell 7
 
    本教程要求在 PowerShell 7 上本地运行 Azure PowerShell。 若要安装 PowerShell 7，请参阅[从 Windows PowerShell 5.1 迁移到 PowerShell 7](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7&preserve-view=true)。
-- Az.Network 版本 3.2.0
-
-    如果已有 Az.Network 版本 3.4.0 或更高版本，则需要降级才能使用本教程中的某些命令。 可以通过命令 `Get-InstalledModule -Name Az.Network` 查看 Az. Network 模块的版本。 若要卸载 Az.Network 模块，请运行 `Uninstall-Module -name az.network`。 若要安装 Az.Network 3.2.0 模块，请运行 `Install-Module az.network -RequiredVersion 3.2.0 -force`。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -67,8 +64,8 @@ $Hub = New-AzVirtualHub -Name $HubName -ResourceGroupName $RG -VirtualWan $Vwan 
 $Spoke1 = New-AzVirtualNetwork -Name "spoke1" -ResourceGroupName $RG -Location $Location -AddressPrefix "10.1.1.0/24"
 $Spoke2 = New-AzVirtualNetwork -Name "spoke2" -ResourceGroupName $RG -Location $Location -AddressPrefix "10.1.2.0/24"
 # Connect Virtual Network to Virtual WAN
-$Spoke1Connection = New-AzVirtualHubVnetConnection -ResourceGroupName $RG -ParentResourceName  $HubName -Name "spoke1" -RemoteVirtualNetwork $Spoke1
-$Spoke2Connection = New-AzVirtualHubVnetConnection -ResourceGroupName $RG -ParentResourceName  $HubName -Name "spoke2" -RemoteVirtualNetwork $Spoke2
+$Spoke1Connection = New-AzVirtualHubVnetConnection -ResourceGroupName $RG -ParentResourceName  $HubName -Name "spoke1" -RemoteVirtualNetwork $Spoke1 -EnableInternetSecurityFlag $True
+$Spoke2Connection = New-AzVirtualHubVnetConnection -ResourceGroupName $RG -ParentResourceName  $HubName -Name "spoke2" -RemoteVirtualNetwork $Spoke2 -EnableInternetSecurityFlag $True
 ```
 
 这样就产生了一个功能齐全的虚拟 WAN，可提供任意连接性。 为了增强安全性，需要将 Azure 防火墙部署到每个虚拟中心。 防火墙策略可用于有效地管理虚拟 WAN Azure 防火墙实例。 所以在此示例中还创建了防火墙策略：
@@ -125,9 +122,11 @@ $Spoke2Connection = Update-AzVirtualHubVnetConnection -ResourceGroupName $RG -Pa
 ```azurepowershell
 # Create static routes in default Route table
 $AzFWId = $(Get-AzVirtualHub -ResourceGroupName $RG -name  $HubName).AzureFirewall.Id
-$AzFWRoute = New-AzVHubRoute -Name "private-traffic" -Destination @("0.0.0.0/0", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16") -DestinationType "CIDR" -NextHop $AzFWId -NextHopType "ResourceId"
+$AzFWRoute = New-AzVHubRoute -Name "all_traffic" -Destination @("0.0.0.0/0", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16") -DestinationType "CIDR" -NextHop $AzFWId -NextHopType "ResourceId"
 $DefaultRT = Update-AzVHubRouteTable -Name "defaultRouteTable" -ResourceGroupName $RG -VirtualHubName  $HubName -Route @($AzFWRoute)
 ```
+> [!NOTE]
+> 字符串“all_traffic”作为上述 New-AzVHubRoute 命令中参数“-Name”的值具有特殊含意：如果原封不动地使用这个字符串，则会在 Azure 门户中正确反映本文中应用的配置（防火墙管理器 --> 虚拟中心 --> [你的中心] --> 安全配置）。 如果使用另一名称，则会应用所需的配置，但该配置不会反映在 Azure 门户中。 
 
 ## <a name="test-connectivity"></a>测试连接
 

@@ -2,13 +2,13 @@
 title: 什么是 Azure 事件网格？
 description: 使用 Azure 事件网格将事件数据从源发送到处理程序。 生成基于事件的应用程序，并与 Azure 服务集成。
 ms.topic: overview
-ms.date: 01/28/2021
-ms.openlocfilehash: a410f56da9e28403fb98d92332e6d67c064bac4d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 07/27/2021
+ms.openlocfilehash: d9f6c6aa61851bc003b53941f7c1f1eea5261e5f
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934848"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730289"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
@@ -45,6 +45,7 @@ ms.locfileid: "105934848"
 - [Azure SignalR](event-schema-azure-signalr.md)
 - [Azure 订阅](event-schema-subscriptions.md)
 - [用于 Redis 的 Azure 缓存](event-schema-azure-cache.md)
+- [Azure Kubernetes 服务（预览版）](event-schema-aks.md)
 
 ## <a name="event-handlers"></a>事件处理程序
 

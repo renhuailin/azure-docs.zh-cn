@@ -7,12 +7,12 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 04/16/2021
-ms.openlocfilehash: 921f04b4f874fd83403a613823df0f2bd600feb8
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 0dc10b580d1a7c6fed8559f15a11e7c54737692d
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112038698"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285162"
 ---
 # <a name="encode-encyclopedia-of-dna-elements"></a>ENCODE：DNA 元件百科全书
 
@@ -40,7 +40,7 @@ ENCODE 研究人员采用各种分析和方法来识别功能元件。 基因元
 
 美国中西部： https://datasetencode-secondary.blob.core.windows.net/dataset
 
-[SAS 令牌](/azure/storage/common/storage-sas-overview)：?sv=2019-10-10&si=prod&sr=c&sig=9qSQZo4ggrCNpybBExU8SypuUZV33igI11xw0P7rB3c%3D
+[SAS 令牌](../storage/common/storage-sas-overview.md)：?sv=2019-10-10&si=prod&sr=c&sig=9qSQZo4ggrCNpybBExU8SypuUZV33igI11xw0P7rB3c%3D
 
 ## <a name="use-terms"></a>使用条款
 

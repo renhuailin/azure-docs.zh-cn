@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 9dc3c9154eeacb452d3df72e43d8fa773f282c65
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: fb054bf82e6f4e55dfcd6f23575fa35e40400845
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110487555"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400024"
 ---
 本教程介绍如何使用组件生成示例 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure IoT 资源管理器工具来查看它发送到中心的信息。 该示例应用程序以 C 编写，包含在适用于 C 的 Azure IoT 设备 SDK 中。解决方案构建者可以使用 Azure IoT 资源管理器工具来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
 
@@ -61,7 +61,7 @@ gcc --version
 
 ## <a name="download-the-code"></a>下载代码
 
-如果已完成[快速入门：将 Linux 或 Windows 上运行的示例 IoT 即插即用设备应用程序连接到 IoT 中心 (C)](../articles/iot-pnp/quickstart-connect-device.md)，则已下载了代码。
+如果你完成了[教程：将 Linux 或 Windows 上运行的示例 IoT 即插即用设备应用程序连接到 IoT 中心 (C)](../articles/iot-develop/tutorial-connect-device.md)，则已下载了该代码。
 
 在本教程中，你将准备一个用于克隆和生成 Azure IoT 中心设备 C SDK 的开发环境。
 
@@ -84,7 +84,7 @@ git submodule update --init
 1. 打开克隆存储库的根文件夹。 几秒钟后，Visual Studio 中的 CMake 支持会创建运行和调试项目所需的所有内容。
 1. Visual Studio 准备就绪后，在“解决方案资源管理器”中，导航到示例 iothub_client/samples/pnp/pnp_temperature_controller/。
 1. 右键单击“pnp_temperature_controller.c”文件并选择“添加调试配置”。 选择“默认值”。
-1. Visual Studio 将打开“launch.vs.json”文件。 按照以下代码片段编辑此文件，设置所需的环境变量。 完成[为 IoT 即插即用设置环境的快速入门和教程](../articles/iot-pnp/set-up-environment.md)后，请记下范围 ID 和注册主密钥：
+1. Visual Studio 将打开“launch.vs.json”文件。 按照以下代码片段编辑此文件，设置所需的环境变量。 完成[为 IoT 即插即用设置环境的快速入门和教程](../articles/iot-develop/set-up-environment.md)后，请记下范围 ID 和注册主密钥：
 
     ```json
     {
@@ -162,7 +162,7 @@ git submodule update --init
 
 ## <a name="review-the-code"></a>查看代码
 
-此示例实现 IoT 即插即用温度控制器设备。 此示例实现具有[多个组件](../articles/iot-pnp/concepts-modeling-guide.md)的模型。 [温度设备的数字孪生定义语言 (DTDL) 模型文件](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)定义了设备实现的遥测、属性和命令。
+此示例实现 IoT 即插即用温度控制器设备。 此示例实现具有[多个组件](../articles/iot-develop/concepts-modeling-guide.md)的模型。 [温度设备的数字孪生定义语言 (DTDL) 模型文件](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)定义了设备实现的遥测、属性和命令。
 
 ### <a name="iot-plug-and-play-helper-functions"></a>IoT 即插即用帮助程序函数
 

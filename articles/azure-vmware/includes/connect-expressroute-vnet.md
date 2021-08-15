@@ -3,12 +3,12 @@ title: 将 ExpressRoute 连接到虚拟网络网关
 description: 将 ExpressRoute 连接到虚拟网络网关的步骤。
 ms.topic: include
 ms.date: 12/08/2020
-ms.openlocfilehash: 115e8829723c25fb1644f3f5652fbace529a05cb
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: a3e759c12496613848f6f0bc8de596a5099b904b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945660"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438183"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-configure-networking.md -->
 
@@ -30,8 +30,8 @@ ms.locfileid: "107945660"
    | **授权密钥**  | 粘贴之前复制的授权密钥。 |
    | **对等线路 URI**  | 粘贴之前复制的 ExpressRoute ID。  |
 
-   :::image type="content" source="../media/expressroute-global-reach/expressroute-add-connection.png" alt-text="屏幕截图，显示了用于将 ExpressRoute 连接到虚拟网络网关的“添加连接”页。":::
+   :::image type="content" source="../media/tutorial-configure-networking/add-connection.png" alt-text="屏幕截图，显示了用于将 ExpressRoute 连接到虚拟网络网关的“添加连接”页。":::
 
 这会在 ExpressRoute 线路与虚拟网络之间创建连接。
 
-:::image type="content" source="../media/expressroute-global-reach/virtual-network-gateway-connections.png" alt-text="虚拟网络网关连接的屏幕截图。":::
+:::image type="content" source="../media/expressroute-global-reach/virtual-network-gateway-connections.png" alt-text="屏幕截图，显示了成功的虚拟网络网关连接。":::

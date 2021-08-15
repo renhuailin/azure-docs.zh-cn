@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 095f2c3ed17042bb616fb091d1af52a64c913709
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9c9780a51954978935dad164c9d8c5b5a1535826
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460500"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447324"
 ---
 # <a name="getting-started"></a>入门
 
@@ -27,7 +27,7 @@ ms.locfileid: "96460500"
 
 ## <a name="create-a-cognitive-services-resource"></a>创建认知服务资源
 
-要使用大数据认知服务，必须首先为工作流创建认知服务。 认知服务分为两种：托管在 Azure 中的云服务，以及由用户管理的容器化服务。 建议从较简单的基于云的认知服务开始。
+若要使用大数据认知服务，必须先为工作流创建认知服务。 认知服务分为两种：托管在 Azure 中的云服务，以及由用户管理的容器化服务。 建议从较简单的基于云的认知服务开始。
 
 ### <a name="cloud-services"></a>云服务
 
@@ -49,7 +49,7 @@ ms.locfileid: "96460500"
 
 ## <a name="create-an-apache-spark-cluster"></a>创建 Apache Spark 群集
 
-[Apache Spark&trade;](http://spark.apache.org/) 是为进行大数据数据处理而设计的分布式计算框架。 用户可以通过 Azure Databricks、Azure Synapse Analytics、HDInsight 和 Azure Kubernetes 服务等服务在 Azure 中使用 Apache Spark。 要使用大数据认知服务，必须首先创建群集。 如果已有 Spark 群集，请尝试一个示例。
+[Apache Spark&trade;](http://spark.apache.org/) 是为进行大数据数据处理而设计的分布式计算框架。 用户可以通过 Azure Databricks、Azure Synapse Analytics、HDInsight 和 Azure Kubernetes 服务等服务在 Azure 中使用 Apache Spark。 若要使用大数据认知服务，必须先创建群集。 如果已有 Spark 群集，请尝试一个示例。
 
 ### <a name="azure-databricks"></a>Azure Databricks
 
@@ -86,11 +86,11 @@ Azure Databricks 是一种基于 Apache Spark 的分析平台，其中包含一�
 
 ## <a name="try-a-sample"></a>尝试示例
 
-设置 Spark 群集和环境后，可以运行简短的示例。 本部分演示如何在 Azure Databricks 中使用用于认知服务的大数据。
+在设置 Spark 群集和环境后，可以运行一个简短示例。 本部分演示如何在 Azure Databricks 中使用用于认知服务的大数据。
 
-首先，在 Azure Databricks 中创建笔记本。 对于其他 Spark 群集提供程序，请使用其笔记本或 Spark Submit。
+首先，可以在 Azure Databricks 中创建笔记本。 对于其他 Spark 群集提供程序，请使用其笔记本或 Spark Submit。
 
-1. 通过从“Azure Databricks”菜单中选择“新建笔记本”来创建新的 Databricks 笔记本 。
+1. 通过从“Azure Databricks”菜单中选择“新建笔记本”，创建新的 Databricks 笔记本 。
 
     <img src="media/new-notebook.png" alt="Create a new notebook" width="50%"/>
 

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 0cbd7415f3b6f79a6c7231c7caa7ed947b9bdc24
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1d5c77ff37d2585161009f1b023634cde2876110
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110165949"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114339651"
 ---
 开始使用适用于 Python 的异常检测器多变量客户端库。 请按照以下步骤操作，以使用服务提供的算法安装软件包。 新的多变量异常情况检测 API 使开发人员能够轻松地集成高级 AI 来检测指标组中的异常，且无需机器学习知识或标记的数据。 不同信号之间的依赖关系和相互关联会自动计为关键因素。 这可以帮助你主动防范复杂系统发生故障。
 
@@ -23,7 +23,7 @@ ms.locfileid: "110165949"
 * 当任何单独的时序都不能告知太多信息时，而你不得不查看所有信号来检测问题。
 * 使用数十到数百种不同类型的传感器对昂贵的物理资产进行预测维护，以测量系统运行状况的各个方面。
 
-[库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector) | [包 (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/) | [示例代码](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/samples/sample_multivariate_detect.py)
+[库参考文档](/python/api/azure-ai-anomalydetector/azure.ai.anomalydetector) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector) | [包 (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/) | [示例代码](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/samples/sample_multivariate_detect.py)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -192,7 +192,7 @@ def detect(self, model_id, start_time, end_time, max_tryout=500):
 ## <a name="export-model"></a>导出模型
 
 > [!NOTE]
-> export 命令用于允许在容器化环境中运行异常检测器多变量模型。 目前不支持多变量，但将来会添加支持。
+> Export 命令的作用在于使容器化环境中能够运行 Anomaly Detector 多变量模型。 目前不支持多变量，但将来会添加支持。
 
 如果要导出模型，请使用 `export_model` 并传递要导出的模型的模型 ID：
 
@@ -270,4 +270,4 @@ if __name__ == '__main__':
 ## <a name="next-steps"></a>后续步骤
 
 * [什么是异常检测器 API？](../../overview-multivariate.md)
-* [使用异常检测器 API 时的最佳做法](../../concepts/best-practices-multivariate.md)。 
+* [使用异常检测器 API 时的最佳做法](../../concepts/best-practices-multivariate.md)。

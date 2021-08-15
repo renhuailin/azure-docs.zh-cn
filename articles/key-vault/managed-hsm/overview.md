@@ -7,19 +7,19 @@ ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/01/2021
+ms.date: 06/21/2021
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: a9df83535bf0ee7a6c484a7682392d2ad0ef59f7
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: bccb9427f29f9982ca70f2551c48e462cfa16e00
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107815317"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112522062"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm"></a>什么是 Azure Key Vault 托管的 HSM？
 
-Azure Key Vault 托管 HSM 是一项完全托管、高度可用、单租户、符合标准的云服务，通过该服务，可以使用通过 FIPS 140-2 级别 3 验证的 HSM 来保护云应用程序的加密密钥。 有关定价信息，请参阅 [Azure Key Vault 定价页](https://azure.microsoft.com/pricing/details/key-vault/)上的“托管的 HSM 池”部分。 
+Azure Key Vault 托管 HSM 是一项云服务，它具备完全托管、高度可用、单租户和符合标准的特点。有了该服务，你就可以使用通过了 FIPS 140-2 级别 3 验证的 HSM 来保护云应用程序的加密密钥。 有关定价信息，请参阅 [Azure Key Vault 定价页](https://azure.microsoft.com/pricing/details/key-vault/)上的“托管的 HSM 池”部分。 
 
 ## <a name="why-use-managed-hsm"></a>为什么要使用托管 HSM？
 
@@ -34,7 +34,8 @@ Azure Key Vault 托管 HSM 是一项完全托管、高度可用、单租户、�
 
 - **集中式密钥管理**：在一个位置管理整个组织内的重要高价值密钥。 通过精细控制每个密钥的权限，可根据“最低特权访问”原则控制每个密钥的访问权限。
 - **独立的访问控制**：托管 HSM“本地 RBAC”访问控制模型允许指定的 HSM 群集管理员完全控制甚至连管理组、订阅或资源组管理员都无法重写的 HSM。
-- **通过 FIPS 140-2 级别 3 验证的 HSM**：保护你的数据并满足通过 FIPS（联邦信息保护标准）140-2 级别 3 验证的 HSM 的合规性要求。 托管 HSM 使用 Marvell LiquidSecurity HSM 适配器。
+- 专用终结点：使用专用终结点从虚拟网络中运行的应用程序以私密方式安全地连接到托管 HSM。
+- 通过 FIPS 140-2 级别 3 验证的 HSM：保护你的数据并满足通过 FIPS（联邦信息保护标准）140-2 级别 3 验证的 HSM 的合规性要求。 托管 HSM 使用 Marvell LiquidSecurity HSM 适配器。
 - **监视和审核**：与 Azure Monitor 完全集成。 通过 Azure Monitor 获取所有活动的完整日志。 将 Azure Log Analytics 用于分析和警报。
 - **数据驻留**：托管 HSM 不会在客户部署 HSM 实例的区域之外存储/处理客户数据。
 
@@ -54,3 +55,6 @@ Azure Key Vault 托管 HSM 是一项完全托管、高度可用、单租户、�
 ## <a name="next-steps"></a>后续步骤
 - 请参阅[快速入门：使用 Azure CLI 预配和激活托管 HSM](quick-create-cli.md)，以创建和激活托管 HSM
 - 请参阅[使用 Azure Key Vault 托管 HSM 的最佳做法](best-practices.md)
+- [托管 HSM 状态](https://status.azure.com)
+- [托管 HSM 服务级别协议](https://azure.microsoft.com/support/legal/sla/key-vault-managed-hsm/v1_0/)
+- [托管 HSM 区域可用性](https://azure.microsoft.com/global-infrastructure/services/?products=key-vault)

@@ -12,18 +12,18 @@ ms.date: 04/14/2021
 ms.author: aahi
 keywords: 文本挖掘, 情绪分析, 文本分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 66b5918b945c8f098e52b115f2fc74c75d953ff5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: bf148645ebdd762b65d59c86e5453b83423201e9
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110072345"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113550599"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什么是文本分析 API？
 
 文本分析 API 是一种基于云的服务，它提供用于文本挖掘和文本分析的自然语言处理 (NLP) 功能，包括：情绪分析、观点挖掘、关键短语提取、语言检测和命名实体识别。
 
-该 API 是 [Azure 认知服务](../index.yml)的一部分，是云中机器学习和 AI 算法的集合，适用于开发项目。 可以将这些功能与 REST API [版本 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) 或[版本 3.1-preview](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/) 或[客户端库](quickstarts/client-libraries-rest-api.md)配合使用。
+该 API 是 [Azure 认知服务](../index.yml)的一部分，是云中机器学习和 AI 算法的集合，适用于开发项目。 可以将这些功能与 REST API [版本 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) 或[版本 3.1](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1) 或[客户端库](quickstarts/client-libraries-rest-api.md)配合使用。
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
 
@@ -35,15 +35,15 @@ ms.locfileid: "110072345"
 
 ## <a name="sentiment-analysis"></a>情绪分析
 
-通过在文本中挖掘有关积极情绪或消极情绪的线索，使用[情绪分析](how-tos/text-analytics-how-to-sentiment-analysis.md)确定人们如何看待你的品牌或主题。 
+通过在文本中挖掘有关积极情绪或消极情绪的线索，使用[情绪分析](how-tos/text-analytics-how-to-sentiment-analysis.md) (SA) 确定人们如何看待你的品牌或主题。 
 
 此功能根据服务在句子和文档级别找到的最高置信度分数来提供情绪标签（例如“消极”、“中立”和“积极”）。 此功能还会为每个文档和文档中的句子返回介于 0 和 1 之间的置信度分数以表示积极、中立和消极情绪。 你还可以[使用容器](how-tos/text-analytics-how-to-install-containers.md)在本地运行该服务。
 
-观点挖掘是情绪分析的一项功能，在 v3.1 预览版中开始提供。 此功能在自然语言处理 (NLP) 中也称为基于方面的情绪分析，它更加精细地描述了对文本中某些字（例如产品或服务的属性）的观点。
+观点挖掘 (OM) 是情绪分析的一项功能，在 v3.1 中开始提供。 此功能在自然语言处理 (NLP) 中也称为基于方面的情绪分析，它更加精细地描述了对文本中某些字（例如产品或服务的属性）的观点。
 
 ## <a name="key-phrase-extraction"></a>关键短语提取
 
-使用[关键短语提取](how-tos/text-analytics-how-to-keyword-extraction.md)可以快速识别文本中的主要概念。 例如，在文本“The food was delicious and there were wonderful staff”中，关键短语提取将返回谈话要点：“food”和“wonderful staff”。
+使用[关键短语提取](how-tos/text-analytics-how-to-keyword-extraction.md) (KPE) 可以快速识别文本中的主要概念。 例如，在文本“The food was delicious and there were wonderful staff”中，关键短语提取将返回谈话要点：“food”和“wonderful staff”。
 
 ## <a name="language-detection"></a>语言检测
 
@@ -53,6 +53,10 @@ ms.locfileid: "110072345"
 
 命名实体识别 (NER) 可以[对文本中的实体进行识别和分类](how-tos/text-analytics-how-to-entity-linking.md)，将其识别并分类为人员、地点、组织、数量，还可以识别众所周知的实体并将其链接到 Web 上的详细信息。
 
+## <a name="text-analytics-for-health"></a>运行状况文本分析
+
+健康状况文本分析是文本分析 API 服务的一项功能，它可以从非结构化文本（例如医生的备注、出院摘要、临床文档和电子健康记录）中提取和标记相关医疗信息。 
+
 ## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器进行本地部署
 
 [使用文本分析容器](how-tos/text-analytics-how-to-install-containers.md)在本地部署 API 功能。 借助这些 docker 容器，你能够将服务进一步引入数据，以满足合规性、安全性或其他操作目的。 文本分析提供以下容器：
@@ -60,11 +64,11 @@ ms.locfileid: "110072345"
 * 情绪分析
 * 关键短语提取（预览版）
 * 语言检测（预览版）
-* 运行状况文本分析（预览版）
+* 运行状况文本分析
 
 ## <a name="asynchronous-operations"></a>异步操作
 
-利用 `/analyze` 终结点，你可以[异步](how-tos/text-analytics-how-to-call-api.md)使用文本分析 API 的精选功能，如 NER 和关键短语提取。
+利用 `/analyze` 终结点，可以[异步](how-tos/text-analytics-how-to-call-api.md)使用文本分析 API 的许多功能。 命名实体识别 (NER)、关键短语提取 (KPE)、情绪分析 (SA)、观点挖掘 (OM) 可用作 `/analyze` 终结点的组成部分。 该终结点允许在一次调用中聚集这些功能。 该终结点允许每个文档最多发送 125,000 个字符。 定价与常规的文本分析相同。
 
 ## <a name="typical-workflow"></a>典型工作流
 

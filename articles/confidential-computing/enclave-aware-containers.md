@@ -7,12 +7,12 @@ ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 0c9e7f98a9df7bfea6b0c6dd6d3c2cf1f6090ab0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 74c0ea83d5792083993c6ce9c5dab88684234928
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932623"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469575"
 ---
 # <a name="enclave-aware-containers"></a>Enclave 感知容器
 
@@ -52,10 +52,9 @@ Intel 维护着一个软件开发工具包，用于生成适用于 Linux 和 Win
 
 从[此处](https://aka.ms/confidentialinference)开始将 ML 模型直接迁移到 ONNX 运行时
 
-### <a name="edgeless-rt"></a>Edgeless RT
+### <a name="ego"></a>EGo
 
-Edgeless RT 是一项在 Open Enclave SDK 上构建的开放源代码项目。 它添加了对 Go 和其他 C++ 功能的支持。 在[此处](https://github.com/edgelesssys/edgelessrt)使用熟悉的 VS Code 环境开始使用简单机密的 Go 应用程序。 对于 AKS 上的 Edgeless 应用程序，请遵循[此处](https://github.com/edgelesssys/edgelessrt/blob/master/docs/ERTAzureAKSDeployment.md)的说明
-
+开源 [EGo SDK](https://www.ego.dev) 为 enclave 提供了对 Go 编程语言的支持。 EGo 基于 Open Enclave SDK 构建。 它旨在简化机密微服务的生成过程。 请按照此[分步指南](https://github.com/edgelesssys/ego/tree/master/samples/aks)在 AKS 上部署基于 EGo 的服务。
 
 ## <a name="container-based-sample-implementations"></a>基于容器的示例实现
 

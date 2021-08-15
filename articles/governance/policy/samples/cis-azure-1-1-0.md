@@ -1,15 +1,15 @@
 ---
 title: CIS Microsoft Azure 基础基准 1.1.0 的法规符合性详细信息
 description: CIS Microsoft Azure 基础基准 1.1.0 法规符合性内置计划的详细信息。 每个控制措施都映射到一个或多个协助评估的 Azure Policy 定义。
-ms.date: 06/11/2021
+ms.date: 07/16/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: d18e912a2139188d4d6c330fab4e03fcc5e68f2d
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: a0fd7ea4b015c04bf2bd108a13cb06dc5b4d0dde
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030174"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114401848"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-110-regulatory-compliance-built-in-initiative"></a>CIS Microsoft Azure 基础基准 1.1.0 法规符合性内置计划的详细信息
 
@@ -117,7 +117,7 @@ ms.locfileid: "112030174"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[应在虚拟机上应用磁盘加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Azure 安全中心建议对未启用磁盘加密的虚拟机进行监视。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[虚拟机应加密临时磁盘、缓存以及计算资源和存储资源之间的数据流](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Azure 安全中心建议对未启用磁盘加密的虚拟机进行监视。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ### <a name="ensure-asc-default-policy-setting-monitor-network-security-groups-is-not-disabled"></a>确保 ASC 默认策略设置“监视网络安全组”不是处于“已禁用”状态
 
@@ -133,7 +133,7 @@ ms.locfileid: "112030174"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[面向 Internet 的虚拟机应使用网络安全组进行保护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff6de0be7-9a8a-4b8a-b349-43cf02d22f7c) |使用网络安全组 (NSG) 限制对 VM 的访问，以此防范 VM 遭受潜在威胁。 如需详细了解如何使用 NSG 控制流量，请访问 [https://aka.ms/nsg-doc](https://aka.ms/nsg-doc) |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_NetworkSecurityGroupsOnInternetFacingVirtualMachines_Audit.json) |
+|[面向 Internet 的虚拟机应使用网络安全组进行保护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff6de0be7-9a8a-4b8a-b349-43cf02d22f7c) |使用网络安全组 (NSG) 限制对 VM 的访问，以此防范 VM 遭受潜在威胁。 如需详细了解如何使用 NSG 控制流量，请访问 [https://aka.ms/nsg-doc](../../../virtual-network/network-security-groups-overview.md) |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_NetworkSecurityGroupsOnInternetFacingVirtualMachines_Audit.json) |
 |[子网应与网络安全组关联](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe71308d3-144b-4262-b144-efdc3cc90517) |使用网络安全组 (NSG) 限制对 VM 的访问，以此防范子网遭受潜在威胁。 NSG 包含一系列访问控制列表 (ACL) 规则，这些规则可以允许或拒绝流向子网的网络流量。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_NetworkSecurityGroupsOnSubnets_Audit.json) |
 
 ### <a name="ensure-asc-default-policy-setting-monitor-vulnerability-assessment-is-not-disabled"></a>确保 ASC 默认策略设置“监视漏洞评估”不是处于“已禁用”状态
@@ -390,7 +390,7 @@ ms.locfileid: "112030174"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[必须使用 BYOK 对包含具有活动日志的容器的存储帐户进行加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffbb99e8e-e444-4da0-9ff1-75c92f5a85b2) |此策略审核是否已使用 BYOK 对包含具有活动日志的容器的存储帐户进行加密。 仅当存储帐户在设计上依赖于与活动日志相同的订阅时，此策略才起作用。 有关 Azure 存储静态加密的详细信息，请参阅 [https://aka.ms/azurestoragebyok](https://aka.ms/azurestoragebyok)。  |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_StorageAccountBYOK_Audit.json) |
+|[必须使用 BYOK 对包含具有活动日志的容器的存储帐户进行加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffbb99e8e-e444-4da0-9ff1-75c92f5a85b2) |此策略审核是否已使用 BYOK 对包含具有活动日志的容器的存储帐户进行加密。 仅当存储帐户在设计上依赖于与活动日志相同的订阅时，此策略才起作用。 有关 Azure 存储静态加密的详细信息，请参阅 [https://aka.ms/azurestoragebyok](../../../storage/common/customer-managed-keys-configure-key-vault.md)。  |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_StorageAccountBYOK_Audit.json) |
 
 ### <a name="ensure-that-logging-for-azure-keyvault-is-enabled"></a>确保 Azure KeyVault 日志记录设置为“已启用”
 
@@ -398,8 +398,8 @@ ms.locfileid: "112030174"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[应启用 Azure Key Vault 托管 HSM 中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa2a5b911-5617-447e-a49e-59dbe0e0434b) |若要在发生安全事件或网络遭到破坏时重新创建活动跟踪以供调查之用，你可能需要通过启用托管的 HSM 上的资源日志进行审核。 请按照此处的说明进行操作：[https://docs.microsoft.com/azure/key-vault/managed-hsm/logging](https://docs.microsoft.com/azure/key-vault/managed-hsm/logging)。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_AuditDiagnosticLog_Audit.json) |
-|[应启用 Key Vault 中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |对启用资源日志进行审核。 使用此策略可在发生安全事件或网络受到安全威胁时重新创建用于调查的活动线索 |AuditIfNotExists、Disabled |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
+|[应启用 Azure Key Vault 托管 HSM 中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa2a5b911-5617-447e-a49e-59dbe0e0434b) |若要在发生安全事件或网络遭到破坏时重新创建活动跟踪以供调查之用，你可能需要通过启用托管的 HSM 上的资源日志进行审核。 请按照此处的说明进行操作：[https://docs.microsoft.com/azure/key-vault/managed-hsm/logging](../../../key-vault/managed-hsm/logging.md)。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_AuditDiagnosticLog_Audit.json) |
+|[应启用 Key Vault 中的资源日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |对启用资源日志进行审核。 使用此策略可在发生安全事件或网络受到安全威胁时重新创建用于调查的活动线索 |AuditIfNotExists、Disabled |[5.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json) |
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-policy-assignment"></a>确保存在“创建策略分配”的活动日志警报
 
@@ -507,7 +507,7 @@ ms.locfileid: "112030174"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[应在虚拟机上应用磁盘加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Azure 安全中心建议对未启用磁盘加密的虚拟机进行监视。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[虚拟机应加密临时磁盘、缓存以及计算资源和存储资源之间的数据流](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Azure 安全中心建议对未启用磁盘加密的虚拟机进行监视。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ### <a name="ensure-that-data-disks-are-encrypted"></a>确保“数据磁盘”已加密
 
@@ -515,7 +515,7 @@ ms.locfileid: "112030174"
 
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[应在虚拟机上应用磁盘加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Azure 安全中心建议对未启用磁盘加密的虚拟机进行监视。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[虚拟机应加密临时磁盘、缓存以及计算资源和存储资源之间的数据流](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |Azure 安全中心建议对未启用磁盘加密的虚拟机进行监视。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ### <a name="ensure-that-unattached-disks-are-encrypted"></a>确保加密“未附加的磁盘”
 

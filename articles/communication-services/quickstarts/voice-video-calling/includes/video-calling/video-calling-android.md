@@ -4,17 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 8f8849d61a814903d1b5bb9d971196af3f87ca28
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: be7eee7c8de5cae201660b4d165ca51bb40b3c19
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560657"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114339867"
 ---
 通过使用通信服务呼叫客户端库向应用添加一对一视频呼叫，开启 Azure 通信服务使用旅程。 你将了解如何使用适用于 Android 的 Azure 通信服务呼叫 SDK 发起和应答视频呼叫。
 
-> [!NOTE]
-> 在 [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/videoCallingQuickstart) 上查找此快速入门的最终代码
+## <a name="sample-code"></a>代码示例
+
+如果要向前跳转到末尾，可以从 [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/videoCallingQuickstart) 下载示例应用。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -228,6 +229,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -298,6 +300,8 @@ public class MainActivity extends AppCompatActivity {
         startVideo.setOnClickListener(l -> turnOnLocalVideo());
         Button stopVideo = findViewById(R.id.hide_preview);
         stopVideo.setOnClickListener(l -> turnOffLocalVideo());
+        
+        setVolumeControlStream(AudioManager.STREAM_VOICE_CALL);
     }
 
     /**
@@ -385,7 +389,9 @@ private void getAllPermissions() {
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>从用户访问令牌创建代理
 
-借助用户令牌，可以实例化经过身份验证的呼叫代理。 通常，此令牌从具有特定于应用程序的身份验证的服务生成。 有关用户访问令牌的详细信息，请查看[用户访问令牌](../../../access-tokens.md)指南。 对于快速入门，请使用为你的 Azure 通信服务资源生成的用户访问令牌替换 `<User_Access_Token>`。
+你需要有用户令牌才能创建经过身份验证的呼叫代理。 通常，此令牌从具有特定于应用程序的身份验证的服务生成。 有关用户访问令牌的详细信息，请查看[用户访问令牌](../../../access-tokens.md)指南。 
+
+对于快速入门，请使用为你的 Azure 通信服务资源生成的用户访问令牌替换 `<User_Access_Token>`。
 
 ```java
 /**
@@ -641,7 +647,3 @@ private void hangUp() {
 ## <a name="run-the-code"></a>运行代码
 
 现在可以使用 Android Studio 工具栏上的 `Run 'App'` 按钮启动应用。 
-
-## <a name="sample-code"></a>代码示例
-
-可以从 [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/videoCallingQuickstart) 下载示例应用

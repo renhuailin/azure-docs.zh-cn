@@ -1,26 +1,26 @@
 ---
-title: include 文件
-description: include 文件
+title: 包含文件
+description: 包含文件
 services: azure-communication-services
 author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 2aa1d6c474544a12154a59fa1fe12cffd1478b4f
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 1676ed849c025fc0f41aac933268e80276feeee2
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111430993"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114723692"
 ---
 [!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
 
-> [!NOTE]
-> 在 [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/add-chat) 上查找此快速入门的最终代码
+## <a name="sample-code"></a>代码示例
+在 [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/add-chat) 上查找此快速入门的最终代码。
 
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：
@@ -49,8 +49,8 @@ ms.locfileid: "111430993"
 打开 Podfile，并向 `ChatQuickstart` 目标添加以下依赖项：
 
 ```
-pod 'AzureCommunication', '~> 1.0.0-beta.11'
-pod 'AzureCommunicationChat', '~> 1.0.0-beta.11'
+pod 'AzureCommunicationCommon', '~> 1.0'
+pod 'AzureCommunicationChat', '~> 1.0.1'
 ```
 
 通过以下命令安装依赖项：`pod install`。 请注意，这还会创建 Xcode 工作区。
@@ -66,7 +66,7 @@ pod 'AzureCommunicationChat', '~> 1.0.0-beta.11'
 在 `viewController.swift` 的顶部导入 `AzureCommunication` 和 `AzureCommunicatonChat` 库：
 
 ```
-import AzureCommunication
+import AzureCommunicationCommon
 import AzureCommunicationChat
 ```
 
@@ -138,8 +138,8 @@ let chatClient = try ChatClient(
 
 | 名称                                   | 说明                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ChatClient` | 聊天功能需要此类。 使用订阅信息实例化此类，并使用它来创建、获取和删除会话。 |
-| `ChatThreadClient` | 聊天会话功能需要此类。 通过 `ChatClient` 获取实例，并使用它来发送、接收、更新和删除消息。 还可以使用它来添加、删除和获取用户，发送键入通知以及阅读回执和订阅聊天事件。 |
+| `ChatClient` | 聊天功能需要此类。 你使用订阅信息来实例化此类，使用此类来创建、获取和删除会话，以及订阅聊天事件。 |
+| `ChatThreadClient` | 聊天会话功能需要此类。 通过 `ChatClient` 获取实例，并使用它来发送、接收、更新和删除消息。 还可以使用此类来添加、删除和获取用户，发送“正在键入”通知和已读回执。 |
 
 ## <a name="start-a-chat-thread"></a>启动聊天会话
 
@@ -183,11 +183,15 @@ semaphore.wait()
 ```
 chatClient.listThreads { result, _ in
     switch result {
-    case let .success(chatThreadItems):
-        var iterator = chatThreadItems.syncIterator
-            while let chatThreadItem = iterator.next() {
-                print("Thread id: \(chatThreadItem.id)")
-            }
+    case let .success(threads):
+        guard let chatThreadItems = threads.pageItems else {
+            print("No threads returned.")
+            return
+        }
+
+        for chatThreadItem in chatThreadItems {
+            print("Thread id: \(chatThreadItem.id)")
+        }
     case .failure:
         print("Failed to list threads")
     }
@@ -264,10 +268,14 @@ if let id = messageId {
 ```
 chatThreadClient.listMessages { result, _ in
     switch result {
-    case let .success(messages):
-        var iterator = messages.syncIterator
-        while let message = iterator.next() {
-            print("Received message of type \(message.type)")
+    case let .success(messagesResult):
+        guard let messages = messagesResult.pageItems else {
+            print("No messages returned.")
+            return
+        }
+
+        for message in messages {
+            print("Received message with id: \(message.id)")
         }
 
     case .failure:
@@ -311,9 +319,13 @@ semaphore.wait()
 ```
 chatThreadClient.listParticipants { result, _ in
     switch result {
-    case let .success(participants):
-        var iterator = participants.syncIterator
-        while let participant = iterator.next() {
+    case let .success(participantsResult):
+        guard let participants = participantsResult.pageItems else {
+            print("No participants returned.")
+            return
+        }
+
+        for participant in participants {
             let user = participant.id as! CommunicationUserIdentifier
             print("User with id: \(user.identifier)")
         }
@@ -328,3 +340,5 @@ semaphore.wait()
 ## <a name="run-the-code"></a>运行代码
 
 在 Xcode 中，单击“运行”按钮以生成并运行项目。 在控制台中，可以从代码中查看输出，并从 ChatClient 查看记录器输出。
+
+注意：请将 `Build Settings > Build Options > Enable Bitcode` 设置为 `No`。 目前，适用于 iOS 的 AzureCommunicationChat SDK 不支持启用 Bitcode，以下 [Github 问题](https://github.com/Azure/azure-sdk-for-ios/issues/787)正在跟踪此问题。

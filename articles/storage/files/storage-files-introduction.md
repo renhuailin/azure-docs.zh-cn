@@ -1,31 +1,31 @@
 ---
 title: Azure 文件简介 | Microsoft Docs
-description: 本文概述 Azure 文件服务，使用该服务可以通过行业标准 SMB 协议在云中创建和使用网络文件共享。
+description: 概述 Azure 文件存储，这是一项可以让你使用 SMB 或 NFS 协议在云中创建和使用网络文件共享的服务。
 author: roygara
 ms.service: storage
 ms.topic: overview
-ms.date: 09/15/2020
+ms.date: 07/23/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7279c5578d969db9178ce85734e3a43f9eccdf8d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c47d68dbaef7cbd154a0ac9af7ad582c1e94b640
+ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780040"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114673948"
 ---
 # <a name="what-is-azure-files"></a>什么是 Azure 文件？
-Azure 文件存储会在云中提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)或[网络文件系统 (NFS) 协议](https://en.wikipedia.org/wiki/Network_File_System)进行访问。 Azure 文件共享可通过云部署或者本地部署并行装载。 可从 Windows、Linux 和 macOS 客户端访问Azure 文件存储 SMB 文件共享。 可从 Linux 或 macOS 客户端访问 Azure 文件存储 NFS 文件共享。 此外，可以使用 Azure 文件同步将 Azure 文件存储 SMB 文件共享缓存在 Windows Server 上，以供在使用数据的位置附近快速访问。
+Azure 文件存储会在云中提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)或[网络文件系统 (NFS) 协议](https://en.wikipedia.org/wiki/Network_File_System)进行访问。 可以通过云部署或本地部署以并发方式装载 Azure 文件存储文件共享。 可以从 Windows、Linux 和 macOS 客户端访问 SMB Azure 文件共享。 可以从 Linux 或 macOS 客户端访问 NFS Azure 文件存储共享。 此外，还可以使用 [Azure 文件同步](../file-sync/file-sync-introduction.md)将 SMB Azure 文件共享缓存在那些靠近数据使用位置的 Windows Server 上，以加快访问速度。
 
 下面是有关 Azure 文件存储的常见用例的一些视频：
-* [Replace your file server with a serverless Azure File Share](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)（将你的文件服务器替换为无服务器的 Azure 文件共享）
+* [将文件服务器替换为无服务器 Azure 文件共享](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
 * [Getting started with FSLogix profile containers on Azure Files in Windows Virtual Desktop leveraging AD authentication](https://www.youtube.com/embed/9S5A1IJqfOQ)（Windows 虚拟桌面中 Azure 文件存储上的 FSLogix 配置文件容器入门（利用 AD 身份验证））
 
 ## <a name="why-azure-files-is-useful"></a>为何 Azure 文件很有用
 Azure 文件共享可用于：
 
 * **取代或补充本地文件服务器**：  
-    可以使用 Azure 文件来完全取代或补充传统的本地文件服务器或 NAS 设备。 流行的操作系统（例如 Windows、macOS 和 Linux）可在世界各地直接装载 Azure 文件共享。 此外，还可以使用 Azure 文件同步将 Azure 文件存储 SMB 文件共享复制到本地或云中的 Windows Server，以便在使用数据的位置对数据进行高性能的分布式缓存。 使用最新版本的 [Azure 文件存储 AD 身份验证](storage-files-active-directory-overview.md)，Azure 文件存储 SMB 文件共享可继续使用本地托管的 AD 进行访问控制。 
+    可以使用 Azure 文件来完全取代或补充传统的本地文件服务器或 NAS 设备。 流行的操作系统（例如 Windows、macOS 和 Linux）可在世界各地直接装载 Azure 文件共享。 还可以使用 Azure 文件同步将 SMB Azure 文件共享复制到本地或云中的 Windows Server，以便在数据使用位置对数据进行高性能的分布式缓存。 利用最新版本的 [Azure 文件存储 AD 身份验证](storage-files-active-directory-overview.md)，SMB Azure 文件共享可以继续使用本地托管的 AD 进行访问控制。 
 
 * **“直接迁移”应用程序**：  
     借助 Azure 文件可以轻松地将预期使用文件共享存储文件应用程序或用户数据的应用程序“直接迁移”到云中。 Azure 文件既支持“经典”直接迁移方案（应用程序及其数据将移到 Azure 中），也支持“混合”直接迁移方案（应用程序数据将移到 Azure 文件中，应用程序继续在本地运行）。 
@@ -51,9 +51,9 @@ Azure 文件共享可用于：
 * **熟悉的可编程性**。 在 Azure 中运行的应用程序可以通过文件[系统 I/O API](/dotnet/api/system.io.file) 访问共享中的数据。 因此，开发人员可以利用其现有代码和技术迁移现有应用程序。 除了系统 IO API，还可以使用 [Azure 存储客户端库](/previous-versions/azure/dn261237(v=azure.100))或 [Azure 存储 REST API](/rest/api/storageservices/file-service-rest-api)。
 
 ## <a name="next-steps"></a>后续步骤
-* [了解可用的文件共享协议](storage-files-compare-protocols.md)
+* [规划 Azure 文件部署](storage-files-planning.md)
 * [创建 Azure 文件共享](storage-how-to-create-file-share.md)
 * [在 Windows 上连接和装载 SMB 共享](storage-how-to-use-files-windows.md)
 * [在 Linux 上连接和装载 SMB 共享](storage-how-to-use-files-linux.md)
 * [在 macOS 上连接和装载 SMB 共享](storage-how-to-use-files-mac.md)
-* [如何创建 NFS 共享](storage-files-how-to-create-nfs-shares.md)
+* [在 Linux 上连接和装载 NFS 共享](storage-files-how-to-mount-nfs-shares.md)

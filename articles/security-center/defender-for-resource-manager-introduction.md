@@ -3,16 +3,16 @@ title: 适用于资源管理器的 Azure Defender - 优点和功能
 description: 了解适用于资源管理器的 Azure Defender 的优点和功能
 author: memildin
 ms.author: memildin
-ms.date: 05/12/2021
+ms.date: 07/14/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 7d564d3d3a27d4ddba50ab05644d612e9bb63645
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 1acf785021f83605db2f8bfe3188e0e2ac874d4e
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113002569"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113761873"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>适用于资源管理器的 Azure Defender 简介
 
@@ -28,7 +28,7 @@ ms.locfileid: "113002569"
 |----|:----|
 |发布状态：|正式发布版 (GA)|
 |定价：|适用于资源管理器的 Azure Defender 按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中所示的定价计费|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov，其他政府<br>![否](./media/icons/no-icon.png) Azure 中国|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: US Gov<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure 中国|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-resource-manager"></a>适用于资源管理器的 Azure Defender 有哪些优点？

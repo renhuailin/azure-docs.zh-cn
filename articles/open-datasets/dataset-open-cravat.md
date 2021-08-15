@@ -7,12 +7,12 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 04/16/2021
-ms.openlocfilehash: 31a9d9bed9342470d3dc5c06516de27c3a07b0e9
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 2047b5f5071f6166a7f30e7a04b79fa711c95624
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112038524"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982112"
 ---
 # <a name="opencravat-open-custom-ranked-analysis-of-variants-toolkit"></a>OpenCravat：开放式变体自定义排名分析工具包
 

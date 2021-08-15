@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 8f8b51607d9b7b97560393b904195646552dbeb6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8dc56570adf78ce208411f9f2e8f4453704d4f90
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110164313"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114339674"
 ---
 开始使用适用于 C# 的异常检测器多变量客户端库。 请按照以下步骤安装软件包并开始使用服务提供的算法。 新的多变量异常情况检测 API 使开发人员能够轻松地集成高级 AI 来检测指标组中的异常，且无需机器学习知识或标记的数据。 不同信号之间的依赖关系和相互关联会自动计为关键因素。 这可以帮助你主动防范复杂系统发生故障。
 
@@ -23,7 +23,7 @@ ms.locfileid: "110164313"
 * 当任何单独的时序都不能告知太多信息时，而你不得不查看所有信号来检测问题。
 * 使用数十到数百种不同类型的传感器对昂贵的物理资产进行预测维护，以测量系统运行状况的各个方面。
 
-[库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/anomalydetector/Azure.AI.AnomalyDetector) | [包 (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.3)
+[库参考文档](/dotnet/api/azure.ai.anomalydetector) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/anomalydetector/Azure.AI.AnomalyDetector) | [包 (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.3)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -233,7 +233,7 @@ private async Task<DetectionResult> detectAsync(AnomalyDetectorClient client, st
 ## <a name="export-model"></a>导出模型
 
 > [!NOTE]
-> Export 命令的作用在于使容器化环境中能够运行异常检测器多变量模型。 目前不支持多变量，但将来会添加相关支持。
+> Export 命令的作用在于使容器化环境中能够运行 Anomaly Detector 多变量模型。 目前不支持多变量，但将来会添加相关支持。
 
 若要导出先前训练的模型，请创建一个名为 `exportAysnc` 的 `private async Task`。 你将使用 `ExportModelAsync` 并传递要导出的模型的模型 ID。
 
@@ -364,4 +364,4 @@ dotnet run
 ## <a name="next-steps"></a>后续步骤
 
 * [什么是异常检测器 API？](../../overview-multivariate.md)
-* [使用异常检测器 API 时的最佳做法](../../concepts/best-practices-multivariate.md)。 
+* [使用异常检测器 API 时的最佳做法](../../concepts/best-practices-multivariate.md)。

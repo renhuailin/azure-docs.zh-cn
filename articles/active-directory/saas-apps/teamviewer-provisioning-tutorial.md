@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 TeamViewer 配置自动用户预配 | Microsoft Docs
 description: 了解如何将用户帐户从 Azure AD 自动预配到 TeamViewer 及如何取消预配。
 services: active-directory
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2020
-ms.author: Zhchia
-ms.openlocfilehash: 0362f0d69581c252170b4f37f8564caa7acd3d29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 76d5ad2e1e025583b122fbb117ccc0d5eb4e2a63
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96182234"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113759053"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>教程：为 TeamViewer 配置自动用户预配
 
@@ -93,11 +93,11 @@ ms.locfileid: "96182234"
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 
-5. 在“管理员凭据”部分，在“租户 URL”字段中输入 `ttps://webapi.teamviewer.com/scim/v2`，然后输入之前在“机密令牌”中输入的脚本令牌  。 单击“测试连接”，确保 Azure AD 可连接到 TeamViewer。 如果连接失败，请确保 TeamViewer 帐户具有管理员权限，然后重试。
+5. 在“管理员凭据”部分的“租户 URL”字段中输入 `https://webapi.teamviewer.com/scim/v2`，然后输入之前在“机密令牌”中创建的脚本令牌  。 单击“测试连接”，确保 Azure AD 可连接到 TeamViewer。 如果连接失败，请确保 TeamViewer 帐户具有管理员权限，然后重试。
 
     ![屏幕截图显示“管理员凭据”对话框，可在该框中输入租户 URL 和机密令牌。](./media/teamViewer-provisioning-tutorial/provisioning.png)
 
