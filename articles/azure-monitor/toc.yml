@@ -393,6 +393,9 @@
             - name: 大规模部署
               displayname: Deploy Azure Monitor agent at scale
               href: deploy-scale.md#azure-monitor-agent
+            - name: 从旧版代理迁移
+              displayname: Migrate to Azure Monitor agent
+              href: agents/azure-monitor-agent-migration.md
             - name: FAQ
               displayname: Azure Monitor agent FAQ
               href: /azure/azure-monitor/faq#azure-monitor-agent
@@ -477,7 +480,7 @@
           href: autoscale/autoscale-get-started.md
         - name: 配置设置
           href: autoscale/autoscale-understanding-settings.md
-        - name: 最佳实践
+        - name: 最佳做法
           href: autoscale/autoscale-best-practices.md
         - name: 常见指标
           href: autoscale/autoscale-common-metrics.md
@@ -804,9 +807,11 @@
           items:
             - name: 概述
               href: app/availability-overview.md
-            - name: URL 测试
+            - name: URL ping 测试
               displayname: 'ping, ping tests, availability, GSM, up/down'
               href: app/monitor-web-app-availability.md
+            - name: 标准测试
+              href: app/availability-standard-tests.md
             - name: 多步骤测试
               displayname: 'availability, GSM, visual studio web test, web test'
               href: app/availability-multistep.md
@@ -960,7 +965,7 @@
               displayname: 'correlation, dependency, dependencies, track dependency, OWIN, queue, service bus, background tasks, long running background tasks, outgoing dependency tracking, parallel operations, System.Diagnostics.Activity, System.Diagnostics.DiagnosticSource, StartOperation, StopOperation'
             - name: 自定义电子邮件报告
               href: app/automate-custom-reports.md
-            - name: 异常
+            - name: 例外
               href: app/asp-net-exceptions.md
             - name: 日志跟踪
               href: app/asp-net-trace-logs.md
@@ -1159,7 +1164,7 @@
           href: insights/redis-cache-insights-overview.md
         - name: Azure Cosmos DB
           href: insights/cosmosdb-insights-overview.md
-        - name: Azure 数据资源管理器（预览版）
+        - name: Azure 数据资源管理器
           href: insights/data-explorer.md
         - name: Log Analytics 工作区
           href: logs/log-analytics-workspace-insights-overview.md
@@ -1181,7 +1186,7 @@
               href: insights/sql-insights-troubleshoot.md
         - name: 存储
           displayname: 'storage, monitor, insights, storage accounts, azure storage'
-          href: insights/storage-insights-overview.md
+          href: ../storage/common/storage-insights-overview.md?toc=/azure/azure-monitor/toc.json
         - name: 资源组
           href: insights/resource-group-insights.md
         - name: 见解疑难解答
@@ -1220,7 +1225,7 @@
                         - name: ExpressRoute
                           href: insights/network-performance-monitor-expressroute.md
                         - name: 定价
-                          href: insights/network-performance-monitor-pricing-faq.md
+                          href: insights/network-performance-monitor-pricing-faq.yml
                         - name: 常见问题解答
                           href: insights/network-performance-monitor-faq.yml
                 - name: Office 365
@@ -1489,13 +1494,11 @@
               href: visualize/view-designer-filters.md
 - name: 资源
   items:
-    - name: Azure 路线图
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure 更新
+      href: 'https://azure.microsoft.com/en-us/updates/?category=management-tools'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/log-analytics/'
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/?products=monitor&regions=all'
-    - name: 新闻
-      href: 'https://azure.microsoft.com/updates/?product=monitor'

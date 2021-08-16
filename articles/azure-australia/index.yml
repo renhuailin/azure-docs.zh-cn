@@ -1,0 +1,42 @@
+### YamlMime:Landing
+title: Azure 澳大利亚文档
+summary: Microsoft Azure 澳大利亚是一个云平台，已通过澳大利亚网络安全中心 (ACSC) 认证，并包含在已认证的云服务列表 (CCSL) 中。
+metadata:
+  title: Azure 澳大利亚文档
+  description: Microsoft Azure 澳大利亚是一个云平台，已通过澳大利亚网络安全中心 (ACSC) 认证，并包含在已认证的云服务列表 (CCSL) 中。
+  ms.service: azure-australia
+  ms.topic: landing-page
+  author: emilyre
+  ms.author: v-emread
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 126cccc48f14b6e1ab260b8ec2648f0678754728
+  ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/13/2020
+  ms.locfileid: "116985470"
+landingContent:
+- title: 关于 Azure 澳大利亚
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 澳大利亚？
+      url: australia-overview.md
+- title: 安全性
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 数据安全
+      url: secure-your-data.md
+    - text: Azure VPN 网关配置
+      url: vpn-gateway.md
+    - text: Azure Key Vault
+      url: azure-key-vault.md
+- title: 网关
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 网关日志记录、审核和可见性
+      url: gateway-log-audit-visibility.md
+    - text: 保护网关的远程管理
+      url: gateway-secure-remote-administration.md

@@ -76,11 +76,7 @@
             - name: 安装脚本示例
               href: how-to-set-up-instance-scripted.md
         - name: 通过专用链接启用私密访问
-          items:
-            - name: 门户
-              href: how-to-enable-private-link-portal.md
-            - name: CLI
-              href: how-to-enable-private-link-cli.md
+          href: how-to-enable-private-link.md
         - name: 编写应用身份验证码
           href: how-to-authenticate-client.md
         - name: 创建应用注册
@@ -105,7 +101,7 @@
           href: how-to-use-azure-digital-twins-explorer.md
         - name: 管理数字孪生
           href: how-to-manage-twin.md
-        - name: 通过使用关系来管理孪生图
+        - name: 管理孪生图和关系
           href: how-to-manage-graph.md
         - name: 设置用于处理数据的 Azure 函数
           href: how-to-create-azure-function.md
@@ -130,11 +126,7 @@
     - name: 连接输出
       items:
         - name: 管理终结点和路由
-          items:
-            - name: 门户
-              href: how-to-manage-routes-portal.md
-            - name: API 和 CLI
-              href: how-to-manage-routes-apis-cli.md
+          href: how-to-manage-routes.md
         - name: 使用托管标识路由事件
           href: how-to-route-with-managed-identity.md
         - name: 与 Azure Maps 集成

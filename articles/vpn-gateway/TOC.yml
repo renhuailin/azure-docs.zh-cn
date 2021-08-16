@@ -245,6 +245,22 @@
           href: vpn-gateway-download-vpndevicescript.md
         - name: 示例：Cisco ASA 设备（IKEv2/无 BGP）
           href: vpn-gateway-3rdparty-device-config-cisco-asa.md
+    - name: 在连接上配置 IPsec/IKE 策略
+      items:
+        - name: Azure 门户
+          href: ipsec-ike-policy-howto.md
+        - name: PowerShell
+          href: vpn-gateway-ipsecikepolicy-rm-powershell.md
+    - name: 配置主动-主动网关
+      items:
+        - name: Azure 门户
+          href: active-active-portal.md
+        - name: PowerShell
+          href: vpn-gateway-activeactive-rm-powershell.md
+    - name: 配置区域冗余网关
+      href: create-zone-redundant-vnet-gateway.md
+    - name: 配置数据包捕获
+      href: packet-capture.md
     - name: 运行状况监视
       items:
         - name: 监视 VPN 网关
@@ -253,22 +269,6 @@
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
         - name: 基于资源日志设置警报
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
-    - name: 配置数据包捕获
-      href: packet-capture.md
-    - name: 区域冗余网关
-      items:
-        - name: 创建区域冗余网关
-          href: create-zone-redundant-vnet-gateway.md
-    - name: 在连接上配置 IPsec/IKE 策略
-      items:
-        - name: Azure 门户
-          href: ipsec-ike-policy-howto.md
-        - name: PowerShell
-          href: vpn-gateway-ipsecikepolicy-rm-powershell.md
-    - name: 配置主动-主动连接
-      items:
-        - name: PowerShell
-          href: vpn-gateway-activeactive-rm-powershell.md
     - name: 疑难解答
       href: vpn-gateway-troubleshoot.md
       items:

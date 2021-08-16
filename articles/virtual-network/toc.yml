@@ -31,7 +31,7 @@
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: template-samples.md
 - name: 概念
   items:
@@ -230,8 +230,10 @@
           items:
             - name: 创建公共 IP 前缀 - 门户
               href: create-public-ip-prefix-portal.md
-            - name: 创建公共 IPv6 前缀
-              href: ipv6-reserve-public-ip-address-prefix.md
+            - name: 创建公共 IP 前缀 - PowerShell
+              href: create-public-ip-prefix-powershell.md
+            - name: 创建公共 IP 前缀 - Azure CLI
+              href: create-public-ip-prefix-cli.md
         - name: 升级公共 IP 地址
           items:
             - name: 升级公共 IP 地址 - 门户
@@ -256,12 +258,10 @@
               items:
                 - name: 使用 IPv6 的标准内部负载均衡器 - PowerShell
                   href: ipv6-dual-stack-standard-internal-load-balancer-powershell.md
-            - name: 基本公共
-              items:
-                - name: 使用 IPv6 的基本公共负载均衡器 - PowerShell
-                  href: ipv6-add-to-existing-vnet-powershell.md
-                - name: 使用 IPv6 的基本公共负载均衡器 - Azure CLI
-                  href: ipv6-add-to-existing-vnet-cli.md
+            - name: 将 IPv6 添加到 IPv4 应用程序 - PowerShell
+              href: ipv6-add-to-existing-vnet-powershell.md
+            - name: 将 IPv6 添加到 IPv4 应用程序 - Azure CLI
+              href: ipv6-add-to-existing-vnet-cli.md
         - name: 路由首选项
           items:
             - name: 创建公共 IP 地址

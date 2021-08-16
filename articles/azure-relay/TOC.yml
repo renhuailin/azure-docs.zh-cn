@@ -35,7 +35,15 @@
     - name: 安全性
       items:
         - name: 身份验证和授权
-          href: relay-authentication-and-authorization.md
+          items:
+            - name: 概述（身份验证和授权）
+              href: relay-authentication-and-authorization.md
+            - name: 使用 Azure Active Directory
+              items:
+                - name: 使用托管标识进行身份验证（预览）
+                  href: authenticate-managed-identity.md
+                - name: 通过应用程序进行身份验证（预览）
+                  href: authenticate-application.md
         - name: 内置安全控件
           href: /security/benchmark/azure/baselines/service-bus-messaging-security-baseline?toc=/azure/azure-relay/TOC.json
         - name: 网络安全
@@ -85,7 +93,7 @@
           href: /dotnet/api/Microsoft.ServiceBus
     - name: Azure CLI
       href: /cli/azure/relay
-    - name: 异常
+    - name: 例外
       href: relay-exceptions.md
     - name: 端口设置
       href: relay-port-settings.md

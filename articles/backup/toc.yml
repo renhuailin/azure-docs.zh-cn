@@ -324,7 +324,7 @@
       items:
         - name: 保护矩阵
           items:
-            - name: MABS V3 UR1 保护矩阵
+            - name: MABS V3 UR1（及更高版本）保护矩阵
               href: backup-mabs-protection-matrix.md
             - name: MABS V3 RTM 保护矩阵
               href: microsoft-azure-backup-server-protection-v3.md
@@ -338,12 +338,16 @@
               href: backup-mabs-whats-new-mabs.md
             - name: 发行说明 MABS
               href: backup-mabs-release-notes-v3.md
+            - name: 启用/禁用遥测设置
+              href: manage-telemetry.md
             - name: 无人参与的安装
               href: backup-mabs-unattended-install.md
         - name: 保护工作负荷
           items:
             - name: 备份 Hyper-V 虚拟机
               href: back-up-hyper-v-virtual-machines-mabs.md
+            - name: 备份 Azure Stack HCI 虚拟机
+              href: back-up-azure-stack-hyperconverged-infrastructure-virtual-machines.md
             - name: VMware 服务器
               href: backup-azure-backup-server-vmware.md
             - name: Exchange

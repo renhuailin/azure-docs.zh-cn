@@ -190,7 +190,7 @@
           items:
             - name: 客户管理的密钥
               href: search-security-manage-encryption-keys.md
-            - name: 加密信息
+            - name: 查找加密的对象
               href: search-security-get-encryption-keys.md
         - name: 入站安全性
           items:

@@ -32,6 +32,7 @@
           items:
             - name: 资源声明
               href: resource-declaration.md
+              displayName: existing
             - name: 条件部署
               href: conditional-resource-deployment.md
               displayName: runtime
@@ -55,7 +56,7 @@
         - name: 循环
           items:
             - name: 资源
-              displayName: 'iteration,copy,multiple,batches,child'
+              displayName: 'iteration,copy,multiple,batches,child,condition,filter'
               href: loop-resources.md
             - name: 属性
               displayName: 'iteration,copy,multiple'
@@ -159,6 +160,8 @@
           href: operators-logical.md
         - name: 数字运算符
           href: operators-numeric.md
+        - name: 访问运算符
+          href: operators-access.md
     - name: Bicep CLI
       href: bicep-cli.md
       displayName: 'build,decompile,install,list-versions,list versions,upgrade,version'

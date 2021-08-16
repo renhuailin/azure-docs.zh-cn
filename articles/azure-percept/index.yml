@@ -10,12 +10,12 @@ metadata:
   author: mimcco
   ms.author: mimcco
   ms.date: 03/25/2021
-  ms.openlocfilehash: 193f3a17263ff0c3f164d04fe6a6a766208dd5bc
-  ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+  ms.openlocfilehash: 380af1d7d258aea286886a2e49e53496a179bb63
+  ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/29/2021
-  ms.locfileid: "113031474"
+  ms.lasthandoff: 07/13/2021
+  ms.locfileid: "113667052"
 landingContent:
 - title: 什么是 Azure Percept？
   linkLists:
@@ -101,9 +101,9 @@ landingContent:
       url: how-to-configure-voice-assistant.md
 - title: 使用 Azure Percept 进行高级开发
   linkLists:
-  - linkListType: overview
+  - linkListType: concept
     links:
-    - text: 高级开发概述
+    - text: 在 Azure Percept 上进行高级开发
       url: overview-advanced-code.md
   - linkListType: how-to-guide
     links:
@@ -111,9 +111,9 @@ landingContent:
       url: dev-tools-installer.md
 - title: 将 Azure Percept DK 保持在最新状态
   linkLists:
-  - linkListType: overview
+  - linkListType: concept
     links:
-    - text: Azure Percept DK 更新体验概述
+    - text: Azure Percept DK 更新体验
       url: overview-update-experience.md
   - linkListType: how-to-guide
     links:

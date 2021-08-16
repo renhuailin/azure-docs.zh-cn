@@ -4,6 +4,10 @@
   items:
     - name: 关于 Azure Arc
       href: overview.md
+- name: 示例
+  items:
+    - name: Azure Resource Graph 查询
+      href: ./resource-graph-samples.md
 - name: 已启用 Arc 的服务器 >
   href: ./servers/overview.md
 - name: 已启用 Arc 的 Kubernetes >

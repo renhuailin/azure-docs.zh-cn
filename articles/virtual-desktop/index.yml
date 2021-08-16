@@ -11,12 +11,12 @@ metadata:
   author: Heidilohr
   ms.author: helohr
   ms.date: 03/06/2020
-  ms.openlocfilehash: 89123da71dc47d3fb302ab6c82e26baf3df94357
-  ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+  ms.openlocfilehash: da50b99cfb5cef8d8ced702e5f5e9a56912e9d59
+  ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/09/2021
-  ms.locfileid: "111757617"
+  ms.lasthandoff: 07/14/2021
+  ms.locfileid: "113758831"
 landingContent:
 - title: 关于 Azure 虚拟桌面
   linkLists:
@@ -52,17 +52,25 @@ landingContent:
       url: ./virtual-desktop-fall-2019/create-validation-host-pool-2019.md
     - text: 设置服务警报
       url: ./virtual-desktop-fall-2019/set-up-service-alerts-2019.md
-- title: 连接到 Azure 虚拟桌面
+- title: 适用于用户的 Azure 虚拟桌面
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Windows 桌面客户端
-      url: connect-windows-7-10.md
-    - text: Web 客户端
-      url: connect-web.md
-    - text: Android 客户端
-      url: connect-android.md
-    - text: macOS 客户端
-      url: connect-macos.md
-    - text: iOS 客户端
-      url: connect-ios.md
+    - text: 使用 Windows 桌面进行连接
+      url: ./user-documentation/connect-windows-7-10.md
+    - text: 使用 Web 客户端进行连接
+      url: ./user-documentation/connect-web.md
+    - text: 使用 Android 进行连接
+      url: ./user-documentation/connect-android.md
+    - text: 使用 macOS 进行连接
+      url: ./user-documentation/connect-macos.md
+    - text: 使用 iOS 进行连接
+      url: ./user-documentation/connect-ios.md
+    - text: 使用 Linux 或瘦客户端进行连接
+      url: ./user-documentation/linux-overview.md
+- title: 使用 Azure 虚拟桌面实现远程应用流式处理
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 将应用流式传输给客户
+      url: ./remote-app-streaming/overview.md

@@ -90,7 +90,7 @@
           items:
             - name: Azure Active Directory
               href: azure-ad-account.md
-            - name: Microsoft 帐户（预览版）
+            - name: Microsoft 帐户
               href: microsoft-account.md
             - name: Google 联合身份验证
               href: google-federation.md
@@ -114,6 +114,8 @@
               href: self-service-sign-up-add-api-connector.md
             - name: 添加自定义审批系统
               href: self-service-sign-up-add-approvals.md
+            - name: 保护 API 连接器
+              href: self-service-sign-up-secure-api-connector.md
         - name: 管理来宾用户帐户
           items:
             - name: 动态组和 B2B 用户
@@ -153,7 +155,7 @@
         - name: Microsoft Q&A 问题页面
           href: /answers/topics/azure-active-directory.html
         - name: 定价
-          href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+          href: 'https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing'
         - name: 定价计算器
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: 服务更新

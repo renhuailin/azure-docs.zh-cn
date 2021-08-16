@@ -16,6 +16,8 @@
   items:
     - name: 使用智能手机设备应用
       href: iot-phone-app-how-to.md
+    - name: 使用 IoT 资源管理器
+      href: howto-use-iot-explorer.md
 - name: 安全性
   items:
     - name: 建议
@@ -43,7 +45,7 @@
         - name: IoT 解决方案加速器
           href: ../iot-accelerators/index.yml
         - name: IoT 即插即用
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: 时序见解

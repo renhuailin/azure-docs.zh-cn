@@ -10,6 +10,10 @@
       href: whats-new-azure-monitor.md
     - name: Azure 虚拟桌面（经典）文档
       href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
+- name: 快速入门
+  items:
+    - name: Azure 虚拟桌面入门
+      href: getting-started-feature.md
 - name: 教程
   items:
     - name: 1. 使用 Azure 门户创建主机池
@@ -48,6 +52,8 @@
       items:
         - name: PowerShell
           href: create-host-pools-powershell.md
+        - name: 部署已加入 Azure AD 的会话主机
+          href: deploy-azure-ad-joined-vm.md
         - name: 部署 Windows 7 虚拟机
           href: deploy-windows-7-virtual-machine.md
         - name: 部署基于 GPU 的会话主机
@@ -175,7 +181,7 @@
     - name: FSLogix 配置文件容器的存储选项
       href: store-fslogix-profile.md
     - name: Azure 虚拟桌面常见问题解答
-      href: faq.md
+      href: faq.yml
     - name: Windows 10 Enterprise 多会话常见问题解答
       href: windows-10-multisession-faq.yml
     - name: MSIX 应用附加
@@ -185,7 +191,7 @@
         - name: 术语表
           href: app-attach-glossary.md
         - name: 常见问题解答
-          href: app-attach-faq.md
+          href: app-attach-faq.yml
     - name: Azure Monitor 术语表
       href: azure-monitor-glossary.md
     - name: 数据位置
@@ -204,20 +210,22 @@
       href: troubleshoot-set-up-issues.md
     - name: 会话主机虚拟机配置
       href: troubleshoot-vm-configuration.md
-    - name: 远程桌面服务连接
-      href: troubleshoot-service-connection.md
-    - name: Azure 虚拟桌面代理
-      href: troubleshoot-agent.md
-    - name: 远程桌面客户端问题
-      href: troubleshoot-client.md
-    - name: Azure 虚拟桌面 PowerShell
-      href: troubleshoot-powershell.md
-    - name: 诊断图形性能问题
-      href: remotefx-graphics-performance-counters.md
-    - name: Azure Monitor
-      href: troubleshoot-azure-monitor.md
     - name: 管理问题
       href: troubleshoot-management-issues.md
+    - name: Azure 虚拟桌面 PowerShell
+      href: troubleshoot-powershell.md
+    - name: Azure 虚拟桌面代理
+      href: troubleshoot-agent.md
+    - name: 远程桌面服务连接
+      href: troubleshoot-service-connection.md
+    - name: 远程桌面客户端问题
+      href: troubleshoot-client.md
+    - name: 诊断图形性能问题
+      href: remotefx-graphics-performance-counters.md
+    - name: 与已加入 Azure AD 的 VM 的连接
+      href: troubleshoot-azure-ad-connections.md
+    - name: Azure Monitor
+      href: troubleshoot-azure-monitor.md
 - name: 参考
   items:
     - name: 安全最佳做法

@@ -106,6 +106,8 @@
           href: howto-private-endpoints.md
         - name: 管理网络访问控制
           href: howto-network-access-control.md
+        - name: 通过共享专用终结点保护出站流量
+          href: howto-shared-private-endpoints.md
         - name: 使用托管标识
           href: howto-use-managed-identity.md
     - name: 集成
@@ -153,7 +155,7 @@
       href: 'https://azure.microsoft.com/updates/'
     - name: 上市区域
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=signalr-service'
-    - name: 常见问题解答
+    - name: 常见问题
       href: signalr-resource-faq.yml
     - name: SignalR 服务订阅级别限制
       href: ../azure-resource-manager/management/azure-subscription-service-limits.md#azure-signalr-service-limits

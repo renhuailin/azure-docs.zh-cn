@@ -101,6 +101,9 @@ conceptualContent:
         - itemType: how-to-guide
           text: 使用 LUIS 和 C# 识别语音意向
           url: how-to-recognize-intents-from-speech-csharp.md
+        - itemType: how-to-guide
+          text: 通过简单模式匹配来识别语音意向 (C++)
+          url: how-to-use-simple-language-pattern-matching.md
         - itemType: reference
           text: 语言理解 (LUIS) 门户
           url: 'https://www.luis.ai'

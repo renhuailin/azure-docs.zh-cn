@@ -24,6 +24,14 @@
 - name: 操作指南
   expanded: true
   items:
+    - name: 规划和设计
+      items:
+        - name: 体系结构规划概述
+          href: introduction-to-verifiable-credentials-architecture.md
+        - name: 规划颁发解决方案
+          href: plan-issuance-solution.md
+        - name: 规划验证解决方案
+          href: plan-verification-solution.md
     - name: 如何定制专属凭据
       href: credential-design.md
     - name: 管理凭据吊销

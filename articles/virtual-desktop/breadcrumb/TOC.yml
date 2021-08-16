@@ -2,10 +2,13 @@
   tocHref: /azure
   topicHref: /azure/index
   items:
-    - name: Windows 虚拟桌面
+    - name: Azure 虚拟桌面
       tocHref: /azure/virtual-desktop
       topicHref: /azure/virtual-desktop/index
       items:
+        - name: 远程应用流式处理
+          tocHref: /azure/virtual-desktop/remote-app-streaming
+          topicHRef: /azure/virtual-desktop/remote-app-streaming
         - name: 参考
           tocHref: /WindowsServerDocs/remote/remote-desktop-services/clients/rdp-files
           topicHref: /azure/virtual-desktop/index

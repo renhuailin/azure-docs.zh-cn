@@ -1,0 +1,89 @@
+- name: Azure 德国版文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 什么是 Azure 德国？
+      href: germany-welcome.md
+    - name: 数据托管方原则
+      href: germany-overview-data-trustee.md
+- name: 开始使用
+  items:
+    - name: 开发人员指南
+      href: germany-developer-guide.md
+    - name: 登录到 Azure 德国门户
+      href: germany-get-started-connect-with-portal.md
+    - name: 使用 Azure PowerShell 进行连接
+      href: germany-get-started-connect-with-ps.md
+    - name: 使用 CLI 进行连接
+      href: germany-get-started-connect-with-cli.md
+    - name: 设置适用于 Azure 德国的 Visual Studio
+      href: germany-get-started-connect-with-vs.md
+    - name: 预配 Web 应用
+      href: germany-howto-deploy-webandmobile.md
+    - name: 可用服务
+      href: germany-services.md
+- name: 操作方式
+  items:
+    - name: 管理
+      items:
+        - name: 订阅
+          href: germany-manage-subscriptions.md
+    - name: Migrate
+      href: germany-migration-main.md
+      items:
+        - name: 计算
+          href: germany-migration-compute.md
+        - name: 网络
+          href: germany-migration-networking.md
+        - name: 存储
+          href: germany-migration-storage.md
+        - name: Web
+          href: germany-migration-web.md
+        - name: 数据库
+          href: germany-migration-databases.md
+        - name: 分析
+          href: germany-migration-analytics.md
+        - name: 物联网
+          href: germany-migration-iot.md
+        - name: 集成
+          href: germany-migration-integration.md
+        - name: 标识
+          href: germany-migration-identity.md
+        - name: 安全性
+          href: germany-migration-security.md
+        - name: 管理工具
+          href: germany-migration-management-tools.md
+        - name: 媒体
+          href: germany-migration-media.md
+- name: 参考
+  items:
+    - name: 映像
+      href: germany-image-gallery.md
+    - name: 服务
+      items:
+        - name: 计算
+          href: germany-services-compute.md
+        - name: 存储
+          href: germany-services-storage.md
+        - name: 数据库
+          href: germany-services-database.md
+        - name: 网络
+          href: germany-services-networking.md
+        - name: 安全和标识
+          href: germany-services-securityandidentity.md
+        - name: Web 和移动
+          href: germany-services-webandmobile.md
+        - name: 物联网 (IoT)
+          href: germany-services-iot.md
+- name: 资源
+  items:
+    - name: Azure 德国网站
+      href: 'https://azure.microsoft.com/overview/clouds/germany/'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 博客
+      href: /archive/blogs/azuregermany/
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/'
+    - name: 试用
+      href: 'https://azure.microsoft.com/free/germany'

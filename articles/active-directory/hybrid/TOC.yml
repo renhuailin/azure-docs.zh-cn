@@ -30,6 +30,8 @@
       items:
         - name: 什么是 Azure AD Connect 和 Connect Health？
           href: whatis-azure-ad-connect.md
+        - name: 什么是 Azure AD Connect V2.0？
+          href: whatis-azure-ad-connect-v2.md
         - name: 选择正确的身份验证
           href: ./choose-ad-authn.md
         - name: 标识同步和重复属性复原
@@ -152,10 +154,8 @@
           href: reference-connect-instances.md
         - name: 迁移
           items:
-            - name: 从联合身份验证迁移到 PHS
-              href: plan-migrate-adfs-password-hash-sync.md
-            - name: 从联合身份验证迁移到 PTA
-              href: plan-migrate-adfs-pass-through-authentication.md
+            - name: 从联合身份验证迁移到云身份验证
+              href: migrate-from-federation-to-cloud-authentication.md
             - name: 将组从一个林移到另一个林
               href: how-to-connect-migrate-groups.md
             - name: 使用分阶段推出迁移到云身份验证
@@ -390,7 +390,5 @@
       href: reference-connect-adconnectivitytools.md
     - name: msExchUserHoldPolicies 和 cloudMSExchUserHoldPolicies
       href: reference-connect-msexchuserholdpolicies.md
-    - name: 了解 Azure AD Connect 1.4.xx.x 设备消失
-      href: reference-connect-device-disappearance.md
     - name: Azure AD Connect 版本历史记录存档
       href: reference-connect-version-history-archive.md

@@ -10,12 +10,12 @@ metadata:
   author: JBCook
   ms.author: jencook
   ms.date: 09/22/2020
-  ms.openlocfilehash: e7d63965f45b513e89016525d888549da81791cc
-  ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+  ms.openlocfilehash: 72fce1fd106ac6388445c3f35be6f4f0469a188e
+  ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/09/2021
-  ms.locfileid: "113551373"
+  ms.lasthandoff: 07/14/2021
+  ms.locfileid: "113768419"
 landingContent:
 - title: 关于 Azure 机密计算
   linkLists:
@@ -101,6 +101,8 @@ landingContent:
       url: ../attestation/overview.md
     - text: 机密推理 ONNX 运行时
       url: https://aka.ms/confidentialinference
+    - text: Azure SQL 数据库中具有安全 enclave 的 Always Encrypted
+      url: ../azure-sql/database/always-encrypted-with-secure-enclaves-landing.yml
 - title: 使用机密计算生成
   linkLists:
   - linkListType: tutorial

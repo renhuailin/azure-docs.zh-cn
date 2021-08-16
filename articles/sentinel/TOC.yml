@@ -25,6 +25,14 @@
       href: powerbi.md
 - name: 概念
   items:
+    - name: 最佳做法
+      items:
+        - name: 预部署最佳做法
+          href: prerequisites.md
+        - name: 一般最佳实践
+          href: best-practices.md
+        - name: 数据收集最佳做法
+          href: best-practices-data.md
     - name: 体系结构
       items:
         - name: 角色和权限
@@ -32,7 +40,7 @@
         - name: 成本和计费
           href: azure-sentinel-billing.md
         - name: 安全基线
-          href: 'https://docs.microsoft.com/security/benchmark/azure/baselines/sentinel-security-baseline?toc=/azure/sentinel/TOC.json'
+          href: /security/benchmark/azure/baselines/sentinel-security-baseline?toc=%2fazure%2fsentinel%2fTOC.json
     - name: 数据收集和分析
       items:
         - name: 规范化和 Azure Sentinel 信息模型 (ASIM)
@@ -47,8 +55,8 @@
           href: sentinel-solutions-catalog.md
     - name: 威胁情报
       items:
-        - name: 将威胁情报导入 Azure Sentinel
-          href: import-threat-intelligence.md
+        - name: 理解 Azure Sentinel 中的威胁情报
+          href: understand-threat-intelligence.md
         - name: 威胁情报集成
           href: threat-intelligence-integration.md
     - name: 威胁检测
@@ -59,8 +67,6 @@
           href: soc-ml-anomalies.md
         - name: 多阶段攻击 (Fusion)
           href: fusion.md
-        - name: 播放列表
-          href: watchlists.md
     - name: 威胁搜寻
       href: hunting.md
     - name: SOAR
@@ -280,7 +286,13 @@
     - name: 发现和部署解决方案
       href: sentinel-solutions-deploy.md
     - name: 连接威胁智能
-      href: connect-threat-intelligence.md
+      items:
+        - name: 连接威胁情报平台
+          href: connect-threat-intelligence-tip.md
+        - name: 连接到 STIX/TAXII 源
+          href: connect-threat-intelligence-taxii.md
+    - name: 使用威胁指示器
+      href: work-with-threat-indicators.md
     - name: 监视和可视化数据
       items:
         - name: 可视化收集的数据
@@ -313,6 +325,8 @@
           href: false-positives.md
         - name: 根据 Microsoft 安全警报创建事件
           href: create-incidents-from-alerts.md
+        - name: 使用监视列表
+          href: watchlists.md
     - name: 寻找威胁
       items:
         - name: 使用 Jupyter Notebook 进行搜寻
@@ -385,7 +399,7 @@
               href: ../role-based-access-control/built-in-roles.md#all
             - name: Azure Sentinel 角色
               href: ../role-based-access-control/built-in-roles.md#security
-    - name: 数据连接器引用
+    - name: 数据收集引用
       items:
         - name: 数据源架构引用
           href: data-source-schema-reference.md
@@ -425,8 +439,10 @@
               href: hunting-with-rest-api.md
             - name: 通过 REST API 管理播放列表
               href: watchlist-with-rest-api.md
+            - name: 通过 REST-API，使用地理位置数据使实体充实
+              href: geolocation-data-api.md
         - name: MCAS 警报未加入到 Microsoft 365 Defender
-          href: microsoft-cloud-app-security-alerts-not-imported-microsoft-365-defender.md
+          href: ./microsoft-365-defender-sentinel-integration.md#microsoft-365-defender-incidents-and-microsoft-incident-creation-rules
 - name: 资源
   items:
     - name: 有用的资源

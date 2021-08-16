@@ -1,14 +1,14 @@
 ---
 title: 策略示例索引
 description: Azure Policy 的内置项的索引。 类别标记、法规符合性、Key Vault、Kubernetes、来宾配置等。
-ms.date: 05/04/2021
+ms.date: 07/16/2021
 ms.topic: sample
-ms.openlocfilehash: cee8810655016669e289053abdcfe9e52771b513
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 3156c992ba0914fc5f244515b0027438567310a5
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743536"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114387569"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy 示例
 
@@ -47,6 +47,7 @@ ms.locfileid: "108743536"
 - [IRS 1075 2016 年 9 月](./irs-1075-sept2016.md)
 - [ISO 27001:2013](./iso-27001.md)
 - [受限于新西兰 ISM](./new-zealand-ism.md)
+- [NIST SP 800-53 R5](./nist-sp-800-53-r5.md)
 - [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
 - [NIST SP 800-171 R2](./nist-sp-800-171-r2.md)
 - [英国官方和英国 NHS](./ukofficial-uknhs.md)

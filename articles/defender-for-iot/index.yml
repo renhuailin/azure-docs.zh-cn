@@ -15,14 +15,14 @@ metadata:
   ms.date: 06/16/2021
 highlightedContent:
   items:
-    - title: 什么是适用于组织的 Azure Defender for IoT？
+    - title: 什么是适用于最终用户组织的 Azure Defender for IoT？
       itemType: overview
       url: organizations/overview.md
     - title: 组织的新增功能有哪些？
       itemType: whats-new
       url: organizations/release-notes.md
-    - title: 适用于组织的无代理解决方案
-      itemType: overview
+    - title: 适用于组织的无代理解决方案体系结构
+      itemType: architecture
       url: organizations/architecture.md
     - title: 什么是适用于设备生成器的 Azure Defender for IoT？
       itemType: overview
@@ -30,19 +30,19 @@ highlightedContent:
     - title: 设备生成器的新增功能有哪些？
       itemType: whats-new
       url: device-builders/release-notes.md
-    - title: 适用于设备构建者的基于代理的解决方案
-      itemType: overview
+    - title: 适用于设备生成器的基于代理的解决方案体系结构
+      itemType: architecture
       url: device-builders/architecture-agent-based.md
 conceptualContent:
   items:
-    - title: 适用于组织的 Azure Defender for IoT
+    - title: 适用于最终用户组织的 Azure Defender for IoT
       links:
         - url: organizations/quickstart-system-prerequisites.md
           itemType: quickstart
           text: 系统先决条件
         - url: organizations/getting-started.md
           itemType: quickstart
-          text: 开始使用适用于组织的 Defender for IoT
+          text: 开始使用适用于最终用户组织的 Defender for IoT
         - url: organizations/concept-key-concepts.md
           itemType: quickstart
           text: 关键概念

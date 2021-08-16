@@ -12,13 +12,13 @@ metadata:
   author: VanMSFT
   ms.author: vanto
   ms.reviewer: 
-  ms.date: 03/12/2021
-  ms.openlocfilehash: 8667cacced164eedffb056c348075a49c3e2ffad
-  ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+  ms.date: 07/14/2021
+  ms.openlocfilehash: ec0dab1b434358be02dfa7ac7f2cf133128a3d48
+  ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/13/2021
-  ms.locfileid: "111906943"
+  ms.lasthandoff: 07/14/2021
+  ms.locfileid: "113727114"
 landingContent:
 - title: 概述
   linkLists:
@@ -36,7 +36,7 @@ landingContent:
       url: always-encrypted-enclaves-plan.md
     - text: 为 Azure SQL 数据库启用 Intel SGX
       url: always-encrypted-enclaves-enable-sgx.md
-    - text: 为 Azure SQL 逻辑服务器配置 Azure 证明
+    - text: 使用 Azure 证明为 Always Encrypted 配置证明
       url: always-encrypted-enclaves-configure-attestation.md
 - title: 在 Azure VM 上的 SQL Server 中设置
   linkLists:

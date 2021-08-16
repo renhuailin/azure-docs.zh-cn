@@ -26,6 +26,8 @@
       items:
         - name: 使用 Helm 进行开发
           href: quickstart-helm.md
+    - name: 使用事件网格订阅 AKS 事件（预览）
+      href: quickstart-event-grid.md
 - name: 教程
   items:
     - name: 1 - 为 AKS 准备应用程序
@@ -65,7 +67,7 @@
       href: concepts-scale.md
     - name: 节点自动修复
       href: node-auto-repair.md
-    - name: 最佳实践
+    - name: 最佳做法
       items:
         - name: 概述
           href: best-practices.md

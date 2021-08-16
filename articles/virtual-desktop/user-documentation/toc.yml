@@ -1,4 +1,4 @@
-- name: 访问 Windows 虚拟桌面
+- name: 访问 Azure 虚拟桌面
   href: index.yml
 - name: 操作说明
   items:

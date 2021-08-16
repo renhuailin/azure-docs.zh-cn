@@ -38,7 +38,7 @@
       href: powershell-samples.md
     - name: Azure CLI
       href: cli-samples.md
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: resource-manager-template-samples.md
 - name: 概念
   items:
@@ -284,6 +284,8 @@
       href: migrate-v1-v2.md
 - name: 参考
   items:
+    - name: 常见的 Key Vault 错误
+      href: application-gateway-key-vault-common-errors.md
     - name: 监视数据
       href: monitor-application-gateway-reference.md
     - name: 用于 AKS 批注的入口

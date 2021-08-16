@@ -59,6 +59,8 @@
           href: /security/benchmark/azure/baselines/private-link-security-baseline?toc=/azure/private-link/toc.json
 - name: 操作说明
   items:
+    - name: 导出专用终结点 DNS 记录
+      href: private-endpoint-export-dns.md
     - name: 对专用终结点禁用网络策略
       href: disable-private-endpoint-network-policy.md
     - name: 对专用链接服务禁用网络策略

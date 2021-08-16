@@ -102,7 +102,7 @@
     - name: 天气服务概念
       href: weather-services-concepts.md
     - name: 天气服务常见问题解答
-      href: weather-services-faq.md
+      href: weather-services-faq.yml
 - name: 操作指南
   items:
     - name: 管理 Maps 帐户
@@ -202,6 +202,8 @@
               href: map-add-drawing-toolbar.md
             - name: 获取形状数据
               href: map-get-shape-data.md
+            - name: 添加对齐网格
+              href: map-add-snap-grid.md
             - name: 对绘图事件做出反应
               href: drawing-tools-events.md
             - name: 交互类型和键盘快捷键
@@ -274,6 +276,8 @@
           href: how-to-add-tile-layer-android-map.md
         - name: 显示交通情况数据
           href: how-to-show-traffic-android.md
+        - name: 群集点数据
+          href: clustering-point-data-android-sdk.md
         - name: 使用数据驱动的表达式
           href: data-driven-style-expressions-android-sdk.md
         - name: 对事件做出响应
@@ -296,6 +300,8 @@
           href: power-bi-visual-show-real-time-traffic.md
         - name: 管理访问权限
           href: power-bi-visual-manage-access.md
+        - name: 在 Power Apps 中使用 Azure Maps
+          href: /powerapps/maker/canvas-apps/geospatial-component-map
     - name: 提供数据反馈
       href: how-to-use-feedback-tool.md
 - name: 参考
@@ -393,7 +399,7 @@
         - name: IoT 解决方案加速器
           href: ../iot-accelerators/index.yml
         - name: IoT 即插即用
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ./index.yml
         - name: 时序见解

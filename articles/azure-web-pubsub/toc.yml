@@ -28,6 +28,12 @@
       items:
         - name: 保护访问密钥
           href: howto-secure-rotate-access-key.md
+        - name: 使用 Azure 专用终结点
+          href: howto-secure-private-endpoints.md
+        - name: 管理网络访问控制
+          href: howto-secure-network-access-control.md
+        - name: 通过共享专用终结点保护出站流量
+          href: howto-secure-shared-private-endpoints.md
     - name: 疑难解答
       items:
         - name: 收集网络跟踪

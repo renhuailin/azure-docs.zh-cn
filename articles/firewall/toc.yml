@@ -38,6 +38,8 @@
       href: premium-portal.md
     - name: Azure 防火墙高级版证书
       href: premium-certificates.md
+    - name: Azure 防火墙 Web 类别
+      href: web-categories.md
     - name: FQDN 标记
       href: fqdn-tags.md
     - name: 基础结构 FQDN

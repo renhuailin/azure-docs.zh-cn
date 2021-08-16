@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: spelluru
   ms.author: spelluru
-  ms.date: 09/06/2019
-  ms.openlocfilehash: 7410753ed4ddd0ef2b53a73c41e0f46b32080d49
-  ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+  ms.date: 07/22/2021
+  ms.openlocfilehash: 129084ed979eb887703ad98103c32deefe07b73b
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/19/2021
-  ms.locfileid: "104598467"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114451166"
 landingContent:
 - title: 关于事件网格
   linkLists:
@@ -35,6 +35,56 @@ landingContent:
       url: event-handlers.md
     - text: 事件筛选器
       url: event-filtering.md
+- title: 高级概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 安全性和身份验证
+      url: security-authentication.md
+    - text: 传递和重试
+      url: delivery-and-retry.md
+    - text: 事件域
+      url: event-domains.md
+    - text: 异地灾难恢复
+      url: geo-disaster-recovery.md
+  - linkListType: architecture
+    links:
+    - text: 队列和事件的参考体系结构
+      url: /azure/architecture/reference-architectures/enterprise-integration/queues-events
+- title: 自定义
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 将自定义事件路由到 Web 终结点
+      url: custom-event-quickstart-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建自定义主题
+      url: scripts/event-grid-cli-create-custom-topic.md
+    - text: 订阅自定义主题
+      url: scripts/event-grid-cli-subscribe-custom-topic.md
+    - text: 发布到自定义主题
+      url: post-to-custom-topic.md
+    - text: 将自定义字段映射到事件网格架构
+      url: input-mappings.md
+- title: Kubernetes 上的事件网格
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Kubernetes 上的事件网格？
+      url: ./kubernetes/overview.md
+    - text: 功能
+      url: ./kubernetes/features.md
+    - text: 概念
+      url: ./kubernetes/concepts.md
+  - linkListType: quickstart
+    links:
+    - text: 将云事件路由到 Webhook
+      url: ./kubernetes/create-topic-subscription.md
+  - linkListType: how-to-guide
+    links:
+    - text: 安装事件网格扩展
+      url: ./kubernetes/install-k8s-extension.md
 - title: 方案
   linkLists:
   - linkListType: quickstart
@@ -69,35 +119,3 @@ landingContent:
       url: ..//media-services/latest/monitoring/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - text: 路由到混合连接
       url: custom-event-to-hybrid-connection.md
-- title: 高级概念
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 安全性和身份验证
-      url: security-authentication.md
-    - text: 传递和重试
-      url: delivery-and-retry.md
-    - text: 事件域
-      url: event-domains.md
-    - text: 异地灾难恢复
-      url: geo-disaster-recovery.md
-  - linkListType: architecture
-    links:
-    - text: 队列和事件的参考体系结构
-      url: /azure/architecture/reference-architectures/enterprise-integration/queues-events
-- title: 自定义
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: 将自定义事件路由到 Web 终结点
-      url: custom-event-quickstart-portal.md
-  - linkListType: how-to-guide
-    links:
-    - text: 创建自定义主题
-      url: scripts/event-grid-cli-create-custom-topic.md
-    - text: 订阅自定义主题
-      url: scripts/event-grid-cli-subscribe-custom-topic.md
-    - text: 发布到自定义主题
-      url: post-to-custom-topic.md
-    - text: 将自定义字段映射到事件网格架构
-      url: input-mappings.md

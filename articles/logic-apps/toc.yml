@@ -67,6 +67,8 @@
       items:
         - name: 单租户概述
           href: single-tenant-overview-compare.md
+        - name: 关于工作流设计器（单租户）
+          href: designer-overview.md
         - name: 创建单租户工作流 - 门户
           href: create-single-tenant-workflows-azure-portal.md
         - name: 创建单租户工作流 - Visual Studio Code
@@ -177,57 +179,70 @@
           href: logic-apps-gateway-connection.md
     - name: 针对 B2B 方案进行开发
       items:
-        - name: 创建集成帐户
-          href: logic-apps-enterprise-integration-create-integration-account.md
-          displayName: 'Azure CLI, az logic integration-account create, integration-account'
-        - name: 贸易合作伙伴
-          href: logic-apps-enterprise-integration-partners.md
-        - name: 协议
-          href: logic-apps-enterprise-integration-agreements.md
-        - name: 用于 XML 验证的架构
-          href: logic-apps-enterprise-integration-schemas.md
-        - name: 用于 XML 转换的映射
-          href: logic-apps-enterprise-integration-maps.md
-        - name: 证书
-          href: logic-apps-enterprise-integration-certificates.md
-        - name: 项目元数据
-          href: logic-apps-enterprise-integration-metadata.md
+        - name: 集成帐户和项目
+          items:
+            - name: 创建集成帐户
+              href: logic-apps-enterprise-integration-create-integration-account.md
+            - name: 贸易合作伙伴
+              href: logic-apps-enterprise-integration-partners.md
+            - name: 协议
+              href: logic-apps-enterprise-integration-agreements.md
+            - name: 用于 XML 验证的架构
+              href: logic-apps-enterprise-integration-schemas.md
+            - name: 用于 XML 转换的映射
+              href: logic-apps-enterprise-integration-maps.md
+            - name: 证书
+              href: logic-apps-enterprise-integration-certificates.md
+            - name: 项目元数据
+              href: logic-apps-enterprise-integration-metadata.md
         - name: 接收和发送 B2B 消息
           href: logic-apps-enterprise-integration-b2b.md
-        - name: 交换 AS2 消息
-          href: logic-apps-enterprise-integration-as2.md
-        - name: AS2 消息设置
-          href: logic-apps-enterprise-integration-as2-message-settings.md
-        - name: 交换 EDIFACT 消息
-          href: logic-apps-enterprise-integration-edifact.md
+        - name: AS2 消息传送
           items:
+            - name: 交换 AS2 消息
+              href: logic-apps-enterprise-integration-as2.md
+            - name: AS2 消息设置
+              href: logic-apps-enterprise-integration-as2-message-settings.md
+        - name: EDIFACT 消息传送
+          items:
+            - name: 交换 EDIFACT 消息
+              href: logic-apps-enterprise-integration-edifact.md
             - name: EDIFACT 编码
               href: logic-apps-enterprise-integration-edifact-encode.md
             - name: EDIFACT 解码
               href: logic-apps-enterprise-integration-edifact-decode.md
             - name: 处理包含 UNH2.5 段的 EDIFACT 文件
               href: logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md
+        - name: RosettaNet 消息传送
+          items:
             - name: 交换 RosettaNet 消息
               href: logic-apps-enterprise-integration-rosettanet.md
-        - name: 交换 X12 消息
-          href: logic-apps-enterprise-integration-x12.md
+        - name: X12 消息传送
           items:
+            - name: 交换 X12 消息
+              href: logic-apps-enterprise-integration-x12.md
             - name: X12 编码
               href: logic-apps-enterprise-integration-x12-encode.md
             - name: X12 解码
               href: logic-apps-enterprise-integration-x12-decode.md
+            - name: X12 TA1 确认
+              href: logic-apps-enterprise-integration-x12-ta1-acknowledgment.md
+            - name: X12 997 确认
+              href: logic-apps-enterprise-integration-x12-997-acknowledgment.md
         - name: 批处理和发送 EDI 消息
           href: logic-apps-scenario-edi-send-batch-messages.md
         - name: 处理平面文件
           href: logic-apps-enterprise-integration-flatfile.md
-        - name: 转换 XML
-          href: logic-apps-enterprise-integration-transform.md
-        - name: 处理 XML
-          href: logic-apps-enterprise-integration-xml.md
-        - name: 验证 XML
-          href: logic-apps-enterprise-integration-xml-validation.md
-        - name: 转换 JSON
-          href: logic-apps-enterprise-integration-liquid-transform.md
+        - name: XML 和 JSON 转换
+          items:
+            - name: 转换 XML
+              href: logic-apps-enterprise-integration-transform.md
+            - name: 处理 XML
+              href: logic-apps-enterprise-integration-xml.md
+            - name: 验证 XML
+              href: logic-apps-enterprise-integration-xml-validation.md
+            - name: 转换 JSON
+              href: logic-apps-enterprise-integration-liquid-transform.md
         - name: 排查 B2B 错误
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
         - name: 生成灾难恢复计划
@@ -391,14 +406,16 @@
           href: logic-apps-data-operations-code-samples.md
         - name: 监视社交媒体
           href: logic-apps-scenario-social-serverless.md
-        - name: 生成无服务器应用 - Visual Studio
-          href: logic-apps-serverless-get-started-vs.md
+        - name: 创建无服务器应用 - Visual Studio
+          href: create-serverless-apps-visual-studio.md
         - name: 添加错误和异常处理
           href: logic-apps-scenario-error-and-exception-handling.md
         - name: B2B 处理
           href: logic-apps-enterprise-integration-b2b.md
 - name: 参考
   items:
+    - name: 计费和定价模型
+      href: logic-apps-pricing.md
     - name: 体系结构模式
       items:
         - name: 基本企业集成
@@ -409,8 +426,6 @@
       href: /connectors/
     - name: 服务限制和配置
       href: logic-apps-limits-and-config.md
-    - name: 定价模型与用量计量
-      href: logic-apps-pricing.md
     - name: Azure CLI
       href: /cli/azure/logic
     - name: Azure PowerShell
@@ -447,7 +462,7 @@
       href: 'https://aka.ms/logicappsroadmap/'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: 定价
+    - name: Azure 逻辑应用的定价
       href: 'https://azure.microsoft.com/pricing/details/logic-apps/'
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/'

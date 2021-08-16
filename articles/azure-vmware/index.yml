@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: shortpatti
   ms.author: v-patsho
-  ms.date: 07/02/2021
-  ms.openlocfilehash: 6e221829fae0423ccf9f13970cc6b71136bb10c2
-  ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+  ms.date: 07/16/2021
+  ms.openlocfilehash: e1fa94312fa1c798a581f1792027f2a624c54a30
+  ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/06/2021
-  ms.locfileid: "113301881"
+  ms.lasthandoff: 07/27/2021
+  ms.locfileid: "114709390"
 landingContent:
 - title: 关于 Azure VMware 解决方案
   linkLists:
@@ -45,7 +45,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: 常规
-      url: ./faq.yml
+      url: /azure/azure-vmware/faq
     - text: 客户通信
       url: /azure/azure-vmware/faq#customer-communication
     - text: 配置和设置
@@ -86,7 +86,7 @@ landingContent:
       url: tutorial-access-private-cloud.md
     - text: 配置网络
       url: tutorial-configure-networking.md
-    - text: 创建 NSX-T 网络段
+    - text: 创建网段
       url: tutorial-nsx-t-network-segment.md
     - text: 从本地对等连接到私有云
       url: tutorial-expressroute-global-reach-private-cloud.md
@@ -114,12 +114,14 @@ landingContent:
       url: reserved-instance.md
   - linkListType: how-to-guide
     links:
-    - text: 配置 DHCP
+    - text: 配置 DHCP 服务器或中继
       url: configure-dhcp-azure-vmware-solution.md
-    - text: 在 L2 延伸 VMware HCX 网络上配置 DHCP
+    - text: 在 L2 延伸网络上配置 DHCP
       url: configure-l2-stretched-vmware-hcx-networks.md
-    - text: 使用 Azure 配置 NSX 组件
-      url: configure-nsx-network-components-azure-portal.md
+    - text: 配置 DNS 转发器
+      url: configure-dns-azure-vmware-solution.md
+    - text: 配置端口镜像
+      url: configure-port-mirroring-azure-vmware-solution.md
     - text: 配置 GitHub Enterprise 服务器
       url: ./configure-github-enterprise-server.md
     - text: 启用公共 Internet 访问
@@ -146,6 +148,8 @@ landingContent:
       url: deploy-traffic-manager-balance-workloads.md
     - text: 配置警报并使用指标
       url: configure-alerts-for-azure-vmware-solution.md
+    - text: 将磁盘池附加到 Azure VMware 解决方案主机
+      url: attach-disk-pools-to-azure-vmware-solution-hosts.md
 - title: 使用 Azure 备份服务器进行备份
   linkLists:
   - linkListType: how-to-guide
@@ -164,6 +168,8 @@ landingContent:
       url: azure-vmware-solution-horizon.md
     - text: 从内容库部署 VM
       url: deploy-vm-content-library.md
+    - text: 使用 VMware SRM 部署灾难恢复
+      url: disaster-recovery-using-vmware-site-recovery-manager.md
     - text: 使用 VMware HCX 部署灾难恢复
       url: deploy-disaster-recovery-using-vmware-hcx.md
     - text: 升级 VMware HCX 设备
@@ -213,6 +219,6 @@ landingContent:
   - linkListType: reference
     links:
     - text: 就部署失败发起支持请求
-      url: fix-deployment-provisioning-failures.md
+      url: fix-deployment-failures.md
     - text: VMware 工具 vix 错误代码 = 21009
       url: https://kb.vmware.com/s/article/2129927

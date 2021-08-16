@@ -424,6 +424,8 @@
               href: flexible-server/connect-java.md
             - name: .NET
               href: flexible-server/connect-csharp.md
+            - name: 在 VNET 中连接到服务器
+              href: flexible-server/quickstart-create-connect-server-vnet.md
         - name: 使用 TLS/SSL 连接
           href: flexible-server/how-to-connect-tls-ssl.md
         - name: 配置服务器参数

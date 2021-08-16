@@ -6,7 +6,7 @@ items:
     items:
       - name: 什么是 Azure 通信服务？
         href: overview.md
-      - name: 支持和帮助选项
+      - name: 帮助和支持选项
         href: support.md
   - name: 快速入门
     expanded: true
@@ -17,10 +17,12 @@ items:
         items:
           - name: 创建和管理访问令牌
             href: quickstarts/access-tokens.md
-          - name: 使用托管标识
-            href: quickstarts/managed-identity.md
-          - name: 从 CLI 设置托管标识
-        href: quickstarts/managed-identity-from-cli.md
+          - name: 使用 Azure AD 进行身份验证
+            href: quickstarts/identity/service-principal.md
+          - name: 向 Azure AD (Azure CLI) 进行身份验证
+            href: quickstarts/identity/service-principal-from-cli.md
+          - name: 快速创建用于测试的标识
+            href: quickstarts/identity/quick-create-identity.md
       - name: 聊天
         items:
           - name: 向应用添加聊天
@@ -29,7 +31,7 @@ items:
             href: quickstarts/chat/meeting-interop.md
       - name: 电话服务和短信
         items:
-          - name: 获取电话号码
+          - name: 获取和管理电话号码
             href: quickstarts/telephony-sms/get-phone-number.md
           - name: 将电话号码移植到 Azure
             href: quickstarts/telephony-sms/port-phone-number.md
@@ -51,7 +53,7 @@ items:
             href: quickstarts/voice-video-calling/calling-client-samples.md
           - name: 将通话客户端应用加入到 Teams 会议
             href: quickstarts/voice-video-calling/get-started-teams-interop.md
-          - name: 将服务加入到通话
+          - name: 使用通话自动化 API
             href: quickstarts/voice-video-calling/call-automation-api-sample.md
           - name: 录制通话
             href: quickstarts/voice-video-calling/call-recording-sample.md
@@ -76,7 +78,7 @@ items:
         href: tutorials/building-app-start.md
       - name: 通过使用 C# 的 HMAC 签名对 HTTP 请求签名
         href: tutorials/hmac-header-tutorial.md
-      - name: 使用 Postman 来签署和发出对 ACS 短信 API 的请求
+      - name: 使用 Postman 来签署和发出对短信 API 的请求
         href: tutorials/postman-tutorial.md
   - name: 概念
     expanded: false

@@ -4,6 +4,8 @@
   items:
     - name: Azure IoT 中心是什么？
       href: about-iot-hub.md
+    - name: IoT 概念
+      href: iot-concepts.md
 - name: 快速入门
   expanded: true
   items:
@@ -12,17 +14,7 @@
     - name: 使用 SDK 发送遥测数据
       href: ../iot-develop/quickstart-send-telemetry-iot-hub.md?toc=/azure/iot-hub/toc.json&bc=/azure/iot-hub/breadcrumb/toc.json
     - name: 控制设备
-      items:
-        - name: Node.js
-          href: quickstart-control-device-node.md
-        - name: .NET
-          href: quickstart-control-device-dotnet.md
-        - name: Java
-          href: quickstart-control-device-java.md
-        - name: Python
-          href: quickstart-control-device-python.md
-        - name: Android
-          href: quickstart-control-device-android.md
+      href: quickstart-control-device.md
     - name: 使用 ARM 模板自动路由消息
       displayName: Resource Manager
       href: horizontal-arm-route-messages.md
@@ -54,6 +46,8 @@
       href: tutorial-firmware-update.md
     - name: 测试设备连接性
       href: tutorial-connectivity.md
+    - name: Power BI 中的数据可视化
+      href: iot-hub-live-data-visualization-in-power-bi.md
     - name: 使用 X.509 证书
       items:
         - name: 简介
@@ -72,8 +66,6 @@
           href: tutorial-x509-test-certificate.md
 - name: 概念
   items:
-    - name: 托管标识支持
-      href: iot-hub-managed-identity.md
     - name: TLS 支持
       href: iot-hub-tls-support.md
     - name: 虚拟网络支持
@@ -115,7 +107,7 @@
               items:
                 - name: 创建和读取 IoT 中心消息
                   href: iot-hub-devguide-messages-construct.md
-                - name: 从内置终结点读取设备到云的消息
+                - name: 通过内置终结点读取设备到云的消息
                   href: iot-hub-devguide-messages-read-builtin.md
                 - name: 对设备到云的消息使用自定义终结点和路由规则
                   href: iot-hub-devguide-messages-read-custom.md
@@ -207,8 +199,6 @@
               items:
                 - name: 使用 IoTHubClient
                   href: iot-hub-device-sdk-c-iothubclient.md
-                - name: 使用序列化程序
-                  href: iot-hub-device-sdk-c-serializer.md
             - name: Azure IoT C SDK 资源信息
               href: 'https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md'
             - name: 针对受约束设备进行开发
@@ -217,6 +207,8 @@
               href: iot-hub-how-to-develop-for-mobile-devices.md
             - name: 针对 Android Things 平台进行开发
               href: iot-hub-how-to-android-things.md
+        - name: 在 Android 上控制设备
+          href: quickstart-control-device-android.md
         - name: 查询中心路由中的 Avro 数据
           href: iot-hub-query-avro-data.md
         - name: 发送“云到设备”消息
@@ -302,6 +294,8 @@
               href: iot-hub-rm-template-powershell.md
             - name: 通过 .NET 使用模板
               href: iot-hub-rm-template.md
+        - name: 配置托管标识
+          href: iot-hub-managed-identity.md
         - name: 配置文件上传
           items:
             - name: 使用 Azure 门户
@@ -363,8 +357,6 @@
           href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
         - name: 使用用于 Visual Studio 的 Cloud Explorer 管理云设备消息传送
           href: iot-hub-visual-studio-cloud-device-messaging.md
-        - name: Power BI 中的数据可视化
-          href: iot-hub-live-data-visualization-in-power-bi.md
         - name: Web 应用中的数据可视化
           href: iot-hub-live-data-visualization-in-web-apps.md
         - name: 使用 Azure 机器学习预测天气
@@ -485,7 +477,7 @@
         - name: IoT Edge
           href: ../iot-edge/index.yml
         - name: IoT 即插即用
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: IoT 解决方案加速器
           href: ../iot-accelerators/index.yml
         - name: Azure Maps

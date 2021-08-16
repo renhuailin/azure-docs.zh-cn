@@ -744,6 +744,8 @@
           href: database/arm-templates-content-guide.md?tabs=single-database
         - name: 代码示例
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
+        - name: Azure Resource Graph 查询
+          href: database/resource-graph-samples.md
 - name: SQL 托管实例 (SQL MI)
   items:
     - name: 文档
@@ -1067,8 +1069,8 @@
               href: managed-instance/management-endpoint-verify-built-in-firewall.md
         - name: Migrate
           items:
-            - name: 迁移到 SQL 托管实例
-              href: managed-instance/migrate-to-instance-from-sql-server.md
+            - name: 将 SQL Server 迁移到 Azure SQL 托管实例的指南
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
             - name: 使用日志重播服务迁移数据库
               href: managed-instance/log-replay-service-migrate.md
             - name: 迁移 TDE 证书
@@ -1185,12 +1187,12 @@
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: 将存储迁移到 UltraSSD
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
-                - name: 安装 SQL IaaS 代理扩展
+                - name: SQL IaaS 代理扩展
                   displayName: 'resource provider, registration, sql vm rp'
                   items:
                     - name: 自动注册
                       href: virtual-machines/windows/sql-agent-extension-automatic-registration-all-vms.md
-                    - name: 单个 VM
+                    - name: 注册单个 VM
                       href: virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md
                     - name: 批量注册多个 VM
                       href: virtual-machines/windows/sql-agent-extension-manually-register-vms-bulk.md

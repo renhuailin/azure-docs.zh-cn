@@ -16,6 +16,10 @@
       href: tutorial-use-gitops-connected-cluster.md
     - name: 通过 GitOps 实现 CI/CD
       href: tutorial-gitops-ci-cd.md
+- name: 示例
+  items:
+    - name: Azure Resource Graph 查询
+      href: ./resource-graph-samples.md
 - name: 概念
   items:
     - name: 代理体系结构

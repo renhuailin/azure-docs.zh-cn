@@ -27,6 +27,22 @@
       items:
         - name: 安全基线
           href: /security/benchmark/azure/baselines/aad-security-baseline?toc=/azure/active-directory/fundamentals/toc.json
+        - name: 安全操作指南
+          items:
+            - name: 安全操作概述
+              href: security-operations-introduction.md
+            - name: 用户帐户的安全操作
+              href: security-operations-user-accounts.md
+            - name: 特权帐户的安全操作
+              href: security-operations-privileged-accounts.md
+            - name: PIM 的安全操作
+              href: security-operations-privileged-identity-management.md
+            - name: 应用程序的安全操作
+              href: security-operations-applications.md
+            - name: 设备的安全操作
+              href: security-operations-devices.md
+            - name: 基础结构的安全操作
+              href: security-operations-infrastructure.md
         - name: 保护 Microsoft 365 免受本地攻击
           href: protect-m365-from-on-premises-attacks.md
         - name: 保护外部协作
@@ -179,6 +195,8 @@
           href: active-directory-deployment-checklist-p2.md
         - name: Azure Active Directory 部署计划
           href: active-directory-deployment-plans.md
+        - name: Azure Active Directory B2C 部署计划
+          href: azure-active-directory-b2c-deployment-plans.md
     - name: 数据存储
       items:
         - name: 用于欧洲的标识数据存储
@@ -255,5 +273,3 @@
   items:
     - name: 获取对 Azure Active Directory 的支持
       href: active-directory-troubleshooting-support-howto.md
-    - name: Azure Active Directory 常见问题
-      href: active-directory-faq.yml

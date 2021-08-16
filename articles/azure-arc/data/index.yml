@@ -2,7 +2,7 @@
 title: 已启用 Azure Arc 的数据服务
 summary: 在你选择的基础结构上使用 Kubernetes 在本地、边缘和多云环境中运行 Azure 数据服务。
 metadata:
-  title: 已启用 Azure Arc 的数据服务（预览）
+  title: 已启用 Azure Arc 的数据服务（预览版）
   description: 在你选择的基础结构上使用 Kubernetes 在本地、边缘和多云环境中运行 Azure 数据服务。
   ms.service: azure-arc
   ms.subservice: azure-arc-data
@@ -10,12 +10,12 @@ metadata:
   author: MikeRayMSFT
   ms.author: mikeray
   ms.date: 12/16/2020
-  ms.openlocfilehash: a3f90834c3b4d68e96b02361643bf32786670e84
-  ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+  ms.openlocfilehash: f31ce0d0a010b27698de094e4c72f56e35ad2409
+  ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/18/2020
-  ms.locfileid: "97673905"
+  ms.lasthandoff: 07/14/2021
+  ms.locfileid: "113732829"
 landingContent:
 - title: 关于
   linkLists:

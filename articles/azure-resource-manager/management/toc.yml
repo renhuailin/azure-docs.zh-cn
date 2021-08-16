@@ -111,10 +111,12 @@
           href: /azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json
         - name: 使用标记
           href: tag-resources.md
-        - name: 策略 - 合规性
+        - name: Azure Policy 定义 - 符合性
           href: tag-policies.md
         - name: 支持的资源类型
           href: tag-support.md
+        - name: Azure Resource Graph 查询
+          href: ./resource-graph-samples.md
     - name: 管理资源组
       items:
         - name: Azure 门户

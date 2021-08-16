@@ -4,6 +4,8 @@
   items:
     - name: 什么是成本管理和计费？
       href: cost-management-billing-overview.md
+    - name: 新增功能
+      href: 'https://azure.microsoft.com/blog/tag/cost-management/'
 - name: 快速入门
   items:
     - name: 开始分析成本
@@ -112,6 +114,8 @@
           href: understand/mca-understand-your-invoice.md
         - name: Microsoft 客户协议价目表术语
           href: manage/mca-understand-pricesheet.md
+        - name: Microsoft 客户协议常见问题解答
+          href: understand/mca-faq.md
         - name: Microsoft 合作伙伴协议发票术语
           href: understand/mpa-invoice-terms.md
         - name: 对已更新的即用即付计费帐户的更改
@@ -454,20 +458,3 @@
           href: manage/review-enterprise-billing.md
         - name: 查看订阅使用情况
           href: manage/review-subscription-billing.md
-- name: Cloudyn
-  items:
-    - name: 概述
-    - name: 快速入门
-    - name: 教程
-    - name: 概念
-    - name: 操作指南
-    - name: 资源
-      items:
-        - name: Azure 路线图
-          href: 'https://azure.microsoft.com/roadmap/'
-        - name: Cloudyn 定价
-          href: 'https://azure.microsoft.com/pricing/details/cost-management'
-        - name: Cloudyn 区域可用性
-          href: 'https://azure.microsoft.com/regions/services/'
-        - name: 联系 Cloudyn 支持人员
-          href: ./costs/open-support-request.md

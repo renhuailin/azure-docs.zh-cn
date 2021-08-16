@@ -193,9 +193,6 @@
     - name: Azure 远程渲染
       tocHref: /azure/remote-rendering/
       topicHref: /azure/remote-rendering/
-    - name: 了解 Azure 对象
-      tocHref: /azure/object-understanding/
-      topicHref: /azure/object-understanding/
     - name: 容器注册表
       tocHref: /azure/container-registry/
       topicHref: /azure/container-registry/
@@ -240,6 +237,9 @@
         - name: Azure Percept
           tocHref: /azure/azure-percept/
           topicHref: /azure/azure-percept/
+        - name: 设备开发
+          tocHref: /azure/iot-develop/
+          topicHref: /azure/iot-develop/
         - name: IoT 中心的设备更新文档
           tocHref: /azure/iot-hub-device-update/
           topicHref: /azure/iot-hub-device-update/
@@ -252,9 +252,6 @@
         - name: IoT Edge
           tocHref: /azure/iot-edge/
           topicHref: /azure/iot-edge/
-        - name: IoT 即插即用
-          tocHref: /azure/iot-pnp/
-          topicHref: /azure/iot-pnp/
         - name: Azure 数字孪生
           tocHref: /azure/digital-twins/
           topicHref: /azure/digital-twins/

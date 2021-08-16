@@ -1,0 +1,46 @@
+### YamlMime:Landing
+title: Azure 德国文档
+summary: Azure 德国是物理隔离的 Microsoft Azure 实例，它使用对德国数据隐私法规至关重要的世界级安全性和合规性服务。 自 2018 年 8 月以来，我们没有接受新客户，也没有在原始 Microsoft 云德国地区部署任何新功能和服务。 根据客户需求的变化，我们最近在德国推出了两个新的数据中心区域，提供客户数据驻留、与 Microsoft 全球云网络的完整连接以及具有市场竞争力的定价。
+metadata:
+  title: Azure 德国文档
+  description: Azure 德国是物理隔离的 Microsoft Azure 实例，它使用对德国数据隐私法规至关重要的世界级安全性和合规性服务
+  ms.service: germany
+  ms.topic: landing-page
+  author: rolyon
+  ms.author: rolyon
+  ms.date: 03/05/2020
+  ms.openlocfilehash: 9f8caa2172f57a47d918135d47d404c378e29c6d
+  ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "116985463"
+landingContent:
+- title: 关于 Azure 德国
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 德国？
+      url: germany-welcome.md
+  - linkListType: concept
+    links:
+    - text: 可用服务
+      url: germany-services.md
+- title: 开始使用
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 开发人员指南
+      url: germany-developer-guide.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Azure 门户进行连接
+      url: germany-get-started-connect-with-portal.md
+- title: 管理和迁移
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 管理和连接到订阅
+      url: germany-manage-subscriptions.md
+    - text: 迁移指南
+      url: germany-migration-main.md

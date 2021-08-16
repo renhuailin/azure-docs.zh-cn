@@ -1,4 +1,4 @@
-- name: 适用于组织的 Azure Defender for IoT
+- name: 适用于最终用户组织的 Azure Defender for IoT
   items: null
 - name: 概述
   displayName: 'IoT, OT, getting started'
@@ -19,6 +19,11 @@
     - name: Azure Defender for IoT 入门
       displayName: 'getting started, registration, onboarding, activation, threat intelligence'
       href: getting-started.md
+- name: 教程
+  expanded: false
+  items:
+    - name: 集成 ServiceNow
+      href: tutorial-servicenow.md
 - name: 概念
   items:
     - name: 关键概念
@@ -61,7 +66,7 @@
     - name: 管理用户和用户访问权限
       items:
         - name: 创建和管理用户
-          displayName: 'Active Directory, roles, permissions'
+          displayName: 'Active Directory, roles, permissions, password'
           href: how-to-create-and-manage-users.md
         - name: 定义全局用户访问控制
           href: how-to-define-global-user-access-control.md
@@ -154,7 +159,7 @@
     - name: 跟踪传感器活动
       displayName: 'timeline, time line, time-line, event'
       href: how-to-track-sensor-activity.md
-    - name: 使用适用于组织的 Defender for IoT 配置 Azure Sentinel
+    - name: 使用适用于最终用户组织的 Defender for IoT 配置 Azure Sentinel
       displayName: Sentinel
       href: how-to-configure-with-sentinel.md
     - name: 排查传感器和本地管理控制台问题
@@ -177,6 +182,8 @@
           href: integration-servicenow.md
         - name: Splunk 集成
           href: integration-splunk.md
+        - name: Qradar 集成
+          href: integration-qradar.md
 - name: 参考
   items:
     - name: 使用 Defender for IoT API
@@ -196,17 +203,25 @@
       href: references-defender-for-iot-glossary.md
 - name: 资源
   items:
-    - name: 利用 Microsoft Learn 掌握安全技能
-      href: /learn/browse/?term=securityS&terms=securityS
-    - name: Azure 安全中心文档
-      href: ../../security-center/
-    - name: Azure 安全文档
-      href: ../../security/index.yml
-    - name: Azure IoT 安全性、隐私性与合规性博客
-      href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
+    - name: 部署前清单
+      displayNAme: pre-deployment
+      href: resources-sensor-deployment-checklist.md
+    - name: 技术社区培训课程
+      displayName: 'training, videos'
+      href: resources-training-sessions.md
     - name: 区域可用性
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/azure-defender/'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'
+    - name: 安全资源
+      items:
+        - name: 利用 Microsoft Learn 掌握安全技能
+          href: /learn/browse/?term=securityS&terms=securityS
+        - name: Azure 安全中心文档
+          href: ../../security-center/
+        - name: Azure 安全文档
+          href: ../../security/index.yml
+        - name: Azure IoT 安全性、隐私性与合规性博客
+          href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'

@@ -8,7 +8,9 @@
       href: deploy-to-desktop.md
 - name: 本机 C++
   items:
-    - name: 将原生 C++ 示例部署到 HoloLens
+    - name: 将基于 OpenXR 的原生 C++ 示例部署到 HoloLens
+      href: native-cpp/hololens/deploy-native-cpp-openxr-tutorial.md
+    - name: 将基于 WMR 的原生 C++ 示例部署到 HoloLens
       href: native-cpp/hololens/deploy-native-cpp-tutorial.md
 - name: 转换用于渲染的模型
   href: convert-model.md

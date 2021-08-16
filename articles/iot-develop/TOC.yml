@@ -35,22 +35,74 @@
           href: quickstart-devkit-stm-b-l475e.md
 - name: 教程
   items:
+    - name: 使用 IoT 中心生成设备解决方案
+      items:
+        - name: 设置你的环境
+          href: set-up-environment.md
+        - name: 将设备连接到 IoT 中心
+          href: tutorial-connect-device.md
+        - name: 与解决方案中的设备交互
+          href: tutorial-service.md
     - name: 安全地将 IoT 设备连接到云
       href: /learn/paths/securely-connect-iot-devices/?wt.mc_id=iothub_connect_docs_tutorials
+    - name: 连接多组件设备
+      href: tutorial-multiple-components.md
+    - name: 使用 MQTT 连接设备
+      href: tutorial-use-mqtt.md
+    - name: 连接设备模块
+      href: tutorial-migrate-device-to-module.md
+    - name: 预览 - 使用时序见解 Gen2 来连接和分析数据
+      href: tutorial-configure-tsi.md
 - name: 概念
   items:
     - name: 面向设备开发人员的连接选项
       href: concepts-overview-connection-options.md
     - name: 设备类型概述
       href: concepts-iot-device-types.md
-- name: 如何
+    - name: 设备认证
+      href: ../certification/program-requirements-pnp.md
+    - name: 设备模型
+      items:
+        - name: 建模指南
+          href: concepts-modeling-guide.md
+        - name: 在解决方案中使用模型
+          href: concepts-model-discovery.md
+        - name: 模型存储库
+          href: concepts-model-repository.md
+        - name: 模型分析程序
+          href: concepts-model-parser.md
+    - name: IoT 即插即用
+      items:
+        - name: 什么是 IoT 即插即用？
+          href: overview-iot-plug-and-play.md
+        - name: 体系结构
+          href: concepts-architecture.md
+        - name: IoT 即插即用约定
+          href: concepts-convention.md
+        - name: 设备开发人员指南
+          href: concepts-developer-guide-device.md
+        - name: 服务开发人员指南
+          href: concepts-developer-guide-service.md
+        - name: 数字孪生
+          href: concepts-digital-twin.md
+        - name: IoT 即插即用桥接
+          href: concepts-iot-pnp-bridge.md
+- name: 操作方法
   items:
+    - name: 安装和使用 IoT 资源管理器
+      href: ../iot-fundamentals/howto-use-iot-explorer.md?toc=/azure/iot-develop/toc.json&bc=/azure/iot-develop/breadcrumb/toc.json
+    - name: 管理数字孪生
+      href: howto-manage-digital-twin.md
+    - name: 将设备转换为 IoT 即插即用
+      href: howto-convert-to-pnp.md
     - name: 疑难解答
       items:
         - name: 排查嵌入式快速入门问题
           href: troubleshoot-embedded-device-quickstarts.md
 - name: 参考
   items:
+    - name: 库和 SDK
+      href: libraries-sdks.md
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
@@ -61,6 +113,8 @@
       href: 'https://azure.github.io/azure-sdk-for-c/'
     - name: Azure RTOS 中间件（设备）
       href: /azure/rtos/threadx
+    - name: 数字孪生 REST API
+      href: /rest/api/iothub/service/digitaltwin
     - name: .NET（设备）
       href: /dotnet/api/microsoft.azure.devices.client
     - name: .NET（服务）
@@ -97,6 +151,10 @@
   items:
     - name: 支持和帮助选项
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-develop/toc.json&bc=/azure/iot-develop/breadcrumb/toc.json
+    - name: IoT 术语表
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-develop/toc.json&bc=/azure/iot-develop/breadcrumb/toc.json
+    - name: 代码示例
+      href: /samples/browse/?expanded=azure&products=azure-iot-pnp
     - name: Azure IoT 示例
       items:
         - name: C# (.NET)

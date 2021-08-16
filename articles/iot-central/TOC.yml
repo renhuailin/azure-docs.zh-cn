@@ -8,6 +8,8 @@
       href: core/overview-iot-central-tour.md
     - name: 最新更新
       items:
+        - name: 2021 年 6 月新增功能和更新的功能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-june-2021/'
         - name: 2021 年 5 月新增功能和更新的功能
           href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-may-2021/'
         - name: 2021 年 4 月新增功能和更新的功能
@@ -247,8 +249,6 @@
           href: core/howto-connect-powerbi.md
         - name: 连接其他 IoT 云
           href: core/howto-build-iotc-device-bridge.md
-        - name: 将应用程序与 Dynamics 365 Field Services 连接
-          href: government/how-to-configure-connected-field-services.md
     - name: 使用 REST API
       items:
         - name: 对 REST API 调用进行身份验证和授权
@@ -288,7 +288,7 @@
         - name: 设备连接
           href: core/troubleshoot-connection.md
     - name: 常见问题解答
-      href: core/howto-faq.md
+      href: core/howto-faq.yml
     - name: 管理个人首选项
       href: core/howto-manage-preferences.md
     - name: 切换实时聊天
@@ -318,7 +318,7 @@
         - name: IoT 解决方案加速器
           href: ../iot-accelerators/index.yml
         - name: IoT 即插即用
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: 时序见解

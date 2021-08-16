@@ -100,7 +100,7 @@
           href: scripts/event-grid-powershell-resource-group.md
         - name: 订阅和筛选资源组事件
           href: scripts/event-grid-powershell-resource-group-filter.md
-    - name: Resource Manager 模板
+    - name: 资源管理器模板
       href: template-samples.md
     - name: 代码示例
       href: /samples/browse/?term=Event+Grid
@@ -116,6 +116,8 @@
           href: system-topics.md
         - name: 事件源（发布服务器）
           items:
+            - name: Azure API 管理
+              href: event-schema-api-management.md
             - name: Azure 应用配置
               href: event-schema-app-configuration.md
             - name: Azure 应用服务
@@ -152,6 +154,8 @@
               href: event-schema-subscriptions.md
             - name: Azure Redis 缓存
               href: event-schema-azure-cache.md
+            - name: Azure Kubernetes 服务（预览版）
+              href: event-schema-aks.md
     - name: 合作伙伴事件
       items:
         - name: 合作伙伴事件概述

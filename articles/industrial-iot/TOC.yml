@@ -1,5 +1,7 @@
 - name: Azure 工业 IoT 文档
   href: index.yml
+- name: Azure 工业 IoT 平台版本
+  href: industrial-iot-platform-versions.md
 - name: 概述
   items:
     - name: 什么是工业 IoT？
@@ -55,7 +57,7 @@
         - name: IoT 解决方案加速器
           href: ./index.yml
         - name: IoT 即插即用
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ../azure-maps/index.yml
         - name: 时序见解

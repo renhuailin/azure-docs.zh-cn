@@ -10,12 +10,12 @@ metadata:
   author: JnHs
   ms.author: jenhayes
   ms.date: 07/07/2021
-  ms.openlocfilehash: 788d1bd8438bd3e732e4f48da95abd7d6d891ab1
-  ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
+  ms.openlocfilehash: a9bf1e20a15aff374ecffa084dd7224d476079f8
+  ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/08/2021
-  ms.locfileid: "113492165"
+  ms.lasthandoff: 07/16/2021
+  ms.locfileid: "114389093"
 landingContent:
 - title: 关于 Azure Lighthouse
   linkLists:
@@ -69,7 +69,7 @@ landingContent:
     links:
     - text: 查看和管理服务提供商
       url: ./how-to/view-manage-service-providers.md
-    - text: 查看 Managing Tenant 活动
+    - text: 监视“管理租户”活动
       url: ./how-to/view-service-provider-activity.md
 - title: 示例和模板
   linkLists:

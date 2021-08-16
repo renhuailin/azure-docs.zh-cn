@@ -8,108 +8,149 @@ metadata:
   ms.subservice: app-mgmt
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 09/28/2020
-  author: davidmu1
-  manager: CelesteDG
-  ms.author: davidmu
-  ms.openlocfilehash: dcf1452d69ffcbb7c0c4cf37ecd3e7a4ee403aeb
-  ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
+  ms.date: 07/08/2021
+  author: CelesteDG
+  ms.author: CelesteDG
+  ms.openlocfilehash: d777edbaaa3931d42eb0468d522d55356859b625
+  ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/08/2021
-  ms.locfileid: "113508178"
+  ms.lasthandoff: 07/13/2021
+  ms.locfileid: "113651744"
 landingContent:
-- title: 关于应用管理
+- title: 基础
   linkLists:
   - linkListType: overview
     links:
     - text: 什么是应用程序管理？
       url: what-is-application-management.md
+  - linkListType: concept
+    links:
+    - text: Azure AD 支持哪种类型的应用？
+      url: ../develop/v2-app-types.md
     - text: 什么是单一登录？
       url: what-is-single-sign-on.md
-- title: 入门
+- title: 开发应用
   linkLists:
-  - linkListType: quickstart
+  - linkListType: concept
     links:
-    - text: 查看你的应用
-      url: view-applications-portal.md
-    - text: 添加应用
-      url: add-application-portal.md
-- title: 添加和配置应用
+    - text: 身份验证和授权概念
+      url: ../develop/authentication-vs-authorization.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Microsoft 标识或社交帐户生成应用
+      url: ../develop/v2-overview.md
+- title: 将应用与租户集成
   linkLists:
-  - linkListType: learn
+  - linkListType: how-to-guide
     links:
-    - text: 添加应用
+    - text: 应用集成入门
+      url: plan-an-application-integration.md
+    - text: 添加预先集成的云应用程序
       url: add-application-portal.md
-    - text: 配置应用
+    - text: 注册应用
+      url: ../develop/quickstart-register-app.md
+    - text: 将 AD FS 应用迁移到 Azure AD
+      url: migrate-adfs-apps-to-azure.md
+- title: 配置应用
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 配置应用属性
       url: add-application-portal-configure.md
-- title: 管理应用
+    - text: 分配用户和组
+      url: assign-user-or-group-access-portal.md
+    - text: 配置单一登录
+      url: plan-sso-deployment.md
+    - text: 预配应用
+      url: ../governance/what-is-provisioning.md
+    - text: 配置我的应用
+      url: my-apps-deployment-plan.md
+- title: 保护应用
   linkLists:
-  - linkListType: learn
+  - linkListType: how-to-guide
     links:
-    - text: 最佳做法
-      url: application-management-fundamentals.md
-    - text: 常见方案
-      url: common-scenarios.md
-- title: 了解单一登录
+    - text: 设置条件访问
+      url: ../conditional-access/concept-conditional-access-cloud-apps.md
+    - text: 设置多重身份验证
+      url: ../authentication/howto-mfa-getstarted.md
+    - text: 管理证书
+      url: manage-certificates-for-federated-single-sign-on.md
+    - text: 设置租户限制
+      url: tenant-restrictions.md
+    - text: 配置令牌加密
+      url: howto-saml-token-encryption.md
+    - text: 使用 Cloud App Security
+      url: cloud-app-security.md
+    - text: 对特权超过需要和可疑的应用执行操作
+      url: manage-application-permissions.md
+- title: 管理应用访问权限
   linkLists:
-  - linkListType: architecture
+  - linkListType: overview
     links:
-    - text: 单一登录概念
-      url: what-is-single-sign-on.md
-    - text: 单一登录选项
-      url: sso-options.md
-- title: 应用许可
-  linkLists:
-  - linkListType: learn
+    - text: 标识治理
+      url: ../governance/identity-governance-overview.md
+  - linkListType: how-to-guide
     links:
+    - text: 分配角色
+      url: ../develop/howto-add-app-roles-in-azure-ad-apps.md
     - text: 配置用户同意
       url: configure-user-consent.md
     - text: 配置管理员同意
       url: configure-admin-consent-workflow.md
-- title: 迁移应用
+    - text: 配置权限分类
+      url: configure-permission-classifications.md
+    - text: 管理权利
+      url: ../governance/entitlement-management-scenarios.md
+- title: 维护应用
   linkLists:
-  - linkListType: learn
+  - linkListType: how-to-guide
     links:
-    - text: 迁移资源
-      url: migration-resources.md
-    - text: 将 AD FS 应用迁移到 Azure
-      url: migrate-adfs-apps-to-azure.md
-- title: 使用本地应用
+    - text: 查看、搜索、排序、筛选租户中的应用列表
+      url: view-applications-portal.md
+    - text: 排查登录错误
+      url: ../reports-monitoring/howto-troubleshoot-sign-in-errors.md
+    - text: 禁用应用的用户登录
+      url: disable-user-sign-in-portal.md
+    - text: 删除对应用的用户访问权限
+      url: methods-for-removing-user-access.md
+    - text: 删除应用
+      url: delete-application-portal.md
+- title: 监视应用
   linkLists:
-  - linkListType: learn
+  - linkListType: concept
     links:
-    - text: 什么是应用程序代理？
-      url: ../app-proxy/what-is-application-proxy.md
-    - text: 应用代理部署
+    - text: 登录日志
+      url: ../reports-monitoring/concept-sign-ins.md
+    - text: 使用情况和见解报表
+      url: ../reports-monitoring/concept-usage-insights-report.md
+    - text: 审核日志
+      url: ../reports-monitoring/concept-audit-logs.md
+    - text: “预配”日志
+      url: ../reports-monitoring/concept-provisioning-logs.md
+  - linkListType: how-to-guide
+    links:
+    - text: 下载日志
+      url: ../reports-monitoring/howto-download-logs.md
+    - text: 查找活动报表
+      url: ../reports-monitoring/howto-find-activity-reports.md
+    - text: 设置访问评审
+      url: ../governance/deploy-access-reviews.md
+- title: 对本地应用的远程访问
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 应用程序代理
+      url: ../app-proxy/application-proxy.md
+  - linkListType: how-to-guide
+    links:
+    - text: 应用程序代理部署
       url: ../app-proxy/application-proxy-deployment-plan.md
-- title: 保护应用安全
-  linkLists:
-  - linkListType: learn
-    links:
-    - text: 管理对应用的访问权限
-      url: what-is-access-management.md
-    - text: 管理租户限制
-      url: tenant-restrictions.md
-- title: 配置我的应用
-  linkLists:
-  - linkListType: learn
-    links:
-    - text: 计划“我的应用”部署
-      url: my-apps-deployment-plan.md
-    - text: 创建集合
-      url: access-panel-collections.md
-- title: 开发新应用
-  linkLists:
-  - linkListType: learn
-    links:
-    - text: 开发人员指南
-      url: ../develop/v2-howto-app-gallery-listing.md
-    - text: 了解平台
-      url: ../develop/v2-overview.md
-- title: Docs 中的新增内容
-  linkLists:
-  - linkListType: whats-new
-    links:
-    - text: Docs 中的新增内容
-      url: whats-new-docs.md
+    - text: 设置连接器
+      url: ../app-proxy/application-proxy-connectors.md
+    - text: 配置单一登录
+      url: ../app-proxy/application-proxy-config-sso-how-to.md
+    - text: 发布本机客户端应用程序
+      url: ../app-proxy/application-proxy-configure-native-client-application.md
+    - text: 发布声明感知应用程序
+      url: ../app-proxy/application-proxy-configure-for-claims-aware-applications.md

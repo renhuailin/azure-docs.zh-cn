@@ -24,7 +24,7 @@
       href: tutorial-configure-networking.md
     - name: 创建私有云
       href: tutorial-create-private-cloud.md
-    - name: 创建 NSX-T 网络段
+    - name: 创建网段
       href: tutorial-nsx-t-network-segment.md
     - name: 删除私有云
       href: tutorial-delete-private-cloud.md
@@ -62,12 +62,14 @@
       href: reserved-instance.md
     - name: 配置网络
       items:
-        - name: 配置 DHCP
+        - name: 配置 DHCP 服务器或中继
           href: configure-dhcp-azure-vmware-solution.md
-        - name: 在 L2 延伸 VMware HCX 网络上配置 DHCP
+        - name: 在 L2 延伸网络上配置 DHCP
           href: configure-l2-stretched-vmware-hcx-networks.md
-        - name: 使用 Azure 配置 NSX 组件
-          href: configure-nsx-network-components-azure-portal.md
+        - name: 配置 DNS 转发器
+          href: configure-dns-azure-vmware-solution.md
+        - name: 配置端口镜像
+          href: configure-port-mirroring-azure-vmware-solution.md
         - name: 配置 GitHub Enterprise 服务器
           href: ./configure-github-enterprise-server.md
         - name: 启用公共 Internet 访问
@@ -100,6 +102,8 @@
           href: deploy-traffic-manager-balance-workloads.md
         - name: 配置警报并使用指标
           href: configure-alerts-for-azure-vmware-solution.md
+        - name: 将磁盘池附加到 Azure VMware 解决方案主机
+          href: attach-disk-pools-to-azure-vmware-solution-hosts.md
         - name: 使用 Azure 备份服务器进行备份
           items:
             - name: 设置备份服务器
@@ -130,8 +134,12 @@
           href: azure-vmware-solution-horizon.md
         - name: 从内容库部署 VM
           href: deploy-vm-content-library.md
-        - name: 使用 VMware HCX 部署灾难恢复
-          href: deploy-disaster-recovery-using-vmware-hcx.md
+        - name: 灾难恢复
+          items:
+            - name: 使用 VMware SRM 部署灾难恢复
+              href: disaster-recovery-using-vmware-site-recovery-manager.md
+            - name: 使用 VMware HCX 部署灾难恢复
+              href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: 升级 VMware HCX 设备
           href: 'https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-02DB88E1-EC81-434B-9AE9-D100E427B31C.html'
     - name: VMware 生态系统
@@ -149,13 +157,13 @@
     - name: 疑难解答
       items:
         - name: 就部署失败发起支持请求
-          href: fix-deployment-provisioning-failures.md
+          href: fix-deployment-failures.md
         - name: VMware 工具 vix 错误代码 = 21009
           href: 'https://kb.vmware.com/s/article/2129927'
     - name: 常见问题解答
       items:
         - name: 常规
-          href: ./faq.yml
+          href: /azure/azure-vmware/faq
         - name: 客户通信
           href: /azure/azure-vmware/faq#customer-communication
         - name: 配置和设置

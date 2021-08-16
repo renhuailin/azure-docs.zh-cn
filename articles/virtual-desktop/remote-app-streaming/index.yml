@@ -1,0 +1,44 @@
+### YamlMime:Landing
+title: Azure 虚拟桌面远程应用流式处理
+summary: 使用 Azure 虚拟桌面远程应用流式处理，可将应用传送给组织内外的用户。 通过这些教程和指南，了解详细信息。
+metadata:
+  title: Azure 虚拟桌面远程应用流式处理
+  description: 如何使用 Azure 虚拟桌面远程应用流式处理将应用传送给组织内外的客户。
+  ms.service: virtual-desktop
+  services: virtual-desktop
+  ms.topic: landing-page
+  manager: femila
+  author: Heidilohr
+  ms.author: helohr
+  ms.date: 07/14/2021
+  ms.openlocfilehash: 2968fc3db34ed1db1e551daad3b3dfb3e2d036d9
+  ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/14/2021
+  ms.locfileid: "113798620"
+landingContent:
+- title: 使用 Azure 虚拟桌面实现远程应用流式处理
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure 虚拟桌面？它如何帮助我将应用流式传输给用户？
+      url: overview.md
+- title: Azure 虚拟桌面入门
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 1. 使用 Azure 门户创建主机池
+      url: ../create-host-pools-azure-marketplace.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - text: 2. 管理应用组
+      url: ../manage-app-groups.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - text: 3. 创建主机池以验证服务更新
+      url: ../create-validation-host-pool.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+    - text: 4. 设置服务警报
+      url: ../set-up-service-alerts.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+- title: 详细了解 Azure 虚拟桌面
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 主要的 Azure 虚拟桌面文档，可在其中找到有关该服务的更多详细信息
+      url: ../overview.md
