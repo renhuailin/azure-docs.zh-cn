@@ -2,24 +2,24 @@
 title: 标记资源、资源组和订阅以便对其进行逻辑组织
 description: 演示如何应用标记来组织 Azure 资源进行计费和管理。
 ms.topic: conceptual
-ms.date: 01/04/2021
+ms.date: 05/05/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 0ee2274dcd13af0bcbfe342039681ecc7b949a7b
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: b5278408ac1adf1e12adf8f7facebd26e6d96d6d
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330956"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111813900"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用标记对 Azure 资源和管理层次结构进行组织
 
-可将标记应用到 Azure 资源、资源组和订阅，以便有条理地将它们组织成分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production”。
+可将标记应用到 Azure 资源、资源组和订阅，以便有条理地将它们组织成分类。 每个标记均由名称和值对组成。 例如，可以对生产中的所有资源应用名称“Environment”和值“Production” 。
 
 有关如何实现标记策略的建议，请参阅[资源命名和标记决策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)。
 
 > [!IMPORTANT]
 > 标记名称对于操作不区分大小写。 系统会更新或检索具有标记名称的标记，而不考虑大小写。 但是，资源提供程序可能会保留为标记名称提供的大小写。 你将在成本报表中看到该大小写。
-> 
+>
 > 标记值区分大小写。
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "108330956"
 
 可以通过两种方式获取对标记资源的所需访问权限。
 
-- 你可以拥有对 Microsoft.Resources/tags 资源类型的写入权限。 此权限允许你标记任何资源，即使你无权访问资源本身。 [标记参与者](../../role-based-access-control/built-in-roles.md#tag-contributor)角色授予此访问权限。 目前，标记参与者角色无法通过门户将标记应用到资源或资源组。 该角色可以通过门户将标记应用到订阅。 它支持通过 PowerShell 和 REST API 执行所有标记操作。  
+- 你可以拥有对 `Microsoft.Resources/tags` 资源类型的写入权限。 此权限允许你标记任何资源，即使你无权访问资源本身。 [标记参与者](../../role-based-access-control/built-in-roles.md#tag-contributor)角色授予此访问权限。 目前，标记参与者角色无法通过门户将标记应用到资源或资源组。 该角色可以通过门户将标记应用到订阅。 它支持通过 PowerShell 和 REST API 执行所有标记操作。
 
 - 你可以拥有对资源本身的写入权限。 [参与者](../../role-based-access-control/built-in-roles.md#contributor)角色授予对任何实体应用标记所需的访问权限。 要将标记仅应用于一种资源类型，请使用该资源的参与者角色。 例如，要将标记应用到虚拟机，请使用[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)。
 
@@ -36,9 +36,9 @@ ms.locfileid: "108330956"
 
 ### <a name="apply-tags"></a>应用标记
 
-Azure PowerShell 提供两个用于应用标记的命令 - [New-AzTag](/powershell/module/az.resources/new-aztag) 和 [Update-AzTag](/powershell/module/az.resources/update-aztag)。 必须安装 Az.Resources 模块 1.12.0 或更高版本。 可以使用 `Get-Module Az.Resources` 检查自己的版本。 可以安装该模块，或[安装 Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1 或更高版本。
+Azure PowerShell 提供两个用于应用标记的命令 - [New-AzTag](/powershell/module/az.resources/new-aztag) 和 [Update-AzTag](/powershell/module/az.resources/update-aztag)。 必须安装 `Az.Resources` 模块 1.12.0 或更高版本。 可以使用 `Get-InstalledModule -Name Az.Resources` 检查自己的版本。 可以安装该模块，或[安装 Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1 或更高版本。
 
-New-AzTag 替换资源、资源组或订阅中的所有标记。 调用该命令时，请传入要标记的实体的资源 ID。
+`New-AzTag` 替换资源、资源组或订阅中的所有标记。 调用该命令时，请传入要标记的实体的资源 ID。
 
 以下示例将一组标记应用到存储帐户：
 
@@ -73,7 +73,7 @@ Properties :
         Team         Compliance
 ```
 
-若要将标记添加到已经有标记的资源，请使用 Update-AzTag。 将 -Operation 参数设置为 Merge 。
+若要将标记添加到已经有标记的资源，请使用 `Update-AzTag`。 将 `-Operation` 参数设置为 `Merge`。
 
 ```azurepowershell-interactive
 $tags = @{"Dept"="Finance"; "Status"="Normal"}
@@ -92,7 +92,7 @@ Properties :
         Environment  Production
 ```
 
-每个标记名称只能有一个值。 如果为标记提供新值，则即使使用合并操作，也会替换旧值。 以下示例将 Status 标记从 Normal 更改为 Green。
+每个标记名称只能有一个值。 如果为标记提供新值，则即使使用合并操作，也会替换旧值。 以下示例将 `Status` 标记从 Normal 更改为 Green 。
 
 ```azurepowershell-interactive
 $tags = @{"Status"="Green"}
@@ -109,7 +109,7 @@ Properties :
         Environment  Production
 ```
 
-将 -Operation 参数设置为 Replace 时，会将现有标记替换为新的标记集 。
+将 `-Operation` 参数设置为 `Replace` 时，现有标记会替换为新的标记集。
 
 ```azurepowershell-interactive
 $tags = @{"Project"="ECommerce"; "CostCenter"="00123"; "Team"="Web"}
@@ -215,7 +215,7 @@ Get-AzTag -ResourceId "/subscriptions/$subscription"
 
 ### <a name="remove-tags"></a>删除标记
 
-若要删除特定的标记，请使用 Update-AzTag 并将 -Operation 设置为 Delete  。 传入要删除的标记。
+若要删除特定标记，请使用 `Update-AzTag`，并将 `-Operation` 设置为 `Delete`。 传入要删除的标记。
 
 ```azurepowershell-interactive
 $removeTags = @{"Project"="ECommerce"; "Team"="Web"}
@@ -242,9 +242,9 @@ Remove-AzTag -ResourceId "/subscriptions/$subscription"
 
 ### <a name="apply-tags"></a>应用标记
 
-Azure CLI 提供了两个命令用于应用标记 - [az tag create](/cli/azure/tag#az_tag_create) 和 [az tag update](/cli/azure/tag#az_tag_update)。 必须具有 Azure CLI 2.10.0 或更高版本。 可以使用 `az version` 检查自己的版本。 若要更新或安装 CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+Azure CLI 提供了两个命令用于应用标记：[az tag create](/cli/azure/tag#az_tag_create) 和 [az tag update](/cli/azure/tag#az_tag_update)。 必须具有 Azure CLI 2.10.0 或更高版本。 可以使用 `az version` 检查自己的版本。 若要更新或安装 CLI，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-az tag create 替换资源、资源组或订阅中的所有标记。 调用该命令时，请传入要标记的实体的资源 ID。
+`az tag create` 替换资源、资源组或订阅中的所有标记。 调用该命令时，请传入要标记的实体的资源 ID。
 
 以下示例将一组标记应用到存储帐户：
 
@@ -298,7 +298,7 @@ az tag update --resource-id $resource --operation Merge --tags Dept=Finance Stat
 },
 ```
 
-每个标记名称只能有一个值。 如果为标记提供新值，则即使使用合并操作，也会替换旧值。 以下示例将 Status 标记从 Normal 更改为 Green。
+每个标记名称只能有一个值。 如果为标记提供新值，则即使使用合并操作，也会替换旧值。 以下示例将 `Status` 标记从 Normal 更改为 Green 。
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Merge --tags Status=Green
@@ -443,186 +443,298 @@ az tag update --resource-id $group --operation Merge --tags "Cost Center"=Financ
 可以在使用 Azure 资源管理器模板（ARM 模板）进行部署期间标记资源、资源组和订阅。
 
 > [!NOTE]
-> 通过 ARM 模板应用的标记会覆盖任何现有标记。
+> 通过 ARM 模板或者 Bicep 文件应用的标记会覆盖任何现有标记。
 
 ### <a name="apply-values"></a>应用值
 
 以下示例部署具有三个标记的存储帐户。 两个标记（`Dept` 和 `Environment`）设置为文本值。 一个标记 (`LastDeployed`) 设置为默认值为当前日期的参数。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcShort": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "utcShort": {
+      "type": "string",
+      "defaultValue": "[utcNow('d')]"
     },
-    "resources": [
-        {
-            "apiVersion": "2019-04-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-            "location": "[parameters('location')]",
-            "tags": {
-                "Dept": "Finance",
-                "Environment": "Production",
-                "LastDeployed": "[parameters('utcShort')]"
-            },
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {}
-        }
-    ]
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-02-01",
+      "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "tags": {
+        "Dept": "Finance",
+        "Environment": "Production",
+        "LastDeployed": "[parameters('utcShort')]"
+      },
+      "properties": {}
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+param location string = resourceGroup().location
+param utcShort string = utcNow('d')
+
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+  name: 'storage${uniqueString(resourceGroup().id)}'
+  location: location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'Storage'
+  tags: {
+    Dept: 'Finance'
+    Environment: 'Production'
+    LastDeployed: utcShort
+  }
+}
+```
+
+---
 
 ### <a name="apply-an-object"></a>应用对象
 
 可以定义一个存储多个标记的对象参数，并将该对象应用于标记元素。 此方法比上一个示例更灵活，因为对象可以使用不同的属性。 对象中的每个属性会成为资源的单独标记。 以下示例有一个名为 `tagValues` 的参数，该标记应用于标记元素。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]"
-        },
-        "tagValues": {
-            "type": "object",
-            "defaultValue": {
-                "Dept": "Finance",
-                "Environment": "Production"
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
     },
-    "resources": [
-        {
-            "apiVersion": "2019-04-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-            "location": "[parameters('location')]",
-            "tags": "[parameters('tagValues')]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {}
-        }
-    ]
+    "tagValues": {
+      "type": "object",
+      "defaultValue": {
+        "Dept": "Finance",
+        "Environment": "Production"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-02-01",
+      "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "tags": "[parameters('tagValues')]",
+      "properties": {}
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+param location string = resourceGroup().location
+param tagValues object = {
+  Dept: 'Finance'
+  Environment: 'Production'
+}
+
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+  name: 'storage${uniqueString(resourceGroup().id)}'
+  location: location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'Storage'
+  tags: tagValues
+}
+```
+
+---
 
 ### <a name="apply-a-json-string"></a>应用 JSON 字符串
 
-要将多个值存储在单个标记中，请应用表示这些值的 JSON 字符串。 整个 JSON 字符串存储为一个标记，该标记不能超过 256 个字符。 以下示例有一个名为 `CostCenter` 的标记，其中包含 JSON 字符串中的多个值：  
+要将多个值存储在单个标记中，请应用表示这些值的 JSON 字符串。 整个 JSON 字符串存储为一个标记，该标记不能超过 256 个字符。 以下示例有一个名为 `CostCenter` 的标记，其中包含 JSON 字符串中的多个值：
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]"
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2019-04-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-            "location": "[parameters('location')]",
-            "tags": {
-                "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
-            },
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {}
-        }
-    ]
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-02-01",
+      "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "tags": {
+        "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
+      },
+      "properties": {}
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+param location string = resourceGroup().location
+
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+  name: 'storage${uniqueString(resourceGroup().id)}'
+  location: location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'Storage'
+  tags: {
+    CostCenter: '{"Dept":"Finance","Environment":"Production"}'
+  }
+}
+```
+
+---
 
 ### <a name="apply-tags-from-resource-group"></a>应用资源组中的标记
 
 若要将资源组中的标记应用于资源，请使用 [resourceGroup()](../templates/template-functions-resource.md#resourcegroup) 函数。 获取标记值时，请使用 `tags[tag-name]` 语法而不是 `tags.tag-name` 语法，因为有些字符在点表示法中无法正确解析。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]"
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2019-04-01",
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-            "location": "[parameters('location')]",
-            "tags": {
-                "Dept": "[resourceGroup().tags['Dept']]",
-                "Environment": "[resourceGroup().tags['Environment']]"
-            },
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {}
-        }
-    ]
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-02-01",
+      "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "tags": {
+        "Dept": "[resourceGroup().tags['Dept']]",
+        "Environment": "[resourceGroup().tags['Environment']]"
+      },
+      "properties": {}
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+param location string = resourceGroup().location
+
+resource stgAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
+  name: 'storage${uniqueString(resourceGroup().id)}'
+  location: location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'Storage'
+  tags: {
+    Dept: resourceGroup().tags['Dept']
+    Environment: resourceGroup().tags['Environment']
+  }
+}
+```
+
+---
 
 ### <a name="apply-tags-to-resource-groups-or-subscriptions"></a>将标记应用到多个资源组或订阅
 
-可以通过部署 Microsoft.Resources/tags 资源类型，将标记添加到资源组或订阅。 标记会应用到此部署的目标资源组或订阅。 每次部署模板时，都要替换以前应用的任何标记。
+可以通过部署 `Microsoft.Resources/tags` 资源类型，将标记添加到资源组或订阅。 标记会应用到此部署的目标资源组或订阅。 每次部署模板时，都要替换以前应用的任何标记。
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "tagName": {
-            "type": "string",
-            "defaultValue": "TeamName"
-        },
-        "tagValue": {
-            "type": "string",
-            "defaultValue": "AppTeam1"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "tagName": {
+      "type": "string",
+      "defaultValue": "TeamName"
     },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Resources/tags",
-            "name": "default",
-            "apiVersion": "2019-10-01",
-            "dependsOn": [],
-            "properties": {
-                "tags": {
-                    "[parameters('tagName')]": "[parameters('tagValue')]"
-                }
-            }
+    "tagValue": {
+      "type": "string",
+      "defaultValue": "AppTeam1"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/tags",
+      "name": "default",
+      "apiVersion": "2021-04-01",
+      "properties": {
+        "tags": {
+          "[parameters('tagName')]": "[parameters('tagValue')]"
         }
-    ]
+      }
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+param tagName string = 'TeamName'
+param tagValue string = 'AppTeam1'
+
+resource applyTags 'Microsoft.Resources/tags@2021-04-01' = {
+  name: 'default'
+  properties: {
+    tags: {
+      '${tagName}': tagValue
+    }
+  }
+}
+```
+
+---
 
 若要将标记应用到资源组，请使用 PowerShell 或 Azure CLI。 部署到要标记的资源组。
 
@@ -648,33 +760,55 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
 
 以下模板将对象中的标记添加到资源组或订阅。
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
-"$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "tags": {
-            "type": "object",
-            "defaultValue": {
-                "TeamName": "AppTeam1",
-                "Dept": "Finance",
-                "Environment": "Production"
-            }
-        }
-    },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Resources/tags",
-            "name": "default",
-            "apiVersion": "2019-10-01",
-            "dependsOn": [],
-            "properties": {
-                "tags": "[parameters('tags')]"
-            }
-        }
-    ]
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "tags": {
+      "type": "object",
+      "defaultValue": {
+        "TeamName": "AppTeam1",
+        "Dept": "Finance",
+        "Environment": "Production"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/tags",
+      "apiVersion": "2021-04-01",
+      "name": "default",
+      "properties": {
+        "tags": "[parameters('tags')]"
+      }
+    }
+  ]
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```Bicep
+targetScope = 'subscription'
+
+param tagObject object = {
+  TeamName: 'AppTeam1'
+  Dept: 'Finance'
+  Environment: 'Production'
+}
+
+resource applyTags 'Microsoft.Resources/tags@2021-04-01' = {
+  name: 'default'
+  properties: {
+    tags: tagObject
+  }
+}
+```
+
+---
 
 ## <a name="portal"></a>门户
 
@@ -697,7 +831,7 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
 
 可使用标记对计费数据进行分组。 例如，如果针对不同组织运行多个 VM，可以使用标记根据成本中心对使用情况进行分组。 还可使用标记根据运行时环境对成本进行分类；例如，在生产环境中运行的虚拟机的计费使用情况。
 
-你可以下载使用情况文件来检索有关标记的信息，该文件是一个逗号分隔值 (CSV) 文件，可从 Azure 门户获取。 有关详细信息，请参阅[下载或查看 Azure 帐单发票和每日使用数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)。 从 Azure 帐户中心下载使用情况文件时，选择 **版本 2**。 对于支持为账单提供标记的服务，标记会显示在“标记”列中。
+你可以下载使用情况文件来检索有关标记的信息，该文件是一个逗号分隔值 (CSV) 文件，可从 Azure 门户获取。 有关详细信息，请参阅[下载或查看 Azure 帐单发票和每日使用数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)。 对于支持为账单提供标记的服务，标记会显示在“标记”列中。
 
 有关 REST API 操作，请参阅 [Azure 计费 REST API 参考](/rest/api/billing/)。
 
@@ -716,7 +850,11 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
    >
    > * Azure Front Door 不支持在标记名称中使用 `#`。
    >
-   > * Azure 自动化和 Azure CDN 仅支持资源上的 15 个标记。
+   > * 以下 Azure 资源仅支持 15 个标记：
+   >     * Azure 自动化 
+   >     * Azure CDN
+   >     * Azure DNS（区域和记录）
+   >     * Azure 专用 DNS（区域、记录和虚拟网络链接）
 
 ## <a name="next-steps"></a>后续步骤
 

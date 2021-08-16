@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2e77bbd6e82d0d4a48b72e13e60b60608f2d7674
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68186c5294c0a3a2f376a93ef1902307780f48bb
+ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419585"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111538284"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>如何处理和提取 AI 扩充方案中的图像中的信息
 
@@ -90,7 +90,7 @@ Azure 认知搜索有多项适用于图像和图像文件的功能。 在文档�
 
 ## <a name="image-related-skills"></a>图像相关技能
 
-有两项内置的认知技术以图像为输入：[OCR](cognitive-search-skill-ocr.md) 和[图像分析](cognitive-search-skill-image-analysis.md)。 
+若要接受图像作为输入，可以使用自定义技能或内置技能。 内置技能包括 [OCR](cognitive-search-skill-ocr.md) 和[图像分析](cognitive-search-skill-image-analysis.md)。 
 
 目前，这些技术仅适用于通过文档破解步骤生成的图像。 因此，唯一支持的输入为 `"/document/normalized_images"`。
 
@@ -102,6 +102,21 @@ Azure 认知搜索有多项适用于图像和图像文件的功能。 在文档�
 
 [OCR 技术](cognitive-search-skill-ocr.md)可从图像文件（例如 JPG、PNG、位图）中提取文本。 它可以提取文本和布局信息。 布局信息为每个确定的字符串提供边框。
 
+### <a name="custom-skills"></a>自定义技能
+
+还可以将图像传入自定义技能，以及从自定义技能返回图像。 技能集对要传入到自定义技能的图像进行 base64 编码。 若要在自定义技能内使用图像，请将 `/document/normalized_images/*/data` 设置为自定义技能的输入。 在自定义技能代码中，先对字符串进行 base64 解码，然后再将其转换为图像。 若要将图像返回到技能集，请先对图像进行 base64 编码，然后再将图像返回到技能组。
+
+ 图像作为具有以下属性的对象返回。
+
+```json
+ { 
+  "$type": "file", 
+  "data": "base64String" 
+ }
+```
+
+[Azure 搜索 python 示例](https://github.com/Azure-Samples/azure-search-python-samples)存储库包含一个使用 Python 实现的完整示例，该示例包含一个可扩充图像的自定义技能。
+
 ## <a name="embedded-image-scenario"></a>嵌入图像场景
 
 常见的场景包括通过执行以下步骤，创建单个包含所有文件内容的字符串，既有文本，又有图像原点文本：  
@@ -112,7 +127,8 @@ Azure 认知搜索有多项适用于图像和图像文件的功能。 在文档�
 
 以下示例技术集会创建的 merged_text 字段包含文档的文本内容， 以及每个嵌入图像中的 OCR 化文本。 
 
-#### <a name="request-body-syntax"></a>请求正文语法
+### <a name="request-body-syntax"></a>请求正文语法
+
 ```json
 {
   "description": "Extract text from images and merge with content text to produce merged_text",
@@ -213,13 +229,15 @@ Azure 认知搜索有多项适用于图像和图像文件的功能。 在文档�
             return original;
         }
 ```
+
 ## <a name="passing-images-to-custom-skills"></a>将图像传递到自定义技能
 
 对于需要自定义技能来处理图像的情况，可以将图像传递到自定义技能，并使其返回文本或图像。 [Python 示例](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Image-Processing)图像处理演示了工作流。 以下技能组来自该示例。
 
 以下技能组接受（在文档破解时获取的）规范化图像，并输出图像的切片。
 
-#### <a name="sample-skillset"></a>示例技能组
+### <a name="sample-skillset"></a>示例技能组
+
 ```json
 {
   "description": "Extract text from images and merge with content text to produce merged_text",
@@ -253,7 +271,7 @@ Azure 认知搜索有多项适用于图像和图像文件的功能。 在文档�
 }
 ```
 
-#### <a name="custom-skill"></a>自定义技能
+### <a name="custom-skill"></a>自定义技能
 
 自定义技能本身在技能组的外部。 在本例中，是 Python 代码首先循环使用自定义技能格式的一批请求记录，然后将 base64 编码的字符串转换为图像。
 
@@ -268,6 +286,7 @@ for value in values:
   jpg_as_np = np.frombuffer(inputBytes, dtype=np.uint8)
   # you now have an image to work with
 ```
+
 同样，若要返回图像，则在 `$type` 属性为 `file` 的 JSON 对象内返回 base64 编码的字符串。
 
 ```python
@@ -286,6 +305,7 @@ def base64EncodeImage(image):
 ```
 
 ## <a name="see-also"></a>另请参阅
+
 + [创建索引器 (REST)](/rest/api/searchservice/create-indexer)
 + [图像分析技术](cognitive-search-skill-image-analysis.md)
 + [OCR 技术](cognitive-search-skill-ocr.md)

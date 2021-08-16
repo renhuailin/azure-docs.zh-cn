@@ -4,7 +4,7 @@ description: 介绍如何使用 Azure Active Directory Connect 同步将 Microso
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -12,19 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/11/2019
+ms.date: 06/09/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4c456e7788280b7ca5328342e1cd848ba3a583a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 82ac5d6b6c3424be4e3f012a04c5fc1b149f58d0
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95972753"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891889"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect 同步：为 Microsoft 365 资源配置首选数据位置
 本主题的目的是介绍如何在 Azure Active Directory (Azure AD) Connect 同步中配置首选数据位置的属性。当某人使用了 Microsoft 365 中的多地区功能时，可使用此属性来指定用户的 Microsoft 365 数据的地理位置。 （术语 *区域* 和 *地域* 可以互换使用。）
+
+## <a name="supported-multi-geo-locations"></a>支持的多地理位置
+有关 Azure AD Connect 支持的所有地理位置的列表，请参阅 [Microsoft 365 多地理位置可用性](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-multi-geo?view=o365-worldwide#microsoft-365-multi-geo-availability)
 
 ## <a name="enable-synchronization-of-preferred-data-location"></a>启用首选数据位置的同步
 默认情况下，用户使用的 Microsoft 365 资源位于你的 Azure AD 租户所在地区。 例如，如果你的租户位于北美，则用户的 Exchange 邮箱也位于北美。 对于跨国组织而言，这可能不是最佳情况。
@@ -34,31 +37,10 @@ ms.locfileid: "95972753"
 > [!IMPORTANT]
 > 多地区功能目前适用于拥有有效企业协议和至少 250 个 Microsoft 365 服务订阅的客户。 有关详细信息，请咨询 Microsoft 代表。
 >
->
+> 有关 Azure AD Connect 支持的所有地理位置的列表，请参阅 [Microsoft 365 多地理位置可用性](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-multi-geo?view=o365-worldwide#microsoft-365-multi-geo-availability)。
 
-可以在[你的数据位于何处？](/microsoft-365/enterprise/o365-data-locations)中找到 Microsoft 365 的所有地区列表。
 
-Microsoft 365 中支持多地区的地区包括：
 
-| 地域 | preferredDataLocation 值 |
-| --- | --- |
-| 亚太区 | APC |
-| 澳大利亚 | AUS |
-| 加拿大 | CAN |
-| 欧盟 | EUR |
-| 法国 | FRA |
-| 印度 | IND |
-| 日本 | JPN |
-| 韩国 | KOR |
-| 南非 | ZAF |
-| 瑞士 | CHE |
-| 阿拉伯联合酋长国 | ARE |
-| 英国 | GBR |
-| United States | NAM |
-
-* 如果某个地域未在此表中列出（例如南美），则它无法用于多地域。
-
-* 并非所有 Microsoft 365 工作负载都支持设置用户的地区。
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Azure AD Connect 对同步的支持
 
@@ -140,7 +122,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 3. 若要创建新的入站规则，请选择“添加新规则”按钮。
 4. 在“说明”选项卡下面提供以下配置：
 
-    | 属性 | 值 | 详细信息 |
+    | Attribute | Value | 详细信息 |
     | --- | --- | --- |
     | 名称 | *提供名称* | 例如“In from AD – User preferredDataLocation” |
     | 说明 | *提供自定义说明* |  |
@@ -153,7 +135,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 5. 将“范围筛选器”留空以包括所有对象。 可能需要根据 Azure AD Connect 部署调整范围筛选器。
 6. 转到“转换”选项卡并实现以下转换规则：
 
-    | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
+    | 流类型 | 目标属性 | Source | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
     |直接 | preferredDataLocation | 选择源属性 | 未选中 | 更新 |
 
@@ -169,7 +151,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 3. 选择“添加新规则”。
 4. 在“说明”选项卡下面提供以下配置：
 
-    | 属性 | 值 | 详细信息 |
+    | Attribute | Value | 详细信息 |
     | ----- | ------ | --- |
     | 名称 | *提供名称* | 例如，“Out to Azure AD – User preferredDataLocation” |
     | 说明 | *提供说明* ||
@@ -181,7 +163,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
 5. 转到“范围筛选器”选项卡，并添加包含两个子句的单个范围筛选器组：
 
-    | 属性 | 运算符 | 值 |
+    | 属性 | 操作员 | Value |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
@@ -190,7 +172,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
 6. 转到“转换”选项卡并实现以下转换规则：
 
-    | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
+    | 流类型 | 目标属性 | Source | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
     | 直接 | preferredDataLocation | preferredDataLocation | 未选中 | 更新 |
 
@@ -203,7 +185,7 @@ Azure AD Connect 在版本 1.1.524.0 及更高版本中支持对 **User** 对象
 
 1. 在本地 Active Directory 连接器上运行 **完全导入**：
 
-   1. 在 Synchronization Service Manager 中转到“操作”选项卡。
+   1. 在 Synchronization Service Manager 中转到“连接器”选项卡。
    2. 右键单击 **本地 Active Directory 连接器**，并选择“运行”。
    3. 在对话框中，选择“完全导入”，并单击“确定”。
    4. 等待操作完成。

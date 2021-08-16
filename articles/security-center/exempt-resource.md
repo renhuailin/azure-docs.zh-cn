@@ -3,16 +3,16 @@ title: 从资源、订阅、管理组和安全功能分数中免除 Azure 安全
 description: 了解如何创建规则以免除订阅或管理组中的安全建议并防止其影响安全功能分数
 author: memildin
 ms.author: memildin
-ms.date: 04/21/2021
+ms.date: 05/12/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: f125b94725ba9d34aa0962ed38b16fb474dc5b2b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 01be1037b38e2991a2266c37dfd3ca026ca874ff
+ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140238"
+ms.lasthandoff: 05/13/2021
+ms.locfileid: "109846412"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>从安全功能分数中免除资源和建议 
 
@@ -175,6 +175,9 @@ Azure 安全中心的资产清单页提供了一个页面，用于查看已连�
 
 ## <a name="faq---exemption-rules"></a>常见问题解答 - 免除规则
 
+- [如果一项建议属于多个策略计划，会发生什么情况？](#what-happens-when-one-recommendation-is-in-multiple-policy-initiatives)
+- [是否有不支持豁免的建议？](#are-there-any-recommendations-that-dont-support-exemption)
+
 ### <a name="what-happens-when-one-recommendation-is-in-multiple-policy-initiatives"></a>如果一项建议属于多个策略计划，会发生什么情况？
 
 有时，一项安全建议会出现在多个策略计划中。 如果将同一建议的多个实例分配给同一订阅，并为该建议创建免除，这将影响你可编辑的所有计划。 
@@ -190,6 +193,24 @@ Azure 安全中心的资产清单页提供了一个页面，用于查看已连�
 - 如果对两个计划均没有足够权限，你会看到此消息：
 
     你的权限有限，无法在所有策略计划中应用免除，仅具有足够权限的计划中将创建免除。
+
+### <a name="are-there-any-recommendations-that-dont-support-exemption"></a>是否有不支持豁免的建议？
+
+以下建议不支持豁免：
+
+- 应强制执行容器 CPU 和内存限制
+- 应避免特权容器
+- 应只从受信任的注册表中部署容器映像
+- 容器应只侦听允许的端口
+- 服务应只侦听允许的端口
+- 应强制对容器使用最低特权 Linux 功能
+- 应强制对容器使用不可变（只读）根文件系统
+- 应避免使用特权提升的容器
+- 应避免以根用户身份运行容器
+- 应限制对主机网络和端口的使用
+- 应避免使用共享敏感主机命名空间的容器
+- 应限制为只有已知列表才能使用 Pod HostPath 卷装载，以限制来自遭入侵容器的节点访问
+- 应限制替代或禁用容器 AppArmor 配置文件
 
 
 ## <a name="next-steps"></a>后续步骤

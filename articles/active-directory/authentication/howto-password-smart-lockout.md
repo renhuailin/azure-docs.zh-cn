@@ -11,20 +11,20 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5f501c19da3c2ddc06ad89fe5649789477af7ec
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ce0916d4107fdcf97875d1c6a428bbfa75164a65
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99255367"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110068499"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>利用 Azure Active Directory 智能锁定保护用户帐户免受攻击
 
 智能锁定功能用于锁定那些试图猜测用户密码或使用暴力破解方法进入系统的恶意行动者。 智能锁定功能可识别有效用户的登录，将其与攻击者和其他未知来源的登录区别对待。 攻击者会被锁定，而你的用户可继续访问其帐户，工作效率很高。
 
-## <a name="how-smart-lockout-works"></a>智能锁定如何工作
+## <a name="how-smart-lockout-works"></a>智能锁定的工作原理
 
-默认情况下，智能锁定会在 10 次尝试失败后锁定帐户，使其在一分钟内无法进行登录尝试。 在每次后续登录尝试失败后，帐户会再次锁定，第一次锁定一分钟，后续尝试失败会锁定更长时间。 若要最大程度地减少攻击者可绕过此行为的方法，我们不公开锁定时段随着额外的不成功登录尝试而增长的速率。
+默认情况下，在 Azure 公共租户尝试失败 10 次后，Azure 美国政府租户尝试失败 3 次后，智能锁定会将帐户锁定一分钟，使其无法进行登录尝试。 在每次后续登录尝试失败后，帐户会再次锁定，第一次锁定一分钟，后续尝试失败会锁定更长时间。 若要最大程度地减少攻击者可绕过此行为的方法，我们不公开锁定时段随着额外的不成功登录尝试而增长的速率。
 
 智能锁定跟踪最后三个错误的密码哈希，以避免对相同密码增大锁定计数器。 如果有人多次输入同一个错误密码，此行为不会导致帐户被锁定。
 
@@ -35,17 +35,17 @@ ms.locfileid: "99255367"
 
 智能锁定对于所有 Azure AD 客户始终可用，这些默认设置提供了合适的组合安全性和可用性。 要使用组织特定的值自定义智能锁定设置，需要向用户提供 Azure AD Premium P1 或更高版本的许可证。
 
-使用智能锁定不保证真正的用户永远不会被锁定。当智能锁定锁定用户帐户时，我们会尽最大努力来确保不锁定真正的用户。 锁定服务会尽力确保不良参与者无法访问真正的用户帐户。 请注意以下事项：
+使用智能锁定并不能保证真正的用户永远不会被锁定。当智能锁定锁定用户帐户时，我们将尽最大努力不锁定真正的用户。 锁定服务会尽力确保不良参与者无法访问真正的用户帐户。 请注意以下事项：
 
 * 每个 Azure AD 数据中心独立地跟踪锁定。 如果用户访问了每个数据中心，则该用户具有 (threshold_limit * datacenter_count) 次尝试。
 * 智能锁定使用熟悉的位置与不熟悉的位置来区分不良参与者与真正的用户。 不熟悉的位置和熟悉的位置都具有独立的锁定计数器。
 
-智能锁定可与使用密码哈希同步或直通身份验证的混合部署集成，保护本地 Active Directory 域服务 (AD DS) 帐户不被攻击者锁定。 通过在 Azure AD 中适当地设置智能锁定策略，可在攻击到达本地 AD DS 之前将其筛选掉。
+智能锁定可与混合部署集成，使用密码哈希同步或传递身份验证来避免攻击者锁定本地 Active Directory 域服务 (AD DS) 帐户。 通过在 Azure AD 中适当地设置智能锁定策略，可在攻击到达本地 AD DS 之前将其筛选掉。
 
 使用[直通身份验证](../hybrid/how-to-connect-pta.md)时，请注意以下事项：
 
-* Azure AD 锁定阈值小于 AD DS 帐户锁定阈值。 设置此值，使 AD DS 帐户锁定阈值至少长于 Azure AD 锁定阈值的二倍或三倍。
-* 设置的 Azure AD 锁定持续时间必须长于“在此后重置 AD DS 帐户锁定计数器”持续时间。 Azure AD 持续时间设置为以秒为单位，而 AD 持续时间设置为以分钟为单位。
+* Azure AD 锁定阈值小于 AD DS 帐户锁定阈值。 请设置此值，以便使 AD DS 的帐户锁定阈值至少长于 Azure AD 锁定阈值的二倍或三倍。
+* Azure AD 锁定持续时间必须设置为长于 AD DS 重置帐户锁定计数器的持续时间。 Azure AD 持续时间以秒为单位进行设置，而 AD 持续时间以分钟为单位进行设置。
 
 例如，如果希望 Azure AD 计数器大于 AD DS，则 Azure AD 将为 120 秒（2 分钟），而本地 AD 设置为 1 分钟（60 秒）。
 
@@ -73,7 +73,7 @@ ms.locfileid: "99255367"
 1. 搜索并选择“Azure Active Directory”，然后选择“安全” > “身份验证方法” > “密码保护”  。
 1. 根据帐户在第一次锁定之前允许的登录失败次数，设置“锁定阈值”。
 
-    默认值为 10。
+    Azure 公共租户的默认值为 10，Azure 美国政府租户的默认值为 3。
 
 1. 将“锁定持续时间(以秒计)”设置为每次锁定的时长（以秒计）。
 

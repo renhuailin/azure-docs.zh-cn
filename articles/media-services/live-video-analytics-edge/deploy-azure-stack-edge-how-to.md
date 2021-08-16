@@ -1,18 +1,16 @@
 ---
-title: 在 Azure Stack Edge 上部署 Azure 实时视频分析
-description: 本文列出了可帮助你在 Azure Stack Edge 上部署 Azure 实时视频分析的步骤。
+title: 在 Azure Stack Edge 上部署实时视频分析
+description: 本文列出了可帮助你在 Azure Stack Edge 上部署实时视频分析的步骤。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 186b6d95572c6d3772d7271cde1fedccb7d47528
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d49167890009d58b21c3678cb89f608bad665abd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378952"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101730263"
 ---
-# <a name="deploy-azure-live-video-analytics-on-azure-stack-edge"></a>在 Azure Stack Edge 上部署 Azure 实时视频分析
-
-[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
+# <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>在 Azure Stack Edge 上部署实时视频分析
 
 本文列出了可帮助你在 Azure Stack Edge 上部署实时视频分析的步骤。 设置并激活设备后，该设备便可用于实时视频分析部署。 
 
@@ -39,17 +37,11 @@ ms.locfileid: "110378952"
 
 ## <a name="configuring-azure-stack-edge-for-using-live-video-analytics"></a>配置 Azure Stack Edge 以使用实时视频分析
 
-Azure Stack Edge 是一个硬件即服务解决方案，也是一台具有网络数据传输功能的支持 AI 的边缘计算设备。 详细了解 [Azure Stack Edge 和详细设置说明](../../databox-online/azure-stack-edge-gpu-deploy-prep.md)。 若要开始，请按照以下链接中的说明进行操作：
+Azure Stack Edge 是一个硬件即服务解决方案，也是一台具有网络数据传输功能的支持 AI 的边缘计算设备。 详细了解 [Azure Stack Edge 和详细设置说明](../../databox-online/azure-stack-edge-deploy-prep.md)。 若要开始，请按照以下链接中的说明进行操作：
 
-* [Azure Stack Edge/Data Box Gateway 资源创建](../../databox-online/azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource)
-* [安装和设置](../../databox-online/azure-stack-edge-gpu-deploy-install.md)
-* 连接和激活
-
-    1. [“连接”](../../databox-online/azure-stack-edge-gpu-deploy-connect.md)
-    2. [配置网络](../../databox-online/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)
-    3. [配置设备](../../databox-online/azure-stack-edge-gpu-deploy-set-up-device-update-time.md)
-    4. [配置证书](../../databox-online/azure-stack-edge-gpu-deploy-configure-certificates.md)
-    5. [激活](../../databox-online/azure-stack-edge-gpu-deploy-activate.md)
+* [Azure Stack Edge/Data Box Gateway 资源创建](../../databox-online/azure-stack-edge-deploy-prep.md)
+* [安装和设置](../../databox-online/azure-stack-edge-deploy-install.md)
+* [连接和激活](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
 * [将 IoT 中心附加到 Azure Stack Edge](../../databox-online/azure-stack-edge-gpu-deploy-configure-compute.md#configure-compute)
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>在 Azure Stack Edge 本地 UI 上启用计算先决条件
 
@@ -58,14 +50,7 @@ Azure Stack Edge 是一个硬件即服务解决方案，也是一台具有网络
 * 已激活 Azure Stack Edge 资源。
 * 可访问运行 PowerShell 5.0 或更高版本的 Windows 客户端系统，以便访问 Azure Stack Edge 资源。
 * 若要部署 Kubernetes 群集，需要通过[本地 Web UI](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md#connect-to-the-local-web-ui-setup) 配置 Azure Stack Edge 资源。 
-
-    * 连接和配置：
     
-        1. [“连接”](../../databox-online/azure-stack-edge-gpu-deploy-connect.md)
-        2. [配置网络](../../databox-online/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)
-        3. [配置设备](../../databox-online/azure-stack-edge-gpu-deploy-set-up-device-update-time.md)
-        4. [配置证书](../../databox-online/azure-stack-edge-gpu-deploy-configure-certificates.md)
-        5. [激活](../../databox-online/azure-stack-edge-gpu-deploy-activate.md)
     * 若要启用计算，请在设备的本地 Web UI 中，转到“计算”页面。
     
         * 然后选择要为计算启用的网络接口。 选择“启用”。 启用计算会导致在设备的该网络接口上创建虚拟交换机。
@@ -73,7 +58,7 @@ Azure Stack Edge 是一个硬件即服务解决方案，也是一台具有网络
         * 选择应用 - 此操作需要大约 2 分钟。
         
         > [!div class="mx-imgBorder"]
-        > :::image type="content" source="../../databox-online/media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png" alt-text=" Azure Stack Edge 本地 UI 上的计算先决条件":::
+        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text=" Azure Stack Edge 本地 UI 上的计算先决条件":::
 
         * 如果没有为 Kubernetes API 和 Azure Stack Edge 资源配置 DNS，可以更新 Windows 主机文件。
         
@@ -251,7 +236,7 @@ Azure Stack Edge 是一个硬件即服务解决方案，也是一台具有网络
 
 * Kubernetes API 访问权限 (kubectl)
 
-    * 按照文档配置计算机以[访问 Kubernetes 群集](../../databox-online/azure-stack-edge-gpu-create-kubernetes-cluster.md)。
+    * 按照文档配置计算机以[访问 Kubernetes 群集](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-create-kubernetes-cluster)。
     * 所有已部署的 IoT Edge 模块都使用 `iotedge` 命名空间。 使用 kubectl 时，请确保包含该命名空间。  
 
 * 模块日志

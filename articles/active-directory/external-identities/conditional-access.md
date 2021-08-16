@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74bfa4987f584bbd3490bc5f4f187dee5bc1bd87
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5c6611b7437bdaf873caaaf4722e30fb644b5f13
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101646276"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110617236"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B 协作用户的条件访问
 
@@ -67,7 +67,7 @@ ms.locfileid: "101646276"
 6. Fabrikam 必须提供足够的高级 Azure AD 许可证来支持 Azure AD 多重身份验证。 然后来自 Contoso 的用户才能使用 Fabrikam 提供的此许可证。 有关 B2B 许可的信息，请参阅 [Azure AD 外部标识的计费模型](./external-identities-pricing.md)。
 
 >[!NOTE]
->Azure AD 多重身份验证在资源租户上完成，以确保可预测性。
+>Azure AD 多重身份验证在资源租户上完成，以确保可预测性。 当来宾用户登录时，他们会看到资源租户的登录页面显示在后台，而其主租户登录页面和公司徽标则显示在前台。
 
 ### <a name="set-up-azure-ad-multi-factor-authentication-for-b2b-users"></a>针对 B2B 用户设置 Azure AD 多重身份验证
 
@@ -154,4 +154,4 @@ CA 授权控制（如需要已批准的客户端应用和需要应用保护策�
 - [什么是 Azure AD B2B 协作？](./what-is-b2b.md)
 - [标识保护和 B2B 用户](../identity-protection/concept-identity-protection-b2b.md)
 - [外部标识定价](https://azure.microsoft.com/pricing/details/active-directory/)
-- [常见问题 (FAQ)](./faq.md)
+- [常见问题 (FAQ)](./faq.yml)

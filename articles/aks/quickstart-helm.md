@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: zarhoads
-ms.openlocfilehash: e293d0c58f265b25f3df0a218f84888467468f59
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 248b91be60f4da3ce7dd10212a9db69377651ccb
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767486"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071535"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>快速入门：使用 Helm 在 Azure Kubernetes 服务 (AKS) 上进行开发
 
@@ -88,7 +88,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus  --attach-acr MyHelm
 
 ## <a name="download-the-sample-application"></a>下载示例应用程序
 
-本快速入门使用[来自 Azure Dev Spaces 示例存储库的示例 Node.js 应用程序][example-nodejs]。 从 GitHub 克隆该应用程序，然后导航到 `dev-spaces/samples/nodejs/getting-started/webfrontend` 目录。
+本快速入门使用[一个示例 Node.js 应用程序][example-nodejs]。 从 GitHub 克隆该应用程序，然后导航到 `dev-spaces/samples/nodejs/getting-started/webfrontend` 目录。
 
 ```console
 git clone https://github.com/Azure/dev-spaces

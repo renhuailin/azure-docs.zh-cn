@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/13/2020
+ms.date: 05/06/2021
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: fce963bd9ffdc6f768d7b3de4a9e4870add06136
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cf1ca72d7afaace847fb1b8321723f57fbe133f6
+ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100104240"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "108802156"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 
@@ -37,15 +37,12 @@ ms.locfileid: "100104240"
 
 可以通过两种方法使用 Azure 门户来声明应用角色：
 
-* [应用角色 UI](#app-roles-ui--preview) | 预览
-* [应用清单编辑器](#app-manifest-editor)
+- [应用程序角色 UI](#app-roles-ui)
+- [应用清单编辑器](#app-manifest-editor)
 
-你添加的角色数量计入 Azure Active Directory 强制实施的应用程序清单限制。 有关这些限制的信息，请参阅 [Azure Active Directory 应用清单参考](reference-app-manifest.md)的[清单限制](./reference-app-manifest.md#manifest-limits)部分。
+你添加的角色数量计入 Azure Active Directory 强制实施的应用程序清单限制。 有关这些限制的信息，请参阅 [Azure Active Directory 应用程序清单参考](reference-app-manifest.md)的[清单限制](./reference-app-manifest.md#manifest-limits)部分。
 
-### <a name="app-roles-ui--preview"></a>应用角色 UI | 预览
-
-> [!IMPORTANT]
-> 应用角色门户 UI 功能 [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
+### <a name="app-roles-ui"></a>应用角色 UI
 
 若要使用 Azure 门户的用户界面创建应用角色，请执行以下操作：
 
@@ -53,20 +50,21 @@ ms.locfileid: "100104240"
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含要向其添加应用角色的应用注册的 Azure Active Directory 租户。
 1. 搜索并选择“Azure Active Directory”  。
 1. 在“管理”下，选择“应用注册”，然后选择要在其中定义应用角色的应用程序 。
-1. 选择“应用角色 | 预览”，然后选择“创建应用角色” 。
+1. 选择“应用角色”，然后选择“创建应用角色”。
 
    :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-overview-pane.png" alt-text="Azure 门户中应用注册的应用角色窗格":::
+
 1. 在“创建应用角色”窗格中，输入角色的设置。 图像下面的表格描述每个设置及其参数。
 
-    :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-create-context-pane.png" alt-text="Azure 门户中应用注册的“应用角色创建上下文”窗格":::
+   :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-create-context-pane.png" alt-text="Azure 门户中应用注册的“应用角色创建上下文”窗格":::
 
-    | 字段 | 说明 | 示例 |
-    |-------|-------------|---------|
-    | **显示名称** | 管理员同意和应用分配体验中显示的应用角色显示名称。 此值可以包含空格。 | `Survey Writer` |
-    | **允许的成员类型** | 指定是否可以将此应用角色分配给用户和/或应用程序。<br/><br/>可供 `applications` 使用时，应用角色会在应用注册的“管理”部分 >“API 权限”>“添加权限”>“我的 API”>“选择 API”>“应用程序权限”中显示为应用程序权限 。 | `Users/Groups` |
-    | **值** | 指定应用程序在令牌中所需的角色声明的值。 该值应与应用程序代码中引用的字符串完全匹配。 该值不能包含空格。 | `Survey.Create` |
-    | **说明** | 在管理应用分配和同意体验期间显示的应用角色的更详细说明。 | `Writers can create surveys.` |
-    | **要启用此应用角色吗？** | 指定是否启用应用角色。 若要删除应用角色，请取消选中此复选框，并在尝试删除操作之前应用更改。 | *已选中* |
+   | 字段                                    | 说明                                                                                                                                                                                                                                                                                                       | 示例                       |
+   | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+   | **显示名称**                         | 管理员同意和应用分配体验中显示的应用角色显示名称。 此值可以包含空格。                                                                                                                                                                                    | `Survey Writer`               |
+   | **允许的成员类型**                 | 指定是否可以将此应用角色分配给用户和/或应用程序。<br/><br/>可供 `applications` 使用时，应用角色会在应用注册的“管理”部分 >“API 权限”>“添加权限”>“我的 API”>“选择 API”>“应用程序权限”中显示为应用程序权限 。 | `Users/Groups`                |
+   | **值**                                | 指定应用程序在令牌中所需的角色声明的值。 该值应与应用程序代码中引用的字符串完全匹配。 该值不能包含空格。                                                                                                          | `Survey.Create`               |
+   | **说明**                          | 在管理应用分配和同意体验期间显示的应用角色的更详细说明。                                                                                                                                                                                                        | `Writers can create surveys.` |
+   | **要启用此应用角色吗？** | 指定是否启用应用角色。 若要删除应用角色，请取消选中此复选框，并在尝试删除操作之前应用更改。                                                                                                                                                             | _已选中_                     |
 
 1. 选择“应用”以保存所做的更改。
 
@@ -189,11 +187,11 @@ ms.locfileid: "100104240"
 
 尽管可以使用应用角色或组进行授权，但它们之间的关键差异可能会影响你将哪一种用于你的场景的决定。
 
-| 应用角色                                                                          | 组                                                      |
-|------------------------------------------------------------------------------------|-------------------------------------------------------------|
+| 应用角色                                                                                                    | 组                                                      |
+| ------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- |
 | 它们特定于应用程序，并在应用注册中定义。 它们随应用程序一起移动。 | 它们不是特定于应用，而是特定于 Azure AD 租户。 |
-| 删除应用注册时，应用角色会被删除。                      | 即使删除了应用，组也会保持不变。            |
-| 在 `roles` 声明中提供。                                                     | 在 `groups` 声明中提供。                                 |
+| 删除应用注册时，应用角色会被删除。                                                | 即使删除了应用，组也会保持不变。            |
+| 在 `roles` 声明中提供。                                                                               | 在 `groups` 声明中提供。                                 |
 
 开发人员可以使用应用角色来控制用户是否可以登录到应用，或者应用是否可以获取 Web API 的访问令牌。 为了将此安全控件扩展到组，开发人员和管理员还可以将安全组分配给应用角色。
 
@@ -203,12 +201,12 @@ ms.locfileid: "100104240"
 
 通过以下资源详细了解应用角色。
 
-* GitHub 上的代码示例
-  * [使用组和组声明向 ASP.NET Core Web 应用添加授权](https://aka.ms/groupssample)
-  * [Angular 单页应用程序 (SPA) 调用 .NET Core Web API 并使用应用角色和安全组](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups/blob/master/README.md)
-* 参考文档
-  * [Azure AD 应用清单](./reference-app-manifest.md)
-  * [Azure AD 访问令牌](access-tokens.md)
-  * [Azure AD ID 令牌](id-tokens.md)
-  * [向应用提供可选声明](active-directory-optional-claims.md)
-* 视频：[在应用程序中通过 Microsoft 标识平台实现授权](https://www.youtube.com/watch?v=LRoc-na27l0) (1:01:15)
+- GitHub 上的代码示例
+  - [使用组和组声明向 ASP.NET Core Web 应用添加授权](https://aka.ms/groupssample)
+  - [Angular 单页应用程序 (SPA) 调用 .NET Core Web API 并使用应用角色和安全组](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups/blob/master/README.md)
+- 参考文档
+  - [Azure AD 应用清单](./reference-app-manifest.md)
+  - [Azure AD 访问令牌](access-tokens.md)
+  - [Azure AD ID 令牌](id-tokens.md)
+  - [向应用提供可选声明](active-directory-optional-claims.md)
+- 视频：[在应用程序中通过 Microsoft 标识平台实现授权](https://www.youtube.com/watch?v=LRoc-na27l0) (1:01:15)

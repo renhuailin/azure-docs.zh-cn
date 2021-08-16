@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: references_regions
 ms.date: 05/06/2021
 ms.author: juliako
-ms.openlocfilehash: 486b57659c3fa28b0a61293970bcc418c3b3b6dd
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d67d8dba31a453f4a42982519d619f294d47e04f
+ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384984"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111813812"
 ---
 # <a name="video-analyzer-for-media-release-notes"></a>视频分析器媒体版发行说明
 
@@ -29,7 +29,33 @@ ms.locfileid: "110384984"
 * Bug 修复
 * 已弃用的功能
 
-## <a name="aprilmay-2021"></a>2021 年 4 月/5 月
+## <a name="may-2021"></a>2021 年 5 月
+
+### <a name="new-source-languages-support-for-speech-to-text-stt-translation-and-search"></a>语音转文本 (STT)、翻译和搜索支持新的源语言
+
+视频分析器媒体版现在支持中文(粤语)（“zh-HK”）、荷兰语(荷兰)（“Nl-NL”）、捷克语（“Cs-CZ”）、波兰语（“Pl-PL”）、瑞典语(瑞典)（“Sv-SE”）、挪威语（“nb-NO”）、芬兰语（“fi-FI”）、加拿大法语（“fr-CA”）、泰语（“th-TH”）、阿拉伯语: (阿拉伯联合酋长国)（“ar-AE”、“ar-EG”）、(伊拉克)（“ar-IQ”）、(约旦)（“ar-JO”）、(科威特)（“ar-KW”）、(黎巴嫩)（“ar-LB”）、(阿曼)（“ar-OM”）、(卡塔尔)（“ar-QA”）、(巴勒斯坦民族权力机构)（“ar-PS”）、(叙利亚)（“ar-SY”）和土耳其语（“tr-TR”）的 STT、翻译与搜索。 
+
+在 API 和视频分析器媒体版网站中都可使用这些语言。 从“视频源语言”下的组合框中选择语言。
+
+### <a name="new-theme-for-azure-video-analyzer-for-media"></a>Azure 视频分析器媒体版的新主题
+
+提供了新主题：“Azure”以及“浅色”和“深色”主题。 若要选择主题，请单击网站右上角的齿轮图标，在“用户设置”下查找主题。
+ 
+### <a name="new-open-source-code-you-can-leverage"></a>可以利用的新开源代码 
+
+[GitHub 存储库](https://github.com/Azure-Samples/media-services-video-indexer)提供三个新的 Git-Hub 项目：
+
+* 可帮助你利用新添加的[小组件自定义](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets)的代码。
+* 有助于将[自定义搜索](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/VideoSearchWithAutoMLVision)添加到视频库的解决方案。
+* 有助于将[重复数据消除](https://github.com/Azure-Samples/media-services-video-indexer/commit/6b828f598f5bf61ce1b6dbcbea9e8b87ba11c7b1)添加到视频库的解决方案。
+ 
+### <a name="new-option-to-toggle-bounding-boxes-for-observed-people-on-the-player"></a>用于在播放器上切换边界框（用于观测到的人员）的新选项  
+
+当你通过高级视频设置为视频编制索引时，可以查看我们新的观测到的人员功能。
+
+如果在媒体文件中检测到人员，可以通过媒体播放器对检测到的人员启用边界框。
+
+## <a name="april-2021"></a>2021 年 4 月
 
 视频索引器服务已重命名为 Azure 视频分析器媒体版。
 
@@ -45,7 +71,7 @@ Azure 视频分析器媒体版现在可检测视频中观测到的人员，并�
 
 也可以在视频分析器媒体版生成的 JSON 文件中使用此功能。 有关详细信息，请参阅[跟踪视频中观测到的人员](observed-people-tracing.md)。
 
-### <a name="detected-acoustic-events-with-audio-effects-detection-preview"></a>使用音频效果检测（预览版）检测声学事件
+### <a name="detected-acoustic-events-with-audio-effects-detection-preview"></a>使用音频效果检测（预览版）检测到声学事件
 
 现在可以在隐藏式字幕文件中查看检测到的声学事件。 可以从视频分析器媒体版门户下载该文件，并且该文件将在 GetArtifact API 中作为项目提供。
 

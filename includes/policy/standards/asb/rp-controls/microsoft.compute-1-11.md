@@ -2,21 +2,21 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/04/2021
+ms.date: 06/11/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 463d3669aa79f43beada791e5f0ed70476b44a0a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ad8dea4acea27dfe9436be59cf9c674bc97223c5
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108793214"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112040598"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[添加系统分配的托管标识，在没有标识的虚拟机上启用来宾配置分配](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e) |此策略将系统分配的托管标识添加到托管在 Azure 中的虚拟机，这些虚拟机受来宾配置支持，但没有任何托管标识。 系统分配的托管标识是所有来宾配置分配的先决条件，在使用任何来宾配置策略定义之前必须被添加到计算机。 有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 |modify |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AddSystemIdentityWhenNone_Prerequisite.json) |
 |[添加系统分配的托管标识，以在具有用户分配的标识的 VM 上启用来宾配置分配](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6) |此策略将系统分配的托管标识添加到托管在 Azure 中的虚拟机，这些虚拟机受来宾配置支持、至少有一个用户分配的标识，但没有系统分配的托管标识。 系统分配的托管标识是所有来宾配置分配的先决条件，在使用任何来宾配置策略定义之前必须被添加到计算机。 有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 |modify |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AddSystemIdentityWhenUser_Prerequisite.json) |
-|[部署 Windows 来宾配置扩展以在 Windows VM 上启用来宾配置分配](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F385f5831-96d4-41db-9a3c-cd3af78aaae6) |此策略将 Windows 来宾配置扩展部署到托管在 Azure 中受来宾配置支持的 Windows 虚拟机。 Windows 来宾配置扩展是所有 Windows 来宾配置分配的先决条件，在使用任何 Windows 来宾配置策略定义之前必须被部署到计算机。 有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_DeployExtensionWindows_Prerequisite.json) |
+|[部署 Windows 来宾配置扩展以在 Windows VM 上启用来宾配置分配](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F385f5831-96d4-41db-9a3c-cd3af78aaae6) |此策略将 Windows 来宾配置扩展部署到托管在 Azure 中受来宾配置支持的 Windows 虚拟机。 Windows 来宾配置扩展是所有 Windows 来宾配置分配的先决条件，在使用任何 Windows 来宾配置策略定义之前必须将其部署到计算机。 有关来宾配置的详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 |deployIfNotExists |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_DeployExtensionWindows_Prerequisite.json) |
 |[Windows 计算机应符合“管理模板 - 网络”的要求](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F67e010c1-640d-438e-a3a5-feaccb533a98) |Windows 计算机应在“管理模板 - 网络”类别中使用指定的组策略设置，用于来宾登录、并发连接、网桥、ICS 和多播名称解析。 此策略要求来宾配置先决条件已部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministrativeTemplatesNetwork_AINE.json) |
 |[Windows 计算机应符合“安全选项 - Microsoft 网络服务器”的要求](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcaf2d518-f029-4f6b-833b-d7081702f253) |Windows 计算机应在“安全选项 - Microsoft 网络服务器”类别中具有指定的组策略设置，以禁用 SMB v1 服务器。 此策略要求来宾配置先决条件已部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SecurityOptionsMicrosoftNetworkServer_AINE.json) |
 |[Windows 计算机应符合“安全选项 - 网络访问”的要求](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3ff60f98-7fa4-410a-9f7f-0b00f5afdbdd) |Windows 计算机应在“安全选项 - 网络访问”类别中具有指定的组策略设置，以包含匿名用户、本地帐户的访问权限和对注册表的远程访问权限。 此策略要求来宾配置先决条件已部署到策略分配范围。 有关详细信息，请访问 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SecurityOptionsNetworkAccess_AINE.json) |

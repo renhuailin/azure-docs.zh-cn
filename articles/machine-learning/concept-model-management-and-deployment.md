@@ -1,7 +1,7 @@
 ---
 title: MLOps：ML 模型管理
 titleSuffix: Azure Machine Learning
-description: '了解如何使用 Azure 机器学习进行模型管理 (MLOps)。 部署、管理和监视模型以持续对其做出改善。 '
+description: '了解如何使用 Azure 机器学习进行模型管理 (MLOps)。 部署、管理、跟踪世系并监视模型，以便不断地进行改进。 '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 32777d9f8313457036b103777f251329687b3997
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88a2dc2e38861cff540cfa1fcdc0b3f6e9651b04
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508004"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439901"
 ---
-# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure 机器学习进行模型管理、部署和监视
+# <a name="mlops-model-management-deployment-lineage-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure 机器学习进行模型管理、部署、世系跟踪和监视
 
 本文介绍如何使用 Azure 机器学习来管理模型的生命周期。 Azure 机器学习使用机器学习操作 (MLOps) 方法。 MLOps 改善了机器学习解决方案的质量和一致性。 
 
@@ -27,14 +27,14 @@ ms.locfileid: "102508004"
 
 * 更快地试验和开发模型
 * 更快地将模型部署到生产环境
-* 质量保证
+* 质量保证和端到端世系跟踪
 
 Azure 机器学习提供以下 MLOps 功能：
 
 - **创建可重现的 ML 管道**。 使用机器学习管道可为数据准备、训练和评分过程定义可重复且可重用的步骤。
 - 创建可重用的软件环境用于训练和部署模型。
 - 从任意位置注册、打包和部署模型。 还可以跟踪使用模型时所需的关联元数据。
-- 捕获端到端 ML 生命周期的监管数据。 记录的信息可以包括模型的发布者、做出更改的原因，以及在生产环境中部署或使用模型的时间。
+- 捕获端到端 ML 生命周期的监管数据。 记录的世系信息可以包括模型的发布者、做出更改的原因，以及在生产环境中部署或使用模型的时间。
 - 针对 ML 生命周期中的事件发出通知和警报。 例如，试验完成、模型注册、模型部署和数据偏移检测。
 - **监视 ML 应用程序中的操作和 ML 相关问题**。 比较训练与推理之间的模型输入，浏览特定于模型的指标，以及针对 ML 基础结构提供监视和警报。
 - 使用 Azure 机器学习和 Azure Pipelines 自动化端到端 ML 生命周期。 使用管道可以频繁更新模型、测试新模型，并连同其他应用程序和服务持续推出新的 ML 模型。

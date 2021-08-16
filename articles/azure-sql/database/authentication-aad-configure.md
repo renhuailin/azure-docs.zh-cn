@@ -5,19 +5,19 @@ description: 了解如何在配置 Azure AD 后使用 Azure Active Directory 身
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.custom: azure-synapse, has-adal-ref, sqldbrb=2
+ms.custom: azure-synapse, has-adal-ref, sqldbrb=2, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
-ms.date: 08/17/2020
-ms.openlocfilehash: c75364f2565611b6738996c082610229db0cb2a8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 05/11/2021
+ms.openlocfilehash: 4d06ec600f71e682c9faadf3760ee76bb41c40b2
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762220"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112020990"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 配置和管理 Azure AD 身份验证
 
@@ -48,7 +48,13 @@ Azure AD 身份验证支持以下身份验证方法：
 
 创建 Azure AD 实例并对其填充用户和组。 Azure AD 可以是初始 Azure AD 托管域。 Azure AD 也可以是本地 Active Directory 域服务，该服务可以与 Azure AD 联合。
 
-有关详细信息，请参阅[将本地标识与 Azure Active Directory 集成](../../active-directory/hybrid/whatis-hybrid-identity.md)、[将自己的域名添加到 Azure AD](../../active-directory/fundamentals/add-custom-domain.md)、[Microsoft Azure 现在支持与 Windows Server Active Directory 联合](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)、[管理 Azure AD 目录](../../active-directory/fundamentals/active-directory-whatis.md)、[使用 Windows PowerShell 管理 Azure AD](/powershell/azure/) 和[混合标识所需端口和协议](../../active-directory/hybrid/reference-connect-ports.md)。
+有关详细信息，请参阅：
+- [将本地标识与 Azure Active Directory 集成](../../active-directory/hybrid/whatis-hybrid-identity.md)
+- [将自己的域名添加到 Azure AD](../../active-directory/fundamentals/add-custom-domain.md)
+- [Microsoft Azure 现在支持与 Windows Server Active Directory 联合](https://azure.microsoft.com/blog/windows-azure-now-supports-federation-with-windows-server-active-directory/)
+- [什么是 Azure Active Directory？](../../active-directory/fundamentals/active-directory-whatis.md)
+- [使用 Windows PowerShell 管理 Azure AD](/powershell/module/azuread)
+- [混合标识所需的端口和协议](../../active-directory/hybrid/reference-connect-ports.md)。
 
 ## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>将 Azure 订阅关联或添加到 Azure Active Directory
 
@@ -338,6 +344,19 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 > [!NOTE]
 > 也可以使用 REST API 预配 Azure Active Directory 管理员。 有关详细信息，请参阅 [Azure SQL 数据库的 Azure SQL 数据库操作的 Service Management REST API 参考和操作](/rest/api/sql/)
 
+## <a name="set-or-unset-the-azure-ad-admin-using-service-principals"></a>使用服务主体设置或取消设置 Azure AD 管理员
+
+如果计划让服务主体为 Azure SQL 设置或取消设置 Azure AD 管理员，则需要额外的 API 权限。 需要将 [Directory.Read.All](/graph/permissions-reference#application-permissions-18) 应用程序 API 权限添加到 Azure AD 中的应用程序。
+
+> [!NOTE]
+> 本部分关于设置 Azure AD 管理员的内容仅适用于使用 PowerShell 或 CLI 命令，因为不能将 Azure 门户用作 Azure AD 服务主体。
+
+:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="Azure AD 中的 Directory.Reader.All 权限":::
+
+服务主体还需要适用于 SQL 数据库的 [SQL Server 参与者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)角色，或适用于 SQL 托管实例的 [SQL 托管实例参与者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)角色 。
+
+有关详细信息，请参阅[服务主体（Azure AD 应用程序）](authentication-aad-service-principal.md)。
+
 ## <a name="configure-your-client-computers"></a>配置客户端计算机
 
 在应用程序或用户要使用 Azure AD 标识连接到 SQL 数据库或 Azure Synapse 的所有客户端计算机上，必须安装以下软件：
@@ -420,7 +439,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 若要预配基于 Azure AD 的包含的数据库用户（而不是拥有数据库的服务器管理员），请使用具有数据库访问权限的 Azure AD 标识连接到数据库。
 
 > [!IMPORTANT]
-> [SQL Server 2016 Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 和 Visual Studio 2015 中的 [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) 支持 Azure Active Directory 身份验证。 2016 年 8 月版 SSMS 也包括对 Active Directory 通用身份验证的支持，这样管理员就能要求用户使用手机、短信、带 PIN 码的智能卡或移动应用通知进行多重身份验证。
+> 2016 年开始的 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) 和 2015 年开始的 [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) 支持 Azure Active Directory 身份验证。 2016 年 8 月版 SSMS 也包括对 Active Directory 通用身份验证的支持，这样管理员就能要求用户使用手机、短信、带 PIN 码的智能卡或移动应用通知进行多重身份验证。
 
 ## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>使用 Azure AD 标识通过 SSMS 或 SSDT 进行连接
 

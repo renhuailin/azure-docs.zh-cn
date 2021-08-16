@@ -1,33 +1,34 @@
 ---
-title: 向/从 SQL Server 复制数据
-description: 了解如何使用 Azure 数据工厂将数据移入和移出本地或 Azure VM 中的 SQL Server 数据库。
+title: 将数据复制和转换到 SQL Server 以及从中复制和转换数据
+description: 了解如何通过使用 Azure 数据工厂将数据复制和转换到本地或 Azure VM 中的 SQL Server 数据库，以及如何从中复制和转换数据。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: c6996a5e3f20a3c71fc5a49f9650955ce9c41683
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 05/26/2021
+ms.openlocfilehash: 084af91fe294ab52591bc5ef9bf22ffe941637ea
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486784"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110781796"
 ---
-# <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 SQL Server 复制数据
+# <a name="copy-and-transform-data-to-and-from-sql-server-by-using-azure-data-factory"></a>通过使用 Azure 数据工厂将数据复制和转换到 SQL Server 以及从中复制和转换数据
 
 > [!div class="op_single_selector" title1="选择要使用的 Azure 数据工厂的版本："]
 > * [版本 1](v1/data-factory-sqlserver-connector.md)
 > * [当前版本](connector-sql-server.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文概述了如何使用 Azure 数据工厂中的复制活动从/向 SQL Server 数据库复制数据。 本文基于总体概述复制活动的[复制活动概述](copy-activity-overview.md)一文。
+本文概述了如何使用 Azure 数据工厂中的复制活动将数据复制到 SQL Server 数据库以及从中复制数据，以及如何使用数据流来转换 SQL Server 数据库中的数据。  若要了解 Azure 数据工厂，请阅读[介绍性文章](introduction.md)。
 
 ## <a name="supported-capabilities"></a>支持的功能
 
 以下活动支持此 SQL Server 连接器：
 
 - 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [映射数据流](concepts-data-flow-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 - [GetMetadata 活动](control-flow-get-metadata-activity.md)
 
@@ -59,7 +60,7 @@ ms.locfileid: "109486784"
 
 SQL Server 链接服务支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SqlServer**。 | 是 |
 | connectionString |指定使用 SQL 身份验证或 Windows 身份验证连接到 SQL Server 数据库时所需的 **connectionString** 信息。 请参阅以下示例。<br/>还可以在 Azure Key Vault 中输入密码。 如果使用 SQL 身份验证，请从连接字符串中提取 `password` 配置。 有关详细信息，请参阅表格后面的 JSON 示例，以及[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
@@ -143,7 +144,7 @@ SQL Server 链接服务支持以下属性：
 
 从/向 SQL Server 数据库复制数据时支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 SqlServerTable。 | 是 |
 | schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
@@ -182,7 +183,7 @@ SQL Server 链接服务支持以下属性：
 
 要从 SQL Server 复制数据，请将复制活动中的源类型设置为 SqlSource。 复制活动的 source 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 节的 type 属性必须设置为 SqlSource。 | 是 |
 | sqlReaderQuery |使用自定义 SQL 查询读取数据。 例如 `select * from MyTable`。 |否 |
@@ -295,7 +296,7 @@ GO
 
 要向 SQL Server 复制数据，请将复制活动中的接收器类型设置为 SqlSink。 复制活动的 sink 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动的 sink 的 type 属性必须设置为 SqlSink。 | 是 |
 | preCopyScript |此属性指定将数据写入到 SQL Server 中之前复制活动要运行的 SQL 查询。 每次运行复制仅调用该查询一次。 可以使用此属性清除预加载的数据。 |否 |
@@ -553,6 +554,66 @@ END
     }
     ```
 
+## <a name="mapping-data-flow-properties"></a>映射数据流属性
+
+在转换映射数据流中的数据时，可以从 SQL Server 数据库读取表和写入表。 有关详细信息，请参阅映射数据流中的[源转换](data-flow-source.md)和[接收器转换](data-flow-sink.md)。
+
+> [!NOTE]
+> 若要访问本地 SQL Server，需要有使用专用终结点的 Azure 数据工厂[托管虚拟网络](managed-virtual-network-private-endpoint.md)。 有关详细步骤，请参阅[此教程](tutorial-managed-virtual-network-on-premise-sql-server.md)。
+
+### <a name="source-transformation"></a>源转换
+
+下表列出了 SQL Server 源支持的属性。 你可以在“源选项”选项卡中编辑这些属性。
+
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| 表 | 如果你选择“表”作为输入，则数据流会从数据集中指定的表提取所有数据。 | 否 | - |- |
+| 查询 | 如果你选择“查询”作为输入，请指定一个用来从源提取数据的 SQL 查询，这将替代在数据集中指定的任何表。 使用查询是一个好方法，它可以减少用于测试或查找的行数。<br><br>不支持 Order By 子句，但你可以设置完整的 SELECT FROM 语句。 还可以使用用户定义的表函数。 select * from udfGetData() 是 SQL 中的一个 UDF，它返回你可以在数据流中使用的表。<br>查询示例：`Select * from MyTable where customerId > 1000 and customerId < 2000`| 否 | 字符串 | query |
+| 批大小 | 指定批大小，以将大型数据分成多个读取操作。 | 否 | Integer | batchSize |
+| 隔离级别 | 选择下列隔离级别之一：<br>- 读取已提交的内容<br>- 读取未提交的内容（默认）<br>- 可重复的读取<br>- 可序列化<br>- 无（忽略隔离级别） | 否 | <small>READ_COMMITTED<br/>READ_UNCOMMITTED<br/>REPEATABLE_READ<br/>SERIALIZABLE<br/>NONE</small> |isolationLevel |
+
+#### <a name="sql-server-source-script-example"></a>SQL Server 源脚本示例
+
+在使用 SQL Server 作为源类型时，关联的数据流脚本为：
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    isolationLevel: 'READ_UNCOMMITTED',
+    query: 'select * from MYTABLE',
+    format: 'query') ~> SQLSource
+```
+
+### <a name="sink-transformation"></a>接收器转换
+
+下表列出了 SQL Server 接收器支持的属性。 可以在“接收器选项”选项卡中编辑这些属性。
+
+| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Update 方法 | 指定数据库目标上允许哪些操作。 默认设置为仅允许插入。<br>若要更新、更新插入或删除行，需要进行[“更改行”转换](data-flow-alter-row.md)才能标记这些操作的行。 | 是 | `true` 或 `false` | deletable <br/>insertable <br/>updateable <br/>upsertable |
+| 键列 | 对于更新、更新插入和删除操作，必须设置键列来确定要更改的行。<br>后续的更新、更新插入和删除将使用你选取为密钥的列名称。 因此，你必须选取存在于接收器映射中的列。 | 否 | Array | 密钥 |
+| 跳过写入键列 | 如果你不希望将值写入到键列，请选择“跳过写入键列”。 | 否 | `true` 或 `false` | skipKeyWrites |
+| 表操作 |确定在写入之前是否从目标表重新创建或删除所有行。<br>- **无**：不会对表进行任何操作。<br>- 重新创建：将删除表并重新创建表。 如果以动态方式创建表，则是必需的。<br>- 截断：将删除目标表中的所有行。 | 否 | `true` 或 `false` | recreate<br/>truncate |
+| 批大小 | 指定每批中写入的行数。 较大的批大小可提高压缩比并改进内存优化，但在缓存数据时可能会导致内存不足异常。 | 否 | Integer | batchSize |
+| 预处理和后处理 SQL 脚本 | 指定在将数据写入接收器数据库之前（预处理）和之后（后处理）会执行的多行 SQL 脚本。 | 否 | 字符串 | preSQLs<br>postSQLs |
+
+#### <a name="sql-server-sink-script-example"></a>SQL Server 接收器脚本示例
+
+在使用 SQL Server 作为接收器类型时，关联的数据流脚本为：
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:false,
+    insertable:true,
+    updateable:true,
+    upsertable:true,
+    keys:['keyColumn'],
+    format: 'table',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> SQLSink
+```
+
 ## <a name="data-type-mapping-for-sql-server"></a>SQL Server 的数据类型映射
 
 从/向 SQL Server 复制数据时，以下映射用于从 SQL Server 数据类型映射到 Azure 数据工厂临时数据类型。 若要了解复制活动如何将源架构和数据类型映射到接收器，请参阅[架构和数据类型映射](copy-activity-schema-and-type-mapping.md)。
@@ -564,7 +625,7 @@ END
 | bit |布尔 |
 | char |String, Char[] |
 | date |DateTime |
-| Datetime |DateTime |
+| datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | 小数 |小数 |

@@ -21,7 +21,7 @@
         - name: 客户端库或 REST API
           href: Quickstarts/quickstart-sdk.md
 - name: 示例
-  href: /samples/browse/?products=azure&term=face&terms=qna-maker
+  href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=face&terms=qna-maker'
 - name: 负责使用 AI
   items:
     - name: 透明度说明

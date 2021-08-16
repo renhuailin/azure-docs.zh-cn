@@ -9,19 +9,19 @@ ms.workload: infrastructure
 ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 46de182c7acfaf75b2e65fa318717348dd1c4b73
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d1bb111bbaa909c52261a0dbafe6d6e0a24390ac
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101667343"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112007255"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 专用主机
 
 Azure 专用主机是一种提供物理服务器（能够托管一个或多个虚拟机）的服务，专用于一个 Azure 订阅。 专用主机是数据中心中使用的相同物理服务器，作为资源提供。 你可以在区域、可用性区域和容错域中预配专用主机。 然后，可以按照最能满足你的需要的配置将 VM 直接放入预配的主机中。
 
 
-## <a name="benefits"></a>优点 
+## <a name="benefits"></a>优点
 
 预留整个主机具有以下优势：
 
@@ -30,7 +30,7 @@ Azure 专用主机是一种提供物理服务器（能够托管一个或多个�
 -   借助 Azure 混合权益，你可以在 Azure 中使用自己的 Windows 和 SQL 许可证。 使用混合权益可以提供更多的优势。 有关详细信息，请参阅 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)。
 
 
-## <a name="groups-hosts-and-vms"></a>组、主机和 VM  
+## <a name="groups-hosts-and-vms"></a>组、主机和 VM
 
 ![专用主机的新资源的视图。](./media/virtual-machines-common-dedicated-hosts/dedicated-hosts2.png)
 
@@ -39,7 +39,7 @@ Azure 专用主机是一种提供物理服务器（能够托管一个或多个�
 主机  是映射到 Azure 数据中心内的物理服务器的资源。 创建主机时，将分配物理服务器。 主机是在主机组中创建的。 主机提供一个 SKU，用于描述可创建哪些 VM 大小。 每个主机可以托管多个不同大小的 VM，前提是这些 VM 来自相同的大小系列。
 
 
-## <a name="high-availability-considerations"></a>高可用性注意事项 
+## <a name="high-availability-considerations"></a>高可用性注意事项
 
 要实现高可用性，应部署多个 VM，并将其分散在多个主机（最少 2 个）上。 在使用 Azure 专用主机的情况下，有多个选项可用来预配基础结构，以形成故障隔离边界。
 
@@ -63,45 +63,45 @@ Azure 专用主机是一种提供物理服务器（能够托管一个或多个�
 
 可以同时使用这两项功能，以至于实现故障隔离。 在这种情况下，你将在中为每个主机组指定可用性区域和容错域计数，将容错域分配给组中的每个主机，并为每个 VM 分配一个可用性区域
 
-[此处](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)提供的资源管理器示例模板使用区域和容错域传播主机以实现区域中的最高复原能力。
+[资源管理器示例模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md)使用区域和容错域传播主机以充分实现区域中的复原能力。
 
 
-## <a name="manual-vs-automatic-placement"></a>手动放置与自动放置 
+## <a name="manual-vs-automatic-placement"></a>手动放置与自动放置
 
-在 Azure 中创建 VM 时，可以选择要使用哪个专用主机。 还可以使用相应的选项将 VM 自动放置在主机组中的现有主机上。 
+在 Azure 中创建 VM 时，可以选择要使用哪个专用主机。 还可以使用相应的选项将 VM 自动放置在主机组中的现有主机上。
 
-在创建新主机组时，请确保选择用于自动 VM 放置的设置。 在创建 VM 时，请选择该主机组，并让 Azure 为 VM 选择最佳主机。 
+在创建新主机组时，请确保选择用于自动 VM 放置的设置。 在创建 VM 时，请选择该主机组，并让 Azure 为 VM 选择最佳主机。
 
-已启用自动放置的主机组并不要求所有的 VM 均自动放置。 即使为该主机组选择了自动放置，你仍然能够显式选择主机。 
+已启用自动放置的主机组并不要求所有的 VM 均自动放置。 即使为该主机组选择了自动放置，你仍然能够显式选择主机。
 
 ### <a name="limitations"></a>限制
 
 在使用自动 VM 放置时，有以下已知的问题和限制：
 
 - 无法在专用主机上应用 Azure 混合权益。
-- 无法重新部署 VM。 
-- 无法在专用主机上使用 Lsv2、NVasv4、Nvsv3、Msv2 或 M系列 VM 
+- 无法重新部署 VM。
+- 无法在专用主机上使用 Lsv2、NVasv4、Nvsv3、Msv2 或 M系列 VM
 
 
 ## <a name="virtual-machine-scale-set-support"></a>虚拟机规模集支持
 
-利用虚拟机规模集，可以将一组虚拟机视为单一资源，并可以将其作为一个组来应用可用性、管理、缩放和业务流程策略。 现有的专用主机也可以用于虚拟机规模集。 
+利用虚拟机规模集，可以将一组虚拟机视为单一资源，并可以将其作为一个组来应用可用性、管理、缩放和业务流程策略。 现有的专用主机也可以用于虚拟机规模集。
 
 在创建虚拟机规模集时，可以指定现有主机组，以便在专用主机上创建所有的 VM 实例。
 
 在专用主机组中创建虚拟机规模集时，需要满足以下要求：
 
 - 需要启用自动 VM 放置。
-- 主机组的可用性设置应当与规模集相匹配。 
+- 主机组的可用性设置应当与规模集相匹配。
     - 应将区域主机组（创建时未指定可用地区）用于区域规模集。
-    - 主机组和规模集必须使用相同的可用性区域。 
+    - 主机组和规模集必须使用相同的可用性区域。
     - 主机组级别的容错域计数应当与规模集的容错域计数相匹配。 通过 Azure 门户，可以为规模集指定“最大分布”，这会将容错域计数设置为 1。
 - 应该先创建具有足够容量且具有相同规模集区域设置与容错域设置的专用主机。
 - 专用主机支持的 VM 大小应当与用于规模集的 VM 大小相匹配。
 
-专用主机并非支持所有的规模集业务流程和优化设置。 请将以下设置应用于规模集： 
-- 不建议过度预配，该功能默认处于禁用状态。 可以启用过度预配，但如果主机组没有用于所有 VM 的足够容量（包括过度预配的实例），则规模集分配将失败。 
-- 使用 ScaleSetVM 业务流程模式 
+专用主机并非支持所有的规模集业务流程和优化设置。 请将以下设置应用于规模集：
+- 不建议过度预配，该功能默认处于禁用状态。 可以启用过度预配，但如果主机组没有用于所有 VM 的足够容量（包括过度预配的实例），则规模集分配将失败。
+- 使用 ScaleSetVM 业务流程模式
 - 请勿将邻近放置组用于归置
 
 
@@ -123,7 +123,7 @@ Azure 专用主机是一种提供物理服务器（能够托管一个或多个�
 部署专用主机时会使用两种类型的配额。
 
 1. 专用主机 vCPU 配额。 默认配额限制为每个区域 3000 vCPU。
-1. VM 大小系列配额。 例如，在美国东部区域，“即用即付”订阅仅为 Dsv3 大小系列提供 10 个 vCPU 的配额。 若要部署 Dsv3 专用主机，则需要请求将配额提高到至少 64 个 vCPU，然后才能部署专用主机。 
+1. VM 大小系列配额。 例如，在美国东部区域，“即用即付”订阅仅为 Dsv3 大小系列提供 10 个 vCPU 的配额。 若要部署 Dsv3 专用主机，则需要请求将配额提高到至少 64 个 vCPU，然后才能部署专用主机。
 
 若要请求提高配额，请在 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)中创建支持请求。
 
@@ -147,17 +147,17 @@ Azure 专用主机是一种提供物理服务器（能够托管一个或多个�
 有关详细信息，请参阅 [Azure 专用主机定价](https://aka.ms/ADHPricing)。
 
 还可以使用 [Azure 专用主机的保留实例](prepay-dedicated-hosts-reserved-instances.md)节省成本。
- 
+
 ## <a name="sizes-and-hardware-generations"></a>大小和硬件代系
 
-SKU 是为主机定义的，表示 VM 大小系列和类型。 可以在单个主机中混合使用多个不同大小的 VM，只要这些 VM 属于相同的大小系列即可。 
+SKU 是为主机定义的，表示 VM 大小系列和类型。 可以在单个主机中混合使用多个不同大小的 VM，只要这些 VM 属于相同的大小系列即可。
 
-类型  为硬件代系。 相同 VM 系列的不同硬件类型来自不同的 CPU 供应商，具有不同的 CPU 代系和核心数。 
+类型  为硬件代系。 相同 VM 系列的不同硬件类型来自不同的 CPU 供应商，具有不同的 CPU 代系和核心数。
 
 大小和硬件类型因区域而异。 请参阅主机[定价页](https://aka.ms/ADHPricing)来了解详细信息。
 
 > [!NOTE]
-> 预配某个专用主机后，就无法更改其大小或类型。 如果需要不同的大小或类型，需要创建新主机。  
+> 预配某个专用主机后，就无法更改其大小或类型。 如果需要不同的大小或类型，需要创建新主机。
 
 ## <a name="host-life-cycle"></a>主机生命周期
 
@@ -176,6 +176,6 @@ Azure 将会监视和管理主机的运行状况状态。 查询主机时，将�
 
 - 可使用 [Azure PowerShell](./windows/dedicated-hosts-powershell.md)、[门户](./dedicated-hosts-portal.md)和 [Azure CLI](./linux/dedicated-hosts-cli.md) 部署专用主机。
 
-- [此处](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)有一个示例模板，该模板使用区域和容错域来最大限度地提高在某个地区的复原能力。
+- 此处有[示例模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md)，此模板使用区域和容错域来充分实现区域中的复原能力。
 
 - 还可以使用 [Azure 专用主机的保留实例](prepay-dedicated-hosts-reserved-instances.md)节省成本。

@@ -2,14 +2,14 @@
 title: 备份 Azure Database for PostgreSQL
 description: 了解具有长期保留功能的 Azure Database for PostgreSQL 备份（预览版）
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.custom: references_regions
-ms.openlocfilehash: 1e2d83d4a5e21ed747ec9d4dcf2fa03d1e3935cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/12/2021
+ms.custom: references_regions , devx-track-azurecli
+ms.openlocfilehash: 4f8e44bbaba87581b3c988602a436ed18b1a1a20
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737566"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110061761"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>具有长期保留功能的 Azure Database for PostgreSQL 备份（预览版）
 
@@ -135,10 +135,9 @@ Azure 备份和 Azure 数据库服务共同致力于为 Azure Database for Postg
 
 1. 定义保留设置。 可以添加一个或多个保留规则。 每个保留规则均假定特定备份的输入，以及这些备份的数据存储和保留期限。
 
-1. 可以选择将备份存储到两个数据存储（或分层）之一中：备份数据存储（标准层）或存档数据存储（预览版）。 可以在两个分层选项之间进行选择，以定义何时在两个数据存储中对备份进行分层：
+1. 可以选择将备份存储到两个数据存储（或分层）之一中：备份数据存储（标准层）或存档数据存储（预览版）。
 
-    - 如果希望在备份数据存储和存档数据存储中同时拥有备份副本，请选择“立即”复制。
-    - 如果希望在备份数据存储中的备份过期时将其移动到存档数据存储，请选择“过期时”移动。
+   可以选择“过期时”以在备份数据存储中的备份过期时将其移动到存档数据存储。
 
 1. 默认保留规则在没有其他保留规则的情况下适用，其默认值为 3 个月。
 
@@ -197,7 +196,21 @@ Azure 备份和 Azure 数据库服务共同致力于为 Azure Database for Postg
 
     ![还原为文件](./media/backup-azure-database-postgresql/restore-as-files.png)
 
+1. 如果恢复点位于存档层中，则必须在还原之前解除冻结恢复点。
+   
+   ![解除冻结设置](./media/backup-azure-database-postgresql/rehydration-settings.png)
+   
+   提供解除冻结所需的以下附加参数：
+   - “解除冻结优先级”：默认值为"标准"。 
+   - “解除冻结持续时间”：最大解除冻结持续时间为 30 天，最小解除冻结持续时间为 10 天。 默认值为 **15**。
+   
+   恢复点存储在“备份数据存储”中，持续时间为指定的解除冻结持续时间。
+
+
 1. 核对信息，然后选择“还原”。 这将触发相应的还原作业，该作业可以在“备份作业”下进行跟踪。
+
+>[!NOTE]
+>对 Azure Database for PostgreSQL 的存档支持以有限的公共预览版形式提供。
 
 ## <a name="prerequisite-permissions-for-configure-backup-and-restore"></a>配置备份和还原的必备权限
 
@@ -220,7 +233,7 @@ Azure 备份遵循严格的安全准则。 即使它是本机 Azure 服务，也
 
 ### <a name="stop-protection"></a>停止保护
 
-你可以停止对某个备份项的保护。 这还会删除该备份项的关联恢复点。 我们尚未提供在保留现有恢复点的同时停止保护的选项。
+你可以停止对某个备份项的保护。 这还会删除该备份项的关联恢复点。 如果恢复点至少六个月不在存档层中，则删除这些恢复点会产生早期删除费用。 我们尚未提供在保留现有恢复点的同时停止保护的选项。
 
 ![停止保护](./media/backup-azure-database-postgresql/stop-protection.png)
 
@@ -242,7 +255,7 @@ Azure 备份遵循严格的安全准则。 即使它是本机 Azure 服务，也
 
 ### <a name="usererrormsimissingpermissions"></a>UserErrorMSIMissingPermissions
 
-在要备份或还原的 PG 服务器上授予备份保管库 MSI 读取访问权限：
+在要备份或还原的 PG 服务器上授予备份保管库 MSI“读取”访问权限。
 
 为了建立与 PostgreSQL 数据库的安全连接，Azure 备份使用[托管服务标识 (MSI)](../active-directory/managed-identities-azure-resources/overview.md) 身份验证模型。 这意味着备份保管库只能访问由用户显式授予权限的资源。
 
@@ -260,15 +273,11 @@ Azure 备份遵循严格的安全准则。 即使它是本机 Azure 服务，也
 
 1. 在右侧打开的上下文窗格中，输入以下信息：<br>
 
-    **角色**：读者<br>
-    **将访问权限分配到**：选择“备份保管库”<br>
-    如果在下拉列表中找不到“备份保管库”选项，请选择“Azure AD 用户、组或服务主体”选项<br>
+   - “角色”：在下拉列表中选择“读者”角色。 <br>
+   - “分配访问权限”：在下拉列表中选择“用户、组或服务主体”选项。 <br>
+   - **选择**：输入要将此服务器及其数据库备份到的备份保管库的名称。<br>
 
-    ![选择角色](./media/backup-azure-database-postgresql/select-role.png)
-
-    **选择**：输入要将此服务器及其数据库备份到的备份保管库的名称。<br>
-
-    ![输入备份保管库名称](./media/backup-azure-database-postgresql/enter-backup-vault-name.png)
+    ![选择角色](./media/backup-azure-database-postgresql/select-role-and-enter-backup-vault-name.png)
 
 ### <a name="usererrorbackupuserauthfailed"></a>UserErrorBackupUserAuthFailed
 
@@ -325,4 +334,4 @@ Azure 备份遵循严格的安全准则。 即使它是本机 Azure 服务，也
 
 ## <a name="next-steps"></a>后续步骤
 
-- [备份保管库概述](backup-vault-overview.md)
+[备份保管库概述](backup-vault-overview.md)

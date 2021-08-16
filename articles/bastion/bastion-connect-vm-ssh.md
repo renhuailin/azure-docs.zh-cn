@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Bastion 连接到 Linux VM
-description: 本文介绍如何使用 Azure Bastion 连接到 Linux 虚拟机。
+description: 了解如何使用 Azure Bastion 连接到 Linux 虚拟机。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: a5cda5d4d447bc04f853ea4a9abd15be75e7e177
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a6f9add11b6632d1ee26041ade0ade45ec58716d
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100588647"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110538074"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>使用 Azure Bastion 通过 SSH 连接到 Linux 虚拟机
 

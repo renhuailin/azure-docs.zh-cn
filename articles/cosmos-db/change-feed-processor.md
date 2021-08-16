@@ -7,15 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 06/09/2021
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 409b51682700a8b13b2840f171642bdcbee6f6d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: daecd065779919defc66d9668a6d5d7b972d60be
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93340220"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111891978"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -69,6 +69,9 @@ ms.locfileid: "93340220"
 ## <a name="error-handling"></a>错误处理。
 
 更改源处理器可在发生用户代码错误后复原。 这意味着，如果委托实现具有未经处理的异常（步骤 #4），则将停止处理特定更改批次的线程，并将创建一个新线程。 新线程将检查租赁存储在该分区键值范围内的最新时间点，并从该时间点重启，从而有效地向委托发送同一批更改。 此行为一直持续到委托能正确处理更改为止，这也是更改源处理器能够提供“至少一次”保证的原因，因为如果委托代码引发异常，它将重试该批次。
+
+> [!NOTE]
+> 只有一种情况不会重试一批更改。 如果第一次执行委托时发生故障，则租用存储没有以前保存的状态可用于重试。 在这种情况下，重试将使用[初始启动配置](#starting-time)，该配置可能包含也可能不包含最后一批次。
 
 若要防止更改源处理器不断地重试同一批更改，应在委托代码中添加逻辑，以便在出现异常时将文档写入死信队列。 此设计可确保你可以跟踪未处理的更改，同时仍然能够继续处理将来的更改。 死信队列可能是另一个 Cosmos 容器。 确切的数据存储并不重要，只是未处理的更改会被保留。
 

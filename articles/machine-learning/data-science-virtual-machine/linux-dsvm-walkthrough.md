@@ -4,16 +4,16 @@ titleSuffix: Azure Data Science Virtual Machine
 description: 了解如何使用 Linux Data Science Virtual Machine 执行多种常见数据科学任务。
 services: machine-learning
 ms.service: data-science-vm
-author: lobrien
-ms.author: laobri
+author: timoklimmer
+ms.author: tklimmer
 ms.topic: conceptual
-ms.date: 09/17/2020
-ms.openlocfilehash: 42136d0d58dbc318aab0e111fcef46f80751ca88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 05/10/2021
+ms.openlocfilehash: 453b7558ac4f26395186a6aabc54ce831b5ef9b5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100517665"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110071877"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>使用 Azure 中的 Ubuntu Data Science Virtual Machine 完成数据科学任务
 
@@ -29,7 +29,6 @@ ms.locfileid: "100517665"
 
 * [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 有关预配虚拟机的信息，请参阅[预配 Ubuntu Data Science Virtual Machine](./release-notes.md)。
 * 计算机上安装了 [X2Go](https://wiki.x2go.org/doku.php) 且 XFCE 会话处于打开状态。 有关详细信息，请参阅[安装和配置 X2Go 客户端](dsvm-ubuntu-intro.md#x2go)。
-* 为获得更流畅的滚动体验，请在 DSVM 的 Firefox Web 浏览器中切换 `about:config` 中的 `gfx.xrender.enabled` 标记。 [了解详细信息](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 此外，考虑将 `mousewheel.enable_pixel_scrolling` 设置为 `False`。 [了解详细信息](https://support.mozilla.org/questions/981140)。
 
 ## <a name="download-the-spambase-dataset"></a>下载 spambase 数据集
 
@@ -70,7 +69,7 @@ mv headers spambaseHeaders.data
 
 ## <a name="explore-the-dataset-by-using-r-open"></a>使用 R Open 探索数据集
 
-让我们使用 R 来检查数据并执行一些基本的机器学习。DSVM 已预安装了 [Microsoft R Open](https://mran.revolutionanalytics.com/open/)。 预安装版的 R 中的多线程数学库提供了优于单线程版本的性能。 通过使用 CRAN 程序包存储库的快照，R Open 还提供了再现功能。
+让我们使用 R 来检查数据并执行一些基本的机器学习。DSVM 已预安装了 CRAN R。
 
 若要获取本演练中使用的代码示例的副本，请使用 git 克隆 Azure-Machine-Learning-Data-Science 存储库。 Git 已预装在 DSVM 上。 从 git 命令行运行：
 

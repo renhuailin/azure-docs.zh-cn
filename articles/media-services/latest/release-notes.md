@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 1b3d13402e18659d0deba723eaf52d4eb5959253
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 7eff89301fa54312ffef323023100660237185a4
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379244"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111955339"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -28,6 +28,12 @@ ms.locfileid: "110379244"
 * 已知问题
 * Bug 修复
 * 已弃用的功能
+
+## <a name="may-2021"></a>2021 年 5 月
+
+### <a name="availability-zones-default-support-in-media-services"></a>媒体服务中的可用性区域默认支持
+
+媒体服务现在支持[可用性区域](concept-availability-zones.md)，在同一 Azure 区域内提供故障隔离位置。  媒体服务帐户现在默认为区域冗余，无需其他配置或设置。 请注意，这仅适用于具有[可用性区域支持](../../availability-zones/az-region.md#azure-regions-with-availability-zones)的区域
 
 ## <a name="march-2021"></a>2021 年 3 月
 
@@ -498,7 +504,7 @@ CMAF 和“cbcs”加密支持 Apple HLS (iOS 11+) 以及支持 CMAF 的 MPEG-DA
 
 ### <a name="video-indexer"></a>视频索引器
 
-视频索引器 GA 版本于 8 月份发布。 有关当前支持的功能的新信息，请参阅[什么是视频索引器](../video-indexer/video-indexer-overview.md?bc=/azure/media-services/video-indexer/breadcrumb/toc.json&toc=/azure/media-services/video-indexer/toc.json)。 
+视频索引器 GA 版本于 8 月份发布。 有关当前支持的功能的新信息，请参阅[什么是视频索引器](../../azure-video-analyzer/video-analyzer-for-media-docs/video-indexer-overview.md?bc=%2fazure%2fmedia-services%2fvideo-indexer%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fmedia-services%2fvideo-indexer%2ftoc.json)。 
 
 ### <a name="plans-for-changes"></a>更改计划
 

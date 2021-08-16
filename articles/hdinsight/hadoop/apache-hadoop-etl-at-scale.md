@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: f11b31ba698c193029834caada2e5c4cf3ef2902
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e1621acb66e62b03418b59f184ba4e7fa031a164
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866635"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110472103"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大规模提取、转换和加载 (ETL)
 
@@ -63,7 +63,7 @@ Azure 存储包含多种类型的 Blob。 “追加 Blob”是存储 Web 日志�
 
 Azure 存储为 Blob 存储提供了一个 WebHDFS API 层。 所有 HDInsight 服务都可以访问 Azure Blob 存储中的文件，以便进行数据清理和数据处理。 这类似于这些服务使用 Hadoop 分布式文件系统 (HDFS) 的方式。
 
-数据通常通过 PowerShell、Azure 存储 SDK 或 AZCopy 引入到 Azure 存储中。
+数据通常通过 PowerShell、Azure 存储 SDK 或 AzCopy 引入到 Azure 存储中。
 
 ### <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
 

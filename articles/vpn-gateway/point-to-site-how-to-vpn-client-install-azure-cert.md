@@ -1,26 +1,31 @@
 ---
-title: Azure VPN 网关：安装点到站点客户端证书
-description: 安装用于 P2S 证书身份验证的客户端证书 - Windows、Mac、Linux。
+title: 安装点到站点客户端证书
+titleSuffix: Azure VPN Gateway
+description: 了解如何安装用于 P2S 证书身份验证的客户端证书 - Windows、Mac、Linux。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 06/03/2021
 ms.author: cherylmc
-ms.openlocfilehash: 8c4d37f67d89ad1b7973a85fb6c2a9f7e818a028
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d4ab1009b38d250a39455a9e8a470cd7f1156793
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89421656"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527094"
 ---
 # <a name="install-client-certificates-for-p2s-certificate-authentication-connections"></a>安装用于 P2S 证书身份验证连接的客户端证书
 
-使用点到站点 Azure 证书身份验证连接到虚拟机的所有客户端都需要一个客户端证书。 本文可用来帮助安装在使用 P2S 连接到 VNet 时用于身份验证的客户端证书。
+当 P2S VPN 网关配置为需要证书身份验证时，每个客户端都必须在本地安装一个客户端证书。 可基于自签名根证书生成客户端证书，也可基于使用企业 CA 解决方案生成的根证书来生成客户端证书。 
 
-## <a name="acquire-a-client-certificate"></a><a name="generate"></a>获取客户端证书
+生成客户端证书时，证书通常会自动安装在生成它的客户端计算机上。 如果要从其他客户端计算机连接到 VNet，则需要在要连接的计算机上安装客户端证书。 这是在该计算机上配置 VPN 客户端的补充。
 
-无论要从什么客户端操作系统进行连接，都必须具有客户端证书。 可以基于使用企业 CA 解决方案生成的根证书来生成客户端证书，也可以生成自签名证书。 有关生成客户端证书的步骤，请参阅 [PowerShell](vpn-gateway-certificates-point-to-site.md)、[MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) 或 [Linux](vpn-gateway-certificates-point-to-site-linux.md) 说明。 
+可使用多种方法来生成和导出自签名证书。 有关详细信息，请参阅以下文章：
+
+* [PowerShell](vpn-gateway-certificates-point-to-site.md)
+* [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)
+* [Linux](vpn-gateway-certificates-point-to-site-linux.md) 
 
 ## <a name="windows"></a><a name="installwin"></a>Windows
 

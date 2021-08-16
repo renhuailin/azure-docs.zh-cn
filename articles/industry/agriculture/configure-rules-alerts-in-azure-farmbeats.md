@@ -1,16 +1,16 @@
 ---
 title: 配置规则并管理警报
 description: 介绍如何在 FarmBeats 中配置规则和管理警报
-author: RiyazPishori
+author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: riyazp
-ms.openlocfilehash: b9110d522d6b7b07549d022be5c67f204224cd0d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.author: v-ummehabiba
+ms.openlocfilehash: a04f973cbfa3a68016065f50e9e2ff4f7566da94
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751402"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102182921"
 ---
 # <a name="configure-rules-and-manage-alerts"></a>配置规则并管理警报
 

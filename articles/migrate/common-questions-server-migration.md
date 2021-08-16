@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 63c7f226dcd99ec8040f2078ce12be0fe3c594df
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e9d29b4e71221ca072699967d4af8fbaa7061467
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99548795"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111754018"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate 服务器迁移：常见问题
 
@@ -71,7 +71,7 @@ ms.locfileid: "99548795"
 
 ## <a name="can-we-use-the-same-azure-migrate-project-to-migrate-to-multiple-subscriptions"></a>是否可以使用同一个 Azure Migrate 项目迁移到多个订阅？ 
 
-是的，可以迁移到 Azure Migrate 项目的同一目标区域中的多个订阅。 可以在为一台计算机或一组计算机启用复制时选择目标订阅。 为无代理 VMware 迁移完成首次复制后，以及为基于代理的迁移和无代理 Hyper-V 迁移分别进行设备复制和 Hyper-V 提供程序安装期间，将锁定目标区域。
+是的，可以迁移到 Azure Migrate 项目的同一目标区域中的多个订阅（同一 Azure 租户）。 可以在为一台计算机或一组计算机启用复制时选择目标订阅。 为无代理 VMware 迁移完成首次复制后，以及为基于代理的迁移和无代理 Hyper-V 迁移分别进行设备复制和 Hyper-V 提供程序安装期间，将锁定目标区域。
 
 ## <a name="what-are-the-migration-options-in-azure-migrate-server-migration"></a>“Azure Migrate: 服务器迁移”中提供哪些迁移选项？
 
@@ -138,7 +138,52 @@ ms.locfileid: "99548795"
 
 要在 NetQosPolicy 中使用的 AppNamePrefix 为“GatewayWindowsService.exe”。 可按如下所示在 Azure Migrate 设备上创建一个策略，以限制来自设备的复制流量：
 
-New-NetQosPolicy -Name "ThrottleReplication" -AppPathNameMatchCondition "GatewayWindowsService.exe" -ThrottleRateActionBitsPerSecond 1 MB
+```powershell
+New-NetQosPolicy -Name "ThrottleReplication" -AppPathNameMatchCondition "GatewayWindowsService.exe" -ThrottleRateActionBitsPerSecond 1MB
+```
+
+若要根据计划增加和减少复制带宽，可以利用 Windows 计划任务根据需要缩放带宽。 一个任务将用于减少带宽，另一个任务将用于增加带宽。
+注意：在执行下面的命令之前，需要创建上面概述的 NetQosPolicy。
+```powershell
+#Replace with an account part of the local Administrators group
+$User = "localVmName\userName"
+
+#Set the task names
+$ThrottleBandwidthTask = "ThrottleBandwidth"
+$IncreaseBandwidthTask = "IncreaseBandwidth"
+
+#Create a directory to host PowerShell scaling scripts
+if (!(Test-Path "C:\ReplicationBandwidthScripts"))
+{
+ New-Item -Path "C:\" -Name "ReplicationBandwidthScripts" -Type Directory
+}
+
+#Set your minimum bandwidth to be used during replication by changing the ThrottleRateActionBitsPerSecond parameter
+#Currently set to 10 MBps
+New-Item C:\ReplicationBandwidthScripts\ThrottleBandwidth.ps1
+Set-Content C:\ReplicationBandwidthScripts\ThrottleBandwidth.ps1 'Set-NetQosPolicy -Name "ThrottleReplication" -ThrottleRateActionBitsPerSecond 10MB'
+$ThrottleBandwidthScript = "C:\ReplicationBandwidthScripts\ThrottleBandwidth.ps1"
+
+#Set your maximum bandwidth to be used during replication by changing the ThrottleRateActionBitsPerSecond parameter
+#Currently set to 1000 MBps
+New-Item C:\ReplicationBandwidthScripts\IncreaseBandwidth.ps1
+Set-Content C:\ReplicationBandwidthScripts\IncreaseBandwidth.ps1 'Set-NetQosPolicy -Name "ThrottleReplication" -ThrottleRateActionBitsPerSecond 1000MB'
+$IncreaseBandwidthScript = "C:\ReplicationBandwidthScripts\IncreaseBandwidth.ps1"
+
+#Timezone set on the Azure Migrate Appliance (VM) will be used; change the frequency to meet your needs
+#In this example, the bandwidth is being throttled every weekday at 8:00 AM local time
+#The bandwidth is being increased every weekday at 6:00 PM local time
+$ThrottleBandwidthTrigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday,Tuesday,Wednesday,Thursday,Friday -At 8:00am
+$IncreaseBandwidthTrigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday,Tuesday,Wednesday,Thursday,Friday -At 6:00pm
+
+#Setting the task action to execute the scripts
+$ThrottleBandwidthAction = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-executionpolicy bypass -noprofile -file $ThrottleBandwidthScript" 
+$IncreaseBandwidthAction = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-executionpolicy bypass -noprofile -file $IncreaseBandwidthScript" 
+
+#Creating the Scheduled tasks
+Register-ScheduledTask -TaskName $ThrottleBandwidthTask -Trigger $ThrottleBandwidthTrigger -User $User -Action $ThrottleBandwidthAction -RunLevel Highest -Force
+Register-ScheduledTask -TaskName $IncreaseBandwidthTask -Trigger $IncreaseBandwidthTrigger -User $User -Action $IncreaseBandwidthAction -RunLevel Highest -Force
+```
 
 ## <a name="how-is-the-data-transmitted-from-on-prem-environment-to-azure-is-it-encrypted-before-transmission"></a>如何将数据从本地环境传输到 Azure？ 传输前数据是否经过加密？
 

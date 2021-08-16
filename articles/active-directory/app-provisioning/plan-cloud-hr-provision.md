@@ -3,20 +3,20 @@ title: 计划云 HR 应用程序到 Azure Active Directory 的用户预配
 description: 本文介绍将云 HR 系统（如 Workday 和 SuccessFactors）与 Azure Active Directory 集成的部署过程。 将 Azure AD 与云 HR 系统集成会生成一个完整的标识生命周期管理系统。
 services: active-directory
 author: kenwith
-manager: daveba
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/22/2019
+ms.date: 06/07/2021
 ms.author: kenwith
-ms.reviewer: arvindha, celested
-ms.openlocfilehash: d9171226de7c975e75139af92798ea78419428f0
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.reviewer: arvinh
+ms.openlocfilehash: fb2f36e1b51ed5fbb7c3f2c002760d07f3723645
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175417"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590431"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>计划云 HR 应用程序到 Azure Active Directory 的用户预配
 
@@ -85,7 +85,7 @@ HR 驱动的 IT 预配的这一功能提供了以下重要的业务优势：
 - Azure AD [应用管理员](../roles/permissions-reference.md#application-administrator)角色在 Azure 门户中配置预配应用
 - 云 HR 应用的测试和生产实例。
 - 云 HR 应用中拥有管理员权限，可创建系统集成用户，并可做出更改以便出于测试目的测试员工数据。
-- 为了将用户预配到 Active Directory，需要一个运行带有 .NET 4.7.1 + 运行时的 Windows Server 2012 或更高版本的服务器，才能托管 Azure AD Connect 预配代理
+- 要将用户预配到 Active Directory，需要运行 Windows Server 2016 或更高版本的服务器，才能托管 Azure AD Connect 预配代理。 此服务器应该是基于 Active Directory 管理层模型的第 0 层服务器。
 - [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md)，用于在 Active Directory 与 Azure AD 之间同步用户。
 
 ### <a name="training-resources"></a>培训资源
@@ -182,7 +182,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 |:-|:-|
 |要部署的 Azure AD Connect 预配代理数|2个（用于高可用性和故障转移）
 |要配置的预配连接器应用数|每个子域一个应用|
-|用于 Azure AD Connect 预配代理的服务器主机|发现经地理定位的 Active Directory 域控制器的 Windows 2012 R2+</br>可以与 Azure AD Connect 服务共存|
+|用于 Azure AD Connect 预配代理的服务器主机|Windows Server 2016，可以视线分析地理定位的 Active Directory 域控制器</br>可以与 Azure AD Connect 服务共存|
 
 ![到本地代理的流](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img4.png)
 
@@ -196,24 +196,133 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 |:-|:-|
 |要在本地部署的 Azure AD Connect 预配代理数|每个非连续 Active Directory 林部署2个|
 |要配置的预配连接器应用数|每个子域一个应用|
-|用于 Azure AD Connect 预配代理的服务器主机|发现经地理定位的 Active Directory 域控制器的 Windows 2012 R2+</br>可以与 Azure AD Connect 服务共存|
+|用于 Azure AD Connect 预配代理的服务器主机|Windows Server 2016，可以视线分析地理定位的 Active Directory 域控制器</br>可以与 Azure AD Connect 服务共存|
 
 ![单个云 HR 应用租户非连续 Active Directory 林](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img5.png)
 
 ### <a name="azure-ad-connect-provisioning-agent-requirements"></a>Azure AD Connect 预配代理要求
 
-云 HR 应用到 Active Directory 用户预配解决方案要求在运行 Windows 2012 R2 或更高版本的服务器上部署一个或多个 Azure AD Connect 预配代理。 服务器必须至少具有 4-GB RAM 和 .NET 4.7.1 + 运行时。 确保主机服务器具有对目标 Active Directory 域的网络访问权限。
+云 HR 应用到 Active Directory 用户预配解决方案要求在运行 Windows Server 2016 或更高版本的服务器上部署一个或多个 Azure AD Connect 预配代理。 服务器必须至少具有 4-GB RAM 和 .NET 4.7.1 + 运行时。 确保主机服务器具有对目标 Active Directory 域的网络访问权限。
 
 为准备本地环境，Azure AD Connect 预配代理配置向导将代理注册到 Azure AD 租户， [打开端口](../app-proxy/application-proxy-add-on-premises-application.md#open-ports)，[允许访问 URL](../app-proxy/application-proxy-add-on-premises-application.md#allow-access-to-urls)，并支持[出站 HTTPS 代理配置](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)。
 
-预配代理使用服务帐户与 Active Directory 域通信。 在安装代理之前，请在满足以下要求的 Active Directory 用户和计算机中创建服务帐户：
-
-- 未过期的密码
-- 用于读取、创建、删除和管理用户帐户的委托控制权限
+预配代理会配置 [全局托管服务帐户 (GMSA)](../cloud-sync/how-to-prerequisites.md#group-managed-service-accounts)，以与 Active Directory 域通信。 若要使用非 GMSA 服务帐户进行预配，可以[跳过 GMSA 配置](../cloud-sync/how-to-manage-registry-options.md#skip-gmsa-configuration)，在配置过程中指定服务帐户。 
 
 可以选择应处理预配请求的域控制器。 如果有多个地理上分散的域控制器，请将预配代理安装在与首选域控制器相同的站点中。 此定位提高端到端解决方案的可靠性和性能。
 
 为实现高可用性，可以部署多个 Azure AD Connect 预配代理。 注册代理以处理同一组本地 Active Directory 域。
+
+## <a name="design-hr-provisioning-app-deployment-topology"></a>设计 HR 预配应用部署拓扑
+
+根据入站用户预配配置中涉及的 Active Directory 域数，你可以考虑以下其中一种部署拓扑。 每个拓扑图都使用示例部署方案来突出显示配置相关方面。 使用与部署要求非常相似的示例来确定可满足需求的配置。 
+
+### <a name="deployment-topology-1-single-app-to-provision-all-users-from-cloud-hr-to-single-on-premises-active-directory-domain"></a>部署拓扑 1：通过单个应用将云 HR 中的所有用户预配到单个本地 Active Directory 域
+
+这是最常见的部署拓扑。 如果需要将云 HR 中的所有用户预配到单个 AD 域，并让所有用户应用相同的预配规则，可以使用此拓扑。 
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-1-single-app-with-single-ad-domain.png" alt-text="通过单个应用将 Cloud HR 中的用户预配到单个 AD 域的屏幕截图" lightbox="media/plan-cloud-hr-provision/topology-1-single-app-with-single-ad-domain.png":::
+
+最重要的配置方面
+* 设置两个适用高可用性和故障转移的预配代理节点。 
+* 使用[预配代理配置向导](../cloud-sync/how-to-install.md#install-the-agent)将 AD 域注册到 Azure AD 租户。 
+* 配置预配应用时，从已注册域的下拉列表中选择 AD 域。 
+* 若使用范围筛选器，请配置[跳过范围外删除标志](skip-out-of-scope-deletions.md)以防止系统意外停用帐户。 
+
+### <a name="deployment-topology-2-separate-apps-to-provision-distinct-user-sets-from-cloud-hr-to-single-on-premises-active-directory-domain"></a>部署拓扑 2：通过不同应用将云 HR 中的不同用户集预配到单一本地 Active Directory 域
+
+此拓扑支持满足业务要求，其中属性映射和预配逻辑会因用户类型（员工/合同工）、用户所在位置或用户所属业务部门而存在差异。 借助此拓扑，你还可以根据部门或国家/地区委托入站用户预配的管理与维护工作。
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-2-separate-apps-with-single-ad-domain.png" alt-text="通过不同应用将云 HR 中的用户预配到单一 AD 域的屏幕截图" lightbox="media/plan-cloud-hr-provision/topology-2-separate-apps-with-single-ad-domain.png":::
+
+最重要的配置方面
+* 设置两个适用高可用性和故障转移的预配代理节点。 
+* 为要预配的每一个不同用户集创建 HR2AD 预配应用。 
+* 使用预配应用中的[范围筛选器](define-conditional-rules-for-provisioning-user-accounts.md)来定义要由每个应用处理的用户。 
+* 若要处理需要跨不同用户集（例如，向作为员工的经理报告的合同工）解析管理员引用的情况，可以创建单独的 HR2AD 预配应用，以仅更新 manager 属性。 将此应用的范围设置为所有用户。 
+* 配置[跳过范围外删除标志](skip-out-of-scope-deletions.md)以防止系统意外停用帐户。 
+
+> [!NOTE] 
+> 若没有测试用 AD 域且使用 AD 中的 TEST OU 容器，可以使用此拓扑创建两个单独的应用“HR2AD (Prod)”和“HR2AD (Test)”。 先使用 HR2AD (Test) 应用测试属性映射更改，然后再将属性映射更改提升到 HR2AD (Prod) 应用。  
+
+### <a name="deployment-topology-3-separate-apps-to-provision-distinct-user-sets-from-cloud-hr-to-multiple-on-premises-active-directory-domains-no-cross-domain-visibility"></a>部署拓扑 3：通过不同应用将云 HR 中的不同用户集预配到多个本地 Active Directory 域（不具跨域可见性）
+
+如果管理员始终与用户存在于同一域中，并且不需要从林中查找 userPrincipalName、samAccountName 和 mail   等属性的唯一 ID 生成规则，可以使用此拓扑可以管理属于同一林的多个独立子 AD 域。 借助此拓扑，你还可以按域边界灵活委派每项预配作业的管理工作。 
+
+例如：下图显示的即为针对每个地理区域（北美 (NA)、欧洲、中东和非洲 (EMEA) 以及亚太 (APAC)）设置预配应用。 根据不同位置，用户将被预配到相应的 AD 域。 预配应用的管理工作是可以委派的，如此 EMEA 管理员便可独立管理 EMEA 区域内用户的预配配置。  
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-3-separate-apps-with-multiple-ad-domains-no-cross-domain.png" alt-text="通过不同应用将云 HR 中的用户预配到多个 AD 域的屏幕截图" lightbox="media/plan-cloud-hr-provision/topology-3-separate-apps-with-multiple-ad-domains-no-cross-domain.png":::
+
+最重要的配置方面
+* 设置两个适用高可用性和故障转移的预配代理节点。 
+* 使用[预配代理配置向导](../cloud-sync/how-to-install.md#install-the-agent)将所有子 AD 域注册到 Azure AD 租户。 
+* 为每个目标域创建单独的 HR2AD 预配应用。 
+* 配置预配应用时，从可用 AD 域的下拉列表中选择相应的子 AD 域。 
+* 使用预配应用中的[范围筛选器](define-conditional-rules-for-provisioning-user-accounts.md)来定义要由每个应用处理的用户。 
+* 配置[跳过范围外删除标志](skip-out-of-scope-deletions.md)以防止系统意外停用帐户。 
+
+
+### <a name="deployment-topology-4-separate-apps-to-provision-distinct-user-sets-from-cloud-hr-to-multiple-on-premises-active-directory-domains-with-cross-domain-visibility"></a>部署拓扑 4：通过不同应用将云 HR 中的不同用户集预配到多个本地 Active Directory 域（具有跨域可见性）
+
+如果用户的管理员可能存在于不同的域中，并且需要从林中查找 userPrincipalName、samAccountName 和 mail   等属性的唯一 ID 生成规则，可以使用此拓扑可以管理属于同一林的多个独立子 AD 域。 
+
+例如：下图显示的即为针对每个地理区域（北美 (NA)、欧洲、中东和非洲 (EMEA) 以及亚太 (APAC)）设置预配应用。 根据不同位置，用户将被预配到相应的 AD 域。 启用预配代理上的引用跟踪，即可处理跨域管理员引用及从林中查找。 
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-4-separate-apps-with-multiple-ad-domains-cross-domain.png" alt-text="通过不同应用将云 HR 中的用户预配到多个 AD 域（支持跨域）的屏幕截图" lightbox="media/plan-cloud-hr-provision/topology-4-separate-apps-with-multiple-ad-domains-cross-domain.png":::
+
+最重要的配置方面
+* 设置两个适用高可用性和故障转移的预配代理节点。 
+* 在预配代理上配置[引用跟踪](../cloud-sync/how-to-manage-registry-options.md#configure-referral-chasing)。 
+* 使用[预配代理配置向导](../cloud-sync/how-to-install.md#install-the-agent)将父 AD 域及所有子 AD 域注册到 Azure AD 租户。 
+* 为每个目标域创建单独的 HR2AD 预配应用。 
+* 配置每个预配应用时，从可用 AD 域的下拉列表中选择父 AD 域。 这可以确保在为 userPrincipalName、samAccountName 和 mail   等属性生成唯一值时，执行从林中查找。
+* 使用 parentDistinguishedName 与表达式映射在适当的子域和 [OU 容器](#configure-active-directory-ou-container-assignment)中动态创建用户。 
+* 使用预配应用中的[范围筛选器](define-conditional-rules-for-provisioning-user-accounts.md)来定义要由每个应用处理的用户。 
+* 若要解析跨域管理员引用，可以创建单独的 HR2AD 预配应用，以仅更新 manager 属性。 将此应用的范围设置为所有用户。 
+* 配置[跳过范围外删除标志](skip-out-of-scope-deletions.md)以防止系统意外停用帐户。 
+
+### <a name="deployment-topology-5-single-app-to-provision-all-users-from-cloud-hr-to-multiple-on-premises-active-directory-domains-with-cross-domain-visibility"></a>部署拓扑 5：通过单个应用将云 HR 中的所有用户预配到多个本地 Active Directory 域（具有跨域可见性）
+
+若要使用单个预配应用来管理属于所有父 AD 域和子 AD 域的用户，可以使用此拓扑。 如果预配规则在所有域间保持一致，并且不需要针对预配作业实施管理委派，则建议采用此拓扑。 此拓扑支持解析跨域管理员引用，并可执行从林中检查唯一性。 
+
+例如：下图显示的即为，使用单个预配应用管理三个不同子域中的用户（按区域分组：北美 (NA)、欧洲、中东和非洲 (EMEA) 以及亚太 (APAC)）。 parentDistinguishedName 的属性映射将用于在相应子域中动态创建用户。 启用预配代理上的引用跟踪，即可处理跨域管理员引用及从林中查找。 
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-5-single-app-with-multiple-ad-domains-cross-domain.png" alt-text="通过单个应用将云 HR 中的用户预配到多个 AD 域（支持跨域）的屏幕截图" lightbox="media/plan-cloud-hr-provision/topology-5-single-app-with-multiple-ad-domains-cross-domain.png":::
+
+最重要的配置方面
+* 设置两个适用高可用性和故障转移的预配代理节点。 
+* 在预配代理上配置[引用跟踪](../cloud-sync/how-to-manage-registry-options.md#configure-referral-chasing)。 
+* 使用[预配代理配置向导](../cloud-sync/how-to-install.md#install-the-agent)将父 AD 域及所有子 AD 域注册到 Azure AD 租户。 
+* 为整个林创建单个 HR2AD 预配应用。 
+* 配置预配应用时，从可用 AD 域的下拉列表中选择父 AD 域。 这可以确保在为 userPrincipalName、samAccountName 和 mail   等属性生成唯一值时，执行从林中查找。
+* 使用 parentDistinguishedName 与表达式映射在适当的子域和 [OU 容器](#configure-active-directory-ou-container-assignment)中动态创建用户。 
+* 若使用范围筛选器，请配置[跳过范围外删除标志](skip-out-of-scope-deletions.md)以防止系统意外停用帐户。 
+
+### <a name="deployment-topology-6-separate-apps-to-provision-distinct-users-from-cloud-hr-to-disconnected-on-premises-active-directory-forests"></a>部署拓扑 6：通过不同应用将云 HR 中的不同用户预配到已断开连接的本地 Active Directory 林
+
+若你的 IT 基础结构包含断开连接/不相接的 AD 林，并且你需要根据业务附属关系将用户预配到不同的林，可以使用此拓扑。 举例来说：需要将为子公司 Contoso 工作的用户预配到 contoso.com 域中，以及将为子公司 Fabrikam 工作的用户预配到 fabrikam.com 域中。 
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-6-separate-apps-with-disconnected-ad-forests.png" alt-text="通过不同应用将云 HR 中的用户预配到已断开连接的 AD 林的屏幕截图" lightbox="media/plan-cloud-hr-provision/topology-6-separate-apps-with-disconnected-ad-forests.png":::
+
+最重要的配置方面
+* 设置两个适用高可用性和故障转移的不同预配代理集（每个林一个集）。 
+* 创建两个不同的预配应用（每个林一个应用）。 
+* 若需要解析林中的跨域引用，请在预配代理上启用[引用跟踪](../cloud-sync/how-to-manage-registry-options.md#configure-referral-chasing)。 
+* 为每个断开连接的林创建单独的 HR2AD 预配应用。 
+* 配置每个预配应用时，从可用 AD 域名的下拉列表中选择适当的父 AD 域。 
+* 配置[跳过范围外删除标志](skip-out-of-scope-deletions.md)以防止系统意外停用帐户。 
+
+### <a name="deployment-topology-7-separate-apps-to-provision-distinct-users-from-multiple-cloud-hr-to-disconnected-on-premises-active-directory-forests"></a>部署拓扑 7：通过不同应用将多个云 HR 中的不同用户预配到已断开连接的本地 Active Directory 林
+
+大型组织普遍会建立多个 HR 系统。 在企业并购（合并和收购）方案中，你可能需要将本地 Active Directory 连接至多个 HR 源。 如果你有多个 HR 源，并且希望将这些 HR 源中的标识数据传输至相同或不同的本地 Active Directory 域，建议采用下方拓扑。  
+
+:::image type="content" source="media/plan-cloud-hr-provision/topology-7-separate-apps-from-multiple-hr-to-disconnected-ad-forests.png" alt-text="通过不同应用将多个云 HR 中的用户预配到已断开连接的 AD 林的屏幕截图" lightbox="media/plan-cloud-hr-provision/topology-7-separate-apps-from-multiple-hr-to-disconnected-ad-forests.png":::
+
+最重要的配置方面
+* 设置两个适用高可用性和故障转移的不同预配代理集（每个林一个集）。 
+* 若需要解析林中的跨域引用，请在预配代理上启用[引用跟踪](../cloud-sync/how-to-manage-registry-options.md#configure-referral-chasing)。 
+* 为每个 HR 系统和本地 Active Directory 组合创建单独的 HR2AD 预配应用。
+* 配置每个预配应用时，从可用 AD 域名的下拉列表中选择适当的父 AD 域。 
+* 配置[跳过范围外删除标志](skip-out-of-scope-deletions.md)以防止系统意外停用帐户。 
 
 ## <a name="plan-scoping-filters-and-attribute-mapping"></a>规划范围筛选器和属性映射
 
@@ -295,7 +404,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 Azure AD 函数 [SelectUniqueValues](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue) 评估每个规则，然后检查为目标系统中的唯一性生成的值。 例如，请参阅[为 userPrincipalName (UPN) 属性生成唯一值](../app-provisioning/functions-for-customizing-application-data.md#generate-unique-value-for-userprincipalname-upn-attribute)。
 
 > [!NOTE]
-> 该函数当前仅支持用于 Workday 到 Active Directory 用户预配。 它不能与其他预配应用一起使用。
+> 目前只有“Workday 到 Azure Active Directory 的用户预配”和“SAP SuccessFactors 到 Active Directory 的用户预配”支持使用此函数。 它不能与其他预配应用一起使用。
 
 ### <a name="configure-active-directory-ou-container-assignment"></a>配置 Active Directory OU 容器分配
 
@@ -315,7 +424,7 @@ Switch([Municipality], "OU=Default,OU=Users,DC=contoso,DC=com", "Dallas", "OU=Da
 
 启动 Joiners 进程时，需要设置和发送新用户帐户的临时密码。 利用云 HR 到 Azure AD 用户预配，可以在第一天向用户推出 Azure AD [自助式密码重置](../authentication/tutorial-enable-sspr.md) (SSPR) 功能。
 
-SSPR 是 IT 管理员允许用户重置其密码或解锁其帐户的简单方式。 可以从云 HR 应用到 Active Directory 预配“移动电话号码”属性，以便并将其与 Azure AD 同步。 在“移动电话号码”属性在 Azure AD 中之后，可以为用户的帐户启用 SSPR。 新用户在第一天可以使用已注册和已验证的移动电话号码进行身份验证。
+SSPR 是 IT 管理员允许用户重置其密码或解锁其帐户的简单方式。 可以从云 HR 应用到 Active Directory 预配“移动电话号码”属性，以便并将其与 Azure AD 同步。 在“移动电话号码”属性在 Azure AD 中之后，可以为用户的帐户启用 SSPR。 新用户在第一天可以使用已注册和已验证的移动电话号码进行身份验证。 请参阅 [SSPR 文档](../authentication/howto-sspr-authenticationdata.md)，详细了解如何预先填充身份验证联系信息。 
 
 ## <a name="plan-for-initial-cycle"></a>规划初始周期
 
@@ -398,12 +507,12 @@ Windows server 上安装的 Azure AD Connect 预配代理在 Windows 事件日�
 
 Azure AD 预配服务不会在超过30天后生成报表、执行分析，或提供见解，因为服务不会存储、处理或保留超过30天的任何数据。
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 若要解决在预配期间可能会出现的任何问题，请参阅以下文章：
 
 - [为 Azure AD 库应用程序配置用户预配时遇到的问题](application-provisioning-config-problem.md)
-- [将属性从本地 Active Directory 同步到 Azure AD 以便预配到应用程序](user-provisioning-sync-attributes-for-mapping.md)
+- [将特性从本地 Active Directory 同步到 Azure AD 以预配到应用程序](user-provisioning-sync-attributes-for-mapping.md)
 - [配置 Azure Active Directory 库应用程序的用户预配时遇到保存管理员凭据问题](./user-provisioning.md)
 - [没有为任何用户预配 Azure AD 库应用程序](application-provisioning-config-problem-no-users-provisioned.md)
 - [预配到 Azure AD 库应用程序的用户组错误](../manage-apps/add-application-portal-assign-users.md)

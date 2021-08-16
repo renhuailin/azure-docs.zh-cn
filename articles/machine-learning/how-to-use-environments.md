@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: e33dd4a6578c22cf0ce002db6a5bcc456643a305
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: d4260b5c981c6b4f199fca88894abafbbb02e4a1
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888199"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110577850"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure 机器学习中创建和使用软件环境
 
@@ -85,6 +85,12 @@ for env in envs:
 > [!WARNING]
 >  请不要在自己的环境名称的开头使用 _AzureML_ 前缀。 此前缀专用于特选环境。
 
+若要自定义策展环境，请克隆并重命名环境。 
+```python 
+env = Environment.get(workspace=ws, name="AzureML-Minimal")
+curated_clone = env.clone("customize_curated")
+```
+
 ### <a name="use-conda-dependencies-or-pip-requirements-files"></a>使用 Conda 依赖项或 pip 要求文件
 
 可以通过 Conda 规范或 pip 要求文件创建环境。 使用 [`from_conda_specification()`](/python/api/azureml-core/azureml.core.environment.environment#from-conda-specification-name--file-path-) 方法或 [`from_pip_requirements()`](/python/api/azureml-core/azureml.core.environment.environment#from-pip-requirements-name--file-path-) 方法。 在方法参数中包含所需文件的环境名称和文件路径。 
@@ -127,6 +133,7 @@ myenv.docker.base_image_registry="your_registry_location"
 > * Ubuntu 16.04 或更高版本。
 > * Conda 4.5.# 或更高版本。
 > * Python 3.6+。
+> * 在用于训练的任何容器映像中，都需要在 /bin/sh 处有符合 POSIX 标准的 shell。 
 
 #### <a name="use-your-own-dockerfile"></a>使用你自己的 Dockerfile 
 
@@ -399,7 +406,9 @@ service = Model.deploy(
 
 ## <a name="notebooks"></a>笔记本
 
-此[文章](./how-to-access-terminal.md#add-new-kernels)介绍如何将 Conda 环境安装为笔记本中的内核。
+本文中的代码示例也包含在[使用环境笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/using-environments/using-environments.ipynb)中。
+
+ 若要将 Conda 环境安装为笔记本中的内核，请参阅[添加新的 Jupyter 内核](./how-to-access-terminal.md#add-new-kernels)。
 
 [使用自定义 Docker 基础映像部署模型](how-to-deploy-custom-docker-image.md)演示了如何使用自定义的 Docker 基础映像部署模型。
 

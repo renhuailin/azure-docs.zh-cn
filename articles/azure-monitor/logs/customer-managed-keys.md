@@ -4,13 +4,14 @@ description: 使用 Azure Key Vault 密钥配置客户管理的密钥以加密 L
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 01/10/2021
-ms.openlocfilehash: 9fdaf42f18c320bf841e710b7066451fca24eaae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/21/2021
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: fc66f79e09021a10c2dde3cc973cd608baeedc32
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102030981"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112061607"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -59,7 +60,7 @@ Azure Monitor 使用托管标识授予对 Azure Key Vault 的访问权限。 在
 - Log Analytics 群集存储帐户为每个存储帐户生成唯一的加密密钥，称为 AEK。
 - AEK 用于派生 DEK 密钥，后者用于对写入磁盘的每个数据块进行加密。
 - 在 Key Vault 中配置密钥并在群集中引用它时，Azure 存储会将请求发送到 Azure Key Vault 以包装和解包 AEK，从而执行数据加密和解密操作。
-- KEK 绝不会离开 Key Vault，HSM 密钥绝不会离开硬件。
+- KEK 永不离开 Key Vault。
 - Azure 存储使用与群集资源关联的托管标识通过 Azure Active Directory 对 Azure Key Vault 进行身份验证和访问。
 
 ### <a name="customer-managed-key-provisioning-steps"></a>客户管理的密钥的预配步骤
@@ -105,7 +106,7 @@ Authorization: Bearer <token>
 
 ## <a name="storing-encryption-key-kek"></a>存储加密密钥 (KEK)
 
-创建或使用已有的 Azure Key Vault，以生成或导入用于数据加密的密钥。 必须将 Azure Key Vault 配置为可恢复，以保护密钥以及对 Azure Monitor 中的数据的访问权限。 可以验证是否应启用 Key Vault 中“软删除”和“清除保护”属性下的此配置 。
+在计划群集的区域中创建 Azure 密钥保管库，或使用现有 Azure 密钥保管库，然后生成或导入用于日志加密的密钥。 必须将 Azure Key Vault 配置为可恢复，以保护密钥以及对 Azure Monitor 中的数据的访问权限。 可以验证是否应启用 Key Vault 中“软删除”和“清除保护”属性下的此配置 。
 
 ![软删除和清除保护设置](media/customer-managed-keys/soft-purge-protection.png)
 
@@ -136,7 +137,7 @@ Authorization: Bearer <token>
   "identity": {
   "type": "UserAssigned",
     "userAssignedIdentities": {
-      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
       }
   }
   ```
@@ -163,7 +164,9 @@ Authorization: Bearer <token>
 
 此步骤使用要用于数据加密的密钥和版本更新 Azure Monitor 存储。 更新后，新密钥将用于包装和解包到存储密钥 (AEK)。
 
-在 Azure Key Vault 中选择密钥的当前版本，以获取密钥标识符详细信息。
+>[!IMPORTANT]
+>- 密钥轮换可以是自动操作，也可以要求显式密钥更新，请参阅[密钥轮换](#key-rotation)，确定适合自己的方法后再更新群集中的密钥标识符详细信息。
+>- 群集更新不应在同一操作中同时包含标识和密钥标识符详细信息。 如果两者都需要更新，则应在两次连续操作中进行更新。
 
 ![授予 Key Vault 权限](media/customer-managed-keys/key-identifier-8bit.png)
 
@@ -258,7 +261,7 @@ Content-type: application/json
 
 > [!IMPORTANT]
 > - 若要撤销对数据的访问，建议禁用密钥，或删除 Key Vault 中的访问策略。
-> - 将群集的 `identity` `type` 设置为“无”也可撤销对数据的访问，但不建议使用此方法，因为如果不打开支持请求，在群集中重述 `identity` 时无法还原吊销。
+> - 如果将群集的 `identity` `type` 设置为 `None`，还可撤销数据访问权，但不建议使用此方法，因为如果不联系支持人员就无法将其还原。
 
 群集存储在一小时或更短时间内将始终遵循关键权限的更改，并且存储将变得不可用。 与群集链接的工作区中引入的任何新数据都将被删除，并且无法恢复，数据将变得不可访问，针对这些工作区的查询将会失败。 只要不删除群集和工作区，之前引入的数据就会保留在存储中。 不可访问的数据由数据保留策略管理，并在保留期截止时被清除。 过去 14 天内引入的数据也保存在热缓存（SSD 提供支持）中，以实现高效的查询引擎操作。 它将在进行密钥吊销操作后被删除，并且变得不可访问。
 
@@ -266,18 +269,20 @@ Content-type: application/json
 
 ## <a name="key-rotation"></a>密钥轮换
 
-客户管理的密钥的轮换需要使用 Azure Key Vault 中的新密钥版本对群集进行显式更新。 [为群集更新密钥标识符详细信息](#update-cluster-with-key-identifier-details)。 如果未在群集中更新新密钥版本，Log Analytics 群集存储将继续使用之前的密钥进行加密。 如果在更新群集中的新密钥之前禁用或删除旧密钥，则你将进入[密钥吊销](#key-revocation)状态。
+密钥轮换具有两种模式： 
+- 自动轮换 - 当你使用 ```"keyVaultProperties"``` 更新群集但省略 ```"keyVersion"``` 属性或将其设置为 ```""``` 时，存储将自动使用最新版本。
+- 显式密钥版本更新 - 更新群集并在 ```"keyVersion"``` 属性中提供密钥版本时，任何新的密钥版本都需要在群集中显式更新 ```"keyVaultProperties"```，请参阅[为群集更新密钥标识符详细信息](#update-cluster-with-key-identifier-details)。 如果在 Key Vault 中生成了新的密钥版本但未在群集中更新它，Log Analytics 群集存储将继续使用之前的密钥。 如果在更新群集中的新密钥之前禁用或删除旧密钥，则你将进入[密钥吊销](#key-revocation)状态。
 
 进行密钥轮换操作后，所有数据都将保持可访问，因为数据始终使用帐户加密密钥 (AEK) 进行加密，而 AEK 目前使用 Key Vault 中的新密钥加密密钥 (KEK) 版本进行加密。
 
-## <a name="customer-managed-key-for-saved-queries"></a>用于已保存的查询的客户管理的密钥
+## <a name="customer-managed-key-for-saved-queries-and-log-alerts"></a>用于已存查询和日志警报的客户管理的密钥
 
-Log Analytics 中使用的查询语言可以实现丰富的表达，并且可以在添加到查询的注释中或查询语法中包含敏感信息。 某些组织要求将此类信息按照客户管理的密钥的策略进行保护，因此你需要保存使用密钥加密的查询。 使用 Azure Monitor 可以在连接到工作区时将采用密钥加密的已存搜索查询和日志警报查询存储到你自己的存储帐户 。 
+Log Analytics 中使用的查询语言可以实现丰富的表达，并且可以在添加到查询的注释中或查询语法中包含敏感信息。 某些组织要求将此类信息按照客户管理的密钥的策略进行保护，因此你需要保存使用密钥加密的查询。 使用 Azure Monitor 可以在连接到工作区时将采用密钥加密的已存搜索查询和日志警报查询存储到你自己的存储帐户。 
 
 > [!NOTE]
 > 根据所使用的方案，可将 Log Analytics 查询保存到各种存储。 在以下方案中，仍使用 Microsoft 密钥 (MMK) 对查询加密，而不考虑客户管理的密钥的配置：Azure Monitor 中的工作簿、Azure 仪表板、Azure 逻辑应用、Azure Notebooks 和自动化 runbook。
 
-自带存储 (BYOS) 并将其链接到工作区时，该服务会将已存搜索查询和日志警报查询上传到存储帐户 。 这意味着，可以使用加密 Log Analytics 群集中数据的密钥或其他密钥来控制存储帐户和[静态加密策略](../../storage/common/customer-managed-keys-overview.md)。 但需支付与该存储帐户相关的费用。 
+自带存储 (BYOS) 并将其链接到工作区时，该服务会将已存搜索查询和日志警报查询上传到存储帐户。 这意味着，可以使用加密 Log Analytics 群集中数据的密钥或其他密钥来控制存储帐户和[静态加密策略](../../storage/common/customer-managed-keys-overview.md)。 但需支付与该存储帐户相关的费用。 
 
 **设置用于查询的客户管理的密钥之前需要注意的事项**
 * 需拥有对工作区和存储帐户的“写入”权限
@@ -285,8 +290,9 @@ Log Analytics 中使用的查询语言可以实现丰富的表达，并且可以
 * 存储中的保存搜索视为服务项目，并且其格式可能会发生变化
 * 从工作区删除现有的保存搜索。 复制配置之前需要的所有保存搜索。 可以使用 [PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssavedsearch) 查看 *已存搜索*
 * 不支持查询历史记录，因此无法查看已运行的查询
-* 可以出于保存查询的目的将单个存储帐户链接到工作区，且该帐户可同时用于已存搜索查询和日志警报查询 
+* 可以出于保存查询的目的将单个存储帐户链接到工作区，且该帐户可同时用于已存搜索查询和日志警报查询
 * 不支持“固定到仪表板”
+* 触发的日志警报不包含搜索结果或警报查询。 你可以使用[警报维度](../alerts/alerts-unified-log.md#split-by-alert-dimensions)获取已触发警报中的上下文。
 
 **为已存搜索查询配置 BYOS**
 
@@ -334,7 +340,7 @@ Content-type: application/json
 
 **为日志警报查询配置 BYOS**
 
-将“警报”的存储帐户链接到工作区 - 日志警报查询保存在存储帐户中 。 
+将警报的存储帐户链接到工作区 - 日志警报查询保存在存储帐户中。 
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
@@ -413,15 +419,17 @@ Content-type: application/json
 
 - Azure Key Vault、群集和工作区必须位于同一区域和同一 Azure Active Directory (Azure AD) 租户，但可以位于不同订阅。
 
+- 群集更新不应在同一操作中同时包含标识和密钥标识符详细信息。 如果两者都需要更新，则应在两次连续操作中进行更新。
+
 - 当前不能在中国使用密码箱。 
 
 - 对于受支持区域中自 2020 年 10 月开始创建的群集，系统会自动为其配置[双重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 可以通过在群集上发送 GET 请求并观察启用了双重加密的群集的 `isDoubleEncryptionEnabled` 值是否为 `true` 来验证是否为你的群集配置了双重加密。 
   - 如果你创建群集并收到错误“<区域名称> 不支持对群集进行双重加密。”，则你仍可通过在 REST 请求正文中添加 `"properties": {"isDoubleEncryptionEnabled": false}` 以在不使用双重加密的情况下创建群集。
   - 创建群集后，无法更改双重加密设置。
 
-  - 如果你的群集是使用用户分配的托管标识设置的，将 `UserAssignedIdentities` 设置为 `None` 会挂起群集并阻止对数据的访问，但如果不提交支持请求，则不能还原吊销并激活群集。 此限制不会应用到系统分配的托管标识。
+  - 如果将群集的 `identity` `type` 设置为 `None`，还可撤销数据访问权，但不建议使用此方法，因为如果不联系支持人员就无法将其还原。 撤销数据访问权的推荐方法是[吊销密钥](#key-revocation)。
 
-  - 如果 Key Vault 位于专用链接 (vNet) 中，则不能将客户管理的密钥与用户分配的托管标识一起使用。 在这种情况下，可以使用系统分配的托管标识。
+  - 如果密钥保管库位于专用链接 (vNet) 中，则不能将客户管理的密钥与用户分配的托管标识一起使用。 在这种情况下，可以使用系统分配的托管标识。
 
 ## <a name="troubleshooting"></a>疑难解答
 

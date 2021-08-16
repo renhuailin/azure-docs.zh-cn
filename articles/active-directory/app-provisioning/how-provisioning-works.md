@@ -1,24 +1,25 @@
 ---
-title: 了解应用程序预配在 Azure Active Directory 中的工作方式
-description: 了解应用程序预配在 Azure Active Directory 中的工作方式。
+title: 了解 Azure AD 预配的工作原理 |Microsoft Docs
+description: 了解 Azure AD 预配的工作原理
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/11/2021
+ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: e95359d24cda6b0d23084010d8ab19566dd2197c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 19ec3ec95fbbccbaa5c646c8de16999b86349626
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409372"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579444"
 ---
-# <a name="how-application-provisioning-works-in-azure-active-directory"></a>应用程序预配在 Azure Active Directory 中的工作方式
+# <a name="how-provisioning-works"></a>预配工作原理
 
 自动预配是指在用户需要访问的云应用程序中创建用户标识和角色。 除了创建用户标识外，自动预配还包括在状态或角色发生更改时维护和删除用户标识。 在开始部署之前，可以阅读本文以了解 Azure AD 预配的工作原理并获取配置建议。 
 

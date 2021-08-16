@@ -1,7 +1,7 @@
 ---
-title: 自动训练时序预测模型
+title: 为时序预测设置 AutoML
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习通过自动化机器学习来训练时序预测回归模型。
+description: 设置 Azure 机器学习自动化 ML，通过 Azure 机器学习 Python SDK 训练时序预测模型。
 services: machine-learning
 author: nibaccam
 ms.author: nibaccam
@@ -9,18 +9,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.custom: contperf-fy21q1, automl
-ms.date: 08/20/2020
-ms.openlocfilehash: ed4047b7ac4187138f29bc3f53b5bc5995132296
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.date: 06/11/2021
+ms.openlocfilehash: d2c4f759f6b2f7ef769148c99dfcbfb738b19f5e
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107898128"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112030857"
 ---
-# <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
+# <a name="set-up-automl-to-train-a-time-series-forecasting-model-with-python"></a>设置 AutoML，通过 Python 训练时序预测模型
 
-
-本文介绍如何在 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/) 中使用自动化机器学习 AutoML 来配置和训练时序预测回归模型。 
+本文将介绍如何使用 [Azure 机器学习 Python SDK](/python/api/overview/azure/ml/) 中的 Azure 机器学习自动化 ML 为时序预测模型设置 AutoML 训练。
 
 为此，需要： 
 
@@ -29,7 +28,7 @@ ms.locfileid: "107898128"
 > * 在 [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 对象中配置特定的时序参数。
 > * 使用时序数据运行预测。
 
-有关低代码体验，请参阅[教程：使用自动化机器学习预测需求](tutorial-automated-ml-forecast.md)，里面有关于在 [Azure 机器学习工作室](https://ml.azure.com/)中使用自动化机器学习的时序预测示例。
+要获得低代码体验，请参阅[教程：使用自动化机器学习预测需求](tutorial-automated-ml-forecast.md)，查看 [Azure 机器学习工作室](https://ml.azure.com/)中使用自动化 ML 的时序预测示例。
 
 与经典的时序方法不同，在自动化 ML 中，将“透视”过去的时序值，使其成为回归器与其他预测器的附加维度。 此方法会在训练过程中，将多个上下文变量及其关系彼此整合。 影响预测的因素有很多，因此该方法将自身与真实的预测场景很好地协调起来。 例如，在预测销售额时，历史趋势、汇率和价格相互作用，共同推动着销售结果。 
 
@@ -43,7 +42,7 @@ ms.locfileid: "107898128"
 
 ## <a name="preparing-data"></a>准备数据
 
-AutoML 中预测回归任务类型和回归任务类型之间最重要的区别在于，前者包含数据中表示有效时序的一项特征。 常规时序具有明确定义的一致频率，并且在连续时间范围内的每个采样点上都有一个值。 
+自动化 ML 中预测回归任务类型与回归任务类型之间最重要的区别是，前者包含数据中一个表示有效时序的特征。 常规时序具有明确定义的一致频率，并且在连续时间范围内的每个采样点上都有一个值。 
 
 将以下快照看作 `sample.csv` 文件。
 此数据集是有两个不同商店（A 和 B）的公司的每日销售数据。 
@@ -286,7 +285,7 @@ featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": 
 ### <a name="enable-deep-learning"></a>启用深度学习
 
 > [!NOTE]
-> DNN 对自动机器学习的预测支持目前为 **预览版**，不支持本地运行。
+> DNN 对自动机器学习的预测支持处于预览状态，不支持本地运行或 Databricks 中启动的运行。
 
 还可以通过深度神经网络 (DNN) 应用深度学习来提高模型的分数。 通过自动化 ML 的深度学习，可预测单变量和多变量时序数据。
 
@@ -418,4 +417,4 @@ day_datetime,store,week_of_year
 * 详细了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
 * 了解[可解释性：自动化机器学习中的模型说明（预览版）](how-to-machine-learning-interpretability-automl.md)。 
 * 了解如何在[多模型解决方案加速器](https://aka.ms/many-models)中使用 AutoML 训练多个模型。
-* 按照[教程](tutorial-auto-train-models.md)获取使用自动化机器学习创建试验的端到端示例。
+* 按照[教程：训练回归模型](tutorial-auto-train-models.md)获取端到端示例，使用自动化机器学习创建实验。

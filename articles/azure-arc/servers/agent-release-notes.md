@@ -2,13 +2,13 @@
 title: 已启用 Azure Arc 的服务器代理的新增功能
 description: 本文提供了已启用 Azure Arc 的服务器代理的发行说明。 对于许多汇总问题，提供了指向更多详细信息的链接。
 ms.topic: conceptual
-ms.date: 04/27/2021
-ms.openlocfilehash: c223b5dd75ac82706a2b35268813391899170f73
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.date: 05/24/2021
+ms.openlocfilehash: 35822fb47add5c355ad9461b09e8e910f0a5a1fd
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071534"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480367"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>已启用 Azure Arc 的服务器代理的新增功能
 
@@ -17,6 +17,19 @@ ms.locfileid: "108071534"
 - 最新版本
 - 已知问题
 - Bug 修复
+
+## <a name="may-2021"></a>2021 年 5 月
+
+版本 1.6
+
+### <a name="new-features"></a>新增功能
+
+- 添加了对 SUSE Enterprise Linux 12 的支持
+- 已将来宾配置代理更新至 1.26.12.0 版，以包括：
+
+   - 在单独的进程中执行的策略。
+   - 为扩展验证添加的 V2 签名支持。
+   - 对数据日志记录进行的次要更新。
 
 ## <a name="april-2021"></a>2021 年 4 月
 
@@ -49,7 +62,7 @@ ms.locfileid: "108071534"
 
 ### <a name="new-feature"></a>新功能
 
-增加了对 Windows Server 2008 R2 版的支持。
+添加了对 Windows Server 2008 R2 SP1 的支持。
 
 ### <a name="fixed"></a>固定
 

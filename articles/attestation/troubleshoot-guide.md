@@ -7,13 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9d3e34bee3d0f1420b379638389e6fad0a2fed60
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 3ae3e12c11f194b3efcc149382dc952bd74d38b5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831557"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "97704310"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure 证明故障排除指南
 
@@ -23,7 +22,7 @@ Azure 证明中的错误处理是按照 [Microsoft REST API 准则](https://gith
 
 下面是 Azure 证明返回的错误的一些示例：
 
-## <a name="1-http401--unauthorized-exception"></a>1. HTTP–401：未经授权的异常
+## <a name="1-http401--unauthorized-exception"></a>1.HTTP –401：未授权异常
 
 ### <a name="http-status-code"></a>HTTP 状态代码
 401
@@ -31,6 +30,7 @@ Azure 证明中的错误处理是按照 [Microsoft REST API 准则](https://gith
 错误代码：未授权
 
 场景示例
+  - 在未为用户分配“证明读取者”角色的情况下发生了证明失败
   - 由于未为用户分配相应的角色，无法管理证明策略
   - 由于未为用户分配相应的角色，无法管理证明策略签名者
 
@@ -45,29 +45,59 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.SetAzureAttestationPolicy
   ```
 
-**故障排除步骤**
+**疑难解答步骤**
 
-为了管理策略，Azure AD 用户需要对“操作”具有以下权限：
+若要查看证明策略/策略签名者，Azure AD 用户需要“操作”权限：
 - Microsoft.Attestation/attestationProviders/attestation/read
+
+  可以通过“拥有者”（通配符权限）、“读取者”（通配符权限）或“证明读取者”（仅适用于 Azure 证明的特定权限）等角色将此权限分配给 AD 用户。
+
+若要添加/删除策略签名者，或者要配置策略，Azure AD 用户需要以下“操作”权限：
 - Microsoft.Attestation/attestationProviders/attestation/write
 - Microsoft.Attestation/attestationProviders/attestation/delete
 
-  若要执行这些操作，Azure AD 用户必须具有证明提供程序上的“证明参与者”角色。 这些权限还可以通过订阅/资源组上的“所有者”（通配符权限）/“参与者”（通配符权限）角色继承。  
+  可以通过“所有者”（通配符权限）、“参与者”（通配符权限）或“证明参与者”（仅适用于 Azure 证明的特定权限）等角色将这些权限分配给 AD 用户。
 
-为了读取策略，Azure AD 用户需要对“操作”具有以下权限：
-- Microsoft.Attestation/attestationProviders/attestation/read
+客户可以选择使用默认提供程序进行证明，或者使用自定义策略创建自己的提供程序。 若要将证明请求发送到自定义证明提供程序，用户需要“所有者”（通配符权限）、“读取者”（通配符权限）或“证明读取者”角色。 任何 Azure AD 用户都可以访问默认提供程序。
 
-  若要执行此操作，Azure AD 用户必须具有证明提供程序上的“证明读取者”角色。 读取权限还可以通过订阅/资源组上的“读取者”（通配符权限）角色继承。  
-
-若要在 PowerShell 中验证角色，请执行以下步骤：
+若要在 PowerShell 中验证角色，请执行以下操作：
 
 a. 启动 PowerShell 并通过“Connect-AzAccount”cmdlet 登录到 Azure
 
-b. 请参阅[此处](../role-based-access-control/role-assignments-list-powershell.md)的指南，验证证明提供程序上的 Azure 角色分配
+b. 验证 Azure 角色分配设置
 
-c. 如果未找到相应的角色分配，请按照[此处](../role-based-access-control/role-assignments-powershell.md)的说明进行操作
 
-## <a name="2-http--400-errors"></a>2. HTTP – 400 错误
+  ```powershell
+  $c = Get-AzContext
+  Get-AzRoleAssignment -ResourceGroupName $attestationResourceGroup -ResourceName $attestationProvider -ResourceType Microsoft.Attestation/attestationProviders -SignInName $c.Account.Id
+  ```
+
+  应看到与下面类似的内容：
+
+  ```
+  RoleAssignmentId   :/subscriptions/subscriptionId/providers/Microsoft.Authorization/roleAssignments/roleAssignmentId
+  
+  Scope              : /subscriptions/subscriptionId
+  
+  DisplayName        : displayName
+  
+  SignInName         : signInName
+  
+  RoleDefinitionName : Reader
+  
+  RoleDefinitionId   : roleDefinitionId
+  
+  ObjectId           : objectid
+  
+  ObjectType         : User
+  
+  CanDelegate        : False
+ 
+  ```
+
+c. 如果在列表中找不到相应的角色分配，请按照[此处](../role-based-access-control/role-assignments-powershell.md)的说明进行操作
+
+## <a name="2-http--400-errors"></a>2.HTTP – 400 错误
 
 ### <a name="http-status-code"></a>HTTP 状态代码
 400
@@ -104,7 +134,7 @@ G:\Az\security\Attestation\src\AttestationServices\Instance\Enclave\api.cpp(840)
 - 由于在其上生成 quote 的设备不符合 Azure 基线要求，指定的 quote 无效
 - 由于 PCK 缓存服务提供的 TCBInfo 或 QEID 无效，指定的 quote 无效
 
-**故障排除步骤**
+**疑难解答步骤**
 
 Microsoft Azure 证明支持对 Intel SDK 和 Open Enclave SDK 生成的 SGX quote 进行证明。
 
@@ -203,7 +233,7 @@ At line:1 char:1
 
 错误代码：InvalidOperation
 
-场景示例：提供的内容无效（例如，需要策略签名时，上传了策略/未签名的策略）
+场景示例：提供的内容无效（例如，需要策略签名时上传了未签名的策略）
 
 ```
 Native operation failed with 74: ..\Shared\base64url.h(226)\(null)!: (caller: ) Exception(0) 83FF004A Bad message    Msg:[Unknown base64 character: 41 (')')]
@@ -227,7 +257,7 @@ At line:1 char:1
 
 请参阅证明[策略示例](./policy-examples.md)以及[如何创作证明策略](./author-sign-policy.md) 
 
-## <a name="3-azattestation-installation-issues-in-powershell"></a>3. PowerShell 中的 Az.Attestation 安装问题
+## <a name="3-azattestation-installation-issues-in-powershell"></a>3.PowerShell 中的 Az.Attestation 安装问题
 
 无法在 PowerShell 中安装 Az 或 Az.Attestation 模块
 
@@ -243,9 +273,9 @@ PowerShell 库已弃用传输层安全性 (TLS) 版本 1.0 和 1.1。
 
 若要继续与 PowerShell 库进行交互，请在 Install-Module 命令之前运行以下命令
 
-**[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12**
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-## <a name="4-policy-accessconfiguration-issues-in-powershell"></a>4. PowerShell 中的策略访问/配置问题
+## <a name="4-policy-accessconfiguration-issues-in-powershell"></a>4.PowerShell 中的策略访问/配置问题
 
 为用户分配了适当的角色。 但在通过 PowerShell 管理证明策略时遇到授权问题。
 

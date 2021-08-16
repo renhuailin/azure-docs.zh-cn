@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 06/10/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 955d3330d3f08d7e7f024ec2c36941d02244d9ba
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
-ms.translationtype: MT
+ms.openlocfilehash: 3f185f24c824008a6488ab2e9401dd05439daafb
+ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726830"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111984961"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -30,8 +30,11 @@ Azure 存储始终会存储数据的多个副本，以防范各种计划内和�
 
 Azure 存储帐户中的数据在主要区域中始终复制三次。 Azure 存储提供了两个有关如何在主要区域中复制数据的选项：
 
-- **本地冗余存储 (LRS)** 在主要区域中的单个物理位置同步复制数据三次。 LRS 是成本最低的复制选项，但不建议对需要高可用性的应用程序使用此选项。
+- **本地冗余存储 (LRS)** 在主要区域中的单个物理位置同步复制数据三次。 LRS 是成本最低的复制选项，但不建议对需要高可用性或持续性的应用程序使用此选项。
 - **区域冗余存储 (ZRS)** 跨主要区域中的三个 Azure 可用性区域同步复制数据。 对于需要高可用性的应用程序，Microsoft 建议在主要区域中使用 ZRS，并复制到次要区域。
+
+> [!NOTE]
+> Microsoft 建议在 Azure Data Lake Storage Gen2 的主要区域中使用 ZRS。
 
 ### <a name="locally-redundant-storage"></a>本地冗余存储
 
@@ -43,7 +46,7 @@ Azure 存储帐户中的数据在主要区域中始终复制三次。 Azure 存�
 
 下图显示了如何使用 LRS 在单个数据中心内复制数据：
 
-:::image type="content" source="media/storage-redundancy/locally-redundant-storage.png" alt-text="显示如何使用 LRS 在单个数据中心内复制数据的关系图":::
+:::image type="content" source="media/storage-redundancy/locally-redundant-storage.png" alt-text="此图显示了如何使用 LRS 在单个数据中心内复制数据":::
 
 对于以下场景，LRS 是不错的选项：
 
@@ -58,11 +61,11 @@ Azure 存储帐户中的数据在主要区域中始终复制三次。 Azure 存�
 
 会同步发生一个针对使用 ZRS 的存储帐户的写入请求。 写入操作仅在将数据写入三个可用性区域中的所有副本后才能成功返回。
 
-对于需要一致性、耐用性和高可用性的方案，Microsoft 建议在主要区域中使用 ZRS。 还建议将 ZRS 数据复制到国家/地区内部，以满足数据治理要求。
+对于需要高可用性的方案，Microsoft 建议在主要区域中使用 ZRS。 还建议使用 ZRS 来限制仅在一个国家/地区内复制数据，以满足数据治理要求。
 
-下图显示了如何在主区域中的可用性区域之间通过 ZRS 复制数据：
+下图显示如何使用 ZRS 在主要区域中的可用性区域之间复制数据：
 
-:::image type="content" source="media/storage-redundancy/zone-redundant-storage.png" alt-text="显示如何在主要区域中通过 ZRS 复制数据的关系图":::
+:::image type="content" source="media/storage-redundancy/zone-redundant-storage.png" alt-text="显示如何使用 ZRS 在主要区域中复制数据的关系图":::
 
 如果数据变为暂时不可用，ZRS 可提供出色的性能、低延迟和数据复原能力。 但是，如果多个区域永久受到影响，在发生区域性的灾难时，ZRS 本身可能无法保护数据。 为了防御区域灾难，Microsoft 建议使用[地理区域冗余存储](#geo-zone-redundant-storage) (GZRS)，该存储在主要区域中使用 ZRS，并将数据异地复制到次要区域。
 
@@ -70,9 +73,9 @@ Azure 存储帐户中的数据在主要区域中始终复制三次。 Azure 存�
 
 | 存储帐户类型 | 支持的区域 | 支持的服务 |
 |--|--|--|
-| 常规用途 v2<sup>1</sup> | 亚洲东南部<br /> 澳大利亚东部<br /> 北欧<br />  西欧<br /> 法国中部<br /> 日本东部<br /> 南非北部<br /> 英国南部<br /> 美国中部<br /> 美国东部<br /> 美国东部 2<br /> 美国西部 2 | 块 Blob<br /> 页 Blob<sup>2</sup><br /> 文件共享（共享）<br /> 表<br /> 队列<br /> |
-| BlockBlobStorage<sup>1</sup> | 亚洲东南部<br /> 澳大利亚东部<br /> 北欧<br /> 西欧<br /> 法国中部 <br /> 日本东部<br /> 英国南部 <br /> 美国东部 <br /> 美国东部 2 <br /> 美国西部 2| 仅限高级块 blob |
-| FileStorage | 亚洲东南部<br /> 澳大利亚东部<br /> 北欧<br /> 西欧<br /> 法国中部 <br /> 日本东部<br /> 英国南部 <br /> 美国东部 <br /> 美国东部 2 <br /> 美国西部 2 | 仅高级文件共享 |
+| 常规用途 v2<sup>1</sup> | （非洲）南非北部<br /> （亚太）东南亚<br /> （亚太）澳大利亚东部<br /> （亚太）日本东部<br /> （加拿大）加拿大中部<br /> （欧洲）欧洲北部<br /> （欧洲）西欧<br /> （欧洲）法国中部<br /> （欧洲）德国中西部<br /> （欧洲）英国南部<br /> （南美洲）巴西南部<br /> （美国）美国中部<br /> （美国）美国东部<br /> （美国）美国东部 2<br /> （美国）美国中南部<br /> （美国）美国西部 2 | 块 Blob<br /> 页 Blob<sup>2</sup><br /> 文件共享（共享）<br /> 表<br /> 队列<br /> |
+| 高级块 blob<sup>1</sup> | 亚洲东南部<br /> 澳大利亚东部<br /> 北欧<br /> 西欧<br /> 法国中部 <br /> 日本东部<br /> 英国南部 <br /> 美国东部 <br /> 美国东部 2 <br /> 美国西部 2| 仅高级块 blob |
+| 高级文件共享 | 亚洲东南部<br /> 澳大利亚东部<br /> 北欧<br /> 西欧<br /> 法国中部 <br /> 日本东部<br /> 英国南部 <br /> 美国东部 <br /> 美国东部 2 <br /> 美国西部 2 | 仅高级文件共享 |
 
 <sup>1</sup> ZRS 帐户当前不支持存档层。<br />
 <sup>2</sup> 包含虚拟机的 Azure 托管磁盘的存储帐户始终使用 LRS。 Azure 非托管磁盘还应使用 LRS。 可以为使用 GRS 的 Azure 非托管磁盘创建存储帐户，但由于异步异地复制可能存在一致性问题，因此不建议这样做。 托管磁盘和非托管磁盘都不支持 ZRS 或 GZRS。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。
@@ -81,19 +84,19 @@ Azure 存储帐户中的数据在主要区域中始终复制三次。 Azure 存�
 
 ## <a name="redundancy-in-a-secondary-region"></a>次要区域中的冗余
 
-对于需要高可用性的应用程序，可以选择将存储帐户中的数据另外复制到距离主要区域数百英里以外的次要区域。 如果存储帐户已复制到次要区域，则即使遇到区域性服务完全中断或导致主要区域不可恢复的灾难，数据也能持久保存。
+对于需要高持续性的应用程序，你可以选择将存储帐户中的数据另外复制到距离主区域数百英里的次要区域。 如果存储帐户已复制到次要区域，则即使遇到区域性服务完全中断或导致主要区域不可恢复的灾难，数据也能持久保存。
 
 创建存储帐户时，可以为帐户选择主要区域。 配对的次要区域是根据主要区域确定的且无法更改。 有关 Azure 支持的区域的详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。
 
 Azure 存储提供了两种将数据复制到次要区域的选项：
 
-- **异地冗余存储 (GRS)** 使用 LRS 在主区域中的单个物理位置同步复制数据三次。 然后，它将数据异步复制到次要区域中的单个物理位置。 在次要区域中，使用 LRS 同步复制数据三次。
-- **异地区域冗余存储 (GZRS)** 使用 ZRS 在主区域中的三个 Azure 可用性区域同步复制数据。 然后，它会将数据异步复制到次要区域中的单个物理位置。 在次要区域中，使用 LRS 同步复制数据三次。
+- **异地冗余存储 (GRS)** 使用 LRS 在主区域中的单个物理位置同步复制数据三次。 然后，它将数据异步复制到次要区域中的单个物理位置。 在次要区域内，数据使用 LRS 同步复制了 3 次。
+- **异地区域冗余存储 (GZRS)** 使用 ZRS 在主区域中的三个 Azure 可用性区域同步复制数据。 然后，它将数据异步复制到次要区域中的单个物理位置。 在次要区域内，数据使用 LRS 同步复制了 3 次。
 
 > [!NOTE]
-> GRS 和 GZRS 之间的主要区别是在主要区域中复制数据的方式。 在次要区域中，数据始终使用 LRS 同步复制三次。 辅助区域中的 LRS 保护你的数据免受硬件故障的影响。
+> GRS 和 GZRS 之间的主要区别是在主要区域中复制数据的方式。 在次要区域内，始终使用 LRS 同步复制数据三次。 次要区域中的 LRS 保护你的数据免受硬件故障的影响。
 
-使用 GRS 或 GZRS 时，次要区域中的数据不可用于读取或写入访问，除非存在到次要区域的故障转移。 若要对次要区域进行读取访问，请将存储帐户配置为使用读取访问异地冗余存储 (GRS) 或读取访问地域冗余存储 (GZRS) 。 有关详细信息，请参阅[对次要区域中数据的读取访问权限](#read-access-to-data-in-the-secondary-region)。
+使用 GRS 或 GZRS，不可对次要区域中的数据执行读取或写入访问，除非执行了到次要区域的故障转移。 若要对次要区域进行读取访问，请将存储帐户配置为使用读取访问异地冗余存储 (RA-GRS) 或读取访问异地区域冗余存储 (RA-GZRS)。 有关详细信息，请参阅[对次要区域中数据的读取访问权限](#read-access-to-data-in-the-secondary-region)。
 
 如果主要区域变得不可用，则可以选择故障转移到次要区域。 故障转移完成后，次要区域将成为主要区域，你便可以再次读取和写入数据。 有关灾难恢复以及如何故障转移到次要区域的详细信息，请参阅[灾难恢复和存储帐户故障转移](storage-disaster-recovery-guidance.md)。
 
@@ -106,9 +109,9 @@ Azure 存储提供了两种将数据复制到次要区域的选项：
 
 首先会将写入操作提交到主要位置，并使用 LRS 复制该操作。 然后会以异步方式将更新复制到次要区域。 将数据写入次要位置后，还会使用 LRS 在该位置复制数据。
 
-下图显示了如何通过 GRS 或 GRS 复制数据：
+下图显示了如何使用 GRS 或 RA-GRS 复制数据：
 
-:::image type="content" source="media/storage-redundancy/geo-redundant-storage.png" alt-text="显示如何将数据与 GRS 或 GRS 一起复制的关系图":::
+:::image type="content" source="media/storage-redundancy/geo-redundant-storage.png" alt-text="此图显示了如何使用 GRS 或 RA-GRS 复制数据":::
 
 ### <a name="geo-zone-redundant-storage"></a>异地区域冗余存储
 
@@ -116,23 +119,32 @@ Azure 存储提供了两种将数据复制到次要区域的选项：
 
 如果使用 GZRS 存储帐户，在可用性区域不可用或无法恢复的情况下，可以继续读取和写入数据。 此外，即使在遇到区域完全停电或导致主要区域不可恢复的灾难，数据也能持久保存。 GZRS 可在一年中提供至少 99.99999999999999%（16 个 9）的对象持久性。
 
-下图显示了如何通过 GZRS 或 GZRS 复制数据：
+下图显示了如何使用 GZRS 或 RA-GZRS 复制数据：
 
-:::image type="content" source="media/storage-redundancy/geo-zone-redundant-storage.png" alt-text="显示如何将数据与 GZRS 或 GZRS 一起复制的关系图":::
+:::image type="content" source="media/storage-redundancy/geo-zone-redundant-storage.png" alt-text="此图显示了如何使用 GZRS 或 RA-GZRS 复制数据":::
 
 仅常规用途 v2 存储帐户支持 GZRS 和 RA-GZRS。 有关存储帐户类型的详细信息，请参阅 [Azure 存储帐户概述](storage-account-overview.md)。 GZRS 和 RA-GZRS 支持块 Blob、页 Blob（但无法用于 VHD 磁盘）、文件、表和队列。
 
 以下区域支持 GZRS 和 RA-GZRS：
 
-- 亚洲东南部
-- 北欧
-- 西欧
-- 日本东部
-- 英国南部
-- 美国中部
-- 美国东部
-- 美国东部 2
-- 美国西部 2
+- （非洲）南非北部
+- （亚太）东南亚
+- （亚太）澳大利亚东部
+- （亚太）印度中部
+- （亚太）日本东部
+- （亚太）韩国中部
+- （加拿大）加拿大中部
+- （欧洲）欧洲北部
+- （欧洲）西欧
+- （欧洲）法国中部
+- （欧洲）德国中西部
+- （欧洲）英国南部
+- （南美洲）巴西南部
+- （美国）美国中部
+- （美国）美国东部
+- （美国）美国东部 2
+- （美国）美国中南部
+- （美国）美国西部 2
 
 若要详细了解定价，请参阅 [Blob](https://azure.microsoft.com/pricing/details/storage/blobs)、[文件](https://azure.microsoft.com/pricing/details/storage/files/)、[列队](https://azure.microsoft.com/pricing/details/storage/queues/)和[表](https://azure.microsoft.com/pricing/details/storage/tables/)的定价详细信息。
 
@@ -141,13 +153,13 @@ Azure 存储提供了两种将数据复制到次要区域的选项：
 异地冗余存储（使用 GRS 或 GZRS）将数据复制到次要区域中的另一个物理位置，以防止区域中断。 但是，仅当客户或 Microsoft 启动了从主要区域到次要区域的故障转移时，才能读取该数据。 启用对次要区域的读取访问时，数据可供随时读取（包括主要区域不可用的情况）。 若要对次要区域进行读取访问，可启用读取访问异地冗余存储 (RA-GRS) 或读取访问地理区域冗余存储 (RA-GZRS)。
 
 > [!NOTE]
-> Azure 文件不支持读取访问异地冗余存储 (GRS) 和读取访问地域冗余存储 (GZRS) 。
+> Azure 文件存储不支持读取访问异地冗余存储 (RA-GRS) 和读取访问异地区域冗余存储 (RA-GZRS)。
 
 ### <a name="design-your-applications-for-read-access-to-the-secondary"></a>设计应用程序以便能够对次要区域进行读取访问
 
 如果存储帐户已配置为对次要区域进行读取访问，则你可以设计自己的应用程序，以便在主要区域出于任何原因而不可用时，能够无缝转换为从次要区域读取数据。 
 
-启用 "GRS" 或 "GZRS" 后，辅助区域可用于读取访问权限，因此你可以提前测试应用程序，以确保在发生服务中断时，它将从辅助区域正确读取。 有关如何设计应用程序以实现高可用性的详细信息，请参阅[使用异地冗余设计高度可用的应用程序](geo-redundant-design.md)。
+启用 RA-GRS 或 RA-GZRS 后，次要区域可用于读取访问，因此你可以预先测试应用程序，以确保在发生服务中断时可以从次要区域正确读取数据。 若要详细了解如何设计应用程序以利用异地冗余，请参阅[使用异地冗余设计高度可用的应用程序](geo-redundant-design.md)。
 
 启用对次要区域的读取访问后，应用程序可以从次要终结点以及主要终结点读取数据。 辅助终结点将后缀“–secondary”追加到帐户名称。 例如，如果 Blob 存储的主终结点是 `myaccount.blob.core.windows.net`，则辅助终结点是 `myaccount-secondary.blob.core.windows.net`。 存储帐户的帐户访问密钥对于主要终结点和次要终结点是相同的。
 
@@ -172,7 +184,7 @@ Azure 存储提供了两种将数据复制到次要区域的选项：
 | 给定一年内的对象持久性百分比 | 至少 99.999999999%（11 个 9） | 至少为 99.9999999999% (12 9's) | 至少为 99.99999999999999% (16 9's) | 至少 99.99999999999999%（16 个 9） |
 | 读取请求的可用性 | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | GRS 至少为 99.9%（冷访问层为 99%）<br /><br />对于 RA-GRS，至少为 99.99%（冷访问层为 99.9%） | 对于 GZRS，至少为 99.9%（冷访问层为 99%）<br /><br />对于 RA-GZRS，至少为 99.99%（冷访问层为 99.9%） |
 | 写入请求的可用性 | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） |
-| 在单独的节点上维护的数据副本数 | 单个区域内的三个副本 | 在单个区域内跨不同的可用性区域的三个副本 | 共六个副本，包括主要区域中的三个副本和次要区域中的三个副本 | 六个副本总数，其中包括主要区域的三个不同的可用性区域和次要区域中的三个本地冗余副本 |
+| 在单独的节点上维护的数据副本数 | 单个区域内的三个副本 | 跨单个区域内的不同可用性区域的三个副本 | 共六个副本，包括主要区域中的三个副本和次要区域中的三个副本 | 共六个副本，包括跨主要区域内的不同可用性区域的三个副本和次要区域中的三个本地冗余副本 |
 
 ### <a name="durability-and-availability-by-outage-scenario"></a>持久性和可用性（按中断方案）
 
@@ -189,7 +201,7 @@ Azure 存储提供了两种将数据复制到次要区域的选项：
 
 ### <a name="supported-azure-storage-services"></a>支持的 Azure 存储服务
 
-下表显示了每个 Azure 存储服务支持的冗余选项。
+下表显示了每个 Azure 存储服务都支持哪些冗余选项。
 
 | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|
@@ -201,7 +213,7 @@ Azure 存储提供了两种将数据复制到次要区域的选项：
 
 | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|
-| 常规用途 v2<br /> 常规用途 v1<br /> BlockBlobStorage<br /> BlobStorage<br /> FileStorage | 常规用途 v2<br /> BlockBlobStorage<br /> FileStorage | 常规用途 v2<br /> 常规用途 v1<br /> BlobStorage | 常规用途 v2 |
+| 常规用途 v2<br /> 常规用途 v1<br /> 高级块 blob<br /> 旧 Blob<br /> 高级文件共享 | 常规用途 v2<br /> 高级块 blob<br /> 高级文件共享 | 常规用途 v2<br /> 常规用途 v1<br /> 旧 Blob | 常规用途 v2 |
 
 所有存储帐户的所有数据的复制均基于存储帐户的冗余选项。 复制的对象包括块 Blob、追加 Blob、页 Blob、队列、表和文件。 将复制所有层（包括存档层）中的数据。 有关 blob 层的详细信息，请参阅 [Azure Blob 存储：热、冷和存档访问层](../blobs/storage-blob-storage-tiers.md)。
 

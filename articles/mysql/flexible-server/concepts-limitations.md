@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: a3abde9092519be057dcd73ec63318f970fd5c74
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 48aef337326d58b2a503dc48862571efde0d37ab
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94543079"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105034514"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）中的限制
 
@@ -89,8 +89,12 @@ MySQL 服务不允许直接访问基础文件系统。 不支持某些数据操�
 - 使用时间点还原功能时，将使用与新服务器所基于的源服务器相同的计算和存储配置创建新服务器。 创建服务器后，新还原的服务器的计算可以缩减。
 - 不支持还原已删除的服务器。
 
+## <a name="features-available-in-single-server-but-not-yet-supported-in-flexible-server"></a>单一服务器中可用的功能在灵活服务器中尚不受支持 
+并非所有在 Azure Database for MySQL - 单一服务器中可用的功能都可以在灵活服务器中使用。 有关单一服务器和灵活服务器功能比较的完整列表，请参阅[在 Azure 文档中选择正确的 MySQL Server 选项。](../select-right-deployment-type.md#comparing-the-mysql-deployment-options-in-azure)
+
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[可用于计算和存储选项的内容](concepts-compute-storage.md)
+- 了解如何[在 Azure 文档中选择正确的 MySQL Server 选项](../select-right-deployment-type.md)
+- 了解[灵活服务器中可用于计算和存储选项的内容](concepts-compute-storage.md)
 - 了解[受支持的 MySQL 版本](concepts-supported-versions.md)
-- 查看[如何使用 Azure 门户备份和还原服务器](how-to-restore-server-portal.md)
+- 快速入门：[使用 Azure 门户创建 Azure Database for MySQL 灵活服务器](quickstart-create-server-portal.md)

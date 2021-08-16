@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/25/2021
+ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: fed830833e9f68bcf734be65cba16f1cc84c8f89
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 2658c088304eba457b25bb3dc421b356ba70b57f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110494345"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100102472"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft 标识平台中的权限和许可
 
@@ -43,7 +43,11 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 
 将资源的功能分割成小的权限集时，可将第三方应用构建为只请求执行其功能所需的权限。 用户和管理员能够知道应用可以访问哪些数据， 因此可以更加确信应用不会出现恶意行为。 开发人员应始终遵守“最低特权”原则，仅请求分配正常运行应用程序所需的权限。
 
-在 OAuth 2.0 中，这些类型的权限集称为“范围”。 它们通常也称为“权限”。 在 Microsoft 标识平台中，权限以字符串值形式表示。 应用通过在 `scope` 查询参数中指定权限来请求所需的权限。 标识平台支持多个定义明确的 [OpenID Connect 范围](#openid-connect-scopes)以及基于资源的权限（通过将权限值追加到资源的标识符或应用程序 ID URI 来指示每个权限）。 例如，权限字符串 `https://graph.microsoft.com/Calendars.Read` 用于请求在 Microsoft Graph 中读取用户日历的权限。
+在 OAuth 2.0 中，这些类型的权限集称为“范围”。 它们通常也称为“权限”。 在 Microsoft 标识平台中，权限以字符串值形式表示。 以 Microsoft Graph 为例，下面是每个权限的字符串值：
+
+* 使用 `Calendars.Read`
+* 使用 `Calendars.ReadWrite`
+* 使用 `Mail.Send`
 
 应用往往是通过在发往 Microsoft 标识平台授权终结点的请求中指定范围来请求这些权限。 但是，某些高特权权限只能通过管理员同意来授予。 可以通过使用[管理员同意终结点](#admin-restricted-permissions)来请求或授予这些权限。 请继续阅读以了解详细信息。
 
@@ -51,7 +55,7 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 
 Microsoft 标识平台支持两种类型的权限：委托的权限和应用程序权限 。
 
-* **委托的权限** 由包含登录用户的应用使用。 对于这些应用，由用户或管理员同意应用请求的权限， 向应用授予委托的权限，以便该应用在对目标资源进行调用时可充当登录的用户。 
+* **委托的权限** 由包含登录用户的应用使用。 对于这些应用，由用户或管理员同意应用请求的权限， 并向应用授予委托的权限，以便该应用在对目标资源进行调用时可充当登录的用户。 
 
     某些委托的权限可由非管理用户同意， 但某些高特权权限需要[管理员同意](#admin-restricted-permissions)。 若要了解哪些管理员角色可以同意委托的权限，请参阅 [Azure Active Directory (Azure AD) 中的管理员角色权限](../roles/permissions-reference.md)。
 
@@ -105,13 +109,6 @@ OpenID Connect 的 Microsoft 标识平台实现具有一些已明确定义并托
 访问令牌在短期内有效。 它的有效期通常为一小时。 到时，应用需要将用户重定向回到 `/authorize` 终结点以获取新的授权代码。 此重定向期间，用户可能需要再次输入其凭据或重新同意权限，具体取决于应用类型。
 
 有关如何获取及使用刷新令牌的详细信息，请参阅 [Microsoft 标识平台协议参考](active-directory-v2-protocols.md)。
-
-## <a name="incremental-and-dynamic-consent"></a>增量许可和动态许可
-使用 Microsoft 标识平台终结点，可以忽略在 Azure 门户的应用注册信息中定义的静态权限，而以递增方式请求权限。  可以一开始请求最少的一组权限，然后随着时间的推移，当客户使用更多应用功能时，再请求更多权限。 为此，可以在[请求访问令牌](#requesting-individual-user-consent)时，通过在 `scope` 参数中包含新的范围指定应用所需的范围 - 无需在应用程序注册信息中预定义这些范围。 如果用户尚未许可添加到请求的新范围，则系统会提示他们仅许可新的权限。 增量或动态同意仅适用于委托的权限，不适用于应用程序权限。
-
-允许应用通过 `scope` 参数动态请求权限可让开发人员完全控制用户的体验。 还可以将许可体验提前，并在一个初始授权请求中请求所有的权限。 如果应用需要大量的权限，则你可以在用户尝试使用应用的某些功能过程中，以递增方式向用户收集这些权限。
-
-代表组织执行的[管理员同意](#using-the-admin-consent-endpoint)仍然需要为应用注册的静态权限，因此，如果需要管理员代表整个组织同意，则应在应用注册门户中为应用设置这些权限。 这会减少组织管理员设置应用程序所需的周期数。
 
 ## <a name="requesting-individual-user-consent"></a>请求单个用户的许可
 
@@ -273,7 +270,7 @@ Content-Type: application/json
     "grant_type": "authorization_code",
     "client_id": "6731de76-14a6-49ae-97bc-6eba6914391e",
     "scope": "https://outlook.office.com/mail.read https://outlook.office.com/mail.send",
-    "code": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...",
+    "code": "AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq..."
     "redirect_uri": "https://localhost/myapp",
     "client_secret": "zc53fwe80980293klaj9823"  // NOTE: Only required for web apps
 }

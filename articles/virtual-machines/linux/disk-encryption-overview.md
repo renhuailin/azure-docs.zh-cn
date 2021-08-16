@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 11ddb2e76123c1181efffea3ef66a517bb5124a2
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 5b84526f6f3193fc47bc211fcdec71bb5e27390f
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207368"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110077673"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>适用于 Linux VM 的 Azure 磁盘加密 
 
@@ -102,9 +102,13 @@ Azure 磁盘加密在[基本、A 系列 VM](https://azure.microsoft.com/pricing/
 | SUSE | SLES HPC 12-SP3 | 12-SP3 | SUSE:SLES-HPC:12-SP3:latest | 仅数据磁盘 |
 
 > [!NOTE]
-> RHEL OS 和 RHEL7 即用即付映像的数据磁盘支持实现新的 Azure 磁盘加密。  
+> RHEL OS 和 RHEL7 即用即付映像的数据磁盘支持实现新的 Azure 磁盘加密。
 >
 > RHEL 自带订阅黄金映像仅在注册了订阅之后支持 ADE。 有关详细信息，请参阅 [Azure 中的 Red Hat Enterprise Linux 自带订阅黄金映像](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)
+> 
+> ADE 对特定产品/服务类型的支持不会超过发布者提供的生命周期结束日期。 
+> 
+> 旧版 ADE 解决方案（使用 AAD 凭据）不建议用于新 VM，它与 RHEL 7.8 之后的 RHEL 版本不兼容。
 
 ## <a name="additional-vm-requirements"></a>其他 VM 要求
 
@@ -150,7 +154,7 @@ Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和
 
 | 术语 | 定义 |
 | --- | --- |
-| Azure Key Vault | Key Vault 是基于联邦信息处理标准 (FIPS) 验证的硬件安全模块。 这些标准有助于保护加密密钥和敏感机密。 有关详细信息，请参阅 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 文档和[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)。 |
+| Azure Key Vault | Key Vault 是基于联邦信息处理标准 (FIPS) 验证的硬件安全模块。 这些标准有助于保护加密密钥和敏感机密。 有关详细信息，请参阅 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)文档和[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)。 |
 | Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) 经过了优化，可从命令行管理 Azure 资源。|
 | DM-Crypt |[DM-Crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) 是基于 Linux 的透明磁盘加密子系统，用于在 Linux VM 上启用磁盘加密。 |
 | 密钥加密密钥 (KEK) | 可用于保护或包装机密的非对称密钥 (RSA 2048)。 可提供硬件安全模块 (HSM) 保护的密钥或软件保护的密钥。 有关详细信息，请参阅 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)文档和[创建和配置用于 Azure 磁盘加密的密钥保管库](disk-encryption-key-vault.md)。 |

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2021
 ms.author: Zhchia
-ms.openlocfilehash: 385a61b3bda6c75b6fb87a5655fadb45080b7f08
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c302f7731c111c0718ac7c4d5889208020cc09a8
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124088"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110067566"
 ---
 # <a name="tutorial-configure-jostle-for-automatic-user-provisioning"></a>教程：为 Jostle 配置自动用户预配
 
@@ -96,6 +96,9 @@ ms.locfileid: "108124088"
 
 本部分介绍了如何配置 Azure AD 预配服务以基于 Azure AD 中的用户和组分配在 Jostle 应用中创建、更新以及禁用用户和组。
 
+> [!NOTE]
+> 若要详细了解如何自动将用户预配到 Jostle，请参阅 [User-Provisioning-Azure-Integration](https://forum.jostle.us/hc/en-us/articles/360056368534-User-Provisioning-Azure-Integration)。
+
 ### <a name="to-configure-automatic-user-provisioning-for-jostle-in-azure-ad"></a>在 Azure AD 中为 Jostle 配置自动用户预配：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 依次选择“企业应用程序”、“所有应用程序” 。
@@ -106,7 +109,7 @@ ms.locfileid: "108124088"
 
     ![应用程序列表中的 Jostle 链接](common/all-applications.png)
 
-1. 选择“预配”  选项卡。
+1. 选择“预配”选项卡并单击“开始”。
 
     ![“预配”选项卡](common/provisioning.png)
 
@@ -118,13 +121,13 @@ ms.locfileid: "108124088"
 
     ![标记](common/provisioning-testconnection-tenanturltoken.png)
 
-1. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址。 选中“发生故障时发送电子邮件通知”复选框。
+1. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址。 选中“发生故障时发送电子邮件通知”复选框。 但需要注意的是，Jostle 也会发送预配失败通知，因此这是可选的。
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
 1. 选择“保存”。
 
-1. 在“映射”部分中，选择“将 Azure Active Directory 用户同步到 Jostle” 。
+1. 在“映射”部分，选择“将 Azure Active Directory 用户预配到 Jostle” 。
 
 1. 在“特性映射”部分中，查看从 Azure AD 同步到 Jostle 的用户特性。 选为“匹配”属性的特性用于匹配 Jostle 中的用户帐户以执行更新操作。 如果更改[匹配目标属性](../app-provisioning/customize-application-attributes.md)，则需要确保 Jostle API 支持基于该属性筛选用户。 选择“保存”，提交所有更改。
 
@@ -147,7 +150,7 @@ ms.locfileid: "108124088"
 
     ![预配状态已打开](common/provisioning-toggle-on.png)
 
-1. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 Jostle 的用户或组 。
+1. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 Jostle 的用户或组。对于 Jostle，应将“范围”设置为“仅同步分配的用户和组”。
 
     ![预配范围](common/provisioning-scope.png)
 

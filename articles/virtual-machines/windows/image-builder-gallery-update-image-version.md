@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 映像生成器从现有映像版本创建新的映像版本（预览版）
+title: 使用 Azure 映像生成器从现有映像版本创建新的映像版本
 description: 使用 Windows 中的 Azure 映像生成器从现有映像版本创建新的 VM 映像版本。
 author: cynthn
 ms.author: cynthn
@@ -7,36 +7,23 @@ ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
-ms.colletion: windows
-ms.openlocfilehash: 0a53e8de8dd832e793ae12034c96ce9fe634ed7a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.collection: windows
+ms.openlocfilehash: 619821c87c4897c93e6a0344a98335cf4f95a53b
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694098"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112070824"
 ---
-# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-windows"></a>预览版：使用 Windows 中的 Azure 映像生成器根据现有映像版本创建新的 VM 映像版本
+# <a name="create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-windows"></a>使用 Windows 中的 Azure 映像生成器从现有映像版本创建新的 VM 映像版本
 
 本文介绍如何使用[共享映像库](../shared-image-galleries.md)中的现有映像版本，对其进行更新，并将其作为新的映像版本发布到库。
 
 我们将使用一个示例 .json 模板来配置映像。 要使用的 .json 文件为：[helloImageTemplateforSIGfromWinSIG.json](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json)。 
 
-> [!IMPORTANT]
-> Azure 映像生成器目前提供公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="register-the-features"></a>注册功能
-若要在预览期间使用 Azure 映像生成器，需要注册新功能。
-
-```azurecli-interactive
-az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview
-```
-
-检查功能注册的状态。
-
-```azurecli-interactive
-az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview | grep state
-```
+若要使用 Azure 映像生成器，则需要注册此功能。
 
 检查注册。
 
@@ -63,7 +50,7 @@ az provider register -n Microsoft.Network
 
 如果使用了[创建映像并将其分发到共享映像库](image-builder-gallery.md)来创建共享映像库，则已创建所需的变量。 如果没有，请设置要用于此示例的一些变量。
 
-对于预览，映像生成器仅支持在与源托管映像相同的资源组中创建自定义映像。 将此示例中的资源组名称更新为与源托管映像相同的资源组。
+映像生成器仅支持在与源托管映像相同的资源组中创建自定义映像。 将此示例中的资源组名称更新为与源托管映像相同的资源组。
 
 ```azurecli-interactive
 # Resource group name - we are using ibsigRG in this example

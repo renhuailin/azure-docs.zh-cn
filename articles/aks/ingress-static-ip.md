@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中使用静态
 services: container-service
 ms.topic: article
 ms.date: 04/23/2021
-ms.openlocfilehash: 6e03d69cbdf3837610e3b165c88c9680d7a1cc6a
-ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
+ms.openlocfilehash: 13313c09427e23139d35951357158d69d98fa511
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108006973"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110452321"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用静态公共 IP 地址创建入口控制器
 
@@ -29,7 +29,9 @@ ms.locfileid: "108006973"
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-本文使用 [Helm 3][helm] 安装 NGINX 入口控制器和证书管理器。 请确保使用最新版本的 Helm，并且有权访问 ingress-nginx 和 jetstack Helm 存储库 。 有关升级说明，请参阅 [Helm 安装文档][helm-install]。有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
+本文使用 [Helm 3][helm] 在[支持的 Kubernetes 版本][aks-supported versions]上安装 NGINX 入口控制器。 请确保使用最新版本的 Helm，并且有权访问 ingress-nginx 和 jetstack Helm 存储库 。 本文中概述的步骤可能与 Helm chart、NGINX 入口控制器或 Kubernetes 的先前版本不兼容。
+
+有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。 有关升级说明，请参阅 [Helm 安装文档][helm-install]。
 
 本文还要求运行 Azure CLI 2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -502,3 +504,4 @@ az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eas
 [client-source-ip]: concepts-network.md#ingress-controllers
 [install-azure-cli]: /cli/azure/install-azure-cli
 [aks-static-ip]: static-ip.md
+[aks-supported versions]: supported-kubernetes-versions.md

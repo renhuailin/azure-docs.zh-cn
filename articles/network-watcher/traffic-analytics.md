@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
-ms.custom: references_regions
-ms.openlocfilehash: 87dacd28223fd88866edb90266aa76fd3cdf86cf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 6588ee515d46f3f300bf3c486f0d528c6f31df98
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101095356"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032080"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -70,35 +70,37 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
       印度中部  
       美国中部  
       中国东部 2  
-      中国北部 2  
-      东亚       
+      中国北部   
+      中国北部 2       
    :::column-end:::
    :::column span="":::
+      东亚  
       美国东部  
       美国东部 2  
       美国东部 2 EUAP  
       法国中部  
-      德国中西部日本东部  
+      德国中西部  
+      日本东部  
       日本西部  
       韩国中部  
       韩国南部  
-      美国中北部  
-      北欧    
+      美国中北部    
    :::column-end:::
    :::column span="":::
+      北欧  
       南非北部  
       美国中南部  
       印度南部  
-      Southeast Asia  
+      东南亚  
       瑞士北部  
       瑞士西部  
       阿拉伯联合酋长国北部  
       英国南部  
-      英国西部   
-      USGov Arizona  
-      USGov Texas
+      英国西部     
+      USGov Arizona
    :::column-end:::
    :::column span="":::
+      USGov Texas  
       USGov Virginia  
       USNat 东部  
       USNat 西部  
@@ -120,38 +122,41 @@ Log Analytics 工作区必须存在于以下区域中：
       澳大利亚东部  
       澳大利亚东南部  
       巴西南部  
+      巴西东南部  
       加拿大中部  
       印度中部  
       美国中部  
-      中国东部 2  
+      中国东部 2      
       东亚  
-      美国东部  
    :::column-end:::
    :::column span="":::
+      美国东部  
       美国东部 2  
       美国东部 2 EUAP  
       法国中部  
       德国中西部  
-      Japan East  
+      日本东部  
+      日本西部  
       韩国中部  
       美国中北部  
       北欧  
-      南非北部  
-      美国中南部  
    :::column-end:::
    :::column span="":::
+      挪威东部  
+      南非北部  
+      美国中南部  
       东南亚  
       瑞士北部  
       瑞士西部  
       阿联酋中部  
       阿拉伯联合酋长国北部  
       英国南部  
-      英国西部   
-      USGov Arizona  
-      USGov Virginia  
-      USNat 东部   
+      英国西部      
    :::column-end:::
    :::column span="":::
+      USGov Arizona  
+      USGov Virginia  
+      USNat 东部  
       USNat 西部   
       USSec 东部  
       USSec 西部  
@@ -162,6 +167,9 @@ Log Analytics 工作区必须存在于以下区域中：
    :::column-end:::
 :::row-end:::
 
+> [!NOTE]
+> 如果 NSG 支持某个区域，但日志分析工作区不支持该区域进行上述列表中的流量分析，则可以使用任何其他受支持区域的日志分析工作区作为变通方法。
+
 ## <a name="prerequisites"></a>先决条件
 
 ### <a name="user-access-requirements"></a>用户访问要求
@@ -170,7 +178,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 |部署模型   | 角色                   |
 |---------          |---------               |
-|资源管理器   | “所有者”                  |
+|资源管理器   | 所有者                  |
 |                   | 参与者            |
 |                   | 读取器                 |
 |                   | 网络参与者    |
@@ -189,7 +197,7 @@ Log Analytics 工作区必须存在于以下区域中：
 - "Microsoft.Network/virtualNetworks/read"
 - "Microsoft.Network/expressRouteCircuits/read"
 
-有关如何检查用户访问权限的信息，请参阅[流量分析常见问题解答](traffic-analytics-faq.md)。
+有关如何检查用户访问权限的信息，请参阅[流量分析常见问题解答](traffic-analytics-faq.yml)。
 
 ### <a name="enable-network-watcher"></a>启用网络观察程序
 
@@ -245,7 +253,7 @@ New-AzStorageAccount `
 
 针对想要为其启用流量分析的其他任何 NSG 重复前面的步骤。 流日志中的数据将发送到工作区，因此，请确保所在国家/地区的当地法律和法规允许将数据存储在工作区所在的区域。 如果为不同的 NSG 设置了不同的处理间隔，系统会以不同的时间间隔收集数据。 例如：对于关键 VNET，可以选择启用 10 分钟的处理间隔，对于非关键 VNET，则是 1 小时。
 
-还可以使用 Azure PowerShell 中的 [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 来配置流量分析。 运行 `Get-Module -ListAvailable Az` 来查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
+还可以使用 Azure PowerShell 中的 [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 来配置流量分析。 运行 `Get-Module -ListAvailable Az` 来查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/install-Az-ps)（安装 Azure PowerShell 模块）。
 
 ## <a name="view-traffic-analytics"></a>查看流量分析
 
@@ -427,7 +435,7 @@ New-AzStorageAccount `
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-若要获取常见问题的解答，请参阅[流量分析常见问题解答](traffic-analytics-faq.md)。
+若要获取常见问题的解答，请参阅[流量分析常见问题解答](traffic-analytics-faq.yml)。
 
 ## <a name="next-steps"></a>后续步骤
 

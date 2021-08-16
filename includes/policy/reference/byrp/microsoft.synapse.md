@@ -2,22 +2,24 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/14/2021
+ms.date: 06/11/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a5e744b2a2c767c25e941796b65869297c1e5265
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5084df5a53a2c11c837a2ef0188de46a60b03b4a
+ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077818"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112017050"
 ---
 |名称<br /><sub>（Azure 门户）</sub> |说明 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[应启用 Synapse 工作区上的审核](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe04e5000-cd89-451d-bb21-a14d24ff9c73) |应启用 Synapse 工作区上的审核，以跟踪专用 SQL 池中所有数据库的数据库活动，并将它们保存在审核日志中。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceSqlAuditing_Audit.json) |
 |[Azure Synapse 工作区应该只允许传送到已批准目标的出站数据流量](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3484ce98-c0c5-4c83-994b-c5ac24785218) |通过只允许传送到已批准目标的出站数据流量来提升 Synapse 工作区的安全性。 此做法会在发送数据之前验证目标，有助于防止数据外泄。 |审核、已禁用、拒绝 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/Workspace_RestrictOutboundDataTraffic_Audit.json) |
+|[Azure Synapse 工作区应禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F38d8df46-cf4e-4073-8e03-48c24b29de0d) |禁用公用网络访问可确保 Synapse 工作区不会在公共 Internet 上公开，从而提高安全性。 创建专用终结点可以限制 Synapse 工作区公开。 有关详细信息，请访问：[https://docs.microsoft.com/azure/synapse-analytics/security/connectivity-settings](https://docs.microsoft.com/azure/synapse-analytics/security/connectivity-settings)。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspacePublicNetworkAccess_Deny.json) |
 |[Azure Synapse 工作区应使用客户管理的密钥来加密静态数据](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff7d52b2d-e161-4dfa-a82b-55e564167385) |使用客户管理的密钥来控制对 Azure Synapse 工作区中存储的数据的静态加密。 客户管理的密钥提供双重加密，方法是在使用服务托管密钥完成的默认加密层上添加另一层加密。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceCMK_Audit.json) |
 |[Azure Synapse 工作区应使用专用链接](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F72d11df1-dd8a-41f7-8925-b05b960ebafc) |通过 Azure 专用链接，在没有源位置或目标位置的公共 IP 地址的情况下，也可以将虚拟网络连接到 Azure 服务。 专用链接平台处理使用者与服务之间通过 Azure 主干网络进行的连接。 通过将专用终结点映射到 Azure Synapse 工作区，可以降低数据泄露风险。 有关专用链接的详细信息，请访问：[https://docs.microsoft.com/azure/synapse-analytics/security/how-to-connect-to-workspace-with-private-links](https://docs.microsoft.com/azure/synapse-analytics/security/how-to-connect-to-workspace-with-private-links)。 |Audit、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceUsePrivateLinks_Audit.json) |
+|[将 Azure Synapse 工作区配置为禁用公用网络访问](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5c8cad01-ef30-4891-b230-652dadb4876a) |禁用对 Synapse 工作区的公用网络访问，确保无法通过公共 Internet 对其进行访问。 这样可以减少数据泄露风险。 有关详细信息，请访问：[https://docs.microsoft.com/azure/synapse-analytics/security/connectivity-settings](https://docs.microsoft.com/azure/synapse-analytics/security/connectivity-settings)。 |修改，已禁用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspacePublicNetworkAccess_Modify.json) |
 |[为 Azure Synapse 工作区配置专用终结点](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3b3b0c27-08d2-4b32-879d-19930bee3266) |专用终结点可在源或目标位置没有公共 IP 地址的情况下将虚拟网络连接到 Azure 服务。 通过将专用终结点映射到 Azure Synapse 工作区，可以降低数据泄露风险。 有关专用链接的详细信息，请访问：[https://docs.microsoft.com/azure/synapse-analytics/security/how-to-connect-to-workspace-with-private-links](https://docs.microsoft.com/azure/synapse-analytics/security/how-to-connect-to-workspace-with-private-links)。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceUsePrivateLinks_DeployIfNotExists.json) |
 |[将 Synapse 工作区配置为启用审核](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac7891a4-ac7a-4ba0-9ae9-c923e5a225ee) |为了确保捕获针对 SQL 资产执行的操作，应让 Synapse 工作区启用审核。 为了符合监管标准，有时需要这样做。 |DeployIfNotExists、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceSqlAuditing_Deploy.json) |
 |[应删除 Azure Synapse 工作区上的 IP 防火墙规则](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F56fd377d-098c-4f02-8406-81eb055902b8) |删除所有 IP 防火墙规则可确保只能从专用终结点访问 Azure Synapse 工作区，从而提高安全性。 此配置会对创建允许公用网络访问工作区的防火墙规则进行审核。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceFirewallRules_Audit.json) |

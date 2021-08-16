@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 5d6ea75936383388a57a7822f054e0ea7297471e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 981050280890f2c060fb82995296e8b450beb5bc
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101695509"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110586554"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Azure 虚拟机部署
 
@@ -71,8 +71,8 @@ ms.locfileid: "101695509"
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
 [2367194]:https://launchpad.support.sap.com/#/notes/2367194
 
-[azure-cli]:../../../cli-install-nodejs.md
-[azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli
+[azure-cli]:/cli/azure/install-classic-cli
+[azure-cli-2]:/cli/azure/install-azure-cli
 [azure-portal]:https://portal.azure.com
 [azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
@@ -128,6 +128,8 @@ ms.locfileid: "101695509"
 [deployment-guide-5.1-new]:deployment-guide.md#7bf24f59-7347-4c7a-b094-4693e4687ee5 (适用于 SAP 的新 Azure 扩展的就绪状态检查)
 [deployment-guide-5.2]:deployment-guide.md#e2d592ff-b4ea-4a53-a91a-e5521edb6cd1 (适用于 SAP 的 Azure 扩展配置的运行状况检查)
 [deployment-guide-5.2-new]:deployment-guide.md#464ac96d-7d3c-435d-a5ae-3faf3bfef4b3 (适用于 SAP 的新 Azure 扩展配置的运行状况检查)
+
+
 [deployment-guide-5.3]:deployment-guide.md#fe25a7da-4e4e-4388-8907-8abc2d33cfd8 (对适用于 SAP 的 Azure 扩展进行故障排除)
 [deployment-guide-5.3-new]:deployment-guide.md#b7afb8ef-a64c-495d-bb37-2af96688c530 (对适用于 SAP 的新 Azure 扩展进行故障排除)
 [deployment-guide-contact-support]:deployment-guide.md#3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2 (对适用于 SAP 的 Azure 扩展进行故障排除 - 联系支持)
@@ -962,9 +964,8 @@ az --version
 
 #### <a name="azure-cli-for-linux-vms"></a><a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>适用于 Linux VM 的 Azure CLI
 
-使用 Azure CLI 安装适用于 SAP 的 Azure 扩展：
-
-   1. 如[安装 Azure 经典 CLI][azure-cli] 中所述安装 Azure 经典 CLI。
+1. 使用 Azure CLI 安装适用于 SAP 的 Azure 扩展：
+   1. 安装 [Azure 经典 CLI][azure-cli]。
    1. 使用 Azure 帐户进行登录：
 
       ```console
@@ -977,28 +978,27 @@ az --version
       azure config mode arm
       ```
 
-   1. 启用适用于 SAP 的 Azure 扩展：
+   1. 启用扩展：
 
       ```console
       azure vm enable-aem <resource-group-name> <vm-name>
       ```
 
-1. 使用 Azure CLI 2.0 进行安装
-
-   1. 如[安装 Azure CLI 2.0][azure-cli-2] 中所述安装 Azure CLI 2.0。
+1. 使用 Azure CLI 2.0 安装 Azure CLI AEM 扩展：
+   1. 安装 [Azure CLI 2.0][azure-cli-2]。 确保至少使用 2.19.1 或更高版本（使用最新版本）。
    1. 使用 Azure 帐户进行登录：
 
       ```azurecli
       az login
       ```
 
-   1. 安装 Azure CLI AEM 扩展
-  
+   1. 安装 Azure CLI AEM 扩展。 确保使用 0.2.2 或更高版本。
+    
       ```azurecli
       az extension add --name aem
       ```
   
-   1. 通过以下命令安装扩展
+   1. 启用扩展：
   
       ```azurecli
       az vm aem set -g <resource-group-name> -n <vm name>
@@ -1021,10 +1021,10 @@ az --version
 
 #### <a name="configure-the-new-azure-extension-for-sap-with-azure-powershell"></a><a name="2ad55a0d-9937-4943-9dd2-69bc2b5d3de0"></a>使用 Azure PowerShell 配置适用于 SAP 的新 Azure 扩展
 
-适用于 SAP 的新 VM 扩展使用分配给 VM 的托管标识来访问 VM 的监视和配置数据。 要使用 PowerShell 来安装适用于 SAP 的 新 Azure 扩展，首先必须将此类标识分配给 VM，并向该标识授予对该虚拟机使用的所有资源（例如磁盘和网络接口）的访问权。
+适用于 SAP 的新 VM 扩展使用分配给 VM 的托管标识来访问 VM 的监视和配置数据。 要使用 PowerShell 来安装适用于 SAP 的 新 Azure 扩展，首先必须将此类标识分配给 VM，并向该标识授予对该 VM 使用的所有资源（例如磁盘和网络接口）的访问权限。
 
 > [!NOTE]
-> 以下步骤要求拥有对资源组或单一资源（虚拟机，数据磁盘等）的“所有者”特权
+> 以下步骤要求拥有对资源组或单一资源（虚拟机、数据磁盘等）的“所有者”特权
 
 1. 请务必使用 SAP 主机代理 7.21 PL 47 或更高版本。
 1. 请务必卸载适用于 SAP 的 VM 扩展的当前版本。 不支持在同一虚拟机上同时安装适用于 SAP 的 VM 扩展的两个版本。
@@ -1042,28 +1042,27 @@ az --version
 
 #### <a name="configure-the-new-azure-extension-for-sap-with-azure-cli"></a><a name="c8749c24-fada-42ad-b114-f9aae2dc37da"></a>使用 Azure CLI 配置适用于 SAP 的新 Azure 扩展
 
-适用于 SAP 的新 VM 扩展使用分配给 VM 的托管标识来访问 VM 的监视和配置数据。 要使用 Azure CLI 来安装适用于 SAP 的 新 Azure 扩展，首先必须将此类标识分配给 VM，并向该标识授予对该虚拟机使用的所有资源（例如磁盘和网络接口）的访问权。
+适用于 SAP 的新 VM 扩展使用分配给 VM 的托管标识来访问 VM 的监视和配置数据。 要使用 Azure CLI 来安装适用于 SAP 的 新 Azure 扩展，首先必须将此类标识分配给 VM，并向该标识授予对该 VM 使用的所有资源（例如磁盘和网络接口）的访问权限。
 
 > [!NOTE]
-> 以下步骤要求拥有对资源组或单一资源（虚拟机，数据磁盘等）的“所有者”特权
+> 以下步骤要求拥有对资源组或单一资源（虚拟机、数据磁盘等）的“所有者”特权
 
-1. 请务必使用 SAP 主机代理 7.21 PL 47 或更高版本。
-1. 请务必卸载适用于 SAP 的 VM 扩展的当前版本。 不支持在同一虚拟机上同时安装适用于 SAP 的 VM 扩展的两个版本。
-1. 如[安装 Azure CLI 2.0][azure-cli-2] 中所述安装 Azure CLI 2.0。
-
+1. 确保使用 SAP 主机代理 7.21 PL 47 或更高版本。
+1. 确保卸载适用于 SAP 的 VM 扩展的当前版本。 不能在同一 VM 上同时安装适用于 SAP 的 VM 扩展的两个版本。 
+1. 安装最新版本的 [Azure CLI 2.0][azure-cli-2]（2.19.1 或更高版本）。
 1. 使用 Azure 帐户进行登录：
 
    ```azurecli
    az login
    ```
 
-1. 安装 Azure CLI AEM 扩展。 请确保至少使用版本 0.2.0 或更高版本。
+1. 安装 Azure CLI AEM 扩展。 确保使用 0.2.2 或更高版本。
   
    ```azurecli
    az extension add --name aem
    ```
   
-1. 安装新扩展时采用
+1. 启用新扩展：
   
    ```azurecli
    az vm aem set -g <resource-group-name> -n <vm name> --install-new-extension

@@ -1,76 +1,82 @@
 ---
-title: Confluent 上的 Apache Kafka 云概述-Azure 合作伙伴解决方案
-description: 了解如何在 Azure Marketplace 中的 Confluent Cloud 上使用 Apache Kafka。
+title: Apache Kafka on Confluent Cloud 概述 - Azure 合作伙伴解决方案
+description: 了解如何在 Azure 市场中使用 Apache Kafka on Confluent Cloud。
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
 ms.date: 01/15/2021
 ms.author: tomfitz
-ms.openlocfilehash: b4aa00b7a2cc7ca6bc968be70957c127a8e00738
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
-ms.translationtype: MT
+ms.openlocfilehash: 6fbd6b72c17b8483f9fdb5bc227625fd92009594
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253354"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952624"
 ---
-# <a name="what-is-apache-kafka-for-confluent-cloud"></a>Confluent 云的 Apache Kafka 是什么？
+# <a name="what-is-apache-kafka-for-confluent-cloud"></a>Apache Kafka for Confluent Cloud 是什么？
 
-Confluent Cloud Apache Kafka 是一种提供作为服务 Apache Kafka 的 Azure Marketplace 产品。 它是完全托管的，因此你可以专注于构建应用程序，而不是管理群集。
+Apache Kafka for Confluent Cloud 是一种 Azure 市场产品/服务，它提供 Apache Kafka 即服务。 它受完全托管，使你可以专注于生成应用程序，而不是管理群集。
 
-为了降低跨平台管理的负担，Microsoft 与 Confluent Cloud 进行了合作，以构建从 Azure 到 Confluent 云的集成设置层。 它提供在 Azure 上使用 Confluent 云的合并体验。 可以轻松地将 Confluent Cloud 与 Azure 应用程序集成。
+为了减轻跨平台管理的负担，Microsoft 与 Confluent Cloud 合作，构建了一个从 Azure 到 Confluent Cloud 的集成预配层。 它为在 Azure 上使用 Confluent Cloud 提供了一个统一的体验。 你可轻松地将 Confluent Cloud 与 Azure 应用程序集成，并使用该应用对其进行管理。
 
-以前，你必须购买 Marketplace 中的 Confluent 云产品并在 Confluent 云中单独设置帐户。 若要管理配置和资源，必须在 Azure 门户和 Confluent Cloud 之间导航。
+以前，必须在市场中购买 Confluent Cloud 产品/服务，并单独在 Confluent Cloud 中设置帐户。 若要管理配置和资源，必须在 Azure 和 Confluent Cloud 的门户之间进行导航。
 
-现在，通过名为 **Confluent** 的资源提供程序预配 Confluent 云资源。 可以通过 [Azure 门户](https://portal.azure.com/)、 [Azure CLI](/cli/azure/)或 [Azure Sdk](/azure/#languages-and-tools)来创建和管理 Confluent 云组织资源。 Confluent Cloud 拥有和运行 (SaaS) 应用程序的软件即服务，包括环境、群集、主题、API 密钥和托管连接器。
+现在，你通过名为 Microsoft.Confluent 的资源提供程序预配 Confluent Cloud 资源。 通过 [Azure 门户](https://portal.azure.com/)、[Azure CLI](/cli/azure/) 或 [Azure SDK](/azure/index.yml#languages-and-tools) 创建和管理 Confluent Cloud 组织资源。 Confluent Cloud 拥有并运行软件即服务 (SaaS) 应用程序，包括环境、群集、主题、API 密钥和托管连接器。
 
 ## <a name="capabilities"></a>功能
 
-Confluent 云和 Azure 之间的深度集成可实现以下功能：
+Confluent Cloud 与 Azure 之间的深度集成支持以下功能：
 
-- 使用完全托管的基础结构，从 Azure 门户预配新的 Confluent 云组织资源。
-- 通过 Azure Active Directory (Azure AD) ，简化从 Azure 到 Confluent Cloud (SSO) 的单一登录。 不需要从 Confluent 云门户进行单独的身份验证。
-- 通过 Azure 订阅开票获取 Confluent 云消耗的统一计费。
-- 从 Azure 门户管理 Confluent 云资源，并将其与其他 Azure 资源一起在 " **所有资源** " 页中跟踪。
+- 使用完全托管的基础结构从 Azure 门户预配新的 Confluent Cloud 组织资源。
+- 使用 Azure Active Directory (Azure AD) 简化从 Azure 到 Confluent Cloud 的单一登录 (SSO)。 无需在 Confluent Cloud 门户单独进行身份验证。
+- 通过 Azure 订阅发票获取 Confluent Cloud 使用量的统一计费。
+- 在 Azure 门户中管理 Confluent Cloud 资源，并在包含其他 Azure 资源的“所有资源”页面中跟踪它们。
 
 ## <a name="confluent-organization"></a>Confluent 组织
 
-Confluent 组织是提供 Azure 与 Confluent 云资源之间的映射的资源。 这是其他 Confluent 云资源的父资源。
+Confluent 组织是提供 Azure 与 Confluent Cloud 资源之间的映射的资源。 它是其他 Confluent Cloud 资源的父资源。
 
-每个 Azure 订阅可以包含多个 Confluent 计划。 每个 Confluent 计划都映射到 Confluent 门户中的用户帐户和组织。 在每个 Confluent 组织内，可以创建多个环境、群集、主题和连接器。
+每个 Azure 订阅可包含多个 Confluent 计划。 每个 Confluent 计划映射到 Confluent 门户中的一个用户帐户和组织。 在每个 Confluent 组织内，可创建多个环境、群集、主题和连接器。
 
-当你在 Azure 中预配 Confluent 云资源时，将获取 Confluent 组织 ID、默认环境和用户帐户。 有关详细信息，请参阅 [快速入门： Azure 上的 Confluent Cloud 入门](create.md)。
+在 Azure 中预配 Confluent Cloud 资源时，你将获取 Confluent 组织 ID、默认环境和用户帐户。 有关详细信息，请参阅[快速入门：开始在 Azure 上使用 Confluent Cloud](create.md)。
 
-对于计费，在 Marketplace 中购买的每个 Confluent 云产品/服务将映射到唯一的 Confluent 组织。
+对于计费，在市场中购买的每个 Confluent Cloud 产品/服务都映射到唯一的 Confluent 组织。
 
 ## <a name="single-sign-on"></a>单一登录
 
-登录到 Azure 门户时，还可以使用凭据登录 Confluent Cloud SaaS 门户。 经验使用 [Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) 和 [Azure AD SSO](../../active-directory/manage-apps/what-is-single-sign-on.md) ，为你提供一种安全且方便的方式登录。
+在你登录到 Azure 门户时，你的凭据也将用于登录到 Confluent Cloud SaaS 门户。 该体验使用 [Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) 和 [Azure AD SSO](../../active-directory/manage-apps/what-is-single-sign-on.md) 为你提供安全便捷的登录方式。
 
-有关详细信息，请参阅 [单一登录](manage.md#single-sign-on)。
+有关详细信息，请参阅[单一登录](manage.md#single-sign-on)。
 
 ## <a name="billing"></a>计费
 
-提供了两种计费选项：即用即付每月计划和承诺计划。
+提供了两种计费选项：即用即付月计划和承诺计划。
 
-- 使用即用即 **付每月计划**，可在 Azure 月度帐单上收到 Confluent 的云消耗费用。
-- 使用 **承诺计划**，你可以注册最小支出，并获得 Confluent 云的已提交使用情况的折扣。
+- 使用即用即付月计划，可在 Azure 月度帐单上收到 Confluent Cloud 使用量的费用。
+- 使用承诺计划，可注册一个最低支出金额，并针对承诺的 Confluent Cloud 使用量获得折扣。
 
-您决定在创建服务时要使用的计费选项。
+在创建服务时决定要使用的计费选项。
+
+## <a name="connector-to-azure-cosmos-db"></a>到 Azure Cosmos DB 的连接器
+
+在 Confluent 中心客户端中，按照 [Confluent 中心列表](https://www.confluent.io/hub/microsoftcorporation/kafka-connect-cosmos)中的建议来安装 Cosmos DB 连接器。 
+
+要手动安装连接器，请首先从 [Cosmos DB 版本](https://github.com/microsoft/kafka-connect-cosmosdb/releases)页中下载 uber JAR。 或者，也可以[直接从源代码生成自己的 uber JAR](https://github.com/microsoft/kafka-connect-cosmosdb/blob/dev/doc/README_Sink.md#install-sink-connector)。 按照 Confluent 文档中描述的关于[手动安装连接器](https://docs.confluent.io/home/connect/install.html#install-connector-manually)的指南，完成安装。  
 
 ## <a name="confluent-links"></a>Confluent 链接
 
-有关使用适用于 Confluent 云的 Apache Kafka 的其他帮助，请参阅 [Confluent 站点](https://docs.confluent.io/home/overview.html)的以下链接。
+有关使用 Apache Kafka for Confluent Cloud 的其他帮助，请参阅以下 [Confluent 站点](https://docs.confluent.io/home/overview.html)的链接。
 
-若要了解有关计费选项的信息，请参阅：
+若要了解计费选项，请参阅：
 
-* [Azure Marketplace，即用即付](https://docs.confluent.io/cloud/current/billing/ccloud-azure-payg.html)
-* [具有承诺的 Azure Marketplace](https://docs.confluent.io/cloud/current/billing/ccloud-azure-ubb.html)
+* [使用即用即付的 Azure 市场](https://docs.confluent.io/cloud/current/billing/ccloud-azure-payg.html)
+* [使用承诺的 Azure 市场](https://docs.confluent.io/cloud/current/billing/ccloud-azure-ubb.html)
 
-若要了解有关管理解决方案的信息，请参阅：
+若要了解如何管理解决方案，请参阅：
 
-* [在 Confluent 云中创建群集](https://docs.confluent.io/cloud/current/clusters/create-cluster.html)
-* [Confluent 云环境](https://docs.confluent.io/current/cloud/using/environments.html)
-* [Confluent 云基础知识](https://docs.confluent.io/current/cloud/using/cloud-basics.html)
+* [在 Confluent Cloud 中创建群集](https://docs.confluent.io/cloud/current/clusters/create-cluster.html)
+* [Confluent Cloud 环境](https://docs.confluent.io/current/cloud/using/environments.html)
+* [Confluent Cloud 基本信息](https://docs.confluent.io/current/cloud/using/cloud-basics.html)
 
 有关支持和条款，请参阅：
 
@@ -79,4 +85,4 @@ Confluent 组织是提供 Azure 与 Confluent 云资源之间的映射的资源�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要为 Confluent Cloud 创建 Apache Kafka 实例，请参阅 [快速入门： Azure 上的 Confluent Cloud](create.md)入门。
+若要创建一个 Apache Kafka for Confluent Cloud 实例，请参阅[快速入门：开始在 Azure 上使用 Confluent Cloud](create.md)。

@@ -1,19 +1,19 @@
 ---
 title: 通过主机加密启用端到端加密 - Azure 门户 - 托管磁盘
-description: 通过主机加密在 Azure 托管磁盘上启用端到端加密 - Azure 门户。
+description: 通过主机加密在 Azure 托管磁盘 - Azure 门户上启用端到端加密。
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 08/24/2020
+ms.date: 06/14/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: cdb22805e2e68893d3883272b66c2cfac13c807e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad053a0e97a8efa50fbb01798e639fb33e769bef
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721862"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112078757"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>使用 Azure 门户通过主机加密来启用端到端加密
 
@@ -40,13 +40,13 @@ ms.locfileid: "104721862"
 
     ![用于从 Azure 门户启动 Cloud Shell 的图标](../Cloud-Shell/media/overview/portal-launch-icon.png)
     
-2.  执行以下命令，为订阅注册该功能
+1.  执行以下命令，为订阅注册该功能
 
     ```powershell
      Register-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute" 
     ```
 
-3.  在试用该功能之前，请使用以下命令检查注册状态是否为“已注册”（需要几分钟）。
+1.  在试用该功能之前，请使用以下命令确认注册状态是否为“已注册”（需要几分钟）。
 
     ```powershell
      Get-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"  
@@ -66,7 +66,7 @@ ms.locfileid: "104721862"
 
 ## <a name="deploy-a-vm"></a>部署 VM
 
-必须部署新的 VM 才能启用主机加密，但无法在现有 VM 上启用该功能。
+设置了 Azure Key Vault 和磁盘加密集之后，现在可以部署 VM，它将在主机上使用加密。
 
 1. 搜索“虚拟机”，然后选择“+ 添加”以创建 VM 。
 1. 创建新的虚拟机，选择适当的区域和支持的 VM 大小。
@@ -79,9 +79,9 @@ ms.locfileid: "104721862"
 
     :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="虚拟机创建“磁盘”边栏选项卡的屏幕截图，其中突出显示了“主机加密”。":::
 
-1. 完成 VM 部署过程，选择适合你的环境。
+1. 完成 VM 部署过程，选择适合环境的选项。
 
-现已部署启用了主机加密的 VM，所有关联的磁盘都将使用主机加密进行加密。
+现在，你已经部署了一个启用了主机加密的 VM，与它相关的所有磁盘都将使用主机加密进行加密。
 
 ## <a name="next-steps"></a>后续步骤
 

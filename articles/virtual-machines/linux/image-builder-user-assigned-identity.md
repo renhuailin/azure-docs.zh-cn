@@ -1,5 +1,5 @@
 ---
-title: 创建虚拟机映像并使用用户分配的托管标识来访问 Azure 存储（预览版）中的文件
+title: 创建虚拟机映像并使用用户分配的托管标识来访问 Azure 存储中的文件
 description: 使用 Azure 映像生成器创建虚拟机映像，该映像可以使用用户分配的托管标识来访问 Azure 存储中存储的文件。
 author: cynthn
 ms.author: cynthn
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: 9bcb7a94cdf1d5478db32a22ba6e612a90c53ed9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 94bde3351f74c3388e137cc738f2b970654416bd
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101695373"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111439595"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>创建映像并使用用户分配的托管标识来访问 Azure 存储中的文件 
 
@@ -24,12 +24,8 @@ Azure 映像生成器支持使用脚本或从多个位置（例如 GitHub 和 Az
 在下面的示例中，你将创建两个资源组，一个用于自定义映像，另一个将托管包含脚本文件的 Azure 存储帐户。 这模拟了一个真实场景，即，你可能在映像生成器之外的不同存储帐户内具有生成项目或映像文件。 你将创建用户分配的标识，然后授予对该脚本文件的读取权限，但不会设置对该文件的任何公共访问权限。 然后将使用 Shell 定制器从存储帐户下载并运行该脚本。
 
 
-> [!IMPORTANT]
-> Azure 映像生成器目前提供公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 ## <a name="register-the-features"></a>注册功能
-若要在预览期间使用 Azure 映像生成器，需要注册新功能。
+若要使用 Azure 映像生成器，需要注册该功能。
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.VirtualMachineImages --name VirtualMachineTemplatePreview

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 05/26/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ecece3a00a788b67f6c831804bf5b00372fef93d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba24afb329b5d588ab7a71976f56f50eb475b04b
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99055637"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110575401"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义 Azure Active Directory B2C 中的用户界面
 
@@ -36,6 +36,9 @@ ms.locfileid: "99055637"
 ## <a name="overview"></a>概述
 
 Azure AD B2C 提供了多个内置模板，你可以从中进行选择，为用户体验页面提供专业的外观。 这些页面模板还可以作为初始模板用于后续使用[公司品牌](#company-branding)功能对页面进行自定义设计。
+
+> [!NOTE]
+> 经典模板支持的浏览器包括当前版本和以前版本的 Internet Explorer、Microsoft Edge、Google Chrome、Mozilla Firefox 和 Safari。 “海蓝”和“石板灰”模板对较旧的浏览器版本（例如 Internet Explorer 11 和 10）的支持可能有限；建议你使用你打算支持的浏览器测试应用程序。
 
 ### <a name="ocean-blue"></a>海蓝
 

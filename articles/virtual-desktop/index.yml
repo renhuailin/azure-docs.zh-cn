@@ -11,12 +11,12 @@ metadata:
   author: Heidilohr
   ms.author: helohr
   ms.date: 03/06/2020
-  ms.openlocfilehash: da50b99cfb5cef8d8ced702e5f5e9a56912e9d59
-  ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+  ms.openlocfilehash: 98e0983c84e543dd67301f057cb3f50e8f66d441
+  ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/14/2021
-  ms.locfileid: "113758831"
+  ms.lasthandoff: 06/29/2021
+  ms.locfileid: "113033346"
 landingContent:
 - title: 关于 Azure 虚拟桌面
   linkLists:
@@ -68,9 +68,3 @@ landingContent:
       url: ./user-documentation/connect-ios.md
     - text: 使用 Linux 或瘦客户端进行连接
       url: ./user-documentation/linux-overview.md
-- title: 使用 Azure 虚拟桌面实现远程应用流式处理
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: 将应用流式传输给客户
-      url: ./remote-app-streaming/overview.md
