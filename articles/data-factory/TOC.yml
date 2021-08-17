@@ -6,6 +6,8 @@
   items:
     - name: 数据工厂简介
       href: introduction.md
+    - name: Azure 数据工厂的新增功能
+      href: whats-new.md
     - name: 将当前版本与版本 1 进行比较
       href: compare-versions.md
       displayName: timeout
@@ -759,7 +761,7 @@
           href: configure-azure-ssis-integration-runtime-performance.md
         - name: 为 Azure-SSIS IR 配置灾难恢复
           href: configure-bcdr-azure-ssis-integration-runtime.md
-        - name: 使用弹性数据库作业清理 SSISDB 日志
+        - name: 自动清理 SSISDB 日志
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
         - name: 将 Azure SQL 托管实例与 Azure-SSIS IR 结合使用
           href: how-to-use-sql-managed-instance-with-ir.md
