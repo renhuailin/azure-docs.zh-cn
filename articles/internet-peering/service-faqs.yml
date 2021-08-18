@@ -1,0 +1,47 @@
+### YamlMime:FAQ
+metadata:
+  title: 对等互连服务 - 常见问题解答
+  titleSuffix: Azure
+  description: 对等互连服务 - 常见问题解答
+  services: internet-peering
+  author: prmitiki
+  ms.service: internet-peering
+  ms.topic: reference
+  ms.date: 11/27/2019
+  ms.author: prmitiki
+  ms.openlocfilehash: 25949d5ef08a4cdffe3f4cc25088239de9c58121
+  ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/13/2021
+  ms.locfileid: "113689007"
+title: 对等互连服务 - 常见问题解答
+summary: 对于一般问题，可以查看以下信息。
+sections:
+- name: 忽略
+  questions:
+  - question: >
+      运营商是否可以使用现有的与 Microsoft 的直接对等互连来支持对等互连服务？
+    answer: >
+      可以，运营商可以利用其现有的 PNI 来支持对等互连服务。 对等互连服务 PNI 需要多样性来支持 HA。 如果现有 PNI 已有多样性，则不需要新基础结构。 如果现有 PNI 需要多样性，则可以对其进行扩充。
+  - question: >
+      运营商是否可以使用新的与 Microsoft 的直接对等互连来支持对等互连服务？
+    answer: "是的，这也是可能的。 Microsoft 将与运营商合作创建新的直接对等互连，以支持对等互连服务。  \n"
+  - question: >
+      为什么支持对等互连服务需要直接对等互连？
+    answer: >
+      支持对等互连服务的主要驱动因素之一是通过连接状态良好的 SP 提供到 Microsoft 联机服务的连接。 PNI 始终在 Gbps 范围内，因此，它是运营商与 Microsoft 之间高吞吐量连接的基本构建基块。
+  - question: >
+      为了支持对等互连服务，对于直接对等互连有什么多样性要求？
+    answer: >
+      PNI 必须支持本地冗余和异地冗余。 本地冗余定义为某个特定对等互连站点中两组不同的路径。 异地冗余要求运营商在主站点出现故障的情况下在其他 Microsoft 边缘站点具有额外的连接。 对于持续时间较短的故障，运营商可以通过备份站点来路由流量。
+  - question: >
+      此产品/服务与运营商已提供的 SLA 和企业级 Internet 相比有何不同？
+    answer: >
+      有些运营商在网络中他们的部分提供 SLA 和企业级 Internet。 在对等互连服务中，Microsoft 将会在网络的 Microsoft 部分提供 SLA 产品/服务流量。 通过选择对等互连服务，客户会获得端到端 SLA。 ISP 网络上从客户站点到 Microsoft 边缘的 SLA 可以由 ISP 负责。 Microsoft 全球网络中从 Microsoft 边缘到最终用户应用程序的 SLA 目前由 Microsoft 负责。
+  - question: >
+      如果服务提供商已使用 PNI 与 Microsoft 对等互连，需要进行哪些更改来支持对等互连服务？
+    answer: >-
+      * 更改软件，以便识别对等互连服务用户及其流量。 可能需要更改路由策略，以通过对等互连服务连接在最近的 Microsoft 边缘交换用户的流量。
+
+      * 请确保连接具有本地冗余和异地冗余。

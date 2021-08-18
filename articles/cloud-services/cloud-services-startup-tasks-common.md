@@ -4,16 +4,16 @@ description: 提供了一些可能需要在云服务 Web 角色或辅助角色�
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: f55b225e615a3e7a5fbcf56b405054883d3b5413
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 877bfc41cdff586f50244be55902967a753f1a18
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98741190"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113092377"
 ---
 # <a name="common-cloud-service-classic-startup-tasks"></a>常见的云服务（经典）启动任务
 

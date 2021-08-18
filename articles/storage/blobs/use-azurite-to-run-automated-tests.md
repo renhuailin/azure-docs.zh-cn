@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: ikivanc
-ms.openlocfilehash: c4e8a11e0c46cb9a138a1a66060d9fdcc72c192e
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 7ad2fb4a808f2fef794a904287c25bd0643a085f
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110883"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378594"
 ---
 # <a name="run-automated-tests-by-using-azurite"></a>使用 Azurite 运行自动测试
 
@@ -51,7 +51,7 @@ ms.locfileid: "106110883"
 
     :::image type="content" source="media/use-azurite-to-run-automated-tests/blob-storage-connection.png" alt-text="连接 Azure 存储源的 Azure 存储资源管理器的屏幕截图。":::
 
-1. 提供用于连接 Azurite 的显示名称和 blob 端口号，并使用 Azure 存储资源管理器来管理本地 blob 存储 。
+1. 提供用于连接 Azurite 的“显示名称”和“Blob 端口号”，并使用 Azure 存储资源管理器来管理本地 blob 存储 。
 
    :::image type="content" source="media/use-azurite-to-run-automated-tests/blob-storage-connection-attach.png" alt-text="附加到本地模拟器的 Azure 存储资源管理器的屏幕截图。":::
 
@@ -61,7 +61,7 @@ ms.locfileid: "106110883"
    python -m venv .venv
    ```
 
-1. 创建容器并初始化环境变量。 使用 [PyTest](https://docs.pytest.org/) [conftest.py](https://docs.pytest.org/en/2.1.0/plugins.html) 文件生成测试。 下面是 conftest.py 文件的示例：
+1. 创建容器并初始化环境变量。 使用 [PyTest](https://docs.pytest.org/) [conftest.py](https://docs.pytest.org/en/latest/how-to/writing_plugins.html#conftest-py-plugins) 文件生成测试。 下面是 conftest.py 文件的示例：
 
    ```python
    from azure.storage.blob import BlobServiceClient

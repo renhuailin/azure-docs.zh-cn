@@ -3,14 +3,14 @@ title: Durable Functions 中的诊断 - Azure
 description: 了解如何使用 Azure Functions 的 Durable Functions 扩展诊断问题。
 author: cgillum
 ms.topic: conceptual
-ms.date: 05/12/2021
+ms.date: 06/29/2021
 ms.author: azfuncdf
-ms.openlocfilehash: d1125c2de0f548f1a6086819573acf1a2ac9c3c9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: bf446b435bc84649d102150b8e0f092c25a85d07
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110370885"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113087371"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure Durable Functions 中的诊断
 
@@ -72,34 +72,12 @@ Azure Functions Durable 扩展还会发出跟踪事件，用于跟踪业务流�
 }
 ```
 
-默认情况下，会发出所有非重播跟踪事件。 可通过将 `Host.Triggers.DurableTask` 设置为 `"Warning"` 或 `"Error"` 来减少数据量，在这种情况下，只会在发生异常情况时发出跟踪事件。
-
-若要启用发出详细业务流程重播事件，可以在 `host.json` 文件中的 `durableTask` 下将 `LogReplayEvents` 设置为 `true`，如下所示：
-
-#### <a name="functions-10"></a>Functions 1.0
-
-```json
-{
-    "durableTask": {
-        "logReplayEvents": true
-    }
-}
-```
-
-#### <a name="functions-20"></a>Functions 2.0
-
-```json
-{
-    "extensions": {
-        "durableTask": {
-            "logReplayEvents": true
-        }
-    }
-}
-```
+默认情况下，会发出所有非重播跟踪事件。 可通过将 `Host.Triggers.DurableTask` 设置为 `"Warning"` 或 `"Error"` 来减少数据量，在这种情况下，只会在发生异常情况时发出跟踪事件。 若要启用发出详细业务流程重播事件，请将 [host.json](durable-functions-bindings.md#host-json) 配置文件中的 `logReplayEvents` 设置为 `true`。
 
 > [!NOTE]
 > 默认情况下，Azure Functions 运行时会对 Application Insights 遥测数据采样，以免过度频繁地发出数据。 如果在短时间内发生了许多的生命周期事件，此行为可能会导致跟踪信息丢失。 [Azure Functions 监视文章](../configure-monitoring.md#configure-sampling)介绍了如何配置此行为。
+
+默认情况下，不记录业务流程协调程序、活动和实体函数的输入和输出。 建议使用此默认行为，因为记录输入和输出可能会增加 Application Insights 成本。 函数输入和输出有效负载也可能包含敏感信息。 默认情况下，将记录函数输入和输出的字节数，而不记录实际有效负载。 如果希望 Durable Functions 扩展记录完整的输入和输出有效负载，请将 [host.json](durable-functions-bindings.md#host-json) 配置文件中的 `traceInputsAndOutputs` 设置为 `true`。
 
 ### <a name="single-instance-query"></a>单实例查询
 

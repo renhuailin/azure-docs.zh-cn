@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 1babf1feb550109486089c45469ab4ce32f72cb3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d26947b48ca64ea5f06f3f9566d05fd110d6e93f
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102097408"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091836"
 ---
 # <a name="data-driven-style-expressions-android-sdk"></a>数据驱动样式表达式 (Android SDK)
 
@@ -30,14 +30,14 @@ Azure Maps Android SDK 支持的所有样式表达式几乎与 Azure Maps Web SD
 | [颜色表达式](#color-expressions) | 使用颜色表达式可以更轻松地创建和处理颜色值。 |
 | [条件表达式](#conditional-expressions) | 条件表达式提供类似于 if 语句的逻辑运算。 |
 | [数据表达式](#data-expressions) | 提供对特征中属性数据的访问。 |
-| [Interpolate 和 Step 表达式](#interpolate-and-step-expressions) | Interpolate 和 Step 表达式可用于计算内插曲线或 step 函数中的值。 |
+| [interpolate 和 step 表达式](#interpolate-and-step-expressions) | Interpolate 和 Step 表达式可用于计算内插曲线或 step 函数中的值。 |
 | [基于 JSON 的表达式](#json-based-expressions) | 在 Android SDK 中使用这些表达式可以轻松重用为 Web SDK 创建的基于 JSON 的原始样式表达式。 |  
 | [层特定的表达式](#layer-specific-expressions) | 仅适用于单个层的特殊表达式。 |
 | [数学表达式](#math-expressions) | 提供数学运算符用于在表达式框架中执行数据驱动的计算。 |
 | [字符串运算符表达式](#string-operator-expressions) | 字符串运算符表达式针对字符串执行转换操作，例如连接字符串和转换大小写。 |
 | [类型表达式](#type-expressions) | 类型表达式提供用于测试和转换不同数据类型（例如字符串、数字和布尔值）的工具。 |
 | [变量绑定表达式](#variable-binding-expressions) | 变量绑定表达式将计算结果存储在某个变量中，并在表达式中的其他位置多次引用该变量，这样而无需重新计算存储的值。 |
-| [Zoom 表达式](#zoom-expression) | 在呈现时检索地图的当前缩放级别。 |
+| [zoom 表达式](#zoom-expression) | 在呈现时检索地图的当前缩放级别。 |
 
 > [!NOTE]
 > 表达式的语法在 Java 和 Kotlin 中大体是相同的。 如果你将文档设置为 Kotlin，但看到的却是 Java 代码块，请不要担心，这些代码在这两种语言中是相同的。
@@ -221,7 +221,7 @@ val exp = Expression.raw("['get','title']")
 
 | Expression | 返回类型 | 说明 |
 |------------|-------------|-------------|
-| `accumulated()` | 数字 | 获取到目前为止累积的群集属性值。 |
+| `accumulated()` | 数字 | 获取到目前为止累积的群集属性值。 这只能在聚集的 `DataSource` 源的 `clusterProperties` 选项中使用。 |
 | `at(number | Expression, Expression)` | value | 从数组中检索项。 |
 | `geometryType()` | 字符串 | 获取特征的几何类型：Point、MultiPoint、LineString、MultiLineString、Polygon、MultiPolygon。 |
 | `get(string | Expression)` \| `get(string | Expression, Expression)` | value | 从所提供对象的属性中获取属性值。 如果缺少请求的属性，则返回 null。 |
@@ -435,7 +435,7 @@ has("fillColor", get("_style"))
 
 ### <a name="switch-case-expression"></a>Switch case 表达式
 
-`switchCase` 表达式是一种提供“if/then/else”逻辑的条件表达式。 这种类型的表达式会逐步评估一系列布尔条件。 评估为 true 时，它会返回第一个布尔条件的输出值。
+`switchCase` 表达式是一种提供“if/then/else”逻辑的条件表达式。 这种类型的表达式会逐步评估一系列布尔条件。 计算为 true 时，它会返回第一个布尔条件的输出值。
 
 以下伪代码定义 `switchCase` 表达式的结构。
 
@@ -500,7 +500,7 @@ val layer = BubbleLayer(source,
 
 ::: zone-end
 
-### <a name="match-expression"></a>Match 表达式
+### <a name="match-expression"></a>match 表达式
 
 `match` 表达式是一种提供类似 switch 语句逻辑的条件表达式。 输入可以是返回字符串或数字的任意表达式，例如 `get( "entityType")`。 每个 stop（输出值）必须有一个标签，该标签采用单个文本值或文本值的数组，该数组中的值必须全部为字符串，或者全部为数字。 如果数组中的任一值匹配，则输入匹配。 每个 stop 标签必须唯一。 如果输入类型与标签类型不匹配，则结果将是默认的回退值。
 
@@ -620,7 +620,7 @@ val layer = BubbleLayer(source,
 
 ::: zone-end
 
-### <a name="coalesce-expression"></a>Coalesce 表达式
+### <a name="coalesce-expression"></a>coalesce 表达式
 
 `coalesce` 表达式逐步评估一组表达式，直到获取第一个非 null 值，然后返回该值。
 
@@ -699,17 +699,17 @@ val layer = SymbolLayer(source,
 
 使用颜色表达式可以更轻松地创建和处理颜色值。
 
-| Expression | 返回类型 | 描述 |
+| Expression | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `color(int)` | color | 将颜色整数值转换为颜色表达式。 |
-| `rgb(Expression red, Expression green, Expression blue)` \| `rgb(number red, number green, number blue)` | color | 基于红色、绿色和蓝色分量（值必须为 `0` 至 `255`）和一个值为 `1` 的 alpha 分量创建颜色值  。 如果任一分量超出范围，则表达式会生成错误。 |
-| `rgba(Expression red, Expression green, Expression blue, Expression alpha)` \| `rgba(number red, number green, number blue, number alpha)` | color | 基于红色、绿色和蓝色分量（值必须为 `0` 至 `255`）和一个值为 `0` 至 `1` 的 alpha 分量创建颜色值  。 如果任一分量超出范围，则表达式会生成错误。 |
+| `rgb(Expression red, Expression green, Expression blue)` \| `rgb(number red, number green, number blue)` | color | 基于 red、green 和 blue 分量（值必须为 `0` 至 `255`）和一个值为 `1` 的 alpha 分量创建颜色值。 如果任一分量超出范围，则表达式会生成错误。 |
+| `rgba(Expression red, Expression green, Expression blue, Expression alpha)` \| `rgba(number red, number green, number blue, number alpha)` | color | 基于 red、green 和 blue 分量（值必须为 `0` 至 `255`）和一个值为 `0` 到 `1` 的 alpha 分量创建颜色值。 如果任一分量超出范围，则表达式会生成错误。 |
 | `toColor(Expression)` | color  | 将输入值转换为颜色。 |
 | `toRgba(Expression)` | color | 返回一个四元素数组，其中包含输入颜色的红色、绿色、蓝色和 alpha 分量（按该顺序排列）。 |
 
 **示例**
 
-以下示例创建一个 RGB 颜色值，其中的 red 值为 `255`，green 和 blue 值是通过将 `2.5` 与 `temperature` 属性值相乘计算得出的  。 随着温度的变化，颜色将变为红色的不同阴影。
+以下示例创建一个 RGB 颜色值，其中的 red 值为 `255`，green 和 blue 值是通过将 `2.5` 与 `temperature` 属性值相乘计算得出的。 随着温度的变化，颜色将变为红色的不同阴影。
 
 ::: zone pivot="programming-language-java-android"
 
@@ -806,7 +806,7 @@ val layer = BubbleLayer(source,
 
 字符串运算符表达式针对字符串执行转换操作，例如连接字符串和转换大小写。
 
-| Expression | 返回类型 | 描述 |
+| Expression | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `concat(string...)` \| `concat(Expression...)` | 字符串 | 将多个字符串连接到一起。 每个值必须是字符串。 如果需要，请使用 `toString` 类型表达式将其他值类型转换为字符串。 |
 | `downcase(string)` \| `downcase(Expression)` | 字符串 | 将指定的字符串转换为小写。 |
@@ -860,7 +860,7 @@ val layer = SymbolLayer(source,
 
 Interpolate 和 Step 表达式可用于计算内插曲线或 step 函数中的值。 这些表达式采用一个返回数字值作为输入的表达式（例如 `get(&quot;temperature")`）。 将根据输入和输出值对评估输入值，以确定最拟合内插曲线或 step 函数的值。 输出值称为“stop”。 每个 stop 的输入值必须是数字并按升序排列。 输出值必须是数字、数字数组或颜色。
 
-### <a name="interpolate-expression"></a>Interpolate 表达式
+### <a name="interpolate-expression"></a>interpolate 表达式
 
 使用 `interpolate` 表达式可以通过在 stop 值之间进行内插来计算连续的平滑值集。 返回颜色值的 `interpolate` 表达式生成颜色梯度，结果值是从中选择的。 `interpolate` 表达式采用以下格式：
 
@@ -1167,7 +1167,7 @@ val layer = LineLayer(source,
 
 下面是可用的格式选项：
 
-| 表达式 | 描述 |
+| 表达式 | 说明 |
 |------------|-------------|
 | `formatFontScale(number)` \| `formatFontScale(Expression)` | 指定字体大小的缩放系数。 如果已指定，此值将替代单个字符串的 `textSize` 属性。 |
 | `formatTextFont(string[])` \| `formatTextFont(Expression)` | 指定呈现文本时要应用于文本的颜色。 |

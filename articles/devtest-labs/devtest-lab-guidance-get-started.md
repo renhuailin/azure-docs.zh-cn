@@ -4,12 +4,12 @@ description: 本文提供了使用 Azure 开发测试实验室的主要方案以
 ms.topic: article
 ms.date: 06/20/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 1adb9b009a250942bab7e9b0e3b4b3e52840341c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d6508bc4fdcb5f6dfae877fcdb8d407350f1047f
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85481589"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114293568"
 ---
 # <a name="popular-scenarios-for-using-azure-devtest-labs"></a>适合使用 Azure 开发测试实验室的常见方案
 根据企业的需要，可以配置开发测试实验室来满足不同的要求。  本文介绍常见方案。 每个方案都涵盖使用开发测试实验室和资源来实现这些方案所带来的好处。  
@@ -59,9 +59,9 @@ Azure 开发测试实验室中的实验室是很棒的容器，用于容纳暂�
 
 - [策略](devtest-lab-set-lab-policy.md)可确保学员仅获取所需的资源（如虚拟机）数。
 - 预配置和创建的计算机是通过学员中的单个操作来[声明](devtest-lab-add-claimable-vm.md)的。
-- 实验室通过访问[实验室的 URL](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) 与学员共享。
+- 实验室通过访问[实验室的 URL](/azure/devtest-labs/devtest-lab-faq#how-do-i-share-a-direct-link-to-my-lab) 与学员共享。
 - 虚拟机上的[过期日期](devtest-lab-add-vm.md#steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs)可确保在不再需要计算机时将其删除。
-- 在课程结束后，可以轻松[删除实验室](devtest-lab-delete-lab-vm.md#delete-a-lab)和所有[相关的资源](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab)。
+- 在课程结束后，可以轻松[删除实验室](devtest-lab-delete-lab-vm.md#delete-a-lab)和所有[相关的资源](/azure/devtest-labs/devtest-lab-faq#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab)。
 
 有关详细信息，请参阅[使用 Azure 开发测试实验室进行培训](devtest-lab-training-lab.md)。  
 
@@ -76,5 +76,4 @@ Azure 开发测试实验室中的实验室是很棒的容器，用于容纳暂�
 请阅读以下文章：
 
 - [开发测试实验室概念](devtest-lab-concepts.md)
-- [开发测试实验室常见问题解答](devtest-lab-faq.md)
-
+- [开发测试实验室常见问题解答](devtest-lab-faq.yml)

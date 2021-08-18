@@ -3,16 +3,16 @@ title: 使用 Azure IoT Central 解决方案中的位置数据
 description: 了解如何使用从连接到 IoT Central 应用程序的设备发出的位置数据。 在地图上绘制位置数据或创建地理围栏规则。
 author: dominicbetts
 ms.author: dobett
-ms.date: 01/08/2021
+ms.date: 06/25/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: e93da2bec3753ba6efda2b4eb16d6ef78b42234b
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 57f1bb47ceaa0552053cb61321dc54a3d2b19293
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108747208"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964505"
 ---
 # <a name="use-location-data-in-an-azure-iot-central-solution"></a>使用 Azure IoT Central 解决方案中的位置数据
 

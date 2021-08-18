@@ -3,18 +3,17 @@ title: 在 Azure 门户中大规模部署模块 - Azure IoT Edge
 description: 使用 Azure 门户为 IoT Edge 设备组创建自动部署
 keywords: ''
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: db27a466ca5f1370e8b43ceb472f5deeaba509f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c8b5bfe8f3b46cfc5b21a3578c4842e55a551dd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200321"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750795"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>使用 Azure 门户大规模部署 IoT Edge 模块
 

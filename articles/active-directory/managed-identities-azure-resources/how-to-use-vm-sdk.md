@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/07/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85629f53cdd2753eca5574d627a01dd06ea49510
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 5ca24bb127c3149372eaf7ed2748fb252a17b3ef
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111749500"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114474066"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>如何在 Azure VM 上将 Azure 资源的托管标识与 Azure SDK 配合使用 
 
@@ -41,7 +41,7 @@ ms.locfileid: "111749500"
 | .NET            | [使用 Azure 资源的托管标识从 Windows VM 部署 Azure 资源管理器模板](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet) |
 | .NET Core       | [使用 Azure 资源的托管标识从 Linux VM 调用 Azure 服务](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/) |
 | Go              | [用于 Go 的 Azure 标识客户端模块](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/azidentity#ManagedIdentityCredential)
-| Node.js         | [使用 Azure 资源的托管标识管理资源](https://azure.microsoft.com/resources/samples/resources-node-manage-resources-with-msi/) |
+| Node.js         | [使用 Azure 资源的托管标识管理资源](https://github.com/Azure-Samples/resources-node-manage-resources-with-msi) |
 | Python          | [使用 Azure 资源的托管标识简单从 VM 内部进行身份验证](https://azure.microsoft.com/resources/samples/resource-manager-python-manage-resources-with-msi/) |
 | Ruby            | [从启用了 Azure 资源的托管标识的 VM 中管理资源](https://github.com/Azure-Samples/resources-ruby-manage-resources-with-msi/) |
 

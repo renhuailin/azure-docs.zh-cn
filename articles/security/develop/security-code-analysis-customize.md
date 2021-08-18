@@ -13,17 +13,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: ad395e1b782edb28845bb7db0607d2bab5b5697c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 763369fbbd52ed14b547e2a23dfa0bb977a1b9a4
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802006"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112116137"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>配置和自定义生成任务
 
 > [!Note]
-> Microsoft 安全代码分析 (MSCA) 扩展将被停用，于2022年3月1日生效。 现有 MSCA 客户将在2022年3月1日保留其对 MSCA 的访问权限。 请参阅“[OWASP 源代码分析工具](https://owasp.org/www-community/Source_Code_Analysis_Tools)”，了解 Azure DevOps 中的替代选项。 对于计划迁移到 GitHub 的客户，可以查看“[Github 高级安全](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security)”。
+> Microsoft 安全代码分析 (MSCA) 扩展将被停用，于 2022 年 3 月 1 日生效。 在 2022 年 3 月 1 日之前，现有 MSCA 客户仍可访问 MSCA。 请参阅 [OWASP 源代码分析工具](https://owasp.org/www-community/Source_Code_Analysis_Tools)了解 Azure DevOps 中的替代选项。 对于计划迁移到 GitHub 的客户，可以查看 [Github 高级安全](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security)。
 
 本文详细介绍每个生成任务中可用的配置选项。 本文首先介绍了与安全代码分析工具相关的任务， 最后介绍了处理后任务。
 
@@ -202,4 +202,4 @@ Windows Defender 使用 Windows 更新客户端来下载和安装签名。 如�
 
 有关基于 YAML 的配置的信息，请参阅 [YAML 配置指南](yaml-configuration.md)。
 
-对于安全代码分析扩展和所提供的工具，如果仍有疑问，请查看我们的[常见问题解答页](security-code-analysis-faq.md)。
+对于安全代码分析扩展和所提供的工具，如果仍有疑问，请查看我们的[常见问题解答页](security-code-analysis-faq.yml)。

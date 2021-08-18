@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: storsimple
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 07/16/2021
 ms.author: alkohli
-ms.openlocfilehash: fd9b3b501d6efbe6a74d350a678494e8254dbb32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ad58078207a90966134ec4d6cf8815f614e4341
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100545209"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114449828"
 ---
 #### <a name="to-create-a-volume-container"></a>创建卷容器
 
@@ -28,7 +28,7 @@ ms.locfileid: "100545209"
    3. 选择“启用云存储加密”  启用从设备发送到云中的数据加密。
    4. 提供并确认长度在 8 到 32 个字符之间的 **“云存储加密密钥”**。 设备使用此密钥访问加密的数据。
    5. 选择与该卷容器关联的 **“存储帐户”**。 可以选择现有存储帐户或选择在创建服务时生成的默认帐户。 还可以使用 **“添加新帐户”** 选项，指定未与此服务订阅链接的存储帐户。
-   6. 如果你希望使用所有可用带宽，请在 **“指定带宽”** 下拉列表中选择 **“无限制”**。 还可以将此选项设置为“自定义”以进行带宽控制，并指定一个介于 1 Mbps 和 1000 Mbps 之间的值。
+   6. 如果你希望使用所有可用带宽，请在 **“指定带宽”** 下拉列表中选择 **“无限制”**。
    
       如果你已获取带宽使用信息，则可以通过指定“选择带宽模板”来根据计划分配带宽。 有关分步过程，请转到 [添加带宽模板](../articles/storsimple/storsimple-8000-manage-bandwidth-templates.md#add-a-bandwidth-template)。
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/07/2021
 ms.author: kumud
-ms.openlocfilehash: 34e31bacbb276feb5b11d1b955096877376e989b
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 072c26444c3a3fe84cfc9a0690571a524f7db6dc
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107697"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113436039"
 ---
 # <a name="azure-networking-services-overview"></a>Azure 网络服务概述
 
@@ -23,7 +23,7 @@ Azure 中的网络服务提供可以搭配使用或单独使用的各种网络�
 - [连接服务](#connect)：使用 Azure 中的以下任一网络服务或其组合连接 Azure 资源和本地资源 - 虚拟网络 (VNet)、虚拟 WAN、ExpressRoute、VPN 网络、虚拟网络 NAT 网关、Azure DNS、对等互连服务和 Azure Bastion。
 - [应用程序保护服务](#protect)：使用 Azure 中的以下任一网络服务或其组合来保护应用程序 - 负载均衡器、专用链接、DDoS 保护、防火墙、网络安全组、Web 应用程序防火墙和虚拟网络终结点。
 - [应用程序分发服务](#deliver)：使用 Azure 中的以下任一网络服务或其组合在 Azure 网络中分发应用程序 - 内容分发网络 (CDN)、Azure Front Door 服务、流量管理器、应用程序网关、Internet 分析器和负载均衡器。
-- [网络监视](#monitor)：使用 Azure 中的以下任一网络服务或其组合来监视网络资源 - 网络观察程序、ExpressRoute Monitor、Azure Monitor 或 VNet 终端接入点 (TAP)。
+- [网络监视](#monitor)：使用 Azure 中的以下任一网络服务或其组合来监视网络资源 - 网络观察程序、ExpressRoute 监视器、Azure Monitor 或 VNet 终端接入点 (TAP)。
 
 ## <a name="connectivity-services"></a><a name="connect"></a>连接服务
  
@@ -67,16 +67,16 @@ Azure Bastion 服务是的一种新型的完全托管平台 PaaS 服务，可在
 :::image type="content" source="./media/networking-overview/architecture.png" alt-text="Azure Bastion 体系结构":::
 
 ### <a name="virtual-network-nat-gateway"></a><a name="nat"></a>虚拟网络 NAT 网关
-虚拟网络 NAT（网络地址转换）简化了虚拟网络的仅限出站 Internet 连接。 在子网中配置后，所有出站连接将使用指定的静态公共 IP 地址。 无需使用负载均衡器或将公共 IP 地址直接附加到虚拟机，即可建立出站连接。 有关详细信息，请参阅[什么是虚拟网络 NAT 网关？](../../virtual-network/nat-overview.md)。
+虚拟网络 NAT（网络地址转换）简化了虚拟网络的仅限出站 Internet 连接。 在子网中配置后，所有出站连接将使用指定的静态公共 IP 地址。 无需使用负载均衡器或将公共 IP 地址直接附加到虚拟机，即可建立出站连接。 有关详细信息，请参阅[什么是虚拟网络 NAT 网关？](../../virtual-network/nat-gateway/nat-overview.md)。
 
 :::image type="content" source="./media/networking-overview/flow-map.png" alt-text="虚拟网络 NAT 网关":::
 
-### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a>Azure 对等互连服务
-Azure 对等互连服务可增强客户与 Microsoft 云服务（例如 Microsoft 365、Dynamics 365、软件即服务 (SaaS) 服务、Azure 或可通过公共 Internet 访问的任何 Microsoft 服务）建立的连接。 有关详细信息，请参阅[什么是 Azure 对等互连服务？](../../peering-service/about.md)。
+### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a> Azure 对等互连服务
+Azure 对等互连服务可增强客户与 Microsoft 云服务（例如 Microsoft 365、Dynamics 365、服务型软件 (SaaS) 服务、Azure 或可通过公共 Internet 访问的任何 Microsoft 服务）建立的连接。 有关详细信息，请参阅[什么是 Azure 对等互连服务？](../../peering-service/about.md)。
 
 ### <a name="azure-edge-zones"></a><a name="edge-zones"></a>Azure Edge Zone
 
-Azure Edge Zone 是 Microsoft Azure 中的一系列产品，可使数据处理贴近用户。 可将 VM、容器和其他所选 Azure 服务部署到 Edge Zone，以解决应用程序的低延迟和高吞吐量要求。
+Azure Edge Zone 是 Microsoft Azure 中的一系列产品/服务，可使用户能够方便地进行数据处理。 可将 VM、容器和其他所选 Azure 服务部署到 Edge Zone，以解决应用程序的低延迟和高吞吐量要求。
 
 ### <a name="azure-orbital"></a><a name="orbital"></a>Azure Orbital
 
@@ -84,10 +84,10 @@ Azure Orbital 是一种完全托管的基于云的地面站即服务，用于与
 
 ## <a name="application-protection-services"></a><a name="protect"></a>应用程序保护服务
 
-本部分介绍 Azure 中帮助保护网络资源的网络服务：使用 Azure 中的以下任一网络服务或其组合来保护应用程序 - DDoS 保护、专用链接、防火墙、Web 应用程序防火墙、网络安全组和虚拟网络终结点。
+本部分介绍 Azure 中帮助保护网络资源的网络服务：使用 Azure 中的以下任一网络服务或其组合来保护应用程序 - DDoS 防护、专用链接、防火墙、Web 应用程序防火墙、网络安全组和虚拟网络终结点。
 
-### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDos 保护 
-[Azure DDos 保护](../../ddos-protection/manage-ddos-protection.md)提供了针对最复杂 DDoS 威胁的应对措施。 此服务为虚拟网络中部署的应用程序和资源提供了增强的 DDoS 缓解功能。 此外，使用 Azure DDos 保护的客户有权访问 DDoS 快速响应支持，以在遭到主动攻击时联系 DDoS 专家。
+### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDoS 防护 
+[Azure DDoS 防护](../../ddos-protection/manage-ddos-protection.md)提供了针对最复杂 DDoS 威胁的应对措施。 此服务为虚拟网络中部署的应用程序和资源提供了增强的 DDoS 缓解功能。 此外，使用 Azure DDoS 防护的客户有权访问 DDoS 快速响应支持，以在遭到主动攻击时联系 DDoS 专家。
 
 :::image type="content" source="./media/networking-overview/ddos-protection.png" alt-text="DDoS 保护":::
 
@@ -107,7 +107,7 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 ### <a name="web-application-firewall"></a><a name="waf"></a>Web 应用程序防火墙
 [Azure Web 应用程序防火墙](../../web-application-firewall/overview.md) (WAF) 为 Web 应用程序提供保护，使其免受 SQL 注入、跨站点脚本等常见 Web 攻击和漏洞的影响。 Azure WAF 通过托管的规则针对 OWASP 识别出的 10 大漏洞提供现成保护。 此外，客户还可以配置自定义规则（客户管理的规则），用于根据源 IP 范围，以及标头、Cookie、表单数据字段或查询字符串参数等请求属性提供额外的保护。
 
-客户可以选择部署[具有应用程序网关的 Azure WAF](../../web-application-firewall/ag/ag-overview.md)，以便为公共和专用地址空间中的实体提供区域性保护。 客户还可以选择部署[配备 Front Door 的 Azure WAF](../../web-application-firewall/afds/afds-overview.md)，提供网络边缘到公共终结点的保护。
+客户可以选择部署[具有应用程序网关的 Azure WAF](../../web-application-firewall/ag/ag-overview.md)，以便为公共和专用地址空间中的实体提供区域性保护。 客户还可以选择部署[配备 Front Door 的 Azure WAF](../../web-application-firewall/afds/afds-overview.md)，在网络边缘提供对公共终结点的保护。
 
 :::image type="content" source="./media/networking-overview/waf-overview.png" alt-text="Web 应用程序防火墙":::
 
@@ -121,7 +121,7 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 
 ## <a name="application-delivery-services"></a><a name="deliver"></a>应用程序分发服务
 
-本部分介绍 Azure 中有助于交付应用程序的网络服务 - 内容交付网络、Azure Front Door 服务、流量管理器、负载均衡器和应用程序网关。
+本部分介绍 Azure 中有助于交付应用程序的网络服务 - 内容分发网络、Azure Front Door 服务、流量管理器、负载均衡器和应用程序网关。
 
 ### <a name="content-delivery-network"></a><a name="cdn"></a>内容分发网络
 Azure 内容分发网络 (CDN) 为开发人员提供了一个全局解决方案，通过在世界各地按特定策略放置的物理节点缓存内容来快速分发高带宽内容。 有关 Azure CDN 的详细信息，请参阅 [Azure 内容分发网络](../../cdn/cdn-overview.md)。
@@ -170,14 +170,14 @@ Azure 网络监视器为已部署的所有网络资源提供运行状况和指�
 若要了解如何查看 ExpressRoute 线路指标、资源日志和警报，请参阅 [ExpressRoute 监视、指标和警报](../../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json)。
 ### <a name="azure-monitor"></a><a name="azuremonitor"></a>Azure Monitor
 Azure Monitor 提供用于收集、分析和处理来自云与本地环境的遥测数据的综合解决方案，可将应用程序的可用性和性能最大化。 它可以帮助你了解应用程序的性能，并主动识别影响应用程序及其所依赖资源的问题。 有关详细信息，请参阅 [Azure Monitor 概述](../../azure-monitor/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)。
-### <a name="virtual-network-tap"></a><a name="vnettap"></a>虚拟网络终端接入点
+### <a name="virtual-network-tap"></a><a name="vnettap"></a>虚拟网络 TAP
 通过 Azure 虚拟网络 TAP（终端接入点），可让你持续将虚拟机网络流量流式传输到网络数据包收集器或分析工具。 收集器或分析工具由[网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)合作伙伴提供。
 
-下图显示虚拟网络终端接入点的工作原理：
+下图显示虚拟网络 TAP 的工作原理：
 
 :::image type="content" source="./media/networking-overview/virtual-network-tap-architecture.png" alt-text="虚拟网络 TAP 的工作原理":::
 
-有关详细信息，请参阅[什么是虚拟网络终端接入点](../../virtual-network/virtual-network-tap-overview.md)。
+有关详细信息，请参阅[什么是虚拟网络 TAP](../../virtual-network/virtual-network-tap-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

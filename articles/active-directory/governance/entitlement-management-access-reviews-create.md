@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf34223e44ddfb59a72f98d31f0df5d9a882e0eb
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 0f2497e47078f91c1649db107dd105227e219ae2
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713587"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113565702"
 ---
 # <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中创建访问包的访问评审
 
@@ -53,16 +53,22 @@ ms.locfileid: "109713587"
 
 1. 请设置“持续时间”，以定义定期进行的一系列评审中每次评审开放（接受审阅者输入）的天数。 例如，可以计划一个年度评审，该评审在 1 月 1 日开始并开放 30 天供评审，以便审阅者在该月结束前做出响应。
 
-1. 如果希望用户执行其自己的访问评审，请在“审阅者”旁边选择“自我评审”；如果想要指定审阅者，请选择“特定审阅者”。
+1. 如果希望用户执行其自己的访问评审，请在“审阅者”旁边选择“自我评审”；如果想要指定审阅者，请选择“特定审阅者”。 如果要将被审阅者的管理员指定为审阅者，还可以选择“管理员”。 如果选择此选项，则需要添加回退，用于在系统中找不到管理员时将评审转发到该回退。
 
-    ![选择“添加审阅者”](./media/entitlement-management-access-reviews/access-reviews-add-reviewer.png)
+1. 如果选择了“特定审阅者”，请指定哪些用户将执行访问评审：![选择“添加审阅者”](./media/entitlement-management-access-reviews/access-reviews-add-reviewer.png)
 
-1. 如果选择了“特定审阅者”，请指定哪些用户将执行访问评审：
     1. 选择“添加审阅者”。
     1. 在“选择审阅者”窗格中，搜索并选择要作为审阅者的用户。
     1. 选择了审阅者后，请单击“选择”按钮。
 
     ![指定审阅者](./media/entitlement-management-access-reviews/access-reviews-select-reviewer.png)
+
+1. 如果选择了“管理员”，请指定回退审阅者 **** ： 
+    1. 选择“添加回退审阅者” **** 。
+    1. 在“选择回退审阅者”窗格中，搜索并选择用户，该用户需要作为被审阅者的管理员的回退审阅者。
+    1. 在选择了回退审阅者后，请单击“选择”按钮 ****  。 
+
+    ![添加回退审阅者](./media/entitlement-management-access-reviews/access-reviews-select-manager.png)
 
 1. 如果要创建新的访问包，请在页面底部单击“查看 + 创建” ；如果要编辑访问包，请在页面底部单击“更新”。
 

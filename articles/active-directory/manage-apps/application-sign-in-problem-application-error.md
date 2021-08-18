@@ -2,22 +2,22 @@
 title: 登录后应用页面上显示的错误消息 | Microsoft Docs
 description: 如何解决应用返回错误消息时的 Azure AD 登录问题。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mtillman
-ms.reviewer: asteen
+ms.author: davidmu
+ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ca0589da8cfa03553916755c4eb56ab74324501
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 1c1910eb106e7a3e405f58ba672c38fa108544d2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081742"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738897"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>用户登录后，应用页面上会显示错误消息
 
@@ -25,11 +25,11 @@ ms.locfileid: "112081742"
 
 应用不接受来自 Azure AD 的响应可能有几种原因。 如果错误消息没有明确指出响应中缺少的内容，请尝试以下操作：
 
--   如果应用是 Azure AD 库，请验证你是否遵循了[如何在 Azure AD 中调试对应用程序进行的基于 SAML 的单一登录](./debug-saml-sso-issues.md)中的步骤。
+- 如果应用是 Azure AD 库，请验证你是否遵循了[如何在 Azure AD 中调试对应用程序进行的基于 SAML 的单一登录](./debug-saml-sso-issues.md)中的步骤。
 
--   使用 [Fiddler](https://www.telerik.com/fiddler) 之类的工具捕获 SAML 请求、SAML 响应和 SAML 令牌。
+- 使用 [Fiddler](https://www.telerik.com/fiddler) 之类的工具捕获 SAML 请求、SAML 响应和 SAML 令牌。
 
--   将 SAML 响应发送给应用供应商，并向他们询问缺少的内容。
+- 将 SAML 响应发送给应用供应商，并向他们询问缺少的内容。
 
 ## <a name="attributes-are-missing-from-the-saml-response"></a>SAML 响应中缺少属性
 
@@ -58,7 +58,7 @@ ms.locfileid: "112081742"
 
    1. 选择“添加属性”。 输入“名称”，然后从下拉列表中选择“值” 。
 
-   1.  选择“保存”。 然后就能在表中看到新属性了。
+   1. 选择“保存”。 然后就能在表中看到新属性了。
 
 9. 保存配置。
 
@@ -124,9 +124,9 @@ Azure AD 会根据所选值或 SAML AuthRequest 中应用要求的格式，为 N
 
 9. 从以下选项中选择应用期望的“签名选项”：
 
-   * 为 SAML 响应签名
-   * 为 SAML 响应和断言签名
-   * 为 SAML 断言签名
+   - 为 SAML 响应签名
+   - 为 SAML 响应和断言签名
+   - 为 SAML 断言签名
 
    用户下次登录应用时，Azure AD 会对所选择的 SAML 响应部分进行签名。
 
@@ -160,4 +160,5 @@ Azure AD 会根据所选值或 SAML AuthRequest 中应用要求的格式，为 N
    用户下次登录应用时，Azure AD 将使用 SHA-1 算法对 SAML 令牌进行签名。
 
 ## <a name="next-steps"></a>后续步骤
+
 [如何在 Azure AD 中调试对应用程序进行的基于 SAML 的单一登录](./debug-saml-sso-issues.md)。

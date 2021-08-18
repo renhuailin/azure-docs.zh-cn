@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89f4172b08d56a0ec139f18519a3a9bcd081e08b
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "68965286"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113688516"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple 设备的技术规格和符合性
 
@@ -83,7 +83,7 @@ StorSimple 设备 8100 和 8600 都是硬盘驱动器和固态硬盘的混合。
 | 总可用容量* |~ 15 TB |~ 38 TB |
 | 最大解决方案容量（包括云） |200 TB |500 TB |
 
-<sup>* </sup>- 总可用容量包括数据、元数据和缓冲区的可用容量。可以在 8100 设备上预配高达 8.5 TB 的本地固定卷，或者在更大的 8600 设备上预配高达 22.5 TB 的本地固定卷。有关详细信息，请参阅 [StorSimple 本地固定卷](storsimple-8000-local-volume-faq.md)。
+<sup>* </sup>- 总可用容量包括数据、元数据和缓冲区的可用容量。可以在 8100 设备上预配高达 8.5 TB 的本地固定卷，或者在更大的 8600 设备上预配高达 22.5 TB 的本地固定卷。有关详细信息，请参阅 [StorSimple 本地固定卷](storsimple-8000-local-volume-faq.yml)。
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>机箱尺寸和重量规格
 

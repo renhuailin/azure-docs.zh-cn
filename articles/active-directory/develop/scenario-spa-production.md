@@ -3,21 +3,21 @@ title: 将单页应用移到生产环境
 titleSuffix: Microsoft identity platform
 description: 了解如何生成单页应用程序（移到生产环境）
 services: active-directory
-author: mtillman
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: mtillman
+ms.author: marsma
 ms.custom: aaddev
-ms.openlocfilehash: 48f9b90ef72d79510747cba82a59386d4f3a4372
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 4f4821dc48650c14b6d9736a7238dc44c500c259
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075162"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113357546"
 ---
 # <a name="single-page-application-move-to-production"></a>单页应用程序：移到生产环境
 
@@ -27,7 +27,7 @@ ms.locfileid: "112075162"
 
 ## <a name="deploy-your-app"></a>部署你的应用
 
-请查看[部署示例](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter3)，了解如何使用 Azure 存储和 Azure 应用服务分别部署 SPA 和 Web API 项目。 
+请查看[部署示例](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnet-webapi-multitenant/tree/master/Chapter3)，了解如何使用 Azure 存储和 Azure 应用服务分别部署 SPA 和 Web API 项目。
 
 ## <a name="code-samples"></a>代码示例
 

@@ -7,29 +7,24 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 8cabb48e3620f1a17d1bb9b87e1646ce2793143b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 89ba0139409a1ceef37a773403c0b7623f6c6f14
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91761696"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738600"
 ---
 # <a name="retrieve-the-user-name-and-password-to-connect-to-the-arc-data-controller"></a>检索用于连接到 Arc 数据控制器的用户名和密码
 
 有时，你可能需要检索数据控制器的用户名和密码。 遇到这种情况时，需使用以下命令。 
-
-```console
-azdata login
-```
 
 如果你是群集的 Kubernetes 管理员， 那么你便拥有了运行命令以从 Kubernetes 机密存储中检索 Azure Arc 保存的信息的特权。
 
 > [!NOTE]
 >  如果你在创建数据控制器的命名空间中使用了不同的名称，请务必更改以下命令中的 `-n arc` 参数，以使用创建了数据控制器的命名空间的名称。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="linux"></a>Linux
 

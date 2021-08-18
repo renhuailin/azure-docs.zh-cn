@@ -2,13 +2,13 @@
 title: Azure 事件网格 - 合作伙伴事件
 description: 通过 Azure 事件网格将第三方事件网格 SaaS 和 PaaS 合作伙伴的事件直接发送到 Azure 服务。
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 31a5fe611871eb4734b6a68e3818592028ebc75c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/15/2021
+ms.openlocfilehash: 5a215d8d007f411066d25d8751299ae6a73038dc
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94506136"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183989"
 ---
 # <a name="partner-events-in-azure-event-grid-preview"></a>Azure 事件网格中的合作伙伴事件（预览版）
 利用合作伙伴事件功能，第三方 SaaS 提供商可从它的服务发布事件，以便使用者可以订阅这些事件。 此功能通过公开[主题](concepts.md#topics)类型（合作伙伴主题）为第三方事件源提供第一方体验。 订阅者会创建对此主题的订阅以使用事件。 它还会通过分离事件发布者和订阅者使用的资源的问题和所有权来提供干净的“发布-订阅”模型。
@@ -48,12 +48,10 @@ ms.locfileid: "94506136"
 ## <a name="available-third-party-event-publishers"></a>可用的第三方事件发布者
 第三方事件发布者必须先经历[加入过程](partner-onboarding-overview.md)，订阅者才能开始使用其事件。 
 
-如果你是订阅者并且希望第三方服务通过事件网格公开其事件， 
 
 ### <a name="auth0"></a>Auth0
 Auth0 是可用的第一个合作伙伴发布者。 可以创建 [Auth0 合作伙伴主题](auth0-overview.md)以连接 Auth0 和 Azure 帐户。 此集成使你可以实时响应、记录和监视 Auth0 事件。 若要试用，请参阅[将 Azure 事件网格与 Auto0 集成](auth0-how-to.md)
 
-如果希望第三方服务通过事件网格公开其事件，请在[用户语音门户](https://feedback.azure.com/forums/909934-azure-event-grid)中提交该想法。
  
 ## <a name="resources-managed-by-event-publishers"></a>事件发布者管理的资源
 事件发布者会创建和管理以下资源：

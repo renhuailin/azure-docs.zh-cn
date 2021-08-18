@@ -3,13 +3,13 @@ title: 使用 Visual Studio 开发 Azure Functions
 description: 了解如何使用 Visual Studio Code 的 Azure Functions 扩展开发和测试 Azure Functions。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 08/21/2019
-ms.openlocfilehash: c2869b2b30722495523a9f0dfb2d70a17a205854
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.date: 02/21/2021
+ms.openlocfilehash: d7ed95080763d32f8a940066c2c6c5d80c25b0dc
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107871266"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862406"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio 开发 Azure Functions
 
@@ -69,7 +69,7 @@ Azure Functions 扩展提供以下优势：
 
 + [适用于 Java 的调试器扩展](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)。
 
-+ [Java 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)（建议）。 有关其他受支持的版本，请参阅 [Java 版本](functions-reference-java.md#java-versions)。
++ [Java 8](/azure/developer/java/fundamentals/java-support-on-azure)（建议）。 有关其他受支持的版本，请参阅 [Java 版本](functions-reference-java.md#java-versions)。
 
 + [Maven 3 或更高版本](https://maven.apache.org/)
 
@@ -129,7 +129,7 @@ Azure Functions 扩展提供以下优势：
 
 * **host.json**：用于配置 Functions 主机。 在本地和 Azure 中运行函数时，将应用这些设置。 有关详细信息，请参阅 [host.json 参考](functions-host-json.md)。
 
-* **local.settings.json**：维护本地运行函数时使用的设置。 仅当在本地运行函数时，才使用这些设置。 有关详细信息，请参阅[本地设置文件](#local-settings-file)。
+* **local.settings.json**：维护本地运行函数时使用的设置。 仅当在本地运行函数时，才使用这些设置。 有关详细信息，请参阅[本地设置文件](#local-settings)。
 
     >[!IMPORTANT]
     >由于 local.settings.json 文件可能包含机密，因此需要将其从项目源代码管理中排除。
@@ -326,7 +326,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 1. 按提示操作并提供以下信息：
 
-    | Prompt | Value | 说明 |
+    | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
     | 选择 Azure 中的函数应用 | 在 Azure 中创建新的函数应用 | 在下一个提示中，键入用于标识新函数应用的全局唯一名称，然后按 Enter。 函数应用名称的有效字符包括 `a-z`、`0-9` 和 `-`。 |
     | 选择 OS | Windows | 函数应用在 Windows 上运行。 |
@@ -383,7 +383,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 ### <a name="run-functions-locally"></a>在本地运行函数
 
-本地运行时是在 Azure 中托管函数应用的同一个运行时。 将从 [local.settings.json 文件](#local-settings-file)读取本地设置。 若要在本地运行 Functions 项目，必须满足以下[附加要求](#run-local-requirements)。
+本地运行时是在 Azure 中托管函数应用的同一个运行时。 将从 [local.settings.json 文件](#local-settings)读取本地设置。 若要在本地运行 Functions 项目，必须满足以下[附加要求](#run-local-requirements)。
 
 #### <a name="configure-the-project-to-run-locally"></a>将项目配置为在本地运行
 
@@ -399,7 +399,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 3. 重复上述步骤，将唯一键添加到函数所需的其他任何连接的 **Values** 数组。
 
-有关详细信息，请参阅[本地设置文件](#local-settings-file)。
+有关详细信息，请参阅[本地设置文件](#local-settings)。
 
 #### <a name="debug-functions-locally"></a><a name="debugging-functions-locally"></a>在本地调试函数  
 
@@ -503,7 +503,7 @@ Azure Functions 扩展在区域提供一个有用的图形界面，用于与 Azu
 | **连接到 GitHub 存储库** | 将函数应用连接到 GitHub 存储库。 |
 | **复制函数 URL** | 获取 Azure 中运行的 HTTP 触发函数的远程 URL。 有关详细信息，请参阅[获取已部署的函数的 URL](#get-the-url-of-the-deployed-function)。 |
 | **在 Azure 中创建函数应用** | 在 Azure 中的订阅内创建新的函数应用。 有关详细信息，请参阅有关如何[发布到 Azure 中的新函数应用](#publish-to-azure)的部分。        |
-| **解密设置** | 解密已由以下命令加密的[本地设置](#local-settings-file)：“Azure Functions:加密设置”。  |
+| **解密设置** | 解密已由以下命令加密的[本地设置](#local-settings)：“Azure Functions:加密设置”。  |
 | **删除函数应用** | 从 Azure 中的订阅内删除函数应用。 如果应用服务计划中没有其他应用，则系统也会提供用于删除其他应用的选项。 不会删除其他资源，例如存储帐户和资源组。 若要删除所有资源，应[删除资源组](functions-add-output-binding-storage-queue-vs-code.md#clean-up-resources)。 本地项目不受影响。 |
 |**删除函数**  | 从 Azure 中的函数应用内删除现有的函数。 由于此删除操作不会影响本地项目，因此请考虑在本地删除函数，然后[重新发布项目](#republish-project-files)。 |
 | **删除代理** | 从 Azure 中的函数应用内删除 Azure Functions 代理。 有关代理的详细信息，请参阅[使用 Azure Functions 代理](functions-proxies.md)。 |
@@ -511,7 +511,7 @@ Azure Functions 扩展在区域提供一个有用的图形界面，用于与 Azu
 | **从存储库断开连接**  | 删除 Azure 中的函数应用与源代码管理存储库之间的[持续部署](functions-continuous-deployment.md)连接。 |
 | **下载远程设置** | 将 Azure 中所选函数应用的设置下载到 local.settings.json 文件中。 如果本地文件已加密，则会将其解密、更新，然后再次加密。 如果两个位置中的设置使用了有冲突的值，系统会提示你选择如何继续。 在运行此命令之前，请确保已保存对 local.settings.json 文件所做的更改。 |
 | **编辑设置** | 更改 Azure 中现有函数应用设置的值。 此命令不影响 local.settings.json 文件中的设置。  |
-| **加密设置** | 加密[本地设置](#local-settings-file)中 `Values` 数组内的单个项。 在此文件中，`IsEncrypted` 也设置为 `true`，指定本地运行时在使用设置之前先将其解密。 加密本地设置可以减少泄露重要信息的风险。 在 Azure 中，应用程序设置始终以加密的形式进行存储。 |
+| **加密设置** | 加密[本地设置](#local-settings)中 `Values` 数组内的单个项。 在此文件中，`IsEncrypted` 也设置为 `true`，指定本地运行时在使用设置之前先将其解密。 加密本地设置可以减少泄露重要信息的风险。 在 Azure 中，应用程序设置始终以加密的形式进行存储。 |
 | **立即执行函数** | 使用管理员 API 手动启动函数。 此命令用于在调试过程中和针对 Azure 中运行的函数的本地测试。 在 Azure 中触发函数时，扩展首先会自动获得管理密钥，此密钥用于调用在 Azure 中启动函数的远程管理员 API。 发送到 API 的消息正文取决于触发器的类型。 计时器触发器不需要传递任何数据。 |
 | **初始化项目以便与 VS Code 配合使用** | 将所需的 Visual Studio Code 项目文件添加到现有的 Functions 项目。 运行此命令可以使用 Core Tools 处理创建的项目。 |
 | **安装或更新 Azure Functions Core Tools** | 安装或更新用于在本地运行函数的 [Azure Functions Core Tools]。 |

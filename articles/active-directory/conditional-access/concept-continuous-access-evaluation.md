@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c615c3b57d0c4ebfdbffdc1461f2289d4b8c4256
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 6b1aac64400c3c75aa48ac62e2edcc1656400e3f
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438263"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112893269"
 ---
 # <a name="continuous-access-evaluation"></a>连续访问评估
 
@@ -57,7 +57,7 @@ ms.locfileid: "111438263"
 
 ### <a name="conditional-access-policy-evaluation-preview"></a>条件访问策略评估（预览版）
 
-Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以在服务本身中对它们进行评估。
+Exchange Online、SharePoint Online、Teams 和 MS Graph 能够同步关键的条件访问策略，因此可以在服务本身中对它们进行评估。
 
 此过程会导致用户在网络位置发生更改后立即失去对 Microsoft 365 客户端应用或 SharePoint Online 中的组织文件、电子邮件、日历或任务的访问权限。
 
@@ -77,6 +77,12 @@ Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以�
 | | OneDrive web | OneDrive Win32 | OneDrive iOS | OneDrive Android | OneDrive Mac |
 | :--- | :---: | :---: | :---: | :---: | :---: |
 | **SharePoint Online** | 支持 | 支持 | 支持 | 支持 | 支持 |
+
+| | Teams Web | Teams Win32 | Teams iOS | Teams Android | Teams Mac |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| Teams 服务 | 支持 | 支持 | 支持 | 支持 | 支持 |
+| **SharePoint Online** | 支持 | 支持 | 支持 | 支持 | 支持 |
+| **Exchange Online** | 支持 | 支持 | 支持 | 支持 | 支持 |
 
 ### <a name="client-side-claim-challenge"></a>客户端声明质询
 
@@ -138,7 +144,7 @@ Exchange 和 SharePoint 能够同步关键的条件访问策略，因此可以�
 > 若要禁用连续访问评估，请选择“启用预览”，然后依次选择“禁用预览”和“保存”  。
 
 > [!NOTE]
->可以通过 [continuousAccessEvaluationPolicy](/graph/api/continuousaccessevaluationpolicy-get?view=graph-rest-beta&tabs=http#request-body) 查询 Microsoft Graph，以验证租户中的 CAE 配置。 HTTP 200 响应和关联的响应正文指示在租户中是启用还是禁用 CAE。 如果 Microsoft Graph 返回 HTTP 404 响应，则表示未配置 CAE。
+>可以通过 [continuousAccessEvaluationPolicy ](/graph/api/continuousaccessevaluationpolicy-get?view=graph-rest-beta&tabs=http#request-body) 查询 Microsoft Graph，验证租户中 CAE 的配置。 HTTP 200 响应和关联的响应正文指示租户中是启用还是禁用了 CAE。 如果 Microsoft Graph 返回 HTTP 404 响应，则未配置 CAE。
 
 ![在 Azure 门户中启用 CAE 预览版](./media/concept-continuous-access-evaluation/enable-cae-preview.png)
 

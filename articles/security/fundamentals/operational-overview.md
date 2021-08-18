@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 4bc30fbf342a9bc85b52c9f88ce7ca1df3c36e23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28bd7af9722bd76d6580257ffaf0446c79522502
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100595503"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112461542"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 操作安全性概述
 
@@ -177,15 +177,15 @@ DevOps 可让团队更快、更经济地交付更安全、更优质的解决方�
 
 Microsoft Azure 等云平台消除了传统的瓶颈，帮助将基础结构商品化。 由于关键的优势以及在营收中的份量，软件在每家企业中都占据主导地位。 没有任何组织、开发人员或者 IT 工作人员可以或者应该避免 DevOps 的活动。
 
-成熟的 DevOps 从业者会采用以下多种做法。 这些做法涉及到基于业务方案构建策略的[人员](/azure/devops/learn/what-is-devops-culture)。 工具可以帮助自动完成各种做法。
+成熟的 DevOps 从业者会采用以下多种做法。 这些做法涉及到基于业务方案构建策略的[人员](/devops/what-is-devops)。 工具可以帮助自动完成各种做法。
 
 - [敏捷的规划和项目管理](https://www.visualstudio.com/learn/what-is-agile/)技巧用于规划工作并将其划分到小组、管理团队效能，以及帮助团队快速适应不断变化的业务需求。
-- [版本控制（通常使用 Git 实现）](/azure/devops/learn/git/what-is-git)可让世界各地的团队共享资源，以及集成用于自动化发行管道的软件开发工具。
-- [持续集成](/azure/devops/learn/what-is-continuous-integration)能够推动代码的持续合并与测试，帮助提前发现缺陷。  其他优势包括减少应对合并问题所浪费的时间，以及快速获得开发团队的反馈。
-- 向开发和测试环境[持续交付](/azure/devops/learn/what-is-continuous-delivery)软件解决方案可帮助组织快速修复 bug，应对不断变化的业务要求。
-- 运行中应用程序的[监视](/azure/devops/learn/what-is-monitoring)（包括生产环境中应用程序的运行状况）以及客户使用情况信息可帮助组织建立假设，并快速验证或推翻策略。  以各种日志格式捕获和存储丰富的数据。
-- [基础结构即代码 (IaC)](/azure/devops/learn/what-is-infrastructure-as-code) 实务可以自动化并验证网络和虚拟机的创建与解除流程，帮助交付安全、稳定的应用程序托管平台。
-- 利用[微服务](/azure/devops/learn/what-are-microservices)体系结构将业务用例隔离到小型可重用的服务。  此体系结构提高了可伸缩性和效率。
+- [版本控制（通常使用 Git 实现）](/devops/develop/git/what-is-git)可让世界各地的团队共享资源，以及集成用于自动化发行管道的软件开发工具。
+- [持续集成](/devops/develop/what-is-continuous-integration)能够推动代码的持续合并与测试，帮助提前发现缺陷。  其他优势包括减少应对合并问题所浪费的时间，以及快速获得开发团队的反馈。
+- 向开发和测试环境[持续交付](/devops/deliver/what-is-continuous-delivery)软件解决方案可帮助组织快速修复 bug，应对不断变化的业务要求。
+- 运行中应用程序的[监视](/devops/operate/what-is-monitoring)（包括生产环境中应用程序的运行状况）以及客户使用情况信息可帮助组织建立假设，并快速验证或推翻策略。  以各种日志格式捕获和存储丰富的数据。
+- [基础结构即代码 (IaC)](/devops/deliver/what-is-infrastructure-as-code) 实务可以自动化并验证网络和虚拟机的创建与解除流程，帮助交付安全、稳定的应用程序托管平台。
+- 利用[微服务](/devops/deliver/what-are-microservices)体系结构将业务用例隔离到小型可重用的服务。  此体系结构提高了可伸缩性和效率。
 
 ## <a name="next-steps"></a>后续步骤
 

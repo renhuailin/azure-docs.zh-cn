@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c6611b7437bdaf873caaaf4722e30fb644b5f13
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 40be574b048575a1cf056fcdcd97bc09d4f21098
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110617236"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729607"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B 协作用户的条件访问
 
@@ -115,14 +115,14 @@ ms.locfileid: "110617236"
 
 ### <a name="device-based-conditional-access"></a>基于设备的条件访问
 
-在 CA 中，有一个要求用户的[设备合规或已加入混合 Azure AD](../conditional-access/concept-conditional-access-conditions.md#device-state-preview) 的选项。 B2B 来宾用户只有在资源租户能够管理其设备时才能满足合规性。 设备不能一次由多个组织管理。 B2B 来宾用户无法满足混合 Azure AD 加入，因为他们没有本地 AD 帐户。 仅当来宾用户的设备不受管理时，来宾用户才能在资源租户中注册其设备，然后使设备合规。 然后，用户可以满足授权控制要求。
+在 CA 中，有一个要求用户的[设备合规或已加入混合 Azure AD](../conditional-access/concept-conditional-access-conditions.md#device-state-preview) 的选项。 B2B 来宾用户只有在资源租户能够管理其设备时才能满足合规性。 设备不能一次由多个组织管理。 B2B 来宾用户无法满足混合 Azure AD 加入，因为他们没有本地 AD 帐户。 
 
 >[!Note]
 >不建议对外部用户要求使用受管理设备。
 
 ### <a name="mobile-application-management-policies"></a>移动应用程序管理策略
 
-CA 授权控制（如需要已批准的客户端应用和需要应用保护策略）需要在租户中注册设备 。 这些控制仅应用于 [iOS 和 Android 设备](../conditional-access/concept-conditional-access-conditions.md#device-platforms)。 但是，如果用户的设备已经由其他组织管理，则这两种控制都不能应用于 B2B 来宾用户。 移动设备不能一次在多个租户中注册。 如果移动设备由其他组织管理，则用户将被阻止。 仅当来宾用户的设备不受管理时，来宾用户才能在资源租户中注册其设备。 然后，用户可以满足授权控制要求。  
+CA 授权控制（如需要已批准的客户端应用和需要应用保护策略）需要在租户中注册设备 。 这些控制仅应用于 [iOS 和 Android 设备](../conditional-access/concept-conditional-access-conditions.md#device-platforms)。 但是，如果用户的设备已经由其他组织管理，则这两种控制都不能应用于 B2B 来宾用户。 移动设备不能一次在多个租户中注册。 如果移动设备由其他组织管理，则用户将被阻止。 
 
 >[!NOTE]
 >不建议对外部用户要求应用保护策略。
@@ -153,5 +153,5 @@ CA 授权控制（如需要已批准的客户端应用和需要应用保护策�
 
 - [什么是 Azure AD B2B 协作？](./what-is-b2b.md)
 - [标识保护和 B2B 用户](../identity-protection/concept-identity-protection-b2b.md)
-- [外部标识定价](https://azure.microsoft.com/pricing/details/active-directory/)
+- [外部标识定价](https://azure.microsoft.com/pricing/details/active-directory/external-identities/)
 - [常见问题 (FAQ)](./faq.yml)

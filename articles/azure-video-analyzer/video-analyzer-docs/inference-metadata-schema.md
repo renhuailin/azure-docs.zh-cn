@@ -2,13 +2,13 @@
 title: 推理元数据架构 - Azure
 description: 在 Azure 视频分析器中，无论是使用基于 HTTP 的协定还是基于 gRPC 的协定，每个推理对象都采用本主题中所述的对象模型。
 ms.topic: reference
-ms.date: 04/11/2021
-ms.openlocfilehash: 4400978fca931741a1a12531d7923b82a5ead3e5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: bacf69638b3b9f9b8feb86030b1a8498eb69260a
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385289"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601531"
 ---
 # <a name="inference-metadata-schema"></a>推理元数据架构 
 

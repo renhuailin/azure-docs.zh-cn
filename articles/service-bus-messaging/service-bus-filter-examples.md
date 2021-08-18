@@ -3,12 +3,12 @@ title: 在 Azure 服务总线中设置订阅筛选器 | Microsoft Docs
 description: 本文提供了有关在“Azure 服务总线”主题订阅上定义筛选器和操作的示例。
 ms.topic: how-to
 ms.date: 02/17/2021
-ms.openlocfilehash: bcbb72901ed8e2dfe0932163ee18683e0011ce70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8146e1be1af354b820ea0d3fed7ba9434a4d4e1d
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100654071"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302601"
 ---
 # <a name="set-subscription-filters-azure-service-bus"></a>设置订阅筛选器（Azure 服务总线）
 本文提供了一些有关在“服务总线”主题订阅上设置筛选器的示例。 有关筛选器的概念性信息，请参阅[筛选器](topic-filters.md)。
@@ -62,7 +62,7 @@ DateTimeMp2-DateTimeMp1 <= @timespan
 ## <a name="using-in-and-not-in"></a>使用 IN 和 NOT IN
 
 ```csharp
-StoreId IN('Store1', 'Store2', 'Store3')"
+StoreId IN('Store1', 'Store2', 'Store3')
 
 sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
 

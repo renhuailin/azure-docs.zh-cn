@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 04/28/2021
-ms.openlocfilehash: 66630d10c5b79927c8388138c3ab639134909d26
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: e9c804868c64d84b8cbe98093f75c4a45d568ec3
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111888529"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112458751"
 ---
 # <a name="quickstart-create-an-azure-cache-for-redis-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure Redis 缓存
 
@@ -43,10 +43,10 @@ ms.locfileid: "111888529"
 适用于新[高级层](cache-overview.md#service-tiers)的资源管理器模板也已推出。
 
 * [通过群集创建高级 Azure Redis 缓存](https://azure.microsoft.com/resources/templates/redis-premium-cluster-diagnostics/)
-* [通过数据暂留创建高级 Azure Redis 缓存](https://azure.microsoft.com/resources/templates/redis-premium-persistence/)
+* [通过数据暂留创建高级 Azure Redis 缓存](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
 * [Create Premium Redis Cache deployed into a Virtual Network](https://azure.microsoft.com/resources/templates/redis-premium-vnet/)（创建部署到虚拟网络中的高级 Redis 缓存）
 
-若要检查最新模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)并搜索 Azure Cache for Redis。
+若要检查最新模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)并搜索 Azure Cache for Redis。
 
 ## <a name="deploy-the-template"></a>部署模板
 

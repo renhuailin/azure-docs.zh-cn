@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: 7a9eb992ff0cb98fdae2920da2beeda0bbd8941b
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: ff7c2b6ced87c8254283923a9163e51f06ae6ef6
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107877527"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114298167"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>使用托管标识来访问应用程序配置
 
@@ -23,10 +23,8 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
 
 本文介绍如何利用管理标识访问应用程序配置。 它建立在快速入门中介绍的 Web 应用之上。 在继续操作之前，先[使用应用程序配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md)。
 
-> [!NOTE]
-> 本文使用 Azure 应用服务作为示例，但相同的概念也适用于任何其他支持托管标识的 Azure 服务，例如 [Azure Kubernetes 服务](../aks/use-azure-ad-pod-identity.md)、[Azure 虚拟机](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)和 [Azure 容器实例](../container-instances/container-instances-managed-identity.md)。 如果在其中某一种服务中托管工作负载，也可以利用该服务的托管标识支持。
-
-本文还介绍如何将托管标识与应用程序配置的 Key Vaul 引用结合使用。 通过单个托管标识，可以无缝访问 Key Vault 的机密和“应用程序配置”的配置值。 如果希望了解此功能，请先完成[将 Key Vault 引用和 ASP.NET Core 结合使用](./use-key-vault-references-dotnet-core.md)。
+> [!IMPORTANT]
+> 托管标识不能用于对本地运行的应用程序进行身份验证。 必须将应用程序部署到支持托管标识的 Azure 服务。 本文使用 Azure 应用服务作为示例，但相同的概念也适用于任何其他支持托管标识的 Azure 服务，例如 [Azure Kubernetes 服务](../aks/use-azure-ad-pod-identity.md)、[Azure 虚拟机](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)和 [Azure 容器实例](../container-instances/container-instances-managed-identity.md)。 如果在其中某一种服务中托管工作负载，也可以利用该服务的托管标识支持。
 
 你可以使用任何代码编辑器执行本教程中的步骤。 [Visual Studio Code](https://code.visualstudio.com/) 是 Windows、macOS 和 Linux 平台上提供的一个卓越选项。
 
@@ -35,7 +33,7 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
 > [!div class="checklist"]
 > * 授予对应用程序配置的托管身份访问权限。
 > * 配置应用以在连接到应用程序配置时使用托管标识。
-> * （可选）将应用配置为在通过应用程序配置 Key Vault 引用连接到 Key Vault 时使用托管标识。
+
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -50,7 +48,7 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
 
 要在门户中设置托管标识，首先创建应用程序，然后启用该功能。
 
-1. 按常规在 [Azure 门户](https://portal.azure.com)中创建应用服务实例。 在门户网站中转到它。
+1. 在 [Azure 门户](https://portal.azure.com)中访问应用程序服务资源。 如果没有可使用的现有应用程序服务资源，请创建一个。 
 
 1. 在左侧窗格向下滚动到“设置”组，然后选择“标识”。
 
@@ -76,7 +74,6 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
 
     ![添加托管标识](./media/add-managed-identity.png)
 
-1. 可选：如果还希望授予对 Key Vault 的访问权限，请按照[分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)中的说明进行操作。
 
 ## <a name="use-a-managed-identity"></a>使用托管标识
 
@@ -107,6 +104,36 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
     > [!IMPORTANT]
     > `CreateHostBuilder` 替换 .NET Core 3.0 中的 `CreateWebHostBuilder`。  根据环境选择正确的语法。
 
+    ### <a name="net-core-5x"></a>[.NET Core 5.x](#tab/core5x)
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+                    config.AddAzureAppConfiguration(options =>
+                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
+                })
+                .UseStartup<Startup>());
+    ```
+
+    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+                    config.AddAzureAppConfiguration(options =>
+                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
+                })
+                .UseStartup<Startup>());
+    ```
+
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
@@ -121,170 +148,25 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
                .UseStartup<Startup>();
     ```
 
-    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
-
-    ```csharp
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-                {
-                    var settings = config.Build();
-                    config.AddAzureAppConfiguration(options =>
-                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
-                });
-            })
-            .UseStartup<Startup>());
-    ```
     ---
 
     > [!NOTE]
     > 如果要使用用户分配的托管标识，请确保在创建 [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential) 时指定 clientId。
-    >```
+    >```csharp
     >config.AddAzureAppConfiguration(options =>
-    >   options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential(<your_clientId>)));
+    >       {
+    >           options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential("<your_clientId>"))
+    >        });
     >```
-    >如“[Azure 资源的托管标识常见问题解答](../active-directory/managed-identities-azure-resources/managed-identities-faq.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request)”中所述，系统将采用默认方法来解析使用的是哪个托管标识。 在这种情况下，Azure 标识库将强制你指定所需的标识，以免将来可能出现运行时问题（例如，如果添加了一个新的用户分配的托管标识，或启用了系统分配的托管标识）。 因此，即使只定义了一个用户分配的托管标识，并且没有系统分配的托管标识，也需要指定 clientId。
+    >如“[Azure 资源的托管标识常见问题解答](../active-directory/managed-identities-azure-resources/known-issues.md)”中所述，系统将采用默认方法来解析使用的是哪个托管标识。 在这种情况下，Azure 标识库将强制你指定所需的标识，以免将来可能出现运行时问题（例如，如果添加了一个新的用户分配的托管标识，或启用了系统分配的托管标识）。 因此，即使只定义了一个用户分配的托管标识，并且没有系统分配的托管标识，也需要指定 clientId。
+ 
+    
 
+## <a name="deploy-your-application"></a>部署应用程序
 
-1. 若要同时使用应用程序配置值和 Key Vault 引用，请更新 Program.cs，如下所示。 此代码调用了作为 `ConfigureKeyVault` 的一部分的 `SetCredential`，以告知配置提供程序在向 Key Vault 进行身份验证时使用哪一凭据。
+使用托管标识需要将应用部署到 Azure 服务。 托管标识不能用于对本地运行的应用进行身份验证。 若要部署你在[使用应用程序配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md)快速入门中创建并修改的 .NET Core 应用，以便使用托管标识，请按照[发布 Web 应用](../app-service/quickstart-dotnetcore.md?pivots=development-environment-vs&tabs=netcore31#publish-your-web-app)中的指南操作。
 
-    ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
-
-    ```csharp
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-               .ConfigureAppConfiguration((hostingContext, config) =>
-               {
-                   var settings = config.Build();
-                   var credentials = new ManagedIdentityCredential();
-
-                   config.AddAzureAppConfiguration(options =>
-                   {
-                       options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                              .ConfigureKeyVault(kv =>
-                              {
-                                 kv.SetCredential(credentials);
-                              });
-                   });
-               })
-               .UseStartup<Startup>();
-    ```
-
-    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
-
-    ```csharp
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-                {
-                    var settings = config.Build();
-                    var credentials = new ManagedIdentityCredential();
-
-                    config.AddAzureAppConfiguration(options =>
-                    {
-                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                               .ConfigureKeyVault(kv =>
-                               {
-                                   kv.SetCredential(credentials);
-                               });
-                    });
-                });
-            })
-            .UseStartup<Startup>());
-    ```
-    ---
-
-    现在，你可以像访问任何其他应用程序配置键一样访问 Key Vault 引用。 配置提供程序将会使用 `ManagedIdentityCredential` 来向 Key Vault 进行身份验证并检索值。
-
-    > [!NOTE]
-    > `ManagedIdentityCredential` 只适用于支持托管标识身份验证的服务的 Azure 环境。 它在本地环境中不起作用。 请使用 [`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential) 以使代码在本地和 Azure 环境中都能正常工作，因为它将会回退到包括托管标识在内的几个身份验证选项。
-    > 
-    > 如果在部署到 Azure 时要对 `DefaultAzureCredential` 使用用户分配的托管标识，请[指定 clientId](/dotnet/api/overview/azure/identity-readme#specifying-a-user-assigned-managed-identity-with-the-defaultazurecredential)。
-
-[!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
-
-## <a name="deploy-from-local-git"></a>从本地 Git 进行部署
-
-使用 Kudu 生成服务器为应用启用本地 Git 部署的最简单方法是：使用 [Azure Cloud Shelll](https://shell.azure.com)。
-
-### <a name="configure-a-deployment-user"></a>配置部署用户
-
-[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
-
-### <a name="enable-local-git-with-kudu"></a>使用 Kudu 启用本地 Git
-如果你没有用于应用的本地 git 存储库，则需要初始化一个。 若要初始化本地 git 存储库，请从应用的项目目录中运行以下命令：
-
-```cmd
-git init
-git add .
-git commit -m "Initial version"
-```
-
-要使用 Kudu 生成服务器为应用启用本地 Git 部署，请在 Cloud Shell 中运行 [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/#az_webapp_deployment_source_config_local_git)。
-
-```azurecli-interactive
-az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
-```
-
-此命令的输出如下所示：
-
-```json
-{
-  "url": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git"
-}
-```
-
-### <a name="deploy-your-project"></a>部署项目
-
-在 _本地终端窗口_ 中，将 Azure 远程功能添加到本地 Git 存储库。 使用从[使用 Kudu 启用本地 Git](#enable-local-git-with-kudu) 中获取的 Git 远程 URL 替换 \<url>。
-
-```bash
-git remote add azure <url>
-```
-
-使用以下命令推送到 Azure 远程库以部署应用。 当系统提示输入密码时，请输入你在[配置部署用户](#configure-a-deployment-user)中创建的密码。 请勿使用用于登录 Azure 门户的密码。
-
-```bash
-git push azure main
-```
-
-在输出中可能会看到特定于运行时的自动化，如 MSBuild for ASP.NET、`npm install` for Node.js 和 `pip install` for Python。
-
-### <a name="browse-to-the-azure-web-app"></a>浏览到 Azure Web 应用
-
-使用浏览器浏览到 Web 应用以验证是否已部署内容。
-
-```bash
-http://<app_name>.azurewebsites.net
-```
-
-## <a name="use-managed-identity-in-other-languages"></a>使用其他语言的托管标识
-
-适用于 .NET Framework 和 Java Spring 的应用配置提供程序也有针对托管标识的内置支持。 配置其中一个提供程序时，可以使用存储区的 URL 终结点，而不是其完整的连接字符串。
-
-例如，你可以更新在快速入门中创建的 .NET Framework 控制台应用，以在 App.config 文件中指定以下设置：
-
-```xml
-    <configSections>
-        <section name="configBuilders" type="System.Configuration.ConfigurationBuildersSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" restartOnExternalChanges="false" requirePermission="false" />
-    </configSections>
-
-    <configBuilders>
-        <builders>
-            <add name="MyConfigStore" mode="Greedy" endpoint="${Endpoint}" type="Microsoft.Configuration.ConfigurationBuilders.AzureAppConfigurationBuilder, Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration" />
-            <add name="Environment" mode="Greedy" type="Microsoft.Configuration.ConfigurationBuilders.EnvironmentConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.Environment" />
-        </builders>
-    </configBuilders>
-
-    <appSettings configBuilders="Environment,MyConfigStore">
-        <add key="AppName" value="Console App Demo" />
-        <add key="Endpoint" value ="Set via an environment variable - for example, dev, test, staging, or production endpoint." />
-    </appSettings>
-```
+除了应用服务，许多其他 Azure 服务也支持托管标识。 有关详细信息，请参阅[支持 Azure 资源托管标识的服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

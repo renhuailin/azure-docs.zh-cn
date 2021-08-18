@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eabb6e657db7ea39bf0fb746bb596f496bc5efaf
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e24ea1fa02a70e63c8eaab21acff1d1c7b625e9a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958307"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727724"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>使用 Azure Active Directory 建立强大标识基础的四个步骤
 
@@ -117,7 +117,7 @@ Azure AD Connect 在预配过程中起到重要作用。 如果同步服务器�
 
 无论选择 PHS 还是 PTA，都需要启用[无缝单一登录](./how-to-connect-sso.md) 使用户在使用企业网络中的 Windows 7 和 Windows 8 设备时，无需在应用中不断输入用户名和密码即可访问云应用。 不使用单一登录，用户必须记住应用程序特定的密码并登录每个应用程序。 IT 人员需要为每个应用程序（如 Microsoft 365、Box 和 Salesforce）创建和更新用户帐户。 用户需要记住各个密码，并且花时间登录每个应用程序。 为整个企业提供标准化的单一登录机制对于获得最佳用户体验、降低风险、报告和治理能力至关重要。
 
-对于已使用 AD FS 或其他本地身份验证提供程序的组织，随着标识提供程序迁移到 Azure AD，可以降低复杂性并提高可用性。 除非有使用联合身份验证的特定用例，否则我们建议从联合身份验证迁移到 PHS 和无缝 SSO 或 PTA 和无缝 SSO，以减少本地占用量以及实现云服务的灵活性，改善用户体验。 如需了解详细信息，请参阅[从联合身份验证迁移到 Azure Active Directory 密码哈希同步](./plan-migrate-adfs-password-hash-sync.md)。
+对于已使用 AD FS 或其他本地身份验证提供程序的组织，随着标识提供程序迁移到 Azure AD，可以降低复杂性并提高可用性。 除非有使用联合身份验证的特定用例，否则我们建议从联合身份验证迁移到 PHS 和无缝 SSO 或 PTA 和无缝 SSO，以减少本地占用量以及实现云服务的灵活性，改善用户体验。 如需了解详细信息，请参阅[从联合身份验证迁移到 Azure Active Directory 密码哈希同步](./migrate-from-federation-to-cloud-authentication.md)。
 
 ### <a name="enable-automatic-deprovisioning-of-accounts"></a>启用自动撤销帐户
 

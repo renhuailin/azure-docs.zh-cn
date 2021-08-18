@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2021
 ms.author: bwren
-ms.openlocfilehash: 5c8256e453763d9cd2fdc18687df3064552dcf2b
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 00014d4a7f2829ec6836473d03ae0b25f388a903
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289527"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114286478"
 ---
 # <a name="azure-monitor-metrics-overview"></a>Azure Monitor 指标概述
 Azure Monitor 指标是 Azure Monitor 的一项功能，它将[受监视的资源](../monitor-reference.md)中的数值数据收集到时序数据库。 指标是定期收集的数值，用于描述系统在某一特定时间的某些情况。 Azure Monitor 中的指标是轻型数据，能够支持准实时方案，这让其在发出警报和快速检测问题方面特别有用。 您可以使用指标资源管理器以交互方式分析它们，在值超过阈值时主动收到通知警报，或者在工作簿或仪表板中将其可视化。
@@ -133,6 +133,9 @@ Azure Monitor 指标收集的数据存储在更适合分析带有时间戳的数
 > [!NOTE]
 > 可以[将 Azure Monitor 资源的平台指标发送到 Log Analytics 工作区](./resource-logs.md#send-to-azure-storage)，以了解长期趋势。
 
+
+> [!NOTE]
+> 如上所述，对于 Azure 中的大多数资源，平台指标存储 93 天。 但是，你只能在任何单个图表的“指标”磁贴中查询不超过 30 天的数据。 此限制不适用于基于日志的指标。 如果你看到空白图表或者图表仅显示一部分指标数据，请验证时间选取器中的开始日期与结束日期之差是否不超过 30 天。 选择 30 天间隔后，你可以[平移](./metrics-charts.md#pan)图表以查看完整的保留期。
 
 
 

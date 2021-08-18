@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 10/20/2020
 ms.author: midesa
-ms.openlocfilehash: 56af49b6fa862c93822293056752182b534ac442
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: beef6768f9b2fb05efb77c16c32b0acbe46d1e85
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98942264"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732485"
 ---
 # <a name="analyze-data-with-apache-spark"></a>使用 Apache Spark 分析数据
 
 在本教程中，你将了解如何使用 Azure 开放数据集和 Apache Spark 执行探索性数据分析。 然后，你可以在 Azure Synapse Analytics 的 Synapse Studio 笔记本中将结果可视化。
 
-具体而言，我们会分析[纽约市 (NYC) 出租车](https://azure.microsoft.com/en-us/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)数据集。 数据通过 Azure 开放数据集提供。 此数据集子集包含有关黄色出租车行程的信息：有关每次行程、开始和结束时间、位置、成本和其他令人感兴趣的属性的信息。
+具体而言，我们会分析[纽约市 (NYC) 出租车](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/)数据集。 数据通过 Azure 开放数据集提供。 此数据集子集包含有关黄色出租车行程的信息：有关每次行程、开始和结束时间、位置、成本和其他令人感兴趣的属性的信息。
   
 ## <a name="before-you-begin"></a>在开始之前
 按照[创建 Apache Spark 池教程](../articles/../quickstart-create-apache-spark-pool-studio.md)创建 Apache Spark 池。 

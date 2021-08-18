@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: a6d4c5811c08aa8c4de2eeea5f5f53967c3006b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8fa3c329afe26979e6f557d075aff478e79d10e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025350"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727226"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>在 Azure Monitor Log Analytics 中使用客户管理的存储帐户
 
@@ -22,7 +22,7 @@ Log Analytics 在各种方案中依赖于 Azure 存储。 通常自动管理这�
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>引入 Azure 诊断扩展日志 (WAD/LAD)
 Azure 诊断扩展代理（也分别称为适用于 Windows 的 WAD 代理和适用于 Linux 的 LAD 代理）收集各种操作系统日志，并将它们存储在客户管理的存储帐户中。 之后，你可以将这些日志引入 Log Analytics 来查看和分析它们。
 ### <a name="how-to-collect-azure-diagnostics-extension-logs-from-your-storage-account"></a>如何从存储帐户收集 Azure 诊断扩展日志
-使用 [Azure 门户](../agents/diagnostics-extension-logs.md#collect-logs-from-azure-storage)或通过调用[存储见解 API](/rest/api/loganalytics/storage%20insights/createorupdate)，将存储帐户作为存储数据源连接到 Log Analytics 工作区。
+使用 [Azure 门户](../agents/diagnostics-extension-logs.md#collect-logs-from-azure-storage)或通过调用[存储见解 API](/rest/api/loganalytics/storage-insights/create-or-update)，将存储帐户作为存储数据源连接到 Log Analytics 工作区。
 
 支持的数据类型：
 * Syslog
@@ -100,7 +100,7 @@ Azure 存储可对存储帐户中的所有数据进行静态加密。 默认情�
 使用自己的存储帐户时，保留期取决于你。 Log Analytics 不会删除专用存储中存储的日志。 但你应根据偏好设置策略来处理负载。
 
 #### <a name="consider-load"></a>考虑负载
-存储帐户可以处理一定数量的读取和写入请求负载，之后会开始限制请求（有关详细信息，请参阅 [Blob 存储的可伸缩性和性能目标](../../storage/common/scalability-targets-standard-account.md)）。 限制请求会延长引入日志所花费的时间。 如果存储帐户已超载，请注册额外的存储帐户，以在帐户之间分散负载。 若要监视存储帐户的容量和性能，请查看其在 [Azure 门户中的见解]( https://docs.microsoft.com/azure/azure-monitor/insights/storage-insights-overview)。
+存储帐户可以处理一定数量的读取和写入请求负载，之后会开始限制请求（有关详细信息，请参阅 [Blob 存储的可伸缩性和性能目标](../../storage/common/scalability-targets-standard-account.md)）。 限制请求会延长引入日志所花费的时间。 如果存储帐户已超载，请注册额外的存储帐户，以在帐户之间分散负载。 若要监视存储帐户的容量和性能，请查看其在 [Azure 门户中的见解](../../storage/common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)。
 
 ### <a name="related-charges"></a>相关费用
 存储帐户按存储数据量、存储类型和冗余类型收费。 有关详细信息，请参阅[块 blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs)和[表存储定价](https://azure.microsoft.com/pricing/details/storage/tables)。

@@ -2,13 +2,13 @@
 title: 将 Azure 视频分析器部署到 IoT Edge 设备 - Azure
 description: 本文列出了可帮助你将 Azure 视频分析器部署到 IoT Edge 设备的步骤。 例如，如果你有权访问本地 Linux 计算机，那么你可能会执行此操作。
 ms.topic: how-to
-ms.date: 04/07/2021
-ms.openlocfilehash: f81d441b0070777837cc938721705335734fa3a3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: cf73e5d44e9c4c04a7c2f018e403da18e18ff17d
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385121"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603901"
 ---
 # <a name="deploy-azure-video-analyzer-to-an-iot-edge-device"></a>将 Azure 视频分析器部署到 IoT Edge 设备
 

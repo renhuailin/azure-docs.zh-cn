@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/08/2020
+ms.date: 07/13/2021
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db90d49034fb61c26bf4528045d2b3f54d7a30fc
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: fe5f9987cb99aa90d1452b4f442e326d4e95bcee
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963844"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687796"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
 
@@ -72,7 +72,7 @@ ms.locfileid: "111963844"
 5. 如果要使用 Azure AD MFA NPS 扩展来保护 VPN 访问权限，请考虑将 VPN 解决方案作为 [SAML 应用](../manage-apps/view-applications-portal.md)进行联合，并按照下面的建议确定应用类别。 
 
 >[!NOTE]
-> 基于风险的策略需要 [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) 许可证。
+> 基于风险的策略需要 [Azure AD Premium P2](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing) 许可证。
 
 以下示例介绍了在为用户提供可复原的访问控制来访问其应用和资源时所必须创建的策略。 在此示例中，你需要一个安全组 **AppUsers**（包含你要授予其访问权限的目标用户），一个名为 **CoreAdmins** 的组（包含核心管理员），以及一个名为 **EmergencyAccess** 的组（包含紧急访问帐户）。
 此示例策略集将在 **AppUsers** 中的选定用户从受信任的设备进行连接时向其授予对选定应用的访问权限，或提供强身份验证（例如 MFA）。 它将紧急帐户和核心管理员排除在外。

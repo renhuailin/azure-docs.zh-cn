@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/9/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 806e85fca0a509d56e248fc7779fba0f0a59a61d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22c9163b0b8e809fba3c870393c03dd7c0d3c194
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97007664"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433753"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>创建不具有公共 IP 地址的 Azure Batch 池
 
@@ -35,7 +35,7 @@ ms.locfileid: "97007664"
 - **一个 Azure VNet**。 如果要在[虚拟网络](batch-virtual-network.md)中创建池，请遵循以下要求和配置。 若要提前准备具有一个或多个子网的 VNet，可以使用 Azure 门户、Azure PowerShell、Azure 命令行接口 (CLI) 或其他方法。
   - VNet 必须与用于创建池的 Batch 帐户位于同一订阅和区域中。
   - 为池指定的子网必须提供足够的未分配 IP 地址来容纳面向该池的 VM 的数量；即，池的 `targetDedicatedNodes` 和 `targetLowPriorityNodes` 属性的总和。 如果子网没有足够的未分配 IP 地址，池将分配部分计算节点，并发生调整大小错误。
-  - 必须禁用专用链接服务和终结点网络策略。 这可以使用 Azure CLI 完成：```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --resouce-group <resourcegroup> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
+  - 必须禁用专用链接服务和终结点网络策略。 这可以使用 Azure CLI 完成：```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --resource-group <resourcegroup> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
 
 > [!IMPORTANT]
 > 对于每 100 个专用或低优先级节点，Batch 会分配一个专用链路服务和一个负载平衡器。 这些资源受订阅的[资源配额](../azure-resource-manager/management/azure-subscription-service-limits.md)限制。 对于大型池，可能需要为一个或多个此类资源[请求增加配额](batch-quota-limit.md#increase-a-quota)。 此外，不得将资源锁应用于由 Batch 创建的任何资源，因为这可能会由于用户启动的操作（如删除池或者将池大小调整为零）而导致资源清理被阻止。
@@ -110,7 +110,7 @@ client-request-id: 00000000-0000-0000-0000-000000000000
 
 ## <a name="outbound-access-to-the-internet"></a>对 Internet 的出站访问
 
-在没有公共 IP 地址的池中，你的虚拟机将无法访问公共 Internet，除非你适当地配置了网络设置，例如使用[虚拟网络 NAT](../virtual-network/nat-overview.md)。 请注意，NAT 仅允许从虚拟网络中的虚拟机对 Internet 进行出站访问。 Batch 创建的计算节点将无法被公开访问，因为这些计算节点没有关联的公共 IP 地址。
+在没有公共 IP 地址的池中，你的虚拟机将无法访问公共 Internet，除非你适当地配置了网络设置，例如使用[虚拟网络 NAT](../virtual-network/nat-gateway/nat-overview.md)。 请注意，NAT 仅允许从虚拟网络中的虚拟机对 Internet 进行出站访问。 Batch 创建的计算节点将无法被公开访问，因为这些计算节点没有关联的公共 IP 地址。
 
 提供出站连接的另一种方法是使用用户定义的路由 (UDR)。 这使你可以将流量路由到具有公共 Internet 访问权限的代理计算机。
 

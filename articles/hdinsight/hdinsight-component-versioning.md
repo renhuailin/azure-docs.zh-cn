@@ -3,15 +3,13 @@ title: Apache Hadoop 组件和版本 - Azure HDInsight
 description: 了解 Azure HDInsight 中的 Apache Hadoop 组件和版本。
 ms.service: hdinsight
 ms.topic: conceptual
-author: deshriva
-ms.author: deshriva
 ms.date: 02/08/2021
-ms.openlocfilehash: dbd5b507fd4a7b2434158dbdc80584a7fd348732
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: df177157d08bd38871efce5879cf6f6eca783760
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726577"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725357"
 ---
 # <a name="azure-hdinsight-versions"></a>Azure HDInsight 版本
 
@@ -34,11 +32,11 @@ HDInsight 会将 Apache Hadoop 环境组件和 HDInsight 平台捆绑到一个�
 
 ## <a name="support-options-for-hdinsight-versions"></a>HDInsight 版本的支持选项
 
-支持定义为 HDInsight 版本受 Microsoft 客户服务和支持部门支持的时间段。 HDInsight 提供两种类型的支持： 
-- **标准支持** 是 Microsoft 在 HDInsight 群集上提供更新和支持的时间段。  
-    建议使用最新的完全支持的版本构建解决方案。 
-- **基本支持** 是 Microsoft 向 HDInsight 资源提供程序提供有限服务的时间段。 不会为 HDInsight 映像和开源软件 (OSS) 组件提供服务。   HDInsight 群集上只会修补关键的安全修复程序。  
-  当版本处于基本支持时，Microsoft 不鼓励创建新群集或生成任何新解决方案。 建议将现有群集迁移到最新的完全受支持的版本。 
+该支持定义为由 Microsoft 客户服务和支持部门为某个 HDInsight 版本提供支持的时间段。 HDInsight 提供两种类型的支持： 
+- 标准支持是 Microsoft 在 HDInsight 群集上提供更新和支持的时间段。  
+    建议使用最新的完全受支持的版本构建解决方案。 
+- 基本支持是 Microsoft 为 HDInsight 资源提供程序提供有限服务的时间段。 不会为 HDInsight 映像和开源软件 (OSS) 组件提供服务。   HDInsight 群集上只会修补关键安全修补程序。  
+  Microsoft 不建议在版本处于基本支持时创建新群集或构建任何全新解决方案。 建议将现有群集迁移到最新的完全受支持的版本。 
 
 **支持到期** 意味着 Microsoft 不再为特定的 HDInsight 版本提供支持， 并且不再可以通过 Azure 门户使用该版本创建群集。
 

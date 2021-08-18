@@ -4,12 +4,12 @@ description: 解决了 Azure HDInsight 中的 Apache HBase REST 未响应请求�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/01/2019
-ms.openlocfilehash: b42a37d752f245eb66f3952b56ee4e36ae954874
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0315ced51a57224113e7af490f15bcf9db894738
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98936953"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112291306"
 ---
 # <a name="scenario-apache-hbase-rest-not-responding-to-requests-in-azure-hdinsight"></a>场景：Azure HDInsight 中的 Apache HBase REST 未响应请求
 
@@ -52,4 +52,4 @@ fi
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

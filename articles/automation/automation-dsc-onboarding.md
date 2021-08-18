@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.custom: devx-track-azurepowershell
 manager: carmonm
-ms.openlocfilehash: c310003bb7c9120211e3cf74e240e51d4a10b20c
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 8d35eee9d0c205e2d55093d1a6bcec1d762c78a8
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111891763"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113651628"
 ---
 # <a name="enable-azure-automation-state-configuration"></a>启用 Azure Automation State Configuration
 
@@ -47,7 +47,7 @@ Azure Automation State Configuration 让你能够使用 Azure 门户、Azure 资
 
 ### <a name="enable-a-vm-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板启用 VM
 
-可以使用 Azure 资源管理器模板安装和启用 VM 以用于 State Configuration。 有关启用现有 VM 以用于 State Configuration 的示例模板，请参阅 [Desired State Configuration 服务管理的服务器](https://azure.microsoft.com/resources/templates/automation-configuration/)。 如果要管理虚拟机规模集，请参阅 [Azure 自动化管理虚拟机规模集配置](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/)中的示例模板。
+可以使用 Azure 资源管理器模板安装和启用 VM 以用于 State Configuration。 有关启用现有 VM 以用于 State Configuration 的示例模板，请参阅 [Desired State Configuration 服务管理的服务器](https://azure.microsoft.com/resources/templates/automation-configuration/)。 如果要管理虚拟机规模集，请参阅 [Azure 自动化管理虚拟机规模集配置](https://azure.microsoft.com/resources/templates/vmss-automation-dsc/)中的示例模板。
 
 ### <a name="enable-machines-using-powershell"></a>使用 PowerShell 启用虚拟机
 

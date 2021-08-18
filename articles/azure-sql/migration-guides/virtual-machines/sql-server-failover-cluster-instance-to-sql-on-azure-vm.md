@@ -8,12 +8,12 @@ manager: bsiva
 ms.topic: how-to
 ms.date: 4/25/2021
 ms.author: rahugup
-ms.openlocfilehash: d21a9b91a7030deb805c80034ca0515e2b226b16
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 27b0841e601fb7d2eaa7712495b7440a0b886d7c
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954586"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113769251"
 ---
 # <a name="migrate-failover-cluster-instance-to-sql-server-on-azure-vms"></a>将故障转移群集实例迁移到 Azure VM 上的 SQL Server
 
@@ -36,7 +36,7 @@ ms.locfileid: "111954586"
 
 开始学习本教程之前，应做好以下准备：
 
-1. Azure 订阅。 如有必要，请创建[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。 
+1. Azure 订阅。 如有必要，请创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。 
 1. 安装 [Azure PowerShell `Az` 模块](/powershell/azure/install-az-ps)。 
 1. 从 GitHub 存储库下载 [PowerShell 示例脚本](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/SQL%20Migration)。
 
@@ -48,7 +48,7 @@ ms.locfileid: "111954586"
 --- | ---
 **创建 Azure Migrate 项目** | Azure 帐户需要“参与者”或“所有者”权限才能[创建新项目](../../../migrate/create-manage-projects.md)。
 **验证 Azure 帐户的权限** | Azure 帐户需要拥有 Azure 订阅的参与者或所有者权限、用于注册 Azure Active Directory (AAD) 应用的权限、Azure 订阅上用于创建 Key Vault、创建 VM 以及写入 Azure 托管磁盘的“用户访问管理员”权限。
-设置 Azure 虚拟网络 | [设置](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network) Azure 虚拟网络 (VNet)。 复制到 Azure 时，将创建 Azure VM 并将其加入到在设置迁移时指定的 Azure VNet。
+**设置 Azure 虚拟网络** | [设置](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network) Azure 虚拟网络 (VNet)。 复制到 Azure 时，将创建 Azure VM 并将其加入到在设置迁移时指定的 Azure VNet。
 
 
 若要检查是否具有适当的权限，请执行以下步骤： 
@@ -115,9 +115,9 @@ ms.locfileid: "111954586"
 1. 将设备安装程序文件和密钥文件复制到为该设备创建的 Windows Server 2016 计算机。
 1. 安装完成后，设备配置向导将自动启动（也可使用在设备计算机的桌面上创建的 cspsconfigtool 快捷方式手动启动该向导）。 使用向导的“管理帐户”选项卡创建具有以下详细信息的虚拟帐户：
 
-   -  "guest" 作为友好名称
-   -  "username" 作为用户名
-   -  "password" 作为帐户的密码。 
+   -  “guest”作为易记名称
+   -  “username”作为用户名
+   -  “password”作为帐户密码。 
    
    你将在“启用复制”阶段使用此虚拟帐户。 
 
@@ -367,7 +367,7 @@ SQL Server 故障转移群集实例已就绪。
 ## <a name="post-migration-best-practices"></a>迁移后的最佳做法
 
 - 对于 SQL Server：
-    -  安装 [SQL Server IaaS 代理扩展](../../virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md)，以自动执行管理和管理任务。 
+    -  安装 [SQL Server IaaS 代理扩展](../../virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md)，以自动执行管理任务。 
     - [优化](../../virtual-machines/windows/performance-guidelines-best-practices-checklist.md) Azure VM 上的 SQL Server 性能。 
     - 了解 Azure 上的 SQL Server [定价](../../virtual-machines/windows/pricing-guidance.md#free-licensed-sql-server-editions)。 
 - 为提高恢复能力，请执行以下操作：
@@ -379,7 +379,7 @@ SQL Server 故障转移群集实例已就绪。
     - 部署[Azure 磁盘加密](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md)以帮助保护磁盘，并保护数据以防被盗和未经授权的访问。
     - 详细了解[保护 IaaS 资源的安全](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)，并访问[Azure 安全中心](https://azure.microsoft.com/services/security-center/)。
 - 为了便于监视和管理，请执行以下操作：
-    - 考虑部署[Azure 成本管理](../../../cost-management-billing/cloudyn/overview.md)以监视资源使用率和支出。
+    - 考虑部署[Azure 成本管理](../../../cost-management-billing/cost-management-billing-overview.md)以监视资源使用率和支出。
 
 
 ## <a name="next-steps"></a>后续步骤

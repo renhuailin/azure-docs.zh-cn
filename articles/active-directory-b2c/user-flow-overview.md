@@ -12,12 +12,12 @@ ms.date: 04/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2e4dbc5178bec3a5b1f0931267465879f604f36f
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: b663904df2d116bdfa92a0dcef4b05c0806fec14
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107225985"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112199135"
 ---
 # <a name="user-flows-and-custom-policies-overview"></a>用户流和自定义策略概述
 
@@ -76,7 +76,7 @@ ms.locfileid: "107225985"
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>比较用户流和自定义策略
 
-下表详细比较了使用 Azure AD B2C 用户流和自定义策略的情况。
+下表详细比较了使用 Azure AD B2C 用户流启用的方案和使用自定义策略启用的方案。
 
 | 上下文 | 用户流 | 自定义策略 |
 |-|-------------------|-----------------|

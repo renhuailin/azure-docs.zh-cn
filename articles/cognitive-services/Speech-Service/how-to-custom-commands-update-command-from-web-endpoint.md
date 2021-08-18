@@ -3,19 +3,19 @@ title: 从 web 终结点更新命令
 titleSuffix: Azure Cognitive Services
 description: 了解如何通过调用 web 终结点更新命令的状态。
 services: cognitive-services
-author: nitinme
+author: laujan
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.author: nitinme
-ms.openlocfilehash: d0b77e6af36f0a71405f6c032bfdd121abeb0071
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.author: lajanuar
+ms.openlocfilehash: 9900d873de5efac89db13b80c0cc37167a0cee05
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97560264"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122066610"
 ---
 # <a name="update-a-command-from-a-web-endpoint"></a>从 web 终结点更新命令
 
@@ -23,7 +23,7 @@ ms.locfileid: "97560264"
 
 在本文中，你将学习如何从 web 终结点更新正在进行的命令。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 > [!div class = "checklist"]
 > * 之前[创建的自定义命令应用](quickstart-custom-commands-application.md)
 
@@ -120,7 +120,7 @@ module.exports = async function (context, req) {
 1. 选择“测试”。
 1. 发送几次 `increment`（`IncrementCounter` 命令的示例语句）。
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/increment-counter-example.png" alt-text="显示增量计数器示例的屏幕截图。":::
+    > :::image type="content" source="./media/custom-commands/increment-counter-example-no-mic.png" alt-text="显示增量计数器示例的屏幕截图。":::
 
 请注意 Azure 函数每次怎样递增 `Counter` 参数的值。
 

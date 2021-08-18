@@ -3,16 +3,16 @@ title: Azure IoT 术语词汇表 | Microsoft Docs
 description: 开发人员指南 - 一个词汇表，解释 Azure IoT 文章中常用的一些术语。
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-hub
-services: iot-hub
+ms.service: iot-fundamentals
+services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: 3034f117f8efa383a9f7a5e768e8d5627ea32099
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 91604758ad2e53b3715a5b5c746959b3fe124ba6
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668398"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403390"
 ---
 # <a name="glossary-of-iot-terms"></a>IoT 术语词汇表
 
@@ -182,7 +182,7 @@ IoT 即插即用认证计划验证设备是否符合 IoT 即插即用认证要�
 
 ### <a name="device-model"></a>设备型号
 
-设备模型是使用[数字孪生体定义语言](#digital-twins-definition-language-dtdl)来描述 IoT 即插即用设备功能的一种[模型](#model)。 简单设备模型使用单个接口来描述设备功能。 较复杂的设备模型包含多个组件，每个组件描述一组功能。 有关详细信息，请参阅[模型中的 IoT 即插即用组件](../iot-pnp/concepts-modeling-guide.md)。
+设备模型是使用[数字孪生体定义语言](#digital-twins-definition-language-dtdl)来描述 IoT 即插即用设备功能的一种[模型](#model)。 简单设备模型使用单个接口来描述设备功能。 较复杂的设备模型包含多个组件，每个组件描述一组功能。 有关详细信息，请参阅[模型中的 IoT 即插即用组件](../iot-develop/concepts-modeling-guide.md)。
 
 ### <a name="device-modeling"></a>设备建模
 
@@ -214,7 +214,7 @@ IoT 中心设备预配服务 (DPS) 是 [IoT 中心](#iot-hub)的一项帮助程�
 
 ### <a name="digital-twin"></a>数字孪生体
 
-数字孪生体是表示物理对象的数字数据的集合。 物理对象的更改将反映在数字孪生体中。 在某些情况下，可以使用数字孪生体来操作物理对象。 [Azure 数字孪生服务](../digital-twins/index.yml)使用以[数字孪生体定义语言 (DTDL)](#digital-twins-definition-language-dtdl) 表示的[模型](#model)来表示物理设备或更高级别抽象业务概念的数字孪生体，用于实现各种基于云的数字孪生解决方案。 [IoT 即插即用](../iot-pnp/index.yml)设备具有 DTDL [设备模型](#device-model)描述的数字孪生体。
+数字孪生体是表示物理对象的数字数据的集合。 物理对象的更改将反映在数字孪生体中。 在某些情况下，可以使用数字孪生体来操作物理对象。 [Azure 数字孪生服务](../digital-twins/index.yml)使用以[数字孪生体定义语言 (DTDL)](#digital-twins-definition-language-dtdl) 表示的[模型](#model)来表示物理设备或更高级别抽象业务概念的数字孪生体，用于实现各种基于云的数字孪生解决方案。 [IoT 即插即用](../iot-develop/index.yml)设备具有 DTDL [设备模型](#device-model)描述的数字孪生体。
 
 ### <a name="digital-twin-change-events"></a>数字孪生体更改事件
 
@@ -378,7 +378,7 @@ Azure IoT 解决方案加速器将多个 Azure 服务一起打包到解决方案
 
 在 [IoT 中心](#iot-hub)中，通过[作业](../iot-hub/iot-hub-devguide-jobs.md)可计划和跟踪在 IoT 中心注册的一组设备上的活动。 活动包括更新设备孪生[所需的属性](#desired-properties)、更新设备孪生[标记](#tags)，以及调用[直接方法](#direct-method)。 IoT 中心还使用作业在[标识注册表](#identity-registry)中[导入和导出](../iot-hub/iot-hub-devguide-identity-registry.md#import-and-export-device-identities)。
 
-在 IoT Central 中，借助[作业](../iot-central/core/howto-run-a-job.md)可通过设置属性和调用命令批量管理连接的设备。 通过 IoT Central 作业还可以批量更新[云属性](#cloud-property)。
+在 IoT Central 中，借助[作业](../iot-central/core/howto-manage-devices-in-bulk.md)可通过设置属性和调用命令批量管理连接的设备。 通过 IoT Central 作业还可以批量更新[云属性](#cloud-property)。
 
 ## <a name="l"></a>L
 
@@ -400,7 +400,7 @@ Azure IoT 解决方案加速器将多个 Azure 服务一起打包到解决方案
 
 模型定义物理环境中的一种实体，包括其属性、遥测、组件，有时还包括其他信息。 模型用于创建表示此类型的特定物理对象的[数字孪生体](#digital-twin)。 模型是以[数字孪生体定义语言](#digital-twins-definition-language-dtdl)编写的。
 
-在 [Azure 数字孪生服务](../digital-twins/index.yml)中，模型可以定义设备或更高级别的抽象业务概念。 在 [IoT 即插即用](../iot-pnp/index.yml)中，[设备模型](#device-model)用于具体描述设备。
+在 [Azure 数字孪生服务](../digital-twins/index.yml)中，模型可以定义设备或更高级别的抽象业务概念。 在 [IoT 即插即用](../iot-develop/index.yml)中，[设备模型](#device-model)用于具体描述设备。
 
 ### <a name="model-id"></a>模型 ID
 

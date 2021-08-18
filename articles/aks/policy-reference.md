@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes 服务的内置策略定义
 description: 列出 Azure Kubernetes 服务的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 06/11/2021
+ms.date: 08/13/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: cb21ad4cb8b127494b526fb099bf73a1ae6400b3
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 074b2ef18afef38acb1085d7c6d56a93b96b9b2d
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020054"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182090"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-kubernetes-service"></a>Azure Kubernetes 服务的 Azure Policy 内置定义
 

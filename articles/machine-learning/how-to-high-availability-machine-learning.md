@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 05/05/2021
-ms.openlocfilehash: 1cdc286376d53bcf6491cd6d29f74a62df8b68fb
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: ba8904713f9623cf80f259ad096a4dbfaddad393
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967681"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112552903"
 ---
 # <a name="failover-for-business-continuity-and-disaster-recovery"></a>业务连续性和灾难恢复的故障转移
 
@@ -150,7 +150,8 @@ Azure 机器学习中的运行由运行规范定义。 此规范包括对在工�
       > 在工作室设计器中创建的管道当前无法作为代码导出。
 
 * 将配置作为代码进行管理。
-    * 避免对工作区进行硬编码引用。 请改为使用[配置文件](how-to-configure-environment.md#workspace)配置对工作区实例的引用，并使用 [Workspace.from_config()](/python/api/azureml-core/azureml.core.workspace.workspace#remarks) 初始化工作区。 若要自动执行此过程，请使用[用于机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)命令 [az ml folder attach](/cli/azure/ext/azure-cli-ml/ml/folder#ext_azure_cli_ml_az_ml_folder_attach)。
+
+    * 避免对工作区进行硬编码引用。 请改为使用[配置文件](how-to-configure-environment.md#workspace)配置对工作区实例的引用，并使用 [Workspace.from_config()](/python/api/azureml-core/azureml.core.workspace.workspace#remarks) 初始化工作区。 若要自动执行此过程，请使用[用于机器学习的 Azure CLI 扩展](reference-azure-machine-learning-cli.md)命令 [az ml folder attach](/cli/azure/ml(v1)/folder#ext_azure_cli_ml_az_ml_folder_attach)。
     * 使用运行提交帮助程序，例如 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) 和[管道](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class))。
     * 使用 [Environments.save_to_directory()](/python/api/azureml-core/azureml.core.environment(class)#save-to-directory-path--overwrite-false-) 保存环境定义。
     * 如果使用自定义 Docker 映像，请使用 Dockerfile。
@@ -180,11 +181,10 @@ Azure 机器学习无法同步或恢复工作区实例之间的项目或元数�
 | ----- | ----- | ----- |
 | 模型 | [az ml model download --model-id {ID} --target-dir {PATH}](/cli/azure/ext/azure-cli-ml/ml/model#ext_azure_cli_ml_az_ml_model_download) | [az ml model register –name {NAME} --path {PATH}](/cli/azure/ext/azure-cli-ml/ml/model) |
 | 环境 | [az ml environment download -n {NAME} -d {PATH}](/cli/azure/ext/azure-cli-ml/ml/environment#ext_azure_cli_ml_az_ml_environment_download) | [az ml environment register -d {PATH}](/cli/azure/ext/azure-cli-ml/ml/environment#ext_azure_cli_ml_az_ml_environment_register) |
-| Azure ML 管道（代码生成工具） | [az ml pipeline get --path {PATH}](/cli/azure/ext/azure-cli-ml/ml/pipeline#ext_azure_cli_ml_az_ml_pipeline_get) | [az ml pipeline create --name {NAME} -y {PATH}](/cli/azure/ext/azure-cli-ml/ml/pipeline#ext_azure_cli_ml_az_ml_pipeline_create)
+| Azure ML 管道（代码生成工具） | [az ml pipeline get --path {PATH}](/cli/azure/ml(v1)/pipeline#ext_azure_cli_ml_az_ml_pipeline_get) | [az ml pipeline create --name {NAME} -y {PATH}](/cli/azure/ml(v1)/pipeline#ext_azure_cli_ml_az_ml_pipeline_create)
 
 > [!TIP]
-> * 无法下载或移动已注册的数据集。 这包括由 Azure ML 生成的数据集，如中间管道数据集。 但是可以在两个工作区上注册以下数据集：引用两个工作区都可以访问的共享文件位置或引用复制基础数据存储的位置的数据集。 使用 [az ml dataset register](/cli/azure/ext/azure-cli-ml/ml/dataset#ext_azure_cli_ml_az_ml_dataset_register) 注册数据集。
->
+> * 无法下载或移动已注册的数据集。 这包括由 Azure ML 生成的数据集，如中间管道数据集。 但是可以在两个工作区上注册以下数据集：引用两个工作区都可以访问的共享文件位置或引用复制基础数据存储的位置的数据集。 使用 [az ml dataset register](/cli/azure/ml(v1)/dataset#ext_azure_cli_ml_az_ml_dataset_register) 注册数据集。
 > * 运行输出存储在与工作区关联的默认存储帐户中。 尽管在中断时可能无法从工作室 UI 访问运行输出，但你可以通过存储帐户直接访问数据。 有关处理存储在 blob 中的数据的详细信息，请参阅[使用 Azure CLI 创建、下载和列出 blob](../storage/blobs/storage-quickstart-blobs-cli.md)。
 ## <a name="next-steps"></a>后续步骤
 

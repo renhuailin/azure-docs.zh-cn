@@ -5,29 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 06/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 083dcc0dc5d6ffdf25f6d6f631a8e6f5788ce8b1
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85554917"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113303033"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>已加入混合 Azure AD 的设备
 
-十多年来，许多组织已使用本地 Active Directory 域加入来实现以下目的：
+通过实施已建立混合 Azure AD 联接的设备，具有现有 Active Directory 实施的组织可以受益于 Azure Active Directory (Azure AD) 提供的某些功能。 这些设备将联接到本地 Active Directory 并在 Azure Active Directory 中注册。
 
-- IT 部门能够从中央位置管理工作所有设备。
-- 用户能够使用其 Active Directory 工作或学校帐户登录他们的设备。
-
-通常，具有本地占用空间的组织依靠映像方法预配设备，并常常使用 Configuration Manager 或组策略 (GP) 管理这些设备 。
-
-如果你的环境具有本地 AD 占用空间并且你希望利用 Azure Active Directory 提供的功能所带来的优势，则可选择实现混合 Azure AD 加入设备。 这些设备是加入到本地 Active Directory 并在 Azure Active Directory 中注册的设备。
+已建立混合 Azure AD 联接的设备需要定期通过网络连接到本地域控制器。 如果没有此连接，设备将变得不可用。 如果需要考虑这个要求，请考虑为设备进行 [Azure AD 联接](concept-azure-ad-join.md)。
 
 | 混合 Azure AD 联接 | 说明 |
 | --- | --- |
@@ -57,10 +52,10 @@ ms.locfileid: "85554917"
 
 在以下情况下使用 Azure AD 混合联接设备：
 
-- 将 Win32 应用部署到这些依赖 Active Directory 计算机身份验证的设备。
+- 要支持运行 Windows 7 和 8.1 的底层设备。
 - 要继续使用组策略来管理设备配置。
 - 要继续使用现有映像解决方案来部署和配置设备。
-- 除 Windows 10 外，还必须支持下级 Windows 7 和 8.1 设备
+- 将 Win32 应用部署到这些依赖 Active Directory 计算机身份验证的设备。
 
 ## <a name="next-steps"></a>后续步骤
 

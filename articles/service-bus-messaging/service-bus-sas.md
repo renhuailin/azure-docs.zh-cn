@@ -4,12 +4,12 @@ description: 根据如何使用共享访问签名进行服务总线访问控制�
 ms.topic: article
 ms.date: 04/27/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 622a1dd877be98053fdb9b21bfbb40a81c749f02
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5659e159604c80ffe19cbc4b57dea5d99c1acb98
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760618"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112379809"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共享访问签名进行服务总线访问控制
 
@@ -36,7 +36,7 @@ SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名
 
 每个服务总线命名空间和服务总线实体都有一个由规则构成的共享访问授权策略。 命名空间级别的策略应用到该命名空间中的所有实体，不管这些实体各自的策略配置如何。
 
-对于每个授权策略规则，需要确定三个信息片段：**名称**、**范围** 和 **权限**。 **名称** 只是该范围内的唯一名称。 范围也很简单：它是相关资源的 URI。 对于服务总线命名空间，范围是完全限定的命名空间，例如 `https://<yournamespace>.servicebus.windows.net/`。
+对于每个授权策略规则，需要确定三个信息片段：**名称**、**范围** 和 **权限**。 **名称** 只是该范围内的唯一名称。 范围也很简单：它是相关资源的 URI。 服务总线命名空间的范围是完全限定的命名空间，比如 `https://<yournamespace>.servicebus.windows.net/`。
 
 策略规则授予的权限可以是以下各项的组合：
 
@@ -68,7 +68,7 @@ SAS 可以根据授权规则来保护对服务总线的访问。 可以在命名
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>共享访问签名身份验证的配置
 
-可以在服务总线命名空间、队列或主题上配置共享访问授权策略。 目前不支持在服务总线订阅上进行配置，但你可以使用命名空间或主题上配置的规则来保护对订阅的访问。 有关说明此过程的工作示例，请参阅 [Using Shared Access Signature (SAS) authentication with Service Bus Subscriptions](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)（将共享访问签名 (SAS) 身份验证与服务总线订阅配合使用）示例。
+可以在服务总线命名空间、队列或者主题上配置共享访问授权策略。 目前不支持在服务总线订阅上进行配置，但你可以使用命名空间或主题上配置的规则来保护对订阅的访问。 
 
 ![SAS](./media/service-bus-sas/service-bus-namespace.png)
 
@@ -108,9 +108,9 @@ SAS 令牌对于以 `signature-string` 中使用的 `<resourceURI>` 为前缀的
 
 ## <a name="regenerating-keys"></a>重新生成密钥
 
-建议定期重新生成共享访问授权策略中使用的密钥。 提供了主要和辅助密钥槽，以便可以逐步轮换密钥。 如果应用程序通常使用主要密钥，则可将主要密钥复制到辅助密钥槽，并只在完成此过程后才重新生成主要密钥。 然后，可以在客户端应用程序（可以使用辅助槽中的旧主要密钥继续访问）中配置新的主要密钥值。 更新所有客户端后，可以重新生成辅助密钥，以便最终停用旧主要密钥。
+建议定期重新生成在共享访问身份验证策略使用的密钥。 提供了主要和辅助密钥槽，以便可以逐步轮换密钥。 如果应用程序通常使用主要密钥，则可将主要密钥复制到辅助密钥槽，并只在完成此过程后才重新生成主要密钥。 然后，可以在客户端应用程序（可以使用辅助槽中的旧主要密钥继续访问）中配置新的主要密钥值。 更新所有客户端后，可以重新生成辅助密钥，以便最终停用旧主要密钥。
 
-如果你知道或者怀疑密钥已泄漏，因此必须撤销这些密钥，则可以生成共享访问授权策略的主密钥和辅助密钥，并将要撤销的密钥替换为新密钥。 此过程将使得由旧密钥签名的所有令牌失效。
+如果你知道或怀疑密钥被盗用并需要撤销该密钥，则可以重新生成共享访问身份验证策略的主要和辅助密钥来代替之前的密钥。 此过程将使得由旧密钥签名的所有令牌失效。
 
 ## <a name="shared-access-signature-authentication-with-service-bus"></a>服务总线的共享访问签名身份验证
 
@@ -120,7 +120,7 @@ SAS 令牌对于以 `signature-string` 中使用的 `<resourceURI>` 为前缀的
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>访问实体上的共享访问授权规则
 
-对[服务总线管理库](service-bus-management-libraries.md)中的队列或主题使用 get/update 操作可以访问/更新相应的共享访问授权规则。 还可以在使用这些库创建队列或主题时添加规则。
+对[服务总线管理库](service-bus-management-libraries.md)中的队列或主题使用获取/更新操作来访问/更新相应的共享访问授权规则。 也可以在使用这些库创建队列或者主题的时候添加规则。
 
 ## <a name="use-shared-access-signature-authorization"></a>使用共享访问签名授权
 

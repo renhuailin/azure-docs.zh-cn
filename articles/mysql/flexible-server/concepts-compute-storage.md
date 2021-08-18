@@ -6,16 +6,18 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 7165cdc072ffaa5b0d862e1fe17f94e35c35aeec
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9b8699598a9bac4781346ff939736b2bd6ee72f2
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034531"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113429937"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）中的计算和存储选项
 
-> [!IMPORTANT] 
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
 
 可以在以下三个不同的计算层之一中创建 Azure Database for MySQL 灵活服务器：“可突增”、“常规用途”和“内存优化”。 计算层通过基础 VM SKU 使用的 B 系列、D 系列和 E 系列进行区分。 计算层和大小的选择决定服务器上可用的内存和 Vcore。 所有计算层使用相同的存储技术。 所有资源都在 MySQL 服务器级别预配。 一个服务器可以有一个或多个数据库。
@@ -25,7 +27,7 @@ ms.locfileid: "105034531"
 | VM 系列| B 系列 | Ddsv4 系列 | Edsv4 系列|
 | vCore 数 | 1, 2 | 2、4、8、16、32、48、64 | 2、4、8、16、32、48、64 |
 | 每个 vCore 的内存 | 变量 | 4 GiB | 8 GiB * |
-| 存储大小 | 5 GiB 到 16 TiB | 5 GiB 到 16 TiB | 5 GiB 到 16 TiB |
+| 存储大小 | 20 GiB 到 16 TiB | 20 GiB 到 16 TiB | 20 GiB 到 16 TiB |
 | 数据库备份保留期 | 1 到 35 天 | 1 到 35 天 | 1 到 35 天 |
 
 \* E64ds_v4（内存优化）SKU 除外，它具有 504 GB 内存
@@ -46,28 +48,28 @@ ms.locfileid: "105034531"
 
 可用服务器类型的详细规格如下：
 
-| 计算大小         | vCore 数 | 内存大小 (GiB) | 支持的最大 IOPS | 支持的最大 I/O 带宽 (MBps)|
-|----------------------|--------|-------------------| ------------------ |-----------------------------------|
+| 计算大小         | vCore 数 | 内存大小 (GiB) | 支持的最大 IOPS | 支持的最大 I/O 带宽 (MBps)| 最大连接数
+|----------------------|--------|-------------------| ------------------ |-----------------------------------|------------------
 | **可突发**        |        |                   | 
-| Standard_B1s         | 1      | 1                 | 320                | 10                                | 
-| Standard_B1ms        | 1      | 2                 | 640                | 10                                |
-| Standard_B2s         | 2      | 4                 | 1280               | 15                                |
-| **常规用途**  |        |                   |                    |                                   |
-| Standard_D2ds_v4     | 2      | 8                 | 3200               | 48                                |
-| Standard_D4ds_v4     | 4      | 16                | 6400               | 96                                |
-| Standard_D8ds_v4     | 8      | 32                | 12800              | 192                               |
-| Standard_D16ds_v4    | 16     | 64                | 20000              | 384                               |
-| Standard_D32ds_v4    | 32     | 128               | 20000              | 768                               |
-| Standard_D48ds_v4    | 48     | 192               | 20000              | 1152                              |
-| Standard_D64ds_v4    | 64     | 256               | 20000              | 1200                              |
+| Standard_B1s         | 1      | 1                 | 320                | 10                                | 171
+| Standard_B1ms        | 1      | 2                 | 640                | 10                                | 341
+| Standard_B2s         | 2      | 4                 | 1280               | 15                                | 683
+| **常规用途**  |        |                   |                    |                                   | 
+| Standard_D2ds_v4     | 2      | 8                 | 3200               | 48                                | 1365
+| Standard_D4ds_v4     | 4      | 16                | 6400               | 96                                | 2731
+| Standard_D8ds_v4     | 8      | 32                | 12800              | 192                               | 5461
+| Standard_D16ds_v4    | 16     | 64                | 20000              | 384                               | 10923
+| Standard_D32ds_v4    | 32     | 128               | 20000              | 768                               | 21845
+| Standard_D48ds_v4    | 48     | 192               | 20000              | 1152                              | 32768
+| Standard_D64ds_v4    | 64     | 256               | 20000              | 1200                              | 43691
 | **内存优化** |        |                   |                    |                                   |
-| Standard_E2ds_v4     | 2      | 16                | 3200               | 48                                |
-| Standard_E4ds_v4     | 4      | 32                | 6400               | 96                                |
-| Standard_E8ds_v4     | 8      | 64                | 12800              | 192                               |
-| Standard_E16ds_v4    | 16     | 128               | 20000              | 384                               |
-| Standard_E32ds_v4    | 32     | 256               | 20000              | 768                               |
-| Standard_E48ds_v4    | 48     | 384               | 20000              | 1152                              |
-| Standard_E64ds_v4    | 64     | 504               | 20000              | 1200                              |
+| Standard_E2ds_v4     | 2      | 16                | 3200               | 48                                | 2731
+| Standard_E4ds_v4     | 4      | 32                | 6400               | 96                                | 5461
+| Standard_E8ds_v4     | 8      | 64                | 12800              | 192                               | 10923
+| Standard_E16ds_v4    | 16     | 128               | 20000              | 384                               | 21845
+| Standard_E32ds_v4    | 32     | 256               | 20000              | 768                               | 43691
+| Standard_E48ds_v4    | 48     | 384               | 20000              | 1152                              | 65536
+| Standard_E64ds_v4    | 64     | 504               | 20000              | 1200                              | 86016
 
 若要获取有关可用计算系列的更多详细信息，请参阅[可突发（B 系列）](../../virtual-machines/sizes-b-series-burstable.md)、[常规用途（Ddsv4 系列）](../../virtual-machines/ddv4-ddsv4-series.md)和[内存优化（Edsv4 系列）](../../virtual-machines/edv4-edsv4-series.md)的相关 Azure VM 文档。
 
@@ -76,7 +78,7 @@ ms.locfileid: "105034531"
 
 ## <a name="storage"></a>存储
 
-预配的存储是指可供灵活服务器使用的存储容量。 存储用于数据库文件、临时文件、事务日志和 MySQL 服务器日志。 在所有计算层中，支持的最小存储为 5 GiB，最大存储为 16 TiB。 存储按 1 GiB 的增量缩放，并且可在创建服务器后纵向扩展。
+预配的存储是指可供灵活服务器使用的存储容量。 存储用于数据库文件、临时文件、事务日志和 MySQL 服务器日志。 在所有计算层中，支持的最小存储为 20 GiB，最大存储为 16 TiB。 存储按 1 GiB 的增量缩放，并且可在创建服务器后纵向扩展。
 
 >[!NOTE]
 > 存储只能增加，不能减少。
@@ -99,13 +101,17 @@ ms.locfileid: "105034531"
 
 ### <a name="storage-auto-grow"></a>存储自动增长
 
-存储自动增长尚不可用于 Azure Database for MySQL 灵活服务器。
+存储自动增长可防止服务器耗尽存储空间并变为只读。 如果启用了存储自动增长，存储会在不影响工作负荷的情况下自动增长。 默认情况下，会为所有新创建的服务器启用存储自动增长。 对于预配存储小于等于 100 GB 的服务器，当可用存储小于预配存储的 10% 时，预配存储大小会增加 5 GB。 对于预配存储大于 100 GB 的服务器，可用存储空间小于预配存储大小 10 GB 时，预配存储大小会增加 5%。 适用上面指定的最大存储限制。
+
+例如，如果已预配 1000 GB 的存储，而实际使用量超过 990 GB，则服务器存储大小会增加到 1050 GB。 或者，如果已预配 10 GB 的存储，则当可用存储少于 1 GB 时，存储大小会增加到 15 GB。
+
+请记住，存储只能纵向扩展，不能纵向缩减
 
 ## <a name="iops"></a>IOPS
 
 Azure Database for MySQL - 灵活服务器支持预配额外的 IOPS。 借助此功能可配置超出免费 IOPS 限制的其他 IOPS。 使用此功能，你可以根据工作负载需求随时增加或减少预配的 IOPS 数。 
 
-所有计算大小的最小 IOPS 为 100，最大 IOPS 由所选计算大小确定。 在预览版中，支持的最大 IOPS 为 20,000 IOPS。
+所有计算大小的最小 IOPS 为 360，最大 IOPS 取决于所选计算大小。 在预览版中，支持的最大 IOPS 为 20,000 IOPS。
 
 详细了解每个计算大小的最大 IOPS，如下所示： 
 
@@ -135,8 +141,8 @@ Azure Database for MySQL - 灵活服务器支持预配额外的 IOPS。 借助�
 最大 IOPS 取决于每个计算大小的最大可用 IOPS。 参阅 [B 系列](../../virtual-machines/sizes-b-series-burstable.md)、[Ddsv4 系列](../../virtual-machines/ddv4-ddsv4-series.md)和 [Edsv4 系列](../../virtual-machines/edv4-edsv4-series.md)文档中的“最大未缓存磁盘吞吐量：IOPS/MBps”列。
 
 > [!Important]
-> 免费 IOPS = MINIMUM（计算大小的“最大未缓存磁盘吞吐量：IOPS/MBps”，预配的存储 (GiB) * 3）<br>
-> 所有计算大小的最小 IOPS 均为 100<br>
+> 免费 IOPS = MINIMUM（计算大小的“最大未缓存磁盘吞吐量：IOPS/MBps”，300 + 预配的存储 (GiB) * 3）<br>
+> 所有计算大小的最小 IOPS 均为 360<br>
 > 最大 IOPS 取决于所选的计算大小。 在预览版中，支持的最大 IOPS 为 20,000 IOPS。
 
 可以使用 [IO 百分比](./concepts-monitoring.md)指标在 Azure 门户中（使用 Azure Monitor）监视 I/O 使用情况。 如果需要比基于计算力的最大 IOPS 更高的 IOPS，则需要扩展服务器的计算。

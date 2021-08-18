@@ -4,43 +4,43 @@ description: 在 Azure Application Insights 中看不到数据？ 试试这里�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 2a301efe2ea7c6c74d503fda4a9bbf63f8ce7f80
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 828eab154c09e3e623b5cfb84d6fc72d2bd480f5
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061571"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616138"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>排查无数据问题 - 用于 .NET/.NET Core 的 Application Insights
 
 ## <a name="some-of-my-telemetry-is-missing"></a>缺少一些遥测数据
 *在 Application Insights 中，我只看到应用生成的一部分事件。*
 
-* 如果持续看到同一个部分，可能是由于自适应[采样](../../azure-monitor/app/sampling.md)所导致。 要确认这一点，请打开“搜索”（通过“概述”边栏选项卡），并查看请求或其他事件的实例。 若要查看完整的属性详细信息，请选择“属性”分区底部的省略号 (...)。 如果请求计数大于 1，则表示采样正在进行。
-* 可能是你达到了定价计划的[数据速率限制](../../azure-monitor/app/pricing.md#limits-summary)。 系统每隔一分钟应用这些限制。
+* 如果持续看到同一个部分，可能是由于自适应[采样](../../azure-monitor/app/sampling.md)所导致。 要确认这一点，请打开“搜索”（通过“概述”边栏选项卡），并查看请求或其他事件的实例。 若要查看完整的属性详细信息，请选择“属性”部分底部的省略号图标 (...) 。 如果“请求计数”大于 1，则表示采样正在进行。
+* 有可能你达到了定价计划的[数据率限制](../../azure-monitor/app/pricing.md#limits-summary)。 系统每隔一分钟应用这些限制。
 
-我不时遇到数据丢失问题。
+我不时地遇到数据丢失的问题。
 
-* 检查是否在[遥测通道](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)中发生了数据丢失问题。
+* 检查数据丢失是否发生在[遥测通道](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)中。
 
 * 检查是否发生了遥测通道 [GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)中所述的任何已知问题。
 
 当应用即将停止时，控制台应用或 Web 应用中出现了数据丢失问题。
 
-* SDK 通道在缓冲区中保留遥测数据，并分批发送这些数据。 如果应用程序正在关闭，则可能需要显式调用 [Flush()](api-custom-events-metrics.md#flushing-data)。 `Flush()` 的行为取决于使用的实际[通道](telemetry-channels.md#built-in-telemetry-channels)。
+* SDK 通道在缓冲区中保留遥测数据，并分批发送这些数据。 如果应用程序正在关闭，你可能需要显式调用 [Flush()](api-custom-events-metrics.md#flushing-data)。 `Flush()` 的行为取决于使用的实际[通道](telemetry-channels.md#built-in-telemetry-channels)。
 
 ## <a name="request-count-collected-by-application-insights-sdk-does-not-match-the-iis-log-count-for-my-application"></a>Application Insights SDK 收集的请求计数与应用程序的 IIS 日志计数不匹配
 
 Internet Information Services (IIS) 记录到达 IIS 的所有请求的计数，本质上可能不同于到达应用程序的请求总数。 因此，不能保证 SDK 收集的请求计数与 IIS 日志总数相匹配。 
 
 ## <a name="no-data-from-my-server"></a>服务器未提供数据
-* 我已在 Web 服务器上安装应用，但未看到服务器提供任何遥测数据。 服务器在开发计算机上运行正常。*
-* 这可能是防火墙问题。 [为 Application Insights 设置防火墙例外即可发送数据](../../azure-monitor/app/ip-addresses.md)。
-* IIS 服务器可能缺少某些必备组件，例如 NET Extensibility 4.5 或者 ASP.NET 4.5。
+* 我已在 Web 服务器上安装应用，但未看到服务器提供任何遥测数据。 该应用在开发计算机上正常运行。
+* 可能是防火墙有问题。 [为 Application Insights 设置防火墙例外即可发送数据](../../azure-monitor/app/ip-addresses.md)。
+* IIS 服务器可能缺少某些必备组件，例如 .NET Extensibility 4.5 或 ASP.NET 4.5。
 
-*我已在 Web 服务器上 [安装状态监视器](./monitor-performance-live-website-now.md)来监视现有应用，但未看到任何结果。*
+我已在 Web 服务器上安装 [Azure Monitor Application Insights 代理](./status-monitor-v2-overview.md)来监视现有应用，但未看到任何结果。
 
-* 请参阅[排查状态监视器问题](./monitor-performance-live-website-now.md#troubleshoot)。
+* 请参阅[排查状态监视器问题](./status-monitor-v2-troubleshoot.md)。
 
 > [!IMPORTANT]
 > 建议使用[连接字符串](./sdk-connection-string.md?tabs=net)替代检测密钥。 新的 Azure 区域要求使用连接字符串而不是检测密钥。 连接字符串用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
@@ -185,13 +185,13 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 请参阅[依赖项遥测](./asp-net-dependencies.md)和[异常遥测](asp-net-exceptions.md)。
 
 ## <a name="no-performance-data"></a>没有性能数据
-性能数据（CPU、IO 速率等）适用于 [Java Web 服务](java-2x-collectd.md)、[Windows 桌面应用](./windows-desktop.md)、[IIS Web 应用和服务（如果安装了状态监视器）](./monitor-performance-live-website-now.md)以及 [Azure 云服务](./app-insights-overview.md)。 可在“设置”、“服务器”下面看到这些数据。
+性能数据（CPU、IO 速率等）适用于 [Java Web 服务](java-2x-collectd.md)、[Windows 桌面应用](./windows-desktop.md)、[IIS Web 应用和服务（如果安装了 Application Insights 代理）](./status-monitor-v2-overview.md)以及 [Azure 云服务](./app-insights-overview.md)。 可在“设置”、“服务器”下面看到这些数据。
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>将应用发布到服务器后未看到（服务器）数据
 * 请检查是否确实将 Microsoft. ApplicationInsights DLL 连同 Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll 一起复制到了服务器。
 * 在防火墙中，可能需要[打开某些 TCP 端口](./ip-addresses.md)。
 * 如果必须使用代理在企业网络外部发送数据，请在 Web.config 中设置 [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71))
-* Windows Server 2008：请确保已安装以下更新：[KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://web.archive.org/web/20150129090641/http://support.microsoft.com/kb/2600217)。
+* Windows Server 2008：请确保已安装以下更新：[KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://www.microsoft.com/download/details.aspx?id=28936)。
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>我以前看到了数据，但现在看不到
 * 是否达到了数据点的每月配额？ 打开“设置/配额和定价”即可检查。如果达到了配额，可以升级计划，或付费购买更多的容量。 请参阅[定价方案](https://azure.microsoft.com/pricing/details/application-insights/)。
@@ -219,7 +219,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 按照这些说明来捕获框架的故障排除日志。
 
-### <a name="net-framework"></a>.NET framework
+### <a name="net-framework"></a>.NET Framework
 
 1. 从 NuGet 安装 [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) 包。 安装的版本必须与当前安装的 `Microsoft.ApplicationInsighs` 版本匹配
 

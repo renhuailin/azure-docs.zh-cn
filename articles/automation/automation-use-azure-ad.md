@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 34033589a297b1a3a2abb97d346f1da478f950e6
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 3150b20e8ddd5fa49f1cc9486d29dd633e443239
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830279"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112454863"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>使用 Azure AD 向 Azure 进行身份验证
 
@@ -51,7 +51,7 @@ ms.locfileid: "107830279"
 
 1. 请确保已在计算机上启用 Microsoft .NET Framework 3.5.x 功能。 计算机可能已安装较新版本，但可启用或禁用较旧版本的 .NET Framework 的后向兼容性。 
 
-2. 安装 64 位版本的 [Microsoft Online Services 登录助手](https://www.microsoft.com/Download/details.aspx?id=28177)。
+2. 安装 64 位版本的 [Microsoft Online Services 登录助手](/microsoft-365/enterprise/connect-to-microsoft-365-powershell?view=o365-worldwide#step-1-install-the-required-software-1)。
 
 3. 以管理员身份运行 Windows PowerShell，创建提升的 Windows PowerShell 命令提示符。
 

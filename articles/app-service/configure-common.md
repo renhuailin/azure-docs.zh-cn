@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 55f34ec9416bdca81d025efb0910b10a7fa48736
-ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+ms.openlocfilehash: 1f8f8d81af6fb06bba9c48f5ae7d1fbb7f5d2e59
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110585864"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730641"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
 
@@ -19,7 +19,7 @@ ms.locfileid: "110585864"
 
 ## <a name="configure-app-settings"></a>配置应用设置
 
-在应用服务中，应用设置是作为环境变量传递给应用程序代码的变量。 对于 Linux 应用和自定义容器，应用服务使用 `--env` 标志将应用设置传递到容器，以在容器中设置环境变量。
+在应用服务中，应用设置是作为环境变量传递给应用程序代码的变量。 对于 Linux 应用和自定义容器，应用服务使用 `--env` 标志将应用设置传递到容器，以在容器中设置环境变量。 无论是这两种情况中的哪一种，它们都会在应用启动时注入到应用环境。 在添加、删除或编辑应用设置时，应用服务会触发应用重启。
 
 在 [Azure 门户]中搜索并选择“应用服务”  ，然后选择应用。 
 
@@ -202,9 +202,9 @@ ms.locfileid: "110585864"
 - **平台设置**：用于配置托管平台的设置，包括：
     - **位数**：32 位或 64 位。 （对于在门户中创建的应用服务，默认为 32 位。）
     - **WebSocket 协议**：例如，[ASP.NET SignalR] 或 [socket.io](https://socket.io/)。
-    - **Always On**：即使没有流量，也保持应用的加载状态。 对于连续性 WebJobs 或使用 CRON 表达式触发的 WebJobs，它是必需的。
-      > [!NOTE]
-      > 借助 Always On 功能，前端负载均衡器会将请求发送到应用程序根目录。 无法配置应用服务的此应用程序终结点。
+    - **Always On**：即使没有流量，也保持应用的加载状态。 如果未打开 Always On（默认），该应用会在 20 分钟后卸载，无需任何传入请求。 卸载的应用可能会因为存在预热时间而导致新请求的延迟过高。 如果打开了 Always On，前端负载均衡器会每隔五分钟向应用程序根目录发送一次 GET 请求。 连续的 ping 会阻止卸载该应用。
+    
+        对于连续的 WebJobs 或使用 CRON 表达式触发的 WebJobs，Always On 是必需的。
     - **托管管道版本**：IIS [管道模式]。 如果某个旧式应用需要旧版 IIS，请将此选项设置为“经典”。 
     - **HTTP 版本**：设置为“2.0”，以启用对 [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) 协议的支持。
     > [!NOTE]
@@ -285,6 +285,7 @@ ms.locfileid: "110585864"
 
 ## <a name="next-steps"></a>后续步骤
 
+- [环境变量和应用设置参考](reference-app-settings.md)
 - [在 Azure 应用服务中配置自定义域名]
 - [设置 Azure 应用服务中的过渡环境]
 - [在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)

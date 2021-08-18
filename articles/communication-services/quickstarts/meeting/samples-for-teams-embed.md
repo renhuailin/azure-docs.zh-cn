@@ -3,16 +3,16 @@ title: 使用 Azure 通信服务 Teams Embed 库
 description: 了解通信服务 Teams Embed 库功能。
 author: palatter
 ms.author: palatter
-ms.date: 02/24/2021
+ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-ios-android
-ms.openlocfilehash: 27f574676b17ed2e1f7defec7e555350c39d685f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d5ddb8589343bca55554ad71327b6adfd0202976
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802990"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113215088"
 ---
 # <a name="use-the-communication-services-teams-embed-library"></a>使用通信服务 Teams Embed 库
 

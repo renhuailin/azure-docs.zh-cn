@@ -1,6 +1,6 @@
 ---
-title: 将 Key Vault 与 DigiCert 证书颁发机构集成
-description: 本文介绍如何将 Key Vault 与 DigiCert 证书颁发机构集成，以便为网络预配、管理和部署证书。
+title: 将密钥保管库与 DigiCert 证书颁发机构集成
+description: 本文介绍如何将密钥保管库与 DigiCert 证书颁发机构集成，以便为网络预配、管理和部署证书。
 services: key-vault
 author: msmbaldwin
 tags: azure-resource-manager
@@ -9,18 +9,19 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 99be94db2dd904db09b8b265b74442d5ba31b629
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9cec61df061c7a504da412851349064273507173
+ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109845593"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110678849"
 ---
-# <a name="integrating-key-vault-with-digicert-certificate-authority"></a>将 Key Vault 与 DigiCert 证书颁发机构集成
+# <a name="integrating-key-vault-with-digicert-certificate-authority"></a>将密钥保管库与 DigiCert 证书颁发机构集成
 
 Azure Key Vault 使你能轻松地为网络预配、管理和部署数字证书，并支持应用程序的安全通信。 数字证书是一种电子凭据，用于在电子交易中建立身份证明。 
 
-Azure Key Vault 用户可以直接从其密钥保管库生成 DigiCert 证书。 Key Vault 与 DigiCert 证书颁发机构之间存在受信任的合作关系。 这种合作关系可确保 DigiCert 颁发的证书的端到端证书生命周期管理。
+Azure 密钥保管库用户可以直接从其密钥保管库生成 DigiCert 证书。 密钥保管库与 DigiCert 证书颁发机构之间存在受信任的合作关系。 这种合作关系可确保 DigiCert 颁发的证书的端到端证书生命周期管理。
 
 若要详细了解证书的常规信息，请参阅 [Azure Key Vault 证书](./about-certificates.md)。
 
@@ -44,12 +45,12 @@ Azure Key Vault 用户可以直接从其密钥保管库生成 DigiCert 证书。
 -   组织 ID
 -   API 密钥
 
-## <a name="add-the-certificate-authority-in-key-vault"></a>在 Key Vault 中添加证书颁发机构 
+## <a name="add-the-certificate-authority-in-key-vault"></a>在密钥保管库中添加证书颁发机构 
 从 DigiCert CertCentral 帐户收集上述信息后，可以将 DigiCert 添加到密钥保管库中的证书颁发机构列表。
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1.  要添加 DigiCert 证书颁发机构，请转到要将其添加到的密钥保管库。 
+1.  若要添加 DigiCert 证书颁发机构，请转到要将其添加到的密钥保管库。 
 2.  在密钥保管库属性页中，选择“证书”。
 3.  选择“证书颁发机构”选项卡：:::image type="content" source="../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png" alt-text="屏幕截图显示正在选择“证书颁发机构”选项卡。":::
 4.  选择“添加”：:::image type="content" source="../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png" alt-text="屏幕截图显示了“证书颁发机构”选项卡上的“添加”按钮。":::
@@ -108,7 +109,7 @@ Login-AzAccount
    Set-AzKeyVaultCertificateIssuer -VaultName "Contoso-Vaultname" -Name "TestIssuer01" -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org -PassThru
    ```
 
-5. 直接在 Key Vault 的 DigiCert 中设置证书的策略并颁发证书：
+5. 直接在密钥保管库的 DigiCert 中设置证书的策略并颁发证书：
 
    ```azurepowershell-interactive
    $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "TestIssuer01" -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
@@ -127,16 +128,16 @@ Login-AzAccount
    
 合并由证书颁发机构签名的 CSR 以完成请求。 有关合并 CSR 的信息，请参阅[创建和合并 CSR](./create-certificate-signing-request.md)。
 
-有关详细信息，请参阅 [Key Vault REST API 参考中的“证书操作”](/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](/rest/api/keyvault/vaults/updateaccesspolicy)。
+有关详细信息，请参阅[密钥保管库 REST API 参考中的“证书操作”](/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](/rest/api/keyvault/vaults/updateaccesspolicy)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-- 能否使用 KeyVault 生成 DigiCert 通配符证书？ 
+- 能否使用密钥保管库生成 DigiCert 通配符证书？ 
    
   是的，但这取决于你对 DigiCert 帐户的配置。
 - 如何使用 DigiCert 创建 OV SSL 或 EV SSL 证书？
  
-   Key Vault 支持创建 OV 和 EV SSL 证书。 创建证书时，选择“高级策略配置”，然后指定证书类型。 支持的值：OV SSL、EV SSL
+   密钥保管库支持创建 OV 和 EV SSL 证书。 创建证书时，选择“高级策略配置”，然后指定证书类型。 支持的值：OV SSL、EV SSL
    
    如果 DigiCert 帐户允许，可以在密钥保管库中创建这种类型的证书。 对于这种类型的证书，验证由 DigiCert 执行。 如果验证失败，DigiCert 支持团队可以提供帮助。 通过在 `subjectName` 中定义信息，可以在创建证书时添加信息。
 
@@ -144,7 +145,7 @@ Login-AzAccount
    
 - 通过集成创建 DigiCert 证书的时间是否比直接从 DigiCert 获取证书长？
    
-   不是。 创建证书时，验证过程可能需要一些时间。 DigiCert 控制该过程。
+   否。 创建证书时，验证过程可能需要一些时间。 DigiCert 控制该过程。
 
 
 ## <a name="next-steps"></a>后续步骤

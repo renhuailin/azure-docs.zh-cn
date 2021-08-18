@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: c4fdf78096f6f8b46c601440db6604cec6c61c99
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: a6adf67eb10d276fc7484c088e7238ab8b72c1b9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074360"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730627"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>使用 ZIP 或 WAR 文件将应用部署到 Azure 应用服务
 
@@ -40,7 +40,7 @@ WAR 文件部署将 [WAR](https://wikipedia.org/wiki/WAR_(file_format)) 文件�
 [!INCLUDE [Create a project ZIP file](../../includes/app-service-web-deploy-zip-prepare.md)]
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
-上面的终结点目前不适用于 Linux 应用服务。 请考虑改用 FTP 或 [ZIP 部署 API](faq-app-service-linux.md#continuous-integration-and-deployment)。
+上面的终结点目前不适用于 Linux 应用服务。 请考虑改用 FTP 或 [ZIP 部署 API](/azure/app-service/faq-app-service-linux#continuous-integration-and-deployment)。
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>使用 Azure CLI 部署 ZIP 文件
 
@@ -53,6 +53,8 @@ az webapp deployment source config-zip --resource-group <group-name> --name <app
 ```
 
 此命令将 zip 文件中的文件和目录部署到默认的应用服务应用程序文件夹 (`\home\site\wwwroot`) 并重启应用。
+
+## <a name="enable-build-automation"></a>启用生成自动化
 
 默认情况下，部署引擎假定 ZIP 文件已准备好按原样运行，并且不运行任何生成自动化。 若要启用与 [Git 部署](deploy-local-git.md)中相同的生成自动化，请通过在 [Cloud Shell](https://shell.azure.com) 中运行以下命令来设置 `SCM_DO_BUILD_DURING_DEPLOYMENT` 应用设置：
 
@@ -98,3 +100,4 @@ Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <
 
 * [Kudu：从 zip 文件部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)
 * [ 部署凭据](deploy-ftp.md)
+* [环境变量和应用设置参考](reference-app-settings.md)

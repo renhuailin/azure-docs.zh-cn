@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43388c2750c7f82d407d59b6923258046fa00c7
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: b746b1f7d35668759108580d4d695787ac8fa3bc
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175867"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733099"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 功能部署指南
 
@@ -32,7 +32,7 @@ ms.locfileid: "108175867"
 
 可在以下页面上找到有关许可的更多信息：
 
-* [Azure AD 许可](https://azure.microsoft.com/pricing/details/active-directory/)
+* [Azure AD 许可](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)
 * [Microsoft 365 企业版](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 * [企业移动性 + 安全性](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 * [Azure AD 外部标识定价](../external-identities/external-identities-pricing.md)
@@ -99,7 +99,7 @@ ms.locfileid: "108175867"
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure AD 许可和定价详细信息](https://azure.microsoft.com/pricing/details/active-directory/)
+[Azure AD 许可和定价详细信息](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)
 
 [标识和设备访问权限配置](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 

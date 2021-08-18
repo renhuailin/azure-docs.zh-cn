@@ -4,16 +4,16 @@ description: 云服务中的角色实例可以定义其终结点（http、https�
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 82aa1579a1f7feb36732153341e1eacf266a7218
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2479fb687bf899057fccc2441841eed5a116914
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743026"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091566"
 ---
 # <a name="enable-communication-for-role-instances-in-azure-cloud-services-classic"></a>为 Azure 云服务（经典）中的角色实例启用通信
 

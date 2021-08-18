@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f19035ea08e95d5535903467ddbc11fc53c0deb7
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 25628d4982e2675a6ea818284f4c629b16f22064
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753100"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747940"
 ---
 # <a name="built-in-roles-for-azure-virtual-desktop"></a>Azure 虚拟桌面内置角色
 
@@ -46,7 +46,7 @@ Azure 虚拟桌面没有特定的所有者角色。 但是，你可以对服务�
 - Microsoft.Insights/alertRules/\*
 - Microsoft.Support/\*
 
-## <a name="host-pool-contributor"></a>主机池参与者
+## <a name="desktop-virtualization-host-pool-contributor"></a>桌面虚拟化主机池参与者
 
 主机池参与者角色允许你管理主机池的所有方面，包括对资源的访问。 你将需要额外的参与者角色“虚拟机参与者”来创建虚拟机。 你将需要应用程序组和工作区参与者角色，以使用门户创建主机池，或者可以使用桌面虚拟化参与者角色。
 
@@ -59,7 +59,7 @@ Azure 虚拟桌面没有特定的所有者角色。 但是，你可以对服务�
 - Microsoft.Insights/alertRules/\*
 - Microsoft.Support/\*
 
-## <a name="host-pool-reader"></a>主机池读取者
+## <a name="desktop-virtualization-host-pool-reader"></a>桌面虚拟化主机池读取者
 
 主机池读取者角色允许你查看主机池中的所有内容，但不允许进行任何更改。
 
@@ -70,7 +70,7 @@ Azure 虚拟桌面没有特定的所有者角色。 但是，你可以对服务�
 - Microsoft.Insights/alertRules/\*
 - Microsoft.Support/\*
 
-## <a name="application-group-contributor"></a>应用程序组参与者
+## <a name="desktop-virtualization-application-group-contributor"></a>桌面虚拟化应用程序组参与者
 
 应用程序组参与者角色允许你管理应用程序组的所有方面。 如果要向用户或用户组发布应用程序组，则需要用户访问管理员角色。
 
@@ -85,7 +85,7 @@ Azure 虚拟桌面没有特定的所有者角色。 但是，你可以对服务�
 - Microsoft.Insights/alertRules/\*
 - Microsoft.Support/\*
 
-## <a name="application-group-reader"></a>应用程序组读取者
+## <a name="desktop-virtualization-application-group-reader"></a>桌面虚拟化应用程序组读取者
 
 应用程序组读取者角色允许你查看应用程序组中的所有内容，但不允许进行任何更改。
 
@@ -101,7 +101,7 @@ Azure 虚拟桌面没有特定的所有者角色。 但是，你可以对服务�
 - Microsoft.Insights/alertRules/\*
 - Microsoft.Support/\*
 
-## <a name="workspace-contributor"></a>工作区参与者
+## <a name="desktop-virtualization-workspace-contributor"></a>桌面虚拟化工作区参与者
 
 工作区参与者角色允许你管理工作区的所有方面。 若要获取有关添加到应用程序组中的应用程序的信息，还需具备“应用程序组读取者”角色。
 
@@ -115,7 +115,7 @@ Azure 虚拟桌面没有特定的所有者角色。 但是，你可以对服务�
 - Microsoft.Insights/alertRules/\*
 - Microsoft.Support/\*
 
-## <a name="workspace-reader"></a>工作区读取者
+## <a name="desktop-virtualization-workspace-reader"></a>桌面虚拟化工作区读取者
 
 工作区读取者角色允许你查看工作区中的所有内容，但不允许进行任何更改。
 
@@ -129,7 +129,7 @@ Azure 虚拟桌面没有特定的所有者角色。 但是，你可以对服务�
 - Microsoft.Insights/alertRules/\*
 - Microsoft.Support/\*
 
-## <a name="user-session-operator"></a>用户会话操作员
+## <a name="desktop-virtualization-user-session-operator"></a>桌面虚拟化用户会话操作员
 
 用户会话操作员角色允许你发送消息、断开会话，并使用“注销”功能将会话从会话主机中注销。 但是，此角色不允许你执行会话主机管理，如删除会话主机、更改排出模式等。 此角色可以查看分配，但不能修改管理员。 建议将此角色分配给特定的主机池。 如果在资源组级别授予此权限，则管理员将对资源组下的所有主机池具有读取权限。
 
@@ -144,7 +144,7 @@ Azure 虚拟桌面没有特定的所有者角色。 但是，你可以对服务�
 - Microsoft.Insights/alertRules/\*
 - Microsoft.Support/\*
 
-## <a name="session-host-operator"></a>会话主机操作员
+## <a name="desktop-virtualization-session-host-operator"></a>桌面虚拟化会话主机操作员
 
 会话主机操作员角色允许你查看和删除会话主机，以及更改排出模式。 它们不能使用 Azure 门户添加会话主机，因为它们没有对主机池对象的写入权限。 如果注册令牌有效（生成且未过期），并且管理员通过虚拟机参与者角色获得了计算权限，则可以使用此角色将会话主机添加到 Azure 门户外部的主机池。
 

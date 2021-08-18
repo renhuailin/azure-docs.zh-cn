@@ -4,16 +4,16 @@ description: 使用本教程了解如何在 Azure 上托管一个基于 socket.I
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: c3f6d331c6579d6317ab226d6d2d1e4f8682ac3b
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 47677fa54e2504f7d0eddb770cc25a35616c3579
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803829"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093762"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service-classic"></a>在 Azure 云服务（经典）中使用 Socket.IO 生成 Node.js 聊天应用程序
 

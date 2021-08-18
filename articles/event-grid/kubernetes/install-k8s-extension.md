@@ -6,19 +6,19 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/26/2021
 ms.topic: how-to
-ms.openlocfilehash: d77d2c0c378d57c26f1496dc712c736a79c0c2ae
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 149f46d96e7e723c89eb473aa5faea2301bc9d5f
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110614493"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179243"
 ---
 # <a name="install-event-grid-extension-on-azure-arc-enabled-kubernetes-cluster"></a>在启用了 Azure Arc 的 Kubernetes 群集上安装事件网格扩展
 本文将指导你完成在[启用了 Azure Arc 的 Kubernetes](../../azure-arc/kubernetes/overview.md) 群集上安装事件网格的步骤。
 
 为简洁起见，本文将“Kubernetes 扩展上的事件网格”称为“Kubernetes 上的事件网格”或简称为“事件网格”。
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 
 ## <a name="supported-kubernetes-distributions"></a>支持的 Kubernetes 分布
@@ -27,7 +27,6 @@ ms.locfileid: "110614493"
 1. Azure AKS [支持的 Kubernetes 分布](../../aks/supported-kubernetes-versions.md)。
 1. RedHat [OpenShift 容器平台](https://www.openshift.com/products/container-platform)。
 
-根据[用户的反馈](https://feedback.azure.com/forums/909934-azure-event-grid)和[已启用 Azure Arc 的 Kubernetes 提供的支持](../../azure-arc/kubernetes/validation-program.md)，将载入更多的发行版。
 
 ## <a name="event-grid-extension"></a>事件网格扩展
 在 Kubernetes 群集上安装事件网格服务实例的操作是创建 Azure Arc 群集扩展，这会同时部署“事件网格代理”和“事件网格操作员” 。 有关代理和操作员的功能的详细信息，请参阅 [Kubernetes 组件上的事件网格](concepts.md#event-grid-on-kubernetes-components)。 [Azure Arc 群集扩展](../../azure-arc/kubernetes/conceptual-extensions.md)功能使用 Azure 资源管理器 (ARM) 控制平面操作对部署到已启用 Azure Arc 的 Kubernetes 群集的事件网格提供生命周期管理。
@@ -39,7 +38,7 @@ ms.locfileid: "110614493"
 在继续安装事件网格之前，请确保满足以下先决条件。 
 
 1. 在其中一个[受支持的 Kubernetes 发行版](#supported-kubernetes-distributions)上运行的群集。
-1. [Azure 订阅](https://azure.microsoft.com/en-us/free/)。
+1. [Azure 订阅](https://azure.microsoft.com/free/)。
 1. [PKI 证书](#pki-certificate-requirements)，用于与事件网格代理建立 HTTPS 连接。
 1. [将群集连接到 Azure Arc](../../azure-arc/kubernetes/quickstart-connect-cluster.md)。
 
@@ -117,7 +116,7 @@ ms.locfileid: "110614493"
         :::image type="content" source="./media/install-k8s-extension/monitoring-page.png" alt-text="安装事件网格扩展 -“监视”页":::    
     1. 选择“下一步：标记”以导航到“标记”页 。 
 1. 在“标记”页上执行以下步骤：
-    1. 如有必要，定义[标记](/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)。
+    1. 如有必要，定义[标记](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)。
 
         :::image type="content" source="./media/install-k8s-extension/tags-page.png" alt-text="安装事件网格扩展 -“标记”页":::
     1. 在页面底部选择“查看 + 创建”。

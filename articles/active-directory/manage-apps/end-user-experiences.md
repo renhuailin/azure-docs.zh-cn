@@ -2,21 +2,21 @@
 title: 应用程序的最终用户体验 - Azure Active Directory
 description: Azure Active Directory (Azure AD) 提供多种可自定义的方式来向组织中的最终用户部署应用程序。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: mtillman
-ms.reviewer: arvindh
-ms.openlocfilehash: 9280cf669bb766ea82f2e668a56d2b3f743315fb
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: davidmu
+ms.reviewer: lenalepa
+ms.openlocfilehash: 5cf4fe927d7079d866e90a789bb210730a6c4867
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081400"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738784"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory 中应用程序的最终用户体验
 
@@ -31,9 +31,9 @@ Azure Active Directory (Azure AD) 提供多种可自定义的方式来向组织�
 
 ## <a name="azure-ad-my-apps"></a>Azure AD 我的应用
 
-位于 https://myapps.microsoft.com 的我的应用是一个基于 Web 的门户，它允许在 Azure Active Directory 中拥有组织帐户的最终用户查看和启动 Azure AD 管理员已向他们授予其访问权限的应用程序。 如果是使用 [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) 的最终用户，则还可以通过我的应用利用自助服务组管理功能。
+位于 <https://myapps.microsoft.com> 的我的应用是一个基于 Web 的门户，它允许在 Azure Active Directory 中拥有组织帐户的最终用户查看和启动 Azure AD 管理员已向他们授予其访问权限的应用程序。 如果是使用 [Azure Active Directory Premium](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing) 的最终用户，则还可以通过我的应用利用自助服务组管理功能。
 
-默认情况下，所有应用程序都列在一个页面上。 但可以用集合将相关应用程序组合在一起，将它们显示在单独的选项卡上，使其更易于找到。 例如，可以使用集合为特定作业角色、任务、项目等创建应用程序的逻辑分组。 有关详细信息，请参阅[在“我的应用”门户中创建集合](access-panel-collections.md)。 
+默认情况下，所有应用程序都列在一个页面上。 但可以用集合将相关应用程序组合在一起，将它们显示在单独的选项卡上，使其更易于找到。 例如，可以使用集合为特定作业角色、任务、项目等创建应用程序的逻辑分组。 有关详细信息，请参阅[在“我的应用”门户中创建集合](access-panel-collections.md)。
 
 我的应用是与 Azure 管理门户分开的，因此不要求用户拥有 Azure 订阅或 Microsoft 365 订阅。
 

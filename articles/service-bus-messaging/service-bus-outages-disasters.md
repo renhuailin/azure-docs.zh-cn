@@ -3,12 +3,12 @@ title: 使 Azure 服务总线应用程序免受服务中断和灾难影响
 description: 本文提供了用于保护应用程序免受潜在的 Azure 服务总线中断影响的技术。
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: b9090a54cd58788dbd13f528af4dda4aa96005b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 376885e68111082eb8a7cd0dc8f30ef955543899
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100374586"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742989"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>使应用程序免受服务总线中断和灾难影响的最佳实践
 
@@ -92,6 +92,6 @@ ms.locfileid: "100374586"
 [BrokeredMessage.Label]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Geo-replication with Service Bus Standard Tier]: https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoReplication
 [Azure SQL Database Business Continuity]:../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md
-[Azure resiliency technical guidance]: /azure/architecture/resiliency
+[Azure resiliency technical guidance]: /azure/architecture/framework/resiliency/app-design
 
 [1]: ./media/service-bus-outages-disasters/az.png

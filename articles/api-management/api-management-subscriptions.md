@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: cdc7668b06308bd5532f4885d0e1365fc34ae989
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 288f82d55749e50c9e9520784497ade2c9387f78
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97511240"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112199351"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API 管理中的订阅
 
@@ -64,4 +64,4 @@ ms.locfileid: "97511240"
 
 + 了解 API 管理中的其他[概念](api-management-terminology.md)。
 + 按[教程](import-and-publish.md)操作，详细了解 API 管理。
-+ 查看[常见问题解答页](api-management-faq.md)，了解常见问题。
++ 查看[常见问题解答页](api-management-faq.yml)，了解常见问题。

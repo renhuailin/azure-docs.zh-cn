@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 0e1d7bba91ca9283b00432a06e24d1b8beaa49fc
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 8627a8989a4fbd64c66d8af7299baacacee22b56
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111811308"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285057"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>关于如何在 Azure VM 灾难恢复中联网
 
@@ -59,7 +59,7 @@ login.microsoftonline.com | 对于 Site Recovery 服务 URL 的授权和身份�
 
 ## <a name="outbound-connectivity-using-service-tags"></a>使用服务标记的出站连接
 
-除了控制 URL 之外，还可使用服务标记来控制连接性。 为此，首先需要在 Azure 中创建[网络安全组](https://docs.microsoft.com/azure/virtual-network/network-security-group-how-it-works)。 创建后，需要使用现有的服务标记并创建 NSG 规则来允许访问 Azure Site Recovery 服务。 
+除了控制 URL 之外，还可使用服务标记来控制连接性。 为此，首先需要在 Azure 中创建[网络安全组](../virtual-network/network-security-group-how-it-works.md)。 创建后，需要使用现有的服务标记并创建 NSG 规则来允许访问 Azure Site Recovery 服务。 
 
 与使用 IP 地址来控制连接性相比，使用服务标记来控制连接性的优点是，不会硬性依赖于特定 IP 地址来保持与服务的连接。 在这种情况下，如果我们的某个服务的 IP 地址发生更改，则正为你的计算机进行的复制不会受到影响。 然而，依赖于硬编码 IP 地址会导致复制状态变为“严重”，使系统面临风险。 另外，服务标记可确保实现比硬编码 IP 地址更好的安全性、稳定性和复原能力。
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: edc420cb1e79ed6d99a55524764cb164bd2edaf5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e3dcc8f6bba6830eec9f20732da9e42f03d5b28e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641338"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724418"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>排查连接到源数据库时出现的 DMS 错误
 
@@ -73,7 +73,7 @@ ms.locfileid: "105641338"
 | ------------- | ------------- |
 | **错误 53** - SQL 连接失败。 建立与 SQL Server 的连接时，出现网络相关或特定于实例的错误。 找不到或无法访问该服务器。 验证实例名称是否正确，以及 SQL Server 是否已配置为允许远程连接。 （提供程序：命名管道提供程序，错误：40 - 无法与 SQL Server 建立连接） | 如果服务无法连接到源服务器，则会发生此错误。 若要解决该问题，请参考此表下面的注释中列出的故障排除文档，然后重试。 |
 | **错误 18456** - 登录失败。 用户 '{user}' 登录失败 | 如果服务无法使用提供的 T-SQL 凭据连接到源数据库，则会发生此错误。 若要解决该问题，请检查输入的凭据。 还可以参考 [MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error) 或此表下面的注释中列出的故障排除文档，然后重试。 |
-| **错误 87** - 连接字符串无效。 建立与 SQL Server 的连接时，出现网络相关或特定于实例的错误。 找不到或无法访问服务器。 验证实例名称是否正确，以及 SQL Server 是否已配置为允许远程连接。 （提供程序：SQL 网络接口，错误：25 - 连接字符串无效） | 如果连接字符串无效，导致服务无法连接到源服务器，则会发生此错误。 若要解决该问题，请检查提供的连接字符串。 如果问题持续出现，请参考此表下面的注释中列出的故障排除文档，然后重试。 |
+| **错误 87** - 连接字符串无效。 建立与 SQL Server 的连接时，出现网络相关或特定于实例的错误。 找不到或无法访问服务器。 验证实例名称是否正确，以及 SQL Server 是否已配置为允许远程连接。 （提供程序：SQL 网络接口，错误：25 - 连接字符串无效） | 如果服务因连接字符串无效而无法连接到源服务器，则会发生此错误。 若要解决该问题，请检查提供的连接字符串。 如果问题持续出现，请参考此表下面的注释中列出的故障排除文档，然后重试。 |
 | **错误 - 服务器证书不受信任。** 已成功与服务器建立连接，但在登录过程中发生错误。 （提供程序：SSL 提供程序，错误：0 - 证书链是不受信任的颁发机构颁发的。） | 如果使用的证书不受信任，则会发生此错误。 若要解决该问题，需要找到可信的证书，然后在服务器上启用它。 或者，可以在连接时选择“信任证书”选项。 请仅在你熟悉所用的证书并且信任它时，才执行此操作。 <br> 使用自签名证书加密的 TLS 连接不提供强安全性 -- 它们容易受到中间人攻击。 请勿在生产环境中或在连接到 Internet 的服务器上依赖使用自签名证书的 TLS。 <br> 有关详细信息，请参阅[对 Microsoft SQL Server 数据库实例使用 SSL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.Concepts.General.SSL.Using.html) 或[教程：使用 DMS 将 RDS SQL Server 迁移到 Azure](./index.yml)。 |
 | **错误 300** - 用户没有所需的权限。 已拒绝对对象 '{server}'，数据库 '{database}' 的 VIEW SERVER STATE 权限 | 如果用户无权执行迁移，则会发生此错误。 若要解决该问题，请参考[授予服务器权限 - Transact-SQL](/sql/t-sql/statements/grant-server-permissions-transact-sql) 或[教程：使用 DMS 将 RDS SQL Server 迁移到 Azure](./index.yml) 了解更多详细信息。 |
 
@@ -86,7 +86,6 @@ ms.locfileid: "105641338"
 ## <a name="known-issues"></a>已知问题
 
 * [联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制](./index.yml)
-* [在联机迁移到 Azure Database for MySQL 时存在的已知问题/迁移限制](./known-issues-azure-mysql-online.md)
 * [在联机迁移到 Azure Database for PostgreSQL 时存在的已知问题/迁移限制](./known-issues-azure-postgresql-online.md)
 
 ## <a name="next-steps"></a>后续步骤
@@ -94,4 +93,4 @@ ms.locfileid: "105641338"
 * 参阅[Azure 数据库迁移服务 PowerShell](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0&preserve-view=true#data_migration)一文。
 * 查看[如何使用 Azure 门户在 Azure Database for MySQL 中配置服务器参数](../mysql/howto-server-parameters.md)一文。
 * 查看[使用 Azure 数据库迁移服务的先决条件概述](./pre-reqs.md)一文。
-* 参阅[有关使用 Azure 数据库迁移服务的常见问题解答](./faq.md)。
+* 参阅[有关使用 Azure 数据库迁移服务的常见问题解答](./faq.yml)。

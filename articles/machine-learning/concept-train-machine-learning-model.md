@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: de3d9aa60322cc3e6e189f6f16c35d6f42c0cf61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53b4c0250e4ceb034853ab588cfb2ef93a6ae005
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102500404"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297787"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型
 
@@ -29,11 +29,9 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
     | [自动化机器学习](#automated-machine-learning) | 可以通过自动化机器学习来训练模型，而无需大量数据科学或编程知识。 对于具有数据科学和编程背景的人员，它提供了一种方法，可通过自动化算法选择和超参数优化来节省时间和资源。 使用自动化机器学习时，无需担心定义运行配置。 |
     | [机器学习管道](#machine-learning-pipeline) | 管道不是一种不同的训练方法，而是一种使用模块化、可重复使用的步骤定义工作流的方法，该方法可以将训练作为工作流的一部分包含在内。 机器学习管道支持使用自动化机器学习和运行配置来训练模型。 由于管道并非专门针对训练，因此使用管道的原因比其他训练方法更多样。 通常，可以在以下情况下使用管道：<br>* 你需要计划无人参与的进程，如长时间运行的训练作业或数据准备。<br>* 使用多个步骤跨异类计算资源和存储位置进行协调。<br>* 将管道用作针对特定场景的可重复使用的模板，如重新训练或批处理评分。<br>* 对工作流的数据源、输入和输出进行跟踪和版本控制。<br>* 工作流由不同的团队实现，这些团队单独执行特定步骤。 然后，可以在管道中将步骤联接在一起以实现工作流。 |
 
-+ [适用于 R 的 Azure 机器学习 SDK（预览版）](#r-sdk-preview)：适用于 R 的 SDK 使用 reticulate 包绑定到 Azure 机器学习的 Python SDK。 这样，便可以从任何 R 环境访问 Python SDK 中实现的核心对象和方法。
-
 + **设计器**：Azure 机器学习设计器提供了一个简单的进入机器学习的入口点，用于构建概念证明或供缺乏编码经验的用户使用。 它允许你使用拖放基于 Web 的 UI 来训练模型。 可以使用 Python 代码作为设计的一部分，或在不编写任何代码的情况下训练模型。
 
-+ **CLI**：机器学习 CLI 为使用 Azure 机器学习的常见任务提供命令，通常用于脚本编写和自动化任务。 例如，在创建训练脚本或管道后，你可以使用 CLI 按计划启动训练运行，或在用于训练的数据文件更新时启动。 对于训练模型，它提供了提交训练作业的命令。 它可以使用运行配置或管道来提交作业。
++ Azure CLI：机器学习 CLI 提供用于执行 Azure 机器学习中的常见任务的命令，通常用于编写任务脚本和自动完成任务。 例如，创建训练脚本或管道后，即可使用 Azure CLI 按计划开始一个训练，或者在更新用于训练的数据文件后开始训练。 对于训练模型，它提供了提交训练作业的命令。 它可以使用运行配置或管道来提交作业。
 
 其中每个训练方法均可使用不同类型的计算资源进行训练。 这些资源统称为[计算目标](concept-azure-machine-learning-architecture.md#compute-targets)。 计算目标可以是本地计算机，也可以是云资源，例如 Azure 机器学习计算、Azure HDInsight 或远程虚拟机。
 
@@ -90,7 +88,7 @@ Azure 训练生命周期包括：
 1. 构建 dockerfile 或将其下载到计算节点 
     1. 系统会计算以下各项的哈希： 
         - 基础映像 
-        - 自定义 Docker 步骤（请参阅[使用自定义 Docker 基础映像部署模型](./how-to-deploy-custom-docker-image.md)）
+        - 自定义 Docker 步骤（请参阅[使用自定义 Docker 基础映像部署模型](./how-to-deploy-custom-container.md)）
         - Conda 定义 YAML（请参阅[在 Azure 机器学习中创建和使用软件环境](./how-to-use-environments.md)）
     1. 在工作区 Azure 容器注册表 (ACR) 中查找时，系统使用此哈希作为键
     1. 如果找不到，它会在全局 ACR 中寻找匹配项
@@ -103,14 +101,6 @@ Azure 训练生命周期包括：
 
 如果选择在本地计算机上进行训练（“配置为本地运行”），则无需使用 Docker。 可以在本地使用 Docker，前提是你选择这样做（有关示例，请参阅[配置 ML 管道](./how-to-debug-pipelines.md)部分）。
 
-## <a name="r-sdk-preview"></a>R SDK（预览版）
-
-R SDK 使你能够将 R 语言与 Azure 机器学习结合使用。 SDK 使用网状包绑定到 Azure 机器学习的 Python SDK。 这样，便可以从任何 R 环境访问在 Python SDK 中实现的核心对象和方法。
-
-有关详细信息，请参阅以下文章：
-
-* [R 参考的 Azure 机器学习 SDK](https://azure.github.io/azureml-sdk-for-r/index.html)
-
 ## <a name="azure-machine-learning-designer"></a>Azure 机器学习设计器
 
 通过设计器，可以在 Web 浏览器中使用拖放式界面来训练模型。
@@ -118,19 +108,7 @@ R SDK 使你能够将 R 语言与 Azure 机器学习结合使用。 SDK 使用�
 + [什么是设计器？](concept-designer.md)
 + [教程：预测汽车价格](tutorial-designer-automobile-price-train-score.md)
 
-## <a name="many-models-solution-accelerator"></a>多模型解决方案加速器
-
-[多模型解决方案加速器](https://aka.ms/many-models)（预览）是在 Azure 机器学习的基础之上构建而成，可便于你训练、操作和管理成百上千的机器学习模型。
-
-例如，在下面的方案中为每个实例或个体生成模型可以改善结果：
-
-* 预测每家店铺的销售额
-* 对数百口油井进行预测性维护
-* 为个人用户定制体验。
-
-有关详细信息，请参阅 GitHub 上的[多模型解决方案加速器](https://aka.ms/many-models)。
-
-## <a name="cli"></a>CLI
+## <a name="azure-cli"></a>Azure CLI
 
 机器学习 CLI 是 Azure CLI 的扩展。 它为使用 Azure 机器学习提供了跨平台 CLI 命令。 通常，可以使用 CLI 来自动执行任务，如训练机器学习模型。
 

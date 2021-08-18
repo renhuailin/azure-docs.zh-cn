@@ -1,18 +1,18 @@
 ---
 title: 为 Azure Cosmos 帐户配置基于虚拟网络的访问
 description: 本文档介绍为 Azure Cosmos DB 设置虚拟网络服务终结点所要执行的步骤。
-author: markjbrown
+author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/13/2020
-ms.author: mjbrown
+ms.date: 07/07/2021
+ms.author: thweiss
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 39b134b77fbb98c79fe163b7a36f087ab8a27116
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 42e38162409c5762f43807f483b091fbb88638af
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110681756"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113493272"
 ---
 # <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>配置从虚拟网络 (VNet) 到 Azure Cosmos DB 的访问
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -47,6 +47,9 @@ ms.locfileid: "110681756"
 1. 选择要从中添加 Azure 虚拟网络的 **订阅**。 选择要向其提供 Azure Cosmos DB 帐户访问权限的 Azure **虚拟网络** 和 **子网**。 接下来选择“启用”，以便为“Microsoft.AzureCosmosDB”启用包含服务终结点的选定网络。 完成后，选择“添加”。
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="选择虚拟网络和子网":::
+
+   > [!NOTE]
+   > 配置 VNET 服务终结点可能需要长达 15 分钟的时间来传播，终结点在此期间可能会表现出不一致的行为。
 
 1. 允许从虚拟网络访问 Azure Cosmos DB 帐户之后，只允许来自此所选子网的流量。 添加的虚拟网络和子网应会显示，如以下屏幕截图所示：
 

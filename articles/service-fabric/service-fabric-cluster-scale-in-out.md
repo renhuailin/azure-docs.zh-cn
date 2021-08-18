@@ -4,12 +4,12 @@ description: 通过为每个节点类型/虚拟机规模集设置自动缩放规
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bb7e668a5b50e73d5aee8aa3bcbb2ea6b1d4bac7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: bf54e6efe6de64bc02a9ba43dfae3f91c0b4ec7b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677413"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294098"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>缩小或扩大群集
 
@@ -65,7 +65,7 @@ Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale se
 > 
 
 ### <a name="add-vms-using-a-template"></a>使用模板添加 VM
-根据[快速入门模板库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)中的示例/说明更改每个节点类型的 VM 数目。 
+根据[快速入门模板库](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vmss-scale-existing)中的示例/说明更改每个节点类型的 VM 数目。 
 
 ### <a name="add-vms-using-powershell-or-cli-commands"></a>使用 PowerShell 或 CLI 命令添加 VM
 以下代码按名称获取规模集，并使规模集的容量增加 1。

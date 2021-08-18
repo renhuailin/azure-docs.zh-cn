@@ -3,12 +3,12 @@ title: 启用 Azure 开发测试实验室中自己的实验室中的已授权映
 description: 了解如何使用 Azure 门户在 Azure 开发测试实验室中启用已授权映像
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e2b6e495be2257548782143517f5a970b424860c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32ecbfc37d47835766d863b54d823be95fffb008
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91276350"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750901"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>启用 Azure 开发测试实验室中自己的实验室中的已授权映像
 
@@ -78,7 +78,7 @@ ms.locfileid: "91276350"
 
 ## <a name="related-blog-posts"></a>相关的博客文章
 
-- [自定义映像或公式？](./devtest-lab-faq.md#blog-post)
+- [自定义映像或公式？](/azure/devtest-labs/devtest-lab-faq#blog-post)
 - [复制 Azure 开发测试实验室间的自定义映像](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>后续步骤

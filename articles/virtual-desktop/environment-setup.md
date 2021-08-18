@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: bc854669c5d724da92c19c19a01f56ebe91f78ee
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: b6162657520f91168f46c43c1d6d7f5cbfbe6d38
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757780"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031728"
 ---
 # <a name="azure-virtual-desktop-environment"></a>Azure 虚拟桌面环境
 
@@ -29,7 +29,7 @@ Azure 虚拟桌面是一种服务，使用户能够轻松安全地访问其虚�
 - 个人主机池，其中每个会话主机分配给各个用户。
 - 共用主机池，其中会话主机可以接受来自主机池内某个应用组的任何授权用户的连接。
 
-可以在主机池上设置附加属性，以更改其负载平衡行为、每个会话主机可以使用的会话数，以及用户在登录到 Azure 虚拟桌面会话时可以对主机池中会话主机执行的操作。 可以通过应用组控制发布给用户的资源。
+可以在主机池上设置附加属性，以更改其负载均衡行为、每个会话主机可以使用的会话数，以及用户在登录到 Azure 虚拟桌面会话时可以对主机池中会话主机执行的操作。 可以通过应用组控制发布给用户的资源。
 
 ## <a name="app-groups"></a>应用组
 
@@ -61,8 +61,8 @@ Azure 虚拟桌面是一种服务，使用户能够轻松安全地访问其虚�
 
 若要了解如何连接到 Azure 虚拟桌面，请参阅以下文章之一：
 
-- [使用 Windows 10 或 Windows 7 进行连接](connect-windows-7-10.md)
-- [使用 Web 浏览器建立连接](connect-web.md)
-- [使用 Android 客户端进行连接](connect-android.md)
-- [使用 macOS 客户端进行连接](connect-macos.md)
-- [使用 iOS 客户端进行连接](connect-ios.md)
+- [使用 Windows 10 或 Windows 7 进行连接](./user-documentation/connect-windows-7-10.md)
+- [使用 Web 浏览器建立连接](./user-documentation/connect-web.md)
+- [使用 Android 客户端进行连接](./user-documentation/connect-android.md)
+- [使用 macOS 客户端进行连接](./user-documentation/connect-macos.md)
+- [使用 iOS 客户端进行连接](./user-documentation/connect-ios.md)

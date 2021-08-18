@@ -2,18 +2,17 @@
 title: 了解 Azure IoT 中心自定义终结点 | Microsoft Docs
 description: 开发人员指南 - 使用路由查询将设备到云的消息路由到自定义终结点。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 4ad57473e0950f031fbeadee2302f85557ed526f
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: ebc9240e75e5b30b9159f15f4ec1825c1d2b03ab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388255"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740499"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>对设备到云的消息使用消息路由和自定义终结点
 

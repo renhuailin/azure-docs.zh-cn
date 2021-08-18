@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.openlocfilehash: 20475e2cde1b42790740889cf341b3a0a0afccc0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8bcf14b64b5e6417c3a1d90fd36651350efac879
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "76991076"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551715"
 ---
 # <a name="version-release-history"></a>版本发布历史记录
 Microsoft 基因组学团队定期更新 Microsoft 基因组学 Python 客户端，以便提供修补程序和新的功能。 
@@ -27,7 +27,7 @@ Microsoft 基因组学团队定期更新 Microsoft 基因组学 Python 客户端
 Microsoft 基因组学 Python 客户端的新版本每年约发布一次。 当 Microsoft 基因组学 Python 客户端发布新版本时，此处会更新修补程序和功能列表。 发布新版本后，对早期版本的支持应至少持续 90 日。 当早期版本不再受支持时，此页面将进行说明。 
 
 ### <a name="version-090"></a>版本 0.9.0
-版本0.9.0 包括对输出压缩的支持。 这等效于对 vcf 或 gvcf 输出运行 `-bgzip` 之后再运行 `-tabix`。 有关详细信息，请参阅[常见问题解答](frequently-asked-questions-genomics.md)。 
+版本0.9.0 包括对输出压缩的支持。 这等效于对 vcf 或 gvcf 输出运行 `-bgzip` 之后再运行 `-tabix`。 有关详细信息，请参阅[常见问题解答](frequently-asked-questions-genomics.yml)。 
 
 ### <a name="version-081"></a>版本 0.8.1
 版本 0.8.1 包括小 bug 修复。  

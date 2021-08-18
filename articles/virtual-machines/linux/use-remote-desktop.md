@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: 309b106d2141c8257c5163efe7ff45a7bae5d5c3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1a7e656cb1f20c05073a9fe80ee64af51268a8c7
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107759644"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178619"
 ---
 # <a name="install-and-configure-xrdp-to-use-remote-desktop-with-ubuntu"></a>安装并配置 xrdp 以在 Ubuntu 上使用远程桌面
 
@@ -49,6 +49,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 ```bash
 sudo apt-get update
 sudo apt-get -y install xfce4
+sudo apt install xfce4-session
 ```
 
 ## <a name="install-and-configure-a-remote-desktop-server"></a>安装和配置远程桌面服务器

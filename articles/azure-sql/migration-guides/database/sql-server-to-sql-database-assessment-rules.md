@@ -10,12 +10,12 @@ author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: 7046ac7852585a51174c774a0ef2f1150a72ae1f
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 011420abfbd6bf5994aa65024651f2bbd34e1bf4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591955"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743689"
 ---
 # <a name="assessment-rules-for-sql-server-to-azure-sql-database-migration"></a>SQL Server 到 Azure SQL 数据库迁移的评估规则
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -65,21 +65,6 @@ GROUP BY SalesOrderID, UnitPrice, UnitPriceDiscount WITH ROLLUP;
 
 有关详细信息，请参阅 [SQL Server 中弃用的数据库引擎功能](/previous-versions/sql/2014/database-engine/discontinued-database-engine-functionality-in-sql-server-2016#Denali)
 
-## <a name="change-data-capture-cdc"></a>变更数据捕获 (CDC)<a id="CDC"></a>
-
-**标题：Azure SQL 数据库中不支持 (CDC) 变更数据捕获**   
-类别：问题   
-
-
-**描述**   
-Azure SQL 数据库中不支持 (CDC) 变更数据捕获。 评估是否可改用更改跟踪。  或者，迁移到 Azure SQL 托管实例或 Azure 虚拟机上的 SQL Server。 
-
-
-建议   
-Azure SQL 数据库中不支持 (CDC) 变更数据捕获。 评估是否可改为使用更改跟踪或考虑迁移到 Azure SQL 托管实例。
-
-有关详细信息，请参阅[启用 Azure SQL 更改跟踪](https://social.technet.microsoft.com/wiki/contents/articles/2976.azure-sql-how-to-enable-change-tracking.aspx)
-
 ## <a name="clr-assemblies"></a>CLR 程序集<a id="ClrAssemblies"></a>
 
 **标题：Azure SQL 数据库中不支持 SQL CLR 程序集**   
@@ -93,7 +78,7 @@ Azure SQL 数据库不支持 SQL CLR 程序集。
 建议   
 目前无法在 Azure SQL 数据库中实现此目的。 建议的替代解决方案将要求应用程序代码和数据库更改仅使用 Azure SQL 数据库支持的程序集。 或者，迁移到 Azure SQL 托管实例或 Azure 虚拟机上的 SQL Server
 
-有关详细信息，请参阅 [SQL 数据库中不支持的 Transact-SQL 差异](../../database/transact-sql-tsql-differences-sql-server.md#transact-sql-syntax-not-supported-in-azure-sql-database)
+有关详细信息，请参阅 [SQL 数据库中不支持的 Transact-SQL 差异](../../database/transact-sql-tsql-differences-sql-server.md#t-sql-syntax-not-supported-in-azure-sql-database)
 
 ## <a name="cryptographic-provider"></a>Cryptographic provider<a id="CryptographicProvider"></a>
 
@@ -249,7 +234,7 @@ Azure SQL 数据库不支持链接服务器功能。 建议执行以下操作以
 建议   
 Azure SQL 数据库无法访问文件共享和 Windows 文件夹，因此必须从 Azure Blob 存储导入文件。 因此，OPENROWSET 函数中仅支持 DATASOURCE Blob 类型。 或者，迁移到 Azure 虚拟机上的 SQL Server
 
-有关详细信息，请参阅[解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异](../../database/transact-sql-tsql-differences-sql-server.md#transact-sql-syntax-not-supported-in-azure-sql-database)
+有关详细信息，请参阅[解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异](../../database/transact-sql-tsql-differences-sql-server.md#t-sql-syntax-not-supported-in-azure-sql-database)
 
 
 ## <a name="openrowset-provider"></a>OPENROWSET（提供程序）<a id="OpenRowsetWithSQLAndNonSQLProvider"></a>
@@ -264,7 +249,7 @@ Azure SQL 数据库无法访问文件共享和 Windows 文件夹，因此必须�
 建议   
 Azure SQL 数据库仅支持从 Azure blob 存储进行导入。 或者，迁移到 Azure 虚拟机上的 SQL Server
 
-有关详细信息，请参阅[解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异](../../database/transact-sql-tsql-differences-sql-server.md#transact-sql-syntax-not-supported-in-azure-sql-database)
+有关详细信息，请参阅[解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异](../../database/transact-sql-tsql-differences-sql-server.md#t-sql-syntax-not-supported-in-azure-sql-database)
 
 
 ## <a name="non-ansi-left-outer-join"></a>非 ANSI 左外部联接<a id="NonANSILeftOuterJoinSyntax"></a>
@@ -374,7 +359,7 @@ Azure SQL 数据库不支持 Service Broker 功能。 请考虑迁移到在同�
 建议   
 请改为使用数据库级别触发器。 或者，迁移到 Azure SQL 托管实例或 Azure 虚拟机上的 SQL Server
 
-有关详细信息，请参阅[解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异](../../database/transact-sql-tsql-differences-sql-server.md#transact-sql-syntax-not-supported-in-azure-sql-database)
+有关详细信息，请参阅[解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异](../../database/transact-sql-tsql-differences-sql-server.md#t-sql-syntax-not-supported-in-azure-sql-database)
 
 
 ## <a name="sql-agent-jobs"></a>SQL 代理作业<a id="AgentJobs"></a>
@@ -444,7 +429,7 @@ Azure SQL 数据库已弃用 SQL Mail 并已将其删除。
 建议   
 检查 Azure Migrate 中的“受影响的对象”部分，查看 Azure SQL 数据库不支持的所有跟踪标志，并评估是否可以删除这些跟踪标志。 或者，迁移到支持有限数量的全局跟踪标志或 Azure 虚拟机上的 SQL Server 的 Azure SQL 托管实例。
 
-有关详细信息，请参阅[解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异](../../database/transact-sql-tsql-differences-sql-server.md#transact-sql-syntax-not-supported-in-azure-sql-database)
+有关详细信息，请参阅[解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异](../../database/transact-sql-tsql-differences-sql-server.md#t-sql-syntax-not-supported-in-azure-sql-database)
 
 
 ## <a name="windows-authentication"></a>Windows 身份验证<a id="WindowsAuthentication"></a>

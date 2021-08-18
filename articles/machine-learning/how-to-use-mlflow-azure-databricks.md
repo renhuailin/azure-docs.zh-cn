@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: f541985b7e8210084ae11a9f48e18f735e6e4335
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 62fd9820d1ec743d7424679753828b0cb7837fbc
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479864"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031042"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning"></a>使用 MLflow 和 Azure 机器学习跟踪 Azure Databricks ML 试验
 
@@ -24,9 +24,9 @@ ms.locfileid: "110479864"
 
 [MLflow](https://www.mlflow.org) 是一个开放源代码库，用于管理机器学习试验的生命周期。 MLflow 跟踪是 MLflow 的一个组件，用于记录和跟踪训练运行指标和模型项目。 详细了解 [Azure Databricks 和 MLflow](/azure/databricks/applications/mlflow/)。 
 
-有关其他 MLflow 和 Azure 机器学习功能集成，请参阅[使用 MLflow 和 Azure 机器学习跟踪试验运行](how-to-use-mlflow.md)。
+有关其他 MLflow 和 Azure 机器学习功能集成，请参阅 [MLflow 和 Azure 机器学习](concept-mlflow.md)。
 
-如果你要使用某个 MLflow 项目通过 Azure 机器学习进行训练，请参阅[使用 MLflow 项目和 Azure 机器学习训练 ML 模型（预览版）](how-to-train-mlflow-projects.md)。
+如果你要使用某个 MLflow 项目通过 Azure 机器学习进行训练，请参阅[使用 MLflow 项目和 Azure 机器学习训练 ML 模型](how-to-train-mlflow-projects.md)。
 
 > [!TIP]
 > 本文档中的信息主要面向需要监视模型训练过程的数据科学家与开发人员。 如果你是一名管理员并想要了解如何监视 Azure 机器学习的资源使用情况和事件（例如配额、已完成的训练运行或已完成的模型部署），请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。

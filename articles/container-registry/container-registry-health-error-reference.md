@@ -3,12 +3,12 @@ title: 注册表运行状况检查的错误参考信息
 description: 在 Azure 容器注册表中运行 az acr check-health 命令时出现的问题的错误代码及可能的解决方法
 ms.topic: article
 ms.date: 01/25/2021
-ms.openlocfilehash: 12cdd1e75a51097bab3830cdd0e6567e53f91dce
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: f4672d114c963717eb77725f0a159b8a21525f9a
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537412"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114220392"
 ---
 # <a name="health-check-error-reference"></a>运行状况检查错误参考
 
@@ -114,7 +114,7 @@ ms.locfileid: "110537412"
 
 有关用于检查注册表运行状况的选项，请参阅[检查 Azure 容器注册表的运行状况](container-registry-check-health.md)。
 
-参阅[常见问题解答](container-registry-faq.md)，其中解答了有关 Azure 容器注册表的常见问题和其他已知问题。
+参阅[常见问题解答](container-registry-faq.yml)，其中解答了有关 Azure 容器注册表的常见问题和其他已知问题。
 
 
 

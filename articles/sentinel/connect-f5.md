@@ -15,16 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 81a0f0e01827c48518f2eb1fba062e9e6536d9df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 632b55b699df409049f77abecfca4c3cf75d3e73
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94655691"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252671"
 ---
 # <a name="connect-f5-asm-to-azure-sentinel"></a>将 F5 ASM 连接到 Azure Sentinel
 
 本文介绍如何使用 F5 ASM 数据连接器轻松地将 F5 ASM 日志推送到 Azure Sentinel。 这样你就可以在工作簿中查看 F5 ASM 数据，使用它创建自定义警报，还可以将其合并以改进调查。 将 F5 ASM 数据连接到 Azure Sentinel 可让你更深入地了解组织的 Web 应用程序安全性，并增强安全操作功能。 
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="configure-your-f5-asm-to-send-cef-messages"></a>配置 F5 ASM 以发送 CEF 消息
 
@@ -42,6 +44,6 @@ ms.locfileid: "94655691"
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 F5 ASM 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](./tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](./detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。

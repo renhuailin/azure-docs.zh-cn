@@ -4,12 +4,12 @@ description: 本文介绍如何使用 REST API 管理 Azure 虚拟机备份的�
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: da6b4cd6134f0cd1fd3d6e04e814bbf8aec9b07d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4789285f4cc95f1885dbf9121bc5189fce02d6de
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452146"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460929"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 还原 Azure 虚拟机
 
@@ -19,7 +19,7 @@ ms.locfileid: "102452146"
 
 ## <a name="select-recovery-point"></a>选择恢复点
 
-可以使用[列出恢复点 REST API](/rest/api/backup/recoverypoints/list) 列出备份项的可用恢复点。 这是一个使用所有相关值执行的 GET 操作。
+可以使用[列出恢复点 REST API](/rest/api/backup/recovery-points/list) 列出备份项的可用恢复点。 这是一个使用所有相关值执行的 GET 操作。
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
@@ -33,7 +33,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
-|200 正常     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
+|200 正常     |   [RecoveryPointResourceList](/rest/api/backup/recovery-points/list#recoverypointresourcelist)      |       OK  |
 
 #### <a name="example-response"></a>示例响应
 
@@ -246,7 +246,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="restore-disks-selectively"></a>有选择地还原磁盘
 
-如果[有选择地备份磁盘](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)，则会在[恢复点摘要](#select-recovery-point)和[详细响应](/rest/api/backup/recoverypoints/get)中提供当前备份磁盘列表。 还可以有选择地还原磁盘，在[此处](selective-disk-backup-restore.md#selective-disk-restore)提供了更多详细信息。 若要有选择地还原备份磁盘列表中的磁盘，请从恢复点响应中找到磁盘的 LUN，并将 restoreDiskLunList 属性添加到[以上请求正文](#example-request)中，如下所示。
+如果[有选择地备份磁盘](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup)，则会在[恢复点摘要](#select-recovery-point)和[详细响应](/rest/api/backup/recovery-points/get)中提供当前备份磁盘列表。 还可以有选择地还原磁盘，在[此处](selective-disk-backup-restore.md#selective-disk-restore)提供了更多详细信息。 若要有选择地还原备份磁盘列表中的磁盘，请从恢复点响应中找到磁盘的 LUN，并将 restoreDiskLunList 属性添加到[以上请求正文](#example-request)中，如下所示。
 
 ```json
 {
@@ -332,6 +332,7 @@ X-Powered-By: ASP.NET
           "originalStorageAccountOption": false,
           "encryptionDetails": {
             "encryptionEnabled": false
+          }
      }
  }
 ```

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: c1293ce10a10eba9c8a66fa343e80e23e0af1b47
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b1b453a1e2c038a7c95060553e5ba55d5b922620
+ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375296"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110495170"
 ---
 # <a name="media-services-terminology-and-concepts"></a>媒体服务的术语和概念
 
@@ -42,7 +42,7 @@ ms.locfileid: "110375296"
 |---|---|---|
 |资产和上传内容|若要开始管理、加密、编码、分析和流式处理 Azure 中的媒体内容，需要创建一个媒体服务帐户，并将数字文件上传到 **资产** 中。|[云上传和存储](storage-account-concept.md)<br/><br/>[资产的概念](assets-concept.md)|
 |对内容进行编码|将优质数字媒体文件上传到资产中后，可将其编码为可在各种浏览器和设备上播放的格式。 <br/><br/>若要使用媒体服务 v3 进行编码，需要创建 **转换** 和 **作业**。|[转换和作业](transform-jobs-concept.md)<br/><br/>[使用媒体服务进行编码](encode-concept.md)|
-|分析内容（视频索引器）|在媒体服务 v3 中，可以使用媒体服务 v3 预设从视频和音频文件中提取见解。 若要使用媒体服务 v3 预设来分析内容，需要创建 **转换** 和 **作业**。<br/><br/>如果需要更详细的见解，请直接使用视频索引器。|[分析视频和音频文件](analyze-video-audio-files-concept.md)|
+|分析内容（视频分析器媒体版）|在媒体服务 v3 中，可以使用媒体服务 v3 预设从视频和音频文件中提取见解。 若要使用媒体服务 v3 预设来分析内容，需要创建 **转换** 和 **作业**。<br/><br/>如果需要更详细的见解，请直接使用[视频分析器媒体版](../../azure-video-analyzer/video-analyzer-for-media-docs/index.yml)。|[分析视频和音频文件](analyze-video-audio-files-concept.md)|
 |打包和交付|将内容编码后，可以利用 **动态打包**。 在媒体服务中，**流式处理终结点** 是用于将媒体内容传送到客户端播放器的动态打包服务。 若要使输出资产中的视频可供客户端进行播放，必须创建 **流定位符**，然后生成流 URL。 <br/><br/>创建流式处理定位符时，除了资产名称之外，还需要指定流式处理策略。 使用 **流策略** 可为 **流定位符** 定义流式处理协议和加密选项（如果有）。 无论流式传输的是直播内容还是点播内容，都要使用动态打包。 <br/><br/>可以使用媒体服务 **动态清单** 来仅流式传输视频的特定再现内容或子剪辑。|[动态打包](encode-dynamic-packaging-concept.md)<br/><br/>[流式处理终结点](stream-streaming-endpoint-concept.md)<br/><br/>[流式处理定位符](stream-streaming-locators-concept.md)<br/><br/>[流式处理策略](stream-streaming-policy-concept.md)<br/><br/>[动态清单](filters-dynamic-manifest-concept.md)<br/><br/>[筛选器](filters-concept.md)|
 |内容保护|借助媒体服务，可以传送使用高级加密标准 (AES-128) 或/和三个主要 DRM 系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中任意一个动态加密的实时和请求内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 <br/><br/>若要针对流指定加密选项，请创建 **内容密钥策略** 并将其与 **流定位符** 相关联。 使用 **内容密钥策略**，可以配置如何将内容密钥传送到终端客户端。<br/><br/> 在需要相同选项的情况下尝试重复使用策略。| [内容密钥策略](drm-content-key-policy-concept.md)<br/><br/>[内容保护](drm-content-protection-concept.md)|
 |实时传送视频流|使用媒体服务可将直播活动传送到 Azure 云中的客户。 **直播活动** 负责引入和处理实时视频源。 创建 **实时事件** 时，会创建一个输入终结点，可以使用它来从远程编码器发送实时信号。 将流传输到 **实时事件** 后，可以通过创建 **资产**、**实时输出** 和 **流定位符** 来启动流事件。 **实时输出** 会将流存档到 **资产** 中，使观看者可通过 **流式处理终结点** 使用该流。 直播活动可以设置为“直通”（本地实时编码器发送多比特率流）或“实时编码”（本地实时编码器发送单比特率流）。 |[实时传送视频流概述](stream-live-streaming-concept.md)<br/><br/>[直播活动和实时输出](live-event-outputs-concept.md)|

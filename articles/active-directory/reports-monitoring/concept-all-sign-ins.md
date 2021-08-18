@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 06/11/2021
+ms.date: 06/23/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baf000169c993290dc45ef6ec9ed4591f87d1def
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 9fbd65204534e978446109c99ca7286c0af00d68
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030635"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580379"
 ---
 # <a name="sign-in-logs-in-azure-active-directory---preview"></a>Azure Active Directory 中的登录日志 - 预览版
 
@@ -312,8 +312,6 @@ Azure 资源托管标识登录是资源执行的登录，这些资源的机密�
 
 - 状态
 
-- IP 地址
-
 - 资源名称或 ID
 
 在列表视图中选择一个项可显示已分组到某个节点下的所有登录。
@@ -435,7 +433,27 @@ Azure 门户中的登录活动报告提供了用于轻松打开和关闭“预�
 ![下载文件](./media/concept-all-sign-ins/download-files.png "下载文件")
 
 
+## <a name="return-log-data-with-microsoft-graph"></a>使用 Microsoft Graph 返回日志数据
 
+除了使用 Azure 门户，还可以使用 Microsoft Graph API 查询登录日志，以返回不同类型的登录信息。 为避免潜在的性能问题，请将查询范围限定为你关注的数据。 
+
+以下示例按记录数、特定时间段和登录事件类型来限定查询范围：
+
+```msgraph-interactive
+GET https://graph.microsoft.com/beta/auditLogs/signIns?$top=100&$filter=createdDateTime ge 2020-09-10T06:00:00Z and createdDateTime le 2020-09-17T06:00:00Z and signInEventTypes/any(t: t eq 'nonInteractiveUser')
+```
+
+示例中的查询参数提供以下结果：
+
+- 参数 [$top](/graph/query-parameters#top-parameter) 返回前 100 项结果。
+- 参数 [$filter](/graph/query-parameters#filter-parameter) 限制返回结果的时间范围，并使用 signInEventTypes 属性仅返回非交互式用户登录。
+
+以下值可用于按不同的登录类型进行筛选： 
+
+- interactiveUser
+- nonInteractiveUser
+- servicePrincipal 
+- managedIdentity
 
 ## <a name="next-steps"></a>后续步骤
 

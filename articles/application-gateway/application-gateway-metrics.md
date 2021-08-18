@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/19/2021
 ms.author: azhussai
-ms.openlocfilehash: 615db7e8d53e397755ae318d171dab1eab9ec6c6
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 2e448f907e129f628c4614c9df703bf2c39ea47a
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727792"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113665090"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
 
@@ -52,7 +52,7 @@ ms.locfileid: "107727792"
 
   接收、处理请求及发送其响应所花费的平均时间。 
 
-  此间隔时间是根据从应用程序网关收到 HTTP 请求的第一个字节的时间，到将最后一个响应字节发送到客户端的时间计算的。 这包括应用程序网关花费的处理时间、“后端最后一个字节响应时间”、应用程序网关发送所有响应所用的时间，以及“客户端 RTT”。 
+  此间隔时间是根据从应用程序网关收到 HTTP 请求的第一个字节的时间，到将最后一个响应字节发送到客户端的时间计算的。 这包括应用程序网关花费的处理时间、“后端最后一个字节响应时间”、应用程序网关发送所有响应所用的时间。
 
 - **客户端 RTT**
 

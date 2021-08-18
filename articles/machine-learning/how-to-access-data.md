@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
-ms.date: 11/03/2020
+ms.date: 07/06/2021
 ms.custom: contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: f0fb8ee681bfb3056547eed712d0197100b8ec08
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: a164fb60dde8ba8e652bab3c99b87ffa84ec8596
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785234"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862107"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>连接到 Azure 上的存储服务
 
@@ -33,7 +33,7 @@ ms.locfileid: "109785234"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+- Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 
 - 一个使用[支持的存储类型](#matrix)的 Azure 存储帐户。
 
@@ -98,7 +98,7 @@ ms.locfileid: "109785234"
 
 Azure 机器学习需要额外的配置步骤才能与受防火墙保护或虚拟网络中的存储帐户通信。 如果你的存储帐户受防火墙保护，则可[允许通过 Azure 门户列出 IP 地址](../storage/common/storage-network-security.md#managing-ip-network-rules)。
 
-Azure 机器学习可以从虚拟网络外部的客户端接收请求。 若要确保服务中的实体请求数据的安全，[请为工作区设置 Azure 专用链接](how-to-configure-private-link.md)。
+Azure 机器学习可以从虚拟网络外部的客户端接收请求。 为确保从服务请求数据的实体是安全的，请[对工作区使用专用终结点](how-to-configure-private-link.md)。
 
 **对于 Python SDK 用户**，若要通过计算目标上的训练脚本访问数据，计算目标需要位于存储的同一虚拟网络和子网中。 
 
@@ -230,7 +230,7 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 <a name="arm"></a>
 ### <a name="azure-resource-manager"></a>Azure 资源管理器
 
-[https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-datastore-create-*](https://github.com/Azure/azure-quickstart-templates/tree/master/) 上有许多模板可用于创建数据存储。
+[https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices) 上有许多模板可用于创建数据存储。
 
 若要了解如何使用这些模板，请参阅[使用 Azure 资源管理器模板创建 Azure 机器学习的工作区](how-to-create-workspace-template.md)。
 
@@ -282,7 +282,6 @@ Azure 机器学习提供多种方法来使用模型进行评分。 其中一些�
 | ----- | :-----: | ----- |
 | [批量预测](./tutorial-pipeline-batch-scoring-classification.md) | ✔ | 以异步方式对大量数据进行预测。 |
 | [Web 服务](how-to-deploy-and-where.md) | &nbsp; | 将模型部署为 Web 服务。 |
-| [Azure IoT Edge 模块](how-to-deploy-and-where.md) | &nbsp; | 将模型部署到 IoT Edge 设备。 |
 
 对于 SDK 不提供对数据存储的访问权限的情况，也许可以通过使用相关 Azure SDK 访问数据以创建自定义代码。 例如，[适用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-storage-python) 是可用于访问 Blob 或文件中存储的数据的客户端库。
 

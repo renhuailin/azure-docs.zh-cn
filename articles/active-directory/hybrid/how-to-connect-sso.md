@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42c73e2fa0439b247267f8d1021c0a779b6ca2ba
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: cdbb34c147b3629384d7173c3c20d75aac3c7da1
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109627899"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108794"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 无缝单一登录
 
@@ -91,6 +91,6 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 - [快速入门](how-to-connect-sso-quick-start.md) - 启动并运行 Azure AD 无缝 SSO。
 - [**部署计划**](../manage-apps/plan-sso-deployment.md) - 分步部署计划。
 - [深入技术探究](how-to-connect-sso-how-it-works.md) - 了解此功能如何运作。
-- [**常见问题**](how-to-connect-sso-faq.md) - 常见问题解答。
+- [**常见问题**](how-to-connect-sso-faq.yml) - 常见问题解答。
 - [故障排除](tshoot-connect-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。

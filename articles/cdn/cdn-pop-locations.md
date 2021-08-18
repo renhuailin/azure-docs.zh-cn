@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2021
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: e58ce2b4fa016a79050425dad4e4dd0b784f0c9c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f51ca01988a090c4c61b821c16ec67f20d2c679f
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472348"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416994"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>按 Metro 列出的 Azure CDN 覆盖范围 
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ ms.locfileid: "110472348"
 | 非洲 | 南非约翰内斯堡 <br/> 肯尼亚奈洛比 | 南非 |
 | 中东 | 阿曼马斯喀特<br />阿拉伯联合酋长国富查伊拉 | 卡塔尔<br />阿拉伯联合酋长国 |
 | 印度 | 印度班加罗尔<br />印度钦奈<br />印度孟买<br />印度新德里<br /> | 印度 |
-| 亚洲 | 香港特别行政区<br />印度尼西亚雅加达<br />日本大阪<br />日本东京<br />新加坡<br />韩国首尔<br />台湾高雄<br />台湾台北 <br />菲律宾马尼拉 | 香港特别行政区<br />印度尼西亚<br />以色列<br />日本<br />澳门特别行政区<br />马来西亚<br />菲律宾<br />新加坡<br />韩国<br />中国台湾<br />泰国<br />土耳其<br />越南 |
+| 亚洲 | 香港特别行政区<br />印度尼西亚雅加达<br />日本大阪<br />日本东京<br />新加坡<br />台湾高雄<br />台湾台北 <br />菲律宾马尼拉 | 香港特别行政区<br />印度尼西亚<br />以色列<br />日本<br />澳门特别行政区<br />马来西亚<br />菲律宾<br />新加坡<br />韩国<br />中国台湾<br />泰国<br />土耳其<br />越南 |
 | 澳大利亚和新西兰 | 澳大利亚墨尔本<br />澳大利亚悉尼<br />新西兰奥克兰 | 澳大利亚<br />新西兰 |
 
 ## <a name="next-steps"></a>后续步骤

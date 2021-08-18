@@ -1,0 +1,107 @@
+### YamlMime:FAQ
+metadata:
+  title: 常见问题解答
+  titleSuffix: Azure
+  description: 常见问题解答
+  author: dnblankedelman
+  manager: ScottCa
+  ms.service: site-reliability-engineering
+  ms.topic: article
+  ms.date: 09/14/2020
+  ms.author: dnb
+  ms.openlocfilehash: efa6790fbdc96409ba3cf22e72f089ab7b880ba0
+  ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 06/23/2021
+  ms.locfileid: "112534671"
+title: 常见问题解答：SRE 与 DevOps 之间是什么关系？
+summary: 关于站点可靠性工程与 DevOps 之间的关系存在一系列常见问题，其中包括“它们有何相同之处？ 那么其不同之处在哪里？ 能否在我们的组织中同时实施它们？”。 本文分享了由 SRE 和 DevOps 社区提供的一些解答，这些解答可帮助我们更进一步了解这种关系。
+sections:
+- name: 忽略
+  questions:
+  - question: >
+      它们有何相同之处？
+    answer: >
+      SRE 和 DevOps 都是新式操作做法，它们是为应对以下挑战而创建和开发的：
+
+
+      - 生产环境和开发过程日益复杂
+
+      - 业务越来越依赖于这些环境的持续正常运行
+
+      - 无法根据这些环境的规模来线性扩展劳动力
+
+      - 需要在加快移动速度的同时保持操作稳定性
+
+
+      这两种操作做法均重视对应对这些挑战至关重要的主题，如监视/可观察性、自动化、文档和协作软件开发工具。
+
+
+      SRE 与 DevOps 之间的工具和工作区域方面存在大量重叠。 正如“站点可靠性工作簿”中所述，“SRE 的理念与 DevOps 相同，但出发点稍有不同。”
+  - question: >
+      用于比较两种操作做法的三种不同方式
+    answer: >
+      SRE 与 DevOps 之间的相似之处很明显。 真正有趣的是两者之间的差异之处。 在这里，我们提供了三种方式来考虑它们之间的关系，从而为这个问题带来一些不一样的答案。 你可能不同意这些解答，但每个解答都为讨论提供了一个很好的起点。
+
+
+      ### <a name="class-sre-implements-interface-devops"></a>“类 SRE 实现接口 DevOps”
+
+
+      站点可靠性工作簿（[资源书列表](../resources/books.md)中提到）在第一章中讨论了 SRE 和 DevOps。 本章使用短语“类 SRE 实现接口 DevOps”作为其副标题。 这是为了暗示（使用面向开发人员的短语）可以将 SRE 视为 DevOps 理念的特定实现。 正如本章所指出的那样，“DevOps 对如何在详细级别运行操作的描述相对较少”，而 SRE 的做法更具限制性。 因此，关于两者关系问题的一个可能的答案是，可以将 SRE 视为 DevOps 的诸多可能实现之一。
+
+
+      ### <a name="sre-is-to-reliability-as-devops-is-to-delivery"></a>SRE 代表可靠性，DevOps 代表交付
+
+
+      由于 SRE 和 DevOps 均有多个定义，因此这种比较有点混乱，但仍然很有用。 它从以下问题开始：“如果你必须将每个操作做法提取为一两个词来反映其核心关注点，那将是什么？”
+
+
+      如果我们使用[站点可靠性工程中心](../index.yml)对 SRE 的以下定义：
+
+
+      > 站点可靠性工程是一门工程专业，致力于持续帮助组织实现系统、服务和产品的可靠性级别。
+
+
+      那么显然易见，用于 SRE 的词是“可靠性”。 将其包含在名称中间，还可以为此声明提供一些极好的证据。
+
+
+      如果我们使用 [Azure DevOps 资源中心](/azure/devops/learn/)对 DevOps 的以下定义：
+
+
+      > DevOps 是人员、过程和产品的集合体，它让我们可以向最终用户持续交付价值。
+
+
+      那么，用于 DevOps 的类似提取词可以是“交付”。
+
+
+      因此“SRE 代表可靠性，DevOps 代表交付”。
+
+
+      ### <a name="direction-of-attention"></a>关注的方向
+
+
+      Thomas Limoncelli 对[资源书列表](../resources/books.md)中提到的《Seeking SRE》一书的贡献引用或略述了此解答。 他指出，DevOps 工程师主要关注具有临时生产操作职责的软件开发生命周期管道，而 SRE 专注于具有临时 SDLC 管道职责的生产操作。
+
+
+      但更重要的是，他还绘制了一个关系图，一侧从软件开发过程开始，一侧从生产操作开始。 这两者由常用的管道连接，该管道用于从开发人员那里获取代码，通过所需数量的测试和阶段对代码进行看管，然后将该代码移到生产环境中。
+
+
+      Limoncelli 指出，DevOps 工程师从开发环境开始，并自动执行步骤直到进入生产环境。 完成后，他们将返回以优化瓶颈。
+
+
+      另一方面，SRE 专注于生产操作，并深入到管道中，从而改善最终结果（基本上按相反的方向工作）。
+
+
+      正是 SRE 和 DevOps 关注方向上的这种差异可以帮助区分它们。
+  - question: >
+      在同一组织中的共存
+    answer: >
+      我们要解答的最后一个问题是“可以在同一组织中同时实施 SRE 和 DevOps 吗？”
+
+
+      很明显，这个问题的答案是“可以！”。
+
+
+      我们希望前面的答案能让你了解：这两种操作做法如何重叠，以及在不重叠的情况下如何在重点上互补。 具有确定的 DevOps 做法的组织可以尝试小规模的 SRE 做法（例如，尝试 SLI 和 SLO），而不必致力于创建 SRE 职位或团队。 这是一种相当常见的 SRE 采用模式。
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n   想要详细了解站点可靠性工程或 DevOps？ 请查看我们的[站点可靠性工程中心](../index.yml)和 [Azure DevOps 资源中心](/azure/devops/learn/)。"

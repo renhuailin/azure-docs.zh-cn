@@ -2,14 +2,14 @@
 title: 服务配额和限制
 description: 了解默认的 Azure Batch 配额、限制和约束，以及如何请求提高配额
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 07/20/2021
 ms.custom: seodec18
-ms.openlocfilehash: 6e17a90cc573205bcb964a0428e0b7320323b8a6
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: ad5701c65f9f2068a1a68084b755f8d0a013b8c8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553543"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465567"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
@@ -63,7 +63,7 @@ Batch 支持的每个 VM 系列都存在核心配额。 这些核心配额显示
 | **资源** | **最大限制** |
 | --- | --- |
 | 每个计算节点的[并发任务](batch-parallel-node-tasks.md)数 | 4 x 节点核心数 |
-| 每个 Batch 帐户的[应用程序](batch-application-packages.md)数 | 20 |
+| 每个 Batch 帐户的[应用程序](batch-application-packages.md)数 | 200 |
 | 每个应用程序的应用程序包数 | 40 |
 | 每个池的应用程序包数 | 10 |
 | 最长任务生存期 | 180 天<sup>1</sup> |

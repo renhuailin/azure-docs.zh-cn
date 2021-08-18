@@ -5,12 +5,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5ba7c9505e49b8d0b35ee592bb0c3bafafad416a
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 077b247b4d8f40cc84b491ba26d78cd614ce15bf
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319388"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113105410"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor 中的角色、权限和安全性
 
@@ -24,7 +24,7 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 ### <a name="monitoring-reader"></a>监视查阅者
 分配了监视查阅者角色的人员可以查看订阅中的所有监视数据，但不能修改任何资源或编辑与监视资源相关的任何设置。 此角色适用于组织中的用户，如支持人员或操作工程师，他们需要能够：
 
-* 在门户中查看监视仪表板和创建自己专用的监视仪表板。
+* 查看门户中的监视仪表板。
 * 查看 [Azure 警报](alerts/alerts-overview.md)中定义的预警规则
 * 使用 [Azure Monitor REST API](/rest/api/monitor/metrics)、[PowerShell cmdlet](powershell-samples.md) 或 [跨平台 CLI](cli-samples.md) 查询指标。
 * 使用门户、Azure Monitor REST API、PowerShell cmdlet 或跨平台 CLI 查询活动日志。
@@ -48,7 +48,7 @@ Azure Monitor 的内置角色设计为帮助限制对订阅中资源的访问，
 ### <a name="monitoring-contributor"></a>监视参与者
 分配了监视参与者角色的人员可以查看订阅中的所有监视数据和创建或修改监视设置，但不能修改任何其他资源。 此角色是监视查阅者角色的一个超集，适用于组织的监视团队成员或托管服务提供商，除了上述权限外，他们还需要能够：
 
-* 将监视仪表板发布为共享仪表板。
+* 在门户中查看监视仪表板和创建自己专用的监视仪表板。
 * 设置资源的[诊断设置](essentials/diagnostic-settings.md)。\*
 * 设置订阅的[日志配置文件](essentials/activity-log.md#legacy-collection-methods)。\*
 * 通过 [Azure 警报](alerts/alerts-overview.md)设置预警规则活动和设置。

@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 07/12/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a68697d6dffad6aad857bb59d66beeb42dec62d2
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8c1b6aa0d6bdd98a66a638a216f93a6d81bd6b93
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475389"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113726853"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>使用 .NET 创建存储访问策略
 
@@ -38,7 +38,7 @@ ms.locfileid: "110475389"
 
 ## <a name="create-a-stored-access-policy"></a>创建存储访问策略
 
-创建存储访问策略的基础 REST 操作是[设置容器 ACL](/rest/api/storageservices/set-container-acl)。 你必须通过使用连接字符串中的帐户访问密钥，授权该操作通过共享密钥创建存储访问策略。 不支持使用 Azure AD 凭据授权“设置容器 ACL”操作。 有关详细信息，请参阅[调用 blob 和队列数据操作的权限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。
+创建存储访问策略的基础 REST 操作是[设置容器 ACL](/rest/api/storageservices/set-container-acl)。 你必须通过使用连接字符串中的帐户访问密钥，授权该操作通过共享密钥创建存储访问策略。 不支持使用 Azure AD 凭据授权“设置容器 ACL”操作。 有关详细信息，请参阅[调用数据操作的权限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-data-operations)。
 
 以下代码示例会在容器上创建存储访问策略。 可以使用访问策略指定对容器或其 Blob 上的服务 SAS 的约束。
 

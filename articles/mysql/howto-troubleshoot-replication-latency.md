@@ -7,16 +7,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 01/13/2021
-ms.openlocfilehash: 92513a8c24b5106e3a59c8cfa4d743e900b957bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44752024c8bd2ddbceed1495067260bce3ce0037
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98249765"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113088379"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>排查 Azure Database for MySQL 中的复制延迟问题
 
-[!INCLUDE[applies-to-single-flexible-server](./includes/applies-to-single-flexible-server.md)]
+[!INCLUDE[applies-to-mysql-single-flexible-server](includes/applies-to-mysql-single-flexible-server.md)]
 
 使用[只读副本](concepts-read-replicas.md)功能可将数据从 Azure Database for MySQL 服务器复制到只读副本服务器。 可以通过将读取和报告查询从应用程序路由到副本服务器来横向扩展工作负荷。 此设置可减小源服务器上的压力。 它还改进了应用程序在缩放时的整体性能和延迟。
 

@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: chadam
 ms.date: 05/14/2021
-ms.openlocfilehash: ebe8c40f6e86c96fb4af49d261ce00d2364d0180
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d82d423051af6a0cea8ab8b8fa5646ee80accf51
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957668"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746618"
 ---
 # <a name="migration-guide-ibm-db2-to-sql-server-on-azure-vm"></a>迁移指南：从 IBM Db2 到 Azure VM 上的 SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -87,7 +87,7 @@ ms.locfileid: "111957668"
     1. 输入连接详细信息，以连接到 Azure VM 上的 SQL Server 实例。 
     1. 选择连接到目标服务器上的现有数据库，或提供新名称以在目标服务器上创建新数据库。 
     1. 提供身份验证详细信息。 
-    1. 选择“连接”  。
+    1. 选择“连接”。
 
     :::image type="content" source="../../../../includes/media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png" alt-text="该屏幕截图显示在 Azure VM 上连接至 SQL Server 所需的详细信息。":::
 
@@ -148,7 +148,7 @@ ms.locfileid: "111957668"
 
 |资产  |说明  |
 |---------|---------|
-|[数据工作负荷评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| 此工具为给定的工作负荷提供了建议的“最佳匹配”目标平台、云就绪和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
+|[数据工作负荷评估模型和工具](https://www.microsoft.com/download/details.aspx?id=103130)| 此工具为给定的工作负荷提供了建议的“最佳匹配”目标平台、云就绪和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
 |[Db2 zOS 数据资产发现和评估包](https://www.microsoft.com/download/details.aspx?id=103108)|在数据库上运行 SQL 脚本后，可以将结果导出到文件系统上的文件。 支持多种文件格式（包括 \*.csv），方便你在外部工具（如电子表格）中捕获结果。 如果你想要与未安装工作台的团队轻松共享结果，此方法会很有用。|
 |[IBM Db2 LUW 清单脚本和项目](https://www.microsoft.com/download/details.aspx?id=103109)|此资产包含一个 SQL 查询，该查询可访问 IBM Db2 LUW 版本 11.1 系统表，并按架构和对象类型提供对象计数、每个架构中“原始数据”的粗略估计、每个架构中表的大小，以及 CSV 格式的存储结果。|
 |[IBM Db2 到 SQL Server - 数据库比较实用工具](https://www.microsoft.com/download/details.aspx?id=103016)|数据库比较实用工具是可用于验证源和目标平台上的数据是否相同的 Windows 控制台应用程序。 可以使用该工具在所有或所选表、行和列中的行或列级别高效地比较数据。|

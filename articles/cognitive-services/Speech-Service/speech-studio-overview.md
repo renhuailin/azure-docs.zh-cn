@@ -3,19 +3,19 @@ title: Speech Studio 概述 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: Speech Studio 是一组基于 UI 的工具，用于在应用程序中生成和集成 Azure 语音服务的功能。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.author: trbye
-ms.openlocfilehash: ddf7b85f5775ee25a260f19ae81e43afff95facb
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.author: lajanuar
+ms.openlocfilehash: 6042a129308b7be478b2bd1a45379ad56f62aca6
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111902324"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067059"
 ---
 # <a name="what-is-speech-studio"></a>什么是 Speech Studio？
 
@@ -23,16 +23,12 @@ ms.locfileid: "111902324"
 
 ## <a name="set-up-your-azure-account"></a>设置 Azure 帐户
 
-你需要拥有 Azure 帐户和语音服务订阅，才能使用 [Speech Studio](https://speech.microsoft.com)。 如果你没有帐户和订阅，[可以免费试用语音服务](overview.md#try-the-speech-service-for-free)。
+你需要拥有 Azure 帐户并添加语音服务资源，然后才能使用 [Speech Studio](https://speech.microsoft.com)。 如果没有帐户和资源，[可以免费试用语音服务](overview.md#try-the-speech-service-for-free)。
 
-> [!NOTE]
-> 请确保创建标准 (S0) 订阅。 不支持免费 (F0) 订阅。
+在创建 Azure 帐户和语音服务资源后，请执行以下操作：
 
-创建 Azure 帐户和语音服务订阅后：
-
-1. 登录 [Speech Studio](https://speech.microsoft.com)。
-1. 选择需要使用的订阅并创建语音项目。
-1. 如果要修改订阅，请选择顶部菜单中的齿轮按钮。
+1. 使用 Azure 帐户登录到 [Speech Studio](https://speech.microsoft.com)。
+1. 选择需要开始使用的语音服务资源。 （可以随时在顶部菜单的“设置”中更改资源。）
 
 ## <a name="speech-studio-features"></a>Speech Studio 功能
 

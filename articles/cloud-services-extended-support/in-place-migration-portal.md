@@ -4,24 +4,21 @@ description: 如何使用 Azure 门户迁移到云服务（外延支持）
 ms.topic: how-to
 ms.service: cloud-services-extended-support
 ms.subservice: classic-to-arm-migration
-author: tanmaygore
-ms.author: tagore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: b1a3d6f1c30cf6c52dde3f70f222d9cbb0fce556
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: b900b691ee02f438b4e222cdd69ac64e46f15d38
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293163"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113431530"
 ---
 # <a name="migrate-to-cloud-services-extended-support-using-the-azure-portal"></a>使用 Azure 门户迁移到云服务（外延支持）
 
 本文介绍如何使用 Azure 门户从[云服务（经典）](../cloud-services/cloud-services-choose-me.md)迁移到[云服务（外延支持）](overview.md)。
-
-> [!IMPORTANT]
-> 使用迁移工具从云服务（经典）迁移到云服务（外延支持）目前为公共预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="before-you-begin"></a>在开始之前
 
@@ -66,7 +63,7 @@ ms.locfileid: "108293163"
 
     如果准备成功，则可以提交迁移。
     
-    :::image type="content" source="media/in-place-migration-portal-4.png" alt-text="插图显示 Azure 门户中通过了验证。":::
+    :::image type="content" source="media/in-place-migration-portal-4.png" alt-text="插图显示 Azure 门户中通过了验证。"::: 
 
     如果准备失败，请查看错误，解决任何问题，然后重试准备。 
 
@@ -94,4 +91,5 @@ ms.locfileid: "108293163"
     键入“是”确认并提交迁移。 迁移现已完成。 将解锁云服务（外延支持）部署，可对其执行所有操作。 
 
 ## <a name="next-steps"></a>后续步骤
-查看[迁移后的更改](in-place-migration-overview.md#post-migration-changes)部分，以查看新云服务（外延支持）部署的部署文件中的更改、自动化和其他特性。
+
+查看[迁移后的更改](post-migration-changes.md)部分，以查看新云服务（外延支持）部署的部署文件中的更改、自动化和其他特性。

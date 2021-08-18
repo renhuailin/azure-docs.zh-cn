@@ -7,20 +7,16 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 79224c14fc5182df7a699864af3d78c9be36259f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8eb4dc8ee58d9ced141c7c4e4404596ace727f0c
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97797261"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112459117"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>（从资源组）跨区域移动资源
 
 本文介绍如何将特定资源组中的资源移到其他 Azure 区域。 在资源组中选择要移动的资源。 然后，使用 [Azure 资源转移器](overview.md)移动它们。
-
-> [!IMPORTANT]
-> Azure 资源转移器目前提供公共预览版。
-
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -119,7 +115,7 @@ ms.locfileid: "97797261"
 
 1. 在“跨区域”中，选择源资源组 >“准备” 。
 2. 在“准备资源”中，选择“准备” 。
-1. 
+
     ![用于准备源资源组的按钮](./media/move-region-within-resource-group/prepare-source-resource-group.png)
 
     在准备过程中，资源转移器使用资源组设置生成 Azure 资源管理器 (ARM) 模板。 资源组内的资源不受影响。
@@ -137,7 +133,7 @@ ms.locfileid: "97797261"
 2. 在“移动资源”中，选择“开始移动” 。 资源组移动到“启动移动进行中”状态。
 3. 启动移动后，根据生成的 ARM 模板创建目标资源组。 源资源组变为“提交移动挂起”状态。
 
-![显示“提交移动”的状态](./media/move-region-availability-zone/commit-move-pending.png)
+    ![显示“提交移动”的状态](./media/move-region-availability-zone/commit-move-pending.png)
 
 要提交并完成移动过程：
 

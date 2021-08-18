@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: 9ade5a51e2251669daee6fbaca9aa4c50f7e9bfc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95462d60a9c77b78f9674a41d6ca44801f3e5ac0
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101704355"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183902"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor 中的 VMware 监视（已弃用）解决方案
 
@@ -32,7 +32,7 @@ Azure Monitor 中的 VMware 监视解决方案是一个有助于针对大型 VMw
 vSphere ESXi 主机 5.5、6.0 和 6.5
 
 #### <a name="prepare-a-linux-server"></a>准备一台 Linux 服务器
-创建 Linux 操作系统系统 VM，以接收来自 ESXi 主机的所有系统日志数据。 [Log Analytics Linux 代理](../vm/quick-collect-linux-computer.md)是所有 ESXi 主机 syslog 数据的集合点。 可以使用多个 ESXi 主机将日志转发到一台 Linux 服务器，如以下示例所示。
+创建 Linux 操作系统系统 VM，以接收来自 ESXi 主机的所有系统日志数据。 [Log Analytics Linux 代理](../vm/monitor-virtual-machine.md)是所有 ESXi 主机 syslog 数据的集合点。 可以使用多个 ESXi 主机将日志转发到一台 Linux 服务器，如以下示例所示。
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
@@ -199,4 +199,3 @@ syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMw
 * 使用 Log Analytics 中的[日志查询](../logs/log-query-overview.md)可查看详细的 VMware 主机数据。
 * [创建自己的仪表板](../visualize/tutorial-logs-dashboards.md)显示了 VMware 主机数据。
 * 发生特定 VMware 主机事件时[创建警报](../alerts/alerts-overview.md)。
-

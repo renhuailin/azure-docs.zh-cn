@@ -2,22 +2,19 @@
 title: 排查不支持 TLS 1.2 的应用程序引起的问题 | Microsoft Docs
 description: 排查不支持 TLS 1.2 的应用程序引起的问题
 services: cloud-services
-documentationcenter: ''
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 tags: top-support-issue
-ms.assetid: ''
 ms.service: cloud-services
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
-ms.author: tagore
-ms.openlocfilehash: 79a8942fefc497701a05b6d20ab693d932daeb7d
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: d1228e8258984c7c20e02cb9f8c805cac0fec927
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166460"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093618"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>对不支持 TLS 1.2 的应用程序进行故障排除
 

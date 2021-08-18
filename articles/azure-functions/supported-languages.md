@@ -3,12 +3,12 @@ title: Azure Functions 中支持的语言
 description: 了解支持哪些语言 (GA)，哪些是预览语言，以及将 Functions 开发扩展到其他语言的方法。
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: da3100521faae61e9803aaa82dbf91045a7ecbc9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02a416fa669cd71702e991c79677575bd4563bfb
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98108545"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113493220"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Azure Functions 中支持的语言
 
@@ -26,6 +26,14 @@ ms.locfileid: "98108545"
 [三个版本的 Azure Functions 运行时](functions-versions.md)都可用。 下表显示每个运行时版本支持的语言。
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
+
+### <a name="language-major-version-support"></a>语言主版本支持
+
+Azure Functions 为支持的编程语言的主版本提供了支持保证。 大多数语言都会发布次要版本或补丁版本来更新受支持的主版本。 例如，Python 3.9.1 和 Node 14.17 就是次要版本或补丁版本。 支持的语言的新次要版本发布后，函数应用使用的次要版本将自动升级到这些较新的次要版本或补丁版本。 
+
+> [!NOTE]
+>因为 Azure Functions 可以在新的次要版本发布后随时删除对旧次要版本的支持，所以不应将函数应用固定到编程语言的特定次要/补丁版本。  
+>
 
 ## <a name="custom-handlers"></a>自定义处理程序
 

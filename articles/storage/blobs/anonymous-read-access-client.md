@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2437c5b3272163b3931d7417c84e761c591aec85
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e112d9b6cc55a898c77026c1982e2a7c19b6840c
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90088810"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113731753"
 ---
 # <a name="access-public-containers-and-blobs-anonymously-with-net"></a>使用 .NET 匿名访问公共容器和 Blob
 
@@ -109,4 +109,4 @@ public static void DownloadBlobAnonymously()
 
 - [配置对容器和 Blob 的匿名公共读取访问](anonymous-read-access-configure.md)
 - [阻止对容器和 Blob 的匿名公共读取访问](anonymous-read-access-prevent.md)
-- [授权访问 Azure 存储](../common/storage-auth.md)
+- [授权访问 Azure 存储](../common/authorize-data-access.md)

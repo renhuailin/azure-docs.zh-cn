@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 9af31fb52a888148f33268a30c37609a5e8f2cd3
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f2f5ef1ff77ccbae4170b84c325f97f2cb7dc390
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110486923"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122264833"
 ---
 下面概述了 Azure 时序见解 Gen1 中的主要限制。
 
@@ -60,4 +60,4 @@ Gen1 属性限制取决于所选的 SKU 环境。 提供的事件属性具有相
 
 ### <a name="api-limits"></a>API 限制
 
-[REST API 参考文档](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability)中指定了 Azure 时序见解 Gen1 的 REST API 限制。
+[REST API 参考文档](/rest/api/time-series-insights/gen1-reference-data-api#current-limits)中指定了 Azure 时序见解 Gen1 的 REST API 限制。

@@ -3,12 +3,12 @@ title: 比较开发测试实验室中的自定义映像和公式 | Microsoft Doc
 description: 了解自定义映像和公式（例如 VM 基项）之间的差异，以便确定哪一种最适合自己的环境。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: df7a8e6209f8033eb5a29c65079e9c2f4cbbe544
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc4f7497e2e4a67fdf383f0b801da0b729d7cbf8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87287529"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742305"
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>比较自定义映像和 DevTest 实验室中的公式
 在[创建新的虚拟机](devtest-lab-add-vm.md)时，[自定义映像](devtest-lab-create-template.md) 和 [公式](devtest-lab-manage-formulas.md) 都可以用作基项。 但是，自定义映像和公式之间的主要区别在于自定义映像只是基于 VHD 的映像，而公式不仅是基于 VHD 的映像，*还有* 预配置的设置 - 如 VM 大小、虚拟网络、子网和项目。 使用可在创建 VM 时重写的默认值，对这些预配置进行设置。 本文介绍和使用公式相比，使用自定义映像的一些优点和缺点。
@@ -41,7 +41,7 @@ ms.locfileid: "87287529"
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>相关的博客文章
-* [自定义映像或公式？](./devtest-lab-faq.md#blog-post)
+* [自定义映像或公式？](/azure/devtest-labs/devtest-lab-faq#blog-post)
 
 ## <a name="next-steps"></a>后续步骤
-- [开发测试实验室常见问题解答](devtest-lab-faq.md)
+- [开发测试实验室常见问题解答](devtest-lab-faq.yml)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: dc8ca48d11f31f69ca9db5dce53cce4d9d6e8f25
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5c8ef9fae7e0fa26de6a0d568e88a80a9a8cf989
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772326"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459137"
 ---
 # <a name="iot-central-solution-builder-guide"></a>IoT Central 解决方案构建者指南
 
@@ -30,17 +30,16 @@ IoT Central 应用程序使你可以在设备整个生命周期内监视和管�
 一个 IoT Central 应用程序可以有一个或多个仪表板，操作员可以使用这个仪表板或这些仪表板来查看应用程序并与之进行交互。 作为解决方案构建者，你可以自定义默认仪表板并创建专用仪表板：
 
 - 若要查看自定义仪表板的一些示例，请参阅[行业专用模板](concepts-app-templates.md#industry-focused-templates)。
-- 若要详细了解仪表板，请参阅[创建和管理多个仪表板](howto-create-personal-dashboards.md)和[配置应用程序仪表板](howto-add-tiles-to-your-dashboard.md)。
+- 若要详细了解仪表板，请参阅[创建和管理多个仪表板](howto-manage-dashboards.md)和[配置应用程序仪表板](howto-manage-dashboards.md)。
 
-当设备连接到 IoT Central 时，设备会与该设备类型的设备模板相关联。 设备模板具有可自定义的视图，操作员可以使用这些视图来管理各个设备。 作为解决方案开发人员，你可以针对设备类型创建和自定义可用视图。 若要了解详细信息，请参阅[添加视图](howto-set-up-template.md#add-views)。
+当设备连接到 IoT Central 时，设备会与该设备类型的设备模板相关联。 设备模板具有可自定义的视图，操作员可以使用这些视图来管理各个设备。 作为解决方案开发人员，你可以针对设备类型创建和自定义可用视图。 若要了解详细信息，请参阅[添加视图](howto-set-up-template.md#views)。
 
 ## <a name="use-built-in-rules-and-analytics"></a>使用内置规则和分析
 
 解决方案开发人员可以向运行可自定义操作的 IoT Central 应用程序添加规则。 规则会根据来自设备的数据评估条件，以确定何时运行操作。 若要详细了解规则，请参阅：
 
 - [教程：在 Azure IoT Central 应用程序中创建规则并设置通知](tutorial-create-telemetry-rules.md)
-- [在 Azure IoT Central 中基于规则创建 Webhook 操作](howto-create-webhooks.md)
-- [<c0 />将多个操作分组以从一个或多个规则运行<c1 />](howto-use-action-groups.md)
+- [配置规则](howto-configure-rules.md)
 
 IoT Central 具有内置的分析功能，操作员可以使用这些功能来分析从连接的设备流出的数据。 若要了解详细信息，请参阅[如何使用分析功能来分析设备数据](howto-create-analytics.md)。
 

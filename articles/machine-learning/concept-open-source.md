@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 01/14/2020
-ms.openlocfilehash: 983e037376be48f497118b06cce8b23c430b1501
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8ec9aaf2222924718ad21cf0654d138be22c2d19
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98223068"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114293379"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>与 Azure 机器学习项目的开源集成
 
@@ -89,7 +89,7 @@ ms.locfileid: "98223068"
 
 ### <a name="package-and-deploy-models-as-containers"></a>将模型打包并部署为容器
 
-容器技术（例如 Docker）是将模型部署为 Web 服务的一种方法。 容器提供了与平台和资源无关的方式来构建和协调可重现的软件环境。 有了这些核心技术，你就可以使用[预配置的环境](./how-to-use-environments.md)、[预配置的容器映像](./how-to-deploy-custom-docker-image.md)或自定义的将机器学习模型部署到目标，例如 [Kubernetes 群集](./how-to-deploy-azure-kubernetes-service.md?tabs=python)。 对于 GPU 密集型工作流，可以使用 NVIDIA Triton 推理服务器等工具来[使用 GPU 进行预测](how-to-deploy-with-triton.md?tabs=python)。
+容器技术（例如 Docker）是将模型部署为 Web 服务的一种方法。 容器提供了与平台和资源无关的方式来构建和协调可重现的软件环境。 有了这些核心技术，你就可以使用[预配置的环境](./how-to-use-environments.md)、[预配置的容器映像](./how-to-deploy-custom-container.md)或自定义的将机器学习模型部署到目标，例如 [Kubernetes 群集](./how-to-deploy-azure-kubernetes-service.md?tabs=python)。 对于 GPU 密集型工作流，可以使用 NVIDIA Triton 推理服务器等工具来[使用 GPU 进行预测](how-to-deploy-with-triton.md?tabs=python)。
 
 ### <a name="secure-deployments-with-homomorphic-encryption"></a>使用同态加密来保护部署
 
@@ -101,4 +101,4 @@ ms.locfileid: "98223068"
 
 使用持续集成 (CI) 和持续部署 (CD) 等 DevOps 做法，你可以自动完成端到端机器学习生命周期，并捕获有关它的治理数据。 你可以[在 GitHub Actions 中定义机器学习 CI/CD 管道](./how-to-github-actions-machine-learning.md)，以运行 Azure 机器学习训练和部署任务。 
 
-为了构建透明、可重现且可审核的管道，必须在 MLOps 过程中捕获软件依赖项、指标、元数据、数据并对模型进行版本控制。 对于此任务，你可以[在 Azure 机器学习中使用 MLflow](how-to-use-mlflow.md)，以及[在 Azure Databricks 中训练机器学习模型时使用 MLflow](./how-to-use-mlflow-azure-databricks.md)。 还可以[将 MLflow 模型部署为 Azure Web 服务](how-to-deploy-mlflow-models.md)。 
+为了构建透明、可重现且可审核的管道，必须在 MLOps 过程中捕获软件依赖项、指标、元数据、数据并对模型进行版本控制。 对于此任务，你可以[在 Azure 机器学习中使用 MLflow](how-to-use-mlflow.md)，以及[在 Azure Databricks 中训练机器学习模型时使用 MLflow](./how-to-use-mlflow-azure-databricks.md)。 还可以[将 MLflow 模型部署为 Azure Web 服务](how-to-deploy-mlflow-models.md)。

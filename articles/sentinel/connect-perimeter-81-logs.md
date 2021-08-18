@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: e70bfd12b018e785e7b3b91e098c99fea1101c04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 07c850cf98ffddf01cb4479affdb62d30a5bb522
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100093091"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253883"
 ---
 # <a name="connect-your-perimeter-81-activity-logs-to-azure-sentinel"></a>将 Perimeter 81 活动日志连接到 Azure Sentinel
 
 > [!IMPORTANT]
 > Azure Sentinel 中的 Perimeter 81 数据连接器目前处于公共预览版阶段。
 > 此功能不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 本文介绍如何将 [Perimeter 81 活动日志](https://www.perimeter81.com/)设备连接到 Azure Sentinel。 使用 Perimeter 81 活动日志数据连接器，可以轻松地将 Perimeter 81 数据引入 Azure Sentinel，这样，你就可以在工作簿中查看这些数据，将其用于创建自定义警报，并用它来改进调查。
 
@@ -62,6 +64,6 @@ Perimeter 81 活动日志可以直接将日志集成和导出到 Azure Sentinel�
 
 要详细了解 Azure Sentinel，请参阅以下文章：
 
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。

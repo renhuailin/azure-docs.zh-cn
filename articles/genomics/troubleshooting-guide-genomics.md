@@ -10,18 +10,18 @@ ms.service: genomics
 ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00b81e57a656afbfce13027a8855104faf889146
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96023817"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551733"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
 下面提供了当你使用 Microsoft 基因组学服务 (MSGEN) 时可能会遇到的一些常见问题的故障排除提示。
 
- 如需与故障排除无关的常见问题解答，请参阅[常见问题](frequently-asked-questions-genomics.md)。
+ 如需与故障排除无关的常见问题解答，请参阅[常见问题](frequently-asked-questions-genomics.yml)。
 ## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>步骤 1：查找与工作流关联的错误代码
 
 可通过以下方式查找与工作流关联的错误消息：
@@ -142,4 +142,4 @@ Microsoft 基因组学服务 (msgen) 可能引发以下两种类型的错误：
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何排除和解决 Microsoft 基因组学服务的常见问题。 有关详细信息和更多常规常见问题解答，请参阅[常见问题](frequently-asked-questions-genomics.md)。 
+本文介绍了如何排除和解决 Microsoft 基因组学服务的常见问题。 有关详细信息和更多常规常见问题解答，请参阅[常见问题](frequently-asked-questions-genomics.yml)。 

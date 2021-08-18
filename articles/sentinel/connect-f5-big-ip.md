@@ -15,16 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 17c31bbe54326962c26ab53f702cbd28d1e36c6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aae69e8ff7cb0c3002bb9333f6d7685b9e247a28
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100092785"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254112"
 ---
 # <a name="connect-your-f5-big-ip-appliance"></a>连接 F5 BIG-IP 设备 
 
 通过 F5 BIG-IP 连接器，可以将所有 F5 BIG-IP 日志轻松连接到 Azure Sentinel，以查看工作簿、创建自定义警报和改进调查。 这样，用户就可以更深入地了解组织的网络并改善安全操作功能。 F5 BIG-IP 和 Azure Sentinel 之间的集成利用 REST API。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 > [!NOTE]
 > 数据将存储在运行 Azure Sentinel 的工作区的地理位置。
@@ -48,8 +50,6 @@ F5 BIG-IP 可以直接将日志集成和导出到 Azure Sentinel。
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 F5 BIG-IP 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
-
-
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。

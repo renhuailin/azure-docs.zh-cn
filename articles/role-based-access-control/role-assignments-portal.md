@@ -7,15 +7,15 @@ manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 05/07/2021
+ms.date: 06/25/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q3-portal,subject-rbac-steps
-ms.openlocfilehash: 95ac82bfbdef8843f3eb4fc10cea7a0309d9eb89
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: e6a06c2a2a525e89fd6d7ab61f983f2b91c1cc8a
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656815"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988996"
 ---
 # <a name="assign-azure-roles-using-the-azure-portal"></a>使用 Azure 门户分配 Azure 角色
 
@@ -42,8 +42,6 @@ Azure RBAC 具有在当前处于公共预览版的 Azure 门户中分配 Azure �
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在顶部的“搜索”框中，搜索要授予对其的访问权限的范围。 例如，搜索“管理组”、“订阅”、“资源组”或某个特定资源  。
-
-    ![Azure 门户搜索资源组的屏幕截图。](./media/shared/rg-portal-search.png)
 
 1. 单击该范围的特定资源。
 
@@ -124,8 +122,6 @@ Azure RBAC 具有在当前处于公共预览版的 Azure 门户中分配 Azure �
 
 1. 在顶部的“搜索”框中，搜索要授予对其的访问权限的范围。 例如，搜索“管理组”、“订阅”、“资源组”或某个特定资源  。
 
-    ![用于预览版体验的 Azure 门户搜索资源组的屏幕截图。](./media/shared/rg-portal-search.png)
-
 1. 单击该范围的特定资源。
 
     下面展示了一个示例资源组。
@@ -144,23 +140,23 @@ Azure RBAC 具有在当前处于公共预览版的 Azure 门户中分配 Azure �
 
 1. 单击“角色分配”选项卡以查看在此范围内的角色分配。
 
-1. 单击“添加” > “添加角色分配（预览版）” 。
+1. 单击“添加” > “添加角色分配(预览)”。
 
     如果没有分配角色的权限，则将禁用“添加角色分配”选项。
 
-    ![用于预览版体验的“添加”>“添加角色分配”菜单的屏幕截图。](./media/shared/add-role-assignment-menu-preview.png)
+    ![预览体验的“添加”>“添加角色分配”菜单的屏幕截图。](./media/shared/add-role-assignment-menu-preview.png)
 
-    此时打开“分配角色”页。
+    随即打开“添加角色分配”窗格。
 
 ## <a name="step-3-select-the-appropriate-role-preview"></a>步骤 3：选择合适的角色（预览版）
 
 1. 在“角色”选项卡上，选择想要使用的角色。
 
-    可以按名称或说明搜索角色。 也可以按类型和类别筛选角色。
+    可以按名称或说明搜索角色。 还可按类型和类别筛选角色。
 
-   ![用于预览版体验的带“选择角色”选项卡的“添加角色分配”页的屏幕截图。](./media/role-assignments-portal/roles.png)
+   ![预览版体验的“添加角色分配”页面的屏幕截图，其中显示了“角色”选项卡。](./media/shared/roles.png)
 
-1. 在“详细信息”列中，单击“查看”以获取有关角色的详细信息。
+1. 在“详细信息”列中，单击“查看”获取有关角色的更多详细信息 。
 
    ![用于预览版体验的带“权限”选项卡的“查看角色详细信息”窗格的屏幕截图。](./media/role-assignments-portal/select-role-permissions.png)
 
@@ -168,25 +164,25 @@ Azure RBAC 具有在当前处于公共预览版的 Azure 门户中分配 Azure �
 
 ## <a name="step-4-select-who-needs-access-preview"></a>步骤 4：选择需要访问权限的人员（预览版）
 
-1. 在“成员”选项卡上，选择“用户、组或服务主体”，将所选角色分配给一个或多个 Azure AD 用户、组或服务主体（应用程序）。
+1. 在“成员”选项卡上选择“用户、组或服务主体”，将所选角色分配给一个或多个 Azure AD 用户、组或服务主体（应用程序） 。
 
-   ![用于预览版体验的带“添加成员”选项卡的“添加角色分配”页的屏幕截图。](./media/role-assignments-portal/members.png)
+   ![预览版体验的“添加角色分配”页面的屏幕截图，其中显示了“成员”选项卡。](./media/shared/members.png)
 
-1. 单击“添加成员”。
+1. 单击“选择成员”。
 
 1. 查找并选择用户、组或服务主体。
 
-    可在“选择”框中键入相应内容，以便在目录中搜索显示名称、电子邮件地址和对象标识符。
+    可以在“选择”框中键入，以在目录中搜索显示名称或电子邮件地址。
 
-   ![用于预览版体验的使用“选择成员”窗格添加成员的屏幕截图。](./media/role-assignments-portal/select-principal.png)
+   ![预览版体验的“选择成员”窗格的屏幕截图。](./media/shared/select-members.png)
 
-1. 单击“保存”，将用户、组或服务主体添加到“成员”列表中。
+1. 单击“保存”，将用户、组和服务主体添加到“成员”列表。
 
 1. 若要将所选角色分配给一个或多个托管标识，请选择“托管标识”。
 
-1. 单击“添加成员”。
+1. 单击“选择成员”。
 
-1. 在“选择托管标识”窗格中，选择该类型是 [系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md)还是 [用户分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
+1. 在“选择托管标识”窗格中，选择类型是[系统分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md)还是[用户分配的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
 1. 查找并选择托管标识。
 

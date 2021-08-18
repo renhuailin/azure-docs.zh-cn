@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 02a3a7ad73bf0434a215c5ab7a6e89c299e9518b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28d66477c31db9ee274fb1e8aaa1690365a4fa72
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019850"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112912782"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure 流分析输出的故障排除
 
@@ -74,7 +74,7 @@ ms.locfileid: "98019850"
 
 如果你在 SQL 表上设置唯一键约束，Azure 流分析会删除重复记录。 它将数据拆分为几个批，并以递归方式插入这些批，直到找到一个重复的记录。 拆分和插入过程一次忽略一个重复项。 对于包含多个重复行的流式处理作业，此过程效率低下且非常耗时。 如果你在前一个小时的活动日志中看到多个键冲突警告消息，则很可能是 SQL 输出拖慢了整个作业的速度。
 
-若要解决此问题，请通过启用 IGNORE_DUP_KEY 选项来[配置导致键冲突的索引]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql)。 使用此选项，SQL 可以在大容量插入期间忽略重复值。 Azure SQL 数据库只是生成警告消息，而不是错误。 因此，Azure 流分析不再生成主键冲突错误。
+若要解决此问题，请通过启用 IGNORE_DUP_KEY 选项来[配置导致键冲突的索引](/sql/t-sql/statements/create-index-transact-sql)。 使用此选项，SQL 可以在大容量插入期间忽略重复值。 Azure SQL 数据库只是生成警告消息，而不是错误。 因此，Azure 流分析不再生成主键冲突错误。
 
 为多种类型的索引配置 IGNORE_DUP_KEY 时，应注意以下几点：
 
@@ -110,7 +110,7 @@ ms.locfileid: "98019850"
 
 ## <a name="get-help"></a>获取帮助
 
-如需获取进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答页面](/answers/topics/azure-stream-analytics.html)。
+若要获得进一步的帮助，可前往 [Azure 流分析的 Microsoft 问答问题页面](/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>后续步骤
 

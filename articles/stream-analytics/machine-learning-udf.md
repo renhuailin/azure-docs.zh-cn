@@ -7,16 +7,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: c35d5d2f63f4a7abe80a0ff19e5994013355c386
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9856b3b6c44c293c77582ba9c6fba9891d897a5d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98020513"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742960"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>将 Azure 流分析与 Azure 机器学习集成（预览版）
 
-可以在 Azure 流分析作业中将机器学习模型实现为用户定义的函数 (UDF)，以便基于流输入数据执行实时评分和预测。 [Azure 机器学习](../machine-learning/overview-what-is-azure-ml.md)可让你使用任何流行的开源工具（例如 Tensorflow、scikit-learn 或 PyTorch）来准备、训练和部署模型。
+可以在 Azure 流分析作业中将机器学习模型实现为用户定义的函数 (UDF)，以便基于流输入数据执行实时评分和预测。 [Azure 机器学习](../machine-learning/overview-what-is-azure-machine-learning.md)可让你使用任何流行的开源工具（例如 Tensorflow、scikit-learn 或 PyTorch）来准备、训练和部署模型。
 
 ## <a name="prerequisites"></a>先决条件
 

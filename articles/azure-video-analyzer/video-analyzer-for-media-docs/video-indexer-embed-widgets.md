@@ -1,20 +1,21 @@
 ---
 title: 在应用中嵌入 Azure 视频分析器媒体版（以前称为视频索引器）小组件
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: 了解如何在应用中嵌入 Azure 视频分析器媒体版（以前称为视频索引器）小组件。
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: 737efbd67ab0dc89178136c0d792aaf622f886d0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 3be899a7be2d007f52eb895bd26befcbb12e316d
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384968"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115247"
 ---
 # <a name="embed-video-analyzer-for-media-widgets-in-your-apps"></a>在应用中嵌入视频分析器媒体版小组件
 
@@ -32,7 +33,7 @@ ms.locfileid: "110384968"
 |---|---|---|
 |`widgets` | 用逗号分隔的字符串 | 用于控制要呈现的见解。<br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` 仅呈现人员和关键字 UI 见解。<br/>可用选项：人员、animatedCharacters、关键字、标签、情绪、情感、主题、关键帧、脚本、OCR、扬声器、场景和 namedEntities。|
 |`controls`|用逗号分隔的字符串|用于控制要呈现的控件。<br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` 仅呈现搜索选项和“下载”按钮。<br/>可用选项：搜索、下载、预设和语言。|
-|`language`|短语言代码（语言名称）|控制见解语言。<br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
+|`language`|短语言代码（语言名称）|控制见解语言。<br/>示例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | 短语言代码 | 控制 UI 的语言。 默认值为 `en`。 <br/>示例：`locale=de`。|
 |`tab` | 默认选定的选项卡 | 控制默认呈现的“见解”选项卡。 <br/>示例：`tab=timeline` 在“时间线”选项卡处于选中状态时呈现见解。|
 |`location` ||`location` 参数必须包含在嵌入的链接中，请参阅[如何获取区域名称](regions.md)。 如果你的帐户为预览版，则位置值必须使用 `trial`。 `trial` 为参数 `location` 的默认值。| 
@@ -57,7 +58,7 @@ ms.locfileid: "110384968"
 
 |名称|定义|说明|
 |---|---|---|
-|`accessToken`<sup>*</sup> | String | 提供对仅在用于嵌入小组件的帐户中的视频的访问。<br> 编辑器小组件需要 `accessToken` 参数。 |
+|`accessToken`<sup>*</sup> | 字符串 | 提供对仅在用于嵌入小组件的帐户中的视频的访问。<br> 编辑器小组件需要 `accessToken` 参数。 |
 |`language` | 语言代码 | 控制播放器语言。 默认值为 `en-US`。<br/>示例：`language=de-DE`。 |
 |`locale` | 短语言代码 | 控制见解语言。 默认值为 `en`。<br/>示例：`language=de`。 |
 |`location` ||`location` 参数必须包含在嵌入的链接中，请参阅[如何获取区域名称](regions.md)。 如果你的帐户为预览版，则位置值必须使用 `trial`。 `trial` 为参数 `location` 的默认值。| 

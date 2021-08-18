@@ -10,12 +10,12 @@ ms.date: 05/08/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: a66b036bde5f25873e9d4a371faf249deadd69dc
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 85d42ee9eca2848766e97cd1513762caad714c73
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109736891"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486420"
 ---
 # <a name="create-develop-and-maintain-synapse-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse 笔记本
 
@@ -150,9 +150,10 @@ Synapse 笔记本集成了 Monaco 编辑器，将 IDE 样式的 IntelliSense 引
 |PySpark (Python)|是|是|是|是|是|是|是|是|
 |Spark (Scala)|是|是|是|是|-|-|-|是|
 |SparkSQL|是|是|-|-|-|-|-|-|
-|.NET for Spark (C#)|是|-|-|-|-|-|-|-|
+|.NET for Spark (C#)|是|是|是|是|是|是|是|是|
 
-
+>[!Note]
+> 需要建立活动 Spark 会话，才能在 .NET for Spark (C#) 中享受变量代码完成、系统函数代码完成和用户函数代码完成所带来的好处。
 
 ### <a name="code-snippets"></a>代码段
 
@@ -337,13 +338,14 @@ Synapse 笔记本提供代码片段，可更轻松地输入常用的代码模式
 
 # <a name="preview-notebook"></a>[预览笔记本](#tab/preview)
 
-可以使用 ```%run <notebook path>``` magic 命令在当前笔记本上下文中引用另一个笔记本。 引用笔记本中定义的所有变量在当前笔记本中都可用。 ```%run``` magic 命令支持嵌套调用，但不支持递归调用。 如果语句超过五行，则将收到异常。 ```%run``` 命令目前仅支持以参数形式传递笔记本路径。 
+可以使用 ```%run <notebook path>``` magic 命令在当前笔记本上下文中引用另一个笔记本。 引用笔记本中定义的所有变量在当前笔记本中都可用。 ```%run``` magic 命令支持嵌套调用，但不支持递归调用。 如果语句超过五行，则将收到异常。  ```%run``` 命令目前仅支持以参数形式传递笔记本路径。 
 
 示例：``` %run /path/notebookA ```。
 
+可以在交互模式和 Synapse 管道中使用笔记本引用。
+
 > [!NOTE]
-> Synapse 管道不支持笔记本引用。
->
+> 需要发布引用的笔记本。 需要发布笔记本才能引用它们。 Synapse Studio无法识别 Git 存储库中未发布的笔记本。 
 >
 
 ---
@@ -386,12 +388,12 @@ Synapse 笔记本仅基于 Spark。 代码单元格在无服务器 Apache Spark 
 [![session-management](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png#lightbox)
 
 #### <a name="spark-session-config-magic-command"></a>Spark 会话 config magic 命令
-还可以通过 magic 命令 %%configure 指定 spark 会话设置。 spark 会话需要重启才能使设置生效。 建议你在笔记本开头运行 %%configure。 下面是一个示例，有关有效参数的完整列表，请参阅 https://github.com/cloudera/livy#request-body 
+还可以通过 magic 命令 %%configure 指定 spark 会话设置。 spark 会话需要重启才能使设置生效。 建议你在笔记本开头运行 %%configure。 下面是一个示例，有关有效参数的完整列表，请参阅 https://github.com/cloudera/livy#request-body 。 
 
-```
-%%configure -f
+```json
+%%configure
 {
-    to config the session.
+    // refer to https://github.com/cloudera/livy#request-body for a list of valid parameters to config the session.
     "driverMemory":"2g",
     "driverCores":3,
     "executorMemory":"2g",
@@ -403,8 +405,8 @@ Synapse 笔记本仅基于 Spark。 代码单元格在无服务器 Apache Spark 
 }
 ```
 > [!NOTE]
-> Synapse 管道不支持 Spark 会话 config magic 命令。
->
+> - 可以在 Synapse 管道中使用 Spark 会话配置 magic 命令。 该命令只有在最高级别调用时才会生效。 将忽略引用的笔记本中使用的 %%configure。
+> - 必须在“conf”正文中使用 Spark 配置属性。 不支持 Spark 配置属性的顶级引用。
 >
 
 ## <a name="bring-data-to-a-notebook"></a>将数据引入笔记本

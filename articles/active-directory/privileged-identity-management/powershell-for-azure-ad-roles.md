@@ -12,25 +12,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2020
+ms.date: 06/30/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2774c63d34de3de951aa8076b56d203b976158ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 936351dd9f2b19fab4ea95012b118d00d0c87299
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548744"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749056"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>适用于 Privileged Identity Management 中 Azure AD 角色的 PowerShell
 
 本文说明如何使用 Azure Active Directory (Azure AD) PowerShell cmdlet 管理 Privileged Identity Management (PIM) 中的 Azure AD 角色。 此外，本文还介绍如何安装 Azure AD PowerShell 模块。
-
-> [!Note]
-> 仅当使用新版 Azure AD Privileged Identity Management 时，才支持正式版 PowerShell。 请转到“Privileged Identity Management”，并确保快速启动边栏选项卡中出现了以下横幅。
-> [![检查所用的 Privileged Identity Management 版本](media/pim-how-to-add-role-to-user/pim-new-version.png "选择“Azure AD”>“Privileged Identity Management”")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)如果未看到此横幅，请等待几周时间，因为我们目前正在推出此项更新的体验。
-> 支持通过 Azure AD 预览版模块使用 Privileged Identity Management PowerShell cmdlet。 如果你一直使用在其他模块，而该模块现在会返回错误消息，请开始使用此新模块。 如果你基于另一模块构建了任何生产系统，请联系 [pim_preview@microsoft.com](mailto:pim_preview@microsoft.com)。
 
 ## <a name="installation-and-setup"></a>安装和设置
 
@@ -159,7 +154,4 @@ Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a
 
 ## <a name="next-steps"></a>后续步骤
 
-- [分配 Azure AD 自定义角色](azure-ad-custom-roles-assign.md)
-- [删除或更新 Azure AD 自定义角色分配](azure-ad-custom-roles-update-remove.md)
-- [配置 Azure AD 自定义角色分配](azure-ad-custom-roles-configure.md)
 - [Azure AD 中的角色定义](../roles/permissions-reference.md)

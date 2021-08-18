@@ -9,12 +9,12 @@ ms.date: 03/12/2021
 ms.author: msangapu
 ms.custom: seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 26515528a809b36be8d13d19f7baf99b5b2f897f
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 5c8ccbb385a72a34107f0ad3f10066c641d7fb46
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110783296"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112296256"
 ---
 # <a name="continuous-deployment-with-custom-containers-in-azure-app-service"></a>在 Azure 应用服务中使用自定义容器进行持续部署
 
@@ -264,6 +264,6 @@ az acr webhook create --name <webhook-name> --registry <registry-name> --resourc
 * [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)
 * [在 Linux 应用服务中创建 .NET Core Web 应用](quickstart-dotnetcore.md)
 * [快速入门：在应用服务上运行自定义容器](quickstart-custom-container.md)
-* [Linux 上的应用服务常见问题](faq-app-service-linux.md)
+* [Linux 上的应用服务常见问题](faq-app-service-linux.yml)
 * [配置自定义容器](configure-custom-container.md)
 * [要部署到 Azure 的操作工作流](https://github.com/Azure/actions-workflow-samples)

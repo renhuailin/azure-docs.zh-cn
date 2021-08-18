@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 04/30/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 944eff6e76f4e5759f70105fe9d09aa61093917f
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 046911fef537f91e1b1d6c5f6c1ca351d2cc171f
+ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107028292"
+ms.lasthandoff: 05/06/2021
+ms.locfileid: "121777783"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-saml-identity-provider-using-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 SAML 标识提供者设置注册和登录
 
@@ -56,7 +56,8 @@ Azure Active Directory B2C (Azure AD B2C) 支持使用 SAML 2.0 标识提供者�
 * SAML 标识提供者能够接收、解码和响应来自 Azure AD B2C 的 SAML 请求。
 * 标识提供者公开可用的 SAML 元数据终结点。
 * [Azure AD B2C 租户](tutorial-create-tenant.md)。
- 
+
+[!INCLUDE [active-directory-b2c-https-cipher-tls-requirements](../../includes/active-directory-b2c-https-cipher-tls-requirements.md)]
 
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
@@ -78,7 +79,7 @@ Azure Active Directory B2C (Azure AD B2C) 支持使用 SAML 2.0 标识提供者�
 1. 在“概述”页上选择“标识体验框架”。
 1. 选择“策略密钥”，然后选择“添加”。
 1. 对于“选项”，请选择 `Upload`。
-1. 输入策略密钥的 **名称**。 例如，`SAMLSigningCert`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 输入策略密钥的 **名称**。 例如，`SAMLSigningCert` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 1. 浏览并选择带有私钥的证书 .pfx 文件。
 1. 单击“创建”。
 

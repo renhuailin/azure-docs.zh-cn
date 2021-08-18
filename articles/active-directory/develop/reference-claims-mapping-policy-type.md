@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/03/2021
+ms.date: 07/01/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 66af0fa248f3ead5755ed3fb27cd3bfd6bb19452
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 567c9172317a15ef2b3bd18e46909fb444d34c65
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060887"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113214624"
 ---
 # <a name="claims-mapping-policy-type"></a>声明映射策略类型
 
@@ -273,7 +273,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3：每个 Source 的有效 ID 值
 
-| Source | ID | 说明 |
+| 源 | ID | 说明 |
 |-----|-----|-----|
 | 用户 | surname | 家族名称 |
 | 用户 | givenname | 名 |
@@ -376,7 +376,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5：允许作为 SAML NameID 数据源的属性
 
-|Source|ID|说明|
+|源|ID|说明|
 |-----|-----|-----|
 | 用户 | mail|电子邮件地址|
 | 用户 | userprincipalname|用户主体名称|
@@ -404,11 +404,6 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | ----- | ----- |
 | ExtractMailPrefix | 无 |
 | 联接 | 要联接的后缀必须是资源租户的已验证域。 |
-
-### <a name="cross-tenant-scenarios"></a>跨租户方案
-
-声明映射策略不适用于来宾用户。 如果来宾用户尝试访问向其服务主体分配了声明映射策略的应用程序，则会颁发默认令牌（策略不会生效）。
-
 
 ## <a name="next-steps"></a>后续步骤
 

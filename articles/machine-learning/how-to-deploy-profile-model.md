@@ -12,12 +12,12 @@ ms.topic: how-to
 zone_pivot_groups: aml-control-methods
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 4583d65a38b4d1f3400d58c69e3615e9cb50556f
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: c222eebc1c2705cc2a5a65b5e11eb12b9a014d6e
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885157"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296364"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>分析模型，确定资源利用率
 
@@ -137,9 +137,8 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 * [部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)
 * [创建客户端应用程序以使用 Web 服务](how-to-consume-web-service.md)
 * [更新 Web 服务](how-to-deploy-update-web-service.md)
-* [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
+* [如何使用自定义 Docker 映像部署模型](./how-to-deploy-custom-container.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)
 * [为模型部署创建事件警报和触发器](how-to-use-event-grid.md)
-

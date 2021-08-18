@@ -2,17 +2,17 @@
 title: 创建自定义终结点 | Microsoft Docs
 description: 本文介绍如何配置要使用 Internet 分析器资源进行度量的自定义终结点。
 services: internet-analyzer
-author: mattcalder
+author: KumudD
 ms.service: internet-analyzer
 ms.topic: how-to
 ms.date: 10/16/2019
-ms.author: mebeatty
-ms.openlocfilehash: 6ca71bce726f16eeacc96e10eb654bb3e21c5924
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: kumud
+ms.openlocfilehash: caf4f93dc1a9341a4dca3b7df110f263eb47fd16
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84744079"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114455099"
 ---
 # <a name="measure-custom-endpoints-to-evaluate-in-your-internet-analyzer-tests"></a>度量要在 Internet 分析器测试中评估的自定义终结点 
 

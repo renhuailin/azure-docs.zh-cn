@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 314e2cf6991a33fb50ee14b9e54f9d47069dc20c
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: d8ba75ce068d7d2b604e9cafa4cde76393175c30
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027886"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114298150"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>配置选项 - 适用于 Java 的 Azure Monitor Application Insights
 
@@ -182,12 +182,10 @@ ms.locfileid: "112027886"
 
 ## <a name="telemetry-processors-preview"></a>遥测处理器（预览版）
 
-此功能为预览版。
-
 它可用于配置将应用于请求、依赖项和跟踪遥测的规则，例如：
  * 屏蔽敏感数据
  * 有条件地添加自定义维度
- * 更新用于聚合 Azure 门户中相似遥测数据的范围名称。
+ * 更新用于在 Azure 门户中聚合类似遥测数据的范围名称。
  * 删除范围属性以控制数据引入成本。
 
 有关详细信息，请查看[遥测处理器](./java-standalone-telemetry-processors.md)文档。
@@ -400,6 +398,13 @@ Application Insights Java 3.X 还沿用全局 `https.proxyHost` 和 `https.proxy
 [//]: # "}"
 [//]: # "```"
 
+## <a name="authentication-preview"></a>身份验证（预览版）
+> [!NOTE]
+> 从版本 3.2.0-BETA 开始提供身份验证功能
+
+它允许你配置代理以生成 Azure Active Directory 身份验证所需的[令牌凭据](/java/api/overview/azure/identity-readme#credentials)。
+有关详细信息，请参阅[身份验证](./azure-ad-authentication.md)文档。
+
 ## <a name="self-diagnostics"></a>自我诊断
 
 “自我诊断”指的是 Application Insights Java 3.X 的内部日志记录。
@@ -443,7 +448,7 @@ Application Insights Java 3.X 还沿用全局 `https.proxyHost` 和 `https.proxy
 {
   "connectionString": "InstrumentationKey=...",
   "role": {
-    "name&quot;: &quot;my cloud role name"
+    "name": "my cloud role name"
   },
   "sampling": {
     "percentage": 100
@@ -454,7 +459,7 @@ Application Insights Java 3.X 还沿用全局 `https.proxyHost` 和 `https.proxy
   },
   "instrumentation": {
     "logging": {
-      "level&quot;: &quot;INFO"
+      "level": "INFO"
     },
     "micrometer": {
       "enabled": true

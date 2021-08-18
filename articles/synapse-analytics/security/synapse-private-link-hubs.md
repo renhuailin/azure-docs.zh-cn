@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: d39beca60264023c8eb7c1bc78cd1ac15c3b45dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 967d7462ebdbbeab9d0653914dc0640af453b7ee
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104586618"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112291882"
 ---
 # <a name="connect-to-azure-synapse-studio-using-azure-private-link-hubs"></a>使用 Azure 专用链接中心连接到 Azure Synapse Studio 
 

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 04/21/2021
+ms.date: 06/22/2021
 ms.author: v-jansk
-ms.openlocfilehash: 2896c5c78acb98c798f85684ef6f800f82549b06
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ae867a4383b5644eca2cabf2651c2c40797ed49a
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412702"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540593"
 ---
 # <a name="start-translation"></a>开始翻译
 
-使用此 API，通过文档翻译服务发起批量翻译请求。 每个请求可包含多个文档，必须包含每个文档的源和目标容器。
+使用此 API，通过文档翻译服务发起翻译请求。 每个请求可包含多个文档，必须包含每个文档的源和目标容器。
 
 前缀和后缀筛选器（如有提供）用于筛选文件夹。 前缀位于子路径中的容器名称后。
 
@@ -59,7 +59,7 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
 
 输入批量翻译请求的定义。
 
-|名称|类型|必须|说明|
+|名称|类型|必需|说明|
 |--- |--- |--- |--- |
 |source|SourceInput[]|正确|下面列出 inputs.source。 输入文档的源。|
 |storageType|StorageInputType[]|False|下面列出 inputs.storageType。 输入文档源字符串的存储类型。 仅需要进行单个文档翻译。|
@@ -69,15 +69,15 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
 
 输入文档的源。
 
-|名称|类型|必须|说明|
+|名称|类型|必需|说明|
 |--- |--- |--- |--- |
 |filter|DocumentFilter[]|错误|下面列出 DocumentFilter[]。|
-|filter.prefix|字符串|错误|区分大小写的前缀字符串，用于筛选源路径中的文档以进行翻译。 例如，使用 Azure 存储 blob URI 时，请使用前缀限制要翻译的子文件夹。|
-|filter.suffix|字符串|错误|区分大小写的后缀字符串，用于筛选源路径中的文档以进行翻译。 这最常用于文件扩展名。|
+|filter.prefix|string|错误|区分大小写的前缀字符串，用于筛选源路径中的文档以进行翻译。 例如，使用 Azure 存储 blob URI 时，请使用前缀限制要翻译的子文件夹。|
+|filter.suffix|string|错误|区分大小写的后缀字符串，用于筛选源路径中的文档以进行翻译。 这最常用于文件扩展名。|
 |语言|字符串|错误|语言代码如果未指定，则将对文档执行自动检测。|
-|sourceUrl|字符串|True|包含文档的文件夹/容器或单个文件的位置。|
+|sourceUrl|string|True|包含文档的文件夹/容器或单个文件的位置。|
 |storageSource|StorageSource|错误|下面列出 StorageSource。|
-|storageSource.AzureBlob|字符串|错误||
+|storageSource.AzureBlob|string|错误||
 
 **inputs.storageType**
 
@@ -85,21 +85,21 @@ POST https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text
 
 |名称|类型|
 |--- |--- |
-|文件|字符串|
+|文件|string|
 |文件夹|string|
 
 **inputs.target**
 
 已完成翻译的文档的目标。
 
-|名称|类型|必须|说明|
+|名称|类型|必需|说明|
 |--- |--- |--- |--- |
-|category|字符串|错误|翻译请求的类别/自定义系统。|
+|category|string|错误|翻译请求的类别/自定义系统。|
 |术语表|Glossary[]|错误|下面列出术语表。 术语表。|
-|glossaries.format|字符串|错误|格式。|
-|glossaries.glossaryUrl|字符串|True（如果使用术语表）|术语表的位置。 如果未提供格式参数，我们将使用文件扩展名来提取格式设置。 如果术语表中没有翻译语言对，则不会应用该术语表。|
+|glossaries.format|string|错误|格式。|
+|glossaries.glossaryUrl|string|True（如果使用术语表）|术语表的位置。 如果未提供格式参数，我们将使用文件扩展名来提取格式设置。 如果术语表中没有翻译语言对，则不会应用该术语表。|
 |glossaries.storageSource|StorageSource|错误|上面列出 StorageSource。|
-|glossaries.version|字符串|错误|可选版本。 如果未指定，则使用默认版本。|
+|glossaries.version|字符串|错误|可选版本。 如果未指定，则使用默认值。|
 |targetUrl|字符串|True|包含文档的文件夹/容器的位置。|
 |语言|字符串|True|目标语言代码（两个字母）。 请参阅[语言代码列表](../../language-support.md)。|
 |storageSource|StorageSource []|错误|上面列出 StorageSource []。|

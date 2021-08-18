@@ -6,12 +6,12 @@ author: ekpgh
 ms.author: rohogue
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 66df6a2018960d83c4aaa9129dad067732a8b3cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 485374e50f86ad1c4e9fa451d046b99d3987e257
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "76152963"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113650944"
 ---
 # <a name="azure-vfxt-for-azure-whitepapers-and-other-resources"></a>Azure vFXT for Azure 白皮书和其他资源
 
@@ -38,4 +38,4 @@ ms.locfileid: "76152963"
 ## <a name="next-steps"></a>后续步骤
 
 * 若要继续规划 Avere vFXT for Azure 部署，请阅读[规划 Avere vFXT 系统](avere-vfxt-deploy-plan.md)。
-* 如需特定问题的答案，请参阅 [Avere vFXT for Azure 常见问题解答](avere-vfxt-faq.md)。
+* 如需特定问题的答案，请参阅 [Avere vFXT for Azure 常见问题解答](avere-vfxt-faq.yml)。

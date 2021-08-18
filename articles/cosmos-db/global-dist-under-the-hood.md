@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 592a9b89379094c88881c3c8485c7e38a1613b34
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 34a7a987de10ec727db0ed5a4e29c679c4dc1416
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219478"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735444"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB 全局数据分布 - 揭秘
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -61,7 +61,7 @@ Cosmos DB 的全球分布依赖于两个关键抽象 - 副本集和分区集 。
 
 ## <a name="conflict-resolution"></a>冲突解决
 
-我们在更新传播、冲突解决和因果关系跟踪的设计灵感来源于以往 [Epidemic 算法](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf)和 [Bayou](https://people.cs.umass.edu/~mcorner/courses/691M/papers/terry.pdf) 系统工作的启发。 尽管这些思路的核心得以留存，并为传达 Cosmos DB 的系统设计提供方便的参考框架，但我们在将其应用于 Cosmos DB 系统时，还是对其做了重大改造。 之所以需要这样做，是因为以前的系统既没有设计资源调控，也不具备运行 Cosmos DB 所需的规模，无法提供 Cosmos DB 向其客户承诺的功能（例如有限过期一致性）和严格且全面的 SLA。  
+我们在更新传播、冲突解决和因果关系跟踪的设计灵感来源于以往 [Epidemic 算法](https://www.kth.se/social/upload/51647982f276546170461c46/4-gossip.pdf)和 [Bayou](https://people.cs.umass.edu/~mcorner/courses/691M/papers/terry.pdf) 系统工作的启发。 尽管这些思路的核心得以留存，并为传达 Cosmos DB 的系统设计提供方便的参考框架，但我们在将其应用于 Cosmos DB 系统时，还是对其做了重大改造。 之所以需要这样做，是因为以前的系统既没有设计资源调控，也不具备运行 Cosmos DB 所需的规模，无法提供 Cosmos DB 向其客户承诺的功能（例如有限过期一致性）和严格且全面的 SLA。  
 
 前面提到，分区集分布在多个区域中，并遵循 Cosmos DB（多区域写入）复制协议在包含给定分区集的物理分区之间复制数据。 （分区集的）每个物理分区通常接受写入到该区域本地的客户端，并为读取操作提供服务。 区域中物理分区接受的写入操作在由客户端确认之前，将以持久方式进行提交并在物理分区中保持高可用性。 这些写入是试探性的，将使用反熵通道传播到分区集中的其他物理分区。 客户端可以通过传递请求标头来请求试探性写入或提交的写入。 反熵传播（包括传播频率）是动态的，基于分区集的拓扑、物理分区的区域邻近性，以及配置的一致性级别。 在分区集中，Cosmos DB 遵循采用动态选定仲裁器分区的主要提交方案。 仲裁器的选择是动态的，在基于叠加层拓扑重新配置分区集时，它是不可或缺的一部分。 可保证提交的写入（包括多行/批处理更新）的顺序。 
 

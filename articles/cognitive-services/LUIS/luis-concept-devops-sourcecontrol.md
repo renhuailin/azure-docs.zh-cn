@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: b860510610330d6c5d60f41dccc9e82bc77685f5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e24ba72960c40031dd49189f151fd3f35190e116
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969440"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463614"
 ---
 # <a name="devops-practices-for-luis"></a>LUIS 的 DevOps 实践
 
@@ -183,7 +183,7 @@ LUDown 格式的 LUIS 应用易于阅读，它支持在适用于审查的 PR 中
 
 ## <a name="versioning"></a>版本控制
 
-应用程序由多个组件组成，其中可能包括 [Azure 机器人服务](/azure/bot-service/bot-service-overview-introduction)、[QnA Maker](https://www.qnamaker.ai/)、[Azure 语音服务](../speech-service/overview.md)等中运行的机器人等。 若要实现松散耦合的应用程序，请使用[版本控制](/azure/devops/learn/git/what-is-version-control)以便独立地对应用程序的每个组件进行版本控制，使开发人员可以通过直接查看版本号来检测重大更改或更新。 如果在 LUIS 应用自己的存储库中对其进行维护，则可以独立于其他组件轻松地对其进行版本控制。
+应用程序由多个组件组成，其中可能包括 [Azure 机器人服务](/azure/bot-service/bot-service-overview-introduction)、[QnA Maker](https://www.qnamaker.ai/)、[Azure 语音服务](../speech-service/overview.md)等中运行的机器人等。 若要实现松散耦合的应用程序，请使用[版本控制](/devops/develop/git/what-is-version-control)以便独立地对应用程序的每个组件进行版本控制，使开发人员可以通过直接查看版本号来检测重大更改或更新。 如果在 LUIS 应用自己的存储库中对其进行维护，则可以独立于其他组件轻松地对其进行版本控制。
 
 主分支的 LUIS 应用应该应用版本控制方案。 将 LUIS 应用的 `.lu` 的更新合并到主分支后，然后将更新后的该源导入到主分支的 LUIS 应用中的新版本。
 

@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/12/2021
+ms.date: 06/17/2021
 ms.author: radeltch
-ms.openlocfilehash: 435528f7338657bc7e7d486a481cdf0ce48f4d38
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: aca16d11bd9ee7e035f7306426a5566c67622a42
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142884"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112369175"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -41,7 +41,7 @@ ms.locfileid: "108142884"
 [2009879]:https://launchpad.support.sap.com/#/notes/2009879
 
 [sap-swcenter]:https://launchpad.support.sap.com/#/softwarecenter
-[template-multisid-db]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
+[template-multisid-db]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
 
 对于本地开发，可以使用 HANA 系统复制或共享存储来建立 SAP HANA 的高可用性。
 在 Azure 虚拟机 (VM) 上，Azure 上的 HANA 系统复制是唯一受支持的高可用性功能。
@@ -349,10 +349,10 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
 
    如 <https://access.redhat.com/solutions/2447641> 和以下 SAP 说明中所述配置 RHEL：  
    - [2292690 - SAP HANA DB: Recommended OS settings for RHEL 7](https://launchpad.support.sap.com/#/notes/2292690)（2292690 - SAP HANA DB：RHEL 7 的建议 OS 设置）
-   - [2777782 - SAP HANA DB: Recommended OS Settings for RHEL 8](https://launchpad.support.sap.com/#/notes/2777782)（2777782 - SAP HANA DB：RHEL 8 的建议 OS 设置）
-   - [2455582 - Linux: Running SAP applications compiled with GCC 6.x](https://launchpad.support.sap.com/#/notes/2455582)（2455582 - Linux：运行使用 GCC 6.x 编译的 SAP 应用程序）
-   - [2593824 - Linux: Running SAP applications compiled with GCC 7.x](https://launchpad.support.sap.com/#/notes/2593824)（2593824 - Linux：运行使用 GCC 7.x 编译的 SAP 应用程序） 
-   - [2886607 - Linux: Running SAP applications compiled with GCC 9.x](https://launchpad.support.sap.com/#/notes/2886607)（2886607 - Linux：运行使用 GCC 9.x 编译的 SAP 应用程序）
+   - [2777782 - SAP HANA DB：建议用于 RHEL 8 的操作系统设置](https://launchpad.support.sap.com/#/notes/2777782)
+   - [2455582 - Linux：运行使用 GCC 6.x 编译的 SAP 应用程序](https://launchpad.support.sap.com/#/notes/2455582)
+   - [2593824 - Linux：运行使用 GCC 7.x 编译的 SAP 应用程序](https://launchpad.support.sap.com/#/notes/2593824) 
+   - [2886607 - Linux：运行使用 GCC 9.x 编译的 SAP 应用程序](https://launchpad.support.sap.com/#/notes/2886607)
 
 1. **[A]** 安装 SAP HANA
 
@@ -679,7 +679,7 @@ op start timeout=3600 op stop timeout=3600 \
 op monitor interval=61 role="Slave" timeout=700 \
 op monitor interval=59 role="Master" timeout=700 \
 op promote timeout=3600 op demote timeout=3600 \
-promotable meta notify=true clone-max=2 clone-node-max=1 interleave=true
+promotable notify=true clone-max=2 clone-node-max=1 interleave=true
 
 sudo pcs resource create vip_<b>HN1</b>_<b>03</b> IPaddr2 ip="<b>10.0.0.13</b>"
 sudo pcs resource create nc_<b>HN1</b>_<b>03</b> azure-lb port=625<b>03</b>
@@ -716,7 +716,7 @@ sudo pcs property set maintenance-mode=false
 
 ## <a name="configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster"></a>在 Pacemaker 群集中配置启用 HANA 活动/读取的系统复制
 
-从 SAP HANA 2.0 SPS 01 开始，SAP 允许对 SAP HANA 系统复制使用启用活动/读取的设置，在这种情况下，SAP HANA 系统复制的辅助系统可积极用于读取密集型工作负载。 若要在群集中支持此类设置，需要提供第二个虚拟 IP 地址，以便客户端能够访问启用了辅助读取的 SAP HANA 数据库。 若要确保辅助复制站点在接管后仍可以访问，群集需要将虚拟 IP 地址与 SAPHana 资源的辅助地址一起移动。
+从 SAP HANA 2.0 SPS 01 开始，SAP 允许对 SAP HANA 系统复制使用启用活动/读取的设置，在这种情况下，SAP HANA 系统复制的辅助系统可积极用于读取密集型工作负载。 若要在群集中支持此类设置，需要提供第二个虚拟 IP 地址，以便客户端能够访问启用辅助启用读取的 SAP HANA 数据库。 若要确保辅助复制站点在接管后仍可以访问，群集需要将虚拟 IP 地址与 SAPHana 资源的辅助地址一起移动。
 
 本部分介绍使用第二个虚拟 IP 在 Red Hat 高可用性群集中管理启用 HANA 活动/读取系统复制所需的其他步骤。    
 

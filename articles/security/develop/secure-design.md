@@ -10,12 +10,12 @@ ms.service: security
 ms.subservice: security-develop
 services: azure
 ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
-ms.openlocfilehash: ee4e8f3abad2a4da924e42f81004c86691a1bc8a
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 6f99ce0f0229de5423a6dde4472b5b11b992f7e8
+ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792504"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112422707"
 ---
 # <a name="design-secure-applications-on-azure"></a>在 Azure 上设计安全的应用程序
 本文介绍了在为云设计应用程序时需要考虑的安全活动和控制措施。 介绍了在 Microsoft [安全开发生命周期 (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) 的要求和设计阶段需要考虑的培训资源以及安全问题和概念。 目标是帮助你定义可用于设计更安全应用程序的活动和 Azure 服务。
@@ -86,7 +86,7 @@ ms.locfileid: "110792504"
 了解这些安全风险可以帮助你制定要求和设计决策，从而将应用程序中的这些风险降到最低。
 
 考虑采取安全控制措施来防止违规，这很重要。
-但是，你还需要[假设会出现违规的情况](/azure/devops/learn/devops-at-microsoft/security-in-devops)。 假设会存在违规，这有助于你提前应对一些重要的安全问题，不致于仓促上阵：
+但是，你还需要[假设会出现违规的情况](/devops/operate/security-in-devops)。 假设会存在违规，这有助于你提前应对一些重要的安全问题，不致于仓促上阵：
 
   - 我将如何检测攻击？
 

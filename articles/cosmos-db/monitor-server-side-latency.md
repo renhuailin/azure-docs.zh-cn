@@ -3,15 +3,15 @@ title: 如何监视 Azure Cosmos DB 中的操作的服务器端延迟
 description: 了解如何监视 Azure Cosmos DB 帐户或容器中的操作的服务器延迟。 Azure Cosmos DB 帐户的所有者可了解 Azure Cosmos 帐户的服务器端延迟问题。
 ms.service: cosmos-db
 ms.topic: how-to
-author: kanshiG
-ms.author: govindk
+ms.author: esarroyo
+author: StefArroyo
 ms.date: 04/07/2020
-ms.openlocfilehash: af58b0810ef45a9fff766b73188f66555ba6bc6c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 883552a556ce0cde191cb3dfeccca0ac09c96a10
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470981"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359616"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>如何监视 Azure Cosmos DB 容器或帐户中的操作的服务器端延迟
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

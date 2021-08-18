@@ -4,12 +4,12 @@ description: 本文介绍在容器见解中如何在不使用 kubectl 的情况�
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2e3a8a417a934374c2c0b256bb65a471d98fdebe
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5dffc98e73a9d9e85b301d3272869b7fb5118ab5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731844"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747662"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>如何实时查看指标
 
@@ -82,4 +82,4 @@ ms.locfileid: "101731844"
 
 ## <a name="next-steps"></a>后续步骤
 
-查看[日志查询示例](container-insights-log-search.md#search-logs-to-analyze-data)，了解预定义的查询和示例，以创建警报、呈现可视化效果或对群集执行进一步分析。
+查看[日志查询示例](container-insights-log-query.md)，了解预定义的查询和示例，以创建警报、呈现可视化效果或对群集执行进一步分析。

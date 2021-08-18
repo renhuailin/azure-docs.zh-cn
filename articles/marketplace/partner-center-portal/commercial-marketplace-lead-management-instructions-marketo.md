@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: cbd12481312d310add15bf3d41e21e9c416f1c39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0a9aecec9e11a41b22b3f1639f653c14a6e7fce
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94491069"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285078"
 ---
 # <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>使用 Marketo 管理商业市场潜在顾客
 
@@ -67,7 +67,7 @@ ms.locfileid: "94491069"
 
 准备好在发布门户中为你的产品/服务配置潜在顾客管理信息后，执行以下步骤。 
 
-1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 登录到[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165290)。
 
 1. 选择你的产品/服务，然后转到“产品/服务设置”选项卡。
 

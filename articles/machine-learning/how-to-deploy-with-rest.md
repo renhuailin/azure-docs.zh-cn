@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 author: rsethur
 ms.author: seramasu
-ms.date: 05/25/2021
+ms.date: 08/05/2021
 ms.reviewer: laobri
-ms.openlocfilehash: b8162a9770aea9d8cb3d1220f0ab81169151f781
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.custom: devplatv2
+ms.openlocfilehash: 97cfd7a5121094af9fc1663fcdddcd4c620b77cc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111747592"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742030"
 ---
 # <a name="deploy-models-with-rest-preview"></a>通过 REST 部署模型（预览版）
 
@@ -34,7 +35,7 @@ REST API 使用标准 HTTP 谓词创建、检索、更新和删除资源。 REST
 
 ## <a name="prerequisites"></a>先决条件
 
-- 你对其拥有管理权限的 **Azure 订阅**。 如果没有此类订阅，请尝试注册[免费或付费的个人订阅](https://aka.ms/AMLFree)。
+- 你对其拥有管理权限的 **Azure 订阅**。 如果没有此类订阅，请尝试注册[免费或付费的个人订阅](https://azure.microsoft.com/free/)。
 - 一个 [Azure 机器学习工作区](how-to-manage-workspace.md)。
 - 工作区中的服务主体。 管理 REST 请求使用[服务主体身份验证](how-to-setup-authentication.md#use-service-principal-authentication)。
 - 一个服务主体身份验证令牌。 请按照[检索服务主体身份验证令牌](./how-to-manage-rest.md#retrieve-a-service-principal-authentication-token)中的步骤检索此令牌。 
@@ -50,7 +51,7 @@ REST API 使用标准 HTTP 谓词创建、检索、更新和删除资源。 REST
 ## <a name="azure-machine-learning-managed-online-endpoints"></a>Azure 机器学习托管联机终结点
 通过托管联机终结点（预览版），无需创建和管理底层基础结构即可部署模型。 在本文中，你将创建一个联机终结点和部署，并通过调用它来对其进行验证。 但首先必须注册部署所需的资产，包括模型、代码和环境。
 
-有多种方法可以创建 Azure 机器学习联机终结点，[包括 CLI](how-to-deploy-managed-online-endpoints.md) 以及可视化的[工作室](how-to-use-managed-online-endpoint-studio.md)。 下面的示例使用 REST API 部署托管联机终结点。
+有多种方法可以创建 Azure 机器学习联机终结点，包括使用 [Azure CLI](how-to-deploy-managed-online-endpoints.md) 创建，以及在[工作室](how-to-use-managed-online-endpoint-studio.md)中以可视方式创建。 下面的示例使用 REST API 部署托管联机终结点。
 
 ## <a name="create-machine-learning-assets"></a>创建机器学习资产
 
@@ -154,6 +155,12 @@ AZURE_STORAGE_KEY=$(az storage account keys list --account-name $AZURE_STORAGE_A
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[使用 CLI](how-to-deploy-managed-online-endpoints.md) 部署模型。
+* 了解如何[使用 Azure CLI](how-to-deploy-managed-online-endpoints.md) 部署模型。
 * 了解如何[使用工作室](how-to-use-managed-online-endpoint-studio.md)部署模型。
+* 了解如何[排查托管联机终结点的部署和评分问题（预览版）](how-to-troubleshoot-managed-online-endpoints.md)
+* 了解如何[使用托管联机终结点和系统托管标识访问 Azure 资源（预览版）](tutorial-deploy-managed-endpoints-using-system-managed-identity.md)
 * 了解如何[监视联机终结点](how-to-monitor-online-endpoints.md)。
+* 了解[联机终结点（预览版）的安全推出](how-to-safely-rollout-managed-endpoints.md)。
+* [查看 Azure 机器学习托管联机终结点（预览版）的成本](how-to-view-online-endpoints-costs.md)。
+* [托管联机终结点 SKU 列表（预览版）](reference-managed-online-endpoints-vm-sku-list.md)。
+* 在[使用 Azure 机器学习管理和增加资源配额](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)中了解托管联机终结点的限制。

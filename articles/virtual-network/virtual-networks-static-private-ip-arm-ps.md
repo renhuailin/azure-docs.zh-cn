@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71d8c9b30923f6b3fd79a42542cac43cbfa09964
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 6b6361aa197076db3e36a36d5b770ccc2d6e0e4f
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110678623"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113431935"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>使用 PowerShell 创建具有静态专用 IP 地址的虚拟机
 
-可以创建具有静态专用 IP 地址的虚拟机 (VM)。 若要从子网中选择分配给 VM 的具体地址，请分配静态专用 IP 地址而非动态地址。 详细了解[静态专用 IP 地址](./public-ip-addresses.md#allocation-method)。 若要将分配给现有 VM 的专用 IP 地址从动态更改为静态，或者要使用公共 IP 地址，请参阅[添加、更改或删除 IP 地址](virtual-network-network-interface-addresses.md)。
+可以创建具有静态专用 IP 地址的虚拟机 (VM)。 若要从子网中选择分配给 VM 的具体地址，请分配静态专用 IP 地址而非动态地址。 详细了解[静态专用 IP 地址](./public-ip-addresses.md#ip-address-assignment)。 若要将分配给现有 VM 的专用 IP 地址从动态更改为静态，或者要使用公共 IP 地址，请参阅[添加、更改或删除 IP 地址](virtual-network-network-interface-addresses.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

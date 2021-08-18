@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 05/27/2021
 ms.topic: how-to
-ms.custom: has-adal-ref, devx-track-js, contperf-fy21q2
-ms.openlocfilehash: 5f8f2c1f6d48a5c1b128643258af083b1811570e
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.custom: has-adal-ref, devx-track-js, contperf-fy21q2, subject-rbac-steps
+ms.openlocfilehash: ce03348957bcfb5a838b92903beed17ddbd9b68f
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854623"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113219437"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>为 Azure 机器学习资源和工作流设置身份验证
 
@@ -140,9 +140,17 @@ Azure AD 条件访问可用于进一步控制或限制对每个身份验证工�
 
 1. [对 VM 上的 Azure 资源启用系统分配的托管标识](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)。
 
-1. 从 [Azure 门户](https://portal.azure.com)选择你的工作区，然后依次选择“访问控制(IAM)”和“添加角色分配”，并从“将访问权限分配至”下拉列表中选择“虚拟机”   。 最后，选择 VM 的标识。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择工作区，然后选择“访问控制(IAM)”。
+1. 依次选择“添加”、“添加角色分配”，以打开“添加角色分配”页  。
+1. 分配以下角色。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
 
-1. 选择要分配给此标识的角色。 例如，参与者或自定义角色。 有关详细信息，请参阅[控制对资源的访问](how-to-assign-roles.md)。
+    | 设置 | 值 |
+    | ----- | ----- |
+    | 角色 | 要分配的角色。 |
+    | 将访问权限分配到 | 托管标识 |
+    | 成员 | 你之前创建的托管标识 |
+
+    ![Azure 门户中的“添加角色分配”页。](../../includes/role-based-access-control/media/add-role-assignment-page.png)
 
 ### <a name="managed-identity-with-compute-cluster"></a>计算群集的托管标识
 

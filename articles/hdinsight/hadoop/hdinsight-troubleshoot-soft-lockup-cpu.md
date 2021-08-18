@@ -4,12 +4,12 @@ description: 监视器 BUG 软锁定 CPU 出现在 Azure HDInsight 群集的内�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/05/2019
-ms.openlocfilehash: 5d9d7b0fc21660dd22ff92bbe2de38c759c440ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2deb421dce440c1c8f949c858269fed038ac3d5
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98944339"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299746"
 ---
 # <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>场景：Azure HDInsight 群集中出现“监视器 BUG 软锁定 CPU”错误
 
@@ -43,7 +43,7 @@ Linux 内核中的一个 [bug](https://bugzilla.kernel.org/show_bug.cgi?id=19943
 
     若要在添加新节点时执行脚本，请选择“保留此脚本操作...”。
 
-1. 选择“创建”。
+1. 选择“创建”  。
 
 1. 等待执行成功。
 
@@ -53,4 +53,4 @@ Linux 内核中的一个 [bug](https://bugzilla.kernel.org/show_bug.cgi?id=19943
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

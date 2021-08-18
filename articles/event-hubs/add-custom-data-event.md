@@ -3,12 +3,12 @@ title: 向 Azure 事件中心中的事件添加自定义数据
 description: 本文介绍如何向 Azure 事件中心中的事件添加自定义数据。
 ms.topic: how-to
 ms.date: 03/19/2021
-ms.openlocfilehash: 3362b6ac4b0d624969aa3ba36d2ebc83b8777cf5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e3f94228c6f2fbe5d533635a01062c701aa9664
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104893395"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113297525"
 ---
 # <a name="add-custom-data-to-events-in-azure-event-hubs"></a>向 Azure 事件中心中的事件添加自定义数据
 由于事件主要包含一组不透明的字节，因此这些事件的使用者很难就如何处理它们做出明智的决策。 为了允许事件发布者为使用者提供更好的上下文，事件可能还包含自定义元数据，其形式为一组键-值对。 包含元数据的一种常见方案是提供有关事件所包含的数据类型的提示，以便使用者了解其格式，并可以对其进行适当反序列化。
@@ -62,4 +62,4 @@ let eventData = { body: "First event", properties: { "event-type": "com.microsof
 请参阅以下快速入门和示例。 
 
 - 快速入门：[.NET](event-hubs-dotnet-standard-getstarted-send.md)、[Java](event-hubs-java-get-started-send.md)、[Python](event-hubs-python-get-started-send.md)、[JavaScript](event-hubs-node-get-started-send.md)
-- GitHub 上的示例：[.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)、[Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples)、[Python](https://github.com/Azure/azure-sdk-for-python/blob/azure-eventhub_5.3.1/sdk/eventhub/azure-eventhub/samples)、[JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/javascript)、[TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/typescript)
+- GitHub 上的示例：[.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)、[Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples)、[Python](https://github.com/Azure/azure-sdk-for-python/blob/azure-eventhub_5.3.1/sdk/eventhub/azure-eventhub/samples)、[JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/event-hubs/samples/v5/javascript)、[TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/event-hubs/samples/v5/typescript)

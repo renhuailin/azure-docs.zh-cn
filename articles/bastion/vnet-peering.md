@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 12/09/2020
+ms.date: 07/13/2021
 ms.author: cherylmc
-ms.openlocfilehash: d7f888c5bbb47a3690aee9b139d2516eb956a35f
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: ccbee86e8f5ae2ab514c8ec7ece4d41e1e890e4e
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110540378"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733279"
 ---
 # <a name="vnet-peering-and-azure-bastion"></a>VNet 对等互连和 Azure Bastion
 
@@ -48,7 +48,7 @@ Azure Bastion 使用以下类型的对等互连：
 3. 若要在“连接”下拉菜单中查看 Bastion，必须在“订阅”>“全局订阅”中选择有权访问的订阅。
 4. 选择要连接到的虚拟机。
 5. 在对等互连的 VNet 中会顺利检测到 Azure Bastion。
-6. 单击一下，在浏览器中打开 RDP/SSH 会话。 有关 RDP 和 SSH 并发会话的限制，请参阅 [RDP 和 SSH 会话](bastion-faq.md#limits)。
+6. 单击一下，在浏览器中打开 RDP/SSH 会话。
 
   :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="“连接”":::
 
@@ -59,7 +59,7 @@ Azure Bastion 使用以下类型的对等互连：
 
 ## <a name="faq"></a>常见问题解答
 
-[!INCLUDE [FAQ for VNet peering](../../includes/bastion-faq-peering-include.md)]
+关于常见问题解答，请参阅 Bastion VNet 对等互连[常见问题解答](bastion-faq.md#peering)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 03/04/2021
 ms.topic: how-to
 ms.custom: synapse-azureml
-ms.openlocfilehash: 046a38da67db86592e91f103f3139b425e59f6a0
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 01ac58f4c462861ba422a869f38b9fbf53690886
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110578891"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112377271"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>如何在机器学习管道中使用由 Azure Synapse Analytics 提供支持的 Apache Spark（预览版）
 
@@ -38,7 +38,7 @@ ms.locfileid: "110578891"
 将 Azure 机器学习工作区和 Azure Synapse Analytics 工作区链接起来后，你可以通过以下方式连接 Apache Spark 池： 
 * [Azure 机器学习工作室](how-to-link-synapse-ml-workspaces.md#attach-a-pool-via-the-studio)
 * Python SDK（[如下所述](#attach-your-apache-spark-pool-as-a-compute-target-for-azure-machine-learning)）
-* Azure 资源管理器 (ARM) 模板（请参阅此[示例 ARM 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)）。 
+* Azure 资源管理器 (ARM) 模板（请参阅此[示例 ARM 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.machinelearningservices/machine-learning-linkedservice-create/azuredeploy.json)）。 
     * 可使用以下代码，通过命令行来遵循 ARM 模板，添加链接服务，并附加 Apache Spark 池：
     ```azurecli
     az deployment group create --name --resource-group <rg_name> --template-file "azuredeploy.json" --parameters @"azuredeploy.parameters.json"
@@ -47,9 +47,9 @@ ms.locfileid: "110578891"
 > [!Important]
 > 若要成功链接到 Azure Synapse Analytics 工作区，必须在 Azure Synapse Analytics 工作区资源中拥有“所有者”角色。 查看 Azure 门户中的访问权限。
 >
-> 当你创建系统分配的托管标识 (SAI) 时，链接服务将获取此标识。 必须给此链接服务 SAI 分配 Synapse Studio 中的“Synapse Apache Spark 管理员”角色，使其可以提交 Spark 作业（请参阅[如何在 Synapse Studio 中管理 Synapse RBAC 角色分配](../synapse-analytics/security/how-to-manage-synapse-rbac-role-assignments.md)）。 
+> 当你创建系统分配的托管标识 (SAI) 时，链接服务会获取此标识。 必须给此链接服务 SAI 分配 Synapse Studio 中的“Synapse Apache Spark 管理员”角色，使其可以提交 Spark 作业（请参阅[如何在 Synapse Studio 中管理 Synapse RBAC 角色分配](../synapse-analytics/security/how-to-manage-synapse-rbac-role-assignments.md)）。 
 > 
-> 还必须向 Azure 机器学习工作区的用户授予资源管理 Azure 门户的“参与者”角色。
+> 还必须向 Azure 机器学习工作区的用户授予进行资源管理的 Azure 门户的“参与者”角色。
 
 ## <a name="retrieve-the-link-between-your-azure-synapse-analytics-workspace-and-your-azure-machine-learning-workspace"></a>检索 Azure Synapse Analytics 工作区与 Azure 机器学习工作区之间的链接
 

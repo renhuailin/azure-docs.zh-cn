@@ -2,14 +2,14 @@
 title: 使用共享访问签名对 Azure 事件中心访问进行身份验证
 description: 本文介绍如何使用共享访问签名对事件中心资源访问进行身份验证。
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 07/26/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 12e129686bdde9b03e1c284e0f54cb31e32469c3
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: f647dd21db2920bff01ac5929c527e66f8d7350b
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111902998"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708527"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 对事件中心资源访问进行身份验证
 使用共享访问签名 (SAS) 可以精细控制向具有共享访问签名的客户端授予的访问权限类型。 下面是可以在 SAS 中设置的一些控制措施： 
@@ -222,7 +222,7 @@ private static string createToken(string resourceUri, string keyName, string key
 请参阅以下文章：
 
 - [使用 SAS 授权](authenticate-shared-access-signature.md)
-- [使用 Azure 基于角色的访问控制 (Azure RBAC) 进行授权](authenticate-shared-access-signature.md)
+- [使用 Azure 基于角色的访问控制 (Azure RBAC) 进行授权](authorize-access-azure-active-directory.md)
 - [详细了解事件中心](event-hubs-about.md)
 
 请参阅以下相关文章：

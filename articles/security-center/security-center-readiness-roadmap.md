@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 4f48ccaab8ba084a3944ba2d5fdd7188efa56555
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 42ca1bf538ff7a8a7479f8db041d35d4ea68692e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556831"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731091"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure 安全中心就绪情况路线图
 本文档提供的就绪情况路线图有助于 Azure 安全中心入门。
@@ -109,8 +109,3 @@ Azure VM 可以充分利用安全中心的高级云防御功能。 这些功能�
 * [PaaS 建议](../security/fundamentals/paas-deployments.md)
 * [遵从性](https://www.microsoft.com/trustcenter/compliance/due-diligence-checklist)
 * [Log Analytics 客户现在可以使用 Azure 安全中心来保护其混合云工作负荷](/archive/blogs/msoms/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads)
-
-## <a name="community-resources"></a>社区资源
-
-* [安全中心 UserVoice](https://feedback.azure.com/forums/347535-azure-security-center)
-* [有关安全中心的 Q&A 页](/answers/topics/azure-security-center.html)

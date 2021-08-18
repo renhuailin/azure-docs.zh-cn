@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7cee2be3c1d7a97b87560873d6cef07ec361ee99
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d9d817077b1bdfb0bd53ec18f25def1c9615d2fb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605172"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736408"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL（单一服务器）中的限制
 下列各部分介绍数据库服务中的容量和功能限制。 如果想了解资源（计算、内存、存储）层，请参阅[定价层](concepts-pricing-tiers.md)一文。
@@ -65,7 +65,7 @@ PostgreSQL 连接，即使空闲，也可以占用大约 10MB 的内存。 而�
 - 不支持还原已删除的服务器。
 
 ### <a name="utf-8-characters-on-windows"></a>Windows 上的 UTF-8 字符
-- 在某些情况下，Windows 上的开源 PostgreSQL 不完全支持 UTF-8 字符，这会影响 Azure Database for PostgreSQL。 有关详细信息，请参阅 [postgresql-archive 中的 Bug #15476](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) 上的话题。
+- 在某些情况下，Windows 上的开源 PostgreSQL 不完全支持 UTF-8 字符，这会影响 Azure Database for PostgreSQL。 有关详细信息，请参阅 [postgresql-archive 中的 Bug #15476](https://www.postgresql.org/message-id/2101.1541220270%40sss.pgh.pa.us) 上的话题。
 
 ### <a name="gss-error"></a>GSS 错误
 如果看到与 GSS 相关的错误，则你可能使用的是 Azure Postgres 单一服务器尚不完全支持的较新客户端/驱动程序版本。 已知此错误会影响 [JDBC 驱动程序版本 42.2.15 和 42.2.16](https://github.com/pgjdbc/pgjdbc/issues/1868)。

@@ -2,19 +2,18 @@
 title: 比较 IoT 中心的事件网格和路由|Microsoft Docs
 description: IoT 中心提供其自己的消息路由服务，同时还与事件网格集成，以进行事件发布。 比较这两个功能。
 author: kgremban
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5d2b0e096c1432b8130ca43a91d277aec93d630f
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 5a5a1ac59a3399fff09db8e7d7fe8739476ca8d5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110191263"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740471"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>比较 IoT 中心的消息路由和事件网格
 

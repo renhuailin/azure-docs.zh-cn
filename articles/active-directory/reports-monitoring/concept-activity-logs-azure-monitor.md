@@ -17,19 +17,19 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37c731648c144d4b25896260e5cf276a97b9e731
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e21e22e231ea5998cf15c7b2982180da91fe49aa
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965766"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733423"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor 中的 Azure AD 活动日志
 
 可将 Azure Active Directory (Azure AD) 活动日志路由到多个终结点以便长期保留以及获取数据见解。 可以使用此功能实现以下操作：
 
 * 将 Azure AD 活动日志存档到 Azure 存储帐户，以便长期保留数据
-* 使用常用的安全信息和事件管理 (SIEM) 工具（例如 Splunk 和 QRadar）将 Azure AD 活动日志流式传输到 Azure 事件中心进行分析。
+* 使用常用的安全信息和事件管理 (SIEM) 工具（例如 Splunk、QRadar 和 Azure Sentinel）将 Azure AD 活动日志流式传输到 Azure 事件中心进行分析。
 * 将 Azure AD 活动日志流式传输到事件中心，以便与自定义日志解决方案集成。
 * 将 Azure AD 活动日志发送到 Azure Monitor 日志，以启用丰富的可视化效果以及对连接数据的监视和警报。
 
@@ -53,10 +53,10 @@ ms.locfileid: "111965766"
 若要使用此功能，需满足以下条件:
 
 * Azure 订阅。 如果没有 Azure 订阅，可以[注册免费试用版](https://azure.microsoft.com/free/)。
-* 在 Azure 门户中访问 Azure AD 审核日志所需的 Azure AD Free、Basic、Premium 1 或 Premium 2 [许可证](https://azure.microsoft.com/pricing/details/active-directory/)。 
+* 在 Azure 门户中访问 Azure AD 审核日志所需的 Azure AD Free、Basic、Premium 1 或 Premium 2 [许可证](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。 
 * Azure AD 租户。
 * 一个是 Azure AD 租户的全局管理员或安全管理员的用户。 
-* 在 Azure 门户中访问 Azure AD 登录日志所需的 Azure AD Premium 1 或 Premium 2 [许可证](https://azure.microsoft.com/pricing/details/active-directory/)。 
+* 在 Azure 门户中访问 Azure AD 登录日志所需的 Azure AD Premium 1 或 Premium 2 [许可证](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。 
 
 根据审核日志数据要路由到的位置，需满足以下条件之一:
 

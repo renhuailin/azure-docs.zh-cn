@@ -17,12 +17,12 @@ ms.date: 05/06/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cce8adf65eba2586440d490860f13a6c5aa1f626
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 032a8fddb836146a5e902b168ab5aea9763bdc31
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110088167"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112376588"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>如何：管理 Azure AD 中的非活动用户帐户
 
@@ -44,7 +44,7 @@ ms.locfileid: "110088167"
     
 ## <a name="how-to-detect-inactive-user-accounts"></a>如何检测非活动用户帐户
 
-通过评估由 Microsoft Graph API 的 signInActivity 资源类型公开的 lastSignInDateTime 属性来检测非活动帐户  。 使用此属性，可以为以下场景实现解决方案：
+通过评估由 Microsoft Graph API 的 signInActivity 资源类型公开的 lastSignInDateTime 属性来检测非活动帐户  。 lastSignInDateTime 属性显示用户上次成功地以交互方式登录 Azure AD 的时间。 使用此属性，可以为以下场景实现解决方案：
 
 - 用户（按名称）：在此场景中，按名称搜索特定用户，这样可以评估 lastSignInDateTime：`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
 
@@ -64,7 +64,7 @@ lastSignInDateTime 属性由 [Microsoft Graph REST API](/graph/overview#whats-in
 
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>lastSignInDateTime 属性是否可通过 Get-AzureAdUser cmdlet 获取？
 
-不是。
+否。
 
 ### <a name="what-edition-of-azure-ad-do-i-need-to-access-the-property"></a>访问属性需要哪些版本的 Azure AD？
 

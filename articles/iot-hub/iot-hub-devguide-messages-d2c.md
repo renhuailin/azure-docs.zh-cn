@@ -11,12 +11,12 @@ ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: d7f6030e8d4d2807084d212713df8630f2d7a17a
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: b460c906806cc9c9beb9c9e037d1096feea098a3
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110191716"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114404395"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>使用 IoT 中心消息路由将设备到云消息发送到不同的终结点
 
@@ -24,7 +24,7 @@ ms.locfileid: "110191716"
 
 消息路由使你能够以自动、可缩放以及可靠的方式将消息从设备发送到云服务。 消息路由可用于： 
 
-* **发送设备遥测消息以及事件**（即设备生命周期事件、设备孪生更改事件、数字孪生更改事件和设备连接状态事件）到内置终结点和自定义终结点。 了解有关[路由终结点](#routing-endpoints)。 若要详细了解从 IoT 即插即用设备发送的事件，请参阅[了解 IoT 即插即用数字孪生体](../iot-pnp/concepts-digital-twin.md)。
+* 发送设备遥测消息以及事件（即设备生命周期事件、设备孪生更改事件、数字孪生体更改事件和设备连接状态事件）到内置终结点和自定义终结点。 了解有关[路由终结点](#routing-endpoints)。 若要详细了解从 IoT 即插即用设备发送的事件，请参阅[了解 IoT 即插即用数字孪生体](../iot-develop/concepts-digital-twin.md)。
 
 * **在将数据路由到各个终结点之前对数据进行筛选**，筛选方法是通过应用丰富的查询。 消息路由允许你查询消息属性和消息正文以及设备孪生标记和设备孪生属性。 深入了解如何使用[消息路由中的查询](iot-hub-devguide-routing-query-syntax.md)。
 
@@ -38,7 +38,7 @@ IoT 中心有一个默认的内置终结点（消息/事件），此终结点与
 
 每条消息都路由到与它的路由查询匹配的所有终结点。 换句话说，消息可以路由到多个终结点。
 
-如果自定义终结点具有防火墙配置，请考虑使用 [Microsoft 受信任的第一方例外情况](./virtual-network-support.md#egress-connectivity-from-iot-hub-to-other-azure-resources)
+如果自定义终结点具有防火墙配置，请考虑使用 [Microsoft 受信任的第一方例外](./virtual-network-support.md#egress-connectivity-from-iot-hub-to-other-azure-resources)
 
 IoT 中心目前支持以下终结点：
 
@@ -107,7 +107,7 @@ public void ListBlobsInContainer(string containerName, string iothub)
 
 使用以下教程了解如何从终结点读取消息。
 
-* 从[内置终结点](quickstart-send-telemetry-node.md)进行读取
+* 从[内置终结点](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)进行读取
 
 * 从 [Blob 存储](../storage/blobs/storage-blob-event-quickstart.md)进行读取
 
@@ -126,7 +126,7 @@ public void ListBlobsInContainer(string containerName, string iothub)
 
 ## <a name="non-telemetry-events"></a>非遥测事件
 
-除了设备遥测数据之外，消息路由还支持发送设备孪生更改事件、设备生命周期事件、数字孪生体更改事件和设备连接状态事件。 例如，如果使用数据源创建一个设置为到 **设备孪生更改事件** 的路由，IoT 中心会将消息发送到包含设备孪生更改的终结点。 同样，如果创建路由时将数据源设置为“设备生命周期事件”，则 IoT 中心会发送一条消息，指示是否删除或创建了设备。 在 [Azure IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)过程中，开发人员可以创建将数据源设置为“数字孪生体更改事件”的路由，并且 IoT 中心在设置或更改数字孪生体属性、更换数字孪生体或发生基础设备孪生更改事件时会发送消息。 最后，如果创建路由时将数据源设置为“设备连接状态事件”，则 IoT 中心会发送一条消息，指示设备已经连接还是已经断开连接。
+除了设备遥测数据之外，消息路由还支持发送设备孪生更改事件、设备生命周期事件、数字孪生更改事件和设备连接状态事件。 例如，如果使用数据源创建一个设置为到 **设备孪生更改事件** 的路由，IoT 中心会将消息发送到包含设备孪生更改的终结点。 同样，如果创建路由时将数据源设置为“设备生命周期事件”，则 IoT 中心会发送一条消息，指示是否删除或创建了设备。 在 [Azure IoT 即插即用](../iot-develop/overview-iot-plug-and-play.md)过程中，开发人员可以创建将数据源设置为“数字孪生体更改事件”的路由，并且 IoT 中心在设置或更改数字孪生体属性、更换数字孪生体或发生基础设备孪生更改事件时会发送消息。 最后，如果创建路由时将数据源设置为“设备连接状态事件”，则 IoT 中心会发送一条消息，指示设备是已连接还是已断开连接。
 
 
 [IoT 中心还集成了 Azure 事件网格](iot-hub-event-grid.md)来发布设备事件以支持基于这些事件的工作流的实时集成和自动化。 请参阅[消息路由和事件网格之间的主要区别](iot-hub-event-grid-routing-comparison.md)来了解哪种更适合你的方案。
@@ -167,6 +167,6 @@ IoT 中心提供了多个与路由和终结点相关的指标，使你能够大�
 
 * 若要了解如何创建消息路由，请参阅[使用路由处理 IoT 中心的设备到云消息](tutorial-routing.md)。
 
-* [如何发送设备到云消息](quickstart-send-telemetry-node.md)
+* [如何发送设备到云消息](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)
 
 * 有关可以用来发送设备到云消息的 SDK 的详细信息，请参阅 [Azure IoT SDK](iot-hub-devguide-sdks.md)。

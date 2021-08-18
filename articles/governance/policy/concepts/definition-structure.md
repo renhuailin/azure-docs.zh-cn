@@ -3,12 +3,12 @@ title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 05/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: 926ee1d44d0f0ce523e883c36203fb278023e6c4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: fdf3b12c3449fc9b2219442d65bae9a0ccdefdfb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753058"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730075"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -16,7 +16,7 @@ Azure Policy 可为资源建立多种约定。 策略定义描述资源符合性
 
 通过定义约定，可以控制成本并更轻松地管理资源。 例如，可指定仅允许特定类型的虚拟机。 也可要求资源使用特定的标记。 策略分配由子资源继承。 如果将策略分配应用到资源组，则会将其应用到该资源组中的所有资源。
 
-策略定义“policyRule”架构可在此处找到：[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
+策略定义“policyRule”架构可在此处找到：[https://schema.management.azure.com/schemas/2020-10-01/policyDefinition.json](https://schema.management.azure.com/schemas/2020-10-01/policyDefinition.json)
 
 使用 JSON 创建策略定义。 策略定义包含以下项的元素：
 
@@ -188,7 +188,7 @@ Azure Policy 内置和模式位于 [Azure Policy 示例](../samples/index.md)。
 
 ### <a name="strongtype"></a>strongType
 
-在 `metadata` 属性中，可以使用 strongType 来提供 Azure 门户中的一个包含选项的多选列表。 strongType 可以是受支持的资源类型，也可以是允许值。 若要确定某个资源类型是否对 strongType 有效，请使用 [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)。 资源类型“StrongType”的格式为 `<Resource Provider>/<Resource Type>`。 例如 `Microsoft.Network/virtualNetworks/subnets`。
+在 `metadata` 属性中，可以使用 strongType 提供 Azure 门户中的选项多选列表。 strongType 可以是受支持的资源类型，也可以是允许值。 若要确定某个资源类型是否对 strongType 有效，请使用 [Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider)。 资源类型“StrongType”的格式为 `<Resource Provider>/<Resource Type>`。 例如 `Microsoft.Network/virtualNetworks/subnets`。
 
 支持部分不是由 **Get-AzResourceProvider** 返回的资源类型。 这些类型包括：
 

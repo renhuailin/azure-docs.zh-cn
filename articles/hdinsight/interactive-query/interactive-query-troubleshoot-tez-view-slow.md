@@ -4,12 +4,12 @@ description: Apache Ambari Tez 视图可能在 Azure HDInsight 中加载缓慢�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
-ms.openlocfilehash: 4fe66b3104be0351a9b0e1df6b6545f71ff276ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0078a01e691844e6ad2e3b4133fa4d0913b240db
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98930774"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112290568"
 ---
 # <a name="scenario-apache-ambari-tez-view-loads-slowly-in-azure-hdinsight"></a>场景：Apache Ambari Tez 视图在 Azure HDInsight 中加载缓慢
 
@@ -29,4 +29,4 @@ Apache Ambari Tez 视图可能加载缓慢或根本无法加载。 加载 Ambari
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/25/2021
 ms.author: bagol
-ms.openlocfilehash: 584f108ea534b8703b941d91b7d03b6275ea6134
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 1f9d0a146c557f50c0cea776c6e3ae6853377df5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958345"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748073"
 ---
 # <a name="integrate-azure-data-explorer-for-long-term-log-retention"></a>集成 Azure 数据资源管理器以实现长期日志保留
 
@@ -31,7 +31,7 @@ ms.locfileid: "111958345"
 
 Azure 数据资源管理器是一个大数据分析平台，针对日志和数据分析进行了高度优化。 由于 Azure 数据资源管理器使用 Kusto 查询语言 (KQL) 作为其查询语言，因此这是 Azure Sentinel 数据存储的一个不错的选择。 通过将 Azure 数据资源管理器用于数据存储，你可以运行跨平台查询，并跨 Azure 数据资源管理器和 Azure Sentinel 可视化数据。
 
-有关详细信息，请参阅 Azure 数据资源管理器[文档](/azure/data-explorer/)和[博客](https://azure.microsoft.com/en-us/blog/tag/azure-data-explorer/)。
+有关详细信息，请参阅 Azure 数据资源管理器[文档](/azure/data-explorer/)和[博客](https://azure.microsoft.com/blog/tag/azure-data-explorer/)。
 
 ### <a name="when-to-integrate-with-azure-data-explorer"></a>何时与 Azure 数据资源管理器集成
 
@@ -239,5 +239,5 @@ Azure Sentinel 提供完整的 SIEM 和 SOAR 功能、快速部署和配置，�
 
 有关详细信息，请参阅：
 
-- [教程：使用 Azure Sentinel 调查事件](tutorial-investigate-cases.md)
+- [教程：使用 Azure Sentinel 调查事件](investigate-cases.md)
 - [使用 Azure Sentinel 搜寻威胁](hunting.md)

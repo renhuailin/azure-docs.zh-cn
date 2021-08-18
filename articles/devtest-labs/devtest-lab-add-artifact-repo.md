@@ -3,12 +3,12 @@ title: 在 Azure 开发测试实验室中将 Git 存储库添加到实验室 | M
 description: 了解如何在 Azure 开发测试实验室中为自定义项目源添加 GitHub 或 Azure DevOps Services Git 存储库。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 225aae5e0a017b711f29a47829b06f8bb7a6a8ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2024c94c433559f067874fa852478a37e41eb53d
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85483136"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112539882"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>添加 Git 存储库以存储自定义项目和资源管理器模板
 
@@ -19,7 +19,7 @@ ms.locfileid: "85483136"
 创建 VM 时，可以保存资源管理器模板，根据需要对其进行自定义，并在以后使用它创建更多 VM。 必须创建自己的专用存储库来存储自定义资源管理器模板。  
 
 * 若要了解如何创建 GitHub 存储库，请参见 [GitHub Bootcamp ](https://help.github.com/categories/bootcamp/)。
-* 要了解如何创建含 Git 存储库的 Azure DevOps Services 项目，请参阅[连接到 Azure DevOps Services](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online)。
+* 要了解如何创建含 Git 存储库的 Azure DevOps Services 项目，请参阅[连接到 Azure DevOps Services](https://azure.microsoft.com/services/devops/)。
 
 下图是一个示例，展示了包含项目的存储库在 GitHub 中的显示方式：  
 

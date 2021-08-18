@@ -4,17 +4,17 @@ description: 从云服务（经典）迁移到云服务（外延支持）时的�
 ms.topic: how-to
 ms.service: cloud-services-extended-support
 ms.subservice: classic-to-arm-migration
-author: tanmaygore
-ms.author: tagore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: 2e56e3d6b5f29996d8fe9606ac9a1b3778201803
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: cdfb7dd5d09d6925de23be70df18037165776a18
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288717"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751114"
 ---
 # <a name="common-errors-and-known-issues-when-migration-to-azure-cloud-services-extended-support"></a>迁移到 Azure 云服务（外延支持）时的常见错误和已知问题
 
@@ -48,7 +48,7 @@ ms.locfileid: "108288717"
 | 不支持迁移云服务 cloud-service-name 中的部署 deployment-name，因为该部署位于区域 region-name。 允许的区域：[可用区域列表]。 | 尚不支持迁移区域。 | 
 | 无法迁移云服务 cloud-service-name 中的部署 deployment-name，因为没有子网与角色 role-name 关联。 将所有角色与子网相关联，然后重试迁移云服务。 | 在迁移之前，通过将云服务(经典)部署置于子网中来对其进行更新。 |  
 | 无法迁移云服务 cloud-service-name 中的部署 deployment-name，因为该部署所需的至少一项功能未在 Azure 资源管理器中的订阅上注册。 请注册所需的所有功能，以迁移该部署。 缺少的功能：[缺少的功能列表]。 | 联系支持人员以获取已注册的功能标志。 | 
-| 无法迁移部署，因为该部署的云服务已有两个槽位被占用。 仅支持为云服务中只有一个部署的部署迁移云服务。 请删除云服务中的其他部署以继续迁移该部署。 | 有关更多详细信息，请参阅[不支持的方案](in-place-migration-overview.md#unsupported-configurations--migration-scenarios)列表。 | 
+| 无法迁移部署，因为该部署的云服务已有两个槽位被占用。 仅支持为云服务中只有一个部署的部署迁移云服务。 请删除云服务中的其他部署以继续迁移该部署。 | 有关更多详细信息，请参阅[不支持的方案](in-place-migration-technical-details.md#unsupported-configurations--migration-scenarios)列表。 | 
 | 托管服务 cloud-service-name 中的部署 deployment-name 处于中间状态 state。 不允许迁移。 | 正在创建、删除或更新部署。 等待操作完成，然后重试。 | 
 | 托管服务 cloud-service-name 中的部署 deployment-name 具有保留的 IP，但没有保留的 IP 名称。 若要解决此问题，请更新保留的 IP 名称或与 Microsoft Azure 服务台联系。 | 更新云服务部署。 | 
 | 托管服务 cloud-service-name 中的部署 deployment-name 具有保留的 IP reserved-ip-name，但该保留的 IP 上没有终结点。 若要解决此问题，请向保留的 IP 添加至少一个终结点。 | 向保留的 IP 添加终结点。 | 

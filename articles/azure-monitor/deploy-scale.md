@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: 422ba2ecaed8803a49c0a82b85d821d3f55c9bbd
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 63da1c8f36f9e2db9593256a071d71ac70ea18bd
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071962"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112380025"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>使用 Azure Policy 大规模部署 Azure Monitor
 虽然某些 Azure Monitor 功能仅配置一次或有限的几次，但另一些功能必须针对要监视的每个资源重复配置。 本文介绍了如何使用 Azure Policy 大规模实施 Azure Monitor 以确保为所有 Azure 资源一致且准确地配置监视功能。
@@ -42,7 +42,7 @@ Azure Policy 包括多个与 Azure Monitor 相关的预生成定义。 你可以
 
   ![Azure 门户中“Azure Policy 定义”页的屏幕截图，其中显示了用于监视类别和内置类型的策略定义的列表。](media/deploy-scale/builtin-policies.png)
 
-## <a name="azure-monitor-agent-preview"></a>Azure Monitor 代理（预览版）
+## <a name="azure-monitor-agent"></a>Azure Monitor 代理
 [Azure Monitor 代理](agents/azure-monitor-agent-overview.md)从 Azure 虚拟机的来宾操作系统中收集监视数据并将数据交付给 Azure Monitor。 它按照[数据收集规则](agents/data-collection-rule-overview.md)将数据配置为从每个代理收集，从而实现大规模收集设置的可管理性，同时仍为部分计算机启用独特的范围配置。  
 创建虚拟机时，使用以下策略和策略计划自动安装代理并将其与数据收集规则关联。
 

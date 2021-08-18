@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 11/06/2020
 ms.author: derekol
-ms.openlocfilehash: cd57825172f69811dfa63e1d1dea048bbf1d5c82
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 79d9d15ff2707dfac7e206cf5a289d7eac00ffb4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626191"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447559"
 ---
 # <a name="peering-service-partners"></a>对等互连服务合作伙伴
 
@@ -34,7 +34,7 @@ Microsoft 已与全球的 Internet 服务提供商 (ISP)、Internet Exchange 提
 | [BBIX](https://www.bbix.net/en/service/) |日本 |
 | [CCL](https://concepts.co.nz/news/general-news/) |大洋洲 |
 | [Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/)|欧洲、亚洲|
-| [DE-CIX](https://www.de-cix.net/microsoft)|欧洲、北美 |
+| [DE-CIX](https://www.de-cix.net/)|欧洲、北美 |
 | [IIJ](https://www.iij.ad.jp/en/) | 日本 |
 | [Intercloud](https://intercloud.com/microsoft-saas-applications/)|欧洲  |
 | [Kordia](https://www.kordia.co.nz/cloudconnect) |大洋洲  |
@@ -54,7 +54,7 @@ Microsoft 已与全球的 Internet 服务提供商 (ISP)、Internet Exchange 提
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解对等互连服务，请参阅[对等互连服务概述](about.md)。
-- 若要了解对等互连服务常见问题解答，请参阅[对等互连服务常见问题解答](faq.md)。
+- 若要了解对等互连服务常见问题解答，请参阅[对等互连服务常见问题解答](faq.yml)。
 - 若要了解合作伙伴加入和对等互连服务配置，请参阅[对等互连服务配置](connection.md)。
 - 若要了解对等互连服务连接，请参阅[对等互连服务连接](connection.md)。
 - 若要了解对等互连服务连接遥测数据，请参阅[对等互连服务连接遥测数据](connection-telemetry.md)。

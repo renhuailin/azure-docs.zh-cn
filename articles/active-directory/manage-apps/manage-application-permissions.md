@@ -2,22 +2,22 @@
 title: 管理用户和管理员权限 - Azure Active Directory | Microsoft Docs
 description: 了解如何在 Azure AD 上查看和管理应用程序的权限。 例如，撤消授予应用程序的所有权限。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 7/10/2020
-ms.author: mtillman
-ms.reviewer: luleonpla
+ms.author: davidmu
+ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa8611fb932fadcdf8cd7c8a361fb840babf16b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 7585ad6816a8d9fd0a331ae9fcb1e1cea81ddbac
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075873"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742884"
 ---
 # <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>对 Azure Active Directory 中拥有过度特权的或可疑的应用程序采取措施
 
@@ -72,10 +72,10 @@ ms.locfileid: "112075873"
 建议通过打开“用户分配”设置来限制对此应用程序的访问。 然后，查看用户和管理员向应用程序授予的权限。
 
 1. 以全局管理员、应用程序管理员或云应用程序管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
-3. 选择“Azure Active Directory” > “企业应用程序”。 
-5. 选择想要限制访问的应用程序。
-6. 选择“属性”，然后将“需要用户要求”设置为“是”  。
-7. 选择“权限”，并查看管理员和用户许可的权限。
+2. 选择“Azure Active Directory” > “企业应用程序”。 
+3. 选择想要限制访问的应用程序。
+4. 选择“属性”，然后将“需要用户要求”设置为“是”  。
+5. 选择“权限”，并查看管理员和用户许可的权限。
 
 可以通过使用 PowerShell 来执行以下操作：
 

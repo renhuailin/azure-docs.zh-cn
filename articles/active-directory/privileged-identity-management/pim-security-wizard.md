@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 09/01/2020
+ms.date: 06/03/2021
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4662e9fb537a93cb87c554e319256e2eca40d2e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8a82f4130d69e722a91799563c4289b6e82cd7f
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92372423"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112232586"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Azure AD 角色的发现和见解（以前称为安全向导）（预览版）
 
@@ -68,4 +68,3 @@ ms.locfileid: "92372423"
 ## <a name="next-steps"></a>后续步骤
 
 - [在 Privileged Identity Management 中分配 Azure AD 角色](pim-how-to-add-role-to-user.md)
-- [授予其他管理员访问权限以管理 Privileged Identity Management](pim-how-to-give-access-to-pim.md)

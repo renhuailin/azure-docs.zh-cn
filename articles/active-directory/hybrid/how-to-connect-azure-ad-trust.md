@@ -1,7 +1,6 @@
 ---
 title: Azure AD Connect - 使用 Azure AD Connect 管理 AD FS 与 Azure AD 之间的信任关系 | Microsoft Docs
 description: 有关使用 Azure AD Connect 处理 Azure AD 信任的操作详细信息。
-keywords: AD FS, ADFS, AD FS 管理, AAD Connect, Connect, Azure AD, 信任, AAD, 声明, 声明规则, 颁发, 转换, 规则, 备份, 还原
 services: active-directory
 documentationcenter: ''
 ms.reviewer: anandyadavmsft
@@ -18,22 +17,23 @@ ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8fea0133b7aa93b16a7e65e9e573723e7e21bae
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85360089"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112460281"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>使用 Azure AD Connect 管理 AD FS 与 Azure AD 之间的信任关系
 
 ## <a name="overview"></a>概述
 
-Azure AD Connect 可以管理本地 Active Directory 联合身份验证服务 (AD FS) 与 Azure AD 之间的联合。 本文提供以下方面的概述：
+将本地环境与 Azure AD 联合时，会在本地标识提供者与 Azure AD 之间建立信任关系。  Azure AD Connect 可以管理本地 Active Directory 联合身份验证服务 (AD FS) 与 Azure AD 之间的联合。 本文提供以下方面的概述：
 
 * Azure AD Connect 针对信任配置的各种设置
 * Azure AD Connect 设置的颁发转换规则（声明规则）
 * 如何在备份和还原升级与配置更新之间的声明规则。 
+* 使用 Azure AD 保护和监视 AD FS 信任的最佳做法
 
 ## <a name="settings-controlled-by-azure-ad-connect"></a>Azure AD Connect 控制的设置
 
@@ -118,6 +118,11 @@ Azure AD Connect 确保始终使用适当的建议声明规则集来配置 Azure
 
 > [!NOTE]
 > 确保其他规则不与 Azure AD Connect 配置的规则相冲突。
+
+## <a name="best-practice-for-securing-and-monitoring-the-ad-fs-trust-with-azure-ad"></a>使用 Azure AD 保护和监视 AD FS 信任的最佳做法
+在将 AD FS 与 Azure AD 联合时，联合身份验证配置（AD FS 和 Azure AD 之间配置的信任关系）必须受到密切监视，任何异常或可疑的活动都必须被捕获。 为此，建议你设置警报，这样你就会在联合身份验证配置发生更改时收到通知。 若要了解如何设置警报，请参阅[监视对联合身份验证配置的更改](how-to-connect-monitor-federation-changes.md)。 
+
+
 
 ## <a name="next-steps"></a>后续步骤
 * [使用 Azure AD Connect 管理和自定义 Active Directory 联合身份验证服务](how-to-connect-fed-management.md)

@@ -3,12 +3,12 @@ title: 在 Azure 开发测试实验室中为 VM 指定资源组 | Microsoft Docs
 description: 了解如何在 Azure 开发测试实验室中为实验室中的 VM 指定资源组。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c6f576a20fc8fada9dd515e8ba2a266761a3e586
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 8b7b331f505864edb5fd2b2cca2f56d9d6349db3
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377482"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112282738"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中为实验室虚拟机指定资源组
 
@@ -112,4 +112,4 @@ az resource update -g $labRg -n $labName --resource-type "Microsoft.DevTestLab/l
 请参阅以下文章： 
 
 - [设置实验室的策略](devtest-lab-set-lab-policy.md)
-- [常见问题解答](devtest-lab-faq.md)
+- [常见问题解答](devtest-lab-faq.yml)

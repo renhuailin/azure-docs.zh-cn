@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2021
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: fe9d735955d0a83b5959035f0c51faeab26fd4f7
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 8f9bf2d231e09c5d2aa636ab8cf03cef42bc58d1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113590500"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733246"
 ---
 1. 在 Azure 门户菜单或主页中，选择“创建资源” 。
 
@@ -28,7 +28,7 @@ ms.locfileid: "113590500"
    | 订阅|你的订阅|选择要用于此 Azure Cosmos DB 帐户的 Azure 订阅。 |
    | 资源组|新建<br><br>然后，输入与帐户名称相同的名称。|选择“新建”。  然后输入帐户的新资源组名称。 为简单起见，请使用与 Azure Cosmos 帐户名称相同的名称。 |
    | 帐户名|输入唯一的名称|输入标识此 Azure Cosmos DB 帐户的唯一名称。 帐户 URI 将是追加到唯一帐户名称的“cassandra.cosmos.azure.com”  。<br><br>帐户名称只能使用小写字母、数字及连字符 (-)，必须为 3 到 31 个字符长。|
-   | API|Cassandra|API 确定要创建的帐户的类型。 Azure Cosmos DB 提供五种 API：Core(SQL)（适用于文档数据库）、Gremlin（适用于图数据库）、MongoDB（适用于文档数据库）、Azure 表和 Cassandra。 必须为每种 API 创建单独的帐户。 <br><br>选择“Cassandra”  ，因为本快速入门将创建使用 Cassandra API 的表。 <br><br>[详细了解 Cassandra API](../cassandra-introduction.md)。|
+   | API|Cassandra|API 确定要创建的帐户的类型。 Azure Cosmos DB 提供五种 API：Core(SQL)（适用于文档数据库）、Gremlin（适用于图数据库）、MongoDB（适用于文档数据库）、Azure 表和 Cassandra。 必须为每种 API 创建单独的帐户。 <br><br>选择“Cassandra”  ，因为本快速入门将创建使用 Cassandra API 的表。 <br><br>[详细了解 Cassandra API](../cassandra/cassandra-introduction.md)。|
    |位置|离用户最近的区域|选择用于托管 Azure Cosmos DB 帐户的地理位置。 使用离用户最近的位置，使他们能够以最快的速度访问数据。|
    |容量模式|预配吞吐量或无服务器|选择“预配吞吐量”以在[预配吞吐量](../set-throughput.md)模式下创建帐户。 选择“无服务器”以在[无服务器](../serverless.md)模式下创建帐户。|
    |应用 Azure Cosmos DB 免费层折扣|“应用”或“不应用” |使用 Azure Cosmos DB 免费层，你将在帐户中获得每秒前 1000 RU 的免费吞吐量和 25 GB 的免费存储。 了解[免费层](https://azure.microsoft.com/pricing/details/cosmos-db/)的详细信息。|
@@ -54,7 +54,7 @@ ms.locfileid: "113590500"
 1. （可选）可以在以下选项卡中配置其他详细信息：
 
    * **网络** - 配置 [来自虚拟网络的访问](../how-to-configure-vnet-service-endpoint.md)。
-   * **备份策略**- 配置 [定期](../configure-periodic-backup-restore.md)或 [连续](../continuous-backup-restore-portal.md)备份策略。
+   * **备份策略**- 配置 [定期](../configure-periodic-backup-restore.md)或 [连续](../provision-account-continuous-backup.md)备份策略。
    * **加密** - 使用服务管理的密钥或 [客户管理的密钥](../how-to-setup-cmk.md#create-a-new-azure-cosmos-account)。
    * **标记** - 标记是名称/值对，通过将相同的标记应用到多个资源和资源组，可以对资源进行分类并查看合并的账单。
 

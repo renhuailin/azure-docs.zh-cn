@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: a68e1a3f60930e290e97084ff2ec9350b18e2873
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96e055205c5c016504cd6246b9c1b6d1533ad6ac
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594966"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736179"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes 网络策略概述
 
@@ -154,7 +154,7 @@ integrations: |-
 除了查看工作簿（下图）之外，还可以在“见解”部分下的“日志”中直接查询 Prometheus 指标。 例如，此查询将返回所收集的所有指标。
 | 其中 TimeGenerated > ago(5h) | 其中名称包含“npm_”
 
-还可以直接向 Log Analytics 查询指标数据。 通过 [Log Analytics 查询入门](../azure-monitor/containers/container-insights-log-search.md)了解更多相关信息 
+还可以直接向 Log Analytics 查询指标数据。 通过 [Log Analytics 查询入门](../azure-monitor/containers/container-insights-log-query.md)了解更多相关信息 
 
 #### <a name="viewing-in-grafana-dashboard"></a>在 Grafana 仪表板中查看
 设置 Grafana 服务器，并按照[此处](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource)所述配置 Log Analytics 数据源。 然后，将[带有 Log Analytics 后端的 Grafana 仪表板](https://grafana.com/grafana/dashboards/10956)导入 Grafana 实验室。

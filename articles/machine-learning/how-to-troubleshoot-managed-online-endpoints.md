@@ -10,12 +10,13 @@ ms.author: petrodeg
 ms.reviewer: laobri
 ms.date: 05/13/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: f493cfc21ff3f5e2aa122bbbc08f24e1a759558e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: devplatv2
+ms.openlocfilehash: 9f50fd0ff60f819717dbcb1e3878b4caf56c563b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480938"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729785"
 ---
 # <a name="troubleshooting-managed-online-endpoints-deployment-and-scoring-preview"></a>排查托管联机终结点的部署和评分问题（预览版）
 
@@ -33,7 +34,7 @@ ms.locfileid: "110480938"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 一个 **Azure 订阅**。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* 一个 **Azure 订阅**。 试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 * [Azure CLI](/cli/azure/install-azure-cli)。
 * [安装、设置和使用 2.0 CLI（预览版）](how-to-configure-cli.md)。
 
@@ -51,7 +52,7 @@ az ml endpoint create -n <endpoint-name> -f <spec_file.yaml> --local
 - Docker 生成新的容器映像，或者从本地 Docker 缓存拉取现有映像。 如果某个现有映像与规范文件的环境部分相匹配，将使用该映像。
 - Docker 启动装载了本地项目（如模型和代码文件）的新容器。
 
-有关详细信息，请参阅[使用托管联机终结点（预览版）在本地部署机器学习模型并为其评分](how-to-deploy-managed-online-endpoints.md#deploy-and-debug-locally-using-local-endpoints)。
+有关详细信息，请参阅[使用托管联机终结点（预览版）在本地部署机器学习模型并为其评分](how-to-deploy-managed-online-endpoints.md#deploy-and-debug-locally-by-using-local-endpoints)。
 
 ## <a name="get-container-logs"></a>获取容器日志
 
@@ -96,6 +97,10 @@ az ml endpoint get-logs -h
 在部署模型之前，需有足够的计算配额。 此配额定义每个订阅、每个工作区、每个 SKU 和每个区域可用的虚拟核心数。 每次部署都会扣减可用配额，删除部署后，会根据 SKU 的类型重新增加配额。
 
 一种可能的缓解措施是检查能否删除未使用的部署。 或者，可以提交[配额提高请求](./how-to-manage-quotas.md)。
+
+### <a name="err_1101-out-of-capacity"></a>ERR_1101：容量不足
+
+由于 Azure 机器学习容量不足，无法预配指定的 VM 大小。 请稍后重试，或尝试部署到其他区域。
 
 ### <a name="err_1200-unable-to-download-user-container-image"></a>ERR_1200: 无法下载用户容器映像
 
@@ -150,6 +155,10 @@ az ml endpoint get-logs -n <endpoint-name> --deployment <deployment-name> --tail
 az ml endpoint get-logs -n <endpoint-name> --deployment <deployment-name> --lines 100
 ```
 
+### <a name="err_1350-unable-to-download-user-model-not-enough-space-on-the-disk"></a>ERR_1350：无法下载用户模型，磁盘空间不足
+
+如果模型的大小大于可用磁盘空间，则会发生此问题。 试用具有更多磁盘空间的 SKU。
+
 ### <a name="err_2100-unable-to-start-user-container"></a>ERR_2100: 无法启动用户容器
 
 为了运行在部署过程中提供的 `score.py`，Azure 将创建一个包含 `score.py` 所需全部资源的容器，并在该容器上运行评分脚本。
@@ -196,8 +205,7 @@ az ml endpoint get-logs
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解部署：
-
-* [使用托管联机终结点（预览版）部署机器学习模型并为其评分](how-to-deploy-managed-online-endpoints.md)
-* [联机终结点的安全推出（预览版）](how-to-safely-rollout-managed-endpoints.md)
+- [使用托管联机终结点（预览版）部署机器学习模型并为其评分](how-to-deploy-managed-online-endpoints.md)
+- [联机终结点的安全推出（预览版）](how-to-safely-rollout-managed-endpoints.md)
+- [托管联机终结点（预览版）YAML 参考](reference-yaml-endpoint-managed-online.md)
 

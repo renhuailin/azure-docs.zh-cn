@@ -8,19 +8,24 @@ ms.date: 03/29/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: a879aff7c3fcaa7ac2c15be295c6c5bdca25ccdf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 023320d29eac767e62e07c58de4f8fa6ac61b61f
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937288"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112117841"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>防止意外删除 Azure 文件共享
+Azure 文件存储为文件共享提供软删除。 使用软删除，可在应用程序或其他存储帐户用户错误地删除了文件共享后恢复文件共享。
 
-Azure 存储为文件共享提供软删除。 使用软删除，可在应用程序或其他存储帐户用户错误地删除了文件共享后恢复文件共享。
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
 
 ## <a name="how-soft-delete-works"></a>软删除的工作方式
-
 启用 Azure 文件共享的软删除后，如果删除文件共享，它将转换为软删除状态，而不是被永久删除。 可配置软删除数据被永久删除前的可恢复时间，并在此保留期内随时取消删除共享。 取消删除之后，共享和所有内容（包括快照）将还原到删除之前的状态。 软删除仅适用于文件共享级别 - 删除的单个文件仍会被永久删除。
 
 可以在新的或现有的文件共享上启用软删除。 此外，软删除还向后兼容，因此无需对应用程序进行任何更改即可利用软删除提供的保护。 

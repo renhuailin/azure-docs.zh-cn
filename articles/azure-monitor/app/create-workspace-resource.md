@@ -4,12 +4,12 @@ description: 了解启用基于工作区的新 Azure Monitor Application Insight
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 0ae01212eaa73deeac4774f7e13f5b46976ee7e2
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 21cf89c7d89e310f98fea4421076d298405b6fc3
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075585"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464453"
 ---
 # <a name="workspace-based-application-insights-resources"></a>基于工作区的 Application Insights 资源
 
@@ -27,7 +27,7 @@ ms.locfileid: "110075585"
 * [客户管理的密钥 (CMK)](../logs/customer-managed-keys.md) 为你的数据提供静态加密，并提供只有你有权访问的加密密钥。
 * 通过 [Azure 专用链接](../logs/private-link-security.md)，可使用专用终结点将 Azure PaaS 服务安全地链接到你的虚拟网络。
 * 借助[适用于 Profiler 和 Snapshot Debugger 的自带存储 (BYOS)](./profiler-bring-your-own-storage.md)，你可以完全控制与 Application Insights Profiler 和 Snapshot Debugger 相关联的所有数据的静态加密策略、生存期管理策略和网络访问。 
-* 使用[产能预留层](../logs/manage-cost-storage.md#pricing-model)可以节省 25% 的成本（与即用即付价格相比）。 
+* 使用[承诺层级](../logs/manage-cost-storage.md#pricing-model)可以节省 30% 的成本（与即用即付价格相比）。 
 * 可以通过 Log Analytics 流引入提高数据引入速度。
 
 ## <a name="create-workspace-based-resource"></a>创建基于工作区的资源

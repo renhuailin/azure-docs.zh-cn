@@ -2,14 +2,14 @@
 title: 按 Azure 服务列出的资源提供程序
 description: 列出 Azure 资源管理器的所有资源提供程序命名空间，并显示该命名空间的 Azure 服务。
 ms.topic: conceptual
-ms.date: 06/14/2021
+ms.date: 08/05/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b83f0874527b366595f27aea6bab01afc1f8060b
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: dae2c2c3af6da9b946ce6e81260f4c124c474a42
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071256"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727190"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服务的资源提供程序
 
@@ -83,8 +83,9 @@ ms.locfileid: "112071256"
 | Microsoft.DBforPostgreSQL | [Azure Database for PostgreSQL](../../postgresql/index.yml) |
 | Microsoft.DesktopVirtualization | [Windows 虚拟桌面](../../virtual-desktop/index.yml) |
 | Microsoft.Devices | [Azure IoT 中心](../../iot-hub/index.yml)<br />[Azure IoT 中心设备预配服务](../../iot-dps/index.yml) |
+| Microsoft.DeviceUpdate | [IoT 中心的设备更新文档](../../iot-hub-device-update/index.yml)
 | Microsoft.DevOps | [Azure DevOps](/azure/devops/) |
-| Microsoft.DevSpaces | [Azure Dev Spaces](../../dev-spaces/index.yml) |
+| Microsoft.DevSpaces | [Azure Dev Spaces](/previous-versions/azure/dev-spaces/) |
 | Microsoft.DevTestLab | [Azure 实验室服务](../../lab-services/index.yml) |
 | Microsoft.DigitalTwins | [Azure 数字孪生](../../digital-twins/overview.md) |
 | Microsoft.DocumentDB | [Azure Cosmos DB](../../cosmos-db/index.yml) |
@@ -101,7 +102,7 @@ ms.locfileid: "112071256"
 | Microsoft.HealthcareApis | [适用于 FHIR 的 Azure API](../../healthcare-apis/fhir/index.yml) |
 | Microsoft.HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
 | Microsoft.HybridData | [StorSimple](../../storsimple/index.yml) |
-| Microsoft.HybridNetwork  | [专用边缘区域](../../networking/edge-zones-overview.md) |
+| Microsoft.HybridNetwork  | [网络功能管理器](../../network-function-manager/index.yml) |
 | Microsoft.ImportExport | [Azure 导入/导出](../../import-export/storage-import-export-service.md) |
 | Microsoft.Insights | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.IoTCentral | [Azure IoT Central](../../iot-central/index.yml) |

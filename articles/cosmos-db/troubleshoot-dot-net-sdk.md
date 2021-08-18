@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 1f7548b355353eb77419f4d1760b40ba02eeddda
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0ffd4851122bb352b8aa60dde6c626f5e0765d8e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102442190"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112287778"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>诊断和排查在使用 Azure Cosmos DB .NET SDK 时出现的问题
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -61,23 +61,27 @@ ms.locfileid: "102442190"
 2. 写入（创建、更新、替换、删除）不是幂等的，因此，SDK 不能总是盲目地重试失败的写入操作。 用户的应用程序逻辑必须能够处理故障并重试。
 3. [SDK 可用性疑难解答](troubleshoot-sdk-availability.md)说明了多区域 Cosmos DB 帐户的重试。
 
+### <a name="retry-design"></a>重试设计
+
+应用程序应设计为对任何异常进行重试，除非已经知道重试将无效。 例如，应用程序应重试 408 请求超时，此超时可能是暂时的，因此重试可能会成功。 应用程序不应在 400 秒后重试，这通常意味着必须首先解决请求存在的问题。 400 秒后重试不会解决问题，如果再次重试，将导致相同的失败。 下表显示了已知故障以及要重试的故障。
+
 ## <a name="common-error-status-codes"></a>常见错误状态代码 <a id="error-codes"></a>
 
-| 状态代码 | 说明 | 
-|----------|-------------|
-| 400 | 错误请求（取决于错误消息）| 
-| 401 | [未授权](troubleshoot-unauthorized.md) | 
-| 403 | 已禁止 |
-| 404 | [找不到资源](troubleshoot-not-found.md) |
-| 408 | [请求已超时](troubleshoot-dot-net-sdk-request-timeout.md) |
-| 409 | 冲突失败是指为写入操作中的资源提供的 ID 已被现有资源使用。 对资源使用另一个 ID 可解决此问题，因为 ID 在具有相同分区键值的所有文档中必须唯一。 |
-| 410 | 消失异常（不应违反 SLA 的瞬间失败） |
-| 412 | 前提条件失败是操作指定的 eTag 与服务器上提供的版本不同。 这是乐观并发错误。 在读取资源的最新版本并更新请求中的 eTag 后重试该请求。
-| 413 | [请求实体太大](concepts-limits.md#per-item-limits) |
-| 429 | [请求过多](troubleshoot-request-rate-too-large.md) |
-| 449 | 仅在进行写入操作时才发生的暂时性错误，可安全重试 |
-| 500 | 操作由于意外服务错误而失败。 联系支持人员。 请参阅“申报 [Azure 支持问题](https://aka.ms/azure-support)”。 |
-| 503 | [服务不可用](troubleshoot-service-unavailable.md) | 
+| 状态代码 | 可重试 | 说明 | 
+|----------|-------------|-------------|
+| 400 | 否 | 错误的请求（即无效的 json、不正确的标头、标头中的分区键不正确）| 
+| 401 | 否 | [未授权](troubleshoot-unauthorized.md) | 
+| 403 | 否 | 已禁止 |
+| 404 | 否 | [找不到资源](troubleshoot-not-found.md) |
+| 408 | 是 | [请求已超时](troubleshoot-dot-net-sdk-request-timeout.md) |
+| 409 | 否 | 冲突失败是指为写入操作中的资源提供的 ID 已被现有资源使用。 对资源使用另一个 ID 可解决此问题，因为 ID 在具有相同分区键值的所有文档中必须唯一。 |
+| 410 | 是 | 消失异常（不应违反 SLA 的瞬间失败） |
+| 412 | 否 | 前提条件失败是操作指定的 eTag 与服务器上提供的版本不同。 这是乐观并发错误。 在读取资源的最新版本并更新请求中的 eTag 后重试该请求。
+| 413 | 否 | [请求实体太大](concepts-limits.md#per-item-limits) |
+| 429 | 是 | 可以安全地重试 429。 对于[请求过多](troubleshoot-request-rate-too-large.md)，可以按照此链接来避免这种情况。|
+| 449 | 是 | 仅在进行写入操作时才发生的暂时性错误，可安全重试。 这可能指向一个设计问题，即有太多并发操作试图更新 Cosmos DB 中的同一对象。 |
+| 500 | 是 | 操作由于意外服务错误而失败。 通过提交 [Azure 支持问题](https://aka.ms/azure-support)联系支持人员。 |
+| 503 | 是 | [服务不可用](troubleshoot-service-unavailable.md) | 
 
 ### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) 端口耗尽
 

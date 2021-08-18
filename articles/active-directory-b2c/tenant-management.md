@@ -12,12 +12,12 @@ ms.date: 06/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 17be85bd21a61ced7772786bb1fdaad1c947e4d1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 8aeb818104e1424d96374bf535d4c02a870f4705
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962292"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453873"
 ---
 # <a name="manage-your-azure-active-directory-b2c-tenant"></a>管理你的 Azure Active Directory B2C 租户
 
@@ -35,7 +35,7 @@ Azure AD B2C 依赖于 Azure AD 平台。 以下 Azure AD 功能可在 Azure AD 
 | [自定义域名](../active-directory/fundamentals/add-custom-domain.md) |  只能对管理帐户使用 Azure AD 自定义域。 | [使用者帐户](user-overview.md#consumer-user)可以使用用户名、电话号码或任何电子邮件地址登录。 可以在重定向 URL 中使用[自定义域](custom-domain.md)。|
 | [条件访问](../active-directory/conditional-access/overview.md) | 完全支持管理帐户和用户帐户。 | [使用者帐户](user-overview.md#consumer-user)支持一部分 Azure AD 条件访问功能。了解如何配置 Azure AD B2C [条件访问](conditional-access-user-flow.md)。|
 | [高级 P1](https://azure.microsoft.com/pricing/details/active-directory) | 充分支持 Azure AD 高级 P1 功能。 例如，[密码保护](../active-directory/authentication/concept-password-ban-bad.md)、[混合标识](../active-directory/hybrid/whatis-hybrid-identity.md)、[条件访问](../active-directory/roles/permissions-reference.md#)、[动态组](../active-directory/enterprise-users/groups-create-rule.md)等。 | [使用者帐户](user-overview.md#consumer-user)支持一部分 Azure AD 条件访问功能。 了解如何配置 Azure AD B2C [条件访问](conditional-access-user-flow.md)。|
-| [高级 P2](https://azure.microsoft.com/pricing/details/active-directory.md) | 充分支持 Azure AD 高级 P2 功能。 例如，[标识保护](../active-directory/identity-protection/overview-identity-protection.md)和[标识治理](../active-directory/governance/identity-governance-overview.md)。  | [使用者帐户](user-overview.md#consumer-user)支持一部分 Azure AD 标识保护功能。 了解如何[使用标识保护调查风险](identity-protection-investigate-risk.md)，并配置 Azure AD B2C [条件访问](conditional-access-user-flow.md)。 |
+| [高级 P2](https://azure.microsoft.com/pricing/details/active-directory/) | 充分支持 Azure AD 高级 P2 功能。 例如，[标识保护](../active-directory/identity-protection/overview-identity-protection.md)和[标识治理](../active-directory/governance/identity-governance-overview.md)。  | [使用者帐户](user-overview.md#consumer-user)支持一部分 Azure AD 标识保护功能。 了解如何[使用标识保护调查风险](identity-protection-investigate-risk.md)，并配置 Azure AD B2C [条件访问](conditional-access-user-flow.md)。 |
 
 ## <a name="other-azure-resources-in-your-tenant"></a>租户中的其他 Azure 资源
 
@@ -206,4 +206,3 @@ Azure AD B2C 依赖于 Azure AD 平台。 以下 Azure AD 功能可在 Azure AD 
 ## <a name="next-steps"></a>后续步骤
 
 - [在 Azure 门户中创建 Azure Active Directory B2C 租户](tutorial-create-tenant.md)
-

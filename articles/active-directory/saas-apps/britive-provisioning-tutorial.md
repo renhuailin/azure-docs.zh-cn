@@ -2,25 +2,22 @@
 title: 教程：使用 Azure Active Directory 为 Britive 配置自动用户预配 | Microsoft Docs
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Britive 及如何取消预配。
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 622688b3-9d20-482e-aab9-ce2a1f01e747
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/05/2021
-ms.author: Zhchia
-ms.openlocfilehash: 8bebcb49bc7bf31614a161c08d33d5910679b614
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 78d1f387af64505c4d7e05ca133ccacd09e2d1e4
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225638"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195846"
 ---
 # <a name="tutorial-configure-britive-for-automatic-user-provisioning"></a>教程：为 Britive 配置自动用户预配
 
@@ -50,7 +47,7 @@ ms.locfileid: "103225638"
 1. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 1. 确定要[在 Azure AD 与 Britive 之间映射](../app-provisioning/customize-application-attributes.md)哪些数据。 
 
-## <a name="step-2-configure-britive-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Britive 以支持通过 Azure AD 进行预配
+## <a name="step-2-configure-britive-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Britive 以支持通过 Azure AD 进行预配
 
 必须按照以下步骤手动配置应用程序：
 1. 使用管理员权限登录到 Britive 应用程序
@@ -76,7 +73,7 @@ ms.locfileid: "103225638"
     ![复制令牌](media/britive-provisioning-tutorial/copy-token.png) 
 
 
-## <a name="step-3-add-britive-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 Britive
+## <a name="step-3-add-britive-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Britive
 
 从 Azure AD 应用程序库添加 Britive，开始管理 Britive 的预配。 如果之前为 Britive 设置过 SSO，则可使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 

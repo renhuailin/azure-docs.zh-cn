@@ -6,12 +6,12 @@ ms.author: v-hhunter
 ms.service: api-management
 ms.topic: article
 ms.date: 05/25/2021
-ms.openlocfilehash: 25a647df5d1afcb5212b4e717e1a70f9a68f4ac5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 71abc9acdcf8796591e7241a7fcfeded1cd3139a
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385028"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112283116"
 ---
 # <a name="deploy-an-azure-api-management-gateway-on-azure-arc-preview"></a>在 Azure Arc 上部署 Azure API 管理网关（预览版）
 
@@ -48,14 +48,15 @@ ms.locfileid: "110385028"
 1. 在预配的网关资源中，单击侧边导航菜单中的“部署”。
 1. 记下下一步的“令牌”和“配置 URL”值 。
 1. 在 Azure CLI 中，使用 `az k8s-extension create` 命令部署网关扩展。 填写 `token` 和 `configuration URL` 值。
-    * 以下示例使用 `service.Type='NodePort'` 扩展配置。 请参阅更多[可用扩展配置](#available-extension-configurations)。
+    * 以下示例使用 `service.type='LoadBalancer'` 扩展配置。 请参阅更多[可用扩展配置](#available-extension-configurations)。
 
     ```azurecli
     az k8s-extension create --cluster-type connectedClusters --cluster-name <cluster-name> \
       --resource-group <rg-name> --name <extension-name> --extension-type Microsoft.ApiManagement.Gateway \
       --scope namespace --target-namespace <namespace> \
       --configuration-settings gateway.endpoint='<Configuration URL>' \
-      --configuration-protected-settings gateway.authKey='<token>' --release-train preview
+      --configuration-protected-settings gateway.authKey='<token>' \
+      --configuration-settings service.type='LoadBalancer' --release-train preview
     ```
 
     > [!TIP]
@@ -92,7 +93,7 @@ ms.locfileid: "110385028"
 | ------- | ----------- | 
 | `gateway.endpoint` | 网关终结点的配置 URL。 |
 | `gateway.authKey` | 用于访问网关的令牌。 | 
-| `service.Type` | 网关的 Kubernetes 服务配置：`LoadBalancer`、`NodePort` 或 `ClusterIP`。 |
+| `service.type` | 网关的 Kubernetes 服务配置：`LoadBalancer`、`NodePort` 或 `ClusterIP`。 |
 
 ### <a name="log-analytics-settings"></a>Log Analytics 设置
 

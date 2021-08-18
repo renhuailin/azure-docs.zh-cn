@@ -4,12 +4,12 @@ description: 了解如何在 Windows 中使用 ARM 模板为 Azure Service Fabri
 ms.topic: how-to
 ms.date: 5/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 800ebb11c1d191ca68222b1fa473cebbca0e8912
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 2b10c5fbade903ec9eb5786fc33eaaddff212956
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671316"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284122"
 ---
 # <a name="enable-disk-encryption-for-service-fabric-managed-cluster-nodes"></a>为 Service Fabric 托管群集节点启用磁盘加密
 
@@ -37,7 +37,7 @@ Azure 磁盘加密需要 Azure Key Vault 来控制和管理磁盘加密密钥和
 
 ### <a name="create-key-vault-with-disk-encryption-enabled"></a>创建启用了磁盘加密的密钥保管库
 
-运行以下命令，创建启用磁盘加密的新密钥保管库。 请确保密钥保管库的区域[受 Service Fabric 托管群集支持](faq-managed-cluster.md#what-regions-are-supported)，并与群集所在区域相同。
+运行以下命令，创建启用磁盘加密的新密钥保管库。 请确保密钥保管库的区域[受 Service Fabric 托管群集支持](./faq-managed-cluster.yml#what-regions-are-supported-)，并与群集所在区域相同。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

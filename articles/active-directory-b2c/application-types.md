@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 06/17/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 07897823a3ba3b83e240e8e8dc005ea13b036fce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e4f54f736a47cc6b351ff02b8fb7f8bad1c5c56
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94952040"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112552687"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>可在 Azure Active Directory B2C 中使用的应用程序类型
  
@@ -139,7 +139,7 @@ Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移�
 
 包含长时运行进程或不需要用户操作的应用程序还需要通过其他方法访问受保护的资源，例如 Web API。 这些应用程序可使用应用程序的标识（而不是用户的委派标识）并使用 OAuth 2.0 客户端凭据流来进行身份验证和获取令牌。 客户端凭据流与代表流不同，代表流不会应用于服务器到服务器的身份验证。
 
-尽管 Azure AD B2C 身份验证服务目前不直接支持 OAuth 2.0 客户端凭据授予流，但你可以使用 Azure AD 和 Microsoft 标识平台/令牌终结点为 Azure AD B2C 租户中的应用程序设置客户端凭据流。 Azure AD B2C 租户与 Azure AD 企业租户共享某些功能。
+尽管 Azure AD B2C 身份验证服务目前不直接支持 OAuth 2.0 客户端凭据授予流，但你可以使用 Azure AD 和 Microsoft 标识平台/令牌 (https://login.microsoftonline.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token) 终结点为 Azure AD B2C 租户中的应用程序设置客户端凭据流。 Azure AD B2C 租户与 Azure AD 企业租户共享某些功能。
 
 若要设置客户端凭据流，请参阅 [Azure Active Directory v2.0 和 OAuth 2.0 客户端凭据流](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)。 如 [Azure AD 令牌参考](../active-directory/develop/id-tokens.md)中所述，身份验证成功后会收到格式化的令牌，以便 Azure AD 可使用它。
 
@@ -150,17 +150,6 @@ Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移�
 许多体系结构包含需要调用另一个下游 Web API 的 Web API，这两者都受 Azure AD B2C 的保护。 此方案常见于具有 Web API 后端的本机客户端，并调用 Microsoft Graph API 等 Microsoft 联机服务。
 
 可以使用 OAuth 2.0 JWT 持有者凭据授权（也称为“代理流”）来支持这种链接的 Web API 方案。  但是，Azure AD B2C 中目前尚未实现代理流。
-
-### <a name="faulted-apps"></a>出错的应用
-
-请勿以这些方式编辑 Azure AD B2C 应用程序：
-
-- 在其他应用程序管理门户（如[应用程序注册门户](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)）中编辑。
-- 使用图形 API 或 PowerShell 编辑。
-
-如果在 Azure 门户外部编辑 Azure AD B2C 应用程序，它将成为出错的应用程序，并且不再可用于 Azure AD B2C。 删除应用程序，然后重新创建它。
-
-若要删除应用程序，请转到[应用程序注册门户](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)并在该处删除应用程序。 若要使应用程序可见，须为该应用程序的所有者（而不仅仅是租户管理员）。
 
 ## <a name="next-steps"></a>后续步骤
 

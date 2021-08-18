@@ -4,12 +4,12 @@ description: 在本快速入门中，我们将为容器注册表启用事件网�
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 43dea2640c9c9445ea464205f6c586bc1e486206
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f355bb6db09d8e97d0678644ba94831fd4ca5253
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784018"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983817"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>快速入门：将事件从专用容器注册表发送到事件网格
 
@@ -142,6 +142,8 @@ az eventgrid event-subscription create \
 ### <a name="build-and-push-image"></a>生成和推送映像
 
 执行以下 Azure CLI 命令，基于 GitHub 存储库的内容生成容器映像。 默认情况下，ACR 任务会自动将成功生成的映像推送到注册表，后者会生成 `ImagePushed` 事件。
+
+[!INCLUDE [pull-image-dockerfile-include](../../includes/pull-image-dockerfile-include.md)]
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git#main

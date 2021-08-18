@@ -6,16 +6,18 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 48aef337326d58b2a503dc48862571efde0d37ab
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 659f62cb8e42a4e2aba2e51dfcfee9826a614923
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105034514"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588321"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）中的限制
 
-> [!IMPORTANT] 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+> [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
 
 本文介绍了 Azure Database for MySQL 灵活服务器服务中的限制。 MySQL 数据库引擎中的[常规限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.7/en/limits.html)也适用。 如果想了解资源（计算、内存、存储）层，请参阅[计算和存储](concepts-compute-storage.md)一文。
@@ -59,7 +61,7 @@ MySQL 服务不允许直接访问基础文件系统。 不支持某些数据操�
 - `SELECT ... INTO OUTFILE`：在该服务中不受支持。
 
 ### <a name="supported"></a>支持
-- 支持 `LOAD DATA INFILE`，但必须指定 `[LOCAL]` 参数，并将其定向到 UNC 路径（通过 SMB 装载的 Azure 存储空间）。
+- 支持 `LOAD DATA INFILE`，但必须指定 `[LOCAL]` 参数，并将其定向到 UNC 路径（通过 SMB 装载的 Azure 存储空间）。 此外，如果使用 MySQL 客户端版本 >= 8.0，则需要在连接字符串中包含 `-–local-infile=1` 参数。
 
 ## <a name="functional-limitations"></a>功能限制
 

@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: devx-track-python, data4ml, synapse-azureml, contperf-fy21q4
-ms.openlocfilehash: 558610a23098a64f0f36ccb5c04ee71e8a7343cb
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 7652f1562050b3253b0df7ee16c4eff5dd6f8e85
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408454"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112376857"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-and-attach-apache-spark-poolspreview"></a>将 Azure Synapse Analytics 工作区和 Azure 机器学习工作区进行链接并附加 Apache Spark 池（预览）
 
@@ -26,7 +26,7 @@ ms.locfileid: "111408454"
 
 可以通过 [Python SDK](#link-sdk) 或 [Azure 机器学习工作室](#link-studio)链接 ML 工作区和 Synapse 工作区。
 
-还可以链接工作区并使用单个 [Azure 资源管理器 (ARM) 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)附加 Synapse Spark 池。
+还可以链接工作区并使用单个 [Azure 资源管理器 (ARM) 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.machinelearningservices/machine-learning-linkedservice-create/azuredeploy.json)附加 Synapse Spark 池。
 
 >[!IMPORTANT]
 > Azure 机器学习与 Azure Synapse 的集成提供公共预览版。 `azureml-synapse` 包提供的功能是[试验性的](/python/api/overview/azure/ml/#stable-vs-experimental)预览功能，并且可能随时更改。
@@ -134,7 +134,7 @@ linked_service = LinkedService.get(ws, 'synapselink1')
 
 可以通过以下方式附加 Apache Spark 池：
 * Azure 机器学习工作室
-* [Azure 资源管理器 (ARM) 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-machine-learning-linkedservice-create/azuredeploy.json)
+* [Azure 资源管理器 (ARM) 模板](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.machinelearningservices/machine-learning-linkedservice-create/azuredeploy.json)
 * Azure 机器学习 Python SDK 
 
 ### <a name="attach-a-pool-via-the-studio"></a>通过工作室附加池

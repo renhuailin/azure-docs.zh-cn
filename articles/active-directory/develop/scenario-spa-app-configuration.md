@@ -3,27 +3,27 @@ title: 配置单页应用 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何生成单页应用程序（应用的代码配置）
 services: active-directory
-author: mtillman
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/11/2020
-ms.author: mtillman
+ms.author: marsma
 ms.custom: aaddev
-ms.openlocfilehash: f8bce3057bec88791890d476ac85d4e6610dc89e
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: f049f49893b2ce1a895b9d175cbc308ee2868043
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075198"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113357564"
 ---
 # <a name="single-page-application-code-configuration"></a>单页应用程序：代码配置
 
 了解如何为单页应用程序 (SPA) 配置代码。
 
-## <a name="microsoft-libraries-supporting-single-page-apps"></a>支持单页应用的 Microsoft 库 
+## <a name="microsoft-libraries-supporting-single-page-apps"></a>支持单页应用的 Microsoft 库
 
 以下 Microsoft 库支持单页应用：
 

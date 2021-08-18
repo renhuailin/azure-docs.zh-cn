@@ -1,19 +1,19 @@
 ---
 title: Azure Synapse Analytics 的 Azure Policy 法规合规性控制措施
 description: 列出可用于 Azure Synapse Analytics 的 Azure Policy 法规合规性控制措施。 这些内置的策略定义提供了管理 Azure 资源符合性的常用方法。
-ms.date: 06/11/2021
+ms.date: 08/13/2021
 ms.topic: reference
 author: julieMSFT
 ms.author: jrasnick
 ms.service: synapse-analytics
 ms.subservice: security
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 4b8c01354eabc026cd54bdfd1647ef4eb7451d8e
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: d1c98c64d3d58919e4a435923f6e64554eb3a041
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031812"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182515"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-synapse-analytics"></a>Azure Synapse Analytics 的 Azure Policy 法规合规性控制措施
 

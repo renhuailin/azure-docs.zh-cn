@@ -2,7 +2,6 @@
 title: 使用 Azure IoT 中心发送云到设备消息 (.NET) | Microsoft Docs
 description: 如何使用用于 .NET 的 Azure IoT SDK 将云到设备消息从 Azure IoT 中心发送到设备。 修改设备应用以接收云到设备消息，并修改后端应用以发送云到设备消息。
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
@@ -15,22 +14,22 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-csharp
-ms.openlocfilehash: d8df9884c0104792240d85d9ebd4235ef2a18741
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10e149218eb783b8cdb36412cca66bc7cd642df7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92142354"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737764"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>使用 IoT 中心 (.NET) 将消息从云发送到设备
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。 [将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)快速入门介绍了如何创建 IoT 中心、在其中预配设备标识，以及编写设备应用来发送设备到云的消息。
+Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。 [将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)快速入门介绍了如何创建 IoT 中心、在其中预配设备标识，以及编写设备应用来发送设备到云的消息。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-本教程建立在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)的基础之上。 它展示了如何执行以下任务：
+本教程建立在[将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)的基础之上。 它展示了如何执行以下任务：
 
 * 通过 IoT 中心，将云到设备的消息从解决方案后端发送到单个设备。
 
@@ -42,7 +41,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 在本教程结束时，会运行 2 个 .NET 控制台应用。
 
-* SimulatedDevice。 此应用连接到 IoT 中心并接收云到设备消息。 此应用是在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)中创建的应用的修改版本。
+* SimulatedDevice。 此应用连接到 IoT 中心并接收云到设备消息。 此应用是在[将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)中创建的应用的修改版本。
 
 * SendCloudToDevice。 此应用通过 IoT 中心将云到设备的消息发送到设备应用，然后接收中心的传送确认。
 
@@ -60,7 +59,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 ## <a name="receive-messages-in-the-device-app"></a>在设备应用中接收消息
 
-在本部分中，会修改在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)中创建的设备应用，以接收来自 IoT 中心的云到设备消息。
+在本部分中，会修改在[将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)中创建的设备应用，以接收来自 IoT 中心的云到设备消息。
 
 1. 在 Visual Studio 的 SimulatedDevice 项目中，将以下方法添加到 SimulatedDevice 类 。
 
@@ -108,7 +107,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
-在本文中，你会创建一个后端服务，以通过在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)中创建的 IoT 中心，发送云到设备消息。 若要发送云到设备消息，服务需要服务连接权限。 默认情况下，每个 IoT 中心都使用名为“服务”的共享访问策略创建，该策略会授予此权限。
+在本文中，你会创建一个后端服务，以通过在[将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)中创建的 IoT 中心，发送云到设备消息。 若要发送云到设备消息，服务需要服务连接权限。 默认情况下，每个 IoT 中心都使用名为“服务”的共享访问策略创建，该策略会授予此权限。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -134,7 +133,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
    using Microsoft.Azure.Devices;
    ```
 
-1. 将以下字段添加到 Program 类。 将 `{iot hub connection string}` 占位符值替换为先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中记下的 IoT 中心连接字符串。 将 `{device id}` 占位符值替换为你在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-dotnet.md)快速入门中添加的设备的设备 ID。
+1. 将以下字段添加到 Program 类。 将 `{iot hub connection string}` 占位符值替换为先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中记下的 IoT 中心连接字符串。 将 `{device id}` 占位符值替换为你在[将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)快速入门中添加的设备的设备 ID。
 
    ``` csharp
    static ServiceClient serviceClient;

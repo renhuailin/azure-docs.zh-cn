@@ -4,12 +4,12 @@ description: 适用于 Application Insights 的语言、平台和集成
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.openlocfilehash: fe71a2d402781625cf22abb91bc56e6e8994f03d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d388914badbd9ac8870a9d5e23370cd5b0319eea
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110079257"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616390"
 ---
 # <a name="supported-languages"></a>支持的语言
 
@@ -24,7 +24,7 @@ ms.locfileid: "110079257"
 ### <a name="instrumentation-for-already-deployed-applications-codeless-agent-based"></a>已部署应用程序的检测（无代码、基于代理）
 * [Azure VM 和 Azure 虚拟机规模集](./azure-vm-vmss-apps.md)
 * [Azure 应用服务](./azure-web-apps.md)
-* [ASP.NET - 适用于已处于活动状态的应用](./monitor-performance-live-website-now.md)
+* [ASP.NET - 适用于使用 IIS 托管的 Web 应用](./status-monitor-v2-overview.md)
 * [Azure 云服务](./cloudservices.md)，包括 Web 角色和辅助角色
 * [Azure Functions](../../azure-functions/functions-monitoring.md)
 ### <a name="instrumentation-through-code-sdks"></a>通过代码进行检测 (SDK)

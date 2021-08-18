@@ -2,7 +2,6 @@
 title: 用于下游设备的网关 - Azure IoT Edge | Microsoft Docs
 description: 使用 Azure IoT Edge 创建一个透明、不透明或代理网关设备，以将数据从多个下游设备发送到云或在本地对其进行处理。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/23/2021
 ms.topic: conceptual
@@ -11,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: aa8b7372af91fc7cb194dfc3a6212cb4ce1fa0a2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 85d93c46ca9ef397b9e2ae95cfc042e50ee10bd1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027340"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742256"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>如何将 IoT Edge 设备用作网关
 

@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 12/17/2020
-ms.openlocfilehash: 4e62645dd5a7a8336df4fccf12daebc730a91168
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 770ee01d054aec084e9abd609af28e8125844e0f
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97678427"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895861"
 ---
 # <a name="security-overview-for-azure-data-share"></a>Azure Data Share 的安全性概述
 
@@ -30,8 +30,7 @@ Azure Data Share 利用托管标识（之前称为 MSI）来访问用于数据�
 创建或接收共享后，对数据共享资源拥有适当权限的用户可以进行更改。 当创建或接收共享的用户离开组织时，它不会终止共享或停止数据流。 对数据共享资源具有适当权限的其他用户可以继续管理该共享。
 
 ## <a name="share-data-from-or-to-data-stores-with-firewall-enabled"></a>启用防火墙时，从数据存储共享数据或将数据共享到数据存储
-若要在打开防火墙的情况下从存储帐户共享数据或将数据共享到存储帐户，需要在存储帐户中启用“允许受信任的 Microsoft 服务”。 请参阅[配置 Azure 存储防火墙和虚拟网络](
-https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)了解详细信息。
+若要在打开防火墙的情况下从存储帐户共享数据或将数据共享到存储帐户，需要在存储帐户中启用“允许受信任的 Microsoft 服务”。 请参阅[配置 Azure 存储防火墙和虚拟网络](../storage/common/storage-network-security.md#trusted-microsoft-services)了解详细信息。
 
 
 ## <a name="next-steps"></a>后续步骤

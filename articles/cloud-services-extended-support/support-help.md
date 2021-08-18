@@ -7,12 +7,12 @@ ms.service: cloud-services-extended-support
 ms.topic: troubleshooting
 ms.date: 4/28/2021
 ms.custom: support-help-page
-ms.openlocfilehash: 7e918b02304058e043dcd0507a33fa8ba172b9bc
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 836811e721a586ca9dcc25d16f27d7393ff8f82b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969475"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463063"
 ---
 # <a name="support-and-troubleshooting-for-azure-cloud-services-extended-support"></a>针对 Azure 云服务（外延支持）的支持和故障排除
 
@@ -23,7 +23,7 @@ ms.locfileid: "111969475"
     <img alt='Self help content' src='./media/logos/doc-logo.png'>
 </div>
 
-有关常见问题和解决方法，请参阅[排查 Azure 云服务（外延支持）角色启动故障](role-startup-failure.md)和[常见问题解答](faq.md)
+有关常见问题和解决方法，请参阅[排查 Azure 云服务（外延支持）角色启动故障](role-startup-failure.md)和[常见问题解答](faq.yml)
 
 
 

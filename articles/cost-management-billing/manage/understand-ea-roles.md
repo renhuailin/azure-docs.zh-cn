@@ -6,15 +6,15 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 04/05/2021
+ms.date: 07/06/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 7331f9a894d36ee15702a8fe53804efd53049762
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 82e5b16ef4f7892a52ea0ec3d332104cbf99bb68
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284113"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765488"
 ---
 # <a name="managing-azure-enterprise-agreement-roles"></a>管理 Azure 企业协议角色
 
@@ -207,11 +207,11 @@ Azure EA 管理员创建部门后，Azure 企业管理员可以添加部门管�
 
 |企业协议管理员角色|角色的视图费用策略|Azure 角色|定价视图|
 |---|---|---|---|
-|帐户所有者或部门管理员|✔ 已启用|“所有者”|组织的 EA 定价|
-|帐户所有者或部门管理员|✘ 已禁用|“所有者”|零售定价|
+|帐户所有者或部门管理员|✔ 已启用|所有者|组织的 EA 定价|
+|帐户所有者或部门管理员|✘ 已禁用|所有者|无定价|
 |帐户所有者或部门管理员|✔ 已启用 |none|无定价|
 |帐户所有者或部门管理员|✘ 已禁用 |none|无定价|
-|无|不适用 |“所有者”|零售定价|
+|无|不适用 |所有者|无定价|
 
 在企业门户中设置企业管理员角色和视图费用策略。 Azure 角色可以在 Azure 门户中更新。 有关详细信息，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 

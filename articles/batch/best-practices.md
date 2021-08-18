@@ -3,12 +3,12 @@ title: 最佳做法
 description: 了解开发 Azure Batch 解决方案的最佳做法和有用技巧。
 ms.date: 04/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 181f8f8ced4113521c8791fd9e1b5d651776783e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: db67f91257db1ddb44f7dfb103ac02e49febe562
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773334"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126457"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -197,7 +197,7 @@ Batch 可以自动重试任务。 有两种类型的重试：用户控制的重�
 
 ### <a name="testing-connectivity-with-cloud-services-configuration"></a>测试与云服务配置的连接
 
-无法将正常的“ping”/ICMP 协议与云服务结合使用，因为不允许通过 Azure 负载均衡器使用 ICMP 协议。 有关详细信息，请参阅 [Azure 云服务的连接和网络](../cloud-services/cloud-services-connectivity-and-networking-faq.md#can-i-ping-a-cloud-service)。
+无法将正常的“ping”/ICMP 协议与云服务结合使用，因为不允许通过 Azure 负载均衡器使用 ICMP 协议。 有关详细信息，请参阅 [Azure 云服务的连接和网络](../cloud-services/cloud-services-connectivity-and-networking-faq.yml#can-i-ping-a-cloud-service-)。
 
 ## <a name="batch-node-underlying-dependencies"></a>Batch 节点的基本依赖项
 

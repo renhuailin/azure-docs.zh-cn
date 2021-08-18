@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c8016b566db8be1b7f5c5ddb8d92123d6673db5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8e55202163a447ca2d7d08999c953e619bc027b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98569838"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746575"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>将代码从 REST API 的 v2.0 迁移到 v3.0
 
@@ -143,7 +143,7 @@ ms.locfileid: "98569838"
 有关如何创建多批听录的详细说明，请参阅[批量听录操作说明](./batch-transcription.md)。
 
 通过 v3 听录 API，可显式设置特定的听录选项。 现在可以在 `properties` 属性中设置所有（可选）配置属性。
-版本 v3 还支持多个输入文件，因此它需要一列 URL，而不是像 v2 那样只需一个 URL。 v2 属性名称 `recordingsUrl` 在 v3 中现为 `contentUrls`。 v3 已在听录中删除情绪分析功能。 有关情绪分析选项，请参阅 Microsoft 认知服务[文本分析](https://azure.microsoft.com/en-us/services/cognitive-services/text-analytics/)。
+版本 v3 还支持多个输入文件，因此它需要一列 URL，而不是像 v2 那样只需一个 URL。 v2 属性名称 `recordingsUrl` 在 v3 中现为 `contentUrls`。 v3 已在听录中删除情绪分析功能。 有关情绪分析选项，请参阅 Microsoft 认知服务[文本分析](https://azure.microsoft.com/services/cognitive-services/text-analytics/)。
 
 `properties` 下的新属性 `timeToLive` 可帮助删除现有的已完成实体。 `timeToLive` 指定一个持续时间，过了该时间后，完成的实体将自动被删除。 当连续跟踪、使用和删除实体时，请将其设置为较高的值（例如 `PT12H`），因此通常会在 12 小时之内处理完毕。
 

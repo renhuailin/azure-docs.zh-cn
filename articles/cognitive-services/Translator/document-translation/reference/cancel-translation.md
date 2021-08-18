@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 04/21/2021
+ms.date: 06/20/2021
 ms.author: v-jansk
-ms.openlocfilehash: 46348fe35f425811e2ff03208feeae6ab7a112bd
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: eb8411717d0229b13571284176da7ccc113cf828
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453573"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540733"
 ---
 # <a name="cancel-translation"></a>取消翻译
 
-取消当前正在处理或加入队列的操作。 如果某个操作已完成、已失败或正在取消，则该操作将不会被取消， 而是返回错误的请求。 所有已完成翻译的文档都不会被取消，并且需要付费。 如果可以，所有待处理的文件都将取消。
+取消当前正在处理或加入队列的操作。 如果某个操作已完成、已失败或正在取消，则该操作不会被取消， 而是返回错误的请求。 所有已完成翻译的文档都不会被取消，并且需要付费。 如果可以，所有待处理的文件都将取消。
 
 ## <a name="request-url"></a>请求 URL
 
@@ -95,7 +95,7 @@ https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/batc
 |innerError|InnerTranslationError|新内部错误格式，符合认知服务 API 准则。 这包含必需的属性 ErrorCode、消息和可选属性目标、详细信息（键值对）、内部错误（可以嵌套）。|
 |innerError.code|字符串|获取代码错误字符串。|
 |innerError.message|字符串|获取概要错误消息。|
-|innerError.target|string|获取错误的源。 例如，如果存在无效的文档，应为“文档”或“文档 ID”。|
+|innerError.target|string|获取错误的源。 例如，如果存在无效的文档，则为“文档”或“文档 ID”。|
 
 ## <a name="examples"></a>示例
 

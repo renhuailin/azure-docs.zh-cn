@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 9df1304cd127f15d948fba3e498f6fbfbce30557
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e4e4a7169d7550523fb2e712560d1bdf86197558
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110701006"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112679127"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>使用 Windows Data Science Virtual Machine 的数据科学
 
@@ -49,7 +49,7 @@ DSVM 与 Azure 服务紧密协同工作。 它可以读取并处理已存储在 
 
 
 ## <a name="use-jupyter-notebooks"></a>使用 Jupyter Notebook
-Jupyter Notebook 提供基于浏览器的 IDE，用于数据探索和建模。 可以在 Jupyter Notebook 中使用 Python 2、Python 3 或 R（开源和 Microsoft R Server）。
+Jupyter Notebook 提供基于浏览器的 IDE，用于数据探索和建模。 可以在 Jupyter Notebook 中使用 Python 2、Python 3 或 R。
 
 若要启动 Jupyter Notebook，请在“开始”菜单或桌面上选择“Jupyter Notebook”图标。  在 DSVM 命令提示符处，还可以从包含现有笔记本或想在其中创建新笔记本的目录中运行 ```jupyter notebook``` 命令。  
 
@@ -68,6 +68,10 @@ Jupyter Notebook 提供基于浏览器的 IDE，用于数据探索和建模。 �
 在笔记本中，可探索数据、生成模型、使用自己选择的库测试模型。
 
 ## <a name="explore-data-and-develop-models-with-microsoft-machine-learning-server"></a>使用 Microsoft Machine Learning Server 探索数据和开发模型
+
+> [!NOTE]
+> 对 Machine Learning Server 独立版的支持将于 2021 年 7 月 1 日结束。 我们将在 6 月 30 日之后从 DSVM 映像中删除它。 现有部署可继续访问该软件，但由于已到达支持结束日期，因此在 2021 年 7 月 1 日之后将不再为其提供支持。
+
 使用 R 和 Python 之类的语言即可在 DSVM 上执行数据分析。
 
 对于 R，可以使用 RStudio 等 IDE（可在“开始”菜单或桌面找到）。 也可使用针对 Visual Studio 的 R 工具。 Microsoft 额外提供了基于开源/CRAN-R 的库，以便支持可扩展的分析，并提供分析大型数据（大于并行区块分析所允许的内存大小）的能力。 
@@ -254,7 +258,7 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 ### <a name="azure-synapse-analytics-and-databases"></a>Azure Synapse Analytics 和数据库
 Azure Synapse Analytics 是一项弹性数据仓库即服务，具有企业级 SQL Server 体验。
 
-可以按照[本文](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)中的说明预配 Azure Synapse Analytics。 预配 Azure Synapse Analytics 后，可按照[此演练](../team-data-science-process/sqldw-walkthrough.md)，使用 Azure Synapse Analytics 中的数据执行数据上传、探索和建模。
+可以按照[本文](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)中的说明预配 Azure Synapse Analytics。 预配 Azure Synapse Analytics 后，可按照[此演练](/azure/architecture/data-science-process/sqldw-walkthrough)，使用 Azure Synapse Analytics 中的数据执行数据上传、探索和建模。
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB 是云中的 NoSQL 数据库。 可用其处理 JSON 等文档及存储和查询文档。

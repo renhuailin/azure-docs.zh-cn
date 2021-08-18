@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: e37c5a748a8e99f49e3535946268427139bbbf44
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 73c91e1c4d72fce5757b0b1a0caafc22e0fbcc60
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102184417"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114230510"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用公共标准负载均衡器
 
@@ -127,7 +127,7 @@ AKS 创建的公共 IP 被视为受 AKS 管理的资源。 这意味着该公共
 
 - 自定义公共 IP 地址必须由用户创建和拥有。 由 AKS 创建的托管公共 IP 地址不能重新用于自带的自定义 IP，因为它可能会导致管理冲突。
 - 必须确保 AKS 群集标识（服务主体或托管标识）有权访问出站 IP。 依据[必需的公共 IP 权限列表](kubernetes-service-principal.md#networking)。
-- 确保满足配置出站 IP 或出站 IP 前缀所需的[先决条件和限制](../virtual-network/public-ip-address-prefix.md#constraints)。
+- 确保满足配置出站 IP 或出站 IP 前缀所需的[先决条件和限制](../virtual-network/public-ip-address-prefix.md#limitations)。
 
 #### <a name="update-the-cluster-with-your-own-outbound-public-ip"></a>使用自己的出站公共 IP 更新群集
 
@@ -342,7 +342,7 @@ spec:
 ### <a name="steps"></a>步骤
 1. 检查连接是否长时间处于空闲状态，以及是否依靠默认的空闲超时释放该端口。 如果是，可能需要为你的场景减少 30 分钟的默认超时。
 2. 调查应用程序如何建立出站连接（例如，通过代码评审或数据包捕获进行调查）。
-3. 确定此活动是否为预期行为，或者应用程序是否行为异常。 使用 Azure Monitor 中的[指标](../load-balancer/load-balancer-standard-diagnostics.md)和[日志](../load-balancer/load-balancer-monitor-log.md)来证实发现结果。 例如，对“SNAT 连接”指标使用“失败”类别。
+3. 确定此活动是否为预期行为，或者应用程序是否行为异常。 使用 Azure Monitor 中的[指标](../load-balancer/load-balancer-standard-diagnostics.md)和[日志](../load-balancer/monitor-load-balancer.md)来证实发现结果。 例如，对“SNAT 连接”指标使用“失败”类别。
 4. 评估是否遵循适当的[模式](#design-patterns)。
 5. 评估[更多出站 IP 地址 + 更多分配的出站端口](#configure-the-allocated-outbound-ports)是否应可以缓解 SNAT 端口耗尽的问题。
 
@@ -402,19 +402,19 @@ spec:
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [aks-sp]: kubernetes-service-principal.md#delegate-access-to-other-azure-resources
-[az-aks-show]: /cli/azure/aks#az-aks-show
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-aks-install-cli]: /cli/azure/aks#az-aks-install-cli
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-group-create]: /cli/azure/group#az-group-create
-[az-provider-register]: /cli/azure/provider#az-provider-register
-[az-network-lb-outbound-rule-list]: /cli/azure/network/lb/outbound-rule#az-network-lb-outbound-rule-list
-[az-network-public-ip-show]: /cli/azure/network/public-ip#az-network-public-ip-show
-[az-network-public-ip-prefix-show]: /cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
+[az-aks-show]: /cli/azure/aks#az_aks_show
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-aks-install-cli]: /cli/azure/aks#az_aks_install_cli
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-group-create]: /cli/azure/group#az_group_create
+[az-provider-register]: /cli/azure/provider#az_provider_register
+[az-network-lb-outbound-rule-list]: /cli/azure/network/lb/outbound-rule#az_network_lb_outbound_rule_list
+[az-network-public-ip-show]: /cli/azure/network/public-ip#az_network_public_ip_show
+[az-network-public-ip-prefix-show]: /cli/azure/network/public-ip/prefix#az_network_public_ip_prefix_show
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/skus.md
 [azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-connections.md#outboundrules
@@ -425,8 +425,8 @@ spec:
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [use-kubenet]: configure-kubenet.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
 [requirements]: #requirements-for-customizing-allocated-outbound-ports-and-idle-timeout
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [troubleshoot-snat]: #troubleshooting-snat

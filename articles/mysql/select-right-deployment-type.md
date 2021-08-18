@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 125431e6630ccfdd9e0e5d6b2a4ec5fa9b9e58fd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4cfa90e2863583cf920df333fd2e5dbd7d7b46c6
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101736179"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113084599"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>在 Azure 中选择适当的 MySQL Server 选项
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](includes/applies-to-mysql-single-flexible-server.md)]
 
 在 Azure 中，MySQL 服务器工作负荷可以在托管的虚拟机基础结构即服务 (IaaS) 中运行，或者作为托管的平台即服务 (PaaS) 运行。 PaaS 提供多个部署选项，每个部署选项中有多个服务层级。 在 IaaS 和 PaaS 之间选择时，必须决定是要管理数据库、应用修补程序并进行备份，还是要将这些操作委托给 Azure。
 
@@ -45,9 +47,9 @@ ms.locfileid: "101736179"
 |:-------------------|:-------------------------------------------|:---------------------------------------------|:---------------------------------------|
 | MySQL 版本支持 | 5.6、5.7 和 8.0| 5.7 和 8.0 | 任何版本|
 | 计算缩放 | 支持（不支持从基本层缩放和缩放到基本层）| 支持 | 支持|
-| 存储大小 | 5 GiB 到 16 TiB| 5 GiB 到 16 TiB | 32 GiB 到 32,767 GiB|
+| 存储大小 | 5 GiB 到 16 TiB| 20 GiB 到 16 TiB | 32 GiB 到 32,767 GiB|
 | 联机存储缩放 | 支持| 支持| 不支持|
-| 自动存储缩放 | 支持| 在预览版中不受支持| 不支持|
+| 自动存储缩放 | 支持| 支持| 不支持|
 | 额外 IOPs 缩放 | 不支持| 支持| 不支持|
 | 网络连接 | - 具有服务器防火墙的公共终结点。<br/> - 具有专用链接支持的专用访问。|- 具有服务器防火墙的公共终结点。<br/> - 具有虚拟网络集成的专用访问。| - 具有服务器防火墙的公共终结点。<br/> - 具有专用链接支持的专用访问。|
 | 服务级别协议 (SLA) | 99.99% 可用性 SLA |预览版中没有 SLA| 99.99% 使用可用性区域|
@@ -56,16 +58,16 @@ ms.locfileid: "101736179"
 | 高可用性 | 单个可用性区域内的内置 HA| 可用性区域内和跨可用性区域的内置 HA | 使用群集、复制等进行自定义托管|
 | 区域冗余 | 不支持 | 支持 | 支持|
 | 区域位置 | 不支持 | 支持 | 支持|
-| 混合场景 | 支持，并可使用[数据传入复制](./concepts-data-in-replication.md)| 不适用于预览版 | 由最终用户管理 |
+| 混合场景 | 支持，并可使用[数据传入复制](./concepts-data-in-replication.md)| 支持，并可使用[数据传入复制](./flexible-server/concepts-data-in-replication.md) | 由最终用户管理 |
 | 只读副本 | 受支持（最多 5 个副本）| 受支持（最多 10 个副本）| 由最终用户管理 |
 | Backup | 自动执行，保留 7-35 天 | 自动执行，保留 1-35 天 | 由最终用户管理 |
 | 监视数据库操作 | 支持 | 支持 | 由最终用户管理 |
-| 灾难恢复 | 支持，可以使用异地冗余备份存储和跨区域只读副本 | 在预览版中不受支持| 使用复制技术进行自定义托管 |
+| 灾难恢复 | 支持，可以使用异地冗余备份存储和跨区域只读副本 | 即将推出| 使用复制技术进行自定义托管 |
 | 查询性能见解 | 支持 | 不适用于预览版| 由最终用户管理 |
-| 预留实例定价 | 支持 | 不适用于预览版 | 支持 |
+| 预留实例定价 | 支持 | 即将推出 | 支持 |
 | Azure AD 身份验证 | 支持 | 不适用于预览版 | 不支持|
 | 静态数据加密 | 支持客户管理的密钥 | 支持服务托管密钥 | 不支持|
-| SSL/TLS | 默认情况下已启用，支持 TLS v1.2、1.1 和 1.0 | 强制使用 TLS v1.2 | 在 TLS v1.2、1.1 和 1.0 中受支持 |
+| SSL/TLS | 默认情况下已启用，支持 TLS v1.2、1.1 和 1.0 | 默认情况下已启用，支持 TLS v1.2、1.1 和 1.0| 在 TLS v1.2、1.1 和 1.0 中受支持 |
 | 群队管理 | 在 Azure CLI、PowerShell、REST 和 Azure 资源管理器中受支持 | 在 Azure CLI、PowerShell、REST 和 Azure 资源管理器中受支持  | 装有 Azure CLI、PowerShell、REST 和 Azure 资源管理器的 VM 支持此功能 |
 
 ## <a name="business-motivations-for-choosing-paas-or-iaas"></a>选择 PaaS 或 IaaS 的业务动机

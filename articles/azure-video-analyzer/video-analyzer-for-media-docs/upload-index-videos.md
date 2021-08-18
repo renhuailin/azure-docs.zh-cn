@@ -1,19 +1,20 @@
 ---
 title: 使用 Azure 视频分析器媒体版（以前称为视频索引器）上传视频和编制视频索引
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: 本主题演示如何通过 Azure 视频分析器媒体版（以前称为视频索引器）使用 API 来上传视频和编制视频索引。
 author: Juliako
 manager: femila
 ms.service: azure-video-analyzer
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 05/12/2021
 ms.author: juliako
-ms.openlocfilehash: aef9cb4c99385e82f86818cc106c8dc62f0fd6cf
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: ce8804d1f057bc8f67331211c7ed4b734750aa19
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110538163"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119075"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -322,7 +323,7 @@ public class AccountContractSlim
 
 上传操作可能会返回下表中列出的状态代码。
 
-|状态代码|ErrorType（在响应正文中）|描述|
+|状态代码|ErrorType（在响应正文中）|说明|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|相同的视频已在给定帐户的处理进度中。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小时前，相同的视频已在给定帐户中处理失败。 API 客户端应至少等待 2 小时才能重新上传视频。|

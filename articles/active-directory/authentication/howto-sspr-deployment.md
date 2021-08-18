@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 07/13/2021
 ms.author: baselden
 author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3e7792546531d7f443a44b127620d508816edcb
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 272eaf3a21992cb5fecf1c02e5ab1000af149bcc
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108285765"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687832"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>规划 Azure Active Directory 自助式密码重置部署
 
@@ -62,7 +62,7 @@ Azure Active Directory 按用户许可，这意味着，每个用户需要为其
 
 若要比较版本和功能并启用基于组或基于用户的许可，请参阅 [Azure AD 自助式密码重置的许可要求](./concept-sspr-licensing.md)。
 
-有关定价的详细信息，请参阅 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
+有关定价的详细信息，请参阅 [Azure Active Directory 定价](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
 
 ### <a name="prerequisites"></a>先决条件
 

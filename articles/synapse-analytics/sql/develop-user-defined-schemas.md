@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6920d6cd190927747a69fc4dc0f0791278665abe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5bbe3e3471101df5d147c5079d6cd4a7e5ce00cb
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96451693"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114287550"
 ---
 # <a name="user-defined-schemas-within-synapse-sql"></a>Synapse SQL 中的用户定义的架构
 
@@ -118,7 +118,7 @@ FROM    [edw].customer
 > [!NOTE]
 > 如果架构策略发生任何更改，则需要检查数据库的安全模型。 在许多情况下，可以在架构级别分配权限，以简化安全模型。
 
-如果需要更细粒度的权限，可以使用数据库角色。 有关数据库角色的详细信息，请参阅[管理数据库角色和用户](../../analysis-services/analysis-services-database-users.md)一文。
+如果需要更细粒度的权限，可以使用数据库角色。 有关数据库角色的详细信息，请参阅[管理数据库角色和用户](/sql/relational-databases/security/authentication-access/database-level-roles)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

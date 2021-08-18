@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: 29584a9453fa052745f417cba0bbe940766c30e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d66b9cb314ee9cf200a18949f774ff8a8b4a1f6b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699073"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725300"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>通过指标、警报和资源运行状况进行标准负载均衡器诊断
 
@@ -169,7 +169,7 @@ Azure 门户通过“指标”页公开负载均衡器指标，可在特定资�
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>如何检查服务的入站/出站连接尝试？
 <details>
   <summary>展开</summary>
-“SYN 数据包”指标描述收到或发送的、与特定前端关联的 TCP SYN 数据包数量（适用于[出站流](./load-balancer-outbound-connections.md)）。 可以使用此指标了解对服务发起的 TCP 连接尝试。
+“SYN 数据包”指标描述收到或发送的、与特定前端关联的 TCP SYN 数据包数量（适用于[出站流](../load-balancer-outbound-connections.md)）。 可以使用此指标了解对服务发起的 TCP 连接尝试。
 
 在大多数情况下，可以使用“总和”作为聚合。
 

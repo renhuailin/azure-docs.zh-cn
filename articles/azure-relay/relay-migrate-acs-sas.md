@@ -2,13 +2,13 @@
 title: Azure 中继 - 迁移到共享访问签名授权
 description: 介绍如何将 Azure 中继应用程序从使用 Azure Active Directory 访问控制服务迁移到共享访问签名授权。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 3b793173270b0ddf25f0e971dbb2fed97cb10a55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/23/2021
+ms.openlocfilehash: 30e656b3e4960cb7e2a8bdb23a2d8ce1aa91edbf
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87532860"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114668709"
 ---
 # <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure 中继 - 从 Azure Active Directory 访问控制服务迁移到共享访问签名授权
 

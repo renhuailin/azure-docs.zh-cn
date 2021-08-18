@@ -4,12 +4,12 @@ description: 了解如何将 Azure 事件中心与 Azure 专用链接服务集�
 ms.date: 05/10/2021
 ms.topic: article
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 76f205d97c7c77ff75f0143181631319c6a23b97
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 48688c9f16330830111aff5dd26292825370fcb9
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706037"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415544"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>允许通过专用终结点访问 Azure 事件中心命名空间 
 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如 Azure 事件中心、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户服务/合作伙伴服务。
@@ -92,7 +92,7 @@ ms.locfileid: "110706037"
 
     ![已创建专用终结点](./media/private-link-service/private-endpoint-created.png)
 
-[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
+[!INCLUDE [event-hubs-trusted-services](./includes/event-hubs-trusted-services.md)]
 
 如要允许受信任的服务访问你的命名空间，请切换到“网络”页面上的“防火墙和虚拟网络”，然后为“是否允许受信任的 Microsoft 服务跳过此防火墙？”选择“是”。 
 

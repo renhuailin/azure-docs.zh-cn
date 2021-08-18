@@ -1,26 +1,26 @@
 ---
 title: 什么是已加入 Azure AD 的设备？
-description: 了解 Azure AD 联接设备，学习设备标识管理如何帮助你管理正在访问环境中的资源的设备。
+description: 已建立 Azure AD 联接的设备可以帮助你管理那些访问环境中的资源的设备。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 06/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b7cc0535549f2dbcdef4ab043ee506527fdbc5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c39aac2abeb9d569690b056df1a2fb892b11d3c1
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90601446"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113303051"
 ---
 # <a name="azure-ad-joined-devices"></a>已加入 Azure AD 的设备
 
-“Azure AD 加入”面向的是想要云优先或仅使用云的组织。 无论规模或行业，任何组织都可部署已加入 Azure AD 的设备。 即使在混合环境中，也能使用“Azure AD 加入”，从而提供对云和本地应用及资源的访问。
+无论规模或行业，任何组织都可部署已加入 Azure AD 的设备。 即使在混合环境中，也能使用 Azure AD 联接，从而提供对云中和本地的应用及资源的访问权限。
 
 | Azure AD 加入 | 说明 |
 | --- | --- |
@@ -30,7 +30,7 @@ ms.locfileid: "90601446"
 | **设备所有权** | 组织 |
 | **操作系统** | 所有 Windows 10 设备，Windows 10 家庭版除外 |
 |   | [在 Azure 中运行的 Windows Server 2019 虚拟机](howto-vm-sign-in-azure-ad-windows.md)（不支持服务器核心） |
-| **预配** | 自助服务：Windows OOBE 或设置 |
+| **Provisioning** | 自助服务：Windows 全新体验 (OOBE) 或设置 |
 |   | 批量注册 |
 |   | Windows Autopilot |
 | **设备登录选项** | 组织帐户使用： |
@@ -62,7 +62,7 @@ ms.locfileid: "90601446"
 - 你需要在 Azure AD 而不是 Active Directory 中管理用户组。 该方案适用于季节工、承包商或学生等群体。
 - 想要向本地基础设施有限的远程分支机构中的员工提供加入功能。
 
-你可为所有 Windows 10 设备配置 Azure AD 联接设备，Windows 10 家庭版除外。
+你可为所有 Windows 10 设备配置已建立 Azure AD 联接的设备，Windows 10 家庭版除外。
 
 Azure AD 加入设备旨在简化：
 

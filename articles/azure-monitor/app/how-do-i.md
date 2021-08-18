@@ -3,12 +3,12 @@ title: 如何在 Azure Application Insights 中执行... | Microsoft Docs
 description: 有关 Application Insights 的常见问题解答。
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: c889c0890f8e6d193b7e36a525470fc18bef494d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3c74add1d426a6d1e383ed90388bb319a8244e05
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060825"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616309"
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
 ## <a name="get-an-email-when-"></a>... 时收到电子邮件
@@ -160,7 +160,7 @@ TelemetryConfiguration.Active.DisableTelemetry = true;
 ![打开 Application Insights 资源并单击“服务器”](./media/how-do-i/121-servers.png)
 
 ### <a name="if-you-see-no-performance-counter-data"></a>如果看不到任何性能计数器数据
-* 在自己的计算机或 VM 上设置一个 **IIS 服务器**。 [安装状态监视器](./monitor-performance-live-website-now.md)。
+* 在自己的计算机或 VM 上设置一个 **IIS 服务器**。 [安装 Azure Monitor Application Insights 代理](./status-monitor-v2-overview.md)。
 * **Azure 网站** - 目前不支持性能计数器。 可以获取多个指标作为 Azure 网站控制台的标准组成部分。
 * **Unix 服务器** - [安装 collectd](java-2x-collectd.md)
 

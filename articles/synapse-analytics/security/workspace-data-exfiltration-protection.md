@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5fed7649353c0ef6cb222c0b0c91a5203665e9fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 792197b3558a16706fee52204fa90a8ef8d0735a
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104598042"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113232041"
 ---
 # <a name="data-exfiltration-protection-for-azure-synapse-analytics-workspaces"></a>Azure Synapse Analytics 工作区的数据外泄保护
 本文介绍 Azure Synapse Analytics 中的数据外泄保护
@@ -34,9 +34,7 @@ Azure Synapse Analytics 工作区支持对工作区启用数据外泄保护。 �
 
 >[!IMPORTANT]
 >
-> - 非工作区租户中的资源不能具有阻止防火墙规则，这样 SQL 池才能连接这些资源。 工作区的托管虚拟网络中的资源（例如 Spark 群集）可以通过托管的专用链接连接到受防火墙保护的资源。
->
-> - 在具有已启用数据外泄保护的托管虚拟网络的 Synapse 工作区中禁用元存储。 无法在这些工作区中使用 Spark SQL。
+> 非工作区租户中的资源不能具有阻止防火墙规则，这样 SQL 池才能连接这些资源。 工作区的托管虚拟网络中的资源（例如 Spark 群集）可以通过托管的专用链接连接到受防火墙保护的资源。
 > >
 
 ## <a name="next-steps"></a>后续步骤

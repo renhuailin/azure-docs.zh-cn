@@ -15,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8eca44fa7e5a23b38c8cfa7368aace1ea0a942eb
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 6d840893de2c516137e54d015123fa9249b93d54
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080050"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113434602"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>在 Azure 中更改 SQL 虚拟机的许可模式
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -61,11 +61,9 @@ Azure 混合权益允许在 Azure 虚拟机上使用带有软件保障（“合�
 
 # <a name="azure-portal"></a>[Azure 门户](#tab/azure-portal)
 
-[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
-
 可以直接从门户修改许可模式： 
 
-1. 打开 [Azure 门户](https://portal.azure.com)并从 SQL Server VM 打开 [SQL 虚拟机资源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)。 
+1. 打开 [Azure 门户](https://portal.azure.com)并从 SQL Server VM 打开 [SQL 虚拟机资源](manage-sql-vm-portal.md#access-the-resource)。 
 1. 选择“设置”下的“配置”。 
 1. 选择“Azure 混合权益”选项，然后选中该复选框以确认你拥有具有软件保障的 SQL Server 许可。 
 1. 选择“配置”页底部的“应用”。 

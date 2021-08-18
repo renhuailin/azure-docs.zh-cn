@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: e6c3987e2de7f9592a1f7f6086657592e1bf0c16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a42f39e7c3124c2360419d6129f22c35f71b2cec
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676592"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862485"
 ---
 # <a name="performance-tuning-with-materialized-views-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的专用 SQL 池通过具体化视图进行性能优化
 
@@ -36,7 +36,7 @@ SQL 池支持标准视图和具体化视图。  两者都是用 SELECT 表达式
 |查看定义                 | 存储在 Azure 数据仓库中。              | 存储在 Azure 数据仓库中。
 |查看内容                    | 在每次使用视图时生成。   | 在视图创建期间，预先处理并存储在 Azure 数据仓库中。 随着数据添加到基础表中而更新。
 |数据刷新                    | 始终更新                               | 始终更新
-|从复杂查询检索视图数据的速度     | 慢                                         | Fast  
+|从复杂查询检索视图数据的速度     | 慢                                         | 快速  
 |额外存储                   | 否                                           | 是
 |语法                          | CREATE VIEW                                  | CREATE MATERIALIZED VIEW AS SELECT
 
@@ -81,7 +81,7 @@ SQL 池支持标准视图和具体化视图。  两者都是用 SELECT 表达式
 
 Azure 数据仓库是一种大规模并行处理 (MPP) 分布式系统。  
 
-Synapse SQL 是一个分布式查询系统，使企业能够使用数据工程师所熟悉的标准 T-SQL 体验来实现数据仓库和数据虚拟化方案。 它还扩展了 SQL 的功能，可以解决流式处理和机器学习方案的问题。 数据仓库表中的数据使用三种[分布策略](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)（hash、round_robin 或 replicated）中的一种分布到 60 个节点上。  
+Synapse SQL 是一个分布式查询系统，使企业能够使用数据工程师所熟悉的标准 T-SQL 体验来实现数据仓库和数据虚拟化方案。 它还扩展了 SQL 的功能，可以解决流式处理和机器学习方案的问题。 数据仓库表中的数据使用三种[分布策略](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?context=/azure/synapse-analytics/context/context)（hash、round_robin 或 replicated）中的一种分布到 60 个节点上。  
 
 数据分布在表创建时进行指定，并且在删除表之前保持不变。 具体化视图是磁盘上的虚拟表，支持 hash 和 round_robin 数据分布。  用户可以选择符合后列特征的数据分布：与基表不同但对于经常使用视图的查询而言是最优的。  
 

@@ -4,16 +4,16 @@ description: 了解如何排查部署、运行或管理 Azure 容器实例时的
 ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ce7e3018e470df3840eb01127a7bf2ffa01b5cbc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f00b20751b60549b9b10409539354605ea4bd355
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771058"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292249"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>排查 Azure 容器实例中的常见问题
 
-本文展示了如何排查管理容器或向 Azure 容器实例部署容器时出现的常见问题。 另请参阅[常见问题解答](container-instances-faq.md)。
+本文展示了如何排查管理容器或向 Azure 容器实例部署容器时出现的常见问题。 另请参阅[常见问题解答](container-instances-faq.yml)。
 
 如果需要更多支持，请参阅 [Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)中可用的“帮助 + 支持”选项。
 
@@ -45,7 +45,7 @@ ms.locfileid: "107771058"
 }
 ```
 
-在部署基于半年频道版本 1709 或 1803（不支持这些版本）的 Windows 映像时，通常会遇到此错误。 有关 Azure 容器实例中支持的 Windows 映像，请参阅[常见问题解答](container-instances-faq.md#what-windows-base-os-images-are-supported)。
+在部署基于半年频道版本 1709 或 1803（不支持这些版本）的 Windows 映像时，通常会遇到此错误。 有关 Azure 容器实例中支持的 Windows 映像，请参阅[常见问题解答](/azure/container-instances/container-instances-faq#what-windows-base-os-images-are-supported)。
 
 ### <a name="unable-to-pull-image"></a>无法请求映像
 
@@ -187,7 +187,7 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 #### <a name="cached-images"></a>缓存的映像
 
-对于基于常用 [Windows 基本映像](container-instances-faq.md#what-windows-base-os-images-are-supported)（包括 `nanoserver:1809`、`servercore:ltsc2019` 和 `servercore:1809`）的映像，Azure 容器实例使用一种缓存机制来帮助加快容器启动时间。 常用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）也会缓存。 对于 Windows 和 Linux 映像，请避免使用 `latest` 标记。 有关指南，请参阅容器注册表的[映像标记最佳做法](../container-registry/container-registry-image-tag-version.md)。 若要获取缓存的映像和标记的最新列表，请使用[列出缓存的映像][list-cached-images] API。
+对于基于常用 [Windows 基本映像](/azure/container-instances/container-instances-faq#what-windows-base-os-images-are-supported)（包括 `nanoserver:1809`、`servercore:ltsc2019` 和 `servercore:1809`）的映像，Azure 容器实例使用一种缓存机制来帮助加快容器启动时间。 常用的 Linux 映像（例如 `ubuntu:1604` 和 `alpine:3.6`）也会缓存。 对于 Windows 和 Linux 映像，请避免使用 `latest` 标记。 有关指南，请参阅容器注册表的[映像标记最佳做法](../container-registry/container-registry-image-tag-version.md)。 若要获取缓存的映像和标记的最新列表，请使用[列出缓存的映像][list-cached-images] API。
 
 > [!NOTE]
 > 在 Azure 容器实例中使用基于 Windows Server 2019 的映像处于预览状态。

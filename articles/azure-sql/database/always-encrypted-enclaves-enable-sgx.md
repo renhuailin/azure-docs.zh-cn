@@ -9,20 +9,18 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
-ms.date: 01/15/2021
-ms.openlocfilehash: 1bfab8547f3c6cc010036170c082eecdb4e335ae
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 07/14/2021
+ms.openlocfilehash: b967ad27b3f20b75e9b7571a865228508bca9112
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111411551"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727249"
 ---
 # <a name="enable-intel-sgx-for-always-encrypted-for-your-azure-sql-database"></a>为 Azure SQL 数据库的 Always Encrypted 启用 Intel SGX 
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-> [!NOTE]
-> Azure SQL 数据库的具有安全 Enclave 的 Always Encrypted 目前提供公共预览版。
 
 Azure SQL 数据库中[具有安全 Enclave 的 Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves) 使用 [Intel Software Guard Extensions (Intel SGX)](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) Enclave。 若要使 Intel SGX 可用，数据库必须使用 [vCore 模型](service-tiers-vcore.md)和 [DC 系列](service-tiers-sql-database-vcore.md#dc-series)硬件代。
 

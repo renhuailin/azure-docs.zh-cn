@@ -2,13 +2,13 @@
 title: HTTP 扩展协议 - Azure
 description: Azure 视频分析器支持通过管道扩展节点增强其处理功能。 HTTP 扩展处理器支持使用 HTTP 协议的可扩展性方案，其中性能和/或最佳资源利用率不是主要问题。
 ms.topic: reference
-ms.date: 03/30/2021
-ms.openlocfilehash: 1f000ffd6368578ba9a6b5206af4b8ae5bf6cf00
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 0c87bf83692798fd416f9d416d1f2a217c99d40a
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385056"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604852"
 ---
 # <a name="use-the-http-extension-protocol"></a>使用 HTTP 扩展协议 
 

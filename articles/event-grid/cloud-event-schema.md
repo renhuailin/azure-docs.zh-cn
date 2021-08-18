@@ -2,13 +2,13 @@
 title: 将 CloudEvents v1.0 架构与 Azure 事件网格配合使用
 description: 说明如何将 CloudEvents v1.0 架构用于 Azure 事件网格中的事件。 该服务支持 Cloud Events 的 JSON 实现中的事件。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: d17e92c28784ca31f3c9809c93e885b22c6a38d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/22/2021
+ms.openlocfilehash: 668ff0c1d09441459b28112173735828f347c50a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91324172"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114442676"
 ---
 # <a name="cloudevents-v10-schema-with-azure-event-grid"></a>将 CloudEvents v1.0 架构与 Azure 事件网格配合使用
 

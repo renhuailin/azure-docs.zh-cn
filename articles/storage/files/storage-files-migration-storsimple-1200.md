@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 67ddcf5fd7d3ef3c1def12a325eb19980176a8ba
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 96cc983cba992452882a8f3307974e83683c39a9
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756208"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "114462173"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>迁移 StorSimple 1200 到 Azure 文件同步
 
@@ -20,7 +20,14 @@ StorSimple 1200 系列是在本地数据中心运行的虚拟设备。 可以将
 
 StorSimple 1200 系列将于 2022 年 12 月[停用](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%201200%20Series)。  请务必尽快开始进行迁移规划。 本文提供成功迁移到 Azure 文件同步所需的背景知识和迁移步骤。 
 
-## <a name="azure-file-sync"></a>Azure 文件同步
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+
+## <a name="azure-file-sync&quot;></a>Azure 文件同步
 
 > [!IMPORTANT]
 > Microsoft 致力于帮助客户完成迁移。 若要获取自定义迁移计划，或者在迁移过程中需要帮助，请向 AzureFilesMigration@microsoft.com 发送电子邮件。
@@ -32,7 +39,7 @@ Azure 文件同步是一种 Microsoft 云服务，基于两个主要组件：
 
 本文重点介绍迁移步骤。 如果要在迁移之前详细了解 Azure 文件同步，我们建议阅读以下文章：
 
-* [Azure 文件同步 - 概述](../file-sync/file-sync-planning.md "概述")
+* [Azure 文件同步 - 概述](../file-sync/file-sync-planning.md &quot;概述")
 * [Azure 文件同步 - 部署指南](../file-sync/file-sync-deployment-guide.md)
 
 ## <a name="migration-goals"></a>迁移目标

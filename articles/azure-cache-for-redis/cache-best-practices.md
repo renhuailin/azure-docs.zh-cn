@@ -2,16 +2,17 @@
 title: Azure Redis 缓存的最佳做法
 description: 遵循这些最佳做法了解如何有效使用 Azure Redis 缓存。
 author: carldc
+reviewer: shpathak
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: cadaco
-ms.openlocfilehash: b7a3a723af2b23b657a21f1df772fae13f050ca7
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 98382cef7e9cc1de5c7c66f0465dc621fde6e841
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413818"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291609"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Redis 缓存的最佳做法
 
@@ -43,8 +44,10 @@ ms.locfileid: "111413818"
 
 * **使用 TLS 加密** - 默认情况下，Azure Cache for Redis 需要 TLS 加密通信。  目前支持 TLS 版本 1.0、1.1 和 1.2。  但是，TLS 1.0 和 TLS 1.1 即将在全行业范围内弃用，因此，请尽可能使用 TLS 1.2。  如果客户端库或工具不支持 TLS，则可以[通过 Azure 门户](cache-configure.md#access-ports)或[管理 API](/rest/api/redis/redis/update) 来启用未加密的连接。  在无法进行加密连接的情况下，建议将缓存和客户端应用程序放入虚拟网络中。  有关虚拟网络缓存方案中使用的端口的详细信息，请参阅此[表](cache-how-to-premium-vnet.md#outbound-port-requirements)。
 
-* **空闲超时** - 当前，Azure Cache for Redis 的连接空闲超时为 10 分钟，因此设置应小于 10 分钟。 大多数常见客户端库都具有自动 ping 通 Azure Redis 的保持连接配置。 但在不具有保持连接设置的客户端中，客户应用程序负责保持连接。
+* 空闲超时 - Azure Cache for Redis 的连接空闲超时目前为 10 分钟，因此你的设置应小于 10 分钟。 大多数常用客户端库都有一个配置设置，客户端库可通过此设置自动定期将 Redis `PING` 命令发送到 Redis 服务器。 但是，如果使用的客户端库没有这种类型的设置，则客户应用程序本身将负责保持连接的活动状态。
 
+<!-- Most common client libraries have keep-alive configuration that pings Azure Redis automatically. However, in clients that don't have a keep-alive setting, customer applications are responsible for keeping the connection alive.
+ -->
 ## <a name="memory-management"></a>内存管理
 
 可能需要考虑到与 Redis 服务器实例中内存用量相关的一些问题。  下面是一些建议：
@@ -82,14 +85,14 @@ ms.locfileid: "111413818"
 * **建议为客户端使用 Dv2 VM 系列**，因为它们具有更好的硬件，会提供最佳的结果。
 * 确保所用客户端 VM 的计算和带宽资源 *至少与要测试的缓存相同。
 * 在缓存中 **按照故障转移条件进行测试**。 必须确保不只是在稳定状态条件下对缓存进行性能测试。 还需要按照故障转移条件进行测试，并在测试期间测量缓存中的 CPU/服务器负载。 可以通过[重新启动主节点](cache-administration.md#reboot)来启动故障转移。 在故障转移条件下进行测试可了解应用程序在故障转移条件下的吞吐量和延迟性能。 故障转移可能在更新期间以及计划外事件期间发生。 理想情况下，即使是在故障转移期间，CPU/服务器负载峰值也应该不会很高（例如超过 80%），因为这可能会影响性能。
-* 某些大小的缓存托管在具有 4 个或更多核心的 VM 上。 将 TLS 加密/解密以及 TLS 连接/断开连接工作负载分散到多个核心，使缓存 VM 上的总体 CPU 使用率降低。  [参阅此文了解有关 VM 大小和核心的详细信息](cache-planning-faq.md#azure-cache-for-redis-performance)
+* 某些大小的缓存托管在具有 4 个或更多核心的 VM 上。 将 TLS 加密/解密以及 TLS 连接/断开连接工作负载分散到多个核心，使缓存 VM 上的总体 CPU 使用率降低。  [参阅此文了解有关 VM 大小和核心的详细信息](./cache-planning-faq.yml#azure-cache-for-redis-performance)
 * 如果是在 Windows 设备上操作，请在客户端计算机上 **启用 VRSS**。  [请参阅此处了解详细信息](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11))。  PowerShell 脚本示例：
    >PowerShell -ExecutionPolicy Unrestricted Enable-NetAdapterRSS -Name (  Get-NetAdapter).Name
 
 * **考虑使用高级层 Redis 实例**。  这些缓存大小具有更好的网络延迟和吞吐量，因为它们是在 CPU 和网络两方面都更好的硬件上运行的。
 
    > [!NOTE]
-   > [此处发布](cache-planning-faq.md#azure-cache-for-redis-performance)了我们观测到的性能结果供你参考。   另请注意，SSL/TLS 会增大一些开销，因此，如果你使用传输加密，延迟和/或吞吐量可能会有变化。
+   > [此处发布](./cache-planning-faq.yml#azure-cache-for-redis-performance)了我们观测到的性能结果供你参考。   另请注意，SSL/TLS 会增大一些开销，因此，如果你使用传输加密，延迟和/或吞吐量可能会有变化。
 
 ### <a name="redis-benchmark-examples"></a>Redis 基准示例
 

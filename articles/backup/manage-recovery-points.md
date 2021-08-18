@@ -2,13 +2,13 @@
 title: 管理恢复点
 description: 了解 Azure 备份服务如何管理虚拟机的恢复点
 ms.topic: conceptual
-ms.date: 11/08/2020
-ms.openlocfilehash: 256df693aba0f799c24bcba6defe846e5c37ccaa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/17/2021
+ms.openlocfilehash: 2dd33b430d5aa117f35f74ff92bb3655a9002803
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94428572"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300662"
 ---
 # <a name="manage-recovery-points"></a>管理恢复点
 
@@ -121,6 +121,12 @@ ms.locfileid: "94428572"
 |备份数据变动量    |   A1- 4 TB      | B1-1 TB；B2-1 TB <br> B3-1 TB；B4-1 TB  |   C1-2 TB；C4-2 TB      |
 
 备份性能的顺序将为 VM2>VM3>VM1。 这是因为变动的数据分布在不同磁盘上。 由于磁盘的备份会并行进行，VM2 将表现出最佳性能。
+
+## <a name="frequently-asked-question"></a>常见问题解答
+
+### <a name="how-can-i-find-the-retention-period-of-an-on-demand-backup"></a>如何找到按需备份的保留期？
+
+按需备份的备份作业中的“恢复点到期时间(UTC)”字段显示恢复点的保留期。 若要了解详细信息，请参阅[运行按需备份](backup-azure-manage-vms.md#run-an-on-demand-backup)。 
 
 ## <a name="next-steps"></a>后续步骤
 

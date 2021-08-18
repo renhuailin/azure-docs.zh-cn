@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperf-fy20q4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7ac9553660aace8242c81b41fa2cc9171d28219
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc428a79e38f390d926f268bd8147eb7ee06a648
+ms.sourcegitcommit: 04d2dec0316576388e6e10c1558b0a0b3688d01c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594625"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112421813"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>将 Azure 订阅关联或添加到 Azure Active Directory 租户
 
@@ -31,6 +31,8 @@ Azure 订阅与 Azure Active Directory (Azure AD) 之间存在信任关系。 �
 当用户注册 Microsoft 云服务时，系统会创建一个新的 Azure AD 租户，并使该用户成为全局管理员角色的成员。 但是，当订阅的所有者将其订阅加入现有租户时，系统不会将该所有者分配到全局管理员角色。
 
 所有用户都有一个用于身份验证的“主”目录。 用户还可以充当其他目录中的来宾。 可在 Azure AD 中查看每位用户的主目录和来宾目录。
+
+:::image type="content" source="media/active-directory-how-subscriptions-associated-directory/trust-relationship-azure-ad.png" alt-text="显示 Azure 订阅与 Azure Active Directory 之间的信任关系的屏幕截图。":::
 
 > [!Important]
 > 将订阅与其他目录关联时，如果用户的角色是使用 [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)分配的，则用户将失去其访问权限。 经典订阅管理员（包括服务管理员和共同管理员）也会失去访问权限。

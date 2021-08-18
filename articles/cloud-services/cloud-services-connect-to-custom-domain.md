@@ -4,16 +4,16 @@ description: 了解如何使用 PowerShell 和 AD 域扩展将 Web/辅助角色�
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 8c2c8377944caa7ad28f6b379531e6d5bf44c9e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5904e65ee26d754728586a25af3b7c63c257cf5f
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98742499"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113086108"
 ---
 # <a name="connecting-azure-cloud-services-classic-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>将 Azure 云服务（经典）角色连接到 Azure 中托管的自定义 AD 域控制器
 

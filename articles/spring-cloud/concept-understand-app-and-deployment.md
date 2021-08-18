@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud 中的应用和部署
 description: 本主题介绍 Azure Spring Cloud 中应用程序和部署之间的区别。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 8a543d3f6a875c41b3657ccc947c6f697bbcfd09
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b5a48a562781e68d7b653d55eb63d8a9edc71228
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129110"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860818"
 ---
 # <a name="app-and-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud 中的应用和部署
 
@@ -27,6 +27,7 @@ ms.locfileid: "108129110"
 Azure Spring Cloud 标准层允许一个应用有一个生产部署和一个过渡部署，这样就可以轻松地在其上进行蓝/绿部署。
 
 ## <a name="app"></a>应用
+
 以下特性/属性是在应用级别定义的。
 
 | 功能 | 说明 |
@@ -58,4 +59,5 @@ Azure Spring Cloud 标准层允许一个应用有一个生产部署和一个过�
 * **部署管理在基本层中不可用**：将标准层用于蓝-绿部署功能。
 
 ## <a name="see-also"></a>请参阅
+
 * [在 Azure Spring Cloud 中设置过渡环境](./how-to-staging-environment.md)

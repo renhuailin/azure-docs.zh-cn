@@ -11,19 +11,19 @@ ms.date: 05/25/2021
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: 3bc18e02345915c5446895a9acc5a33bd0b33431
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 0548b309f84f46d7e1a8c904115167d59cc6f10e
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746800"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112417390"
 ---
 # <a name="prebuilt-docker-images-for-inference-preview"></a>用于推理的预生成 Docker 映像（预览版）
 
 通过 Azure 机器学习部署模型时，将使用用于推理的预生成 Docker 容器映像[（预览版）](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。  这些映像是使用流行的机器学习框架和 Python 包预生成的。 你还可以使用以下方法之一扩展包，以添加其他包：
 
 * [添加 Python 包](how-to-prebuilt-docker-images-inference-python-extensibility.md)。
-* [使用预生成的包作为新 Dockerfile 的基础](how-to-extend-prebuilt-docker-image-inference.md)。 使用此方法可以安装 Python 包和 apt 包。
+* [使用预生成的推理映像作为新 Dockerfile 的基础](how-to-extend-prebuilt-docker-image-inference.md)。 使用此方法可以安装 Python 包和 apt 包。
 
 ## <a name="why-should-i-use-prebuilt-images"></a>为何要使用预生成的映像？
 
@@ -31,7 +31,6 @@ ms.locfileid: "111746800"
 * 提高模型部署成功率。
 * 避免在模型部署期间进行不必要的映像生成。
 * 只需在映像/容器中拥有依赖关系和访问权限。 
-* 部署中的推理进程以非 root 身份运行。
 
 ## <a name="list-of-prebuilt-docker-images-for-inference"></a>用于推理的预生成 Docker 映像列表 
 

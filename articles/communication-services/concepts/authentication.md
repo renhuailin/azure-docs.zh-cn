@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 9edfb63f5ce43ed325b4c4a1fa67e0e9ca52dc89
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 339c455b4301012a8aee7a5d5113647c4bc31a3f
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105110859"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113652479"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>向 Azure 通信服务进行身份验证
 
@@ -48,7 +48,7 @@ ms.locfileid: "105110859"
 
 托管标识的安全性和易用性优于其他授权选项。 例如，通过使用 Azure AD，你不必像使用访问密钥授权那样在代码中存储帐户访问密钥。 尽管可以继续对通信服务应用程序使用访问密钥授权，但 Microsoft 建议尽可能迁移到 Azure AD。 
 
-若要创建托管标识，请[使用 Azure CLI 创建已注册的应用程序](../quickstarts/managed-identity-from-cli.md)。 然后，可以使用终结点和凭据对 SDK 进行身份验证。 请参阅有关如何使用[托管标识](../quickstarts/managed-identity.md)的示例。
+若要创建托管标识，请[使用 Azure CLI 创建已注册的应用程序](../quickstarts/identity/service-principal-from-cli.md)。 然后，可以使用终结点和凭据对 SDK 进行身份验证。 请参阅有关如何使用[托管标识](../quickstarts/identity/service-principal.md)的示例。
 
 ### <a name="user-access-tokens"></a>用户访问令牌
 
@@ -58,7 +58,7 @@ ms.locfileid: "105110859"
 
 > [!div class="nextstepaction"]
 > [创建和管理通信服务资源](../quickstarts/create-communication-resource.md)
-> [使用 Azure CLI 创建 Azure Active Directory 托管标识应用程序](../quickstarts/managed-identity-from-cli.md)
+> [使用 Azure CLI 创建 Azure Active Directory 托管标识应用程序](../quickstarts/identity/service-principal-from-cli.md)
 > [创建用户访问令牌](../quickstarts/access-tokens.md)
 
 有关详细信息，请参阅以下文章：

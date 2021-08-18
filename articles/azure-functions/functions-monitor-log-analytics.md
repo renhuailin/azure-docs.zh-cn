@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: b6ce9e77421df0563810fd7f8255720c1fd2d0c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 194154f192cfcc91138b13bd37b37d80d38097d2
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591074"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126781"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>使用 Azure Monitor 日志监视 Azure Functions
 
@@ -22,7 +22,7 @@ Azure Functions 提供与 [Azure Monitor 日志](../azure-monitor/logs/data-plat
 Azure Monitor 使用 Azure 数据资源管理器使用的 [Kusto 查询语言](/azure/kusto/query/)的某个版本，该查询语言适用于简单的日志查询，但也包括高级功能，例如聚合、联接和智能分析。 可以通过[多个课程](../azure-monitor/logs/get-started-queries.md)快速了解此查询语言。
 
 > [!NOTE]
-> 与 Azure Monitor 日志的集成当前以公共预览版提供，适用于在 Windows 消耗、高级和专用托管计划上运行的 v2 和 v3 函数应用。
+> 与 Azure Monitor 日志的集成目前以公共预览版提供。 不支持在[版本 1.x](functions-versions.md) 上运行的函数应用。
 
 ## <a name="setting-up"></a>设置
 

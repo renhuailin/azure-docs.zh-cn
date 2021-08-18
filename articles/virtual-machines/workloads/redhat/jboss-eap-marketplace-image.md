@@ -8,16 +8,16 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 9b37b2c4-5927-4271-85c7-19adf33d838b
 ms.date: 05/25/2021
-ms.openlocfilehash: fddb938e003969d0eff95b94b0ea4a18fa0d0727
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 5ed86f84f8b2fbe78ee53f776cb9f420e5077113
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111855089"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290625"
 ---
 # <a name="deploy-red-hat-jboss-enterprise-platform-eap-on-azure-vms-and-virtual-machine-scale-sets-using-the-azure-marketplace-offer"></a>使用 Azure 市场产品/服务在 Azure VM 和虚拟机规模集上部署 Red Hat JBoss Enterprise Platform (EAP)
 
-适用于 Azure [Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/technologies/linux-platforms/enterprise-linux) 上的 [Red Hat JBoss Enterprise Application Platform](https://www.redhat.com/technologies/jboss-middleware/application-platform) 的 Azure 市场产品/服务是 [Red Hat](https://www.redhat.com/) 和 Microsoft 的联合解决方案。 Red Hat 是领先的开源解决方案提供商和参与者，参与过的项目包括 [Java](https://www.java.com/) 标准、[OpenJDK](https://openjdk.java.net/)、[MicroProfile](https://microprofile.io/)、[Jakarta EE](https://jakarta.ee/) 和 [Quarkus](https://quarkus.io/)。 JBoss EAP 是一个领先的 Java 应用服务器平台，在 Web Profile 和 Full Platform 中均获得了 Java EE 认证并且兼容 Jakarta EE。 每个 JBoss EAP 版本都在各种市场领先的操作系统、Java 虚拟机 (JVM) 和数据库组合下进行了测试并且均被支持。  JBoss EAP 和 RHEL 包括在任何环境中生成、运行、部署和管理企业 Java 应用程序所需的一切内容。  包括本地环境、虚拟环境、私有云、公有云和混合云。 Red Hat 和 Microsoft 的联合解决方案包含集成的支持和软件许可灵活性。
+适用于 Azure [Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) 上的 [Red Hat JBoss Enterprise Application Platform](https://www.redhat.com/en/technologies/jboss-middleware/application-platform) 的 Azure 市场产品/服务是 [Red Hat](https://www.redhat.com/) 和 Microsoft 的联合解决方案。 Red Hat 是领先的开源解决方案提供商和参与者，参与过的项目包括 [Java](https://www.java.com/) 标准、[OpenJDK](https://openjdk.java.net/)、[MicroProfile](https://microprofile.io/)、[Jakarta EE](https://jakarta.ee/) 和 [Quarkus](https://quarkus.io/)。 JBoss EAP 是一个领先的 Java 应用服务器平台，在 Web Profile 和 Full Platform 中均获得了 Java EE 认证并且兼容 Jakarta EE。 每个 JBoss EAP 版本都在各种市场领先的操作系统、Java 虚拟机 (JVM) 和数据库组合下进行了测试并且均被支持。  JBoss EAP 和 RHEL 包括在任何环境中生成、运行、部署和管理企业 Java 应用程序所需的一切内容。  包括本地环境、虚拟环境、私有云、公有云和混合云。 Red Hat 和 Microsoft 的联合解决方案包含集成的支持和软件许可灵活性。
 
 ## <a name="jboss-eap-on-azure-integrated-support"></a>Azure 上的 JBoss EAP 集成支持
 
@@ -56,7 +56,7 @@ Azure 市场产品/服务允许你作为按需 PAYG 虚拟机/虚拟机规模集
 
 ## <a name="using-rhel-os-with-byos-model"></a>将 RHEL OS 与 BYOS 模式结合使用
 
-若要使用 RHEL 作为 BYOS 虚拟机/虚拟机规模集，你需要拥有有效的 Red Hat 订阅，并具备在 Azure 中使用 RHEL 的权利。 RHEL BYOS 计划中的 JBoss EAP 将作为 [Azure 专用产品/服务](/azure/marketplace/private-offers)提供。 要从 Azure 市场中部署 RHEL BYOS 产品/服务计划，必须完成以下先决条件。 
+若要使用 RHEL 作为 BYOS 虚拟机/虚拟机规模集，你需要拥有有效的 Red Hat 订阅，并具备在 Azure 中使用 RHEL 的权利。 RHEL BYOS 计划中的 JBoss EAP 将作为 [Azure 专用产品/服务](../../../marketplace/private-offers.md)提供。 要从 Azure 市场中部署 RHEL BYOS 产品/服务计划，必须完成以下先决条件。 
 
 1. 确保已将 RHEL OS 和 JBoss EAP 权利附加到 Red Hat 订阅。
 2. 授权 Azure 订阅 ID 使用 RHEL BYOS 映像。 按照 [Red Hat 订阅管理 (RHSM) 文档](https://access.redhat.com/documentation/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access)完成此进程，其中包括以下步骤：
@@ -66,7 +66,7 @@ Azure 市场产品/服务允许你作为按需 PAYG 虚拟机/虚拟机规模集
     4. 为 Azure 订阅激活 Red Hat 黄金映像。 请参阅有关[启用和维护 Cloud Access 的订阅](https://access.redhat.com/documentation/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#using-gold-images-on-azure_cloud-access)的章节，了解更多详细信息。 
     5. 等待 Red Hat 黄金映像在 Azure 订阅中可用。 这些黄金映像通常在提交后 3 小时（或者小于 Azure 专用产品/服务的时间）内可用。
 
-3. 接受 RHEL BYOS 映像的 Azure 市场条款和条件 (T&C)。 若要接受，请运行 [Azure 命令行界面 (CLI)](/cli/azure/install-azure-cli) 命令，如下所示。 请参阅 [Azure 中的 RHEL BYOS 黄金映像](/azure/virtual-machines/workloads/redhat/byos)文档，了解更多详细信息。 务必运行最新 Azure CLI 版本。
+3. 接受 RHEL BYOS 映像的 Azure 市场条款和条件 (T&C)。 若要接受，请运行 [Azure 命令行界面 (CLI)](/cli/azure/install-azure-cli) 命令，如下所示。 请参阅 [Azure 中的 RHEL BYOS 黄金映像](./byos.md)文档，了解更多详细信息。 务必运行最新 Azure CLI 版本。
     1. 启动 Azure CLI 会话，并使用 Azure 帐户进行身份验证。 请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)以获得帮助。 在继续操作之前，请确保运行最新 Azure CLI 版本。
     2. 通过运行以下 CLI 命令，验证 RHEL BYOS 计划在订阅中是否可用。 如果此处未显示任何结果，请参阅步骤 2。 确保你的 Azure 订阅已激活，并且具备 RHEL 上的 JBoss EAP BYOS 计划的权利。
 
@@ -110,17 +110,17 @@ JBoss EAP 在 Azure 上仅以 BYOS 模式提供。 部署 RHEL 上的 JBoss EAP 
 
 ## <a name="after-a-successful-deployment"></a>成功部署到后
 
-1. 在不同的虚拟网络中[创建一个具有 VNet 对等互连的跳板虚拟机](/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)，并使用[虚拟网络对等互连](/azure/virtual-network/tutorial-connect-virtual-networks-portal#peer-virtual-networks)访问服务器和公开应用程序。
-2. [创建公共 IP](/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address) 以访问服务器和应用程序。
-3. 在同一 VNet 中的不同子网（新子网）中，[在同一个虚拟网络 (VNet) 中创建一个跳板虚拟机](/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)并通过跳板虚拟机访问服务器。 跳板虚拟机可用于公开应用程序。
-4. 使用[应用程序网关](/azure/application-gateway/quick-create-portal#create-an-application-gateway)公开应用程序。
-5. 使用[外部负载均衡器](/azure/load-balancer/tutorial-load-balancer-standard-manage-portal#create-a-standard-load-balancer) (ELB) 公开应用程序。
-6. [使用 Azure Bastion](/azure/bastion/bastion-overview) 通过浏览器和 Azure 门户访问 RHEL 虚拟机。 
+1. 在不同的虚拟网络中[创建一个具有 VNet 对等互连的跳板虚拟机](../../windows/quick-create-portal.md#create-virtual-machine)，并使用[虚拟网络对等互连](../../../virtual-network/tutorial-connect-virtual-networks-portal.md#peer-virtual-networks)访问服务器和公开应用程序。
+2. [创建公共 IP](../../../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address) 以访问服务器和应用程序。
+3. 在同一 VNet 中的不同子网（新子网）中，[在同一个虚拟网络 (VNet) 中创建一个跳板虚拟机](../../windows/quick-create-portal.md#create-virtual-machine)并通过跳板虚拟机访问服务器。 跳板虚拟机可用于公开应用程序。
+4. 使用[应用程序网关](../../../application-gateway/quick-create-portal.md#create-an-application-gateway)公开应用程序。
+5. 使用外部负载均衡器 (ELB) 公开应用程序。
+6. [使用 Azure Bastion](../../../bastion/bastion-overview.md) 通过浏览器和 Azure 门户访问 RHEL 虚拟机。 
 
 ### <a name="1-create-a-jump-vm-in-a-different-virtual-network-and-access-the-rhel-vm-using-virtual-network-peering-recommended-method"></a>1. 在不同的虚拟网络中创建一个跳板虚拟机，并使用虚拟网络对等互连访问 RHEL 虚拟机（推荐方法）
 
-1. [创建 Windows 虚拟机](/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine) - 在新的 Azure 资源组中，创建 Windows 虚拟机，该虚拟机必须与 RHEL 虚拟机位于同一区域。 提供所需的详细信息，并将其他配置保留为默认值，因为将在新的虚拟网络中创建跳板虚拟机。
-2. [虚拟网络对等](/azure/virtual-network/tutorial-connect-virtual-networks-portal#peer-virtual-networks) - 对等互连是将 RHEL 虚拟机与跳板虚拟机进行关联的方式。 虚拟网络对等互连成功后，两个虚拟机便可以相互通信。
+1. [创建 Windows 虚拟机](../../windows/quick-create-portal.md#create-virtual-machine) - 在新的 Azure 资源组中，创建 Windows 虚拟机，该虚拟机必须与 RHEL 虚拟机位于同一区域。 提供所需的详细信息，并将其他配置保留为默认值，因为将在新的虚拟网络中创建跳板虚拟机。
+2. [虚拟网络对等](../../../virtual-network/tutorial-connect-virtual-networks-portal.md#peer-virtual-networks) - 对等互连是将 RHEL 虚拟机与跳板虚拟机进行关联的方式。 虚拟网络对等互连成功后，两个虚拟机便可以相互通信。
 3. 转到跳板虚拟机详细信息页面并复制公共 IP。 使用公共 IP 登录到跳板虚拟机。
 4. 从输出页复制 RHEL 虚拟机的专用 IP，并使用这个专用 IP 从跳转虚拟机登录到 RHEL 虚拟机。
 5. 将从输出页复制的应用 URL 粘贴到跳转虚拟机内的浏览器中。 在此浏览器中查看 Azure 上的 JBoss EAP 网页。
@@ -128,15 +128,15 @@ JBoss EAP 在 Azure 上仅以 BYOS 模式提供。 部署 RHEL 上的 JBoss EAP 
 
 ### <a name="2-create-a-public-ip-to-access-the-rhel-vm-and-jboss-eap-admin-console"></a>2.创建公共 IP 以访问 RHEL 虚拟机和 JBoss EAP 管理控制台。
 
-1. 你创建的 RHEL 虚拟机没有与之关联的公共 IP。 可以[创建一个公共 IP](/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address) 以用于访问虚拟机，并将[公共 IP 关联到虚拟机](/azure/virtual-network/associate-public-ip-address-vm)。 要创建公共 IP，可以使用 Azure 门户，也可以使用 [Azure PowerShell](/powershell/) 命令或 [Azure CLI](/cli/azure/install-azure-cli) 命令。
+1. 你创建的 RHEL 虚拟机没有与之关联的公共 IP。 可以[创建一个公共 IP](../../../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address) 以用于访问虚拟机，并将[公共 IP 关联到虚拟机](../../../virtual-network/associate-public-ip-address-vm.md)。 要创建公共 IP，可以使用 Azure 门户，也可以使用 [Azure PowerShell](/powershell/) 命令或 [Azure CLI](/cli/azure/install-azure-cli) 命令。
 2. 获取虚拟机的公共 IP - 转到 VM 详细信息页并复制公共 IP。 使用公共 IP 来访问虚拟机和 JBoss EAP 管理控制台。
 3. 查看 Azure 上的 JBoss EAP 网页 - 打开 Web 浏览器并转到 *http://<PUBLIC_HOSTNAME>:8080/* ，应会看到默认的 EAP 欢迎页。
 4. 登录到 JBoss EAP 管理控制台 - 打开 Web 浏览器并转到 *http://<PUBLIC_HOSTNAME>:9990*。 输入 JBoss EAP 用户名和密码以登录。
 
 ### <a name="3-create-a-jump-vm-in-a-different-subnet-new-subnet-in-the-same-vnet-and-access-the-rhel-vm-via-a-jump-vm"></a>3. 在同一个 VNet 中的不同子网（新子网）中创建一个跳板虚拟机，并通过跳板虚拟机访问 RHEL 虚拟机。
 
-1. 在包含 RHEL 虚拟机的现有虚拟网络中[添加一个新子网](/azure/virtual-network/virtual-network-manage-subnet#add-a-subnet)。
-2. 在与 RHEL 虚拟机相同的资源组 (RG) 中的 Azure 中[创建一个 Windows 虚拟机](/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)。 提供所需的详细信息，将 VNet 和子网以外的其他配置保留为默认值。 请确保在 RG 中选择现有的 VNet，并选择在上一步中创建的子网，因为这将成为你的跳板虚拟机。
+1. 在包含 RHEL 虚拟机的现有虚拟网络中[添加一个新子网](../../../virtual-network/virtual-network-manage-subnet.md#add-a-subnet)。
+2. 在与 RHEL 虚拟机相同的资源组 (RG) 中的 Azure 中[创建一个 Windows 虚拟机](../../windows/quick-create-portal.md#create-virtual-machine)。 提供所需的详细信息，将 VNet 和子网以外的其他配置保留为默认值。 请确保在 RG 中选择现有的 VNet，并选择在上一步中创建的子网，因为这将成为你的跳板虚拟机。
 3. 访问跳板虚拟机公共 IP - 成功部署后，转到虚拟机详细信息页并复制公共 IP。 使用公共 IP 登录到跳板虚拟机。
 4. 登录到 RHEL 虚拟机 - 从输出页复制 RHEL 虚拟机的专用 IP，并使用这个专用 IP 从跳转虚拟机登录到 RHEL 虚拟机。
 5. 访问 JBoss EAP 欢迎页 - 在跳板虚拟机中，打开浏览器并粘贴从部署的输出页复制的应用 URL。
@@ -144,7 +144,7 @@ JBoss EAP 在 Azure 上仅以 BYOS 模式提供。 部署 RHEL 上的 JBoss EAP 
 
 ### <a name="4-expose-the-application-using-an-external-load-balancer"></a>4. 使用外部负载均衡器公开应用程序
 
-1. [创建应用程序网关](/application-gateway/quick-create-portal#create-an-application-gateway) - 要访问 RHEL 虚拟机的端口，请在不同的子网中创建应用程序网关。 子网必须仅包含应用程序网关。
+1. [创建应用程序网关](../../../application-gateway/quick-create-portal.md#create-an-application-gateway) - 要访问 RHEL 虚拟机的端口，请在不同的子网中创建应用程序网关。 子网必须仅包含应用程序网关。
 2. 设置“前端”参数 - 请确保选择“公共 IP”，并提供所需的详细信息。 在“后端”部分中，选择“添加后端池”选项，并将 RHEL 虚拟机添加到应用程序网关的后端池中。
 3. 设置访问端口 - 在“配置”部分下添加路由规则，以访问 RHEL 虚拟机的端口 8080 和 9990。
 4. 复制应用程序网关的公共 IP - 使用所需的配置创建了应用程序网关之后，转到概述页面并复制应用程序网关的公共 IP。
@@ -153,8 +153,8 @@ JBoss EAP 在 Azure 上仅以 BYOS 模式提供。 部署 RHEL 上的 JBoss EAP 
 
 ### <a name="5-use-an-external-load-balancer-elb-to-access-your-rhel-vmvirtual-machine-scale-sets"></a>5. 使用外部负载均衡器 (ELB) 访问RHEL 虚拟机/虚拟机规模集
 
-1. [创建负载均衡器](/load-balancer/tutorial-load-balancer-standard-manage-portal#create-a-standard-load-balancer)以访问 RHEL 虚拟机的端口。 提供部署外部负载均衡器所需的详细信息，将其他配置保留为默认值。 对于 ELB 配置，将 SKU 保留为“基本”。
-2. 添加负载均衡器规则 - 成功创建负载均衡器后，[创建负载均衡器资源](/azure/load-balancer/tutorial-load-balancer-standard-manage-portal#create-load-balancer-resources)，然后添加负载均衡器规则以访问 RHEL 虚拟机的端口 8080 和 9990。
+1. [创建负载均衡器](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md?tabs=option-1-create-load-balancer-standard#create-load-balancer-resources)以访问 RHEL 虚拟机的端口。 提供部署外部负载均衡器所需的详细信息，将其他配置保留为默认值。 对于 ELB 配置，将 SKU 保留为“基本”。
+2. 添加负载均衡器规则 - 成功创建负载均衡器后，[创建负载均衡器资源](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md?tabs=option-1-create-load-balancer-standard#create-load-balancer-resources)，然后添加负载均衡器规则以访问 RHEL 虚拟机的端口 8080 和 9990。
 3. 将 RHEL 虚拟机添加到负载均衡器后端池 - 单击设置部分下的“后端池”，然后选择在以上步骤中创建的后端池。 选择与“关联到”选项对应的虚拟机，然后添加 RHEL 虚拟机。
 4. 要获取负载均衡器的公共 IP，请转到负载均衡器概述页并复制负载均衡器的公共 IP。
 5. 查看 Azure 上的 JBoss EAP 网页 - 打开 Web 浏览器，然后转到 *http://<PUBLIC_IP_LoadBalancer>:8080/* ，应会看到默认的 EAP 欢迎页。
@@ -207,9 +207,9 @@ JBoss EAP 在 Azure 上仅以 BYOS 模式提供。 部署 RHEL 上的 JBoss EAP 
     more eap.log
     ```
 
-日志文件将包含详细信息，包括部署失败原因和可能的解决方案。 如果部署是由于 RHSM 帐户或权利而失败，请参阅“支持和订阅说明”部分，以完成先决条件。 然后重试。 在 RHEL 群集计划上部署 EAP 时，请确保部署不会达到配额限制。 在提供部署的实例计数之前，必须检查区域 vCPU 和虚拟机系列 vCPU 配额。 如果你的订阅或区域的配额限制不足，请通过 Azure 门户[请求配额](/azure/azure-portal/supportability/regional-quota-requests)。
+日志文件将包含详细信息，包括部署失败原因和可能的解决方案。 如果部署是由于 RHSM 帐户或权利而失败，请参阅“支持和订阅说明”部分，以完成先决条件。 然后重试。 在 RHEL 群集计划上部署 EAP 时，请确保部署不会达到配额限制。 在提供部署的实例计数之前，必须检查区域 vCPU 和虚拟机系列 vCPU 配额。 如果你的订阅或区域的配额限制不足，请通过 Azure 门户[请求配额](../../../azure-portal/supportability/regional-quota-requests.md)。
 
-有关排查虚拟机自定义脚本扩展问题的详细信息，请参阅[将 Azure 自定义脚本扩展版本 2 与 Linux 虚拟机一起使用](/azure/virtual-machines/extensions/custom-script-linux)。
+有关排查虚拟机自定义脚本扩展问题的详细信息，请参阅[将 Azure 自定义脚本扩展版本 2 与 Linux 虚拟机一起使用](../../extensions/custom-script-linux.md)。
 
 ## <a name="resource-links-and-support"></a>资源链接和支持
 
@@ -217,16 +217,16 @@ JBoss EAP 在 Azure 上仅以 BYOS 模式提供。 部署 RHEL 上的 JBoss EAP 
 
 * 详细了解 [JBoss EAP](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform)
 * [Azure Red Hat OpenShift 上的 JBoss EAP](https://azure.microsoft.com/services/openshift/)
-* [Azure 应用服务中的 JBoss EAP](https://aka.ms/jboss-app-service-overview) 
-* [Azure 混合权益](/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+* [Azure 应用服务中的 JBoss EAP](/azure/developer/java/ee/jboss-on-azure) 
+* [Azure 混合权益](../../windows/hybrid-use-benefit-licensing.md)
 * [Red Hat 订阅管理](https://access.redhat.com/products/red-hat-subscription-management)
-* [关于 Azure 上的 Red Hat 的 Microsoft 文档](https://aka.ms/rhel-docs)
+* [关于 Azure 上的 Red Hat 的 Microsoft 文档](./overview.md)
 
 ## <a name="next-steps"></a>后续步骤
 
 * 从[Azure 市场](https://aka.ms/AMP-JBoss-EAP)部署 RHEL 虚拟机/虚拟机规模集上的 JBoss EAP
 * 从 [Azure 快速入门](https://aka.ms/Quickstart-JBoss-EAP)部署 RHEL 虚拟机/虚拟机规模集上的 JBoss EAP
-* 为 [Azure 应用服务](/azure/app-service/configure-language-java)配置 Java 应用
+* 为 [Azure 应用服务](../../../app-service/configure-language-java.md)配置 Java 应用
 * [如何将 JBoss EAP 部署到 Azure 应用服务](https://github.com/JasonFreeberg/jboss-on-app-service)教程
 * 使用 Azure [应用服务迁移协助](https://azure.microsoft.com/services/app-service/migration-assistant/)
 * 使用 Red Hat [Migration Toolkit for Applications](https://developers.redhat.com/products/mta)

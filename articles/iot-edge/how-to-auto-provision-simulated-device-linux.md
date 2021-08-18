@@ -2,18 +2,17 @@
 title: 在 Linux VM 上使用虚拟 TPM 预配设备 - Azure IoT Edge
 description: 使用 Linux VM 上的模拟 TPM 来测试 Azure IoT Edge 的 Azure 设备预配服务
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 04/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 79fe8acd06084c58b0cf9b47bf93e933c648510c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b380e9501ebed8f2830c09ddb00d40467b9b22a1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481984"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735158"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>在 Linux 上使用 TPM 创建和预配 IoT Edge 设备
 
@@ -227,6 +226,12 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 :::moniker range=">=iotedge-2020-11"
 
 1. 了解在先前部分中收集的 DPS ID 范围和设备注册 ID 。
+
+1. 基于在安装 IoT Edge 的过程中提供的模板文件为你的设备创建配置文件。
+
+   ```bash
+   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   ```
 
 1. 在 IoT Edge 设备上打开配置文件。
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: memildin
-ms.openlocfilehash: ff23a1fa4b631fc10163f22d94ccdbd8cbe657c2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3d7bed3847465c48914453a3fd167384e1c180b6
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099244"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113435806"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
@@ -35,12 +35,12 @@ ms.locfileid: "102099244"
 安全中心还为以下内容提供漏洞分析：
 
 * SQL 数据库 - 请参阅[在漏洞评估仪表板中浏览漏洞评估报告](defender-for-sql-on-machines-vulnerability-assessment.md#explore-vulnerability-assessment-reports)
-* Azure 容器注册表映像 - 请参阅[使用适用于容器注册表的 Azure Defender 扫描映像中的漏洞](defender-for-container-registries-usage.md)
+* Azure 容器注册表映像 - 请参阅[使用适用于容器注册表的 Azure Defender 来扫描映像是否存在漏洞](defender-for-container-registries-usage.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>安全中心如何集成
 从安全中心部署的 Azure 安全解决方案是自动连接的。 还可以连接其他安全数据源，包括在本地或其他云中运行的计算机。
 
-[![合作伙伴解决方案集成](./media/security-center-partner-integration/security-solutions-page.png)](./media/security-center-partner-integration/security-solutions-page.png#lightbox)
+:::image type="content" source="./media/security-center-partner-integration/security-solutions-page.png" alt-text="合作伙伴解决方案集成。" lightbox="./media/security-center-partner-integration/security-solutions-page.png":::
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>管理集成式 Azure 安全解决方案和其他数据源
 
@@ -54,7 +54,7 @@ ms.locfileid: "102099244"
 
 “已连接解决方案”部分包括当前连接到安全中心的所有安全解决方案。 它还显示每个解决方案的运行状况。  
 
-![已连接解决方案](./media/security-center-partner-integration/connected-solutions.png)
+![已连接的解决方案。](./media/security-center-partner-integration/connected-solutions.png)
 
 合作伙伴解决方案的状态可能为：
 
@@ -75,7 +75,7 @@ ms.locfileid: "102099244"
    - **删除解决方案**
    - **配置**
 
-   ![合作伙伴解决方案详细信息](./media/security-center-partner-integration/partner-solutions-detail.png)
+   ![合作伙伴解决方案详细信息。](./media/security-center-partner-integration/partner-solutions-detail.png)
 
 
 ### <a name="discovered-solutions"></a>已发现解决方案
@@ -91,7 +91,7 @@ ms.locfileid: "102099244"
 
 “添加数据源”部分包括其他可以连接的可用数据源。 如需从任何此类源添加数据的说明，请单击“添加”。
 
-![数据源](./media/security-center-partner-integration/add-data-sources.png)
+![数据源。](./media/security-center-partner-integration/add-data-sources.png)
 
 
 

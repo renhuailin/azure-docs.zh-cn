@@ -15,20 +15,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: yelevin
-ms.openlocfilehash: e912cabd27bac52792ffb2d71027170f4e53f310
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 839d235412b70669dd3cb9b9942509ef9af7b3c4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784514"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779659"
 ---
 # <a name="bring-your-own-machine-learning-ml-into-azure-sentinel"></a>自带机器学习 (ML) 到 Azure Sentinel
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 机器学习 (ML) 是 Azure Sentinel 的主要基础结构之一，是它的主要独特属性之一。 Azure Sentinel 在几个体验中提供 ML：内置于[融合](fusion.md)关联引擎和 Jupyter Notebook，以及新发布的自行构建 ML (BYO ML) 平台。 
 
 ML 检测模型可适应个人环境和用户行为变化，从而减少[假正](false-positives.md)并识别使用传统方法无法找到的威胁。 许多安全组织都了解 ML 的安全性价值，但是没多少组织能够拥有在安全和 ML 方面都具有专业知识的专业人员。 我们在这里展示了为安全组织和专业人员设计的框架，请在 ML 旅程中与我们一起成长。 刚刚接触 ML 或没有必要专业知识的组织可以从 Azure Sentinel 的内置 ML 功能中获得重大的保护价值。
 
 :::image type="content" source="./media/bring-your-own-ml/machine-learning-framework.png" alt-text="机器学习框架":::
+
 
 ## <a name="what-is-the-bring-your-own-machine-learning-byo-ml-platform"></a>什么是自带机器学习 (BYO-ML) 平台？
 
@@ -163,7 +166,7 @@ az monitor log-analytics workspace data-export list --resource-group "RG_NAME" -
 
 ### <a name="build-custom-analytics-rule-with-ml-results"></a>用 ML 结果构建自定义分析规则
 
-一旦确认了 ML 结果位于自定义日志表中，并且对分数的保真度感到满意，就可以根据结果创建检测。 从 Azure Sentinel 门户中转到“分析”，并[创建新的检测规则](tutorial-detect-threats-custom.md)。 下面是一个示例，演示了用于创建检测的查询。
+一旦确认了 ML 结果位于自定义日志表中，并且对分数的保真度感到满意，就可以根据结果创建检测。 从 Azure Sentinel 门户中转到“分析”，并[创建新的检测规则](detect-threats-custom.md)。 下面是一个示例，演示了用于创建检测的查询。
 
 :::image type="content" source="./media/bring-your-own-ml/create-byo-ml-analytics-rule.png" alt-text="为 B Y O M L 检测创建自定义分析规则":::
 

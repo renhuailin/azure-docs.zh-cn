@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5c1bdadf92d72ebec7ffa122b3c49c5878e2d2b8
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 0be29603225361b2f275f081c1ad52c5c6c394db
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745162"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736167"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature-in-azure-virtual-desktop-classic"></a>在 Azure 虚拟桌面（经典）中使用 Log Analytics 诊断功能
 
@@ -32,7 +32,7 @@ Azure 虚拟桌面提供了一项诊断功能，使管理员能够通过单个�
 
 ## <a name="before-you-get-started"></a>准备工作
 
-你需要[创建工作区](../../azure-monitor/vm/quick-collect-windows-computer.md#create-a-workspace)，然后才能将 Log Analytics 与诊断功能配合使用。
+你需要[创建工作区](../../azure-monitor/logs/quick-create-workspace.md)，然后才能将 Log Analytics 与诊断功能配合使用。
 
 在创建了工作区之后，请按照[将 Windows 计算机连接到 Azure Monitor](../../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key) 中的说明获取以下信息：
 

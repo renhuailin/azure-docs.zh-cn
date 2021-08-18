@@ -4,15 +4,16 @@ description: 使用示例应用程序生成自己的商业市场分析应用程�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 8fe2301c4d4ed2a582774c65d5dbe68bab416aa3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed1fb34663a2e424b9d48e7adea422bb26726c77
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583450"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748237"
 ---
 # <a name="sample-application-for-accessing-commercial-marketplace-analytics-data"></a>用于访问商业市场分析数据的示例应用程序
 

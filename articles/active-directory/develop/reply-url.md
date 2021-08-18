@@ -1,22 +1,22 @@
 ---
-title: 重定向 URI（回复 URL）限制 | Azure
+title: 重定向 URI（回复 URL）限制 | Azure AD
 titleSuffix: Microsoft identity platform
 description: 说明 Microsoft 标识平台对重定向 URI（回复 URL）格式强制实施的限制和局限。
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 11/23/2020
+ms.date: 06/23/2021
 ms.topic: conceptual
 ms.subservice: develop
-ms.custom: aaddev
+ms.custom: contperf-fy21q4-portal, aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: 91df89a69368056c1967e641562cf8515f44ade0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9484973e724246db76ccc927437fccf2c4c7be1
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99582802"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112966457"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>重定向 URI（回复 URL）限制和局限
 
@@ -27,6 +27,10 @@ ms.locfileid: "99582802"
 * 重定向 URI 必须以方案 `https` 开头。 有一些 [localhost 重定向 URI 例外](#localhost-exceptions)。
 
 * 重定向 URI 区分大小写。 其大小写必须与正在运行的应用程序的 URL 路径的大小写匹配。 例如，如果应用程序在其路径中包括 `.../abc/response-oidc`，请不要在重定向 URI 中指定 `.../ABC/response-oidc`。 由于 Web 浏览器将路径视为区分大小写，因此在重定向到大小写不匹配的 `.../ABC/response-oidc` URL 时，可能会排除与 `.../abc/response-oidc` 关联的 cookie。
+
+* 不带路径段的重定向 URI 会给响应中的 URI 追加一个尾随斜杠。 例如， https://contoso.com 和 http://localhost:7071 这样的 URI 将会分别以 https://contoso.com/ 和 http://localhost:7071/ 的形式返回。 这只适用于响应模式为查询或片段的情况。
+
+* 包含路径段的重定向 URI 不会追加尾随斜杠。 （例如， https://contoso.com/abc 、 https://contoso.com/abc/response-oidc 将会在响应中按原样使用）
 
 ## <a name="maximum-number-of-redirect-uris"></a>重定向 URI 的最大数量
 
@@ -76,7 +80,7 @@ Azure Active Directory (Azure AD) 应用程序模型目前同时支持 HTTP 和 
 
 :::image type="content" source="media/reply-url/portal-01-no-http-loopback-redirect-uri.png" alt-text="Azure 门户中的“错误”对话框显示不允许基于 http 的环回重定向 URI":::
 
-若要添加在 `127.0.0.1` 环回地址中使用 `http` 方案的重定向 URI，当前必须修改[应用程序清单](reference-app-manifest.md)中的 [replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute) 属性。
+若要添加在 `127.0.0.1` 环回地址中使用 `http` 方案的重定向 URI，当前必须修改应用程序清单中的 [replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute) 属性。
 
 ## <a name="restrictions-on-wildcards-in-redirect-uris"></a>重定向 URI 中对通配符的限制
 
@@ -84,9 +88,9 @@ Azure Active Directory (Azure AD) 应用程序模型目前同时支持 HTTP 和 
 
 对于配置为登录个人 Microsoft 帐户以及工作或学校帐户的应用注册，目前不支持通配符 URI。 但是，对于组织的 Azure AD 租户中配置为仅将工作帐户或学校帐户登录的应用，允许使用通配符 URI。
 
-若要将具有通配符的重定向 URI 添加到用于登录工作帐户或学校帐户的应用注册，请使用 Azure 门户的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)中的应用程序清单编辑器。 尽管可以使用清单编辑器来设置具有通配符的重定向 URI，但我们强烈建议你遵循 [RFC 6749 的 3.1.2 节](https://tools.ietf.org/html/rfc6749#section-3.1.2)的要求，仅使用绝对 URI。
+若要将具有通配符的重定向 URI 添加到用于登录工作帐户或学校帐户的应用注册，请使用 Azure 门户的 **应用注册** 中的应用程序清单编辑器。 虽然可以通过使用清单编辑器来设置带通配符的重定向 URI，但我们还是强烈建议你遵循 RFC 6749 的 3.1.2 节的要求， 只使用绝对 URI。
 
-如果方案所需的重定向 URI 数目超过允许的最大限制，请考虑以下[状态参数方法](#use-a-state-parameter)，而不要添加通配符重定向 URI。
+如果方案所需的重定向 URI 数目超过允许的最大限制，请考虑以下状态参数方法，而不要添加通配符重定向 URI。
 
 #### <a name="use-a-state-parameter"></a>使用状态参数
 

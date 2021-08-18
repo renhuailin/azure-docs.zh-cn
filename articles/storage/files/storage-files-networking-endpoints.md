@@ -4,16 +4,16 @@ description: 了解如何配置 Azure 文件存储网络终结点。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2020
+ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 079d7aa9b654a318c7269a41605c3e146b08f127
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 6d92350a46319400cb0c5ec8dce4b87ef1da5487
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96621325"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113224969"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>配置 Azure 文件存储网络终结点
 
@@ -23,9 +23,16 @@ Azure 文件存储提供两种主要类型的终结点用于访问 Azure 文件�
 
 公共和专用终结点位于 Azure 存储帐户中。 存储帐户是代表共享存储池的管理结构，你可以在其中部署多个文件共享以及其他存储资源（例如，Blob 容器或队列）。
 
-本文重点介绍如何配置存储帐户的终结点，以便直接访问 Azure 文件共享。 本文档中提供的大部分详细信息也适用于 Azure 文件同步与存储帐户公共和专用终结点的互操作方式，但有关 Azure 文件同步部署网络注意事项的详细信息，请参阅[配置 Azure 文件同步代理和防火墙设置](storage-sync-files-firewall-and-proxy.md)。
+本文重点介绍如何配置存储帐户的终结点，以便直接访问 Azure 文件共享。 本文档中提供的大部分详细信息也适用于 Azure 文件同步与存储帐户公共和专用终结点的互操作方式，但有关 Azure 文件同步部署网络注意事项的详细信息，请参阅[配置 Azure 文件同步代理和防火墙设置](../file-sync/file-sync-firewall-and-proxy.md)。
 
 在阅读本操作指南之前，我们建议先阅读 [Azure 文件存储的网络注意事项](storage-files-networking-overview.md)。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
 
 ## <a name="prerequisites"></a>先决条件
 

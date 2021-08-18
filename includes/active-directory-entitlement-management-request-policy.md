@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 1bbc549a9ba457d5f515df25d6fdce0c2ede6f2e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9686cce60520895fe4a3ae7fb47e1eb0eca03599
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105582643"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112975221"
 ---
 ## <a name="for-users-in-your-directory"></a>适用于目录中的用户
 
@@ -89,7 +89,7 @@ ms.locfileid: "105582643"
 
 如果希望绕过访问请求，并允许管理员直接将特定用户分配到访问包，请执行这些步骤。 用户无需请求访问包。 仍可以设置生命周期设置，但没有请求设置。
 
-1. 在“可以请求访问权限的用户”部分，单击“无（仅限管理员直接分配）” 。
+1. 在“可以请求访问权限的用户”部分，单击“无(仅限管理员直接分配)” 。
 
     ![访问包 - 请求 - 无（仅限管理员直接分配）](./media/active-directory-entitlement-management-request-policy/none-admin-direct-assignments-only.png)
 
@@ -210,7 +210,7 @@ ms.locfileid: "105582643"
 
 1. 单击“下一步”  。
 
-## <a name="add-requestor-information-preview-to-an-access-package"></a>向访问包添加请求者信息（预览）
+## <a name="add-requestor-information-to-an-access-package"></a>将请求者信息添加到访问包
 
 1. 转到“请求者信息”选项卡并单击“问题”子选项卡。
  
@@ -218,7 +218,7 @@ ms.locfileid: "105582643"
 
     ![访问包 - 策略 - 启用请求者信息设置](./media/active-directory-entitlement-management-request-policy/add-requestor-info-question.png)
 
-1. 若要添加自己的本地化选项，请单击“添加本地化”。
+1. 如果要本地化问题和答案选项，请单击“添加本地化”。
     1. 进入“添加问题的本地化文本”窗格后，为用于将问题本地化的语言选择“语言代码”。
     1. 使用配置的语言，在“本地化文本”框中键入问题。
     1. 添加完所需的所有本地化文本后，请单击“保存”。
@@ -229,10 +229,13 @@ ms.locfileid: "105582643"
  
     ![访问包 - 策略 - 选择“查看和编辑多选答案格式”](./media/active-directory-entitlement-management-request-policy/answer-format-view-edit.png)
  
-1. 如果选择“多选”，请单击“查看和编辑”按钮来配置答案选项。
-    1. 选择“查看和编辑”后，“查看/编辑问题”窗格会打开。
+1. 如果选择“多选”，请单击“编辑和本地化”按钮来配置答案选项。
+    1. 在选择“编辑和本地化”后，“编辑/本地化问题”窗格将会打开。
     1. 在“答案值”框中键入你希望在请求者回答问题时向请求者提供的响应选项。
-    1. 键入所需的任意多个响应，然后单击“保存”。
+    1. 请根据需要键入任意数量的响应。
+    1. 如果要为多选选项添加你自己的本地化内容，请为本地化某个特定选项时要采用的语言选择“可选语言代码”。
+    1. 在配置的语言的“本地化”文本框中键入该选项。
+    1. 在为每个多选选项添加了所需的全部本地化内容后，请单击“保存”。
     
     ![访问包 - 策略 - 输入多选选项](./media/active-directory-entitlement-management-request-policy/answer-multiple-choice.png)
   

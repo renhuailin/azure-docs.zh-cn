@@ -4,12 +4,12 @@ description: 了解节点自动修复功能，以及 AKS 如何修复损坏的�
 services: container-service
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 95783000739fd42e39ef1bbce88c3b8e62d4a8dc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6ca726445e7593898609c39e0a503405852098fc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110073191"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748912"
 ---
 # <a name="azure-kubernetes-service-aks-node-auto-repair"></a>Azure Kubernetes 服务 (AKS) 节点自动修复
 
@@ -40,7 +40,6 @@ kubectl get nodes
 
 1. 重新启动该节点。
 1. 如果重新启动失败，则对该节点重置映像。
-1. 如果重置映像失败，则创建新节点并对新节点重置映像。
 
 如果自动修复不成功，AKS 工程师会调查其他修正措施。 
 

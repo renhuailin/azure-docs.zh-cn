@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为自动用户预配配置 AWS Si
 description: 了解如何将用户帐户从 Azure AD 自动预配到 AWS Single Sign-On 及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 54a9f704-7877-4ade-81af-b8d3f7fb9255
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2021
-ms.author: Zhchia
-ms.openlocfilehash: 25a2a370e4a88348c2acac931e5f3e1a6f247d1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 97359ee9b4475f06bc1f09635f9fdb788fcbc19b
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599674"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764841"
 ---
 # <a name="tutorial-configure-aws-single-sign-on-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 AWS Single Sign-On
 
@@ -48,7 +48,7 @@ ms.locfileid: "104599674"
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 3. 确定要[在 Azure AD 与 AWS Single Sign-On 之间映射](../app-provisioning/customize-application-attributes.md)哪些数据。 
 
-## <a name="step-2-configure-aws-single-sign-on-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 AWS Single Sign-On 以支持通过 Azure AD 进行预配
+## <a name="step-2-configure-aws-single-sign-on-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 AWS Single Sign-On 以支持通过 Azure AD 进行预配
 
 1. 打开 [AWS SSO 控制台](https://console.aws.amazon.com/singlesignon)。
 

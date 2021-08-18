@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: mathoma
 ms.date: 3/23/2021
-ms.openlocfilehash: 7de0db8245908e8342abbbe6a8f7cc4f2359e7f5
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: a697c0a3095963760d6a95159790c02cbab14d71
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112017858"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112121618"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>规划在 Azure SQL 数据库和 Azure SQL 托管实例中的 Azure 维护事件
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -40,6 +40,10 @@ ms.locfileid: "112017858"
 ## <a name="retry-logic"></a>重试逻辑
 
 连接到云数据库服务的任何客户端生产应用程序均应实现一个可靠的连接[重试逻辑](troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)。 这将有助于使重新配置对最终用户透明，或至少最大程度地减少负面影响。
+
+### <a name="service-health-alert"></a>服务运行状况警报
+
+如果你希望在出现服务问题或计划内维护活动时收到警报，可将 Azure 门户中的服务运行状况警报与相应的事件类型和操作组配合使用。 有关详细信息，请参阅[接收有关 Azure 服务通知的警报](../../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal)。
 
 ## <a name="resource-health"></a>资源运行状况
 

@@ -4,15 +4,16 @@ description: 使用此 API 可删除用于商业市场分析的用户定义查�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 4fc3479f1e35970a97684396a7a2e0c0c2582128
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 927534b11bc00b3ec21db2ab5efef2eb09104976
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583481"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748364"
 ---
 # <a name="delete-report-queries-api"></a>删除报表查询 API
 
@@ -33,7 +34,7 @@ ms.locfileid: "102583481"
 
 路径参数
 
-| **参数名称** | **类型** | **说明** |
+| **参数名称** | 类型 | **说明** |
 | --- | --- | --- |
 | `queryId` | string | 进行筛选以仅获取此参数中给定 ID 的查询的详细信息 |
 

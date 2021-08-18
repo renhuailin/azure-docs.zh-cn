@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/07/2021
-ms.openlocfilehash: 0e954b06afb9e1db09aefc77d9c9b85204f6fe28
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: a33b7fb26b06b9a89b7e4f16699441fd9a5bbd0b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110615226"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738373"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -229,7 +229,7 @@ Cosmos DB 支持使用 [SQL](./sql-query-getting-started.md) 查询项。 下表
 
 ## <a name="mongodb-api-specific-limits"></a>MongoDB API 特定限制
 
-Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议。 可以在[支持的 MongoDB 功能和语法](mongodb-feature-support.md)中找到支持的命令和协议版本。
+Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议。 可以在[支持的 MongoDB 功能和语法](mongodb/feature-support-32.md)中找到支持的命令和协议版本。
 
 下表列出了特定于 MongoDB 功能支持的限制。 针对 SQL（核心）API 所述的其他服务限制同样适用于 MongoDB API。
 
@@ -280,10 +280,10 @@ Cosmos DB 支持针为 MongoDB 编写的应用程序使用 MongoDB 线路协议�
 请通过阅读以下快速入门文章之一，来开始使用 Azure Cosmos DB：
 
 * [Azure Cosmos DB SQL API 入门](create-sql-api-dotnet.md)
-* [Azure Cosmos DB 的用于 MongoDB 的 API 入门](create-mongodb-nodejs.md)
-* [Azure Cosmos DB Cassandra API 入门](create-cassandra-dotnet.md)
+* [Azure Cosmos DB 的用于 MongoDB 的 API 入门](mongodb/create-mongodb-nodejs.md)
+* [Azure Cosmos DB Cassandra API 入门](cassandra/manage-data-dotnet.md)
 * [Azure Cosmos DB Gremlin API 入门](create-graph-dotnet.md)
-* [Azure Cosmos DB 表 API 入门](create-table-dotnet.md)
+* [Azure Cosmos DB 表 API 入门](table/create-table-dotnet.md)
 
 > [!div class="nextstepaction"]
 > [免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)

@@ -1,19 +1,20 @@
 ---
 title: 创建连接到 Azure 的 Azure 视频分析器媒体版（以前称为视频索引器）帐户
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: 了解如何创建连接到 Azure 的 Azure 视频分析器媒体版（以前称为视频索引器）帐户。
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 71035e6d115c64eea7ceb4a4f862d8bd4f4ec874
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 7bc5188c5987d393d63049a0a87a84605e4fa372
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537254"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112121586"
 ---
 # <a name="create-a-video-analyzer-for-media-account"></a>创建视频分析器媒体版帐户
 

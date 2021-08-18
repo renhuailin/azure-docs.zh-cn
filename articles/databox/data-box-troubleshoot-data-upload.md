@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: troubleshooting
 ms.date: 05/10/2021
 ms.author: alkohli
-ms.openlocfilehash: bd54b662e48ef6f66ea2bfef10863e2d7627289f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c1d1fd5a15d889ead669a5c7c880ed59f5a66ba8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111966428"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750917"
 ---
 # <a name="review-copy-errors-in-uploads-from-azure-data-box-and-azure-data-box-heavy-devices"></a>查看从 Azure Data Box 和 Azure Data Box Heavy 设备上传时发生的复制错误
 
@@ -110,7 +110,7 @@ ms.locfileid: "111966428"
 
 **错误说明：** 如果 Blob 存储容器配置为“一次写入多次读取 (WORM)”，则上传容器中已存储的任何 Blob 都将失败。
 
-**跟进：** 无法在当前上传中修复此错误。 上传已完成但出错。 执行网络传输或启动新导入订单之前，请确保列出的 Blob 不属于不可变的存储容器。 有关详细信息，请参阅[使用不可变的存储来存储业务关键型 Blob 数据](../storage/blobs/storage-blob-immutable-storage.md)。
+**跟进：** 无法在当前上传中修复此错误。 上传已完成但出错。 执行网络传输或启动新导入订单之前，请确保列出的 Blob 不属于不可变的存储容器。 有关详细信息，请参阅[使用不可变的存储来存储业务关键型 Blob 数据](../storage/blobs/immutable-storage-overview.md)。
 
 
 ### <a name="the-total-provisioned-capacity-of-the-shares-cannot-exceed-the-account-maximum-size-limit"></a>共享的总预配容量不能超过帐户最大大小限制

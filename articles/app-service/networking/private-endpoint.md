@@ -4,22 +4,22 @@ description: 使用 Azure 专用终结点以私密方式连接到 Web 应用
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 04/27/2021
+ms.date: 07/01/2021
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 6bb8343ae6281120d8bfef549946f47d8658cbba
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: da26939d6973792c237c84777daf2254ae27699d
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890152"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113105626"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>为 Azure Web 应用使用专用终结点
 
 > [!IMPORTANT]
-> 专用终结点适用于托管在以下应用服务计划中的 Windows 和 Linux Web 应用（无论是否容器化）：独立、PremiumV2、PremiumV3、Functions Premium（有时称为弹性高级计划）。 
+> 专用终结点适用于托管在以下应用服务计划中的 Windows 和 Linux Web 应用（无论是否容器化）：PremiumV2、PremiumV3、Functions Premium（有时称为“Elastic Premium”计划）。 
 
 可以为 Azure Web 应用使用专用终结点，以允许位于专用网络中的客户端通过专用链接安全地访问应用。 专用终结点使用你的 Azure VNet 地址空间中的 IP 地址。 专用网络上客户端与 Web 应用之间的网络流量将通过 VNet 以及 Microsoft 主干网络上的专用链接，因此不会从公共 Internet 公开。
 
@@ -38,6 +38,8 @@ ms.locfileid: "111890152"
 专用终结点是一个特殊的网络接口 (NIC)，适用于虚拟网络 (VNet) 的子网中的 Azure Web 应用。
 为 Web 应用创建专用终结点时，它会在专用网络上的客户端与 Web 应用之间提供安全连接。 专用终结点是从 VNet 的 IP 地址范围分配的 IP 地址。
 专用终结点与 Web 应用之间的连接使用安全的[专用链接][privatelink]。 专用终结点仅用于到 Web 应用的传入流。 传出流将不使用此专用终结点，但你可以通过 [VNet 集成功能][vnetintegrationfeature]将传出流注入到你的网络中的另一个子网。
+
+应用的每个槽都将进行单独配置。 每个槽最多可以插入 100 个专用终结点。 不能在槽之间共享专用终结点。
 
 在其中插入专用终结点的子网中可以有其他资源，不需要是专用的空子网。
 你还可以在与 Web 应用不同的区域中部署专用终结点。 
@@ -60,6 +62,7 @@ ms.locfileid: "111890152"
 
   > [!div class="mx-imgBorder"]
   > ![Web 应用专用终结点全局概述](media/private-endpoint/global-schema-web-app.png)
+
 
 ## <a name="dns"></a>DNS
 
@@ -121,8 +124,6 @@ ms.locfileid: "111890152"
 为 Web 应用启用专用终结点时，远程调试功能不可用。 建议将代码部署到槽并在那里对其进行远程调试。
 
 FTP 访问是通过入站公共 IP 地址提供的。 专用终结点不支持对 Web 应用的 FTP 访问。
-
-有一个已知限制是，其会影响专用终结点，以及使用插槽路由的流量（亦称[通过生产功能执行测试）][TiP]。 从 2021 年 4 月起，槽之间的自动和手动请求路由将会导致“403 Access Denied”。 将来的版本会取消此限制。
 
 我们会定期改进专用链接功能和专用终结点。若要了解有关限制的最新信息，请查看[此文][pllimitations]。
 

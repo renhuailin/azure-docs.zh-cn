@@ -1,21 +1,22 @@
 ---
-title: 删除 Windows Virtual Desktop 主机池 - Azure
-description: 如何在 Windows Virtual Desktop 中删除主机池。
+title: 删除 Azure 虚拟桌面主机池 - Azure
+description: 如何在 Azure 虚拟桌面中删除主机池。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 3693a82a0d9c9544ed6a14d4596d544725125bd3
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: e4621799389e738bd03e75f84f5c1706f90d69d3
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447040"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111751948"
 ---
 # <a name="delete-a-host-pool"></a>删除主机池
 
-在 Windows Virtual Desktop 中创建的所有主机池都附加到会话主机和应用组。 若要删除主机池，需要删除与主机池关联的应用组和会话主机。 删除应用组相当简单，但删除会话主机就比较复杂了。 当你删除会话主机时，需要确保它没有任何活动的用户会话。 应注销会话主机上的所有用户会话，以防止用户丢失数据。
+在 Azure 虚拟桌面中创建的所有主机池都附加到会话主机和应用组。 若要删除主机池，需要删除与主机池关联的应用组和会话主机。 删除应用组相当简单，但删除会话主机就比较复杂了。 当你删除会话主机时，需要确保它没有任何活动的用户会话。 应注销会话主机上的所有用户会话，以防止用户丢失数据。
 
 ## <a name="delete-a-host-pool-with-powershell"></a>使用 PowerShell 删除主机池
 
@@ -39,7 +40,7 @@ Remove-AzWvdHostPool -Name <hostpoolname> -ResourceGroupName <resourcegroupname>
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-2. 搜索并选择“Windows 虚拟桌面”  。
+2. 搜索并选择“Azure 虚拟桌面”。
 
 3. 在页面左侧的菜单中，选择“主机池”，然后选择要删除的主机池的名称。
 
@@ -65,5 +66,5 @@ Remove-AzWvdHostPool -Name <hostpoolname> -ResourceGroupName <resourcegroupname>
 若要了解如何配置主机池设置，请查看下面这些文章：
 
 - [自定义主机池的远程桌面协议属性](customize-rdp-properties.md)
-- [配置 Windows 虚拟桌面负载均衡方法](configure-host-pool-load-balancing.md)
+- [配置 Azure 虚拟桌面负载均衡方法](configure-host-pool-load-balancing.md)
 - [配置个人桌面主机池分配类型](configure-host-pool-personal-desktop-assignment-type.md)

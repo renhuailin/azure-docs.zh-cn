@@ -2,17 +2,18 @@
 title: 自定义 Azure-SSIS Integration Runtime 的安装
 description: 本文介绍如何使用 Azure-SSIS Integration Runtime 的自定义安装界面安装其他组件或更改设置
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019
 ms.date: 04/30/2021
-ms.openlocfilehash: ddd837387de955e04cdf39ec73104dfda98e3cf4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ec309debca7d3852411318ed56a914d47494fe2b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470894"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735325"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS Integration Runtime 的安装
 

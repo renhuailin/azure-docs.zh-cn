@@ -2,18 +2,18 @@
 title: Azure 托管磁盘的服务器端加密
 description: Azure 存储在将数据保存到存储群集之前会对其进行静态加密，以此保护数据。 可以使用客户管理的密钥通过自己的密钥来管理加密，也可以依赖 Microsoft 托管的密钥来加密你的托管磁盘。
 author: roygara
-ms.date: 04/15/2021
+ms.date: 06/29/2021
 ms.topic: conceptual
 ms.author: rogarana
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 09ec15eb45029c42fd5bc02288a0c45e167e7092
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 48b7fb11f3f0127358ee92ddea9262b805264500
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146286"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738994"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure 磁盘存储的服务器端加密
 
@@ -51,17 +51,6 @@ Azure 存储加密不会影响托管磁盘的性能，并且不会产生额外�
 #### <a name="supported-regions"></a>支持的区域
 
 可在提供托管磁盘的所有区域中使用客户管理的密钥。
-
-自动密钥轮换处于预览阶段，仅在以下区域提供：
-
-- 美国东部
-- 美国东部 2
-- 美国中南部
-- 美国西部
-- 美国西部 2
-- 北欧
-- 西欧
-- 法国中部
 
 > [!IMPORTANT]
 > 客户托管密钥依赖于 Azure 资源的托管标识（Azure Active Directory (Azure AD) 的一项功能）。 配置客户托管密钥时，实际上会自动将托管标识分配给你的资源。 如果随后将订阅、资源组或托管磁盘从一个 Azure AD 目录移动到另一个目录，则与托管磁盘关联的托管标识不会转移到新租户，因此，客户管理的密钥可能不再有效。 有关详细信息，请参阅[在 Azure AD 目录之间转移订阅](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。

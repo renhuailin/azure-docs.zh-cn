@@ -1,6 +1,6 @@
 ---
-title: 将 Azure 文件共享与 Windows 配合使用 | Microsoft Docs
-description: 了解如何在 Windows 和 Windows Server 中使用 Azure 文件共享。 在 Windows 安装（在本地或 Azure VM 上运行）上，将 Azure 文件共享与 SMB 3.x 配合使用。
+title: 在 Windows 上装载 SMB Azure 文件共享 | Microsoft Docs
+description: 了解如何在 Windows 和 Windows Server 中使用 Azure 文件共享。 在本地或 Azure VM 上运行的 Windows 安装上配合使用 Azure 文件共享与 SMB 3.x。
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,42 +8,46 @@ ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 31df90823591298a13dba725b7215031cad4bf8d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: fecf2ea565343ad2f91471ba1be98df513b55478
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110064803"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115705"
 ---
-# <a name="use-an-azure-file-share-with-windows"></a>在 Windows 中使用 Azure 文件共享
+# <a name="mount-smb-azure-file-share-on-windows"></a>在 Windows 上装载 SMB Azure 文件共享
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 Azure 文件共享可以在 Windows 和 Windows Server 中无缝使用。 本文介绍在 Windows 和 Windows Server 中使用 Azure 文件共享时的注意事项。
 
-使用 Azure 文件共享时，如果是在其被托管时所在的 Azure 区域之外（例如本地或其他 Azure 区域），则 OS 必须支持 SMB 3.x。 
+若要在托管某个 Azure 文件共享的 Azure 区域（例如本地或其他 Azure 区域）外部通过公共终结点使用该文件共享，OS 必须支持 SMB 3.x。 仅支持 SMB 2.1 的旧版 Windows 无法通过公共终结点装载 Azure 文件共享。
 
-可在 Azure VM 或本地运行的 Windows 安装中使用 Azure 文件共享。 下表说明了哪些 OS 版本支持在哪个环境中访问文件共享：
+| Windows 版本 | SMB 版本 | 最大 SMB 通道加密 |
+|-|-|-|-|
+| Windows 10，版本 21H1 | SMB 3.1.1 | AES-256-GCM |
+| Windows Server 半年频道，版本 21H1 | SMB 3.1.1 | AES-256-GCM |
+| Windows Server 2019 | SMB 3.1.1 | AES-128-GCM |
+| Windows 10<br />版本：1607、1809、1909、2004 和 20H2 | SMB 3.1.1 | AES-128-GCM |
+| Windows Server 半年频道<br />版本：2004 和 20H2 | SMB 3.1.1 | AES-128-GCM |
+| Windows Server 2016 | SMB 3.1.1 | AES-128-GCM |
+| Windows 10 版本 1507 | SMB 3.0 | AES-128-GCM |
+| Windows 8.1 | SMB 3.0 | AES-128-CCM |
+| Windows Server 2012 R2 | SMB 3.0 | AES-128-CCM |
+| Windows Server 2012 | SMB 3.0 | AES-128-CCM |
+| Windows 7<sup>1</sup> | SMB 2.1 | 不支持 |
+| Windows Server 2008 R2<sup>1</sup> | SMB 2.1 | 不支持 |
 
-| Windows 版本        | SMB 版本 | 可以在 Azure VM 中装载 | 可以在本地装载 |
-|------------------------|-------------|-----------------------|-----------------------|
-| Windows Server 2019 | SMB 3.1.1 | 是 | 是 |
-| Windows 10<sup>1</sup> | SMB 3.1.1 | 是 | 是 |
-| Windows Server 半年通道<sup>2</sup> | SMB 3.1.1 | 是 | 是 |
-| Windows Server 2016 | SMB 3.1.1 | 是 | 是 |
-| Windows 10 版本 1507 | SMB 3.0 | 是 | 是 |
-| Windows 8.1 | SMB 3.0 | 是 | 是 |
-| Windows Server 2012 R2 | SMB 3.0 | 是 | 是 |
-| Windows Server 2012 | SMB 3.0 | 是 | 是 |
-| Windows 7<sup>3</sup> | SMB 2.1 | 是 | 否 |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | 是 | 否 |
-
-<sup>1</sup>Windows 10 版本 1607、1809、1909、2004 和 20H2  
-<sup>2</sup>Windows Server 版本 2004 和 20H2。  
-<sup>3</sup>Microsoft 对 Windows 7 和 Windows Server 2008 R2 的常规支持已结束。 只有通过[扩展安全更新 (ESU) 程序](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)才能购买对安全更新的附加支持。 我们强烈建议从这些操作系统中迁移。
+<sup>1</sup>Microsoft 对 Windows 7 和 Windows Server 2008 R2 的常规支持已结束。 只有通过[扩展安全更新 (ESU) 程序](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates)才能购买对安全更新的附加支持。 我们强烈建议从这些操作系统中迁移。
 
 > [!Note]  
 > 我们始终建议使用相对于 Windows 版本来说最新的 KB。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
 
+## <a name="prerequisites"></a>先决条件 
 确保端口 445 处于打开状态：SMB 协议要求 TCP 端口 445 处于打开状态；如果端口 445 已被阻止，连接将会失败。 可以使用 `Test-NetConnection` cmdlet 检查防火墙是否正在阻止端口 445。 若要了解如何解决 445 端口被阻止的问题，请参阅 Windows 故障排除指南的[原因 1：端口 445 被阻止](storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked)部分。
 
 ## <a name="using-an-azure-file-share-with-windows"></a>在 Windows 中使用 Azure 文件共享
@@ -123,82 +127,6 @@ Azure 门户为你提供了一个脚本，你可以使用该脚本将文件共�
 选择“还原”，以递归方式将整个目录在共享快照创建时包含的内容复制到原始位置。
 
  ![警告消息中的“还原”按钮](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
-
-## <a name="securing-windowswindows-server"></a>保护 Windows/Windows Server
-若要在 Windows 上装载 Azure 文件共享，端口 445 必须可访问。 由于 SMB 1 固有的安全风险，许多组织会阻止端口 445。 SMB 1（也称为通用 Internet 文件系统，简称 CIFS）是 Windows 和 Windows Server 中随附的一个传统文件系统协议。 SMB 1 是一个已过时的低效协议，最重要的是，它不安全。 好消息是 Azure 文件不支持 SMB 1，所有支持的 Windows 和 Windows Server 版本允许删除或禁用 SMB 1。 我们始终[强烈建议](https://aka.ms/stopusingsmb1)在生产环境中使用 Azure 文件共享之前，删除或禁用 Windows 中的 SMB 1 客户端和服务器。
-
-下表提供了有关每个 Windows 版本上 SMB 1 状态的详细信息：
-
-| Windows 版本                           | SMB 1 默认状态 | 禁用/删除方法       | 
-|-------------------------------------------|----------------------|-----------------------------|
-| Windows Server 2019                       | 已禁用             | 使用 Windows 功能删除 |
-| Windows Server 版本 1709+            | 已禁用             | 使用 Windows 功能删除 |
-| Windows 10 版本 1709+                | 已禁用             | 使用 Windows 功能删除 |
-| Windows Server 2016                       | Enabled              | 使用 Windows 功能删除 |
-| Windows 10 版本 1507、1607 和 1703 | Enabled              | 使用 Windows 功能删除 |
-| Windows Server 2012 R2                    | Enabled              | 使用 Windows 功能删除 | 
-| Windows 8.1                               | Enabled              | 使用 Windows 功能删除 | 
-| Windows Server 2012                       | Enabled              | 使用注册表禁用       | 
-| Windows Server 2008 R2                    | Enabled              | 使用注册表禁用       |
-| Windows 7                                 | Enabled              | 使用注册表禁用       | 
-
-### <a name="auditing-smb-1-usage"></a>审核 SMB 1 使用情况
-> 适用于 Windows Server 2019、Windows Server 半年通道（版本 1709 和 1803）、Windows Server 2016、Windows 10（版本 1507、1607、1703、1709 和 1803）、Windows Server 2012 R2 和 Windows 8.1
-
-在环境中删除 SMB 1 之前，可以审核 SMB 1 使用情况，以确定所做的更改是否会中断任何客户端。 如果针对使用 SMB 1 的 SMB 共享发出了任何请求，将在事件日志中的 `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit` 下面记录一个审核事件。 
-
-> [!Note]  
-> 若要在 Windows Server 2012 R2 和 Windows 8.1 上启用审核支持，至少应安装 [KB4022720](https://support.microsoft.com/help/4022720/windows-8-1-windows-server-2012-r2-update-kb4022720)。
-
-若要启用审核，请在权限提升的 PowerShell 会话中执行以下 cmdlet：
-
-```powershell
-Set-SmbServerConfiguration –AuditSmb1Access $true
-```
-
-### <a name="removing-smb-1-from-windows-server"></a>从 Windows Server 中删除 SMB 1
-> 适用于 Windows Server 2019、Windows Server 半年通道（版本 1709 和 1803）、Windows Server 2016、Windows Server 2012 R2
-
-若要从 Windows Server 实例中删除 SMB 1，请在权限提升的 PowerShell 会话中执行以下 cmdlet：
-
-```powershell
-Remove-WindowsFeature -Name FS-SMB1
-```
-
-若要完成删除过程，请重启服务器。 
-
-> [!Note]  
-> 从 Windows 10 和 Windows Server 版本 1709 开始，默认不会安装 SMB 1，SMB 1 客户端和 SMB 1 服务器有独立的 Windows 功能。 我们始终建议保持卸载 SMB 1 服务器 (`FS-SMB1-SERVER`) 和 SMB 1 客户端 (`FS-SMB1-CLIENT`)。
-
-### <a name="removing-smb-1-from-windows-client"></a>从 Windows 客户端中删除 SMB 1
-> 适用于 Windows 10（版本 1507、1607、1703、1709 和 1803）和 Windows 8.1
-
-若要从 Windows 客户端中删除 SMB 1，请在权限提升的 PowerShell 会话中执行以下 cmdlet：
-
-```powershell
-Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol
-```
-
-若要完成删除过程，请重启电脑。
-
-### <a name="disabling-smb-1-on-legacy-versions-of-windowswindows-server"></a>在早期版本的 Windows/Windows Server 上禁用 SMB 1
-> 适用于 Windows Server 2012、Windows Server 2008 R2 和 Windows 7
-
-无法在早期版本的 Windows/Windows Server 上完全删除 SMB 1，但可以通过注册表将其禁用。 若要禁用 SMB 1，请创建 `DWORD` 类型的新注册表项 `SMB1`，并在 `HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > Services > LanmanServer > Parameters` 下面添加值 `0`。
-
-也可以使用以下 PowerShell cmdlet 轻松实现此目的：
-
-```powershell
-Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" SMB1 -Type DWORD -Value 0 –Force
-```
-
-创建此注册表项以后，必须重启服务器才能禁用 SMB 1。
-
-### <a name="smb-resources"></a>SMB 资源
-- [Stop using SMB 1](https://blogs.technet.microsoft.com/filecab/2016/09/16/stop-using-smb1/)（停止使用 SMB 1）
-- [SMB 1 Product Clearinghouse](https://blogs.technet.microsoft.com/filecab/2017/06/01/smb1-product-clearinghouse/)（SMB 1 产品交换所）
-- [Discover SMB 1 in your environment with DSCEA](/archive/blogs/ralphkyttle/discover-smb1-in-your-environment-with-dscea)（使用 DSCEA 发现环境中的 SMB 1）
-- [Disabling SMB 1 through Group Policy](/archive/blogs/secguide/disabling-smbv1-through-group-policy)（通过组策略禁用 SMB 1）
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下链接，获取有关 Azure 文件的更多信息：

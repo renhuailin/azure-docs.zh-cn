@@ -6,26 +6,26 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: d1817db4615d321db3d5f098d449410ee5b0606c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8d8d397dd81e6a7d30bd2877483dde1c3ab8de5a
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141842"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114404183"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>IoT 中心的设备更新和 IoT 即插即用
 
-IoT 中心的设备更新使用 [IoT 即插即用](../iot-pnp/index.yml)以发现和管理支持无线更新的设备。 设备更新服务将使用 PnP 接口向设备发送并从设备接收属性和消息。 IoT 中心的设备更新要求 IoT 设备实现以下接口和模型-ID（如下所述）。
+IoT 中心的设备更新使用 [IoT 即插即用](../iot-develop/index.yml)以发现和管理支持无线更新的设备。 设备更新服务将使用 PnP 接口向设备发送并从设备接收属性和消息。 IoT 中心的设备更新要求 IoT 设备实现以下接口和模型-ID（如下所述）。
 
 概念： 
-* 了解 [IoT 即插即用设备客户端](https://docs.microsoft.com/azure/iot-pnp/concepts-developer-guide-device?pivots=programming-language-csharp#implement-telemetry,-properties,-and-commands)。 
+* 了解 [IoT 即插即用设备客户端](../iot-develop/concepts-developer-guide-device.md?pivots=programming-language-csharp#implement-telemetry-properties-and-commands)。 
 * 查看如何[实现设备更新代理](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md)。
 
 ## <a name="adu-core-interface"></a>ADU Core 接口
 
 “ADUCoreInterface”接口用于向设备发送更新操作和元数据，并从设备接收更新状态。 “ADU Core”接口拆分为两个对象属性。
 
-实现此接口时，模型中的预期组件名称为“azureDeviceUpdateAgent”。 [详细了解 Azure IoT PnP 组件](../iot-pnp/concepts-modeling-guide.md)
+实现此接口时，模型中的预期组件名称为“azureDeviceUpdateAgent”。 [详细了解 Azure IoT PnP 组件](../iot-develop/concepts-modeling-guide.md)
 
 ### <a name="agent-metadata"></a>代理元数据
 
@@ -36,7 +36,7 @@ IoT 中心的设备更新使用 [IoT 即插即用](../iot-pnp/index.yml)以发�
 |resultCode|integer|设备到云|此代码包含上次更新操作结果的信息。 可能填充成功，也可能填充失败，应遵循 [HTTP 状态代码规范](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)。|500|
 |extendedResultCode|integer|设备到云|此代码包含结果的其他信息。 可能填充成功，也可能填充失败。|0x80004005|
 |state|integer|设备到云|此整数用于指示设备更新代理的当前状态。 详细信息参见以下内容 |闲置|
-|installedUpdateId|string|设备到云|当前（通过设备更新）安装的更新 ID。 对于从未通过设备更新进行更新的设备，此值将为 null。|Null|
+|installedUpdateId|string|设备到云|当前（通过设备更新）安装的更新 ID。 此值将是一个字符串，用于捕获更新 ID JSON，对于从未通过设备更新进行更新的设备，此值将为 NULL。|"{\"provider\":\"contoso\",\"name\":\"image-update\",\"version\":\"1.0.0\"}"|
 |`deviceProperties`|映射|设备到云|包含制造商和型号的属性集。|详细信息参见以下内容
 
 #### <a name="state"></a>状态
@@ -56,8 +56,8 @@ IoT 中心的设备更新使用 [IoT 即插即用](../iot-pnp/index.yml)以发�
 
 |名称|架构|方向|描述|
 |----|------|---------|-----------|
-|制造商|string|设备到云|设备的制造商，通过 `deviceProperties` 报告。 可以从两个位置的任一位置读取此属性：“AzureDeviceUpdateCore”接口将首先尝试从[配置文件](device-update-configuration-file.md)中读取“aduc_manufacturer”值。  如果未在配置文件中填充该值，则默认情况下会报告 ADUC_DEVICEPROPERTIES_MANUFACTURER 的编译时定义。 仅在启动时报告此属性。|
-|模型|string|设备到云|设备的型号，通过 `deviceProperties` 报告。 可以从两个位置的任一位置读取此属性：AzureDeviceUpdateCore 接口将首先尝试从[配置文件](device-update-configuration-file.md)中读取“aduc_model”值。  如果未在配置文件中填充该值，则默认情况下会报告 ADUC_DEVICEPROPERTIES_MODEL 的编译时定义。 仅在启动时报告此属性。|
+|制造商|string|设备到云|设备的制造商，通过 `deviceProperties` 报告。 可以从两个位置的任一位置读取此属性：“AzureDeviceUpdateCore”接口将首先尝试从[配置文件](device-update-configuration-file.md)中读取“aduc_manufacturer”值。  如果未在配置文件中填充该值，则默认情况下会报告 ADUC_DEVICEPROPERTIES_MANUFACTURER 的编译时定义。 仅在启动时报告此属性。 默认值“Contoso”|
+|模型|string|设备到云|设备的型号，通过 `deviceProperties` 报告。 可以从两个位置的任一位置读取此属性：AzureDeviceUpdateCore 接口将首先尝试从[配置文件](device-update-configuration-file.md)中读取“aduc_model”值。  如果未在配置文件中填充该值，则默认情况下会报告 ADUC_DEVICEPROPERTIES_MODEL 的编译时定义。 仅在启动时报告此属性。 默认值“Video”|
 |aduVer|string|设备到云|设备上运行的设备更新代理的版本。 仅在编译时 ENABLE_ADU_TELEMETRY_REPORTING 设置为 1 (true) 的情况下，才从生成中读取该值。 客户可以通过将该值设置为 0 (false) 选择退出版本报告。 [如何自定义设备更新代理属性](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md)。|
 |doVer|string|设备到云|设备上运行的传递优化代理的版本。 仅在编译时 ENABLE_ADU_TELEMETRY_REPORTING 设置为 1 (true) 的情况下，才从生成中读取该值。 客户可以通过将该值设置为 0 (false) 选择退出版本报告。[如何自定义传递优化代理属性](https://github.com/microsoft/do-client/blob/main/README.md#building-do-client-components)。|
 
@@ -80,7 +80,7 @@ IoT 中心设备孪生示例
                             }
 ```
 
-注意：设备或模块必须添加 {"__t": "c"} 标记以指示元素引用组件，请在[此处](https://docs.microsoft.com/azure/iot-pnp/concepts-convention#sample-multiple-components-writable-property)了解详细信息。
+注意：设备或模块必须添加 {"__t": "c"} 标记以指示元素引用组件，请在[此处](../iot-develop/concepts-convention.md#sample-multiple-components-writable-property)了解详细信息。
 
 ### <a name="service-metadata"></a>服务元数据
 
@@ -106,9 +106,9 @@ IoT 中心设备孪生示例
 
 ## <a name="device-information-interface"></a>设备信息接口
 
-设备信息接口是 [IoT 即插即用体系结构](../iot-pnp/overview-iot-plug-and-play.md)中使用的概念。 它包含设备到云的属性，这些属性提供有关设备的硬件和操作系统的信息。 IoT 中心的设备更新使用 DeviceInformation.manufacturer 和 DeviceInformation.model 属性进行遥测和诊断。 若要详细了解设备信息接口，请参阅此[示例](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json)。
+设备信息接口是 [IoT 即插即用体系结构](../iot-develop/overview-iot-plug-and-play.md)中使用的概念。 它包含设备到云的属性，这些属性提供有关设备的硬件和操作系统的信息。 IoT 中心的设备更新使用 DeviceInformation.manufacturer 和 DeviceInformation.model 属性进行遥测和诊断。 若要详细了解设备信息接口，请参阅此[示例](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json)。
 
-实现此接口时，模型中的预期组件名称为 deviceInformation。 [了解 Azure IoT PnP 组件](../iot-pnp/concepts-modeling-guide.md)
+实现此接口时，模型中的预期组件名称为 deviceInformation。 [了解 Azure IoT PnP 组件](../iot-develop/concepts-modeling-guide.md)
 
 |名称|类型|架构|方向|说明|示例|
 |----|----|------|---------|-----------|-----------|
@@ -123,6 +123,6 @@ IoT 中心设备孪生示例
 
 ## <a name="model-id"></a>模型 ID 
 
-模型 ID 是智能设备通过 IoT 即插即用向 Azure IoT 应用程序发布其功能的方式。若要了解如何构建智能设备以向 Azure IoT 应用程序发布其功能的详细信息，请访问《[IoT 即插即用设备开发人员指南](../iot-pnp/concepts-developer-guide-device.md)》。
+模型 ID 是智能设备通过 IoT 即插即用向 Azure IoT 应用程序发布其功能的方式。若要了解如何构建智能设备以向 Azure IoT 应用程序发布其功能的详细信息，请访问《[IoT 即插即用设备开发人员指南](../iot-develop/concepts-developer-guide-device.md)》。
 
-IoT 中心的设备更新要求 IoT 即插即用智能设备在设备连接过程中公布值为“dtmi:AzureDeviceUpdate;1” 的模型 ID。 [了解如何公布模型 ID](../iot-pnp/concepts-developer-guide-device.md#model-id-announcement)。
+IoT 中心的设备更新要求 IoT 即插即用智能设备在设备连接过程中公布值为“dtmi:AzureDeviceUpdate;1” 的模型 ID。 [了解如何公布模型 ID](../iot-develop/concepts-developer-guide-device.md#model-id-announcement)。

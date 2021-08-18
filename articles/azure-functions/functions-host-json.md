@@ -3,12 +3,12 @@ title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 9424162e847a9d92019efe907ce74f21c55cdb23
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: b646c4d263896e1bf4d63bdaf965209c005b8228
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226239"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742652"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host.json 参考 
 
@@ -21,7 +21,7 @@ ms.locfileid: "108226239"
 > [!NOTE]
 > 本文适用于 Azure Functions 2.x 及更高版本。  有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md)。
 
-其他函数应用配置选项在[应用设置](functions-app-settings.md)（适用于已部署的应用）或 [local.settings.json](functions-run-local.md#local-settings-file) 文件（用于本地开发）中进行管理。
+其他函数应用配置选项在[应用设置](functions-app-settings.md)（适用于已部署的应用）或 [local.settings.json](functions-develop-local.md#local-settings-file) 文件（用于本地开发）中进行管理。
 
 host.json 中与绑定相关的配置将同样地应用于函数应用中的每个函数。 
 
@@ -221,6 +221,28 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 
 可在[存储 Blob 触发器和绑定](functions-bindings-storage-blob.md#hostjson-settings)中查找配置设置。  
 
+## <a name="console"></a>控制台
+
+此设置是[日志记录](#logging)的子项。 它在未处于调试模式时控制控制台日志记录。
+
+```json
+{
+    "logging": {
+    ...
+        "console": {
+          "isEnabled": false,
+          "DisableColors": true
+        },
+    ...
+    }
+}
+```
+
+|属性  |默认 | 说明 |
+|---------|---------|---------| 
+|DisableColors|false| 在 Linux 上禁用容器日志的日志格式设置。 如果在 Linux 上运行时希望在容器日志中看到不需要的 ANSI 控制字符，则设置为 true。 |
+|isEnabled|false|启用或禁用控制台日志记录。| 
+
 ## <a name="cosmosdb"></a>CosmosDB
 
 可在 [Cosmos DB 触发器和绑定](functions-bindings-cosmosdb-v2-output.md#host-json)中查找配置设置。
@@ -348,26 +370,6 @@ Application Insights 的控制选项，包括[采样选项](./configure-monitori
 |logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 此设置允许你筛选特定函数的日志记录。 有关详细信息，请参阅[配置日志级别](configure-monitoring.md#configure-log-levels)。 |
 |控制台|不适用| [控制台](#console)日志记录设置。 |
 |applicationInsights|不适用| [applicationInsights](#applicationinsights) 设置。 |
-
-## <a name="console"></a>控制台
-
-此设置是[日志记录](#logging)的子项。 它在未处于调试模式时控制控制台日志记录。
-
-```json
-{
-    "logging": {
-    ...
-        "console": {
-          "isEnabled": "false"
-        },
-    ...
-    }
-}
-```
-
-|属性  |默认 | 说明 |
-|---------|---------|---------| 
-|isEnabled|false|启用或禁用控制台日志记录。| 
 
 ## <a name="manageddependency"></a>managedDependency
 

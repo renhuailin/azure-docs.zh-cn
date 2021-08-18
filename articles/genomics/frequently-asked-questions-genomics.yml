@@ -1,0 +1,72 @@
+### YamlMime:FAQ
+metadata:
+  title: 常见问题 - FAQ
+  titleSuffix: Microsoft Genomics
+  description: 获取与使用 Microsoft 基因组学服务相关的常见问题的解答，包括技术信息、SLA 和计费。
+  services: genomics
+  author: grhuynh
+  manager: cgronlun
+  ms.author: grhuynh
+  ms.service: genomics
+  ms.topic: troubleshooting
+  ms.date: 12/07/2017
+  ms.openlocfilehash: 0060ebfc207c6f0027e1387f859c71a917bf7b1b
+  ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/09/2021
+  ms.locfileid: "113559058"
+title: Microsoft 基因组学：常见问题
+summary: "本文列出了用户可能会遇到的与 Microsoft 基因组学相关的几大疑问。 有关 Microsoft 基因组学服务的详细信息，请参阅[什么是 Microsoft 基因组学？](overview-what-is-genomics.md)。 有关故障排除的详细信息，请参阅我们的[故障排除指南](troubleshooting-guide-genomics.md)。 \n"
+sections:
+- name: 忽略
+  questions:
+  - question: >
+      如何在 Microsoft 基因组学上运行 GATK4 工作流？
+    answer: >
+      在 Microsoft 基因组学服务的 config.txt 文件中将 process_name 指定为 `gatk4` 即可。 请注意，将按正常费率对你进行收费。
+  - question: >
+      如何启用输出压缩？
+    answer: >
+      可以选用输出压缩参数来压缩 vcf 或 gvcf 输出。 这等效于在 vcf 或 gvcf 输出上运行 `-bgzip` 后再运行 `-tabix`，以生成 `.gz`（bgzip 输出）和 `.tbi`（tabix 输出）文件。 `bgzip` 会压缩 vcf 或 gvcf 文件，`tabix` 会创建已压缩文件的索引。 此参数是布尔值，默认情况下，针对 vcf 输出设置为 `false`，针对 gvcf 输出设置为 `true`。 若要在命令行中使用它，请将 `-bz` 或 `--bgzip-output` 指定为 `true`（运行 bgzip 和 tabix）或 `false`。 若要在 config.txt 文件中使用此参数，请将 `bgzip_output: true` 或 `bgzip_output: false` 添加到该文件中。
+  - question: >
+      什么是 Microsoft 基因组学的 SLA？
+    answer: >
+      我们保证 Microsoft 基因组学服务 99.9% 的时间均可用于接收工作流 API 请求。 有关详细信息，请参阅 [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/)。
+  - question: >
+      Microsoft 基因组学的使用情况如何体现在我的帐单上？
+    answer: >
+      Microsoft 基因组学将按每个工作流处理的千兆碱基数计费。 有关详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/genomics/)。
+  - question: >
+      在哪里可以找到所有可用 `msgen` 客户端命令和参数列表？
+    answer: >
+      通过运行 `msgen help` 可获得可用命令和参数的完整列表。 如果未提供进一步的参数，它会显示可用帮助部分的列表，每个 `submit`、`list`、`cancel` 和 `status` 各有一个列表。 若要获取有关特定命令的帮助，请键入 `msgen help command`；例如，`msgen help submit` 会列出所有提交选项。
+  - question: >
+      `msgen` 客户端最常用的命令有哪些？
+    answer: "最常用的命令是 `msgen` 客户端的参数，包括： \n\n |**命令**          |  **字段说明** |\n |:--------------------|:-------------         |\n |`list`               |返回已提交的作业列表。 有关参数，请参阅 `msgen help list`。  |\n |`submit`             |向服务提交工作流请求。 有关参数，请参阅 `msgen help submit`。|\n |`status`             |返回由 `--workflow-id` 指定的工作流状态。 另请参阅 `msgen help status`。 |\n |`cancel`             |发送请求来取消由 `--workflow-id` 指定的工作流进程。 另请参阅 `msgen help cancel`。 |\n"
+  - question: >
+      在何处获取 `--api-url-base` 的值？
+    answer: >
+      请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”。 可在此处找到 API URL 和访问密钥。
+  - question: >
+      在何处获取 `--access-key` 的值？
+    answer: >
+      请转到 Azure 门户并打开基因组学帐户页。 在“管理”标题下方，选择“访问密钥”。 可在此处找到 API URL 和访问密钥。
+  - question: >
+      为什么需要两个访问密钥？
+    answer: >
+      如果想更新（重新生成）密钥而不中断对服务的使用，则需要两个访问密钥。 例如，若要更新第一个密钥，则应该让所有新工作流使用第二个密钥。 等待使用第一个密钥的所有工作流完成，然后再更新第一个密钥。
+  - question: >
+      是否保存了我的存储帐户密钥？
+    answer: >
+      存储帐户密钥用于创建 Microsoft 基因组学服务的短期访问令牌，读取输入文件并写入输出文件。 默认令牌持续时间为 48 小时。 可以通过提交命令的 `-sas/--sas-duration` 选项更改令牌持续时间；该值以小时为单位。
+  - question: >
+      Microsoft 基因组学是否存储客户数据？
+    answer: >
+      不知道。 Microsoft 基因组学不存储任何客户数据。
+  - question: >
+      可以使用哪些基因组引用？
+    answer: "支持以下这些引用：\n\n |参考              | `-pa/--process-args` 的值 |\n |:-------------         |:-------------                 |\n |b37                    | `R=b37m1`                     |\n |hg38                   | `R=hg38m1`                    |      \n |hg38（无 alt 分析） | `R=hg38m1x`                   |  \n |hg19                   | `R=hg19m1`                    |    \n"
+  - question: "如何将命令行参数格式化为配置文件？ \n"
+    answer: "msgen 可识别采用以下格式的配置文件：\n* 所有选项都以键值对的形式提供，值与密钥之间用冒号隔开。\n  忽略空格。\n* 忽略以 `#` 开头的行。\n* 可通过去除任何长格式命令行参数单词之间的前导短划线并将短划线替换为下划线，将其转换为密钥。 此处是一些转换示例：\n\n  |命令行参数            | 配置文件行 |\n  |:-------------                   |:-------------                 |\n  |`-u/--api-url-base https://url`  | api_url_base:https://url    |\n  |`-k/--access-key KEY`            | access_key:KEY              |      \n  |`-pa/--process-args R=B37m1`     | process_args:R-b37m1        |  \n"
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n使用以下资源进行 Microsoft 基因组学入门：\n- 通过 Microsoft 基因组学服务开始运行第一个工作流。 [通过 Microsoft 基因组学服务运行工作流](quickstart-run-genomics-workflow-portal.md)\n- 提交自己的数据并通过以下 Microsoft 基因组学服务进行处理：[配对 FASTQ](quickstart-input-pair-FASTQ.md) | [BAM ](quickstart-input-BAM.md) | [多个 FASTQ 或 BAM](quickstart-input-multiple.md)"

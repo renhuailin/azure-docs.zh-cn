@@ -8,12 +8,12 @@ ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions , devx-track-azurepowershell
-ms.openlocfilehash: 2b698ffaddb4bc818eaabda34022ab58ff05fe5f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9fb994968835d6fb609c079f008f87d4b37ef85b
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786344"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113004873"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>将 Analysis Services 移动到其他区域
 
@@ -40,7 +40,7 @@ ms.locfileid: "107786344"
 > 客户端应用程序和连接字符串使用完整服务器名称（一个 URI，其中包含服务器所在的区域）连接到 Analysis Services。 例如，`asazure://westcentralus.asazure.windows.net/advworks01`。 将服务器移动到其他区域时，实际上会在其他区域中创建一个新的服务器资源，该资源在服务器名称 URI 中会有一个不同的区域。 客户端应用程序和连接字符串（在脚本中使用）必须使用新的服务器名称 URI 连接到新服务器。 使用[服务器别名](analysis-services-server-alias.md)可以减少必须更改服务器名称 URI 的位置数量，但这必须在进行区域移动之前实施。
 
 > [!IMPORTANT]
-> Azure 区域使用不同的 IP 地址范围。 如果你为服务器和/或存储帐户所在的区域配置了防火墙例外，则可能需要配置一个不同的 IP 地址范围。 若要了解详细信息，请参阅[有关 Analysis Services 网络连接的常见问题解答](analysis-services-network-faq.md)。
+> Azure 区域使用不同的 IP 地址范围。 如果你为服务器和/或存储帐户所在的区域配置了防火墙例外，则可能需要配置一个不同的 IP 地址范围。 若要了解详细信息，请参阅[有关 Analysis Services 网络连接的常见问题解答](analysis-services-network-faq.yml)。
 
 > [!NOTE]
 > 本文介绍了如何将数据库备份从源服务器所在区域中的存储容器还原到目标服务器。 在某些情况下，从不同的区域还原备份的性能可能较低，尤其是对于大型数据库而言。 要想在数据库还原期间获得最佳性能，请进行迁移，或者在目标服务器区域中创建一个新的存储容器。 将数据库还原到目标服务器之前，请将 .abf 备份文件从源区域存储容器复制到目标区域存储容器。 在某些情况下（特别是在使用超大数据库的情况下），从源服务器编写数据库脚本，重新创建数据库，然后在目标服务器上进行处理以加载数据库数据可能比使用备份/还原更为经济高效。当然，这超出了本文的讨论范围。

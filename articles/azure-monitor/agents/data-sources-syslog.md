@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
-ms.openlocfilehash: e82e74f4cd325444221bbd2e1c060b7cd2f5c6c7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 49a337d106bab7f33c8f51149c2151c21d78f40b
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036719"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178550"
 ---
 # <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>使用 Log Analytics 代理收集 Syslog 数据源
 Syslog 是普遍适用于 Linux 的事件日志记录协议。 应用程序将发送可能存储在本地计算机或传递到 Syslog 收集器的消息。 安装适用于 Linux 的 Log Analytics 代理后，它将配置本地 Syslog 后台程序，以将消息转发到此代理。 然后，此代理将消息发送到 Azure Monitor，将在后者中创建相应的记录。  
@@ -56,7 +56,7 @@ Syslog 收集器支持以下功能：
 默认情况下，所有配置更改均会自动推送到所有代理。 如果想在每个 Linux 代理上手动配置 Syslog，则取消选中“将下面的配置应用到我的计算机”框。
 
 ### <a name="configure-syslog-on-linux-agent"></a>在 Linux 代理上配置 Syslog
-[Log Analytics 代理安装在 Linux 客户端上](../vm/quick-collect-linux-computer.md)后，它将安装可定义收集的消息的设施和严重级别的默认 syslog 配置文件。 可以修改此文件以更改配置。 此配置文件视客户端已安装的 Syslog 守护程序而异。
+[Log Analytics 代理安装在 Linux 客户端上](../vm/monitor-virtual-machine.md)后，它将安装可定义收集的消息的设施和严重级别的默认 syslog 配置文件。 可以修改此文件以更改配置。 此配置文件视客户端已安装的 Syslog 守护程序而异。
 
 > [!NOTE]
 > 如果编辑 syslog 配置，必须重新启动 syslog 守护程序才能使更改生效。
@@ -231,4 +231,4 @@ record 记录的类型为 **Syslog**，并且具有下表中的属性。
 ## <a name="next-steps"></a>后续步骤
 * 了解[日志查询](../logs/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。
 * 使用[自定义字段](../logs/custom-fields.md)将来自 syslog 记录的数据解析为单个字段。
-* [配置 Linux 代理](../vm/quick-collect-linux-computer.md)以收集其他类型的数据。
+* [配置 Linux 代理](../vm/monitor-virtual-machine.md)以收集其他类型的数据。

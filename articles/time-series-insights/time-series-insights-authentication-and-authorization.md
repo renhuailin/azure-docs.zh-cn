@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref, devx-track-azurecli
-ms.openlocfilehash: 68b7300219953b0f80bd40522c3f4ec961ec5262
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 5c57b5574df3da9d581aafb49e9ba69b1b032509
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613537"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114653501"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
@@ -150,7 +150,7 @@ ms.locfileid: "110613537"
 
 | 必需的请求标头 | 说明 |
 | --- | --- |
-| 授权 | 若要使用 Azure 时序见解进行身份验证，必须将有效的 OAuth 2.0 持有者令牌传入[授权标头](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)。 |
+| 授权 | 若要使用 Azure 时序见解进行身份验证，必须将有效的 OAuth 2.0 持有者令牌传入[授权标头](/rest/api/apimanagement/2020-12-01/authorization-server/create-or-update)。 |
 
 > [!TIP]
 > 阅读托管的 Azure 时序见解[客户端 SDK 示例可视化](https://tsiclientsample.azurewebsites.net/)，了解如何使用 [JavaScript 客户端 SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) 以及图表和图以编程方式通过 Azure 时序见解 API 进行身份验证。

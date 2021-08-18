@@ -8,12 +8,12 @@ ms.reviewer: spelluru
 ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 4080fc274f03cbc4e5ba48b3c3e2ac5699886c96
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d965d5a65fa6f5015b1e39b22238f3aa6fd1d7b7
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377202"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112413509"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>教程：在本地发布和订阅事件
 
@@ -58,7 +58,7 @@ ms.locfileid: "110377202"
    * **映像 URI**：`mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **容器创建选项**：
 
-   [!INCLUDE [event-grid-edge-module-version-update](../../../includes/event-grid-edge-module-version-update.md)]
+   [!INCLUDE [event-grid-edge-module-version-update](../includes/event-grid-edge-module-version-update.md)]
 
     ```json
         {
@@ -160,7 +160,7 @@ ms.locfileid: "110377202"
 
 订阅服务器可以注册发布到主题的事件。 若要接收任何事件，需要为感兴趣的主题创建事件网格订阅。
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. 创建包含以下内容的 subscription.json。 有关有效负载的详细信息，请参阅 [API 文档](api.md)
 

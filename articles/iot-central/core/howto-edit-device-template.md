@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: fd6fb0cebe33d8511185c396c95faa8927941e6e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5108949527f0f63cd6aa7048eccf83c95927c8bd
+ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110103654"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113516393"
 ---
 # <a name="edit-an-existing-device-template"></a>编辑现有设备模板
 
@@ -116,6 +116,6 @@ IoT Edge 设备模板除了包含设备模型，还包含“部署清单”。 �
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你是操作员或解决方案构建者，建议的下一步是学习[如何管理设备](./howto-manage-devices.md)。
+如果你是操作员或解决方案构建者，建议的下一步是学习[如何管理设备](./howto-manage-devices-individually.md)。
 
 如果你是一名设备开发者，建议的下一步是了解 [Azure IoT Edge 设备和 Azure IoT Central](./concepts-iot-edge.md)。

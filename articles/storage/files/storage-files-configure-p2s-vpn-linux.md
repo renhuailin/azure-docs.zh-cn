@@ -7,19 +7,26 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9608e3bdaab033d58796a3841e8cd92d7a8a81ef
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 120f76666fb8ef55fd0cb51fe0c04b1d8448ce82
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777970"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252240"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>在 Linux 上配置点到站点 (P2S) VPN 以与 Azure 文件存储一起使用
-你可以使用点到站点 (P2S) VPN 连接从 Azure 外部通过 SMB 装载 Azure 文件共享，而无需打开端口 445。 点到站点 VPN 连接是 Azure 与单个客户端之间的 VPN 连接。 若要将 P2S VPN 连接与 Azure 文件存储一起使用，需要为每个要连接的客户端配置 P2S VPN 连接。 如果有多个客户端需要从本地网络连接到 Azure 文件共享，则可以为每个客户端使用站点到站点 (S2S) VPN 连接，而不使用点到站点连接。 若要了解详细信息，请参阅[配置站点到站点 VPN 以与 Azure 文件存储一起使用](storage-files-configure-s2s-vpn.md)。
+可以使用点到站点 (P2S) VPN 连接从 Azure 外部装载 Azure 文件共享，而无需通过开放式 Internet 发送数据。 点到站点 VPN 连接是 Azure 与单个客户端之间的 VPN 连接。 若要将 P2S VPN 连接与 Azure 文件存储一起使用，需要为每个要连接的客户端配置 P2S VPN 连接。 如果有多个客户端需要从本地网络连接到 Azure 文件共享，则可以为每个客户端使用站点到站点 (S2S) VPN 连接，而不使用点到站点连接。 若要了解详细信息，请参阅[配置站点到站点 VPN 以与 Azure 文件存储一起使用](storage-files-configure-s2s-vpn.md)。
 
 我们强烈建议先阅读 [Azure 文件存储网络概述](storage-files-networking-overview.md)，然后再继续阅读本文章，以全面讨论 Azure 文件存储可用的网络选项。
 
-本文详细介绍了在 Linux 上配置点到站点 VPN 以直接在本地装载 Azure 文件共享的步骤。 如果想要通过 VPN 路由 Azure 文件同步流量，请参阅[配置 Azure 文件同步代理和防火墙设置](../file-sync/file-sync-firewall-and-proxy.md)。
+本文详细介绍了在 Linux 上配置点到站点 VPN 以直接在本地装载 Azure 文件共享的步骤。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
 
 ## <a name="prerequisites"></a>先决条件
 - 最新版本的 Azure CLI。 若要详细了解如何安装 Azure CLI，请参阅[安装 Azure PowerShell CLI](/cli/azure/install-azure-cli) 并选择操作系统。 如果你想要在 Linux 上使用 Azure PowerShell 模块，也可以使用，但是下面是针对 Azure CLI 的说明。
@@ -34,7 +41,8 @@ Azure 虚拟网络网关可以使用多种 VPN 协议（包括 IPsec 和 OpenVPN
 > 已通过 Ubuntu 18.10 验证。
 
 ```bash
-sudo apt install strongswan strongswan-pki libstrongswan-extra-plugins curl libxml2-utils cifs-utils
+sudo apt update
+sudo apt install strongswan strongswan-pki libstrongswan-extra-plugins curl libxml2-utils cifs-utils unzip
 
 installDir="/etc/"
 ```
@@ -193,22 +201,7 @@ sudo ipsec up $virtualNetworkName
 ```
 
 ## <a name="mount-azure-file-share"></a>装载 Azure 文件共享
-设置点到站点 VPN 后，现在就可以装载 Azure 文件共享。 以下示例将非持久地装载共享。 若要永久装载，请参阅[将 Azure 文件共享与 Linux 配合使用](storage-how-to-use-files-linux.md)。 
-
-```bash
-fileShareName="myshare"
-
-mntPath="/mnt/$storageAccountName/$fileShareName"
-sudo mkdir -p $mntPath
-
-storageAccountKey=$(az storage account keys list \
-    --resource-group $resourceGroupName \
-    --account-name $storageAccountName \
-    --query "[0].value" | tr -d '"')
-
-smbPath="//$storageAccountPrivateIP/$fileShareName"
-sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
-```
+设置点到站点 VPN 后，现在就可以装载 Azure 文件共享。 以下示例将非持久地装载共享。 若要进行永久装载，请参阅[将 SMB 文件共享装载到 Linux](storage-how-to-use-files-linux.md) 或[将 NFS 文件共享装载到 Linux](storage-files-how-to-mount-nfs-shares.md)。 
 
 ## <a name="see-also"></a>另请参阅
 - [Azure 文件存储网络概述](storage-files-networking-overview.md)

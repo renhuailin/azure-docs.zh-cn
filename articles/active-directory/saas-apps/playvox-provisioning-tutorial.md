@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 Playvox 配置自动用户预�
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Playvox 及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: c31c20ab-f6cd-40e1-90ad-fa253ecbc0f8
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
-ms.author: Zhchia
-ms.openlocfilehash: 3c7efca5e052c2d0680aa7ca3e1b6d27bfdd7d11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 68342511a0cf4e6d432216c1d3a779c3bf19d051
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96862473"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766394"
 ---
 # <a name="tutorial-configure-playvox-for-automatic-user-provisioning"></a>教程：为 Playvox 配置自动用户预配
 

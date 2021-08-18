@@ -3,19 +3,19 @@ title: 如何：开发自定义命令应用程序 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何开发自定义命令应用程序并对其进行自定义。 这些语音命令应用最适合用于“任务完成”或“指挥控制”方案。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
-ms.author: trbye
-ms.openlocfilehash: 84253f897e8b85029ea4425a7919be4bf71028ed
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.author: lajanuar
+ms.openlocfilehash: cb97e41740997e35445cdf6dfb7281e54c3a5c16
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451938"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122069020"
 ---
 # <a name="develop-custom-commands-applications"></a>开发自定义命令应用程序
 
@@ -153,7 +153,7 @@ ms.locfileid: "110451938"
 - 预期响应：“Ok, setting an alarm for 9 am tomorrow”
 
 > [!div class="mx-imgBorder"]
-> ![显示在网络聊天界面中测试的屏幕截图。](media/custom-commands/create-basic-test-chat.png)
+> ![显示在网络聊天界面中测试的屏幕截图。](media/custom-commands/create-basic-test-chat-no-mic.png)
 
 > [!TIP]
 > 在测试窗格中，可以选择“轮次详细信息”，获取有关此语音输入或文本输入的处理状况的信息。

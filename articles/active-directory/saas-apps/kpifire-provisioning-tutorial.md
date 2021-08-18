@@ -2,25 +2,22 @@
 title: 教程：使用 Azure Active Directory 配置 kpifire 的自动用户预配 | Microsoft Docs
 description: 了解如何将用户帐户从 Azure AD 自动预配到 kpifire 及如何取消预配。
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 8c5dd093-20da-4ff6-a9b2-8071f44accd6
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/23/2021
-ms.author: Zhchia
-ms.openlocfilehash: c531ff6dc85988eb028edbf0c7ae3b687192b19f
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.author: thwimmer
+ms.openlocfilehash: cb9d82afe4485cd76872b105bbae56616bad4eb0
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326906"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195088"
 ---
 # <a name="tutorial-configure-kpifire-for-automatic-user-provisioning"></a>教程：配置 kpifire 的自动用户预配
 

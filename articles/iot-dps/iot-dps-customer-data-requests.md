@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 75a2762a0937efbceaa168f8a2d6409e2e3a7ae4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aed9a608dd8a958a298b3a7f502dac6d587b2a2e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94967221"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114466741"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客户数据请求功能摘要
 
@@ -39,9 +39,9 @@ Azure IoT 中心设备预配服务是一项基于 REST API 的云服务，其目
 
 也可使用 REST API 对登记和注册记录执行删除操作：
 
-* 若要删除单个设备的登记信息，可以使用[设备登记 - 删除](/rest/api/iot-dps/deleteindividualenrollment/deleteindividualenrollment)操作。
-* 若要删除一组设备的登记信息，可以使用[设备登记组 - 删除](/rest/api/iot-dps/deleteenrollmentgroup/deleteenrollmentgroup)操作。
-* 若要删除已预配的设备的相关信息，可以使用[注册状态 - 删除注册状态](/rest/api/iot-dps/deletedeviceregistrationstate/deletedeviceregistrationstate)操作。
+* 若要删除单个设备的登记信息，可以使用[设备登记 - 删除](/rest/api/iot-dps/service/individual-enrollment/delete)操作。
+* 若要删除一组设备的登记信息，可以使用[设备登记组 - 删除](/rest/api/iot-dps/service/enrollment-group/delete)操作。
+* 若要删除已预配的设备的相关信息，可以使用[注册状态 - 删除注册状态](/rest/api/iot-dps/service/device-registration-state/delete)操作。
 
 ## <a name="exporting-customer-data"></a>导出客户数据
 
@@ -53,9 +53,9 @@ Azure IoT 中心设备预配服务是一项基于 REST API 的云服务，其目
 
 也可使用 REST API 对登记和注册记录执行导出操作：
 
-* 若要导出单个设备的登记信息，可以使用[设备登记 - 获取](/rest/api/iot-dps/getindividualenrollment/getindividualenrollment)操作。
-* 若要导出一组设备的登记信息，可以使用[设备登记组 - 获取](/rest/api/iot-dps/getenrollmentgroup/getenrollmentgroup)操作。
-* 若要导出已预配的设备的相关信息，可以使用[注册状态 - 获取注册状态](/rest/api/iot-dps/getdeviceregistrationstate/getdeviceregistrationstate)操作。
+* 若要导出单个设备的登记信息，可以使用[设备登记 - 获取](/rest/api/iot-dps/service/individual-enrollment/get)操作。
+* 若要导出一组设备的登记信息，可以使用[设备登记组 - 获取](/rest/api/iot-dps/service/enrollment-group/get)操作。
+* 若要导出已预配的设备的相关信息，可以使用[注册状态 - 获取注册状态](/rest/api/iot-dps/service/device-registration-state/get)操作。
 
 > [!NOTE]
 > 当你使用 Microsoft 的企业服务时，Microsoft 会生成一些信息，称为系统生成的日志。 租户管理员无法访问或导出设备预配服务系统生成的某些日志。 这些日志包含在服务中执行的实际操作以及与个人设备相关的诊断数据。

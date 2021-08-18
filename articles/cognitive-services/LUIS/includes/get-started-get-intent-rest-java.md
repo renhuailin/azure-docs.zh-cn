@@ -7,18 +7,18 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/03/2020
-ms.openlocfilehash: 785d0afa666534c0b6dc0a8d93efbef4a6d1d9f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c799db32ee1557fa78a18c795fe1f04fc2540cd6
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95095558"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113289656"
 ---
 [参考文档](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08) | [示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/LUIS/java-predict-with-rest/Predict.java)
 
 ## <a name="prerequisites"></a>先决条件
 
-* [JDK SE](/azure/developer/java/fundamentals/java-jdk-long-term-support)（Java 开发工具包，标准版）
+* [JDK SE](/azure/developer/java/fundamentals/java-support-on-azure)（Java 开发工具包，标准版）
 * [Visual Studio Code](https://code.visualstudio.com/) 或你喜欢用的 IDE
 
 ## <a name="create-pizza-app"></a>创建 Pizza 应用

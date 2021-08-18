@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.date: 02/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: f3249ba2089c3d9650aa46f665353ad392d0e773
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69e5aeff345bdf66d1b171738a2fbf14c7f8b15c
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94365561"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453477"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>奖励评分表示个性化的成败
 
-奖励评分指示为用户生成的个性化选项 ([RewardActionID](/rest/api/cognitiveservices/personalizer/rank/rank#response)) 的好坏程度。 奖励评分值由业务逻辑根据用户行为的观察结果来确定。
+奖励评分指示为用户生成的个性化选项 ([RewardActionID](/rest/api/personalizer/1.0/rank/rank#response)) 的好坏程度。 奖励评分值由业务逻辑根据用户行为的观察结果来确定。
 
 个性化体验创建服务通过评估奖励来训练其机器学习模型。
 
@@ -22,7 +22,7 @@ ms.locfileid: "94365561"
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>使用奖励 API 向个性化体验创建服务发送奖励评分
 
-奖励由[奖励 API](/rest/api/cognitiveservices/personalizer/events/reward) 发送到个性化体验创建服务。 通常，奖励是 0 到 1 之间的数字。 在某些情况下，可以使用值为 -1 的负奖励，但仅当你具有强化学习 (RL) 的经验时才能使用。 个性化体验创建服务将训练模型，以实现一段时间内可能的最高奖励总分。
+奖励由[奖励 API](/rest/api/personalizer/1.0/events/reward) 发送到个性化体验创建服务。 通常，奖励是 0 到 1 之间的数字。 在某些情况下，可以使用值为 -1 的负奖励，但仅当你具有强化学习 (RL) 的经验时才能使用。 个性化体验创建服务将训练模型，以实现一段时间内可能的最高奖励总分。
 
 发生用户行为（这可能是几天以后的事）后，将发送奖励。 如果发生事件之前个性化体验创建服务等待了最长允许时间，则视为没有奖励。可以在 Azure 门户中使用[奖励等待时间](#reward-wait-time)配置默认奖励。
 

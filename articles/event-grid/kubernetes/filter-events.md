@@ -6,12 +6,12 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 814c703a2db23088fc959501d3f0266ff19b6f49
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e4dbdbb2f46546391b6e749a94bfa655bb9de45e
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385301"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112417336"
 ---
 # <a name="event-grid-on-kubernetes---event-filtering-for-subscriptions"></a>Kubernetes 上的事件网格 - 订阅的事件筛选
 通过 Kubernetes 上的事件网格，可对 json 有效负载中的任何属性指定筛选器。 这些筛选器将建模为 AND 条件集，其中每个外部条件都有可选的内部 OR 条件。 对于每个 AND 条件，请指定以下值：
@@ -20,7 +20,7 @@ ms.locfileid: "110385301"
 - 键 - 要对其应用筛选器的属性的 json 路径。
 - 值 - 运行筛选器所依据的引用值（或）值 - 运行筛选器所依据的引用值集。
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 
 

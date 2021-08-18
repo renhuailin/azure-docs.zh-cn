@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 5999e8da5dffce85dd12ecd01cd5991ea4abc098
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ea85c1ae1533ffe231e57ecc95f345b37c77499
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100590253"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748098"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>将 Azure Stack Hub 虚拟机连接到 Azure Sentinel
 
@@ -74,6 +74,6 @@ ms.locfileid: "100590253"
 
 要详细了解 Azure Sentinel，请参阅以下文章：
 
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
 - 将数据从[通用事件格式设备](connect-common-event-format.md)流式传输到 Azure Sentinel。

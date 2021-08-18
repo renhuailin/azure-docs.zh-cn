@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 07/13/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 740201b84323f5a01ab01bb21ec458a19832e499
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1910a9c62b1d1ab6de130ace3d759243d9ff36d6
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652014"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687850"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>使用 Azure Active Directory 密码保护来消除错误密码
 
@@ -220,7 +220,7 @@ Azure AD 密码保护可以有效地阻止可能在密码喷洒攻击中使用�
 > [!NOTE]
 > 未同步到 Azure AD 的本地 AD DS 用户也会受益于基于已同步用户现有许可的 Azure AD 密码保护。
 
-可以在 [Azure Active Directory 定价站点](https://azure.microsoft.com/pricing/details/active-directory/)上找到包括成本在内的其他许可信息。
+可以在 [Azure Active Directory 定价站点](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)上找到包括成本在内的其他许可信息。
 
 ## <a name="next-steps"></a>后续步骤
 

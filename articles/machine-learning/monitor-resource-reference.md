@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 04/07/2021
-ms.openlocfilehash: de4d934144d6721db8c00d7199061842e518e44f
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 124b8679ad11eb9a39881cdcf39969360e3275a6
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031063"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114227804"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>监视 Azure 机器学习数据引用
 
@@ -139,12 +139,34 @@ RunType 维度的有效值为：
 | AmlComputeCpuGpuUtilization | AmlComputeCpuGpuUtilization |
 | AmlComputeJobEvent | AmlComputeJobEvent |
 | AmlRunStatusChangedEvent | AmlRunStatusChangedEvent |
+| ModelsChangeEvent | ModelsChangeEvent |
+| ModelsReadEvent | ModelsReadEvent |
+| ModelsActionEvent | ModelsActionEvent |
+| DeploymentReadEvent | DeploymentReadEvent |
+| DeploymentEventACI | DeploymentEventACI |
+| DeploymentEventAKS | DeploymentEventAKS |
+| InferencingOperationAKS | InferencingOperationAKS |
+| InferencingOperationACI | InferencingOperationACI |
+| EnvironmentChangeEvent | EnvironmentChangeEvent |
+| EnvironmentReadEvent | EnvironmentReadEvent |
+| DataLabelChangeEvent | DataLabelChangeEvent |
+| DataLabelReadEvent | DataLabelReadEvent |
+| ComputeInstanceEvent | ComputeInstanceEvent |
+| DataStoreChangeEvent | DataStoreChangeEvent |
+| DataStoreReadEvent | DataStoreReadEvent |
+| DataSetChangeEvent | DataSetChangeEvent |
+| DataSetReadEvent | DataSetReadEvent |
+| PipelineChangeEvent | PipelineChangeEvent |
+| PipelineReadEvent | PipelineReadEvent |
+| RunEvent | RunEvent |
+| RunReadEvent | RunReadEvent |
+
 
 ## <a name="schemas"></a>架构
 
 Azure 机器学习正在使用以下架构
 
-### <a name="amlcomputejobevents-table"></a>AmlComputeJobEvents 表
+### <a name="amlcomputejobevent-table"></a>AmlComputeJobEvent 表
 
 | 属性 | 说明 |
 |:--- |:---|
@@ -173,7 +195,7 @@ Azure 机器学习正在使用以下架构
 | JobErrorMessage | 作业错误的详细消息 |
 | NodeId | 作业运行时所创建节点的 ID |
 
-### <a name="amlcomputeclusterevents-table"></a>AmlComputeClusterEvents 表
+### <a name="amlcomputeclusterevent-table"></a>AmlComputeClusterEvent 表
 
 | 属性 | 说明 |
 |:--- |:--- |
@@ -216,7 +238,7 @@ Azure 机器学习正在使用以下架构
 | ClusterErrorCodes | 群集创建或缩放期间收到的错误代码 |
 | CreationApiVersion | 创建群集时使用的 API 版本 |
 
-### <a name="amlcomputeclusternodeevents-table"></a>AmlComputeClusterNodeEvents 表
+### <a name="amlcomputeclusternodeevent-table"></a>AmlComputeClusterNodeEvent 表
 
 | 属性 | 说明 |
 |:--- |:--- |
@@ -240,6 +262,156 @@ Azure 机器学习正在使用以下架构
 | StartTaskStartTime | 向节点分配任务并启动任务的时间 |
 | StartTaskEndTime | 向节点分配任务并结束任务的时间 |
 | TotalE2ETimeInSeconds | 总时间节点处于活动状态 |
+
+### <a name="amlcomputeinstanceevent-table"></a>AmlComputeInstanceEvent 表
+
+| 属性 | 说明 |
+|:--- |:--- |
+| 类型 | 日志事件的名称，AmlComputeInstanceEvent |
+| TimeGenerated | 生成日志项的时间 (UTC) |
+| Level | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
+| ResultType | 事件的状态。 典型值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
+| CorrelationId | 用于将一组相关事件组合在一起的 GUID（如果适用）。 |
+| OperationName | 与日志项关联的操作的名称 |
+| 标识 | 执行操作的用户或应用程序的标识。 |
+| AadTenantId | 为其提交了该操作的 AAD 租户 ID。 |
+| AmlComputeInstanceName | 与日志项关联的计算实例的名称。 |
+
+### <a name="amldatalabelevent-table"></a>AmlDataLabelEvent 表
+
+| 属性 | 说明 |
+|:--- |:--- |
+| 类型 | 日志事件的名称，AmlDataLabelEvent |
+| TimeGenerated | 生成日志项的时间 (UTC) |
+| Level | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
+| ResultType | 事件的状态。 典型值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
+| CorrelationId | 用于将一组相关事件组合在一起的 GUID（如果适用）。 |
+| OperationName | 与日志项关联的操作的名称 |
+| 标识 | 执行操作的用户或应用程序的标识。 |
+| AadTenantId | 为其提交了该操作的 AAD 租户 ID。 |
+| AmlProjectId | AML 项目的唯一标识符。 |
+| AmlProjectName | AML 项目的名称。 |
+| AmlLabelNames | 为项目创建的标签类名。 |
+| AmlDataStoreName | 用于存储项目数据的数据存储的名称。 |
+
+### <a name="amldatasetevent-table"></a>AmlDataSetEvent 表
+
+| 属性 | 说明 |
+|:--- |:--- |
+| 类型 | 日志事件的名称，AmlDataSetEvent |
+| TimeGenerated | 生成日志项的时间 (UTC) |
+| Level | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
+| ResultType | 事件的状态。 典型值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
+| AmlWorkspaceId | AML 工作区的 GUID 和唯一 ID。 |
+| OperationName | 与日志项关联的操作的名称 |
+| 标识 | 执行操作的用户或应用程序的标识。 |
+| AadTenantId | 为其提交了该操作的 AAD 租户 ID。 |
+| AmlDatasetId | AML 数据集的 ID。 |
+| AmlDatasetName | AML 数据集的名称。 |
+
+### <a name="amldatastoreevent-table"></a>AmlDataStoreEvent 表
+
+| 属性 | 说明 |
+|:--- |:--- |
+| 类型 | 日志事件的名称，AmlDataStoreEvent |
+| TimeGenerated | 生成日志项的时间 (UTC) |
+| Level | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
+| ResultType | 事件的状态。 典型值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
+| AmlWorkspaceId | AML 工作区的 GUID 和唯一 ID。 |
+| OperationName | 与日志项关联的操作的名称 |
+| 标识 | 执行操作的用户或应用程序的标识。 |
+| AadTenantId | 为其提交了该操作的 AAD 租户 ID。 |
+| AmlDatastoreName | AML 数据存储的名称。 |
+
+### <a name="amldeploymentevent-table"></a>AmlDeploymentEvent 表
+
+| 属性 | 说明 |
+|:--- |:--- |
+| 类型 | 日志事件的名称，AmlDeploymentEvent |
+| TimeGenerated | 生成日志项的时间 (UTC) |
+| Level | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
+| ResultType | 事件的状态。 典型值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
+| OperationName | 与日志项关联的操作的名称 |
+| 标识 | 执行操作的用户或应用程序的标识。 |
+| AadTenantId | 为其提交了该操作的 AAD 租户 ID。 |
+| AmlServiceName | AML 服务的名称。 |
+
+### <a name="amlinferencingevent-table"></a>AmlInferencingEvent 表
+
+| 属性 | 说明 |
+|:--- |:--- |
+| 类型 | 日志事件的名称，AmlInferencingEvent |
+| TimeGenerated | 生成日志项的时间 (UTC) |
+| Level | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
+| ResultType | 事件的状态。 典型值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
+| OperationName | 与日志项关联的操作的名称 |
+| 标识 | 执行操作的用户或应用程序的标识。 |
+| AadTenantId | 为其提交了该操作的 AAD 租户 ID。 |
+| AmlServiceName | AML 服务的名称。 |
+
+### <a name="amlmodelsevent-table"></a>AmlModelsEvent 表
+
+| 属性 | 说明 |
+|:--- |:--- |
+| 类型 | 日志事件的名称，AmlModelsEvent |
+| TimeGenerated | 生成日志项的时间 (UTC) |
+| Level | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
+| ResultType | 事件的状态。 典型值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
+| OperationName | 与日志项关联的操作的名称 |
+| 标识 | 执行操作的用户或应用程序的标识。 |
+| AadTenantId | 为其提交了该操作的 AAD 租户 ID。 |
+| ResultSignature | 事件的 HTTP 状态代码。 典型值包括 200、201、202 等。 |
+| AmlModelName | AML 模型的名称。 |
+
+### <a name="amlpipelineevent-table"></a>AmlPipelineEvent 表
+
+| 属性 | 说明 |
+|:--- |:--- |
+| 类型 | 日志事件的名称，AmlPipelineEvent |
+| TimeGenerated | 生成日志项的时间 (UTC) |
+| Level | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
+| ResultType | 事件的状态。 典型值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
+| AmlWorkspaceId | AML 工作区的 GUID 和唯一 ID。 |
+| AmlWorkspaceId | AML 工作区的名称。 |
+| OperationName | 与日志项关联的操作的名称 |
+| 标识 | 执行操作的用户或应用程序的标识。 |
+| AadTenantId | 为其提交了该操作的 AAD 租户 ID。 |
+| AmlModuleId | 模块的 GUID 和唯一 ID。|
+| AmlModelName | AML 模型的名称。 |
+| AmlPipelineId | AML 管道的 ID。 |
+| AmlParentPipelineId | 父 AML 管道的 ID（克隆时）。 |
+| AmlPipelineDraftId | AML 管道草稿的 ID。 |
+| AmlPipelineDraftName | AML 管道草稿的名称。 |
+| AmlPipelineEndpointId | AML 管道终结点的 ID。 |
+| AmlPipelineEndpointName | AML 管道终结点的名称。 |
+
+
+### <a name="amlrunevent-table"></a>AmlRunEvent 表
+
+| 属性 | 说明 |
+|:--- |:--- |
+| 类型 | 日志事件的名称，AmlRunEvent |
+| TimeGenerated | 生成日志项的时间 (UTC) |
+| Level | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
+| ResultType | 事件的状态。 典型值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
+| OperationName | 与日志项关联的操作的名称 |
+| AmlWorkspaceId | AML 工作区的 GUID 和唯一 ID。 |
+| 标识 | 执行操作的用户或应用程序的标识。 |
+| AadTenantId | 为其提交了该操作的 AAD 租户 ID。 |
+| RunId | 运行的唯一 ID。 |
+
+### <a name="amlenvironmentevent--table"></a>AmlEnvironmentEvent 表
+
+| 属性 | 说明 |
+|:--- |:--- |
+| 类型 | 日志事件的名称，AmlEnvironmentEvent |
+| TimeGenerated | 生成日志项的时间 (UTC) |
+| Level | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
+| OperationName | 与日志项关联的操作的名称 |
+| 标识 | 执行操作的用户或应用程序的标识。 |
+| AadTenantId | 为其提交了该操作的 AAD 租户 ID。 |
+| AmlEnvironmentName | AML 环境配置的名称。 |
+| AmlEnvironmentVersion | AML 环境配置版本的名称。 |
 
 
 ## <a name="see-also"></a>请参阅

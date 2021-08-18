@@ -2,18 +2,18 @@
 title: 将云服务（经典）部署到 Azure 时对 LocationNotFoundForRoleSize 进行故障排除 | Microsoft Docs
 description: 本文介绍了如何在将云服务（经典）部署到 Azure 时解决 LocationNotFoundForRoleSize 异常。
 services: cloud-services
-author: mamccrea
-ms.author: mamccrea
+author: hirenshah1
+ms.author: hirshah
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7938dcb3e66bc618832171668e392e4fff0cf5a9
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 971fffc02241a841ebbb1bc0855e8484579252e4
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706173"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090108"
 ---
 # <a name="troubleshoot-locationnotfoundforrolesize-when-deploying-a-cloud-service-classic-to-azure"></a>将云服务（经典）部署到 Azure 时对 LocationNotFoundForRoleSize 进行故障排除
 

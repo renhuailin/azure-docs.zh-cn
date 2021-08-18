@@ -10,22 +10,22 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.openlocfilehash: 3fa8b81a1dbd13c8570783b354696c8af81e7e7f
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 3c55bdb003f16539061bcbeae0f8cf7ed5cc660d
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186154"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113728275"
 ---
 # <a name="integrate-with-azure-active-directory-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>与网络设备注册服务 (NDES) 服务器上的 Azure Active Directory 应用程序代理集成
 
 通过 Azure Active Directory (AD) 应用程序代理，可在你的网络中发布应用程序。 这些应用程序包括 SharePoint 站点、Microsoft Outlook Web App 和其他 Web 应用程序。 还可通过 Azure 向网络外的用户提供安全访问。
 
-如果你不熟悉 Azure AD 应用程序代理，并希望了解详细信息，请参阅[通过 Azure AD 应用程序代理远程访问本地应用程序](application-proxy.md)。
+如果你不熟悉 Azure AD 应用程序代理，希望了解详细信息，请参阅[通过 Azure AD 应用程序代理远程访问本地应用程序](application-proxy.md)。
 
 Azure AD 应用程序代理构建在 Azure 上。 该代理提供了大量网络带宽和服务器基础设施，以便更好地防范分布式拒绝服务 (DDOS) 攻击，以及提高代理的可用性。 而且，无需向本地网络开放外部防火墙端口，也不需要任何 DMZ 服务器。 所有流量均来自入站。 有关出站端口的完整列表，请参阅[教程：通过 Azure Active Directory 应用程序代理添加远程访问的本地应用程序](./application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)。
 
-> 只有在使用高级版或基础版 Azure Active Directory 的前提下，才可使用 Azure AD 应用程序代理这一功能。 有关详细信息，请参阅 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。 
+> 只有在使用高级版或基础版 Azure Active Directory 的前提下，才可使用 Azure AD 应用程序代理这一功能。 有关详细信息，请参阅 [Azure Active Directory 定价](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。 
 > 如果你拥有企业移动性套件 (EMS) 许可证，则可以使用此解决方案。
 > Azure AD 应用程序代理连接器仅安装在 Windows Server 2012 R2 或更高版本上。 这也是 NDES 服务器的要求。
 
@@ -52,9 +52,9 @@ Azure AD 应用程序代理构建在 Azure 上。 该代理提供了大量网络
         > 例如，如果 Azure AD 域为 contoso.com，则全局/应用程序管理员应为 `admin@contoso.com` 或该域上另一个有效别名。
 
    * 如果为安装连接器的服务器启用“Internet Explorer 增强的安全配置”，则可能无法显示注册屏幕。 要显示该屏幕，请按照错误消息中的说明进行操作，或在安装过程中关闭“Internet Explorer 增强的安全性”设置。
-   * 如果连接器注册不成功，请参阅[应用程序代理故障排除](application-proxy-troubleshoot.md)。
+   * 如果连接器注册失败，请参阅[排查应用程序代理的问题](application-proxy-troubleshoot.md)。
 1. 安装结束时，会显示包含出站代理的环境说明。 若要将 Azure AD 应用程序代理连接器配置为通过出站代理进行工作，请运行提供的脚本，例如 `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1`。
-1. 在 Azure 门户“应用程序代理”页上，将列出状态为“活动”的新连接器，如以下示例中所示：
+1. 在 Azure 门户中的“应用程序代理”页上，将会列出状态为“活动”的新连接器，如以下示例中所示：
 
     ![新的 Azure AD 应用程序代理连接器在 Azure 门户中显示为“活动”](./media/active-directory-app-proxy-protect-ndes/connected-app-proxy.png)
 

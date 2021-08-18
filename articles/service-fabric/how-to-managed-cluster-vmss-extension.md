@@ -3,12 +3,12 @@ title: 将虚拟机规模集扩展添加到 Service Fabric 托管群集节点类
 description: 下面介绍如何将虚拟机规模集扩展添加到 Service Fabric 托管群集节点类型
 ms.topic: article
 ms.date: 5/10/2021
-ms.openlocfilehash: 9aaddd912407849133a115116dd769d2090767dd
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 0c0aac8d7804caeb6c08657b1ed36c45958a0ea5
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109683400"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113033688"
 ---
 # <a name="add-a-virtual-machine-scale-set-extension-to-a-service-fabric-managed-cluster-node-type"></a>将虚拟机规模集扩展添加到 Service Fabric 托管群集节点类型
 
@@ -58,4 +58,4 @@ Service Fabric 托管群集中的每个节点类型都受虚拟机规模集的�
 若要详细了解 Service Fabric 托管群集，请参阅：
 
 > [!div class="nextstepaction"]
-> [Service Fabric 托管群集常见问题](./faq-managed-cluster.md)
+> [Service Fabric 托管群集常见问题](./faq-managed-cluster.yml)

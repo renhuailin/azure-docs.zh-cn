@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 5/20/2021
+ms.date: 8/10/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 1cd716ea74f1e16e448f312d007bbd4d90f232d5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d159f8ad1840f3351fa31ec78ceead9cdfd7d9b8
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461735"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183968"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -25,20 +25,19 @@ ms.locfileid: "110461735"
 
 | 里程碑 | 代理版本号 | 发布日期 | 状态 |
 |----|----------------------|--------------|------------------|
+| V13 版本 - [KB4588753](https://support.microsoft.com/topic/632fb833-42ed-4e4d-8abd-746bd01c1064)| 13.0.0.0 | 2021 年 7 月 12 日 | 支持 |
 | V12.1 版本 - [KB4588751](https://support.microsoft.com/topic/497dc33c-d38b-42ca-8015-01c906b96132)| 12.1.0.0 | 2021 年 5 月 20 日 | 支持 |
 | V12 版本 - [KB4568585](https://support.microsoft.com/topic/b9605f04-b4af-4ad8-86b0-2c490c535cfd)| 12.0.0.0 | 2021 年 3 月 26 日 | 支持 |
 | V11.3 版本- [KB4539953](https://support.microsoft.com/topic/f68974f6-bfdd-44f4-9659-bf2d8a696c26)| 11.3.0.0 | 2021 年 4 月 7 日 | 支持 |
 | V11.2 版本 - [KB4539952](https://support.microsoft.com/topic/azure-file-sync-agent-v11-2-release-february-2021-c956eaf0-cd8e-4511-98c0-e5a1f2c84048)| 11.2.0.0 | 2021 年 2 月 2 日 | 支持 |
 | V11.1 版本 - [KB4539951](https://support.microsoft.com/help/4539951)| 11.1.0.0 | 2020 年 11 月 4 日 | 支持 |
-| V10.1 版本 - [KB4522411](https://support.microsoft.com/help/4522411)| 10.1.0.0 | 2020 年 6 月 5 日 | 支持 - 代理版本将于 2021 年 6 月 28 日到期 |
-| 2020 年 5 月更新汇总 - [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | 2020 年 5 月 19 日 | 支持 - 代理版本将于 2021 年 6 月 28 日到期 |
-| V10 版本 - [KB4522409](https://support.microsoft.com/help/4522409)| 10.0.0.0 | 2020 年 4 月 9 日 | 支持 - 代理版本将于 2021 年 6 月 28 日到期 |
 
 ## <a name="unsupported-versions"></a>不支持的版本
 以下 Azure 文件同步代理版本已到期，不再受支持：
 
 | 里程碑 | 代理版本号 | 发布日期 | 状态 |
 |----|----------------------|--------------|------------------|
+| V10 版本 | 10.0.0.0 - 10.1.0.0 | 空值 | 不支持 - 代理版本已于 2021 年 6 月 28 日到期 |
 | V9 版本 | 9.0.0.0 - 9.1.0.0 | 空值 | 不支持 - 代理版本已于 2021 年 2 月 16 日到期 |
 | V8 版本 | 8.0.0.0 | 空值 | 不支持 - 代理版本已于 2021 年 1 月 12 日到期 |
 | V7 版本 | 7.0.0.0 - 7.2.0.0 | 空值 | 不支持 - 代理版本已于 2020 年 9 月 1 日到期 |
@@ -51,12 +50,96 @@ ms.locfileid: "110461735"
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
+## <a name="agent-version-13000"></a>代理版本 13.0.0.0
+以下发行说明适用于 Azure 文件同步代理版本 13.0.0.0（于 2021 年 7 月 12 日发布）。
+
+### <a name="improvements-and-issues-that-are-fixed"></a>改进和已解决的问题
+- 权威上传  
+    - 权威上传是在同步组中创建第一个服务器终结点时可用的新模式。 此模式适用于以下场景：云（Azure 文件共享）具有部分/大部分数据，但这些数据已过时，需要与新服务器终结点上的最新数据同步。 例如，DataBox 等脱机迁移方案就是这种情况。 当 DataBox 装满数据并发送到 Azure 时，本地服务器的用户将在本地服务器上不断更改/添加/删除文件。 这使得 DataBox 和 Azure 文件共享中的数据稍微有些过时。 通过权威上传，你现在可以告知服务器和云如何解决这种情况，以及如何使云随着服务器上的最新更改无缝更新。 
+
+        无论数据如何到达云，如果数据来自服务器上匹配的位置，此模式都可以更新 Azure 文件共享。 请确保避免在向云进行初始复制和通过权威上传更新之间进行大型目录重构。 这将确保你仅传输更新。 更改目录名称将导致这些重命名目录中的所有文件再次被上传。 此功能与“RoboCopy /MIRROR = 镜像源到目标”的语义类似，包括删除源上不再存在的目标上的文件。 
+        
+        权威上传通过暂存共享将 DataBox 集成的“脱机数据传输”功能替换成了 Azure 文件同步。 使用 DataBox 不再需要暂存共享了。 无法再使用 AFS V13 代理启动新的脱机数据传输作业。 服务器上的现有作业仍将继续运行，即使升级到代理版本 13 也是如此。
+
+- 查看云更改枚举和同步进度的门户改进  
+    - 创建新的同步组后，任何连接的服务器终结点只能在云更改枚举完成时开始同步。  如果文件已经存在于此同步组的云终结点（Azure文件共享）中，云中的内容更改枚举可能需要一些时间。 命名空间中存在的项（文件和文件夹）越多，此过程所花的时间就越长。 管理员现在可以在 Azure 门户中获取云更改枚举进度，从而估计从服务器开始的完成/同步的 ETA。
+
+- 支持服务器重命名  
+    - 如果重命名了已注册的服务器，Azure 文件同步将在门户中显示新的服务器名称。 如果在 v13 版本之前重命名了服务器，门户中的服务器名称现在将更新为显示正确的服务器名称。
+
+- 支持 Windows Server 2022 预览版  
+    - Windows Server 2022 预览版 20348 或更高版本现在支持 Azure 文件同步代理。
+
+    > [!Note]  
+    > Windows Server 2022 添加了对 TLS 1.3 的支持，而 TLS 1.3 目前不受 Azure 文件同步的支持。如果通过组策略管理 [TLS 设置](/windows-server/security/tls/tls-ssl-schannel-ssp-overview)，则必须将服务器配置为支持 TLS 1.2。 
+
+- 其他改进
+    - 同步、云分层和云更改枚举的可靠性改进。
+    - 如果在服务器上更改了大量文件，现在将从 VSS 快照执行同步上传，这可以减少每项的错误和同步会话失败。 
+    - Invoke-StorageSyncFileRecall cmdlet 现在将召回与服务器终结点关联的所有分层文件，即使该文件已移到服务器终结点位置之外。 
+    - Explorer.exe 现在被排除在云分层上次访问时间跟踪之外。
+    - 新增了遥测（事件 ID 6664），用于监视在删除启用了云分层的服务器终结点之后孤立分层文件清理进度。
+
+
+### <a name="evaluation-tool"></a>评估工具
+在部署 Azure 文件同步之前，应当使用 Azure 文件同步评估工具评估它是否与你的系统兼容。 此工具是一个 Azure PowerShell cmdlet，用于检查文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的 OS 版本。 有关安装和使用情况的说明，请参阅计划指南中的[评估工具](file-sync-planning.md#evaluation-cmdlet)部分。 
+
+### <a name="agent-installation-and-server-configuration"></a>代理安装和服务器配置
+若要详细了解如何使用 Windows Server 安装和配置 Azure 文件同步代理，请参阅[规划 Azure 文件同步部署](file-sync-planning.md)和[如何部署 Azure 文件同步](file-sync-deployment-guide.md)。
+
+- 如果代理版本低于版本 12.0，则需要重启现已安装 Azure 文件同步代理的服务器。
+- 代理安装包必须使用提升的（管理员）权限进行安装。
+- Nano Server 部署选项不支持此代理。
+- 此代理仅在 Windows Server 2019、Windows Server 2016、Windows Server 2012 R2 和 Windows Server 2022 预览版上受支持。
+- 代理需要至少 2 GiB 的内存。 如果服务器在启用了动态内存的虚拟机中运行，则至少应当为该 VM 配置 2048 MiB 内存。 有关详细信息，请参阅[推荐使用的系统资源](file-sync-planning.md#recommended-system-resources)。
+- 存储同步代理 (FileSyncSvc) 服务不支持进行了系统卷信息 (SVI) 目录压缩的卷上的服务器终结点。 此配置会导致意外结果。
+
+### <a name="interoperability"></a>互操作性
+- 防病毒应用程序、备份应用程序和其他应用程序在访问分层文件时可能会导致不需要的撤回，除非这些应用程序遵从脱机属性，在读取这些文件的内容时跳过。 有关详细信息，请参阅[对 Azure 文件同步进行故障排除](file-sync-troubleshoot.md)。
+- 当文件因文件屏蔽而被阻止时，文件服务器资源管理器 (FSRM) 文件屏蔽可能导致无休止的同步故障。
+- 不支持在安装了 Azure 文件同步代理的服务器上运行 sysprep，此操作会导致意外结果。 应当在部署服务器映像并完成 sysprep 迷你安装后再安装 Azure 文件同步代理。
+
+### <a name="sync-limitations"></a>同步限制
+以下各项不同步，但系统其余部分仍会继续正常运行：
+- 包含不受支持字符的文件。 有关不受支持的字符的列表，请参阅[故障排除指南](file-sync-troubleshoot.md#handling-unsupported-characters)。
+- 以句点结尾的文件或目录。
+- 长度超过 2,048 个字符的路径。
+- 安全描述符的系统访问控制列表 (SACL) 部分，用于审核。
+- 扩展的属性。
+- 备用数据流。
+- 重分析点。
+- 硬链接。
+- 将更改从其他终结点同步到服务器文件时，不会保留压缩（如果在该文件上设置了压缩）。
+- 任何使用 EFS（或其他用户模式加密方式）加密的文件，此类加密会阻止服务读取数据。
+
+    > [!Note]  
+    > Azure 文件同步始终加密传输中的数据， 而在 Azure 中，数据始终进行静态加密。
+ 
+### <a name="server-endpoint"></a>服务器终结点
+- 服务器终结点只能在 NTFS 卷上创建。 Azure 文件同步目前不支持 ReFS、FAT、FAT32 等文件系统。
+- 系统卷上不支持云分层。 要在系统卷上创建服务器终结点，请在创建服务器终结点时禁用云分层。
+- 故障转移群集仅适用于群集磁盘，而不适用于群集共享卷 (CSV)。
+- 服务器终结点不能嵌套， 但可以与另一终结点并行共存于同一卷上。
+- 请勿在服务器终结点位置中存储 OS 或应用程序分页文件。
+- 如果重命名服务器，则不会更新门户中的服务器名称。
+
+### <a name="cloud-endpoint"></a>云终结点
+- Azure 文件同步支持直接对 Azure 文件共享进行更改。 但是，首先需要通过 Azure 文件同步更改检测作业来发现对 Azure 文件共享进行的更改。 每 24 小时针对云终结点启动一次更改检测作业。 若要立即同步 Azure 文件共享中已更改的文件，可使用 [Invoke-AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell cmdlet 手动启动 Azure 文件共享中的更改检测。 此外，通过 REST 协议对 Azure 文件共享所做的更改将不会更新 SMB 上次修改时间，亦不会被视为同步更改。
+- 存储同步服务和/或存储帐户可以移动到不同的资源组、订阅或 Azure AD 租户。 存储同步服务或存储帐户移动后，你需要向 Microsoft.StorageSync 应用程序授予对存储帐户的访问权限（请参阅[确保 Azure 文件同步有权访问存储帐户](file-sync-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)）。
+
+    > [!Note]  
+    > 创建云终结点时，存储同步服务和存储帐户必须位于相同的 Azure AD 租户中。 创建云终结点后，可以将存储同步服务和存储帐户移到不同的 Azure AD 租户。
+
+### <a name="cloud-tiering"></a>云分层
+- 如果使用 Robocopy 将分层的文件复制到另一位置，生成的文件不会分层。 可能会对脱机属性进行设置，因为 Robocopy 会在复制操作中错误地包括该属性。
+- 使用 robocopy 复制文件时，可使用 /MIR 选项保留文件时间戳。 这将确保较旧的文件比最近访问的文件更早分层。
+
 ## <a name="agent-version-12100"></a>代理版本 12.1.0.0
-以下发行说明适用于 2021 年 5 月 20 日发布的 Azure 文件同步代理版本 12.1.0.0。 这些说明是对为版本 12.0.0.0 列出的发行说明的补充。
+以下发行说明适用于 2021 年 5 月 20 日发布的 Azure 文件同步代理版本 12.1.0.0。 这些说明是对针对版本 12.0.0.0 列出的发行说明的补充。
 
 ### <a name="improvements-and-issues-that-are-fixed"></a>改进和已解决的问题 
-v12.0 代理版本有两个 bug 已在此版本中修复：
-- 代理自动更新无法将代理更新到较新的版本。
+v12.0 代理版本有两个 bug 在此版本中已修复：
+- 代理自动更新无法将代理更新到更高版本。
 - FileSyncErrorsReport.ps1 脚本不提供单项错误的列表。
 
 ## <a name="agent-version-12000"></a>代理版本 12.0.0.0
@@ -253,99 +336,3 @@ v12.0 代理版本有两个 bug 已在此版本中修复：
 - 使用 robocopy 复制文件时，可使用 /MIR 选项保留文件时间戳。 这将确保较旧的文件比最近访问的文件更早分层。
     > [!Warning]  
     > Azure 文件同步不支持 Robocopy /B 开关。将 Robocopy /B 开关和 Azure 文件同步服务器终结点结合作为源使用可能会导致文件损坏。
-
-## <a name="agent-version-10100"></a>代理版本 10.1.0.0
-以下发行说明适用于 Azure 文件同步代理版本 10.1.0.0（2020 年 6 月 5 日发布）。 这些说明是对针对版本 10.0.0.0 和 10.0.2.0 列出的发行说明的补充。
-
-### <a name="improvements-and-issues-that-are-fixed"></a>改进和已解决的问题
-
-- Azure 专用终结点支持
-    - 前往存储同步服务的同步流量现在可发送到专用终结点。 这将允许通过 ExpressRoute 或 VPN 连接建立隧道连接。 若要了解详细信息，请参阅[配置 Azure 文件同步网络终结点](../file-sync/file-sync-networking-endpoints.md)。
-- 文件同步指标现在会在大型同步运行时显示进度，而不是在结束时显示进度。
-- 针对代理安装、云分层、同步和遥测的其他可靠性改进
-
-## <a name="agent-version-10020"></a>代理版本 10.0.2.0
-以下发行说明适用于 2020 年 5 月 19 日发布的 Azure 文件同步代理版本 10.0.2.0。 这些说明是对针对版本 10.0.0.0 列出的发行说明的补充。
-
-此版本中已修复的问题：  
-- 存储同步代理 (FileSyncSvc) 在安装 Azure 文件同步 v10 代理后经常崩溃。
-
-> [!Note]  
->此版本不对配置为在新版本可用时自动更新的服务器进行外部测试。 若要安装此更新，请使用 Microsoft 更新或 Microsoft 更新目录（有关安装说明，请参阅 [KB4522412](https://support.microsoft.com/help/4522412)）。
-
-## <a name="agent-version-10000"></a>代理版本 10.0.0.0
-以下发行说明适用于 Azure 文件同步代理版本 10.0.0.0（2020 年 4 月 9 日发布）。
-
-### <a name="improvements-and-issues-that-are-fixed"></a>改进和已解决的问题
-
-- 提高了门户中的同步进度
-    - 在 V10 代理版本中，Azure 门户即将开始显示运行的同步会话的类型。 例如 初始下载、定期下载、后台召回（快速灾难恢复案例）等等。 
-
-- 改进了云分层门户体验
-    - 如果文件无法进行分层或召回，则现在可以在服务器终结点属性中查看分层错误。
-    - 其他云分层信息可用于服务器终结点：
-        - 本地缓存大小
-        - 缓存使用效率
-        - 云分层策略详细信息：卷大小、当前可用空间或本地缓存中最早文件的上次访问时间。
-    - 这些更改将在 V10 代理初始发布之后不久在 Azure 门户中提供。
-
-- 支持将存储同步服务和/或存储帐户移动到其他 Azure Active Directory 租户
-    - Azure 文件同步目前支持将存储同步服务和/或存储帐户移到其他资源组、订阅或 Azure AD 租户。
-    
-- 其他性能和可靠性提升
-    - 如果在存储帐户上配置了虚拟网络 (VNET) 和防火墙规则，Azure 文件共享上的更改检测可能会失败。
-    - 减少了与召回相关的内存消耗。 
-    - 提高了使用 [Invoke-AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) cmdlet 时的性能。
-    - 其他可靠性提升。 
-    
-### <a name="evaluation-tool"></a>评估工具
-在部署 Azure 文件同步之前，应当使用 Azure 文件同步评估工具评估它是否与你的系统兼容。 此工具是一个 Azure PowerShell cmdlet，用于检查文件系统和数据集的潜在问题，例如不受支持的字符或不受支持的 OS 版本。 有关安装和使用情况的说明，请参阅计划指南中的[评估工具](../file-sync/file-sync-planning.md#evaluation-cmdlet)部分。 
-
-### <a name="agent-installation-and-server-configuration"></a>代理安装和服务器配置
-若要详细了解如何使用 Windows Server 安装和配置 Azure 文件同步代理，请参阅[规划 Azure 文件同步部署](../file-sync/file-sync-planning.md)和[如何部署 Azure 文件同步](../file-sync/file-sync-deployment-guide.md)。
-
-- 代理安装包必须使用提升的（管理员）权限进行安装。
-- Nano Server 部署选项不支持此代理。
-- 只有 Windows Server 2019、Windows Server 2016 和 Windows Server 2012 R2 上支持此代理。
-- 代理需要至少 2 GiB 的内存。 如果服务器在启用了动态内存的虚拟机中运行，则至少应当为该 VM 配置 2048 MiB 内存。
-- 存储同步代理 (FileSyncSvc) 服务不支持进行了系统卷信息 (SVI) 目录压缩的卷上的服务器终结点。 此配置会导致意外结果。
-
-### <a name="interoperability"></a>互操作性
-- 防病毒应用程序、备份应用程序和其他应用程序在访问分层文件时可能会导致不需要的撤回，除非这些应用程序遵从脱机属性，在读取这些文件的内容时跳过。 有关详细信息，请参阅[对 Azure 文件同步进行故障排除](../file-sync/file-sync-troubleshoot.md)。
-- 当文件因文件屏蔽而被阻止时，文件服务器资源管理器 (FSRM) 文件屏蔽可能导致无休止的同步故障。
-- 不支持在安装了 Azure 文件同步代理的服务器上运行 sysprep，此操作会导致意外结果。 应当在部署服务器映像并完成 sysprep 迷你安装后再安装 Azure 文件同步代理。
-
-### <a name="sync-limitations"></a>同步限制
-以下各项不同步，但系统其余部分仍会继续正常运行：
-- 包含不受支持字符的文件。 有关不受支持的字符的列表，请参阅[故障排除指南](../file-sync/file-sync-troubleshoot.md#handling-unsupported-characters)。
-- 以句点结尾的文件或目录。
-- 长度超过 2,048 个字符的路径。
-- 安全描述符的系统访问控制列表 (SACL) 部分，用于审核。
-- 扩展的属性。
-- 备用数据流。
-- 重分析点。
-- 硬链接。
-- 将更改从其他终结点同步到服务器文件时，不会保留压缩（如果在该文件上设置了压缩）。
-- 任何使用 EFS（或其他用户模式加密方式）加密的文件，此类加密会阻止服务读取数据。
-
-    > [!Note]  
-    > Azure 文件同步始终加密传输中的数据， 而在 Azure 中，数据始终进行静态加密。
- 
-### <a name="server-endpoint"></a>服务器终结点
-- 服务器终结点只能在 NTFS 卷上创建。 Azure 文件同步目前不支持 ReFS、FAT、FAT32 等文件系统。
-- 系统卷上不支持云分层。 要在系统卷上创建服务器终结点，请在创建服务器终结点时禁用云分层。
-- 故障转移群集仅适用于群集磁盘，而不适用于群集共享卷 (CSV)。
-- 服务器终结点不能嵌套， 但可以与另一终结点并行共存于同一卷上。
-- 请勿在服务器终结点位置中存储 OS 或应用程序分页文件。
-- 如果重命名服务器，则不会更新门户中的服务器名称。
-
-### <a name="cloud-endpoint"></a>云终结点
-- Azure 文件同步支持直接对 Azure 文件共享进行更改。 但是，首先需要通过 Azure 文件同步更改检测作业来发现对 Azure 文件共享进行的更改。 每 24 小时针对云终结点启动一次更改检测作业。 若要立即同步 Azure 文件共享中已更改的文件，可使用 [Invoke-AzStorageSyncChangeDetection](/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) PowerShell cmdlet 手动启动 Azure 文件共享中的更改检测。 此外，通过 REST 协议对 Azure 文件共享所做的更改将不会更新 SMB 上次修改时间，亦不会被视为同步更改。
-- 存储同步服务和/或存储帐户可以移动到不同的资源组、订阅或 Azure AD 租户。 存储同步服务或存储帐户移动后，你需要向 Microsoft.StorageSync 应用程序授予对存储帐户的访问权限（请参阅[确保 Azure 文件同步有权访问存储帐户](../file-sync/file-sync-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)）。
-
-    > [!Note]  
-    > 创建云终结点时，存储同步服务和存储帐户必须位于相同的 Azure AD 租户中。 创建云终结点后，可以将存储同步服务和存储帐户移到不同的 Azure AD 租户。
-
-### <a name="cloud-tiering"></a>云分层
-- 如果使用 Robocopy 将分层的文件复制到另一位置，生成的文件不会分层。 可能会对脱机属性进行设置，因为 Robocopy 会在复制操作中错误地包括该属性。
-- 使用 robocopy 复制文件时，可使用 /MIR 选项保留文件时间戳。 这将确保较旧的文件比最近访问的文件更早分层。

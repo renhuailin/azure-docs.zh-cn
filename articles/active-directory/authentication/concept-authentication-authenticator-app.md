@@ -10,18 +10,18 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e33c87d53580d96363ba15bccbc889370f2479d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 45663b7a2229de0600e60ec2e40c5b721440b997
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212903"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738932"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Azure Active Directory 中的身份验证方法 - Microsoft Authenticator 应用
 
 Microsoft Authenticator 应用为 Azure AD 工作或学校帐户或 Microsoft 帐户提供附加的安全级别，并可用于 [Android](https://go.microsoft.com/fwlink/?linkid=866594) 和 [iOS](https://go.microsoft.com/fwlink/?linkid=866594)。 使用 Microsoft Authenticator 应用，用户可以在登录期间以无密码方式进行身份验证，或在自助式密码重置 (SSPR) 或 Azure AD 多重身份验证事件期间将这种方式作为附加的身份验证选项使用。
 
-用户可能会通过移动应用收到通知，并在其中批准或拒绝，或使用 Authenticator 应用生成可在登录界面中输入的 OAUTH 验证码。 如果同时启用了通知和验证码，注册 Authenticator 应用的用户可以使用任一方法验证其身份。
+用户可能会通过移动应用收到通知，并在其中批准或拒绝，或使用 Authenticator 应用生成可在登录界面中输入的 OATH 验证码。 如果同时启用了通知和验证码，注册 Authenticator 应用的用户可以使用任一方法验证其身份。
 
 若想在出现登录提示时使用 Authenticator 应用而不是用户名和密码的组合，请参阅[启用使用 Microsoft Authenticator 应用进行无密码登录](howto-authentication-passwordless-phone.md)。
 
@@ -62,4 +62,4 @@ Authenticator 应用可用作生成 OATH 验证码所需的软件令牌。 输�
 
 若要开始使用无密码登录，请参阅[启用使用 Microsoft Authenticator 应用进行无密码登录](howto-authentication-passwordless-phone.md)。
 
-详细了解如何使用 [Microsoft Graph REST API beta 版本](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)配置身份验证方法。
+详细了解如何使用 [Microsoft Graph REST API](/graph/api/resources/authenticationmethods-overview) 配置身份验证方法。

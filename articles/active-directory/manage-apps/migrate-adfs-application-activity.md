@@ -2,21 +2,22 @@
 title: 使用活动报表将 AD FS 应用移动到 Azure Active Directory |Microsoft Docs"
 description: Active Directory 联合身份验证服务 (AD FS) 应用程序活动报表可让你快速地将应用程序从 AD FS 迁移到 Azure Active Directory (Azure AD)。 此 AD FS 迁移工具标识与 Azure AD 的兼容性，并提供迁移指南。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 01/14/2019
-ms.author: mtillman
+ms.author: davidmu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5baf0ea07369ad8029c0f556ced16de1f2209dbc
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.reviewer: alamaral
+ms.openlocfilehash: 6b60479d1205acdd0d18311791adfc4924913c4e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079222"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738775"
 ---
 # <a name="use-the-ad-fs-application-activity-report-to-migrate-applications-to-azure-ad"></a>使用 AD FS 应用程序活动报表将应用程序迁移到 Azure AD
 
@@ -36,15 +37,15 @@ AD FS 应用程序活动数据适用于获得下列任意管理角色的用户�
 * 你的组织当前必须使用 AD FS 来访问应用程序。
 * 必须在 Azure AD 租户中启用 Azure AD Connect Health。
 * 必须安装 Azure AD Connect Health for AD FS 代理。
-   * [详细了解 Azure AD Connect Health](../hybrid/how-to-connect-health-adfs.md)
-   * [开始设置 Azure AD Connect Health 并安装 AD FS 代理](../hybrid/how-to-connect-health-agent-install.md)
+* [详细了解 Azure AD Connect Health](../hybrid/how-to-connect-health-adfs.md)
+* [开始设置 Azure AD Connect Health 并安装 AD FS 代理](../hybrid/how-to-connect-health-agent-install.md)
 
->[!IMPORTANT] 
+>[!IMPORTANT]
 >安装 Azure AD Connect Health 后，有几个原因会导致你看不到预期的所有应用程序。 AD FS 应用程序活动报表仅显示在过去 30 天内有用户登录的 AD FS 信赖方。 此外，这个报表不会显示与 Microsoft 相关的信赖方，如 Office 365。
 
-## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>发现可以迁移的 AD FS 应用程序 
+## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>发现可以迁移的 AD FS 应用程序
 
-AD FS 应用程序活动报表可在 Azure 门户的 Azure AD 使用情况和见解报告下获得。 AD FS 应用程序活动报表会分析每个 AD FS 应用程序，以确定是否可以按原样迁移，还是需要进行进一步审阅。 
+AD FS 应用程序活动报表可在 Azure 门户的 Azure AD 使用情况和见解报告下获得。 AD FS 应用程序活动报表会分析每个 AD FS 应用程序，以确定是否可以按原样迁移，还是需要进行进一步审阅。
 
 1. 使用有权访问 AD FS 应用程序活动数据的管理员角色（全局管理员、报表读者、安全读者、应用程序管理员或云应用程序管理员）登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -62,7 +63,7 @@ AD FS 应用程序活动报表可在 Azure 门户的 Azure AD 使用情况和见
 
    * “需要其他步骤”意味着 Azure AD 不支持应用程序的某些设置，所以无法在应用程序的当前状态下进行迁移。
 
-## <a name="evaluate-the-readiness-of-an-application-for-migration"></a>评估要迁移的应用程序的准备情况 
+## <a name="evaluate-the-readiness-of-an-application-for-migration"></a>评估要迁移的应用程序的准备情况
 
 1. 在 AD FS 应用程序活动列表中，单击“迁移状态”列中的状态以打开“迁移详细信息”。 你会看到已通过的配置测试的摘要，以及任何潜在的迁移问题。
 
@@ -129,16 +130,12 @@ AD FS 应用程序活动报表可在 Azure 门户的 Azure AD 使用情况和见
 ### <a name="cant-see-all-my-ad-fs-applications-in-the-report"></a>在报表中没有看到我的所有 AD FS 应用程序
 
  如果你已安装 Azure AD Connect Health，但仍看到安装提示，或在报表中无法看到所有 AD FS 应用程序，则可能是你的 AD FS 应用程序不活动，或者你的 AD FS 应用程序是 Microsoft 应用程序。
- 
+
  AD FS 应用程序活动报表列出了组织中过去 30 天内具有活动用户登录的所有 AD FS 应用程序。 此外，报表不会显示 AD FS 中的与 Microsoft 相关的信赖方，比如 Office 365。 例如，名为“urn:federation:MicrosoftOnline”、“microsoftonline”、“microsoft:winhello:cert:prov:server”的信赖方不会显示在列表中。
-
-
-
-
 
 ## <a name="next-steps"></a>后续步骤
 
-- [视频：如何使用 AD FS 活动报表来迁移应用程序](https://www.youtube.com/watch?v=OThlTA239lU)
-- [使用 Azure Active Directory 管理应用程序](what-is-application-management.md)
-- [管理对应用的访问权限](what-is-access-management.md)
-- [Azure AD Connect 联合身份验证](../hybrid/how-to-connect-fed-whatis.md)
+* [视频：如何使用 AD FS 活动报表来迁移应用程序](https://www.youtube.com/watch?v=OThlTA239lU)
+* [使用 Azure Active Directory 管理应用程序](what-is-application-management.md)
+* [管理对应用的访问权限](what-is-access-management.md)
+* [Azure AD Connect 联合身份验证](../hybrid/how-to-connect-fed-whatis.md)

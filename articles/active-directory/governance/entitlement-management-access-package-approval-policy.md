@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/16/2020
+ms.date: 05/16/2021
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c857de5c9182d49e2527c9cbf416d7012c46370
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 3bd7a7908b94794c60f351297a34309e94d21137
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713947"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964025"
 ---
-# <a name="change-approval-and-requestor-information-preview-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的审批和请求者信息（预览）设置。
+# <a name="change-approval-and-requestor-information-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的审批和请求者信息设置
 
 作为访问包管理者，你可以随时通过编辑现有策略或添加新策略来更改访问包的审批和请求者信息设置。
 
@@ -34,10 +34,9 @@ ms.locfileid: "109713947"
 在“审批”部分中，指定用户请求此访问包时是否需要审批。 审批设置的工作方式如下：
 
 - 只有一个选定审批者或后备审批者需要批准单阶段审批的请求。 
-- 每个阶段中只有一个选定审批者需要批准两阶段审批的请求。
-- 审批者可以是管理员、内部发起人或外部发起人，具体取决于策略管理谁的访问权限。
-- 单阶段或两阶段审批不需要每个选定审批者的批准。
-- 审批决定以第一个评审请求的审批者为准。
+- 每个阶段中只有一个选定审批者需要批准两阶段审批的请求，使请求能够进入下一阶段。
+- 如果某个阶段中一个选定的审批者拒绝了某个请求，然后该阶段中的另一个审批者批准了该请求，或者没有任何审批者批准该请求，那么，该请求将会终止，而用户不会获得访问权限。
+- 审批者可以是组中的指定用户或成员、请求者的经理、内部发起人或外部发起人，具体取决于策略正在控制谁的访问权限。
 
 有关如何向请求策略添加审批者的演示，请观看以下视频：
 
@@ -68,7 +67,7 @@ ms.locfileid: "109713947"
 
 1. 如果需要用户提供对请求访问包的论证，请将“需要请求者论证”切换开关设置为“是”。 。
     
-1. 现在确定请求是否需要单阶段或两阶段审批。 对于单阶段审批，将”阶段数“切换开关设置为“1”，或者对于两阶段审批，将切换开关设置为“2”  。
+1. 现在确定请求是否需要单阶段或多阶段审批。 将“阶段数”设置为所需的审批阶段数。
 
     ![访问包 - 请求 - 审批设置](./media/entitlement-management-access-package-approval-policy/approval.png)
 
@@ -101,9 +100,9 @@ ms.locfileid: "109713947"
 
     其他审批者和请求者都可以看到该论证。
 
-### <a name="2-stage-approval"></a>两阶段审批
+### <a name="multi-stage-approval"></a>多阶段审批
 
-如果选择了两阶段审批，则需要添加第二位审批者。
+如果选择了多阶段审批，则需要为每个附加阶段添加一个审批者。
 
 1. 添加“第二位审批者”： 
     
@@ -121,16 +120,16 @@ ms.locfileid: "109713947"
 
 ### <a name="alternate-approvers"></a>后备审批者
 
-可以指定后备审批者，类似于指定可以审批请求的第一位和第二位审批者。 指定后备审批者将有助于确保请求在到期（超时）之前被批准或拒绝。 针对两阶段审批，可以为后备审批者列出第一位审批者和第二位审批者。 
+可以指定后备审批者，类似于指定可以在每个阶段中审批请求的主要审批者。 指定后备审批者将有助于确保请求在到期（超时）之前被批准或拒绝。 可将每个阶段中的后备审批者和主要审批者一同列出。
 
-指定后备审批者后，在第一位或第二位审批者无法批准或拒绝请求的情况下，待处理的请求将根据你在策略设置期间指定的转发计划转发给后备审批者。 他们会收到一封批准或拒绝待处理请求的电子邮件。
+指定阶段中的后备审批者后，在主要审批者无法批准或拒绝请求的情况下，待处理的请求将根据你在策略设置期间指定的转发计划转发给后备审批者。 他们会收到一封批准或拒绝待处理请求的电子邮件。
 
-请求被转发给后备审批者后，第一位或第二位审批者仍可批准或拒绝该请求。 后备审批者使用同一个“我的访问权限”网站来批准或拒绝待处理的请求。
+请求被转发给后备审批者后，主要审批者仍可批准或拒绝该请求。 后备审批者使用同一个“我的访问权限”网站来批准或拒绝待处理的请求。
 
-我们可以列出要成为审批者和后备审批者的人员或组。 请确保列出不同的人员集作为第一位、第二位和后备审批者。
-例如，如果将 Alice 和 Bob 列为第一位审批者，则将 Carol 和 Dave 列为后备审批者。 通过以下步骤将后备审批者添加到访问包中：
+可以列出要担任审批者和后备审批者的人员或组。 请确保列出不同的人员集作为第一位、第二位和后备审批者。
+例如，如果将 Alice 和 Bob 列为第一阶段的审批者，则将 Carol 和 Dave 列为后备审批者。 通过以下步骤将后备审批者添加到访问包中：
 
-1. 在“第一位审批者”和/或“第二位审批者”下，单击“显示高级请求设置”。
+1. 在阶段中的审批者下，单击“显示高级请求设置”。
 
     :::image type="content" source="media/entitlement-management-access-package-approval-policy/alternate-approvers-click-advanced-request.png" alt-text="访问包 - 策略 - 显示高级请求设置":::
 
@@ -158,7 +157,7 @@ ms.locfileid: "109713947"
 
 1. 单击“下一步”  。
 
-## <a name="collect-additional-requestor-information-for-approval-preview"></a>收集要审批的其他请求者信息（预览）
+## <a name="collect-additional-requestor-information-for-approval"></a>收集要审批的其他请求者信息
 
 为了确保用户能够访问正确的访问包，你可以要求请求者在请求时回答自定义文本字段或多选题。 每个策略限制为 20 个问题，多选题的限制为 25 个答案。 然后，会向审批者显示这些问题，让他们做出决定。
 
@@ -177,12 +176,15 @@ ms.locfileid: "109713947"
 
 1. 选择你希望请求者回答时使用的“答案格式”。 答案格式包括：短文本、多选和长文本。
  
-    ![访问包 - 策略 - 选择“查看和编辑多选答案格式”](./media/entitlement-management-access-package-approval-policy/answer-format-view-edit.png)
+    ![访问包 - 策略 - 选择“编辑和本地化多选答案格式”](./media/entitlement-management-access-package-approval-policy/answer-format-view-edit.png)
  
-1. 如果选择“多选”，请单击“查看和编辑”按钮来配置答案选项。
-    1. 选择“查看和编辑”后，“查看/编辑问题”窗格会打开。
+1. 如果选择“多选”，请单击“编辑和本地化”按钮来配置答案选项。
+    1. 在选择“编辑和本地化”后，“查看/编辑问题”窗格将会打开。
     1. 在“答案值”框中键入你希望在请求者回答问题时向请求者提供的响应选项。
-    1. 键入所需的任意多个响应，然后单击“保存”。
+    1. 请根据需要键入任意数量的响应。
+    1. 如果要为多选选项添加你自己的本地化内容，请为本地化某个特定选项时要采用的语言选择“可选语言代码”。
+    1. 在配置的语言的“本地化”文本框中键入该选项。
+    1. 在为每个多选选项添加了所需的全部本地化内容后，请单击“保存”。
     
     ![访问包 - 策略 - 输入多选选项](./media/entitlement-management-access-package-approval-policy/answer-multiple-choice.png)
   
@@ -190,7 +192,7 @@ ms.locfileid: "109713947"
 
 1. 根据需要填写剩余的选项卡（例如“生命周期”）。
 
-在访问包策略中配置请求者信息后，可以查看请求者对问题的响应。 有关查看请求者信息的指导，请参阅[查看请求者的问题答案（预览）](entitlement-management-request-approve.md#view-requestors-answers-to-questions-preview)。
+在访问包策略中配置请求者信息后，可以查看请求者对问题的响应。 有关查看请求者信息的指导，请参阅[查看请求者的问题答案](entitlement-management-request-approve.md#view-requestors-answers-to-questions)。
 
 ## <a name="next-steps"></a>后续步骤
 - [更改访问包的生命周期设置](entitlement-management-access-package-lifecycle-policy.md)

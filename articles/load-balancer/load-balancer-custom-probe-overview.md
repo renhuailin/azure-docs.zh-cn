@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 6aa21dda1f19335a542edf729135d55a9f3b9176
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c6dbfd0020598c280e006e863467a4dfa9b29a0c
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110083469"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284516"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
 
@@ -37,7 +37,7 @@ ms.locfileid: "110083469"
 >请通篇查看本文档，包括下面有关创建可靠服务的重要[设计指导原则](#design)。
 
 >[!IMPORTANT]
->负载均衡器运行状况探测源自 IP 地址 168.63.129.16，要使探测将实例标记为运行，不得阻止这些探测。  有关详细信息，请查看[探测源 IP 地址](#probesource)。 若要查看后端实例中的该探测流量，请查看[此常见问题解答](load-balancer-faqs.md#probes)。
+>负载均衡器运行状况探测源自 IP 地址 168.63.129.16，要使探测将实例标记为运行，不得阻止这些探测。  有关详细信息，请查看[探测源 IP 地址](#probesource)。 若要查看后端实例中的该探测流量，请查看[此常见问题解答](/azure/load-balancer/load-balancer-faqs#probes)。
 
 >[!IMPORTANT]
 >无论配置的超时阈值如何，HTTP(S) 负载均衡器运行状况探测都会自动探测实例，前提是服务器返回的状态代码不是“HTTP 200 正常”，或者连接通过 TCP 重置终止。
@@ -253,7 +253,7 @@ AzureLoadBalancer 服务标记在[网络安全组](../virtual-network/network-se
 
 公共和内部[标准负载均衡器](./load-balancer-overview.md)通过 Azure Monitor 将每个终结点和后端终结点运行状况探测状态公开为多维指标。 这些指标可由其他 Azure 服务或合作伙伴应用程序使用。 
 
-基本公共负载均衡器通过 Azure Monitor 日志公开针对每个后端池汇总的运行状况探测状态。  Azure Monitor 日志不适用于内部基本负载均衡器。  可以使用 [Azure Monitor 日志](load-balancer-monitor-log.md)来检查公共负载均衡器探测运行状况和探测计数。 可以配合 Power BI 或 Azure Operation Insights 使用日志记录，以提供有关负载均衡器运行状况的统计信息。
+基本公共负载均衡器通过 Azure Monitor 日志公开针对每个后端池汇总的运行状况探测状态。  Azure Monitor 日志不适用于内部基本负载均衡器。  可以使用 [Azure Monitor 日志](./monitor-load-balancer.md)来检查公共负载均衡器探测运行状况和探测计数。 可以配合 Power BI 或 Azure Operation Insights 使用日志记录，以提供有关负载均衡器运行状况的统计信息。
 
 ## <a name="limitations"></a>限制
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 756117a2a231fcb406fd3e3102a16c318c621aa0
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 77f8ff8cf7e3e9a83b207f8d98ef570437b27b47
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832601"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113111152"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>在 Azure 应用服务上使用按应用缩放进行高密度托管
 
@@ -23,7 +23,7 @@ ms.locfileid: "107832601"
 可在应用服务计划级别启用按应用缩放，以便在独立于托管应用的应用服务计划的情况下缩放应用。 这样，可以将一个应用服务计划扩展到 10 个实例，而将一个应用设置为仅用 5 个。
 
 > [!NOTE]
-> 按应用缩放仅适用于标准、高级、高级 V2 和独立定价层。
+> 按应用缩放仅适用于“标准”、“高级”、“高级 V2”、“高级 V3”和“隔离”定价层。
 >
 
 将应用分配给可用的应用服务计划，尽量实现跨实例的均衡分布。 尽管不能保证均衡分布，但平台会确保同一应用的两个实例不会托管在同一个应用服务计划实例上。

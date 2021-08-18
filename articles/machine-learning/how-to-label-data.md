@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 04/29/2021
 ms.custom: data4ml
-ms.openlocfilehash: 3fa2276163b054c72ec27901fb28315b648c47c3
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 491ee8134d17eac9e0abb54780f2aa39e1323e6c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108296389"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446248"
 ---
 # <a name="labeling-images-and-text-documents"></a>标记图像和文本文档
 
@@ -79,6 +79,19 @@ ms.locfileid: "108296389"
 当你在页面上标记所有图像时，Azure 会启用“提交”按钮。 选择“提交”以保存工作。
 
 提交手头数据的标记后，Azure 将使用工作队列中的一组新图像刷新页面。
+
+## <a name="medical-image-tasks"></a>医学图像任务
+
+> [!IMPORTANT]
+> 为 DICOM 或类似图像类型设置标签的功能不应用于或不可供用于医疗设备、临床支持、诊断工具或者其他旨在用于诊断、治愈、缓解、治疗或预防疾病或其他健康问题的技术，Microsoft 不授予将此功能用于此类目的的任何许可或权利。 此功能不旨在代替专业人员医疗建议或保健意见、诊断、治疗或医疗保健专业人员临床判断而实施或部署，并且不应用作此用途。 客户只负责对 DICOM 或类似图像类型使用数据标签。
+
+图像项目支持用于 X 光文件图像的 DICOM 图像格式。
+
+:::image type="content" source="media/how-to-label-data/x-ray-image.png" alt-text="要设置标签的 X 光 DICOM 图像。":::
+
+虽然在为医学图像设置标签时使用的工具与用于任何其他图像的工具相同，但还有另外一个用于 DICOM 图像的工具。  选择“窗口和级别”工具，以更改图像的强度。 此工具只可用于 DICOM 图像。
+
+:::image type="content" source="media/how-to-label-data/window-level-tool.png" alt-text="用于 DICOM 图像的“窗口和级别”工具。":::
 
 ## <a name="tag-images-for-multi-class-classification"></a>标记图像以进行多类分类
 

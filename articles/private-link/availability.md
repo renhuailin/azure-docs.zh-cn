@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: 17b3b74bc6879d54577492a13eb93e0e0ab58373
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: ec1911911653b8c176d92ad3216c64f7fd1a836e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486370"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112295572"
 ---
 # <a name="azure-private-link-availability"></a>Azure 专用链接可用性
 
@@ -58,7 +58,7 @@ ms.locfileid: "109486370"
 
 |支持的服务  |可用区域 | 其他注意事项 | 状态  |
 |:-------------------|:-----------------|:----------------|:--------|
-|  Azure SQL Database         | 所有公共区域 <br/> 所有政府区域<br/>所有中国区域      |  支持代理[连接策略](../azure-sql/database/connectivity-architecture.md#connection-policy) | GA <br/> [了解如何为 Azure SQL 创建专用终结点](create-private-endpoint-portal.md)      |
+|  Azure SQL Database         | 所有公共区域 <br/> 所有政府区域<br/>所有中国区域      |  支持代理[连接策略](../azure-sql/database/connectivity-architecture.md#connection-policy) | GA <br/> [了解如何为 Azure SQL 创建专用终结点](./tutorial-private-endpoint-sql-portal.md)      |
 |Azure Cosmos DB|  所有公共区域<br/> 所有政府区域</br> 所有中国区域 | |GA <br/> [了解如何为 Cosmos DB 创建专用终结点。](./tutorial-private-endpoint-cosmosdb-portal.md)|
 |  Azure Database for PostgreSQL - 单一服务器         | 所有公共区域 <br/> 所有政府区域<br/>所有中国区域     | 在常规用途和内存优化定价层中受支持 | GA <br/> [了解如何为 Azure Database for PostgreSQL 创建专用终结点。](../postgresql/concepts-data-access-and-security-private-link.md)      |
 |  Azure Database for MySQL         | 所有公共区域<br/> 所有政府区域<br/>所有中国区域      |  | GA <br/> [了解如何为 Azure Database for MySQL 创建专用终结点。](../mysql/concepts-data-access-security-private-link.md)     |

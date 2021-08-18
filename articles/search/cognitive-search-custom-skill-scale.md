@@ -2,18 +2,17 @@
 title: 缩放和管理自定义技能
 titleSuffix: Azure Cognitive Search
 description: 了解有效地缩放自定义技能以实现最大吞吐量的工具和技术。 自定义技能调用自定义 AI 模型或逻辑，可将这些模型或逻辑添加到 Azure 认知搜索中的 AI 扩充索引管道。
-manager: luisca
-author: vkurpad
-ms.author: vikurpad
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: f80e78da5c7d226c704c8b13fc496e416f5d0f0d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6b44cc3bde1a2e36cdd902a7366df8841795891a
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125582"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114728426"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>有效地横向扩展自定义技能
 

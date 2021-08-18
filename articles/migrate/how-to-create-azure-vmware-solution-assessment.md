@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: f7014f8a403614740bdbc05abab4e7024f83c196
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: cfa3004b0587bbfe74157bf2922dd98cd8741597
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111570513"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740398"
 ---
 # <a name="create-an-azure-vmware-solution-assessment"></a>创建 Azure VMware 解决方案评估
 
@@ -19,7 +19,7 @@ ms.locfileid: "111570513"
 
 [Azure Migrate](migrate-services-overview.md) 可帮助你迁移到 Azure。 Azure Migrate 提供了一个中心，用于跟踪 Azure 的本地基础结构、应用程序和数据的发现、评估以及迁移。 该中心提供用于评估和迁移的 Azure Migrate 工具，以及第三方独立软件供应商 (ISV) 产品。
 
-## <a name="before-you-start"></a>准备工作
+## <a name="before-you-start"></a>开始之前
 
 - 确保已[创建](./create-manage-projects.md) Azure Migrate 项目。
 - 如果已创建项目，请确保已[添加](how-to-assess.md)“Azure Migrate：发现和评估”工具。
@@ -150,7 +150,7 @@ Azure VMware 解决方案 (AVS) 评估介绍：
     - 就绪性未知：由于从本地环境收集的元数据不足，Azure Migrate 无法确定服务器的就绪情况。
 
 3. 查看建议的工具：
-    - VMware HCX 或 Enterprise：对于 VMware 服务器，若要将本地工作负载迁移到 Azure VMware 解决方案 (AVS) 私有云，建议使用 VMware 混合云扩展 (HCX) 解决方案作为迁移工具。 [了解详细信息](../azure-vmware/tutorial-deploy-vmware-hcx.md)。
+    - VMware HCX 或 Enterprise：对于 VMware 服务器，若要将本地工作负载迁移到 Azure VMware 解决方案 (AVS) 私有云，建议使用 VMware 混合云扩展 (HCX) 解决方案作为迁移工具。 [了解详细信息](../azure-vmware/configure-vmware-hcx.md)。
     - 未知：对于通过 CSV 文件导入的服务器，默认迁移工具是未知的。 但对于 VMware 服务器，建议使用 VMware 混合云扩展 (HCX) 解决方案。 
 
 4. 单击某个“AVS 迁移就绪性”状态。 可以查看 VM 就绪性详细信息，并深入查看 VM 详细信息，包括计算、存储和网络设置。

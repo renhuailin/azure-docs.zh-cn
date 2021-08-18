@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 author: lostmygithubaccount
 ms.author: copeters
-ms.date: 06/08/2021
+ms.date: 06/18/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 141f1ac9cefa91c93a6f2e0cb8500f378ae4700b
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.custom: devx-track-azurecli, devplatv2
+ms.openlocfilehash: dda9c6dee04d724d27668cb8bbe5e189b774433d
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112008014"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457757"
 ---
 # <a name="train-models-create-jobs-with-the-20-cli-preview"></a>使用 2.0 CLI（预览版）训练模型（创建作业）
 
@@ -30,7 +31,7 @@ ms.locfileid: "112008014"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 若要使用 CLI，必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+- 若要使用 CLI，必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 - [安装并设置用于机器学习的 Azure CLI 扩展](how-to-configure-cli.md)
 - 克隆示例存储库：
 
@@ -64,14 +65,13 @@ Azure 机器学习自动捕获以下项目：
 
 ```tree
 .
-├── environment.yml
 ├── job-sweep.yml
 ├── job.yml
 └── src
     └── main.py
 ```
 
-此目录包含两个作业文件：一个 conda 环境文件和一个源代码子目录 `src`。 虽然此示例仅在 `src` 下包含单个文件，但整个子目录将以递归方式上传，并可供在作业中使用。
+此目录包含两个作业文件和一个源代码子目录 (`src`)。 虽然此示例仅在 `src` 下包含单个文件，但整个子目录将以递归方式上传，并可供在作业中使用。
 
 基本命令作业是通过 `job.yml` 配置的：
 
@@ -93,7 +93,7 @@ Azure 机器学习自动捕获以下项目：
 > 需要在本地安装和运行 [Docker](https://docker.io)。 需要在作业的环境中安装 Python。 对于使用 `inputs` 的本地运行，需要在作业的环境中安装 Python 包 `azureml-dataprep`。
 
 > [!TIP]
-> 这需要花费几分钟时间拉取基础 Docker 映像，并基于该映像创建 conda 环境。 使用预生成的 Docker 映像可避免花费映像生成时间。
+> 这需要几分钟时间来拉取 Docker 基础映像。 使用预生成的 Docker 映像可避免花费映像生成时间。
 
 ## <a name="create-compute"></a>创建计算
 
@@ -104,6 +104,8 @@ Azure 机器学习自动捕获以下项目：
 请注意，此时你无需支付计算费用，因为在提交作业之前，`cpu-cluster` 和 `gpu-cluster` 将保留在 0 个节点上。 详细了解如何[管理和优化 AmlCompute 的成本](how-to-manage-optimize-cost.md#use-azure-machine-learning-compute-cluster-amlcompute)。
 
 使用 `az ml compute create -h` 了解有关计算创建选项的更多详细信息。
+
+[!INCLUDE [arc-enabled-kubernetes](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
 
 ## <a name="basic-python-training-job"></a>基本 Python 训练作业
 
@@ -167,7 +169,7 @@ Azure 机器学习还可让你更有效地优化机器学习模型的超参数�
 
 ## <a name="distributed-training"></a>分布式训练
 
-可以在命令作业中指定 `distributed` 节。 Azure ML 支持对 PyTorch、Tensorflow 和 MPI 兼容的框架进行分布式训练。 PyTorch 和 TensorFlow 原生支持对各自的框架（例如 TensorFlow 的 `tf.distributed.Strategy` API）进行分布式训练。
+可以在命令作业中指定 `distribution` 节。 Azure ML 支持对 PyTorch、Tensorflow 和 MPI 兼容的框架进行分布式训练。 PyTorch 和 TensorFlow 原生支持对各自的框架（例如 TensorFlow 的 `tf.distributed.Strategy` API）进行分布式训练。
 
 请务必将 `compute.instance_count`（默认值为 1）设置为作业所需的节点数。
 

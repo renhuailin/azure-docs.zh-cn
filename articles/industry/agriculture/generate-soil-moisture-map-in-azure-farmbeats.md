@@ -5,12 +5,12 @@ author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: riyazp
-ms.openlocfilehash: 4b796af22604a2f09482bcb9a321159ebaafea11
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d318f7aad20f4bdf8ccb8db53c20c2426216b4dd
+ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756766"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112422491"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>生成土壤湿度热度地图
 
@@ -36,7 +36,7 @@ ms.locfileid: "108756766"
 
 ## <a name="deploy-sensors"></a>部署传感器
 
-用户应在农场中实地部署土壤湿度传感器。 你可以从我们任何已获批准的合作伙伴处购买土壤湿度传感器，包括 [Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/) 和 [Teralytic](https://teralytic.com/)。 用户应与传感器提供商进行协作，以便在农场中完成实物设置。
+用户应在农场中实地部署土壤湿度传感器。 你可以从我们任何已获批准的合作伙伴处购买土壤湿度传感器，包括 [Davis Instruments](https://www.davisinstruments.com/products/enviromonitor-gateway-us-lte) 和 [Teralytic](https://teralytic.com/)。 用户应与传感器提供商进行协作，以便在农场中完成实物设置。
 
 ## <a name="get-soil-moisture-sensor-data-from-partner"></a>从合作伙伴获取土壤湿度传感器数据
 

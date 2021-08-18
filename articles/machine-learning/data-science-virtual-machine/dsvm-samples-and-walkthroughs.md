@@ -9,12 +9,12 @@ author: timoklimmer
 ms.author: tklimmer
 ms.topic: conceptual
 ms.date: 05/12/2021
-ms.openlocfilehash: 5ce6b2d80341a9c6ebb8afcbbe8f7072b54ca93c
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d907be8262fdc403f1e7b550d57c1aeaf77491fa
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110087897"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112369049"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 示例
 
@@ -29,7 +29,6 @@ Azure Data Science Virtual Machine (DSVM) 包含一整套示例代码。 这些�
 ## <a name="available-samples"></a>可用示例
 | 示例类别 | 说明 | 位置 |
 | ------------- | ------------- | ------------- |
-| R 语言  | 示例介绍了多种方案，例如如何连接到基于 Azure 的云数据存储，以及如何比较开源 R 和 Microsoft Machine Learning Server。 此外还介绍了如何在 Microsoft Machine Learning Server 和 SQL Server 上操作模型。 <br/> [R 语言](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Python 语言  | 示例介绍了多种方案，例如如何连接到基于 Azure 的云数据存储，以及如何使用 Azure 机器学习。  <br/> [Python 语言](#python-language) | <br/>`~notebooks` <br/><br/>|
 | Julia 语言  | 详细说明了 Julia 中的绘图和深度学习。 此外还介绍了如何通过 Julia 调用 C 和 Python。 <br/> [Julia 语言](#julia-language) |<br/> Windows:<br/> `~notebooks/Julia_notebooks`<br/><br/> Linux：<br/> `~notebooks/julia`<br/><br/> |
 | Azure 机器学习  | 介绍了如何使用机器学习生成机器学习和深度学习模型。 在任意位置部署模型。 使用自动化机器学习和智能超参数优化。 还使用模型管理和分布式定型。 <br/> [机器学习](#azure-machine-learning) | <br/>`~notebooks/AzureML`<br/> <br/>|

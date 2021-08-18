@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 06/01/2021
 ms.custom: template-concept
 recommendations: false
-ms.openlocfilehash: 34a4a37d351f144d00d926de0544c8ae56e9a314
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 5f8d78f7080c1505db4a82d9393801ad8418beed
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901434"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751478"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>有关在 Azure 中的 .NET 5.0 上运行函数的指南
 
@@ -44,7 +44,7 @@ ms.locfileid: "111901434"
 简单而言，.NET 隔离函数项目是一个面向 .NET 5.0 的 .NET 控制台应用项目。 下面是任何 .NET 隔离项目中所需的基本文件：
 
 + [host.json](functions-host-json.md) 文件。
-+ [local.settings.json](functions-run-local.md#local-settings-file) 文件。
++ [local.settings.json](functions-develop-local.md#local-settings-file) 文件。
 + C# 项目文件 (.csproj)，用于定义项目和依赖项。
 + Program.cs 文件，应用的入口点。
 
@@ -142,7 +142,7 @@ ms.locfileid: "111901434"
 
 ### <a name="output-bindings"></a>输出绑定
 
-若要写入到输出绑定，必须将输出绑定特性应用到函数方法，该方法定义了如何写入到绑定的服务。 该方法返回的值将写入到输出绑定。 例如，以下示例使用输出绑定将一个字符串值写入到名为 `functiontesting2` 的消息队列：
+若要写入到输出绑定，必须将输出绑定特性应用到函数方法，该方法定义了如何写入到绑定的服务。 该方法返回的值将写入到输出绑定。 例如，以下示例使用输出绑定将一个字符串值写入到名为 `myqueue-output` 的消息队列：
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Queue/QueueFunction.cs" id="docsnippet_queue_output_binding" :::
 
