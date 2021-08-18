@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: d215da660929c66514f9d0cf5f3161c83a1c330c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a67e29b1f15cb8548c6ee80efee0a250c842cf95
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104582749"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114405094"
 ---
 ## <a name="model-id-announcement"></a>模型 ID 公告
 
@@ -24,10 +24,10 @@ iothubResult = IoTHubDeviceClient_LL_SetOption(
 ```
 
 > [!TIP]
-> 对于模块和 IoT Edge，使用 `IoTHubModuleClient_LL` 而不是 `IoTHubDeviceClient_LL`。
+> 对于模块和 IoT Edge，使用 `IoTHubModuleClient_LL` 代替 `IoTHubDeviceClient_LL`。
 
 > [!TIP]
-> 设备只有在这时能够设置模型 ID，设备连接后将无法更新模型 ID。
+> 设备只有这一次机会设置模型 ID，设备连接后将无法更新模型 ID。
 
 ## <a name="dps-payload"></a>DPS 有效负载
 
@@ -41,7 +41,7 @@ iothubResult = IoTHubDeviceClient_LL_SetOption(
 
 ## <a name="implement-telemetry-properties-and-commands"></a>实现遥测、属性和命令
 
-如[了解 IoT 即插即用模型中的组件](../articles/iot-pnp/concepts-modeling-guide.md)中所述，设备构建者必须决定是否要使用组件来描述其设备。 使用组件时，设备必须遵循本部分中所述的规则。
+如[了解 IoT 即插即用模型中的组件](../articles/iot-develop/concepts-modeling-guide.md)一文中所述，设备构建者必须决定是否要使用组件来描述其设备。 使用组件时，设备必须遵循本部分中所述的规则。
 
 ### <a name="telemetry"></a>遥测
 
@@ -214,7 +214,7 @@ PnP_TempControlComponent_Report_MaxTempSinceLastReboot_Property(g_thermostatHand
 
 ### <a name="writable-properties"></a>可写属性
 
-这些属性可以由设备设置或通过解决方案更新。 解决方案更新属性时，客户端会接收到通知（作为 `DeviceClient` 或 `ModuleClient` 中的回调）。 若要遵循 IoT 即插即用约定，设备必须通知服务已成功接收属性。
+这些属性可以由设备设置或通过解决方案更新。 如果解决方案更新属性，客户端会接收到通知，即在 `DeviceClient` 或 `ModuleClient` 中的回调。 若要遵循 IoT 即插即用约定，设备必须通知服务属性已成功接收。
 
 #### <a name="report-a-writable-property"></a>报告可写属性
 
@@ -335,7 +335,7 @@ STRING_delete(jsonToSend);
 
 #### <a name="subscribe-to-desired-property-updates"></a>订阅所需的属性更新
 
-服务可以更新所需的属性，在连接的设备上触发通知。 此通知包括更新的所需属性（包括用于标识更新的版本号）。 设备必须使用与报告的属性相同的 `ack` 消息进行响应。
+服务可以更新所需的属性，从而在连接的设备上触发通知。 此通知包括更新后的所需属性，其中包括用于标识更新的版本号。 设备必须使用与报告的属性相同的 `ack` 消息进行响应。
 
 默认组件会查看单个属性，并使用收到的版本创建报告的 `ack`：
 
@@ -590,7 +590,7 @@ deviceClient = PnP_CreateDeviceClientLLHandle(&g_pnpDeviceConfiguration);
 
 #### <a name="request-and-response-payloads"></a>请求和响应有效负载
 
-命令使用类型定义其请求和响应有效负载。 设备必须对传入的输入参数进行反序列化，并对响应进行序列化。 下面的示例演示如何实现在有效负载中定义了复杂类型的命令：
+命令使用类型定义其请求和响应有效负载。 设备必须反序列化传入的输入参数并串行化响应。 下面的示例演示如何实现具有在有效负载中定义的复杂类型的命令：
 
 ```json
 {
@@ -641,7 +641,7 @@ deviceClient = PnP_CreateDeviceClientLLHandle(&g_pnpDeviceConfiguration);
 }
 ```
 
-下面的代码片段演示了设备如何实现此命令定义，包括用于启用序列化和反序列化的类型：
+下面的代码片段演示了设备如何实现此命令定义，其中包括用于启用序列化和反序列化的类型：
 
 ```c
 static const char g_maxMinCommandResponseFormat[] = "{\"maxTemp\":%.2f,\"minTemp\":%.2f,\"avgTemp\":%.2f,\"startTime\":\"%s\",\"endTime\":\"%s\"}";
@@ -684,4 +684,4 @@ static bool BuildMaxMinCommandResponse(
 ```
 
 > [!Tip]
-> 请求和响应名称不存在于通过网络传输的序列化有效负载中。
+> 请求和响应名称不存在于通过网络传输的串行化有效负载中。

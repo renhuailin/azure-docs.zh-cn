@@ -4,13 +4,13 @@ description: 了解如何将 Azure Active Directory 身份验证配置为应用�
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
-ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 6d0fd642afe9a6bc08ffe5b5fe71374614939877
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.custom: seodec18, fasttrack-edit
+ms.openlocfilehash: 2404d8af682f119b68c78d6dc5cacc3d30201c17
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093024"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397094"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>将应用服务或 Azure Functions 应用配置为使用 Azure AD 登录
 
@@ -120,7 +120,7 @@ ms.locfileid: "113093024"
 
     > [!NOTE]
     > 对于Microsoft Store 应用程序，请改用[包 SID](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#package-sid) 作为 URI。
-1. 选择“创建”。
+1. 选择“创建”  。
 1. 创建应用注册后，复制“应用程序(客户端) ID”的值。
 1. 选择“API 权限” > “添加权限” > “我的 API”。  
 1. 选择前面为应用服务应用创建的应用注册。 如果未看到该应用注册，请确保在 [在 Azure AD 中为应用服务应用创建应用注册](#register)部分已添加 **user_impersonation** 范围。

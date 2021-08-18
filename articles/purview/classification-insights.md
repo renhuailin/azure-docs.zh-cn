@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/17/2021
-ms.openlocfilehash: b6ea3e762ad098e373baa8487d8926105820f226
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 057d097eb66eddffc15bb65bfb9e6fb64209e5f8
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666512"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397441"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>有关 Azure Purview 中的数据的分类见解
 
@@ -35,7 +35,7 @@ ms.locfileid: "101666512"
 
 - 对每个数据源中的测试数据设置并完成扫描。 有关详细信息，请参阅[在 Azure Purview（预览版）中管理数据源](manage-data-sources.md)和[创建扫描规则集](create-a-scan-rule-set.md)。
 
-- 使用具有 [Data Reader 或 Data Curator 角色](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)的帐户登录到 Purview。
+- 使用具有 [Data Reader 或 Data Curator 角色](catalog-permissions.md#roles)的帐户登录到 Purview。
 
 有关详细信息，请参阅[在 Azure Purview（预览版）中管理数据源](manage-data-sources.md)。
 

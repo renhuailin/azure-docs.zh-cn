@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: f4eb312aff200389f59a3e342305b8eda98f213e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39779c93ed8de7a919fab838b7f46277d0829cd4
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104582750"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114405091"
 ---
 ## <a name="model-id-announcement"></a>模型 ID 公告
 
@@ -42,7 +42,7 @@ device_client = IoTHubDeviceClient.create_from_symmetric_key(
 
 ## <a name="implement-telemetry-properties-and-commands"></a>实现遥测、属性和命令
 
-如[了解 IoT 即插即用模型中的组件](../articles/iot-pnp/concepts-modeling-guide.md)一文中所述，设备构建者必须决定是否要使用组件来描述其设备。 使用组件时，设备必须遵循本节中所述的规则。
+如[了解 IoT 即插即用模型中的组件](../articles/iot-develop/concepts-modeling-guide.md)一文中所述，设备构建者必须决定是否要使用组件来描述其设备。 使用组件时，设备必须遵循本部分中所述的规则。
 
 ### <a name="telemetry"></a>遥测
 
