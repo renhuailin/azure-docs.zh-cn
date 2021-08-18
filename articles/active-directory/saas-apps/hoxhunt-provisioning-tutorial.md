@@ -2,25 +2,22 @@
 title: 教程：使用 Azure Active Directory 为 Hoxhunt 配置自动用户预配 | Microsoft Docs
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Hoxhunt 及如何取消预配。
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 24fbe0a4-ab2d-4e10-93a6-c87d634ffbcf
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/28/2021
-ms.author: Zhchia
-ms.openlocfilehash: db33cc43419b4228ca270d3a69c0e88de2c05638
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.author: thwimmer
+ms.openlocfilehash: f2f03976ad6be9260b9b32291eef35c5ecbc86cf
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752038"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195321"
 ---
 # <a name="tutorial-configure-hoxhunt-for-automatic-user-provisioning"></a>教程：为 Hoxhunt 配置自动用户预配
 
@@ -47,9 +44,9 @@ ms.locfileid: "107752038"
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 3. 确定要[在 Azure AD 与 Hoxhunt 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
 
-## <a name="step-2-configure-hoxhunt-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Hoxhunt 以支持通过 Azure AD 进行预配
+## <a name="step-2-configure-hoxhunt-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Hoxhunt 以支持通过 Azure AD 进行预配
 请联系 [Hoxhunt 支持部门](mailto:support@hoxhunt.com)以接收 SCIM API 密钥和 SCIM 终结点 URL，以便配置 Hoxhunt 来支持 Azure AD 的预配。
-## <a name="step-3-add-hoxhunt-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 Hoxhunt
+## <a name="step-3-add-hoxhunt-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Hoxhunt
 
 从 Azure AD 应用程序库添加 Hoxhunt，开始管理 Hoxhunt 的预配。 如果之前已经为 SSO 设置过 Hoxhunt，则可以使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 

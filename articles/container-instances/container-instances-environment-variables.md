@@ -4,12 +4,12 @@ description: 了解如何在 Azure 容器实例的已运行容器中设置环境
 ms.topic: article
 ms.date: 04/17/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 55a653baa6304ad830df52d0e303366edc8ae4e0
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: eb41aeac02250a77aa8f106580b60cd6971791aa
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110698743"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183428"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>在容器实例中设置环境变量
 
@@ -179,7 +179,7 @@ properties:
           value: 'my-exposed-value'
         - name: 'SECRET'
           secureValue: 'my-secret-value'
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       ports: []
       resources:
         requests:
@@ -227,7 +227,7 @@ JSON 响应显示不安全的环境变量的键和值，但仅显示安全环境
 使用 [az container exec][az-container-exec] 命令（允许在正在运行的容器中执行命令），可以验证是否已设置安全环境变量。 运行以下命令以在容器中启动交互式 bash 会话：
 
 ```azurecli-interactive
-az container exec --resource-group myResourceGroup --name securetest --exec-command "/bin/bash"
+az container exec --resource-group myResourceGroup --name securetest --exec-command "/bin/sh"
 ```
 
 在容器中打开交互式 shell 后，可以访问 `SECRET` 变量的值：

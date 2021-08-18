@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: b3ac4074dd4c49933924e39e20d7dbf703525324
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: ac3caf51337b87125f10cc7a6cd1378d7bfdb923
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755980"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113005305"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自动化来改变会话主机规模
 
@@ -63,8 +63,8 @@ ms.locfileid: "111755980"
 
 开始设置缩放工具之前，请确保已准备好以下内容：
 
-- [Azure 虚拟桌面主机池](create-host-pools-azure-marketplace.md)
-- 已配置了 Azure 虚拟桌面服务并向其注册了的会话主机池 VM
+- 一个 [Azure 虚拟桌面主机池](create-host-pools-azure-marketplace.md)
+- 已配置会话主机池 VM 并已将其注册到 Azure 虚拟桌面服务
 - 对 Azure 订阅具有[参与者访问权限](../role-based-access-control/role-assignments-portal.md)的用户
 
 用于部署此工具的计算机必须具有：

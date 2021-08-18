@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.custom: subject-monitoring
 ms.service: container-registry
 ms.date: 03/19/2021
-ms.openlocfilehash: 21cc4aeb5b8a643fcee85cfd60e2958ed0c72c72
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 1b7f8a13a7d372fe67e5ca7c235febfa52294432
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060959"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294943"
 ---
 # <a name="monitor-azure-container-registry"></a>监视 Azure 容器注册表
 
@@ -91,7 +91,7 @@ Azure 容器注册表收集与 [Azure 资源中的监视数据](../azure-monitor
 
 Azure Monitor 日志中的数据以表形式存储，每个表具有自己独有的属性集。  
 
-Azure Monitor 中的所有资源日志都具有后跟服务特定字段的相同字段。 [Azure Monitor 资源日志架构](/azure/azure-monitor/essentials/resource-logs-schema#top-level-resource-logs-schema)概述了常见架构。 有关 Azure 容器注册表资源日志的架构，可参阅 [Azure 容器注册表数据参考](monitor-service-reference.md#schemas)。 
+Azure Monitor 中的所有资源日志都具有后跟服务特定字段的相同字段。 [Azure Monitor 资源日志架构](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema)概述了常见架构。 有关 Azure 容器注册表资源日志的架构，可参阅 [Azure 容器注册表数据参考](monitor-service-reference.md#schemas)。 
 
 [活动日志](../azure-monitor/essentials/activity-log.md)是 Azure 中的一种平台日志，可用于深入了解订阅级别事件。 你可以单独查看它或将它路由到 Azure Monitor 日志，然后便可以在其中使用 Log Analytics 执行复杂得多的查询。  
 

@@ -4,12 +4,12 @@ description: 使用 Azure Resource Manager 将资源移到新的资源组或订�
 ms.topic: conceptual
 ms.date: 06/03/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: fdda54f31fe4a85a5ac62d8ce60fffd03c5a785d
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: ec23b4306f088328bfb72f3cf9071a70f8eb2307
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111526581"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586772"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>将资源移到新的资源组或订阅
 
@@ -234,7 +234,7 @@ az resource move --destination-group newgroup --ids $webapp $plan
 
 ### <a name="validate"></a>验证
 
-[验证移动操作](/rest/api/resources/resources/moveresources)可以测试你的移动方案而无需实际移动资源。 使用此操作检查移动是否会成功。 发送移动请求时会自动调用验证。 仅当需要预先确定结果时才使用此操作。 若要运行此操作，需要：
+[验证移动操作](/rest/api/resources/resources/validate-move-resources)可以测试你的移动方案而无需实际移动资源。 使用此操作检查移动是否会成功。 发送移动请求时会自动调用验证。 仅当需要预先确定结果时才使用此操作。 若要运行此操作，需要：
 
 * 源资源组的名称
 * 目标资源组的资源 ID

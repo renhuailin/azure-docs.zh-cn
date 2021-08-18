@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 10/18/2019
-ms.openlocfilehash: d00ec82b5b66b2c413337f0c4efe803fc1013ab9
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: b4549978925f2e7016b54ce3004eabadaa8e985f
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109847864"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113134341"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>排查 Azure Cache for Redis 超时问题
 
@@ -50,7 +50,7 @@ StackExchange.Redis 使用名为 `synctimeout` 的配置设置进行同步操作
 | wr |存在活动的写入器（这意味着系统不会忽略这 6 个尚未发送的请求）字节/活动写入器 |
 | in |没有活动的读取器，NIC 字节/活动读取器上没有可供读取的字节 |
 
-在前一异常示例中，`IOCP` 和 `WORKER` 部分都包含一个大于 `Min` 值的 `Busy` 值。 存在不同意味着应调整 `ThreadPool` 设置。 可以[配置 ThreadPool 设置](cache-management-faq.md#important-details-about-threadpool-growth)，以确保线程池在突发情况下快速地纵向扩展。
+在前一异常示例中，`IOCP` 和 `WORKER` 部分都包含一个大于 `Min` 值的 `Busy` 值。 存在不同意味着应调整 `ThreadPool` 设置。 可以[配置 ThreadPool 设置](cache-management-faq.yml#important-details-about-threadpool-growth)，以确保线程池在突发情况下快速地纵向扩展。
 
 可以使用以下步骤调查可能的根本原因。
 
@@ -123,5 +123,5 @@ StackExchange.Redis 使用名为 `synctimeout` 的配置设置进行同步操作
 
 - [排查 Azure Cache for Redis 客户端问题](cache-troubleshoot-client.md)
 - [排查 Azure Cache for Redis 服务器端问题](cache-troubleshoot-server.md)
-- [如何制定基准和测试缓存的性能？](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [如何制定基准和测试缓存的性能？](cache-management-faq.yml#how-can-i-benchmark-and-test-the-performance-of-my-cache-)
 - [如何监视 Azure Redis 缓存](cache-how-to-monitor.md)

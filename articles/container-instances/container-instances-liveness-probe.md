@@ -3,12 +3,12 @@ title: 在容器实例上设置运行情况探测
 description: 了解如何配置运行情况探测以重启 Azure 容器实例中不正常的容器
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 0d88133692fbfad4c5e81eefa57c69a843448222
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2cc5ee2da72aadc00bc2d82db32aaa46b53d7d5b
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108771552"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178434"
 ---
 # <a name="configure-liveness-probes"></a>配置运行情况探测
 
@@ -33,7 +33,7 @@ properties:
   containers:
   - name: mycontainer
     properties:
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       command:
         - "/bin/sh"
         - "-c"

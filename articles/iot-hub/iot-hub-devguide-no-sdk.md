@@ -2,7 +2,6 @@
 title: 在不使用 Azure IoT SDK 的情况下进行开发| Microsoft Docs
 description: 开发人员指南 - 关于主题的信息和到主题的链接，你可以使用它们构建设备应用和后端应用，而无需使用 Azure IoT SDK。
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -13,18 +12,18 @@ ms.custom:
 - amqp
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: ae8b01522a248b8b1dbdd255a9fcd55f16cf2369
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34476ee99dcf455886a72d3fcef2356ab4e6229f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96461701"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721924"
 ---
 # <a name="develop-without-using-an-azure-iot-hub-sdk"></a>不使用 Azure IoT 中心 SDK 进行开发
 
 本主题为希望不使用 Azure IoT SDK 开发设备或后端应用的开发人员提供有用的信息和链接。
 
-Microsoft 强烈建议使用 Azure IoT SDK。 Azure IoT 设备和服务 SDK 在许多流行平台上发布。 SDK 提供了一个方便层，可以处理底层通信协议的许多复杂问题，包括设备连接和重新连接，以及重试策略。 SDK 会定期更新，以提供 IoT 中心公开的最新功能以及安全更新。 使用 SDK 可以帮助你减少开发时间和用于代码维护的时间。 若要了解有关 Azure IoT SDK 的更多信息，请参阅 [Azure IoT设备和服务 SDK](iot-hub-devguide-sdks.md)。 有关使用 Azure IoT SDK 的优势的详细信息，请参阅[使用 Azure IoT SDK 的优势以及如果不使用需要避免的陷阱](https://azure.microsoft.com/en-us/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/)博客文章。
+Microsoft 强烈建议使用 Azure IoT SDK。 Azure IoT 设备和服务 SDK 在许多流行平台上发布。 SDK 提供了一个方便层，可以处理底层通信协议的许多复杂问题，包括设备连接和重新连接，以及重试策略。 SDK 会定期更新，以提供 IoT 中心公开的最新功能以及安全更新。 使用 SDK 可以帮助你减少开发时间和用于代码维护的时间。 若要了解有关 Azure IoT SDK 的更多信息，请参阅 [Azure IoT设备和服务 SDK](iot-hub-devguide-sdks.md)。 有关使用 Azure IoT SDK 的优势的详细信息，请参阅[使用 Azure IoT SDK 的优势以及如果不使用需要避免的陷阱](https://azure.microsoft.com/blog/benefits-of-using-the-azure-iot-sdks-in-your-azure-iot-solution/)博客文章。
 
 尽管 IoT 中心支持 AMQP、AMQP over WebSockets、HTTPS、MQTT 和 MQTT over WebSockets 来与设备进行通信，但如果你的设备支持 MQTT，我们建议你使用它。
 

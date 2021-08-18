@@ -1,19 +1,19 @@
 ---
 title: Azure 映像生成器服务网络选项
 description: 了解部署 Azure VM 映像生成器服务时的网络选项
-author: danielsollondon
-ms.author: danis
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
-ms.openlocfilehash: cd5027ca6e0ce3dc02da14b7dd6afd6e00e3f92d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19e77b8a2baa168b1ca6ed335711b2f41a2c1aea
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669441"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113596274"
 ---
 # <a name="azure-image-builder-service-networking-options"></a>Azure 映像生成器服务网络选项
 

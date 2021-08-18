@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: aahi
-ms.openlocfilehash: eaffa535b51b786a53f1e6cc35233c55dd837233
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e86c9afcdb68aa6ad030405a2b5cbe59dc92e6f0
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99989070"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112201619"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>配置 Azure 认知服务虚拟网络
 
@@ -40,7 +40,7 @@ Azure 认知服务提供了分层的安全模型。 借助此模型，可保护�
 
 ## <a name="supported-regions-and-service-offerings"></a>支持的区域和服务产品
 
-虚拟网络 (VNET) 在[认知服务可用的区域](https://azure.microsoft.com/global-infrastructure/services/)中受支持。 认知服务支持网络规则配置的服务标记。 下面列出的服务包含在 CognitiveServicesManagement 服务标记中。
+虚拟网络 (VNET) 在[认知服务可用的区域](https://azure.microsoft.com/global-infrastructure/services/)中受支持。 目前，多服务资源不支持 VNET。 认知服务支持网络规则配置的服务标记。 下面列出的服务包含在 CognitiveServicesManagement 服务标记中。
 
 > [!div class="checklist"]
 > * 异常检测器

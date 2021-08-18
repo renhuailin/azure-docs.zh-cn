@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 2acf5178e7d1cfdf907146d733150a48e9696a5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a5ad3a5fb542476eb4cdeb1ffe67907a7209d0c
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101712345"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112232550"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>商业市场中的 SaaS 履行 API 版本 2
 
@@ -249,7 +249,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 此错误体现出的症状通常是无法正常执行 [SaaS 注册](pc-saas-registration.md)。
 
-代码：500 内部服务器错误。  重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://partner.microsoft.com/support/v2/?stage=1)。
+代码：500 内部服务器错误。  重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://go.microsoft.com/fwlink/?linkid=2165533)。
 
 #### <a name="activate-a-subscription"></a>激活订阅
 
@@ -302,7 +302,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 代码：404 找不到。 SaaS 订阅处于“已取消订阅”状态。
 
-代码：500 内部服务器错误。  重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://partner.microsoft.com/support/v2/?stage=1)。
+代码：500 内部服务器错误。  重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://go.microsoft.com/fwlink/?linkid=2165533)。
 
 #### <a name="get-list-of-all-subscriptions"></a>获取所有订阅的列表
 
@@ -411,7 +411,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 此错误体现出的症状通常是无法正常执行 [SaaS 注册](pc-saas-registration.md)。 
 
-代码：500 内部服务器错误。 重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://partner.microsoft.com/support/v2/?stage=1)。
+代码：500 内部服务器错误。 重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://go.microsoft.com/fwlink/?linkid=2165533)。
 
 #### <a name="get-subscription"></a>获取订阅
 
@@ -481,7 +481,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 代码：404 找不到。  找不到具有指定 `subscriptionId` 的 SaaS 订阅。
 
-代码：500 内部服务器错误。  重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://partner.microsoft.com/support/v2/?stage=1)。
+代码：500 内部服务器错误。  重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://go.microsoft.com/fwlink/?linkid=2165533)。
 
 #### <a name="list-available-plans"></a>列出可用计划
 
@@ -536,7 +536,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 此错误体现出的症状通常是无法正常执行 [SaaS 注册](pc-saas-registration.md)。 
 
-代码：500 内部服务器错误。  重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://partner.microsoft.com/support/v2/?stage=1)。
+代码：500 内部服务器错误。  重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://go.microsoft.com/fwlink/?linkid=2165533)。
 
 #### <a name="change-the-plan-on-the-subscription"></a>更改订阅的计划
 
@@ -580,7 +580,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 |  参数         | 值             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  用于获取操作状态的 URL。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
+|  `Operation-Location`        |  用于获取操作状态的 URL。  例如 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
 
 代码：400 错误的请求: 验证失败。
 
@@ -595,7 +595,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 代码：404 找不到。  找不到具有 `subscriptionId` 的 SaaS 订阅。
 
-代码：500 内部服务器错误。  重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://partner.microsoft.com/support/v2/?stage=1)。
+代码：500 内部服务器错误。  重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://go.microsoft.com/fwlink/?linkid=2165533)。
 
 >[!NOTE]
 >每次可以更改计划或座席数量，但不能同时更改两者。
@@ -645,7 +645,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 |  参数         | 值             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  链接到资源以获取操作状态。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。  |
+|  `Operation-Location`        |  链接到资源以获取操作状态。  例如 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。  |
 
 代码：400 错误的请求: 验证失败。
 
@@ -661,7 +661,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 代码：404 找不到。  找不到具有 `subscriptionId` 的 SaaS 订阅。
 
-代码：500 内部服务器错误。  重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://partner.microsoft.com/support/v2/?stage=1)。
+代码：500 内部服务器错误。  重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://go.microsoft.com/fwlink/?linkid=2165533)。
 
 >[!Note]
 >每次只能更改计划或数量，而不能同时更改两者。
@@ -710,7 +710,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 |  参数         | 值             |
 |  ---------------   |  ---------------  |
-|  `Operation-Location`        |  链接到资源以获取操作状态。  例如，`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
+|  `Operation-Location`        |  链接到资源以获取操作状态。  例如 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=2018-08-31`。 |
 
 代码：400 错误的请求。  删除操作未包含在此 SaaS 订阅的 `allowedCustomerOperations` 列表中。
 
@@ -720,7 +720,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 代码：404 找不到。  找不到具有 `subscriptionId` 的 SaaS 订阅。
 
-代码：500 内部服务器错误。 重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://partner.microsoft.com/support/v2/?stage=1)。
+代码：500 内部服务器错误。 重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://go.microsoft.com/fwlink/?linkid=2165533)。
 
 ### <a name="operations-apis"></a>操作 API
 
@@ -783,7 +783,7 @@ Microsoft 为客户提供 30 天宽限期，过后会自动取消订阅。 当�
 
 代码：404 找不到。  找不到具有 `subscriptionId` 的 SaaS 订阅。
 
-代码：500 内部服务器错误。 重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://partner.microsoft.com/support/v2/?stage=1)。
+代码：500 内部服务器错误。 重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://go.microsoft.com/fwlink/?linkid=2165533)。
 
 #### <a name="get-operation-status"></a>获取操作状态
 
@@ -843,7 +843,7 @@ Response body:
 * 找不到具有 `subscriptionId` 的订阅。
 * 找不到具有 `operationId` 的操作。
 
-代码：500 内部服务器错误。  重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://partner.microsoft.com/support/v2/?stage=1)。
+代码：500 内部服务器错误。  重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://go.microsoft.com/fwlink/?linkid=2165533)。
 
 #### <a name="update-the-status-of-an-operation"></a>更新操作的状态
 
@@ -895,7 +895,7 @@ Response body:
 
 代码：409 冲突。  例如，已履行较新的更新。
 
-代码：500 内部服务器错误。  重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://partner.microsoft.com/support/v2/?stage=1)。
+代码：500 内部服务器错误。  重试 API 调用。  如果错误依然出现，请联系 [Microsoft 支持人员](https://go.microsoft.com/fwlink/?linkid=2165533)。
 
 ## <a name="implementing-a-webhook-on-the-saas-service"></a>在 SaaS 服务上实现 Webhook
 
@@ -945,7 +945,7 @@ Webhook 有效负载示例：
   "quantity": " 20",
   "timeStamp": "2019-04-15T20:17:31.7350641Z",
   "action": "Reinstate",
-  "status": "In Progress"
+  "status": "InProgress"
 }
 ```
 
@@ -970,6 +970,6 @@ Webhook 有效负载示例：
 
 ## <a name="next-steps"></a>后续步骤
 
-有关商业市场中 SaaS 产品/服务的其他选项，请参阅[商业市场计量服务 API](marketplace-metering-service-apis.md)。
+有关商业市场中 SaaS 产品/服务的其他选项，请参阅[商业市场计量服务 API](../marketplace-metering-service-apis.md)。
 
 查看并使用[适用于不同编程语言的客户端和示例](https://github.com/microsoft/commercial-marketplace-samples)。

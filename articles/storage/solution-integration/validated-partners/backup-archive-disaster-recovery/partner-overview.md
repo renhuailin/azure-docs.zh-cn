@@ -8,16 +8,16 @@ ms.date: 04/12/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: b9ee3b76b1762034e6c1c5d29654b00d31022ff2
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: dc2c284bf1d44ca4fbdd4ddbea95048c38cdbf55
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109838080"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728493"
 ---
 # <a name="azure-storage-archive-backup-and-disaster-recovery-partners"></a>Azure 存储存档、备份和灾难恢复合作伙伴
 
-本文重点介绍了与集成 Azure 存储以实现存档、备份以及业务连续性和灾难恢复 (BCDR) 工作负载的 Microsoft 合作伙伴。 这些合作伙伴解决方案利用 Azure 存储的缩放和成本优势。 你可以使用这些解决方案来帮助解决备份难题、创建灾难恢复站点，或将未使用的内容存档以进行长期保留。 通过 Azure 存储满足的所有合规性标准以及 Azure 功能（如[不可变的存储](../../../blobs/storage-blob-immutable-storage.md)和[生命周期管理](../../../blobs/storage-lifecycle-management-concepts.md)），这些解决方案可轻松替代基于磁带的备份，并提供经济实惠的按需恢复站点。
+本文重点介绍了与集成 Azure 存储以实现存档、备份以及业务连续性和灾难恢复 (BCDR) 工作负载的 Microsoft 合作伙伴。 这些合作伙伴解决方案利用 Azure 存储的缩放和成本优势。 你可以使用这些解决方案来帮助解决备份难题、创建灾难恢复站点，或将未使用的内容存档以进行长期保留。 通过 Azure 存储满足的所有合规性标准以及 Azure 功能（如[不可变的存储](../../../blobs/immutable-storage-overview.md)和[生命周期管理](../../../blobs/storage-lifecycle-management-concepts.md)），这些解决方案可轻松替代基于磁带的备份，并提供经济实惠的按需恢复站点。
 
 ## <a name="verified-partners"></a>已验证的合作伙伴
 

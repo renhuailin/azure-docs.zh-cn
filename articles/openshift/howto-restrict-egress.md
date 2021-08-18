@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 04/09/2021
-ms.openlocfilehash: c15e7261587952c93d059cfcfadd06c7d204d80d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 53efeff1024d104f4dae2d70fc6f00c73d3d8fed
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135666"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291824"
 ---
 # <a name="control-egress-traffic-for-your-azure-red-hat-openshift-aro-cluster-preview"></a>控制 Azure Red Hat OpenShift (ARO) 群集（预览版）的出口流量
 
@@ -32,7 +32,7 @@ ms.locfileid: "108135666"
 
 | 目标 FQDN | 端口 | 用途 |
 | ----------- | ----------- | ------------- |
-| **`quay.io`** | **HTTPS:443** | 安装所必需，由群集使用。 群集使用此域名下载平台容器映像。 |
+| **`*.quay.io`** | **HTTPS:443** | 安装所必需，由群集使用。 群集使用此域名下载平台容器映像。 |
 | **`registry.redhat.io`** | **HTTPS:443** | 核心外接程序所必需。 群集使用此域名下载核心组件，例如开发工具、基于操作员的外接程序和 Red Hat 提供的容器映像。
 | **`mirror.openshift.com`** | **HTTPS:443** | 在 VDI 环境或便携式计算机上，需要使用此域名来访问镜像安装内容和映像。 为了了解要从 quay.io 拉取哪些映像，在群集中下载平台版本签名时需要此域名。 |
 | **`api.openshift.com`** | **HTTPS:443** | 在下载映像签名之前，群集需要使用此域名才能检查是否有可用的更新。 |

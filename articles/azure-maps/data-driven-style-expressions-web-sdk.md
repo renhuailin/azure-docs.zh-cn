@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 41a117c9ea8b47afcedaa1714abc2031d3be6c21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 851f7865553d45d8d4c4d1f86171d79a89dd8996
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97680061"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091818"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>数据驱动样式表达式 (Web SDK)
 
@@ -28,7 +28,7 @@ ms.locfileid: "97680061"
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player?format=ny]
 
-表达式表示为 JSON 数组。 数组中表达式的第一个元素是一个字符串，该字符串指定表达式运算符的名称。 例如：“+”或“case”。 后面的元素（如果有）是适用于表达式的自变量。 每个参数可以是一个文本值（字符串、数字、布尔值或 `null`）或其他表达式数组。 以下伪代码定义表达式的基本结构。 
+表达式表示为 JSON 数组。 数组中表达式的第一个元素是一个字符串，该字符串指定表达式运算符的名称。 例如：“+”或“case”。 后面的元素（如果有）是适用于表达式的自变量。 每个参数可以是一个文本值（字符串、数字、布尔值或 `null`）或其他表达式数组。 以下伪代码定义表达式的基本结构。
 
 ```javascript
 [ 
@@ -56,7 +56,7 @@ Azure Maps Web SDK 支持多种类型的表达式。 表达式可以单独使用
 | [变量绑定表达式](#variable-binding-expressions) | 变量绑定表达式将计算结果存储在某个变量中，并在表达式中的其他位置多次引用该变量，这样而无需重新计算存储的值。 |
 | [zoom 表达式](#zoom-expression) | 在呈现时检索地图的当前缩放级别。 |
 
-本文档中的所有示例使用以下特征来演示这些不同类型表达式的不同用法。 
+本文档中的所有示例使用以下特征来演示这些不同类型表达式的不同用法。
 
 ```json
 {
@@ -65,7 +65,7 @@ Azure Maps Web SDK 支持多种类型的表达式。 表达式可以单独使用
         "type": "Point",
         "coordinates": [-122.13284, 47.63699]
     },
-    "properties": { 
+    "properties": {
         "id": 123,
         "entityType": "restaurant",
         "revenue": 12345,
@@ -84,11 +84,11 @@ Azure Maps Web SDK 支持多种类型的表达式。 表达式可以单独使用
 
 ## <a name="data-expressions"></a>数据表达式
 
-数据表达式提供对特征中属性数据的访问。 
+数据表达式提供对特征中属性数据的访问。
 
 | Expression | 返回类型 | 说明 |
 |------------|-------------|-------------|
-| `['at', number, array]` | 值 | 从数组中检索项。 |
+| `['at', number, array]` | value | 从数组中检索项。 |
 | `['geometry-type']` | 字符串 | 获取特征的几何类型：Point、MultiPoint、LineString、MultiLineString、Polygon、MultiPolygon。 |
 | `['get', string]` | 值 | 从当前功能的属性获取属性值。 如果缺少请求的属性，则返回 null。 |
 | `['get', string, object]` | 值 | 从所提供对象的属性中获取属性值。 如果缺少请求的属性，则返回 null。 |
@@ -103,7 +103,7 @@ Azure Maps Web SDK 支持多种类型的表达式。 表达式可以单独使用
 
 **示例**
 
-使用 `get` 表达式可以直接在表达式中访问特征的属性。 此示例使用特征的 `zoneColor` 值来指定气泡层的颜色属性。 
+使用 `get` 表达式可以直接在表达式中访问特征的属性。 此示例使用特征的 `zoneColor` 值来指定气泡层的颜色属性。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -134,7 +134,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-以下示例允许呈现 `Point` 和 `MultiPoint` 特征。 
+以下示例允许呈现 `Point` 和 `MultiPoint` 特征。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -210,7 +210,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ## <a name="aggregate-expression"></a>聚合表达式
 
-聚合表达式定义对一组数据进行处理并可与 `DataSource` 的 `clusterProperties` 选项一起使用的计算。 这些表达式的输出必须是数字或布尔值。 
+聚合表达式定义对一组数据进行处理并可与 `DataSource` 的 `clusterProperties` 选项一起使用的计算。 这些表达式的输出必须是数字或布尔值。
 
 聚合表达式采用三个值：运算符值和初始值，以及从数据中的每个功能检索属性以对其应用聚合运算的表达式。 该表达式采用以下格式：
 
@@ -218,9 +218,9 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 [operator: string, initialValue: boolean | number, mapExpression: Expression]
 ```
 
-- 运算符：一个表达式函数，然后将其应用于由 `mapExpression` 为群集中的每个点计算的所有值。 支持的运算符： 
-    - 对于数字：`+`、`*`、`max`、`min`
-    - 对于布尔值：`all`、`any`
+- 运算符：一个表达式函数，然后将其应用于由 `mapExpression` 为群集中的每个点计算的所有值。 支持的运算符：
+  - 对于数字：`+`、`*`、`max`、`min`
+  - 对于布尔值：`all`、`any`
 - initialValue：对第一个计算值进行聚合的初始值。
 - mapExpression：应用于数据集中的每个点的表达式。
 
@@ -242,7 +242,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 布尔表达式提供一组布尔运算符表达式用于评估布尔比较结果。
 
-比较值时，将严格区分类型。 不同类型的值始终被视为不相等。 在分析时类型已知不同的情况被视为无效，将生成分析错误。 
+比较值时，将严格区分类型。 不同类型的值始终被视为不相等。 在分析时类型已知不同的情况被视为无效，将生成分析错误。
 
 | Expression | 返回类型 | 说明 |
 |------------|-------------|-------------|
@@ -261,13 +261,13 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 条件表达式提供类似于 if 语句的逻辑运算。
 
-以下表达式对输入数据执行条件逻辑运算。 例如，`case` 表达式提供“if/then/else”逻辑，而 `match` 表达式则类似于“switch 语句”。 
+以下表达式对输入数据执行条件逻辑运算。 例如，`case` 表达式提供“if/then/else”逻辑，而 `match` 表达式则类似于“switch 语句”。
 
 ### <a name="case-expression"></a>case 表达式
 
 `case` 表达式是一种提供“if/then/else”逻辑的条件表达式。 这种类型的表达式会逐步评估一系列布尔条件。 计算为 true 时，它会返回第一个布尔条件的输出值。
 
-以下伪代码定义 `case` 表达式的结构。 
+以下伪代码定义 `case` 表达式的结构。
 
 ```javascript
 [
@@ -283,7 +283,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **示例**
 
-以下示例逐步评估不同的布尔条件，直到找到评估为 `true` 的条件，然后返回该关联值。 如果没有任何布尔条件评估为 `true`，则返回回退值。 
+以下示例逐步评估不同的布尔条件，直到找到评估为 `true` 的条件，然后返回该关联值。 如果没有任何布尔条件评估为 `true`，则返回回退值。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -308,7 +308,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 `match` 表达式是一种提供类似 switch 语句逻辑的条件表达式。 输入可以是返回字符串或数字的任意表达式，例如 `['get', 'entityType']`。 每个标签必须采用单个文本值或文本值的数组，该数组中的值必须全部为字符串，或者全部为数字。 如果数组中的任一值匹配，则输入匹配。 每个标签必须唯一。 如果输入类型与标签类型不匹配，则结果将是回退值。
 
-以下伪代码定义 `match` 表达式的结构。 
+以下伪代码定义 `match` 表达式的结构。
 
 ```javascript
 [
@@ -368,9 +368,9 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ### <a name="coalesce-expression"></a>coalesce 表达式
 
-`coalesce` 表达式逐步评估一组表达式，直到获取第一个非 null 值，然后返回该值。 
+`coalesce` 表达式逐步评估一组表达式，直到获取第一个非 null 值，然后返回该值。
 
-以下伪代码定义 `coalesce` 表达式的结构。 
+以下伪代码定义 `coalesce` 表达式的结构。
 
 ```javascript
 [
@@ -383,7 +383,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **示例**
 
-以下示例使用 `coalesce` 表达式设置符号层的 `textField` 选项。 如果 `title` 属性在特征中缺失或设置为 `null`，则该表达式将尝试查找 `subTitle` 属性；如果该属性缺失或为 `null`，则将回退为空字符串。 
+以下示例使用 `coalesce` 表达式设置符号层的 `textField` 选项。 如果 `title` 属性在特征中缺失或设置为 `null`，则该表达式将尝试查找 `subTitle` 属性；如果该属性缺失或为 `null`，则将回退为空字符串。
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -500,7 +500,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | 字符串 | 将多个字符串连接到一起。 每个值必须是字符串。 如果需要，请使用 `to-string` 类型表达式将其他值类型转换为字符串。 |
 | `['downcase', string]` | 字符串 | 将指定的字符串转换为小写。 |
-| `['is-supported-script', string]` \| `['is-supported-script', Expression]`| boolean | 确定输入字符串是否使用当前字体堆栈支持的字符集。 例如： `['is-supported-script', 'ಗೌರವಾರ್ಥವಾಗಿ']` |
+| `['is-supported-script', string]` \| `['is-supported-script', Expression]`| boolean | 确定输入字符串是否使用当前字体堆栈支持的字符集。 例如：`['is-supported-script', 'ಗೌರವಾರ್ಥವಾಗಿ']` |
 | `['resolved-locale', string]` | 字符串 | 返回所提供排序器使用的区域设置的 IETF 语言标记。 此标记可用于确定默认的系统区域设置，或确定是否已成功加载请求的区域设置。 |
 | `['upcase', string]` | 字符串 | 将指定的字符串转换为大写。 |
 
@@ -523,9 +523,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 以上表达式在地图上呈现一个图钉，该图钉上叠加了文本“64°F”，如下图所示。
 
-<center>
-
-![字符串运算符表达式示例](media/how-to-expressions/string-operator-expression.png) </center>
+![字符串运算符表达式示例](media/how-to-expressions/string-operator-expression.png)
 
 ## <a name="interpolate-and-step-expressions"></a>interpolate 和 step 表达式
 
@@ -536,18 +534,18 @@ interpolate 和 step 表达式可用于计算内插曲线或 step 函数中的�
 使用 `interpolate` 表达式可以通过在 stop 值之间进行内插来计算连续的平滑值集。 返回颜色值的 `interpolate` 表达式生成颜色梯度，结果值是从中选择的。
 
 可在 `interpolate` 表达式中使用三种类型的内插方法：
- 
-* `['linear']` - 在 stop 对之间线性内插。
-* `['exponential', base]` - 在 stop 之间以指数方式内插。 `base` 值控制输出的增加速度。 值越大，输出就会以越快的速度朝范围的上限递增。 接近 1 的 `base` 值会生成以更线性方式递增的输出。
-* `['cubic-bezier', x1, y1, x2, y2]` - 使用按给定控制点定义的[三次方贝塞尔曲线](https://developer.mozilla.org/docs/Web/CSS/timing-function)进行内插。
 
-以下示例演示了这些不同类型的内插的大致形式。 
+- `['linear']` - 在 stop 对之间线性内插。
+- `['exponential', base]` - 在 stop 之间以指数方式内插。 `base` 值控制输出的增加速度。 值越大，输出就会以越快的速度朝范围的上限递增。 接近 1 的 `base` 值会生成以更线性方式递增的输出。
+- `['cubic-bezier', x1, y1, x2, y2]` - 使用按给定控制点定义的[三次方贝塞尔曲线](https://developer.mozilla.org/docs/Web/CSS/timing-function)进行内插。
+
+以下示例演示了这些不同类型的内插的大致形式。
 
 | 线性  | 指数 | 三次方贝塞尔 |
 |---------|-------------|--------------|
 | ![线性内插图](media/how-to-expressions/linear-interpolation.png) | ![指数内插图](media/how-to-expressions/exponential-interpolation.png) | ![三次方贝塞尔曲线内插图](media/how-to-expressions/bezier-curve-interpolation.png) |
 
-以下伪代码定义 `interpolate` 表达式的结构。 
+以下伪代码定义 `interpolate` 表达式的结构。
 
 ```javascript
 [
@@ -582,15 +580,13 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 下图演示了如何为以上表达式选择颜色。
  
-<center>
+![Interpolate 表达式示例](media/how-to-expressions/interpolate-expression-example.png)
 
-![interpolate 表达式示例](media/how-to-expressions/interpolate-expression-example.png) </center>
+### <a name="step-expression"></a>Step 表达式
 
-### <a name="step-expression"></a>step 表达式
+可以使用 `step` 表达式通过评估按 stop 定义的[分段常数函数](http://mathworld.wolfram.com/PiecewiseConstantFunction.html)来计算离散的阶跃结果值。
 
-可以使用 `step` 表达式通过评估按 stop 定义的[分段常数函数](http://mathworld.wolfram.com/PiecewiseConstantFunction.html)来计算离散的阶跃结果值。 
-
-以下伪代码定义 `step` 表达式的结构。 
+以下伪代码定义 `step` 表达式的结构。
 
 ```javascript
 [
@@ -605,7 +601,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 ]
 ```
 
-step 表达式返回紧靠在输入值前面的 stop 的输出值；如果输入小于第一个 stop，则返回第一个输入值。 
+step 表达式返回紧靠在输入值前面的 stop 的输出值；如果输入小于第一个 stop，则返回第一个输入值。
 
 **示例**
 
@@ -625,11 +621,8 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 ```
 
 下图演示了如何为以上表达式选择颜色。
- 
-<center>
 
-![step 表达式示例](media/how-to-expressions/step-expression-example.png)
-</center>
+![Step 表达式示例](media/how-to-expressions/step-expression-example.png)
 
 ## <a name="layer-specific-expressions"></a>层特定的表达式
 
@@ -644,9 +637,9 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **示例**
 
-此示例使用线性内插表达式创建平滑颜色梯度来呈现热度地图。 
+此示例使用线性内插表达式创建平滑颜色梯度来呈现热度地图。
 
-```javascript 
+```javascript
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
     color: [
         'interpolate',
@@ -662,7 +655,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 除了使用平滑梯度为热度地图赋色外，还可以使用 `step` 表达式在一组范围内指定颜色。 使用 `step` 表达式为热度地图赋色可以直观地将密度分解为类似于等高线或雷达式地图的范围。  
 
-```javascript 
+```javascript
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
     color: [
         'step',
@@ -681,7 +674,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 ### <a name="line-progress-expression"></a>折线进度表达式
 
-折线进度表达式检索线条层中沿梯度线走向的进度，定义为 `['line-progress']`。 此值是介于 0 和 1 之间的数字。 此表达式与 `interpolation` 或 `step` 表达式结合使用。 只能结合线条层的 [strokeGradient 选项]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions#strokegradient)使用此表达式。 
+折线进度表达式检索线条层中沿梯度线走向的进度，定义为 `['line-progress']`。 此值是介于 0 和 1 之间的数字。 此表达式与 `interpolation` 或 `step` 表达式结合使用。 只能结合线条层的 [strokeGradient 选项](/javascript/api/azure-maps-control/atlas.linelayeroptions#strokegradient)使用此表达式。
 
 > [!NOTE]
 > 线条层的 `strokeGradient` 选项要求将数据源的 `lineMetrics` 选项设置为 `true`。
@@ -712,10 +705,10 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 
 可以结合符号层 `textOptions` 属性的 `textField` 选项使用文本字段格式表达式，以提供混合文本格式。 此表达式允许指定一组输入字符串和格式设置选项。 可以为该表达式中的每个输入字符串指定以下选项。
 
- * `'font-scale'` - 指定字号的缩放系数。 如果已指定，此值将替代单个字符串的 `textOptions` 的 `size` 属性。
- * `'text-font'` - 指定应用于此字符串的一个或多个字体系列。 如果已指定，此值将替代单个字符串的 `textOptions` 的 `font` 属性。
+- `'font-scale'` - 指定字号的缩放系数。 如果已指定，此值将替代单个字符串的 `textOptions` 的 `size` 属性。
+- `'text-font'` - 指定应用于此字符串的一个或多个字体系列。 如果已指定，此值将替代单个字符串的 `textOptions` 的 `font` 属性。
 
-以下伪代码定义文本字段格式表达式的结构。 
+以下伪代码定义文本字段格式表达式的结构。
 
 ```javascript
 [
@@ -764,21 +757,19 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 ```
 
 此层将如下图所示呈现点特征：
- 
-<center>
 
-![具有带格式文本字段的点特征的插图](media/how-to-expressions/text-field-format-expression.png) </center>
+![具有带格式文本字段的点特征的插图](media/how-to-expressions/text-field-format-expression.png)
 
 ### <a name="number-format-expression"></a>number format 表达式
 
 只能结合符合层的 `textField` 选项使用 `number-format` 表达式。 此表达式将提供的数字转换为带格式的字符串。 此表达式包装 JavaScript 的 [Number.toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) 函数，并支持以下选项集。
 
- * `locale` - 指定此选项，以与指定语言一致的方式将数字转换为字符串。 将 [BCP 47 语言标记](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation)传递到此选项。
- * `currency` - 将数字转换为表示货币的字符串。 可能的值为 [ISO 4217 货币代码](https://en.wikipedia.org/wiki/ISO_4217)，如美元的“USD”、欧元的“EUR”或人民币的“CNY”。
- * `'min-fraction-digits'` - 指定要包含在数字的字符串版本中的最小小数位数。
- * `'max-fraction-digits'` - 指定要包含在数字的字符串版本中的最大小数位数。
+- `locale` - 指定此选项，以与指定语言一致的方式将数字转换为字符串。 将 [BCP 47 语言标记](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation)传递到此选项。
+- `currency` - 将数字转换为表示货币的字符串。 可能的值为 [ISO 4217 货币代码](https://en.wikipedia.org/wiki/ISO_4217)，如美元的“USD”、欧元的“EUR”或人民币的“CNY”。
+- `'min-fraction-digits'` - 指定要包含在数字的字符串版本中的最小小数位数。
+- `'max-fraction-digits'` - 指定要包含在数字的字符串版本中的最大小数位数。
 
-以下伪代码定义文本字段格式表达式的结构。 
+以下伪代码定义文本字段格式表达式的结构。
 
 ```javascript
 [
@@ -813,9 +804,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 此层将如下图所示呈现点特征：
 
-<center>
-
-![number format 表达式示例](media/how-to-expressions/number-format-expression.png) </center>
+![number format 表达式示例](media/how-to-expressions/number-format-expression.png)
 
 ### <a name="image-expression"></a>image 表达式
 
@@ -823,7 +812,7 @@ image 表达式可与符号层的 `image` 和 `textField` 选项以及多边形�
 
 **示例**
 
-下面的示例使用 `image` 表达式在符号层中添加一个与文本内联的图标。 
+下面的示例使用 `image` 表达式在符号层中添加一个与文本内联的图标。
 
 ```javascript
  //Load the custom image icon into the map resources.
@@ -832,10 +821,10 @@ map.imageSprite.add('wifi-icon', 'wifi.png').then(function () {
     //Create a data source and add it to the map.
     datasource = new atlas.source.DataSource();
     map.sources.add(datasource);
-
+    
     //Create a point feature and add it to the data source.
     datasource.add(new atlas.data.Point(map.getCamera().center));
-
+    
     //Add a layer for rendering point data as symbols.
     map.layers.add(new atlas.layer.SymbolLayer(datasource, null, {
         iconOptions: {
@@ -851,9 +840,7 @@ map.imageSprite.add('wifi-icon', 'wifi.png').then(function () {
 
 该层将呈现符号层中的文本字段，如下图所示：
 
-<center>
-
-![image 表达式示例](media/how-to-expressions/image-expression.png) </center>
+![image 表达式示例](media/how-to-expressions/image-expression.png)
 
 ## <a name="zoom-expression"></a>zoom 表达式
 
@@ -922,10 +909,10 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 有关实现表达式的更多代码示例，请参阅以下文章：
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [添加符号层](map-add-pin.md)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [添加气泡层](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
@@ -934,22 +921,22 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 > [!div class="nextstepaction"]
 > [添加多边形层](map-add-shape.md)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [添加热度地图层](map-add-heat-map-layer.md)
 
 详细了解支持表达式的层选项：
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [HeatMapLayerOptions](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions)

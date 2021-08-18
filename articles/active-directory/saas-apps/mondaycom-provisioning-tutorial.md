@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 monday.com 配置自动用户�
 description: 了解如何将用户帐户从 Azure AD 自动预配到 monday.com 及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 7dba523e-c75a-4895-bad4-82239a263afe
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2020
-ms.author: Zhchia
-ms.openlocfilehash: 0479e470f5d2f3880062c45a5e14981f8a4c1e56
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 01d9f8639207f78e1efa587f219c8e5b98590772
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743536"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113759748"
 ---
 # <a name="tutorial-configure-mondaycom-for-automatic-user-provisioning"></a>教程：为 monday.com 配置自动用户预配
 

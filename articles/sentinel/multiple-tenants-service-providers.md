@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2020
 ms.author: yelevin
-ms.openlocfilehash: 011ddb883c028a954a8b0683c220bf6341eddb66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf2a9380b404876ef9c963d54d9069ebd66fef56
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91578134"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725148"
 ---
 # <a name="manage-multiple-tenants-in-azure-sentinel-as-an-mssp"></a>作为 MSSP 在 Azure Sentinel 中管理多个租户
 
@@ -53,6 +53,6 @@ ms.locfileid: "91578134"
 ## <a name="next-steps"></a>后续步骤
 
 本文档介绍了如何无缝地管理多个 Azure Sentinel 租户。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
 

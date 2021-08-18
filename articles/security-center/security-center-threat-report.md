@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: ec6d227059c3f4fd1285f224e13169a2479bc65f
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: b2a867c99e79b2ddfe9053589a1ebac9ab569490
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102438227"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237014"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure 安全中心威胁情报报告
 
@@ -52,11 +52,11 @@ ms.locfileid: "102438227"
 1. 选择警报。 
     此时将打开警报详细信息页面，其中包含有关警报的更多详细信息。 下面是“检测到勒索软件痕迹”警报详细信息页面。
 
-    [![“检测到勒索软件痕迹”警报详细信息页面](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png)](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png#lightbox)
+    [![“检测到勒索软件痕迹”警报详细信息页面。](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png)](media/security-center-threat-report/ransomware-indicators-detected-link-to-threat-intel-report.png#lightbox)
 
 1. 选择指向报告的链接，随机将在默认浏览器中打开 PDF。
 
-    [![“潜在的不安全操作”警报详细信息页面](media/security-center-threat-report/threat-intelligence-report.png)](media/security-center-threat-report/threat-intelligence-report.png#lightbox)
+    [![“潜在的不安全操作”警报详细信息页面。](media/security-center-threat-report/threat-intelligence-report.png)](media/security-center-threat-report/threat-intelligence-report.png#lightbox)
 
     还可以选择性下载 PDF 报告。 
 

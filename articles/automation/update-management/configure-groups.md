@@ -3,14 +3,14 @@ title: 将动态组与 Azure 自动化更新管理配合使用
 description: 本文介绍如何将动态组与 Azure 自动化更新管理配合使用。
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 06/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 318b5498c826b1e29baa35850594cebca72c4f3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b09def53b32d9616ddab541b3448f863b6ec781a
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575925"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112520525"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>将动态组与更新管理配合使用
 
@@ -46,6 +46,9 @@ ms.locfileid: "100575925"
 非 Azure 计算机的动态组使用保存的搜索，也称为计算机组。 若要了解如何创建保存的搜索，请参阅[创建计算机组](../../azure-monitor/logs/computer-groups.md#creating-a-computer-group)。 创建保存的搜索后，可以从 Azure 门户“更新管理”中的保存的搜索列表中选择它。 单击“预览”，可预览保存的搜索中的计算机。
 
 ![屏幕截图显示了非 Azure（预览版）的“选择组”页和右侧的“预览”窗格。](./media/configure-groups/select-groups-2.png)
+
+> [!NOTE]
+> 不支持[查询跨多个 Log Analytics 工作区进行存储的数据](../../azure-monitor/logs/cross-workspace-query.md)的已保存搜索。
 
 ## <a name="next-steps"></a>后续步骤
 

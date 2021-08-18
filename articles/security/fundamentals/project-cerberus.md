@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/10/2020
-ms.openlocfilehash: f085858a9d550623704efd4f051ed525e55a37e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/24/2021
+ms.openlocfilehash: cda9aacfc3a207aa43c63cc26189da64fac87e85
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94557565"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112893917"
 ---
 # <a name="project-cerberus"></a>Cerberus 项目
 
@@ -45,6 +45,7 @@ Cerberus 使用平台固件清单 (PFM) 验证服务器组件的固件完整性�
 若要详细了解为提高平台完整性和安全性而做的工作，请参阅：
 
 - [固件安全性](firmware.md)
+- [平台代码完整性](code-integrity.md)
 - [安全启动](secure-boot.md)
 - [测量启动和主机证明](measured-boot-host-attestation.md)
 - [静态加密](encryption-atrest.md)

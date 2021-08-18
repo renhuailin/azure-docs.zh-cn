@@ -7,14 +7,14 @@ ms.author: anfeldma
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 06/13/2021
+ms.date: 06/15/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 8ecda17bd4eb11069ad1e25323c304f8730a5631
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 4e08834237d396ae1a2ae3990b3e8d21f75ffaca
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112063425"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290485"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>迁移应用程序以使用 Azure Cosmos DB Java SDK v4
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "112063425"
 > 由于 Azure Cosmos DB Java SDK v4 具有增强程度高达 20% 的吞吐量、基于 TCP 的直接模式以及对最新后端服务功能的支持，我们建议你在下次有机会时升级到 v4。 继续阅读下文以了解详细信息。
 >
 
-本文介绍如何将使用较旧 Azure Cosmos DB Java SDK 的现有 Java 应用程序升级为使用较新的适用于 Core (SQL) API 的 Azure Cosmos DB Java SDK 4.0。 Azure Cosmos DB Java SDK v4 对应于 `com.azure.cosmos` 包。 如果要从以下任何 Azure Cosmos DB Java SDK 迁移应用程序，则可以使用此文档中的说明： 
+更新到最新的 Azure Cosmos DB Java SDK，以充分利用 Azure Cosmos DB 提供的功能，包括具有高性能、99.999% 可用性、单一资源治理等的托管非关系数据库服务。 本文介绍如何将使用较旧 Azure Cosmos DB Java SDK 的现有 Java 应用程序升级为使用较新的适用于 Core (SQL) API 的 Azure Cosmos DB Java SDK 4.0。 Azure Cosmos DB Java SDK v4 对应于 `com.azure.cosmos` 包。 如果要从以下任何 Azure Cosmos DB Java SDK 迁移应用程序，则可以使用此文档中的说明： 
 
 * Sync Java SDK 2.x.x
 * Async Java SDK 2.x.x
@@ -39,10 +39,10 @@ ms.locfileid: "112063425"
 
 | Java SDK| 发布日期 | 捆绑 API   | Maven Jar  | Java 包名称  |API 参考   | 发行说明  | 停用日期 |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|--------|
-| Async 2.x.x  | 2018 年 6 月    | Async(RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [发行说明](sql-api-sdk-async-java.md) | 2024 年 8 月 30 日 |
+| Async 2.x.x  | 2018 年 6 月    | Async(RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [发行说明](sql-api-sdk-async-java.md) | - |
 | Sync 2.x.x     | 2018 年 9 月    | 同步   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [发行说明](sql-api-sdk-java.md)  | 2024 年 2 月 29 日 |
-| 3.x.x    | 2019 年 7 月    | Async(Reactor)/Sync  | `com.microsoft.azure::azure-cosmos`  | `com.azure.data.cosmos` | [API](https://azure.github.io/azure-cosmosdb-java/3.0.0/) | - | 2024 年 8 月 30 日 |
-| 4.0   | 2020 年 6 月   | Async(Reactor)/Sync  | `com.azure::azure-cosmos` | `com.azure.cosmos`   | -  | [API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/4.0.1/index.html)  | - |
+| 3.x.x    | 2019 年 7 月    | Async(Reactor)/Sync  | `com.microsoft.azure::azure-cosmos`  | `com.azure.data.cosmos` | [API](https://azure.github.io/azure-cosmosdb-java/3.0.0/) | - | - |
+| 4.0   | 2020 年 6 月   | Async(Reactor)/Sync  | `com.azure::azure-cosmos` | `com.azure.cosmos`   | [API](/java/api/overview/azure/cosmosdb) | - | - |
 
 ## <a name="sdk-level-implementation-changes"></a>SDK 级别实现更改
 
@@ -119,7 +119,7 @@ Azure Cosmos DB Java SDK 4.0 公开了访问实例成员 `get` 和 `set` 方法�
 
 ### <a name="create-resources"></a>创建资源
 
-以下代码片段显示了 4.0 异步 API、3.x.x 异步 API 和 2.x.x 同步 API 在资源创建方式上的差异：
+以下代码片段显示了 4.0 异步 API、3.x.x 异步 API、2.x.x 同步 API 和 2.x.x 异步 API 在资源创建方式上的差异：
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 异步 API](#tab/java-v4-async)
 
@@ -182,11 +182,37 @@ DocumentCollection documentCollection = new DocumentCollection();
 documentCollection.setId("YourContainerName");
 documentCollection = client.createCollection(database.getSelfLink(), documentCollection, new RequestOptions()).getResource();
 ```
+
+# <a name="java-sdk-2xx-async-api"></a>[Java SDK 2.x.x 异步 API](#tab/java-v2-async)
+
+```java
+// Create Async client.
+// Building an async client is still a sync operation.
+AsyncDocumentClient client = new Builder()
+    .withServiceEndpoint("your.hostname")
+    .withMasterKeyOrResourceToken("yourmasterkey")
+    .withConsistencyLevel(ConsistencyLevel.Eventual)
+    .build();
+// Create database with specified name
+Database database = new Database();
+database.setId("YourDatabaseName");
+client.createDatabase(database, new RequestOptions())
+      .flatMap(databaseResponse -> {
+          // Collection properties - name and partition key
+          DocumentCollection documentCollection = new DocumentCollection();
+          documentCollection.setId("YourContainerName");
+          documentCollection.setPartitionKey(new PartitionKeyDefinition("/id"));
+          // Create collection
+          return client.createCollection(databaseResponse.getResource().getSelfLink(), documentCollection, new RequestOptions());
+}).subscribe();
+
+```
+
 ---
 
 ### <a name="item-operations"></a>项操作
 
-以下代码片段显示了 4.0 异步 API、3.x.x 异步 API 和 2.x.x 同步 API 在项操作执行方式上的差异：
+以下代码片段显示了 4.0 异步 API、3.x.x 异步 API、2.x.x 同步 API 和 2.x.x 异步 API 在项操作执行方式上的差异：
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 异步 API](#tab/java-v4-async)
 
@@ -215,11 +241,24 @@ ResourceResponse<Document> documentResourceResponse = client.createDocument(docu
     new RequestOptions(), true);
 Document responseDocument = documentResourceResponse.getResource();
 ```
+
+# <a name="java-sdk-2xx-async-api"></a>[Java SDK 2.x.x 异步 API](#tab/java-v2-async)
+
+```java
+// Collection is created. Generate many docs to insert.
+int number_of_docs = 50000;
+ArrayList<Document> docs = generateManyDocs(number_of_docs);
+// Insert many docs into collection...
+Observable.from(docs)
+    .flatMap(doc -> client.createDocument(createdCollection.getSelfLink(), doc, new RequestOptions(), false))
+    .subscribe(); // ...Subscribing triggers stream execution.
+```
+
 ---
 
 ### <a name="indexing"></a>索引
 
-以下代码片段显示了 4.0 异步 API、3.x.x 异步 API 和 2.x.x 同步 API 在索引创建方式上的差异：
+以下代码片段显示了 4.0 异步 API、3.x.x 异步 API、2.x.x 同步 API 和 2.x.x 异步 API 在索引创建方式上的差异：
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 异步 API](#tab/java-v4-async)
 
@@ -282,11 +321,37 @@ documentCollection.setId("YourContainerName");
 documentCollection.setIndexingPolicy(indexingPolicy);
 documentCollection = client.createCollection(database.getSelfLink(), documentCollection, new RequestOptions()).getResource();
 ```
+
+# <a name="java-sdk-2xx-async-api"></a>[Java SDK 2.x.x 异步 API](#tab/java-v2-async)
+
+```java
+// Custom indexing policy
+IndexingPolicy indexingPolicy = new IndexingPolicy();
+indexingPolicy.setIndexingMode(IndexingMode.Consistent); //To turn indexing off set IndexingMode.None
+// Included paths
+List<IncludedPath> includedPaths = new ArrayList<>();
+IncludedPath includedPath = new IncludedPath();
+includedPath.setPath("/*");
+includedPaths.add(includedPath);
+indexingPolicy.setIncludedPaths(includedPaths);
+// Excluded paths
+List<ExcludedPath> excludedPaths = new ArrayList<>();
+ExcludedPath excludedPath = new ExcludedPath();
+excludedPath.setPath("/name/*");
+excludedPaths.add(excludedPath);
+indexingPolicy.setExcludedPaths(excludedPaths);
+// Create container with specified name and indexing policy
+DocumentCollection documentCollection = new DocumentCollection();
+documentCollection.setId("YourContainerName");
+documentCollection.setIndexingPolicy(indexingPolicy);
+client.createCollection(database.getSelfLink(), documentCollection, new RequestOptions()).subscribe();
+```
+
 ---
 
 ### <a name="stored-procedures"></a>存储过程
 
-以下代码片段显示了 4.0 异步 API、3.x.x 异步 API 和 2.x.x 同步 API 在存储过程创建方式上的差异：
+以下代码片段显示了 4.0 异步 API、3.x.x 异步 API、2.x.x 同步 API 和 2.x.x 异步 API 在存储过程创建方式上的差异：
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 异步 API](#tab/java-v4-async)
 
@@ -372,6 +437,45 @@ logger.info(String.format("Stored procedure %s returned %s (HTTP %d), at cost %.
     storedProcedureResponse.getStatusCode(),
     storedProcedureResponse.getRequestCharge()));
 ```
+
+# <a name="java-sdk-2xx-async-api"></a>[Java SDK 2.x.x 异步 API](#tab/java-v2-async)
+
+```java
+logger.info("Creating stored procedure...\n");
+String sprocId = "createMyDocument";
+String sprocBody = "function createMyDocument() {\n" +
+    "var documentToCreate = {\"id\":\"test_doc\"}\n" +
+    "var context = getContext();\n" +
+    "var collection = context.getCollection();\n" +
+    "var accepted = collection.createDocument(collection.getSelfLink(), documentToCreate,\n" +
+    "    function (err, documentCreated) {\n" +
+    "if (err) throw new Error('Error' + err.message);\n" +
+    "context.getResponse().setBody(documentCreated.id)\n" +
+    "});\n" +
+    "if (!accepted) return;\n" +
+    "}";
+StoredProcedure storedProcedureDef = new StoredProcedure();
+storedProcedureDef.setId(sprocId);
+storedProcedureDef.setBody(sprocBody);
+StoredProcedure storedProcedure = client
+    .createStoredProcedure(documentCollection.getSelfLink(), storedProcedureDef, new RequestOptions())
+    .toBlocking()
+    .single()
+    .getResource();
+// ...
+logger.info(String.format("Executing stored procedure %s...\n\n", sprocId));
+RequestOptions options = new RequestOptions();
+options.setPartitionKey(new PartitionKey("test_doc"));
+StoredProcedureResponse storedProcedureResponse =
+    client.executeStoredProcedure(storedProcedure.getSelfLink(), options, null)
+    .toBlocking().single();
+logger.info(String.format("Stored procedure %s returned %s (HTTP %d), at cost %.3f RU.\n",
+    sprocId,
+    storedProcedureResponse.getResponseAsString(),
+    storedProcedureResponse.getStatusCode(),
+    storedProcedureResponse.getRequestCharge()));
+```
+
 ---
 
 ### <a name="change-feed"></a>更改源
@@ -420,11 +524,16 @@ ChangeFeedProcessor.Builder()
 # <a name="java-sdk-2xx-sync-api"></a>[Java SDK 2.x.x 同步 API](#tab/java-v2-sync)
 
 * 从 Java SDK v2 同步开始不支持此功能。 
+
+# <a name="java-sdk-2xx-async-api"></a>[Java SDK 2.x.x 异步 API](#tab/java-v2-async)
+
+* 从 Java SDK v2 异步开始，不再支持此功能。 
+
 ---
 
 ### <a name="container-level-time-to-livettl"></a>容器级别生存时间 (TTL)
 
-以下代码片段显示了 4.0 异步 API、3.x.x 异步 API 和 2.x.x 同步 API 在容器数据生存时间创建方式上的差异：
+以下代码片段显示了 4.0 异步 API、3.x.x 异步 API、2.x.x 同步 API 和 2.x.x 异步 API 在容器数据生存时间创建方式上的差异：
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 异步 API](#tab/java-v4-async)
 
@@ -450,11 +559,25 @@ DocumentCollection documentCollection;
 documentCollection.setDefaultTimeToLive(90 * 60 * 60 * 24);
 documentCollection = client.createCollection(database.getSelfLink(), documentCollection, new RequestOptions()).getResource();
 ```
+
+# <a name="java-sdk-2xx-async-api"></a>[Java SDK 2.x.x 异步 API](#tab/java-v2-async)
+
+```java
+DocumentCollection collection = new DocumentCollection();
+// Create a new container with TTL enabled with default expiration value
+collection.setDefaultTimeToLive(90 * 60 * 60 * 24);
+collection = client
+    .createCollection(database.getSelfLink(), documentCollection, new RequestOptions())
+    .toBlocking()
+    .single()
+    .getResource();
+```
+
 ---
 
 ### <a name="item-level-time-to-livettl"></a>项级别生存时间 (TTL)
 
-以下代码片段显示了 4.0 异步 API、3.x.x 异步 API 和 2.x.x 同步 API 在项生存时间创建方式上的差异：
+以下代码片段显示了 4.0 异步 API、3.x.x 异步 API、2.x.x 同步 API 和 2.x.x 异步 API 在项生存时间创建方式上的差异：
 
 # <a name="java-sdk-40-async-api"></a>[Java SDK 4.0 异步 API](#tab/java-v4-async)
 
@@ -506,6 +629,18 @@ ResourceResponse<Document> documentResourceResponse = client.createDocument(docu
     new RequestOptions(), true);
 Document responseDocument = documentResourceResponse.getResource();
 ```
+
+# <a name="java-sdk-2xx-async-api"></a>[Java SDK 2.x.x 异步 API](#tab/java-v2-async)
+
+```java
+Document document = new Document();
+document.setId("YourDocumentId");
+document.setTimeToLive(60 * 60 * 24 * 30 ); // Expire document in 30 days
+ResourceResponse<Document> documentResourceResponse = client.createDocument(documentCollection.getSelfLink(), document,
+    new RequestOptions(), true).toBlocking().single();
+Document responseDocument = documentResourceResponse.getResource();
+```
+
 ---
 
 ## <a name="next-steps"></a>后续步骤

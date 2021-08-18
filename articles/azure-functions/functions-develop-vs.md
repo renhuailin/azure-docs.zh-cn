@@ -3,13 +3,13 @@ title: 使用 Visual Studio 开发 Azure Functions
 description: 了解如何使用用于 Visual Studio 2019 的 Azure Functions 工具开发和测试 Azure Functions。
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: 2cba0a9ad63e319af0a5eaa1c1c018c3b285c28a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 12/10/2020
+ms.openlocfilehash: 2cd702286b2f35fcbc725af5ee231e1ab4b78284
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765568"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862400"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
@@ -73,7 +73,7 @@ Visual Studio 在开发函数时具有以下优势：
 
 * **host.json**：用于配置 Functions 主机。 在本地和 Azure 中运行时，都会应用这些设置。 有关详细信息，请参阅 [host.json 参考](functions-host-json.md)。
 
-* **local.settings.json**：维护本地运行函数时使用的设置。 在 Azure 中运行时不使用这些设置。 有关详细信息，请参阅[本地设置文件](#local-settings-file)。
+* **local.settings.json**：维护本地运行函数时使用的设置。 在 Azure 中运行时不使用这些设置。 有关详细信息，请参阅[本地设置文件](#local-settings)。
 
     >[!IMPORTANT]
     >由于 local.settings.json 文件可能包含机密，因此必须将其从项目源代码管理中排除。 请确保此文件的“复制到输出目录”设置已设置为“如果较新则复制” 。 
@@ -124,7 +124,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
 
     ![创建队列存储触发器函数](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
 
-    此触发器示例使用包含名为 `QueueStorage` 的键的连接字符串。 请在 [local.settings.json 文件](functions-run-local.md#local-settings-file)中定义此连接字符串设置。
+    此触发器示例使用包含名为 `QueueStorage` 的键的连接字符串。 请在 [local.settings.json 文件](functions-develop-local.md#local-settings-file)中定义此连接字符串设置。
 
 4. 检查新添加的类。 你会看到一个静态 `Run()` 方法，它已使用 `FunctionName` 属性设置了属性。 该属性指示该方法是函数的入口点。
 
@@ -164,7 +164,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
 
    有关详细信息，请参阅[使用 Visual Studio 的 C# 类库](./functions-bindings-register.md#local-csharp)。 请在有关绑定的参考文章中查找特定于绑定的 NuGet 包要求。 例如，可以在[事件中心绑定参考文章](functions-bindings-event-hubs.md)中找到事件中心触发器的包要求。
 
-3. 如果有绑定所需的应用设置，请将其添加到[本地设置文件](functions-run-local.md#local-settings-file)中的 `Values` 集合。 
+3. 如果有绑定所需的应用设置，请将其添加到[本地设置文件](functions-develop-local.md#local-settings-file)中的 `Values` 集合。 
 
    函数在本地运行时将使用这些值。 当函数在 Azure 的函数应用中运行时，它将使用[函数应用设置](#function-app-settings)。
 

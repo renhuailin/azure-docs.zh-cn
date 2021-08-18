@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 2ef8aed7243e8956ad9ca62b630cda0efbd2deb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60e62bd96fc21f5cb2cfbf1aca6d3a2187e9b417
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93339642"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744652"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB 查询备忘单
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,6 +35,6 @@ Azure Cosmos DB 查询备忘单通过在易于打印的 PDF 参考单中显示�
 ## <a name="next-steps"></a>后续步骤
 如需查询编写的相关帮助，请参阅以下文章：
 * 有关 SQL API 查询，请参阅[使用 SQL API 的查询](tutorial-query-sql-api.md)、[Azure Cosmos DB 的 SQL 查询](./sql-query-getting-started.md)和 [SQL 语法参考](./sql-query-getting-started.md)
-* 有关 MongoDB 查询，请参阅[使用 Azure Cosmos DB 的 API for MongoDB 进行查询](tutorial-query-mongodb.md)和 [Azure Cosmos DB 的 API for MongoDB 功能支持和语法](mongodb-feature-support.md)
+* 有关 MongoDB 查询，请参阅[使用 Azure Cosmos DB 的 API for MongoDB 进行查询](mongodb/tutorial-query-mongodb.md)和 [Azure Cosmos DB 的 API for MongoDB 功能支持和语法](mongodb/feature-support-32.md)
 * 有关 Gremlin API 查询，请参阅[使用 Gremlin API 的查询](tutorial-query-graph.md)和 [Azure Cosmos DB Gremlin 图形支持](gremlin-support.md)
-* 有关表 API 查询，请参阅[使用表 API 的查询](tutorial-query-table.md)
+* 有关表 API 查询，请参阅[使用表 API 的查询](table/tutorial-query-table.md)

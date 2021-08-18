@@ -3,16 +3,16 @@ title: 排查使用 Azure Cosmos DB 模拟器时出现的问题
 description: 了解如何排查使用 Azure Cosmos DB 模拟器时出现的服务不可用、证书、加密和版本控制问题。
 ms.service: cosmos-db
 ms.topic: troubleshooting
-author: markjbrown
-ms.author: mjbrown
+ms.author: esarroyo
+author: StefArroyo
 ms.date: 09/17/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: bb07adafbc68ff1e9b7d3ee49bb7631dc4395d77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e255388432c51562b254bf86c52090a50cb8e4a5
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97033453"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113358896"
 ---
 # <a name="troubleshoot-issues-when-using-the-azure-cosmos-db-emulator"></a>排查使用 Azure Cosmos DB 模拟器时出现的问题
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

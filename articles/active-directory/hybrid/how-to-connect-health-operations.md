@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 836c7bf9aefd4b2cb7d52c66bbd37e7ba38a467c
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: d784384d915fb926768f3c2b6607ea3963dc9cd7
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377304"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110018"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 操作
 本主题介绍可通过使用 Azure Active Directory (Azure AD) Connect Health 执行的各种操作。
@@ -171,5 +171,5 @@ Azure AD Connect Health 支持两个级别的访问管理：
 * [在 AD FS 中使用 Azure AD Connect Health](how-to-connect-health-adfs.md)
 * [使用用于同步的 Azure AD Connect Health](how-to-connect-health-sync.md)
 * [在 AD DS 中使用 Azure AD Connect Health](how-to-connect-health-adds.md)
-* [Azure AD Connect Health 常见问题](reference-connect-health-faq.md)
+* [Azure AD Connect Health 常见问题](reference-connect-health-faq.yml)
 * [Azure AD Connect Health 版本历史记录](reference-connect-health-version-history.md)

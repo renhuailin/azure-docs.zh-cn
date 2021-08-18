@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 1f0085695d810a2e6c30da410ca4d11fe4d5f490
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: eb7c36a67d5ac6ab7ccc0aa5ddceab84dfc67bce
+ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556003"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113138740"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>示例：创建表单识别器自定义技能
 
@@ -34,7 +34,7 @@ ms.locfileid: "111556003"
 
 ## <a name="set-up-the-custom-skill"></a>设置自定义技能
 
-本教程使用 [Azure Search Power Skills](https://github.com/Azure-Samples/azure-search-power-skills) GitHub 存储库中的 [AnalyzeForm](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Vision/AnalyzeForm) 项目。 将此存储库克隆到本地计算机，并导航到 Vision/AnalyzeForm/ 以访问该项目。 然后在 Visual Studio 中打开 _AnalyzeForm.csproj_。 此项目将创建一个 Azure 函数资源，用于满足[自定义技能接口](cognitive-search-custom-skill-interface.md)，并可用于 Azure 认知搜索扩充。 它采用窗体文档作为输入，并以文本形式输出指定的键/值对。
+本教程使用 [Azure Search Power Skills](https://github.com/Azure-Samples/azure-search-power-skills) GitHub 存储库中的 [AnalyzeForm](https://github.com/Azure-Samples/azure-search-power-skills/tree/main/Vision/AnalyzeForm) 项目。 将此存储库克隆到本地计算机，并导航到 Vision/AnalyzeForm/ 以访问该项目。 然后在 Visual Studio 中打开 _AnalyzeForm.csproj_。 此项目将创建一个 Azure 函数资源，用于满足[自定义技能接口](cognitive-search-custom-skill-interface.md)，并可用于 Azure 认知搜索扩充。 它采用窗体文档作为输入，并以文本形式输出指定的键/值对。
 
 首先，添加项目级环境变量。 在左侧窗格中找到“AnalyzeForm”项目，右键单击该项目，然后选择“属性”。 在“属性”窗口中，单击“调试”选项卡，然后找到“环境变量”字段。 单击“添加”以添加以下变量：
 * `FORMS_RECOGNIZER_ENDPOINT_URL` 值设置为终结点 URL。

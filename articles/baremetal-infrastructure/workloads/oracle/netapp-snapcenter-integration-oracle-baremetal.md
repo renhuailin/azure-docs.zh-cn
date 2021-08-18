@@ -2,14 +2,14 @@
 title: BareMetal 基础结构上适用于 Oracle 的 SnapCenter 集成
 description: 了解如何使用 Oracle 和 NetApp 的快照技术为 BareMetal 基础结构上的 Oracle 数据库创建操作恢复备份。
 ms.topic: how-to
-ms.subservice: workloads
+ms.subservice: baremetal-oracle
 ms.date: 05/05/2021
-ms.openlocfilehash: 4182a5fe97e356152b6d589fc6788b922e5c8493
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: d9cf6933287167da82b1a5ad4ab8848d5c34d404
+ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109520401"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110579882"
 ---
 # <a name="snapcenter-integration-for-oracle-on-baremetal-infrastructure"></a>BareMetal 基础结构上适用于 Oracle 的 SnapCenter 集成
 

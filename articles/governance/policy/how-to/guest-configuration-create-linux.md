@@ -4,12 +4,12 @@ description: 了解如何创建适用于 Linux 的 Azure Policy 来宾配置策�
 ms.date: 03/31/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b28d7f0ccd2f4b8cca7bdb5015dce6e8ee8f2f17
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 89f4e64f6448f93a4b746ae4301450707f832cde
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108762976"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112287004"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何创建适用于 Linux 的来宾配置策略
 
@@ -17,7 +17,7 @@ ms.locfileid: "108762976"
 
 若要了解如何创建适用于 Windows 的来宾配置策略，请参阅[如何创建适用于 Windows 的来宾配置策略](./guest-configuration-create.md)页
 
-当审核 Linux 时，来宾配置使用 [Chef InSpec](https://www.inspec.io/)。 InSpec 配置文件定义了计算机应处于的条件。 如果配置评估失败，则会触发策略效果 auditIfNotExists，并将计算机视为不符合。
+当审核 Linux 时，来宾配置使用 [Chef InSpec](https://community.chef.io/tools/chef-inspec)。 InSpec 配置文件定义了计算机应处于的条件。 如果配置评估失败，则会触发策略效果 auditIfNotExists，并将计算机视为不符合。
 
 [Azure Policy 来宾配置](../concepts/guest-configuration.md)只能用于审核计算机内部的设置。 还不能修正计算机内部的设置。
 
@@ -94,7 +94,7 @@ PowerShell cmdlet 可帮助创建包。 不需要根级别文件夹或版本文�
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux 上的自定义来宾配置
 
-Linux 上的来宾配置使用 `ChefInSpecResource` 资源为引擎提供 [InSpec 配置文件](https://www.inspec.io/docs/reference/profiles/)的名称。 “名称”是唯一必需的资源属性。 创建 YAML 文件和 Ruby 脚本文件，如下所详述。
+Linux 上的来宾配置使用 `ChefInSpecResource` 资源为引擎提供 [InSpec 配置文件](https://docs.chef.io/inspec/profiles/)的名称。 “名称”是唯一必需的资源属性。 创建 YAML 文件和 Ruby 脚本文件，如下所详述。
 
 首先，创建 InSpec 使用的 YAML 文件。 此文件提供了环境的基本信息。 下面给出了一个示例：
 
@@ -222,7 +222,7 @@ Publish-GuestConfigurationPackage -Path ./AuditFilePathExists/AuditFilePathExist
 
 `New-GuestConfigurationPolicy` cmdlet 的参数：
 
-- ContentUri：来宾配置内容包的公共 HTTP(S) URI。
+- **ContentUri**：来宾配置内容包的公共 HTTP(S) URI。
 - DisplayName：策略显示名称。
 - **说明**：策略说明。
 - Parameter：以哈希表格式提供的策略参数。
@@ -401,7 +401,7 @@ New-GuestConfigurationPolicy -ContentUri $uri `
 
 GitHub 上的文章[生成新 GPG 密钥](https://help.github.com/en/articles/generating-a-new-gpg-key)为创建用于 Linux 计算机的 GPG 密钥提供了很好的参考。
 
-GuestConfiguration 代理需要在 Linux 计算机上的路径 `/usr/local/share/ca-certificates/extra` 中显示证书公钥。 为了让节点能够验证已签名的内容，请先在计算机上安装证书公钥，再应用自定义策略。 可以使用 VM 内的任何技术或使用 Azure Policy 来完成此过程。 [此处提供了](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)一个示例模板。
+GuestConfiguration 代理需要在 Linux 计算机上的路径 `/usr/local/share/ca-certificates/extra` 中显示证书公钥。 为了让节点能够验证已签名的内容，请先在计算机上安装证书公钥，再应用自定义策略。 可以使用 VM 内的任何技术或使用 Azure Policy 来完成此过程。 [此处提供了](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-push-certificate-windows)一个示例模板。
 Key Vault 访问策略必须允许计算资源提供程序在部署过程中访问证书。 有关详细步骤，请参阅[在 Azure 资源管理器中为虚拟机设置 Key Vault](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault)。
 
 在内容发布后，将名为 `GuestConfigPolicyCertificateValidation` 且值为 `enabled` 的标记追加到所有应需要进行代码签名的虚拟机。 请参阅[标记示例](../samples/built-in-policies.md#tags)，了解如何使用 Azure Policy 大规模传递标记。 在此标记就位后，使用 `New-GuestConfigurationPolicy` cmdlet 生成的策略定义通过来宾配置扩展启用要求。

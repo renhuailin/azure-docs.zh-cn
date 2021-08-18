@@ -4,15 +4,15 @@ description: 本文档为 ISV 发布采用灵活计费模式的 Azure 应用程�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/22/2020
+ms.date: 07/01/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 7448559e387522508e44b54b011a83b8339aefdd
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 1571ae7a735f9d7cf05ce0724cfe3aeb9de70f0b
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542303"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113231298"
 ---
 # <a name="managed-application-metered-billing"></a>托管应用程序按流量计费 
 

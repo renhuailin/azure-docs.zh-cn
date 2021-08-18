@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: yelevin
-ms.openlocfilehash: 84846aacb435cfef861acf046b7f623697445da2
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 43af18f508a0e9b4239dedb793a3de9565ee5f03
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112059645"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747130"
 ---
 # <a name="work-with-anomaly-detection-analytics-rules-in-azure-sentinel"></a>在 Azure Sentinel 中使用异常情况检测分析规则
 
@@ -30,7 +30,7 @@ ms.locfileid: "112059645"
 
 ## <a name="view-soc-ml-anomaly-rule-templates"></a>查看 SOC-ML 异常规则模板
 
-Azure Sentinel 的 [SOC-ML 异常功能](soc-ml-anomalies.md)提供[内置异常模板](tutorial-detect-threats-built-in.md#anomaly)，具有开箱即用的即时价值。 这些异常模板是使用数千个数据源和数百万个事件开发而成，非常可靠，而且该项功能还能够让你在用户界面中轻松更改异常的阈值和参数。 异常规则必须在激活后才能生成异常，你可以在“日志”部分的“异常”表中找到这些异常 。
+Azure Sentinel 的 [SOC-ML 异常功能](soc-ml-anomalies.md)提供[内置异常模板](detect-threats-built-in.md#anomaly)，具有开箱即用的即时价值。 这些异常模板是使用数千个数据源和数百万个事件开发而成，非常可靠，而且该项功能还能够让你在用户界面中轻松更改异常的阈值和参数。 异常规则必须在激活后才能生成异常，你可以在“日志”部分的“异常”表中找到这些异常 。
 
 1. 从 Azure Sentinel 导航菜单中，选择“分析”。
 
@@ -150,4 +150,4 @@ Azure Sentinel 的 [SOC-ML 异常功能](soc-ml-anomalies.md)提供[内置异常
 你已经通过本文档了解如何在 Azure Sentinel 中使用 SOC-ML 异常情况检测分析规则。
 
 - 获取一些有关 [SOC-ML](soc-ml-anomalies.md) 的背景信息。
-- 浏览其他[分析规则类型](tutorial-detect-threats-built-in.md)。
+- 浏览其他[分析规则类型](detect-threats-built-in.md)。

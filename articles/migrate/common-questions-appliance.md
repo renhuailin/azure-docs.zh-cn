@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate 设备常见问题解答
 description: 获取有关 Azure Migrate 设备常见问题的解答。
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: 059a1888b529487f2b0d17509370897222a20d83
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a814cce09a134f007fbd136b8c142a60fb099a1b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563015"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732658"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 设备：常见问题
 
@@ -50,7 +50,6 @@ Azure Migrate 设备是一个轻型设备，“Azure Migrate: 发现和评估”
 - 请确保该设备可以连接到这些 [Azure URL](./migrate-appliance.md#url-access)。 
 - 可将 ExpressRoute 与 Microsoft 对等互连配合使用。 公共对等互连已弃用，不可用于新的 ExpressRoute 线路。
 - 仅使用专用对等互连的连接方法不受支持。
-
 
 ## <a name="does-appliance-analysis-affect-performance"></a>设备分析是否会影响性能？
 
@@ -142,7 +141,7 @@ Azure Migrate 设备收集的数据存储在你创建项目的 Azure 位置。
 
 ## <a name="how-do-i-update-the-appliance"></a>如何更新设备？
 
-默认情况下，该设备及其上安装的代理会自动更新。 该设备每隔 24 小时检查更新。 失败的更新会重试。 
+默认情况下，该设备及其上安装的代理会自动更新。 该设备每隔 24 小时检查更新。 失败的更新会重试。
 
 这些自动更新只会更新该设备和设备代理。 Azure Migrate 自动更新不会更新操作系统。 请使用 Windows 更新来使操作系统保持最新状态。
 
@@ -155,13 +154,14 @@ Azure Migrate 设备收集的数据存储在你创建项目的 Azure 位置。
 是，我们现在支持使用多个服务器凭据来执行软件盘存（发现已安装的应用程序）、无代理依赖项分析，以及 SQL Server 实例和数据库发现。 [详细了解](tutorial-discover-vmware.md#provide-server-credentials)如何在设备配置管理器中提供凭据。
 
 ## <a name="what-type-of-server-credentials-can-i-add-on-the-vmware-appliance"></a>在 VMware 设备上可以添加哪种类型的服务器凭据？
+
 可以在设备配置管理器中提供域/Windows（非域）/Linux（非域）/SQL Server 身份验证凭据。 [详细了解](add-server-credentials.md)如何提供凭据以及我们如何处理凭据。
 
 ## <a name="what-type-of-sql-server-connection-properties-are-supported-by-azure-migrate-for-sql-discovery"></a>Azure Migrate 支持使用哪种类型的 SQL Server 连接属性进行 SQL 发现？
+
 Azure Migrate 将加密 Azure Migrate 设备与源 SQL Server 实例之间的通信（“加密连接”属性设置为 TRUE）。 这些连接是使用 [TrustServerCertificate](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate)（设置为 TRUE）加密的；传输层将使用 SSL 来加密通道，并绕过证书链来验证信任。 必须将设备服务器设置为[信任证书的根颁发机构](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。
 
 如果服务器在启动时未预配有任何证书，SQL Server 将生成可用于加密登录数据包的自签名证书。 [了解详细信息](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。
-
 
 ## <a name="next-steps"></a>后续步骤
 

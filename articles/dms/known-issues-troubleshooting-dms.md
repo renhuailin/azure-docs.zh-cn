@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: ce53e8a77186f96801879e5c9d8f8c65809470d0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e5c10b4830a1bba5ff4db07b81ee447e5d33b731
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639794"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750835"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>排查常见的 Azure 数据库迁移服务问题和错误
 
@@ -45,16 +45,6 @@ ms.locfileid: "105639794"
 | 原因         | 解决方法 |
 | ------------- | ------------- |
 | 如果为单个迁移活动选择的数据库数目超过 4 个，则会显示此错误。 目前，每个迁移活动限制为 4 个数据库。 | 为每个迁移活动选择 4 个或更少的数据库。 如果需要同时迁移 4 个以上数据库，请预配 Azure 数据库迁移服务的另一个实例。 目前，每个订阅最多支持两个 Azure 数据库迁移服务实例。<br><br> |
-
-## <a name="errors-for-mysql-migration-to-azure-mysql-with-recovery-failures"></a>从 MySQL 迁移到 Azure MySQL 出错并发生恢复失败
-
-使用 Azure 数据库迁移服务从 MySQL 迁移到 Azure Database for MySQL 时，迁移活动失败并出现以下错误：
-
-* **错误**：数据库迁移错误 - 由于 [n] 次连续恢复失败，任务 'TaskID' 已挂起。
-
-| 原因         | 解决方法 |
-| ------------- | ------------- |
-| 当执行迁移的用户缺少 ReplicationAdmin 角色和/或 REPLICATION CLIENT、REPLICATION REPLICA 和 SUPER（低于 MySQL 5.6.6 的版本）的特权时，可能会发生此错误。<br><br><br><br><br><br><br><br><br><br><br><br><br> | 确保在 Azure Database for MySQL 实例中为用户帐户准确配置[必备特权](./tutorial-mysql-azure-mysql-online.md#prerequisites)。 例如，可以遵循以下步骤创建具有所需特权的名为“migrateuser”的用户：<br>1.CREATE USER migrateuser@'%' IDENTIFIED BY 'secret'; <br>2.将针对 db_name.* 的所有特权授予 'secret' 'migrateuser'@'%'；// 重复此步骤以授予针对其他数据库的访问权限 <br>3.将针对 *.* 的 replication slave 权限授予 'secret' 标识的 'migrateuser'@'%'；<br>4.将针对 *.* 的 replication client 权限授予 'secret' 标识的 'migrateuser'@'%'；<br>5.刷新特权； |
 
 ## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>尝试停止 Azure 数据库迁移服务时出错
 
@@ -127,7 +117,6 @@ ms.locfileid: "105639794"
 ## <a name="additional-known-issues"></a>其他已知问题
 
 * [联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制](./index.yml)
-* [在联机迁移到 Azure Database for MySQL 时存在的已知问题/迁移限制](./known-issues-azure-mysql-online.md)
 * [在联机迁移到 Azure Database for PostgreSQL 时存在的已知问题/迁移限制](./known-issues-azure-postgresql-online.md)
 
 ## <a name="next-steps"></a>后续步骤
@@ -135,4 +124,4 @@ ms.locfileid: "105639794"
 * 参阅[Azure 数据库迁移服务 PowerShell](/powershell/module/azurerm.datamigration#data_migration)一文。
 * 查看[如何使用 Azure 门户在 Azure Database for MySQL 中配置服务器参数](../mysql/howto-server-parameters.md)一文。
 * 查看[使用 Azure 数据库迁移服务的先决条件概述](./pre-reqs.md)一文。
-* 参阅[有关使用 Azure 数据库迁移服务的常见问题解答](./faq.md)。
+* 参阅[有关使用 Azure 数据库迁移服务的常见问题解答](./faq.yml)。

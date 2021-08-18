@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: risverma
 ms.custom: include file
-ms.openlocfilehash: 83a19dea56693a1caff2c982b9f772543fe1cf2e
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 6d2e50a5154a74fc2521da6032d8bfcd8d34f4d6
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073477"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113364896"
 ---
 Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟机大小。 独立大小在特定的硬件生成上有效并运行，当硬件生成失效时，将弃用。
 
@@ -26,11 +26,7 @@ Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟�
 * Standard_E80ids_v4
 * Standard_E80is_v4
 * Standard_F72s_v2
-* Standard_E64is_v3
-* Standard_E64i_v3
 * Standard_M128ms
-* Standard_GS5
-* Standard_G5
 * Standard_DC8_v2
 
 

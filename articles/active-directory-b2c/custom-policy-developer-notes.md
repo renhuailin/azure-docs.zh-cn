@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/07/2021
+ms.date: 06/21/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 295dfa5a02ce3f46049805339a4f7918ce20361e
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.openlocfilehash: 36e0b286cc073f5c6843f1bab59af5a811cbf281
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565187"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112452919"
 ---
 # <a name="developer-notes-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的开发人员说明
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C [用户流和自定义策略](user-flow-overview.md)�
 ## <a name="terms-for-features-in-public-preview"></a>公共预览版功能的使用条款
 
 - 建议将公共预览功能仅用于评估。
-- 服务级别协议 (SLA) 不适用于公共预览功能。
+- [服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/active-directory-b2c) 不适用于公共预览功能。
 - 可通过普通支持渠道提出公共预览功能支持请求。
 
 ## <a name="user-flows"></a>用户流

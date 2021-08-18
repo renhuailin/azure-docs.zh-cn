@@ -8,12 +8,12 @@ ms.reviewer: spelluru
 ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 9dd47981ba3067fefefb7a2360894a1f57ff7a64
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 30fa58a79068a1dc367f4ac330efd01685a4401c
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368034"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415581"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>教程：将事件转发到 IoTHub
 
@@ -33,7 +33,7 @@ ms.locfileid: "110368034"
 * Azure 订阅 - 创建[免费帐户](https://azure.microsoft.com/free)（如果还没有的话）。 
 * **Azure IoT 中心和 IoT Edge 设备** - 按照 [Linux](../../iot-edge/quickstart-linux.md) 或 [Windows 设备](../../iot-edge/quickstart.md)快速入门中的步骤进行操作（如果尚未安装）。
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)]
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-deploy-iot-edge.md)]
 
 ## <a name="create-topic"></a>创建主题
 
@@ -81,7 +81,7 @@ ms.locfileid: "110368034"
 
 订阅服务器可以注册发布到主题的事件。 若要接收任何事件，需要为感兴趣的主题创建事件网格订阅。
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. 创建包含以下内容的 subscription4.json。 有关有效负载的详细信息，请参阅 [API 文档](api.md)。
 

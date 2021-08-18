@@ -8,17 +8,17 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 99cad194317a2dfc7a5924635aef7484d83f8ba0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f892bd439424fdd35110dfa704e0bf319d85a0c5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969282"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745452"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-rate-too-large-429-exceptions"></a>对 Azure Cosmos DB 请求速率过大 (429) 异常进行诊断及故障排除
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-本文包含 SQL API 的各种 429 状态代码错误的已知原因和解决方案。 若使用适用于 MongoDB 的 API，请参阅[对适用于 MongoDB 的 API 中的常见问题进行疑难解答](mongodb-troubleshoot.md)一文，了解如何调试状态代码 16500。
+本文包含 SQL API 的各种 429 状态代码错误的已知原因和解决方案。 若使用适用于 MongoDB 的 API，请参阅[对适用于 MongoDB 的 API 中的常见问题进行疑难解答](mongodb/error-codes-solutions.md)一文，了解如何调试状态代码 16500。
 
 “请求速率过大”异常（也称为“错误代码 429”）表示，针对 Azure Cosmos DB 提出请求时，请求速率受限。
 
@@ -154,7 +154,7 @@ AzureDiagnostics
 
 - 使用静态 Cosmos DB 客户端实例。 初始化 DocumentClient 或 CosmosClient 时，Cosmos DB SDK 将提取有关该帐户的元数据，包括与一致性级别、数据库、容器、分区以及产品/服务相关的信息。 此初始化可能需要使用大量 RU，不应频繁执行。 在应用程序的生存期内使用单个 DocumentClient 实例。
 
-- 缓存数据库和容器名称。 从配置检索数据库和容器的名称，或者一开始就缓存名称。 ReadDatabaseAsync/ReadDocumentCollectionAsync 或 CreateDatabaseQuery/CreateDocumentCollectionQuery 等调用将导致元数据调用相关服务，而该等调用将会消耗系统保留的有限 RU。 因此，你应该避免频繁执行此类操作。
+- 缓存数据库和容器名称。 从配置中检索数据库和容器的名称，或者一开始就将其缓存。 ReadDatabaseAsync/ReadDocumentCollectionAsync 或 CreateDatabaseQuery/CreateDocumentCollectionQuery 等调用将导致元数据调用相关服务，而该等调用将会消耗系统保留的有限 RU。 因此，你应该避免频繁执行此类操作。
 
 ## <a name="rate-limiting-due-to-transient-service-error"></a>因暂时性服务错误而导致速率受限
 

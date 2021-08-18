@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/18/2021
+ms.date: 07/08/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e0aaac1c52a2def624f8bc8736219685458ad42
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5a332b43da59c3e7c766d8fd911f0426fa346d8b
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110070276"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113564979"
 ---
 # <a name="conditional-access-conditions"></a>条件访问：Conditions
 
@@ -117,10 +117,12 @@ Azure AD 条件访问支持以下设备平台：
 | Windows Server 2016 | Internet Explorer |
 | Windows Server 2012 R2 | Internet Explorer |
 | Windows Server 2008 R2 | Internet Explorer |
-| macOS | Chrome、Safari |
+| macOS | Microsoft Edge、Chrome、Safari |
+
+这些浏览器支持设备身份验证，允许根据策略对设备进行识别和验证。 如果浏览器以专用模式运行，或禁用了 cookie，设备检查将失败。
 
 > [!NOTE]
-> Edge 85+ 要求用户登录到浏览器，以正确传递设备标识。 否则，其行为类似于没有帐户扩展的 Chrome。 在混合 Azure AD 联接方案中，此登录可能不会自动发生。 Safari 支持基于设备的条件访问，但无法满足“需要经过批准的客户端应用”或“需要应用保护策略”条件 。 Microsoft Edge 之类的托管浏览器会满足经过批准的客户端应用和应用保护策略要求。
+> Edge 85+ 要求用户登录到浏览器，以正确传递设备标识。 否则，其行为类似于没有帐户扩展的 Chrome。 在混合 Azure AD 联接方案中，此登录可能不会自动发生。 Safari 支持基于设备的条件访问，但它不能满足“需要批准的客户端应用”或“需要应用保护策略”条件。 类似 Microsoft Edge 的托管浏览器将满足“批准的客户端应用”和“应用保护策略”要求。
 
 #### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>为何我在浏览器中看到证书提示
 
@@ -144,8 +146,6 @@ Azure AD 条件访问支持以下设备平台：
 - 类型 REG_SZ（字符串）
 - Data {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}
 
-这些浏览器支持设备身份验证，允许根据策略对设备进行识别和验证。 如果浏览器以专用模式运行，设备检查将失败。
-
 ### <a name="supported-mobile-applications-and-desktop-clients"></a>支持的移动应用程序和桌面客户端
 
 组织可以选择 **移动应用和桌面客户端** 作为客户端应用。
@@ -157,7 +157,7 @@ Azure AD 条件访问支持以下设备平台：
 | Dynamics CRM 应用 | Dynamics CRM | Windows 10、Windows 8.1、iOS 和 Android |
 | “邮件/日历/联系人”应用、Outlook 2016、Outlook 2013（使用新式身份验证）| Exchange Online | Windows 10 |
 | 用于应用的 MFA 和位置策略。 不支持基于设备的策略。| 任何“我的应用”应用服务 | Android 和 iOS |
-| Microsoft Teams 服务 - 此客户端应用控制所有支持 Microsoft Teams 及其全部客户端应用（Windows 桌面、iOS、Android、WP 和 Web 客户端）的服务 | Microsoft Teams | Windows 10、Windows 8.1、Windows 7、iOS、Android 和 macOS |
+| Microsoft Teams 服务 - 此客户端应用控制支持 Microsoft Teams 及其所有客户端应用（Windows 桌面、iOS、Android、WP 和 Web 客户端）的所有服务 | Microsoft Teams | Windows 10、Windows 8.1、Windows 7、iOS、Android 和 macOS |
 | Office 2016 应用、Office 2013（采用新式身份验证）、[OneDrive 同步客户端](/onedrive/enable-conditional-access) | SharePoint | Windows 8.1、Windows 7 |
 | Office 2016 应用、通用 Office 应用、Office 2013（采用新式身份验证）、[OneDrive 同步客户端](/onedrive/enable-conditional-access) | SharePoint Online | Windows 10 |
 | Office 2016（仅限 Word、Excel、PowerPoint、OneNote）。 | SharePoint | macOS |
@@ -199,9 +199,9 @@ Azure AD 条件访问支持以下设备平台：
 > [!IMPORTANT]
 > 设备状态和设备筛选器不能在条件访问策略中一起使用。 设备筛选器提供更精细的目标控制，包括支持通过 `trustType` 和 `isCompliant` 属性将设备状态信息指定为目标。
 
-## <a name="filters-for-devices-preview"></a>适用于设备的筛选器（预览版）
+## <a name="filters-for-devices-preview"></a>设备筛选器（预览版）
 
-条件访问中新增了一个可选条件，称为“适用于设备的筛选器”。 在将“适用于设备的筛选器”配置为条件时，组织可以使用针对设备属性的规则表达式来根据筛选器选择包括或排除设备。 可以使用规则生成器或规则语法来创作“适用于设备的筛选器”的规则表达式。 此体验类似于用于组的动态成员身份规则的体验。 有关详细信息，请参阅[条件访问：适用于设备的筛选器（预览版）](concept-condition-filters-for-devices.md)一文。
+条件访问中有一个新的可选条件，称为“设备筛选器”。 将设备筛选器配置为条件时，组织可以使用设备属性上的规则表达式，根据筛选器选择包括或排除设备。 设备筛选器的规则表达式可以使用规则生成器或规则语法来创作。 这种体验类似于用于组的动态成员身份规则的体验。 有关详细信息，请参阅[条件访问：设备筛选器（预览版）](concept-condition-filters-for-devices.md)一文。
 
 ## <a name="next-steps"></a>后续步骤
 

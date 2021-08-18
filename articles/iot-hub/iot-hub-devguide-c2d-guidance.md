@@ -2,7 +2,6 @@
 title: Azure IoT 中心从云到设备选项 | Microsoft Docs
 description: 开发人员指南 - 指导用户何时使用直接方法、设备孪生的所需属性或云到设备的消息，以进行从云到设备的通信。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -13,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: ad4f5dcd137a9be6dfc764385802792026c0297d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 105374dc214ad77978973a5e7288ac1dd487941b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093008"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728797"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>从云到设备通信指南
 
@@ -30,7 +29,7 @@ IoT 中心提供三个选项，允许设备应用向后端应用公开功能：
 
 * [云到设备消息](iot-hub-devguide-messages-c2d.md)，适用于向设备应用提供单向通知。
 
-要了解 [Azure IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)如何使用这些选项控制 IoT 即插即用设备，请参阅 [IoT 即插即用服务开发人员指南](../iot-pnp/concepts-developer-guide-service.md)。
+要了解 [Azure IoT 即插即用](../iot-develop/overview-iot-plug-and-play.md)如何使用这些选项控制 IoT 即插即用设备，请参阅 [IoT 即插即用服务开发人员指南](../iot-develop/concepts-developer-guide-service.md)。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -48,6 +47,6 @@ IoT 中心提供三个选项，允许设备应用向后端应用公开功能：
 
 在以下教程中学习如何使用直接方法、所需属性以及从云到设备的消息：
 
-* [使用直接方法](quickstart-control-device-node.md)
+* [使用直接方法](quickstart-control-device.md)
 * [使用所需属性配置设备](tutorial-device-twins.md) 
 * [发送云到设备的消息](iot-hub-node-node-c2d.md)

@@ -5,12 +5,12 @@ ms.date: 05/03/2021
 ms.topic: how-to
 recommendations: false
 zone_pivot_groups: development-environment-functions
-ms.openlocfilehash: 6521c02686da55142d9a9d9f1faf569d584ef593
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 1de1aaf8f293621d69534897add89c8a29a7916e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111589977"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752394"
 ---
 # <a name="develop-and-publish-net-5-functions-using-azure-functions"></a>使用 Azure Functions 开发和发布 .NET 5 函数 
 
@@ -89,7 +89,7 @@ ms.locfileid: "111589977"
     cd LocalFunctionProj
     ```
 
-    此文件夹包含项目的各个文件，其中包括 [local.settings.json](functions-run-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 配置文件。 由于 *local.settings.json* 可以包含从 Azure 下载的机密，因此，默认情况下，该文件会从 *.gitignore* 文件的源代码管理中排除。
+    此文件夹包含项目的各个文件，其中包括 [local.settings.json](functions-develop-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 配置文件。 由于 *local.settings.json* 可以包含从 Azure 下载的机密，因此，默认情况下，该文件会从 *.gitignore* 文件的源代码管理中排除。
 
 1. 使用以下命令将一个函数添加到项目，其中，`--name` 参数是该函数 (HttpExample) 的唯一名称，`--template` 参数指定该函数的触发器 (HTTP)。
 
@@ -110,7 +110,7 @@ ms.locfileid: "111589977"
 
 1. 对于“创建新的 Azure Functions 应用程序”设置，请使用下表中的值：
 
-    | 设置      | Value  | 说明                      |
+    | 设置      | 值  | 说明                      |
     | ------------ |  ------- |----------------------------------------- |
     | **.NET 版本** | .NET 5（独立） | 此值创建在独立进程中在 .NET 5.0 上运行的函数项目。   |
     | **函数模板** | **HTTP 触发器** | 此值会创建由 HTTP 请求触发的函数。 |

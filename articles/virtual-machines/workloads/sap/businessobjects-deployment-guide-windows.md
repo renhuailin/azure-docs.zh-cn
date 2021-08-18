@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: depadia
-ms.openlocfilehash: f520bc6615d9c7ea40612e7d52fb201d04c246e9
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: bd65c77d8be0cef06a81f0f7699b04134e0e1706
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408112"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747962"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-windows-on-azure"></a>Azure 上适用于 Windows 的 SAP BusinessObjects BI 平台部署指南
 
@@ -397,7 +397,7 @@ SAP BusinessObjects BI 平台包含不同的层，这些层针对特定任务和
 根据你的部署，SAP BOBI 平台的文件存储可以位于 Azure NetApp 或 Azure 文件存储中。 根据用于文件存储的存储点，从以下选项中选择备份和还原的方式：
 
 * **Azure NetApp 文件**：对于 Azure NetApp 文件，可以创建按需快照，并使用快照策略计划自动拍摄快照。 快照副本提供 Azure NetApp 文件卷的时间点副本。 有关详细信息，请参阅[使用 Azure NetApp 文件管理快照](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md)。
-* **Azure 文件**：Azure 文件存储备份与[备份](../../../backup/backup-overview.md)原生实例集成，该实例将备份和还原功能与 VM 备份集中在一起，从而简化操作。 有关详细信息，请参阅 [Azure 文件共享备份](../../../backup/azure-file-share-backup-overview.md)和[常见问题解答：备份 Azure 文件存储](../../../backup/backup-azure-files-faq.yml)。
+* **Azure 文件**：Azure 文件存储备份与 [备份](../../../backup/backup-overview.md)原生实例集成，该实例将备份和还原功能与 VM 备份集中在一起，从而简化操作。 有关详细信息，请参阅 [Azure 文件共享备份](../../../backup/azure-file-share-backup-overview.md)和[常见问题解答：备份 Azure 文件存储](../../../backup/backup-azure-files-faq.yml)。
 
 如果已创建单独的 NFS 服务器，请确保为其实现相同的备份和还原策略。
 
@@ -445,7 +445,7 @@ BI 和 Web 应用程序服务器不需要特定的高可用性解决方案，无
 
 对于在 Windows 上运行的 SAP BOBI 平台，可以选择适用于文件存储的 [Azure 高级文件存储](../../../storage/files/storage-files-introduction.md)或 [Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-introduction.md)，这些经专门设计的文件在本质上具有高可用性和高耐用性。 Azure 高级文件存储支持 ZRS，这对于 SAP BOBI 平台的跨区域部署非常有用。 有关详细信息，请参阅 Azure 文件存储的[冗余](../../../storage/files/storage-files-planning.md#redundancy)部分。
 
-由于文件共享服务仅在部分区域可用，因此请务必参考[各区域的可用产品](https://azure.microsoft.com/en-us/global-infrastructure/services/)列表以了解最新信息。 如果该服务在你的区域中不可用，可以创建一个 NFS 服务器，并从中将文件系统共享给 SAP BOBI 应用程序。 但你还需要考虑其高可用性。
+由于文件共享服务仅在部分区域可用，因此请务必参考[各区域的可用产品](https://azure.microsoft.com/global-infrastructure/services/)列表以了解最新信息。 如果该服务在你的区域中不可用，可以创建一个 NFS 服务器，并从中将文件系统共享给 SAP BOBI 应用程序。 但你还需要考虑其高可用性。
 
 ### <a name="high-availability-for-the-load-balancer"></a>负载均衡器的高可用性
 
@@ -501,7 +501,7 @@ BI 和 Web 应用程序服务器不需要特定的高可用性解决方案，无
 - Azure 高级文件存储仅支持 LRS 和 ZRS。 对于 Azure 高级文件 DR 策略，可以使用 [AzCopy](../../../storage/common/storage-use-azcopy-v10.md) 或 [Azure PowerShell](/powershell/module/az.storage/?preserve-view=true&view=azps-5.8.0) 将文件复制到不同区域中的其他存储帐户。 有关详细信息，请参阅[灾难恢复和存储帐户故障转移](../../../storage/common/storage-disaster-recovery-guidance.md)。
 - **Azure NetApp 文件** 提供 NFS 和 SMB 卷，因此可使用任何基于文件的复制工具在 Azure 区域之间复制数据。 有关如何在另一个区域中复制 Azure NetApp 文件的详细信息，请参阅[关于 Azure NetApp 文件的常见问题解答](../../../azure-netapp-files/azure-netapp-files-faqs.md#how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region)。
 
-  可以使用 Azure NetApp 文件跨区域复制，该功能当前提供[预览版](https://azure.microsoft.com/en-us/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/)，它使用 NetApp SnapMirror 技术。 使用该技术，只会以经压缩的高效格式通过网络发送更改后的块。 这项专有技术最大程度地减少了跨区域复制所需的数据量，可以节省数据传输成本。 它还可以缩短复制时间，让你可以实现较小的 RPO。 有关详细信息，请参阅[使用跨区域复制的要求和注意事项](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md)。
+  可以使用 Azure NetApp 文件跨区域复制，该功能当前提供[预览版](https://azure.microsoft.com/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/)，它使用 NetApp SnapMirror 技术。 使用该技术，只会以经压缩的高效格式通过网络发送更改后的块。 这项专有技术最大程度地减少了跨区域复制所需的数据量，可以节省数据传输成本。 它还可以缩短复制时间，让你可以实现较小的 RPO。 有关详细信息，请参阅[使用跨区域复制的要求和注意事项](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md)。
 
 ### <a name="cms-database"></a>CMS 数据库
 

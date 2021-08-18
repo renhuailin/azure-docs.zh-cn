@@ -2,20 +2,18 @@
 title: 使用 Azure 机器学习工作室（经典版）根据 IoT 中心数据预测天气
 description: 使用 Azure 机器学习工作室（经典版）基于 IoT 中心从传感器收集的温度和湿度数据来预测下雨的可能性。
 author: robinsh
-manager: philmea
 keywords: 天气预报机器学习
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: 455d78ed21403952046448dd4447b5ec54f77c00
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: f9b683d08a5b1fde172efa5a769a605d3d1862da
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566973"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742226"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典版）中使用 IoT 中心的传感器数据进行天气预测
 
@@ -27,7 +25,7 @@ ms.locfileid: "107566973"
 
 ## <a name="prerequisites"></a>必备条件
 
-- 请完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程。 例如，可转到[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)教程或[发送遥测](quickstart-send-telemetry-dotnet.md)快速入门中的一个教程。 这些文章阐述下列要求：
+- 请完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程。 例如，可转到[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)教程或[发送遥测](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)快速入门中的一个教程。 这些文章阐述下列要求：
   - 一个有效的 Azure 订阅。
   - 已在订阅中创建一个 Azure IoT 中心。
   - 一个可向 Azure IoT 中心发送消息的客户端应用程序。

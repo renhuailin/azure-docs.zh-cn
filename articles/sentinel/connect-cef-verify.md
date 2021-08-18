@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 3ce83de7f876bbd67120bf511d29860b71cd2227
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98d97bd7c8ffab685475f50130d68668fe1c9f8b
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771271"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253288"
 ---
 # <a name="step-3-validate-connectivity"></a>步骤 3：验证连接性
 
-部署日志转发器（步骤 1）并配置安全解决方案以向其发送 CEF 消息（步骤 2）后，请按照以下说明验证安全解决方案与 Azure Sentinel 之间的连接性。 
+部署日志转发器（步骤 1）并配置安全解决方案以向其发送 CEF 消息（步骤 2）后，请按照以下说明验证安全解决方案与 Azure Sentinel 之间的连接性。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,9 +37,9 @@ ms.locfileid: "104771271"
 ## <a name="how-to-validate-connectivity"></a>如何验证连接性
 
 1. 从 Azure Sentinel 导航菜单中打开“日志”。 使用 CommonSecurityLog 架构运行一个查询，检查是否正在接收来自安全解决方案的日志。<br>
-请注意，可能需要长达 20 分钟的时间，日志才会开始显示在 Log Analytics 中。 
+请注意，可能需要长达 20 分钟的时间，日志才会开始显示在 Log Analytics 中。
 
-1. 如果没有从查询中看到任何结果，请验证是否正从安全解决方案生成（或尝试生成部分）事件，并验证这些事件是否被转发到你指定的 Syslog 转发器计算机。 
+1. 如果没有从查询中看到任何结果，请验证是否正从安全解决方案生成（或尝试生成部分）事件，并验证这些事件是否被转发到你指定的 Syslog 转发器计算机。
 
 1. 在日志转发器上运行以下脚本（应用工作区 ID 代替占位符）以检查安全解决方案、日志转发器和 Azure Sentinel 之间的连接。 此脚本检查守护程序是否正在侦听正确的端口，转发配置是否正确以及是否有任何内容阻止守护程序与 Log Analytics 代理之间的通信。 它还会发送模拟消息“TestCommonEventFormat”以检查端到端连接。 <br>
 
@@ -81,20 +81,20 @@ ms.locfileid: "104771271"
     </filter>
     ```
 
-1. 使用以下命令检查是否已按预期配置对 Cisco ASA 防火墙事件的解析： 
+1. 使用以下命令检查是否已按预期配置对 Cisco ASA 防火墙事件的解析：
 
     ```bash
     grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
     - <a name="parsing-command"></a>如果解析存在问题，脚本将生成一条错误消息，指示你手动运行以下命令（将工作区 ID 替换为占位符）。 此命令将确保正确解析并重启代理。
-    
+
         ```bash
         # Cisco ASA parsing fix
         sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
 
-1. 使用以下命令检查 syslog 源中的“计算机”字段是否已正确映射到 Log Analytics 代理中： 
+1. 使用以下命令检查 syslog 源中的“计算机”字段是否已正确映射到 Log Analytics 代理中：
 
     ```bash
     grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
@@ -114,7 +114,7 @@ ms.locfileid: "104771271"
     - 配置文件：`/etc/rsyslog.d/security-config-omsagent.conf`
 
         ```bash
-        if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226 
+        if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226
         ```
 
 1. 重启 syslog 守护程序和 Log Analytics 代理：
@@ -174,20 +174,20 @@ ms.locfileid: "104771271"
     </filter>
     ```
 
-1. 使用以下命令检查是否已按预期配置对 Cisco ASA 防火墙事件的解析： 
+1. 使用以下命令检查是否已按预期配置对 Cisco ASA 防火墙事件的解析：
 
     ```bash
     grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
     - <a name="parsing-command"></a>如果解析存在问题，脚本将生成一条错误消息，指示你手动运行以下命令（将工作区 ID 替换为占位符）。 此命令将确保正确解析并重启代理。
-    
+
         ```bash
         # Cisco ASA parsing fix
         sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
 
-1. 使用以下命令检查 syslog 源中的“计算机”字段是否已正确映射到 Log Analytics 代理中： 
+1. 使用以下命令检查 syslog 源中的“计算机”字段是否已正确映射到 Log Analytics 代理中：
 
     ```bash
     grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
@@ -243,11 +243,12 @@ ms.locfileid: "104771271"
     ```
 ---
 
+
 ## <a name="next-steps"></a>后续步骤
 
 本文档介绍了如何将 CEF 设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 
 - 了解 [CEF 和 CommonSecurityLog 字段映射](cef-name-mapping.md)。
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](./tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](./detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。

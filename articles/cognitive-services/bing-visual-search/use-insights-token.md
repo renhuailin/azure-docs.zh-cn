@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 161266a69308175637f5967b2ded48621d4d9c53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 685bdc3f67594c51f6ab749c33ab30e940faee34
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102424064"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288277"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>使用见解标记来获取图像的见解
 
@@ -262,7 +262,7 @@ namespace VisualSearchInsightsToken
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services/)
 * 拥有 Azure 订阅后，在 Azure 门户中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="创建必应搜索资源"  target="_blank">创建必应搜索资源</a>来获取密钥和终结点。 部署后，单击“转到资源”。
-* [JDK 7 或 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)（用于编译并运行此代码）。 可以使用你喜欢的 Java IDE（如果有），不过文本编辑器就足以满足要求了。
+* [JDK 7 或 8](/azure/developer/java/fundamentals/java-support-on-azure)（用于编译并运行此代码）。 可以使用你喜欢的 Java IDE（如果有），不过文本编辑器就足以满足要求了。
 
 
 ## <a name="run-the-java-application"></a>运行 Java 应用程序

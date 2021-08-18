@@ -8,16 +8,16 @@ ms.subservice: service-overview
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: mathoma
+author: danimir
+ms.author: danil
+ms.reviewer: mathoma, urmilano
 ms.date: 12/04/2018
-ms.openlocfilehash: 3e5a4283416dcd20c8d419a00cb3debfb208d118
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 5c4ea72c94e71e0c57c0d88e5f8324111ae151c2
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691560"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119702"
 ---
 # <a name="business-critical-tier---azure-sql-database-and-azure-sql-managed-instance"></a>“业务关键”层级 - Azure SQL 数据库和 Azure SQL 托管实例 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -49,11 +49,11 @@ SQL Server 数据库引擎进程和底层 .mdf/.ldf 文件都放置在同一个�
 “业务关键”服务层级为具有以下特点的应用程序而设计：需要来自基础 SSD 存储的低延迟响应（平均 1-2 毫秒）、在底层基础结构发生故障时需要快速恢复或需要将报表、分析和只读查询分流到主数据库的免费可读次要副本。
 
 选择“业务关键”服务层级而不是“常规用途”层级的主要原因包括：
--   **低 I/O 延迟要求** - 需要存储层快速做出响应（平均 1-2 毫秒）的工作负载应使用“业务关键”层级。 
--   应用程序与数据库之间频繁通信。 无法利用应用层缓存或[请求批处理](../performance-improve-use-batching.md)，并需要发送大量必须得到快速处理的 SQL 查询的应用程序非常适合使用“业务关键”层级。
--   **大量的更新** - 插入、更新和删除操作会修改内存中的数据页（脏页），而这些数据必须通过 `CHECKPOINT` 操作保存到数据文件中。 潜在的数据库引擎进程崩溃或故障转移包含大量脏页的数据库可能会增大“常规用途”层级中的恢复时间。 如果工作负荷会导致大量的内存中更改，请使用“业务关键”层级。 
--   存在修改数据的长时间运行的事务。 长时间打开的事务会阻止日志文件截断，这可能会增加日志大小和[虚拟日志文件 (VLF)](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch) 的数量。 如果存在大量的 VLF，可能会在故障转移后减慢数据库的恢复速度。
--   工作负载包含可重定向到免费辅助只读副本的报告和分析查询。
+-    **低 I/O 延迟要求** - 需要存储层快速做出响应（平均 1-2 毫秒）的工作负载应使用“业务关键”层级。 
+-    应用程序与数据库之间频繁通信。 无法利用应用层缓存或[请求批处理](../performance-improve-use-batching.md)，并需要发送大量必须得到快速处理的 SQL 查询的应用程序非常适合使用“业务关键”层级。
+-    **大量的更新** - 插入、更新和删除操作会修改内存中的数据页（脏页），而这些数据必须通过 `CHECKPOINT` 操作保存到数据文件中。 潜在的数据库引擎进程崩溃或故障转移包含大量脏页的数据库可能会增大“常规用途”层级中的恢复时间。 如果工作负荷会导致大量的内存中更改，请使用“业务关键”层级。 
+-    存在修改数据的长时间运行的事务。 长时间打开的事务会阻止日志文件截断，这可能会增加日志大小和[虚拟日志文件 (VLF)](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch) 的数量。 如果存在大量的 VLF，可能会在故障转移后减慢数据库的恢复速度。
+-    工作负载包含可重定向到免费辅助只读副本的报告和分析查询。
 - 提高复原能力，并在故障后更快地恢复。 发生系统故障时，主实例上的数据库将被禁用，某个次要副本将立即成为新的读写主数据库，该数据库随时可以处理查询。 数据库引擎不需要分析和重做日志文件中的事务，也不需要加载内存缓冲区中的所有数据。
 - 高级数据损坏防护。 “业务关键”层级在幕后利用数据库副本来实现业务连续性，因此服务还可以利用自动页面修复，这与 SQL Server 数据库[镜像和可用性组](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring)使用的技术相同。 如果副本由于数据完整性问题而无法读取某个页面，将从另一个副本检索该页面的全新副本，并替换不可读的页面，而不会造成数据丢失或客户停机。 如果数据库具有异地次要副本，则此功能在“常规用途”层级中适用。
 - 更高的可用性 - 采用多 AZ 配置的“业务关键”层级保证 99.995% 的可用性，相比之下，“常规用途”层级保证 99.99% 的可用性。

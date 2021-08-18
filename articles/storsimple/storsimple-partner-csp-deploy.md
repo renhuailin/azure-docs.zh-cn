@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: dc0cf718ee51e23fb749bdf57d5344977de009d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b79ed39464d7f10c1c2ad50f22941d50d42b802b
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96021854"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113085229"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>为云解决方案提供商计划部署 StorSimple Virtual Array
 
@@ -103,5 +103,5 @@ ms.locfileid: "96021854"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果对 CSP 中的 StorSimple 有更多问题，请转到 [CSP 中的 StorSimple：常见问题解答](storsimple-partner-csp-faq.md)。
+- 如果对 CSP 中的 StorSimple 有更多问题，请转到 [CSP 中的 StorSimple：常见问题解答](storsimple-partner-csp-faq.yml)。
 - 如果已准备好部署 StorSimple，请转到[部署 CSP 中的 StorSimple](storsimple-partner-csp-deploy.md)。

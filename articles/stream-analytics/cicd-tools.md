@@ -6,13 +6,13 @@ author: su-jie
 ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 09/10/2020
-ms.openlocfilehash: 2dbb491e77f132daf7b432f27705eba9e3e3cd3c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 06/29/2021
+ms.openlocfilehash: 29105070ea3dfb0a41db194e03095b2611a08393
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036956"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110630"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>使用 CI/CD 工具自动生成、测试和部署 Azure 流分析作业
 

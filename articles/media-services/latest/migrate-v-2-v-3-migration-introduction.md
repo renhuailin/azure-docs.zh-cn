@@ -9,18 +9,20 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 32e502ff175a9222faa0eb79fb53f2cc3f76bfb7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 49d804fdf354dc942ca256e1b5960fd201358a81
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559734"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708174"
 ---
 # <a name="migrate-from-media-services-v2-to-v3-introduction"></a>关于从媒体服务 v2 迁移到 v3 的介绍
 
 ![迁移指南徽标](./media/migration-guide/azure-media-services-logo-migration-guide.svg)
 
 媒体服务迁移指南可帮助你基于利用现有新功能的迁移，从媒体服务 V2 API 迁移到 V3 API。 你应该利用自己的最佳判断力来确定最适合你的情况的方式。
+
+[!INCLUDE [v2 deprecation notice](./includes/v2-deprecation-notice.md)]
 
 ## <a name="how-to-use-this-guide"></a>如何使用本指南
 

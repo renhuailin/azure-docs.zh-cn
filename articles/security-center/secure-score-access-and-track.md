@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 02/25/2021
-ms.openlocfilehash: 50ab34a73a7709a47efdf6904acf005cd5db9da5
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 9373806b87144005407861b2043799f0c62ce982
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753586"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237911"
 ---
 # <a name="access-and-track-your-secure-score"></a>访问和跟踪安全分数
 
@@ -48,7 +48,7 @@ ms.locfileid: "111753586"
 
 可以通过安全功能分数 API 访问分数。 通过 API 方法，可灵活地查询数据，久而久之构建自己的安全功能分数报告机制。 例如，你可以使用[安全功能分数 API](/rest/api/securitycenter/securescores) 来获取特定订阅的分数。 此外，你可以使用 [ API](/rest/api/securitycenter/securescorecontrols) 列出订阅的安全控件和当前分数。
 
-![正在通过 API 检索单个安全功能分数](media/secure-score-security-controls/single-secure-score-via-api.png)
+![通过 API 检索单个安全分数。](media/secure-score-security-controls/single-secure-score-via-api.png)
 
 有关构建在安全功能分数 API 之上的工具示例，请参阅 [GitHub 社区的安全功能分数区域](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)。 
 
@@ -105,7 +105,7 @@ ms.locfileid: "111753586"
 - **资源摘要** - 提供有关资源运行状况的摘要数据。
 - **安全评分摘要** - 提供有关评分进度的摘要数据。 使用“每个订阅一段时间内的安全评分”图表查看评分的变化。 如果发现评分发生了巨大变化，请检查“检测到的可能会影响你安全评分的更改”表，以查找可能引起变化的可能更改。 此表显示了已删除的资源、新部署的资源或其安全状态针对其中一项建议发生了更改的资源。
 
-:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="可选的一段时间内的安全评分 Power BI 面板，用于跟踪一段时间内的安全评分并调查更改":::
+:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="可选的一段时间内的安全分数 Power BI 仪表板，用于跟踪一段时间内的安全分数并调查更改。":::
 
 
 ## <a name="next-steps"></a>后续步骤

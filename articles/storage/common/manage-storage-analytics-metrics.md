@@ -9,18 +9,18 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-azurepowershell
-ms.openlocfilehash: d9179872562ea048fe713d9535c4ff2994bcd223
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5c652696d825b6dae4665de1d8afdd9bae6848a4
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110666785"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183525"
 ---
 # <a name="enable-and-manage-azure-storage-analytics-metrics-classic"></a>启用和管理 Azure 存储分析指标（经典）
 
 [Azure 存储分析](storage-analytics.md)提供了有关 Blob、队列和表的所有存储服务的指标。 你可以使用 [Azure 门户](https://portal.azure.com)来配置要为帐户记录哪些指标，并配置图表来提供指标数据的可视化表示形式。 本文介绍了如何启用和管理指标。 若要了解如何启用日志，请参阅[启用和管理 Azure 存储分析日志（经典）](manage-storage-analytics-logs.md)。
 
-建议查看[用于存储的 Azure Monitor](../../azure-monitor/insights/storage-insights-overview.md)（预览版）。 它是 Azure Monitor 的一项功能，通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 无需启用或配置任何设置，即可立即从预定义的交互式图表和包含的其他可视化效果中查看这些指标。
+建议查看[用于存储的 Azure Monitor](./storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)（预览版）。 它是 Azure Monitor 的一项功能，通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 无需启用或配置任何设置，即可立即从预定义的交互式图表和包含的其他可视化效果中查看这些指标。
 
 > [!NOTE]
 > 在 Azure 门户中检查监视数据会产生相关的费用。 有关详细信息，请参阅[存储分析](storage-analytics.md)。

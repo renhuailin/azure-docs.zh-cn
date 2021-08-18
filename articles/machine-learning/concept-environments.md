@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 11/16/2020
-ms.openlocfilehash: 648dbe6b8d275c832f219cb6f3119ac0bc518a54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52ba4eaf018c7f738df8c32f4c4cc07717aa1f03
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508463"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291016"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>什么是 Azure 机器学习环境？
 
@@ -78,7 +78,7 @@ Azure 机器学习服务在 Docker 映像和 conda 环境中生成环境定义�
  1. 下载基础映像，并执行任何 Docker 步骤
  2. 根据环境定义中指定的 conda 依赖项生成 conda 环境。
 
-如果指定[用户管理的依赖项](/python/api/azureml-core/azureml.core.environment.pythonsection)，则会省略第二个步骤。 在这种情况下，你需要负责安装任何 Python 包，方法是在基础映像中包含这些包，或者在第一个步骤中指定自定义 Docker 步骤。 你还要负责为 Python 可执行文件指定正确的位置。 还可以使用[自定义 Docker 基础映像](how-to-deploy-custom-docker-image.md)。
+如果指定[用户管理的依赖项](/python/api/azureml-core/azureml.core.environment.pythonsection)，则会省略第二个步骤。 在这种情况下，你需要负责安装任何 Python 包，方法是在基础映像中包含这些包，或者在第一个步骤中指定自定义 Docker 步骤。 你还要负责为 Python 可执行文件指定正确的位置。 还可以使用[自定义 Docker 基础映像](./how-to-deploy-custom-container.md)。
 
 ### <a name="image-caching-and-reuse"></a>缓存和重复使用映像
 
@@ -113,4 +113,3 @@ Azure 机器学习服务在 Docker 映像和 conda 环境中生成环境定义�
 
 * 了解如何在 Azure 机器学习中[创建和使用环境](how-to-use-environments.md)。
 * 查看 Python SDK 参考文档来了解[环境类](/python/api/azureml-core/azureml.core.environment%28class%29)。
-* 查看 R SDK 参考文档来了解[环境](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments)。

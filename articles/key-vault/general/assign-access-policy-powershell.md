@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9b9ff0a4f432a8fbf9eaee84bc0215af736b6bbd
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: a39a8b77b37bc5e5cc49df07449b6dd894fc005b
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110667009"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136376"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>使用 Azure PowerShell 分配 Key Vault 访问策略
 
@@ -79,5 +79,5 @@ Set-AzKeyVaultAccessPolicy -VaultName <key-vault-name> -ObjectId <Id> -Permissio
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Key Vault 安全性：标识和访问管理](security-features.md#identity-management)
+- [Azure Key Vault 安全性](security-features.md)
 - [Azure Key Vault 开发人员指南](developers-guide.md)

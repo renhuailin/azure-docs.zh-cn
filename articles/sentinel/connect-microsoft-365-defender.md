@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: 16cf1b89c2660d2505685fa931cc8b97ccb42a9b
-ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
+ms.openlocfilehash: 536a9b0fe4cacdc48f4429e1b85b5a47c4dbd449
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107992281"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778324"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>将 Microsoft 365 Defender 的数据连接到 Azure Sentinel
 
@@ -30,6 +30,8 @@ ms.locfileid: "107992281"
 > Microsoft Defender for Endpoint 以前被称为 Microsoft Defender 高级威胁防护 (MDATP)。  
 >
 > 你可能会看到旧名称，它仍将使用一段时间。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="background"></a>背景
 
@@ -131,5 +133,5 @@ let Now = now();
 
 本文档介绍了如何使用 Microsoft 365 Defender 连接器将 Microsoft 365 Defender 事件和 Microsoft Defender for Endpoint 高级搜寻事件数据集成到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](./tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](./detect-threats-built-in.md)。

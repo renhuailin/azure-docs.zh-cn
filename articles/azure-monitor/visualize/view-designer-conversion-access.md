@@ -5,12 +5,12 @@ author: shijatsu
 ms.author: shijain
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 89b812fff9856fda2bd1da896261481eddfdc566
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: d79e36c77505635cb37573712a028b98b66af1ff
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316670"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472325"
 ---
 # <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>视图设计器到工作簿的转换摘要和访问
 [视图设计器](view-designer.md)是 Azure Monitor 的一项功能，它让你能够创建自定义视图，帮助你通过图表、列表和时间线将 Log Analytics 工作区中的数据可视化。 这些元素已逐步淘汰，取而代之的是除这些功能外还可提供其他功能的工作簿。 本文详细介绍如何创建访问工作簿所需的概述摘要和权限。
@@ -33,10 +33,7 @@ ms.locfileid: "108316670"
 
 ![全部固定](media/view-designer-conversion-access/pin-all.png)
 
-
-
 ## <a name="sharing-and-viewing-permissions"></a>共享和查看权限 
-工作簿可以是专用文档或共享文档，这是它的一个优势。 默认情况下，保存的工作簿将保存在“我的报表”下，意味着只有创建者才能查看此工作簿。
 
 可以通过在“编辑模式”下从顶部工具栏中选择“共享”图标来共享工作簿。  系统会提示你将工作簿移到“共享报表”，这会生成一个可用于直接访问工作簿的链接。
 

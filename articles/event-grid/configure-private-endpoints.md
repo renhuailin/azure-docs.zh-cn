@@ -2,14 +2,14 @@
 title: 为 Azure 事件网格主题或域配置专用终结点
 description: 本文介绍如何为 Azure 事件网格主题或域配置专用终结点。
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 07/22/2021
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: df0c855a50bdb8f617513e635a021032a1ebf7da
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e97883be779d0bea22cc2169754cac3b17d83db7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706062"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469554"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>为 Azure 事件网格主题或域配置专用终结点
 使用[专用终结点](../private-link/private-endpoint-overview.md)，可以允许事件通过[专用链接](../private-link/private-link-overview.md)安全地从虚拟网络直接进入主题和域，而无需通过公共 Internet。 专用终结点为主题或域使用 VNet 地址空间中的 IP 地址。 有关详细概念信息，请参阅[网络安全](network-security.md)。

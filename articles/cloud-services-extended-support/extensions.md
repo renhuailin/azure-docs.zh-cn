@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: c9ee7e475957ca41c9094cab3b149f53e48a3764
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 84b27bc4ae30e28a1d97fb8e9931602a1eb14504
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111900893"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114444779"
 ---
 # <a name="extensions-for-cloud-services-extended-support"></a>云服务扩展（外延支持）
 
@@ -23,7 +23,7 @@ ms.locfileid: "111900893"
 
 通过 Key Vault VM 扩展，可自动刷新 Azure Key Vault 中存储的证书。 具体而言，该扩展监视一系列观测到的存储在密钥保管库中的证书，并在检测到更改时检索并安装相应的证书。 它还允许跨区域/跨订阅引用云服务的证书（外延支持）。
 
-有关详细信息，请参阅[配置云服务的密钥保管库扩展（外延支持）](https://docs.microsoft.com/azure/cloud-services-extended-support/enable-key-vault-virtual-machine)
+有关详细信息，请参阅[配置云服务的密钥保管库扩展（外延支持）](./enable-key-vault-virtual-machine.md)
 
 ## <a name="remote-desktop-extension"></a>远程桌面扩展
 
@@ -54,5 +54,5 @@ Azure 应用程序或服务可以使用 PowerShell cmdlet 来启用和配置适�
 
 ## <a name="next-steps"></a>后续步骤 
 - 查看云服务（外延支持）的[部署先决条件](deploy-prerequisite.md)。
-- 请参阅云服务（外延支持）的[常见问题解答](faq.md)。
+- 请参阅云服务（外延支持）的[常见问题解答](faq.yml)。
 - 使用 [Azure 门户](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[模板](deploy-template.md)或 [Visual Studio](deploy-visual-studio.md) 部署云服务（外延支持）。

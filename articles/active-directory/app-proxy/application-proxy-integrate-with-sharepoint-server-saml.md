@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e23d8871b50827e76bb383c4a49475627a9ca4a9
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 9ef88340c7bac7f09a532c12ba5a2ab69248046e
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108764434"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727861"
 ---
 # <a name="integrate-azure-active-directory-application-proxy-with-sharepoint-saml"></a>将 Azure Active Directory 应用程序代理与 SharePoint (SAML) 集成
 
@@ -37,7 +37,7 @@ ms.locfileid: "108764434"
 
 若要完成此配置，需要以下资源：
  - 一个 SharePoint 2013 场或更高版本的场。 SharePoint 场必须[与 Azure AD 集成](../saas-apps/sharepoint-on-premises-tutorial.md)。
- - Azure AD 租户及计划，其中包含应用程序代理。 详细了解 [Azure AD 计划和定价](https://azure.microsoft.com/pricing/details/active-directory/)。
+ - Azure AD 租户及计划，其中包含应用程序代理。 详细了解 [Azure AD 计划和定价](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
  - Azure AD 租户中[已验证的自定义域](../fundamentals/add-custom-domain.md)。 已验证的域必须与 SharePoint URL 后缀相匹配。
  - 需要 SSL 证书。 请参阅[自定义域发布](./application-proxy-configure-custom-domain.md)中的详细信息。
  - 本地 Active Directory 用户必须与 Azure AD Connect 同步，并且必须配置为[登录到 Azure](../hybrid/plan-connect-user-signin.md)。 

@@ -4,16 +4,16 @@ description: 了解如何配置 Azure 文件存储的 DNS 转发。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 3/19/2020
+ms.date: 07/02/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8dc6ac712110210414f66446827569f51f396c1f
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: e8923b578f22f15dbf84b6e2ca33dfe14df38d4b
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669800"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687130"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>配置 Azure 文件存储的 DNS 转发
 使用 Azure 文件存储可为包含文件共享的存储帐户创建专用终结点。 专用终结点可在许多不同的应用场合下发挥作用，而且特别适合用于通过专用对等互连使用 VPN 或 ExpressRoute 连接从本地网络连接到 Azure 文件共享。 
@@ -22,6 +22,13 @@ ms.locfileid: "110669800"
 
 在完成本文中所述的步骤之前，我们强烈建议先阅读[规划 Azure 文件存储的部署](storage-files-planning.md)和 [Azure 文件存储网络注意事项](storage-files-networking-overview.md)。
 
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
+
 ## <a name="overview"></a>概述
 Azure 文件存储提供两种主要类型的终结点用于访问 Azure 文件共享： 
 - 公共终结点：使用公共 IP 地址，可从全球任意位置访问。
@@ -29,7 +36,7 @@ Azure 文件存储提供两种主要类型的终结点用于访问 Azure 文件�
 
 公共和专用终结点位于 Azure 存储帐户中。 存储帐户是代表共享存储池的管理结构，你可以在其中部署多个文件共享以及其他存储资源（例如，Blob 容器或队列）。
 
-每个存储帐户具有完全限定的域名 (FQDN)。 对于公有云区域，此 FQDN 遵循 `storageaccount.file.core.windows.net` 模式，其中，`storageaccount` 是存储帐户的名称。 对此名称发出请求时（例如，使用 SMB 在工作站上装载共享），操作系统将执行 DNS 查找，以将完全限定的域名解析为 IP 地址，然后，操作系统可以使用此 IP 地址来发送 SMB 请求。
+每个存储帐户具有完全限定的域名 (FQDN)。 对于公有云区域，此 FQDN 遵循 `storageaccount.file.core.windows.net` 模式，其中，`storageaccount` 是存储帐户的名称。 对此名称发出请求时（例如，在工作站上装载共享时），操作系统会执行 DNS 查找，以将完全限定的域名解析为 IP 地址。
 
 默认情况下，`storageaccount.file.core.windows.net` 解析为公共终结点的 IP 地址。 存储帐户的公共终结点托管在 Azure 存储群集上，该群集托管存储帐户的其他许多公共终结点。 创建专用终结点时，专用 DNS 区域将使用与存储帐户专用终结点专用 IP 地址的 A 记录条目建立的 CNAME 记录映射 `storageaccount.file.core.windows.net`，链接到该专用终结点所添加到的虚拟网络。 这样，你便可以在虚拟网络中使用 `storageaccount.file.core.windows.net` FQDN，并使其解析为专用终结点的 IP 地址。
 
@@ -47,10 +54,10 @@ Azure 文件存储提供两种主要类型的终结点用于访问 Azure 文件�
 - [最新版本](/powershell/azure/install-az-ps)的 Azure PowerShell 模块。
 
 > [!Important]  
-> 本指南假设在本地环境中的 Windows Server 内使用 DNS 服务器。 可以使用任何 DNS 服务器（而不仅仅是 Windows DNS 服务器）完成本指南中所述的所有步骤。
+> 本指南假设你在本地环境中的 Windows Server 内使用 DNS 服务器。 可以使用任何 DNS 服务器（而不仅仅是 Windows DNS 服务器）完成本指南中所述的所有步骤。
 
-## <a name="manually-configuring-dns-forwarding"></a>手动配置 DNS 转发
-如果已在 Azure 虚拟网络中配置了 DNS 服务器，或者你只是想要通过组织所用的任何方法将自己的虚拟机部署到 DNS 服务器，可以使用内置的 DNS 服务器 PowerShell cmdlet 手动配置 DNS。
+## <a name="configuring-dns-forwarding"></a>配置 DNS 转发
+如果已在 Azure 虚拟网络中配置了 DNS 服务器，或者你只是想要通过组织所用的任何方法将自己的虚拟机部署到 DNS 服务器，则可以使用内置的 DNS 服务器 PowerShell cmdlet 来配置 DNS。
 
 在本地 DNS 服务器上，使用 `Add-DnsServerConditionalForwarderZone` 创建条件转发器。 此条件转发器必须部署在所有本地 DNS 服务器上，才能在正确将流量转发到 Azure 时产生效果。 请记得将 `<azure-dns-server-ip>` 替换为环境的相应 IP 地址。
 
@@ -74,60 +81,12 @@ Add-DnsServerConditionalForwarderZone `
         -MasterServers "168.63.129.16"
 ```
 
-## <a name="using-the-azure-files-hybrid-module-to-configure-dns-forwarding"></a>使用 Azure 文件混合模块配置 DNS 转发
-为了尽量简化 DNS 转发的配置，我们在 Azure 文件存储混合模块中提供了自动化功能。 用于在此模块中操作 DNS 的 cmdlet 可帮助你在 Azure 虚拟网络中部署 DNS 服务器，并将本地 DNS 服务器更新为转发到这些服务器。 
-
-如果你未曾使用过 Azure 文件存储混合模块，必须先在工作站上安装此模块。 下载[最新版本](https://github.com/Azure-Samples/azure-files-samples/releases)的 Azure 文件存储混合 PowerShell 模块：
-
-```PowerShell
-# Unzip the downloaded file
-Expand-Archive -Path AzFilesHybrid.zip
-
-# Change the execution policy to unblock importing AzFilesHybrid.psm1 module
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted
-
-# Navigate to where AzFilesHybrid is unzipped and stored and run to copy the files into your path
-.\AzFilesHybrid\CopyToPSPath.ps1 
-
-# Import AzFilesHybrid module
-Import-Module -Name AzFilesHybrid
-```
-
-部署 DNS 转发解决方案分为两个步骤：创建 DNS 转发规则集（定义要将请求转发到哪些 Azure 服务），以及实际部署 DNS 转发器。 
-
-以下示例将请求转发到存储帐户，包括针对 Azure 文件存储、Azure Blob 存储、Azure 表存储和 Azure 队列存储的请求。 如果需要，可以通过 `New-AzDnsForwardingRuleSet` cmdlet 的 `-AzureEndpoints` 参数在规则中添加针对更多 Azure 服务的转发。 请记得将 `<virtual-network-resource-group>`、`<virtual-network-name>` 和 `<subnet-name>` 替换为适合你的环境的值。
-
-```PowerShell
-# Create a rule set, which defines the forwarding rules
-$ruleSet = New-AzDnsForwardingRuleSet -AzureEndpoints StorageAccountEndpoint
-
-# Deploy and configure DNS forwarders
-New-AzDnsForwarder `
-        -DnsForwardingRuleSet $ruleSet `
-        -VirtualNetworkResourceGroupName "<virtual-network-resource-group>" `
-        -VirtualNetworkName "<virtual-network-name>" `
-        -VirtualNetworkSubnetName "<subnet-name>"
-```
-
-此外，你可能发现提供多个附加参数会很有用/有必要：
-
-| 参数名称 | 类型 | 说明 |
-|----------------|------|-------------|
-| `DnsServerResourceGroupName` | `string` | 默认情况下，DNS 服务器将部署到虚拟网络所在的同一资源组中。 如果不需要部署到同一资源组，此参数允许你选择要将 DNS 服务器部署到的备选资源组。 |
-| `DnsForwarderRootName` | `string` | 默认情况下，在 Azure 中部署的 DNS 服务器使用名称 `DnsFwder-*`，其中的星号由迭代器填充。 此参数更改该名称的根（即 `DnsFwder`）。 |
-| `VmTemporaryPassword` | `SecureString` | 默认情况下，系统会为 VM 在加入域之前使用的临时默认帐户选择一个随机密码。 VM 加入域后，将禁用默认帐户。 |
-| `DomainToJoin` | `string` | 要将 DNS VM 加入到的域。 默认情况下，系统会根据运行 cmdlet 所在的计算机的域选择此域。 |
-| `DnsForwarderRedundancyCount` | `int` | 要为虚拟网络部署的 DNS VM 数目。 默认情况下，`New-AzDnsForwarder` 会在 Azure 虚拟网络中的某个可用性集内部署两个 DNS 服务器，以确保冗余。 可根据需要修改此数字。 |
-| `OnPremDnsHostNames` | `HashSet<string>` | 手动指定的本地 DNS 主机名列表，将基于这些主机名创建转发器。 不想要在所有本地 DNS 服务器上应用转发器时（例如，当一系列客户端使用手动指定的 DNS 名称时），此参数非常有用。 |
-| `Credential` | `PSCredential` | 更新 DNS 服务器时要使用的凭据。 用于登录的用户帐户无权修改 DNS 设置时，此参数非常有用。 |
-| `SkipParentDomain` | `SwitchParameter` | 默认情况下，DNS 转发器将应用到环境中级别最高的域。 例如，如果 `northamerica.corp.contoso.com` 是 `corp.contoso.com` 的子域，则将为 `corp.contoso.com` 关联的 DNS 服务器创建转发器。 使用此参数会在 `northamerica.corp.contoso.com` 中创建转发器。 |
-
 ## <a name="confirm-dns-forwarders"></a>确认 DNS 转发器
 在测试是否已成功应用 DNS 转发器之前，我们建议使用 `Clear-DnsClientCache` 清除本地工作站上的 DNS 缓存。 若要测试是否可以成功解析存储帐户的完全限定域名，请使用 `Resolve-DnsName` 或 `nslookup`。
 
 ```powershell
 # Replace storageaccount.file.core.windows.net with the appropriate FQDN for your storage account.
-# Note the proper suffix (core.windows.net) depends on the cloud your deployed in.
+# Note the proper suffix (core.windows.net) depends on the cloud you're deployed in.
 Resolve-DnsName -Name storageaccount.file.core.windows.net
 ```
 
@@ -146,7 +105,7 @@ Section    : Answer
 IP4Address : 192.168.0.4
 ```
 
-如果已设置 VPN 或 ExpressRoute 连接，则还可以使用 `Test-NetConnection` 来确认是否可以成功地与存储帐户建立 TCP 连接。
+如果你是在装载 SMB 文件共享，则还可以使用以下 `Test-NetConnection` 命令查看是否可以成功建立到存储帐户的 TCP 连接。
 
 ```PowerShell
 Test-NetConnection -ComputerName storageaccount.file.core.windows.net -CommonTCPPort SMB

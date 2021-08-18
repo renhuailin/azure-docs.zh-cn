@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/25/2021
 ms.author: memildin
 zone_pivot_groups: manage-asc-initiatives
-ms.openlocfilehash: ab99d4aec732d2bc6b42576d30b59b0f8c0067c3
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 828dd2cc5b83737a313156876c54c290a2a67d73
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108772034"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112238834"
 ---
 # <a name="create-custom-security-initiatives-and-policies"></a>创建自定义安全计划和策略
 
@@ -34,18 +34,18 @@ ms.locfileid: "108772034"
 
 1. 选择要将自定义计划添加到的订阅或管理组。
 
-    [![选择要为其创建自定义策略的订阅](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
+    [![选择要为其创建自定义策略的订阅。](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
 
     > [!NOTE]
-    > 必须在订阅级别（或更高级别）添加自定义计划，只有这样，才会评估这些计划并在安全中心显示它们。 建议选择最广泛的可用范围。
+    > 必须在订阅级别（或更高级别）添加自定义计划，才能在安全中心评估并显示它们。 建议选择最广泛的可用范围。
 
 1. 在“安全策略”页中的“你的自定义计划”下，单击“添加自定义计划”。
 
-    [![单击“添加自定义计划”](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
+    [![单击“添加自定义计划”。](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 
     此时会显示以下页：
 
-    ![创建或添加策略](media/custom-security-policies/create-or-add-custom-policy.png)
+    ![创建或添加策略。](media/custom-security-policies/create-or-add-custom-policy.png)
 
 1. 在“添加自定义计划”页中，复查已在组织中创建的自定义策略的列表。 如果看到了你要分配到订阅的某个策略，请单击“添加”。 如果列表中没有符合需要的计划，请跳过此步骤。
 
@@ -70,7 +70,7 @@ ms.locfileid: "108772034"
 
 1. 若要查看针对策略生成的建议，请在边栏中单击“建议”打开“建议”页。 显示的建议带有“自定义”标签，在大约一小时内会一直显示。
 
-    [![自定义建议](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
+    [![自定义建议。](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
 ::: zone-end
 

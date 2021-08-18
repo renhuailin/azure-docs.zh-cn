@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: troubleshooting
-ms.custom: troubleshooting
+ms.custom: troubleshooting, devplatv2
 ms.reviewer: laobri
 ms.author: tracych
 author: tracych
 ms.date: 05/05/2021
-ms.openlocfilehash: dfdf13d36a3d60c0f544cfda7b74cdba1dcc16ec
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9fbbc2af3681b6f91ec3c1e0f6adfd46a8598c17
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382614"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448299"
 ---
 # <a name="troubleshooting-batch-endpoints-preview"></a>排查批处理终结点问题（预览版）
 
@@ -50,7 +50,7 @@ ms.locfileid: "110382614"
 
 ### <a name="get-logs"></a>获取日志
 
-使用 CLI 或 REST 调用批处理终结点后，批量评分作业将以异步方式运行。 有两个选项可用于获取批量评分作业的日志。
+使用 Azure CLI 或 REST 调用批处理终结点后，批量评分作业将以异步方式运行。 有两个选项可用于获取批量评分作业的日志。
 
 选项 1：将日志流式传输到本地控制台
 

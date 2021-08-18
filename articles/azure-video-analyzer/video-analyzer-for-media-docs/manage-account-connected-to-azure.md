@@ -1,19 +1,20 @@
 ---
 title: 管理 Azure 视频分析器媒体版（以前称为视频索引器）帐户
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: 了解如何管理连接到 Azure 的 Azure 视频分析器媒体版（以前称为视频索引器）帐户。
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: c5acccbb4d7314a6ba462284674ffd1e1fd21ca0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 25d4b5a918fbb307698910f0184231689cb84a75
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384940"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119401"
 ---
 # <a name="manage-a-video-analyzer-for-media-account-connected-to-azure"></a>管理连接至 Azure 的视频分析器媒体版帐户
 

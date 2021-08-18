@@ -10,12 +10,12 @@ ms.date: 12/28/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: c7f8f46cf8d6195df7d47663cae809c7074129e4
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: a1b9c8f81de706fb53839a241115947d6cf8d0bc
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903934"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113726907"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 授予对 Azure 存储资源的受限访问权限
 
@@ -62,7 +62,7 @@ Azure 存储支持三种类型的共享访问签名：
 有关帐户 SAS 的详细信息，请参阅[创建帐户 SAS (REST API)](/rest/api/storageservices/create-account-sas)。
 
 > [!NOTE]
-> Microsoft 建议你尽可能使用 Azure AD 凭据，而不要使用更容易受到安全威胁的帐户密钥，这是安全性方面的最佳做法。 当应用程序设计需要共享访问签名以访问 Blob 存储时，请尽可能使用 Azure AD 凭据创建用户委托 SAS 以提高安全性。 有关详细信息，请参阅[使用 Azure Active Directory 授予对 Blob 和队列的访问权限](storage-auth-aad.md)。
+> Microsoft 建议你尽可能使用 Azure AD 凭据，而不要使用更容易受到安全威胁的帐户密钥，这是安全性方面的最佳做法。 当应用程序设计需要共享访问签名以访问 Blob 存储时，请尽可能使用 Azure AD 凭据创建用户委托 SAS 以提高安全性。 有关详细信息，请参阅[授权访问 Azure 存储中的数据](authorize-data-access.md)。
 
 共享访问签名可以采取以下两种形式的一种：
 

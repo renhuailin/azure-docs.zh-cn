@@ -2,16 +2,16 @@
 title: Azure Monitor Application Insights Java
 description: 无需修改代码即可监视在任何环境中运行的 Java 应用程序的应用程序性能。 分布式跟踪和应用程序映射。
 ms.topic: conceptual
-ms.date: 03/29/2020
+ms.date: 06/24/2021
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: ec48ea7bacbc0bffdd260d7c3b06660e8e7f03c1
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 83cccb8e586973cf575cf1fcd3c70a3166aeb905
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029308"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913718"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java 无代码应用程序监视 Azure Monitor Application Insights
 
@@ -49,11 +49,9 @@ Java 代理可在任何环境中正常工作，并允许你监视所有 Java 应
 
 **2.将 JVM 指向该代理**
 
-将 `-javaagent:path/to/applicationinsights-agent-3.1.1.jar` 添加到应用程序的 JVM 参数
+将 `-javaagent:path/to/applicationinsights-agent-3.1.1.jar` 添加到应用程序的 JVM 参数。 
 
-典型的 JVM 参数包括 `-Xmx512m` 和 `-XX:+UseG1GC`。 如果你知道在何处添加这些参数，则你已知道要将此项添加到何处。
-
-有关配置应用程序 JVM 参数的其他帮助，请参阅[更新 JVM 参数的技巧](./java-standalone-arguments.md)。
+有关配置应用程序的 JVM 参数的帮助，请参阅[更新 JVM 参数的技巧](./java-standalone-arguments.md)。
 
 **3.将代理指向 Application Insights 资源**
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: eb3327ad84310e5dae55103171f7677d5b2c06d1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 75387c4309283fc1e3df543bd1dced5f4fa792bf
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108756154"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "114462318"
 ---
 # <a name="use-databox-to-migrate-from-network-attached-storage-nas-to-azure-file-shares"></a>使用 DataBox 从网络附加存储 (NAS) 迁移到 Azure 文件共享
 
@@ -26,6 +26,13 @@ ms.locfileid: "108756154"
 如果你的场景与此不同，请参阅[迁移指南表](storage-files-migration-overview.md#migration-guides)。
 
 本文指导你完成一个端到端的过程，其中包括从 NAS 设备迁移到正常运行的 Azure 文件共享所需进行的规划、部署和网络配置。 本指南使用 Azure DataBox 进行批量数据传输（脱机数据传输）。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
 
 ## <a name="migration-goals"></a>迁移目标
 

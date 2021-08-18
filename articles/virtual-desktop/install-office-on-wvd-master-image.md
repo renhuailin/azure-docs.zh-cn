@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 09dda24d7bd177764f9d715256762e25cb4729a3
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: ca466110a3ac876df444aa380a4a2dde0384f1fa
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757564"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294121"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>在主 VHD 映像中安装 Office
 
@@ -159,7 +159,7 @@ OneDrive 通常在每用户模式下安装。 在此环境中，应在每台计�
 
 Azure 虚拟桌面不支持 Skype for Business。
 
-有关安装 Microsoft Teams 的帮助信息，请参阅[在 Azure 虚拟桌面上使用 Microsoft Teams](teams-on-wvd.md)。 Azure 虚拟桌面上适用于 Microsoft Teams 的媒体优化以预览版提供。
+有关安装 Microsoft Teams 的帮助信息，请参阅[在 Azure 虚拟桌面上使用 Microsoft Teams](./teams-on-avd.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,21 +1,20 @@
 ---
 title: 使用适用于 Azure CLI 的 IoT 扩展进行 Azure IoT 设备管理 | Microsoft Docs
 description: 使用适用于 Azure CLI 的 IoT 扩展工具进行 Azure IoT 中心设备管理，特点是使用直接方法并提供孪生所需的属性管理选项。
-author: chrissie926
+author: robinsh
 manager: ''
 keywords: azure iot 设备管理, azure iot 中心设备管理, 设备管理 iot, iot 中心设备管理
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
-ms.author: menchi
-ms.openlocfilehash: a6bf14691e583190c4485ae854de78b187d95211
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.author: robinsh
+ms.openlocfilehash: c67e9fc7cb6a2530c752efee760b2fb7fcb7f277
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108773892"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727093"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>针对 Azure IoT 中心设备管理，使用适用于 Azure CLI 的 IoT 扩展
 
@@ -43,7 +42,7 @@ ms.locfileid: "108773892"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 请完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程。 例如，可转到[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)教程或[发送遥测](quickstart-send-telemetry-dotnet.md)快速入门中的一个教程。 这些文章阐述下列要求：
+* 请完成 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程。 例如，可转到[将 Raspberry Pi 与 Node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)教程或[发送遥测](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)快速入门中的一个教程。 这些文章阐述下列要求：
 
   * 一个有效的 Azure 订阅。
   * 已在订阅中创建一个 Azure IoT 中心。

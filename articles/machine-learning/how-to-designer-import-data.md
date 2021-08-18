@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 author: likebupt
 ms.author: keli19
-ms.date: 11/13/2020
+ms.date: 06/13/2021
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: fca949ae65ea046d6e65ba03da7b9b0107c37fd9
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 6e0cdbb7511132d4ecd3399e0ef5be7c2541d34b
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889369"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112235898"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>将数据导入到 Azure 机器学习设计器
 
@@ -64,8 +64,9 @@ ms.locfileid: "107889369"
 ### <a name="limitations"></a>限制 
 
 - 目前只能可视化设计器中的表格数据集。 如果在设计器外注册文件数据集，则无法在设计器画布中对其进行可视化。
-- 数据集存储在虚拟网络 (VNet) 中。 如果要进行可视化，则需要启用数据存储的工作区托管标识。
-    1. 转到相关的数据存储，然后单击“更新凭据”
+- 目前，设计器仅支持存储在 Azure Blob 存储 中的预览输出。 可以在模块右侧面板“参数”选项卡下的“输出设置”中检查和更改输出数据存储 。
+- 如果数据存储在虚拟网络 (VNet) 中，并且你希望可以预览，则需要启用数据存储的工作区托管标识。
+    1. 转到相关的数据存储，然后单击“更新身份验证”
     :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="更新凭据":::
     1. 选择“确定”，启用工作区托管标识。
     :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="启用工作区托管标识":::

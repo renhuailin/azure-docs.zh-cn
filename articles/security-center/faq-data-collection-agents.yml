@@ -14,12 +14,12 @@ metadata:
   ms.workload: na
   ms.date: 11/15/2020
   ms.author: memildin
-  ms.openlocfilehash: 355638c138ff14b05e7deb98be134d2c4605cc50
-  ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+  ms.openlocfilehash: efee81f34c1cec045b25d28608f8340ce14eaa52
+  ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/07/2021
-  ms.locfileid: "111907118"
+  ms.lasthandoff: 08/14/2021
+  ms.locfileid: "122177891"
 title: 常见问题解答 - 有关数据收集、代理和工作区的问题
 summary: >
   安全中心从 Azure 虚拟机 (VM)、虚拟机规模集、IaaS 容器和非 Azure 计算机（包括本地计算机）收集数据，以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的，该代理从计算机中读取各种与安全相关的配置和事件日志，然后将数据复制到工作区进行分析。
@@ -27,203 +27,230 @@ sections:
 - name: 忽略
   questions:
   - question: >
-      安全中心创建的工作区中的 Azure Monitor 日志是否会产生费用？
+      Am I billed for Azure Monitor logs on the workspaces created by Security Center?
     answer: >
-      否。 Azure Monitor 日志配置为按节点计费时，安全中心创建的工作区中的 Azure Monitor 日志不会产生费用。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
+      No. Workspaces created by Security Center, while configured for Azure Monitor logs per node billing, don't incur Azure Monitor logs charges. Security Center billing is always based on your Security Center security policy and the solutions installed on a workspace:
 
 
-      - 关闭 Azure Defender - 安全中心在默认工作区中启用“SecurityCenterFree”解决方案。 如果 Azure Defender 处于关闭状态，则你无需付费。
+      - **Azure Defender off** – Security Center enables the "SecurityCenterFree" solution on the default workspace. You won't be billed if Azure Defender is off.
 
 
-      - 开启 Azure Defender - 安全中心在默认工作区中启用“Security”解决方案。
+      - **Azure Defender on** – Security Center enables the "Security" solution on the default workspace.
 
 
-      有关所选货币以及你所在区域的定价详细信息，请参阅[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)。
+      For pricing details in your currency of choice and according to your region, see [Security Center pricing](https://azure.microsoft.com/pricing/details/security-center/).
 
 
       > [!NOTE]
 
-      > 安全中心创建的工作区的 Log Analytics 定价层不会影响安全中心计费。
+      > The log analytics pricing tier of workspaces created by Security Center does not affect Security Center billing.
 
 
       [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
   - question: >
-      什么是 Log Analytics 代理？
-    answer: "Azure 安全中心依赖 [Log Analytics 代理](../azure-monitor/agents/log-analytics-agent.md)来监视安全漏洞和威胁。该代理与 Azure Monitor 服务所用的代理相同， \n\n有时又称为 Microsoft Monitoring Agent（或“MMA”）。 \n\n该代理从已连接的计算机中收集各种与安全相关的配置详细信息和事件日志，然后将数据复制到 Log Analytics 工作区以进行进一步分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。\n\n请确保计算机正在运行此代理支持的操作系统之一，如以下页面所述：\n\n* [适用于 Windows 的 Log Analytics 代理支持的操作系统](../azure-monitor/agents/agents-overview.md#supported-operating-systems)\n\n* [适用于 Linux 的 Log Analytics 代理支持的操作系统](../azure-monitor/agents/agents-overview.md#supported-operating-systems)\n\n详细了解 [Log Analytics 代理收集的数据](security-center-enable-data-collection.md)。\n"
+      What is the Log Analytics agent?
+    answer: "To monitor for security vulnerabilities and threats, Azure Security Center depends on the [Log Analytics Agent](../azure-monitor/agents/log-analytics-agent.md) - this is the same agent used by the Azure Monitor service. \n\nThe agent is sometimes referred to as the Microsoft Monitoring Agent (or \"MMA\"). \n\nThe agent collects various security-related configuration details and event logs from connected machines, and then copies the data to your Log Analytics workspace for further analysis. Examples of such data are: operating system type and version, operating system logs (Windows event logs), running processes, machine name, IP addresses, and logged in user.\n\nEnsure your machines are running one of the supported operating systems for the agent as described on the following pages:\n\n* [Log Analytics agent for Windows supported operating systems](../azure-monitor/agents/agents-overview.md#supported-operating-systems)\n\n* [Log Analytics agent for Linux supported operating systems](../azure-monitor/agents/agents-overview.md#supported-operating-systems)\n\nLearn more about the [data collected by the Log Analytics agent](security-center-enable-data-collection.md).\n"
   - question: >
-      VM 需要满足哪些条件才能自动预配 Log Analytics 代理安装？
+      What qualifies a VM for automatic provisioning of the Log Analytics agent installation?
     answer: >
-      Windows 或 Linux IaaS VM 的合格条件如下：
+      Windows or Linux IaaS VMs qualify if:
 
 
-      - 当前未在该 VM 上安装 Log Analytics 代理扩展。
+      - The Log Analytics agent extension is not currently installed on the VM.
 
-      - 该 VM 处于正在运行状态。
+      - The VM is in running state.
 
-      - 安装了 Windows 或 Linux [Azure 虚拟机代理](../virtual-machines/extensions/agent-windows.md)。
+      - The Windows or Linux [Azure Virtual Machine Agent](../virtual-machines/extensions/agent-windows.md) is installed.
 
-      - 该 VM 未用作应用程序，例如 Web 防火墙或下一代防火墙。
+      - The VM is not used as an appliance such as web application firewall or next generation firewall.
   - question: >
-      创建的默认 Log Analytics 工作区的位置是哪里？
+      Where is the default Log Analytics workspace created?
     answer: >
-      默认工作区的位置取决于 Azure 区域：
+      The location of the default workspace depends on your Azure region:
 
 
-      - 对于美国和巴西的 VM，默认工作区的位置为美国
+      - For VMs in the United States and Brazil the workspace location is the United States
 
-      - 对于加拿大的 VM，工作区位置为加拿大
+      - For VMs in Canada, the workspace location is Canada
 
-      - 对于欧洲的 VM，工作区位置为欧洲
+      - For VMs in Europe the workspace location is Europe
 
-      - 对于英国的 VM，工作区位置为英国
+      - For VMs in the UK the workspace location is the UK
 
-      - 对于东亚和东南亚的 VM，工作区位置为亚洲
+      - For VMs in East Asia and Southeast Asia the workspace location is Asia
 
-      - 对于韩国的 VM，工作区位置为韩国
+      - For VMs in Korea, the workspace location is Korea
 
-      - 对于印度的 VM，工作区位置为印度
+      - For VMs in India, the workspace location is India
 
-      - 对于日本的 VM，工作区位置为日本
+      - For VMs in Japan, the workspace location is Japan
 
-      - 对于中国的 VM，工作区位置为中国
+      - For VMs in China, the workspace location is China
 
-      - 对于澳大利亚的 VM，工作区位置为澳大利亚
+      - For VMs in Australia, the workspace location is Australia
   - question: >
-      Log Analytics 代理收集哪些安全事件？
-    answer: "有关代理收集的安全事件的完整列表，请参阅[为“常用”和“最小”安全事件设置存储了哪些事件类型？](security-center-enable-data-collection.md#what-event-types-are-stored-for-common-and-minimal)。\n\n> [!IMPORTANT]\n> 请注意，对于某些服务（例如 Azure 防火墙），如果启用了日志记录并选择记录琐碎资源（例如，将日志设置为“详细”），则可能会对 Log Analytics 工作区的存储需求产生重大影响。 \n"
+      What security events are collected by the Log Analytics agent?
+    answer: "For a full list of the security events collected by the agent, see [What event types are stored for the \"Common\" and \"Minimal\" security events settings?](security-center-enable-data-collection.md#what-event-types-are-stored-for-common-and-minimal).\n\n> [!IMPORTANT]\n> For some services, such as Azure Firewall, if you have enabled logging and chosen a chatty resource to log (for example, setting the log to *verbose*) you may see significant impacts on your Log Analytics workspace storage needs. \n"
   - question: >
-      是否可以删除安全中心创建的默认工作区？
+      Can I delete the default workspaces created by Security Center?
     answer: >
-      建议不要删除默认工作区。 安全中心使用默认工作区存储 VM 的安全数据。 删除工作区后，安全中心无法收集此数据，因此无法提供某些安全建议和提示。
+      **Deleting the default workspace is not recommended.** Security Center uses the default workspaces to store security data from your VMs. If you delete a workspace, Security Center is unable to collect this data and some security recommendations and alerts are unavailable.
 
 
-      若要恢复，请删除连接到已删除工作区的 VM 上的 Log Analytics 代理。 安全中心会重新安装代理并创建新的默认工作区。
+      To recover, remove the Log Analytics agent on the VMs connected to the deleted workspace. Security Center reinstalls the agent and creates new default workspaces.
   - question: >
-      我如何使用现有的 Log Analytics 工作区？
-    answer: "可以选择现有 Log Analytics 工作区，用于存储安全中心收集的数据。 使用现有 Log Analytics 工作区的先决条件：\n\n- 工作区必须与选定 Azure 订阅相关联。\n- 至少必须拥有读取权限，才能访问工作区。\n\n选择现有 Log Analytics 工作区的具体步骤：\n\n1. 从安全中心的菜单中，选择“定价和设置”。\n1. 选择相关订阅。\n1. 打开“自动预配”页。\n1. 对于 Log Analytics 代理，选择“编辑配置”。 \n\n    :::image type=\"content\" source=\"./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png\" alt-text=\"使用自动部署时要使用的 Log Analytics 代理配置\" lightbox=\"./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png\":::\n\n1. 选择“将 Azure VM 连接到其他工作区”选择现有工作区。\n\n    :::image type=\"content\" source=\"./media/security-center-enable-data-collection/choose-workspace.png\" alt-text=\"选择 Log Analytics 代理要报告给的非默认工作区\" lightbox=\"./media/security-center-enable-data-collection/choose-workspace.png\":::\n\n    > [!TIP]\n    > 此列表仅包含你有权访问的工作区和 Azure 订阅中的工作区。\n\n1. 选择“保存”。 系统会询问是否要重新配置受监视的 VM。\n\n    - 如果只希望在新 VM 上应用新的工作区设置，请选择“否”。 新的工作区设置只会应用于新的代理安装；新发现的 VM 没有安装 Log Analytics 代理。\n    - 如果希望在所有 VM 上应用新的工作区设置，请选择“是”。 此外，所有连接到安全中心创建的工作区的 VM 也都会重新连接到新的目标工作区。\n\n    > [!NOTE]\n    > 如果选择“是”，不得删除安全中心创建的任何工作区，除非所有 VM 都已重新连接到新的目标工作区。 如果过早删除工作区，此操作将会失败。\n"
+      How can I use my existing Log Analytics workspace?
+    answer: "You can select an existing Log Analytics workspace to store data collected by Security Center. To use your existing Log Analytics workspace:\n\n- The workspace must be associated with your selected Azure subscription.\n- At a minimum, you must have read permissions to access the workspace.\n\n> [!NOTE]\n> A Log Analytics agent and the machine on which it’s running should both report to a Log Analytics workspace in the same tenant. If they’re reporting to different tenants, you won’t get security alerts from that agent.\n\nTo select an existing Log Analytics workspace:\n\n1. From Security Center's menu, select **Pricing & settings**.\n1. Select the relevant subscription.\n1. Open the **Auto provisioning** page.\n1. For the Log Analytics agent, select **Edit configuration**. \n\n    :::image type=\"content\" source=\"./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png\" alt-text=\"The configuration of the Log Analytics agent to use when using auto deploy\" lightbox=\"./media/security-center-enable-data-collection/edit-configuration-auto-deploy-agent.png\":::\n\n1. Select **Connect Azure VMs to a different workspace** and choose your existing workspace.\n\n    :::image type=\"content\" source=\"./media/security-center-enable-data-collection/choose-workspace.png\" alt-text=\"Selecting a non-default workspace for your Log Analytics agent to report to\" lightbox=\"./media/security-center-enable-data-collection/choose-workspace.png\":::\n\n    > [!TIP]\n    > The list only includes workspaces to which you have access and which are in your Azure subscription.\n\n1. Select **Save**. You will be asked if you would like to reconfigure monitored VMs.\n\n    - Select **No** if you want the new workspace settings to **apply on new VMs only**. The new workspace settings only apply to new agent installations; newly discovered VMs that do not have the Log Analytics agent installed.\n    - Select **Yes** if you want the new workspace settings to **apply on all VMs**. In addition, every VM connected to a Security Center created workspace is reconnected to the new target workspace.\n\n    > [!NOTE]\n    > If you select **Yes**, don't delete any workspaces created by Security Center until all VMs have been reconnected to the new target workspace. This operation fails if a workspace is deleted too early.\n"
   - question: >
-      如果 Log Analytics 代理已作为扩展安装到 VM 上，会怎样？
+      What if the Log Analytics agent was already installed as an extension on the VM?
     answer: >
-      当将监视代理作为扩展安装时，扩展配置仅允许向单个工作区进行报告。 安全中心不会覆盖用户工作区的现有连接。 如果已连接的工作区中安装了“Security”或“SecurityCenterFree”解决方案，则安全中心会将来自 VM 的安全性数据存储在该工作区中。 在此过程中，安全中心可以将扩展版本升级到最新版本。
+      When the Monitoring Agent is installed as an extension, the extension configuration allows reporting to only a single workspace. Security Center does not override existing connections to user workspaces. Security Center will store security data from a VM in a workspace that is already connected, provided that the "Security" or "SecurityCenterFree" solution has been installed on it. Security Center may upgrade the extension version to the latest version in this process.
 
 
-      有关详细信息，请参阅[对预先存在的代理安装进行自动预配](security-center-enable-data-collection.md#preexisting)。
+      For more information, see [Automatic provisioning in cases of a pre-existing agent installation](security-center-enable-data-collection.md#preexisting).
   - question: >
-      如果 Log Analytics 代理直接安装在计算机上，而不是作为扩展（直接代理）安装，该怎么办？
+      What if a Log Analytics agent is directly installed on the machine but not as an extension (Direct Agent)?
     answer: >
-      如果 Log Analytics 代理直接安装在 VM 上（而不是作为 Azure 扩展安装），则安全中心将安装 Log Analytics 代理扩展，可能还会将 Log Analytics 代理升级到最新版本。
+      If the Log Analytics agent is installed directly on the VM (not as an Azure extension), Security Center will install the Log Analytics agent extension, and may upgrade the Log Analytics agent to the latest version.
 
 
-      安装的代理将继续向其已配置的工作区报告，此外，它还会向安全中心上配置的工作区报告（Windows 计算机支持多主页）。
+      The agent installed will continue to report to its already configured workspace(s), and in addition will report to the workspace configured in Security Center (Multi-homing is supported on Windows machines).
 
 
-      如果配置的工作区是一个用户工作区（而不是安全中心的默认工作区），则需要在该工作区上安装“Security”或“SecurityCenterFree”解决方案，以便安全中心开始处理向该工作区报告的 VM 和计算机中的事件。
+      If the configured workspace is a user workspace (not Security Center's default workspace), you will need to install the "Security" or "SecurityCenterFree" solution on it for Security Center to start processing events from VMs and computers reporting to that workspace.
 
 
-      对于 Linux 计算机，尚不支持代理多主页，因此，如果检测到现有的代理安装，则不会进行自动预配，并且不会更改计算机的配置。
+      For Linux machines, Agent multi-homing is not yet supported - hence, if an existing agent installation is detected, automatic provisioning will not occur and the machine's configuration will not be altered.
 
 
-      对于在 2019 年 3 月 17 日之前载入到安全中心的订阅上的现有计算机，检测到现有代理时，将不会安装 Log Analytics 代理扩展，并且计算机将不会受到影响。 对于这些计算机，请参阅“解决计算机上的监视代理运行状况问题”建议，以解决这些计算机上的代理安装问题
+      For existing machines on subscriptions onboarded to Security Center before March 17 2019, when an existing agent will be detected, the Log Analytics agent extension will not be installed and the machine will not be affected. For these machines, see the "Resolve monitoring agent health issues on your machines" recommendation to resolve the agent installation issues on these machines
 
 
-      有关详细信息，请参阅下一部分[如果已在 VM 上安装 System Center Operations Manager 或 OMS 直接代理，会发生什么情况？](#what-if-a-system-center-operations-manager-agent-is-already-installed-on-my-vm-)
+      For more information, see the next section [What happens if a System Center Operations Manager or OMS direct agent is already installed on my VM?](#what-if-a-system-center-operations-manager-agent-is-already-installed-on-my-vm-)
   - question: >
-      如果已在 VM 上安装 System Center Operations Manager 代理，会发生什么情况？
+      What if a System Center Operations Manager agent is already installed on my VM?
     answer: >
-      安全中心会将 Log Analytics 代理扩展并行安装到现有 System Center Operations Manager 代理。 现有代理将继续正常向 System Center Operations Manager 服务器报告。 请注意，Operations Manager 代理和 Log Analytics 代理共享公共运行时库，在此过程中这些库将更新为最新版本。 注意：如果安装了 2012 版的 Operations Manager 代理，请不要启用自动预配（如果 Operations Manager 服务器也是 2012 版本，可管理性功能可能会丢失）。
+      Security center will install the Log Analytics agent extension side by side to the existing System Center Operations Manager agent. The existing agent will continue to report to the System Center Operations Manager server normally. Note that the Operations Manager agent and Log Analytics agent share common run-time libraries, which will be updated to the latest version during this process. Note - If version 2012 of the Operations Manager agent is installed, do not turn on automatic provisioning (manageability capabilities can be lost when the Operations Manager server is also version 2012).
   - question: >
-      删除这些扩展会有什么影响？
+      What is the impact of removing these extensions?
     answer: >
-      删除 Microsoft 监视扩展后，安全中心无法从 VM 收集安全数据，因此无法提供某些安全建议和提示。 安全中心会在 24 小时内确定 VM 缺少扩展并重新安装扩展。
+      If you remove the Microsoft Monitoring Extension, Security Center is not able to collect security data from the VM and some security recommendations and alerts are unavailable. Within 24 hours, Security Center determines that the VM is missing the extension and reinstalls the extension.
   - question: >
-      如何停止自动安装代理和创建工作区？
-    answer: "可以在安全策略中为订阅禁用自动预配，但不建议这样做。 禁用自动预配会限制安全中心的建议和警报。 禁用自动预配的具体步骤：\n\n1. 从安全中心的菜单中，选择“定价和设置”。\n1. 选择相关订阅。\n1. 如果订阅已启用 Azure Defender，请打开该“Azure Defender 计划”，然后选择“关闭 Azure Defender”。 \n\n    :::image type=\"content\" source=\"./media/security-center-platform-migration-faq/pricing-tier.png\" alt-text=\"启用或禁用 Azure Defender\":::\n\n1. 从“自动预配”页上，选择笔，然后在“安全策略 - 数据收集”页中关闭自动预配。\n\n    :::image type=\"content\" source=\"./media/security-center-enable-data-collection/agent-toggles.png\" alt-text=\"为 Log Analytics 代理启用自动部署\":::\n\n1. 选择“保存”。\n"
+      How do I stop the automatic agent installation and workspace creation?
+    answer: >
+      You can turn off automatic provisioning for your subscriptions in the security policy but this is not recommended. Turning off auto provisioning limits Security Center recommendations and alerts. To disable automatic provisioning:
+
+
+      1. From Security Center's menu, select **Pricing & settings**.
+
+      1. Select the relevant subscription.
+
+      1. If your subscription has Azure Defender enabled, open **Azure Defender plans** and select **Azure Defender off**.
+
+          :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Enable or disable Azure Defender":::
+
+      1. From the **Auto provisioning** page, Select pen  and the turn off auto provisioning in the  **Security policy – Data collection** page.
+
+          :::image type="content" source="./media/security-center-enable-data-collection/agent-toggles.png" alt-text="Enable auto deploy for the Log Analytics agent":::
+
+      1. Select **Save**.
   - question: >
-      是否应选择禁用自动安装代理和创建工作区？
+      Should I opt out of the automatic agent installation and workspace creation?
     answer: >
       > [!NOTE]
 
-      > 如果选择禁用自动预配，请务必查看[选择禁用有何影响](#what-are-the-implications-of-opting-out-of-automatic-provisioning-)和[选择禁用时的建议步骤](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning-)部分。
+      > Be sure to review sections [What are the implications of opting out?](#what-are-the-implications-of-opting-out-of-automatic-provisioning-) and [recommended steps when opting out](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning-) if you choose to opt out of automatic provisioning.
 
 
-      如果存在以下情况，可以选择禁用自动预配：
+      You may want to opt out of automatic provisioning if the following applies to you:
 
 
-      - 安全中心执行的自动代理安装应用到整个订阅。 无法将自动安装应用到一部分 VM。 如果某些重要 VM 上无法安装 Log Analytics 代理，则应选择禁用自动预配。
+      - Automatic agent installation by Security Center applies to the entire subscription. You cannot apply automatic installation to a subset of VMs. If there are critical VMs that cannot be installed with the Log Analytics agent, then you should opt out of automatic provisioning.
 
-      - 安装 Log Analytics 代理扩展会更新代理的版本。 这种方法适用于直接代理和 System Center Operations Manager 代理（在后一种代理中，Operations Manager 和 Log Analytics 代理共享公共运行时库，这些库在此过程中将更新）。 如果已安装的 Operations Manager 代理版本为 2012 并已将其升级，则当 Operations Manager 服务器的版本也是 2012 时，可管理性功能可能会丢失。 如果已安装的 Operations Manager 代理版本为 2012，则应考虑选择禁用自动预配。
+      - Installation of the Log Analytics agent extension updates the agent's version. This applies to a direct agent and a System Center Operations Manager agent (in the latter, the Operations Manager and Log Analytics agent share common runtime libraries - which will be updated in the process). If the installed Operations Manager agent is version 2012 and is upgraded, manageability capabilities can be lost when the Operations Manager server is also version 2012. Consider opting out of automatic provisioning if the installed Operations Manager agent is version 2012.
 
-      - 如果自定义工作区在订阅的外部（集中式工作区），则应选择禁用自动预配。 可以手动安装 Log Analytics 代理扩展并将其连接到工作区，无需安全中心覆盖连接。
+      - If you want to avoid creation of multiple workspaces per subscription and you have your own custom workspace within the subscription, then you have two options:
 
-      - 如果想要避免为每个订阅创建多个工作区，并且订阅中包含自己的自定义工作区，则可以采取以下两种做法：
+         - You can opt out of automatic provisioning. After migration, set the default workspace settings as described in [How can I use my existing Log Analytics workspace?](#how-can-i-use-my-existing-log-analytics-workspace-)
 
-         - 可以选择禁用自动预配。 迁移后，根据[如何使用现有的 Log Analytics 工作区](#how-can-i-use-my-existing-log-analytics-workspace-)中所述指定默认工作区设置。
-
-         - 也可以让迁移完成，在 VM 上安装 Log Analytics 代理，并将 VM 连接到所创建的工作区。 然后，在选择启用重新配置已安装代理的情况下，通过指定默认工作区设置来选择自己的自定义工作区。 有关详细信息，请参阅[如何使用现有的 Log Analytics 工作区？](#how-can-i-use-my-existing-log-analytics-workspace-)
+         - Or, you can allow the migration to complete, the Log Analytics agent to be installed on the VMs, and the VMs connected to the created workspace. Then, select your own custom workspace by setting the default workspace setting with opting in to reconfiguring the already installed agents. For more information, see [How can I use my existing Log Analytics workspace?](#how-can-i-use-my-existing-log-analytics-workspace-)
   - question: >
-      选择禁用自动预配有何影响？
+      What are the implications of opting out of automatic provisioning?
     answer: >
-      完成迁移后，安全中心无法从 VM 收集安全数据，因此无法提供某些安全建议和警报。 如果选择禁用自动预配，请手动安装 Log Analytics 代理。 请参阅[选择禁用时的建议步骤](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning-)。
+      When migration is complete, Security Center can't collect security data from the VM and some security recommendations and alerts are unavailable. If you opt out, install the Log Analytics agent manually. See [recommended steps when opting out](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning-).
   - question: >
-      选择禁用自动预配时的建议步骤是什么？
+      What are the recommended steps when opting out of automatic provisioning?
     answer: >
-      手动安装 Log Analytics 代理扩展，使安全中心能够从 VM 收集安全数据并提供建议和警报。 有关安装的指导，请参阅 [Windows VM 的代理安装](../virtual-machines/extensions/oms-windows.md)或 [Linux VM 的代理安装](../virtual-machines/extensions/oms-linux.md)。
+      Manually install the Log Analytics agent extension so Security Center can collect security data from your VMs and provide recommendations and alerts. See [agent installation for Windows VM](../virtual-machines/extensions/oms-windows.md) or [agent installation for Linux VM](../virtual-machines/extensions/oms-linux.md) for guidance on installation.
 
 
-      可将代理连接到任何现有的自定义工作区或安全中心创建的工作区。 如果自定义工作区未启用“Security”或“SecurityCenterFree”解决方案，则需要应用解决方案。 若要应用解决方案，请选择自定义工作区或订阅，并通过“安全策略 – 定价层”页面应用定价层。
+      You can connect the agent to any existing custom workspace or Security Center created workspace. If a custom workspace does not have the "Security" or "SecurityCenterFree" solutions enabled, then you will need to apply a solution. To apply, select the custom workspace or subscription and apply a pricing tier via the **Security policy – Pricing tier** page.
 
 
-      :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="启用或禁用 Azure Defender":::
+      :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Enable or disable Azure Defender":::
 
 
-      安全中心将会根据选定的定价层在工作区中启用正确的解决方案。
+      Security Center will enable the correct solution on the workspace based on the selected pricing tier.
   - question: >
-      如何删除由安全中心安装的 OMS 扩展？
+      How do I remove OMS extensions installed by Security Center?
     answer: >
-      可以手动删除 Log Analytics 代理。 不建议这样操作，因为这会限制安全中心的建议和提示。
+      You can manually remove the Log Analytics agent. This is not recommended as it limits Security Center recommendations and alerts.
 
 
       > [!NOTE]
 
-      > 启用数据收集后，安全中心会删除代理，然后重新安装。  需要禁用数据收集，然后再手动删除代理。 请参阅“如何停止自动代理安装和工作区创建？”，查看有关禁用数据收集的说明。
+      > If data collection is enabled, Security Center will reinstall the agent after you remove it.  You need to disable data collection before manually removing the agent. See How do I stop the automatic agent installation and workspace creation? for instructions on disabling data collection.
 
 
-      手动删除代理：
+      To manually remove the agent:
 
 
-      1.    在门户中，打开“Log Analytics”。
+      1.    In the portal, open **Log Analytics**.
 
 
-      1.    在 Log Analytics 页面上选择工作区：
+      1.    On the Log Analytics page, select a workspace:
 
 
-      1.    选择每个不需要监视的 VM 并选择“断开连接”。
+      1.    Select the VMs that you don't want to monitor and select **Disconnect**.
 
-         ![删除代理](./media/security-center-platform-migration-faq/remove-the-agent.png)
+         ![Remove the agent](./media/security-center-platform-migration-faq/remove-the-agent.png)
 
       > [!NOTE]
 
-      > 如果 Linux VM 已有非扩展 OMS 代理，则删除该扩展也会删除代理，因此需要重新安装代理。
+      > If a Linux VM already has a non-extension OMS agent, removing the extension removes the agent as well and you'll have to reinstall it.
   - question: >
-      如何禁用数据收集？
-    answer: "强烈建议使用自动预配，以获取有关系统更新、OS 漏洞和终结点保护的安全警报和建议。 默认情况下，自动预配处于禁用状态。\n\n如果已启用该功能，但现在想禁用它：\n\n1. 从 [Azure 门户](https://portal.azure.com)打开“安全中心”，然后选择“定价和设置”。 \n\n1. 选择要禁用自动预配的订阅。\n\n1. 在“自动预配”下，关闭 Log Analytics 代理的开关。\n"
-  - question: >
-      如何启用数据收集？
+      How do I disable data collection?
     answer: >
-      可在安全中心策略中对 Azure 订阅启用数据收集。 启用数据收集。 [登录到 Azure 门户](https://portal.azure.com)，依次选择“浏览”、“安全中心”和“策略”  。 选择希望启用自动设置的订阅。 选择订阅时，“安全策略 - 数据收集”将打开。 在“自动设置”下，选择“打开” 。
-  - question: >
-      启用数据收集之后会发生什么？
-    answer: "启用自动预配后，安全中心可在所有受支持的 Azure VM 以及任何新建的 Azure VM 中预配 Log Analytics 代理。 建议进行自动预配，但也可以手动完成代理安装。 [了解如何安装 Log Analytics 代理扩展](../azure-monitor/vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)。 \n\n该代理可启用进程创建事件 4688 和事件 4688 内的 *CommandLine* 字段。 VM 上创建的新进程由事件日志记录，并由安全中心检测服务监视。 若要详细了解针对每个新进程记录的详细信息，请参阅 [4688 中的说明字段](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields)。 该代理还收集 VM 上创建的 4688 事件，并将这些事件存储在搜索中。\n\n该代理还为[自适应应用程序控件](security-center-adaptive-application.md)启用数据收集，安全中心会在审核模式下配置本地 AppLocker 策略以允许所有应用程序。 该策略将导致 AppLocker 生成事件，然后由安全中心收集和利用这些事件。 请务必注意，不会在已配置 AppLocker 策略的任何计算机上配置此策略。 \n\n当安全中心检测到 VM 上的可疑活动时，如果已提供[安全联系信息](security-center-provide-security-contact-details.md)，将通过电子邮件通知客户。 警报也会显示在安全中心的安全警报仪表板中。\n"
-  - question: >
-      安全中心是否可以使用 OMS 网关？
-    answer: >
-      是的。 Azure 安全中心利用 Azure Monitor，使用 Log Analytics 代理从 Azure VM 和服务器收集数据。
+      Automatic provisioning is highly recommended in order to get security alerts and recommendations about system updates, OS vulnerabilities, and endpoint protection. By default, auto provisioning is disabled.
 
-      若要收集数据，每个 VM 和服务器都必须连接到使用 HTTPS 的 Internet。 可直接、通过代理或 [OMS 网关](../azure-monitor/agents/gateway.md)完成此连接。
+
+      If you've enabled it but now want to disable it:
+
+
+      1. From [the Azure portal](https://portal.azure.com), open **Security Center** and select **Pricing and settings**.
+
+
+      1. Select the subscription on which you want to disable automatic provisioning.
+
+
+      1. Under **Auto provisioning**, turn off the toggle for the Log Analytics agent.
   - question: >
-      Monitoring Agent 会影响服务器性能吗？
+      How do I enable data collection?
+    answer: >
+      You can enable data collection for your Azure subscription in the Security policy. To enable data collection. [Sign in to the Azure portal](https://portal.azure.com), select **Browse**, select **Security Center**, and select **Security policy**. Select the subscription that you wish to enable automatic provisioning. When you select a subscription **Security policy - Data collection** opens. Under **Auto provisioning**, select **On**.
+  - question: >
+      What happens when data collection is enabled?
+    answer: "When automatic provisioning is enabled, Security Center provisions the Log Analytics agent on all supported Azure VMs and any new ones that are created. Automatic provisioning is recommended but manual agent installation is also available. [Learn how to install the Log Analytics agent extension](../azure-monitor/vm/monitor-virtual-machine.md#agents). \n\nThe agent enables the process creation event 4688 and the *CommandLine* field inside event 4688. New processes created on the VM are recorded by EventLog and monitored by Security Center's detection services. For more information on the details recorded for each new process, see [description fields in 4688](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). The agent also collects the 4688 events created on the VM and stores them in search.\n\nThe agent also enables data collection for [Adaptive Application Controls](security-center-adaptive-application.md), Security Center configures a local AppLocker policy in Audit mode to allow all applications. This policy will cause AppLocker to generate events, which are then collected and leveraged by Security Center. It is important to note that this policy will not be configured on any machines on which there is already a configured AppLocker policy. \n\nWhen Security Center detects suspicious activity on the VM, the customer is notified by email if [security contact information](security-center-provide-security-contact-details.md) has been provided. An alert is also visible in Security Center's security alerts dashboard.\n"
+  - question: >
+      Will Security Center work using an OMS gateway?
+    answer: >
+      Yes. Azure Security Center leverages Azure Monitor to collect data from Azure VMs and servers, using the Log Analytics agent.
+
+      To collect the data, each VM and server must connect to the Internet using HTTPS. The connection can be direct, using a proxy, or through the [OMS Gateway](../azure-monitor/agents/gateway.md).
+  - question: >
+      Does the Monitoring Agent impact the performance of my servers?
     answer: >-
-      代理使用系统资源的名义帐户，对性能的影响极小。 有关性能影响和代理及扩展的详细信息，请参阅[规划和操作指南](security-center-planning-and-operations-guide.md#data-collection-and-storage)。
+      The agent consumes a nominal amount of system resources and should have little impact on the performance. For more information on performance impact and the agent and extension, see the [planning and operations guide](security-center-planning-and-operations-guide.md#data-collection-and-storage).
 
 
 

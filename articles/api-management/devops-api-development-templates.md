@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 49dc71dac6d246907de3498ed0a39541a3caf522
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: e7d0515262fc06d850b61f257e7cd577797bcf39
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111888421"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742747"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>用于使用 Azure 资源管理器模板进行 API 管理的 CI/CD
 
@@ -67,7 +67,7 @@ API 开发人员会创建发布者存储库的分支为开发人员存储库，�
 
 * API 发布者可以验证拉取请求，并确保更改的安全性和符合性。 例如，他们可以检查是否只允许使用 HTTPS 与 API 通信。 大多数验证都可以作为 CI/CD 管道中的一个步骤自动执行。
 
-* 成功批准且合并更改后，API 发布者可以选择按计划或按需将其部署到生产实例。 可以使用 [GitHub Actions](https://github.com/Azure/apimanagement-devops-samples)、[Azure Pipelines](/azure/devops/pipelines)、[Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md) 或其他工具自动部署模板。
+* 成功批准且合并更改后，API 发布者可以选择按计划或按需将其部署到生产实例。 可以使用 [GitHub Actions](https://docs.github.com/en/actions)、[Azure Pipelines](/azure/devops/pipelines)、[Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)、[Azure CLI](../azure-resource-manager/templates/deploy-cli.md) 或其他工具自动部署模板。
 
 
 使用此方法，组织可以自动将 API 更改部署到 API 管理实例，并轻松地将更改从一个环境提升到另一个环境。 由于不同的 API 开发团队会使用不同的 API 模板和文件集，因此可以防止不同团队之间发生干扰。

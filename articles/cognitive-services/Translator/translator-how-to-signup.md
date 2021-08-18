@@ -10,16 +10,16 @@ ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: how-to
 ms.date: 02/16/2021
-ms.openlocfilehash: a0d8532d19aff41bc5e7defb3b58462e81018749
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c21d78e9731bc1711e62d26d6cca269868ac1714
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101712923"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744719"
 ---
 # <a name="create-a-translator-resource"></a>创建“翻译”资源
 
-在本文中，你将了解如何在 Azure 门户中创建 Translator 资源。 [Azure Translator](translator-info-overview.md) 是一种基于云的机器翻译服务，是 [Azure 认知服务](../what-are-cognitive-services.md)系列 REST API 的一部分。 Azure 资源是你创建的服务实例。 对 Azure 服务的所有 API 请求都需要一个终结点 URL 和一个只读订阅密钥来对访问进行身份验证。
+在本文中，你将了解如何在 Azure 门户中创建 Translator 资源。 [Azure Translator](translator-overview.md) 是一种基于云的机器翻译服务，是 [Azure 认知服务](../what-are-cognitive-services.md)系列 REST API 的一部分。 Azure 资源是你创建的服务实例。 对 Azure 服务的所有 API 请求都需要一个终结点 URL 和一个只读订阅密钥来对访问进行身份验证。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,7 +32,7 @@ ms.locfileid: "101712923"
 * 单服务资源类型允许访问单个服务 API 密钥和终结点。  
 
 * 多服务资源类型允许使用单个 API 密钥和终结点访问多个认知服务。 认知服务资源当前可用于以下服务：
-  * 语言（[Translator](../translator/translator-info-overview.md)、[语言理解 (LUIS)](../luis/what-is-luis.md)、[文本分析](../text-analytics/overview.md)）  
+  * 语言（[Translator](../translator/translator-overview.md)、[语言理解 (LUIS)](../luis/what-is-luis.md)、[文本分析](../text-analytics/overview.md)）  
   * 视觉（[计算机视觉](../computer-vision/overview.md)），（[人脸](../face/overview.md)）  
   * 决策（[内容审查器](../content-moderator/overview.md)）  
 

@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 Boxcryptor 配置自动用户�
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Boxcryptor 及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 656de6d6-399e-4346-a07e-0e5fefb0b4ee
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2021
-ms.author: Zhchia
-ms.openlocfilehash: 013308ab5d31bf42498b85c5a58c4973ccd4cbe4
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.author: thwimmer
+ms.openlocfilehash: 083dc852d35a57ab989680acdea81052309c4dad
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141984"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764573"
 ---
 # <a name="tutorial-configure-boxcryptor-for-automatic-user-provisioning"></a>教程：为 Boxcryptor 配置自动用户预配
 

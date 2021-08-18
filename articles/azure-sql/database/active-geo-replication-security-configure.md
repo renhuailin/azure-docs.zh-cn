@@ -11,12 +11,12 @@ author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: 6dde8aaa676e8045326f7078e1c3fd2a0ada6dc2
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: d6a22f1bab9b24412fe9109fff955d3eeeb0749c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110699849"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747658"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>针对异地还原或故障转移配置和管理 Azure SQL 数据库的安全性
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -90,15 +90,15 @@ WHERE [type_desc] = 'SQL_USER'
 
 ```sql
 CREATE LOGIN [<login name>]
-WITH PASSWORD = <login password>,
-SID = <desired login SID>
+WITH PASSWORD = '<login password>',
+SID = 0x1234 /*replace 0x1234 with the desired login SID*/
 ```
 
 > [!NOTE]
 > 如果要授予用户对辅助数据库而不是主数据库的访问权限，可以使用以下语法更改主服务器上的用户登录名来实现此目的。
 >
 > ```sql
-> ALTER LOGIN <login name> DISABLE
+> ALTER LOGIN [<login name>] DISABLE
 > ```
 >
 > DISABLE 不会更改密码，因此，始终可以根据需要启用该登录名。

@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/30/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 38a1c975df578b32ec2d6cac9ff5c6ad4acb3687
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 56ee5afdb907f660079fd1ac853ccbd80258b30b
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108759149"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416589"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服务总线队列创建 .NET 多层应用程序
 
@@ -25,7 +25,7 @@ ms.locfileid: "108759149"
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-在本教程中，将生成多层应用程序并在 Azure 云服务中运行它。 前端为 ASP.NET MVC Web 角色，后端为使用服务总线队列的辅助角色。 可以创建与前端相同的多层应用程序，作为要部署到 Azure 网站而不是云服务的 Web 项目。 还可以试用 [.NET 本地/云混合应用程序](../azure-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)教程。
+在本教程中，你将生成多层应用程序并在 Azure 云服务中运行它。 前端为 ASP.NET MVC Web 角色，后端为使用服务总线队列的辅助角色。 可以创建与前端相同的多层应用程序，作为要部署到 Azure 网站而不是云服务的 Web 项目。 还可以试用 [.NET 本地/云混合应用程序](../azure-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)教程。
 
 以下屏幕截图显示已完成的应用程序。
 
@@ -62,7 +62,7 @@ ms.locfileid: "108759149"
 
 第一步是创建命名空间  并获取该命名空间的[共享访问签名 (SAS) 密钥](service-bus-sas.md)。 命名空间为每个通过服务总线公开的应用程序提供应用程序边界。 创建命名空间后，系统将生成一个 SAS 密钥。 命名空间名称与 SAS 密钥的组合为服务总线提供了用于验证应用程序访问权限的凭据。
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+[!INCLUDE [service-bus-create-namespace-portal](./includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-web-role"></a>创建 Web 角色
 
@@ -78,7 +78,7 @@ ms.locfileid: "108759149"
     1. 选择“C#”作为编程语言。
     1. 选择“云”作为项目类型。
     1. 选择“Azure 云服务”。
-    1. 选择“**下一页**”。 
+    1. 选择“**下一步**”。 
    
         :::image type="content" source="./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-10.png" alt-text="“新建项目”对话框的屏幕截图，其中选择了“云”，并突出显示了“Azure 云服务 Visual C#”并添加了红色边框。":::
 3.  将项目命名为 MultiTierApp，选择项目的位置，然后选择“创建”。 
@@ -399,12 +399,6 @@ ms.locfileid: "108759149"
 * [服务总线队列入门][sbacomqhowto]
 * [服务总线服务页][sbacom]  
 
-若要了解有关多层方案的详细信息，请参阅：  
-
-* [使用存储表、队列和 Blob 的 .NET 多层应用程序][mutitierstorage]  
-
-
 
 [sbacom]: https://azure.microsoft.com/services/service-bus/  
 [sbacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
-[mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36

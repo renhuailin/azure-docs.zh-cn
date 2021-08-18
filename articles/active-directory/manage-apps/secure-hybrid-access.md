@@ -2,21 +2,22 @@
 title: Azure AD 安全混合访问 | Microsoft Docs
 description: 本文介绍将旧版本地、公有云或私有云应用程序与 Azure AD 集成的合作伙伴解决方案。 通过将应用交付控制器或网络连接到 Azure AD 保护旧版应用。
 services: active-directory
-author: gargi-sinha
+author: davidmu1
 manager: martinco
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 2/16/2021
-ms.author: gasinh
+ms.author: davidmu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad3946dcd850a4a3d05f4d28882d08408e39b707
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.reviewer: miccohen
+ms.openlocfilehash: d7cafd5c3586feb99aeade5af7f858659baf6100
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964695"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744098"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>安全混合访问：使用 Azure Active Directory 保护旧应用
 
@@ -77,7 +78,6 @@ ms.locfileid: "111964695"
 - [Datawiza Access Broker](./add-application-portal-setup-oidc-sso.md)
 
 - [Perimeter 81](../saas-apps/perimeter-81-tutorial.md)
-
 
 - [Silverfort Authentication Platform](./add-application-portal-setup-oidc-sso.md)
 

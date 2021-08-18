@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 7a26091d4985b6fdb17120c6fd70476a750c94a9
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: c7dea620058fa91945448e9966120db514eb286b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714136"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778748"
 ---
 # <a name="connect-data-from-microsoft-defender-for-identity-formerly-azure-advanced-threat-protection"></a>从 Microsoft Defender For Identity（原 Azure 高级威胁防护）连接数据
 
 > [!IMPORTANT]
 > Azure Sentinel 中的 Microsoft Defender for Identity 数据连接器目前为公共预览版。
 > 此功能不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
+
 
 本文介绍如何将安全警报从 [Microsoft Defender for Identity](/azure-advanced-threat-protection/what-is-atp) 流式传输到 Azure Sentinel。 
 
@@ -57,5 +60,5 @@ ms.locfileid: "107714136"
 
 ## <a name="next-steps"></a>后续步骤
 在本文档中，你学习了如何将 Microsoft Defender for Identity 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。

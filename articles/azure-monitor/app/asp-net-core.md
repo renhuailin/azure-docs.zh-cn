@@ -4,12 +4,12 @@ description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 488203b9b2e9a45cd85e72a1516418401502eb20
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f12385d5514d999785980622530861cd1f714ac3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110082569"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741326"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -19,14 +19,14 @@ ms.locfileid: "110082569"
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-无论在何处以何种方式运行你的应用程序，[适用于 ASP.NET Core 的 Application Insights SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 都可对其进行监视。 如果应用程序正在运行并与 Azure 建立了网络连接，则可以收集遥测数据。 只要支持 .NET Core，就能支持 Application Insights 监视。 支持范围包括：
-* **操作系统**：Windows、Linux 或 Mac。
-* **托管方法**：进程内或进程外。
-* 部署方法：框架依赖或自包含。
-* Web 服务器：IIS（Internet 信息服务器）或 Kestrel。
-* **托管平台**：Azure 应用服务的 Web 应用功能、Azure VM、Docker、Azure Kubernetes 服务 (AKS) 等。
-* .NET Core 版本：所有正式支持的不在预览中的 [.NET Core 版本](https://dotnet.microsoft.com/download/dotnet-core)。
-* **IDE**：Visual Studio、VS Code 或命令行。
+无论在何处以何种方式运行你的应用程序，[适用于 ASP.NET Core 的 Application Insights SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 都可对其进行监视。 如果应用程序正在运行并与 Azure 建立了网络连接，则可以收集遥测数据。 只要支持 .NET Core，就能支持 Application Insights 监视。 支持包括以下内容：
+* **操作系统**：Windows、Linux 或 Mac
+* **托管方法**：进程内或进程外
+* **部署方法**：框架依赖或自包含
+* **Web 服务器**：IIS（Internet 信息服务器）或 Kestrel
+* **托管平台**：Azure 应用服务的 Web 应用功能、Azure VM、Docker、Azure Kubernetes 服务 (AKS) 等
+* **.NET Core 版本**：所有未在预览版中正式 [支持的 .NET Core 版本](https://dotnet.microsoft.com/download/dotnet-core)
+* **IDE**：Visual Studio、Visual Studio Code 或命令行
 
 > [!NOTE]
 > ASP.NET Core 3.1 需要 [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) 或更高版本。
@@ -37,7 +37,7 @@ ms.locfileid: "110082569"
 - 有效的 Application Insights 检测密钥。 将任何遥测数据发送到 Application Insights 都需要使用此密钥。 如果需要创建新的 Application Insights 资源来获取检测密钥，请参阅[创建 Application Insights 资源](./create-new-resource.md)。
 
 > [!IMPORTANT]
-> 建议使用[连接字符串](./sdk-connection-string.md?tabs=net)替代检测密钥。 新的 Azure 区域要求使用连接字符串而不是检测密钥。 连接字符串用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
+> 建议使用[连接字符串](./sdk-connection-string.md?tabs=net)而不是检测密钥。 新的 Azure 区域要求使用连接字符串而不是检测密钥。 连接字符串用于标识要与遥测数据关联的资源。 它还允许你修改可供你的资源将其用作遥测目标的终结点。 你需要复制连接字符串，并将其添加到应用程序的代码或环境变量中。
 
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>启用 Application Insights 服务器端遥测 (Visual Studio)
@@ -47,19 +47,19 @@ ms.locfileid: "110082569"
 1. 在 Visual Studio 中打开项目。
 
     > [!TIP]
-    > 如果需要，可为项目设置源代码管理，以便可以跟踪 Application Insights 做出的所有更改。 若要启用源代码管理，请选择“文件” > “添加到源代码管理”。
+    > 若要跟踪 Application Insights 所做的所有更改，可以为项目设置源代码管理。 若要进行设置，请选择“文件” > “添加到源代码管理” 。
 
 2. 选择“项目” > “添加 Application Insights 遥测” 。
 
-3. 选择“入门”。 选项文本根据 Visual Studio 版本的不同而异。 在某些早期版本中，使用的是“免费开始”按钮。
+3. 选择“入门”。 此按钮的名称可能会有所不同，具体取决于你的 Visual Studio 版本。 在一些较早版本中，它的名称为“免费开始”按钮。
 
-4. 选择订阅。 然后选择“资源” > “注册”。
+4. 选择订阅，然后选择“资源” > “注册” 。
 
-5. 将 Application Insights 添加到项目后，确认使用的是最新稳定版本的 SDK。 转到“项目” > “管理 NuGet 包” > “Microsoft.ApplicationInsights.AspNetCore”。 根据需要选择“更新”。
+5. 将 Application Insights 添加到项目后，确认使用的是最新稳定版本的 SDK。 转到“项目” > “管理 NuGet 包” > “Microsoft.ApplicationInsights.AspNetCore”。 如果需要，请选择“更新”。
 
      ![显示在何处选择要更新的 Application Insights 包的屏幕截图](./media/asp-net-core/update-nuget-package.png)
 
-6. 如果你已遵循可选的提示操作并已将项目添加到源代码管理，请转到“视图” > “团队资源管理器” > “更改”。 然后选择每个文件，以查看 Application Insights 遥测功能所做的更改的差异视图。
+6. 如果已将项目添加到源代码管理，请转到“查看” > “团队资源管理器” > “更改”  。 可以选择每个文件，以查看 Application Insights 遥测功能所做的更改的差异视图。
 
 ## <a name="enable-application-insights-server-side-telemetry-no-visual-studio"></a>启用 Application Insights 服务器端遥测（不使用 Visual Studio）
 
@@ -116,7 +116,7 @@ ms.locfileid: "110082569"
 
     * `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-    * `APPINSIGHTS_INSTRUMENTATIONKEY` 通常在 [Azure Web 应用](./azure-web-apps.md?tabs=net)中使用，但也可以在所有支持此 SDK 的平台使用。 （如果要执行无代码 Web 应用监视，则在不使用连接字符串的情况下必须使用此格式。）
+    * 通常 `APPINSIGHTS_INSTRUMENTATIONKEY` 在 [Azure Web 应用](./azure-web-apps.md?tabs=net)中使用，但也可以在所有支持此 SDK 的平台使用。 （如果要执行无代码 Web 应用监视，则在不使用连接字符串的情况下必须使用此格式。）
 
     现在，也可以使用[连接字符串](./sdk-connection-string.md?tabs=net)来代替设置检测密钥。
 
@@ -134,11 +134,11 @@ ms.locfileid: "110082569"
 
 ### <a name="live-metrics"></a>实时指标
 
-[实时指标](./live-stream.md)可用于快速验证是否正确配置了 Application Insights 监视。 尽管可能需要在几分钟时间后遥测数据才开始显示在门户和分析结果中，但实时指标能够近实时地显示正在运行的进程的 CPU 使用率。 它还可以显示其他遥测数据，例如请求、依赖项、跟踪等。
+[实时指标](./live-stream.md)可用于快速验证是否正确配置了 Application Insights 监视。 遥测数据可能需要几分钟才能出现在门户和分析中，但实时指标会近乎实时地显示正在运行的进程的 CPU 使用情况。 它还可以显示其他遥测数据，例如请求、依赖项和跟踪。
 
 ### <a name="ilogger-logs"></a>ILogger 日志
 
-默认配置收集 `Warning` 及以上严重性级别的 `ILogger` 日志。 此配置可进行[自定义](#how-do-i-customize-ilogger-logs-collection)。
+默认配置收集 `ILogger` `Warning` 日志和严重性级别更高的日志。 可以[自定义此配置](#how-do-i-customize-ilogger-logs-collection)。
 
 ### <a name="dependencies"></a>依赖项
 
@@ -151,11 +151,11 @@ ms.locfileid: "110082569"
 * 如果应用程序在 Azure Web 应用 (Windows) 中运行，则 SDK 2.4.1 和更高版本将收集性能计数器。
 * 如果应用程序在 Windows 中运行，并且面向 `NETSTANDARD2.0` 或更高版本，则 SDK 2.7.1 和更高版本将收集性能计数器。
 * 对于面向 .NET Framework 的应用程序，所有版本的 SDK 都支持性能计数器。
-* SDK 2.8.0 及更高版本在 Linux 中支持 cpu/memory 计数器， 但不在 Linux 中支持其他计数器。 在 Linux（和其他非 Windows 环境）中，获取系统计数器的建议方法是使用 [EventCounter](#eventcounter)
+* SDK 2.8.0 及更高版本在 Linux 中支持 cpu/memory 计数器， 但不在 Linux 中支持其他计数器。 在 Linux（和其他非 Windows 环境）中，获取系统计数器的建议方法是使用 [EventCounter](#eventcounter)。
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule` 默认为启用状态。 [EventCounter](eventcounters.md) 教程说明了如何配置要收集的计数器列表。
+默认情况下，启用 `EventCounterCollectionModule`。 若要了解如何配置要收集的计数器列表，请参阅 [EventCounters 简介](eventcounters.md)。
 
 ## <a name="enable-client-side-telemetry-for-web-applications"></a>为 Web 应用程序启用客户端遥测
 
@@ -174,7 +174,7 @@ ms.locfileid: "110082569"
     </head>
 ```
 
-从 SDK v2.14 开始，除了使用 `FullScript` 之外，还可以使用 `ScriptBody`。 如果需要控制 `<script>` 标记以设置内容安全策略，请使用此标记：
+作为使用 `FullScript` 的替代方法，`ScriptBody` 从 Application Insights SDK for ASP.NET Core 版本 2.14 开始提供。 如果需要控制 `<script>` 标记以设置内容安全策略，请使用此标记：
 
 ```cshtml
  <script> // apply custom changes to this script tag.
@@ -182,13 +182,16 @@ ms.locfileid: "110082569"
  </script>
 ```
 
-前面引用的 `.cshtml` 文件名取自默认的 MVC 应用程序模板。 从根本上讲，若要为应用程序正确启用客户端监视，JavaScript 代码片段必须出现在所要监视的应用程序的每个页面的 `<head>` 节中。 将 JavaScript 代码片段添加到 `_Layout.cshtml` 即可实现此应用程序模板的此目标。 
+前面引用的 `.cshtml` 文件名取自默认的 MVC 应用程序模板。 从根本上讲，若要为应用程序正确启用客户端监视，JavaScript 代码片段必须出现在所要监视的应用程序的每个页面的 `<head>` 节中。 如需在此应用程序模板中执行此操作，请将 JavaScript 代码片段添加到 `_Layout.cshtml`。 
 
-如果项目不包含 `_Layout.cshtml`，你仍然可以添加[客户端监视](./website-monitoring.md)。 为此，可将 JavaScript 代码片段添加到用于控制应用中所有页面的 `<head>` 的等效文件。 或者，可将代码片段添加到多个页面中，但这种解决方法很难掌控，因此我们一般不建议。
+如果项目不包含 `_Layout.cshtml`，你仍然可以添加[客户端监视](./website-monitoring.md)。 为此，请将 JavaScript 代码片段添加到用于控制应用中所有页面的 `<head>` 的等效文件。 或者，可将代码片段添加到多个页面中，但这种解决方法很难掌控，因此我们一般不建议。
+
+> [!NOTE]
+> JavaScript 注入提供默认配置体验。 如果需要设置检测密钥以外的[配置](./javascript.md#configuration)，则需要删除上述自动注入并手动添加 [JavaScript SDK](./javascript.md#adding-the-javascript-sdk)。
 
 ## <a name="configure-the-application-insights-sdk"></a>配置 Application Insights SDK
 
-可以自定义适用于 ASP.NET Core 的 Application Insights SDK 以更改默认配置。 Application Insights SDK ASP.NET 的用户可以使用 `ApplicationInsights.config` 或通过修改 `TelemetryConfiguration.Active` 来熟悉配置更改。 对于 ASP.NET Core，除非另有说明，否则几乎所有的配置更改都是在 `Startup.cs` 类的 `ConfigureServices()` 方法中完成的。 以下部分提供了详细信息。
+可以自定义适用于 ASP.NET Core 的 Application Insights SDK 以更改默认配置。 Application Insights SDK ASP.NET 的用户可以使用 `ApplicationInsights.config` 或通过修改 `TelemetryConfiguration.Active` 来熟悉配置更改。 对于 ASP.NET Core，除非另有说明，否则在 `Startup.cs` 类的 `ConfigureServices()` 方法中进行几乎所有配置更改。 以下部分提供了详细信息。
 
 > [!NOTE]
 > 在 ASP.NET Core 应用程序中，不支持通过修改 `TelemetryConfiguration.Active` 来更改配置。
@@ -211,9 +214,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-`ApplicationInsightsServiceOptions` 中的完整设置列表
+此表包含 `ApplicationInsightsServiceOptions` 设置的完整列表：
 
-|设置 | 描述 | 默认
+|设置 | 说明 | 默认
 |---------------|-------|-------
 |EnablePerformanceCounterCollectionModule  | 启用/禁用 `PerformanceCounterCollectionModule` | 是
 |EnableRequestTrackingTelemetryModule   | 启用/禁用 `RequestTrackingTelemetryModule` | 是
@@ -230,9 +233,9 @@ public void ConfigureServices(IServiceCollection services)
 
 有关最新列表，请参阅 [`ApplicationInsightsServiceOptions` 中的可配置设置](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs)。
 
-### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150--above"></a>针对 Microsoft.ApplicationInsights.AspNetCore SDK 2.15.0 及更高版本的配置建议
+### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150-and-later"></a>针对 Microsoft.ApplicationInsights.AspNetCore SDK 2.15.0 及更高版本的配置建议
 
-从 Microsoft.ApplicationInsights.AspNetCore SDK 版本 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) 开始，建议配置 `ApplicationInsightsServiceOptions` 中可用的每个设置，包括使用应用程序 `IConfiguration` 实例的 Instrumentationkey。 设置必须位于“ApplicationInsights”部分下，如以下示例中所示。 appsettings.json 的以下部分配置检测密钥，并禁用自适应采样和性能计数器收集。
+在 Microsoft.ApplicationInsights.AspNetCore SDK 版本 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) 及更高版本中，建议配置 `ApplicationInsightsServiceOptions` 中提供的每个设置，包括使用应用程序 `IConfiguration` 实例的“InstrumentationKey”。 设置必须位于“ApplicationInsights”部分下，如以下示例中所示。 appsettings.json 的以下部分配置检测密钥，并禁用自适应采样和性能计数器收集。
 
 ```json
 {
@@ -248,7 +251,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="sampling"></a>采样
 
-适用于 ASP.NET Core 的 Application Insights SDK 支持固定频率和自适应采样。 自适应采样默认已启用。
+适用于 ASP.NET Core 的 Application Insights SDK 支持固定频率和自适应采样。 默认情况下，启用自适应采样。
 
 有关详细信息，请参阅 [配置 ASP.NET Core 应用程序的自适应采样](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)。
 
@@ -270,7 +273,7 @@ public void ConfigureServices(IServiceCollection services)
     
 ### <a name="removing-telemetryinitializers"></a>删除 TelemetryInitializer
 
-默认已提供遥测初始化表达式。 若要删除所有或特定的遥测初始化表达式，请在调用 `AddApplicationInsightsTelemetry()` 之后使用以下示例代码。
+默认情况下，提供遥测初始化表达式。 若要删除所有或特定的遥测初始化表达式，请在调用 `AddApplicationInsightsTelemetry()` 之后使用以下示例代码。
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -311,15 +314,15 @@ public void ConfigureServices(IServiceCollection services)
 
 Application Insights 使用遥测模块自动收集有关特定工作负荷的有用遥测数据，无需用户手动跟踪。
 
-默认已启用以下自动收集模块。 这些模块负责自动收集遥测数据。 可以禁用或配置这些模块，以改变其默认行为。
+默认情况下，启用以下自动收集模块。 这些模块负责自动收集遥测数据。 可以禁用或配置这些模块，以改变其默认行为。
 
-* `RequestTrackingTelemetryModule` - 从传入的 Web 请求收集 RequestTelemetry。
-* `DependencyTrackingTelemetryModule` - 从传出的 http 调用和 sql 调用收集 [DependencyTelemetry](./asp-net-dependencies.md)。
-* `PerformanceCollectorModule` - 收集 Windows PerformanceCounters。
-* `QuickPulseTelemetryModule` - 收集遥测数据以便在实时指标门户中显示。
-* `AppServicesHeartbeatTelemetryModule` - 收集有关托管应用程序的 Azure 应用服务环境的检测信号（以自定义指标的形式发送）。
-* `AzureInstanceMetadataTelemetryModule` - 收集有关托管应用程序的 Azure VM 环境的检测信号（以自定义指标的形式发送）。
-* `EventCounterCollectionModule` - 收集 [EventCounters.](eventcounters.md)。 此模块是一项新功能，可在 SDK 版本 2.8.0 及更高版本中使用。
+* `RequestTrackingTelemetryModule` - 从传入的 Web 请求收集 RequestTelemetry
+* `DependencyTrackingTelemetryModule` - 从传出的 http 调用和 sql 调用收集 [DependencyTelemetry](./asp-net-dependencies.md)
+* `PerformanceCollectorModule` - 收集 Windows PerformanceCounters
+* `QuickPulseTelemetryModule` - 收集遥测数据以便在实时指标门户中显示
+* `AppServicesHeartbeatTelemetryModule` - 收集有关托管应用程序的 Azure 应用服务环境的检测信号（以自定义指标的形式发送）
+* `AzureInstanceMetadataTelemetryModule` - 收集有关托管应用程序的 Azure VM 环境的检测信号（以自定义指标的形式发送）
+* `EventCounterCollectionModule` -  收集 [EventCounters](eventcounters.md)；此模块是一项新功能，在 SDK 版本 2.8.0 及更高版本中提供
 
 若要配置任何默认的 `TelemetryModule`，请按以下示例中所示使用 `IServiceCollection` 中的扩展方法 `ConfigureTelemetryModule<T>`。
 
@@ -356,11 +359,11 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-从 2.12.2 版本开始，[`ApplicationInsightsServiceOptions`](#using-applicationinsightsserviceoptions) 包含用于禁用默认模块的简单选项。
+在版本 2.12.2 及更高版本中，[`ApplicationInsightsServiceOptions`](#using-applicationinsightsserviceoptions) 包含一个简单选项，用于禁用任何默认模块。
 
 ### <a name="configuring-a-telemetry-channel"></a>配置遥测通道
 
-默认[遥测通道](./telemetry-channels.md)为 `ServerTelemetryChannel`。 可按以下示例所示替代该通道。
+默认[遥测通道](./telemetry-channels.md)为 `ServerTelemetryChannel`。 下面的示例演示如何对其进行替代。
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -392,15 +395,15 @@ using Microsoft.ApplicationInsights.Channel;
     }
 ```
 
-上述操作不会阻止任何自动收集模块收集遥测数据。 使用上述方法只会禁止向 Application Insights 发送遥测数据。 如果不需要某个特定的自动收集模块，最好是[删除遥测模块](#configuring-or-removing-default-telemetrymodules)
+前面的代码示例阻止将遥测数据发送到 Application Insights。 它不会阻止任何自动收集模块收集遥测数据。 如果要删除特定的自动收集模块，请参阅[删除遥测模块](#configuring-or-removing-default-telemetrymodules)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="does-application-insights-support-aspnet-core-3x"></a>Application Insights 是否支持 ASP.NET Core 3.X？
 
-是的。 请更新到 [Application Insights SDK for ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 2.8.0 或更高版本。 更低的 SDK 版本不支持 ASP.NET Core 3.X。
+是的。 请更新到 [Application Insights SDK for ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 2.8.0 或更高版本。 较早的 SDK 版本不支持 ASP.NET Core 3.X。
 
-此外，如果使用[此处](#enable-application-insights-server-side-telemetry-visual-studio)基于 Visual Studio 的说明，请更新到最新版本的 Visual Studio 2019 (16.3.0) 以完成加入。 旧版 Visual Studio 不支持 ASP.NET Core 3.X 应用的自动加入。
+此外，如果要[启用基于 Visual Studio 的服务器端遥测](#enable-application-insights-server-side-telemetry-visual-studio)，请更新到最新版本的 Visual Studio 2019 (16.3.0) 以加入。 较早版本的 Visual Studio 不支持 ASP.NET Core 3.X 应用的自动加入。
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>如何跟踪不会自动收集的遥测数据？
 
@@ -433,8 +436,8 @@ public class HomeController : Controller
 
 ### <a name="how-do-i-customize-ilogger-logs-collection"></a>如何自定义 ILogger 日志收集？
 
-默认情况下，仅自动捕获 `Warning` 及以上严重性级别的日志。 若要更改此行为，请显式替代提供程序 `ApplicationInsights` 的日志记录配置，如下所示。
-以下配置允许 ApplicationInsights 捕获所有 `Information` 及以上严重性级别的日志。
+默认情况下，仅自动捕获 `Warning` 日志和严重级别更高的日志。 若要更改此行为，请显式替代提供程序 `ApplicationInsights` 的日志记录配置，如下所示。
+以下配置允许 ApplicationInsights 捕获所有 `Information` 日志及严重级别更高的日志。
 
 ```json
 {
@@ -451,7 +454,7 @@ public class HomeController : Controller
 }
 ```
 
-请务必注意，以下内容不会导致 ApplicationInsights 提供程序捕获 `Information` 日志。 这是因为 SDK 添加了默认的日志记录筛选器，指示 `ApplicationInsights` 仅捕获 `Warning` 及以上级别的日志。 因此，ApplicationInsights 需要显式替代。
+请务必注意，以下内容不会导致 ApplicationInsights 提供程序捕获 `Information` 日志。 它不会对其进行捕获，因为 SDK 添加了一个默认日志记录筛选器，该筛选器指示 `ApplicationInsights` 仅捕获 `Warning` 日志和严重级别更高的日志。 ApplicationInsights 需要显式替代。
 
 ```json
 {
@@ -463,11 +466,11 @@ public class HomeController : Controller
 }
 ```
 
-详细了解 [ILogger 配置](ilogger.md#control-logging-level)。
+有关详细信息，请参阅 [ILogger 配置](ilogger.md#logging-level)。
 
 ### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>某些 Visual Studio 模板使用 IWebHostBuilder 中的 UseApplicationInsights() 扩展方法来启用 Application Insights。 这种用法是否仍然有效？
 
-尽管 `UseApplicationInsights()` 扩展方法仍受支持，但它在 Application Insights SDK 版本 2.8.0 中已标记为弃用。 在下一个 SDK 主要版本中，将会删除此方法。 启用 Application Insights 遥测的建议方式是使用 `AddApplicationInsightsTelemetry()`，因为它提供用于控制某个配置的重载。 此外，在 ASP.NET Core 3.X 应用中，`services.AddApplicationInsightsTelemetry()` 是启用 Application Insights 的唯一方式。
+尽管 `UseApplicationInsights()` 扩展方法仍受支持，但它在 Application Insights SDK 版本 2.8.0 和更高版本中已标记为弃用。 在下一个 SDK 主要版本中，将会删除此方法。 若要启用 Application Insights 遥测，建议使用 `AddApplicationInsightsTelemetry()`，因为它提供用于控制一些配置的重载。 此外，在 ASP.NET Core 3.X 应用中，`services.AddApplicationInsightsTelemetry()` 是启用 Application Insights 的唯一方式。
 
 ### <a name="im-deploying-my-aspnet-core-application-to-web-apps-should-i-still-enable-the-application-insights-extension-from-web-apps"></a>我正在将 ASP.NET Core 应用程序部署到 Web 应用。 是否仍要从 Web 应用启用 Application Insights 扩展？
 
@@ -483,9 +486,9 @@ public class HomeController : Controller
    * 可以使用 `TrackXXX()` API 跟踪其他自定义遥测数据。
    * 可以完全控制配置。
 
-### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>是否可以使用状态监视器之类的工具来启用 Application Insights 监视？
+### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-azure-monitor-application-insights-agent-formerly-status-monitor-v2"></a>是否可以使用 Azure Monitor Application Insights 代理（以前称为“状态监视器 v2”）等工具启用 Application Insights 监视？
 
-否。 [状态监视器](./monitor-performance-live-website-now.md)和[状态监视器 v2](./status-monitor-v2-overview.md) 目前仅支持 ASP.NET 4.x。
+否，[Azure Monitor Application Insights 代理](./status-monitor-v2-overview.md)目前仅支持 ASP.NET 4.x。
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果在 Linux 中运行应用程序，是否支持所有功能？
 
@@ -510,17 +513,17 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
     }
 ```
 
-此限制不适用于 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) 及更高版本。
+此限制不适用于版本 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) 及更高版本。
 
 ### <a name="is-this-sdk-supported-for-the-new-net-core-3x-worker-service-template-applications"></a>新的 .NET Core 3.X 辅助角色服务模板应用程序是否支持此 SDK？
 
-此 SDK 需要 `HttpContext`，因此在任何非 HTTP 应用程序（包括 .NET Core 3.X 辅助角色服务应用程序）中无法正常工作。 有关如何使用新发布的 Microsoft.ApplicationInsights.WorkerService SDK 在此类应用程序中启用 Application Insights，请参阅[此文档](worker-service.md)。
+此 SDK 需要 `HttpContext`，因此在任何非 HTTP 应用程序（包括 .NET Core 3.X 辅助角色服务应用程序）中无法正常工作。 若要使用新发布的 Microsoft.ApplicationInsights.WorkerService SDK 在此类应用程序中启用 Application Insights，请参阅[适用于辅助角色服务应用程序（非 HTTP 应用程序）的 Application Insights](worker-service.md)。
 
 ## <a name="open-source-sdk"></a>开源 SDK
 
 * [阅读代码或为其做出贡献](https://github.com/microsoft/ApplicationInsights-dotnet)
 
-有关最新的更新和 bug 修复，请[参阅发行说明](./release-notes.md)。
+有关最新的更新和 bug 修补程序，请参阅[发行说明](./release-notes.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

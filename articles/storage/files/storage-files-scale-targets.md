@@ -7,17 +7,24 @@ ms.topic: conceptual
 ms.date: 05/28/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 78ecf275a9c607273aef16e6351224709f230959
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 32ec83fb1c8de16f589d6a172a7612e5e5866647
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690519"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768223"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 [Azure 文件](storage-files-introduction.md)在云中提供可通过 SMB 和 NFS 文件系统协议访问的完全托管的文件共享。 本文讨论了 Azure 文件和 Azure 文件同步的可伸缩性和性能目标。
 
 此处列出的可伸缩性和性能目标是高端目标，但可能会受部署中的其他变量影响。 例如，除了受限于承载着 Azure 文件共享的服务器之外，针对文件的吞吐量还可能会受限于你的可用网络带宽。 强烈建议你对使用模式进行测试，以确定 Azure 文件的可伸缩性和性能是否满足你的要求。 随着时间的推移，我们也一直在努力提高这些限制。 
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![是](../media/icons/yes-icon.png) |
 
 ## <a name="azure-files-scale-targets"></a>Azure 文件规模目标
 Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享池的顶级对象。 此存储池可用于部署多个文件共享。 因此，需要考虑三个类别：存储帐户、Azure 文件共享和文件。
@@ -36,7 +43,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 | 最大文件共享数 | 无限制 | 无限制，所有共享的总预配大小必须小于最大存储帐户容量 |
 | 最大并发请求速率 | 20,000 IOPS<sup>1</sup> | 100,000 IOPS |
 | 最大流入量 | <ul><li>美国/欧洲：9,536 MiB/秒<sup>1</sup></li><li>其他区域 (LRS/ZRS)：9,536 MiB/秒<sup>1</sup></li><li>其他区域 (GRS)：4,768 MiB/秒<sup>1</sup></li></ul> | 4,136 MiB/秒 |
-| 最大流出量 | 47,683 MiB/秒<sup>1</sup> | 6,204 MiB/秒 |
+| 最大流出量 | 47,683 MiB/sec<sup>1</sup> | 6,204 MiB/秒 |
 | 虚拟网络规则的数目上限 | 200 | 200 |
 | IP 地址规则的数目上限 | 200 | 200 |
 | 管理读取操作数目 | 每 5 分钟 800 次 | 每 5 分钟 800 次 |
@@ -52,7 +59,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 | 预配大小增加/减少单位 | 空值 | 1 GiB |
 | 文件共享的最大大小 | <ul><li>100 TiB，如果启用大型文件共享功能<sup>2</sup></li><li>5 TiB，默认值</li></ul> | 100 TiB |
 | 文件共享中的文件数上限 | 无限制 | 无限制 |
-| 最大请求速率（最大 IOPS） | <ul><li>10,000，如果启用大型文件共享功能<sup>2</sup></li><li>每 100 毫秒 1,000 或 100 个请求，默认值</li></ul> | <ul><li>基线 IOPS：400 + 每 GiB 1 IOPS，最高 100,000</li><li>IOPS 突发：Max (4000, 每 GiB 3x IOPS)，最高 100,000</li></ul> |
+| 最大请求速率（最大 IOPS） | <ul><li>20,000，启用了大型文件共享功能<sup>2</sup></li><li>每 100 毫秒 1,000 或 100 个请求，默认值</li></ul> | <ul><li>基线 IOPS：400 + 每 GiB 1 IOPS，最高 100,000</li><li>IOPS 突发：Max (4000, 每 GiB 3x IOPS)，最高 100,000</li></ul> |
 | 单个文件共享的最大流入量 | <ul><li>最多 300 MiB/秒，如果启用大型文件共享功能<sup>2</sup></li><li>最高 60 MiB/秒，默认值</li></ul> | 40 MiB/秒 + 0.04 * 预配 GiB |
 | 单个文件共享的最大流出量 | <ul><li>最多 300 MiB/秒，如果启用大型文件共享功能<sup>2</sup></li><li>最高 60 MiB/秒，默认值</li></ul> | 60 MiB/秒 + 0.06 * 预配 GiB |
 | 共享快照的最大数目 | 200 个快照 | 200 个快照 |
@@ -64,7 +71,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 
 <sup>1</sup> 标准文件共享的限制适用于标准文件共享可用的所有三个层：事务优化层、热层和冷层。
 
-<sup>2</sup> 标准文件共享的默认值为 5 TiB，请参阅[启用和创建大型文件共享](./storage-files-how-to-create-large-file-share.md)，详细了解如何将标准文件共享规模增加到最高 100 TiB。
+<sup>2</sup> 标准文件共享的默认大小为 5 TiB，请参阅[创建 Azure 文件共享](./storage-how-to-create-file-share.md)以了解如何创建大小为 100 TiB 的文件共享以及如何将现有的标准文件共享增加至 100 TiB。
 
 ### <a name="file-scale-targets"></a>文件缩放目标
 | 属性 | 标准文件共享中的文件  | 高级文件共享中的文件  |
@@ -90,7 +97,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 | 每个同步组的服务器终结点数 | 100 个服务器终结点 | 是 |
 | 每个服务器的服务器终结点数 | 30 个服务器终结点 | 是 |
 | 每个同步组的文件系统对象数（目录和文件） | 1 亿个对象 | 否 |
-| 目录中的最大文件系统对象（目录和文件）数 | 500 万个对象 | 是 |
+| 一个目录中的最大文件系统对象（目录和文件）数（非递归） | 500 万个对象 | 是 |
 | 最大对象（目录和文件）安全描述符大小 | 64 KiB | 是 |
 | 文件大小 | 100 GiB | 否 |
 | 要进行分层的文件的最小文件大小 | V9 及更高版本：基于文件系统群集大小（双文件系统群集大小）。 例如，如果文件系统群集大小为 4 KiB，则最小文件大小为 8 KiB。<br> V8 和更早版本：64 KiB  | 是 |

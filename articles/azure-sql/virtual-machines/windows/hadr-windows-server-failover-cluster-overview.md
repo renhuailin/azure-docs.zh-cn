@@ -11,14 +11,14 @@ ms.subservice: hadr
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/25/2021
+ms.date: 06/01/2021
 ms.author: mathoma
-ms.openlocfilehash: edfd8e09ed44134637a33a065de0f2e7b812e8a1
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: f85c603f7bfa4113edaeaed1eb92d907d06fe09d
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111573226"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581918"
 ---
 # <a name="windows-server-failover-cluster-with-sql-server-on-azure-vms"></a>Windows Server 故障转移群集与 Azure VM 上的 SQL Server
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -65,9 +65,9 @@ Windows 上的 SQL Server 高可用性解决方案（例如 Always On 可用性�
 
 从技术上讲，在没有仲裁资源的情况下，三节点群集可以承受单个节点丢失（减少到两个节点）。 但在群集减少到两个节点后，如果节点丢失或节点之间发生通信故障，则群集资源会处于脱机状态以防出现拆分情况。 配置仲裁资源，将使群集资源在只有一个节点联机时可以继续联机。
 
-磁盘见证是最具复原能力的仲裁选项，但要对 Azure VM 上的 SQL Server 使用磁盘见证，必须使用 Azure 共享磁盘，这对高可用性解决方案施加了一些限制。 因此，在使用 Azure 共享磁盘配置故障转移群集实例时使用磁盘见证，否则尽可能使用云见证。 
+磁盘见证是最具弹性的仲裁选项，但若要在 Azure VM 中的 SQL Server 上使用磁盘见证，必须使用 Azure 共享磁盘，这会对高可用性解决方案施加一些限制。 因此，在使用 Azure 共享磁盘配置故障转移群集实例时请使用磁盘见证，否则尽量使用云见证。 
 
-下表列出了可用于 Azure VM 上的 SQL Server 的仲裁选项： 
+下表列出了 Azure VM 上的 SQL Server 可用的仲裁选项： 
 
 |  |[云见证](/windows-server/failover-clustering/deploy-cloud-witness) |[磁盘见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum) |[文件共享见证](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|

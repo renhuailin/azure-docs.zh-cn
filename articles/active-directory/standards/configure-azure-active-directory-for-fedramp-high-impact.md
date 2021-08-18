@@ -1,6 +1,6 @@
 ---
 title: 配置 Azure Active Directory 以满足 FedRAMP High Impact 级别
-description: 概述如何通过使用 Azure Active Directory 来满足组织的 FedRAMP High Impact 级别。
+description: 概述如何通过使用 Azure Active Directory 来满足组织的 FedRAMP High 影响级别。
 services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -13,38 +13,34 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 965fbe7ec1f46e006e30d721bf306a0debaf8473
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: b8baa5cc0188c590f639135d2a0baeea4f2efa8b
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293934"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112454845"
 ---
 # <a name="configure-azure-active-directory-to-meet-fedramp-high-impact-level"></a>配置 Azure Active Directory 以满足 FedRAMP High Impact 级别
 
-[联邦风险与授权管理计划](https://www.fedramp.gov/) (FedRAMP) 是针对云服务提供商 (CSP) 创建用于联邦机构的云解决方案产品/服务 (CSO) 的评估和授权过程。 Azure 和 Azure 政府已从联合授权委员会（FedRAMP 认证的最高门槛）获得了 [ 级别的暂时运营授权 (P-ATO)](https://docs.microsoft.com/compliance/regulatory/offering-fedramp)。
+[联邦风险与授权管理计划](https://www.fedramp.gov/) (FedRAMP) 是针对云服务提供商 (CSP) 的评估和授权过程。 具体而言，此过程适用于那些创建在联邦机构中使用的云解决方案产品/服务 (CSO) 的 CSP。 Azure 和 Azure 政府已从联合授权委员会获得了[高影响级别的暂时运营授权 (P-ATO)](/compliance/regulatory/offering-fedramp)（FedRAMP 认证的最高标准）。
 
-Azure 提供了满足所有控制要求的功能，可为你的 CSO 或作为联邦机构获得 FedRAMP High 评级。 你的组织负责完成其他配置或流程以符合要求。 这项责任既适用于寻求对其 CSO 进行 FedRAMP High 授权的 CSP，也适用于寻求运营授权 (ATO) 的联邦机构。 
+Azure 提供了满足所有控制要求的功能，可为你的 CSO 或作为联邦机构获得 FedRAMP High 评级。 你的组织负责按要求完成其他配置或流程。 这项责任既适用于寻求对其 CSO 进行 FedRAMP High 授权的 CSP，也适用于寻求运营授权 (ATO) 的联邦机构。 
 
 ## <a name="microsoft-and-fedramp"></a>Microsoft 和 FedRAMP 
 
-与其他任何 CSP 相比，Microsoft Azure 在 [FedRAMP High Impact](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope) 级别支持更多的服务。 尽管 Azure 公有云中的 FedRAMP High 可满足多个美国政府客户的需求，但要求更严格的机构可能会依赖于 Azure 政府云。 Azure 政府云提供额外的保护措施，例如加强人员筛选。 
+与其他任何 CSP 相比，Microsoft Azure 在 [FedRAMP High Impact](../../azure-government/compliance/azure-services-in-fedramp-auditscope.md) 级别支持更多的服务。 虽然 Azure 公有云中的这个级别符合多个美国政府客户的需要，但要求更严格的机构可能会依赖于 Azure 政府云。 Azure 政府提供额外的保护措施，例如加强人员筛选。 
 
-Microsoft 需要每年重新认证其云服务以维护其授权。 为此，Microsoft 将持续监视和评估其安全控制，并演示其服务的安全性是否始终合规。
+Microsoft 需要每年重新认证其云服务以维护其授权。 为此，Microsoft 会持续监视和评估其安全控制，并证明其服务的安全性会保持合规。 有关详细信息，请参阅 [Microsoft 云服务 FedRAMP 授权](https://marketplace.fedramp.gov/)和 [Microsoft FedRAMP 审核报告](https://aka.ms/MicrosoftFedRAMPAuditDocuments)。 若要接收其他 FedRAMP 报表，请发送电子邮件至 [Azure 联邦文档](mailto:AzFedDoc@microsoft.com)。
 
-* [Microsoft 云服务 FedRAMP 授权](https://marketplace.fedramp.gov/)
+FedRAMP 授权有多种途径。 可以重复使用 Azure 的现有授权包和此处的指南，以显著减少获取 ATO 或 P-ATO 所需的时间和精力。 
 
-* [Microsoft FedRAMP 审核报表](https://aka.ms/MicrosoftFedRAMPAuditDocuments)
+## <a name="scope-of-guidance"></a>指南范围
 
-若要接收其他 FedRAMP 报表，请发送电子邮件至 [Azure 联邦文档](mailto:AzFedDoc@microsoft.com)。
+FedRAMP High 基线由 [NIST 800-53 安全控制目录修订版 4](https://csrc.nist.gov/publications/detail/sp/800-53/rev-4/final) 中的 421 个控制和控制增强功能组成。 在适用的情况下，我们包括了 [800-53 修订版 5](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final) 中的澄清信息。 本系列文章涵盖了这些控制中的一部分，这部分控制与标识相关，并且是必须配置的。 
 
-FedRAMP 授权有多种途径。 你可以重复使用 Microsoft Azure 现有的授权包和此处的指南，以显著减少获取 ATO 或 P-ATO 所需的时间和精力。 有关 FedRAMP 的详细信息，请访问[FedRAMP 网站](https://www.fedramp.gov/)。
+我们提供了规范性指南，该指南可帮助你实现你负责在 Azure Active Directory (Azure AD) 中配置的控制的符合性。 若要充分满足某些标识控制要求，可能需要使用其他系统。 其他系统可能包含安全信息和事件管理工具，例如 Azure Sentinel。 如果在 Azure Active Directory 之外使用 Azure 服务，则需要考虑其他控制，但你可以使用 Azure 已有的功能来满足这些控制。
 
- ## <a name="scope-of-guidance"></a>指南范围
-
-FedRAMP High 基线由 [NIST 800-53 安全控件目录修订版 4](https://csrc.nist.gov/publications/detail/sp/800-53/rev-4/final) 中的 421 个控件和控件增强组成。 在适用的情况下，我们包括了 [800-53 修订版 5](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final) 中的澄清信息。 本系列文章涵盖了与标识相关的这些控件的子集，必须配置这些控件。 我们提供了规范性指南，以帮助实现你负责在 Azure Active Directory (Azure AD) 中配置的控件的合规性。 为了完全满足某些标识控件要求，你可能需要使用其他系统。 其他系统可能包含安全信息和事件管理 (SIEM) 工具，如 Azure Sentinel。 如果在 Azure Active Directory 之外使用 Azure 服务，则需要考虑其他一些控件，你可以使用 Azure 已有的功能来满足这些控件。
-
-FedRAMP 资源
+下面是 FedRAMP 资源的列表：
 
 * [联邦风险与授权管理计划](https://www.fedramp.gov/)
 
@@ -58,13 +54,11 @@ FedRAMP 资源
 
 * [Azure 合规性产品/服务](https://aka.ms/azurecompliance)
 
-* [FedRAMP High 蓝图示例概述](https://docs.microsoft.com/azure/governance/blueprints/samples/fedramp-h/)
+* [FedRAMP High 蓝图示例概述](../../governance/blueprints/samples/fedramp-h/index.md)
 
-* [Microsoft 365 合规中心](https://docs.microsoft.com///microsoft-365/compliance/microsoft-365-compliance-center)
+* [Microsoft 365 合规中心](/microsoft-365/compliance/microsoft-365-compliance-center)
 
-* [Microsoft 合规性管理员](https://docs.microsoft.com///microsoft-365/compliance/compliance-manager)
-
- 
+* [Microsoft 合规性管理器](/microsoft-365/compliance/compliance-manager)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -74,4 +68,3 @@ FedRAMP 资源
 
 [配置其他控件](fedramp-other-controls.md)
 
- 

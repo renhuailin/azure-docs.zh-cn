@@ -3,13 +3,13 @@ title: Azure 中继 .NET Standard API 概述 | Microsoft Docs
 description: 本文总结了 Azure 中继混合连接 .NET 标准 API 的一些关键技术。
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.date: 06/23/2020
-ms.openlocfilehash: 724fb1a62b82036b4a0fa8b9f4f3608293f608a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/23/2021
+ms.openlocfilehash: 827df7b0344535161053e9a61f768ef42638ca84
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98625125"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114668159"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure 中继混合连接 .NET 标准 API 概述
 

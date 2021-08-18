@@ -3,19 +3,19 @@ title: 对话听录（预览版）- 语音服务
 titleSuffix: Azure Cognitive Services
 description: 对话听录是一种会议解决方案，它结合了识别、说话人 ID 和分割聚类来提供任何对话的听录。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.author: trbye
-ms.openlocfilehash: 903e8db14a2830236ae81a2a3b5416491d03e8c7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: lajanuar
+ms.openlocfilehash: 5930511811a8137e038ffd6ab13a16c4e7677e41
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643241"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122066249"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>什么是对话听录（预览版）？
 

@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: db8164cc0d1216050bfd7f6cc071b3d47db452f1
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: cae8c1564d9ba03d48f5ac8dcc1eb23b36589df4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956309"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733173"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>用于将本地或云数据迁移到 Azure Cosmos DB 的选项
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -57,17 +57,17 @@ ms.locfileid: "111956309"
 |---------|---------|---------|---------|---------|
 |联机|[Azure 数据库迁移服务](../dms/tutorial-mongodb-cosmos-db-online.md)| MongoDB|用于 MongoDB 的 Azure Cosmos DB API |&bull; 利用 Azure Cosmos DB 批量执行工具库。 <br/>&bull; 适合用于大型数据集，负责复制实时更改。 <br/>&bull; 仅适用于其他 MongoDB 源。|
 |Offline|[Azure 数据库迁移服务](../dms/tutorial-mongodb-cosmos-db-online.md)| MongoDB| 用于 MongoDB 的 Azure Cosmos DB API| &bull; 利用 Azure Cosmos DB 批量执行工具库。 <br/>&bull; 适合用于大型数据集，负责复制实时更改。 <br/>&bull; 仅适用于其他 MongoDB 源。|
-|Offline|[Azure 数据工厂](../data-factory/connector-azure-cosmos-db.md)| &bull;JSON/CSV 文件<br/>&bull;Azure Cosmos DB SQL API<br/>&bull;用于 MongoDB 的 Azure Cosmos DB API <br/>&bull;MongoDB<br/>&bull;SQL Server<br/>&bull;表存储<br/>&bull;Azure Blob 存储 <br/><br/> 有关其他受支持的源，请参阅 [Azure 数据工厂](../data-factory/connector-overview.md)一文。 | &bull;Azure Cosmos DB SQL API<br/>&bull;用于 MongoDB 的 Azure Cosmos DB API <br/>&bull; JSON 文件 <br/><br/> 有关其他受支持的目标，请参阅 [Azure 数据工厂](../data-factory/connector-overview.md)一文。| &bull; 易于设置并支持多个源。 <br/>&bull; 利用 Azure Cosmos DB 批量执行工具库。 <br/>&bull; 适合用于大型数据集。 <br/>&bull; 缺少检查点，这意味着，在迁移过程中出现任何问题都需要重启整个迁移过程。<br/>&bull; 缺少死信队列，这意味着，几个文件有错误就可能会停止整个迁移过程。 <br/>&bull; 需要编写自定义代码来增大某些数据源的读取吞吐量。|
+|Offline|[Azure 数据工厂](../data-factory/connector-azure-cosmos-db-mongodb-api.md)| &bull;JSON/CSV 文件<br/>&bull;Azure Cosmos DB SQL API<br/>&bull;用于 MongoDB 的 Azure Cosmos DB API <br/>&bull;MongoDB<br/>&bull;SQL Server<br/>&bull;表存储<br/>&bull;Azure Blob 存储 <br/><br/> 有关其他受支持的源，请参阅 [Azure 数据工厂](../data-factory/connector-overview.md)一文。 | &bull;Azure Cosmos DB SQL API<br/>&bull;用于 MongoDB 的 Azure Cosmos DB API <br/>&bull; JSON 文件 <br/><br/> 有关其他受支持的目标，请参阅 [Azure 数据工厂](../data-factory/connector-overview.md)一文。| &bull; 易于设置并支持多个源。 <br/>&bull; 利用 Azure Cosmos DB 批量执行工具库。 <br/>&bull; 适合用于大型数据集。 <br/>&bull; 缺少检查点，这意味着，在迁移过程中出现任何问题都需要重启整个迁移过程。<br/>&bull; 缺少死信队列，这意味着，几个文件有错误就可能会停止整个迁移过程。 <br/>&bull; 需要编写自定义代码来增大某些数据源的读取吞吐量。|
 |Offline|[现有的 Mongo 工具（mongodump、mongorestore、Studio3T）](https://azure.microsoft.com/resources/videos/using-mongodb-tools-with-azure-cosmos-db/)|MongoDB | 用于 MongoDB 的 Azure Cosmos DB API| &bull; 易于设置和集成。 <br/>&bull; 需要对限制进行自定义处理。|
 
 ## <a name="azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API
 
 |迁移类型|解决方案|受支持的源|支持的目标|注意事项|
 |---------|---------|---------|---------|---------|
-|Offline|[cqlsh COPY 命令](cassandra-import-data.md#migrate-data-by-using-the-cqlsh-copy-command)|CSV 文件 | Azure Cosmos DB Cassandra API| &bull; 易于设置。 <br/>&bull; 不适合用于大型数据集。 <br/>&bull; 仅当源是 Cassandra 表时才适用。|
-|Offline|[用 Spark 复制表](cassandra-import-data.md#migrate-data-by-using-spark) | &bull;Apache Cassandra<br/>&bull;Azure Cosmos DB Cassandra API| Azure Cosmos DB Cassandra API | &bull; 可以利用 Spark 功能将转换和引入并行化。 <br/>&bull; 需要配置自定义重试策略来处理限制。|
-|联机|[Striim（来自 Oracle DB/Apache Cassandra）](cosmosdb-cassandra-api-migrate-data-striim.md)| &bull;Oracle<br/>&bull;Apache Cassandra<br/><br/> 有关其他受支持的源，请参阅 [Striim 网站](https://www.striim.com/sources-and-targets/)。|&bull;Azure Cosmos DB SQL API<br/>&bull;Azure Cosmos DB Cassandra API <br/><br/> 有关其他受支持的目标，请参阅 [Striim 网站](https://www.striim.com/sources-and-targets/)。| &bull; 适用于多种数据源，如 Oracle、DB2、SQL Server。 <br/>&bull; 轻松构建 ETL 管道并提供用于监视的仪表板。 <br/>&bull; 支持较大的数据集。 <br/>&bull; 由于这是一个第三方工具，因此需要从市场购买并将其安装在用户环境中。|
-|联机|[Blitzz（来自 Oracle DB/Apache Cassandra）](oracle-migrate-cosmos-db-blitzz.md)|&bull;Oracle<br/>&bull;Apache Cassandra<br/><br/>有关其他受支持的源，请参阅 [Blitzz 网站](https://www.blitzz.io/)。 |Azure Cosmos DB Cassandra API。 <br/><br/>有关其他受支持的目标，请参阅 [Blitzz 网站](https://www.blitzz.io/)。 | &bull; 支持较大的数据集。 <br/>&bull; 由于这是一个第三方工具，因此需要从市场购买并将其安装在用户环境中。|
+|Offline|[cqlsh COPY 命令](cassandra/migrate-data.md#migrate-data-by-using-the-cqlsh-copy-command)|CSV 文件 | Azure Cosmos DB Cassandra API| &bull; 易于设置。 <br/>&bull; 不适合用于大型数据集。 <br/>&bull; 仅当源是 Cassandra 表时才适用。|
+|Offline|[用 Spark 复制表](cassandra/migrate-data.md#migrate-data-by-using-spark) | &bull;Apache Cassandra<br/>&bull;Azure Cosmos DB Cassandra API| Azure Cosmos DB Cassandra API | &bull; 可以利用 Spark 功能将转换和引入并行化。 <br/>&bull; 需要配置自定义重试策略来处理限制。|
+|联机|[Striim（来自 Oracle DB/Apache Cassandra）](cassandra/migrate-data-striim.md)| &bull;Oracle<br/>&bull;Apache Cassandra<br/><br/> 有关其他受支持的源，请参阅 [Striim 网站](https://www.striim.com/sources-and-targets/)。|&bull;Azure Cosmos DB SQL API<br/>&bull;Azure Cosmos DB Cassandra API <br/><br/> 有关其他受支持的目标，请参阅 [Striim 网站](https://www.striim.com/sources-and-targets/)。| &bull; 适用于多种数据源，如 Oracle、DB2、SQL Server。 <br/>&bull; 轻松构建 ETL 管道并提供用于监视的仪表板。 <br/>&bull; 支持较大的数据集。 <br/>&bull; 由于这是一个第三方工具，因此需要从市场购买并将其安装在用户环境中。|
+|联机|[Blitzz（来自 Oracle DB/Apache Cassandra）](cassandra/oracle-migrate-cosmos-db-blitzz.md)|&bull;Oracle<br/>&bull;Apache Cassandra<br/><br/>有关其他受支持的源，请参阅 [Blitzz 网站](https://www.blitzz.io/)。 |Azure Cosmos DB Cassandra API。 <br/><br/>有关其他受支持的目标，请参阅 [Blitzz 网站](https://www.blitzz.io/)。 | &bull; 支持较大的数据集。 <br/>&bull; 由于这是一个第三方工具，因此需要从市场购买并将其安装在用户环境中。|
 
 ## <a name="other-apis"></a>其他 API
 
@@ -75,8 +75,8 @@ ms.locfileid: "111956309"
 
 **表 API** 
 
-* [数据迁移工具](table-import.md#data-migration-tool)
-* [AzCopy](table-import.md#migrate-data-by-using-azcopy)
+* [数据迁移工具](table/table-import.md#data-migration-tool)
+* [AzCopy](table/table-import.md#migrate-data-by-using-azcopy)
 
 **Gremlin API**
 

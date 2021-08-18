@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: dd9f35a0b7c3bb5c2c5888765e4ebac436b4cde1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fab7a613a040a57b65ecb8cb2372fff37f35c84a
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711121"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114392554"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -47,7 +47,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 * 美国中西部
 * 美国中北部
 * 美国中南部
-* Central US
+* 美国中部
 * 美国东部
 * 美国东部 2
 * 美国西部 2
@@ -291,7 +291,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ## <a name="pricing"></a>定价
 
-[联机](network-performance-monitor-pricing-faq.md)提供了有关定价的信息。
+[联机](network-performance-monitor-pricing-faq.yml)提供了有关定价的信息。
 
 ## <a name="provide-feedback"></a>提供反馈 
 

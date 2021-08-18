@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 PrinterLogic SaaS 配置自动
 description: 了解如何从 Azure AD 向 PrinterLogic SaaS 自动预配和取消预配用户帐户。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 001cfccf-b8a4-46e6-b355-94e8b694b122
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2020
-ms.author: Zhchia
-ms.openlocfilehash: 6b00067e7f13e609c2999d6949429038e9a7dfd8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: f5cc06f639e651164639ea99364e82ade61eb11b
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181741"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113758514"
 ---
 # <a name="tutorial-configure-printerlogic-saas-for-automatic-user-provisioning"></a>教程：为 PrinterLogic SaaS 配置自动用户预配
 

@@ -3,13 +3,13 @@ title: 使用 Azure Functions 开发 C# 类库函数
 description: 了解如何使用 C# 开发代码，并将其发布为在进程内与 Azure Functions 运行时配合运行的类库。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 07/24/2020
-ms.openlocfilehash: 60afc79c332385958d9f73ad1e224cab90293e1c
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.date: 07/24/2021
+ms.openlocfilehash: 5681a985769f49429e5b92946311c3d10ea8ecf6
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903124"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862344"
 ---
 # <a name="develop-c-class-library-functions-using-azure-functions"></a>使用 Azure Functions 开发 C# 类库函数
 
@@ -48,7 +48,7 @@ Azure Functions 支持 C# 和 C# 脚本编程语言。 如果要寻找有关[在
 在 Visual Studio 中，**Azure Functions** 项目模板会创建一个 C# 类库项目，它包含以下文件：
 
 * [host.json](functions-host-json.md) - 存储着在本地或者在 Azure 中运行时会影响项目中的所有函数的配置设置。
-* [local.settings.json](functions-run-local.md#local-settings-file) - 存储着在本地运行时使用的应用设置和连接字符串。 此文件包含机密且不会发布到 Azure 中的函数应用中。 而是，应[将应用设置添加到函数应用](functions-develop-vs.md#function-app-settings)。
+* [local.settings.json](functions-develop-local.md#local-settings-file) - 存储着在本地运行时使用的应用设置和连接字符串。 此文件包含机密且不会发布到 Azure 中的函数应用中。 而是，应[将应用设置添加到函数应用](functions-develop-vs.md#function-app-settings)。
 
 生成项目时，在生成输出目录中生成如下例所示的文件夹结构：
 
@@ -465,7 +465,7 @@ namespace functionapp0915
 
 在此示例中，自定义指标数据在发送到 customMetrics 表之前由主机聚合。 若要了解详细信息，请参阅 Application Insights 中的 [GetMetric](../azure-monitor/app/api-custom-events-metrics.md#getmetric) 文档。 
 
-在本地运行时，必须使用 Application Insights 键将 `APPINSIGHTS_INSTRUMENTATIONKEY` 设置添加到 [local.settings.json](functions-run-local.md#local-settings-file) 文件中。
+在本地运行时，必须使用 Application Insights 键将 `APPINSIGHTS_INSTRUMENTATIONKEY` 设置添加到 [local.settings.json](functions-develop-local.md#local-settings-file) 文件中。
 
 
 # <a name="v1x"></a>[v1.x](#tab/v1)

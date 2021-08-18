@@ -6,19 +6,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 3a372e09c575f1805050af6ea427f7650c614aff
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 914d52c91920aa5f76bdb9d1e738919f8f4aedef
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111749968"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031186"
 ---
 # <a name="connect-to-azure-virtual-desktop-classic-with-the-macos-client"></a>使用 macOS 客户端连接到 Azure 虚拟桌面（经典）
 
 > 适用于：macOS 10.12 或更高版本
 
 >[!IMPORTANT]
->此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[此文](../connect-macos.md)。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[本文](../user-documentation/connect-macos.md)。
 
 可以从 macOS 设备使用可下载的客户端访问 Azure 虚拟桌面资源。 本指南将介绍如何设置客户端。
 

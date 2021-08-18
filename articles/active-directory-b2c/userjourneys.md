@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 06/27/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 05307fe2ad9e0a59fa11c30f2dc7154ba5076603
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ee0fbab517a34f6986d20ea3271cb4325bf6aabd
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102174656"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112981009"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -38,6 +38,7 @@ UserJourney 元素包含以下属性：
 | 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用户旅程的标识符，可用于从策略中的其他元素中引用它。 [信赖方策略](relyingparty.md)的 DefaultUserJourney 元素指向此属性。 |
+| DefaultCpimIssuerTechnicalProfileReferenceId| 否 | 默认令牌颁发者技术配置文件引用 ID。 例如，[JWT 令牌颁发者](userjourneys.md)、[SAML 令牌颁发者](saml-issuer-technical-profile.md)或 [OAuth2 自定义错误](oauth2-error-technical-profile.md)。 如果用户旅程或子旅程已有另一个 `SendClaims` 业务流程步骤，请将 `DefaultCpimIssuerTechnicalProfileReferenceId` 特性设置为用户旅程的令牌颁发者技术配置文件。 |
 
 UserJourney 元素包含以下元素：
 
@@ -110,33 +111,36 @@ OrchestrationStep 元素可以包含以下元素：
 
 ### <a name="preconditions"></a>Preconditions
 
+业务流程步骤可基于业务流程步骤中定义的前提条件有条件地执行。 `Preconditions` 元素包含要评估的前提条件列表。 满足前提条件评估要求后，关联的业务流程步骤将跳转到下一个业务流程步骤。 
+
+每个前提条件的评估结果是单个声明。 有两种类型的前置条件：
+ 
+- 声明存在 - 如果指定的声明存在于用户的当前声明包中，则指定应执行的操作。
+- 声明等于 - 如果指定的声明存在并且其值等于指定的值，则指定应执行的操作。 该检查执行区分大小写的序号比较。 检查布尔声明类型时，请使用 `True` 或 `False`。
+
+Azure AD B2C 按列表顺序评估前提条件。 基于顺序的前提条件可让你设置前提条件的应用顺序。 满足的第一个前提条件将替代所有后续前提条件。 仅当不满足所有前提条件时，才执行该业务流程步骤。 
+
 Preconditions 元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| Precondition | 1:n | 具体取决于正在使用的技术配置文件，根据声明提供程序选择重定向客户端或对交换声明进行服务器调用。 |
-
+| Precondition | 1:n | 要评估的前提条件。 |
 
 #### <a name="precondition"></a>Precondition
-
-业务流程步骤可基于业务流程步骤中定义的前提条件有条件地执行。 有两种类型的前置条件：
- 
-- 声明存在 - 如果指定的声明存在于用户的当前声明包中，则指定应执行的操作。
-- 声明等于 - 如果指定的声明存在并且其值等于指定的值，则指定应执行的操作。 该检查执行区分大小写的序号比较。 检查布尔声明类型时，请使用 `True` 或 `False`。
 
 Precondition 元素包含以下属性：
 
 | 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | `Type` | 是 | 要对此前置条件执行的检查或查询的类型。 值可以是 ClaimsExist（指定在用户当前声明集中存在指定声明时应执行操作）或 ClaimEquals（指定当指定声明存在且其值等于指定值时应执行操作）。 |
-| `ExecuteActionsIf` | 是 | 使用 `true` 或 `false` 测试确定是否应执行前置条件中的操作。 |
+| `ExecuteActionsIf` | 是 | 确定在哪种情况下才认为满足前提条件。 可能的值为 `true`（默认）或 `false`。 如果值设置为 `true`，则当声明与前提条件匹配时，认为满足前提条件。  如果值设置为 `false`，则当声明与前提条件不匹配时，认为满足前提条件。  |
 
 Precondition 元素包含以下元素：
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | 值 | 1:2 | 声明类型的标识符。 已在策略文件或父策略文件的声明架构节中定义声明。 当前置条件为 `ClaimEquals` 类型时，第二个 `Value` 元素包含要检查的值。 |
-| 操作 | 1:1 | 在业务流程步骤中的前置条件检查为 true 时应执行的操作。 如果 `Action` 的值设置为 `SkipThisOrchestrationStep`，则不应执行相关联的 `OrchestrationStep`。 |
+| 操作 | 1:1 | 如果满足前提条件评估要求，则应执行该操作。 可能的值：`SkipThisOrchestrationStep`。 关联的业务流程步骤将跳转到下一个步骤。 |
 
 #### <a name="preconditions-examples"></a>Preconditions 示例
 

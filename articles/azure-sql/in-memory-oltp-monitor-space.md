@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: 5717c2479c1d894117bae44826a814c3cfeaa98a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c36b07e68081690b4fb326cd9520a418989b8411
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96493368"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752205"
 ---
 # <a name="monitor-in-memory-oltp-storage-in-azure-sql-database-and-azure-sql-managed-instance"></a>监视 Azure SQL 数据库和 Azure SQL 托管实例中的内存中 OLTP 存储
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]

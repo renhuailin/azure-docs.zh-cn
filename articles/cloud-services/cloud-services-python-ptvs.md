@@ -4,16 +4,16 @@ description: 有关使用 Python Tools for Visual Studio 来创建包括 Web 角
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 2822f719928515efc70eeed3d7c182e347627418
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c02b7ec2cb2c8c16af3b34e4a58b978d96901774
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045512"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113092520"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>用于 Visual Studio 的 Python 工具中的 Python Web 角色和辅助角色
 
@@ -167,7 +167,7 @@ Azure 提供了三种用于运行应用程序的计算模型：[Azure 应用服�
 接下来，在角色的 **./bin** 文件夹中创建 **PrepPython.ps1** 和 **PipInstaller.ps1** 文件。
 
 #### <a name="preppythonps1"></a>PrepPython.ps1
-此脚本安装 Python。 如果 PYTHON2 环境变量设置为“启用”，则安装 Python 2.7，否则安装 Python 3.8 。
+此脚本安装 Python。 如果“PYTHON2”环境变量设置为“开”，则安装 Python 2.7，否则安装 Python 3.8 。
 
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
@@ -214,7 +214,7 @@ if (-not $is_emulated){
 ```
 
 #### <a name="pipinstallerps1"></a>PipInstaller.ps1
-此脚本调用 pip 并安装 **requirements.txt** 文件中的所有依赖项。 如果 PYTHON2 环境变量设置为“启用”，则使用 Python 2.7，否则使用 Python 3.8 。
+此脚本调用 pip 并安装 **requirements.txt** 文件中的所有依赖项。 如果“PYTHON2”环境变量设置为“开”，则使用 Python 2.7，否则使用 Python 3.8 。
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -249,7 +249,7 @@ if (-not $is_emulated){
 
 **bin\LaunchWorker.ps1** 最初是为了执行多种准备工作而创建的，但实际上并不起作用。 将该文件中的内容替换为以下脚本。
 
-此脚本从 Python 项目调用 **worker.py** 文件。 如果 PYTHON2 环境变量设置为“启用”，则使用 Python 2.7，否则使用 Python 3.8 。
+此脚本从 Python 项目调用 **worker.py** 文件。 如果“PYTHON2”环境变量设置为“开”，则使用 Python 2.7，否则使用 Python 3.8 。
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"

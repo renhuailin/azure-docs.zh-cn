@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 16379380fc35bb2355c496dc857e9de3b41347f9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: df7af81b51428f53beb7722c7f224dc7afdd28cb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102096898"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728644"
 ---
 # <a name="the-azure-defender-dashboard"></a>Azure Defender 仪表板
 
@@ -27,7 +27,7 @@ Azure Defender 仪表板提供：
 
 ## <a name="whats-shown-on-the-dashboard"></a>仪表板上显示哪些内容？
 
-:::image type="content" source="./media/azure-defender-dashboard/sample-defender-dashboard-numbered.png" alt-text="Azure Defender 仪表板示例" lightbox="./media/azure-defender-dashboard/sample-defender-dashboard-numbered.png":::
+:::image type="content" source="./media/azure-defender-dashboard/sample-defender-dashboard-numbered.png" alt-text="Azure Defender 仪表板示例。" lightbox="./media/azure-defender-dashboard/sample-defender-dashboard-numbered.png":::
 
 该仪表板包含以下部分：
 
@@ -46,7 +46,7 @@ Azure Defender 仪表板提供：
 
 本文介绍了 Azure Defender 仪表板。 
 
-有关 Azure Defender 的详细信息，请参阅 [Azure Defender 简介](azure-defender.md)
-
 > [!div class="nextstepaction"]
 > [启用 Azure Defender](enable-azure-defender.md)
+
+有关 Azure Defender 的详细信息，请参阅 [Azure Defender 简介](azure-defender.md)

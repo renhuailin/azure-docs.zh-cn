@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 58ddf60a842a9583eae25a875f55227cee772a8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bae05ac9f7b8287cf7e66a0c1a0e634e8d541489
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100582542"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112678779"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 中管理应用服务计划
 
@@ -63,7 +63,7 @@ ms.locfileid: "100582542"
    > [!IMPORTANT]
    > 若要将应用从高层计划移到低层计划（例如，从 **D1** 移到 **F1**），应用可能会在目标计划中丢失某些功能。 例如，如果应用使用 TLS/SSL 证书，可能会出现以下错误消息：
    >
-   > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
+   > `Cannot update the site with hostname '<app_name>' because its current TLS/SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed TLS/SSL configuration is 'Disabled'.`
 
 5. 完成后，选择“确定”。
    

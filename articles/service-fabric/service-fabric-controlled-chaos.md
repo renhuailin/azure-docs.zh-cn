@@ -4,12 +4,12 @@ description: 使用故障注入和群集分析服务 API 管理群集中的混�
 ms.topic: conceptual
 ms.date: 03/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 759e2d1c8d2a326583625fbbbcadb4f4fa950510
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6f9746a3c58c32c0e21daaa79491be105fc14a1a
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732425"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136897"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>在 Service Fabric 群集中引入受控的混沌测试
 大规模分布式系统，例如云基础结构，在本质上都是不可靠的。 Azure Service Fabric 可让开发人员在不可靠的基础结构之上编写可靠的分布式服务。 若要在不可靠的基础结构之上编写可靠的分布式服务，开发人员应能够在不可靠的底层基础结构因故障而进行复杂的状态转换时，测试其服务的稳定性。
@@ -77,7 +77,7 @@ using System.Fabric;
 using System.Diagnostics;
 using System.Fabric.Chaos.DataStructures;
 
-class Program
+static class Program
 {
     private class ChaosEventComparer : IEqualityComparer<ChaosEvent>
     {
@@ -91,7 +91,7 @@ class Program
         }
     }
 
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         var clusterConnectionString = "localhost:19000";
         using (var client = new FabricClient(clusterConnectionString))
@@ -168,7 +168,7 @@ class Program
 
             try
             {
-                client.TestManager.StartChaosAsync(parameters).GetAwaiter().GetResult();
+                await client.TestManager.StartChaosAsync(parameters);
             }
             catch (FabricChaosAlreadyRunningException)
             {
@@ -187,8 +187,8 @@ class Program
                 try
                 {
                     report = string.IsNullOrEmpty(continuationToken)
-                        ? client.TestManager.GetChaosReportAsync(filter).GetAwaiter().GetResult()
-                        : client.TestManager.GetChaosReportAsync(continuationToken).GetAwaiter().GetResult();
+                        ? await client.TestManager.GetChaosReportAsync(filter)
+                        : await client.TestManager.GetChaosReportAsync(continuationToken);
                 }
                 catch (Exception e)
                 {
@@ -205,7 +205,7 @@ class Program
                         throw;
                     }
 
-                    Task.Delay(TimeSpan.FromSeconds(1.0)).GetAwaiter().GetResult();
+                    await Task.Delay(TimeSpan.FromSeconds(1.0));
                     continue;
                 }
 
@@ -228,7 +228,7 @@ class Program
                     break;
                 }
 
-                Task.Delay(TimeSpan.FromSeconds(1.0)).GetAwaiter().GetResult();
+                await Task.Delay(TimeSpan.FromSeconds(1.0));
             }
         }
     }

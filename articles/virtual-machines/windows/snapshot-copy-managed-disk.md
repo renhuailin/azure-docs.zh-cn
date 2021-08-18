@@ -2,19 +2,19 @@
 title: 使用门户或 PowerShell 创建虚拟硬盘驱动器的快照
 description: 了解如何使用门户或 PowerShell 创建 Azure VM 的副本来将其用作备份或用于排查问题。
 author: roygara
+ms.author: rogarana
 manager: twooley
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/08/2018
-ms.author: rogarana
-ms.openlocfilehash: 9070b69ac4c6b85791ff3dd4662273e75a3cd22c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d43d005ed7989d74872473f7977f8591cf576057
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556054"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114386231"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>使用门户或 PowerShell 创建快照
 

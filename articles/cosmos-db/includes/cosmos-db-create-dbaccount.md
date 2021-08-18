@@ -5,12 +5,12 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 07/02/2021
 ms.custom: include file
-ms.openlocfilehash: a295c5bda4c6d5822d762f23372d3b2b5d206a3a
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: f03bf23140131b34b3d97c0dda6c707984b5d5c1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113279854"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121801631"
 ---
 1. 在 Azure 门户菜单或主页中，选择“创建资源” 。
 
@@ -51,7 +51,7 @@ ms.locfileid: "113279854"
 1. （可选）可以在以下选项卡中配置其他详细信息：
 
    * **网络** - 配置 [来自虚拟网络的访问](../how-to-configure-vnet-service-endpoint.md)。
-   * **备份策略**- 配置 [定期](../configure-periodic-backup-restore.md)或 [连续](../continuous-backup-restore-portal.md)备份策略。
+   * **备份策略**- 配置 [定期](../configure-periodic-backup-restore.md)或 [连续](../provision-account-continuous-backup.md)备份策略。
    * **加密** - 使用服务管理的密钥或 [客户管理的密钥](../how-to-setup-cmk.md#create-a-new-azure-cosmos-account)。
    * **标记** - 标记是名称/值对，通过将相同的标记应用到多个资源和资源组，可以对资源进行分类并查看合并的账单。
 

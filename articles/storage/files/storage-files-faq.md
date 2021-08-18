@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: ff5d891b4374a61c8806666a48505a2ee4682a67
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 47400f8e359f8f5f7a05119eb91106b318a0e798
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094467"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729571"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件存储](storage-files-introduction.md)会在云中提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)或[网络文件系统 (NFS) 协议](https://en.wikipedia.org/wiki/Network_File_System)（预览）进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -200,7 +200,7 @@ ms.locfileid: "110094467"
 
     - Azure 文件同步会保留所有自定义 ACL 或 DACL（无论基于 Active Directory 或本地目录），并复制到其同步到的所有服务器终结点。 
     
-    若要全面了解 Azure 存储服务支持的所有协议，可以参考[授权访问 Azure 存储](../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
+    若要全面了解 Azure 存储服务支持的所有协议，可以参考[授权访问 Azure 存储](../common/authorize-data-access.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
     
 * <a id="encryption-at-rest"></a>
 **如何确保已静态加密 Azure 件共享？**  
@@ -330,7 +330,7 @@ ms.locfileid: "110094467"
 * <a id="when-to-use-nfs"></a>
 **应何时使用 Azure 文件存储 NFS？**
 
-    请参阅 [NFS 共享（预览）](storage-files-compare-protocols.md#nfs-shares-preview)。
+    请参阅 [NFS 共享（预览）](files-nfs-protocol.md)。
 
 * <a id="backup-nfs-data"></a>
 **如何备份 NFS 共享中存储的数据？**
@@ -347,17 +347,17 @@ ms.locfileid: "110094467"
 * <a id="port-445-blocked"></a>
 **我的 ISP 或 IT 阻止了端口 445，这导致 Azure 文件装载失败。我该怎样做？**
 
-    可在此处了解[解决端口 445 受阻问题的各种方法](./storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked)。 Azure 文件存储只允许来自区域或数据中心外部的使用 SMB 3.x（带加密支持）的连接。 SMB 3.x 协议引入了许多安全功能，包括在 Internet 上使用非常安全的通道加密。 但是，由于在较低 SMB 版本中发现漏洞的历史原因，端口 445 可能已被阻止。 理想情况下，应仅针对 SMB 1.0 流量阻止该端口，并且应在所有客户端上关闭 SMB 1.0。
+    可在此处了解[解决端口 445 受阻问题的各种方法](./storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked)。 Azure 文件存储只允许使用 SMB 3.x（带加密支持）从区域或数据中心外部进行连接。 SMB 3.x 协议引入了许多安全功能，其中包括通道加密，可以通过 Internet 很安全地使用。 但是，由于在较低 SMB 版本中发现漏洞的历史原因，端口 445 可能已被阻止。 理想情况下，应仅针对 SMB 1.0 流量阻止该端口，并且应在所有客户端上关闭 SMB 1.0。
 
 * <a id="expressroute-not-required"></a>
 **必须使用 Azure ExpressRoute 才能在本地连接到 Azure 文件或使用 Azure 文件同步吗？**  
 
-    不是。 ExpressRoute 不是访问 Azure 文件共享的必要条件。 如果要直接在本地装载 Azure 文件共享，则只需打开端口 445（TCP 出站）即可进行 Internet 访问（这是 SMB 用于进行通信的端口）。 如果正在使用 Azure 文件同步，则只需端口 443（TCP 出站）即可进行 HTTPS 访问（无需 SMB）。 但是，你可以将 ExpressRoute 与这些访问选项中任意一项一起使用。
+    否。 ExpressRoute 不是访问 Azure 文件共享的必要条件。 如果要直接在本地装载 Azure 文件共享，则只需打开端口 445（TCP 出站）即可进行 Internet 访问（这是 SMB 用于进行通信的端口）。 如果正在使用 Azure 文件同步，则只需端口 443（TCP 出站）即可进行 HTTPS 访问（无需 SMB）。 但是，你可以将 ExpressRoute 与这些访问选项中任意一项一起使用。
 
 * <a id="mount-locally"></a>
 **如何才能在本地计算机上装载 Azure 文件共享？**  
 
-    可以使用 SMB 协议装载文件共享，前提是端口 445（TCP 出站）处于打开状态且客户端支持 SMB 3.x 协议（例如，你使用的是 Windows 10 或 Windows Server 2016）。 如果端口 445 被组织的策略或 ISP 阻止，则可使用 Azure 文件同步访问 Azure 文件共享。
+    可以使用 SMB 协议装载文件共享，只要端口 445（TCP 出站）处于打开状态且客户端支持 SMB 3.x 协议（例如，如果使用的是 Windows 10 或 Windows Server 2016）。 如果端口 445 被组织的策略或 ISP 阻止，则可使用 Azure 文件同步访问 Azure 文件共享。
 
 ## <a name="backup"></a>备份
 * <a id="backup-share"></a>
@@ -451,7 +451,7 @@ ms.locfileid: "110094467"
 
 * <a id="need-larger-share"></a>
 **Azure 文件共享的可用大小有哪些？**  
-    Azure 文件共享大小（高级和标准）最多可扩展到 100 TiB。 请参阅计划指南中的[加入到更大的文件共享（标准层）](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib)，了解加入标准层的更大文件共享的说明。
+    Azure 文件共享大小（高级和标准）最多可扩展到 100 TiB。 有关详细信息，请参阅[创建 Azure 文件共享](storage-how-to-create-file-share.md)。
 
 * <a id="lfs-performance-impact"></a>
 **扩展文件共享配额是否会影响我的工作负荷或 Azure 文件同步？**
@@ -485,7 +485,7 @@ ms.locfileid: "110094467"
 
 * <a id="nested-shares"></a>
 **是否可以设置嵌套共享？也就是说，能否在共享下使用共享？**  
-    不是。 文件共享是可以装载的虚拟驱动程序，因此不支持嵌套共享。
+    否。 文件共享是可以装载的虚拟驱动程序，因此不支持嵌套共享。
 
 * <a id="ibm-mq"></a>
 **如何将 Azure 文件与 IBM MQ 配合使用？**  

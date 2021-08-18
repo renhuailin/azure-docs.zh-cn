@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/29/2020
-ms.openlocfilehash: 8b08a60d484aa3d52600b8aef2f53d6ca8a04f9b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/10/2021
+ms.openlocfilehash: 4708cdc0a7937749e0df9a65267067f5dc31198d
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952161"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122201693"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Azure Purview 数据目录世系用户指南
 
@@ -28,10 +28,10 @@ Azure Purview 的其中一个平台功能是能够显示数据进程创建的数
 ### <a name="data-processing-system"></a>数据处理系统
 数据集成和 ETL 工具可以在执行时将世系推送到 Azure Purview。 数据工厂、Data Share、Synapse、Azure Databricks 等工具属于此类数据系统。 数据处理系统从不同的数据库和存储解决方案引用数据集作为来源，以创建目标数据集。 下表列出了当前与 Purview 世系集成的数据处理系统的列表。
 
-
 | 数据处理系统 | 支持的范围 |
 | ---------------------- | ------------|
-| Azure 数据工厂 | [Copy 活动](how-to-link-azure-data-factory.md#data-factory-copy-activity-support) <br> [数据流活动](how-to-link-azure-data-factory.md#data-factory-data-flow-support) <br> [执行 SSIS 包活动](how-to-link-azure-data-factory.md#data-factory-execute-ssis-package-support) |
+| Azure 数据工厂 | [Copy 活动](how-to-link-azure-data-factory.md#copy-activity-support) <br> [数据流活动](how-to-link-azure-data-factory.md#data-flow-support) <br> [执行 SSIS 包活动](how-to-link-azure-data-factory.md#execute-ssis-package-support) |
+| Azure Synapse Analytics | [Copy 活动](how-to-lineage-azure-synapse-analytics.md#copy-activity-support) |
 | Azure Data Share | [共享快照](how-to-link-azure-data-share.md) |
  
 ### <a name="data-storage-systems"></a>数据存储系统

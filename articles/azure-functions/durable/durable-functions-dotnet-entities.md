@@ -3,14 +3,14 @@ title: 有关 .NET 中的持久实体的开发人员指南 - Azure Functions
 description: 如何通过 Azure Functions 的 Durable Functions 扩展使用 .NET 中的持久实体。
 author: sebastianburckhardt
 ms.topic: conceptual
-ms.date: 10/06/2019
+ms.date: 06/30/2021
 ms.author: azfuncdf
-ms.openlocfilehash: 88d2a23104b67dae8fd480406eb9171e9f3d5652
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6927c0a276ffa58077ce258dc5fa4ce02eb8f43f
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92740021"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108038"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>有关 .NET 中的持久实体的开发人员指南
 
@@ -264,10 +264,11 @@ context.SignalEntity<ICounter>("myCounter", ...);
 与往常一样，所有参数和返回类型必须是 JSON 可序列化的。 否则，在运行时将引发序列化异常。
 
 我们还强制实施其他一些规则：
+* 实体接口必须在与实体类相同的程序集中定义。
 * 实体接口只能定义方法。
 * 实体接口不得包含泛型参数。
 * 实体接口方法不能有多个参数。
-* 实体接口方法必须返回 `void`、`Task` 或 `Task<T>` 
+* 实体接口方法必须返回 `void`、`Task` 或 `Task<T>`。
 
 如果违反上述任意规则，在将接口用作 `SignalEntity` 或 `CreateProxy` 的类型参数时，在运行时会引发 `InvalidOperationException`。 异常消息会解释违反了哪个规则。
 

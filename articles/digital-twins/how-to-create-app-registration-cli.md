@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/13/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 80d34833397e8ca1cb5cb14acd869597decd2d48
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: a42a09af845bce160689718fb74eb393409740d3
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110989435"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114437923"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins-cli"></a>创建与 Azure 数字孪生配合使用的应用注册 (CLI)
 
@@ -151,4 +151,4 @@ az ad app credential reset --id <client-ID> --append
 在本文中，你设置了一个可用于通过 Azure 数字孪生 API 对客户端应用程序进行身份验证的 Azure AD 应用注册。
 
 接下来请了解身份验证机制，包括一个使用应用注册的机制，以及其他不使用应用注册的机制：
-* [如何：编写应用验证码](how-to-authenticate-client.md)
+* [编写应用身份验证码](how-to-authenticate-client.md)

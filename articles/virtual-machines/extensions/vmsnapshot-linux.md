@@ -11,12 +11,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: 9d7ad92e864e3da7860d08e8e3f569dd8ca14399
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: d4f308857101cebefea0f37f2fe2c4f3ca9bfcef
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110789553"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112279768"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Azure 备份的 VM 快照 Linux 扩展
 
@@ -77,7 +77,7 @@ Azure 备份支持从本地将工作负载备份到云以及将云资源备份�
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 但是，建议通过在虚拟机上启用备份，将 VM 快照扩展添加到虚拟机。 可以通过资源管理器模板来实现此操作。  在虚拟机上启用备份的示例资源管理器模板可以在 [Azure 快速入门库](https://azure.microsoft.com/resources/templates/101-recovery-services-backup-vms/)中找到。
+可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 但是，建议通过在虚拟机上启用备份，将 VM 快照扩展添加到虚拟机。 可以通过资源管理器模板来实现此操作。  在虚拟机上启用备份的示例资源管理器模板可以在 [Azure 快速入门库](https://azure.microsoft.com/resources/templates/recovery-services-backup-vms/)中找到。
 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署

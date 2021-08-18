@@ -15,17 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2020
 ms.author: yelevin
-ms.openlocfilehash: 475e04ad3dd8c7cc51d6345b4b51dd68cff5b597
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eaee16d865a0d208dbf0c41665d590e7ecb14e89
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93102821"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253591"
 ---
 # <a name="connect-your-citrix-waf-to-azure-sentinel"></a>将 Citrix WAF 连接到 Azure Sentinel
 
 > [!IMPORTANT]
 > Azure Sentinel 中的 Citrix Web 应用程序防火墙 (WAF) 数据连接器当前是公开预览版。 服务级别协议未随此功能一起提供。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 本文介绍如何将 Citrix Web 应用程序防火墙 (WAF) 设备连接到 Azure Sentinel。 通过 Citrix WAF 数据连接器，可以将 Citrix WAF 日志轻松连接到 Azure Sentinel，以查看仪表板、创建自定义警报和改进调查。 通过将 Citrix WAF CEF 日志连接到 Azure Sentinel，可以针对每个日志使用搜索和关联、警报以及威胁情报扩充功能。
 
@@ -51,6 +53,6 @@ Citrix WAF 使用 CEF 格式将 Syslog 消息发送到安装了 Log Analytics �
 ## <a name="next-steps"></a>后续步骤
 
 本文档介绍了如何将 Citrix WAF 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。

@@ -4,12 +4,12 @@ description: 在 Azure HDInsight 中排查特定 Apache Oozie 错误。
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
-ms.openlocfilehash: 2cdd20a5d639f74916657edc3f73183a403204a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4dfc85b566f464a6c0fd49f7859f2c62aad1d8c4
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98944663"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112283872"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>对 Azure HDInsight 中的 Apache Oozie 进行故障排查
 
@@ -104,4 +104,4 @@ Sqoop 无法加载访问数据库时所需的数据库驱动程序。
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](includes/hdinsight-troubleshooting-next-steps.md)]

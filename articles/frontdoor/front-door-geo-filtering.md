@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: duau
 ms.reviewer: amsriva
-ms.openlocfilehash: 0ab6dfb61800bba91b52edd5b07fa918c85ba73b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: bb7de037f63c8892aa73e357f744b1f25fb0750f
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084998"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441022"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door 域中的地区筛选
 
@@ -65,6 +65,7 @@ WAF 策略包括一组自定义规则。 规则由匹配条件、操作和优先
 | BZ | 伯利兹|
 | CA | Canada|
 | CD | 刚果民主共和国|
+| CG | 刚果民主共和国 |
 | CF | 中非共和国|
 | CH | 瑞士|
 | CI | 科特迪瓦|

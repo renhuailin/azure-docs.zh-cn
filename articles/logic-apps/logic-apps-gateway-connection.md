@@ -3,15 +3,15 @@ title: 访问本地数据源
 description: 通过在 Azure 中创建数据网关资源，从 Azure 逻辑应用连接到本地数据源
 services: logic-apps
 ms.suite: integration
-ms.reviewer: arthii, logicappspm
+ms.reviewer: arthii, azla
 ms.topic: conceptual
-ms.date: 03/24/2021
-ms.openlocfilehash: 490750fecf1634f8d0bbcd92bd71cdf3cb531c71
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.date: 07/14/2021
+ms.openlocfilehash: 4f49e0fbbfa4c2a98b86c96dc3b0e650d6ff6bc9
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111888583"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204819"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源
 
@@ -35,18 +35,20 @@ ms.locfileid: "111888583"
 
 在 Azure 逻辑应用中，本地数据网关支持以下数据源的[本地连接器](../connectors/managed.md#on-premises-connectors)：
 
-* BizTalk Server 2016
-* 文件系统
-* IBM DB2  
-* IBM Informix
-* IBM MQ
-* MySQL
-* Oracle 数据库
-* PostgreSQL
-* SAP
-* SharePoint Server
-* SQL Server
-* Teradata
+* [Apache Impala](/connectors/impala)
+* [BizTalk Server](/connectors/biztalk)
+* [文件系统](/connectors/filesystem)
+* [HTTP with Azure AD](/connectors/webcontents)
+* [IBM DB2](/connectors/db2)
+* [IBM Informix](/connectors/informix)
+* [IBM MQ](/connectors/mq)
+* [MySQL](/connectors/mysql)
+* [Oracle Database](/connectors/oracle)
+* [PostgreSQL](/connectors/postgresql)
+* [SAP](/connectors/sap)
+* [SharePoint Server](/connectors/sharepointonline)
+* [SQL Server](/connectors/sql)
+* [Teradata](/connectors/teradata)
 
 也可以创建[自定义连接器](../logic-apps/custom-connector-overview.md)，以便使用 REST 或 SOAP 通过 HTTP 或 HTTPS 连接到数据源。 虽然网关本身不额外收费，但[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)适用于这些连接器以及 Azure 逻辑应用中的其他操作。
 

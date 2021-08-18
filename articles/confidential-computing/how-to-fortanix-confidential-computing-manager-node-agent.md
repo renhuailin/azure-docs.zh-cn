@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 03/24/2021
 ms.author: JenCook
-ms.openlocfilehash: 6ad2bbb206d1765d4070e744eeab9708ea0db366
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 72c3f523ebc3cfef43709153c09c416d32e0b1b8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633314"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469593"
 ---
 # <a name="run-an-application-by-using-fortanix-confidential-computing-manager"></a>使用 Fortanix Confidential Computing Manager 运行应用程序
 
-了解如何使用 [Fortanix](https://www.fortanix.com/) 提供的 [Fortanix Confidential Computing Manager](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.enclave_manager?tab=Overview) 和 [Node Agent](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.rte_node_agent) 在 Azure 机密计算中运行应用程序。
+了解如何使用 [Fortanix](https://www.fortanix.com/) 提供的 [Fortanix Confidential Computing Manager](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.em_managed?tab=Overview) 和 [Node Agent](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.rte_node_agent) 在 Azure 机密计算中运行应用程序。
 
 
 Fortanix 是第三方软件供应商，提供适用于 Azure 基础结构的产品和服务。 还有其他第三方提供商也为 Azure 提供了类似的机密计算服务。

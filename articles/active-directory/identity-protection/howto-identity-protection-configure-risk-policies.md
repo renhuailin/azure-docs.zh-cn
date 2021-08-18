@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 05/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e565fc2f5b28606ade64027e7d8191ebbcd39b09
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 11751323d1341cbcde19451bc101197c7d714368
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110614823"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739980"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>操作说明：配置和启用风险策略
 
@@ -71,7 +71,7 @@ Microsoft 建议将用户风险策略阈值设置为“高”，并将登录风�
 ### <a name="user-risk-with-conditional-access"></a>采用条件性访问时的用户风险
 
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
 1. 选择“新策略”  。
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组”  。
@@ -87,7 +87,7 @@ Microsoft 建议将用户风险策略阈值设置为“高”，并将登录风�
 ### <a name="sign-in-risk-with-conditional-access"></a>采用条件性访问时的登录风险
 
 1. 以全局管理员、安全管理员或条件访问管理员的身份登录到 **Azure 门户**。
-1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”    。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
 1. 选择“新策略”  。
 1. 为策略指定名称。 建议组织为其策略的名称创建有意义的标准。
 1. 在“分配”  下，选择“用户和组”  。

@@ -2,13 +2,13 @@
 title: 比较 Azure 存储队列和服务总线队列
 description: 分析 Azure 提供的两种队列类型之间的差异和相似性。
 ms.topic: article
-ms.date: 04/12/2021
-ms.openlocfilehash: a63ed276981a692b96b7e7369093af221b3d3a5f
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.date: 06/15/2021
+ms.openlocfilehash: a93123ded873a5020e440c606fcd4f8278baa4aa
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110190143"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112120161"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>存储队列和服务总线队列 - 比较与对照
 本文分析 Microsoft Azure 目前提供的以下两种队列类型之间的差异和相似处：存储队列和服务总线队列。 通过使用此信息，可以更明智地选出最适合你需求的解决方案。
@@ -203,9 +203,6 @@ Azure 支持两种队列机制：“存储队列”和“服务总线队列” �
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 * [如何使用队列存储服务](../storage/queues/storage-dotnet-how-to-use-queues.md)
 * [使用服务总线中转消息传送改进性能的最佳实践](service-bus-performance-improvements.md)
-* [Introducing Queues and Topics in Azure Service Bus (blog post)](https://www.serverless360.com/blog/azure-service-bus-queues-vs-topics)（Azure 服务总线中的队列和主题简介 – 博客文章）
-* [服务总线开发人员指南](http://www.cloudcasts.net/devguide/Default.aspx?id=11030)
-* [在 Azure 中使用队列服务](https://www.developerfusion.com/article/120197/using-the-queuing-service-in-windows-azure/)
 
 [Azure portal]: https://portal.azure.com
 

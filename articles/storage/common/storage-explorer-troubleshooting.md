@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: dbd4e9c6e8a58738ac0a8db6c64133301d1aebe5
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 2baf8c99161d000b92aa10f02a26018bdb7264f4
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950579"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093870"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器故障排除指南
 
@@ -62,15 +62,15 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 
 1. 打开“连接”对话框。
 1. 选择要连接到的资源类型。
-1. 选择“使用 Azure Active Directory (Azure AD)登录”。 选择“下一步”  。
-1. 选择与要连接到的资源关联的用户帐户和租户。 选择“下一步”  。
+1. 选择“使用 Azure Active Directory (Azure AD)登录”。 选择“下一步”。
+1. 选择与要连接到的资源关联的用户帐户和租户。 选择“下一步”。
 1. 输入资源的 URL，并为连接输入唯一的显示名称。 选择“下一步”，然后选择“连接” 。
 
 对于其他资源类型，我们目前尚未制定与 Azure RBAC 相关的解决方案。 作为一种解决方法，你可以请求 SAS URL，然后通过以下步骤连接到你的资源：
 
 1. 打开“连接”对话框。
 1. 选择要连接到的资源类型。
-1. 选择“共享访问签名(SAS)”。 选择“下一步”  。
+1. 选择“共享访问签名(SAS)”。 选择“下一步”。
 1. 输入你收到的 SAS URL，并输入连接的唯一显示名称。 选择“下一步”，然后选择“连接” 。
  
 有关连接到资源的详细信息，请参阅[连接到单个资源](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#attach-to-an-individual-resource)。
@@ -89,21 +89,30 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 > [!NOTE]
 > “所有者”、“参与者”和“存储帐户参与者”角色授予帐户密钥访问权限。
 
-## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>错误：证书链中的自签名证书（和类似错误）
+## <a name="ssl-certificate-issues"></a>SSL 证书问题
 
-如果存在以下情况之一，则往往会发生证书错误：
+### <a name="understanding-ssl-certificate-issues"></a>理解 SSL 证书问题
 
-- 应用通过 _透明代理_ 进行连接。 这意味着一台服务器（例如公司的服务器）正在截取 HTTPS 流量，对其进行解密，然后使用自签名证书对其进行加密。
-- 正在运行的应用程序正在向收到的 HTTPS 消息注入自签名 TLS/SSL 证书。 注入证书的应用程序示例包括防病毒软件和网络流量检查软件。
+在继续操作之前，请确保已阅读网络存储资源管理器文档中的[ SSL 证书部分](./storage-explorer-network.md#ssl-certificates)。
 
-当存储资源管理器看到自签名或不受信任的证书时，无法再判断收到的 HTTPS 消息是否被更改。 如果拥有自签名证书的副本，可通过执行以下步骤，让存储资源管理器信任它：
+### <a name="use-system-proxy"></a>使用系统代理
+
+如果仅使用支持使用系统代理设置，则应该尝试使用该设置。 可在 [此处](./storage-explorer-network.md#use-system-proxy-preview)详细了解 **系统代理** 设置。
+
+### <a name="importing-ssl-certificates"></a>导入 SSL 证书
+
+如果拥有自签名证书的副本，可通过执行以下步骤，让存储资源管理器信任它：
 
 1. 获取证书的 Base-64 编码 X.509 (.cer) 副本。
 2. 转到“编辑” > “SSL 证书” > “导入证书”，然后使用文件选取器查找、选择和打开 .cer 文件  
 
-此问题还有可能是由于存在多个证书（根证书和中间证书）造成的。 若要修复此错误，必须同时添加这两个证书。
+此问题还有可能是由于存在多个证书（根证书和中间证书）造成的。 若要修复此错误，必须导入所有的证书。
 
-如果你不确定该证书来源于何处，可以执行以下步骤来找到它：
+### <a name="finding-ssl-certificates"></a>查找 SSL 证书
+
+如果没有自签名证书的副本，请尝试与 IT 管理员联系以寻求帮助。
+
+可以尝试执行以下步骤查找它们：
 
 1. 安装 OpenSSL。
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html)：任何精简版本均可。
@@ -111,18 +120,20 @@ Azure 角色可以授予你进行管理或数据层访问的权限。 例如，�
 2. 运行 OpenSSL。
     * Windows:打开安装目录，选择“/bin/”，然后双击“openssl.exe” 。
     * Mac 和 Linux：从终端运行 `openssl`。
-3. 运行 `s_client -showcerts -connect microsoft.com:443`。
-4. 查找自签名证书。 如果不确定哪些证书是自签名证书，请记下使用者 `("s:")` 和证书颁发者 `("i:")` 相同的任意位置。
+3. 对于存储资源隐藏的任何 Microsoft 或 Azure 主机名，请运行以下命令：`s_client -showcerts -connect <hostname>:443`。 可在此处找到存储资源管理器经常访问的主机名列表。
+4. 查找自签名证书。 如果主题 `("s:")` 和颁发者 `("i:")` 相同，则证书很可能是自签名证书。
 5. 找到自签名证书后，将每个证书中从 `-----BEGIN CERTIFICATE-----`（含）到 `-----END CERTIFICATE-----`（含）的所有内容复制并粘贴到新的 .cer 文件中。
 6. 打开存储资源管理器，然后转到“编辑” > “SSL 证书” > “导入证书”。 然后使用文件选取器查找、选择并打开创建的 .cer 文件。
 
-如果通过上述步骤无法找到任何自签名证书，请通过反馈工具联系我们以获取更多帮助。 也可选择通过命令行使用 `--ignore-certificate-errors` 标志打开存储资源管理器。 使用此标志打开后，存储资源管理器将忽略证书错误。
+### <a name="disabling-ssl-certificate-validation"></a>禁用 SSL 证书验证
+
+如果通过上述步骤无法找到任何自签名证书，请通过反馈工具联系我们以获取更多帮助。 也可通过命令行使用 `--ignore-certificate-errors` 标志打开存储资源管理器。 使用此标志打开后，存储资源管理器将忽略证书错误。 不建议使用此标记。
 
 ## <a name="sign-in-issues"></a>登录问题
 
 ### <a name="understanding-sign-in"></a>了解登录
 
-请确保已阅读[登录到存储资源管理器](./storage-explorer-sign-in.md)文档。
+在继续操作之前，请确保已阅读[登录到存储资源管理器](./storage-explorer-sign-in.md)文档。
 
 ### <a name="frequently-having-to-reenter-credentials"></a>经常需要重新输入凭据
 

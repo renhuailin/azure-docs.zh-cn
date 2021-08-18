@@ -4,16 +4,16 @@ description: 对部署 Azure 云服务时的分配失败进行故障排除。 �
 ms.topic: troubleshooting
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: b9cfb7e2d57d194e9f9317d0dcbff3e87318ac9f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 52dad4daeefa7ee5e37ee0fa12fa5fc790a81a66
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108736192"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093636"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-classic-in-azure"></a>对在 Azure 中部署云服务（经典）时的分配失败进行故障排除
 
@@ -49,9 +49,9 @@ Azure 数据中心的服务器分区成群集。 会在多个群集中尝试新�
 
 |异常类型  |错误消息  |解决方案  |
 |---------|---------|---------|
-|FabricInternalServerError     |操作失败，错误代码为“InternalError”，errorMessage 为“服务器遇到内部错误。 请重试该请求。”|[FabricInternalServerError 故障排除](cloud-services-troubleshoot-fabric-internal-server-error.md)|
-|ServiceAllocationFailure     |操作失败，错误代码为“InternalError”，errorMessage 为“服务器遇到内部错误。 请重试该请求。”|[ServiceAllocationFailure 故障排除](cloud-services-troubleshoot-fabric-internal-server-error.md)|
-|LocationNotFoundForRoleSize     |操作“`{Operation ID}`”失败：“请求的 VM 层当前在此订阅的区域 (`{Region ID}`) 中不可用。 请尝试另一层或部署到其他位置。”|[LocationNotFoundForRoleSize 故障排除](cloud-services-troubleshoot-location-not-found-for-role-size.md)|
+|FabricInternalServerError     |操作失败，错误代码为“InternalError”，错误消息为“服务器遇到了内部错误。 请重试该请求。”|[FabricInternalServerError 故障排除](cloud-services-troubleshoot-fabric-internal-server-error.md)|
+|ServiceAllocationFailure     |操作失败，错误代码为“InternalError”，错误消息为“服务器遇到了内部错误。 请重试该请求。”|[ServiceAllocationFailure 故障排除](cloud-services-troubleshoot-fabric-internal-server-error.md)|
+|LocationNotFoundForRoleSize     |操作“`{Operation ID}`”失败：“请求的 VM 层当前不可用于此订阅的区域 (`{Region ID}`) 中。 请尝试另一层或部署到其他位置。”|[LocationNotFoundForRoleSize 故障排除](cloud-services-troubleshoot-location-not-found-for-role-size.md)|
 |ConstrainedAllocationFailed     |Azure 操作“`{Operation ID}`”失败，代码为 Compute.ConstrainedAllocationFailed。 详细信息：分配失败；无法满足请求中的约束。 请求的新服务部署绑定至地缘组，或以虚拟网络为目标，或此托管服务下已经有部署。 上述任一情况都会将新的部署局限于特定的 Azure 资源。 请稍后重试，或尝试减少 VM 大小或角色实例数目。 或者，可能的话，删除先前提到的约束，或尝试部署到不同的区域。|[ConstrainedAllocationFailed 故障排除](cloud-services-troubleshoot-constrained-allocation-failed.md)|
 |OverconstrainedAllocationRequest     |由于部署请求约束，无法预配此部署所需的 VM 大小（或 VM 大小的组合）。 可能的话，请尝试放宽约束（例如虚拟网络绑定）、部署到不具有其他部署的托管服务及不同的地缘组（或不具有地缘组的托管服务），或尝试部署到不同的区域。|[OverconstrainedAllocationRequest 故障排除](cloud-services-troubleshoot-overconstrained-allocation-request.md)|
 

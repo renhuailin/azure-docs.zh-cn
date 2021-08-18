@@ -7,16 +7,16 @@ author: viv-liu
 ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3f933393b331d24e5de05a00d1abdc7302282308
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 571f338345a8fe87c47609e9d50cef7b9e0f5711
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684138"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071651"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>在 Power BI 仪表板中可视化和分析 Azure IoT Central 数据
 
-> [!Note] 
+> [!Important]
 > 此解决方案使用[旧数据导出功能](./howto-export-data-legacy.md)。 请随时关注更新指南，了解如何使用最新的数据导出功能连接到 Power BI。
 
 :::image type="content" source="media/howto-connect-powerbi/iot-continuous-data-export.png" alt-text="Power BI 解决方案管道":::
@@ -75,7 +75,7 @@ Azure 数据工厂作为链接服务连接到 SQL 数据库。 它运行存储�
 
 Azure 数据工厂每 15 分钟运行一次，以将最新批次的数据转换为可加载到 SQL 表中（翻转窗口触发器的当前最小数目）。
 
-### <a name="azure-sql-database"></a>Azure SQL Database
+### <a name="azure-sql-database"></a>Azure SQL 数据库
 
 Azure 数据工厂为 Power BI 生成一组分析表。 可以探索 Power BI 中的这些架构，并将其用于生成自己的可视化效果。
 
@@ -85,4 +85,4 @@ Microsoft AppSource 站点上的 [Azure IoT Central V3 的 Power BI 解决方案
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已了解如何在 Power BI 中可视化数据，建议执行的后续步骤是了解[如何管理设备](howto-manage-devices.md)。
+现在，你已了解如何在 Power BI 中可视化数据，建议执行的后续步骤是了解[如何管理设备](howto-manage-devices-individually.md)。

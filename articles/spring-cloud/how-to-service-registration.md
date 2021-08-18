@@ -1,19 +1,19 @@
 ---
 title: 自动执行服务注册表和发现
 description: 了解如何使用 Spring Cloud 服务注册表来自动执行服务发现和注册
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: e2ad6d8e3d81497eb7ebe612d01e60415790faea
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 97f0a5326422613a96b530c70cf316b6db1b6b35
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877277"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014744"
 ---
 # <a name="discover-and-register-your-spring-cloud-services"></a>发现和注册 Spring Cloud 服务
 
@@ -30,15 +30,26 @@ ms.locfileid: "104877277"
 将 spring-cloud-starter-netflix-eureka-client 和 spring-cloud-starter-azure-spring-cloud-client 的依赖项添加到 pom.xml  
 
 ```xml
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.0</version>
-    </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>1.19.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey.contribs</groupId>
+            <artifactId>jersey-apache-client4</artifactId>
+            <version>1.19.4</version>
+        </dependency>
 ```
 
 ## <a name="update-the-top-level-class"></a>更新顶级类
@@ -49,11 +60,14 @@ ms.locfileid: "104877277"
     package foo.bar;
 
     import org.springframework.boot.SpringApplication;
-    import org.springframework.cloud.client.SpringCloudApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-    @SpringCloudApplication
+    @SpringBootApplication
+    @EnableEurekaClient
     public class DemoApplication {
-        public static void main(String... args) {
+
+        public static void main(String[] args) {
             SpringApplication.run(DemoApplication.class, args);
         }
     }

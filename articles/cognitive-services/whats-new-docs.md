@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 06/14/2021
-ms.openlocfilehash: f8a9706fac53ad5ea44a53f44317b18956f57504
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 0fa4491f9d4fa955dfc9be7033e4eab9137b5672
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078862"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294966"
 ---
 # <a name="cognitive-services-docs-whats-new-for-may-1-2021---may-31-2021"></a>认知服务文档：2021 年 5 月 1 日 - 2021 年 5 月 31 日的新增内容
 
@@ -30,20 +30,20 @@ ms.locfileid: "112078862"
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [Azure 认知服务容器映像标记和发行说明](/azure/cognitive-services/containers/container-image-tags.md)
+- [Azure 认知服务容器映像标记和发行说明](./containers/container-image-tags.md)
 
 ## <a name="form-recognizer"></a>表单识别器
 
 ### <a name="new-articles"></a>新文章
 
-- [参考：Azure 表单识别器客户端库 v3.0.0 和 REST API v2.0](/azure/cognitive-services/form-recognizer/api-v2-0/reference-sdk-api-v2-0.md)
+- [参考：Azure 表单识别器客户端库 v3.0.0 和 REST API v2.0](./form-recognizer/api-v2-0/reference-sdk-api-v2-0.md)
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [表单识别器预生成的名片模型](/azure/cognitive-services/form-recognizer/concept-business-cards.md)
-- [快速入门：开始使用客户端库 SDK 或 REST API](/azure/cognitive-services/form-recognizer/quickstarts/client-library.md)
-- [表单识别器的新增功能](/azure/cognitive-services/form-recognizer/whats-new.md)
-- [表单识别器登陆页](/azure/cognitive-services/form-recognizer/form-recognizer.md)
+- [表单识别器预生成的名片模型](./form-recognizer/concept-business-cards.md)
+- [快速入门：开始使用客户端库 SDK 或 REST API](./form-recognizer/quickstarts/client-library.md)
+- [表单识别器的新增功能](./form-recognizer/whats-new.md)
+- [表单识别器登陆页](./form-recognizer/index.yml)
 
 ## <a name="translator"></a>转换器
 
@@ -60,17 +60,17 @@ ms.locfileid: "112078862"
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [个性化体验创建服务的新增功能](/azure/cognitive-services/personalizer/whats-new.md)
+- [个性化体验创建服务的新增功能](./personalizer/whats-new.md)
 
 ## <a name="text-analytics"></a>文本分析
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [教程：将 Power BI 与文本分析认知服务集成](/azure/cognitive-services/text-analytics/tutorials/tutorial-power-bi-key-phrases.md)
-- [使用文本分析和 Power Automate 在 Excel 中提取信息](/azure/cognitive-services/text-analytics/tutorials/extract-excel-information.md)
-- [如何调用文本分析 REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api.md)
-- [如何在文本分析中使用命名实体识别](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [文本分析 API 中有哪些新功能？](/azure/cognitive-services/text-analytics/whats-new.md)
+- [教程：将 Power BI 与文本分析认知服务集成](./text-analytics/tutorials/tutorial-power-bi-key-phrases.md)
+- [使用文本分析和 Power Automate 在 Excel 中提取信息](./text-analytics/tutorials/extract-excel-information.md)
+- [如何调用文本分析 REST API](./text-analytics/how-tos/text-analytics-how-to-call-api.md)
+- [如何在文本分析中使用命名实体识别](./text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
+- [文本分析 API 中有哪些新功能？](./text-analytics/whats-new.md)
 
 ## <a name="community-contributors"></a>社区参与者
 

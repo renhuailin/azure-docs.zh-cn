@@ -3,12 +3,12 @@ title: 部署模式
 description: 介绍如何使用 Azure 资源管理器指定是使用完整部署模式还是增量部署模式。
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 7566a24297a31c3138228528be050be6c7cf11c8
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 98e92cfc58acd85d1ed49cec0e29d1d73b5b8efb
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963278"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112320867"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure 资源管理器部署模式
 
@@ -101,11 +101,10 @@ New-AzResourceGroupDeployment `
 
 ```azurecli-interactive
 az deployment group create \
-  --name ExampleDeployment \
   --mode Complete \
-  --resource-group ExampleGroup \
-  --template-file storage.json \
-  --parameters storageAccountType=Standard_GRS
+  --name ExampleDeployment \
+  --resource-group ExampleResourceGroup \
+  --template-file storage.json
 ```
 
 以下示例显示了设置为增量部署模式的链接模板：

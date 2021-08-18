@@ -2,13 +2,13 @@
 title: Azure 中继的网络安全性
 description: 本文介绍如何将 IP 防火墙规则和专用终结点用于 Azure 中继。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 735a0b7dc303ad63cb301151e3e14e4488c856b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/23/2021
+ms.openlocfilehash: 2590face6242c101536bc68285325837ce206954
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98217237"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667631"
 ---
 # <a name="network-security-for-azure-relay"></a>Azure 中继的网络安全性 
 本文介绍如何将以下安全功能与 Azure 中继配合使用： 

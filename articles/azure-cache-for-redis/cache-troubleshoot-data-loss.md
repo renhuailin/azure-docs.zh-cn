@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 6db036752bab7b84b72a37b148eaec7aa5765ef3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ae2d392e7349124012d782112ac873808512dbd
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92538589"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136501"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>排查 Azure Cache for Redis 中的数据丢失问题
 
@@ -121,4 +121,4 @@ Redis 是内存中数据存储。 数据保存在托管 Redis 缓存的物理机
 - [排查 Azure Cache for Redis 服务器端问题](cache-troubleshoot-server.md)
 - [选择正确的层](cache-overview.md#choosing-the-right-tier)
 - [如何监视 Azure Redis 缓存](cache-how-to-monitor.md)
-- [如何运行 Redis 命令？](cache-development-faq.md#how-can-i-run-redis-commands)
+- [如何运行 Redis 命令？](cache-development-faq.yml#how-can-i-run-redis-commands-)

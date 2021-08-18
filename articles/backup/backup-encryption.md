@@ -4,12 +4,12 @@ description: 了解 Azure 备份中的加密功能如何帮助你保护备份数
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: 812ec5f885fad128444de1f8a07d9d6fa58cd6cb
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 7870a84d374bce90a9d41896a7c8704b42629d38
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968663"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291371"
 ---
 # <a name="encryption-in-azure-backup"></a>Azure 备份中的加密
 
@@ -29,4 +29,4 @@ Azure 备份提供两个级别的加密：
 ## <a name="next-steps"></a>后续步骤
 
 - [静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)
-- [Azure 备份常见问题解答](/azure/backup/backup-azure-backup-faq.yml#encryption)，解答有关加密的任何问题
+- [Azure 备份常见问题解答](/azure/backup/backup-azure-backup-faq#encryption)，解答有关加密的任何问题

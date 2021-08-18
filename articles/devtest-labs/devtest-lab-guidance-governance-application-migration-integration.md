@@ -4,12 +4,12 @@ description: 本文提供了有关在应用程序迁移和集成环境中管理 
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 8d86728eefc46c74b49ac610e2207ce5e7ae6a9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ad0eb500afad0309d9c5b34d3d8e83319192556
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87289351"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726736"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure 开发测试实验室基础结构的监管 - 应用程序迁移和集成
 建立开发/测试实验室环境之后，你需要考虑以下问题：
@@ -50,14 +50,14 @@ ms.locfileid: "87289351"
 如何设置一个易于重复的过程以便将我的自定义组织映像导入开发测试实验室环境？
 
 ### <a name="answer"></a>答案
-请观看[这一有关映像工厂模式的视频](./devtest-lab-faq.md#blog-post)。 此方案是一个高级方案，提供的脚本都只是示例脚本。 如果需要进行任何更改，则需要管理和维护在环境中使用的脚本。
+请观看[这一有关映像工厂模式的视频](/azure/devtest-labs/devtest-lab-faq#blog-post)。 此方案是一个高级方案，提供的脚本都只是示例脚本。 如果需要进行任何更改，则需要管理和维护在环境中使用的脚本。
 
 使用开发测试实验室在 Azure Pipelines 中创建自定义映像管道：
 
-- [Introduction: Get VMs ready in minutes by setting up an image factory in Azure DevTest Labs](./devtest-lab-faq.md#blog-post)（简介：通过在 Azure 开发测试实验室中设置映像工厂即可在几分钟内准备好虚拟机）
-- [映像工厂 - 第 2 部分！设置 Azure Pipelines 和工厂实验室以创建 VM](./devtest-lab-faq.md#blog-post)
-- [Image Factory – Part 3: Save Custom Images and Distribute to Multiple Labs](./devtest-lab-faq.md#blog-post)（映像工厂 – 第 3 部分：保存自定义映像并分发到多个实验室）
-- [Video: Custom Image Factory with Azure DevTest Labs](./devtest-lab-faq.md#blog-post)（视频：Azure 开发测试实验室的自定义映像工厂）
+- [Introduction: Get VMs ready in minutes by setting up an image factory in Azure DevTest Labs](/azure/devtest-labs/devtest-lab-faq#blog-post)（简介：通过在 Azure 开发测试实验室中设置映像工厂即可在几分钟内准备好虚拟机）
+- [映像工厂 - 第 2 部分！设置 Azure Pipelines 和工厂实验室以创建 VM](/azure/devtest-labs/devtest-lab-faq#blog-post)
+- [Image Factory – Part 3: Save Custom Images and Distribute to Multiple Labs](/azure/devtest-labs/devtest-lab-faq#blog-post)（映像工厂 – 第 3 部分：保存自定义映像并分发到多个实验室）
+- [Video: Custom Image Factory with Azure DevTest Labs](/azure/devtest-labs/devtest-lab-faq#blog-post)（视频：Azure 开发测试实验室的自定义映像工厂）
 
 ## <a name="patterns-to-set-up-network-configuration"></a>用于设置网络配置的模式
 

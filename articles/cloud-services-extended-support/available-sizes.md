@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 1c1faf14eb101da41679f9f0596e1e750a3c6a51
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: e49cb32c198cf3279dbad5491075138115efd951
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166268"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743580"
 ---
 # <a name="available-sizes-for-azure-cloud-services-extended-support"></a>Azure 云服务（外延支持）的可用大小
 
@@ -55,12 +55,20 @@ ms.locfileid: "106166268"
 
 若要检索可用大小列表，请参阅[资源 SKU - 列表](/rest/api/compute/resourceskus/list)并应用以下筛选器：
 
-
-`ResourceType = virtualMachines ` <br>
-`VMDeploymentTypes = PaaS `
-
+```powershell
+    # Update the location
+    $location = 'WestUS2'
+    # Get all Compute Resource Skus
+    $allSkus = Get-AzComputeResourceSku
+    # Filter virtualMachine skus for given location
+    $vmSkus = $allSkus.Where{$_.resourceType -eq 'virtualMachines' -and $_.LocationInfo.Location -like $location}
+    # From filtered virtualMachine skus, select PaaS Skus
+    $passVMSkus = $vmSkus.Where{$_.Capabilities.Where{$_.name -eq 'VMDeploymentTypes'}.Value.Contains("PaaS")}
+    # Optional step to format and sort the output by Family
+    $passVMSkus | Sort-Object Family, Name | Format-Table -Property Family, Name, Size
+```
 
 ## <a name="next-steps"></a>后续步骤 
 - 查看云服务（外延支持）的[部署先决条件](deploy-prerequisite.md)。
-- 请参阅云服务（外延支持）的[常见问题解答](faq.md)。
+- 请参阅云服务（外延支持）的[常见问题解答](faq.yml)。
 - 使用 [Azure 门户](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[模板](deploy-template.md)或 [Visual Studio](deploy-visual-studio.md) 部署云服务（外延支持）。

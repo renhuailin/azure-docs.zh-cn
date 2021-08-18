@@ -5,24 +5,24 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
-ms.openlocfilehash: 6f3761b1c933d113bf65c70370c29bcfa7950eea
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b9bd43591c64d1b83ba8bf8f5400c0273141d735
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728648"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180341"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics 中的警报管理解决方案
 
 ![警报管理图标](media/alert-management-solution/icon.png)
 
-警报管理解决方案有助于分析 Log Analytics 存储库中的所有警报。  这些警报可能来自各种源，包括 [Log Analytics 创建](../alerts/alerts-overview.md)或是[从 Nagios 或 Zabbix 导入](../vm/quick-collect-linux-computer.md)的源。 解决方案还从任何[连接的 System Center Operations Manager 管理组](../agents/om-agents.md)导入警报。
+警报管理解决方案有助于分析 Log Analytics 存储库中的所有警报。  这些警报可能来自各种源，包括 [Log Analytics 创建](../alerts/alerts-overview.md)或是[从 Nagios 或 Zabbix 导入](../vm/monitor-virtual-machine.md)的源。 解决方案还从任何[连接的 System Center Operations Manager 管理组](../agents/om-agents.md)导入警报。
 
 ## <a name="prerequisites"></a>先决条件
 解决方案处理 Log Analytics 存储库中具有 Alert 类型的任何记录，因此必须执行收集这些记录所需的任何配置。
 
 - 对于 Log Analytics 警报，[创建警报规则](../alerts/alerts-overview.md)以直接在存储库中创建警报记录。
-- 对于 Nagios 和 Zabbix 警报，[配置这些服务器](../vm/quick-collect-linux-computer.md)以将警报发送到 Log Analytics。
+- 对于 Nagios 和 Zabbix 警报，[配置这些服务器](../vm/monitor-virtual-machine.md)以将警报发送到 Log Analytics。
 - 对于 System Center Operations Manager 警报，[将 Operations Manager 管理组连接到 Log Analytics 工作区](../agents/om-agents.md)。  System Center Operations Manager 中创建的任何警报均导入 Log Analytics。  
 
 ## <a name="configuration"></a>配置
@@ -42,7 +42,7 @@ ms.locfileid: "101728648"
 | 连接的源 | 支持 | 说明 |
 |:--- |:--- |:--- |
 | [Windows 代理](../agents/agent-windows.md) | 否 |直接 Windows 代理不会生成警报。  可以通过从 Windows 代理收集的事件和性能数据来创建 Log Analytics 警报。 |
-| [Linux 代理](../vm/quick-collect-linux-computer.md) | 否 |直接 Linux 代理不会生成警报。  可以通过从 Linux 代理收集的事件和性能数据来创建 Log Analytics 警报。  从需要 Linux 代理的服务器中收集 Nagios 和 Zabbix 警报。 |
+| [Linux 代理](../vm/monitor-virtual-machine.md) | 否 |直接 Linux 代理不会生成警报。  可以通过从 Linux 代理收集的事件和性能数据来创建 Log Analytics 警报。  从需要 Linux 代理的服务器中收集 Nagios 和 Zabbix 警报。 |
 | [System Center Operations Manager 管理组](../agents/om-agents.md) |是 |Operations Manager 代理上生成的警报传送到管理组，并转发给 Log Analytics。<br><br>不需要从 Operations Manager 代理直接连接到 Log Analytics。 警报数据从管理组转发到 Log Analytics 存储库。 |
 
 

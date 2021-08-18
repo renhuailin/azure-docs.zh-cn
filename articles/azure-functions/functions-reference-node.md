@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 03/07/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 971fb2a3239614a708e14c109e567081f1ec9ff6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e62e320e2fac2b34e970f983965f9809d62e2103
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102614898"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741381"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
@@ -420,7 +420,7 @@ module.exports = function (context, req) {
 
 ## <a name="http-triggers-and-bindings"></a>HTTP 触发器和绑定
 
-HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来表示 HTTP 消息。  
+HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来表示 HTTP 消息。
 
 ### <a name="request-object"></a>请求对象
 
@@ -491,6 +491,8 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
     context.done(null, res);   
     ```  
 
+请注意，请求和响应密钥采用小写形式。
+
 ## <a name="scaling-and-concurrency"></a>缩放和并发
 
 默认情况下，Azure Functions 会自动监视应用程序上的负载，并按需为 Node.js 创建更多主机实例。 Functions 针对不同触发器类型使用内置（用户不可配置）阈值来确定何时添加实例，例如 QueueTrigger 的消息和队列大小。 有关详细信息，请参阅[消耗计划和高级计划的工作原理](event-driven-scaling.md)。
@@ -522,6 +524,8 @@ FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序�
 ```bash
 az functionapp config set --linux-fx-version "node|14" --name "<MY_APP_NAME>" --resource-group "<MY_RESOURCE_GROUP_NAME>"
 ```
+
+若要详细了解 Azure Functions 运行时支持策略，请参阅[本文](./language-support-policy.md)
 
 ## <a name="dependency-management"></a>依赖项管理
 若要在 JavaScript 代码中使用社区库（如下面的示例所示），需要确保在 Azure 中的 Function App 上安装所有依赖项。
@@ -689,7 +693,7 @@ module.exports = myObj;
 
 使用 `--inspect` 参数启动时，Node.js 进程会在指定端口上侦听调试客户端。 在 Azure Functions 2.x 中，可以指定要传递到运行代码的 Node.js 进程中的参数，方法是添加环境变量或应用设置 `languageWorkers:node:arguments = <args>`。 
 
-若要在本地进行调试，请在 [local.settings.json](./functions-run-local.md#local-settings-file) 文件的 `Values` 下添加 `"languageWorkers:node:arguments": "--inspect=5858"`，然后将调试程序附加到端口 5858。
+若要在本地进行调试，请在 [local.settings.json](./functions-develop-local.md#local-settings-file) 文件的 `Values` 下添加 `"languageWorkers:node:arguments": "--inspect=5858"`，然后将调试程序附加到端口 5858。
 
 使用 VS Code 进行调试时，系统会使用项目的 launch.json 文件中的 `port` 值自动添加 `--inspect` 参数。
 

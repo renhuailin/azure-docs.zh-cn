@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/07/2021
 ms.author: rolyon
-ms.openlocfilehash: 7d7b8732cedc05759fe4aa343a58eb89a3cec3c9
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: 57a4c866681f9970982a34545081549a407377db
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109844658"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592027"
 ---
 # <a name="add-or-edit-azure-role-assignment-conditions-using-the-azure-portal-preview"></a>使用 Azure 门户添加或编辑 Azure 角色分配条件（预览版）
 
@@ -158,6 +159,6 @@ ms.locfileid: "109844658"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [示例 Azure 角色分配条件（预览）](../storage/common/storage-auth-abac-examples.md)
+- [示例 Azure 角色分配条件（预览版）](../storage/common/storage-auth-abac-examples.md)
 - [教程：使用 Azure 门户添加角色分配条件来限制对 Blob 的访问（预览）](../storage/common/storage-auth-abac-portal.md)
 - [排查 Azure 角色分配条件（预览）](conditions-troubleshoot.md)

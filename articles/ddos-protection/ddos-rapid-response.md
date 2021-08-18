@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 8f0ebeebb47885d12529a7f09041af9bc3eb12f2
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 847cd81886a12d5a8d414181e2919b43aa607228
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656697"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732922"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS 快速响应
 
@@ -49,7 +49,7 @@ ms.locfileid: "109656697"
 
 5. 完成其他详细信息并提交该支持请求。
 
-DDR 会遵循 Azure Rapid Response 支持模型。 有关快速响应的详细信息，请参阅[支持范围和响应能力](https://azure.microsoft.com/en-us/support/plans/response/)。
+DDR 会遵循 Azure Rapid Response 支持模型。 有关快速响应的详细信息，请参阅[支持范围和响应能力](https://azure.microsoft.com/support/plans/response/)。
 
 若要详细了解，请参阅 [DDoS 防护标准文档](./ddos-protection-overview.md)。
 

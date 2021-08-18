@@ -8,12 +8,12 @@ author: timoklimmer
 ms.author: tklimmer
 ms.topic: conceptual
 ms.date: 05/10/2021
-ms.openlocfilehash: 453b7558ac4f26395186a6aabc54ce831b5ef9b5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 10695c20bc177abd084d6a3724ae3d379d4ca74a
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071877"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284565"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>使用 Azure 中的 Ubuntu Data Science Virtual Machine 完成数据科学任务
 
@@ -326,7 +326,7 @@ rattle()
 > [!NOTE]
 > 无需在 DSVM 上安装 Rattle。 但 Rattle 打开时，系统可能会提示安装其他程序包。
 
-Rattle 使用一个基于选项卡的接口。 大部分选项卡与[团队数据科学过程](../team-data-science-process/index.yml)中的步骤相对应，如加载数据或浏览数据等。 数据科学过程从左到由通过选项卡流动。 最后一个选项卡包含 Rattle 所运行的 R 命令日志。
+Rattle 使用一个基于选项卡的接口。 大部分选项卡与[团队数据科学过程](/azure/architecture/data-science-process/overview)中的步骤相对应，如加载数据或浏览数据等。 数据科学过程从左到由通过选项卡流动。 最后一个选项卡包含 Rattle 所运行的 R 命令日志。
 
 要加载和配置数据集：
 

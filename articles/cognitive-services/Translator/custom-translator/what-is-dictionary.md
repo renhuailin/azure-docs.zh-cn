@@ -9,18 +9,18 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 160aa372cec2d018d5a3558f99e079624d965098
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b0708f83ff7ef54da19fdf8219fe594a540e678
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98895554"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114362181"
 ---
 # <a name="what-is-a-dictionary"></a>什么是字典？
 
 字典是一组对齐的文档，其中指定了短语或句子的列表及其对应的译文。 如果希望 Microsoft Translator 始终使用字典中提供的译文来翻译源短语或句子，可以在训练中使用字典。 字典有时称为词汇表或术语库。 可将字典视为所列的所有字词的强行“复制并替换”译法。 此外，Microsoft 自定义翻译器服务会构建并利用其自己的常规用途字典来提高翻译质量。 但是会优先使用客户提供的字典，会先搜索该词典来查找单词或句子。
 
-字典仅适用于采用完全受支持的 Microsoft 常规神经网络模型的语言对的项目。 [查看语言的完整列表](../language-support.md#customization)。
+字典仅适用于采用完全受支持的 Microsoft 常规神经网络模型的语言对的项目。 [查看语言的完整列表](../language-support.md)。
 
 ## <a name="phrase-dictionary"></a>短语字典
 短语字典区分大小写。 它是精确的查找和替换操作。 如果在训练模型时包含短语字典，将按指定的方式翻译所列的任何单词或短语。 句子的余下部分将按平时的方式翻译。 可以使用短语字典来指定不应翻译的短语：在字典中的源和目标文件内提供相同的无需翻译的短语即可。

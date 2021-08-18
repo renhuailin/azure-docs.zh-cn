@@ -12,16 +12,16 @@ ms.reviewer: larryfr
 ms.date: 01/26/2021
 ms.topic: how-to
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 2874878c8b03b6cf63c2a5214a0de68000d51569
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 401b565d69797bc4880729dd5f5c4af3e0012f6f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885625"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736524"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>使用 Azure 数据工厂进行数据引入
 
-在本文中，你将了解使用 [Azure 数据工厂](../data-factory/introduction.md)生成数据引入管道时的可用选项。 此 Azure 数据工厂管道用于引入要在 [Azure 机器学习](overview-what-is-azure-ml.md)中使用的数据。 使用数据工厂可以轻松提取、转换和加载 (ETL) 数据。 转换数据并将其载入存储后，可以使用这些数据在 Azure 机器学习中训练机器学习模型。
+在本文中，你将了解使用 [Azure 数据工厂](../data-factory/introduction.md)生成数据引入管道时的可用选项。 此 Azure 数据工厂管道用于引入要在 [Azure 机器学习](overview-what-is-azure-machine-learning.md)中使用的数据。 使用数据工厂可以轻松提取、转换和加载 (ETL) 数据。 转换数据并将其载入存储后，可以使用这些数据在 Azure 机器学习中训练机器学习模型。
 
 可以使用原生数据工厂活动和[数据流](../data-factory/control-flow-execute-data-flow-activity.md)等检测工具来处理简单的数据转换。 涉及到较复杂的方案时，可以使用一些自定义代码来处理数据。 例如 Python 或 R 代码。
 

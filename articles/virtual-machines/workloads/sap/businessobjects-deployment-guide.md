@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 3b3c313df5704e49481c66ad682faccd48d180ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a489b8fd416c750071fa5e292bf916f23c83dab5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505896"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747944"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Azure 上的 SAP BusinessObjects BI 平台规划和实现指南
 
@@ -80,13 +80,13 @@ SAP BI 平台包含一台或多台主机上运行的服务器的集合。 必须
   在 Azure 中，可将 [Azure 高级文件存储](../../../storage/files/storage-files-introduction.md)或 [Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-introduction.md)用于文件存储库服务器。 这两种 Azure 服务都有内置的冗余。
 
   > [!Important]
-  > Azure 文件存储的 SMB 协议已公开发布，但针对 Azure 文件存储的 NFS 协议支持目前为预览版。 有关详细信息，请参阅[对 Azure 文件存储的 NFS 4.1 支持现在为预览版](https://azure.microsoft.com/en-us/blog/nfs-41-support-for-azure-files-is-now-in-preview/)
+  > Azure 文件存储的 SMB 协议已公开发布，但针对 Azure 文件存储的 NFS 协议支持目前为预览版。 有关详细信息，请参阅[对 Azure 文件存储的 NFS 4.1 支持现在为预览版](https://azure.microsoft.com/blog/nfs-41-support-for-azure-files-is-now-in-preview/)
 
 - CMS 和审核数据库
   
   SAP BOBI 平台需要一个数据库来存储其系统数据，该数据库称为 CMS 数据库。 它用来存储 BI 平台信息，例如用户、服务器、文件夹、文档、配置和身份验证详细信息。
 
-  Azure 提供了 [MySQL 数据库](https://azure.microsoft.com/en-us/services/mysql/)和 [Azure SQL 数据库](https://azure.microsoft.com/en-us/services/sql-database/)数据库即服务 (DBaaS) 产品/服务，该产品/服务可用于 CMS 数据库和审核数据库。 由于这是一种 PaaS 产品/服务，因此客户无需担心数据库的操作、可用性和维护。 客户还可以根据其业务需求为 CMS 和审核存储库选择自己的数据库。
+  Azure 提供了 [MySQL 数据库](https://azure.microsoft.com/services/mysql/)和 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)数据库即服务 (DBaaS) 产品/服务，该产品/服务可用于 CMS 数据库和审核数据库。 由于这是一种 PaaS 产品/服务，因此客户无需担心数据库的操作、可用性和维护。 客户还可以根据其业务需求为 CMS 和审核存储库选择自己的数据库。
 
 ## <a name="support-matrix"></a>支持矩阵
 
@@ -119,11 +119,11 @@ BI 平台需要将数据库用于 CMS 和审核数据存储，该存储可以在
 
 - Microsoft SQL Server
 
-- [Azure SQL 数据库](https://azure.microsoft.com/en-us/services/sql-database/)（仅受 Windows 上的 SAP BOBI 平台支持的数据库）
+- [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)（仅受 Windows 上的 SAP BOBI 平台支持的数据库）
 
   它是一个完全托管的 SQL Server 数据库引擎，基于最新的稳定 SQL Server Enterprise Edition。 Azure SQL 数据库可处理大多数数据库管理功能（例如升级、修补和监视），无需用户参与。 使用 Azure SQL 数据库，可以为 Azure 中的应用程序和解决方案创建高度可用且高性能的数据存储层。 有关更多详细信息，请查看 [Azure SQL 数据库](../../../azure-sql/azure-sql-iaas-vs-paas-what-is-overview.md)文档。
 
-- [Azure Database for MySQL](https://azure.microsoft.com/en-us/services/mysql/)（遵循与 SAP PAM 中的 MySQL AB 相同的兼容性准则）
+- [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/)（遵循与 SAP PAM 中的 MySQL AB 相同的兼容性准则）
 
   它是一种由 MySQL 社区版提供支持的关系数据库服务。 作为完全托管的数据库即服务 (DBaaS) 产品/服务，它能够处理任务关键型工作负荷，并提供可预测的性能和动态可伸缩性。 它提供内置的高可用性、自动备份、软件修补、自动故障检测和最长可达 35天的时间点还原，这大大减少了操作任务。 有关更多详细信息，请查看 [Azure Database for MySQL](../../../mysql/overview.md) 文档。
 
@@ -145,7 +145,7 @@ BI 平台需要将数据库用于 CMS 和审核数据存储，该存储可以在
 
 为满足 SAP BOBI 平台的存储需求，Azure 提供了各种类型的[托管磁盘](../../managed-disks-overview.md)。 对于 SAP BOBI 安装目录，建议使用高级托管磁盘，对于在虚拟机上运行的数据库，请按照[适用于 SAP 工作负载的 DBMS 部署](dbms_guide_general.md)中提供的指导进行操作。
 
-Azure 支持适用于 SAP BOBI 平台数据层的两种 DBaaS 产品/服务 - [Azure SQL 数据库](https://azure.microsoft.com/en-us/services/sql-database)（在 Windows 上运行的 BI 应用程序）和 [Azure Database for MySQL](https://azure.microsoft.com/en-us/services/mysql)（在 Linux 和 Windows 上运行的 BI 应用程序）。 因此，你可以根据大小调整结果选择最适合你的需求的购买模型。
+Azure 支持适用于 SAP BOBI 平台数据层的两种 DBaaS 产品/服务 - [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database)（在 Windows 上运行的 BI 应用程序）和 [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)（在 Linux 和 Windows 上运行的 BI 应用程序）。 因此，你可以根据大小调整结果选择最适合你的需求的购买模型。
 
 > [!Tip]
 > 若要快速调整大小，请考虑 800 SAP = 1 vCPU，同时将 SAP BOBI 平台数据库层的 SAPS 结果映射到 Azure 数据库即服务（Azure SQL 数据库或 Azure Database for MySQL）。
@@ -204,7 +204,7 @@ Azure Database for MySQL 提供了三个不同的定价层。 它们的区别在
 
 Azure 区域是一个数据中心或数据中心集合，其中包含用于运行和承载各种 Azure 服务的基础结构。 该基础结构中包括的大量节点充当计算节点或存储节点，或者运行网络功能。 并非所有区域都提供相同的服务。
 
-SAP BI 平台包含的各种组件可能需要将特定的 VM 类型、存储（例如 Azure 文件存储、Azure NetApp 文件或数据库即服务 (DBaaS)）用于其数据层，某些区域中可能未提供这些 VM 类型和存储。 可以在[各区域的产品可用性](https://azure.microsoft.com/en-us/global-infrastructure/services/)站点中了解有关 VM 类型、Azure 存储类型或其他 Azure 服务的确切信息。 如果你已在 Azure 上运行 SAP 系统，则可能已确定了区域。 在这种情况下，需要首先调查这些区域中是否提供了必需的服务，以确定 SAP BI 平台的体系结构。
+SAP BI 平台包含的各种组件可能需要将特定的 VM 类型、存储（例如 Azure 文件存储、Azure NetApp 文件或数据库即服务 (DBaaS)）用于其数据层，某些区域中可能未提供这些 VM 类型和存储。 可以在[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)站点中了解有关 VM 类型、Azure 存储类型或其他 Azure 服务的确切信息。 如果你已在 Azure 上运行 SAP 系统，则可能已确定了区域。 在这种情况下，需要首先调查这些区域中是否提供了必需的服务，以确定 SAP BI 平台的体系结构。
 
 ### <a name="availability-zones"></a>可用性区域
 
@@ -249,7 +249,7 @@ Azure 存储提供了可供客户使用的各种存储类型，有关这些存�
 
 - Azure 高级文件或 Azure NetApp 文件
 
-  在 SAP BOBI 平台中，文件存储库服务器 (FRS) 指的是存储报表、universe 和连接等内容的磁盘目录，这些内容由该系统的所有应用程序服务器使用。 [Azure 高级文件](../../../storage/files/storage-files-introduction.md)或 [Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-introduction.md)存储可以用作 SAP BOBI 应用程序 FRS 的共享文件系统。 由于此存储产品/服务并非在所有区域中可用，因此请参阅[各区域的产品可用性](https://azure.microsoft.com/en-us/global-infrastructure/services/)站点来了解最新信息。
+  在 SAP BOBI 平台中，文件存储库服务器 (FRS) 指的是存储报表、universe 和连接等内容的磁盘目录，这些内容由该系统的所有应用程序服务器使用。 [Azure 高级文件](../../../storage/files/storage-files-introduction.md)或 [Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-introduction.md)存储可以用作 SAP BOBI 应用程序 FRS 的共享文件系统。 由于此存储产品/服务并非在所有区域中可用，因此请参阅[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/)站点来了解最新信息。
 
   如果该服务在你的区域中不可用，则你可以创建 NFS 服务器，并从中将文件系统共享给 SAP BOBI 应用程序。 但你还需要考虑其高可用性。
 

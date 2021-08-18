@@ -5,14 +5,17 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: 95fcca289b0776cc19464b13eb7d243ca4f8d5ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ROBOTS: NOINDEX
+ms.openlocfilehash: dc58b73a317bdab85b63c947f07d2755b96f2fcd
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98945514"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112280417"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>在 HDInsight 中将 ScaleR 和 SparkR 合并
+
+[!INCLUDE [retirement banner](includes/ml-services-retirement.md)]
 
 本文档演示如何使用 **ScaleR** 逻辑回归模型来预测航班抵达延误时间。 此示例使用通过 **SparkR** 联接的航班延误数据和天气数据。
 
@@ -533,8 +536,6 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ## <a name="next-steps-and-more-information"></a>后续步骤和详细信息
 
 - 有关使用 Apache Spark 上 ML Server 的详细信息，请参阅[入门指南](/machine-learning-server/r/how-to-revoscaler-spark)。
-
-- 有关 HDInsight 上的 ML 服务的信息，请参阅 [HDInsight 上的 ML 服务概述](r-server/r-server-overview.md)。
 
 有关 SparkR 用法的详细信息，请参阅：
 

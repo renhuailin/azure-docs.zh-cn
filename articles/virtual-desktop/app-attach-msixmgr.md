@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 7b997f817e8e430d6f2985f73e4005da86dcda10
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: f7c0af3ef2992fdd2c337ff6d1172f6da6db5f56
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745522"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708776"
 ---
 # <a name="using-the-msixmgr-tool"></a>使用 MSIXMGR 工具
 
@@ -84,4 +84,4 @@ msixmgr.exe -Unpack -packagePath "C:\Users\ssa\Desktop\packageName_3.51.1.0_x64_
 - [为 Azure 虚拟桌面准备 MSIX 映像](app-attach-image-prep.md)
 - [设置用于 MSIX 应用附加的文件共享](app-attach-file-share.md)
 
-如果你对 MSIX 应用附加有疑问，请参阅我们的[应用附加常见问题解答](app-attach-faq.md)和[应用附加术语表](app-attach-glossary.md)。
+如果你对 MSIX 应用附加有疑问，请参阅我们的[应用附加常见问题解答](app-attach-faq.yml)和[应用附加术语表](app-attach-glossary.md)。

@@ -9,16 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
-ms.openlocfilehash: 5b8dd911952a63ba8775f27a6128ff61e849e823
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2da85385057b470dc933532854998839bdeb6d70
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96861419"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751362"
 ---
 # <a name="enable-and-disable-data-retention-policies"></a>启用和禁用数据保留策略
 
-本主题说明如何为数据库和表启用和禁用数据保留策略。 
+本主题说明如何为数据库和表启用和禁用数据保留策略。
 
 ## <a name="enable-data-retention-for-a-database"></a>为数据库启用数据保留
 
@@ -40,22 +40,22 @@ FROM sys.databases;
 
 必须为要自动清理其数据的每个表启用数据保留。 如果为数据库和表启用了数据保留，后台系统任务会定期扫描表，以识别并删除任何已过时的行。 可以在表创建过程中使用 [Create Table](/sql/t-sql/statements/create-table-transact-sql) 或使用 [Alter Table](/sql/t-sql/statements/alter-table-transact-sql) 来对表启用数据保留。
 
-下面的示例演示如何使用 [Create Table](/sql/t-sql/statements/create-table-transact-sql) 来为表启用数据保留。 
+下面的示例演示如何使用 [Create Table](/sql/t-sql/statements/create-table-transact-sql) 来为表启用数据保留。
 
 ```sql
-CREATE TABLE [dbo].[data_retention_table] 
+CREATE TABLE [dbo].[data_retention_table]
 (
-[dbdatetime2] datetime2(7), 
-[product_code] int, 
-[value] char(10),  
+[dbdatetime2] datetime2(7),
+[product_code] int,
+[value] char(10),
 CONSTRAINT [pk_current_data_retention_table] PRIMARY KEY CLUSTERED ([product_code])
 ) WITH (DATA_DELETION = ON ( FILTER_COLUMN = [dbdatetime2], RETENTION_PERIOD = 1 day ) )
 ```
 
-create table 命令的 `WITH (DATA_DELETION = ON ( FILTER_COLUMN = [dbdatetime2], RETENTION_PERIOD = 1 day ) )` 部分设置表的数据保留。 该命令使用以下必需的参数 
+create table 命令的 `WITH (DATA_DELETION = ON ( FILTER_COLUMN = [dbdatetime2], RETENTION_PERIOD = 1 day ) )` 部分设置表的数据保留。 该命令使用以下必需的参数
 
 - DATA_DELETION - 指示数据保留是 ON 还是 OFF。
-- FILTER_COLUMN - 表中列的名称，用于确定行是否已过时。 筛选列只能是具有以下数据类型的列 
+- FILTER_COLUMN - 表中列的名称，用于确定行是否已过时。 筛选列只能是具有以下数据类型的列
     - Date
     - SmallDateTime
     - DateTime
@@ -63,7 +63,7 @@ create table 命令的 `WITH (DATA_DELETION = ON ( FILTER_COLUMN = [dbdatetime2]
     - DateTimeOffset
 - RETENTION_PERIOD - 一个整数值，后跟一个单位描述符。 允许的单位为 DAY、DAYS、WEEK、WEEKS、MONTH、MONTHS、YEAR 和 YEARS。
 
-下面的示例演示如何使用 [Alter Table](/sql/t-sql/statements/alter-table-transact-sql) 来为表启用数据保留。  
+下面的示例演示如何使用 [Alter Table](/sql/t-sql/statements/alter-table-transact-sql) 来为表启用数据保留。
 
 ```sql
 Alter Table [dbo].[data_retention_table]
@@ -80,17 +80,17 @@ select name, data_retention_period, data_retention_period_unit from sys.tables
 
 如果 data_retention_period 值 = -1 且 data_retention_period_unit 为 INFINITE，则表示未对表设置数据保留。
 
-以下查询可用于标识用作数据保留的 filter_column 的列。 
+以下查询可用于标识用作数据保留的 filter_column 的列。
 
 ```sql
 Select name from sys.columns
-where is_data_deletion_filter_column =1 
+where is_data_deletion_filter_column =1
 and object_id = object_id(N'dbo.data_retention_table', N'U')
 ```
 
 ## <a name="correlating-db-and-table-data-retention-settings"></a>关联 DB 和表数据保留设置
 
-数据库和表中的数据保留设置结合使用，以确定是否在表上运行对过期行的自动清理。 
+数据库和表中的数据保留设置结合使用，以确定是否在表上运行对过期行的自动清理。
 
 |数据库选项 | 表选项 | 行为 |
 |----------------|--------------|----------|
@@ -99,7 +99,7 @@ and object_id = object_id(N'dbo.data_retention_table', N'U')
 | ON | OFF | 已在数据库级别启用数据保留策略。 但是，由于在表级别禁用了该选项，因此不存在基于保留的过期行清理。|
 | ON | ON | 已同时为数据库和表启用数据保留策略。 已启用过时记录的自动清理。 |
 
-## <a name="disable-data-retention-on-a-table"></a>禁用表上的数据保留 
+## <a name="disable-data-retention-on-a-table"></a>禁用表上的数据保留
 
 可以使用 [Alter Table](/sql/t-sql/statements/alter-table-transact-sql) 来禁用表上的数据保留。 以下命令可用于禁用表上的数据保留。
 
@@ -113,7 +113,7 @@ Set (DATA_DELETION = OFF)
 可以使用 [Alter Database](/sql/t-sql/statements/alter-database-transact-sql-set-options) 来禁用表上的数据保留。 以下命令可用于禁用数据库上的数据保留。
 
 ```sql
-ALTER DATABASE <DatabaseName> SET DATA_RETENTION  OFF;
+ALTER DATABASE [<DatabaseName>] SET DATA_RETENTION  OFF;
 ```
 
 ## <a name="next-steps"></a>后续步骤

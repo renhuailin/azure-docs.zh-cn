@@ -2,17 +2,18 @@
 title: 在 Azure 数据工厂中监视集成运行时
 description: 了解如何在 Azure 数据工厂中监视不同类型的集成运行时。
 ms.service: data-factory
+ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 08/11/2020
 author: minhe-msft
 ms.author: hemin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9e8a624d715405a32b6ceb24912161709bf89806
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 10770e3df3f666163958344868a86ee8e7374d55
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670732"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749913"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中监视集成运行时
 

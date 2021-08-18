@@ -10,12 +10,12 @@ ms.author: ravokkar
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 0a7ec2f4f8fdf631a6bc5096296275291ec41751
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d13bdc5bb98159d5a267a821f0431bed622e5e11
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94967119"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728830"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>使用 MQTT 协议与 DPS 通信
 
@@ -70,8 +70,8 @@ DPS 不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准中指
 
 若要通过 DPS 注册某个设备，该设备应使用 `$dps/registrations/res/#` 作为 **主题筛选器** 进行订阅。 主题筛选器中的多级通配符 `#` 仅用于允许设备接收主题名称中的其他属性。 DPS 不允许使用 `#` 或 `?` 通配符筛选子主题。 由于 DPS 不是一般用途的发布-订阅消息传送中转站，因此它仅支持存档的主题名称和主题筛选器。
 
-设备应使用 `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` 作为 **主题名称** 向 DPS 发布 register 消息。 有效负载应包含 JSON 格式的[设备注册](/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration)对象。
-如果成功，设备将在 `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` 主题名称中收到响应，其中，x 是以秒为单位的 retry-after 值。 响应的有效负载将包含 JSON 格式的 [RegistrationOperationStatus](/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) 对象。
+设备应使用 `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` 作为 **主题名称** 向 DPS 发布 register 消息。 有效负载应包含 JSON 格式的[设备注册](/rest/api/iot-dps/device/runtime-registration/register-device)对象。
+如果成功，设备将在 `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` 主题名称中收到响应，其中，x 是以秒为单位的 retry-after 值。 响应的有效负载将包含 JSON 格式的 [RegistrationOperationStatus](/rest/api/iot-dps/device/runtime-registration/register-device#registrationoperationstatus) 对象。
 
 ## <a name="polling-for-registration-operation-status"></a>轮询注册操作状态
 

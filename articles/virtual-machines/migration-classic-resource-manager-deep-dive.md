@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: tagore
-ms.openlocfilehash: 43473b734968b25ca90bd8809c8291625011d46f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1a2a5f035ca0a182371f0beea3b5b58e7353bcc
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101667013"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112322955"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>有关平台支持的从经典部署模型到 Azure Resource Manager 的迁移的技术深入探讨
 
@@ -130,7 +130,7 @@ ms.locfileid: "101667013"
 > 触发提交操作后，就无法执行此操作。     
 >
 
-### <a name="commit"></a>Commit
+### <a name="commit"></a>提交
 完成验证之后，就可以提交迁移。 资源不再出现在经典部署模型中，只在资源管理器部署模型中提供。 只能在新门户中管理迁移的资源。
 
 > [!NOTE]
@@ -190,4 +190,4 @@ ms.locfileid: "101667013"
 * [将 ExpressRoute 线路和关联的虚拟网络从经典部署模型迁移到资源管理器部署模型](../expressroute/expressroute-migration-classic-resource-manager.md)
 * [用于帮助将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的社区工具](migration-classic-resource-manager-community-tools.md)
 * [查看最常见的迁移错误](migration-classic-resource-manager-errors.md)
-* [查看有关将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的最常见问题](migration-classic-resource-manager-faq.md)
+* [查看有关将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的最常见问题](migration-classic-resource-manager-faq.yml)

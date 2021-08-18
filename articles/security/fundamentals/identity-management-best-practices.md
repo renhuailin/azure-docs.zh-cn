@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 227b8d9c797a8fec81d8792a48f456bcda6a838c
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 70f318c10799c1cf30265373d8971faddfafc072
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958507"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180457"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -68,7 +68,7 @@ ms.locfileid: "111958507"
 
 ## <a name="centralize-identity-management"></a>集中化标识管理
 
-在[混合标识](https://resources.office.com/ww-landing-M365E-EMS-IDAM-Hybrid-Identity-WhitePaper.html?)方案中，我们建议集成本地目录和云目录。 通过集成，IT 团队可以在一个位置集中管理帐户，而不管帐户是在哪里创建的。 集成还通过提供用于访问云和本地资源的通用标识，从而帮助用户提高工作效率。
+在混合标识方案中，我们建议集成本地目录和云目录。 通过集成，IT 团队可以在一个位置集中管理帐户，而不管帐户是在哪里创建的。 集成还通过提供用于访问云和本地资源的通用标识，从而帮助用户提高工作效率。
 
 **最佳做法**：建立一个 Azure AD 实例。 一致性和一个权威源不仅会提高简明性，还会减少人为错误和配置复杂性带来的安全风险。
 **详细信息**：指定一个 Azure AD 目录作为企业帐户和组织帐户的权威源。
@@ -339,7 +339,7 @@ ms.locfileid: "111958507"
 不主动监视其标识系统的组织将面临用户凭据泄露的风险。 如果不知道有人通过这些凭据实施可疑活动，组织就无法缓解这种类型的威胁。
 
 ## <a name="use-azure-ad-for-storage-authentication"></a>使用 Azure AD 进行存储身份验证
-[Azure 存储](../../storage/common/storage-auth-aad.md)支持使用 Azure AD 对 Blob 存储和队列存储进行身份验证和授权。 借助 Azure AD 身份验证，可以使用基于 Azure 角色的访问控制向用户、组和应用（一直到各个 Blob 容器或队列的范围）授予特定权限。
+[Azure 存储](../../storage/blobs/authorize-access-azure-active-directory.md)支持使用 Azure AD 对 Blob 存储和队列存储进行身份验证和授权。 借助 Azure AD 身份验证，可以使用基于 Azure 角色的访问控制向用户、组和应用（一直到各个 Blob 容器或队列的范围）授予特定权限。
 
 建议使用 [Azure AD 验证对存储的访问](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/)。
 

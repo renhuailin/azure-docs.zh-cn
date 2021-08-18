@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 725711ed7d49b21303769ccd6959fc8b2083e9fa
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 0b6d64167451b3c7363d6bd80c5fafcd67b6fc5c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112063568"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740182"
 ---
 # <a name="customize-alert-details-in-azure-sentinel"></a>在 Azure Sentinel 自定义警报的详细信息 
 
@@ -63,5 +63,5 @@ ms.locfileid: "112063568"
 
 ## <a name="next-steps"></a>后续步骤
 在本文档中，你了解了如何在 Azure Sentinel 分析规则下自定义警报详细信息。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 全面了解[计划的查询分析规则](tutorial-detect-threats-custom.md)。
+- 全面了解[计划的查询分析规则](detect-threats-custom.md)。
 - 有关详细信息，请参阅 [Azure Sentinel 中的实体](entities-in-azure-sentinel.md)。

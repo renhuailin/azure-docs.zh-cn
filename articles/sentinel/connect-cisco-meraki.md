@@ -14,22 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2021
 ms.author: yelevin
-ms.openlocfilehash: dc2d2a0724f18a02a5b667eb1004963a326ec360
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 64828011cc92145e6635c995294f234754999a8b
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101744546"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179378"
 ---
 # <a name="connect-your-cisco-meraki-to-azure-sentinel"></a>将 Cisco Meraki 连接到 Azure Sentinel
 
 > [!IMPORTANT]
 > Cisco Meraki 连接器目前处于预览阶段。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
+
 本文介绍了如何将 Cisco Meraki (MX/MS/MR) 设备连接到 Azure Sentinel。 使用 Cisco Meraki 数据连接器，可以将 Cisco Meraki 日志轻松连接到 Azure Sentinel，以查看仪表板、创建自定义警报并改进调查。 通过集成 Cisco Meraki 和 Azure Sentinel，可以使用安装了 Log Analytics 代理的 Syslog 服务器。 此外，还可以使用基于 Kusto 函数的定制日志分析程序。
 
 > [!NOTE]
-> 数据将会存储在运行 Azure Sentinel 的工作区的地理位置。
+> 数据将存储在运行 Azure Sentinel 的工作区的地理位置。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -73,6 +75,6 @@ ms.locfileid: "101744546"
 
 在本文档中，你学习了如何将 Cisco Meraki 数据连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。

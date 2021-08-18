@@ -8,16 +8,16 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 1ed37ebd798f7ebef59ea48ce7e2084b331d2bba
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ed43f73de5296a465d1878647a80135aa95c065a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065406"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724271"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>根据 Azure 开放数据集创建 Azure 机器学习数据集
 
-在本文中，你将了解如何使用 [Azure 机器学习](../machine-learning/overview-what-is-azure-ml.md)数据集和 [Azure 开放数据集](./index.yml)将精选的扩充数据引入本地或远程机器学习实验中。 
+在本文中，你将了解如何使用 [Azure 机器学习](../machine-learning/overview-what-is-azure-machine-learning.md)数据集和 [Azure 开放数据集](./index.yml)将精选的扩充数据引入本地或远程机器学习实验中。 
 
 创建 [Azure 机器学习数据集](../machine-learning/how-to-create-register-datasets.md)时，将会创建对数据源位置的引用及其元数据的副本。 由于数据集是延迟计算的，并且数据仍保留在其现有位置，因此
 * 不会产生额外的存储成本。
@@ -26,7 +26,7 @@ ms.locfileid: "106065406"
 
 若要了解在 Azure 机器学习总体数据访问工作流中的哪些位置使用数据集，请参阅[安全地访问数据](../machine-learning/concept-data.md#data-workflow)一文。
 
-Azure 开放数据集是精选的公共数据集，可用于添加方案特定的功能，以扩充预测性解决方案并提高其准确度。 请参阅[开放数据集目录](https://azure.microsoft.com/en-in/services/open-datasets/catalog/)，了解可帮助训练机器学习模型的公共领域数据，例如：
+Azure 开放数据集是精选的公共数据集，可用于添加方案特定的功能，以扩充预测性解决方案并提高其准确度。 请参阅[开放数据集目录](https://azure.microsoft.com/services/open-datasets/catalog/)，了解可帮助训练机器学习模型的公共领域数据，例如：
 
 * [天气](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)
 * [人口统计](https://azure.microsoft.com/services/open-datasets/catalog/us-decennial-census-zip/)

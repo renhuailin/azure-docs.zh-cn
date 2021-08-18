@@ -4,16 +4,16 @@ description: 了解如何为 Web 角色指定 HTTPS 终结点以及如何上传 
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 33aa088efd7768153d4a17472d82e0826f4ffa6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f0e888d1eaa31e106610fcbba11b47905aa1b05
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98742635"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113086399"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>为 Azure 中的应用程序配置 TLS
 

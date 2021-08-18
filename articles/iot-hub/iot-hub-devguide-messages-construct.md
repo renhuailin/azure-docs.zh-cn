@@ -2,21 +2,20 @@
 title: 了解 Azure IoT 中心消息格式 | Microsoft Docs
 description: 开发人员指南 - 描述 IoT 中心消息的格式和预期内容。
 author: ash2017
-manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/07/2021
+ms.date: 07/01/2021
 ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 547152e5c74d8953ae206d9ff3b6076013b0ade1
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 40cbc1c5046c944a8915f1db38805cacb95b2889
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110091623"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114294782"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
 
@@ -151,4 +150,4 @@ IoT 中心用于衡量消息大小的方法与协议无关，仅考虑实际有�
 
 * 有关 IoT 中心消息大小限制的详细信息，请参阅 [IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
 
-* 若要了解如何用不同编程语言创建并读取 IoT 中心消息，请参阅[快速入门](quickstart-send-telemetry-node.md)。
+* 若要了解如何用不同编程语言创建并读取 IoT 中心消息，请参阅[快速入门](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)。

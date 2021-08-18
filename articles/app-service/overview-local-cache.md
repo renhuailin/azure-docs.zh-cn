@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 462f37730d61a674edd463e57a98a1228c8ed611
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: fee408738c556686fbdc3f7935cc840c9e392b58
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967075"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736095"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure 应用服务本地缓存概述
 
@@ -123,3 +123,7 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 
 ### <a name="how-to-flush-the-local-cache-logs-after-a-site-management-operation"></a>如何在站点管理操作之后刷新本地缓存日志？
 要刷新本地缓存日志，请停止并重启应用。 此操作将清除旧缓存。 
+
+## <a name="more-resources"></a>更多资源
+
+[环境变量和应用设置参考](reference-app-settings.md)

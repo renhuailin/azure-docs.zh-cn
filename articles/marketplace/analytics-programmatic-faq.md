@@ -4,15 +4,16 @@ description: 有关在合作伙伴中心以编程方式访问商业市场产品/
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 393a718632138f4ffcf26e4875eea9ba3d886897
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cd0e3253eaa79c2d5a4d5bdd4d6f7d5c7098a228
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583429"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748250"
 ---
 # <a name="programmatic-access-of-analytics-data-common-questions"></a>以编程方式访问分析数据的常见问题
 

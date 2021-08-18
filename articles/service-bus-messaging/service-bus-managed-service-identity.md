@@ -2,13 +2,14 @@
 title: 结合使用 Azure 资源的托管标识与 Azure 服务总线
 description: 本文介绍如何使用托管标识访问 Azure 服务总线实体（队列、主题和订阅）。
 ms.topic: article
-ms.date: 04/23/2021
-ms.openlocfilehash: 3efe513d5e19ca13567b05e8f8d0aafb402ae879
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 06/14/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: ed6f7d495466139a7d1a98aed7d5323f7ad4c074
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161116"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112123216"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 对托管标识进行身份验证，以便访问 Azure 服务总线资源
 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)是一项跨 Azure 功能，可便于用户创建与其中运行应用程序代码的部署关联的安全标识。 然后可以将该标识与访问控制角色进行关联，后者授予的自定义权限可用于访问应用程序需要的特定 Azure 资源。
@@ -92,37 +93,17 @@ Azure Active Directory (Azure AD) 通过 [Azure 基于角色的访问控制 (Azu
 启用此设置后，会在 Azure Active Directory (Azure AD) 中创建一个新的服务标识并将其配置到应用服务主机中。
 
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>使用 Azure 门户分配 Azure 角色
-现在，请将服务标识分配给服务总线资源中所需范围中的某个角色。 若要为服务总线命名空间分配角色，请导航到 Azure 门户中的该命名空间。 显示资源的“访问控制(标识和访问管理)”设置，并按以下说明管理角色分配：
+将其中一个[服务总线角色](#azure-built-in-roles-for-azure-service-bus)分配给所需范围（服务总线命名空间、资源组、订阅）的托管服务标识。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。 
 
 > [!NOTE]
-> 以下步骤为服务总线命名空间分配服务标识角色。 可以按照相同的步骤在其他受支持的范围（资源组和订阅）分配角色。 
-> 
-> [创建服务总线消息传递命名空间](service-bus-create-namespace-portal.md)（如果没有该空间）。 
-
-1. 在 Azure 门户中导航到服务总线命名空间，显示该命名空间的“概览”。 
-1. 选择左侧菜单上的“访问控制(标识和访问管理)”，显示服务总线命名空间的访问控制设置  。
-1.  选择“角色分配”  选项卡以查看角色分配列表。
-3.  依次选择“添加”、“添加角色分配”。
-4.  在“添加角色分配”页上，按照以下步骤操作：
-    1. 对于“角色”，选择要分配的服务总线角色。 在本例中是“Azure 服务总线数据所有者”。
-    1. 对于“访问权限分配对象”字段，选择“系统分配的托管标识”下的“应用服务”  。 
-    1. 选择在其中创建了 Web 应用的托管标识的订阅。
-    1. 选择为 Web 应用创建的托管标识。 标识的默认名称与 Web 应用的名称相同。 
-    1. 然后选择“保存”。
-        
-        ![“添加角色分配”页](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-
-    分配此角色后，Web 应用程序即可访问已定义范围内的服务总线实体。 
-
-    > [!NOTE]
-    > 如需支持托管标识的服务列表，请参阅[支持 Azure 资源托管标识的服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)。
+> 如需支持托管标识的服务列表，请参阅[支持 Azure 资源托管标识的服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)。
 
 ### <a name="run-the-app"></a>运行应用程序
 现在，修改你创建的 ASP.NET 应用程序的默认页面。 可以使用[此 GitHub 存储库](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)中的 Web 应用程序代码。  
 
 Default.aspx 页是登陆页面。 可以在 Default.aspx.cs 文件中找到代码。 结果是一个最小的 Web 应用程序，其中包含几个输入字段以及用来连接到服务总线以发送或接收消息的 **send** 和 **receive** 按钮。
 
-请注意如何使用具有 TokenCredential 的构造函数初始化 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象。 DefaultAzureCredential 派生自 TokenCredential，可在此处传递。 因此，不需要保留和使用任何机密。 从托管标识上下文到服务总线的流以及授权握手均由令牌凭据自动处理。 这是比使用 SAS 更简单的模型。
+请注意 [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) 对象是如何通过采用 TokenCredential 的构造函数进行初始化的。 DefaultAzureCredential 派生自 TokenCredential，可在此处传递。 因此，不需要保留和使用任何机密。 从托管标识上下文到服务总线的流以及授权握手都是由令牌凭据自动处理。 这是比使用 SAS 更简单的模型。
 
 进行这些更改后，发布并运行应用程序。 若要轻松获取正确的发布数据，可下载发布配置文件，并在 Visual Studio 中导入它：
 

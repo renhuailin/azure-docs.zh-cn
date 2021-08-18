@@ -10,15 +10,15 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: ddfe8b6010ddc241364ccf7b2d4f5f648bd3ce0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab85dbc95a8f7432afba3eaa082f6490d1ba8dba
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "72248598"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113552453"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>如何与 Microsoft 基因组学联系以获取支持
-本概述介绍如何创建支持请求以与 Microsoft 基因组学联系。 这可能在无法使用[故障排除指南](troubleshooting-guide-genomics.md)或[常见问题](frequently-asked-questions-genomics.md)解决问题时十分有用。 
+本概述介绍如何创建支持请求以与 Microsoft 基因组学联系。 这可能在无法使用[故障排除指南](troubleshooting-guide-genomics.md)或[常见问题](frequently-asked-questions-genomics.yml)解决问题时十分有用。 
 
 
 ## <a name="file-a-support-ticket-through-the-azure-portal"></a>通过 Azure 门户创建支持票证
@@ -46,4 +46,4 @@ ms.locfileid: "72248598"
 ![支持请求联系人](./media/file-support-ticket/support-request-contact.png "支持请求联系人")
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何提交支持请求。 还可以使用[常见问题](frequently-asked-questions-genomics.md)和[故障排除指南](troubleshooting-guide-genomics.md)解决常见问题。 
+本文介绍了如何提交支持请求。 还可以使用[常见问题](frequently-asked-questions-genomics.yml)和[故障排除指南](troubleshooting-guide-genomics.md)解决常见问题。 

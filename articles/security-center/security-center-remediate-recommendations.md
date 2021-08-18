@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: dc279ea48472ac86dd9502e37788e8b2aad4f37c
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: f0caaea2296a8981df4717497cb641676b43dea1
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906779"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237068"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>在 Azure 安全中心修正建议
 
@@ -26,7 +26,7 @@ ms.locfileid: "107906779"
 
 1. 按照“修正步骤”部分中的说明进行操作。 每个建议都有其自己的一组指令。 以下屏幕截图显示了一些修正步骤，这些步骤用于将应用程序配置为仅允许通过 HTTPS 传输的流量。
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png" alt-text="建议的手动修正步骤" lightbox="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png" alt-text="建议的手动修正步骤。" lightbox="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png":::
 
 1. 完成后，将显示一条通知，告知你问题是否已解决。
 
@@ -39,7 +39,7 @@ ms.locfileid: "107906779"
 > [!TIP]
 > “修复”功能仅可用于特定建议。 若要查找含可修复选项的建议，请对建议列表使用“响应操作”筛选器：
 > 
-> :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="使用建议列表上方的筛选器查找含修复选项的建议":::
+> :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="使用建议列表上方的筛选器查找含修复选项的建议。":::
 
 若要实现“修复”：
 
@@ -54,7 +54,7 @@ ms.locfileid: "107906779"
 
 1. 在确认框中，阅读修正详细信息和影响。
 
-    ![快速修复](./media/security-center-remediate-recommendations/security-center-quick-fix-view.png)
+    ![快速修复。](./media/security-center-remediate-recommendations/security-center-quick-fix-view.png)
 
     > [!NOTE]
     > 影响在单击“修正”后打开的“修正资源”窗口的灰色框中列出。 其中列出了在继续执行“修复”时会发生的更改。

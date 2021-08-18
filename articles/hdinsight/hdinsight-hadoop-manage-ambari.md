@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 01/12/2021
-ms.openlocfilehash: 1b4570b09994f292de2b175396e4b6d1882658d9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4247cce1ad43c2ba25085e3db41b838337e56486
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866482"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725360"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 群集
 
-[!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
+[!INCLUDE [ambari-selector](includes/hdinsight-ambari-selector.md)]
 
 Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 通过提供易于使用的 Web UI 和 REST API 来实现这种简化。 Ambari 包含在 HDInsight 群集上，用于监视群集和进行配置更改。
 
@@ -85,7 +85,7 @@ Apache Ambari 简化了 Apache Hadoop 群集的管理和监视。 通过提供�
 
 最后，在“操作”菜单中选择“管理警报设置”可设置发送通知前出现警报的次数。  可以使用此设置来防止针对暂时性错误发出通知。
 
-有关使用免费 [SendGrid 帐户](../sendgrid-dotnet-how-to-send-email.md)的警报通知的教程，请参阅[在 Azure HDInsight 中配置 Apache Ambari 电子邮件通知](./apache-ambari-email.md)。
+有关使用免费 [SendGrid 帐户](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#create-a-twilio-sendgrid-accountcreate-a-twilio-sendgrid-account)的警报通知的教程，请参阅[在 Azure HDInsight 中配置 Apache Ambari 电子邮件通知](./apache-ambari-email.md)。
 
 ### <a name="cluster"></a>群集
 

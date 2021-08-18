@@ -3,12 +3,12 @@ title: 容器见解概述 | Microsoft Docs
 description: 本文介绍容器见解，它通过监视 AKS 群集和 Azure 中容器实例的运行状况监视 AKS 容器见解解决方案及其提供的值。
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 3310be54476a9449188c2b7fbfa5bbb6e21cb005
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 56222eb90534537df237ec2c5d29a5969f150e60
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177703"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738494"
 ---
 # <a name="container-insights-overview"></a>容器见解概述
 
@@ -39,7 +39,7 @@ ms.locfileid: "108177703"
 * 查看在主机上运行的与支持 Pod 的标准过程无关的工作负荷的资源利用率。
 * 了解群集在平均负载和最重负载下的行为。 此信息有助于了解容量需求及确定群集可承受的最大负载。
 * 配置警报，以便在节点或容器上的 CPU 和内存使用率超过阈值时，或者在基础结构中的群集或节点运行状况汇总中发生运行状况状态更改时，主动通知你或进行记录。
-* 与 [Prometheus](https://prometheus.io/docs/introduction/overview/) 集成来使用[查询](container-insights-log-search.md)查看从节点和 Kubernetes 收集的应用程序和工作负载指标，从而创建自定义警报和仪表板并执行详细分析。
+* 与 [Prometheus](https://prometheus.io/docs/introduction/overview/) 集成来使用[查询](container-insights-log-query.md)查看从节点和 Kubernetes 收集的应用程序和工作负载指标，从而创建自定义警报和仪表板并执行详细分析。
 * 监视[部署到 AKS 引擎](https://github.com/Azure/aks-engine)本地和 [Azure Stack 上的 AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)的容器工作负载。
 * 监视[部署到 Azure Red Hat OpenShift](../../openshift/intro-openshift.md) 的容器工作负载。
 

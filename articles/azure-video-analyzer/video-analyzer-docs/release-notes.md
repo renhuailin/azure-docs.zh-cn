@@ -2,13 +2,13 @@
 title: Azure 视频分析器发行说明 - Azure
 description: 本主题提供 Azure 视频分析器版本的发行说明、改进、bug 修复和已知问题。
 ms.topic: conceptual
-ms.date: 05/25/2021
-ms.openlocfilehash: ef1c395bb10000599f901e62cf77b3573146aeee
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 06/01/2021
+ms.openlocfilehash: f7189e6bda42ad77cb4bb6f426bf73209f46c363
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591217"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601924"
 ---
 # <a name="azure-video-analyzer-release-notes"></a>Azure 视频分析器发行说明
 

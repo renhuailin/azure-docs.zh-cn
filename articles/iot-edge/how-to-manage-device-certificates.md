@@ -2,18 +2,17 @@
 title: 管理设备证书 - Azure IoT Edge | Microsoft Docs
 description: 创建测试证书，并在 Azure IoT Edge 设备上安装和管理证书，以准备生产部署。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f3b6bd19d47658e5ad079f0b731cbafc866bb333
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fa643753aa7f916fbd79850af352c37746357693
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045767"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722011"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>管理 IoT Edge 设备上的证书
 
@@ -135,7 +134,7 @@ ms.locfileid: "105045767"
    trust_bundle_cert = "file:///<path>/<root CA cert>"
    ```
 
-1. 在 config.toml 文件中找到 `[edge_ca]` 节。 将此节中的行取消注释，并提供 IoT Edge 设备上证书和密钥文件的文件 URI 路径。
+1. 在 config.toml 文件中找到 `[edge_ca]` 节。 将该节中的行取消注释，并提供 IoT Edge 设备上证书和密钥文件的文件 URI 路径。
 
    ```toml
    [edge_ca]

@@ -3,22 +3,22 @@ title: 单一登录 (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 构建单一登录体验。
 services: active-directory
-author: mtillman
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/24/2019
-ms.author: mtillman
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 86df7b35987fcc0081aca4e7e33f4da72f08e452
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: c8da247219a2228ef4effdf94485fef990e2bcaa
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077133"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359526"
 ---
 # <a name="single-sign-on-with-msaljs"></a>使用 MSAL.js 进行单一登录
 
@@ -47,7 +47,7 @@ const myMSALObj = new UserAgentApplication(config);
 
 ## <a name="sso-between-apps"></a>应用之间的 SSO
 
-当用户进行身份验证时，将在浏览器中的 Azure AD 域上设置会话 Cookie。 MSAL.js 依赖于此会话 Cookie 来为不同应用程序之间的用户提供 SSO。 MSAL.js 还会在每个应用程序域的浏览器存储中缓存用户的 ID 令牌和访问令牌。 因此，SSO 行为根据不同的情况而异：  
+当用户进行身份验证时，将在浏览器中的 Azure AD 域上设置会话 Cookie。 MSAL.js 依赖于此会话 Cookie 来为不同应用程序之间的用户提供 SSO。 MSAL.js 还会在每个应用程序域的浏览器存储中缓存用户的 ID 令牌和访问令牌。 因此，SSO 行为根据不同的情况而异：
 
 ### <a name="applications-on-the-same-domain"></a>同一域中的应用程序
 
@@ -76,7 +76,7 @@ var request = {
 userAgentApplication.acquireTokenSilent(request).then(function(response) {
         const token = response.accessToken
     }
-).catch(function (error) {  
+).catch(function (error) {
         //handle error
 });
 ```
@@ -132,14 +132,14 @@ var request = {
 userAgentApplication.acquireTokenSilent(request).then(function(response) {
         const token = response.accessToken
     }
-).catch(function (error) {  
+).catch(function (error) {
         //handle error
 });
 ```
 
 ## <a name="sso-in-adaljs-to-msaljs-update"></a>从 ADAL.js 更新到 MSAL.js 之后的 SSO
 
-对于 Azure AD 身份验证方案，MSAL.js 引入了与 ADAL.js 的功能奇偶一致性。 为了轻松从 ADAL.js 迁移到 MSAL.js 并避免再次提示用户登录，库会在 ADAL.js 缓存中读取代表用户会话的 ID 令牌，并在 MSAL.js 中无缝地将用户登录。  
+对于 Azure AD 身份验证方案，MSAL.js 引入了与 ADAL.js 的功能奇偶一致性。 为了轻松从 ADAL.js 迁移到 MSAL.js 并避免再次提示用户登录，库会在 ADAL.js 缓存中读取代表用户会话的 ID 令牌，并在 MSAL.js 中无缝地将用户登录。
 
 若要在从 ADAL.js 更新时利用单一登录 (SSO) 行为，需确保库使用 `localStorage` 来缓存令牌。 在初始化时，将 MSAL.js 和 ADAL.js 配置中的 `cacheLocation` 设置为 `localStorage`，如下所示：
 

@@ -7,12 +7,12 @@ ms.reviewer: mbullwin
 ms.custom: devx-track-python
 author: lzchen
 ms.author: lechen
-ms.openlocfilehash: 4f3ef03e3561cf054102b5f5c15ff571c3d4d28d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 988f32cae16a026ddef0294815ffd21ba0d81760
+ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742618"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112991732"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>为 Python 应用程序设置 Azure Monitor
 
@@ -514,6 +514,13 @@ exporter = metrics_exporter.new_metrics_exporter(
 - `max_batch_size`：指定一次性导出的最大遥测大小。
 - `proxies`：指定用于将数据发送到 Azure Monitor 的代理序列。 有关详细信息，请参阅[代理](https://requests.readthedocs.io/en/master/user/advanced/#proxies)。
 - `storage_path`：指向本地存储文件夹（未发送的遥测）所在位置的路径。 自 `opencensus-ext-azure` v1.0.3 起，默认路径为 OS 临时目录 + `opencensus-python` + `your-ikey`。 在 v1.0.3 之前，默认路径为 $USER + `.opencensus` + `.azure` + `python-file-name`。
+
+## <a name="authentication-preview"></a>身份验证（预览版）
+> [!NOTE]
+> 从 `opencensus-ext-azure` v1.1b0 开始提供身份验证功能
+
+每个 Azure Monitor 导出程序都支持以下配置：通过使用 Azure Active Directory (AAD) 进行的 OAuth 身份验证来安全地发送遥测有效负载。
+有关详细信息，请参阅[身份验证](./azure-ad-authentication.md)文档。
 
 ## <a name="view-your-data-with-queries"></a>使用查询查看数据
 

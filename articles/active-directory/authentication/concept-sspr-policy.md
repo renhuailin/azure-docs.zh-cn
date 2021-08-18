@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 06/25/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: b66ab52a65dd848997d8f13dde7bfba944ad520b
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: ff0e43570b9bf30b84538cfeca841a69d025b26b
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744388"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090378"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和账户限制
 
@@ -69,30 +69,32 @@ ms.locfileid: "111744388"
 双门策略需要两条身份验证数据（如电子邮件地址、身份验证应用或电话号码）。 双门策略在以下情况下适用：
 
 * 以下所有 Azure 管理员角色将受到影响：
-  * 支持管理员
-  * 服务支持管理员
+  * 应用程序管理员
+  * 应用程序代理服务器管理员
+  * 身份验证管理员
+  * 已加入 Azure AD 的设备的本地管理员
   * 计费管理员
+  * 法规管理员
+  * 设备管理员
+  * 目录同步帐户
+  * 目录写入者
+  * Dynamics 365 管理员
+  * Exchange 管理员
+  * 全局管理员或公司管理员
+  * 支持管理员
+  * Intune 管理员
+  * 邮箱管理员
   * 合作伙伴一线支持人员
   * 合作伙伴二线支持人员
-  * Exchange 管理员
-  * 邮箱管理员
+  * 密码管理员
+  * Power BI 服务管理员
+  * 特权身份验证管理员
+  * 特权角色管理员
+  * SharePoint 管理员
+  * 安全管理员
+  * 服务支持管理员
   * Skype for Business 管理员
   * 用户管理员
-  * 目录写入者
-  * 全局管理员或公司管理员
-  * SharePoint 管理员
-  * 法规管理员
-  * 应用程序管理员
-  * 安全管理员
-  * 特权角色管理员
-  * Intune 管理员
-  * 已加入 Azure AD 的设备的本地管理员
-  * 应用程序代理服务器管理员
-  * Dynamics 365 管理员
-  * Power BI 服务管理员
-  * 身份验证管理员
-  * 密码管理员
-  * 特权身份验证管理员
 
 * 如果在试用订阅中已过 30 天；或
 * 已为 Azure AD 租户配置了自定义域，如 *contoso.com*；或
@@ -117,7 +119,7 @@ ms.locfileid: "111744388"
 本指南适用于其他提供程序（如 Intune 和 Microsoft 365），这些提供程序也依赖于 Azure AD 提供标识和目录服务。 密码过期是策略中唯一可更改的部分。
 
 > [!NOTE]
-> 默认情况下，只有未通过 Azure AD Connect 进行同步的用户帐户的密码才能配置为不过期。 有关目录同步的详细信息，请参阅[将 AD 与 Azure AD 连接](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization#password-expiration-policy)。
+> 默认情况下，只有未通过 Azure AD Connect 进行同步的用户帐户的密码才能配置为不过期。 有关目录同步的详细信息，请参阅[将 AD 与 Azure AD 连接](../hybrid/how-to-connect-password-hash-synchronization.md#password-expiration-policy)。
 
 ### <a name="set-or-check-the-password-policies-by-using-powershell"></a>使用 PowerShell 设置或检查密码策略
 

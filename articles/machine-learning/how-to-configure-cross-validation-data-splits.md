@@ -11,12 +11,12 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 02/23/2021
-ms.openlocfilehash: 00c3cd6f6a4e5878a3a426aa5622cc53487f2bdd
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 82ea26a5522d44bb39adc30f388f996688cb1ad5
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131397"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180053"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>在自动化机器学习中配置数据拆分和交叉验证
 
@@ -44,6 +44,8 @@ ms.locfileid: "108131397"
     * [关于机器学习中的训练、验证和测试数据](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
     * [了解机器学习中的交叉验证](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) 
+
+[!INCLUDE [automl-sdk-version](../../includes/machine-learning-automl-sdk-version.md)]
 
 ## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>机器学习中的默认数据拆分和交叉验证
 
@@ -74,7 +76,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 在这种情况下，你可以从单个数据文件开始，将其拆分为训练数据集和验证数据集，也可以为验证集提供单独的数据文件。 无论采用哪种方式，`AutoMLConfig` 对象中的 `validation_data` 参数都将分配要用作验证集的数据。 此参数仅接受 [Azure 机器学习数据集](how-to-create-register-datasets.md) 或 pandas 数据帧格式的数据集。   
 
 > [!NOTE]
-> 预测方案不支持 `validation_size` 参数。
+> `validation_data` 参数还需要设置 `training_data` 和 `label_column_name` 参数。 只能设置一个验证参数，也就是说只能指定 `validation_data` 或 `n_cross_validations`，而不能同时指定这二者。
 
 下面的代码示例显式定义了要将 `dataset` 中所提供数据的哪部分用于训练和验证。
 

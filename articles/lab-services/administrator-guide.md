@@ -3,12 +3,12 @@ title: Azure 实验室服务 - 管理员指南 | Microsoft Docs
 description: 本指南可帮助使用 Azure 实验室服务创建和管理实验室帐户的管理员。
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 9f37fb8bb2eae6c4d7db7f4eed161cef6fd2a918
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 567a6ad5cd7eae6fb6963dbcdb781fc2d7667f79
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110191371"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737697"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure 实验室服务 - 管理员指南
 管理大学云资源的信息技术 (IT) 管理员通常负责为学校设置实验室帐户。 设置实验室帐户后，管理员或教师会创建帐户中包含的实验室。 本文简要概述了所涉及的 Azure 资源以及创建这些资源的指导。
@@ -241,7 +241,7 @@ ms.locfileid: "110191371"
 
 使用实验室服务，即使使用“通用化”映像创建实验室，模板 VM 和学生 VM 也全部将具有相同的计算机 SID。  VM 具有相同的 SID，因为模板 VM 的映像在发布以创建学生 VM 时处于“通用化”状态。
 
-例如，Azure 市场映像已通用化。  如果从 Win 10 市场映像创建实验室并发布模板 VM，实验室内的所有学生 VM 将具有与模板 VM 相同的计算机 SID。  可以使用 [PsGetSid](https://docs.microsoft.com/sysinternals/downloads/psgetsid) 等工具验证计算机 SID。
+例如，Azure 市场映像已通用化。  如果从 Win 10 市场映像创建实验室并发布模板 VM，实验室内的所有学生 VM 将具有与模板 VM 相同的计算机 SID。  可以使用 [PsGetSid](/sysinternals/downloads/psgetsid) 等工具验证计算机 SID。
 
 如果打算使用终结点管理工具或类似软件，我们建议使用实验室 VM 进行测试，以确保它在计算机 SID 相同时正常工作。  
 
@@ -291,7 +291,7 @@ ms.locfileid: "110191371"
 * 1 个自定义映像 (32 GB) &times; 2 个版本 &times; 8 个美国区域 &times; 1.54 美元 = 24.64 美元/月
 
 > [!NOTE]
-> 上述计算仅用于示例目的。 它包含与使用共享映像库关联的存储成本，不包括流出量成本。 有关存储的实际定价，请参阅“[托管磁盘定价](https://azure.microsoft.com/en-us/pricing/details/managed-disks/)”。
+> 上述计算仅用于示例目的。 它包含与使用共享映像库关联的存储成本，不包括流出量成本。 有关存储的实际定价，请参阅“[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)”。
 
 #### <a name="cost-management"></a>成本管理
 

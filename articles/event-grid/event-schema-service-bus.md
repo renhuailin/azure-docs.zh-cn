@@ -3,18 +3,18 @@ title: 充当事件网格源的 Azure 服务总线
 description: 介绍了针对 Azure 事件网格中的服务总线事件提供的属性
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.openlocfilehash: d3e14788d49697a1f86624bbe8d6d0ec2eb072c8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f872ffeb0bab2369aca24e202f8e756406a89c76
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363231"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415421"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>充当事件网格源的 Azure 服务总线
 
 本文提供了服务总线事件的属性和架构。  有关事件架构的简介，请参阅 [Azure 事件网格事件架构](event-schema.md)。
 
-[!INCLUDE [event-grid-service-bus.md](../../includes/event-grid-service-bus.md)]
+[!INCLUDE [event-grid-service-bus.md](../service-bus-messaging/includes/event-grid-service-bus.md)]
 
 ## <a name="tutorials-and-how-tos"></a>教程和操作指南
 |标题  |描述  |

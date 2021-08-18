@@ -2,18 +2,17 @@
 title: 将 Azure IoT 中心操作监视迁移到 Azure Monitor 中的 IoT 中心资源日志 |Microsoft Docs
 description: 如何更新 Azure IoT 中心以使用 Azure Monitor（而非使用操作监视）来实时监视 IoT 中心内操作的状态。
 author: kgremban
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: 48b646881b12047b28490999a96326f6076af2c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c41b3298e265fb3dab41a6fc1af51e3ff0829489
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591842"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733821"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-azure-monitor-resource-logs"></a>将 IoT 中心从操作监视迁移到 Azure Monitor 资源日志
 

@@ -3,17 +3,18 @@ title: 使用存储过程活动运行 SSIS 包 - Azure
 description: 本文介绍如何使用存储过程活动在 Azure 数据工厂管道中运行 SQL Server Integration Services (SSIS) 包。
 author: swinarko
 ms.service: data-factory
+ms.subservice: integration-services
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 06/04/2021
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6260606fe56d4dfc6bac93e04e726b5fd3298777
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 08c0e844b941a8b8bc9ed110300b6bc3e5c1474c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100391501"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726858"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动运行 SSIS 包
 
@@ -69,9 +70,10 @@ ms.locfileid: "100391501"
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>使用存储过程活动创建管道
 在此步骤中，将使用数据工厂 UI 创建管道。 向管道中添加存储过程活动，并将其配置为使用 sp_executesql 存储过程运行 SSIS 包。 
 
-1. 在“入门”页中，单击“创建管道”： 
+1. 在主页中，单击“协调”： 
 
-    ![“入门”页](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
+    ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
+
 2. 在“活动”工具箱中展开“常规”，将 **存储过程** 活动拖放到管道设计器图面。 
 
     ![拖放存储过程活动](./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png)
@@ -188,7 +190,7 @@ ms.locfileid: "100391501"
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于 **参与者** 或 **所有者** 角色，或者是 Azure 订阅的 **管理员**。
-* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>创建 Azure SQL 数据库链接服务
 创建一个链接服务，将托管 SSIS 目录的数据库链接到数据工厂。 数据工厂使用此链接服务中的信息连接到 SSISDB 数据库，并执行存储过程来运行 SSIS 包。 

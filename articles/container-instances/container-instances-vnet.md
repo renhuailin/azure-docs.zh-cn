@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 命令行接口将容器组部署到新的
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 44be66957aa745179ffe4cd00db75f1d47237dfc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f107b5b04726047bea4d7c05a6c031d921f26547
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771040"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300158"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
 
@@ -115,7 +115,7 @@ index.html           100% |*******************************|  1663   0:00:00 ETA
 
 ### <a name="example---yaml"></a>示例 - YAML
 
-还可以通过使用 YAML 文件、[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+还可以通过使用 YAML 文件、[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-vnet
 )或其他编程方法（例如使用 Python SDK）将容器组部署到现有虚拟网络。 
 
 例如，使用 YAML 文件时，可以部署到具有委派给了 Azure 容器实例的子网的虚拟网络。 指定以下属性：
@@ -224,7 +224,7 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 
 ## <a name="next-steps"></a>后续步骤
 
-若要使用资源管理器模板部署新的虚拟网络、子网、网络配置文件和容器组，请参阅 [Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+若要使用资源管理器模板部署新的虚拟网络、子网、网络配置文件和容器组，请参阅 [Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aci-vnet
 )（使用 VNet 创建 Azure 容器组）。
 
 <!-- IMAGES -->

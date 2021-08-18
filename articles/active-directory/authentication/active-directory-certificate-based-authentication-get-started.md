@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3ba84bb3ee38981217e72f8372a836b03647083d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 809604439caa6a1a0c20ca7d22fac21dd6c1ab2b
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96861334"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913556"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory 中基于证书的身份验证入门
 
@@ -98,9 +98,9 @@ ms.locfileid: "96861334"
 1. 使用管理员特权启动 Windows PowerShell。
 2. 安装 Azure AD 模块 [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) 或更高版本。
 
-```powershell
-    Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
-```
+   ```powershell
+       Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
+   ```
 
 作为第一个配置步骤，需建立与租户的连接。 与租户建立连接后，即可查看、添加、删除和修改目录中定义的受信任的证书颁发机构。
 
@@ -162,27 +162,25 @@ ms.locfileid: "96861334"
 
 以下步骤概述了通过设置 **StsRefreshTokenValidFrom** 字段更新授权令牌并使其失效的过程。
 
-**若要配置吊销，请执行以下操作：**
-
 1. 使用管理员凭据连接到 MSOL 服务：
 
-```powershell
-        $msolcred = get-credential
-        connect-msolservice -credential $msolcred
-```
+   ```powershell
+           $msolcred = get-credential
+            connect-msolservice -credential $msolcred
+   ```
 
 2. 检索用户的当前 StsRefreshTokensValidFrom 值：
 
-```powershell
-        $user = Get-MsolUser -UserPrincipalName test@yourdomain.com`
-        $user.StsRefreshTokensValidFrom
-```
+   ```powershell
+           $user = Get-MsolUser -UserPrincipalName test@yourdomain.com`
+           $user.StsRefreshTokensValidFrom
+   ```
 
 3. 将用户的新 StsRefreshTokensValidFrom 值配置为等于当前时间戳：
 
-```powershell
-        Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
-```
+   ```powershell
+           Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
+   ```
 
 所设日期必须属于将来。 如果日期不属于将来，则不会设置 **StsRefreshTokensValidFrom** 属性。 如果日期属于将来，则将 **StsRefreshTokensValidFrom** 设置为当前时间（而不是由 Set-MsolUser 命令指示的日期）。
 
@@ -199,11 +197,9 @@ ms.locfileid: "96861334"
 
 ### <a name="testing-office-mobile-applications"></a>测试 Office 移动应用程序
 
-**若要在 Office 移动应用程序上测试基于证书的身份验证，请执行以下操作：**
-
 1. 在测试设备上，安装 Office 移动应用程序（例如 OneDrive）。
-3. 启动应用程序。
-4. 输入用户名，并选择要使用的用户证书。
+1. 启动应用程序。
+1. 输入用户名，并选择要使用的用户证书。
 
 应可以成功登录。
 
@@ -220,8 +216,6 @@ EAS 配置文件必须包含以下信息：
 若要配置 EAS 配置文件并将其放置在设备上，可以使用移动设备管理 (MDM)，例如 Intune，也可以手动将 EAS 配置文件中的证书放置在设备上。
 
 ### <a name="testing-eas-client-applications-on-android"></a>在 Android 上测试 EAS 客户端应用程序
-
-**若要测试证书身份验证，请执行以下操作：**
 
 1. 在应用程序中配置满足上一部分中要求的 EAS 配置文件。
 2. 打开应用程序，验证邮件是否正在同步。

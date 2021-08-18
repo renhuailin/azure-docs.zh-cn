@@ -1,17 +1,18 @@
 ---
-title: Windows 虚拟桌面 MSIX 应用附加 PowerShell - Azure
-description: 如何使用 PowerShell 设置 Windows 虚拟桌面的 MSIX 应用附加。
+title: Azure 虚拟桌面 MSIX 应用附加 PowerShell - Azure
+description: 如何使用 PowerShell 设置 Azure 虚拟桌面的 MSIX 应用附加。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
+ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: ebc403553443a9ea04525323b751fbdb51d23c6e
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: d77dfb8883aac4e960274ce86de243f25df2f196
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500577"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707041"
 ---
 # <a name="set-up-msix-app-attach-using-powershell"></a>通过 PowerShell 设置 MSIX 应用附加
 
@@ -21,12 +22,12 @@ ms.locfileid: "107500577"
 
 配置 MSIX 应用附加需要以下各项：
 
-- 正常运行的 Windows 虚拟桌面部署。 要了解如何部署 Windows 虚拟桌面（经典版），请参阅[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 要了解如何使用 Azure 资源管理器集成部署 Windows 虚拟桌面，请参阅[使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
-- 至少具有一个活动会话主机的 Windows 虚拟桌面主机池。
+- 正常运行的 Azure 虚拟桌面部署。 要了解如何部署 Azure 虚拟桌面（经典），请参阅[在 Azure 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 要了解如何使用 Azure 资源管理器集成部署 Azure 虚拟桌面，请参阅[使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
+- 至少具有一个活动会话主机的 Azure 虚拟桌面主机池。
 - 桌面远程应用组。
 - MSIX 打包工具。
 - 展开到已上传到文件共享中的 MSIX 映像的 MSIX 打包应用程序。
-- Windows 虚拟桌面部署中将存储 MSIX 包的文件共享。
+- Azure 虚拟桌面部署中将存储 MSIX 包的文件共享。
 - 上传了 MSIX 映像的文件共享还必须可由主机池中的所有虚拟机 (VM) 访问。 用户需要只读权限才能访问该映像。
 - 下载并安装 PowerShell Core。
 - 下载公共预览版 Azure PowerShell 模块，并将其展开到本地文件夹。
@@ -234,11 +235,11 @@ $grName = "<AppGroupName>"
 
 ## <a name="next-steps"></a>后续步骤
 
-请在 [Windows 虚拟桌面 TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 向社区咨询有关此功能的问题。
+请在 [Azure 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)询问有关此功能的问题。
 
-还可以在 [Windows 虚拟桌面反馈中心](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)提供关于 Windows 虚拟桌面的反馈。
+还可以在 [Azure 虚拟桌面反馈中心](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)提供关于 Azure 虚拟桌面的反馈。
 
 下面是一些可能有用的其他文章：
 
 - [MSIX 应用附加术语表](app-attach-glossary.md)
-- [MSIX 应用附加常见问题解答](app-attach-faq.md)
+- [MSIX 应用附加常见问题解答](app-attach-faq.yml)

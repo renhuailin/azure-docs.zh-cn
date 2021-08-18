@@ -2,27 +2,27 @@
 title: 调试基于 SAML 的单一登录 - Azure Active Directory
 description: 在 Azure Active Directory 中调试应用程序的基于 SAML 的单一登录。
 services: active-directory
-ms.author: mtillman
-author: mtillman
+ms.author: davidmu
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 02/18/2019
-ms.reviewer: luleon, hirsin, paulgarn
-ms.openlocfilehash: 8391d52a17f897c0526c49ec39d408792d2e3699
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.reviewer: ergreenl
+ms.openlocfilehash: 8e01b93c2371f55f56d9c9284894c3bdbbaac993
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075945"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744127"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>在 Azure Active Directory 中调试应用程序的基于 SAML 的单一登录
 
-了解如何在 Azure Active Directory (Azure AD) 中为使用基于 SAML 的单一登录的应用程序查找和解决[单一登录](what-is-single-sign-on.md)问题。 
+了解如何在 Azure Active Directory (Azure AD) 中为使用基于 SAML 的单一登录的应用程序查找和解决[单一登录](what-is-single-sign-on.md)问题。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>在开始之前
 
 我们建议安装[我的应用安全登录扩展](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension)。 使用此浏览器扩展可轻松收集解决单一登录问题时所需的 SAML 请求和 SAML 响应信息。 如果无法安装该扩展，本文介绍了在已安装和未安装该扩展的情况下如何解决问题。
 
@@ -37,7 +37,7 @@ ms.locfileid: "112075945"
 在 Azure AD 与目标应用程序之间测试基于 SAML 的单一登录：
 
 1. 以全局管理员或者有权管理应用程序的其他管理员身份登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧边栏选项卡中，选择“Azure Active Directory”，然后选择“企业应用程序” 。 
+1. 在左侧边栏选项卡中，选择“Azure Active Directory”，然后选择“企业应用程序” 。
 1. 在“企业应用程序”列表中，选择要对其测试单一登录的应用程序，然后在左侧的选项中选择“单一登录”。
 1. 若要打开基于 SAML 的单一登录测试体验，请转到“测试单一登录”（步骤 5）。 如果“测试”按钮灰显，则需要先在“基本 SAML 配置”部分中填写并保存所需的属性 。
 1. 在“测试单一登录”边栏选项卡中，使用企业凭据登录到目标应用程序。 可以当前用户或其他用户的身份登录。 如果以其他用户的身份登录，系统会提示进行身份验证。
@@ -77,7 +77,6 @@ ms.locfileid: "112075945"
 1. 验证 SAML 请求中的证书颁发者是否与在 Azure AD 中为应用程序配置的标识符相同。 Azure AD 使用颁发者在目录中查找应用程序。
 1. 验证应用程序是否预计在 AssertionConsumerServiceURL 中从 Azure AD 接收 SAML 令牌。 可以在 Azure AD 中配置此值，但如果此值是 SAML 请求的一部分，则不一定要这样做。
 
-
 ## <a name="resolve-a-sign-in-error-on-the-application-page"></a>解决应用程序页上的登录错误
 
 成功登录后，应用程序页上也仍有可能会出现错误。 当 Azure AD 向应用程序颁发了令牌，但应用程序未接受响应时，将发生此错误。
@@ -95,7 +94,7 @@ ms.locfileid: "112075945"
 
      有关 SAML 响应的详细信息，请参阅[单一登录 SAML 协议](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
 
-1. 查看 SAML 响应后，请参阅[登录后应用程序页上出现错误](application-sign-in-problem-application-error.md)来获取有关如何解决问题的指导。 
+1. 查看 SAML 响应后，请参阅[登录后应用程序页上出现错误](application-sign-in-problem-application-error.md)来获取有关如何解决问题的指导。
 1. 如果仍然无法成功登录，可咨询应用程序供应商，确定 SAML 响应中缺少哪些信息。
 
 ## <a name="next-steps"></a>后续步骤

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: pafarley
-ms.openlocfilehash: 195beaaae2925ce9cc6e7cc70bd0415ded49f155
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: d5a1da6bbe251e6200cd3a64117748e9ebbfae2a
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166696"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298108"
 ---
 # <a name="call-the-read-api"></a>调用读取 API
 
@@ -23,7 +23,9 @@ ms.locfileid: "108166696"
 
 本指南假设你已经<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="创建计算机视觉资源"  target="_blank">创建计算机视觉资源 </a> 并获取订阅密钥和终结点 URL。 如果没有，请按照[快速入门](../quickstarts-sdk/client-library.md)中的说明开始操作。
 
-## <a name="submit-data-to-the-service"></a>将数据提交到服务
+## <a name="submit-data-to-the-service"></a>提交服务数据
+
+可向读取 API 提交本地映像或远程映像。 就本地映像而言，请将二进制图像数据放在 HTTP 请求正文中。 就远程映像而言，请通过设置请求正文的格式来指定图像的 URL，如下所示：`{"url":"http://example.com/images/test.jpg"}`。
 
 读取 API 的[读取调用](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)采用图像或 PDF 文档作为输入，以异步方式提取文本。
 

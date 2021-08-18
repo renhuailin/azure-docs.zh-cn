@@ -2,13 +2,13 @@
 title: Azure 视频分析器管道
 description: 使用 Azure 视频分析器管道可以定义应从何处捕获输入数据、应如何处理这些数据以及应将结果传送到何处。 管道由连接的用于实现所需数据流的节点组成。
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: deed7eec980272dd3dd001219016eee139f22ad6
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 06/01/2021
+ms.openlocfilehash: 5e874cc71752fa6690a4ca3fc9f3cd33665dc381
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591235"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602249"
 ---
 # <a name="pipeline"></a>管道
 

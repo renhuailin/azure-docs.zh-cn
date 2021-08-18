@@ -4,12 +4,12 @@ description: 了解如何使用用于访问 Azure Kubernetes 服务 (AKS) 中 AP
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: c28514490b77917f16ae4687a62d3a8963d57537
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: cf65fcfe297cfbff60490b165771095e6d3b402a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111887395"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733653"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 中的已授权 IP 地址范围保护对 API 服务器的访问
 
@@ -137,7 +137,7 @@ az aks update \
 az aks show \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --query apiServerAccessProfile.authorizedIpRanges'
+    --query apiServerAccessProfile.authorizedIpRanges
 ```
 
 ## <a name="update-disable-and-find-authorized-ip-ranges-using-azure-portal"></a>使用 Azure 门户来更新、禁用和查找已授权 IP 范围
@@ -161,7 +161,7 @@ CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
 az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
 ```
 
->> [!NOTE]
+> [!NOTE]
 > 上面的示例在群集上追加了 API 服务器已授权 IP 范围。 若要禁用已授权 IP 范围，请使用“az aks update”并指定空范围 ""。 
 
 另一种方法是在 Windows 系统上使用以下命令来获取公共 IPv4 地址，也可以使用[查找 IP 地址](https://support.microsoft.com/en-gb/help/4026518/windows-10-find-your-ip-address)中的步骤。
@@ -180,7 +180,7 @@ Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
 
 <!-- LINKS - external -->
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
-[dev-spaces-ranges]: ../dev-spaces/index.yml#aks-cluster-network-requirements
+[dev-spaces-ranges]: /previous-versions/azure/dev-spaces/#aks-cluster-network-requirements
 [kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
 
 <!-- LINKS - internal -->

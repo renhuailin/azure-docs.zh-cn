@@ -1,21 +1,21 @@
 ---
 title: Blob 版本控制
 titleSuffix: Azure Storage
-description: Blob 存储版本控制会自动维护对象的先前版本，并使用时间戳标识它们。 如果错误地修改或删除了数据，则可以还原 Blob 的先前版本以恢复数据。
+description: Blob 存储版本控制会自动维护对象的先前版本，并通过时间戳识别它们。 如果错误地修改或删除了数据，则可以还原 blob 的先前版本以恢复数据。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/08/2021
+ms.date: 05/10/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 268de3e8ea168ac721362d42149389b9f37c86fe
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 1742679fbca38b878325bd56fa01fc2efebf4f82
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305049"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733693"
 ---
 # <a name="blob-versioning"></a>Blob 版本控制
 
@@ -23,23 +23,23 @@ ms.locfileid: "107305049"
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
-## <a name="recommended-data-protection-configuration"></a>建议的数据保护配置
+## <a name="recommended-data-protection-configuration"></a>推荐的数据保护配置
 
 Blob 版本控制是针对 Blob 数据的综合性数据保护策略的一部分。 为实现对 Blob 数据的最佳保护，Microsoft 建议启用以下所有数据保护功能：
 
 - Blob 版本控制，用于自动维护 Blob 的先前版本。 启用 blob 版本控制后，如果错误地修改或删除了数据，则可以还原 blob 的先前版本以恢复数据。 若要了解如何启用 blob 版本控制，请参阅[启用和管理 blob 版本控制](versioning-enable.md)。
 - 容器软删除，用于还原已删除的容器。 若要了解如何启用容器软删除，请参阅[启用和管理容器的软删除](soft-delete-container-enable.md)。
-- Blob 软删除，用于还原已删除的 Blob、快照或版本。 若要了解如何启用 Blob 软删除，请参阅[启用和管理 Blob 的软删除](soft-delete-blob-enable.md)。
+- Blob 软删除，用于还原已删除的 Blob、快照或版本。 若要了解如何启用 blob 软删除，请参阅[启用和管理 blob 的软删除](soft-delete-blob-enable.md)。
 
 若要详细了解 Microsoft 的数据保护建议，请参阅[数据保护概述](data-protection-overview.md)。
 
 ## <a name="how-blob-versioning-works"></a>Blob 版本控制的工作原理
 
-版本在给定时间点捕获 blob 的状态。 每个版本都由一个版本 ID 标识。 为存储帐户启用 Blob 版本控制后，首次创建 Blob 以及以后每次修改该 Blob 时，Azure 存储都会自动创建一个具有唯一 ID 的新版本。
+版本在给定时间点捕获 blob 的状态。 每个版本都由一个版本 ID 标识。 为存储帐户启用 blob 版本控制后，首次创建 blob 时以及随后每次修改 blob 时，Azure 存储都会自动创建一个具有唯一 ID 的新版本。
 
-版本 ID 可以标识当前版本或先前版本。 一个 Blob 在一个时间只能有一个当前版本。
+版本 ID 可以标识当前版本或先前版本。 一个 blob 一次只能有一个当前版本。
 
-创建新的 Blob 时，将存在单个版本，而该版本就是当前版本。 修改现有的 Blob 时，当前版本将变成先前版本。 将创建一个新版本来捕获更新的状态，而此新版本就是当前版本。 删除某个 Blob 时，该 Blob 的当前版本将变成先前版本，并且不再存在当前版本。 Blob 的所有先前版本将会持久保留。
+创建一个新的 blob 时，存在一个版本，该版本就是当前版本。 修改现有 blob 时，当前版本将变为先前版本。 将创建一个新版本以捕获更新的状态，该新版本即为当前版本。 删除某个 blob 时，该 blob 的当前版本将成为先前版本，当前版本不复存在。 Blob 的任何先前版本都将保留。
 
 下图显示了如何在写入操作中创建版本，以及如何将先前版本提升为当前版本：
 
@@ -49,7 +49,7 @@ Blob 版本是不可变的。 不能修改现有 blob 版本的内容或元数�
 
 如果每个 blob 都具有大量版本，则会增加 blob 列表操作的延迟。 Microsoft 建议每个 Blob 保留的版本少于 1000 个。 可以使用生命周期管理来自动删除旧版本。 有关生命周期管理的详细信息，请参阅[通过自动执行 Azure Blob 存储访问层来优化成本](storage-lifecycle-management-concepts.md)。
 
-Blob 版本控制适用于标准常规用途 v2、高级块 Blob 和旧式 Blob 存储帐户。 当前不支持启用了分层命名空间以与 Azure Data Lake Storage Gen2 一起使用的存储帐户。
+Blob 版本控制可用于标准常规用途 v2、高级块 blob 和旧版 Blob 存储帐户。 当前不支持启用了分层命名空间以与 Azure Data Lake Storage Gen2 一起使用的存储帐户。
 
 Azure 存储 REST API 2019-10-10 版及更高版本支持 blob 版本控制。
 
@@ -58,9 +58,9 @@ Azure 存储 REST API 2019-10-10 版及更高版本支持 blob 版本控制。
 
 ### <a name="version-id"></a>版本 ID
 
-每个 Blob 版本都由唯一的版本 ID 标识。 版本 ID 的值是更新 Blob 时的时间戳。 创建版本时分配版本 ID。
+每个 blob 版本都由一个唯一版本 ID 标识。 版本 ID 的值是更新 blob 时的时间戳。 创建版本时分配版本 ID。
 
-可以通过提供 blob 的特定版本 ID 来对其执行读取或删除操作。 如果省略版本 ID，则操作将针对当前版本执行。
+可以通过提供 blob 的特定版本 ID 来对其执行读取或删除操作。 如果省略了版本 ID，则操作将针对当前版本进行。
 
 调用写入操作来创建或修改 blob 时，Azure 存储将在响应中返回 x-ms-version-id 标头。 此标头包含由写入操作创建的 blob 的当前版本的版本 ID。
 
@@ -70,7 +70,7 @@ Azure 存储 REST API 2019-10-10 版及更高版本支持 blob 版本控制。
 
 启用 blob 版本控制后，对 blob 的每次写入操作都会创建一个新版本。 写入操作包括[放置 Blob](/rest/api/storageservices/put-blob)、[放置块列表](/rest/api/storageservices/put-block-list)、[复制 Blob](/rest/api/storageservices/copy-blob) 和[设置 Blob 元数据](/rest/api/storageservices/set-blob-metadata)。
 
-如果写入操作创建了新的 blob，则生成的 blob 为 blob 的当前版本。 如果写入操作修改了现有的 Blob，则当前版本将变成先前版本，并且会创建一个新的当前版本来捕获更新的 Blob。
+如果写入操作创建了新的 blob，则生成的 blob 为 blob 的当前版本。 如果写入操作修改了现有 blob，则当前版本将成为先前版本，并创建新的当前版本以捕获更新的 blob。
 
 下图显示了写入操作对 blob 版本的影响。 为简单起见，本文中的示意图将版本 ID 显示为一个简单的整数值。 实际上，版本 ID 是一个时间戳。 当前版本显示为蓝色，先前版本显示为灰色。
 
@@ -79,9 +79,9 @@ Azure 存储 REST API 2019-10-10 版及更高版本支持 blob 版本控制。
 > [!NOTE]
 > 如果 blob 是在为存储帐户启用版本控制之前创建的，则它没有版本 ID。 修改该 blob 时，修改后的 blob 将成为当前版本，并将创建一个版本来保存 blob 在更新前的状态。 为版本分配的版本 ID 是其创建时间。
 
-为存储帐户启用 Blob 版本控制后，除[放置块](/rest/api/storageservices/put-block)操作外，针对块 Blob 的所有写入操作都会触发新版本创建。
+为存储帐户启用 blob 版本控制后，除[放置块](/rest/api/storageservices/put-block)操作外，针对块 blob 的所有写入操作都会触发新版本的创建。
 
-对于页 Blob 和追加 Blob，只有一部分写入操作会触发版本创建。 这些操作包括：
+对于页 blob 和追加 blob，仅部分写入操作会触发版本的创建。 这些操作包括：
 
 - [放置 Blob](/rest/api/storageservices/put-blob)
 - [放置块列表](/rest/api/storageservices/put-block-list)
@@ -93,19 +93,19 @@ Azure 存储 REST API 2019-10-10 版及更高版本支持 blob 版本控制。
 - [放置页](/rest/api/storageservices/put-page)（页 blob）
 - [追加块](/rest/api/storageservices/append-block)（追加 blob）
 
-Blob 的所有版本必须具有相同的 blob 类型。 如果某个 Blob 具有先前版本，则除非先删除该 Blob 及其所有版本，否则无法使用另一类型的 Blob 覆盖此类型的 Blob。
+Blob 的所有版本必须具有相同的 blob 类型。 如果 blob 具有先前版本，则除非先删除该 blob 及其所有版本，否则无法使用其他类型的 blob 覆盖此类型的 blob。
 
 ### <a name="versioning-on-delete-operations"></a>删除操作时的版本控制
 
-如果在调用[删除 Blob](/rest/api/storageservices/delete-blob) 操作时未指定版本 ID，则当前版本将变成先前版本，并且不再存在当前版本。 Blob 的所有现有先前版本将会保留。
+当你在未指定版本 ID 的情况下调用[删除 Blob](/rest/api/storageservices/delete-blob) 操作时，当前版本将成为先前版本，也不再会有新的当前版本。 将保留该 blob 的所有现有先前版本。
 
 下图显示了删除操作对接受版本控制的 blob 的影响：
 
 :::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="显示删除接受版本控制的 blob 的示意图。":::
 
-若要删除 Blob 的特定版本，请在删除操作中提供该版本的 ID。 如果还为存储帐户启用了 Blob 软删除，则在软删除保留期过去之前，版本将保留在系统中。
+若要删除 blob 的特定版本，请在删除操作中提供该版本的 ID。 如果还为存储帐户启用了 blob 软删除，则在软删除保持期结束之前，该版本将保留在系统中。
 
-将新数据写入 Blob 会创建该 Blob 的新当前版本。 任何现有版本不受影响，如下图所示。
+将新数据写入 blob 时将创建 blob 的新当前版本。 任何现有版本不受影响，如下图所示。
 
 :::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="显示在删除后重新创建接受版本控制的 blob 的示意图。":::
 
@@ -133,17 +133,17 @@ Blob 的所有版本必须具有相同的 blob 类型。 如果某个 Blob 具�
 
 Microsoft 建议为存储帐户启用版本控制和 Blob 软删除以实现最佳数据保护。 有关 blob 软删除的详细信息，请参阅 [Azure 存储 blob 的软删除](./soft-delete-blob-overview.md)。
 
-### <a name="overwriting-a-blob"></a>覆盖 Blob
+### <a name="overwriting-a-blob"></a>覆盖 blob
 
-如果为存储帐户启用了 Blob 版本控制和 Blob 软删除，则覆盖一个 Blob 会自动创建一个新版本。 系统不会软删除新版本，并且不会在软删除保留期到期时删除该版本。 不会创建已软删除的快照。
+如果为存储帐户同时启用 blob 版本控制和 blob 软删除，则覆盖某个 blob 将自动创建一个新版本。 系统不会软删除新版本，并且不会在软删除保留期到期时删除该版本。 不会创建软删除的快照。
 
 ### <a name="deleting-a-blob-or-version"></a>删除 blob 或版本
 
-如果为存储帐户启用了版本控制和软删除，则删除某个 Blob 时，该 Blob 的当前版本将变成先前版本。 不会创建新版本，也不会创建已软删除的快照。 软删除保留期对于已删除的 Blob 不起作用。
+如果为存储帐户同时启用版本控制和软删除，则在删除某个 blob 时，该 blob 的当前版本将成为先前版本。 不会创建新版本，也不会创建软删除的快照。 软删除保持期不适用于已删除的 blob。
 
-软删除为删除 blob 版本提供额外的保护。 删除 Blob 的先前版本时，将软删除该版本。 软删除的版本保存到软删除保留期结束为止，此期限过后，将永久删除该版本。
+软删除为删除 blob 版本提供额外的保护。 删除 blob 的先前版本时，该版本将被软删除。 在软删除保持期内，将一直保留软删除版本，到期后该版本将被永久删除。
 
-若要删除 Blob 的先前版本，请调用“删除 Blob”操作并指定版本 ID。
+若要删除 blob 的先前版本，请调用“删除 Blob”操作并指定版本 ID。
 
 下图显示了在删除 blob 或 blob 版本时会发生的情况。
 
@@ -151,9 +151,9 @@ Microsoft 建议为存储帐户启用版本控制和 Blob 软删除以实现最�
 
 ### <a name="restoring-a-soft-deleted-version"></a>还原软删除的版本
 
-在软删除保留期内，可以使用[取消删除 Blob](/rest/api/storageservices/undelete-blob) 操作来还原已软删除的版本。 “取消删除 Blob”操作始终还原 Blob 的所有已软删除版本。 无法做到只还原一个已软删除的版本。
+在软删除保持期内，可使用[撤消删除 Blob](/rest/api/storageservices/undelete-blob) 操作来还原软删除的版本。 “撤消删除 Blob”操作始终会还原 blob 的所有软删除版本。 无法只还原一个软删除版本。
 
-使用“撤消删除 Blob”操作还原软删除的版本不会将任何版本提升为当前版本。 若要还原当前版本，请先还原所有已软删除的版本，然后使用[复制 Blob](/rest/api/storageservices/copy-blob) 操作将先前版本复制到新的当前版本。
+使用“撤消删除 Blob”操作还原软删除的版本不会将任何版本提升为当前版本。 若要还原当前版本，请首先还原所有软删除的版本，然后使用[复制 Blob](/rest/api/storageservices/copy-blob) 操作将先前版本复制到新的当前版本。
 
 下图显示了如何通过“撤销删除 Blob”操作还原软删除的 blob 版本，以及如何通过“复制 Blob”操作还原 blob 的当前版本 。
 
@@ -182,7 +182,7 @@ Blob 快照是在某一特定时间点拍摄的 blob 的只读副本。 Blob 快
 
 可以使用以下方法之一来授予对 blob 版本的访问权限：
 
-- 通过使用 Azure 基于角色的访问控制 (Azure RBAC) 向 Azure Active Directory (Azure AD) 安全主体授予权限。 Microsoft 建议使用 Azure AD 来实现更好的安全性和易用性。 有关使用 Azure AD 进行 blob 操作的详细信息，请参阅[使用 Azure Active Directory 授予对 blob 和队列的访问权限](../common/storage-auth-aad.md)。
+- 通过使用 Azure 基于角色的访问控制 (Azure RBAC) 向 Azure Active Directory (Azure AD) 安全主体授予权限。 Microsoft 建议使用 Azure AD 来实现更好的安全性和易用性。 有关通过 Blob 操作使用 Azure AD 的详细信息，请参阅[授权访问 Azure 存储中的数据](../common/authorize-data-access.md)。
 - 通过使用共享访问签名 (SAS) 来委托对 blob 版本的访问权限。 为已签名的资源类型 `bv`（表示 blob 版本）指定版本 ID，以创建针对特定版本的操作的 SAS 令牌。 有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](../common/storage-sas-overview.md)。
 - 通过使用帐户访问密钥向具有共享密钥的 blob 版本授予操作权限。 有关详细信息，请参阅[通过共享密钥进行授权](/rest/api/storageservices/authorize-with-shared-key)。
 
@@ -195,7 +195,7 @@ Blob 版本控制旨在保护数据免遭意外或恶意删除。 为了增强�
 | 说明 | Blob 服务操作 | 需要 Azure RBAC 数据操作 | Azure 内置角色支持 |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | 删除当前版本 | 删除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | 存储 Blob 数据参与者 |
-| 选择先前版本 | 删除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/action** | 存储 Blob 数据所有者 |
+| 删除先前版本 | 删除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/action** | 存储 Blob 数据所有者 |
 
 ### <a name="shared-access-signature-sas-parameters"></a>共享访问签名 (SAS) 参数
 

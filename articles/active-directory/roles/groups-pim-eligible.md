@@ -8,28 +8,37 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 11/05/2020
+ms.date: 05/14/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02cd3f54823b80ae201316fee29c02616b9d8502
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 38b6ee8181f24601a66df7205d44256604834c10
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103012031"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114228628"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>使用 Privileged Identity Management 将角色分配给组
 
 本文介绍如何使用 Azure AD Privileged Identity Management (PIM) 将 Azure Active Directory (Azure AD) 角色分配给组。
 
 > [!NOTE]
-> 必须使用 Privileged Identity Management 的更新版本才能使用 PIM 将组分配给 Azure AD 角色。 如果你的 Azure AD 组织使用的是 Privileged Identity Management API，则你可能使用的是旧版本的 PIM。 如果是这样，请联系别名 pim_preview@microsoft.com 来移动你的组织并更新你的 API。 有关详细信息，请参阅 [PIM 中的 Azure AD 角色和功能](../privileged-identity-management/azure-ad-roles-features.md)。
+> 必须使用 Privileged Identity Management 的更新版本才能使用 PIM 将组分配给 Azure AD 角色。 如果你的 Azure AD 组织使用的是 Privileged Identity Management API，则你可能使用的是旧版本的 PIM。 如果是这样，请联系别名 pim_preview@microsoft.com 来移动你的组织并更新你的 API。 有关详细信息，请参阅 [PIM 中的 Azure AD 角色和功能](../privileged-identity-management/pim-configure.md)。
 
-## <a name="using-azure-ad-admin-center"></a>使用 Azure AD 管理中心
+## <a name="prerequisites"></a>先决条件
 
-1. 作为组织中的特权角色管理员或全局管理员登录到 [Azure AD Privileged Identity Management](https://ms.portal.azure.com/?Microsoft_AAD_IAM_GroupRoles=true&Microsoft_AAD_IAM_userRolesV2=true&Microsoft_AAD_IAM_enablePimIntegration=true#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart)。
+- Azure AD Premium P2 许可证
+- 特权角色管理员或全局管理员
+- 使用 PowerShell 时需要 AzureADPreview 模块
+- 将 Graph 浏览器用于 Microsoft Graph API 时需要管理员同意
+
+有关详细信息，请参阅[使用 PowerShell 或 Graph 浏览器的先决条件](prerequisites.md)。
+
+## <a name="azure-portal"></a>Azure 门户
+
+1. 登录到 [Azure AD Privileged Identity Management](https://ms.portal.azure.com/?Microsoft_AAD_IAM_GroupRoles=true&Microsoft_AAD_IAM_userRolesV2=true&Microsoft_AAD_IAM_enablePimIntegration=true#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart)。
 
 1. 选择“Privileged Identity Management” > “Azure AD 角色” > “角色” > “添加分配”   
 
@@ -41,22 +50,7 @@ ms.locfileid: "103012031"
 
     ![选择要分配到该角色的用户](./media/groups-pim-eligible/set-assignment-settings.png)
 
-## <a name="using-powershell"></a>使用 PowerShell
-
-### <a name="download-the-azure-ad-preview-powershell-module"></a>下载 Azure AD 预览版 PowerShell 模块
-
-若要安装 Azure AD #PowerShell 模块，请使用以下 cmdlets：
-
-```powershell
-Install-Module -Name AzureADPreview
-Import-Module -Name AzureADPreview
-```
-
-若要验证模块是否可供使用，请运行以下 cmdlets：
-
-```powershell
-Get-Module -Name AzureADPreview
-```
+## <a name="powershell"></a>PowerShell
 
 ### <a name="assign-a-group-as-an-eligible-member-of-a-role"></a>将组分配为角色的符合条件的成员
 
@@ -68,7 +62,7 @@ $schedule.endDateTime = "2019-07-25T20:49:11.770Z"
 Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId aadRoles -Schedule $schedule -ResourceId "[YOUR TENANT ID]" -RoleDefinitionId "9f8c1837-f885-4dfd-9a75-990f9222b21d" -SubjectId "[YOUR GROUP ID]" -AssignmentState "Eligible" -Type "AdminAdd"
 ```
 
-## <a name="using-microsoft-graph-api"></a>使用 Microsoft Graph API
+## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 ```http
 POST
@@ -90,7 +84,7 @@ https://graph.microsoft.com/beta/privilegedAccess/aadroles/roleAssignmentRequest
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用云组来管理角色分配](groups-concept.md)
-- [分配给云组的角色疑难解答](groups-faq-troubleshooting.md)
+- [使用 Azure AD 组来管理角色分配](groups-concept.md)
+- [排查分配给组的 Azure AD 角色的问题](groups-faq-troubleshooting.yml)
 - [在 Privileged Identity Management 中配置 Azure AD 管理员角色设置](../privileged-identity-management/pim-how-to-change-default-settings.md)
 - [在 Privileged Identity Management 中分配 Azure 资源角色](../privileged-identity-management/pim-resource-roles-assign-roles.md)

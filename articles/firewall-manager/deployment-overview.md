@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: ceb6e84b31067f7289b9e003a4fb273ce717de33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bed9249b521d1b45f7d2bf6254802556c38b60d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89079092"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725373"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Azure 防火墙管理器部署概述
 
@@ -62,10 +62,7 @@ ms.locfileid: "89079092"
    - 使用“安全虚拟中心路由设置”页，轻松地将流量路由到安全中心，以便在辐射虚拟网络不具有用户定义路由 (UDR) 的情况下进行筛选和日志记录。
 
 > [!NOTE]
-> - 每个区域的每个虚拟 WAN 最多只有一个中心。 但可以在区域中添加多个虚拟 WAN 来实现多个中心。
 > - 在 vWAN 中，多个中心不能具有重叠的 IP 空间。
-> - 中心 VNet 连接必须与中心位于同一区域。
->
 > 有关更多已知问题，请参阅[什么是 Azure 防火墙管理器？](overview.md#known-issues)
 
 ## <a name="convert-virtual-networks"></a>转换虚拟网络

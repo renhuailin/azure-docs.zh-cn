@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 04/08/2021
-ms.openlocfilehash: 534becdfcba1ccc992daadc5007e2eb56337a45e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 07/15/2021
+ms.openlocfilehash: b3e30a4914ac52c9d9661d3b6d6e07f54f0afdc6
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379261"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114230408"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>连接到 Visual Studio Code 中的 Azure 机器学习计算实例（预览）
 
@@ -35,25 +35,10 @@ ms.locfileid: "110379261"
 * Azure 机器学习工作区。 如果还没有工作区，请[使用 Azure 机器学习 Visual Studio Code 扩展创建新工作区](how-to-manage-resources-vscode.md#create-a-workspace)。
 * Azure 机器学习计算实例。 如果还没有计算实例，请[使用 Azure 机器学习 Visual Studio Code 扩展创建新计算实例](how-to-manage-resources-vscode.md#create-compute-instance)。
 
+> [!IMPORTANT]
+> 若要连接到防火墙后面的计算实例，请参阅[将防火墙后面的工作区用于 Azure 机器学习](how-to-access-azureml-behind-firewall.md#visual-studio-code-hosts)。
+
 连接到远程计算实例：
-
-# <a name="vs-code"></a>[VS Code](#tab/extension)
-
-### <a name="azure-machine-learning-extension"></a>Azure 机器学习扩展
-
-1. 在 VS Code 中启动 Azure 机器学习扩展。
-1. 展开扩展中的“计算实例”节点。
-1. 右键单击要连接到的计算实例，然后选择“连接到计算实例”。
-
-:::image type="content" source="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png" alt-text="Visual Studio Code Azure ML 扩展中的连接到计算实例" lightbox="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png":::
-
-### <a name="command-palette"></a>命令面板
-
-1. 在 VS Code 中，选择“视图”>“命令面板”，打开命令面板。
-1. 在文本框中输入“Azure ML: 连接到计算实例”。
-1. 选择订阅。
-1. 选择工作区。
-1. 选择计算实例或新建一个计算实例。
 
 # <a name="studio"></a>[工作室](#tab/studio)
 
@@ -76,6 +61,24 @@ ms.locfileid: "110379261"
 1. 选择“编辑器”>“在 VS Code 中编辑(预览版)”。
 
 :::image type="content" source="media/how-to-set-up-vs-code-remote/studio-notebook-compute-instance-vs-code-launch.png" alt-text="VS Code Azure ML 笔记本中的连接到计算实例" lightbox="media/how-to-set-up-vs-code-remote/studio-notebook-compute-instance-vs-code-launch.png":::
+
+# <a name="vs-code"></a>[VS Code](#tab/extension)
+
+### <a name="azure-machine-learning-extension"></a>Azure 机器学习扩展
+
+1. 在 VS Code 中启动 Azure 机器学习扩展。
+1. 展开扩展中的“计算实例”节点。
+1. 右键单击要连接到的计算实例，然后选择“连接到计算实例”。
+
+:::image type="content" source="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png" alt-text="Visual Studio Code Azure ML 扩展中的连接到计算实例" lightbox="media/how-to-set-up-vs-code-remote/vs-code-compute-instance-launch.png":::
+
+### <a name="command-palette"></a>命令面板
+
+1. 在 VS Code 中，选择“视图”>“命令面板”，打开命令面板。
+1. 在文本框中输入“Azure ML: 连接到计算实例”。
+1. 选择订阅。
+1. 选择工作区。
+1. 选择计算实例或新建一个计算实例。
 
 ---
 

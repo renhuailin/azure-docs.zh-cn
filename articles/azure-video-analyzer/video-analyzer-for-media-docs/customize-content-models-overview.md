@@ -1,19 +1,20 @@
 ---
 title: 在 Azure 视频分析器媒体版（之前称为视频索引器）中自定义内容模型
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: 本文提供了说明每种自定义的优点的概念性文章的链接。 本文还链接到介绍如何实现每个模型的自定义的操作指南。
-services: media-services
+services: azure-video-analyzer
 author: anikaz
 manager: johndeu
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 06/26/2019
 ms.author: kumud
-ms.openlocfilehash: 6ea6aa8ebdf37a176d10279d0d3b2a30aa429ed4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 11801b9f2434250a42c6a505d08fa286b95d6c02
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385032"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112123243"
 ---
 # <a name="customizing-content-models-in-video-analyzer-for-media"></a>在视频分析器媒体版中自定义内容模型
 

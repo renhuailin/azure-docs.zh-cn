@@ -9,12 +9,12 @@ ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b5eca5eb8ed59553e1b5eebdb859bc3f23d8b0e5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6263a58aebcb7e6eb9d50d18e63257a3deb2cff5
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379845"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416535"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>教程：在云中发布和订阅事件
 
@@ -28,7 +28,7 @@ ms.locfileid: "110379845"
 * Azure 订阅 - 创建[免费帐户](https://azure.microsoft.com/free)（如果还没有的话）。 
 * Azure IoT 中心和 IoT Edge 设备 - 按照 [Linux](../../iot-edge/quickstart-linux.md) 或 [Windows 设备](../../iot-edge/quickstart.md)快速入门中的步骤操作（如果还没有这样做的话）。
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)]
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-deploy-iot-edge.md)]
 
 ## <a name="create-an-azure-function-in-the-azure-portal"></a>在 Azure 门户中创建 Azure 函数
 
@@ -108,7 +108,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 订阅者可以注册发布到主题的事件。 若要接收任何事件，订阅者需要为感兴趣的主题创建事件网格订阅。
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. 创建包含以下内容的 subscription2.json。 若要详细了解有效负载，请参阅 [API 文档](api.md)。
 

@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 09/28/2020
+ms.date: 06/18/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: e044920953d0b635e7fe92f07b2cd69c0d8f5ee7
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 875407e07af1059c98a2adb6bb0f7b075d78fe02
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888577"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112462716"
 ---
 # <a name="configure-and-submit-training-runs"></a>配置和提交训练运行
 
@@ -28,7 +28,7 @@ ms.locfileid: "107888577"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用 [Azure 机器学习的免费版或付费版](https://aka.ms/AMLFree)
+* 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用 [Azure 机器学习的免费版或付费版](https://azure.microsoft.com/free/)
 * [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/install) (>= 1.13.0)
 * [Azure 机器学习工作区](how-to-manage-workspace.md) `ws`
 * 计算目标 `my_compute_target`。  [创建计算目标](how-to-create-attach-compute-studio.md) 
@@ -77,7 +77,9 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 本文中的示例代码假设你已创建了“先决条件”部分的计算目标 `my_compute_target`。
 
 >[!Note]
->不支持将 Azure Databricks 作为用于模型训练的计算目标。 可以使用 Azure Databricks 执行数据准备和部署任务。 
+>不支持将 Azure Databricks 作为用于模型训练的计算目标。 可以使用 Azure Databricks 执行数据准备和部署任务。
+
+[!INCLUDE [arc-enabled-kubernetes](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
 
 ## <a name="create-an-environment"></a>创建环境
 Azure 机器学习[环境](concept-environments.md)是（机器学习训练发生于其中的）环境的封装。 此类学习环境会指定与训练和评分脚本有关的 Python 包、Docker 映像、环境变量和软件设置。 它们还指定运行时（Python、Spark 或 Docker）。
@@ -177,6 +179,9 @@ run.wait_for_completion(show_output=True)
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="troubleshooting"></a>疑难解答
+
+* AttributeError: "RoundTripLoader" 对象没有属性 "comment_handling"：此错误来自 `ruamel-yaml`（一个 `azureml-core` 依赖项）的新版本 (v0.17.5)，该版本引入了对 `azureml-core` 的中断性变更。 若要修复此错误，请卸载 `ruamel-yaml`，方法是运行 `pip uninstall ruamel-yaml` 并安装另一版本的 `ruamel-yaml`；支持的版本为 v0.15.35 到 v0.17.4（含）。 为此，可以运行 `pip install "ruamel-yaml>=0.15.35,<0.17.5"`。
+
 
 * 运行失败并出现 `jwt.exceptions.DecodeError`：确切的错误消息：`jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()`。 
     

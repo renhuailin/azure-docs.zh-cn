@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2021
 ms.author: yelevin
-ms.openlocfilehash: b5c9b2d6a586d440218cf4740155bc9fa3bdd3d7
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: 60d72bcc687659f27e309942040f46a20aab5d3f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372740"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730986"
 ---
 # <a name="export-and-import-analytics-rules-to-and-from-arm-templates"></a>在 ARM 模板中导出和导入分析规则
 
@@ -66,5 +66,5 @@ ms.locfileid: "111372740"
 ## <a name="next-steps"></a>后续步骤
 
 本文档介绍了如何在 ARM 模板中导出和导入分析规则。
-- 了解有关[分析规则](tutorial-detect-threats-built-in.md)的详细信息，包括[自定义计划规则](tutorial-detect-threats-custom.md)。
+- 了解有关[分析规则](detect-threats-built-in.md)的详细信息，包括[自定义计划规则](detect-threats-custom.md)。
 - 了解有关 [ARM 模板](../azure-resource-manager/templates/overview.md)的详细信息。

@@ -2,22 +2,22 @@
 title: 使用 Azure AD 配置权限分类
 description: 了解如何管理委托权限分类。
 services: active-directory
-author: iantheninja
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 06/01/2020
-ms.author: iangithinji
+ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: be58f5cd18d32302d1e92f00afb7d7e0aae09410
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 6d0432c93a0ab3f47b68e071026301c49e8c670c
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374465"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113567953"
 ---
 # <a name="configure-permission-classifications"></a>配置权限分类
 
@@ -126,4 +126,5 @@ ms.locfileid: "107374465"
 * [Microsoft 标识平台中的权限和许可](../develop/v2-permissions-and-consent.md)
 
 获取帮助或查找问题的答案：
+
 * [Microsoft Q&A 上的 Azure AD](/answers/topics/azure-active-directory.html)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: yelevin
-ms.openlocfilehash: d5140bcd85606213f00185d4ba1f50dbe70dba63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c4482f788014aec45f7c2e2ca9c4820bd80bb33
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94655488"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778323"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-office-365"></a>连接来自 Microsoft Defender for Office 365 的警报 
 
@@ -31,6 +31,8 @@ ms.locfileid: "94655488"
 >
 > - Microsoft Defender for Office 365 警报的引入目前为公共预览版。 此功能不附带服务级别协议，不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
  
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
+
 [Microsoft Defender For Office 365](/office365/servicedescriptions/office-365-advanced-threat-protection-service-description) 保护组织免受电子邮件信息、恶意 URL 链接和协作工具中的恶意软件造成的零日威胁和其他高级威胁。 将 Microsoft Defender for Office 365 警报引入到 Azure Sentinel 后，能够在安全操作中利用有关电子邮件、文件共享和基于 URL 的威胁的信息。 然后可以更全面地分析组织中的安全事件，并构建演练手册以实现有效且即时的响应。
 
 连接器将导入以下警报：
@@ -76,5 +78,5 @@ ms.locfileid: "94655488"
 ## <a name="next-steps"></a>后续步骤
 
 本文档介绍了如何将 Microsoft Defender for Office 365 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](./tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](./detect-threats-built-in.md)。

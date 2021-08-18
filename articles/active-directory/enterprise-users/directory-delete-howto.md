@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 07/14/2021
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2edc6fb98359c5360836bc369e5ae1928464df92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a7d889db98030394e27763122b3df4bdde942575
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96861024"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219599"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>在 Azure Active Directory 中删除一个租户
 
@@ -29,7 +29,7 @@ ms.locfileid: "96861024"
 
 除非 Azure AD 中的组织通过了若干项检查，否则无法将其删除。 这些检查将降低删除 Azure AD 组织对用户访问造成负面影响（例如，影响登录 Microsoft 365 或访问 Azure 中的资源）的风险。 例如，如果意外删除了与订阅关联的组织，则用户将无法访问该订阅的 Azure 资源。 需检查以下情况：
 
-* 除了一位要删除组织的全局管理员外，Azure AD 组织（租户）中不得有任何用户。 在删除组织之前，必须先删除任何其他用户。 如果用户是从本地同步的，则必须先关闭同步，并且必须使用 Azure 门户或 Azure PowerShell cmdlet 从云组织中删除这些用户。
+* 除了一位要删除组织的全局管理员外，Azure AD 租户中不得有任何用户。 在删除组织之前，必须先删除任何其他用户。 如果用户是从本地同步的，则必须先关闭同步，并且必须使用 Azure 门户或 Azure PowerShell cmdlet 从云组织中删除这些用户。
 * 该组织中不能有任何应用程序。 在删除组织之前，必须先删除任何应用程序。
 * 不能有任何多重身份验证提供程序链接到该组织。
 * 与该组织相关联的任何 Microsoft Online Services（例如 Microsoft Azure、Microsoft 365 或 Azure AD Premium）不存在任何订阅。 例如，如果在 Azure 中创建了一个默认 Azure AD 组织，并且 Azure 订阅仍然依赖于此组织进行身份验证，则不能删除此组织。 类似地，如果其他用户已将订阅与某个组织相关联，则无法删除该组织。
@@ -94,6 +94,15 @@ ms.locfileid: "96861024"
 8. 删除组织中的订阅并且时间已过 72 小时后，可再次登录 Azure AD 管理中心，这里应没有必需的操作，也没有订阅影响你删除组织。 你应该可以成功删除 Azure AD 组织。
   
    ![在删除屏幕通过订阅检查](./media/directory-delete-howto/delete-checks-passed.png)
+
+## <a name="enterprise-apps-with-no-way-to-delete"></a>无法删除的企业应用
+
+如果发现门户中仍有无法删除的企业应用程序，则可使用以下 PowerShell 命令将其删除。 有关此 PowerShell 命令的详细信息，请参阅 [Remove-AzureADServicePrincipal](/powershell/module/azuread/remove-azureadserviceprincipal?view=azureadps-2.0&preserve-view=true)。
+
+1. 以管理员身份打开 PowerShell
+1. `Connect-AzAccount -tenant <TENANT_ID>`运行
+1. 登录 Azure AD 全局管理员角色
+1. `Get-AzADServicePrincipal | ForEach-Object { Remove-AzADServicePrincipal -ObjectId $_.Id -Force}`运行
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>我有一个影响删除的试用订阅
 

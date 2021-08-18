@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
-ms.reviewer: mathoma
+ms.reviewer: chadam
 ms.date: 11/06/2020
-ms.openlocfilehash: 0eabb48aabcb50557b342385068807eb67a9b165
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bf7cf597d97f1316d43546382cbac140c3ba6fff
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98797853"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746607"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>迁移概述：将 SQL Server 迁移到 Azure VM 上的 SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "98797853"
 - Amazon 关系数据库服务 (AWS RDS) 
 - 计算引擎 (Google Cloud Platform - GCP)
 
-有关其他方案，请参阅[数据库迁移指南](https://datamigration.microsoft.com/)。 
+有关其他迁移指南，请参阅[数据库迁移](/data-migration)。 
 
 ## <a name="overview"></a>概述
 
@@ -40,7 +40,7 @@ ms.locfileid: "98797853"
 
 ## <a name="choose-appropriate-target"></a>选择适当的目标
 
-Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种[计算机大小](../../../virtual-machines/sizes.md)和[存储选项](../../../virtual-machines/disks-types.md)。 在确定 SQL Server 工作负载 VM 和存储的适当大小时，请参阅 [Azure 虚拟机上 SQL Server 的性能准则](../../virtual-machines/windows/performance-guidelines-best-practices.md#vm-size-guidance)。 确定工作负载的 VM 大小和存储要求。 建议通过基于性能的 [Azure Migrate 评估](../../../migrate/concepts-assessment-calculation.md#types-of-assessments)来调整它们的大小。 如果无法使用该选项，请参阅以下文章，了解如何创建自己的[性能基准](https://azure.microsoft.com/services/virtual-machines/sql-server/)。
+Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种[计算机大小](../../../virtual-machines/sizes.md)和[存储选项](../../../virtual-machines/disks-types.md)。 在确定 SQL Server 工作负载 VM 和存储的适当大小时，请参阅 [Azure 虚拟机上 SQL Server 的性能准则](../../virtual-machines/windows/performance-guidelines-best-practices-checklist.md#vm-size)。 确定工作负载的 VM 大小和存储要求。 建议通过基于性能的 [Azure Migrate 评估](../../../migrate/concepts-assessment-calculation.md#types-of-assessments)来调整它们的大小。 如果无法使用该选项，请参阅以下文章，了解如何创建自己的[性能基准](https://azure.microsoft.com/services/virtual-machines/sql-server/)。
 
 另请注意 VM 上 SQL Server 的正确安装和配置方式。 建议使用 [Azure SQL 虚拟机映像库](../../virtual-machines/windows/create-sql-vm-portal.md)，因为通过它可以创建版本、编辑和操作系统都正确的 SQL Server VM。 此外，这样还会自动向 SQL Server [资源提供程序](../../virtual-machines/windows/create-sql-vm-portal.md)注册 Azure VM，从而启用自动备份和自动修补等功能。
 
@@ -77,6 +77,9 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种[计算机
 | --- | --- | --- | --- | --- |
 | [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM 存储限制](../../../index.yml) |  将现有 SQL Server 按原样移动到 Azure VM 上 SQL Server 的实例。 可大规模迁移多达 35000 个 VM 的工作负载。 <br /><br /> 源服务器在同步服务器数据期间将保持联机并处理请求，从而最大程度地缩短故障时间。 <br /><br /> 自动化和脚本：[Azure Site Recovery 脚本](../../../migrate/how-to-migrate-at-scale.md)和 [Azure 规模迁移和计划示例](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
+> [!NOTE]
+> 现在，可以使用 Azure Migrate 将[故障转移群集实例](sql-server-failover-cluster-instance-to-sql-on-azure-vm.md)和[可用性组](sql-server-availability-group-to-sql-on-azure-vm.md)解决方案直接迁移到 Azure VM 上的 SQL Server。 
+
 ## <a name="migrate"></a>Migrate  
 
 由于设置简单，因此建议采用在本地执行本机 SQL Server [备份](/sql/t-sql/statements/backup-transact-sql)，然后再将该文件复制到 Azure 的迁移方法。 这种方法对于自 2008 年开始的所有 SQL Server 都支持更大的数据库 (>1 TB)，以及更大的数据库备份 (>1 TB)。 但是，对于在 SQL Server 2014 中启动的小于 1 TB 并能与 Azure 建立良好连接的数据库，最好方法是[将 SQL Server 备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)。 
@@ -99,8 +102,8 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种[计算机
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
  
 > [!TIP]
-> 对于网络受限或无网络选项的大型数据传输，请参阅[连接性受限的大型数据传输](../../../storage/common/storage-solution-large-dataset-low-network.md)。
-> 
+> - 对于网络受限或无网络选项的大型数据传输，请参阅[连接性受限的大型数据传输](../../../storage/common/storage-solution-large-dataset-low-network.md)。
+> - 现在，可以使用 Azure Migrate 将[故障转移群集实例](sql-server-failover-cluster-instance-to-sql-on-azure-vm.md)和[可用性组](sql-server-availability-group-to-sql-on-azure-vm.md)解决方案直接迁移到 Azure VM 上的 SQL Server。 
 
 ### <a name="considerations"></a>注意事项
 
@@ -133,14 +136,12 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种[计算机
 
 |资产  |说明  |
 |---------|---------|
-|[数据工作负荷评估模型和工具](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Data%20Workload%20Assessment%20Model%20and%20Tool)| 此工具为给定的工作负荷提供了建议的“最佳匹配”目标平台、云就绪和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
-|[使用 Logman 自动执行 Perfmon 数据收集](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|用于收集 Perfmon 数据以了解基线性能的工具，该工具可帮助推荐迁移目标。 该工具使用 logman.exe 创建命令，该命令可创建、启动、停止和删除远程 SQL Server 上设置的性能计数器。|
-|[在 Azure 中部署 SQL Server](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/SQL%20Server%20Deployment%20in%20Azure%20.pdf)|本指导白皮书有助于查看将 SQL Server 工作负载迁移到 Azure 的各种选项，包括功能比较、高可用性和备份/存储注意事项。 |
-|[从本地 SQL Sever 迁移到 Azure 虚拟机](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/OnPremise%20SQL%20Server%20to%20Azure%20VM.pdf)|本白皮书概述使用示例脚本从本地 SQL Sever 向 Azure 虚拟机上的 SQL Sever 备份和还原数据库的步骤。|
-|[Multiple-SQL-VM-VNet-ILB](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/ARM%20Templates/Multiple-SQL-VM-VNet-ILB)|本白皮书概述在 SQL Server Always On 可用性组配置中设置多个 Azure 虚拟机的步骤。|
-|[每个区域支持超级 SSD 的 Azure 虚拟机](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Find%20Azure%20VMs%20supporting%20Ultra%20SSD)|这些 PowerShell 脚本提供一个编程选项，可用于检索支持超级 SSD 的 Azure 虚拟机的区域列表。|
+|[数据工作负荷评估模型和工具](https://www.microsoft.com/download/details.aspx?id=103130)| 此工具为给定的工作负荷提供了建议的“最佳匹配”目标平台、云就绪和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
+|[使用 Logman 自动执行 Perfmon 数据收集](https://www.microsoft.com/download/details.aspx?id=103114)|用于收集 Perfmon 数据以了解基线性能的工具，该工具可帮助推荐迁移目标。 该工具使用 logman.exe 创建命令，该命令可创建、启动、停止和删除远程 SQL Server 上设置的性能计数器。|
+|[Multiple-SQL-VM-VNet-ILB](https://www.microsoft.com/download/details.aspx?id=103104)|本白皮书概述在 SQL Server Always On 可用性组配置中设置多个 Azure 虚拟机的步骤。|
+|[每个区域支持超级 SSD 的 Azure 虚拟机](https://www.microsoft.com/download/details.aspx?id=103105)|这些 PowerShell 脚本提供一个编程选项，可用于检索支持超级 SSD 的 Azure 虚拟机的区域列表。|
 
-这些资源是作为 Data SQL Ninja 计划的一部分开发的，该计划由 Azure 数据组工程团队提供赞助。 Data SQL Ninja 计划的核心宗旨是解锁和加速复杂的现代化进程，并争取数据平台向 Microsoft Azure 数据平台迁移的机会。 如果你认为贵组织有意参与 Data SQL Ninja 计划，请联系帐户团队并让他们提交提名。
+数据 SQL 工程团队开发了这些资源。 此团队的核心章程是解锁和加速到 Microsoft 的 Azure 数据平台的数据平台迁移项目的复杂现代化进程。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,20 +3,20 @@ title: 教程：使用语音 SDK 为机器人赋予语音能力 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 在本教程中，你将使用 Microsoft Bot Framework 创建一个复述机器人，将其部署到 Azure，再将其注册到 Bot Framework Direct Line Speech 通道。 然后配置一个适用于 Windows 的示例客户端应用，以便对机器人讲话并收听机器人做出的响应。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fa449ad3d9a0e26bd0754a67581c8d63fa025e55
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: de0653ecae4c46345d961fc9c6b17930ed5b2627
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552302"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122072355"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教程：使用语音 SDK 为机器人赋予语音能力
 
@@ -330,7 +330,7 @@ Windows 语音助理客户端提供一个简单 UI，可让你配置与机器人
 |错误(ConnectionFailure): 远程主机关闭了连接。 错误代码: 1002。 错误详细信息: 当状态代码应为 '101' 时，服务器返回了状态代码 '503' | 确保[已选中“启用流式处理终结点”](#register-the-direct-line-speech-channel)框并且/或者[已将“Web 套接字”切换为“打开”](#enable-web-sockets)。<br>确保 Azure 应用服务正在运行。 如果已运行，请尝试重启应用服务。|
 |错误(ConnectionFailure): 远程主机关闭了连接。 错误代码: 1011。 错误详细信息: 响应状态代码不是指示成功: 500 (InternalServerError)| 机器人在其输出活动的[讲话](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak)字段中指定了神经语音，但与你的语音订阅密钥关联的 Azure 区域不支持神经语音。 请参阅[神经和标准语音](./regions.md#neural-and-standard-voices)。|
 
-如果表格中的方法未能解决你的问题，请参阅[语音助理：常见问题解答](faq-voice-assistants.md)。 如果在遵循本教程中的所有步骤后仍无法解决问题，请在[语音助理 GitHub 页](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues)中输入新问题。
+如果表格中的方法未能解决你的问题，请参阅[语音助理：常见问题解答](faq-voice-assistants.yml)。 如果在遵循本教程中的所有步骤后仍无法解决问题，请在[语音助理 GitHub 页](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues)中输入新问题。
 
 #### <a name="a-note-on-connection-time-out"></a>有关连接超时的说明
 

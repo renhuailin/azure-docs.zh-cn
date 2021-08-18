@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 0541b626168fb680daa2fc5c0c14df5bc8a4ea7c
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 023bef17efd0d61031f51d37ab48b633b297ef23
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111904168"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112234494"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>使用 Azure Cache for Redis 将机器学习模型部署到 Azure Functions
 
@@ -304,7 +304,7 @@ print(model_package.location)
 否则，如果你已完成本快速入门，可以删除本快速入门中创建的 Azure 资源，以免产生费用。
 
 > [!IMPORTANT]
-> 删除资源组的操作不可逆。 删除资源组时，包含在其中的所有资源会被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从各自的边栏选项卡逐个删除这些资源，而不要删除资源组。
+> 删除资源组的操作不可逆。 删除资源组时，包含在其中的所有资源会被永久删除。 请确保不会意外删除错误的资源组或资源。 如果在现有资源组（其中包含要保留的资源）中为托管此示例而创建了相关资源，可从左侧逐个删除这些资源，而不是删除资源组。
 
 ### <a name="to-delete-a-resource-group"></a>删除资源组的步骤
 

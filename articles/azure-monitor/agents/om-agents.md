@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: 99a8e331e265e686d1de06f8143d2345e51143f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f5085bbb39aef007c0bda840240fc3c064f8e6a
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102612994"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690807"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
@@ -108,7 +108,7 @@ ms.locfileid: "102612994"
 
 1. 打开提升的命令指示符。
    a. 转到“启动”，然后键入“cmd”。
-   b. 右键单击“命令提示符”然后选择“以管理员身份运行”**。
+   b. 右键单击“命令提示符”并选择“以管理员身份运行”。 
 1. 键入以下命令并按 Enter：
 
     `netsh winhttp set proxy <proxy>:<port>`

@@ -3,12 +3,12 @@ title: 虚拟网络服务终结点 - Azure 事件中心 | Microsoft Docs
 description: 本文提供了有关如何向虚拟网络中添加 Microsoft.EventHub 服务终结点的信息。
 ms.topic: article
 ms.date: 05/10/2021
-ms.openlocfilehash: bc13878be3b596d514ad2ed8ad024064df6e6fb4
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 33ae280b49b4f2afca39e8de8954f836737c9d7c
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375330"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416211"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>允许从特定虚拟网络访问 Azure 事件中心命名空间 
 
@@ -78,7 +78,7 @@ ms.locfileid: "110375330"
     > [!NOTE]
     > 若要限制对特定 IP 地址或范围的访问，请参阅[允许从特定 IP 地址或范围访问](event-hubs-ip-filtering.md)。
 
-[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
+[!INCLUDE [event-hubs-trusted-services](./includes/event-hubs-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
 以下示例资源管理器模板会向现有事件中心命名空间添加虚拟网络规则。 对于网络规则，该模板指定虚拟网络中子网的 ID。 

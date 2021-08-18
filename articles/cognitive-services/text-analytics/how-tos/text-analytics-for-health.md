@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/07/2021
+ms.date: 06/18/2021
 ms.author: aahi
-ms.openlocfilehash: 37dd6eddc302062d756df79a03bd13cfc8c881e1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 5b1883b06ae234ed8a4f9adf949cf26919f7b877
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757168"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113550149"
 ---
-# <a name="how-to-use-text-analytics-for-health-preview"></a>如何：使用健康状况文本分析（预览）
+# <a name="how-to-use-text-analytics-for-health"></a>如何：使用健康状况文本分析
 
 > [!IMPORTANT] 
-> 健康状况文本分析是一项预览功能，其“按原样”提供并在“不保证没有缺点”情况下提供。 因此，不应在任何生产用途中实施或部署健康状况文本分析（预览版）。 健康状况文本分析不应用于或不可供用于医疗设备、临床支持、诊断工具或者其他旨在用于诊断、治愈、缓解、治疗或预防疾病或其他健康问题的技术，Microsoft 不授予将此功能用于此类目的的任何许可或权利。 此功能不旨在代替专业人员医疗建议或保健意见、诊断、治疗或医疗保健专业人员临床判断而实施或部署，并且不应用作此用途。 客户独自负责健康状况文本分析的任何使用。 客户必须根据为该 [UMLS Metathesaurus 许可协议附录](https://www.nlm.nih.gov/research/umls/knowledge_sources/metathesaurus/release/license_agreement_appendix.html)或任何未来等效链接设置的条款单独许可其打算使用的任何和所有源词汇。 客户有责任确保遵守这些许可条款，包括任何地域限制或其他适用限制。
+> 健康状况文本分析是一项“按原样”提供的功能，“不保证没有故障”。 健康状况文本分析不应用于或不可供用于医疗设备、临床支持、诊断工具或者其他旨在用于诊断、治愈、缓解、治疗或预防疾病或其他健康问题的技术，Microsoft 不授予将此功能用于此类目的的任何许可或权利。 此功能不旨在代替专业人员医疗建议或保健意见、诊断、治疗或医疗保健专业人员临床判断而实施或部署，并且不应用作此用途。 客户独自负责健康状况文本分析的任何使用。 客户必须根据 [UMLS 元词表许可协议附录](https://www.nlm.nih.gov/research/umls/knowledge_sources/metathesaurus/release/license_agreement_appendix.html)或任何将来的等效链接规定的条款，单独许可其打算使用的任何及所有源词汇。 客户负责确保遵守这些许可条款，包括任何地理限制或其他适用限制。
 
 
 健康状况文本分析是文本分析 API 服务的一项功能，它可以从非结构化文本（例如医生的备注、出院摘要、临床文档和电子健康记录）中提取和标记相关医疗信息。  可以使用两种方法来利用这项服务： 
@@ -94,17 +94,15 @@ ms.locfileid: "111757168"
 
 ### <a name="preparation"></a>准备工作
 
-当为健康状况文本分析提供较少的文本时，会得到更高质量的结果。 这与一些其他文本分析功能（例如关键短语提取）相反，关键短语提取在处理较大的文本块时效果更佳。 若要从这些操作中获得最佳结果，请考虑相应地重构输入。
-
 必须拥有以下格式的 JSON 文档：ID、文本和语言 
 
-每个文档的大小必须少于 5,120 个字符， 对于集合中允许的最大文档数，请参阅“概念”下的[数据限制](../concepts/data-limits.md?tabs=version-3)一文。 集合在请求正文中提交。
+每个文档的大小必须少于 5,120 个字符， 对于集合中允许的最大文档数，请参阅“概念”下的[数据限制](../concepts/data-limits.md?tabs=version-3)一文。 集合在请求正文中提交。 如果文本超出此限制，请考虑将文本拆分为单独的请求。 为了获得最佳结果，请将文本拆分为句子。
 
 ### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>为托管的异步 Web API 构造 API 请求
 
-对于容器和托管 Web API，必须创建 POST 请求。 可以[使用 Postman](text-analytics-how-to-call-api.md)、cURL 命令或[健康状况文本分析托管 API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/Health)中的 API 测试控制台快速构造 POST 请求，并将其发送到所需区域中的托管 Web API。 在 API v3.1-preview.5 终结点中，`loggingOptOut` 布尔查询参数可用于启用日志记录来进行故障排除。  如果未在请求查询中指定，则默认值为 TRUE。
+对于容器和托管 Web API，必须创建 POST 请求。 可以[使用 Postman](text-analytics-how-to-call-api.md)、cURL 命令或[健康状况文本分析托管 API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/Health)中的 API 测试控制台快速构造 POST 请求，并将其发送到所需区域中的托管 Web API。 在 API v3.1 终结点中，`loggingOptOut` 布尔查询参数可用于启用日志记录以进行故障排除。  如果未在请求查询中指定，则默认值为 TRUE。
 
-将 POST 请求发送到 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/health/jobs`。下面是附加到健康状况文本分析 API 请求 POST 正文的 JSON 文件示例：
+将 POST 请求发送到 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/entities/health/jobs`。下面是附加到健康状况文本分析 API 请求 POST 正文的 JSON 文件示例：
 
 ```json
 example.json
@@ -124,20 +122,20 @@ example.json
 
 由于此 POST 请求用于提交异步操作的作业，因此响应对象中没有任何文本。  但是，需要响应标头中操作位置键的值，才能发出 GET 请求来检查作业和输出的状态。  下面是 POST 请求的响应标头中操作位置键的值的示例：
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.5/entities/health/jobs/<jobID>`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1/entities/health/jobs/<jobID>`
 
 若要检查作业状态，请在 POST 响应的操作位置键标头的值中向 URL 发出 GET 请求。  以下状态用于反映作业的状态：`NotStarted`、`running``succeeded``failed``rejected``cancelling` 和 `cancelled`。  
 
-你可以通过对与 GET 请求相同的 URL 的 DELETE HTTP 调用来取消状态为 `NotStarted` 或 `running` 的作业。  有关 DELETE 调用的详细信息，请参阅[健康状况文本分析托管 API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-5/operations/CancelHealthJob)。
+你可以通过对与 GET 请求相同的 URL 的 DELETE HTTP 调用来取消状态为 `NotStarted` 或 `running` 的作业。  有关 DELETE 调用的详细信息，请参阅[健康状况文本分析托管 API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1/operations/CancelHealthJob)。
 
 以下是 GET 请求的响应示例。  在 `expirationDateTime`（创建作业 24 小时后）已过之前，输出可供检索；在此时间之后，输出将被清除。
 
 ```json
 {
-    "jobId": "be437134-a76b-4e45-829e-9b37dcd209bf",
-    "lastUpdateDateTime": "2021-03-11T05:43:37Z",
-    "createdDateTime": "2021-03-11T05:42:32Z",
-    "expirationDateTime": "2021-03-12T05:42:32Z",
+    "jobId": "69081148-055b-4f92-977d-115df343de69",
+    "lastUpdateDateTime": "2021-07-06T19:06:03Z",
+    "createdDateTime": "2021-07-06T19:05:41Z",
+    "expirationDateTime": "2021-07-07T19:05:41Z",
     "status": "succeeded",
     "errors": [],
     "results": {
@@ -219,14 +217,14 @@ example.json
                         "length": 13,
                         "text": "intravenously",
                         "category": "MedicationRoute",
-                        "confidenceScore": 1.0
+                        "confidenceScore": 0.99
                     },
                     {
                         "offset": 73,
                         "length": 7,
                         "text": "120 min",
                         "category": "Time",
-                        "confidenceScore": 0.94
+                        "confidenceScore": 0.98
                     }
                 ],
                 "relations": [
@@ -274,7 +272,7 @@ example.json
             }
         ],
         "errors": [],
-        "modelVersion": "2021-03-01"
+        "modelVersion": "2021-05-15"
     }
 }
 ```
@@ -285,7 +283,7 @@ example.json
 可以[使用 Postman](text-analytics-how-to-call-api.md) 或下面的 cURL 请求示例向部署的容器提交查询，以适当的值替换 `serverURL` 变量。  请注意，容器的 URL 中的 API 版本不同于托管 API。
 
 ```bash
-curl -X POST 'http://<serverURL>:5000/text/analytics/v3.1-preview.5/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
+curl -X POST 'http://<serverURL>:5000/text/analytics/v3.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 

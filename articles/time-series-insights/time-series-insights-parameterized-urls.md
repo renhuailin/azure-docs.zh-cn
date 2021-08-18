@@ -3,19 +3,20 @@ title: 通过参数化 URL 共享自定义视图 - Azure 时序见解 | Microsof
 description: 了解如何创建参数化 URL，以便在 Azure 时序见解中轻松共享自定义的资源管理器视图。
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: narmeens
+ms.author: narsam
+manager: cnovak
+ms.reviewer: orspodek
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9bf857a66643b1e95ea2559601761a7217babad4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 395420c61e2cc3f4167590f81e625bf7e67cbfac
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91665321"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112371222"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>通过参数化 URL 共享自定义视图
 
@@ -78,12 +79,12 @@ Azure 时序见解资源管理器支持使用 URL 查询参数，在 URL 中直�
 | **useSum** | `true` | 一个可选参数，指定对度量值使用总和。 |
 
 > [!NOTE]
-> 如果所选 useSum 度量值为 `Events`，则默认选择计数  。  
+> 如果所选 useSum 度量值为 `Events`，则默认选择计数  。
 > 如果未选择 `Events`，则默认选择平均值。 |
 
 * `multiChartStack=<true/false>` 键值对在图表中启用堆栈。
-* `multiChartSameScale=<true/false>` 键值对不同可选参数的条件启用相同的 Y 轴比例。  
-* 可以通过 `timeBucketUnit=<Unit>&timeBucketSize=<integer>` 来调整时间间隔滑块，使图表的视图更精细或更光滑，聚合程度更高。  
+* `multiChartSameScale=<true/false>` 键值对不同可选参数的条件启用相同的 Y 轴比例。
+* 可以通过 `timeBucketUnit=<Unit>&timeBucketSize=<integer>` 来调整时间间隔滑块，使图表的视图更精细或更光滑，聚合程度更高。
 * 可以通过 `timezoneOffset=<integer>` 参数将显示图表的时区设置为 UTC 的偏移量。
 
 | 对 | 说明 |

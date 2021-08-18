@@ -7,13 +7,12 @@ ms.date: 09/10/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: d1dbac6df2e4cc4f872cece3f519dbd7d65e2af4
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: b123caf65c86980dfa3cacf5e7d412851332afc8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111440027"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747777"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure Maps 中的天气服务
 
@@ -100,7 +99,7 @@ ms.locfileid: "111440027"
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>雷达和卫星图像色阶
 
-通过[获取地图图块 v2 API](/rest/api/maps/renderv2/getmaptilepreview)，用户可以请求最新的雷达图像和红外卫星图像。 请参阅以下指南，以帮助解释用于雷达和卫星图块的颜色。
+通过[获取地图图块 v2 API](/rest/api/maps/render-v2/get-map-tile)，用户可以请求最新的雷达图像和红外卫星图像。 请参阅以下指南，以帮助解释用于雷达和卫星图块的颜色。
 
 ### <a name="radar-images"></a>雷达图像
 
@@ -515,7 +514,7 @@ ms.locfileid: "111440027"
   户外活动           |29| [差 - 优 1](#poor-excellent-1)
   户外烧烤           |24| [差 - 优 1](#poor-excellent-1)
   户外音乐会            |8| [差 - 优 1](#poor-excellent-1)
-  运行                    |1|  [差 - 优 1](#poor-excellent-1)
+  正在运行                    |1|  [差 - 优 1](#poor-excellent-1)
   网球                     |6| [差 - 优 1](#poor-excellent-1)
   口渴                     |41| [低 - 极高 2](#low-extreme-2)
   航行                    |11| [差 - 优 1](#poor-excellent-1)

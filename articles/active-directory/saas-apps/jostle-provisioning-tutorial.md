@@ -2,25 +2,22 @@
 title: 教程：使用 Azure Active Directory 为 Jostle 配置自动用户预配 | Microsoft Docs
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Jostle 及如何取消预配。
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 6dbb744f-8b8e-4988-b293-ebe079c8c5c5
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/05/2021
-ms.author: Zhchia
-ms.openlocfilehash: c302f7731c111c0718ac7c4d5889208020cc09a8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.author: thwimmer
+ms.openlocfilehash: 5fe843fb735aecda1eff51d3e52392a79bf8c1dd
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110067566"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195528"
 ---
 # <a name="tutorial-configure-jostle-for-automatic-user-provisioning"></a>教程：为 Jostle 配置自动用户预配
 

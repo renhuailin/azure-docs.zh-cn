@@ -8,12 +8,12 @@ ms.date: 03/29/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 6c2ea063e37660767d266c15dcfc471ee5d73a02
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d7f12ca1530b40885dea456763bd231d487ba5cb
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732102"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113004621"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Analysis Services 数据库备份和还原
 
@@ -25,7 +25,7 @@ ms.locfileid: "105732102"
 > 
 
 > [!NOTE]
-> 如果存储帐户位于另一区域中，请将存储帐户防火墙设置配置为允许从“所选网络”进行访问。 在防火墙的“地址范围”中，指定 Analysis Services 服务器所在区域的 IP 地址范围。 支持将存储帐户防火墙设置配置为允许从“所有网络”进行访问，但是最好选择“所选网络”并指定 IP 地址范围。 若要了解详细信息，请参阅[网络连接常见问题解答](analysis-services-network-faq.md#backup-and-restore)。
+> 如果存储帐户位于另一区域中，请将存储帐户防火墙设置配置为允许从“所选网络”进行访问。 在防火墙的“地址范围”中，指定 Analysis Services 服务器所在区域的 IP 地址范围。 支持将存储帐户防火墙设置配置为允许从“所有网络”进行访问，但是最好选择“所选网络”并指定 IP 地址范围。 若要了解详细信息，请参阅[网络连接常见问题解答](/azure/analysis-services/analysis-services-network-faq#backup-and-restore)。
 
 备份以 .abf 扩展名保存。 对于内存中表格模型，将存储模型数据和元数据。 对于 DirectQuery 表格模型，将仅存储模型元数据。 备份可以进行压缩和加密，具体取决于选择的选项。
 
@@ -109,4 +109,4 @@ ms.locfileid: "105732102"
 
 [Azure 存储帐户](../storage/common/storage-account-create.md)  
 [高可用性](analysis-services-bcdr.md)      
-[Analysis Services 网络连接常见问题解答](analysis-services-network-faq.md)
+[Analysis Services 网络连接常见问题解答](analysis-services-network-faq.yml)

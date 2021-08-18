@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: d440940d98b33ae5906fe5a4a112939682196e57
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: db2b2c413803e9c2c9952e0b75e30e9a74939871
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467405"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112461560"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中管理适用于 Apache Spark 的 Python 库
 
@@ -42,7 +42,7 @@ Azure Synapse Analytics 中的 Apache Spark 包含一整套用于常见数据工
 > [!IMPORTANT]
 > - 如果要安装的包很大，或者需要很长时间才能完成安装，则会影响 Spark 实例的启动时间。
 > - 不支持更改 PySpark、Python、Scala/Java、.NET 或 Spark 版本。
-> - 不支持在已启用 DEP 的工作区中安装来自 PyPI、Conda-Forge 等外部存储库或默认 Conda 通道的包。
+> - 不支持在已启用“数据外泄防护”的工作区中安装来自 PyPI、Conda-Forge 等外部存储库或默认 Conda 通道的包。
 
 ### <a name="install-python-packages"></a>安装 Python 包
 可提供环境规范文件来安装 PyPI 和 Conda-Forge 等外部存储库中的 Python 包。 
@@ -52,7 +52,7 @@ Azure Synapse Analytics 中的 Apache Spark 包含一整套用于常见数据工
 ##### <a name="pip-requirementstxt"></a>PIP requirements.txt
 可以使用 *requirements.txt* 文件（`pip freeze` 命令的输出）来升级环境。 更新池时，将从 PyPI 下载此文件中列出的包。 然后，将缓存并保存全部依赖项，以便以后可重复使用池。 
 
-以下代码片段显示了要求文件的格式。 PyPI 包名称将与确切的版本一起列出。 此文件遵循 [pip freeze](https://pip.pypa.io/en/stable/reference/pip_freeze/) 参考文档中所述的格式。 
+以下代码片段显示了要求文件的格式。 PyPI 包名称将与确切的版本一起列出。 此文件遵循 [pip freeze](https://pip.pypa.io/en/stable/cli/pip_freeze/) 参考文档中所述的格式。 
 
 此示例固定使用一个特定版本。 
 ```

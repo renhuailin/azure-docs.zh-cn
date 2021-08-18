@@ -3,17 +3,17 @@ title: 将云服务（经典）部署到 Azure 时对 OverconstrainedAllocationR
 description: 本文介绍了如何在将云服务（经典）部署到 Azure 时解决 OverconstrainedAllocationRequest 异常。
 services: cloud-services
 documentationcenter: ''
-author: mibufo
-ms.author: v-mibufo
+author: hirenshah1
+ms.author: hirshah
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: 1b50ded166b3f62b38830b4c2d18da7c4c4f0d35
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 54982085d259ccd678ba66a3f87c9d0bc051528d
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101744458"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090054"
 ---
 # <a name="troubleshoot-overconstrainedallocationrequest-when-deploying-cloud-services-classic-to-azure"></a>将云服务（经典）部署到 Azure 时对 OverconstrainedAllocationRequest 进行故障排除
 

@@ -2,13 +2,13 @@
 title: Azure 服务总线和事件中心内的 AMQP 1.0 协议指南 | Microsoft 文档
 description: Azure 服务总线和事件中心内 AMQP 1.0 协议的表达与描述指南
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 2154221ebfe69b659ff83100ed614133e178ccdb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/14/2021
+ms.openlocfilehash: d786b3d0e9afbf7ab4e895c6788209644d9f921f
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98624483"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113092748"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure 服务总线和事件中心内的 AMQP 1.0 协议指南
 
@@ -52,7 +52,7 @@ AMQP 将通信程序称为容器  ；其中包含节点  ，即这些容器内�
 
 网络连接因此固定在容器上。 它由采用客户端角色的容器启动，对采用接收者角色的容器进行出站 TCP 套接字连接，以侦听和接受入站 TCP 连接。 连接握手包括协商协议版本，声明或协商传输级别安全性 (TLS/SSL) 的使用，以及基于 SASL 的连接范围的身份验证/授权握手。
 
-Azure 服务总线随时都需要使用 TLS。 它支持通过 TCP 端口 5671 的连接，因此 TCP 连接在进入 AMQP 协议握手前先与 TLS 重叠；它还支持通过 TCP 端口 5672 的连接，因此服务器使用 AMQP 规定的模型，立即提供强制的 TLS 连接升级。 AMQP WebSockets 绑定创建基于 TCP 端口 443 的隧道，其相当于 AMQP 5671 连接。
+Azure 服务总线或 Azure 事件中心随时都需要使用 TLS。 它支持通过 TCP 端口 5671 的连接，因此 TCP 连接在进入 AMQP 协议握手前先与 TLS 重叠；它还支持通过 TCP 端口 5672 的连接，因此服务器使用 AMQP 规定的模型，立即提供强制的 TLS 连接升级。 AMQP WebSockets 绑定创建基于 TCP 端口 443 的隧道，其相当于 AMQP 5671 连接。
 
 在设置连接和 TLS 之后，服务总线提供两个 SASL 机制选项：
 
@@ -368,11 +368,10 @@ name 属性标识应与此令牌关联的实体。 在服务总线中，这是�
 
 | 令牌类型 | 令牌说明 | 正文类型 | 注释 |
 | --- | --- | --- | --- |
-| amqp:jwt |JSON Web 令牌 (JWT) |AMQP 值（字符串） |尚不可用。 |
-| amqp:swt |简单 Web 令牌 (SWT) |AMQP 值（字符串） |仅支持 AAD/ACS 颁发的 SWT 令牌 |
+| jwt |JSON Web 令牌 (JWT) |AMQP 值（字符串） | |
 | servicebus.windows.net:sastoken |服务总线 SAS 令牌 |AMQP 值（字符串） |- |
 
-令牌赋予权限。 服务总线识别三个基本权限：“发送”允许发送、“侦听”允许接收，“管理”允许操作实体。 AAD/ACS 颁发的 SWT 令牌明确将这些权限包含为声明。 服务总线 SAS 令牌引用在命名空间或实体上配置的规则，这些规则是使用权限配置的。 使用与该规则关联的密钥来签名令牌，以此方式让令牌表达各自的权限。 与使用 put-token 的实体关联的令牌将允许已连接的客户端根据每个令牌权限来与实体交互。 客户端承担 sender 角色的链接需要“发送”权限，而承担 receiver 角色的链接则需要“侦听”权限。
+令牌赋予权限。 服务总线识别三个基本权限：“发送”允许发送、“侦听”允许接收，“管理”允许操作实体。 服务总线 SAS 令牌引用在命名空间或实体上配置的规则，这些规则是使用权限配置的。 使用与该规则关联的密钥来签名令牌，以此方式让令牌表达各自的权限。 与使用 put-token 的实体关联的令牌将允许已连接的客户端根据每个令牌权限来与实体交互。 客户端承担 sender 角色的链接需要“发送”权限，而承担 receiver 角色的链接则需要“侦听”权限。
 
 回复消息具有以下 application-properties 值
 
@@ -405,12 +404,7 @@ name 属性标识应与此令牌关联的实体。 在服务总线中，这是�
 | | <------ | attach(<br/>name={link name},<br/>role=receiver,<br/>source={client link ID},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
 
 ## <a name="next-steps"></a>后续步骤
-
-若要了解有关 AMQP 的详细信息，请访问以下链接：
-
-* [服务总线 AMQP 概述]
-* [针对服务总线分区队列和主题的 AMQP 1.0 支持]
-* [适用于 Windows Server 的服务总线中的 AMQP]
+若要详细了解 AMQP，请参阅[服务总线 AMQP 概述](service-bus-amqp-overview.md)。
 
 [this video course]: https://www.youtube.com/playlist?list=PLmE4bZU0qx-wAP02i0I7PJWvDWoCytEjD
 [1]: ./media/service-bus-amqp-protocol-guide/amqp1.png
@@ -418,6 +412,3 @@ name 属性标识应与此令牌关联的实体。 在服务总线中，这是�
 [3]: ./media/service-bus-amqp-protocol-guide/amqp3.png
 [4]: ./media/service-bus-amqp-protocol-guide/amqp4.png
 
-[服务总线 AMQP 概述]: service-bus-amqp-overview.md
-[针对服务总线分区队列和主题的 AMQP 1.0 支持]: 
-[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

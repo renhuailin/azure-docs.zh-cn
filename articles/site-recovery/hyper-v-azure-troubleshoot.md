@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: sharrai
-ms.openlocfilehash: 24fcb043845f3946c142a9e73ba0efd9df71932f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c92d0faedbc564ff33de7f51eccde3cda92fe813
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960802"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112458229"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>排查 Hyper-V 到 Azure 的复制和故障转移的问题
 
@@ -130,7 +130,7 @@ ms.locfileid: "111960802"
         - 根据 VM 或其应用的繁忙程度，此数据变动率将会提高或保持在较高级别。
         - 对于 Site Recovery 的标准存储，平均源磁盘数据变动率为 2 MB/秒。 [了解详细信息](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
     - 此外，可以[验证存储可伸缩性目标](../storage/common/scalability-targets-standard-account.md)。
-8. 如果使用的是基于 Linux 的服务器，请确保在其上启用了应用一致性。 [了解详细信息](/azure/site-recovery/site-recovery-faq.yml#replication)
+8. 如果使用的是基于 Linux 的服务器，请确保在其上启用了应用一致性。 [了解详细信息](/azure/site-recovery/site-recovery-faq#replication)
 9. 运行[部署规划器](hyper-v-deployment-planner-run.md)。
 10. 查看有关[网络](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)和[存储](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)的建议。
 

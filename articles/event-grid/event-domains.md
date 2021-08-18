@@ -3,12 +3,12 @@ title: Azure 事件网格中的事件域
 description: 本文介绍如何使用事件域来管理各种业务组织、客户或应用程序的自定义事件流。
 ms.topic: conceptual
 ms.date: 04/13/2021
-ms.openlocfilehash: 78a785d3f1ee0431b11e8c14c3e48f4a156b5fd4
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: a8f9b21b84b2c764d25943af8988e40672dccd31
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537778"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112413510"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>了解用于管理事件网格主题的事件域
 
@@ -26,7 +26,7 @@ ms.locfileid: "110537778"
 事件域提供 Azure 服务（例如存储和 IoT 中心）使用的相同体系结构来发布其事件。 它们可以将事件发布到数千个主题。 域还提供对每个主题的授权和身份验证控制，以便你可对租户进行分区。
 
 ## <a name="example-use-case"></a>示例用例
-[!INCLUDE [event-grid-domain-example-use-case.md](../../includes/event-grid-domain-example-use-case.md)]
+[!INCLUDE [event-grid-domain-example-use-case.md](./includes/event-grid-domain-example-use-case.md)]
 
 ## <a name="access-management"></a>访问管理
 

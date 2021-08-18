@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: dech
 ms.custom: references_regions
-ms.openlocfilehash: 02e8ad5f2b5326f947ba0bca6456ce9d9d3c27d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1309ac31c8669ad678b96a4d99d32daf8f89815
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101692770"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112234208"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts-preview"></a>为 Azure Cosmos DB 帐户中启用笔记本（预览版）
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "101692770"
 
 1. 选择“转到资源”，转到 Azure Cosmos DB 帐户页。
 
-   :::image type="content" source="../../includes/media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-3.png" alt-text="Azure Cosmos DB 帐户页面":::
+   :::image type="content" source="includes/media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-3.png" alt-text="Azure Cosmos DB 帐户页面":::
 
 1. 导航到“数据资源管理器”窗格。 现在你应该会看到笔记本工作区。
 

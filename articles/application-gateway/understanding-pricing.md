@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/01/2020
 ms.author: azhussai
-ms.openlocfilehash: 89ba6b7a69c95951a083628f23be68d811c7768c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c6afc21ce2dd4ba08a29d2a1c19e680b838c9ee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96601605"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737239"
 ---
 # <a name="understanding-pricing-for-azure-application-gateway-and-web-application-firewall"></a>了解 Azure 应用程序网关和 Web 应用程序防火墙的定价
 
@@ -392,4 +392,4 @@ V2 SKU 会根据消耗情况计费，并由两部分组成：
 请参阅以下文章，以详细了解 Azure 应用程序网关中的定价方式：
 
 * [Azure 应用程序网关定价页](https://azure.microsoft.com/pricing/details/application-gateway/)
-* [Azure 应用程序网关定价计算器](https://azure.microsoft.com/en-us/pricing/calculator/?service=application-gateway)
+* [Azure 应用程序网关定价计算器](https://azure.microsoft.com/pricing/calculator/?service=application-gateway)

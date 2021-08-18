@@ -9,18 +9,18 @@ ms.topic: how-to
 author: cawrites
 ms.author: chadam
 ms.date: 03/19/2021
-ms.openlocfilehash: 3126877833774f0f2e874e2a2dfd6cf5cb6181d8
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: bcd9758fe77f2b5623c7aba1e145de07e6396e60
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110796041"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745755"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>迁移指南：SAP ASE 到 Azure SQL 数据库
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-本指南介绍如何使用适用于 SAP Adapter Server Enterprise 的 [SQL Server 迁移](https://azure.microsoft.com/en-us/migration/sql-server/)助手将 SAP Adapter Server Enterprise (ASE) 数据库[迁移](https://azure.microsoft.com/migration/migration-journey)到 Azure SQL 数据库。
+本指南介绍如何使用适用于 SAP Adapter Server Enterprise 的 [SQL Server 迁移](https://azure.microsoft.com/migration/sql-server/)助手将 SAP Adapter Server Enterprise (ASE) 数据库[迁移](https://azure.microsoft.com/migration/migration-journey)到 Azure SQL 数据库。
 
 有关其他迁移指南，请参阅 [Azure 数据库迁移指南](/data-migration)。 
 
@@ -29,7 +29,7 @@ ms.locfileid: "110796041"
 开始将 SAP SE 数据库迁移到 SQL 数据库之前，请执行以下操作：
 
 - 验证源环境是否受支持。 
-- 下载并安装[适用于 SAP Adaptive Server Enterprise（之前称为 SAP Sybase ASE）的 SQL Server 迁移助手](https://www.microsoft.com/en-us/download/details.aspx?id=54256)。
+- 下载并安装[适用于 SAP Adaptive Server Enterprise（之前称为 SAP Sybase ASE）的 SQL Server 迁移助手](https://www.microsoft.com/download/details.aspx?id=54256)。
 - 请确保具有连接以及访问源和目标的足够权限。
 
 ## <a name="pre-migration"></a>迁移前
@@ -38,7 +38,7 @@ ms.locfileid: "110796041"
 
 ### <a name="assess"></a>评估
 
-使用[适用于 SAP Adaptive Server Enterprise（之前称为 SAP Sybase ASE）的 SQL Server 迁移助手 (SSMA)](https://www.microsoft.com/en-us/download/details.aspx?id=54256) 可评审数据库对象和数据、评估数据库是否适合迁移、将 Sybase 数据库对象迁移到 SQL 数据库，然后将数据迁移到 SQL 数据库。 若要了解详细信息，请查看 [适用于 Sybase 的 SQL Server 迁移助手 (SybaseToSQL)](/sql/ssma/sybase/sql-server-migration-assistant-for-sybase-sybasetosql)。
+使用[适用于 SAP Adaptive Server Enterprise（之前称为 SAP Sybase ASE）的 SQL Server 迁移助手 (SSMA)](https://www.microsoft.com/download/details.aspx?id=54256) 可评审数据库对象和数据、评估数据库是否适合迁移、将 Sybase 数据库对象迁移到 SQL 数据库，然后将数据迁移到 SQL 数据库。 若要了解详细信息，请查看 [适用于 Sybase 的 SQL Server 迁移助手 (SybaseToSQL)](/sql/ssma/sybase/sql-server-migration-assistant-for-sybase-sybasetosql)。
 
 若要创建评估，请执行以下操作： 
 

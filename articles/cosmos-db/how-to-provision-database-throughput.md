@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 7466a2e620a9489fe7b3b69967388d3ad4b7ab85
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c790ff5d5c9a56326e8e7180c9944d04f5f4cafc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065308"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751037"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>在 Azure Cosmos DB 的数据库中预配标准（手动）吞吐量 - SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文说明了如何在 Azure Cosmos DB SQL API 的数据库中预配标准（手动）吞吐量。 可以为单个[容器](how-to-provision-container-throughput.md)预配吞吐量，也可以为数据库预配吞吐量，并在数据库中的容器之间共享吞吐量。 若要了解何时使用容器级别和数据库级别吞吐量，请参阅[容器和数据库预配吞吐量的用例](set-throughput.md)一文。 可以使用 Azure 门户或 Azure Cosmos DB SDK 来预配数据库级别吞吐量。
 
-如果使用的是其他 API，请参阅 [API for MongoDB](how-to-provision-throughput-mongodb.md)、[Cassandra API](how-to-provision-throughput-cassandra.md)、[Gremlin API](how-to-provision-throughput-gremlin.md) 这几篇文章来预配吞吐量。
+如果使用的是其他 API，请参阅 [API for MongoDB](mongodb/how-to-provision-throughput-mongodb.md)、[Cassandra API](cassandra/how-to-provision-throughput-cassandra.md)、[Gremlin API](how-to-provision-throughput-gremlin.md) 这几篇文章来预配吞吐量。
 
 ## <a name="provision-throughput-using-azure-portal"></a>使用 Azure 门户预配吞吐量
 

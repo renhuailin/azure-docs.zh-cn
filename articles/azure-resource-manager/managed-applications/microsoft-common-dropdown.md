@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: b9b27a432776635290c7e8e796e84d8c1e0e8675
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57befe2d0a2ff985dc1da90119e3eedd5da85040
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92168335"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113135061"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown UI 元素
 
@@ -50,12 +50,12 @@ DropDown 元素提供不同的选项，用于确定其在门户中的视觉效�
     "placeholder": "",
     "defaultValue": "Value two",
     "toolTip": "",
-    "multiselect": true,  
-    "selectAll": true,  
-    "filter": true,  
-    "filterPlaceholder": "Filter items ...",  
-    "multiLine": true,  
-    "defaultDescription": "A value for selection",  
+    "multiselect": true,
+    "selectAll": true,
+    "filter": true,
+    "filterPlaceholder": "Filter items ...",
+    "multiLine": true,
+    "defaultDescription": "A value for selection",
     "constraints": {
         "allowedValues": [
             {

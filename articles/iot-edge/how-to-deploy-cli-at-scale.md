@@ -3,19 +3,18 @@ title: 使用 Azure CLI 大规模部署模块 - Azure IoT Edge
 description: 使用 Azure CLI 的 IoT 扩展为 IoT Edge 设备组创建自动部署
 keywords: ''
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: c502a9c02160c5a92d78ccdbb0532e6f173122da
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 4e7302cda688d92e19d147f0bfa1a482823b2623
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479502"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750789"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>使用 Azure CLI 大规模部署并监视 IoT Edge 模块
 
@@ -135,7 +134,7 @@ ms.locfileid: "107479502"
         "properties.desired.modules.SimulatedTemperatureSensor": {
           "settings": {
             "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
-              "createOptions": ""
+              "createOptions": "{}"
           },
           "type": "docker",
           "status": "running",
@@ -208,7 +207,7 @@ deployment create 命令采用以下参数：
 * **--labels** - 添加用于跟踪部署的标签。 标签是描述部署的“名称, 值”对。 标签对名称和值采用 JSON 格式设置。 例如： `{"HostPlatform":"Linux", "Version:"3.0.1"}`
 * **--target-condition** - 输入一个目标条件，用于确定哪些设备会成为此部署的目标。  该条件基于设备孪生标记或设备孪生报告的属性，应与表达式格式相匹配。  例如，`tags.environment='test' and properties.reported.devicemodel='4000x'` 。
 * **--priority** - 一个正整数。 如果同一设备上确定的部署目标至少有两个，则会应用优先级数值最高的部署。
-* --metrics - 创建查询 edgeHub 报告的属性以跟踪部署状态的指标。 指标采用 JSON 输入或 filepath。 例如，`'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`。
+* --metrics - 创建查询 edgeHub 报告的属性以跟踪部署状态的指标。 指标采用 JSON 输入或 filepath。 例如，`'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'` 。
 
 若要使用 Azure CLI 监视部署，请参阅[监视 IoT Edge 部署](how-to-monitor-iot-edge-deployments.md#monitor-a-deployment-with-azure-cli)。
 

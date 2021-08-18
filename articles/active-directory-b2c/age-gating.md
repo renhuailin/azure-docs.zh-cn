@@ -11,12 +11,12 @@ ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 71a3b38da6a63824a42f64052bf16a5fe0e25483
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94937129de318bacab129ef115bb03d6aa1c53d0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102525408"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723310"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>启用 Azure Active Directory B2C 中的年龄限制
 
@@ -69,7 +69,7 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 ## <a name="test-your-user-flow"></a>测试用户流
 
 1. 若要测试策略，请选择“运行用户流”。
-1. 对于“应用程序”，请选择前面已注册的名为 *testapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择前面已注册的名为“testapp1”的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
 1. 选择“运行用户流”按钮。
 1. 使用本地帐户或社交帐户登录。 然后选择你的居住地所在国家/地区，以及与未成年人相仿的出生日期。 
 1. 重复该测试，并选择一个与成年人相仿的出生日期。  
@@ -82,7 +82,7 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 
 ## <a name="enable-age-gating-in-your-custom-policy"></a>在自定义策略中启用年龄限制
 
-1. 在 [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/age-gating) 中获取年龄限制策略的示例。
+1. 在 [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies) 中获取年龄限制策略的示例。
 1. 在每个文件中，将字符串 `yourtenant` 替换为 Azure AD B2C 租户的名称。 例如，如果 B2C 租户的名称为 contosob2c，则 `yourtenant.onmicrosoft.com` 的所有实例都将变为 `contosob2c.onmicrosoft.com`。
 1. 上传策略文件。
 
@@ -91,4 +91,3 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何[在 Azure AD B2C 中管理用户访问](manage-user-access.md)。
-

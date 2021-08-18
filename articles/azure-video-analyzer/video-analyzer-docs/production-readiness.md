@@ -2,13 +2,13 @@
 title: 生产就绪情况和最佳做法
 description: 本文提供如何在生产环境中配置和部署 Azure 视频分析器模块的指南。
 ms.topic: reference
-ms.date: 04/26/2021
-ms.openlocfilehash: af353c6845259f09edf4f1cb6ee4282f0fae6ba9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 1f7477be52d99bdfca91fd0d122d2db63ef27827
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385211"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602142"
 ---
 # <a name="production-readiness-and-best-practices"></a>生产就绪情况和最佳做法
 
@@ -123,40 +123,6 @@ sudo chown -R localedgeuser:localedgegroup /var/lib/videoanalyzer
 如果查看快速入门的示例管道和教程（例如[连续视频录制](use-continuous-video-recording.md)），你会注意到媒体缓存目录 (`localMediaCachePath`) 使用了 `applicationDataDirectory` 下的子目录。 这是建议的方法，因为缓存包含暂时性数据。
 
 另请注意，将 `allowedUnsecuredEndpoints` 设置为 `true`，正如将使用 TLS 加密来保护流量的生产环境中所建议的。
-
-### <a name="naming-video-or-files"></a>命名视频或文件
-
-管道允许将视频录制到云，或者在边缘设备上录制为 MP4 文件。 这些文件可以由[连续视频录制](use-continuous-video-recording.md)或[基于事件的视频录制](record-event-based-live-video.md)生成。
-
-建议用于录制到云的命名结构是将视频资源命名为“<anytext>-${System.TopologyName}-${System.PipelineName}”。 给定的实时管道只能连接到一个支持 RTSP 的 IP 相机，并且应将该相机的输入录制到一个视频资源。 例如，可以在视频接收器上设置 `VideoName`，如下所示：
-
-```
-"VideoName": "sampleVideo-${System.TopologyName}-${System.PipelineName}"
-```
-请注意，替换模式由 `$` 符号后跟大括号定义：${variableName}。
-
-使用基于事件的录制在边缘设备上录制 MP4 文件时，可以使用：
-
-```
-"fileNamePattern": "sampleFilesFromEVR-${System.TopologyName}-${System.PipelineName}-${fileSinkOutputName}-${System.Runtime.DateTime}"
-```
-
-> [!Note]
-> 在上面的示例中，变量 fileSinkOutputName 是在创建实时管道时定义的示例变量名称。 这不是系统变量。 请注意，使用 DateTime 如何确保每个事件都具有唯一的 MP4 文件名称。
-
-#### <a name="system-variables"></a>系统变量
-
-可以使用的一些系统定义的变量是：
-
-| 系统变量        | 说明                                                  | 示例              |
-| :--------------------- | :----------------------------------------------------------- | :------------------- |
-| System.Runtime.DateTime        | 采用 ISO8601 文件标准格式的 UTC 日期时间（基本表示形式为 YYYYMMDDThhmmss）。 | 20200222T173200Z     |
-| System.Runtime.PreciseDateTime | 采用 ISO8601 文件标准格式的包含毫秒的 UTC 日期时间（基本表示形式为 YYYYMMDDThhmmss.sss）。 | 20200222T173200.123Z |
-| System.TopologyName    | 用户提供的执行管道拓扑的名称。          | IngestAndRecord      |
-| System.PipelineName    | 用户提供的执行实时管道的名称。          | camera001            |
-
-> [!Tip]
-> 在云中命名视频时，不能使用 System.Runtime.PreciseDateTime 和 System.Runtime.DateTime。
 
 ### <a name="tips-about-maintaining-your-edge-device"></a>有关维护边缘设备的提示
 

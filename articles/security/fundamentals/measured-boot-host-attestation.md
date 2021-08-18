@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/10/2020
-ms.openlocfilehash: f4906d4e0590df047bac4ee15cb0e996a59c3d5b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/24/2021
+ms.openlocfilehash: 6dac3b8230a0bad9c6492b236eac5dddc1839471
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96498857"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895771"
 ---
 # <a name="measured-boot-and-host-attestation"></a>测量启动和主机证明
 本文介绍 Microsoft 如何通过测量启动和主机证明来确保主机的完整性和安全性。
@@ -55,6 +55,7 @@ UEFI [安全启动](secure-boot.md)可确保只有受信任的低级别软件可
 若要详细了解为提高平台完整性和安全性而做的工作，请参阅：
 
 - [固件安全性](firmware.md)
+- [平台代码完整性](code-integrity.md)
 - [安全启动](secure-boot.md)
 - [Cerberus 项目](project-cerberus.md)
 - [静态加密](encryption-atrest.md)

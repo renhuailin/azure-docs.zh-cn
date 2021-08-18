@@ -4,16 +4,16 @@ description: 本文介绍如何在云服务 Web 角色和辅助角色上手动�
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: aa05fc9f02c26192762ed34db54b60b4760bf3bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3e092d5e704667f3db16eb4a862269dc42b835fe
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99061845"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091602"
 ---
 # <a name="install-net-on-azure-cloud-services-classic-roles"></a>在 Azure 云服务（经典）角色上安装 .NET
 
@@ -34,7 +34,7 @@ ms.locfileid: "99061845"
 
 * [.NET Framework 4.8 Web 安装程序](https://go.microsoft.com/fwlink/?LinkId=2150985)
 * [.NET Framework 4.7.2 Web 安装程序](https://go.microsoft.com/fwlink/?LinkId=863262)
-* [.NET Framework 4.6.2 Web 安装程序](https://www.microsoft.com/download/details.aspx?id=53345)
+* [.NET Framework 4.6.2 Web 安装程序](https://dotnet.microsoft.com/download/dotnet-framework/net462)
 
 添加 web  角色的安装程序：
   1. 在“解决方案资源管理器”  中云服务项目中的“角色”  下，右键单击 web  角色，然后选择“添加”   > “新文件夹”  。 创建一个名为 **bin** 的文件夹。
@@ -96,7 +96,7 @@ ms.locfileid: "99061845"
    REM ***** To install .NET 4.5.2 set the variable netfx to "NDP452" *****
    REM ***** To install .NET 4.6 set the variable netfx to "NDP46" *****
    REM ***** To install .NET 4.6.1 set the variable netfx to "NDP461" ***** https://go.microsoft.com/fwlink/?LinkId=671729
-   REM ***** To install .NET 4.6.2 set the variable netfx to "NDP462" ***** https://www.microsoft.com/download/details.aspx?id=53345
+   REM ***** To install .NET 4.6.2 set the variable netfx to "NDP462" ***** https://dotnet.microsoft.com/download/dotnet-framework/net462
    REM ***** To install .NET 4.7 set the variable netfx to "NDP47" ***** 
    REM ***** To install .NET 4.7.1 set the variable netfx to "NDP471" ***** https://go.microsoft.com/fwlink/?LinkId=852095
    REM ***** To install .NET 4.7.2 set the variable netfx to "NDP472" ***** https://go.microsoft.com/fwlink/?LinkId=863262

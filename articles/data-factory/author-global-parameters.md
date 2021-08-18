@@ -2,17 +2,18 @@
 title: 全局参数
 description: 为每个 Azure 数据工厂环境设置全局参数
 ms.service: data-factory
+ms.subservice: authoring
 ms.topic: conceptual
 author: minhe-msft
 ms.author: hemin
 ms.date: 05/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b699b7929709fd9ae9e206d6a50291f02aca2a18
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: b634f3866432c9cba3ae35f18fe9d146dabea585
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110675234"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741018"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Azure 数据工厂中的全局参数
 

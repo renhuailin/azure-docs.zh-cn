@@ -1,19 +1,20 @@
 ---
 title: 查看和编辑 Azure 视频分析器媒体版（以前称为视频索引器）见解
-titlesuffix: Azure Media Services
+titlesuffix: Azure Video Analyzer for Media
 description: 本文演示如何查看和编辑 Azure 视频分析器媒体版（以前称为视频索引器）见解。
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 2bf819c89ae20e8a1572526b0f2733ccc420614e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 7cbe14a10f18f44831ec360059ae608073ad3a99
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384899"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115223"
 ---
 # <a name="view-and-edit-video-analyzer-for-media-insights"></a>查看和编辑视频分析器媒体版见解
 

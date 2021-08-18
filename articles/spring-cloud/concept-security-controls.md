@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud 服务的安全控制
 description: 使用内置于 Azure Spring Cloud 服务中的安全控制。
-author: MikeDodaro
-ms.author: brendm
+author: karlerickson
+ms.author: karler
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: faa278b60f3b120fc6f1aad14cd6f8b6dbfb1e21
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: dbd544a3b8a2a55b6eafa51115277f6ef142b41c
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129182"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861772"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Azure Spring Cloud 服务的安全控制
 
@@ -20,7 +20,7 @@ ms.locfileid: "108129182"
 
 安全控制已内置于 Azure Spring Cloud 服务中。
 
-安全控制是促使 Azure 服务能够防范、检测和响应安全漏洞的一种服务质量或功能。  对于每项控制，我们使用“是”或“否”来指示它当前是否可用于该服务。  对于不适用于该服务的控制，我们使用“不适用”。 
+安全控制是促使 Azure 服务能够防范、检测和响应安全漏洞的一种服务质量或功能。  对于每项控制，我们使用“是”或“否”来指示它当前是否可用于该服务。  对于不适用于该服务的控制，我们使用“不适用”。
 
 **数据保护安全控制**
 

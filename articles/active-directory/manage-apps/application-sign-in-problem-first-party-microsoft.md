@@ -2,22 +2,22 @@
 title: 登录 Microsoft 应用程序时出现的问题 | Microsoft Docs
 description: 排查使用 Azure AD 登录到第一方 Microsoft 应用程序（如 Microsoft 365）时遇到的常见问题。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/10/2018
-ms.author: mtillman
-ms.reviewer: asteen
+ms.author: davidmu
+ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ca53af668794d977893c01340ed576a2bb7a8b3
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: c52cd2062745bd3506f687492dff240d15bbcc1b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080842"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738888"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>登录 Microsoft 应用程序时出现的问题
 
@@ -25,11 +25,11 @@ Microsoft 应用程序（如 Exchange、SharePoint、Yammer 等）的分配和�
 
 用户访问 Microsoft 发布的应用程序的方法主要有三种。
 
--   对于 Microsoft 365 或其他付费套件中的应用程序，可以通过 **许可证分配** 直接向用户的用户帐户授予访问权限，也可以使用基于组的许可证分配功能通过组来这样做。
+- 对于 Microsoft 365 或其他付费套件中的应用程序，可以通过 **许可证分配** 直接向用户的用户帐户授予访问权限，也可以使用基于组的许可证分配功能通过组来这样做。
 
--   对于 Microsoft 或第三方发布的可供任何人免费使用的应用程序，可以通过 **用户许可** 授予用户访问权限。 这意味着他们使用其 Azure AD 工作或学校帐户登录到应用程序，并允许它访问其帐户上一些受限制的数据集。
+- 对于 Microsoft 或第三方发布的可供任何人免费使用的应用程序，可以通过 **用户许可** 授予用户访问权限。 这意味着他们使用其 Azure AD 工作或学校帐户登录到应用程序，并允许它访问其帐户上一些受限制的数据集。
 
--   对于 Microsoft 或第三方发布的可供任何人免费使用的应用程序，还可以通过 **管理员同意** 授予用户访问权限。 这意味着管理员已确定组织中的所有人都可以使用此应用程序，因此他们使用全局管理员帐户可以登录到应用程序并向组织中所有人授予访问权限。
+- 对于 Microsoft 或第三方发布的可供任何人免费使用的应用程序，还可以通过 **管理员同意** 授予用户访问权限。 这意味着管理员已确定组织中的所有人都可以使用此应用程序，因此他们使用全局管理员帐户可以登录到应用程序并向组织中所有人授予访问权限。
 
 若要解决问题，请从[对于应用程序访问要考虑的常规问题领域](#general-problem-areas-with-application-access-to-consider)开始，并阅读“演练：对 Microsoft 应用程序访问进行故障排除的步骤”了解详细信息。
 
@@ -37,13 +37,13 @@ Microsoft 应用程序（如 Exchange、SharePoint、Yammer 等）的分配和�
 
 如果知道从何处着手，以下列表提供了需要深入了解的常规问题领域，但我们建议阅读以下演练以便快速开始操作：演练：对 Microsoft 应用程序访问进行故障排除的步骤。
 
--   [用户帐户问题](#problems-with-the-users-account)
+- [用户帐户问题](#problems-with-the-users-account)
 
--   [组问题](#problems-with-groups)
+- [组问题](#problems-with-groups)
 
--   [条件访问策略问题](#problems-with-conditional-access-policies)
+- [条件访问策略问题](#problems-with-conditional-access-policies)
 
--   [应用程序许可问题](#problems-with-application-consent)
+- [应用程序许可问题](#problems-with-application-consent)
 
 ## <a name="steps-to-troubleshoot-microsoft-application-access"></a>对 Microsoft 应用程序访问进行故障排除的步骤
 
@@ -91,83 +91,83 @@ Microsoft 应用程序（如 Exchange、SharePoint、Yammer 等）的分配和�
 
 由于已分配到应用程序的用户出现问题，应用程序访问可能会遭到阻止。 下面是可以用来排除和解决用户及其帐户设置存在的问题的一些方法：
 
--   [检查在 Azure Active Directory 中是否存在用户帐户](#check-if-a-user-account-exists-in-azure-active-directory)
+- [检查在 Azure Active Directory 中是否存在用户帐户](#check-if-a-user-account-exists-in-azure-active-directory)
 
--   [检查用户帐户的状态](#check-a-users-account-status)
+- [检查用户帐户的状态](#check-a-users-account-status)
 
--   [重置用户的密码](#reset-a-users-password)
+- [重置用户的密码](#reset-a-users-password)
 
--   [启用自助服务密码重置](#enable-self-service-password-reset)
+- [启用自助服务密码重置](#enable-self-service-password-reset)
 
--   [检查用户的多重身份验证状态](#check-a-users-multi-factor-authentication-status)
+- [检查用户的多重身份验证状态](#check-a-users-multi-factor-authentication-status)
 
--   [检查用户的身份验证联系信息](#check-a-users-authentication-contact-info)
+- [检查用户的身份验证联系信息](#check-a-users-authentication-contact-info)
 
--   [检查用户的组成员身份](#check-a-users-group-memberships)
+- [检查用户的组成员身份](#check-a-users-group-memberships)
 
--   [检查用户的已分配许可证](#check-a-users-assigned-licenses)
+- [检查用户的已分配许可证](#check-a-users-assigned-licenses)
 
--   [为用户分配许可证](#assign-a-user-a-license)
+- [为用户分配许可证](#assign-a-user-a-license)
 
 ### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>检查在 Azure Active Directory 中是否存在用户帐户
 
 若要检查是否存在某个用户帐户，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，选择“用户和组”。
 
-5.  单击“所有用户”。
+5. 选择“所有用户”。
 
-6.  **搜索** 感兴趣的用户，并 **单击对应的行** 进行选择。
+6. **搜索** 感兴趣的用户，并 **单击对应的行** 进行选择。
 
-7.  检查用户对象的属性，确保它们看上去与预期一致并且未丢失任何数据。
+7. 检查用户对象的属性，确保它们看上去与预期一致并且未丢失任何数据。
 
 ### <a name="check-a-users-account-status"></a>检查用户帐户的状态
 
 若要检查用户帐户的状态，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，选择“用户和组”。
 
-5.  单击“所有用户”。
+5. 选择“所有用户”。
 
-6.  **搜索** 感兴趣的用户，并 **单击对应的行** 进行选择。
+6. **搜索** 感兴趣的用户，并 **单击对应的行** 进行选择。
 
-7.  单击“配置文件”。
+7. 选择“配置文件”。
 
-8.  在“设置”下，确保“阻止登录”设置为“否”。
+8. 在“设置”下，确保“阻止登录”设置为“否”。
 
 ### <a name="reset-a-users-password"></a>重置用户的密码
 
 若要重置用户的密码，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，选择“用户和组”。
 
-5.  单击“所有用户”。
+5. 选择“所有用户”。
 
-6.  **搜索** 感兴趣的用户，并 **单击对应的行** 进行选择。
+6. **搜索** 感兴趣的用户，并 **单击对应的行** 进行选择。
 
-7.  单击用户窗格顶部的“重置密码”按钮。
+7. 选择用户窗格顶部的“重置密码”按钮。
 
-8.  在出现的“重置密码”窗格上，单击“重置密码”按钮。
+8. 在出现的“重置密码”窗格上，选择“重置密码”按钮。
 
-9.  为用户复制 **临时密码** 或 **输入新密码**。
+9. 为用户复制 **临时密码** 或 **输入新密码**。
 
 10. 告知用户此新密码，在他们下一次登录到 Azure Active Directory 时，需要更改此密码。
 
@@ -175,9 +175,9 @@ Microsoft 应用程序（如 Exchange、SharePoint、Yammer 等）的分配和�
 
 若要启用自助服务密码重置，请执行以下部署步骤：
 
--   [使用户能够重置其 Azure Active Directory 密码](../authentication/tutorial-enable-sspr.md)
+- [使用户能够重置其 Azure Active Directory 密码](../authentication/tutorial-enable-sspr.md)
 
--   [使用户能够重置或更改其 Active Directory 本地密码](../authentication/tutorial-enable-sspr.md)
+- [使用户能够重置或更改其 Active Directory 本地密码](../authentication/tutorial-enable-sspr.md)
 
 ### <a name="check-a-users-multi-factor-authentication-status"></a>检查用户的多重身份验证状态
 
@@ -189,11 +189,11 @@ Microsoft 应用程序（如 Exchange、SharePoint、Yammer 等）的分配和�
 
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，选择“用户和组”。
 
-5. 单击“所有用户”。
+5. 选择“所有用户”。
 
-6. 单击窗格顶部的“多重身份验证”按钮。
+6. 选择窗格顶部的“多重身份验证”按钮。
 
 7. 在 **多重身份验证管理门户** 加载后，确保位于“用户”选项卡上。
 
@@ -207,155 +207,155 @@ Microsoft 应用程序（如 Exchange、SharePoint、Yammer 等）的分配和�
 
 若要检查用于多重身份验证、条件访问、标识保护和密码重置的用户身份验证联系信息，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，选择“用户和组”。
 
-5.  单击“所有用户”。
+5. 选择“所有用户”。
 
-6.  **搜索** 感兴趣的用户，并 **单击对应的行** 进行选择。
+6. **搜索** 感兴趣的用户，并 **单击对应的行** 进行选择。
 
-7.  单击“配置文件”。
+7. 选择“配置文件”。
 
-8.  向下滚动到“身份验证联系信息”。
+8. 向下滚动到“身份验证联系信息”。
 
-9.  **查看** 为用户注册的数据并根据需要进行更新。
+9. **查看** 为用户注册的数据并根据需要进行更新。
 
 ### <a name="check-a-users-group-memberships"></a>检查用户的组成员身份
 
 若要检查用户的组成员身份，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，选择“用户和组”。
 
-5.  单击“所有用户”。
+5. 选择“所有用户”。
 
-6.  **搜索** 感兴趣的用户，并 **单击对应的行** 进行选择。
+6. **搜索** 感兴趣的用户，并 **单击对应的行** 进行选择。
 
-7.  单击“组”查看用户所属的组。
+7. 选择“组”查看用户所属的组。
 
 ### <a name="check-a-users-assigned-licenses"></a>检查用户的已分配许可证
 
 若要检查用户的已分配许可证，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，选择“用户和组”。
 
-5.  单击“所有用户”。
+5. 选择“所有用户”。
 
-6.  **搜索** 感兴趣的用户，并 **单击对应的行** 进行选择。
+6. **搜索** 感兴趣的用户，并 **单击对应的行** 进行选择。
 
-7.  单击“许可证”查看当前已分配给用户的许可证。
+7. 选择“许可证”查看当前已分配给用户的许可证。
 
-### <a name="assign-a-user-a-license"></a>为用户分配许可证 
+### <a name="assign-a-user-a-license"></a>为用户分配许可证
 
 若要将许可证分配给用户，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，选择“用户和组”。
 
-5.  单击“所有用户”。
+5. 选择“所有用户”。
 
-6.  **搜索** 感兴趣的用户，并 **单击对应的行** 进行选择。
+6. **搜索** 感兴趣的用户，并 **单击对应的行** 进行选择。
 
-7.  单击“许可证”查看当前已分配给用户的许可证。
+7. 选择“许可证”查看当前已分配给用户的许可证。
 
-8.  单击“分配”按钮。
+8. 选择“分配”按钮。
 
-9.  从可用产品列表中选择 **一个或多个产品**。
+9. 从可用产品列表中选择 **一个或多个产品**。
 
 10. **可选** 单击“分配选项”项精确分配产品。 完成此操作后，单击“确定”。
 
-11. 单击“分配”按钮，将这些许可证分配给此用户。
+11. 选择“分配”按钮，将这些许可证分配给此用户。
 
 ## <a name="problems-with-groups"></a>组问题
 
 由于已分配到应用程序的组出现问题，应用程序访问可能会遭到阻止。 下面是可以用来进行故障排除并解决组和组成员身份问题的一些方法：
 
--   [检查组的成员身份](#check-a-groups-membership)
+- [检查组的成员身份](#check-a-groups-membership)
 
--   [检查动态组的成员身份条件](#check-a-dynamic-groups-membership-criteria)
+- [检查动态组的成员身份条件](#check-a-dynamic-groups-membership-criteria)
 
--   [检查组的已分配许可证](#check-a-groups-assigned-licenses)
+- [检查组的已分配许可证](#check-a-groups-assigned-licenses)
 
--   [重新处理组的许可证](#reprocess-a-groups-licenses)
+- [重新处理组的许可证](#reprocess-a-groups-licenses)
 
--   [为组分配许可证](#assign-a-group-a-license)
+- [为组分配许可证](#assign-a-group-a-license)
 
 ### <a name="check-a-groups-membership"></a>检查组的成员身份
 
 若要检查组的成员身份，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，选择“用户和组”。
 
-5.  单击“所有组”。
+5. 选择“所有组”。
 
-6.  **搜索** 感兴趣的组，并 **单击对应的行** 进行选择。
+6. **搜索** 感兴趣的组，并 **单击对应的行** 进行选择。
 
-7.  单击“成员”查看分配到此组的用户列表。
+7. 选择“成员”查看分配到此组的用户列表。
 
-### <a name="check-a-dynamic-groups-membership-criteria"></a>检查动态组的成员身份条件 
+### <a name="check-a-dynamic-groups-membership-criteria"></a>检查动态组的成员身份条件
 
 若要检查动态组的成员身份条件，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，选择“用户和组”。
 
-5.  单击“所有组”。
+5. 选择“所有组”。
 
-6.  **搜索** 感兴趣的组，并 **单击对应的行** 进行选择。
+6. **搜索** 感兴趣的组，并 **单击对应的行** 进行选择。
 
-7.  单击“动态成员身份规则”。
+7. 选择“动态成员身份规则”。
 
-8.  查看为此组定义的 **简单** 或 **高级** 规则，并确保希望使其成为此组成员的用户满足这些条件。
+8. 查看为此组定义的 **简单** 或 **高级** 规则，并确保希望使其成为此组成员的用户满足这些条件。
 
 ### <a name="check-a-groups-assigned-licenses"></a>检查组的已分配许可证
 
 若要检查组的已分配许可证，请执行以下步骤：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，选择“用户和组”。
 
-5.  单击“所有组”。
+5. 选择“所有组”。
 
-6.  **搜索** 感兴趣的组，并 **单击对应的行** 进行选择。
+6. **搜索** 感兴趣的组，并 **单击对应的行** 进行选择。
 
-7.  单击“许可证”查看当前已分配给组的许可证。
+7. 选择“许可证”查看当前已分配给组的许可证。
 
 ### <a name="reprocess-a-groups-licenses"></a>重新处理组的许可证
 
@@ -367,15 +367,15 @@ Microsoft 应用程序（如 Exchange、SharePoint、Yammer 等）的分配和�
 
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，选择“用户和组”。
 
-5. 单击“所有组”。
+5. 选择“所有组”。
 
 6. **搜索** 感兴趣的组，并 **单击对应的行** 进行选择。
 
-7. 单击“许可证”查看当前已分配给组的许可证。
+7. 选择“许可证”查看当前已分配给组的许可证。
 
-8. 单击“重新处理”按钮，确保分配给此组成员的许可证是最新许可证。 这可能需要较长时间，具体取决于组的大小和复杂程度。
+8. 选择“重新处理”按钮，确保分配给此组成员的许可证是最新许可证。 这可能需要较长时间，具体取决于组的大小和复杂程度。
 
    >[!NOTE]
    >要更快地执行此操作，可考虑暂时会许可证直接分配给用户。 [为用户分配许可证](#problems-with-application-consent)。
@@ -392,25 +392,25 @@ Microsoft 应用程序（如 Exchange、SharePoint、Yammer 等）的分配和�
 
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在导航菜单中，单击“用户和组”。
+4. 在导航菜单中，选择“用户和组”。
 
-5. 单击“所有组”。
+5. 选择“所有组”。
 
 6. **搜索** 感兴趣的组，并 **单击对应的行** 进行选择。
 
-7. 单击“许可证”查看当前已分配给组的许可证。
+7. 选择“许可证”查看当前已分配给组的许可证。
 
-8. 单击“分配”按钮。
+8. 选择“分配”按钮。
 
 9. 从可用产品列表中选择 **一个或多个产品**。
 
 10. **可选** 单击“分配选项”项精确分配产品。 完成此操作后，单击“确定”。
 
-11. 单击“分配”按钮，将这些许可证分配给此组。 这可能需要较长时间，具体取决于组的大小和复杂程度。
+11. 选择“分配”按钮，将这些许可证分配给此组。 这可能需要较长时间，具体取决于组的大小和复杂程度。
 
     >[!NOTE]
     >要更快地执行此操作，可考虑暂时会许可证直接分配给用户。 [为用户分配许可证](#problems-with-application-consent)。
-    > 
+    >
     >
 
 ## <a name="problems-with-conditional-access-policies"></a>条件访问策略问题
@@ -425,11 +425,11 @@ Microsoft 应用程序（如 Exchange、SharePoint、Yammer 等）的分配和�
 
 3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4. 在导航菜单中，单击“企业应用程序”。
+4. 在导航菜单中，选择“企业应用程序”。
 
-5. 单击“条件访问”导航项。
+5. 选择“条件访问”导航项。
 
-6. 单击要检查的策略。
+6. 选择要检查的策略。
 
 7. 检查不存在任何可能会阻止用户访问的特定条件、分配或其他设置。
 
@@ -442,28 +442,28 @@ Microsoft 应用程序（如 Exchange、SharePoint、Yammer 等）的分配和�
 
 若要检查或验证单个应用程序当前配置的条件访问策略，请执行以下操作：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“企业应用程序”。
+4. 在导航菜单中，选择“企业应用程序”。
 
-5.  单击“所有应用程序”。
+5. 选择“所有应用程序”。
 
-6.  按应用程序显示名称或应用程序 ID 搜索你感兴趣的或用户正在尝试登录到的应用程序。
+6. 按应用程序显示名称或应用程序 ID 搜索你感兴趣的或用户正在尝试登录到的应用程序。
 
      >[!NOTE]
      >如果看不到要查找的应用程序，请单击“筛选器”按钮并将列表的范围扩展到“所有应用程序”。 如果要查看更多列，请单击“列”按钮为应用程序添加其他详细信息。
      >
      >
 
-7.  单击“条件访问”导航项。
+7. 选择“条件访问”导航项。
 
-8.  单击要检查的策略。
+8. 选择要检查的策略。
 
-9.  检查不存在任何可能会阻止用户访问的特定条件、分配或其他设置。
+9. 检查不存在任何可能会阻止用户访问的特定条件、分配或其他设置。
 
      >[!NOTE]
      >可能需要暂时禁用此策略，以确保它不影响登录。为此，请将“启用策略”切换按钮设置为“否”，然后单击“保存”按钮。
@@ -474,55 +474,56 @@ Microsoft 应用程序（如 Exchange、SharePoint、Yammer 等）的分配和�
 
 若要检查或验证单个条件访问策略，请执行以下操作：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
+2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3.  在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
-4.  在导航菜单中，单击“企业应用程序”。
+4. 在导航菜单中，选择“企业应用程序”。
 
-5.  单击“条件访问”导航项。
+5. 选择“条件访问”导航项。
 
-6.  单击要检查的策略。
+6. 选择要检查的策略。
 
-7.  通过将“启用策略”切换按钮设置为“否”来禁用策略，然后单击“保存”按钮。
+7. 通过将“启用策略”切换按钮设置为“否”来禁用策略，然后单击“保存”按钮。
 
 ## <a name="problems-with-application-consent"></a>应用程序许可问题
 
 由于相应的权限许可操作并未发生，应用程序访问可能会遭到阻止。 下面是可以用来进行故障排除并解决应用程序许可问题的一些方法：
 
--   [执行用户级许可操作](#perform-a-user-level-consent-operation)
+- [执行用户级许可操作](#perform-a-user-level-consent-operation)
 
--   [为任何应用程序执行管理员级许可操作](#perform-administrator-level-consent-operation-for-any-application)
+- [为任何应用程序执行管理员级许可操作](#perform-administrator-level-consent-operation-for-any-application)
 
--   [为单租户应用程序执行管理员级许可](#perform-administrator-level-consent-for-a-single-tenant-application)
+- [为单租户应用程序执行管理员级许可](#perform-administrator-level-consent-for-a-single-tenant-application)
 
--   [为多租户应用程序执行管理员级许可](#perform-administrator-level-consent-for-a-multi-tenant-application)
+- [为多租户应用程序执行管理员级许可](#perform-administrator-level-consent-for-a-multi-tenant-application)
 
 ### <a name="perform-a-user-level-consent-operation"></a>执行用户级许可操作
 
--   对于需要权限的任何已启用 Open ID Connect 的应用程序，导航到应用程序的登录屏幕都会面向已登录用户为应用程序执行用户级许可。
+- 对于需要权限的任何已启用 Open ID Connect 的应用程序，导航到应用程序的登录屏幕都会面向已登录用户为应用程序执行用户级许可。
 
--   如果要以编程方式执行此操作，请参阅[请求单个用户的同意](../develop/v2-permissions-and-consent.md#requesting-individual-user-consent)。
+- 如果要以编程方式执行此操作，请参阅[请求单个用户的同意](../develop/v2-permissions-and-consent.md#requesting-individual-user-consent)。
 
 ### <a name="perform-administrator-level-consent-operation-for-any-application"></a>为任何应用程序执行管理员级许可操作
 
--   对于 **仅使用 V1 应用程序模型开发的应用程序**，可通过在应用程序的登录 URL 末尾添加“?prompt=admin\_consent”强制执行此管理员级许可。
+- 对于 **仅使用 V1 应用程序模型开发的应用程序**，可通过在应用程序的登录 URL 末尾添加“?prompt=admin\_consent”强制执行此管理员级许可。
 
--   对于 **使用 V2 应用程序模型开发的任何应用程序**，可以按照 [使用管理员许可终结点](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint)的“向目录管理员请求权限”部分中的说明强制执行此管理员级许可。
+- 对于 **使用 V2 应用程序模型开发的任何应用程序**，可以按照 [使用管理员许可终结点](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint)的“向目录管理员请求权限”部分中的说明强制执行此管理员级许可。
 
 ### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>为单租户应用程序执行管理员级许可
 
--   对于请求权限的 **单租户应用程序**（如组织内正在开发或组织拥有的应用程序），可以通过以全局管理员”身份登录，并单击“应用程序注册表”-&gt;“所有应用程序”-&gt; 选择应用 -&gt;“所需权限”窗格顶部的“授予权限”按钮，代表所有用户执行“管理级许可”操作。
+- 对于请求权限的 **单租户应用程序**（如组织内正在开发或组织拥有的应用程序），可以通过以全局管理员”身份登录，并单击“应用程序注册表”-&gt;“所有应用程序”-&gt; 选择应用 -&gt;“所需权限”窗格顶部的“授予权限”按钮，代表所有用户执行“管理级许可”操作。
 
--   对于 **使用 V1 或 V2 应用程序模型开发的任何应用程序**，可以按照 [使用管理员许可终结点](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint)的“向目录管理员请求权限”部分下的说明强制执行此管理员级许可。
+- 对于 **使用 V1 或 V2 应用程序模型开发的任何应用程序**，可以按照 [使用管理员许可终结点](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint)的“向目录管理员请求权限”部分下的说明强制执行此管理员级许可。
 
 ### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>为多租户应用程序执行管理员级许可
 
--   对于请求权限的 **多租户应用程序**（如第三方或 Microsoft 开发的应用程序），可以执行“管理级许可”操作。 以“全局管理员”身份登录，并在“企业应用程序”-&gt;“所有应用程序”-&gt; 选择应用 -&gt;“权限”窗格（即将可用）下单击“授予权限”按钮。
+- 对于请求权限的 **多租户应用程序**（如第三方或 Microsoft 开发的应用程序），可以执行“管理级许可”操作。 以“全局管理员”身份登录，并在“企业应用程序”-&gt;“所有应用程序”-&gt; 选择应用 -&gt;“权限”窗格（即将可用）下单击“授予权限”按钮。
 
--   还可以按照[使用管理员许可终结点](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint)的“向目录管理员请求权限”部分下的说明强制执行此管理员级许可。
+- 还可以按照[使用管理员许可终结点](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint)的“向目录管理员请求权限”部分下的说明强制执行此管理员级许可。
 
 ## <a name="next-steps"></a>后续步骤
+
 [使用管理员许可终结点](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint)

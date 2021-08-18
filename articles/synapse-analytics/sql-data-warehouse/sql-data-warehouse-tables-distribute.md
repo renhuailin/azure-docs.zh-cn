@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 5aefe869041d9fff8112b6aa380961ca6568ae0b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 794f7851c882d65b6a03d173b5db633a7e17c367
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98673563"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112201314"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用专用 SQL 池设计分布式表的指南
 
@@ -107,7 +107,7 @@ WITH
   
 若要平衡并行处理，请选择符合以下条件的分布列：
 
-- **具有许多唯一值。** 分布列可以有一些重复值。 但具有相同值的所有行都分配到相同的分布区。 由于有 60 个分布区，分布列应具有至少 60 个唯一值。  通常情况下，唯一值的数量要多得多。
+- **具有许多唯一值。** 该列可以有重复值。  具有相同值的所有行都会分配到同一分布区。 由于有 60 个分布区，因此一些分布区可能有多个唯一值，而其他分布区可能以零值结尾。  
 - **没有 NULL 值，或者只有几个 NULL 值。** 在极端示例中，如果列中的所有值均为 NULL，则所有行都分配到相同的分布区。 因此，查询处理会向一个分布区倾斜，无法从并行处理中受益。
 - **不是日期列**。 同一日期的所有数据都落在相同的分布区。 如果多个用户都筛选同一个日期，则会由 60 个分布区中的 1 个分布区单独执行所有处理工作。
 

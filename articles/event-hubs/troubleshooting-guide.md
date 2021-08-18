@@ -3,12 +3,12 @@ title: 排查连接问题 - Azure 事件中心 | Microsoft Docs
 description: 本文介绍如何排查 Azure 事件中心的连接问题。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8eddc0e8c598e4553b30759d179fecb6ae880829
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48c96cf2e0a142c96e1413bb62730ef2e31aa7ca
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96012674"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416627"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>排查连接问题 - Azure 事件中心
 客户端应用程序无法连接到事件中心的原因有很多。 你遇到的连接问题可能是永久性的，也可能是暂时性的。 如果问题一直发生（永久性的），则可能需要检查连接字符串、组织的防火墙设置、IP 防火墙设置、网络安全设置（服务终结点、专用终结点等），等等。 对于暂时性问题，升级到最新版本的 SDK、运行命令来检查丢弃的数据包以及获取网络跟踪可能有助于解决问题。 
@@ -26,7 +26,7 @@ ms.locfileid: "96012674"
 
 对于 Kafka 客户端，请验证是否正确配置了 producer.config 或 consumer.config 文件。 有关详细信息，请参阅[在事件中心内使用 Kafka 发送和接收消息](event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs)。
 
-[!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
+[!INCLUDE [event-hubs-connectivity](./includes/event-hubs-connectivity.md)]
 
 ### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>验证网络安全组中是否允许使用 AzureEventGrid 服务标记
 如果你的应用程序在子网内运行，并且存在关联的网络安全组，请确认是否允许 Internet 出站或是否允许 AzureEventGrid 服务标记。 请参阅[虚拟网络服务标记](../virtual-network/service-tags-overview.md)并搜索 `EventHub`。

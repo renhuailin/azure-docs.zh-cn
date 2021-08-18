@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: ca403a5fdbdaaa8b2922647d832a23e120840c6b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e69520f53cea9c6cd6eb662f4cc1acce2cab00f6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142470"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752265"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>通过 SQL 见解监视 SQL 部署（预览版）
 SQL 见解是一个综合性的解决方案，可用于监视 [Azure SQL 系列](../../azure-sql/index.yml)中的任何产品。 SQL 见解使用[动态管理视图](../../azure-sql/database/monitoring-with-dmvs.md)来公开你监视运行状况、诊断问题和优化性能时所需的数据。  
@@ -22,7 +22,7 @@ SQL 见解不直接产生成本。 所有成本是收集数据的虚拟机、存
 
 **虚拟机**
 
-对于虚拟机，你将按照[虚拟机定价页](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/)上发布的定价付费。 所需的虚拟机数因你要监视的连接字符串数而异。 建议为每 100 个连接字符串分配 1 个 Standard_B2s 大小的虚拟机。 有关更多详细信息，请参阅 [Azure 虚拟机要求](sql-insights-enable.md#azure-virtual-machine-requirements)。
+对于虚拟机，你将按照[虚拟机定价页](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)上发布的定价付费。 所需的虚拟机数因你要监视的连接字符串数而异。 建议为每 100 个连接字符串分配 1 个 Standard_B2s 大小的虚拟机。 有关更多详细信息，请参阅 [Azure 虚拟机要求](sql-insights-enable.md#azure-virtual-machine-requirements)。
 
 **Log Analytics 工作区**
 
@@ -123,4 +123,4 @@ SQL 见解使用专用监视虚拟机从 SQL 资源远程收集数据。 将在�
 ## <a name="next-steps"></a>后续步骤
 
 - 有关启用 SQL 见解的说明，请参阅[启用 SQL 见解](sql-insights-enable.md)
-- 有关 SQL 见解的常见问题解答，请参阅[常见问题解答](../faq.md#sql-insights-preview)
+- 有关 SQL 见解的常见问题解答，请参阅[常见问题解答](/azure/azure-monitor/faq#sql-insights-preview)

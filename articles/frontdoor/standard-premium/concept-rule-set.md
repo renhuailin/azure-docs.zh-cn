@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 03/31/2021
 ms.author: yuajia
-ms.openlocfilehash: e3e5333b339101676582cec03dbb960148d59b56
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 47f69c72fdd7b3890d22d56de3a530135cf6fcc3
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067548"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437623"
 ---
 # <a name="what-is-a-rule-set-for-azure-front-door-standardpremium-preview"></a>什么是 Azure Front Door 标准版/高级版（预览版）的规则集？
 
@@ -70,7 +70,7 @@ ms.locfileid: "106067548"
 
 ## <a name="arm-template-support"></a>ARM 模板支持
 
-规则集可以使用 Azure 资源管理器模板进行配置。 请[参阅示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set)。 你可以通过使用[匹配条件](concept-rule-set-match-conditions.md)和[操作](concept-rule-set-actions.md)文档示例中包含的 JSON 或 Bicep 代码片段来自定义行为。
+规则集可以使用 Azure 资源管理器模板进行配置。 请[参阅示例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/front-door-standard-premium-rule-set)。 你可以通过使用[匹配条件](concept-rule-set-match-conditions.md)和[操作](concept-rule-set-actions.md)文档示例中包含的 JSON 或 Bicep 代码片段来自定义行为。
 
 ## <a name="next-steps"></a>后续步骤
 

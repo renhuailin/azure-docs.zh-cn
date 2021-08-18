@@ -15,17 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2021
 ms.author: yelevin
-ms.openlocfilehash: ea571f9b033ba82709a13c6d32649f3228ee04b1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 254647e6e73683b13bd8c1cbeb7b476066c36a7c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98798378"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467959"
 ---
 # <a name="manage-watchlists-in-azure-sentinel-using-rest-api"></a>使用 REST API 管理 Azure Sentinel 中的播放列表
-
-> [!IMPORTANT]
-> 播放列表功能目前处于“预览版”。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
 
 Azure Sentinel 部分在 Azure Monitor Log Analytics 上构建，支持你使用 Log Analytics 的 REST API 来管理播放列表。 本文档演示如何使用 REST API 创建、修改和删除播放列表及其项。  以这种方式创建的播放列表将显示在 Azure Sentinel UI 中。
 

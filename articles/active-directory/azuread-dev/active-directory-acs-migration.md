@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: d513c19eed36d4a1cc5c620bff9dd2e8deb533e0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 24bdbb37a2ec88d930752f728acecd23eb2896b7
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949542"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113106922"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
 
@@ -131,7 +131,7 @@ https://<mynamespace>.accesscontrol.windows.net
 | ------- | -------- |
 | Azure 服务总线 | [迁移到共享访问签名](../../service-bus-messaging/service-bus-sas.md) |
 | Azure 服务总线中继 | [迁移到共享访问签名](../../azure-relay/relay-migrate-acs-sas.md) |
-| Azure 托管缓存 | [迁移到 Azure Cache for Redis](../../azure-cache-for-redis/cache-faq.md) |
+| Azure 托管缓存 | [迁移到 Azure Cache for Redis](../../azure-cache-for-redis/cache-faq.yml) |
 | Azure DataMarket | [迁移到认知服务 API](https://azure.microsoft.com/services/cognitive-services/) |
 | BizTalk 服务 | [迁移到 Azure 应用服务的逻辑应用功能](https://azure.microsoft.com/services/cognitive-services/) |
 | Azure 媒体服务 | [迁移到 Azure AD 身份验证](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |

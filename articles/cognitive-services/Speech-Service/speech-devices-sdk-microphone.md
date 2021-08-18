@@ -3,19 +3,19 @@ title: 语音设备 SDK 麦克风阵列建议
 titleSuffix: Azure Cognitive Services
 description: 语音设备 SDK 麦克风阵列建议。 建议将这些阵列几何结构用于 Microsoft 音频堆栈。
 services: cognitive-services
-author: erhopf
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
-ms.author: erhopf
-ms.openlocfilehash: 698a1d52af6c2472d6c025851ead1a0b6a6dff82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: lajanuar
+ms.openlocfilehash: 13ee7f12ad6fe170d846128c72a60d20a59e3054
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95015335"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071959"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>语音设备 SDK 麦克风阵列建议
 

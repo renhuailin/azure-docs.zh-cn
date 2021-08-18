@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: b1254e7db0e62d08ea2a3d6d30f2abd379675c55
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 6d0fd642afe9a6bc08ffe5b5fe71374614939877
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078309"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093024"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>将应用服务或 Azure Functions 应用配置为使用 Azure AD 登录
 
@@ -92,7 +92,7 @@ ms.locfileid: "106078309"
     |字段|说明|
     |-|-|
     |应用程序（客户端）ID| 使用应用注册的应用（客户端）ID。 |
-    |客户端密码（可选）| 使用在应用注册中生成的客户端机密。 使用客户端密码，将使用混合流，并且应用服务将返回访问令牌和刷新令牌。 如果未设置客户端密码，则使用隐式流并仅返回 id 令牌。 这些令牌由提供程序发送并存储在 EasyAuth 令牌存储中。|
+    |客户端密码（可选）| 使用在应用注册中生成的客户端机密。 使用客户端密码，将使用混合流，并且应用服务将返回访问令牌和刷新令牌。 如果未设置客户端密码，则使用隐式流并仅返回 ID 令牌。 这些令牌由提供程序发送并存储在 EasyAuth 令牌存储中。|
     |颁发者 URL| 使用 `<authentication-endpoint>/<tenant-id>/v2.0`。请将其中的 *\<authentication-endpoint>* 替换为 [云环境的身份验证终结点](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints)（例如，“https://login.microsoftonline.com”表示全球 Azure），并将 *\<tenant-id>* 替换为在其中创建了应用注册的 **目录（租户）ID**。 例如，此值用于将用户重定向到相应的 Azure AD 租户，以及下载适当的元数据，以便确定相应的令牌签名密钥和令牌颁发者声明值。 对于使用 Azure AD v1 的应用程序以及对于 Azure Functions 应用，请在 URL 中省略 `/v2.0`。|
     |允许的令牌受众| 如果这是云应用或服务器应用，并且你希望允许使用 Web 应用中的身份验证令牌，请在此处添加 Web 应用的应用 ID URI。 系统始终会将配置的“客户端 ID”隐式视为允许的受众。|
 
@@ -116,7 +116,7 @@ ms.locfileid: "106078309"
 
 1. 在 [Azure 门户]中，选择“Active Directory” > “应用注册” > “新建注册”。
 1. 在“注册应用”页上的“名称”中，输入应用注册的名称。
-1. 在“重定向 URI”中选择“公共客户端(移动和桌面)”，然后键入 URL `<app-url>/.auth/login/aad/callback`。  例如，`https://contoso.azurewebsites.net/.auth/login/aad/callback`。
+1. 在“重定向 URI”中选择“公共客户端(移动和桌面)”，然后键入 URL `<app-url>/.auth/login/aad/callback`。  例如，`https://contoso.azurewebsites.net/.auth/login/aad/callback` 。
 
     > [!NOTE]
     > 对于Microsoft Store 应用程序，请改用[包 SID](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library#package-sid) 作为 URI。
@@ -149,7 +149,7 @@ ms.locfileid: "106078309"
 1. 在“应用程序权限”下，选择之前创建的应用角色，然后选择“添加权限”。
 1. 确保单击“授予管理员同意”以授权客户端应用程序请求权限。
 1. 与前面的方案（添加任何角色之前）类似，现在可以为同一目标 `resource` [请求访问令牌](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret)，而访问令牌将包括一个 `roles` 声明，其中包含授权给客户端应用程序的应用角色。
-1. 在目标应用服务或 Functions 应用代码中，现在可以验证令牌中是否存在预期的角色（这不是由应用服务身份验证/授权执行的）。 有关详细信息，请参阅[访问用户声明](app-service-authentication-how-to.md#access-user-claims)。
+1. 在目标应用服务或 Functions 应用代码中，现在可以验证令牌中是否存在预期的角色（这不是由应用服务身份验证/授权执行的）。 有关详细信息，请参阅[访问用户声明](configure-authentication-user-identities.md#access-user-claims-in-app-code)。
 
 现已配置可以使用自己的标识访问应用服务应用的后台程序客户端应用程序。
 

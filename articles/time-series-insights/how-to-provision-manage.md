@@ -1,21 +1,21 @@
 ---
 title: 管理第 2 代环境 - Azure 时序见解 | Microsoft Docs
 description: 了解如何管理 Azure 时序见解第 2 代环境。
-author: shipra1mishra
-ms.author: shmishr
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: cbd28bdf5318bdaf932447f5d1f936d2c614a7f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a77e437438fa514d20edf82eb861926db7f7b04e
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461889"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113135781"
 ---
 # <a name="manage-azure-time-series-insights-gen2"></a>管理 Azure 时序见解第 2 代
 
@@ -23,7 +23,7 @@ ms.locfileid: "103461889"
 
 ## <a name="manage-the-environment"></a>管理环境
 
-可以使用 [Azure 门户](https://portal.azure.com/)管理 Azure 时序见解第 2 代环境。 请注意，通过 Azure 门户管理环境时，第 2 代环境与第1 代 S1 或 S2 环境之间有几个关键差异：
+可以使用 [Azure 门户](https://portal.azure.com/)管理 Azure 时序见解第 2 代环境。 请注意，通过 Azure 门户管理环境时，第 2 代环境与第 1 代 S1 或 S2 环境之间有几个关键差异：
 
 * Azure 门户第 2 代的“概述”窗格进行了以下更改：
 
@@ -33,7 +33,7 @@ ms.locfileid: "103461889"
   * 显示的 URL 会将你定向到 [Azure 时序见解资源管理器](./concepts-ux-panels.md)。
   * 列出了 Azure 存储帐户名称。
 
-* 删除了Azure 门户的“配置”窗格，因为缩放单元不适用于 Azure 时序见解第 2 代环境。 但是，可以使用“存储配置”来配置新引入的暖存储。
+* 删除了 Azure 门户的“配置”窗格，因为缩放单元不适用于 Azure 时序见解第 2 代环境。 但是，可以使用“存储配置”来配置新引入的暖存储。
 
 * Azure 时序见解第 2 代中删除了 Azure 门户的“参考数据”窗格，因为参考数据概念已被[时序模型 (TSM)](./concepts-model-overview.md) 替代。
 

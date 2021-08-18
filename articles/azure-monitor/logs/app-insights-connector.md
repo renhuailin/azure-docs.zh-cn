@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a59d2e1931b07e035d85632cf84803989de14871
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e0f20b558e94010c948201b886fe376050cf3694
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320720"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178460"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights 连接器管理解决方案（已弃用）
 
@@ -45,7 +45,7 @@ ms.locfileid: "108320720"
 | 连接的源 | 支持 | 说明 |
 | --- | --- | --- |
 | [Windows 代理](./../agents/agent-windows.md) | 否 | 解决方案不会从 Windows 代理收集信息。 |
-| [Linux 代理](../vm/quick-collect-linux-computer.md) | 否 | 解决方案不会从 Linux 代理收集信息。 |
+| [Linux 代理](../vm/monitor-virtual-machine.md) | 否 | 解决方案不会从 Linux 代理收集信息。 |
 | [SCOM 管理组](../agents/om-agents.md) | 否 | 解决方案不会从连接的 SCOM 管理组中的代理收集信息。 |
 | [Azure 存储帐户](../essentials/resource-logs.md#send-to-log-analytics-workspace) | 否 | 该解决方案不会从 Azure 存储收集信息。 |
 
@@ -174,7 +174,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="generic-fields"></a>泛型字段
 
-| 属性 | 描述 |
+| 属性 | 说明 |
 | --- | --- |
 | 类型 | ApplicationInsights |
 | ClientIP |   |
@@ -242,7 +242,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="request-specific-fields"></a>请求特定的字段
 
-| 属性 | 描述 |
+| 属性 | 说明 |
 | --- | --- |
 | 类型 | ApplicationInsights |
 | TelemetryType | 请求 |

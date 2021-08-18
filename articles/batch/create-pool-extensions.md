@@ -2,13 +2,13 @@
 title: 对 Batch 池使用扩展
 description: 扩展是一种小型应用程序，用于帮助在 Batch 计算节点上进行预配后配置和设置。
 ms.topic: how-to
-ms.date: 02/10/2021
-ms.openlocfilehash: 406de8ea1c781ac742e7ca3fff8f84f03727a031
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 08/06/2021
+ms.openlocfilehash: b9c34dd5d191253352181158ece29218657f8d75
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110476099"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722637"
 ---
 # <a name="use-extensions-with-batch-pools"></a>对 Batch 池使用扩展
 

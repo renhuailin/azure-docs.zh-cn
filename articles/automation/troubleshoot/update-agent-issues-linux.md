@@ -5,12 +5,12 @@ services: automation
 ms.date: 01/25/2021
 ms.topic: troubleshooting
 ms.subservice: update-management
-ms.openlocfilehash: da7c0ea670b4c4201930ce5d0f01e7bd9d9835e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9fdfa1541e928491aecc039d51338f7ef1f1ef3d
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100581050"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181414"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>排查 Linux 更新代理问题
 
@@ -62,7 +62,7 @@ ms.locfileid: "100581050"
 
 ### <a name="log-analytics-agent"></a>Log Analytics 代理
 
-此检查可确保已安装适用于 Linux 的 Log Analytics 代理。 有关如何安装的说明，请参阅[安装适用于 Linux 的代理](../../azure-monitor/vm/quick-collect-linux-computer.md#install-the-agent-for-linux)。
+此检查可确保已安装适用于 Linux 的 Log Analytics 代理。 有关如何安装的说明，请参阅[安装适用于 Linux 的代理](../../azure-monitor/vm/monitor-virtual-machine.md#agents)。
 
 ### <a name="log-analytics-agent-status"></a>Log Analytics 代理状态
 

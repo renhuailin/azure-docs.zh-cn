@@ -3,14 +3,16 @@ title: Azure HDInsight 发行说明存档
 description: Azure HDInsight 的已存档发行说明。 获取 Hadoop、Spark、R Server、Hive 和更多工具的开发技巧和详细信息。
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 02/08/2021
-ms.openlocfilehash: 5903534bb9e336b2458f3d2e0e8b0bb2dcb84560
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.custom:
+- hdinsightactive
+- references_regions
+ms.date: 07/27/2021
+ms.openlocfilehash: e7e3442f397b4d3cfbb79f2f852269affdf3badc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004972"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746471"
 ---
 # <a name="archived-release-notes"></a>已存档的发行说明
 
@@ -32,6 +34,59 @@ HDInsight 上 Dv2 VM 系列的定价错误已于 2021 年 4 月 25 日更正。 
 从 2021 年 4 月 25 日开始，更正后的 Dv2 VM 收费金额将应用于你的帐户。 客户通知已在更改之前发送给订阅所有者。 你可以使用定价计算器、HDInsight 定价页或 Azure 门户中的 “创建 HDInsight 群集”边栏选项卡，查看你所在区域中 Dv2 VM 更正后的成本。
 
 你无需执行任何其他操作。 价格更正仅适用于指定地区在 2021 年 4 月 25 日或之后的使用情况，而不是此日期之前的任何使用情况。 为确保你拥有最高性能和经济高效的解决方案，我们建议你查看 Dv2 群集的定价、vCPU 和 RAM，并比较 Dv2 与 Ev3 VM 的规格，以了解你的解决方案是否能从使用某一较新的 VM 系列中受益。
+
+## <a name="release-date-06022021"></a>发行日期：06/02/2021
+
+此版本适用于 HDInsight 3.6 和 HDInsight 4.0。 HDInsight 发行版在几天后即会在所有区域中推出。 此处的发行日期是指在第一个区域中的发行日期。 如果看不到以下更改，请耐心等待，几天后发行版会在你所在的区域推出。
+
+此发行版的 OS 版本为：
+- HDInsight 3.6：Ubuntu 16.04.7 LTS
+- HDInsight 4.0：Ubuntu 18.04.5 LTS
+
+### <a name="new-features"></a>新增功能
+#### <a name="os-version-upgrade"></a>OS 版本升级
+像 [Ubuntu 发行周期](https://ubuntu.com/about/release-cycle)中提及的那样，Ubuntu 16.04 内核将在 2021 年 4 月生命周期结束 (EOL)。 我们已开始通过此发行版推出在 Ubuntu 18.04 上运行的新 HDInsight 4.0 群集映像。 新创建的 HDInsight 4.0 群集将在可用时在 Ubuntu 18.04 上运行。 Ubuntu 16.04 上的现有群集将按原样运行，并受到完全支持。
+
+HDInsight 3.6 将继续在 Ubuntu 16.04 上运行。 从 2021 年 7 月 1 日开始，这种支持将从标准支持更改为基本支持。 有关日期和支持选项的详细信息，请参阅 [Azure HDInsight 版本](./hdinsight-component-versioning.md#supported-hdinsight-versions)。 HDInsight 3.6 不支持 Ubuntu 18.04。 若要使用 Ubuntu 18.04，需要将群集迁移到 HDInsight 4.0。 
+
+若要将现有 HDInsight 4.0 群集迁移到 Ubuntu 18.04，需要删除再重新创建群集。 请计划好在 Ubuntu 18.04 支持发布后创建或重新创建群集。
+
+创建新群集后，可以通过 SSH 连接到群集，并运行 `sudo lsb_release -a` 来验证它是否在 Ubuntu 18.04 上运行。 建议先在测试订阅中测试你的应用程序，然后再将其转移到生产环境。 [详细了解 HDInsight Ubuntu 18.04 更新](./hdinsight-ubuntu-1804-qa.md)。
+
+#### <a name="scaling-optimizations-on-hbase-accelerated-writes-clusters"></a>HBase 加速写入群集上的缩放优化
+HDInsight 对已启用 HBase 加速写入的群集的缩放做出了一些改进和优化。 [详细了解 HBase 加速写入](./hbase/apache-hbase-accelerated-writes.md)。
+
+### <a name="deprecation"></a>弃用
+此版本没有任何弃用功能。
+
+### <a name="behavior-changes"></a>行为更改
+#### <a name="disable-stardard_a5-vm-size-as-head-node-for-hdinsight-40"></a>对于 HDInsight 4.0，将禁用 Stardard_A5 VM 大小作为头节点
+HDInsight 群集头节点负责初始化和管理群集。 对于 HDInsight 4.0，Standard_A5 VM 大小作为头节点存在可靠性问题。 从此发行版开始，客户将无法创建使用 Standard_A5 VM 大小作为头节点的新群集。 可以使用其他双核 VM，例如 E2_v3 或 E2s_v3。 现有群集将照常运行。 强烈建议使用四核 VM 作为头节点，以确保生产 HDInsight 群集的高可用性和可靠性。
+
+#### <a name="network-interface-resource-not-visible-for-clusters-running-on-azure-virtual-machine-scale-sets"></a>对于在 Azure 虚拟机规模集上运行的群集，网络接口资源不可见
+HDInsight 正在逐步迁移到 Azure 虚拟机规模集。 对于使用 Azure 虚拟机规模集的群集的客户，虚拟机的网络接口不再可见。
+
+### <a name="upcoming-changes"></a>即将推出的更改
+即将发布的版本中将推出以下变更。
+
+#### <a name="hdinsight-interactive-query-only-supports-schedule-based-autoscale"></a>HDInsight Interactive Query 仅支持基于计划的自动缩放
+
+随着客户方案越来越成熟和多样化，我们发现，使用基于负载的自动缩放 Interactive Query (LLAP) 存在一些限制。 存在这些限制的原因可能是 LLAP 查询动态的性质、未来的负载预测准确性问题以及 LLAP 计划程序任务重新分发中的问题。 由于这些限制，启用自动缩放后，用户可能会看到其查询在 LLAP 群集上的运行速度变慢。 自动缩放对性能的影响超出了其成本优势。
+
+从 2021 年 7 月开始，HDInsight 中的 Interactive Query 工作负载仅支持基于计划的自动缩放。 你无法再对新 Interactive Query 群集启用自动缩放。 现有正在运行的群集可以继续运行，但存在上述已知限制。 
+
+Microsoft 建议你改用基于计划的自动缩放以使用 LLAP。  可以通过 Grafana Hive 仪表板分析群集的当前使用模式。 有关详细信息，请参阅[自动缩放 Azure HDInsight 群集](hdinsight-autoscale-clusters.md)。 
+
+#### <a name="basic-support-for-hdinsight-36-starting-july-1-2021"></a>从 2021 年 7 月 1 日开始为 HDInsight 3.6 提供基本支持
+从 2021 年 7 月 1 日开始，Microsoft 将为某些 HDInsight 3.6 群集类型提供[基本支持](hdinsight-component-versioning.md#support-options-for-hdinsight-versions)。 基本支持计划的可用日期截至 2022 年 4 月 3 日。 从 2021 年 7 月 1 日开始，你将被自动加人基本支持。 无需执行任何操作即可选择加入。 请参阅[文档](hdinsight-36-component-versioning.md)了解基本支持中包含哪些群集类型。 
+
+不建议在 HDInsight 3.6 上构建任何新的解决方案，因为将在现有的 3.6 环境上冻结更改。 建议[将群集迁移到 HDInsight 4.0](hdinsight-version-release.md#how-to-upgrade-to-hdinsight-40)。 详细了解 [HDInsight 4.0 中的新增功能](hdinsight-version-release.md#whats-new-in-hdinsight-40)。
+
+#### <a name="vm-host-naming-will-be-changed-on-july-1-2021"></a>VM 主机命名将在 2021 年 7 月 1 日更改
+HDInsight 目前使用 Azure 虚拟机来预配群集。 此服务正在逐步迁移到 [Azure 虚拟机规模集](../virtual-machine-scale-sets/overview.md)。 此迁移将更改群集主机名称 FQDN 名称格式，主机名中的数字不保证按顺序显示。 若要获取每个节点的 FQDN 名称，请参阅[查找群集节点的主机名](./find-host-name.md)。
+
+#### <a name="move-to-azure-virtual-machine-scale-sets"></a>迁移到 Azure 虚拟机规模集
+HDInsight 目前使用 Azure 虚拟机来预配群集。 该服务将逐步迁移到 [Azure 虚拟机规模集](../virtual-machine-scale-sets/overview.md)。 整个过程可能需要几个月。 迁移区域和订阅后，新创建的 HDInsight 群集将在虚拟机规模集上运行，而无需客户执行任何操作。 预计不会有中断性变更。
 
 ## <a name="release-date-03242021"></a>发布日期：2021/03/24
 
@@ -66,23 +121,23 @@ HDInsight 正在逐步迁移到 Azure 虚拟机规模集。 对于使用 Azure �
 
 #### <a name="hdinsight-interactive-query-only-supports-schedule-based-autoscale"></a>HDInsight Interactive Query 仅支持基于计划的自动缩放
 
-随着客户方案日益成熟和多样化，我们发现 Interactive Query (LLAP) 基于负载的自动缩放存在一些限制。 这些限制是由 LLAP query dynamics、未来负载预测准确度问题以及 LLAP 计划程序的任务再分发问题引起的。 由于这些限制，当启用自动缩放时，用户可能会发现查询在 LLAP 群集上运行较慢。 对性能的影响可能会超过自动缩放的成本优势。
+随着客户方案越来越成熟和多样化，我们发现，使用基于负载的自动缩放 Interactive Query (LLAP) 存在一些限制。 存在这些限制的原因可能是 LLAP 查询动态的性质、未来的负载预测准确性问题以及 LLAP 计划程序任务重新分发中的问题。 由于这些限制，启用自动缩放后，用户可能会看到其查询在 LLAP 群集上的运行速度变慢。 对性能的影响可能会超过自动缩放的成本优势。
 
-从 2021 年 7 月开始，HDInsight 中的 Interactive Query 工作负载仅支持基于计划的自动缩放。 你无法再对新的 Interactive Query 群集启用自动缩放。 现有正在运行的群集可在存在上述已知限制的情况下继续运行。 
+从 2021 年 7 月开始，HDInsight 中的 Interactive Query 工作负载仅支持基于计划的自动缩放。 无法再在新的 Interactive Query 群集上启用自动缩放。 现有正在运行的群集可以继续运行，但存在上述已知限制。 
 
-Microsoft 建议将 LLAP 更改为基于计划的自动缩放。  你可以通过 Grafana Hive 仪表板分析群集的当前使用模式。 有关详细信息，请参阅[自动缩放 Azure HDInsight 群集](hdinsight-autoscale-clusters.md)。 
+Microsoft 建议你改用基于计划的自动缩放以使用 LLAP。  可以通过 Grafana Hive 仪表板分析群集的当前使用模式。 有关详细信息，请参阅[自动缩放 Azure HDInsight 群集](hdinsight-autoscale-clusters.md)。 
 
 #### <a name="os-version-upgrade"></a>OS 版本升级
-HDInsight 群集当前正在 Ubuntu 16.04 LTS 上运行。 如 [Ubuntu 发布周期](https://ubuntu.com/about/release-cycle)中所述，Ubuntu 16.04 内核将于 2021 年 4 月终止生命周期 (EOL)。 我们将于 2021 年 5 月开始推出在 Ubuntu 18.04 上运行的新的 HDInsight 4.0 群集映像。 新版本可用后，默认情况下，新创建的 HDInsight 4.0 群集将在 Ubuntu 18.04 上运行。 Ubuntu 16.04 上的现有群集将照常运行，并获得完全支持。
+HDInsight 群集当前正在 Ubuntu 16.04 LTS 上运行。 如 [Ubuntu 发布周期](https://ubuntu.com/about/release-cycle)中所述，Ubuntu 16.04 内核将于 2021 年 4 月终止生命周期 (EOL)。 我们将于 2021 年 5 月开始推出在 Ubuntu 18.04 上运行的新的 HDInsight 4.0 群集映像。 新创建的 HDInsight 4.0 群集将在可用时在 Ubuntu 18.04 上运行。 Ubuntu 16.04 上的现有群集将按原样运行，并受到完全支持。
 
-HDInsight 3.6 将继续在 Ubuntu 16.04 上运行。 该版本将于 2021 年 6 月 30 日结束标准支持，并从 2021 年 7 月 1 日开始更改为基本支持。 有关日期和支持选项的详细信息，请参阅 [Azure HDInsight 版本](./hdinsight-component-versioning.md#supported-hdinsight-versions)。 Ubuntu 18.04 不支持 HDInsight 3.6。 若要使用 Ubuntu 18.04，需要将群集迁移到 HDInsight 4.0。 
+HDInsight 3.6 将继续在 Ubuntu 16.04 上运行。 它将在 2021 年 6 月 30 日结束标准支持，并从 2021 年 7 月 1 日起改为标准支持。 有关日期和支持选项的详细信息，请参阅 [Azure HDInsight 版本](./hdinsight-component-versioning.md#supported-hdinsight-versions)。 HDInsight 3.6 不支持 Ubuntu 18.04。 若要使用 Ubuntu 18.04，需要将群集迁移到 HDInsight 4.0。 
 
 若要将现有群集迁移到 Ubuntu 18.04，则需要删除并重新创建群集。 Ubuntu 18.04 支持推出后，请计划创建或重新创建群集。 新映像在所有区域中可用后，我们将再发送一个通知。
 
 我们强烈建议对在 Ubuntu 18.04 虚拟机 (VM) 上的边缘节点上部署的脚本操作和自定义应用程序进行提前测试。 你可以[在 18.04-LTS 上创建一个简单的 Ubuntu Linux VM](https://azure.microsoft.com/resources/templates/vm-simple-linux/)，然后在 VM 上创建并使用[安全外壳 (SSH) 密钥对](../virtual-machines/linux/mac-create-ssh-keys.md#ssh-into-your-vm)，以运行和测试在边缘节点上部署的脚本操作和自定义应用程序。
 
-#### <a name="disable-stardard_a5-vm-size-as-head-node-for-hdinsgiht-40"></a>禁用将 Stardard_A5 VM 大小作为 HDInsgiht 4.0 的头节点
-HDInsight 群集头节点负责初始化和管理群集。 Standard_A5 VM 大小在作为 HDInsight 4.0 的头节点时存在可靠性问题。 从 2021 年 5 月的下一版本开始，客户将无法创建以 Standard_A5 VM 大小作为头节点的新群集。 你可以使用其他 2 核 VM，例如 E2_v3 或 E2s_v3。 现有群集将照常运行。 我们强烈推荐使用 4 核 VM 作为头节点，以确保生产 HDInsight 群集的高可用性和高可靠性。
+#### <a name="disable-stardard_a5-vm-size-as-head-node-for-hdinsight-40"></a>对于 HDInsight 4.0，将禁用 Stardard_A5 VM 大小作为头节点
+HDInsight 群集头节点负责初始化和管理群集。 对于 HDInsight 4.0，Standard_A5 VM 大小作为头节点存在可靠性问题。 从 2021 年 5 月的下一版本开始，客户将无法创建以 Standard_A5 VM 大小作为头节点的新群集。 你可以使用其他 2 核 VM，例如 E2_v3 或 E2s_v3。 现有群集将照常运行。 我们强烈推荐使用 4 核 VM 作为头节点，以确保生产 HDInsight 群集的高可用性和高可靠性。
 
 #### <a name="basic-support-for-hdinsight-36-starting-july-1-2021"></a>从 2021 年 7 月 1 日开始为 HDInsight 3.6 提供基本支持
 从 2021 年 7 月 1 日开始，Microsoft 将为某些 HDInsight 3.6 群集类型提供[基本支持](hdinsight-component-versioning.md#support-options-for-hdinsight-versions)。 基本支持计划的可用日期截至 2022 年 4 月 3 日。 从 2021 年 7 月 1 日开始，你将被自动加人基本支持。 无需执行任何操作即可选择加入。 请参阅[文档](hdinsight-36-component-versioning.md)了解基本支持中包含哪些群集类型。 

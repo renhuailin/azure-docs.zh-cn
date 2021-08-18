@@ -1,15 +1,15 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/04/2021
-ms.author: trbye
-ms.openlocfilehash: 407906727332f3db8d3d0a6840d0c865c6b33ff7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: lajanuar
+ms.openlocfilehash: dbbc946b775538b9a39a80d31edbe49ceee7f5e1
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609436"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122066656"
 ---
 首先，使用 `FromFile()` 静态函数加载关键字模型文件，该函数将返回一个 `KeywordRecognitionModel`。 使用从 Speech Studio 下载的 `.table` 文件的路径。 此外，使用默认麦克风创建一个 `AudioConfig`，然后使用音频配置实例化一个新的 `KeywordRecognizer`。
 

@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 GitHub AE 配置自动用户�
 description: 了解如何将用户帐户从 Azure AD 自动预配到 GitHub AE 及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: d9818c05-e279-45b4-8aad-0fa156abd74e
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2020
-ms.author: Zhchia
-ms.openlocfilehash: 6971b2e04455a6424d70db2512363911f7cd7d86
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.author: thwimmer
+ms.openlocfilehash: 0ed88aad79029d67e259bff12d4ec2fd68905d72
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110473933"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767866"
 ---
 # <a name="tutorial-configure-github-ae-for-automatic-user-provisioning"></a>教程：为 GitHub AE 配置自动用户预配
 

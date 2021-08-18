@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: d3a4a8bb54c5bafa9eb50ed4441cd6eebe2acc6c
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: d7d33fe4bc94de3d1fdca3d2b2e99d0663e39c97
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079906"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112289848"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>存储：Azure VM 上的 SQL Server 的性能最佳做法
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -87,7 +87,7 @@ ms.locfileid: "112079906"
 
 临时存储驱动器不会持久保存到远程存储，因此不应存储用户数据库文件、事务日志文件或任何必须保留的内容。 
 
-将 tempdb 放置在 SQL Server 工作负载的本地临时 SSD `D:\` 驱动器上，除非需要考虑本地缓存。 如果使用的是[没有临时磁盘](../../../virtual-machines/azure-vms-no-temp-disk.md)的虚拟机，则建议将 tempdb 放置在自己的独立磁盘或存储池上，并将缓存设置为只读。 若要了解详细信息，请参阅 [tempdb 数据缓存策略](performance-guidelines-best-practices-storage.md#data-file-caching-policies)。
+将 tempdb 放置在 SQL Server 工作负载的本地临时 SSD `D:\` 驱动器上，除非需要考虑本地缓存。 如果使用的是[没有临时磁盘](../../../virtual-machines/azure-vms-no-temp-disk.yml)的虚拟机，则建议将 tempdb 放置在自己的独立磁盘或存储池上，并将缓存设置为只读。 若要了解详细信息，请参阅 [tempdb 数据缓存策略](performance-guidelines-best-practices-storage.md#data-file-caching-policies)。
 
 ### <a name="data-disks"></a>数据磁盘数
 

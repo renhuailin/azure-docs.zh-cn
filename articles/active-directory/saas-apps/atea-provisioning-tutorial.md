@@ -2,25 +2,22 @@
 title: 教程：使用 Azure Active Directory 为 Atea 配置自动用户预配 | Microsoft Docs
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Atea 以及如何取消预配。
 services: active-directory
-documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: b788328b-10fd-4eaa-a4bc-909d738d8b8b
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/25/2021
-ms.author: Zhchia
-ms.openlocfilehash: 1991c27ee992a08c3f31cd90df016bf19405f56a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 6c97d363899373e1fc41d7629c2b53fb705cf03c
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653178"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195133"
 ---
 # <a name="tutorial-configure-atea-for-automatic-user-provisioning"></a>教程：为 Atea 配置自动用户预配
 
@@ -46,7 +43,7 @@ ms.locfileid: "101653178"
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 3. 确定[在 Azure AD 与 Atea 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
 
-## <a name="step-2-configure-atea-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Atea 以支持通过 Azure AD 进行预配
+## <a name="step-2-configure-atea-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Atea 以支持通过 Azure AD 进行预配
 
 若要配置 Atea 以支持 Azure AD 的预配，请向 Atea 支持团队 <SSO.Support@atea.com> 发送电子邮件
 
@@ -58,7 +55,7 @@ ms.locfileid: "101653178"
 
 使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户和组的属性来限定谁在预配范围内。 如果选择根据分配来限定要将谁预配到应用，可以按照下面的[步骤](../manage-apps/assign-user-or-group-access-portal.md)操作，将用户和组分配到应用。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
 
-* 将用户和组分配到 Atea 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
+* 将用户和组分配到 Atea 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果“默认访问”角色是应用程序上唯一可用的角色，则可以通过[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)来添加其他角色。 
 
 * 先小部分测试。 在向所有用户推出之前，先对一小部分用户和组进行测试。 如果预配范围设置为分配的用户和组，可以通过将一两个用户或组分配到应用来控制它。 如果预配范围设置为所有用户和组，可以指定[基于特性的范围筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 

@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: ac4e8d93e2e729db387b0f9cf81017b6c58b6750
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10fe758bf11f0452ef07d30329d7d48914fbb4bf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104951328"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737220"
 ---
 # <a name="deployment-best-practices"></a>部署最佳做法
 
@@ -157,3 +157,7 @@ Azure 应用服务内容存储在 Azure 存储中，作为内容共享持续提�
 - 单击“针对可用性和性能的最佳做法”或“针对理想配置的最佳做法”，基于这些最佳做法查看应用当前的状态 。
 
 还可以单击此链接，直接打开资源对应的“应用服务诊断”：`https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`。
+
+## <a name="more-resources"></a>更多资源
+
+[环境变量和应用设置参考](reference-app-settings.md)

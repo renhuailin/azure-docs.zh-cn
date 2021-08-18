@@ -2,7 +2,6 @@
 title: 了解 Azure IoT 中心文件上传 | Microsoft Docs
 description: 开发人员指南 - 使用 IoT 中心的文件上传功能，可将文件从设备上传到 Azure 存储 blob 容器。
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -12,12 +11,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: bb0d39ea9e37f87a465ea5803e004a142c3a3fc6
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: dd7adc3a1fdb45255bd13ee279d66e64bdf4c1d1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109715153"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728779"
 ---
 # <a name="upload-files-with-iot-hub"></a>使用 IoT 中心上传文件
 
@@ -50,7 +49,7 @@ ms.locfileid: "109715153"
  通过门户创建 Blob 容器的步骤：
 
 1. 在存储帐户左侧窗格中的“数据存储”下，选择“容器”。
-1. 在“容器”边栏选项卡中，选择“+容器”。
+1. 在“容器”边栏选项卡中，选择“+ 容器”。
 1. 在随即打开的“新建容器”窗格中，为容器提供一个名称，然后选择“创建”。
 
 创建容器后，按照[使用 Azure 门户配置文件上传](iot-hub-configure-file-upload.md)中的说明操作。 确保有一个 Blob 容器与你的 IoT 中心关联并且文件通知已启用。
@@ -133,7 +132,7 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 
 如 [终结点](iot-hub-devguide-endpoints.md)中所述，IoT 中心通过面向服务的终结点 (**/messages/servicebound/fileuploadnotifications**) 以消息的形式传递文件上传通知。 文件上传通知的接收语义与云到设备消息的接收语义相同，并且具有相同的[消息生命周期](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle)。 从文件上传通知终结点检索到的每条消息都是具有以下属性的 JSON 记录：
 
-| 属性 | 描述 |
+| 属性 | 说明 |
 | --- | --- |
 | EnqueuedTimeUtc |指示通知创建时间的时间戳。 |
 | DeviceId |上传文件的设备的 **DeviceId**。 |
@@ -159,7 +158,7 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 
 每个 IoT 中心都具有针对文件上传通知的以下配置选项：
 
-| 属性 | 描述 | 范围和默认值 |
+| 属性 | 说明 | 范围和默认值 |
 | --- | --- | --- |
 | **enableFileUploadNotifications** |控制是否将文件上传通知写入文件通知终结点。 |布尔型。 默认值：True。 |
 | **fileNotifications.ttlAsIso8601** |文件上传通知的默认 TTL。 |ISO_8601 间隔上限为 48 小时（下限为 1 分钟）。 默认值：1 小时。 |

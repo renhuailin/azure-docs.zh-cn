@@ -7,12 +7,12 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 0d78cc9d99bd7ace2d214c2a2a1d7f75a74df098
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3c163f34ecec0eae1467b375928eab95ce70d374
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785047"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112292836"
 ---
 # <a name="azure-data-factory---samples"></a>Azure 数据工厂 - 示例
 > [!NOTE]
@@ -44,9 +44,9 @@ ms.locfileid: "104785047"
 
 | 模板 | 说明 |
 | --- | --- |
-| [从 Azure Blob 存储复制到 Azure SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |部署此模板将创建 Azure 数据工厂，其中包含可将数据从指定的 Azure Blob 存储复制到 Azure SQL 数据库的管道 |
-| [从 Salesforce 复制到 Azure Blob 存储](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |部署此模板将创建 Azure 数据工厂，其中包含可将数据从指定的 Salesforce 帐户复制到 Azure Blob 存储的管道。 |
-| [在 Azure HDInsight 群集上通过运行 Hive 脚本来转换数据](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation) |部署此模板将创建包含管道的 Azure 数据工厂，该管道可以通过在 Azure HDInsight Hadoop 群集上运行示例 Hive 脚本来转换数据。 |
+| [从 Azure Blob 存储复制到 Azure SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-blob-to-sql-copy) |部署此模板将创建 Azure 数据工厂，其中包含可将数据从指定的 Azure Blob 存储复制到 Azure SQL 数据库的管道 |
+| [从 Salesforce 复制到 Azure Blob 存储](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-salesforce-to-blob-copy) |部署此模板将创建 Azure 数据工厂，其中包含可将数据从指定的 Salesforce 帐户复制到 Azure Blob 存储的管道。 |
+| [在 Azure HDInsight 群集上通过运行 Hive 脚本来转换数据](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/data-factory-hive-transformation) |部署此模板将创建包含管道的 Azure 数据工厂，该管道可以通过在 Azure HDInsight Hadoop 群集上运行示例 Hive 脚本来转换数据。 |
 
 ## <a name="samples-in-azure-portal"></a>Azure 门户中的示例
 可以使用数据工厂主页上的“示例管道”磁贴来将示例管道和与其相关联的实体（数据集和链接服务）部署到数据工厂。

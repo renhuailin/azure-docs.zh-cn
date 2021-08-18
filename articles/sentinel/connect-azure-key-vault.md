@@ -8,12 +8,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 04/22/2021
 ms.author: yelevin
-ms.openlocfilehash: fe86c963ab0ec009b527d2d6138a8af2af9ba68a
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: ba268f75b770dfd3d19e7bc4750f2c466245279d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890827"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121777996"
 ---
 # <a name="connect-azure-key-vault-diagnostics-logs"></a>连接 Azure 密钥保管库诊断日志
 
@@ -22,6 +22,8 @@ Azure Key Vault 是一个用于安全地存储和访问机密的云服务。 机
 使用此连接器可将 Azure 密钥保管库诊断日志流式传输到 Azure Sentinel 中，以便持续监视所有实例中的活动。
 
 了解有关[监视 Azure 密钥保管库](../azure-monitor/insights/key-vault-insights-overview.md)以及 [Azure 密钥保管库诊断遥测](../key-vault/general/logging.md)的详细信息。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -61,5 +63,5 @@ Azure Key Vault 是一个用于安全地存储和访问机密的云服务。 机
 
 在本文档中，你已了解如何使用 Azure Policy 将 Azure 密钥保管库连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。

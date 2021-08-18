@@ -8,12 +8,12 @@ ms.date: 4/8/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 8b8205681da7ea24fdafcef337ad903fff06c589
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e403ed4778e87e42ad4abb2e6d45923e420ca0c4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474622"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438626"
 ---
 # <a name="event-notifications"></a>事件通知
 
@@ -157,7 +157,7 @@ Azure 数字孪生向事件网格发出的通知将按照 CloudEvents 架构或 
 
 对于创建事件，`data` 有效负载将反映创建资源后的孪生状态，因此，它应包含系统生成的所有元素，就如同一个 `GET` 调用一样。
 
-下面是包含组件但不包含顶级属性的某个 [IoT 即插即用 (PnP)](../iot-pnp/overview-iot-plug-and-play.md) 设备的数据示例。 应该省略对设备没有意义的属性（例如报告的属性）。 此信息将出现在生命周期通知消息的 `data` 字段中。
+下面是包含组件但不包含顶级属性的某个 [IoT 即插即用 (PnP)](../iot-develop/overview-iot-plug-and-play.md) 设备的数据示例。 应该省略对设备没有意义的属性（例如报告的属性）。 此信息将出现在生命周期通知消息的 `data` 字段中。
 
 ```json
 {
@@ -312,4 +312,4 @@ Azure 数字孪生向事件网格发出的通知将按照 CloudEvents 架构或 
 ## <a name="next-steps"></a>后续步骤
 
 了解如何使用终结点和路由将事件传递给不同的目标：
-* [概念：事件路由](concepts-route-events.md)
+* [事件路由](concepts-route-events.md)

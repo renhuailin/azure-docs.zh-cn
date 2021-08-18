@@ -2,13 +2,13 @@
 title: 体系结构概述
 description: 概述 Azure 备份服务使用的体系结构、组件和流程。
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.openlocfilehash: 8fca05f8718fc5e44da33b19447895f5daafc905
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.date: 06/23/2021
+ms.openlocfilehash: 532ca138a9f003f38dac9245f4478b81e2d827f7
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107716734"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112541655"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
 
@@ -91,6 +91,17 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 - 对于增量备份，在第二个月，块 A2、A3、A4 和 A9 将标记为已更改和已传输。 在第三个月，仅标记已更改的存储块 A5，并进行传输。
 
 ![备份方法比较图](./media/backup-architecture/backup-method-comparison.png)
+
+## <a name="sap-hana-backup-types"></a>SAP HANA 备份类型
+
+下表说明了用于 SAP HANA 数据库的不同类型的备份以及它们的使用频率：
+
+| 备份类型 | 详细信息 | 使用情况 |
+| --- | --- | --- |
+| **完整备份** | 完整数据库备份将备份整个数据库。 这种类型的备份可以独立用于还原到特定点。 | 每天最多可以安排一次完整备份。 <br><br> 可以选择以每天或每周间隔安排一次完整备份。 |
+| **差异备份** | 差异备份基于最新的、以前的完整数据备份。 <br><br> 它只捕获自上次完整备份以来更改的数据。 | 每天最多可以安排一次差异备份。  <br><br> 不能在同一天配置完整备份和差异备份。 |
+| **增量备份** | 增量备份基于最近的一次完整/差异/增量数据备份。 <br><br> 它只捕获自上次数据备份以来更改的数据。 | 每天最多可以安排一次增量备份。 <br><br> 不能在一个数据库上同时安排差异备份和增量备份，只能安排一种增量备份类型。 <br><br> 不能在同一天配置完整备份和差异备份。 |k
+| **事务日志备份** | 日志备份可以实现时间点还原，精度可达到特定的秒。 | 最多可以配置为每隔 15 分钟创建事务日志备份。 |
 
 ## <a name="backup-features"></a>备份功能
 

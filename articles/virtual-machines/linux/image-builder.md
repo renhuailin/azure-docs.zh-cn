@@ -1,20 +1,19 @@
 ---
 title: 将 Azure 映像生成器用于 Linux VM 的映像库
 description: 使用 Azure 映像生成器和共享映像库创建 Linux 虚拟机映像。
-author: cynthn
-ms.author: cynthn
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 03/02/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
-ms.reviewer: danis
-ms.openlocfilehash: 7fbee42440b9f0ad7663850cd72a46c238a8d2e1
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 87f77b72104caf74007d63477f6f845c7ae8ad96
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027238"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113593681"
 ---
 # <a name="create-a-linux-image-and-distribute-it-to-a-shared-image-gallery-by-using-azure-cli"></a>使用 Azure CLI 创建 Linux 映像并将其分发到共享映像库
 

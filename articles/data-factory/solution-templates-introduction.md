@@ -2,17 +2,18 @@
 title: 模板概述
 description: 了解如何使用预定义的模板来快速开始使用 Azure 数据工厂。
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.author: susabat
 author: ssabat
 ms.custom: seo-lt-2019
-ms.date: 01/04/2019
-ms.openlocfilehash: a95ef6e04f7a49f33f2bb0551110d7aa0f9bd581
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 06/04/2021
+ms.openlocfilehash: bfd63e048d2783d84dbc37710851492134b6d0e1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905605"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736986"
 ---
 # <a name="templates"></a>模板
 
@@ -24,9 +25,9 @@ ms.locfileid: "107905605"
 
 可通过以下两种方式，开始从模板创建数据工厂管道：
 
-1.  在“概述”页上选择“从模板创建管道”打开模板库。
+1.  在数据工厂主页的“发现更多”部分选择“管道模板”，以打开模板库。 
 
-    ![从“概述”页打开模板库](media/solution-templates-introduction/templates-intro-image1.png)
+    ![从“概述”页打开模板库](media/doc-common-process/home-page-pipeline-templates-tile.png)
 
 1.  在资源浏览器中的“创作”选项卡上选择 **+** ，然后选择“模板中的管道”打开模板库。
 

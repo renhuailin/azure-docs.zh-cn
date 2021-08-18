@@ -2,17 +2,19 @@
 title: 操作 HDInsight 上的 ML Services - Azure
 description: 了解如何操作数据模型，以使用 Azure HDInsight 中的 ML 服务进行预测。
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: 7d597c4dbb81562050e9523c61d47d0020fc9059
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ROBOTS: NOINDEX
+ms.openlocfilehash: eb8114da913347309e6e8ad263c0bb7fcf56790f
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869457"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299278"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>操作 Azure HDInsight 上的 ML Services 群集
+
+[!INCLUDE [retirement banner](../includes/ml-services-retirement.md)]
 
 使用 HDInsight 中的 ML Services 群集完成数据建模后，可操作该模型进行预测。 本文提供如何执行此任务的说明。
 
@@ -164,7 +166,7 @@ ML Services 群集未通过 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
 * 取消选择辅助角色节点并选择头节点。
 * 选择“操作” > “所选主机”>“主机” > “重启所有组件”。
 
-### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>步骤 2：在每个已解除授权的工作节点上配置计算节点
+###    <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>步骤 2：在每个已解除授权的工作节点上配置计算节点
 
 1. 通过 SSH 登录到每个已解除授权的辅助角色节点。
 

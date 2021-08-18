@@ -10,12 +10,12 @@ author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: 489ba57063244d399c9dd0255641568f2db5c6de
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: abe88555bc7d545e62faa4c22a5e3f02e5eef630
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112034556"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743654"
 ---
 # <a name="assessment-rules-for-sql-server-to--azure-sql-managed-instance-migration"></a>SQL Server 到 Azure SQL 托管实例迁移的评估规则
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -84,7 +84,7 @@ Azure SQL 托管实例无法访问文件共享或 Windows 文件夹。 请查看
 ## <a name="clr-security"></a>CLR 安全性<a id="ClrStrictSecurity"></a>
 
 标题：标记为 SAFE 或 EXTERNAL_ACCESS 的 CLR 程序集被认为 UNSAFE   
-类别：问题   
+**类别**：警告   
 
 **描述**   
 Azure SQL 托管实例中强制实施 CLR 严格安全性模式。 此模式默认启用，并为包含用户定义的标记为 SAFE 或 EXTERNAL_ACCESS 的 CLR 程序集的数据库引入了中断性变更。
@@ -202,7 +202,7 @@ FASTFIRSTROW 查询提示改用 OPTION (FAST n)。
 建议   
 将非结构化文件上传到 Azure Blob 存储，并在 Azure SQL 托管实例中存储与这些文件相关的元数据（名称、类型、URL 位置、存储密钥等）。 可能需要对应用程序进行重新设计，以启用与 Azure SQL 托管实例的 Blob 流式传输。 或者，迁移到 Azure 虚拟机上的 SQL Server。
 
-详细信息：[与 SQL Azure 的 Blob 流式传输](https://azure.microsoft.com/en-in/blog/streaming-blobs-to-and-from-sql-azure/)博客
+详细信息：[与 SQL Azure 的 Blob 流式传输](https://azure.microsoft.com/blog/streaming-blobs-to-and-from-sql-azure/)博客
 
 ## <a name="heterogeneous-ms-dtc"></a>异类 MS DTC<a id="MIHeterogeneousMSDTCTransactSQL"></a>
 
@@ -451,19 +451,6 @@ OPENROWSET 函数只能用于对 SQL Server 实例（托管实例、本地实例
 
 详细信息：[SQL Server 中弃用的数据库引擎功能](/previous-versions/sql/2014/database-engine/discontinued-database-engine-functionality-in-sql-server-2016#Denali)
 
-## <a name="service-broker"></a>服务代理<a id="ServiceBrokerWithNonLocalAddress"></a>
-
-标题：Azure SQL 托管实例仅部分支持 Service Broker 功能。   
-类别：问题   
-
-**描述**   
-SQL Server Service Broker 在 SQL Server 数据库引擎中为消息传递和队列应用程序提供本机支持。 此数据库已启用跨实例 Service Broker，这在 Azure SQL 托管实例中不受支持。 
-
-
-建议   
-Azure SQL 托管实例不支持跨实例 Service Broker，即，地址不是本地的。 将此数据库迁移到 Azure 之前，需要使用以下命令来禁用 Service Broker：`ALTER DATABASE [database_name] SET DISABLE_BROKER`；此外，可能还需要删除或停止 Service Broker 终结点，以防止消息到达 SQL 实例。 将数据库迁移到 Azure 后，可以查看 Azure 服务总线功能，以实现基于云的通用消息传递系统，而不是 Service Broker。 或者，迁移到 Azure 虚拟机上的 SQL Server。 
-
-详细信息：[Azure SQL 托管实例中的 Service Broker 差异](../../managed-instance/transact-sql-tsql-differences-sql-server.md#service-broker)
 
 ## <a name="sql-mail"></a>SQL Mail<a id="SqlMail"></a>
 

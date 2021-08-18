@@ -3,16 +3,16 @@ title: Bicep 中的输出
 description: 介绍如何在 Bicep 中定义输出
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 95366013ed972e0251c99732ea4b344b5b94e743
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 25691bb31fbec0b00144619b97db019e13295661
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111025994"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112201079"
 ---
 # <a name="outputs-in-bicep"></a>Bicep 中的输出
 
-本文介绍了如何在 Azure 资源管理器模板（ARM 模板）和 Bicep 文件中定义输出值。 需要从部署的资源返回值时，可以使用输出。
+本文介绍如何在 Bicep 文件中定义输出值。 需要从部署的资源返回值时，可以使用输出。
 
 每个输出值的格式必须能够解析为这些[数据类型](data-types.md)中的一种。
 

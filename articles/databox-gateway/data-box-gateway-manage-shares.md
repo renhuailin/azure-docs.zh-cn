@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 8a6bfb1c6aa268914e6dd1157115067b15bfa404
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d8594f9278795be60b5e0434337fd16b64000df
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98786904"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731439"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的共享 
 
@@ -50,7 +50,7 @@ ms.locfileid: "98786904"
 5. 从块 Blob、页 Blob 或文件中选择“存储服务”。  所选服务的类型取决于数据需要以何种格式驻留在 Azure 中。 例如，在此实例中，我们希望数据以 Blob 块的形式驻留在 Azure 中，因此选择“块 Blob”。 如果选择“页 Blob”，必须确保数据按 512 字节对齐。 例如，VHDX 始终按 512 字节对齐。
 
    > [!IMPORTANT]
-   > 如果要将 Azure 存储帐户用于 Data Box Gateway 设备，请确保所用的帐户没有设置不可变策略。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](../storage/blobs/storage-blob-immutability-policies-manage.md)。
+   > 如果要将 Azure 存储帐户用于 Data Box Gateway 设备，请确保所用的帐户没有设置不可变策略。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](../storage/blobs/immutable-policy-configure-version-scope.md)。
 
 6. 此步骤取决于你是创建 SMB 共享还是 NFS 共享。
     - **如果创建 SMB 共享** - 在“所有特权本地用户”字段中，选择“新建”或“使用现有”。 如果创建新的本地用户，请提供 **用户名**、**密码** 和确认密码。 这样就会为本地用户分配权限。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。

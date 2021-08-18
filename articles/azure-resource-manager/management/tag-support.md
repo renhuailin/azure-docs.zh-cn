@@ -2,13 +2,13 @@
 title: 资源的标记支持
 description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服务的详细信息。
 ms.topic: conceptual
-ms.date: 04/20/2021
-ms.openlocfilehash: b196cae267a8d7dc878f055f6b2d70a3ff6f9313
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 07/20/2021
+ms.openlocfilehash: 4f15fea365fc242f3c7253a39b6a877dd672deb1
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773956"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114453282"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](tag-resources.md)。 标记为“支持标记”的列指示资源类型是否具有标记的属性。 标记为“在成本报表中标记”的列指示该资源类型是否将标记传递给成本报表。 可以通过[成本管理成本分析](../../cost-management-billing/costs/group-filter.md)和 [Azure 账单发票和每日使用情况数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中的标记查看成本。
@@ -560,25 +560,25 @@ ms.locfileid: "107773956"
 > | billingAccounts / billingProfiles / invoiceSections / initiateTransfer | 否 | 否 |
 > | billingAccounts / billingProfiles / invoiceSections / products | 否 | 否 |
 > | billingAccounts / billingProfiles / invoiceSections / products / transfer | 否 | 否 |
-> | billingAccounts / billingProfiles / invoiceSections / products / updateAutoRenew | 否 | 否 |
-> | billingAccounts / billingProfiles / invoiceSections / transactions | 否 | 否 |
-> | billingAccounts / billingProfiles / invoiceSections / transfers | 否 | 否 |
+> | billingaccounts / billingprofiles / invoicesections / products / updateautorenew | 否 | 否 |
+> | billingaccounts / billingprofiles / invoicesections / transactions | 否 | 否 |
+> | billingaccounts / billingprofiles / invoicesections / transfers | 否 | 否 |
 > | billingAccounts / billingProfiles / invoiceSections / validateDeleteInvoiceSectionEligibility | 否 | 否 |
-> | billingAccounts / BillingProfiles / patchOperations | 否 | 否 |
-> | billingAccounts / billingProfiles / paymentMethods | 否 | 否 |
-> | billingAccounts / billingProfiles / policies | 否 | 否 |
-> | billingAccounts / billingProfiles / pricesheet | 否 | 否 |
+> | billingaccounts / billingprofiles / patchoperations | 否 | 否 |
+> | billingaccounts / billingprofiles / paymentmethods | 否 | 否 |
+> | billingaccounts / billingprofiles / policies | 否 | 否 |
+> | billingaccounts / billingprofiles / pricesheet | 否 | 否 |
 > | billingAccounts / billingProfiles / pricesheetDownloadOperations | 否 | 否 |
-> | billingAccounts / billingProfiles / products | 否 | 否 |
+> | billingaccounts / billingprofiles / products | 否 | 否 |
 > | billingAccounts / billingProfiles / reservations | 否 | 否 |
-> | billingAccounts / billingProfiles / transactions | 否 | 否 |
+> | billingaccounts / billingprofiles / transactions | 否 | 否 |
 > | billingAccounts / billingProfiles / validateDeleteBillingProfileEligibility | 否 | 否 |
 > | billingAccounts / billingProfiles / validateDetachPaymentMethodEligibility | 否 | 否 |
 > | billingAccounts / billingRoleAssignments | 否 | 否 |
 > | billingAccounts / billingRoleDefinitions | 否 | 否 |
 > | billingAccounts / billingSubscriptions | 否 | 否 |
 > | billingAccounts / billingSubscriptions / elevateRole | 否 | 否 |
-> | billingAccounts / billingSubscriptions / invoices | 否 | 否 |
+> | billingaccounts / billingsubscriptions / invoices | 否 | 否 |
 > | billingAccounts / createBillingRoleAssignment | 否 | 否 |
 > | billingAccounts / createInvoiceSectionOperations | 否 | 否 |
 > | billingAccounts / customers | 否 | 否 |
@@ -620,7 +620,7 @@ ms.locfileid: "107773956"
 > | billingAccounts / payableOverage | 否 | 否 |
 > | billingAccounts / paymentMethods | 否 | 否 |
 > | billingAccounts / payNow | 否 | 否 |
-> | billingAccounts / products | 否 | 否 |
+> | billingaccounts / products | 否 | 否 |
 > | billingAccounts / reservations | 否 | 否 |
 > | billingAccounts / transactions | 否 | 否 |
 > | billingPeriods | 否 | 否 |
@@ -982,7 +982,7 @@ ms.locfileid: "107773956"
 > | Charges | 否 | 否 |
 > | CostTags | 否 | 否 |
 > | credits | 否 | 否 |
-> | events | 否 | 否 |
+> | 活动 | 否 | 否 |
 > | 预测 | 否 | 否 |
 > | lots | 否 | 否 |
 > | 市场 | 否 | 否 |
@@ -1387,7 +1387,7 @@ ms.locfileid: "107773956"
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
 > | domains | 是 | 是 |
-> | domains / domainOwnershipIdentifiers | 否 | 否 |
+> | domains / domainOwnershipidentifiers | 否 | 否 |
 > | generateSsoRequest | 否 | 否 |
 > | topLevelDomains | 否 | 否 |
 > | validateDomainRegistrationInformation | 否 | 否 |
@@ -1619,7 +1619,7 @@ ms.locfileid: "107773956"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 支持标记 | 在成本报表中标记 |
 > | ------------- | ----------- | ----------- |
-> | actionGroups | 是 | 是 |
+> | actionGroups | 是 | 否 |
 > | activityLogAlerts | 是 | 是 |
 > | alertrules | 是 | 是 |
 > | autoscalesettings | 是 | 是 |
@@ -1962,7 +1962,7 @@ ms.locfileid: "107773956"
 > | ------------- | ----------- | ----------- |
 > | netAppAccounts | 是 | 否 |
 > | netAppAccounts / accountBackups | 否 | 否 |
-> | netAppAccounts / capacityPools | 是 | 否 |
+> | netAppAccounts / capacityPools | 是 | 是 |
 > | netAppAccounts / capacityPools / volumes | 是 | 否 |
 > | netAppAccounts / capacityPools / volumes / snapshots | 否 | 否 |
 > | netAppAccounts / volumeGroups | 否 | 否 |
@@ -2277,7 +2277,7 @@ ms.locfileid: "107773956"
 > | childAvailabilityStatuses | 否 | 否 |
 > | childResources | 否 | 否 |
 > | emergingissues | 否 | 否 |
-> | events | 否 | 否 |
+> | 活动 | 否 | 否 |
 > | impactedResources | 否 | 否 |
 > | metadata | 否 | 否 |
 
@@ -2518,9 +2518,9 @@ ms.locfileid: "107773956"
 > | ------------- | ----------- | ----------- |
 > | accounts | 是 | 是 |
 > | accounts / accountQuotaPolicies | 否 | 否 |
-> | accounts / groupPolicies | 否 | 否 |
-> | accounts / jobs | 否 | 否 |
-> | accounts / storageContainers | 否 | 否 |
+> | accounts/groupPolicies | 否 | 否 |
+> | accounts/jobs | 否 | 否 |
+> | accounts/storageContainers | 否 | 否 |
 > | images | 否 | 否 |
 
 ## <a name="microsoftsoftwareplan"></a>Microsoft.SoftwarePlan
@@ -2567,7 +2567,7 @@ ms.locfileid: "107773956"
 > | servers / restorableDroppedDatabases | 否 | 否 |
 > | servers / serviceobjectives | 否 | 否 |
 > | servers / tdeCertificates | 否 | 否 |
-> | virtualClusters | 是 | 是 |
+> | virtualClusters | 否 | 否 |
 
 <a id="sqlnote"></a>
 
@@ -2709,7 +2709,7 @@ ms.locfileid: "107773956"
 > | ------------- | ----------- | ----------- |
 > | environments | 是 | 否 |
 > | environments / accessPolicies | 否 | 否 |
-> | environments/eventsources | 是 | 否 |
+> | environments / eventsources | 是 | 否 |
 > | environments / privateEndpointConnectionProxies | 否 | 否 |
 > | environments / privateEndpointConnections | 否 | 否 |
 > | environments / privateLinkResources | 否 | 否 |

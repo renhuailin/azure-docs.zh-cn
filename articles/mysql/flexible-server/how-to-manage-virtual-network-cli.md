@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 7da8062f18d737af9d19df54863bc56c7268910c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 243aa85ed2e52fe73efcb0e81c5b3de70b43039e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776908"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778384"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-mysql---flexible-server-using-the-azure-cli"></a>使用 Azure CLI 为 Azure Database for MySQL 灵活服务器创建和管理虚拟网络
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供
@@ -23,7 +25,7 @@ Azure Database for MySQL 灵活服务器支持两种类型的互斥网络连接�
 - 公共访问（允许的 IP 地址）
 - 专用访问（VNet 集成）
 
-本文将重点介绍使用 Azure CLI 创建具有专用访问（VNet 集成）的 MySQL 服务器。 通过专用访问（VNet 集成），可以将灵活服务器部署到你自己的 [Azure 虚拟网络](../../virtual-network/virtual-networks-overview.md)中。 Azure 虚拟网络提供专用的安全网络通信。 在专用访问中，与 MySQL 服务器的连接仅限于你的虚拟网络。 若要了解详细信息，请参阅[专用访问（VNet 集成）](./concepts-networking.md#private-access-vnet-integration)。
+本文将重点介绍使用 Azure CLI 创建具有专用访问（VNet 集成）的 MySQL 服务器。 通过专用访问（VNet 集成），可以将灵活服务器部署到你自己的 [Azure 虚拟网络](../../virtual-network/virtual-networks-overview.md)中。 Azure 虚拟网络提供专用的安全网络通信。 在专用访问中，与 MySQL 服务器的连接仅限于你的虚拟网络。 若要了解详细信息，请参阅[专用访问（VNet 集成）](./concepts-networking-vnet.md)。
 
 在 Azure Database for MySQL 灵活服务器中，在创建服务器期间，只能将服务器部署到虚拟网络和子网。 将灵活服务器部署到虚拟网络和子网后，无法将它移动到其他虚拟网络、子网或公共访问（允许的 IP 地址）。
 
@@ -84,4 +86,4 @@ az account set --subscription <subscription id>
 ## <a name="next-steps"></a>后续步骤
 - 详细了解 [Azure Database for MySQL 灵活服务器中的网络](./concepts-networking.md)。
 - [使用 Azure 门户创建和管理 Azure Database for MySQL 灵活服务器虚拟网络](./how-to-manage-virtual-network-portal.md)。
-- 详细了解 [Azure Database for MySQL 灵活服务器虚拟网络](./concepts-networking.md#private-access-vnet-integration)。
+- 详细了解 [Azure Database for MySQL 灵活服务器虚拟网络](./concepts-networking-vnet.md#private-access-vnet-integration)。

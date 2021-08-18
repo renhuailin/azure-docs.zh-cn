@@ -3,12 +3,12 @@ title: 事件中心高级层（预览版）概述
 description: 本文概述 Azure 事件中心高级层，它提供事件中心的多租户部署来满足高端流式处理需求。
 ms.topic: article
 ms.date: 5/25/2021
-ms.openlocfilehash: 7ae58a46484f6f83fdd737ac32e559a5dd90c627
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: d60469937324226b8d928fb257d83966c52dce7e
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409948"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415002"
 ---
 # <a name="overview-of-event-hubs-premium-preview"></a>事件中心高级层（预览版）概述
 
@@ -67,7 +67,7 @@ ms.locfileid: "111409948"
 
 ## <a name="faqs"></a>常见问题解答
 
-[!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-premium-faq.md)]
+[!INCLUDE [event-hubs-dedicated-clusters-faq](./includes/event-hubs-premium-faq.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

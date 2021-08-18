@@ -4,12 +4,12 @@ description: 排查 Azure HDInsight 中的 Apache Hadoop 群集节点磁盘空�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/30/2020
-ms.openlocfilehash: c58ac1e65509299680f67cf17060ff3e9af4c817
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 76810596eb8ec3f9880c04036149a068e9acb45f
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98944355"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299764"
 ---
 # <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>方案：Azure HDInsight 中群集节点的磁盘空间不足
 
@@ -47,4 +47,4 @@ Apache Yarn 应用程序缓存可能占用了所有可用磁盘空间。 Spark �
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

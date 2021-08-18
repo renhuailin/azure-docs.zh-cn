@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 03/26/2021
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: d18d674c47d3e337ce5c789d1dc038acbf6792ba
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 2e0b503cd305697a808c08a2fe903d0f27972448
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107886075"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745298"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
 
@@ -27,7 +27,7 @@ ms.locfileid: "107886075"
 >
 > * [控制对 Azure Kubernetes 群集资源的访问权限](../aks/azure-ad-rbac.md)
 > * [使用 Azure RBAC 进行 Kubernetes 授权](../aks/manage-azure-rbac.md)
-> * [使用 Azure RBAC 来管理对 blob 数据的访问权限](../storage/common/storage-auth-aad-rbac-portal.md)
+> * [使用 Azure RBAC 来管理对 blob 数据的访问权限](../storage/blobs/assign-azure-role-data-access.md)
 
 > [!WARNING]
 > 应用某些角色可能会限制 Azure 机器学习工作室中针对其他用户的 UI 功能。 例如，如果用户的角色无法创建计算实例，工作室中就不会提供创建计算实例的选项。 此行为是正常的，可以防止用户尝试会返回“拒绝访问”错误的操作。
@@ -121,7 +121,7 @@ az role definition create --role-definition data_scientist_role.json
 部署后，此角色在指定工作区中可用。 现在，可以在 Azure 门户中添加和分配此角色。 或者，可以使用 `az ml workspace share` CLI 命令将此角色分配给用户：
 
 ```azurecli-interactive
-az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
+az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist Custom" --user jdoe@contoson.com
 ```
 
 有关自定义角色的详细信息，请参阅 [Azure 自定义角色](../role-based-access-control/custom-roles.md)。 
@@ -163,7 +163,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 ## <a name="use-azure-resource-manager-templates-for-repeatability"></a>使用 Azure 资源管理器模板实现可重复性
 
-如果预计需要重新创建复杂的角色分配，则使用 Azure 资源管理器模板可能会很有帮助。 [201-machine-learning-dependencies-role-assignment 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment)显示了如何在源代码中指定角色分配以供重用。 
+如果预计需要重新创建复杂的角色分配，则使用 Azure 资源管理器模板可能会很有帮助。 [machine-learning-dependencies-role-assignment 模板](https://github.com/Azure/azure-quickstart-templates/tree/master//quickstarts/microsoft.machinelearningservices/machine-learning-dependencies-role-assignment)显示了如何在源代码中指定角色分配以供重用。 
 
 ## <a name="common-scenarios"></a>常见方案
 
@@ -182,7 +182,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 | 发布管道和终结点 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | 在 AKS/ACI 资源上部署已注册的模型 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
 | 针对已部署的 AKS 终结点进行评分 | 不是必需 | 不是必需 | 允许以下权限的“所有者”角色、“参与者”角色或自定义角色：`"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"`（未使用 Azure Active Directory 身份验证时）或 `"/workspaces/read"`（使用令牌身份验证时） |
-| 使用交互式笔记本访问存储 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listKeys/action"` |
+| 使用交互式笔记本访问存储 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*", "/workspaces/listStorageAccountKeys/action"` |
 | 创建新的自定义角色 | 所有者、参与者或自定义角色允许 `Microsoft.Authorization/roleDefinitions/write` | 不是必需 | 所有者、参与者或自定义角色允许：`/workspaces/computes/write` |
 
 > [!TIP]
@@ -453,6 +453,42 @@ az role definition update --role-definition update_def.json --subscription <sub-
 }
 ```
 
+### <a name="labeling-team-lead"></a>标记团队主管
+
+允许评审和拒绝已标记的数据集并查看标记见解。 除此之外，此角色还允许执行标记者的任务。
+
+`labeling_team_lead_custom_role.json` :
+```json
+{
+    "properties": {
+        "roleName": "Labeling Team Lead",
+        "description": "Team lead for Labeling Projects",
+        "assignableScopes": [
+            "/subscriptions/<subscription_id>"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.MachineLearningServices/workspaces/read",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/labels/read",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/labels/write",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/labels/reject/action",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/projects/read",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/projects/summary/read"
+                ],
+                "notActions": [
+                    "Microsoft.MachineLearningServices/workspaces/labeling/projects/write",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/projects/delete",
+                    "Microsoft.MachineLearningServices/workspaces/labeling/export/action"
+                ],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ]
+    }
+}
+```
+
 ## <a name="troubleshooting"></a>疑难解答
 
 使用 Azure 基于角色的访问控制 (Azure RBAC) 时，请注意以下几点：
@@ -465,7 +501,7 @@ az role definition update --role-definition update_def.json --subscription <sub-
 
 - 若要在 VNet 中部署计算资源，需要显式拥有以下操作的权限：
     - VNet 资源上的 `Microsoft.Network/virtualNetworks/*/read`。
-    - 子网资源上的 `Microsoft.Network/virtualNetworks/subnet/join/action`。
+    - 子网资源上的 `Microsoft.Network/virtualNetworks/subnets/join/action`。
     
     若要详细了解如何将 Azure RBAC 与网络配合使用，请参阅[网络内置角色](../role-based-access-control/built-in-roles.md#networking)。
 

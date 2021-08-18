@@ -11,12 +11,12 @@ ms.author: chadam
 ms.reviewer: ''
 ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 997f52a35d66d13872142a0208e5ecc796d06560
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: b1d65049f1e1b8f26aa6e9a99891cd77ca038a8f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110787397"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750135"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>导出到 BACPAC 文件 - Azure SQL 数据库和 Azure SQL 托管实例
 
@@ -63,7 +63,7 @@ ms.locfileid: "110787397"
 
 ## <a name="sqlpackage-utility"></a>SQLPackage 实用程序
 
-若要使用 [SqlPackage](/sql/tools/sqlpackage) 命令行实用工具导出 SQL 数据库中的数据库，请参阅[导出参数和属性](/sql/tools/sqlpackage#export-parameters-and-properties)。 可以使用 SQLPackage 实用工具附带的最新版本的 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools for Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt)，也可以直接从 Microsoft 下载中心下载最新版本的 [SqlPackage](https://www.microsoft.com/download/details.aspx?id=53876)。
+若要使用 [SqlPackage](/sql/tools/sqlpackage) 命令行实用工具导出 SQL 数据库中的数据库，请参阅[导出参数和属性](/sql/tools/sqlpackage#export-parameters-and-properties)。 可以使用 SQLPackage 实用工具附带的最新版本的 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools for Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt)，也可以直接从 Microsoft 下载中心下载最新版本的 [SqlPackage](/sql/tools/sqlpackage/sqlpackage-download?view=sql-server-ver15)。
 
 在大多数生产环境中，建议使用 SQLPackage 实用工具来实现缩放和性能。 如需 SQL Server 客户顾问团队编写的有关使用 BACPAC 文件进行迁移的博客，请参阅 [Migrating from SQL Server to Azure SQL Database using BACPAC Files](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files)（使用 BACPAC 文件从 SQL Server 迁移到 Azure SQL 数据库）。
 

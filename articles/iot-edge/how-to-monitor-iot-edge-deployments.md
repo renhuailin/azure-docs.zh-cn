@@ -2,20 +2,18 @@
 title: 监视 IoT Edge 部署 - Azure IoT Edge
 description: 高级监视，包括 edgeHub 和 edgeAgent 报告属性及自动部署指标。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 04/21/2020
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
-ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 39e7bb5c151d490e79ef111589f52f260c3e6c7a
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 834208d1499e83b1de5cd276a5de65c00f25e4f7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483157"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722008"
 ---
 # <a name="monitor-iot-edge-deployments"></a>监视 IoT Edge 部署
 
@@ -50,7 +48,7 @@ IoT 中心服务使此数据可供你在 Azure 门户和 Azure CLI 中监视。
     | ID | 部署的名称。 |
     | 类型 | 部署的类型（“部署”或“分层部署”） 。 |
     | 目标条件 | 用于定义目标设备的标记。 |
-    | 优先度 | 分配给部署的优先级编号。 |
+    | 优先级 | 分配给部署的优先级编号。 |
     | 系统指标 | IoT 中心内与目标条件匹配的设备孪生数。 “已应用”指定 IoT 中心内已将部署内容应用到其模块孪生的设备数。 |
     | 设备指标 | 从 IoT Edge 客户端运行时报告成功或错误的 IoT Edge 设备数。 |
     | 自定义指标 | IoT Edge 设备数，此类设备针对你为部署定义的任何指标报告数据。 |

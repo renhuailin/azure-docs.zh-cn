@@ -2,18 +2,17 @@
 title: 使用部署清单来部署模块和路由 - Azure IoT Edge
 description: 了解部署清单如何声明要部署的模块、如何部署这些模块以及如何在它们之间创建消息路由。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2e3f1891a786751365a0bea58097e03bd41f85bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a83e2f8c14b2dcb4c97d1189ad262b3ed51b2d79
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103489907"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726513"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模块和建立路由
 
@@ -330,7 +329,7 @@ IoT Edge 中心会一直存储消息，直到达到在 [IoT Edge 中心所需属
             "type": "docker",
             "settings": {
               "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
-              "createOptions": ""
+              "createOptions": "{}"
             }
           },
           "edgeHub": {

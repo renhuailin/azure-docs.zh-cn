@@ -2,21 +2,21 @@
 title: Azure AD 中的单一登录选项
 description: 了解 Azure Active Directory 中可用于单一登录 (SSO) 的选项。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.author: mtillman
-ms.reviewer: arvindh, japere
-ms.openlocfilehash: 965c3898a0175bbf448d8c59b9f7853c8aeb37bd
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: davidmu
+ms.reviewer: ergreenl
+ms.openlocfilehash: 99d478738c8fc7a2e67bb0585b997afe4b42ecb2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082282"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738770"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Azure AD 中的单一登录选项
 
@@ -32,7 +32,7 @@ ms.locfileid: "112082282"
 
 有几种方法可以配置应用程序以实现单一登录。 选择哪种单一登录方法取决于为应用程序配置的身份验证方式。
 
-- 云应用程序可以使用 OpenID Connect、OAuth、SAML、基于密码、链接或禁用的方法进行单一登录。 
+- 云应用程序可以使用 OpenID Connect、OAuth、SAML、基于密码、链接或禁用的方法进行单一登录。
 - 本地应用程序可以使用基于密码、集成身份验证、基于标头、链接或已禁用的方法进行单一登录。 当应用程序配置为应用程序代理时，本地选项适用。
 
 此流程图有助于确定哪种单一登录方法最适合你的情况。
@@ -132,6 +132,7 @@ Azure AD 管理员管理凭据时：
 - 管理员仍可以为应用程序设置新凭据。
 
 ## <a name="linked-sign-on"></a>联合登录
+
 链接登录使 Azure AD 能够为已配置为其他服务中的单一登录的应用程序提供单一登录。 链接的应用程序可以在 Office 365 门户或 Azure AD MyApps 门户中向最终用户显示。 例如，用户可以从 Office 365 门户启动配置为 Active Directory 联合身份验证服务 2.0 (AD FS) 中的单一登录的应用程序。 对于从 Office 365 门户或 Azure AD MyApps 门户启动的链接的应用程序，还可以使用其他报告。 若要配置应用程序进行链接的登录，请参阅[配置链接登录](configure-linked-sign-on.md)。
 
 ### <a name="linked-sign-on-for-application-migration"></a>用于应用程序迁移的链接登录
@@ -141,7 +142,7 @@ Azure AD 管理员管理凭据时：
 用户通过链接的应用程序进行身份验证后，需要先创建帐户记录，然后才能为最终用户提供单一登录访问权限。 预配此帐户记录可以自动完成，也可以由管理员手动完成。
 
 >[!NOTE]
->不能将条件访问策略或多重身份验证应用于链接的应用程序。 这是因为链接的应用程序不通过 Azure AD 提供单一登录功能。 配置链接的应用程序时，只需添加将显示在应用启动器或 MyApps 门户中的链接。 
+>不能将条件访问策略或多重身份验证应用于链接的应用程序。 这是因为链接的应用程序不通过 Azure AD 提供单一登录功能。 配置链接的应用程序时，只需添加将显示在应用启动器或 MyApps 门户中的链接。
 
 ## <a name="disabled-sso"></a>已禁用的 SSO
 
@@ -164,6 +165,7 @@ Azure AD 管理员管理凭据时：
 要为 IWA 配置本地应用，请参阅[针对具有应用程序代理的应用程序通过 Kerberos 约束委派进行单一登录](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md)。
 
 ### <a name="how-single-sign-on-with-kcd-works"></a>使用 KCD 的单一登录的工作原理
+
 此示意图解释了用户访问使用 IWA 的本地应用程序时的流程。
 
 ![Microsoft Azure AD 身份验证流程图](../app-proxy/media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
@@ -185,8 +187,8 @@ Azure AD 管理员管理凭据时：
 
 若要详细了解基于标头的身份验证，请参阅[基于标头的 SSO](../app-proxy/application-proxy-configure-single-sign-on-with-headers.md)。
 
-
 ## <a name="next-steps"></a>后续步骤
-* [应用程序管理的快速入门系列](view-applications-portal.md)
-* [计划单一登录部署](plan-sso-deployment.md)
-* [本地应用的单一登录](../app-proxy/application-proxy-config-sso-how-to.md)
+
+- [应用程序管理的快速入门系列](view-applications-portal.md)
+- [计划单一登录部署](plan-sso-deployment.md)
+- [本地应用的单一登录](../app-proxy/application-proxy-config-sso-how-to.md)

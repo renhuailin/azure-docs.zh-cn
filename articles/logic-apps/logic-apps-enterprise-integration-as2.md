@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: b795e4b0df35d731181934bdec6966fc1af0b94c
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 39109292b29c526b036774bb757158f317c932d9
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026734"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112456609"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 AS2 消息以实现 B2B 企业集成
 
@@ -115,7 +115,7 @@ ms.locfileid: "112026734"
 
 ## <a name="sample"></a>示例
 
-若要尝试部署完全正常运行的逻辑应用和示例 AS2 方案，请参阅 [AS2 逻辑应用模板和方案](https://azure.microsoft.com/resources/templates/logic-app-as2-send-receive)。
+若要尝试部署完全正常运行的逻辑应用和示例 AS2 方案，请参阅 [AS2 逻辑应用模板和方案](https://azure.microsoft.com/resources/templates/logic-app-as2-send-receive/)。
 
 ## <a name="connector-reference"></a>连接器参考
 

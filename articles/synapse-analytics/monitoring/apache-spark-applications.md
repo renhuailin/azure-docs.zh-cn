@@ -9,35 +9,19 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: d86e8a6e16fdaa48678ae1af89eb236f6e00b01b
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: f83e84e3aa747c41d0e45a5650c704c796c62447
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112005120"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112968260"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>使用 Synapse Studio 监视 Apache Spark 应用程序
 
 借助 Azure Synapse Analytics，可以使用 Apache Spark 在工作区中的 Apache Spark 池上运行笔记本、作业和其他类型的应用程序。
 
 本文介绍如何监视 Apache Spark 应用程序，使你能够关注最新状态、问题和进度。
-
-本教程涵盖以下任务：
-
-* 监视运行中的 Apache Spark 应用程序
-* 查看已完成的 Apache Spark 应用程序
-* 查看已取消的 Apache Spark 应用程序
-* 调试失败的 Apache Spark 应用程序
-* 查看 Apache Spark 应用程序的输入数据和输出数据
-* 比较 Apache Spark 应用程序
-
-## <a name="prerequisites"></a>先决条件
-
-在开始学习本教程之前，请确保满足以下要求：
-
-- Synapse Studio 工作区。 有关说明，请参阅[创建 Synapse Studio 工作区](../../machine-learning/how-to-manage-workspace.md#create-a-workspace)。
-
-- Apache Spark 池。
 
 ## <a name="view-apache-spark-applications"></a>查看 Apache Spark 应用程序 
 你可以从“监视” -> “Apache Spark 应用程序”查看所有 Apache Spark 应用程序 。
@@ -204,7 +188,7 @@ ms.locfileid: "112005120"
 
 可以通过两种方法来比较应用程序。 可以选择“比较应用程序”进行比较，也可以单击“在笔记本中比较”按钮在笔记本中进行查看。
 
-### <a name="compare-by-choose-an-application"></a>通过选择应用程序进行比较
+### <a name="compare-by-choosing-an-application"></a>通过选择应用程序进行比较
 
 单击“比较应用程序”按钮并选择一个应用程序来比较性能，你可以直观地了解两个应用程序之间的差异。
 

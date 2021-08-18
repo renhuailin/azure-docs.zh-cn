@@ -3,6 +3,7 @@ title: 配置 Azure-SSIS 集成运行时以实现业务连续性和灾难恢复 
 description: 本文介绍如何在 Azure 数据工厂中为 Azure SQL 数据库/托管实例故障转移组配置 Azure-SSIS 集成运行时，以实现业务连续性和灾难恢复 (BCDR)。
 services: data-factory
 ms.service: data-factory
+ms.subservice: integration-services
 ms.workload: data-services
 ms.devlang: powershell
 author: swinarko
@@ -12,12 +13,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/05/2021
-ms.openlocfilehash: a426ee39ba3c0f50b9a6c1fb9c7de1ef8e7291b2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 453f1db3e0f80a63c058c7e0ea21ab9282295de6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566347"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735420"
 ---
 # <a name="configure-azure-ssis-integration-runtime-for-business-continuity-and-disaster-recovery-bcdr"></a>配置 Azure-SSIS 集成运行时以实现业务连续性和灾难恢复 (BCDR) 
 

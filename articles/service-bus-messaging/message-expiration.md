@@ -2,13 +2,13 @@
 title: Azure 服务总线 - 消息到期时间
 description: 本文介绍 Azure 服务总线消息的到期时间和生存时间。 此截止时间过后，将不再传递该消息。
 ms.topic: conceptual
-ms.date: 02/17/2021
-ms.openlocfilehash: d41cb7a5e04753989c0e65e8afb8d74a11cd1af2
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.date: 07/09/2021
+ms.openlocfilehash: ac37096b411df0fa1a52286f82ce421dff459239
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110614874"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113585458"
 ---
 # <a name="message-expiration-time-to-live"></a>消息过期时间（生存时间）
 消息中的有效负载，或者由消息传递给接收方的命令或查询，几乎总是附带了某种形式的应用程序级过期截止时间。 此截止时间过后，便不再传送内容，或不再执行请求的操作。
@@ -27,9 +27,9 @@ ms.locfileid: "110614874"
 发送到队列或主题的所有消息均受在实体级别设置的默认到期时间的限制。 也可以在门户中创建消息期间设置默认到期时间，并在以后调整。 默认过期时间是针对发送到未显式设置生存时间的实体的所有消息使用的。 默认过期时间还充当生存时间值的上限。 生存时间过期时间长于默认值的消息在排队之前，会以无提示方式调整为默认消息生存时间值。
 
 > [!NOTE]
-> 如果没有另外指定，则中转消息的默认生存时间值为有符号 64 位整数的最大可能值。
->
-> 对于消息传送实体（队列和主题），服务总线标准层和高级层的默认到期时间也是有符号 64 位整数的最大可能值。 对于基本层，默认（也是最大）到期时间为 14 天 。
+> - 如果没有另外指定，则中转消息的默认生存时间值为有符号 64 位整数的最大可能值。
+> - 对于消息传送实体（队列和主题），服务总线标准层和高级层的默认到期时间也是有符号 64 位整数的最大可能值。 对于基本层，默认（也是最大）到期时间为 14 天 。
+> - 如果主题指定的 TTL 比订阅指定的 TTL 小，则应用主题 TTL。
 
 可以选择将过期的消息移动到[死信队列](service-bus-dead-letter-queues.md)中。 可以通过编程方式或使用 Azure 门户来配置此设置。 如果保持禁用该选项，将会丢弃已过期的消息。 可以通过评估由中转站存储在用户属性部分中的 [dead-letter reason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) 属性，将已移到死信队列的已过期消息与其他死信消息区分开来。 
 

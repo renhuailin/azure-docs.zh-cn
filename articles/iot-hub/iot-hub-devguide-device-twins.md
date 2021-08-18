@@ -2,7 +2,6 @@
 title: 了解 Azure IoT 中心设备孪生 | Microsoft Docs
 description: 开发人员指南 - 使用设备孪生在 IoT 中心与设备之间同步状态和配置数据
 author: nehsin
-manager: philmea
 ms.author: nehsin
 ms.service: iot-hub
 services: iot-hub
@@ -11,12 +10,12 @@ ms.date: 09/29/2020
 ms.custom:
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: fff4b9157c30203f47c65a74b211e3dbf6426d92
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1bea2bab5a930d16ebc7675a14bfa4486dc35951
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101093024"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728785"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>了解并在 IoT 中心内使用设备孪生
 
@@ -43,7 +42,7 @@ ms.locfileid: "101093024"
 
 有关使用所需的属性、直接方法或云到设备的消息的指导，请参阅[云到设备的通信指南](iot-hub-devguide-c2d-guidance.md)。
 
-若要了解设备孪生如何与 Azure IoT 即插即用设备使用的设备模型关联，请参阅[了解 IoT 即插即用数字孪生](../iot-pnp/concepts-digital-twin.md)。
+若要了解设备孪生如何与 Azure IoT 即插即用设备使用的设备模型关联，请参阅[了解 IoT 即插即用数字孪生](../iot-develop/concepts-digital-twin.md)。
 
 ## <a name="device-twins"></a>设备孪生
 
@@ -224,7 +223,7 @@ ms.locfileid: "101093024"
     }
     ```
 
-上述所有操作均支持 [乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要 [控制对 IoT 中心的访问](iot-hub-devguide-security.md)中定义的 **ServiceConnect** 权限。
+上述所有操作均支持 [乐观并发](iot-hub-devguide-device-twins.md#optimistic-concurrency)，并且需要 [控制对 IoT 中心的访问](iot-hub-dev-guide-sas.md)中定义的 **ServiceConnect** 权限。
 
 除了上述操作以外，解决方案后端还可以：
 
@@ -242,7 +241,7 @@ ms.locfileid: "101093024"
 
 * **观察所需属性**。 当前连接的设备可以选择在所需属性发生更新时接收通知。 设备收到的更新格式与解决方案后端执行的更新格式相同（部分或完全替换）。
 
-上述所有操作都需要 [控制对 IoT 中心的访问](iot-hub-devguide-security.md)中定义的 **DeviceConnect** 权限。
+上述所有操作都需要 [控制对 IoT 中心的访问](iot-hub-dev-guide-sas.md)中定义的 **DeviceConnect** 权限。
 
 借助 [Azure IoT 设备 SDK](iot-hub-devguide-sdks.md)，可通过多种语言和平台轻松使用上述操作。 有关用于同步所需属性的 IoT 中心基元的详细信息，请参阅[设备重新连接流](iot-hub-devguide-device-twins.md#device-reconnection-flow)。
 

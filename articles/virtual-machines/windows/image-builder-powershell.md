@@ -1,20 +1,21 @@
 ---
 title: 使用 Azure 映像生成器的 PowerShell 创建 Windows VM
 description: 使用 Azure 映像生成器的 PowerShell 模块创建 Windows VM。
-author: cynthn
-ms.author: cynthn
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9ea4ff3b163070fef64d9edcb6e249d450058a84
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: bae85c009bb382ee79526fb547af5e475a7ed785
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031126"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113594834"
 ---
 # <a name="create-a-windows-vm-with-azure-image-builder-using-powershell"></a>使用 Azure 映像生成器的 PowerShell 创建 Windows VM
 

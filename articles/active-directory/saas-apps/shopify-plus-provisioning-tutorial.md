@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 Shopify Plus 配置自动用�
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Shopify Plus 及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: e2fa3ac8-a30f-4dcd-8073-ed7c65909feb
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2020
-ms.author: Zhchia
-ms.openlocfilehash: ce791337cb27d3704d1cfa007ed6dca3e8e7e0d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 3ccc8dcbb6cbe5cca5edd1532b15e3b33c768db6
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98729608"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113759465"
 ---
 # <a name="tutorial-configure-shopify-plus-for-automatic-user-provisioning"></a>教程：为 Shopify Plus 配置自动用户预配
 
@@ -47,7 +47,7 @@ ms.locfileid: "98729608"
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 3. 确定[在 Azure AD 与 Shopify Plus 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
 
-## <a name="step-2-configure-shopify-plus-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Shopify Plus 以支持通过 Azure AD 进行预配
+## <a name="step-2-configure-shopify-plus-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Shopify Plus 以支持通过 Azure AD 进行预配
 
 1. 登录到 [Shopify Plus 组织管理](https://shopify.plus )。导航到“用户”>“安全性”。
 
@@ -57,7 +57,7 @@ ms.locfileid: "98729608"
 
 4. 基 URL 为 `https://shopifyscim.com/scim/v2/`。 在 Azure 门户的 Shopify Plus 应用程序的“预配”选项卡中，将此值输入“租户 URL”字段。
 
-## <a name="step-3-add-shopify-plus-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 Shopify Plus
+## <a name="step-3-add-shopify-plus-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Shopify Plus
 
 从 Azure AD 应用程序库添加 Shopify Plus，开始管理 Shopify Plus 的预配。 如果以前为 Shopify Plus 设置过 SSO，则可以使用同一应用程序。 但建议你在最初测试集成时创建一个单独的应用。 若要详细了解如何从库中添加应用，可以单击[此处](../manage-apps/add-application-portal.md)。 
 

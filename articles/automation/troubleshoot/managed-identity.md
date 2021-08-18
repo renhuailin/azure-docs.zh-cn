@@ -3,18 +3,32 @@ title: 排查 Azure 自动化托管标识问题（预览）
 description: 本文介绍如何排查和解决将托管标识与自动化账户一起使用时遇到的问题。
 services: automation
 ms.subservice: ''
-ms.date: 04/28/2021
+ms.date: 06/28/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 719b20190194779b834eb3de996c0920d50ad313
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 89d3785ef527eebc822eefbbae2c887dd40108ee
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110787347"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687490"
 ---
 # <a name="troubleshoot-azure-automation-managed-identity-issues-preview"></a>排查 Azure 自动化托管标识问题（预览）
 
 本文介绍将托管标识与自动化账户一起使用时可能会遇到的问题的解决方案。 有关将托管标识与自动化帐户一起使用的常规信息，请查看 [Azure 自动化帐户身份验证概述](../automation-security-overview.md#managed-identities-preview)。
+
+## <a name="scenario-fail-to-get-msi-token-for-account"></a>场景：无法获取帐户的 MSI 令牌
+
+### <a name="issue"></a>问题
+
+在自动化帐户中使用用户分配的托管标识时，你会收到类似以下内容的错误：`Failed to get MSI token for account a123456b-1234-12a3-123a-aa123456aa0b`。
+
+### <a name="cause"></a>原因
+
+在为自动化帐户启用系统分配的托管标识之前使用用户分配的托管标识。
+
+### <a name="resolution"></a>解决方法
+
+为自动化帐户启用系统分配的托管标识。 然后使用用户分配的托管标识。  
 
 ## <a name="scenario-attempt-to-use-managed-identity-with-automation-account-fails"></a>方案：尝试将托管标识与自动化帐户一起使用时失败
 

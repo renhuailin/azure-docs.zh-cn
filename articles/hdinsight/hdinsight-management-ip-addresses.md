@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 002e224fc64943ab29876ca47d7f5d337bc1230d
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 617624fe3ae3ea5c0dc7bb3f34145f0aadf4ac4b
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020216"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113219206"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight 管理 IP 地址
 
@@ -84,7 +84,7 @@ HDInsight 通过群集创建和扩展来验证这些规则，以防止进一步�
 | &nbsp; | 美国中西部 | 52.161.23.15<br>52.161.10.167 | \*:443 | 入站 |
 | &nbsp; | 美国西部 | 13.64.254.98<br>23.101.196.19 | \*:443 | 入站 |
 | &nbsp; | 美国西部 2 | 52.175.211.210<br>52.175.222.222 | \*:443 | 入站 |
-| &nbsp; | 阿拉伯联合酋长国北部 | 65.52.252.96<br>65.52.252.97 | \*:443 | 入站 |
+| 阿拉伯联合酋长国 | 阿拉伯联合酋长国北部 | 65.52.252.96<br>65.52.252.97 | \*:443 | 入站 |
 | &nbsp; | 阿联酋中部 | 20.37.76.96<br>20.37.76.99 | \*:443 | 入站 |
 
 若要获取用于 Azure 政府版的 IP 地址的信息，请参阅 [Azure 政府智能 + 分析](../azure-government/compare-azure-government-global-azure.md)文档。

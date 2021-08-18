@@ -4,13 +4,13 @@ description: 比较通过 JSON 和 Bicep 开发的 Azure 资源管理器模板�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: a3df1189b264b092a7575cd976c23d89aa12bf18
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 07/30/2021
+ms.openlocfilehash: 414e073fe6940cc9a223a25515902b3af3ca0a54
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537120"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744906"
 ---
 # <a name="comparing-json-and-bicep-for-templates"></a>比较模板的 JSON 和 Bicep
 

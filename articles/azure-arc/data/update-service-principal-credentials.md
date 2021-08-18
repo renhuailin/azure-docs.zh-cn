@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 12/09/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: ff1e43ca78583e5ccda56b7c813ec580050e3288
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 01d8aa850c5f816026561ca64541724bd8c3b832
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495718"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738586"
 ---
 # <a name="update-service-principal-credentials"></a>更新服务主体凭据
 
@@ -22,7 +22,6 @@ ms.locfileid: "110495718"
 
 例如，如果你使用服务主体租户 ID、客户端 ID 和客户端机密的一组特定值部署了数据控制器，然后更改了其中的一个或多个值，则需要更新数据控制器中的机密。  下面是有关更新租户 ID、客户端 ID 或客户端机密的说明。 
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="background"></a>背景
 
