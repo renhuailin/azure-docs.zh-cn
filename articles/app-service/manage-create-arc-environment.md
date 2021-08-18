@@ -2,13 +2,13 @@
 title: 为 Azure Arc 设置应用服务、Functions 和逻辑应用
 description: 对于启用了 Azure Arc 的 Kubernetes 群集，请了解如何启用应用服务应用、函数应用和逻辑应用。
 ms.topic: article
-ms.date: 05/26/2021
-ms.openlocfilehash: a219b0e12deaca30c2c046e4e99cf38672dc46c9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/17/2021
+ms.openlocfilehash: f6d917a9bd18c16e283f8c61e6cb6d15fcd4882f
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723032"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396977"
 ---
 # <a name="set-up-an-azure-arc-enabled-kubernetes-cluster-to-run-app-service-functions-and-logic-apps-preview"></a>设置启用了 Azure Arc 的 Kubernetes 群集，以便运行应用服务、函数和逻辑应用（预览）
 
@@ -211,8 +211,7 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
         --workspace-name $workspaceName `
         --query primarySharedKey `
         --output tsv)
-    $logAnalyticsKeyEncWithSpace=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($logAnalyticsKey))
-    $logAnalyticsKeyEnc=$(echo -n "${logAnalyticsKeyEncWithSpace//[[:space:]]/}") # Needed for the next step
+    $logAnalyticsKeyEnc=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($logAnalyticsKey))
     ```
     
     ---

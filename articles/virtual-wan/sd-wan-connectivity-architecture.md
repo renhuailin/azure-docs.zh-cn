@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: eb6ae05b0e3c296a1ca56d3ea6085b8cd4586c23
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 08e20a497c7fddfe00e70fcf1d9d4c6e5f76054f
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108165688"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122321840"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>带有 Azure 虚拟 WAN 的 SD-WAN 连接体系结构
 
@@ -42,7 +42,7 @@ SD-WAN CPE 仍然是实现和强制实施流量优化和路径选择的地方。
 
 使用虚拟 WAN，用户可以获得 Azure 路径选择，即，通过从分支 CPE 到虚拟 WAN VPN 网关的多个 ISP 链接进行基于策略的路径选择。 虚拟 WAN 允许设置多个来自同一 SD-WAN 分支 CPE 的链接（路径）；每个链接代表从 SD-WAN CPE 的某个唯一公共 IP 到 Azure 虚拟 WAN VPN 网关的两个不同实例的双隧道连接。 SD-WAN 供应商可以根据其在 CPE 链接上的策略引擎设置的流量策略，实施连接 Azure 的最佳路径。 在 Azure 端，所有传入连接会被同等对待。
 
-## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct"></a>使用 NVA-in-VWAN-hub 的直接互连模型
+## <a name="direct-interconnect-model-with-nva-in-vwan-hub"></a><a name="direct-nva"></a>使用 NVA-in-VWAN-hub 的直接互连模型
 
 :::image type="content" source="./media/sd-wan-connectivity-architecture/direct-nva.png" alt-text="使用 NVA-in-VWAN-hub 的直接互连模型":::
 

@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 10/20/2020
-ms.openlocfilehash: a925c3a17988ef6f4b95a1e3cf4dd5fb8baa4829
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: faf4bd0bd87f71af8f62064297f8288b3977ec8d
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102510934"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114405019"
 ---
 还可以使用以下资源：
 
@@ -19,7 +19,7 @@ ms.locfileid: "102510934"
 
 ## <a name="iot-hub-service-client-examples"></a>IoT 中心服务客户端示例
 
-此部分介绍的 Python 示例使用 IoT 中心服务客户端以及 IoTHubRegistryManager 和 CloudToDeviceMethod 类 。 使用 IoTHubRegistryManager 类通过设备孪生与设备状态交互。 还可以使用 IoTHubRegistryManager 类在 IoT 中心[查询设备注册](../articles/iot-hub/iot-hub-devguide-query-language.md)。 使用 CloudToDeviceMethod 类在设备上调用命令。 设备的 [DTDL](../articles/iot-pnp/concepts-digital-twin.md) 模型定义了设备实现的属性和命令。 在代码片段中，`device_id` 变量保存注册到 IoT 中心的 IoT 即插即用设备的设备 ID。
+此部分介绍的 Python 示例使用 IoT 中心服务客户端以及 IoTHubRegistryManager 和 CloudToDeviceMethod 类 。 使用 IoTHubRegistryManager 类通过设备孪生与设备状态交互。 还可以使用 IoTHubRegistryManager 类在 IoT 中心[查询设备注册](../articles/iot-hub/iot-hub-devguide-query-language.md)。 使用 CloudToDeviceMethod 类在设备上调用命令。 设备的 [DTDL](../articles/iot-develop/concepts-digital-twin.md) 模型定义了设备实现的属性和命令。 在代码片段中，`device_id` 变量保存注册到 IoT 中心的 IoT 即插即用设备的设备 ID。
 
 ### <a name="get-the-device-twin-and-model-id"></a>获取设备孪生和模型 ID
 
@@ -129,7 +129,7 @@ print(result.payload)
 
 ## <a name="iot-hub-digital-twin-examples"></a>IoT 中心数字孪生体示例
 
-使用 DigitalTwinClient 类通过数字孪生体与设备状态交互。 设备的 [DTDL](../articles/iot-pnp/concepts-digital-twin.md) 模型定义了设备实现的属性和命令。
+使用 DigitalTwinClient 类通过数字孪生体与设备状态交互。 设备的 [DTDL](../articles/iot-develop/concepts-digital-twin.md) 模型定义了设备实现的属性和命令。
 
 `device_id` 变量保存注册到 IoT 中心的 IoT 即插即用设备的设备 ID。
 
@@ -224,7 +224,7 @@ else:
 
 IoT 即插即用设备将 DTDL 模型中定义的遥测数据发送到 IoT 中心。 默认情况下，IoT 中心会将遥测数据路由到一个可供你在其中使用遥测数据的事件中心终结点。 若要了解详细信息，请参阅[使用 IoT 中心消息路由将设备到云的消息发送到不同的终结点](../articles/iot-hub/iot-hub-devguide-messages-d2c.md)。
 
-下面的代码片段演示如何从默认事件中心终结点读取遥测数据。 此代码片段中的代码取自 IoT 中心快速入门：[将设备的遥测数据发送到 IoT 中心并使用后端应用程序进行读取](../articles/iot-hub/quickstart-send-telemetry-python.md)：
+下面的代码片段演示如何从默认事件中心终结点读取遥测数据。 此代码片段中的代码取自 IoT 中心快速入门：[将设备的遥测数据发送到 IoT 中心并使用后端应用程序进行读取](../articles/iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-python)：
 
 ```python
 import asyncio

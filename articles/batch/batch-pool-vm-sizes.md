@@ -2,14 +2,14 @@
 title: 为池选择 VM 大小和映像
 description: 如何选择 Azure Batch 池中计算节点的可用 VM 大小和 OS 版本
 ms.topic: conceptual
-ms.date: 06/01/2021
+ms.date: 08/10/2021
 ms.custom: seodec18
-ms.openlocfilehash: b5314d3672da87ac1d2fadca61046348a369e218
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 8a923c2982a632209e659ad663147bff5ff5c20a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110789110"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735567"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>选择 Azure Batch 池中计算节点的 VM 大小和映像
 
@@ -35,10 +35,11 @@ ms.locfileid: "110789110"
 | Dv4、Dsv4 | 不支持 |
 | Ev3, Esv3 | 除 E64is_v3 之外的所有大小 |
 | Eav4、Easv4 | 所有大小 |
-| Edv4, Edsv4 |  除 Standard_E20d_v4、Standard_E20ds_v4、Standard_E80ids_v4 之外的所有大小 |
+| Edv4, Edsv4 | 所有大小 |
 | Ev4、Esv4 | 不支持 |
 | F, Fs | 所有大小 |
 | Fsv2 | 所有大小 |
+| FX<sup>1</sup> | 所有大小 |
 | G, Gs | 所有大小 |
 | H | 所有大小 |
 | HB | 所有大小 |
@@ -54,6 +55,7 @@ ms.locfileid: "110789110"
 | NCv3 | 所有大小 |
 | NCasT4_v3 | 所有大小 |
 | ND | 所有大小 |
+| NDv4 | 所有大小 |
 | NDv2 | 无（尚不可用） |
 | NP | 所有大小 |
 | NV | 所有大小 |
