@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: c16764d1ce985755b6a3042873cc18b09b697bcf
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: ef8c2756d6e11dc38ac488abb0ed6d8ae8e9a78b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551605"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745851"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>用于解决 Azure SQL 数据库和 Azure SQL 托管实例常见安全要求的 playbook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -682,7 +682,7 @@ DDoS 防护作为 Azure 平台的一部分自动启用。 它针对公共终结�
 **如何实现**：
 
 - 将审核日志保存到 Azure 存储时，请确保按照最低安全原则来限制对存储帐户的访问。 控制谁有权访问存储帐户。
-- 有关详细信息，请参阅[授权访问 Azure 存储](../../storage/common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+- 有关详细信息，请参阅[授权访问 Azure 存储](../../storage/common/authorize-data-access.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 **最佳做法**：
 

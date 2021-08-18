@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 415c95a441ac0cc6ed2dbf2d6a37f57d7a9e7341
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f0c4f7f70dc186c29ffa5d90c6a7ea2f245f431
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90562513"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298072"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>使用模板部署分配了 IPv6 的面向 Internet 的负载均衡器解决方案
 
@@ -50,7 +50,7 @@ Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
 ## <a name="deploying-the-template-using-the-azure-portal"></a>使用 Azure 门户部署模板
 
-本文档参考了 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/201-load-balancer-ipv6-create/)库中发布的模板。 可以从该库下载模板，或者在 Azure 中直接从库启动部署。 本文假设已将模板下载到本地计算机。
+本文档参考了 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/load-balancer-ipv6-create/)库中发布的模板。 可以从该库下载模板，或者在 Azure 中直接从库启动部署。 本文假设已将模板下载到本地计算机。
 
 1. 打开 Azure 门户，使用有权在 Azure 订阅中创建 VM 和网络资源的帐户登录。 此外，除非使用现有资源，否则该帐户必须有权创建资源组和存储帐户。
 2. 在菜单中单击“+新建”，并在搜索框中键入“模板”。 在搜索结果中选择“模板部署”。

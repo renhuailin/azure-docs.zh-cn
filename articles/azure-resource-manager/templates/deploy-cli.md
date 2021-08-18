@@ -2,13 +2,13 @@
 title: 使用 Azure CLI 和模板部署资源
 description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
-ms.date: 05/07/2021
-ms.openlocfilehash: 4507fe743674ac8c7ee45b53adb1e4cc543289d5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 07/15/2021
+ms.openlocfilehash: 8ecb8bb2e6b24571d91e97157ff91ba931b0719d
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951164"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296766"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>通过 ARM 模板和 Azure CLI 来部署资源
 
@@ -120,7 +120,7 @@ az deployment group create \
 
 ## <a name="deployment-name"></a>部署名称
 
-部署 ARM 模板时，可以为部署指定名称。 此名称可以帮助你从部署历史记录中检索该部署。 如果没有为部署提供名称，将使用模板文件的名称。 例如，如果部署一个名为 azuredeploy.json 的模板，但未指定部署名称，则该部署将命名为 `azuredeploy`。
+部署 ARM 模板时，可以为部署指定名称。 此名称可以帮助你从部署历史记录中检索该部署。 如果没有为部署提供名称，将使用模板文件的名称。 例如，如果部署一个名为“azuredeploy.json”的模板，但未指定部署名称，则该部署将命名为“`azuredeploy`”。
 
 每次运行部署时，一个包含部署名称的条目会添加到资源组的部署历史记录中。 如果运行另一个部署并为其指定了相同的名称，则会将先前的条目替换为当前部署。 如果要在部署历史记录中保持唯一条目，请为每个部署指定唯一名称。
 
@@ -235,6 +235,19 @@ az deployment group create --name addstorage  --resource-group myResourceGroup \
 ```
 
 在要传递给对象的 JSON 两侧使用双引号。
+
+可以使用变量来包含参数值。 在 Bash 中，将变量设置为所有参数值，并将其添加到部署命令。
+
+```azurecli-interactive
+params="prefix=start suffix=end"
+
+az deployment group create \
+  --resource-group testgroup \
+  --template-file <path-to-template> \
+  --parameters $params
+``` 
+
+但是，如果将 Azure CLI 与 Windows 命令提示符 (CMD) 或 PowerShell 一起使用，请将变量设置为 JSON 字符串。 转义引号：`$params = '{ \"prefix\": {\"value\":\"start\"}, \"suffix\": {\"value\":\"end\"} }'`。
 
 ### <a name="parameter-files"></a>参数文件
 

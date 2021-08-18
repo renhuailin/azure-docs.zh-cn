@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: b4e184f827875ebebd40ab976ef63e77ee702d49
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3e5aab3d38e4f981e27ceb59db1511c54ed89381
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93126033"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752422"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>在 Azure 应用服务中通过代码使用 TLS/SSL 证书
 
@@ -71,7 +71,7 @@ using (X509Store certStore = new X509Store(StoreName.My, StoreLocation.CurrentUs
                               certThumbprint,
                               validOnly);
   // Get the first cert with the thumbprint
-  X509Certificate2 cert = certCollection.OfType<X509Certificate>().FirstOrDefault();
+  X509Certificate2 cert = certCollection.OfType<X509Certificate2>().FirstOrDefault();
 
   if (cert is null)
       throw new Exception($"Certificate with thumbprint {certThumbprint} was not found");
@@ -164,6 +164,19 @@ var cert = new X509Certificate2(bytes);
 // Use the loaded certificate
 ```
 
+以下 C# 代码演示了如何在 Linux 应用中加载专用证书。
+
+```csharp
+using System;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+...
+var bytes = File.ReadAllBytes("/var/ssl/private/<thumbprint>.p12");
+var cert = new X509Certificate2(bytes);
+
+// Use the loaded certificate
+```
+
 若要了解如何从 Node.js、PHP、Python、Java 或 Ruby 文件加载 TLS/SSL 证书，请参阅适用于相应语言或 Web 平台的文档。
 
 ## <a name="more-resources"></a>更多资源
@@ -171,4 +184,5 @@ var cert = new X509Certificate2(bytes);
 * [在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)
 * [实施 HTTPS](configure-ssl-bindings.md#enforce-https)
 * [实施 TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
-* [常见问题解答：应用服务证书](./faq-configuration-and-management.md)
+* [常见问题解答：应用服务证书](./faq-configuration-and-management.yml)
+* [环境变量和应用设置参考](reference-app-settings.md)

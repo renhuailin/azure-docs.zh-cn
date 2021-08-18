@@ -11,12 +11,12 @@ ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 01/21/2020
-ms.openlocfilehash: 81c93d33b752a3620163169d0f2b8f900a5b9052
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 58716b6a1d25c52447fc1bf277986787db08ca1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885139"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729799"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>在 Azure 机器学习（预览版）中使用差分隐私
 
@@ -27,7 +27,7 @@ ms.locfileid: "107885139"
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+- 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 - [Python 3](https://www.python.org/downloads/)
 
 ## <a name="install-smartnoise-python-libraries"></a>安装 SmartNoise Python 库
@@ -56,6 +56,8 @@ import opendp.smartnoise.sql
 还可以将 SmartNoise 包与 Docker 配合使用。
 
 拉取 `opendp/smartnoise` 映像，以在包含 Spark、Jupyter 和示例代码的 Docker 容器中使用这些库。
+
+[!INCLUDE [pull-image-include](../../includes/pull-image-include.md)]
 
 ```sh
 docker pull opendp/smartnoise:privacy

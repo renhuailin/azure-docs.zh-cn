@@ -1,21 +1,21 @@
 ---
 title: 监视时序见解 | Microsoft Docs
 description: 监视时序见解的可用性、性能和操作。
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
-ms.custom: lyrana
-ms.openlocfilehash: 15054cd508ce7a6de51fea86ca02302fba258757
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: caf47ca56114ce559288ea1d115b2c09b9959324
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504917"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112369356"
 ---
 # <a name="monitoring-time-series-insights"></a>监视时序见解
 

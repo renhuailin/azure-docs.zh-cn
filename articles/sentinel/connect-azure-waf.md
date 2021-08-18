@@ -9,17 +9,19 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: yelevin
-ms.openlocfilehash: c554f3582e67622a5a1739c9e410328c902d491b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cd1ec5d11083c21511b39ba08fa2bfcf159bfc54
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94655895"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779775"
 ---
 # <a name="connect-data-from-azure-web-application-firewall-waf"></a>从 Azure Web 应用程序防火墙 (WAF) 连接数据
 
 Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 Azure Web 应用程序防火墙 (WAF) 为 Web 应用程序提供集中保护，使其免受代码注入、跨站点脚本等常见攻击和威胁的影响。 Azure WAF 可以部署在 [Azure 应用程序网关](../web-application-firewall/ag/ag-overview.md)服务、[Azure Front Door](../web-application-firewall/afds/afds-overview.md) 服务上，并且可以通过 [Azure 内容分发网络 (CDN)](../web-application-firewall/cdn/cdn-overview.md) WAF 策略（后者目前为公共预览版）部署。
 可以将 Azure WAF 日志连接到 Azure Sentinel，以便查看工作簿中的日志数据，使用这些数据创建自定义警报，并通过整合这些数据来改进调查。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -66,5 +68,5 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 
 ## <a name="next-steps"></a>后续步骤
 在本文档中，你已了解如何将 Azure WAF 日志连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。

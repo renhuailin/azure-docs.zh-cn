@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Site Recovery 将 Windows VM 迁移到 Azure 高级存储
 description: 了解如何使用 Azure Site Recovery 将 VM 磁盘从标准存储帐户迁移到高级存储帐户。
-author: luywang
-ms.service: virtual-machines
+author: roygara
+ms.service: storage
 ms.collection: windows
 ms.topic: how-to
 ms.date: 08/15/2017
-ms.author: luywang
+ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: a8b58c72ee4e6d9d38dccb369a3d38c46f0c4afe
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 749ad687f77b497c66a96de883c6f5566054112e
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046838"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113360426"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 迁移到高级存储
 
@@ -203,7 +203,7 @@ Site Recovery 会创建类型与支持高级存储的 VM 相同或类似的 VM �
 
 3. **清理 Azure Site Recovery 基础结构**。 如果不再需要 Site Recovery，可清理其基础结构。 删除复制的项、配置服务器和恢复策略，然后删除 Azure Site Recovery 保管库。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 * [监视虚拟机和物理服务器的保护及其故障排除](../../site-recovery/site-recovery-monitor-and-troubleshoot.md)
 * [有关 Microsoft Azure Site Recovery 的 Microsoft 问答页](/answers/topics/azure-site-recovery.html)

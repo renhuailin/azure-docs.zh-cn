@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: mathoma
 ms.date: 09/25/2018
-ms.openlocfilehash: 7ba19b7de7843268c3fd1c8135deaa860a0905ee
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: bd1884785f5c6e84abd4aae5af29805ec4c004cb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110707588"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741229"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>使用保留策略管理临时表中的历史数据
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,7 +45,7 @@ FROM sys.databases
 数据库标志 **is_temporal_history_retention_enabled** 默认设置为 ON，但用户可以使用 ALTER DATABASE 语句更改此值。 在执行[时间点还原](recovery-using-backups.md)操作后，它会自动设置为 OFF。 若要为数据库启用临时历史记录保留策略清理，请执行以下语句：
 
 ```sql
-ALTER DATABASE <myDB>
+ALTER DATABASE [<myDB>]
 SET TEMPORAL_HISTORY_RETENTION  ON
 ```
 
@@ -175,7 +175,7 @@ SELECT * FROM dbo.WebsiteUserInfo FOR SYSTEM_TIME ALL;
 如果想要激活临时保留清理，请在执行时间点还原后运行以下 Transact-SQL 语句：
 
 ```sql
-ALTER DATABASE <myDB>
+ALTER DATABASE [<myDB>]
 SET TEMPORAL_HISTORY_RETENTION  ON
 ```
 

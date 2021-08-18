@@ -11,12 +11,12 @@ author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 02/22/2021
 ms.custom: contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: 2ca7eec3bcc40d5c0f93c43cc32b9395feb1e5d0
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 3552a8191fc5482f8a58cc3365302f44f2f364a3
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790408"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284328"
 ---
 # <a name="connect-to-storage-by-using-identity-based-data-access-preview"></a>通过使用基于标识的数据访问连接到存储（预览版）
 
@@ -59,7 +59,7 @@ ms.locfileid: "109790408"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 试用 [Azure 机器学习的免费版或付费版](https://aka.ms/AMLFree)。
+- Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 试用 [Azure 机器学习的免费版或付费版](https://azure.microsoft.com/free/)。
 
 - 一个使用支持的存储类型的 Azure 存储帐户。 预览版支持以下存储类型： 
     - [Azure Blob 存储](../storage/blobs/storage-blobs-overview.md)
@@ -84,7 +84,7 @@ ms.locfileid: "109790408"
 * Azure Data Lake Storage Gen2
 * Azure SQL 数据库
 
-若要访问这些存储服务，必须至少具有[存储 Blob 数据读取者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)访问权限。 只有存储帐户所有者可以[通过 Azure 门户更改访问级别](../storage/common/storage-auth-aad-rbac-portal.md)。
+若要访问这些存储服务，必须至少具有[存储 Blob 数据读取者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)访问权限。 只有存储帐户所有者可以[通过 Azure 门户更改访问级别](../storage/blobs/assign-azure-role-data-access.md)。
 
 如果要在远程计算目标上训练模型，必须至少为计算标识授予存储服务的存储 Blob 数据读取者角色。 了解如何[在计算群集上设置托管标识](how-to-create-attach-compute-cluster.md#managed-identity)。
 

@@ -8,18 +8,18 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: 239cc90b49cc4b13762a02fe136a5b77a15544ee
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 63c8187e8ca5e7d7c17016159e4751299359dddf
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108325672"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720354"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>使用 CLI 创建基于路由的 VPN 网关
 
 本文可帮助你使用 Azure CLI 快速创建基于路由的 Azure VPN 网关。 创建与本地网络的 VPN 连接时使用 VPN 网关。 还可以使用 VPN 网关连接 VNet。
 
-本文中的步骤将创建 VNet、子网、网关子网和基于路由的 VPN 网关（虚拟网络网关）。 创建虚拟网络网关可能需要 45 分钟或更长时间。 完成网关创建后，可以创建连接。 执行这些步骤需要 Azure 订阅。
+本文中的步骤将创建 VNet、子网、网关子网和基于路由的 VPN 网关（虚拟网络网关）。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。 完成网关创建后，可以创建连接。 执行这些步骤需要 Azure 订阅。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

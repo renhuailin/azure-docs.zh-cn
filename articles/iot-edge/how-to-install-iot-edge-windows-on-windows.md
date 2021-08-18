@@ -2,7 +2,6 @@
 title: 安装适用于 Windows 的 Azure IoT Edge | Microsoft Docs
 description: 在 Windows 设备上安装适用于 Windows 容器的 Azure IoT Edge
 author: kgremban
-manager: philmea
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: kgremban
 monikerRange: iotedge-2018-06
-ms.openlocfilehash: bb87d09b67658f9a3d7c68f635bfcd9a29de675c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 676bd23dce7ca79f3640bdfa8f9b55e427390e91
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103201631"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722018"
 ---
 # <a name="install-and-manage-azure-iot-edge-with-windows-containers"></a>使用 Windows 容器安装和管理 Azure IoT Edge
 

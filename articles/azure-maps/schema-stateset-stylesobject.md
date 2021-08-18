@@ -7,13 +7,12 @@ ms.date: 12/07/2020
 ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: f213976d0e61706b2d8a9c8465be1ff0a4065b2e
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 0a4095cd5f15bae3089b597ef6773c3a96e48f45
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031882"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747757"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>动态 Maps StylesObject 架构参考指南
 
@@ -221,7 +220,7 @@ ms.locfileid: "112031882"
 | 属性 | 类型 | 说明 | 必须 |
 |-----------|----------|-------------|-------------|
 | `true` | string | “状态”值为`true`时使用的颜色。 `color` 属性为采用以下任意格式的 JSON 字符串： <ul><li> HTML-样式的十六进制值 </li><li> RGB ("#ff0", "#ffff00", "rgb(255, 255, 0)")</li><li> RGBA ("rgba(255, 255, 0, 1)")</li><li> HSL("hsl(100, 50%, 50%)")</li><li> HSLA("hsla(100, 50%, 50%, 1)")</li><li> 预定义的 HTML 颜色名称，例如黄色和蓝色。</li></ul>| 是 |
-| `false` | 字符串 | “状态”值为`false`时使用的颜色。 | 是 |
+| `false` | string | “状态”值为`false`时使用的颜色。 | 是 |
 
 ### <a name="example-of-booleantypestylerule"></a>BooleanTypeStyleRule 示例
 

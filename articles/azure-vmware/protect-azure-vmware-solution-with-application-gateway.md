@@ -3,12 +3,12 @@ title: 使用 Azure 应用程序网关保护 Azure VMware 解决方案上的 Web
 description: 将 Azure 应用程序网关配置为安全地公开在 Azure VMware 解决方案上运行的 Web 应用。
 ms.topic: how-to
 ms.date: 02/10/2021
-ms.openlocfilehash: 4d31eb24f1cb4ec1e2ead789174189dc99d5310f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 1b9f55386c2900660ddee209d0aea95e7bac610a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108771678"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739618"
 ---
 # <a name="protect-web-apps-on-azure-vmware-solution-with-azure-application-gateway"></a>使用 Azure 应用程序网关保护 Azure VMware 解决方案上的 Web 应用
 
@@ -26,7 +26,7 @@ ms.locfileid: "108771678"
 ## <a name="topology"></a>拓扑
 此图显示了如何使用应用程序网关来保护 Azure IaaS 虚拟机 (VM)、Azure 虚拟机规模集或本地服务器。 应用程序网关将 Azure VMware 解决方案 VM 视为本地服务器。 
 
-![此图显示了应用程序网关如何保护 Azure IaaS 虚拟机 (VM)、Azure 虚拟机规模集或本地服务器。](media/protect-azure-vmware-solution-with-application-gateway/app-gateway-protects.png)
+:::image type="content" source="media/application-gateway/app-gateway-protects.png" alt-text="此图显示了应用程序网关如何保护 Azure IaaS 虚拟机 (VM)、Azure 虚拟机规模集或本地服务器。" border="false":::
 
 > [!IMPORTANT]
 > Azure 应用程序网关是目前唯一支持的方法来公开在 Azure VMware 解决方案 VM 上运行的 Web 应用。
@@ -48,7 +48,7 @@ ms.locfileid: "108771678"
 
 2. 提供如下图所示的基本详细信息；然后选择“接下来: 前端>”。 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/create-app-gateway.png" alt-text="显示 Azure 门户中的“创建应用程序网关”页的屏幕截图。":::
+    :::image type="content" source="media/application-gateway/create-app-gateway.png" alt-text="显示 Azure 门户中的“创建应用程序网关”页的屏幕截图。":::
 
 3. 选择前端 IP 地址类型。 对于公共，选择现有的公共 IP 地址，或新建一个。 选择“下一步: 后端>”。
 
@@ -92,7 +92,7 @@ ms.locfileid: "108771678"
 
 1. 在私有云中，创建两个不同的 VM 池。 一个代表 Contoso，另一个代表 Fabrikam。 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool.png" alt-text="显示 VSphere 客户端中 Web 服务器详细信息摘要的屏幕截图。":::
+    :::image type="content" source="media/application-gateway/app-gateway-multi-backend-pool.png" alt-text="显示 VSphere 客户端中 Web 服务器详细信息摘要的屏幕截图。":::
 
     我们已使用安装了 Internet Information Services (IIS) 角色的 Windows Server 2016。 安装 VM 后，运行以下 PowerShell 命令，在每个 VM 上配置 IIS。 
 
@@ -103,13 +103,13 @@ ms.locfileid: "108771678"
 
 2. 在现有应用程序网关实例中，从左侧菜单中选择“后端池”，选择“添加”，然后输入新池的详细信息。 在右窗格中选择“添加”。
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-02.png" alt-text="用于添加后端池的“后端池”页的屏幕截图。" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-02.png":::
+    :::image type="content" source="media/application-gateway/app-gateway-multi-backend-pool-02.png" alt-text="用于添加后端池的“后端池”页的屏幕截图。" lightbox="media/application-gateway/app-gateway-multi-backend-pool-02.png":::
 
 3. 在“侦听器”部分中，为每个网站创建一个新的侦听器。 输入每个侦听器的详细信息，然后选择“添加”。
 
 4. 在左侧选择“HTTP 设置”，并在左窗格中选择“添加”。 填写详细信息以创建新的 HTTP 设置，然后选择“保存”。
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-03.png" alt-text="用于创建新的 HTTP 设置的“HTTP 设置”页的屏幕截图。" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-03.png":::
+    :::image type="content" source="media/application-gateway/app-gateway-multi-backend-pool-03.png" alt-text="用于创建新的 HTTP 设置的“HTTP 设置”页的屏幕截图。" lightbox="media/application-gateway/app-gateway-multi-backend-pool-03.png":::
 
 5. 在左侧菜单的“规则”部分中创建规则。 将每个规则与相应的侦听器相关联。 选择 **添加** 。
 
@@ -117,7 +117,7 @@ ms.locfileid: "108771678"
 
 7. 测试连接。 打开首选浏览器并导航到 Azure VMware 解决方案环境中托管的不同网站，例如 http://www.fabrikam.com 。
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-multi-backend-pool-07.png" alt-text="显示成功测试连接的浏览器页的屏幕截图。":::
+    :::image type="content" source="media/application-gateway/app-gateway-multi-backend-pool-07.png" alt-text="显示成功测试连接的浏览器页的屏幕截图。":::
 
 ### <a name="routing-by-url"></a>按 URL 路由
 
@@ -125,7 +125,7 @@ ms.locfileid: "108771678"
 
 1. 在私有云中，创建虚拟机池以表示 Web 场。 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool.png" alt-text="VMSphere 客户端中显示另一个 VM 的摘要的页面的屏幕截图。":::
+    :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool.png" alt-text="VMSphere 客户端中显示另一个 VM 的摘要的页面的屏幕截图。":::
 
     已使用安装了 IIS 角色的 Windows Server 2016 来说明此教程。 安装 VM 后，运行以下 PowerShell 命令，为每个 VM 教程配置 IIS。 
 
@@ -160,31 +160,31 @@ ms.locfileid: "108771678"
    1. 选择 **添加** 。 
    1. 为 contoso-images 和 contoso-video 重复此过程，并将一个唯一 VM 添加为目标。 
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-02.png" alt-text="显示添加三个新的后端池的“后端池”页的屏幕截图。" lightbox="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-02.png":::
+    :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-02.png" alt-text="显示添加三个新的后端池的“后端池”页的屏幕截图。" lightbox="media/application-gateway/app-gateway-url-route-backend-pool-02.png":::
 
 3. 在“侦听器”部分中，使用端口 8080 创建一个类型为“基本”的新侦听器。
 
 4. 在左侧导航中选择“HTTP 设置”，并在左窗格中选择“添加”。 填写详细信息以创建新的 HTTP 设置，然后选择“保存”。
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-04.png" alt-text="显示 HTTP 设置配置的“添加 HTTP 设置”页的屏幕截图。":::
+    :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-04.png" alt-text="显示 HTTP 设置配置的“添加 HTTP 设置”页的屏幕截图。":::
 
 5. 在左侧菜单的“规则”部分中创建规则。 将每个规则与以前创建的侦听器相关联。 然后配置主后端池和 HTTP 设置。 选择 **添加** 。
 
-    :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-07.png" alt-text="用于配置到后端目标的路由规则的“添加路由规则”页的屏幕截图。":::
+    :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-07.png" alt-text="用于配置到后端目标的路由规则的“添加路由规则”页的屏幕截图。":::
 
 6. 测试配置。 访问 Azure 门户上的应用程序网关，然后复制“概述”部分中的公共 IP 地址。 
 
    1. 打开新的浏览器窗口，然后输入 URL `http://<app-gw-ip-address>:8080`。 
 
-      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-08.png" alt-text="显示成功测试配置的浏览器页的屏幕截图。":::
+      :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-08.png" alt-text="显示成功测试配置的浏览器页的屏幕截图。":::
 
    1. 将 URL 更改为 `http://<app-gw-ip-address>:8080/images/test.htm`。
 
-      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-09.png" alt-text="另一个使用新的 URL 成功测试的屏幕截图。":::
+      :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-09.png" alt-text="另一个使用新的 URL 成功测试的屏幕截图。":::
 
    1. 将 URL 再次更改为 `http://<app-gw-ip-address>:8080/video/test.htm`。
 
-      :::image type="content" source="media/protect-azure-vmware-solution-with-application-gateway/app-gateway-url-route-backend-pool-10.png" alt-text="使用最终 URL 成功测试的屏幕截图。":::
+      :::image type="content" source="media/application-gateway/app-gateway-url-route-backend-pool-10.png" alt-text="使用最终 URL 成功测试的屏幕截图。":::
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,13 +2,13 @@
 title: Azure 视频分析器模块孪生 JSON 架构
 description: 本文概述了 Azure 视频分析器模块孪生 JSON 架构。
 ms.topic: how-to
-ms.date: 04/30/2021
-ms.openlocfilehash: b87074040a50f0b3a68a71e987e4cac3c3b48398
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 1609552798c5c8e61c704668a8418fb6289c3c25
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385236"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602237"
 ---
 # <a name="module-twin-configuration-schema"></a>模块孪生配置架构
 

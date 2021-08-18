@@ -4,12 +4,12 @@ description: 了解如何通过使用静态连接客户端来避免 Azure Functi
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 6b27639ef8cccefbdec9538d0536db9b297e4039
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: b9a1659fa5d0929c6dfbe0a3c4fd5497666ba2b5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107946360"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729356"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的连接
 
@@ -146,7 +146,7 @@ module.exports = async function (context) {
 函数代码可使用 SQL Server 的 .NET Framework 数据提供程序 ([SqlClient](/dotnet/api/system.data.sqlclient)) 连接到 SQL 关系数据库。 这也是依赖于 ADO.NET 的数据框架（例如[实体框架](/ef/ef6/)）的基础提供程序。 与 [HttpClient](/dotnet/api/system.net.http.httpclient) 和 [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) 连接不同，ADO.NET 默认实现连接池。 但是，由于连接仍可能耗尽，因此应优化数据库连接。 有关详细信息，请参阅 [SQL Server 连接池 (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling)。
 
 > [!TIP]
-> 某些数据框架（例如实体框架）通常从配置文件的 **ConnectionStrings** 节获取连接字符串。 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 [local.settings.json 文件](functions-run-local.md#local-settings-file)中。 如果要在函数代码中创建 [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) 的实例，则应将连接字符串值与其他连接一起存储在应用程序设置中。
+> 某些数据框架（例如实体框架）通常从配置文件的 **ConnectionStrings** 节获取连接字符串。 在这种情况下，必须将 SQL 数据库连接字符串显式添加到函数应用设置的连接字符串集合以及本地项目中的 [local.settings.json 文件](functions-develop-local.md#local-settings-file)中。 如果要在函数代码中创建 [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) 的实例，则应将连接字符串值与其他连接一起存储在应用程序设置中。
 
 ## <a name="next-steps"></a>后续步骤
 

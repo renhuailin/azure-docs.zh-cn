@@ -5,12 +5,12 @@ author: rboucher
 ms.author: robb
 ms.topic: conceptual
 ms.date: 04/14/2021
-ms.openlocfilehash: 004f99f585ca10d6ef9985b001333b2a301df740
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 845cbf9bcdf021519b6e0ff2064316f3352c2c0d
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537029"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463887"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -198,7 +198,7 @@ Moogsoft 在 Azure 资产中运行并与整个混合构造的监视和自动化�
 
 ![NewRelic 徽标](./media/partners/newrelic.png)
 
-[Newrelic 文档](https://newrelic.com/azure)
+[Newrelic 文档](https://newrelic.com/solutions/partners/azure)
 
 ## <a name="opsgenie"></a>OpsGenie
 

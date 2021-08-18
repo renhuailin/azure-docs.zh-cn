@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.custom: automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: 563f4e84bf17f749eb4a02bd9a470984e20aa289
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: d9a213ee9889d5e778c2037a67974d3b3da5f4c4
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131433"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183598"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>自动化机器学习中的数据特征化
 
@@ -32,7 +32,11 @@ ms.locfileid: "108131433"
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假设你已知道如何配置自动化 ML 试验。 有关配置的信息，请参阅以下文章：
+本文假设你已知道如何配置自动化 ML 试验。 
+
+[!INCLUDE [automl-sdk-version](../../includes/machine-learning-automl-sdk-version.md)]
+
+有关配置的信息，请参阅以下文章：
 
 - 对于“代码优先”体验：[使用适用于 Python 的 Azure 机器学习 SDK 配置自动化机器学习试验](how-to-configure-auto-train.md)。
 - 对于低代码或无代码体验：[使用 Azure 机器学习工作室创建、查看和部署自动化机器学习模型](how-to-use-automated-ml-for-ml-models.md)。
@@ -253,16 +257,19 @@ def print_model(model, prefix=""):
     for step in model.steps:
         print(prefix + step[0])
         if hasattr(step[1], 'estimators') and hasattr(step[1], 'weights'):
-            pprint({'estimators': list(
-                e[0] for e in step[1].estimators), 'weights': step[1].weights})
+            pprint({'estimators': list(e[0] for e in step[1].estimators), 'weights': step[1].weights})
             print()
             for estimator in step[1].estimators:
-                print_model(estimator[1], estimator[0] + ' - ')
+                print_model(estimator[1], estimator[0]+ ' - ')
+        elif hasattr(step[1], '_base_learners') and hasattr(step[1], '_meta_learner'):
+            print("\nMeta Learner")
+            pprint(step[1]._meta_learner)
+            print()
+            for estimator in step[1]._base_learners:
+                print_model(estimator[1], estimator[0]+ ' - ')
         else:
             pprint(step[1].get_params())
-            print()
-
-print_model(model)
+            print()   
 ```
 
 此帮助程序函数使用 `LogisticRegression with RobustScalar` 作为特定算法返回特定运行的以下输出。

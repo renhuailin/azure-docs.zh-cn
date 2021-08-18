@@ -1,6 +1,6 @@
 ---
 title: 机器学习工作室（经典）：优化算法 - Azure
-description: 说明如何为 Azure 机器学习工作室（经典）中的算法选择最佳参数集。
+description: 说明如何为机器学习工作室（经典）中的算法选择最佳参数集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -9,22 +9,22 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: a216dc7cb17b9e35e412c6bebe34c0cccfb732e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a133f9b8d1ae22114a78be8e4d22d6293c94c7cd
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519297"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582971"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>选择参数优化机器学习工作室（经典）中的算法
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-本主题介绍如何为 Azure 机器学习工作室（经典）中的算法选择合适的超参数集。 大多数机器学习算法使用参数来设置。 训练模型时，需要为这些参数提供值。 经过训练的模型效力取决于选择的模型参数。 查找最佳参数集的过程称为 *模型选择*。
+本主题介绍如何为机器学习工作室（经典）中的算法选择合适的超参数集。 大多数机器学习算法使用参数来设置。 训练模型时，需要为这些参数提供值。 经过训练的模型效力取决于选择的模型参数。 查找最佳参数集的过程称为 *模型选择*。
 
 
 
-有多种方法可选择模型。 在机器学习中，交叉验证是模型选择中最常用的方法之一，而且它是 Azure 机器学习工作室（经典）中的默认模型选择机制。 由于 Azure 机器学习工作室（经典）支持 R 和 Python，始终可使用 R 或 Python 执行其自己的模型选择机制。
+有多种方法可选择模型。 在机器学习中，交叉验证是模型选择中最广泛使用的方法之一，并且是机器学习工作室（经典）中的默认模型选择机制。 由于机器学习工作室（经典）支持 R 和 Python，因此你始终可以使用 R 或 Python 执行其自己的模型选择机制。
 
 查找最佳参数集有四个步骤：
 
@@ -33,7 +33,7 @@ ms.locfileid: "100519297"
 3. **定义指标**：决定用于确定最佳参数集的指标，例如准确性、均方根误差、精度、撤销率或 F 分数。
 4. **训练、评估和比较**：对于每个独一无二的参数值组合，交叉验证基于定义的误差指标进行执行。 评估和比较后，可选择最佳模型。
 
-下图说明了如何在 Azure 机器学习工作室（经典）中执行此操作。
+下图说明了如何在机器学习工作室（经典）中执行此操作。
 
 ![查找最佳参数集](./media/algorithm-parameters-optimize/fig1.png)
 

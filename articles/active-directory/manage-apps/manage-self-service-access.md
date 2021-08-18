@@ -2,41 +2,42 @@
 title: 如何配置自助应用程序分配 | Microsoft Docs
 description: 启用自助服务应用程序访问以允许用户查找自己的应用程序
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.author: mtillman
+ms.author: davidmu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 506e29abe9c9a5c1c68fc3c0e53650ec51baf1b9
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.reviewer: phsignor
+ms.openlocfilehash: 98848b4ee117a0c2e34e21b30a920fe22c8e02be
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081148"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749119"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>如何配置自助应用程序分配
 
-在你的用户能够从“我的应用”中自行发现应用程序之前，你需要先对你希望其允许用户自行发现并请求访问权限的任何应用程序启用“自助应用程序访问”。 此功能可用于从 [Azure AD 库](./add-application-portal.md)、[Azure AD 应用程序代理](../app-proxy/application-proxy.md)或通过[用户或管理员同意](../develop/application-consent-experience.md)添加的应用程序。 
+在你的用户能够从“我的应用”中自行发现应用程序之前，你需要先对你希望其允许用户自行发现并请求访问权限的任何应用程序启用“自助应用程序访问”。 此功能可用于从 [Azure AD 库](./add-application-portal.md)、[Azure AD 应用程序代理](../app-proxy/application-proxy.md)或通过[用户或管理员同意](../develop/application-consent-experience.md)添加的应用程序。
 
 对于 IT 组，此功能是节省时间和金钱的绝佳方式，我们强烈建议将其作为 Azure Active Directory 的新式应用程序部署的一部分。
 
 使用此功能，可以：
 
--   允许用户从[我的应用](https://myapps.microsoft.com/)中自行发现应用程序，而无需求助 IT 组。
+- 允许用户从[我的应用](https://myapps.microsoft.com/)中自行发现应用程序，而无需求助 IT 组。
 
--   将这些用户添加到预配置组，以便查看请求访问的用户、删除访问权限以及管理分配给用户的角色。
+- 将这些用户添加到预配置组，以便查看请求访问的用户、删除访问权限以及管理分配给用户的角色。
 
--   （可选）允许业务审批人批准应用程序访问请求，从而为 IT 组省去麻烦。
+- （可选）允许业务审批人批准应用程序访问请求，从而为 IT 组省去麻烦。
 
--   （可选）最多配置 10 个可以批准访问此应用程序的人员。
+- （可选）最多配置 10 个可以批准访问此应用程序的人员。
 
--   （可选）允许业务审批者直接从其[我的应用](https://myapps.microsoft.com/)设置用户可用于登录应用程序的密码。
+- （可选）允许业务审批者直接从其[我的应用](https://myapps.microsoft.com/)设置用户可用于登录应用程序的密码。
 
--   （可选）自动将自助服务分配的用户直接分配到应用程序角色。
+- （可选）自动将自助服务分配的用户直接分配到应用程序角色。
 
 > [!NOTE]
 > 必须具备 Azure Active Directory Premium（P1 或 P2）许可证，用户才能请求加入自助应用，所有者才能批准或拒绝请求。 如果没有 Azure Active Directory Premium 许可证，用户将无法添加自助应用。
@@ -78,4 +79,5 @@ ms.locfileid: "112081148"
 完成自助应用程序配置后，用户可以导航到[我的应用](https://myapps.microsoft.com/)，单击“添加自助应用”按钮以查找已启用自助访问的应用。 业务审批者还会在[我的应用](https://myapps.microsoft.com/)中看到通知。 可以启用电子邮件，在用户请求需要审批人批准的应用程序的访问权限时，向审批人发送电子邮件通知。
 
 ## <a name="next-steps"></a>后续步骤
+
 [为自助组管理设置 Azure Active Directory](../enterprise-users/groups-self-service-management.md)

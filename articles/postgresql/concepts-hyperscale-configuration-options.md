@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 04/29/2021
-ms.openlocfilehash: 60f52a11aa1573e4d05bcdc1dd8308ec3cc96dac
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 08/03/2021
+ms.openlocfilehash: f46f5a01765d03c521c7bbc21b51aef9f3a8f93a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108316130"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745156"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL – 超大规模 (Citus) 配置选项
 
@@ -73,12 +73,7 @@ ms.locfileid: "108316130"
 | 19           | 29,184              | 58,368            | 116,812           |
 | 20           | 30,720              | 61,440            | 122,960           |
 
-### <a name="basic-tier-preview"></a>基本层（预览版）
-
-> [!IMPORTANT]
-> 超大规模 (Citus) 基本层目前以预览版提供。  此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
->
-> 请参阅[超大规模 (Citus) 的预览功能](hyperscale-preview-features.md)，以查看其他新功能的完整列表。
+### <a name="basic-tier"></a>基本层
 
 超大规模 (Citus) [基本层](concepts-hyperscale-tiers.md)是只有一个节点的服务器组。  由于协调器与工作器节点之间没有区别，因此，选择计算和存储资源就不那么复杂。
 
@@ -113,7 +108,7 @@ ms.locfileid: "108316130"
     * 巴西南部
     * 加拿大中部
     * 美国中部
-    * 美国东部 *
+    * 美国东部
     * 美国东部 2
     * 美国中北部
     * 美国西部 2
@@ -124,12 +119,11 @@ ms.locfileid: "108316130"
     * 东南亚
 * 欧洲：
     * 法国中部
+    * 德国中西部
     * 北欧
     * 瑞士北部
     * 英国南部
     * 西欧
-
-（\* = 支持[预览功能](hyperscale-preview-features.md)）
 
 其中某些区域最初可能未在所有 Azure 订阅中激活。 如果你要使用上述列表中的某个区域但未在订阅中看到该区域，或者要使用此列表中不包括的区域，请创建[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 

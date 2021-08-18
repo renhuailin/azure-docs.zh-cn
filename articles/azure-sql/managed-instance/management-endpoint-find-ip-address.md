@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 12/04/2018
-ms.openlocfilehash: 02c28282bbf35e2e69cb85149c3a7d1187c5c258
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 8603f026d396316edf9d83e52ef33973ddc8edd7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110694019"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751225"
 ---
 # <a name="determine-the-management-endpoint-ip-address---azure-sql-managed-instance"></a>确定管理终结点 IP 地址 - Azure SQL 托管实例 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

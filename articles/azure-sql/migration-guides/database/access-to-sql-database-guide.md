@@ -10,16 +10,16 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 03/19/2021
-ms.openlocfilehash: 37266c7a7692c59efdded9ba3fabe71458a5f674
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 8363fb2dbd80f55cdae4c064177bed63ed988559
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110788615"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725566"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>迁移指南：Access 到 Azure SQL 数据库
 
-本指南介绍如何使用适用于 Access 的 [SQL Server 迁移](https://azure.microsoft.com/en-us/migration/sql-server/)助手（适用于 Access 的 SSMA）将 Microsoft Access 数据库[迁移](https://azure.microsoft.com/migration/migration-journey)到 Azure SQL 数据库。
+本指南介绍如何使用适用于 Access 的 [SQL Server 迁移](https://azure.microsoft.com/migration/sql-server/)助手（适用于 Access 的 SSMA）将 Microsoft Access 数据库[迁移](https://azure.microsoft.com/migration/migration-journey)到 Azure SQL 数据库。
 
 有关其他迁移指南，请参阅 [Azure 数据库迁移指南](/data-migration)。 
 
@@ -129,7 +129,7 @@ ms.locfileid: "110788615"
 
     ![“Access 元数据资源管理器”窗格上“迁移数据”命令的屏幕截图。](./media/access-to-sql-database-guide/migrate-data.png)
 
-1. 迁移完成后，查看“数据迁移报表”。  
+1. 迁移完成后，查看数据迁移报表。  
 
     ![“迁移数据报表”窗格的屏幕截图，显示要查看的示例报表。](./media/access-to-sql-database-guide/migrate-data-review.png)
 
@@ -170,7 +170,7 @@ ms.locfileid: "110788615"
 
 | 标题 | 说明 |
 | --- | --- |
-| [数据工作负荷评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | 为指定工作负载提供建议的“最适合”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。 |
+| [数据工作负荷评估模型和工具](https://www.microsoft.com/download/details.aspx?id=103130) | 为指定工作负载提供建议的“最适合”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。 |
 
 数据 SQL 工程团队开发了这些资源。 此团队的核心章程是解锁和加速到 Microsoft 的 Azure 数据平台的数据平台迁移项目的复杂现代化进程。
 

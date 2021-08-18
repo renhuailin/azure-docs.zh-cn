@@ -4,15 +4,15 @@ description: 本文介绍如何使用 Azure 基于角色的访问控制 (Azure R
 keywords: 自动化 rbac, 基于角色的访问控制, azure rbac
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 05/17/2020
+ms.date: 06/15/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 943fa65f114e46c80c8c1ef576f784f9117c9f79
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 5484f1fb798022e59e71f153d087a880bca5c983
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110083793"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113032554"
 ---
 # <a name="manage-role-permissions-and-security"></a>管理角色权限和安全性
 
@@ -24,9 +24,9 @@ Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 资源进行�
 
 | **角色** | **说明** |
 |:--- |:--- |
-| “所有者” |“所有者”角色允许访问自动化帐户中的所有资源和操作，包括访问其他用户、组和应用程序以管理自动化帐户。 |
+| 所有者 |“所有者”角色允许访问自动化帐户中的所有资源和操作，包括访问其他用户、组和应用程序以管理自动化帐户。 |
 | 参与者 |“参与者”角色允许管理所有事项，修改其他用户对自动化帐户的访问权限除外。 |
-| 读取器 |“读者”角色允许查看自动化帐户中的所有资源，但不能进行任何更改。 |
+| 读取器 |“读取者”角色允许查看自动化帐户中的所有资源，但不能进行任何更改。 |
 | 自动化运算符 |自动化操作员角色允许针对某个自动化帐户中的所有 Runbook 查看 Runbook 名称和属性，以及为其创建和管理作业。 如果想要防止他人查看或修改自动化帐户资源（例如凭据资产和 Runbook），但仍允许所在组织的成员执行这些 Runbook，则可使用此角色。 |
 |自动化作业操作员|自动化作业操作员角色允许针对某个自动化帐户中的所有 Runbook 创建和管理作业。|
 |自动化 Runbook 操作员|自动化 Runbook 操作员角色允许查看某个 Runbook 的名称和属性。|
@@ -40,7 +40,7 @@ Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 资源进行�
 
 下表描述授予每个角色的特定权限。 这可能包括授予权限的操作和限制权限的不操作。
 
-### <a name="owner"></a>“所有者”
+### <a name="owner"></a>所有者
 
 所有者可管理所有内容，包括访问权限。 下表显示了授予角色的权限：
 
@@ -62,7 +62,7 @@ Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 资源进行�
 
 ### <a name="reader"></a>读取器
 
-读者可以查看自动化帐户中的所有资源，但不能进行任何更改。
+读取者可以查看自动化帐户中的所有资源，但不能进行任何更改。
 
 |**操作**  |**说明**  |
 |---------|---------|
@@ -102,7 +102,7 @@ Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 资源进行�
 
 ### <a name="automation-job-operator"></a>自动化作业操作员
 
-自动化作业操作员角色是在自动化帐户范围内授予的。 这将向操作员授予权限来为帐户中的所有 Runbook 创建和管理作业。 如果为作业操作员角色授予了对包含自动化帐户的资源组的读取权限，则该角色的成员能够启动 runbook。 但他们不能创建、编辑或删除它们。
+自动化作业操作员角色是在自动化帐户范围内授予的。 这将向操作员授予权限来为帐户中的所有 Runbook 创建和管理作业。 如果为作业操作员角色授予了对包含自动化帐户的资源组的读取权限，则该角色的成员能够启动 runbook。 但他们不能创建、编辑或删除 Runbook。
 
 下表显示了授予角色的权限：
 
@@ -258,13 +258,93 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |创建/编辑保存的搜索     | Microsoft.OperationalInsights/workspaces/write           | 工作区        |
 |创建/编辑范围配置  | Microsoft.OperationalInsights/workspaces/write   | 工作区|
 
+## <a name="custom-azure-automation-contributor-role"></a>自定义 Azure 自动化参与者角色
+
+Microsoft 打算从 Log Analytics 参与者角色中删除自动化帐户权限。 目前，上述内置 [Log Analytics 参与者](#log-analytics-contributor)角色可将特权提升至订阅[参与者](./../role-based-access-control/built-in-roles.md#contributor)角色。 由于最初为自动化帐户的运行方式帐户配置了订阅中的参与者权限，因此攻击者可能会利用该权限创建新的 Runbook，并以订阅中的参与者身份执行代码。
+
+由于存在这种安全风险，我们建议不要使用 Log Analytics 参与者角色来执行自动化作业。 而是应该创建 Azure 自动化参与者自定义角色，并将其用于与自动化帐户相关的操作。 可执行以下步骤来创建此自定义角色。
+
+### <a name="create-using-the-azure-portal"></a>使用 Azure 门户进行创建
+
+在 Azure 门户中执行以下步骤，以创建 Azure 自动化自定义角色。 若要了解详细信息，请参阅 [Azure 自定义角色](./../role-based-access-control/custom-roles.md)。
+
+1. 将以下 JSON 语法复制并粘贴到某个文件中。 将该文件保存在本地计算机或 Azure 存储帐户中。 在 JSON 文件中，请将 assignableScopes 属性的值替换为订阅 GUID。
+
+   ```json
+   {
+    "properties": {
+        "roleName": "Automation account Contributor (custom)",
+        "description": "Allows access to manage Azure Automation and its resources",
+        "type": "CustomRole",
+        "permissions": [
+            {
+                "actions": [
+                    "Microsoft.Authorization/*/read",
+                    "Microsoft.Insights/alertRules/*",
+                    "Microsoft.Insights/metrics/read",
+                    "Microsoft.Insights/diagnosticSettings/*",
+                    "Microsoft.Resources/deployments/*",
+                    "Microsoft.Resources/subscriptions/resourceGroups/read",
+                    "Microsoft.Automation/automationAccounts/*",
+                    "Microsoft.Support/*"
+                ],
+                "notActions": [],
+                "dataActions": [],
+                "notDataActions": []
+            }
+        ],
+        "assignableScopes": [
+            "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
+        ]
+      }
+   }
+   ```
+
+1. 按照[使用 Azure 门户创建或更新 Azure 自定义角色](../role-based-access-control/custom-roles-portal.md#start-from-json)中所述完成剩余步骤。 对于[步骤 3：基本信息](../role-based-access-control/custom-roles-portal.md#step-3-basics)，请注意以下几点：
+
+    -  在“自定义角色名称”字段中，输入“自动化帐户参与者（自定义）”或者符合命名标准的名称 。
+    - 对于“基线权限”，请选择“从 JSON 启动” 。 然后选择前面保存的自定义 JSON 文件。
+
+1. 完成剩余步骤，然后查看并创建自定义角色。 自定义角色可能需要几分钟的时间才能显示在每个位置。
+
+### <a name="create-using-powershell"></a>使用 PowerShell 创建
+
+在 PowerShell 中执行以下步骤，以创建 Azure 自动化自定义角色。 若要了解详细信息，请参阅 [Azure 自定义角色](./../role-based-access-control/custom-roles.md)。
+
+1. 将以下 JSON 语法复制并粘贴到某个文件中。 将该文件保存在本地计算机或 Azure 存储帐户中。 在 JSON 文件中，请将 AssignableScopes 属性的值替换为订阅 GUID。
+
+    ```json
+    { 
+        "Name": "Automation account Contributor (custom)",
+        "Id": "",
+        "IsCustom": true,
+        "Description": "Allows access to manage Azure Automation and its resources",
+        "Actions": [
+            "Microsoft.Authorization/*/read",
+            "Microsoft.Insights/alertRules/*",
+            "Microsoft.Insights/metrics/read",
+            "Microsoft.Insights/diagnosticSettings/*",
+            "Microsoft.Resources/deployments/*",
+            "Microsoft.Resources/subscriptions/resourceGroups/read",
+            "Microsoft.Automation/automationAccounts/*",
+            "Microsoft.Support/*"
+        ],
+        "NotActions": [],
+        "AssignableScopes": [
+            "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
+        ] 
+    } 
+    ```
+
+1. 按照[使用 Azure PowerShell 创建或更新 Azure 自定义角色](./../role-based-access-control/custom-roles-powershell.md#create-a-custom-role-with-json-template)中所述完成剩余步骤。 自定义角色可能需要几分钟的时间才能显示在每个位置。
+
 ## <a name="update-management-permissions"></a>更新管理权限
 
-更新管理达到跨多个服务以提供其服务。 下表显示了管理更新管理部署所需的权限：
+更新管理可用于评估和安排同一 Azure Active Directory (Azure AD) 租户中的或使用 Azure Lighthouse 跨租户的多个订阅中的计算机的更新部署。 下表列出了管理更新部署所需的权限。
 
 |**资源** |**角色** |**范围** |
 |---------|---------|---------|
-|自动化帐户 |Log Analytics 参与者 |自动化帐户 |
+|自动化帐户 |[自定义 Azure 自动化参与者角色](#custom-azure-automation-contributor-role) |自动化帐户 |
 |自动化帐户 |虚拟机参与者  |帐户的资源组  |
 |Log Analytics 工作区  Log Analytics 参与者|Log Analytics 工作区 |
 |Log Analytics 工作区 |Log Analytics 读者|订阅|
@@ -400,7 +480,7 @@ Remove-AzRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -R
 
 ### <a name="user-experience-for-automation-operator-role---automation-account"></a>自动化操作员角色的用户体验 - 自动化帐户
 
-在自动化帐户范围内分配了自动化操作员角色的用户，在查看分配到的自动化帐户时，只能查看在自动化帐户中创建的 Runbook、Runbook 作业和计划的列表。 此用户无法查看这些项的定义。 该用户可以启动、停止、暂停、恢复或计划 Runbook 作业。 但是，该用户无法访问其他自动化资源，例如配置、混合辅助角色组或 DSC 节点。
+在自动化帐户范围内分配了自动化操作员角色的用户，在查看分配到的自动化帐户时，只能查看在自动化帐户中创建的 Runbook、Runbook 作业和计划的列表。 此用户无法查看这些项的定义。 该用户可以启动、停止、暂停、恢复或计划 Runbook 作业。 但是，此用户无法访问其他自动化资源，例如配置、混合 Runbook 辅助角色组或 DSC 节点。
 
 ![对资源无访问权限](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
 

@@ -6,18 +6,18 @@ ms.author: valls
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0d97287657b1e1fe7d540e8811c90794aaa5fece
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 14bc02c81e28e98d6d094cdfbde6095b7cd2d885
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739559"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403443"
 ---
 # <a name="device-update-for-iot-hub-agent-overview"></a>IoT 中心设备更新代理概述
 
 Device Update 代理包含两个概念层：
 
-* 接口层是在 [Azure IoT 即插即用 (PnP)](../iot-pnp/overview-iot-plug-and-play.md) 的基础上构建的，可让消息在 Device Update 代理和 Device Update 服务之间流动。
+* 接口层是在 [Azure IoT 即插即用 (PnP)](../iot-develop/overview-iot-plug-and-play.md) 的基础上构建的，可让消息在 Device Update 代理和 Device Update 服务之间流动。
 * 平台层负责下载、安装和应用等高级更新操作（可能特定于平台或设备）。
 
 :::image type="content" source="media/understand-device-update/client-agent-reference-implementations.png" alt-text="代理实现。" lightbox="media/understand-device-update/client-agent-reference-implementations.png":::

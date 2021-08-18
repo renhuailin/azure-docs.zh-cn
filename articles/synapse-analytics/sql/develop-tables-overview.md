@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 27cc53c3eef1bb2a9962d2c21ae80db3c8b0383d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7958c66275bbfb3d08244c7ca81d50fca4b915d0
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585428"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862210"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的 Synapse SQL 设计表
 
@@ -102,7 +102,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 [外部表](develop-tables-external-tables.md)指向位于 Azure 存储 Blob 或 Azure Data Lake Storage 中的数据。
 
-使用 [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 语句，将外部表中的数据导入专用 SQL 池。 有关加载教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)。
+使用 [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?context=/azure/synapse-analytics/context/context) 语句，将外部表中的数据导入专用 SQL 池。 有关加载教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)。
 
 对于无服务器 SQL 池，可以使用 [CETAS](develop-tables-cetas.md) 将查询结果保存到 Azure 存储中的外部表。
 
@@ -112,7 +112,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 ## <a name="distributed-tables"></a>分布式表
 
-专用 SQL 池的一个基本功能是可以跨[分布区](../sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#distributions)以特定方式对表进行存储和运算。  专用 SQL 池支持使用以下三种方法来分配数据：
+专用 SQL 池的一个基本功能是可以跨[分布区](../sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?context=/azure/synapse-analytics/context/context#distributions)以特定方式对表进行存储和运算。  专用 SQL 池支持使用以下三种方法来分配数据：
 
 - 轮循机制（默认）
 - 哈希
@@ -122,19 +122,19 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 哈希分布表根据分布列中的值来分布行。 根据设计，在对大型表进行查询时，哈希分布表可以实现高性能。 选择分布列时，需考虑多项因素。
 
-有关详细信息，请参阅[分布式表的设计准则](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+有关详细信息，请参阅[分布式表的设计准则](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?context=/azure/synapse-analytics/context/context)。
 
 ### <a name="replicated-tables"></a>复制表
 
 复制表在每个计算节点上提供表的完整副本。 对复制表运行的查询速度较快，因为复制表中的联接不需要移动数据。 不过，复制需要额外的存储，并且对于大型表不可行。
 
-有关详细信息，请参阅[复制表的设计准则](../sql-data-warehouse/design-guidance-for-replicated-tables.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+有关详细信息，请参阅[复制表的设计准则](../sql-data-warehouse/design-guidance-for-replicated-tables.md?context=/azure/synapse-analytics/context/context)。
 
 ### <a name="round-robin-tables"></a>循环表
 
 循环表将表行均匀地分布到所有分布区中。 行将随机分布。 将数据加载到循环表中的速度很快。  但是，与其他分布方法相比，查询可能需要进行更多的数据移动。
 
-有关详细信息，请参阅[分布式表的设计准则](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+有关详细信息，请参阅[分布式表的设计准则](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?context=/azure/synapse-analytics/context/context)。
 
 ### <a name="common-distribution-methods-for-tables"></a>表的常用分布方法
 
@@ -150,7 +150,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 在专用 SQL 池中，分区表存储根据数据范围存储表行并对其执行操作。 例如，可以按日、月或年将某个表分区。 可以通过分区消除来提高查询性能，否则查询扫描范围将限制为分区中的数据。
 
-还可以通过分区切换来维护数据。 由于专用 SQL 池中的数据已经是分布式的，过多的分区可能会降低查询性能。 有关详细信息，请参阅[分区指南](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。  
+还可以通过分区切换来维护数据。 由于专用 SQL 池中的数据已经是分布式的，过多的分区可能会降低查询性能。 有关详细信息，请参阅[分区指南](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?context=/azure/synapse-analytics/context/context)。  
 
 > [!TIP]
 > 以分区切换的方式切换成不为空的表分区时，若要截断现有数据，可考虑在 [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) 语句中使用 TRUNCATE_TARGET 选项。
@@ -200,7 +200,7 @@ ORDER BY
 
 ## <a name="primary-key-and-unique-key"></a>主键和唯一键
 
-对于专用 SQL 池，仅当同时使用 NONCLUSTERED 和 NOT ENFORCED 时才支持 PRIMARY KEY。  仅在使用 NOT ENFORCED 时才支持 UNIQUE 约束。  有关详细信息，请参阅 [SQL 池表约束](../sql-data-warehouse/sql-data-warehouse-table-constraints.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)一文。
+对于专用 SQL 池，仅当同时使用 NONCLUSTERED 和 NOT ENFORCED 时才支持 PRIMARY KEY。  仅在使用 NOT ENFORCED 时才支持 UNIQUE 约束。  有关详细信息，请参阅[专用 SQL 池表约束](../sql-data-warehouse/sql-data-warehouse-table-constraints.md?context=/azure/synapse-analytics/context/context)一文。
 
 ## <a name="commands-for-creating-tables"></a>用于创建表的命令
 
@@ -231,7 +231,7 @@ ORDER BY
 - [索引视图](/sql/relational-databases/views/create-indexed-views?view=azure-sqldw-latest&preserve-view=true)
 - [序列](/sql/t-sql/statements/create-sequence-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 - [稀疏列](/sql/relational-databases/tables/use-sparse-columns?view=azure-sqldw-latest&preserve-view=true)
-- 代理键，通过[标识](../sql-data-warehouse/sql-data-warehouse-tables-identity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)实现
+- 代理键，通过[标识](../sql-data-warehouse/sql-data-warehouse-tables-identity.md?context=/azure/synapse-analytics/context/context)实现
 - [同义词](/sql/t-sql/statements/create-synonym-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 - [触发器](/sql/t-sql/statements/create-trigger-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 - [唯一索引](/sql/t-sql/statements/create-index-transact-sql?view=azure-sqldw-latest&preserve-view=true)
@@ -440,4 +440,4 @@ ORDER BY    distribution_id
 
 ## <a name="next-steps"></a>后续步骤
 
-为数据仓库创建表后，接下来可将数据载入该表。  有关加载的教程，请参阅[将数据加载到专用 SQL 池中](../sql-data-warehouse/load-data-wideworldimportersdw.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#load-the-data-into-sql-pool)。
+为数据仓库创建表后，接下来可将数据载入该表。  有关加载的教程，请参阅[将数据加载到专用 SQL 池中](../sql-data-warehouse/load-data-wideworldimportersdw.md?context=/azure/synapse-analytics/context/context#load-the-data-into-sql-pool)。

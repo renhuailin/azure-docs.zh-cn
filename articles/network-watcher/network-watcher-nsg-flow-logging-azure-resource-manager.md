@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: fasttrack-edit, devx-track-azurepowershell
-ms.openlocfilehash: 6aab2d1d681cbfd55cc275b1f647562d54a08f0c
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: aebcf680fec069fdb28114ef8a1a0f6fd8547e63
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110791324"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112458571"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>从 Azure 资源管理器模板部署 NSG 流日志
 
@@ -32,7 +32,7 @@ ms.locfileid: "110791324"
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 
-[Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)是 Azure 的本机方法且功能强大，可用于管理[基础结构即代码](/azure/devops/learn/what-is-infrastructure-as-code)。
+[Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)是 Azure 的本机方法且功能强大，可用于管理[基础结构即代码](/devops/deliver/what-is-infrastructure-as-code)。
 
 本文介绍如何使用 Azure 资源管理器模板和 Azure PowerShell 以编程方式启用 [NSG 流日志](./network-watcher-nsg-flow-logging-overview.md)。 首先，提供 NSG 流日志对象属性的概述，并提供一些示例模板。 然后，使用本地 PowerShell 实例部署模板。
 

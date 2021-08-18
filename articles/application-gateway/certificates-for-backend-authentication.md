@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 06/17/2020
+ms.date: 07/30/2021
 ms.author: absha
-ms.openlocfilehash: 874e554063f64ddefce99a223678d64b2e0774c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a06e02df8eed42db3b79fcfb06e44c4bb17db3e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93397716"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728070"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>创建证书以允许 Azure 应用程序网关中的后端
 
@@ -57,7 +57,7 @@ ms.locfileid: "93397716"
 
 6. 单击“完成”导出证书。
 
-   ![屏幕截图显示了完成文件导出后的证书导出向导。](./media/certificates-for-backend-authentication/finish.png)
+   ![屏幕截图显示了完成文件导出后的证书导出向导。](./media/certificates-for-backend-authentication/finish-screen.png)
 
 7. 证书已成功导出。
 

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/11/2021
+ms.date: 06/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3a7c93bb0e0dcc51e35bc27fa0799d8410e66df6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c4d31d7a1d9e67b1c246de50887d65206a12d57
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104581875"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112284610"
 ---
 # <a name="set-up-a-resource-owner-password-credentials-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置资源所有者密码凭据流
 
@@ -365,6 +365,14 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
     "refresh_token_expires_in": 1209600
 }
 ```
+
+## <a name="troubleshooting"></a>疑难解答
+
+### <a name="the-provided-application-is-not-configured-to-allow-the-oauth-implicit-flow"></a>未将提供的应用程序配置为允许“OAuth”隐式流
+
+* 症状 - 你运行 ROPC 流，并收到以下消息：“AADB2C90057: 提供的应用程序未配置为允许“OAuth”隐式流”。
+* 可能的原因 - 不允许对应用程序使用隐式流。
+* 解决方法：在 Azure AD B2C 中创建[应用注册](#register-an-application)时，需要手动编辑应用程序清单并将 `oauth2AllowImplicitFlow` 属性的值设置为 `true`。 配置 `oauth2AllowImplicitFlow` 属性后，更改可能需要几分钟（通常不超过五分钟）才能生效。 
 
 ## <a name="use-a-native-sdk-or-app-auth"></a>使用本机 SDK 或 App-Auth
 

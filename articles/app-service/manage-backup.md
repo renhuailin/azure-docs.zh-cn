@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7aca099b4396237a80255a24149d9977c96b87cd
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: aed7e341cf190e6daac237b87f17254c5c65bbab
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110794096"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723044"
 ---
 # <a name="back-up-your-app-in-azure"></a>在 Azure 中备份应用
 
@@ -43,14 +43,13 @@ ms.locfileid: "110794096"
 
 ## <a name="requirements-and-restrictions"></a>要求和限制
 
-* 备份和还原功能要求应用服务计划处于标准层、高级层或隔离层  。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](manage-scale-up.md)。 与标准层相比，高级层和隔离层每日允许更多备份量  。
+* 备份和还原功能要求应用服务计划处于“标准”、“高级”或“隔离”层  。 有关缩放应用服务计划以使用更高层的详细信息，请参阅[增加 Azure 中的应用](manage-scale-up.md)。 与标准层相比，高级层和隔离层每日允许更多备份量  。
 * 在与要备份的应用相同的订阅中，需要有一个 Azure 存储帐户和容器。 有关 Azure 存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../storage/common/storage-account-overview.md)。
 * 最多可备份 10 GB 的应用和数据库内容。 如果备份大小超过此限制，会出错。
 * 不支持备份启用了 TLS 的 Azure Database for MySQL。 如果已配置备份，备份将失败。
 * 不支持备份启用了 TLS 的 Azure Database for PostgreSQL。 如果已配置备份，备份将失败。
 * 应用内 MySQL 数据库无需任何配置即可自动备份。 如果对应用内 MySQL 数据库进行手动设置，例如添加连接字符串，则备份可能无法正常工作。
 * 不支持将启用了防火墙的存储帐户用作备份目标。 如果已配置备份，备份将失败。
-* 目前，不能将备份和还原功能与 Azure 应用服务 VNet 集成功能一起使用。 
 * 目前，不能对配置为使用专用终结点的 Azure 存储帐户使用备份和还原功能。
 
 <a name="manualbackup"></a>
@@ -162,7 +161,25 @@ ms.locfileid: "110794096"
 > [!WARNING]
 > 改动 **websitebackups** 容器中的任何文件都导致备份无效，进而无法还原。
 
-## <a name="automate-with-scripts"></a>使用脚本自动化
+## <a name="troubleshooting"></a>故障排除
+
+“备份”页显示每个备份的状态。 如果单击某个失败的备份，可以获取有关失败的日志详细信息。 使用下表来帮助排查备份问题。 如果该表中未提到这种失败，请提交支持票证。
+
+| 错误 | Fix |
+| - | - |
+| 存储访问失败。 | 删除备份计划，然后重新配置。 或者重新配置备份存储。 |
+| 网站和数据库的合计大小超过了备份限制 ({0} GB)。 内容大小为 {1} GB。 | 从备份中[排除某些文件](#configure-partial-backups)，或删除备份的数据库部分，并改用外部提供的备份。 |
+| 连接到服务器 {1} 上的数据库 {0} 时出错: 使用方法“mysql_native_password”在主机“{1}”中对用户“\<username>”进行身份验证失败并出现以下消息: 未知的数据库“\<db-name>” | 更新数据库连接字符串。 |
+| 无法解析 {0}。 {1} (CannotResolveStorageAccount) | 删除备份计划，然后重新配置。 |
+| 用户“{0}”登录失败。 | 更新数据库连接字符串。 |
+| 创建 {0} 数据库副本({1})引发了异常。 无法创建数据库副本。 | 在连接字符串中使用管理用户。 |
+| 服务器主体“\<name>”无法在当前安全上下文下访问数据库“master”。 无法打开登录名请求的数据库 "master"。 登录失败。 用户“\<name>”登录失败。 | 在连接字符串中使用管理用户。 |
+| 建立与 SQL Server 的连接时，出现网络相关或特定于实例的错误。 找不到或无法访问服务器。 请验证实例名称是否正确，SQL Server 是否已配置为允许远程连接。 （提供程序：命名管道提供程序，错误: 40 - 无法打开到 SQL Server 的连接）。 | 检查连接字符串是否有效。 在数据库服务器设置中允许应用的[出站 IP](overview-inbound-outbound-ips.md)。 |
+| 无法打开登录时请求的服务器“\<name>”。 登录失败。 | 检查连接字符串是否有效。 |
+| 缺少有效共享访问签名的必需参数。 | 删除备份计划，然后重新配置。 |
+| 需要 SSL 连接。 请指定 SSL 选项，然后重试。 尝试连接。 | 改用 Azure MySQL 或 Azure Postgressql 中的内置备份功能。 |
+
+## <a name="automate-with-scripts"></a>使用脚本自动执行
 
 可以在 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/) 中使用脚本自动备份管理。
 

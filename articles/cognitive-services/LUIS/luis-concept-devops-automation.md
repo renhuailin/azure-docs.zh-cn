@@ -8,12 +8,12 @@ ms.date: 06/01/2021
 ms.author: aahi
 author: aahill
 ms.manager: nitinme
-ms.openlocfilehash: 550af8bda0768738dc2162a0dc0bf767d1c54741
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 7079c1ee309db9563142c54eea88ccd4ba6f6e28
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110783023"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463632"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>LUIS DevOps 持续集成和持续交付工作流
 
@@ -30,9 +30,9 @@ ms.locfileid: "110783023"
 
 “CI/CD 工作流”合并两个补充开发进程：
 
-* [持续集成](/azure/devops/learn/what-is-continuous-integration) (CI) 是经常在共享存储库中提交代码并对其执行自动生成的工程实践。 在结合了自动化[测试](luis-concept-devops-testing.md)方法后，持续集成使我们能够验证：对于每个更新，LUDown 源仍有效并且可以导入到 LUIS 应用中，同时还会通过一组测试来验证定型应用是否可识别解决方案所需的意图和实体。
+* [持续集成](/devops/develop/what-is-continuous-integration) (CI) 是经常在共享存储库中提交代码并对其执行自动生成的工程实践。 在结合了自动化[测试](luis-concept-devops-testing.md)方法后，持续集成使我们能够验证：对于每个更新，LUDown 源仍有效并且可以导入到 LUIS 应用中，同时还会通过一组测试来验证定型应用是否可识别解决方案所需的意图和实体。
 
-* [持续交付](/azure/devops/learn/what-is-continuous-delivery) (CD) 在持续集成概念的基础上更进了一步，可将应用程序自动部署到可执行更深入测试的环境中。 CD 使我们能够及早了解我们所做的更改所带来的任何无法预料的问题，还可以了解我们的测试覆盖率与目标的差距。
+* [持续交付](/devops/deliver/what-is-continuous-delivery) (CD) 在持续集成概念的基础上更进了一步，可将应用程序自动部署到可执行更深入测试的环境中。 CD 使我们能够及早了解我们所做的更改所带来的任何无法预料的问题，还可以了解我们的测试覆盖率与目标的差距。
 
 持续集成和持续交付的目标是确保“主分支始终可提供服务”。 对于 LUIS 应用程序，这意味着，如果需要，我们可以从主分支 LUIS 应用中获取任何版本并将其交付生产。
 

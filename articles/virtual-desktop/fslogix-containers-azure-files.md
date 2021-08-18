@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/04/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: c7b8b400d2f927fa4b5d6f713b29dbda34eec959
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 013dea780c1f5819d9b9caefeec3b66066d1f44c
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757672"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113033544"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 配置文件容器和 Azure 文件
 
@@ -101,4 +101,4 @@ Azure 虚拟桌面提供对客户所用 VM 的大小、类型和计数的完全�
 - 若要在云中设置完全托管的文件共享，请参阅[设置 Azure 文件存储共享](/azure/storage/files/storage-files-active-directory-enable/)。
 - 若要配置 FSLogix 配置文件容器，请参阅[使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md)。
 - 若要将用户分配到主机池，请参阅[管理 Azure 虚拟桌面的应用组](manage-app-groups.md)。
-- 若要通过 Web 浏览器访问 Azure 虚拟桌面资源，请参阅[连接到 Azure 虚拟桌面](connect-web.md)。
+- 若要通过 Web 浏览器访问 Azure 虚拟桌面资源，请参阅[连接到 Azure 虚拟桌面](./user-documentation/connect-web.md)。

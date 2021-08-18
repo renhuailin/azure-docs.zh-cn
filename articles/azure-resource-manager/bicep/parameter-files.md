@@ -1,20 +1,20 @@
 ---
 title: 为 Bicep 创建参数文件
-description: 创建用于在 Bicep 文件部署过程中传入值的参数文件
+description: 创建用于在 Bicep 文件的部署过程中传入值的参数文件
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: eab3052b55b1dc1033139c734605e72b5494b174
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 06/16/2021
+ms.openlocfilehash: 4628b7d6a04bdec2a7ec4273536bf895dc23a5d9
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111025941"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112292224"
 ---
 # <a name="create-bicep-parameter-file"></a>创建 Bicep 参数文件
 
-可使用包含参数值的 JSON 文件，而不是在脚本中以内联值的形式传递参数。 本文介绍如何创建用于 Bicep 文件的参数文件。
+可使用包含参数值的 JSON 文件，而不是在脚本中以内联值的形式传递参数。 本文介绍如何创建与 Bicep 文件配合使用的参数文件。
 
 ## <a name="parameter-file"></a>参数文件
 
@@ -35,35 +35,11 @@ ms.locfileid: "111025941"
 }
 ```
 
-请注意，参数文件以纯文本形式存储参数值。 此方法适用于不敏感的值，例如资源 SKU。 纯文本不适用于敏感值（如密码）。 如果需要传递包含敏感值的参数，请将该值存储在密钥保管库中。 然后引用参数文件中的密钥保管库。 在部署过程中会安全地检索敏感值。
-
-以下参数文件包含一个纯文本值和一个存储在密钥保管库中的敏感值。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "<first-parameter-name>": {
-      "value": "<first-value>"
-    },
-    "<second-parameter-name>": {
-      "reference": {
-        "keyVault": {
-          "id": "<resource-id-key-vault>"
-        },
-        "secretName": "<secret-name>"
-      }
-    }
-  }
-}
-```
-
-有关使用 Key Vault 中的值的详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](./key-vault-parameter.md)。
+请注意，参数文件以纯文本形式存储参数值。 此方法适用于不敏感的值，例如资源 SKU。 纯文本不适用于敏感值（如密码）。 如果需要传递包含敏感值的参数，请将该值存储在密钥保管库中。 使用 [getSecret 函数](bicep-functions-resource.md#getsecret)检索敏感值，而不是将敏感值添加到参数文件。 有关详细信息，请参阅[在部署 Bicep 过程中使用 Azure Key Vault 传递安全参数值](key-vault-parameter.md)。
 
 ## <a name="define-parameter-values"></a>定义参数值
 
-若要确定如何定义参数名称和值，请打开 Bicep 文件。 查看 Bicep 文件的参数部分。 下面的示例显示 Bicep 文件中的参数。
+若要确定如何定义参数名称和值，请打开 Bicep 文件。 查看 Bicep 文件的 parameters 节。 以下示例显示了 Bicep 文件中的参数。
 
 ```bicep
 @maxLength(11)
@@ -78,7 +54,7 @@ param storagePrefix string
 param storageAccountType string = 'Standard_LRS'
 ```
 
-在参数文件中，要注意的第一个详细信息是每个参数的名称。 参数文件中的参数名必须与 Bicep 文件中的参数名匹配。
+在参数文件中，要注意的第一个详细信息是每个参数的名称。 参数文件中的参数名称必须与 Bicep 文件中的参数名称匹配。
 
 ```json
 {
@@ -145,7 +121,7 @@ param storageAccountType string = 'Standard_LRS'
 ```
 
 > [!NOTE]
-> 参数文件只能包含在 Bicep 文件中定义的参数的值。 如果参数文件包含的额外参数与 Bicep 文件参数不匹配，则会收到错误。
+> 参数文件只能包含 Bicep 文件中定义的参数的值。 如果参数文件包含的额外参数与 Bicep 文件的参数不匹配，则会收到错误。
 
 ## <a name="parameter-type-formats"></a>参数类型格式
 
@@ -183,7 +159,7 @@ param storageAccountType string = 'Standard_LRS'
 
 ## <a name="deploy-bicep-file-with-parameter-file"></a>使用参数文件部署 Bicep 文件
 
-在 Azure CLI 中，使用 `@` 和参数文件名传递本地参数文件。 例如 `@storage.parameters.json`。
+在 Azure CLI 中，使用 `@` 和参数文件名传递本地参数文件。 例如，`@storage.parameters.json`。
 
 ```azurecli
 az deployment group create \
@@ -207,7 +183,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 
 ## <a name="file-name"></a>文件名
 
-参数文件的一般命名约定是在 Bicep 文件名中包含“parameters”。 例如，如果 Bicep 文件名为 azuredeploy.bicep，则参数文件名为 azuredeploy.parameters.json 。 此命名约定可帮助你了解 Bicep 文件与参数之间的连接。
+参数文件的一般命名约定是将 parameters 包含在 Bicep 文件名中。 例如，如果 Bicep 文件名为 azuredeploy.bicep，则参数文件名为 azuredeploy.parameters.json。 此命名约定可帮助你了解 Bicep 文件与参数之间的关系。
 
 若要部署到不同的环境，请创建多个参数文件。 命名参数文件时，请标识其用途，如开发和生产。 例如，使用 azuredeploy.parameters-dev.json 和 azuredeploy.parameters-prod.json 部署资源 。
 
@@ -219,9 +195,9 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 
 ## <a name="parameter-name-conflicts"></a>参数名冲突
 
-如果 Bicep 文件中有一个参数与 PowerShell 命令中的某个参数同名，PowerShell 会使用后缀 `FromTemplate` 显示 Bicep 文件的参数。 例如，Bicep 文件中名为 `ResourceGroupName` 的参数与 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 中的 `ResourceGroupName` 参数冲突。 系统会提示你提供 `ResourceGroupNameFromTemplate` 的值。 为了避免这种混淆，请使用未用于部署命令的参数名称。
+如果 Bicep 文件中有一个参数与 PowerShell 命令中的某个参数同名，PowerShell 会使用后缀 `FromTemplate` 显示 Bicep 文件中的参数。 例如，Bicep 文件中名为 `ResourceGroupName` 的参数与 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 中的 `ResourceGroupName` 参数冲突。 系统会提示你提供 `ResourceGroupNameFromTemplate` 的值。 为了避免这种混淆，请使用未用于部署命令的参数名称。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关如何在 Bicep 文件中定义参数的详细信息，请参阅 [Bicep 中的参数](./parameters.md)。
-- 有关使用 Key Vault 中的值的详细信息，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](./key-vault-parameter.md)。
+- 若要详细了解如何在 Bicep 文件中定义参数，请参阅 [Bicep 中的参数](./parameters.md)。
+- 要获取敏感值，请参阅[在部署过程中使用 Azure Key Vault 传递安全参数值](./key-vault-parameter.md)。

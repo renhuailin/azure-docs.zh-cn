@@ -2,21 +2,21 @@
 title: 使用“主领域发现”策略禁止 Azure AD 中的登录自动加速
 description: 了解如何阻止到联合 IDP 的 domain_hint 自动加速。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.author: mtillman
+ms.author: davidmu
 ms.reviewer: hirsin
-ms.openlocfilehash: 3f5dbff31bedce2473e3849b4e12161e93f33c8a
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: c85c4028c1931c1e5eee061b9be7b2ebffc5b951
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076863"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113566906"
 ---
 # <a name="disable-auto-acceleration-to-a-federated-idp-during-user-sign-in-with-home-realm-discovery-policy"></a>在用户使用主领域发现策略登录过程中禁用到联合 IDP 的自动加速
 

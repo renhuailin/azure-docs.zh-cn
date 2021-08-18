@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 5ea58cc3d9f3615a74249b36f3f9ffb79caddda1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c2c47b4a0895ef41096348c97ebb2d6ff34e801
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88212247"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112554597"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions 的移动应用绑定 
 
@@ -143,7 +143,7 @@ module.exports = function (context, myQueueItem) {
 |**tableName** |**TableName**|移动应用的数据表的名称|
 | **id**| **Id** | 要检索的记录的标识符。 可以是静态的，也可以基于调用函数的触发器。 例如，如果对函数使用队列触发器，则 `"id": "{queueTrigger}"` 会使用队列消息的字符串值作为记录 ID 进行检索。|
 |连接 |**Connection**|包含移动应用 URL 的应用设置的名称。 该函数使用此 URL 为移动应用构造所需的 REST 操作。 首先在函数应用中创建应用设置，它包含移动应用的 URL，并在输入绑定的 `connection` 属性中指定应用设置的名称。 URL 类似于 `http://<appname>.azurewebsites.net`。
-|**apiKey**|**ApiKey**|包含移动应用 API 密钥的应用设置的名称。 若要[在 Node.js 移动应用中实现 API 密钥](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)，或[在 .NET 移动应用中实现 API 密钥](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)，请提供该 API 密钥。 为此，请提供该密钥，在函数应用中创建应用设置（包含 API 密钥），然后在输入绑定中添加具有应用设置名称的 `apiKey` 属性。 |
+|**apiKey**|**ApiKey**|包含移动应用 API 密钥的应用设置的名称。 若要在 Node.js 移动应用中实现 API 密钥，或[在 .NET 移动应用中实现 API 密钥](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)，请提供该 API 密钥。 为此，请提供该密钥，在函数应用中创建应用设置（包含 API 密钥），然后在输入绑定中添加具有应用设置名称的 `apiKey` 属性。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -300,7 +300,7 @@ public static object Run(
 | name | 不适用 | 函数签名中的输出参数的名称。|
 |**tableName** |**TableName**|移动应用的数据表的名称|
 |连接 |**MobileAppUriSetting**|包含移动应用 URL 的应用设置的名称。 该函数使用此 URL 为移动应用构造所需的 REST 操作。 首先在函数应用中创建应用设置，它包含移动应用的 URL，并在输入绑定的 `connection` 属性中指定应用设置的名称。 URL 类似于 `http://<appname>.azurewebsites.net`。
-|**apiKey**|**ApiKeySetting**|包含移动应用 API 密钥的应用设置的名称。 若要[在 Node.js 移动应用后端中实现 API 密钥](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)，或[在 .NET 移动应用后端中实现 API 密钥](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)，请提供该 API 密钥。 为此，请提供该密钥，在函数应用中创建应用设置（包含 API 密钥），然后在输入绑定中添加具有应用设置名称的 `apiKey` 属性。 |
+|**apiKey**|**ApiKeySetting**|包含移动应用 API 密钥的应用设置的名称。 若要在 Node.js 移动应用后端中实现 API 密钥，或[在 .NET 移动应用后端中实现 API 密钥](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)，请提供该 API 密钥。 为此，请提供该密钥，在函数应用中创建应用设置（包含 API 密钥），然后在输入绑定中添加具有应用设置名称的 `apiKey` 属性。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

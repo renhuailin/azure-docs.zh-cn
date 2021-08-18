@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 02/19/2021
 ms.author: b-juche
-ms.openlocfilehash: 29a1251ed390ec3aefbb45a02a3c4284ca1848b8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 1ec2b7c3c9f4aaccd168031b718bbb5b50394506
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142452"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735766"
 ---
 # <a name="troubleshoot-smb-or-dual-protocol-volumes"></a>SMB 或双重协议卷故障排除
 
@@ -32,7 +32,7 @@ ms.locfileid: "108142452"
 | 已启用 LDAP over TLS，双协议卷创建失败，错误为 `This Active Directory has no Server root CA Certificate`。    |     如果在创建双协议卷时发生此错误，请确保在 NetApp 帐户中上传了根 CA 证书。    |
 | 双协议卷创建失败，错误为 `Failed to validate LDAP configuration, try again after correcting LDAP configuration`。    |  DNS 服务器上可能缺少 AD 主机的指针 (PTR) 记录。 你需要在 DNS 服务器上创建反向查找区域，然后在此反向查找区域中添加 AD 主机的 PTR 记录。 <br> 例如，假设 AD 虚拟机的 IP 地址为 `10.x.x.x`，AD 虚拟机的主机名（通过 `hostname` 命令找到）为 `AD1`，域名为 `contoso.com`。  添加到反向查找区域的 PTR 记录应是 `10.x.x.x` -> `contoso.com`。   |
 | 双协议卷创建失败，错误为 `Failed to create the Active Directory machine account \\\"TESTAD-C8DD\\\". Reason: Kerberos Error: Pre-authentication information was invalid Details: Error: Machine account creation procedure failed\\n [ 434] Loaded the preliminary configuration.\\n [ 537] Successfully connected to ip 10.x.x.x, port 88 using TCP\\n**[ 950] FAILURE`。 |     此错误指明在 NetApp 帐户建立 Active Directory 联接时 AD 密码不正确。 请使用正确的密码更新 AD 连接，然后重试。 |
-| 双协议卷创建失败，错误为 `Could not query DNS server. Verify that the network configuration is correct and that DNS servers are available`。 |   此错误指明 DNS 不可访问。 原因可能是 DNS IP 不正确，或者存在网络问题。 请检查在 AD 连接中输入的 DNS IP，并确保此 IP 是正确无误的。 <br> 另外，还请确保 AD 和卷位于相同的区域和 VNet 中。 如果位于不同的 VNet 中，请确保在两个 VNet 之间建立 VNet 对等互连。|
+| 双协议卷创建失败，错误为 `Could not query DNS server. Verify that the network configuration is correct and that DNS servers are available`。 |   此错误指明 DNS 不可访问。 原因可能是 DNS IP 不正确，或者存在网络问题。 请检查在 AD 连接中输入的 DNS IP，并确保此 IP 是正确无误的。 <br> 另外，还请确保 AD 和卷位于相同的区域和 VNet 中。 如果位于不同的 VNet 中，请确保在两个 VNet 之间建立 VNet 对等互连。 <br> 有关详细信息，请参阅 [Azure NetApp 文件网络规划指南](azure-netapp-files-network-topologies.md#azure-native-environments)。 |
 | 在装载双协议卷时，发生“权限被拒绝”错误。 | 双协议卷同时支持 NFS 协议和 SMB 协议。  当你尝试在 UNIX 系统上访问装载的卷时，系统会尝试将你使用的 UNIX 用户映射到 Windows 用户。 如果找不到映射，则会发生“权限被拒绝”错误。 <br> 当你使用“根”用户进行访问时，也适用这种情况。 <br> 为了避免“权限被拒绝”问题，请在访问装入点之前确保 Windows Active Directory 包含 `pcuser`。 如果在遇到“权限被拒绝”问题后添加了 `pcuser`，请等待 24 小时，直到缓存条目被清除后，再尝试重新访问。 |
 
 ## <a name="common-errors-for-smb-and-dual-protocol-volumes"></a>SMB 和双协议卷的常见错误

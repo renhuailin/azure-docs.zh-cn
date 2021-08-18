@@ -15,12 +15,12 @@ ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08a73c2b1be4b17136ba19e7efb71c2b21359fdf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f9faf134c47bdcb67d6a745be3d0c9980713c29
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89280139"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113107021"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory 直通身份验证安全性深入研究
 
@@ -220,6 +220,6 @@ Azure AD 以已签名 Windows Installer 程序包 (MSI) 的形式，托管该软
 - [从 AD FS 迁移到传递身份验证](https://aka.ms/adfstoptadpdownload) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。
 - [智能锁定](../authentication/howto-password-smart-lockout.md)：在租户中配置智能锁定功能以保护用户帐户。
 - [工作原理](how-to-connect-pta-how-it-works.md)：了解 Azure AD 直通身份验证的基本工作原理。
-- [常见问题](how-to-connect-pta-faq.md)：查找常见问题的解答。
+- [常见问题](how-to-connect-pta-faq.yml)：查找常见问题的解答。
 - [故障诊断](tshoot-connect-pass-through-authentication.md)：了解如何解决直通身份验证功能的常见问题。
 - [Azure AD 无缝 SSO](how-to-connect-sso.md)：深入了解此补充功能。

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37c27e84f15a01a2d8832baae137518685de59a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4fb5d74f0c912db098b5e309793963d5f07fbd58
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98725435"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730345"
 ---
 # <a name="determine-your-security-posture-for-external-access"></a>确定外部访问的安全状况 
 
@@ -67,7 +67,7 @@ IT 管理的访问目标不同于委托的访问目标。
 
 无论你为组织和各种场景实现哪种目标，都需要做到以下几点： 
 
-* 控制对应用程序、数据和内容的访问。 这可以通过多种方法来实现，具体取决于 [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) 和 [Microsoft 365](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans) 的版本。 
+* 控制对应用程序、数据和内容的访问。 这可以通过多种方法来实现，具体取决于 [Azure AD](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing) 和 [Microsoft 365](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans) 的版本。 
 
 * 缩小攻击面。 [特权标识管理](../privileged-identity-management/pim-configure.md)、[数据丢失防护 (DLP)](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention) 和[加密功能](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention)可缩小攻击面。
 

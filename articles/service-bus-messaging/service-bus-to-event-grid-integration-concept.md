@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/11/2021
 ms.author: spelluru
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 658107bb74396891c8e6e05a9e8074a9416a5f6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 999bfb9278f3c355e2b431c0fe3ca13648aa42c9
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100369656"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112412986"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服务总线到事件网格的集成概述
 现在，当队列或订阅中存在消息时，服务总线可以在没有接收器的情况下，将事件发出到事件网格。 可以针对服务总线命名空间创建事件网格订阅、侦听这些事件，然后通过启动接收器对这些事件做出反应。 借助此功能，可以在反应式编程模型中使用服务总线。 此功能实现的重要方案是，消息量不大的服务总线队列或订阅不需要一直使用接收器来轮询消息。 
@@ -25,7 +25,7 @@ ms.locfileid: "100369656"
 
 ![19][]
 
-[!INCLUDE [event-grid-service-bus.md](../../includes/event-grid-service-bus.md)]
+[!INCLUDE [event-grid-service-bus.md](./includes/event-grid-service-bus.md)]
 
 ## <a name="event-grid-subscriptions-for-service-bus-namespaces"></a>为服务总线命名空间创建事件网格订阅
 可以使用三种不同的方法，为服务总线命名空间创建事件网格订阅：

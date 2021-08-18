@@ -3,12 +3,12 @@ title: 使用面向开发人员的 Azure 开发测试实验室 | Microsoft Docs
 description: 了解 Azure 开发测试实验室功能（可使用这些功能满足开发人员要求）和设置实验室可遵循的详细步骤。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b4f195f843e30ad1a56bad7d5b9ca9e73888783b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96b673cb750f503d531fd1a11d21b13a56397128
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89296237"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114293620"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>使用面向开发人员的 Azure 开发测试实验室
 可使用 Azure 开发测试实验室来实现许多关键方案，但其中一个主要方案涉及使用开发测试实验室为开发人员托管开发计算机。 在此方案中，开发测试实验室具有以下优势：
@@ -45,7 +45,7 @@ ms.locfileid: "89296237"
    | --- | --- |
    | [配置 Azure 市场映像](devtest-lab-configure-marketplace-images.md) |了解如何允许 Azure 市场映像，同时仅提供对开发人员可用的映像以供选择。|
    | [创建自定义映像](devtest-lab-create-template.md) |通过预安装所需的软件创建自定义映像，让开发人员能够使用自定义映像快速创建 VM。|
-   | [了解映像工厂](./devtest-lab-faq.md#blog-post) |观看介绍如何设置和使用映像工厂的视频。|
+   | [了解映像工厂](/azure/devtest-labs/devtest-lab-faq#blog-post) |观看介绍如何设置和使用映像工厂的视频。|
 
 3. 为开发人员计算机创建可重复使用的模板 
    
@@ -87,7 +87,7 @@ ms.locfileid: "89296237"
    | 任务 | 学习内容 |
    | --- | --- |
    | [定义实验室策略](devtest-lab-set-lab-policy.md) |通过在实验室中设置策略来控制成本。 |
-   | [使用 PowerShell 脚本删除所有实验室 VM](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |开发完成后，在一次操作中删除所有实验室。|
+   | [使用 PowerShell 脚本删除所有实验室 VM](/azure/devtest-labs/devtest-lab-faq#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |开发完成后，在一次操作中删除所有实验室。|
 
 1. 将虚拟网络添加到 VM 
    
@@ -103,7 +103,7 @@ ms.locfileid: "89296237"
 
 6. 与每个开发人员共享实验室
    
-    可使用与开发人员共享的链接直接访问实验室。 测试人员甚至不需要具有 Azure 帐户，只要他们具有 [Microsoft 帐户](devtest-lab-faq.md#what-is-a-microsoft-account)即可。 开发人员无法看到其他开发人员创建的 VM。  
+    可使用与开发人员共享的链接直接访问实验室。 测试人员甚至不需要具有 Azure 帐户，只要他们具有 [Microsoft 帐户](/azure/devtest-labs/devtest-lab-faq#what-is-a-microsoft-account)即可。 开发人员无法看到其他开发人员创建的 VM。  
    
     在以下表中单击链接可了解详细信息：
    
@@ -111,7 +111,7 @@ ms.locfileid: "89296237"
    | --- | --- |
    | [向 Azure 开发测试实验室中的实验室添加开发人员](devtest-lab-add-devtest-user.md) |使用 Azure 门户将开发人员添加到实验室。|
    | [使用 PowerShell 脚本将开发人员添加到实验室](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |使用 PowerShell 自动将开发人员添加到实验室。 |
-   | [获取实验室的链接](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |了解开发人员如何通过超链接直接访问实验室。|
+   | [获取实验室的链接](/azure/devtest-labs/devtest-lab-faq#how-do-i-share-a-direct-link-to-my-lab) |了解开发人员如何通过超链接直接访问实验室。|
 
 7. **自动为多个团队创建实验室** 
    
@@ -121,6 +121,6 @@ ms.locfileid: "89296237"
    
    | 任务 | 学习内容 |
    | --- | --- |
-   | [使用 Resource Manager 模板创建实验室](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |使用资源管理器模板在 Azure 开发测试实验室中创建实验室。 |
+   | [使用 Resource Manager 模板创建实验室](/azure/devtest-labs/devtest-lab-faq#how-do-i-create-a-lab-from-a-resource-manager-template) |使用资源管理器模板在 Azure 开发测试实验室中创建实验室。 |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]

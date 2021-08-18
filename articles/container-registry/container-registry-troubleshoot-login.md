@@ -3,12 +3,12 @@ title: 注册表登录故障排除
 description: 登录到 Azure 容器注册表时的常见问题的症状、原因和解决方法
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: d8579d2a590f722c40dc3582a03efb602dde6520
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6670d127736a97490ab5c01c03699b6a8f077778
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078141"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722400"
 ---
 # <a name="troubleshoot-registry-login"></a>注册表登录故障排除
 
@@ -54,7 +54,7 @@ ms.locfileid: "110078141"
 相关链接：
 
 * [身份验证概述](container-registry-authentication.md#authentication-options)
-* [容器注册表常见问题解答](container-registry-faq.md)
+* [容器注册表常见问题解答](container-registry-faq.yml)
 
 ### <a name="specify-correct-registry-name"></a>指定正确的注册表名称
 
@@ -72,7 +72,7 @@ az acr login --name myregistry
 
 相关链接：
 
-* [az acr login 成功，但 Docker 失败并出现错误：未授权: 需要身份验证](container-registry-faq.md#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
+* [az acr login 成功，但 Docker 失败并出现错误：未授权: 需要身份验证](container-registry-faq.yml#az-acr-login-succeeds-but-docker-fails-with-error--unauthorized--authentication-required)
 
 ### <a name="confirm-credentials-to-access-registry"></a>确认用于访问注册表的凭据
 
@@ -83,7 +83,7 @@ az acr login --name myregistry
   * 密码 - 服务主体密码（也称为 *客户端密码*）
 * 如果使用 Azure 服务（如 Azure Kubernetes 服务或 Azure DevOps）来访问注册表，请确认服务的注册表配置。 
 * 如果运行了带有 `--expose-token` 选项的 `az acr login`，以允许在不使用 Docker 守护程序的情况下登录注册表，请确保使用用户名 `00000000-0000-0000-0000-000000000000` 进行身份验证。
-* 如果将注册表配置为[匿名拉取访问](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)，则以前的 Docker 登录名存储的现有 Docker 凭据可阻止匿名访问。 先运行 `docker logout`，再在注册表上尝试匿名拉取操作。
+* 如果将注册表配置为[匿名拉取访问](container-registry-faq.yml#how-do-i-enable-anonymous-pull-access-)，则以前的 Docker 登录名存储的现有 Docker 凭据可阻止匿名访问。 先运行 `docker logout`，再在注册表上尝试匿名拉取操作。
 
 相关链接：
 
@@ -135,8 +135,8 @@ az acr login --name myregistry
 
 相关链接：
 
-* [监视 Azure 容器注册表](monitor-service.md)
-* [容器注册表常见问题解答](container-registry-faq.md)
+* [用于诊断评估和审核的日志](./monitor-service.md)
+* [容器注册表常见问题解答](container-registry-faq.yml)
 * [Azure 容器注册表的最佳做法](container-registry-best-practices.md)
 
 ## <a name="next-steps"></a>后续步骤

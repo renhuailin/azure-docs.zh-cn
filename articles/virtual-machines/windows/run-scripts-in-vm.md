@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: 7bf62eb2ab8d2ce82ce73e3e8ae26cf303b8ba67
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 34abfb3195f8a3640b1b4797aa430b6250d15b68
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765874"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112452361"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>在 Windows VM 中运行脚本
 
@@ -35,7 +35,7 @@ ms.locfileid: "107765874"
 [运行命令](run-command.md)功能支持使用脚本进行虚拟机、应用程序管理和故障排除，并且即使在计算机不可访问时也可用，例如，如果来宾防火墙没有打开 RDP 或 SSH 端口。
 
 * 在 Azure 虚拟机中运行脚本。
-* 可以使用 [Azure 门户](run-command.md)、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、[Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke) 或 [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) 运行
+* 可以使用 [Azure 门户](run-command.md)、[REST API](/rest/api/compute/virtual-machines-run-commands/run-command)、[Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke) 或 [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) 运行
 * 在 Azure 门户中快速运行脚本并查看输出，并根据需要重复此过程。
 * 可以直接键入脚本，也可以运行其中一个内置脚本。
 * 在 Windows 计算机中运行 PowerShell 脚本，在 Linux 计算机中运行 Bash 脚本。

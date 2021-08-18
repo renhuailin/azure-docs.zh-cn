@@ -8,12 +8,12 @@ ms.date: 03/15/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 618ae75367fd16469fd56a29e8dce37f4d39351d
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: bb86b02bfed6e0bd91f0b78643e00ae395b34b19
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109480502"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113134368"
 ---
 # <a name="azure-storage-container-management-partners"></a>Azure 存储容器管理合作伙伴
 
@@ -23,7 +23,7 @@ ms.locfileid: "109480502"
 
 | Partner | 说明 | 网站/产品链接 |
 | ------- | ----------- | -------------------- |
-| ![Kasten 公司徽标](./media/kasten-logo.png) |**Kasten**<br>Kasten by Veeam 为 Kubernetes 备份和灾难恢复提供解决方案。 Kasten 帮助企业克服 Day 2 数据管理难题，从而放心地在 Kubernetes 上运行应用程序。<br><br>Kasten K10 数据管理软件平台为企业运营团队提供了安全的可缩放系统，以实现 BCDR 和 Kubernetes 应用程序的移动性。|[合作伙伴页面](https://docs.kasten.io/latest/install/azure/azure.html)|
+| ![Kasten 公司徽标](./media/kasten-logo.png) |**Kasten**<br>Kasten by Veeam 为 Kubernetes 备份和灾难恢复提供解决方案。 Kasten 帮助企业克服 Day 2 数据管理难题，从而放心地在 Kubernetes 上运行应用程序。<br><br>Kasten K10 数据管理软件平台为企业运营团队提供了安全的可缩放系统，以实现 BCDR 和 Kubernetes 应用程序的移动性。|[合作伙伴页面](https://docs.kasten.io/latest/install/azure/azure.html)<br>[Azure 市场](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/veeam.kasten_k10_by_veeam_byol?tab=Overview)|
 | ![Portworx 公司徽标](./media/portworx-logo.png) |**Portworx**<br>Portworx by Pure Storage 提供了一种解决方案，用于在 Kubernetes 上集成运行的应用程序中实现持久存储、BCDR、数据安全、跨云和数据迁移。|[合作伙伴页面](https://portworx.com/azure/)|
 | ![<n/>Robin.io 公司徽标](./media/robin-logo.png) |**<n/>Robin.io**<br>Robin.io 提供了一个应用程序和数据管理平台，使企业和 5G 服务提供商能够以服务的形式提供复杂的应用程序管道。 Robin 基于行业标准的 Kubernetes，使开发人员和平台工程师能够快速部署并轻松管理以数据和网络为中心的应用程序，独立于基本的基础结构资源。<br><br>Robin Cloud Native Storage (CNS) 为 Azure Kubernetes 服务带来了先进的数据管理功能。 Robin CNS 与 Azure 磁盘存储无缝集成，以简化有状态应用程序的管理。 开发人员和 DevOps 团队可以在 AKS 上将 Robin CNS 作为标准 Kubernetes 运算符部署。 Robin Cloud Native Storage 有助于简化数据管理操作，如 BCDR 和整个应用程序的克隆。 |[合作伙伴页面](https://robin.io/robin-cloud-native-storage-for-microsoft-aks/)|
 

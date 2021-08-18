@@ -11,12 +11,12 @@ ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
 ms.date: 04/22/2021
-ms.openlocfilehash: f9c52307e4d743e32f8771998e2dfaacc6643a35
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: c047d89b554bed61f0015235a52927ffda7d1ec7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739000"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446573"
 ---
 # <a name="deploy-a-model-locally"></a>在本地部署模型
 
@@ -27,6 +27,8 @@ ms.locfileid: "108739000"
 
 > [!TIP]
 > 将模型从计算实例上的 Jupyter Notebook 部署到同一 VM 上的 Web 服务是本地部署。 在这种情况下，“本地”计算机是计算实例。 有关部署的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
+
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -94,7 +96,7 @@ print("prediction:", resp.text)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
+* [如何使用自定义 Docker 映像部署模型](./how-to-deploy-custom-container.md)
 * [部署疑难解答](how-to-troubleshoot-deployment.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)

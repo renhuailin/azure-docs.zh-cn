@@ -1,38 +1,38 @@
 ---
-title: Windows 虚拟桌面（经典）个人桌面分配类型 - Azure
-description: 如何为 Windows 虚拟桌面（经典）个人桌面主机池配置分配类型。
+title: Azure 虚拟桌面（经典）个人桌面分配类型 - Azure
+description: 如何为 Azure 虚拟桌面（经典）个人桌面主机池配置分配类型。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5710fc8be66f2126f6bf665ad1808aa11e4db2c4
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 20123cb66bfd5fdd2b77c1a7c1afbae28a93f45e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445306"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111750113"
 ---
-# <a name="configure-the-personal-desktop-host-pool-assignment-type-for-windows-virtual-desktop-classic"></a>为 Windows 虚拟桌面（经典）的个人桌面主机池配置分配类型
+# <a name="configure-the-personal-desktop-host-pool-assignment-type-for-azure-virtual-desktop-classic"></a>配置 Azure 虚拟桌面（经典）个人桌面主机池分配类型
 
 >[!IMPORTANT]
->本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../configure-host-pool-personal-desktop-assignment-type.md)。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[本文](../configure-host-pool-personal-desktop-assignment-type.md)。
 
-你可以配置个人桌面主机池的分配类型，以调整 Windows 虚拟桌面环境来更好地满足你的需求。 在本主题中，我们将介绍如何为用户配置自动分配或直接分配。
+你可以配置个人桌面主机池的分配类型，以调整 Azure 虚拟桌面环境来更好地满足你的需求。 在本主题中，我们将介绍如何为用户配置自动分配或直接分配。
 
 >[!NOTE]
 > 本文中的说明仅适用于个人桌面主机池而不适用于共用主机池，因为不会将共用主机池中的用户分配到特定的会话主机。
 
 ## <a name="configure-automatic-assignment"></a>配置自动分配
 
-自动分配是 Windows 虚拟桌面环境中新创建的个人桌面主机池的默认分配类型。 自动分配用户不需要特定的会话主机。
+自动分配是 Azure 虚拟桌面环境中新创建的个人桌面主机池的默认分配类型。 自动分配用户不需要特定的会话主机。
 
 若要自动分配用户，请先将其分配到个人桌面主机池，以便他们能够在其源中看到桌面。 当分配的用户在其源中启动桌面时，如果他们尚未连接到主机池，则他们将认领一个可用的会话主机，分配过程就此完成。
 
-在开始之前，请[下载并导入 Windows 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做）。
+在开始之前，请[下载并导入 Azure 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做）。
 
 > [!NOTE]
-> 在按照下面的说明操作之前，请确保已安装 Windows 虚拟桌面 PowerShell 模块版本 1.0.1534.2001 或更高版本。
+> 在按照下面的说明操作之前，请确保已安装 Azure 虚拟桌面 PowerShell 模块 1.0.1534.2001 或更高版本。
 
 然后，运行以下 cmdlet 登录到你的帐户：
 
@@ -84,11 +84,11 @@ Set-RdsSessionHost <tenantname> <hostpoolname> -Name <sessionhostname> -Assigned
 Remove-RdsSessionHost
 ```
 
-如果需要将会话主机重新添加到个人桌面主机池，请在该计算机上卸载 Windows 虚拟桌面，然后按照[使用 PowerShell 创建主机池](create-host-pools-powershell-2019.md)中的步骤重新注册会话主机。
+如果需要将会话主机重新添加到个人桌面主机池，请在该计算机上卸载 Azure 虚拟桌面，然后按照[使用 PowerShell 创建主机池](create-host-pools-powershell-2019.md)中的步骤重新注册会话主机。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置个人桌面分配类型后，可以登录到 Windows 虚拟桌面客户端，将其作为用户会话的一部分进行测试。 接下来的两篇操作指南将会介绍如何使用所选的客户端连接到会话：
+配置个人桌面分配类型后，可以登录到 Azure 虚拟桌面客户端，将其作为用户会话的一部分进行测试。 接下来的两篇操作指南将会介绍如何使用所选的客户端连接到会话：
 
 - [使用 Windows 桌面客户端进行连接](connect-windows-7-10-2019.md)
 - [使用 Web 客户端进行连接](connect-web-2019.md)

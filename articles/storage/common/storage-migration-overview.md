@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2021
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 2e54eb0ea8166b32dd4bcc794bfcf401d9196884
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1d0459e8ac0002f69ac0e4d33a921bd64fc385d5
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469238"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178108"
 ---
 # <a name="azure-storage-migration-overview"></a>Azure 存储迁移概述
 
@@ -125,4 +125,4 @@ ms.locfileid: "110469238"
 - [迁移到 Azure 文件共享](../files/storage-files-migration-overview.md)
 - [使用 WANdisco LiveData Platform for Azure 迁移到 Data Lake Storage](../blobs/migrate-gen2-wandisco-live-data-platform.md)
 - [使用 AzCopy 将数据复制或移动到 Azure 存储](./storage-use-azcopy-v10.md)
-- [使用 AzReplicate 将大型数据集迁移到 Azure Blob 存储](https://github.com/Azure/AzReplicate/tree/master/)
+- [使用 AzReplicate 将大型数据集迁移到 Azure Blob 存储](/samples/azure/azreplicate/azreplicate/)

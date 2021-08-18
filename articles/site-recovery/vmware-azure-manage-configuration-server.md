@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: sharrai
 ms.date: 05/27/2021
-ms.openlocfilehash: e260b9fa7b24a3cb91e107bac6b01537879857c0
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 56389ff2dc936fe1d9a0a922f10c8055de6de1ba
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110576889"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729733"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>管理配置服务器以便进行 VMware VM/物理服务器灾难恢复
 
@@ -223,7 +223,7 @@ ms.locfileid: "110576889"
 |/PSIP|必须|要用于复制数据传输的 NIC 的 IP 地址| 任何有效的 IP 地址|
 |/CSIP|必须|配置服务器正在侦听的 NIC 的 IP 地址| 任何有效的 IP 地址|
 |/PassphraseFilePath|必须|密码文件位置的完整路径|有效的文件路径|
-|/BypassProxy|可选|指定配置服务器在不使用代理的情况下连接到 Azure|从 Venu 获取此值|
+|/BypassProxy|可选|指定配置服务器在不使用代理的情况下连接到 Azure||
 |/ProxySettingsFilePath|可选|代理设置（默认代理需要身份验证，或自定义代理）|该文件应采用以下指定格式|
 |DataTransferSecurePort|可选|用于复制数据的 PSIP 上的端口号| 有效端口号（默认值为 9433）|
 |/SkipSpaceCheck|可选|跳过缓存磁盘的空间检查| |

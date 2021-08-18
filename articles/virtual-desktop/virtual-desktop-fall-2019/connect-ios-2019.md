@@ -6,19 +6,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5f981e40d82a1f5b4d775832752d4b169ab73db0
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6dcd14f12b557ef63337890b10e69d6cdf92498a
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750022"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031168"
 ---
 # <a name="connect-to-azure-virtual-desktop-classic-with-the-ios-client"></a>使用 iOS 客户端连接到 Azure 虚拟桌面（经典版）
 
 > 适用于：iOS 13.0 或更高版本。 与 iPhone、iPad 和 iPod Touch 兼容。
 
 >[!IMPORTANT]
->此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[本文](../connect-ios.md)。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[本文](../user-documentation/connect-ios.md)。
 
 可以从 iOS 设备使用可下载的客户端访问 Azure 虚拟桌面资源。 本指南将介绍如何设置 iOS 客户端。
 

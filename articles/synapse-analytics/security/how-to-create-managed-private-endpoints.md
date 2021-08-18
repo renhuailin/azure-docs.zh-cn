@@ -1,19 +1,19 @@
 ---
 title: 创建托管专用终结点以连接到数据源结果
 description: 本文介绍如何从 Azure Synapse 工作区创建数据源的托管专用终结点。
-author: RonyMSFT
+author: ashinMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 04/15/2020
-ms.author: ronytho
+ms.author: seshin
 ms.reviewer: jrasnick
-ms.openlocfilehash: e0309b4c96b2ae25eb568e390717ba76cfd84fa5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6ca00f185c3bfc0a10a949953dfa0e2b1e7a09a4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96461318"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737442"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source"></a>创建数据源的托管专用终结点
 

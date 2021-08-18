@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f06a54f59405d9833194b2e7d4488bc93d2437ae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ccd033ec224762fef984e98971334ec93bff931f
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98725172"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113231667"
 ---
 # <a name="manage-external-access-with-entitlement-management"></a>通过权利管理来管理外部访问 
 
@@ -37,7 +37,7 @@ ms.locfileid: "98725172"
 
 * 企业应用程序，包括自定义的内部应用和 SaaS 应用（如 Salesforce）。
 
-* Microsoft Teams 通道。
+* Microsoft Teams。
 
 * Microsoft 365 组。 
 
@@ -96,13 +96,13 @@ ms.locfileid: "98725172"
 
 可[使用 Microsoft Graph 执行权利管理功能](/graph/tutorial-access-package-api)，包括
 
-* [管理访问包](/graph/api/resources/accesspackage?view=graph-rest-beta)
+* [管理访问包](/graph/api/resources/accesspackage?view=graph-rest-beta&preserve-view=true)
 
-* [管理访问评审](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
+* [管理访问评审](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true)
 
-* [管理已连接组织](/graph/api/resources/connectedorganization?view=graph-rest-beta)
+* [管理已连接组织](/graph/api/resources/connectedorganization?view=graph-rest-beta&preserve-view=true)
 
-* [管理权利管理设置](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
+* [管理权利管理设置](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta&preserve-view=true)
 
 ## <a name="recommendations"></a>建议 
 
@@ -112,7 +112,7 @@ ms.locfileid: "98725172"
 
 * 如果目录中已有 B2B 用户，还可以直接向其分配相应的访问包。
 
-* 可通过 [Azure 门户](../governance/entitlement-management-access-package-assignments.md)或 [Microsoft Graph](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta) 分配访问权限。
+* 可通过 [Azure 门户](../governance/entitlement-management-access-package-assignments.md)或 [Microsoft Graph](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta&preserve-view=true) 分配访问权限。
 
 如果用户的访问包过期，请使用标识治理设置从目录中删除这些用户。
 

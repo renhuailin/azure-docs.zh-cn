@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: b55f0562ae08a6e5a6b38bd0b6fc9f781b94ab64
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: ef1f069dbcf932475a062b309324a77932a88809
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078683"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750732"
 ---
 # <a name="assessment-overview-migrate-to-azure-vmware-solution"></a>评估概述（迁移到 Azure VMware 解决方案）
 
@@ -28,12 +28,12 @@ Azure Migrate 中的发现和评估工具可以评估要迁移到 Azure 虚拟�
 
 **评估类型** | **详细信息**
 --- | --- 
-**Azure VM** | 将本地服务器迁移到 Azure 虚拟机的评估。 使用这种评估类型，可以对 [VMware](how-to-set-up-appliance-vmware.md) 和 [Hyper-V](how-to-set-up-appliance-hyper-v.md) 环境中的本地服务器以及要迁移到 Azure 的[物理服务器](how-to-set-up-appliance-physical.md)进行评估。
+**Azure VM** | 将本地服务器迁移到 Azure 虚拟机的评估。 使用这种评估类型，可以对 [VMware](how-to-set-up-appliance-vmware.md) 和 [Hyper-V](how-to-set-up-appliance-hyper-v.md) 环境中的本地服务器以及要迁移到 Azure VM 的[物理服务器](how-to-set-up-appliance-physical.md)进行评估。
 **Azure SQL** | 将本地 SQL Server 从 VMware 环境迁移到 Azure SQL 数据库或 Azure SQL 托管实例的评估。
 **Azure VMware 解决方案 (AVS)** | 将本地服务器迁移到 [Azure VMware 解决方案 (AVS)](../azure-vmware/introduction.md) 的评估。 可使用此评估类型评估要迁移到 Azure VMware 解决方案 (AVS) 的本地 [VMware VM](how-to-set-up-appliance-vmware.md)。 [了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
 
 > [!NOTE]
-> 如果发现和评估工具上的 Azure VM 或 AVS 评估数不正确，请单击评估总数以导航到所有评估并重新计算 Azure VM 或 AVS 评估数。 然后，发现和评估工具就会显示该评估类型的正确计数。 
+> 如果“发现和评估”工具上的 Azure VM 或 AVS 评估数不正确，请单击评估总数以导航到所有评估并重新计算 Azure VM 或 AVS 评估数。 然后，发现和评估工具就会显示该评估类型的正确计数。 
 
 Azure VMware 解决方案 (AVS) 评估提供两个大小调整条件选项：
 
@@ -44,17 +44,17 @@ Azure VMware 解决方案 (AVS) 评估提供两个大小调整条件选项：
 
 ## <a name="how-do-i-run-an-assessment"></a>如何运行评估？
 
-可通过多种方法来运行评估。
+可通过多种方法运行评估。
 
-- 使用由轻型 Azure Migrate 设备收集的服务器元数据来评估服务器。 设备会发现本地服务器。 然后它会将服务器元数据和性能数据发送到 Azure Migrate。 这样可以实现更高的精度。
+- 使用轻型 Azure Migrate 设备收集的服务器元数据来评估服务器。 设备会发现本地服务器。 然后它会将服务器元数据和性能数据发送到 Azure Migrate。 这样可以实现更高的精度。
 - 使用以逗号分隔的值 (CSV) 格式导入的服务器元数据来评估服务器。
 
 ## <a name="how-do-i-assess-with-the-appliance"></a>如何使用设备进行评估？
 
-如果要部署 Azure Migrate 设备来发现本地服务器，请执行以下步骤：
+如果部署 Azure Migrate 设备来发现本地服务器，请执行以下步骤：
 
 1. 设置 Azure 及适合于 Azure Migrate 运行的本地环境。
-2. 第一次评估时，请创建一个 Azure 项目并向其中添加“发现和评估”工具。
+2. 第一次评估时，创建一个 Azure 项目并向其中添加“发现和评估”工具。
 3. 部署轻型 Azure Migrate 设备。 此设备将持续发现本地服务器，并向 Azure Migrate 发送服务器元数据和性能数据。 将设备部署为 VM。 无需在要评估的服务器上安装任何内容。
 
 设备开始服务器发现后，可以将想要评估的服务器归集到一个组中，然后对评估类型为“Azure VMware 解决方案(AVS)”的组运行评估。
@@ -77,19 +77,19 @@ Azure VMware 解决方案 (AVS) 评估提供两个大小调整条件选项：
 
 ## <a name="how-does-the-appliance-calculate-performance-data"></a>设备如何计算性能数据？
 
-如果是使用设备进行发现，则会通过以下步骤收集计算设置的性能数据：
+如果是使用设备进行发现，则会通过以下步骤为计算设置收集性能数据：
 
 1. 设备收集实时样本点。
 
    - VMware VM：每隔 20 秒收集一个样本点。
 2. 设备将样本点组合起来，每隔 10 分钟创建一个数据点。 为了创建数据点，设备会选择所有样本中的峰值。 然后，将数据点发送到 Azure。
 3. Azure Migrate 将存储上个月的所有 10 分钟数据点。
-4. 创建评估时，该评估会确定要用于合理精简的相应数据点。 根据“性能历史记录”和“百分位使用率”的百分位值进行识别。
+4. 创建评估时，该评估会确定要用于合理精简的相应数据点。 根据“性能历史记录”和“百分位使用率”的百分位值进行确定。
 
-   - 例如，性能历史记录是一周，百分位使用率是第 95 百分位，则评估会对上一周的 10 分钟样本点进行排序。 按升序排序，并选取第 95 百分位值进行合理精简。
+   - 例如，性能历史记录是一周，百分位使用率是第 95 百分位，则评估会对上一周的 10 分钟样本点进行排序。 按升序排序，并选取第 95 百分位值进行合理调整大小。
    - 第 95 百分位值可以确保忽略任何离群值，如果选取第 99 百分位，则可能包括这些离群值。
    - 如果希望选择该期间内的峰值使用率，并且不希望错过任何离群值，请为百分位使用率选择第 99 百分位。
-5. 此值与舒适因子相乘，就得到了设备收集的这些指标的有效性能利用率数据：
+5. 此值与舒适因子相乘，就得到了设备收集的这些指标的有效性能使用率数据：
 
    - CPU 使用率
    - RAM 利用率
@@ -113,7 +113,7 @@ AVS 评估使用本地服务器的元数据和性能数据来计算评估。 如
 
 ## <a name="whats-in-an-azure-vmware-solution-avs-assessment"></a>Azure VMware 解决方案 (AVS) 评估包括哪些内容？
 
-AVS 评估中包括以下内容：
+AVS 评估包括以下内容：
 
 | **属性** | **详细信息** |
 | - | - |
@@ -126,7 +126,7 @@ AVS 评估中包括以下内容：
 | **性能历史记录** | 设置评估服务器性能数据时要考虑的持续时间。 仅当大小调整条件基于性能时，此属性才适用。 |
 | **百分位使用率** | 指定进行适当大小调整时要考虑的性能样本集的百分位值。 仅当大小调整基于性能时，此属性才适用。 |
 | **舒适因子** | Azure Migrate 在评估期间会考虑到缓冲（舒适因子）。 此缓冲区是基于 VM 的服务器利用率数据（CPU、内存和磁盘）应用的。 舒适因子考虑到季节性使用特点、短期性能历史记录，以及未来使用量可能会增加等问题。 例如，一个使用率为 20% 的 10 核 VM 通常相当于一个 2 核 VM。 但是，如果舒适因子为 2.0x，则结果就变成一个 4 核 VM。 |
-| **产品/服务** | 显示你已注册的 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/)。 Azure Migrate 会进行相应的成本估算。 |
+| **产品/服务** | 显示已注册的 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/)。 Azure Migrate 会进行相应的成本估算。 |
 | **货币** | 显示帐户的计费货币。 |
 | **折扣 (%)** | 列出基于 Azure 产品/服务获得的任何订阅特定折扣。 默认设置是 0%。 |
 | **Azure 混合权益** | 指定你是否具有软件保障以及是否有资格享受 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。 尽管这不会影响 Azure VMware 解决方案定价（因为定价基于节点），但客户仍可使用 Azure 混合权益在 AVS 中应用（基于 Microsoft 的）本地 OS 或 SQL 许可证。 其他软件 OS 供应商必须提供其自己的许可条款，例如 RHEL。 |
@@ -256,7 +256,7 @@ Azure Migrate 中每个基于性能的评估都与一个置信度评级相关联
 
 ### <a name="low-confidence-ratings"></a>低置信度评级
 
-下面列出了某个评估的置信度评级较低的几个原因：
+以下列出了评估可能获得低置信度分级的一些原因：
 
 - 在创建评估的过程中，没有对环境进行分析。 例如在创建评估时，性能持续时间设置为一天，那么开始发现后必须等待至少一天，才能收集到所有的数据点。
 - 评估无法在评估期内收集部分或全部服务器的性能数据。 若要获得较高的置信度评级，请确保：
@@ -285,7 +285,7 @@ Azure Migrate 中每个基于性能的评估都与一个置信度评级相关联
 
 在 Azure VMware 解决方案 (AVS) 评估的 Azure 迁移就绪性报告中，可以看到以下推荐工具：
 
-- VMware HCX 或 Enterprise：对于 VMware 服务器，若要将本地工作负载迁移到 Azure VMware 解决方案 (AVS) 私有云，建议使用 VMware 混合云扩展 (HCX) 解决方案作为迁移工具。 [了解详细信息](../azure-vmware/tutorial-deploy-vmware-hcx.md)。
+- VMware HCX 或 Enterprise：对于 VMware 服务器，若要将本地工作负载迁移到 Azure VMware 解决方案 (AVS) 私有云，建议使用 VMware 混合云扩展 (HCX) 解决方案作为迁移工具。 [了解详细信息](../azure-vmware/install-vmware-hcx.md)。
 - 未知：对于通过 CSV 文件导入的服务器，默认迁移工具是未知的。 不过，对于 VMware 服务器，建议使用 VMware 混合云扩展 (HCX) 解决方案。
 
 ## <a name="next-steps"></a>后续步骤

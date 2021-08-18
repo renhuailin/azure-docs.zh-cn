@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/26/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 33cfd226df9f7620bafe2e404cc43050f176de13
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 85409230565c9311621faa18b5c8834c57c33c99
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892051"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112459903"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 

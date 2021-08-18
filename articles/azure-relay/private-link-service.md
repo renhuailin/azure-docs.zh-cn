@@ -1,15 +1,15 @@
 ---
 title: 将 Azure 中继与 Azure 专用链接服务集成
 description: 了解如何将 Azure 中继与 Azure 专用链接服务集成
-ms.date: 09/24/2020
+ms.date: 06/24/2021
 ms.topic: article
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 42f05784143031e303affa2a17cccfdaf22ce4ca
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 81e7ced6caea0f2ebbe20e1b25790e4c0baf34a3
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110688365"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114668960"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link"></a>与 Azure 中继与 Azure 专用链接集成 
 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如，Azure 中继、Azure 服务总线、Azure 事件中心、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户/合作伙伴服务。 有关详细信息，请参阅[什么是 Azure 专用链接？](../private-link/private-link-overview.md)

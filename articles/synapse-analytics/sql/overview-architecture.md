@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f342f39b62956cd85f269918e8e1ef1a2478a3d8
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: e279aea4bdf0ae3bc18c2ece1556d7ad8483a2de
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566352"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217100"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL 体系结构 
 
@@ -115,4 +115,4 @@ Synapse SQL 使用 Azure 存储保护用户数据。 由于数据通过 Azure �
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已初步了解了 Synapse SQL，请继续了解如何快速[创建 SQL 专用池](../quickstart-create-sql-pool-portal.md)和[加载示例数据](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./sql-data-warehouse-load-sample-databases.md)。 或开始[使用无服务器 SQL 池](../quickstart-sql-on-demand.md)。 如果不熟悉 Azure，遇到新术语时，[Azure 词汇表](../../azure-glossary-cloud-terminology.md) 可以提供帮助。 
+对 Synapse SQL 有了初步的认识后，请学习如何快速[创建专用 SQL 池](../quickstart-create-sql-pool-portal.md)和[加载示例数据](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)。 或开始[使用无服务器 SQL 池](../quickstart-sql-on-demand.md)。 如果不熟悉 Azure，遇到新术语时，[Azure 词汇表](../../azure-glossary-cloud-terminology.md) 可以提供帮助。 

@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 07/07/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 29f8e1e3b89ef68c3ead4841cfba7b5e44f09a36
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 9c5af374e29e53d65096e2663c3b790fd26a95ab
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744640"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113492408"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>将现有网络策略服务器 (NPS) 基础结构与 Azure AD 多重身份验证集成
 
@@ -173,7 +173,7 @@ NPS 服务器会连接到 Azure AD，并对 MFA 请求进行身份验证。 为�
 
 1. 通过测试帐户登录 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。
 2. 按照提示设置验证方法。
-3. 在 Azure 门户中以管理员用户身份[创建条件访问策略](howto-mfa-getstarted.md#create-conditional-access-policy)，以要求对测试帐户进行多重身份验证。
+3. 在 Azure 门户中以管理员用户身份[创建条件访问策略](howto-mfa-getstarted.md#plan-conditional-access-policies)，以要求对测试帐户进行多重身份验证。
 
 > [!IMPORTANT]
 >

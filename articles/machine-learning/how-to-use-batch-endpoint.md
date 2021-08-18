@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: tracych
 ms.author: tracych
 ms.reviewer: laobri
-ms.date: 5/25/2021
-ms.custom: how-to
-ms.openlocfilehash: 53fa68fdffd27c1d48322104c541894c6f9c4dd8
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 8/11/2021
+ms.custom: how-to, devplatv2
+ms.openlocfilehash: bd5d5eba2d5da4cd0f920d4c6287e779d83ac293
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751246"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739120"
 ---
 # <a name="use-batch-endpoints-preview-for-batch-scoring"></a>使用批处理终结点（预览版）进行批量评分
 
@@ -27,7 +27,7 @@ ms.locfileid: "111751246"
 > [!div class="checklist"]
 > * 为 MLflow 模型创建一个附带无代码体验的批处理终结点
 > * 检查批处理终结点详细信息
-> * 使用 CLI 启动批量评分作业
+> * 使用 Azure CLI 启动批量评分作业
 > * 监视批量评分作业执行进度并检查评分结果
 > * 将新部署添加到批处理终结点
 > * 使用 REST 启动批量评分作业
@@ -36,7 +36,7 @@ ms.locfileid: "111751246"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 一个 Azure 订阅。如果你没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* 一个 Azure 订阅。如果你没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 
 * Azure 命令行接口 (CLI) 和 ML 扩展。
 
@@ -77,16 +77,14 @@ az extension add -n ml
 运行以下代码以创建一个常规用途 [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py&preserve-view=true) 目标。 若要详细了解计算目标，请参阅[什么是 Azure 机器学习中的计算目标？](./concept-compute-target.md)。
 
 ```azurecli
-az ml compute create --name cpu-cluster --type AmlCompute --min-instances 0 --max-instances 5
+az ml compute create --name cpu-cluster --type amlcompute --min-instances 0 --max-instances 5
 ```
 
 ## <a name="create-a-batch-endpoint"></a>创建批处理终结点
 
 如果使用的是 MLflow 模型，则可以使用无代码批处理终结点创建方式。 也就是说，你无需准备评分脚本和环境，系统会自动生成这两者。 有关详细信息，请参阅[使用 MLflow 和 Azure 机器学习训练和跟踪 ML 模型（预览版）](how-to-use-mlflow.md)。
 
-```azurecli
-az ml endpoint create --type batch --file cli/endpoints/batch/create-batch-endpoint.yml
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="create_batch_endpoint" :::
 
 下面是定义 MLFlow 批处理终结点的 YAML 文件：
 
@@ -120,15 +118,13 @@ az ml endpoint create --type batch --file cli/endpoints/batch/create-batch-endpo
 
 创建批处理终结点后，可以使用 `show` 查看详细信息。 使用 [`--query parameter`](/cli/azure/query-azure-cli) 只会获取返回数据中的特定特性。
 
-```azurecli
-az ml endpoint show --name mybatchedp --type batch
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_batch_endpooint_detail" :::
 
-## <a name="start-a-batch-scoring-job-using-cli"></a>使用 CLI 启动批量评分作业
+## <a name="start-a-batch-scoring-job-using-the-azure-cli"></a>使用 Azure CLI 启动批量评分作业
 
-批量评分工作负载以脱机作业的形式运行。 批量评分旨在处理大型数据。 输入将在计算群集上并行处理。 将为节点上的进程分配数据分区。 包含多个进程的单个节点将有多个分区并行运行。 默认情况下，批量评分将评分输出存储在 Blob 存储中。 可以通过传入数据输入来使用 CLI 启动批量评分作业。 还可以配置输出位置并覆盖某些设置以获得最佳性能。
+批量评分工作负载以脱机作业的形式运行。 批量评分旨在处理大型数据。 输入将在计算群集上并行处理。 将为节点上的进程分配数据分区。 包含多个进程的单个节点将有多个分区并行运行。 默认情况下，批量评分将评分输出存储在 Blob 存储中。 可以通过传入数据输入内容来使用 Azure CLI 启动批量评分作业。 还可以配置输出位置并覆盖某些设置以获得最佳性能。
 
-### <a name="start-a-bath-scoring-job-with-different-inputs-options"></a>使用不同的输入选项启动批量评分作业
+### <a name="start-a-batch-scoring-job-with-different-input-options"></a>使用不同的输入选项启动批量评分作业
 
 可以使用三个选项指定数据输入。
 
@@ -187,30 +183,26 @@ az ml endpoint invoke --name mybatchedp --type batch --input-path https://pipeli
 ```azurecli
 az ml endpoint invoke --name mybatchedp --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv --set retry_settings.max_retries=1
 ```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job_with_new_settings" :::
 
 ## <a name="check-batch-scoring-job-execution-progress"></a>检查批量评分作业执行进度
 
 批量评分作业通常会花费一段时间来处理整个输入集。 可以在 Azure 机器学习工作室中监视作业进度。 `invoke` 的响应中以 `interactionEndpoints.Studio.endpoint` 值的形式提供了工作室链接。
 
-还可以使用 CLI 检查作业详细信息及状态。
+还可以使用 Azure CLI 检查作业详细信息及状态。
 
 从 invoke 响应中获取作业名称。
 
-```azurecli
-job_name=$(az ml endpoint invoke --name mybatchedp --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv --query name -o tsv)
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job" :::
 
 使用 `job show` 检查批量评分作业的详细信息和状态。
 
-```azurecli
-az ml job show --name $job_name
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_job_status" :::
 
 使用 `job stream` 流式传输作业日志。
 
-```azurecli
-az ml job stream --name $job_name
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="stream_job_logs_to_console" :::
+
 
 ## <a name="check-batch-scoring-results"></a>检查批量评分结果
 
@@ -234,9 +226,7 @@ az ml job stream --name $job_name
 
 使用以下命令将新部署添加到现有的批处理终结点。
 
-```azurecli
-az ml endpoint update --name mybatchedp --type batch --deployment-file cli/endpoints/batch/add-deployment.yml
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" range="65" :::
 
 此示例使用非 MLflow 模型。 使用非 MLflow 时，需要在 YAML 文件中指定环境和评分脚本：
 
@@ -252,29 +242,21 @@ az ml endpoint update --name mybatchedp --type batch --deployment-file cli/endpo
 
 若要查看部署详细信息，请运行：
 
-```azurecli
-az ml endpoint show --name mybatchedp --type batch
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_batch_endpooint_detail" :::
 
 ### <a name="activate-the-new-deployment"></a>激活新部署
 
 对于批量推理，必须将 100% 的查询发送到所需的部署。 若要将新建的部署设置为目标，请使用：
 
-```azurecli
-az ml endpoint update --name mybatchedp --type batch --traffic mnist-deployment:100
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="switch_traffic" :::
 
 如果再次检查部署详细信息，你将看到更改：
 
-```azurecli
-az ml endpoint show --name mybatchedp --type batch
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_batch_endpooint_detail" :::
 
 现在，可以使用此新部署调用批量评分作业：
 
-```azurecli
-az ml endpoint invoke --name mybatchedp --type batch --input-path https://pipelinedata.blob.core.windows.net/sampledata/mnist --mini-batch-size 10 --instance-count 2
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job_with_new_settings" :::
 
 ## <a name="start-a-batch-scoring-job-using-rest"></a>使用 REST 启动批量评分作业
 
@@ -282,28 +264,17 @@ az ml endpoint invoke --name mybatchedp --type batch --input-path https://pipeli
 
 1. 获取 `scoring_uri`：  
 
-```azurecli
-scoring_uri=$(az ml endpoint show --name mybatchedp --type batch --query scoring_uri -o tsv)
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="get_scoring_uri" :::
 
 2. 获取访问令牌：
 
-```azurecli
-auth_token=$(az account get-access-token --query accessToken -o tsv)
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="get_token" :::
+
 
 3. 使用 `scoring_uri`、访问令牌和 JSON 数据发布 (POST) 请求并启动批量评分作业：
 
-```bash
-curl --location --request POST "$scoring_uri" --header "Authorization: Bearer $auth_token" --header 'Content-Type: application/json' --data-raw '{
-"properties": {
-  "dataset": {
-    "dataInputType": "DataUrl",
-    "Path": "https://pipelinedata.blob.core.windows.net/sampledata/mnist"
-    }
-  }
-}'
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job_rest":::
+
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -321,3 +292,4 @@ curl --location --request POST "$scoring_uri" --header "Authorization: Bearer $a
 在本文中，你已了解如何创建和调用批处理终结点，以便为大量数据评分。 有关 Azure 机器学习的详细信息，请参阅下述其他文章：
 
 * [排查批处理终结点问题](how-to-troubleshoot-batch-endpoints.md)
+* [使用托管联机终结点（预览版）部署机器学习模型并为其评分](how-to-deploy-managed-online-endpoints.md)

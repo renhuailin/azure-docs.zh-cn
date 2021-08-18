@@ -2,22 +2,22 @@
 title: 在 Azure AD 中管理应用同意策略
 description: 了解如何管理内置的和自定义的应用同意策略，以控制何时可以授予同意。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 06/01/2020
-ms.author: mtillman
+ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 7678697225ebea0622c4557d7d56a06ec043f7a9
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 2112afeafa10ae9226a3d183489b9e13a094cab7
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112074748"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113568525"
 ---
 # <a name="manage-app-consent-policies"></a>管理应用同意策略
 
@@ -152,4 +152,5 @@ ID 以“microsoft-”开头的应用同意策略是内置策略。 其中的某
 * [Microsoft 标识平台中的权限和许可](../develop/v2-permissions-and-consent.md)
 
 获取帮助或查找问题的答案：
+
 * [Microsoft Q&A 上的 Azure AD](/answers/products/)

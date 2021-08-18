@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: 8b3b1d39766d556b820f21c1775210611b995d92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 442400754d4c103a4f26724ff2ca731c8ae5250f
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199903"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178547"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理概述
 
@@ -20,7 +20,7 @@ Azure Log Analytics 代理从任何云、本地计算机以及受 [System Center
 > 你可能还会看到称为 Microsoft Monitoring Agent (MMA) 的 Log Analytics 代理。
 
 ## <a name="comparison-to-azure-diagnostics-extension"></a>与 Azure 诊断扩展的比较
-Azure Monitor 中的 [Azure 诊断扩展](./diagnostics-extension-overview.md)也可用于从 Azure 虚拟机的来宾操作系统收集监视数据。 根据自己的需求，你可以选择使用任一代理或两者。 如需详细了解 Azure Monitor 代理的比较，请参阅 [Azure Monitor 代理概述](../agents/agents-overview.md)。 
+Azure Monitor 中的 [Azure 诊断扩展](./diagnostics-extension-overview.md)也可用于从 Azure 虚拟机的来宾操作系统收集监视数据。 可以根据要求选择使用任一项，或者二者都使用。 如需详细了解 Azure Monitor 代理的比较，请参阅 [Azure Monitor 代理概述](../agents/agents-overview.md)。 
 
 需要考虑的主要区别是：
 
@@ -79,7 +79,7 @@ Linux 和 Windows 的代理不只是用于连接到 Azure Monitor。 其他服�
 - [VM 见解](../vm/vminsights-enable-overview.md)提供了多种方法来大规模启用代理。 这包括安装 Log Analytics 代理和 Dependency Agent。 
 - 在所有受支持的 Azure VM 和任何新创建的 VM 上，[Azure安全中心可以预配 Log Analytics 代理](../../security-center/security-center-enable-data-collection.md)（如果启用了 Azure安全中心来监视安全漏洞和威胁）。
 - 可以使用 Azure 门户、Azure CLI、Azure PowerShell 或 Azure 资源管理器模板来安装适用于 [Windows](../../virtual-machines/extensions/oms-windows.md) 或 [Linux](../../virtual-machines/extensions/oms-linux.md) 的 Log Analytics VM 扩展。
-- 为单个 Azure 虚拟机[从 Azure 门户手动安装](../vm/quick-collect-azurevm.md?toc=%2fazure%2fazure-monitor%2ftoc.json)。
+- 为单个 Azure 虚拟机[从 Azure 门户手动安装](../vm/monitor-virtual-machine.md?toc=%2fazure%2fazure-monitor%2ftoc.json)。
 
 ### <a name="windows-virtual-machine-on-premises-or-in-another-cloud"></a>本地或其他云中的 Windows 虚拟机
 
@@ -91,7 +91,7 @@ Linux 和 Windows 的代理不只是用于连接到 Azure Monitor。 其他服�
 ### <a name="linux-virtual-machine-on-premises-or-in-another-cloud"></a>本地或其他云中的 Linux 虚拟机
 
 - 使用[启用了 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来部署和管理 Log Analytics VM 扩展。
-- 通过调用 GitHub 上托管的包装器脚本来[手动安装](../vm/quick-collect-linux-computer.md)该代理。
+- 通过调用 GitHub 上托管的包装器脚本来[手动安装](../vm/monitor-virtual-machine.md)该代理。
 - 将 [System Center Operations Manager](./om-agents.md) 与 Azure Monitor 集成，以便从向管理组报告的 Windows 计算机转发收集的数据。
 
 ## <a name="workspace-id-and-key"></a>工作区 ID 和密钥

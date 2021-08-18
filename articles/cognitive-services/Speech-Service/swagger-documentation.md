@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 02/16/2021
 ms.author: alexeyo
-ms.openlocfilehash: d4369b66bacbe8cff4fc9712ffcd0cb5a370c439
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3b27bd16168f4949081f3f399f7f8f8293d2aa0b
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100636262"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114292562"
 ---
 # <a name="swagger-documentation"></a>Swagger 文档
 
-语音服务提供了一个 Swagger 规范，用于与少量 REST API 交互，这些 REST API 用于导入数据、创建模型、测试模型准确性、创建自定义终结点、排列批量听录以及管理订阅。 可使用这些 API 以编程方式完成通过 [Speech Studio 自定义语音识别区域](https://aka.ms/customspeech)提供的大部分操作。
+语音服务提供了一个 Swagger 规范，用于与少量 REST API 交互，这些 REST API 用于导入数据、创建模型、测试模型准确性、创建自定义终结点、排列批量听录以及管理订阅。 可使用这些 API 以编程方式完成通过 [Speech Studio 自定义语音识别区域](./custom-speech-overview.md)提供的大部分操作。
 
 > [!NOTE]
 > 语音服务具有多个 REST API，分别用于[语音转文本](rest-speech-to-text.md)和[文本转语音](rest-text-to-speech.md)。  

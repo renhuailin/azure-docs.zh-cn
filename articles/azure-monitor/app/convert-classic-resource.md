@@ -4,12 +4,12 @@ description: 了解将 Azure Monitor Application Insights 经典资源升级到�
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3d6092d694d1c99ff7755dfcbec5c0edbfb7567f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3eea51b69bbb1138ac7c5418370759d1777b482c
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077295"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114361830"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>迁移到基于工作区的 Application Insights 资源
 
@@ -26,7 +26,7 @@ ms.locfileid: "110077295"
 * [客户管理的密钥 (CMK)](../logs/customer-managed-keys.md) 为你的数据提供静态加密，并提供只有你有权访问的加密密钥。
 * 通过 [Azure 专用链接](../logs/private-link-security.md)，可使用专用终结点将 Azure PaaS 服务安全地链接到你的虚拟网络。
 * 借助[适用于 Profiler 和 Snapshot Debugger 的自带存储 (BYOS)](./profiler-bring-your-own-storage.md)，你可以完全控制与 Application Insights Profiler 和 Snapshot Debugger 相关联的所有数据的静态加密策略、生存期管理策略和网络访问。 
-* 使用[产能预留层](../logs/manage-cost-storage.md#pricing-model)可以节省 25% 的成本（与即用即付价格相比）。 
+* 使用[承诺层级](../logs/manage-cost-storage.md#pricing-model)可以节省 30% 的成本（与即用即付价格相比）。 
 * 可以通过 Log Analytics 流引入提高数据引入速度。
 
 ## <a name="migration-process"></a>迁移过程
@@ -51,6 +51,9 @@ ms.locfileid: "110077295"
     
 - 基于工作区的资源不支持连续导出，必须禁用此功能。
 迁移完成后，可以使用[诊断设置](../essentials/diagnostic-settings.md)配置到存储帐户的数据存档或到 Azure 事件中心的流式传输。  
+
+    > [!CAUTION]
+    > 诊断设置使用与连续导出不同的导出格式/架构，迁移会破坏与流分析的任何现有集成。
 
 - 在你的 Log Analytics 工作区的“常规” > “使用情况和预估成本” > “数据保留”下检查当前保留设置。   此设置会影响迁移 Application Insights 资源后新引入数据的存储时间。 如果你目前存储 Application Insights 数据的时间超过默认的 90 天，想要保留这个较长的保留期，则可能需要调整工作区保留设置。
 

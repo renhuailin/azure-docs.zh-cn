@@ -8,23 +8,23 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 06/18/2021
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-js
-ms.openlocfilehash: c96f674b64401250d45542d0f59f13654cf37caa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0f6a1ebdcae8b166200f5a2a491939ede0a7a259
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97802518"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414861"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-在本教程中，用户首先将学习使用运行 Raspbian 的 Raspberry Pi 的基础知识。 然后将学习如何使用 [Azure IoT 中心](about-iot-hub.md)将设备无缝连接到云。 有关 Windows 10 IoT Core 的示例，请访问 [Windows 开发人员中心](https://www.windowsondevices.com/)。
+在本教程中，首先学习有关使用运行 Raspberry Pi OS 的 Raspberry Pi 的基础知识。 然后将学习如何使用 [Azure IoT 中心](about-iot-hub.md)将设备无缝连接到云。 有关 Windows 10 IoT Core 的示例，请访问 [Windows 开发人员中心](https://www.windowsondevices.com/)。
 
 还没有工具包？ 请尝试 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)。 或在[此处](https://azure.microsoft.com/develop/iot/starter-kits)购买新工具包。
 
@@ -91,25 +91,25 @@ ms.locfileid: "97802518"
 
 ## <a name="set-up-raspberry-pi"></a>设置 Raspberry Pi
 
-### <a name="install-the-raspbian-operating-system-for-pi"></a>为 Pi 安装 Raspbian 操作系统
+### <a name="install-the-raspberry-pi-os"></a>安装 Raspberry Pi OS
 
-准备用于安装 Raspbian 映像的 microSD 卡。
+准备用于安装 Raspberry Pi OS 映像的 microSD 卡。
 
-1. 下载 Raspbian。
+1. 下载台式机版 Raspberry Pi OS。
 
-   a. [Raspbian Buster with desktop](https://www.raspberrypi.org/software/)（.zip 文件）。
+   a. [台式机版 Raspberry Pi OS](https://www.raspberrypi.org/software/)（.zip 文件）。
 
-   b. 将 Raspbian 映像提取到计算机上的一个文件夹中。
+   b. 将台式机版 Raspberry Pi OS 映像提取到计算机上的文件夹中。
 
-2. 将 Raspbian 安装到 microSD 卡。
+2. 将台式机版 Raspberry Pi OS 安装到 microSD 卡中。
 
    a. [下载并安装 Etcher SD 卡刻录机实用工具](https://etcher.io/)。
 
-   b. 运行 Etcher 并选择你在步骤 1 中提取的 Raspbian 映像。
+   b. 运行 Etcher 并选择已在步骤 1 中解压缩的 Raspberry Pi OS 映像。
 
    c. 选择 microSD 卡驱动器。 Etcher 可能已选择了正确的驱动器。
 
-   d. 单击“刷机”，将 Raspbian 安装到 microSD 卡。
+   d. 单击“Flash”，将台式机版 Raspberry Pi OS 安装到 microSD 卡中。
 
    e. 在安装完成后，从计算机中移除 microSD 卡。 可以安全地直接移除 microSD 卡，因为在完成时 Etcher 会自动弹出或卸载 microSD 卡。
 
@@ -119,13 +119,20 @@ ms.locfileid: "97802518"
 
 1. 将 Pi 连接到监视器、键盘和鼠标。
 
-2. 启动 Pi，然后使用 `pi` 作为用户名并使用 `raspberry` 作为密码来登录 Raspbian。
+2. 启动 Pi，然后使用 `pi` 作为用户名并使用 `raspberry` 作为密码来登录 Raspberry Pi OS。
 
 3. 依次单击 Raspberry 图标 >“首选项” > “Raspberry Pi 配置”。
 
-   ![Raspbian 首选项菜单](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
+   ![带“首选项”菜单的 Raspberry Pi OS](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
-4. 在“接口”选项卡上，将“I2C”和“SSH”设置为“启用”，并单击“确定”。 如果没有物理传感器并且想要使用模拟的传感器数据，则此步骤是可选的。
+4. 在“接口”选项卡上，将“SSH”和“I2C”设置为“启用”，然后单击“确定”    。 
+ 
+    | 接口 | 说明 |
+    | --------- | ----------- |
+    | *SSH* | 安全外壳 (SSH) 通过远程命令行远程进入 Raspberry Pi。 这是本文档中向 Raspberry Pi 远程发出命令的首选方法。 |
+    | *I2C* | 集成电路总线 (I2C) 是一种通信协议，用于与传感器等硬件进行交互。 在本主题中，此接口需要连接物理传感器。|
+
+    如果没有物理传感器，并且想要使用 Raspberry Pi 设备中的模拟传感器数据，可以将“I2C”保持禁用状态。
 
    ![在 Raspberry Pi 上启用 I2C 和 SSH](./media/iot-hub-raspberry-pi-kit-node-get-started/2-enable-i2c-ssh-on-raspberry-pi.png)
 
@@ -198,7 +205,7 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
    如果版本低于 10.x，或者 Pi 上没有 Node.js，请安装最新版本。
 
    ```bash
-   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
+   curl -sSL https://deb.nodesource.com/setup_16.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
@@ -232,7 +239,7 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 
    如果没有传感器，请将 `simulatedData` 值设置为 `true`，使示例应用程序创建和使用模拟的传感器数据。
 
-   *注意：本教程中使用的 i2c 地址默认为 0x77。根据配置的不同，也可能为 0x76：如果遇到 i2c 错误，请尝试将此值更改为 118，看看是否更好。若要查看传感器使用的地址，请在 raspberry pi 上在 shell 中运行 `sudo i2cdetect -y 1`*
+   注意：本教程使用的 i2c 地址默认为 0x77。根据你的配置，它也可能是 0x76 的：如果遇到 i2c 错误，请尝试将此值更改为 118，看看效果是否更好。若要查看传感器使用的地址，请在 Raspberry pi 上的 shell 中运行 `sudo i2cdetect -y 1`
 
 2. 通过按“Control-O”>“Enter”>“Control-X”保存并退出。
 
@@ -256,6 +263,14 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 若要监视 IoT 中心从设备收到的消息，一种方法是使用适用于 Visual Studio Code 的 Azure IoT Tools。 若要了解详细信息，请参阅[使用适用于 Visual Studio Code 的 Azure IoT Tools 在设备和 IoT 中心之间发送和接收消息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
 
 若要了解如何通过更多方式来处理设备发送的数据，请转到下一部分。
+
+## <a name="clean-up-resources"></a>清理资源
+
+可以将在本主题中创建的资源用于本文档集中的其他教程和快速入门。 如果打算继续学习其他快速入门或相关教程，请不要清理在本主题中创建的资源。 如果不打算继续，请在 Azure 门户中执行以下步骤来删除本主题创建的所有资源。
+
+1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择你创建的 IoT 中心。 
+1. 在 IoT 中心概述窗格顶部，单击“删除”。
+1. 输入中心名称，然后再次单击“删除”以确认永久删除 IoT 中心。
 
 ## <a name="next-steps"></a>后续步骤
 

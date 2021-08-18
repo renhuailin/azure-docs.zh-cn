@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 2c8a9121d0e36eb51cd02c2c884ddcaa0dd79a79
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 51f4bd3be4334d65504e8e72bc7595989e8b6be7
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226203"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443868"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>适用于 Azure Active Directory B2C 的建议和最佳做法
 
@@ -39,7 +39,7 @@ ms.locfileid: "107226203"
 | 构建端到端解决方案 | 规划 Azure AD B2C 集成时，请考虑到应用程序的所有依赖项。 考虑环境中当前存在的或者可能需要添加到解决方案的所有服务和产品，例如 Azure Functions、客户关系管理 (CRM) 系统、Azure API 管理网关和存储服务。 考虑所有服务的安全性和可伸缩性。 |
 | 阐述用户体验 | 详细说明客户可以在应用程序中体验到的所有用户旅程。 包括客户在与应用程序的标识和配置文件交互时，可能会看到的每个屏幕和任何分支流。 在规划中包括可用性、可访问性和本地化。 |
 | 选择适当的身份验证协议 |  有关不同应用程序方案的细节及其建议的身份验证流，请参阅[方案和支持的身份验证流](../active-directory/develop/authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。 |
-| 试运行概念证明 (POC) 端到端用户体验 | 请从我们的 [Microsoft 代码示例](code-samples.md)和[社区示例](https://github.com/azure-ad-b2c/samples)着手。 |
+| 试运行概念证明 (POC) 端到端用户体验 | 请从我们的 [Microsoft 代码示例](integrate-with-app-code-samples.md)和[社区示例](https://github.com/azure-ad-b2c/samples)着手。 |
 | 创建迁移计划 |提前规划能够使迁移更顺利地进行。 详细了解[用户迁移](user-migration.md)。|
 | 可用性与安全性 | 解决方案必须致力于在应用程序可用性与组织可接受的风险级别之间取得适当的平衡。 |
 | 将本地依赖项转移到云中 | 为了帮助确保解决方案具有复原能力，请考虑将现有的应用程序依赖项转移到云中。 |

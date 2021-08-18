@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/16/2020
+ms.date: 07/01/2021
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccd3de1b05c416ea25f7636c683f887dccc76898
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 4fcd11f88cb25ef3afb199b147856d0a0140e44c
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713785"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113491976"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中更改访问包的请求设置
 
@@ -141,7 +141,7 @@ ms.locfileid: "109713785"
 1. 选择所有已连接的组织后，单击“选择”。
 
     > [!NOTE]
-    > 来自选定已连接的组织的所有用户都将可以请求此访问包。 这包括来自与组织关联的所有子域的 Azure AD 中的用户，除非这些域被 Azure B2B 允许或拒绝列表阻止。 有关详细信息，请参阅[允许或阻止向特定组织中的 B2B 用户发送邀请](../external-identities/allow-deny-list.md)。
+    > 来自选定已连接的组织的所有用户都将可以请求此访问包。 这包括来自与组织关联的所有子域的 Azure AD 中的用户，除非这些域被 Azure B2B 允许或阻止列表阻止。 有关详细信息，请参阅[允许或阻止向特定组织中的 B2B 用户发送邀请](../external-identities/allow-deny-list.md)。
 
 1. 如果需要审批，请按照[在 Azure AD 权利管理中更改访问包的审批设置](entitlement-management-access-package-approval-policy.md)中的步骤来配置审批设置。
  
@@ -198,11 +198,17 @@ ms.locfileid: "109713785"
 
 1. 单击“下一步”  。
 
-1. 如果希望要求请求者在请求访问访问包时提供额外信息，请使用[在 Azure AD 权利管理中更改访问包的审批和请求者信息（预览）设置。](entitlement-management-access-package-approval-policy.md#collect-additional-requestor-information-for-approval-preview)中的步骤来配置请求者信息（预览）。
+1. 如果希望要求请求者在请求访问访问包时提供额外信息，请使用[在 Azure AD 权利管理中更改访问包的审批和请求者信息设置](entitlement-management-access-package-approval-policy.md#collect-additional-requestor-information-for-approval)中的步骤来配置请求者信息。
 
 1. 配置生命周期设置。
 
 1. 如果正在编辑策略，请单击“更新”。 如果正在编辑新策略，请单击“创建”。
+
+## <a name="prevent-requests-from-users-with-incompatible-access-preview"></a>防止来自具有不兼容访问权限的用户的请求（预览）
+
+除了对谁可以请求进行策略检查之外，你可能还希望进一步限制访问，以避免已经拥有某些访问权限的用户（通过组或其他访问包）获得过多访问权限。
+
+如果你希望将用户配置为不能请求访问包，如果他们已经分配到另一个访问包或是组的成员，请使用[为访问包配置职责分离检查](entitlement-management-access-package-incompatible.md)中的步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

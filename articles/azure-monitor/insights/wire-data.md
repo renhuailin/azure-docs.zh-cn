@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2021
-ms.openlocfilehash: c135e33da60bf3ed8603b8fc0d6e59bbfab27b77
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 52bb368ccf19c23c04bc062e7db50c07ecebaceb
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108142542"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296074"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor-retired"></a>Azure Monitor 中的 Wire Data 2.0（预览版）解决方案（已停用）
 
@@ -124,7 +124,7 @@ VMConnection
 
 ### <a name="more-examples-queries"></a>更多示例查询
 
-有关其他示例查询，请参阅 [VM 见解日志搜索文档](../vm/vminsights-log-search.md)和 [VM 见解警报文档](../vm/vminsights-alerts.md#sample-alert-queries)。
+有关其他示例查询，请参阅 [VM 见解日志搜索文档](../vm/vminsights-log-search.md)和 [VM 见解警报文档](../vm/monitor-virtual-machine-alerts.md)。
 
 ## <a name="uninstall-wire-data-20-solution"></a>卸载 Wire Data 2.0 解决方案
 

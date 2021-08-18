@@ -3,20 +3,20 @@ title: 语音合成标记语言 (SSML) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 使用语音合成标记语言来控制文本到语音转换中的发音和韵律。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3ba2dad93778e9d4482fa00c854a73dbc616d290
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: f69ea6fcc48cf12b012e15ab7ff1fd2b569c0889
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750400"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071527"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -764,6 +764,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 | `ordinal` | | 此文本朗读为基数。 语音合成引擎将以下内容：<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />朗读为“Select the third option”。 |
 | `telephone` | | 此文本朗读为电话号码。 `format` 属性可以包含表示国家/地区代码的数字。 例如，“1”表示美国，“39”表示意大利。 语音合成引擎可使用此信息来指导其电话号码的发音。 电话号码也可能包含国家/地区代码，如果是，则优先于 `format` 中的国家/地区代码。 语音合成引擎将以下内容：<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />朗读为“My number is area code eight eight eight five five five one two one two.” |
 | `time` | hms12, hms24 | 此文本朗读为时间。 `format` 属性指定时间是使用 12 小时制 (hms12) 还是 24 小时制 (hms24) 指定的。 请使用冒号分隔表示小时、分钟和秒的数字。 下面是有效的时间示例：12:35、1:14:32、08:15 和 02:50:45。 语音合成引擎将以下内容：<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />朗读为“The train departs at four A M.” |
+| `name` | | 此文本朗读为人名。 语音合成引擎将以下内容：<br /><br />`<say-as interpret-as="name">ED</say-as>`<br /><br />发音为 [æd]。 <br />在中文姓名中，某些字符出现在姓氏中时发音不同。 例如，语音合成引擎在以下示例中将“仇” <br /><br />`<say-as interpret-as="address">仇先生</say-as>`<br /><br /> 发音为 [qiú] 而非 [chóu]。 |
 
 **使用情况**
 

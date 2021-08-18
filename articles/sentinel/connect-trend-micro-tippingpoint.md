@@ -15,17 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
-ms.openlocfilehash: 5c7491a0e0ba2a3bf604988c613e1fd8937f277d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d59637f446b70b0c4de253edc96b2b3f2921d387
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98752170"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253565"
 ---
 # <a name="connect-your-trend-micro-tippingpoint-solution-to-azure-sentinel"></a>将 Trend Micro TippingPoint 解决方案连接到 Azure Sentinel
 
 > [!IMPORTANT]
 > Trend Micro TippingPoint 连接器目前为预览版。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 本文介绍如何将 Trend Micro TippingPoint 威胁防护系统解决方案连接到 Azure Sentinel。 使用 Trend Micro TippingPoint 数据连接器，可以轻松地将 TippingPoint 安全管理系统 (SMS) 日志与 Azure Sentinel 连接，这样，你就可以在工作簿中查看数据，使用这些数据来创建自定义警报，并整合这些数据来改进调查。
 
@@ -77,6 +79,6 @@ TrendMicroTippingPoint
 
 本文档介绍了如何将 Trend Micro TippingPoint 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。

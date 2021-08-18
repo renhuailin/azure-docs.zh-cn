@@ -1,33 +1,36 @@
 ---
 title: 在 Azure Active Directory 中排查基于密码的单一登录问题
 description: 排查配置为基于密码的单一登录的 Azure AD 应用的问题。
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mtillman
-ms.reviewer: asteen
-ms.openlocfilehash: e587bfc3dfbd859be9ecea24b398c005f883dc10
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: davidmu
+ms.reviewer: ergreenl
+ms.openlocfilehash: 32b099b72a55e768087f6123e684f0107e1e1e57
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080572"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739959"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>在 Azure AD 中排查基于密码的单一登录问题
 
 若要使用“我的应用”中的“基于密码的单一登录 (SSO)” ，必须安装浏览器扩展。 选择某个已配置基于密码的 SSO 的应用时，会自动下载此扩展。 若要了解如何从最终用户的角度使用“我的应用”，请参阅[“我的应用”门户帮助](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="my-apps-browser-extension-not-installed"></a>“我的应用”浏览器扩展未安装
-请确保已安装浏览器扩展。 要了解更多信息，请参见[计划 Azure Active Directory“我的应用”部署](my-apps-deployment-plan.md)。 
+
+请确保已安装浏览器扩展。 要了解更多信息，请参见[计划 Azure Active Directory“我的应用”部署](my-apps-deployment-plan.md)。
 
 ## <a name="single-sign-on-not-configured"></a>未配置单一登录
+
 请确保已配置基于密码的单一登录。 若要了解详细信息，请参阅[配置基于密码的单一登录](configure-password-single-sign-on-non-gallery-applications.md)。
 
 ## <a name="users-not-assigned"></a>未分配用户
+
 请确保已将用户分配到应用。 若要了解详细信息，请参阅[将用户或组分配到应用](assign-user-or-group-access-portal.md)。
 
 ## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>凭据已填写，但扩展却未提交凭据
@@ -44,15 +47,15 @@ ms.locfileid: "112080572"
 
 - 先让用户使用为他们保存的凭据尝试 **直接登录应用程序网站**。
 
-  * 如果登录有效，再让用户在[我的应用](https://myapps.microsoft.com/)“应用”部分中的“应用程序磁贴”上，单击“更新凭据”，以将凭据更新为已知的最新有效的用户名和密码。
+  - 如果登录有效，再让用户在[我的应用](https://myapps.microsoft.com/)“应用”部分中的“应用程序磁贴”上，单击“更新凭据”，以将凭据更新为已知的最新有效的用户名和密码。
 
-  * 如果或另一个管理员为该用户分配凭据，请导航到该应用程序的“用户和组”选项卡、选择分配并单击“更新凭据”按钮，找到该用户或组的应用程序分配。
+  - 如果或另一个管理员为该用户分配凭据，请导航到该应用程序的“用户和组”选项卡、选择分配并单击“更新凭据”按钮，找到该用户或组的应用程序分配。
 
 - 如果用户自己分配凭据，让用户“检查以确保他们的密码在应用程序中未过期”，如果已经过期，直接登录应用程序 **更新过期密码**。
 
-  * 密码在应用程序中更新好后，要求用户在[我的应用](https://myapps.microsoft.com/)“应用”部分中的“应用程序磁贴”上，单击“更新凭据”按钮，以将凭据更新到已知的最新有效的用户名和密码。
+  - 密码在应用程序中更新好后，要求用户在[我的应用](https://myapps.microsoft.com/)“应用”部分中的“应用程序磁贴”上，单击“更新凭据”按钮，以将凭据更新到已知的最新有效的用户名和密码。
 
-  * 如果或另一个管理员为该用户分配凭据，请导航到该应用程序的“用户和组”选项卡、选择分配并单击“更新凭据”按钮，找到该用户或组的应用程序分配。
+  - 如果或另一个管理员为该用户分配凭据，请导航到该应用程序的“用户和组”选项卡、选择分配并单击“更新凭据”按钮，找到该用户或组的应用程序分配。
 
 - 确保“我的应用”浏览器扩展正在运行并且已在用户浏览器中启用。
 
@@ -60,7 +63,7 @@ ms.locfileid: "112080572"
 
 如果前面的建议无效，可能是应用程序端已发生变更，已暂时中断了应用程序与 Azure AD 的集成。 例如，当应用程序供应商在页面上引入与手动和自动化输入表现不同的脚本，从而导致自动集成（就像我们这样的）中断时，就会发生这样情况。 幸运的是，在许多情况下，Microsoft 能够与应用程序供应商合作来快速解决这些问题。
 
-但是，尽管 Microsoft 的技术能够在应用程序集成中断时进行自动检测，但是可能无法立即找到这些问题，或者这些问题可能需要一些时间才能解决。 当集成无法正常工作时，可以打开支持案例以尽快解决这一问题。 
+但是，尽管 Microsoft 的技术能够在应用程序集成中断时进行自动检测，但是可能无法立即找到这些问题，或者这些问题可能需要一些时间才能解决。 当集成无法正常工作时，可以打开支持案例以尽快解决这一问题。
 
 除此之外，**如果与该应用程序的供应商联系，请** **向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](../develop/v2-howto-app-gallery-listing.md)来让他们开始工作。
 
@@ -68,7 +71,7 @@ ms.locfileid: "112080572"
 
 如果应用程序的登录页面已彻底变更，有时这会导致我们的集成中断。 例如，当应用程序供应商向体验添加登录字段、验证码或多重身份验证时就会出现这种情况。 幸运的是，在许多情况下，Microsoft 能够与应用程序供应商合作来快速解决这些问题。
 
-但是，尽管 Microsoft 的技术能够在应用程序集成中断时进行自动检测，但是可能无法立即找到这些问题，或者这些问题可能需要一些时间才能解决。 当集成无法正常工作时，可以打开支持案例以尽快解决这一问题。 
+但是，尽管 Microsoft 的技术能够在应用程序集成中断时进行自动检测，但是可能无法立即找到这些问题，或者这些问题可能需要一些时间才能解决。 当集成无法正常工作时，可以打开支持案例以尽快解决这一问题。
 
 除此之外，**如果与该应用程序的供应商联系，请** **向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](../develop/v2-howto-app-gallery-listing.md)来让他们开始工作。
 
@@ -87,6 +90,7 @@ ms.locfileid: "112080572"
 ### <a name="automatically-capture-sign-in-fields-for-an-app"></a>自动捕获应用的登录字段
 
 若要使用自动登录字段捕获来配置基于密码的 SSO，请执行以下步骤：
+
 1. 打开 [Azure 门户](https://portal.azure.com/)。 以“全局管理员”或“共同管理员”身份登录。
 2. 在左侧的导航窗格中，选择“所有服务”打开 Azure AD 扩展。
 3. 在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”。
@@ -106,12 +110,13 @@ ms.locfileid: "112080572"
 若要手动捕获登录字段，必须安装“我的应用”浏览器扩展。 此外，浏览器不能在“inPrivate”、“incognito”或“专用”模式下运行。
 
 若要使用手动登录字段捕获来配置应用基于密码的 SSO，请执行以下步骤：
+
 1. 打开 [Azure 门户](https://portal.azure.com/)。 以“全局管理员”或“共同管理员”身份登录。
 2. 在左侧的导航窗格中，选择“所有服务”打开 Azure AD 扩展。
 3. 在筛选器搜索框中键入“Azure Active Directory”，然后选择“Azure Active Directory”。
 4. 在 Azure AD 导航窗格中选择“企业应用程序”。
 5. 选择“所有应用程序”，查看应用程序列表。
-   > [!NOTE] 
+   > [!NOTE]
    > 如果看不到所需的应用，请使用“所有应用程序”列表顶部的“筛选器”控件。 将“显示”选项设置为“所有应用程序”。
 6. 选择要为 SSO 配置的应用。
 7. 在应用加载后，在左侧的导航窗格中选择“单一登录”。
@@ -119,10 +124,9 @@ ms.locfileid: "112080572"
 9. 输入“登录 URL”，这是用户登录应用时在其中输入用户名和密码的页面。 确保登录字段在提供的 URL 的页面上可见。
 10. 选择“配置 ***应用名称&lt;&gt;密码单一登录设置”***。
 11. 选择“手动检测登录字段”。
-14. 选择“确定”  。
-15. 选择“保存”。 
-16. 按照说明使用“我的应用”。
-
+12. 选择“确定”  。
+13. 选择“保存”。 
+14. 按照说明使用“我的应用”。
 
 ## <a name="troubleshoot-problems"></a>排查问题
 
@@ -139,12 +143,14 @@ ms.locfileid: "112080572"
 ### <a name="i-cant-manually-detect-sign-in-fields-for-my-app"></a>我无法手动检测应用的登录字段
 
 手动检测不起作用时，可能会观察到以下行为：
+
 - 手动捕获进程看似有效，但捕获的字段不正确。
 - 当捕获进程运行时，正确的字段不突出显示。
 - 捕获进程如期将你带到应用的登录页面，但无任何反应。
 - 手动捕获看似有效，但当用户从“我的应用”导航到应用时，未发生 SSO。
 
 如果遇到以上任何问题，请执行以下操作：
+
 - 确保已安装并启用“我的应用”浏览器扩展的最新版本。
 - 在捕获过程中，确保你的浏览器不处于“incognito”、“inPrivate”或“专用”模式。 在这些模式下“我的应用”扩展不受支持。
 - 确保用户未在 *incognito*、*inPrivate* 或 *专用* 模式下试图从“我的应用”登录应用。
@@ -155,28 +161,31 @@ ms.locfileid: "112080572"
 
 基于密码的 SSO 应用的用户数限制为 48 个。 因此，每个应用的用户名/密码对的密钥限制为 48 个。
 如果要添加其他用户，可以：
--   添加应用的其他实例
--   先删除不再使用应用的用户
 
-## <a name="request-support"></a>请求支持 
+- 添加应用的其他实例
+- 先删除不再使用应用的用户
+
+## <a name="request-support"></a>请求支持
+
 如果在设置 SSO 并分配用户时收到错误消息，请打开支持票证。 请尽可能多地包含以下信息：
 
--   相关错误 ID
--   UPN（用户电子邮件地址）
--   TenantID
--   浏览器类型
--   发生错误时的时区和时间/期限
--   Fiddler 跟踪
+- 相关错误 ID
+- UPN（用户电子邮件地址）
+- TenantID
+- 浏览器类型
+- 发生错误时的时区和时间/期限
+- Fiddler 跟踪
 
 ### <a name="view-portal-notification-details"></a>查看门户通知的详细信息
 
 若要查看任何门户通知的详细信息，请执行以下步骤：
+
 1. 选择 Azure 门户右上角的“通知”图标（铃铛）。
 2. 选择显示“错误”状态的任何通知。 （它们标有红色的“!”。）
    > [!NOTE]
    > 你无法选择处于“成功”或“正在进行”状态的通知。
 3. “通知详细信息”窗格随即打开。 阅读此信息以了解此问题。
-5. 如果仍需要帮助，可以与支持工程师或产品组共享此信息。 选择“复制错误”文本框右侧的“复制”图标，复制要共享的通知详细信息。
+4. 如果仍需要帮助，可以与支持工程师或产品组共享此信息。 选择“复制错误”文本框右侧的“复制”图标，复制要共享的通知详细信息。
 
 ### <a name="send-notification-details-to-a-support-engineer-to-get-help"></a>向支持工程师发送通知详细信息以获取帮助
 
@@ -244,7 +253,7 @@ ms.locfileid: "112080572"
 
     示例：```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
-
 ## <a name="next-steps"></a>后续步骤
-* [应用程序管理的快速入门系列](view-applications-portal.md)
-* [计划“我的应用”部署](my-apps-deployment-plan.md)
+
+- [应用程序管理的快速入门系列](view-applications-portal.md)
+- [计划“我的应用”部署](my-apps-deployment-plan.md)

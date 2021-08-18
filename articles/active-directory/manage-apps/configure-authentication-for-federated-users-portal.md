@@ -2,22 +2,23 @@
 title: 使用主页领域发现策略配置登录自动加速
 description: 了解如何为联合用户配置关于 Azure Active Directory 身份验证的主页领域发现策略，包括自动加速和域提示。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/12/2021
-ms.author: mtillman
+ms.author: davidmu
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2729ec3ca445fa53503a1968e1fee639bd990f6b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.reviewer: hirsin
+ms.openlocfilehash: c909f888ac498900cfa4aac409ee6cabfc381250
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081490"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738828"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为
 
@@ -43,7 +44,7 @@ ms.locfileid: "112081490"
 
 当用户登录到应用程序时，首先会看到 Azure AD 登录页。 键入 UPN 后，如果用户位于联合域中，则会转到为该域提供服务的 IdP 的登录页。 某些情况下，当用户尝试登录特定应用程序时，管理员可能希望将其定向到登录页。
 
-因此，用户可以跳过 Azure Active Directory 初始页。 此过程称为“登录自动加速”。
+因此，用户可以跳过 Azure Active Directory 初始页。 这个过程称为“登录自动加速”。
 
 在租户被联合到另一个 IdP 以进行登录的情况下，自动加速可进一步简化用户登录。  可以为单个应用程序配置自动加速。
 
@@ -254,7 +255,7 @@ Add-AzureADServicePrincipalPolicy -Id <ObjectID of the Service Principal> -RefOb
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
-#### <a name="step-5-youre-done"></a>步骤 5：操作完成！
+#### <a name="step-5-youre-done"></a>步骤 5：操作完成
 
 尝试运行应用程序，以检查新策略是否有效。
 

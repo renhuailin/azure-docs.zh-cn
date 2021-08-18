@@ -10,18 +10,20 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 82ea47037902ce3a9449f71a9edf62cb80863d4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f936208e936bfe65b28816cc373d9ba1190308e9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94655980"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121777997"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>连接 Azure 信息保护中的数据
 
 > [!IMPORTANT]
 > Azure Sentinel 中的 Azure 信息保护数据连接器目前以公共预览版提供。
 > 此功能不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 你可以通过配置 Azure 信息保护数据连接器，将 [Azure 信息保护](https://azure.microsoft.com/services/information-protection/)中的日志记录信息流式传输到 Azure Sentinel。 Azure 信息保护可帮助你控制和保护敏感数据，无论数据存储在云中还是本地。
 
@@ -74,5 +76,5 @@ ms.locfileid: "94655980"
 ## <a name="next-steps"></a>后续步骤
 
 本文档介绍了如何将 Azure 信息保护连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。

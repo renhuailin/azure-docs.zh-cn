@@ -10,12 +10,13 @@ author: wenxwei
 ms.author: wenxwei
 ms.date: 05/25/2021
 ms.reviewer: peterlu
-ms.openlocfilehash: 65b7446602c8b7202ba7ccf56115edfc5de333db
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.custom: devplatv2
+ms.openlocfilehash: 89fb2c08aa76b88110bb5832f297d08d5891dda4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750724"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448304"
 ---
 # <a name="train-models-with-rest-preview"></a>使用 REST 训练模型（预览版）
 
@@ -34,7 +35,7 @@ REST API 使用标准 HTTP 谓词创建、检索、更新和删除资源。 REST
 
 ## <a name="prerequisites"></a>先决条件
 
-- 你对其拥有管理权限的 **Azure 订阅**。 如果没有此类订阅，请尝试注册[免费或付费的个人订阅](https://aka.ms/AMLFree)。
+- 你对其拥有管理权限的 **Azure 订阅**。 如果没有此类订阅，请尝试注册[免费或付费的个人订阅](https://azure.microsoft.com/free/)。
 - 一个 [Azure 机器学习工作区](how-to-manage-workspace.md)。
 - 工作区中的服务主体。 管理 REST 请求使用[服务主体身份验证](how-to-setup-authentication.md#use-service-principal-authentication)。
 - 一个服务主体身份验证令牌。 请按照[检索服务主体身份验证令牌](./how-to-manage-rest.md#retrieve-a-service-principal-authentication-token)中的步骤检索此令牌。 
@@ -47,7 +48,7 @@ REST API 使用标准 HTTP 谓词创建、检索、更新和删除资源。 REST
 - 如何运行？
 - 在哪个位置运行？
 
-提交 Azure 机器学习作业的方法有很多，包括使用 SDK、使用 CLI 以及在工作室中以可视方式提交。 以下示例使用 REST API 提交 LightGBM 训练作业。
+提交 Azure 机器学习作业的方法有很多，包括使用 SDK、使用 Azure CLI 以及在工作室中以可视方式提交。 以下示例使用 REST API 提交 LightGBM 训练作业。
 
 ## <a name="create-machine-learning-assets"></a>创建机器学习资产
 

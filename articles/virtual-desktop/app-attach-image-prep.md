@@ -6,16 +6,18 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f80d123a96a24ef9e9402cc2b142e94448468ea1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: b3e33fecc1df930cf4fb01808b2a8400a210fce8
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745630"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707158"
 ---
 # <a name="prepare-an-msix-image-for-azure-virtual-desktop"></a>为 Azure 虚拟桌面准备 MSIX 映像
 
 MSIX 应用附加是一个应用程序分层解决方案，可用于将应用从 MSIX 包动态附加到用户会话。 MSIX 包系统将应用与操作系统分开，这样更易于为虚拟机构建映像。 借助 MSIX 包，还可以更好地控制用户在其虚拟机中可以访问哪些应用。 甚至可以将应用与主映像分开，稍后再将这些应用提供给用户。
+
+有关如何将桌面安装程序（例如 MSI、EXE、ClickOnce、App-V 或脚本）转换为 MSIX 的说明，请参阅[从任何桌面安装程序（MSI、EXE、ClickOnce 或 App-V）创建 MSIX 包](/windows/msix/packaging-tool/create-app-package)。
 
 ## <a name="create-a-vhd-or-vhdx-package-for-msix"></a>为 MSIX 创建 VHD 或 VHDX 包
 
@@ -106,4 +108,4 @@ MSIX 包需要采用 VHD 或 VHDX 格式才能正常工作。 这意味着，需
 下面是一些可能有用的其他文章：
 
 - [MSIX 应用附加术语表](app-attach-glossary.md)
-- [MSIX 应用附加常见问题解答](app-attach-faq.md)
+- [MSIX 应用附加常见问题解答](app-attach-faq.yml)

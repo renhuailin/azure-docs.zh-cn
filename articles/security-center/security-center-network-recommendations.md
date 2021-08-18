@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: c24e3473c07759aa256a077d11edb20c616629f6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dd09279665230062c7a2567784731144ef438c6c
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439504"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237237"
 ---
 # <a name="protect-your-network-resources"></a>保护你的网络资源
 Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安全最佳做法。 在安全中心识别出潜在的安全漏洞时，它会创建一些建议，指导完成配置所需控件以强化和保护资源的过程。
@@ -31,7 +31,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 在[资产清单页面](asset-inventory.md)中，使用资源类型筛选器选择要调查的网络资源：
 
-:::image type="content" source="./media/security-center-network-recommendations/network-filters-inventory.png" alt-text="资产清单网络资源类型" lightbox="./media/security-center-network-recommendations/network-filters-inventory.png":::
+:::image type="content" source="./media/security-center-network-recommendations/network-filters-inventory.png" alt-text="资产清单网络资源类型。" lightbox="./media/security-center-network-recommendations/network-filters-inventory.png":::
 
 
 ## <a name="network-map"></a>网络映射
@@ -42,7 +42,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 1. 从安全中心的菜单打开 Azure Defender 仪表板，然后选择“网络映射”。
 
-    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="从 Azure Defender 仪表板打开网络映射" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="从 Azure Defender 仪表板打开网络映射。" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
 
 1. 选择“层”菜单，然后选择“拓扑” 。
  
@@ -55,7 +55,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 - 面向 Internet 的资源
 - 该映射针对在 Azure 中选择的订阅进行了优化。 如果修改了选择，则会根据新设置重新计算并重新优化映射。  
 
-[![网络拓扑图](./media/security-center-network-recommendations/network-map-info.png)](./media/security-center-network-recommendations/network-map-info.png#lightbox)
+[![网络拓扑图。](./media/security-center-network-recommendations/network-map-info.png)](./media/security-center-network-recommendations/network-map-info.png#lightbox)
 
 ## <a name="understanding-the-network-map"></a>了解网络映射
 
@@ -107,7 +107,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 此数据基于对网络安全组的分析以及分析多个规则以了解其交叉和交互的高级机器学习算法。 
 
-[![网络流量映射](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
+[![网络流量映射。](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
 
 
 ## <a name="next-steps"></a>后续步骤

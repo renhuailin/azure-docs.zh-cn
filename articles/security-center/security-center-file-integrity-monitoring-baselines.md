@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 2f160948a06d8a3175158e0100345ee2a330048c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b5f4314afa17f245c36417916bc9af59aa7493a
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100634682"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237541"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>使用文件完整性监视 (FIM) 比较基线
 
@@ -36,7 +36,7 @@ ms.locfileid: "100634682"
 
 FIM 注册表配置单元的默认设置提供了一种简便的方法来监视公共安全区域内的递归更改。  例如，攻击者可能通过在启动或关闭时配置执行，来配置要在 LOCAL_SYSTEM 上下文中执行的脚本。  若要监视此类更改，请启用内置检查。  
 
-![注册表](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
+![注册表。](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
 
 >[!NOTE]
 > 递归检查仅适用于建议的安全配置单元，不适用于自定义注册表路径。  
@@ -70,14 +70,14 @@ FIM 基线首先确定操作系统和支持应用程序的已知良好状态的�
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
     ```
 
-    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png" alt-text="对注册表启用 FIM":::
+    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-registry.png" alt-text="对注册表启用 FIM。":::
 
 ## <a name="track-changes-to-windows-files"></a>跟踪 Windows 文件的更改
 
 1. 在“添加 Windows 文件以跟踪更改”窗口的“输入路径”文本框中，输入包含要跟踪的文件的文件夹。在下图的示例中，Contoso Web 应用位于 D:\ 驱动器的 ContosWebApp 文件夹结构中。  
 1. 通过提供设置类的名称、启用递归并使用通配符 (*) 后缀指定顶级文件夹，来创建自定义 Windows 文件条目。
 
-    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png" alt-text="对文件启用 FIM":::
+    :::image type="content" source="./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png" alt-text="对文件启用 FIM。":::
 
 ## <a name="retrieve-change-data"></a>检索更改数据
 
@@ -117,4 +117,4 @@ FIM 基线首先确定操作系统和支持应用程序的已知良好状态的�
 
 可以将报告导出到 CSV 进行存档以及/或者导出为 Power BI 报告。  
 
-![FIM 数据](./media/security-center-file-integrity-monitoring-baselines/baselines-data.png)
+![FIM 数据。](./media/security-center-file-integrity-monitoring-baselines/baselines-data.png)

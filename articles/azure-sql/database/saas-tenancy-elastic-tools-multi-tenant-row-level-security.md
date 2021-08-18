@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: 6d753a90f2a4cb19c9f3933d007fb3d378af6d81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5ea87afa5b66701a3d28f98a446c9307ccac0fc4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92793205"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738464"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>具有弹性数据库工具和行级安全性的多租户应用程序
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

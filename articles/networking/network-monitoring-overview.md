@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 5eb5d73d6820260702f9b0190cf4e190b10f2c54
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: f076e942ac578a138fb75843bb9a7d3654f68c5a
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112029992"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114387735"
 ---
 # <a name="network-monitoring-solutions"></a>网络监视解决方案 
 
@@ -124,4 +124,4 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 
 ## <a name="miscellaneous"></a>杂项
 
-* [新定价](../azure-monitor/insights/network-performance-monitor-pricing-faq.md)
+* [新定价](../azure-monitor/insights/network-performance-monitor-pricing-faq.yml)

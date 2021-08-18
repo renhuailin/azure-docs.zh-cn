@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: cba8b97adb40ca2c277268188ff6ad541c7e9676
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98c55b143289c1467c9455cd40ea6649b1ab384f
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100596466"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113732001"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>排查将 Azure Cosmos DB Java SDK v4 与 SQL API 帐户配合使用时出现的问题
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,6 +45,28 @@ Azure Cosmos DB Java SDK v4 提供客户端逻辑表示用于访问 Azure Cosmos
 1. SDK 会重试读取和查询 IO 故障，而不会将它们呈现给最终用户。
 2. 写入（创建、更新、替换、删除）不是幂等的，因此，SDK 不能总是盲目地重试失败的写入操作。 用户的应用程序逻辑必须能够处理故障并重试。
 3. [SDK 可用性疑难解答](troubleshoot-sdk-availability.md)说明了多区域 Cosmos DB 帐户的重试。
+
+### <a name="retry-design"></a>重试设计
+
+应用程序应设计为对任何异常进行重试，除非已经知道重试将无效。 例如，应用程序应重试 408 请求超时，此超时可能是暂时的，因此重试可能会成功。 应用程序不应在 400 秒后重试，这通常意味着必须首先解决请求存在的问题。 400 秒后重试不会解决问题，如果再次重试，将导致相同的失败。 下表显示了已知故障以及要重试的故障。
+
+## <a name="common-error-status-codes"></a>常见错误状态代码 <a id="error-codes"></a>
+
+| 状态代码 | 可重试 | 说明 | 
+|----------|-------------|-------------|
+| 400 | 否 | 错误的请求（即无效的 json、不正确的标头、标头中的分区键不正确）| 
+| 401 | 否 | [未授权](troubleshoot-unauthorized.md) | 
+| 403 | 否 | 已禁止 |
+| 404 | 否 | [找不到资源](troubleshoot-not-found.md) |
+| 408 | 是 | [请求已超时](troubleshoot-request-timeout-java-sdk-v4-sql.md) |
+| 409 | 否 | 冲突失败是指为写入操作中的资源提供的 ID 已被现有资源使用。 对资源使用另一个 ID 可解决此问题，因为 ID 在具有相同分区键值的所有文档中必须唯一。 |
+| 410 | 是 | 消失异常（不应违反 SLA 的瞬间失败） |
+| 412 | 否 | 前提条件失败是操作指定的 eTag 与服务器上提供的版本不同。 这是乐观并发错误。 在读取资源的最新版本并更新请求中的 eTag 后重试该请求。
+| 413 | 否 | [请求实体太大](concepts-limits.md#per-item-limits) |
+| 429 | 是 | 可以安全地重试 429。 对于[请求过多](troubleshoot-request-rate-too-large.md)，可以按照此链接来避免这种情况。|
+| 449 | 是 | 仅在进行写入操作时才发生的暂时性错误，可安全重试。 这可能指向一个设计问题，即有太多并发操作试图更新 Cosmos DB 中的同一对象。 |
+| 500 | 是 | 操作由于意外服务错误而失败。 通过提交 [Azure 支持问题](https://aka.ms/azure-support)联系支持人员。 |
+| 503 | 是 | [服务不可用](troubleshoot-service-unavailable-java-sdk-v4-sql.md) |
 
 ## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>常见问题和解决方法
 
@@ -141,7 +163,7 @@ Azure Cosmos DB Java SDK 可提取大量依赖项；一般来说，如果项目�
 ```bash
 mvn dependency:tree
 ```
-有关详细信息，请参阅[maven 依赖项树指南](https://maven.apache.org/plugins/maven-dependency-plugin/examples/resolving-conflicts-using-the-dependency-tree.html)。
+有关详细信息，请参阅[maven 依赖项树指南](https://maven.apache.org/plugins-archives/maven-dependency-plugin-2.10/examples/resolving-conflicts-using-the-dependency-tree.html)。
 
 了解项目的哪个依赖项依赖于旧版本后，就可以修改 pom 文件中该 lib 上的依赖项并排除可传递依赖项，如下所示（假定 reactor core 是过时的依赖项）：
 

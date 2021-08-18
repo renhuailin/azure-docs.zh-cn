@@ -10,18 +10,18 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6657147d044d49ff72532ad270552a175c197c8f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ae8759bd10096737b400fe672c3555ff5fd41585
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078213"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296624"
 ---
-# <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>操作指南：对时序数据使用异常检测器 API  
+# <a name="how-to-use-the-anomaly-detector-univariate-api-on-your-time-series-data"></a>如何：对时序数据使用异常检测器单变量 API  
 
 [异常检测器 API](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) 提供两种异常情况检测方法。 可以在整个时序中以批处理方式检测异常，也可以在生成数据时通过检测最新数据点的异常状态来检测异常。 检测模型将返回异常结果以及每个数据点的预期值，还会返回异常情况检测边界的上限和下限。 可使用这些值来直观显示数据中正常值的范围和异常。
 
-## <a name="anomaly-detection-modes"></a>异常情况检测模式 
+## <a name="anomaly-detection-modes"></a>异常情况检测模式
 
 异常检测器 API 提供两种检测模式：批处理和流式处理。
 

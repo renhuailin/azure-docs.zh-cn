@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: af4f9dac30c1e443e9647a5b752cdabf9c094a6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77b55315256de8b2170a40c76006f05431aac267
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676080"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112454989"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure 中的 Red Hat Enterprise Linux 自带订阅黄金映像
 
@@ -213,4 +213,4 @@ Red Hat Enterprise Linux (RHEL) 映像在 Azure 中通过即用即付或自带�
 - 若要详细了解 Red Hat 更新基础结构，请参阅 [Azure Red Hat 更新基础结构](./redhat-rhui.md)。
 - 若要详细了解 Azure 中的所有 Red Hat 映像，请参阅[文档页面](./redhat-images.md)。
 - 有关 RHEL 所有版本的 Red Hat 支持策略的信息，请参阅 [Red Hat Enterprise Linux 生命周期](https://access.redhat.com/support/policy/updates/errata)页。
-- 有关 RHEL 黄金映像的其他文档，请参阅 [Red Hat 文档](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access)。
+- 有关 RHEL 黄金映像的其他文档，请参阅 [Red Hat 文档](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/understanding-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access#proc_using-gold-images-azure_cloud-access)。

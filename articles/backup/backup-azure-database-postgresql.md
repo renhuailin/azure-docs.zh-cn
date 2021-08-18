@@ -4,12 +4,12 @@ description: 了解具有长期保留功能的 Azure Database for PostgreSQL 备
 ms.topic: conceptual
 ms.date: 04/12/2021
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 4f8e44bbaba87581b3c988602a436ed18b1a1a20
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8c3540ee686eb69304f95e31126a1a29a48aeea8
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061761"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113213896"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>具有长期保留功能的 Azure Database for PostgreSQL 备份（预览版）
 
@@ -42,6 +42,12 @@ Azure 备份和 Azure 数据库服务共同致力于为 Azure Database for Postg
 - 不支持跨区域备份。 这意味着无法将 Azure PostgreSQL 服务器备份到另一个区域中的保管库。 同样，只能将备份还原到与保管库位于同一区域内的服务器。
 - 还原时仅恢复数据， 不还原“角色”。
 - 在预览版中，我们建议仅在测试环境中运行解决方案。
+
+## <a name="prerequisite-permissions-for-configure-backup-and-restore"></a>配置备份和还原的必备权限
+
+Azure 备份遵循严格的安全准则。 即使它是本机 Azure 服务，也不会假定对资源具有权限，而是需要由用户显式授予。  同样，不会存储用于连接到数据库的凭据。 这对于保护数据很重要。 相反，我们使用 Azure Active Directory 身份验证。
+
+[下载此文档](https://download.microsoft.com/download/7/4/d/74d689aa-909d-4d3e-9b18-f8e465a7ebf5/OSSbkpprep_automated.docx)获取自动化脚本和相关说明。 它将向 Azure PostgreSQL 服务器授予一组适当的权限，以便进行备份和还原。
 
 ## <a name="backup-process"></a>备份过程
 
@@ -212,11 +218,7 @@ Azure 备份和 Azure 数据库服务共同致力于为 Azure Database for Postg
 >[!NOTE]
 >对 Azure Database for PostgreSQL 的存档支持以有限的公共预览版形式提供。
 
-## <a name="prerequisite-permissions-for-configure-backup-and-restore"></a>配置备份和还原的必备权限
 
-Azure 备份遵循严格的安全准则。 即使它是本机 Azure 服务，也不会假定对资源具有权限，而是需要由用户显式授予。  同样，不会存储用于连接到数据库的凭据。 这对于保护数据很重要。 相反，我们使用 Azure Active Directory 身份验证。
-
-[下载此文档](https://download.microsoft.com/download/7/4/d/74d689aa-909d-4d3e-9b18-f8e465a7ebf5/OSSbkpprep_automated.docx)获取自动化脚本和相关说明。 它将向 Azure PostgreSQL 服务器授予一组适当的权限，以便进行备份和还原。
 
 ## <a name="manage-the-backed-up-azure-postgresql-databases"></a>管理备份的 Azure PostgreSQL 数据库
 

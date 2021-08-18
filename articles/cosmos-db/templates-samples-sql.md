@@ -7,17 +7,17 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 03/24/2021
 ms.author: mjbrown
-ms.openlocfilehash: 7163658024d150a7c5d75c3b3ac0b6b6b29cd3cb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bb39414e73ec3df2d2714d794f7060815b99bce1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105037302"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735416"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>用于 Azure Cosmos DB 的 Azure 资源管理器模板
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-本文仅显示适用于 Core (SQL) API 帐户的 Azure 资源管理器模板示例。 你还可以查找 [Cassandra](templates-samples-cassandra.md)、[Gremlin](templates-samples-gremlin.md)、[MongoDB](templates-samples-mongodb.md) 和[表](templates-samples-table.md) API 的模板示例。
+本文仅显示适用于 Core (SQL) API 帐户的 Azure 资源管理器模板示例。 你还可以查找 [Cassandra](cassandra/templates-samples.md)、[Gremlin](templates-samples-gremlin.md)、[MongoDB](mongodb/resource-manager-template-samples.md) 和[表](table/resource-manager-templates.md) API 的模板示例。
 
 ## <a name="core-sql-api"></a>Core (SQL) API
 

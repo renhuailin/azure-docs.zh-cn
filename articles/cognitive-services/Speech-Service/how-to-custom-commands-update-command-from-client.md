@@ -3,25 +3,25 @@ title: 从客户端应用更新命令
 titleSuffix: Azure Cognitive Services
 description: 了解如何从客户端应用程序更新命令。
 services: cognitive-services
-author: nitinme
+author: laujan
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.author: nitinme
-ms.openlocfilehash: 08c674a7a7ec060a4273836064cb1c21e979e725
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: lajanuar
+ms.openlocfilehash: 1f8607ec7094ecafe69f60e8f8972e04ec813adb
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97560281"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067521"
 ---
 # <a name="update-a-command-from-a-client-app"></a>从客户端应用更新命令
 
 在本文中，你将学习如何从客户端应用程序更新正在进行的命令。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 > [!div class = "checklist"]
 > * 之前[创建的自定义命令应用](quickstart-custom-commands-application.md)
 
@@ -68,7 +68,7 @@ ms.locfileid: "97560281"
 1. 打开侧面板，并选择“活动编辑器”。
 1. 键入并发送在上一部分中指定的 `RemoteCommand` 事件。
     > [!div class="mx-imgBorder"]
-    > ![显示远程命令事件的屏幕截图。](media/custom-commands/send-remote-command-activity.png)
+    > ![显示远程命令事件的屏幕截图。](media/custom-commands/send-remote-command-activity-no-mic.png)
 
 注意参数 `"OnOff"` 的值是如何通过客户端（而不是语音或文本）中的活动设置为 `"on"` 的。
 
@@ -140,7 +140,7 @@ ms.locfileid: "97560281"
     }
     ```
 1. 发送文本 `get device info`。
-   ![显示发送客户端上下文的活动的屏幕截图。](media/custom-commands/send-client-context-activity.png)
+   ![显示发送客户端上下文的活动的屏幕截图。](media/custom-commands/send-client-context-activity-no-mic.png)
 
 请注意以下几点：
 - 只需发送一次此活动（理想情况下，在启动连接后立即发送）。

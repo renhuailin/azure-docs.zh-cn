@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 6ab99f32932f39d5ad140b7a16d16ceae30fff54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1aee3c8213221775e3fde21003055fd9cc973455
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92896202"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669344"
 ---
 # <a name="add-a-tile-layer"></a>添加图块层
 
@@ -57,7 +57,7 @@ Azure Maps 视觉对象支持以下三个不同的图块服务命名约定；
 -   `{quadkey}` - 基于必应地图图块系统命名约定的图块 `quadkey` 标识符。
 -   `{bbox-epsg-3857}` - EPSG 3857 空间引用系统中格式为 `{west},{south},{east},{north}` 的边界框字符串。
 
-例如，下面是 Azure Maps 中的[天气雷达图块服务](/rest/api/maps/renderv2/getmaptilepreview)的格式化图块 URL。 请注意，`[subscription-key]` 是 Azure Maps 订阅密钥的占位符。
+例如，下面是 Azure Maps 中的[天气雷达图块服务](/rest/api/maps/render-v2/get-map-tile)的格式化图块 URL。 请注意，`[subscription-key]` 是 Azure Maps 订阅密钥的占位符。
 
 > `https://atlas.microsoft.com/map/tile?zoom={z}&x={x}&y={y}&tilesetId=microsoft.weather.radar.main&api-version=2.0&subscription-key=[subscription-key]`
 

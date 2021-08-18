@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28dcf6a34621b0cc72d600d33af1cf63be875126
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: ba5db5208d53996d074dca15bdc8b7b3088e4dec
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289743"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113111188"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>排除 Azure Active Directory 无缝单一登录故障
 
@@ -37,7 +37,7 @@ ms.locfileid: "108289743"
 - 如果某个用户属于 Active Directory 中过多的组，则该用户的 Kerberos 票证可能会太大而无法处理，这会导致无缝 SSO 失败。 Azure AD HTTPS 请求可以具有最大大小为 50 KB 的标头；Kerberos 票证需要远小于该限制，才能容纳其他 Azure AD 项目（通常 2 - 5 KB），比如 cookie。 我们的建议是减少用户的组成员身份，然后重试。
 - 如果你要同步 30 个或更多的 Active Directory 林，则不能通过 Azure AD Connect 启用无缝 SSO。 作为一种解决方法，可以在租户中[手动启用](#manual-reset-of-the-feature)该功能。
 - 将 Azure AD 服务 URL (`https://autologon.microsoftazuread-sso.com`) 添加到“受信任的站点”区域（而不是“本地 Intranet”区域）会阻止用户登录。
-- 无缝 SSO 支持的 Kerberos 加密类型为 AES256_HMAC_SHA1、AES128_HMAC_SHA1 和 RC4_HMAC_MD5。 建议将 AzureADSSOAcc$ 帐户的加密类型设置为 AES256_HMAC_SHA1 或 AES 类型与 RC4 的其中一个类型，以增强安全性。 加密类型存储在 Active Directory 帐户的 msDS-SupportedEncryptionTypes 属性中。  如果 AzureADSSOAcc$ 帐户加密类型设置为 RC4_HMAC_MD5，并且你要将其更改为 AES 加密类型之一，请确保先滚动更新 AzureADSSOAcc$ 帐户的 Kerberos 解密密钥，如 [FAQ 文档](how-to-connect-sso-faq.md)中的相关问题下所述，否则无缝 SSO 不会运行。
+- 无缝 SSO 支持的 Kerberos 加密类型为 AES256_HMAC_SHA1、AES128_HMAC_SHA1 和 RC4_HMAC_MD5。 建议将 AzureADSSOAcc$ 帐户的加密类型设置为 AES256_HMAC_SHA1 或 AES 类型与 RC4 的其中一个类型，以增强安全性。 加密类型存储在 Active Directory 帐户的 msDS-SupportedEncryptionTypes 属性中。  如果 AzureADSSOAcc$ 帐户加密类型设置为 RC4_HMAC_MD5，并且你要将其更改为 AES 加密类型之一，请确保先滚动更新 AzureADSSOAcc$ 帐户的 Kerberos 解密密钥，如 [FAQ 文档](how-to-connect-sso-faq.yml)中的相关问题下所述，否则无缝 SSO 不会运行。
 -  如果多个林中有林信任，那么在其中一个林中启用 SSO 将在所有受信任的林中启用 SSO。 如果在已启用 SSO 的林中启用 SSO，则会收到一条错误消息，指明林中已启用 SSO。
 
 ## <a name="check-status-of-feature"></a>检查功能状态

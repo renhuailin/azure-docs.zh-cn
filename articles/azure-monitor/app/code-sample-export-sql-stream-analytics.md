@@ -3,12 +3,12 @@ title: 从 Azure Application Insights 导出到 SQL | Microsoft Docs
 description: 使用流分析将 Application Insights 数据连续导出到 SQL。
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 7627ae6dabb75782549ed17fc6e590b7bc7da77d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4629a99aba45df1ae834ec8236131dd8214b13b5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092739"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767191"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>演练：使用流分析从 Application Insights 导出到 SQL
 本文说明如何使用[连续导出][export]和 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)，将遥测数据从 [Azure Application Insights][start] 移入 Azure SQL 数据库。 
@@ -20,6 +20,9 @@ ms.locfileid: "110092739"
 首先，假设读者已有一个想要监视的应用。
 
 本示例将使用页面视图数据，但可以轻松地将此模式沿用到其他数据类型，例如自定义事件和异常。 
+
+> [!IMPORTANT]
+> 连续导出已被弃用，只有经典 Application Insights 资源支持连续导出。 [迁移到基于工作区的 Application Insights 资源](convert-classic-resource.md)，以使用[诊断设置](export-telemetry.md#diagnostic-settings-based-export)导出遥测数据。
 
 ## <a name="add-application-insights-to-your-application"></a>将 Application Insights 添加到应用程序
 开始操作：

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: 237de7e75007de85054501ed76b253a6eedf4346
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: a57f13b9dc54c69e079e652be94f4b08b716a079
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528363"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112523053"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure 数据库迁移服务支持的迁移方案的状态
 
@@ -53,12 +53,12 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 | **Azure SQL VM** | SQL Server | ✔ | GA |
 |   | Oracle | X |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
-| Azure DB for MySQL 单一服务器 | MySQL | ✔ | 公共预览版  |
-|   | RDS MySQL | ✔ | 公共预览版  |
-|   | Azure DB for MySQL* | ✔ | 公共预览版  |
-| Azure DB for MySQL 灵活服务器 | MySQL | ✔ | 公共预览版  |
-|   | RDS MySQL | ✔ | 公共预览版  |
-|   | Azure DB for MySQL* | ✔ | 公共预览版  |
+| Azure DB for MySQL 单一服务器 | MySQL | ✔ | GA  |
+|   | RDS MySQL | ✔ | GA  |
+|   | Azure DB for MySQL* | ✔ | GA  |
+| Azure DB for MySQL 灵活服务器 | MySQL | ✔ | GA  |
+|   | RDS MySQL | ✔ | GA  |
+|   | Azure DB for MySQL* | ✔ | GA  |
 | **Azure DB for PostgreSQL（单一服务器）** | PostgreSQL | X |
 |  | RDS PostgreSQL | X |   |
 | Azure DB for PostgreSQL 灵活服务器 | PostgreSQL | X |
@@ -81,8 +81,8 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 | **Azure SQL VM** | SQL Server | X |   |
 |   | Oracle  | X |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
-| **Azure DB for MySQL** | MySQL | ✔ | GA |
-|   | RDS MySQL | ✔ | GA |
+| **Azure DB for MySQL** | MySQL | X |  |
+|   | RDS MySQL | X |  |
 | **Azure DB for PostgreSQL（单一服务器）** | PostgreSQL | ✔ | GA |
 |   | Azure DB for PostgreSQL（单一服务器*） | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |

@@ -4,14 +4,15 @@ description: 了解如何在 Azure 数据工厂中结合使用 Azure SQL 托管�
 author: chugugrace
 ms.author: chugu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 190def0e6e2f77d330d2307753dc9e9d53c55dd7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c7ed059e3f7a0bbf620bf9008a08a7d600dcbc88
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564127"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739438"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>在 Azure 数据工厂中结合使用 Azure SQL 托管实例和 SQL Server Integration Services (SSIS)
 

@@ -1,19 +1,19 @@
 ---
 title: 通过 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
 description: 教程：如何使用 Cosmos DB 模拟器生成任务在 Azure DevOps 中设置生成和发布工作流
-author: deborahc
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.author: dech
+ms.author: esarroyo
+author: StefArroyo
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c7246511a88e2d2756a8ef56c5adf51ddbfd3e58
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c1e7f83d4cd428a162db7d736005be748225a9c
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560525"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113354171"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>在 Azure DevOps 中通过 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

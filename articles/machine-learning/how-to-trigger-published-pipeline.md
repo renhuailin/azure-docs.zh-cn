@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 01/29/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 53f438fe6ccb1659bde65ffbc8de0acee85c1b28
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 473c6bde1e75070e0103137d9e24849f38c6d684
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884365"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112466692"
 ---
 # <a name="trigger-machine-learning-pipelines"></a>触发机器学习管道
 
@@ -23,7 +23,7 @@ ms.locfileid: "107884365"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请创建一个[免费帐户](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
 * 安装了适用于 Python 的 Azure 机器学习 SDK 的 Python 环境。 有关详细信息，请参阅[使用 Azure 机器学习创建和管理用于训练和部署的可重用环境。](how-to-use-environments.md)
 

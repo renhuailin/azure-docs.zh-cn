@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: 38846bbe717912092ccfe2b236b717770b79302f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 47a6649c154ed3fed5ba444a58bae93ac0398bbc
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104867247"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112676827"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>故障排除：Azure 站点到站点 VPN 间歇性地断开连接
 
@@ -56,7 +56,7 @@ ms.locfileid: "104867247"
 
 ### <a name="step-6-check-on-premises-vpn-device-external-interface-address"></a>步骤 6 检查本地 VPN 设备外部接口地址
 
-如果 VPN 设备面向 Internet 的 IP 地址包含在 Azure 的 **本地网络网关** 定义中，你可能会遇到偶发的断开连接。
+如果 VPN 设备面向 Internet 的 IP 地址包含在 Azure 的“本地网络网关地址空间”定义中，可能会遇到偶发的断开连接。
 
 ### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>步骤 7 检查本地 VPN 设备是否已启用“完全向前保密”
 

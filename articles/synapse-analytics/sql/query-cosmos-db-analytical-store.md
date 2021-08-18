@@ -10,12 +10,12 @@ ms.date: 03/02/2021
 ms.author: jovanpop
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: 64a112fd29ee9e3fbb82d9b54322415569b3ff85
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: a0f3e5f707600933ce68e51634145cd3515c5d6a
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209530"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183018"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link"></a>在 Azure Synapse Link 中使用无服务器 SQL 池查询 Azure Cosmos DB 数据
 
@@ -23,7 +23,19 @@ ms.locfileid: "107209530"
 
 查询 Azure Cosmos DB 时，可通过 [OPENROWSET](develop-openrowset.md) 函数支持完整的 [SELECT](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true) 外围应用，其中包括大多数 [SQL 函数和运算符](overview-features.md)。 你还可以使用 [create external table as select](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS) 将从 Azure Cosmos DB 读取数据的查询的结果和数据存储在 Azure Blob 存储或 Azure Data Lake Storage 中。 目前无法使用 CETAS 将无服务器 SQL 池查询结果存储到 Azure Cosmos DB。
 
-在本文中，你将了解如何编写一个与无服务器 SQL 池配合使用的查询，该查询将从通过 Azure Synapse Link 启用的 Azure Cosmos DB 容器中查询数据。 然后，可以在[此教程](./tutorial-data-analyst.md)中详细了解如何通过 Azure Cosmos DB 容器生成无服务器 SQL 池视图，并将其连接到 Power BI 模型。本教程使用的容器采用 [Azure Cosmos DB 妥善定义的架构](../../cosmos-db/analytical-store-introduction.md#schema-representation)。
+在本文中，你将了解如何编写一个与无服务器 SQL 池配合使用的查询，该查询将从通过 Azure Synapse Link 启用的 Azure Cosmos DB 容器中查询数据。 然后，你可以在[此教程](./tutorial-data-analyst.md)中详细了解如何构建基于 Azure Cosmos DB 容器的无服务器 SQL 池视图并将其连接到 Power BI 模型。 此教程使用一个具有[定义完善的 Azure Cosmos DB 架构](../../cosmos-db/analytical-store-introduction.md#schema-representation)的容器。 你还可以查看 Learn 模块，了解如何[使用适用于 Azure Synapse Analytics 的 SQL Serverless 查询 Azure Cosmos DB](/learn/modules/query-azure-cosmos-db-with-sql-serverless-for-azure-synapse-analytics/)
+
+## <a name="prerequisites"></a>先决条件
+
+- 请确保已准备好分析存储：
+  - 在 [Cosmos DB 容器](../quickstart-connect-synapse-link-cosmos-db.md#enable-azure-cosmos-db-analytical-store)上启用分析存储。
+  - 获取将用于查询分析存储的具有只读密钥的连接字符串。 
+  - 获取[将用于访问 Cosmos DB 容器的只读密钥](../../cosmos-db/database-security.md#primary-keys)
+- 请确保已应用所有[最佳做法](best-practices-serverless-sql-pool.md)，例如：
+  - 请确保 Cosmos DB 分析存储与无服务器 SQL 池位于同一区域。
+  - 请确保客户端应用程序（Power BI、分析服务）与无服务器 SQL 池位于同一区域。
+  - 如果要返回大量数据（大于 80GB），请考虑使用分析服务等缓存层，并在分析服务模型中加载小于 80GB 的分区。
+  - 如果要使用字符串列筛选数据，请确保将 `OPENROWSET` 函数与 `WITH` 具有最小可能类型的 explicit 子句结合使用（例如，如果知道该属性最多包含 5个字符，请勿使用 VARCHAR (1000)）。
 
 ## <a name="overview"></a>概述
 
@@ -94,7 +106,7 @@ OPENROWSET(
 
 ## <a name="sample-dataset"></a>示例数据集
 
-本文中的示例基于[欧洲疾病预防控制中心 (ECDC) COVID-19 病例](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/)和 [COVID-19 开放式研究数据集 (CORD-19)，doi:10.5281/zenodo.3715505](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) 中提供的数据。
+本文中的示例基于[欧洲疾病预防控制中心 (ECDC) COVID-19 病例](../../open-datasets/dataset-ecdc-covid-cases.md)和 [COVID-19 开放式研究数据集 (CORD-19)，doi:10.5281/zenodo.3715505](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) 中提供的数据。
 
 可以在这些页面上查看数据的许可证和结构。 还可以下载 [ECDC](https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.json) 和 [CORD-19](https://azureopendatastorage.blob.core.windows.net/covid19temp/comm_use_subset/pdf_json/000b7d1517ceebb34e1e3e817695b6de03e2fa78.json) 数据集的示例数据。
 
@@ -164,7 +176,7 @@ FROM OPENROWSET(
 
 `OPENROWSET` 函数使你可以显式指定要从容器中的数据读取哪些属性以及指定其数据类型。
 
-假设我们已将一些具有以下结构的数据从 [ECDC COVID 数据集](https://azure.microsoft.com/services/open-datasets/catalog/ecdc-covid-19-cases/)导入 Azure Cosmos DB：
+假设我们已将一些具有以下结构的数据从 [ECDC COVID 数据集](../../open-datasets/dataset-ecdc-covid-cases.md)导入 Azure Cosmos DB：
 
 ```json
 {"date_rep":"2020-08-13","cases":254,"countries_and_territories":"Serbia","geo_id":"RS"}
@@ -426,22 +438,9 @@ GROUP BY geo_id
 
 在此示例中，病例的数量存储为 `int32`、`int64` 或 `float64` 值。 必须提取所有值才能计算每个国家/地区的病例数。
 
-## <a name="known-issues"></a>已知问题
+## <a name="troubleshooting"></a>故障排除
 
-- 如果 `OPENROWSET` 列排序规则没有 UTF-8 编码，则无服务器 SQL 池会返回编译时警告。 可以使用 T-SQL 语句 `alter database current collate Latin1_General_100_CI_AS_SC_UTF8` 轻松更改当前数据库中运行的所有 `OPENROWSET` 函数的默认排序规则。
-
-下表列出了可能的错误和故障排除操作。
-
-| 错误 | 根本原因 |
-| --- | --- |
-| 语法错误：<br/> - `Openrowset` 附近有语法错误<br/> - `...` 不是可以识别的 `BULK OPENROWSET` 提供程序选项。<br/> - `...` 附近有语法错误 | 可能的根本原因：<br/> - 未使用 CosmosDB 作为第一个参数。<br/> - 在第三个参数中使用字符串字面量而不是标识符。<br/> - 未指定第三个参数（容器名称）。 |
-| CosmosDB 连接字符串中出错。 | - 未指定帐户、数据库或密钥。 <br/> - 连接字符串中存在某个无法识别的选项。<br/> - 在连接字符串的末尾放置了一个分号 (`;`)。 |
-| 解析 CosmosDB 路径失败，出现“帐户名称不正确”或“数据库名称不正确”错误。 | 找不到指定的帐户名称、数据库名称或容器，或者没有为指定的集合启用分析存储。|
-| 解析 CosmosDB 路径失败，出现“机密值不正确”或“机密为 Null 或为空”错误。 | 帐户密钥无效或缺失。 |
-| 类型为 `type name` 的列 `column name` 与外部数据类型 `type name` 不兼容。 | `WITH` 子句中指定的列类型与 Azure Cosmos DB 容器中的类型不匹配。 请尝试更改列类型，如 [Azure Cosmos DB 到 SQL 类型的映射](#azure-cosmos-db-to-sql-type-mappings)部分所述，或使用 `VARCHAR` 类型。 |
-| 在所有单元格中，列包含 `NULL` 值。 | `WITH` 子句中可能出现错误的列名称或路径表达式。 `WITH` 子句中的列名称（或列类型后的路径表达式）必须与 Azure Cosmos DB 集合中的某些属性名称匹配。 比较区分大小写。 例如，`productCode` 和 `ProductCode` 是不同的属性。 |
-
-你可以在 [Azure Synapse Analytics 反馈页](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862)上报告建议和问题。
+查看[自助页面](resources-self-help-sql-on-demand.md#cosmos-db)，查找可帮助你解决 Cosmos DB 查询的潜在问题的已知问题或故障排除步骤。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -450,3 +449,5 @@ GROUP BY geo_id
 - [通过 Azure Synapse Link 使用 Power BI 和无服务器 SQL 池](../../cosmos-db/synapse-link-power-bi.md)
 - [在无服务器 SQL 池中创建和使用视图](create-use-views.md)
 - [教程：如何通过 DirectQuery 构建基于 Azure Cosmos DB 的无服务器 SQL 池视图并将其连接到 Power BI 模型](./tutorial-data-analyst.md)
+- 如果遇到一些错误或遇到性能问题，请访问 [Cosmos DB 自助页的 Synapse 链接](resources-self-help-sql-on-demand.md#cosmos-db)。
+- 还可查看 Learn 模块，了解如何[使用适用于 Azure Synapse Analytics 的 SQL Serverless 查询 Azure Cosmos DB](/learn/modules/query-azure-cosmos-db-with-sql-serverless-for-azure-synapse-analytics/)。

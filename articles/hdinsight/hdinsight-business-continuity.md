@@ -5,12 +5,12 @@ keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 74f8bdd26e000b89bfae84102077c241f85abf7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3cbae5df6e9a4e5ff17bf1245fcaf190efbbf84
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98933322"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112371511"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Azure HDInsight 业务连续性
 
@@ -81,7 +81,7 @@ HDInsight 提供 99.9% 的可用性 SLA。 为了在单个部署中提供高可�
 
 ### <a name="hdinsight-metastore"></a>HDInsight 元存储
 
-HDInsight 使用 [Azure SQL 数据库](https://azure.microsoft.com/support/legal/sla/sql-database/v1_4/)作为元存储，该元存储提供 99.99% 的 SLA。 数据的三个副本通过同步复制持久保存在数据中心内。 如果副本丢失，则可以无缝地提供备用副本。 现成支持[活动异地复制](../azure-sql/database/active-geo-replication-overview.md)，最多可使用四个数据中心。 如果通过手动方式或通过数据中心进行故障转移，则层次结构中的第一个副本将自动变为可读写的副本。 有关详细信息，请参阅 [Azure SQL 数据库业务连续性](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md)。
+HDInsight 使用 [Azure SQL 数据库](https://azure.microsoft.com/support/legal/sla/azure-sql-database/v1_4/)作为元存储，该元存储提供 99.99% 的 SLA。 数据的三个副本通过同步复制持久保存在数据中心内。 如果副本丢失，则可以无缝地提供备用副本。 现成支持[活动异地复制](../azure-sql/database/active-geo-replication-overview.md)，最多可使用四个数据中心。 如果通过手动方式或通过数据中心进行故障转移，则层次结构中的第一个副本将自动变为可读写的副本。 有关详细信息，请参阅 [Azure SQL 数据库业务连续性](../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md)。
 
 ### <a name="hdinsight-storage"></a>HDInsight 存储
 

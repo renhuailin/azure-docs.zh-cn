@@ -1,20 +1,20 @@
 ---
 title: 如何将 Azure Database for MySQL 实例绑定到 Azure Spring Cloud 应用程序
 description: 了解如何将 Azure Database for MySQL 实例绑定到 Azure Spring Cloud 应用程序
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/04/2019
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 71408513e18dc506f2c596d4e05db4fcc98ccea2
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 45ded9214f310f3505cc5d032754333c5cf702d8
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004144"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862540"
 ---
-# <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>将 Azure Database for MySQL 实例绑定到 Azure Spring Cloud 应用程序 
+# <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>将 Azure Database for MySQL 实例绑定到 Azure Spring Cloud 应用程序
 
 本文适用于：✔️ Java
 
@@ -38,6 +38,7 @@ ms.locfileid: "112004144"
         <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
     ```
+
 1. 在 application.properties 文件中，删除所有 `spring.datasource.*` 属性。
 
 1. 通过运行 `az spring-cloud app deploy` 更新当前应用，或者通过运行 `az spring-cloud app deployment create` 针对此更改创建新的部署。
@@ -45,20 +46,21 @@ ms.locfileid: "112004144"
 ## <a name="bind-your-app-to-the-azure-database-for-mysql-instance"></a>将应用绑定到 Azure Database for MySQL 实例
 
 #### <a name="service-binding"></a>[服务绑定](#tab/Service-Binding)
-1. 记下 Azure Database for MySQL 帐户的管理员用户名和密码。 
+1. 记下 Azure Database for MySQL 帐户的管理员用户名和密码。
 
 1. 连接到服务器，从 MySQL 客户端创建名为“testdb”的数据库，然后创建新的非管理员帐户。
 
-1. 在 Azure 门户的“Azure Spring Cloud”服务页上，查找“应用程序仪表板”，然后选择要绑定到 Azure Database for MySQL 实例的应用程序 。  这是在上一步更新或部署的应用程序。 
+1. 在 Azure 门户的“Azure Spring Cloud”服务页上，查找“应用程序仪表板”，然后选择要绑定到 Azure Database for MySQL 实例的应用程序 。  这是在上一步更新或部署的应用程序。
 
-1. 选择“服务绑定”，然后选择“创建服务绑定”按钮 。 
+1. 选择“服务绑定”，然后选择“创建服务绑定”按钮 。
 
 1. 填充窗体，选择“Azure MySQL”作为“绑定类型”，使用以前使用的数据库名称以及在第一步记下的用户名和密码。
 
 1. 重启应用，此绑定现在应该生效。
 
 1. 若要确保服务绑定正确，请选择绑定名称，然后验证其详细信息。 `property` 字段应如下所示：
-    ```
+
+    ```properties
     spring.datasource.url=jdbc:mysql://some-server.mysql.database.azure.com:3306/testdb?useSSL=true&requireSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
     spring.datasource.username=admin@some-server
     spring.datasource.password=abc******
@@ -170,6 +172,7 @@ resource "azurerm_spring_cloud_active_deployment" "example" {
   deployment_name     = azurerm_spring_cloud_java_deployment.example.name
 }
 ```
+
 ---
 
 ## <a name="next-steps"></a>后续步骤

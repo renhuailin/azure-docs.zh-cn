@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: ba266c5a4ec5ffb84ee02e9c1904423f01d333e5
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: aca2e73b6abbdce6447034e14d0457958f1b800e
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670904"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964476"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 TLS/SSL 证书问题
 
@@ -35,14 +35,14 @@ ms.locfileid: "110670904"
 
 #### <a name="cause"></a>原因
 
-如果对跨多个应用的同一 IP 地址使用多个基于 IP 的 SSL 绑定，则可能会出现此问题。 例如，应用 A 具有采用旧证书的基于 IP 的 SSL。 应用 B 对同一 IP 地址使用采用新证书的基于 IP 的 SSL。 使用新证书更新应用 TLS 绑定时，失败并显示此错误，因为同一个 IP 地址已用于另一应用。 
+如果对跨多个应用的同一 IP 地址使用多个基于 IP 的 TLS/SSL 绑定，则可能会出现此问题。 例如，应用 A 具有采用旧证书的基于 IP 的 TLS/SSL 绑定。 应用 B 对同一 IP 地址使用采用新证书的基于 IP 的 TLS/SSL 绑定。 使用新证书更新应用 TLS 绑定时，失败并显示此错误，因为同一个 IP 地址已用于另一应用。 
 
 #### <a name="solution"></a>解决方案 
 
 若要解决此问题，请使用以下方法之一：
 
-- 在应用中删除使用旧证书的基于 IP 的 SSL 绑定。 
-- 新建使用新证书的基于 IP 的 SSL 绑定。
+- 在应用中删除使用旧证书的基于 IP 的 TLS/SSL 绑定。 
+- 新建使用新证书的基于 IP 的 TLS/SSL 绑定。
 
 ### <a name="you-cant-delete-a-certificate"></a>无法删除证书 
 

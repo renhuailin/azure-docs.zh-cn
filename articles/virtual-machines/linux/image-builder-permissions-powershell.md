@@ -1,20 +1,20 @@
 ---
 title: 使用 PowerShell 配置 Azure 映像生成器服务权限
 description: 使用 PowerShell 配置 Azure VM 映像生成器服务的要求，包括权限和特权
-author: danielsollondon
-ms.author: danis
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 03/05/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6eb802d560e168d64a1f9abe0301f8038203ee54
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: a7d32bdb2ea1897a0458708425cd7af025818fd8
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028480"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113596328"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-powershell"></a>使用 PowerShell 配置 Azure 映像生成器服务权限
 

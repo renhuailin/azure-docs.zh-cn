@@ -3,8 +3,8 @@ title: 教程：在 Azure Active Directory 中配置 TravelPerk 实现自动用�
 description: 了解如何将用户帐户从 Azure AD 自动预配到 TravelPerk 及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 3e40f87d-8624-4b14-b098-80ff916103c3
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2021
-ms.author: Zhchia
-ms.openlocfilehash: 19436b7faef081757e4500c76e7537ee78081bfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 5744c3df69fd595d5fc7a576d9503f7d5b0caf70
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104950330"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113761341"
 ---
 # <a name="tutorial-configure-travelperk-for-automatic-user-provisioning"></a>教程：配置 TravelPerk 实现自动用户预配
 
@@ -51,7 +51,7 @@ ms.locfileid: "104950330"
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 3. 确定[在 Azure AD 与 TravelPerk 之间映射](../app-provisioning/customize-application-attributes.md)哪些数据。
 
-## <a name="step-2-configure-travelperk-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 TravelPerk 以支持通过 Azure AD 进行预配
+## <a name="step-2-configure-travelperk-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 TravelPerk 以支持通过 Azure AD 进行预配
 
 1. 用管理员帐户登录到 [TravelPerk](https://app.travelperk.com/company/integrations/scim) 应用程序。
 

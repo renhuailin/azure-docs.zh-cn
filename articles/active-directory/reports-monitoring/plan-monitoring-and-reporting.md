@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52166e8cf615c831f37b9122393af4039063f2b4
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f831acacfd1aaf2248e7993c3e7161cad62312b3
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964635"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733392"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>计划 Azure Active Directory 报告和监视部署
 
@@ -55,7 +55,7 @@ Azure AD 报表提供环境中 Azure AD 活动（包括登录事件、审核事�
 
 需要 Azure AD Premium 许可证才能访问 Azure AD 登录日志。
 
-[Azure Active Directory 定价指南](https://azure.microsoft.com/pricing/details/active-directory/)中介绍了详细功能和许可信息。
+[Azure Active Directory 定价指南](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)中介绍了详细功能和许可信息。
 
 若要部署Azure AD 监视和报告，需要一个用户身份，该用户需要是 Azure AD 租户的全局管理员或安全管理员。
 

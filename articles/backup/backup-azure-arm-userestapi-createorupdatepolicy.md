@@ -4,16 +4,16 @@ description: 在本文中，你将学习如何使用 REST API 创建和管理备
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: e4e6f5b5cf28c3830a91a494ea60680eee1546f6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d874f9a75673d45a8f22f6c1523a4b77bdb9641
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89179600"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438060"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 创建 Azure 恢复服务备份策略
 
-[策略 REST API 文档](/rest/api/backup/protectionpolicies/createorupdate)中概述了为 Azure 恢复服务保管库创建备份策略的步骤。 让我们参考此文档来为 Azure VM 备份创建策略。
+[策略 REST API 文档](/rest/api/backup/protection-policies/create-or-update)中概述了为 Azure 恢复服务保管库创建备份策略的步骤。 让我们参考此文档来为 Azure VM 备份创建策略。
 
 ## <a name="create-or-update-a-policy"></a>创建或更新策略
 
@@ -29,12 +29,12 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 例如，若要为 Azure VM 备份创建策略，需在请求正文中包含以下组成部分。
 
-|名称  |必选  |类型  |说明  |
+|名称  |必须  |类型  |说明  |
 |---------|---------|---------|---------|
-|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 属性        |
+|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protection-policies/create-or-update#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 属性        |
 |tags     |         | Object        |  资源标记       |
 
-有关请求正文中的完整定义列表，请参阅[备份策略 REST API 文档](/rest/api/backup/protectionpolicies/createorupdate)。
+有关请求正文中的完整定义列表，请参阅[备份策略 REST API 文档](/rest/api/backup/protection-policies/create-or-update)。
 
 ### <a name="example-request-body"></a>示例请求正文
 
@@ -139,7 +139,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
-|200 正常     |    [Protection PolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
+|200 正常     |    [Protection PolicyResource](/rest/api/backup/protection-policies/create-or-update#protectionpolicyresource)     |  OK       |
 |202 已接受     |         |     已接受    |
 
 ### <a name="example-responses"></a>示例响应

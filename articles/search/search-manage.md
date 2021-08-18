@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/06/2021
-ms.openlocfilehash: 98e0137c8e48696737cd5d8d1fd4d3de925b9f7f
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: dbc82b67206f6453101b0d6f419718b928506f79
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579779"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113003847"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 门户中 Azure 认知搜索服务管理
 
@@ -73,7 +73,7 @@ Azure 认知搜索是一种完全托管的、基于云的搜索服务，用于�
 
 你打开搜索服务概述页时，分配给你的帐户的权限将决定你可以使用哪些页面。 本文开头的概述页显示管理员或参与者将看到的门户页。
 
-在 Azure 资源中，管理权限是通过角色分配授予的。 在 Azure 认知搜索上下文中，[角色分配](search-security-rbac.md)将确定哪些用户可以分配副本和分区或者管理 API 密钥，而不考虑他们是使用门户、[PowerShell](search-manage-powershell.md)、[Azure CLI](search-manage-azure-cli.md) 还是[管理 REST API](/rest/api/searchmanagement/search-howto-management-rest-api)：
+在 Azure 资源中，管理权限是通过角色分配授予的。 在 Azure 认知搜索上下文中，[角色分配](search-security-rbac.md)将确定哪些用户可以分配副本和分区或者管理 API 密钥，而不考虑他们是使用门户、[PowerShell](search-manage-powershell.md)、[Azure CLI](search-manage-azure-cli.md) 还是[管理 REST API](/rest/api/searchmanagement)：
 
 > [!TIP]
 > 预配或解除对服务本身的授权可以通过 Azure 订阅管理员或协同管理员完成。 利用 Azure 范围内的机制，可以锁定订阅或资源，以防止具备管理员权限的用户意外或在未经授权的情况下删除搜索服务。 有关详细信息，请参阅[锁定资源以防止意外删除](../azure-resource-manager/management/lock-resources.md)。

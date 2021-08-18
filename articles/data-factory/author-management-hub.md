@@ -2,16 +2,17 @@
 title: 管理中心
 description: 在 Azure 数据工厂管理中心管理连接、源代码管理配置和全局创作属性
 ms.service: data-factory
+ms.subservice: authoring
 ms.topic: conceptual
 author: minhe-msft
 ms.author: hemin
 ms.date: 04/27/2021
-ms.openlocfilehash: db87372ab4dd56d8b6a00ca42cb1cf4a8729db69
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 91b19a33df19fd474c9db282fd4467be54f8dd15
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108178279"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742435"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Azure 数据工厂中的管理中心
 

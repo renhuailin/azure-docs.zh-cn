@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae575aa6544a174a70eb8ea4749566e8660280e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5bf80f24aca889a57896bcb0768d4727cae9440a
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94873261"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110216"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect 和 Azure AD Connect Health 安装路线图
 
@@ -155,7 +155,7 @@ Azure AD Connect 提供多项功能，简化了使用 AD FS 通过 Azure AD 进�
 Azure AD Connect Health 门户显示警报、性能监视和使用情况分析的视图。 单击 https://aka.ms/aadconnecthealth URL 可转到 Azure AD Connect Health 的主边栏选项卡。 可以将边栏选项卡视为窗口。 在主边栏选项卡上，可以看到“快速启动”、Azure AD Connect Health 中的服务和其他配置选项。 请参阅下面的屏幕截图及其后面的简要说明。 部署代理后，运行状况服务会自动标识 Azure AD Connect Health 正在监视的服务。
 
 > [!NOTE]
-> 有关许可信息，请参阅 [Azure AD Connect Health 常见问题解答](reference-connect-health-faq.md)或 [Azure AD 定价页](https://aka.ms/aadpricing)。
+> 有关许可信息，请参阅 [Azure AD Connect Health 常见问题解答](reference-connect-health-faq.yml)或 [Azure AD 定价页](https://aka.ms/aadpricing)。
     
 ![Azure AD Connect Health 门户](./media/whatis-hybrid-identity-health/portalsidebar.png)
 

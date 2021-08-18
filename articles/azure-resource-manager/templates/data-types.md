@@ -4,13 +4,13 @@ description: 介绍 Azure 资源管理器模板中可用的数据类型。
 ms.topic: conceptual
 ms.author: tomfitz
 author: tfitzmac
-ms.date: 05/07/2021
-ms.openlocfilehash: 4905dbe184301ea9bcf86d63d527d07276a95c9e
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 06/24/2021
+ms.openlocfilehash: 4fc69126ee1f555e71e152a7c0369e4b81b8bf6a
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957934"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112894223"
 ---
 # <a name="data-types-in-arm-templates"></a>ARM 模板中的数据类型
 
@@ -43,6 +43,17 @@ ms.locfileid: "111957934"
     ]
   }
 },
+
+"outputs": {
+  "arrayOutput": {
+    "type": "array",
+    "value": "[variables('exampleArray')]"
+  },
+  "firstExampleArrayElement": {
+    "type": "int",
+    "value": "[parameters('exampleArray')[0]]"
+  }
+}
 ```
 
 数组的元素可以是同一类型，也可以是不同类型。
@@ -55,6 +66,17 @@ ms.locfileid: "111957934"
     true,
     "example string"
   ]
+}
+
+"outputs": {
+  "arrayOutput": {
+    "type": "array",
+    "value": "[variables('mixedArray')]"
+  },
+  "firstMixedArrayElement": {
+    "type": "string",
+    "value": "[variables('mixedArray')[0]]"
+  }
 }
 ```
 

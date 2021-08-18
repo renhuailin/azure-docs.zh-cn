@@ -3,12 +3,12 @@ title: 配置容器见解代理数据收集 | Microsoft Docs
 description: 本主题介绍如何配置容器见解代理，以控制 stdout/stderr 和环境变量日志收集。
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 1305ddc4417dc294dad865971dcd8970acfb8a2c
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: bd818d03d74042e7f58cbc8889ce862279706bec
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109847339"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741324"
 ---
 # <a name="configure-agent-data-collection-for-container-insights"></a>为容器见解配置代理数据收集
 
@@ -146,4 +146,4 @@ omsagent pod 上以 pod 注释 (schema-versions) 的形式提供了支持的配�
 
 - 有关启用监视来收集 AKS 或混合群集及其中运行的工作负载的运行状况和资源利用率的信息，请参阅[如何使用](container-insights-analyze.md)容器见解。
 
-- 请参阅[日志查询示例](container-insights-log-search.md#search-logs-to-analyze-data)，以查看预定义的查询，以及用于发警报、可视化或分析群集的评估或自定义示例。
+- 请参阅[日志查询示例](container-insights-log-query.md)，以查看预定义的查询，以及用于发警报、可视化或分析群集的评估或自定义示例。

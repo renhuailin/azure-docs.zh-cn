@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: fb0cca1859a8e4fcc456bb3815f0e03f4f0311d1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3720ac243fd90be23c18f760977dc2a0d13e0412
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459394"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112989104"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>使用 Java 和 Eclipse 创建第一个函数 
 
@@ -51,7 +51,7 @@ Maven 在新文件夹中创建名为 artifactId 的项目文件。 项目中生�
 > 必须安装 [Azure Functions Core Tools 版本 2](functions-run-local.md#v2)，才能在本地运行和调试函数。
 
 1. 右键单击生成的项目，然后选择“运行方式”和“Maven 生成”。
-1. 在“编辑配置”对话框中的“目标”和“名称”字段内输入 `package`，然后选择“运行”。 这会生成并打包函数代码。
+1. 在“编辑配置”对话框的“目标”字段中输入 `package`，然后选择“运行”。   这会生成并打包函数代码。
 1. 生成完成后，使用 `azure-functions:run` 作为目标和名称，如上所述创建另一个“运行”配置。 选择“运行”，在 IDE 中运行函数。
 
 完成函数测试后，在控制台窗口中终止运行时。 一次只能有一个函数主机处于活动状态并在本地运行。

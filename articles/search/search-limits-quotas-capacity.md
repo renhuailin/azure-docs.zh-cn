@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 21c5fd8832805c5e733f19d5fbf71a4e5512478e
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 9034d493e0ab10d8c548170cac99238d5edc4e22
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540513"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113003865"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 认知搜索中的服务限制
 
@@ -103,7 +103,7 @@ ms.locfileid: "111540513"
 
 ## <a name="shared-private-link-resource-limits"></a>共享专用链接资源限制
 
-索引器可访问[专用终结点](search-indexer-howto-access-private.md)上通过[共享专用链接资源 API](/rest/api/searchmanagement/sharedprivatelinkresources) 管理的其他 Azure 资源。 本部分介绍与此功能相关的限制。
+索引器可访问[专用终结点](search-indexer-howto-access-private.md)上通过[共享专用链接资源 API](/rest/api/searchmanagement/2020-08-01/shared-private-link-resources) 管理的其他 Azure 资源。 本部分介绍与此功能相关的限制。
 
 | 资源 | 免费 | 基本 | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |

@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 28262d66794d573d40e4e202d8b047e1d1fbefc7
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 167a92e9e9950245d58fd7497eb9df4c29f0fa7e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953806"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112281622"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 模板中的虚拟机
 
 本文介绍 Azure Resource Manager 模板中与虚拟机相关的方面。 本文不会介绍用于创建虚拟机的完整模板；在完整的模板中，需要提供存储帐户、网络接口、公共 IP 地址和虚拟网络的资源定义。 有关如何统一定义这些资源的详细信息，请参阅 [Resource Manager 模板演练](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
-[在库中](https://azure.microsoft.com/documentation/templates/?term=VM) 有许多包含 VM 资源的模板。 本文并未介绍可在模板中包含的所有元素。
+[在库中](https://azure.microsoft.com/resources/templates/?term=VM) 有许多包含 VM 资源的模板。 本文并未介绍可在模板中包含的所有元素。
 
  
 
@@ -33,7 +33,7 @@ ms.locfileid: "111953806"
     "name": "[concat('myVM', copyindex())]", 
     "location": "[resourceGroup().location]",
     "copy": {
-      "name": "virtualMachineLoop", 
+      "name": "virtualMachineLoop",  
       "count": "[parameters('numberOfInstances')]"
     },
     "dependsOn": [
@@ -217,7 +217,7 @@ ms.locfileid: "111953806"
 
 ```json
 "copy": {
-  "name": "virtualMachineLoop", 
+  "name": "virtualMachineLoop",  
   "count": "[parameters('numberOfInstances')]"
 },
 ```

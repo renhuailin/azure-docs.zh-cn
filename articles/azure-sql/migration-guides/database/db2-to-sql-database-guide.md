@@ -10,17 +10,17 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 05/14/2021
-ms.openlocfilehash: bf096e8e444ae9fd0832ad446d79db37fa365951
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 14feb78de79e0a9cb137415968dd9b623a4c603f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954796"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725570"
 ---
 # <a name="migration-guide-ibm-db2-to-azure-sql-database"></a>迁移指南：从 IBM Db2 迁移到 Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-本指南介绍如何使用适用于 Db2 的 [SQL Server 迁移](https://azure.microsoft.com/en-us/migration/sql-server/)助手将 IBM Db2 数据库[迁移](https://azure.microsoft.com/migration/migration-journey)到 Azure SQL 数据库。 
+本指南介绍如何使用适用于 Db2 的 [SQL Server 迁移](https://azure.microsoft.com/migration/sql-server/)助手将 IBM Db2 数据库[迁移](https://azure.microsoft.com/migration/migration-journey)到 Azure SQL 数据库。 
 
 有关其他迁移指南，请参阅 [Azure 数据库迁移指南](/data-migration)。 
 
@@ -155,7 +155,7 @@ ms.locfileid: "111954796"
 
 |资产  |说明  |
 |---------|---------|
-|[数据工作负荷评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| 此工具为给定的工作负荷提供了建议的“最佳匹配”目标平台、云就绪和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
+|[数据工作负荷评估模型和工具](https://www.microsoft.com/download/details.aspx?id=103130)| 此工具为给定的工作负荷提供了建议的“最佳匹配”目标平台、云就绪和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
 |[Db2 zOS 数据资产发现和评估包](https://www.microsoft.com/download/details.aspx?id=103108)|在数据库上运行 SQL 脚本后，可以将结果导出到文件系统上的文件。 支持多种文件格式（包括 \*.csv），方便你在外部工具（如电子表格）中捕获结果。 如果你想要与未安装工作台的团队轻松共享结果，此方法会很有用。|
 |[IBM Db2 LUW 清单脚本和项目](https://www.microsoft.com/download/details.aspx?id=103109)|此资产包含一个 SQL 查询，该查询可访问 IBM Db2 LUW 版本 11.1 系统表，并按架构和对象类型提供对象计数、每个架构中“原始数据”的粗略估计、每个架构中表的大小，以及 CSV 格式的存储结果。|
 |[IBM Db2 到 SQL DB - 数据库比较实用工具](https://www.microsoft.com/download/details.aspx?id=103016)|数据库比较实用工具是可用于验证源和目标平台上的数据是否相同的 Windows 控制台应用程序。 可以使用该工具在所有或所选表、行和列中的行或列级别高效地比较数据。|

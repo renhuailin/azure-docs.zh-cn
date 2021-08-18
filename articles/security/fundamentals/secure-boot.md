@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/10/2020
-ms.openlocfilehash: feb28b1d448d0146046ed789d1389a3a42f344de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/24/2021
+ms.openlocfilehash: e14bd525f2f81cfdf0a61f29df919f5579f0be17
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94557564"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112893935"
 ---
 # <a name="secure-boot"></a>安全启动
 
@@ -56,6 +56,7 @@ OEM 在制造时将安全启动摘要存储在计算机的非易失性 RAM (NV-R
 若要详细了解为提高平台完整性和安全性而做的工作，请参阅：
 
 - [固件安全性](firmware.md)
+- [平台代码完整性](code-integrity.md)
 - [测量启动和主机证明](measured-boot-host-attestation.md)
 - [Cerberus 项目](project-cerberus.md)
 - [静态加密](encryption-atrest.md)

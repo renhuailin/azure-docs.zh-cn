@@ -4,17 +4,17 @@ description: 本文可帮助你了解和管理与你的 Microsoft 客户协议�
 author: bandersmsft
 tags: billing
 ms.service: cost-management-billing
-ms.subservice: billing
+ms.subservice: microsoft-customer-agreement
 ms.topic: conceptual
 ms.date: 05/05/2021
 ms.author: banders
 ms.reviewer: baolcsva
-ms.openlocfilehash: a1d66e1a28717feb66bc223d10ae44e8d5457728
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 9fe8fc7660bf63e13f8286900bbfab5d8399d2c8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108747856"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737019"
 ---
 # <a name="manage-tenants-in-your-microsoft-customer-agreement-billing-account"></a>管理 Microsoft 客户协议计费帐户中的租户
 

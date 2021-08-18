@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 937048ce14b9b05b55cd8d76e7a8c1fd67c63e4d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cb68621017649c87849294be67bc2e12d96214e8
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933702"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113732236"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>使用 Azure Data Lake Storage Gen2 的最佳做法
 
@@ -25,7 +25,7 @@ Azure Data Lake Storage Gen2 为 Azure Active Directory (Azure AD) 用户、组�
 
 ### <a name="use-security-groups-versus-individual-users"></a>安全组和单个用户的使用比较
 
-在 Data Lake Storage Gen2 中处理大数据时，可能会使用服务主体，以便使用 Azure HDInsight 之类的服务来处理数据。 但是，在某些情况下，单个用户也需要访问数据。 无论在什么情况下，都务必考虑使用 Azure Active Directory [安全组](../common/storage-auth-aad.md)，而不是将单个用户分配给目录和文件。
+在 Data Lake Storage Gen2 中处理大数据时，可能会使用服务主体，以便使用 Azure HDInsight 之类的服务来处理数据。 但是，在某些情况下，单个用户也需要访问数据。 无论在什么情况下，都务必考虑使用 Azure Active Directory [安全组](../common/authorize-data-access.md)，而不是将单个用户分配给目录和文件。
 
 为安全组分配权限以后，在组中添加或删除用户就不需要对 Data Lake Storage Gen2 进行任何更新。 这也有助于确保不超出每个访问控制列表 (ACL) 的最大访问控制条目数。 目前，该数目为 32（包括始终与每个文件和目录关联的四个 POSIX 样式的 ACL）：拥有用户、拥有组、掩码和其他。 每个目录可以有两种类型的 ACL（访问 ACL 和默认 ACL），总共 64 个访问控制条目。 有关这些 ACL 的详细信息，请参阅 [Azure Data Lake Storage Gen2 中的访问控制](data-lake-storage-access-control.md)。
 

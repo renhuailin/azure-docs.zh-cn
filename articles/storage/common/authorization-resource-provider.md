@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: fcf3e9228c8e651efb8f97067f7ba9eead5959db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09853e6dd96f41f966ff4344f886f1e6323b6c2c
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92789669"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733639"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>使用 Azure 存储资源提供程序访问管理资源
 
@@ -28,7 +28,7 @@ Microsoft 提供两个 REST API 用于处理 Azure 存储资源。 这些 API �
 
 读取或写入 Blob 数据的请求所需的权限不同于执行管理操作的请求。 Azure RBAC 为两种类型的资源提供精细的权限控制。 向安全主体分配 Azure 角色时，请确保了解要向主体授予的权限。 有关与每个 Azure 内置角色关联的操作的详细参考，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
-Azure 存储支持使用 Azure AD 来授权对 Blob 和队列存储的请求。 有关用于 Blob 和队列数据操作的 Azure 角色的信息，请参阅[使用 Active Directory 授权访问 Blob 和队列](storage-auth-aad.md)。
+Azure 存储支持使用 Azure AD 来授权对 Blob 和队列存储的请求。 有关用于 Blob 和队列数据操作的 Azure 角色的信息，请参阅[使用 Active Directory 授权访问 Blob 和队列](authorize-data-access.md)。
 
 ## <a name="assign-management-permissions-with-azure-role-based-access-control-azure-rbac"></a>使用 Azure 基于角色的访问控制 (Azure RBAC) 分配管理权限
 

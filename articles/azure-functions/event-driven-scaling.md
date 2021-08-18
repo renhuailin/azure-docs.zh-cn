@@ -4,12 +4,12 @@ description: 说明消耗计划和高级计划函数应用的缩放行为。
 ms.date: 10/29/2020
 ms.topic: conceptual
 ms.service: azure-functions
-ms.openlocfilehash: 8aca1ab6629f95ef9162e1247434bd3189d5a7d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff7194b5dfda09253526aa79b52be475c131a411
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97937592"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752275"
 ---
 # <a name="event-driven-scaling-in-azure-functions"></a>Azure Functions 中的事件驱动缩放
 
@@ -45,6 +45,12 @@ Azure Functions 的缩放单位为函数应用。 横向扩展函数应用时，
 
 ```azurecli
 az resource update --resource-type Microsoft.Web/sites -g <RESOURCE_GROUP> -n <FUNCTION_APP-NAME>/config/web --set properties.functionAppScaleLimit=<SCALE_LIMIT>
+```
+
+```azurepowershell
+$resource = Get-AzResource -ResourceType Microsoft.Web/sites -ResourceGroupName <RESOURCE_GROUP> -Name <FUNCTION_APP-NAME>/config/web
+$resource.Properties.functionAppScaleLimit = <SCALE_LIMIT>
+$resource | Set-AzResource -Force
 ```
 
 ## <a name="best-practices-and-patterns-for-scalable-apps"></a>可缩放应用的最佳做法和模式

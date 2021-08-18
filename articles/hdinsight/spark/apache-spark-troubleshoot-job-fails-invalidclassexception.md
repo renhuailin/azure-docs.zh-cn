@@ -4,12 +4,12 @@ description: 在 Azure HDInsight 中，Apache Spark 作业因 InvalidClassExcept
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/29/2019
-ms.openlocfilehash: 0b0889ac1e71ce33406e89ead62370a0c0168763
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 936e0728e70ceba35fbde105d68d77b9fbace45a
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98929255"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112288832"
 ---
 # <a name="apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>在 Azure HDInsight 中，Apache Spark 作业因 InvalidClassException（类版本不匹配）而失败
 
@@ -36,10 +36,10 @@ org.apache.commons.lang3.time.FastDateFormat; local class incompatible: stream c
 > [!TIP]
 > 为库添加阴影就是将其内容放入你自己的 jar 中，并更改其包。 这与打包库不同，后者是将库放入你自己的 jar 中，而不重新打包。
 
-## <a name="resolution"></a>解决方法
+## <a name="resolution"></a>解决方案
 
 删除 jar，或重新编译自定义 jar (AzureLogAppender)，并使用 [maven-shade-plugin](https://maven.apache.org/plugins/maven-shade-plugin/examples/class-relocation.html) 重新定位类。
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

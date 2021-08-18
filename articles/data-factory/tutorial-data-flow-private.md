@@ -5,15 +5,16 @@ author: ssabat
 ms.author: susabat
 ms.reviewer: makromer
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/14/2021
-ms.openlocfilehash: ac868fdf3ca80d489d479b5be0c57bd14a90ccbb
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 06/04/2021
+ms.openlocfilehash: e73b2a96d2b051dbb208bb9614569c423f99d8f0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905695"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749824"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>使用映射数据流安全地转换数据
 
@@ -86,7 +87,7 @@ ms.locfileid: "107905695"
 
 在此步骤中，你将创建一个包含数据流活动的管道。
 
-1. 在“开始使用”页中，选择“创建管道”。 
+1. 在 Azure 数据工厂的主页上，选择“协调”。
 
    ![屏幕截图显示正在创建管道。](./media/doc-common-process/get-started-page.png)
 

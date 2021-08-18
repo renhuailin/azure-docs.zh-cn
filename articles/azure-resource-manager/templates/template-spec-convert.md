@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 324fcb85bfe1be87dc10736c8b5c233432e07146
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: ad0391b91def898d252c429040380eab40522cd8
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111025935"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112378459"
 ---
 # <a name="convert-template-gallery-in-portal-to-template-specs"></a>将门户中的模板库转换为模板规格
 
@@ -22,7 +22,7 @@ Azure 门户可用于将 Azure 资源管理器模板（ARM 模板）存储在你
 
 要简化模板库中的模板转换，请使用 Azure 快速启动模板存储库中的 PowerShell 脚本。 运行该脚本时，可以为每个模板创建新的模板规范，或下载一个创建模板规范的模板。该脚本不会从模板库中删除该模板。
 
-1. 复制[迁移脚本](https://github.com/Azure/azure-quickstart-templates/blob/master/201-templatespec-migrate-create/Migrate-GalleryItems.ps1)。 保存名称为 Migrate-GalleryItems.ps1 的本地副本。
+1. 复制[迁移脚本](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.resources/templatespec-migrate-create/Migrate-GalleryItems.ps1)。 保存名称为 Migrate-GalleryItems.ps1 的本地副本。
 1. 要创建新的模板规格，请提供 `-ResourceGroupName` 和 `-Location` 参数的值。
 
    将 `ItemsToExport` 设置为 `MyGalleryItems` 以导出模板。 将其设置为 `AllGalleryItems` 以导出有权访问的所有模板。
@@ -41,9 +41,9 @@ Azure 门户可用于将 Azure 资源管理器模板（ARM 模板）存储在你
    .\Migrate-GalleryItems.ps1 -ItemsToExport MyGalleryItems -ExportToFile
    ```
 
-   若要了解如何部署用于创建模板规格的模板，请参阅[快速入门：创建和部署模板规格](quickstart-create-template-specs.md)。
+   要了解如何部署用于创建模板规格的模板，请参阅[快速入门：创建和部署模板规格](quickstart-create-template-specs.md)。
 
-有关脚本及其参数的详细信息，请参阅[从模板库模板创建 TemplateSpecs](https://github.com/Azure/azure-quickstart-templates/tree/master/201-templatespec-migrate-create)。
+有关脚本及其参数的详细信息，请参阅[从模板库模板创建 TemplateSpecs](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.resources/templatespec-migrate-create)。
 
 ## <a name="manually-convert-through-portal"></a>通过门户手动转换
 

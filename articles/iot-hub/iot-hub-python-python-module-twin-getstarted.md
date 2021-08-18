@@ -1,20 +1,20 @@
 ---
 title: Azure IoT 中心模块标识和模块孪生 (Python)
 description: 了解如何使用用于 Python 的 IoT SDK 创建模块标识和更新模块孪生。
-author: chrissie926
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.author: menchi
+ms.author: robinsh
 ms.custom: devx-track-python
-ms.openlocfilehash: 665281adc892e6b3655c0b1d0533cb3148e62940
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ce8dec215591b469c5593923eb9d5b211ee8ac29
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92139402"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114726834"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>IoT 中心模块标识和模块孪生 (Python) 入门
 

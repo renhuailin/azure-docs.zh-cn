@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 50bf5f3188728db41f74b6fefe5946ef2127efe3
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 7e0f3e2ab306c46851e4c2ffcb6acf5824326282
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110062301"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113564349"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
@@ -290,9 +290,9 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | **country_code_input_placeholder_text** |国家或地区 | `All` |
 | **number_label** | 电话号码 | `All` |
 | **error_tryagain** | 你提供的电话号码占线或不可用。 请检查号码并重试。 | `All` |
-| error_sms_throttled | 已达到短信数量的限制。 请稍后再试。 | `>= 1.2.3` |
-| error_phone_throttled | 已达到呼叫尝试次数的限制。 请稍后再试。 | `>= 1.2.3` |
-| error_throttled | 已达到验证尝试次数的限制。 请稍后再试。 | `>= 1.2.3` |
+| **error_sms_throttled** | 已达到文本消息数上限。 请稍后再试。 | `>= 1.2.3` |
+| **error_phone_throttled** | 已达到电话呼叫尝试次数上限。 请稍后再试。 | `>= 1.2.3` |
+| **error_throttled** | 已达到验证尝试次数上限。 请稍后再试。 | `>= 1.2.3` |
 | **error_incorrect_code** | 你输入的验证码与我们的记录不一致。 请重试，或请求获取新验证码。 | `All` |
 | **countryList** | 请参阅[国家/地区列表](#phone-factor-authentication-page-example)。 | `All` |
 | **error_448** | 你提供的电话号码打不通。 | `All` |
@@ -372,7 +372,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 |but_send_new_code | 发送新验证码|
 |but_change_claims | 更改电子邮件|
 
-注意：`intro_msg` 元素将隐藏，并且不会显示在自断言页上。 若要使其可见，请将 [HTML 自定义](customize-ui-with-html.md) 与级联样式表一起使用。 例如：
+注意：`intro_msg` 元素将隐藏，并且不会显示在自断言页上。 若要使其可见，请将 [HTML 自定义](customize-ui-with-html.md)与级联样式表结合使用。 例如：
     
 ```css
 .verificationInfoText div{display: block!important}
@@ -513,11 +513,12 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 
 | ID | 默认值 |
 | -- | ------------- |
-|UserMessageIfMaxRetryAttempted |一次性密码提供的验证已超过最大尝试次数 |
-|UserMessageIfSessionDoesNotExist |一次性密码验证会话已过期 |
-|UserMessageIfSessionConflict |一次性密码验证会话存在冲突 |
-|UserMessageIfInvalidCode |所提供的用于验证的一次性密码不正确 |
-|UserMessageIfVerificationFailedRetryAllowed |验证码不正确。 请重试。 | 
+| UserMessageIfSessionDoesNotExist | 否 | 代码验证会话过期后向用户显示的消息。 代码已过期，或从未为给定标识符生成代码。 |
+| UserMessageIfMaxRetryAttempted | 否 | 用户尝试验证的次数超过允许的最大值时显示的消息。 |
+| UserMessageIfMaxNumberOfCodeGenerated | 否 | 当代码生成超出了允许的最大尝试次数时显示给用户的消息。 |
+| UserMessageIfInvalidCode | 否 | 用户提供的代码无效时显示的消息。 |
+| UserMessageIfVerificationFailedRetryAllowed | 否 | 在用户提供的代码无效且系统允许用户提供正确代码的情况下向用户显示的消息。  |
+|UserMessageIfSessionConflict|否| 无法验证代码时要向用户显示的消息。|
 
 ### <a name="one-time-password-example"></a>一次性密码示例
 
@@ -526,9 +527,10 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
   <LocalizedStrings>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceeded the maximum time allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceeded the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxNumberOfCodeGenerated">You have exceeded the number of retries allowed.</LocalizedString>
     <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
-    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
-   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfVerificationFailedRetryAllowed">That code is incorrect. Please try again.</LocalizedString>
+   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
   </LocalizedStrings>
 </LocalizedResources>
 ```

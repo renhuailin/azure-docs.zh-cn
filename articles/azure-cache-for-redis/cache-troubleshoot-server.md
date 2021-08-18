@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: b0a912a3023ba6d8504d5856d5a45a93d0dc9488
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: a3eb35ada01612d3a3298b1899d3e9fb7101684b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809393"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735882"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>排查 Azure Cache for Redis 服务器端问题
 
@@ -42,6 +42,7 @@ Redis 通过 [INFO](https://redis.io/commands/info) 命令公开以下两项统�
 - 将大型缓存对象分解成小型相关对象。
 - 基于指标（例如已用内存）[创建警报](cache-how-to-monitor.md#alerts)，以提前收到有关潜在影响的通知。
 - [扩展](cache-how-to-scale.md)到可提供更多内存容量的更大缓存大小。
+- [扩展](cache-how-to-scale.md)到可提供更多内存容量的更大缓存大小。 有关详细信息，请参阅 [Azure Cache for Redis 规划常见问题解答](./cache-planning-faq.yml)。
 
 ## <a name="high-cpu-usage-or-server-load"></a>CPU 使用率或服务器负载过高
 
@@ -53,11 +54,11 @@ Redis 通过 [INFO](https://redis.io/commands/info) 命令公开以下两项统�
 
 - 调查导致 CPU 峰值的原因，例如下面提到的[长时间运行的命令](#long-running-commands)或由于内存压力大而导致的页面错误。
 - 基于指标（例如 CPU 或服务器负载）[创建警报](cache-how-to-monitor.md#alerts)，以提前收到有关潜在影响的通知。
-- [扩展](cache-how-to-scale.md)到可提供更多 CPU 容量的更大缓存大小。
+- [横向扩展](cache-how-to-scale.md)到更多的分片，以跨多个 Redis 进程分配负载，或者纵向扩展到具有更多 CPU 内核的更大缓存大小。 有关详细信息，请参阅 [Azure Cache for Redis 规划常见问题解答](./cache-planning-faq.yml)。
 
 ## <a name="long-running-commands"></a>长时间运行的命令
 
-某些 Redis 命令的执行开销比其他命令高。 [Redis 命令文档](https://redis.io/commands)介绍了每个命令的时间复杂性。 由于 Redis 命令处理是单线程的，因此需要时间运行的命令将阻塞其后的所有其他命令。 你应该查看正在向 Redis 服务器发出的命令，以了解它们对性能的影响。 例如，我们经常使用 [KEYS](https://redis.io/commands/keys) 命令，但事先并不知道它是一个 O(N) 操作。 可以使用 [SCAN](https://redis.io/commands/scan) 来避免 KEYS，以降低 CPU 峰值。
+某些 Redis 命令的执行开销比其他命令高。 [Redis 命令文档](https://redis.io/commands)介绍了每个命令的时间复杂性。 由于 Redis 命令处理是单线程的，因此需要时间运行的命令会阻塞其后的所有其他命令。 查看正在向 Redis 服务器发出的命令，以了解它们对性能的影响。 例如，我们经常使用 [KEYS](https://redis.io/commands/keys) 命令，但事先并不知道它是一个 O(N) 操作。 可以使用 [SCAN](https://redis.io/commands/scan) 来避免 KEYS，以降低 CPU 峰值。
 
 使用 [SLOWLOG](https://redis.io/commands/slowlog) 命令可以测量正在对服务器执行的命令的开销。
 
@@ -71,12 +72,12 @@ Redis 通过 [INFO](https://redis.io/commands/info) 命令公开以下两项统�
 
 - 更改客户端调用行为，以降低网络需求。
 - 基于指标（例如缓存读取或缓存写入）[创建警报](cache-how-to-monitor.md#alerts)，以提前收到有关潜在影响的通知。
-- [扩展](cache-how-to-scale.md)到可提供更高网络带宽容量的更大缓存大小。
+- [扩展](cache-how-to-scale.md)到可提供更高网络带宽容量的更大缓存大小。 有关详细信息，请参阅 [Azure Cache for Redis 规划常见问题解答](./cache-planning-faq.yml)。
 
 ## <a name="additional-information"></a>其他信息
 
 - [排查 Azure Cache for Redis 客户端问题](cache-troubleshoot-client.md)
 - [选择正确的层](cache-overview.md#choosing-the-right-tier)
-- [如何制定基准和测试缓存性能？](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [如何制定基准和测试缓存性能？](cache-management-faq.yml#how-can-i-benchmark-and-test-the-performance-of-my-cache-)
 - [如何监视 Azure Redis 缓存](cache-how-to-monitor.md)
-- [如何运行 Redis 命令？](cache-development-faq.md#how-can-i-run-redis-commands)
+- [如何运行 Redis 命令？](cache-development-faq.yml#how-can-i-run-redis-commands-)

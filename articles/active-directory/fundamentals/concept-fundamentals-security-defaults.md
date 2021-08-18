@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/03/2021
+ms.date: 07/07/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: c663282865e19df0e103e75a7e32d86651232a93
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d240e9bbf657a4336480d1340b8fbd59903a355a
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108762544"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730291"
 ---
 # <a name="what-are-security-defaults"></a>什么是安全默认值？
 
@@ -137,7 +137,7 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 - *** 仅当管理员启用了应用密码时，应用密码才可在旧身份验证场景中的每用户 MFA 中使用。
 
 > [!WARNING]
-> 如果你使用的是安全默认值，请不要对你的组织禁用方法。 禁用方法可能会导致将你自己锁定在租户之外。 在 [MFA 服务设置门户](../authentication/howto-mfa-getstarted.md#choose-verification-options)中启用所有可供用户使用的方法。
+> 如果你使用的是安全默认值，请不要对你的组织禁用方法。 禁用方法可能会导致将你自己锁定在租户之外。 在 [MFA 服务设置门户](../authentication/howto-mfa-getstarted.md#choose-authentication-methods-for-mfa)中启用所有可供用户使用的方法。
 
 ### <a name="disabled-mfa-status"></a>禁用的 MFA 状态
 
@@ -145,7 +145,7 @@ Microsoft 正在向所有用户提供安全默认值。 目标是确保所有组
 
 ### <a name="conditional-access"></a>条件性访问
 
-你可以使用条件访问来配置类似于安全默认值的策略，但要具有更细的粒度，包括在安全默认值中不可用的用户排除。 如果使用的是条件访问，并且在环境中启用了条件访问策略，则不能使用安全默认值。 如果你的许可证提供条件访问，但在环境中未启用任何条件访问策略，则欢迎使用安全默认值，直至你启用条件访问策略。 有关 Azure AD 许可的更多信息，请参阅 [Azure AD 定价页](https://azure.microsoft.com/pricing/details/active-directory/)。
+你可以使用条件访问来配置类似于安全默认值的策略，但要具有更细的粒度，包括在安全默认值中不可用的用户排除。 如果使用的是条件访问，并且在环境中启用了条件访问策略，则不能使用安全默认值。 如果你的许可证提供条件访问，但在环境中未启用任何条件访问策略，则欢迎使用安全默认值，直至你启用条件访问策略。 有关 Azure AD 许可的更多信息，请参阅 [Azure AD 定价页](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
 
 ![不能同时具有安全默认值或条件访问的警告消息](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 

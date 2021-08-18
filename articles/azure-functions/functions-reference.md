@@ -4,12 +4,12 @@ description: 了解在 Azure 中开发函数时需要掌握的 Azure Functions �
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 4e5d239416a14d2d769020283f43f2dbcf150e64
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 93ac3458e2d9954c9ec17294fe89199d11cc765f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111539800"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741390"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
@@ -97,7 +97,7 @@ Azure Functions 代码为开放源，位于 GitHub 存储库：
 
 函数项目从其配置提供程序按名称引用连接信息。 它不直接接受连接详细信息，而是允许跨环境对其进行更改。 例如，触发器定义可能包括 `connection` 属性。 这可能是指连接字符串，但不能直接在 `function.json` 中设置连接字符串。 相反，应将 `connection` 设置为包含连接字符串的环境变量的名称。
 
-默认配置提供程序使用环境变量。 在 Azure Functions 服务中运行时，可以通过[应用程序设置](./functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings)进行设置，而在本地开发时，可以通过[本地设置文件](functions-run-local.md#local-settings-file)进行设置。
+默认配置提供程序使用环境变量。 在 Azure Functions 服务中运行时，可以通过[应用程序设置](./functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings)进行设置，而在本地开发时，可以通过[本地设置文件](functions-develop-local.md#local-settings-file)进行设置。
 
 ### <a name="connection-values"></a>连接值
 
@@ -111,7 +111,7 @@ Azure Functions 代码为开放源，位于 GitHub 存储库：
 
 Azure Functions 中的某些连接配置为使用标识而不是机密。 支持取决于使用连接的扩展。 在某些情况下，即使连接到的服务支持基于标识的连接，Functions 中仍可能需要连接字符串。
 
-在所有计划中，以下触发器和绑定扩展都支持基于标识的连接：
+所有计划中的以下触发器和绑定扩展支持基于标识的连接：
 
 > [!NOTE]
 > Durable Functions 不支持基于标识的连接。
@@ -124,16 +124,16 @@ Azure Functions 中的某些连接配置为使用标识而不是机密。 支持
 | Azure 服务总线    | [版本 5.0.0-beta2 或更高版本](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher) |
 
 
-也可以使用基于标识的连接来配置 Functions 运行时 (`AzureWebJobsStorage`) 使用的存储连接。 请参阅下面的[使用标识连接到主机存储](#connecting-to-host-storage-with-an-identity)。
+还可以使用基于标识的连接来配置 Functions 运行时 (`AzureWebJobsStorage`) 所用的存储连接。 请参阅下面的[使用标识连接到主机存储](#connecting-to-host-storage-with-an-identity)。
 
-在 Azure Functions 服务中托管时，基于标识的连接将使用[托管标识](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json)。 默认情况下，使用系统分配的标识。 在其他上下文（如本地开发）中运行时，将改用开发人员标识，尽管可以使用其他连接参数对其进行自定义。
+在 Azure Functions 服务中托管时，基于标识的连接将使用[托管标识](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json)。 默认情况下使用系统分配的标识，但可以使用 `credential` 和 `clientID` 属性来指定用户分配的标识。 在其他上下文（如本地开发）中运行时，将改用开发人员标识，尽管可以使用其他连接参数对其进行自定义。
 
 #### <a name="grant-permission-to-the-identity"></a>向标识授予权限
 
-无论使用何种标识，都必须具有执行所需操作的权限。 这通常是通过在 Azure RBAC 中分配角色或在访问策略中指定标识来完成的，具体取决于要连接到的服务。 请参考每个扩展的相关文档，了解需要哪些权限以及如何设置这些权限。
+无论使用何种标识，都必须具有执行所需操作的权限。 这通常是通过在 Azure RBAC 中分配角色或在访问策略中指定标识来完成的，具体取决于要连接到的服务。 请参阅每个扩展的文档，了解需要哪些权限以及如何设置这些权限。
 
 > [!IMPORTANT]
-> 有些权限可能由并非所有上下文都需要的目标服务公开。 尽可能遵循最低权限原则，仅授予标识所需的权限。 例如，如果应用只需从 Blob 读取数据，请使用[存储 Blob 数据读取者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)角色，因为[存储 Blob 数据所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)包含过多的读取操作权限。
+> 某些权限可能由并非所有上下文都需要的目标服务公开。 尽可能遵循最低权限原则，仅授予标识所需的权限。 例如，如果应用只需从 Blob 读取数据，请使用[存储 Blob 数据读取者](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)角色，因为[存储 Blob 数据所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)包含过多的读取操作权限。
 以下角色涵盖正常操作中每个扩展所需的主要权限：
 
 | 服务     | 内置角色示例 |
@@ -151,12 +151,14 @@ Azure 服务的基于标识的连接接受以下属性：
 |---|---|---|---|
 | 服务 URI | Azure Blob<sup>1</sup>、Azure 队列 | `<CONNECTION_NAME_PREFIX>__serviceUri` | 要连接到的服务的数据平面 URI。 |
 | 完全限定的命名空间 | 事件中心、服务总线 | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | 完全限定的事件中心和服务总线命名空间。 |
+| 令牌凭据 | (可选) | `<CONNECTION_NAME_PREFIX>__credential` | 定义如何为连接获取令牌。 建议仅在指定用户分配的标识时使用，此时它应设置为“managedidentity”。 仅当在 Azure Functions 服务中托管时，此属性才有效。 |
+| 客户端 ID | (可选) | `<CONNECTION_NAME_PREFIX>__clientId` | 当 `credential` 设置为“managedidentity”时，此属性指定在获取令牌时要使用的用户分配的标识。 该属性接受与分配给应用程序的用户分配的标识对应的客户端 ID。 如果未指定，则将使用系统分配的标识。 在[本地开发方案](#local-development-with-identity-based-connections)中使用时，此属性的使用方式不同，且不应设置 `credential`。 |
 
-<sup>1</sup> Azure Blob 需要 Blob 和队列服务的 URI。
+<sup>1</sup> Azure Blob 需要 Blob URI 和队列服务 URI。
 
 给定的连接类型可能支持其他选项。 请参阅相关文档，了解用于建立连接的组件。
 
-##### <a name="local-development"></a>本地开发
+##### <a name="local-development-with-identity-based-connections"></a>使用基于标识的连接进行本地开发
 
 在本地运行时，上述配置会告知运行时使用本地开发人员标识。 连接将尝试从以下位置获取令牌，顺序如下：
 
@@ -196,16 +198,16 @@ Azure 服务的基于标识的连接接受以下属性：
 
 #### <a name="connecting-to-host-storage-with-an-identity"></a>使用标识连接到主机存储
 
-默认情况下，对于核心行为（例如协调计时器触发器的单一实例执行）和默认应用密钥存储，Azure Functions 使用 `AzureWebJobsStorage` 连接。 这也可以配置为利用标识。
+默认情况下，Azure Functions 使用 `AzureWebJobsStorage` 连接来实现核心行为，例如协调计时器触发器和默认应用密钥存储的单一实例执行。 也可以将此连接配置为使用标识。
 
 > [!CAUTION]
-> 有些应用在它们的触发器、绑定和/或函数代码中重复使用 `AzureWebJobsStorage` 来进行存储连接。 请确保在从连接字符串中更改此连接之前，所有使用 `AzureWebJobsStorage` 的情形都能够使用基于标识的连接格式。
+> 某些应用在其触发器、绑定和/或函数代码中重复使用 `AzureWebJobsStorage` 进行存储连接。 在从连接字符串更改此连接之前，请确保全部所用的 `AzureWebJobsStorage` 都能够使用基于标识的连接格式。
 
-若要按此方式配置该连接，请确保应用的标识具有[存储 Blob 数据所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)角色，以便支持核心主机功能。 如果将“AzureWebJobsStorage”用于任何其他目的，可能需要其他权限。
+若要以此方式配置连接，请确保应用的标识具有[存储 Blob 数据所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)角色，以支持核心主机功能。 如果出于任何其他目的使用“AzureWebJobsStorage”，可能需要更多的权限。
 
-如果使用的存储帐户将默认 DNS 后缀和服务名称用于全局 Azure，可以按照 `https://<accountName>.blob/queue/file/table.core.windows.net` 格式将 `AzureWebJobsStorage__accountName` 设置为存储帐户的名称。 
+如果所用的存储帐户使用全球 Azure 的默认 DNS 后缀和服务名称（遵循 `https://<accountName>.blob/queue/file/table.core.windows.net` 格式），则你可以将 `AzureWebJobsStorage__accountName` 设置为你的存储帐户名称。 
 
-如果改为使用主权云中的存储帐户或使用自定义 DNS，请将 `AzureWebJobsStorage__serviceUri` 设置为 Blob 服务的 URI。 如果“AzureWebJobsStorage”将会用于任何其他服务，你可以改为分别指定 `AzureWebJobsStorage__blobServiceUri`、`AzureWebJobsStorage__queueServiceUri` 和 `AzureWebJobsStorage__tableServiceUri`。
+如果改用主权云中的或者采用自定义 DNS 的存储帐户，请将 `AzureWebJobsStorage__serviceUri` 设置为你的 Blob 服务的 URI。 如果要对任何其他服务使用“AzureWebJobsStorage”，则可以改为分别指定 `AzureWebJobsStorage__blobServiceUri`、`AzureWebJobsStorage__queueServiceUri` 和 `AzureWebJobsStorage__tableServiceUri`。
 
 ## <a name="reporting-issues"></a>报告问题
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]

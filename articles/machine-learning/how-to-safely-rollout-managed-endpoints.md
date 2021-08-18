@@ -8,19 +8,19 @@ ms.subservice: core
 ms.author: seramasu
 ms.reviewer: laobri
 author: rsethur
-ms.date: 05/25/2021
+ms.date: 08/05/2021
 ms.topic: how-to
-ms.custom: how-to
-ms.openlocfilehash: 93365304e958bfabaf3067ab58312a9b78745edb
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.custom: how-to, devplatv2
+ms.openlocfilehash: 11fa5a3057f50a354058141ed688d8c55b4345d8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854659"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739138"
 ---
 # <a name="safe-rollout-for-online-endpoints-preview"></a>联机终结点的安全推出（预览版）
 
-在生产环境中已部署了一个现有模型，你现在想要部署该模型的新版本。 如何在不造成任何中断的情况下推出新的 ML 模型？ 合理的回答之一是蓝绿部署，在此方法中，会先将更改推出到一小部分用户/请求者，然后再全面推出，从而将新版本的 Web 服务引入到生产环境。 
+在生产环境中已部署了一个现有模型，你现在想要部署该模型的新版本。 如何在不造成任何中断的情况下推出新的 ML 模型？ 合理的回答之一是蓝绿部署，在此方法中，会先将更改推出到一小部分用户/请求者，然后再全面推出，从而将新版本的 Web 服务引入到生产环境。 本文假设你使用的是联机终结点；有关详细信息，请参阅[什么是 Azure 机器学习终结点（预览版）？](concept-endpoints.md)。
 
 本文内容：
 
@@ -37,7 +37,7 @@ ms.locfileid: "111854659"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 若要使用 Azure 机器学习，必须有一个 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* 若要使用 Azure 机器学习，必须有一个 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 
 * 必须安装并配置 Azure CLI 和 ML 扩展。 有关详细信息，请参阅[安装、设置和使用 2.0 CLI（预览版）](how-to-configure-cli.md)。 
 
@@ -145,3 +145,15 @@ az ml endpoint show --name $ENDPOINT_NAME
 如果你今后不再使用该部署，应使用以下命令将其删除：
 
 :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="delete_endpoint" :::
+
+
+## <a name="next-steps"></a>后续步骤
+- [通过 REST 部署模型（预览版）](how-to-deploy-with-rest.md)
+- [在工作室中创建和使用托管联机终结点（预览版）](how-to-use-managed-online-endpoint-studio.md)
+- [教程：使用托管联机终结点和系统托管标识访问 Azure 资源（预览版）](tutorial-deploy-managed-endpoints-using-system-managed-identity.md)
+- [监视托管联机终结点（预览版）](how-to-monitor-online-endpoints.md)
+- [管理和增大 Azure 机器学习资源的配额](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)
+- [查看 Azure 机器学习托管联机终结点（预览版）的成本](how-to-view-online-endpoints-costs.md)
+- [托管联机终结点 SKU 列表（预览版）](reference-managed-online-endpoints-vm-sku-list.md)
+- [排查托管联机终结点的部署和评分问题（预览版）](how-to-troubleshoot-managed-online-endpoints.md)
+- [托管联机终结点（预览版）YAML 参考](reference-yaml-endpoint-managed-online.md)

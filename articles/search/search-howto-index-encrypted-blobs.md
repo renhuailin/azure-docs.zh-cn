@@ -9,16 +9,16 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
-ms.openlocfilehash: e70361b747cac10b602efcf590963b707c7d5da7
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: c78d8f3bc4a7bfc7b73d71a97e29c369926448c5
+ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111558991"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113139406"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用 Blob 索引器和技能组为加密的 Blob 编制索引
 
-本文介绍了如何使用 [Azure 认知搜索](search-what-is-azure-search.md)为之前已使用 [Azure Key Vault](../key-vault/general/overview.md) 在 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)中加密的文档编制索引。 通常，索引器无法从加密的文件中提取内容，因为它无权访问加密密钥。 但是，通过利用后跟 [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) 的 [DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) 自定义技能，你可以提供对该密钥的受控访问，以对文件进行解密，并从这些文件中提取内容。 这样就可以在不损害已存储文档的加密状态的情况下解锁为这些文档编制索引的功能。
+本文介绍了如何使用 [Azure 认知搜索](search-what-is-azure-search.md)为之前已使用 [Azure Key Vault](../key-vault/general/overview.md) 在 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)中加密的文档编制索引。 通常，索引器无法从加密的文件中提取内容，因为它无权访问加密密钥。 但是，通过利用后跟 [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) 的 [DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/main/Utils/DecryptBlobFile) 自定义技能，你可以提供对该密钥的受控访问，以对文件进行解密，并从这些文件中提取内容。 这样就可以在不损害已存储文档的加密状态的情况下解锁为这些文档编制索引的功能。
 
 本指南从以前加密的整个文档（非结构化文本，例如 Azure Blob 存储中的 PDF、HTML、DOCX 和 PPTX）着手，使用 Postman 和搜索 REST API 执行以下任务：
 
@@ -44,11 +44,11 @@ ms.locfileid: "111558991"
 
 ### <a name="set-up-the-custom-skill"></a>设置自定义技能
 
-此示例使用 [Azure 搜索强大技能](https://github.com/Azure-Samples/azure-search-power-skills) GitHub 存储库中的示例 [DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) 项目。 在本部分，你将技能部署到 Azure 函数，以便在技能组中使用。 一个内置的部署脚本会创建一个名称以 **psdbf-function-app-** 开头的 Azure 函数资源，并加载该技能。 系统会提示你提供订阅和资源组。 请确保选择你的 Azure Key Vault 实例所在的订阅。
+此示例使用 [Azure 搜索强大技能](https://github.com/Azure-Samples/azure-search-power-skills) GitHub 存储库中的示例 [DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/main/Utils/DecryptBlobFile) 项目。 在本部分，你将技能部署到 Azure 函数，以便在技能组中使用。 一个内置的部署脚本会创建一个名称以 **psdbf-function-app-** 开头的 Azure 函数资源，并加载该技能。 系统会提示你提供订阅和资源组。 请确保选择你的 Azure Key Vault 实例所在的订阅。
 
 在操作方面，DecryptBlobFile 技能采用每个 blob 的 URL 和 SAS 令牌作为输入，并使用 Azure 认知搜索需要的文件引用约定输出下载的解密文件。 请记住，DecryptBlobFile 需要使用加密密钥来执行解密操作。 在设置过程中，你还将创建一个访问策略，用于授予对 Azure Key Vault 中的加密密钥的 DecryptBlobFile 函数访问权限。
 
-1. 单击 [DecryptBlobFile 登陆页](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile#deployment)上的“部署到 Azure”按钮，这将在 Azure 门户中打开所提供的资源管理器模板。
+1. 单击 [DecryptBlobFile 登陆页](https://github.com/Azure-Samples/azure-search-power-skills/blob/main/Utils/DecryptBlobFile#deployment)上的“部署到 Azure”按钮，这将在 Azure 门户中打开所提供的资源管理器模板。
 
 1. 选择 **你的 Azure Key Vault 实例所在的订阅**（如果选择其他订阅，本指南将无法使用），并选择一个现有资源组或创建一个新资源组（如果创建新的资源组，则还需要选择要部署到的区域）。
 

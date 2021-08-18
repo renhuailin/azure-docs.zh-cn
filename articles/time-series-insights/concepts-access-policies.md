@@ -3,24 +3,28 @@ title: 配置授予数据访问权限所需的安全性 - Azure 时序见解 | M
 description: 了解如何在 Azure 时序见解环境中配置安全性和权限并管理数据访问策略。
 ms.service: time-series-insights
 services: time-series-insights
-author: shipra1mishra
-ms.author: shmishr
+author: tedvilutis
+ms.author: tvilutis
 manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 84b973dfa016b069b18fda47a4336fe952f73b3c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ebbb3c02263d860822482e2e19293d9a032274ef
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96780852"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113135354"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授予对环境的数据访问权限
 
 本文讨论了两种类型的 Azure 时序见解访问策略。
+
+> [!Warning]
+> 访问策略授予 Azure AD 用户和/或组数据平面对时序见解环境的访问权限。
+> Azure Active Directory 与租户绑定。 因此，如果决定在租户之间移动订阅，请确保遵循[以下部分](#procedure-for-when-the-subscription-is-moved-across-tenants)中介绍的过程。
 
 ## <a name="sign-in-to-azure-time-series-insights"></a>登录到 Azure 时序见解
 
@@ -119,6 +123,29 @@ ms.locfileid: "96780852"
     现在，他们拥有了与你在 **步骤 5** 中提供的角色相关联的所有功能。
 
     [![来宾用户从下拉列表中选择你的 Azure 租户](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
+
+## <a name="procedure-for-when-the-subscription-is-moved-across-tenants"></a>跨租户移动订阅的过程
+
+时序见解数据访问策略由 Azure Active Directory 支持，绑定到订阅所属的 Azure 租户。
+
+向其授予数据访问策略的 Azure AD 对象以及时序见解环境本身应该位于同一个租户下。 如果没有位于同一个租户下，则这些对象将无权访问环境。
+
+如果计划将环境所属的订阅移动至其他租户，请务必更新数据访问策略以反映新租户下的 Azure AD 对象。
+
+为了顺利完成该过程，请执行以下步骤。
+
+### <a name="before-moving-a-subscription-to-another-tenant"></a>在将订阅移动到另一个租户之前
+
+- 请确保在环境仍处于源租户中时，保留环境中的当前数据访问策略分配的列表。
+- 请确定希望其在订阅迁移到目标租户中的 Active Directory 后仍有权访问环境的用户、组或应用。
+- 请确保自己在订阅移动后至少拥有订阅的参与者访问权限，或者能与某位具有相应权限的人合作，以便能在目标租户的环境中重新应用数据访问策略。
+
+### <a name="after-moving-a-subscription-to-another-tenant"></a>在将订阅移动到另一个租户之后
+
+拥有对目标租户中订阅的参与者访问权限，可以
+
+- 删除随环境一起迁移的所有数据访问策略，因为它们属于源租户。
+- 使用上述步骤向环境重新授予访问策略，现在指向目标租户中的 Azure AD 对象。
 
 ## <a name="next-steps"></a>后续步骤
 

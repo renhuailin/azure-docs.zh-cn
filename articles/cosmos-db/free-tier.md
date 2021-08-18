@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: sngun
-ms.openlocfilehash: 77e4ccd7b651de97d3f423a72309ac08a6495fd6
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 55b37ce3f96bc187e4420fc16924b02639c9a7df
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110539802"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749940"
 ---
 # <a name="azure-cosmos-db-free-tier"></a>Azure Cosmos DB 免费层 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -20,7 +20,7 @@ ms.locfileid: "110539802"
 
 免费层在帐户的有效期内无限期提供，并具有常规 Azure Cosmos DB 帐户的各项[优势和功能](introduction.md#key-benefits)。 此类优势包括无限制的存储空间和吞吐量（RU/秒）、SLA、高可用性、支持在所有 Azure 区域进行统包式全局分发等。
 
-每个 Azure 订阅最多支持一个免费层 Azure Cosmos DB 帐户，并且必须在创建帐户时选择启用。 如果看不到用于应用免费层折扣的选项，这意味着订阅中的另一个帐户已启用免费层。 创建新帐户时，建议启用免费层折扣（如果可用）。
+每个 Azure 订阅最多支持一个免费层 Azure Cosmos DB 帐户，并且必须在创建帐户时选择启用。 如果看不到用于应用免费层折扣的选项，这意味着订阅中的另一个帐户已启用免费层。 如果创建免费层的帐户，然后将其删除，可以对新帐户应用免费层。 创建新帐户时，建议启用免费层折扣（如果可用）。
 
 > [!NOTE]
 > 无服务器帐户目前不提供免费层。
@@ -92,6 +92,6 @@ New-AzCosmosDBAccount -ResourceGroupName "MyResourcegroup" `
 创建免费层帐户后，可以参阅以下文章开始使用 Azure Cosmos DB 构建应用：
 
 * [使用 .NET V4 SDK 构建控制台应用](create-sql-api-dotnet-v4.md)以管理 Azure Cosmos DB 资源。
-* [使用适用于 MongoDB 的 Azure Cosmos DB API 构建 .NET Web 应用](create-mongodb-dotnet.md)
+* [使用适用于 MongoDB 的 Azure Cosmos DB API 构建 .NET Web 应用](mongodb/create-mongodb-dotnet.md)
 * [从库中下载笔记本](publish-notebook-gallery.md#download-a-notebook-from-the-gallery)并分析数据。
 * 详细了解[了解 Azure Cosmos DB 帐单](understand-your-bill.md)

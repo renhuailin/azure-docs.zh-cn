@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: f257ed1097f49074d70f45f59e9040265f6cedef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57916a7f142663711215fdb2a7f641e35fd9ad0f
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670448"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389971"
 ---
 # <a name="configure-prerequisites"></a>配置先决条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "101670448"
  
 ## <a name="deploy-using-the-marketplace-offer"></a>使用市场产品/服务进行部署
 
-使用 [Azure 市场产品/服务](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)是将自托管 OpenShift Container Platform 3.11 群集部署到 Azure 中的最简单方式。
+使用 Azure 市场产品/服务是将自托管 OpenShift Container Platform 3.11 群集部署到 Azure 中的最简单方式。
 
 此选项虽然最简单，但自定义功能有限。 市场产品/服务部署 OpenShift Container Platform 3.11.82，并包括以下配置选项：
 

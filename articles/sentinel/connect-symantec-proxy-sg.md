@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 902475ae3e60761fb30620c5ba2fa8cbd905c916
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a04db6700af508114e22a33200da3d7d2ebc0c3
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100099177"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253163"
 ---
 # <a name="connect-your-symantec-proxysg-to-azure-sentinel"></a>将 Symantec ProxySG 连接到 Azure Sentinel
 
 > [!IMPORTANT]
 > Azure Sentinel 中的 Symantec ProxySG 数据连接器目前为公共预览版。
 > 此功能不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 本文介绍如何将 [Symantec ProxySG](https://www.broadcom.com/products/cyber-security/network/gateway/proxy-sg-and-advanced-secure-gateway) 设备连接到 Azure Sentinel。 通过 Symantec ProxySG 数据连接器，可以将 Symantec ProxySG 日志轻松连接到 Azure Sentinel，以查看仪表板、创建自定义警报和改进调查。 Symantec ProxySG 和 Azure Sentinel 之间的集成会使用 Syslog。
 
@@ -38,7 +40,7 @@ ms.locfileid: "100099177"
 
 1. 在 Azure Sentinel 门户中，单击“数据连接器”，然后选择“Symantec ProxySG”连接器 。
 
-1. 选择“打开连接器页面”。
+1. 选择“打开连接器页”。
 
 1. 按照“Symantec ProxySG”页上的说明进行操作。
 
@@ -54,6 +56,6 @@ ms.locfileid: "100099177"
 
 本文档介绍了如何将 Symantec ProxySG 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。

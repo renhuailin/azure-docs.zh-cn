@@ -1,14 +1,14 @@
 ---
 title: Web 应用性能监视 - Azure Application Insights
-description: Application Insights 如何适应 devOps 周期
+description: Application Insights 如何适应 DevOps 周期
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: 78bba78cea4242324c14552c23ffb93d8736dee1
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8124e8fdc184ab284d486ed167841043da8334a6
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084459"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616219"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>使用 Application Insights 对 Web 应用和服务进行深度诊断
 ## <a name="why-do-i-need-application-insights"></a>为什么需要 Application Insights？
@@ -157,7 +157,7 @@ Visual Studio 和 Eclipse 提供相应的工具来为开发中的项目配置正
 ## <a name="next-steps"></a>后续步骤
 Application Insights 入门非常简单。 主要选项包括：
 
-* [IIS 服务器](./monitor-performance-live-website-now.md)，以及 [Azure 应用服务](./app-insights-overview.md)。
-* 在开发期间检测项目。 可以针对 [ASP.NET](./asp-net.md) 或 [Java](./java-in-process-agent.md) 应用以及 [Node.js](./nodejs.md) 和很多[其他类型](./platforms.md)的应用执行此操作。 
+* [IIS 服务器](./status-monitor-v2-overview.md)
+* 在开发期间检测项目。 可以针对 [ASP.NET](./asp-net.md) 或 [Java](./java-in-process-agent.md) 应用以及 [Node.js](./nodejs.md) 和[其他类型](./platforms.md)的主机执行此操作。 
 * 通过添加简短的代码片段来检测[任何网页](./javascript.md)。
 

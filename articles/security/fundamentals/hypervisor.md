@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/10/2020
-ms.openlocfilehash: 766266edd663b75b893a5883e30bb48eed7bbfdf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/24/2021
+ms.openlocfilehash: e8da9ae3d8f8c13bf52c5c0a2ea61b38f316a8b2
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94696109"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895627"
 ---
 # <a name="hypervisor-security-on-the-azure-fleet"></a>Azure 机群上的虚拟机监控程序安全性
 
@@ -69,6 +69,7 @@ Azure 虚拟机监控程序在以下各项之间强制实施多个安全边界�
 若要详细了解为提高平台完整性和安全性而做的工作，请参阅：
 
 - [固件安全性](firmware.md)
+- [平台代码完整性](code-integrity.md)
 - [安全启动](secure-boot.md)
 - [测量启动和主机证明](measured-boot-host-attestation.md)
 - [Cerberus 项目](project-cerberus.md)

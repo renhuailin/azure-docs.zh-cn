@@ -3,13 +3,13 @@ title: 开发和部署 gRPC 推理服务器 - Azure 视频分析器
 description: 本文提供有关如何开发和部署 gRPC 推理服务器以用于 Azure 视频分析器的指导。
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 04/01/2021
-ms.openlocfilehash: 499620dd0fc2f200f0f0a5080b9ab540a07f1df3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 5d0e09bc4d1f542de0e59a7dc6da37248d2e0674
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385079"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601440"
 ---
 # <a name="develop-and-deploy-grpc-inference-server"></a>开发和部署 gRPC 推理服务器
 
@@ -42,7 +42,7 @@ ms.locfileid: "110385079"
 1. 选择 gRPC 支持的众多语言之一：C#、C++、Dart、Go、Java、Node、Objective-C、PHP、Python、Ruby。
 1. 实现一个 gRPC 服务器，该服务器将使用 [proto3 文件](https://github.com/Azure/video-analyzer/tree/main/contracts/grpc)与视频分析器进行通信。
 
-    :::image type="content" source="./media/develop-deploy-grpc-inference-srv/inference-srv-container-process.png" alt-text="将使用 proto3 文件与视频分析器进行通信的 gRPC 服务器":::
+    :::image type="content" source="./media/develop-deploy-grpc-inference-srv/inference-srv-container-process.svg" alt-text="将使用 proto3 文件与视频分析器进行通信的 gRPC 服务器":::
 
     在此服务中：
     1. 处理服务器与客户端之间的会话说明消息交换。

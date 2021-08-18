@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.openlocfilehash: d68a6714d336615f25a5fb937b845ca151472ca9
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 3642a48b1b8a5df9a3bc98079873415842b5c1a4
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227265"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727951"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>计划 Azure AD 应用程序代理部署
 
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) 应用程序代理是用于本地应用程序�
      * 如果可能，请将连接器部署在与后端 Web 应用程序服务器[相同的网络](application-proxy-network-topology.md)和网段中。 最好是在完成了对应用程序的发现之后再部署连接器。
      * 为了提供高可用性和缩放功能，建议每个连接器组至少有两个连接器。 如果可能随时需要为计算机提供服务，则拥有 3 个连接器是最佳选择。 查看[连接器容量表](./application-proxy-connectors.md#capacity-planning)，帮助确定要在哪种类型的计算机上安装连接器。 计算机越大，连接器的缓冲区就越大，性能也越高。
 
-* **网络访问设置**：Azure AD 应用程序代理连接器[通过 HTTPS（TCP 端口 443）和 HTTP（TCP 端口 80）连接到 Azure](application-proxy-add-on-premises-application.md)。
+* **网络访问设置**：Azure AD 应用程序代理连接器 [通过 HTTPS（TCP 端口 443）和 HTTP（TCP 端口 80）连接到 Azure](application-proxy-add-on-premises-application.md)。
 
    * 不支持终止连接器 TLS 流量，如果终止会使连接器无法与各自的 Azure 应用代理终结点建立安全通道。
 
@@ -80,7 +80,7 @@ Azure Active Directory (Azure AD) 应用程序代理是用于本地应用程序�
 
    * 要发布和管理应用程序，需要具有应用程序管理员角色。 应用程序管理员可管理目录中的所有应用程序，包括注册、SSO 设置、用户和组的分配与授权、应用程序代理设置以及同意。 它不能授予管理条件访问的能力。 云应用程序管理员角色具有应用程序管理员的所有能力，只是不可管理应用程序代理设置。
 
-* **许可**：可通过 Azure AD Premium 订阅获取应用程序代理。 有关许可选项和功能的完整列表，请查看 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/)。
+* **许可**：可通过 Azure AD Premium 订阅获取应用程序代理。 有关许可选项和功能的完整列表，请查看 [Azure Active Directory 定价页](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
 
 ### <a name="application-discovery"></a>应用程序发现
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 44bbee4e179cd77159cd269e69dba4cd0812624e
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 0dda4f6bbc5f9942522fb19031091b76105acf64
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108176785"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114390987"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>配置从本地到 CloudSimple VPN 网关的高可用性连接
 
@@ -280,7 +280,7 @@ IKEv1：
 
 Cisco ASA 支持的 IKEv1 和 IKEv2 属性：
 
-<a href="https://www.cisco.com/c/en/us/td/docs/security/asa/asa90/configuration/guide/asa_90_cli_config/vpn_ike.html#21661" target="_blank">Cisco ASA 系列 CLI 配置指南</a>
+<a href="https://www.cisco.com/c/en/us/td/docs/security/asa/asa72/configuration/guide/conf_gd/ike.html" target="_blank">Cisco ASA 系列 CLI 配置指南</a>
 
 在版本 8.4 和更高版本的 Cisco ASA 上配置 IPsec 站点到站点 VPN：
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 06/28/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6eba5ac4ed61847596e12f56544e6d07dca8075
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: b82eb6494041ffab4f70eb546d24f8a24729b626
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829568"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090360"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>在 Azure Active Directory 中启用合并安全信息注册
 
@@ -47,6 +47,7 @@ ms.locfileid: "107829568"
 如果已在 Internet Explorer 中配置“站点到区域分配列表”，则以下站点必须位于同一区域中：
 
 * *[https://login.microsoftonline.com](https://login.microsoftonline.com)*
+* *[https://Login.windows.net](https://login.windows.net)*
 * *[https://mysignins.microsoft.com](https://mysignins.microsoft.com)*
 * *[https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)*
 

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2021
-ms.openlocfilehash: 31c5be9ce48ffea8ebd23e893e2d77e6365d2327
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4d0197e76659e864ab0f5553317b64b2d74b867d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467654"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725470"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的一致性级别
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "110467654"
 
 ## <a name="consistency-levels-and-azure-cosmos-db-apis"></a>一致性级别和 Azure Cosmos DB API
 
-Azure Cosmos DB 为常用数据库提供对与线路协议兼容的 API 的本机支持。 这些数据库包括 MongoDB、Apache Cassandra、Gremlin 和 Azure 表存储。 使用 Gremlin API 和表 API 时，会使用 Azure Cosmos 帐户上配置的默认一致性级别。 有关 Cassandra API 或适用于 MongoDB 的 API 与 Azure Cosmos DB 的一致性级别之间的一致性级别映射的详细信息，请参阅 [Cassandra API 一致性映射](cassandra-consistency.md)和[适用于 MongoDB 的 API 一致性映射](mongodb-consistency.md)。
+Azure Cosmos DB 为常用数据库提供对与线路协议兼容的 API 的本机支持。 这些数据库包括 MongoDB、Apache Cassandra、Gremlin 和 Azure 表存储。 使用 Gremlin API 和表 API 时，会使用 Azure Cosmos 帐户上配置的默认一致性级别。 有关 Cassandra API 或适用于 MongoDB 的 API 与 Azure Cosmos DB 的一致性级别之间的一致性级别映射的详细信息，请参阅 [Cassandra API 一致性映射](cassandra/apache-cassandra-consistency-mapping.md)和[适用于 MongoDB 的 API 一致性映射](mongodb/consistency-mapping.md)。
 
 ## <a name="scope-of-the-read-consistency"></a>读取一致性的范围
 
@@ -43,6 +43,9 @@ Azure Cosmos DB 为常用数据库提供对与线路协议兼容的 API 的本�
 ## <a name="configure-the-default-consistency-level"></a>配置默认一致性级别
 
 随时都可在 Azure Cosmos DB 帐户中配置默认的一致性级别。 在帐户中配置的默认一致性级别适用于该帐户下的所有 Azure Cosmos 数据库和容器。 针对某个容器或数据库发出的所有读取和查询默认使用指定的一致性级别。 有关详细信息，请参阅如何[配置默认一致性级别](how-to-manage-consistency.md#configure-the-default-consistency-level)。 还可以覆盖特定请求的默认一致性级别，若要了解详细信息，请参阅如何[覆盖默认一致性级别](how-to-manage-consistency.md?#override-the-default-consistency-level)一文。
+
+> [!TIP]
+> 替代默认一致性级别的操作仅适用于 SDK 客户端中的读取。 默认情况下，配置为强一致性的帐户仍会将数据同步写入和复制到帐户中的所有区域。 SDK 客户端实例或请求使用会话或较弱一致性替代此级别时，将使用单个副本执行读取。 有关更多详细信息，请参阅[一致性级别和吞吐量](consistency-levels.md#consistency-levels-and-throughput)。
 
 > [!IMPORTANT]
 > 更改默认的一致性级别后，需要重新创建任何 SDK 实例。 这可以通过重启应用程序来完成。 这可确保 SDK 使用新的默认一致性级别。

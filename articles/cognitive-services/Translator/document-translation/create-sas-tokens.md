@@ -6,14 +6,14 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: e40fc569ad1c8ec5894f06915422bea37cfc40ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a91829ce79c5cd9e32efefc809dd23a19382f49
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102489627"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113360264"
 ---
-# <a name="create-sas-tokens-for-document-translation-processing"></a>为文档翻译处理创建 SAS 令牌
+# <a name="create-sas-tokens-for-your-storage-containers"></a>创建存储容器的 SAS 令牌
 
 本文介绍如何使用 Azure 存储资源管理器或 Azure 门户创建共享访问签名令牌 (SAS)。 SAS 令牌提供对 Azure 存储帐户中资源的安全委托式访问。
 
@@ -74,7 +74,7 @@ ms.locfileid: "102489627"
 
 * 一个有效的 [**Azure 帐户**](https://azure.microsoft.com/free/cognitive-services/)。  如果没有帐户，可以 [**创建一个免费帐户**](https://azure.microsoft.com/free/)。
 * 一个 [**翻译器**](https://ms.portal.azure.com/#create/Microsoft)服务资源（**并非** 认知服务多服务资源）。  请参阅[创建新的 Azure 资源](../../cognitive-services-apis-create-account.md#create-a-new-azure-cognitive-services-resource)。  
-* 一个 [**Azure Blob 存储帐户**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 你将创建一个容器，以便存储和组织存储帐户中的 Blob 数据。
+* 一个 [Azure Blob 存储帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 你将创建一个容器，以便存储和组织存储帐户中的 Blob 数据。
 
 ### <a name="create-your-tokens"></a>创建令牌
 

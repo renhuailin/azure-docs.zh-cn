@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 06/11/2021
 ms.topic: how-to
 ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 3bf83c31c10245cb64a047c9d856489a4e0ce71a
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 0248491ed8a2fb8459565306249f95b1af92cf09
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030748"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588880"
 ---
 # <a name="set-up-no-code-automl-training-with-the-studio-ui"></a>使用工作室 UI 设置无代码 AutoML 训练 
 
@@ -30,7 +30,7 @@ ms.locfileid: "112030748"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 
 * Azure 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。 
 
@@ -79,7 +79,7 @@ ms.locfileid: "112030748"
         列标题| 指示如何处理数据集的标头（如果有）。
         跳过行 | 指示要跳过数据集中的多少行（如果有）。
     
-        选择“**下一页**”。
+        选择“**下一步**”。
 
     1. “架构”窗体是基于“设置和预览”窗体中所做的选择智能填充的。  在此处，请配置每个列的数据类型，检查列名称，并选择“不包含”哪些列进行试验。 
             
@@ -87,7 +87,7 @@ ms.locfileid: "112030748"
 
     1. “确认详细信息”窗体上总结了先前在“基本信息”和“设置和预览”窗体中填充的信息  。 你还可以使用已启用分析的计算来为数据集创建数据配置文件。 详细了解[数据分析](how-to-connect-data-ui.md#profile)。
 
-        选择“**下一页**”。
+        选择“**下一步**”。
 1. 新建的数据集出现后，请将其选中。 还可以查看数据集和样本统计信息的预览。 
 
 1. 在“配置运行”窗体上，选择“新建”，然后输入“Tutorial-automl-deploy”作为实验名称  。
@@ -112,9 +112,9 @@ ms.locfileid: "112030748"
     >[!NOTE]
     > 计算名称将会指示选择/创建的计算是否已启用分析。 （有关更多详细信息，请参阅[数据分析](how-to-connect-data-ui.md#profile)部分）。
 
-    选择“**下一页**”。
+    选择“**下一步**”。
 
-1. 在“任务类型和设置”窗体中选择任务类型：分类、回归或预测。 有关详细信息，请参阅[支持的任务类型](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)。
+1. 在“任务类型和设置”窗体中选择任务类型：分类、回归或预测。 有关详细信息，请参阅[支持的任务类型](concept-automated-ml.md#when-to-use-automl-classification-regression--forecasting)。
 
     1. 如需 **分类**，还可以启用深度学习。
     
@@ -175,10 +175,13 @@ ms.locfileid: "112030748"
 
 ### <a name="view-training-run-details"></a>查看训练运行详细信息
 
-向下钻取任何已完成的模型，以查看训练运行详细信息，例如“模型”选项卡上的模型摘要或“指标”选项卡上的性能指标图表。[详细了解图表](how-to-understand-automated-ml.md)。
+向下钻取任何已完成的模型以查看训练运行详细信息。 在“模型”选项卡上查看详细信息，例如模型摘要和用于所选模型的超参数。 
 
-[![迭代详细信息](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
+[![超参数详细信息](media/how-to-use-automated-ml-for-ml-models/hyperparameter-button.png)](media/how-to-use-automated-ml-for-ml-models/hyperparameter-details.png)
 
+ 还可以在“指标”选项卡上查看特定于模型的性能指标图表。[详细了解图表](how-to-understand-automated-ml.md)。
+
+![迭代详细信息](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
 在“数据转换”选项卡上，可以看到一个图表，其中显示应用了哪些数据预处理、特征工程、缩放技术和机器学习算法来生成此模型。
 
@@ -226,7 +229,7 @@ ms.locfileid: "112030748"
 
 1. 填充“部署模型”窗格。
 
-    字段| Value
+    字段| 值
     ----|----
     名称| 输入部署的唯一名称。
     说明| 输入说明，以更清楚地指出此部署的用途。

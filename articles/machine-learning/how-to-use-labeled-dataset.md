@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.custom: data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: 7fc4a36cc8fedaa5de704f668f8b15aecac98cd7
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: e46d088180666523c27d86a98d740fa49f5214f2
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140508"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112460479"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>创建和浏览带标签的 Azure 机器学习数据集
 
@@ -26,7 +26,7 @@ ms.locfileid: "108140508"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/intro)，或 [Azure 机器学习工作室](https://ml.azure.com/)的访问权限。
     * 安装 [azure-contrib-dataset](/python/api/azureml-contrib-dataset/) 包
 * 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。

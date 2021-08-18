@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f34e734b315c7c05ce77f5e168a452fc1c1c547
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 224b0685b922e6ddd833637ddc1b628f0479ec70
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96168672"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112200809"
 ---
 # <a name="ldap-synchronization-with-azure-active-directory"></a>使用 Azure Active Directory 进行 LDAP 同步
 
@@ -59,5 +59,6 @@ Azure Active Directory (Azure AD) 可使用 Azure AD Connect 来替换 LDAP 同�
 * [LDAP 连接器概述及 LDAP 连接器创建](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap) 
 
    > [!NOTE]
-   > LDAP 连接器是一种高级配置，它要求对 Forefront Identity Manager 和/或 Microsoft Identity Manager 有一定的了解。 如果在生产环境中使用时有与此配置相关的问题，建议通过[顶级支持](https://support.microsoft.com/premier)或 Microsoft 合作伙伴网络获得答案。
-
+   > 部署 LDAP 连接器需要高级配置，并且此连接器根据有限的支持提供。 配置此连接器需要熟悉 Microsoft Identity Manager 和特定 LDAP 目录。 
+   >
+   > 建议在生产环境中需要部署此配置的客户与 Microsoft 咨询服务等合作伙伴合作，获得有关此配置的帮助、指导和支持。

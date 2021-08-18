@@ -9,12 +9,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/15/2021
 ms.author: apimpm
-ms.openlocfilehash: e4f9f3822b58886f7d453d52402b078d8401133f
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 6ef07743b7def1c49744185f153d13bb24719652
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738875"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667908"
 ---
 # <a name="migrate-to-the-new-developer-portal"></a>迁移到新开发人员门户
 
@@ -53,7 +53,7 @@ ms.locfileid: "107738875"
 - 如果将默认电子邮件通知模板更改为包含显式定义的弃用门户 URL，请将它们更改为使用门户 URL 参数或指向新的门户 URL。 如果模板改用内置门户 URL 参数，则不需要进行任何更改。
 - 新开发人员门户不支持“问题”和“应用程序” 。
 - 新开发者门户不支持以标识提供者身份与 Facebook、Microsoft、Twitter 和 Google 直接集成。 可以通过 Azure AD B2C 与这些提供商集成。
-- 如果使用委派，请更改应用程序中的返回 URL，并使用[“获取共享访问令牌”API 终结点](/rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken)而不是“生成 SSO URL”终结点 。
+- 如果使用委派，请更改应用程序中的返回 URL，并使用[“获取共享访问令牌”API 终结点](/rest/api/apimanagement/2020-12-01/user/get-shared-access-token)而不是“生成 SSO URL”终结点 。
 - 如果你使用 Azure AD 作为标识提供者：
 
     - 更改应用程序中的返回 URL，使其指向新的开发人员门户域。

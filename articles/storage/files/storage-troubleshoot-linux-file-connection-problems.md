@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4c618fad5b1e85df1ffa19fa2aa0e8621ae2bdd9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2eb87704d8cb967bb58a0fd1302b6f0f8225af72
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094449"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112117655"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>在 Linux 中排查 Azure 文件存储问题 (SMB)
 
@@ -23,19 +23,26 @@ ms.locfileid: "110094449"
 > [!IMPORTANT]
 > 本文内容仅适用于 SMB 共享。 有关 NFS 共享的详细信息，请参阅[排查 Azure NFS 文件共享问题](storage-troubleshooting-files-nfs.md)。
 
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>无法连接或装载 Azure 文件共享
 
 ### <a name="cause"></a>原因
 
 造成此问题的常见原因包括：
 
-- 如果使用的是具有过时 SMB 客户端的 Linux 分发版，请参阅 [在 Linux 上使用 Azure 文件存储](storage-how-to-use-files-linux.md)，了解有关 Azure 中可用的、具有兼容客户端的常见 Linux 分发版的详细信息。
+- 如果使用的是具有过时 SMB 客户端的 Linux 分发版，请参阅[在 Linux 中使用 Azure 文件存储](storage-how-to-use-files-linux.md)，了解 Azure 中具有兼容客户端的常见 Linux 发行版的更多信息。
 - 客户端上未安装 SMB 实用程序 (cifs-utils)。
-- 客户端上不可用最低的 SMB 版本 2.1。
+- 最低的 SMB 版本 2.1 在客户端上不可用。
 - 客户端不支持 SMB 3.x 加密。 上表列出的 Linux 发行版支持使用加密从本地装载以及跨区域装载。 其他分发要求内核 4.11 及更高版本。
 - 试图通过不受支持的 TCP 端口 445 连接到存储帐户。
 - 试图从 Azure VM 连接到 Azure 文件共享，而该 VM 并非与存储帐户处于同一区域。
-- 如果在存储帐户上启用了[需要安全转移](../common/storage-require-secure-transfer.md)设置，则 Azure 文件仅允许使用带加密的 SMB 3.x 进行连接。
+- 如果在存储帐户上启用了[需要安全转移](../common/storage-require-secure-transfer.md)设置，则 Azure 文件存储仅允许使用带加密的 SMB 3.x 进行连接。
 
 ### <a name="solution"></a>解决方案
 
@@ -111,15 +118,15 @@ ms.locfileid: "110094449"
     - 然后复制文件，不需以并行方式扩展写入：`$find * -type f | parallel -j6 dd if={} of =/mnt/share/{} bs=1M conv=notrunc`
 
 <a id="error115"></a>
-## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-3x"></a>使用 SMB 3.x 装载 Azure 文件时出现“装载错误 (115)：操作正在进行”
+## <a name="mount-error115-operation-now-in-progress-when-you-mount-azure-files-by-using-smb-3x"></a>使用 SMB 3.x 装载 Azure 文件存储时出现“装载错误(115): 操作正在进行”
 
 ### <a name="cause"></a>原因
 
-某些 Linux 分发尚不支持 SMB 3.x 中的加密功能。 如果用户尝试使用 SMB 3.x 装载 Azure 文件，可能会由于缺少功能而收到“115”错误消息。 只有在使用 Ubuntu 16.04 或更高版本时，才支持带完全加密的 SMB 3.x。
+某些 Linux 分发尚不支持 SMB 3.x 中的加密功能。 如果用户尝试使用 SMB 3.x 装载 Azure 文件存储，可能会由于缺少功能而收到“115”错误消息。 只有在使用 Ubuntu 16.04 或更高版本时，才支持具有完全加密的 SMB 3.x。
 
 ### <a name="solution"></a>解决方案
 
-4\.11 内核中引入了适用于 Linux 的 SMB 3.x 加密功能。 使用此功能可从本地或不同 Azure 区域装载 Azure 文件共享。 某些 Linux 分发版可能已将 4.11 内核中的更改向后移植到它们维护的旧版本 Linux 内核。 若要帮助确定 Linux 版本是否支持带加密的 SMB 3.x，请参考 [在 Linux 上使用 Azure 文件存储](storage-how-to-use-files-linux.md)。 
+4\.11 内核中引入了适用于 Linux 的 SMB 3.x 加密功能。 使用此功能可从本地或不同 Azure 区域装载 Azure 文件共享。 某些 Linux 分发版可能已将 4.11 内核中的更改向后移植到它们维护的旧版本 Linux 内核。 若要帮助确定 Linux 版本是否支持带加密功能的 SMB 3.x，请参考[在 Linux 中使用 Azure 文件存储](storage-how-to-use-files-linux.md)。 
 
 如果 Linux SMB 客户端不支持加密，请使用 SMB 2.1 从文件共享所在的同一数据中心上的 Azure Linux VM 装载 Azure 文件。 验证是否已在存储帐户中禁用[需要安全传输](../common/storage-require-secure-transfer.md)设置。 
 
@@ -281,7 +288,7 @@ Linux 内核中的此重新连接问题现已在以下更改中进行了修复�
 
 如果无法升级到最新的内核版本，可通过将每隔 30 秒或更少的时间间隔便会对其进行写入操作的文件保留在 Azure 文件共享中来解决此问题。 这必须是一个写入操作，例如在文件上重新写入创建或修改日期。 否则，可能会得到缓存的结果，且操作可能不会触发重新连接。
 
-## <a name="cifs-vfs-error--22-on-ioctl-to-get-interface-list-when-you-mount-an-azure-file-share-by-using-smb-3x"></a>使用 SMB 3.x 装载 Azure 文件共享时，出现“CIFS VFS：用于获取接口列表的 ioctl 上发生错误 -22”
+## <a name="cifs-vfs-error--22-on-ioctl-to-get-interface-list-when-you-mount-an-azure-file-share-by-using-smb-3x"></a>使用 SMB 3.x 装载 Azure 文件共享时，收到错误：“CIFS VFS: 用于获取接口列表的 ioctl 上发生错误 -22”
 
 ### <a name="cause"></a>原因
 记录此错误的原因是 Azure 文件存储[当前不支持 SMB 多通道](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)。

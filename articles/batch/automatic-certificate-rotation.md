@@ -2,23 +2,17 @@
 title: 在 Batch 池中启用自动证书轮换
 description: 你可以创建包含托管标识和自动续订证书的 Batch 池。
 ms.topic: conceptual
-ms.date: 03/23/2021
-ms.custom: references_regions
-ms.openlocfilehash: e8bea49b2980deb8f20258ab7ea5619ece8cd2bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/16/2021
+ms.openlocfilehash: 9a8f4d785c9a411df6c867724f057b1dc9b29722
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104962241"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114362411"
 ---
 # <a name="enable-automatic-certificate-rotation-in-a-batch-pool"></a>在 Batch 池中启用自动证书轮换
 
  你可以创建包含自动续订证书的 Batch 池。 为此，要创建的池必须包含有权访问 [Azure 密钥保管库](../key-vault/general/overview.md)中证书的[用户分配的托管标识](managed-identity-pools.md)。
-
-> [!IMPORTANT]
-> 包含用户分配的托管标识的 Azure Batch 池目前支持在以下区域提供公共预览版：美国西部 2、美国中南部、美国东部、US Gov 亚利桑那州和 US Gov 弗吉尼亚州。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="create-a-user-assigned-identity"></a>创建用户分配的标识
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: ad34ed14682d729157f45e67eb3e0d3bb3eb39b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a76479a358366591d1c4edef0755dd26ce23cd81
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100391722"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112289866"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>数据管理网关 - 高可用性和可伸缩性（预览）
 > [!NOTE]
@@ -99,7 +99,7 @@ ms.locfileid: "100391722"
         ![数据管理网关 - 安装成功](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
 
         > [!NOTE]
-        > 如果要在 Azure VM 上预配网关，可以使用[此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-mutiple-vms-with-data-management-gateway)。 此脚本创建逻辑网关，设置安装有数据管理网关软件的 VM，并将它们注册到逻辑网关。 
+        > 如果要在 Azure VM 上预配网关，可以使用[此 Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.datafactory/mutiple-vms-with-data-management-gateway)。 此脚本创建逻辑网关，设置安装有数据管理网关软件的 VM，并将它们注册到逻辑网关。 
 6. 在 Azure 门户中启动“网关”页： 
     1. 在门户的数据工厂主页上单击“链接的服务”。
     
@@ -210,7 +210,7 @@ Offline | 节点处于脱机状态。
 :----- | :-------
 需注册 | 尚未向此逻辑网关注册任何节点
 联机 | 网关节点处于联机状态
-Offline | 没有节点处于联机状态。
+脱机 | 没有节点处于联机状态。
 受限制 | 此网关中并非所有节点都处于运行正常状态。 此状态是部分节点可能出现故障的警告！ <br/><br/>可能是由于调度程序/辅助角色节点上的凭据同步问题所导致。 
 
 ### <a name="pipeline-activities-monitoring"></a>管道/活动监视

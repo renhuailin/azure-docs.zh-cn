@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 12/23/2020
+ms.date: 5/17/2021
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95d48a3787f3dd54b5713ad0c9358e329e74aecc
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: b4a2e346983e3d258fde4a5deaa6dc51601cff13
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109786332"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112376353"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Azure AD 权利管理中的请求过程和电子邮件通知
 
@@ -61,13 +61,13 @@ ms.locfileid: "109786332"
 
 ![请求者过程流](./media/entitlement-management-process/requestor-approval-request-flow.png)
 
-### <a name="2-stage-approval"></a>两阶段审批
+### <a name="multi-stage-approval"></a>多阶段审批
 下图显示了第一阶段和第二阶段审批者的体验，以及他们在请求过程中收到的电子邮件通知：
 
 ![两阶段审批过程流](./media/entitlement-management-process/2stage-approval-with-request-timeout-flow.png)
 
 ### <a name="email-notifications-table"></a>电子邮件通知表
-下表提供了有关这些电子邮件通知的更多详细信息。 若要管理这些电子邮件，可以使用规则。 例如，在 Outlook 中，可以创建规则，将电子邮件移动到文件夹（如果主题包含此表中的字词）：
+下表提供了有关这些电子邮件通知的更多详细信息。 若要管理这些电子邮件，可以使用规则。 例如，在 Outlook 中，可以创建规则，将电子邮件移动到文件夹（如果主题包含此表中的字词）。  请注意，这些字词将基于用户请求访问租户的默认语言设置。
 
 | # | 电子邮件主题 | 发送时间 | 收件人 |
 | --- | --- | --- | --- |
@@ -78,9 +78,9 @@ ms.locfileid: "109786332"
 | 5 | 所需操作提醒：在 [date] 之前批准或拒绝 [requestor] 的请求  | 如果已启用升级，第一个审批者将收到此提醒电子邮件。 如果他们未采取任何操作，电子邮件将提醒他们采取操作。 | 第一个审批者 |
 | 6 | [access_package] 的请求已过期 | 请求过期后，第一个审批者和第一阶段候补审批者将收到此电子邮件。 | 第一个审批者、第一阶段候补审批者 |
 | 7 | [requestor] 对 [access_package] 的请求获得批准  | 请求完成时，第一个审批者和第一阶段候补审批者将收到此电子邮件。 | 第一个审批者、第一阶段候补审批者 |
-| 8 | [requestor] 对 [access_package] 的请求获得批准  | 第一阶段请求获得批准时，第一个审批者和两阶段请求的第一阶段候补审批者将收到此电子邮件。 | 第一个审批者、第一阶段候补审批者 |
+| 8 | [requestor] 对 [access_package] 的请求获得批准  | 第一阶段请求获得批准时，第一个审批者和多阶段请求的第一阶段候补审批者将收到这封电子邮件。 | 第一个审批者、第一阶段候补审批者 |
 | 9 | 对 [access_package] 的请求被拒绝 | 当请求者的请求被拒绝时，这些请求者将收到此电子邮件 | 请求者 |
-| 10 | 你的 [access_package] 请求已过期 | 单阶段或两阶段请求结束时，请求者将收到此电子邮件。 该电子邮件通知请求者请求已过期。 | 请求者 |
+| 10 | 你的 [access_package] 请求已过期 | 单阶段或多阶段请求结束时，请求者将收到这封电子邮件。 该电子邮件通知请求者请求已过期。 | 请求者 |
 | 11 | 所需操作：在 [date] 之前批准或拒绝请求 | 如果已禁用升级，第二个审批者将收到此电子邮件，提醒其采取操作。 | 第二个审批者 |
 | 12 | 所需操作提醒：在 [date] 之前批准或拒绝请求 | 如果已禁用升级，第二个审批者将收到此提醒电子邮件。 如果他们未采取任何操作，此通知将要求他们采取操作。 | 第二个审批者 |
 | 13 | 所需操作：在 [date] 之前批准或拒绝 [requestor] 的请求  | 如果已启用升级，第二个审批者将收到此电子邮件，提醒其采取操作。 | 第二个审批者 |
@@ -96,7 +96,7 @@ ms.locfileid: "109786332"
 
 当请求者对配置为要求审批的访问包提交访问请求时，添加到策略中的所有审批者都会收到包含请求详细信息的电子邮件通知。 电子邮件中的详细信息包括：请求者的名称组织和业务理由；以及所请求的访问权限的开始和结束日期（如果已提供）。 此外，详细信息还包括提交请求的时间和请求过期的时间。
 
-电子邮件包含一个链接，审批者单击该链接即可转到“我的访问权限”以批准或拒绝访问请求。 下面是一个发送给第一个审批者或第二个审批者（如果启用了两阶段审批）以完成访问请求的电子邮件通知示例：
+电子邮件包含一个链接，审批者单击该链接即可转到“我的访问权限”以批准或拒绝访问请求。 下面是为完成访问请求发送给审批者的示例电子邮件通知：
 
 ![批准对访问包的请求的电子邮件](./media/entitlement-management-shared/approver-request-email.png)
 
@@ -126,13 +126,11 @@ ms.locfileid: "109786332"
 
 ![“请求者请求被拒绝”的电子邮件](./media/entitlement-management-process/requestor-email-denied.png)
 
-### <a name="2-stage-approval-access-request-emails"></a>两阶段审批访问请求电子邮件
+### <a name="multi-stage-approval-access-request-emails"></a>多阶段审批访问请求电子邮件
 
-如果启用了两阶段审批，则至少有两个审批者（每个阶段一个）必须批准请求，请求者才能收到访问权限。
+如果启用了多阶段审批，则每个阶段至少有一个审批者必须批准请求，请求者才能收到访问权限。
 
-在第一阶段中，第一个审批者将收到访问请求电子邮件并做出决定。 如果他们批准请求，则第一阶段（如果启用了升级）中的所有第一个审批者和候补审批者都将收到第一阶段已完成的通知。 下面是在第一阶段完成时发送的通知的电子邮件示例：
-
-![两阶段访问请求电子邮件](./media/entitlement-management-process/approver-request-email-2stage.png)
+在第一阶段中，第一个审批者将收到访问请求电子邮件并做出决定。
 
 当第一阶段中的第一个或候补审批者批准请求之后，第二阶段将开始。 在第二阶段中，第二个审批者将收到访问请求通知电子邮件。 在第二阶段中的第二个审批者或候补审批者（如果启用了升级）决定批准或拒绝该请求之后，第一个和第二个审批者、第一阶段和第二阶段中的所有候补审批者，以及请求者都将收到通知电子邮件。
 
@@ -140,11 +138,9 @@ ms.locfileid: "109786332"
 
 如果没有审批者批准或拒绝请求，访问请求可能会过期。 
 
-当请求达到配置的到期日期并且过期时，审批者不再可以批准或拒绝该请求。 下面是所有第一个、第二个（如果启用了两阶段审批）和候补审批者收到的通知的电子邮件示例：
+当请求达到配置的到期日期并且过期时，审批者不再可以批准或拒绝该请求。
 
-![审批者已过期访问请求电子邮件](./media/entitlement-management-process/approver-request-email-expired.png)
-
-请求者也会收到电子邮件通知，告知他们其访问请求已过期，需要重新提交。 下图显示了请求者的体验，以及他们在请求延长访问时收到的电子邮件通知：
+请求者会收到电子邮件通知，告知他们其访问请求已过期，需要重新提交。 下图显示了请求者的体验，以及他们在请求延长访问时收到的电子邮件通知：
 
 ![请求者延长访问过程流](./media/entitlement-management-process/requestor-expiration-request-flow.png) 
 

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 12/04/2018
-ms.openlocfilehash: d8d46518415dc56e2792ef090b0be654d538426f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21401f20fe1f71b49861a3ddae8a5a3cdb999408
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96853265"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741193"
 ---
 # <a name="verify-the-azure-sql-managed-instance-built-in-firewall"></a>验证 Azure SQL 托管实例内置防火墙
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

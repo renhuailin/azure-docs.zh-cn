@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 31b3c0a1894280e90f696f6c107b67a3af7b1880
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8b4e306a39261da6c1422ba81ccb164e3903fbcd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605342"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725267"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - 单一服务器中的日志
 
@@ -46,6 +46,8 @@ Azure Database for PostgreSQL 为 .log 文件提供短期存储位置。 每隔 
 对于长期保留的日志和日志分析，可以下载 .log 文件并将其移到第三方服务。 可以使用 [Azure 门户](howto-configure-server-logs-in-portal.md)或 [Azure CLI](howto-configure-server-logs-using-cli.md) 下载文件。 此外，还可以配置 Azure Monitor 诊断设置，用于自动将日志（JSON 格式）发送到长期保留位置。 以下部分详细介绍了此选项。 
 
 可以通过将参数 `logging_collector` 设置为 OFF 来停止生成 .log 文件。 如果使用 Azure Monitor 诊断设置，则我们建议禁用 .log 文件生成。 此配置可以减轻附加的日志记录对性能造成的影响。
+> [!NOTE]
+> 重启服务器以应用该更改。
 
 ## <a name="resource-logs"></a>资源日志
 

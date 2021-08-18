@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.author: memildin
-ms.openlocfilehash: a8356b863323511951ddd5eae463e0f07d65e61c
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: f205f66adc2c875e271a85efc2e48763c260dfa0
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061967"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237693"
 ---
 # <a name="security-alerts-and-incidents-in-azure-security-center"></a>Azure 安全中心的安全警报和事件
 
@@ -56,7 +56,7 @@ Microsoft 安全研究人员始终在不断地寻找威胁。 由于在云中和
 
 为了检测真实威胁和减少误报，安全中心自动收集、分析和集成来自 Azure 资源和网络的日志数据。 它还适用于连接的合作伙伴解决方案，如防火墙和终结点保护解决方案。 安全中心分析该信息（通常需将多个来源的信息关联起来）即可确定威胁。
 
-![安全中心数据收集和呈现](./media/security-center-alerts-overview/security-center-detection-capabilities.png)
+![安全中心数据收集和呈现。](./media/security-center-alerts-overview/security-center-detection-capabilities.png)
 
 安全中心使用各种高级安全分析，远不止几种基于攻击特征的方法。 可以充分利用大数据和 [机器学习](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) 技术的突破跨整个云结构对事件进行评估，检测那些使用手动方式不可能发现的威胁，并预测攻击的发展方式。 此类安全分析包括：
 
@@ -110,7 +110,7 @@ Fusion 分析将安全域知识与 AI 相结合，用于分析警报，发现新
 > [!TIP]
 > 有关可通过合成分析生成的安全事件警报的列表，请参阅[警报的引用表](alerts-reference.md#alerts-fusion)。
 
-:::image type="content" source="./media/security-center-alerts-cloud-smart/security-incident.png" alt-text="检测到的安全事件报告的屏幕截图":::
+:::image type="content" source="./media/security-center-alerts-cloud-smart/security-incident.png" alt-text="检测到的安全事件报告的屏幕截图。":::
 
 若要管理安全事件，请参阅[如何在 Azure 安全中心管理安全事件](security-center-incident.md)。
 

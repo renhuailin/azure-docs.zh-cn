@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a380088210d99989dc1b69455898d85343dd1d53
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: f70cb9828a9577b8fb51daf3f2321e46f45feade
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032566"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204151"
 ---
 # <a name="create-a-vm-using-a-specialized-image"></a>使用专用化映像创建 VM 
 
@@ -132,6 +132,5 @@ Add-AzVMDataDisk `
 - [创建共享映像库](https://azure.microsoft.com/resources/templates/sig-create/)
 - [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
-- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/vm-from-sig/)
 
 有关共享映像库的详细信息，请参阅[概述](./shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](troubleshooting-shared-images.md)。

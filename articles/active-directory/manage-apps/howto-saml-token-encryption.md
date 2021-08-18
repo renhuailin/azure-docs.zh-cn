@@ -2,33 +2,33 @@
 title: Azure Active Directory 中的 SAML 令牌加密
 description: 了解如何配置 Azure Active Directory SAML 令牌加密。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.author: mtillman
-ms.reviewer: paulgarn
+ms.author: davidmu
+ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 303a6e63a429ed77d5c613bb85626c11055ba04a
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 2dc7169055f006ca12c2f291d20683022a27d7a2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112074856"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749165"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>如何配置 Azure AD SAML 令牌加密
 
 > [!NOTE]
-> 令牌加密是一项 Azure Active Directory (Azure AD) 高级功能。 若要详细了解 Azure AD 版本、功能和定价，请参阅 [Azure AD 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
+> 令牌加密是一项 Azure Active Directory (Azure AD) 高级功能。 若要详细了解 Azure AD 版本、功能和定价，请参阅 [Azure AD 定价](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
 
 借助 SAML 令牌加密，可以在支持此功能的应用程序中使用加密的 SAML 断言。 为应用程序配置此功能后，Azure AD 将使用从 Azure AD 存储的证书中获取的公钥，来加密它针对该应用程序发出的 SAML 断言。 应用程序必须先使用匹配的私钥来解密该令牌，然后才能将该令牌用作登录用户的身份验证证据。
 
 加密 Azure AD 与应用程序之间的 SAML 断言可以进一步保证令牌内容不被截获，个人或公司数据不会泄密。
 
-即使不使用令牌加密，Azure AD SAML 令牌也永远不会以明文形式在网络中传递。 Azure AD 要求通过加密的 HTTPS/TLS 通道进行令牌请求/响应交换，使 IDP、浏览器与应用程序之间的通信通过加密的链接发生。 请根据自己的场合，在令牌加密所带来的价值与管理更多证书所造成的开销之间进行权衡。   
+即使不使用令牌加密，Azure AD SAML 令牌也永远不会以明文形式在网络中传递。 Azure AD 要求通过加密的 HTTPS/TLS 通道进行令牌请求/响应交换，使 IDP、浏览器与应用程序之间的通信通过加密的链接发生。 请根据自己的场合，在令牌加密所带来的价值与管理更多证书所造成的开销之间进行权衡。
 
 若要配置令牌加密，需要将包含公钥的 X.509 证书文件上传到代表应用程序的 Azure AD 应用程序对象中。 若要获取 X.509 证书，可以从应用程序本身下载，或者从应用程序供应商处获取（如果应用程序供应商提供加密密钥）；如果应用程序要求你提供私钥，可以使用加密工具、上传到应用程序密钥存储的私钥部分，以及上传到 Azure AD 的匹配公钥证书来创建该私钥。
 

@@ -7,30 +7,32 @@ ms.service: mysql
 ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 10/30/2020
-ms.openlocfilehash: 641dfa2439513138b5dd8f56843e81c31eb38609
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 954e764cfa454cdfa3175a614093eda6ea8d6173
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389768"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113598371"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>使用导入和导出迁移 MySQL 数据库
 
-[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 本文介绍通过使用 MySQL Workbench 将数据导入和导出到 Azure Database for MySQL 服务器的两种常用方法。
 
 有关详细全面的迁移指导，请参阅[迁移指南资源](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)。 
 
-有关其他迁移方案，请参阅[数据库迁移指南](https://datamigration.microsoft.com/)。 
+有关其他迁移方案，请参阅[数据库迁移指南](https://datamigration.microsoft.com/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始迁移 MySQL 数据库之前，需要：
+
 - [使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)。
 - 下载并安装 [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) 或其他第三方 MySQL 工具以用于导入和导出。
 
 ## <a name="create-a-database-on-the-azure-database-for-mysql-server"></a>在 Azure Database for MySQL 服务器上创建数据库
+
 使用 MySQL Workbench、Toad 或 Navicat 在 Azure Database for MySQL 服务器上创建一个空数据库。 数据库名称可与包含转储数据的数据库名称相同，或可以创建一个不同名称的数据库。
 
 若要建立连接，请执行以下操作：
@@ -48,7 +50,7 @@ ms.locfileid: "107389768"
 > [!TIP]
 > 如果你要转储和还原整个数据库，请改用[转储和还原](concepts-migrate-dump-restore.md)方法。
 
-对于以下情况，请使用 MySQL 工具将数据库导入和导出到 Azure MySQL 数据库中。 有关其他工具，请参阅 [MySQL 到 Azure 数据库迁移指南](https://github.com/Azure/azure-mysql/blob/master/MigrationGuide/MySQL%20Migration%20Guide_v1.1.pdf)的“迁移方法”部分（第 22 页）。 
+对于以下情况，请使用 MySQL 工具将数据库导入和导出到 Azure MySQL 数据库中。 有关其他工具，请参阅 [MySQL 到 Azure 数据库迁移指南](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)的“迁移方法”部分（第 22 页）。 
 
 - 需要有选择性地选择要从现有 MySQL 数据库导入到 Azure MySQL 数据库的少数几个表时，最好使用导入和导出方法。 这样做，可以在迁移过程中省略任何不需要的表，从而节省时间和资源。 例如，将 `--include-tables` 或 `--exclude-tables` 开关与 [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) 配合使用，以及将 `--tables` 开关与 [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables) 配合使用。
 - 移动除表以外的数据库对象时，请显式创建这些对象。 包含约束（主键、外键和索引）、视图、函数、过程、触发器和想要迁移的任何其他数据库对象。
@@ -66,17 +68,20 @@ ms.locfileid: "107389768"
 ## <a name="performance-recommendations-for-import-and-export"></a>导入和导出的性能建议
 
 为了获得最佳的数据导入和导出性能，我们建议执行以下操作：
--   在加载数据之前创建聚集索引和主键。 按主键顺序加载数据。
--   延迟创建辅助索引，直到数据加载完毕之后。
--   在加载数据之前禁用外键约束。 禁用外键检查可以显著提高性能。 启用约束并在加载后验证数据，确保引用完整性。
--   并行加载数据。 避免太多将导致达到资源限制的并行度，并通过使用 Azure 门户中提供的指标监视资源。
--   适当时使用已分区表。
+
+- 在加载数据之前创建聚集索引和主键。 按主键顺序加载数据。
+- 延迟创建辅助索引，直到数据加载完毕之后。
+- 在加载数据之前禁用外键约束。 禁用外键检查可以显著提高性能。 启用约束并在加载后验证数据，确保引用完整性。
+- 并行加载数据。 避免太多将导致达到资源限制的并行度，并通过使用 Azure 门户中提供的指标监视资源。
+- 适当时使用已分区表。
 
 ## <a name="import-and-export-data-by-using-mysql-workbench"></a>使用 MySQL Workbench 导入和导出数据
+
 可以在 MySQL Workbench 中通过两种方法导出和导入数据：从对象浏览器上下文菜单，或者从“导航器”窗格。 每种方法的目的不同。
 
 > [!NOTE]
 > 如果要在 MySQL Workbench 上添加与 MySQL 单一服务器或灵活服务器（预览版）的连接，请执行以下操作：
+>
 > - 对于 MySQL 单一服务器，请确保用户名采用 *\<username@servername>* 格式。
 > - 对于 MySQL 灵活服务器，请仅使用 *\<username>* 。 如果使用 *\<username@servername>* 进行连接，连接将会失败。
 
@@ -109,6 +114,7 @@ ms.locfileid: "107389768"
 1. 在“导入数据”窗格中，选择“下一步” 。 向导将导入数据。
 
 ### <a name="run-the-sql-data-export-and-import-wizards-from-the-navigator-pane"></a>从“导航器”窗格运行 SQL 数据导出和导入向导
+
 使用向导导出或导入从 MySQL Workbench 或从 mysqldump 命令生成的 SQL 数据。 可以从“导航器”窗格访问向导，也可以从主菜单中选择“服务器” 。
 
 #### <a name="export-data"></a>导出数据
@@ -142,5 +148,6 @@ ms.locfileid: "107389768"
 1. 选择“开始导入”开始导入过程。
 
 ## <a name="next-steps"></a>后续步骤
+
 - 有关其他迁移方法，请参阅[使用转储和还原将 MySQL 数据库迁移到 Azure Database for MySQL](concepts-migrate-dump-restore.md)。
 - 有关将数据库迁移到 Azure Database for MySQL 的详细信息，请参阅[数据库迁移指南](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)。

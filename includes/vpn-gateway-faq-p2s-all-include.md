@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 06/04/2021
+ms.date: 06/15/2021
 ms.author: cherylmc
 ms.custom: include file, devx-track-azurepowershell
-ms.openlocfilehash: d41b443a076e303d96588a27285b671123593b57
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 5f0d9c821a26d935544f67bca078a9cfdbe50c58
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556425"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112397025"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>在我的点到站点配置中，可以有多少 VPN 客户端终结点？
 
@@ -23,7 +23,6 @@ ms.locfileid: "111556425"
 
 支持以下客户端操作系统：
 
-* Windows 7（32 位和 64 位）
 * Windows Server 2008 R2（仅 64 位）
 * Windows 8.1（32 位和 64 位）
 * Windows Server 2012（仅 64 位）
@@ -65,7 +64,7 @@ Azure 支持三种类型的点到站点 VPN 选项：
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>能否将点到站点客户端配置为同时连接到多个虚拟网络？
 
-可以。与其他 VNet 对等互连的 VNet 中部署的虚拟网络网关之间的点到站点客户端连接可能可以访问其他对等互连 VNet。 如果对等互连 VNet 使用 UseRemoteGateway / AllowGatewayTransit 功能，点到站点客户端将能够连接到这些对等互连 VNet。 有关详细信息，请参阅[关于点到站点路由](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md)。
+可以。到部署在与其他 VNet 对等互连的 VNet 中的虚拟网络网关的点到站点客户端连接可能可以访问其他对等互连 VNet。 只要对等互连 VNet 使用 UseRemoteGateway/AllowGatewayTransit 功能，点到站点客户端就能够连接到这些对等互连 VNet。 有关详细信息，请参阅[关于点到站点路由](../articles/vpn-gateway/vpn-gateway-about-point-to-site-routing.md)。
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>预计通过站点到站点连接或点到站点连接的吞吐量有多少？
 
@@ -75,17 +74,19 @@ Azure 支持三种类型的点到站点 VPN 选项：
 
 不是。 只能将 Windows 上的本机 VPN 客户端用于 SSTP，只能将 Mac 上的本机 VPN 客户端用于 IKEv2。 但是，可以在所有平台上使用 OpenVPN 客户端，以便通过 OpenVPN 协议进行连接。 请参阅[支持的客户端操作系统](#supportedclientos)的列表。
 
-### <a name="can-i-change-the-authentication-type-for-a-point-to-site-connection"></a>是否能更改点到站点连接的身份验证类型？
+### <a name="can-i-change-the-authentication-type-for-a-point-to-site-connection"></a>能否更改点到站点连接的身份验证类型？
 
-是的。 在门户中，导航到“VPN 网关”->“点到站点配置”页。 对于“身份验证类型”，请选择要使用的身份验证类型。 请注意，更改身份验证类型后，在生成、下载新的 VPN 客户端配置文件，并将其应用到每个 VPN 客户端之前，当前客户端可能无法连接。
+是的。 在门户中，导航到“VPN 网关 -> 点到站点配置”页。 对于“身份验证类型”，请选择要使用的身份验证类型。 请注意，更改身份验证类型后，当前客户端可能无法连接，直到生成并下载新的 VPN 客户端配置文件，并将其应用于每个 VPN 客户端为止。
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Azure 是否支持使用 Windows 的 IKEv2 VPN？
 
-在 Windows 10 和 Server 2016 上支持 IKEv2。 但是，若要使用 IKEv2，必须在本地安装更新并设置注册表项值。 Windows 10 以前的 OS 版本不受支持，并且只能使用 SSTP 或 **OpenVPN® 协议**。
+在 Windows 10 和 Server 2016 上支持 IKEv2。 但是，若要在某些 OS 版本中使用 IKEv2，必须在本地安装更新并设置注册表项值。 请注意，Windows 10 以前的 OS 版本不受支持，并且只能使用 SSTP 或 OpenVPN® 协议。
+
+> 注意：比 Windows 10 版本 1709 和 Windows Server 2016 版本 1607 更新的 Windows OS 内部版本不需要这些步骤。
 
 为运行 IKEv2 准备 Windows 10 或 Server 2016：
 
-1. 安装更新。
+1. 根据 OS 版本安装更新：
 
    | OS 版本 | Date | 编号/链接 |
    |---|---|---|
@@ -106,7 +107,7 @@ Azure 支持将 Windows、Mac 和 Linux 用于 P2S VPN。
 
 ### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>我已部署 Azure VPN 网关。 是否可在该网关上启用 RADIUS 和/或 IKEv2 VPN？
 
-是的，如果所用网关 SKU 支持 RADIUS 和/或 IKEv2，则可以使用 Powershell 或 Azure 门户在已部署的网关上启用这些新功能。 请注意，基本 SKU 不支持 RADIUS 或 IKEv2。
+是的，如果使用的网关 SKU 支持 RADIUS 和/或 IKEv2，则可以在已使用 PowerShell 或 Azure 门户部署的网关上启用这些功能。 请注意，基本 SKU 不支持 RADIUS 或 IKEv2。
 
 ### <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a><a name="removeconfig"></a>如何删除 P2S 连接的配置？
 

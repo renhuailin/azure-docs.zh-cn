@@ -11,16 +11,16 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2, devx-track-python, deploy
-ms.openlocfilehash: 3914c1ce732161828f9c2653edd5c43d86310dae
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: bfb29a00dbef95007eba6ca69f9a38d0f23d2da2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889675"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736515"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>使用 Azure 机器学习将 ML 模型部署到现场可编程门阵列 (FPGA) 
 
-在本文中，你将了解 FPGA 以及如何使用来自 [Azure 机器学习](overview-what-is-azure-ml.md)的[硬件加速模型 Python 包](/python/api/azureml-accel-models/azureml.accel)将 ML 模型部署到 Azure FPGA。
+在本文中，你将了解 FPGA 以及如何使用来自 [Azure 机器学习](overview-what-is-azure-machine-learning.md)的[硬件加速模型 Python 包](/python/api/azureml-accel-models/azureml.accel)将 ML 模型部署到 Azure FPGA。
 
 ## <a name="what-are-fpgas"></a>什么是 FPGA？
 FPGA 包含一组可编程的逻辑块以及由可反复配置的互连组成的层次结构。 这种互连可以在生产之后以不同方式来配置块。 与其他芯片相比，FPGA 既有可编程性，又有很好的性能。 

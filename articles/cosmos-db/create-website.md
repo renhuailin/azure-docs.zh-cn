@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 1ff0543ebc341788ee9492f3e2a117c8e64c44f5
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 50d8d8bb026418467a75ce6f2f4f0d36b99442ea
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109737377"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113650933"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板从 GitHub 部署 Azure Cosmos DB、Azure 应用服务与 Web 应用
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "109737377"
 
 ## <a name="step-1-deploy-the-template"></a>步骤 1：部署模板
 
-首先选择下面的“部署到 Azure”按钮，打开 Azure 门户以创建自定义部署。 还可以从 [Azure 快速启动模板库](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.documentdb/cosmosdb-webapp)查看 Azure 资源管理模板
+首先选择下面的“部署到 Azure”按钮，打开 Azure 门户以创建自定义部署。 还可以从 [Azure 快速启动模板库](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.documentdb/cosmosdb-webapp)查看 Azure 资源管理器模板
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="部署到 Azure":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.documentdb%2Fcosmosdb-webapp%2Fazuredeploy.json)
 

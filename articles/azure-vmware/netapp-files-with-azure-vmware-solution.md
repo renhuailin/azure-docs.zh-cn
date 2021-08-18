@@ -3,12 +3,12 @@ title: 将 Azure NetApp 文件与 Azure VMware 解决方案配合使用
 description: 将 Azure NetApp 文件与 Azure VMware 解决方案 VM 配合使用，以在本地服务器、Azure VMware 解决方案 VM 与云基础结构之间迁移和同步数据。
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 3383ee2afe271fbf50def125bd1fd4366b8b6165
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 4c07765bd54e59109f15f8a0cdfd067f48dd14b4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755710"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443762"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-vmware-solution"></a>将 Azure NetApp 文件与 Azure VMware 解决方案配合使用
 
@@ -27,7 +27,7 @@ Azure NetApp 文件和 Azure VMware 解决方案在同一 Azure 区域中创建�
 
 下图展示了与 Azure VMware 解决方案私有云的连接，该连接通过 Azure ExpressRoute 建立而成。 Azure VMware 解决方案环境访问 Azure VMware 解决方案 VM 上装载的 Azure NetApp 文件共享。
 
-![显示了 Azure VMware 解决方案体系结构的 NetApp 文件的示意图。](media/net-app-files/net-app-files-topology.png)
+:::image type="content" source="media/netapp-files/netapp-files-topology.png" alt-text="显示了 Azure VMware 解决方案体系结构的 NetApp 文件的示意图。" border="false":::
 
 
 ## <a name="prerequisites"></a>先决条件 
@@ -60,13 +60,13 @@ Azure NetApp 文件和 Azure VMware 解决方案在同一 Azure 区域中创建�
 
 1. 在 Azure 门户中的“存储”下，选择“Azure NetApp 文件”。 此时会显示已配置的 Azure NetApp 文件的列表。 
 
-   :::image type="content" source="media/net-app-files/azure-net-app-files-list.png" alt-text="屏幕截图，显示了预配置的 Azure NetApp 文件的列表。"::: 
+   :::image type="content" source="media/netapp-files/azure-netapp-files-list.png" alt-text="屏幕截图，显示了预配置的 Azure NetApp 文件的列表。"::: 
 
 2. 选择一个已配置的 NetApp 文件帐户来查看其设置。 例如，选择“Contoso-anf2”。 
 
 3. 选择“容量池”来验证已配置的池。 
 
-   :::image type="content" source="media/net-app-files/net-app-settings.png" alt-text="屏幕截图显示了用于查看已配置的 NetApp 文件帐户的容量池和卷的选项。":::
+   :::image type="content" source="media/netapp-files/netapp-settings.png" alt-text="屏幕截图显示了用于查看已配置的 NetApp 文件帐户的容量池和卷的选项。":::
 
    “容量池”页面随即打开，显示容量和服务级别。 在此示例中，存储池配置为高级服务级别且容量为 4 TiB。
 
@@ -74,11 +74,11 @@ Azure NetApp 文件和 Azure VMware 解决方案在同一 Azure 区域中创建�
 
 5. 选择一个卷来查看其配置。  
 
-   :::image type="content" source="media/net-app-files/azure-net-app-volumes.png" alt-text="屏幕截图显示了在容量池下创建的卷。":::
+   :::image type="content" source="media/netapp-files/azure-netapp-volumes.png" alt-text="屏幕截图显示了在容量池下创建的卷。":::
 
    此时会打开一个窗口，其中显示卷的配置详细信息。
 
-   :::image type="content" source="media/net-app-files/configuration-of-volume.png" alt-text="屏幕截图显示了卷的配置详细信息。":::
+   :::image type="content" source="media/netapp-files/configuration-of-volume.png" alt-text="屏幕截图显示了卷的配置详细信息。":::
 
    你可以看到，anfvolume 的大小为 200 GiB，位于容量池 anfpool1 中。 它通过 10.22.3.4:/ANFVOLUME 导出为 NFS 文件共享。 从 Azure 虚拟网络 (VNet) 为 Azure NetApp 文件和用于在 VM 上进行装载的 NFS 路径创建了一个专用 IP。
 

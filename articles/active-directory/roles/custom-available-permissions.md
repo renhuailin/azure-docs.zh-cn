@@ -13,16 +13,20 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 258dcb7c66b043828e55d6c0dbfe101c0992f8c6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 996a3f5f48685630a6946a5708c26cfecaf3b0a0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110092883"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724844"
 ---
 # <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory 中自定义角色的应用程序注册权限
 
 本文包含 Azure Active Directory (Azure AD) 中的自定义角色定义当前可用的应用注册权限。
+
+## <a name="license-requirements"></a>许可要求
+
+[!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="permissions-for-managing-single-tenant-applications"></a>用于管理单租户应用程序的权限
 
@@ -32,7 +36,7 @@ ms.locfileid: "110092883"
 
 有关一般术语“子类型”、“权限”和“属性集”的含义，请参阅[自定义角色概述](custom-overview.md)。 以下信息特定于应用程序注册。
 
-### <a name="create-and-delete"></a>create 和 delete
+## <a name="create-and-delete"></a>create 和 delete
 
 可以使用两个权限来授予创建应用程序注册的能力，这两个权限各自有不同的行为：
 
@@ -65,7 +69,7 @@ create 权限授予对“新建注册”命令的访问权限。
 > [!NOTE]
 > 分配包含 create 权限的角色时，必须在目录范围进行角色分配。 在资源范围分配的 create 权限不会授予创建应用注册的能力。
 
-### <a name="read"></a>读取
+## <a name="read"></a>读取
 
 默认情况下，组织中的所有成员用户都可以读取应用注册信息。 但是，来宾用户和应用程序服务主体无法读取这些信息。 如果你打算将某个角色分配给来宾用户或应用程序，必须包含相应的 read 权限。
 
@@ -91,7 +95,7 @@ create 权限授予对“新建注册”命令的访问权限。
 
 授予的权限与 microsoft.directory/applications/standard/read 相同，但仅适用于单租户应用程序。
 
-### <a name="update"></a>更新
+## <a name="update"></a>更新
 
 #### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>microsoft.directory/applications/allProperties/update
 
@@ -162,10 +166,6 @@ create 权限授予对“新建注册”命令的访问权限。
 #### <a name="microsoftdirectoryapplicationsmyorganizationpermissionsupdate"></a>microsoft.directory/applications.myOrganization/permissions/update
 
 授予的权限与 microsoft.directory/applications/permissions/update 相同，但仅适用于单租户应用程序。
-
-## <a name="license-requirements"></a>许可要求
-
-[!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

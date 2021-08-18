@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 247ae926dde9b07b1d627621c456333282f00a42
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 755d6ff3e4b7e82390f6bc2c961883de976f5459
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060026"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734791"
 ---
 # <a name="map-data-fields-to-entities-in-azure-sentinel"></a>将数据字段映射到 Azure Sentinel 中的实体 
 
@@ -33,7 +33,7 @@ ms.locfileid: "112060026"
 
 ## <a name="introduction"></a>简介
 
-实体映射是[计划的查询分析规则](tutorial-detect-threats-custom.md)配置不可或缺的一部分。 它可使用重要信息来丰富规则的输出（警报和事件），这些信息是任何调查过程和后续补救操作的构建基块。
+实体映射是[计划的查询分析规则](detect-threats-custom.md)配置不可或缺的一部分。 它可使用重要信息来丰富规则的输出（警报和事件），这些信息是任何调查过程和后续补救操作的构建基块。
 
 下面详细介绍的过程是分析规则创建向导的一部分。 这里单独应用该过程来处理在现有分析规则中添加或更改实体映射的方案。
 
@@ -81,5 +81,5 @@ ms.locfileid: "112060026"
 ## <a name="next-steps"></a>后续步骤
 
 本文档介绍了如何将数据字段映射到 Azure Sentinel 分析规则中的实体。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 全面了解[计划的查询分析规则](tutorial-detect-threats-custom.md)。
+- 全面了解[计划的查询分析规则](detect-threats-custom.md)。
 - 有关详细信息，请参阅 [Azure Sentinel 中的实体](entities-in-azure-sentinel.md)。

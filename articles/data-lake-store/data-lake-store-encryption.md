@@ -3,17 +3,17 @@ title: Azure Data Lake Storage Gen1 中的加密 | Microsoft Docs
 description: 在 Azure Data Lake Storage Gen1 中加密可以保护数据、实施企业安全策略以及满足合规性要求。 本文概述了设计，并讨论了实施过程中的某些技术方面。
 services: data-lake-store
 documentationcenter: ''
-author: esung22
+author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: yagupta
-ms.openlocfilehash: 51c9f924c6fe3ac6db86d60e26749d35bc4ab733
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: twooley
+ms.openlocfilehash: dda173278f2bb788b0768fc891b951793224bf77
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108938"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113006151"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的数据加密
 

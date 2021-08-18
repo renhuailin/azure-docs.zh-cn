@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: a6f9add11b6632d1ee26041ade0ade45ec58716d
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 56cbcf841d26cc7f8f26235728ef0dd1c596daa0
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110538074"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114289187"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>使用 Azure Bastion 通过 SSH 连接到 Linux 虚拟机
 
@@ -83,10 +83,6 @@ SSH 私钥必须采用以 `"-----BEGIN RSA PRIVATE KEY-----"` 开头并以 `"---
 
 ## <a name="connect-using-a-private-key-stored-in-azure-key-vault"></a><a name="akv"></a>连接：使用存储在 Azure Key Vault 中的私钥
 
->[!NOTE]
->此功能的门户更新当前正在向各个区域推出。
->
-
 1. 打开 [Azure 门户](https://portal.azure.com)。 导航到要连接到的虚拟机，然后单击“连接”并从下拉列表中选择“Bastion”。
 
    :::image type="content" source="./media/bastion-connect-vm-ssh/connect.png" alt-text="屏幕截图显示了 Azure 门户中虚拟机的概览，其中已选择“连接”":::
@@ -94,14 +90,18 @@ SSH 私钥必须采用以 `"-----BEGIN RSA PRIVATE KEY-----"` 开头并以 `"---
 1. 在“使用 Azure Bastion 连接”页上，输入“用户名”并选择“Azure Key Vault 中的 SSH 私钥”  。
 
    :::image type="content" source="./media/bastion-connect-vm-ssh/ssh-key-vault.png" alt-text="来自 Azure Key Vault 的 SSH 私钥":::
-1. 选择“Azure Key Vault”下拉列表，并选择在其中存储 SSH 私钥的资源。 如果未设置 Azure Key Vault 资源，请参阅[创建密钥保管库](../key-vault/general/quick-create-portal.md)并将 SSH 私钥存储为新 Key Vault 机密的值。
+1. 选择“Azure Key Vault”下拉列表，并选择在其中存储 SSH 私钥的资源。 如果未设置 Azure Key Vault 资源，请参阅[创建密钥保管库](../key-vault/secrets/quick-create-powershell.md)并将 SSH 私钥存储为新 Key Vault 机密的值。
+
+   >[!NOTE]
+   >请通过 PowerShell 或 Azure CLI 体验将 SSH 私钥作为机密存储在 Azure Key Vault 中。 通过 Azure Key Vault 门户体验存储私钥会干扰格式设置并导致登录失败。 如果确实已使用门户体验将私钥存储为机密，并且不再有权访问原始私钥文件，请参阅[更新 SSH 密钥](../virtual-machines/extensions/vmaccess.md#update-ssh-key)以使用新的 SSH 密钥对更新对目标 VM 的访问权限。
+   >
 
    :::image type="content" source="./media/bastion-connect-vm-ssh/key-vault.png" alt-text="Azure Key Vault":::
 
    确保对 Key Vault 中存储的机密具有“列出”和“获取”权限 。 若要为 Key Vault 资源分配访问策略和修改该资源的访问策略，请参阅[分配 Key Vault 访问策略](../key-vault/general/assign-access-policy-portal.md)。
 1. 选择“Azure Key Vault 机密”下拉列表，然后选择包含 SSH 私钥值的 Key Vault 机密。
-1. 选择“连接”以连接到 VM。 单击“连接”后，可连接到此虚拟机的 SSH 将直接在 Azure 门户中打开。 此连接通过 HTML5 在虚拟机的专用 IP 上使用 Bastion 服务的端口 443 进行。
+3. 选择“连接”以连接到 VM。 单击“连接”后，可连接到此虚拟机的 SSH 将直接在 Azure 门户中打开。 此连接通过 HTML5 在虚拟机的专用 IP 上使用 Bastion 服务的端口 443 进行。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure Bastion 的详细信息，请参阅 [Bastion 常见问题解答](bastion-faq.md)。 
+有关 Azure Bastion 的详细信息，请参阅 [Bastion 常见问题解答](bastion-faq.md)。

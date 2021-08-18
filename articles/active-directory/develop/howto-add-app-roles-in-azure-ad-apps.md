@@ -13,12 +13,12 @@ ms.date: 05/06/2021
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: cf1ca72d7afaace847fb1b8321723f57fbe133f6
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 27c56804eeb3b27bfda9f581f13b853edc8e4b4e
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802156"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453783"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 
@@ -203,7 +203,8 @@ ms.locfileid: "108802156"
 
 - GitHub 上的代码示例
   - [使用组和组声明向 ASP.NET Core Web 应用添加授权](https://aka.ms/groupssample)
-  - [Angular 单页应用程序 (SPA) 调用 .NET Core Web API 并使用应用角色和安全组](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-dotnetcore-webapi-roles-groups/blob/master/README.md)
+  - [Angular 单页应用程序 (SPA) 调用 .NET Core Web API 并使用应用角色和安全组](https://github.com/Azure-Samples/ms-identity-javascript-angular-tutorial/tree/main/5-AccessControl)
+  - [React 单页应用程序 (SPA) 调用 Node.js Web API 并使用应用角色和安全组](https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial/tree/main/5-AccessControl)
 - 参考文档
   - [Azure AD 应用清单](./reference-app-manifest.md)
   - [Azure AD 访问令牌](access-tokens.md)

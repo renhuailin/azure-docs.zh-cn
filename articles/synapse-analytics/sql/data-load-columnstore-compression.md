@@ -2,21 +2,21 @@
 title: 提高列存储索引性能
 description: 减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 2cbf38808f69ed2c1f76196fc7580a8ad3dae56a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 750fc421cd644ec41384d43705b41602df24719b
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104602071"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860984"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>最大化行组质量，提高列存储索引性能
 
@@ -137,8 +137,8 @@ OPTION (MAXDOP 1);
 
 DWU 大小和用户资源类共同确定用户查询可用的内存量。 若要增加加载查询的内存授予，可增加 DWU 的数量或增加资源类。
 
-- 若要增加 DWU，请参阅[如何进行性能缩放？](../sql-data-warehouse/quickstart-scale-compute-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- 若要更改查询的资源类，请参阅[更改用户资源类示例](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#change-a-users-resource-class)。
+- 若要增加 DWU，请参阅[如何进行性能缩放？](../sql-data-warehouse/quickstart-scale-compute-portal.md?context=/azure/synapse-analytics/context/context)
+- 若要更改查询的资源类，请参阅[更改用户资源类示例](../sql-data-warehouse/resource-classes-for-workload-management.md?context=/azure/synapse-analytics/context/context#change-a-users-resource-class)。
 
 ## <a name="next-steps"></a>后续步骤
 

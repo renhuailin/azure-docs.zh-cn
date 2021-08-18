@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 2a4f86d9fae7b78a57cf8da7ab42d2d4a4cd7be5
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: cb66b9ad3106b9cad5b9b22cbe32838e13f56c28
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835391"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736403"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>排查 Azure 专用终结点连接问题
 
@@ -39,7 +39,7 @@ Azure 专用终结点是一个网络接口，可以通过私密且安全的方�
 
 1. 通过浏览资源来查看专用终结点配置。
 
-    a. 转到“专用链接中心”。
+    a. 转到“专用链接中心”[](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/overview)。
 
       ![专用链接中心](./media/private-endpoint-tsg/private-link-center.png)
 

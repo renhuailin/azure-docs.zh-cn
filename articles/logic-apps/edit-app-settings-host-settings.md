@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 05/25/2021
-ms.openlocfilehash: fcc7ac002c9d1024abc17dc26ba0b231213ceb53
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cf1361a531511daf7f249f4e7c7d2acf9207c457
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384903"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743247"
 ---
 # <a name="edit-host-and-app-settings-for-logic-apps-in-single-tenant-azure-logic-apps"></a>在单租户 Azure 逻辑应用中编辑逻辑应用的主机和应用设置
 
@@ -45,7 +45,7 @@ ms.locfileid: "110384903"
 
 在 Visual Studio Code 中逻辑应用项目的根级别，local.settings.json 文件包含全局配置选项，在本地开发环境中运行时这些选项会影响该逻辑应用中的所有工作流。 当工作流在本地运行时，系统将这些设置作为本地环境变量进行访问，并且它们的值通常在运行工作流的各种环境中会有所不同。 若要查看和管理这些设置，请查看[管理应用设置 - local.settings.json](#manage-app-settings)。
 
-Azure 逻辑应用中的应用设置的作用方式与 Azure Functions 或 Azure Web 应用中的应用设置的作用方式类似。 如果你以前使用过这些其他服务，可能已熟悉应用设置。 有关详细信息，请查看 [Azure Functions 的应用设置参考](../azure-functions/functions-app-settings.md)和[使用 Azure Functions Core Tools - 本地设置文件](../azure-functions/functions-run-local.md#local-settings-file)。
+Azure 逻辑应用中的应用设置的作用方式与 Azure Functions 或 Azure Web 应用中的应用设置的作用方式类似。 如果你以前使用过这些其他服务，可能已熟悉应用设置。 有关详细信息，请查看 [Azure Functions 的应用设置参考](../azure-functions/functions-app-settings.md)和[使用 Azure Functions Core Tools - 本地设置文件](../azure-functions/functions-develop-local.md#local-settings-file)。
 
 | 设置 | 默认值 | 说明 |
 |---------|---------------|-------------|

@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mbullwin
-ms.openlocfilehash: 3979bb82bfa055cc2a134bf3119097c452ffb855
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec057d625342c2e80478b0555395f6bc5250ee6b
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94364116"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296768"
 ---
-# <a name="deploy-an-anomaly-detector-container-to-azure-container-instances"></a>向 Azure 容器实例中部署异常检测器容器
+# <a name="deploy-an-anomaly-detector-univariate-container-to-azure-container-instances"></a>将异常检测器单变量容器部署到 Azure 容器实例
 
 了解如何向 Azure [容器实例](../../../container-instances/index.yml)中部署认知服务[异常检测器](../anomaly-detector-container-howto.md)容器。 此过程演示如何创建异常探测器资源。 然后讨论如何拉取关联的容器映像。 最后，我们重点介绍了从浏览器中执行这两个业务流程的能力。 使用容器可以将开发人员的注意力从管理基础结构转移到应用程序开发上。
 

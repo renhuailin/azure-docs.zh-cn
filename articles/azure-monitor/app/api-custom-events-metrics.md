@@ -4,12 +4,12 @@ description: 在设备、桌面应用、网页或服务中插入几行代码，�
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 75576056162bf869c20706bed22c31785a8ea2a0
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 648c9ee1de00ef638354a287e43fa234610e9dc7
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060293"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114291496"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -177,7 +177,7 @@ Application Insights 可绘制未附加到特定事件的指标。 例如，可�
 *JavaScript*
 
 ```javascript
-appInsights.trackMetric("queueLength", 42.0);
+appInsights.trackMetric({name: "queueLength", average: 42});
 ```
 
 *C#*
@@ -1087,7 +1087,6 @@ telemetry.Context.Operation.Name = "MyOperationName";
   * **ID**：一个生成的值，它将不同的事件关联在一起，以便在诊断搜索中检查任何事件时，可以发现相关项。
   * **名称**：一个标识符，通常是 HTTP 请求的 URL。
   * **SyntheticSource**：如果不为 null 或空，则此字符串表示请求的源已标识为机器人或 Web 测试。 默认情况下，该属性会从指标资源管理器的计算中排除。
-* **属性**：与所有遥测数据一起发送的属性。 可在单个 Track* 调用中重写。
 * **会话一致性**：用户的会话。 ID 设置为生成的值，当用户有一段时间处于非活动状态时，此值会更改。
 * **用户**：用户信息。
 
@@ -1126,4 +1125,4 @@ telemetry.Context.Operation.Name = "MyOperationName";
 ## <a name="next-steps"></a><a name="next"></a>后续步骤
 
 * [搜索事件和日志](./diagnostic-search.md)
-* [故障排除](../faq.md)
+* [故障排除](../faq.yml)

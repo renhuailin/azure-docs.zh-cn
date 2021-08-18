@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: sstein, jovanpop
+ms.reviewer: mathoma, jovanpop
 ms.date: 06/01/2021
-ms.openlocfilehash: 4da8b42e79b1689893d6509ff6d1a428c39821d7
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: f168dca243ae09ccdf39eb7630b350cd2b928628
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110790289"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733336"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>将 TDE 保护的数据库的证书迁移到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

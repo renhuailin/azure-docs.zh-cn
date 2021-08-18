@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7a1ba0ab0759a5c765497aac4346fa7d72dae96c
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 4e588e08e6c4180056bb2e27274154f1c00f0556
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110616182"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114466177"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Azure 数字孪生中的查询单元 
 
@@ -41,8 +41,8 @@ Azure 数字孪生查询单元 (QU)是一个按需计算单元，用于通过[�
 
 若要详细了解如何查询 Azure 数字孪生，请访问：
 
-* [概念：查询语言](concepts-query-language.md)
-* [操作指南：查询孪生图](how-to-query-graph.md)
+* [查询语言](concepts-query-language.md)
+* [查询孪生图](how-to-query-graph.md)
 * [查询 API 参考文档](/rest/api/digital-twins/dataplane/query/querytwins)
 
 可以在 Azure 数字孪生服务限制中找到与 Azure 数字孪生查询相关的限制。

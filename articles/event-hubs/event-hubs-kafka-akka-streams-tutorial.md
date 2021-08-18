@@ -3,12 +3,12 @@ title: 将 Akka Streams 用于 Apache Kafka - Azure 事件中心| Microsoft Docs
 description: 本文介绍如何将 Akka Streams 连接到 Azure 事件中心。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 92ab927189329493696c70b61ffc7f11cad22a66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 500a287fcf481a8ef81ce1bb22df503e8757201d
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92369567"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113286441"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>将 Akka Streams 与适用于 Apache Kafka 的事件中心配合使用
 
@@ -30,7 +30,7 @@ ms.locfileid: "92369567"
 
 * 通读[用于 Apache Kafka 的事件中心](event-hubs-for-kafka-ecosystem-overview.md)一文。 
 * Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-* [Java 开发工具包 (JDK) 1.8+](/azure/developer/java/fundamentals/java-jdk-long-term-support)
+* [Java 开发工具包 (JDK) 1.8+](/azure/developer/java/fundamentals/java-support-on-azure)
     * 在 Ubuntu 上运行 `apt-get install default-jdk`，以便安装 JDK。
     * 请确保设置 JAVA_HOME 环境变量，使之指向在其中安装了 JDK 的文件夹。
 * [下载](https://maven.apache.org/download.cgi)和[安装](https://maven.apache.org/install.html) Maven 二进制存档

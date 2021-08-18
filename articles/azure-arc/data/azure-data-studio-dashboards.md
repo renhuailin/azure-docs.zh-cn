@@ -7,24 +7,23 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: a96be6d4da3d292b2e9881652aad28f318ccee8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94e7b6b351d13a85a516b4a4bc6c54c31754bc12
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92107566"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741481"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio 仪表板
 
 在查看 Azure Arc 资源的相关信息时，[Azure Data Studio](/sql/azure-data-studio/what-is) 提供了与 Azure 门户类似的体验。  这些视图称为“仪表板”，其布局和选项与 Azure 门户中的给定资源类似，使你可以灵活地在未连接到 Azure 时在你的环境中本地查看这些信息。
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="connecting-to-a-data-controller"></a>连接到数据控制器
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
 - 下载 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)
 - 已安装 Azure Arc 扩展

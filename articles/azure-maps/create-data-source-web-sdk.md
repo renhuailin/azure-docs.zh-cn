@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 60c15909f542ca4ef3e1f3fb87a98e66c12368ed
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: d20be688ccd13e7f053c4633a91cc5ce7a6cc34f
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792059"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669065"
 ---
 # <a name="create-a-data-source"></a>创建数据源
 
@@ -83,10 +83,10 @@ source.setShapes(geoJsonData);
 
 Azure Maps 遵循开放式标准 - [Mapbox 矢量图块规范](https://github.com/mapbox/vector-tile-spec)。 Azure Maps 在平台中提供以下矢量图块服务：
 
-- 道路图块[文档](/rest/api/maps/renderv2/getmaptilepreview) | [数据格式详细信息](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
+- 道路图块[文档](/rest/api/maps/render-v2/get-map-tile) | [数据格式详细信息](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
 - 交通事故[文档](/rest/api/maps/traffic/gettrafficincidenttile) | [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
 - 交通流[文档](/rest/api/maps/traffic/gettrafficflowtile) | [数据格式详细信息](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- 使用 Azure Maps Creator，还可以通过[渲染器 V2 - 获取地图图块 API](/rest/api/maps/renderv2/getmaptilepreview) 创建和访问自定义矢量图块
+- 使用 Azure Maps Creator，还可以通过[渲染器 V2 - 获取地图图块 API](/rest/api/maps/render-v2/get-map-tile) 创建和访问自定义矢量图块
 
 > [!TIP]
 > 通过 Web SDK 使用 Azure Maps 渲染服务中的矢量或光栅图块时，可以使用占位符 `{azMapsDomain}` 替代 `atlas.microsoft.com`。 此占位符将替换为地图使用的相同域，还会自动附加相同的身份验证详细信息。 这样可大大简化使用 Azure Active Directory 身份验证时对渲染服务的身份验证。

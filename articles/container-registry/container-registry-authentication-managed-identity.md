@@ -2,13 +2,13 @@
 title: 使用托管标识进行身份验证
 description: 通过使用用户分配或系统分配的托管 Azure 标识，提供对专用容器注册表中映像的访问。
 ms.topic: article
-ms.date: 01/16/2019
-ms.openlocfilehash: 88952a032b9c4439620de05f181402f29639a5b2
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.date: 06/30/2021
+ms.openlocfilehash: 84f7d76eb763c8116390501dfbe2a6568849f10f
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111440657"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113286531"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>使用 Azure 托管标识向 Azure 容器注册表验证身份 
 
@@ -34,7 +34,7 @@ ms.locfileid: "111440657"
 然后使用该标识向[支持 Azure AD 身份验证的任何服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)进行身份验证，而无需在代码中放入任何凭据。 选择如何使用托管标识进行身份验证，具体取决于你的方案。 若要使用该标识从虚拟机访问 Azure 容器注册表，请向 Azure 资源管理器验证身份。 
 
 > [!NOTE]
-> 目前，用于容器的 Azure Web 应用或 Azure 容器实例等服务在拉取容器映像以部署容器资源本身时，不能使用托管标识向 Azure 容器注册表进行身份验证。 该标识仅在容器运行后可用。 若要使用 Azure 容器注册表中的映像部署这些资源，建议使用不同的身份验证方法（如[服务主体](container-registry-auth-service-principal.md)）。
+> 目前，创建容器组时，不能使用 Azure 容器实例中的托管标识从 Azure 容器注册表中拉取映像。 该标识仅在正在运行的容器中可用。 若要使用 Azure 容器注册表中的映像部署 Azure 容器实例中的容器组，建议使用其他身份验证方法（如[服务主体](container-registry-auth-service-principal.md)）。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
 
@@ -232,6 +232,7 @@ docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 > * 使用托管标识访问注册表并拉取容器映像
 
 * 详细了解 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/index.yml)。
+* 了解如何将[系统分配的](https://github.com/Azure/app-service-linux-docs/blob/master/HowTo/use_system-assigned_managed_identities.md)托管标识或[用户分配的](https://github.com/Azure/app-service-linux-docs/blob/master/HowTo/use_user-assigned_managed_identities.md)托管标识与应用服务和 Azure 容器注册表配合使用。
 
 
 <!-- LINKS - external -->

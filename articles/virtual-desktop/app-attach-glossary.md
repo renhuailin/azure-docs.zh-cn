@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 66f3cc71c27ff80991f3cded1957f90e622f447f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 9972a7bcff534f49f0c656dd1a9c3f66389c44b5
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745666"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708791"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX 应用附加术语表
 
@@ -133,4 +133,4 @@ CIM 文件是扩展名为 .CIM 的文件，该文件包含元数据和至少两�
 
 ## <a name="next-steps"></a>后续步骤
 
-如果想了解有关 MSIX 应用程序附加的更多信息，请查看我们的[概述](what-is-app-attach.md)和[常见问题解答](app-attach-faq.md)。 或者直接开始[安装应用附加](app-attach.md)。
+如果想了解有关 MSIX 应用程序附加的更多信息，请查看我们的[概述](what-is-app-attach.md)和[常见问题解答](app-attach-faq.yml)。 或者直接开始[安装应用附加](app-attach.md)。

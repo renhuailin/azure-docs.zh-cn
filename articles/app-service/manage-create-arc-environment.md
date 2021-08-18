@@ -3,12 +3,12 @@ title: 为 Azure Arc 设置应用服务、Functions 和逻辑应用
 description: 对于启用了 Azure Arc 的 Kubernetes 群集，请了解如何启用应用服务应用、函数应用和逻辑应用。
 ms.topic: article
 ms.date: 05/26/2021
-ms.openlocfilehash: e5e1b1ec8dd9a7e7ddf006222d2990bb6c354cd8
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: a219b0e12deaca30c2c046e4e99cf38672dc46c9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890125"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723032"
 ---
 # <a name="set-up-an-azure-arc-enabled-kubernetes-cluster-to-run-app-service-functions-and-logic-apps-preview"></a>设置启用了 Azure Arc 的 Kubernetes 群集，以便运行应用服务、函数和逻辑应用（预览）
 
@@ -64,6 +64,8 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
 
 1. 在 Azure Kubernetes 服务中使用公共 IP 创建群集。 将 `<group-name>` 替换为所需的资源组名称。
 
+    # <a name="bash"></a>[bash](#tab/bash)
+
     ```azurecli-interactive
     aksClusterGroupName="<group-name>" # Name of resource group for the AKS cluster
     aksName="${aksClusterGroupName}-aks" # Name of the AKS cluster
@@ -75,6 +77,22 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
     az network public-ip create --resource-group $infra_rg --name MyPublicIP --sku STANDARD
     staticIp=$(az network public-ip show --resource-group $infra_rg --name MyPublicIP --output tsv --query ipAddress)
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    $aksClusterGroupName="<group-name>" # Name of resource group for the AKS cluster
+    $aksName="${aksClusterGroupName}-aks" # Name of the AKS cluster
+    $resourceLocation="eastus" # "eastus" or "westeurope"
+
+    az group create -g $aksClusterGroupName -l $resourceLocation
+    az aks create --resource-group $aksClusterGroupName --name $aksName --enable-aad --generate-ssh-keys
+    $infra_rg=$(az aks show --resource-group $aksClusterGroupName --name $aksName --output tsv --query nodeResourceGroup)
+    az network public-ip create --resource-group $infra_rg --name MyPublicIP --sku STANDARD
+    $staticIp=$(az network public-ip show --resource-group $infra_rg --name MyPublicIP --output tsv --query ipAddress)
+    ```
+
+    ---
     
 2. 获取 [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) 文件并测试与群集的连接。 默认情况下，kubeconfig 文件保存到 `~/.kube/config`。
 
@@ -86,19 +104,44 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
     
 3. 创建用于包含 Azure Arc 资源的资源组。 将 `<group-name>` 替换为所需的资源组名称。
 
+    # <a name="bash"></a>[bash](#tab/bash)
+
     ```azurecli-interactive
     groupName="<group-name>" # Name of resource group for the connected cluster
 
     az group create -g $groupName -l $resourceLocation
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    $groupName="<group-name>" # Name of resource group for the connected cluster
+
+    az group create -g $groupName -l $resourceLocation
+    ```
+
+    ---
     
 4. 将创建的群集连接到 Azure Arc。
+
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```azurecli-interactive
     clusterName="${groupName}-cluster" # Name of the connected cluster resource
 
     az connectedk8s connect --resource-group $groupName --name $clusterName
     ```
+    
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+
+    ```powershell
+    $clusterName="${groupName}-cluster" # Name of the connected cluster resource
+
+    az connectedk8s connect --resource-group $groupName --name $clusterName
+    ```
+
+    ---
     
 5. 通过以下命令验证连接。 它应显示 `provisioningState` 属性处于 `Succeeded` 状态。 如果不是，请在一分钟后再次运行该命令。
 
@@ -112,6 +155,8 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
 
 1. 为简单起见，接下来请创建工作区。
 
+    # <a name="bash"></a>[bash](#tab/bash)
+
     ```azurecli-interactive
     workspaceName="$groupName-workspace" # Name of the Log Analytics workspace
     
@@ -119,8 +164,22 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
         --resource-group $groupName \
         --workspace-name $workspaceName
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    $workspaceName="$groupName-workspace"
+
+    az monitor log-analytics workspace create `
+        --resource-group $groupName `
+        --workspace-name $workspaceName
+    ```
+
+    ---
     
 2. 运行以下命令，获取现有 Log Analytics 工作区的编码工作区 ID 和共享密钥。 下一步需要用到它们。
+
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```azurecli-interactive
     logAnalyticsWorkspaceId=$(az monitor log-analytics workspace show \
@@ -137,18 +196,52 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
     logAnalyticsKeyEncWithSpace=$(printf %s $logAnalyticsKey | base64)
     logAnalyticsKeyEnc=$(echo -n "${logAnalyticsKeyEncWithSpace//[[:space:]]/}") # Needed for the next step
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    $logAnalyticsWorkspaceId=$(az monitor log-analytics workspace show `
+        --resource-group $groupName `
+        --workspace-name $workspaceName `
+        --query customerId `
+        --output tsv)
+    $logAnalyticsWorkspaceIdEnc=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($logAnalyticsWorkspaceId))# Needed for the next step
+    $logAnalyticsKey=$(az monitor log-analytics workspace get-shared-keys `
+        --resource-group $groupName `
+        --workspace-name $workspaceName `
+        --query primarySharedKey `
+        --output tsv)
+    $logAnalyticsKeyEncWithSpace=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($logAnalyticsKey))
+    $logAnalyticsKeyEnc=$(echo -n "${logAnalyticsKeyEncWithSpace//[[:space:]]/}") # Needed for the next step
+    ```
     
+    ---
+
 ## <a name="install-the-app-service-extension"></a>安装应用服务扩展
 
 1. 为[应用服务扩展](overview-arc-integration.md)的所需名称、应在其中预配资源的群集命名空间以及应用服务 Kubernetes 环境的名称设置以下环境变量。 为 `<kube-environment-name>` 选择唯一名称，因为在应用服务 Kubernetes 环境中创建的应用中，它将成为其域名的一部分。
+
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```bash
     extensionName="appservice-ext" # Name of the App Service extension
     namespace="appservice-ns" # Namespace in your cluster to install the extension and provision resources
     kubeEnvironmentName="<kube-environment-name>" # Name of the App Service Kubernetes environment resource
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    $extensionName="appservice-ext" # Name of the App Service extension
+    $namespace="appservice-ns" # Namespace in your cluster to install the extension and provision resources
+    $kubeEnvironmentName="<kube-environment-name>" # Name of the App Service Kubernetes environment resource
+    ```
+
+    ---
     
 2. 在启用 Log Analytics 的情况下将应用服务扩展安装到连接了 Azure Arc 的群集。 同样，虽然 Log Analytics 不是必需的，但之后无法把其添加到扩展中，所以现在添加更加容易。
+
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```azurecli-interactive
     az k8s-extension create \
@@ -175,6 +268,35 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
         --configuration-protected-settings "logProcessor.appLogs.logAnalyticsConfig.sharedKey=${logAnalyticsKeyEnc}"
     ```
 
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    az k8s-extension create `
+        --resource-group $groupName `
+        --name $extensionName `
+        --cluster-type connectedClusters `
+        --cluster-name $clusterName `
+        --extension-type 'Microsoft.Web.Appservice' `
+        --release-train stable `
+        --auto-upgrade-minor-version true `
+        --scope cluster `
+        --release-namespace $namespace `
+        --configuration-settings "Microsoft.CustomLocation.ServiceAccount=default" `
+        --configuration-settings "appsNamespace=${namespace}" `
+        --configuration-settings "clusterName=${kubeEnvironmentName}" `
+        --configuration-settings "loadBalancerIp=${staticIp}" `
+        --configuration-settings "keda.enabled=true" `
+        --configuration-settings "buildService.storageClassName=default" `
+        --configuration-settings "buildService.storageAccessMode=ReadWriteOnce" `
+        --configuration-settings "customConfigMap=${namespace}/kube-environment-config" `
+        --configuration-settings "envoy.annotations.service.beta.kubernetes.io/azure-load-balancer-resource-group=${aksClusterGroupName}" `
+        --configuration-settings "logProcessor.appLogs.destination=log-analytics" `
+        --configuration-protected-settings "logProcessor.appLogs.logAnalyticsConfig.customerId=${logAnalyticsWorkspaceIdEnc}" `
+        --configuration-protected-settings "logProcessor.appLogs.logAnalyticsConfig.sharedKey=${logAnalyticsKeyEnc}"
+    ```
+
+    ---
+
     > [!NOTE]
     > 若要在不集成 Log Analytics 的情况下安装扩展，请从命令中删除最后三个 `--configuration-settings` 参数。
     >
@@ -199,6 +321,8 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
         
 3. 保存应用服务扩展的 `id` 属性以备后用。
 
+    # <a name="bash"></a>[bash](#tab/bash)
+
     ```azurecli-interactive
     extensionId=$(az k8s-extension show \
         --cluster-type connectedClusters \
@@ -208,6 +332,20 @@ az extension add --yes --source "https://aka.ms/appsvc/appservice_kube-latest-py
         --query id \
         --output tsv)
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    $extensionId=$(az k8s-extension show `
+        --cluster-type connectedClusters `
+        --cluster-name $clusterName `
+        --resource-group $groupName `
+        --name $extensionName `
+        --query id `
+        --output tsv)
+    ```
+
+    ---
 
 4. 等待扩展完全安装后再继续。 你可运行以下命令，让终端会话等待安装过程完成：
 
@@ -231,13 +369,27 @@ Azure 中的[自定义位置](../azure-arc/kubernetes/custom-locations.md)用于
 
 1. 为自定义位置的预期名称和连接到 Azure Arc 群集的 ID 设置以下环境变量。
 
+    # <a name="bash"></a>[bash](#tab/bash)
+
     ```bash
     customLocationName="my-custom-location" # Name of the custom location
     
     connectedClusterId=$(az connectedk8s show --resource-group $groupName --name $clusterName --query id --output tsv)
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    $customLocationName="my-custom-location" # Name of the custom location
     
-3. 创建自定义位置：
+    $connectedClusterId=$(az connectedk8s show --resource-group $groupName --name $clusterName --query id --output tsv)
+    ```
+
+    ---
+    
+2. 创建自定义位置：
+
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```azurecli-interactive
     az customlocation create \
@@ -247,18 +399,31 @@ Azure 中的[自定义位置](../azure-arc/kubernetes/custom-locations.md)用于
         --namespace $namespace \
         --cluster-extension-ids $extensionId
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```azurecli-interactive
+    az customlocation create `
+        --resource-group $groupName `
+        --name $customLocationName `
+        --host-resource-id $connectedClusterId `
+        --namespace $namespace `
+        --cluster-extension-ids $extensionId
+    ```
+
+    ---
     
     <!-- --kubeconfig ~/.kube/config # needed for non-Azure -->
 
-4. 通过以下命令验证自定义位置是否成功创建。 输出应显示 `provisioningState` 属性处于 `Succeeded` 状态。 如果不是，请在一分钟后再次运行该命令。
+3. 通过以下命令验证自定义位置是否成功创建。 输出应显示 `provisioningState` 属性处于 `Succeeded` 状态。 如果不是，请在一分钟后再次运行该命令。
 
     ```azurecli-interactive
-    az customlocation show \
-        --resource-group $groupName \
-        --name $customLocationName
+    az customlocation show --resource-group $groupName --name $customLocationName
     ```
     
-5. 保存自定义位置 ID，供下一步使用。
+4. 保存自定义位置 ID，供下一步使用。
+
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```azurecli-interactive
     customLocationId=$(az customlocation show \
@@ -267,12 +432,26 @@ Azure 中的[自定义位置](../azure-arc/kubernetes/custom-locations.md)用于
         --query id \
         --output tsv)
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```azurecli-interactive
+    $customLocationId=$(az customlocation show `
+        --resource-group $groupName `
+        --name $customLocationName `
+        --query id `
+        --output tsv)
+    ```
+
+    ---
     
 ## <a name="create-the-app-service-kubernetes-environment"></a>创建应用服务 Kubernetes 环境
 
 开始在自定义位置创建应用之前，需要[应用服务 Kubernetes 环境](overview-arc-integration.md#app-service-kubernetes-environment)。
 
 1. 创建应用服务 Kubernetes 环境：
+    
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```azurecli-interactive
     az appservice kube create \
@@ -281,13 +460,23 @@ Azure 中的[自定义位置](../azure-arc/kubernetes/custom-locations.md)用于
         --custom-location $customLocationId \
         --static-ip $staticIp
     ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```azurecli-interactive
+    az appservice kube create `
+        --resource-group $groupName `
+        --name $kubeEnvironmentName `
+        --custom-location $customLocationId `
+        --static-ip $staticIp
+    ```
+
+    ---
     
 2. 通过以下命令验证应用服务 Kubernetes 环境是否成功创建。 输出应显示 `provisioningState` 属性处于 `Succeeded` 状态。 如果不是，请在一分钟后再次运行该命令。
 
     ```azurecli-interactive
-    az appservice kube show \
-        --resource-group $groupName \
-        --name $kubeEnvironmentName
+    az appservice kube show --resource-group $groupName --name $kubeEnvironmentName
     ```
     
 

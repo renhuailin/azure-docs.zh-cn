@@ -1,18 +1,18 @@
 ---
 title: Azure 证明的内置策略定义
 description: 列出 Azure 证明的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 06/11/2021
+ms.date: 08/13/2021
 ms.topic: reference
 ms.service: attestation
 author: msmbaldwin
 ms.author: mbaldwin
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 0bbdc6727b4f20dbedeb9c84068e6e1cde21ae36
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 26985282710191e6c96f5735d7f93c0052be6c96
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112019244"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183897"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-attestation"></a>Azure 证明的 Azure Policy 内置定义
 

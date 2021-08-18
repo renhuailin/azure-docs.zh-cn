@@ -1,23 +1,23 @@
 ---
-title: 装载 Azure NFS 文件共享 - Azure 文件存储
+title: 装载 Azure NFS 文件共享（预览版）- Azure 文件存储
 description: 了解如何装载网络文件系统共享。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/11/2021
+ms.date: 07/01/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 9b537509d83c680fc9edb014acc13b41a8ca1466
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 8f3565f05fc04a74e761b1070f0374677703d225
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810510"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113225241"
 ---
-# <a name="how-to-mount-an-nfs-file-share"></a>如何装载 NFS 文件共享
+# <a name="how-to-mount-an-nfs-file-share-preview"></a>如何装载 NFS 文件共享（预览版）
 
-[Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以使用服务器消息块协议 (SMB) 或网络文件系统 (NFS) 协议将 Azure 文件共享装载到 Linux 发行版中。 本文重点介绍如何使用 NFS 进行装载。若要详细了解如何使用 SMB 进行装载，请参阅[在 Linux 中使用 Azure 文件存储](storage-how-to-use-files-linux.md)。 有关每个可用协议的详细信息，请参阅 [Azure 文件共享协议](storage-files-compare-protocols.md)。
+[Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以使用服务器消息块 (SMB) 协议或网络文件系统 (NFS) 协议（预览版）在 Linux 发行版中装载 Azure 文件共享。 本文重点介绍如何使用 NFS 进行装载。若要详细了解如何使用 SMB 进行装载，请参阅[在 Linux 中使用 Azure 文件存储](storage-how-to-use-files-linux.md)。 有关每个可用协议的详细信息，请参阅 [Azure 文件共享协议](storage-files-planning.md#available-protocols)。
 
 ## <a name="limitations"></a>限制
 

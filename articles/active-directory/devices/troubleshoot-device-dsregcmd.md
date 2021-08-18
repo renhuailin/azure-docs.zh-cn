@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea502deee0caf5418bf5554473180eb405792567
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: ff1c0d1e552ad26832b2c142f5ca1506654a9a0c
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287043"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219531"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>使用 dsregcmd 命令排查设备问题
 
@@ -56,7 +56,7 @@ dsregcmd/status 实用程序必须以域用户帐户身份运行。
 
 ## <a name="device-details"></a>设备详细信息
 
-只有当设备已建立 Azure AD 联接或已建立混合 Azure AD 联接（而非已注册 Azure AD）时才显示。 本节列出了标识云中存储的详细信息的设备。
+只有当设备已建立 Azure AD 联接或已建立混合 Azure AD 联接（而非已注册 Azure AD）时才显示。 本节列出了标识 Azure AD 中存储的详细信息的设备。
 
 - DeviceId：Azure AD 租户中设备的唯一 ID
 - Thumbprint：设备证书的指纹
@@ -64,6 +64,14 @@ dsregcmd/status 实用程序必须以域用户帐户身份运行。
 - **KeyContainerId：** - 与设备证书关联的设备私钥的 ContainerId
 - KeyProvider：用于存储设备私钥的 KeyProvider（硬件/软件）。
 - TpmProtected：如果设备私钥存储在硬件 TPM 中，则为“是”。
+
+> [!NOTE]
+> Windows 10 May 2021 Update（版本 21H1）中已添加“DeviceAuthStatus”字段 。
+
+- **DeviceAuthStatus：** 执行检查以确定 Azure AD 中设备的运行状况。  
+“成功”（如果设备在 Azure AD 中存在并已启用）。  
+“失败。 设备已被禁用或删除”（如果设备已被禁用或删除，[详细信息](faq.yml#why-do-my-users-see-an-error-message-saying--your-organization-has-deleted-the-device--or--your-organization-has-disabled-the-device--on-their-windows-10-devices)）。  
+“失败。 出现错误”（如果测试无法运行）。 此测试需要到 Azure AD 的网络连接。  
 
 ### <a name="sample-device-details-output"></a>示例设备详细信息输出
 
@@ -78,6 +86,7 @@ dsregcmd/status 实用程序必须以域用户帐户身份运行。
             KeyContainerId : 13e68a58-xxxx-xxxx-xxxx-a20a2411xxxx
                KeyProvider : Microsoft Software Key Storage Provider
               TpmProtected : NO
+          DeviceAuthStatus : SUCCESS
 +----------------------------------------------------------------------+
 ```
 
@@ -134,7 +143,7 @@ dsregcmd/status 实用程序必须以域用户帐户身份运行。
 - CanReset：表示用户能否重置 Windows Hello 密钥。
 - 可能的值：DestructiveOnly、NonDestructiveOnly、DestructiveAndNonDestructive 或未知（如出现错误）。
 - WorkplaceJoined：如果已在当前 NTUSER 上下文中将已注册 Azure AD 帐户添加到设备，则设置为“是”。
-- WamDefaultSet：如果为登录用户创建了 WAM 默认 WebAccount，则设置为“是”。 如果从提升的命令提示符运行 dsreg/status，则此字段可能显示错误。
+- WamDefaultSet：如果为登录用户创建了 WAM 默认 WebAccount，则设置为“是”。 如果从提升的命令提示符运行 dsregcmd /status，则此字段可能显示错误。
 - WamDefaultAuthority：对于 Azure AD，设置为“组织”。
 - WamDefaultId：对于 Azure AD，始终为“https://login.microsoft.com”。
 - WamDefaultGUID：默认 WAM WebAccount 的 WAM 提供程序（Azure AD/Microsoft 帐户）GUID。
@@ -174,6 +183,34 @@ dsregcmd/status 实用程序必须以域用户帐户身份运行。
 - EnterprisePrtExpiryTime：设置为 PRT 将要过期（如果未续订）的 UTC 时间。
 - EnterprisePrtAuthority：ADFS 证书颁发机构 URL
 
+>[!NOTE]
+> Windows 10 May 2021 Update（版本 21H1）中已添加以下 PRT 诊断字段
+
+>[!NOTE]
+> “AzureAdPrt”字段下显示的诊断信息用于 AzureAD PRT 获取/刷新；“EnterprisePrt”字段下显示的诊断信息用于 Enterprise PRT 获取/刷新 。
+
+>[!NOTE]
+>只有在上一次成功 PRT 更新时间 (AzureAdPrtUpdateTime/EnterprisePrtUpdateTime) 后获取/刷新失败时，才会显示诊断信息。  
+>在共享设备上，此诊断信息可能来自其他用户的登录尝试。
+
+- **AcquirePrtDiagnostics：** 如果获取 PRT 诊断信息出现在日志中，则设置为“存在”。  
+如果没有可用的诊断信息，则跳过此字段。
+- **以前的 Prt 尝试：** PRT 尝试失败的本地时间 (UTC)。  
+- **尝试状态：** 返回的客户端错误代码 (HRESULT)。
+- **用户标识：** 发生 PRT 尝试的用户的 UPN。
+- **凭据类型：** 用于获取/刷新 PRT 的凭据。 常见凭据类型为密码和 NGC (Windows Hello)。
+- **关联 ID：** 服务器针对失败的 PRT 尝试发送的关联 ID。
+- **终结点 URI：** 失败之前访问的最后一个终结点。
+- **HTTP 方法：** 用于访问终结点的 HTTP 方法。
+- **HTTP 错误：** WinHttp 传输错误代码。 可在[此处](/windows/win32/winhttp/error-messages)找到 WinHttp 错误。
+- **HTTP 状态：** 终结点返回的 HTTP 状态。
+- **服务器错误代码：** 服务器中的错误代码。  
+- **服务器错误说明：** 服务器中的错误消息。
+- **RefreshPrtDiagnostics：** 如果获取 PRT 诊断信息出现在日志中，则设置为“存在”。  
+如果没有可用的诊断信息，则跳过此字段。
+诊断信息字段与“AcquirePrtDiagnostics”相同
+
+
 ### <a name="sample-sso-state-output"></a>SSO 状态输出示例
 
 ```
@@ -181,10 +218,20 @@ dsregcmd/status 实用程序必须以域用户帐户身份运行。
 | SSO State                                                            |
 +----------------------------------------------------------------------+
 
-                AzureAdPrt : YES
-      AzureAdPrtUpdateTime : 2019-01-24 19:15:26.000 UTC
-      AzureAdPrtExpiryTime : 2019-02-07 19:15:26.000 UTC
+                AzureAdPrt : NO
        AzureAdPrtAuthority : https://login.microsoftonline.com/96fa76d0-xxxx-xxxx-xxxx-eb60cc22xxxx
+     AcquirePrtDiagnostics : PRESENT
+      Previous Prt Attempt : 2020-07-18 20:10:33.789 UTC
+            Attempt Status : 0xc000006d
+             User Identity : john@contoso.com
+           Credential Type : Password
+            Correlation ID : 63648321-fc5c-46eb-996e-ed1f3ba7740f
+              Endpoint URI : https://login.microsoftonline.com/96fa76d0-xxxx-xxxx-xxxx-eb60cc22xxxx/oauth2/token/
+               HTTP Method : POST
+                HTTP Error : 0x0
+               HTTP status : 400
+         Server Error Code : invalid_grant
+  Server Error Description : AADSTS50126: Error validating credentials due to invalid username or password.
              EnterprisePrt : YES
    EnterprisePrtUpdateTime : 2019-01-24 19:15:33.000 UTC
    EnterprisePrtExpiryTime : 2019-02-07 19:15:33.000 UTC
@@ -313,7 +360,7 @@ Default (No Key): Enabled
 > 如果用户已成功配置 WHFB，在 dsregcmd /status 中可能就看不到 NGC 先决条件检查详细信息。
 
 - IsDeviceJoined：如果设备已建立 Azure AD 联接，则设置为“是”。
-- IsUserAzureAD：如果 Azure AD 中存在登录用户，则设置为“是”。
+- **IsUserAzureAD：** 如果 Azure AD 中存在登录用户，则设置为“是”。
 - PolicyEnabled：如果设备上启用了 WHFB 策略，则设置为“是”。
 - PostLogonEnabled：如果平台以原生方式触发 WHFB 注册，则设置为“是”。 如果设置为“否”，则表示 Windows Hello 企业版注册由自定义机制触发
 - DeviceEligible：如果设备满足注册 WHFB 的硬件要求，则设置为“是”。

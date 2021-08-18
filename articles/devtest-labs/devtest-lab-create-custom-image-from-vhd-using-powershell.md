@@ -4,12 +4,12 @@ description: 使用 PowerShell 基于 VHD 文件在 Azure 开发测试实验室�
 ms.topic: article
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6f4dc044710ca74a72e7ffddd5ff82a003b88828
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 8994f51311ec2b6942e807e5e501a25b45130f60
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110695207"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750910"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>使用 PowerShell 基于 VHD 文件创建自定义映像
 
@@ -96,7 +96,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name Cr
 
 ## <a name="related-blog-posts"></a>相关的博客文章
 
-- [自定义映像或公式？](./devtest-lab-faq.md#blog-post)
+- [自定义映像或公式？](/azure/devtest-labs/devtest-lab-faq#blog-post)
 - [复制 Azure 开发测试实验室间的自定义映像](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>后续步骤

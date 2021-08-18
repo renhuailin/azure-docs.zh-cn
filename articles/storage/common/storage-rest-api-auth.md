@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozge
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f569fdac19c4f765828d24f4d6615fdd7bafef8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87c73dc2d5afaf4969a04e850811375d7d46cf07
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89010896"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113728977"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>通过共享密钥授权调用 REST API 操作
 
@@ -268,7 +268,7 @@ Content-Length: 1511
 ## <a name="creating-the-authorization-header"></a>创建授权标头
 
 > [!TIP]
-> 现在，Azure 存储支持将 Azure Active Directory (Azure AD) 集成用于 blob 和队列。 Azure AD 提供更简单的 Azure 存储请求授权体验。 有关如何使用 Azure AD 授权 REST 操作的详细信息，请参阅[使用 Azure Active Directory 进行授权](/rest/api/storageservices/authorize-with-azure-active-directory)。 有关 Azure AD 与 Azure 存储集成的概述，请参阅[使用 Azure Active Directory 对 Azure 存储的访问权限进行身份验证](storage-auth-aad.md)。
+> 现在，Azure 存储支持将 Azure Active Directory (Azure AD) 集成用于 blob 和队列。 Azure AD 提供更简单的 Azure 存储请求授权体验。 有关如何使用 Azure AD 授权 REST 操作的详细信息，请参阅[使用 Azure Active Directory 进行授权](/rest/api/storageservices/authorize-with-azure-active-directory)。 有关 Azure AD 与 Azure 存储集成的概述，请参阅[使用 Azure Active Directory 对 Azure 存储的访问权限进行身份验证](authorize-data-access.md)。
 
 有一篇文章从概念上（无代码）说明了如何[授权对 Azure 存储的请求](/rest/api/storageservices/authorize-requests-to-azure-storage)。
 

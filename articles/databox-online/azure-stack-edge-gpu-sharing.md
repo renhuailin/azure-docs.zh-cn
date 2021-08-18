@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 07/01/2021
 ms.author: alkohli
-ms.openlocfilehash: ff1c7b79a49b0b659056c89af3c61f28b72ebc50
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b1fd1d77a8b2e6f7da3a88bc4d7f57336d18237c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645238"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736716"
 ---
 # <a name="gpu-sharing-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU 设备上的 GPU 共享
 
@@ -26,7 +26,7 @@ ms.locfileid: "105645238"
 
 ## <a name="using-gpu-with-vms"></a>将 GPU 用于 VM
 
-在 Azure Stack Edge Pro 设备上，部署 VM 工作负载时不能共享 GPU。 一个 GPU 只能映射到一个 VM。 这意味着，在配备一个 GPU 的设备上只能有一个 GPU VM，在配备两个 GPU 的设备上只能有两个 VM。 在为容器化工作负载配置了 Kubernetes 的设备上使用 GPU VM 时，还必须考虑其他因素。 有关详细信息，请参阅 [GPU VM 和 Kubernetes](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#gpu-vms-and-kubernetes)。
+在 Azure Stack Edge Pro 设备上，部署 VM 工作负载时不能共享 GPU。 一个 GPU 只能映射到一个 VM。 这意味着，在配备一个 GPU 的设备上只能有一个 GPU VM，在配备两个 GPU 的设备上只能有两个 VM。 在为容器化工作负载配置了 Kubernetes 的设备上使用 GPU VM 时，还必须考虑其他因素。 有关详细信息，请参阅 [GPU VM 和 Kubernetes](azure-stack-edge-gpu-overview-gpu-virtual-machines.md#gpu-vms-and-kubernetes)。
 
 
 ## <a name="using-gpu-with-containers"></a>将 GPU 用于容器

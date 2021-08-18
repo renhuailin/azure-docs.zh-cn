@@ -3,19 +3,19 @@ title: Azure Functions 中的 IP 地址
 description: 了解如何查找函数应用的入站和出站 IP 地址，以及这些地址发生更改的原因。
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 30b45394ea620d05a89c3b2fd747573f1ea8017d
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: a884edd23fa1538fcc2b00c80190eab6699e1e47
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204992"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414478"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions 中的 IP 地址
 
 本文介绍以下与函数应用的 IP 地址相关的概念：
 
 * 查找函数应用当前正在使用的 IP 地址。
-* 导致函数应用 IP 地址发生更改的条件。
+* 导致函数应用 IP 地址更改的条件。
 * 限制可以访问函数应用的 IP 地址。
 * 定义函数应用的专用 IP 地址。
 
@@ -25,9 +25,21 @@ IP 地址与函数应用而不是单个函数相关联。 传入的 HTTP 请求�
 
 每个函数应用具有单个入站 IP 地址。 查找该 IP 地址：
 
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
+
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到函数应用。
 3. 在“设置”下，选择“属性”   。 入站 IP 地址显示在“虚拟 IP 地址”下面。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+在本地客户端计算机中使用 `nslookup` 实用工具：
+
+```command
+nslookup <APP_NAME>.azurewebsites.net
+```
+
+---
 
 ## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>函数应用的出站 IP 地址
 
@@ -35,22 +47,25 @@ IP 地址与函数应用而不是单个函数相关联。 传入的 HTTP 请求�
 
 查找函数应用可用的出站 IP 地址：
 
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
+
 1. 登录到 [Azure 资源浏览器](https://resources.azure.com)。
 2. 选择“订阅”> {你的订阅} >“提供程序”>“Microsoft.Web”>“站点”。
 3. 在 JSON 面板中，找到其 `id` 属性以函数应用名称结尾的站点。
 4. 请参见 `outboundIpAddresses` 和 `possibleOutboundIpAddresses`。 
 
-`outboundIpAddresses` 的集当前可供函数应用使用。 `possibleOutboundIpAddresses` 的集包括仅当函数应用[缩放到其他定价层](#outbound-ip-address-changes)时才可用的 IP 地址。
-
-查找可用出站 IP 地址的另一种方法是使用 [Cloud Shell](../cloud-shell/quickstart.md)：
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli-interactive
-az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
-az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
+az functionapp show --resource-group <GROUP_NAME> --name <APP_NAME> --query outboundIpAddresses --output tsv
+az functionapp show --resource-group <GROUP_NAME> --name <APP_NAME> --query possibleOutboundIpAddresses --output tsv
 ```
+---
+
+`outboundIpAddresses` 的集当前可供函数应用使用。 `possibleOutboundIpAddresses` 的集包括仅当函数应用[缩放到其他定价层](#outbound-ip-address-changes)时才可用的 IP 地址。
 
 > [!NOTE]
-> 对按[消耗计划](consumption-plan.md)或[高级计划](functions-premium-plan.md)运行的函数应用进行缩放时，可能会分配新范围的出站 IP 地址。 按上述任一计划运行时，可能需要将整个数据中心添加到允许列表。
+> 对按[消耗计划](consumption-plan.md)或[高级计划](functions-premium-plan.md)运行的函数应用进行缩放时，可能会分配新范围的出站 IP 地址。 在上述任一计划中运行时，不能依赖报告的出站 IP 地址来创建最终的允许列表。 为了能够包含动态缩放期间使用的所有潜在出站地址，需要将整个数据中心添加到允许列表。
 
 ## <a name="data-center-outbound-ip-addresses"></a>数据中心出站 IP 地址
 
@@ -96,20 +111,20 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ### <a name="consumption-and-premium-plans"></a>消耗计划和高级计划
 
-由于自动缩放行为，在[消耗计划](consumption-plan.md)或[高级计划](functions-premium-plan.md)中运行时，出站 IP 可以随时更改。 
+由于自动缩放行为，在[消耗计划](consumption-plan.md)或[高级计划](functions-premium-plan.md)上运行时，出站 IP 可能会随时更改。 
 
-如果需要控制函数应用的出站 IP 地址（例如需要将其添加到允许列表中），请考虑在高级计划中实施一个[虚拟网络 NAT 网关](#virtual-network-nat-gateway-for-outbound-static-ip)。
+如果需要控制函数应用的出站 IP 地址（例如需要将其添加到允许列表中时），在高级托管计划中运行时，请考虑实施[虚拟网络 NAT 网关](#virtual-network-nat-gateway-for-outbound-static-ip)。 还可以通过在专用（应用服务）计划中运行来实现此目的。
 
 ### <a name="dedicated-plans"></a>专用计划
 
-在按专用（应用服务）计划运行时，如果执行以下操作，函数应用可用的出站 IP 地址集可能会更改：
+在专用（应用服务）计划上运行时，若执行以下操作，函数应用的可用出站 IP 地址集可能会更改：
 
 * 执行可能更改入站 IP 地址的任何操作。
 * 更改专用（应用服务）计划的定价层。 应用可在所有定价层中使用的所有可能出站 IP 地址列表在 `possibleOutboundIPAddresses` 属性中指定。 请参阅[查找出站 IP](#find-outbound-ip-addresses)。
 
 #### <a name="forcing-an-outbound-ip-address-change"></a>强制进行出站 IP 地址更改
 
-使用以下过程在专用（应用服务）计划中特意强制进行出站 IP 地址更改：
+请使用以下过程在专用（应用服务）计划中有意强制出站 IP 地址发生更改：
 
 1. 在标准和高级 v2 定价层之间纵向缩放应用服务计划。
 
@@ -127,7 +142,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ### <a name="virtual-network-nat-gateway-for-outbound-static-ip"></a>用于出站静态 IP 的虚拟网络 NAT 网关
 
-可以通过使用虚拟网络 NAT 网关引导流量通过静态公共 IP 地址，从而控制来自函数的出站流量的 IP 地址。 在[高级计划](functions-premium-plan.md)中运行时，可以使用此拓扑。 若要进行详细的了解，请参阅[教程：使用 Azure 虚拟网络 NAT 网关控制 Azure Functions 出站 IP](functions-how-to-use-nat-gateway.md)。
+可以通过使用虚拟网络 NAT 网关引导流量通过静态公共 IP 地址，从而控制来自函数的出站流量的 IP 地址。 在[高级计划](functions-premium-plan.md)或[专用（应用服务）计划](dedicated-plan.md)中运行时，可以使用此拓扑。 要了解详细信息，请参阅[教程：使用 Azure 虚拟网络 NAT 网关控制 Azure Functions 出站 IP](functions-how-to-use-nat-gateway.md)。
 
 ### <a name="app-service-environments"></a>应用服务环境
 
@@ -135,16 +150,20 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 确定函数应用是否在应用服务环境中运行：
 
+# <a name="azure-porta"></a>[Azure 门户](#tab/portal)
+
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 导航到函数应用。
 3. 选择“概述”选项卡。
 4. 应用服务计划层显示在“应用服务计划/定价层”下面。 应用服务环境定价层为“隔离”。
- 
-或者，可以使用 [Cloud Shell](../cloud-shell/quickstart.md)：
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 ```azurecli-interactive
 az webapp show --resource-group <group_name> --name <app_name> --query sku --output tsv
 ```
+
+---
 
 应用服务环境的 `sku` 为“`Isolated`”。
 

@@ -8,26 +8,25 @@ ms.subservice: core
 ms.reviewer: jmartens
 author: SimranArora904
 ms.author: siarora
-ms.date: 05/25/2021
+ms.date: 06/14/2021
 ms.topic: how-to
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: b9890ad85bea81b918a9b625a2cd62adb11a5820
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 66fe4d7e5b145b5f32fc0a881c4a9270872d9cac
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110368866"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739153"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>管理和增大 Azure 机器学习资源的配额
 
 Azure 使用限制和配额来防止由于欺诈导致的预算超支，并遵循 Azure 容量约束。 对于生产工作负荷，在缩放时请考虑这些限制。 本文介绍：
 
 > [!div class="checklist"]
-> + 与 [Azure 机器学习](overview-what-is-azure-ml.md)相关的 Azure 资源的默认限制。
+> + 与 [Azure 机器学习](overview-what-is-azure-machine-learning.md)相关的 Azure 资源的默认限制。
 > + 创建工作区级别的配额。
 > + 查看你的配额和限制。
 > + 请求增大配额。
-> + 专用终结点和 DNS 配额。
 
 除了配额管理外，还可以了解如何[计划和管理 Azure 机器学习的成本](concept-plan-manage-cost.md)或了解 [Azure 机器学习的服务限制](resource-limits-quotas-capacity.md)。
 
@@ -199,35 +198,8 @@ Azure 存储的限制是每个订阅在每个区域中的存储帐户数不能�
 > [!NOTE]
 > [免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)不符合增加限制或配额的条件。 如果有免费试用版订阅，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅[将 Azure 免费试用版升级到即用即付](../cost-management-billing/manage/upgrade-azure-subscription.md)和 [Azure 免费帐户常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
 
-## <a name="private-endpoint-and-private-dns-quota-increases"></a>专用终结点和专用 DNS 配额增加
-
-可以在订阅中创建的专用终结点和专用 DNS 区域的数目存在限制。
-
-虽然 Azure 机器学习在你的（客户）订阅中创建资源，但某些情况下，会在 Microsoft 拥有的订阅中创建资源。
-
- 在以下方案中，你可能需要在 Microsoft 拥有的订阅中请求配额宽限：
-
-* 采用客户管理的密钥 (CMK) 且启用了 Azure 专用链接的工作区
-* 将启用了专用链接的 Azure Kubernetes 服务群集附加到你的工作区
-
-若要针对这些方案请求宽限，请使用以下步骤：
-
-1. [创建 Azure 支持请求](../azure-portal/supportability/how-to-create-azure-support-request.md#create-a-support-request)并在“基本信息”部分中选择以下选项：
-
-    | 字段 | 选择 |
-    | ----- | ----- |
-    | 问题类型 | **技术** |
-    | 服务 | **我的服务**。 然后，在下拉列表中选择“机器学习”。 |
-    | 问题类型 | **工作区配置和安全性** |
-    | 问题子类型 | **专用终结点和专用 DNS 区域宽限请求** |
-
-2. 在“详细信息”部分中，使用“说明”字段提供 Azure 区域以及计划使用的方案。 如果需要为多个订阅请求增加配额，请在此字段中列出订阅 ID。
-
-3. 选择“创建”以创建请求。
-
-:::image type="content" source="media/how-to-manage-quotas/quota-increase-private-endpoint.png" alt-text="屏幕截图显示了专用终结点和专用 DNS 配额增大请求。":::
-
 ## <a name="next-steps"></a>后续步骤
 
 + [计划和管理 Azure 机器学习成本](concept-plan-manage-cost.md)
 + [Azure 机器学习服务限制](resource-limits-quotas-capacity.md)
++ [排查托管联机终结点的部署和评分问题（预览版）](how-to-troubleshoot-managed-online-endpoints.md)

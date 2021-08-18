@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 6160dd09edc57f2f52306d4dad0dde413fff0616
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a096f630fd32521d5890be2072eff75719fb54a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102617176"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725950"
 ---
 # <a name="virtual-network-tap"></a>虚拟网络 TAP
 > [!IMPORTANT]
@@ -52,7 +52,7 @@ ms.locfileid: "102617176"
 - [适用于 Azure 的 GigaVUE 云套件](https://www.gigamon.com/solutions/cloud/public-cloud/gigavue-cloud-suite-azure.html)
 - [Ixia CloudLens](https://www.ixiacom.com/cloudlens/cloudlens-azure)
 - [Nubeva Prisms](https://www.nubeva.com/azurevtap)
-- [Big Switch Big Monitoring Fabric](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
+- [Big Switch Big Monitoring Fabric](https://www.bigswitch.com/)
 
 ### <a name="security-analytics-networkapplication-performance-management"></a>安全分析、网络/应用程序性能管理
 

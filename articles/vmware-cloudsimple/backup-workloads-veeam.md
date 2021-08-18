@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 115cb4203966bdf4cb60373d9c08994b6eb11576
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: d5037a6d236c0071c25e0e4f148c32f67b5e8438
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108182599"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113006277"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>使用 Veeam BR 在 CloudSimple 私有云上备份工作负荷 VM
 
@@ -222,7 +222,7 @@ Veeam 解决方案要求你执行以下操作：
 5. 按照 [Veeam 系统要求](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)，为 vCenter 中的 Veeam 备份和代理服务器创建 VM。 可以使用 Windows 2012 R2 或 Linux。 有关详细信息，请参阅[使用 Linux 备份存储库的要求](https://www.veeam.com/kb2216)。
 6. 在 Veeam 备份服务器 VM 中装载可安装的 Veeam ISO 作为 CDROM 设备。
 7. 使用 Windows 2012 R2 计算机的 RDP 会话（Veeam 安装的目标），在 Windows 2012 R2 VM 中[安装 Veeam B&R 9.5u3](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95)。
-8. 查找 Veeam 备份服务器 VM 的内部 IP 地址，并将该 IP 地址配置为 DHCP 服务器中的静态 IP 地址。 执行此操作所需的确切步骤取决于 DHCP 服务器。 例如，Netgate 文章<a href="https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html" target="_blank">静态 DHCP 映射</a>介绍了如何使用 pfSense 路由器配置 DHCP 服务器。
+8. 查找 Veeam 备份服务器 VM 的内部 IP 地址，并将该 IP 地址配置为 DHCP 服务器中的静态 IP 地址。 执行此操作所需的确切步骤取决于 DHCP 服务器。 例如，Netgate 文章<a href="https://docs.netgate.com/pfsense/en/latest/services/dhcp/index.html" target="_blank">静态 DHCP 映射</a>介绍了如何使用 pfSense 路由器配置 DHCP 服务器。
 
 ### <a name="veeam-console-install-veeam-backup-and-recovery-software"></a>Veeam 控制台：安装 Veeam 备份和恢复软件
 
@@ -302,4 +302,4 @@ Veeam 解决方案要求你执行以下操作：
 
 * [在托管磁盘上创建 XFS 卷 - RedHat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-xfs)
 * [如何在 CentOS 7 上设置 NFS 装载 - HowToForge](https://www.howtoforge.com/nfs-server-and-client-on-centos-7)
-* [配置 DHCP 服务器 - Netgate](https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html)
+* [配置 DHCP 服务器 - Netgate](https://docs.netgate.com/pfsense/en/latest/services/dhcp/index.html)

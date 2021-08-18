@@ -2,13 +2,13 @@
 title: 混合连接的诊断日志
 description: 本文概述了可用于 Azure 中继的所有活动和诊断日志。
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: 7ca6dc95567a4867d3c58e0efad0fc74289e586c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.date: 06/23/2021
+ms.openlocfilehash: cfcbdacb7b4266601f4669a20013bb6a5a5331a6
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079091"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666262"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>为 Azure 中继混合连接启用诊断日志
 开始使用 Azure 中继混合连接时，你可能希望监视你的侦听器和发送方是如何以及何时打开和关闭的，以及你的混合连接是如何创建的，消息是如何发送的。 本文概述了 Azure 中继服务提供的活动和诊断日志。 

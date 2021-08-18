@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric 监视和诊断概述
 description: 了解 Azure Service Fabric 群集、应用程序和服务的监视与诊断。
-author: srrengar
 ms.topic: conceptual
 ms.date: 1/17/2019
-ms.author: srrengar
-ms.openlocfilehash: 25a50a2841a03929804be45be8012f9b5d0457ff
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d3a7060b7a12cb9a57a78c1bbb3fc0b58656ef6d
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91357125"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112455151"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric 的监视和诊断
 
@@ -54,7 +52,7 @@ Service Fabric 平台包含运行状况模型，针对群集中的实体状态�
 
 
 ### <a name="watchdogs"></a>监视器
-监视器通常是一个独立的服务，可以监视各个服务的运行状况和负载、ping 终结点，以及报告群集中任何组件的运行状况。 这有助于防止某些根据单个服务视图检测不到的错误。 监视器也是一个托管代码的好选择，在此无需用户交互即可执行补救措施（例如每隔特定时间就清理一次存储中的日志文件）。 可在[此处](https://github.com/Azure-Samples/service-fabric-watchdog-service)获取监视软件服务实现示例。
+监视器通常是一个独立的服务，用于监视各个服务的运行状况和负载、ping 终结点，以及报告群集中的异常运行状况事件。 这有助于防止出现仅基于单个服务的性能所检测不到的错误。 监视器也是一个托管代码的好选择，无需用户交互即可执行补救措施，例如每隔特定时间就清理一次存储中的日志文件。 如果需要完全实现的开源 SF 监视服务，其中包括易于使用的监视器可扩展性模型，同时在 Windows 和 Linux 群集中都能运行，请参阅 [FabricObserver](https://github.com/Azure-Samples/service-fabric-watchdog-service) 项目。 FabricObserver 是生产就绪软件。 建议将 FabricObserver 部署到测试和生产群集，并通过其插件模型或者通过分支并编写自己的内置观察器对其扩展，以满足你的需求。 建议采用前一种（插件）方法。
 
 ## <a name="infrastructure-performance-monitoring"></a>基础结构（性能）监视
 既然我们已介绍了应用程序和平台中的诊断，那么如何知道硬件按预期方式正常运行？ 监视底层基础结构是了解群集状态和资源利用率的重要组成部分。 测量系统性能取决于多种因素，主观上取决于工作负荷。 这些因素通常通过性能计数器来衡量。 这些性能计数器可以来自各种来源，包括操作系统、.NET Framework 或 Service Fabric 平台本身。 在某些情况下，它们将是有用的

@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: ea9d5d92d45db50470276929b6e7b4200bb427d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4f1523c58a8ca26bbab516383d59e7e8dd009466
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557516"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288296"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>使用 Java 创建和管理 Azure 中的 Windows VM
 
-[Azure 虚拟机](overview.md) (VM) 需要多个支持性 Azure 资源。 本文介绍如何使用 Java 创建、管理和删除 VM 资源。 学习如何：
+[Azure 虚拟机](overview.md) (VM) 需要多个支持性 Azure 资源。 本文介绍如何使用 Java 创建、管理和删除 VM 资源。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Maven 项目
@@ -33,7 +33,7 @@ ms.locfileid: "102557516"
 
 ## <a name="create-a-maven-project"></a>创建 Maven 项目
 
-1. 如果尚未安装 [Java](/azure/developer/java/fundamentals/java-jdk-long-term-support)，请安装。
+1. 如果尚未安装 [Java](/azure/developer/java/fundamentals/java-support-on-azure)，请安装。
 2. 安装 [Maven](https://maven.apache.org/download.cgi)。
 3. 创建新文件夹和项目：
     

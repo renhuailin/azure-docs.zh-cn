@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 06/10/2021
-ms.openlocfilehash: 9a8e4351b88c1b9c4f166dff71fe906177870d9a
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.date: 07/01/2021
+ms.openlocfilehash: 1c07e96a82814e59c635a592313e461d06a6fcc3
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984691"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217460"
 ---
 # <a name="configure-a-private-endpoint-for-an-azure-machine-learning-workspace"></a>为 Azure 机器学习工作区配置专用终结点
 
@@ -25,7 +25,7 @@ ms.locfileid: "111984691"
 使用 Azure 专用链接，可以通过专用终结点连接到工作区。 专用终结点是虚拟网络中的一组专用 IP 地址。 然后，你可以限制工作区访问权限，只允许通过专用 IP 地址访问你的工作区。 专用终结点有助于降低数据泄露风险。 若要详细了解专用终结点，请参阅 [Azure 专用链接](../private-link/private-link-overview.md)一文。
 
 > [!WARNING]
-> 使用专用终结点保护工作区本身不能确保端到端安全。 必须保护解决方案的所有组件。 例如，如果为工作区使用专用终结点，但 Azure 存储帐户不支持 VNet，则工作区和存储之间的流量出于安全原因不会使用 VNet。
+> 使用专用终结点保护工作区本身不能确保端到端安全。 必须保护解决方案的所有组件。 例如，如果为工作区使用专用终结点，但 Azure 存储帐户不在 VNet 之后，则工作区和存储之间的流量出于安全原因不会使用 VNet。
 >
 > 若要详细了解如何保护 Azure 机器学习所用的资源，请参阅以下文章：
 >
@@ -38,8 +38,6 @@ ms.locfileid: "111984691"
 ## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [cli-version-info](../../includes/machine-learning-cli-version-1-only.md)]
-
-* 如果计划将启用了专用终结点的工作区与客户管理的密钥配合使用，需要使用支持票证请求此功能。 有关详细信息，请参阅[管理和增加配额](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
 
 * 必须具有用于创建专用终结点的现有虚拟网络。 在添加专用终结点之前，还需要[对专用终结点禁用网络策略](../private-link/disable-private-endpoint-network-policy.md)。
 
@@ -127,7 +125,7 @@ ws.add_private_endpoint(private_endpoint_config=pe, private_endpoint_auto_approv
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[用于机器学习的 Azure CLI 扩展 1.0](reference-azure-machine-learning-cli.md) 提供了 [az ml workspace private-endpoint add](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_add) 命令。
+[用于机器学习的 Azure CLI 扩展 1.0](reference-azure-machine-learning-cli.md) 提供了 [az ml workspace private-endpoint add](/cli/azure/ml(v1)/workspace/private-endpoint#az_ml_workspace_private_endpoint_add) 命令。
 
 ```azurecli
 az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval --pe-vnet-name myvnet
@@ -164,7 +162,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[用于机器学习的 Azure CLI 扩展 1.0](reference-azure-machine-learning-cli.md) 提供了 [az ml workspace private-endpoint delete](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_delete) 命令。
+[用于机器学习的 Azure CLI 扩展 1.0](reference-azure-machine-learning-cli.md) 提供了 [az ml workspace private-endpoint delete](/cli/azure/ml(v1)/workspace/private-endpoint#az_ml_workspace_private_endpoint_delete) 命令。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -186,7 +184,9 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 在某些情况下，你可能希望允许某人通过公共终结点（而不是通过 VNet）连接到受保护的工作区。 使用专用终结点配置工作区后，可以选择启用对工作区的公共访问。 执行此操作不会删除专用终结点。 VNet 后面的组件之间的所有通信仍受到保护。 除了通过 VNet 进行专用访问以外，还可实现仅对工作区的公共访问。
 
 > [!WARNING]
-> 通过公共终结点进行连接时，工作室的某些功能将无法访问你的数据。 如果数据存储在 VNet 保护的服务中，则会出现此问题。 例如 Azure 存储帐户。 另请注意，计算实例 Jupyter/JupyterLab/RStudio 功能和正在运行的笔记本将不起作用。
+> 通过公共终结点进行连接时：
+> * 工作室的某些功能将无法访问你的数据。 如果数据存储在受 VNet 保护的服务中，则会出现此问题。 例如 Azure 存储帐户。 
+> * 不支持在计算实例（包括正在运行的笔记本）上使用 Jupyter、JupyterLab 和 RStudio。
 
 若要对启用了专用终结点的工作区启用公共访问，请使用以下步骤：
 

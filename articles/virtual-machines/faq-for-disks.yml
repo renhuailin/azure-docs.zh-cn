@@ -3,17 +3,17 @@ metadata:
   title: 有关磁盘的常见问题解答
   description: 有关 Azure IaaS Linux VM 磁盘和高级磁盘（托管和非托管）的常见问题解答
   author: roygara
-  ms.service: virtual-machines
+  ms.service: storage
   ms.topic: conceptual
   ms.date: 06/15/2017
   ms.author: rogarana
   ms.subservice: disks
-  ms.openlocfilehash: 750a6e24434d205d5a6d014e1636c43e53be8692
-  ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+  ms.openlocfilehash: 2e3e13f0db5b96d8d1cd8ca3eaa7b900dacb0d72
+  ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/11/2021
-  ms.locfileid: "112034803"
+  ms.lasthandoff: 07/07/2021
+  ms.locfileid: "113358311"
 title: 有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 summary: 本文将对有关 Azure 托管磁盘和 Azure 高级 SSD 盘的一些常见问题进行解答。
 sections:

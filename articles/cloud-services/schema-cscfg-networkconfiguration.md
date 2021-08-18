@@ -5,17 +5,17 @@ ms.topic: article
 ms.service: cloud-services
 ms.subservice: deployment-files
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
 '---thor': tagore
-ms.openlocfilehash: e3e9d5ebc7e4e2aa1119f4b840aa1d8b94d93aa4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 10ccbe04b115bef5a9ad802050bf60d89742e813
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935118"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113088221"
 ---
 # <a name="azure-cloud-services-classic-config-networkconfiguration-schema"></a>Azure 云服务（经典）的配置 NetworkConfiguration 架构
 

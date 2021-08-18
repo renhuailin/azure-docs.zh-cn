@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/27/2021
+ms.date: 06/16/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 523212e0f63453e78967eb9a4716febb754ea5d6
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 76a7fa3cfeafa20dd81f043d67388bdfb281b6d4
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315266"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112232514"
 ---
 # <a name="user-profile-attributes"></a>用户配置文件属性
 
@@ -88,6 +88,16 @@ Azure Active Directory (Azure AD) B2C 目录用户配置文件附带了一组内
 |userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|显示 UserState 属性最新更改的时间戳。|否|否|持久化、输出|
 
 <sup>1 </sup>不受 Microsoft Graph 支持<br><sup>2 </sup>有关详细信息，请参阅 [MFA 电话号码属性](#mfa-phone-number-attribute)<br><sup>3</sup> 不应该用于 Azure AD B2C
+
+## <a name="required-attributes"></a>必需属性
+
+若要在 Azure AD B2C 目录中创建用户帐户，请提供以下必需属性： 
+
+- [显示名称](#display-name-attribute)
+
+- [标识](#display-name-attribute) - 至少有一个实体（本地帐户或联合帐户）。
+
+- [密码配置文件](#password-policy-attribute) - 如果创建本地帐户，请提供密码配置文件。
 
 ## <a name="display-name-attribute"></a>显示名称属性
 

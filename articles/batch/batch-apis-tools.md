@@ -4,12 +4,12 @@ description: 了解通过 Azure Batch 服务开发解决方案时可以使用的
 ms.topic: conceptual
 ms.date: 06/11/2021
 ms.custom: seodec18
-ms.openlocfilehash: 0c378ae34ca74df7bb639464818f13f86a8f5ec2
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 8b8c82186539c84848754657195e88d33082fe1f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006628"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743586"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>批处理 API 和工具概述
 
@@ -46,7 +46,7 @@ Azure Batch 具有两组 API，一个用于服务级别，另一个用于管理�
 | **批处理 REST** |[Azure REST API - Docs](/rest/api/batchservice/) |空值 |- |- | [支持的版本](/rest/api/batchservice/batch-service-rest-api-versioning) |
 | **Batch .NET** |[用于 .NET 的 Azure SDK - Docs](/dotnet/api/overview/azure/batch) |[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Batch/) |[教程](tutorial-parallel-dotnet.md) |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp) | [发行说明](https://aka.ms/batch-net-dataplane-changelog) |
 | **Batch Python** |[用于 Python 的 Azure SDK - Docs](/python/api/overview/azure/batch/client) |[PyPI](https://pypi.org/project/azure-batch/) |[教程](tutorial-parallel-python.md)|[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/Python/Batch) | [自述文件](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/batch/azure-batch/README.md) |
-| **Batch JavaScript** |[用于 JavaScript 的 Azure SDK - Docs](/javascript/api/overview/azure/batch/client) |[npm](https://www.npmjs.com/package/azure-batch) |[教程](batch-js-get-started.md) |- | [自述文件](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
+| **Batch JavaScript** |[用于 JavaScript 的 Azure SDK - Docs](/javascript/api/overview/azure/batch/client) |[npm](https://www.npmjs.com/package/@azure/batch) |[教程](batch-js-get-started.md) |- | [自述文件](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/batch/batch) |
 | **批处理 Java** |[用于 Java 的 Azure SDK - Docs](/java/api/overview/azure/batch) |[Maven](https://search.maven.org/search?q=a:azure-batch) |- |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/Java) | [自述文件](https://github.com/Azure/azure-batch-sdk-for-java)|
 
 ## <a name="batch-management-apis"></a>批处理管理 API
@@ -58,7 +58,7 @@ Azure Batch 具有两组 API，一个用于服务级别，另一个用于管理�
 | **批次管理 REST** |[Azure REST API - Docs](/rest/api/batchmanagement/) |- |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
 | **Batch Management .NET** |[用于 .NET 的 Azure SDK - Docs](/dotnet/api/overview/azure/batch/management) |[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.Batch/) | [教程](batch-management-dotnet.md) |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp) |
 | **批次管理 Python** |[用于 Python 的 Azure SDK - Docs](/python/api/overview/azure/batch/management) |[PyPI](https://pypi.org/project/azure-mgmt-batch/) |- |- |
-| **Batch Management JavaScript** |[用于 JavaScript 的 Azure SDK - Docs](/javascript/api/overview/azure/batch/management) |[npm](https://www.npmjs.com/package/azure-arm-batch) |- |- | 
+| **Batch Management JavaScript** |[用于 JavaScript 的 Azure SDK - Docs](/javascript/api/overview/azure/batch/management) |[npm](https://www.npmjs.com/package/@azure/arm-batch) |- |- | 
 | **批次管理 Java** |[用于 Java 的 Azure SDK - Docs](/java/api/overview/azure/batch/management) |[Maven](https://search.maven.org/search?q=a:azure-batch) |- |- |
 
 ## <a name="batch-command-line-tools"></a>批处理命令行工具

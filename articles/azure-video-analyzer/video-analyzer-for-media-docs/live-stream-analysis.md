@@ -1,19 +1,20 @@
 ---
 title: 使用 Azure 视频分析器媒体版（之前称为视频索引器）进行实时流分析
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: 本文演示如何使用 Azure 视频分析器媒体版（之前称为视频索引器）进行实时流分析。
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 11/13/2019
 ms.author: juliako
-ms.openlocfilehash: 866edfb6ee3ba429238bee1d5f03d530e89d537e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d5c45a708a1a878a00a93ce30dcbad37105bd5ea
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384943"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112119501"
 ---
 # <a name="live-stream-analysis-with-video-analyzer-for-media"></a>使用视频分析器媒体版进行实时流分析
 

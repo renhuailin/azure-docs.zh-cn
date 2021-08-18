@@ -2,20 +2,21 @@
 title: 使用 Azure AD 管理对应用的访问
 description: 介绍 Azure Active Directory 如何使组织能够指定每个用户有权访问的应用。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
-ms.author: mtillman
-ms.openlocfilehash: b50f93dc13eb5fbd5934462b7084c521a6686ae0
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: davidmu
+ms.reviewer: alamaral
+ms.openlocfilehash: 2dc66adcce209b29579bb88184272fd2bda1353c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079384"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738750"
 ---
 # <a name="managing-access-to-apps"></a>管理对应用的访问
 
@@ -61,6 +62,7 @@ Azure AD 提供[多种可自定义的方式来向组织中的最终用户部署�
 可以确定分配给企业应用的用户是否可以在我的应用和 Microsoft 365 应用程序启动器中看到它。
 
 ## <a name="example-complex-application-assignment-with-azure-ad"></a>示例：使用 Azure AD 进行复杂应用程序分配
+
 以 Salesforce 之类的应用程序为例。 在许多组织中，Salesforce 主要由营销和销售团队使用。 通常，营销团队成员对 Salesforce 拥有较高的访问权限，而销售团队的访问权限则受限。 在许多情况下，大范围的信息工作者对应用程序的访问权限会受到限制。 这些规则存在的例外使情况变得复杂。 营销或销售领导团队通常有特权授予用户访问权限，或独立于这些常规规则更改其角色。
 
 使用 Azure AD 可将 Salesforce 等应用程序预先配置为支持单一登录 (SSO) 和自动化预配。 配置应用程序后，管理员可以执行一次性的操作来创建和分配相应的组。 在本示例中，管理员可以执行以下分配：
@@ -82,16 +84,18 @@ Microsoft 应用程序（如 Exchange、SharePoint、Yammer 等）的分配和�
 
 用户访问 Microsoft 发布的应用程序的方法主要有三种。
 
-- 对于 Microsoft 365 或其他付费套件中的应用程序，可以通过 **许可证分配** 直接向用户的用户帐户授予访问权限，也可以使用基于组的许可证分配功能通过组来这样做。
-- 对于 Microsoft 或第三方发布的可供任何人免费使用的应用程序，可以通过[用户许可](configure-user-consent.md)授予用户访问权限。 这意味着他们使用其 Azure AD 工作或学校帐户登录到应用程序，并允许它访问其帐户上一些受限制的数据集。
-- 对于 Microsoft 或第三方发布的可供任何人免费使用的应用程序，还可以通过[管理员同意](manage-consent-requests.md)授予用户访问权限。 这意味着管理员已确定组织中的所有人都可以使用此应用程序，因此他们使用全局管理员帐户可以登录到应用程序并向组织中所有人授予访问权限。
+* 对于 Microsoft 365 或其他付费套件中的应用程序，可以通过 **许可证分配** 直接向用户的用户帐户授予访问权限，也可以使用基于组的许可证分配功能通过组来这样做。
+* 对于 Microsoft 或第三方发布的可供任何人免费使用的应用程序，可以通过[用户许可](configure-user-consent.md)授予用户访问权限。 这意味着他们使用其 Azure AD 工作或学校帐户登录到应用程序，并允许它访问其帐户上一些受限制的数据集。
+
+* 对于 Microsoft 或第三方发布的可供任何人免费使用的应用程序，还可以通过[管理员同意](manage-consent-requests.md)授予用户访问权限。 这意味着管理员已确定组织中的所有人都可以使用此应用程序，因此他们使用全局管理员帐户可以登录到应用程序并向组织中所有人授予访问权限。
 
 某些应用程序合并这些方法。 例如，某些 Microsoft 应用程序是 Microsoft 365 订阅的一部分，但仍需要许可。
 
-用户可以通过其 Office 365 门户访问 Microsoft 365 应用程序。 还可以通过目录的“用户设置”中的 [Office 365 可见性切换](hide-application-from-user-portal.md)，在“我的应用”中显示或隐藏 Microsoft 365 应用程序。 
+用户可以通过其 Office 365 门户访问 Microsoft 365 应用程序。 还可以通过目录的“用户设置”中的 [Office 365 可见性切换](hide-application-from-user-portal.md)，在“我的应用”中显示或隐藏 Microsoft 365 应用程序。
 
 与企业应用一样，你可以通过 Azure 门户[分配用户](assign-user-or-group-access-portal.md)到某些 Microsoft 应用程序，或者如果门户方式不可用，则可以使用 PowerShell。
 
 ## <a name="next-steps"></a>后续步骤
+
 * [使用条件访问保护应用](../conditional-access/concept-conditional-access-cloud-apps.md)
 * [自助服务组管理/SSAA](../enterprise-users/groups-self-service-management.md)

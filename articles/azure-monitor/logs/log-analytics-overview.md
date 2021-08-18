@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: 860085cc447b241f622c2be89038bca0014a883e
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: bcdfb35fc8bf854746b4bde0ea3af5f8cadc7989
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110493404"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113217784"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Azure Monitor 中的 Log Analytics 概述
 Log Analytics 是 Azure 门户中的一种工具，用于通过 Azure Monitor 日志中的数据编辑和运行日志查询。 可以编写简单查询，以返回记录集，然后使用 Log Analytics 的功能对它们进行排序、筛选和分析。 也可以编写更高级的查询来执行统计分析并在图表中显示结果，以确定特定趋势。 无论是以交互方式处理查询的结果，还是将它们与其他 Azure Monitor 功能（如日志查询警报或工作簿）一起使用，Log Analytics 都是要用于编写和测试它们的工具。 
@@ -26,7 +26,7 @@ Log Analytics 是 Azure 门户中的一种工具，用于通过 Azure Monitor �
 
 [![启动 Log Analytics](media/log-analytics-overview/start-log-analytics.png)](media/log-analytics-overview/start-log-analytics.png#lightbox)
 
-启动 Log Analytics 时，你会看到的第一个内容是包含[示例查询](../logs/queries.md)的对话框。 这些查询按解决方案进行分类，你可以浏览或搜索符合特定要求的查询。 能够查找精确执行所需操作的查询，或者将一个查询加载到编辑器中，并根据需要进行修改。 浏览示例查询实际上是一种了解如何编写自己的查询的极好方法。 
+启动 Log Analytics 时，你会看到的第一个内容是包含[示例查询](../logs/queries.md)的对话框。 这些查询按解决方案进行分类，你可以浏览或搜索符合特定要求的查询。 能够查找一个精确执行所需操作的查询，或者将一个查询加载到编辑器中，并根据需要进行修改。 浏览示例查询实际上是一种了解如何编写自己的查询的极好方法。 
 
 当然，如果要从空脚本开始并自己编写，则可以关闭示例查询。 如果要重新打开它们，只需单击屏幕顶部的“查询”。
 

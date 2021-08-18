@@ -3,20 +3,20 @@ title: 语言支持 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 语音服务支持多种语言，可用于语音到文本和文本到语音转换，以及语音翻译。 本文提供了按服务功能列出的语言支持的完整列表。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: references_regions
-ms.openlocfilehash: 2879ecbc6b50c3cd2bd7541357886f5d6dfe483b
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: f718ba81cf122b747652bf66d840dd8935897019
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752488"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253818"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>语音服务的语言和语音支持
 
@@ -104,6 +104,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | 马耳他语（马耳他）                    | `mt-MT` | 文本                                   |                           |                          |
 | 马拉地语(印度)                    | `mr-IN` | 文本                                   |                           |                          |
 | 挪威语（博克马尔语，挪威）         | `nb-NO` | 文本                                   |     是                      |                          |
+| 波斯语（伊朗）                     | `fa-IR` | 文本                                   |                           |                          |
 | 波兰语（波兰）                    | `pl-PL` | 文本                                   |       是                    |                          |
 | 葡萄牙语(巴西)                | `pt-BR` | 音频 (20190620, 20201015)<br>文本<br>发音|          是                 |                          |
 | 葡萄牙语(葡萄牙)              | `pt-PT` | 文本<br>发音                  |             是              |                          |
@@ -133,6 +134,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | 西班牙语（乌拉圭）                  | `es-UY` | 文本<br>发音                  |                           |                          |
 | 西班牙语（美国）                      | `es-US` | 文本<br>发音                  |                           |                          |
 | 西班牙语（委内瑞拉）                | `es-VE` | 文本<br>发音                  |                           |                          |
+| 斯瓦希里语（肯尼亚）                    | `sw-KE` | 文本<br>发音                  |                           |                          |
 | 瑞典语（瑞典）                   | `sv-SE` | 文本                                   |   是                        |                          |
 | 泰米尔语（印度）                      | `ta-IN` | 文本                                   |                           |                          |
 | 泰卢固语（印度）                     | `te-IN` | 文本                                   |                           |                          |
@@ -217,8 +219,19 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 英语（英国） | `en-GB` | 女 | `en-GB-MiaNeural` | 常规 |
 | 英语（英国） | `en-GB` | 男 | `en-GB-RyanNeural` | 常规 |
 | 英语（美国） | `en-US` | 女 | `en-US-AriaNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格 |
-| 英语（美国） | `en-US` | 女 | `en-US-JennyNeural` | 常规 |
-| 英语（美国） | `en-US` | 男 | `en-US-GuyNeural` | 常规 |
+| 英语（美国） | `en-US` | 女 | `en-US-JennyNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格 |
+| 英语（美国） | `en-US` | 男 | `en-US-GuyNeural` | 常规，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles) 提供多种语音风格 |
+| 英语（美国） | `en-US` | Female | `en-US-AmberNeural` <sup>新建</sup> | 常规 |
+| 英语（美国） | `en-US` | Female | `en-US-AshleyNeural` <sup>新建</sup> | 常规 |
+| 英语（美国） | `en-US` | Female | `en-US-CoraNeural` <sup>新建</sup> | 常规 |
+| 英语（美国） | `en-US` | Female | `en-US-ElizabethNeural` <sup>新建</sup> | 常规 |
+| 英语（美国） | `en-US` | Female | `en-US-MichelleNeural` <sup>新建</sup> | 常规 |
+| 英语（美国） | `en-US` | Female | `en-US-MonicaNeural` <sup>新建</sup> | 常规 |
+| 英语（美国） | `en-US` | 儿童 | `en-US-AnaNeural` <sup>新建</sup> | 常规 |
+| 英语（美国） | `en-US` | 男 | `en-US-BrandonNeural` <sup>新建</sup> | 常规 |
+| 英语（美国） | `en-US` | 男 | `en-US-ChristopherNeural` <sup>新建</sup> | 常规 |
+| 英语（美国） | `en-US` | 男 | `en-US-JacobNeural` <sup>新建</sup> | 常规 |
+| 英语（美国） | `en-US` | 男 | `en-US-EricNeural` <sup>新建</sup> | 常规 |
 | 爱沙尼亚语(爱沙尼亚) | `et-EE` | 女 | `et-EE-AnuNeural` | 常规 |
 | 爱沙尼亚语(爱沙尼亚) | `et-EE` | 男 | `et-EE-KertNeural` | 常规 |
 | 芬兰语（芬兰） | `fi-FI` | 女 | `fi-FI-NooraNeural` | 常规 |
@@ -329,18 +342,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 
 | 语言                         | Locale  | 性别 | 语音名称                             | 风格支持 |
 |----------------------------------|---------|--------|----------------------------------------|---------------|
-| 英语（美国） | `en-US` | Female | `en-US-AmberNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | Female | `en-US-AshleyNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | Female | `en-US-CoraNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | Female | `en-US-ElizabethNeural` <sup>新建</sup> | 常规 |
 | 英语（美国） | `en-US` | Female | `en-US-JennyMultilingualNeural` <sup>新建</sup> | [使用 SSML](speech-synthesis-markup.md#create-an-ssml-document) 的常规多语言功能 |
-| 英语（美国） | `en-US` | Female | `en-US-MichelleNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | Female | `en-US-MonicaNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | 儿童 | `en-US-AnaNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | 男 | `en-US-BrandonNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | 男 | `en-US-ChristopherNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | 男 | `en-US-JacobNeural` <sup>新建</sup> | 常规 |
-| 英语（美国） | `en-US` | 男 | `en-US-EricNeural` <sup>新建</sup> | 常规 |
 
 > [!IMPORTANT]
 > 公共预览版语音仅在美国东部、西欧和东南亚这三个服务区域提供。
@@ -478,6 +480,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 韩语(韩国) | `ko-KR` | 是 | 是 |
 | 挪威语（博克马尔语，挪威） | `nb-NO` | 是 | 否 |
 | 葡萄牙语（巴西） | `pt-BR` | 是 | 是 |
+| 俄语（俄罗斯） | `ru-RU` | 是 | 是 |
 | 西班牙语（墨西哥） | `es-MX` | 是 | 是 |
 | 西班牙语(西班牙) | `es-ES` | 是 | 是 |
 
@@ -595,7 +598,7 @@ Microsoft 语音 SDK 和 REST API 支持以下语音，其中的每种语音都�
 | 中文（普通话，简体） | zh-CN | 是 | 是 |
 | 英语（美国） | zh-CN | 是 | 是 |
 | 日语（日本） | ja-JP | 否 | 是 |
-| 葡萄牙语(巴西) | pt-BR | 否 | 是 |
+| 葡萄牙语（巴西） | pt-BR | 否 | 是 |
 
 ## <a name="next-steps"></a>后续步骤
 

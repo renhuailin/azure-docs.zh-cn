@@ -4,12 +4,12 @@ description: Apache Zeppelin Hive JDBC 解释器在 Azure HDInsight 中指向错
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
-ms.openlocfilehash: 2d6e660459d9f350cc5c63fb8d312bcbcb300a64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04288fdde74da705f6127c2444b0dc7ac7a2a8dd
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98930756"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112290532"
 ---
 # <a name="scenario-apache-hive-zeppelin-interpreter-gives-a-zookeeper-error-in-azure-hdinsight"></a>场景：Apache Hive Zeppelin 解释器在 Azure HDInsight 中给出 Zookeeper 错误
 
@@ -39,4 +39,4 @@ Zeppelin Hive JDBC 解释器指向错误的 URL。
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

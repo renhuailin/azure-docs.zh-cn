@@ -10,12 +10,12 @@ ms.date: 05/11/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 39b1ebb4ca0a7daf5654c306382effa44d90c798
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: e65d6097afb6c2b6da1de332304d3b638d2ac081
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109845755"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740177"
 ---
 # <a name="object-replication-for-block-blobs"></a>块 blob 的对象复制
 
@@ -68,7 +68,7 @@ ms.locfileid: "109845755"
 
 ### <a name="immutable-blobs"></a>不可变 blob
 
-对象复制不支持不可变 blob。 如果源或目标容器具有基于时间的保留策略或法定保留，则对象复制将失败。 有关不可变 blob 的详细信息，请参阅[使用不可变存储来存储业务关键型 blob 数据](storage-blob-immutable-storage.md)。
+对象复制不支持不可变 blob。 如果源或目标容器具有基于时间的保留策略或法定保留，则对象复制将失败。 有关不可变 blob 的详细信息，请参阅[使用不可变存储来存储业务关键型 blob 数据](immutable-storage-overview.md)。
 
 ## <a name="object-replication-policies-and-rules"></a>对象复制策略和规则
 

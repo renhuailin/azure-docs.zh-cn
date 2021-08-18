@@ -4,13 +4,13 @@ description: 了解如何使用资源管理器模板创建日志警报
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: f31371c3d33354c4d8e6c849c9739eb9001c7641
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 07/12/2021
+ms.openlocfilehash: d3414b0de4a173b08815fc274e06e67814f6c887
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111961771"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113687508"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建日志警报
 
@@ -200,7 +200,7 @@ ms.locfileid: "111961771"
 
 可以使用 [Azure 门户中的 Azure 资源管理器](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)保存和部署该 JSON。
 
-## <a name="template-for-all-resource-types-from-api-version-2020-05-01-preview"></a>所有资源类型的模板（最低 API 版本为 2020-05-01-preview）
+## <a name="template-for-all-resource-types-from-api-version-2021-02-01-preview"></a>所有资源类型的模板（API 版本为 2021-02-01-preview）
 
 适用于所有资源类型的[计划查询规则（创建）](/rest/api/monitor/scheduledqueryrules/createorupdate)模板（示例数据设置为变量）：
 
@@ -249,6 +249,20 @@ ms.locfileid: "111961771"
             "defaultValue": true,
             "metadata": {
                 "description": "Specifies whether the alert is enabled"
+            }
+        },
+        "autoMitigate": {
+            "type": "bool",
+            "defaultValue": true,
+            "metadata": {
+                "description": "Specifies whether the alert will automatically resolve"
+            }
+        },
+        "checkWorkspaceAlertsStorageConfigured": {
+            "type": "bool",
+            "defaultValue": false,
+            "metadata": {
+                "description": "Specifies whether to check linked storage and fail creation if the storage was not found"
             }
         },
         "resourceId": {
@@ -360,7 +374,7 @@ ms.locfileid: "111961771"
         },
         "muteActionsDuration": {
             "type": "string",
-            "defaultValue": "PT5M",
+            "defaultValue": null,
             "allowedValues": [
                 "PT1M",
                 "PT5M",
@@ -389,7 +403,7 @@ ms.locfileid: "111961771"
             "name": "[parameters('alertName')]",
             "type": "Microsoft.Insights/scheduledQueryRules",
             "location": "[parameters('location')]",
-            "apiVersion": "2020-05-01-preview",
+            "apiVersion": "2021-02-01-preview",
             "tags": {},
             "properties": {
                 "description": "[parameters('alertDescription')]",
@@ -416,11 +430,15 @@ ms.locfileid: "111961771"
                     ]
                 },
                 "muteActionsDuration": "[parameters('muteActionsDuration')]",
-                "actions": [
-                    {
-                        "actionGroupId": "[parameters('actionGroupId')]"
+                "autoMitigate": "[parameters('autoMitigate')]",
+                "checkWorkspaceAlertsStorageConfigured": "[parameters('checkWorkspaceAlertsStorageConfigured')]",
+                "actions": {
+                    "actionGroups": "[parameters('actionGroupId')]",
+                    "customProperties": {
+                        "key1": "value1",
+                        "key2": "value2"
                     }
-                ]
+                }
             }
         }
     ]

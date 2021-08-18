@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: a4f2b07edc6c290fa030621a4dc400ab50890bba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d431364f0e539f7944a759c3e4669570ce25646
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96001132"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285672"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>配置语言理解 Docker 容器 
 
@@ -167,5 +167,5 @@ Logging:Console:LogLevel:Default=Information
 ## <a name="next-steps"></a>后续步骤
 
 * 查看[如何安装和运行容器](luis-container-howto.md)
-* 若要解决与 LUIS 功能相关的问题，请参阅[故障排除](troubleshooting.md)。
+* 若要解决与 LUIS 功能相关的问题，请参阅[故障排除](troubleshooting.yml)。
 * 使用更多[认知服务容器](../cognitive-services-container-support.md)

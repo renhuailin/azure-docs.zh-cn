@@ -3,12 +3,12 @@ title: 用 Rest API 管理 Azure 文件共享备份
 description: 了解如何使用 REST API 管理和监视由 Azure 备份所备份的 Azure 文件共享。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 5e2823472c6a7bdd6b3f9819db3079d7efa78c4e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cdd099cac609ef84a0ece9d0d116de5534d3e530
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88892841"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445138"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>使用 REST API 管理 Azure 文件共享备份
 
@@ -38,7 +38,7 @@ Azure 备份服务会触发在后台运行的作业。 这包括触发备份、�
 }
 ```
 
-Azure 文件共享备份作业由“jobId”字段予以标识，并且可以如[此处](/rest/api/backup/jobdetails/)所述使用简单的 GET 请求进行跟踪。
+Azure 文件共享备份作业由“jobId”字段予以标识，并且可以如[此处](/rest/api/backup/job-details)所述使用简单的 GET 请求进行跟踪。
 
 ### <a name="tracking-the-job"></a>跟踪作业
 
@@ -134,8 +134,8 @@ HTTP/1.1" 200
   "properties": {
     "protectedItemType": "AzureFileShareProtectedItem",
     "sourceResourceId": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/AzureFiles/providers/Microsoft.Storage/storageAccounts/testvault2",
-    "policyId": “" ,
-“protectionState”:”ProtectionStopped”
+    "policyId": "" ,
+"protectionState":"ProtectionStopped"
   }
 }
 ```
@@ -190,7 +190,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 ## <a name="stop-protection-and-delete-data"></a>停止保护并删除数据
 
-若要删除对受保护文件共享的保护并删除备份数据，请执行[此处](/rest/api/backup/protecteditems/delete)详述的删除操作。
+若要删除对受保护文件共享的保护并删除备份数据，请执行[此处](/rest/api/backup/protected-items/delete)详述的删除操作。
 
 ```http
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13

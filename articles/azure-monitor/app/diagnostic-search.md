@@ -3,12 +3,12 @@ title: 在 Azure Application Insights 中使用搜索 | Microsoft Docs
 description: 搜索和筛选由 Web 应用发送的原始遥测数据。
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: e9da2acea857f2b295fd2333988507babd967c88
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 020e602ec52c40c66439df09275f7d4936a57229
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059385"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112293070"
 ---
 # <a name="using-search-in-application-insights"></a>使用 Application Insights 中的搜索
 
@@ -148,4 +148,4 @@ ms.locfileid: "110059385"
 * [在 Analytics 中编写复杂查询](../logs/log-analytics-tutorial.md)
 * [向 Application Insights 发送日志和自定义的遥测数据](./asp-net-trace-logs.md)
 * [设置可用性和响应能力测试](./monitor-web-app-availability.md)
-* [故障排除](../faq.md)
+* [故障排除](../faq.yml)

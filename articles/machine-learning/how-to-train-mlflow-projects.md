@@ -8,28 +8,25 @@ ms.author: shipatel
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
-ms.date: 05/25/2021
+ms.date: 06/16/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 912ad0b1cbb7814774a06cf890e3618ee06b2c0a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: f9a298a311ac30b03be569a35aa59c0c6157601e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382480"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112287598"
 ---
-# <a name="train-ml-models-with-mlflow-projects-and-azure-machine-learning-preview"></a>使用 MLflow 项目和 Azure 机器学习训练 ML 模型（预览版）
+# <a name="train-ml-models-with-mlflow-projects-and-azure-machine-learning"></a>使用 MLflow 项目和 Azure 机器学习训练 ML 模型
 
-本文介绍如何启用 MLflow 的跟踪 URI 和日志记录 API（统称为 [MLflow 跟踪](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)），以使用 [MLflow 项目](https://www.mlflow.org/docs/latest/projects.html)和 Azure 机器学习后端支持（预览版）提交训练作业。 你可以使用 Azure 机器学习跟踪在本地提交作业，也可以像通过 [Azure 机器学习计算](./how-to-create-attach-compute-cluster.md)那样将运行迁移到云中。
+本文介绍如何启用 MLflow 的跟踪 URI 和日志记录 API（统称为 [MLflow 跟踪](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)），以使用 [MLflow 项目](https://www.mlflow.org/docs/latest/projects.html)和 Azure 机器学习后端支持提交训练作业。 你可以使用 Azure 机器学习跟踪在本地提交作业，也可以像通过 [Azure 机器学习计算](./how-to-create-attach-compute-cluster.md)那样将运行迁移到云中。
 
 [MLflow 项目](https://mlflow.org/docs/latest/projects.html)允许你组织和描述你的代码，使其他数据科学家（或自动化工具）可以运行它。 使用 Azure 机器学习的 MLflow 项目使你可以在工作区中跟踪和管理训练运行。
 
 [MLflow](https://www.mlflow.org) 是一个开放源代码库，用于管理机器学习试验的生命周期。 MLFlow 跟踪是 MLflow 的一个组件，它可以记录和跟踪训练运行指标及模型项目，无论试验环境是在本地计算机上、远程计算目标上、虚拟机上，还是在 [Azure Databricks 群集](how-to-use-mlflow-azure-databricks.md)上。
 
 [详细了解 MLflow 和 Azure 机器学习集成](how-to-use-mlflow.md)。
-
->[!NOTE]
-> 作为开放源代码库，MLflow 会经常更改。 因此，通过 Azure 机器学习和 MLflow 集成提供的功能应视为预览版，Microsoft 并不完全支持它。
 
 > [!TIP]
 > 本文档中的信息主要面向需要监视模型训练过程的数据科学家与开发人员。 如果你是一名管理员并想要了解如何监视 Azure 机器学习的资源使用情况和事件（例如配额、已完成的训练运行或已完成的模型部署），请参阅[监视 Azure 机器学习](monitor-azure-machine-learning.md)。

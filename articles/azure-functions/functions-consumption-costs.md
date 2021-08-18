@@ -3,12 +3,12 @@ title: 估算 Azure Functions 中的消耗计划成本
 description: 了解如何更好地估算在 Azure 的消耗计划中运行函数应用时可能产生的成本。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 648be6325cce5bad36795b113c8bbccb3e21d37b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9544dded7516b07ad7d919d08b0b9cd4e12d0607
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773996"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113567304"
 ---
 # <a name="estimating-consumption-plan-costs"></a>估算消耗计划成本
 
@@ -67,138 +67,17 @@ Durable Functions 也可以在消耗计划中运行。 若要详细了解使用 
 
 ### <a name="function-app-level-metrics"></a>函数应用级指标
 
-若要更好地了解函数对成本的影响，可以使用 Azure Monitor 查看函数应用当前生成的成本相关指标。 可以使用 [Azure 门户]中的 [Azure Monitor 指标资源管理器](../azure-monitor/essentials/metrics-getting-started.md)或使用 REST API 来获取此数据。
+若要更好地了解函数对成本的影响，可以使用 Azure Monitor 查看函数应用当前生成的成本相关指标。 
 
-#### <a name="monitor-metrics-explorer"></a>Monitor 指标资源管理器
-
-使用 [Azure Monitor 指标资源管理器](../azure-monitor/essentials/metrics-getting-started.md)可以图形格式查看消耗计划函数应用的成本相关数据。 
-
-1. 在 [Azure 门户]顶部的“搜索服务、资源和文档”中搜索 `monitor`，然后选择“服务”下的“Monitor”。
-
-1. 在左侧选择“指标” > “选择资源”，然后使用图像下方的设置选择你的函数应用。 
-
-    ![选择函数应用资源](media/functions-consumption-costing/select-a-resource.png)
-
-      
-    |设置  |建议的值  |说明  |
-    |---------|---------|---------|
-    | 订阅    |  订阅  | 包含你的函数应用的订阅。  |
-    | 资源组     | 你的资源组  | 包含你的函数应用的资源组。   |
-    | 资源类型     |  应用服务 | 函数应用将作为应用服务实例显示在 Monitor 中。 |
-    | 资源     |  你的函数应用  | 要监视的函数应用。        |
-
-1. 选择“应用”以选择你的函数应用作为要监视的资源。
-
-1. 在“指标”中，为“聚合”选择“函数执行计数”和“求和”。 这会在图表中将所选时间段内的执行计数之和相加。
-
-    ![定义要添加到图表中的函数应用指标](media/functions-consumption-costing/monitor-metrics-add-metric.png)
-
-1. 选择“添加指标”并重复步骤 2-4，将“函数执行单位”添加到图表中。 
-
-生成的图表包含所选时间范围内（在本例中为 2 小时）两个执行指标的总和。
-
-![函数执行计数和执行单位图表](media/functions-consumption-costing/monitor-metrics-execution-sum.png)
-
-由于执行单位数远远大于执行计数，因此图表只显示执行单位。
-
-此图显示两小时时间段内总共消耗了 11.1 亿个 `Function Execution Units`（以“MB 毫秒”度量）。 若要转换为 GB 秒，请除以 1024000。 在此示例中，函数应用消耗了 `1110000000 / 1024000 = 1083.98` GB 秒。 可将此值乘以 [Functions 定价页][定价页]上的当前执行时间价格，得出这两个小时的成本（假设已用完了所有免费授予的执行时间）。 
-
-#### <a name="azure-cli"></a>Azure CLI
-
-[Azure CLI](/cli/azure/) 提供了用于检索指标的命令。 你可以从本地命令环境中使用 CLI，也可以直接从门户中使用 [Azure Cloud Shell](../cloud-shell/overview.md)。 例如，以下 [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) 命令返回以前使用的同一时间段内的每小时数据。
-
-请务必将 `<AZURE_SUBSCRIPTON_ID>` 替换为运行该命令的 Azure 订阅 ID。
-
-```azurecli-interactive
-az monitor metrics list --resource /subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/metrics-testing-consumption/providers/Microsoft.Web/sites/metrics-testing-consumption --metric FunctionExecutionUnits,FunctionExecutionCount --aggregation Total --interval PT1H --start-time 2019-09-11T21:46:00Z --end-time 2019-09-11T23:18:00Z
-```
-
-此命令返回类似于以下示例的 JSON 有效负载：
-
-```json
-{
-  "cost": 0.0,
-  "interval": "1:00:00",
-  "namespace": "Microsoft.Web/sites",
-  "resourceregion": "centralus",
-  "timespan": "2019-09-11T21:46:00Z/2019-09-11T23:18:00Z",
-  "value": [
-    {
-      "id": "/subscriptions/XXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX/resourceGroups/metrics-testing-consumption/providers/Microsoft.Web/sites/metrics-testing-consumption/providers/Microsoft.Insights/metrics/FunctionExecutionUnits",
-      "name": {
-        "localizedValue": "Function Execution Units",
-        "value": "FunctionExecutionUnits"
-      },
-      "resourceGroup": "metrics-testing-consumption",
-      "timeseries": [
-        {
-          "data": [
-            {
-              "average": null,
-              "count": null,
-              "maximum": null,
-              "minimum": null,
-              "timeStamp": "2019-09-11T21:46:00+00:00",
-              "total": 793294592.0
-            },
-            {
-              "average": null,
-              "count": null,
-              "maximum": null,
-              "minimum": null,
-              "timeStamp": "2019-09-11T22:46:00+00:00",
-              "total": 316576256.0
-            }
-          ],
-          "metadatavalues": []
-        }
-      ],
-      "type": "Microsoft.Insights/metrics",
-      "unit": "Count"
-    },
-    {
-      "id": "/subscriptions/XXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXX/resourceGroups/metrics-testing-consumption/providers/Microsoft.Web/sites/metrics-testing-consumption/providers/Microsoft.Insights/metrics/FunctionExecutionCount",
-      "name": {
-        "localizedValue": "Function Execution Count",
-        "value": "FunctionExecutionCount"
-      },
-      "resourceGroup": "metrics-testing-consumption",
-      "timeseries": [
-        {
-          "data": [
-            {
-              "average": null,
-              "count": null,
-              "maximum": null,
-              "minimum": null,
-              "timeStamp": "2019-09-11T21:46:00+00:00",
-              "total": 33538.0
-            },
-            {
-              "average": null,
-              "count": null,
-              "maximum": null,
-              "minimum": null,
-              "timeStamp": "2019-09-11T22:46:00+00:00",
-              "total": 13040.0
-            }
-          ],
-          "metadatavalues": []
-        }
-      ],
-      "type": "Microsoft.Insights/metrics",
-      "unit": "Count"
-    }
-  ]
-}
-```
-此特定响应显示，从 `2019-09-11T21:46` 到 `2019-09-11T23:18`，应用消耗了 1110000000 MB 毫秒（1083.98 GB 秒）。
+[!INCLUDE [functions-monitor-metrics-consumption](../../includes/functions-monitor-metrics-consumption.md)]
 
 ### <a name="function-level-metrics"></a>函数级指标
 
 函数执行单位是执行时间与内存用量的组合，因此很难使用此指标来了解内存用量。 目前无法通过 Azure Monitor 获取内存数据这一指标。 但是，如果要优化应用的内存用量，可以使用 Application Insights 收集的性能计数器数据。  
 
 如果尚未执行此操作，你可以[在函数应用中启用 Application Insights](configure-monitoring.md#enable-application-insights-integration)。 启用此集成后，你可以[在门户中查询此遥测数据](analyze-telemetry-data.md#query-telemetry-data)。 
+
+可以使用 [Azure 门户]中的 [Azure Monitor 指标资源管理器](../azure-monitor/essentials/metrics-getting-started.md)或使用 REST API 来获取 Monitor 指标数据。
 
 [!INCLUDE [functions-consumption-metrics-queries](../../includes/functions-consumption-metrics-queries.md)]
 

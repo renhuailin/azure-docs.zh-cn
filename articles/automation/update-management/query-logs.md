@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5eb0c7d72896cc9a27907743b1b9c3d5a40614dd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a247c3b3f1aeae79fcf6a4369b9ae69e693b6024
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100592867"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181402"
 ---
 # <a name="query-update-management-logs"></a>查询更新管理日志
 
@@ -38,7 +38,7 @@ ms.locfileid: "100592867"
 | SourceSystem | *OperationsManager* |
 | TenantId | 表示组织的 Azure Active Directory 实例的唯一标识符。 |
 | TimeGenerated | 创建记录的日期和时间。 |
-| 类型 | *更新* |
+| 类型 | *Update* |
 | UpdateClassification | 指示可应用的更新类型。 对于 Windows：<br> 关键更新<br> *安全更新*<br> 更新汇总<br> 功能包<br> 服务包<br> 定义更新<br> *工具*<br> 更新。 对于 Linux：<br> 关键和安全更新<br> *其他* |
 | UpdateSeverity | 漏洞的严重性分级。 值为：<br> *严重*<br> *重要说明*<br> 中<br> *低* |
 | UpdateTitle | 更新的标题。|
@@ -195,7 +195,7 @@ Heartbeat
 
 1. 打开“Windows 事件日志”。 转到“应用程序和服务日志\Operations Manager”，搜索来自“服务连接器”源的事件 ID 3000 和事件 ID 5002。  这些事件指示计算机已注册到 Log Analytics 工作区并且正在接收配置。
 
-如果代理无法与 Azure Monitor 日志通信且已配置为通过防火墙或代理服务器与 Internet 通信，请确认是否正确配置了防火墙或代理服务器。 若要了解如何验证防火墙或代理服务器是否已正确配置，请参阅 [Windows 代理的网络配置](../../azure-monitor/agents/agent-windows.md)或 [Linux 代理的网络配置](../../azure-monitor/vm/quick-collect-linux-computer.md)。
+如果代理无法与 Azure Monitor 日志通信且已配置为通过防火墙或代理服务器与 Internet 通信，请确认是否正确配置了防火墙或代理服务器。 若要了解如何验证防火墙或代理服务器是否已正确配置，请参阅 [Windows 代理的网络配置](../../azure-monitor/agents/agent-windows.md)或 [Linux 代理的网络配置](../../azure-monitor/vm/monitor-virtual-machine.md)。
 
 > [!NOTE]
 > 如果 Linux 系统配置为与代理或 Log Analytics 网关通信，并且你要启用更新管理，请使用以下命令更新 `proxy.conf` 权限，以向 omiuser 组授予对文件的读取权限：

@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: b26ce91b005fc7bd4d5b89ccf5306dc03a040b0f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 426a83836a16fd3d4a403b3cda015dd5f49af22e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106744"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778344"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MySQL 灵活服务器防火墙规则
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
@@ -23,7 +25,7 @@ Azure Database for MySQL 灵活服务器支持两种类型的互斥网络连接�
 1. 公共访问（允许的 IP 地址）
 2. 专用访问（VNet 集成）
 
-本文重点介绍如何使用 Azure 门户创建具有公共访问（允许的 IP 地址）的 MySQL 服务器，并将提供关于创建灵活服务器后管理防火墙规则的概述。 对于公共访问（允许的 IP 地址），与 MySQL 服务器的连接仅限于允许的 IP 地址。 防火墙规则中需要允许客户端 IP 地址。 若要了解详细信息，请参阅[公共访问（允许的 IP 地址）](./concepts-networking.md#public-access-allowed-ip-addresses)。 可以在创建服务器时定义防火墙规则（建议），但也可以稍后添加。 本文将概述如何使用公共访问（允许的 IP 地址）创建和管理防火墙规则。
+本文重点介绍如何使用 Azure 门户创建具有公共访问（允许的 IP 地址）的 MySQL 服务器，并将提供关于创建灵活服务器后管理防火墙规则的概述。 对于公共访问（允许的 IP 地址），与 MySQL 服务器的连接仅限于允许的 IP 地址。 防火墙规则中需要允许客户端 IP 地址。 若要了解详细信息，请参阅[公共访问（允许的 IP 地址）](./concepts-networking-public.md#public-access-allowed-ip-addresses)。 可以在创建服务器时定义防火墙规则（建议），但也可以稍后添加。 本文将概述如何使用公共访问（允许的 IP 地址）创建和管理防火墙规则。
 
 ## <a name="create-a-firewall-rule-when-creating-a-server"></a>创建服务器时创建防火墙规则
 
@@ -37,7 +39,7 @@ Azure Database for MySQL 灵活服务器支持两种类型的互斥网络连接�
    > Azure Database for MySQL 灵活服务器在服务器级别创建防火墙。 除非创建了规则来为特定的 IP 地址打开防火墙，否则此防火墙会阻止外部应用程序和工具连接到服务器和服务器上的任何数据库。
 
 7. 选择“查看 + 创建”，查看你的灵活服务器配置。
-8.  选择“创建”以预配服务器。 预配可能需要几分钟时间。
+8. 选择“创建”以预配服务器。 预配可能需要几分钟时间。
 
 ## <a name="create-a-firewall-rule-after-server-is-created"></a>创建服务器后创建防火墙规则
 
@@ -73,7 +75,7 @@ Azure Database for MySQL 灵活服务器支持两种类型的互斥网络连接�
 资源无需在同一虚拟网络 (VNet) 或资源组中，即可使用防火墙规则启用这些连接。 如果不允许该连接尝试，则该请求将不会访问 Azure Database for MySQL 灵活服务器。
 
 > [!IMPORTANT]
-> 该选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。 选择该选项时，请确保登录名和用户权限将访问限制为仅允许授权用户访问。
+>该选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。 选择该选项时，请确保登录名和用户权限将访问限制为仅允许授权用户访问。
 >
 > 我们建议选择专用访问（VNet 集成）来安全地访问灵活服务器。
 >
@@ -88,6 +90,7 @@ Azure Database for MySQL 灵活服务器支持两种类型的互斥网络连接�
 - 要删除现有规则，请单击省略号 […]，并单击“删除”即可删除该规则  。 单击“保存”以保存更改。
 
 ## <a name="next-steps"></a>后续步骤
+
 - 详细了解 [Azure Database for MySQL 灵活服务器中的网络](./concepts-networking.md)
-- 详细了解 [Azure Database for MySQL 灵活服务器防火墙规则](./concepts-networking.md#public-access-allowed-ip-addresses)
-- [使用 Azure CLI 创建和管理 Azure Database for MySQL 防火墙规则](./how-to-manage-firewall-cli.md)。
+- 详细了解 [Azure Database for MySQL 灵活服务器防火墙规则](./concepts-networking-public.md#public-access-allowed-ip-addresses)
+- [使用 Azure CLI 创建和管理 Azure Database for MySQL 防火墙规则](./how-to-manage-firewall-cli.md)

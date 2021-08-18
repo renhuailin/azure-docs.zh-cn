@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/3/2020
+ms.date: 06/23/2021
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: cfbcc8523ff1d5858317a3654b58ec7b2d23607a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy21q4, aaddev
+ms.openlocfilehash: ed3495bb7267c54f9b95f7fc3465d76ddde2faaa
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99582020"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581882"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft 标识平台应用程序身份验证证书凭据
 
@@ -28,7 +28,7 @@ Microsoft 标识平台允许应用程序在任何可以使用客户端机密的�
 
 ## <a name="assertion-format"></a>断言格式
 
-若要计算断言，可以使用所选语言的多个 JWT 库之一 - [MSAL 使用 `.WithCertificate()`](msal-net-client-assertions.md) 对此提供支持。 令牌在其[标头](#header)、[声明](#claims-payload)和[签名](#signature)中携带相关信息。
+若要计算断言，可以使用所选语言的多个 JWT 库之一 - [MSAL 使用 `.WithCertificate()`](msal-net-client-assertions.md) 对此提供支持。 令牌在其标头、声明和签名中携带相关信息。
 
 ### <a name="header"></a>标头
 

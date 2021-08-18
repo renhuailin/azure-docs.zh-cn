@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 49122421f04ee6eef8828ca305cfb235aceee3fb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dea5a005815e551edfe5fbea8f65c7b3a23171e8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105035687"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735808"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor 中的日志数据引入时间
 Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 关于日志数据在收集后需要多长时间才可供使用，大家通常存有疑问。 本文将对影响此延迟的不同因素进行说明。
@@ -145,4 +145,4 @@ Heartbeat
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 阅读 Azure Monitor 的[服务级别协议 (SLA)](https://azure.microsoft.com/en-us/support/legal/sla/monitor/v1_3/)。
+* 阅读 Azure Monitor 的[服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/monitor/v1_3/)。

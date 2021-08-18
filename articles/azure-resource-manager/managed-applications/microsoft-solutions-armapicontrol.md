@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: fdc299ef1945e3ee0810f1c314fc07edfb4f4873
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: a93795301eed232fad38e95c55e47ecf63496d75
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313294"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114465652"
 ---
 # <a name="microsoftsolutionsarmapicontrol-ui-element"></a>Microsoft.Solutions.ArmApiControl UI element
 
@@ -51,7 +51,7 @@ ArmApiControl 可让你从 Azure 资源管理器 API 操作获取结果。 使�
   例如，对 `Microsoft.Network/expressRouteCircuits` 资源提供程序的 ARM 调用：
 
   ```json
-  "path": "<subid>/resourceGroup/<resourceGroupName>/providers/Microsoft.Network/expressRouteCircuits/<routecircuitName>/?api-version=2020-05-01"
+  "path": "subscriptions/<subid>/resourceGroup/<resourceGroupName>/providers/Microsoft.Network/expressRouteCircuits/<routecircuitName>/?api-version=2020-05-01"
   ```
 
 - `request.body` 属性为可选。 使用它指定与请求一起发送的 JSON 正文。 正文可以是静态内容，也可以通过引用其他控件的输出值来动态构造。

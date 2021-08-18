@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.service: partner-services
 ms.date: 05/19/2021
 ms.author: tomfitz
-ms.openlocfilehash: 1dd2c8af8c58a78a891ca4863200623d938383c5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 201f04b8553ce31c016074b483b23cb329e4fb7c
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482176"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862426"
 ---
 # <a name="what-is-elastic-integration-with-azure"></a>什么是与 Azure 的 Elastic 集成？
 
@@ -36,7 +36,7 @@ Elastic 的云原生可观测性平台在一个位置集中了日志、指标和
 
 ## <a name="elastic-links"></a>Elastic 链接
 
-有关使用 Elastic 服务的更多帮助，请参阅 Azure 集成的 [Elastic 文档](https://azure-native-02.docs-preview.app.elstc.co/guide/en/cloud/master/ec-azure-marketplace-native.html)。
+有关使用 Elastic 服务的更多帮助，请参阅 Azure 集成的 [Elastic 文档](https://www.elastic.co/guide/en/cloud/current/ec-azure-marketplace-native.html)。
 
 ## <a name="next-steps"></a>后续步骤
 

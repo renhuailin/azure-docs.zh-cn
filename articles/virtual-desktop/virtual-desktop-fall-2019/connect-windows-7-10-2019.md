@@ -6,19 +6,19 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 6fcb8b3688ea5d2a8866093fd46efb8236db3558
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 004fff41e30ca9c60d51847035e30262e359270e
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982045"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031114"
 ---
 # <a name="connect-with-the-windows-desktop-classic-client"></a>使用 Windows 桌面（经典）客户端进行连接
 
 > 适用于：Windows 7、Windows 10 和 Windows 10 IoT 企业版
 
 >[!IMPORTANT]
->此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[本文](../connect-windows-7-10.md)。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[本文](../user-documentation/connect-windows-7-10.md)。
 
 你可使用 Windows 桌面客户端访问装有 Windows 7、Windows 10 和 Windows 10 IoT 企业版的设备上的 Azure 虚拟桌面资源。 该客户端不支持 Window 8 或 Windows 8.1。
 
@@ -64,7 +64,7 @@ ms.locfileid: "111982045"
      - Azure 虚拟桌面（经典）：`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
      - Azure 虚拟桌面：`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
    - 如果改用“电子邮件”字段，请输入你的电子邮件地址。 这会指示客户端搜索与你的电子邮件地址关联的 URL，前提是管理员已设置[电子邮件发现](/windows-server/remote/remote-desktop-services/rds-email-discovery)。
-3. 选择“**下一页**”。
+3. 选择“下一步”。
 4. 出现提示时，请使用用户帐户登录。
 5. 资源应该会显示在连接中心，并按工作区分组。
 

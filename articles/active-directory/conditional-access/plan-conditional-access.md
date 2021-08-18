@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13460fad0ed106f5c0590df961ceca54cb04cd7b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 17b69d4473529f585d6a0c997bafca42516e91a2
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102427175"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114203155"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>计划条件访问部署
 
@@ -50,7 +50,7 @@ Microsoft 提供了标准的条件策略（称为[安全默认值](../fundamenta
 
 请参阅[条件访问许可证要求](overview.md)。
 
-如果需要附加的功能，则还可能需要相关的许可证。 有关详细信息，请参阅 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
+如果需要附加的功能，则还可能需要相关的许可证。 有关详细信息，请参阅 [Azure Active Directory 定价](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -74,7 +74,7 @@ Microsoft 提供了标准的条件策略（称为[安全默认值](../fundamenta
 * [How to roll out Conditional Access policies to end users?](https://youtu.be/0_Fze7Zpyvc)（如何向最终用户推出条件访问策略？）
 * [How to include or exclude users from Conditional Access policies](https://youtu.be/5DsW1hB3Jqs)（如何在条件访问策略中包括或排除用户）
 * [Conditional Access with device controls](https://youtu.be/NcONUf-jeS4)（使用设备控件的条件访问）
-* [Conditional Access with Azure AD MFA](https://youtu.be/Tbc-SU97G-w)（使用 Azure AD MFA 的条件访问）
+* [使用 Azure AD MFA 的条件访问](https://youtu.be/Tbc-SU97G-w)
 * [Conditional Access in Enterprise Mobility + Security](https://youtu.be/A7IrxAH87wc)（企业移动性 + 安全性中的条件访问）
 
 
@@ -316,7 +316,7 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 * [要求所有用户注册 MFA](howto-conditional-access-policy-risk.md)
 
-* [要求高风险用户更改密码](howto-conditional-access-policy-risk.md)
+* [要求高风险用户更改密码](howto-conditional-access-policy-risk-user.md)
 
 * [要求具有中等或高登录风险的用户执行 MFA](howto-conditional-access-policy-risk.md)
 
@@ -369,7 +369,7 @@ Azure Active Directory 允许你创建[命名位置](location-condition.md)。 �
 
 测试计划非常重要，它可以在预期结果与实际结果之间进行比较。 进行测试之前，始终应该持有某种预期。 下表概述了示例测试用例。 根据条件访问策略的配置情况调整方案和预期结果。
 
-| 策略| 方案| 预期结果 |
+| 策略| 场景| 预期结果 |
 | - | - | - |
 | [在非工作时间要求执行 MFA](untrusted-networks.md)| 经授权的用户在受信任的位置/工作时登录到应用| 不提示用户执行 MFA |
 | [在非工作时间要求执行 MFA](untrusted-networks.md)| 经授权的用户不在受信任的位置/工作时登录到应用| 提示用户执行 MFA，他们可以成功登录 |

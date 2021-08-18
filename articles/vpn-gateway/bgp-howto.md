@@ -6,14 +6,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 07/26/2021
 ms.author: yushwang
-ms.openlocfilehash: df42925b50cba4d32ea554ae54dbcb09a5e04377
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 5748b68940027269acaafe27148f0c4819cefc0a
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205946"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720327"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>如何在 Azure VPN 网关上配置 BGP
 
@@ -90,7 +90,7 @@ BGP 是通常在 Internet 上使用的，用于在两个或更多网络之间交
    > * 在 Azure VPN 网关上使用 APIPA 地址时，网关不会使用 APIPA 源 IP 地址启动 BGP 对等互连会话。 本地 VPN 设备必须启动 BGP 对等互连连接。
    >
 
-1. 选择“查看 + 创建”  ，运行验证。 验证通过后，选择“创建”  以部署 VPN 网关。 网关可能需要长达 45 分钟才能完全创建和部署。 可以在网关的“概述”页上查看部署状态。
+1. 选择“查看 + 创建”  ，运行验证。 验证通过后，选择“创建”  以部署 VPN 网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。 可以在网关的“概述”页上查看部署状态。
 
 ### <a name="3-obtain-the-azure-bgp-peer-ip-addresses"></a>3.获取 Azure BGP 对等节点 IP 地址
 

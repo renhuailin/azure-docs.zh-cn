@@ -1,19 +1,20 @@
 ---
 title: 使用 Azure 视频分析器媒体版（以前称为视频索引器）API 自定义人员模型
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: 了解如何使用 Azure 视频分析器媒体版（以前称为视频索引器）API 自定义人员模型。
-services: media-services
+services: azure-video-analyzer
 author: anikaz
 manager: johndeu
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 01/14/2020
 ms.author: kumud
-ms.openlocfilehash: 758b2b62b0ea7b321e20c2e724609b212abb6ef6
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 01205b70b3f4195be290075727bece30d57c515e
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385051"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112121395"
 ---
 # <a name="customize-a-person-model-with-the-video-analyzer-for-media-api"></a>使用视频分析器媒体版 API 自定义人员模型
 

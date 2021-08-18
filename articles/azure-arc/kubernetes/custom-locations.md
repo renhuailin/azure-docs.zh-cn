@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 ms.custom: references_regions, devx-track-azurecli
 description: 使用自定义位置在已启用 Azure Arc 的 Kubernetes 群集上部署 Azure PaaS 服务
-ms.openlocfilehash: 5f25260041fe7d5998d7f1716c9d20e288168e9d
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 5fa255755dd0b78498203624194d081447d70a13
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951655"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730849"
 ---
 # <a name="create-and-manage-custom-locations-on-azure-arc-enabled-kubernetes"></a>创建和管理已启用 Azure Arc 的 Kubernetes 上的自定义位置
 
@@ -105,26 +105,15 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
 
 1. 在群集上部署最终需要的 Azure 服务实例的 Azure 服务群集扩展：
 
-    * 已启用 Azure Arc 的数据服务
+    * [已启用 Azure Arc 的数据服务](../data/create-data-controller-direct-cli.md#create-the-arc-data-services-extension)
 
-        ```azurecli
-        az k8s-extension create --name <extensionInstanceName> --extension-type microsoft.arcdataservices --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace arc --config Microsoft.CustomLocation.ServiceAccount=sa-bootstrapper
-        ```
         > [!NOTE]
         > 已启用 Arc 的数据服务群集扩展支持不使用身份验证的出站代理，以及使用基本身份验证的出站代理。 目前不支持需要受信任证书的出站代理。
 
 
-    * [Azure Arc 上的 Azure 应用服务](../../app-service/overview-arc-integration.md)
+    * [Azure Arc 上的 Azure 应用服务](../../app-service/manage-create-arc-environment.md#install-the-app-service-extension)
 
-        ```azurecli
-        az k8s-extension create --name <extensionInstanceName> --extension-type 'Microsoft.Web.Appservice' --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace appservice-ns --configuration-settings "Microsoft.CustomLocation.ServiceAccount=default" --configuration-settings "appsNamespace=appservice-ns" 
-        ```
-
-    * [Kubernetes 上的事件网格](../../event-grid/kubernetes/overview.md)
-
-        ```azurecli
-          az k8s-extension create --name <extensionInstanceName> --extension-type Microsoft.EventGrid --cluster-type connectedClusters -c <clusterName> -g <resourceGroupName> --scope cluster --release-namespace eventgrid-ext --configuration-protected-settings-file protected-settings-extension.json --configuration-settings-file settings-extension.json
-        ```
+    * [Kubernetes 上的事件网格](../../event-grid/kubernetes/install-k8s-extension.md)
 
 1. 获取已启用 Azure Arc 的 Kubernetes 群集的 Azure 资源管理器标识符，此标识符在后面的步骤中称为 `connectedClusterId`：
 

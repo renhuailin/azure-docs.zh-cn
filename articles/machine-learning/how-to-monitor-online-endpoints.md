@@ -9,13 +9,13 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 05/03/2021
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 7b961b2a0da75551b3e8f16d2d2661bbd0275b66
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.custom: how-to, devplatv2
+ms.openlocfilehash: e578924ac2a6f66906c2802dc95a287602931117
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382633"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458789"
 ---
 # <a name="monitor-managed-online-endpoints-preview"></a>监视托管联机终结点（预览版）
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 921a2c6425010dbf98c170d8435267e440883aa5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: eeaccd4fa186d4a415e1d573ffa933c7a5f44375
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075135"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298324"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>有关使用 Azure 资源管理器模板部署 Web 应用的指南
 
@@ -129,7 +129,7 @@ Set-AzKeyVaultAccessPolicy `
 
 在模板中，向 `keyVaultSecretName` 提供证书名称。
 
-有关示例模板，请参阅 [Deploy a Web App certificate from Key Vault secret and use it for creating SSL binding](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)（部署来自 Key Vault 机密的 Web 应用证书并将其用于创建 SSL 绑定）。
+有关示例模板，请参阅 [Deploy a Web App certificate from Key Vault secret and use it for creating SSL binding](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.web/web-app-certificate-from-key-vault)（部署来自 Key Vault 机密的 Web 应用证书并将其用于创建 SSL 绑定）。
 
 ## <a name="next-steps"></a>后续步骤
 

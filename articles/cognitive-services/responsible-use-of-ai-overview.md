@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/02/2021
 ms.author: nitinme
-ms.openlocfilehash: 51001cbe4b4fc7cf3fb7b4fca93906e09fc4f594
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: f4730a963a669af970362542ecf7868b20438f02
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446743"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112296148"
 ---
 # <a name="responsible-use-of-ai-with-cognitive-services"></a>通过认知服务负责任地使用 AI
 
@@ -64,3 +64,10 @@ Azure 认知服务就如何在应用程序中负责任地使用人工智能提�
 * [设计模式披露](./speech-service/concepts-disclosure-patterns.md)
 * [行为准则](/legal/cognitive-services/speech-service/tts-code-of-conduct?context=/azure/cognitive-services/speech-service/context/context)
 * [数据、隐私和安全性](/legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context)
+
+## <a name="anomaly-detector"></a>异常检测器
+
+* [透明度说明和用例](/legal/cognitive-services/anomaly-detector/transparency-note?context=/azure/cognitive-services/anomaly-detector/context/context)
+* [特征和限制](/legal/cognitive-services/anomaly-detector/characteristics-and-limitations?context=/azure/cognitive-services/anomaly-detector/context/context)
+* [集成和负责使用](/legal/cognitive-services/anomaly-detector/guidance-integration-responsible-use?context=/azure/cognitive-services/anomaly-detector/context/context)
+* [数据、隐私和安全性](/legal/cognitive-services/anomaly-detector/data-privacy-security?context=/azure/cognitive-services/anomaly-detector/context/context)

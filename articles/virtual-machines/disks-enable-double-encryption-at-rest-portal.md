@@ -2,18 +2,18 @@
 title: 启用静态双重加密 - Azure 门户 - 托管磁盘
 description: 使用 Azure 门户为托管磁盘数据启用静态双重加密。
 author: roygara
-ms.date: 08/24/2020
+ms.date: 06/29/2021
 ms.topic: how-to
 ms.author: rogarana
-ms.service: virtual-machines
+ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: b5f58b549fc9d879f6c2e5515c679d82c3ff44e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b8ca72b5446c9adf4320b8dfb670238e973c3ea
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560355"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113361308"
 ---
 # <a name="use-the-azure-portal-to-enable-double-encryption-at-rest-for-managed-disks"></a>使用 Azure 门户为托管磁盘启用静态双重加密
 
@@ -30,7 +30,7 @@ Azure 磁盘存储支持对托管磁盘的静态双重加密。 有关静态双�
 
     :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-disk-encryption-sets-search.png" alt-text="主 Azure 门户的屏幕截图，搜索栏中突出显示了“磁盘加密集”。":::
 
-1. 选择“+ 添加”  。
+1. 选择“+ 添加”。
 
     :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-add-disk-encryption-set.png" alt-text="“磁盘加密集”边栏选项卡的屏幕截图，其中突出显示了“+ 添加”。":::
 
@@ -51,7 +51,7 @@ Azure 磁盘存储支持对托管磁盘的静态双重加密。 有关静态双�
 
     :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-select-key-vault.png" alt-text="用于创建密钥保管库的边栏选项卡的屏幕截图。":::
 
-1. 选择“创建”  。
+1. 选择“创建”。
 1. 导航到创建的磁盘加密集，然后选择显示的错误。 这会配置磁盘加密集，使其可正常工作。
 
     :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-disk-set-error.png" alt-text="磁盘加密集显示的错误的屏幕截图，错误文本为：“若要将磁盘、映像或快照关联到此磁盘加密集，必须授予对密钥保管库的权限”。":::

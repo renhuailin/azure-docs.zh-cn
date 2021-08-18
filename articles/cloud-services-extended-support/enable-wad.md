@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 03ab6be5b05cb42951b666776942270e4b430195
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: c6df0ee88d712d36d3b5f57009a844e45232960c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691221"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114444943"
 ---
 # <a name="apply-the-windows-azure-diagnostics-extension-in-cloud-services-extended-support"></a>在云服务（外延支持）中应用 Windows Azure 诊断扩展 
 可以监视任何云服务的关键性能指标。 每个云服务角色收集极少量的数据：CPU 使用率、网络使用率和磁盘利用率。 如果云服务已将 Microsoft.Azure.Diagnostics 扩展应用到某个角色，则该角色可以收集其他数据点。 有关详细信息，请参阅[扩展概述](extensions.md)
@@ -117,5 +117,5 @@ $cloudService | Update-AzCloudService
 
 ## <a name="next-steps"></a>后续步骤 
 - 查看云服务（外延支持）的[部署先决条件](deploy-prerequisite.md)。
-- 请参阅云服务（外延支持）的[常见问题解答](faq.md)。
+- 请参阅云服务（外延支持）的[常见问题解答](faq.yml)。
 - 使用 [Azure 门户](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[模板](deploy-template.md)或 [Visual Studio](deploy-visual-studio.md) 部署云服务（外延支持）。

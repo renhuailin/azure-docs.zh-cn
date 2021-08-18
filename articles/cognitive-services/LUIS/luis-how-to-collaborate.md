@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2021
-ms.openlocfilehash: 044c690688bfc83ce1b4ebc13008ad9a2f37034a
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 5a320d6368d4fdecaf4001fc9255c4c0ff3b276c
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026878"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285589"
 ---
 # <a name="add-contributors-to-your-app"></a>向应用添加参与者
 
@@ -26,7 +26,7 @@ ms.locfileid: "112026878"
 
 如果你的 LUIS 创作体验已绑定到 LUIS 门户中“管理 -> Azure 资源”页上的某个创作资源，则表明你已完成迁移。
 
-在 Azure 门户中，找到语言理解 (LUIS) 创作资源。 它的类型为 `LUIS.Authoring`。 在资源的“访问控制 (IAM)”页中，为希望参与的用户添加“参与者”角色 。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](/azure/role-based-access-control/role-assignments-portal)。
+在 Azure 门户中，找到语言理解 (LUIS) 创作资源。 它的类型为 `LUIS.Authoring`。 在资源的“访问控制 (IAM)”页中，为希望参与的用户添加“参与者”角色 。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="view-the-app-as-a-contributor"></a>以参与者身份查看应用
 

@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d9a4eabf37101622ac69ae05f3bec232fb8d2fe6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 265ae82f3a8d5a10e333057ebb55473c18fd36c3
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94517523"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113109460"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -383,7 +383,7 @@ public class ValuesController : ApiController
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
-| **参考**              | [Azure Redis TLS 支持](../../azure-cache-for-redis/cache-faq.md) |
+| **参考**              | [Azure Redis TLS 支持](../../azure-cache-for-redis/cache-faq.yml) |
 | **步骤** | Redis 服务器不能现成地支持 TLS，但 Azure Cache for Redis 则可以。 如果要连接到 Azure Cache for Redis 并且客户端支持 TLS（如 StackExchange.Redis），则应使用 TLS。 默认情况下，为新的 Azure Cache for Redis 实例禁用了非 TLS 端口。 请确保安全的默认设置不会更改，除非 Redis 客户端依赖 TLS 支持。 |
 
 请注意，Redis 旨在由受信任环境中的受信任客户端访问。 这意味着，我们通常不建议将 Redis 实例直接在 Internet 中公开，一般情况下，在不受信任的客户端可以直接访问 Redis TCP 端口或 UNIX 套接字的环境中，也不建议公开 Redis 实例。 

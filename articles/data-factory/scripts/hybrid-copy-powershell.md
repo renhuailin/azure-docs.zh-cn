@@ -2,17 +2,18 @@
 title: 使用 PowerShell 将数据从本地复制到 Azure
 description: 此 PowerShell 脚本将数据从 SQL Server 数据库复制到其他 Azure Blob 存储。
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: article
 ms.author: jianleishen
 author: jianleishen
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 10/31/2017
-ms.openlocfilehash: 1c1c3169b42d1a496867f24eecf277cfe07056c6
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 7eea1c000dca2b46af2214bc49d1e88b935ad2dc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665496"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750961"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>使用 PowerShell 创建用于将数据从 SQL Server 复制到 Azure 的数据工厂管道
 
@@ -74,7 +75,7 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 此脚本使用以下命令：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | 创建数据工厂。 |

@@ -1,76 +1,104 @@
 ---
-title: 使用 .NET 获取存储帐户类型和 SKU 名称
+title: 获取存储帐户配置信息
 titleSuffix: Azure Storage
-description: 了解如何使用 .NET 客户端库获取 Azure 存储帐户类型和 SKU 名称。
+description: 使用 Azure 门户、PowerShell 或 Azure CLI 检索存储帐户配置属性，包括 Azure 资源管理器资源 ID、帐户位置、帐户类型或复制 SKU。
 services: storage
-author: normesta
-ms.author: normesta
-ms.date: 11/12/2020
+author: tamram
+ms.author: tamram
+ms.date: 06/23/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 94e8a76d48b8ff45d089a9ee375b3dc4a5e5de94
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: f3f94dda19f11b1a0aad9a84e7ae624e41c5015c
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110653094"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112573645"
 ---
-# <a name="get-storage-account-type-and-sku-name-with-net"></a>使用 .NET 获取存储帐户类型和 SKU 名称
+# <a name="get-storage-account-configuration-information"></a>获取存储帐户配置信息
 
-本文介绍如何使用[用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage)获取 Blob 的 Azure 存储帐户类型和 SKU 名称。
+本文介绍如何使用 Azure 门户、PowerShell 或 Azure CLI 获取 Azure 存储帐户的配置信息和属性。
 
-## <a name="about-account-type-and-sku-name"></a>关于帐户类型和 SKU 名称
+## <a name="get-the-resource-id-for-a-storage-account"></a>获取存储帐户的资源 ID
 
-**帐户类型**：有效的帐户类型包括 `BlobStorage`、`BlockBlobStorage`、`FileStorage`、`Storage` 和 `StorageV2`。 [Azure 存储帐户概述](storage-account-overview.md)提供详细信息，包括对各种存储帐户的说明。
+每个 Azure 资源管理器资源都有一个对其唯一标识的关联资源 ID。 某些操作需要提供资源 ID。 你可以通过使用 Azure 门户、PowerShell 或 Azure CLI 获取存储帐户的资源 ID。
 
-SKU 名称：有效的 SKU 名称包括 `Premium_LRS`、`Premium_ZRS`、`Standard_GRS`、`Standard_GZRS`、`Standard_LRS`、`Standard_RAGRS`、`Standard_RAGZRS` 和 `Standard_ZRS`。 SKU 名称区分大小写，并且是 [SkuName 类](/dotnet/api/microsoft.azure.management.storage.models.skuname)中的字符串字段。
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
 
-## <a name="retrieve-account-information"></a>检索帐户信息
+若要在 Azure 门户中显示存储帐户的 Azure 资源管理器的资源 ID，请执行以下步骤：
 
-以下代码示例检索并显示只读帐户属性。
+1. 导航到 Azure 门户中的存储帐户。
+1. 在“概述”页面的“Essentials”分区，选择“JSON 视图”链接。  
+1. 存储帐户的资源 ID 显示在页面顶部。
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+    :::image type="content" source="media/storage-account-get-info/resource-id-portal.png" alt-text="显示如何从门户复制存储帐户的资源 ID 的屏幕截图":::
 
-若要获取与 Blob 关联的存储帐户类型和 SKU 名称，请调用 [GetAccountInfo](/dotnet/api/azure.storage.blobs.blobserviceclient.getaccountinfo) 或 [GetAccountInfoAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.getaccountinfoasync) 方法。
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Account.cs" id="Snippet_GetAccountInfo":::
+若要使用 PowerShell 返回存储帐户的 Azure 资源管理器资源 ID，请确保已安装 [Az.Storage](https://www.powershellgallery.com/packages/Az.Storage) 模块。 接下来，调用 [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) 命令以返回存储帐户并获取其资源 ID：
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+```azurepowershell
+(Get-AzStorageAccount -ResourceGroupName <resource-group> -Name <storage-account>).Id
+```
 
-若要获取与 Blob 关联的存储帐户类型和 SKU 名称，请调用 [GetAccountProperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties) 或 [GetAccountPropertiesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync) 方法。
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```csharp
-private static async Task GetAccountInfoAsync(CloudBlob blob)
-{
-    try
-    {
-        // Get the blob's storage account properties.
-        AccountProperties acctProps = await blob.GetAccountPropertiesAsync();
+使用 Azure CLI 返回存储帐户的 Azure 资源管理器的资源 ID，调用 [az storage account show](/cli/azure/storage/account#az_storage_account_show) 命令并查询资源 ID：
 
-        // Display the properties.
-        Console.WriteLine("Account properties");
-        Console.WriteLine("  AccountKind: {0}", acctProps.AccountKind);
-        Console.WriteLine("      SkuName: {0}", acctProps.SkuName);
-    }
-    catch (StorageException e)
-    {
-        Console.WriteLine("HTTP error code {0}: {1}",
-                            e.RequestInformation.HttpStatusCode,
-                            e.RequestInformation.ErrorCode);
-        Console.WriteLine(e.Message);
-        Console.ReadLine();
-    }
-}
+```azurecli
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --query id \
+    --output tsv
 ```
 
 ---
 
-[!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
+还可通过在 REST API 中调用[“帐户 - 获取属性”](/rest/api/storagerp/storage-accounts/get-properties)操作来获取存储帐户的资源 ID。
+
+有关 Azure 资源管理器管理的资源类型的详细信息，请参阅[资源提供程序和资源类型](../../azure-resource-manager/management/resource-providers-and-types.md)。
+
+## <a name="get-the-account-type-location-or-replication-sku-for-a-storage-account"></a>获取存储帐户的帐户类型、位置或复制 SKU
+
+帐户类型、位置和复制 SKU 是存储帐户上的一些可用属性。 可以使用 Azure 门户、PowerShell 或 Azure CLI 来查看这些值。
+
+# <a name="azure-portal"></a>[Azure 门户](#tab/portal)
+
+若要在 Azure 门户中查看存储帐户的帐户类型、位置或复制 SKU，请执行以下步骤：
+
+1. 导航到 Azure 门户中的存储帐户。
+1. 在概述页面的“Essentials”分区中找到这些属性 
+
+    :::image type="content" source="media/storage-account-get-info/account-configuration-portal.png" alt-text="显示门户中帐户配置的屏幕截图":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+若要使用 PowerShell 查看存储帐户的帐户类型、位置或复制 SKU，请调用 [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) 命令以返回存储帐户，然后检查属性：
+
+```azurepowershell
+$account = Get-AzStorageAccount -ResourceGroupName <resource-group> -Name <storage-account>
+$account.Location
+$account.Sku
+$account.Kind
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要使用 PowerShell 查看存储帐户的帐户类型、位置或复制 SKU，请调用 [az storage account show](/cli/azure/storage/account#az_storage_account_show) 命令并查询属性：
+
+```azurecli
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --query '[location,sku,kind]' \
+    --output tsv
+```
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 
-了解可以通过 [Azure 门户](https://portal.azure.com)和 Azure REST API 在存储帐户上执行的其他操作。
-
-- [“获取帐户信息”操作 (REST)](/rest/api/storageservices/get-account-information)
+- [存储帐户概述](storage-account-overview.md)
+- [创建存储帐户](storage-account-create.md)

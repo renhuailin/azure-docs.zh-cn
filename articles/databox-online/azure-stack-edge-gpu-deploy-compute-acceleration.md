@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 02/26/2021
 ms.author: alkohli
-ms.openlocfilehash: 3eb648af60a7be62d08f6b172347778d2358643c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ad071118eabafdfeaddcf1e2a4738c646f62986d
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102440116"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114719989"
 ---
 # <a name="use-compute-acceleration-on-azure-stack-edge-pro-gpu-for-kubernetes-deployment"></a>在 Azure Stack Edge Pro GPU 上使用计算加速进行 Kubernetes 部署
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-本文介绍如何在使用 Kubernetes 部署时在 Azure Stack Edge 设备上使用计算加速。 本文适用于Azure Stack Edge Pro GPU、Azure Stack Edge Pro R 和 Azure Stack Edge Mini R 设备。
+本文介绍如何在使用 Kubernetes 部署时在 Azure Stack Edge 设备上使用计算加速。 
 
 
 ## <a name="about-compute-acceleration"></a>关于计算加速 

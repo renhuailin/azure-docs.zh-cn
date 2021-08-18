@@ -3,12 +3,12 @@ title: 注册表性能故障排除
 description: 注册表性能常见问题的症状、原因和解决方法
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 8557c8c342919073099a14be91c743b65c4d7fbc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4a93df09c8ceb587815227c073ec69dcd1205451
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069069"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722397"
 ---
 # <a name="troubleshoot-registry-performance"></a>注册表性能故障排除
 
@@ -21,6 +21,7 @@ ms.locfileid: "110069069"
 * 使用 Docker CLI 拉取或推送映像所需的时间长于预期时间
 * 将映像部署到服务（如 Azure Kubernetes 服务）所需的时间长于预期时间
 * 你无法在预期时间内完成大量并发拉取或推送操作
+* 你会看到类似于 `Too many requests` 的 HTTP 429 错误
 * 异地复制的注册表中的拉取或推送操作花费的时间长于预期时间，或者推送失败，出现错误 `Error writing blob` 或 `Error writing manifest`
 
 ## <a name="causes"></a>原因
@@ -46,7 +47,7 @@ ms.locfileid: "110069069"
 相关链接：
 
 * [Azure 容器注册表服务层级](container-registry-skus.md)    
-* [容器注册表常见问题解答](container-registry-faq.md)
+* [容器注册表常见问题解答](container-registry-faq.yml)
 * [Azure Blob 存储的性能和可伸缩性目标](../storage/blobs/scalability-targets.md)
 
 ### <a name="check-client-hardware"></a>检查客户端硬件
@@ -103,8 +104,8 @@ nslookup myregistry.azurecr.io
 
 相关链接：
 
-* [监视 Azure 容器注册表](monitor-service.md)
-* [容器注册表常见问题解答](container-registry-faq.md)
+* [用于诊断评估和审核的日志](./monitor-service.md)
+* [容器注册表常见问题解答](container-registry-faq.yml)
 * [Azure 容器注册表的最佳做法](container-registry-best-practices.md)
 
 ## <a name="next-steps"></a>后续步骤

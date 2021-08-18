@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 989e4e48b03f976a647a542771ade053d9229ec7
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1d961831094bf377acef910572be459ed18db4cb
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110058899"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113652424"
 ---
 # <a name="voice-assistants-on-windows"></a>Windows 上的语音助手
 
@@ -57,4 +57,4 @@ ms.locfileid: "110058899"
 
 - **查看设计准则：** 我们的 [设计指南](windows-voice-assistants-best-practices.md)列出了在 Windows 10 上提供语音激活最佳体验所需的关键工作。
 - **访问入门页面：** 请参阅 [此处](how-to-windows-voice-assistants-get-started.md)了解开始在 Windows 上实施语音助手的步骤，包括设置开发环境到实施指南介绍。
-- **试用示例应用**：若要亲自体验这些功能，请访问 [UWP 语音助手示例](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample)页，然后按照步骤运行示例客户端。
+- **试用示例应用**：若要亲自体验这些功能，请访问 [UWP 语音助手示例](windows-voice-assistants-faq.yml#the-uwp-voice-assistant-sample)页，然后按照步骤运行示例客户端。

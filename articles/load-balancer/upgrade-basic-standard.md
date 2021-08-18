@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 125d4a02d06e2792f9a2a4e646c3788dcf223318
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 98a74903f5472807ff7eb562ea9db9e12ceeb4be
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102612824"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108686"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>升级 Azure 公共负载均衡器
 [Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供丰富的功能和高可用性。 有关负载均衡器 SKU 的详细信息，请参阅[比较表](./skus.md#skus)。
@@ -21,9 +21,6 @@ ms.locfileid: "102612824"
 
 1. 将 IP 分配方法由动态更改为静态。
 2. 运行 PowerShell 脚本以完成升级和流量迁移。
-
-> [!IMPORTANT]
-> 该脚本目前正在维护中。 有关如何从基本 SKU 和标准 SKU 升级公共 IP 地址的说明，请参阅[此处](../virtual-network/virtual-network-public-ip-address-upgrade.md)的说明。
 
 ## <a name="upgrade-overview"></a>升级概述
 
@@ -61,7 +58,7 @@ ms.locfileid: "102612824"
 
 ## <a name="download-the-script"></a>下载脚本
 
-从 [PowerShell 库](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/4.0)下载迁移脚本。
+从 [PowerShell 库](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/5.0)下载迁移脚本。
 ## <a name="use-the-script"></a>使用脚本
 
 根据本地 PowerShell 环境的设置和首选项，可以使用两个选项：

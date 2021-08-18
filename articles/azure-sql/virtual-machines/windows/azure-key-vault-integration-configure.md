@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a6955b7fc4948faaea6db426545f8cc3d1eece35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 76363f171ba08c28e7460a988ff72afbf546716b
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359891"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113434825"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-vms-resource-manager"></a>为 Azure VM (Resource Manager) 上的 SQL Server 配置 Azure 密钥保管库集成
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -49,9 +49,7 @@ SQL Server 加密功能多种多样，包括[透明数据加密 (TDE)](/sql/rela
 
 ### <a name="existing-vms"></a>现有 VM
 
-[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
-
-对于现有的 SQL 虚拟机，请打开 [SQL 虚拟机资源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)并在“设置”下选择“安全”。  选择 **启用** 以启用 Azure Key Vault 集成。 
+对于现有的 SQL 虚拟机，请打开 [SQL 虚拟机资源](manage-sql-vm-portal.md#access-the-resource)并在“设置”下选择“安全”。  选择 **启用** 以启用 Azure Key Vault 集成。 
 
 ![现有 VM 的 SQL 密钥保管库集成](./media/azure-key-vault-integration-configure/azure-sql-rm-akv-existing-vms.png)
 
@@ -62,7 +60,7 @@ SQL Server 加密功能多种多样，包括[透明数据加密 (TDE)](/sql/rela
 
 
 > [!NOTE]
-> 还可以使用模板配置密钥保管库集成。 有关详细信息，请参阅 [Azure quickstart template for Azure Key Vault integration](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-keyvault-update)（用于 Azure 密钥保管库集成的 Azure 快速入门模板）。
+> 还可以使用模板配置密钥保管库集成。 有关详细信息，请参阅 [Azure quickstart template for Azure Key Vault integration](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-sql-existing-keyvault-update)（用于 Azure 密钥保管库集成的 Azure 快速入门模板）。
 
 
 [!INCLUDE [Key Vault integration next steps](../../../../includes/virtual-machines-sql-server-akv-next-steps.md)]

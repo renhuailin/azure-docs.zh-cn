@@ -3,19 +3,19 @@ title: 人为标记的听录准则 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 为了提高特定情况下（例如在删除或错误替代单词的情况下）语音识别的准确度，可以对音频数据使用人为标记的听录。 人为标记的听录是对音频文件进行的逐字/词听录。
 services: cognitive-services
-author: erhopf
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: erhopf
-ms.openlocfilehash: af6ced49071b7fbae983508e68964aa064ef38e1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.author: lajanuar
+ms.openlocfilehash: 2983f34f4dfd80ed34f3aed95870369d4c97f7a3
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101700025"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067457"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>如何创建人为标记的听录
 

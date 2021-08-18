@@ -6,19 +6,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 53f4ed035fc9f3a010a0677fa448a05ef189e20b
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 35170dd87833f7e38d3829fca43c03f0e6725174
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111749986"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031204"
 ---
 # <a name="connect-to-azure-virtual-desktop-classic-with-the-android-client"></a>使用 Android 客户端连接到 Azure 虚拟桌面（经典）
 
 > 适用于：Android 4.1 及更高版本，ChromeOS 53 及更高版本的 Chromebooks。
 
 >[!IMPORTANT]
->此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[本文](../connect-android.md)。
+>此内容适用于 Azure 虚拟桌面（经典），后者不支持 Azure 资源管理器 Azure 虚拟桌面对象。 若要尝试管理 Azure 资源管理器 Azure 虚拟桌面对象，请参阅[本文](../user-documentation/connect-android.md)。
 
 可以从 Android 设备使用可下载的客户端访问 Azure 虚拟桌面资源。 还可以在支持 Google Play 商店的 Chromebook 设备上使用 Android 客户端。 本指南将介绍如何设置 Android 客户端。
 

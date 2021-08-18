@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/19/2021
+ms.date: 06/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8f9f6dc1abd08c5e53f3d44a8f6ec1b3e20786ed
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 76832f02f1c1337a705f33d26de97b0b5823c2c1
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717434"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112981102"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的 HTML 模板自定义用户界面
 
@@ -91,6 +91,10 @@ Azure AD B2C 使用[跨域资源共享 (CORS)](https://www.w3.org/TR/cors/) 在�
 ## <a name="localize-content"></a>本地化内容
 
 可通过在 Azure AD B2C 租户中启用[语言自定义](language-customization.md)来本地化 HTML 内容。 启用此功能可让 Azure AD B2C 将 OpenID Connect 参数 `ui_locales` 转发到终结点。 内容服务器可使用此参数提供特定语言的 HTML 页。
+
+> [!NOTE]
+> Azure AD B2C 不会将 OpenID Connect 参数（例如 `ui_locales`）传递到[异常页](page-layout.md#exception-page-globalexception)。
+
 
 可以基于所用的区域设置从不同位置拉取内容。 在已启用 CORS 的终结点中，可以设置文件夹结构以托管特定语言的内容。 如果使用通配符值 `{Culture:RFC5646}`，则会调用正确的语言。
 

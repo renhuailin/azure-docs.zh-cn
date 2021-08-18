@@ -1,20 +1,20 @@
 ---
-title: 利用经过批准的基础映像创建 Azure 虚拟机 (VM) 产品/服务 - Azure 市场
-description: 了解如何利用经过批准的基础映像创建虚拟机 (VM) 产品/服务。
+title: 利用经过批准的基础映像创建 Azure 虚拟机 (VM) 产品/服务
+description: 了解如何利用经过批准的基础映像创建虚拟机 (VM) 产品/服务（Azure 市场）。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: krsh
 ms.date: 04/16/2021
-ms.openlocfilehash: 19ae4b929964aaeb971bef75a2a620e40e4667f5
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 46b29bb6a7294d0f6741be4cac7028fe7e42ec95
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727161"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113430262"
 ---
-# <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>如何使用经过批准的基础映像创建虚拟机
+# <a name="create-a-virtual-machine-using-an-approved-base"></a>使用经过批准的基础映像创建虚拟机
 
 本文介绍如何使用 Azure 来创建一个包含预配置的经过认可的操作系统的虚拟机 (VM)。 如果此内容与你的解决方案不兼容，则可以使用经过批准的操作系统来[创建并配置本地 VM](azure-vm-create-using-own-image.md)。
 
@@ -78,5 +78,5 @@ Azure 随即开始预配所指定的虚拟机。 请通过选择左侧菜单中�
 ## <a name="next-steps"></a>后续步骤
 
 - 建议的后续步骤：[测试 VM 映像](azure-vm-image-test.md)，以确保它满足 Azure 市场发布要求。 此为可选项。
-- 如果你不想测试 VM 映像，请登录到[合作伙伴中心](https://partner.microsoft.com/)来发布映像。
-- 如果在创建新的基于 Azure 的 VHD 时遇到困难，请参阅 [Azure 市场的 VM 常见问题解答](azure-vm-create-faq.md)。
+- 如果你不想测试 VM 映像，请登录到[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165935)来发布映像。
+- 如果在创建新的基于 Azure 的 VHD 时遇到困难，请参阅 [Azure 市场的 VM 常见问题解答](azure-vm-create-faq.yml)。

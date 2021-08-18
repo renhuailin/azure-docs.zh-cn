@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 04/21/2021
+ms.date: 06/22/2021
 ms.author: v-jansk
-ms.openlocfilehash: a7615a8230b03c928d256fae62fbbe3b4e8651fb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 5ed4c565ad784bb50ebbc464d4229bfcabb7a5d7
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453382"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540684"
 ---
 # <a name="get-translations-status"></a>获取翻译状态
 
@@ -54,7 +54,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 查询字符串上传递的请求参数如下：
 
-|查询参数|在|必须|类型|说明|
+|查询参数|在|必需|类型|说明|
 |--- |--- |--- |---|---|
 |$maxpagesize|query|错误|整数 (int32)|$maxpagesize 是页面中返回的最大项数。 如果通过 $top 请求更多的项（或未指定 $top，并且会返回更多的项），则 @nextLink 将包含指向下一页的链接。 客户端可以通过指定 $maxpagesize 首选项来请求按特定页面大小进行服务器驱动的分页。 如果指定的页面大小小于服务器的默认页面大小，则服务器应遵循此首选项。|
 |$orderBy|query|错误|array|集合的排序查询（例如：“CreatedDateTimeUtc asc”、“CreatedDateTimeUtc desc”）|
@@ -118,7 +118,7 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 |innerError|InnerTranslationError|新内部错误格式，符合认知服务 API 准则。 这包含必需的属性 ErrorCode、消息和可选属性目标、详细信息（键值对）、内部错误（可以嵌套）。|
 |innerError.code|字符串|获取代码错误字符串。|
 |innerError.message|字符串|获取概要错误消息。|
-|innerError.target|string|获取错误的源。 例如，如果存在无效的文档，则应为“文档”或“文档 ID”。|
+|innerError.target|string|获取错误的源。 例如，如果存在无效的文档，则为“文档”或“文档 ID”。|
 
 ## <a name="examples"></a>示例
 
@@ -128,24 +128,56 @@ GET https://<NAME-OF-YOUR-RESOURCE>.cognitiveservices.azure.com/translator/text/
 
 ```JSON
 {
-  "value": [
-    {
-      "id": "273622bd-835c-4946-9798-fd8f19f6bbf2",
-      "createdDateTimeUtc": "2021-03-23T07:03:30.013631Z",
-      "lastActionDateTimeUtc": "2021-03-26T01:00:00Z",
-      "status": "Succeeded",
-      "summary": {
-        "total": 10,
-        "failed": 1,
-        "success": 9,
-        "inProgress": 0,
-        "notYetStarted": 0,
-        "cancelled": 0,
-        "totalCharacterCharged": 1000
-      }
-    }
-  ]
+    "value": [
+        {
+            "id": "36724748-f7a0-4db7-b7fd-f041ddc75033",
+            "createdDateTimeUtc": "2021-06-18T03:35:30.153374Z",
+            "lastActionDateTimeUtc": "2021-06-18T03:36:44.6155316Z",
+            "status": "Succeeded",
+            "summary": {
+                "total": 3,
+                "failed": 2,
+                "success": 1,
+                "inProgress": 0,
+                "notYetStarted": 0,
+                "cancelled": 0,
+                "totalCharacterCharged": 0
+            }
+        },
+        {
+            "id": "1c7399a7-6913-4f20-bb43-e2fe2ba1a67d",
+            "createdDateTimeUtc": "2021-05-24T17:57:43.8356624Z",
+            "lastActionDateTimeUtc": "2021-05-24T17:57:47.128391Z",
+            "status": "Failed",
+            "summary": {
+                "total": 1,
+                "failed": 1,
+                "success": 0,
+                "inProgress": 0,
+                "notYetStarted": 0,
+                "cancelled": 0,
+                "totalCharacterCharged": 0
+            }
+        },
+        {
+            "id": "daa2a646-4237-4f5f-9a48-d515c2d9af3c",
+            "createdDateTimeUtc": "2021-04-14T19:49:26.988272Z",
+            "lastActionDateTimeUtc": "2021-04-14T19:49:43.9818634Z",
+            "status": "Succeeded",
+            "summary": {
+                "total": 2,
+                "failed": 0,
+                "success": 2,
+                "inProgress": 0,
+                "notYetStarted": 0,
+                "cancelled": 0,
+                "totalCharacterCharged": 21899
+            }
+        }
+    ],
+    ""@nextLink": "https://westus.cognitiveservices.azure.com/translator/text/batch/v1.0/operations/727BF148-F327-47A0-9481-ABAE6362F11E/documents?$top=5&$skip=15"
 }
+
 ```
 
 ### <a name="example-error-response"></a>错误响应示例

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 4550be7ae8c543eea1bdfa085db6f23fe668a121
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b423e763492a0c244982422122705039cd9de80
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025690"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302313"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
 
@@ -375,7 +375,7 @@ module.exports = function(context, req) {
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-以下示例演示 function.json 文件中的一个触发器绑定和一个 [PowerShell 函数](functions-reference-node.md)。 该函数在查询字符串或 HTTP 请求的正文中查找 `name` 参数。
+以下示例演示 function.json 文件中的一个触发器绑定和一个 [PowerShell 函数](functions-reference-powershell.md)。 该函数在查询字符串或 HTTP 请求的正文中查找 `name` 参数。
 
 ```json
 {
@@ -550,7 +550,7 @@ Python 不支持特性。
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 | type | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
-| **direction** | 不适用| 必需 - 必须设置为 `in`。 |
+| direction | 不适用| 必需 - 必须设置为 `in`。 |
 | **name** | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
 | <a name="http-auth"></a>**authLevel** |  AuthLevel |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;无需主密钥。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
 | methods |**方法** | HTTP 方法的数组，该函数将响应此方法。 如果未指定，该函数将响应所有 HTTP 方法。 请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
@@ -755,7 +755,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ## <a name="working-with-client-identities"></a>使用客户端标识
 
-如果函数应用使用[应用服务身份验证/授权](../app-service/overview-authentication-authorization.md)，则可通过代码查看有关已验证身份的客户端的信息。 此信息以[平台注入的请求标头](../app-service/app-service-authentication-how-to.md#access-user-claims)的形式提供。
+如果函数应用使用[应用服务身份验证/授权](../app-service/overview-authentication-authorization.md)，则可通过代码查看有关已验证身份的客户端的信息。 此信息以[平台注入的请求标头](../app-service/configure-authentication-user-identities.md#access-user-claims-in-app-code)的形式提供。
 
 还可从绑定数据中读取此信息。 此功能仅适用于 2.x 及更高版本的 Functions 运行时。 而且它目前仅可用于 .NET 语言。
 
@@ -827,19 +827,19 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 # <a name="java"></a>[Java](#tab/java)
 
-经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)提供。
+经过身份验证的用户通过 [HTTP 标头](../app-service/configure-authentication-user-identities.md#access-user-claims-in-app-code)提供。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)提供。
+经过身份验证的用户通过 [HTTP 标头](../app-service/configure-authentication-user-identities.md#access-user-claims-in-app-code)提供。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)提供。
+经过身份验证的用户通过 [HTTP 标头](../app-service/configure-authentication-user-identities.md#access-user-claims-in-app-code)提供。
 
 # <a name="python"></a>[Python](#tab/python)
 
-经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)提供。
+经过身份验证的用户通过 [HTTP 标头](../app-service/configure-authentication-user-identities.md#access-user-claims-in-app-code)提供。
 
 
 ---
@@ -924,7 +924,7 @@ Webhook 授权由属于 HTTP 触发器的 webhook 接收器组件处理，其机
 
 HTTP 请求长度限制为 100 MB（104,857,600 字节），并且 URL 长度限制为 4 KB（4,096 字节）。 这些限制由运行时的 [Web.config 文件](https://github.com/Azure/azure-functions-host/blob/v3.x/src/WebJobs.Script.WebHost/web.config)的 `httpRuntime` 元素指定。
 
-如果使用 HTTP 触发器的函数未在 230 秒内完成，[Azure 负载均衡器](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds)将超时并返回 HTTP 502 错误。 该函数将继续运行，但将无法返回 HTTP 响应。 对于长时间运行的函数，我们建议你遵循异步模式，并返回可以 ping 通请求状态的位置。 有关函数可以运行多长时间的信息，请参阅[缩放和托管 - 消耗计划](functions-scale.md#timeout)。
+如果使用 HTTP 触发器的函数未在 230 秒内完成，[Azure 负载均衡器](../app-service/faq-availability-performance-application-issues.yml#why-does-my-request-time-out-after-230-seconds-)将超时并返回 HTTP 502 错误。 该函数将继续运行，但将无法返回 HTTP 响应。 对于长时间运行的函数，我们建议你遵循异步模式，并返回可以 ping 通请求状态的位置。 有关函数可以运行多长时间的信息，请参阅[缩放和托管 - 消耗计划](functions-scale.md#timeout)。
 
 
 ## <a name="next-steps"></a>后续步骤

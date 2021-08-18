@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2021
 ms.author: yelevin
-ms.openlocfilehash: 4ada570502d913283ba9ee4cc4c65b7bdd853935
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ed49208a79436d3dd1bb2679129b0eafab39cca
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101744376"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253521"
 ---
 # <a name="connect-your-google-workspace-to-azure-sentinel"></a>将 Google 工作区连接到 Azure Sentinel
 
 > [!IMPORTANT]
 > Google 工作区连接器当前为预览版。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 [Google 工作区（以前称为 G Suite）](https://workspace.google.com/)数据连接器提供通过 REST API 将 Google 工作区活动事件引入 Azure Sentinel 的功能。 连接器在 SOC 中为这些[事件](https://developers.google.com/admin-sdk/reports/reference/rest/v1/activities)提供可见性，帮助你检查潜在的安全风险、分析你的团队的协作情况、诊断配置问题、跟踪登录人员和登录时间、分析管理员活动、了解用户创建和共享内容的方式，以及查看组织中的更多事件。
 
@@ -77,6 +79,6 @@ Google 工作区可以使用 Azure 函数应用将日志直接集成和导出到
 
 在本文档中，你已了解如何将 Google 工作区连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。

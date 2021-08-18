@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 02/23/2021
 ms.author: alkemper
-ms.openlocfilehash: a3b3c8760c3bf7d6bf4bee444bef7ed77134fb5a
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 61b50f8e3c5b32401b4f7339627b9b704a4b94fd
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108748242"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112122984"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>使用 Azure Pipelines 将设置推送到应用配置
 
@@ -99,6 +99,10 @@ ms.locfileid: "108748242"
 **如何上传多个配置文件？**
 
 在同一管道中创建“Azure 应用配置推送”任务的多个实例，以将多个配置文件推送到应用配置存储。
+
+如何使用此任务创建 Key Vault 引用？
+
+若要创建 Key Vault 引用，请将“内容类型”参数设置为“application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8”。 如果并非配置文件中的所有键值都是 Key Vault 引用，请将 Key Vault 引用和标准键值放在单独的配置文件中，并分别推送这些配置文件。
 
 **为什么在尝试将键值推送到配置存储时会收到 409 错误？**
 

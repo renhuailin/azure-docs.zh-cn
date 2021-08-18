@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 05/13/2021
 ms.author: mjbrown
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 3f2103577932f0b62e8f65a0e7b736ef111a780d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 79602cb2ba63d9e26990d246a9d62ed09db5be96
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110681686"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751035"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>使用 PowerShell 管理 Azure Cosmos DB Core (SQL) API 资源
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-以下指南介绍了如何使用 PowerShell 通过脚本来自动管理 Azure Cosmos DB Core (SQL) API 资源，其中包括 Cosmos 帐户、数据库、容器和吞吐量。 对于其他 API 的 PowerShell cmdlet，请参阅[适用于 Cassandra 的 PowerShell 示例](powershell-samples-cassandra.md)、[适用于 MongoDB API 的 PowerShell 示例](powershell-samples-mongodb.md)、[适用于 Gremlin 的 PowerShell 示例](powershell-samples-gremlin.md)、[适用于 Table 的 PowerShell 示例](powershell-samples-table.md)
+以下指南介绍了如何使用 PowerShell 通过脚本来自动管理 Azure Cosmos DB Core (SQL) API 资源，其中包括 Cosmos 帐户、数据库、容器和吞吐量。 对于其他 API 的 PowerShell cmdlet，请参阅[适用于 Cassandra 的 PowerShell 示例](cassandra/powershell-samples.md)、[适用于 MongoDB API 的 PowerShell 示例](mongodb/powershell-samples.md)、[适用于 Gremlin 的 PowerShell 示例](powershell-samples-gremlin.md)、[适用于 Table 的 PowerShell 示例](powershell-samples-table.md)
 
 > [!NOTE]
 > 本文中的示例使用 [Az.CosmosDB](/powershell/module/az.cosmosdb) 管理 cmdlet。 有关最新更改，请参阅 [Az.CosmosDB](/powershell/module/az.cosmosdb) API 参考页。

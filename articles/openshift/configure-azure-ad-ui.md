@@ -8,12 +8,12 @@ author: sabbour
 ms.author: asabbour
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: eda45b1a1a011a646915cf45e45218ae168a2af6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ada319684325b462729a44490207ad8e3c9d1cb9
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102213073"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112371546"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>为 Azure Red Hat OpenShift 4 群集配置 Azure Active Directory 身份验证（门户）
 
@@ -68,7 +68,7 @@ echo "OAuth callback URL: https://oauth-openshift.apps.$domain.$location.aroapp.
 
 默认情况下，在 Azure Active Directory (Azure AD) 租户中注册的应用程序可供租户的所有已成功进行身份验证的用户使用。 租户管理员和开发人员可以通过 Azure AD 将应用限制为仅供租户中特定的一组用户或安全组使用。
 
-按照 Azure Active Directory 文档上的说明[向应用分配用户和组](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md#app-registration)。
+按照 Azure Active Directory 文档上的说明[向应用分配用户和组](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)。
 
 ## <a name="configure-openshift-openid-authentication"></a>配置 OpenShift OpenID 身份验证
 

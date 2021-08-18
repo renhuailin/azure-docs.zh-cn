@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/26/2021
-ms.custom: project-no-code
+ms.date: 06/27/2021
+ms.custom: project-no-code, b2c-support
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ba24afb329b5d588ab7a71976f56f50eb475b04b
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: cf4e674e1aca47b0f1ea4fa05aae110f8270b721
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110575401"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114688895"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义 Azure Active Directory B2C 中的用户界面
 
@@ -160,31 +160,31 @@ Azure AD B2C 提供了多个内置模板，你可以从中进行选择，为用�
 ```xml
 <ContentDefinitions>
   <ContentDefinition Id="api.error">
-    <LoadUri>~/tenant/templates/default/exception.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/exception.cshtml</LoadUri>
   </ContentDefinition>
   <ContentDefinition Id="api.idpselections">
-    <LoadUri>~/tenant/templates/default/idpSelector.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/idpSelector.cshtml</LoadUri>
   </ContentDefinition>
   <ContentDefinition Id="api.idpselections.signup">
-    <LoadUri>~/tenant/templates/default/idpSelector.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/idpSelector.cshtml</LoadUri>
   </ContentDefinition>
   <ContentDefinition Id="api.signuporsignin">
-    <LoadUri>~/tenant/templates/AzureBlue/unified.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
   </ContentDefinition>
   <ContentDefinition Id="api.selfasserted">
-    <LoadUri>~/tenant/templates/default/selfAsserted.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   </ContentDefinition>
   <ContentDefinition Id="api.selfasserted.profileupdate">
-    <LoadUri>~/tenant/templates/default/selfAsserted.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   </ContentDefinition>
   <ContentDefinition Id="api.localaccountsignup">
-    <LoadUri>~/tenant/templates/default/selfAsserted.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   </ContentDefinition>
   <ContentDefinition Id="api.localaccountpasswordreset">
-    <LoadUri>~/tenant/templates/default/selfAsserted.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/selfAsserted.cshtml</LoadUri>
   </ContentDefinition>
   <ContentDefinition Id="api.phonefactor">
-    <LoadUri>~/tenant/templates/default/multifactor-1.0.0.cshtml</LoadUri>
+    <LoadUri>~/tenant/default/multifactor-1.0.0.cshtml</LoadUri>
   </ContentDefinition>
 </ContentDefinitions>
 ```

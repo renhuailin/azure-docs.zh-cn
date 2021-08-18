@@ -2,13 +2,13 @@
 title: 使用 Azure 资源管理器模板在 Azure 事件网格中创建系统主题
 description: 本文说明如何使用 Azure 资源管理器模板在 Azure 事件网格中创建系统主题。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 1c8881a2d9dfca43084cc537b106e84b050a18d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/22/2021
+ms.openlocfilehash: 8420e60dd7336d17845a0a1c6b4e5e6637fe9c8a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86115156"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114469454"
 ---
 # <a name="create-system-topics-in-azure-event-grid-using-resource-manager-templates"></a>使用资源管理器模板在 Azure 事件网格中创建系统主题
 本文说明如何使用资源管理器模板创建和管理系统主题。 有关系统主题的概述，请参阅[系统主题](system-topics.md)。

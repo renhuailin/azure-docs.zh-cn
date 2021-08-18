@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 03/15/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8637c691f946c02176c441cfcf5ad5abbea10396
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 210db9e5b5fc7412a566434bbffb239808aec4d0
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98016875"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110126"
 ---
 # <a name="azure-active-directory-connect-health-alert-catalog"></a>Azure Active Directory Connect Health 警报目录 
 
@@ -110,4 +110,4 @@ Azure AD Connect Health 服务发送警报指示标识基础结构运行不正�
 
 
 ## <a name="next-steps"></a>后续步骤
-* [Azure AD Connect Health 常见问题](reference-connect-health-faq.md)
+* [Azure AD Connect Health 常见问题](reference-connect-health-faq.yml)

@@ -8,23 +8,23 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: daf169a84268a24fd1cc50cd67386d359f9d726a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ffe94b70305fc4516e185f72f87ec7e82f05d3a1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110097869"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747425"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container---sql-api"></a>在 Azure Cosmos 容器上预配标准（手动）吞吐量 - SQL API
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文说明了如何在 Azure Cosmos DB SQL API 的容器中预配标准（手动）吞吐量。 可以为单个容器预配吞吐量，也可以[为数据库预配吞吐量](how-to-provision-database-throughput.md)，并在数据库中的容器之间共享。 可以使用 Azure 门户、Azure CLI 或 Azure Cosmos DB SDK 为容器预配吞吐量。
 
-如果你使用其他 API，请参阅[用于 MongoDB 的 API](how-to-provision-throughput-mongodb.md)、[Cassandra API](how-to-provision-throughput-cassandra.md)、[Gremlin API](how-to-provision-throughput-gremlin.md) 文章来预配吞吐量。
+如果你使用其他 API，请参阅[用于 MongoDB 的 API](mongodb/how-to-provision-throughput-mongodb.md)、[Cassandra API](cassandra/how-to-provision-throughput-cassandra.md)、[Gremlin API](how-to-provision-throughput-gremlin.md) 文章来预配吞吐量。
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)，或选择现有的 Azure Cosmos 帐户。
 

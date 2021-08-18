@@ -11,12 +11,12 @@ author: MaraSteiu
 ms.author: masteiu
 ms.reviewer: mathoma
 ms.date: 08/20/2019
-ms.openlocfilehash: c3a2be7a00c6718dd33b573faec4a619cbf5a1bb
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: f0ec1d641fc78e4fde612f987ad319d62bd9eeaf
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112074838"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112914222"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什么是 Azure SQL 数据同步？
 
@@ -142,7 +142,6 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 ### <a name="general-limitations"></a>一般限制
 
 - 表不能包含非主键标识列。
-- 表必须具有聚集索引，才能使用数据同步。
 - 主键不能具有以下数据类型：sql_variant、binary、varbinary、image、xml。
 - 使用以下数据类型作为主键时请小心谨慎，因为支持的精度仅到秒：time、datetime、datetime2、datetimeoffset。
 - 对象（数据库、表和列）的名称不能包含可打印字符句点 (.)、左方括号 ([) 或右方括号 (])。
@@ -152,8 +151,10 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 - 不支持具有用户定义数据类型的列
 - 不支持在不同订阅之间移动服务器。 
 - 如果两个主键只是大小写不同（例如 Foo 和 foo），数据同步也不支持这种情况。
-- 数据同步不支持截断表操作（不会跟踪更改）。
+- 截断表不是数据同步支持的操作（不会跟踪更改）。
 - 不支持超大规模数据库。 
+- 不支持内存优化表。
+- 如果中心和成员数据库位于虚拟网络中，则数据同步将无法正常工作，因为负责在中心和成员之间运行同步的同步应用不支持访问客户专用链接内的中心或成员数据库。 当客户还使用“数据同步专用链接”功能时，此限制仍然适用。 
 
 #### <a name="unsupported-data-types"></a>不支持的数据类型
 
@@ -198,6 +199,10 @@ SQL 数据同步使用插入、更新和删除触发器来跟踪更改。 它在
 
 > [!NOTE]
 > 如果更改同步组架构设置，则将需要允许数据同步服务再次访问服务器，以便可以重新预配中心数据库。
+
+### <a name="region-data-residency"></a>区域数据驻留 
+
+如果在同一区域内同步数据，SQL 数据同步不会在部署服务实例的区域外存储/处理客户数据。 如果跨不同区域同步数据，SQL 数据同步将把客户数据复制到配对区域。
 
 ## <a name="faq-about-sql-data-sync"></a>SQL 数据同步常见问题解答
 

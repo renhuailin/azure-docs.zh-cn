@@ -3,30 +3,30 @@ title: 自定义语音识别概述 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 自定义语音识别是一组联机工具，可用于针对你的应用程序、工具和产品评估并改进 Microsoft 的语音转文本准确度。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: trbye
-ms.custom: contperf-fy21q2; references_regions
-ms.openlocfilehash: 2eaf5a6a01b8ed0cb2a82f13c2d4d33ce88d5938
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.author: lajanuar
+ms.custom: contperf-fy21q2, references_regions
+ms.openlocfilehash: 588afaaa95ef871de11583e65d2a9ab831d28fa6
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110100408"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122069036"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音识别？
 
-使用自定义语音识别，可针对你的应用程序和产品，评估并改进 Microsoft 语音转文本准确度。 请遵循本文中的链接开始创建自定义语音转文本体验。
+自定义语音识别可用于针对你的应用程序和产品，评估并改进 Microsoft 语音转文本准确度。 请遵循本文中的链接开始创建自定义语音转文本体验。
 
 ## <a name="whats-in-custom-speech"></a>什么是自定义语音识别？
 
 在开始使用自定义语音识别执行任何操作之前，需要一个 Azure 帐户和一个语音服务订阅。 有了帐户后，即可准备数据、训练和测试模型、查看识别质量、评估准确度，并最终部署和使用自定义语音转文本模型。
 
-此关系图突出显示了组成 [Speech Studio 自定义语音识别区域](https://aka.ms/customspeech)的部分。 使用以下链接详细了解每个步骤。
+此关系图突出显示了组成 [Speech Studio 自定义语音识别区域](https://aka.ms/speechstudio/customspeech)的部分。 使用以下链接详细了解每个步骤。
 
 ![此关系图突出显示了组成 Speech Studio 自定义语音识别区域的部分。](./media/custom-speech/custom-speech-overview.png)
 
@@ -43,9 +43,6 @@ ms.locfileid: "110100408"
 ## <a name="set-up-your-azure-account"></a>设置 Azure 帐户
 
 你需要拥有 Azure 帐户和语音服务订阅，才能使用 [Speech Studio](https://speech.microsoft.com/customspeech) 创建自定义模型。 如果你没有帐户和订阅，[可以免费试用语音服务](overview.md#try-the-speech-service-for-free)。
-
-> [!NOTE]
-> 请确保创建标准 (S0) 订阅。 不支持免费 (F0) 订阅。
 
 如果打算使用音频数据训练自定义模型，请选择具有专用硬件的区域之一进行训练。 这将减少训练模型所用的时间，并使你可以使用更多的音频进行训练。 在这些区域，语音服务将使用长达 20 小时的音频进行训练；而在其他区域，最多只能使用 8 小时的音频。
 

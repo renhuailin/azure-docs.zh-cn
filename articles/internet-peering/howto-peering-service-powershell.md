@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 98341fbbbcafb6aee938870c22050c6edec352ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 38f70bd2847f5fb7f2d20a992aceba2d88e84695
+ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89079041"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113688156"
 ---
 # <a name="enable-azure-peering-service-on-a-direct-peering-by-using-powershell"></a>使用 PowerShell 在直接对等互连上启用 Azure 对等互连服务
 
@@ -57,4 +57,4 @@ ms.locfileid: "89079041"
 Get-Help Get-AzPeering -detailed
 ```
 
-有关常见问题解答，请参阅[对等互连服务常见问题解答](service-faqs.md)。
+有关常见问题解答，请参阅[对等互连服务常见问题解答](service-faqs.yml)。

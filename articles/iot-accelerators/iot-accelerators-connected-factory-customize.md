@@ -9,19 +9,19 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: a092859517ee6ac41e62e55fe95f72b8bfdf87d5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a95807bc3b209a2b410b205b6d473560b454b2b0
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645489"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113758239"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>自定义连接的工厂解决方案如何显示来自 OPC UA 服务器的数据
 
 > [!IMPORTANT]
 > 当我们更新本文时，请参阅 [Azure 工业 IoT](https://azure.github.io/Industrial-IoT/) 来了解最新内容。
 
-连接的工厂解决方案将聚合并显示来自连接到解决方案的 OPC UA 服务器的数据。 可以在解决方案中浏览命令并将其发送到 OPC UA 服务器。 有关 OPC UA 的详细信息，请参阅[连接的工厂常见问题解答](iot-accelerators-faq-cf.md)。
+连接的工厂解决方案将聚合并显示来自连接到解决方案的 OPC UA 服务器的数据。 可以在解决方案中浏览命令并将其发送到 OPC UA 服务器。 有关 OPC UA 的详细信息，请参阅[连接的工厂常见问题解答](iot-accelerators-faq-cf.yml)。
 
 解决方案中聚合数据的示例包括设备综合效率 (OEE) 和关键性能指标 (KPI)，可在工厂的仪表板、生产线和工作站级别查看这些数据。 以下屏幕截图显示慕尼黑工厂中生产线 1 上装配工作站的 OEE 和 KPI 值：
 
@@ -83,7 +83,7 @@ azure-iot-connected-factory 存储库包含 build.ps1 PowerShell 脚本，该脚
 通过阅读下列文章，详细了解连接的工厂解决方案加速器：
 
 * [azureiotsolutions.com 站点权限][lnk-permissions]
-* [连接的工厂常见问题解答](iot-accelerators-faq-cf.md)
+* [连接的工厂常见问题解答](iot-accelerators-faq-cf.yml)
 * [常见问题][lnk-faq]
 
 
@@ -95,4 +95,4 @@ azure-iot-connected-factory 存储库包含 build.ps1 PowerShell 脚本，该脚
 
 
 [lnk-permissions]: iot-accelerators-permissions.md
-[lnk-faq]: iot-accelerators-faq.md
+[lnk-faq]: iot-accelerators-faq.yml

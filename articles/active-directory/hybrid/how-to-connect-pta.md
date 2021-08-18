@@ -16,12 +16,12 @@ ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b8f613cb7c75d9dd6af1fcf62f9d484398072c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 519ed24e313f718efd92ba63f3d03f6dc9e4a13d
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89279459"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110576"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>使用 Azure Active Directory 传递身份验证的用户登录
 
@@ -75,7 +75,7 @@ ms.locfileid: "89279459"
 - [智能锁定](../authentication/howto-password-smart-lockout.md) - 在租户中配置智能锁定功能以保护用户帐户。
 - [当前限制](how-to-connect-pta-current-limitations.md) - 了解支持和不支持的方案。
 - 深入技术探究 - 了解此功能如何运作。
-- [常见问题](how-to-connect-pta-faq.md) - 常见问题解答。
+- [常见问题](how-to-connect-pta-faq.yml) - 常见问题解答。
 - 故障排除 - 了解如何解决使用此功能时遇到的常见问题。
 - [深入了解安全性](how-to-connect-pta-security-deep-dive.md) - 有关该功能的其他深入技术信息。
 - [Azure AD 无缝 SSO](how-to-connect-sso.md) - 深入了解此补充功能。

@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 519dc53f6373ae1a9c8853d3fa90d137e9fa934b
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 91e5effe1cfb948329a784fed06bd2bce0694c3d
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435403"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112284089"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 体系结构最佳做法
 
@@ -30,7 +30,7 @@ Azure HDInsight 群集是针对特定类型的计算用途设计的。 由于可
 |IoT/流式处理|Kafka、Storm、Spark|
 |NoSQL 事务处理|HBase|
 |使用内存中缓存的更快交互式查询|交互式查询|
-|数据科学|ML Services、Spark|
+|数据科学| Spark|
 
 下表显示了可用于创建 HDInsight 群集的各种方法。
 

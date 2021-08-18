@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 7d1c31c9f8507154056e6e6de0073eeb9ae636b7
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: fa41d81192a84b0b5b3c15f2c965c914a1ba42eb
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111422005"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294312"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>将托管标识与 Azure 机器学习结合使用（预览版）
 
@@ -218,7 +218,7 @@ from azureml.core.container_registry import RegistryIdentity
 
 identity = RegistryIdentity()
 identity.resource_id= "<UAI resource ID>"
-identity.client_id="<UAI client ID>”
+identity.client_id="<UAI client ID>"
 env.docker.base_image_registry.registry_identity=identity
 env.docker.base_image = "my-acr.azurecr.io/my-repo/my-image:latest"
 ```
@@ -258,7 +258,7 @@ ws = Workspace.create(name="workspace name",
 还可以使用 [ARM 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced)创建具有用户分配的托管标识的工作区。
 
 > [!IMPORTANT]
-> 若要引入自己的关联资源，需要为这些资源授予托管标识角色，而不是让 Azure 机器学习服务创建它们。 使用[角色分配 ARM 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment)进行分配。
+> 若要引入自己的关联资源，需要为这些资源授予托管标识角色，而不是让 Azure 机器学习服务创建它们。 使用[角色分配 ARM 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-dependencies-role-assignment)进行分配。
 
 对于具有[用于加密的客户管理的密钥](concept-data-encryption.md)的工作区，可以传入用户分配的托管标识以从存储向密钥保管库进行身份验证。 使用参数 user-assigned-identity-for-cmk-encryption (CLI) 或 user_assigned_identity_for_cmk_encryption (SDK) 来传递托管标识 。 此托管标识可与工作区主要用户分配的托管标识相同，也可不同。
 

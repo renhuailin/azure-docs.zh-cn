@@ -3,14 +3,14 @@ title: 配置 Azure Functions 中的函数应用设置
 description: 了解如何配置 Azure Functions 中的函数应用设置。
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
-ms.date: 04/13/2020
-ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 5080d16a7b14506b24e07e2ee4ba862c645f83a8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 01/21/2021
+ms.custom: cc996988-fb4f-47, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 041f004f18b4b5fa44e4d652b2d29edb833cdc2b
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98875443"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862358"
 ---
 # <a name="manage-your-function-app"></a>管理函数应用 
 
@@ -46,14 +46,14 @@ ms.locfileid: "98875443"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
-[`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) 命令返回现有的应用程序设置，如以下示例所示：
+[`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_list) 命令返回现有的应用程序设置，如以下示例所示：
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME>
 ```
 
-[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) 命令添加或更新某个应用程序设置。 以下示例创建的设置包含的键其名称为 `CUSTOM_FUNCTION_APP_SETTING`，其值为 `12345`：
+[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) 命令添加或更新某个应用程序设置。 以下示例创建的设置包含的键其名称为 `CUSTOM_FUNCTION_APP_SETTING`，其值为 `12345`：
 
 
 ```azurecli-interactive
@@ -82,7 +82,7 @@ Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOUR
 
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
-在本地开发函数应用时，必须将这些值的本地副本保留在 local.settings.json 项目文件中。 若要了解详细信息，请参阅[本地设置文件](functions-run-local.md#local-settings-file)。
+在本地开发函数应用时，必须将这些值的本地副本保留在 local.settings.json 项目文件中。 若要了解详细信息，请参阅[本地设置文件](functions-develop-local.md#local-settings-file)。
 
 ## <a name="hosting-plan-type"></a>托管计划类型
 
@@ -260,7 +260,7 @@ Linux 不支持此迁移。
 
 使用星号 (`*`) 时，会忽略所有其他的域。 
 
-使用 [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) 命令将域添加到“允许的域”列表。 以下示例添加 contoso.com 域：
+使用 [`az functionapp cors add`](/cli/azure/functionapp/cors#az_functionapp_cors_add) 命令将域添加到“允许的域”列表。 以下示例添加 contoso.com 域：
 
 ```azurecli-interactive
 az functionapp cors add --name <FUNCTION_APP_NAME> \
@@ -268,7 +268,7 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 --allowed-origins https://contoso.com
 ```
 
-使用 [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) 命令列出目前允许的域。
+使用 [`az functionapp cors show`](/cli/azure/functionapp/cors#az_functionapp_cors_show) 命令列出目前允许的域。
 
 ### <a name="authentication"></a><a name="auth"></a>身份验证
 

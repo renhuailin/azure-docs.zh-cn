@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒体服务来保护内容 | Microsoft 文档
-description: 本文概述了如何使用 Azure 媒体服务 v2 来保护内容。
+description: 本文概述如何使用 Azure 媒体服务 v2 保护内容。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -14,19 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
-ms.openlocfilehash: 2922586d586dbbb98ae85fb86f3f76889a75aa6b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 800b2f2a009b6912b7bc6b3e4f27cb679ec782f4
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067395"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114706525"
 ---
 # <a name="content-protection-overview"></a>内容保护概述
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
-> [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
+[!INCLUDE [v2 deprecation notice](../latest/includes/v2-deprecation-notice.md)]
 
 可以使用 Azure 媒体服务在媒体从计算机离开到存储、处理和传送的整个过程中确保其安全。 借助媒体服务，可以传送使用高级加密标准 (AES-128) 或三个主要数字版权管理 (DRM) 系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中任意一个动态加密的实时和请求内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 
 
@@ -95,7 +94,7 @@ PlayReady 和 Widevine 使用通用加密模式（AES CTR 模式）。 FairPlay 
 * 此功能可用于所有现有的受保护内容（仅需要更改颁发的令牌）。
 * 此功能同时使用 JWT 和 SWT。
 
-## <a name="streaming-urls"></a>流式处理 URL
+## <a name="streaming-urls"></a>流 URL
 如果资产是使用多个 DRM 加密的，请在流式处理 URL 中使用加密标记：(format='m3u8-aapl', encryption='xxx')。
 
 请注意以下事项：

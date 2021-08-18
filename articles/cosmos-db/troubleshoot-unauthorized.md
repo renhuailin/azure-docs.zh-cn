@@ -8,12 +8,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: aa9bf1fd706ccf6064893f1141be5e5b2f185ff3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: abd128966eb560b23e2c6038fb22d4dbd04eb3a7
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94411161"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113664532"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-unauthorized-exceptions"></a>诊断和排查 Azure Cosmos DB 未经授权异常
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -49,6 +49,12 @@ HTTP 401：HTTP 请求中的 MAC 签名与计算出的签名不同。
 
 #### <a name="solution"></a>解决方案：
 创建容器时出现争用状况。 在容器创建完成之前，某个应用程序实例正在尝试访问容器。 出现此争用条件的最常见情况是，应用程序正在运行就删除了容器，并重新创建了同名的容器。 SDK 尝试使用新容器，但由于容器创建仍在进行，因此无法获得密钥。
+
+### <a name="bulk-mode-enabled"></a>启用批量模式 
+使用[启用批量模式](https://devblogs.microsoft.com/cosmosdb/introducing-bulk-support-in-the-net-sdk/)时，读取和写入操作进行了优化，以获得最佳网络性能，并通过专用的批量 API 发送到后端。 启用批量模式执行读取操作时出现 401 错误，这通常表示应用程序正在使用[只读密钥](secure-access-to-data.md#primary-keys)。
+
+#### <a name="solution"></a>解决方案
+启用批量模式执行操作时，请使用读/写密钥或具有写入访问权限的授权机制。
 
 ## <a name="next-steps"></a>后续步骤
 * [诊断和排查](troubleshoot-dot-net-sdk.md)在使用 Azure Cosmos DB .NET SDK 时遇到的问题。

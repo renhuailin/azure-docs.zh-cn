@@ -7,13 +7,12 @@ ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 7227813f607ca18ee50f503a30b290414f333e21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 278dae8b3569dd0ff92d3ba12197d1049070167a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91310163"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744915"
 ---
 # <a name="supported-data-format-details"></a>支持的数据格式详细信息
 

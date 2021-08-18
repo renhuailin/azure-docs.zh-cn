@@ -3,12 +3,12 @@ title: 专用事件中心概述 - Azure 事件中心 | Microsoft Docs
 description: 本文概述专用 Azure 事件中心，它提供事件中心的单租户部署。
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 5468588c0dc1dc8660c2ddfbb44c554029cffa0c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: c398bd6bc17ef29f7a8fce30940ae4000b317754
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376111"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112412950"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>专用事件中心概述
 
@@ -46,7 +46,7 @@ ms.locfileid: "110376111"
 
 ## <a name="faqs"></a>常见问题解答
 
-[!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
+[!INCLUDE [event-hubs-dedicated-clusters-faq](./includes/event-hubs-dedicated-clusters-faq.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

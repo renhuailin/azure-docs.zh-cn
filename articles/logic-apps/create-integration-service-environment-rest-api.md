@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: fa0b37c46fd39a1764c356aa910347cafaa7d448
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f50fecfb2675e870025d9e188d5303aacf77f7a2
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787250"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112295716"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>使用逻辑应用 REST API 创建集成服务环境 (ISE)
 
@@ -22,7 +22,7 @@ ms.locfileid: "109787250"
 有关创建 ISE 的其他方法的详细信息，请参阅以下文章：
 
 * [使用 Azure 门户创建 ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
-* [使用示例 Azure 资源管理器快速入门模板创建 ISE](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)
+* [使用示例 Azure 资源管理器快速入门模板创建 ISE](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.logic/integration-service-environment)
 * [创建支持使用客户管理的密钥来加密静态数据的 ISE](customer-managed-keys-integration-service-environment.md)
 
 ## <a name="prerequisites"></a>先决条件

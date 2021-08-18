@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 Bentley - Automatic User Provi
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Bentley - Automatic User Provisioning 及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 08778fff-f252-45c2-95d4-cc640c288af3
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2021
-ms.author: Zhchia
-ms.openlocfilehash: 99857aab921d1c09de09db04dededef187094ae5
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.author: thwimmer
+ms.openlocfilehash: 6daa90e2a70eea20586b8f95967c938f360585cd
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108740008"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764735"
 ---
 # <a name="tutorial-configure-bentley---automatic-user-provisioning-for-automatic-user-provisioning"></a>教程：为 Bentley - Automatic User Provisioning 配置自动用户预配
 

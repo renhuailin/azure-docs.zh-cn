@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: terrylan
-ms.openlocfilehash: 0337a9aec4991dddbf95cf1ac2e2ec6adf7d28ea
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4894971fa6ac26cdfcbd65fb12c71d3ca73b6168
+ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110471583"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112422563"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure 安全技术功能
 本文介绍了 Azure 中的安全服务，这些服务可帮助保护云中的数据、资源和应用程序，并满足业务的安全需求。
@@ -182,7 +182,7 @@ Azure 中的访问控制首先体现在计费方面。 Azure 帐户的所有者�
 
 对于需要从位于本地的一个工作站安全访问 Azure 的组织而言，请使用[点到站点 VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)。
 
-可以通过专用高速 WAN 链路（例如 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)）移动较大的数据集。 如果选择使用 ExpressRoute，则还可以使用 [SSL/TLS](https://web.archive.org/web/20150221085231/http://support.microsoft.com:80/kb/257591) 或其他协议，在应用程序级别加密数据，以提供额外的保护。
+可以通过专用高速 WAN 链路（例如 [ExpressRoute](https://azure.microsoft.com/services/expressroute/)）移动较大的数据集。 如果选择使用 ExpressRoute，则还可以使用 SSL/TLS 或其他协议，在应用程序级别加密数据，以提供额外的保护。
 
 如果通过 Azure 门户与 Azure 存储交互，则所有事务都将通过 HTTPS 进行。 也可以使用基于 HTTPS 的[存储 REST API](/rest/api/storageservices/) 来与 [Azure 存储](https://azure.microsoft.com/services/storage/)和 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)交互。
 

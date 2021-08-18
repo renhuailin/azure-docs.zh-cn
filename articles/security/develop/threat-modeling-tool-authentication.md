@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 717142f5e97d68b844bc15a2f335390d1951ec0c
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 8bc827605147f229ea82475d98eac35dec2d6a22
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487504"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114290345"
 ---
 # <a name="security-frame-authentication--mitigations"></a>安全框架：身份验证 | 缓解措施
 
@@ -457,7 +457,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 | **SDL 阶段**               | 构建 |
 | **适用的技术** | 泛型、C#、Node.JS,  |
 | **属性**              | 不适用，网关选项 - Azure IoT 中心 |
-| **参考**              | 不适用，[使用 .NET 的 Azure IoT 中心](../../iot-hub/quickstart-send-telemetry-dotnet.md)、[IoT 中心和 Node JS 入门](../../iot-hub/quickstart-send-telemetry-node.md)、[使用 SAS 和证书保护 IoT](../../iot-hub/iot-hub-dev-guide-sas.md)、[Git 存储库](https://github.com/Azure/azure-iot-sdks/) |
+| **参考**              | 不适用，[使用 .NET 的 Azure IoT 中心](../../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)、[IoT 中心和 Node JS 入门](../../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)、[使用 SAS 和证书保护 IoT](../../iot-hub/iot-hub-dev-guide-sas.md)、[Git 存储库](https://github.com/Azure/azure-iot-sdks/) |
 | **步骤** | <ul><li>**泛型：** 使用传输层安全性 (TLS) 或 IPSec 对设备进行身份验证。 如果设备无法处理完全非对称加密，则基础结构应该支持在这些设备上使用预共享密钥 (PSK)。 利用 Azure AD、Oauth。</li><li>**C#：** 创建 DeviceClient 实例时，Create 方法默认创建使用 AMQP 协议来与 IoT 中心通信的 DeviceClient 实例。 要使用 HTTPS 协议，请使用 Create 方法的重写，它可以让你指定协议。 如果使用 HTTPS 协议，则还应在项目中添加 `Microsoft.AspNet.WebApi.Client` NuGet 包，以包含 `System.Net.Http.Formatting` 命名空间。</li></ul>|
 
 ### <a name="example"></a>示例

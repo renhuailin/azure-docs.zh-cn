@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a590082acee1a3382ef51ce2361eb2c9b5fb2636
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 087afa7425d1244c38514c5388e242281bdab3dc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741538"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736789"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Oracle 本地复制或粘贴数据
 
@@ -122,7 +122,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 **示例：使用 ODP 驱动程序**
 
-若要了解允许的格式，请参阅[用于 .NET ODP 的 Oracle 数据提供程序](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/)。
+若要了解允许的格式，请参阅[用于 .NET ODP 的 Oracle 数据提供程序](https://www.oracle.com/in/database/technologies/appdev/dotnet/odp.html)。
 
 ```json
 {
@@ -172,7 +172,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 **OracleSink** 支持以下属性：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 必须 |
 | --- | --- | --- | --- |
 | writeBatchTimeout |超时前等待批插入操作完成的时间。 |**timespan**<br/><br/> 示例：00:30:00（30 分钟） |否 |
 | writeBatchSize |当缓冲区大小达到 **writeBatchSize** 值时，向 SQL 表插入数据。 |整数（行数） |否（默认值：100） |

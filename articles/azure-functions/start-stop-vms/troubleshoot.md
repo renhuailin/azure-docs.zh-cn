@@ -3,14 +3,14 @@ title: 排查“启动/停止 VM”（预览）的问题
 description: 本文介绍如何排查 Azure VM 的“启动/停止 VM”（预览）功能出现的问题。
 services: azure-functions
 ms.subservice: start-stop-vms
-ms.date: 03/31/2021
+ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 587dddfde930bb64aa21f2e24c26d815e60ab9b0
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 2908f9a8383897ae0bda162e6f980e02d6c81bc1
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110791683"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112966982"
 ---
 # <a name="troubleshoot-common-issues-with-startstop-vms-preview"></a>排查“启动/停止 VM”（预览）的常见问题
 
@@ -32,7 +32,7 @@ ms.locfileid: "110791683"
 
 你可以在用于“启动/停止 VM”v2（预览）的 Azure 存储帐户中查看对 VM 执行的写入 requestsstoretable 表中的操作的详细信息。 请执行以下步骤来查看这些记录。
 
-1. 导航到 Azure 门户中的存储帐户，在帐户的左侧窗格中选择“存储资源管理器(预览版)”。
+1. 导航到 Azure 门户中的存储帐户，并在帐户的左侧窗格中选择“存储资源管理器(预览版)”。
 1. 选择“表”，然后选择“requeststoretable” 。
 1. 表中的每条记录均表示基于逻辑应用方案中定义的目标范围针对 Azure VM 执行的启动/停止操作。 可按任意一个记录属性（例如，TIMESTAMP、ACTION 或 TARGETTOPLEVELRESOURCENAME）来筛选结果。
 
@@ -65,3 +65,5 @@ ms.locfileid: "110791683"
 * [如何为 Azure Functions 配置监视](../../azure-functions/configure-monitoring.md)。
 
 * [监视逻辑应用](../../logic-apps/monitor-logic-apps.md)。
+
+* 如果你在部署过程中遇到问题、在使用“启动/停止 VM v2 (预览版)”时遇到问题，或者有相关的问题，则可在 [GitHub](https://github.com/microsoft/startstopv2-deployments/issues) 上提交问题。 从 [Azure 支持站点](https://azure.microsoft.com/support/options/)提交 Azure 支持事件的功能不适用于此预览版本。 

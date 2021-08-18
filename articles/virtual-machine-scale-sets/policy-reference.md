@@ -1,18 +1,18 @@
 ---
 title: Azure 虚拟机规模集的内置策略定义
 description: 列出 Azure 虚拟机规模集的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 06/11/2021
+ms.date: 08/13/2021
 ms.topic: reference
 author: ju-shim
 ms.author: jushiman
 ms.service: virtual-machine-scale-sets
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 23556b755675b6c70338dce99346cda18b31ac1d
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 638d5707f25583e72a85d126a7dfa96d824b88f6
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112019010"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179918"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的 Azure Policy 内置定义
 

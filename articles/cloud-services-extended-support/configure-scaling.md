@@ -9,12 +9,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: dab3411319f40a111144a3e1c1f02f1b67d011b0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ef8bf7192814ee791066bbbfd080d0d5cf9d6943
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935645"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460895"
 ---
 # <a name="configure-scaling-options-with-azure-cloud-services-extended-support"></a>为 Azure 云服务（外延支持）配置缩放选项 
 
@@ -64,5 +64,5 @@ ms.locfileid: "105935645"
 
 ## <a name="next-steps"></a>后续步骤 
 - 查看云服务（外延支持）的[部署先决条件](deploy-prerequisite.md)。
-- 请参阅云服务（外延支持）的[常见问题解答](faq.md)。
+- 请参阅云服务（外延支持）的[常见问题解答](faq.yml)。
 - 使用 [Azure 门户](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[模板](deploy-template.md)或 [Visual Studio](deploy-visual-studio.md) 部署云服务（外延支持）。

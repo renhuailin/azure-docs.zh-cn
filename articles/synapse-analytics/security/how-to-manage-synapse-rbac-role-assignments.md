@@ -1,19 +1,19 @@
 ---
 title: 如何在 Synapse Studio 中管理 Synapse RBAC 分配
 description: 本文介绍了如何分配和撤销 AAD 安全主体的 Synapse RBAC 角色
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: ronytho
+ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 01f923828f0b83280d033b9bc6e5c7b6bbebae35
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 8bbb6185368b438376529d69409d301c0cdd9c97
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110784068"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732488"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>如何在 Synapse Studio 中管理 Synapse RBAC 角色分配
 
@@ -33,7 +33,7 @@ Synapse RBAC 使用角色向用户、组和其他安全主体分配权限，以�
 
 ## <a name="open-synapse-studio"></a>打开 Synapse Studio  
 
-若要将角色分配给用户、组、服务主体或托管标识，请先[打开 Synapse Studio](https://web.azuresynapse.net/)，然后选择工作区。 
+若要将角色分配给用户、组、服务主体或托管标识，请先[打开 Synapse Studio](https://web.azuresynapse.net/)，然后登录到工作区。 
 
 ![登录到工作区](./media/common/login-workspace.png) 
  

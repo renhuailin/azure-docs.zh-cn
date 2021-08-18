@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 03/05/2021
-ms.openlocfilehash: d6f3368619395934dd358536e39f227bc66dfbfd
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: b652087db880cf9bd85d5d3eb00b989bc7be18e4
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110497392"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112893521"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Azure Red Hat OpenShift 支持策略
 
@@ -30,7 +30,6 @@ Azure Red Hat OpenShift 4 群集的某些配置可能会影响群集的可支持
 * 请勿删除或修改 Azure Red Hat OpenShift 服务日志记录 (mdsd pod)。
 * 请勿删除或修改“arosvc.azurecr.io”群集拉取机密。
 * 所有群集虚拟机须至少具有对 Azure 资源管理器 (ARM) 和服务日志记录 (Geneva) 终结点的直接出站 internet 访问权限。  不支持任何形式的 HTTPS 代理。
-* 请勿修改群集虚拟网络的 DNS 配置。 必须使用默认的 Azure DNS 解析程序。
 * 不要以任何方式重写群集的任何 MachineConfig 对象（例如，kubelet 配置）。
 * 请勿设置任何 unsupportedConfigOverrides 选项。 设置这些选项可防止次要版本升级。
 * Azure Red Hat OpenShift 服务通过专用链接服务访问群集。  请勿删除或修改服务访问权限。

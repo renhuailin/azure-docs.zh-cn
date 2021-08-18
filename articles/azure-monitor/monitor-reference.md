@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 3fa167233c5afe7b50b2794f6c0fff5458e9acf7
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: b04cacb1d2767e152e62bc3fd5902798204f3f60
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110089049"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734280"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍了由 Azure Monitor 监视的不同应用程序和服务。 
@@ -29,7 +29,7 @@ ms.locfileid: "110089049"
 | [Cosmos DB 见解](insights/cosmosdb-insights-overview.md) | 提供了关于所有 Azure Cosmos DB 资源的整体性能、故障、容量和运行状况的统一交互式体验视图。 |
 | [网络见解（预览版）](insights/network-insights-overview.md) | 提供所有网络资源的运行状况和指标的综合视图。 高级搜索功能通过便捷搜索网站名称，帮助你识别资源依赖关系，从而能够支持多种方案，比如识别用于托管网站的资源等。 |
 [资源组见解（预览版）](insights/resource-group-insights.md) |  分类和诊断各资源出现的任何问题，同时提供有关资源组的运行状况和性能的整体上下文。 |
-| [存储见解](insights/storage-insights-overview.md) | 通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 |
+| [存储见解](../storage/common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json) | 通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 |
 | [VM 见解](vm/vminsights-overview.md) | 可以大规模监视 Azure 虚拟机 (VM) 和虚拟机规模集。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 |
 | [Key Vault 见解（预览版）](./insights/key-vault-insights-overview.md) | 提供 Key Vault 请求、性能、失败和延迟的统一视图，在其中可以全面监视密钥保管库。 |
 | [Azure Cache for Redis 见解（预览版）](insights/redis-cache-insights-overview.md) |  提供有关整体性能、故障、容量和运行状况的统一交互式视图。 |
@@ -154,7 +154,7 @@ ms.locfileid: "110089049"
 |SQL 数据库 | 是 | 是 | 否 |  |
 |SQL Server Stretch Database | 是 | 是 | 否 |  |
 |堆栈 | 否 | 否 | 否 |  |
-|存储 | 是 | 否 | [是](insights/storage-insights-overview.md) |  |
+|存储 | 是 | 否 | [是](../storage/common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json) |  |
 |存储缓存 | 否 | 否 | 否 |  |
 |存储同步服务 | 否 | 否 | 否 |  |
 |流分析 | 是 | 是 | 否 |  |
@@ -243,4 +243,3 @@ Azure Monitor 可以使用下表中列出的方法从 Azure 以外的资源收�
 - 完成[有关监视 Azure 资源的教程](essentials/tutorial-resource-logs.md)。
 - 完成[编写日志查询以分析 Azure Monitor 日志中的数据的相关教程](essentials/tutorial-resource-logs.md)。
 - 完成[创建指标图表以分析 Azure Monitor 指标中的数据的相关教程](essentials/tutorial-metrics-explorer.md)。
-

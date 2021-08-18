@@ -3,20 +3,21 @@ title: 规划 Gen1 环境 - Azure 时序见解 | Microsoft Docs
 description: 准备、配置和部署 Azure 时序见解 Gen1 环境的最佳做法。
 services: time-series-insights
 ms.service: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
+ms.reviewer: orspodek
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5e0f1ea42aa2ba888b89dd652d3397a3a2163a3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e93c415e464b344a24593428c267fb09e6566e08
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95016201"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136825"
 ---
 # <a name="plan-your-azure-time-series-insights-gen1-environment"></a>规划 Azure 时序见解 Gen1 环境
 
@@ -33,7 +34,7 @@ ms.locfileid: "95016201"
 
 ## <a name="best-practices"></a>最佳实践
 
-若要开始使用 Azure 时序见解，最好是知道每分钟想要推送的数据量以及需要存储数据的时间。  
+若要开始使用 Azure 时序见解，最好是知道每分钟想要推送的数据量以及需要存储数据的时间。
 
 有关 Azure 时序见解 SKU 的容量和保留期的详细信息，请阅读 [Azure 时序见解定价](https://azure.microsoft.com/pricing/details/time-series-insights/)。
 
@@ -118,7 +119,7 @@ Azure 时序见解具有两种模式：
 参考数据集是对来自事件源的事件进行补充的项集合。  Azure 时序见解流入引擎将来自事件源的每个事件与参考数据集中的相应数据行联接到一起。 然后可以查询补充后的事件。 该联接基于参考数据集中定义的“主键”列。 
 
 > [!NOTE]
-> 参考数据不以追溯方式进行联接。 在配置并上传参考数据集后，只会将当前和将来的流入数据与参考数据集相匹配并联接到其中。 如果你打算将大量的历史数据发送到 Azure 时序见解，但未事先在 Azure 时序见解中上传或创建参考数据，到时可能需要从头开始，这是一件很麻烦的事。  
+> 参考数据不以追溯方式进行联接。 在配置并上传参考数据集后，只会将当前和将来的流入数据与参考数据集相匹配并联接到其中。 如果你打算将大量的历史数据发送到 Azure 时序见解，但未事先在 Azure 时序见解中上传或创建参考数据，到时可能需要从头开始，这是一件很麻烦的事。
 
 若要详细了解如何在 Azure 时序见解中创建、上传和管理参考数据，请阅读[参考数据集文档](time-series-insights-add-reference-data-set.md)。
 

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: 235efc550fd47d4244a5bf081c75d5e824a8e4b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f87c61d5c77d3c355d4536e06eba8619da60e21
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92793426"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730448"
 ---
 # <a name="split-merge-security-configuration"></a>拆分/合并安全配置
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -442,11 +442,11 @@ MyID.pvk and MyID.cer with the filename for the encryption certificate
 1. 运行 mmc.exe。
 2. “文件”->“添加/删除管理单元...”
 3. 选择“证书” 。
-4. 单击“添加”  。
+4. 单击“添加” 。
 5. 选择证书存储位置。
 6. 单击“完成”  。
 7. 单击 **“确定”** 。
-8. 展开“证书” 。
+8. 展开“证书”  。
 9. 展开证书存储节点。
 10. 展开证书子节点。
 11. 在列表中选择某个证书。

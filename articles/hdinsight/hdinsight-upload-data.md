@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020, devx-track-azurecli
 ms.date: 04/27/2020
-ms.openlocfilehash: 81ce470c53374331afcc91c89fd97e96c3fa0c35
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 42197766873992bbce7c388be778a44d9e4c0d16
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887407"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112538919"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中上传 Apache Hadoop 作业的数据
 
@@ -34,11 +34,11 @@ Microsoft 提供以下实用工具用于操作 Azure 存储：
 
 | 工具 | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md) |âœ” |âœ” |âœ” |
-| [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |âœ” |âœ” |âœ” |
-| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |âœ” |
-| [AzCopy](../storage/common/storage-use-azcopy-v10.md) |âœ” | |âœ” |
-| [Hadoop 命令](#hadoop-command-line) |âœ” |âœ” |âœ” |
+| [Azure 门户](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
+| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
+| [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
+| [Hadoop 命令](#hadoop-command-line) |✔ |✔ |✔ |
 
 > [!NOTE]  
 > Hadoop 命令仅在 HDInsight 群集上可用。 使用该命令只能将数据从本地文件系统载入 Azure 存储。  
@@ -76,12 +76,12 @@ hadoop fs -copyFromLocal <localFilePath> <storageFilePath>
 
 | 客户端 | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [用于 HDInsight 的 Microsoft Visual Studio Tools](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |âœ” |âœ” |âœ” |
-| [Azure 存储资源管理器](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |âœ” |âœ” |âœ” |
-| [`Cerulea`](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |âœ” |
-| [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) | | |âœ” |
-| [适用于 Microsoft Azure 的 CloudBerry Explorer](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |âœ” |
-| [Cyberduck](https://cyberduck.io/) | |âœ” |âœ” |
+| [用于 HDInsight 的 Microsoft Visual Studio Tools](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
+| [Azure 存储资源管理器](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
+| [`Cerulea`](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
+| [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) | | |✔ |
+| [适用于 Microsoft Azure 的 CloudBerry Explorer](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
+| [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
 
 ## <a name="mount-azure-storage-as-local-drive"></a>将 Azure 存储装载为本地驱动器
 

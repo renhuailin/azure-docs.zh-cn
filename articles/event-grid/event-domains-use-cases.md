@@ -3,18 +3,18 @@ title: Azure 事件网格中事件域的用例
 description: 本文介绍了在 Azure 事件网格中使用事件域的几个用例。
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 00318fc78053ed55e3599c329746d89d2eee4f99
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 24a338717b44567bad0ec1575d98ddaeada71113
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204296"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112413614"
 ---
 # <a name="use-cases-for-event-domains-in-azure-event-grid"></a>Azure 事件网格中事件域的用例
 本文介绍了在 Azure 事件网格中使用事件域的几个用例。 
 
 ## <a name="use-case-1"></a>用例 1 
-[!INCLUDE [event-grid-domain-example-use-case.md](../../includes/event-grid-domain-example-use-case.md)]
+[!INCLUDE [event-grid-domain-example-use-case.md](./includes/event-grid-domain-example-use-case.md)]
 
 ## <a name="use-case-2"></a>用例 2
 使用系统主题时，最多只能有 500 个事件订阅。 如果系统主题需要 500 个以上的事件订阅，可以使用域。 

@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 Proware 配置自动用户预�
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Proware 及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 8887932e-e27e-419b-aa85-a0cda428d525
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2021
-ms.author: Zhchia
-ms.openlocfilehash: 559b385636dc76eecdba10901179c394a0cae906
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.author: thwimmer
+ms.openlocfilehash: c459e69eaa4517207d064ccd87ace71a8d003b0e
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108207674"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113758546"
 ---
 # <a name="tutorial-configure-proware-for-automatic-user-provisioning"></a>教程：为 Proware 配置自动用户预配
 

@@ -8,18 +8,18 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/03/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 5ece29b7189f31654056ec357f522b59ccb16587
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 040178a3a38aca6051ce266709f66965d47fb413
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95096304"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113289632"
 ---
 [参考文档](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45) | [示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/LUIS/java-model-with-rest/Model.java)
 
 ## <a name="prerequisites"></a>先决条件
 
-* [JDK SE](/azure/developer/java/fundamentals/java-jdk-long-term-support)（Java 开发工具包，标准版）
+* [JDK SE](/azure/developer/java/fundamentals/java-support-on-azure)（Java 开发工具包，标准版）
 * [Visual Studio Code](https://code.visualstudio.com/) 或你喜欢用的 IDE
 
 ## <a name="example-utterances-json-file"></a>示例话语 JSON 文件
@@ -46,7 +46,7 @@ ms.locfileid: "95096304"
     |--|--|
     |`YOUR-APP-ID`| LUIS 应用 ID。 |
     |`YOUR-AUTHORING-KEY`|32 字符创作密钥。|
-    |`YOUR-AUTHORING-ENDPOINT`| 创作 URL 终结点。 例如，`https://replace-with-your-resource-name.api.cognitive.microsoft.com/`。 在创建资源时设置资源名称。|
+    |`YOUR-AUTHORING-ENDPOINT`| 创作 URL 终结点。 例如，`https://replace-with-your-resource-name.api.cognitive.microsoft.com/` 。 在创建资源时设置资源名称。|
 
     分配的密钥和资源可以在 LUIS 门户的“Azure 资源”页上的“管理”部分中看到。 应用 ID 可以在“应用程序设置”页的同一“管理”部分中找到。
 

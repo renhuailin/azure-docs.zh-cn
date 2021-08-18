@@ -2,18 +2,18 @@
 title: 创建任务依赖项以运行任务
 description: 在 Azure Batch 中创建依赖于其他任务的完成的任务，以处理 MapReduce 样式和类似的大数据工作负荷。
 ms.topic: how-to
-ms.date: 12/28/2020
+ms.date: 06/29/2021
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: ef05a98fffc3c0684ad0fa29f2f9f039b388f5ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0cd5e0bc97d37e4daf76bee66c8b4de4698b7aca
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97803929"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126511"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>创建任务依赖关系，以运行依赖于其他任务的任务
 
-使用 Batch 任务依赖关系，可以创建在完成一个或多个父任务后在计算节点上按计划执行的任务。 例如，可以创建一个作业，使用单独的并行任务渲染 3D 影片的每个帧。 最后一个任务为“合并任务”，仅在所有帧已成功呈现后，才将呈现的帧合并为完整影片。
+使用 Batch 任务依赖关系，可以创建在完成一个或多个父任务后在计算节点上按计划执行的任务。 例如，可以创建一个作业，使用单独的并行任务渲染 3D 影片的每个帧。 最后一个任务仅在所有帧已成功渲染后，才将渲染的帧合并为完整影片。 换句话说，最后一个任务依赖于前面的父任务。
 
 任务依赖关系可发挥作用的部分方案包括：
 
@@ -22,9 +22,7 @@ ms.locfileid: "97803929"
 - 渲染前和渲染后过程，其中只有在完成每个任务后，其后续任务才能开始。
 - 下游任务依赖于上游任务输出的任何其他作业。
 
-默认情况下，依赖任务计划为仅在成功完成父任务后执行。 你可以选择指定一个[依赖关系操作](#dependency-actions)来替代默认行为，并在父任务失败时运行任务。
-
-## <a name="task-dependencies-with-batch-net"></a>Batch .NET 的任务依赖关系
+默认情况下，依赖任务计划为仅在成功完成父任务后执行。 你可以选择指定一个[依赖关系操作](#dependency-actions)来替代默认行为，并在父任务失败时运行依赖任务。
 
 本文讨论如何使用 [Batch .NET](/dotnet/api/microsoft.azure.batch) 库配置任务依赖关系。 本文首先说明如何为作业[启用任务依赖关系](#enable-task-dependencies)，然后演示如何[为任务配置依赖关系](#create-dependent-tasks)。 本文还介绍如何指定一个依赖关系操作，以便在父任务失败时运行依赖任务。 最后介绍 Batch 支持的[依赖关系方案](#dependency-scenarios)。
 
@@ -92,7 +90,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 
 ### <a name="one-to-many"></a>一对多
 
-在一对多关系中，任务依赖于多个父任务的完成。 若要创建该依赖关系，请在填充 [CloudTask.DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson) 属性时，为 [TaskDependencies.OnIds](/dotnet/api/microsoft.azure.batch.taskdependencies.onids) 静态方法提供任务 ID 的集合。
+在一对多关系中，任务依赖于多个父任务的完成。 若要创建该依赖关系，请在填充 [CloudTask.DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson) 属性时，为 [TaskDependencies.OnIds](/dotnet/api/microsoft.azure.batch.taskdependencies.onids) 静态方法提供特定任务 ID 的集合。
 
 ```csharp
 // 'Rain' and 'Sun' don't depend on any other tasks
@@ -107,17 +105,21 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 },
 ```
 
+> [!IMPORTANT]
+> 如果父任务 ID 的组合长度大于 64000 个字符，则创建依赖任务将失败。 若要指定大量的父任务，请考虑改为使用任务 ID 范围。
+
 ### <a name="task-id-range"></a>任务 ID 范围
 
-在依赖于一系列父任务的关系中，任务依赖于其 ID 位于某个范围内的任务的完成。
-若要创建该依赖关系，请在填充 [CloudTask.DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson) 属性时，为 [TaskDependencies](/dotnet/api/microsoft.azure.batch.taskdependencies.onidrange) 静态方法提供该范围内的第一个和最后一个任务 ID。
+在依赖于一系列父任务的关系中，任务依赖于其 ID 位于指定的范围内的任务的完成情况。
+
+若要创建该依赖关系，请在填充 [CloudTask.DependsOn](/dotnet/api/microsoft.azure.batch.cloudtask.dependson) 属性时，为 [TaskDependencies.OnIdRange](/dotnet/api/microsoft.azure.batch.taskdependencies.onidrange) 静态方法提供该范围内的第一个和最后一个任务 ID。
 
 > [!IMPORTANT]
 > 将任务 ID 范围用于依赖项时，只有 ID 表示整数值的任务将由范围选定。 例如，范围 `1..10` 会选择任务 `3` 和 `7`，但不选择 `5flamingoes`。
 >
-> 在评估范围依赖项时，前导零不重要，因此，带字符串标识符 `4`、`04` 和 `004` 的任务都将处于范围内，它们将全部视为任务 `4`，因此，要完成的第一个任务将满足依赖项。
+> 在评估范围依赖项时，前导零不重要，因此，带字符串标识符 `4`、`04` 和 `004` 的任务都将处于范围内，因为它们将全部视为任务 `4`，并且要完成的第一个任务将满足依赖项。
 >
-> 范围内的每个任务必须满足该依赖关系，这分为两种情况：一种情况是成功完成，另一种情况是已完成，但出现了失败，该失败映射到设置为“Satisfy”的某个[依赖关系操作](#dependency-actions)。
+> 对于要运行的依赖任务，范围内的每个任务都必须满足该依赖关系，这分为两种情况：一种情况是成功完成，另一种情况是已完成，但出现了失败，该失败映射到设置为“Satisfy”的某个[依赖关系操作](#dependency-actions)。
 
 ```csharp
 // Tasks 1, 2, and 3 don't depend on any other tasks. Because
@@ -139,9 +141,9 @@ new CloudTask("4", "cmd.exe /c echo 4")
 
 ## <a name="dependency-actions"></a>依赖关系操作
 
-默认情况下，只有在父任务成功完成后，才能运行某个依赖任务或任务集。 在某些情况下，建议运行依赖任务，即使父任务失败。 可以通过指定依赖关系操作来重写默认行为。
+默认情况下，只有在父任务成功完成后，才能运行某个依赖任务或任务集。 在某些情况下，建议运行依赖任务，即使父任务失败。 你可以通过指定一个依赖关系操作来替代默认行为，该操作会指示依赖任务是否有资格运行。
 
-依赖关系操作根据父任务的成功或失败状态指定某个依赖任务是否符合运行的条件。 例如，假设某个依赖任务正在等待完成上游任务后提供的数据。 如果上游任务失败，依赖任务仍可使用旧数据运行。 在这种情况下，依赖关系操作可以指定即使父任务失败，依赖任务也符合运行的条件。
+例如，假设某个依赖任务正在等待完成上游任务后提供的数据。 如果上游任务失败，依赖任务仍可使用旧数据运行。 在这种情况下，依赖关系操作可以指定即使父任务失败，依赖任务也符合运行的条件。
 
 依赖关系操作基于父任务的退出条件。 可为以下任一退出条件指定依赖关系操作：
 
@@ -151,9 +153,9 @@ new CloudTask("4", "cmd.exe /c echo 4")
 - 任务退出并返回处于“ExitCodeRanges”属性指定的范围内的退出代码时。
 - 如果任务退出，并返回非由“ExitCodes”或“ExitCodeRanges”定义的退出代码，或者如果任务退出，并返回预处理错误，而“PreProcessingError”属性未设置，或者如果任务失败，并返回文件上传错误，而“FileUploadError”属性未设置，则为默认情况   。 
 
-对于 .NET，请参阅 [ExitConditions](/dotnet/api/microsoft.azure.batch.exitconditions) 类来了解有关这些条件的更多详细信息。
+对于 .NET，这些条件定义为 [ExitConditions ](/dotnet/api/microsoft.azure.batch.exitconditions) 类的属性。
 
-若要在 .NET 中指定依赖关系操作，请将退出条件的 [ExitOptions.DependencyAction](/dotnet/api/microsoft.azure.batch.exitoptions.dependencyaction) 属性设置为下列项之一：
+若要指定依赖关系操作，请将退出条件的 [ExitOptions.DependencyAction](/dotnet/api/microsoft.azure.batch.exitoptions.dependencyaction) 属性设置为下列项之一：
 
 - Satisfy：指示如果父任务退出并返回了指定的错误，则依赖项任务有资格运行。
 - **阻止**：指示依赖项任务没有资格运行。

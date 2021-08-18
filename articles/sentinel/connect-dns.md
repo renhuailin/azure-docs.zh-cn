@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: 4b6ad04afce5fb4ead5575d47333525c0f5f8a13
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f4e6ddf4e3db0213587a9154a424813c3cc5ca83
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110075191"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183137"
 ---
 # <a name="connect-your-domain-name-server"></a>连接域名服务器
 
@@ -47,7 +47,7 @@ ms.locfileid: "110075191"
 | **连接的源** | **支持** | **说明** |
 | --- | --- | --- |
 | [Windows 代理](../azure-monitor/agents/agent-windows.md) | 是 | 解决方案会从 Windows 代理收集 DNS 信息。 |
-| [Linux 代理](../azure-monitor/vm/quick-collect-linux-computer.md) | 否 | 解决方案不会从直接 Linux 代理收集 DNS 信息。 |
+| [Linux 代理](../azure-monitor/vm/monitor-virtual-machine.md) | 否 | 解决方案不会从直接 Linux 代理收集 DNS 信息。 |
 | [System Center Operations Manager 管理组](../azure-monitor/agents/om-agents.md) | 是 | 解决方案会从连接的 Operations Manager 管理组中的代理收集 DNS 信息。 从 Operations Manager 代理到 Azure Monitor 的直接连接不是必需的。 数据将从管理组转发到 Log Analytics 工作区。 |
 | [Azure 存储帐户](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) | 否 | 解决方案不会使用 Azure 存储。 |
 
@@ -88,5 +88,5 @@ ms.locfileid: "110075191"
 ## <a name="next-steps"></a>后续步骤
 
 在本文中，你已了解如何将 DNS 本地设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。

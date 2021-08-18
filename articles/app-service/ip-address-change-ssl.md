@@ -1,21 +1,21 @@
 ---
-title: 为 SSL IP 地址更改做准备
-description: 如果 SSL IP 地址将要更改，请了解如何在更改后继续运行应用。
+title: 为 TLS/SSL IP 地址更改做准备
+description: 如果 TLS/SSL IP 地址将要更改，请了解如何在更改后继续运行应用。
 ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
-ms.openlocfilehash: dcfe11bcab25f6267a557de5faf7befab467bc29
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3712931f73463ec1a799f003b82197752a735136
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96020953"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895276"
 ---
-# <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>如何为 SSL IP 地址更改做好准备
+# <a name="how-to-prepare-for-a-tlsssl-ip-address-change"></a>如何为 TLS/SSL IP 地址更改做好准备
 
-如果收到有关 Azure 应用服务应用的 SSL IP 地址即将更改的通知，请遵照本文中的说明释放现有的 SSL IP 地址并分配新地址。
+如果收到有关 Azure 应用服务应用的 TLS/SSL IP 地址即将更改的通知，请遵照本文中的说明释放现有的 TLS/SSL IP 地址并分配新地址。
 
-## <a name="release-ssl-ip-addresses-and-assign-new-ones"></a>释放 SSL IP 地址并分配新地址
+## <a name="release-tlsssl-ip-addresses-and-assign-new-ones"></a>释放 TLS/SSL IP 地址并分配新地址
 
 1.  打开 [Azure 门户](https://portal.azure.com)。
 

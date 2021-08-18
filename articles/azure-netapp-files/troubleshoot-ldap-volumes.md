@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: eea3f691bc6d91948dc73b4a02c89abfac12d384
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 0008c6034eba2de58684276cb5f12c6b2398cac1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106498864"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729222"
 ---
 # <a name="troubleshoot-ldap-volume-issues"></a>排除 LDAP 卷故障
 
@@ -38,4 +38,4 @@ ms.locfileid: "106498864"
 
 * [配置添加 LDAP，其中包含用于 NFS 卷访问的扩展组](configure-ldap-extended-groups.md)
 * [创建用于 Azure NetApp 文件的 NFS 卷](azure-netapp-files-create-volumes.md)
-* [为 Azure NetApp 文件创建双重协议（NFSv3 和 SMB）卷](create-volumes-dual-protocol.md)
+* [为 Azure NetApp 文件创建双重协议卷](create-volumes-dual-protocol.md)

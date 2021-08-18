@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
-ms.openlocfilehash: 7583b4037d350b9190d6eae30c28b907b1d41d86
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9628c9d10818b2b7a8a731b14537e4b533af74e
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104722848"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862098"
 ---
 # <a name="azure-activity-log"></a>Azure 活动日志
 活动日志是 Azure 中的一种[平台日志](./platform-logs-overview.md)，可用于深入了解订阅级别事件。 这包括何时修改了资源或何时启动了虚拟机等信息。 可以在 Azure 门户中查看活动日志，或在 PowerShell 和 CLI 中检索条目。 若要获得其他功能，应当创建诊断设置，以便将活动日志发送到 [Azure Monitor 日志](../logs/data-platform-logs.md)，发送到 Azure 事件中心以转发到 Azure 外部，或发送到 Azure 存储进行存档。 本文详细介绍了如何查看活动日志，以及如何将其发送到不同的目标。
@@ -63,7 +63,7 @@ ms.locfileid: "104722848"
 - Log Analytics 工作区中存储的活动日志数据不产生数据引入费用。
 - Log Analytics 工作区中存储的活动日志数据在 90 天内不会产生数据保留费用。
 
-[创建诊断设置](./diagnostic-settings.md)，以便将活动日志发送到 Log Analytics 工作区。 可以将任一订阅中的活动日志发送到最多五个工作区。 跨租户收集日志需要 [Azure Lighthouse](../../lighthouse/index.yml)。
+[创建诊断设置](./diagnostic-settings.md)，以便将活动日志发送到 Log Analytics 工作区。 可以将任一订阅中的活动日志发送到最多五个工作区。 
 
 Log Analytics 工作区中的活动日志数据存储在名为 AzureActivity 的表中，可以在 [Log Analytics](../logs/log-analytics-tutorial.md) 中使用[日志查询](../logs/log-query-overview.md)来检索该表。 此表的结构因[日志条目类别](activity-log-schema.md)而异。 有关表属性的说明，请参阅 [Azure Monitor 数据参考](/azure/azure-monitor/reference/tables/azureactivity)。
 
@@ -204,7 +204,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | 属性 | 必选 | 说明 |
+    | 属性 | 必须 | 说明 |
     | --- | --- | --- |
     | 名称 |是 |日志配置文件的名称。 |
     | StorageAccountId |否 |应该将活动日志保存到其中的存储帐户的资源 ID。 |
@@ -247,7 +247,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | 属性 | 必选 | 说明 |
+    | 属性 | 必须 | 说明 |
     | --- | --- | --- |
     | name |是 |日志配置文件的名称。 |
     | storage-account-id |是 |活动日志应保存到的存储帐户的资源 ID。 |

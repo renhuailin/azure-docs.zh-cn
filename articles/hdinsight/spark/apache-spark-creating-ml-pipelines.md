@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 07/22/2019
-ms.openlocfilehash: e9897c7ba14e6190698cf10792a94acc759699d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57f84aaa59ed5277a7dbbb6bb8fd484210808dfb
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98940185"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112678153"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>创建 Apache Spark 机器学习管道
 
@@ -131,4 +131,4 @@ only showing top 20 rows
 
 ## <a name="see-also"></a>另请参阅
 
-* [在 Azure 上使用 Scala 和 Apache Spark 展开数据科研](../../machine-learning/team-data-science-process/scala-walkthrough.md)
+* [在 Azure 上使用 Scala 和 Apache Spark 展开数据科研](/azure/architecture/data-science-process/scala-walkthrough)

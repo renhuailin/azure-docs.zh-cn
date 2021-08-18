@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 04/07/2021
-ms.openlocfilehash: 8b87cfc8276d13ccc7e12a4901489ea0b1e770a5
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 08/03/2021
+ms.openlocfilehash: 22a0fb4d06194138d5169df5005d5a23b3580569
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012500"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726141"
 ---
 # <a name="pick-initial-size-for-hyperscale-citus-server-group"></a>选择超大规模 (Citus) 服务器组的初始大小
 
@@ -36,11 +36,6 @@ vCore 总数：当工作数据可容纳在 RAM 中时，可以期望超大规模
 辅助角色 RAM：最佳情况是提供足够的内存，使大部分工作集可容纳在内存中。 应用程序使用的查询类型会影响内存要求。 可以对查询运行“EXPLAIN ANALYZE”以确定它需要的内存量。 请记住，Vcore 和 RAM 按“[超大规模 (Citus) 配置选项](concepts-hyperscale-configuration-options.md)”一文中所述进行缩放。
 
 ## <a name="choosing-a-hyperscale-citus-tier"></a>选择超大规模 (Citus) 层
-
-> [!IMPORTANT]
-> 超大规模 (Citus) 基本层目前以预览版提供。  此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
->
-> 请参阅[超大规模 (Citus) 的预览功能](hyperscale-preview-features.md)，以查看其他新功能的完整列表。
 
 上述部分说明了每个用例所需的 vCore 数和 RAM 量。 可通过在两个超大规模 (Citus) 层之间进行选择来满足这些需求：基本层和标准层。
 

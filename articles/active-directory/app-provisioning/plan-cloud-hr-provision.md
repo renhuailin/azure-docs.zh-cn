@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/07/2021
+ms.date: 07/13/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: fb2f36e1b51ed5fbb7c3f2c002760d07f3723645
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 12b909b467b7f53d568e80f60c8b30f701820216
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590431"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113728509"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>计划云 HR 应用程序到 Azure Active Directory 的用户预配
 
@@ -75,7 +75,7 @@ HR 驱动的 IT 预配的这一功能提供了以下重要的业务优势：
 
 ### <a name="licensing"></a>许可
 
-若要配置云 HR 应用到 Azure AD 用户预配集成，需要一个有效的 [Azure AD Premium 许可证](https://azure.microsoft.com/pricing/details/active-directory/)和一个云 HR 应用的许可证，如 Workday 或 SuccessFactors。
+若要配置云 HR 应用到 Azure AD 用户预配集成，需要一个有效的 [Azure AD Premium 许可证](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)和一个云 HR 应用的许可证，如 Workday 或 SuccessFactors。
 
 还需要一个有效的 Azure AD Premium P1 或更高版本的订阅许可证，适用于将从 云 HR 应用获得并预配到Active Directory 或 Azure AD 中的每个用户。 云 HR 应用中拥有的任何不正确的许可证数可能会导致用户预配时出现错误。
 
@@ -507,7 +507,7 @@ Windows server 上安装的 Azure AD Connect 预配代理在 Windows 事件日�
 
 Azure AD 预配服务不会在超过30天后生成报表、执行分析，或提供见解，因为服务不会存储、处理或保留超过30天的任何数据。
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 若要解决在预配期间可能会出现的任何问题，请参阅以下文章：
 

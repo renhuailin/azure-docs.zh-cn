@@ -4,12 +4,12 @@ description: Azure 容器实例服务的计算和内存资源在不同 Azure 区
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 26d1bf74656c63f4957df1129746a3f8fd33c554
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 69dc12c0a74855535e173868951c15a3acfcfd75
+ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959098"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114371511"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器实例在 Azure 区域的资源可用性
 
@@ -32,6 +32,7 @@ ms.locfileid: "111959098"
 | 区域 | 最大 CPU | 最大内存 (GB) | VNET 最大 CPU | VNET 最大内存 (GB) | 存储器 (GB) | GPU SKU（预览版） |
 | -------- | :---: | :---: | :----: | :-----: | :-------: | :----: |
 | 澳大利亚东部 | 4 | 16 | 4 | 16 | 50 | 空值 |
+| Australia Southeast | 4 | 14 | 空值 | 空值 | 50 | 空值 |
 | 巴西南部 | 4 | 16 | 2 | 8 | 50 | 空值 |
 | 加拿大中部 | 4 | 16 | 4 | 16 | 50 | 空值 |
 | 加拿大东部 | 4 | 16 | 4 | 16 | 50 | 空值 |
@@ -47,12 +48,13 @@ ms.locfileid: "111959098"
 | 韩国中部 | 4 | 16 | 空值 | 空值 | 50 | 空值 |
 | 美国中北部 | 2 | 3.5 | 4 | 16 | 50 | K80、P100、V100 |
 | 北欧 | 4 | 16 | 4 | 16 | 50 | K80 |
+| 挪威东部 | 4 | 16 | 空值 | 空值 | 50 | 空值 |
 | 美国中南部 | 4 | 16 | 4 | 16 | 50 | V100 |
 | 东南亚 | 4 | 16 | 4 | 16 | 50 | P100、V100 |
 | 印度南部 | 4 | 16 | 空值 | 空值 | 50 | K80 |
 | 瑞士北部 | 4 | 16 | 空值 | 空值 | 50 | 空值 |
 | 英国南部 | 4 | 16 | 4 | 16 | 50 | 空值 |
-| 英国西部 | 4 | 16 | 4 | 16 | 50 | 空值 |
+| 英国西部 | 4 | 16 | 空值 | 空值 | 50 | 空值 |
 | 阿拉伯联合酋长国北部 | 4 | 16 | 空值 | 空值 | 50 | 空值 |
 | 美国中西部| 4 | 16 | 4 | 16 | 50 | 空值 |
 | 西欧 | 4 | 16 | 4 | 16 | 50 | K80、P100、V100 |
@@ -75,7 +77,7 @@ ms.locfileid: "111959098"
 
 ## <a name="windows-container-groups"></a>Windows 容器组
 
-以下区域和最大资源数量适用于具有[受支持和预览版](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 容器的容器组。
+以下区域和最大资源数量适用于具有[受支持和预览版](/azure/container-instances/container-instances-faq#what-windows-base-os-images-are-supported) Windows Server 容器的容器组。
 
 > [!IMPORTANT]
 > 目前，Azure 虚拟网络部署中不支持具有 Windows 容器组的部署。

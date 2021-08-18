@@ -7,12 +7,12 @@ ms.topic: how-to
 author: aarathin
 ms.author: aarathin
 ms.date: 05/21/2021
-ms.openlocfilehash: 4804d1b315ce70a3ee145616f9fecbc1edc5e293
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 8ab847eee55eb9f2fc4d0d4ee7de1fa9eef3bcf0
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540577"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112294294"
 ---
 # <a name="prepare-iot-edge-module-technical-assets"></a>准备 IoT Edge 模块技术资产
 
@@ -66,11 +66,11 @@ IoT Edge 模块必须支持以下平台选项之一：
 
 ### <a name="configuration"></a>配置
 
-你的模块必须包括默认配置设置，尽量使部署到 IoT Edge 设备的过程变得简单直接。 此信息可在[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace)的计划的“技术配置”页中提供。 容器还可以包含 IoT Edge 模块 SDK，以便与边缘中心和 IoT 中心通信。
+你的模块必须包括默认配置设置，尽量使部署到 IoT Edge 设备的过程变得简单直接。 此信息可在[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165290)的计划的“技术配置”页中提供。 容器还可以包含 IoT Edge 模块 SDK，以便与边缘中心和 IoT 中心通信。
 
 #### <a name="default-configuration"></a>默认配置
 
-IoT Edge 模块必须能够以[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace)的计划的“技术配置”页中提供的默认设置开始。 可使用以下默认设置：
+IoT Edge 模块必须能够以[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165290)的计划的“技术配置”页中提供的默认设置开始。 可使用以下默认设置：
 
 - 默认 **路由**
 - 默认模块孪生所需属性
@@ -85,7 +85,7 @@ ServerIPAddress = <MY_SERVER_IP_ADDRESS>
 
 #### <a name="configuration-documentation"></a>配置文档
 
-必须明确阐述 IoT Edge 模块的所有配置设置。 例如，必须记录如何使用其路由、孪生所需属性、环境变量、createOptions 等。 必须提供文档的链接或使其成为产品/服务或计划说明的一部分。 可以在[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace)的“产品/服务列表”和“计划列表”页中提供此信息。
+必须明确阐述 IoT Edge 模块的所有配置设置。 例如，必须记录如何使用其路由、孪生所需属性、环境变量、createOptions 等。 必须提供文档的链接或使其成为产品/服务或计划说明的一部分。 可以在[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165290)的“产品/服务列表”和“计划列表”页中提供此信息。
 
 #### <a name="tags-and-versioning"></a>标记和版本控制
 
@@ -133,7 +133,7 @@ IoT Edge 模块必须避免[具有特权的模块](https://docs.docker.com/engin
 - IoT Edge 运行时
 - IoT Edge 模块认证准则
 
-合作伙伴必须通过在[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace)重新发布其产品/服务来更新和再次验证其产品/服务。
+合作伙伴必须通过在[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165290)重新发布其产品/服务来更新和再次验证其产品/服务。
 
 如果更新产品/服务（如添加新的图像标记），也会再次对其进行验证。
 

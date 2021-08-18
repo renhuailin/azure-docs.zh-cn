@@ -4,12 +4,12 @@ description: 介绍 Resource Manager 部署模型与经典（或服务管理）�
 ms.topic: conceptual
 ms.date: 04/12/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0d4b21b095b715599059452c269cde24fb701364
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e9ea1e778db81cfaa69163d5e127d384f8c4b3f5
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108322106"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112298162"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure 资源管理器和经典部署：了解部署模型和资源状态
 
@@ -108,7 +108,7 @@ SRP：存储资源提供程序；CRP：计算资源提供程序；NRP：网络�
 | 虚拟网络 |对于虚拟机来说，虚拟网络是可选的。 虚拟网络（如果包括）不能通过资源管理器进行部署。 |虚拟机需要已通过 Resource Manager 部署的虚拟网络。 |
 | 存储帐户 |虚拟机需要一个存储帐户，用于存储操作系统、临时文件和附加数据磁盘的虚拟硬盘。 |虚拟机需要一个存储帐户，在 Blob 存储中存储其磁盘。 |
 | 可用性集 |通过在虚拟机上配置相同的“AvailabilitySetName”来指出平台的可用性。 容错域的最大数量为 2。 |可用性集是 Microsoft.Compute 提供程序提供的一个资源。 要求高可用性的虚拟机必须包含在可用性集中。 现在，容错域的最大数量为 3。 |
-| 地缘组 |创建虚拟网络需要地缘组。 但是，随着区域虚拟网络的引入，不再需要地缘组了。 |为了简单起见，地缘组概念不再存在于通过 Azure 资源管理器提供的 API 中。 |
+| 地缘组 |创建虚拟网络需要地缘组。 但是，随着区域虚拟网络的引入，不再需要地缘组了。 |为了简单起见，地缘组概念不再存在于通过 Azure Resource Manager 提供的 API 中。 |
 | 负载均衡 |云服务的创建为部署的虚拟机提供了一个隐式负载均衡器。 |负载均衡器是 Microsoft.Network 提供程序提供的一个资源。 需要负载均衡的虚拟机的主网络接口应该引用负载均衡器。 负载均衡器既可以是内部的，也可以是外部的。 负载均衡器实例引用后端 IP 地址池，包括虚拟机的 NIC（可选），引用负载均衡器的公共或专用 IP 地址（可选）。 |
 | 虚拟 IP 地址 |将 VM 添加到云服务后，云服务会获得默认 VIP（虚拟 IP 地址）。 虚拟 IP 地址是与隐式负载均衡器相关联的地址。 |公共 IP 地址是 Microsoft.Network 提供程序提供的一个资源。 公共 IP 地址既可以是静态（保留）的，也可以是动态的。 可以将动态公共 IP 分配给一个负载均衡器。 可以使用安全组保护公共 IP。 |
 | 保留 IP 地址 |可以在 Azure 中保留一个 IP 地址并将其与一个云服务关联在一起，以确保该 IP 地址具有粘性。 |可以在“静态”模式下创建公共 IP 地址，并且该地址提供与“保留 IP 地址”相同的功能。 |
@@ -148,7 +148,7 @@ SRP：存储资源提供程序；CRP：计算资源提供程序；NRP：网络�
 
 **在哪里可以找到 Azure Resource Manager 模板的示例？**
 
-可以在 [Azure Resource Manager 快速入门模板](https://azure.microsoft.com/documentation/templates/)中找到一系列综合的初学者模板。
+可以在 [Azure Resource Manager 快速入门模板](https://azure.microsoft.com/resources/templates/)中找到一系列综合的初学者模板。
 
 ## <a name="next-steps"></a>后续步骤
 

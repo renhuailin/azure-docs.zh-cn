@@ -2,13 +2,13 @@
 title: 为基于事件的视频录制配置信号入口 - Azure
 description: 本文提供有关如何在管道中配置信号入口的指导。
 ms.topic: how-to
-ms.date: 4/12/2021
-ms.openlocfilehash: e03524e7e12a0081172918159e9f2d2ed2e4a7d6
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 06/01/2021
+ms.openlocfilehash: c0b38005010d2718235700f0ed13575e15119103
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413422"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604076"
 ---
 # <a name="configuring-a-signal-gate-for-event-based-video-recording"></a>为基于事件的视频录制配置信号入口
 
@@ -155,7 +155,40 @@ ms.locfileid: "111413422"
 > [!IMPORTANT]
 > 前面的示意图假定每个事件到达的物理时间和媒体时间相同。 也就是说，假设它们没有延迟到达。
 
+### <a name="naming-video-or-files"></a>命名视频或文件
+
+管道允许将视频录制到云，或者在边缘设备上录制为 MP4 文件。 这些文件可以由[连续视频录制](use-continuous-video-recording.md)或[基于事件的视频录制](record-event-based-live-video.md)生成。
+
+建议用于录制到云的命名结构是将视频资源命名为“<anytext>-${System.TopologyName}-${System.PipelineName}”。 给定的实时管道只能连接到一个支持 RTSP 的 IP 相机，并且应将该相机的输入录制到一个视频资源。 例如，可以在视频接收器上设置 `VideoName`，如下所示：
+
+```
+"VideoName": "sampleVideo-${System.TopologyName}-${System.PipelineName}"
+```
+请注意，替换模式由 `$` 符号后跟大括号定义：${variableName}。
+
+使用基于事件的录制在边缘设备上录制 MP4 文件时，可以使用：
+
+```
+"fileNamePattern": "sampleFilesFromEVR-${System.TopologyName}-${System.PipelineName}-${fileSinkOutputName}-${System.Runtime.DateTime}"
+```
+
+> [!Note]
+> 在上面的示例中，变量 fileSinkOutputName 是在创建实时管道时定义的示例变量名称。 这不是系统变量。 请注意，使用 DateTime 如何确保每个事件都具有唯一的 MP4 文件名称。
+
+#### <a name="system-variables"></a>系统变量
+
+可以使用的一些系统定义的变量是：
+
+| 系统变量        | 说明                                                  | 示例              |
+| :--------------------- | :----------------------------------------------------------- | :------------------- |
+| System.Runtime.DateTime        | 采用 ISO8601 文件标准格式的 UTC 日期时间（基本表示形式为 YYYYMMDDThhmmss）。 | 20200222T173200Z     |
+| System.Runtime.PreciseDateTime | 采用 ISO8601 文件标准格式的包含毫秒的 UTC 日期时间（基本表示形式为 YYYYMMDDThhmmss.sss）。 | 20200222T173200.123Z |
+| System.TopologyName    | 用户提供的执行管道拓扑的名称。          | IngestAndRecord      |
+| System.PipelineName    | 用户提供的执行实时管道的名称。          | camera001            |
+
+> [!Tip]
+> 在云中命名视频时，不能使用 System.Runtime.PreciseDateTime 和 System.Runtime.DateTime。
+
 ## <a name="next-steps"></a>后续步骤
 
 尝试使用[基于事件的视频录制教程](record-event-based-live-video.md)。 从编辑 [topology.json](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-hubMessage-video-sink/topology.json) 开始。 修改 signalgateProcessor 节点的参数，然后按照本教程其余部分的说明进行操作。 查看视频录制，分析参数的效果。
-

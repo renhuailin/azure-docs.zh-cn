@@ -2,16 +2,17 @@
 title: 重新配置 Azure-SSIS 集成运行时
 description: 了解在预配 Azure-SSIS 集成运行时之后，如何在 Azure 数据工厂中对其进行重新配置。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: conceptual
 ms.date: 06/03/2020
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 724411dc12654aec1614230c943923062b334cd2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f163087133e6273752663b9bffa9da4a6fb19879
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100370676"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730130"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>重新配置 Azure-SSIS 集成运行时
 

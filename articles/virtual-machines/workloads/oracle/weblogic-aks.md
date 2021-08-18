@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/23/2021
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: ac9f81fbde33bdd10bc8374a566a4f2ba83fc253
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 63a902d57c8a3ec5d9876e0682674cdbea70a4cc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669014"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725972"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-the-azure-kubernetes-service"></a>采用哪些解决方案在 Azure Kubernetes 服务上运行 Oracle WebLogic Server？
 
@@ -30,7 +30,7 @@ WebLogic Server 已通过 Oracle 和 Microsoft 认证，可在 AKS 上正常运�
 WebLogic Server 群集完全可通过 WebLogic Kubernetes Operator（以下简称为“Operator”）在 Kubernetes 上运行。 Operator 遵循标准 Kubernetes Operator 模式。 它通过自动执行其他手动任务并添加额外的操作可靠性功能，简化了 WebLogic 域的管理和操作以及 Kubernetes 上的部署。 Operator 支持 Oracle WebLogic Server 12c、Oracle Fusion Middleware Infrastructure 12c 及更高版本。 我们已使用 Operator 对面向 WebLogic Server 12.2.1.3 和 12.2.1.4 的官方 Docker 映像进行了测试。 有关 Operator 的详细信息，请查看 [Oracle 的官方文档](https://oracle.github.io/weblogic-kubernetes-operator/)。
 
 ## <a name="guidance-scripts-and-samples-for-wls-on-aks"></a>AKS 上的 WLS 指南、脚本和示例
-除了对 AKS 上的 WebLogic Server 进行认证，Oracle 和 Microsoft 还就在 AKS 上运行 WebLogic Server 联合提供了详细说明、脚本和示例。 该指南可整合到 [Operator 文档](https://oracle.github.io/weblogic-kubernetes-operator/samples/simple/azure-kubernetes-service/)的“Azure Kubernetes 服务示例”部分中。 该指南旨在使在 AKS 部署上的生产 WebLogic Server 尽可能简单。 本指南使用 Oracle 提供的官方 WebLogic Server Docker 映像。 故障转移通过 Kubernetes 持久性卷声明访问的 Azure 文件存储来实现。 使用“LoadBalancer”类型的 Kubernetes 服务进行预配时，支持使用 Azure 负载均衡器。 支持使用 Azure 容器注册表 (ACR) 在自定义 Docker 映像内部署 WLS 域。 通过该指南，可实现高度的配置和自定义。
+除了对 AKS 上的 WebLogic Server 进行认证，Oracle 和 Microsoft 还就在 AKS 上运行 WebLogic Server 联合提供了详细说明、脚本和示例。 该指南可整合到 [Operator 文档](https://oracle.github.io/weblogic-kubernetes-operator/)的“Azure Kubernetes 服务示例”部分中。 该指南旨在使在 AKS 部署上的生产 WebLogic Server 尽可能简单。 本指南使用 Oracle 提供的官方 WebLogic Server Docker 映像。 故障转移通过 Kubernetes 持久性卷声明访问的 Azure 文件存储来实现。 使用“LoadBalancer”类型的 Kubernetes 服务进行预配时，支持使用 Azure 负载均衡器。 支持使用 Azure 容器注册表 (ACR) 在自定义 Docker 映像内部署 WLS 域。 通过该指南，可实现高度的配置和自定义。
 
 :::image type="content" source="media/oracle-weblogic/wls-on-aks.gif" alt-text="可使用示例脚本在 AKS 上部署 WebLogic Server":::
 
@@ -55,7 +55,7 @@ WebLogic Server 群集完全可通过 WebLogic Kubernetes Operator（以下简�
 探索在 Azure Kubernetes 服务上运行 Oracle WebLogic Server。
 
 > [!div class="nextstepaction"]
-> [有关在 AKS 上运行 WLS 的指南、脚本和示例](https://oracle.github.io/weblogic-kubernetes-operator/samples/simple/azure-kubernetes-service/)
+> [有关在 AKS 上运行 WLS 的指南、脚本和示例](https://oracle.github.io/weblogic-kubernetes-operator/)
 
 > [!div class="nextstepaction"]
 > [WebLogic Kubernetes Operator](https://oracle.github.io/weblogic-kubernetes-operator/)

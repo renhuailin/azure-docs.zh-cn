@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 06/03/2021
 ms.author: victorh
-ms.openlocfilehash: 0800373919ba95f48d30b9fe6eb5e7f8eb99a82a
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: 8a757b1825cb1c1e2f471a965077ea5801000dc4
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111422059"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113761440"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>应用程序网关的 TLS 终止和端到端 TLS 概述
 
@@ -124,18 +124,18 @@ ms.locfileid: "111422059"
 ### <a name="frontend-tls-connection-client-to-application-gateway"></a>前端 TLS 连接（客户端到应用程序网关）
 
 ---
-方案 | v1 | v2 |
+场景 | v1 | v2 |
 | --- | --- | --- |
-| 如果客户端指定了 SNI 标头，并且所有多站点侦听器都启用了“需要 SNI”标志 | 返回相应的证书；如果站点不存在（根据 server_name），则重置连接。 | 如果有相应的证书，则返回该证书；否则，返回配置的第一个 HTTPS 侦听器的证书（按顺序）|
-| 如果客户端未指定 SNI 标头，并且所有多站点标头都启用了“需要 SNI” | 重置连接 | 返回配置的第一个 HTTPS 侦听器的证书（按顺序）
-| 如果客户端未指定 SNI 标头，并且有配置了证书的基本侦听器 | 将基本侦听器中配置的证书返回给客户端（默认或备用证书） | 返回配置的第一个 HTTPS 侦听器的证书（按顺序） |
+| 如果客户端指定了 SNI 标头，并且所有多站点侦听器都启用了“需要 SNI”标志 | 返回相应的证书；如果站点不存在（根据 server_name），则重置连接。 | 返回相应的证书（如可用）；否则，根据与 HTTPS 侦听器关联的请求传递规则指定的顺序返回第一个 HTTPS 侦听器的证书|
+| 如果客户端未指定 SNI 标头，并且所有多站点标头都启用了“需要 SNI” | 重置连接 | 根据与 HTTPS 侦听器关联的请求传递规则指定的顺序返回第一个 HTTPS 侦听器的证书
+| 如果客户端未指定 SNI 标头，并且有配置了证书的基本侦听器 | 将基本侦听器中配置的证书返回给客户端（默认或备用证书） | 返回在基本侦听器中配置的证书 |
 
 ### <a name="backend-tls-connection-application-gateway-to-the-backend-server"></a>后端 TLS 连接（应用程序网关到后端服务器）
 
 #### <a name="for-probe-traffic"></a>对于探测流量
 
 ---
-方案 | v1 | v2 |
+场景 | v1 | v2 |
 | --- | --- | --- |
 | 将 TLS 握手期间的 SNI (server_name) 标头设置为 FQDN | 设置为后端池中的 FQDN。 根据 [RFC 6066](https://tools.ietf.org/html/rfc6066)，SNI 主机名中不允许使用原义 IPv4 和 IPv6 地址。 <br> **注意：** 后端池中的 FQDN 应通过 DNS 解析为后端服务器的 IP 地址（公共或专用） | 将 SNI 标头 (server_name) 设置为附加到 HTTP 设置的自定义探测中的主机名（如果已配置）；如果没有，则设置为 HTTP 设置中提到的主机名；如果前两项都没有，则设置为后端池中提到的 FQDN。 优先顺序为自定义探测 > HTTP 设置 > 后端池。 <br> **注意：** 如果在 HTTP 设置和自定义探测中配置的主机名不同，则根据优先级，SNI 将设置为自定义探测中的主机名。
 | 如果后端池地址是 IP 地址 (v1) 或者自定义探测主机名配置为 IP 地址 (v2) | 不设置 SNI (server_name)。 <br> **注意：** 在这种情况下，后端服务器应该能够返回默认/备用证书，并且该证书应加入 HTTP 设置中身份验证证书下的允许列表。 如果后端服务器中未配置默认/备用证书，但需要提供 SNI，则服务器可能会重置连接并导致探测失败 | 按照前面提到的优先顺序，如果它们的主机名为 IP 地址，则不设置 SNI（根据 [RFC 6066](https://tools.ietf.org/html/rfc6066)）。 <br> **注意：** 如果未配置自定义探测，并且未在 HTTP 设置或后端池中设置主机名，则也不会在 v2 探测中设置 SNI |
@@ -146,7 +146,7 @@ ms.locfileid: "111422059"
 #### <a name="for-live-traffic"></a>对于实时流量
 
 ---
-方案 | v1 | v2 |
+场景 | v1 | v2 |
 | --- | --- | --- |
 | 将 TLS 握手期间的 SNI (server_name) 标头设置为 FQDN | 设置为后端池中的 FQDN。 根据 [RFC 6066](https://tools.ietf.org/html/rfc6066)，SNI 主机名中不允许使用原义 IPv4 和 IPv6 地址。 <br> **注意：** 后端池中的 FQDN 应通过 DNS 解析为后端服务器的 IP 地址（公共或专用） | 将 SNI 标头 (server_name) 设置为 HTTP 设置中的主机名；如果选择了“PickHostnameFromBackendAddress”选项，或者未提及主机名，则将其设置为后端池配置中的 FQDN
 | 如果后端池地址是 IP 地址或者未在 HTTP 设置中设置主机名 | 根据 [RFC 6066](https://tools.ietf.org/html/rfc6066)，如果后端池条目不是 FQDN，则不设置 SNI | SNI 将设置为客户端的输入 FQDN 中的主机名，并且后端证书的 CN 必须与此主机名匹配。

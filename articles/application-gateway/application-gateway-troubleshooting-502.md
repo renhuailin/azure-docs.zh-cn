@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 23afe1e91a07277a3b6e583fcf5d767a843ef4e5
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 62433a284cb271ed31427ff867cb14223443d404
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108320468"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090414"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>排查应用程序网关中的网关无效错误
 
@@ -131,7 +131,7 @@ DhcpOptions            : {
 
 ### <a name="cause"></a>原因
 
-收到用户请求后，应用程序网关会将配置的规则应用到该请求，并将其路由到后端池实例。 应用程序网关将等待一段可配置的时间间隔，以接收后端实例做出的响应。 默认情况下，此间隔为 **20** 秒。 如果应用程序网关在此时间间隔内未收到后端应用程序的响应，则用户请求出现 502 错误。
+收到用户请求后，应用程序网关会将配置的规则应用到该请求，并将其路由到后端池实例。 应用程序网关将等待一段可配置的时间间隔，以接收后端实例做出的响应。 默认情况下，此间隔为 **20** 秒。 在应用程序网关 v1 中，如果应用程序网关在此时间间隔内未收到后端应用程序的响应，则用户请求会收到 502 错误。  在应用程序网关 v2 中，如果应用程序网关在此时间间隔内未收到来自后端应用程序的响应，则会针对第二个后端池成员尝试该请求。  如果第二个请求失败，则用户请求会收到 502 错误。
 
 ### <a name="solution"></a>解决方案
 

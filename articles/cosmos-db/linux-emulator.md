@@ -6,12 +6,12 @@ ms.topic: how-to
 author: StefArroyo
 ms.author: esarroyo
 ms.date: 06/04/2021
-ms.openlocfilehash: 6e3fd0c2dafd9d174b79206cb5482450fee74f8e
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 5c6ddce8d50da1660bfcba8b29bb032b56197bb8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984041"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725451"
 ---
 # <a name="run-the-emulator-on-docker-for-linux-preview"></a>在用于 Linux 的 Docker（预览版）上运行仿真器
 
@@ -37,11 +37,11 @@ Azure Cosmos DB Linux 仿真器提供对 Azure Cosmos DB 服务的高保真仿�
 
 - Linux 仿真器不是一项可缩放的服务，它不支持大量容器。 使用 Azure Cosmos DB 仿真器时，默认情况下，最多可创建 10 个 400 RU/s 的固定大小容器（仅支持使用 Azure Cosmos DB SDK 进行创建），或 5 个不受限容器。 有关如何更改此值的详细信息，请参阅[设置 PartitionCount 值](emulator-command-line-parameters.md#set-partitioncount)一文。
 
-- 而[一致性级别](consistency-levels.md)与云服务的类似。 仅使用命令行参数进行调整用于测试方案（默认设置为“会话”），用户可能不会期望与云服务中相同的行为。 例如，除了向 Cosmos DB SDK 发送帐户的默认一致性信号外，强和有限过期的一致性不会对仿真器产生任何影响。
+- 虽然[一致性级别](consistency-levels.md)可以仅针对测试场景使用命令行参数进行调整（默认设置为“会话”），但用户可能不希望看到与云服务中的行为相同的行为。 例如，除了向 Cosmos DB SDK 发送帐户的默认一致性信号外，强和有限过期的一致性不会对仿真器产生任何影响。
 
 - Linux 仿真器未提供[多区域复制](distribute-data-globally.md)功能。
 
-- 因为 Azure Cosmos DB Linux 仿真器副本并不总是能反映出 Azure Cosmos DB 服务中的最新更改，因此应始终使用 [Azure Cosmos DB 容量规划器](estimate-ru-with-capacity-planner.md)来准确估计应用程序的吞吐量 (RU) 需求。 <add link>
+- 因为 Azure Cosmos DB Linux 仿真器副本并不总是能反映出 Azure Cosmos DB 服务中的最新更改，因此应始终使用 [Azure Cosmos DB 容量规划器](estimate-ru-with-capacity-planner.md)来准确估计应用程序的吞吐量 (RU) 需求。
 
 - Linux 仿真器支持的最大 ID 属性大小为 254 个字符。
 
@@ -85,7 +85,7 @@ Azure Cosmos DB Linux 仿真器提供对 Azure Cosmos DB 服务的高保真仿�
 
 1. 将 emulatorcert.crt 加载到 KeyChain 后，双击 localhost 名称，将信任设置更改为“始终信任” 。
 
-1. 现在可以浏览到 `https://localhost:8081/_explorer/index.html` 或 `https://{your_local_ip}:8081/_explorer/index.html`，并检索仿真器的连接字符串。
+1. 现可浏览到 `https://localhost:8081/_explorer/index.html` 或 `https://{your_local_ip}:8081/_explorer/index.html`，并检索仿真器的连接字符串。
 
 还可以选择对应用程序禁用 SSL 验证。 建议仅用于开发目的，并且在生产环境中运行时不应这样做。
 
@@ -179,7 +179,7 @@ sudo apt-get install net-tools
 
 - 对于 Java 应用程序，请确保已将证书导入到 [Java 证书存储部分](#run-on-linux)。
 
-- 对于 .NET 应用程序，可以禁用 SSL 验证：
+- 对于 .NET 应用程序，可禁用 SSL 验证：
 
 # <a name="net-standard-21"></a>[.NET Standard 2.1+](#tab/ssl-netstd21)
 
@@ -199,13 +199,13 @@ sudo apt-get install net-tools
 
 如果尝试通过 `localhost` 以外的地址（例如容器 IP 地址）连接到仿真器，Node.js 将引发有关证书自签名的错误，即使已安装了证书也是如此。
 
-可以通过将环境变量 `NODE_TLS_REJECT_UNAUTHORIZED` 设置为 `0` 来禁用 TLS 验证：
+可通过将环境变量 `NODE_TLS_REJECT_UNAUTHORIZED` 设置为 `0` 来禁用 TLS 验证：
 
 ```bash
 NODE_TLS_REJECT_UNAUTHORIZED=0
 ```
 
-此标志仅建议用于本地开发，因为它禁用 Node.js 的 TLS。 有关详细信息，请参阅 [Node.js 文档](https://nodejs.org/api/cli.html#cli_node_tls_reject_unauthorized_value)和 [Cosmos DB 仿真器证书文档](local-emulator-export-ssl-certificates.md#how-to-use-the-certificate-in-nodejs)。
+建议仅将此标志用于本地开发，因为它禁用 Node.js 的 TLS。 有关详细信息，请参阅 [Node.js 文档](https://nodejs.org/api/cli.html#cli_node_tls_reject_unauthorized_value)和 [Cosmos DB 仿真器证书文档](local-emulator-export-ssl-certificates.md#how-to-use-the-certificate-in-nodejs)。
 
 #### <a name="the-docker-container-failed-to-start"></a>Docker 容器无法启动
 

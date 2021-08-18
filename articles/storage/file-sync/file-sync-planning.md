@@ -8,12 +8,12 @@ ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: ffff2c1831aab09a1c622ced98cfe180fe0ec5d7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: b881b7b87ef704102df7c5d8a9d24542b3d89bb2
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110679194"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112118605"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 
@@ -310,11 +310,6 @@ Azure 存储帐户包含一个用于要求在传输过程中加密的开关，�
 
 ## <a name="storage-tiers"></a>存储层
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>让标准文件共享能够承受最多 100 TiB 的容量
-
-默认情况下，标准文件共享不得超过 5 TiB，但你可将共享上限提高到 100 TiB。 若要了解如何提高共享上限，请参阅[启用和创建大型文件共享](../files/storage-files-how-to-create-large-file-share.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json)。
-
 
 #### <a name="regional-availability"></a>区域可用性
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]

@@ -3,16 +3,16 @@ title: 支持的浏览器
 description: 本文提供了 Azure Purview 支持的浏览器的列表。
 author: nayenama
 ms.author: nayenama
-ms.service: data-catalog
-ms.subservice: data-catalog-gen2
+ms.service: purview
+ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: f60c91d31b7a97d2a17414cf42e85c27451ad4ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7896b373a5d7c87317fb54e3e0b9b8586c815bd9
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97372082"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114468648"
 ---
 # <a name="supported-browsers"></a>支持的浏览器 
 

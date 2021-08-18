@@ -1,23 +1,22 @@
 ---
 title: 在门户中创建 Azure AD 应用和服务主体
 titleSuffix: Microsoft identity platform
-description: 使用 Azure 资源管理器中的基于角色的访问控制创建新的 Azure Active Directory 应用和服务主体，以便管理对资源的访问权限。
+description: 使用 Azure 资源管理器中基于角色的访问控制创建新的 Azure Active Directory 应用和服务主体，以便管理对资源的访问权限。
 services: active-directory
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 06/16/2021
 ms.author: ryanwi
-ms.reviewer: tomfitz
-ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: b772112a238b4af4ff536a98e0a4105e7237c1af
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.custom: aaddev, identityplatformtop40, subject-rbac-steps
+ms.openlocfilehash: b4589f451894e328a27b67ac19be4ea91374bee5
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111951954"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579947"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
@@ -29,6 +28,7 @@ ms.locfileid: "111951954"
 > 请考虑使用 Azure 资源的托管标识作为应用程序标识，而不是创建服务主体。 如果代码在支持托管标识的服务上运行并访问支持 Azure AD 身份验证的资源，则托管标识是更好的选择。 若要详细了解 Azure 资源的托管标识（包括当前支持它的服务），请参阅[什么是 Azure 资源的托管标识？](../managed-identities-azure-resources/overview.md)。
 
 ## <a name="app-registration-app-objects-and-service-principals"></a>应用注册、应用对象和服务主体
+
 无法使用 Azure 门户直接创建服务主体。  如果通过 Azure 门户注册应用程序，则将在你的主目录或租户中自动创建应用程序对象和服务主体。  有关应用注册、应用对象和服务主体之间关系的详细信息，请参阅 [Azure Active Directory 中的应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
 
 ## <a name="permissions-required-for-registering-an-app"></a>注册应用所需的权限
@@ -37,7 +37,7 @@ ms.locfileid: "111951954"
 
 ### <a name="check-azure-ad-permissions"></a>检查 Azure AD 权限
 
-1. 选择“Azure Active Directory”  。
+1. 选择“Azure Active Directory” 。
 1. 记下你的角色。 如果角色为“用户”，则必须确保非管理员可以注册应用程序。
 
    ![找到你的角色。 如果你是用户，请确保非管理员可以注册应用](./media/howto-create-service-principal-portal/view-user-info.png)
@@ -76,7 +76,7 @@ ms.locfileid: "111951954"
 我们直接介绍如何创建标识。 如果遇到问题，请查看[所需权限](#permissions-required-for-registering-an-app)，确保帐户可以创建标识。
 
 1. 通过 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>登录到 Azure 帐户。
-1. 选择“Azure Active Directory”  。
+1. 选择“Azure Active Directory” 。
 1. 选择“应用注册” 。
 1. 选择“新注册”。
 1. 为应用程序命名。 选择支持的帐户类型，它决定了谁可以使用应用程序。 在“重定向 URI”下，选择“Web”作为要创建的应用程序类型。 输入访问令牌将发送到的 URI。 不能为[本机应用程序](../app-proxy/application-proxy-configure-native-client-application.md)创建凭据。 该类型不能用于自动化应用程序。 设置这些值后，选择“注册”  。
@@ -105,12 +105,10 @@ ms.locfileid: "111951954"
    如果未看到所需订阅，请选择“全局订阅筛选器”。 请确保已为该门户选择所需的订阅。
 
 1. 选择“访问控制(IAM)”。
-1. 选择“添加角色分配”。
-1. 选择要分配到应用程序的角色。 例如，若要允许应用程序执行诸如“重新启动”、“启动”和“停止”实例之类的操作，请选择“参与者”角色   。  详细阅读[可用角色](../../role-based-access-control/built-in-roles.md)，默认情况下，Azure AD 应用程序不会显示在可用选项中。 若要查找应用程序，请搜索其名称并选中它。
+1. 选择“添加” > “添加角色分配”，打开“添加角色分配”页  。
+1. 选择要分配到应用程序的角色。 例如，若要允许应用程序执行诸如“重新启动”、“启动”和“停止”实例之类的操作，请选择“参与者”角色   。  详细阅读[可用角色](../../role-based-access-control/built-in-roles.md)，默认情况下，Azure AD 应用程序不会显示在可用选项中。 若要查找应用程序，请搜索其名称并选中它。 
 
-   ![选择要分配给应用程序的角色](./media/howto-create-service-principal-portal/select-role.png)
-
-1. 选择“保存”  完成角色分配。 应用程序会显示在其角色对应于该范围的用户的列表中。
+    将“参与者”角色分配给订阅范围内的应用程序。 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 服务主体已设置完毕。 可以开始使用它运行脚本或应用。 若要管理服务主体（权限、用户同意权限、查看已同意的用户、查看权限、查看登录信息等），请访问“企业应用程序”。
 
@@ -120,7 +118,7 @@ ms.locfileid: "111951954"
 
 以编程方式登录时，请随身份验证请求和应用程序 ID 传递租户 ID。  还需要证书或身份验证密钥（如以下部分中所述）。 若要获取这些值，请使用以下步骤：
 
-1. 选择“Azure Active Directory”  。
+1. 选择“Azure Active Directory” 。
 1. 从 Azure AD 中的“应用注册”，选择应用程序。
 1. 复制“目录(租户) ID”并将其存储在应用程序代码中。
 
@@ -156,7 +154,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 若要上传证书，请执行以下操作：
 
-1. 选择“Azure Active Directory”  。
+1. 选择“Azure Active Directory” 。
 1. 从 Azure AD 中的“应用注册”，选择应用程序。
 1. 选择“证书和机密”。
 1. 选择“上传证书”并选择证书（现有证书或导出的自签名证书）。

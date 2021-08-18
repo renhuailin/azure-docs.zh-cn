@@ -2,13 +2,13 @@
 title: gRPC 扩展协议 - Azure
 description: Azure 视频分析器支持通过管道扩展节点增强其处理功能。 gRPC 扩展处理器使用基于 gRPC 的高性能结构化协议实现可扩展性方案。
 ms.topic: reference
-ms.date: 05/15/2021
-ms.openlocfilehash: aaa1030f2c751514568c96142268d41c2eba4df6
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 7d6d60b0f9f6473cf226b8cecff0440ff90f008b
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385295"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114605067"
 ---
 # <a name="use-the-grpc-extension-protocol"></a>使用 gRPC 扩展协议 
 
@@ -25,7 +25,7 @@ gRPC 会话是通过 TCP/TLS 端口从 gRPC 客户端到 gRPC 服务器的单一
 强烈建议使用有效的 JSON 文档返回响应，并采用按照[推理元数据架构对象模型](inference-metadata-schema.md)定义的预建立架构。 这将更好地确保与其他组件和场景（例如通过推理元数据录制和播放视频）的互操作性。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/grpc-extension-protocol/ava-module.png" alt-text="Azure 视频分析器模块" lightbox="./media/grpc-extension-protocol/ava-module.png":::
+> :::image type="content" source="./media/grpc-extension-protocol/grpc-external-srv.svg" alt-text="Azure 视频分析器模块" lightbox="./media/grpc-extension-protocol/grpc-external-srv.svg":::
 
 ## <a name="implementing-grpc-protocol"></a>实现 gRPC 协议
 

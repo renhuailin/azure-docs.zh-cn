@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 786a9e26003a7afb98307e0bd7fae94c42a2f00d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ddea6f64aa4c3f78116e30ba8c9731acebfbb006
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84690296"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734488"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>如何在 Azure API 管理中配置通知和电子邮件模板
 
@@ -84,9 +84,6 @@ API 管理提供了在管理和使用服务的过程中发送的电子邮件的�
 ![电子邮件模板编辑器][api-management-email-template]
 
 “参数”列表包含参数列表，插入到主题或正文时，会在发送电子邮件时替换为指定的值。 要插入一个参数，将光标置于要存放参数的位置，然后单击参数名称左侧的箭头。
-
-> [!NOTE]
-> 预览或发送测试时该参数不会替换为实际值。
 
 若要将更改保存到电子邮件模板，请单击“保存”，或要取消更改时单击“放弃”。
 

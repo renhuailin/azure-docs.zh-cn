@@ -4,15 +4,16 @@ description: 了解在能以编程方式访问商业市场分析数据之前需�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: b61608c0cb53ab808c5d3d789ec5ddc318c6923d
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: a3c27a8e91ef1f202fbc757eb1a21eeddfc1d3d8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106796"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748280"
 ---
 # <a name="prerequisites-to-programmatically-access-analytics-data"></a>以编程方式访问分析数据的先决条件
 
@@ -30,7 +31,7 @@ ms.locfileid: "107106796"
 
 在 Azure 门户中创建的 Azure AD 应用程序需要关联到合作伙伴中心帐户。 步骤如下：
 
-1. 登录[合作伙伴中心](https://partner.microsoft.com/dashboard)。
+1. 登录[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165507)。
 1. 在右上角选择齿轮图标，然后选择“帐户设置”。
 1. 在“帐户设置”菜单中，选择“用户管理” 。
 1. 选择“Azure AD 应用程序”，然后选择“+创建 Azure AD 应用程序” 。
