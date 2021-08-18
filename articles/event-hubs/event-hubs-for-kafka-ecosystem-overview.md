@@ -3,17 +3,16 @@ title: 使用 Apache Kafka 应用中的事件中心 - Azure 事件中心 | Micro
 description: 本文介绍有关 Azure 事件中心提供的 Apache Kafka 支持的信息。
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: fcc81063ece5ced864cdcd44fe301d5c359106e9
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 5402769b00a142551672098829dcf8f3ef6ea670
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613691"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122321774"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>使用 Apache Kafka 应用程序中的 Azure 事件中心
 事件中心提供与 Apache Kafka® 生成者和使用者 API 兼容的终结点，大多数现有 Apache Kafka 客户端应用程序可以使用这些 API 作为运行你自己的 Apache Kafka 群集的替代方法。 事件中心 1.0 及更高版本支持 Apache Kafka 的生成者和使用者 API 客户端。
 
-> [!VIDEO https://www.youtube.com/embed/UE1WgB96_fc]
 
 ## <a name="what-does-event-hubs-for-kafka-provide"></a>适用于 Kafka 的事件中心可提供什么？
 
