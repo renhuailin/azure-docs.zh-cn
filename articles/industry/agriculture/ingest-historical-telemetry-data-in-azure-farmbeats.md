@@ -5,13 +5,13 @@ author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: riyazp
-ms.custom: has-adal-ref
-ms.openlocfilehash: 2ee6102d68b14000453c9a67f06b0b745273fff4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.custom: ''
+ms.openlocfilehash: 1eb74fc900ebbf70f8938c31721f717117a4fdd6
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741178"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397493"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
 
