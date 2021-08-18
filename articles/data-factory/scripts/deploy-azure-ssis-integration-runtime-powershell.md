@@ -2,17 +2,18 @@
 title: 使用 PowerShell 部署 Azure SSIS 集成运行时
 description: 此 PowerShell 脚本创建可在云中运行 SSIS 程序包的 Azure-SSIS 集成运行时。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.topic: article
 ms.author: sawinark
 author: swinarko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 09/12/2017
-ms.openlocfilehash: f037ef0050a6a9e93e0ae98cbfa1d2b9d68d5939
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 8698a5852eb557d5ec8016f1ec8f3181c9d43275
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665513"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750959"
 ---
 # <a name="powershell-script---deploy-azure-ssis-integration-runtime"></a>PowerShell 脚本 - 部署 Azure-SSIS 集成运行时
 
@@ -43,7 +44,7 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 此脚本使用以下命令：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | 创建数据工厂。 |

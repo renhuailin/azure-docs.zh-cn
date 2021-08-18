@@ -2,18 +2,17 @@
 title: Azure 门户中的故障排除 - Azure IoT Edge | Microsoft Docs
 description: 使用 Azure 门户中的“故障排除”页监视 IoT Edge 设备和模块
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 05/26/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ba7cbd0d6af9a548c66f186ecd0aac289c52041b
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: e0761262463d69fe80f7dc15ed1a5944dcc235bb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542343"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726534"
 ---
 # <a name="troubleshoot-iot-edge-devices-from-the-azure-portal"></a>在 Azure 门户中对 IoT Edge 设备进行故障排除
 

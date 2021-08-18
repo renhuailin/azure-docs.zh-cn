@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: 1c4a32e79f54bd2626f2eb4f3a3cc97266d3bab0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 95ff033ab83fee6e9dacbf15b12db33f8b36c3c0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111958491"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723504"
 ---
 # <a name="manage-access-to-azure-sentinel-data-by-resource"></a>按资源管理对 Azure Sentinel 数据的访问
 
@@ -149,6 +149,7 @@ ms.locfileid: "111958491"
 使用 [Log Analytics 数据收集器 API](../azure-monitor/logs/data-collector-api.md) 进行收集时，可以使用 HTTP [x-ms-AzureResourceId](../azure-monitor/logs/data-collector-api.md#request-headers) 请求标头向事件分配资源 ID。
 
 如果使用的是资源上下文 RBAC，并且希望 API 收集的事件可供特定用户使用，则使用[为用户创建](#explicitly-configure-resource-context-rbac)的资源组的资源 ID。
+
 
 
 ## <a name="next-steps"></a>后续步骤

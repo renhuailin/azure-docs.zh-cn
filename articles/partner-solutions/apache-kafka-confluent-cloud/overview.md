@@ -4,14 +4,14 @@ description: 了解如何在 Azure 市场中使用 Apache Kafka on Confluent Clo
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 01/15/2021
+ms.date: 06/07/2021
 ms.author: tomfitz
-ms.openlocfilehash: 6fbd6b72c17b8483f9fdb5bc227625fd92009594
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 07164ece2897ab364d568d247e3d2ee8d2566291
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952624"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112523035"
 ---
 # <a name="what-is-apache-kafka-for-confluent-cloud"></a>Apache Kafka for Confluent Cloud 是什么？
 
@@ -21,7 +21,7 @@ Apache Kafka for Confluent Cloud 是一种 Azure 市场产品/服务，它提供
 
 以前，必须在市场中购买 Confluent Cloud 产品/服务，并单独在 Confluent Cloud 中设置帐户。 若要管理配置和资源，必须在 Azure 和 Confluent Cloud 的门户之间进行导航。
 
-现在，你通过名为 Microsoft.Confluent 的资源提供程序预配 Confluent Cloud 资源。 通过 [Azure 门户](https://portal.azure.com/)、[Azure CLI](/cli/azure/) 或 [Azure SDK](/azure/index.yml#languages-and-tools) 创建和管理 Confluent Cloud 组织资源。 Confluent Cloud 拥有并运行软件即服务 (SaaS) 应用程序，包括环境、群集、主题、API 密钥和托管连接器。
+现在，你通过名为 Microsoft.Confluent 的资源提供程序预配 Confluent Cloud 资源。 通过 [Azure 门户](https://portal.azure.com/)、[Azure CLI](/cli/azure/) 或 [Azure SDK](/azure#languages-and-tools) 创建和管理 Confluent Cloud 组织资源。 Confluent Cloud 拥有并运行软件即服务 (SaaS) 应用程序，包括环境、群集、主题、API 密钥和托管连接器。
 
 ## <a name="capabilities"></a>功能
 
@@ -56,12 +56,6 @@ Confluent 组织是提供 Azure 与 Confluent Cloud 资源之间的映射的资�
 - 使用承诺计划，可注册一个最低支出金额，并针对承诺的 Confluent Cloud 使用量获得折扣。
 
 在创建服务时决定要使用的计费选项。
-
-## <a name="connector-to-azure-cosmos-db"></a>到 Azure Cosmos DB 的连接器
-
-在 Confluent 中心客户端中，按照 [Confluent 中心列表](https://www.confluent.io/hub/microsoftcorporation/kafka-connect-cosmos)中的建议来安装 Cosmos DB 连接器。 
-
-要手动安装连接器，请首先从 [Cosmos DB 版本](https://github.com/microsoft/kafka-connect-cosmosdb/releases)页中下载 uber JAR。 或者，也可以[直接从源代码生成自己的 uber JAR](https://github.com/microsoft/kafka-connect-cosmosdb/blob/dev/doc/README_Sink.md#install-sink-connector)。 按照 Confluent 文档中描述的关于[手动安装连接器](https://docs.confluent.io/home/connect/install.html#install-connector-manually)的指南，完成安装。  
 
 ## <a name="confluent-links"></a>Confluent 链接
 

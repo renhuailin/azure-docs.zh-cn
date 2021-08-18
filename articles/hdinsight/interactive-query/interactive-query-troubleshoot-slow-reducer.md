@@ -4,12 +4,12 @@ description: 可能的数据倾斜导致 Azure HDInsight 中的化简器速度�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
-ms.openlocfilehash: f9b6e0d862d17badb1caa672852214cdd86abb49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 951dd8b4bc9ee68c88e6bae481482e041ae89054
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98930822"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112290586"
 ---
 # <a name="scenario-reducer-is-slow-in-azure-hdinsight"></a>方案：Azure HDInsight 中的化简器速度缓慢
 
@@ -37,4 +37,4 @@ ms.locfileid: "98930822"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 05/16/2021
 ms.author: enewman
-ms.openlocfilehash: 0fe26d50a7afcb08325396d7c9a22279b01bfd9b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 089ec3d3d4836b4dadb5a0a60023b85ebf9950e0
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482309"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112456537"
 ---
 # <a name="set-up-lab-for-react-on-windows"></a>在 Windows 上设置 React 实验室
 
@@ -67,7 +67,7 @@ ms.locfileid: "110482309"
 .npm install react-jsx
 ```
 
-若要在 Visual Studio 中创建第一个使用 React 的 Node.js 应用，请参阅[教程：在 Visual Studio 中创建 Node.js 和 React 应用](/visualstudio/javascript/tutorial-nodejs-with-react-and-jsx.md?view=vs-2019&preserve-view=true)。
+若要在 Visual Studio 中创建第一个使用 React 的 Node.js 应用，请参阅[教程：在 Visual Studio 中创建 Node.js 和 React 应用](/visualstudio/javascript/tutorial-nodejs-with-react-and-jsx?view=vs-2019&preserve-view=true)。
 
 ### <a name="install-debugger-extensions"></a>安装调试器扩展
 

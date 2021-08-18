@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 03/30/2018
-ms.openlocfilehash: bdbbc4c421b83fd041c7d900fb0edd01c4d636e0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ba1f3e9ca68f44927c1d163a8d02c63c7b2f3b0c
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785084"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113598470"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>适用于 Linux 的虚拟机扩展和功能
 
@@ -27,7 +27,7 @@ Azure 虚拟机 (VM) 扩展是小型应用程序，可在 Azure VM 上提供部�
 
 - 使用适用于 Linux 的 DSC 扩展将 PowerShell 所需状态配置应用到 VM。 有关详细信息，请参阅 [Azure 所需状态配置扩展](https://github.com/Azure/azure-linux-extensions/tree/master/DSC)。
 - 使用 Microsoft Monitoring Agent VM 扩展配置 VM 监视功能。 有关详细信息，请参阅[如何监视 Linux VM](/previous-versions/azure/virtual-machines/linux/tutorial-monitor)。
-- 使用 Chef 或 Datadog 扩展配置 Azure 基础结构监视功能。 有关详细信息，请参阅 [Chef 文档](https://docs.chef.io/azure_portal.html)或 [Datadog 博客](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)。
+- 使用 Chef 或 Datadog 扩展配置 Azure 基础结构监视功能。 有关详细信息，请参阅 [Chef 文档](https://docs.chef.io/)或 [Datadog 博客](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)。
 
 除了进程特定的扩展外，“自定义脚本”扩展也可用于 Windows 和 Linux 虚拟机。 适用于 Linux 的“自定义脚本”扩展允许在 VM 上运行任何 Bash 脚本。 在设计需要本机 Azure 工具无法提供的配置的 Azure 部署时，自定义脚本很有用。 有关详细信息，请参阅 [Linux VM Custom Script extension](custom-script-linux.md)（Linux VM“自定义脚本”扩展）。
 

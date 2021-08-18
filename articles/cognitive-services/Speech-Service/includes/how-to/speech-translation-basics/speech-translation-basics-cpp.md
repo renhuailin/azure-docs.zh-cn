@@ -1,15 +1,15 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
-ms.author: trbye
-ms.openlocfilehash: 56c1142ace0591543127289ff6228df05420f1f3
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.author: lajanuar
+ms.openlocfilehash: 2957cb43963746eb9fe3051634d31a18c201c831
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110486511"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071105"
 ---
 语音服务的核心功能之一是能够识别人类语音并将其翻译成其他语言。 本快速入门介绍如何在应用和产品中使用语音 SDK 来执行高质量的语音翻译。 此快速入门介绍以下主题：
 

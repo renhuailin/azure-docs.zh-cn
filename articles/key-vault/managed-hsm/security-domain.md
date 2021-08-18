@@ -4,15 +4,15 @@ description: 概述托管 HSM 安全域，即恢复托管 HSM 所需的一组核
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: conceptual
-author: amitbapat
-ms.author: ambapat
+author: mbaldwin
+ms.author: mbaldwin
 ms.date: 09/15/2020
-ms.openlocfilehash: 37e2541d0b53c96fd3f85da31b2c0ce5b68b551a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b309b4e9189c551ed40e0dac1ad45de47f7632d6
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90994643"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443550"
 ---
 # <a name="about-the-managed-hsm-security-domain"></a>关于托管 HSM 安全域
 

@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 Adobe Identity Management 配�
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Adobe Identity Management 以及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 6ae05dc7-1265-44b4-a20c-512b5218b9d1
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2021
-ms.author: Zhchia
-ms.openlocfilehash: f9608a3a9e086cc6c03dc80f0666becbcbc06290
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.author: thwimmer
+ms.openlocfilehash: fb80ddaecb7b200a52b944febc40bf26e9fb6de9
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110688401"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765067"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>教程：为 Adobe Identity Management 配置自动用户预配
 
@@ -52,7 +52,7 @@ ms.locfileid: "110688401"
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 3. 确定要[在 Azure AD 与 Adobe Identity Management 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
 
-## <a name="step-2-configure-adobe-identity-management-to-support-provisioning-with-azure-ad"></a>步骤 2。 将 Adobe Identity Management 配置为支持 Azure AD 预配
+## <a name="step-2-configure-adobe-identity-management-to-support-provisioning-with-azure-ad"></a>步骤 2. 将 Adobe Identity Management 配置为支持 Azure AD 预配
 
 1. 登录到 [Adobe Admin Console](https://adminconsole.adobe.com/)（Adobe 管理控制台）。 导航到“Settings”（设置）>“Directory Details”（目录详细信息）>“Sync”（同步）。 
 

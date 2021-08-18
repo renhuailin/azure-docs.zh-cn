@@ -5,20 +5,24 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 07/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: 4944ae62bda23f33aa30011314826beb499ac791
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 055d895419e8f1e54b30a440c906c3b3e3251078
+ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110534747"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113643408"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>使用 Azure CLI 创建 Azure Bastion 主机
 
 本文介绍如何使用 Azure CLI 创建 Azure Bastion 主机。 在虚拟网络中预配 Azure Bastion 服务后，即可在该虚拟网络中的所有 VM 上获得无缝的 RDP/SSH 体验。 Azure Bastion 部署是按虚拟网络进行的，而不是按订阅/帐户或虚拟机进行的。
 
-或者，可使用 [Azure 门户](./tutorial-create-host-portal.md)或 [Azure PowerShell](bastion-create-host-powershell.md) 创建 Azure Bastion 主机。
+或者，可使用以下方法创建 Azure Bastion 主机：
+* [Azure 门户](./tutorial-create-host-portal.md)
+* [Azure PowerShell](bastion-create-host-powershell.md)
+
+[!INCLUDE [Note about SKU limitations for preview.](../../includes/bastion-preview-sku-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -26,8 +30,8 @@ ms.locfileid: "110534747"
 
 [!INCLUDE [Cloud Shell CLI](../../includes/vpn-gateway-cloud-shell-cli.md)]
 
- >[!NOTE]
- >目前不支持一起使用 Azure Bastion 和 Azure 专用 DNS 区域。 开始之前，请确保计划在其中部署 Bastion 资源的虚拟网络未链接到专用 DNS 区域。
+ > [!NOTE]
+ > 目前不支持一起使用 Azure Bastion 和 Azure 专用 DNS 区域。 开始之前，请确保计划在其中部署 Bastion 资源的虚拟网络未链接到专用 DNS 区域。
  >
 
 ## <a name="create-a-bastion-host"></a><a name="createhost"></a>创建 Bastion 主机
@@ -37,7 +41,9 @@ ms.locfileid: "110534747"
 > [!NOTE]
 > 如示例中所示，为确保将资源放在一起部署，请对每个命令结合使用 `--location` 参数和 `--resource-group`。
 
-1. 创建虚拟网络和 Azure Bastion 子网。 必须使用名称值 AzureBastionSubnet 创建 Azure Bastion 子网。 此值告知 Azure 要将 Bastion 资源部署到哪个子网。 这不同于网关子网。 必须使用至少为 /27 或更大（/27、/26 等）的子网。 创建不包含任何路由表或委托的 AzureBastionSubnet。 如果使用 AzureBastionSubnet 上的网络安全组，请参阅[使用 NSG](bastion-nsg.md) 一文。
+1. 创建虚拟网络和 Azure Bastion 子网。 必须使用名称值 AzureBastionSubnet 创建 Azure Bastion 子网。 此值告知 Azure 要将 Bastion 资源部署到哪个子网。 这不同于 VPN 网关子网。
+
+   [!INCLUDE [Note about BastionSubnet size.](../../includes/bastion-subnet-size.md)]
 
    ```azurecli-interactive
    az network vnet create --resource-group MyResourceGroup --name MyVnet --address-prefix 10.0.0.0/16 --subnet-name AzureBastionSubnet --subnet-prefix 10.0.0.0/24 --location northeurope

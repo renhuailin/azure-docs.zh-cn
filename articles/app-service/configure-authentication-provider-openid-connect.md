@@ -4,12 +4,12 @@ description: 了解如何将 OpenID Connect 提供程序配置为应用服务或
 ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
-ms.openlocfilehash: e8112f2dc20175e81cfa8388440b2d9aef6a419c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: befedca9fa872575d990ceea786a09d60a5773ca
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90983876"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113092918"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>将应用服务或 Azure Functions 应用配置为使用 OpenID Connect 提供程序（预览版）进行登录
 
@@ -48,7 +48,7 @@ ms.locfileid: "90983876"
 ## <a name="add-provider-information-to-your-application"></a><a name="configure"> </a>向应用程序添加提供者信息
 
 > [!NOTE]
-> 所需配置采用新的 API 格式，目前只有[基于文件的配置（预览版）](.\app-service-authentication-how-to.md#config-file)支持此格式。 你需要使用这样的文件执行以下步骤。
+> 所需配置采用新的 API 格式，目前只有[基于文件的配置（预览版）](configure-authentication-file-based.md)支持此格式。 你需要使用这样的文件执行以下步骤。
 
 本部分将指导你更新配置，使之包括新的 IDP。 后面提供了配置示例。
 

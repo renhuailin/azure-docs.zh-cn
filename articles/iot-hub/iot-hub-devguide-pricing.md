@@ -2,7 +2,6 @@
 title: 了解 Azure IoT 中心定价 | Microsoft Docs
 description: 开发人员指南 - 介绍了如何实现 IoT 中心（包括样例）的计数和定价。
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -11,12 +10,12 @@ ms.date: 03/11/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 5b67f505a71d2af7950422a86ab45ef8aebb3bf4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 809a38425adc376d72bed1330f077db2841ea8cd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056430"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745326"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT 中心定价信息
 

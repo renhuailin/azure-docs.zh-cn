@@ -4,21 +4,21 @@ description: 在此端到端演练中，了解如何将 ILB 应用服务环境�
 author: ccompy
 ms.assetid: a6a74f17-bb57-40dd-8113-a20b50ba3050
 ms.topic: article
-ms.date: 03/03/2018
+ms.date: 07/26/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3b73d528802a8aa33c6122eaf5edfa9d046b6753
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 839d817001bf4f939bdcacb7e439c7eb8e45b3a3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88962071"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743921"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>将 ILB 应用服务环境与 Azure 应用程序网关集成 #
 
 [应用服务环境](./intro.md)是客户的 Azure 虚拟网络子网中的 Azure 应用服务部署。 可通过应用访问的公共或专用终结点来进行部署。 具有专用终结点（即，内部负载平衡器）的应用服务环境的部署称为 ILB 应用服务环境。  
 
-Web 应用程序防火墙会检查入站 Web 流量，并阻止 SQL 注入、跨站点脚本、恶意软件上传和应用程序 DDoS 及其他攻击，从而帮助你保护 Web 应用程序的安全。 它还会检查后端 Web 服务器的响应，实现针对数据丢失预防 (DLP)。 可以从 Azure 市场获取 WAF 设备，也可以使用 [Azure 应用程序网关][appgw]。
+Web 应用程序防火墙会检查入站 Web 流量，并阻止 SQL 注入、跨站点脚本、恶意软件上传和应用程序 DDoS 及其他攻击，从而帮助你保护 Web 应用程序的安全。 可以从 Azure 市场获取 WAF 设备，也可以使用 [Azure 应用程序网关][appgw]。
 
 Azure 应用程序网关是一个虚拟设备，可提供第 7 层负载均衡、TLS/SSL 卸载以及 Web 应用程序防火墙 (WAF) 保护。 可侦听公共 IP 地址和将流量路由到应用程序终结点。 以下信息描述了如何将 WAF 配置的应用程序网关与 ILB 应用服务环境中的应用进行集成。  
 

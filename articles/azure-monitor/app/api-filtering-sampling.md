@@ -4,12 +4,12 @@ description: 为 SDK 编写遥测处理器和遥测初始化表达式，以在�
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: cb9159b98b219c6fb04beb7bbbaade64fc72a30b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3fac7a4f02a67def7f5089e3e793e61c510ad074
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98927750"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112289362"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测
 
@@ -553,5 +553,5 @@ public class HttpContextRequestTelemetryInitializer : ITelemetryInitializer
 ## <a name="next-steps"></a><a name="next"></a>后续步骤
 * [搜索事件和日志](./diagnostic-search.md)
 * [采样](./sampling.md)
-* [故障排除](../faq.md)
+* [故障排除](../faq.yml)
 

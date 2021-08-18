@@ -7,12 +7,12 @@ ms.date: 09/14/2019
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 24174d7ac9fa33cb1fb3ca6e325537dde346b3c3
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d2a1e8df23bca2e57f2d26bd83fc06ad93847903
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752002"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113032932"
 ---
 # <a name="customize-the-feed-for-azure-virtual-desktop-users"></a>为 Azure 虚拟桌面用户自定义源
 
@@ -120,8 +120,8 @@ Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName
 
 你已经为用户自定义源，现在可以登录到 Azure 虚拟桌面客户端进行测试。为此，请继续阅读“连接到 Azure 虚拟桌面操作指南”：
 
- * [使用 Windows 10 或 Windows 7 进行连接](connect-windows-7-10.md)
- * [使用 Web 客户端进行连接](connect-web.md)
- * [使用 Android 客户端进行连接](connect-android.md)
- * [使用 iOS 客户端进行连接](connect-ios.md)
- * [使用 macOS 客户端进行连接](connect-macos.md)
+ * [使用 Windows 10 或 Windows 7 进行连接](./user-documentation/connect-windows-7-10.md)
+ * [使用 Web 客户端进行连接](./user-documentation/connect-web.md)
+ * [使用 Android 客户端进行连接](./user-documentation/connect-android.md)
+ * [使用 iOS 客户端进行连接](./user-documentation/connect-ios.md)
+ * [使用 macOS 客户端进行连接](./user-documentation/connect-macos.md)

@@ -8,23 +8,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 07/03/2021
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5513aff9bed85293978061f8989c1389e9e7a9c4
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 47815bcca9c6630392cb86284d8e8c3cf4d08e67
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954952"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113733189"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>将品牌添加到组织的 Azure Active Directory 登录页面
 使用组织的徽标和自定义颜色方案，在 Azure Active Directory (Azure AD) 登录页面上提供一致外观和体验。 用户登录到组织的基于 Web 的应用（例如 Microsoft 365，它使用 Azure AD 作为标识提供者时）时，将显示登录页面。
 
 >[!NOTE]
->添加自定义品牌要求具有 Azure Active Directory Premium 1 或 Premium 2 许可证。 有关许可和版本的详细信息，请参阅[注册 Azure AD Premium](active-directory-get-started-premium.md)。<br><br>在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure AD Premium 版本。 中国区 21Vianet 运营的 Azure 服务目前不支持 Azure AD Premium 版本。 有关详细信息，请通过 [Azure Active Directory 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
+>添加自定义品牌需要具有 Azure Active Directory Premium 1、Premium 2 或（针对 Office 365 应用）Office 365 许可证。 有关许可和版本的详细信息，请参阅[注册 Azure AD Premium](active-directory-get-started-premium.md)。<br><br>在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure AD Premium 版本。 中国区 21Vianet 运营的 Azure 服务目前不支持 Azure AD Premium 版本。 有关详细信息，请通过 [Azure Active Directory 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>自定义 Azure AD 登录页面
 可以自定义 Azure AD 登录页面，这些页面会在用户登录到组织的特定于租户的应用时显示（例如 `https://outlook.com/contoso.com`），或者在传递域变量时显示（例如 `https://passwordreset.microsoftonline.com/?whr=contoso.com`）。
@@ -32,7 +32,7 @@ ms.locfileid: "111954952"
 用户访问 www\.office.com 等站点时，自定义品牌不会立即显示。 相反，用户必须先登录才会显示自定义品牌。 用户登录后，品牌可能需要 15 分钟或更长时间才能出现。 
 
 > [!NOTE]
-> 所有品牌元素都是可选的。 例如，如果指定没有背景图像的横幅徽标，则登录页面将显示带有目标网站（例如 Microsoft 365）默认背景图像的徽标。<br><br>此外，登录页面品牌不会带到个人 Microsoft 帐户。 如果用户或企业访客使用个人 Microsoft 帐户登录，则其登录页面不会显示组织的品牌。
+> **所有品牌元素都是可选的，在保持不变时将保持默认值。** 例如，如果指定没有背景图像的横幅徽标，则登录页面将显示带有目标网站（如 Microsoft 365）默认背景图像的徽标。<br><br>此外，登录页面品牌不会带到个人 Microsoft 帐户。 如果用户或企业访客使用个人 Microsoft 帐户登录，则其登录页面不会显示组织的品牌。
 
 ### <a name="to-customize-your-branding"></a>自定义品牌
 1. 使用目录的全局管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
@@ -52,7 +52,7 @@ ms.locfileid: "111954952"
 
         - **语言。** 语言自动设置为默认语言，无法更改。
         
-        - **登录页面背景图像。** 选择要显示为登录页面背景的 .png 或 .jpg 图像文件。 图像将固定在浏览器中心，并缩放为可查看空间的大小。 不能选择尺寸超过 1920x1080 像素或文件大小超过 300 KB 的图像。
+        - **登录页面背景图像。** 选择要显示为登录页面背景的 .png 或 .jpg 图像文件。 图像将固定在浏览器中心，并缩放为可查看空间的大小。 不能选择尺寸超过 1920x1080 像素或文件大小超过 300000 字节的图像。
         
             建议使用没有强主题焦点的图像，例如，屏幕中心出现一个不透明的白色框，该框可能会根据可查看空间的尺寸覆盖图像的任何部分。
 
@@ -140,7 +140,9 @@ ms.locfileid: "111954952"
     ![“Contoso - 公司品牌”页面，其中显示新语言配置](media/customize-branding/company-branding-french-config.png)
 
 ## <a name="add-your-custom-branding-to-pages"></a>将自定义品牌添加到页面
-通过使用文本 `?whr=yourdomainname` 修改 URL 的结尾，将自定义品牌添加到页面。 此修改适用于多个页面，包括多重身份验证 (MFA) 设置页面、自助服务密码重置 (SSPR) 设置页面和登录页面。
+通过使用文本 `?whr=yourdomainname` 修改 URL 的结尾，将自定义品牌添加到页面。 此特定修改适用于不同类型的页面，包括多重身份验证 (MFA) 设置页面、自助式密码重置 (SSPR) 设置页面和登录页面。
+
+应用程序是否支持用于打造品牌的自定义 URL，这取决于特定应用程序，应在尝试向页面添加自定义品牌之前进行检查。
 
 **示例：**
 

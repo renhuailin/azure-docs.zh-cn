@@ -3,21 +3,21 @@ title: JavaScript 单页应用程序方案
 titleSuffix: Microsoft identity platform
 description: 了解如何使用 Microsoft 标识平台构建单页应用程序（方案概述）。
 services: active-directory
-author: mtillman
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: mtillman
+ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 687b904175b5bd26a15b157aae3307ec40fdad42
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 270b3e3f4c5e462b66129413d7acf983efd3f8eb
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075252"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113357618"
 ---
 # <a name="scenario-single-page-application"></a>方案：单页应用程序
 

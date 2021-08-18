@@ -12,12 +12,12 @@ ms.date: 04/21/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a56f8339535c64c6eeac1b06c04aa7c89cd38356
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: daee0bc89804b8fe72845c411224b689452fe7d2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107886381"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723237"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>使用 SendGrid 进行自定义电子邮件验证
 
@@ -37,9 +37,9 @@ ms.locfileid: "107886381"
 
 ## <a name="create-a-sendgrid-account"></a>创建 SendGrid 帐户
 
-如果你还没有 SendGrid 帐户，请先设置一个（Azure 客户每月可免费查看 25,000 封电子邮件）。 有关安装说明，请参阅[如何在 Azure 中使用 SendGrid 发送电子邮件](../sendgrid-dotnet-how-to-send-email.md)中的[创建 SendGrid 帐户](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account)部分。
+如果你还没有 SendGrid 帐户，请先设置一个（Azure 客户每月可免费查看 25,000 封电子邮件）。 有关安装说明，请参阅[如何在 Azure 中使用 SendGrid 发送电子邮件](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#create-a-twilio-sendgrid-accountcreate-a-twilio-sendgrid-account)中的[创建 SendGrid 帐户](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#create-a-sendgrid-account)部分。
 
-请确保完成[创建 SendGrid API 密钥](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)部分。 记下 API 密钥，因为后面的步骤将要用到。
+请确保完成[创建 SendGrid API 密钥](https://docs.sendgrid.com/for-developers/partners/microsoft-azure-2021#to-find-your-sendgrid-api-key)部分。 记下 API 密钥，因为后面的步骤将要用到。
 
 > [!IMPORTANT]
 > 借助 SendGrid，客户能够从共享 IP 和[专用 IP 地址](https://sendgrid.com/docs/ui/account-and-settings/dedicated-ip-addresses/)发送电子邮件。 使用专用 IP 地址时，需要通过 IP 地址预热来适当地建立自己的信誉。 有关详细信息，请参阅 [预热 IP 地址](https://sendgrid.com/docs/ui/sending-email/warming-up-an-ip-address/)。
@@ -54,7 +54,7 @@ ms.locfileid: "107886381"
 1. 在“概述”页上选择“标识体验框架”。
 1. 选择“策略密钥”，然后选择“添加”。
 1. 对于“选项”，选择“手动”。
-1. 输入策略密钥的 **名称**。 例如，`SendGridSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 输入策略密钥的 **名称**。 例如，`SendGridSecret` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 1. 在“机密”中，输入之前记录的 SendGrid API 密钥。
 1. 对于“密钥用法”，请选择“签名” 。
 1. 选择“创建”。
@@ -165,7 +165,7 @@ ms.locfileid: "107886381"
 1. 展开左侧的“设置”，输入 `{{subject}}` 作为“电子邮件主题” 。
 1. 选择“保存模板”。
 1. 通过选择返回箭头返回到“事务模板”页。
-1. 记下你创建的模板的 ID，后面的步骤将要用到。 例如，`d-989077fbba9746e89f3f6411f596fb96`。 在[添加声明转换](#add-the-claims-transformation)时指定此 ID。
+1. 记下你创建的模板的 ID，后面的步骤将要用到。 例如 `d-989077fbba9746e89f3f6411f596fb96`。 在[添加声明转换](#add-the-claims-transformation)时指定此 ID。
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>添加 Azure AD B2C 声明类型
 

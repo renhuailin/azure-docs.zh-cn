@@ -4,12 +4,12 @@ description: 在 Apache Hive 视图中查询失败，而没有有关 Azure HDIns
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/30/2019
-ms.openlocfilehash: c60e06e8f37e7aed0d0a0df661690a2b1f32dbd5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f80a966b3d326d367d376354bc83f7d1d935812
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98930999"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112290843"
 ---
 # <a name="scenario-query-error-message-not-displayed-in-apache-hive-view-in-azure-hdinsight"></a>方案：Azure HDInsight 内的 Apache Hive 视图中未显示查询错误消息
 
@@ -33,4 +33,4 @@ Apache Hive 视图查询错误消息将如下所示，没有进一步的信息�
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

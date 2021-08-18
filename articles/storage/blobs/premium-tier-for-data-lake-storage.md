@@ -5,15 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.custom: references_regions
-ms.date: 10/30/2020
+ms.date: 06/21/2021
 ms.author: normesta
-ms.openlocfilehash: a9ed305dbd081486f0b892fcc38ada83e9666bd9
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 22ed6d6e4c9280d79027918615a51da305f2457f
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143334"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453909"
 ---
 # <a name="premium-tier-for-azure-data-lake-storage"></a>Azure Data Lake Storage 的高级层
 
@@ -70,39 +69,6 @@ AI/ML 可以解决不同数据类型（例如视觉对象、语音和文本）�
 
 > [!div class="mx-imgBorder"]
 > ![分层命名空间设置](./media/create-data-lake-storage-account/hierarchical-namespace-feature.png)
-
-## <a name="regional-availability"></a>区域可用性
-
-Azure Data Lake Storage 的高级层在以下区域可用。
-
-|区域|冗余|
-|--|--|
-|美国东部|LRS、ZRS|
-|美国东部 2|LRS、ZRS|
-|美国中部|LRS|
-|美国西部|LRS|
-|美国西部 2|LRS、ZRS|
-|美国中西部|LRS|
-|美国中南部|LRS|
-|加拿大中部|LRS|
-|加拿大东部|LRS|
-|北欧|LRS、ZRS|
-|西欧|LRS、ZRS|
-|英国南部|LRS|
-|英国西部|LRS|
-|法国中部|LRS|
-|亚洲东部|LRS|
-|韩国中部|LRS|
-|韩国南部|LRS|
-|印度中部|LRS|
-|印度西部|LRS|
-|阿拉伯联合酋长国北部|LRS|
-|Japan East|LRS|
-|日本西部|LRS|
-|东南亚|LRS、ZRS|
-|澳大利亚东部|LRS、ZRS|
-|澳大利亚东南部|LRS|
-|Brazil South|LRS|
 
 ## <a name="next-steps"></a>后续步骤
 

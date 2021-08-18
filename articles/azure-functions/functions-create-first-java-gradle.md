@@ -6,12 +6,12 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: d7f8aa990f5a5e64d2d5c59b52457149187acddd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: be1d54007017ce9b5abb774e75ddfd799f83c612
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773974"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287287"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>使用 Java 和 Gradle 创建函数并将其发布到 Azure
 
@@ -24,7 +24,7 @@ ms.locfileid: "107773974"
 
 若要使用 Java 开发函数，必须安装以下软件：
 
-- [Java 开发人员工具包](/azure/developer/java/fundamentals/java-jdk-long-term-support)版本 8
+- [Java 开发人员工具包](/azure/developer/java/fundamentals/java-support-on-azure)版本 8
 - [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 2.6.666 或更高版本
 - [Gradle](https://gradle.org/) 4.10 和更高版本

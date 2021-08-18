@@ -4,12 +4,12 @@ description: 在本文中，学习如何排查在备份和还原 Azure 虚拟机
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 06/02/2021
-ms.openlocfilehash: b604b98410d61d61bdb8a24e81872cb2c1caf1b4
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 6170c6e00d232e65125963680c522610cb5239ec
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410291"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722713"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -34,7 +34,7 @@ ms.locfileid: "111410291"
   * 下面是一个示例，介绍了事件查看器错误 517，其中的 Azure 备份正常运行，但“Windows Server 备份”发生故障：![Windows Server 备份故障](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
   * 如果 Azure 备份故障，则请在本文的“常见 VM 备份错误”部分查找相应的错误代码。
   * 如果在 Azure VM 上看到 Azure 备份选项显示为灰色，请将鼠标悬停在“禁用”菜单上以查找原因。 原因可能是“不支持 EphemeralDisk”或“不支持超级磁盘”。
-   ![禁用 Azure 备份选项的原因](media/backup-azure-vms-troubleshoot/azure-backup-disable-reasons.png)
+    ![禁用 Azure 备份选项的原因](media/backup-azure-vms-troubleshoot/azure-backup-disable-reasons.png)
 
 ## <a name="common-issues"></a>常见问题
 

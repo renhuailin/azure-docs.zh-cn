@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0c91f81c1909819f3a5b8d8475ccdd676132dd13
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: a18421163e39fbcf5c1081c79cf06d982613fafb
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110477475"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113769124"
 ---
 # <a name="migrate-to-azure-file-shares"></a>迁移到 Azure 文件共享
 
@@ -81,7 +81,7 @@ Active Directory 用户（作为其本地域控制器）可以以本机方式访
 | 源 | 目标： </br>混合部署 | 目标： </br>仅限云的部署 |
 |:---|:--|:--|
 | | 工具组合：| 工具组合： |
-| Windows Server 2012 R2 和更高版本 | <ul><li>[Azure 文件同步](../file-sync/file-sync-deployment-guide.md)</li><li>[Azure 文件同步和 Azure DataBox](../file-sync/file-sync-offline-data-transfer.md)</li></ul> | <ul><li>[通过 RoboCopy 迁移到已装载的 Azure 文件共享](storage-files-migration-robocopy.md)</li><li>通过 Azure 文件同步</li></ul> |
+| Windows Server 2012 R2 和更高版本 | <ul><li>[Azure 文件同步](../file-sync/file-sync-deployment-guide.md)</li><li>[Azure 文件同步和 Azure DataBox](storage-files-migration-server-hybrid-databox.md)</li></ul> | <ul><li>[通过 RoboCopy 迁移到已装载的 Azure 文件共享](storage-files-migration-robocopy.md)</li><li>通过 Azure 文件同步</li></ul> |
 | Windows Server 2012 和更低版本 | <ul><li>通过 DataBox 和 Azure 文件同步迁移到最近的服务器 OS</li><li>使用 Azure 文件同步通过存储迁移服务迁移到最新的服务器，然后上传</li></ul> | <ul><li>使用 Azure 文件同步通过存储迁移服务迁移到最新的服务器</li><li>[通过 RoboCopy 迁移到已装载的 Azure 文件共享](storage-files-migration-robocopy.md)</li></ul> |
 | 网络连接存储 (NAS) | <ul><li>[通过 Azure 文件同步 + 上传](storage-files-migration-nas-hybrid.md)</li><li>[通过 DataBox + Azure 文件同步](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>[通过 DataBox](storage-files-migration-nas-cloud-databox.md)</li><li>[通过 RoboCopy 迁移到已装载的 Azure 文件共享](storage-files-migration-robocopy.md)</li></ul> |
 | Linux/Samba | <ul><li>[Azure 文件同步和 RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>[通过 RoboCopy 迁移到已装载的 Azure 文件共享](storage-files-migration-robocopy.md)</li></ul> |

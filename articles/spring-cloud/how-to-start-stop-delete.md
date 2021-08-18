@@ -1,18 +1,18 @@
 ---
 title: 启动、停止和删除 Azure Spring Cloud 应用程序 | Microsoft Docs
 description: 如何启动、停止和删除 Azure Spring Cloud 应用程序
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: f5fcd28f35260bf3b312e089e788f765c0219745
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 73fcf419438f24c784514c723397049d50dd87be
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070904"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015442"
 ---
 # <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>启动、停止和删除 Azure Spring Cloud 应用程序
 
@@ -32,7 +32,7 @@ ms.locfileid: "108070904"
 ## <a name="using-the-azure-cli"></a>使用 Azure CLI
 
 > [!NOTE]
-> 可以使用可选参数，并使用 Azure CLI 配置默认值。 通过阅读[我们的参考文档](/cli/azure/spring-cloud)详细了解 Azure CLI。  
+> 可以使用可选参数，并使用 Azure CLI 配置默认值。 通过阅读[我们的参考文档](/cli/azure/spring-cloud)详细了解 Azure CLI。
 
 首先，安装用于 Azure CLI 的 Azure Spring Cloud 扩展，如下所示：
 

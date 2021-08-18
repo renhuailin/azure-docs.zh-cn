@@ -4,21 +4,18 @@ description: 了解如何在 Azure Functions 中禁用与启用函数。
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: c4743603504639cba5c48af57046179a0680b371
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 9563c0843c56d9eff43c826298295ff0aedb9da1
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107829871"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113487572"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>如何在 Azure Functions 中禁用函数
 
 本文介绍如何在 Azure Functions 中禁用函数。 禁用某个函数意味着运行时将忽略针对该函数定义的自动触发器。 这使你可以在不停止整个函数应用的情况下阻止特定函数运行。
 
 若要禁用函数，建议的方式是将格式为 `AzureWebJobs.<FUNCTION_NAME>.Disabled` 的应用设置设为 `true`。 可以通过多种方式创建和修改此应用程序设置，包括使用 [Azure CLI](/cli/azure/) 以及 [Azure 门户](https://portal.azure.com)中函数的“概述”选项卡。 
-
-> [!NOTE]  
-> 如果使用本文所述的方法禁用 HTTP 触发的函数，则在本地计算机上运行时，仍然可以访问该终结点。  
 
 ## <a name="disable-a-function"></a>禁用函数
 
@@ -174,6 +171,13 @@ public static class QueueFunctions
 >[!IMPORTANT]  
 >门户使用应用程序设置来禁用 v1.x 函数。 当应用程序设置与 function.json 文件冲突时，可能会出现错误。 应从 function.json 文件中删除 `disabled` 属性，以防止出现错误。 
 
+## <a name="considerations"></a>注意事项
+
+禁用函数时，请谨记以下注意事项：
+
++ 如果使用本文所述的方法禁用 HTTP 触发的函数，则在本地计算机上运行时，仍然可以访问该终结点。  
+
++ 目前，在专用（应用服务）计划中当函数在 Linux 上运行时，无法禁用名称中包含连字符 (`-`) 的函数。 如果需要在专用计划中当函数在 Linux 上运行时禁用函数，请勿在函数名称中使用连字符。
 
 ## <a name="next-steps"></a>后续步骤
 

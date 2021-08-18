@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure CLI 配置 Azure 映像生成器服务权限
 description: 使用 Azure CLI 配置 Azure VM 映像生成器服务的要求，包括权限和特权
-author: cynthn
-ms.author: danis
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 04/02/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
-ms.openlocfilehash: 996242ba7d1ce82d2db1c8e72b96af305b9c2a4a
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: d71e4ae9325faf8dd180bda52f31c223ee654a88
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028516"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113596382"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>使用 Azure CLI 配置 Azure 映像生成器服务权限
 

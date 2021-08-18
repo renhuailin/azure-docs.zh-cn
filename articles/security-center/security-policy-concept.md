@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: eb6369e89066451779d05a97057acbdd451de192
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 240ed5ed7aefb31503047f124d34e99d738da687
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146664"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236852"
 ---
 # <a name="what-are-security-policies-initiatives-and-recommendations"></a>什么是安全策略、计划和建议？
 
@@ -71,13 +71,13 @@ Azure 计划是针对特定目标或用途组合在一起的 Azure 策略定义�
 
 查看建议的详细信息时，能够查看基础策略通常会很有帮助。 对于策略支持的每条建议，请使用建议详细信息页中的“查看策略定义”链接直接进入相关策略的 Azure 策略条目：
 
-:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="链接到 Azure Policy 页面，了解支持建议的特定策略":::
+:::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="链接到 Azure Policy 页面，了解支持建议的特定策略。":::
 
 使用此链接可查看策略定义和计算逻辑。 
 
 如果查看[安全建议参考指南](recommendations-reference.md)上的建议列表，你还将看到指向策略定义页面的链接：
 
-:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="直接从 Azure 安全中心建议参考页访问 Azure Policy 页面来了解特定策略":::
+:::image type="content" source="media/release-notes/view-policy-definition-from-documentation.png" alt-text="直接从 Azure 安全中心建议参考页访问 Azure Policy 页来了解特定策略。":::
 
 
 ## <a name="next-steps"></a>后续步骤

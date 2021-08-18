@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 97cd4d51da70b9b1cca501c7f04a3b0ccfc51305
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 18e176f11da9c8dca86c5f3477cb282c478664cf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112059664"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748068"
 ---
 # <a name="surface-custom-event-details-in-alerts-in-azure-sentinel"></a>显示 Azure Sentinel 的警报中的自定义事件详细信息 
 
@@ -29,7 +29,7 @@ ms.locfileid: "112059664"
 
 ## <a name="introduction"></a>简介
 
-[计划的查询分析规则](tutorial-detect-threats-custom.md)会分析与 Azure Sentinel 连接的数据源中的事件，并在这些事件从安全角度来说很重要时生成警报 。 这些警报由 Azure Sentinel 的各种引擎进一步分析、分组和筛选，并提炼成值得 SOC 分析人员注意的事件。 不过，当分析人员查看事件时，只有组件警报本身的属性立即可见。 若要了解实际内容（事件中包含的信息），需要进行一些挖掘。
+[计划的查询分析规则](detect-threats-custom.md)会分析与 Azure Sentinel 连接的数据源中的事件，并在这些事件从安全角度来说很重要时生成警报 。 这些警报由 Azure Sentinel 的各种引擎进一步分析、分组和筛选，并提炼成值得 SOC 分析人员注意的事件。 不过，当分析人员查看事件时，只有组件警报本身的属性立即可见。 若要了解实际内容（事件中包含的信息），需要进行一些挖掘。
 
 借助分析规则向导中的“自定义详细信息”功能，你可在从这些事件生成的警报中显示事件数据，使事件数据成为警报属性的一部分 。 实际上，你让你能够立即了解事件中的事件内容，从而可更快、更高效地进行会审、调查、得出结论和作出响应。
 
@@ -39,7 +39,7 @@ ms.locfileid: "112059664"
 
 1. 从 Azure Sentinel 导航菜单中，选择“分析”。
 
-1. 选择计划的查询规则，再单击“编辑”。 或者单击屏幕顶部的“创建”>“计划的查询规则”，创建一个新规则。
+1. 选择计划的查询规则，再单击“编辑”。 或者单击屏幕顶部的“创建”>“计划的查询规则”，新建规则。
 
 1. 单击“设置规则逻辑”选项卡。
 
@@ -70,5 +70,5 @@ ms.locfileid: "112059664"
 
 ## <a name="next-steps"></a>后续步骤
 在本文档中，你了解了如何使用 Azure Sentinel 分析规则在警报中显示自定义详细信息。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 全面了解[计划的查询分析规则](tutorial-detect-threats-custom.md)。
+- 全面了解[计划的查询分析规则](detect-threats-custom.md)。
 - 有关详细信息，请参阅 [Azure Sentinel 中的实体](entities-in-azure-sentinel.md)。

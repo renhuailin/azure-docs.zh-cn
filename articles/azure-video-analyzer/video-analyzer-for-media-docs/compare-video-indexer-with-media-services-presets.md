@@ -1,7 +1,7 @@
 ---
 title: 比较 Azure 视频分析器媒体版（以前为媒体索引器）与 Azure 媒体服务 v3 预设
 description: 本文比较了 Azure 视频分析器媒体版（以前为媒体索引器）与 Azure 媒体服务 v3 预设二者的功能。
-services: media-services
+services: azure-video-analyzer
 documentationcenter: ''
 author: juliako
 manager: femila
@@ -10,14 +10,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 02/24/2020
 ms.author: juliako
-ms.openlocfilehash: 320950303d2a578c00aa044a7d29ab0b59e4a10c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cdd354adc7a34cdcb7e0811ffd2a5d0b50018fee
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385257"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112121500"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-analyzer-for-media"></a>比较 Azure 媒体服务 v3 预设与视频分析器媒体版 
 

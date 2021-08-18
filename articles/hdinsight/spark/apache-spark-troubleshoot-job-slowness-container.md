@@ -4,12 +4,12 @@ description: 当 Azure 存储容器包含 Azure HDInsight 中的许多文件时�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/21/2019
-ms.openlocfilehash: d256292956b42c65722ea5f9c87d6835297d1d40
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 21fd9d14b2d289a3cf652b553891cc8bdf0d616b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219087"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112282216"
 ---
 # <a name="apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>当 Azure 存储容器包含 Azure HDInsight 中的许多文件时，Apache Spark 作业运行速度缓慢
 
@@ -29,7 +29,7 @@ ms.locfileid: "106219087"
 
 在 Spark 2.2 中，使用追加模式写入数据时，此性能问题应可解决。
 
-在 Spark 2.3 中，其行为应与 Spark 2.2 相同。
+在 Spark 2.3 中，预期会出现与 Spark 2.2 相同的行为。
 
 ## <a name="resolution"></a>解决方法
 
@@ -39,4 +39,4 @@ ms.locfileid: "106219087"
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

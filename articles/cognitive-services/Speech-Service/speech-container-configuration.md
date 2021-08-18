@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 07/22/2021
 ms.author: aahi
-ms.openlocfilehash: 400770a99e12bfb200b3e480d1546a26ce2aca6c
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: f86de9cbb7bf6235af6d112f9eae396b43a911f8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110495239"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441385"
 ---
 # <a name="configure-speech-service-containers"></a>配置语音服务容器
 
@@ -76,7 +76,7 @@ ms.locfileid: "110495239"
 
 标准语音容器不使用输入或输出装载来存储训练或服务数据。 但是，自定义语音容器依赖于卷装入。
 
-主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](speech-container-howto.md#the-host-computer)的装载位置。
+主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](speech-container-howto.md#host-computer-requirements-and-recommendations)的装载位置。
 
 | 可选 | 名称 | 数据类型 | 说明 |
 | -------- | ---- | --------- | ----------- |

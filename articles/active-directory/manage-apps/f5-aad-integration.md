@@ -2,21 +2,22 @@
 title: 使用 F5 实现 Azure AD 安全混合访问 | Microsoft Docs
 description: 将 F5 BIG-IP Access Policy Manager 与 Azure Active Directory 集成以实现安全混合访问
 services: active-directory
-author: gargi-sinha
+author: davidmu1
 manager: martinco
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 11/12/2020
-ms.author: gasinh
+ms.author: davidmu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38b484bd67f3354132675f343dcc06bd7f9d48a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: miccohen
+ms.openlocfilehash: cc55eff7c5ed3a4773a016bcd73bbd33708d9595
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499794"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738779"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>将 F5 BIG-IP Access Policy Manager 与 Azure Active Directory 集成以实现安全混合访问
 
@@ -34,7 +35,6 @@ SHA 使组织能够继续使用其 F5 投资实现优异的网络和应用程序
 - 先行把关的[条件访问](../conditional-access/overview.md)和[多重身份验证 (MFA)](../authentication/concept-mfa-howitworks.md)
 
 - [标识保护](../identity-protection/overview-identity-protection.md) - 通过用户和会话风险分析进行自适应控制
-
 
 - [泄漏凭据检测](../identity-protection/concept-identity-protection-risks.md)
 
@@ -117,19 +117,19 @@ BIG-IP 的角色对于任何企业而言至关重要，因此应该监视已部�
 
 - 有效的 F5 BIG-IP APM 许可证，可通过以下选项之一获取：
 
-   - F5 BIG-IP® Best 捆绑包（或者）
+  - F5 BIG-IP® Best 捆绑包（或者）
 
-   - F5 BIG-IP Access Policy Manager™ 独立许可证
+    - F5 BIG-IP Access Policy Manager™ 独立许可证
 
-   - 现有 BIG-IP F5 BIG-IP® Local Traffic Manager™ (LTM) 上的 F5 BIG-IP Access Policy Manager™ (APM) 加载项许可证
+    - 现有 BIG-IP F5 BIG-IP® Local Traffic Manager™ (LTM) 上的 F5 BIG-IP Access Policy Manager™ (APM) 加载项许可证
 
-   - 有效期 90 天的 BIG-IP Access Policy Manager™ (APM) [试用版许可证](https://www.f5.com/trial/big-ip-trial.php)
+    - 有效期 90 天的 BIG-IP Access Policy Manager™ (APM) [试用版许可证](https://www.f5.com/trial/big-ip-trial.php)
 
 - 通过以下选项之一获取 Azure AD 许可：
 
-   - Azure AD [免费订阅](/windows/client-management/mdm/register-your-free-azure-active-directory-subscription#:~:text=%20Register%20your%20free%20Azure%20Active%20Directory%20subscription,will%20take%20you%20to%20the%20Azure...%20More%20)可以满足使用无密码身份验证实现 SHA 的最低核心要求
+  - Azure AD [免费订阅](/windows/client-management/mdm/register-your-free-azure-active-directory-subscription#:~:text=%20Register%20your%20free%20Azure%20Active%20Directory%20subscription,will%20take%20you%20to%20the%20Azure...%20More%20)可以满足使用无密码身份验证实现 SHA 的最低核心要求
 
-   - [Premium 订阅](https://azure.microsoft.com/pricing/details/active-directory/)提供前言中所述的所有附加价值，包括[条件访问](../conditional-access/overview.md)、[MFA](../authentication/concept-mfa-howitworks.md) 和[标识保护](../identity-protection/overview-identity-protection.md)
+  - [Premium 订阅](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)提供前言中所述的所有附加价值，包括[条件访问](../conditional-access/overview.md)、[MFA](../authentication/concept-mfa-howitworks.md) 和[标识保护](../identity-protection/overview-identity-protection.md)
 
 无需具备任何经验或 F5 BIG-IP 知识也能实现 SHA，但我们建议你熟悉 F5 BIG-IP 的术语。 F5 丰富的[知识库](https://www.f5.com/services/resources/glossary)也是一个开始积累 BIG-IP 知识的好去处。
 

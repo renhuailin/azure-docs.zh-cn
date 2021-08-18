@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: fb9b2a13f277c326cdda722398a915941b8c52b3
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: faeaf58537da4a40716f0c2e76b205980b727bf9
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108740962"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459099"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>排查设备中的数据未在 Azure IoT Central 中显示的原因
 
@@ -52,7 +52,7 @@ az extension add --name azure-iot
 
 ```azurecli
 az login
-az set account --subscription <your-subscription-id>
+az account set --subscription <your-subscription-id>
 ```
 
 要监视设备正在发送的遥测数据，请使用以下命令：
@@ -132,7 +132,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 
 | 设备预配状态 | 说明 | 可能的缓解操作 |
 | - | - | - |
-| 已预配 | 无立即可识别的问题。 | 不适用 |
+| 已预配 | 无立即可识别的问题。 | 空值 |
 | 已注册 | 设备尚未连接到 IoT Central。 | 检查设备日志以确认连接问题。 |
 | 已阻止 | 设备被阻止连接到 IoT Central。 | 设备被阻止连接到 IoT Central 应用程序。 在 IoT Central 中取消阻止设备，然后重试。 要了解详细信息，请参阅[阻止设备](concepts-get-connected.md#device-status-values)。 |
 | 未获得批准 | 设备未获得批准。 | 设备未获得连接到 IoT Central 应用程序的批准。 在 IoT Central 中批准设备，然后重试。 要了解详细信息，请参阅[批准设备](concepts-get-connected.md#device-registration) |
@@ -178,7 +178,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
   - 未建模属性，其中的架构未在设备模板中定义。
   - 架构不匹配，比如，某一类型在模板中定义为 `boolean`，但数据为字符串。
   - 同一遥测数据名称在多个接口中定义，但设备不符合插即用符合 IoT 规范。
-- 数据形状是无效的 JSON。 有关详细信息，请参阅[遥测、属性和命令有效负载](concepts-telemetry-properties-commands.md)。
+- 数据形状是无效的 JSON。 要了解详细信息，请参阅[遥测、属性和命令有效负载](concepts-telemetry-properties-commands.md)。
 
 要检测问题的类别，请针对你的情况运行最适合的命令：
 
@@ -216,7 +216,7 @@ tatype 'double'. Data '56'. All dates/times/datetimes/durations must be ISO 8601
 
 检测到问题后，你可能需要更新设备固件，或创建一个新的设备模板来对以前未建模的数据进行建模。
 
-如果选择创建可正确对数据建模的新模板，请将设备从旧模板迁移到新模板。 要了解详细信息，请参阅“[在 Azure IoT Central 应用程序中管理设备](howto-manage-devices.md)”。
+如果选择创建可正确对数据建模的新模板，请将设备从旧模板迁移到新模板。 要了解详细信息，请参阅“[在 Azure IoT Central 应用程序中管理设备](howto-manage-devices-individually.md)”。
 
 ## <a name="next-steps"></a>后续步骤
 

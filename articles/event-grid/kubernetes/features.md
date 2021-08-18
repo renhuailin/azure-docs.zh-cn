@@ -6,19 +6,19 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: af18458e0370846a6c34a1728dfd7c98ca1276a5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 2eea263517d718effc03382e3d8209a9a11f17e7
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385303"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415851"
 ---
 # <a name="event-grid-on-kubernetes-with-azure-arc-features"></a>具有 Azure Arc 功能的 Kubernetes 上的事件网格
 Kubernetes 上的事件网格提供一组丰富的功能，有助于集成 Kubernetes 工作负载并实现混合体系结构。 它与 Azure 事件网格（同一服务的其他版本）共享相同的 [rest API](/rest/api/eventgrid/version2020-10-15-preview/topics)（从版本 2020-10-15-preview 开始）、[事件网格 CLI](/cli/azure/eventgrid)、Azure 门户体验、[管理 SDK](../sdk-overview.md#management-sdks) 和[数据平面 SDK](../sdk-overview.md#data-plane-sdks)。 准备好发布事件时，可以使用[以不同语言提供的数据平面 SDK 示例](https://devblogs.microsoft.com/azure-sdk/event-grid-ga/)，这些语言适用于两个版本的事件网格。
 
 尽管 Kubernetes 上的事件网格和 Azure 事件网格共享许多功能，并且目标是提供相同的用户体验，但考虑到它们寻求满足的独特要求及其在软件生命周期中的阶段，它们之间存在一些差异。 例如，Kubernetes 上的事件网格中唯一可用的主题类型是事件网格主题，有时也称为自定义主题。 其他主题类型（见下文）要么不适用，要么尚未提供支持。 下表中显示了两个版本的事件网格之间的主要差异。
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 
 ## <a name="event-grid-on-kubernetes-vs-event-grid-on-azure"></a>Kubernetes 上的事件网格与 Azure 上的事件网格

@@ -6,22 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/23/2021
+ms.date: 02/26/2021
 ms.author: alkohli
-ms.openlocfilehash: bdd44bf81e34b60ee648b71c6dc3bde5a96d3deb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ef54d3a252baa8d84588481b2a73d1b365bb8c13
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443006"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721407"
 ---
 # <a name="proactive-log-collection-on-your-azure-stack-edge-device"></a>Azure Stack Edge 设备上的主动日志收集
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-主动日志收集收集 Azure Stack Edge 设备上的系统运行状况指示器，帮助你高效地排查任何设备问题。 默认情况下启用主动日志收集。 本文介绍了所记录的内容、Microsoft 如何处理数据，以及如何禁用或启用主动日志收集。 
-
-本文中的信息适用于Azure Stack Edge Pro GPU、Azure Stack Edge Pro R 和 Azure Stack Edge Mini R 设备。
+主动日志收集收集 Azure Stack Edge 设备上的系统运行状况指示器，帮助你高效地排查任何设备问题。 默认情况下启用主动日志收集。 本文介绍了所记录的内容、Microsoft 如何处理数据，以及如何禁用或启用主动日志收集。
 
 ## <a name="about-proactive-log-collection"></a>关于主动日志收集
 
@@ -60,7 +58,7 @@ Microsoft 客户支持和工程团队使用 Azure Stack Edge 设备中的系统�
 启用了主动日志收集后，在设备上检测到以下事件之一时，系统会自动上传日志：  
 
 
-|Alert/Error/Condition  |描述  |
+|Alert/Error/Condition  |说明  |
 |---------|---------|
 |AcsUnhealthyCondition     |Azure 一致服务未正常运行。         |
 |IOTEdgeAgentNotRunningCondition      |IoT Edge 代理未运行。         |

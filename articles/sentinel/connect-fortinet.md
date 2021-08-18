@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 60be22f439547d006f54e489833b63171e617e3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2050cd22c2dcc86b913940a171bb6502f2a8f67
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92913987"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253527"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>将 Fortinet 连接到 Azure Sentinel
 
@@ -28,6 +28,7 @@ ms.locfileid: "92913987"
 
 本文介绍了如何将 Fortinet 设备连接到 Azure Sentinel。 Fortinet 数据连接器可让你轻松地将 Fortinet 日志连接到 Azure Sentinel，查看仪表板、创建自定义警报和改进调查。 使用 Azure Sentinel 上的 Fortinet 可以更深入地了解组织的 Internet 使用情况，并增强其安全性操作功能。 
 
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
  
 ## <a name="forward-fortinet-logs-to-the-syslog-agent"></a>将 Fortinet 日志转发到 Syslog 代理
@@ -59,8 +60,6 @@ ms.locfileid: "92913987"
 
 ## <a name="next-steps"></a>后续步骤
 本文章介绍了如何将 Fortinet 设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
-
-
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。

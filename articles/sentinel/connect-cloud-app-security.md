@@ -14,16 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 3312eed71865508e5e83d37c7ced8cf220f13ca9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 18dcd909ef55894e7548129a9b5836b68a30efe0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97835102"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121777994"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>通过 Microsoft Cloud App Security 连接数据 
 
 使用 [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) 连接器，可以将警报和 [Cloud Discovery 日志](/cloud-app-security/tutorial-shadow-it)从 MCAS 流式传输到 Azure Sentinel。 这样，用户则可以查看云应用，获得复杂的分析来识别和应对网络威胁，并控制数据的传输方式。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -59,5 +61,5 @@ ms.locfileid: "97835102"
 
 ## <a name="next-steps"></a>后续步骤
 在本文档中，你已了解如何将 Microsoft Cloud App Security 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 使用[内置](./tutorial-detect-threats-built-in.md)或[自定义](tutorial-detect-threats-custom.md)规则，开始通过 Azure Sentinel 检测威胁。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 使用[内置](./detect-threats-built-in.md)或[自定义](detect-threats-custom.md)规则开始通过 Azure Sentinel 检测威胁。

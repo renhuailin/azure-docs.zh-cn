@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: 7e57cdca1d212e6077d685d95a8f869c12e546a8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 20d5dc867455d46cd7f06f7c436c20430a09b1e5
+ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627942"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113486205"
 ---
 # <a name="visualize-data"></a>可视化数据
 Azure Synapse 是一项集成式分析服务，可以缩短在数据仓库和大数据分析系统中进行见解提取所需的时间。 数据可视化效果是一项关键组件，能够深入了解你的数据。 它有助于人们更轻松地理解大数据和小型数据。 还可使人们更轻松地检测数据组中的模式、趋势和离群值。 
@@ -63,14 +63,14 @@ Azure Synapse Analytics 笔记本使用 ```displayHTML``` 函数来支持 HTML �
 运行以下代码，以创建可视化效果。
 
 ```python
-displayHTML("&quot;&quot;<!DOCTYPE html>
-<meta charset=&quot;utf-8&quot;>
+displayHTML("""<!DOCTYPE html>
+<meta charset="utf-8">
 
 <!-- Load d3.js -->
-<script src=&quot;https://d3js.org/d3.v4.js&quot;></script>
+<script src="https://d3js.org/d3.v4.js"></script>
 
 <!-- Create a div where the graph will take place -->
-<div id=&quot;my_dataviz&quot;></div>
+<div id="my_dataviz"></div>
 <script>
 
 // set the dimensions and margins of the graph
@@ -79,7 +79,7 @@ var margin = {top: 10, right: 30, bottom: 30, left: 40},
   height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select(&quot;#my_dataviz")
+var svg = d3.select("#my_dataviz")
 .append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
@@ -200,7 +200,7 @@ tile_provider = get_provider(Vendors.CARTODBPOSITRON)
 
 # range bounds supplied in web mercator coordinates
 p = figure(x_range=(-9000000,-8000000), y_range=(4000000,5000000),
-           x_axis_type="mercator&quot;, y_axis_type=&quot;mercator")
+           x_axis_type="mercator", y_axis_type="mercator")
 p.add_tile(tile_provider)
 
 # plot datapoints on the map
@@ -220,7 +220,7 @@ displayHTML(html)
 
 
 ### <a name="plotly"></a>Plotly
-可以使用 displayHTML() 来呈现 HTML 或交互式库（例如 Plotly） 。
+你可以使用 displayHTML() 来呈现 HTML 或交互式库，如 Plotly 。
 
 运行下面的示例代码，绘制下面的图像。
 
@@ -237,6 +237,7 @@ import pandas as pd
 df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
                    dtype={"fips": str})
 
+import plotly
 import plotly.express as px
 
 fig = px.choropleth(df, geojson=counties, locations='fips', color='unemp',

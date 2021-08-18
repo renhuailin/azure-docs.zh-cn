@@ -4,12 +4,12 @@ description: 了解如何使用 Java 开发函数。
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 82e40fbe3be88754ce7196f61c971c7a002998ca
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: fc827c8c03edecbdb10769f7830806ff01596bd1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095097"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742639"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 
@@ -106,7 +106,7 @@ FunctionsProject
 使用 [ com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) 包中附带的 Java 注释将输入和输出绑定到方法。 有关详细信息，请参阅 [Java 参考文档](/java/api/com.microsoft.azure.functions.annotation)。
 
 > [!IMPORTANT] 
-> 必须在 [local.settings.json](./functions-run-local.md#local-settings-file) 中配置一个 Azure 存储帐户，才能在本地运行 Azure Blob 存储、Azure 队列存储或 Azure 表存储触发器。
+> 必须在 [local.settings.json](./functions-develop-local.md#local-settings-file) 中配置一个 Azure 存储帐户，才能在本地运行 Azure Blob 存储、Azure 队列存储或 Azure 表存储触发器。
 
 示例：
 
@@ -132,7 +132,7 @@ public class Function {
       "name": "req",
       "direction": "in",
       "authLevel": "anonymous",
-      "methods": [ "post" ]
+      "methods": [ "GET","POST" ]
     },
     {
       "type": "http",
@@ -421,7 +421,7 @@ public class Function {
 | `HttpRequestMessage<T>`  |    HTTP 触发器     | 获取方法、标头或查询 |
 | `HttpResponseMessage` | HTTP 输出绑定 | 返回除 200 以外的状态   |
 
-## <a name="metadata"></a>Metadata
+## <a name="metadata"></a>元数据
 
 少量的触发器会连同输入数据一起发送[触发器元数据](./functions-triggers-bindings.md)。 可使用注释 `@BindingName` 绑定到触发器元数据。
 

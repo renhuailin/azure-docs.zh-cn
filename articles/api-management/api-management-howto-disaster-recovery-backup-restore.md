@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c7901dd4a238b27a31f95f1e22ddf9dc1ae5327a
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 8148cbd1fa4e34610c4b27609910821323a2acea
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813054"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732212"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
 通过 Azure API 管理来发布和管理 API，即可充分利用容错和基础结构功能，否则需手动设计、实现和管理这些功能。 Azure 平台通过花费少量成本消除大量潜在故障。
 
-若要从影响托管着 API 管理服务的区域的可用性问题中恢复，应随时准备好在另一区域中重建服务。 根据恢复时间目标，你可能希望在一个或多个区域中保留备用服务。 你还可以根据自己的恢复点目标，尝试将其配置和内容与活动服务保持同步。 服务备份和还原功能为实现灾难恢复策略提供了必要的构建基块。
+若要从影响托管着 API 管理服务的区域的可用性问题中恢复，应随时准备好在另一区域中重建服务。 根据恢复时间目标，你可能希望在一个或多个区域中保留备用服务。 你还可以根据自己的恢复点目标，尝试将其配置和内容与活动服务保持同步。 服务备份和还原功能为实现灾难恢复策略提供必要的构建基块。
 
 备份和还原操作还可用于在操作环境（例如，开发环境和过渡环境）之间复制 API 管理服务配置。 请注意，运行时数据（如用户和订阅）也将被复制，这可能并不总是理想的。
 
@@ -79,11 +79,11 @@ ms.locfileid: "107813054"
 5. 选择“Azure 服务管理”  。
 6. 按“选择”  。
 
-    :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/add-app-permission.png" alt-text="屏幕截图显示如何添加应用权限。"::: 
+    :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/add-app-permission.png" alt-text="显示如何添加应用权限的屏幕截图。"::: 
 
 7. 单击新添加的应用程序旁边的“委派的权限”  ，选中“访问 Azure 服务管理(预览版)”复选框。 
 
-    :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/delegated-app-permission.png" alt-text="屏幕截图显示正在添加委托的应用权限。":::
+    :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/delegated-app-permission.png" alt-text="显示如何添加委派的应用权限的屏幕截图。":::
 
 8. 按“选择”。
 9. 单击“添加权限”。
@@ -135,7 +135,7 @@ namespace GetTokenResourceManagerRequests
 
 ## <a name="calling-the-backup-and-restore-operations"></a>调用备份和还原操作
 
-REST API 为 [Api 管理服务 - 备份](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup)和 [Api 管理服务 - 还原](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)。
+REST API 为 [Api 管理服务 - 备份](/rest/api/apimanagement/2020-12-01/api-management-service/backup)和 [Api 管理服务 - 还原](/rest/api/apimanagement/2020-12-01/api-management-service/restore)。
 
 在调用以下部分中所述的“备份和还原”操作之前，为 REST 调用设置授权请求标头。
 
@@ -156,7 +156,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   `subscriptionId` - 订阅的 ID，该订阅包含的 API 管理服务是你尝试备份的
 -   `resourceGroupName` - Azure API 管理服务的资源组名称
 -   `serviceName` - 正在创建其备份的 API 管理服务的名称，在创建时指定
--   `api-version` - 替换为 `2019-12-01`
+-   `api-version` - 替换为 `2020-12-01`
 
 在请求正文中，指定目标 Azure 存储帐户名称、访问密钥、blob 容器名称和备份名称：
 
@@ -186,7 +186,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   `subscriptionId` - 订阅 ID，该订阅包含的 API 管理服务是需要将备份还原到其中的
 -   `resourceGroupName` - 资源组的名称，该资源组包含的 Azure API 管理服务是需要将备份还原到其中的
 -   `serviceName` - 要将备份还原到其中的 API 管理服务的名称，在创建时指定
--   `api-version` - 替换为 `api-version=2019-12-01`
+-   `api-version` - 替换为 `api-version=2020-12-01`
 
 在请求正文中，指定备份文件位置。 也就是说，添加 Azure 存储帐户名称、访问密钥、Blob 容器名称和备份名称：
 

@@ -12,12 +12,12 @@ ms.date: 06/10/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0944dfd177ba82680b315913046ce8a4103f1156
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a8fc74a298450ad2581a8a147eaff9f996dca8dc
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960601"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112198793"
 ---
 # <a name="set-up-a-force-password-reset-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置强制密码重置流
 
@@ -31,7 +31,7 @@ ms.locfileid: "111960601"
 
 ![强制密码重置流](./media/force-password-reset/force-password-reset-flow.png)
 
-密码重置流适用于 Azure AD B2C 中使用[电子邮件地址](identity-provider-local.md#email-sign-in)或[用户名](identity-provider-local.md#username-sign-in)和密码进行登录的本地帐户。
+密码重置流适用于 Azure AD B2C 中使用[电子邮件地址](sign-in-options.md#email-sign-in)或[用户名](sign-in-options.md#username-sign-in)和密码进行登录的本地帐户。
 
 ::: zone pivot="b2c-user-flow"
 

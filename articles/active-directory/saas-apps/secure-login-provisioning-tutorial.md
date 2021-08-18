@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 SecureLogin 配置自动用户
 description: 了解如何将从 Azure AD 向 SecureLogin 自动预配和取消预配用户帐户。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: f37882fb-80fa-446c-8f56-d13fd905fe54
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2021
-ms.author: Zhchia
-ms.openlocfilehash: 8c75c0638365caf885900e2f26742e5fc5aab78b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 5f5b517bea97302e4be49659349acfff51dd0cf0
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953181"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766079"
 ---
 # <a name="tutorial-configure-securelogin-for-automatic-user-provisioning"></a>教程：为 SecureLogin 配置自动用户预配
 
@@ -48,7 +48,7 @@ ms.locfileid: "104953181"
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 3. 确定[在 Azure AD 与 SecureLogin 之间映射](../app-provisioning/customize-application-attributes.md)的数据。 
 
-## <a name="step-2-configure-securelogin-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 SecureLogin 以支持通过 Azure AD 进行预配
+## <a name="step-2-configure-securelogin-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 SecureLogin 以支持通过 Azure AD 进行预配
 
 需要一个 [SecureLogin](https://securelogin.nu) 管理员帐户，才能在步骤 5 的“管理凭据”部分进行授权。  
 

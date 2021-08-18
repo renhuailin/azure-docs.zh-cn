@@ -11,12 +11,12 @@ ms.date: 07/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e2bdaa2c7a7648124fbe0be60e5a0af2f83238f
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 2ef5d481cebcdd4c7f08813e8523a03fd45d777b
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226491"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768095"
 ---
 # <a name="import-and-export-azure-ad-connect-configuration-settings"></a>导入和导出 Azure AD Connect 配置设置 
 
@@ -46,6 +46,9 @@ Azure Active Directory (Azure AD) Connect 部署有多种变化，从单个林�
 
 > [!NOTE]
 > 替代此页上的设置，如使用 SQL Server 而不是 LocalDB 或使用现有服务帐户而不是默认 VSA。 这些设置不会从配置设置文件导入。 它们用于提供信息以及进行比较。
+
+>[!NOTE]
+>不支持通过修改导出的 JSON 文件来更改配置
 
 ### <a name="import-installation-experience"></a>导入安装体验 
 

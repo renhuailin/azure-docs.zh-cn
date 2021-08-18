@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 64ad2c4311ade34314edde6e841e747745378e8c
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 754504374fc9955a0327d2fb2aa19c6cf1f2d4d3
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109716251"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112295752"
 ---
 # <a name="cloud-solution-provider-program"></a>云解决方案提供商计划
 
@@ -99,7 +99,7 @@ ms.locfileid: "109716251"
 
 如果 CSP 计划中的合作伙伴未向其客户销售你的产品，而你想要在发布产品/服务后删除 CSP，请参考以下说明：
 
-1. 转到[“支持请求”页](https://aka.ms/marketplacepublishersupport)。 前几个下拉菜单已自动填写。
+1. 转到[“支持请求”页](https://go.microsoft.com/fwlink/?linkid=2165533)。 前几个下拉菜单已自动填写。
 
    > [!NOTE]
    > 请不要更改预先填充的下拉菜单选择内容。
@@ -118,7 +118,7 @@ ms.locfileid: "109716251"
 
 如果产品/服务当前采用“选项 1:CSP 计划中的任何合作伙伴”，而你想要导航到其他两个选项之一，请参考以下说明来创建请求：
 
-1. 转到[“支持请求”页](https://aka.ms/marketplacepublishersupport)。 前几个下拉菜单已自动填写。
+1. 转到[“支持请求”页](https://go.microsoft.com/fwlink/?linkid=2165533)。 前几个下拉菜单已自动填写。
 
    > [!NOTE]
    > 请不要更改预先填充的下拉菜单选择内容。
@@ -136,7 +136,7 @@ ms.locfileid: "109716251"
 
 如果产品/服务当前采用“选项 2:我选择的 CSP 计划中的特定合作伙伴”，而你想要导航到“选项 1:CSP 计划中的任何合作伙伴”，请参考以下说明来创建请求：
 
-1. 转到[“支持请求”页](https://aka.ms/marketplacepublishersupport)。 前几个下拉菜单已自动填写。
+1. 转到[“支持请求”页](https://go.microsoft.com/fwlink/?linkid=2165533)。 前几个下拉菜单已自动填写。
 
    > [!NOTE]
    > 请不要更改预先填充的下拉菜单选择内容。
@@ -149,7 +149,7 @@ ms.locfileid: "109716251"
 
  如果产品/服务当前采用“选项 2:我选择的 CSP 计划中的特定合作伙伴”，而你想要导航到“选项 3:不包括 CSP 计划中的任何合作伙伴”，则仅当 CSP 计划中已授权的合作伙伴尚未向最终客户转售你的产品/服务时，你才能导航到该选项。 参考以下说明来创建请求：
 
-1. 转到[“支持请求”页](https://aka.ms/marketplacepublishersupport)。 前几个下拉菜单已自动填写。
+1. 转到[“支持请求”页](https://go.microsoft.com/fwlink/?linkid=2165533)。 前几个下拉菜单已自动填写。
 
    > [!NOTE]
    > 请不要更改预先填充的下拉菜单选择内容。

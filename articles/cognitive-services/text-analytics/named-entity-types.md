@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 06/03/2021
+ms.date: 08/11/2021
 ms.author: aahi
-ms.openlocfilehash: 9c2cdcaa5aaadf9b1314b436fce4ab747bebdf8c
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 9d63fc9f90408fd60331f77079fdd8f15ca4aad6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527597"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734081"
 ---
 # <a name="supported-entity-categories-in-the-text-analytics-api-v3"></a>文本分析 API v3 中支持的实体类别
 
 使用本文查找[命名实体识别](how-tos/text-analytics-how-to-entity-linking.md) (NER) 可以返回的实体类别。 NER 运行预测模型来识别输入文档中的命名实体并对其进行分类。
 
-用户也可预览 NER v3.1，其中包括检测个人 (`PII`) 信息和运行状况 (`PHI`) 信息的功能。 此外，单击“运行状况”选项卡可以查看运行状况文本分析中支持的类别的列表。 
+NER v3.1 也可用，其中包括检测个人 (`PII`) 信息和运行状况 (`PHI`) 信息的功能。 此外，单击“运行状况”选项卡可以查看运行状况文本分析中支持的类别的列表。 
 
 可以在[迁移指南](migration-guide.md?tabs=named-entity-recognition)中找到版本 2.1 返回的类型的列表
 

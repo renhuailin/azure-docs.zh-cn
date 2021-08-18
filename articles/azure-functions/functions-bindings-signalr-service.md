@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 9e60fd9a20720d75f96a0b78ee783bd5509a8f90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34460fb0076c4cb666242d996add913cc2b74d22
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97763483"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113108632"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions 的 SignalR Service 绑定
 
@@ -53,6 +53,10 @@ ms.locfileid: "97763483"
     <version>1.0.0</version>
 </dependency>
 ```
+
+## <a name="connection-string-settings"></a>连接字符串设置
+
+将 `AzureSignalRConnectionString` 密钥添加到 host.json 文件中，该文件使用连接字符串指向应用程序设置。 对于本地开发，此值可能存在于 local.settings.json 文件中。
 
 ## <a name="next-steps"></a>后续步骤
 

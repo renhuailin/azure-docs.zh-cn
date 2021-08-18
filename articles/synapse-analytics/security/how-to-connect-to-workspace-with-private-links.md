@@ -1,19 +1,19 @@
 ---
 title: 使用专用链接连接到 Synapse 工作区
 description: 本文介绍如何使用专用链接连接到 Azure Synapse 工作区
-author: RonyMSFT
+author: ashinMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 04/15/2020
-ms.author: ronytho
+ms.author: seshin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9782cce4165487b612c0295dc893d120ed043225
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a1205647f4895407bff9301415249a055990f6e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98218257"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737445"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links"></a>使用专用链接连接到 Azure Synapse 工作区
 

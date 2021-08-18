@@ -4,15 +4,15 @@ description: 了解如何使用 Power BI 连接到 Azure Analysis Services 服�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 5/25/2021
+ms.date: 06/30/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 579f97deaadf8005d7a7986ff3b032909c28972e
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: a956d5e3be0a5f92e22dcd1536339ff5244e19dc
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110496554"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113213339"
 ---
 # <a name="connect-with-power-bi"></a>使用 Power BI 进行连接
 
@@ -35,12 +35,14 @@ ms.locfileid: "110496554"
 
     同时支持“实时连接”  和“导入”  选项。 但是，我们建议你使用实时连接，因为导入模式确实存在一些限制；最重要的是，导入过程中可能会影响服务器性能。
     
-    如果 Power BI 模型处于[混合存储模式](/power-bi/transform-model/desktop-composite-models)，则“实时连接”选项将替换为 [DirectQuery](/power-bi/connect-data/desktop-directquery-datasets-azure-analysis-services) 选项 。 如果模型从导入切换到混合存储模式，实时连接也会自动升级到 DirectQuery。
+    如果 Power BI 模型处于[混合存储模式](/power-bi/transform-model/desktop-composite-models)，则“实时连接”选项将替换为 [DirectQuery](/power-bi/connect-data/desktop-directquery-datasets-azure-analysis-services) 选项 。 如果模型从“导入”切换到“混合存储”模式，实时连接也会自动升级到 DirectQuery。
 
-5. 如果出现系统提示，请输入登录凭据。 
+5. 当系统提示你输入凭据时，请选择“Microsoft 帐户”，然后单击“登录”。 
+
+    :::image type="content" source="media/analysis-services-connect-pbi/aas-sign-in.png" alt-text="登录到 Azure 的身份":::
 
    > [!NOTE]
-   > 不支持一次性密码 (OTP) 帐户。 
+   > 不支持 Windows 身份验证和基本身份验证。 
 
 6. 在 **导航器** 中，展开服务器，选择要连接到的模型或透视，并单击“连接”。 单击模型或透视可显示该视图的所有对象。
 
@@ -55,7 +57,7 @@ ms.locfileid: "110496554"
 
 为了保护系统的性能，无论 Azure 分析服务服务器上配置的[查询内存限制](/analysis-services/server-properties/memory-properties?view=azure-analysis-services-current&preserve-view=true)如何，都会对 Power BI 报告针对 Azure 分析服务发出的所有查询强制实施内存限制。 如果查询占用过多内存，则用户应考虑简化查询或其计算。
 
-|                                                           | 请求内存限制 |
+|查询类型| 请求内存限制 |
 |-----------------------------------------------------------|----------------------|
 | 从 Power BI 进行实时连接                            | 10 GB  |
 | 来自共享工作区中 Power BI 报表的 DirectQuery  | 1 GB   |

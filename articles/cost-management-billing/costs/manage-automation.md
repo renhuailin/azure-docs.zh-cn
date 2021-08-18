@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 2a39f77e3e7409d23ab7506b525f65e01082e99e
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1c3e7399eedb6c3c4b78c9838f3724d94f20f0e4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720111"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745447"
 ---
 # <a name="manage-costs-with-automation"></a>通过自动化功能管理成本
 
@@ -96,7 +96,7 @@ GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDe
 对于具有 Microsoft 客户协议的新客户，请使用以下调用：
 
 ```http
-GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?startDate=2020-08-01&endDate=&2020-08-05$top=1000&api-version=2019-10-01
+GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?startDate=2020-08-01&endDate=2020-08-05&$top=1000&api-version=2019-10-01
 ```
 
 ### <a name="get-amortized-cost-details"></a>获取摊销成本详细信息

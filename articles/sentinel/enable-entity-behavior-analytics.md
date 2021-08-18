@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 3f3e945a00ec7bba75deebb56118d45aa7ff571d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 985f1d4edacd81b7567124845836c3d93f976bb2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100530716"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779730"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中启用用户和实体行为分析 (UEBA) 
 
 > [!IMPORTANT]
 >
-> - UEBA 和实体页功能现已在所有 Azure Sentinel 地理位置和区域正式发布 。
+> UEBA 和实体页功能现已在所有 Azure Sentinel 地理位置和区域正式发布 。 
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -64,5 +66,5 @@ ms.locfileid: "100530716"
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何在 Azure Sentinel 中启用和配置用户和实体行为分析 (UEBA)。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。

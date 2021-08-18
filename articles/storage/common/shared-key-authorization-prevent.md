@@ -1,27 +1,27 @@
 ---
 title: 阻止通过共享密钥进行授权
 titleSuffix: Azure Storage
-description: 若要要求客户端使用 Azure AD 对请求进行授权，你可以禁止使用共享密钥对向存储帐户发出的请求进行授权。
+description: 若要要求客户端使用 Azure AD 对请求进行授权，你可禁止使用共享密钥 对存储帐户进行授权的请求。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/27/2021
+ms.date: 07/12/2021
 ms.author: tamram
-ms.reviewer: sohamnc
+ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0262cdd348c03dafd378af95374beacf2bc77c23
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5e38cfeae5ad8593e5ee69059f4bdb903b04aa42
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110679263"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178302"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account"></a>阻止对 Azure 存储帐户进行共享密钥授权
 
 对 Azure 存储帐户的每个安全请求都必须经过授权。 默认情况下，可以使用 Azure Active Directory (Azure AD) 凭据对请求进行授权，或使用帐户访问密钥进行共享密钥授权。 在这两种类型的授权中，与共享密钥相比，Azure AD 提供更高级别的安全性和易用性，是 Microsoft 推荐的授权方法。 若要要求客户端使用 Azure AD 对请求进行授权，你可以禁止使用共享密钥对向存储帐户发出的请求进行授权。
 
-当禁止对某个存储帐户进行共享密钥授权时，Azure 存储将拒绝向该帐户发出的所有使用帐户访问密钥进行授权的后续请求。 只有通过 Azure AD 进行授权的安全请求才会成功。 有关使用 Azure AD 的详细信息，请参阅[使用 Azure Active Directory 授予对 blob 和队列的访问权限](storage-auth-aad.md)。
+当禁止对某个存储帐户进行共享密钥授权时，Azure 存储将拒绝向该帐户发出的所有使用帐户访问密钥进行授权的后续请求。 只有通过 Azure AD 进行授权的安全请求才会成功。 有关使用 Azure AD 的详细信息，请参阅[授权访问 Azure 存储中的数据](authorize-data-access.md)。
 
 本文介绍如何检测通过共享密钥授权发送的请求，以及如何修正存储帐户的共享密钥授权。
 
@@ -31,7 +31,7 @@ ms.locfileid: "110679263"
 
 使用指标来确定存储帐户收到的通过共享密钥或共享访问签名 (SAS) 授权的请求数。 使用日志来确定发送这些请求的客户端。
 
-可以通过共享密钥或 Azure AD 为 SAS 授权。 若要详细了解如何解释使用共享访问签名发出的请求，请参阅[了解禁止共享密钥会如何影响 SAS 令牌](#understand-how-disallowing-shared-key-affects-sas-tokens)。
+可以使用共享密钥或 Azure AD 向 SAS 授权。 有关解释使用共享访问签名发出的请求的详细信息，请参阅[了解禁止共享密钥对 SAS 令牌产生的影响](#understand-how-disallowing-shared-key-affects-sas-tokens)。
 
 ### <a name="monitor-how-many-requests-are-authorized-with-shared-key"></a>监视通过共享密钥授权的请求数
 
@@ -107,7 +107,7 @@ StorageBlobLogs
 
 ## <a name="remediate-authorization-via-shared-key"></a>修正通过共享密钥进行的授权
 
-在分析对存储帐户发出的请求的授权方式后，可以采取措施来阻止通过共享密钥进行访问。 但首先，你需要将使用共享密钥授权的所有应用程序更新为改用 Azure AD。 可以按照[检测客户端应用程序使用的授权类型](#detect-the-type-of-authorization-used-by-client-applications)所述的方法监视日志和指标，以便对转换进行跟踪。 有关将 Azure AD 用于 blob 和队列数据的详细信息，请参阅[使用 Azure Active Directory 授予对 blob 和队列的访问权限](storage-auth-aad.md)。
+在分析对存储帐户发出的请求的授权方式后，可以采取措施来阻止通过共享密钥进行访问。 但首先，你需要将使用共享密钥授权的所有应用程序更新为改用 Azure AD。 可以按照[检测客户端应用程序使用的授权类型](#detect-the-type-of-authorization-used-by-client-applications)所述的方法监视日志和指标，以便对转换进行跟踪。 若要详细了解如何使用 Azure AD 访问存储帐户中的数据，请参阅[授权访问 Azure 存储中的数据](authorize-data-access.md)。
 
 确信可以安全地拒绝通过共享密钥授权的请求时，可以将存储帐户的“AllowSharedKeyAccess”属性设置为“false” 。
 
@@ -247,6 +247,6 @@ Microsoft 建议在禁止通过共享密钥访问帐户之前，将任何 Azure 
 
 ## <a name="next-steps"></a>后续步骤
 
-- [授予访问 Azure 存储中的数据的权限](storage-auth.md)
-- [使用 Azure Active Directory 授予对 Blob 和队列的访问权限](storage-auth-aad.md)
+- [授权访问 Azure 存储中的数据](./authorize-data-access.md)
+- [使用 Azure Active Directory 授予对 Blob 和队列的访问权限](authorize-data-access.md)
 - [通过共享密钥进行授权](/rest/api/storageservices/authorize-with-shared-key)

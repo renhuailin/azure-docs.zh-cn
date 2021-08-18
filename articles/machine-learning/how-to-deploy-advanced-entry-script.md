@@ -11,12 +11,12 @@ ms.date: 09/17/2020
 ms.author: gopalv
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 0e585f9502025117bae406492131184b0d2ecc41
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 920dd7a885570df4cd7c5529bcc00f2345c3d81d
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889747"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114287128"
 ---
 # <a name="advanced-entry-script-authoring"></a>高级入口脚本创作
 
@@ -311,7 +311,7 @@ second_model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), second_model_na
 * [部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)
 * [创建客户端应用程序以使用 Web 服务](how-to-consume-web-service.md)
 * [更新 Web 服务](how-to-deploy-update-web-service.md)
-* [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
+* [如何使用自定义 Docker 映像部署模型](./how-to-deploy-custom-container.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)

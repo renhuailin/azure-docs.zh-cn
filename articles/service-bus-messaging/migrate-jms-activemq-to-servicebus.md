@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: spelluru
 ms.custom: devx-track-java
-ms.openlocfilehash: e00043f1d8dd874e67ed25bd424e869fb7ec8787
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 5fcc69a765d0e3690e8b9ff9ee80b2e021810100
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110539302"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736263"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>将现有 Java 消息服务 (JMS) 2.0 应用程序从 Apache ActiveMQ 迁移到 Azure 服务总线
 
@@ -46,7 +46,7 @@ Azure 服务总线和 Apache ActiveMQ 都是消息代理，充当 JMS 提供程�
 
 ### <a name="current-supported-and-unsupported-features"></a>当前支持的和不支持的功能
 
-[!INCLUDE [service-bus-jms-features-list](../../includes/service-bus-jms-feature-list.md)]
+[!INCLUDE [service-bus-jms-features-list](./includes/service-bus-jms-feature-list.md)]
 
 ### <a name="considerations"></a>注意事项
 
@@ -96,7 +96,7 @@ Azure Active Directory 支持的 Azure 基于角色的访问控制 (Azure RBAC) 
 
 对于每个服务总线命名空间，请将指标发布到 Azure Monitor。 你可以使用这些指标对分配给命名空间的资源发出警报，以及对其进行动态缩放。
 
-若要详细了解各种指标以及如何基于这些指标设置警报，请参阅 [Azure Monitor 中的服务总线指标](monitor-service-bus-reference.md)。 你还可以进一步了解[数据操作的客户端跟踪](service-bus-end-to-end-tracing.md)和[管理操作的操作/诊断日志记录](service-bus-diagnostic-logs.md)。
+若要详细了解各种指标以及如何基于这些指标设置警报，请参阅 [Azure Monitor 中的服务总线指标](monitor-service-bus-reference.md)。 你还可以进一步了解[数据操作的客户端跟踪](service-bus-end-to-end-tracing.md)和[管理操作的操作/诊断日志记录](monitor-service-bus-reference.md#resource-logs)。
 
 ### <a name="metrics---new-relic"></a>指标 - New Relic
 

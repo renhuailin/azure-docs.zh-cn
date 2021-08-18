@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d6922eaec624141c8acab2d8d8e133db5becd66d
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: dacf5814ee487c008e343347f7ab1319fd578597
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950050"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113728995"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -51,7 +51,7 @@ Azure 存储提供分层安全模型。 使用此模型可以根据所用网络�
 可通过创建例外，使用应用了网络规则的存储帐户中的非托管磁盘来备份和还原 VM。 此过程在本文的[管理例外](#manage-exceptions)部分记录。 防火墙例外不适用于托管磁盘，因为它们已由 Azure 托管。
 
 > [!IMPORTANT] 
-> 如果删除网络规则中包含的子网，请确保从网络规则中删除该子网。 否则，如果使用相同名称创建子网，将无法在任何存储帐户的网络规则中使用该子网。 
+> 如果删除已包含在网络规则中的子网，请确保从网络规则中删除该子网。 否则，如果使用相同的名称创建子网，将无法在任何存储帐户的网络规则中使用该子网。 
 
 ## <a name="change-the-default-network-access-rule"></a>更改默认网络访问规则
 
@@ -378,9 +378,9 @@ Azure 存储提供分层安全模型。 使用此模型可以根据所用网络�
 
 ## <a name="grant-access-from-azure-resource-instances-preview"></a>授予从 Azure 资源实例进行访问的权限（预览版）
 
-在某些情况下，应用程序可能依赖于无法通过虚拟网络或 IP 地址规则隔离的 Azure 资源。 但是，你仍希望存储帐户仅访问你的应用程序的 Azure 资源并且访问方式是安全的。 可以通过创建资源实例规则来配置存储帐户，允许其访问某些 Azure 服务的特定资源实例。 
+在某些情况下，应用程序可能依赖于无法通过虚拟网络或 IP 地址规则隔离的 Azure 资源。 但是，你仍希望存储帐户仅访问你的应用程序的 Azure 资源并且访问方式是安全的。 可以通过创建资源实例规则来配置存储帐户，允许其访问某些 Azure 服务的特定资源实例。
 
-资源实例可以对存储帐户数据执行的操作的类型取决于资源实例的 [Azure 角色分配](storage-auth-aad.md#assign-azure-roles-for-access-rights)。 资源实例必须来自存储帐户所在的租户，但可以属于租户中的任何订阅。
+资源实例可以对存储帐户数据执行的操作的类型取决于资源实例的 Azure 角色分配。 资源实例必须来自存储帐户所在的租户，但可以属于租户中的任何订阅。
 
 > [!NOTE]
 > 该功能现为公共预览版，它在所有公共云区域中都可用。
@@ -586,9 +586,9 @@ az storage account network-rule list \
 
 ### <a name="trusted-access-based-on-system-assigned-managed-identity"></a>基于系统分配的托管标识的受信任的访问
 
-下表列出了可访问你的存储帐户数据的服务（如果为这些服务的资源实例授予了相应的权限）。 
+下表列出了可访问你的存储帐户数据的服务（如果为这些服务的资源实例授予了相应的权限）。
 
-如果帐户未启用分层命名空间功能，可以通过将 [Azure 角色](storage-auth-aad.md#assign-azure-roles-for-access-rights)显式分配给每个资源实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)来授予权限。 在这种情况下，实例的访问范围对应于分配给托管标识的 Azure 角色。 
+如果帐户未启用分层命名空间功能，可以通过将 Azure 角色显式分配给每个资源实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)来授予权限。 在这种情况下，实例的访问范围对应于分配给托管标识的 Azure 角色。
 
 对于已启用分层命名空间功能的帐户，可以使用相同的技术。 但是，如果将系统分配的托管标识添加到存储帐户中包含的任何目录或 blob 的访问控制列表 (ACL)，则不必分配 Azure 角色。 在这种情况下，实例的访问范围将对应已为系统分配的托管标识授予访问权限的目录或文件。 还可以将 Azure 角色和 ACL 组合在一起。 要详细了解如何将它们组合在一起以授予访问权限，请参阅 [Azure Data Lake Storage Gen2 中的访问控制模型](../blobs/data-lake-storage-access-control-model.md)。
 

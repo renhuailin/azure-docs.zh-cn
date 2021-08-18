@@ -5,13 +5,13 @@ author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/03/2020
-ms.openlocfilehash: 102b03ad4fe247ae0abc4e2312d7027c6170333f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/07/2021
+ms.openlocfilehash: b236c433e55bb2b702497b42a1b4fc73ce520f00
+ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98019459"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113491130"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure 流分析中的数据保护 
 
@@ -94,9 +94,6 @@ Azure 流分析存储上述客户数据和其他元数据。 默认情况下，A
 
 ## <a name="enables-data-residency"></a>启用数据驻留 
 通过提供相应的存储帐户，可以使用此功能强制执行任何数据驻留要求。
-
-## <a name="known-issues"></a>已知问题
-存在一个已知的问题，即使用客户管理密钥的作业在使用托管标识对任何输入或输出进行身份验证时会失败。 
 
 ## <a name="next-steps"></a>后续步骤
 

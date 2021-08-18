@@ -4,12 +4,12 @@ description: 了解如何删除对委派给 Azure Lighthouse 服务提供商的�
 ms.date: 05/11/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e9456d7b910c71305f321d0a4874aab0f4f368cd
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: bae8407e09ab07a13c12abe3ee6371c04155cced
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110700134"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389835"
 ---
 # <a name="remove-access-to-a-delegation"></a>删除对委派的访问权限
 
@@ -22,7 +22,7 @@ ms.locfileid: "110700134"
 
 ## <a name="customers"></a>客户
 
-客户租户中拥有具有 `Microsoft.Authorization/roleAssignments/write` 权限（如[所有者](../../role-based-access-control/built-in-roles.md#owner)）的角色的用户可以删除服务提供商对该订阅（或对该订阅中的资源组）的访问权限。 为此，用户可以访问 Azure 门户的[“服务提供商”页面](view-manage-service-providers.md#add-or-remove-service-provider-offers)，在“服务提供商产品/服务”屏幕上找到产品/服务，然后选择该产品/服务所在行的回收站图标。
+客户租户中拥有具有 `Microsoft.Authorization/roleAssignments/write` 权限（如[所有者](../../role-based-access-control/built-in-roles.md#owner)）的角色的用户可以删除服务提供商对该订阅（或对该订阅中的资源组）的访问权限。 为此，用户可以访问 Azure 门户的[“服务提供商”页面](view-manage-service-providers.md#remove-service-provider-offers)，在“服务提供商产品/服务”屏幕上找到产品/服务，然后选择该产品/服务所在行的回收站图标。
 
 确认删除后，服务提供商租户中的任何用户将无法访问之前委派的资源。
 

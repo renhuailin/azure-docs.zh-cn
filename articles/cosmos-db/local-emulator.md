@@ -7,12 +7,12 @@ author: StefArroyo
 ms.author: esarroyo
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperf-fy21q1
-ms.openlocfilehash: 777eeb615596d353770b7abcbe10191707e6fbfe
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: b2c6c4dd8d0f7c5b30401f7ef586b7d1be8267ce
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072732"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749936"
 ---
 # <a name="install-and-use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>安装并使用 Azure Cosmos DB 模拟器进行本地开发和测试
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -232,7 +232,7 @@ CosmosClient client = new CosmosClient(
 
 ### <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB 的用于 MongoDB 的 API
 
-在桌面上运行 Azure Cosmos DB 模拟器后，可以使用 [Azure Cosmos DB API for MongoDB](mongodb-introduction.md) 与该模拟器进行交互。 在[命令提示符](emulator-command-line-parameters.md)下，以管理员身份使用“/EnableMongoDbEndpoint”启动模拟器。 然后，使用以下连接字符串来连接到 MongoDB API 帐户：
+在桌面上运行 Azure Cosmos DB 模拟器后，可以使用 [Azure Cosmos DB API for MongoDB](mongodb/mongodb-introduction.md) 与该模拟器进行交互。 在[命令提示符](emulator-command-line-parameters.md)下，以管理员身份使用“/EnableMongoDbEndpoint”启动模拟器。 然后，使用以下连接字符串来连接到 MongoDB API 帐户：
 
 ```bash
 mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true
@@ -240,7 +240,7 @@ mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mG
 
 ### <a name="table-api"></a>表 API
 
-在桌面上运行 Azure Cosmos DB 模拟器后，可使用 [Azure Cosmos DB 表 API SDK](./tutorial-develop-table-dotnet.md) 与该模拟器进行交互。 在[命令提示符](emulator-command-line-parameters.md)处，以管理员身份使用“/EnableTableEndpoint”启动模拟器。 接下来，运行下列代码以连接到表 API 帐户：
+在桌面上运行 Azure Cosmos DB 模拟器后，可使用 [Azure Cosmos DB 表 API SDK](./table/tutorial-develop-table-dotnet.md) 与该模拟器进行交互。 在[命令提示符](emulator-command-line-parameters.md)处，以管理员身份使用“/EnableTableEndpoint”启动模拟器。 接下来，运行下列代码以连接到表 API 帐户：
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;

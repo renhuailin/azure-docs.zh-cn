@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 981050280890f2c060fb82995296e8b450beb5bc
-ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+ms.openlocfilehash: 6f8d58388715b6bd43676ca7e98cf47901f6409a
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110586554"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285042"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Azure 虚拟机部署
 
@@ -244,16 +244,16 @@ ms.locfileid: "110586554"
 [resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/network-overview.md
 [sap-pam]:https://support.sap.com/pam (SAP 产品可用性对照表)
-[sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
-[sap-templates-2-tier-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image-md%2Fazuredeploy.json
+[sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
+[sap-templates-2-tier-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-2-tier-marketplace-image-md%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
-[sap-templates-2-tier-os-disk-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk-md%2Fazuredeploy.json
+[sap-templates-2-tier-os-disk-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-2-tier-user-disk-md%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
-[sap-templates-2-tier-user-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image-md%2Fazuredeploy.json
+[sap-templates-2-tier-user-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-2-tier-user-image-md%2Fazuredeploy.json
 [sap-templates-3-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image%2Fazuredeploy.json
-[sap-templates-3-tier-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-md%2Fazuredeploy.json
+[sap-templates-3-tier-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-marketplace-image-md%2Fazuredeploy.json
 [sap-templates-3-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-user-image%2Fazuredeploy.json
-[sap-templates-3-tier-user-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-user-image-md%2Fazuredeploy.json
+[sap-templates-3-tier-user-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapplication-workloads%2Fsap%2Fsap-3-tier-user-image-md%2Fazuredeploy.json
 [storage-azure-cli]:../../../storage/common/storage-azure-cli.md
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
@@ -264,7 +264,7 @@ ms.locfileid: "110586554"
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
-[templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
+[templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-from-user-image
 [virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
 [virtual-machines-azure-resource-manager-architecture]:../../../resource-manager-deployment-model.md
 [virtual-machines-Az-versus-azuresm]:virtual-machines-linux-compare-deployment-models.md
@@ -440,7 +440,7 @@ ms.locfileid: "110586554"
    * 位置：要将新虚拟机部署到的地方。 如果想要将虚拟机连接到本地网络，请确保选择将 Azure 连接到本地网络的虚拟网络的位置。 有关详细信息，请参阅 [SAP NetWeaver 的 Azure 虚拟机规划和实施指南][planning-guide]中的 [Microsoft Azure 网络][planning-guide-microsoft-azure-networking]。
 1. **Size**：
 
-     有关支持的 VM 类型的列表，请查看 SAP 说明 [1928533]。 如果想要使用 Azure 高级存储，请确保选择正确的 VM 类型。 并非所有 VM 类型都支持高级存储。 有关详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]中的[存储：Microsoft Azure 存储和数据磁盘][planning-guide-storage-microsoft-azure-storage-and-data-disks]与[适用于 SAP 工作负载的 Azure 存储](./planning-guide-storage.md)。
+   有关支持的 VM 类型的列表，请查看 SAP 说明 [1928533]。 如果想要使用 Azure 高级存储，请确保选择正确的 VM 类型。 并非所有 VM 类型都支持高级存储。 有关详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]中的[存储：Microsoft Azure 存储和数据磁盘][planning-guide-storage-microsoft-azure-storage-and-data-disks]与[适用于 SAP 工作负载的 Azure 存储](./planning-guide-storage.md)。
 
 1. 设置：
    * **存储**
@@ -580,7 +580,7 @@ ms.locfileid: "110586554"
    * 位置：要将新虚拟机部署到的地方。 如果想要将虚拟机连接到本地网络，请确保选择将 Azure 连接到本地网络的虚拟网络的位置。 有关详细信息，请参阅 [SAP NetWeaver 的 Azure 虚拟机规划和实施指南][planning-guide]中的 [Microsoft Azure 网络][planning-guide-microsoft-azure-networking]。
 1. **Size**：
 
-     有关支持的 VM 类型的列表，请查看 SAP 说明 [1928533]。 如果想要使用 Azure 高级存储，请确保选择正确的 VM 类型。 并非所有 VM 类型都支持高级存储。 有关详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]中的[存储：Microsoft Azure 存储和数据磁盘][planning-guide-storage-microsoft-azure-storage-and-data-disks]与[适用于 SAP 工作负载的 Azure 存储](./planning-guide-storage.md)。
+   有关支持的 VM 类型的列表，请查看 SAP 说明 [1928533]。 如果想要使用 Azure 高级存储，请确保选择正确的 VM 类型。 并非所有 VM 类型都支持高级存储。 有关详细信息，请参阅[适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]中的[存储：Microsoft Azure 存储和数据磁盘][planning-guide-storage-microsoft-azure-storage-and-data-disks]与[适用于 SAP 工作负载的 Azure 存储](./planning-guide-storage.md)。
 
 1. 设置：
    * **存储**

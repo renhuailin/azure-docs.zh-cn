@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: e58c1177fb3c4d241a3efe1759b3900abbd04ca1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa5f2e51549baeaea6373a2d24e54f780d508bce
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92778381"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113596256"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>将 Azure CDN 配置文件从标准 Verizon 迁移到高级 Verizon
 
@@ -36,7 +36,7 @@ ms.locfileid: "92778381"
 
 ## <a name="profile-comparison"></a>配置文件比较
 Verizon 的 Azure CDN 高级版配置文件与 Verizon 的 Azure CDN 标准版配置文件具有以下主要差异：
-- 对于某些 Azure CDN 功能（如[压缩](cdn-improve-performance.md)、[缓存规则](cdn-caching-rules.md)和[地区筛选](cdn-restrict-access-by-country.md)），则不能使用 Azure CDN 接口，而必须通过“管理”按钮使用 Verizon 门户。
+- 对于某些 Azure CDN 功能（如[压缩](cdn-improve-performance.md)、[缓存规则](cdn-caching-rules.md)和[地区筛选](cdn-restrict-access-by-country-region.md)），则不能使用 Azure CDN 接口，而必须通过“管理”按钮使用 Verizon 门户。
 - API：与标准 Verizon 不同，你无法使用 API 来控制可从高级 Verizon 门户访问的功能。 但是，你可以使用 API 来控制其他常见功能，如创建/删除终结点、清除/加载缓存的资产以及启用/禁用自定义域。
 - 定价：高级 Verizon 的数据传输定价结构与标准 Verizon 不同。 有关详细信息，请参阅[内容分发网络定价](https://azure.microsoft.com/pricing/details/cdn/)。
 

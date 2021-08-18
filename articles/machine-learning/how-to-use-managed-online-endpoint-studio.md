@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.custom: how-to, managed online endpoints
+ms.custom: how-to, managed online endpoints, devplatv2
 ms.author: ssambare
 author: shivanissambare
 ms.reviewer: peterlu
 ms.date: 05/25/2021
-ms.openlocfilehash: 96ec383d5110b3acf4ca3b83bd40526443df887a
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 4f2b69a4a4009784e7943d57b0ec5653528a418e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382500"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448162"
 ---
 # <a name="create-and-use-managed-online-endpoints-preview-in-the-studio"></a>在工作室中创建和使用托管联机终结点（预览版）
 
@@ -56,9 +56,9 @@ ms.locfileid: "110382500"
 1. 通过选中模型名称旁边的圆圈来选择该模型。
 1. 选择“部署” > “部署到终结点(预览版)” 。
 
-:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/models-create-managed-online-endpoint.png" alt-text="在“模型”选项卡中创建托管联机终结点":::
-
 按照设置向导中的步骤配置托管联机终结点。
+
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/models-page-deployment-latest.png" alt-text="在“模型”选项卡中创建托管联机终结点":::
 
 ## <a name="view-managed-online-endpoints-preview"></a>查看托管联机终结点（预览版）
 
@@ -167,4 +167,8 @@ ms.locfileid: "110382500"
 
 - [什么是终结点？](concept-endpoints.md)
 - [如何使用 Azure CLI 部署托管联机终结点](how-to-deploy-managed-online-endpoints.md)
-- [如何监视托管联机终结点](how-to-monitor-online-endpoints.md)。
+- [通过 REST 部署模型（预览版）](how-to-deploy-with-rest.md)
+- [如何监视托管联机终结点](how-to-monitor-online-endpoints.md)
+- [排查托管联机终结点的部署和评分问题（预览版）](how-to-troubleshoot-managed-online-endpoints.md)
+- [查看 Azure 机器学习托管联机终结点（预览版）的成本](how-to-view-online-endpoints-costs.md)
+- [管理和增大 Azure 机器学习资源的配额](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)

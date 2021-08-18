@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/08/2021
 ms.author: pafarley
-ms.openlocfilehash: bd071fc930420a48a764eff3818580885312fde6
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: ecccbb4e2741cc7f413e9b2076bd3199b00dd9a8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746062"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752084"
 ---
 # <a name="how-to-deploy-a-spatial-analysis-web-application"></a>如何：部署空间分析 Web 应用程序
 
@@ -42,8 +42,6 @@ ms.locfileid: "111746062"
 * 已配置的[主计算机](spatial-analysis-container.md)。
 
 ## <a name="deploy-the-spatial-analysis-container"></a>部署空间分析容器
-
-填写[请求应用程序](https://aka.ms/csgate)以获取运行容器的访问权限。 
 
 按照[主计算机设置](./spatial-analysis-container.md)来配置主计算机并将 IoT Edge 设备连接到 Azure IoT 中心。 
 
@@ -80,7 +78,7 @@ IoT Edge 模块的大部分环境变量已在上述链接的示例 DeploymentMan
 "EULA": { 
     "value": "accept"
 },
-"ENDPOINT":{ 
+"BILLING":{ 
     "value": "<Use a key from your Computer Vision resource>"
 },
 "APIKEY":{

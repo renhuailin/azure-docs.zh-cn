@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 02/05/2021
-ms.openlocfilehash: bff14ddd6a361c93c416aa746640b774afc43961
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: d02259419a6349224b1d047ce01b2e1bf64c1b37
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897228"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112454547"
 ---
 # <a name="access-a-compute-instance-terminal-in-your-workspace"></a>访问工作区中的计算实例终端
 
@@ -27,7 +27,7 @@ ms.locfileid: "107897228"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
 ## <a name="access-a-terminal"></a>访问终端

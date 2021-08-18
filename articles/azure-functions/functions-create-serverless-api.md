@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 7375a46245fbe523ddf0512bb5a55371adff64e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6e78329c4f45baffd779202ebfa37da3c6cf7c9
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98683736"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113105428"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>在 Azure Functions 中自定义 HTTP 终结点
 
@@ -89,7 +89,7 @@ ms.locfileid: "98683736"
 重复[创建 Function App](./functions-get-started.md) 中的步骤，创建要在其中创建代理的新 Function App。 此新应用的 URL 将充当 API 的前端，之前编辑的函数应用将充当后端。
 
 1. 在门户中导航到新的前端 Function App。
-1. 选择“平台功能”，并选择“应用程序设置” 。
+1. 选择“配置”，然后选择“应用程序设置” 。
 1. 向下滚动到存储键/值对的“应用程序设置”，然后使用键 `HELLO_HOST` 创建新设置。 将其值设置为后端 Function App 的主机，例如 `<YourBackendApp>.azurewebsites.net`。 此值是前面在测试 HTTP 函数时复制的 URL 的一部分。 稍后会在配置中引用此设置。
 
     > [!NOTE] 

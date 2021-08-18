@@ -1,24 +1,24 @@
 ---
 title: Azure Spring Cloud 中的蓝绿部署策略
 description: 本主题介绍 Azure Spring Cloud 中的蓝绿部署的两种方法。
-author: yevster
+author: karlerickson
 ms.author: yebronsh
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/12/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 3ed83d0bcc1998b63738eb586acaf83b3a281ee6
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: bce33a40933e5c40b5eab0948880d44f4b23edcd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109838782"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728554"
 ---
 # <a name="blue-green-deployment-strategies-in-azure-spring-cloud"></a>Azure Spring Cloud 中的蓝绿部署策略
 
 本文介绍 Azure Spring Cloud 中的蓝绿部署支持。
 
-Azure Spring Cloud (标准层和更高层) 允许每个应用有两个部署，其中只有一个用于接收生产流量。 此模式通常称为蓝绿部署。 Azure Spring Cloud 对蓝绿部署的支持，以及 [持续交付 (CD)](/azure/devops/learn/what-is-continuous-delivery) 管道和严格的自动测试，实现了敏捷且高度确信的应用程序部署。
+Azure Spring Cloud (标准层和更高层) 允许每个应用有两个部署，其中只有一个用于接收生产流量。 此模式通常称为蓝绿部署。 Azure Spring Cloud 对蓝绿部署的支持，以及 [持续交付 (CD)](/devops/deliver/what-is-continuous-delivery) 管道和严格的自动测试，实现了敏捷且高度确信的应用程序部署。
 
 ## <a name="alternating-deployments"></a>交替部署
 

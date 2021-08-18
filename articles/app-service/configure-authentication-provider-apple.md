@@ -4,12 +4,12 @@ description: 了解如何将 Apple 登录配置为应用服务或 Azure Function
 ms.topic: article
 ms.date: 11/19/2020
 ms.reviewer: mikarmar
-ms.openlocfilehash: b77e0613f502d003b5e4651e34be4cadbd4209a9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01216b7527fd6479f43c3bf0b9d4abeb60d06435
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96603126"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093042"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-sign-in-using-a-sign-in-with-apple-provider-preview"></a>将应用服务或 Azure Functions 应用配置为使用 Apple 登录提供程序（预览版）进行登录
 
@@ -137,7 +137,7 @@ public static string GetAppleClientSecret(string teamId, string clientId, string
 ## <a name="add-provider-information-to-your-application"></a><a name="configure"> </a>向应用程序添加提供者信息
 
 > [!NOTE]
-> 所需配置采用新的 API 格式，目前只有[基于文件的配置（预览版）](.\app-service-authentication-how-to.md#config-file)支持此格式。 你需要使用这样的文件执行以下步骤。
+> 所需配置采用新的 API 格式，目前只有[基于文件的配置（预览版）](configure-authentication-file-based.md)支持此格式。 你需要使用这样的文件执行以下步骤。
 
 本部分将指导你更新配置，使之包括新的 IDP。 后面提供了配置示例。
 
@@ -147,7 +147,7 @@ public static string GetAppleClientSecret(string teamId, string clientId, string
     ```json
     "apple" : {
        "registration" : {
-            "clientId": "<client id>",
+            "clientId": "<client ID>",
             "clientSecretSettingName": "APP_SETTING_CONTAINING_APPLE_CLIENT_SECRET" 
         },
        "login": {

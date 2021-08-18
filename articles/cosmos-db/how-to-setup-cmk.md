@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/23/2021
 ms.author: thweiss
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8738f34ea9d038bbc5a0bc3d9f13be11db2b9e00
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 4f9f9c9688340a153efab189cc24ace13fc4da6e
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110681703"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113589202"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>通过 Azure Key Vault 为 Azure Cosmos 帐户配置客户管理的密钥
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -301,7 +301,7 @@ az cosmosdb show \
     $account | Set-AzResource -Force
     ```
 
-可以在 24 小时后禁用以前的密钥或密钥版本，也可以在 [Azure Key Vault 审核日志](../key-vault/general/logging.md)不再显示该密钥或密钥版本 Azure Cosmos DB 中的活动之后禁用。
+可以在 [Azure Key Vault 审核日志](../key-vault/general/logging.md)不再显示该密钥或密钥版本 Azure Cosmos DB 中的活动之后禁用以前的密钥或密钥版本。 在密钥轮换 24 小时后，不应在以前的密钥或密钥版本上进行更多活动。
     
 ## <a name="error-handling"></a>错误处理。
 
@@ -341,7 +341,7 @@ Azure Cosmos 帐户中存储的所有数据都将通过客户托管密钥加密�
 
 ### <a name="is-it-possible-to-use-customer-managed-keys-in-conjunction-with-the-azure-cosmos-db-analytical-store"></a>能否将客户管理的密钥与 Azure Cosmos DB [分析存储](analytical-store-introduction.md)结合使用？
 
-可以，但在启用分析存储之前，必须在 Azure Key Vault 访问策略中[使用 Azure Cosmos DB 帐户的托管标识](#using-managed-identity)。
+可以，Azure Synapse Link 仅支持使用 Azure Cosmos DB 帐户的托管标识配置客户管理的密钥。 在帐户上[启用 Azure Synapse Link](configure-synapse-link.md#enable-synapse-link) 之前，必须在 Azure Key Vault 访问策略中[使用 Azure Cosmos DB 帐户的托管标识](#using-managed-identity)。
 
 ### <a name="is-there-a-plan-to-support-finer-granularity-than-account-level-keys"></a>是否有计划支持比帐户级别密钥更精细的粒度？
 

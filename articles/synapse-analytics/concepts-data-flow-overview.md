@@ -9,12 +9,12 @@ ms.subservice: pipeline
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 12/16/2020
-ms.openlocfilehash: 4769cc8abe121625f3bf77785cd681c0f649d166
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 525fed571576f6d5fc49d68abbbe26e46cf3291e
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567683"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862256"
 ---
 # <a name="data-flows-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的数据流
 
@@ -30,7 +30,7 @@ ms.locfileid: "107567683"
 
 ![新建数据流](media/data-flow/new-data-flow.png)
 
-此操作将转到数据流画布，你可在其中创建转换逻辑。 选择“添加源”，开始配置源转换。 有关详细信息，请参阅[源转换](../data-factory/data-flow-source.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+此操作将转到数据流画布，你可在其中创建转换逻辑。 选择“添加源”，开始配置源转换。 有关详细信息，请参阅[源转换](../data-factory/data-flow-source.md?context=/azure/synapse-analytics/context/context)。
 
 ## <a name="authoring-data-flows"></a>创作数据流
 
@@ -40,13 +40,13 @@ ms.locfileid: "107567683"
 
 ### <a name="graph"></a>图形
 
-图形显示转换流。 它显示源数据流入一个或多个接收器时的沿袭。 若要添加新源，请选择“添加源”。 若要添加新的转换，请选择现有转换右下方的加号。 详细了解如何[管理数据流图形](../data-factory/concepts-data-flow-manage-graph.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+图形显示转换流。 它显示源数据流入一个或多个接收器时的沿袭。 若要添加新源，请选择“添加源”。 若要添加新的转换，请选择现有转换右下方的加号。 详细了解如何[管理数据流图形](../data-factory/concepts-data-flow-manage-graph.md?context=/azure/synapse-analytics/context/context)。
 
 ![显示画布的图形部分，其中包含“搜索”文本框。](media/data-flow/canvas-2.png)
 
 ### <a name="configuration-panel"></a>配置面板
 
-配置面板显示特定于当前所选转换的设置。 如果未选择任何转换，则会显示数据流。 在整个数据流配置中，可以通过“参数”选项卡来添加参数。有关详细信息，请参阅[数据流参数](../data-factory/parameters-data-flow.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+配置面板显示特定于当前所选转换的设置。 如果未选择任何转换，则会显示数据流。 在整个数据流配置中，可以通过“参数”选项卡来添加参数。有关详细信息，请参阅[数据流参数](../data-factory/parameters-data-flow.md?context=/azure/synapse-analytics/context/context)。
 
 每个转换至少包含四个配置选项卡。
 
@@ -58,7 +58,7 @@ ms.locfileid: "107567683"
 
 #### <a name="optimize"></a>优化
 
-“优化”选项卡包含用于配置分区方案的设置。 若要详细了解如何优化数据流，请参阅[映射数据流性能指南](../data-factory/concepts-data-flow-performance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+“优化”选项卡包含用于配置分区方案的设置。 若要详细了解如何优化数据流，请参阅[映射数据流性能指南](../data-factory/concepts-data-flow-performance.md?context=/azure/synapse-analytics/context/context)。
 
 ![屏幕截图显示了“优化”选项卡](media/data-flow/optimize.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "107567683"
 
 #### <a name="data-preview"></a>数据预览
 
-如果开启了调试模式，则“数据预览”选项卡将在每次转换时提供数据的交互式快照。 有关详细信息，请参阅[调试模式下的数据预览](../data-factory/concepts-data-flow-debug-mode.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#data-preview)。
+如果开启了调试模式，则“数据预览”选项卡将在每次转换时提供数据的交互式快照。 有关详细信息，请参阅[调试模式下的数据预览](../data-factory/concepts-data-flow-debug-mode.md?context=/azure/synapse-analytics/context/context#data-preview)。
 
 ### <a name="top-bar"></a>上栏
 
@@ -80,23 +80,23 @@ ms.locfileid: "107567683"
 
 ## <a name="available-transformations"></a>可用转换
 
-查看[映射数据流转换概述](../data-factory/data-flow-transformation-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)以获取可用转换的列表。
+查看[映射数据流转换概述](../data-factory/data-flow-transformation-overview.md?context=/azure/synapse-analytics/context/context)以获取可用转换的列表。
 
 ## <a name="data-flow-activity"></a>数据流活动
 
-数据流是使用[数据流活动](../data-factory/control-flow-execute-data-flow-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)在 Azure Synapse Analytics 管道内进行操作化的。 用户需要做的就是指定要使用的集成运行时并传入参数值。 有关详细信息，请参阅 [Azure 集成运行时](../data-factory/concepts-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#azure-integration-runtime)。
+数据流是使用[数据流活动](../data-factory/control-flow-execute-data-flow-activity.md?context=/azure/synapse-analytics/context/context)在 Azure Synapse Analytics 管道内进行操作化的。 用户需要做的就是指定要使用的集成运行时并传入参数值。 有关详细信息，请参阅 [Azure 集成运行时](../data-factory/concepts-integration-runtime.md?context=/azure/synapse-analytics/context/context#azure-integration-runtime)。
 
 ## <a name="debug-mode"></a>调试模式
 
-使用调试模式可以在生成和调试数据流时以交互方式查看每个转换步骤的结果。 生成数据流逻辑和使用数据流活动运行管道调试运行时，都可以使用调试会话。 若要了解详细信息，请参阅[调试模式文档](../data-factory/concepts-data-flow-debug-mode.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+使用调试模式可以在生成和调试数据流时以交互方式查看每个转换步骤的结果。 生成数据流逻辑和使用数据流活动运行管道调试运行时，都可以使用调试会话。 若要了解详细信息，请参阅[调试模式文档](../data-factory/concepts-data-flow-debug-mode.md?context=/azure/synapse-analytics/context/context)。
 
 ## <a name="monitoring-data-flows"></a>监视数据流
 
-数据流与现有的 Azure Synapse Analytics 监视功能集成。 若要了解如何掌握数据流监视输出，请参阅[监视映射数据流](../data-factory/concepts-data-flow-monitoring.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+数据流与现有的 Azure Synapse Analytics 监视功能集成。 若要了解如何掌握数据流监视输出，请参阅[监视映射数据流](../data-factory/concepts-data-flow-monitoring.md?context=/azure/synapse-analytics/context/context)。
 
-Azure Synapse Analytics 团队已创建[性能优化指南](../data-factory/concepts-data-flow-performance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)，可帮助你在生成业务逻辑后优化数据流的执行时间。
+Azure Synapse Analytics 团队已创建[性能优化指南](../data-factory/concepts-data-flow-performance.md?context=/azure/synapse-analytics/context/context)，可帮助你在生成业务逻辑后优化数据流的执行时间。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何创建[源转换](../data-factory/data-flow-source.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
-* 了解如何在[调试模式](../data-factory/concepts-data-flow-debug-mode.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)下生成数据流。
+* 了解如何创建[源转换](../data-factory/data-flow-source.md?context=/azure/synapse-analytics/context/context)。
+* 了解如何在[调试模式](../data-factory/concepts-data-flow-debug-mode.md?context=/azure/synapse-analytics/context/context)下生成数据流。

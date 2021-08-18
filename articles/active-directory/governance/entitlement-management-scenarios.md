@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28c16e4d73fc2379806e1a2bce2fa5dbb3247fed
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a1b944480ce7c09676b65216da4c74f4ffdacdcf
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531970"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112292332"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD 权利管理中的常见方案
 
@@ -154,7 +154,7 @@ ms.locfileid: "107531970"
 
 ## <a name="programmatic-administration"></a>通过编程方式进行管理
 
-你也可以使用 Microsoft Graph 来管理访问包、目录、策略、请求和分配。  相应角色中的用户通过具有委托的 `EntitlementManagement.ReadWrite.All` 权限的应用程序可以调用[权利管理 API](/graph/tutorial-access-package-api)。
+你也可以使用 Microsoft Graph 来管理访问包、目录、策略、请求和分配。  相应角色中的用户通过具有委托的 `EntitlementManagement.Read.All` 或 `EntitlementManagement.ReadWrite.All` 权限的应用程序可以调用[权利管理 API](/graph/tutorial-access-package-api)。  具有这些应用程序权限的应用程序也可使用其中许多 API 函数，只是不能管理目录和访问包中的资源。
 
 ## <a name="next-steps"></a>后续步骤
 

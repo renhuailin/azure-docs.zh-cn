@@ -3,15 +3,13 @@ title: Azure HDInsight 已停用版本
 description: 了解 Azure HDInsight 中的已停用版本。
 ms.service: hdinsight
 ms.topic: conceptual
-author: deshriva
-ms.author: deshriva
 ms.date: 02/08/2021
-ms.openlocfilehash: c5c5a6699759e3abda05b7a0d85f4914a15f00e6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4f6099d7d869803eb91016d6de1583abc83f40ac
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103490239"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748463"
 ---
 # <a name="retired-hdinsight-versions"></a>已停用的 HDInsight 版本
 
@@ -21,7 +19,7 @@ ms.locfileid: "103490239"
 
 下表列出了 HDInsight 的已停用版本。
 
-| HDInsight 版本 | HDP 版本 | VM OS | 发行日期 | 支持到期日期 | 停用日期 | 高可用性 |  在 Azure 门户中的可用性 |
+| HDInsight 版本 | HDP 版本 | VM OS | 发布日期 | 支持到期日期 | 停用日期 | 高可用性 |  在 Azure 门户中的可用性 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |2016 年 9 月 30 日 |2017 年 9 月 5 日 |2018 年 6 月 28 日 |是 |否 |
 | HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |2016 年 3 月 29 日 |2016 年 12 月 29 日 |2018 年 1 月 9 日 |是 |否 |

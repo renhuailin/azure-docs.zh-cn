@@ -4,15 +4,16 @@ description: 使用这些 API 以编程方式访问合作伙伴中心内的分�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: ed6d658155267ab21fd4cdd28dd50fcbb258ee90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 07dae73901fca44200d6b4fb8c8149b69728d065
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583479"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748306"
 ---
 # <a name="apis-for-accessing-commercial-marketplace-analytics-data"></a>用于访问商业市场分析数据的 API
 

@@ -3,12 +3,12 @@ title: 使用顾问提高 Azure 应用的性能
 description: 使用 Azure 顾问中的性能建议可提高业务关键型应用程序的速度和响应能力。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 69fd86226375073c71903af5704ef3a635eeaffb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2813699e082afbc263775821839ed6946e26c1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579925"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724791"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
@@ -173,7 +173,7 @@ Azure 顾问会分析过去 7 天内的系统日志，并识别群集是否遇�
 
 ## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>升级到沉浸式阅读器 SDK 的最新版本
 我们已使用沉浸式阅读器 SDK 的已过时版本识别了此订阅下的资源。 使用沉浸式阅读器 SDK 的最新版本，你可以获取更新的安全性、性能及扩展的一组功能，可用于自定义和增强集成体验。
-详细了解[沉浸式阅读器 SDK](../cognitive-services/immersive-reader/index.yml)。
+详细了解[沉浸式阅读器 SDK](../applied-ai-services/immersive-reader/index.yml)。
 
 ## <a name="improve-vm-performance-by-changing-the-maximum-session-limit"></a>通过更改最大会话限制，提高 VM 性能
 

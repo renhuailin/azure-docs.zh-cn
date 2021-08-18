@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: how-to
 ms.custom: deploy
-ms.openlocfilehash: 6e9a53a36403e24fa9573c6e65ae062a23bd9cb6
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: fa5c362db03af7004751e39708553edf79f5827a
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889567"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446520"
 ---
 # <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>在本地计算机上部署通过 Azure 机器学习训练的模型 
 
@@ -101,7 +101,7 @@ def run(raw_data):
 
 ```python
 from azureml.core.webservice import Webservice
-from azure.core.model import InferenceConfig
+from azureml.core.model import InferenceConfig
 from azureml.core.environment import Environment
 from azureml.core import Workspace
 from azureml.core.model import Model

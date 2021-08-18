@@ -12,16 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: a00b4b1e81c0d644cf1475aa46dda3848fda1365
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd599fbfc712d85ec5fac0a3aa6f9f1cd320d91c
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98632895"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253415"
 ---
 # <a name="connect-your-squadra-technologies-secrmm-data-to-azure-sentinel"></a>将 Squadra Technologies secRMM 数据连接到 Azure Sentinel 
 
 Squadra Technologies secRMM 连接器可让你轻松地将 Squadra Technologies secRMM 安全解决方案日志连接到 Azure Sentinel。 它允许你查看仪表板、创建自定义警报和改进调查。 此连接器可让你深入了解 USB 可移动存储事件。 Squadra Technologies secRMM 和 Azure Sentinel 之间的集成利用 REST API。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 > [!NOTE]
 > 数据将存储在运行 Azure Sentinel 的工作区的地理位置。
@@ -47,6 +49,6 @@ Squadra Technologies secRMM 可以直接将日志集成到 Azure Sentinel 并将
 
 本文档介绍了如何将 Squadra Technologies secRMM 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。

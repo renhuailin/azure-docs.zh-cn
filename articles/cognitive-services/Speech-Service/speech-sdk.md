@@ -3,19 +3,19 @@ title: 关于语音 SDK - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 语音软件开发工具包 (SDK) 公开了许多语音服务功能，这使得开发支持语音的应用程序更为容易。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.author: trbye
-ms.openlocfilehash: cc5ed68fa7a26a347f0cb85c94bb0b7b79ccb055
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.author: lajanuar
+ms.openlocfilehash: 3f97558a9efbc9a1cff11baaae6d4d8869e02915
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059155"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067778"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
@@ -48,12 +48,14 @@ ms.locfileid: "110059155"
 
 可在以下平台上使用文本转语音 (TTS)：
 
-  - C++/Windows 和 Linux
-  - C#/Windows 和 UWP 和 Unity
+  - C++/Windows 和 Linux 和 macOS
+  - C#（Framework 和 .NET Core）/Windows 和 UWP 和 Unity 和 Xamarin 和 Linux 和 macOS
   - Java（Jre 和 Android）
+  - JavaScript（浏览器和 NodeJS）
   - Python
   - Swift
   - Objective-C
+  - Go
   - TTS REST API 可以在所有其他情况下使用。
 
 ### <a name="voice-assistants"></a>语音助手
@@ -135,7 +137,7 @@ ms.locfileid: "110059155"
 
 ### <a name="custom-speech-to-text"></a>自定义语音转文本
 
-使用语音转文本在独特的环境中进行识别和听录时，可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇的问题。 可通过[自定义语音识别门户](https://aka.ms/customspeech)来创建和管理无代码自定义语音识别模型。 自定义语音识别模型在发布后可以由语音 SDK 使用。
+使用语音转文本在独特的环境中进行识别和听录时，可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇的问题。 可通过[自定义语音识别门户](./custom-speech-overview.md)来创建和管理无代码自定义语音识别模型。 自定义语音识别模型在发布后可以由语音 SDK 使用。
 
 ### <a name="custom-text-to-speech"></a>自定义文本转语音
 

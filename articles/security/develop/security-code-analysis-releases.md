@@ -12,17 +12,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 7596df66dbcbe1b7cdefab4811da7174bc83ac65
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 137e4cf1392db8b1ee10d4441769f602802d6ac6
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104801173"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112115952"
 ---
 # <a name="microsoft-security-code-analysis-releases-and-roadmap"></a>Microsoft 安全代码分析版本和路线图
 
 > [!Note]
-> Microsoft 安全代码分析 (MSCA) 扩展将将于 2022 年 3 月 1 日停用。 现有 MSCA 客户在 2022 年 3 月 1 日之前仍可访问 MSCA。 请参阅 [OWASP 源代码分析工具](https://owasp.org/www-community/Source_Code_Analysis_Tools)，了解 Azure DevOps 中的替代选项。 对于计划迁移到 GitHub 的客户，可以查看 [Github 高级安全](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security)。
+> Microsoft 安全代码分析 (MSCA) 扩展将被停用，于 2022 年 3 月 1 日生效。 在 2022 年 3 月 1 日之前，现有 MSCA 客户仍可访问 MSCA。 请参阅 [OWASP 源代码分析工具](https://owasp.org/www-community/Source_Code_Analysis_Tools)了解 Azure DevOps 中的替代选项。 对于计划迁移到 GitHub 的客户，可以查看 [Github 高级安全](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security)。
 
 Microsoft 安全代码分析团队与开发人员支持部门合作，自豪地宣布 MSCA 扩展近期即将推出增强功能。
 
@@ -80,4 +80,4 @@ Microsoft 安全代码分析团队与开发人员支持部门合作，自豪地�
 
 有关如何加入和安装 Microsoft 安全代码分析的说明，请参阅我们的[加入和安装指南](security-code-analysis-onboard.md)。
 
-对于所提供的扩展和工具，如果仍有疑问，请查看我们的[常见问题解答页](security-code-analysis-faq.md)。
+对于所提供的扩展和工具，如果仍有疑问，请查看我们的[常见问题解答页](security-code-analysis-faq.yml)。

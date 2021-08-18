@@ -11,12 +11,12 @@ author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
 ms.date: 02/13/2019
-ms.openlocfilehash: 30b5d1f7e5fd3a052ecce3c28b75fe020b2257c9
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: dd71998eaa3254e31d123a9ca011339d1aaeee10
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110694251"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739675"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>使用 SQL 数据库活动异地复制管理云应用程序的滚动升级
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -106,16 +106,16 @@ ms.locfileid: "110694251"
 
 ```sql
 -- Set the production database to read-only mode
-ALTER DATABASE <Prod_DB>
-SET (ALLOW_CONNECTIONS = NO)
+ALTER DATABASE [<Prod_DB>]
+SET READ_ONLY
 ```
 
 2. 通过断开辅助数据库的连接来终止异地复制 (11)。 此操作创建生产数据库的独立但完全同步的副本。 将升级该数据库。 以下示例使用了 Transact-SQL，但是也可以使用 [PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary)。 
 
 ```sql
 -- Disconnect the secondary, terminating geo-replication
-ALTER DATABASE <Prod_DB>
-REMOVE SECONDARY ON SERVER <Partner-Server>
+ALTER DATABASE [<Prod_DB>]
+REMOVE SECONDARY ON SERVER [<Partner-Server>]
 ```
 
 3. 针对 `contoso-1-staging.azurewebsites.net`、`contoso-dr-staging.azurewebsites.net` 和过渡主数据库运行升级脚本 (12)。 数据库更改会自动复制到过渡辅助数据库。

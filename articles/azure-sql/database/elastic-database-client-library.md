@@ -11,12 +11,12 @@ author: scoriani
 ms.author: scoriani
 ms.reviewer: mathoma
 ms.date: 09/25/2018
-ms.openlocfilehash: 408434145d3bea15fe13eebd26ce13695bef3d7e
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 05ad9620046f19984d26dc78bcc3de06d054b5eb
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706282"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113004117"
 ---
 # <a name="building-scalable-cloud-databases"></a>构建可缩放的云数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "110706282"
 13. [弹性数据库客户端库与 Dapper](elastic-scale-working-with-dapper.md)
 14. [拆分/合并工具](elastic-scale-overview-split-and-merge.md)
 15. [分片映射管理器的性能计数器](elastic-database-client-library.md) 
-16. [弹性数据库工具常见问题解答](elastic-scale-faq.md)
+16. [弹性数据库工具常见问题解答](elastic-scale-faq.yml)
 
 ## <a name="client-capabilities"></a>客户端功能
 

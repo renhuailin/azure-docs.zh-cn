@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: b4b38112e32a55739ea14d5ff06e327819171557
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 90d2a146665fc34fe4bd287b2753e99a770d13b1
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98014546"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113285883"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用网络观察程序和开源工具执行网络入侵检测
 
@@ -80,7 +80,7 @@ tail -f /var/log/suricata/fast.log
 
 #### <a name="install-elasticsearch"></a>安装 Elasticsearch
 
-1. Elastic Stack 5.0 及更高版本需要 Java 8。 运行命令 `java -version` 可以检查版本。 如果尚未安装 java，请参阅 [Azure 支持的 JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support) 上的文档。
+1. Elastic Stack 5.0 及更高版本需要 Java 8。 运行命令 `java -version` 可以检查版本。 如果尚未安装 java，请参阅 [Azure 支持的 JDK](/azure/developer/java/fundamentals/java-support-on-azure) 上的文档。
 
 1. 下载适用于系统的正确二进制程序包：
 

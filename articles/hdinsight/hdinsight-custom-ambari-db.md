@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: 0d5b67bb25f6f2425016824e5b73783a8db8e806
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d2ab2609338daff846797834be7694a8b1f220e6
+ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110072147"
+ms.lasthandoff: 07/11/2021
+ms.locfileid: "113600932"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>设置包含自定义 Ambari DB 的 HDInsight 群集
 
@@ -62,19 +62,25 @@ az deployment group create --name HDInsightAmbariDBDeployment \
     --parameters azuredeploy.parameters.json
 ```
 
-## <a name="database-sizing"></a>数据库大小
+
+> [!WARNING]
+> 请对 HDInsight 群集使用以下建议的 SQL DB 和头节点 VM。 请勿将默认的 Ambari DB (S0) 用于任何生产环境。 
+>
+
+
+## <a name="database-and-headnode-sizing"></a>数据库和头节点调整大小
 
 下表提供了有关基于 HDInsight 群集大小选择 Azure SQL DB 层的指南。
 
-| 工作器节点数 | 必需的 DB 层 |
-|---|---|
-| <=4 | S0 |
-| >4 && <=8 | S1 |
-| >8 && <=16 | S2 |
-| >16 && <=32 | S3 |
-| >32 && <=64 | S4 |
-| >64 && <=128 | P2 |
-| >128 | 联系支持人员 |
+| 工作器节点数 | 必需的 DB 层 | 必需的头节点 VM |
+|---|---|---|
+| <=4 | S0 | 4 核/28 GB RAM 或更高配置 |
+| >4 && <=8 | S1 | 4 核/28 GB RAM 或更高配置 |
+| >8 && <=16 | S2 | 4 核/28 GB RAM 或更高配置 |
+| >16 && <=32 | S3 | 8 核/56 GB RAM 或更高配置 |
+| >32 && <=64 | S4 | 8 核/56 GB RAM 或更高配置 |
+| >64 && <=128 | P2 | 16 核/112 GB RAM 或更高配置 |
+| >128 | 联系支持人员 | 联系支持人员 |
 
 ## <a name="next-steps"></a>后续步骤
 

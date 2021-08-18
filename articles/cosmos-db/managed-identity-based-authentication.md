@@ -5,25 +5,31 @@ author: j-patrick
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 06/08/2021
+ms.date: 07/02/2021
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 0eb80de6ad566005eba518efab863af254c3df78
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: c683af7a6f8889204f697a0ee36bf3b3719efa73
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750958"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731969"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>使用系统分配的托管标识访问 Azure Cosmos DB 数据
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
+> [!TIP]
+> [数据平面基于角色的访问控制 (RBAC)](how-to-setup-rbac.md) 现在可在 Azure Cosmos DB 上使用，提供一种无缝的方法来向 Azure Active Directory 授权请求。
 
 在本文中，你将设置一个无论是否轮换密钥都能可靠运行的解决方案，以使用[托管标识](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)访问 Azure Cosmos DB 密钥  。 本文中的示例使用 Azure Functions，但你可以使用任何支持托管标识的服务。 
 
 本文将介绍如何创建一个无需复制任何 Azure Cosmos DB 密钥即可访问 Azure Cosmos DB 数据的函数应用。 该函数应用每分钟唤醒一次，记录水族鱼缸的当前温度。 若要了解如何设置计时器触发的函数应用，请参阅[在 Azure 中创建由计时器触发的函数](../azure-functions/functions-create-scheduled-function.md)一文。
 
-为了简化该方案，已配置了 [生存时间](./time-to-live.md) 设置，以清理较旧的温度文档。 
+为了简化该方案，已配置了 [生存时间](./time-to-live.md) 设置，以清理较旧的温度文档。
+
+> [!IMPORTANT]
+> 由于此方法通过 Azure Cosmos DB 控制平面提取帐户的主键，因此如果[已将只读锁定应用](../azure-resource-manager/management/lock-resources.md)于你的帐户，该方法将不起作用。 在这种情况下，请考虑改用 Azure Cosmos DB [数据平面 RBAC](how-to-setup-rbac.md)。
 
 ## <a name="assign-a-system-assigned-managed-identity-to-a-function-app"></a>向函数应用分配系统分配的托管标识
 
@@ -47,9 +53,6 @@ ms.locfileid: "111750958"
 |---------|---------|
 |[DocumentDB 帐户参与者](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|可管理 Azure Cosmos DB 帐户。 允许检索读取/写入密钥。 |
 |[Cosmos DB 帐户读者角色](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|可以读取 Azure Cosmos DB 帐户数据。 允许检索读取密钥。 |
-
-> [!IMPORTANT]
-> Azure Cosmos DB 中对基于角色的访问控制的支持仅适用于控制平面操作。 将通过主密钥或资源令牌保护数据平面操作。 有关详细信息，请参阅[保护对数据的访问](secure-access-to-data.md)一文。
 
 > [!TIP] 
 > 分配角色时，请仅分配所需的访问权限。 如果服务只需读取数据，请向托管标识分配“Cosmos DB 帐户读取者”角色  。 若要详细了解最小特权访问权限的重要性，请参阅[降低特权帐户的泄露风险](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts)一文。
@@ -93,23 +96,23 @@ az role assignment create --assignee $principalId --role "DocumentDB Account Con
 
 现在，我们已有一个函数应用，它具有系统分配的托管标识，该标识具有“DocumentDB 帐户参与者”角色和 Azure Cosmos DB 权限  。 以下函数应用代码将获取 Azure Cosmos DB 密钥，创建 CosmosClient 对象，获取水族箱温度，然后将此数据保存到 Azure Cosmos DB。
 
-此示例使用[“列出密钥”API](/rest/api/cosmos-db-resource-provider/2021-04-15/databaseaccounts/listkeys) 来访问 Azure Cosmos DB 帐户密钥。
+此示例使用[“列出密钥”API](/rest/api/cosmos-db-resource-provider/2021-04-15/database-accounts/list-keys) 来访问 Azure Cosmos DB 帐户密钥。
 
 > [!IMPORTANT] 
-> 若要[分配 Cosmos DB 帐户读取者](#grant-access-to-your-azure-cosmos-account)角色，需要使用[列出只读密钥 API](/rest/api/cosmos-db-resource-provider/2021-04-15/databaseaccounts/listreadonlykeys)。 这只会填充只读密钥。
+> 若要[分配 Cosmos DB 帐户读取者](#grant-access-to-your-azure-cosmos-account)角色，需要使用[列出只读密钥 API](/rest/api/cosmos-db-resource-provider/2021-04-15/database-accounts/list-read-only-keys)。 这只会填充只读密钥。
 
 “列出密钥”API 将返回 `DatabaseAccountListKeysResult` 对象。 C# 库中未定义此类型。 以下代码显示了此类的实现：  
 
 ```csharp 
 namespace Monitor 
 {
-  public class DatabaseAccountListKeysResult
-  {
-      public string primaryMasterKey {get;set;}
-      public string primaryReadonlyMasterKey {get; set;}
-      public string secondaryMasterKey {get; set;}
-      public string secondaryReadonlyMasterKey {get;set;}
-  }
+    public class DatabaseAccountListKeysResult
+    {
+        public string primaryMasterKey { get; set; }
+        public string primaryReadonlyMasterKey { get; set; }
+        public string secondaryMasterKey { get; set; }
+        public string secondaryReadonlyMasterKey { get; set; }
+    }
 }
 ```
 
@@ -125,7 +128,6 @@ namespace Monitor
         public string id { get; set; } = Guid.NewGuid().ToString();
         public DateTime RecordTime { get; set; }
         public int Temperature { get; set; }
-
     }
 }
 ```

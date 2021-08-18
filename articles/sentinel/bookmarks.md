@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
-ms.openlocfilehash: 5e3b6802bab2c5fae97be8e55c8d5c11ff570f78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fecd1fca22b003892817f8fd33db88b1eea6127
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94651306"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729765"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>在通过 Azure Sentinel 进行搜寻期间跟踪数据
 
@@ -30,7 +30,7 @@ Azure Sentinel 中的搜寻书签可以保留你在“Azure Sentinel - 日志”
 
 通过从表中查看书签，可以筛选、汇总和联接带有书签的数据及其他数据源，从而可以轻松查找证据。
 
-目前在预览版中，如果在日志中搜寻时发现了某些急需解决的问题，只需单击几次鼠标，即可创建一个书签并将其提升为事件，或将书签添加到现有事件。 有关事件的详细信息，请参阅[教程：通过 Azure Sentinel 调查事件](tutorial-investigate-cases.md)。 
+目前在预览版中，如果在日志中搜寻时发现了某些急需解决的问题，只需单击几次鼠标，即可创建一个书签并将其提升为事件，或将书签添加到现有事件。 有关事件的详细信息，请参阅[教程：通过 Azure Sentinel 调查事件](investigate-cases.md)。 
 
 此外在预览版中，还可以通过单击书签详细信息中的“调查”，将带有书签的数据可视化。 这将启动调查体验，你可以使用交互式实体图形关系图和时间线来查看、调查和直观地传达你的发现。
 
@@ -94,7 +94,7 @@ Azure Sentinel 中的搜寻书签可以保留你在“Azure Sentinel - 日志”
 
 3. 单击“调查”可在调查图中查看书签。
 
-有关使用调查图的说明，请参阅[使用调查图深入探讨](tutorial-investigate-cases.md#use-the-investigation-graph-to-deep-dive)。
+有关使用调查图的说明，请参阅[使用调查图深入探讨](investigate-cases.md#use-the-investigation-graph-to-deep-dive)。
 
 ## <a name="add-bookmarks-to-a-new-or-existing-incident"></a>将书签添加到新事件或现有事件
 

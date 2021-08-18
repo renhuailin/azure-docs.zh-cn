@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: d3c5077450dd4ec59f5ea7bc8f37879f9aa775bf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0c1067b2e2002992d75311497b1ba8f984c421b8
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868930"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112370394"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>使用 Azure HDInsight 中的 Apache Hive 分析和处理 JSON 文档
 
@@ -147,7 +147,7 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
 
 ### <a name="use-a-custom-serde"></a>使用自定义 SerDe
 
-SerDe 是用于分析嵌套 JSON 文档的最佳选择。 使用它可以定义 JSON 架构，然后使用该架构来分析文档。 有关说明，请参阅[如何将自定义 JSON SerDe 与 Microsoft Azure HDInsight 配合使用](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/)。
+SerDe 是用于分析嵌套 JSON 文档的最佳选择。 使用它可以定义 JSON 架构，然后使用该架构来分析文档。 有关说明，请参阅[如何将自定义 JSON SerDe 与 Microsoft Azure HDInsight 配合使用](/archive/blogs/bigdatasupport/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight)。
 
 ## <a name="summary"></a>摘要
 

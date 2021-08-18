@@ -2,13 +2,13 @@
 title: Bicep 文件结构和语法
 description: 使用声明性语法介绍 Bicep 文件的结构和属性。
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: a9dcb83b54a665a71c8f1095a682c9dabcafd039
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/02/2021
+ms.openlocfilehash: 5401aebb0b0a82a04a2b78f9af1dc6d133915c0b
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111025679"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113286621"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>了解 Bicep 文件的结构和语法
 
@@ -284,7 +284,7 @@ resource storageAccountResources 'Microsoft.Storage/storageAccounts@2019-06-01' 
 
 有关详细信息，请参阅[批量部署](loop-resources.md#deploy-in-batches)。
 
-## <a name="outputs"></a>输出
+## <a name="outputs"></a>Outputs
 
 使用输出，以从部署中返回值。 通常，当需要将某值重新用于其他操作时，可以从已部署的资源中返回该值。
 
@@ -297,6 +297,10 @@ output storageEndpoint object = stg.properties.primaryEndpoints
 输出可以与参数、变量、模块或资源同名。
 
 有关详细信息，请参阅 [Bicep 中的输出](./outputs.md)。
+
+## <a name="whitespace"></a>空格
+
+创作 Bicep 文件时将忽略空格和制表符。 但换行符具有语义含义，例如在[对象](./data-types.md#objects)和[数组](./data-types.md#arrays)声明中。
 
 ## <a name="comments"></a>注释
 

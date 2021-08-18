@@ -3,12 +3,12 @@ title: Azure Functions 1.x 的 host.json 参考
 description: 使用 v1 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 48dba50b384731befdc7fba7c418e542994cedd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8466827402a5a5f785b65ea70887cc868f8667af
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102608948"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742655"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x 的 host.json 参考
 
@@ -23,7 +23,7 @@ ms.locfileid: "102608948"
 
 其他函数应用配置选项是在你的[应用设置](functions-app-settings.md)中管理的。
 
-某些 host.json 设置只有在本地运行时才会在 [local.settings.json](functions-run-local.md#local-settings-file) 文件中使用。
+某些 host.json 设置只有在本地运行时才会在 [local.settings.json](functions-develop-local.md#local-settings-file) 文件中使用。
 
 ## <a name="sample-hostjson-file"></a>示例 host.json 文件
 

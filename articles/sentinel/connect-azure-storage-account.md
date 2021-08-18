@@ -8,12 +8,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: e9f27b5cc3c4cb526dbcf6e6511fcd53e3c2fe67
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: af9f5218b7f7f94ddc73fb67fe82427d1cfbfff2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107891713"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743071"
 ---
 # <a name="connect-azure-storage-account-diagnostics-logs"></a>连接 Azure 存储帐户诊断日志
 
@@ -68,5 +68,5 @@ Azure 存储帐户适用于新式数据存储方案的云解决方案。 它包�
 
 在本文档中，你已了解如何将 Azure 存储帐户连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。

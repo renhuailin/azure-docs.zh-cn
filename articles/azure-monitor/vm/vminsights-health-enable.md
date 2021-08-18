@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 04/05/2021
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 472700f50175c115305bad332efa6b0e77fb74ce
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: f38172e82b61ce07863614857ab7ef096683f34a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315284"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729293"
 ---
 # <a name="enable-vm-insights-guest-health-preview"></a>启用 VM 见解来宾运行状况（预览）
 利用 VM 见解来宾运行状况，可以查看虚拟机的运行状况，该运行状况是由一组定期取样的性能测量值定义。 本文介绍如何在订阅中启用此功能，以及如何为每个虚拟机启用来宾监视。
@@ -38,6 +38,8 @@ VM 见解来宾运行状况在公共预览版中存在以下限制：
 - 澳大利亚中部
 - 澳大利亚东部
 - 澳大利亚东南部
+- 巴西南部
+- 巴西东南部
 - 加拿大中部
 - 印度中部
 - 美国中部
@@ -47,14 +49,18 @@ VM 见解来宾运行状况在公共预览版中存在以下限制：
 - 美国东部 2 EUAP
 - 法国中部
 - 德国中西部
-- Japan East
+- 日本东部
+- 日本西部
 - 韩国中部
 - 美国中北部
 - 北欧
+- 挪威东部
 - 美国中南部
 - 南非北部
 - 东南亚
 - 瑞士北部
+- 瑞士西部
+- 阿拉伯联合酋长国北部
 - 英国南部
 - 英国西部
 - 美国中西部
@@ -355,13 +361,13 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
         "publisher": "Microsoft.Azure.Monitor", 
         "type": "AzureMonitorWindowsAgent", 
         "typeHandlerVersion": "1.0", 
-        "autoUpgradeMinorVersion": false 
+        "autoUpgradeMinorVersion": true 
       },
       "linux": {
         "publisher": "Microsoft.Azure.Monitor", 
         "type": "AzureMonitorLinuxAgent", 
-        "typeHandlerVersion": "1.5", 
-        "autoUpgradeMinorVersion": false 
+        "typeHandlerVersion": "1.0", 
+        "autoUpgradeMinorVersion": true 
       }
     }
   },

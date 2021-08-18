@@ -2,14 +2,14 @@
 title: 死信和重试策略 - Azure 事件网格
 description: 介绍了如何自定义事件网格的事件传递设置。 设置死信目标并指定重试传递的时间间隔。
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 07/27/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: db5f9dbd6738b2d9e7861f463d02a87d948c6afb
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 48fa27a1fe69481dda294f32bfc88af0e1718f25
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110698428"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731952"
 ---
 # <a name="set-dead-letter-location-and-retry-policy"></a>设置死信位置和重试策略
 
@@ -73,7 +73,7 @@ New-AzEventGridSubscription `
 
 创建事件网格订阅时，可以设置事件网格尝试使用多长时间来传递事件。 默认情况下，事件网格会尝试使用 24 小时（1440 分钟）或 30 次。 可以为你的事件网格订阅设置这些值之一。 事件生存时间的值必须是 1 到 1440 之间的整数。 最大重试次数的值必须是 1 到 30 之间的整数。
 
-无法配置[重试计划](delivery-and-retry.md#retry-schedule-and-duration)。
+无法配置[重试计划](delivery-and-retry.md#retry-schedule)。
 
 ### <a name="azure-cli"></a>Azure CLI
 

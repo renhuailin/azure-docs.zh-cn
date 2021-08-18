@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, vanto
-ms.date: 02/25/2021
-ms.openlocfilehash: 4a24c40abc938d63ed94c9b8b23654c619b776f1
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.reviewer: mathoma, bonova, vanto
+ms.date: 07/08/2021
+ms.openlocfilehash: fd2616b6de5c1c3955139ec7869c1903d68729f6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110688987"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751266"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>将应用程序连接到 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "110688987"
 对等互连使用 Microsoft 主干网络，因此是首选；这样的话，从连接角度来看，对等互连虚拟网络中的虚拟机与同一虚拟网络中虚拟机之间的延迟没有明显差别。 支持同一区域中的网络之间的虚拟网络对等互连。 此外还支持全局虚拟网络对等互连，但有如下说明所述的限制。  
 
 > [!IMPORTANT]
-> [2020 年 9 月 22 日，我们宣布为新建的虚拟群集建立全局虚拟网络对等互连](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 这意味着，自公告日期之后在空子网中创建的 SQL 托管实例以及在这些子网中随后创建的所有托管实例，都支持全局虚拟网络对等互连。 对于所有其他 SQL 托管实例，由于[全局虚拟网络对等互连的约束](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)，对等互连支持仅限于同一区域中的网络。 有关更多详细信息，另请参阅 [Azure 虚拟网络常见问题解答](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)一文的相关部分。 
+> [2020 年 9 月 22 日，我们宣布支持为新建的虚拟群集建立全局虚拟网络对等互连](https://azure.microsoft.com/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 这意味着，自公告日期之后在空子网中创建的 SQL 托管实例以及在这些子网中随后创建的所有托管实例，都支持全局虚拟网络对等互连。 对于所有其他 SQL 托管实例，由于[全局虚拟网络对等互连的约束](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)，对等互连支持仅限于同一区域中的网络。 有关更多详细信息，另请参阅 [Azure 虚拟网络常见问题解答](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)一文的相关部分。 若要能够对在公告日期之前创建的虚拟群集中的 SQL 托管实例使用全局虚拟网络对等互连，请考虑在实例上配置[维护时段](../database/maintenance-window.md)，因为它会将实例移动到支持全局虚拟网络对等互连的新虚拟群集中。
 
 ## <a name="connect-from-on-premises"></a>从本地连接 
 

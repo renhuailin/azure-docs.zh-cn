@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.subservice: overview
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 7a5b9efce1c24aecb54d3f473b7227357c8fb99f
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 1527888458a494e0b2d7177246c991228440d255
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890179"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860527"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>计划管理 Azure Synapse Analytics 的成本
 
@@ -126,7 +126,7 @@ Azure Synapse 在 Azure 基础结构上运行，部署新资源时，会随 Azur
 
 ### <a name="dedicated-sql-pool"></a>专用 SQL 池
 
-可以通过在资源不使用时暂停资源来控制专用 SQL 池的成本。 例如，如果晚上和周末不使用数据库，那么可以在这些时间暂停数据库的使用，然后在白天时恢复使用。 更多详细信息，请参阅[通过 Azure 门户暂停和恢复专用 SQL 池中的计算](./sql-data-warehouse/pause-and-resume-compute-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+可以通过在资源不使用时暂停资源来控制专用 SQL 池的成本。 例如，如果晚上和周末不使用数据库，那么可以在这些时间暂停数据库的使用，然后在白天时恢复使用。 更多详细信息，请参阅[通过 Azure 门户暂停和恢复专用 SQL 池中的计算](./sql-data-warehouse/pause-and-resume-compute-portal.md?context=/azure/synapse-analytics/context/context)
 
 ### <a name="serverless-apache-spark-pool"></a>无服务器 Apache Spark 池
 

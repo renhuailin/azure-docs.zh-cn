@@ -4,16 +4,16 @@ description: 使用本教程通过 Express 模块新建一个应用程序，该�
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: e15af589b3a3c496738c97c0c2c6429ba708ba7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7afa48d5632a194daa7463a544fb28310ea89379
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743332"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093708"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services-classic"></a>使用 Express 在 Azure 云服务（经典）中构建并部署 Node.js Web 应用程序
 

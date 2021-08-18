@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery 中的更新和组件升级
 description: 提供 Azure Site Recovery 服务更新和组件升级的概述。
-author: Rajeswari-Mamilla
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.author: ramamill
-ms.openlocfilehash: a1ea8b6fb9800d796670161288be0d86ce6ffc42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: sharrai
+ms.date: 08/11/2021
+ms.openlocfilehash: 7f4dad014a1904de8068dd9cf6f0f95a53eb87e2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89424933"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730959"
 ---
 # <a name="service-updates-in-site-recovery"></a>Site Recovery 中的服务更新
 

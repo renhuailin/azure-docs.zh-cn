@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e3c20d86bd29d60eca328a44ab5d5d600bbf4da4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 393bbebd226e02f6caf5c3d02f8da43a11154667
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89010930"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112240485"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>配置 Reliable Actors 的 FabricTransport 设置
 
 以下为用户可以配置的设置：
-- C#: [FabricTransportRemotingSettings](/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
+- C#: [FabricTransportRemotingSettings](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
 - Java：[FabricTransportRemotingSettings](/java/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportremotingsettings)
 
 可以通过以下方式修改 FabricTransport 的默认配置。

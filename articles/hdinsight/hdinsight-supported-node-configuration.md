@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/14/2020
-ms.openlocfilehash: d41ee2554d30a56bc2e025bbe2c93aee143d75e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d65f68802f332092fbf2fa3676880d6263b2cab1
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98931652"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112291072"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Azure HDInsight 的默认和推荐节点配置是什么？
 
@@ -50,31 +50,28 @@ ms.locfileid: "98931652"
 > [!Note]
 > 若要获取用于 Powershell 和其他脚本的 SKU 标识符，请在下表中将 `Standard_` 添加到所有 VM SKU 的开头。 例如，`D12_v2` 将变为 `Standard_D12_v2`。
 
-| 群集类型 | Hadoop | HBase | 交互式查询 | Storm | Spark | ML Server | Kafka |
-|---|---|---|---|---|---|---|---|
-| 头：默认 VM 大小 | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2* | D12_v2 | D3_v2 |
-| 头：建议的最小 VM 大小 | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2* | D12_v2 | D3_v2 |
-| 辅助角色：默认 VM 大小 | D4_v2 | D4_v2 | D14_v2 | D3_v2 | D13_v2 | D4_v2 | 4 D12_v2，每个中转站有 2 个 S30 磁盘 |
-| 辅助角色：建议的最小 VM 大小 | D5_v2 | D3_v2 | D13_v2 | D3_v2 | D12_v2 | D4_v2 | D3_v2 |
-| Zookeeper：默认 VM 大小 |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 | A4_v2 |
-| ZooKeeper：建议的最小 VM 大小 |  | A4_v2 | A4_v2 | A2_v2 |  | A2_v2 | A4_v2 |
-| ML 服务：默认 VM 大小 |  |  |  |  |  | D4_v2 |  |
-| ML 服务：建议的最小 VM 大小 |  |  |  |  |  | D4_v2 |  |
+| 群集类型                            | Hadoop | HBase  | 交互式查询 | Storm | Spark                | Kafka                                |
+|-----------------------------------------|--------|--------|-------------------|-------|----------------------|--------------------------------------|
+| 头：默认 VM 大小                   | D12_v2 | D12_v2 | D13_v2            | A4_v2 | D12_v2, <br/>D13_v2* | D3_v2                                |
+| 头：建议的最小 VM 大小      | D5_v2  | D3_v2  | D13_v2            | A4_v2 | D12_v2, <br/>D13_v2* | D3_v2                                |
+| 辅助角色：默认 VM 大小                 | D4_v2  | D4_v2  | D14_v2            | D3_v2 | D13_v2               | 4 D12_v2，每个中转站有 2 个 S30 磁盘 |
+| 辅助角色：建议的最小 VM 大小    | D5_v2  | D3_v2  | D13_v2            | D3_v2 | D12_v2               | D3_v2                                |
+| Zookeeper：默认 VM 大小              |        | A4_v2  | A4_v2             | A4_v2 |                      | A4_v2                                |
+| ZooKeeper：建议的最小 VM 大小 |        | A4_v2  | A4_v2             | A2_v2 |                      | A4_v2                                |
 
 \* = Spark 企业安全性套餐 (ESP) 群集的 VM 大小
 
 ### <a name="brazil-south-and-japan-west-only"></a>仅限巴西南部和日本西部
 
-| 群集类型 | Hadoop | HBase | 交互式查询 | Storm | Spark | ML Services |
-|---|---|---|---|---|---|---|
-| 头：默认 VM 大小 | D12 | D12 | D13 | A4_v2 | D12 | D12 |
-| 头：建议的最小 VM 大小 | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 |
-| 辅助角色：默认 VM 大小 | D4 | D4 | D14 | D3 | D13 | D4 |
-| 辅助角色：建议的最小 VM 大小 | D5_v2 | D3_v2 | D13_v2 | D3_v2 | D12_v2 | D4_v2 |
-| Zookeeper：默认 VM 大小 |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 |
-| ZooKeeper：建议的最小 VM 大小 |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 |
-| ML 服务：默认 VM 大小 |  |  |  |  |  | D4 |
-| ML 服务：建议的最小 VM 大小 |  |  |  |  |  | D4_v2 |
+| 群集类型                            | Hadoop | HBase | 交互式查询 | Storm | Spark  |
+|-----------------------------------------|--------|-------|-------------------|-------|--------|
+| 头：默认 VM 大小                   | D12    | D12   | D13               | A4_v2 | D12    |
+| 头：建议的最小 VM 大小      | D5_v2  | D3_v2 | D13_v2            | A4_v2 | D12_v2 |
+| 辅助角色：默认 VM 大小                 | D4     | D4    | D14               | D3    | D13    |
+| 辅助角色：建议的最小 VM 大小    | D5_v2  | D3_v2 | D13_v2            | D3_v2 | D12_v2 |
+| Zookeeper：默认 VM 大小              |        | A4_v2 | A4_v2             | A4_v2 |        |
+| ZooKeeper：建议的最小 VM 大小 |        | A4_v2 | A4_v2             | A4_v2 |        |
+
 
 > [!NOTE]
 > - 对于 Storm 群集类型，头称为 *Nimbus*。

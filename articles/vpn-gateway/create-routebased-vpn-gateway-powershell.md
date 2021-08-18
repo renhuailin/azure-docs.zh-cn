@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0a2dfcdbd1a646284792df0a6d38b7c9272a0cc5
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: d633fc07e63280f1774b8f4bcec19de48b37a5a3
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672004"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114719625"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>使用 PowerShell 创建基于路由的 VPN 网关
 
@@ -105,7 +105,7 @@ $gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $s
 ```
 ## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>创建 VPN 网关
 
-创建 VPN 网关可能需要 45 分钟或更长时间。 完成创建网关后，可以创建虚拟网络与另一个 VNet 之间的连接。 或者，创建虚拟网络与本地位置之间的连接。 使用 [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) cmdlet 创建 VPN 网关。
+创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。 完成创建网关后，可以创建虚拟网络与另一个 VNet 之间的连接。 或者，创建虚拟网络与本地位置之间的连接。 使用 [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) cmdlet 创建 VPN 网关。
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `

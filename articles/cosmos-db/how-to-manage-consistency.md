@@ -1,19 +1,19 @@
 ---
 title: 在 Azure Cosmos DB 中管理一致性
 description: 了解如何使用 Azure 门户、.NET SDK、Java SDK 和各种其他 SDK 在 Azure Cosmos DB 中配置和管理一致性级别
-author: anfeldma-ms
+author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 06/10/2020
-ms.author: anfeldma
+ms.date: 07/02/2021
+ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 4af80899702b24f643c248081b23dd68f34988ae
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: ff9cf89aafa3724261cf25192525def55ff7755c
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110681737"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113232459"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理一致性级别
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -65,7 +65,10 @@ Update-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
 客户端可以重写由服务设置的默认一致性级别。 可以在每个请求上设置一致性级别，这将替代在帐户级别设置的默认一致性级别。
 
 > [!TIP]
-> 只能在请求级别放松一致性要求。 若要从较弱的一致性移动到更强的一致性，请更新 Cosmos 帐户的默认一致性。
+> 只能在 SDK 实例或请求级别放宽一致性要求。 若要从较弱的一致性移动到更强的一致性，请更新 Cosmos 帐户的默认一致性。
+
+> [!TIP]
+> 替代默认一致性级别的操作仅适用于 SDK 客户端中的读取。 默认情况下，配置为强一致性的帐户仍会将数据同步写入和复制到帐户中的所有区域。 SDK 客户端实例或请求使用会话或较弱一致性替代此级别时，将使用单个副本执行读取。 有关更多详细信息，请参阅[一致性级别和吞吐量](consistency-levels.md#consistency-levels-and-throughput)。
 
 ### <a name="net-sdk"></a><a id="override-default-consistency-dotnet"></a>.NET SDK
 

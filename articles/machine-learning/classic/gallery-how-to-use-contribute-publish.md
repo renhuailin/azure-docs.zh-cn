@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 935d0149a4a6b33c5272e57aab5f1cc9c3bb2924
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 85b905019d822d20873c241cc887d7b5cf723fb3
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100519841"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581405"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>在 Azure AI 库中共享和发现资源
 
-**适用对象：** ![这是复选标记，意味着本文适用于机器学习工作室（经典版）。](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）   ![这是 X，意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+适用范围：![这是复选标记，意味着本文适用于](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）![机器学习工作室（经典版）   这是 X，意味着本文不适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 
@@ -30,7 +30,7 @@ ms.locfileid: "100519841"
 
 Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资源。 其中包括：
 
-* **试验** - 该库包含在 Azure 机器学习工作室（经典）中开发的各种试验。 涵盖了从演示特定机器学习技术的快速概念证明实验，到完全开发的解决复杂机器学习问题的解决方案。
+* 试验 - 该库包含在机器学习工作室（经典）中开发的各种试验。 涵盖了从演示特定机器学习技术的快速概念证明实验，到完全开发的解决复杂机器学习问题的解决方案。
 * **教程** - 可以通过一些教程来了解机器学习技术和概念，或描述解决各种机器学习问题的高级方法。
 * **集合** - 使用集合可将提出特定解决方案或概念的试验、API 以及其他库资源组合在一起。
 * **自定义模块** - 可将自定义模块下载到工作室（经典）工作区，以便在自己的试验中使用。

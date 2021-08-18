@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: dc73ac91320e1860c5c30f1b31962ad826a1038f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 769fae5791575d8f361aaee13347bb00f3fbe749
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110076791"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616426"
 ---
 # <a name="deploy-azure-monitor"></a>部署 Azure Monitor
 启用 Azure Monitor 来监视所有 Azure 资源时，既要配置 Azure Monitor 组件，也要配置 Azure 资源，这样才能生成供 Azure Monitor 收集的监视数据。 本文描述如何通过所需的不同步骤来完全实现使用常用配置的 Azure Monitor，以便监视 Azure 订阅中的所有资源。 本文为每个步骤提供了基本说明，其中包含介绍详细配置要求的其他文档的链接。
@@ -129,7 +129,7 @@ Azure Monitor 使用 [Application Insights](app/app-insights-overview.md) 来监
 - [托管在 Azure Web 应用上的应用程序](app/azure-web-apps.md)
 - [Java 应用程序](app/java-in-process-agent.md)
 - [在 Azure VM 或 Azure 虚拟机规模集的 IIS 中托管的 ASP.NET 应用程序](app/azure-vm-vmss-apps.md)
-- [在 VM 的 IIS 中托管的 ASP.NET 应用程序](app/monitor-performance-live-website-now.md)
+- [在 IIS 中本地托管的 ASP.NET 应用程序](app/status-monitor-v2-overview.md)
 
 
 **基于代码的监视** 可以更好地进行自定义，并且可以收集其他遥测数据，但需要在 Application Insights SDK NuGet 包上向代码添加依赖项。 请参阅以下资源，详细了解如何根据应用程序来启用监视。

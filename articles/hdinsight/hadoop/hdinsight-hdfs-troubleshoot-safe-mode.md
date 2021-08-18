@@ -4,12 +4,12 @@ description: 排查本地 Apache HDFS 在 Azure HDInsight 中的 Apache 群集�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
-ms.openlocfilehash: d34bf8d82aee14f5ba835f68a061555d24ee2621
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6764b2c1b8b2a06f2bd9264a7461f43986f557ad
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98944444"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112299962"
 ---
 # <a name="scenario-local-hdfs-stuck-in-safe-mode-on-azure-hdinsight-cluster"></a>场景：本地 HDFS 在 Azure HDInsight 群集上的安全模式下停止响应
 
@@ -55,4 +55,4 @@ HDInsight 群集已纵向缩减为以下非常少的节点，或者节点数接�
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

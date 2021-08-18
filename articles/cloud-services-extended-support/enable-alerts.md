@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 4591253e1a305632b7f41afe692f297d71366382
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32f140ae27501b9f4f3b66e5f5815b8f3f20b3ff
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98744256"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445104"
 ---
 # <a name="enable-monitoring-for-cloud-services-extended-support-using-the-azure-portal"></a>使用 Azure 门户为云服务（外延支持）启用监视
 
@@ -40,5 +40,5 @@ ms.locfileid: "98744256"
 6. 完成设置警报后，保存更改，并且基于配置的指标，将看到“警报”边栏选项卡随时间开始填充。
 
 ## <a name="next-steps"></a>后续步骤 
-- 请参阅云服务（外延支持）的[常见问题解答](faq.md)。
+- 请参阅云服务（外延支持）的[常见问题解答](faq.yml)。
 - 使用 [Azure 门户](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[模板](deploy-template.md)或 [Visual Studio](deploy-visual-studio.md) 部署云服务（外延支持）。

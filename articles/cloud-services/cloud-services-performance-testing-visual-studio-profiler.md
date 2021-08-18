@@ -4,16 +4,16 @@ description: 使用 Visual Studio 探查器调查云服务中的性能问题
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 2f924d84967c1a1928a47b59fd3a8c28da091130
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d392db5a2cd38ba1195764d72b30de6dc90000ef
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98743553"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113092682"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-classic-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>在 Azure 计算模拟器中使用 Visual Studio 探查器来本地测试云服务（经典）的性能
 

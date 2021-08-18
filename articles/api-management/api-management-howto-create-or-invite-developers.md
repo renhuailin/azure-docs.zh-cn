@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 92e032eb104835788f515cc7800fe5dacfa8adaa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da9333efb3078564347e6498e84e46c5ebcf10f7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88566125"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748914"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>如何在 Azure API 管理中管理用户帐户
 
-在 API 管理中，开发人员是使用 API 管理公开的 API 的用户。 本指南演示如何创建和邀请开发人员使用通过 API 管理实例向其提供的 API 和产品。 有关以编程方式管理用户帐户的信息，请参阅 [API 管理 REST](/rest/api/apimanagement/)参考中的[用户实体](/rest/api/apimanagement/2019-12-01/user)文档。
+在 API 管理中，开发人员是使用 API 管理公开的 API 的用户。 本指南演示如何创建和邀请开发人员使用通过 API 管理实例向其提供的 API 和产品。 有关以编程方式管理用户帐户的信息，请参阅 [API 管理 REST](/rest/api/apimanagement/)参考中的[用户实体](/rest/api/apimanagement/2020-12-01/user)文档。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 

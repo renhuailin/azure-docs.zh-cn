@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 3/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f571fa6e04d19412db856a42232cb2d151ceb6ab
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 0676639523a0b1ebd23ff0e5082e6cccbd641f4a
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108141480"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112117293"
 ---
 # <a name="how-to-use-dfs-namespaces-with-azure-files"></a>如何结合使用 DFS 命名空间和 Azure 文件存储
 [分布式文件系统命名空间](/windows-server/storage/dfs-namespaces/dfs-overview)（通常称为 DFS 命名空间或 DFS-N）是一个 Windows Server 服务器角色，广泛用于简化生产环境中 SMB 文件共享的部署和维护。 DFS 命名空间是存储命名空间虚拟化技术，意味着使用此技术，可在文件共享的 UNC 路径与实际文件共享本身之间提供间接层。 DFS 命名空间适用于 SMB 文件共享，无论这些文件共享是否为托管状态：它可用于本地 Windows 文件服务器上托管的 SMB 共享（无论是否使用 Azure 文件同步）、直接用于 Azure 文件共享、用于 Azure NetApp 文件或其他第三方产品/服务中托管的 SMB 文件共享，甚至用于其他云中托管的文件共享。 
@@ -32,6 +32,13 @@ ms.locfileid: "108141480"
 > 跳到视频中的 10:10 处，了解如何设置 DFS 命名空间。
 
 如果你已准备好 DFS 命名空间，则无需执行任何特殊步骤即可将其用于 Azure 文件存储和文件同步。如果要从本地访问 Azure 文件共享，请遵循常规网络注意事项；有关详细信息，请参阅 [Azure 文件存储网络注意事项](./storage-files-networking-overview.md)。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
 
 ## <a name="namespace-types"></a>命名空间类型
 DFS 命名空间提供了两种主要命名空间类型：

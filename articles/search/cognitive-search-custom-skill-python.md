@@ -2,19 +2,18 @@
 title: 自定义技能示例 (Python)
 titleSuffix: Azure Cognitive Search
 description: 本文向 Python 开发人员介绍使用 Azure Functions 和 Visual Studio 生成自定义技能的工具和技术。 自定义技能包含用户定义的模型或逻辑，可将这些模型或逻辑添加到 Azure 认知搜索中的 AI 扩充索引管道。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 40e20ad4bab0275b44cd868521c7dc70dec52567
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: effa3aede0c0020a32935ae58b702d234488411e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88936123"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737626"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>示例：使用 Python 创建自定义技能
 
@@ -56,7 +55,7 @@ ms.locfileid: "88936123"
 1. 选择“函数”作为授权级别。  这意味着，我们将提供一个[函数密钥](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)来调用函数的 HTTP 终结点。 
 1. 选择打开项目的方式。 对于此步骤，请选择“添加到工作区”，在当前工作区中创建函数应用。 
 
-Visual Studio Code 将在新的工作区中创建函数应用项目。 此项目包含 [host.json](../azure-functions/functions-host-json.md) 和 [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) 配置文件以及任何特定于语言的项目文件。 
+Visual Studio Code 将在新的工作区中创建函数应用项目。 此项目包含 [host.json](../azure-functions/functions-host-json.md) 和 [local.settings.json](../azure-functions/functions-develop-local.md#local-settings-file) 配置文件以及任何特定于语言的项目文件。 
 
 同时会在函数应用项目的 **Concatenator** 文件夹中创建一个新的 HTTP 触发函数。 此文件夹中有一个名为“\_\_init__.py”的包含以下内容的文件：
 

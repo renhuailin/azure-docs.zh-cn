@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: b1e4b06fcbecf11d7d5f58a583fe3bd6643d99ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 784fed6efb83e02940c6b73fb4c3aab792c4cf99
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101709387"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112518225"
 ---
 # <a name="troubleshooting-apache-kafka-for-confluent-cloud-solutions"></a>Apache Kafka for Confluent Cloud 解决方案故障排除
 
 本文档包含有关对使用 Apache Kafka for Confluent Cloud 的解决方案进行故障排除的信息。
 
-如果在本文中找不到解答或无法解决问题，请[通过 Azure 门户创建请求](manage.md#get-support)或联系 [Confluent 支持人员](https://support.confluent.io)。
+如果在本文中找不到解答或无法解决问题，请[通过 Azure 门户创建请求](get-support.md)或联系 [Confluent 支持人员](https://support.confluent.io)。
 
 ## <a name="cant-find-offer-in-the-marketplace"></a>在市场中找不到产品/服务
 

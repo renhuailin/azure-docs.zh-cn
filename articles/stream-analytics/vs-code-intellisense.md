@@ -6,16 +6,16 @@ author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 988b9d364f09a4c88bcaab1fe81ae80c8de5d4d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e022023ba9ceefd8426280b07d62b78a79d83e5
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96491564"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913668"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>适用于 Visual Studio Code 的 Azure 流分析工具中的 IntelliSense
 
-IntelliSense 可用于[适用于 VS Code 的 Azure 流分析工具](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview)中的[流分析查询语言](/stream-analytics-query/stream-analytics-query-language-reference?bc=https%253a%2f%2fdocs.microsoft.com%2fazure%2fbread%2ftoc.json&toc=https%253a%2f%2fdocs.microsoft.com%2fazure%2fstream-analytics%2ftoc.json)。 IntelliSense 是一个代码完成辅助插件，其中包括许多功能：“列出成员”、“参数信息”、“快速信息”和“完成单词”。 IntelliSense 功能有时也称作“代码完成”、“内容辅助”和“代码提示”等。
+IntelliSense 可用于[适用于 VS Code 的 Azure 流分析工具](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview)中的[流分析查询语言](/stream-analytics-query/stream-analytics-query-language-reference?toc=/azure/stream-analytics/toc.json)。 IntelliSense 是一个代码完成辅助插件，其中包括许多功能：“列出成员”、“参数信息”、“快速信息”和“完成单词”。 IntelliSense 功能有时也称作“代码完成”、“内容辅助”和“代码提示”等。
 
 ![IntelliSense 演示](./media/vs-code-intellisense/intellisense.gif)
 

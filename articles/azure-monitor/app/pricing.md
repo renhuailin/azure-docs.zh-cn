@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 5/05/2021
+ms.date: 6/24/2021
 ms.reviewer: lagayhar
-ms.openlocfilehash: 1ed9fc345b1c8afe416b4b98c621fc1c9b48a557
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 39109106a100d2af8a9dad4e6009f4c73fea8f59
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795251"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195519"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -33,7 +33,7 @@ ms.locfileid: "108795251"
 
 ### <a name="workspace-based-application-insights"></a>基于工作区的 Application Insights
 
-对于将数据发送到 Log Analytics 工作区的 Application Insights 资源（称为[基于工作区的 Application Insights 资源](create-workspace-resource.md)），数据引入和保留的计费由 Application Insights 数据所在的工作区完成。 这样，客户除了能够使用“即用即付”定价模型之外，还能使用 Log Analytics [定价模型](../logs/manage-cost-storage.md#pricing-model)的所有选项，其中包括“预留产能”。 Log Analytics 还提供了更多数据保留选项，包括[按数据类型保留](../logs/manage-cost-storage.md#retention-by-data-type)。 工作区中的 Application Insights 数据类型具有 90 天的保留期，无需支付费用。 使用 Web 测试以及启用自定义指标维度警报时，仍通过 Application Insights 来报告。 请了解如何使用[使用情况和预估成本](../logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs)、[Azure 成本管理 + 计费](../logs/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill)以及 [Log Analytics查询](#data-volume-for-workspace-based-application-insights-resources)，在 Log Analytics 中跟踪数据引入和保留成本。 
+对于将数据发送到 Log Analytics 工作区的 Application Insights 资源（称为[基于工作区的 Application Insights 资源](create-workspace-resource.md)），数据引入和保留的计费由 Application Insights 数据所在的工作区完成。 这样，你除了能使用“即用即付”[定价模型](../logs/manage-cost-storage.md#pricing-model)之外，还能使用 Log Analytics 定价模型的所有选项，其中包括“承诺层级”。 承诺层级提供的定价最多可低于即用即付的 30%。 Log Analytics 还提供了更多数据保留选项，包括[按数据类型保留](../logs/manage-cost-storage.md#retention-by-data-type)。 工作区中的 Application Insights 数据类型具有 90 天的保留期，无需支付费用。 使用 Web 测试以及启用自定义指标维度警报时，仍通过 Application Insights 来报告。 请了解如何使用[使用情况和预估成本](../logs/manage-cost-storage.md#understand-your-usage-and-estimate-costs)、[Azure 成本管理 + 计费](../logs/manage-cost-storage.md#viewing-log-analytics-usage-on-your-azure-bill)以及 [Log Analytics查询](#data-volume-for-workspace-based-application-insights-resources)，在 Log Analytics 中跟踪数据引入和保留成本。 
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>估算应用程序的管理成本
 
@@ -180,7 +180,7 @@ union (AppAvailabilityResults),
 
 Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json)中心提供了大量实用功能。 例如，使用“成本分析”功能可以查看 Azure 资源的开支。 按资源类型添加筛选器（对于 Application Insights，将其添加到 microsoft.insights/components），可以跟踪自己的资源支出。 然后，对于“分组依据”，选择“计量类别”或“计量”。  对于当前定价计划中的 Application Insights 资源，由于所有 Azure Monitor 组件只有一个日志后端，因此大多数使用情况将“计量类别”显示为“Log Analytics”。 
 
-通过[在 Azure 门户中下载使用情况信息](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)，可以更好地了解你的使用情况。
+通过[在 Azure 门户中下载使用情况信息](../../cost-management-billing/understand/download-azure-daily-usage.md)，可以更好地了解你的使用情况。
 在下载的电子表格中，可以查看每天每个 Azure 资源的使用情况。 在此 Excel 电子表格中，可通过以下方式查找 Application Insights 资源的使用情况：先按“计量类别”列进行筛选，以显示“Application Insights”和“Log Analytics”，然后按“实例 ID”列添加一个“包含 microsoft.insights/components”筛选器。  由于所有 Azure Monitor 组件只有一个日志后端，因此，大多数 Application Insights 使用情况都是根据“计量类别”为 Log Analytics 的计量报告的。  只有旧式定价层和多步骤 Web 测试中的 Application Insights 资源才使用计量类别 Application Insights 进行报告。  使用情况显示在“使用的数量”列中，每个条目的单位显示在“度量单位”列中。  另外还提供更多详细信息，可帮助你[了解 Microsoft Azure 帐单](../../cost-management-billing/understand/review-individual-bill.md)。
 
 ## <a name="managing-your-data-volume"></a>管理数据量
@@ -233,7 +233,7 @@ Azure 在 [Azure 成本管理和计费](../../cost-management-billing/costs/quic
 
 ### <a name="create-alerts-for-the-daily-cap"></a>创建针对每日上限的警报
 
-当引入的数据量达到警告级别或每日上限级别时，“Application Insights 每日上限”会在 Azure 活动日志中创建一个事件。  可以[基于这些活动日志事件创建警报](../alerts/alerts-activity-log.md#create-with-the-azure-portal)。 这些事件的信号名称如下：
+当引入的数据量达到警告级别或每日上限级别时，“Application Insights 每日上限”会在 Azure 活动日志中创建一个事件。  可以[基于这些活动日志事件创建警报](../alerts/alerts-activity-log.md#azure-portal)。 这些事件的信号名称如下：
 
 * 已达到 Application Insights 组件的每日上限警告阈值
 
@@ -332,7 +332,7 @@ Application Insights 资源的默认保留期为 90 天。 可以为每个 Appli
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>演示如何确定不同节点计数的示例
 
-| 方案                               | 每日节点计数总数 |
+| 场景                               | 每日节点计数总数 |
 |:---------------------------------------|:----------------:|
 | 1 个应用程序使用 3 个 Azure 应用服务实例和 1 个虚拟服务器 | 4 |
 | 3 个应用程序正运行在 2 个 VM 上，这些应用程序的 Application Insights 资源属于同一订阅，并且位于“按节点”层中 | 2 | 

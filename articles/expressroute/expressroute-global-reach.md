@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2021
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: 512f2529e5426e97187f5cb2840dcab27a32c1d6
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: e8fdac875bf6469363dbcf95f7ff347fad4cb55b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111541597"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733843"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute 是用来将本地网络连接到 Microsoft 云的一种专用且可复原的方式。 可以从专用数据中心或公司网络访问许多 Microsoft 云服务，例如 Azure 和 Microsoft 365。 例如，你可能在旧金山有一家分公司，其 ExpressRoute 线路位于硅谷，在伦敦有另一家分公司，其 ExpressRoute 线路位于同一城市。 这两个分公司都可以与美国西部和英国南部的 Azure 资源高速连接。 但是，分支机构不能彼此连接并直接发送数据。 换句话说，10.0.1.0/24 可以将数据发送到 10.0.3.0/24 和 10.0.4.0/24 网络，但不能发送到 10.0.2.0/24 网络。
@@ -52,6 +52,7 @@ ExpressRoute Global Reach 旨在补充服务提供商的 WAN 实施，并连接�
 * 南非（仅约翰内斯堡）
 * 瑞典
 * 瑞士
+* 台湾
 * 英国
 * 美国
 

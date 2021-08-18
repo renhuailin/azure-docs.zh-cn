@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/01/2021
 ms.author: apimpm
-ms.openlocfilehash: d000b9db658c76b5d7cdb586599f04d9078dde5d
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 6faa78dc75b67afd4c310a94ce4a81129e09cb26
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111812150"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742751"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>如何使用 API 管理中的客户端证书身份验证确保 API 安全
 
@@ -49,7 +49,7 @@ API 管理提供的功能可确保使用客户端证书安全地访问 API（即
 还可使用 [`context` 变量](api-management-policy-expressions.md#ContextVariables)创建策略表达式以检查客户端证书。 以下各节中的示例显示了使用 `context.Request.Certificate` 属性和其他 `context` 属性的表达式。
 
 > [!IMPORTANT]
-> 从 2021 年 5 月开始，仅当 API 管理实例的 [`hostnameConfiguration`](/rest/api/apimanagement/2019-12-01/apimanagementservice/createorupdate#hostnameconfiguration) 将 `negotiateClientCertificate` 属性设置为 True 时，`context.Request.Certificate` 属性才会请求证书。 `negotiateClientCertificate` 默认设置为 false。
+> 从 2021 年 5 月开始，仅当 API 管理实例的 [`hostnameConfiguration`](/rest/api/apimanagement/2020-12-01/api-management-service/create-or-update#hostnameconfiguration) 将 `negotiateClientCertificate` 属性设置为 True 时，`context.Request.Certificate` 属性才会请求证书。 `negotiateClientCertificate` 默认设置为 false。
 
 ### <a name="checking-the-issuer-and-subject"></a>检查颁发者和使用者
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.author: alsin
-ms.openlocfilehash: 02c122486ad9ca702e518445761fef05675c9067
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: d3a88c81f60eaf08f64326f2c53f4d5dfa886fa1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209690"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746750"
 ---
 # <a name="automanage-accounts"></a>Automanage 帐户
 
@@ -21,7 +21,7 @@ Automanage 帐户是 Automanage 服务用来执行其自动化操作的标识。
 
 在 Azure 门户体验中，在 VM 上启用 Automanage 时，“启用 Azure VM 最佳做法”边栏选项卡上有一个高级下拉列表，可用于分配或手动创建 Automanage 帐户。
 
-Automanage 帐户将获得订阅（包含加入 Automanage 的计算机）的“参与者”和“资源策略参与者”角色 。 你可以跨多个订阅在计算机上使用同一 Automanage 帐户，这会向该 Automanage 帐户授予所有订阅的“参与者”和“资源策略参与者”权限 。
+Automanage 帐户将被授予订阅（包含加入 Automanage 的计算机）的“参与者”和“资源策略参与者”角色 。 你可以在跨多个订阅的计算机上使用同一 Automanage 帐户，这会向该 Automanage 帐户授予所有订阅的“参与者”和“资源策略参与者”权限 。
 
 如果 VM 连接到其他订阅中的 Log Analytics 工作区，则还会向 Automanage 帐户授予该订阅中的“参与者”和“资源策略参与者”权限 。
 
@@ -87,8 +87,9 @@ az deployment group create --resource-group <resource group name> --template-fil
 1. 出现提示时，请输入所创建并保存的 Automanage 帐户的对象 ID。
 
 ```azurecli-interactive
-az deployment group create --resource-group <resource group name> --template-file azuredeploy.json
+az deployment sub create --location <location> --template-file azuredeploy2.json
 ```
+
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -99,6 +100,10 @@ az deployment group create --resource-group <resource group name> --template-fil
             "metadata": {
                 "description": "The principal to assign the role to"
             }
+        },
+        "dateTime": {
+            "type": "string",
+            "defaultValue": "[utcNow()]"
         }
     },
     "variables": {
@@ -109,7 +114,7 @@ az deployment group create --resource-group <resource group name> --template-fil
         {
             "type": "Microsoft.Authorization/roleAssignments",
             "apiVersion": "2020-04-01-preview",
-            "name": "[guid(variables('contributorRoleDefinitionID'))]",
+            "name": "[guid(concat(parameters('dateTime'), variables('contributorRoleDefinitionID')))]",
             "properties": {
                 "roleDefinitionId": "[variables('contributorRoleDefinitionID')]",
                 "principalId": "[parameters('principalId')]"
@@ -118,7 +123,7 @@ az deployment group create --resource-group <resource group name> --template-fil
         {
             "type": "Microsoft.Authorization/roleAssignments",
             "apiVersion": "2020-04-01-preview",
-            "name": "[guid(variables('resourcePolicyContributorRoleDefinitionID'))]",
+            "name": "[guid(concat(parameters('dateTime'), variables('resourcePolicyContributorRoleDefinitionID')))]",
             "properties": {
                 "roleDefinitionId": "[variables('resourcePolicyContributorRoleDefinitionID')]",
                 "principalId": "[parameters('principalId')]"

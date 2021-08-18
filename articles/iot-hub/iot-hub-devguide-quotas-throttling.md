@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Operations'
 - 'Role: Technical Support'
 - contperf-fy21q4
-ms.openlocfilehash: 127e511769a7c2aface1531c9f888e9ce213b999
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: f0c07da859ae34a030058ee2c99d2c7b72378f5d
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407014"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113135620"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -70,7 +70,7 @@ ms.locfileid: "111407014"
 
 *  **配额** 是每天可以在中心发送的聚合消息数。  可以在 [IoT 中心定价页](https://azure.microsoft.com/pricing/details/iot-hub/)上的“消息总数/天”列下找到中心的配额限制。
 
-*  云到设备和设备到云限制决定了发送消息的最大速率（在不考虑 4 KB 区块情况下的消息数）。  每条消息最大可以为 256 KB（[最大消息大小](iot-hub-devguide-quotas-throttling.md#other-limits)）。
+*  云到设备和设备到云限制决定了发送消息的最大速率（在不考虑 4 KB 区块情况下的消息数）。  D2C 消息最大为 256 KB；C2D 消息最大为 64 KB。 这些是每种类型的消息的[最大消息大小]。
 
 *  最好是限制调用数，这样就不会达到/超过限制。 如果你达到限制，IoT 中心会以错误代码 429 进行响应，客户端应回退并重试。 这些限制是按中心（在某些情况下，按中心/单位）应用的。 有关详细信息，请参阅[管理连接和可靠的消息传送/重试模式](iot-hub-reliability-features-in-sdks.md#retry-patterns)。
 

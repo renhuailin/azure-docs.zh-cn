@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 02/26/2021
 ms.author: alkohli
-ms.openlocfilehash: b79cb1b195d35c1e25dd750476c0dacb296f8010
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: a77cbee43ed52500e5de1b67286bada931a87754
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102636847"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736867"
 ---
 # <a name="use-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>使用 Azure 门户管理 Azure Stack Edge Pro 上的共享
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-本文介绍如何管理 Azure Stack Edge Pro 上的共享。 可以通过 Azure 门户或本地 Web UI 管理 Azure Stack Edge Pro。 使用 Azure 门户可以添加、删除和刷新共享，或者同步与共享相关联的存储帐户的存储密钥。 本文适用于 Azure Stack Edge Pro GPU、Azure Stack Edge Pro R 和 Azure Stack Edge Mini R 设备。
+本文介绍如何管理 Azure Stack Edge Pro 上的共享。 可以通过 Azure 门户或本地 Web UI 管理 Azure Stack Edge Pro。 使用 Azure 门户可以添加、删除和刷新共享，或者同步与共享相关联的存储帐户的存储密钥。
 
 ## <a name="about-shares"></a>关于共享
 
@@ -74,7 +74,7 @@ ms.locfileid: "102636847"
 3. 选择共享的 **类型**。 类型可以是“SMB”或“NFS”，默认为“SMB”。   SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。 根据你选择 SMB 共享还是 NFS 共享，显示的选项略有不同。
 
    > [!IMPORTANT]
-   > 确保未对所用的 Azure 存储帐户设置不可变策略，才可将该帐户用于 Azure Stack Edge Pro 或 Data Box Gateway 设备。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](../storage/blobs/storage-blob-immutability-policies-manage.md)。
+   > 确保未对所用的 Azure 存储帐户设置不可变策略，才可将该帐户用于 Azure Stack Edge Pro 或 Data Box Gateway 设备。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](../storage/blobs/immutable-policy-configure-version-scope.md)。
 
 4. 若要轻松地从 Edge 计算模块访问共享，请使用本地装入点。 选择“将共享与 Edge 计算配合使用”，使 Edge 模块能够将计算与本地装入点配合使用。
 
@@ -82,7 +82,7 @@ ms.locfileid: "102636847"
 
 6. 在“所有特权本地用户”字段中，选择“新建”或“使用现有项”。
 
-7. 选择“创建”  。 
+7. 选择“创建”。 
 
     ![创建本地共享](media/azure-stack-edge-gpu-manage-shares/add-local-share-2.png)
 

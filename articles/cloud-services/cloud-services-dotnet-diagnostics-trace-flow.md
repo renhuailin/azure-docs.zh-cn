@@ -4,16 +4,16 @@ description: 将跟踪消息添加到 Azure 应用程序中，以协作进行调
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: b00bb28128cfe9a2e701647ad174ea2c9dd458e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4764835eb11a8384bf0f10c01b48f1ba3afdbd3
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98742119"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113086129"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-classic-application-with-azure-diagnostics"></a>使用 Azure 诊断跟踪云服务（经典）应用程序的流
 

@@ -12,12 +12,12 @@ author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
 ms.date: 08/14/2019
-ms.openlocfilehash: d117bd686152e9bb158d0376f52238f9492d1bb7
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: a5c1475a4a517fc3c7767fec2d7ee9461476b083
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110708962"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112539711"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>为 Azure SQL 数据库配置故障转移组
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -84,11 +84,11 @@ ms.locfileid: "110708962"
    # Create a failover group between the servers
    $failovergroup = Write-host "Creating a failover group between the primary and secondary server..."
    New-AzSqlDatabaseFailoverGroup `
-      â€“ResourceGroupName $resourceGroupName `
+      ResourceGroupName $resourceGroupName `
       -ServerName $serverName `
       -PartnerServerName $drServerName  `
-      â€“FailoverGroupName $failoverGroupName `
-      â€“FailoverPolicy Automatic `
+      FailoverGroupName $failoverGroupName `
+      FailoverPolicy Automatic `
       -GracePeriodWithDataLossHours 2
    $failovergroup
 
@@ -248,11 +248,11 @@ ms.locfileid: "110708962"
    # Create a failover group between the servers
    Write-host "Creating failover group..."
    New-AzSqlDatabaseFailoverGroup `
-       â€“ResourceGroupName $resourceGroupName `
+       ResourceGroupName $resourceGroupName `
        -ServerName $serverName `
        -PartnerServerName $drServerName  `
-       â€“FailoverGroupName $failoverGroupName `
-       â€“FailoverPolicy Automatic `
+       FailoverGroupName $failoverGroupName `
+       FailoverPolicy Automatic `
        -GracePeriodWithDataLossHours 2
    Write-host "Failover group created successfully."
 
@@ -383,7 +383,7 @@ ms.locfileid: "110708962"
 
    下表显示了主托管实例的网关所需的值：
 
-    | **字段** | Value |
+    | **字段** | 值 |
     | --- | --- |
     | **订阅** |  主托管实例所在的订阅。 |
     | **名称** | 虚拟网络网关的名称。 |
@@ -445,7 +445,7 @@ ms.locfileid: "110708962"
 
 下表显示了辅助托管实例的网关所需的值：
 
-   | **字段** | Value |
+   | **字段** | 值 |
    | --- | --- |
    | **订阅** |  辅助托管实例所在的订阅。 |
    | **名称** | 虚拟网络网关的名称，例如 `secondary-mi-gateway`。 |

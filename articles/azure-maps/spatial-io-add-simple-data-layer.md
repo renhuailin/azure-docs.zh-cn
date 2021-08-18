@@ -7,14 +7,13 @@ ms.date: 02/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 90f3cb0ae44be176d3ae248988d098039c140c3e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d58ae0125e37d781075a0df0da65eb8b08241f4d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92896151"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750173"
 ---
 # <a name="add-a-simple-data-layer"></a>添加简单的数据层
 
@@ -77,7 +76,7 @@ map.layers.add(layer);
 > [!NOTE]
 > 此简单数据层使用[弹出模板](map-add-popup.md#add-popup-templates-to-the-map)类以表的形式显示 KML 提示框或功能属性。 默认情况下，弹出窗口呈现的所有内容都将作为安全功能在 iframe 内进行沙盒处理。 但存在一些限制：
 >
-> - 所有脚本、窗体、指针锁和顶部导航功能都处于禁用状态。 单击时，允许链接在新选项卡中打开。 
+> - 所有脚本、窗体、指针锁定和顶部导航功能都处于禁用状态。 单击时，允许链接在新选项卡中打开。 
 > - 不支持 iframe `srcdoc` 参数的旧版本浏览器会受到限制，仅能呈现少量内容。
 > 
 > 如果信任加载到弹出窗口中的数据，并且可能希望加载到弹出窗口的脚本可以访问应用程序，则可以通过将弹出模板的 `sandboxContent` 选项设置为 false 来禁用此设置。 

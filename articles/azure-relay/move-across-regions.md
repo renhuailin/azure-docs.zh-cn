@@ -2,14 +2,14 @@
 title: 将 Azure 中继命名空间移到另一个区域
 description: 本文介绍了如何将 Azure 中继命名空间从当前区域移到另一个区域。
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 06/03/2021
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 60a182764639341fcda159356dd9fe6c65cfabd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f612dc5318044fd539724c66b4aa37df6d3dafa
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89463493"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667767"
 ---
 # <a name="move-an-azure-relay-namespace-to-another-region"></a>将 Azure 中继命名空间移到另一个区域
 本文介绍了如何将 Azure 中继命名空间从一个区域移到另一个区域。 下面是概要步骤：
@@ -45,7 +45,7 @@ ms.locfileid: "89463493"
 部署模板以在目标区域中创建一个中继命名空间。 
 
 1. 在 Azure 门户中，选择“创建资源”。
-2. 在“搜索市场”中，键入“模板部署”作为搜索文本，选择“模板部署(使用自定义模板进行部署)”，然后按 Enter   。
+2. 在“搜索市场”中，键入“模板部署”作为搜索文本，选择“模板部署（使用自定义模板进行部署）”，然后按 ENTER。
 
     :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="新的模板部署":::    
 1. 在“模板部署”页面上，选择“创建”。
@@ -68,7 +68,7 @@ ms.locfileid: "89463493"
     1. 选择“查看 + 创建”。 
 
         :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="部署资源管理器模板":::
-    1. 在“查看 + 创建”页上，选择页面底部的“创建” 。 
+    1. 在“查看 + 创建”页上，选择页面底部的“创建”。 
     
 ## <a name="verify"></a>验证
 1. 在部署成功后，选择“转到资源组”。

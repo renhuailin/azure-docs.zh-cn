@@ -5,20 +5,20 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 02/03/2020
-ms.openlocfilehash: 9028d85346611341afec0d0598f27a77e4f37fdf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 40555071ac6c65e5c788fd17e6b02fd1bba47f68
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101715490"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112282432"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>使用 Azure CLI 创建 HDInsight 群集
 
-[!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
+[!INCLUDE [selector](includes/hdinsight-create-linux-cluster-selector.md)]
 
 本文介绍了使用 Azure CLI 创建 HDInsight 3.6 群集的相关步骤。
 
-[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+[!INCLUDE [delete-cluster-warning](includes/hdinsight-delete-cluster-warning.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -35,7 +35,7 @@ ms.locfileid: "101715490"
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. 设置环境变量。 本文中的变量用法基于 Bash。 在其他环境中需要进行细微的更改。 有关用于群集创建的可能参数的完整列表，请参见 [az-hdinsight-create](/cli/azure/hdinsight#az-hdinsight-create)。
+2. 设置环境变量。 本文中的变量用法基于 Bash。 在其他环境中需要进行细微的更改。 有关用于群集创建的可能参数的完整列表，请参见 [az-hdinsight-create](/cli/azure/hdinsight#az_hdinsight_create)。
 
     |参数 | 说明 |
     |---|---|
@@ -61,7 +61,7 @@ ms.locfileid: "101715490"
     export componentVersion=Hadoop=2.7
     ```
 
-3. 输入以下命令来[创建资源组](/cli/azure/group#az-group-create)：
+3. 输入以下命令来[创建资源组](/cli/azure/group#az_group_create)：
 
     ```azurecli-interactive
     az group create \
@@ -71,7 +71,7 @@ ms.locfileid: "101715490"
 
     有关有效位置的列表，请使用 `az account list-locations` 命令，并使用 `name` 值中的位置之一。
 
-4. 输入以下命令[创建 Azure 存储帐户](/cli/azure/storage/account#az-storage-account-create)：
+4. 输入以下命令[创建 Azure 存储帐户](/cli/azure/storage/account#az_storage_account_create)：
 
     ```azurecli-interactive
     # Note: kind BlobStorage is not available as the default storage account.
@@ -84,7 +84,7 @@ ms.locfileid: "101715490"
         --sku Standard_LRS
     ```
 
-5. 输入以下命令[从 Azure 存储帐户中提取主密钥](/cli/azure/storage/account/keys#az-storage-account-keys-list)，然后将其存储在某个变量中：
+5. 输入以下命令[从 Azure 存储帐户中提取主密钥](/cli/azure/storage/account/keys#az_storage_account_keys_list)，然后将其存储在某个变量中：
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -93,7 +93,7 @@ ms.locfileid: "101715490"
         --query [0].value -o tsv)
     ```
 
-6. 输入以下命令[创建 Azure 存储容器](/cli/azure/storage/container#az-storage-container-create)：
+6. 输入以下命令[创建 Azure 存储容器](/cli/azure/storage/container#az_storage_container_create)：
 
     ```azurecli-interactive
     az storage container create \
@@ -102,7 +102,7 @@ ms.locfileid: "101715490"
         --account-name $AZURE_STORAGE_ACCOUNT
     ```
 
-7. 输入以下命令来[创建 HDInsight 群集](/cli/azure/hdinsight#az-hdinsight-create)：
+7. 输入以下命令来[创建 HDInsight 群集](/cli/azure/hdinsight#az_hdinsight_create)：
 
     ```azurecli-interactive
     az hdinsight create \

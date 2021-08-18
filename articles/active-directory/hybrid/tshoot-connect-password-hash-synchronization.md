@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c6ec162ceb51c3bf19be42219b054d8371ff221
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a796aff2c0882bd07b12a2f6fa6c0ab3eb793834
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98247346"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746129"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步解决密码哈希同步问题
 
@@ -256,7 +256,7 @@ ms.locfileid: "98247346"
 3. 如果未在 Azure AD 中启用该功能，或者未启用同步通道状态，请运行 Connect 安装向导。 选择“自定义同步选项”并取消选择密码同步。此项更改会暂时禁用该功能。 然后再次运行向导并重新启用密码同步。再次运行脚本，验证配置是否正确。
 
 4. 查看事件日志，查找错误。 查找下述事件，这些事件指示存在问题：
-    * 来源：“目录同步”ID：0、611、652、655 如果看到这些事件，则表示有连接问题。 事件日志消息包含有问题的林信息。 有关详细信息，请参阅[连接问题](#connectivity problem)。
+    * 来源：“目录同步”ID：0、611、652、655 如果看到这些事件，则表示有连接问题。 事件日志消息包含有问题的林信息。
 
 5. 如果没有看到检测信号，或者其他方面均为异常，则运行[触发所有密码的完全同步](#trigger-a-full-sync-of-all-passwords)。 仅运行该脚本一次。
 

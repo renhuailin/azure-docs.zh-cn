@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 245db436fc3216fe5c8c8f51c50c0ac03190f9eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4963e616b4a24ec502f0c571593e6433dcddb61c
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85564556"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253886"
 ---
 # <a name="connect-palo-alto-networks-to-azure-sentinel"></a>将 Palo Alto Networks 连接到 Azure Sentinel
 
@@ -28,6 +28,7 @@ ms.locfileid: "85564556"
 
 本文介绍了如何将 Palo Alto Networks 设备连接到 Azure Sentinel。 通过 Palo Alto Networks 数据连接器，可以轻松地将 Palo Alto Networks 日志与 Azure Sentinel 连接，以查看仪表板、创建自定义警报和改进调查。 使用 Azure Sentinel 上的 Palo Alto Networks 可以更深入地了解组织的 Internet 使用情况，并增强其安全操作功能。 
 
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="forward-palo-alto-networks-logs-to-the-syslog-agent"></a>将 Palo Alto Networks 日志转发到 Syslog 代理
 
@@ -52,8 +53,6 @@ ms.locfileid: "85564556"
 
 ## <a name="next-steps"></a>后续步骤
 在本文中，你已了解如何将 Palo Alto Networks 设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
-
-
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。

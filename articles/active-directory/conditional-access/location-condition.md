@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 06/07/2021
+ms.date: 06/21/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, olhuan
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: fff7512523b50c7bb0e7652832cfa27db688fff0
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 46e256aaac608d65211aa4575fc14faa9824a4bb
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111570828"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112574059"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>在条件访问策略中使用位置条件 
 
@@ -87,6 +87,9 @@ IPv4/IPv6 地址范围定义的命名位置受到以下限制：
 接下来的 24 小时内，如果用户仍在访问资源并授予应用在后台运行的权限，则每小时以静默方式共享一次设备的位置。 24 小时后，用户必须打开应用，并批准通知。 每次用户分享其 GPS 位置时，该应用都会进行越狱检测（使用与 Intune MAM SDK 相同的逻辑）。 如果设备已越狱，则位置不被视为有效，并且不会授予用户访问权。 
 
 在“仅报告”模式下具有基于 GPS 的命名位置的条件访问策略会提示用户共享其 GPS 位置，但不会阻止用户登录。
+
+> [!IMPORTANT]
+> 用户可能会每小时收到提示，让他们知道 Azure AD 正在 Authenticator 应用中检查其位置。 预览只应用于保护可接受此行为的非常敏感的应用，或者需要将访问限制于特定国家/地区的情况。
 
 #### <a name="include-unknown-countriesregions"></a>包括未知国家/地区
 

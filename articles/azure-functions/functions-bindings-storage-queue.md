@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 7497f98ec82596417a8c3fbb8cef11814e7df6c0
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ea5f9511cd9ae6d569d833ef8f950f1391c30f38
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412180"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113112178"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>适用于 Azure Functions 的 Azure 队列存储触发器和绑定概述
 
@@ -80,11 +80,11 @@ Functions 1.x 应用会自动引用 [Microsoft.Azure.WebJobs](https://www.nuget.
 
 |属性  |默认 | 说明 |
 |---------|---------|---------|
-|maxPollingInterval|00:00:01|队列轮询的最大间隔时间。 最小值为 00:00:00.100（100 毫秒），可递增至 00:01:00（1 分钟）。  在函数 2.x 和更高版本中，数据类型是 `TimeSpan`，而在版本 1.x 中，它以毫秒为单位。|
+|maxPollingInterval|00:01:00|队列轮询的最大间隔时间。 最小间隔为 00:00:00.100（100 毫秒）。 间隔最多可递增到 `maxPollingInterval`。 `maxPollingInterval` 的默认值为 00:01:00（1 分钟）。 `maxPollingInterval` 不得小于 00:00:00.100（100 毫秒）。 在 Functions 2.x 及更高版本中，数据类型为 `TimeSpan`。 在 Functions 1.x 中，它以毫秒为单位。|
 |visibilityTimeout|00:00:00|消息处理失败时的重试间隔时间。 |
 |batchSize|16|Functions 运行时同时检索并并行处理的队列消息数。 当处理的数量下降到 `newBatchThreshold` 时，运行时可获取另一个批，并开始处理这些消息。 因此，每个函数处理的最大并发消息数是 `batchSize` 加上 `newBatchThreshold`。 此限制分别应用于各个队列触发的函数。 <br><br>如果要避免对队列上收到的消息并行执行，可以将 `batchSize` 设置为 1。 但是，只有在函数应用仅于单个虚拟机 (VM) 上运行时，此设置才可消除并发。 如果函数应用横向扩展到多个 VM，每个 VM 可运行每个队列触发的函数的一个实例。<br><br>`batchSize` 的最大值为 32。 |
 |maxDequeueCount|5|在将某个消息移到有害队列之前，尝试处理该消息的次数。|
-|newBatchThreshold|N*batchSize/2|只要同时处理的消息数下降到此数值，运行时即检索另一个批次。<br><br>`N` 表示在应用服务或高级计划上运行时可用的 vCPU 数。 对于消耗计划，其值为 `1`。|
+|newBatchThreshold|N*batchSize/2|只要同时处理的消息数下降到此数值，运行时即检索另一个批次。<br><br>`N` 表示在应用服务或高级版计划上运行时可用的 vCPU 数目。 对于消耗计划，其值为 `1`。|
 |messageEncoding|base64| 此设置仅适用于[扩展版本 5.0.0 和更高版本](#storage-extension-5x-and-higher)。 它表示消息的编码格式。 有效值为 `base64` 和 `none`。|
 
 ## <a name="next-steps"></a>后续步骤

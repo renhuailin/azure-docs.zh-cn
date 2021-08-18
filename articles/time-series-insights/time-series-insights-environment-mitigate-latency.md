@@ -3,21 +3,21 @@ title: 如何监视和降低限制 - Azure 时序见解 | Microsoft Docs
 description: 了解如何监视、诊断并减少在 Azure 时序见解中导致延迟和限制的性能问题。
 ms.service: time-series-insights
 services: time-series-insights
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
-ms.reviewer: v-mamcge, jasonh, kfile
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
+ms.reviewer: orspodek
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: e89189b22b144d9e92ee8315bc6fd9aabe699eec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12d03576d3522146550356b62d6bb4d9eb7f14b3
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91531643"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112368856"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights-gen1"></a>监视并缩减限制，以减少 Azure 时序见解 Gen1 中的延迟
 
@@ -61,7 +61,7 @@ ms.locfileid: "91531643"
 
    |指标  |说明  |
    |---------|---------|
-   |入口收到的字节数      | 从事件源读取的原始字节数。 原始计数通常包括属性名称和值。  |  
+   |入口收到的字节数      | 从事件源读取的原始字节数。 原始计数通常包括属性名称和值。  |
    |入口收到的无效消息数      | 从所有 Azure 事件中心或 Azure IoT 中心事件源读取的无效消息的计数。      |
    |入口收到的消息数    | 从所有事件中心或 IoT 中心事件源读取的消息的计数。        |
    |入口存储的字节数      | 已存储且可用于查询的事件的总大小。 仅根据属性值计算大小。        |
@@ -77,15 +77,15 @@ ms.locfileid: "91531643"
 
 ## <a name="throttling-and-ingress-management"></a>限制和入口管理
 
-- 如果你受到限制，则会注册“入口收到消息时间延迟”的值，以通知你消息到达事件源的实际时间比 Azure 时序见解环境晚多少秒（不包括索引时间，该时间大约为 30-60 秒）。  
+- 如果你受到限制，则会注册“入口收到消息时间延迟”的值，以通知你消息到达事件源的实际时间比 Azure 时序见解环境晚多少秒（不包括索引时间，该时间大约为 30-60 秒）。
 
-   入口收到消息计数延迟也应该有一个值，用于确定你在消息数方面落后多少。  若要赶上来，最容易的方式是增加环境的容量，使之达到能够克服此差异的规模。  
+   入口收到消息计数延迟也应该有一个值，用于确定你在消息数方面落后多少。  若要赶上来，最容易的方式是增加环境的容量，使之达到能够克服此差异的规模。
 
   例如，如果 S1 环境显示有 5,000,000 条消息的延迟，那么你可以将环境的大小增加到 6 个单元，以便在大约一天的时间内赶上进度。  甚至可以增加更多，这样追赶速度会更快。 在一开始预配某个环境时，尤其是在将其连接到某个事件源，而该事件源中已经有事件时，或者在批量上传大量历史数据时，追赶期是常见的现象。
 
 - 另一种方法是将“入口已存储事件”警报设置为在 2 小时的时间内 >= 略低于总环境容量的阈值  。  此警报有助于了解是否持续达到容量要求，指示很可能存在延迟。
 
-  例如，如果预配了三个 S1 单位（或每分钟入口容量为 2100 个事件），则可以将“入口存储的事件数”警报设置为 2 小时 >= 1900 个事件  。 如果因不断超过该阈值而触发警报，很可能是由于预配不足。  
+  例如，如果预配了三个 S1 单位（或每分钟入口容量为 2100 个事件），则可以将“入口存储的事件数”警报设置为 2 小时 >= 1900 个事件  。 如果因不断超过该阈值而触发警报，很可能是由于预配不足。
 
 - 如果怀疑受到限制，可以将“入口收到的消息数”和事件源的出口消息数相比较  。  如果传入事件中心的消息数大于“入口收到的消息数”，Azure 时序见解很可能受到了限制。
 

@@ -1,18 +1,20 @@
 ---
 title: 使用 Databricks Python 转换数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过在 Azure 数据工厂管道中运行 Databricks Python 活动来处理或转换数据。
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 03/15/2018
 author: nabhishek
 ms.author: abnarain
-ms.custom: devx-track-python
-ms.openlocfilehash: 6e25c08554e50311613ac4a79ac40c7efce23ae9
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.custom: devx-track-python, synapse
+ms.openlocfilehash: 24d1ab1860f875201c255e775af151af88585731
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107902977"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182069"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Python 活动转换数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -34,7 +36,7 @@ ms.locfileid: "107902977"
         "description": "MyActivity description",
         "type": "DatabricksSparkPython",
         "linkedServiceName": {
-            "referenceName": "MyDatabricksLinkedservice",
+            "referenceName": "MyDatabricksLinkedService",
             "type": "LinkedServiceReference"
         },
         "typeProperties": {
@@ -116,9 +118,9 @@ ms.locfileid: "107902977"
 
    使用 UI 时，Jar 库通常存储在 dbfs:/FileStore/jars 下。 可以通过 CLI 列出所有库：databricks fs ls dbfs:/FileStore/job-jars
 
-### <a name="or-you-can-use-the-databricks-cli"></a>或者可以使用 Databricks CLI：
+### <a name="or-you-can-use-the-databricks-cli"></a>或者，可以使用 Databricks CLI：
 
-1. 遵循[使用 Databricks CLI 复制库](/azure/databricks/dev-tools/cli/#copy-a-file-to-dbfs)
+1. 按照[使用 Databricks CLI 复制库](/azure/databricks/dev-tools/cli/#copy-a-file-to-dbfs)操作
 
 2. 使用 Databricks CLI[（安装步骤）](/azure/databricks/dev-tools/cli/#install-the-cli)
 

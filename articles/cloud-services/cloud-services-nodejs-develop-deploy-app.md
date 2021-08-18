@@ -4,16 +4,16 @@ description: 了解如何创建简单的 Node.js Web 应用程序并将其部署
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 9889e0e95db84b4dbc5856ba6425f0f303161068
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 084c876dce9e82997473d63a02702ef5bbd727c0
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98741615"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113093690"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service-classic"></a>生成 Node.js 应用程序并将其部署到 Azure 云服务（经典）
 

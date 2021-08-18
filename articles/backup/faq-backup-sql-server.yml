@@ -3,14 +3,15 @@ metadata:
   title: 常见问题解答 - 备份 Azure VM 上的 SQL Server 数据库
   description: 查找有关使用 Azure 备份在 Azure VM 上备份 SQL Server 数据库的常见问题的解答。
   ms.reviewer: vijayts
-  ms.topic: conceptual
+  ms.topic: article
+  ms.service: backup
   ms.date: 05/07/2021
-  ms.openlocfilehash: 0c53b52f38103790ae5439e33d81c268756b5eec
-  ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+  ms.openlocfilehash: b9d0efe909cd82cec1b3ade53882b3a3935b0353
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/07/2021
-  ms.locfileid: "111907057"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253193"
 title: 有关备份 Azure VM 上运行的 SQL Server 数据库的常见问题解答
 summary: >
   本文将会解答有关备份 Azure 虚拟机 (VM) 上运行的 SQL Server 数据库以及使用 [Azure 备份](backup-overview.md)服务的常见问题。
@@ -89,7 +90,7 @@ sections:
   - question: >
       成功的备份作业是否会创建警报？
     answer: >
-      不是。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](backup-azure-monitoring-built-in-monitor.md)介绍了门户警报的详细行为。 但是，如果希望在作业成功的情况下也收到警报，可以[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
+      否。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](backup-azure-monitoring-built-in-monitor.md)介绍了门户警报的详细行为。 但是，如果希望在作业成功的情况下也收到警报，可以[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
   - question: >
       “备份作业”菜单中是否会显示计划的备份作业？
     answer: >
@@ -117,7 +118,7 @@ sections:
   - question: >
       为什么不显示自动保护实例的已添加数据库？
     answer: >
-      [添加到自动保护实例的数据库](backup-sql-server-database-azure-vms.md#enable-auto-protection)可能不会立即显示在“受保护的项”下。 这是因为，发现功能通常每隔 8 小时运行一次。 但是，如果按下图所示选择“重新发现数据库”来手动运行发现，则可以立即发现并保护新的数据库：
+      [添加到自动保护实例的数据库](backup-sql-server-database-azure-vms.md#enable-auto-protection)可能不会立即显示在“受保护的项”下。 这是因为发现操作通常每 8 小时运行一次，而实际的系统保护可能需要更长时间，因为这取决于 VM 的大小。 但是，如果按下图所示选择“重新发现 DB”来手动运行发现操作，则可以立即发现新的数据库：
 
         ![手动发现新添加的数据库](./media/backup-azure-sql-database/view-newly-added-database.png)
   - question: >

@@ -6,22 +6,22 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 06/14/2021
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 52da3c28faa375f8b308e3fe78329fec4f996af9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 845a2d7af740b804d25250753c02c2791da82944
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97804048"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414928"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (C)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-在本教程中，用户首先将学习使用运行 Raspbian 的 Raspberry Pi 的基础知识。 然后将学习如何使用 [Azure IoT 中心](about-iot-hub.md)将设备无缝连接到云。 有关 Windows 10 IoT Core 的示例，请访问 [Windows 开发人员中心](https://www.windowsondevices.com/)。
+在本教程中，首先学习有关使用运行 Raspberry Pi OS 的 Raspberry Pi 的基础知识。 然后将学习如何使用 [Azure IoT 中心](about-iot-hub.md)将设备无缝连接到云。 有关 Windows 10 IoT Core 的示例，请访问 [Windows 开发人员中心](https://www.windowsondevices.com/)。
 
 还没有工具包？ 请尝试 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)。 或在[此处](https://azure.microsoft.com/develop/iot/starter-kits)购买新工具包。
 
@@ -93,25 +93,25 @@ ms.locfileid: "97804048"
 
 现在设置 Raspberry Pi。
 
-### <a name="install-the-raspbian-operating-system-for-pi"></a>为 Pi 安装 Raspbian 操作系统
+### <a name="install-the-raspberry-pi-os"></a>安装 Raspberry Pi OS
 
-准备用于安装 Raspbian 映像的 microSD 卡。
+准备用于安装 Raspberry Pi OS 映像的 microSD 卡。
 
-1. 下载 Raspbian。
+1. 下载 Raspberry Pi OS。
 
-   1. [下载 Raspbian Stretch with Desktop](https://www.raspberrypi.org/software/)（.zip 文件）。
+   1. [下载 Raspberry Pi OS with Desktop](https://www.raspberrypi.org/software/)（.zip 文件）。
 
-   2. 将 Raspbian 映像提取到计算机上的一个文件夹中。
+   2. 将映像解压缩到计算机的某个文件夹中。
 
-2. 将 Raspbian 安装到 microSD 卡。
+2. 将 Raspberry Pi OS 安装到 microSD 卡。
 
    1. [下载并安装 Etcher SD 卡刻录机实用工具](https://etcher.io/)。
 
-   2. 运行 Etcher 并选择你在步骤 1 中提取的 Raspbian 映像。
+   2. 运行 Etcher 并选择已在步骤 1 中解压缩的 Raspberry Pi OS 映像。
 
    3. 选择 microSD 卡驱动器。 注意，Etcher 可能已选择了正确的驱动器。
 
-   4. 单击“刷机”，将 Raspbian 安装到 microSD 卡。
+   4. 单击“Flash”，将 Raspberry Pi OS 安装到 microSD 卡。
 
    5. 在安装完成后，从计算机中移除 microSD 卡。 可以安全地直接移除 microSD 卡，因为在完成时 Etcher 会自动弹出或卸载 microSD 卡。
 
@@ -119,11 +119,11 @@ ms.locfileid: "97804048"
 
 ### <a name="enable-ssh-and-spi"></a>启用 SSH 和 SPI
 
-1. 将 Pi 连接到监视器、键盘和鼠标，启动 Pi，然后通过将 `pi` 用作用户名并将 `raspberry` 用作密码来登录 Raspbian。
+1. 将 Pi 连接到监视器、键盘和鼠标，启动 Pi，然后通过将 `pi` 用作用户名并将 `raspberry` 用作密码来登录 Raspberry Pi OS。
  
 2. 依次单击 Raspberry 图标 >“首选项” > “Raspberry Pi 配置”。
 
-   ![Raspbian 首选项菜单](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
+   ![Raspberry Pi OS 首选项菜单](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
 3. 在“接口”选项卡上，将“SPI”和“SSH”设置为“启用”，并单击“确定”。 如果没有物理传感器并且想要使用模拟的传感器数据，则此步骤是可选的。
 
@@ -190,11 +190,10 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 1. 通过运行以下命令，克隆示例应用程序：
 
    ```bash
-   sudo apt-get install git-core
    git clone https://github.com/Azure-Samples/iot-hub-c-raspberrypi-client-app.git
    ```
 
-2. 运行安装脚本：
+2. 安装脚本随示例一起提供，用于准备开发环境并生成示例。 运行安装脚本：
 
    ```bash
    cd ./iot-hub-c-raspberrypi-client-app
@@ -208,7 +207,7 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 
 ### <a name="build-and-run-the-sample-application"></a>生成并运行示例应用程序
 
-1. 通过运行以下命令，生成示例应用程序：
+1. 安装脚本应已生成示例。 但是，如果要进行更改并需要重新生成示例应用程序，请运行以下命令：
 
    ```bash
    cmake . && make
@@ -235,6 +234,15 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 若要监视 IoT 中心从设备收到的消息，一种方法是使用适用于 Visual Studio Code 的 Azure IoT Tools。 若要了解详细信息，请参阅[使用适用于 Visual Studio Code 的 Azure IoT Tools 在设备和 IoT 中心之间发送和接收消息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
 
 若要了解如何通过更多方式来处理设备发送的数据，请转到下一部分。
+
+## <a name="clean-up-resources"></a>清理资源
+
+可以将在本主题中创建的资源用于本文档集中的其他教程和快速入门。 如果打算继续学习其他快速入门或相关教程，请不要清理在本主题中创建的资源。 如果不打算继续，请在 Azure 门户中执行以下步骤来删除本主题创建的所有资源。
+
+1. 在 Azure 门户的左侧菜单中选择“所有资源”，然后选择你创建的 IoT 中心。 
+1. 在 IoT 中心概述窗格顶部，单击“删除”。
+1. 输入中心名称，然后再次单击“删除”以确认永久删除 IoT 中心。
+
 
 ## <a name="next-steps"></a>后续步骤
 

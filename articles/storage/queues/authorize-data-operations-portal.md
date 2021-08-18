@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 35f4e76a437c5ea5926a95b199e433c6e5b1eb76
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: da6dfb018885ce55323e4a05e738501692c68a58
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901252"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727969"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>选择如何在 Azure 门户中授予对队列数据的访问权限
 
@@ -52,7 +52,7 @@ ms.locfileid: "111901252"
 
 Azure 资源管理器“读取者”角色允许用户查看存储帐户资源，但不允许修改这些资源。 该角色不提供对 Azure 存储中的数据的读取权限，而只提供对帐户管理资源的读取权限。 “读取者”角色是用户导航到 Azure 门户中的队列所需的。
 
-若要了解支持访问队列数据的内置角色，请参阅[队列的 Azure 角色](assign-azure-role-data-access.md#azure-roles-for-queues)。
+有关支持访问队列数据的内置角色的信息，请参阅[使用 Azure Active Directory 授权访问队列](authorize-access-azure-active-directory.md)。
 
 自定义角色能够支持内置角色所提供的相同权限的不同组合。 若要详细了解如何创建 Azure 自定义角色，请参阅 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)和[了解 Azure 资源的角色定义](../../role-based-access-control/role-definitions.md)。
 
@@ -93,5 +93,5 @@ Azure 资源管理器“读取者”角色允许用户查看存储帐户资源�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure Active Directory 验证对 Azure Blob 和队列的访问权限](../common/storage-auth-aad.md)
+- [授权访问 Azure 存储中的数据](../common/authorize-data-access.md)
 - [分配用于访问队列数据的 Azure 角色](assign-azure-role-data-access.md)

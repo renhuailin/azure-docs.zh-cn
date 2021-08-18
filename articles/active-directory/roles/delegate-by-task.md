@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9869a90c0159a7f60929c1ff9b0cf3319d60d5b
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: a65ce79252c25d187ed61de3b637182deaf225db
+ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111439019"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113136339"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -55,6 +55,7 @@ ms.locfileid: "111439019"
 > | 创建、读取、更新和删除注册用户流 |外部 ID 用户流管理员 |  |
 > | 创建、读取、更新和删除用户特性 | 外部 ID 用户流属性管理员 |  |
 > | 创建、读取、更新和删除用户 | 用户管理员 |  |
+> | 配置 B2B 外部协作设置 | 全局管理员角色 |  |
 > | 读取所有配置 | 全局读取者 |  |
 > | 读取 B2C 审核日志 | 全局读取者（[请参阅文档](../../active-directory-b2c/faq.yml)） |  |
 
@@ -165,8 +166,8 @@ ms.locfileid: "111439019"
 > [!div class="mx-tableFixed"]
 > | 任务 | 最小特权角色 | 其他角色 |
 > | ---- | --------------------- | ---------------- |
-> | 将资源添加到目录 | 用户管理员 | 通过权利管理，你可将此任务委派给目录所有者（[参阅文档](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)） |
-> | 向目录添加 SharePoint Online 站点 | 全局管理员 |  |
+> | 将资源添加到目录 | Identity Governance 管理员 | 通过权利管理，你可将此任务委派给目录所有者（[参阅文档](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)） |
+> | 向目录添加 SharePoint Online 站点 | SharePoint 管理员 |  |
 
 ## <a name="groups"></a>组
 
@@ -225,7 +226,7 @@ ms.locfileid: "111439019"
 > [!div class="mx-tableFixed"]
 > | 任务 | 最小特权角色 | 其他角色 |
 > | ---- | --------------------- | ---------------- |
-> | 读取登录日志 | 报告读者 | 安全读取者<br/>安全管理员 |
+> | 读取登录日志 | 报告读者 | 安全读取者<br/>安全管理员<br/> 全局读取者 |
 
 ## <a name="multi-factor-authentication"></a>多重身份验证
 

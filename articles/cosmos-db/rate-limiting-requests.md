@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/07/2021
 ms.author: pelasne
-ms.openlocfilehash: 01bde3cdcb5ee39dfc3e1959165523cfd05c3481
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f9130808da0f833246e013e56f081b92fa461ac9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110103743"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724466"
 ---
 # <a name="optimize-your-azure-cosmos-db-application-using-rate-limiting"></a>使用速率限制优化 Azure Cosmos DB 应用程序
 
@@ -83,10 +83,10 @@ ms.locfileid: "110103743"
 用于确定请求成本的方法根据所用的每个 API 而异：
 
 * [核心 API](find-request-unit-charge.md)
-* [Cassandra API](find-request-unit-charge-cassandra.md)
+* [Cassandra API](cassandra/find-request-unit-charge-cassandra.md)
 * [Gremlin API](find-request-unit-charge-gremlin.md)
-* [Mongo DB API](find-request-unit-charge-mongodb.md)
-* [表 API](find-request-unit-charge-table.md)
+* [Mongo DB API](mongodb/find-request-unit-charge-mongodb.md)
+* [表 API](table/find-request-unit-charge.md)
 
 ## <a name="write-requests"></a>写入请求
 

@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98991d6cbbd827c612ca74d20dbf4e7ce6795ecc
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91536964"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112200827"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>将工作设备加入组织的网络
 将工作专用的 Windows 10 设备加入组织的网络，以便能够访问可能受限的资源。
@@ -68,6 +68,9 @@ ms.locfileid: "91536964"
 
 ## <a name="to-join-an-already-configured-windows-10-device"></a>加入已配置的 Windows 10 设备
 如果已拥有设备一段时间并且已设置该设备，可执行以下步骤将设备加入网络。
+
+> [!NOTE]
+> 将已配置的 Windows 10 设备联接到 Azure AD 时，必须使用本地管理员组成员帐户。
 
 1. 打开“设置”，然后选择“帐户” 。
 

@@ -2,13 +2,13 @@
 title: 注册表服务层级和功能
 description: 了解 Azure 容器注册表的基本、标准和高级服务层 (SKU) 中的功能和限制（配额）。
 ms.topic: article
-ms.date: 05/18/2020
-ms.openlocfilehash: 323d36fe022d8b8e9618b8beb1facae93d22df4e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 06/24/2021
+ms.openlocfilehash: 8c27426cae6d80e31aef3d7ef9b75d28a14bd923
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781246"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113437533"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure 容器注册表服务层级
 
@@ -27,6 +27,41 @@ Azure 容器注册表分为多个服务层级（也称为 SKU）。 这些层级
 下表详细介绍了“基本”、“标准”和“高级”服务层级的功能和注册表限制。
 
 [!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
+
+## <a name="registry-throughput-and-throttling"></a>注册表吞吐量和限制
+
+### <a name="throughput"></a>吞吐量 
+
+生成高速率的注册表操作时，请使用服务层级对读写操作和带宽的限制作为指导，以实现预期最大吞吐量。 这些限制会影响数据平面操作，包括列出、删除、推送和拉取映像和其他项目。
+
+要准确估计映像拉取和推送的吞吐量，请考虑注册表限制和以下因素： 
+
+* 映像层的数量和大小
+* 跨映像重用层或基础映像
+* 每次拉取或推送可能需要的额外 API 调用
+
+有关详细信息，请参阅 [Docker HTTP API V2](https://docs.docker.com/registry/spec/api/) 的文档。
+
+在对注册表吞吐量进行评估或故障排除时，还要考虑客户端环境的配置：
+
+* 用于并发操作的 Docker 守护程序配置
+* 与注册表的数据终结点的网络连接（如果注册表是[异地复制](container-registry-geo-replication.md)的）。
+
+如果你遇到注册表吞吐量的问题，请参阅[对注册表性能进行故障排除](container-registry-troubleshoot-performance.md)。 
+
+#### <a name="example"></a>示例
+
+要将单个 133 MB 的 `nginx:latest` 映像推送到 Azure 容器注册表需要对映像的五个层执行多个读写操作： 
+
+* 读取映像清单的读取操作（如果映像清单存在于注册表中）
+* 写入映像的配置 blob 的写入操作
+* 写入映像清单的写入操作
+
+### <a name="throttling"></a>限制
+
+当注册表确定请求速率超出注册表的服务层级允许的限制时，你可能会遇到拉取或推送操作的限制。 你可能会看到类似于 `Too many requests` 的 HTTP 429 错误。
+
+当你在非常短的时间内生成大量映像拉取或推送操作时，即使读写操作的平均速率未超出注册表限制，也可能会暂时出现限制。 你可能需要在代码中通过一些回退操作来实现重试逻辑，或者降低对注册表的请求的最大速率。
 
 ## <a name="changing-tiers"></a>更改层级
 

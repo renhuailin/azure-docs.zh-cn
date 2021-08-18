@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eafeaf59757fcda978fa89b4bc2f9882b769e48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e610c6dd2763a029ddc0f18fe5526d77e5ff685a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94835894"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733656"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>在标识保护中模拟风险检测
 
@@ -96,7 +96,7 @@ ms.locfileid: "94835894"
 1. 依次转到“Azure Active Directory” > “安全性” > “概述”。
 1. 选择“配置用户风险策略”。
    1. 在“分配”下
-      1. “用户”：选择“所有用户”或“选择个人和组”（如果你限制推出的话）。
+      1. 用户 - 选择“所有用户”或“选择个人和组”（如果你限制推出的话）。
          1. （可选）可以选择从策略中排除用户。
       1. “条件” - “用户风险”：Microsoft 建议将此选项设置为“高”。
    1. 在“控制”下
@@ -116,7 +116,7 @@ ms.locfileid: "94835894"
 1. 依次转到“Azure Active Directory” > “安全性” > “概述”。
 1. 选择“配置登录风险策略”。
    1. 在“分配”下
-      1. “用户”：选择“所有用户”或“选择个人和组”（如果你限制推出的话）。
+      1. 用户 - 选择“所有用户”或“选择个人和组”（如果你限制推出的话）。
          1. （可选）可以选择从策略中排除用户。
       1. “条件” - “登录风险”：Microsoft 建议将此选项设置为“中等以上”。
    1. 在“控制”下

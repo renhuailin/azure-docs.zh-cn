@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 01/19/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 576a791ee8c252a8bc1fa73cd98174e6958cf606
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 8e893a95337801db4ee35cfdc00e2d97f8d12db6
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111751426"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285855"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
 
@@ -188,7 +188,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 本部分仅适用于在本地创建主映像的情况。
 
-以下说明将介绍如何将主映像上传到 Azure 存储帐户。 如果还没有 Azure 存储帐户，请按照[此文](/azure/developer/javascript/tutorial-vscode-static-website-node-03)中的说明创建一个。
+以下说明将介绍如何将主映像上传到 Azure 存储帐户。 如果还没有 Azure 存储帐户，请按照[此文](../storage/common/storage-account-create.md)中的说明创建一个。
 
 1. 将 VM 映像 (VHD) 转换为固定映像（如果尚未转换）。 如果未将映像转换为固定映像，则无法成功创建映像。
 

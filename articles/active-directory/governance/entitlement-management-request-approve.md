@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd47a623700c495a571bc4ca6b949d1a2229178a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f44390d042f12336c6556d05c4fe1332e822e068
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469154"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112963755"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>在 Azure AD 权利管理中批准或拒绝访问请求
 
@@ -49,7 +49,7 @@ ms.locfileid: "110469154"
 
 1. 在“等待处理”选项卡上找到请求。
 
-## <a name="view-requestors-answers-to-questions-preview"></a>查看请求者的问题答案（预览版）
+## <a name="view-requestors-answers-to-questions"></a>查看请求者的问题答案
 
 1. 导航到“我的访问权限”中的“审批”选项卡。
 
@@ -85,9 +85,9 @@ ms.locfileid: "110469154"
 
 1. 单击“提交”以提交所做的决定。
 
-    如果在一个阶段中为策略配置了多个审批者，则只有一个审批者需要对待审批内容做出决定。 在某个审批者提交其访问请求决策以后，就完成了该请求，该请求不再可供其他审批者来审批。 其他审批者可以在“我的访问权限”门户中查看请求决策和决策者。
+    如果在一个阶段中为某个策略配置了多个审批者，则只有一个审批者需要进行审批决策。 在某个审批者提交其访问请求决策以后，就完成了该请求，该请求不再可供其他审批者来审批。 其他审批者可以在“我的访问权限”门户中查看请求决策和决策者。
 
-    如果一个阶段中没有任何已配置的审批者能够批准或拒绝访问请求，则请求将在配置的请求持续时间后过期。 系统会通知用户，告知其访问请求已过期，需重新提交访问请求。
+    如果在一个阶段中配置的审批者都无法审批或拒绝访问请求，则在配置的请求期限过后，请求会到期。 系统会通知用户，告知其访问请求已过期，需重新提交访问请求。
 
 ## <a name="next-steps"></a>后续步骤
 

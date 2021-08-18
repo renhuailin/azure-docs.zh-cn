@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: 3a8fe3ded6608059cc6ad50901ffe6df5dcf1b08
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 969e2d2424b9f9af1dcd921a1cebfa9407e313eb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102441534"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438362"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
 
@@ -23,7 +23,7 @@ Microsoft Azure 存储资源管理器是一个独立的应用，使用它可在 
 
 本文介绍如何通过多种方式连接到 Azure 存储帐户并对其进行管理。
 
-:::image type="content" alt-text="Microsoft Azure 存储资源管理器" source="./vs-storage-explorer-overview.png":::
+:::image type="content" alt-text="Microsoft Azure 存储资源管理器" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-overview.png":::
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -86,17 +86,17 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 1. 在存储资源管理器中，选择“视图” > “帐户管理”，或选择“管理帐户”按钮。  
 
-    :::image type="content" alt-text="管理帐户" source ="./vs-storage-explorer-manage-accounts.png":::
+    :::image type="content" alt-text="管理帐户" source ="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-manage-accounts.png":::
 
 1. “帐户管理”现在显示登录的所有 Azure 帐户。 若要连接到另一个帐户，请选择“添加帐户…”。
 
 1. 随即将打开“连接到 Azure 存储”对话框。 在“选择资源”面板中，选择“订阅” 。
 
-    :::image type="content" alt-text="连接对话框" source="./vs-storage-explorer-connect-dialog.png":::
+    :::image type="content" alt-text="连接对话框" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-connect-dialog.png":::
 
 1. 在“选择 Azure 环境”面板中，选择要登录到的 Azure 环境。 你可以登录到全球 Azure、区域云和 Azure Stack 实例。 然后，选择“下一步”。
 
-    :::image type="content" alt-text="登录选项" source="./vs-storage-explorer-connect-environment.png":::
+    :::image type="content" alt-text="登录选项" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-connect-environment.png":::
 
     > [!TIP]
     > 有关 Azure Stack 的详细信息，请参阅[将存储资源管理器连接到 Azure Stack 订阅或存储帐户](/azure-stack/user/azure-stack-storage-connect-se)。
@@ -105,11 +105,11 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 1. 使用 Azure 帐户成功登录后，该帐户以及与之关联的 Azure 订阅将显示在“帐户管理”下。 选择要使用的 Azure 订阅，并选择“应用”。
 
-    :::image type="content" alt-text="选择 Azure 订阅" source="./vs-storage-explorer-account-panel.png":::
+    :::image type="content" alt-text="选择 Azure 订阅" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-account-panel.png":::
 
 1. “资源管理器”会显示与所选 Azure 订阅关联的存储帐户。
 
-    :::image type="content" alt-text="选择的 Azure 订阅" source="./vs-storage-explorer-subscription-node.png":::
+    :::image type="content" alt-text="选择的 Azure 订阅" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-subscription-node.png":::
 
 ### <a name="attach-to-an-individual-resource"></a>附加到单个资源
 
@@ -129,7 +129,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 若要连接到单个资源，请选择左侧工具栏中的“连接”按钮。 然后，按照你要连接到的资源类型的说明进行操作。
 
-:::image type="content" alt-text="“连接到 Azure 存储”选项" source="./vs-storage-explorer-connect-button.png":::
+:::image type="content" alt-text="“连接到 Azure 存储”选项" source="./media/vs-azure-tools-storage-manage-with-storage-explorer/vs-storage-explorer-connect-button.png":::
 
 成功添加到存储帐户的连接后，“本地和附加” > “存储帐户”下将显示新的树节点 。
 

@@ -10,13 +10,13 @@ ms.topic: reference
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 06/04/2021
-ms.openlocfilehash: c0767ffd85e6d6e93f922f4d27e5d41167282b1c
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 06/23/2021
+ms.openlocfilehash: 54a3e933cda054b8bd3f9e86f2db775fca7342f7
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555427"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964421"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>使用 vCore 购买模型的弹性池的资源限制
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "111555427"
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](file-space-manage.md)。
 
-每个只读副本都有自己的资源，如 vCore、内存、数据 IOPS、TempDB、辅助角色和会话等。 每个只读副本都受限于本文后面详细介绍的资源限制。
+弹性池的每个只读副本具有自身的资源，例如 vCore、内存、数据 IOPS、TempDB、辅助角色和会话。 每个只读副本都受到本文稍后详细说明的弹性池资源限制的约束。
 
 可以通过以下方式设置服务层级、计算大小（服务目标）和存储量：
 
@@ -60,7 +60,7 @@ ms.locfileid: "111555427"
 |内存 (GB)|7|14|21|28|35|42|
 |每个池的最大数据库数 <sup>1</sup>|100|200|500|500|500|500|
 |列存储支持|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|
+|内存中 OLTP 存储 (GB)|不适用|不适用|不适用|不适用|不适用|不适用|
 |最大数据大小 (GB)|512|756|1536|1536|1536|2048|
 |最大日志大小 <sup>2</sup>|154|227|461|461|461|614|
 |TempDB 最大数据大小 (GB)|32|64|96|128|160|192|
@@ -73,13 +73,13 @@ ms.locfileid: "111555427"
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|
 |每个数据库的最小/最大弹性池 vCore 选项|0, 0.25, 0.5, 1|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...3|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...5|0, 0.25, 0.5, 1...6|
 |副本数|1|1|1|1|1|1|
-|Multi-AZ|空值|空值|空值|空值|空值|空值|
-|读取横向扩展|空值|空值|空值|空值|空值|空值|
+|Multi-AZ|不适用|空值|空值|空值|空值|空值|
+|读取横向扩展|不适用|空值|空值|不适用|不适用|不适用|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
 <sup>1</sup> 请参阅[密集弹性池中的资源管理](elastic-pool-resource-management.md)，了解其他注意事项。
 
-<sup>2</sup> 记录的最大数据大小值。 减少最大数据大小会按比例减少最大日志大小。
+<sup>2</sup> 表示记录的最大数据大小值。 减小最大数据大小会按比例减小最大日志大小。
 
 <sup>3</sup> IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
@@ -94,7 +94,7 @@ ms.locfileid: "111555427"
 |内存 (GB)|49|56|63|70|112|159.5|
 |每个池的最大数据库数 <sup>1</sup>|500|500|500|500|500|500|
 |列存储支持|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|
+|内存中 OLTP 存储 (GB)|不适用|空值|空值|空值|空值|空值|
 |最大数据大小 (GB)|2048|2048|2048|2048|3584|4096|
 |最大日志大小 (GB) <sup>2</sup>|614|614|614|614|1075|1229|
 |TempDB 最大数据大小 (GB)|224|256|288|320|512|768|
@@ -107,13 +107,13 @@ ms.locfileid: "111555427"
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|
 |每个数据库的最小/最大弹性池 vCore 选项|0, 0.25, 0.5, 1...7|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...9|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...10, 16|0, 0.25, 0.5, 1...10, 16, 24|
 |副本数|1|1|1|1|1|1|
-|Multi-AZ|空值|空值|空值|空值|空值|空值|
-|读取横向扩展|空值|空值|空值|空值|空值|空值|
+|Multi-AZ|空值|空值|不适用|空值|不适用|不适用|
+|读取横向扩展|空值|不适用|不适用|不适用|不适用|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
 <sup>1</sup> 请参阅[密集弹性池中的资源管理](elastic-pool-resource-management.md)，了解其他注意事项。
 
-<sup>2</sup> 记录的最大数据大小值。 减少最大数据大小会按比例减少最大日志大小。
+<sup>2</sup> 表示记录的最大数据大小值。 减小最大数据大小会按比例减小最大日志大小。
 
 <sup>3</sup> IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。    
 
@@ -130,7 +130,7 @@ ms.locfileid: "111555427"
 |内存 (GB)|10.4|20.8|31.1|41.5|51.9|62.3|72.7|
 |每个池的最大数据库数 <sup>1</sup>|100|200|500|500|500|500|500|
 |列存储支持|是|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|空值|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|不适用|不适用|不适用|不适用|
 |最大数据大小 (GB)|512|756|1536|1536|1536|2048|2048|
 |最大日志大小 (GB) <sup>2</sup>|154|227|461|461|461|614|614|
 |TempDB 最大数据大小 (GB)|64|128|192|256|320|384|448|
@@ -144,12 +144,12 @@ ms.locfileid: "111555427"
 |每个数据库的最小/最大弹性池 vCore 选项|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...6|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...12|0, 0.25, 0.5, 1...14|
 |副本数|1|1|1|1|1|1|1|
 |Multi-AZ|[以预览版提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[以预览版提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[以预览版提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[以预览版提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[以预览版提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[以预览版提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[以预览版提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
-|读取横向扩展|空值|空值|空值|空值|空值|空值|空值|
+|读取横向扩展|空值|不适用|空值|不适用|空值|不适用|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
 <sup>1</sup> 请参阅[密集弹性池中的资源管理](elastic-pool-resource-management.md)，了解其他注意事项。
 
-<sup>2</sup> 记录的最大数据大小值。 减少最大数据大小会按比例减少最大日志大小。
+<sup>2</sup> 表示记录的最大数据大小值。 减小最大数据大小会按比例减小最大日志大小。
 
 <sup>3</sup> IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
@@ -164,7 +164,7 @@ ms.locfileid: "111555427"
 |内存 (GB)|83|93.4|103.8|124.6|166.1|207.6|415.2|
 |每个池的最大数据库数 <sup>1</sup>|500|500|500|500|500|500|500|
 |列存储支持|是|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|空值|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|不适用|不适用|
 |最大数据大小 (GB)|2048|3072|3072|3072|4096|4096|4096|
 |最大日志大小 (GB) <sup>2</sup>|614|922|922|922|1229|1229|1229|
 |TempDB 最大数据大小 (GB)|512|576|640|768|1024|1280|2560|
@@ -178,12 +178,12 @@ ms.locfileid: "111555427"
 |每个数据库的最小/最大弹性池 vCore 选项|0, 0.25, 0.5, 1...16|0, 0.25, 0.5, 1...18|0, 0.25, 0.5, 1...20|0, 0.25, 0.5, 1...20, 24|0, 0.25, 0.5, 1...20, 24, 32|0, 0.25, 0.5, 1...16, 24, 32, 40|0, 0.25, 0.5, 1...16, 24, 32, 40, 80|
 |副本数|1|1|1|1|1|1|1|
 |Multi-AZ|[以预览版提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[以预览版提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[以预览版提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[以预览版提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[以预览版提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[以预览版提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[以预览版提供](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
-|读取横向扩展|空值|空值|空值|空值|空值|空值|空值|
+|读取横向扩展|不适用|空值|空值|空值|空值|空值|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
 <sup>1</sup> 请参阅[密集弹性池中的资源管理](elastic-pool-resource-management.md)，了解其他注意事项。
 
-<sup>2</sup> 记录的最大数据大小值。 减少最大数据大小会按比例减少最大日志大小。
+<sup>2</sup> 表示记录的最大数据大小值。 减小最大数据大小会按比例减小最大日志大小。
 
 <sup>3</sup> IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
@@ -213,13 +213,13 @@ ms.locfileid: "111555427"
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|
 |每个数据库的最小/最大弹性池 vCore 选项|0-8|0-10|0-12|0-14|0-16|
 |副本数|1|1|1|1|1|
-|Multi-AZ|空值|空值|空值|空值|空值|
-|读取横向扩展|空值|空值|空值|空值|空值|
+|Multi-AZ|空值|不适用|不适用|不适用|不适用|
+|读取横向扩展|不适用|不适用|不适用|不适用|不适用|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
 <sup>1</sup> 请参阅[密集弹性池中的资源管理](elastic-pool-resource-management.md)，了解其他注意事项。
 
-<sup>2</sup> 记录的最大数据大小值。 减少最大数据大小会按比例减少最大日志大小。
+<sup>2</sup> 表示记录的最大数据大小值。 减小最大数据大小会按比例减小最大日志大小。
 
 <sup>3</sup> IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
@@ -234,7 +234,7 @@ ms.locfileid: "111555427"
 |内存 (GB)|34.0|37.8|45.4|60.5|68.0|136.0|
 |每个池的最大数据库数 <sup>1</sup>|500|500|500|500|500|
 |列存储支持|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|
+|内存中 OLTP 存储 (GB)|空值|不适用|不适用|空值|空值|空值|
 |最大数据大小 (GB)|1536|1536|1536|3072|3072|4096|
 |最大日志大小 (GB) <sup>2</sup>|512|512|512|1024|1024|1024|
 |TempDB 最大数据大小 (GB)|83|93|111|148|167|333|
@@ -247,13 +247,13 @@ ms.locfileid: "111555427"
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|
 |每个数据库的最小/最大弹性池 vCore 选项|0-18|0-20|0-24|0-32|0-36|0-72|
 |副本数|1|1|1|1|1|1|
-|Multi-AZ|空值|空值|空值|空值|空值|空值|
+|Multi-AZ|空值|不适用|不适用|不适用|空值|不适用|
 |读取横向扩展|空值|空值|空值|空值|空值|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
 <sup>1</sup> 请参阅[密集弹性池中的资源管理](elastic-pool-resource-management.md)，了解其他注意事项。
 
-<sup>2</sup> 记录的最大数据大小值。 减少最大数据大小会按比例减少最大日志大小。
+<sup>2</sup> 表示记录的最大数据大小值。 减小最大数据大小会按比例减小最大日志大小。
 
 <sup>3</sup> IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
@@ -268,7 +268,7 @@ ms.locfileid: "111555427"
 |内存 (GB)|9|18|27|36|
 |每个池的最大数据库数 <sup>1</sup>|100|400|400|400|
 |列存储支持|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|
+|内存中 OLTP 存储 (GB)|不适用|不适用|不适用|空值|
 |最大数据大小 (GB)|756|1536|2048|2048|
 |最大日志大小 (GB) <sup>2</sup>|227|461|614|614|
 |TempDB 最大数据大小 (GB)|64|128|192|256|
@@ -281,13 +281,13 @@ ms.locfileid: "111555427"
 |最大并发会话数|30,000|30,000|30,000|30,000|
 |每个数据库的最小/最大弹性池 vCore 选项|2|2...4|2...6|2...8|
 |副本数|1|1|1|1|
-|Multi-AZ|空值|空值|空值|空值|
-|读取横向扩展|空值|空值|空值|空值|
+|Multi-AZ|不适用|空值|空值|空值|
+|读取横向扩展|不适用|空值|空值|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
 <sup>1</sup> 请参阅[密集弹性池中的资源管理](elastic-pool-resource-management.md)，了解其他注意事项。
 
-<sup>2</sup> 记录的最大数据大小值。 减少最大数据大小会按比例减少最大日志大小。
+<sup>2</sup> 表示记录的最大数据大小值。 减小最大数据大小会按比例减小最大日志大小。
 
 <sup>3</sup> IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
@@ -327,7 +327,7 @@ ms.locfileid: "111555427"
 
 <sup>1</sup> 请参阅[密集弹性池中的资源管理](elastic-pool-resource-management.md)，了解其他注意事项。
 
-<sup>2</sup> 记录的最大数据大小值。 减少最大数据大小会按比例减少最大日志大小。
+<sup>2</sup> 表示记录的最大数据大小值。 减小最大数据大小会按比例减小最大日志大小。
 
 <sup>3</sup> IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
@@ -341,7 +341,7 @@ ms.locfileid: "111555427"
 |vCore 数|7|8|9|10|16|24|
 |内存 (GB)|49|56|63|70|112|159.5|
 |每个池的最大数据库数 <sup>1</sup>|100|100|100|100|100|100|
-|列存储支持|空值|空值|空值|空值|空值|空值|
+|列存储支持|空值|不适用|不适用|不适用|空值|空值|
 |内存中 OLTP 存储 (GB)|7|8|9.5|11|20|36|
 |存储类型|本地 SSD|本地 SSD|本地 SSD|本地 SSD|本地 SSD|本地 SSD|
 |最大数据大小 (GB)|1024|1024|1024|1024|1024|1024|
@@ -362,7 +362,7 @@ ms.locfileid: "111555427"
 
 <sup>1</sup> 请参阅[密集弹性池中的资源管理](elastic-pool-resource-management.md)，了解其他注意事项。
 
-<sup>2</sup> 记录的最大数据大小值。 减少最大数据大小会按比例减少最大日志大小。
+<sup>2</sup> 表示记录的最大数据大小值。 减小最大数据大小会按比例减小最大日志大小。
 
 <sup>3</sup> IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
@@ -399,7 +399,7 @@ ms.locfileid: "111555427"
 
 <sup>1</sup> 请参阅[密集弹性池中的资源管理](elastic-pool-resource-management.md)，了解其他注意事项。
 
-<sup>2</sup> 记录的最大数据大小值。 减少最大数据大小会按比例减少最大日志大小。
+<sup>2</sup> 表示记录的最大数据大小值。 减小最大数据大小会按比例减小最大日志大小。
 
 <sup>3</sup> IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
@@ -434,7 +434,7 @@ ms.locfileid: "111555427"
 
 <sup>1</sup> 请参阅[密集弹性池中的资源管理](elastic-pool-resource-management.md)，了解其他注意事项。
 
-<sup>2</sup> 记录的最大数据大小值。 减少最大数据大小会按比例减少最大日志大小。
+<sup>2</sup> 表示记录的最大数据大小值。 减小最大数据大小会按比例减小最大日志大小。
 
 <sup>3</sup> IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
@@ -471,7 +471,7 @@ ms.locfileid: "111555427"
 
 <sup>1</sup> 请参阅[密集弹性池中的资源管理](elastic-pool-resource-management.md)，了解其他注意事项。
 
-<sup>2</sup> 记录的最大数据大小值。 减少最大数据大小会按比例减少最大日志大小。
+<sup>2</sup> 表示记录的最大数据大小值。 减小最大数据大小会按比例减小最大日志大小。
 
 <sup>3</sup> IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
@@ -505,7 +505,7 @@ ms.locfileid: "111555427"
 
 <sup>1</sup> 请参阅[密集弹性池中的资源管理](elastic-pool-resource-management.md)，了解其他注意事项。
 
-<sup>2</sup> 记录的最大数据大小值。 减少最大数据大小会按比例减少最大日志大小。
+<sup>2</sup> 表示记录的最大数据大小值。 减小最大数据大小会按比例减小最大日志大小。
 
 <sup>3</sup> IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
@@ -540,7 +540,7 @@ ms.locfileid: "111555427"
 
 <sup>1</sup> 请参阅[密集弹性池中的资源管理](elastic-pool-resource-management.md)，了解其他注意事项。
 
-<sup>2</sup> 记录的最大数据大小值。 减少最大数据大小会按比例减少最大日志大小。
+<sup>2</sup> 表示记录的最大数据大小值。 减小最大数据大小会按比例减小最大日志大小。
 
 <sup>3</sup> IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
@@ -548,17 +548,29 @@ ms.locfileid: "111555427"
 
 ## <a name="database-properties-for-pooled-databases"></a>共用数据库的数据库属性
 
-下表介绍了共用数据库的属性。
+对于每个弹性池，可以选择性地指定每个数据库的最小和最大 vCore 数，以修改池中的资源消耗模式。 指定的最小值和最大值适用于池中的所有数据库。 不支持为池中的单个数据库自定义最小和最大 vCore 数。 
 
-> [!NOTE]
-> 弹性池中单个数据库的资源限制通常与池外部具有相同计算大小（服务目标）的单一数据库相同。 例如，GP_Gen4_1 数据库的最大并发工作进程数为 200 个。 因此，GP_Gen4_1 池中数据库的最大并发工作进程数也是 200 个。 请注意，GP_Gen4_1 池中的并发工作进程总数为 210 个。
+还可为每个数据库设置最大存储，例如，为了防止数据库耗尽池存储。 可以单独为每个数据库配置此设置。
+
+下表描述了共用数据库的每个数据库的属性。 
 
 | 属性 | 说明 |
 |:--- |:--- |
-| 每个数据库的最大 vCore 数 |根据池中其他数据库的 vCore 使用率，池中任何数据库可以使用的 vCore 的最大数目。 每个数据库的 vCore 上限并不是数据库的资源保障。 这是应用于池中所有数据库的全局设置。 将每个数据库的最大 vCore 数设置得足够高，以处理数据库使用高峰情况。 因为池通常会假定数据库存在热使用模式和冷使用模式，在这些模式中并非所有数据库同时处于高峰使用状态，所以预期会存在某种程度的过量使用情况。|
-| 每个数据库的最小 vCore 数 |池中任何数据库可以保证的 vCore 最小数目。 这是应用于池中所有数据库的全局设置。 每个数据库的最小 vCore 可能设为 0，这也是默认值。 该属性值可以设置为介于 0 和每个数据库的平均 vCore 使用量之间的任意值。 池中数据库数目和每个数据库的 vCore 下限的积不能超过每个池的 vCore 数。|
-| 每个数据库的最大存储 |用户为池中的数据库设置的最大数据库大小。 共用数据库共享分配的池存储，因此数据库可以访问的大小限制为剩余的池存储与数据库大小中的较小者。 最大数据库大小是指数据文件的最大大小，不包括日志文件使用的空间。 |
+| 每个数据库的最大 vCore 数 |根据池中其他数据库的 vCore 使用率，池中任何数据库可以使用的 vCore 的最大数目。 每个数据库的 vCore 上限并不是数据库的资源保障。 如果每个数据库中的工作负载无需占用所有可用池资源即可保持足够的性能，请考虑为每个数据库设置最大 vCore 数，以防止池资源被单个数据库独占。 因为池通常会假定数据库存在热使用模式和冷使用模式，在这些模式中并非所有数据库同时处于高峰使用状态，所以预期会存在某种程度的过量使用情况。 |
+| 每个数据库的最小 vCore 数 |为池中任一数据库保留的最小 vCore 数。 若要保证每个数据库都有可用的资源，而不管池中其他数据库消耗了多少资源，请考虑为每个数据库设置最小 vCore 数。 每个数据库的最小 vCore 可能设为 0，这也是默认值。 该属性值可以设置为介于 0 和每个数据库的平均 vCore 使用量之间的任意值。|
+| 每个数据库的最大存储 |用户为池中的数据库设置的最大数据库大小。 共用数据库共享分配的池存储，因此数据库可以访问的大小限制为剩余的池存储与最大数据库大小中的较小者。 最大数据库大小是指数据文件的最大大小，不包括日志文件使用的空间。 |
 |||
+
+> [!IMPORTANT]
+> 由于弹性池中的资源有限，因此将每个数据库的最小 vCore 数设置为大于 0 的值会隐式限制每个数据库的资源使用量。 如果池中大多数数据库在某个时间点处于空闲状态，则为满足最小 vCore 数量保证而保留的资源将不可用于该时间点处于活动状态的数据库。
+>
+> 此外，将每个数据库最小 vCore 数设置为大于 0 的值会隐式限制可添加到池中的数据库数。 例如，如果在 20 vCore 池中将最小 vCore 数设置为 2，则意味着无法将超过 10 个数据库添加到该池中，因为每个数据库保留 2 个 vCore。
+> 
+
+尽管每个数据库属性以 vCore 表示，但也会限制它们消耗其他资源类型，例如数据 IO、日志 IO 和工作线程。 调整每个数据库的最大和最小 vCore 数量值时，将按比例调整所有资源类型的预留和限制。
+
+> [!NOTE]
+> 弹性池中单个数据库的资源限制通常与池外部具有相同计算大小（服务目标）的单一数据库相同。 例如，GP_Gen4_1 数据库的最大并发工作进程数为 200 个。 因此，GP_Gen4_1 池中数据库的最大并发工作进程数也是 200 个。 请注意，GP_Gen4_1 池中的并发工作进程总数为 210 个。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,17 +6,17 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: a246ee493b89051ad35436cd9213462a09a5d1b0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 46ae19af49b827af857f5f224ee5f0013d620a43
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384998"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414586"
 ---
 # <a name="event-grid-on-kubernetes---batch-event-delivery"></a>Kubernetes 上的事件网格 - 批量事件传送 
 具有 Azure Arc 的 Kubernetes 上的事件网格支持在单个传送请求中传送多个事件。 利用此功能，无需产生每个请求的 HTTP 开销，即可增加总体传送吞吐量。 批量事件传送默认关闭，并且可以使用事件订阅配置来打开。 
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 > [!WARNING]
 > 即使事件处理程序代码可能需要为每个批处理请求执行更多操作，处理每个传送请求所允许的最长持续时间也不变。 传送超时默认为 60 秒。

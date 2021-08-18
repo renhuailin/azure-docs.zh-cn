@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 05/11/2020
+ms.date: 06/15/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0824a0947318172ec8094787f4fe01058f1a5e7
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 2c50d62d5c8f24ed25258305411f9ed045098c7f
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109846117"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112232824"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中分配 Azure 资源角色
 
@@ -35,17 +35,17 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以管
 > [!NOTE]
 > 默认情况下，分配到“所有者”或“用户访问管理员”订阅角色的用户或组成员以及在 Azure AD 中启用订阅管理的 Azure AD 全局管理员具有资源管理员权限。 这些管理员可以对 Azure 资源使用 Privileged Identity Management 来分配角色、配置角色设置，以及审查访问权限。 如果没有资源管理员权限，用户将无法管理资源的 Privileged Identity Management。 查看 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)列表。
 
+Privileged Identity Management 支持内置的和自定义的 Azure 角色。 有关 Azure 自定义角色的详细信息，请参阅 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)。
+
 ## <a name="role-assignment-conditions"></a>角色分配条件
 
-可以使用 Azure 基于属性的访问控制 (Azure ABAC) 预览版，以通过 Privileged Identity Management (PIM) 针对符合条件的角色分配设置资源条件。 使用 PIM 时，最终用户必须激活符合条件的角色分配，才能获得执行特定操作的权限。 通过在 PIM 中使用 Azure ABAC 条件，不仅可以使用精细条件来限制用户对资源的角色权限，还可以使用 PIM 通过限时设置、审批工作流和审核线索等措施对角色分配进行保护。 有关详细信息，请参阅 [Azure 基于属性的访问控制公共预览版](../../role-based-access-control/conditions-overview.md)。
+可以使用 Azure 基于属性的访问控制 (Azure ABAC) 预览版，通过 Privileged Identity Management (PIM) 对符合条件的角色分配设置资源条件。 使用 PIM 时，最终用户必须激活符合条件的角色分配，才能获得执行特定操作的权限。 通过在 PIM 中使用 Azure ABAC 条件，不仅可以使用精细的条件限制用户对资源的角色权限，还可以使用 PIM 中通过限时设置、审批工作流和审核核线索等保护角色分配。 有关详细信息，请参阅 [Azure 基于属性的访问控制公共预览版](../../role-based-access-control/conditions-overview.md)。
 
 ## <a name="assign-a-role"></a>分配角色
 
 遵循以下步骤可使用户符合 Azure 资源角色的条件。
 
 1. 使用“所有者”或“用户访问管理员”角色权限登录到 [Azure 门户](https://portal.azure.com/)。
-
-    有关如何授予其他管理员访问权限以管理 Privileged Identity Management 的信息，请参阅[授予其他管理员访问权限以管理 Privileged Identity Management](pim-how-to-give-access-to-pim.md)。
 
 1. 打开“Azure AD Privileged Identity Management”。 
 
@@ -113,9 +113,9 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以管
 
     ![更新或删除角色分配](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
 
-1. 若要添加或更新条件以优化 Azure 资源访问，请在角色分配的“条件”列中选择“添加”或“查看/编辑”  。 目前，在 [Azure 基于属性的访问控制公共预览版](../../role-based-access-control/conditions-overview.md)中，只支持 Privileged Identity Management 中的存储 Blob 数据所有者、存储 Blob 数据读取者和 Blob 存储 Blob 数据参与者这三个角色。
+1. 若要添加或更新条件以优化 Azure 资源访问，请在角色分配的“条件”列中选择“添加”或“查看/编辑”  。 目前，Privileged Identity Management 中的存储 Blob 数据所有者、存储 Blob 数据读取者和 Blob 存储 Blob 数据参与者角色是 [Azure 基于属性的访问控制公共预览版](../../role-based-access-control/conditions-overview.md)支持的仅有的两个角色。
 
-    ![为访问控制更新或删除属性](./media/pim-resource-roles-assign-roles/resources-abac-update-remove.png)
+    ![更新或删除访问控制的属性](./media/pim-resource-roles-assign-roles/resources-abac-update-remove.png)
 
 1. 选择“更新”或“删除”以更新或删除角色分配。
 

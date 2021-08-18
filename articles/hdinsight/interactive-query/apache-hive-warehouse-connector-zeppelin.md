@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 7957041c9d445f4239b8f0100128a531d982b451
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6a7d58a1646e77e99ad7282af5be0dc1f8d2976d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104871548"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750809"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>在 Azure HDInsight 中将 Apache Zeppelin 与 Hive Warehouse Connector 集成
 
@@ -80,37 +80,30 @@ HDInsight Spark 群集包含具有不同解释器的 Apache Zeppelin 笔记本�
     | 配置                 | 值                                      |
     | ----------------------------- |:------------------------------------------:|
     | livy.spark.hadoop.hive.llap.daemon.service.hosts | @llap0 |
-    | livy.spark.security.credentials.hiveserver2.enabled | true |
-    | livy.spark.sql.hive.llap | true |
-    | livy.spark.yarn.security.credentials.hiveserver2.enabled | true |
+    | livy.spark.security.credentials.hiveserver2.enabled | 是 |
+    | livy.spark.sql.hive.llap | 是 |
+    | livy.spark.yarn.security.credentials.hiveserver2.enabled | 是 |
     | livy.superusers | livy,zeppelin |
     | livy.spark.jars | `file:///usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-VERSION.jar`.<br>将 VERSION 替换为之前在[入门](#getting-started)中获取的值。 |
     | livy.spark.submit.pyFiles | `file:///usr/hdp/current/hive_warehouse_connector/pyspark_hwc-VERSION.zip`.<br>将 VERSION 替换为之前在[入门](#getting-started)中获取的值。 |
     | livy.spark.sql.hive.hiveserver2.jdbc.url | 将其设置为 Interactive Query 群集的 HiveServer2 Interactive JDBC URL。 |
-    | spark.security.credentials.hiveserver2.enabled | true |
+    | spark.security.credentials.hiveserver2.enabled | 是 |
 
 1. 仅针对 ESP 群集添加以下配置：
 
     | 配置| 值|
     |---|---|
-    | livy.spark.sql.hive.hiveserver2.jdbc.url.principal | `hive/<llap-headnode>@<AAD-Domain>` |
-
-    * 在 Web 浏览器中，导航到 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`，其中 CLUSTERNAME 是 Interactive Query 群集的名称。 单击 HiveServer2 Interactive。 将看到运行 LLAP 的头节点的完全限定的域名 (FQDN)，如屏幕截图中所示。 将 `<llap-headnode>` 替换为此值。
-
-        :::image type="content" source="./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png" alt-text="Hive Warehouse Connector 头节点" border="true":::
+    | livy.spark.sql.hive.hiveserver2.jdbc.url.principal | `hive/_HOST@<AAD-Domain>` |
 
     * 使用 [ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)连接到 Interactive Query 群集。 在 `/etc/krb5.conf` 文件中查找 `default_realm` 参数。 以大写字符串的形式使用此值替换 `<AAD-DOMAIN>`，否则会找不到凭据。
 
         :::image type="content" source="./media/apache-hive-warehouse-connector/aad-domain.png" alt-text="Hive Warehouse Connector AAD 域" border="true":::
 
-    * 例如：`hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET`。
-
 1. 保存更改并重启 Livy 解释器。
 
 如果 Livy 解释器不可访问，请修改 Ambari 中 Zeppelin 组件的 `shiro.ini` 文件。 有关详细信息，请参阅[配置 Apache Zeppelin Security](https://docs.cloudera.com/HDPDocuments/HDP3/HDP-3.0.1/configuring-zeppelin-security/content/enabling_access_control_for_interpreter__configuration__and_credential_settings.html)。  
 
-
-## <a name="running-queries-in-zeppelin"></a>在 Zeppelin 中运行查询 
+## <a name="running-queries-in-zeppelin"></a>在 Zeppelin 中运行查询
 
 使用 Livy 解释器启动 Zeppelin 笔记本并执行以下操作
 

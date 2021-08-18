@@ -2,22 +2,22 @@
 title: Azure 市场应用程序的一键式单一登录 (SSO) 配置 |Microsoft Docs
 description: Azure 市场中的应用程序的一键式 SSO 配置步骤。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
-ms.assetid: e0416991-4b5d-4b18-89bb-91b6070ed3ba
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.author: mtillman
+ms.author: davidmu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 766c1446a2fad9cff1103a726043d6c61d503020
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.reviewer: ergreenl
+ms.openlocfilehash: bec4df252a98fc105f0eec1480452021fefb0031
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077007"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733672"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>单一登录的一键式应用配置
 
@@ -80,5 +80,5 @@ ms.locfileid: "112077007"
 
 ## <a name="additional-resources"></a>其他资源
 
-* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](../saas-apps/tutorial-list.md)
-* [什么是我的应用安全登录浏览器扩展？](../user-help/my-apps-portal-end-user-access.md)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](../saas-apps/tutorial-list.md)
+- [什么是我的应用安全登录浏览器扩展？](../user-help/my-apps-portal-end-user-access.md)

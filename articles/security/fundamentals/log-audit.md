@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: 0d85cf6ae501a7d50f20e48543e361149f4b57d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7481e22b9d03d7f49f4ee383bb52c4772631c16
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100580552"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178917"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Azure 安全日志记录和审核
 
@@ -51,7 +51,7 @@ Azure 日志划分为以下类型：
 |[活动日志](../../azure-monitor/essentials/platform-logs-overview.md)|Azure 资源管理器资源上的控制平面事件|    提供见解，方便用户了解对订阅中的资源执行的操作。|    Rest API、[Azure Monitor](../../azure-monitor/essentials/platform-logs-overview.md)|
 |[Azure 资源日志](../../azure-monitor/essentials/platform-logs-overview.md)|关于订阅中 Azure 资源管理器资源操作频繁生成的数据| 提供见解，以便深入了解资源本身执行的操作。| Azure Monitor|
 |[Azure Active Directory 报告](../../active-directory/reports-monitoring/overview-reports.md)|日志和报告 | 报告有关用户和组管理的用户登录活动和系统活动信息。|[图形 API](../../active-directory/develop/microsoft-graph-intro.md)|
-|[虚拟机和云服务](../../azure-monitor/vm/quick-collect-azurevm.md)|Windows 事件日志服务和 Linux Syslog| 在虚拟机上捕获系统数据和日志记录数据，并将这些数据传输到所选的存储帐户中。|   Azure Monitor 中的 Windows（使用 Windows Azure 诊断 [[WAD](../../azure-monitor/agents/diagnostics-extension-overview.md)] 存储）和 Linux|
+|[虚拟机和云服务](../../azure-monitor/vm/monitor-virtual-machine.md)|Windows 事件日志服务和 Linux Syslog|   在虚拟机上捕获系统数据和日志记录数据，并将这些数据传输到所选的存储帐户中。|   Azure Monitor 中的 Windows（使用 Windows Azure 诊断 [[WAD](../../azure-monitor/agents/diagnostics-extension-overview.md)] 存储）和 Linux|
 |[Azure 存储分析](/rest/api/storageservices/fileservices/storage-analytics)|存储执行日志记录并为存储帐户提供指标数据|提供相关信息，以便深入了解如何跟踪请求、分析使用情况趋势以及诊断存储帐户的问题。| REST API 或[客户端库](/dotnet/api/overview/azure/storage)|
 |[网络安全组 (NSG) 流日志](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)|采用 JSON 格式，并根据规则显示出站和入站流|显示有关通过网络安全组的入口和出口 IP 流量的信息。|[Azure 网络观察程序](../../network-watcher/network-watcher-monitoring-overview.md)|
 |[Application Insights](../../azure-monitor/app/app-insights-overview.md)|日志、异常和自定义诊断|  提供多个平台上面向 Web 开发人员的应用程序性能监视 (APM) 服务。| REST API，[Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|

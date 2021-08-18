@@ -4,14 +4,15 @@ description: Azure 数据工厂中的可用数据整理函数概述
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 04/16/2021
-ms.openlocfilehash: 5985db37e6b88dc39ce1ac166c4aaf9ba368240d
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: f75ae0030316fafcc734644d4def4ad94d04b0d8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109737694"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740844"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>Power Query 中用于数据整理的转换函数
 
@@ -20,7 +21,7 @@ ms.locfileid: "109737694"
 使用 Azure 数据工厂中的数据整理，可以通过将 Power Query ```M``` 脚本转换为数据流脚本，进行云规模的无代码敏捷数据准备和整理。 ADF 与 [Power Query Online](/powerquery-m/power-query-m-reference) 集成，并通过执行 Spark 使用数据流 Spark 基础结构，使 Power Query ```M``` 函数可用于数据整理。 
 
 > [!NOTE]
-> ADF 中的 Power Query 目前在公共预览版中提供
+> ADF 中的 Power Query 目前以公共预览版提供
 
 目前，尽管在创作过程中可以使用 Power Query M 函数，但并非所有的 Power Query M 函数都支持用于数据处理。 在构建 Power Query 混合时，如果函数不受支持，系统将提示以下错误消息：
 
@@ -87,7 +88,7 @@ ms.locfileid: "109737694"
 
 ## <a name="known-unsupported-functions"></a>不支持的已知函数
 
-| 功能 | 状态 |
+| 函数 | 状态 |
 | -- | -- |
 | Table.PromoteHeaders | 不支持。 可以通过在数据集中设置“第一行作为页眉”来实现相同的结果。 |
 | Table.CombineColumns | 这是一个不直接支持的常见方案，但可通过添加一个连接两个给定列的新列来实现。  例如，Table.AddColumn（RemoveEmailColumn、"Name"、each [FirstName] & " " & [LastName]） |

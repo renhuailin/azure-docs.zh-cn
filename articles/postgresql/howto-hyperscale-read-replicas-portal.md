@@ -6,20 +6,15 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
-ms.date: 04/07/2021
-ms.openlocfilehash: 7bf5cc43ca173aa787c1cde4d5727b48206872af
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 08/03/2021
+ms.openlocfilehash: 74c9df5ee9eb6cd6a61104b4c9cce91b284dbb29
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315500"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726138"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---hyperscale-citus-from-the-azure-portal"></a>通过 Azure 门户创建和管理 Azure Database for PostgreSQL - 超大规模 (Citus) 中的只读副本
-
-> [!IMPORTANT]
-> 超大规模 (Citus) 中的只读副本目前为预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
->
-> 请参阅[超大规模 (Citus) 的预览功能](hyperscale-preview-features.md)，以查看其他新功能的完整列表。
 
 本文介绍如何通过 Azure 门户创建和管理超大规模 (Citus) 中的只读副本。 若要详细了解只读副本，请参阅[概述](concepts-hyperscale-read-replicas.md)。
 

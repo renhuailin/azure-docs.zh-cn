@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 06/29/2021
 ms.author: jlian
-ms.openlocfilehash: 834ccc850a3099857dc1b88e45b0c0c3ee3a186c
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 0a9a3bc11bac0dd389c346ccecab7f95d5ffd5d2
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486442"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113128023"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>IoT 中心的传输层安全性 (TLS) 支持
 
@@ -23,10 +23,6 @@ TLS 1.0 和 1.1 被视为旧版，我们已计划弃用这两个版本。 有关
 ## <a name="iot-hubs-server-tls-certificate"></a>IoT 中心的服务器 TLS 证书
 
 在 TLS 握手期间，IoT 中心会提供 RSA 加密的服务器证书以连接客户端。 它的根是 Baltimore Cybertrust 根 CA。 最近，我们推出了对 TLS 服务器证书的更改，它现在由新的中间证书颁发机构 (ICA) 颁发。 有关详细信息，请参阅 [IoT 中心 TLS 证书更新](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/)。
-
-### <a name="4kb-size-limit-on-renewal"></a>针对续订的 4KB 大小限制
-
-在续订 IoT 中心服务器端证书期间，会在 IoT 中心服务端进行检查以防止 `Server Hello` 的大小超过 4KB。 客户端应为传入的 TLS 最大内容长度缓冲区设置至少 4KB 的 RAM，以便设置为 4KB 限制的现有设备在证书续订后继续像以前一样工作。 对于受约束的设备，IoT 中心支持[预览版中的 TLS 最大片段长度协商](#tls-maximum-fragment-length-negotiation-preview)。 
 
 ### <a name="elliptic-curve-cryptography-ecc-server-tls-certificate-preview"></a>椭圆曲线加密 (ECC) 服务器 TLS 证书（预览版）
 

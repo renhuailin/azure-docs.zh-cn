@@ -7,12 +7,12 @@ ms.date: 07/09/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 39e4b23b4f007c790dcfe495661628a53a9293d8
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: e53bcbca2e40ef9a9587e0b571f2798132c2a829
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111743884"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113033580"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>配置个人桌面主机池分配类型
 
@@ -87,8 +87,8 @@ Update-AzWvdSessionHost -HostPoolName <hostpoolname> -Name <sessionhostname> -Re
 
 配置个人桌面分配类型后，可以登录到 Azure 虚拟桌面客户端，将其作为用户会话的一部分进行测试。 接下来的两篇操作指南将会介绍如何使用所选的客户端连接到会话：
 
-- [使用 Windows 桌面客户端进行连接](connect-windows-7-10.md)
-- [使用 Web 客户端进行连接](connect-web.md)
-- [使用 Android 客户端进行连接](connect-android.md)
-- [使用 iOS 客户端进行连接](connect-ios.md)
-- [使用 macOS 客户端进行连接](connect-macos.md)
+- [使用 Windows 桌面客户端进行连接](./user-documentation/connect-windows-7-10.md)
+- [使用 Web 客户端进行连接](./user-documentation/connect-web.md)
+- [使用 Android 客户端进行连接](./user-documentation/connect-android.md)
+- [使用 iOS 客户端进行连接](./user-documentation/connect-ios.md)
+- [使用 macOS 客户端进行连接](./user-documentation/connect-macos.md)

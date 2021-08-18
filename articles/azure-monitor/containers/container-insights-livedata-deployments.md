@@ -4,12 +4,12 @@ description: 本文介绍在不使用容器见解中的 kubectl 的情况下，�
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.custom: references_regions
-ms.openlocfilehash: c6eaac209234f7352395502c6761312cf258108f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b3ae515f2addf21f8183aed83ab26922e77f981
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101713909"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734357"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>如何实时查看部署（预览版）
 
@@ -64,4 +64,4 @@ ms.locfileid: "101713909"
 
 - 若要继续学习如何使用 Azure Monitor 以及如何监视 AKS 群集的其他方面，请参阅[查看 Azure Kubernetes 服务运行状况](container-insights-analyze.md)。
 
-- 查看[日志查询示例](container-insights-log-search.md#search-logs-to-analyze-data)，了解预定义的查询和示例，以创建警报、呈现可视化效果或对群集执行进一步分析。
+- 查看[日志查询示例](container-insights-log-query.md)，了解预定义的查询和示例，以创建警报、呈现可视化效果或对群集执行进一步分析。

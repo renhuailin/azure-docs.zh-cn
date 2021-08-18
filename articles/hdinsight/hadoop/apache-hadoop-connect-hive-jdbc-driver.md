@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 6073000f2f14f835e2bfbd91b41619101c36b10f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3e363d04fbfd0222cb49ffa9fa02b88d7fba2468
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866839"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300590"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>在 HDInsight 中通过 JDBC 驱动程序查询 Apache Hive
 
-[!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
+[!INCLUDE [ODBC-JDBC-selector](../includes/hdinsight-selector-odbc-jdbc.md)]
 
 了解如何从 Java 应用程序使用 JDBC 驱动程序。 在 Azure HDInsight 中向 Apache Hadoop 提交 Apache Hive 查询。 本文档中的信息演示如何以编程方式从 SQuirreL SQL 客户端进行连接。
 

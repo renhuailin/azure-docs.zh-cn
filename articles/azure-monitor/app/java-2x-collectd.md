@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: eaa064a8a266bb68bacff8e42fd5dd6794c0f682
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 93ab5cf44286a4fcba638f14e1c7b29698a02e55
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110103754"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113358014"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights-deprecated"></a>collectd：Application Insights 中的 Linux 性能指标 [已弃用]
 
@@ -35,7 +35,7 @@ ms.locfileid: "110103754"
 在 Linux 服务器计算机上：
 
 1. 安装 [collectd](https://collectd.org/) 版本 5.4.0 或更高版本。
-2. 下载 [Application Insights collectd 编写器插件](https://github.com/microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal)。 注意版本号。
+2. 下载 [Application Insights collectd 编写器插件](https://github.com/microsoft/ApplicationInsights-Java/tree/main/agent/agent-tooling/src/main/java/com/microsoft/applicationinsights/agent/internal)。 注意版本号。
 3. 将插件 JAR 复制到 `/usr/share/collectd/java`。
 4. 编辑 `/etc/collectd/collectd.conf`：
    * 确保已启用 [Java 插件](https://collectd.org/wiki/index.php/Plugin:Java)。

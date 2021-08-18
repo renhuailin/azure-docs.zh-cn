@@ -3,21 +3,21 @@ title: 文本转语音概述 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 语音服务中的文本转语音功能可让应用程序、工具或设备将文本转换为类似于人类的自然合成语音。 本文概述了文本转语音服务的优势和功能。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文本转语音
-ms.openlocfilehash: 53b4d7a3e8b0831856f2b43fac40962fe81065d1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 540a57df6b3f427121c24ff683cb85e092be577d
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110478081"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071530"
 ---
 # <a name="what-is-text-to-speech"></a>什么是文本转语音？
 
@@ -46,7 +46,7 @@ ms.locfileid: "110478081"
 
 * 使用 SSML 优化 TTS 输出 - 语音合成标记语言 (SSML) 是一种基于 XML 的标记语言，用于对文本转语音输出进行自定义。 使用 SSML，你不仅可以调整音调、添加暂停、改进发音、改变语速、调整音量，以及将多个语音分配到一个文档，还可以定义你自己的词典或者转换为不同的说话风格。 使用多语言语音，还可通过 SSML 调整说话语言。 请参阅[如何使用 SSML](speech-synthesis-markup.md) 根据场景微调语音输出。 
 
-* 视素 - [视素](how-to-speech-synthesis-viseme.md)是观察到的语音中的关键姿态，包括在产生特定音素时嘴唇、下巴和舌头的位置。 视素与语音和音素有很强的关联性。 使用语音 SDK 中的视素事件，可以生成面部动画数据，用于制作唇读交流、教育、娱乐、客户服务等方面的面部动画。 Viseme 目前仅支持 `en-US` 英语（美国）[神经语音](language-support.md#text-to-speech)。
+* 视素 - [视素](how-to-speech-synthesis-viseme.md)是观察到的语音中的关键姿态，包括在产生特定音素时嘴唇、下巴和舌头的位置。 视素与语音和音素有很强的关联性。 使用语音 SDK 中的视素事件，可以生成面部动画数据，用于制作唇读交流、教育、娱乐、客户服务等方面的面部动画。 视素目前仅支持 `en-US` 英语（美国）和[神经语音](language-support.md#text-to-speech)。
 
 ## <a name="get-started"></a>入门
 

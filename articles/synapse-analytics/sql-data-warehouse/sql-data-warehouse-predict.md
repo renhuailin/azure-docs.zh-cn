@@ -2,25 +2,25 @@
 title: 使用 PREDICT 对机器学习模型进行评分
 description: 了解如何在专用 SQL 池中使用 T-SQL PREDICT 函数对机器学习模型进行评分。
 services: synapse-analytics
-author: anumjs
+author: rothja
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 07/21/2020
-ms.author: anjangsh
+ms.author: jroth
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9e7d45a588e60cd082f1eef43d1d1b6681b9e912
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 11e5f2e3ea46794367247ef9a1b4a0a43f7d6c1e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98117735"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438303"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>使用 PREDICT 对机器学习模型进行评分
 
-专用 SQL 池为你提供了使用熟悉的 T-SQL 语言对机器学习模型进行评分的功能。 使用 T-SQL [PREDICT](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest)，你可以引入使用历史数据训练的现有机器学习模型，在数据仓库的安全边界内对其进行评分。 PREDICT 函数采用 [ONNX (Open Neural Network Exchange)](https://onnx.ai/) 模型和数据作为输入。 此功能消除了将有价值的数据移到数据仓库外部进行评分的步骤。 它的目标是使数据专业人员能够使用熟悉的 T-SQL 接口轻松地部署机器学习模型，并对其任务使用正确的框架，以便与数据科学家无缝地协作。
+专用 SQL 池为你提供了使用熟悉的 T-SQL 语言对机器学习模型进行评分的功能。 利用 T-SQL [PREDICT](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest)，可以引入已使用历史数据训练的现有机器学习模型，并在数据仓库的安全边界内对这些模型进行评分。 PREDICT 函数使用 [ONNX (Open Neural Network Exchange)](https://onnx.ai/) 模型和数据作为输入。 此功能消除了将有价值的数据移到数据仓库外部进行评分的步骤。 它的目标是使数据专业人员能够使用熟悉的 T-SQL 接口轻松地部署机器学习模型，并对其任务使用正确的框架，以便与数据科学家无缝地协作。
 
 > [!NOTE]
 > 无服务器 SQL 池目前不支持此功能。
@@ -47,7 +47,7 @@ ms.locfileid: "98117735"
 
 ## <a name="loading-the-model"></a>加载模型
 
-模型以十六进制字符串的形式存储在专用 SQL 池用户表中。 可以在模型表中添加 ID 和说明等其他列来标识模式。 使用 varbinary(max) 作为模型列的数据类型。 下面是可用于存储模型的表的代码示例：
+模型以十六进制字符串的形式存储在专用 SQL 池用户表中。 可以在模型表中添加 ID 和说明等其他列，以便标识模型。 将 varbinary(max) 用作模型列的数据类型。 下面是可用于存储模型的表的代码示例：
 
 ```sql
 -- Sample table schema for storing a model and related data
@@ -66,7 +66,7 @@ GO
 
 ```
 
-将模型转换为十六进制字符串并指定表定义后，请使用 [COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?preserve-view=true&view=azure-sqldw-latest)或 Polybase 加载专用 SQL 池表中的模型。 下面的代码示例使用 Copy 命令来加载模型。
+将模型转换为十六进制字符串并指定表定义后，使用 [COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?preserve-view=true&view=azure-sqldw-latest)或 Polybase 将此模型加载到专用 SQL 池表中。 下面的代码示例使用 Copy 命令来加载模型。
 
 ```sql
 -- Copy command to load hexadecimal string of the model from Azure Data Lake storage location
@@ -78,7 +78,7 @@ WITH (
 )
 ```
 
-## <a name="scoring-the-model"></a>对模型进行评分
+## <a name="scoring-the-model"></a>对模型评分
 
 将模型和数据加载到数据仓库中后，使用 T-SQL PREDICT 函数对模型进行评分。 请确保新的输入数据采用的格式与用于构建模型的训练数据采用的格式相同。 T-SQL PREDICT 采用两种输入数据：模型输入数据和新评分输入数据，并为输出生成新列。可以将模型指定为变量、文本或标量 sub_query。 使用 [WITH common_table_expression](/sql/t-sql/queries/with-common-table-expression-transact-sql?preserve-view=true&view=azure-sqldw-latest) 指定数据参数的已命名结果集。
 

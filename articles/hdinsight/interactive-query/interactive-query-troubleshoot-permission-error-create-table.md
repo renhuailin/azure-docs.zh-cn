@@ -4,12 +4,12 @@ description: 尝试在 Azure HDInsight 中创建 Apache Hive 表时出现“权�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/09/2019
-ms.openlocfilehash: 6d91ca747bb264b4c7262eec2bb0745b8a40b7a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd9f4f6da3ee82947192041cefe40261a182341b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98930919"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112290640"
 ---
 # <a name="scenario-permission-denied-error-when-trying-to-create-an-apache-hive-table-in-azure-hdinsight"></a>情景：尝试在 Azure HDInsight 中创建 Apache Hive 表时出现“权限被拒绝”错误
 
@@ -39,4 +39,4 @@ hdfs dfs -mkdir wasbs://data@xxxxx.blob.core.windows.net/path/table
 
 ## <a name="next-steps"></a>后续步骤
 
-[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]
+[!INCLUDE [troubleshooting next steps](../includes/hdinsight-troubleshooting-next-steps.md)]

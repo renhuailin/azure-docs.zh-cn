@@ -1,17 +1,17 @@
 ---
 title: 使用转储和还原进行升级 - Azure Database for PostgreSQL
-description: 描述使用转储和还原数据库迁移到更高版本的 Azure Database for PostgreSQL 的脱机升级方法。
+description: 介绍通过转储和还原数据库迁移到更高版本的 Azure Database for PostgreSQL 的脱机升级方法。
 author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/02/2021
-ms.openlocfilehash: d528d75bd26bf17ca0da20447848d315e2dc9057
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 06/23/2021
+ms.openlocfilehash: 5e568e0e41b4273b94f12006d998a711229335c5
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111406870"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112893503"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>使用转储和还原升级 PostgreSQL 数据库
 
@@ -86,6 +86,9 @@ ms.locfileid: "111406870"
 - 如果 PostgreSQL 服务器需要 TLS/SSL 连接（默认情况下在 Azure Database for PostgreSQL 服务器中启用），请设置环境变量 `PGSSLMODE=require`，以便 pg_restore 工具使用 TLS 进行连接。 如果不使用 TLS，错误可能会显示为 `FATAL:  SSL connection is required. Please specify SSL options and retry.`
 
 - 在 Windows 命令行中，在运行 pg_restore 命令之前运行命令 `SET PGSSLMODE=require`。 在 Linux 或 Bash 中，在运行 pg_restore 命令之前运行命令 `export PGSSLMODE=require`。
+
+>[!Important]
+> 建议在生产环境中使用这些命令之前，先在测试环境中测试和验证它们。
 
 ### <a name="method-1-migrate-using-dump-file"></a>方法 1：使用转储文件进行迁移
 
@@ -171,4 +174,6 @@ ms.locfileid: "111406870"
 
 - 对目标数据库功能满意后，可以删除旧的数据库服务器。 
 - 仅限 Azure Database for PostgreSQL 单一服务器。 如果要使用与源服务器相同的数据库终结点，则在删除旧的源数据库服务器后，可以使用旧的数据库服务器名称创建只读副本。 建立稳定复制状态后，可以停止副本，这会将副本服务器提升为独立服务器。 有关更多详细信息，请参阅[复制](./concepts-read-replicas.md)。
-- 请记住先在测试环境中测试和验证这些命令，然后再将其用于生产。
+
+>[!Important] 
+> 强烈建议先测试新的 PostgreSQL 升级版本，然后再将其直接用于生产环境。 这包括在旧版源和新版目标之间比较服务器参数。 请确保这些参数相同并检查新版本中添加的任何新参数。 可在[此处](https://www.postgresql.org/docs/release/)找到版本之间的差异。

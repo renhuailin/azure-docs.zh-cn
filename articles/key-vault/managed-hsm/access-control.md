@@ -2,19 +2,19 @@
 title: Azure 托管 HSM 访问控制
 description: 管理 Azure 托管 HSM 和密钥的访问权限。 介绍托管 HSM 的身份验证和授权模型，讲解如何保护 HSM。
 services: key-vault
-author: amitbapat
+author: mbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.author: ambapat
-ms.openlocfilehash: bea1ccf0777c6325bc86c15e0f88304c465d89c9
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.author: mbaldwin
+ms.openlocfilehash: 453e6ba2d7bb8cd4021c1b5a47faf60ef7ac1b37
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750277"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471282"
 ---
 # <a name="managed-hsm-access-control"></a>托管 HSM 访问控制
 

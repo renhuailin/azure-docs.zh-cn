@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: 77159a099dcc28739457a10afef374502d117b5a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 8c0cba39c2fe299a2cc822309b0063d2d4fe2f71
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971151"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113431512"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>针对按流量计费的异常情况检测服务
 
-[市场计量服务](../marketplace-metering-service-apis-faq.md)使你可以在商业市场计划中创建基于非标准单位收费的产品/服务。 通过按流量计费，你可以将客户使用情况的使用情况事件发送到 Microsoft，并根据该使用情况准备计费。
+[市场计量服务](../marketplace-metering-service-apis-faq.yml)使你可以在商业市场计划中创建基于非标准单位收费的产品/服务。 通过按流量计费，你可以将客户使用情况的使用情况事件发送到 Microsoft，并根据该使用情况准备计费。
 
 错误的使用情况数据可能由多种原因所致，例如 bug、消耗跟踪中的错误配置或欺诈行为。 使用情况数据不正确会导致客户费用不正确和计费争议。
 
@@ -67,7 +67,7 @@ ms.locfileid: "111971151"
 
 提交与按流量计费异常相关的支持票证：
 
-1. 用你的工作帐户登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)。
+1. 用你的工作帐户登录到[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165290)。
 1. 在页面右上角的菜单中，选择“支持”图标。 “帮助和支持”窗格显示在页面的右侧。
 1. 要获得有关商业市场的帮助，请选择“商业市场”。
    ![显示“支持”窗格。](../media/support/commercial-marketplace-support-pane.png)

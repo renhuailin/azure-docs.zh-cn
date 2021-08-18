@@ -12,13 +12,13 @@ f1_keywords:
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 05/26/2020
-ms.openlocfilehash: be5face0a93dc360493e22fd3d2c6d9743c4f5ff
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 06/21/2021
+ms.openlocfilehash: 9501c49bec8d2a632387ecb9b620dcbdc5a0ac1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110072435"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751273"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Azure SQL 托管实例审核入门
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,6 +27,9 @@ ms.locfileid: "110072435"
 
 - 帮助保持合规性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
 - 实现并促进遵从合规标准，但不能保证合规性。 有关支持标准符合性的 Azure 程序的详细信息，请参阅 [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，可以从中找到符合性认证的最新列表。
+
+> [!IMPORTANT]
+> Azure SQL 数据库、Azure Synapse 与 Azure SQL 托管实例的审核已针对可用性和性能进行优化。 在活动量极高或网络负载较高的情况下，Azure SQL 数据库、Azure Synapse 与 Azure SQL 托管实例允许操作继续进行，并且可能不会记录某些已审核的事件。
 
 ## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>将服务器的审核设置为 Azure 存储
 
@@ -55,7 +58,7 @@ ms.locfileid: "110072435"
       ![创建 Blob 容器配置](./media/auditing-configure/3_create_container_config.png)
 
     > [!IMPORTANT]
-    > 如果客户希望为服务器级或数据库级审核事件配置不可变的日志存储，则应遵循 [Azure 存储提供的说明](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)。 （请确保在配置不可变的 blob 存储时，选择了“允许额外追加”。）
+    > 如果客户希望为服务器级或数据库级审核事件配置不可变的日志存储，则应遵循 [Azure 存储提供的说明](../../storage/blobs/immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes)。 （请确保在配置不可变的 blob 存储时，选择了“允许额外追加”。）
   
 3. 为审核日志创建容器后，可通过两种方式将其配置为审核日志的目标：[使用 T-SQL](#blobtsql)，或[使用 SQL Server Management Studio (SSMS) UI](#blobssms)：
 
@@ -180,7 +183,7 @@ ms.locfileid: "110072435"
 
 5. 选择审核事件的目标：事件中心、Azure Monitor 日志或两者。 为每个目标配置所需的参数（例如，Log Analytics 工作区）。
 
-6. 单击“保存” 。
+6. 单击“保存”  。
 
     ![配置诊断设置](./media/auditing-configure/9_mi_configure_diagnostics.png)
 

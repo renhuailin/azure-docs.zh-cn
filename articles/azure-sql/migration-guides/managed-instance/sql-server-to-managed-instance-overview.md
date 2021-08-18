@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 02/18/2020
-ms.openlocfilehash: c3d4b882a83b457527fcf71424357b8a51a86d84
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 345ef497ecb14279c117932bd2c9a1cf7b42ba1d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110783262"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743658"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>迁移概述：将 SQL Server 到 Azure SQL 托管实例
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -217,11 +217,9 @@ SQL Server 提供内存中 OLTP 功能。 它允许使用内存优化表、内�
 
 |资产  |说明  |
 |---------|---------|
-|[数据工作负荷评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| 此工具为工作负载提供建议的“最适合”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
-|[DBLoader 实用工具](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|可使用 DBLoader 将带分隔符的文本文件中的数据加载到 SQL Server 中。 此 Windows 控制台实用程序使用 SQL Server 本机客户端大容量加载接口。 此接口适用于所有版本的 SQL Server 以及 Azure SQL 托管实例。|
-|[将本地 SQL Server 登录名迁移到 Azure SQL 托管实例的实用程序](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins)|PowerShell 脚本可创建一个 T-SQL 命令脚本来重新创建登录名并从本地 SQL Server 选择数据库用户到 Azure SQL 托管实例。 该工具允许将 Windows Server Active Directory 帐户自动映射到 Azure AD 帐户，还可以选择性地迁移 SQL Server 本机登录名。|
-|[使用 Logman 自动执行 Perfmon 数据收集](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|可以使用 Logman 工具收集 Perfmon 数据（以帮助你了解基准性能）和获取迁移目标建议。 该工具使用 logman.exe 创建将创建、启动、停止和删除在远程 SQL Server 实例上设置的性能计数器的命令。|
-|[通过还原完整备份和差异备份将数据库迁移到 Azure SQL 托管实例](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Database%20migrations%20to%20Azure%20SQL%20DB%20Managed%20Instance%20-%20%20Restore%20with%20Full%20and%20Differential%20backups.pdf)|如果只有完整备份和差异备份（且没有日志备份功能），可借助此白皮书获取相关指导和了解相关步骤，加速完成从 SQL Server 到 Azure SQL 托管实例的迁移。|
+|[数据工作负荷评估模型和工具](https://www.microsoft.com/download/details.aspx?id=103130)| 此工具为工作负载提供建议的“最适合”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
+|[将本地 SQL Server 登录名迁移到 Azure SQL 托管实例的实用程序](https://www.microsoft.com/download/details.aspx?id=103111)|PowerShell 脚本可创建一个 T-SQL 命令脚本来重新创建登录名并从本地 SQL Server 选择数据库用户到 Azure SQL 托管实例。 该工具允许将 Windows Server Active Directory 帐户自动映射到 Azure AD 帐户，还可以选择性地迁移 SQL Server 本机登录名。|
+|[使用 Logman 自动执行 Perfmon 数据收集](https://www.microsoft.com/download/details.aspx?id=103114)|可以使用 Logman 工具收集 Perfmon 数据（以帮助你了解基准性能）和获取迁移目标建议。 该工具使用 logman.exe 创建命令，该命令将创建、启动、停止和删除在远程 SQL Server 实例上设置的性能计数器。|
 
 数据 SQL 工程团队开发了这些资源。 此团队的核心章程是解锁和加速到 Microsoft 的 Azure 数据平台的数据平台迁移项目的复杂现代化进程。
 

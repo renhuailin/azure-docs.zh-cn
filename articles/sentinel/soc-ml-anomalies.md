@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/28/2021
 ms.author: yelevin
-ms.openlocfilehash: ef38176db69ea019254ced89e3e18f035633f2d5
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 51bc9923ce01116137b4ff447b94d08262b0c758
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109811693"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734784"
 ---
 # <a name="use-soc-ml-anomalies-to-detect-threats-in-azure-sentinel"></a>使用 SOC-ML 异常来检测 Azure Sentinel 中的威胁
 
@@ -45,4 +45,4 @@ ms.locfileid: "109811693"
 本文档介绍了 SOC-ML 如何帮助用户检测 Azure Sentinel 中的异常。
 
 - 了解如何[查看、创建、管理和精细优化异常规则](work-with-anomaly-rules.md)。
-- 了解[其他类型的分析规则](tutorial-detect-threats-built-in.md)。
+- 了解[其他类型的分析规则](detect-threats-built-in.md)。

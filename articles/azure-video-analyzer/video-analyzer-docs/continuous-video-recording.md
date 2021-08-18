@@ -3,13 +3,13 @@ title: 从边缘连续录制视频 - Azure 视频分析器
 description: 连续视频录制 (CVR) 是指从实时视频源连续录制视频的过程。 本主题讨论 CVR 是什么，以及如何将其与 Azure 视频分析器配合使用。
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 05/10/2021
-ms.openlocfilehash: 19bf86d03178ad1242430bc9faf2c141ab7d4189
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: a7909fab420302fe8246e8f1ce2cd050d1f854f8
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385140"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603981"
 ---
 # <a name="continuous-video-recording"></a>连续视频录制    
 

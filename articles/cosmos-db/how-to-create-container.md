@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6aa233e82ca272b9b5b9e4a9bee4ef2b57f2de77
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: e9fc377acf528d564411a5c65c5fce9d6282118a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069989"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749934"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-sql-api"></a>在 Azure Cosmos DB SQL API 中创建容器
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文介绍如何通过不同方式在 Azure Cosmos DB SQL API 中创建容器。 它演示如何使用 Azure 门户、Azure CLI、PowerShell 或支持的 SDK 创建容器。 本文演示如何创建容器、指定分区键和预配吞吐量。
 
-本文介绍如何通过不同方式在 Azure Cosmos DB SQL API 中创建容器。 如果你使用其他 API，请参阅[用于 MongoDB 的 API](how-to-create-container-mongodb.md)、[Cassandra API](how-to-create-container-cassandra.md)、[Gremlin API](how-to-create-container-gremlin.md) 和[表 API](how-to-create-container-table.md) 文章来创建容器。
+本文介绍如何通过不同方式在 Azure Cosmos DB SQL API 中创建容器。 如果你使用其他 API，请参阅[用于 MongoDB 的 API](how-to-create-container-mongodb.md)、[Cassandra API](cassandra/how-to-create-container-cassandra.md)、[Gremlin API](how-to-create-container-gremlin.md) 和[表 API](table/how-to-create-container.md) 文章来创建容器。
 
 > [!NOTE]
 > 创建容器时，请确保不创建名称相同但大小写不同的两个容器。 这是因为 Azure 平台的某些部分不区分大小写，这可能会对具有此类名称的容器导致遥测和操作混乱/冲突。

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/23/2021
 ms.author: msangapu
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 0220c16d7ea3673f55d57ec4c4e0d29b30672683
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: f97f12f25a6ac9a42e597bcb59496511372d92aa
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108017654"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112296274"
 ---
 # <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>在 Azure 应用服务中打开 Linux 容器的 SSH 会话
 
@@ -127,4 +127,4 @@ Load average: 0.07 0.04 0.08 4/765 45738
 * [Introducing remote debugging of Node.js apps on Azure App Service from VS Code](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)（使用 VS Code 对 Azure 应用服务上的 Node.js 应用进行远程调试简介）
 * [快速入门：在应用服务上运行自定义容器](quickstart-custom-container.md?pivots=container-linux)
 * [在 Linux 上的 Azure 应用服务中使用 Ruby](quickstart-ruby.md)
-* [用于容器的 Azure 应用服务 Web 应用常见问题解答](faq-app-service-linux.md)
+* [用于容器的 Azure 应用服务 Web 应用常见问题解答](faq-app-service-linux.yml)

@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mbullwin
-ms.openlocfilehash: c175a52259e9cfe5b4d03ce0279bbe24d16a48ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99fe16fdc19d90a312b34a32f56229ef7f161ad1
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94363708"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113297453"
 ---
-# <a name="configure-anomaly-detector-containers"></a>配置异常检测器容器
+# <a name="configure-anomaly-detector-univariate-containers"></a>配置异常检测器单变量容器
 
 异常检测器容器运行时环境是使用 `docker run` 命令参数配置的。 此容器有多个必需设置，以及一些可选设置。 多个[示例](#example-docker-run-commands)命令均可用。 容器专用设置是帐单设置。 
 

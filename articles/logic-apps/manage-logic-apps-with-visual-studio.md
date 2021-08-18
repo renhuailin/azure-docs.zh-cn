@@ -4,15 +4,15 @@ description: 通过将 Visual Studio 与 Cloud Explorer 配合使用来编辑、
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
-ms.topic: article
+ms.topic: conceptual
 ms.custom: mvc
-ms.date: 04/29/2020
-ms.openlocfilehash: cde8db5310e3ede2721ba327b28c789ccd0b7dd0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 04/23/2021
+ms.openlocfilehash: 14b3487a158062e3186b485a8bcbd4584a0f09d2
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87280760"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113665342"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>使用 Visual Studio 管理逻辑应用
 
@@ -37,7 +37,7 @@ ms.locfileid: "87280760"
     > 安装 Visual Studio 2019 或 2017 时，请务必选择“Azure 开发”工作负荷。
     > 有关详细信息，请参阅[在 Visual Studio Cloud Explorer 中管理与 Azure 帐户关联的资源](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer)。
 
-    若要安装 Cloud Explorer for Visual Studio 2015，请[从 Visual Studio Marketplace 下载 Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015)。 有关详细信息，请参阅[在 Visual Studio Cloud Explorer (2015) 中管理与 Azure 帐户关联的资源](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015)。
+    若要安装 Cloud Explorer for Visual Studio 2015，请[从 Visual Studio Marketplace 下载 Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015)。 有关详细信息，请参阅[在 Visual Studio Cloud Explorer (2015) 中管理与 Azure 帐户关联的资源](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015&preserve-view=true)。
 
   * [Azure SDK（2.9.1 或更高版本）](https://azure.microsoft.com/downloads/)
 
@@ -158,7 +158,7 @@ ms.locfileid: "87280760"
 若要更改逻辑应用的位置类型或位置，必须使用逻辑应用设计器从解决方案资源管理器中打开逻辑应用的工作流定义 (.json) 文件。 不能使用 Cloud Explorer 更改这些属性。
 
 > [!IMPORTANT]
-> 将位置类型从“区域”更改为[集成服务环境](connect-virtual-network-vnet-isolated-environment-overview.md)会影响逻辑应用的[定价模型](logic-apps-pricing.md#fixed-pricing)，此模型用于计费、[限制](logic-apps-limits-and-config.md#integration-account-limits)、[集成帐户支持](connect-virtual-network-vnet-isolated-environment-overview.md#ise-skus)等。 在选择其他位置类型之前，请确保理解对逻辑应用产生的影响。
+> 将位置类型从“区域”更改为[集成服务环境](connect-virtual-network-vnet-isolated-environment-overview.md)会影响逻辑应用的[定价模型](logic-apps-pricing.md#ise-pricing)，此模型用于计费、[限制](logic-apps-limits-and-config.md#integration-account-limits)、[集成帐户支持](connect-virtual-network-vnet-isolated-environment-overview.md#ise-skus)等。 在选择其他位置类型之前，请确保理解对逻辑应用产生的影响。
 
 1. 在 Visual Studio 中，打开逻辑应用所在的 Azure 资源组项目。
 
@@ -241,31 +241,59 @@ ms.locfileid: "87280760"
 
    ![查看每个步骤的输入和输出](./media/manage-logic-apps-with-visual-studio/view-run-history-inputs-outputs.png)
 
-## <a name="disable-or-enable-logic-app"></a>禁用或启用逻辑应用
+<a name="disable-enable-logic-apps"></a>
 
-如果不删除逻辑应用，可以在下一次满足触发条件时，阻止触发器激发。 禁用逻辑应用可以防止逻辑应用引擎创建和运行以后的逻辑应用工作流实例。 在 Cloud Explorer 中打开逻辑应用的快捷菜单，选择“禁用”。
+## <a name="disable-or-enable-logic-apps"></a>禁用或启用逻辑应用
+
+若要在下一次满足触发条件时阻止触发器激发，请禁用逻辑应用。 禁用逻辑应用会以下列方式影响工作流实例：
+
+* 逻辑应用服务将继续所有正在进行和挂起的运行，直到它们完成。 根据卷或积压工作 (backlog)，此过程可能需要一些时间才能完成。
+
+* 逻辑应用服务不会创建或运行新的工作流实例。
+
+* 下一次满足触发器的条件时，触发器不会触发。
+
+* 触发器状态会记住逻辑应用的停止位置。 因此，如果重新激活逻辑应用，触发器将会针对自上次运行以来未处理的所有项触发。
+
+  若要阻止触发器针对自上次运行以来未处理的项触发，请在重新激活逻辑应用之前清除触发器的状态：
+
+  1. 在逻辑应用中，编辑工作流触发器的任何部分。
+  1. 保存所做更改。 此步骤会重置触发器的当前状态。
+  1. [重新激活逻辑应用](#enable-logic-apps)。
+
+<a name="disable-logic-apps"></a>
+
+### <a name="disable-logic-apps"></a>禁用逻辑应用
+
+在 Cloud Explorer 中打开逻辑应用的快捷菜单，选择“禁用”。
 
 ![在 Cloud Explorer 中禁用逻辑应用](./media/manage-logic-apps-with-visual-studio/disable-logic-app-cloud-explorer.png)
 
-> [!NOTE]
-> 禁用逻辑应用后，任何新运行都不会实例化。 所有正在进行的和挂起的运行将继续进行，直到完成，这可能要花费一些时间才能完成。
+<a name="enable-logic-apps"></a>
 
-若要重新激活逻辑应用，请在 Cloud Explorer 中打开逻辑应用的快捷菜单，然后选择“启用”。
+### <a name="enable-logic-apps"></a>启用逻辑应用
+
+在 Cloud Explorer 中打开逻辑应用的快捷菜单，选择“启用”。
 
 ![在 Cloud Explorer 中启用逻辑应用](./media/manage-logic-apps-with-visual-studio/enable-logic-app-cloud-explorer.png)
 
-## <a name="delete-your-logic-app"></a>删除逻辑应用
+<a name="delete-logic-apps"></a>
+
+## <a name="delete-logic-apps"></a>删除逻辑应用
+
+删除逻辑应用会在以下几方面影响工作流实例：
+
+* 逻辑应用服务会可能取消任何正在进行和挂起的运行。
+
+  即使使用较大的卷或积压工作 (backlog)，大多数运行在完成或开始之前都将被取消。 但是，取消过程可能需要一些时间才能完成。 同时，在运行时执行取消过程中，可能会选取某些运行来执行。
+
+* 逻辑应用服务不会创建或运行新的工作流实例。
+
+* 如果删除工作流，然后重新创建相同的工作流，则重新创建的工作流不会具有与删除的工作流相同的元数据。 必须重新保存任何调用删除工作流的工作流。 这样，调用方就可获取重新创建的工作流的正确信息。 否则，对重新创建的工作流的调用将失败并显示 `Unauthorized` 错误。 此行为也适用于在集成帐户中使用项目的工作流和调用 Azure 函数的工作流。
 
 若要从 Azure 门户删除逻辑应用，请在 Cloud Explorer 中打开逻辑应用的快捷菜单，并选择“删除”。
 
 ![从 Azure 门户删除逻辑应用](./media/manage-logic-apps-with-visual-studio/delete-logic-app-from-azure-portal.png)
-
-> [!NOTE]
-> 删除逻辑应用后，任何新运行都不会实例化。 所有正在进行和挂起的运行都将取消。 如果有成千上万个运行，取消操作可能需要很长时间才能完成。
-
-> [!NOTE]
-> 如果删除并重新创建了子逻辑应用，则必须重新保存父逻辑应用。 重新创建的子应用将具有不同的元数据。
-> 如果在重新创建父逻辑应用的子逻辑应用后未重新保存父逻辑应用，则对子逻辑应用的调用将失败，并出现“未授权”错误。 此行为适用于父子逻辑应用，例如，那些使用集成帐户中的项目或调用 Azure 函数的逻辑应用。
 
 ## <a name="troubleshooting"></a>故障排除
 

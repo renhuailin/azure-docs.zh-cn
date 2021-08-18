@@ -4,15 +4,15 @@ description: 在 Azure 市场中为虚拟机产品/服务添加预览版受众�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: mingshen-ms
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 5ca53a950aeaaf888dead6c1e134f63fe7cea04c
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 8877862ba9f22fb41c31cc1167e836fd783abde0
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111524951"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601125"
 ---
 # <a name="add-a-preview-audience-for-a-virtual-machine-offer"></a>为虚拟机产品/服务添加预览版受众
 

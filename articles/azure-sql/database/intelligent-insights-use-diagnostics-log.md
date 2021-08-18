@@ -11,12 +11,12 @@ author: AlainDormehlMSFT
 ms.author: aldorme
 ms.reviewer: mathoma, wiassaf
 ms.date: 06/12/2020
-ms.openlocfilehash: 551886010cb5dc6d1b4977a6687d11704cc7776e
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 9f163d34c83ace01d0af4085dfc6c14d8211c975
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590263"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114284879"
 ---
 # <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>使用有关 Azure SQL 数据库和 Azure SQL 托管实例性能问题的智能见解性能诊断日志
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -138,7 +138,7 @@ Intelligent Insights 性能日志的最后部分是对已确定的性能下降�
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-智能见解性能日志可与 [Azure Monitor 日志](/azure/log-analytics/log-analytics-azure-sql)或第三方解决方案结合使用，用于自定义 DevOps 警报和报告功能。
+智能见解性能日志可与 [Azure Monitor 日志](../../azure-monitor/insights/azure-sql.md)或第三方解决方案结合使用，用于自定义 DevOps 警报和报告功能。
 
 ## <a name="next-steps"></a>后续步骤
 

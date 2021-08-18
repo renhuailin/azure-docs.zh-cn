@@ -8,12 +8,12 @@ manager: bsiva
 ms.topic: how-to
 ms.date: 4/25/2021
 ms.author: rahugup
-ms.openlocfilehash: 2819a5a927562d92153e5ef08a73a976c91a9363
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 26c068450b93272986a1a3c82af0530adfa30ebb
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954629"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766467"
 ---
 # <a name="migrate-availability-group-to-sql-server-on-azure-vm"></a>将可用性组迁移到 Azure VM 上的 SQL Server
 
@@ -351,7 +351,7 @@ Always On 可用性组处于就绪状态。
     - 部署[Azure 磁盘加密](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md)以帮助保护磁盘，并保护数据以防被盗和未经授权的访问。
     - 详细了解[保护 IaaS 资源的安全](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)，并访问[Azure 安全中心](https://azure.microsoft.com/services/security-center/)。
 - 为了便于监视和管理，请执行以下操作：
-    - 考虑部署[Azure 成本管理](../../../cost-management-billing/cloudyn/overview.md)以监视资源使用率和支出。
+    - 考虑部署[Azure 成本管理](../../../cost-management-billing/cost-management-billing-overview.md)以监视资源使用率和支出。
 
 
 ## <a name="next-steps"></a>后续步骤

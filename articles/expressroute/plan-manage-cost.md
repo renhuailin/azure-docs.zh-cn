@@ -6,35 +6,31 @@ ms.author: duau
 ms.custom: subject-cost-optimization
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 11/30/2020
-ms.openlocfilehash: de8405477611d62b8a46e8b6b645887cc4d30099
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 05/18/2021
+ms.openlocfilehash: c4a2113a5aa95c1bacf7be0f4b376b9377412371
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98784235"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111971701"
 ---
 # <a name="plan-and-manage-costs-for-azure-expressroute"></a>规划和管理 Azure ExpressRoute 的成本
 
-本文介绍如何规划和管理 Azure ExpressRoute 的成本。 首先，在为服务添加任何资源并估算成本之前，先使用 Azure 定价计算器来帮助规划 ExpressRoute 的成本。 然后在添加 Azure 资源时，查看预估成本。 
+本文介绍如何规划和管理 Azure ExpressRoute 的成本。 首先，在为服务添加任何资源并估算成本之前，先使用 Azure 定价计算器来帮助规划 ExpressRoute 的成本。 接下来，在添加 Azure 资源时，查看预估成本。 
 
-在开始使用 ExpressRoute 资源之后，使用成本管理功能来设置预算和监视成本。 还可以查看预测的成本并识别支出趋势，以确定可能需要实施措施的领域。 
-
-请记住，ExpressRoute 的成本只是 Azure 账单中每月成本的一部分。 尽管本文介绍了如何为 ExpressRoute 规划和管理成本，但用户需要为 Azure 订阅中使用的所有 Azure 服务和资源（包括第三方服务）付费。
+开始使用 Azure ExpressRoute 资源后，使用成本管理功能来设置预算和监视成本。 还可以查看预测的成本并确定支出趋势，以确定可能需要实施措施的领域。Azure ExpressRoute 的成本只是 Azure 账单中每月成本的一部分。 尽管本文介绍了如何为 Azure ExpressRoute 规划和管理成本，但用户需要为 Azure 订阅中使用的所有 Azure 服务和资源（包括第三方服务）付费。
 
 ## <a name="prerequisites"></a>先决条件
 
-成本管理中的成本分析支持大多数 Azure 帐户类型，但不支持所有帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。 
-
-若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+成本管理中的成本分析支持大多数 Azure 帐户类型，但不支持所有帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。 若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
 ## <a name="local-vs-standard-vs-premium"></a>本地与标准与Premium
 
-ExpressRoute 有三个不同的线路 SKU：[本地](./expressroute-faqs.md#expressroute-local)、标准和[高级](./expressroute-faqs.md#expressroute-premium)。 为 ExpressRoute 的使用付费的方式根据这三个 SKU 类型而有所不同。 如果使用本地 SKU，将自动按照“不限流量”套餐收费。 如果使用标准和高级 SKU，可以选择按“数据流量”套餐或“不限流量”套餐缴费。 除使用 Global Reach 附加产品的情况外，所有流入数据均免费。 务必要了解哪些 SKU 类型和数据套餐最适合你的工作负载，最能为你的工作负载优化成本和预算。
+Azure ExpressRoute 有三个不同的线路 SKU：[本地](./expressroute-faqs.md#expressroute-local)、标准和[高级](./expressroute-faqs.md#expressroute-premium)  。 为 ExpressRoute 的使用付费的方式根据这三个 SKU 类型而有所不同。 如果使用本地 SKU，将自动按照“不限流量”套餐收费。 如果使用标准和高级 SKU，可以选择按“数据流量”套餐或“不限流量”套餐缴费。 除使用 Global Reach 附加产品的情况外，所有流入数据均免费。 务必要了解哪些 SKU 类型和数据套餐最适合你的工作负载，最能为你的工作负载优化成本和预算。
 
-## <a name="estimate-costs"></a>估算成本
+## <a name="estimate-costs-before-using-azure-expressroute"></a>使用 Azure ExpressRoute 之前估算成本
 
-创建 ExpressRoute 线路之前，使用 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)估算成本。 
+创建 Azure ExpressRoute 线路之前，使用 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)估算成本。 
 
 1. 首先在左侧选择“网络”，然后选择“Azure ExpressRoute” 。 
 
@@ -66,12 +62,24 @@ ExpressRoute 有三个不同的线路 SKU：[本地](./expressroute-faqs.md#expr
 
 ## <a name="understand-the-full-billing-model-for-expressroute"></a>了解 ExpressRoute 的完整计费模式
 
-ExpressRoute 在 Azure 基础结构上运行，部署新资源时，会随 ExpressRoute 产生成本。 需要了解的是，其他基础结构可能会产生成本。 对已部署的资源进行更改时需要管理该成本。 
+Azure ExpressRoute 在 Azure 基础结构上运行，部署新资源时，会随 ExpressRoute 产生成本。 需要了解的是，其他基础结构可能会产生成本。 对已部署的资源进行更改时需要管理该成本。 
 
 ### <a name="costs-that-typically-accrue-with-expressroute"></a>通常会随 ExpressRoute 产生的成本
 
-创建 ExpressRoute 线路时，你可能会选择创建 ExpressRoute 网关，用于将虚拟网络链接到线路。 网关按每小时的费率加上 ExpressRoute 线路的费用来收费。 请参阅 [ExpressRoute 定价](https://azure.microsoft.com/en-us/pricing/details/expressroute)并选择“ExpressRoute 网关”，查看不同网关 SKUS 的费率。
+#### <a name="expressroute"></a>ExpressRoute
+
+创建 ExpressRoute 线路时，你可能会选择创建 ExpressRoute 网关，用于将虚拟网络链接到线路。 ExpressRoute 网关按每小时的费率加上 ExpressRoute 线路的费用来收费。 请参阅 [ExpressRoute 定价](https://azure.microsoft.com/pricing/details/expressroute)并选择“ExpressRoute 网关”，查看不同网关 SKUS 的费率。
+
+入站数据传输包含在三个 SKU 的 ExpressRoute 线路的每月成本中。 出站数据传输仅包含在不限流量套餐中。 对于数据流量套餐，出站数据传输根据[对等互连位置](expressroute-locations-providers.md#partners)的区域编号按 GB 计费。
+
+#### <a name="expressroute-direct"></a>ExpressRoute Direct
+
+ExpressRoute Direct 每月收取端口费，其中包括本地和标准 SKU ExpressRoute 线路的线路费。 对于高级 SKU 线路，需支付额外的线路费。 出站数据传输根据对等互连位置的区域编号按 GB 计费。 出站数据计费仅适用于标准和高级 SKU。
  
+#### <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
+
+ExpressRoute Global Reach 是一个附加产品，你可以为 ExpressRoute 和 ExpressRoute Direct 启用它，从而将 ExpressRoute 线路链接在一起。 入站和出站数据传输根据对等互连位置的区域编号按 GB 计费。
+
 ### <a name="costs-might-accrue-after-resource-deletion"></a>删除资源后可能会产生成本
 
 如果在删除 ExpressRoute 线路后仍留有 ExpressRoute 网关，依然会收取相关费用，直到网关被删除为止。
@@ -117,7 +125,7 @@ ExpressRoute 在 Azure 基础结构上运行，部署新资源时，会随 Expre
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 Azure ExpressRoute 的定价方式。 请参阅 [Azure ExpressRoute 概述定价](https://azure.microsoft.com/en-us/pricing/details/expressroute/)。
+- 详细了解 Azure ExpressRoute 的定价方式。 请参阅 [Azure ExpressRoute 概述定价](https://azure.microsoft.com/pricing/details/expressroute/)。
 - 了解[如何通过 Azure 成本管理优化云投资](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 - 详细了解如何通过[成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来管理成本。
 - 了解如何[防止意外成本](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。

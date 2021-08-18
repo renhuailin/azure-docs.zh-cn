@@ -4,12 +4,12 @@ description: 以编程方式创建在 Azure 资源不可用时发出通知的警
 ms.topic: conceptual
 ms.date: 9/4/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 34f8ec2eb47428f06ddcaf6b82a988f7f2b4b836
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 6543e376f1cfa3ed2592972b997895c8bae68f01
+ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110703285"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113643570"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用资源管理器模板创建资源运行状况警报
 
@@ -314,7 +314,7 @@ Azure 资源运行状况可通过使用测试运行器持续监控资源，向�
     ]
 }
 ```
-请注意，在某些事件中，原因字段可能为 null。 也就是说，发生了运行状况转换（例如，从可用变为不可用），因此系统会立即记录事件，防止通知延迟。 因此，使用上述子句可能导致某个警报无法触发，因为 properties.clause 属性值将会设置为 null。
+请注意，在某些事件中，原因字段可能为 null。 也就是说，发生了运行状况转换（例如，从可用变为不可用），因此系统会立即记录事件，防止通知延迟。 因此，使用上述子句可能导致某个警报无法触发，因为 properties.cause 属性值将会设置为 NULL。
 
 ## <a name="complete-resource-health-alert-template"></a>完成资源运行状况警报模板
 

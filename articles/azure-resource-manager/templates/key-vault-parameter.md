@@ -2,21 +2,23 @@
 title: 密钥保管库机密与模板
 description: 说明在部署期间如何以参数形式从密钥保管库传递机密。
 ms.topic: conceptual
-ms.date: 05/17/2021
+ms.date: 06/18/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 1cf3b1f3433b47d029876e9676b85c5de776d455
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: a5ee223c9cfa2dada3da4f6eb901550c9d4eec9d
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110795696"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112380709"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署过程中使用 Azure Key Vault 传递安全参数值
 
-在部署过程中，可以从 [Azure Key Vault](../../key-vault/general/overview.md) 中检索一个安全值，而不是直接在模板或参数文件中放置该值（如密码）。 通过引用参数文件中的密钥保管库和密钥来检索值。 值永远不会公开，因为仅引用其密钥保管库 ID。 密钥保管库可以与要部署到的资源组位于不同的订阅中。
+在部署过程中，可以从 [Azure Key Vault](../../key-vault/general/overview.md) 中检索一个安全值，而不是直接在模板或参数文件中放置该值（如密码）。 通过引用参数文件中的密钥保管库和密钥来检索值。 值永远不会公开，因为仅引用其密钥保管库 ID。
 
-本文重点介绍如何将敏感值作为模板参数传递。 本文并不涉及如何将虚拟机属性设置为密钥保管库中证书的 URL。
-有关该方案的快速入门模板，请参阅[在虚拟机上安装来自 Azure Key Vault 的证书](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/vm-winrm-keyvault-windows)。
+> [!IMPORTANT]
+> 本文重点介绍如何将敏感值作为模板参数传递。 机密作为参数传递时，密钥保管库与部署到的资源组不需要位于同一订阅中。 
+>
+> 本文并不涉及如何将虚拟机属性设置为密钥保管库中证书的 URL。 有关该方案的快速入门模板，请参阅[在虚拟机上安装来自 Azure Key Vault 的证书](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/vm-winrm-keyvault-windows)。
 
 ## <a name="deploy-key-vaults-and-secrets"></a>部署密钥保管库和机密
 
@@ -91,7 +93,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ---
 
-如果用户正在部署检索机密的模板，则不需要访问策略。 仅当用户需要直接使用机密时，才将该用户添加到访问策略。 下一部分定义了部署权限。
+如果用户部署的是用于检索机密的模板，则不需要访问策略。 仅在用户需要直接处理机密时，才将用户添加到访问策略。 部署权限在下一节中定义。
 
 若要详细了解如何创建密钥保管库和添加机密，请参阅：
 
@@ -101,13 +103,13 @@ Set-AzKeyVaultAccessPolicy `
 - [使用 .NET 设置和检索机密](../../key-vault/secrets/quick-create-net.md)
 - [使用 Node.js 设置和检索机密](../../key-vault/secrets/quick-create-node.md)
 
-## <a name="grant-deployment-access-to-the-secrets"></a>授予对机密的部署权限
+## <a name="grant-deployment-access-to-the-secrets"></a>授予对机密的部署访问权限
 
-部署模板的用户必须在资源组和密钥保管库范围内具有 `Microsoft.KeyVault/vaults/deploy/action` 权限。 通过检查此访问权限，Azure 资源管理器通过传入密钥保管库的资源 ID 来防止未经批准的用户访问机密。 你可以向用户授予部署权限，而无需授予对机密的写入权限。
+部署模板的用户必须在资源组和密钥保管库范围内具有 `Microsoft.KeyVault/vaults/deploy/action` 权限。 勾选此访问权限后，Azure 资源管理器就可以通过传入密钥保管库的资源 ID 来防止未经批准的用户访问机密。 你可以向用户授予部署访问权限，而不授予对机密的写访问权限。
 
 [所有者](../../role-based-access-control/built-in-roles.md#owner)和[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色均授予该访问权限。 如果是你创建了密钥保管库，那么你就是所有者且具有相关权限。
 
-对于其他用户，请授予 `Microsoft.KeyVault/vaults/deploy/action` 权限。 以下过程展示了如何创建具有最小权限的角色，以及如何将其分配给用户。
+对于其他用户，请授予 `Microsoft.KeyVault/vaults/deploy/action` 权限。 以下过程展示了如何创建具有最小权限的角色，并将其分配给用户。
 
 1. 创建自定义角色定义 JSON 文件：
 

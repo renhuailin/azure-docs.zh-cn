@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: a80472aad39e5d1b23cd92519076e0c8b94d67ac
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d2d62655bb352f20a99b5dc3314e3cffb92d07bb
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110478875"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179940"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>监视、诊断和排查 Microsoft Azure 存储问题
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -96,7 +96,7 @@ ms.locfileid: "110478875"
 
 可以选择要将哪些每小时指标显示在 [Azure 门户](https://portal.azure.com)中，并配置规则以便在每小时指标超过特定阈值时，通过电子邮件通知管理员。 有关详细信息，请参阅[接收警报通知](../../azure-monitor/alerts/alerts-overview.md)。
 
-建议查看[用于存储的 Azure Monitor](../../azure-monitor/insights/storage-insights-overview.md)（预览版）。 它是 Azure Monitor 的一项功能，通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 它不要求你启用或配置任何内容，你可以立即从预定义的交互式图表和包含的其他可视化效果中查看这些指标。
+建议查看[用于存储的 Azure Monitor](./storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)（预览版）。 它是 Azure Monitor 的一项功能，通过提供 Azure 存储服务性能、容量和可用性的统一视图，提供对 Azure 存储帐户的全面监视。 它不要求你启用或配置任何内容，你可以立即从预定义的交互式图表和包含的其他可视化效果中查看这些指标。
 
 存储服务将尽最大努力收集度量值，但可能无法记录每个存储操作。
 
@@ -510,7 +510,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 存储客户端库生成的以下客户端日志说明了客户端找不到它创建的 Blob 的容器时的问题。 此日志包含以下存储操作的详细信息：
 
-| 请求 ID | Operation |
+| 请求 ID | 操作 |
 | --- | --- |
 | 07b26a5d-... |**DeleteIfExists** 方法，用于删除 Blob 容器。 请注意，此操作包括 **HEAD** 请求以检查该容器是否存在。 |
 | e2d06d78-... |**CreateIfNotExists** 方法，用于创建 Blob 容器。 请注意，此操作包括 **HEAD** 请求，用于检查该容器是否存在。 **HEAD** 返回了 404 消息，但将继续执行。 |
@@ -639,7 +639,7 @@ client.SetServiceProperties(sp);
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>客户端正在接收“HTTP 409 (冲突)”消息
 下表显示了服务器端日志中针对两个客户端操作的摘录：**DeleteIfExists** 后面紧接使用相同 Blob 容器名称的 **CreateIfNotExists**。 每个客户端操作会导致将两个请求发送到服务器，先是 **GetContainerProperties** 请求（用于检查容器是否存在），后跟 **DeleteContainer** 或 **CreateContainer** 请求。
 
-| 时间戳 | Operation | 结果 | 容器名称 | 客户端请求 ID |
+| 时间戳 | 操作 | 结果 | 容器名称 | 客户端请求 ID |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-... |

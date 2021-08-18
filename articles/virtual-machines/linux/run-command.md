@@ -10,12 +10,12 @@ ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 manager: carmonm
-ms.openlocfilehash: 498c7bd16cc314316c67c202f55c7ce3dcac67c7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 67e84ce780f3013917edbce3e66c5a708509c194
+ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668139"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112518129"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>使用“运行命令”在 Linux VM 中运行 shell 脚本
 
@@ -23,7 +23,7 @@ ms.locfileid: "110668139"
 
 ## <a name="benefits"></a>优点
 
-可通过多种方式访问虚拟机。 “运行命令”可以使用 VM 代理在虚拟机上以远程方式运行脚本。 对于 Linux VM，可以通过 Azure 门户、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand) 或 [Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke) 使用“运行命令”。
+可通过多种方式访问虚拟机。 “运行命令”可以使用 VM 代理在虚拟机上以远程方式运行脚本。 对于 Linux VM，可以通过 Azure 门户、[REST API](/rest/api/compute/virtual-machines-run-commands/run-command) 或 [Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke) 使用“运行命令”。
 
 在需要在虚拟机中运行脚本的所有方案中，此功能都很有用。 它是排查和修正因网络或管理用户配置错误而未打开 RDP 或 SSH 端口的虚拟机的唯一方法。
 
@@ -69,7 +69,7 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 
 ## <a name="azure-portal"></a>Azure 门户
 
-转到 [Azure 门户](https://portal.azure.com) 中的某个 VM，然后在“操作”下选择“运行命令”。  你将看到可以在 VM 上运行的可用命令的列表。
+转到 [Azure 门户](https://portal.azure.com)中的 VM，然后在左侧菜单中的“操作”下选择“运行命令”。 你将看到可以在 VM 上运行的可用命令的列表。
 
 ![命令列表](./media/run-command/run-command-list.png)
 

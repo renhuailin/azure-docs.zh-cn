@@ -4,21 +4,21 @@ description: 如何使用 PowerShell 配置 Azure 云服务应用程序以允许
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 5b1650edb575de8fd59ad2495dafcd628a717c02
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: cad107051c0811f4de974fc4733e6a683c97907b
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102610393"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113092376"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic-using-powershell"></a>使用 PowerShell 为 Azure 云服务（经典）中的角色启用远程桌面连接
 
 > [!IMPORTANT]
-> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。进行此更改后，在基于 Azure Service Manager 的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
+> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](cloud-services-role-enable-remote-desktop-new-portal.md)

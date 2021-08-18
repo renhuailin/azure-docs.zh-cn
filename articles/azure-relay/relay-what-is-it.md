@@ -2,13 +2,13 @@
 title: 什么是 Azure 中继？ | Microsoft Docs
 description: 本文提供 Azure 中继服务的概述。借助该服务，无需打开防火墙连接或者对网络基础设施进行彻底的改造，就能开发使用企业网络中运行的本地服务的云应用程序。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 3b222942394b8a83e6f5d4447aa9ccfb33cdec21
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/23/2021
+ms.openlocfilehash: 8bb6028598602506474b1082bb517d29e2408c10
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107314195"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114668692"
 ---
 # <a name="what-is-azure-relay"></a>什么是 Azure 中继？
 使用 Azure 中继服务可以安全地在公有云中公开企业网络中运行的服务。 无需打开防火墙上的端口或者对企业网络基础设施进行彻底的改造就能实现此目的。 

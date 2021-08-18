@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 45433268a61772f499b5d2672a8b81044c1e3414
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 669b03d0d1d6f5f328cc4af368a756d0bbdab787
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108764452"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727825"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 应用程序代理实现对 SharePoint 的远程访问
 
@@ -26,7 +26,7 @@ ms.locfileid: "108764452"
 
 若要执行配置，需要具备以下资源：
 - 一个 SharePoint 2013 场或更高版本的场。
-- Azure AD 租户及包含应用程序代理的 Azure AD 计划。 详细了解 [Azure AD 计划和定价](https://azure.microsoft.com/pricing/details/active-directory/)。
+- Azure AD 租户及包含应用程序代理的 Azure AD 计划。 详细了解 [Azure AD 计划和定价](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
 - Azure AD 租户中[已验证的自定义域](../fundamentals/add-custom-domain.md)。
 - 已与 Azure AD Connect 同步的本地 Active Directory（用户可通过该 Azure AD Connect [登录 Azure](../hybrid/plan-connect-user-signin.md)）。
 - 在企业域中的计算机上安装并运行的应用程序代理连接器。

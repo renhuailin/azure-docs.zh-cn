@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-azurepowershell
 ms.date: 02/28/2020
-ms.openlocfilehash: 6077db17258c40cef5c6cd987469612171e344d2
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 874782828c4d7e63c0e1ad5ea607ddbd09b31881
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111558559"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112291260"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>使用 SSH 连接到 HDInsight (Apache Hadoop)
 
@@ -22,7 +22,6 @@ ms.locfileid: "111558559"
 | ----- | ----- | ----- |
 | `<clustername>-ssh.azurehdinsight.net` | 22 | 主头节点 |
 | `<clustername>-ssh.azurehdinsight.net` | 23 | 辅助头节点 |
-| `<clustername>-ed-ssh.azurehdinsight.net` | 22 | 边缘节点 (ML Services on HDInsight) |
 | `<edgenodename>.<clustername>-ssh.azurehdinsight.net` | 22 | 边缘节点（如果存在边缘节点，则可以是任何其他群集类型） |
 
 将 `<clustername>` 替换为群集的名称。 将 `<edgenodename>` 替换为边缘节点的名称。

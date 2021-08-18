@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 09/16/2020
-ms.openlocfilehash: 40b6c5a86184860cf3e7a9840f980706485ae977
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 48d037e4fe18f214af0f5ecaf9eb4e9b7e3ed59e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100572231"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735581"
 ---
 # <a name="resource-management-in-dense-elastic-pools"></a>密集弹性池中的资源管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,7 +55,7 @@ Azure SQL 数据库提供了多个与这种类型的监视相关的指标。 超
 |指标名称|说明|建议的平均值|
 |----------|--------------------------------|------------|
 |`avg_instance_cpu_percent`|与弹性池关联的 SQL 进程的 CPU 利用率，由基础操作系统度量。 在每个数据库的 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 视图中以及 `master` 数据库的 [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) 视图中提供。 此指标还会发出到 Azure Monitor，它在其中是[命名的](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserverselasticpools) `sqlserver_process_core_percent`，可在 Azure 门户中查看。 此值对于同一弹性池中的每个数据库都是相同的。|低于 70%。 偶尔且短暂地出现高达 90% 的情况是可以接受的。|
-|`max_worker_percent`|[工作线程]( https://docs.microsoft.com/sql/relational-databases/thread-and-task-architecture-guide)利用率。 为池中的每个数据库提供，以及为池本身提供。 对工作线程数的限制在数据库级别和池级别是不同的，因此建议同时在这两个级别监视此指标。 在每个数据库的 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 视图中以及 `master` 数据库的 [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) 视图中提供。 此指标还会发出到 Azure Monitor，它在其中是[命名的](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserverselasticpools) `workers_percent`，可在 Azure 门户中查看。|低于 80%。 峰值高达 100% 会导致连接尝试和查询失败。|
+|`max_worker_percent`|[工作线程](/sql/relational-databases/thread-and-task-architecture-guide)利用率。 为池中的每个数据库提供，以及为池本身提供。 对工作线程数的限制在数据库级别和池级别是不同的，因此建议同时在这两个级别监视此指标。 在每个数据库的 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 视图中以及 `master` 数据库的 [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) 视图中提供。 此指标还会发出到 Azure Monitor，它在其中是[命名的](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserverselasticpools) `workers_percent`，可在 Azure 门户中查看。|低于 80%。 峰值高达 100% 会导致连接尝试和查询失败。|
 |`avg_data_io_percent`|读取和写入物理 IO 的 IOPS 利用率。 为池中的每个数据库提供，以及为池本身提供。 对 IOPS 数的限制在数据库级别和池级别是不同的，因此建议同时在这两个级别监视此指标。 在每个数据库的 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 视图中以及 `master` 数据库的 [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) 视图中提供。 此指标还会发出到 Azure Monitor，它在其中是[命名的](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserverselasticpools) `physical_data_read_percent`，可在 Azure 门户中查看。|低于 80%。 偶尔且短暂地出现高达 100% 的情况是可以接受的。|
 |`avg_log_write_percent`|事务日志写入 IO 的吞吐量利用率。 为池中的每个数据库提供，以及为池本身提供。 对日志吞吐量的限制在数据库级别和池级别是不同的，因此建议同时在这两个级别监视此指标。 在每个数据库的 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 视图中以及 `master` 数据库的 [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) 视图中提供。 此指标还会发出到 Azure Monitor，它在其中是[命名的](../../azure-monitor/essentials/metrics-supported.md#microsoftsqlserverselasticpools) `log_write_percent`，可在 Azure 门户中查看。 此指标接近 100% 时，所有数据库修改（INSERT、UPDATE、DELETE、MERGE 语句，SELECT … INTO，BULK INSERT 等）都会变慢。|低于 90%。 偶尔且短暂地出现高达 100% 的情况是可以接受的。|
 |`oom_per_second`|弹性池中的内存不足 (OOM) 错误率，这是内存压力指标。 在 [sys.dm_resource_governor_resource_pools_history_ex](/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database) 视图中提供。 请参阅[示例](#examples)，其中提供了一个用于计算此指标的示例查询。|0|
@@ -142,4 +142,4 @@ CROSS JOIN (
 ## <a name="next-steps"></a>后续步骤
 
 - 有关弹性池的简介，请参阅[弹性池有助于在 Azure SQL 数据库中管理和缩放多个数据库](./elastic-pool-overview.md)。
-- 若要了解如何优化查询工作负荷以降低资源利用率，请参阅[监视和优化]( https://docs.microsoft.com/azure/sql-database/sql-database-monitoring-tuning-index)与[监视和性能优化](./monitor-tune-overview.md)。
+- 若要了解如何优化查询工作负荷以降低资源利用率，请参阅[监视和优化](monitoring-tuning-index.yml)与[监视和性能优化](./monitor-tune-overview.md)。

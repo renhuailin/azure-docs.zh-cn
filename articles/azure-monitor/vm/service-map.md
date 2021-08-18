@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: ad3f8821189e6e7aabb5653e5f938bb73f57a34b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f79e436f1fcce346304b2e88f213ff298b27aa04
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046986"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300824"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 
@@ -25,7 +25,7 @@ ms.locfileid: "102046986"
 * 安装在 Windows 计算机或 Linux 服务器上的 [Dependency Agent](vminsights-enable-overview.md#agents)。
 
 >[!NOTE]
->如果已部署服务映射，现在还可以在 VM 见解中查看映射，其中包括用于监视 VM 运行状况和性能的其他功能。 若要了解详细信息，请参阅 [VM 见解概述](../vm/vminsights-overview.md)。 若要了解服务映射解决方案与 VM 见解映射功能之间的差异，请参阅以下[常见问题解答](../faq.md#vm-insights)。
+>如果已部署服务映射，现在还可以在 VM 见解中查看映射，其中包括用于监视 VM 运行状况和性能的其他功能。 若要了解详细信息，请参阅 [VM 见解概述](../vm/vminsights-overview.md)。 若要了解服务映射解决方案与 VM 见解映射功能之间的差异，请参阅以下[常见问题解答](/azure/azure-monitor/faq#vm-insights)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Spring Cloud 异地灾难恢复 | Microsoft Docs
 description: 了解在发生区域性服务中断时如何保护 Spring Cloud 应用程序
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/24/2019
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: 8e3471d778e0589083caaf2dfedbccc4568de471
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 69dbe496745ebbe3fbc9547a1ffc381ec0cae905
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144648"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861337"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud 灾难恢复
 
@@ -26,9 +26,9 @@ Azure Spring Cloud 应用程序在特定的区域中运行。  Azure 在世界�
 
 若要确保高可用性并在发生灾难时提供保护，需要将 Spring Cloud 应用程序部署到多个区域。  Azure 提供了一系列 [配对区域](../best-practices-availability-paired-regions.md)，使你可以规划如何在区域对中进行 Spring Cloud 部署。  在设计微服务体系结构时，我们建议考虑三个关键因素：区域可用性、Azure 配对区域和服务可用性。
 
-*  区域可用性：选择靠近用户的地理区域，以尽量减少网络延迟和传输时间。
-*  Azure 配对区域：选择所选地理区域中的配对区域，确保以协调的方式进行平台更新，并根据需要确定恢复工作的优先级。
-*  服务可用性： 确定配对区域应当采用热/热、热/暖还是热/冷模式运行。
+* 区域可用性：选择靠近用户的地理区域，以尽量减少网络延迟和传输时间。
+* Azure 配对区域：选择所选地理区域中的配对区域，确保以协调的方式进行平台更新，并根据需要确定恢复工作的优先级。
+* 服务可用性： 确定配对区域应当采用热/热、热/暖还是热/冷模式运行。
 
 ## <a name="use-azure-traffic-manager-to-route-traffic"></a>使用 Azure 流量管理器路由流量
 
@@ -39,7 +39,7 @@ Azure Spring Cloud 应用程序在特定的区域中运行。  Azure 在世界�
 ## <a name="create-azure-traffic-manager-for-azure-spring-cloud"></a>为 Azure Spring Cloud 创建 Azure 流量管理器
 
 1. 在两个不同的区域中创建 Azure Spring Cloud。
-你需要在两个不同的区域（“美国东部”和“西欧”）部署两个 Azure Spring Cloud 服务实例。 使用 Azure 门户启动现有的 Azure Spring Cloud 应用程序，以创建两个服务实例。 每个实例将充当流量的主要终结点和故障转移终结点。 
+你需要在两个不同的区域（“美国东部”和“西欧”）部署两个 Azure Spring Cloud 服务实例。 使用 Azure 门户启动现有的 Azure Spring Cloud 应用程序，以创建两个服务实例。 每个实例将充当流量的主要终结点和故障转移终结点。
 
 **两个服务实例的信息：**
 
@@ -54,14 +54,14 @@ Azure Spring Cloud 应用程序在特定的区域中运行。  Azure 在世界�
 
 下面是流量管理器配置文件：
 * 流量管理器 DNS 名称：`http://asc-bcdr.trafficmanager.net`
-* 终结点配置文件： 
+* 终结点配置文件：
 
 | 配置文件 | 类型 | 目标 | 优先度 | 自定义标头设置 |
 |--|--|--|--|--|
 | 终结点 A 配置文件 | 外部终结点 | service-sample-a.asc-test.net | 1 | 主机：bcdr-test.contoso.com |
 | 终结点 B 配置文件 | 外部终结点 | service-sample-b.asc-test.net | 2 | 主机：bcdr-test.contoso.com |
 
-4. 在 DNS 区域中创建 CNAME 记录：bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net。 
+4. 在 DNS 区域中创建 CNAME 记录：bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net。
 
 5. 现在，环境已完全设置。 客户应该可以通过 bcdr-test.contoso.com 访问应用了
 

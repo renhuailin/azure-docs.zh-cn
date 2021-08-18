@@ -2,23 +2,22 @@
 title: 使用 Java 将文件从设备上传到 Azure IoT 中心 | Microsoft Docs
 description: 如何使用用于 Java 的 Azure IoT 设备 SDK 从设备将文件上传到云中。 上传的文件存储在 Azure 存储 Blob 容器中。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 06/28/2017
+ms.date: 07/18/2021
 ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: dc87ad0af7eac71d7f2835b2b0d582fe8d1ec1b9
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: a280e7b156ebb31269e4a65508596f8ba03c3caf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985375"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778043"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>通过 IoT 中心将设备中的文件上传到云 (Java)
 
@@ -26,14 +25,14 @@ ms.locfileid: "111985375"
 
 本教程介绍如何使用 Java 使用 IoT 中心的文件上传功能。 有关文件上传过程的概述，请参阅[使用 IoT 中心上传文件](iot-hub-devguide-file-upload.md)。
 
-[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-java.md)快速入门和[使用 IoT 中心发送云到设备的消息](iot-hub-java-java-c2d.md)教程介绍了 IoT 中心提供的基本的设备到云和云到设备的消息传送功能。 [使用 IoT 中心配置消息路由](tutorial-routing.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
+[将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-java)快速入门和[使用 IoT 中心发送云到设备的消息](iot-hub-java-java-c2d.md)教程介绍了 IoT 中心提供的基本的设备到云和云到设备的消息传送功能。 [使用 IoT 中心配置消息路由](tutorial-routing.md)教程介绍了一种在 Azure Blob 存储中可靠存储设备到云消息的方法。 但是，在某些情况下，无法轻松地将设备发送的数据映射为 IoT 中心接受的相对较小的设备到云消息。 例如：
 
 * 包含图像的大型文件
 * 视频
 * 以高频率采样的振动数据
 * 某种形式的预处理数据。
 
-通常使用 [Azure 数据工厂](../data-factory/introduction.md)或 [Hadoop](../hdinsight/index.yml) 堆栈等工具在云中批处理这些文件。 需要从设备上传文件时，但仍可以使用 IoT 中心的安全性和可靠性。 此示例介绍了操作方法。 此外，GitHub 中有两个示例，位于 [https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/file-upload-sample/src/main/java/samples/com/microsoft/azure/sdk/iot](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/file-upload-sample/src/main/java/samples/com/microsoft/azure/sdk/iot)。
+通常使用 [Azure 数据工厂](../data-factory/introduction.md)或 [Hadoop](../hdinsight/index.yml) 堆栈等工具在云中批处理这些文件。 但是，需要从设备上传文件时，仍可以使用 IoT 中心的安全性和可靠性。 此示例介绍了操作方法。 此外，GitHub 中有两个示例，位于 [https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/file-upload-sample/src/main/java/samples/com/microsoft/azure/sdk/iot](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/file-upload-sample/src/main/java/samples/com/microsoft/azure/sdk/iot)。
 
 > [!NOTE]
 > IoT 中心通过 Azure IoT 设备 SDK 来支持许多设备平台和语言（包括 C、.NET 和 Javascript）。 有关如何将设备连接到 Azure IoT 中心的分步说明，请参阅 [Azure IoT 开发人员中心](https://azure.microsoft.com/develop/iot)。
@@ -54,7 +53,11 @@ ms.locfileid: "111985375"
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-[!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
+## <a name="register-a-new-device-in-the-iot-hub"></a>在 IoT 中心内注册新设备
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
+
+[!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-include-associate-storage.md)]
 
 ## <a name="create-a-project-using-maven"></a>使用 Maven 创建项目
 
@@ -165,10 +168,9 @@ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -Darchety
 
 ```
 
+## <a name="upload-a-file-from-a-device-app"></a>从设备应用上传文件
 
-## <a name="upload-a-file"></a>上传文件
-
-将要上传的文件复制到项目树中的 `my-app` 文件夹。 使用文本编辑器，将 App.java 替换为以下代码。 提供连接字符串和文件名（如已说明）。
+将要上传的文件复制到项目树中的 `my-app` 文件夹。 使用文本编辑器，将 App.java 替换为以下代码。 按说明提供设备连接字符串和文件名。 注册设备时复制了设备连接字符串。
 
 ```java
 package com.mycompany.app;
@@ -284,22 +286,7 @@ public class App
     }
 }
 ```
-## <a name="get-the-device-connection-string"></a>获取设备连接字符串
 
-在 Azure Cloud Shell 中运行以下命令，以获取设备的 _设备连接字符串_。 将下面的占位符替换为你为 IoT 中心选择的名称和设备的名称。
-
-```azurecli-interactive
-az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id {YourDevice} --output table
-```
-    
-复制如下所示的设备连接字符串，将其放在代码示例中（如已说明）。
-  
-```cmd/sh
-HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDotnetDevice;SharedAccessKey={YourSharedAccessKey}
-```
-
-将要上传的文件的路径放在代码示例中（如已说明）。
-    
 ## <a name="build-and-run-the-application"></a>生成并运行应用程序
 
 在 `my-app` 文件夹中的命令提示符下运行以下命令：

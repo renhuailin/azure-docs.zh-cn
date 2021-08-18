@@ -2,7 +2,6 @@
 title: 适用于 Azure IoT 的安全性建议 | Microsoft Docs
 description: 本文总结了一些其他步骤，以确保 Azure IoT 中心解决方案的安全性。
 author: dsk-2015
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: article
@@ -12,12 +11,12 @@ ms.custom:
 - security-recommendations
 - amqp
 - mqtt
-ms.openlocfilehash: a1de3a71253b1a82b4423bff279fbf3f7e378da4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c3592770769492bdf90351c59a1077a56e47baa1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96457614"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742219"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Azure 物联网 (IoT) 部署的安全性建议
 
@@ -40,14 +39,14 @@ ms.locfileid: "96457614"
 
 | 建议 | 注释 | 由 ASC 支持 |
 |-|----|--|
-| 定义中心的访问控制 | [了解并定义](iot-security-deployment.md#securing-the-cloud)每个组件在 IoT 中心解决方案中将具有的访问类型（基于功能）。 允许的权限包括 Registry Read、RegistryReadWrite、ServiceConnect 和 DeviceConnect。 默认的 [IoT 中心的共享访问策略](../iot-hub/iot-hub-devguide-security.md#access-control-and-permissions)还有助于根据组件的角色定义每个组件的权限。 | - |
+| 定义中心的访问控制 | [了解并定义](iot-security-deployment.md#securing-the-cloud)每个组件在 IoT 中心解决方案中将具有的访问类型（基于功能）。 允许的权限包括 Registry Read、RegistryReadWrite、ServiceConnect 和 DeviceConnect。 默认的 [IoT 中心的共享访问策略](../iot-hub/iot-hub-dev-guide-sas.md#access-control-and-permissions)还有助于根据组件的角色定义每个组件的权限。 | - |
 | 定义后端服务的访问控制 | IoT 中心解决方案引入的数据可供其他 Azure 服务使用，例如：[Cosmos DB](../cosmos-db/index.yml)、[流分析](../stream-analytics/index.yml)、[应用服务](../app-service/index.yml)、[逻辑应用](../logic-apps/index.yml)和 [Blob 存储](../storage/blobs/storage-blobs-introduction.md)。 对于这些服务，请务必进行了解并允许所记录的适当访问权限。 | - |
 
 ## <a name="data-protection"></a>数据保护
 
 | 建议 | 注释 | 由 ASC 支持 |
 |-|----|--|
-| 保护设备身份验证 | 通过使用[唯一的标识密钥或安全令牌](iot-security-deployment.md#iot-hub-security-tokens)，或每个设备的[设备上 X.509 证书](iot-security-deployment.md#x509-certificate-based-device-authentication)，确保设备和 IoT 中心之间的通信安全。 [根据所选协议（MQTT、AMQP 或 HTTPS），采取使用安全令牌的](../iot-hub/iot-hub-devguide-security.md)适当方法。 | - |
+| 保护设备身份验证 | 通过使用[唯一的标识密钥或安全令牌](iot-security-deployment.md#iot-hub-security-tokens)，或每个设备的[设备上 X.509 证书](iot-security-deployment.md#x509-certificate-based-device-authentication)，确保设备和 IoT 中心之间的通信安全。 [根据所选协议（MQTT、AMQP 或 HTTPS），采取使用安全令牌的](../iot-hub/iot-hub-dev-guide-sas.md)适当方法。 | - |
 | 保护设备通信 | IoT 中心使用传输层安全性 (TLS) 标准（支持版本 1.2 和 1.0）来保护与设备的连接。 使用 [TLS 1.2](https://tools.ietf.org/html/rfc5246) 来确保最大安全性。 | - |
 | 保护服务通信 | IoT 中心提供终结点，以便仅使用 TLS 协议连接到后端服务（如 [Azure 存储](../storage/index.yml)或[事件中心](../event-hubs/index.yml)），并且不会在未加密的通道上公开任何终结点。 在将此数据传输到这些后端服务进行存储或分析后，请确保为该服务使用适当的安全和加密方法，同时保护后端的敏感信息。 | - |
 

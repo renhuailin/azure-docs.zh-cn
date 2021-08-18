@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b00561875d7c8c08061c9fcbe46a88815ef2f32c
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 245979140b2d5214dcbb9ba8456cc90d8b8fd864
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110784636"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669327"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps 社区 - 开源项目
 
@@ -59,7 +59,7 @@ ms.locfileid: "110784636"
 |-|-|
 | [Azure Maps 代码示例](https://github.com/Azure-Samples/AzureMapsCodeSamples) | 用于在基于 Web 的应用中使用 Azure Maps 的代码示例的集合。 |
 | [Azure Maps 政府云代码示例](https://github.com/Azure-Samples/AzureMapsCodeSamples) | 用于通过 Azure 政府云使用 Azure Maps 的代码示例的集合。 |
-| [Azure Maps 和 Azure Active Directory 示例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | 演示如何将 Azure Active Directory 与 Azure Maps 结合使用的示例的集合。 | 
+| [Azure Maps 和 Azure Active Directory 示例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | 演示如何将 Azure Active Directory 与 Azure Maps 结合使用的示例的集合。 |
 | [LiveMaps](https://github.com/Azure-Samples/LiveMaps) | 使用 Azure Maps Creator 在 Azure Maps 上提供 IoT 数据的实时室内地图可视化效果的示例应用程序 |
 | [Azure Maps Jupyter Notebook 示例](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | 使用 Azure Maps REST 服务的 python 示例的集合。 |
 | [Azure Maps .NET UWP IoT 远程控制](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | 这是一个示例应用程序，演示如何使用 Azure Maps 和 IoT 中心服务构建远程控制的地图。 |
@@ -70,9 +70,9 @@ ms.locfileid: "110784636"
 
 | 项目名称 | 描述 |
 |-|-|
-| [Azure Maps Cesium 插件](https://github.com/azure-samples/azure-maps-cesium) | 一个 [Cesium JS](https://cesium.com/cesiumjs/) 插件，可用于轻松集成 Azure Maps 服务（如[图块层](/rest/api/maps/renderv2/getmaptilepreview)和[地理编码服务](/rest/api/maps/search)）。 |
-| [Azure Maps Leaflet 插件](https://github.com/azure-samples/azure-maps-leaflet) | 一个 [Leaflet](https://leafletjs.com/) JavaScript 插件，可用于轻松覆盖 [Azure Maps 图块服务](/rest/api/maps/renderv2/getmaptilepreview)中的图块层。 |
- | [Azure Maps OpenLayers 插件](https://github.com/azure-samples/azure-maps-openlayers) | 一个 [OpenLayers](https://www.openlayers.org/) JavaScript 插件，可用于轻松覆盖 [Azure Maps 图块服务](/rest/api/maps/renderv2/getmaptilepreview)中的图块层。 |
+| [Azure Maps Cesium 插件](https://github.com/azure-samples/azure-maps-cesium) | 一个 [Cesium JS](https://cesium.com/cesiumjs/) 插件，可用于轻松集成 Azure Maps 服务（如[图块层](/rest/api/maps/render-v2/get-map-tile)和[地理编码服务](/rest/api/maps/search)）。 |
+| [Azure Maps Leaflet 插件](https://github.com/azure-samples/azure-maps-leaflet) | 一个 [Leaflet](https://leafletjs.com/) JavaScript 插件，可用于轻松覆盖 [Azure Maps 图块服务](/rest/api/maps/render-v2/get-map-tile)中的图块层。 |
+ | [Azure Maps OpenLayers 插件](https://github.com/azure-samples/azure-maps-openlayers) | 一个 [OpenLayers](https://www.openlayers.org/) JavaScript 插件，可用于轻松覆盖 [Azure Maps 图块服务](/rest/api/maps/render-v2/get-map-tile)中的图块层。 |
 
 **工具和资源**
 

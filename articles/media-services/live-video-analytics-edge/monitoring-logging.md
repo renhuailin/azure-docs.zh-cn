@@ -3,12 +3,12 @@ title: 实时视频分析中的监视和日志记录 - Azure
 description: 本文概述了 IoT Edge 上的 Azure 实时视频分析中的监视和日志记录。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 4bc69192d0d36d01755d625ee46cd77cd9eec1b9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 0eb6f63b139a9a0ca9fc65c80dd6284d1a476f6d
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372131"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297083"
 ---
 # <a name="monitoring-and-logging-in-live-video-analytics-on-iot-edge"></a>IoT Edge 上的实时视频分析中的监视和日志记录
 
@@ -417,7 +417,7 @@ Fragments(video=143039375031270,format=m3u8-aapl)
 
 ## <a name="faq"></a>常见问题解答
 
-如有问题，请参阅[监视和指标常见问题解答](faq.md#monitoring-and-metrics)。
+如有问题，请参阅[监视和指标常见问题解答](/azure/media-services/live-video-analytics-edge/faq#monitoring-and-metrics)。
 
 ## <a name="next-steps"></a>后续步骤
 

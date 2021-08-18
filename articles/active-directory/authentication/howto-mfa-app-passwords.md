@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac603cef478b821d1fea72fce22004fc72860914
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 58344a385a8ad4d409748c039f8f1e7807e290b7
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744460"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114228372"
 ---
 # <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>使用应用密码对旧版应用程序启用和使用 Azure AD 多重身份验证
 
@@ -103,7 +103,7 @@ Azure AD 支持与本地 Active Directory 域服务 (AD DS) 联合（也称单�
 
 用户还可以在注册后创建应用密码。 有关用户的更多信息和详细步骤，请参阅以下资源：
 * [Azure AD 多重身份验证中的应用密码是什么？](../user-help/multi-factor-authentication-end-user-app-passwords.md)
-* [从“安全信息”页创建应用密码](https://docs.microsoft.com/azure/active-directory/user-help/security-info-app-passwords)
+* [从“安全信息”页创建应用密码](../user-help/security-info-app-passwords.md)
 
 ## <a name="next-steps"></a>后续步骤
 

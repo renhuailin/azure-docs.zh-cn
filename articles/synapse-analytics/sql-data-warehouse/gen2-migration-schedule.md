@@ -2,8 +2,8 @@
 title: 将专用 SQL 池（以前称为 SQL DW）迁移到 Gen2
 description: 将现有专用 SQL 池（以前称为 SQL DW）迁移到 Gen2 以及按区域对迁移进行计划的说明。
 services: synapse-analytics
-author: mlee3gsd
-ms.author: anjangsh
+author: rothja
+ms.author: jroth
 ms.reviewer: jrasnick
 manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
@@ -12,12 +12,12 @@ ms.topic: article
 ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0ce07ff3ca5fbcc9776792129d3bfb4ef54efe7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 59ebd89701f23979a8a359fecfd68a4796bf6d9c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98120115"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114472104"
 ---
 # <a name="upgrade-your-dedicated-sql-pool-formerly-sql-dw-to-gen2"></a>将专用 SQL 池（以前称为 SQL DW）升级到 Gen2
 
@@ -34,12 +34,8 @@ Microsoft 有助于降低运行专用 SQL 池（以前称为 SQL DW）的入门�
 
 | **区域** | **较低的 Gen2 可用** | **自动升级开始时间** |
 |:--- |:--- |:--- |
-| 加拿大东部 |2020 年 6 月 1 日 |2020 年 7 月 1 日 |
 | 中国东部 |\* |\* |
 | 中国北部 |\* |\* |
-| 德国中部 |\* |\* |
-| 德国中西部 |可用 |2020 年 5 月 1 日 |
-| 印度西部 |可用 |2020 年 5 月 1 日  |
 
 ## <a name="automatic-upgrade-process"></a>自动升级过程
 

@@ -2,19 +2,18 @@
 title: 内置 edgeAgent 直接方法 - Azure IoT Edge
 description: 使用 IoT Edge 代理运行时模块中的内置直接方法监视和管理 IoT Edge 部署
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cc580bd1e7b33507f25fdb0ebec3ba38904db8bb
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 35f226962e1c293a3d39e5e4667394a157d3e8a0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111541856"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722039"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>使用内置直接方法来与 edgeAgent 通信
 

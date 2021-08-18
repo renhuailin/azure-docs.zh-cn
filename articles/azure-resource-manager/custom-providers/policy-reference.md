@@ -1,17 +1,17 @@
 ---
 title: Azure 自定义资源提供程序的内置策略定义
 description: 列出 Azure 自定义资源提供程序的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 06/11/2021
+ms.date: 08/13/2021
 ms.topic: reference
 author: jjbfour
 ms.author: jobreen
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 0c5cacff57df7d3250748e9759bfcdb055d48e19
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: f78984912449115f0748a01bd68ccb9773f8d7d2
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020126"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181379"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-custom-resource-providers"></a>Azure 自定义资源提供程序的 Azure Policy 内置定义
 

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/08/2021
-ms.openlocfilehash: 7825942ce692e83f2305e4c9f9b1a31cdadaea71
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: f623a5012ebd02ddf55b41541bb66cc34eaa4de8
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901600"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112461226"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>创建并附加 Azure Kubernetes 服务群集
 
@@ -128,7 +128,7 @@ Result
 1.16.13
 ```
 
-若要以编程方式检查可用版本，请使用[容器服务客户端 - 列出业务流程协调程序](/rest/api/container-service/container%20service%20client/listorchestrators) REST API。 若要查找可用版本，请查看 `orchestratorType` 为 `Kubernetes` 的条目。 关联的 `orchestrationVersion` 条目包含可附加到你的工作区的可用版本。
+若要以编程方式检查可用版本，请使用[容器服务客户端 - 列出业务流程协调程序](/rest/api/container-service/container-service-client/list-orchestrators) REST API。 若要查找可用版本，请查看 `orchestratorType` 为 `Kubernetes` 的条目。 关联的 `orchestrationVersion` 条目包含可附加到你的工作区的可用版本。
 
 若要查找通过 Azure 机器学习创建群集时使用的默认版本，请找到其中的 `orchestratorType` 为 `Kubernetes` 且 `default` 为 `true` 的条目。 关联的 `orchestratorVersion` 值为默认版本。 下面的 JSON 代码片段显示了一个示例条目：
 
@@ -198,7 +198,7 @@ aks_target.wait_for_completion(show_output = True)
 az ml computetarget create aks -n myaks
 ```
 
-有关详细信息，请参阅 [az ml computetarget create aks](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_aks) 参考文档。
+有关详细信息，请参阅 [az ml computetarget create aks](/cli/azure/ml(v1)/computetarget/create#az_ml_computetarget_create_aks) 参考文档。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 
@@ -225,7 +225,7 @@ az ml computetarget create aks -n myaks
 
 * [创建 AKS 群集 (CLI)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2faks%2fTOC.json#az_aks_create)
 * [创建 AKS 群集（门户）](../aks/kubernetes-walkthrough-portal.md)
-* [创建 AKS 群集（Azure 快速入门模板上的 ARM 模板）](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
+* [创建 AKS 群集（Azure 快速入门模板上的 ARM 模板）](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.containerinstance/aks-azml-targetcompute)
 
 以下示例演示如何将现有 AKS 群集附加到工作区：
 
@@ -275,7 +275,7 @@ az aks show -n myexistingcluster -g myresourcegroup --query id
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-有关详细信息，请参阅 [az ml computetarget attach aks](/cli/azure/ml/computetarget/attach#az_ml_computetarget_attach_aks) 参考文档。
+有关详细信息，请参阅 [az ml computetarget attach aks](/cli/azure/ml(v1)/computetarget/attach#az_ml_computetarget_attach_aks) 参考文档。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 

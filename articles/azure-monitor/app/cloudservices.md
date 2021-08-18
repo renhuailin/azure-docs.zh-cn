@@ -4,12 +4,12 @@ description: 使用 Application Insights 有效监视 Web 角色和辅助角色
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 264d6d4b0b397a29b5dc1db4bb299297c1e30584
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b225a35d87f24d8f6c297ea52728ebc9f3d881da
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419229"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114289967"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>适用于 Azure 云服务的 Application Insights
 [Application Insights][start] 可以通过将 Application Insights SDK 提供的数据与云服务提供的 [Azure 诊断](../agents/diagnostics-extension-overview.md)数据合并，来监视 [Azure 云服务应用](https://azure.microsoft.com/services/cloud-services/)的可用性、性能、故障和使用情况。 通过收到的有关应用在现实中的性能和有效性的反馈，可以针对每个开发生命周期确定合理的设计方向。
@@ -285,6 +285,6 @@ ms.locfileid: "103419229"
 [diagnostic]: ./diagnostic-search.md
 [netlogs]: ./asp-net-trace-logs.md
 [portal]: https://portal.azure.com/
-[qna]: ../faq.md
-[redfield]: ./monitor-performance-live-website-now.md
+[qna]: ../faq.yml
+[redfield]: ./status-monitor-v2-overview.md
 [start]: ./app-insights-overview.md

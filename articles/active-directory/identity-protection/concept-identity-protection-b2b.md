@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 05/03/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 357a9f7e3e498a477d6cadf3742e11696eafa896
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: b1d275c4fe093992f1bf87f7d4b8c5965e448a41
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786542"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737294"
 ---
 # <a name="identity-protection-and-b2b-users"></a>标识保护和 B2B 用户
 

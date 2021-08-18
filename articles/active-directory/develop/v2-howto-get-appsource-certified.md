@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 7731aa2eb1a962d4674ed382911ba0058e1ebdaf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ba06e75bdbb2af8c3a825702735460404f873ce
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101647500"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464192"
 ---
 # <a name="get-appsource-certified-for-azure-active-directory"></a>使 AppSource 通过 Azure Active Directory 的认证
 
@@ -40,7 +40,7 @@ ms.locfileid: "101647500"
 
 单租户应用程序是仅接受来自定义的 Azure AD 实例的用户登录的应用程序。 将每个用户作为来宾帐户添加到应用程序注册的 Azure AD 实例后，外部用户（包括来自其他组织的工作或学校帐户，或个人帐户）可以登录到单租户应用程序。 
 
-可以通过 [Azure AD B2B 协作](../external-identities/what-is-b2b.md)将用户作为来宾帐户添加到 Azure AD，或者[以编程方式](../../active-directory-b2c/code-samples.md)执行此操作。 使用 B2B 时，用户可以创建自助服务门户，而无需接收登录邀请。 有关详细信息，请参阅 [Azure AD B2B 协作注册的自助服务门户](../external-identities/self-service-portal.md)。
+可以通过 [Azure AD B2B 协作](../external-identities/what-is-b2b.md)将用户作为来宾帐户添加到 Azure AD，或者[以编程方式](../../active-directory-b2c/integrate-with-app-code-samples.md)执行此操作。 使用 B2B 时，用户可以创建自助服务门户，而无需接收登录邀请。 有关详细信息，请参阅 [Azure AD B2B 协作注册的自助服务门户](../external-identities/self-service-portal.md)。
 
 单租户应用程序可启用“与我联系”体验，但若要启用 AppSource 建议的单击/免费试用体验，则请改为在应用程序上启用多租户。
 

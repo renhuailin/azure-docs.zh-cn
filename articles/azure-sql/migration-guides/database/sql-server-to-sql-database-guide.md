@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 03/19/2021
-ms.openlocfilehash: 437b7bd6e919cd6b462cb8653354631fbeb438ed
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 8e044cee9e91c0de16105bc4c954af9e61acea5a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110785546"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743677"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-database"></a>迁移指南：SQL Server 到 Azure SQL 数据库
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "110785546"
 
 ## <a name="prerequisites"></a>先决条件 
 
-若要将 [SQL Server 迁移](https://azure.microsoft.com/en-us/migration/sql-server/)到 Azure SQL 数据库，请确保已执行以下操作： 
+若要将 [SQL Server 迁移](https://azure.microsoft.com/migration/sql-server/)到 Azure SQL 数据库，请确保已执行以下操作： 
 
 - 选定[迁移方法](sql-server-to-sql-database-overview.md#compare-migration-options)及相应的工具。
 - 在可以连接到源 SQL Server 的计算机上安装[数据迁移助手 (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)。

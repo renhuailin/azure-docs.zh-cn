@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7158a42a61ccba736e94f22714cc3b30f7f1cc5
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 8f2ae8a38305b74f2bccba55b02d98626b5afc1d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286935"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724842"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>规划 Azure Active Directory 设备部署
 
@@ -142,6 +142,8 @@ BYOD 和公司拥有的移动设备由安装公司门户应用的用户注册。
 * [Android](/mem/intune/user-help/enroll-device-android-company-portal)
 
 * [Windows 10](/mem/intune/user-help/enroll-windows-10-device)
+
+* [macOS](/mem/intune/user-help/enroll-your-device-in-intune-macos-cp)
 
 如果注册设备是组织的最佳选择，请参阅以下资源：
 

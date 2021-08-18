@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: 73caf848ab5c6f8e973469066ce4612a075a52f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f059e39c97f66d07caa529ec4f6592fd8efe689e
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94489312"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112284916"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>为 Salesforce 配置潜在顾客管理
 
@@ -66,7 +66,7 @@ ms.locfileid: "94489312"
 
 准备好在发布门户中为产品/服务配置潜在顾客管理信息后，执行以下步骤。
 
-1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
+1. 登录到[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165290)。
 
 1. 选择你的产品/服务，然后转到“产品/服务设置”选项卡。
 

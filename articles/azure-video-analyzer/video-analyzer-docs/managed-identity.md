@@ -3,13 +3,13 @@ title: 具有 Azure 视频分析器的托管标识
 description: 本主题说明如何使用具有 Azure 视频分析器的托管标识。
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 05/04/2021
-ms.openlocfilehash: 8d9558319168e2a94c81f764c9b19f70dc904f79
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 073f9ee8d039435b4cf8c7dac59831a2870b2ce0
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110384958"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601429"
 ---
 # <a name="managed-identity"></a>托管标识
 

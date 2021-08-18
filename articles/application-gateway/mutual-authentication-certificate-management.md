@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: caya
-ms.openlocfilehash: 2329dc7426b223ef2c81dd0e2e607bccf73192e6
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 15655ba313a3a3cba23289c6d829523db6735129
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106230832"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739907"
 ---
 # <a name="export-a-trusted-client-ca-certificate-chain-to-use-with-client-authentication"></a>导出受信任的客户端 CA 证书链以用于客户端身份验证
 为了配置与客户端的相互身份验证或客户端身份验证，应用程序网关要求将受信任的客户端 CA 证书链上传到网关。 如果有多个证书链，则需要单独创建这些链，并在应用程序网关上将它们作为不同文件上传。 本文介绍如何导出可在网关上的客户端身份验证配置中使用的受信任的客户端 CA 证书链。  
@@ -55,7 +55,7 @@ ms.locfileid: "106230832"
 6. 单击“完成”  导出证书。
 
     > [!div class="mx-imgBorder"]
-    > ![屏幕截图显示了完成文件导出后的证书导出向导。](./media/certificates-for-backend-authentication/finish.png)
+    > ![屏幕截图显示了完成文件导出后的证书导出向导。](./media/certificates-for-backend-authentication/finish-screen.png)
 
 7. 证书已成功导出。
 
@@ -101,12 +101,12 @@ ms.locfileid: "106230832"
 
 1. 此时，你已从公用证书中提取了根 CA 证书的详细信息。 此时会看到“证书导出向导”。 按照上一部分（[导出公用证书](./mutual-authentication-certificate-management.md#export-public-certificate)）中的步骤 2-7 完成“证书导出向导”。 
 
-1. 现在，对所有中间 CA 重复当前部分（[从公用证书导出 CA 证书](./mutual-authentication-certificate-management.md#export-ca-certificates-from-the-public-certificate)）中的步骤 2-6，以导出采用 Base-64 编码的 X.509(.CER) 格式的所有中间 CA 证书。
+1. 现在，对所有中间 CA 重复当前部分（[从公用证书导出 CA 证书](./mutual-authentication-certificate-management.md#export-ca-certificates-from-the-public-certificate)）的步骤 2-6，以导出采用 Base-64 编码的 X.509(.CER) 格式的所有中间 CA 证书。
 
     > [!div class="mx-imgBorder"]
     > ![中间证书](./media/mutual-authentication-certificate-management/intermediate-cert.png)
 
-    例如，你将对 MSIT CAZ2 中间 CA 重复本部分中的步骤 2-6，以将其提取为自己的证书。 
+    例如，你将对 MSIT CAZ2 中间 CA 重复本部分的步骤 2-6，以将其提取为自己的证书。 
 
 ### <a name="concatenate-all-your-ca-certificates-into-one-file"></a>将所有 CA 证书连接到一个文件
 

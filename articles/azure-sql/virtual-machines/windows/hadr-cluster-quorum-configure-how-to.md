@@ -11,14 +11,14 @@ ms.subservice: hadr
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/30/2021
+ms.date: 06/01/2021
 ms.author: chadam
-ms.openlocfilehash: 6b974628adeb1d1562d3735fcb55704adc8e2d98
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: b1db3b5d809c8dd80b0d03d5bdd15636115fdef0
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111573228"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112581936"
 ---
 # <a name="configure-cluster-quorum-for-sql-server-on-azure-vms"></a>为 Azure VM 上的 SQL Server 配置群集仲裁
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -189,18 +189,18 @@ Set-ClusterQuorum -FileShareWitness <UNC path to file share> -Credential $(Get-C
 ## <a name="change-quorum-voting"></a>更改仲裁投票
 
 
-可以更改加入 Windows Server 故障转移群集中的节点的仲裁投票。 
+可以更改参与 Windows Server 故障转移群集的节点的仲裁投票。 
 
-修改节点投票设置时，请遵循以下准则： 
+修改节点投票设置时，请遵循以下指导原则： 
 
-| 仲裁投票指南 |
+| 仲裁投票指导原则 |
 |-|
-| 默认情况下，每个节点一开始都没有投票。 每个节点都应该只有一票且包含明确理由。|
-| 为托管可用性组的主副本的群集节点或故障转移群集实例的首选所有者启用投票。 |
-| 为自动故障转移所有者启用投票。 可作为自动故障转移的结果托管主副本或 FCI 的每个节点都应具有一票。 | 
-| 如果可用性组具有多个辅助副本，则仅为具有自动故障转移的副本启用投票。 | 
-| 为位于辅助灾难恢复站点中的节点禁用投票。 如果主站点不存在任何问题，辅助站点中的节点不应参与到令群集脱机的决策中来。 | 
-| 有奇数数目的投票，最少为三个仲裁投票。 如有必要，在两节点群集中为其他投票添加[仲裁见证](hadr-cluster-quorum-configure-how-to.md)。 | 
+| 默认从没有投票的每个节点开始。 每个节点应该只有一个附带明确理由的投票。|
+| 为托管可用性组主副本的群集节点或者为故障转移群集实例的首选所有者启用投票。 |
+| 为自动故障转移所有者启用投票。 在自动故障转移后可以托管主副本或 FCI 的每个节点应具有一个投票。 | 
+| 如果某个可用性组具有多个次要副本，则仅为具有自动故障转移的副本启用投票。 | 
+| 为辅助灾难恢复站点中的节点禁用投票。 如果主站点没有任何问题，则辅助站点中的节点不应该影响群集脱机决策。 | 
+| 具有奇数个投票，至少有三个仲裁投票。 根据需要，在双节点群集中添加一个[仲裁见证](hadr-cluster-quorum-configure-how-to.md)，以额外增加一个投票。 | 
 | 故障转移后重新评估投票分配。 你不希望故障转移到不支持运行状况仲裁的群集配置。 |
 
 
@@ -211,8 +211,8 @@ Set-ClusterQuorum -FileShareWitness <UNC path to file share> -Credential $(Get-C
 若要了解更多信息，请参阅以下文章：
 
 - [Azure VM 上的 SQL Server 的 HADR 设置](hadr-cluster-best-practices.md)
-- [Azure VM 上的 SQL Server 的 Windows Server 故障转移群集](hadr-windows-server-failover-cluster-overview.md)
-- [Azure VM 上的 SQL Server 的 Always On 可用性组](availability-group-overview.md)
-- [Azure VM 上的 SQL Server 的 Windows Server 故障转移群集](hadr-windows-server-failover-cluster-overview.md)
-- [Azure VM 上的 SQL Server 的故障转移群集实例](failover-cluster-instance-overview.md)
+- [Windows Server 故障转移群集与 Azure VM 上的 SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [Always On 可用性组与 Azure VM 上的 SQL Server](availability-group-overview.md)
+- [Windows Server 故障转移群集与 Azure VM 上的 SQL Server](hadr-windows-server-failover-cluster-overview.md)
+- [故障转移群集实例与 Azure VM 上的 SQL Server](failover-cluster-instance-overview.md)
 - [故障转移群集实例概述](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

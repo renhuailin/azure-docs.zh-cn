@@ -1,5 +1,5 @@
 ---
-title: 排查 Privileged Identity Management 问题 - Azure Active Directory | Microsoft Docs
+title: 在 Privileged Identity Management 中对资源访问被拒绝进行故障排除 - Azure Active Directory | Microsoft Docs
 description: 了解如何解决 Azure AD Privileged Identity Management (PIM) 中角色的系统错误。
 services: active-directory
 documentationcenter: ''
@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/18/2019
+ms.date: 06/30/2021
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcbebcb32e912abdf0112007c743c6890fae36e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26c3129e463ffaad01db48fa0a15cfd1fadefb29
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92372389"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113127969"
 ---
-# <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>排查 Privileged Identity Management 问题
+# <a name="troubleshoot-access-to-azure-resources-denied-in-privileged-identity-management"></a>在 Privileged Identity Management 中对 Azure 资源访问被拒绝进行故障排除
 
 是否在使用 Azure Active Directory (Azure AD) 中的 Privileged Identity Management (PIM) 时遇到问题？ 下面的信息可帮助你将一切复原。
 

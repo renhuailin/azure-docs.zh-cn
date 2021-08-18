@@ -3,7 +3,7 @@ title: 如何跟踪语音 SDK 内存使用情况 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 语音服务 SDK 支持多种编程语言，可用于语音到文本和文本到语音转换，以及语音翻译。 本文讨论了 SDK 中内置的内存管理工具。
 services: cognitive-services
-author: erhopf
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
@@ -13,12 +13,12 @@ ms.author: rhurey
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-two
 ROBOTS: NOINDEX
-ms.openlocfilehash: dd13bb2fcb295951f4a8e6e857a4c71611022346
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 12dac6a87cda5d159c83cebfc5408446beb2016b
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330721"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122066439"
 ---
 # <a name="how-to-track-speech-sdk-memory-usage"></a>如何跟踪语音 SDK 内存使用情况
 

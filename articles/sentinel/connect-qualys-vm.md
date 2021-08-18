@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 8e11c4182520e143007b46c8a7907b5e71bfb27d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 111db39a1822e47fb8a14e10d3833fd58153f5b5
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100097579"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253433"
 ---
 # <a name="connect-your-qualys-vm-to-azure-sentinel-with-azure-function"></a>使用 Azure Function 将 Qualys VM 连接到 Azure Sentinel
 
 > [!IMPORTANT]
 > Azure Sentinel 中的 Qualys VM 数据连接器目前为公共预览版。
 > 此功能不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 通过 Qualys 漏洞管理 (VM) 连接器，可以轻松将所有 [Qualys VM](https://www.qualys.com/apps/vulnerability-management/) 安全性解决方案日志与 Azure Sentinel 连接，以查看仪表板、创建自定义警报，并改进调查。 Qualys VM 与 Azure Sentinel 之间集成后，可通过 Azure Functions 使用 REST API 来拉取日志数据。
 
@@ -54,6 +56,6 @@ Azure Functions 可以集成 Qualys VM 并直接从中拉取事件和日志，�
 
 本文档介绍如何使用 Azure Function 应用将 Qualys VM 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。

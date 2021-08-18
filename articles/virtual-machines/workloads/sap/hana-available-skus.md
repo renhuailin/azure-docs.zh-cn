@@ -12,15 +12,15 @@ ms.subservice: baremetal-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 5/13/2021
+ms.date: 7/01/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017, references_regions
-ms.openlocfilehash: b9079b242710bee831ebdc0381118da1d0ad80e5
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 48fd56e204a29f61ab165a6aa4d349c5095ad560
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110577627"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113218360"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>适用于 HANA 大型实例的 SKU
 
@@ -54,26 +54,26 @@ ms.locfileid: "110577627"
 | --- | --- | --- | --- | --- | --- | --- |
 | YES <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2185)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2265) | Azure 上的 SAP HANA S96<br /> — 2 x Intel® Xeon® 处理器 E7-8890 v4 <br /> 48 CPU 内核和 96 CPU 线程 |  768 GB | 768 GB | --- | 3.0 TB | 可用 |
 | YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2186)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2269) | Azure 上的 SAP HANA S224<br /> – 4 x Intel® Xeon® Platinum 8276 处理器 <br /> 112 CPU 内核和 224 CPU 线程 |  3.0 TB | 3.0 TB | --- | 6.3 TB | 可用 |
-| YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2297) | Azure S224m 上的 SAP HANA<br /> – 4 x Intel® Xeon® Platinum 8276 处理器 <br /> 112 CPU 内核和 224 CPU 线程 |  6.0 TB | 6.0 TB | --- | 10.5 TB | 可用 |
-| YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2381) | Azure 上的 SAP HANA S224om<br /> – 4 x Intel® Xeon® Platinum 8276 处理器 <br /> 112 CPU 内核和 224 CPU 线程 | 6.0 TB |  3.0 TB |  3.0 TB | 10.5 TB | 可用 |
-| 是 | Azure 上的 SAP HANA S224oo<br /> – 4 x Intel® Xeon® Platinum 8276 处理器 <br /> 112 CPU 内核和 224 CPU 线程 | 4.5 TB |  1.5 TB |  3.0 TB | 8.4 TB | 可用 |
-| 是 | Azure 上的 SAP HANA S224ooo<br /> – 4 x Intel® Xeon® Platinum 8276 处理器 <br /> 112 CPU 内核和 224 CPU 线程 | 7.5 TB |  1.5 TB |  6.0 TB | 12.7 TB | 可用 |
-| 是 | Azure 上的 SAP HANA S224oom<br /> – 4 x Intel® Xeon® Platinum 8276 处理器 <br /> 112 CPU 内核和 224 CPU 线程 | 9.0 TB |  3.0 TB |  6.0 TB | 14.8 TB | 可用 |
+| YES <br /> [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2297) | Azure S224m 上的 SAP HANA<br /> – 4 x Intel® Xeon® Platinum 8276 处理器 <br /> 112 CPU 内核和 224 CPU 线程 |  6.0 TB | 6.0 TB | --- | 10.5 TB | 可用 |
+| YES <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2522)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2381) | Azure 上的 SAP HANA S224om<br /> – 4 x Intel® Xeon® Platinum 8276 处理器 <br /> 112 CPU 内核和 224 CPU 线程 | 6.0 TB |  3.0 TB |  3.0 TB | 10.5 TB | 可用 |
+| YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2528)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2527) | Azure 上的 SAP HANA S224oo<br /> – 4 x Intel® Xeon® Platinum 8276 处理器 <br /> 112 CPU 内核和 224 CPU 线程 | 4.5 TB |  1.5 TB |  3.0 TB | 8.4 TB | 可用 |
+| YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2526)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2525) | Azure 上的 SAP HANA S224ooo<br /> – 4 x Intel® Xeon® Platinum 8276 处理器 <br /> 112 CPU 内核和 224 CPU 线程 | 7.5 TB |  1.5 TB |  6.0 TB | 12.7 TB | 可用 |
+| YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2524)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2523) | Azure 上的 SAP HANA S224oom<br /> – 4 x Intel® Xeon® Platinum 8276 处理器 <br /> 112 CPU 内核和 224 CPU 线程 | 9.0 TB |  3.0 TB |  6.0 TB | 14.8 TB | 可用 |
 | YES <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1983)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2268) | Azure 上的 SAP HANA S384<br /> – 8 x Intel® Xeon® 处理器 E7-8890 v4<br /> 192 CPU 内核和 384 CPU 线程 |  4.0 TB | 4.0 TB | --- | 16 TB | 可用 |
 | YES <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2080) | Azure 上的 SAP HANA S384m<br /> – 8 x Intel® Xeon® 处理器 E7-8890 v4<br /> 192 CPU 内核和 384 CPU 线程 |  6.0 TB | 6.0 TB | --- | 18 TB |  可用  |
 | YES <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1984)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2267) | Azure 上的 SAP HANA S384xm<br /> – 8 x Intel® Xeon® 处理器 E7-8890 v4<br /> 192 CPU 内核和 384 CPU 线程 |  8.0 TB | 8.0 TB | --- | 22 TB | 可用 |
 | YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2411)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2378) | Azure 上的 SAP HANA S448<br /> – 8 x Intel® Xeon® Platinum 8276 处理器 <br /> 224 CPU 内核和 448 CPU 线程 | 6.0 TB |  6.0 TB |  --- | 10.5 TB | 可用（仅适用于修订版 4.2） |
 | 是 <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2410)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2377) | Azure 上的 SAP HANA S448m<br /> – 8 x Intel® Xeon® Platinum 8276 处理器 <br /> 224 CPU 内核和 448 CPU 线程 | 12.0 TB |  12.0 TB |  --- | 18.9 TB | 可用（仅适用于修订版 4.2） |
 | 是 | Azure 上的 SAP HANA S448oo<br /> – 8 x Intel® Xeon® Platinum 8276 处理器 <br /> 224 CPU 内核和 448 CPU 线程 | 9.0 TB |  3.0 TB |  6.0 TB | 14.8 TB  | 可用（仅适用于修订版 4.2） |
-| 是 | Azure 上的 SAP HANA S448om<br /> – 8 x Intel® Xeon® Platinum 8276 处理器 <br /> 224 CPU 内核和 448 CPU 线程 | 12.0 TB |  6.0 TB |  6.0 TB | 18.9 TB  | 可用（仅适用于修订版 4.2） |
+|  是 <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2531)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2534)  | Azure 上的 SAP HANA S448om<br /> – 8 x Intel® Xeon® Platinum 8276 处理器 <br /> 224 CPU 内核和 448 CPU 线程 | 12.0 TB |  6.0 TB |  6.0 TB | 18.9 TB  | 可用（仅适用于修订版 4.2） |
 | 是 | Azure 上的 SAP HANA S448ooo<br /> – 8 x Intel® Xeon® Platinum 8276 处理器 <br /> 224 CPU 内核和 448 CPU 线程 | 15.0 TB |  3.0 TB |  12.0 TB | 23.2 TB  | 可用（仅适用于修订版 4.2） |
 | 是 | Azure 上的 SAP HANA S448oom<br /> – 8 x Intel® Xeon® Platinum 8276 处理器 <br /> 224 CPU 内核和 448 CPU 线程 | 18.0 TB |  6.0 TB |  12.0 TB | 27.4 TB  | 可用（仅适用于修订版 4.2） |
 | 是 <br /> [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2049) | Azure 上的 SAP HANA S576m<br /> – 12 x Intel® Xeon® 处理器 E7-8890 v4<br /> 288 CPU 内核和 576 CPU 线程 |  12.0 TB | 12.0 TB | --- | 28 TB | 可用（仅适用于修订版 4.2） |
 | 是 | Azure 上的 SAP HANA S576xm<br /> – 12 x Intel® Xeon® 处理器 E7-8890 v4<br /> 288 CPU 内核和 576 CPU 线程 |  18.0 TB | 18.0 | --- |  41 TB | 可用 |
 | YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2409)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2380) | Azure 上的 SAP HANA S672<br /> – 12 x Intel® Xeon® Platinum 8276 处理器 <br /> 336 CPU 内核和 672 CPU 线程 | 9.0 TB |  9.0 TB |  --- | 14.7 TB | 可用（仅适用于修订版 4.2） |
-| 是 <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2408)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2379) | Azure 上的 SAP HANA S672m<br /> – 12 x Intel® Xeon® Platinum 8276 处理器 <br /> 336 CPU 内核和 672 CPU 线程 | 18.0 TB |  18.0 TB |  --- | 27.4 TB | 可用（仅适用于修订版 4.2） |
+| 是 <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2530)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2379) | Azure 上的 SAP HANA S672m<br /> – 12 x Intel® Xeon® Platinum 8276 处理器 <br /> 336 CPU 内核和 672 CPU 线程 | 18.0 TB |  18.0 TB |  --- | 27.4 TB | 可用（仅适用于修订版 4.2） |
 | 是 | Azure 上的 SAP HANA S672oo<br /> – 12 x Intel® Xeon® Platinum 8276 处理器 <br /> 336 CPU 内核和 672 CPU 线程 | 13.5 TB |  4.5 TB |  9.0 TB | 21.1 TB  | 可用（仅适用于修订版 4.2） |
-| 是 | Azure 上的 SAP HANA S672om<br /> – 12 x Intel® Xeon® Platinum 8276 处理器 <br /> 336 CPU 内核和 672 CPU 线程 | 18.0 TB |  9.0 TB |  9.0 TB | 27.4 TB  | 可用（仅适用于修订版 4.2） |
+| 是 <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2529)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2533) | Azure 上的 SAP HANA S672om<br /> – 12 x Intel® Xeon® Platinum 8276 处理器 <br /> 336 CPU 内核和 672 CPU 线程 | 18.0 TB |  9.0 TB |  9.0 TB | 27.4 TB  | 可用（仅适用于修订版 4.2） |
 | 是 | Azure 上的 SAP HANA S672ooo<br /> – 12 x Intel® Xeon® Platinum 8276 处理器 <br /> 336 CPU 内核和 672 CPU 线程 | 22.5 TB |  4.5 TB |  18.0 TB | 33.7 TB  | 可用（仅适用于修订版 4.2） |
 | 是 | Azure 上的 SAP HANA S672oom<br /> – 12 x Intel® Xeon® Platinum 8276 处理器 <br /> 336 CPU 内核和 672 CPU 线程 | 27.0 TB |  9.0 TB |  18.0 TB | 40.0 TB  | 可用（仅适用于修订版 4.2） |
 | 是 <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1985) | Azure 上的 SAP HANA S768m<br /> – 16 x Intel® Xeon® 处理器 E7-8890 v4<br /> 384 CPU 内核和 768 CPU 线程 |  16.0 TB | 16.0 TB | -- | 36 TB | 可用 |
@@ -81,7 +81,7 @@ ms.locfileid: "110577627"
 |  YES <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2407)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2376)  | Azure 上的 SAP HANA S896<br /> – 16 x Intel® Xeon® Platinum 8276 处理器 <br /> 448 CPU 内核和 896 CPU 线程 | 12.0 TB |  12.0 TB |  --- | 18.9 TB | 可用（仅适用于修订版 4.2） |
 | 是 <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2406)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2328) | Azure 上的 SAP HANA S896m<br /> – 16 x Intel® Xeon® Platinum 8276 处理器 <br /> 448 CPU 内核和 896 CPU 线程 | 24.0 TB | 24.0 TB | -- | 35.8 TB | 可用 |
 | 是 | Azure 上的 SAP HANA S896oo<br /> – 16 x Intel® Xeon® Platinum 8276 处理器 <br /> 448 CPU 内核和 896 CPU 线程 | 18.0 TB |  6.0 TB |  12.0 TB | 27.4 TB  | 可用（仅适用于修订版 4.2） |
-| 是 | Azure 上的 SAP HANA S896om<br /> – 16 x Intel® Xeon® Platinum 8276 处理器 <br /> 448 CPU 内核和 896 CPU 线程 | 24.0 TB |  12.0 TB |  12.0 TB | 35.8 TB  | 可用（仅适用于修订版 4.2） |
+| 是  <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2529)、[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/#/solutions?filters=iaas;ve:24&id=s:2532) | Azure 上的 SAP HANA S896om<br /> – 16 x Intel® Xeon® Platinum 8276 处理器 <br /> 448 CPU 内核和 896 CPU 线程 | 24.0 TB |  12.0 TB |  12.0 TB | 35.8 TB  | 可用（仅适用于修订版 4.2） |
 | 是 | Azure 上的 SAP HANA S896ooo<br /> – 16 x Intel® Xeon® Platinum 8276 处理器 <br /> 448 CPU 内核和 896 CPU 线程 | 30.0 TB |  6.0 TB |  24.0 TB | 44.3 TB  | 可用（仅适用于修订版 4.2） |
 | 是 | Azure 上的 SAP HANA S896oom<br /> – 16 x Intel® Xeon® Platinum 8276 处理器 <br /> 448 CPU 内核和 896 CPU 线程 | 36.0 TB |  12.0 TB |  24.0 TB | 52.7 TB  | 可用（仅适用于修订版 4.2） |
 | 是 <br />[OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1986) | Azure 上的 SAP HANA S960m<br /> – 20 x Intel® Xeon® 处理器 E7-8890 v4<br /> 480 CPU 内核和 960 CPU 线程 |  20.0 TB | 20.0 TB | -- | 46 TB | 可用（仅适用于修订版 4.2） |

@@ -3,20 +3,20 @@ title: 排查 Azure 负载均衡器资源运行状况、前端和后端可用性
 description: 使用提供的指标来诊断降级的或不可用的 Azure 标准负载均衡器。
 services: load-balancer
 documentationcenter: na
-author: erichrt
+author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
-ms.author: errobin
-ms.openlocfilehash: 3acaaba86c9a546a0bd45b5386287908168d50d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: kumud
+ms.openlocfilehash: 8c43a0125dac9931e68ae9567f47d63b3409f878
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97955614"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113357222"
 ---
 # <a name="troubleshoot-resource-health-and-inbound-availability-issues"></a>排查资源运行状况和入站可用性问题 
 

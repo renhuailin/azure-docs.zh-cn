@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 30a02a79e5e6e063c3d21e6626ed1a75c0f61133
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2869cec41c697f9323f47d243111cd36c4e6607
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676099"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112320903"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>规划将 IaaS 资源从经典部署模型迁移到 Azure Resource Manager
 
@@ -60,7 +60,7 @@ ms.locfileid: "101676099"
 * [使用 CLI 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器](migration-classic-resource-manager-cli.md)
 * [用于帮助将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的社区工具](migration-classic-resource-manager-community-tools.md)
 * [查看最常见的迁移错误](migration-classic-resource-manager-errors.md)
-* [查看有关将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的最常见问题](migration-classic-resource-manager-faq.md)
+* [查看有关将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的最常见问题](migration-classic-resource-manager-faq.yml)
 
 ### <a name="pitfalls-to-avoid"></a>需避免的错误
 
@@ -210,4 +210,4 @@ ms.locfileid: "101676099"
 * [使用 PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器](migration-classic-resource-manager-ps.md)
 * [用于帮助将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的社区工具](migration-classic-resource-manager-community-tools.md)
 * [查看最常见的迁移错误](migration-classic-resource-manager-errors.md)
-* [查看有关将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的最常见问题](migration-classic-resource-manager-faq.md)
+* [查看有关将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型的最常见问题](migration-classic-resource-manager-faq.yml)

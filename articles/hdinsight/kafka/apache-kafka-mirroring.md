@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 633f01d813fe4e6c56d88052cbc7440c43f350dc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7327af790eb8a3ddda646f0da208083d4431934a
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104870494"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112280218"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>使用 MirrorMaker 通过 Kafka on HDInsight 复制 Apache Kafka 主题
 
@@ -65,7 +65,7 @@ ms.locfileid: "104870494"
 
     |资源组 | 位置 |
     |---|---|
-    | kafka-primary-rg | Central US |
+    | kafka-primary-rg | 美国中部 |
     | kafka-secondary-rg | 美国中北部 |
 
 1. 在 **kafka-primary-rg** 中创建新的虚拟网络 **kafka-primary-vnet**。 保留默认设置。
@@ -296,7 +296,7 @@ ms.locfileid: "104870494"
 
 ## <a name="delete-the-cluster"></a>删除群集
 
-[!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
+[!INCLUDE [delete-cluster-warning](../includes/hdinsight-delete-cluster-warning.md)]
 
 本文档中的步骤已在不同的 Azure 资源组中创建了群集。 若要删除创建的所有资源，可以删除创建的两个资源组：**kafka-primary-rg** 和 **kafka-secondary_rg**。 删除资源组会删除遵循本文档创建的所有资源，包括群集、虚拟网络和存储帐户。
 

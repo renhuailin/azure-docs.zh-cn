@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 03/17/2021
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b11a76be94fc52285482e13dadbc8c7c92af1374
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d37cabb8b74fea3a72ddafdf3322d20379f8d29
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608505"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860981"
 ---
 # <a name="best-practices-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>适用于 Azure Synapse Analytics 中的专用 SQL 池的最佳做法
 
@@ -27,7 +27,7 @@ ms.locfileid: "104608505"
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>使用暂停和缩放来降低成本
 
-若要了解如何通过暂停和缩放来降低成本，请参阅[管理计算](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+若要了解如何通过暂停和缩放来降低成本，请参阅[管理计算](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?context=/azure/synapse-analytics/context/context)。
 
 ## <a name="maintain-statistics"></a>维护统计信息
 
@@ -63,13 +63,13 @@ ms.locfileid: "104608505"
 
 若要在使用 Gzip 文本文件时获得最大的吞吐量，请将文件拆分成至少 60 个文件，以便最大程度提高加载的并行度。 若要更快的总吞吐量，请考虑并行加载数据。 有关本部分相关主题的其他信息，请参阅以下文章：
 
-- [加载数据](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [加载数据](../sql-data-warehouse/design-elt-data-loading.md?context=/azure/synapse-analytics/context/context)
 - [PolyBase 使用指南](data-loading-best-practices.md)
 - [专用 SQL 池加载模式和策略](/archive/blogs/sqlcat/azure-sql-data-warehouse-loading-patterns-and-strategies)
-- [使用 Azure 数据工厂加载数据](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [使用 Azure 数据工厂移动数据](../../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [使用 Azure 数据工厂加载数据](../../data-factory/load-azure-sql-data-warehouse.md?context=/azure/synapse-analytics/context/context)
+- [使用 Azure 数据工厂移动数据](../../data-factory/transform-data-using-machine-learning.md?context=/azure/synapse-analytics/context/context)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest&preserve-view=true)
-- [创建表为选择 (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [创建表为选择 (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?context=/azure/synapse-analytics/context/context)
 
 ## <a name="load-then-query-external-tables"></a>加载并查询外部表
 
@@ -91,7 +91,7 @@ Polybase 不是查询的最佳选项。 专用 SQL 池的 Polybase 表目前只�
 下面提供的文章链接将为你提供有关通过选择分布列提高性能的其他详细信息。 此外，你还可以在 CREATE TABLE 语句的 WITH 子句中找到有关如何定义分布式表的信息：
 
 - [表概述](develop-tables-overview.md)
-- [表分布](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [表分布](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?context=/azure/synapse-analytics/context/context)
 - [选择表数据分布](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)
 - [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true)
 - [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true)
@@ -104,7 +104,7 @@ Polybase 不是查询的最佳选项。 专用 SQL 池的 Polybase 表目前只�
 
 可以考虑的一种选择是，使用比你使用 SQL Server 实现的粒度更粗的粒度。 例如，考虑使用每周或每月分区，而不是每日分区。
 
-有关分区的详细信息，请参阅[表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)一文。
+有关分区的详细信息，请参阅[表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?context=/azure/synapse-analytics/context/context)一文。
 
 ## <a name="minimize-transaction-sizes"></a>最小化事务大小
 
@@ -119,10 +119,10 @@ INSERT、UPDATE 和 DELETE 语句在事务中运行。 它们失败时，必须�
 
 如需进一步了解本部分相关内容，请参阅以下文章：
 
-- [创建表为选择 (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [创建表为选择 (CTAS)](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?context=/azure/synapse-analytics/context/context)
 - [了解事务](develop-transactions.md)
-- [优化事务](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [优化事务](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?context=/azure/synapse-analytics/context/context)
+- [表分区](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?context=/azure/synapse-analytics/context/context)
 - [TRUNCATE TABLE](/sql/t-sql/statements/truncate-table-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 - [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?view=azure-sqldw-latest&preserve-view=true)
 
@@ -148,7 +148,7 @@ INSERT、UPDATE 和 DELETE 语句在事务中运行。 它们失败时，必须�
 
 聚集列存储索引是将数据存储在专用 SQL 池中最有效率的方式之一。  默认情况下，专用 SQL 池中的表会创建为聚集列存储。  为了让列存储表的查询获得最佳性能，良好的分段质量很重要。  当行在内存不足的状态下写入列存储表时，列存储分段质量可能降低。  
 
-压缩行组中的行数可以测量分段质量。 有关检测和改善聚集列存储表分段质量的分步说明，请参阅[表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)一文中的[列存储索引质量不佳的原因](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#causes-of-poor-columnstore-index-quality)。  
+压缩行组中的行数可以测量分段质量。 有关检测和改善聚集列存储表分段质量的分步说明，请参阅[表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?context=/azure/synapse-analytics/context/context)一文中的[列存储索引质量不佳的原因](../sql-data-warehouse/sql-data-warehouse-tables-index.md?context=/azure/synapse-analytics/context/context#causes-of-poor-columnstore-index-quality)。  
 
 由于高质量列存储段很重要，因此可以考虑使用中型或大型资源类中的用户 ID 来加载数据。 使用较低的[数据仓库单位](resource-consumption-models.md)值意味着需要向加载用户分配较大的资源类。
 
@@ -162,7 +162,7 @@ INSERT、UPDATE 和 DELETE 语句在事务中运行。 它们失败时，必须�
 如果表没有 60 亿行，则有两个主要选项。 减少分区数目，或考虑改用堆表。  使用具有辅助索引的堆表而不是列存储表也许能提升性能，值得试验。
 
 查询列存储表时，如果只选择需要的列，查询运行将更快速。  有关表和列存储索引的详细信息，请参阅以下文章：
-- [表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [表索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?context=/azure/synapse-analytics/context/context)
 - [列存储索引指南](/sql/relational-databases/indexes/columnstore-indexes-overview?view=azure-sqldw-latest&preserve-view=true)
 - [重新生成列存储索引](../sql-data-warehouse/sql-data-warehouse-tables-index.md?view=azure-sqldw-latest&preserve-view=true#rebuilding-indexes-to-improve-segment-quality) 
 - [通过有序聚集列存储索引进行性能优化](../sql-data-warehouse/performance-tuning-ordered-cci.md)
@@ -173,7 +173,7 @@ SQL 池使用资源组作为将内存分配给查询的一种方式。 最初，
 
 有些查询，例如大型联接或载入聚集列存储表，将受益于较大的内存分配。  某些查询，例如纯扫描，则不会获得任何好处。 使用较大的资源类会影响并发性。 在将所有用户移动到大型资源类之前，你需要牢记这些事实。
 
-有关资源类的其他信息，请参阅[用于工作负载管理的资源类](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)一文。
+有关资源类的其他信息，请参阅[用于工作负载管理的资源类](../sql-data-warehouse/resource-classes-for-workload-management.md?context=/azure/synapse-analytics/context/context)一文。
 
 ## <a name="use-smaller-resource-class-to-increase-concurrency"></a>使用较小的资源类可增加并发性
 
@@ -185,7 +185,7 @@ SQL 池使用资源组作为将内存分配给查询的一种方式。 最初，
 
 专用 SQL 池有多个可用于监视查询执行的 DMV。  以下监视相关文章逐步说明了如何查看正在执行的查询的详细信息。  若要在这些 DMV 中快速找到查询，可在查询中使用 LABEL 选项。 有关其他详细信息，请参阅以下列表中包含的文章：
 
-- [使用 DMV 监视工作负荷](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [使用 DMV 监视工作负荷](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?context=/azure/synapse-analytics/context/context)
 
 - [LABEL](develop-label.md)
 - [OPTION](/sql/t-sql/queries/option-clause-transact-sql?view=azure-sqldw-latest&preserve-view=true)
@@ -199,7 +199,7 @@ SQL 池使用资源组作为将内存分配给查询的一种方式。 最初，
 
 ## <a name="next-steps"></a>后续步骤
 
-有关常见问题和解决方案，另请参阅[疑难解答](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)一文。
+有关常见问题和解决方案，另请参阅[疑难解答](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?context=/azure/synapse-analytics/context/context)一文。
 
 如果本文未提供你需要的问题，请搜索[有关 Azure Synapse 的 Microsoft Q&A 问题页面](/answers/topics/azure-synapse-analytics.html)以向其他用户和 Azure Synapse Analytics 产品组提出问题。  
 

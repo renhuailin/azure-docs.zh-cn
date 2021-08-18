@@ -4,12 +4,12 @@ description: 本文介绍如何使用 REST API 跟踪和管理 Azure 备份的�
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: ced0e0020fe955734bf6cc767480fbadd6eaffc1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4f1a0c3701e2b2d46a555f82433642e5a013b24
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88890274"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114438077"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>使用 REST API 跟踪备份和还原作业
 
@@ -33,7 +33,7 @@ Azure 备份服务会触发各种情况下在后台运行的作业，例如触�
 }
 ```
 
-Azure VM 备份作业由“jobId”字段予以标识，并且可以如 [此处](/rest/api/backup/jobdetails/)所述使用简单的 *GET* 请求进行跟踪。
+Azure VM 备份作业由“jobId”字段予以标识，并且可以如 [此处](/rest/api/backup/job-details)所述使用简单的 *GET* 请求进行跟踪。
 
 ## <a name="tracking-the-job"></a>跟踪作业
 
@@ -47,7 +47,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
-|200 正常     | [JobResource](/rest/api/backup/jobdetails/get#jobresource)        | OK        |
+|200 正常     | [JobResource](/rest/api/backup/job-details/get#jobresource)        | OK        |
 
 #### <a name="example-response"></a>示例响应
 

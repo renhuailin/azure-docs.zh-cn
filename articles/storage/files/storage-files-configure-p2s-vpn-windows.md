@@ -8,12 +8,12 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 979d1c9148e079728b240f73b467e6d9aee13067
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 2b5abad1e83f33acb32fbba97616c81f47677295
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110663474"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112118360"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>在 Windows 上配置点到站点 (P2S) VPN 以与 Azure 文件存储一起使用
 你可以使用点到站点 (P2S) VPN 连接从 Azure 外部通过 SMB 装载 Azure 文件共享，而无需打开端口 445。 点到站点 VPN 连接是 Azure 与单个客户端之间的 VPN 连接。 若要将 P2S VPN 连接与 Azure 文件存储一起使用，需要为每个要连接的客户端配置 P2S VPN 连接。 如果有多个客户端需要从本地网络连接到 Azure 文件共享，则可以为每个客户端使用站点到站点 (S2S) VPN 连接，而不使用点到站点连接。 若要了解详细信息，请参阅[配置站点到站点 VPN 以与 Azure 文件存储一起使用](storage-files-configure-s2s-vpn.md)。
@@ -21,6 +21,13 @@ ms.locfileid: "110663474"
 我们强烈建议先阅读[关于直接访问 Azure 文件共享的网络注意事项](storage-files-networking-overview.md)，然后再继续阅读本方法指南文章，以全面讨论 Azure 文件存储可用的网络选项。
 
 本文详细介绍了在 Windows（Windows 客户端和 Windows Server）上配置点到站点 VPN 以直接在本地装载 Azure 文件共享的相关步骤。 如果想要通过 VPN 路由 Azure 文件同步流量，请参阅[配置 Azure 文件同步代理和防火墙设置](../file-sync/file-sync-firewall-and-proxy.md)。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
 
 ## <a name="prerequisites"></a>先决条件
 - 最新版本的 Azure PowerShell 模块。 若要详细了解如何安装 Azure PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)并选择操作系统。 如果你更想在 Windows 上使用 Azure CLI，也可以使用，但下面是针对 Azure PowerShell 的说明。

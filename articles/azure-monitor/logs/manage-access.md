@@ -5,12 +5,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 79bcca688146b2c2382876b6a61bc0eee34382a1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 38d0b9db730d82642fafda4a42751c35d6cac0f8
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040951"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178443"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理对 Azure Monitor 中的日志数据和工作区的访问
 
@@ -119,7 +120,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 
 ## <a name="manage-access-using-azure-permissions"></a>使用 Azure 权限管理访问
 
-若要使用 Azure 权限授予对 Log Analytics 工作区的访问权限，请执行[分配 Azure 角色来管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)中的步骤。 如需自定义角色的示例，请参阅 [自定义角色示例](#custom-role-examples)
+若要使用 Azure 权限授予对 Log Analytics 工作区的访问权限，请执行[分配 Azure 角色以管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)中的步骤。 如需自定义角色的示例，请参阅 [自定义角色示例](#custom-role-examples)
 
 Azure 有两个适用于 Log Analytics 工作区的内置用户角色：
 
@@ -284,7 +285,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
 ### <a name="custom-logs"></a>自定义日志
 
- 自定义日志是基于自定义日志和 HTTP 数据收集器 API 等数据源创建的。 识别日志类型的最简单方法是查看[日志架构中的自定义日志](./log-analytics-tutorial.md#table-schema)下所列的表。
+ 自定义日志是基于自定义日志和 HTTP 数据收集器 API 等数据源创建的。 识别日志类型的最简单方法是查看[日志架构中的自定义日志](./log-analytics-tutorial.md#view-table-information)下所列的表。
 
  无法授予对单个自定义日志的访问权限，但可以授予对所有自定义日志的访问权限。 若要创建一个有权访问所有自定义日志的角色，请使用以下操作创建自定义角色：
 
@@ -311,4 +312,4 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
 * 请参阅 [Log Analytics 代理概述](../agents/log-analytics-agent.md)，以从数据中心或其他云环境中的计算机收集数据。
 
-* 请参阅[收集有关 Azure 虚拟机的数据](../vm/quick-collect-azurevm.md)，以配置 Azure VM 的数据收集。
+* 请参阅[收集有关 Azure 虚拟机的数据](../vm/monitor-virtual-machine.md)，以配置 Azure VM 的数据收集。

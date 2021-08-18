@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8553da2ff1ff80dcaba8c6ff782c31602820a2ec
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1554551ac9690c261d3a85be406de3fdae86ed89
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378328"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114712387"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
@@ -27,8 +27,7 @@ ms.locfileid: "110378328"
 
 这些 Azure 媒体服务发行说明汇总了与以前版本相比的变更之处和已知的问题。
 
-> [!NOTE]
-> 媒体服务 v2 中未添加新功能。 <br/>查看最新版本：[媒体服务 v3](../latest/index.yml)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-v-2-v-3-migration-introduction.md)
+[!INCLUDE [v2 deprecation notice](../latest/includes/v2-deprecation-notice.md)]
 
 我们希望能够倾听客户的心声，以便努力解决对客户造成影响的问题。 要报告问题或提出问题，请将在 [Azure 媒体服务 MSDN 论坛] 中提交问题。 
 

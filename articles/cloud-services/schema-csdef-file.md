@@ -5,16 +5,16 @@ ms.topic: article
 ms.service: cloud-services
 ms.subservice: deployment-files
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: f201bc05795fa6aece256f3d3b4bd650385fef48
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0c8e7d547a2fa20adea8a19094c7b2a51141a074
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934132"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113088199"
 ---
 # <a name="azure-cloud-services-classic-definition-schema-csdef-file"></a>Azure 云服务（经典）定义架构（.csdef 文件）
 

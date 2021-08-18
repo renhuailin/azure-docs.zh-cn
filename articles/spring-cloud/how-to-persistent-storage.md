@@ -1,18 +1,18 @@
 ---
 title: 如何在 Azure Spring Cloud 中使用持久性存储 | Microsoft Docs
 description: 如何在 Azure Spring Cloud 中使用持久性存储
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 77ccfa08d5e2076a83c5a11df3ce6caf597c2d2f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 925f1d8113f08f1bc8b063623dcc85ac79964047
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108134854"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015511"
 ---
 # <a name="use-persistent-storage-in-azure-spring-cloud"></a>在 Azure Spring Cloud 中使用永久性存储
 
@@ -61,6 +61,7 @@ Azure Spring Cloud 为应用程序提供两种类型的存储：持久性和临�
 ```azurecli
 az extension add --name spring-cloud
 ```
+
 其他操作：
 
 * 创建启用了持久存储的应用：

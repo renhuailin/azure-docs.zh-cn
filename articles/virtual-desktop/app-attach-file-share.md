@@ -1,27 +1,27 @@
 ---
-title: Windows 虚拟桌面设置文件共享 MSIX 应用附加 - Azure
-description: 如何为 Windows 虚拟桌面设置用于 MSIX 应用附加的文件共享。
+title: Azure 虚拟桌面设置文件共享 MSIX 应用附加 - Azure
+description: 如何为 Azure 虚拟桌面设置用于 MSIX 应用附加的文件共享。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a2d4ebee02d85d10d5db8ec2de0bb1be334770dc
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: e0ba3363b6004afb8e42f420fae681b2827106fb
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717650"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707080"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach"></a>设置用于 MSIX 应用附加的文件共享
 
 所有 MSIX 映像都必须存储在主机池中具有只读权限的用户可以访问的网络共享上。
 
-MSIX 应用附加不依赖于文件共享使用的存储构造的类型。 MSIX 应用附加共享的注意事项与 FSLogix 共享的注意事项相同。 若要详细了解存储要求，请参阅 [Windows 虚拟桌面中的 FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
+MSIX 应用附加不依赖于文件共享使用的存储构造的类型。 MSIX 应用附加共享的注意事项与 FSLogix 共享的注意事项相同。 若要详细了解存储要求，请参阅 [Azure 虚拟桌面中的 FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
 
 ## <a name="performance-requirements"></a>性能要求
 
-系统的 MSIX 应用附加映像大小限制取决于用来存储 VHD 或 VHDx 文件的存储类型，以及 VHD、VHSD 或 CIM 文件和文件系统的大小限制。
+系统的 MSIX 应用附加映像大小限制取决于用来存储 VHD 或 VHDx 文件的存储类型，以及 VHD、VHDX 或 CIM 文件和文件系统的大小限制。
 
 下表举例说明了对于每个 VM，其内具有一个 MSIX 应用的单个 1 GB MSIX 映像需要多少资源：
 
@@ -35,7 +35,7 @@ MSIX 应用附加不依赖于文件共享使用的存储构造的类型。 MSIX 
 
 ### <a name="storage-recommendations"></a>有关存储的建议
 
-Azure 提供了可用于 MISX 应用附加的多个存储选项。 建议使用 Azure 文件存储或 Azure NetApp 文件，因为这些选项在成本和管理开销之间提供了最佳价值平衡。 [Windows 虚拟桌面中的 FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)一文比较了 Azure 在 Windows 虚拟桌面环境中提供的各种托管存储解决方案。
+Azure 提供了可用于 MISX 应用附加的多个存储选项。 建议使用 Azure 文件存储或 Azure NetApp 文件，因为这些选项在成本和管理开销之间提供了最佳价值平衡。 [Azure 虚拟桌面中的 FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)一文比较了 Azure 在 Azure 虚拟桌面环境中提供的各种托管存储解决方案。
 
 ### <a name="optimize-msix-app-attach-performance"></a>优化 MSIX 应用附加性能
 
@@ -53,7 +53,7 @@ Azure 提供了可用于 MISX 应用附加的多个存储选项。 建议使用 
 
 - 将用于 MSIX 应用附加的存储构造与 FSLogix 配置文件容器分离。
 - 所有 VM 系统帐户和用户帐户都必须具有访问文件共享的只读权限。
-- 针对 Windows 虚拟机的任何灾难恢复计划都必须包括将 MSIX 应用附加文件共享复制到辅助故障转移位置的操作。 若要详细了解灾难恢复，请参阅[设置业务连续性和灾难恢复计划](disaster-recovery.md)。
+- 针对 Azure 虚拟机的任何灾难恢复计划都必须包括将 MSIX 应用附加文件共享复制到辅助故障转移位置的操作。 若要详细了解灾难恢复，请参阅[设置业务连续性和灾难恢复计划](disaster-recovery.md)。
 
 ## <a name="how-to-set-up-the-file-share"></a>如何设置文件共享
 
@@ -104,7 +104,7 @@ MSIX 应用附加文件共享的设置过程在很大程度上与 [FSLogix 配�
 
 完成后，你可以查看下面的一些可能有用的其他资源：
 
-- 请在 [Windows 虚拟桌面 TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 向社区咨询有关此功能的问题。
-- 还可以在 [Windows 虚拟桌面反馈中心](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)提供关于 Windows 虚拟桌面的反馈。
+- 请在 [Azure 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)询问有关此功能的问题。
+- 还可以在 [Azure 虚拟桌面反馈中心](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)提供关于 Azure 虚拟桌面的反馈。
 - [MSIX 应用附加术语表](app-attach-glossary.md)
-- [MSIX 应用附加常见问题解答](app-attach-faq.md)
+- [MSIX 应用附加常见问题解答](app-attach-faq.yml)

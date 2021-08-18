@@ -2,7 +2,6 @@
 title: 常见错误 - Azure IoT Edge | Microsoft Docs
 description: 本文介绍了部署 IoT Edge 解决方案时遇到的问题的常见解决方案
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 03/01/2021
 ms.topic: conceptual
@@ -11,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 0d36a51865f3ed4a093998b16aaa174432c5308a
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 1d90ba4fa9d64bfec1fca62320e09ea53842d569
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275645"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749532"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -284,7 +283,7 @@ IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通
    sudo nano /etc/aziot/config.toml
    ```
 
-6. 将 `hostname` 的值替换为 DNS 名称。
+6. 将 `hostname` 的值替换为你的 DNS 名称。
 
 7. 保存并关闭该文件，然后将更改应用到 IoT Edge。
 

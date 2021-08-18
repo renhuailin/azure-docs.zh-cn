@@ -6,20 +6,15 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: 08629ed8ce361f5d7ac4bb4d2e148ae5b20fff02
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 08/03/2021
+ms.openlocfilehash: 150d6b02ff2c11d2489c46b4dc2dd44fd2276b75
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108315554"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736405"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - 超大规模 (Citus) 中的只读副本
-
-> [!IMPORTANT]
-> 超大规模 (Citus) 中的只读副本目前为预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
->
-> 请参阅[超大规模 (Citus) 的预览功能](hyperscale-preview-features.md)，以查看其他新功能的完整列表。
 
 使用只读副本功能可将数据从超大规模 (Citus) 服务器组复制到只读服务器组。 副本通过 PostgreSQL 物理复制技术以异步方式更新。 你可以将主服务器的数据复制到无限数量的副本中。
 

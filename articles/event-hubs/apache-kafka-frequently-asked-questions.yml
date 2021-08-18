@@ -3,13 +3,14 @@ metadata:
   title: 常见问题解答 - 用于 Apache Kafka 的 Azure 事件中心
   description: 本文回答了关于 Azure 事件中心对 Apache Kafka 客户端的支持的常见问题，这些问题在其他地方没有涉及。
   ms.topic: article
+  ms.service: event-hubs
   ms.date: 06/23/2020
-  ms.openlocfilehash: fc2f95378ce8a4fb71809401294b61b3cc5233eb
-  ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+  ms.openlocfilehash: 662b74ac21e0b87c21c5d827377dad945c18d775
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/13/2021
-  ms.locfileid: "111906947"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122252912"
 title: 常见问题解答 - 用于 Apache Kafka 的事件中心
 summary: 本文解答了有关迁移到用于 Apache Kafka 的事件中心的一些常见问题。
 sections:

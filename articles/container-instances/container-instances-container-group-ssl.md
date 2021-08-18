@@ -3,12 +3,12 @@ title: 使用挎斗容器启用 TLS
 description: 通过在挎斗中运行 Nginx 为 Azure 容器实例中运行的容器组创建 SSL 或 TLS 终结点
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 17467cab93f3a930c8290f73c5f4c971b53f12b5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d2bd750849f99229d6bc4b487e21b42702980ceb
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090525"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183431"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>在挎斗容器中启用 TLS 终结点
 
@@ -154,7 +154,7 @@ properties:
   containers:
   - name: nginx-with-ssl
     properties:
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       ports:
       - port: 443
         protocol: TCP

@@ -4,38 +4,38 @@ description: 从 ASP.NET 应用中捕获异常以及请求遥测。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/19/2021
-ms.openlocfilehash: e992fcd16b678a89ae56ceaea4bd7d4ffb85c4fc
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d81881318f6bbfa5c44b9cd947cf408cefa766ae
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110455074"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616237"
 ---
 # <a name="diagnose-exceptions-in-web-apps-with-application-insights"></a>使用 Application Insights 诊断 Web 应用中的异常
 
-可以使用 [Application Insights](./app-insights-overview.md) 来报告 Web 应用程序中的异常。 可将失败的请求与客户端和服务器上的异常和其他事件相关联，从而快速诊断原因。 本文介绍如何设置异常报告、显式报告异常、诊断故障，等等。
+Web 应用程序中的异常可以使用 [Application Insights](./app-insights-overview.md) 进行报告。 可以将失败的请求与异常关联到客户端和服务器上的其他事件，从而快速诊断原因。 本文介绍如何设置异常报告、显式报告异常、诊断故障等。
 
 ## <a name="set-up-exception-reporting"></a>设置异常报告
 
-可以设置 Application Insights 以报告服务器或客户端中发生的异常。 根据应用程序所依赖的平台，需要添加相应的扩展或 SDK。
+可以设置 Application Insights 来报告服务器或客户端中出现的异常。 根据应用程序依赖的平台，你需要相应的扩展或 SDK。
 
 ### <a name="server-side"></a>服务器端
 
 若要从服务器端应用程序报告异常，请考虑以下方案：
 
-  * Azure Web 应用：添加 [Application Insights 扩展](./azure-web-apps.md)
-  * Azure VM 和 Azure 虚拟机规模集 IIS 托管的应用：添加[应用程序监视扩展](./azure-vm-vmss-apps.md)
+  * **Azure Web 应用**：添加 [Application Insights 扩展](./azure-web-apps.md)
+  * **Azure VM 和 Azure 虚拟机规模集的托管 IIS 应用**：添加 [应用程序监视扩展](./azure-vm-vmss-apps.md)
   * 在应用代码中安装 [Application Insights SDK](./asp-net.md)，或者
-  * IIS Web 服务器：运行 [Application Insights 代理](./monitor-performance-live-website-now.md)，或者
-  * Java Web 应用：[启用 Java 代理](./java-in-process-agent.md)
+  * **IIS Web 服务器**：运行 [Application Insights 代理](./status-monitor-v2-overview.md)；或者
+  * **Java Web 应用**：启用 [Java 代理](./java-in-process-agent.md)
 
 ### <a name="client-side"></a>客户端
 
-JavaScript SDK 提供让客户端报告 Web 浏览器中发生的异常的功能。 若要在客户端设置有关报告异常的功能，请参阅[用于网页的 Application Insights](./javascript.md)。
+JavaScript SDK 使客户端能够报告 Web 浏览器中发生的异常。 若要在客户端上设置异常报告，请参阅[网页的 Application Insights](./javascript.md)。
 
 ### <a name="application-frameworks"></a>应用程序框架
 
-对于需要进行稍多一些配置的某些应用程序框架，请考虑以下技术：
+对于某些应用程序框架，需要进行更多配置，请考虑以下技术：
 
   * [Web 窗体](#web-forms)
   * [MVC](#mvc)
@@ -44,46 +44,46 @@ JavaScript SDK 提供让客户端报告 Web 浏览器中发生的异常的功能
   * [WCF](#wcf)
 
 > [!IMPORTANT]
-> 本文从代码示例的角度着重介绍 .NET Framework 应用。 用于 .NET Framework 的某些方法在 .NET Core SDK 中已过时。 使用 .NET Core 生成应用时，请参阅 [.NET Core SDK 文档](./asp-net-core.md)了解详细信息。
+> 本文从代码示例的角度着重介绍 .NET Framework 应用。 用于 .NET Framework 的某些方法在 .NET Core SDK 中已过时。 有关详细信息，请在使用 .NET Core 生成应用时参阅 [.NET Core SDK 文档](./asp-net-core.md)。
 
 ## <a name="diagnose-exceptions-using-visual-studio"></a>使用 Visual Studio 诊断异常
 
-在 Visual Studio 中打开应用程序解决方案。 使用 F5 在服务器或开发计算机上运行应用<kbd></kbd>。 重新创建异常。
+在 Visual Studio 中打开应用程序解决方案。 使用 <kbd>F5</kbd> 在服务器或开发计算机上运行应用。 重新创建异常。
 
-在 Visual Studio 中打开“Application Insights 搜索”遥测窗口。 调试时，选择“Application Insights”下拉菜单。
+打开 Visual Studio 中的“Application Insights 搜索”遥测窗口。 调试时，选择“Application Insights”下拉列表。
 
 ![右键单击项目，并依次选择“Application Insights”、“打开”。](./media/asp-net-exceptions/34.png)
 
-选择一份异常报告以显示其堆栈跟踪。 若要打开相关的代码文件，请在堆栈跟踪中选择行引用。
+选择异常报告，显示器堆栈跟踪。 若要打开相关代码文件，请选择堆栈跟踪中的行引用。
 
 如果已启用 CodeLens，你将看到有关异常的数据：
 
 ![有关异常的 CodeLens 通知。](./media/asp-net-exceptions/35.png)
 
-## <a name="diagnose-failures-using-the-azure-portal"></a>使用 Azure 门户诊断故障
+## <a name="diagnose-failures-using-the-azure-portal"></a>使用 Azure 门户诊断失败
 
-Application Insights 随附了特选的应用程序性能管理 (APM) 体验，可帮助你诊断受监视应用程序中发生的故障。 若要开始，请在“调查”部分的 Application Insights 资源菜单中选择“故障”选项 。
-你将看到请求的失败率趋势、其中失败的请求数，以及受影响的用户数。 在“总体情况”视图中，你将看到一些最有用的特定于所选失败操作的分布，包括前三个响应代码、前三个异常类型以及前三种失败依赖项类型。
+Application Insights 附带了精选的应用程序性能管理 (APM) 体验，帮助你诊断所监视应用程序中的失败。 若要开始，请选择位于“调查”部分中的 Application Insights 资源菜单中的“失败”选项 。
+你将看到请求的失败率趋势，其中包括多少个请求将要失败以及多少个用户受到影响。 在“整体”视图中，你将看到一些最有用的特定于所选失败操作的分发，包括前三个响应代码、前三个异常类型以及前三种失败依赖项类型。
 
 ![失败会审视图（“操作”选项卡）](./media/asp-net-exceptions/failures0719.png)
 
-若要查看其中每个操作子集的代表性示例，请选择相应的链接。 例如，若要诊断异常，可以选择要在“端到端事务”详细信息选项卡中显示的特定异常的计数：
+若要查看其中每个操作子集的具有代表性的示例，请选择相应链接。 例如，若要诊断异常，可以选择要在“端到端事务详细信息”选项卡中显示的特定异常的计数：
 
 ![“端到端事务详细信息”选项卡](./media/asp-net-exceptions/end-to-end.png)
 
-或者，可以切换到顶部的“异常”选项卡，从异常的“总体情况”视图开始，而不是查看特定失败操作的异常 。 这里可以看到为所监视的应用收集的所有异常。
+或者，可以切换到顶部的“异常”选项卡，从异常的“总体”视图开始，而不是查看特定失败操作的异常 。 这里可以看到为所监视的应用收集的所有异常。
 
 ## <a name="custom-tracing-and-log-data"></a>自定义跟踪和日志数据
 
 要获取特定于应用的诊断数据，可在插入代码后发送自己的遥测数据。 自定义遥测或日志数据与请求、页面视图和其他自动收集的数据一起显示在诊断搜索中。
 
-使用 <xref:Microsoft.ApplicationInsights.TelemetryClient?displayProperty=fullName> 时有多个 API 可用：
+使用 <xref:Microsoft.ApplicationInsights.TelemetryClient?displayProperty=fullName>，你可以使用多个 API：
 
 * <xref:Microsoft.ApplicationInsights.TelemetryClient.TrackEvent%2A?displayProperty=nameWithType> 通常用于监视使用模式，但它发送的数据还显示在诊断搜索的“自定义事件”下。 事件可以进行命名，并带有[筛选诊断搜索](./diagnostic-search.md)所依据的字符串属性和数值指标。
 * <xref:Microsoft.ApplicationInsights.TelemetryClient.TrackTrace%2A?displayProperty=nameWithType> 允许发送较长的数据，例如 POST 信息。
-* <xref:Microsoft.ApplicationInsights.TelemetryClient.TrackException%2A?displayProperty=nameWithType> 向 Application Insights 发送异常详细信息，例如堆栈跟踪。
+* <xref:Microsoft.ApplicationInsights.TelemetryClient.TrackException%2A?displayProperty=nameWithType> 将异常详细信息（例如堆栈跟踪）发送到 Application Insights。
 
-若要查看这些事件，请在左侧菜单中打开[搜索](./diagnostic-search.md)”，选择“事件类型”下拉菜单，然后选择“自定义事件”、“跟踪”或“异常”。   
+若要查看这些事件，请在左侧菜单中打开[搜索](./diagnostic-search.md)、选择“事件类型”下拉菜单，然后选择“自定义事件”、“跟踪”或“异常”   。
 
 ![深入了解](./media/asp-net-exceptions/customevents.png)
 
@@ -173,14 +173,14 @@ End Try
 
 报告大多数浏览器异常。
 
-如果网页包括内容分发网络或其他域中的脚本文件，请确保脚本标记具有属性 `crossorigin="anonymous"`，并且服务器可发送 [CORS 头](https://enable-cors.org/)。 这允许从这些资源中获取有关未处理的 JavaScript 异常的堆栈跟踪和详细信息。
+如果网页包括内容分发网络或其他域中的脚本文件，确保脚本标记具有属性 `crossorigin="anonymous"`，并且服务器可发送 [CORS 标头](https://enable-cors.org/)。 这允许从这些资源中获取有关未处理的 JavaScript 异常的堆栈跟踪和详细信息。
 
 ## <a name="reuse-your-telemetry-client"></a>重用遥测客户端
 
 > [!NOTE]
 > 建议将 `TelemetryClient` 实例化一次，并在应用程序的整个生命周期内重复使用。
 
-使用 [.NET 中的依赖项注入 (DI)](/dotnet/core/extensions/dependency-injection)、相应的 .NET SDK 并为 DI 正确配置了 Application Insights 时，可以要求将 <xref:Microsoft.ApplicationInsights.TelemetryClient> 用作构造函数参数。
+借助 [.NET 中的依赖项注入 (DI)](/dotnet/core/extensions/dependency-injection)、适当的 .NET SDK，并为 DI 正确配置 Application Insights，可以要求将 <xref:Microsoft.ApplicationInsights.TelemetryClient> 作为构造函数参数。
 
 ```csharp
 public class ExampleController : ApiController
@@ -194,11 +194,11 @@ public class ExampleController : ApiController
 }
 ```
 
-在上面的示例中，`TelemetryClient` 将注入到 `ExampleController` 类中。
+在前面的示例中，已将 `TelemetryClient` 注入到 `ExampleController` 类中。
 
 ## <a name="web-forms"></a>Web 窗体
 
-对于 Web 窗体，当不存在通过 `CustomErrors` 配置的重定向时，HTTP 模块能够收集异常。 但是，如果有活动重定向，请在 Global.asax.cs 中将以下行添加到 `Application_Error` 函数。
+在 Web 窗体中，当不存在通过 `CustomErrors` 配置的重定向时，HTTP 模块能够收集异常。 但是，如果有活动重定向，在 Global.asax.cs 中将以下行添加到 `Application_Error` 函数。
 
 ```csharp
 void Application_Error(object sender, EventArgs e)
@@ -211,20 +211,20 @@ void Application_Error(object sender, EventArgs e)
 }
 ```
 
-在上面的示例中，`_telemetryClient` 是 <xref:Microsoft.ApplicationInsights.TelemetryClient> 类型的类范围的变量。
+在前面的示例中，`_telemetryClient` 是类型 <xref:Microsoft.ApplicationInsights.TelemetryClient> 的类范围内变量。
 
 ## <a name="mvc"></a>MVC
 
-从 Application Insights Web SDK 2.6 版（beta3 及更高版本）开始，Application Insights 会自动收集 MVC 5+ 控制器方法中引发的未经处理异常。 如果之前已添加自定义处理程序以跟踪此类异常，可将其删除以避免对异常进行双重跟踪。
+从 Application Insights Web SDK 2.6 版（beta3 及更高版本）开始，Application Insights 会自动收集 MVC 5+ 控制器方法中引发的未经处理异常。 如果之前已添加自定义处理程序以跟踪此类异常，可以将将其删除以避免对异常进行双重跟踪。
 
-在许多情况下，当引发异常时，异常筛选器无法正确处理错误：
+当在以下位置或阶段引发异常时，在很多情况下，异常筛选器无法正确处理错误：
 
-* 从控制器构造函数引发异常时。
-* 从消息处理程序引发异常时。
-* 在路由期间引发异常时。
-* 在响应内容序列化期间引发异常时。
-* 在应用程序启动期间引发异常时。
-* 在后台任务中引发异常时。
+* 从控制器构造函数。
+* 从消息处理程序。
+* 在路由期间。
+* 在响应内容序列化期间。
+* 在应用程序启动期间。
+* 在后台任务中。
 
 仍需要手动跟踪应用程序 *处理* 的所有异常。
 源自控制器的未经处理异常通常会导致 500“内部服务器错误”响应。 如果此类响应是由于处理异常而手动构造的（或根本没有异常），则可在 `ResultCode` 为 500 的相应请求遥测中跟踪它，但是 Application Insights SDK 无法跟踪相应异常。
@@ -281,7 +281,7 @@ namespace MVC2App.Controllers
 
 #### <a name="mvc-3"></a>MVC 3
 
-将 `AiHandleErrorAttribute` 注册为 Global.asax.cs 中的全局筛选器：
+在 Global.asax.cs 中将 `AiHandleErrorAttribute` 注册为全局筛选器：
 
 ```csharp
 public class MyMvcApplication : System.Web.HttpApplication
@@ -297,7 +297,7 @@ public class MyMvcApplication : System.Web.HttpApplication
 
 #### <a name="mvc-4-mvc5"></a>MVC 4、MVC5
 
-将 `AiHandleErrorAttribute` 注册为 FilterConfig.cs 中的全局筛选器：
+在 FilterConfig.cs 中将 `AiHandleErrorAttribute` 注册为全局筛选器：
 
 ```csharp
 public class FilterConfig
@@ -520,7 +520,7 @@ namespace WcfService4
 
 ## <a name="exception-performance-counters"></a>异常性能计数器
 
-如果在服务器上[安装了 Application Insights 代理](./monitor-performance-live-website-now.md)，可以获取 .NET 测量的异常率图表。 这包括经处理和未经处理的 .NET 异常。
+如果在服务器上[安装了 Azure Monitor Application Insights 代理](./status-monitor-v2-overview.md)，可以获取 .NET 测量的异常率图表。 这包括经处理和未经处理的 .NET 异常。
 
 打开“指标资源管理器”选项卡，添加新图表，然后选择在“性能计数器”下列出的“异常率”。
 

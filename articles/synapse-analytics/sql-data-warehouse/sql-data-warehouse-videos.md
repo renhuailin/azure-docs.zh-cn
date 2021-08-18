@@ -2,21 +2,21 @@
 title: 视频
 description: Azure Synapse Analytics 的各种视频播放列表的链接。
 services: synapse-analytics
-author: anumjs
+author: rothja
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 02/15/2019
-ms.author: anjangsh
+ms.author: jroth
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eaf41e903f1a55dd85c6b6282617564a32087707
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f430510ac848bb41498cb2a6738089501ed6b25
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96447811"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114440868"
 ---
 # <a name="azure-synapse-analytics---dedicated-sql-pool--formerly-sql-dw-videos"></a>Azure Synapse Analytics - 专用 SQL 池（之前称为 SQL DW）视频
 

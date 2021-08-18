@@ -3,12 +3,12 @@ title: 保护 Azure Functions
 description: 了解如何使 Azure 中运行的函数代码更安全，使其免遭常见攻击的威胁。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: c8649c342b237a321c3c47510644451ceb3581fe
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 97a58c38f08e3b22f25ca2834a26692452fcff9e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467916"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746723"
 ---
 # <a name="securing-azure-functions"></a>保护 Azure Functions
 
@@ -28,7 +28,7 @@ ms.locfileid: "110467916"
 
 ### <a name="log-and-monitor"></a>日志和监视器
 
-检测攻击的一种方法是进行活动监视和日志记录分析。 Functions 与 Application Insights 相集成，可收集函数应用的日志、性能和错误数据。 Application Insights 可自动检测性能异常，并且包含了强大的分析工具来帮助你诊断问题并了解函数的使用方式。 若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
+检测攻击的一种方法是进行活动监视和日志分析。 Functions 与 Application Insights 相集成，可收集函数应用的日志、性能和错误数据。 Application Insights 可自动检测性能异常，并且包含了强大的分析工具来帮助你诊断问题并了解函数的使用方式。 若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
 Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志与系统事件合并，以便更轻松地进行分析。 你可以使用诊断设置将函数的平台日志和指标流式导出配置到你选择的目标位置，例如 Log Analytics 工作区。 若要了解更多信息，请参阅[使用 Azure Monitor 日志监视 Azure Functions](functions-monitor-log-analytics.md)。 
 
@@ -78,9 +78,9 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 |位置  |设置 | 值 | 描述  |
 |---------|---------|---------|---------|
-|不同的存储帐户     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | 根据提供的 SAS URL，将密钥存储在另一个存储帐户的 Blob 存储中。 在使用函数应用特有的机密存储密钥之前对密钥进行加密。 |
+|不同的存储帐户     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL>` | 根据提供的 SAS URL，将密钥存储在另一个存储帐户的 Blob 存储中。 在使用函数应用特有的机密存储密钥之前对密钥进行加密。 |
 |文件系统   | `AzureWebJobsSecretStorageType`   |  `files`       | 密钥持久保留在文件系统中，在使用函数应用特有的机密进行存储之前加密。 |
-|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | 保管库必须有一项与承载资源的系统分配托管标识相对应的访问策略。 访问策略应向标识授予以下机密权限：`Get`、`Set`、`List` 和 `Delete`。 <br/>在本地运行时使用开发人员标识，且设置必须位于 [local.settings.json 文件](functions-run-local.md#local-settings-file)中。 | 
+|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | 保管库必须有一项与承载资源的系统分配托管标识相对应的访问策略。 访问策略应向标识授予以下机密权限：`Get`、`Set`、`List` 和 `Delete`。 <br/>在本地运行时使用开发人员标识，且设置必须位于 [local.settings.json 文件](functions-develop-local.md#local-settings-file)中。 | 
 |Kubernetes 机密  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName`（可选） | `kubernetes`<br/>`<SECRETS_RESOURCE>` | 仅当在 Kubernetes 中运行 Functions 运行时时才受支持。 如果未设置 `AzureWebJobsKubernetesSecretName`，则会将存储库视为只读。 在这种情况下，必须在部署之前生成值。 在部署到 Kubernetes 时，Azure Functions Core Tools 会自动生成值。|
 
 ### <a name="authenticationauthorization"></a>身份验证/授权
@@ -131,7 +131,7 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 应用设置和连接字符串以加密方式存储在 Azure 中。 只有在应用程序启动时，它们才会被解密，然后再注入到应用程序内存中。 加密密钥会定期轮换。 如果希望管理机密的安全存储，则应该将应用设置改为对 Azure Key Vault 的引用。 
 
-在本地计算机上开发功能时，默认情况下，还可以在 local.settings.json 文件中加密设置。 若要了解详细信息，请参阅[本地设置文件](functions-run-local.md#local-settings-file)中的 `IsEncrypted` 属性。  
+在本地计算机上开发功能时，默认情况下，还可以在 local.settings.json 文件中加密设置。 若要了解详细信息，请参阅[本地设置文件](functions-develop-local.md#local-settings-file)中的 `IsEncrypted` 属性。  
 
 #### <a name="key-vault-references"></a>Key Vault 引用
 
@@ -213,7 +213,7 @@ Azure Functions 工具集成可以简化将本地函数项目代码发布到 Azu
 
 ### <a name="set-access-restrictions"></a>设置访问限制
 
-访问限制使你可以定义允许/拒绝规则列表，以控制应用的流量。 规则按优先顺序进行评估。 如果没有定义规则，则应用将接受来自任何地址的流量。 若要了解更多信息，请参阅 [Azure 应用服务访问限制 #](../app-service/app-service-ip-restrictions.md?toc=%2fazure%2fazure-functions%2ftoc.json)。
+访问限制使你可以定义允许/拒绝规则列表，以控制应用的流量。 规则按优先顺序进行评估。 如果没有定义规则，则应用将接受来自任何地址的流量。 若要了解更多信息，请参阅 [Azure 应用服务访问限制](../app-service/app-service-ip-restrictions.md?toc=%2fazure%2fazure-functions%2ftoc.json)。
 
 ### <a name="private-site-access"></a>专用站点访问
 

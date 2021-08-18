@@ -11,12 +11,12 @@ author: dzsquared
 ms.author: drskwier
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: 24bf347aa617e1a05aa8bf3284169aa669b297db
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 6fe0fdf53235ce1ec42a2b46e95291c111ed2dff
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110707443"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743691"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-or-sql-managed-instance-flat-files"></a>将数据从 CSV 加载到 Azure SQL 数据库或 SQL 托管实例（平面文件）
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "110707443"
 
 若要创建表，请打开命令提示符并使用 sqlcmd.exe 运行以下命令：
 
-```sql
+```cmd
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
     CREATE TABLE DimDate2
     (
@@ -61,7 +61,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 打开记事本，将以下几行数据复制到新文本文件，然后将此文件保存到本地临时目录 C:\Temp\DimDate2.txt。 此数据采用 ASCII 格式。
 
-```
+```txt
 20150301,1,3
 20150501,2,4
 20151001,4,2
@@ -78,7 +78,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 （可选）若要从 SQL Server 数据库导出自己的数据，请打开命令提示符并运行以下命令。 将 TableName、ServerName、DatabaseName、Username 和 Password 替换成自己的信息。
 
-```bcp
+```cmd
 bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t ,
 ```
 
@@ -86,13 +86,13 @@ bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName
 
 要加载数据，请打开命令提示符并运行以下命令，请注意将 Server Name、Database Name、Username 和 Password 替换为你自己的信息。
 
-```bcp
+```cmd
 bcp DimDate2 in C:\Temp\DimDate2.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <password> -q -c -t  ,
 ```
 
 使用此命令来验证是否已正确加载数据
 
-```bcp
+```cmd
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 

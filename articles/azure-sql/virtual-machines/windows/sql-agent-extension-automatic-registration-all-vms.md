@@ -6,17 +6,17 @@ ms.author: mathoma
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.subservice: management
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/07/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 187e51d049d965d0fb9cef1af93a5036819e957f
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: f40e3478a10a1a141e02510d88f4564062ff2ce5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665803"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752179"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>自动注册到 SQL IaaS 代理扩展
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -88,7 +88,7 @@ Unregister-AzProviderFeature -FeatureName BulkRegistration -ProviderNamespace Mi
 
 为此，请执行下列步骤：
 
-1. 保存[此脚本](https://github.com/microsoft/tigertoolbox/blob/master/AzureSQLVM/AutoRegTools.psm1)。
+1. 保存[此脚本](https://github.com/microsoft/tigertoolbox/blob/master/AzureSQLVM/EnableBySubscription.ps1)。
 1. 使用管理命令提示符或 PowerShell 窗口导航到保存脚本的位置。 
 1. 连接到 Azure (`az login`)。
 1. 执行此脚本，并传入 SubscriptionIds 作为参数，例如   

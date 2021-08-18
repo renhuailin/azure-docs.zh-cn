@@ -2,18 +2,17 @@
 title: 排查 Azure IoT 中心错误 404001 DeviceNotFound
 description: 了解如何修复错误 404001 DeviceNotFound
 author: jlian
-manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: troubleshooting
-ms.date: 01/30/2020
+ms.date: 07/07/2021
 ms.author: jlian
-ms.openlocfilehash: 09f3c00dadc6e95aae01fb8082fb746e155d4688
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 127f4546d674eb425440a8e0f395ca8ff0a6b6f4
+ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061275"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113515517"
 ---
 # <a name="404001-devicenotfound"></a>404001 DeviceNotFound
 

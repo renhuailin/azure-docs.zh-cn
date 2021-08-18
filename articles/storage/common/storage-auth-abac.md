@@ -10,12 +10,12 @@ ms.date: 05/06/2021
 ms.author: santoshc
 ms.reviewer: jiacfan
 ms.subservice: common
-ms.openlocfilehash: 8e424bd03e69affebac6f9bb614d2449e6ec45c0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 355eaa0c7e907dea1e1fe88e0640d3b09463fa09
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110070815"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113729013"
 ---
 # <a name="authorize-access-to-blobs-using-azure-role-assignment-conditions-preview"></a>使用 Azure 角色分配条件授予对 Blob 的访问权限（预览版）
 
@@ -28,7 +28,7 @@ ms.locfileid: "110070815"
 
 ## <a name="overview-of-conditions-in-azure-storage"></a>Azure 存储中的条件概述
 
-Azure 存储允许[使用 Azure Active Directory](storage-auth-aad.md) (Azure AD) 来授权对 Blob 和队列存储的请求。 Azure AD 使用 Azure RBAC 授予对受保护资源的访问权限。 Azure 存储定义了一组 Azure [内置角色](../../role-based-access-control/built-in-roles.md#storage)，它们包含用于访问 Blob 和队列数据的通用权限集。 还可以定义具有选定权限集的自定义角色。 Azure 存储支持存储帐户或 Blob 容器的角色分配。
+Azure 存储允许[使用 Azure Active Directory](authorize-data-access.md) (Azure AD) 来授权对 Blob 和队列存储的请求。 Azure AD 使用 Azure RBAC 授予对受保护资源的访问权限。 Azure 存储定义了一组 Azure [内置角色](../../role-based-access-control/built-in-roles.md#storage)，它们包含用于访问 Blob 和队列数据的通用权限集。 还可以定义具有选定权限集的自定义角色。 Azure 存储支持存储帐户或 Blob 容器的角色分配。
 
 但是，在某些情况下，可能需要启用对存储资源的更精细访问，或简化存储资源的数百个角色分配。 可以针对 [DataActions](../../role-based-access-control/role-definitions.md#dataactions) 配置[角色分配条件](../../role-based-access-control/conditions-overview.md)以实现这些目标。 可以将条件用于[自定义角色](../../role-based-access-control/custom-roles.md)，或选择内置角色。 请注意，不支持通过[存储资源提供程序](/rest/api/storagerp)为管理[操作](../../role-based-access-control/role-definitions.md#actions)使用条件。
 
@@ -51,4 +51,4 @@ Blob 支持 Azure 存储中的条件。 可以将条件用于启用了[分层命
 
 - [Azure 存储中 Azure 角色分配条件的安全注意事项（预览版）](storage-auth-abac-security.md)
 - [Azure 存储中 Azure 角色分配条件的操作和属性（预览版）](storage-auth-abac-attributes.md)
-- [什么是 Azure 基于属性的访问控制 (Azure ABAC)（预览版）？](../../role-based-access-control/conditions-overview.md)
+- [什么是 Azure 基于特性的访问控制 (Azure ABAC)（预览版）？](../../role-based-access-control/conditions-overview.md)

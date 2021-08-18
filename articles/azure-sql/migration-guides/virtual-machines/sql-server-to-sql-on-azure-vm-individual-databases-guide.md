@@ -8,14 +8,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
-ms.reviewer: mathoma
+ms.reviewer: chadam
 ms.date: 03/19/2021
-ms.openlocfilehash: 33509bc669f5b80ad63d56b58250718e030c32e4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4c6e1f052dd23621e269b59fb573216f68e49cfb
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110472588"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110784378"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-virtual-machines"></a>迁移指南：SQL Server 到 Azure 虚拟机上的 SQL Server
 
@@ -205,7 +205,7 @@ Azure Migrate 会评估是否适合迁移本地计算机，会根据性能进行
    - [Azure 虚拟机中的 SQL Server](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
    - [Azure 总拥有成本 (TCO) 计算器](https://azure.microsoft.com/pricing/tco/calculator/)
 
-- 要详细了解云迁移的框架和采用周期，请参阅：
+- 有关云迁移的框架和采用周期的详细信息，请参阅：
    - [适用于 Azure 的云采用框架](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    - [为迁移到 Azure 的工作负载计算成本和调整大小的最佳做法](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs)
 

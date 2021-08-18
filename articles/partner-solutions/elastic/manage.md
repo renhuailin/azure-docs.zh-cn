@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 05/20/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: aade011c5ad9db505673ea2d03588498dba08b20
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 9feb4c5eb143ced9079bfe9e63b451aecd437212
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482251"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111952592"
 ---
 # <a name="manage-the-elastic-integration-with-azure"></a>管理与 Azure 的 Elastic 集成
 
@@ -36,7 +36,7 @@ ms.locfileid: "110482251"
 “发送到 Elastic 的日志”列指示资源是否正在将日志发送到 Elastic。 如果资源未发送日志，则此字段会详细说明不发送日志的原因。 原因可能包括：
 
 * 资源不支持发送日志。 只有在此处定义的所有资源类型和日志类别的 Azure 资源日志可以配置为向 Elastic 发送日志
-* 达到了五个诊断设置的限制。 每个 Azure 资源最多可以有五个[诊断设置](../../azure-monitor/platform/diagnostic-settings.md)。
+* 达到了五个诊断设置的限制。 每个 Azure 资源最多可以有五个[诊断设置](../../azure-monitor/essentials/diagnostic-settings.md)。
 * 错误会阻止将日志发送到 Elastic。
 * 不会为资源配置日志。 只会将具有相应资源标记的资源发送到 Elastic。 你在日志配置中指定了标记规则。 
 * 区域不受支持。 Azure 资源位于目前不将日志发送到 Elastic 的区域。 

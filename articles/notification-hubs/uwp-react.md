@@ -7,12 +7,12 @@ ms.service: notification-hubs
 ms.topic: conceptual
 ms.date: 06/14/2021
 ms.custom: template-concept
-ms.openlocfilehash: 7158fa486483f1ff26599e47e43ee3219a23045a
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 229de776e7e2dace0253d7cc4495663969cb3e62
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082654"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285239"
 ---
 # <a name="send-notifications-to-android-and-ios-applications"></a>向 Android 和 iOS 应用程序发送通知
 
@@ -53,7 +53,7 @@ GitHub 上的示例应用程序包含以下文件夹：
 
 - NotificationHub.Sample.API：Visual Studio 2019 ASP.NET Web API 解决方案，可用作后端。
 - 应用：跨平台 React Native 应用程序，支持以管理员身份登录发送通知，然后以调查用户身份登录接收通知。
-- azure-template：Azure 资源管理器模板（`parameters.json` 和 `template.json`），可用于部署在 Azure 订阅中配置相关资源管理器模板部署所需的所有资源。 有关资源管理器模板部署的信息，请参阅[使用 Azure 门户创建和部署 ARM 模板](/azure/azure-resource-manager/templates/quickstart-create-templates-use-the-portal)。
+- azure-template：Azure 资源管理器模板（`parameters.json` 和 `template.json`），可用于部署在 Azure 订阅中配置相关资源管理器模板部署所需的所有资源。 有关资源管理器模板部署的信息，请参阅[使用 Azure 门户创建和部署 ARM 模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
 ## <a name="sample-overview"></a>示例概述
 
@@ -355,9 +355,9 @@ public interface INotificationService
 
 - [Azure 通知中心实例](#create-resource-notification-hub)：在 Azure 上配置的通知中心。
 - [SQL Server 数据库实例](#create-resource-sql-database)：托管在 Azure 上的 SQL Server 数据库。
-- ASP.NET 应用后端：通过 .NET 5.0 构建的 Web API 后端，可与托管为 Azure 应用服务的 Azure 通知中心连接。 有关详细信息，请参阅[快速入门：部署 ASP.NET Web 应用](/azure/app-service/quickstart-dotnetcore?tabs=net50&pivots=development-environment-vs)。
+- ASP.NET 应用后端：通过 .NET 5.0 构建的 Web API 后端，可与托管为 Azure 应用服务的 Azure 通知中心连接。 有关详细信息，请参阅[快速入门：部署 ASP.NET Web 应用](../app-service/quickstart-dotnetcore.md?pivots=development-environment-vs&tabs=net50)。
 
-如果不想手动部署所有资源，可以使用 GitHub 存储库中提供的 Azure 资源管理器 template.json 文件在其中一个操作步骤中部署所有必要的实例。 此模板文件可从 /azure-template 的存储库中获取。 有关如何使用资源管理器模板的信息，请参阅[教程：使用 Azure 快速入门模板](/azure/azure-resource-manager/templates/template-tutorial-quickstart-template?tabs=azure-powershell)。
+如果不想手动部署所有资源，可以使用 GitHub 存储库中提供的 Azure 资源管理器 template.json 文件在其中一个操作步骤中部署所有必要的实例。 此模板文件可从 /azure-template 的存储库中获取。 有关如何使用资源管理器模板的信息，请参阅[教程：使用 Azure 快速入门模板](../azure-resource-manager/templates/template-tutorial-quickstart-template.md?tabs=azure-powershell)。
 
 ### <a name="set-up-notifications-for-android-and-ios"></a>为 Android 和 iOS 设置通知
 
@@ -370,7 +370,7 @@ public interface INotificationService
 
 ### <a name="create-resource-sql-database"></a>创建资源：SQL 数据库
 
-在 Azure 门户中[创建 SQL Server 数据库实例](/azure/azure-sql/database/single-database-create-quickstart?tabs=azure-portal)。 例如：
+在 Azure 门户中[创建 SQL Server 数据库实例](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)。 例如：
 
 :::image type="content" source="media/uwp-react/resources-sql.png" alt-text="SQL 实例资源":::
 

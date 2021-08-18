@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: dc4450fb1e21211b43bc178d94cf4bdfe6da58e1
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: bed0b1e887fd5735077ef66725b267f42be9bbc1
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256780"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114445361"
 ---
 # <a name="embedded-sign-in-experience"></a>嵌入的登录体验
 
@@ -107,7 +107,7 @@ window.parent.postMessage("signUp", '*');
 
 ## <a name="configure-a-web-application"></a>配置 Web 应用程序
 
-当用户选择“登录”按钮时，[Web 应用](code-samples.md#web-apps-and-apis)将生成一个授权请求，该请求会将用户引导至 Azure AD B2C 登录体验。 登录完成后，Azure AD B2C 会将 ID 令牌或授权代码返回到应用程序中配置的重定向 URI。
+当用户选择“登录”按钮时，[Web 应用](integrate-with-app-code-samples.md#web-apps-and-apis)将生成一个授权请求，该请求会将用户引导至 Azure AD B2C 登录体验。 登录完成后，Azure AD B2C 会将 ID 令牌或授权代码返回到应用程序中配置的重定向 URI。
 
 为了支持嵌入登录，iframe src 属性指向登录控制器（如 `/account/SignUpSignIn`），它将生成授权请求，并将用户重定向到 Azure AD B2C 策略。
 
@@ -168,6 +168,6 @@ function logOut()
 - [使用界面自定义](customize-ui.md)
 - [RelyingParty](relyingparty.md) 元素引用
 - [启用 JavaScript 策略](./javascript-and-page-layout.md)
-- [示例代码](code-samples.md)
+- [示例代码](integrate-with-app-code-samples.md)
 
 ::: zone-end

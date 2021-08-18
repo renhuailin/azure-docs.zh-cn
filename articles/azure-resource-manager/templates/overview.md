@@ -3,12 +3,12 @@ title: 模板概述
 description: 介绍使用 Azure 资源管理器模板（ARM 模板）部署资源的好处。
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: 62d25d2bd87f9335ac6442a7038f9326b04b36b0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6c576b7e18d60a858f5f29bde0e674160610223b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960354"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727184"
 ---
 # <a name="what-are-arm-templates"></a>什么是 ARM 模板？
 
@@ -153,4 +153,4 @@ REQUEST BODY
 * 要通过 Microsoft Learn 上的一组引导式模块了解 ARM 模板，请参阅[使用 ARM 模板在 Azure 中部署和管理资源](/learn/paths/deploy-manage-resource-manager-templates/)。
 * 有关模板文件中的属性的信息，请参阅[了解 ARM 模板的结构和语法](./syntax.md)。
 * 若要了解如何导出模板，请参阅[快速入门：使用 Azure 门户创建和部署 ARM 模板](quickstart-create-templates-use-the-portal.md)。
-* 有关常见问题的解答，请参阅[有关 ARM 模板的常见问题解答](frequently-asked-questions.md)。
+* 有关常见问题的解答，请参阅[有关 ARM 模板的常见问题解答](./frequently-asked-questions.yml)。

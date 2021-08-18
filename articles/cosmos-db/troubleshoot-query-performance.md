@@ -8,17 +8,17 @@ ms.date: 02/16/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 6701a580cbe7790dcce2cbbcc46889f9dff00107
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bbd915a912f69c2e3fbaf4cb493ba8bfe90f1552
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100559988"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730137"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>排查使用 Azure Cosmos DB 时遇到的查询问题
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-本文逐步说明排查 Azure Cosmos DB 中的查询问题的一般建议方法。 虽然不应将本文中所述的步骤视为针对潜在查询问题的完全防御方法，但我们在其中包含了最常见的性能提示。 应将本文用作起点，以排查 Azure Cosmos DB 核心 (SQL) API 中查询速度缓慢或费用较高的问题。 还可以使用[诊断日志](cosmosdb-monitor-resource-logs.md)来识别速度缓慢或消耗大量吞吐量的查询。 如果使用的是 Azure Cosmos DB API for MongoDB，则应使用 [Azure Cosmos DB API for MongoDB 查询故障排除指南](mongodb-troubleshoot-query.md)
+本文逐步说明排查 Azure Cosmos DB 中的查询问题的一般建议方法。 虽然不应将本文中所述的步骤视为针对潜在查询问题的完全防御方法，但我们在其中包含了最常见的性能提示。 应将本文用作起点，以排查 Azure Cosmos DB 核心 (SQL) API 中查询速度缓慢或费用较高的问题。 还可以使用[诊断日志](cosmosdb-monitor-resource-logs.md)来识别速度缓慢或消耗大量吞吐量的查询。 如果使用的是 Azure Cosmos DB API for MongoDB，则应使用 [Azure Cosmos DB API for MongoDB 查询故障排除指南](mongodb/troubleshoot-query-performance.md)
 
 Azure Cosmos DB 中的查询优化大致分为以下类别：
 
@@ -201,7 +201,7 @@ RU 费用：2.98 RU
 大多数系统函数都使用索引。 下面列出了一些使用索引的常用字符串函数：
 
 - -StartsWith
-- 包含
+- Contains
 - RegexMatch
 - 左
 - Substring - 但是仅当在第一个 num_expr 为 0 时
@@ -232,7 +232,7 @@ RU 费用：2.98 RU
 
 - StartsWith（其中不区分大小写 = true）
 - StringEquals（其中不区分大小写 = true）
-- 包含
+- Contains
 - RegexMatch
 - EndsWith
 

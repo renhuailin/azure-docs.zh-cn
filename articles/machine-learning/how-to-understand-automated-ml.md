@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2, automl
-ms.openlocfilehash: d104ad879919b11152d56a2c9b6b6fd8652c3ddc
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: fc07c5bf61e1ef80fdcb574580f626eb46394564
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107903787"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112462894"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>评估自动化机器学习试验结果
 
@@ -36,7 +36,7 @@ ms.locfileid: "107903787"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 （如果没有 Azure 订阅，请在开始之前[创建一个免费帐户](https://aka.ms/AMLFree)）
+- Azure 订阅。 （如果没有 Azure 订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)）
 - 使用以下之一创建 Azure 机器学习试验：
   - [Azure 机器学习工作室](how-to-use-automated-ml-for-ml-models.md)（无需代码）
   - [Azure 机器学习 Python SDK](how-to-configure-auto-train.md)

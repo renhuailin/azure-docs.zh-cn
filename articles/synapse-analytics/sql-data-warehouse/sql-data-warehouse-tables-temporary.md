@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 077782099d6d61982052dc1690d545e58e928d8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9898bc94aa79b374174f80592dc250e660f7f8c3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93310687"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734589"
 ---
 # <a name="temporary-tables-in-dedicated-sql-pool"></a>专用 SQL 池中的临时表
 
@@ -30,8 +30,6 @@ ms.locfileid: "93310687"
 临时表仅对其所创建于的会话可见，并在该会话注销时自动删除。  
 
 临时表可以提高性能，因为其结果将写入到本地而不是远程存储。
-
-临时表在处理数据时非常有用，尤其是在具有暂时性中间结果的转换期间。 使用专用 SQL 池时，临时表存在于会话级别。  它们仅对其所创建于的会话可见。 因此，会话注销时将自动删除它们。 
 
 ## <a name="temporary-tables-in-dedicated-sql-pool"></a>专用 SQL 池中的临时表
 

@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: a040200c5746defcaee84a951521d5919c0c4d28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 26784222d49e6f48ed324ce345dcb1f2ba7d4cf1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91660670"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741443"
 ---
 # <a name="delete-azure-arc-data-controller"></a>删除 Azure Arc 数据控制器
 
@@ -22,48 +22,41 @@ ms.locfileid: "91660670"
 
 在继续操作之前，请先确保在数据控制器上创建的所有数据服务均已删除，如下所示：
 
-## <a name="log-in-to-the-data-controller"></a>登录到数据控制器
-
-登录到要删除的数据控制器：
-
-```
-azdata login
-```
-
 ## <a name="list--delete-existing-data-services"></a>列出并删除现有数据服务
 
 运行以下命令，检查是否已创建任何 SQL 托管实例：
 
-```
-azdata arc sql mi list
+```azurecli
+az sql mi-arc list --k8s-namespace <namespace> --use-k8s
 ```
 
 对于上表中的每个 SQL 托管实例，请运行删除命令，如下所示：
 
-```
-azdata arc sql mi delete -n <name>
-# for example: azdata arc sql mi delete -n sqlinstance1
+```azurecli
+az sql mi-arc delete -n <name> --k8s-namespace <namespace> --use-k8s
+# for example: az sql mi-arc delete -n sqlinstance1 --k8s-namespace <namespace> --use-k8s
 ```
 
 同样地，如果要检查是否存在超大规模 PostgreSQL 实例，请运行：
 
-```
-azdata arc postgres server list
+```azurecli
+az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 对于每个超大规模 PostgreSQL 实例，请运行删除命令，如下所示：
-```
-azdata arc postgres server delete -n <name>
-# for example: azdata arc postgres server delete -n pg1
+
+```azurecli
+az postgres arc-server delete -n <name> --k8s-namespace <namespace> --use-k8s
+# for example: az postgres arc-server delete -n pg1 --k8s-namespace <namespace> --use-k8s
 ```
 
 ## <a name="delete-controller"></a>删除控制器
 
 删除了所有 SQL 托管实例和超大规模 PostgreSQL 实例后，即可删除数据控制器，如下所示：
 
-```
-azdata arc dc delete -n <name> -ns <namespace>
-# for example: azdata arc dc delete -ns arc -n arcdc
+```azurecli
+az arcdata dc delete -n <name> -ns <namespace>
+# for example: az arcdata dc delete -ns arc -n arcdc
 ```
 
 ### <a name="remove-sccs-red-hat-openshift-only"></a>删除 SCC（仅限 Red Hat OpenShift）

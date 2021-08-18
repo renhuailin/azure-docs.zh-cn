@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: fca5c1a0aee6e62890d734e3233177549d932672
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c24b7ee5154ec7f79bbbf19ffc6c59b8bf6221b3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643681"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743321"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>使用分布式跟踪（预览版）跟踪 Azure IoT 设备到云的消息
 
@@ -43,7 +43,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
   - **Southeast Asia**
   - **美国西部 2**
 
-- 本文假设读者知道如何将遥测消息发送到 IoT 中心。 请确保已完成[发送遥测数据 C 快速入门](quickstart-send-telemetry-c.md)。
+- 本文假设读者知道如何将遥测消息发送到 IoT 中心。 请确保已完成[发送遥测数据 C 快速入门](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-ansi-c)。
 
 - 将某个设备注册到 IoT 中心（每篇快速入门中都提供了相关步骤），并记下连接字符串。
 
@@ -144,7 +144,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=2)]
 
-    将 `connectionString` 常量值替换为在[发送遥测数据 C 快速入门](./quickstart-send-telemetry-c.md)的[注册设备](./quickstart-send-telemetry-c.md#register-a-device)部分记下的设备连接字符串。
+    将 `connectionString` 常量值替换为在[发送遥测数据 C 快速入门](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-ansi-c)的[注册设备](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-ansi-c#register-a-device)部分记下的设备连接字符串。
 
 1. 将 `MESSAGE_COUNT` 定义更改为 `5000`：
 
@@ -169,7 +169,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
     cmake --build . --target iothub_ll_telemetry_sample --config Debug
     ```
 
-1. 运行该应用程序。 设备将发送支持分布式跟踪的遥测数据。
+1. 运行应用程序。 设备将发送支持分布式跟踪的遥测数据。
 
     ```cmd
     Debug/iothub_ll_telemetry_sample.exe

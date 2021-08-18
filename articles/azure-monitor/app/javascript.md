@@ -4,12 +4,12 @@ description: 获取页面视图和会话计数、Web 客户端数据、单页应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 61b7aa455cf9b782ca10d749344c26f5d15caa40
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2d2cf6f53b295d5ac138f86deb765892fd34d907
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110072507"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112234566"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -171,7 +171,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>配置
 大多数配置字段的命名都可默认为 false。 除 `instrumentationKey` 以外的所有字段都是可选的。
 
-| 名称 | 描述 | 默认 |
+| 名称 | 说明 | 默认 |
 |------|-------------|---------|
 | instrumentationKey | **必需**<br>从 Azure 门户获取的检测密钥。 | string<br/>NULL |
 | accountId | 可选的帐户 ID（如果应用将用户分组到帐户中）。 不允许使用空格、逗号、分号、等于或竖线 | string<br/>NULL |
@@ -186,7 +186,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | loggingLevelTelemetry | 将 **内部** Application Insights 错误作为遥测数据发送。 <br>0：关闭， <br>1:仅限严重错误， <br>2:所有内容（错误和警告） | numeric<br/> 1 |
 | diagnosticLogInterval | 内部日志记录队列的（内部）轮询间隔（以毫秒为单位） | numeric<br/> 10000 |
 | samplingPercentage | 要发送的事件百分比。 默认值为 100，表示发送所有事件。 如果你希望避免大型应用程序达到数据上限，请设置此项。 | numeric<br/>100 |
-| autoTrackPageVisitTime | 如果为 true，则对于页面视图，将跟踪前一个检测的页面的查看时间并将其作为遥测数据发送，同时，为当前的页面视图启动新的计时器。 | boolean<br/>false |
+| autoTrackPageVisitTime | 如果为 true，则对于页面视图，将跟踪上一个检测的页面的查看时间并将其作为遥测数据发送，同时，为当前的页面视图启动新的计时器。 它作为 `milliseconds` 中名为 `PageVisitTime` 的自定义指标发送，通过 Date [now()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now) 函数（如果可用）进行计算，并在 now() 不可用的情况下（IE8 或更低版本）回退到 (new Date()).[getTime()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime)。 默认值为 false。 | boolean<br/>false |
 | disableAjaxTracking | 如果为 true，则不自动收集 Ajax 调用。 | boolean<br/> false |
 | disableFetchTracking | 如果为 true，则不自动收集 Fetch 请求。|boolean<br/>是 |
 | overridePageViewDuration | 如果为 true，则在调用 trackPageView 时，trackPageView 的默认行为将更改为记录页面视图持续时间间隔的结束时间。 如果为 false 且未为 trackPageView 提供自定义持续时间，则会使用导航计时 API 计算页面视图性能。 |boolean<br/>

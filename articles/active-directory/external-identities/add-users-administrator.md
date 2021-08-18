@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5e538be52f21d169aefd350aa2781de0065f04f
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: c93b0199acf36666fb4c2801f44f21fe314a571b
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632865"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114227941"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>在 Azure 门户中添加 Azure Active Directory B2B 协作用户
 
@@ -27,7 +27,7 @@ ms.locfileid: "109632865"
 > [!IMPORTANT]
 > 应按照[如何：在 Azure Active Directory 中添加组织的隐私信息](../fundamentals/active-directory-properties-area.md)中的步骤添加组织的隐私声明的 URL。 作为首次邀请兑换进程的一部分，受邀的用户必须同意你的隐私条款才能继续操作。 
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 请确保组织的外部协作设置已配置为允许你邀请来宾。 默认情况下，所有用户和管理员都可以邀请来宾。 不过，组织的外部协作策略可能会配置为阻止某些类型的用户或管理员邀请来宾。 若要了解如何查看和设置这些策略，请参阅[启用 B2B 外部协作和管理谁可以邀请来宾](delegate-invitations.md)。
 
@@ -37,7 +37,7 @@ ms.locfileid: "109632865"
 
 1. 以分配有有限管理员目录角色或来宾邀请者角色的用户身份登录 [Azure 门户](https://portal.azure.com)。
 2. 在任意页面中搜索并选择“Azure Active Directory”。 
-3. 在“管理”下，选择“用户” 。
+3. 在“管理”下，选择“用户”   。
 4. 选择“新来宾用户”。
 5. 在“新建用户”页上，选择“邀请用户”，然后添加来宾用户的信息 。
 
@@ -47,7 +47,7 @@ ms.locfileid: "109632865"
    - **电子邮件地址(必填)** 。 来宾用户的电子邮件地址。
    - **个人消息(可选)** 包含发送给来宾用户的个人欢迎消息。
    - **组**：可以将来宾用户添加到一个或多个现有组，也可以稍后进行。
-   -  角色：如果需要让用户具有 Azure AD 管理权限，可以通过选择“角色”旁边的“用户”将其添加到 Azure AD 角色。  
+   -  角色：如果需要让用户具有 Azure AD 管理权限，可以通过选择“角色”旁边的“用户”将其添加到 Azure AD 角色。  [详细了解](../../role-based-access-control/role-assignments-external-users.md)适用于外部来宾用户的 Azure 角色。
 
    > [!NOTE]
    > 不支持组电子邮件地址；输入个人的电子邮件地址。 另外，某些电子邮件提供程序允许用户向其电子邮件地址中添加加号 (+) 和附加文本来帮助执行收件箱筛选之类的操作。 但是，Azure AD 当前不支持在电子邮件地址中使用加号。 为避免在传送时出现问题，请省略加号及其之后的任何字符，直至 @ 符号。
@@ -102,7 +102,7 @@ ms.locfileid: "109632865"
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 在任意页面中搜索并选择“Azure Active Directory”。 
-3. 在“管理”下，选择“用户” 。
+3. 在“管理”下，选择“用户”   。
 4. 选择用户帐户。
 5. 在“标识”部分的“已接受邀请”下，选择“(管理)”链接。 
 6. 如果该用户尚未接受邀请，请选择“是”选项重新发送。

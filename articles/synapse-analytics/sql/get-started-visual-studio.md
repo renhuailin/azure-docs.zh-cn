@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: ef8e2a3d1a6b78e8f2b6b9a900ed2485c1a4a5d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d534794737f93cd71ee9820f72e6c5ead08ca2b
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96451592"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860998"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>使用 Visual Studio 和 SSDT 连接到 Synapse SQL
 
@@ -36,9 +36,10 @@ ms.locfileid: "96451592"
 
 若要使用本教程，需要具备以下组件：
 
-* 现有专用 SQL 池。 如果没有，请参阅[创建专用 SQL 池](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)以完成此先决条件要求的操作。
-* 适用于 Visual Studio 的 SSDT。 如果安装了 Visual Studio，则可能已有了此组件。 有关安装指说明和选项，请参阅 [安装 Visual Studio 和 SSDT](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
-* 完全限定的 SQL Server 名称。 若要查找此服务器名称，请参阅[连接到专用 SQL 池](connect-overview.md)。
+- 现有 Synapse 工作区。如果需要创建一个，请参阅[创建 Synapse 工作区](../get-started-create-workspace.md)
+- 专用 SQL 池。 如果没有，请参阅[创建专用 SQL 池](../get-started-analyze-sql-pool.md#create-a-dedicated-sql-pool)。
+- 适用于 Visual Studio 的 SSDT。 如果安装了 Visual Studio，则可能已有了此组件。 有关安装指说明和选项，请参阅 [安装 Visual Studio 和 SSDT](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?context=/azure/synapse-analytics/context/context)。
+- 完全限定的 SQL Server 名称。 若要查找此服务器名称，请参阅[连接到专用 SQL 池](connect-overview.md)。
 
 ## <a name="1-connect-to-a-dedicated-sql-pool"></a>1.连接到专用 SQL 池
 1. 打开 Visual Studio 2019。
@@ -64,7 +65,7 @@ ms.locfileid: "96451592"
 现在已建立了与数据库的连接，你将编写一个查询。
 
 1. 在 SQL Server 对象资源管理器中右键单击数据库。
-2. 选择“新建查询”  。 此时将打开一个新的查询窗口。
+2. 选择“新建查询”。 此时将打开一个新的查询窗口。
    
     ![新建查询](./media/get-started-visual-studio/new-query2.png)
 3. 将以下 T-SQL 查询复制到查询窗口中：
@@ -81,5 +82,5 @@ ms.locfileid: "96451592"
 
 ## <a name="next-steps"></a>后续步骤
 可以进行连接和查询后，接下来请尝试[使用 Power BI 可视化数据](get-started-power-bi-professional.md)。
-若要为你的环境配置 Azure Active Directory 身份验证，请参阅[向专用 SQL 池进行身份验证](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+若要为你的环境配置 Azure Active Directory 身份验证，请参阅[向专用 SQL 池进行身份验证](sql-authentication.md?tabs=provisioned)。
  

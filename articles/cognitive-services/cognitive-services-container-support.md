@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 06/07/2021
+ms.date: 07/02/2021
 ms.author: aahi
 keywords: 本地, Docker, 容器, Kubernetes
-ms.openlocfilehash: 9a0dbba69b6317ab5a3df0b87e5f288d5a95872c
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: adc449be1aa1673540e02269d15823b819bc37c1
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752650"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285515"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure 认知服务容器
 
@@ -78,9 +78,9 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 | 服务 |  容器 | 说明 | 可用性 |
 |--|--|--|--|
 | [计算机视觉][cv-containers] | 读取 OCR（[映像](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)） | “读取 OCR”容器用于从图像和文档中提取打印文本和手写文本，并支持 JPEG、PNG、BMP、PDF 和 TIFF 文件格式。 有关详细信息，请参阅[“读取 API”文档](./computer-vision/overview-ocr.md)。 | 门控式预览版。 [请求访问权限][request-access]。 |
-| [空间分析][spa-containers] | 空间分析（[映像](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-spatial-analysis)） | 分析实时流视频，以理解人员之间的空间关系、他们的动作以及与物理环境中对象的交互。 | 门控式预览版。 [请求访问权限][request-access]。 |
+| [空间分析][spa-containers] | 空间分析（[映像](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-spatial-analysis)） | 分析实时流视频，以理解人员之间的空间关系、他们的动作以及与物理环境中对象的交互。 | 预览 |
 | [人脸][fa-containers] | **人脸** | 检测图像中的人脸并标识属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，“人脸”还可以使用置信评分检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 还可以使用共享视觉特征将类似人脸整理为许多组。 | 不可用 |
-| [表单识别器][fr-containers] | **表单识别器** | 表单理解应用机器学习技术从表单中识别和提取键值对和表。 | 不可用 | 
+| [表单识别器][fr-containers] | **表单识别器** | 表单理解应用机器学习技术从表单中识别和提取键值对和表。 | 门控式预览版。 [请求访问权限][request-access]。 | 
 
 
 <!--
@@ -135,7 +135,7 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 [ad-containers]: anomaly-Detector/anomaly-detector-container-howto.md
 [cv-containers]: computer-vision/computer-vision-how-to-install-containers.md
 [fa-containers]: face/face-how-to-install-containers.md
-[fr-containers]: form-recognizer/form-recognizer-container-howto.md
+[fr-containers]: ./form-recognizer/containers/form-recognizer-container-install-run.md
 [lu-containers]: luis/luis-container-howto.md
 [sp-containers]: speech-service/speech-container-howto.md
 [spa-containers]: ./computer-vision/spatial-analysis-container.md

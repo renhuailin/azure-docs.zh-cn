@@ -6,17 +6,17 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: e9d7fff98a6d6c062f529528f9f1d3071a038049
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 911a67644ac50906ee7e4b3009658043cfa022d6
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385054"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112414568"
 ---
 # <a name="event-grid-on-kubernetes---concepts"></a>Kubernetes 上的事件网格 - 概念
 本文介绍了支持 Azure Arc（预览版）的 Kubernetes 上的事件网格中的主要概念。
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="events"></a>事件
 事件是一种数据记录，用于公布有关软件系统操作的事实。 通常，事件会因系统发出的信号或系统观察到的信号而公布状态更改。 事件包含两种类型的信息： 

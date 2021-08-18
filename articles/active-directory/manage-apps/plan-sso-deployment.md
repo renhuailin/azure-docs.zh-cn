@@ -2,23 +2,23 @@
 title: 规划 Azure Active Directory 单一登录部署
 description: 帮助你在组织中规划、部署和管理 SSO 的指南。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/10/2020
-ms.author: mtillman
-ms.reviewer: jeedes
+ms.author: davidmu
+ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ef1daed862a67c5219d7ec243985340a8a20ea01
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: eacb1d03ce4d7148543948f4bf107d8a99181a0e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076953"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744111"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>计划单一登录部署
 
@@ -26,7 +26,7 @@ ms.locfileid: "112076953"
 
 ## <a name="benefits-of-sso"></a>SSO 的优点
 
-当用户在 Azure Active Directory (Azure AD) 中登录到应用程序时，单一登录 (SSO) 可以增加安全性和便利性。 
+当用户在 Azure Active Directory (Azure AD) 中登录到应用程序时，单一登录 (SSO) 可以增加安全性和便利性。
 
 许多组织依赖于软件即服务 (SaaS) 应用程序（如 Microsoft 365、Box 和 Salesforce）来提高最终用户生产力。 从历史上看，IT 人员需要在每个 SaaS 应用程序中单独创建和更新用户帐户，而用户需要记住每个 SaaS 应用程序的密码。
 
@@ -34,13 +34,13 @@ Azure 市场有 3000 多个预先集成了 SSO 连接的应用程序，因此你
 
 ## <a name="licensing"></a>许可
 
-- **Azure AD 许可** - 适用于预先集成的 SaaS 应用程序的 SSO 是免费的。 但是，你可能需要根据目录中的对象数和要部署的功能购买额外的许可证。 有关许可证要求的完整列表，请参阅 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
+- **Azure AD 许可** - 适用于预先集成的 SaaS 应用程序的 SSO 是免费的。 但是，你可能需要根据目录中的对象数和要部署的功能购买额外的许可证。 有关许可证要求的完整列表，请参阅 [Azure Active Directory 定价](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
 - **应用程序许可** - 你需要根据业务需求购买适用于 SaaS 应用程序的许可证。 与应用程序所有者合作，确定分配到应用程序的用户是否具有与其在应用程序中的角色相对应的许可证。 如果 Azure AD 基于角色来管理自动预配，则在 Azure AD 中分配的角色必须与在应用程序中拥有的许可证数量一致。 如果在应用程序中拥有的许可证数量不正确，则可能会导致在用户的预配/更新过程中出现错误。
 
 ## <a name="plan-your-sso-team"></a>规划 SSO 团队
 
 - **让合适的利益干系人参与** - 技术项目的失败通常是由于在影响、结果和责任方面存在不匹配的预期。 为了避免这些问题，请[确保让合适的利益干系人参与](../fundamentals/active-directory-deployment-plans.md)，并确保利益干系人了解其角色。
-- **规划通信** - 通信对于任何新服务的成功都至关重要。 主动与用户沟通他们的体验将如何变化、何时会变化以及在遇到问题时如何获取支持。 查看有关[最终用户将如何访问已启用 SSO 的应用程序](end-user-experiences.md)的选项，并根据你的选择编写通信内容。 
+- **规划通信** - 通信对于任何新服务的成功都至关重要。 主动与用户沟通他们的体验将如何变化、何时会变化以及在遇到问题时如何获取支持。 查看有关[最终用户将如何访问已启用 SSO 的应用程序](end-user-experiences.md)的选项，并根据你的选择编写通信内容。
 
 ## <a name="plan-your-sso-protocol"></a>规划 SSO 协议
 
@@ -87,10 +87,10 @@ Microsoft 支持在 Web 应用程序上捕获元数据以进行密码保管（�
 
 1. 与应用程序业务用户合作以记录以下内容：
    1. 组织中要使用应用程序的用户集
-   1. 应用程序中与用户集关联的现有凭据集 
+   1. 应用程序中与用户集关联的现有凭据集
 1. 对于用户集和凭据的每个组合，请根据你的需求在云中或本地创建安全组。
-1. 重置共享凭据。 将应用部署到 Azure AD 中以后，个人不需要共享帐户的密码。 由于 Azure AD 会存储密码，因此请考虑将其设置为很长且很复杂的密码。 
-1. 在应用程序支持的情况下配置密码的自动滚动更新。 这样，即使是进行了初始设置的管理员也不会知道共享帐户的密码。 
+1. 重置共享凭据。 将应用部署到 Azure AD 中以后，个人不需要共享帐户的密码。 由于 Azure AD 会存储密码，因此请考虑将其设置为很长且很复杂的密码。
+1. 在应用程序支持的情况下配置密码的自动滚动更新。 这样，即使是进行了初始设置的管理员也不会知道共享帐户的密码。
 
 ## <a name="plan-your-authentication-method"></a>规划身份验证方法
 
@@ -98,9 +98,9 @@ Microsoft 支持在 Web 应用程序上捕获元数据以进行密码保管（�
 
 若要选择身份验证方法，需要考虑时间、现有基础结构、复杂性和实现所选内容的成本。 这些因素对每个组织都不同，并可能随时间变化。 你应选择最符合你的特定方案的身份验证方法。 有关详细信息，请参阅[为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法](../hybrid/choose-ad-authn.md)。
 
-## <a name="plan-your-security-and-governance"></a>规划安全和治理 
+## <a name="plan-your-security-and-governance"></a>规划安全和治理
 
-由于随着 BYOD 设备和云应用程序的急剧增加，网络外围变得漏洞越来越多、效率日益低下，因此，标识成为新的安全关注与投资的中心点。 
+由于随着 BYOD 设备和云应用程序的急剧增加，网络外围变得漏洞越来越多、效率日益低下，因此，标识成为新的安全关注与投资的中心点。
 
 ### <a name="plan-access-reviews"></a>规划访问评审
 
@@ -116,7 +116,7 @@ Microsoft 支持在 Web 应用程序上捕获元数据以进行密码保管（�
 
 ### <a name="plan-auditing"></a>规划审核
 
-Azure AD 提供[包含技术和业务见解的报表](../reports-monitoring/overview-reports.md)。 
+Azure AD 提供[包含技术和业务见解的报表](../reports-monitoring/overview-reports.md)。
 
 安全报表和活动报表都可用。 安全报表会显示标记为有风险的用户和有风险的登录。活动报表会详述登录活动并提供所有登录的审核线索，帮助你了解用户在组织中的行为。 你可以使用报表来管理风险、提高工作效率和监视符合性。
 
@@ -167,9 +167,9 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 
 ### <a name="certificate-requirements"></a>证书要求
 
-应用程序的证书必须是最新的，否则会存在用户无法访问应用程序的风险。 大多数 SaaS 应用程序证书的有效期是 36 个月。 你可以在应用程序边栏选项卡中更改该证书持续时间。 请确保记录过期情况并了解如何管理证书续订。 
+应用程序的证书必须是最新的，否则会存在用户无法访问应用程序的风险。 大多数 SaaS 应用程序证书的有效期是 36 个月。 你可以在应用程序边栏选项卡中更改该证书持续时间。 请确保记录过期情况并了解如何管理证书续订。
 
-有两种管理证书的方法。 
+有两种管理证书的方法。
 
 - **证书自动滚动更新** - Microsoft 支持 [Azure AD 中的签名密钥滚动更新](../develop/active-directory-signing-key-rollover.md)。 虽然这是用于管理证书的首选方法，但并非所有 ISV 都支持此方案。
 
@@ -184,7 +184,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 - **标识测试用户**
 
    与应用所有者联系，要求他们在应用程序中创建至少三个测试用户。 确保要用作主标识符的信息已正确填充并且与 Azure AD 中提供的属性匹配。 大多数情况下，这将映射到基于 SAML 的应用程序的“NameID”。 对于 JWT 令牌，它是“preferred_username”。
-   
+
    在 Azure AD 中创建用户（可以将其作为基于云的用户手动创建，或者使用 Azure AD Connect 同步引擎从本地同步该用户）。 请确保信息与要发送到应用程序的声明匹配。
 
 - **配置 SSO**
@@ -259,7 +259,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 
 应用程序中的身份验证方法的可用性将决定你的最佳策略。 请始终确保你有详细的文档，以便应用所有者确切地了解如何在部署遇到问题时回到原始登录配置状态。
 
-- **如果应用支持多个标识提供者**（例如，LDAP 和 AD FS 和 Ping），请不要在推出期间删除现有的 SSO 配置， 而应在迁移过程中禁用它，因为你以后可能需要将它切换回来。 
+- **如果应用支持多个标识提供者**（例如，LDAP 和 AD FS 和 Ping），请不要在推出期间删除现有的 SSO 配置， 而应在迁移过程中禁用它，因为你以后可能需要将它切换回来。
 
 - **如果应用不支持多个 IDP**，但允许用户使用基于表单的身份验证（用户名/密码）登录，请确保在新 SSO 配置推出失败的情况下，用户可以转而使用此方法。
 
@@ -293,10 +293,9 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 
 #### <a name="sso-issues-for-applications"></a>应用程序的 SSO 问题
 
-- [应用程序的密码 SSO 问题](./troubleshoot-password-based-sso.md) 
+- [应用程序的密码 SSO 问题](./troubleshoot-password-based-sso.md)
 
-- [登录到基于 SAML 的单一登录配置的应用时出现问题](/troubleshoot/azure/active-directory/troubleshoot-sign-in-saml-based-apps)   
-
+- [登录到基于 SAML 的单一登录配置的应用时出现问题](/troubleshoot/azure/active-directory/troubleshoot-sign-in-saml-based-apps)
 
 ## <a name="next-steps"></a>后续步骤
 

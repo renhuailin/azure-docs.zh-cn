@@ -2,7 +2,6 @@
 title: Azure IoT 中心与 Azure 事件中心的比较 | Microsoft Docs
 description: 比较 IoT 中心与事件中心这两个 Azure服务，重点介绍功能差异和用例。 比较内容包括支持的协议、设备管理、监视和文件上传。
 author: kgremban
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
@@ -13,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: 56bb179c50862f09f1b789c359db97976017bbb5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8cd46416690ba5482686f6f4b9caa1f4424d3c20
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92142757"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725308"
 ---
 # <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>将 IoT 设备连接到 Azure：IoT 中心和事件中心
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: f42cb2f3f00c75dea262b7151bef5efad4e9aa92
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: a5fe3157d419b199f1e83f44485e507812c0b80c
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569581"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113434791"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>适用于 Azure 虚拟机上的 SQL Server 的业务连续性和 HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -100,7 +100,7 @@ Azure 支持以下 SQL Server 技术以实现业务连续性：
 
 有关详细信息，请参阅[产品许可条款](https://www.microsoft.com/licensing/product-licensing/products)。 
 
-要启用此权益，请转到 [SQL Server 虚拟机资源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)。 在“设置”下选择“配置”，然后在“SQL Server 许可证”下选择“灾难恢复”   。 选中复选框以确认此 SQL Server VM 将用作被动副本，然后选择“应用”以保存设置。 
+要启用此权益，请转到 [SQL Server 虚拟机资源](manage-sql-vm-portal.md#access-the-resource)。 在“设置”下选择“配置”，然后在“SQL Server 许可证”下选择“灾难恢复”   。 选中复选框以确认此 SQL Server VM 将用作被动副本，然后选择“应用”以保存设置。 
 
 ![在 Azure 中配置灾难恢复副本](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/dr-replica-in-portal.png)
 

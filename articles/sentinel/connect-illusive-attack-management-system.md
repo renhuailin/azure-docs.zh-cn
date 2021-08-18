@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: ea7953be25473357f7ed572fa8b76076edc6f75a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2c4f48f77442d888be006c878a7e55d9a2b4fd2
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87038110"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254047"
 ---
 # <a name="connect-your-illusive-attack-management-system-to-azure-sentinel"></a>将 Illusive Attack Management System 连接到 Azure Sentinel。
 
 > [!IMPORTANT]
 > Azure Sentinel 中的 Illusive Attack Management System 数据连接器目前为公共预览版。
 > 此功能不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 本文介绍如何将 [Illusive Attack Management System](https://www.illusivenetworks.com/technology/platform/attack-detection-system) 连接到 Azure Sentinel。 借助 Illusive Attack Management System 数据连接器，可以将 Illusive 的攻击面分析数据和事件日志与 Azure Sentinel 共享，并在专用仪表板中查看此信息，从而在 ASM 仪表板中深入了解组织的攻击面风险，并在 ADS 仪表板中跟踪组织网络中未经授权的横向移动。
 
@@ -54,6 +56,6 @@ ms.locfileid: "87038110"
 
 本文档介绍了如何将 Illusive Attack Management System 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。

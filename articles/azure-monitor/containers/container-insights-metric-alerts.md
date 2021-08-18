@@ -3,12 +3,12 @@ title: 来自容器见解的指标警报
 description: 本文介绍容器见解提供的建议指标警报（公共预览版）。
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: f19959c76d31422a0bdf898a6fa41e6b168e2e61
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8280b567adb36511c4eb58d7ec72b775d36feb6a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101728886"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734354"
 ---
 # <a name="recommended-metric-alerts-preview-from-container-insights"></a>来自容器见解的建议指标警报（预览版）
 
@@ -82,7 +82,7 @@ ms.locfileid: "101728886"
 
 除非另有指定，否则作为此功能的一部分，将启用并收集以下指标：
 
-|指标命名空间 |指标 |描述 |
+|指标命名空间 |指标 |说明 |
 |---------|----|------------|
 |Insights.container/nodes |cpuUsageMillicores |按主机列出的 CPU 使用量，以毫核为单位。|
 |Insights.container/nodes |cpuUsagePercentage |按节点列出的 CPU 使用率百分比。|
@@ -248,6 +248,6 @@ ms.locfileid: "101728886"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅[日志查询示例](container-insights-log-search.md#search-logs-to-analyze-data)，以查看预定义的查询，以及用于发警报、可视化或分析群集的评估或自定义示例。
+- 请参阅[日志查询示例](container-insights-log-query.md)，以查看预定义的查询，以及用于发警报、可视化或分析群集的评估或自定义示例。
 
 - 若要详细了解 Azure Monitor 以及如何监视 Kubernetes 群集的其他方面，请参阅[查看 Kubernetes 群集性能](container-insights-analyze.md)。

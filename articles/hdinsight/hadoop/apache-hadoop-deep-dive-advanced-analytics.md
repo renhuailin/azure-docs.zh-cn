@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 0780f66c981f0cebebc1ab327d783954753db965
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: c0475ee0a97e3d9e3dd376d84028cedca3cfa70b
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104866720"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112676412"
 ---
 # <a name="deep-dive---advanced-analytics"></a>深入探讨 - 高级分析
 
@@ -52,7 +52,6 @@ HDInsight 提供可从大量结构化、非结构化和快速移动的数据中�
 HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
 * 机器学习和 Apache Spark
-* R 和 ML Services
 * Azure 机器学习和 Apache Hive
 * Apache Spark 和深度学习
 
@@ -65,10 +64,6 @@ HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 * [**MLlib**](https://spark.apache.org/docs/latest/ml-guide.html) - MLlib 包含构建在 Spark RDD 基础之上的原始 API。
 * [**SparkML**](https://spark.apache.org/docs/1.2.2/ml-guide.html) - SparkML 是一个较新的包，提供构建在 Spark DataFrames 基础之上的高级 API 用于构造机器学习管道。
 * [**MMLSpark**](https://github.com/Azure/mmlspark) - 适用于 Apache Spark 的 Microsoft 机器学习库 (MMLSpark) 旨在提升数据科学家在 Spark 上的生产力，它不仅可以提高试验成功率，而且还能利用前沿的机器学习技术，包括深度学习。 MMLSpark 库简化了在 PySpark 中构建模型的常见建模任务。
-
-### <a name="r-and-ml-services"></a>R 和 ML Services
-
-可以使用 HDInsight 随附的 [ML Services](../r-server/r-server-overview.md) 创建随时可与大型数据集和模型配合使用的 HDInsight 群集。 这项新功能为数据科学家和统计学家提供了通过 HDInsight 可按需缩放的熟悉 R 界面，并消除了群集设置和维护方面的开销。
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure 机器学习和 Apache Hive
 
@@ -115,12 +110,12 @@ HDInsight 提供多个适用于高级分析工作流的机器学习选项：
 
 Apache Hive 和 Azure 机器学习
 
-* [Apache Hive 和 Azure 机器学习端到端教程](../../machine-learning/team-data-science-process/hive-walkthrough.md)
-* [针对 1-TB 数据集使用 Azure HDInsight Hadoop 群集](../../machine-learning/team-data-science-process/hive-criteo-walkthrough.md)
+* [Apache Hive 和 Azure 机器学习端到端教程](/azure/architecture/data-science-process/hive-walkthrough)
+* [针对 1-TB 数据集使用 Azure HDInsight Hadoop 群集](/azure/architecture/data-science-process/hive-criteo-walkthrough)
 
 Apache Spark 和 MLLib
 
-* [在 Apache Spark on HDInsight 中使用机器学习](../../machine-learning/team-data-science-process/spark-overview.md)
+* [在 Apache Spark on HDInsight 中使用机器学习](/azure/architecture/data-science-process/spark-overview)
 * [Apache Spark 与机器学习：使用 HDInsight 中的 Apache Spark 来通过 HVAC 数据分析建筑物温度](../spark/apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark 与机器学习：使用 HDInsight 中的 Apache Spark 预测食品检验结果](../spark/apache-spark-machine-learning-mllib-ipython.md)
 

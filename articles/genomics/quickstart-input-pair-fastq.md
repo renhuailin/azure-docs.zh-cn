@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: 3806b165e5abb661e53c6a315650d025fd42e17f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 19c22f835f14fff880817c0452e6c0245b24be41
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "72248544"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113551877"
 ---
 # <a name="submit-a-workflow-using-fastq-file-inputs-in-microsoft-genomics"></a>使用 Microsoft 基因组学中的 FASTQ 文件输入提交工作流
 
@@ -82,4 +82,4 @@ output_storage_account_container: outputs
 提交 `config.txt` 文件时可以使用此调用：`msgen submit -f config.txt`
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了如何将一对 FASTQ 文件上传到 Azure 存储中，以及如何通过 `msgen` Python 客户端将工作流提交到 Microsoft 基因组学服务。 若要详细了解工作流提交以及其他可以与 Microsoft 基因组学服务配合使用的命令，请参阅[常见问题解答](frequently-asked-questions-genomics.md)。 
+本文介绍了如何将一对 FASTQ 文件上传到 Azure 存储中，以及如何通过 `msgen` Python 客户端将工作流提交到 Microsoft 基因组学服务。 若要详细了解工作流提交以及其他可以与 Microsoft 基因组学服务配合使用的命令，请参阅[常见问题解答](frequently-asked-questions-genomics.yml)。 

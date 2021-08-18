@@ -3,12 +3,12 @@ title: 更新委派
 description: 了解如何为以前加入到 Azure Lighthouse 的客户更新委托。
 ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: bc52790c5652f9571e3a63023314ff8e97fb7e99
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e8044732cd1cb544515bcfe5b2c0ac3b40bf0cfe
+ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965051"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114389248"
 ---
 # <a name="update-a-delegation"></a>更新委派
 
@@ -45,14 +45,14 @@ ms.locfileid: "111965051"
 
 :::image type="content" source="../media/update-delegation.jpg" alt-text="显示何时更改 mspOfferName 并删除前一委托的关系图。":::
 
-如果管理租户中的任何用户在原委托中被授予了[托管服务注册分配删除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)，则该用户可执行对该委托访问权限的删除。 如果管理租户中的任何用户都没有此角色，你可以要求客户[在 Azure 门户中删除产品/服务的访问权限](view-manage-service-providers.md#add-or-remove-service-provider-offers)。
+如果管理租户中的任何用户在原委托中被授予了[托管服务注册分配删除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)，则该用户可执行对该委托访问权限的删除。 如果管理租户中的任何用户都没有此角色，你可以要求客户[在 Azure 门户中删除产品/服务的访问权限](view-manage-service-providers.md#remove-service-provider-offers)。
 
 > [!TIP]
 > 如果已按上述步骤删除了前一委托，但仍无法部署新 ARM 模板，则可能需要[完全删除注册定义](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition)。 此操作可由客户租户中任何具有 `Microsoft.Authorization/roleAssignments/write` 权限的角色（如[所有者](../../role-based-access-control/built-in-roles.md#owner)）的用户来完成。  
 
 ## <a name="deploy-the-arm-template"></a>部署 ARM 模板
 
-你的客户可以采用与他们以前所用方式相同的方式来[部署更新的模板](onboard-customer.md#deploy-the-azure-resource-manager-templates)：在 Azure 门户中、通过使用 PowerShell，或者通过使用 Azure CLI。
+你的客户可以采用与他们以前所用方式相同的方式来[部署更新的模板](onboard-customer.md#deploy-the-azure-resource-manager-template)：在 Azure 门户中、通过使用 PowerShell，或者通过使用 Azure CLI。
 
 在完成了部署之后，请[确认该部署已成功](onboard-customer.md#confirm-successful-onboarding)。 然后，更新后的授权将会对客户已委托的订阅或资源组生效。
 

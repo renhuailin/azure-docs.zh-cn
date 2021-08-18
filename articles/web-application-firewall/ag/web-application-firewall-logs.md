@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: af7b46d0942b5d1bec1cbe77ec02eec7080597ba
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5cf40434740b1cc531ecf7959058e5c7260364ca
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110676942"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458978"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Azure Web 应用程序防火墙的资源日志
 
@@ -88,7 +88,7 @@ ms.locfileid: "110676942"
 
 只有按照上述步骤在每个应用程序网关实例上启用了访问日志，才会生成该日志。 数据存储在启用日志记录时指定的存储帐户中。 应用程序网关的每次访问均以 JSON 格式记录下来，如下面 v1 示例所示：
 
-|Value  |说明  |
+|值  |说明  |
 |---------|---------|
 |instanceId     | 处理请求的应用程序网关实例。        |
 |clientIP     | 请求的起始 IP。        |
@@ -132,7 +132,7 @@ ms.locfileid: "110676942"
 ```
 对于应用程序网关和 WAF v2，日志显示了一些详细信息：
 
-|Value  |说明  |
+|值  |说明  |
 |---------|---------|
 |instanceId     | 处理请求的应用程序网关实例。        |
 |clientIP     | 请求的起始 IP。        |
@@ -186,7 +186,7 @@ ms.locfileid: "110676942"
 只有在每个应用程序网关实例上启用了性能日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 每隔 1 分钟生成性能日志数据。 性能日志数据仅适用于 v1 SKU。 对于 v2 SKU，请对性能数据使用[指标](../../application-gateway/application-gateway-metrics.md)。 将记录以下数据：
 
 
-|Value  |说明  |
+|值  |说明  |
 |---------|---------|
 |instanceId     |  正在为其生成性能数据的应用程序网关实例。 对于多实例应用程序网关，一个实例对应于一行。        |
 |healthyHostCount     | 后端池中运行正常的主机数。        |
@@ -223,7 +223,7 @@ ms.locfileid: "110676942"
 只有按照上述步骤为每个应用程序网关启用了防火墙日志，才会生成该日志。 此日志还需要在应用程序网关上配置 Web 应用程序防火墙。 数据存储在启用日志记录时指定的存储帐户中。 将记录以下数据：
 
 
-|Value  |说明  |
+|值  |说明  |
 |---------|---------|
 |instanceId     | 为其生成了防火墙数据的应用程序网关实例。 对于多实例应用程序网关，一个实例对应于一行。         |
 |clientIp     |   请求的起始 IP。      |
@@ -301,7 +301,7 @@ ms.locfileid: "110676942"
 
 #### <a name="analyzing-access-logs-through-goaccess"></a>通过 GoAccess 分析访问日志
 
-我们发布了一个资源管理器模板，用于安装和运行应用程序网关访问日志的常用 [GoAccess](https://goaccess.io/) 日志分析器。 GoAccess 提供了宝贵的 HTTP 流量统计信息，例如唯一访问者、请求的文件、主机、操作系统、浏览器和 HTTP 状态代码等。 有关更多详细信息，请参阅 [GitHub 的资源管理器模板文件夹中的自述文件](https://aka.ms/appgwgoaccessreadme)。
+我们发布了一个资源管理器模板，用于安装和运行应用程序网关访问日志的常用 [GoAccess](https://goaccess.io/) 日志分析器。 GoAccess 提供了宝贵的 HTTP 流量统计信息，例如唯一访问者、请求的文件、主机、操作系统、浏览器和 HTTP 状态代码等。 有关更多详细信息，请参阅 [GitHub 的资源管理器模板文件夹中的自述文件](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/application-gateway-logviewer-goaccess)。
 
 ## <a name="next-steps"></a>后续步骤
 

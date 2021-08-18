@@ -11,24 +11,16 @@ ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 20df5fc3a4d7c392be62df2b7778854d1e2e1cba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95fe619ecb33e3b7e79c37b4cddb5950836b4cd5
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97109056"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113223709"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>将 Azure Active Directory B2C 的重定向 URL 设置为 b2clogin.com
 
 在 Azure Active Directory B2C (Azure AD B2C) 应用程序中设置用于注册和登录的标识提供者时，需要指定一个重定向 URL。 请不要再在应用程序和 API 中引用 login.microsoftonline.com 来对用户进行 Azure AD B2C 身份验证。 对于所有新应用程序，应使用 b2clogin.cn，并将现有应用程序从 login.microsoftonline.com 迁移到 b2clogin.com。
-
-## <a name="deprecation-of-loginmicrosoftonlinecom"></a>弃用 login.microsoftonline.com
-
-**2020 年 10 月更新：** 我们将为无法在最初宣布的弃用日期 2020 年 12 月 4 日实现弃用的租户延长宽限期。 在 2021 年 1 月 14 日或之后停用 login.microsoftonline.com。
-
-**背景**：我们最初于 2019 年 12 月 4 日[宣布](https://azure.microsoft.com/updates/b2c-deprecate-msol/)计划于 2020 年 12 月 4 日在 Azure AD B2C 中停用对 login.microsoftonline.com 的支持。 这为现有租户提供了一 (1) 年时间迁移到 b2clogin.com。 2019 年 12 月 4 日之后创建的新租户将不接受来自 login.microsoftonline.com 的请求。 b2clogin.com 终结点上的所有功能保持不变。
-
-弃用 login.microsoftonline.com 不会对 Azure Active Directory 租户造成影响。 该变更仅影响 Azure Active Directory B2C 租户。
 
 ## <a name="what-endpoints-does-this-apply-to"></a>所涉及的终结点
 转换为 b2clogin.com 仅适用于使用 Azure AD B2C 策略（用户流或自定义策略）对用户进行身份验证的身份验证终结点。 这些终结点的 `<policy-name>` 参数指定 Azure AD B2C 应使用的策略。 [详细了解 Azure AD B2C 策略](technical-overview.md#identity-experiences-user-flows-or-custom-policies)。 

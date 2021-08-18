@@ -3,12 +3,12 @@ title: 容器组的静态 IP 地址
 description: 在虚拟网络中创建容器组，并使用 Azure 应用程序网关向容器化 Web 应用公开静态前端 IP 地址
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: c0401c0b6ec4aae124ee1954762d22c16cacb994
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 46b04534a6beae5a2e102aa0167815da44ae21ed
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084216"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219255"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>公开容器组的静态 IP 地址
 
@@ -31,7 +31,7 @@ ms.locfileid: "110084216"
 
 如果需要，请创建一个 Azure 资源组。 例如：
 
-```azureci
+```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 

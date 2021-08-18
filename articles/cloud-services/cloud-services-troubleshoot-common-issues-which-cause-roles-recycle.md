@@ -4,16 +4,16 @@ description: 突然回收云服务角色可能会导致严重停机。 以下是
 ms.topic: troubleshooting
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: daf8bdb0e6729d5e95fdf0e6186f6511c39690f8
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: a489a43b3c81c96a297013d6ca04b8be009dc661
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108735886"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113090036"
 ---
 # <a name="common-issues-that-cause-azure-cloud-service-classic-roles-to-recycle"></a>导致 Azure 云服务（经典）角色回收的常见问题
 

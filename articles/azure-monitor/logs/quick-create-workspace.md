@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/18/2021
-ms.openlocfilehash: 7d3ffd754959c59fb34f326473247d836871ea75
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 6edadff4d785f0db87e4e6363889719d50e988da
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106813"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741273"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>在 Azure 门户中创建 Log Analytics 工作区
 使用“Log Analytics 工作区”菜单通过 Azure 门户创建 Log Analytics 工作区。 Log Analytics 工作区是适用于 Azure Monitor 日志数据的唯一环境。 每个工作区都有其自己的数据存储库和配置，并且数据源和解决方案均配置为将其数据存储在特定工作区中。 如果打算从以下源收集数据，则需要 Log Analytics 工作区：
@@ -19,12 +19,6 @@ ms.locfileid: "107106813"
 * 受 System Center Operations Manager 监视的本地计算机
 * Configuration Manager 中的设备集合 
 * Azure 存储中的诊断或日志数据
-
-对于其他源，如环境中的 Azure VM 和 Windows VM 或 Linux VM，请参阅以下主题：
-
-*  [从 Azure 虚拟机收集数据](../vm/quick-collect-azurevm.md) 
-*  [从混合 Linux 计算机收集数据](../vm/quick-collect-linux-computer.md)
-*  [从混合 Windows 计算机收集数据](../vm/quick-collect-windows-computer.md)
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

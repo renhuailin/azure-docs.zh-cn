@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 02/05/2021
-ms.openlocfilehash: e1868794f7e47ccce3efa36b7954a1a2a704e8d6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 57392991be00d8e34a378309cf8a0f124e988236
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739018"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112460551"
 ---
 # <a name="how-to-create-and-manage-files-in-your-workspace"></a>如何在工作区中创建和管理文件
 
@@ -23,7 +23,7 @@ ms.locfileid: "108739018"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
 ## <a name="create-files"></a><a name="create"></a> 创建文件

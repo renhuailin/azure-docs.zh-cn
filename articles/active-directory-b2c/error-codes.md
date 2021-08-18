@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/02/2020
+ms.date: 06/16/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f6ae806b7666d83652e6b82bac16d89f2f9ce7aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c24bcf45b2440aada43af62035f0b988128c8f8
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92215427"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112284538"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>错误代码：Azure Active Directory B2C
 
@@ -144,6 +144,7 @@ Azure Active Directory B2C 服务可能返回以下错误。
 | `AADB2C90284` | 标识符为“{0}”的应用程序尚未获授权，无法用于本地帐户。 |
 | `AADB2C90285` | 找不到标识为“{0}”的应用程序。 |
 | `AADB2C90288` | 在 TechnicalProfile“{1}”中引用了 ID“{0}”并用于租户“{2}”的刷新令牌兑换的 UserJourney 不存在于策略“{3}”或其任何基本策略中。 |
+| `AADB2C90287` | 请求包含的重定向 URI“{0}”无效。|
 | `AADB2C90289` | 连接到标识提供者时遇到错误。 请稍后再试。 |
 | `AADB2C90296` | 应用程序配置错误。 请与你尝试访问的站点的管理员联系。 |
 | `AADB2C99005` | 请求包含无效的范围参数，此范围参数包含非法字符“{0}”。 |

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/22/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5abe1755e22ac20e210aece956056ea647393dc1
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: d3fa9b89cb1fa7b0f7fa33025f908ae8ba5af7a8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107896236"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734551"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中配置 Arkose Labs
 
@@ -157,7 +157,7 @@ Arkose Labs 集成包括以下组件：
 
 此示例使用 [HTTP 基本身份验证](https://tools.ietf.org/html/rfc7617)来保护 Web API 终结点。
 
-用户名和密码以环境变量的形式存储，而不是存储库的一部分。 有关详细信息，请参阅 [local.settings.json](../azure-functions/functions-run-local.md?tabs=macos%2ccsharp%2cbash#local-settings-file) 文件。
+用户名和密码以环境变量的形式存储，而不是存储库的一部分。 有关详细信息，请参阅 [local.settings.json](../azure-functions/functions-develop-local.md#local-settings-file) 文件。
 
 1. 在根文件夹中创建 local.settings.json 文件
 

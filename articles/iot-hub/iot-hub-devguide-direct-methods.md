@@ -1,23 +1,23 @@
 ---
 title: 了解 Azure IoT 中心直接方法 | Microsoft Docs
 description: 开发人员指南 - 使用直接方法从服务应用调用设备上的代码。
-author: philmea
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.author: philmea
+ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: b75e859fc1237bc88bee464cef423b7289810fa8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b9b0a86b86ae1e2253da2349bb9e1c3523f5798
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92147800"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862216"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
 
@@ -228,5 +228,5 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 若要尝试本文中介绍的一些概念，可以根据兴趣学习以下 IoT 中心教程：
 
-* [使用直接方法](quickstart-control-device-node.md)
+* [使用直接方法](quickstart-control-device.md)
 * [使用适用于 VS Code 的 Azure IoT 工具进行设备管理](iot-hub-device-management-iot-toolkit.md)

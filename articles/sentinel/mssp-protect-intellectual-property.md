@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/12/2021
 ms.author: bagol
-ms.openlocfilehash: b6ada209d556ae981360661cea4db71219dbba37
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: da901a0beb5a90981293b4cae1f620a0668c7e0e
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124520"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179375"
 ---
 # <a name="protecting-mssp-intellectual-property-in-azure-sentinel"></a>在 Azure Sentinel 中保护 MSSP 知识产权
 
@@ -161,5 +161,5 @@ workspace('<customer-workspace>').SecurityEvent
 - [适用于 MSSP 的 Azure Sentinel 技术性 Playbook](https://cloudpartners.transform.microsoft.com/download?assetname=assets/Azure-Sentinel-Technical-Playbook-for-MSSPs.pdf&download=1)
 - [作为 MSSP 在 Azure Sentinel 中管理多个租户](multiple-tenants-service-providers.md)
 - [跨工作区和租户扩展 Azure Sentinel](extend-sentinel-across-workspaces-tenants.md)
-- [教程：可视化和监视数据](tutorial-monitor-your-data.md)
+- [可视化和监视数据](monitor-your-data.md)
 - [教程：在 Azure Sentinel 中设置自动威胁响应](tutorial-respond-threats-playbook.md)

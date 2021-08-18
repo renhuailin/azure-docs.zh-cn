@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/10/2020
-ms.openlocfilehash: 8233cc714d977083f4d55716d35c0b7094a069ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/24/2021
+ms.openlocfilehash: 64c1a42147a55423336c9994246f08046f44adf5
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94557603"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112895645"
 ---
 # <a name="firmware-security"></a>固件安全性
 本文介绍了 Microsoft 如何保护云硬件生态系统和供应链。
@@ -50,6 +50,7 @@ Azure 的云硬件提供商和供应商还必须遵守 Microsoft 制定的供应
 ## <a name="next-steps"></a>后续步骤
 若要详细了解为提高平台完整性和安全性而做的工作，请参阅：
 
+- [平台代码完整性](code-integrity.md)
 - [安全启动](secure-boot.md)
 - [测量启动和主机证明](measured-boot-host-attestation.md)
 - [Cerberus 项目](project-cerberus.md)

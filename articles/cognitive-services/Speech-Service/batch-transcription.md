@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/23/2020
+ms.date: 06/17/2021
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e48fead4d4364fd84f178388dbfb9158296e687b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8b201b3717d3ba82882131d49add020a8e6b2a9
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98659965"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015517"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批量听录
 
@@ -37,7 +37,8 @@ ms.locfileid: "98659965"
 你可以查看和测试详细的 API，它以 [Swagger 文档](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)的形式提供。
 
 批量听录作业是按“尽力而为”的原则安排的。
-你无法估计作业何时将变为运行状态，但在正常系统负载下，它应该在几分钟内发生。 进入运行状态后，听录速度比音频运行时播放速度更快。
+你无法估计作业何时将变为运行状态，但在正常系统负载下，它应该在几分钟内发生。
+进入运行状态后，听录速度比音频运行时播放速度更快。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -49,7 +50,7 @@ ms.locfileid: "98659965"
 如果计划自定义模型，请按照[声音自定义](./how-to-custom-speech-train-model.md)和[语言自定义](./how-to-custom-speech-train-model.md)中的步骤操作。 若要在批量听录中使用所创建的模型，需要提供其模型位置。 可以在检查模型的详细信息（`self` 属性）时检索模型位置。 批量听录服务不需要已部署的自定义终结点。
 
 >[!NOTE]
-> 作为 REST API 的一部分，批量听录具有一组[配额和限制](speech-services-quotas-and-limits.md#batch-transcription)，建议你查看它们。 为了充分利用批处理听录功能来有效地听录大量音频文件，建议你始终根据每个请求发送多个文件，或指向包含要听录的音频文件的 Blob 存储容器。 该服务会以并发方式听录文件，减少周转时间。 可以直截了当地在单个请求中使用多个文件 - 请参阅[配置](#configuration)部分。 
+> 作为 REST API 的一部分，批量听录具有一组[配额和限制](speech-services-quotas-and-limits.md#batch-transcription)，建议你查看它们。 为了充分利用批处理听录功能来有效地听录大量音频文件，建议你始终根据每个请求发送多个文件，或指向包含要听录的音频文件的 Blob 存储容器。 该服务会以并发方式听录文件，减少周转时间。 可以直截了当地在单个请求中使用多个文件 - 请参阅[配置](#configuration)部分。
 
 ## <a name="batch-transcription-api"></a>批量听录 API
 
@@ -66,7 +67,7 @@ ms.locfileid: "98659965"
 
 ### <a name="configuration"></a>配置
 
-配置参数以 JSON 形式提供。 
+配置参数以 JSON 形式提供。
 
 **听录一个或多个单独的文件。** 如果要听录的文件不止一个，建议在一个请求中发送多个文件。 下面的示例使用三个文件：
 
@@ -187,7 +188,8 @@ ms.locfileid: "98659965"
 ## <a name="batch-transcription-result"></a>批量听录结果
 
 对于每个音频输入，都将创建一个听录结果文件。
-[获取听录文件](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles)操作可返回此听录的结果文件列表。 若要查找特定输入文件的听录文件，请使用 `kind` == `Transcription` 和 `name` == `{originalInputName.suffix}.json` 来筛选所有返回的文件。
+[获取听录文件](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles)操作可返回此听录的结果文件列表。
+若要查找特定输入文件的听录文件，请使用 `kind` == `Transcription` 和 `name` == `{originalInputName.suffix}.json` 来筛选所有返回的文件。
 
 每个听录结果文件都采用这种格式：
 
@@ -208,10 +210,10 @@ ms.locfileid: "98659965"
   ],
   "recognizedPhrases": [                // results for each phrase and each channel individually
     {
-      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"          
+      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"
       "speaker": 1,                     // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
       "channel": 0,                     // channel number of the result
-      "offset": "PT0.07S",              // offset in audio of this phrase, ISO 8601 encoded duration 
+      "offset": "PT0.07S",              // offset in audio of this phrase, ISO 8601 encoded duration
       "duration": "PT1.59S",            // audio duration of this phrase, ISO 8601 encoded duration
       "offsetInTicks": 700000.0,        // offset in audio of this phrase in ticks (1 tick is 100 nanoseconds)
       "durationInTicks": 15900000.0,    // audio duration of this phrase in ticks (1 tick is 100 nanoseconds)
@@ -320,13 +322,16 @@ ms.locfileid: "98659965"
 批量听录服务可以处理大量的已提交听录内容。 可以通过[获取听录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)查询听录的状态。
 检索结果后，请定期从服务中调用[删除听录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)。 或者设置 `timeToLive` 属性，以确保最终删除结果。
 
+> [!TIP]
+> 可以使用 [Ingestion Client](ingestion-client.md) 工具和生成的解决方案处理大量音频。
+
 ## <a name="sample-code"></a>代码示例
 
 `samples/batch` 子目录内的 [GitHub 示例存储库](https://aka.ms/csspeech/samples)中提供了完整示例。
 
 如果使用的是自定义模型，请使用订阅信息、服务区域、指向要听录的音频文件的 URI 以及模型位置来更新示例代码。
 
-[!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#transcriptiondefinition)]
+[!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/batchclient/program.cs#transcriptiondefinition)]
 
 示例代码设置客户端并提交听录请求。 然后，它会轮询状态信息并输出关于听录进度的详细信息。
 

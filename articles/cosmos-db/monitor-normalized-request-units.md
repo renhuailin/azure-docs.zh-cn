@@ -3,15 +3,15 @@ title: 监视 Azure Cosmos 容器或帐户的规范化 RU/秒
 description: 了解如何在 Azure Cosmos DB 中监视某个操作的规范化请求单位使用量。 Azure Cosmos DB 帐户的所有者可以了解哪些操作消耗了较多的请求单位。
 ms.service: cosmos-db
 ms.topic: how-to
-author: kanshiG
-ms.author: govindk
+ms.author: esarroyo
+author: StefArroyo
 ms.date: 01/07/2021
-ms.openlocfilehash: ec82532b54e7834b62fcc03d3ee7de1345a0f546
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d3fe29f94cf874d7ede2b5d7f85199c2d9df65f2
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98027762"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113359652"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>如何监视 Azure Cosmos 容器或帐户的规范化 RU/秒
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

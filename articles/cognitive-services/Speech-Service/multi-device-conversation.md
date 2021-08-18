@@ -3,19 +3,19 @@ title: 多设备对话（预览版）- 语音服务
 titleSuffix: Azure Cognitive Services
 description: 使用多设备对话可以轻松地在多个客户端之间创建语音或文本对话，并协调在它们之间发送的消息。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.author: trbye
-ms.openlocfilehash: 7b38bc390b28788003c2de757f45e8ecdfd5c89a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: lajanuar
+ms.openlocfilehash: 02c5ea7f64ecbeeb4682f327671c53f2a8def2c5
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98932426"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122070269"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>什么是多设备对话（预览版）？
 
@@ -37,7 +37,7 @@ ms.locfileid: "98932426"
 ## <a name="key-features"></a>主要功能
 
 - **实时听录** – 每个人都将收到对话脚本，因此，他们可以实时跟进文本，或保存该脚本供以后使用。
-- **实时翻译** – 借助 70 多种[支持用于文本翻译的语言](language-support.md#text-languages)，用户可将对话翻译成其首选语言。
+- **实时翻译** – 借助 70 多种 [支持用于文本翻译的语言](language-support.md#text-languages)，用户可将对话翻译成其首选语言。
 - **可读脚本** – 听录内容和翻译包含标点和断句符号，易于用户跟进。
 - **语音或文本输入** – 根据为参与者所选语言启用的语言支持功能，每个用户可以在自己的设备上讲话或键入内容。 请参阅[语言支持](language-support.md#speech-to-text)。
 - **消息中继** - 多设备对话服务会将一个客户端发送的消息以其他客户端选择的语言分发到所有其他客户端。

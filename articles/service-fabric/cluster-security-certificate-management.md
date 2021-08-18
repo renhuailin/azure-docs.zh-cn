@@ -4,12 +4,12 @@ description: 了解如何在使用 X.509 证书保护的 Service Fabric 群集�
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: 01083cae37f10128eb5c59a993b956331663eb8f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 2674e0e01432fdd45ae01632c69ada66222247f6
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956795"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114293262"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric 群集中的证书管理
 
@@ -90,10 +90,10 @@ Service Fabric 自身将承担以下职责：
 ### <a name="certificate-provisioning"></a>证书预配
 我们提到过“预配代理”，这是一个实体，用于从保管库检索证书（包括其私钥），并将其安装在群集的每个主机上。 （请回想一下，Service Fabric 不预配证书。）在我们的上下文中，群集会托管在一系列 Azure VM 和/或虚拟机规模集上。 在 Azure 中，可以使用以下机制将证书从保管库预配到 VM/VMSS - 如上所述，假设预配代理以前已被保管库所有者授予保管库的“获取”权限： 
   - 即席：操作员从保管库中检索证书（以 pfx/PKCS #12 或 pem 的形式），并将其安装在每个节点上
-  - 在部署过程中作为虚拟机规模集“机密”：计算服务代表操作员使用第一方标识从一个启用了模板部署的保管库检索证书，然后将其安装在虚拟机规模集的每个节点上（[像这样](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#certificates)）；请注意，这只允许预配进行了版本控制的机密
+  - 在部署过程中作为虚拟机规模集“机密”：计算服务代表操作员使用第一方标识从一个启用了模板部署的保管库检索证书，然后将其安装在虚拟机规模集的每个节点上（[像这样](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#certificates)）；请注意，这只允许预配进行了版本控制的机密
   - 使用 [Key Vault VM 扩展](../virtual-machines/extensions/key-vault-windows.md)；这样可以使用无版本声明来预配证书，并可定期刷新观察到的证书。 在这种情况下，VM/VMSS 应该有一个[托管标识](../virtual-machines/security-policy.md#managed-identities-for-azure-resources)，该标识已被授予对观察到的证书所在的保管库的访问权限。
 
-出于多种原因（包括从安全性到可用性在内的各种原因），不建议使用即席机制，我们在这里不对其进行进一步的讨论。有关详细信息，请参阅[虚拟机规模集中的证书](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml#certificates)。
+出于多种原因（包括从安全性到可用性在内的各种原因），不建议使用即席机制，我们在这里不对其进行进一步的讨论。有关详细信息，请参阅[虚拟机规模集中的证书](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#certificates)。
 
 基于 VMSS/计算的预配具有安全性和可用性方面的优势，但也存在限制。 根据设计，它要求将证书声明为进行版本控制的机密，因此仅适用于通过指纹声明的证书所保护的群集。 与之相反，基于 Key Vault VM 扩展的预配会始终安装每个观察到的证书的最新版本，因此仅适用于通过使用者公用名称声明的证书所保护的群集。 需要强调的是，请不要对按实例（即按指纹）声明的证书使用自动刷新预配机制（例如 KVVM 扩展）- 失去可用性的风险很大。
 

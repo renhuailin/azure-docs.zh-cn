@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 04/08/2021
-ms.openlocfilehash: 60dca43f95b190791c8fb593042ed612340a3af5
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 37c7d94bfb645e444b4fb937823dcb8d56bcb9c7
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107874542"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112457726"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure 机器学习的 Git 集成
 
@@ -153,7 +153,7 @@ SSH 将在连接到未知主机时显示此指纹，以防止[中间人攻击](/
 
 ## <a name="view-the-logged-information"></a>查看记录的信息
 
-Git 信息存储在训练运行的属性中。 可以使用 Azure 门户、Python SDK 和 CLI 查看此信息。 
+Git 信息存储在训练运行的属性中。 可以使用 Azure 门户、Python SDK 和 Azure CLI 查看此信息。 
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -189,7 +189,7 @@ Git 信息存储在训练运行的属性中。 可以使用 Azure 门户、Pytho
 run.properties['azureml.git.commit']
 ```
 
-### <a name="cli"></a>CLI
+### <a name="azure-cli"></a>Azure CLI
 
 `az ml run` CLI命令可用于从运行中检索属性。 例如，以下命令返回名为 `train-on-amlcompute` 的试验中最后一次运行的属性：
 
@@ -197,7 +197,7 @@ run.properties['azureml.git.commit']
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-有关详细信息，请参阅 [az ml run](/cli/azure/ml/run) 参考文档。
+有关详细信息，请参阅 [az ml run](/cli/azure/ml(v1)/run) 参考文档。
 
 ## <a name="next-steps"></a>后续步骤
 

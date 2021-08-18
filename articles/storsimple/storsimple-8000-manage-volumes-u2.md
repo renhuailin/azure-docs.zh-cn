@@ -4,14 +4,14 @@ description: 介绍了如何添加、修改、监视和删除 StorSimple 卷，�
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
-ms.date: 12/09/2017
+ms.date: 08/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 3d649b54b544c120198963f8094764e9590e20b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5653fdcaa37b1adb728a23454317c6088b9efbc7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100547496"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750640"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>使用 StorSimple 设备管理器服务管理卷（Update 3 或更高版本）
 
@@ -38,7 +38,7 @@ StorSimple 卷可以是：
 
 本地固定卷是完整预配的卷，因此，创建这种卷时，设备上必须有足够的空间。 可以在 StorSimple 8100 设备上预配大小高达 8 TB 的本地固定卷，在 8600 设备上预配大小高达 20 TB 的本地固定卷。 StorSimple 将设备上的剩余本地空间保留用于快照、元数据和数据处理。 可以将本地固定卷大小增加到可用的最大空间，但创建卷之后无法减少卷的大小。
 
-创建本地固定卷后，可用于创建分层卷的空间会减少。 反之亦然：如果已有分层卷，可用于创建本地固定卷的空间将低于上述最大限制。 有关本地卷的详细信息，请参阅 [frequently asked questions on locally pinned volumes](storsimple-8000-local-volume-faq.md)（本地固定卷的常见问题）。
+创建本地固定卷后，可用于创建分层卷的空间会减少。 反之亦然：如果已有分层卷，可用于创建本地固定卷的空间将低于上述最大限制。 有关本地卷的详细信息，请参阅 [frequently asked questions on locally pinned volumes](storsimple-8000-local-volume-faq.yml)（本地固定卷的常见问题）。
 
 ### <a name="tiered-volumes"></a>分层卷
 
@@ -315,7 +315,7 @@ StorSimple 卷可以是：
 2. 从卷的表格列表中选择该卷，单击右键调用上下文菜单。 选择“修改”  。
 3. 在“修改卷”边栏选项卡中，为“监视”选择“启用”或“禁用”，以启用或禁用监视。
 
-    ![禁用监视](./media/storsimple-8000-manage-volumes-u2/monitor-volume-0 1.png) 
+    ![禁用监视](./media/storsimple-8000-manage-volumes-u2/monitor-volume-01.png) 
 
 4. 单击“保存”，出现确认提示时，单击“是”。 Azure 门户会显示正在更新卷的通知；成功更新卷后，会显示成功消息。
 

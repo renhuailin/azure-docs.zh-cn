@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 5cc4678b082aa5a4a3f90518ff8fac448f414f1a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ec58e921940be71b0189bcba96596c18b1b8786b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92342240"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751494"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>适用于 Avere vFXT for Azure 的灾难恢复指南
 
@@ -117,7 +117,7 @@ Azure Blob 存储中保护数据的最佳做法包括：
 * 有关为 Avere vFXT for Azure 自定义设置的详细信息，请参阅[群集优化](avere-vfxt-tuning.md)。
 * 详细了解 Azure 中的灾难恢复，以及如何构建可复原的应用程序：
 
-  * [Azure 复原技术指南](/azure/architecture/framework/resiliency/overview)
+  * [Azure 复原技术指南](/azure/architecture/reliability/architect)
   * [发生区域范围的服务中断后进行恢复](/azure/architecture/resiliency/recovery-loss-azure-region)
   * [Azure 应用程序的灾难恢复和高可用性](/azure/architecture/framework/resiliency/backup-and-recovery)
   <!-- can't find these in the source tree to use relative links -->

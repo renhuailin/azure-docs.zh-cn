@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 450a089c6cc1c77ac26cb0aa339277d5c49b41c8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 215b9486af06c58cd1e7a6990bfc10ad43d4407f
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594778"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860978"
 ---
 # <a name="statistics-in-synapse-sql"></a>Synapse SQL 中的统计信息
 
@@ -205,7 +205,7 @@ CREATE STATISTICS col1_stats
 ```sql
 CREATE STATISTICS col1_stats
     ON dbo.table1 (col1)
-    WITH SAMPLE = 50 PERCENT;
+    WITH SAMPLE 50 PERCENT;
 ```
 
 #### <a name="create-single-column-statistics-on-only-some-of-the-rows"></a>只对某些行创建单列统计信息
@@ -233,7 +233,7 @@ CREATE STATISTICS stats_col1
 CREATE STATISTICS stats_col1
     ON table1 (col1)
     WHERE col1 > '2000101' AND col1 < '20001231'
-    WITH SAMPLE = 50 PERCENT;
+    WITH SAMPLE 50 PERCENT;
 ```
 
 有关完整参考，请参阅 [CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
@@ -251,7 +251,7 @@ CREATE STATISTICS stats_col1
 CREATE STATISTICS stats_2cols
     ON table1 (product_category, product_sub_category)
     WHERE product_category > '2000101' AND product_category < '20001231'
-    WITH SAMPLE = 50 PERCENT;
+    WITH SAMPLE 50 PERCENT;
 ```
 
 由于 *product\_category* 与 *product\_sub\_category* 之间存在关联，因此在同时访问这些列时，多列统计信息对象相当有用。
@@ -884,6 +884,6 @@ WHERE   st.[user_created] = 1
 
 ## <a name="next-steps"></a>后续步骤
 
-若要进一步改进专用 SQL 池的查询性能，请参阅[监视工作负载](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)和[适用于专用 SQL 池的最佳做法](best-practices-dedicated-sql-pool.md#maintain-statistics)。
+若要进一步改进专用 SQL 池的查询性能，请参阅[监视工作负载](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?context=/azure/synapse-analytics/context/context)和[适用于专用 SQL 池的最佳做法](best-practices-dedicated-sql-pool.md#maintain-statistics)。
 
 若要进一步改进无服务器 SQL 池的查询性能，请参阅[适用于无服务器 SQL 池的最佳做法](best-practices-serverless-sql-pool.md)

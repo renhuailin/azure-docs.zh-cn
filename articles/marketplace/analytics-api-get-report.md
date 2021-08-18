@@ -4,15 +4,16 @@ description: 使用此 API 可获取已在合作伙伴中心计划的分析报�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 3383af447f40ea984bce9cbc956f22ee6c5af200
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d9248559f785ffb3b63e1f3d275e33a205cb682f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102583444"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748362"
 ---
 # <a name="get-report-api"></a>获取报表 API
 

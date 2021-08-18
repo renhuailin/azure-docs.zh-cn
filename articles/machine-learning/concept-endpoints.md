@@ -9,13 +9,14 @@ ms.topic: conceptual
 ms.author: seramasu
 author: rsethur
 ms.reviewer: laobri
-ms.date: 05/25/2021
-ms.openlocfilehash: bc1983a16ba2ec85dc943e10d7b2220b0de1dc88
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.custom: devplatv2
+ms.date: 06/17/2021
+ms.openlocfilehash: 8ce9241e11bd9aa259c8b7a1bf3114be677a01bd
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408526"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447645"
 ---
 # <a name="what-are-azure-machine-learning-endpoints-preview"></a>什么是 Azure 机器学习终结点（预览版）？ 
 
@@ -28,7 +29,7 @@ ms.locfileid: "111408526"
 > * 终结点
 > * 部署
 > * 托管联机终结点
-> * AKS 联机终结点
+> * Azure Kubernetes 服务 (AKS) 联机终结点
 > * 批量推理终结点
 
 ## <a name="what-are-endpoints-and-deployments-preview"></a>什么是终结点和部署（预览版）？
@@ -37,7 +38,7 @@ ms.locfileid: "111408526"
 
 :::image type="content" source="media/concept-endpoints/endpoint-concept.png" alt-text="显示终结点如何将流量拆分到两个部署的示意图":::
 
-终结点是一个 HTTPS 终结点，客户端可以调用它来接收已训练模型的推理（评分）结果。 提供以下功能： 
+终结点是一个 HTTPS 终结点，客户端可以调用它来接收已训练模型的推理（评分）输出。 提供以下功能： 
 - 使用基于“密钥和令牌”的身份验证进行身份验证 
 - SSL 终止 
 - 部署之间的流量分配 
@@ -56,11 +57,11 @@ Azure 机器学习使用终结点和部署的概念实现不同类型的终结�
 ### <a name="multiple-developer-interfaces"></a>多个开发人员界面
 
 使用多个开发人员工具来创建和管理批处理终结点与联机终结点：
-- CLI
+- Azure CLI
 - ARM/REST API
 - Azure 机器学习工作室 Web 门户
 - Azure 门户（IT/管理员）
-- 使用 CLI 接口和 REST/ARM 接口支持 CI/CD MLOps 管道
+- 使用 Azure CLI 接口和 REST/ARM 接口支持 CI/CD MLOps 管道
 
 ## <a name="what-are-online-endpoints-preview"></a>什么是联机终结点（预览版）？
 
@@ -109,7 +110,7 @@ Azure 机器学习使用终结点和部署的概念实现不同类型的终结�
 
 |  | 托管联机终结点 | AKS 联机终结点 |
 |-|-|-|
-| 建议的用户 | 需要托管模型部署和增强式 MLOps 体验的用户 | 偏好 Azure Kubernetes 服务 (AKS) 并可管理基础结构要求的用户 |
+| 建议的用户 | 需要托管模型部署和增强式 MLOps 体验的用户 | 偏好 Azure Kubernetes 服务 (AKS) 并可自行管理基础结构要求的用户 |
 | **基础结构管理** | 托管计算预配、缩放、主机 OS 映像更新和安全强化 | 用户责任 |
 | **计算类型** | 托管 (AmlCompute) | AKS |
 | 现成的监视功能 | [Azure 监视](how-to-monitor-online-endpoints.md) <br> （包括延迟和吞吐量等关键指标） | 不支持 |
@@ -189,5 +190,7 @@ Azure 机器学习使用终结点和部署的概念实现不同类型的终结�
 - [如何使用 Azure CLI 部署托管联机终结点](how-to-deploy-managed-online-endpoints.md)
 - [如何使用 Azure CLI 部署批处理终结点](how-to-use-batch-endpoint.md)
 - [如何通过工作室使用托管联机终结点](how-to-use-managed-online-endpoint-studio.md)
+- [通过 REST 部署模型（预览版）](how-to-deploy-with-rest.md)
 - [如何监视托管联机终结点](how-to-monitor-online-endpoints.md)
 - [如何查看联机终结点成本](how-to-view-online-endpoints-costs.md)
+- [管理和增大 Azure 机器学习资源的配额](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)

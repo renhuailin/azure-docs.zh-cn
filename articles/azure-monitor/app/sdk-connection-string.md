@@ -7,12 +7,12 @@ ms.author: tilee
 ms.date: 01/17/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: af29de06c4b0f82d6c951d54935a93e77e723177
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 2b4a7ac88f92c830daecf943d6937946c4a89f82
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110191347"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297438"
 ---
 # <a name="connection-strings"></a>连接字符串
 
@@ -34,7 +34,7 @@ ms.locfileid: "110191347"
 
 - 防火墙例外或代理重定向 
 
-    如果需要监视 Intranet Web 服务器，我们的早期解决方案会要求客户将各个服务终结点添加到你的配置中。 有关详细信息，请参阅[此文](../faq.md#can-i-monitor-an-intranet-web-server)。 
+    如果需要监视 Intranet Web 服务器，我们的早期解决方案会要求客户将各个服务终结点添加到你的配置中。 有关详细信息，请参阅[此文](../faq.yml#can-i-monitor-an-intranet-web-server-)。 
     连接字符串只需进行单个设置，简化了此工作，因此是一种更好的选择。 简单的前缀后缀修正，允许自动填充所有终结点并将其重定向到正确的服务。 
 
 - 主权云或混合云环境
@@ -209,17 +209,22 @@ NetCore config.json：
 
 # <a name="java"></a>[Java](#tab/java)
 
+可以在 `applicationinsights.json` 配置文件中设置连接字符串：
 
-Java (v2.5.x) 显式设置：
-```java
-TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
+```json
+{
+  "connectionString": "InstrumentationKey=00000000-0000-0000-0000-000000000000"
+}
 ```
 
-ApplicationInsights.xml
+请参阅[连接字符串配置](./java-standalone-config.md#connection-string)，了解更多详细信息。
+
+对于 Application Insights Java 2.x，可以在 `ApplicationInsights.xml` 配置文件中设置连接字符串：
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
-    <ConnectionString>InstrumentationKey=00000000-0000-0000-0000-000000000000;</ConnectionString>
+    <ConnectionString>InstrumentationKey=00000000-0000-0000-0000-000000000000</ConnectionString>
 </ApplicationInsights>
 ```
 
@@ -290,7 +295,7 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 在运行时开始使用：
 
 * [Azure VM 和 Azure 虚拟机规模集的托管 IIS 应用](./azure-vm-vmss-apps.md)
-* [IIS 服务器](./monitor-performance-live-website-now.md)
+* [IIS 服务器](./status-monitor-v2-overview.md)
 * [Azure Web 应用](./azure-web-apps.md)
 
 在开发时开始使用：
@@ -300,4 +305,3 @@ tracer = Tracer(exporter=AzureExporter(connection_string='InstrumentationKey=000
 * [Java](./java-in-process-agent.md)
 * [Node.js](./nodejs.md)
 * [Python](./opencensus-python.md)
-

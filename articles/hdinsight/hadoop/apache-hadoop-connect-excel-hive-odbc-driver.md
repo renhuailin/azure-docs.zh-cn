@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: c7125e25c9716a9934c97f9f8f85666d264d5f89
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 10bc1d2841e7858697a60dfbd1d093f403617a59
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866941"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300054"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Azure HDInsight 中的 Apache Hadoop
 
-[!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
+[!INCLUDE [ODBC-JDBC-selector](../includes/hdinsight-selector-odbc-jdbc.md)]
 
 Microsoft 的大数据解决方案将 Microsoft 商业智能 (BI) 组件与已在 HDInsight 中部署的 Apache Hadoop 群集集成。 一个示例是能够将 Excel 连接到 Hadoop 群集的 Hive 数据仓库。 使用 Microsoft Hive 开放式数据库连接 (ODBC) 驱动程序进行连接。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 7dc8aac730fdf46cab47a3297b8c001cb0b8e314
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd316ce7a868f639cdfd80293d5d6189e2942f6f
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99226399"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988168"
 ---
 # <a name="test-vm-network-latency"></a>测试 VM 网络延迟
 
@@ -71,7 +71,7 @@ ms.locfileid: "99226399"
 
 ### <a name="get-latteexe-onto-the-vms"></a>将 latte.exe 加载到 VM
 
-下载[最新版本的 latte.exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)。
+下载[最新版本的 latte.exe](https://github.com/microsoft/latte/releases/download/v0/latte.exe)。
 
 考虑将 latte.exe 放在单独的文件夹中，例如 *c:\tools*。
 

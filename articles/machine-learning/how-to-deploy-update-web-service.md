@@ -10,12 +10,12 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.custom: deploy
-ms.openlocfilehash: 5a586d29fd25ee7332f11737345aef8209de8824
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: e95bc02cce2cc3ff736de44e9f7fb3d367c33e5c
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889333"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114296342"
 ---
 # <a name="update-a-deployed-web-service"></a>更新已部署的 Web 服务
 
@@ -86,14 +86,14 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 >
 > 若要更新服务以使用新的入口脚本或环境，请创建[推理配置文件](./reference-azure-machine-learning-cli.md#inference-configuration-schema)并使用 `ic` 参数指定它。
 
-有关详细信息，请参阅 [az ml 服务更新](/cli/azure/ml/service#az_ml_service_update)文档。
+有关详细信息，请参阅 [az ml 服务更新](/cli/azure/ml(v1)/computetarget/create#az_ml_service_update)文档。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [排查部署失败问题](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)
 * [创建客户端应用程序以使用 Web 服务](how-to-consume-web-service.md)
-* [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
+* [如何使用自定义 Docker 映像部署模型](./how-to-deploy-custom-container.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)

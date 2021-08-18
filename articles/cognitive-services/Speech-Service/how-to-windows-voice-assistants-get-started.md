@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: b50b98095cdfe0e6ec19c89b57887ebc4a0f6317
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1d9b5e861b35ade3cf391e2a0ace52722821a158
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101713042"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113650631"
 ---
 # <a name="getting-started-with-voice-assistants-on-windows"></a>Windows 上的语音助理入门
 
@@ -32,7 +32,7 @@ ms.locfileid: "101713042"
 
 ## <a name="obtain-resources-from-microsoft"></a>从 Microsoft 获取资源
 
-Windows 上完全自定义语音代理所需的某些资源需要 Microsoft 提供的资源。 [UWP 语音助理示例](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample)为初始开发和测试提供了这些资源的示例版本，因此初始开发不需要此部分。
+Windows 上完全自定义语音代理所需的某些资源需要 Microsoft 提供的资源。 [UWP 语音助理示例](windows-voice-assistants-faq.yml#the-uwp-voice-assistant-sample)为初始开发和测试提供了这些资源的示例版本，因此初始开发不需要此部分。
 
 - 关键字模型：语音激活需要 Microsoft 提供的关键字模型（形式为 .bin 文件）。 UWP 语音助理示例中提供的 .bin 文件针对关键字 Contoso 进行训练。
 - 受限访问功能令牌：由于 ConversationalAgent API 提供对麦克风音频的访问，因此它们由受限访问功能限制进行保护。 若要使用受限访问功能，需要从 Microsoft 获取连接到应用程序的包标识的受限访问功能令牌。
@@ -53,7 +53,7 @@ Windows 上完全自定义语音代理所需的某些资源需要 Microsoft 提�
 
 ## <a name="try-out-the-sample-app"></a>尝试示例应用
 
-通过语音服务订阅密钥和回显机器人的机器人 ID，你可以尝试 [UWP 语音助理示例](windows-voice-assistants-faq.md#the-uwp-voice-assistant-sample)。 按照自述文件中的说明运行应用并输入凭据。
+通过语音服务订阅密钥和回显机器人的机器人 ID，你可以尝试 [UWP 语音助理示例](windows-voice-assistants-faq.yml#the-uwp-voice-assistant-sample)。 按照自述文件中的说明运行应用并输入凭据。
 
 ## <a name="create-your-own-voice-assistant-for-windows"></a>为 Windows 创建自己的语音助理
 

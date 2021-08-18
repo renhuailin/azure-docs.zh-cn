@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 7d2a9c69108211b1342c553731c28785e1f2cc79
-ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
+ms.openlocfilehash: d8151ac8f0ae26bc3567ec3a2a533703b401a90f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111421789"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747155"
 ---
 # <a name="connect-dynamics-365-activity-logs-to-azure-sentinel"></a>将 Dynamics 365 活动日志连接到 Azure Sentinel
 
@@ -67,5 +67,5 @@ ms.locfileid: "111421789"
 
 ## <a name="next-steps"></a>后续步骤
 在本文档中，你已了解如何将 Dynamics 365 活动数据连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 使用[内置](tutorial-detect-threats-built-in.md)或[自定义](tutorial-detect-threats-custom.md)规则开始通过 Azure Sentinel 检测威胁。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 使用[内置](detect-threats-built-in.md)或[自定义](detect-threats-custom.md)规则开始通过 Azure Sentinel 检测威胁。

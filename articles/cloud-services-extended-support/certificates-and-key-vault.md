@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 4d771e77fcca05b090e5d47d70ae93ece8f79e3e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 83c455d6a8c952e8f4258dbb90d1d6726e8fcd65
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104865685"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447906"
 ---
 # <a name="use-certificates-with-azure-cloud-services-extended-support"></a>在 Azure 云服务（外延支持）中使用证书
 
@@ -55,5 +55,5 @@ Key Vault 用于存储与云服务（外延支持）关联的证书。 可通过
 
 ## <a name="next-steps"></a>后续步骤 
 - 查看云服务（外延支持）的[部署先决条件](deploy-prerequisite.md)。
-- 请参阅云服务（外延支持）的[常见问题解答](faq.md)。
+- 请参阅云服务（外延支持）的[常见问题解答](faq.yml)。
 - 使用 [Azure 门户](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[模板](deploy-template.md)或 [Visual Studio](deploy-visual-studio.md) 部署云服务（外延支持）。

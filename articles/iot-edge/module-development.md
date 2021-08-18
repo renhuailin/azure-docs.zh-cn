@@ -2,18 +2,17 @@
 title: 开发 Azure IoT Edge 模块 | Microsoft Docs
 description: 为 Azure IoT Edge 开发可与运行时和 IoT 中心通信的自定义模块
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6274d0f0265220877938775ab6efd72ff22b84e4
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: fafb9475d308863113fa943d4e52cf3c1b5652cd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031114"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728823"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>开发你自己的 IoT Edge 模块
 

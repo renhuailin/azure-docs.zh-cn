@@ -4,12 +4,12 @@ description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1560e4a0a5c413ca225ffde0ab6d24e2958c8e75
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 601982058a333f23cf5895351db7bc6475617256
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985394"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741384"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -96,7 +96,7 @@ Python 函数项目的建议文件夹结构如以下示例所示：
 ```
 主项目文件夹 (<project_root>) 可以包含以下文件：
 
-* *local.settings.json*：用于在本地运行时存储应用设置和连接字符串。 此文件不会被发布到 Azure。 若要了解详细信息，请参阅 [local.settings.file](functions-run-local.md#local-settings-file)。
+* *local.settings.json*：用于在本地运行时存储应用设置和连接字符串。 此文件不会被发布到 Azure。 若要了解详细信息，请参阅 [local.settings.file](functions-develop-local.md#local-settings-file)。
 * requirements.txt：包含在发布到 Azure 时系统安装的 Python 包列表。
 * *host.json*：包含在函数应用中影响所有函数的全局配置选项。 此文件会被发布到 Azure。 本地运行时，并非所有选项都受支持。 若要了解详细信息，请参阅 [host.json](functions-host-json.md)。
 * .vscode/：（可选）包含存储 VSCode 配置。 若要了解详细信息，请参阅 [VSCode 设置](https://code.visualstudio.com/docs/getstarted/settings)。
@@ -265,6 +265,51 @@ def main(req):
 
 若要详细了解日志记录，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
+### <a name="log-custom-telemetry"></a>记录自定义遥测数据
+
+默认情况下，Functions 将输出作为跟踪写入到 Application Insights。 为了加强控制，可以改用 [OpenCensus Python 扩展](https://github.com/census-ecosystem/opencensus-python-extensions-azure)将自定义遥测数据发送到 Application Insights 实例。 
+
+>[!NOTE]
+> 若要使用 OpenCensus Python 扩展，需要在 `local.settings.json` 和应用程序设置中将 `PYTHON_ENABLE_WORKER_EXTENSIONS` 设置为 `1` 来启用 [Python 扩展](#python-worker-extensions)
+>
+
+```
+// requirements.txt
+...
+opencensus-extension-azure-functions
+opencensus-ext-requests
+```
+
+```python
+import json
+import logging
+
+import requests
+from opencensus.extension.azure.functions import OpenCensusExtension
+from opencensus.trace import config_integration
+
+config_integration.trace_integrations(['requests'])
+
+OpenCensusExtension.configure()
+
+def main(req, context):
+    logging.info('Executing HttpTrigger with OpenCensus extension')
+
+    # You must use context.tracer to create spans
+    with context.tracer.span("parent"):
+        response = requests.get(url='http://example.com')
+
+    return json.dumps({
+        'method': req.method,
+        'response': response.status_code,
+        'ctx_func_name': context.function_name,
+        'ctx_func_dir': context.function_directory,
+        'ctx_invocation_id': context.invocation_id,
+        'ctx_trace_context_Traceparent': context.trace_context.Traceparent,
+        'ctx_trace_context_Tracestate': context.trace_context.Tracestate,
+    })
+```
+
 ## <a name="http-trigger-and-bindings"></a>HTTP 触发器和绑定
 
 HTTP 触发器在 function.json 文件中定义。 绑定的 `name` 必须与函数中的命名参数匹配。
@@ -361,7 +406,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info(f'My app setting value:{my_app_setting_value}')
 ```
 
-对于本地开发，应用程序设置[在 local.settings.json 文件中维护](functions-run-local.md#local-settings-file)。
+对于本地开发，应用程序设置[在 local.settings.json 文件中维护](functions-develop-local.md#local-settings-file)。
 
 ## <a name="python-version"></a>Python 版本
 
@@ -377,6 +422,62 @@ Azure Functions 支持以下 Python 版本：
 若要在 Azure 中创建函数应用时请求特定的 Python 版本，请使用 [`az functionapp create`](/cli/azure/functionapp#az_functionapp_create) 命令的 `--runtime-version` 选项。 函数运行时版本由 `--functions-version` 选项设置。 Python 版本在创建函数应用时设置，并且无法更改。
 
 在本地运行时，运行时使用可用的 Python 版本。
+
+### <a name="changing-python-version"></a>更改 Python 版本
+
+若要将 Python 函数应用设置为特定的语言版本，需要在站点配置的 `LinuxFxVersion` 字段中指定语言以及语言版本。例如，要将 Python 应用更改为使用 Python 3.8，需要将 `linuxFxVersion` 设置为 `python|3.8`。
+
+若要详细了解 Azure Functions 运行时支持策略，请参阅[本文](./language-support-policy.md)
+
+若要查看受支持的 Python 版本函数应用的完整列表，请参阅[本文](./supported-languages.md)
+
+
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli-linux)
+
+可以通过 Azure CLI 查看和设置 `linuxFxVersion`。  
+
+使用 Azure CLI，使用 [az functionapp config show](/cli/azure/functionapp/config) 命令查看当前 `linuxFxVersion`。
+
+```azurecli-interactive
+az functionapp config show --name <function_app> \
+--resource-group <my_resource_group>
+```
+
+在此代码中，用函数应用名称替代 `<function_app>`。 此外，还使用函数应用的资源组名称替代 `<my_resource_group>`。 
+
+在以下输出中，你会看到 `linuxFxVersion`，为了清晰起见，该输出已被截断：
+
+```output
+{
+  ...
+  "kind": null,
+  "limits": null,
+  "linuxFxVersion": <LINUX_FX_VERSION>,
+  "loadBalancing": "LeastRequests",
+  "localMySqlEnabled": false,
+  "location": "West US",
+  "logsDirectorySizeLimit": 35,
+   ...
+}
+```
+
+可以使用 [az functionapp config set](/cli/azure/functionapp/config) 命令更新函数应用中的 `linuxFxVersion` 设置。
+
+```azurecli-interactive
+az functionapp config set --name <FUNCTION_APP> \
+--resource-group <RESOURCE_GROUP> \
+--linux-fx-version <LINUX_FX_VERSION>
+```
+
+将 `<FUNCTION_APP>` 替换为你的函数应用的名称。 此外，还使用函数应用的资源组名称替代 `<RESOURCE_GROUP>`。 另外，将 `<LINUX_FX_VERSION>` 替换为要使用的 python 版本，前缀为 `python|`，例如 `python|3.9`
+
+可以通过在前面代码示例中选择“试一试”运行这个来自 [Azure Cloud Shell](../cloud-shell/overview.md) 的命令。 还可以在执行 [az login](/cli/azure/reference-index#az-login) 登录后使用 [Azure CLI 在本地](/cli/azure/install-azure-cli)执行此命令。
+
+在对站点配置进行更改后，函数应用会重启。
+
+--- 
+
 
 ## <a name="package-management"></a>包管理
 
@@ -646,7 +747,7 @@ getattr(azure.functions, '__version__', '< 1.2.1')
 1. 在项目的 requirements.txt 文件中添加扩展包。
 1. 将库安装到应用中。
 1. 添加应用程序设置 `PYTHON_ENABLE_WORKER_EXTENSIONS`：
-    + 本地：在 [local.settings.json 文件](functions-run-local.md?tabs=python#local-settings-file)的 `Values` 部分中添加 `"PYTHON_ENABLE_WORKER_EXTENSIONS": "1"`
+    + 本地：在 [local.settings.json 文件](functions-develop-local.md#local-settings-file)的 `Values` 部分中添加 `"PYTHON_ENABLE_WORKER_EXTENSIONS": "1"`
     + Azure：将 `PYTHON_ENABLE_WORKER_EXTENSIONS=1` 添加到[应用设置](functions-how-to-use-azure-function-app-settings.md#settings)。
 1. 将扩展模块导入到函数触发器中。 
 1. 配置扩展实例（如果需要）。 应在扩展文档中调出配置要求。 

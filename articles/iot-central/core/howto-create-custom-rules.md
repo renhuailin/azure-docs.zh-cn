@@ -1,20 +1,19 @@
 ---
 title: 通过自定义规则和通知扩展 Azure IoT Central | Microsoft Docs
 description: 解决方案开发人员将配置一个 IoT Central 应用程序，以便在设备停止发送遥测数据时发送电子邮件通知。 此解决方案使用 Azure 流分析、Azure Functions 和 SendGrid。
-author: philmea
-ms.author: philmea
+author: dominicbetts
+ms.author: dobett
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
-manager: philmea
-ms.openlocfilehash: 2eb776add1e4a53edc6f4f57983074af31d8f52d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 3d528ba1bf1e7ba0c13d5bcf8abb140365cbe7d6
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108750034"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861521"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用流分析、Azure Functions 和 SendGrid 通过自定义规则扩展 Azure IoT Central
 
@@ -40,11 +39,11 @@ ms.locfileid: "108750034"
 
 | 设置 | “值” |
 | ------- | ----- |
-| 定价计划 | 标准 |
+| 定价计划 | Standard |
 | 应用程序模板 | 店内分析 – 条件监视 |
 | 应用程序名称 | 接受默认设置，或选择自己的名称 |
 | URL | 接受默认设置，或选择自己的唯一 URL 前缀 |
-| 目录 | Azure Active Directory 租户 |
+| Directory | Azure Active Directory 租户 |
 | Azure 订阅 | Azure 订阅 |
 | 区域 | 离你最近的区域 |
 
@@ -263,7 +262,7 @@ test-device-3    2019-05-02T14:24:28.919Z
     | 输出别名 | emailnotification |
     | 订阅 | 你的订阅 |
     | 函数应用 | 你的函数应用 |
-    | 功能  | HttpTrigger1 |
+    | 函数  | HttpTrigger1 |
 
 1. 在“作业拓扑”下选择“查询”，并将现有查询替换为以下 SQL：
 

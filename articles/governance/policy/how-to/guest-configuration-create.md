@@ -3,12 +3,12 @@ title: 如何创建适用于 Windows 的来宾配置策略
 description: 了解如何创建适用于 Windows 的 Azure Policy 来宾配置策略。
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 8fbe3528f998a70ad489174274bda0a54b5e2455
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 78607b3e1694ecbfb8be58c4415d3dd79c4ac53b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733510"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112286968"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何创建适用于 Windows 的来宾配置策略
 
@@ -456,7 +456,7 @@ Protect-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindo
 - **路径**：来宾配置包的完整路径。
 - Certificate：用于对包进行签名的代码签名证书。 只有在对 Windows 内容进行签名时，才支持此参数。
 
-GuestConfiguration 代理要求证书公钥在 Windows 计算机上的“受信任的根证书颁发机构”和 Linux 计算机上的 `/usr/local/share/ca-certificates/extra` 路径中存在。 为了让节点能够验证已签名的内容，请先在计算机上安装证书公钥，再应用自定义策略。 可以使用 VM 内的任何技术或使用 Azure Policy 来完成此过程。 [此处提供了](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)一个示例模板。
+GuestConfiguration 代理要求证书公钥在 Windows 计算机上的“受信任的根证书颁发机构”和 Linux 计算机上的 `/usr/local/share/ca-certificates/extra` 路径中存在。 为了让节点能够验证已签名的内容，请先在计算机上安装证书公钥，再应用自定义策略。 可以使用 VM 内的任何技术或使用 Azure Policy 来完成此过程。 [此处提供了](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-push-certificate-windows)一个示例模板。
 Key Vault 访问策略必须允许计算资源提供程序在部署过程中访问证书。 有关详细步骤，请参阅[在 Azure 资源管理器中为虚拟机设置 Key Vault](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault)。
 
 下面是从签名证书导出公钥以导入计算机的示例。

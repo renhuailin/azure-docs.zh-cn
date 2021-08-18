@@ -1,21 +1,22 @@
 ---
 title: 第 2 代用例 - Azure 时序见解第 2 代 | Microsoft Docs
 description: 了解 Azure 时序见解第 2 代用例。
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: tedvilutis
+ms.author: tvilutis
+manager: cnovak
+ms.reviewer: orspodek
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7d97958c5fd1274495da88c064b63e59e354f691
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e6b5a7034c5fc8917ac3797ebf8071553fe37f2
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97606957"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112370448"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Azure 时序见解第 2 代用例
 

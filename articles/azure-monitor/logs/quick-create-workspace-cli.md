@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 175473f5abd74fa208962fd94852e9ddedfaf7e3
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 4e4cf08f9955e79125e998e2fe0b80a97768554c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105794"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741274"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>使用 Azure CLI 2.0 创建 Log Analytics 工作区
 
@@ -21,11 +21,6 @@ Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快�
 * Configuration Manager 中的设备集合  
 * Azure 存储中的诊断或日志数据  
 
-对于其他源，如环境中的 Azure VM 和 Windows VM 或 Linux VM，请参阅以下主题：
-
-* [从 Azure 虚拟机收集数据](../vm/quick-collect-azurevm.md)
-* [从混合 Linux 计算机收集数据](../vm/quick-collect-linux-computer.md)
-* [从混合 Windows 计算机收集数据](../vm/quick-collect-windows-computer.md)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -49,7 +44,7 @@ Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快�
 
 ### <a name="create-and-deploy-template"></a>创建和部署模板
 
-1. 将以下 JSON 语法复制并粘贴到该文件中：
+1. 将以下 JSON 语法复制并粘贴到文件中：
 
     ```json
     {
@@ -120,7 +115,7 @@ Azure CLI 2.0 用于从命令行或脚本创建和管理 Azure 资源。 本快�
 ## <a name="troubleshooting"></a>疑难解答
 如果创建了一个工作区，该工作区已在过去 14 天内删除且处于[软删除状态](../logs/delete-workspace.md#soft-delete-behavior)，那么该操作可能会有不同的结果，具体取决于你的工作区配置：
 1. 如果你提供的工作区名称、资源组、订阅和区域与已删除的工作区中的相同，则将恢复你的工作区，包括其数据、配置和连接的代理。
-2. 每个资源组的工作区名称必须是唯一的。 如果你使用已经存在（也在资源组的软删除中）的工作区名称，则会收到错误消息“工作区名称‘workspace-name’不唯一”或“冲突” 。 若要替换软删除，同时永久删除你的工作区并创建新的同名工作区，请按照以下步骤，先恢复工作区再执行永久删除：
+2. 每个资源组的工作区名称必须是唯一的。 如果你使用已经存在（也在资源组的软删除中）的工作区名称，则会收到错误消息：工作区名称 workspace-name 不唯一或冲突 。 若要替换软删除，同时永久删除你的工作区并创建新的同名工作区，请按照以下步骤，先恢复工作区再执行永久删除：
    * [恢复](../logs/delete-workspace.md#recover-workspace)工作区
    * [永久删除](../logs/delete-workspace.md#permanent-workspace-delete)工作区
    * 使用相同的工作区名称创建新的工作区

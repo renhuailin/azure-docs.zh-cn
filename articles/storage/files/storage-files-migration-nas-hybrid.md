@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 01289345ee6bebc0ab1a4608eb83cb8a2827e924
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: abefaa06cb8d2c0c815d86c6e1386f82e39c52fe
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "108745354"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "114462260"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>使用 Azure 文件同步从网络连接存储 (NAS) 迁移到混合云部署
 
@@ -27,6 +27,13 @@ ms.locfileid: "108745354"
 
 Azure 文件同步适用于直接连接存储 (DAS) 位置，它不支持同步到网络连接存储 (NAS) 位置。
 这使得文件迁移很有必要，本文将指导你如何计划和执行这种迁移。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
 
 ## <a name="migration-goals"></a>迁移目标
 

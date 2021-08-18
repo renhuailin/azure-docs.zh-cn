@@ -10,12 +10,12 @@ ms.date: 05/07/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 28f46ec6354f98c11ce68beeb2e3de375c7a0249
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: bd1bbf0d1c5a49bde35d303e6780737fb43ca997
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109632324"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726064"
 ---
 # <a name="initiate-a-storage-account-failover"></a>启动存储帐户故障转移
 
@@ -42,7 +42,7 @@ ms.locfileid: "109632324"
 - Azure 文件同步不支持存储帐户故障转移。 不得对包含 Azure 文件共享且用作 Azure 文件同步中云终结点的存储帐户执行故障转移。 否则，将会导致同步停止，并且可能还会在有新分层文件的情况下导致意外数据丢失。
 - 目前不支持启用了分层命名空间的存储帐户（例如用于 Data Lake Storage Gen2 的）。
 - 无法对包含高级块 blob 的存储帐户执行故障转移。 支持高级块 blob 的存储帐户暂不支持异地冗余。
-- 无法对包含任何已启用 [WORM 不可变性策略](../blobs/storage-blob-immutable-storage.md)的容器执行故障转移。 已解锁/锁定的基于时间的保留或法定保留策略会阻止故障转移，以便保持合规性。
+- 无法对包含任何已启用 [WORM 不可变性策略](../blobs/immutable-storage-overview.md)的容器执行故障转移。 已解锁/锁定的基于时间的保留或法定保留策略会阻止故障转移，以便保持合规性。
 
 ## <a name="initiate-the-failover"></a>启动故障转移
 

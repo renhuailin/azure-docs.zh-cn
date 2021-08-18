@@ -1,20 +1,21 @@
 ---
 title: 有关使用 Azure 视频分析器媒体版（以前称为视频索引器）进行动画人物检测的操作指南
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer
 description: 本操作指南演示如何通过 Azure 视频分析器媒体版（以前称为视频索引器）使用动画人物检测。
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
 ms.custom: references_regions
 ms.topic: how-to
+ms.subservice: azure-video-analyzer-media
 ms.date: 12/07/2020
 ms.author: juliako
-ms.openlocfilehash: e880c4d758eeaf6161716475a57b9586189d58ba
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: a9807ac57130034b51c3188b56de32ade4db6844
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385263"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112121574"
 ---
 # <a name="use-the-animated-character-detection-preview-with-portal-and-api"></a>通过门户和 API 使用动画人物检测（预览版） 
 
@@ -52,7 +53,7 @@ Azure 视频分析器媒体版（以前称为视频索引器）支持检测、�
     * 预测资源 ID
 1. 浏览并登录到[视频分析器媒体版](https://vi.microsoft.com/)。
 1. 单击页面右上角的问号，然后选择“API 参考”。
-1. 单击“产品”选项卡，确保已订阅 API 管理。如果你已连接某个 API，则可以继续执行下一步，否则请订阅。 
+1. 通过单击“产品”选项卡，确认你订阅了 API 管理。如果已连接 API，则可以继续下一步，否则请进行订阅。 
 1. 在开发人员门户中，单击“完整 API 参考”并浏览到“操作” 。  
 1. 选择“连接自定义视觉帐户(预览版)”，然后单击“试用” 。
 1. 填写必填字段以及访问令牌，然后单击“发送”。 

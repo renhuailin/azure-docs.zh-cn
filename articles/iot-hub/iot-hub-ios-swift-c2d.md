@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
 ms.custom: mqtt
-ms.openlocfilehash: 15c0df33b8f09ec71f2be913d72f0785dc766375
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 627342bb4ee7a6192b6dd7b9fdce71a87158ec39
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93027527"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114287689"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>使用 IoT 中心发送云到设备消息 (iOS)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。 [将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-ios.md)快速入门介绍了如何创建 IoT 中心、在其中预配设备标识，以及编写模拟设备应用来发送设备到云的消息。
+Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。 [将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md)快速入门介绍了如何创建 IoT 中心、在其中预配设备标识，以及编写模拟设备应用来发送设备到云的消息。
 
 本教程演示如何：
 
@@ -33,7 +33,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 在本文结束时，运行两个 Swift iOS 项目：
 
-* **sample-device**：在 [将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-ios.md)中创建的同一应用，可连接到 IoT 中心并接收云到设备的消息。
+* **sample-device**：在 [将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md)中创建的同一应用，可连接到 IoT 中心并接收云到设备的消息。
 
 * sample-service：通过 IoT 中心将云到设备的消息发送到模拟设备应用，然后接收中心的传送确认。
 
@@ -58,7 +58,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 在本部分，我们将模拟一个运行 Swift 应用程序的 iOS 设备，以从 IoT 中心接收云到设备的消息。 
 
-这是在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-ios.md)一文中创建的示例设备。 如果已运行该设备，则可跳过本部分。
+这是在[将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md)一文中创建的示例设备。 如果已运行该设备，则可跳过本部分。
 
 ### <a name="install-cocoapods"></a>安装 CocoaPods
 
@@ -106,7 +106,7 @@ pod install
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
-在本文中，你会创建一个后端服务，以通过在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-ios.md)中创建的 IoT 中心，发送云到设备消息。 若要发送云到设备消息，服务需要服务连接权限。 默认情况下，每个 IoT 中心都使用名为“服务”的共享访问策略创建，该策略会授予此权限。
+在本文中，你会创建一个后端服务，以通过在[将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md)中创建的 IoT 中心，发送云到设备消息。 若要发送云到设备消息，服务需要服务连接权限。 默认情况下，每个 IoT 中心都使用名为“服务”的共享访问策略创建，该策略会授予此权限。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 

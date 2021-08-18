@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 03/25/2021
-ms.openlocfilehash: 1df93a987348ed54303f2d9118337dbc710bc3bc
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 03ae1ed134f6d25128d9846c5e5c9949a96f36fa
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001407"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112679683"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>设计器的异常和错误代码
 
@@ -1092,9 +1092,9 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 请参阅以下文章，获取有关针对机器学习的 Hive 查询的帮助：
 
-+ [从 Azure Blob 存储创建 Hive 表并加载数据](../team-data-science-process/move-hive-tables.md)
-+ [使用 Hive 查询浏览表中的数据](../team-data-science-process/explore-data-hive-tables.md)
-+ [使用 Hive 查询在 Hadoop 群集中为数据创建功能](../team-data-science-process/create-features-hive.md)
++ [从 Azure Blob 存储创建 Hive 表并加载数据](/azure/architecture/data-science-process/move-hive-tables)
++ [使用 Hive 查询浏览表中的数据](/azure/architecture/data-science-process/explore-data-hive-tables)
++ [使用 Hive 查询在 Hadoop 群集中为数据创建功能](/azure/architecture/data-science-process/create-features-hive)
 + [适用于 SQL 的 Hive 用户速查表 (PDF)](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)
 
   

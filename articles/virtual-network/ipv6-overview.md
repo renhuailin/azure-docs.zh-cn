@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: bb7769298940095900da25e61e13612b92bad00c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f7420c2a7deaea6e1ecd83708fa5732c54ec29c
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419093"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114286626"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure 虚拟网络 IPv6 是什么？
 
@@ -61,7 +61,7 @@ Azure VNet IPv6 提供以下功能：
     - 注意：IPv6 只能对 Azure VM 上的主要网络接口 (NIC) 进行负载均衡。 
 - [标准 IPv6 内部负载均衡器](ipv6-dual-stack-standard-internal-load-balancer-powershell.md)支持在 Azure VNET 内部创建弹性多层应用程序。   
 - 基本 IPv6 公共负载均衡器支持与传统部署实现兼容
-- [保留的 IPv6 公共 IP 地址和地址范围](ipv6-public-ip-address-prefix.md)提供稳定、可预测的 IPv6 地址，方便将公司和客户的 Azure 托管应用程序列入筛选器。
+- [保留的 IPv6 公共 IP 地址和地址范围](./public-ip-address-prefix.md)提供稳定、可预测的 IPv6 地址，方便将公司和客户的 Azure 托管应用程序列入筛选器。
 - 实例级公共 IP 提供与单个 VM 的 IPv6 Internet 直接连接。
 - [将 IPv6 添加到现有的仅使用 IPv4 的部署](ipv6-add-to-existing-vnet-powershell.md) - 使用此功能可以轻松将 IPv6 连接添加到现有的仅使用 IPv4 的部署，而无需重新创建部署。  在此过程中 IPv4 网络流量不受影响，因此，根据应用程序和 OS，有时甚至可以将 IPv6 添加到实时服务。    
 - 可让 Internet 客户端使用所选的协议，凭借 Azure DNS 对 IPv6 (AAAA) 记录的支持无缝访问双堆栈应用程序。 

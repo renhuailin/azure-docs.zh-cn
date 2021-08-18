@@ -2,21 +2,21 @@
 title: 专用 SQL 池（以前称为 SQL DW）的系统视图
 description: 指向 Azure Synapse Analytics 中专用 SQL 池（以前称为 SQL DW）的系统视图文档的链接。
 services: synapse-analytics
-author: XiaoyuMSFT
+author: WilliamDAssafMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 01/06/2020
-ms.author: xiaoyul
+ms.author: wiassaf
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 088cf9f33093c7a4623c044a220f4e89fe07872b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7e0c91cad3eab64c95854484aaf0c033903bf853
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98681197"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746968"
 ---
 # <a name="system-views-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池（以前称为 SQL DW）的系统视图
 

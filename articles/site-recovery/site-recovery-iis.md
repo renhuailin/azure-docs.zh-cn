@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 56ac58e47bffc73c7079af043ad567a77e8f3323
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 08f4c00d5d0d1d0d6d060d2170024ac166c308b8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735499"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458548"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>为基于 IIS 的多层 Web 应用程序设置灾难恢复
 
@@ -95,7 +95,7 @@ Azure|不可用|是
 在故障转移后或测试故障转移期间，可能需要在 Azure 虚拟机上执行一些操作才能让 IIS Web 场正常工作。 可将某些故障转移后的操作自动化。 例如，可在恢复计划中添加相应的脚本，来更新 DNS 条目、更改站点绑定或更改连接字符串。 [将 VMM 脚本添加到恢复计划](./hyper-v-vmm-recovery-script.md)介绍了如何使用脚本来设置自动化任务。
 
 #### <a name="dns-update"></a>DNS 更新
-如果为 DNS 配置了动态 DNS 更新，则虚拟机在启动时，通常会使用新的 IP 地址更新 DNS。 如果想要添加一个明确的步骤来使用虚拟机的新 IP 地址更新 DNS，请添加这个[用于更新 DNS 中的 IP 的脚本](https://aka.ms/asr-dns-update)，作为恢复计划组中的故障转移后操作。  
+如果为 DNS 配置了动态 DNS 更新，则虚拟机在启动时，通常会使用新的 IP 地址更新 DNS。 如果想要添加一个明确的步骤来使用虚拟机的新 IP 地址更新 DNS，请添加这个[用于更新 DNS 中的 IP 的脚本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/demos/asr-automation-recovery/scripts/ASR-DNS-UpdateIP.ps1)，作为恢复计划组中的故障转移后操作。  
 
 #### <a name="connection-string-in-an-applications-webconfig"></a>应用程序 web.config 中的连接字符串
 连接字符串指定与网站通信的数据库。 如果连接字符串包含数据库虚拟机的名称，则故障转移后无需进行其他步骤。 应用程序可自动与数据库通信。 此外，如果数据库虚拟机的 IP 地址得到保留，则不需要更新连接字符串。 

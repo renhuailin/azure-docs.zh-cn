@@ -9,16 +9,18 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 06/24/2020
 ms.author: yelevin
-ms.openlocfilehash: f420e80f10072c440f5401c042d6370a061b1a7f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f7d947afcbd3017df1c2183da6c88ec92656bc5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98632235"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121778329"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad-identity-protection"></a>从 Azure Active Directory (Azure AD) 标识保护中连接数据
 
-可以将日志从[ Azure AD 标识保护](../active-directory/identity-protection/overview-identity-protection.md)流式传输到 Azure Sentinel，以将警报流式传输到 Azure Sentinel，进而查看仪表板、创建自定义警报并改进调查。 Azure Active Directory 标识保护提供风险用户、风险检测和漏洞的综合视图，能够立即修复风险，并设置策略以自动修复将来的事件。 该服务基于 Microsoft 保护用户标识的经验而构建，并通过每天超过 130 亿次登录的信号来大幅提升准确性。 
+可以将日志从[ Azure AD 标识保护](../active-directory/identity-protection/overview-identity-protection.md)流式传输到 Azure Sentinel，以将警报流式传输到 Azure Sentinel，进而查看仪表板、创建自定义警报并改进调查。 Azure Active Directory 标识保护提供风险用户、风险检测和漏洞的综合视图，能够立即修复风险，并设置策略以自动修复将来的事件。 该服务基于 Microsoft 保护用户标识的经验而构建，并通过每天超过 130 亿次登录的信号来大幅提升准确性。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -40,5 +42,5 @@ ms.locfileid: "98632235"
 ## <a name="next-steps"></a>后续步骤
 
 本文档介绍了如何将 Azure AD 标识保护连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。

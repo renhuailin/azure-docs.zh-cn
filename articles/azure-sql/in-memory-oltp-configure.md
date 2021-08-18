@@ -10,12 +10,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
 ms.date: 11/07/2018
-ms.openlocfilehash: 9d878ce051b9986dc17f2154d91a529b7c38d0cd
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 2d1e00059948b6b3347c41910f8c1f75d9635da5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110698956"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752216"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>使用内存中 OLTP 改进 Azure SQL 数据库和 Azure SQL 托管实例中的应用程序性能
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -103,8 +103,8 @@ SSMS 包含可以针对具有活动工作负荷的数据库运行的“事务性
 7. 使用 INSERT...SELECT * INTO 将数据复制到内存优化表：
 
 ```sql
-INSERT INTO <new_memory_optimized_table>
-        SELECT * FROM <old_disk_based_table>;
+INSERT INTO [<new_memory_optimized_table>]
+        SELECT * FROM [<old_disk_based_table>];
 ```
 
 ## <a name="step-5-optional-migrate-stored-procedures"></a>步骤 5（可选）：迁移存储过程

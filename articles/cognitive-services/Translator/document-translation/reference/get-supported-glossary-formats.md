@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 0185a4b18ed56899de9c235bbd0438ef1dedf7c4
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ae21b4e510dc7e1f95303c562f58032758717d56
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412720"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112540685"
 ---
 # <a name="get-supported-glossary-formats"></a>获取支持的词汇表格式
 
-获取支持的术语表格式方法可返回文档翻译服务支持的术语表格式的列表。 此列表包括常用文件扩展名。
+“获取支持的术语表格式”方法会返回文档翻译服务支持的术语表格式的列表。 此列表包括常用文件扩展名。
 
 ## <a name="request-url"></a>请求 URL
 

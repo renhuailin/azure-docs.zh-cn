@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: duau
-ms.openlocfilehash: 57c439cf8ac52d93d231d6ff33f72a5a942dec6a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c0ee2c0783d6d1a013db2b79367af5779f63aba1
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96351599"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112321461"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>将 ExpressRoute 关联的虚拟网络从经典部署模型迁移到 Resource Manager 部署模型
 
@@ -31,7 +31,7 @@ ms.locfileid: "96351599"
 
     * [平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移](../virtual-machines/migration-classic-resource-manager-overview.md)
     * [有关平台支持的从经典部署模型到 Azure Resource Manager 部署模型的迁移的技术深入探讨](../virtual-machines/migration-classic-resource-manager-deep-dive.md)
-    * [常见问题解答：平台支持的从经典部署模型到 Azure 资源管理器部署模型的 IaaS 资源迁移](../virtual-machines/migration-classic-resource-manager-faq.md)
+    * [常见问题解答：平台支持的从经典部署模型到 Azure 资源管理器部署模型的 IaaS 资源迁移](../virtual-machines/migration-classic-resource-manager-faq.yml)
     * [查看最常见的迁移错误和缓解措施](../virtual-machines/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="supported-and-unsupported-scenarios"></a>支持的和不支持的方案
@@ -84,5 +84,5 @@ ms.locfileid: "96351599"
 ## <a name="next-steps"></a>后续步骤
 * [平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移](../virtual-machines/migration-classic-resource-manager-overview.md)
 * [有关平台支持的从经典部署模型到 Azure Resource Manager 部署模型的迁移的技术深入探讨](../virtual-machines/migration-classic-resource-manager-deep-dive.md)
-* [常见问题解答：平台支持的从经典部署模型到 Azure 资源管理器部署模型的 IaaS 资源迁移](../virtual-machines/migration-classic-resource-manager-faq.md)
+* [常见问题解答：平台支持的从经典部署模型到 Azure 资源管理器部署模型的 IaaS 资源迁移](../virtual-machines/migration-classic-resource-manager-faq.yml)
 * [查看最常见的迁移错误和缓解措施](../virtual-machines/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

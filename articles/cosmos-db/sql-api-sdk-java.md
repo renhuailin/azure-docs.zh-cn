@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: fcac9eee73f509de5903030b77d567cbe11ee043
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: f8294a323628d362aedd35e4a3fa7c72fc826b57
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110787553"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112233486"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -344,7 +344,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月** 之前发出通知，以便�
 | 0.9.0-prelease |2014 年 12 月 10 日 |2016 年 2 月 29 日 |
 
 ## <a name="faq"></a>常见问题解答
-[!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>另请参阅
 若要了解有关 Cosmos DB 的详细信息，请参阅 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服务页。

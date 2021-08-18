@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 863734596861f3116418cb322a1e4a8ae9c8ea40
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645483"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746420"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>配置连接的工厂解决方案加速器
 
@@ -32,7 +32,7 @@ ms.locfileid: "105645483"
 * 测试工作站
 * 打包工作站
 
-这些 OPC UA 服务器具有 OPC UA 节点，并且 [OPC 发布服务器](overview-opc-publisher.md)会将这些节点的值发送到连接的工厂。 这包括：
+这些 OPC UA 服务器具有 OPC UA 节点，并且 [OPC 发布服务器](/previous-versions/azure/iot-accelerators/overview-opc-publisher)会将这些节点的值发送到连接的工厂。 这包括：
 
 * 当前的操作状态，例如当前的功耗。
 * 生产信息，例如生产的产品数量。
@@ -310,7 +310,7 @@ WebApp 维护包含所有拓扑节点信息的内部数据字典。 Guid 和 Opc
 
   标识 OPC UA 服务器中的节点值。 此属性的格式必须在 OPC UA 规范中指定。 在引入的消息中，此属性作为 NodeId 发送。
 
-请参阅[什么是 OPC 发布服务器](overview-opc-publisher.md)，详细了解如何将遥测数据引入连接的工厂。
+请参阅[什么是 OPC 发布服务器](/previous-versions/azure/iot-accelerators/overview-opc-publisher)，详细了解如何将遥测数据引入连接的工厂。
 
 ## <a name="example-how-kpi1-is-calculated"></a>示例：如何计算 KPI1
 

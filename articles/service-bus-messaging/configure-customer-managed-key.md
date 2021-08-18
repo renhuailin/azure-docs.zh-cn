@@ -3,12 +3,12 @@ title: 配置自己的密钥以用于加密 Azure 服务总线静态数据
 description: 本文介绍了如何配置自己的密钥以用于加密 Azure 服务总线静态数据。
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 0ebce2d9b5d02f12f9f2ab363b225519fcc838d7
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 586d8d477a27b44bf530ae52acbbe088eefe02c5
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854353"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113031659"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 门户配置客户管理的密钥以用于加密 Azure 服务总线静态数据
 Azure 服务总线高级层提供了通过 Azure 存储服务加密 (Azure SSE) 对静态数据进行加密的功能。 服务总线高级层使用 Azure 存储来存储数据。 使用 Azure 存储存储的所有数据都使用 Microsoft 托管密钥进行加密。 如果你使用自己的密钥（也称为创建自己的密钥 (BYOK) 或客户管理的密钥），则仍使用 Microsoft 托管密钥对数据进行加密，但另外，将使用客户管理的密钥对 Microsoft 托管密钥进行加密。 使用此功能可以创建、轮换、禁用用于加密 Microsoft 托管密钥的客户管理的密钥，以及撤销对这些密钥的访问权限。 启用 BYOK 功能是在命名空间中执行的一次性设置过程。
@@ -274,7 +274,7 @@ Azure 服务总线高级层提供了通过 Azure 存储服务加密 (Azure SSE) 
              },
              "properties":{
                 "encryption":{
-                   "keySource":"Microsoft.KeyVault",
+                   "keySource":"Microsoft.KeyVault",             
                    "keyVaultProperties":[
                       {
                          "keyName":"[parameters('keyName')]",
@@ -322,6 +322,28 @@ Azure 服务总线高级层提供了通过 Azure 存储服务加密 (Azure SSE) 
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateServiceBusNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateServiceBusNamespaceWithEncryption.json -TemplateParameterFile ./UpdateServiceBusNamespaceWithEncryptionParams.json
     ```
+
+#### <a name="enable-infrastructure-encryption-for-double-encryption-of-data-inazure-service-bus-data"></a>为 Azure 服务总线数据中的数据双重加密启用基础结构加密 
+如果需要更高级别的数据安全保证，则可以启用基础结构级别的加密（也称为双重加密）。 
+
+启用基础结构加密后，将对 Azure 服务总线中的数据进行两次加密，分别在服务级别和基础架构级别使用两种不同的加密算法和两个不同的密钥。 因此，Azure 服务总线数据的基础结构加密可以在其中一种加密算法或密钥可能泄露的情况下提供保护。
+
+可以使用上述 UpdateServiceBusNamespaceWithEncryption.json 中的 `requireInfrastructureEncryption` 属性来更新 ARM 模板，以启用基础结构加密，如下所示。 
+
+```json
+"properties":{
+   "encryption":{
+      "keySource":"Microsoft.KeyVault",    
+      "requireInfrastructureEncryption":true,         
+      "keyVaultProperties":[
+         {
+            "keyName":"[parameters('keyName')]",
+            "keyVaultUri":"[parameters('keyVaultUri')]"
+         }
+      ]
+   }
+}
+```
     
 
 ## <a name="next-steps"></a>后续步骤

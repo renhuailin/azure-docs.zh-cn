@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00518eb91e57efaacb7abc63b6ad4531619be2ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4bd83071e725d68a424642f68680748247a26706
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98012863"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110072"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>“运行状况服务数据不是最新的”警报
 
@@ -71,4 +71,4 @@ Azure AD Connect Health 监视的本地计算机上的代理会定期将数据�
 如果在上述任一步骤中确定了问题，请解决问题并等待警报消除。 警报后台进程每 2 小时运行一次，因此，最多需要 2 小时来消除警报。 
 
 * [Azure AD Connect Health 数据保留策略](reference-connect-health-user-privacy.md#data-retention-policy)
-* [Azure AD Connect Health 常见问题](reference-connect-health-faq.md)
+* [Azure AD Connect Health 常见问题](reference-connect-health-faq.yml)

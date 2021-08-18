@@ -7,23 +7,23 @@ ms.custom: references_regions
 ms.date: 02/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a18d78fdc6714894a9ce038f1e67e72e0acc0b87
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6eb6dd71ae95b3af4ee913e1ac88d9988d2b23a9
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744532"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762531"
 ---
 # <a name="host-pool-creation"></a>创建主机池
 
 >[!IMPORTANT]
->本内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)。
 
 本文介绍了 Azure 虚拟桌面租户和相关会话主机池基础结构的初始设置过程中的问题。
 
 ## <a name="provide-feedback"></a>提供反馈
 
-请访问 [Azure 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)，与产品团队和活跃的社区成员共同探讨 Azure 虚拟桌面服务。
+请访问 [Azure 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/bd-p/AzureVirtualDesktopForum)，与产品团队和活跃的社区成员共同探讨 Azure 虚拟桌面服务。
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>获取 Windows 10 企业版多会话映像
 

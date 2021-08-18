@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: e6ed52f89c38a9c4c5476bd1db0f5a67326954e4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: eacaaaaaf1e4fc761a7aee30604ad96b93823e13
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866261"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113288853"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>使用 Azure Toolkit for IntelliJ 通过 VPN 在 HDInsight 中远程调试 Apache Spark 应用程序
 
@@ -28,7 +28,7 @@ ms.locfileid: "104866261"
 
 * **Azure 订阅**。 有关详细信息，请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * **HDInsight 中的 Apache Spark 群集**。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
-* **Oracle Java 开发工具包**。 可以从 [Oracle 网站](/azure/developer/java/fundamentals/java-jdk-long-term-support)安装该工具包。
+* **Oracle Java 开发工具包**。 可以从 [Oracle 网站](/azure/developer/java/fundamentals/java-support-on-azure)安装该工具包。
 * **IntelliJ IDEA**。 本文使用版本 2017.1。 可以从 [JetBrains 网站](https://www.jetbrains.com/idea/download/)进行安装。
 * **Azure Toolkit for IntelliJ 中的 HDInsight 工具**。 用于 IntelliJ 的 Azure 工具包随附了用于 IntelliJ 的 HDInsight 工具。 有关 Azure 工具包的安装方法说明，请参阅[安装用于 IntelliJ 的 Azure 工具包](/java/azure/intellij/azure-toolkit-for-intellij-installation)。
 * **从 IntelliJ IDEA 登录到 Azure 订阅**。 遵照[使用 Azure Toolkit for IntelliJ 为 HDInsight 群集创建 Apache Spark 应用程序](apache-spark-intellij-tool-plugin.md)中的说明操作。

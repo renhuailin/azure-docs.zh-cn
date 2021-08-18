@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.subservice: ''
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 28f4c314b65a27c71c7620ff5941463b1ea68b55
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 547889b63bcaa7e8a43d62c639ac40715949e89d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831449"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730537"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>使用 Azure 专用链接将网络安全地连接到 Azure 自动化
 
@@ -64,7 +64,7 @@ Azure 自动化专用链接可将一个或多个专用终结点（及其包含�
 
 通过 Azure 自动化的用户混合 Runbook 辅助角色功能，可以直接在 Azure 或非 Azure 计算机上运行 runbook，包括在启用了 Azure Arc 的服务器上注册的服务器。 在托管角色的计算机或服务器中，可以直接运行 runbook，并对环境中的资源运行 runbook，从而管理这些本地资源。
 
-混合辅助角色使用 JRDS 终结点启动/停止 runbook，将 runbook 下载到辅助角色，并将作业日志流发送回自动化服务。启用 JRDS 终结点后，URL 将如下所示：`https://<automationaccountID>.jobruntimedata.<region>.azure-automation.net`。 这将确保在连接到 Azure 虚拟网络的混合辅助角色上执行 runbook，而无需打开到 Internet 的出站连接。  
+混合辅助角色使用 JRDS 终结点启动/停止 runbook，将 runbook 下载到辅助角色，并将作业日志流发送回自动化服务。启用 JRDS 终结点后，URL 将如下所示：`https://<automationaccountID>.jrds.<region>.privatelink.azure-automation.net`。 这将确保在连接到 Azure 虚拟网络的混合辅助角色上执行 runbook，而无需打开到 Internet 的出站连接。  
 
 > [!NOTE]
 >通过 Azure 自动化的最新专用链接实现，它仅支持在连接到 Azure 虚拟网络的混合 Runbook 辅助角色上运行的作业，而不支持云作业。
@@ -77,7 +77,7 @@ Azure 自动化专用链接可将一个或多个专用终结点（及其包含�
 
 如果希望将计算机配置为更新管理，以安全方式通过专用链接通道连接到自动化和 Log Analytics 工作区，则必须为链接到使用专用链接配置的自动化帐户的 Log Analytics 工作区启用专用链接。
 
-可以按照[配置 Log Analytics](../../azure-monitor/logs/private-link-security.md#configure-log-analytics) 中所述的步骤来控制如何从专用链接范围的外部访问 Log Analytics 工作区。 如果将“允许公用网络访问以便执行引入”设置为“否”，则已连接的范围之外的计算机无法将数据上传到此工作区中 。 如果将“允许公用网络访问以便执行查询”设置为“否”，则范围之外的计算机无法访问此工作区中的数据 。
+可以按照[配置 Log Analytics](../../azure-monitor/logs/private-link-configure.md#configure-access-to-your-resources) 中所述的步骤来控制如何从专用链接范围的外部访问 Log Analytics 工作区。 如果将“允许公用网络访问以便执行引入”设置为“否”，则已连接的范围之外的计算机无法将数据上传到此工作区中 。 如果将“允许公用网络访问以便执行查询”设置为“否”，则范围之外的计算机无法访问此工作区中的数据 。
 
 使用 DSCAndHybridWorker 目标子资源启用用户和系统混合辅助角色的专用链接。
 

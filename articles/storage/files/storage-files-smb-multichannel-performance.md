@@ -7,18 +7,25 @@ ms.topic: conceptual
 ms.date: 05/17/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e8b2f64b0249cfe3b8a0a2e1bebcf7daabfe94dc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 995ece7fb5d199a4c403d4512c29eae46fe9fdcb
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110094611"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112116650"
 ---
 # <a name="smb-multichannel-performance"></a>SMB 多通道性能
 
 Azure 文件存储 SMB 多通道（预览版）使 SMB 3.x 客户端可以与 FileStorage 帐户中的高级文件共享建立多个网络连接。 SMB 3.x 协议在 Windows Server 2012 和 Windows 8 客户端中引入了 SMB 多通道功能。 因此，支持 SMB 多通道的任何 Azure 文件存储 SMB 3.x 客户端都可以利用其 Azure 高级文件共享的功能。 在存储帐户上启用 SMB 多通道不会产生额外费用。
 
-## <a name="benefits"></a>好处
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![否](../media/icons/no-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+
+## <a name="benefits"></a>优点
 
 Azure 文件存储 SMB 多通道使客户端可以使用多个网络连接，这些连接可提供更高性能，同时降低拥有成本。 提高性能通过多个 NIC 上的带宽聚合来实现，并利用 NIC 的接收方缩放 (RSS) 支持在多个 CPU 间分布 IO 负载。
 

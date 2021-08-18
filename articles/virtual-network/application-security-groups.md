@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: e60d8490632a29e96dccf9cc8ff0365baf671bb6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ea9d59629ac843020ef8aa29e9140552b26b13be
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802618"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725951"
 ---
 # <a name="application-security-groups"></a>应用程序安全组
 
@@ -57,7 +57,6 @@ ms.locfileid: "104802618"
 应用程序安全组具有以下约束：
 
 -    一个订阅中可以有的应用程序安全组存在数量限制，此外还有其他与应用程序安全组相关的限制。 有关详细信息，请参阅 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
-- 在 Azure 门户中，可以只将一个应用程序安全组指定为安全规则中的源和目标。 在 REST API（包括 PowerShell/Azure CLI）中，可在源或目标中指定多个应用程序安全组。
 - 分配给应用程序安全组的所有网络接口都必须存在于分配给应用程序安全组的第一个网络接口所在的虚拟网络中。 例如，如果分配给名为 *AsgWeb* 的应用程序安全组的第一个网络接口位于名为 *VNet1* 的虚拟网络中，则分配给 *ASGWeb* 的所有后续网络接口都必须存在于 *VNet1* 中。 不能向同一应用程序安全组添加来自不同虚拟网络的网络接口。
 - 如果在安全规则中将应用程序安全组指定为源和目标，则两个应用程序安全组中的网络接口必须存在于同一虚拟网络中。 例如，如果 *AsgLogic* 包含来自 *VNet1* 的网络接口，*AsgDb* 包含来自 *VNet2* 的网络接口，则不能在一项规则中将 *AsgLogic* 分配为源，将 *AsgDb* 分配为目标。 源和目标应用程序安全组中的所有网络接口需存在于同一虚拟网络中。
 
