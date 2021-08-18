@@ -3,12 +3,12 @@ title: 通过模板实现快速任务运行
 description: 将 ACR 任务运行排入队列，以使用 Azure 资源管理器模板生成映像
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: 6e8023c088ac328c2b6e95fccd0230c4d40325c1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c79eec16798b1e1c9933ab50fb443b4427075149
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98916059"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112981065"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>使用资源管理器模板运行 ACR 任务
 
@@ -49,6 +49,8 @@ ms.locfileid: "98916059"
 ### <a name="deploy-the-template"></a>部署模板
 
 使用 [az deployment group create][az-deployment-group-create] 命令部署模板。 本示例将生成 helloworld-node:testrun 映像，并将该映像推送到名为 mycontainerregistry 的注册表中 。
+
+[!INCLUDE [pull-image-dockerfile-include](../../includes/pull-image-dockerfile-include.md)]
 
 ```azurecli
 az deployment group create \
@@ -241,13 +243,13 @@ basetask
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-show]: /cli/azure/acr#az-acr-show
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
-[az-acr-task-logs]: /cli/azure/acr/task#az-acr-task-logs
-[az-acr-repository-show-tags]: /cli/azure/acr/repository#az-acr-repository-show-tags
-[az-acr-task-list-runs]: /cli/azure/acr/task#az-acr-task-list-runs
-[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
-[az-identity-create]: /cli/azure/identity#az-identity-create
-[az-identity-show]: /cli/azure/identity#az-identity-show
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-show]: /cli/azure/acr#az_acr_show
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
+[az-acr-task-logs]: /cli/azure/acr/task#az_acr_task_logs
+[az-acr-repository-show-tags]: /cli/azure/acr/repository#az_acr_repository_show_tags
+[az-acr-task-list-runs]: /cli/azure/acr/task#az_acr_task_list_runs
+[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
+[az-identity-create]: /cli/azure/identity#az_identity_create
+[az-identity-show]: /cli/azure/identity#az_identity_show
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create

@@ -5,12 +5,12 @@ author: dkamstra
 ms.topic: conceptual
 ms.date: 05/28/2021
 ms.author: dukek
-ms.openlocfilehash: 2f5244fd8ef414a1bed6781c702014e805f47a76
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 26f6b62ece1fcde8ca69ffbb804d9ab24b3c1ac3
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112060311"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112455727"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 
@@ -160,7 +160,7 @@ ms.locfileid: "112060311"
 ### <a name="function"></a>函数
 调用 [Azure Functions](../../azure-functions/functions-get-started.md) 中的现有 HTTP 触发器终结点。 若要处理请求，终结点必须处理 HTTP POST 谓词。
 
-定义函数操作时，函数的 httptrigger 终结点和访问密钥会保存在操作定义中。 例如：https://azfunctionurl.azurewebsites.net/api/httptrigger?code=this_is_access_key。 如果更改函数的访问密钥，则需要在操作组中删除并重新创建函数操作。
+定义函数操作时，函数的 httptrigger 终结点和访问密钥会保存在操作定义中。 例如：`https://azfunctionurl.azurewebsites.net/api/httptrigger?code=this_is_access_key`。 如果更改函数的访问密钥，则需要在操作组中删除并重新创建函数操作。
 
 操作组中的函数操作数可能有限。
 

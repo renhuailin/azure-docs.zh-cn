@@ -3,18 +3,17 @@ title: 为模块编写 createOptions - Azure IoT Edge | Microsoft Docs
 description: 如何使用部署清单中的 createOptions 在运行时配置模块
 keywords: ''
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9ee5536562eb3f2008908a36ff296ef2cfa337ea
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0a1b77cc3cfdda927c6df8c2e0d4b013647bab45
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200616"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728826"
 ---
 # <a name="how-to-configure-container-create-options-for-iot-edge-modules"></a>如何配置 IoT Edge 模块的容器创建选项
 

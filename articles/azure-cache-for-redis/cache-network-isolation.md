@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: b47462a60e35200908592274a9e1c424eca5ab62
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 61865a38cfa96dae35a02b25a1f5025438e91816
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110655360"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112379737"
 ---
 # <a name="azure-cache-for-redis-network-isolation-options"></a>Azure Cache for Redis 网络隔离选项
 
@@ -31,7 +31,7 @@ Azure 专用链接提供从虚拟网络到 Azure PaaS 服务的专用连接。 �
 ### <a name="limitations"></a>限制
 
 * 对专用终结点禁用网络安全组 (NSG)。 但是，如果子网上还有其他资源，则 NSG 强制将应用于这些资源。
-* 目前尚不支持：异地复制、防火墙规则、门户控制台支持、每个群集缓存多个终结点、防火墙的持久性连接和 VNet 注入的缓存。
+* 目前不支持门户控制台和防火墙存储帐户持久性。 
 * 若要连接到群集缓存，需要将 `publicNetworkAccess` 设置为 `Disabled` 并且只能有一个专用终结点连接。
 
 > [!NOTE]

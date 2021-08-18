@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 00802f53f973ad9b5a80b265006943121a0fa763
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcd031a76e911f6368206d75736e934f79135b77
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96753393"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113225671"
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
@@ -24,7 +24,7 @@ ms.locfileid: "96753393"
 
 ## <a name="i-cant-get-the-appliance-working"></a>无法使设备正常运行
 
-查看有关设备部署的[常见问题的解答](troubleshoot-appliance-discovery.md)。
+查看有关设备部署的[常见问题的解答](troubleshoot-appliance.md)。
 
 ## <a name="machines-arent-discovered"></a>未发现计算机
 
@@ -32,7 +32,7 @@ ms.locfileid: "96753393"
 
 ## <a name="app-discovery-isnt-working"></a>应用发现不起作用
 
-目前仅支持发现在本地计算机上运行的应用、角色和功能。 查看应用发现的[常见错误](troubleshoot-appliance-discovery.md#common-app-discovery-errors)。
+目前仅支持发现在本地计算机上运行的应用、角色和功能。 查看应用发现的[常见错误](troubleshoot-discovery.md#common-software-inventory-errors)。
 
 ## <a name="assessment-isnt-working"></a>评估不起作用
 

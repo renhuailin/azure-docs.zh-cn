@@ -2,20 +2,29 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 01/15/2021
+ms.date: 06/30/2021
 ms.author: alkohli
-ms.openlocfilehash: f166413507afb9aff814eaddaade099d2e34ae68
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: f96012c3ffa587a80d601447d99efc804956096e
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554944"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113120942"
 ---
 在 Azure Stack Edge 设备上部署 VM 之前，必须先将客户端配置为使用 Azure PowerShell 通过 Azure 资源管理器连接到设备。 有关详细说明，请参阅[连接到 Azure Stack Edge 设备上的 Azure 资源管理器](../articles/databox-online/azure-stack-edge-gpu-connect-resource-manager.md)。
 
 确保可使用以下步骤从客户端访问设备。 能连接到 Azure 资源管理器即表示已完成此配置，现在是验证配置是否成功。 
 
+
+
 1. 运行以下命令，验证 Azure 资源管理器通信是否正常运行：     
+
+    ### <a name="az"></a>[Az](#tab/Az)
+
+    ```powershell
+    Add-AzEnvironment -Name <Environment Name> -ARMEndpoint "https://management.<appliance name>.<DNSDomain>"
+    ```
+    ### <a name="azurerm"></a>[AzureRM](#tab/AzureRM)
 
     ```powershell
     Add-AzureRmEnvironment -Name <Environment Name> -ARMEndpoint "https://management.<appliance name>.<DNSDomain>"
@@ -23,7 +32,19 @@ ms.locfileid: "106554944"
 
 1. 若要调用本地设备 API 进行身份验证，请输入： 
 
-    `login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d`
+    ### <a name="az"></a>[Az](#tab/Az)
+
+    ```powershell
+    login-AzAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d
+    ```
+
+    若要通过 Azure 资源管理器进行连接，请提供用户名 EdgeArmUser 和密码。
+
+    ### <a name="azurerm"></a>[AzureRM](#tab/AzureRM)
+
+    ```powershell
+    login-AzureRMAccount -EnvironmentName <Environment Name> -TenantId c0257de7-538f-415c-993a-1b87a031879d
+    ```
 
     若要通过 Azure 资源管理器进行连接，请提供用户名 EdgeArmUser 和密码。
 

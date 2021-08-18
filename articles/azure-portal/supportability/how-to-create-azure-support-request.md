@@ -3,13 +3,14 @@ title: 如何创建 Azure 支持请求
 description: 需要协助的客户可在 Azure 门户中查找自助服务解决方案并创建和管理支持请求。
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
+ms.custom: support-help-page
 ms.date: 05/25/2021
-ms.openlocfilehash: 3b38a010fa23605019f1969a80e9f9a3cda467c8
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 4e3f54712830406f04f6c0eec5097d693723db1c
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110496571"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112458766"
 ---
 # <a name="create-an-azure-support-request"></a>创建 Azure 支持请求
 

@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.author: memildin
-ms.openlocfilehash: b48adf5e6c2c7b91e98ef410c71802b5d47d2845
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: b7c8003bd40df21fb749fcb576afeaec5dacead9
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459782"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236834"
 ---
 # <a name="manage-security-policies"></a>管理安全策略
 
@@ -35,7 +35,7 @@ ms.locfileid: "110459782"
 
 1. 在“安全中心”仪表板中，选择“安全策略” 。
 
-    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="策略管理页面":::
+    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="策略管理页面。":::
 
    在“策略管理”屏幕中，可以看到管理组数、订阅数、工作区数以及管理组结构。
 
@@ -56,7 +56,7 @@ ms.locfileid: "110459782"
 
     1. 要查看并编辑默认计划，请选择“查看有效策略”并按如下所述继续操作。 
 
-        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="有效策略屏幕":::
+        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="有效策略屏幕。":::
 
        此“安全策略”屏幕反映在所选订阅或管理组中分配的策略所执行的操作。
        
@@ -80,22 +80,22 @@ ms.locfileid: "110459782"
 
 1. 在安全中心的“策略和符合性”部分，选择“安全策略” 。
 
-    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="在 Azure 安全中心启动策略管理过程":::
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="在 Azure 安全中心启动策略管理过程。":::
 
-1. 选择要禁用针对它的建议（和策略）的订阅或管理组。
+1. 选择要禁用其建议（和策略）的订阅或管理组。
 
    > [!NOTE]
-   > 请记住，管理组将其策略应用于其订阅。 因此，如果禁用了某个订阅策略，而该订阅属于仍使用同一策略的管理组，则你将继续收到策略建议。 仍将从管理级别应用该策略，且仍将生成建议。
+   > 请牢记，管理组会将其策略应用到其订阅。 因此，如果禁用了某个订阅策略，而该订阅属于仍使用同一策略的管理组，则你将继续收到策略建议。 仍将从管理级别应用该策略，且仍将生成建议。
 
 1. 从“安全中心默认策略”、“行业和监管标准”或“你的自定义计划”部分选择包含要禁用的策略的相关计划  。
 
 1. 打开“参数”部分，搜索会对你要禁用的建议进行调用的策略。
 
-1. 从下拉列表中，将相应策略的值更改为“Disabled”。
+1. 从下拉列表中，将相应策略的值更改为“已禁用”。
 
-   ![禁用策略](./media/tutorial-security-policy/disable-policy.png)
+   ![禁用策略。](./media/tutorial-security-policy/disable-policy.png)
 
-1. 选择“保存” 。
+1. 选择“保存”。
 
    > [!NOTE]
    > 此更改最多可能需要 12 小时才能生效。
@@ -109,9 +109,9 @@ ms.locfileid: "110459782"
 
 1. 在安全中心的“策略和符合性”部分，选择“安全策略” 。
 
-    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="在 Azure 安全中心启动策略管理过程":::
+    :::image type="content" source="./media/tutorial-security-policy/policy-management.png" alt-text="在 Azure 安全中心启动策略管理过程。":::
 
-1. 选择要为其启用建议（和策略）的订阅或管理组。
+1. 选择要启用其建议（和策略）的订阅或管理组。
 
 1. 从“安全中心默认策略”、“行业和监管标准”或“你的自定义计划”部分选择包含要启用的策略的相关计划  。
 

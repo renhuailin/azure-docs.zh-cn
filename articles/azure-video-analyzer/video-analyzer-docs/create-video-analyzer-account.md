@@ -3,13 +3,13 @@ title: 创建 Azure 视频分析器帐户
 description: 本主题介绍如何为 Azure 视频分析器创建帐户。
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 05/01/2021
-ms.openlocfilehash: c1c9b7a01fa23b3c5b450fdfa5d5024169b4453e
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.date: 06/01/2021
+ms.openlocfilehash: 1cb2f317ca712f2ad8ca911ecff0ac5e62cac0f5
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007492"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603998"
 ---
 # <a name="create-a-video-analyzer-account"></a>创建视频分析器帐户
 

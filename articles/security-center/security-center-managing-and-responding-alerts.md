@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: df8b4534c6da446bd4ceeb18acf70036cd63f83c
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: dbed9883fbddc2efdaaa8ad252578afa928167bd
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061175"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112237253"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>在 Azure 安全中心管理和响应安全警报
 
@@ -27,7 +27,7 @@ ms.locfileid: "112061175"
 触发安全警报的高级检测仅适用于 Azure Defender。 有免费试用版可用。 若要升级，请参阅[启用 Azure Defender](enable-azure-defender.md)。
 
 ## <a name="what-are-security-alerts"></a>什么是安全警报？
-安全中心将从 Azure 资源、网络和已连接的合作伙伴解决方案（例如防火墙和终结点保护解决方案）中自动收集、分析并整合日志数据，以检测真正的威胁并减少误报。 安全中心显示了一系列安全警报（按严重程度排序），并显示了快速调查问题所需的信息以及修复攻击的步骤。
+安全中心将从 Azure 资源、网络和已连接的合作伙伴解决方案（例如防火墙和终结点保护解决方案）自动收集、分析并整合日志数据，以检测真正的威胁并减少误报。 安全中心显示了一系列安全警报（按严重程度排序），并显示了快速调查问题所需的信息以及修复攻击的步骤。
 
 若要了解各种类型的警报，请参阅[安全警报 - 参考指南](alerts-reference.md)。
 
@@ -46,7 +46,7 @@ ms.locfileid: "112061175"
 
 1. 若要筛选警报列表，请选择任何相关的筛选器。 你还可以通过“添加筛选器”选项添加进一步的筛选器。
 
-    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-small.png" alt-text="向警报视图添加筛选器" lightbox="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-large.png":::
+    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-small.png" alt-text="向警报视图添加筛选器。" lightbox="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-large.png":::
 
     列表会根据你选择的筛选选项进行更新。 筛选功能可能非常有用。 例如，假设正在调查系统中的潜在危害，需要处理过去 24 小时内发生的安全警报。
 
@@ -55,7 +55,7 @@ ms.locfileid: "112061175"
 
 1. 从“安全警报”列表中，选择一个警报。 此时会打开一个侧窗格，其中显示了警报和所有受影响的资源的说明。 
 
-    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-details-pane.png" alt-text="安全警报的迷你详细信息视图":::
+    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-details-pane.png" alt-text="安全警报的迷你详细信息视图。":::
 
     > [!TIP]
     > 在此侧窗格处于打开状态时，可以通过键盘上的向上和向下箭头键快速查看警报列表。
@@ -66,7 +66,7 @@ ms.locfileid: "112061175"
 
     右侧窗格包含“警报详细信息”选项卡，其中包含警报的更多详细信息，用于帮助你调查问题：IP 地址、文件、进程等。
      
-    ![有关如何处理安全警报的建议](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
+    ![有关如何处理安全警报的建议。](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
     右侧窗格中还包含“执行操作”选项卡。使用此选项卡可以对安全警报执行其他操作。 操作，例如：
     - *缓解威胁* - 为此安全警报提供手动修正步骤
@@ -74,7 +74,7 @@ ms.locfileid: "112061175"
     - *触发自动响应* - 提供可触发逻辑应用的选项，作为对此安全警报的响应
     - 抑制类似的警报 - 如果警报与组织无关，则提供可抑制具有类似特征的未来警报的选项
 
-    ![“执行操作”选项卡](./media/security-center-managing-and-responding-alerts/alert-take-action.png)
+    ![“执行操作”选项卡。](./media/security-center-managing-and-responding-alerts/alert-take-action.png)
 
 
 

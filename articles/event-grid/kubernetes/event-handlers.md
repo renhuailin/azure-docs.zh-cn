@@ -6,12 +6,12 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 838084204ed2c1979f618bb2bfe644d1f88cd51e
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: b0306002ea8a77e82e0247353489761a24654e0e
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110536492"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112417354"
 ---
 # <a name="event-handlers-destinations-in-event-grid-on-kubernetes"></a>Kubernetes 上的事件网格中的事件处理程序和目标
 事件处理程序是用于公开终结点的系统，并且是事件网格发送事件的目标。 事件处理程序在接收到事件后会对其进行操作，并使用事件有效负载执行某些逻辑，这可能会导致新事件发生。
@@ -20,7 +20,7 @@ ms.locfileid: "110536492"
 
 通常，Kubernetes 上的事件网格可通过 Webhook 将事件发送到任何目标。 Webhook 是事件网格可以访问的服务或工作负载公开的 HTTP 终结点。 Webhook 可以是托管在同一群集、同一网络空间、云中、本地或事件网格可以覆盖的任何位置的工作负载。 
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 通过 Webhook，事件网格支持 Kubernetes 群集上托管的下列目标：
 

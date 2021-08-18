@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: b402dab4c6e94a7634e11f0330b5379315e43abf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c66f4bd7e311bdaedefe68327fc34d373fc6fec
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91762442"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113301647"
 ---
 # <a name="call-logic-apps-from-power-automate-and-power-apps"></a>从 Power Automate 和 Power Apps 调用逻辑应用
 
@@ -24,7 +24,7 @@ ms.locfileid: "91762442"
 >
 > * 若要查找没有逻辑应用等效项的 Power Automate 连接器，请查看 [Power Automate 连接器](/connectors/connector-reference/connector-reference-powerautomate-connectors)。
 >
-> * 若要查找没有 Power Automate 等效项的逻辑应用连接器，请查看[逻辑应用连接器](/connectors/connector-reference/connector-reference-powerautomate-connectors)。
+> * 若要查找没有 Power Automate 等效项的逻辑应用连接器，请查看[逻辑应用连接器](/connectors/connector-reference/connector-reference-logicapps-connectors)。
 
 ## <a name="prerequisites"></a>先决条件
 

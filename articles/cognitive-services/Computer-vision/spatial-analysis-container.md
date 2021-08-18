@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/08/2021
 ms.author: pafarley
-ms.openlocfilehash: 15ef67fb452b4302cc848b88b3dab89d46fb8793
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 2261bf9f52747bee8617b4393c207703a252a1ad
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746458"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113005989"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>安装和运行空间分析容器（预览版）
 
@@ -316,7 +316,10 @@ sudo systemctl restart iotedge
 
 在 Azure 门户中打开 [创建虚拟机](https://ms.portal.azure.com/#create/Microsoft.VirtualMachine) 向导。
 
-为 VM 命名，选择“(美国)美国西部 2”作为区域。 请务必将 `Availability Options` 设置为“无需基础结构冗余”。 参阅下图完成配置，并参阅后续步骤找到正确的 VM 大小。 
+为 VM 命名，选择“(美国)美国西部 2”作为区域。 
+
+> [!IMPORTANT]
+> 请务必将 `Availability Options` 设置为“无需基础结构冗余”。 参阅下图完成配置，并参阅后续步骤找到正确的 VM 大小。 
 
 :::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.jpg" alt-text="虚拟机配置详细信息。" lightbox="media/spatial-analysis/virtual-machine-instance-details.jpg":::
 

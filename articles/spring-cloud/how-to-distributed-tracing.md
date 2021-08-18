@@ -1,19 +1,19 @@
 ---
 title: 将分布式跟踪与 Azure Spring Cloud 配合使用
 description: 了解如何通过 Azure Application Insights 使用 Spring Cloud 的分布式跟踪
-author: bmitchell287
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 10/06/2019
-ms.author: brendm
+ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 48f80d82c003677f2cacfdef2a57ae1aaa68d59d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 8eaac1c68c9cff329fcc7b2c408063f01762169b
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135106"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014568"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>将分布式跟踪与 Azure Spring Cloud 配合使用
 
@@ -92,7 +92,7 @@ ms.locfileid: "108135106"
   }
 ```
 
-有关 .NET Core Steeltoe 应用中的分布式跟踪的详细信息，请参阅 Steeltoe 文档中的[分布式跟踪](https://steeltoe.io/docs/3/tracing/distributed-tracing)。
+有关 .NET Core Steeltoe 应用中的分布式跟踪的详细信息，请参阅 Steeltoe 文档中的[分布式跟踪](https://docs.steeltoe.io/api/v3/tracing/)。
 ::: zone-end
 ::: zone pivot="programming-language-java"
 在本文中，学习如何：
@@ -170,7 +170,6 @@ ms.locfileid: "108135106"
            </dependency>
       </dependencies>
       ```
-
 
 1. 再次为 Azure Spring Cloud 服务执行生成和部署操作，使之反映这些更改。
 

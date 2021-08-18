@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 06/10/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c64a712cc916cad0f6f6fec77f33fcb422f834fb
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: a6005c267423787fed61f2fb9badfea5769137d2
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982963"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113565357"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自动化 Runbook 类型
 
@@ -70,6 +70,7 @@ ms.locfileid: "111982963"
 * Runbook 无法使用[并行处理](automation-powershell-workflow.md#use-parallel-processing)并行执行多个操作。
 * 出现错误时，Runbook 无法使用[检查点](automation-powershell-workflow.md#use-checkpoints-in-a-workflow)恢复 Runbook。
 * 你可以使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook)（用于创建新作业）仅将 PowerShell 工作流 Runbook 和图形 Runbook 以子 Runbook 的形式包括在内。
+* Runbook 不能使用 PowerShell [#Requires](/powershell/module/microsoft.powershell.core/about/about_requires) 语句；Azure 沙盒或混合 Runbook 辅助角色不支持该语句，它会导致作业失败。
 
 ### <a name="known-issues"></a>已知问题
 

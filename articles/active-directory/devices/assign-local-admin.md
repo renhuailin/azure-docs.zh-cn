@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 806ff92fcf75ff8d1c8e092d7ff4435751a9e7db
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a21505fc37ad3b7fb47af8c6b79262ebb654d800
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529903"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114228027"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的设备上的本地管理员组
 
@@ -29,10 +29,10 @@ ms.locfileid: "107529903"
 使用 Azure AD 联接将 Windows 设备与 Azure AD 连接时，Azure AD 会将以下安全主体添加到设备上的本地管理员组：
 
 - Azure AD 全局管理员角色
-- Azure AD 设备管理员角色 
+- 已建立 Azure AD 联接的设备的本地管理员角色 
 - 执行 Azure AD 联接的用户   
 
-通过将 Azure AD 角色添加到本地管理员组，可以在 Azure AD 中随时更新可管理设备的用户，而无需修改设备上的任何内容。 Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，以支持最小特权原则 (PoLP)。 除全局管理员之外，还可启用仅分配了设备管理员角色的用户来管理设备。 
+通过将 Azure AD 角色添加到本地管理员组，可以在 Azure AD 中随时更新可管理设备的用户，而无需修改设备上的任何内容。 Azure AD 还会将已建立 Azure AD 联接的设备的本地管理员角色添加到本地管理员组，以支持最低权限原则 (PoLP)。 除全局管理员之外，还可启用仅分配了设备管理员角色的用户来管理设备。 
 
 ## <a name="manage-the-global-administrators-role"></a>管理全局管理员角色
 
@@ -55,7 +55,7 @@ ms.locfileid: "107529903"
 
 ![其他本地管理员](./media/assign-local-admin/10.png)
 
->[!NOTE]
+> [!NOTE]
 > 此选项需要 Azure AD Premium 租户。 
 
 设备管理员已分配给所有已加入 Azure AD 的设备。 无法将设备管理员范围限定为一组特定设备。 更新设备管理员角色不一定会对受影响的用户产生直接影响。 在用户已登录的设备上，当以下两种操作都发生时，就会进行特权提升：
@@ -63,24 +63,32 @@ ms.locfileid: "107529903"
 - 最多 4 个小时，Azure AD 便会发出具有适当特权的新主刷新令牌。 
 - 用户注销并重新登录（而不是锁定/解锁）即可刷新其配置文件。
 
->[!NOTE]
+> [!NOTE]
 > 上述操作不适用于之前未登录相关设备的用户。 在这种情况下，管理员特权将在他们首次登录设备后立即应用。 
 
 ## <a name="manage-administrator-privileges-using-azure-ad-groups-preview"></a>使用 Azure AD 组管理管理员权限（预览版）
 
 从 Windows 10 版本 2004 开始，你可以使用 Azure AD 组通过[受限组](/windows/client-management/mdm/policy-csp-restrictedgroups) MDM 策略来管理 Azure AD 联接的设备上的管理员特权。 通过此策略，你可以将单个用户或 Azure AD 组分配给 Azure AD 联接的设备上的本地管理员组，从而可以为不同的设备组配置不同的管理员。 
 
->[!NOTE]
-> 从 Windows 10 20H2 更新开始，我们推荐使用[本地用户和组](/windows/client-management/mdm/policy-csp-localusersandgroups)策略而不是“受限组”策略
-
+> [!NOTE]
+> 从 Windows 10 20H2 更新开始，我们推荐使用[本地用户和组](/windows/client-management/mdm/policy-csp-localusersandgroups)策略，而不是“受限组”策略。
 
 当前，Intune 中没有用于管理这些策略的 UI，需要使用[自定义 OMA-URI 设置](/mem/intune/configuration/custom-settings-windows-10)对其进行配置。 使用以下任一策略时，需要注意以下事项： 
 
 - 通过该策略添加 Azure AD 组需要该组的 SID，可以通过执行[适用于组的 Microsoft Graph API](/graph/api/resources/group) 可以获得该组的 SID。 SID 由 API 响应中的属性 `securityIdentifier` 定义。
+
 - 实施“受限组”策略时，将删除不在“成员”列表中的任何当前组成员。 因此，对新成员或组实施此策略将从设备中删除现有管理员（即联接设备的用户）、设备管理员角色，以及公司管理员角色。 为避免删除现有成员，需要将他们配置为“受限组”策略中“成员”列表的一部分。 如果使用允许对组成员资格进行增量更新的“本地用户和组”策略，则可以解决此限制
+
 - 仅针对 Windows 10 设备上的以下知名组评估使用这两种策略的管理员特权：管理员，用户、来宾、高级用户、远程桌面用户和远程管理用户。 
+
 - 使用 Azure AD 组管理本地管理员不适用于已建立混合 Azure AD 联接或已向 Azure AD 注册的设备。
+
 - 虽然 Windows 10 版本 2004 之前存在“受限组”策略，但它不支持 Azure AD 组作为设备本地管理员组的成员。 
+- 使用两个策略中的任何一个部署到设备的 Azure AD 组不会应用于远程桌面连接。 若要控制已建立 Azure AD 联接的设备的远程桌面权限，需要将单个用户的 SID 添加到相应的组。 
+
+> [!IMPORTANT]
+> 使用 Azure AD 的 Windows 登录支持评估最多 20 个组的管理员权限。 建议每个设备上的 Azure AD 组不超过 20 个，以确保正确分配管理员权限。 此限制也适用于嵌套组。 
+
 
 ## <a name="manage-regular-users"></a>管理常规用户
 

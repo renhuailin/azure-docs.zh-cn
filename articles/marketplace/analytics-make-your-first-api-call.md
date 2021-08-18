@@ -4,15 +4,16 @@ description: 有关如何使用 API 访问商业市场分析数据的示例。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: sayantanroy83
-ms.author: sroy
+author: smannepalle
+ms.author: smannepalle
+ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: 9e5fbdfca80d19f026a014a89ffbf137bacb521c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f4437782f46e3144b3917a16fec14c9e92dfd303
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639577"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748286"
 ---
 # <a name="make-your-first-api-call-to-access-commercial-marketplace-analytics-data"></a>发出第一次 API 调用以访问商业市场分析数据
 
@@ -337,5 +338,5 @@ Curl
 
 ## <a name="next-steps"></a>后续步骤
 
-- 可以通过 [Swagger API URL](https://swagger.io/docs/specification/api-host-and-base-path/) 试用 API
+- 可以通过 [Swagger API URL](https://api.partnercenter.microsoft.com/insights/v1/cmp/swagger/index.html) 试用 API
 - [以编程方式访问的范例](analytics-programmatic-access.md)

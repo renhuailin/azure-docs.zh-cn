@@ -2,7 +2,6 @@
 title: Azure IoT 中心从设备到云选项 | Microsoft Docs
 description: 开发人员指南 - 指导用户何时使用从设备到云的消息、报告属性或文件上传，以进行从云到设备的通信。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -13,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: dd4f4ad7f84ebc1f5e254843e7afa4aa0f3f224f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d48a6b7478de1015a97d3f91ce08398de3d6c1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87319127"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728794"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>从设备到云通信指南
 
@@ -34,7 +33,7 @@ ms.locfileid: "87319127"
 
 下面是各种设备到云通信选项的详细比较。
 
-| 因子 | 设备到云的消息 | 设备克隆的报告属性 | 文件上传 |
+| 因素 | 设备到云的消息 | 设备克隆的报告属性 | 文件上传 |
 | ---- | ------- | ---------- | ---- |
 | 方案 | 遥测时序和警报。 例如，每隔 5 分钟发送 256-KB 的传感器数据批。 | 可用功能和条件。 例如，当前设备连接模式，诸如手机网络或 WiFi。 同步长时间运行的工作流，如配置和软件更新。 | 媒体文件。 大型（通常为压缩的）遥测批。 |
 | 存储和检索 | 通过 IoT 中心临时进行存储，最多存储 7 天。 仅顺序读取。 | 通过 IoT 中心存储在设备孪生中。 可使用 [IoT 中心查询语言](iot-hub-devguide-query-language.md)进行检索。 | 存储在用户提供的 Azure 存储帐户中。 |

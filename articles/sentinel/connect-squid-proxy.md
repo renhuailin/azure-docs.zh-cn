@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2021
 ms.author: yelevin
-ms.openlocfilehash: eec88bf85f1b7a2ec8db2bf23c43629d84cc5106
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4bf5d3c4a4ad70f5fc5f09c50144b759900370b6
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100090439"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253412"
 ---
 # <a name="connect-your-squid-proxy-to-azure-sentinel"></a>将 Squid Proxy 连接到 Azure Sentinel
 
 > [!IMPORTANT]
 > Squid Proxy 连接器目前为预览版。 请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，了解适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 本文介绍如何将 Squid 代理设备连接到 Azure Sentinel。 使用 Squid Proxy 数据连接器，可以轻松地将 Squid 日志与 Azure Sentinel 连接，这样，你就可以查看工作簿中的数据，将其用于创建自定义警报，并用它来改进调查。 Squid Proxy 和 Azure Sentinel 之间的集成利用 Log Analytics 代理提供的本地文件处理功能。
 
@@ -47,7 +49,7 @@ ms.locfileid: "100090439"
 
     1. 安装和载入适用于 Linux 的代理
 
-        - 选择 Azure Linux VM 或非 Azure Linux 计算机（物理或虚拟）。
+        - 选择 Azure Linux VM 或非 Azure Linux 虚拟机（物理或虚拟）。
 
     1. 配置要收集的日志
 
@@ -67,6 +69,6 @@ ms.locfileid: "100090439"
 
 本文档介绍了如何将 Squid Proxy 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。

@@ -4,16 +4,16 @@ description: 了解如何创建和部署证书以用于云服务以及在 Azure 
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: c73f9812f344eecf4e51f43405b48693ddfa191b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 926d711f86a07ee22a4370e838efae9f4e0be957
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98739728"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113126205"
 ---
 # <a name="certificates-overview-for-azure-cloud-services-classic"></a>Azure 云服务（经典）证书概述
 
@@ -37,7 +37,7 @@ Azure 使用的证书可以包含一个公钥。 证书具有指纹，它提供�
 服务证书可与服务分开管理，且可由不同的人员管理。 例如，开发人员上传的服务包可以使用 IT 管理员以前上传到 Azure 的证书。 IT 管理员可以管理并续订该证书（更改服务配置）而无需上传新的服务包。 在没有新服务包的情况下更新之所以可能是因为证书的逻辑名称、存储名称和存储位置是在服务定义文件中指定的，而证书指纹则是在服务配置文件中指定的。 若要更新证书，只需上传新证书并更改服务配置文件中的指纹值。
 
 >[!Note]
->[云服务常见问题解答 - 配置和管理](cloud-services-configuration-and-management-faq.md)一文包含有关证书的一些有用信息。
+>[云服务常见问题解答 - 配置和管理](cloud-services-configuration-and-management-faq.yml)一文包含有关证书的一些有用信息。
 
 ## <a name="what-are-management-certificates"></a>什么是管理证书？
 使用管理证书可以通过经典部署模型进行身份验证。 许多程序和工具（如 Visual Studio 或 Azure SDK）会使用这些证书来自动配置和部署各种 Azure 服务。 实际上，这些证书与云服务并无关系。 

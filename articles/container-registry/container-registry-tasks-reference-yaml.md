@@ -1,14 +1,14 @@
 ---
 title: YAML 参考 - ACR 任务
 description: 有关在 YAML 中为 ACR 任务定义任务的参考，包括任务属性、步骤类型、步骤属性和内置变量。
-ms.topic: article
+ms.topic: reference
 ms.date: 07/08/2020
-ms.openlocfilehash: 126fcbce0569b2be6d9302cbbb718fa11e3e8046
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 31e96c64ef8209e5e18add9508fe379f1eb0f414
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780940"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113302656"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR 任务参考：YAML
 
@@ -63,12 +63,12 @@ YAML 是 ACR 任务目前支持的唯一一种文件格式。 其他文件扩展
 az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 ```
 
-示例命令的格式假设已在 Azure CLI 中配置了默认注册表，因此省略了 `--registry` 参数。 若要配置默认注册表，请结合 [ 参数（接受 ][az-configure] 值）使用 `--defaults`az configure`acr=REGISTRY_NAME` 命令。
+示例命令的格式假设已在 Azure CLI 中配置了默认注册表，因此省略了 `--registry` 参数。 若要配置默认注册表，请结合 `set` 命令（接受 `defaults.acr=REGISTRY_NAME` 键值对）使用 [az configure][az-config] 命令。
 
 例如，若要在 Azure CLI 中配置名为“myregistry”的默认注册表：
 
 ```azurecli
-az configure --defaults acr=myregistry
+az config set defaults.acr=myregistry
 ```
 
 ## <a name="task-properties"></a>任务属性
@@ -78,7 +78,7 @@ az configure --defaults acr=myregistry
 | properties | 类型 | 可选 | 说明 | 支持的重写 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | string | 是 | ACR 任务服务分析的 `acr-task.yaml` 文件的版本。 ACR 任务致力于保持向后兼容性，而此值能使 ACR 任务与某个定义的版本保持兼容。 如果未指定，则默认为最新版本。 | 否 | 无 |
-| `stepTimeout` | 整数（秒） | 是 | 步骤可以运行的最大秒数。 如果在任务中指定该属性，则会设置所有步骤的默认 `timeout` 属性。 如果在步骤中指定 `timeout` 属性，则会替代任务提供的属性。 | 是 | 600（10 分钟） |
+| `stepTimeout` | 整数（秒） | 是 | 步骤可以运行的最大秒数。 如果在任务中指定 `stepTimeout` 属性，则会设置所有步骤的默认 `timeout` 属性。 如果在步骤中指定 `timeout` 属性，则会替代任务提供的 `stepTimeout` 属性。<br/><br/>任务的步骤超时值的总和应等于任务的运行 `timeout` 属性的值（例如，通过将 `--timeout` 传递给 `az acr task create` 命令来设置）。 如果任务的运行 `timeout` 值较小，则优先执行。  | 是 | 600（10 分钟） |
 | `workingDirectory` | 字符串 | 是 | 运行时期间容器的工作目录。 如果在任务中指定该属性，则会设置所有步骤的默认 `workingDirectory` 属性。 如果在步骤中指定，则会替代任务提供的属性。 | 是 | 在 Windows 中为 `c:\workspace`，在 Linux 中为 `/workspace` |
 | `env` | [字符串, 字符串, ...] | 是 |  采用 `key=value` 格式的字符串数组，定义任务的环境变量。 如果在任务中指定该属性，则会设置所有步骤的默认 `env` 属性。 如果在步骤中指定，则会替代从任务继承的所有环境变量。 | 是 | 无 |
 | `secrets` | [secret, secret, ...] | 是 | [secret](#secret) 对象的数组。 | 否 | 无 |
@@ -631,4 +631,4 @@ alias:
 <!-- LINKS - Internal -->
 [az-acr-run]: /cli/azure/acr#az_acr_run
 [az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
-[az-configure]: /cli/azure/reference-index#az_configure
+[az-config]: /cli/azure/reference-index#az_config

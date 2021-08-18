@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 4/13/2021
-ms.openlocfilehash: bc635d742fb9edf53a6cd3244b7e8aa34c8d7148
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 774642e15b7d7371872c1ec97455c8f56f8b8789
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205641"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114456078"
 ---
 # <a name="service-request-failed-status-404-sub-domain-not-found"></a>服务请求失败。 状态: 404 找不到子域
 
@@ -46,4 +46,4 @@ Azure 数字孪生要求所有身份验证用户属于 Azure 数字孪生实例�
 ## <a name="next-steps"></a>后续步骤
 
 阅读有关 Azure 数字孪生的安全性和权限的详细信息：
-* [概念：Azure 数字孪生解决方案的安全性](concepts-security.md)
+* [Azure 数字孪生解决方案的安全性](concepts-security.md)

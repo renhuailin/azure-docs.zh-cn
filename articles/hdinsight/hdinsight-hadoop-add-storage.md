@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 32757fef131c5e443350f032c0ac987d7f491396
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86fa4eb83592d5c9927139c096a60c2ebc4efbc0
+ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864306"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113552075"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
 
@@ -124,12 +124,11 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 再次运行脚本操作不会更新密钥，因为脚本会检查该存储帐户的条目是否已存在。 如果条目已存在，则不会进行任何更改。
 
-若要解决此问题，请执行以下操作：  
-1. 删除存储帐户。
-1. 添加存储帐户。
+若要解决此问题，请执行以下操作：
 
-> [!IMPORTANT]  
-> 对于附加到群集的主存储帐户，不支持轮换使用存储密钥。
+* 有关如何轮换访问密钥的信息，请参阅[更新存储帐户访问密钥](hdinsight-rotate-storage-keys.md)。
+
+* 还可以删除存储帐户，然后再将该存储帐户添加回来。
 
 ## <a name="next-steps"></a>后续步骤
 

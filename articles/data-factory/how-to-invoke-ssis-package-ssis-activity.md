@@ -2,18 +2,19 @@
 title: 使用“执行 SSIS 包”活动运行 SSIS 包
 description: 本文介绍如何使用“执行 SSIS 包”活动在 Azure 数据工厂管道中运行 SQL Server Integration Services (SSIS) 包。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.devlang: powershell
 ms.topic: conceptual
 ms.author: sawinark
 author: swinarko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.date: 07/20/2020
-ms.openlocfilehash: 40e7d5c11a2ebc62e59c3d5d20dfefe18a33f9a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/04/2021
+ms.openlocfilehash: 3b8c15a764f3a196232e43ffd8d7fd7fe373355c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100391603"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739459"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用“执行 SSIS 包”活动运行 SSIS 包
 
@@ -37,9 +38,9 @@ ms.locfileid: "100391603"
 
    ![数据工厂主页](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 
-   在“开始使用”页中，选择“创建管道”。  
+   在主页上，选择“协调”。 
 
-   ![“入门”页](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
+   ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
 
 1. 在“活动”工具箱中，展开“常规”。 然后将“执行 SSIS 包”活动拖到管道设计图面上。 
 

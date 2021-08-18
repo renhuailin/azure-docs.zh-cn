@@ -2,7 +2,6 @@
 title: Azure IoT 中心和事件网格 | Microsoft Docs
 description: 使用 Azure 事件网格根据 IoT 中心发生的操作来触发流程。
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
@@ -12,16 +11,16 @@ ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: c4c23859a44f45fc294631dd33da0ab9cad1dd61
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: d8ddd49202faac6a9fc5ba34ac5b5e8e92d5b704
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110191243"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739228"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>通过使用事件网格触发操作来响应 IoT 中心事件
 
-通过将 Azure IoT 中心与 Azure 事件网格进行集成，使你可以向其他服务发送事件通知，并触发下游流程。 配置商业应用程序来侦听 IoT 中心事件，以便安全可靠地以可缩放方式响应关键事件。  例如，生成一个应用程序来更新数据库、创建工作票证，并在每当有新的 IoT 设备注册到 IoT 中心时，发送一封电子邮件通知。
+通过将 Azure IoT 中心与 Azure 事件网格进行集成，使你可以向其他服务发送事件通知，并触发下游流程。 将商业应用程序配置为侦听 IoT 中心事件，以便能够以可靠、可缩放且安全的方式对关键事件作出反应。  例如，生成一个应用程序来更新数据库、创建工作票证，并在每当有新的 IoT 设备注册到 IoT 中心时，发送一封电子邮件通知。
 
 [Azure 事件网格](../event-grid/overview.md)是一种完全托管的事件路由服务，使用发布-订阅模型。 事件网格包含对 Azure 服务（如 [Azure Functions](../azure-functions/functions-overview.md) 和 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)）的内置支持，还可使用 Webhook 向非 Azure 服务传递事件警报。 有关受事件网格支持的事件处理程序的完整列表，请参阅 [Azure 事件网格简介](../event-grid/overview.md)。
 

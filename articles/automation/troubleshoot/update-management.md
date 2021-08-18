@@ -3,22 +3,70 @@ title: 排查 Azure 自动化更新管理问题
 description: 本文介绍如何排查和解决 Azure 自动化更新管理的问题。
 services: automation
 ms.subservice: update-management
-ms.date: 04/18/2021
+ms.date: 06/10/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5d73f7232afc9dcd6f7e069297efac763c242f7b
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: cc65a1c0cd72d9da9208e7377eaef7a887119f43
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164248"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730532"
 ---
 # <a name="troubleshoot-update-management-issues"></a>排查“更新管理”问题
 
-本文讨论在计算机上部署更新管理功能时可能遇到的问题。 对于混合 Runbook 辅助角色代理，可使用代理故障排除程序来确定底层问题。 若要了解有关故障排除程序的详细信息，请参阅[排查 Windows 更新代理问题](update-agent-issues.md)和[排查 Linux 更新代理问题](update-agent-issues-linux.md)。 有关其他功能部署问题，请参阅[排查功能部署问题](onboarding.md)。
+本文讨论在计算机上使用更新管理功能来访问和管理更新时可能遇到的问题。 对于混合 Runbook 辅助角色代理，可使用代理故障排除程序来帮助确定底层问题。 若要了解有关故障排除程序的详细信息，请参阅[排查 Windows 更新代理问题](update-agent-issues.md)和[排查 Linux 更新代理问题](update-agent-issues-linux.md)。 有关其他功能部署问题，请参阅[排查功能部署问题](onboarding.md)。
 
 >[!NOTE]
 >如果在 Windows 计算机上部署更新管理功能时遇到问题，请打开 Windows 事件查看器，查看本地计算机上“应用程序和服务日志”下的 Operations Manager 事件日志 。 查找事件 ID 为 4502 的事件和包含 `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` 的事件详细信息。
+
+## <a name="scenario-windows-defender-update-always-show-as-missing"></a><a name="windows-defender-update-missing-status"></a>场景：Windows Defender 更新始终显示为缺失
+
+### <a name="issue"></a>问题
+
+Windows Defender 的定义更新 (KB2267602) 自安装后在评估中始终显示为缺失，在从 Windows 更新历史记录进行验证后会显示为最新状态。
+
+### <a name="cause"></a>原因
+
+定义更新在一天中发布多次。 因此，可看到 KB2267602 在一天内发布了多个版本，但它们具有不同的更新 ID 和版本。
+
+更新管理评估每 11 小时运行一次。 在此示例中，上午 10:00 运行了某个评估，此时有 1.237.316.0 版本可用。 在 Log Analytics 工作区中搜索 Update 表时，定义更新 1.237.316.0 的“UpdateState”显示为“需要”。   如果计划的部署在几个小时后运行，假设下午 1:00 时版本 1.237.316.0 仍然可用或有可用的新版本，则会安装新版本，并反映在写入 UpdateRunProgress 表的记录中。 但在 Update 表中，运行下一次评估之前，它仍将版本 1.237.316.0 显示为“需要”。  再次运行评估时，可能没有可用的新定义更新，因此 Update 表不会将定义更新版本 1.237.316.0 显示为缺失，也不会将可用的新版本显示为“需要”。 由于定义更新的频率，日志搜索中可能会返回多个版本。 
+
+### <a name="resolution"></a>解决方法
+
+运行以下日志查询，确认是否正确报告了安装的定义更新。 此查询返回 Updates 表中 KB2267602 的生成时间、版本和更新 ID。 将 Computer 的值替换为计算机的完全限定名称。
+
+```kusto
+Update
+| where TimeGenerated > ago(14h) and OSType != "Linux" and (Optional == false or Classification has "Critical" or Classification has "Security") and SourceComputerId in ((
+    Heartbeat
+    | where TimeGenerated > ago(12h) and OSType =~ "Windows" and notempty(Computer)
+    | summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+    | where Solutions has "updates"
+    | distinct SourceComputerId))
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by Computer, SourceComputerId, UpdateID
+| where UpdateState =~ "Needed" and Approved != false and Computer == "<computerName>"
+| render table
+```
+
+返回的查询结果应类似于以下内容：
+
+:::image type="content" source="./media/update-management/example-query-updates-table.png" alt-text="显示 Updates 表中的日志查询结果的示例。":::
+
+运行以下日志查询，获取 UpdatesRunProgress 表中 KB2267602 的生成时间、版本和更新 ID。 此查询有助于我们了解它是从更新管理安装的，还是从 Microsoft 更新自动安装在计算机上的。 需要将 CorrelationId 的值替换为更新的 Runbook 作业 GUID（即 Patch-MicrosoftOMSComputer Runbook 作业中的 MasterJOBID 属性值），并将 SourceComputerId 的值替换为计算机的 GUID 。
+
+```kusto
+UpdateRunProgress
+| where OSType!="Linux" and CorrelationId=="<master job id>" and SourceComputerId=="<source computer id>"
+| summarize arg_max(TimeGenerated, Title, InstallationStatus) by UpdateId
+| project TimeGenerated, id=UpdateId, displayName=Title, InstallationStatus
+```
+
+返回的查询结果应类似于以下内容：
+
+:::image type="content" source="./media/update-management/example-query-updaterunprogress-table.png" alt-text="显示 UpdatesRunProgress 表中的日志查询结果的示例。":::
+
+如果 Updates 表中的日志查询结果的 TimeGenerated 值早于计算机上的更新安装的时间戳（即 TimeGenerated 值），或早于 UpdateRunProgress 表中的日志查询结果中的相应值，则等待下一次评估   。 然后，再次对 Updates 表运行日志查询。 不会显示 KB2267602 的更新，或者显示新版本。 但是，即使在最新评估之后，如果 Updates 表中的相同版本显示为“需要”，但该版本已安装，则应打开 Azure 支持事件 。
 
 ## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a><a name="updates-linux-installed-different"></a>场景：Linux 更新显示为挂起，已安装的更新并不相同
 
@@ -145,7 +193,7 @@ Error details: Failed to enable the Update solution
    | summarize by Computer, Solutions
    ```
 
-    如果查询结果中未显示计算机，则表示该计算机最近尚未签入。 可能存在本地配置问题，因此应该[重新安装代理](../../azure-monitor/vm/quick-collect-windows-computer.md#install-the-agent-for-windows)。
+    如果查询结果中未显示计算机，则表示该计算机最近尚未签入。 可能存在本地配置问题，因此应该[重新安装代理](../../azure-monitor/agents/agent-windows.md)。
 
     如果你的计算机在查询结果中列出，请在“解决方案”属性下验证是否列出了“更新”。 这验证它是否已在“更新管理”中注册。 如果未注册，请检查是否存在范围配置问题。 [作用域配置](../update-management/scope-configuration.md)决定为更新管理配置哪些计算机。 若要为目标计算机配置范围，请参阅[在工作区中启用计算机](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace)。
 
@@ -290,7 +338,17 @@ Azure Resource Graph 查询结果中确实显示了计算机，但动态组预�
 
 4. 验证是否为该计算机显示了混合辅助角色。
 
-5. 如果未将计算机设置为系统混合 Runbook 辅助角色，请在“更新管理概述”一文的[启用更新管理](../update-management/overview.md#enable-update-management)部分下查看启用计算机的方法。 用于启用的方法基于计算机的运行环境。
+5. 如果未将计算机设置为系统混合 Runbook 辅助角色，请使用以下方式之一查看启用方法：
+
+   - 从[自动化帐户](../update-management/enable-from-automation-account.md)为一个或多个 Azure 和非 Azure 计算机（包括启用了 Arc 的服务器）启用。
+
+   - 使用 Enable-AutomationSolution [runbook](../update-management/enable-from-runbook.md) 自动加入 Azure VM。
+
+   - 从 Azure 门户中的“虚拟机”页为[所选 Azure VM](../update-management/enable-from-vm.md) 启用。 此方案适用于 Linux 和 Windows VM。
+
+   - 可以从 Azure 门户中的“虚拟机”页选择启用[多个 Azure VM](../update-management/enable-from-portal.md)。
+
+   用于启用的方法基于计算机的运行环境。
 
 6. 针对预览中未显示的所有计算机，重复上述步骤。
 
@@ -326,7 +384,7 @@ Update
 
 #### <a name="communication-with-automation-account-blocked"></a>与自动化帐户的通信被阻止
 
-转到[网络规划](../update-management/overview.md#ports)，了解必须允许哪些地址和端口才能使更新管理正常工作。
+转到[网络规划](../update-management/plan-deployment.md#ports)，了解必须允许哪些地址和端口才能使更新管理正常工作。
 
 #### <a name="duplicate-computer-name"></a>重复的计算机名称
 
@@ -416,7 +474,7 @@ For one or more machines in schedule, UM job run resulted in either Failed or Fa
 
 如果适用，请为更新部署使用[动态组](../update-management/configure-groups.md)。 此外，可以执行以下步骤。
 
-1. 验证计算机或服务器是否满足[要求](../update-management/overview.md#system-requirements)。
+1. 验证计算机或服务器是否满足[要求](../update-management/operating-system-requirements.md)。
 2. 使用混合 Runbook 辅助角色代理故障排除程序验证与混合 Runbook 辅助角色的连接。 若要了解有关故障排除程序的详细信息，请参阅[排查更新代理问题](update-agent-issues.md)。
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>场景：在没有部署的情况下安装更新
@@ -514,7 +572,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 若要了解更新成功启动后在运行期间发生此错误的原因，请[检查运行中受影响的计算机的作业输出](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment)。 可以从计算机查找特定的错误消息，可以对这些错误消息进行调查并对其采取操作。  
 
-可使用 REST API 以编程方式检索更多详细信息。 请查看[软件更新配置计算机运行](https://docs.microsoft.com/rest/api/automation/softwareupdateconfigurationmachineruns)，了解如何检索更新配置计算机运行的列表，或者如何通过 ID 检索单个软件更新配置计算机运行。
+可使用 REST API 以编程方式检索更多详细信息。 请查看[软件更新配置计算机运行](/rest/api/automation/softwareupdateconfigurationmachineruns)，了解如何检索更新配置计算机运行的列表，或者如何通过 ID 检索单个软件更新配置计算机运行。
 
 编辑任何失败的计划更新部署，并增加维护时段。
 
@@ -549,7 +607,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 |异常  |解决方法或操作  |
 |---------|---------|
 |`Exception from HRESULT: 0x……C`     | 搜索 [Windows 更新错误代码列表](https://support.microsoft.com/help/938205/windows-update-error-code-list)中的相关错误代码，以查找有关异常原因的其他详细信息。        |
-|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | 这些表示是网络连接问题。 请确保你的计算机具有与更新管理的网络连接。 请参阅[网络规划](../update-management/overview.md#ports)部分，了解所需的端口和地址的列表。        |
+|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | 这些表示是网络连接问题。 请确保你的计算机具有与更新管理的网络连接。 请参阅[网络规划](../update-management/plan-deployment.md#ports)部分，了解所需的端口和地址的列表。        |
 |`0x8024001E`| 由于服务或系统正关闭，未能完成更新操作。|
 |`0x8024002E`| 已禁用 Windows 更新服务。|
 |`0x8024402C`     | 如果使用 WSUS 服务器，请确保注册表项 `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` 下 `WUServer` 和 `WUStatusServer` 的注册表值指定的是正确的 WSUS 服务器。        |
@@ -615,7 +673,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 ### <a name="installing-updates-by-classification-on-linux"></a>按 Linux 上的分类安装更新
 
-按分类（“关键更新和安全更新”）将更新部署到 Linux 有重要的注意事项，尤其是对 CentOS 来说。 这些[限制记录在“更新管理”概览页上](../update-management/overview.md#linux)。
+按分类（“关键更新和安全更新”）将更新部署到 Linux 有重要的注意事项，尤其是对 CentOS 来说。 这些[限制记录在“更新管理”概览页上](../update-management/overview.md#update-classifications)。
 
 ### <a name="kb2267602-is-consistently-missing"></a>KB2267602 始终缺失
 

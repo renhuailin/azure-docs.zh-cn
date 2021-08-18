@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: 81b2227ac519de4d03bb63907d14c23b9c34dc64
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 19944b336a9140a7133b2f96d7821c56a59abe7e
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101029"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112676845"
 ---
 # <a name="azure-threat-protection"></a>Azure 威胁防护
 
@@ -287,7 +287,7 @@ SQL 数据库威胁检测程序使用以下检测方法之一：
 
 异常情况检测 API 是有助于检测时序数据中的各种异常模式的 API。 API 将异常分数分配给时序中的每个数据点，这些分数可用于生成警报、通过仪表板进行监视或与出票系统连接。
 
-[异常检测 API](../../machine-learning/team-data-science-process/apps-anomaly-detection-api.md) 可以检测时序数据中以下类型的异常：
+[异常检测 API](/azure/architecture/data-science-process/apps-anomaly-detection-api) 可以检测时序数据中以下类型的异常：
 
 -   **峰值和低值**：监视服务中的登录失败次数或电子商务网站中的结账次数时，异常的峰值和低值指示安全攻击或服务中断。
 

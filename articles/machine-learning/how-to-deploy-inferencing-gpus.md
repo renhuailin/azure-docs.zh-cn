@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: how-to
 ms.custom: devx-track-python, deploy
-ms.openlocfilehash: 4d461bf0558f59c903b0327cf26d4cdf854cd172
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 58518d921ac728901258e5335d045dfd4262dd0e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889639"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446590"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
 
@@ -24,6 +24,8 @@ ms.locfileid: "107889639"
 本文介绍如何使用 Azure 机器学习将启用 GPU 的模型部署为 Web 服务。 本文中的信息基于 Azure Kubernetes 服务 (AKS) 上的模型部署。 AKS 群集提供模型用于推理的 GPU 资源。
 
 推理（模型评分）是使用部署的模型进行预测的阶段。 使用 GPU 代替 CPU 可为高度并行化的计算提供性能优势。
+
+[!INCLUDE [endpoints-option](../../includes/machine-learning-endpoints-preview-note.md)]
 
 > [!IMPORTANT]
 > 对于 Web 服务部署，只有 Azure Kubernetes 服务支持 GPU 推理。 对于使用机器学习管道进行的推理，只有 Azure 机器学习计算支持 GPU。 有关使用 ML 管道的详细信息，请参阅[教程：生成 Azure 机器学习管道以用于批量评分](tutorial-pipeline-batch-scoring-classification.md)中的说明操作。 

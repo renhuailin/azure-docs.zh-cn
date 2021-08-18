@@ -9,12 +9,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 04/02/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 29b5e5b23fd8ad1b3912111ef1afef017ceced7c
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 501b431e86b19c8e6cf3aa7cfacb0758691eb93b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592315"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735064"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>安装和使用 Azure 机器学习的 CLI 扩展
 
@@ -32,7 +32,7 @@ CLI 不能取代 Azure 机器学习 SDK。 它是一个经过优化的补充工�
 
 ## <a name="prerequisites"></a>先决条件
 
-* 若要使用 CLI，必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* 若要使用 CLI，必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 
 * 若要从本地环境使用本文档中的 CLI 命令，需要使用 [Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -105,7 +105,7 @@ az extension remove -n azure-cli-ml
 
     此命令创建包含示例 runconfig 和 conda 环境文件的 `.azureml` 子目录。 此子目录还包含用来与 Azure 机器学习工作区通信的 `config.json` 文件。
 
-    有关详细信息，请参阅 [az ml folder attach](/cli/azure/ml/folder#az_ml_folder_attach)。
+    有关详细信息，请参阅 [az ml folder attach](/cli/azure/ml(v1)/folder#az_ml_folder_attach)。
 
 + 将某个 Azure Blob 容器附加为数据存储。
 
@@ -129,7 +129,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget attach aks -n myaks -i myaksresourceid -g myresourcegroup -w myworkspace
     ```
 
-    有关详细信息，请参阅 [az ml computetarget attach aks](/cli/azure/ml/computetarget/attach#az_ml_computetarget_attach-aks)
+    有关详细信息，请参阅 [az ml computetarget attach aks](/cli/azure/ml(v1)/computetarget/attach#az_ml_computetarget_attach-aks)
 
 ### <a name="compute-clusters"></a>计算群集
 
@@ -166,7 +166,7 @@ az extension remove -n azure-cli-ml
         az ml computetarget amlcompute identity assign --name cpu-cluster '[system]'
         ```
 
-有关详细信息，请参阅 [az ml computetarget create amlcompute](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_amlcompute)。
+有关详细信息，请参阅 [az ml computetarget create amlcompute](/cli/azure/ml(v1)/computetarget/create#az_ml_computetarget_create_amlcompute)。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-note.md)]
 
@@ -181,7 +181,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget create computeinstance -n cpu -s "STANDARD_D3_V2" -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget create computeinstance](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_computeinstance)。
+    有关详细信息，请参阅 [az ml computetarget create computeinstance](/cli/azure/ml(v1)/computetarget/create#az_ml_computetarget_create_computeinstance)。
 
 + 停止 computeinstance。
 
@@ -189,7 +189,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget computeinstance stop -n cpu -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget computeinstance stop](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop)。
+    有关详细信息，请参阅 [az ml computetarget computeinstance stop](/cli/azure/ml(v1)/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop)。
 
 + 启动 computeinstance。
 
@@ -197,7 +197,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget computeinstance start -n cpu -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget computeinstance start](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_start)。
+    有关详细信息，请参阅 [az ml computetarget computeinstance start](/cli/azure/ml(v1)/computetarget/computeinstance#az_ml_computetarget_computeinstance_start)。
 
 + 重启 computeinstance。
 
@@ -205,7 +205,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget computeinstance restart -n cpu -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget computeinstance restart](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_restart)。
+    有关详细信息，请参阅 [az ml computetarget computeinstance restart](/cli/azure/ml(v1)/computetarget/computeinstance#az_ml_computetarget_computeinstance_restart)。
 
 + 删除 computeinstance。
 
@@ -213,7 +213,7 @@ az extension remove -n azure-cli-ml
     az ml computetarget delete -n cpu -v
     ```
 
-    有关详细信息，请参阅 [az ml computetarget delete computeinstance](/cli/azure/ml/computetarget#az_ml_computetarget_delete)。
+    有关详细信息，请参阅 [az ml computetarget delete computeinstance](/cli/azure/ml(v1)/computetarget#az_ml_computetarget_delete)。
 
 
 ## <a name="run-experiments"></a><a id="experiments"></a>运行试验
@@ -231,7 +231,7 @@ az extension remove -n azure-cli-ml
     >
     > 可在此 [JSON 文件](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)中找到完整的 runconfig 架构。 该架构通过每个对象的 `description` 键自行记录。 此外，还有可能值的枚举，在末尾还有模板代码片段。
 
-    有关详细信息，请参阅 [az ml run submit-script](/cli/azure/ml/run#az_ml_run_submit_script)。
+    有关详细信息，请参阅 [az ml run submit-script](/cli/azure/ml(v1)/run#az_ml_run_submit_script)。
 
 * 查看试验列表：
 
@@ -239,7 +239,7 @@ az extension remove -n azure-cli-ml
     az ml experiment list
     ```
 
-    有关详细信息，请参阅 [az ml experiment list](/cli/azure/ml/experiment#az_ml_experiment_list)。
+    有关详细信息，请参阅 [az ml experiment list](/cli/azure/ml(v1)/experiment#az_ml_experiment_list)。
 
 ### <a name="hyperdrive-run"></a>HyperDrive 运行
 
@@ -283,7 +283,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
     如需用于定义数据集的 JSON 文件的格式信息，请使用 `az ml dataset register --show-template`。
 
-    有关详细信息，请参阅 [az ml dataset register](/cli/azure/ml/dataset#az_ml_dataset_register)。
+    有关详细信息，请参阅 [az ml dataset register](/cli/azure/ml(v1)/dataset#az_ml_dataset_register)。
 
 + 列出工作区中的所有数据集：
 
@@ -291,7 +291,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml dataset list
     ```
 
-    有关详细信息，请参阅 [az ml dataset list](/cli/azure/ml/dataset#az_ml_dataset_list)。
+    有关详细信息，请参阅 [az ml dataset list](/cli/azure/ml(v1)/dataset#az_ml_dataset_list)。
 
 + 获取数据集的详细信息：
 
@@ -299,7 +299,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml dataset show -n dataset-name
     ```
 
-    有关详细信息，请参阅 [az ml dataset show](/cli/azure/ml/dataset#az_ml_dataset_show)。
+    有关详细信息，请参阅 [az ml dataset show](/cli/azure/ml(v1)/dataset#az_ml_dataset_show)。
 
 + 取消注册数据集：
 
@@ -307,7 +307,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml dataset unregister -n dataset-name
     ```
 
-    有关详细信息，请参阅 [az ml dataset unregister](/cli/azure/ml/dataset#az_ml_dataset_archive)。
+    有关详细信息，请参阅 [az ml dataset unregister](/cli/azure/ml(v1)/dataset#az_ml_dataset_archive)。
 
 ## <a name="environment-management"></a>环境管理
 
@@ -364,7 +364,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     },
     "docker": {
         "enabled": false,
-        "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+        "baseImage": "mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20210615.v1",
         "baseDockerfile": null,
         "sharedVolumes": true,
         "shmSize": "2g",
@@ -414,7 +414,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml pipeline create -n mypipeline -y mypipeline.yml
     ```
 
-    有关详细信息，请参阅 [az ml pipeline create](/cli/azure/ml/pipeline#az_ml_pipeline_create)。
+    有关详细信息，请参阅 [az ml pipeline create](/cli/azure/ml(v1)/pipeline#az_ml_pipeline_create)。
 
     有关管道 YAML 文件的详细信息，请参阅[在 YAML 中定义机器学习管道](reference-pipeline-yaml.md)。
 
@@ -424,17 +424,17 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
     az ml run submit-pipeline -n myexperiment -y mypipeline.yml
     ```
 
-    有关详细信息，请参阅 [az ml run submit-pipeline](/cli/azure/ml/run#az_ml_run_submit_pipeline)。
+    有关详细信息，请参阅 [az ml run submit-pipeline](/cli/azure/ml(v1)/run#az_ml_run_submit_pipeline)。
 
     有关管道 YAML 文件的详细信息，请参阅[在 YAML 中定义机器学习管道](reference-pipeline-yaml.md)。
 
 + 计划管道：
 
     ```azurecli-interactive
-    az ml pipeline create-schedule -n myschedule -e myexpereiment -i mypipelineid -y myschedule.yml
+    az ml pipeline create-schedule -n myschedule -e myexperiment -i mypipelineid -y myschedule.yml
     ```
 
-    有关详细信息，请参阅 [az ml pipeline create-schedule](/cli/azure/ml/pipeline#az_ml_pipeline_create-schedule)。
+    有关详细信息，请参阅 [az ml pipeline create-schedule](/cli/azure/ml(v1)/pipeline#az_ml_pipeline_create-schedule)。
 
     有关管道计划 YAML 文件的详细信息，请参阅[在 YAML 中定义机器学习管道](reference-pipeline-yaml.md#schedules)。
 

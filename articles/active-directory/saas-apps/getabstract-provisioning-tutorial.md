@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 getAbstract 配置自动用户
 description: 了解如何将用户帐户从 Azure Active Directory 自动预配到 getAbstract 以及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: bd8898f9-7a01-4e85-9dd4-61ae4b01ab5b
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2021
-ms.author: Zhchia
-ms.openlocfilehash: 1d1b2417750b917f5b09bb53ee980887218a785c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: e4922e6ea8cd6e92739950300559fe7a6043b8f5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102616105"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113763812"
 ---
 # <a name="tutorial-configure-getabstract-for-automatic-user-provisioning"></a>教程：为 getAbstract 配置自动用户预配
 

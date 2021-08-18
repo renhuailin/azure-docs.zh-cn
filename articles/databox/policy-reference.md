@@ -1,18 +1,18 @@
 ---
 title: Azure Data Box 的内置策略定义
 description: 列出 Azure Data Box 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 06/11/2021
+ms.date: 08/13/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
 ms.service: databox
 author: alkohli
 ms.author: alkohli
-ms.openlocfilehash: 36da49668c3086151a337749e44950834cbca80c
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 3c38097f67327cfe161fcd0ff7b4c5088fcbf686
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112021296"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180204"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-data-box"></a>Azure Data Box 的 Azure Policy 内置定义
 

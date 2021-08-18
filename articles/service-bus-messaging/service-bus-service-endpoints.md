@@ -2,14 +2,14 @@
 title: 为 Azure 服务总线配置虚拟网络服务终结点
 description: 本文提供了有关如何向虚拟网络中添加 Microsoft.ServiceBus 服务终结点的信息。
 ms.topic: article
-ms.date: 02/12/2021
+ms.date: 03/29/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2e00c9429ab3e39f95bc5ce6df072a99e4f02b86
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
-ms.translationtype: MT
+ms.openlocfilehash: 63a2f556739f7f3eaec3874e6d02cc996e2aaec4
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559566"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112416715"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>允许从特定虚拟网络访问 Azure 服务总线命名空间
 通过将服务总线与[虚拟网络 (VNet) 服务终结点][vnet-sep]集成可从绑定到虚拟网络的工作负荷（如虚拟机）安全地访问消息传递功能，同时在两端保护网络流量路径。
@@ -18,16 +18,14 @@ ms.locfileid: "100559566"
 
 然后，绑定到子网的工作负荷与相应的服务总线命名空间之间将存在专用和独立的关系，消息传递服务终结点的可观察网络地址位于公共 IP 范围内对此没有影响。
 
-实现虚拟网络集成可以防止其他 Azure 服务与服务总线交互。 例外情况是，即使启用了网络服务终结点，也可以允许从某些受信任的服务访问服务总线资源。 有关受信任服务的列表，请参阅[受信任服务](#trusted-microsoft-services)。
+## <a name="important-points"></a>要点
+- 虚拟网络仅在[高级层](service-bus-premium-messaging.md)服务总线命名空间中受支持。 将 VNet 服务终结点用于服务总线时，不应在混合使用标准层和高级层服务总线命名空间的应用程序中启用这些终结点。 原因是标准层不支持 VNet。 此终结点仅限于高级层命名空间。
+- 实现虚拟网络集成可以防止其他 Azure 服务与服务总线交互。 例外情况是，即使启用了网络服务终结点，也可以允许从某些“受信任的服务”访问服务总线资源。 有关受信任服务的列表，请参阅[受信任服务](#trusted-microsoft-services)。
 
-以下 Microsoft 服务必须在虚拟网络中
-- Azure 应用服务
-- Azure Functions
-
-虚拟网络仅在[高级层](service-bus-premium-messaging.md)服务总线命名空间中受支持。 将 VNet 服务终结点用于服务总线时，不应在混合使用标准层和高级层服务总线命名空间的应用程序中启用这些终结点。 原因是标准层不支持 VNet。 此终结点仅限于高级层命名空间。
-
-> [!IMPORTANT]
-> 为命名空间指定至少一个 IP 规则或虚拟网络规则，以便仅允许来自虚拟网络的指定 IP 地址或子网的流量。 如果没有 IP 和虚拟网络规则，则可以使用访问密钥) 通过公共 internet (访问该命名空间。  
+    以下 Microsoft 服务必须在虚拟网络中
+    - Azure 应用服务
+    - Azure Functions
+- 为命名空间指定至少一个 IP 规则或虚拟网络规则，以便仅允许来自虚拟网络的指定 IP 地址或子网的流量。 如果没有 IP 和虚拟网络规则，则可以通过公共 Internet（使用访问密钥）访问命名空间。  
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>通过 VNet 集成启用的高级安全方案 
 
@@ -69,7 +67,7 @@ ms.locfileid: "100559566"
     ![添加现有虚拟网络](./media/service-endpoints/add-vnet-menu.png)
 
     >[!WARNING]
-    > 如果选择 " **所选网络** " 选项，并且在此页上未添加至少一个 IP 防火墙规则或虚拟网络，则可以使用访问密钥) 通过公共 internet (访问该命名空间。
+    > 如果你在此页上选择了“所选网络”选项并且未添加至少一个 IP 防火墙规则或虚拟网络，则可以通过公共 Internet（使用访问密钥）访问该命名空间。
 3. 从虚拟网络列表中选择虚拟网络，然后选择“子网”。 将虚拟网络添加到列表之前，必须启用服务终结点。 如果未启用服务终结点，门户将提示启用。
    
    ![选择子网](./media/service-endpoints/select-subnet.png)
@@ -87,14 +85,14 @@ ms.locfileid: "100559566"
     > [!NOTE]
     > 有关允许从特定 IP 地址或范围访问的说明，请参阅[允许从特定 IP 地址或范围访问](service-bus-ip-filtering.md)。
 
-[!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
+[!INCLUDE [service-bus-trusted-services](./includes/service-bus-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
-以下示例资源管理器模板将虚拟网络规则添加到现有的服务总线命名空间。 对于网络规则，它指定虚拟网络中子网的 ID。 
+以下示例资源管理器模板会向现有服务总线命名空间添加虚拟网络规则。 对于网络规则，该模板指定虚拟网络中子网的 ID。 
 
-ID 是虚拟网络子网的完全限定的资源管理器路径。 例如， `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` 对于虚拟网络的默认子网。
+ID 是虚拟网络子网的完全限定资源管理器路径。 例如，`/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` 表示虚拟网络的默认子网。
 
-添加虚拟网络或防火墙规则时，将的值设置 `defaultAction` 为 `Deny` 。
+添加虚拟网络或防火墙规则时，请将 `defaultAction` 的值设置为 `Deny`。
 
 模板：
 
@@ -200,7 +198,7 @@ ID 是虚拟网络子网的完全限定的资源管理器路径。 例如， `/s
 若要部署模板，请按照 [Azure 资源管理器][lnk-deploy]的说明进行操作。
 
 > [!IMPORTANT]
-> 如果没有 IP 和虚拟网络规则，则所有流量都将流向命名空间，即使你将设置 `defaultAction` 为 `deny` 。  可以使用访问密钥) 通过公共 internet (访问命名空间。 为命名空间指定至少一个 IP 规则或虚拟网络规则，以便仅允许来自虚拟网络的指定 IP 地址或子网的流量。  
+> 如果没有 IP 和虚拟网络规则，则所有流量都将流向命名空间，即使你将 `defaultAction` 设置为 `deny`。  可以通过公共 Internet（使用访问密钥）访问命名空间。 为命名空间指定至少一个 IP 规则或虚拟网络规则，以便仅允许来自虚拟网络的指定 IP 地址或子网的流量。  
 
 ## <a name="next-steps"></a>后续步骤
 

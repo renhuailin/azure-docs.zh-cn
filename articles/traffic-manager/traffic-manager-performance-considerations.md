@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
-ms.openlocfilehash: 5a0de772598877029649f8a985c79e28f5264535
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d9fc6095cc2961cf494238749b240bd90de1d0eb
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98186169"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113032662"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>流量管理器的性能注意事项
 
@@ -41,10 +41,6 @@ DNS 名称解析速度会加快，结果会被缓存。 初始 DNS 查找速度�
 这些站点上的工具可以测量 DNS 延迟，显示全球各地客户端位置的已解析 IP 地址。 其中的大多数工具不会缓存 DNS 结果。 因此，每次运行测试时，这些工具会显示完整的 DNS 查找。 从自己的客户端测试时，只能在 TTL 持续期间内体验完整的 DNS 查找性能一次。
 
 ## <a name="sample-tools-to-measure-dns-performance"></a>用于测量 DNS 性能的工具示例
-
-* [SolveDNS](https://www.solvedns.com/dns-comparison/)
-
-    SolveDNS 提供许多性能工具。 DNS Comparison 工具可以显示解析 DNS 名称花费的时间，以及该时间与使用其他 DNS 服务提供程序时花费的时间的对比。
 
 * [WebSitePulse](https://www.websitepulse.com/help/tools.php)
 

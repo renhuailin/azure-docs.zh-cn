@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: c003b172322892e18fdc7a0e618f00eb526a10a8
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: ab706018e7c38e43ae75d5af49c3bd6c0a78d783
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892969"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403471"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -111,7 +111,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 这些示例使用 Eclipse Mosquitto 库向在 IoT 中心实现的 MQTT 中转站发送消息。
 
-若要了解如何改编示例以使用 [Azure IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)约定，请参阅[教程 - 使用 MQTT 开发 IoT 即插即用设备客户端](../iot-pnp/tutorial-use-mqtt.md)。
+若要了解如何改编示例以使用 [Azure IoT 即插即用](../iot-develop/overview-iot-plug-and-play.md)约定，请参阅[教程 - 使用 MQTT 开发 IoT 即插即用设备客户端](../iot-develop/tutorial-use-mqtt.md)。
 
 此存储库包含：
 
@@ -123,7 +123,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 * DeviceTwinMQTTWin32：包含用于在 Windows 计算机上查询和订阅 Azure IoT 中心内设备的设备孪生事件的代码。
 
-* PnPMQTTWin32：包含使用 IoT 即插即用设备功能将遥测消息发送到在 Windows 计算机上生成并运行的 Azure IoT 中心的代码。 详细了解 [IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)
+* PnPMQTTWin32：包含使用 IoT 即插即用设备功能将遥测消息发送到在 Windows 计算机上生成并运行的 Azure IoT 中心的代码。 详细了解 [IoT 即插即用](../iot-develop/overview-iot-plug-and-play.md)
 
 **对于 Linux：**
 

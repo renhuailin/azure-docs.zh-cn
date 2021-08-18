@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 32cbdabef4d89c7fabb47a52ebf0589690b7ab33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3527e098e282d9c8f31069f7b747aa33f9d0349
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85566062"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253767"
 ---
 # <a name="connect-check-point-to-azure-sentinel"></a>将 Check Point 连接到 Azure Sentinel
 
 
 
 本文介绍如何将 Check Point 设备连接到 Azure Sentinel。 使用 Check Point 数据连接器，可以将 Check Point 日志轻松连接到 Azure Sentinel，以查看仪表板、创建自定义警报和改进调查。 使用 Azure Sentinel 上的 Check Point 可以更深入地了解组织的 Internet 使用情况，并增强其安全操作功能。 
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
+
 
 ## <a name="forward-check-point-logs-to-the-syslog-agent"></a>将 Check Point 日志转发到 Syslog 代理
 
@@ -43,7 +46,5 @@ ms.locfileid: "85566062"
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 Check Point 设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 - [验证连接性](connect-cef-verify.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
-
-
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。

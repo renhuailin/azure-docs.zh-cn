@@ -6,23 +6,23 @@ ms.topic: troubleshooting
 ms.date: 10/15/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: cce3d219158111d147849e45fb0990f41e2423ab
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 8f87adc97039eda25b29116108069d685fd0a8bd
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756736"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767120"
 ---
 # <a name="azure-virtual-desktop-service-connections"></a>Azure 虚拟桌面服务连接
 
 >[!IMPORTANT]
->本内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)。
 
 使用本文解决 Azure 虚拟桌面客户端连接问题。
 
 ## <a name="provide-feedback"></a>提供反馈
 
-可以通过 [Azure 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)，向我们提供反馈并与产品团队和其他活跃的社区成员共同探讨 Azure 虚拟桌面服务。
+可以通过 [Azure 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/bd-p/AzureVirtualDesktopForum)，向我们提供反馈并与产品团队和其他活跃的社区成员共同探讨 Azure 虚拟桌面服务。
 
 ## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>用户可以连接，但不显示任何内容（无源）
 

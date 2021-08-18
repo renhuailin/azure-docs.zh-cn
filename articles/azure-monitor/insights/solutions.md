@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 6a98571f513e25d801acd4f4a9c2901dcd56fabc
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 236fcdb27bccf56cfe9bf92784f74cfa7ac3057b
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107869214"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112285438"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
 
@@ -97,7 +97,7 @@ Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
 社区成员可以将管理解决方案提交到 Azure 快速入门模板。 可以直接安装这些解决方案，或者下载模板，以便今后安装。
 
 1. 请遵循 [Log Analytics 工作区和自动化帐户](#log-analytics-workspace-and-automation-account)中所述的过程来链接工作区和帐户。
-2. 转到 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)。
+2. 转到 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)。
 3. 搜索感兴趣的解决方案。
 4. 从结果中选择解决方案以查看其详细信息。
 5. 单击“**部署到 Azure**”按钮。

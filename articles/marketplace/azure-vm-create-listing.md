@@ -4,15 +4,15 @@ description: 在 Azure 市场上配置虚拟机产品/服务列表详细信息�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: emuench
-ms.author: mingshen
-ms.date: 10/19/2020
-ms.openlocfilehash: 9ce7b1302a290bb4a7fefa3077e0937c7544015a
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+author: iqshahmicrosoft
+ms.author: iqshah
+ms.date: 10/20/2020
+ms.openlocfilehash: 32214b9552e7879d5e84012b0e65886ea92187b3
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111525419"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601153"
 ---
 # <a name="configure-virtual-machine-offer-listing-details"></a>配置虚拟机产品/服务列表详细信息
 
@@ -92,7 +92,7 @@ ms.locfileid: "111525419"
 - 中等（90 x 90 像素，可选）
 - 小（48 x 48 像素，可选）
 
-这些徽标在一览中的不同地方使用：
+这些徽标会在列表的不同位置上使用：
 
 [!INCLUDE [logos-azure-marketplace-only](includes/logos-azure-marketplace-only.md)]
 

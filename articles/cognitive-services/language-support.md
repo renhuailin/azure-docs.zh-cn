@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 3a535e1540535c52d4a21684074d81df8b41c4ca
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 1fbf548436842f16516554558b74391567a761e0
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111950774"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181376"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure 认知服务的自然语言支持
 
@@ -37,7 +37,7 @@ ms.locfileid: "111950774"
 
 ## <a name="language"></a>语言
 
-* [沉浸式阅读器](./immersive-reader/language-support.md)
+* [沉浸式阅读器](../applied-ai-services/immersive-reader/language-support.md)
 * [语言理解 (LUIS)](./luis/luis-language-support.md)
 * [QnA Maker](./qnamaker/overview/language-support.md)
 * [文本分析](./text-analytics/language-support.md)

@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 8af6802f785718ca6064a34c98d9f6dafc046a2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44e4b35d7e67e566b3ccef61cf5fa22077e844c7
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104594761"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861809"
 ---
 # <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中将事务与专用 SQL 池配合使用
 
@@ -43,7 +43,7 @@ ms.locfileid: "104594761"
 
 ## <a name="gen2"></a>Gen2
 
-| [DWU](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 每个分布的上限 (GB) | 分布的数量 | 最大事务大小 (GB) | 每个分布的行数 | 每个事务的最大行数 |
+| [DWU](resource-consumption-models.md#data-warehouse-units) | 每个分布的上限 (GB) | 分布的数量 | 最大事务大小 (GB) | 每个分布的行数 | 每个事务的最大行数 |
 | --- | --- | --- | --- | --- | --- |
 | DW100c |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200c |1.5 |60 |90 |6,000,000 |360,000,000 |
@@ -64,7 +64,7 @@ ms.locfileid: "104594761"
 
 ## <a name="gen1"></a>Gen1
 
-| [DWU](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 每个分布的上限 (GB) | 分布的数量 | 最大事务大小 (GB) | 每个分布的行数 | 每个事务的最大行数 |
+| [DWU](resource-consumption-models.md#data-warehouse-units) | 每个分布的上限 (GB) | 分布的数量 | 最大事务大小 (GB) | 每个分布的行数 | 每个事务的最大行数 |
 | --- | --- | --- | --- | --- | --- |
 | DW100 |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200 |1.5 |60 |90 |6,000,000 |360,000,000 |
@@ -81,7 +81,7 @@ ms.locfileid: "104594761"
 
 事务大小限制按每个事务或操作进行应用。 不会跨所有当前事务进行应用。 因此，允许每个事务向日志写入此数量的数据。
 
-为优化并最大程度地减少写入到日志中的数据量，请参阅[事务最佳做法](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)一文。
+为优化并最大程度地减少写入到日志中的数据量，请参阅[事务最佳做法](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?context=/azure/synapse-analytics/context/context)一文。
 
 > [!WARNING]
 > 最大事务大小仅可在哈希或者 ROUND_ROBIN 分布式表（其中数据均匀分布）中实现。 如果事务以偏斜方式向分布写入数据，那么更有可能在达到最大事务大小之前达到该限制。
@@ -204,4 +204,4 @@ THROW 是在专用 SQL 池中引发异常的新式做法，但也支持 RAISERRO
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关优化事务的详细信息，请参阅[事务最佳做法](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 还为[专用 SQL 池](best-practices-dedicated-sql-pool.md)和[无服务器 SQL 池](best-practices-serverless-sql-pool.md)提供了其他最佳做法指南。
+若要了解有关优化事务的详细信息，请参阅[事务最佳做法](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?context=/azure/synapse-analytics/context/context)。 还为[专用 SQL 池](best-practices-dedicated-sql-pool.md)和[无服务器 SQL 池](best-practices-serverless-sql-pool.md)提供了其他最佳做法指南。

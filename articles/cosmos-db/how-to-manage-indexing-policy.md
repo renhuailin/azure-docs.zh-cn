@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8a854e17c8a28b335f8c4e8c67bd5f27cb360789
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8dc109b5a14b680f7deb6ff39adb8af5e9c77562
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110464606"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733160"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引策略
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -21,7 +21,7 @@ ms.locfileid: "110464606"
 在 Azure Cosmos DB 中，数据是按照为每个容器定义的[索引策略](index-policy.md)编制索引的。 新建容器的默认索引策略会对任何字符串或数字强制使用范围索引。 可以使用你自己的自定义索引策略覆盖此策略。
 
 > [!NOTE]
-> 本文所述的更新索引策略的方法仅适用于 Azure Cosmos DB 的 SQL (Core) API。 在 [Azure Cosmos DB API for MongoDB](mongodb-indexing.md) 和 [Azure Cosmos DB Cassandra API 中的辅助索引编制](cassandra-secondary-index.md)中了解索引编制。
+> 本文所述的更新索引策略的方法仅适用于 Azure Cosmos DB 的 SQL (Core) API。 在 [Azure Cosmos DB API for MongoDB](mongodb/mongodb-indexing.md) 和 [Azure Cosmos DB Cassandra API 中的辅助索引编制](cassandra/secondary-indexing.md)中了解索引编制。
 
 ## <a name="indexing-policy-examples"></a>索引策略示例
 

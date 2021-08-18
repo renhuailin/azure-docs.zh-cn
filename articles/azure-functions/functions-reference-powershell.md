@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: 9877f50fe7bb06cb33a38f8ee89fa09ad12c0693
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 297d8af86f22cc588060cb90f327ad6dd335437d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672471"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741389"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 开发人员指南
 
@@ -393,6 +393,8 @@ param([string] $myBlob)
 
 可以通过输出任何函数的 `$PSVersionTable` 来查看当前版本。
 
+若要详细了解 Azure Functions 运行时支持策略，请参阅[本文](./language-support-policy.md)
+
 ### <a name="running-local-on-a-specific-version"></a>在特定版本上以本地方式运行
 
 以本地方式运行时，Azure Functions 运行时默认为使用 PowerShell Core 6。 若要在以本地方式运行时改用 PowerShell 7，则需要在项目根目录的 local.setting.json 文件的 `Values` 数组中添加设置 `"FUNCTIONS_WORKER_RUNTIME_VERSION" : "~7"`。 在 PowerShell 7 上以本地方式运行时，你的 local.settings.json 文件类似于以下示例： 
@@ -411,6 +413,7 @@ param([string] $myBlob)
 ### <a name="changing-the-powershell-version"></a>更改 PowerShell 版本
 
 函数应用必须在版本 3.x 上运行才能从 PowerShell Core 6 升级到 PowerShell 7。 若要了解如何执行此操作，请参阅[查看和更新当前运行时版本](set-runtime-version.md#view-and-update-the-current-runtime-version)。
+
 
 请使用以下步骤更改函数应用使用的 PowerShell 版本。 可以通过 Azure 门户或 PowerShell 执行此操作。
 
@@ -568,7 +571,7 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-在本地运行时，可从 [local.settings.json](functions-run-local.md#local-settings-file) 项目文件读取应用设置。
+在本地运行时，可从 [local.settings.json](functions-develop-local.md#local-settings-file) 项目文件读取应用设置。
 
 ## <a name="concurrency"></a>并发
 

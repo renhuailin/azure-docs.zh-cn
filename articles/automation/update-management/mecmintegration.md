@@ -3,14 +3,14 @@ title: 将 Azure 自动化更新管理与 Microsoft Endpoint Configuration Manag
 description: 本文介绍如何使用更新管理配置 Microsoft Endpoint Configuration Manager，以便将软件更新部署到管理器客户端。
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 07/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: a848c7c15bf786ba26b8a1fdb1dab41b9aa20b8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6889d5058a7ca93e410afa0454e108d79bb70569
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575776"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114203896"
 ---
 # <a name="integrate-update-management-with-microsoft-endpoint-configuration-manager"></a>将更新管理与 Microsoft Endpoint Configuration Manager 集成
 
@@ -34,9 +34,11 @@ ms.locfileid: "100575776"
 
 如果打算继续从 Microsoft Endpoint Configuration Manager 管理更新部署，请执行以下步骤。 Azure 自动化会连接到 Microsoft Endpoint Configuration Manager，以便向连接到 Log Analytics 工作区的客户端计算机应用更新。 可以从客户端计算机缓存获取更新内容，就像部署是由 Microsoft Endpoint Configuration Manager 管理的一样。
 
-1. 使用[部署软件更新](/configmgr/sum/deploy-use/deploy-software-updates)中介绍的过程从 Microsoft Endpoint Configuration Manager 层次结构中的顶层站点创建软件更新部署。 与标准部署不同的必须配置的唯一设置是选项“不安装软件更新”，此选项用于控制部署包的下载行为。 通过在下一步中创建计划的更新部署，可以在更新管理中管理此行为。
+1. 使用[部署软件更新](/configmgr/sum/deploy-use/deploy-software-updates)中介绍的过程从 Microsoft Endpoint Configuration Manager 层次结构中的顶层站点创建软件更新部署。 必须与标准部署采用不同配置的唯一设置是 Endpoint Configuration Manager 中的“安装截止日期”选项。 需要将它设置为将来的日期，以确保仅自动更新管理可启动更新部署。 [步骤 4：部署软件更新组中](/configmgr/sum/deploy-use/manually-deploy-software-updates#BKMK_4DeployUpdateGroup)介绍了此设置。
 
-2. 在 Azure 自动化中，选择“更新管理”。 根据[创建更新部署](deploy-updates.md#schedule-an-update-deployment)中介绍的步骤创建一个新部署，并从“类型”下拉列表中选择“导入的组”，以便选择合适的 Microsoft Endpoint Configuration Manager 集合 。 请记住以下要点：
+2. 在 Endpoint Configuration Manager 中配置“用户通知”选项，以防止在目标计算机上显示通知。 建议设置“在软件中心和所有通知中隐藏”选项，以避免登录的用户收到有关计划的更新部署的通知并手动部署这些更新。 [步骤 4：部署软件更新组中](/configmgr/sum/deploy-use/manually-deploy-software-updates#BKMK_4DeployUpdateGroup)介绍了此设置。
+
+3. 在 Azure 自动化中，选择“更新管理”。 根据[创建更新部署](deploy-updates.md#schedule-an-update-deployment)中介绍的步骤创建一个新部署，并从“类型”下拉列表中选择“导入的组”，以便选择合适的 Microsoft Endpoint Configuration Manager 集合 。 请记住以下要点：
 
     a. 如果在所选的 Microsoft Endpoint Configuration Manager 设备集合上定义了维护窗口，则它会存储在集合的成员中，而不是存储在计划的部署中定义的“持续时间”设置中。
 

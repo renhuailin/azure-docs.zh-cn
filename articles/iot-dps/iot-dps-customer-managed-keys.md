@@ -1,19 +1,19 @@
 ---
 title: Azure 设备预配服务通过客户管理的密钥进行静态数据加密 | Microsoft Docs
 description: 通过设备预配服务的客户管理的密钥对静态数据进行加密
-author: chrissie926
+author: wesmc7777
 manager: nberdy
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.author: menchi
-ms.openlocfilehash: d22a01bab81fc330484e7715a65c89a1cfd7802c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: wesmc
+ms.openlocfilehash: 1cc8afadb61d1684b16893d0eff23af227828eb1
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94967170"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727076"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-device-provisioning-service"></a>通过设备预配服务的客户管理的密钥对静态数据进行加密
 

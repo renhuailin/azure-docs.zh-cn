@@ -6,14 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 82482b260233994672e603c16fe8cf919c92337f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 95b9a28dd0d62df12b8a3ea4f9334f2edbdabdc7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98201019"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121779684"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>通过查询存储监视 Azure Database for MySQL 性能
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 **适用于：** Azure Database for MySQL 5.7、8.0
 
@@ -171,7 +173,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 
 ## <a name="limitations-and-known-issues"></a>限制和已知问题
 
-- 如果 MySQL 服务器启用了参数 `default_transaction_read_only`，查询存储将无法捕获数据。
+- 如果 MySQL 服务器启用了参数 `read_only`，查询存储将无法捕获数据。
 - 如果遇到较长的 Unicode 查询（\>= 6000 个字节），查询存储功能可能会中断。
 - 等待统计信息的保留期为 24 小时。
 - 等待统计信息使用样本来捕获一部分事件。 可以使用参数 `query_store_wait_sampling_frequency` 来修改频率。

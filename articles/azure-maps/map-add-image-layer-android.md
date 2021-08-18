@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: e1d99297c0357039606149bdf7e5a526258fc7c5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4c11a1275b94eebba33819ae6c9ffeb313a3ce0b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054458"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463097"
 ---
 # <a name="add-an-image-layer-to-a-map-android-sdk"></a>向地图添加图像层 (Android SDK)
 
@@ -30,7 +30,7 @@ ms.locfileid: "102054458"
 
 ## <a name="add-an-image-layer"></a>添加图像层
 
-下面的代码在地图上覆盖 [1922 年新泽西州纽瓦克地图](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg)的图像。 此图像将添加到项目的 `drawable` 文件夹中。 通过设置图像并以 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 格式设置四个角的坐标来创建图像层。 通常需要在 `label` 层下方添加图像层。
+下面的代码在地图上覆盖 1922 年新泽西州纽瓦克地图的图像。 此图像将添加到项目的 `drawable` 文件夹中。 通过设置图像并以 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 格式设置四个角的坐标来创建图像层。 通常需要在 `label` 层下方添加图像层。
 
 ::: zone pivot="programming-language-java-android"
 

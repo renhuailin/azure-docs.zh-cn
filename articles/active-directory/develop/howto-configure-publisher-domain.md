@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/23/2020
+ms.date: 06/23/2021
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
-ms.custom: aaddev
-ms.openlocfilehash: d17bd46d8036ff2535b0dede9ab95121ad3bf7a8
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.custom: contperf-fy21q4, aaddev
+ms.openlocfilehash: 43fef26f3006120cb62676bfd5675c1e79b849d4
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713425"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579965"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>如何：配置应用程序的发布者域
 
@@ -81,9 +81,7 @@ ms.locfileid: "109713425"
    ```
 
 1. 请将占位符 *{YOUR-APP-ID-HERE}* 替换为对应于应用的应用程序（客户端）ID。
-
 1. 将该文件托管在 `https://{YOUR-DOMAIN-HERE}.com/.well-known/microsoft-identity-association.json` 中。 请替换占位符 *{YOUR-DOMAIN-HERE}* ，使之与已验证的域相匹配。
-
 1. 单击“验证并保存域”按钮。 
 
 在验证域后，无需维护用于验证的资源。 验证完成后，可以删除托管文件。
@@ -93,8 +91,8 @@ ms.locfileid: "109713425"
 如果租户包含已验证的域，请从“选择已验证的域”下拉列表中选择一个域。 
 
 > [!NOTE]
-> 应该返回预期的 `Content-Type` 头 `application/json`。 如果使用类似 `application/json; charset=utf-8` 的其他任何内容，则可能会收到如下所述的错误：
-> 
+> 应该返回预期的 `Content-Type` 头 `application/json`。 如果使用类似 `application/json; charset=utf-8` 的其他任何内容，则可能会收到错误：
+>
 > `Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value.`
 >
 
@@ -112,7 +110,7 @@ ms.locfileid: "109713425"
 
 ## <a name="implications-on-redirect-uris"></a>对重定向 URI 的影响
 
-指定重定向 URI 时，允许用户使用任何工作或学校帐户或 Microsoft 个人帐户（[多租户](single-and-multi-tenant-apps.md)）登录的应用程序存在几项限制。
+指定重定向 URI 时，允许用户使用任何工作或学校帐户或 Microsoft 个人帐户（多租户）登录的应用程序存在几项限制。
 
 ### <a name="single-root-domain-restriction"></a>单个根域限制
 

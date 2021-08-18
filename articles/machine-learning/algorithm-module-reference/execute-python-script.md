@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 01/02/2021
-ms.openlocfilehash: 6003ca9156d8553604d7ebbf94c5c3373d077f0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/15/2021
+ms.openlocfilehash: 668e44b8192ef5dcfde4e932741f81ecbc35b5ca
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102500693"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236168"
 ---
 # <a name="execute-python-script-module"></a>“执行 Python 脚本”模块
 
@@ -162,8 +162,8 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     
     在管道执行期间，可以使用已上传的压缩存档中包含的任何文件。 如果存档中包含目录结构，则会保留结构。
  
-    > [!WARNING]
-    > 请勿使用 app 作为文件夹或脚本的名称，因为 app 是内置服务的保留字  。 但可以使用其他命名空间，如 `app123`。
+    > [!IMPORTANT]
+    > 对于脚本捆绑包中的文件，请使用唯一且有意义的名称，因为针对内置服务保留了某些常用词（例如 `test`、`app` 等）。
    
     下面是一个脚本绑定示例，其中包含一个 python 脚本文件和一个 txt 文件：
       

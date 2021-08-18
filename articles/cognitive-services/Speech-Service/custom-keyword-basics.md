@@ -3,21 +3,21 @@ title: Create 关键字快速入门 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 设备始终在侦听关键字（或短语）。 当用户说关键字时，设备会将所有后续音频发送到云，直到用户停止说话为止。 自定义关键字是区分设备和加强品牌效应的有效方式。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/03/2020
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: devx-track-csharp
 zone_pivot_groups: keyword-quickstart
-ms.openlocfilehash: a1ec49ca9ee9d0adcbae97eae2e4093274a524c6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 439bbb40ac58ea0f3f0870bb86e6c9f4a29980a5
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110099633"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122066653"
 ---
 # <a name="get-started-with-custom-keyword"></a>自定义关键字入门
 

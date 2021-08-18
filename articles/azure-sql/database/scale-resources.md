@@ -7,21 +7,21 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: wiassaf, sstein
+author: dimitri-furman
+ms.author: dfurman
+ms.reviewer: mathoma, urmilano, wiassaf
 ms.date: 06/25/2019
-ms.openlocfilehash: ca1a2edec70b13f111ffd89278aa39d1ddea7f67
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 818a783a85fd9117738f8199e612d97a0fb95b99
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105035636"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730357"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>以最短的停机时间动态缩放数据库资源
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-使用 Azure SQL 数据库和 SQL 托管实例，能够以最小的[停机时间](https://azure.microsoft.com/support/legal/sla/sql-database)向数据库动态添加更多资源；但是，存在一个切换期间，在此期间与数据库的连接会短时间丢失，可以使用重试逻辑来缓解这种情况。
+使用 Azure SQL 数据库和 SQL 托管实例，能够以最小的[停机时间](https://azure.microsoft.com/support/legal/sla/azure-sql-database)向数据库动态添加更多资源；但是，存在一个切换期间，在此期间与数据库的连接会短时间丢失，可以使用重试逻辑来缓解这种情况。
 
 ## <a name="overview"></a>概述
 
@@ -29,7 +29,7 @@ ms.locfileid: "105035636"
 
 可缓解由于应用程序的使用情况增加而导致的使用索引或查询重写方法无法修复的性能问题。 添加更多资源可在数据库达到当前资源限制并需要更多电源处理传入的工作负荷时快速做出反应。 Azure SQL 数据库还可以在不需要资源以降低成本时缩减资源。
 
-不必担心购买硬件和更改基础结构。 可以使用滑块通过 Azure 门户轻松缩放数据库。
+不必担心购买硬件和更改底层基础结构。 可以使用滑块通过 Azure 门户轻松缩放数据库。
 
 ![缩放数据库性能](./media/scale-resources/scale-performance.svg)
 

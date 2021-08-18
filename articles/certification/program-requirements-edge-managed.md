@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: Edge Managed Certification Requirements
 ms.service: certification
-ms.openlocfilehash: 7d3cd36dd0f03db7cc701c618b40f58dc9873659
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: b7ca60a674a044e5fa37604eadad7ca5cbbfddf3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982009"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741132"
 ---
 # <a name="edge-managed-certification-requirements"></a>Edge Managed 认证要求
 
@@ -51,7 +51,7 @@ Edge Managed 认证遵循 [Azure 认证设备基线计划](.\program-requirement
 | **OS**                  | [Tier1 和 Tier2 OS](../iot-edge/support.md)                 |
 | **验证类型**     | 自动                                                    |
 | **验证**          | AICS 验证已安装的 IoT Edge RT 的部署能力。 **1.** 用户需要指定特定的 OS（只接受 Tier1/2 列表中的 OS）**2.** AICS 生成其 config.yaml 并部署规范化 [模拟温度传感器边缘模块](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-iot.simulated-temperature-sensor?tab=Overview) **3.** AICS 验证设备上是否已安装与 Docker 兼容的容器子系统 (Moby) **4.** 测试结果基于模拟温度传感器边缘模块的成功部署和与 Docker 兼容的容器子系统功能                                                    |
-| **资源**           | **a)** [AICS 博客](https://azure.microsoft.com/en-in/blog/expanding-azure-iot-certification-service-to-support-azure-iot-edge-device-certification/)，**b)** [认证步骤](./overview.md)（具有所有附加资源），**c)** [要求](./program-requirements-azure-certified-device.md) |
+| **资源**           | **a)** [AICS 博客](https://azure.microsoft.com/blog/expanding-azure-iot-certification-service-to-support-azure-iot-edge-device-certification/)，**b)** [认证步骤](./overview.md)（具有所有附加资源），**c)** [要求](./program-requirements-azure-certified-device.md) |
 | **Azure 建议：**     | 不适用                                                    |
 
 ### <a name="capability-template"></a>功能模板：
@@ -65,5 +65,5 @@ Edge Managed 认证遵循 [Azure 认证设备基线计划](.\program-requirement
 | **OS**                  | [Tier1 和 Tier2 OS](../iot-edge/support.md)                                                     |
 | **验证类型**     | 手动/实验室验证                                                    |
 | **验证**          | OEM 必须将物理设备寄送给 IoT 管理 (HCL)。 HCL 对物理设备执行手动验证：**1.** 检查 EdgeRT 是否正在使用 Moby 子系统（允许的再分配版本）， 而不是 Docker **2.** 选择最新的边缘模块，验证是否能够部署边缘。                                                     |
-| **资源**           | **a)** [AICS 博客](https://azure.microsoft.com/en-in/blog/expanding-azure-iot-certification-service-to-support-azure-iot-edge-device-certification/)，**b)** [认证步骤](./overview.md)，**c)** [要求](./program-requirements-azure-certified-device.md) |
+| **资源**           | **a)** [AICS 博客](https://azure.microsoft.com/blog/expanding-azure-iot-certification-service-to-support-azure-iot-edge-device-certification/)，**b)** [认证步骤](./overview.md)，**c)** [要求](./program-requirements-azure-certified-device.md) |
 | **Azure 建议：**     | 空值                                                    |

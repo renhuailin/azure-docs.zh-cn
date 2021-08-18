@@ -2,20 +2,21 @@
 title: 如何删除用户对 Azure Active Directory 中应用程序的访问权限
 description: 了解如何删除用户对 Azure Active Directory 中应用程序的访问权限
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
 ms.date: 11/02/2020
-ms.author: mtillman
-ms.openlocfilehash: bc6dc9120b0c1f31e3c8c92343513306b1760db1
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: davidmu
+ms.reviewer: phsignor
+ms.openlocfilehash: 7466cfda1f4a38ea1559d68f8b1fe4779efe97d7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078593"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744115"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>如何删除用户对应用程序的访问权限
 
@@ -39,16 +40,15 @@ ms.locfileid: "112078593"
 
 若要 **禁用用户未来在整个目录中执行的所有同意操作**，请根据以下说明进行操作：
 
-1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
-2.  打开“Azure Active Directory 扩展” 
+2. 打开“Azure Active Directory 扩展”
 
-3.  在导航菜单中，单击“企业应用程序”。
+3. 在导航菜单中，单击“企业应用程序”。
 
-5.  单击“用户设置”。
+4. 单击“用户设置”。
 
-6.  将“用户可以允许应用代表他们访问公司数据”切换为“否”并单击“保存”按钮。
-
+5. 将“用户可以允许应用代表他们访问公司数据”切换为“否”并单击“保存”按钮。
 
 ## <a name="next-steps"></a>后续步骤
 

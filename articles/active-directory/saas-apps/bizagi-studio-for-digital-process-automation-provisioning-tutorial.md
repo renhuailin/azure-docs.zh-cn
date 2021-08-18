@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 Bizagi Studio for Digital Proc
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Bizagi Studio for Digital Process Automation 及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 2fbff65a-5345-4c08-a6c7-60b80d867a3e
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
-ms.author: Zhchia
-ms.openlocfilehash: 72e021f47bb8db4dedf0e434d0d94bb2118a4c00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 5fc05ecbd6d4a65062e99fc0773ffedb4c64aeab
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98728148"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113764711"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>教程：为 Bizagi Studio for Digital Process Automation 配置自动用户预配
 

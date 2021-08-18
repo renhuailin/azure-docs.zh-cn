@@ -3,21 +3,21 @@ title: 语音翻译概述 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 使用语音翻译，可以将语音的端到端实时多语言翻译添加到应用程序、工具和设备。 相同 API 可以用于语音到语音和语音到文本的转换。 本文概述了语音翻译服务的优势和功能。
 services: cognitive-services
-author: erhopf
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.author: erhopf
+ms.author: lajanuar
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 语音翻译
-ms.openlocfilehash: 99541d7fe9eaa867860af93bc1423d476ce8bf4a
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 75dc95239533df96c2864d0cb08b06ebfac389e5
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449930"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122072607"
 ---
 # <a name="what-is-speech-translation"></a>什么是语音翻译？
 

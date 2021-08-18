@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 07/08/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9bed493ca37d21d0c3e5c289bb8c26607975bdc6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bac6d089f34cd916b0bd7f621958aaf6d30a82eb
+ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608469"
+ms.lasthandoff: 07/11/2021
+ms.locfileid: "113601076"
 ---
 # <a name="handling-event-grid-events"></a>处理事件网格事件
 

@@ -7,19 +7,19 @@ ms.date: 10/09/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 545d748d521d623bdbaa21ccafd8c52c6508bf03
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 481b81edb0ee5709e712f213036fa8df53aca7c4
+ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750256"
+ms.lasthandoff: 07/04/2021
+ms.locfileid: "113287917"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>自定义主机池的远程桌面协议 (RDP) 属性
 
 >[!IMPORTANT]
 >本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)。
 
-通过自定义主机池的远程桌面协议 (RDP) 属性（例如多监视器体验和音频重定向），可以根据用户的需要为用户提供最佳体验。 你可以通过使用 Azure 门户或在 Update-AzWvdHostPool cmdlet 中使用 -CustomRdpProperty 参数，在 Azure 虚拟桌面中自定义 RDP 属性。
+通过自定义主机池的远程桌面协议 (RDP) 属性（例如多监视器体验和音频重定向），可以根据用户的需要为用户提供最佳体验。 如果你想要更改默认的 RDP 文件属性，可以通过使用 Azure 门户或在 Update-AzWvdHostPool cmdlet 中使用 -CustomRdpProperty 参数，在 Azure 虚拟桌面中自定义 RDP 属性。
 
 有关支持的属性及其默认值的完整列表，请参阅[支持的 RDP 文件设置](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext)。
 
@@ -29,14 +29,15 @@ RDP 文件默认具有以下属性：
 
 |RDP 属性|对于桌面和 RemoteApp|
 |---|---|
-|多监视器模式|已禁用|
+|多监视器模式|Enabled|
 |驱动器重定向已启用|驱动器、剪贴板、打印机、COM 端口、智能卡、设备和USB 设备存储|
 |远程音频模式|本地播放|
 |VideoPlayback|已启用|
-|EnableCredssp|已启用|
+|EnableCredssp|Enabled|
 
 >[!NOTE]
->多监视器模式只适用于桌面应用组，对于 RemoteApp 应用组将会忽略。
+>- 仅为桌面应用组启用多监视器模式，对于 RemoteApp 应用组将忽略此模式。
+>- 所有默认 RDP 文件属性将在 Azure 门户中公开。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -132,8 +133,8 @@ CustomRdpProperty : <CustomRDPpropertystring>
 
 现在你已自定义给定主机池的 RDP 属性，因此可以登录到 Azure 虚拟桌面客户端，将其作为用户会话的一部分进行测试。 接下来的两篇操作指南将会介绍如何使用所选的客户端连接到会话：
 
-- [使用 Windows 桌面客户端进行连接](connect-windows-7-10.md)
-- [使用 Web 客户端进行连接](connect-web.md)
-- [使用 Android 客户端进行连接](connect-android.md)
-- [使用 macOS 客户端进行连接](connect-macos.md)
-- [使用 iOS 客户端进行连接](connect-ios.md)
+- [使用 Windows 桌面客户端进行连接](./user-documentation/connect-windows-7-10.md)
+- [使用 Web 客户端进行连接](./user-documentation/connect-web.md)
+- [使用 Android 客户端进行连接](./user-documentation/connect-android.md)
+- [使用 macOS 客户端进行连接](./user-documentation/connect-macos.md)
+- [使用 iOS 客户端进行连接](./user-documentation/connect-ios.md)

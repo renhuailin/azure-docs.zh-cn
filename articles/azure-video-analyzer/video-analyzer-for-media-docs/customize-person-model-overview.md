@@ -1,19 +1,20 @@
 ---
 title: 在 Azure 视频分析器媒体版（以前为视频索引器）中自定义人员模型 - Azure
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: 本文概述了什么是 Azure 视频分析器媒体版（以前为视频索引器）中的人员模型，以及如何自定义它。
-services: media-services
+services: azure-video-analyzer
 author: anikaz
 manager: johndeu
 ms.topic: article
+ms.subservice: azure-video-analyzer-media
 ms.date: 05/15/2019
 ms.author: kumud
-ms.openlocfilehash: e9f5e8595f190dfb1d7097514c05ce8237efab39
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e3032e42e4c3e741ee20a113b5f5e0ac34c68876
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385017"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112123172"
 ---
 # <a name="customize-a-person-model-in-video-analyzer-for-media"></a>在视频分析器媒体版中自定义人员模型
 

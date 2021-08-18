@@ -9,13 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/17/2021
-ms.openlocfilehash: 60e5d37f57d6a87d9190650f044a1ffc991e60fb
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 07/12/2021
+ms.custom: contperf-fy21q4
+ms.openlocfilehash: 4fe1e8cd4c78d4411a7cb9058648fc0e782cb0ee
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095956"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666296"
 ---
 # <a name="how-to-create-and-manage-luis-resources"></a>如何创建和管理 LUIS 资源
 
@@ -23,7 +24,7 @@ ms.locfileid: "110095956"
 
 ## <a name="authoring-resource"></a>创作资源
 
-创作资源可用于创建、管理、训练、测试和发布应用程序。 LUIS 创作资源有一个[定价层](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)可用，即免费 (F0) 层，该层可为你提供：
+创作资源可用于创建、管理、训练、测试和发布应用程序。 LUIS 创作资源有一个可用的[定价层](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)，即免费 (F0) 层，该层可为你提供：
 
 * 100 万个创作事务 
 * 每月 1,000 个测试预测终结点请求。
@@ -32,7 +33,7 @@ ms.locfileid: "110095956"
 
 ## <a name="prediction-resource"></a>预测资源
 
-预测资源可让你在超出创作资源提供的 1,000 个请求之前查询预测终结点。 预测资源有两个[定价层](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)可用：
+预测资源可让你在超出创作资源提供的 1,000 个请求范围之外查询预测终结点。 预测资源有两个可用的[定价层](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)：
 
 * 免费 (F0) 预测资源，它每月提供 10,000 个预测终结点请求。
 * 标准 (S0) 预测资源，这是付费层。 
@@ -69,9 +70,9 @@ ms.locfileid: "110095956"
 
 [!INCLUDE [Create LUIS Prediction resource in LUIS portal](./includes/add-prediction-resource-portal.md)]
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
+# <a name="without-luis-portal"></a>[不使用 LUIS 门户](#tab/without-portal)
 
-### <a name="create-luis-resources-in-the-azure-cli"></a>在 Azure CLI 中创建 LUIS 资源
+### <a name="create-luis-resources-without-using-the-luis-portal"></a>在不使用 LUIS 门户的情况下创建 LUIS 资源
 
 使用 [Azure CLI](/cli/azure/install-azure-cli) 单独创建每项资源。
 
@@ -130,9 +131,9 @@ ms.locfileid: "110095956"
 1. 在“预测资源”或“创作资源”选项卡上，选择“添加预测资源”或“添加创作资源”按钮。   
 1. 使用窗体中的字段查找正确的资源，然后选择“保存”。
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
+# <a name="without-luis-portal"></a>[不使用 LUIS 门户](#tab/without-portal)
 
-## <a name="assign-prediction-resource-programmatically"></a>以编程方式分配预测资源 
+## <a name="assign-prediction-resource-without-using-the-luis-portal"></a>在不使用 LUIS 门户的情况下分配预测资源
 
 对于 CI/CD 管道等自动化进程，可使用以下步骤将 LUIS 资源自动分配给 LUIS 应用：
 
@@ -181,9 +182,9 @@ ms.locfileid: "110095956"
 1. 转到“管理” > “Azure 资源” 。
 1. 选择资源相对应的“取消分配资源”按钮。
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
+# <a name="without-luis-portal"></a>[不使用 LUIS 门户](#tab/without-portal)
 
-## <a name="unassign-prediction-resource-programmatically"></a>以编程方式取消分配预测资源
+## <a name="unassign-prediction-resource-without-using-the-luis-portal"></a>在不使用 LUIS 门户的情况下取消分配预测资源
 
 1. 获取 [Azure 资源管理器令牌](https://resources.azure.com/api/token?plaintext=true)，它是一个字母数字字符的字符串。 此令牌即将过期，请立即使用。 也可使用以下 Azure CLI 命令。
 
@@ -257,7 +258,7 @@ Azure 资源（例如 LUIS 资源）归包含该资源的订阅所有。
 :::image type="content" source="./media/luis-usage-tiers/overview.png" alt-text="显示“概述”页面的屏幕截图。" lightbox="./media/luis-usage-tiers/overview.png":::
 
 ## <a name="customizing-azure-resource-usage-charts"></a>自定义 Azure 资源使用图表
-“指标”页提供了更详细的数据视图。 可针对特定的“时间段”和“指标”配置指标图表 。
+“指标”页面提供了更详细的数据视图。 可针对特定的“时间段”和“指标”配置指标图表 。
 
 :::image type="content" source="./media/luis-usage-tiers/metrics.png" alt-text="显示“指标”页面的屏幕截图。" lightbox="./media/luis-usage-tiers/metrics.png":::
 

@@ -2,22 +2,23 @@
 title: 配合 F5 的 Azure AD 安全混合访问部署指南 | Microsoft Docs
 description: 在 Azure IaaS 中部署 F5 BIG-IP 虚拟版本 (VE) VM 以实现安全混合访问的教程
 services: active-directory
-author: gargi-sinha
+author: davidmu1
 manager: martinco
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 10/12/2020
-ms.author: gasinh
+ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: aeb48b5ee2bd3fbb127b3a88e7dda4946e96c163
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.reviewer: miccohen
+ms.openlocfilehash: f33e9a8207e3b8e6986999b7ea19aedbcb19b4da
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108184777"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749210"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>关于在 Azure IaaS 中部署 F5 BIG-IP 虚拟版 VM 以实现安全混合访问的教程
 
@@ -244,12 +245,12 @@ VM 部署和基本系统配置会需要大约 30 分钟，然后，你的 BIG-IP
 
  |     字段   |   值        |
  |:------------|:------------|
- |源| Any|
+ |源| 任意|
  |源端口范围| *|
  |目标 IP 地址|逗号分隔的所有 BIG-IP-VM 辅助专用 IP 的列表|
  |目标端口| 80,443|
  |协议| TCP |
- |操作| 允许|
+ |操作| Allow|
  |优先级|介于 100 - 4096 之间的最低可用值|
  |名称 | 描述性名称，例如：`BIG-IP-VM_Web_Services_80_443`|
 
@@ -271,9 +272,9 @@ BIG-IP 系统通过其 Web 配置 UI 进行管理，可使用以下建议的任�
 
 在准备就绪后，请确认可以连接到 BIG-IP VM 的 Web 配置，并使用在 VM 部署过程中指定的凭据来登录：
 
-- 如果要从其内部网络上的 VM 或通过 VPN 进行连接，请直接连接到 BIG-IP 主 IP 和 Web 配置端口。 例如，`https://<BIG-IP-VM_Primary_IP:8443`。 浏览器将会提示该连接不安全，不过可以忽略该提示，直至 BIG-IP 配置完成。 如果浏览器坚持阻止访问，请清空浏览器缓存，然后重试。
+- 如果要从其内部网络上的 VM 或通过 VPN 进行连接，请直接连接到 BIG-IP 主 IP 和 Web 配置端口。 例如 `https://<BIG-IP-VM_Primary_IP:8443`。 浏览器将会提示该连接不安全，不过可以忽略该提示，直至 BIG-IP 配置完成。 如果浏览器坚持阻止访问，请清空浏览器缓存，然后重试。
 
-- 如果是通过应用程序代理发布的 Web 配置，那么，请使用为从外部访问 Web 配置而定义的 URL，不追加端口，例如 `https://big-ip-vm.contoso.com`。 必须使用 Web 配置端口定义内部 URL，例如 `https://big-ip-vm.contoso.com:8443` 
+- 如果是通过应用程序代理发布的 Web 配置，那么，请使用为从外部访问 Web 配置而定义的 URL，不追加端口，例如 `https://big-ip-vm.contoso.com`。 必须使用 Web 配置端口定义内部 URL，例如 `https://big-ip-vm.contoso.com:8443`
 
 还可以通过 BIG-IP 系统的底层 SSH 环境来管理 BIG-IP 系统，该环境通常用于命令行 (CLI) 任务和根级别访问。 若要连接到 CLI，有多种可选方法，包括：
 
@@ -330,7 +331,7 @@ BIG-IP 系统必须先激活并预配 APM 模块，然后才能配置该系统�
 
 6. 从左侧导航栏中转到“系统” > “配置” > “设备” > “NTP”   
 
-7. 指定可靠的 NTP 源，并选择“添加”，然后选择“更新” 。 例如： `time.windows.com`
+7. 指定可靠的 NTP 源，并选择“添加”，然后选择“更新” 。 例如，`time.windows.com`
 
 你现在需要 DNS 记录，以将前面步骤中指定的 BIG-IP FQDN 解析到其主专用 IP。 应将一条记录添加到你的环境的内部 DNS，或添加到将用于连接到 BIG-IP 的 Web 配置的 PC 的 localhost 文件中。无论采用哪种方式，在直接连接到 Web 配置时，都不会再出现浏览器警告。 也就是说，不通过应用程序代理或任何其他反向代理。
 
@@ -474,14 +475,14 @@ Get-AzVmSnapshot -ResourceGroupName '<E.g.contoso-RG>' -VmName '<E.g.BIG-IP-VM>'
 
 ## <a name="additional-resources"></a>其他资源
 
--   [在 Azure 中重置 BIG-IP VE 密码](https://clouddocs.f5.com/cloud/public/v1/shared/azure_passwordreset.html)
-    -   [在不使用门户的情况下重置密码](https://clouddocs.f5.com/cloud/public/v1/shared/azure_passwordreset.html#reset-the-password-without-using-the-portal)
+- [在 Azure 中重置 BIG-IP VE 密码](https://clouddocs.f5.com/cloud/public/v1/shared/azure_passwordreset.html)
+- [在不使用门户的情况下重置密码](https://clouddocs.f5.com/cloud/public/v1/shared/azure_passwordreset.html#reset-the-password-without-using-the-portal)
 
--   [更改用于 BIG-IP VE 管理的 NIC](https://clouddocs.f5.com/cloud/public/v1/shared/change_mgmt_nic.html)
+- [更改用于 BIG-IP VE 管理的 NIC](https://clouddocs.f5.com/cloud/public/v1/shared/change_mgmt_nic.html)
 
--   [关于一个 NIC 配置中的路由](https://clouddocs.f5.com/cloud/public/v1/shared/routes.html)
+- [关于一个 NIC 配置中的路由](https://clouddocs.f5.com/cloud/public/v1/shared/routes.html)
 
--   [Microsoft Azure：Waagent](https://clouddocs.f5.com/cloud/public/v1/azure/Azure_waagent.html)
+- [Microsoft Azure：Waagent](https://clouddocs.f5.com/cloud/public/v1/azure/Azure_waagent.html)
 
 ## <a name="next-steps"></a>后续步骤
 

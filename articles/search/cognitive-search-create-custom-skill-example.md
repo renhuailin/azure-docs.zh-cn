@@ -2,19 +2,18 @@
 title: 使用“必应实体搜索 API” 的自定义技能示例
 titleSuffix: Azure Cognitive Search
 description: 演示如何使用自定义技能中的“必应实体搜索服务”，该技能会在 Azure 认知搜索中映射到 AI 扩充索引管道。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b962282ee4e488d026b6475c63fc32e6a77cee74
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 88ea321087cc8745184249d323895a356cd9dbbc
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591523"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729424"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>示例：使用“必应实体搜索 API”创建自定义技能
 
@@ -312,7 +311,7 @@ namespace SampleSkills
 
 请确保根据注册“必应实体搜索 API” 时获得的密钥，在`key`常数中输入用户自己的 *密钥* 值。
 
-此示例在一个文件中添加所有必要的代码，以方便使用。 用户可以在“[强力技能存储库](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)”中找到相同技能稍微更结构化的版本。
+此示例在一个文件中添加所有必要的代码，以方便使用。 用户可以在“[强力技能存储库](https://github.com/Azure-Samples/azure-search-power-skills/tree/main/Text/BingEntitySearch)”中找到相同技能稍微更结构化的版本。
 
 当然，也可以将文件由 `Function1.cs` 重命名为 `BingEntitySearch.cs`。
 

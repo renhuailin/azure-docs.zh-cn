@@ -3,20 +3,20 @@ title: 实时对话听录快速入门 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何通过语音 SDK 使用实时对话听录。 通过对话听录可以听录会议和其他对话（能够将音频流式传输到语音服务来添加、删除和标识多个参与者）。
 services: cognitive-services
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.author: trbye
+ms.author: lajanuar
 zone_pivot_groups: acs-js-csharp
-ms.openlocfilehash: 48cd4c7996eabad7293aa2429c76b8943e0ab3da
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e42c457f042c43b109055c8445690412d87a7700
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100368466"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122068968"
 ---
 # <a name="get-started-with-real-time-conversation-transcription"></a>开始使用实时对话听录
 

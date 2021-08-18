@@ -3,12 +3,12 @@ title: 通过无状态节点类型部署 Service Fabric 托管群集
 description: 了解如何在 Service Fabric 托管群集中创建和部署无状态节点类型
 ms.topic: how-to
 ms.date: 5/10/2021
-ms.openlocfilehash: a1ea4a9d37ce26ac90c2cbae0420e4dbf8797ee2
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 2e7ebd2ec3098cc90c8fb044472c348c68aed689
+ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109689221"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113033706"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-with-stateless-node-types"></a>通过无状态节点类型部署 Service Fabric 托管群集
 
@@ -63,4 +63,4 @@ ms.locfileid: "109689221"
 若要详细了解 Service Fabric 托管群集，请参阅：
 
 > [!div class="nextstepaction"]
-> [Service Fabric 托管群集常见问题](./faq-managed-cluster.md)
+> [Service Fabric 托管群集常见问题](./faq-managed-cluster.yml)

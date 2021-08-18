@@ -1,17 +1,17 @@
 ---
 title: 为 Azure Cosmos DB 使用具有 Always Encrypted 功能的客户端加密
 description: 了解如何将具有 Always Encrypted 功能的客户端加密用于 Azure Cosmos DB
-author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: thweiss
-ms.openlocfilehash: d8aaa34fe2e81515866c047c6a171b1bdb58ff3f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+author: ThomasWeiss
+ms.openlocfilehash: 9135e35e74eda1387dc6dee5ba0875c4152439b0
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385015"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113356376"
 ---
 # <a name="use-client-side-encryption-with-always-encrypted-for-azure-cosmos-db-preview"></a>将具有 Always Encrypted 功能的客户端加密用于 Azure Cosmos DB （预览版）
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -80,6 +80,8 @@ Azure Cosmos DB 服务永远不会看到使用 Always Encrypted 加密的属性�
 - 确定性加密：对任何给定的纯文本值和加密配置始终生成相同的加密值。 通过确定性加密，查询可以对加密属性执行相等筛选。 但是，它可能会允许攻击者通过了解加密属性中的模式来推测有关加密值的信息。 当存在小部分可能的加密值时（如 True/False 或北部/南部/东部/西部区域），则尤其如此。
 
 - 随机加密：使用较不可预测的方式来加密数据。 随机加密更加安全，但会妨碍查询对加密属性进行筛选。
+
+请参阅[生成初始化向量 (IV)](/sql/relational-databases/security/encryption/always-encrypted-cryptography#step-1-generating-the-initialization-vector-iv)，详细了解 Always Encrypted 中的确定性加密和随机加密。
 
 ## <a name="setup-azure-key-vault"></a>设置 Azure Key Vault
 

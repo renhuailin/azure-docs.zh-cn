@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Cosmos DB 中的更改源支持
 description: 使用 Azure Cosmos DB 的更改源支持跟踪文档中发生的更改，基于事件的处理（例如触发器），使缓存和分析系统保持最新状态
-author: TheovanKraay
-ms.author: thvankra
+author: timsander1
+ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/07/2021
 ms.reviewer: sngun
 ms.custom: seodec18, "seo-nov-2020"
-ms.openlocfilehash: a8dd8e1da81d6c906e29caf155edc8c2b9e44ea9
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 26c5ce853776c111122eb184d042a414eb5f5acc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755530"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745513"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB 中的更改源
 [!INCLUDE[appliesto-all-apis-except-table](includes/appliesto-all-apis-except-table.md)]
@@ -92,9 +92,9 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 ## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>适用于 Cassandra 和 MongoDB 的 API 中的更改源
 
-在 MongoDB API 中，更改源功能显示为更改流；在 Cassandra API 中，它是以包含谓词的查询提供的。 若要详细了解 MongoDB API 的实现细节，请参阅 [Azure Cosmos DB API for MongoDB 中的更改流](mongodb-change-streams.md)。
+在 MongoDB API 中，更改源功能显示为更改流；在 Cassandra API 中，它是以包含谓词的查询提供的。 若要详细了解 MongoDB API 的实现细节，请参阅 [Azure Cosmos DB API for MongoDB 中的更改流](mongodb/change-streams.md)。
 
-本机 Apache Cassandra 提供变更数据捕获 (CDC)。CDC 是一种机制，用于标记要存档的特定表，并在达到 CDC 日志的可配置磁盘空间大小时拒绝写入这些表。 Azure Cosmos DB API for Cassandra 中的更改源功能增强了通过 CQL 使用谓词查询更改的功能。 若要详细了解实现细节，请参阅 [Azure Cosmos DB API for Cassandra 中的更改源](cassandra-change-feed.md)。
+本机 Apache Cassandra 提供变更数据捕获 (CDC)。CDC 是一种机制，用于标记要存档的特定表，并在达到 CDC 日志的可配置磁盘空间大小时拒绝写入这些表。 Azure Cosmos DB API for Cassandra 中的更改源功能增强了通过 CQL 使用谓词查询更改的功能。 若要详细了解实现细节，请参阅 [Azure Cosmos DB API for Cassandra 中的更改源](cassandra/cassandra-change-feed.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

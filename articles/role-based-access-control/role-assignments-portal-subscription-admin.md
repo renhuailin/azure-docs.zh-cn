@@ -7,14 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/11/2021
+ms.date: 06/25/2021
 ms.author: rolyon
-ms.openlocfilehash: dec5888127ed1fc291bec244a44cfb71e343e3bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: af88edbb788afa3576d3317d4e1cd54dea6f4deb
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556837"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988060"
 ---
 # <a name="assign-a-user-as-an-administrator-of-an-azure-subscription"></a>将用户分配为 Azure 订阅的管理员
 
@@ -30,15 +31,13 @@ ms.locfileid: "100556837"
 
 1. 在顶部的“搜索”框中，搜索订阅。
 
-    ![Azure 门户搜索资源组](./media/shared/sub-portal-search.png)
-
 1. 单击想要使用的订阅。
 
     下面显示了一个示例订阅。
 
-    ![资源组概述](./media/shared/sub-overview.png)
+    ![订阅概述的屏幕截图](./media/shared/sub-overview.png)
 
-## <a name="step-2-open-the-add-role-assignment-pane"></a>步骤 2：打开“添加角色分配”窗格
+## <a name="step-2-open-the-add-role-assignment-page"></a>步骤 2：打开“添加角色分配”页面
 
 “访问控制(IAM)”是一个页面，通常用于分配角色以授予对 Azure 资源的访问权限。 该功能也称为标识和访问管理 (IAM)，会显示在 Azure 门户中的多个位置。
 
@@ -46,46 +45,61 @@ ms.locfileid: "100556837"
 
     下面显示了订阅的“访问控制(IAM)”页面的示例。
 
-    ![资源组的“访问控制(IAM)”页](./media/shared/sub-access-control.png)
+    ![订阅的“访问控制(IAM)”页面的屏幕截图。](./media/shared/sub-access-control.png)
 
 1. 单击“角色分配”选项卡以查看在此范围内的角色分配。
 
-1. 单击“添加” > “角色分配”。
+1. 单击“添加” > “添加角色分配(预览)”。
+
    如果没有分配角色的权限，则将禁用“添加角色分配”选项。
 
-   ![“添加角色分配”菜单](./media/shared/add-role-assignment-menu.png)
+    ![预览体验的“添加”>“添加角色分配”菜单的屏幕截图。](./media/shared/add-role-assignment-menu-preview.png)
 
-    将打开“添加角色分配”窗格。
-
-   ![“添加角色分配”窗格](./media/shared/add-role-assignment.png)
+    随即打开“添加角色分配”窗格。
 
 ## <a name="step-3-select-the-owner-role"></a>步骤 3：选择“所有者”角色
 
 [所有者](built-in-roles.md#owner)角色授予管理所有资源的完全访问权限，包括允许在 Azure RBAC 中分配角色。 最多只能有 3 个订阅所有者，这样可降低被入侵的所有者做出违规行为的可能性。
 
-- 在“角色”列表中，选择“所有者”角色 。
+1. 在“角色”选项卡上，选择“所有者”角色 。
 
-   ![在“添加角色分配”窗格中选择“所有者”角色](./media/role-assignments-portal-subscription-admin/add-role-assignment-role-owner.png)
+    可按名称或说明搜索角色。 还可按类型和类别筛选角色。
+
+   ![预览版体验的“添加角色分配”页面的屏幕截图，其中显示了“角色”选项卡。](./media/shared/roles.png)
+
+1. 单击“下一步”。 
 
 ## <a name="step-4-select-who-needs-access"></a>步骤 4：选择需要访问权限的人员
 
-1. 在“分配访问权限至”列表中，选择“用户、组或服务主体” 。
+1. 在“成员”选项卡上，选择“用户、组或服务主体” 。
 
-1. 在“选择”部分，通过输入字符串或滚动列表来搜索用户。
+   ![预览体验的“添加角色分配”页面的屏幕截图，其中显示了“添加成员”选项卡。](./media/shared/members.png)
 
-   ![在“添加角色分配”中选择用户](./media/role-assignments-portal-subscription-admin/add-role-assignment-user-admin.png)
+1. 单击“选择成员”。
 
-1. 找到用户后，单击以选中。
+1. 查找并选择用户。
+
+    可以在“选择”框中键入，以在目录中搜索显示名称或电子邮件地址。
+
+   ![预览体验的“选择成员”窗格的屏幕截图。](./media/shared/select-members.png)
+
+1. 单击“保存”，将用户添加到“成员”列表。
+
+1. 在“说明”框中，输入此角色分配的可选说明。
+
+    稍后，可以在“角色分配”列表中显示此说明。
+
+1. 单击“下一步”。 
 
 ## <a name="step-5-assign-role"></a>步骤 5：分配角色
 
-1. 单击“保存”以分配该角色。
+1. 在“查看 + 分配”选项卡上，查看角色分配设置。
 
-   片刻之后，就会在所选范围为用户分配角色。
+1. 单击“查看 + 分配”以分配角色。
 
-1. 在“角色分配”选项卡上，验证列表是否显示了角色分配。
+   片刻之后，会为用户分配订阅的“所有者”角色。
 
-    ![添加角色分配 - 保存](./media/role-assignments-portal-subscription-admin/sub-role-assignments-owner.png)
+    ![分配角色后预览体验的角色分配列表屏幕截图。](./media/role-assignments-portal-subscription-admin/sub-role-assignments-owner.png)
 
 ## <a name="next-steps"></a>后续步骤
 

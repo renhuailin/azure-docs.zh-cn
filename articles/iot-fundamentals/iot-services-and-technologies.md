@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: 311f8164803dd12664aa193f08c8a1095ee07e31
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: ae4ab2161c4616f58a05e07f0ca273d08435b0bf
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168699"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403460"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>可使用哪些 Azure 技术和服务来创建 IoT 解决方案？
 
@@ -54,7 +54,7 @@ Azure IoT 解决方案加速器可以对 IoT 解决方案进行高级控制。 �
 
 使用 [Azure IoT 初学者套件](https://devicecatalog.azure.com/kits)之一开发 IoT 设备，或者从 [Azure IoT 认证设备目录](https://devicecatalog.azure.com)选择要使用的设备。 使用开源[设备 SDK](../iot-hub/iot-hub-devguide-sdks.md) 实现嵌入代码。 设备 SDK 支持多种操作系统，例如 Linux、Windows 和实时操作系统。 有用于多种编程语言（例如 [C](https://github.com/Azure/azure-iot-sdk-c)、[Node.js](https://github.com/Azure/azure-iot-sdk-node)、[Java](https://github.com/Azure/azure-iot-sdk-java)、[.NET](https://github.com/Azure/azure-iot-sdk-csharp) 和 [Python](https://github.com/Azure/azure-iot-sdk-python)）的 SDK。
 
-可以使用 [IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)服务进一步简化为设备创建嵌入代码的方式。 IoT 即插即用使解决方案开发人员能够将设备与其解决方案相集成，而无需编写任何嵌入代码。 IoT 即插即用的核心是描述设备功能的设备功能模型架构。  使用设备功能模型生成嵌入设备代码并配置基于云的解决方案，例如 IoT Central 应用程序。
+可以使用 [IoT 即插即用](../iot-develop/overview-iot-plug-and-play.md)服务进一步简化为设备创建嵌入代码的方式。 IoT 即插即用使解决方案开发人员能够将设备与其解决方案相集成，而无需编写任何嵌入代码。 IoT 即插即用的核心是描述设备功能的设备功能模型架构。  使用设备功能模型生成嵌入设备代码并配置基于云的解决方案，例如 IoT Central 应用程序。
 
 可通过 [Azure IoT Edge](../iot-edge/about-iot-edge.md) 将部分 IoT 工作负载从 Azure 云服务下移至你的设备。 IoT Edge 可降低解决方案中的延迟、减少设备与云的数据交换量并支持脱机方案。 你可通过 IoT Central 和某些解决方案加速器来管理 IoT Edge 设备。
 

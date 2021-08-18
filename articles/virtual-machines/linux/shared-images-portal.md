@@ -8,15 +8,15 @@ ms.subservice: shared-image-gallery
 ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 05/04/2020
+ms.date: 06/21/2021
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: bf788466b57193e2191ef2d93d76bd948ec206f7
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 254fb1b4c21f8dd956c271e75ddf29f25c2bce15
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026608"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204441"
 ---
 # <a name="create-a-shared-image-gallery-using-the-portal"></a>使用门户创建共享映像库
 
@@ -32,9 +32,6 @@ ms.locfileid: "112026608"
 [!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 <br>
-
-
-
 
 
 ## <a name="before-you-begin"></a>准备阶段
@@ -60,6 +57,7 @@ ms.locfileid: "112026608"
 1. 对于“大小”，请从可用大小列表中选择一种 VM 大小，然后选择“选择”。 
 1. 在“管理员帐户”下，如果源 VM 是通用化的，请输入 **用户名** 和 **SSH 公钥**。 如果源 VM 是专用化的，则这些选项将会灰显，因为系统会使用源 VM 中的信息。
 1. 若要允许远程访问 VM，请在“公共入站端口”下选择“允许所选端口”，然后从下拉列表中选择“SSH (22)”。   如果你不希望允许远程访问 VM，请为“公共入站端口”保留选择“无”。 
+1. 除非映像基于 RedHat 或 SLES，否则请在“许可”下选择“其他”。
 1. 完成后，选择页面底部的“查看 + 创建”按钮。
 1. VM 通过验证后，选择页面底部的“创建”以开始部署。
 
@@ -77,6 +75,5 @@ ms.locfileid: "112026608"
 - [创建共享映像库](https://azure.microsoft.com/resources/templates/sig-create/)
 - [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
-- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/vm-from-sig/)
 
 有关共享映像库的详细信息，请参阅[概述](../shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](../troubleshooting-shared-images.md)。

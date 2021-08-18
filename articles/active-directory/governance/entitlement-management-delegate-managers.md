@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4a33170fecab6efbe86568eb81b87637ca5da24
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 95c875c1a4ded86686120bb4de67904ef69a53c6
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109714289"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114286550"
 ---
 # <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>将访问治理委托给 Azure AD 权利管理中的访问包管理者
 
@@ -35,6 +35,8 @@ ms.locfileid: "109714289"
 本视频概述了如何将目录所有者的访问治理委托给访问包管理者。
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE3Lq08]
+
+除了目录所有者和访问包管理员角色之外，还可以将用户添加到目录读取者角色（提供对目录的仅查看访问权限）或访问包分配管理者角色（使用户能够更改分配，但不能访问包或策略）。
 
 ## <a name="as-a-catalog-owner-delegate-to-an-access-package-manager"></a>以目录所有者的身份，委托给访问包管理者
 

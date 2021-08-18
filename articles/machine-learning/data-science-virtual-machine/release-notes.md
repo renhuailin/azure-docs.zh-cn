@@ -2,23 +2,48 @@
 title: Data Science Virtual Machine 的新增功能
 titleSuffix: Azure Data Science Virtual Machine
 description: Azure Data Science Virtual Machine 的发行说明
-author: timoklimmer
+author: michalmar
 ms.service: data-science-vm
-ms.author: tklimmer
-ms.date: 05/25/2021
+ms.author: mimarusa
+ms.date: 07/16/2021
 ms.topic: reference
-ms.openlocfilehash: a3bb8f3c7174fe301a8c81396bb46b6762e70796
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: b74b535a6d6e00f83dd659728bb1ed930e1fb7dd
+ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409840"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114371379"
 ---
 # <a name="azure-data-science-virtual-machine-release-notes"></a>Azure Data Science Virtual Machine 发行说明
 
 本文介绍 Azure Data Science Virtual Machine 的发布。 如需获取随附工具的完整列表以及版本号，请查看[此页面](./tools-included.md)。
 
 如需了解已知 bug 和解决方法，请参阅[已知问题列表](reference-known-issues.md)。
+
+## <a name="2021-07-12"></a>2021-07-12
+
+[Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804?tab=Overview) 的新映像。
+
+主要更改：
+
+- 已更新到 PyTorch 1.9.0
+- 已将 Azure CLI 更新到 2.26.1
+- 已将 Azure CLI Azure 机器学习扩展更新到 1.29.0
+- 更新 VS Code 版本 1.58.1
+- 改进了稳定性和次要 bug 修补程序 
+
+
+## <a name="2021-06-22"></a>2021-06-22
+
+[Windows Server 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview) 的新映像。
+
+版本：21.06.22
+
+主要更改：
+
+- 已更新到 PyTorch 1.9.0
+- 修复了 git 不可用的 bug
+
 
 ## <a name="2021-06-01"></a>2021-06-01
 
@@ -41,8 +66,6 @@ ms.locfileid: "111409840"
 ## <a name="2021-05-22"></a>2021-05-22
 
 [Windows Server 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview) 的新映像。
-
-所选版本更新为：
 
 版本：21.05.22
 
@@ -73,9 +96,6 @@ ms.locfileid: "111409840"
 
 <br/>
 深色模式、桌面上图标的更改、墙纸背景更改。
-
-<br/>
-已启用可在 Gen2 虚拟机中使用的映像。
 
 ## <a name="2021-05-12"></a>2021-05-12
 

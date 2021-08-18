@@ -1,22 +1,22 @@
 ---
-title: 适用于 SQL API 的 Cosmos DB Apache Spark 连接器发行说明和资源
-description: 了解有关适用于 SQL API 的 Azure Cosmos DB Apache Spark 连接器的信息，包括发行日期、停用日期和 Azure Cosmos DB SQL Async Java SDK 各版本之间所做的更改。
+title: 适用于 SQL API 的 Azure Cosmos DB Apache Spark 2 OLTP 连接器发行说明和资源
+description: 了解有关适用于 SQL API 的 Azure Cosmos DB Apache Spark 2 OLTP 连接器的信息，包括发行日期、停用日期和 Azure Cosmos DB SQL Async Java SDK 各版本之间所做的更改。
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/12/2020
+ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 7ff75bf9d45803dd96927bcf7c70e7c7912db979
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3bc3a7c4cd6f02fcfae8c92875c09f6c31416c89
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93097152"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112232030"
 ---
-# <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>适用于 Core (SQL) API 的 Azure Cosmos DB Apache Spark 连接器：发行说明和资源
+# <a name="azure-cosmos-db-apache-spark-2-oltp-connector-for-core-sql-api-release-notes-and-resources"></a>适用于 Core (SQL) API 的 Azure Cosmos DB Apache Spark 2 OLTP 连接器：发行说明和资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
@@ -30,7 +30,8 @@ ms.locfileid: "93097152"
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
-> * [Spark 连接器](sql-api-sdk-java-spark.md)
+> * [Spark 3 OLTP 连接器](sql-api-sdk-java-spark-v3.md)
+> * [Spark 2 OLTP 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST 资源提供程序](/rest/api/cosmos-db-resource-provider/)
@@ -38,7 +39,7 @@ ms.locfileid: "93097152"
 > * [批量执行工具 - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [批量执行程序 - Java](sql-api-sdk-bulk-executor-java.md)
 
-可以通过使用适用于 Core (SQL) 的 Azure Cosmos DB Apache Spark 连接器加速大数据分析。 利用 Spark 连接器，可以对 Azure Cosmos DB 中存储的数据运行 [Spark](https://spark.apache.org/) 作业。 支持批处理和流处理。
+可以通过使用适用于 Core (SQL) 的 Azure Cosmos DB Apache Spark 2 OLTP 连接器加速大数据分析。 利用 Spark 连接器，可以对 Azure Cosmos DB 中存储的数据运行 [Spark](https://spark.apache.org/) 作业。 支持批处理和流处理。
 
 可以将连接器用于 [Azure Databricks](https://azure.microsoft.com/services/databricks) 或 [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/)，它们在 Azure 上提供 Spark 托管群集。 下表显示了支持的版本：
 
@@ -61,7 +62,7 @@ ms.locfileid: "93097152"
 | **SDK 下载** | [下载最新的 .jar](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG)，[Maven](https://search.maven.org/search?q=a:azure-cosmosdb-spark_2.4.0_2.11) |
 |**API 文档** | [Spark 连接器参考]() |
 |**参与编写 SDK** | [GitHub 上适用于 Apache Spark 的 Azure Cosmos DB 连接器](https://github.com/Azure/azure-cosmosdb-spark) | 
-|**入门** | [使用 Apache Spark 到 Azure Cosmos DB 的连接器加速大数据分析](./spark-connector.md#bk_working_with_connector) <br> [将 Apache Spark 结构化流式处理与 Apache Kafka 和 Azure Cosmos DB 配合使用](../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json) | 
+|**入门** | [使用 Apache Spark 到 Azure Cosmos DB 的连接器加速大数据分析](./create-sql-api-spark.md) <br> [将 Apache Spark 结构化流式处理与 Apache Kafka 和 Azure Cosmos DB 配合使用](../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json) | 
 
 ## <a name="release-history"></a>版本历史记录
 
@@ -120,7 +121,7 @@ ms.locfileid: "93097152"
 * 改进了连接管理和连接池以减少元数据调用数。
 
 ## <a name="faq"></a>常见问题解答
-[!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

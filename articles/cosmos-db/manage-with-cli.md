@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: e29162b2c64a855eeda6059596ca7859c52598b5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 96515eba928ff53a3ba038b7c97231185a24d0a9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059081"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745456"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos Core (SQL) API 资源
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "110059081"
 
 - 本文需要 2.22.1 或更高版本的 Azure CLI。 如果使用 Azure Cloud Shell，则最新版本已安装。
 
-有关其他 API 的 Azure CLI 示例，请参阅[适用于 Cassandra 的 CLI 示例](cli-samples-cassandra.md)、[适用于 MongoDB API 的 CLI 示例](cli-samples-mongodb.md)、[适用于 Gremlin 的 CLI 示例](cli-samples-gremlin.md)、[适用于 Table 的 CLI 示例](cli-samples-table.md)
+有关其他 API 的 Azure CLI 示例，请参阅[适用于 Cassandra 的 CLI 示例](cassandra/cli-samples.md)、[适用于 MongoDB API 的 CLI 示例](mongodb/cli-samples.md)、[适用于 Gremlin 的 CLI 示例](cli-samples-gremlin.md)、[适用于 Table 的 CLI 示例](cli-samples-table.md)
 
 > [!IMPORTANT]
 > 无法重命名 Azure Cosmos DB 资源，因为这违反了 Azure 资源管理器与资源 URI 的工作方式。

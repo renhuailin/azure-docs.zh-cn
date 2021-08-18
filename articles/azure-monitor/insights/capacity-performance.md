@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: aa08b9f5db5e6371bcd20b473a0c755db3199e7c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9fd23f5b5c78cac7b045c93a57c79279ed7f703
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101704287"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178196"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>使用容量和性能解决方案（已弃用）规划 Hyper-V 虚拟机容量
 
@@ -41,7 +41,7 @@ ms.locfileid: "101704287"
 | 连接的源 | 支持 | 说明 |
 |---|---|---|
 | [Windows 代理](../agents/agent-windows.md) | 是 | 解决方案从 Windows 代理收集容量和性能数据信息。 |
-| [Linux 代理](../vm/quick-collect-linux-computer.md) | 否    | 解决方案不从直接 Linux 代理收集容量和性能数据信息。|
+| [Linux 代理](../vm/monitor-virtual-machine.md) | 否 | 解决方案不从直接 Linux 代理收集容量和性能数据信息。|
 | [SCOM 管理组](../agents/om-agents.md) | 是 |解决方案从连接的 SCOM 管理组中的代理收集容量和性能数据。 不需要从 SCOM 代理直接连接到 Log Analytics。|
 | [Azure 存储帐户](../essentials/resource-logs.md#send-to-log-analytics-workspace) | 否 | Azure 存储不包括容量和性能数据。|
 
@@ -129,4 +129,3 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 [Log Analytics 中的日志搜索](../logs/log-query-overview.md)查看详细的容量和性能数据。
-

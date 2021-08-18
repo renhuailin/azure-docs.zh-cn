@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 6b9bf8aea031b7dce88fbaa096d8e5996e1d6f57
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 353fdd952ed4b2baa8920f1e15fb0dc0f44264ba
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110189761"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122202071"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS 托管的 Azure Active Directory 集成
 
@@ -190,7 +190,7 @@ az aks update -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-gr
 
 ## <a name="disable-local-accounts-preview"></a>禁用本地帐户（预览版）
 
-在部署 AKS 群集时，本地帐户在默认情况下处于启用状态。 即使是在启用 RBAC 或 Azure Active Directory 集成时，`--admin` 访问权限仍然存在，本质上是作为一个不可审核的后门选项。 考虑到这一点，AKS 为用户提供了通过 `disable-local` 标志来禁用本地帐户的功能。 另外还为托管群集 API 添加了 `properties.disableLocalAccounts` 字段，以指示该功能是否已在群集上启用。
+在部署 AKS 群集时，本地帐户在默认情况下处于启用状态。 即使是在启用 RBAC 或 Azure Active Directory 集成时，`--admin` 访问权限仍然存在，本质上是作为一个不可审核的后门选项。 考虑到这一点，AKS 为用户提供了通过 `disable-local-accounts` 标志来禁用本地帐户的功能。 另外还为托管群集 API 添加了 `properties.disableLocalAccounts` 字段，以指示该功能是否已在群集上启用。
 
 > [!NOTE]
 > 在启用了 Azure AD 集成的群集上，属于 `aad-admin-group-object-ids` 指定的组的用户仍将能够通过非管理员凭据获取访问权限。 在未启用 Azure AD 集成并且 `properties.disableLocalAccounts` 设置为 true 的群集上，获取用户凭据的操作和获取管理员凭据的操作都会失败。
@@ -221,10 +221,10 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="create-a-new-cluster-without-local-accounts"></a>创建没有本地帐户的新群集
 
-若要新建没有任何本地帐户的 AKS 群集，请使用带有 `disable-local` 标志的 [az aks create][az-aks-create] 命令：
+若要新建没有任何本地帐户的 AKS 群集，请使用带有 `disable-local-accounts` 标志的 [az aks create][az-aks-create] 命令：
 
 ```azurecli-interactive
-az aks create -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --disable-local
+az aks create -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --disable-local-accounts
 ```
 
 在输出中，检查 `properties.disableLocalAccounts` 字段的设置是否为 true，以确认已禁用了本地帐户：
@@ -247,10 +247,10 @@ Operation failed with status: 'Bad Request'. Details: Getting static credential 
 
 ### <a name="disable-local-accounts-on-an-existing-cluster"></a>在现有群集上禁用本地帐户
 
-若要在现有 AKS 群集上禁用本地帐户，请使用带有 `disable-local` 标志的 [az aks update][az-aks-update] 命令：
+若要在现有 AKS 群集上禁用本地帐户，请使用带有 `disable-local-accounts` 标志的 [az aks update][az-aks-update] 命令：
 
 ```azurecli-interactive
-az aks update -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --disable-local
+az aks update -g <resource-group> -n <cluster-name> --enable-aad --aad-admin-group-object-ids <aad-group-id> --disable-local-accounts
 ```
 
 在输出中，检查 `properties.disableLocalAccounts` 字段的设置是否为 true，以确认已禁用了本地帐户：

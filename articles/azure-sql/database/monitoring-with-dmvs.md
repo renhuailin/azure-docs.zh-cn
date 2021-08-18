@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 03/15/2021
-ms.openlocfilehash: 5c0de2c1589bfa495ab6ad287b998c403041674c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68daeddb958a3d009cfb2632c30780d7dfe6ce6d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592141"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739657"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>使用动态管理视图监视 Microsoft Azure SQL 数据库和 Azure SQL 托管实例性能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -636,11 +636,11 @@ ORDER BY start_time DESC;
 
    ```sql
     SELECT
-        (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU Fit Percent',
-        (COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log Write Fit Percent',
-        (COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical Data IO Fit Percent'
+        100*((COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name)) AS 'CPU Fit Percent',
+        100*((COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name)) AS 'Log Write Fit Percent',
+        100*((COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 40 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name)) AS 'Physical Data IO Fit Percent'
     FROM sys.resource_stats
-    WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
+    WHERE database_name = 'sample' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
     可以根据数据库服务层级的情况来确定工作负荷是否适合更小的计算大小。 如果数据库工作负荷目标为 99.9%，而上述查询针对所有三个资源维度返回的值大于 99.9%，则工作负荷可能适合更小的计算大小。
@@ -654,12 +654,12 @@ ORDER BY start_time DESC;
     平均 CPU 大约是计算大小限制的四分之一，这意味着它很适合数据库的计算大小限制。 但是，最大值显示该数据库达到了计算大小的限制。 在这种情况下，是否需要转到下一个更大的计算大小？ 查看工作负荷达到 100% 的次数，并将这种情况与数据库工作负荷目标进行比较。
 
     ```sql
-    SELECT
-        (COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'CPU fit percent'
-        ,(COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Log write fit percent'
-        ,(COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name) AS 'Physical data IO fit percent'
-        FROM sys.resource_stats
-        WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
+     SELECT
+         100*((COUNT(database_name) - SUM(CASE WHEN avg_cpu_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name)) AS 'CPU Fit Percent',
+         100*((COUNT(database_name) - SUM(CASE WHEN avg_log_write_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name)) AS 'Log Write Fit Percent',
+         100*((COUNT(database_name) - SUM(CASE WHEN avg_data_io_percent >= 100 THEN 1 ELSE 0 END) * 1.0) / COUNT(database_name)) AS 'Physical Data IO Fit Percent'
+     FROM sys.resource_stats
+     WHERE database_name = 'sample' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
     如果对于三个资源维度中的任何一个维度，此查询返回的值小于 99.9%，请考虑转到下一个更大的计算大小，或使用应用程序优化技术来减少数据库上的负载。

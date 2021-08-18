@@ -2,14 +2,14 @@
 title: 将来自 Azure 事件网格的事件接收到 HTTP 终结点中
 description: 描述如何验证 HTTP 终结点，以及随后如何接收和反序列化来自 Azure 事件网格的事件
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 07/16/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 93494bc35099c2ef9cbc93ed6713d8a2608f2c4c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f655982203c81ef6ff32a01566e37c346cf78138
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110473432"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730272"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>将事件接收到 HTTP 终结点
 
@@ -24,44 +24,29 @@ ms.locfileid: "110473432"
 
 ## <a name="add-dependencies"></a>添加依赖项
 
-若要使用 .NET 进行开发，请向 `Microsoft.Azure.EventGrid` [Nuget 包](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)的函数[添加依赖项](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)。 本文中的示例需要使用版本 1.4.0 或更高版本。
+若要使用 .NET 进行开发，请向 `Azure.Messaging.EventGrid` [Nuget 包](https://www.nuget.org/packages/Azure.Messaging.EventGrid)的函数[添加依赖项](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies)。
 
 可通过[发布 SDKs](./sdk-overview.md#data-plane-sdks) 引用将 SDK 用于其他语言。 这些包中有用于本机事件类型（如 `EventGridEvent`、`StorageBlobCreatedEventData` 和 `EventHubCaptureFileCreatedEventData`）的模型。
-
-在 Azure 函数中单击“查看文件”链接（Azure Functions 门户中最右侧的窗格），然后创建一个名为 project.json 的文件。 将以下代码添加到 `project.json` 文件并进行保存：
-
- ```json
-{
-  "frameworks": {
-    "net46":{
-      "dependencies": {
-        "Microsoft.Azure.EventGrid": "2.0.0"
-      }
-    }
-   }
-}
-```
-
-![所添加的 NuGet 包](./media/receive-events/add-dependencies.png)
 
 ## <a name="endpoint-validation"></a>终结点验证
 
 首先需要处理 `Microsoft.EventGrid.SubscriptionValidationEvent` 事件。 每次有人订阅某个事件时，事件网格都会在数据有效负载中通过 `validationCode` 向终结点发送一个验证事件。 终结点必须回显到响应正文中才能[证明此终结点有效且被你所拥有](webhook-event-delivery.md)。 如果你使用的是[事件网格触发器](../azure-functions/functions-bindings-event-grid.md)（而不是 Webhook 触发函数），系统会为你执行终结点验证。 如果使用第三方 API 服务（例如 [Zapier](https://zapier.com/home) 或 [IFTTT](https://ifttt.com/)），可能无法以编程方式回显验证码。 对于这些服务，可以使用订阅验证事件中发送的验证 URL 手动验证订阅。 在 `validationUrl` 属性中复制该 URL 并通过 REST 客户端或 Web 浏览器发送 GET 请求。
 
-在 C# 中，`DeserializeEventGridEvents()` 函数会反序列化事件网格事件。 它将事件数据反序列化为适当的类型（如 StorageBlobCreatedEventData）。 `Microsoft.Azure.EventGrid.EventTypes` 类可用于获取受支持的事件类型和名称。
+在 C# 中，`ParseMany()` 方法用于将包含一个或多个事件的 `BinaryData` 实例反序列化为 `EventGridEvent` 数组。 如果你提前知道只反序列化单个事件，则可以改用 `Parse` 方法。
 
-若要以编程方式回显验证码，请运行下面的代码。 若要获取相关示例，可以访问[事件网格使用者示例](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridConsumer)。
+若要以编程方式回显验证码，请运行下面的代码。
 
-```csharp
-using System.IO;
+```c#
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Microsoft.Azure.EventGrid.Models;
-using Microsoft.Azure.EventGrid;
+using System;
+using Azure.Messaging.EventGrid;
+using Azure.Messaging.EventGrid.SystemEvents;
+
 namespace Function1
 {
     public static class Function1
@@ -73,31 +58,33 @@ namespace Function1
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
             string response = string.Empty;
-            string requestContent = await new StreamReader(req.Body).ReadToEndAsync();
-            log.LogInformation($"Received events: {requestContent}");
+            BinaryData events = await BinaryData.FromStreamAsync(req.Body);
+            log.LogInformation($"Received events: {events}");
 
-            EventGridSubscriber eventGridSubscriber = new EventGridSubscriber();
-
-            EventGridEvent[] eventGridEvents = eventGridSubscriber.DeserializeEventGridEvents(requestContent);
+            EventGridEvent[] eventGridEvents = EventGridEvent.ParseMany(events);
 
             foreach (EventGridEvent eventGridEvent in eventGridEvents)
             {
-                if (eventGridEvent.Data is SubscriptionValidationEventData)
+                // Handle system events
+                if (eventGridEvent.TryGetSystemEventData(out object eventData))
                 {
-                    var eventData = (SubscriptionValidationEventData)eventGridEvent.Data;
-                    log.LogInformation($"Got SubscriptionValidation event data, validation code: {eventData.ValidationCode}, topic: {eventGridEvent.Topic}");
-                    // Do any additional validation (as required) and then return back the below response
-
-                    var responseData = new SubscriptionValidationResponse()
+                    // Handle the subscription validation event
+                    if (eventData is SubscriptionValidationEventData subscriptionValidationEventData)
                     {
-                        ValidationResponse = eventData.ValidationCode
-                    };
-                    return new OkObjectResult(responseData);
+                        log.LogInformation($"Got SubscriptionValidation event data, validation code: {subscriptionValidationEventData.ValidationCode}, topic: {eventGridEvent.Topic}");
+                        // Do any additional validation (as required) and then return back the below response
+
+                        var responseData = new SubscriptionValidationResponse()
+                        {
+                            ValidationResponse = subscriptionValidationEventData.ValidationCode
+                        };
+                        return new OkObjectResult(responseData);
+                    }
                 }
             }
             return new OkObjectResult(response);
         }
-   }
+    }
 }
 ```
 
@@ -148,55 +135,59 @@ module.exports = function (context, req) {
 
 ## <a name="handle-blob-storage-events"></a>处理 Blob 存储事件
 
-现在，让我们对该函数进行扩展来处理 `Microsoft.Storage.BlobCreated`：
+现在，让我们扩展函数来处理 `Microsoft.Storage.BlobCreated` 系统事件：
 
-```cs
-using System.IO;
+```c#
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Microsoft.Azure.EventGrid;
-using Microsoft.Azure.EventGrid.Models;
+using System;
+using Azure.Messaging.EventGrid;
+using Azure.Messaging.EventGrid.SystemEvents;
 
-namespace FunctionApp1
+namespace Function1
 {
     public static class Function1
     {
         [FunctionName("Function1")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation($"C# HTTP trigger function begun");
+            log.LogInformation("C# HTTP trigger function processed a request.");
             string response = string.Empty;
+            BinaryData events = await BinaryData.FromStreamAsync(req.Body);
+            log.LogInformation($"Received events: {events}");
 
-            string requestContent = await new StreamReader(req.Body).ReadToEndAsync();
-            log.LogInformation($"Received events: {requestContent}");
-
-            EventGridSubscriber eventGridSubscriber = new EventGridSubscriber();
-
-            EventGridEvent[] eventGridEvents = eventGridSubscriber.DeserializeEventGridEvents(requestContent);
+            EventGridEvent[] eventGridEvents = EventGridEvent.ParseMany(events);
 
             foreach (EventGridEvent eventGridEvent in eventGridEvents)
             {
-                if (eventGridEvent.Data is SubscriptionValidationEventData)
+                // Handle system events
+                if (eventGridEvent.TryGetSystemEventData(out object eventData))
                 {
-                    var eventData = (SubscriptionValidationEventData)eventGridEvent.Data;
-                    log.LogInformation($"Got SubscriptionValidation event data, validation code: {eventData.ValidationCode}, topic: {eventGridEvent.Topic}");
-                    // Do any additional validation (as required) and then return back the below response
-
-                    var responseData = new SubscriptionValidationResponse()
+                    // Handle the subscription validation event
+                    if (eventData is SubscriptionValidationEventData subscriptionValidationEventData)
                     {
-                        ValidationResponse = eventData.ValidationCode
-                    };
+                        log.LogInformation($"Got SubscriptionValidation event data, validation code: {subscriptionValidationEventData.ValidationCode}, topic: {eventGridEvent.Topic}");
+                        // Do any additional validation (as required) and then return back the below response
 
-                    return new OkObjectResult(responseData);
+                        var responseData = new SubscriptionValidationResponse()
+                        {
+                            ValidationResponse = subscriptionValidationEventData.ValidationCode
+                        };
+                        return new OkObjectResult(responseData);
+                    }
+                    // Handle the storage blob created event
+                    else if (eventData is StorageBlobCreatedEventData storageBlobCreatedEventData)
+                    {
+                        log.LogInformation($"Got BlobCreated event data, blob URI {storageBlobCreatedEventData.Url}");
+                    }
                 }
             }
-
             return new OkObjectResult(response);
         }
     }
@@ -268,77 +259,69 @@ module.exports = function (context, req) {
 
 ![函数 URL](./media/receive-events/function-url.png)
 
-## <a name="handle-custom-events"></a>处理自定义事件
+## <a name="handle-custom-events&quot;></a>处理自定义事件
 
 最后，再次扩展函数，使其还能够处理自定义事件。 
 
-在 C# 中，SDK 支持将事件类型名称映射到事件数据类型。 `AddOrUpdateCustomEventMapping()` 函数可用于映射自定义事件。
-
 添加对事件 `Contoso.Items.ItemReceived` 的检查。 最终代码应如下所示：
 
-```cs
-using System.IO;
+```c#
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Microsoft.Azure.EventGrid.Models;
-using Microsoft.Azure.EventGrid;
-using Newtonsoft.Json;
+using System;
+using Azure.Messaging.EventGrid;
+using Azure.Messaging.EventGrid.SystemEvents;
 
-namespace FunctionApp1
+namespace Function1
 {
-    class ContosoItemReceivedEventData
-    {
-        [JsonProperty("itemSku")]
-        public string ItemSku { get; set; }
-    }
     public static class Function1
     {
-        [FunctionName("Function1")]
+        [FunctionName(&quot;Function1")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation($"C# HTTP trigger function begun");
+            log.LogInformation("C# HTTP trigger function processed a request.");
             string response = string.Empty;
+            BinaryData events = await BinaryData.FromStreamAsync(req.Body);
+            log.LogInformation($"Received events: {events}");
 
-            string requestContent = await new StreamReader(req.Body).ReadToEndAsync();
-            log.LogInformation($"Received events: {requestContent}");
-
-            EventGridSubscriber eventGridSubscriber = new EventGridSubscriber();
-            eventGridSubscriber.AddOrUpdateCustomEventMapping("Contoso.Items.ItemReceived", typeof(ContosoItemReceivedEventData));
-            EventGridEvent[] eventGridEvents = eventGridSubscriber.DeserializeEventGridEvents(requestContent);
+            EventGridEvent[] eventGridEvents = EventGridEvent.ParseMany(events);
 
             foreach (EventGridEvent eventGridEvent in eventGridEvents)
             {
-                if (eventGridEvent.Data is SubscriptionValidationEventData)
+                // Handle system events
+                if (eventGridEvent.TryGetSystemEventData(out object eventData))
                 {
-                    var eventData = (SubscriptionValidationEventData)eventGridEvent.Data;
-                    log.LogInformation($"Got SubscriptionValidation event data, validation code: {eventData.ValidationCode}, topic: {eventGridEvent.Topic}");
-                    // Do any additional validation (as required) and then return back the below response
-
-                    var responseData = new SubscriptionValidationResponse()
+                    // Handle the subscription validation event
+                    if (eventData is SubscriptionValidationEventData subscriptionValidationEventData)
                     {
-                        ValidationResponse = eventData.ValidationCode
-                    };
+                        log.LogInformation($"Got SubscriptionValidation event data, validation code: {subscriptionValidationEventData.ValidationCode}, topic: {eventGridEvent.Topic}");
+                        // Do any additional validation (as required) and then return back the below response
 
-                    return new OkObjectResult(responseData);
+                        var responseData = new SubscriptionValidationResponse()
+                        {
+                            ValidationResponse = subscriptionValidationEventData.ValidationCode
+                        };
+                        return new OkObjectResult(responseData);
+                    }
+                    // Handle the storage blob created event
+                    else if (eventData is StorageBlobCreatedEventData storageBlobCreatedEventData)
+                    {
+                        log.LogInformation($"Got BlobCreated event data, blob URI {storageBlobCreatedEventData.Url}");
+                    }
                 }
-                else if (eventGridEvent.Data is StorageBlobCreatedEventData)
+                // Handle the custom contoso event
+                else if (eventGridEvent.EventType == "Contoso.Items.ItemReceived")
                 {
-                    var eventData = (StorageBlobCreatedEventData)eventGridEvent.Data;
-                    log.LogInformation($"Got BlobCreated event data, blob URI {eventData.Url}");
-                }
-                else if (eventGridEvent.Data is ContosoItemReceivedEventData)
-                {
-                    var eventData = (ContosoItemReceivedEventData)eventGridEvent.Data;
-                    log.LogInformation($"Got ContosoItemReceived event data, item SKU {eventData.ItemSku}");
+                    var contosoEventData = eventGridEvent.Data.ToObjectFromJson<ContosoItemReceivedEventData>();
+                    log.LogInformation($"Got ContosoItemReceived event data, item SKU {contosoEventData.ItemSku}");
                 }
             }
-
             return new OkObjectResult(response);
         }
     }
@@ -397,7 +380,7 @@ module.exports = function (context, req) {
 
 还可实时测试此功能，方式是[在门户中通过 CURL 发送自定义事件](./custom-event-quickstart-portal.md)，或者使用任何可通过 POST 发送到终结点（如 [Postman](https://www.getpostman.com/)）的服务或应用程序[发布到自定义主题](./post-to-custom-topic.md)。 使用终结点集作为函数 URL，创建自定义主题和事件订阅。
 
-[!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
+[!INCLUDE [event-grid-message-headers](./includes/event-grid-message-headers.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: mbullwin
-ms.openlocfilehash: b4153b07b153a9ee0b16dc032ab5e7810e236d7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fd02fbdd8f6c02ce86a4e0c1ee3eabec69e56c3
+ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98936270"
+ms.lasthandoff: 07/05/2021
+ms.locfileid: "113296714"
 ---
-# <a name="deploy-an-anomaly-detector-module-to-iot-edge"></a>将异常检测器模块部署到 IoT Edge
+# <a name="deploy-an-anomaly-detector-univariate-module-to-iot-edge"></a>将异常检测器单变量模块部署到 IoT Edge
 
 了解如何将认知服务[异常检测器](../anomaly-detector-container-howto.md)模块部署到 IoT Edge 设备。 将模块部署到 IoT Edge 后，它将与其他模块一起在 IoT Edge 中作为容器实例运行。 它公开了与在标准 Docker 容器环境中运行的异常检测器容器实例完全相同的 API。 
 

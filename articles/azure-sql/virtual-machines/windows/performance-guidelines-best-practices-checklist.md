@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/06/2021
+ms.date: 06/01/2021
 ms.author: dpless
 ms.custom: contperf-fy21q3
 ms.reviewer: jroth
-ms.openlocfilehash: e658a2ceed031ea68bce17b87887fd42f24756d6
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: daca233044af362ad64d396f56e7a64441ac8f5d
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079924"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180578"
 ---
 # <a name="checklist-best-practices-for-sql-server-on-azure-vms"></a>清单：有关 Azure VM 上 SQL Server 的最佳做法
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -114,7 +114,7 @@ ms.locfileid: "112079924"
 - 利用 [Azure 安全中心](../../../security-center/index.yml)改善虚拟机部署的总体安全状况。
 - 利用 [Azure Defender](../../../security-center/azure-defender.md)（与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成）获取特定 [SQL Server VM 范围](../../../security-center/defender-for-sql-introduction.md)，包括漏洞评估和实时访问，这可减少攻击服务，同时允许合法用户在必要时访问虚拟机。 要了解详细信息，请参阅[漏洞评估](../../../security-center/defender-for-sql-on-machines-vulnerability-assessment.md)、[为 SQL Server VM](../../../security-center/defender-for-sql-on-machines-vulnerability-assessment.md) 和[实时访问](../../../security-center/just-in-time-explained.md)启用漏洞评估。 
 - 利用 [Azure 顾问](../../../advisor/advisor-overview.md) 来解决[性能](../../../advisor/advisor-performance-recommendations.md)、[成本](../../../advisor/advisor-cost-recommendations.md)、[可靠性](../../../advisor/advisor-high-availability-recommendations.md)、[卓越运营](../../../advisor/advisor-operational-excellence-recommendations.md)和[安全建议](../../../advisor/advisor-security-recommendations.md)。
-- 利用 [Azure Monitor](../../../azure-monitor/vm/quick-monitor-azure-vm.md) 从 SQL Server 环境收集、分析和处理遥测数据。 这包括识别 [VM 见解](../../../azure-monitor/vm/vminsights-overview.md)的基础结构问题并通过[日志分析](../../../azure-monitor/logs/log-query-overview.md)监视数据，以便进行更深入的诊断。
+- 利用 [Azure Monitor](../../../azure-monitor/vm/monitor-virtual-machine.md) 从 SQL Server 环境收集、分析和处理遥测数据。 这包括识别 [VM 见解](../../../azure-monitor/vm/vminsights-overview.md)的基础结构问题并通过[日志分析](../../../azure-monitor/logs/log-query-overview.md)监视数据，以便进行更深入的诊断。
 - 为开发和测试环境启用[自动关闭](../../../automation/automation-solution-vm-management.md)。 
 - 实现可满足业务连续性 SLA 的高可用性和灾难恢复 (HADR) 解决方案，请参阅可用于 Azure VM 上 SQL Server 的 [HADR 选项](business-continuity-high-availability-disaster-recovery-hadr-overview.md#deployment-architectures)。 
 - 使用 Microsoft Azure 门户（支持 + 故障排除）评估[资源运行状况](../../../service-health/resource-health-overview.md)和历史记录；在需要时提交新的支持请求。
@@ -134,7 +134,7 @@ ms.locfileid: "112079924"
 * 每个群集节点使用一个 NIC，并使用一个子网。 
 * 将群集[仲裁投票](hadr-cluster-best-practices.md#quorum-voting)配置为使用 3 个或更多奇数投票数。 不要将投票分配给 DR 区域。 
 * 仔细监视[资源限制](hadr-cluster-best-practices.md#resource-limits)，避免因资源限制出现意外重启或故障转移。
-   - 确保操作系统、驱动程序和 SQL Server 都是最新版本。 
+   - 确保 OS、驱动程序和 SQL Server 都是最新版本。 
    - 针对 Azure VM 上的 SQL Server 优化性能。 查看本文中的其他部分了解详细信息。 
    - 减少或分散工作负荷，避免资源限制。 
    - 转到限制更高的 VM 或磁盘，避免受限。 
@@ -145,7 +145,7 @@ ms.locfileid: "112079924"
 * 如果优化 SQL Server VM 性能无法解决意外的故障转移，请考虑放宽对可用性组或故障转移群集实例的[监视](hadr-cluster-best-practices.md#relaxed-monitoring)。 但这样做可能无法解决根本问题，同时可能会降低失败可能性而掩盖症状。 你可能仍需要调查并解决根本原因。 对于 Windows Server 2012 或更高版本，请使用以下建议值： 
    - **租用超时**：使用此公式计算最大租用超时值：   
     `Lease timeout < (2 * SameSubnetThreshold * SameSubnetDelay)`.    
-    首先从 40 秒开始。 如果使用之前建议的宽松 `SameSubnetThreshold` 和 `SameSubnetDelay` 值，则租用超时值不要超过 80 秒。    
+    首先从 40 秒开始。 如果使用的是之前建议的宽松 `SameSubnetThreshold` 和 `SameSubnetDelay` 值，则租用超时值不超过 80 秒。    
    - **指定时间段内的最大失败数**：将此值设置为 6。 
 * 使用虚拟网络名称 (VNN) 连接 HADR 解决方案时，即使群集只跨越一个子网，也请在连接字符串中指定 `MultiSubnetFailover = true`。 
    - 如果客户端不支持 `MultiSubnetFailover = True`，你可能需要设置 `RegisterAllProvidersIP = 0` 和 `HostRecordTTL = 300` 来缓存较短持续时间内的客户端凭据。 但这样做可能会导致对 DNS 服务器进行其他查询。 

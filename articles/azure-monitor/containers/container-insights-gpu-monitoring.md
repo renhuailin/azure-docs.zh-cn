@@ -3,12 +3,12 @@ title: 使用容器见解配置 GPU 监视 | Microsoft Docs
 description: 本文介绍如何使用容器见解为启用了 NVIDIA 和 AMD GPU 的节点配置监视 Kubernetes 群集。
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 2958b000ac0dabcd7fddf75a58f553b705a95e9a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9f18628b2814305d8629d3216bb0a0d1bab092fb
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101731861"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734295"
 ---
 # <a name="configure-gpu-monitoring-with-container-insights"></a>使用容器见解配置 GPU 监视
 
@@ -39,7 +39,7 @@ ms.locfileid: "101731861"
 
 ## <a name="gpu-performance-charts"></a>GPU 性能图表 
 
-容器见解包含表中前面列出的指标的预配置图表，作为每个群集的 GPU 工作簿。 有关可用于容器见解的工作簿的说明，请参阅[容器见解中的工作簿](../insights/container-insights-reports.md)。
+容器见解包含表中前面列出的指标的预配置图表，作为每个群集的 GPU 工作簿。 有关可用于容器见解的工作簿的说明，请参阅[容器见解中的工作簿](container-insights-reports.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

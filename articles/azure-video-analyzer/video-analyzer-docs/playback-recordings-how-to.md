@@ -3,13 +3,13 @@ title: 播放视频录制内容 - Azure 视频分析器
 description: 可以使用 Azure 视频分析器进行连续视频录制，持续数周或数月将视频录制到云中。 还可以通过基于事件的录制将录制限制为你感兴趣的剪辑。 本文讨论如何播放这些录制内容。
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 05/13/2021
-ms.openlocfilehash: c2b8ceea0778634f3396ac324da093c030f5acc9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 415edea10eaf635b88786d33bbd439bc386a57fc
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385218"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602188"
 ---
 # <a name="playback-of-video-recordings"></a>播放视频录制内容 
 

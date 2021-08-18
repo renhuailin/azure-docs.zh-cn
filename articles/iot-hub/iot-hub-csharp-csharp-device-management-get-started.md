@@ -2,7 +2,6 @@
 title: Azure IoT 中心设备管理入门 (.NET/.NET) | Microsoft Docs
 description: 如何使用 Azure IoT 中心设备管理启动远程设备重启。 使用适用于 .NET 的 Azure IoT 设备 SDK 实现包含直接方法的模拟设备应用，并使用适用于 .NET 的 Azure IoT 服务 SDK 实现调用直接方法的服务应用。
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: 5760c574e64a3b3b4a1df12092cff44374790a90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1eac28079136d1b81e92536c803b2a7da3925cc5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89018393"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737771"
 ---
 # <a name="get-started-with-device-management-net"></a>设备管理入门 (.NET)
 

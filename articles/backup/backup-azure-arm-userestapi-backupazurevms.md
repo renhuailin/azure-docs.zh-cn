@@ -4,12 +4,12 @@ description: 本文介绍如何使用 REST API 配置、启动和管理 Azure VM
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 9ba22c51c7a6c26a232ed20aec21fc83d2c54b37
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57187a9f7ecf3e1d00fa395d25d98fd03f5d2698
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92171461"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461016"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>通过 REST API 使用 Azure 备份来备份 Azure VM
 
@@ -23,7 +23,7 @@ ms.locfileid: "92171461"
 
 ### <a name="discover-unprotected-azure-vms"></a>发现未受保护的 Azure VM
 
-首先，保管库应能够识别 Azure VM。 这是使用[刷新操作](/rest/api/backup/protectioncontainers/refresh)触发的。 这是一种异步 POST 操作，可确保保管库获取当前订阅中所有未受保护的 VM 的最新列表并“缓存”它们。 一旦 VM 完成缓存，恢复服务将能够访问 VM，并对其进行保护。
+首先，保管库应能够识别 Azure VM。 这是使用[刷新操作](/rest/api/backup/protection-containers/refresh)触发的。 这是一种异步 POST 操作，可确保保管库获取当前订阅中所有未受保护的 VM 的最新列表并“缓存”它们。 一旦 VM 完成缓存，恢复服务将能够访问 VM，并对其进行保护。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
@@ -92,7 +92,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="selecting-the-relevant-azure-vm"></a>选择相关的 Azure VM
 
- 可以通过在订阅下[列出所有可保护项](/rest/api/backup/backupprotectableitems/list)来确认“缓存”已完成，并在响应中找到所需的 VM。 [此操作的响应](#example-responses-to-get-operation)还提供有关恢复服务如何识别 VM 的信息。  熟悉此模式后，可以跳过此步骤直接进入[启用保护](#enabling-protection-for-the-azure-vm)。
+ 可以通过在订阅下[列出所有可保护项](/rest/api/backup/backup-protectable-items/list)来确认“缓存”已完成，并在响应中找到所需的 VM。 [此操作的响应](#example-responses-to-get-operation)还提供有关恢复服务如何识别 VM 的信息。  熟悉此模式后，可以跳过此步骤直接进入[启用保护](#enabling-protection-for-the-azure-vm)。
 
 此操作是一种 GET 操作。
 
@@ -106,7 +106,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
-|200 正常     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
+|200 正常     | [WorkloadProtectableItemResourceList](/rest/api/backup/backup-protectable-items/list#workloadprotectableitemresourcelist)        |       OK |
 
 #### <a name="example-responses-to-get-operation"></a>针对“获取”操作的响应示例
 
@@ -162,7 +162,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>为 Azure VM 启用保护
 
-在“缓存”和“识别”相关 VM 后，选择要保护的策略。 若要了解有关保管库中现有策略的更多信息，请参阅[列出策略 API](/rest/api/backup/backuppolicies/list)。 然后，通过引用策略名称来选择[相关策略](/rest/api/backup/protectionpolicies/get)。 若要创建策略，请参阅[创建策略教程](backup-azure-arm-userestapi-createorupdatepolicy.md)。 下面的示例中选择了“DefaultPolicy”。
+在“缓存”和“识别”相关 VM 后，选择要保护的策略。 若要了解有关保管库中现有策略的更多信息，请参阅[列出策略 API](/rest/api/backup/backup-policies/list)。 然后，通过引用策略名称来选择[相关策略](/rest/api/backup/protection-policies/get)。 若要创建策略，请参阅[创建策略教程](backup-azure-arm-userestapi-createorupdatepolicy.md)。 下面的示例中选择了“DefaultPolicy”。
 
 启用保护是一种异步 PUT 操作，可创建“受保护的项”。
 
@@ -184,7 +184,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem 资源属性         |
 
-有关请求正文的完整定义列表和其他详细信息，请参阅[“创建受保护的项”REST API 文档](/rest/api/backup/protecteditems/createorupdate#request-body)。
+有关请求正文的完整定义列表和其他详细信息，请参阅[“创建受保护的项”REST API 文档](/rest/api/backup/protected-items/create-or-update#request-body)。
 
 ##### <a name="example-request-body"></a>示例请求正文
 
@@ -210,7 +210,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
-|200 正常     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
+|200 正常     |    [ProtectedItemResource](/rest/api/backup/protected-item-operation-results/get#protecteditemresource)     |  OK       |
 |202 已接受     |         |     已接受    |
 
 ##### <a name="example-responses-to-create-protected-item-operation"></a>针对“创建受保护项”操作的响应示例
@@ -437,7 +437,7 @@ X-Powered-By: ASP.NET
 > [!IMPORTANT]
 > 上述请求正文始终是要排除或包含的数据磁盘的最终副本。 这不会添加到之前的配置中。 例如：如果先将保护更新为“排除数据磁盘 1”，然后使用“排除数据磁盘 2”重复此操作，那么在后续备份中，只有数据磁盘 2 被排除，数据磁盘 1 将被包含在内。 这始终是最终列表，将在后续备份中被包含在内/排除在外。
 
-若要获取排除或包含的磁盘的当前列表，请获取[此处](/rest/api/backup/protecteditems/get)中提到的受保护项信息。 响应将提供数据磁盘 LUN 的列表，并指明它们是被包含在内还是被排除在外。
+若要获取排除或包含的磁盘的当前列表，请获取[此处](/rest/api/backup/protected-items/get)中提到的受保护项信息。 响应将提供数据磁盘 LUN 的列表，并指明它们是被包含在内还是被排除在外。
 
 ### <a name="stop-protection-but-retain-existing-data"></a>停止保护，但保留现有数据
 
@@ -457,7 +457,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="stop-protection-and-delete-data"></a>停止保护并删除数据
 
-若要删除对受保护的 VM 的保护并删除备份数据，请执行[此处](/rest/api/backup/protecteditems/delete)详细的删除操作。
+若要删除对受保护的 VM 的保护并删除备份数据，请执行[此处](/rest/api/backup/protected-items/delete)详细的删除操作。
 
 停止保护和删除数据是一种 DELETE 操作。
 

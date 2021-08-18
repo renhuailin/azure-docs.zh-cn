@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 63ea252a4b4c673ae3028adb7ab793ac21fb2e99
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 24a925b0d16dc1650398e6211aaff42cd47620eb
+ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564579"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112369404"
 ---
 # <a name="caching-with-azure-front-door-standardpremium-preview"></a>使用 Azure Front Door 标准版/高级版（预览版）进行缓存
 
@@ -37,7 +37,7 @@ Front Door 标准版/高级版（预览版）可交付大型文件而不限制�
 
 区块到达 Front Door 环境后，会将区块缓存并立即提供给用户。 然后，Front Door 会并行预提取下一个区块。 此预提取可确保内容始终先于用户一个区块，从而减少延迟。 该过程将一直持续到下载完整个文件（如果需要）或客户端关闭连接为止。
 
-有关字节范围请求的详细信息，请阅读 [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html)。
+有关字节范围请求的详细信息，请阅读 [RFC 7233](https://www.rfc-editor.org/info/rfc7233)。
 Front Door 会在收到任何区块后将区块缓存，因此整个文件无需在 Front Door 缓存中进行缓存。 随后从缓存中请求文件或字节范围的请求。 如果区块未全部缓存，将采用预提取从后端请求区块。 这种优化依赖于源支持字节范围请求的能力。 如果源不支持字节范围请求，则此优化不会生效。
 
 ## <a name="file-compression"></a>文件压缩
@@ -46,7 +46,7 @@ Front Door 会在收到任何区块后将区块缓存，因此整个文件无需
 
 ## <a name="query-string-behavior"></a>查询字符串行为
 
-借助 Front Door，可控制如何对包含查询字符串的 Web 请求缓存文件。 在包含查询字符串的 Web 请求中，查询字符串是问号 (?) 后出现的请求部分。 查询字符串可以包含一个或多个键值对，其中字段名称和其值由等号 (=) 分隔。 每个键值对由与号 (&) 分隔。 例如，`http://www.contoso.com/content.mov?field1=value1&field2=value2`。 如果请求的查询字符串中有多个键值对，其顺序并不重要。
+借助 Front Door，可控制如何对包含查询字符串的 Web 请求缓存文件。 在包含查询字符串的 Web 请求中，查询字符串是问号 (?) 后出现的请求部分。 查询字符串可以包含一个或多个键值对，其中字段名称和其值由等号 (=) 分隔。 每个键值对由与号 (&) 分隔。 例如 `http://www.contoso.com/content.mov?field1=value1&field2=value2`。 如果请求的查询字符串中有多个键值对，其顺序并不重要。
 
 * **忽略查询字符串**：在此模式下，Front Door 将来自请求者的查询字符串传递到第一个请求上的源并缓存该资产。 由 Front Door 环境处理的资产的所有后续请求都将忽略查询字符串，直到所缓存的资产过期。
 

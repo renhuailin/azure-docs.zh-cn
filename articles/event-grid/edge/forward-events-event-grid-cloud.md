@@ -8,12 +8,12 @@ ms.reviewer: spelluru
 ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: 5a35cfb293ca7cda0a9a1d24f4faf88ef0ed733d
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d1732e6f997af622bd7435b6b2f1a3033bc05a79
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378311"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112412684"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>教程：将事件转接到事件网格云
 
@@ -30,7 +30,7 @@ ms.locfileid: "110378311"
 * Azure 订阅 - 创建[免费帐户](https://azure.microsoft.com/free)（如果还没有的话）。 
 * “Azure IoT 中心和 IoT Edge 设备” - 按照 [Linux](../../iot-edge/quickstart-linux.md) 或 [Windows 设备](../../iot-edge/quickstart.md)快速入门中的步骤进行操作（如果尚未安装）。
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)] 
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-deploy-iot-edge.md)] 
 ## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>在云中创建事件网格主题和订阅
 
 按照[本教程](../custom-event-quickstart-portal.md)的说明，在云中创建事件网格主题和订阅。 记录新创建主题的 `topicURL`、`sasKey` 和 `topicName`，本教程稍后将使用。
@@ -82,7 +82,7 @@ ms.locfileid: "110378311"
   
 ## <a name="create-event-grid-subscription-at-the-edge"></a>在边缘创建事件网格订阅
 
-[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
+[!INCLUDE [event-grid-deploy-iot-edge](../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. 创建包含以下内容的 subscription3.json。 有关有效负载的详细信息，请参阅 [API 文档](api.md)。
 

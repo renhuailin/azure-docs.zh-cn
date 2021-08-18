@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 8887243f953a7bb000033a2e56b4655b93cd7ca8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 84934668c36d518e65c8997f72309a5ca3eb8fbe
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519786"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112118488"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>实现 SMB 访问的 Azure 文件存储基于标识的身份验证选项概述
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -20,6 +20,13 @@ ms.locfileid: "102519786"
 若要了解如何为 Azure 文件共享启用本地 Active Directory 域服务身份验证，请参阅[为 Azure 文件共享启用通过 SMB 实现的本地 Active Directory 域服务身份验证](storage-files-identity-auth-active-directory-enable.md)。
 
 若要了解如何为 Azure 文件共享启用 Azure AD DS 身份验证，请参阅[在 Azure 文件存储上启用 Azure Active Directory 域服务身份验证](storage-files-identity-auth-active-directory-domain-service-enable.md)。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
 
 ## <a name="glossary"></a>术语表 
 了解与 Azure 文件共享通过 SMB 进行 Azure AD 域服务身份验证相关的一些关键术语非常有用：

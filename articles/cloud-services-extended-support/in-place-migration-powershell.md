@@ -1,27 +1,24 @@
 ---
 title: 使用 PowerShell 迁移到 Azure 云服务（外延支持）
 description: 如何使用 PowerShell 从 Azure 云服务（经典）迁移到 Azure 云服务（外延支持）
-author: tanmaygore
 ms.service: cloud-services-extended-support
 ms.subservice: classic-to-arm-migration
 ms.reviwer: mimckitt
 ms.topic: how-to
 ms.date: 02/06/2020
-ms.author: tagore
+author: hirenshah1
+ms.author: hirshah
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d813cc32d3b635e6da767e3f04386c0e35ea503c
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f7626b2af5f5d8c12a29602e62b38ebef2abfd48
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949370"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113434275"
 ---
 # <a name="migrate-to-azure-cloud-services-extended-support-using-powershell"></a>使用 PowerShell 迁移到 Azure 云服务（外延支持）
 
 以下步骤说明如何使用 Azure PowerShell 命令从[云服务（经典）](../cloud-services/cloud-services-choose-me.md)迁移到[云服务（外延支持）](overview.md)。
-
-> [!IMPORTANT]
-> 使用迁移工具从云服务（经典）迁移到云服务（外延支持）目前为公共预览版。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="1-plan-for-migration"></a>1) 规划迁移
 规划是确保迁移成功的最重要步骤。 在开始执行任何迁移步骤之前，请查看[云服务（外延支持）概述](overview.md)和[规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器部署模型](../virtual-machines/migration-classic-resource-manager-plan.md)。 
@@ -206,4 +203,5 @@ Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 
 
 ## <a name="next-steps"></a>后续步骤
-查看[迁移后的更改](in-place-migration-overview.md#post-migration-changes)部分，以查看新云服务（外延支持）部署的部署文件中的更改、自动化和其他特性。
+
+查看[迁移后的更改](post-migration-changes.md)部分，以查看新云服务（外延支持）部署的部署文件中的更改、自动化和其他特性。

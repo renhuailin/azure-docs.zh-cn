@@ -2,18 +2,17 @@
 title: AI 扩充设计提示
 titleSuffix: Azure Cognitive Search
 description: 有关在 Azure 认知搜索中设置 AI 扩充管道的提示和故障排除。
-manager: nitinme
-author: luiscabrer
-ms.author: luisca
+author: LiamCavanagh
+ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: d372c4bff4977ed310d2e84aa255679a9c5ed928
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 254c56d2557692afb4ef9f384612006324268edf
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756448"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114731780"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充提示
 

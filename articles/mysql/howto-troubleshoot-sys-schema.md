@@ -6,15 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: 38b85748ad810002dc9cfd456ef6c138e8732ece
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a50b2e8966a2f34a6e14caf98784291b0c536ec1
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105605478"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113088415"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>如何在 Azure Database for MySQL 中使用 sys_schema 进行性能优化和数据库维护
-[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
+
+[!INCLUDE[applies-to-mysql-single-flexible-server](includes/applies-to-mysql-single-flexible-server.md)]
 
 MySQL performance_schema 首先在 MySQL 5.5 中推出，针对许多关键服务器资源提供检测数据，例如内存分配、存储的程序、元数据锁定，等等。但是，performance_schema 包含超过 80 多个表，获取必要的信息通常需要联接 performance_schema 和 information_schema 中的表。 sys_schema 在 performance_schema 和 information_schema 的基础上构建，在一个只读的数据库中提供[用户友好视图](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html)的强大集合，并且完全在 Azure Database for MySQL 版本 5.7 中启用。
 
@@ -84,4 +85,5 @@ InnoDB 缓冲池驻留在内存中，是 DBMS 与存储之间的主要缓存机�
 总而言之，sys_schema 是用于优化性能和维护数据库的极佳工具。 请务必在 Azure Database for MySQL 中利用此功能。 
 
 ## <a name="next-steps"></a>后续步骤
-- 若要查找同行对你最关心问题的答案，或者要发布新的问题/答案，请访问 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)。
+
+- 若要查找同行对你最关心问题的解答，或者要发布新的问题/答案，请访问 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)。

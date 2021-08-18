@@ -2,7 +2,6 @@
 title: 使用 SAS 令牌控制对 IoT 中心的访问 | Microsoft Docs
 description: 如何使用共享访问签名令牌控制设备应用和后端应用对 IoT 中心的访问。
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
@@ -16,12 +15,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: 27ab47be439b83af4297330c2b85fdc844bfcf3a
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: aec64f22cf0af9de9b99c914d972f45f3dfefe1d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489691"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728801"
 ---
 # <a name="control-access-to-iot-hub-using-shared-access-signatures-and-security-tokens"></a>使用共享访问签名和安全令牌控制对 IoT 中心的访问
 
@@ -90,7 +89,7 @@ IoT 中心使用安全令牌对设备和服务进行身份验证，以避免在�
 | 值 | 说明 |
 | --- | --- |
 | {signature} |HMAC-SHA256 签名字符串的格式为： `{URL-encoded-resourceURI} + "\n" + expiry`。 **重要说明**：密钥是从 base64 解码得出的，用作执行 HMAC-SHA256 计算的密钥。 |
-| {resourceURI} |使用此令牌可以访问的终结点的 URI 前缀（根据分段）以 IoT 中心的主机名开头（无协议）。 例如 `myHub.azure-devices.net/devices/device1` |
+| {resourceURI} |使用此令牌可以访问的终结点的 URI 前缀（根据分段）以 IoT 中心的主机名开头（无协议）。 例如： `myHub.azure-devices.net/devices/device1` |
 | {expiry} |从纪元 1970 年 1 月 1日 00:00:00 UTC 时间至今秒数的 UTF8 字符串。 |
 | {URL-encoded-resourceURI} |小写资源 URI 的小写 URL 编码 |
 | {policyName} |此令牌所引用的共享访问策略名称。 如果此令牌引用设备注册表凭据，则空缺。 |
@@ -252,7 +251,7 @@ HTTPS 通过在 Authorization 请求标头中包含有效的令牌来实施身�
 
 以下是终结点上显示的服务功能：
 
-| 终结点 | 功能 |
+| 端点 | 功能 |
 | --- | --- |
 | `{iot hub host name}/devices` |创建、更新、检索和删除设备标识。 |
 | `{iot hub host name}/messages/events` |接收设备到云的消息 |
@@ -282,7 +281,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 ### <a name="supported-x509-certificates"></a>支持的 X.509 证书
 
-可以通过将证书指纹或证书颁发机构 (CA) 上传到 Azure IoT 中心，从而借助 IoT 中心使用任何 X.509 证书对设备进行身份验证。 有关详细信息，请参阅[使用 X.509 CA 证书进行设备身份验证](iot-hub-x509ca-overview.md)。 若要了解如何使用 IoT 中心上传和验证证书，请参阅[在 Azure IoT 中心设置 X.509 安全性](iot-hub-security-x509-get-started.md)。
+可以通过将证书指纹或证书颁发机构 (CA) 上传到 Azure IoT 中心，从而借助 IoT 中心使用任何 X.509 证书对设备进行身份验证。 有关详细信息，请参阅[使用 X.509 CA 证书进行设备身份验证](iot-hub-x509ca-overview.md)。 若要了解如何使用 IoT 中心上传和验证证书，请参阅[在 Azure IoT 中心设置 X.509 安全性](./tutorial-x509-scripts.md)。
 
 ### <a name="use-sas-tokens-as-a-device"></a>将 SAS 令牌当做设备使用
 
@@ -292,7 +291,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 面向设备的终结点包括（无论任何协议）：
 
-| 终结点 | 功能 |
+| 端点 | 功能 |
 | --- | --- |
 | `{iot hub host name}/devices/{deviceId}/messages/events` |发送设备到云的消息。 |
 | `{iot hub host name}/devices/{deviceId}/messages/devicebound` |接收云到设备的消息。 |
@@ -362,13 +361,13 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 可以使用 IoT 中心[标识注册表](iot-hub-devguide-identity-registry.md)，通过[令牌](iot-hub-dev-guide-sas.md#security-tokens)配置每个设备/模块的安全凭据和访问控制。 如果 IoT 解决方案已经具有自定义标识注册表和/或身份验证方案，可考虑通过创建“令牌服务”，将此基础结构与 IoT 中心集成。 这样，便可以在解决方案中使用其他 IoT 功能。
 
-令牌服务是自定义云服务。 它使用包含 **DeviceConnect** 或 **ModuleConnect** 权限的 IoT 中心共享访问策略创建设备范围的或模块范围的令牌。 这些令牌可让设备和模块连接到 IoT 中心。
+令牌服务是自定义云服务。 它使用包含 DeviceConnect 权限的 IoT 中心共享访问策略创建设备范围的 或模块范围的令牌。 这些令牌可让设备和模块连接到 IoT 中心。
 
 ![令牌服务模式的步骤](./media/iot-hub-devguide-security/tokenservice.png)
 
 下面是令牌服务模式的主要步骤：
 
-1. 为 IoT 中心创建包含 **DeviceConnect** 或 **ModuleConnect** 权限的 IoT 中心共享访问策略。 可以在 [Azure 门户](https://portal.azure.com)中或以编程方式创建此策略。 令牌服务使用此策略为它创建的令牌签名。
+1. 为 IoT 中心创建包含 DeviceConnect 权限的 IoT 中心共享访问策略。 可以在 [Azure 门户](https://portal.azure.com)中或以编程方式创建此策略。 令牌服务使用此策略为它创建的令牌签名。
 
 2. 当设备/模块需要访问 IoT 中心时，将向令牌服务请求已签名的令牌。 设备/模块可以使用自定义标识注册表/身份验证方案来进行身份验证，以确定令牌服务用来创建令牌的设备/模块标识。
 
@@ -416,6 +415,6 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 如果要尝试本文中介绍的一些概念，请参阅以下 IoT 中心教程：
 
-* [Azure IoT 中心入门](quickstart-send-telemetry-node.md)
+* [Azure IoT 中心入门](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-nodejs)
 * [如何使用 IoT 中心发送云到设备的消息](iot-hub-csharp-csharp-c2d.md)
 * [如何处理 IoT 中心设备到云的消息](tutorial-routing.md)

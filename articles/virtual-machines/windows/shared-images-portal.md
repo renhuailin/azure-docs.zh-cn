@@ -4,16 +4,17 @@ description: 了解如何使用 Azure 门户创建和共享虚拟机映像。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
+ms.collection: windows
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 11/06/2019
+ms.date: 06/21/2021
 ms.author: cynthn
-ms.openlocfilehash: 7ef48e6eaef441026457e584a302eb3fe515c0a6
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 537b6f70534386269bb2ea57815b3dbb21337e48
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079402"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204185"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>使用门户创建 Azure 共享映像库
 
@@ -67,6 +68,5 @@ ms.locfileid: "112079402"
 - [创建共享映像库](https://azure.microsoft.com/resources/templates/sig-create/)
 - [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
 - [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
-- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/vm-from-sig/)
 
 有关共享映像库的详细信息，请参阅[概述](../shared-image-galleries.md)。 如果遇到问题，请参阅[排查共享映像库问题](../troubleshooting-shared-images.md)。

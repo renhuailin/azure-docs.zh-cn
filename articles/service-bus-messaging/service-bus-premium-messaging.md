@@ -3,12 +3,12 @@ title: Azure 服务总线高级层和标准层
 description: 本文介绍 Azure 服务总线的标准层和高级层。 比较这些层并提供技术差异。
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: f0cc6b6d7b9026d9be23e36a587b7ce667ba1652
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: c6c520219c383a21d8d2e134d0798f3cb5058c2d
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111811255"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114202405"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服务总线高级和标准消息传送层
 
@@ -24,7 +24,7 @@ ms.locfileid: "111811255"
 | 可预测性能 |可变滞后时间 |
 | 固定定价 |即用即付可变定价 |
 | 增加和减少工作负荷的能力 |空值 |
-| 消息大小最大为 1 MB。 此上限将来可能会提高。 有关服务的最新重要更新，请参阅 [Azure 上的消息传送博客](https://techcommunity.microsoft.com/t5/messaging-on-azure/bg-p/MessagingonAzureBlog)。 |消息大小最大为 256 KB |
+| 消息大小最大为 1 MB。 预览版目前[支持最大 100 MB 的消息有效负载](#large-messages-support-preview)。 |消息大小最大为 256 KB |
 
 **服务总线高级消息传送** 在 CPU 和内存级别提供资源隔离，以便每个客户工作负荷以隔离方式运行。 此资源容器称为 *消息传送单元*。 每个高级命名空间至少会分配一个消息传送单元。 可以为每个服务总线高级命名空间购买 1、2、4、8 或 16 个消息传送单元。 单一工作负荷或实体可以跨多个消息传送单元，可以随意更改消息传送单元数。 这会为基于服务总线的解决方案提供可预测和稳定的性能。
 
@@ -89,10 +89,32 @@ ms.locfileid: "111811255"
 
 高级消息传送很容易入门，其操作过程类似于标准消息传送。 一开始时，请在 [Azure 门户](https://portal.azure.com)中[创建命名空间](service-bus-create-namespace-portal.md)。 确保在“定价层”下选择“高级”。 单击“查看完整的定价详细信息”以查看有关每个层级的详细信息。
 
-![create-premium-namespace][create-premium-namespace]
+:::image type="content" source="./media/service-bus-premium-messaging/select-premium-tier.png" alt-text="显示创建命名空间时选择高级层的屏幕截图。":::
 
 也可以[使用 Azure 资源管理器模板创建高级命名空间](https://azure.microsoft.com/resources/templates/servicebus-pn-ar/)。
 
+## <a name="large-messages-support-preview"></a>大型消息支持（预览版）
+Azure 服务总线高级层命名空间支持发送最大 100 MB 的大型消息有效负载的功能。 此功能主要面向在其他企业消息传送代理上使用了较大消息有效负载，并寻求无缝迁移到 Azure 服务总线的传统工作负载。
+
+下面是在 Azure 服务总线中发送大型消息时的一些注意事项 -
+   * 仅在 Azure 服务总线高级层命名空间上受支持。
+   * 仅在使用 AMQP 协议时受支持。 使用 SBMP 协议时不受支持。
+   * 使用 [Java 消息服务 (JMS) 2.0 客户端 SDK](how-to-use-java-message-service-20.md) 和其他语言客户端 SDK 时受支持。
+   * 发送大型消息会导致吞吐量降低和延迟增大。
+   * 尽管支持 100 MB 消息有效负载，但建议保持尽可能小的消息有效负载，以确保服务总线命名空间提供可靠的性能。
+   * 仅对发送到队列或主题的消息强制实施最大消息大小的要求。 对于接收操作不强制实施大小限制。 允许更新给定队列（或主题）的最大消息大小。
+
+### <a name="enabling-large-messages-support-for-a-new-queue-or-topic"></a>为新队列（或主题）启用大型消息支持
+
+若要启用大型消息支持，请在创建新队列（或主题）时，按下面所示设置最大消息大小。 
+
+:::image type="content" source="./media/service-bus-premium-messaging/large-message-preview.png" alt-text="显示如何为现有队列启用大型消息支持的屏幕截图。":::
+
+### <a name="enabling-large-messages-support-for-an-existing-queue-or-topic"></a>为现有队列（或主题）启用大型消息支持
+
+还可以为现有队列（或主题）启用大型消息支持，方法是在该特定队列（或主题）的“概述”中更新“最大消息大小”，如下所示 。
+
+:::image type="content" source="./media/service-bus-premium-messaging/large-message-preview-update.png" alt-text="“创建队列”页的屏幕截图，已在该页中启用大型消息支持。":::
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -102,6 +124,4 @@ ms.locfileid: "111811255"
 - [Azure 服务总线高级消息传送简介（博客文章）](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 - [Azure 服务总线高级消息传送简介 (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 
-<!--Image references-->
 
-[create-premium-namespace]: ./media/service-bus-premium-messaging/select-premium-tier.png

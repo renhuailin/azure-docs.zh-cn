@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 8b2acc37efb497748abe5f63bd58e96b16171b21
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 68742801234696f104de85832353b98ef33b1b2d
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110538389"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112454395"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>使用本地模型部署进行故障排除
 
@@ -24,7 +24,7 @@ ms.locfileid: "110538389"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 一个 **Azure 订阅**。 试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* 一个 **Azure 订阅**。 试用[免费版或付费版 Azure 机器学习](https://azure.microsoft.com/free/)。
 * 选项 A（建议）- 在 Azure 机器学习计算实例上进行本地调试
    * 正在运行[计算实例](how-to-deploy-local-container-notebook-vm.md)的 Azure 机器学习工作区
 * 选项 B - 在计算中进行本地调试
@@ -34,7 +34,7 @@ ms.locfileid: "110538389"
    * 在本地系统上安装有效的 Docker。 
    * 若要验证 Docker 安装，请使用终端或命令提示符中的命令 `docker run hello-world`。 有关安装 Docker 或排除 Dcoker 错误的详细信息，请参阅 [Docker 文档](https://docs.docker.com/)。
 * 选项 C - 通过 Azure 机器学习推理 HTTP 服务器启用本地调试。
-    * Azure 机器学习推理 HTTP 服务器[（预览版）](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)是一种 Python 包，可用于在本地开发环境中轻松验证入口脚本 (`score.py`)。 如果评分脚本出现问题，该服务器会返回一个错误。 它还会返回发生错误的位置。
+    * Azure 机器学习推理 HTTP 服务器[（预览版）](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)是一个 Python 包，可用于在本地开发环境中轻松验证入口脚本 (`score.py`)。 如果评分脚本出现问题，该服务器将返回一个错误。 它还将返回发生错误的位置。
     * 在持续集成和部署管道中创建验证入口时，也可以使用该服务器。 例如，使用候选脚本启动服务器，并针对本地终结点运行测试套件。
 
 ## <a name="azure-machine-learning-inference-http-server"></a>Azure 机器学习推理 HTTP 服务器

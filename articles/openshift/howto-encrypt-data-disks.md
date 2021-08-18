@@ -7,12 +7,12 @@ author: stuartatmicrosoft
 ms.author: stkirk
 ms.service: azure-redhat-openshift
 keywords: 加密, byok, aro, cmk, openshift, red hat
-ms.openlocfilehash: f6c80bab6f821dc7c85352bf57ebe255ae712d43
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 12920f45528911c755035dacd9b9bc0dfa5908ba
+ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783514"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113231406"
 ---
 # <a name="encrypt-persistent-volume-claims-with-a-customer-managed-key-cmk-on-azure-red-hat-openshift-aro-preview"></a>在 Azure Red Hat OpenShift (ARO) 上使用客户管理的密钥 (CMK) 加密永久性卷声明（预览版）
 
@@ -24,7 +24,7 @@ ms.locfileid: "107783514"
 > [!IMPORTANT]
 > ARO 预览版功能是可选择启用的自助功能。 预览版功能“一经发布”就会“按原样”提供，不包括在服务级别协议和有限保证中。 客户支持部门会尽力为 ARO 预览版功能提供部分支持。 因此，这些功能不应用于生产。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>在开始之前
 本文假设读者：
 
 * 在 OpenShift 4.4（或更高版本）中有预先存在的 ARO 群集。
@@ -102,7 +102,7 @@ az role assignment create --assignee $desIdentity --role Reader --scope $keyVaul
 
 ```azurecli-interactive
 # First, get the Azure Application ID of the service principal used in the ARO cluster.
-aroSPAppId="$(oc get secret azure-credentials -n kube-system -o jsonpath='{.data.azure_client_id}' | base64 --decode)"
+aroSPAppId="$(az aro show -n $aroCluster -g $buildRG -o tsv --query servicePrincipalProfile.clientId)"
 
 # Next, get the object ID of the service principal used in the ARO cluster.
 aroSPObjId="$(az ad sp show --id $aroSPAppId -o tsv --query [objectId])"

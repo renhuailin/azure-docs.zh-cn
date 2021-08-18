@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova
+ms.reviewer: mathoma, bonova
 ms.date: 04/29/2021
-ms.openlocfilehash: 259bd0128a4c5ce677e4d01f44b114aaba0cb977
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: d9958d30fff09ba0d6c66b71143ea68468dd0363
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889147"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751256"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL 托管实例的连接体系结构
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -112,7 +112,7 @@ Azure 使用一个管理终结点来管理 SQL 托管实例。 此终结点位�
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>采用服务辅助子网配置的必需入站安全规则
 需要这些规则来确保入站管理流量流。 有关连接体系结构和管理流量的详细信息，请参阅[上面的段落](#high-level-connectivity-architecture)。
 
-| 名称       |端口                        |协议|Source           |目标|操作|
+| 名称       |端口                        |协议|源           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |管理  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |允许 |
 |            |9000、9003                  |TCP     |CorpnetSaw       |MI SUBNET  |允许 |
@@ -123,7 +123,7 @@ Azure 使用一个管理终结点来管理 SQL 托管实例。 此终结点位�
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>采用服务辅助子网配置的必需出站安全规则
 需要这些规则来确保出站管理流量流。 有关连接体系结构和管理流量的详细信息，请参阅[上面的段落](#high-level-connectivity-architecture)。
 
-| 名称       |端口          |协议|Source           |目标|操作|
+| 名称       |端口          |协议|源           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
 |管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |允许 |
 |mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |允许 |
@@ -165,7 +165,7 @@ SQL 托管实例当前不支持以下虚拟网络功能：
 - **Microsoft 对等互连**：如果在与 SQL 托管实例所在的虚拟网络直接或暂时对等互连的 ExpressRoute 线路上启用 [Microsoft 对等互连](../../expressroute/expressroute-faqs.md#microsoft-peering)，会影响虚拟网络内的 SQL 托管实例组件与它依赖的服务之间的流量，从而导致可用性问题。 向已启用 Microsoft 对等互连的虚拟网络部署 SQL 托管实例预计会失败。
 - **全局虚拟网络对等互连**：跨 Azure 区域的 [虚拟网络对等互连](../../virtual-network/virtual-network-peering-overview.md)连接不适用于在 2020 年 9 月 22 日之前创建的子网中放置的 SQL 托管实例。
 - **AzurePlatformDNS**：使用 AzurePlatformDNS [服务标记](../../virtual-network/service-tags-overview.md)阻止平台 DNS 解析会导致 SQL 托管实例不可用。 尽管 SQL 托管实例支持将客户定义的 DNS 用于引擎内的 DNS 解析，但平台操作依赖于平台 DNS。
-- **NAT 网关**：使用 [Azure 虚拟网络 NAT](../../virtual-network/nat-overview.md) 控制具有特定公共 IP 地址的出站连接会导致 SQL 托管实例不可用。 SQL 托管实例服务当前仅限于使用基本负载均衡器，该均衡器不提供入站和出站流与虚拟网络 NAT 共存的功能。
+- **NAT 网关**：使用 [Azure 虚拟网络 NAT](../../virtual-network/nat-gateway/nat-overview.md) 控制具有特定公共 IP 地址的出站连接会导致 SQL 托管实例不可用。 SQL 托管实例服务当前仅限于使用基本负载均衡器，该均衡器不提供入站和出站流与虚拟网络 NAT 共存的功能。
 - Azure 虚拟网络的 IPv6：将 SQL 托管实例部署到[双堆栈 IPv4/IPv6 虚拟网络](../../virtual-network/ipv6-overview.md)预计会失败。 如果将包含 IPv6 地址前缀的网络安全组 (NSG) 或路由表 (UDR) 关联到 SQL 托管实例子网，或将 IPv6 地址前缀添加到已与托管实例子网关联的 NSG 或 UDR，则会导致 SQL 托管实例不可用。 将 SQL 托管实例部署到使用 NSG 和 UDR 且已具有 IPv6 前缀的子网预计会失败。
 - 为 Microsoft 服务保留名称的 Azure DNS 专用区域：以下是保留名称的列表： windows.net、database.windows.net、core.windows.net、blob.core.windows.net、table.core.windows.net、management.core.windows.net、monitoring.core.windows.net、queue.core.windows.net、graph.windows.net、login.microsoftonline.com、login.windows.net、servicebus.windows.net、vault.azure.net。 将 SQL 托管实例部署到具有关联的 [Azure DNS 专用区域](../../dns/private-dns-privatednszone.md)（其名称保留用于 Microsoft 服务）的虚拟网络将失败。 将具有保留名称的 Azure DNS 专用区域与包含托管实例的虚拟网络相关联会导致 SQL 托管实例不可用。 请参照 [Azure 专用终结点 DNS 配置](../../private-link/private-endpoint-dns.md)，获取正确的专用链接配置。
 - **Azure 存储的服务终结点策略**：将 SQL 托管实例部署到具有关联 [服务终结点策略](../../virtual-network/virtual-network-service-endpoint-policies-overview.md)的子网将失败。 服务终结点策略无法关联到托管托管实例的子网。

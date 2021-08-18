@@ -10,12 +10,12 @@ author: julieMSFT
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.date: 03/10/2021
-ms.openlocfilehash: 3564eaf27339c39975a23160c6d269a925317fea
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5d2dc316d5f58374792e04460f1abd8e63002243
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143190"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726043"
 ---
 # <a name="migrate-a-data-warehouse-to-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>将数据仓库迁移到 Azure Synapse Analytics 中的专用 SQL 池
 
@@ -51,14 +51,14 @@ ms.locfileid: "108143190"
 要将 SQL Server 数据仓库迁移到 Azure Synapse Analytics，请确保满足以下先决条件：
 
 - 有一个数据仓库或分析工作负载。
-- 下载最新版本的 [Azure Synapse Pathway](https://www.microsoft.com/en-us/download/details.aspx?id=102787)，用于将 SQL Server 对象迁移到 Azure Synapse 对象。
+- 下载最新版本的 [Azure Synapse Pathway](https://www.microsoft.com/en-us/download/details.aspx?id=103061)，用于将 SQL Server 对象迁移到 Azure Synapse 对象。
 - 在 Azure Synapse 工作区中有[专用 SQL 池](../get-started-create-workspace.md)。
 
 # <a name="migrate-from-netezza"></a>[从 Netezza 迁移](#tab/migratefromNetezza)
 
 要将 Netezza 数据仓库迁移到 Azure Synapse Analytics，请确保满足以下先决条件：
 
-- 下载最新版本的 [Azure Synapse Pathway](https://www.microsoft.com/en-us/download/details.aspx?id=102787)，用于将 SQL Server 对象迁移到 Azure Synapse 对象。
+- 下载最新版本的 [Azure Synapse Pathway](https://www.microsoft.com/en-us/download/details.aspx?id=103061)，用于将 SQL Server 对象迁移到 Azure Synapse 对象。
 - 在 Azure Synapse 工作区中有[专用 SQL 池](../get-started-create-workspace.md)。
 
 有关详细信息，请参阅[适用于 Netezza 的 Azure Synapse Analytics 解决方案和迁移](/azure/cloud-adoption-framework/migrate/azure-best-practices/analytics/analytics-solutions-netezza)。
@@ -67,7 +67,7 @@ ms.locfileid: "108143190"
 
 要将 Snowflake 数据仓库迁移到 Azure Synapse Analytics，请确保满足以下先决条件：
 
-- 下载最新版本的 [Azure Synapse Pathway](https://www.microsoft.com/en-us/download/details.aspx?id=102787)，用于将 Snowflake 对象迁移到 Azure Synapse 对象。
+- 下载最新版本的 [Azure Synapse Pathway](https://www.microsoft.com/en-us/download/details.aspx?id=103061)，用于将 Snowflake 对象迁移到 Azure Synapse 对象。
 - 在 Azure Synapse 工作区中有[专用 SQL 池](../get-started-create-workspace.md)。
 
 # <a name="migrate-from-oracle"></a>[从 Oracle 迁移](#tab/migratefromOracle)
@@ -76,7 +76,7 @@ ms.locfileid: "108143190"
 
 - 有一个数据仓库或分析工作负载。
 - 下载适用于 Oracle 的 SQL Server 迁移助手，以将 Oracle 对象转换为 SQL Server。 有关详细信息，请参阅[将 Oracle 数据库迁移到 SQL Server (OracleToSQL)](/sql/ssma/oracle/migrating-oracle-databases-to-sql-server-oracletosql)。
-- 下载最新版本的 [Azure Synapse Pathway](https://www.microsoft.com/download/details.aspx?id=102787)，用于将 SQL Server 对象迁移到 Azure Synapse 对象。
+- 下载最新版本的 [Azure Synapse Pathway](https://www.microsoft.com/download/details.aspx?id=103061)，用于将 SQL Server 对象迁移到 Azure Synapse 对象。
 - 在 Azure Synapse 工作区中有[专用 SQL 池](../get-started-create-workspace.md)。
 
 有关详细信息，请参阅[适用于 Oracle 数据仓库的 Azure Synapse Analytics 解决方案和迁移](/azure/cloud-adoption-framework/migrate/azure-best-practices/analytics/analytics-solutions-exadata)。
@@ -109,7 +109,7 @@ ms.locfileid: "108143190"
 | 标题/链接                              | 说明                                                                                                                       |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | [数据工作负载评估模型和工具](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | 此工具为给定工作负载提供建议的“最适合”目标平台、云就绪性和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。 |
-| [处理在将数据加载到 Azure Synapse Analytics 时遇到的数据编码问题](https://azure.microsoft.com/en-us/blog/handling-data-encoding-issues-while-loading-data-to-sql-data-warehouse/) | 这篇博客文章旨在提供有关在使用 PolyBase 将数据加载到 SQL 数据仓库时可能遇到的一些数据编码问题的见解。 此文还提供了一些选项，可用于解决此类问题并成功加载数据。 |
+| [处理在将数据加载到 Azure Synapse Analytics 时遇到的数据编码问题](https://azure.microsoft.com/blog/handling-data-encoding-issues-while-loading-data-to-sql-data-warehouse/) | 这篇博客文章旨在提供有关在使用 PolyBase 将数据加载到 SQL 数据仓库时可能遇到的一些数据编码问题的见解。 此文还提供了一些选项，可用于解决此类问题并成功加载数据。 |
 | [在 Azure Synapse Analytics 专用 SQL 池中获取表大小](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Getting%20table%20sizes%20in%20SQL%20DW.pdf) | 架构师必须执行的一项关键任务是获取有关迁移后的新环境的指标。 例如，收集从本地到云的加载时间并收集 PolyBase 加载时间。 其中最重要的一项任务是确定 SQL 数据仓库中的存储大小情况（与客户当前平台相比）。 |
 | [将本地 SQL Server 登录名迁移到 Azure Synapse Analytics 的实用程序](https://github.com/Microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins) | PowerShell 脚本可以创建 T-SQL 命令脚本，以重新创建登录名并从 SQL Server 的本地实例到 Azure SQL 平台即服务 (PaaS) 服务选择数据库用户。 使用该工具可将 Windows Server Active Directory 帐户自动映射到 Azure Active Directory 帐户，或者根据本地 Windows Server Active Directory 对每个登录名执行 UPN 查找。 该工具还可以选择性地移动 SQL Server 本机登录名。 对于自定义服务器和数据库角色以及角色成员资格、数据库角色和用户权限，均已编写脚本。 目前不支持所包含的数据库，并且仅对一部分可能的 SQL Server 权限进行脚本编写。 支持文档中提供了更多信息，该脚本带有注释，以便于理解。 |
 

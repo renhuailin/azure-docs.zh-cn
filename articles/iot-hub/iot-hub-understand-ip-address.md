@@ -1,18 +1,18 @@
 ---
 title: 了解 IoT 中心的 IP 地址 | Microsoft Docs
 description: 了解如何查询 IoT 中心的 IP 地址及其属性。 在某些情况下（如灾难恢复或区域故障转移）可以更改 IoT 中心的 IP 地址。
-author: philmea
-ms.author: philmea
+author: robinsh
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/21/2021
-ms.openlocfilehash: 7d807a15d358bd621baedbff253f0c731e43ed26
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 053ba5b768e9a09eb50f71a8296d42f85a9e4515
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107874164"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861208"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT 中心 IP 地址
 
@@ -32,7 +32,7 @@ IoT 中心公共终结点的 IP 地址前缀会定期发布在 _AzureIoTHub_ [�
 
 
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 * 在设备的防火墙配置中添加“允许”规则时，最好是提供[适用协议使用的特定端口](./iot-hub-devguide-protocols.md#port-numbers)。
 

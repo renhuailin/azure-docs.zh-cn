@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2020
 ms.author: yelevin
-ms.openlocfilehash: 7d52b76601a617f62ae5b10fa38841ef2608bf49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b8507f29d157cd715d6423c773b01a561a5e181
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94656984"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737564"
 ---
 # <a name="monitor-the-health-of-your-data-connectors-with-this-azure-sentinel-workbook"></a>通过此 Azure Sentinel 工作簿监视数据连接器的运行状况
 
@@ -66,4 +66,4 @@ ms.locfileid: "94656984"
     :::image type="content" source="media/monitor-data-connector-health/data-health-workbook-3.png" alt-text="“数据连接器运行状况监视”工作簿代理信息页面" lightbox="media/monitor-data-connector-health/data-health-workbook-3.png":::
 
 ## <a name="next-steps"></a>后续步骤
-了解如何[将数据载入到 Azure Sentinel](quickstart-onboard.md)、[连接数据源](connect-data-sources.md)以及[获取数据和潜在威胁的见解](quickstart-get-visibility.md)。
+了解如何[将数据载入到 Azure Sentinel](quickstart-onboard.md)、[连接数据源](connect-data-sources.md)以及[获取数据和潜在威胁的见解](get-visibility.md)。

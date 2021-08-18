@@ -3,22 +3,22 @@ title: 有关 Internet Explorer 和 Microsoft Edge (MSAL.js) 的问题 | Azure
 titleSuffix: Microsoft identity platform
 description: 了解在 Internet Explorer 和 Microsoft Edge 浏览器中使用适用于 JavaScript 的 Microsoft 身份验证库 (MSAL.js) 的已知问题。
 services: active-directory
-author: mtillman
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 05/18/2020
-ms.author: mtillman
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9323558aec1cb330cc5253f8d380706854aaeae9
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 91ef36a5dbbfb7e0edb7fe1d75d77d2f2dc4870b
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077223"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113357600"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>有关 Internet Explorer 和 Microsoft Edge 浏览器 (MSAL.js) 的已知问题
 
@@ -36,7 +36,7 @@ ms.locfileid: "112077223"
 
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
-- **通过弹出窗口进行身份验证来完成登录时，弹出窗口无法关闭或卡住不动**。 通过 Microsoft Edge 或 IE(InPrivate) 中的弹出窗口进行身份验证时，输入凭据并登录后，如果导航中涉及跨安全区域的多个域，则会因为 MSAL.js 丢失弹出窗口句柄而无法关闭弹出窗口。  
+- **通过弹出窗口进行身份验证来完成登录时，弹出窗口无法关闭或卡住不动**。 通过 Microsoft Edge 或 IE(InPrivate) 中的弹出窗口进行身份验证时，输入凭据并登录后，如果导航中涉及跨安全区域的多个域，则会因为 MSAL.js 丢失弹出窗口句柄而无法关闭弹出窗口。
 
 ### <a name="update-fix-available-in-msaljs-023"></a>更新：MSAL.js 0.2.3 中提供的修补程序
 [MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases) 发布了针对身份验证重定向循环问题的修补程序。 在 MSAL.js 配置中启用标志 `storeAuthStateInCookie` 可利用此修补程序。 默认情况下，此标志设置为 false。
@@ -49,7 +49,7 @@ ms.locfileid: "112077223"
 使用以下解决方法。
 
 #### <a name="other-workarounds"></a>其他解决方法
-在采用这些解决方法之前，请确保测试你的问题仅出现在特定版本的 Microsoft Edge 浏览器中，在其他浏览器上可以正常运行。  
+在采用这些解决方法之前，请确保测试你的问题仅出现在特定版本的 Microsoft Edge 浏览器中，在其他浏览器上可以正常运行。
 1. 若要解决这些问题，第一步是确保将身份验证流重定向中涉及的应用程序域和任何其他站点添加为浏览器安全设置中的受信任站点，以使它们属于同一安全区域。
 为此，请执行下列步骤：
     - 打开“Internet Explorer”，单击右上角的“设置”（齿轮图标） 。

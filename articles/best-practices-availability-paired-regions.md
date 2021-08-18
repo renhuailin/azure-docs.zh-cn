@@ -5,15 +5,15 @@ author: martinekuan
 manager: martinekuan
 ms.service: multiple
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 06/21/2021
 ms.author: martinek
 ms.custom: references_regions
-ms.openlocfilehash: 9fda6f913fcb5325c811671cd6476dcbf2413766
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 4fe0b913c003ccf4247833ba1dc12c4ec1e7248a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058011"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730200"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>业务连续性和灾难恢复 (BCDR)：Azure 配对区域
 
@@ -43,7 +43,7 @@ Azure 地理位置定义了至少包含一个 Azure 区域的世界区域。 地
 
 ## <a name="must-i-use-azure-regional-pairs"></a>是否必须使用 Azure 区域对？
 
-否。 客户可以利用 Azure 服务来构建可复原的服务，无需依赖 Azure 的区域对。  但是，我们建议你跨区域对配置业务连续性和灾难恢复 (BCDR)，以便从[隔离](./security/fundamentals/isolation-choices.md)中获益并提高[可用性](./availability-zones/az-overview.md)。 对于支持多个活动区域的应用程序，我们建议尽可能使用区域对中的这两个区域。 这可确保应用程序的最佳可用性，并在发生灾难时最大限度地缩短恢复时间。 尽可能设计你的应用程序以实现[最大复原能力](/azure/architecture/framework/resiliency/overview)并简化[灾难恢复](/azure/architecture/framework/resiliency/backup-and-recovery)。
+否。 客户可以利用 Azure 服务来构建可复原的服务，无需依赖 Azure 的区域对。  但是，我们建议你跨区域对配置业务连续性和灾难恢复 (BCDR)，以便从[隔离](./security/fundamentals/isolation-choices.md)中获益并提高[可用性](./availability-zones/az-overview.md)。 对于支持多个活动区域的应用程序，我们建议尽可能使用区域对中的这两个区域。 这可确保应用程序的最佳可用性，并在发生灾难时最大限度地缩短恢复时间。 尽可能设计你的应用程序以实现[最大复原能力](/azure/architecture/framework/resiliency/app-design)并简化[灾难恢复](/azure/architecture/framework/resiliency/backup-and-recovery)。
 
 ## <a name="azure-regional-pairs"></a>Azure 区域对
 
@@ -68,6 +68,7 @@ Azure 地理位置定义了至少包含一个 Azure 区域的世界区域。 地
 | 北美 |美国东部 2 |Central US |
 | 北美 |美国中北部 |美国中南部 |
 | 北美 |美国西部 2 |美国中西部 |
+| 北美 |美国西部 3 |美国东部 |
 | 挪威 | 挪威东部 | 挪威西部* |
 | 南非 | 南非北部 |南非西部* |
 | 瑞士 | 瑞士北部 |瑞士西部* |

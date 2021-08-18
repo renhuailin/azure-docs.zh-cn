@@ -4,12 +4,12 @@ description: 介绍如何向 Service Fabric 群集添加新的证书、滚动更
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71096ad79f044edc003f80c838a989f694e69dd6
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: be243f3c1860e2a696add5e67a86f030819eb88a
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677467"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113092700"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>在 Azure 中添加或删除 Service Fabric 群集的证书
 建议先了解 Service Fabric 使用 X.509 证书的方式，并熟悉[群集安全性应用场景](service-fabric-cluster-security.md)。 在继续下一步之前，必须先了解群集证书的定义和用途。
@@ -282,6 +282,8 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="next-steps"></a>后续步骤
 有关群集管理的详细信息，请阅读以下文章：
+
+* [Service Fabric 群集中的证书管理](cluster-security-certificate-management.md)
 
 * [Service Fabric 群集升级过程和用户预期](service-fabric-cluster-upgrade.md)
 * [为客户端设置基于角色的访问](service-fabric-cluster-security-roles.md)

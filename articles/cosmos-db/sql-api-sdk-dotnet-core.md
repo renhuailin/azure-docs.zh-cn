@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 04/06/2021
+ms.date: 06/15/2021
 ms.author: anfeldma
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: fffd661b4bf535b19ec32cf8b14e3fff1c036a88
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 1252628ce38fec55765c454dc2e2edacd1e04b56
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364375"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112202681"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-v2-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB .NET Core SDK v2：发行说明和资源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -46,8 +46,6 @@ ms.locfileid: "107364375"
 |**入门**|[Azure Cosmos DB .NET 入门](sql-api-sdk-dotnet.md)|
 |**Web 应用教程**|[使用 Azure Cosmos DB 开发 Web 应用程序](sql-api-dotnet-application.md)|
 |**当前受支持的框架**|[.NET Standard 1.6 和 .NET Standard 1.5](https://www.nuget.org/packages/NETStandard.Library)|
-
-## <a name="release-notes"></a>发行说明
 
 > [!NOTE]
 > 如果使用的是 .NET Core，请参阅面向 .NET Standard 的 [.NET SDK](sql-api-sdk-dotnet-standard.md) 最新版本 3.x。

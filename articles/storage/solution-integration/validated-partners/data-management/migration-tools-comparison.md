@@ -4,15 +4,15 @@ description: 用于迁移非结构化数据的工具之间的基本功能和比�
 author: dukicn
 ms.author: nikoduki
 ms.topic: conceptual
-ms.date: 03/31/2021
+ms.date: 08/04/2021
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: a1772179313a2465200fc1d6a2cccef836067dde
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 63796f3e569849227dd4fa9c2396f3b052540586
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146592"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122177825"
 ---
 # <a name="comparison-matrix"></a>比较矩阵
 
@@ -73,7 +73,7 @@ ms.locfileid: "108146592"
 | 支持打开/锁定文件       | 是 | 是                        | 是 | 是                            |
 | **增量迁移**                 | 是 | 是                        | 是 | 是                            |
 | 切换支持                    | 否  | 是                        | 是 | 否（限手动）               |
-| **[其他功能](#other-features)**         | [链接](#azure-file-sync)| [链接](#datadobi-dobimigrate) | [链接](#data-dynamics-data-mobility-and-migration) | [链接](#komprise-intelligent-data-management)                |
+| **[其他功能](#other-features)**         | [链接](#azure-file-sync)| [链接](#datadobi-dobimigrate)。 | [链接](#data-dynamics-data-mobility-and-migration)。 | [链接](#komprise-intelligent-data-management)                |
 
 ## <a name="assessment-and-reporting"></a>评估和报告
 
@@ -149,4 +149,4 @@ ms.locfileid: "108146592"
 - [迁移到 Azure 文件共享](../../../files/storage-files-migration-overview.md)
 - [使用 WANdisco LiveData Platform for Azure 迁移到 Data Lake Storage](../../../blobs/migrate-gen2-wandisco-live-data-platform.md)
 - [使用 AzCopy 将数据复制或移动到 Azure 存储](../../../common/storage-use-azcopy-v10.md)
-- [使用 AzReplicate 将大型数据集迁移到 Azure Blob 存储（示例应用程序）](https://github.com/Azure/AzReplicate/tree/master/)
+- [使用 AzReplicate 将大型数据集迁移到 Azure Blob 存储（示例应用程序）](/samples/azure/azreplicate/azreplicate/)

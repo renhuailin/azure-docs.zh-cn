@@ -2,13 +2,13 @@
 title: Azure 视频分析器基于事件的视频录制 - Azure
 description: Azure 视频分析器基于事件的视频录制 (EVR) 是指由事件触发时的视频录制过程。 相关事件可能源于视频信号本身的处理（例如检测到运动时），也可能来自独立源（例如门传感器信号表明门已被打开）。 本文介绍了一些与 EVR 有关的用例。
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: de6581b60d0cee4c1ac34ffbd60ee22509807e8b
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 2386e45c3d2cde881436e86eb267365355d652ba
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385075"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114601382"
 ---
 # <a name="event-based-video-recording"></a>基于事件的视频录制  
 
@@ -43,7 +43,7 @@ ms.locfileid: "110385075"
 
 ### <a name="video-recording-based-on-events-from-other-sources"></a>基于来自其他源的事件的视频录制  
 
-在此用例中，可以使用来自另一个 IoT 传感器的信号触发视频录制。 下图显示了用于处理此用例的管道的图形表示形式。 可在[此处](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-hubMessage-files/topology.json)找到此类管道的管道拓扑的 JSON 表示形式。
+在此用例中，可以使用来自另一个 IoT 传感器的信号触发视频录制。 下图显示了用于处理此用例的管道的图形表示形式。 可在[此处](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-hubMessage-file-sink/topology.json)找到此类管道的管道拓扑的 JSON 表示形式。
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/event-based-video-recording/other-sources.png" alt-text="外部源发出信号时基于事件的实时视频录制。":::

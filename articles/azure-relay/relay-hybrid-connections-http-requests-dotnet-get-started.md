@@ -3,16 +3,16 @@ title: Azure 中继混合连接 - HTTP 请求 (.NET)
 description: 使用 .NET 为 Azure 中继混合连接 HTTP 请求编写 C# 控制台应用程序。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 06/23/2020
-ms.openlocfilehash: 7a11abb984da3601a4d6aa921224e01f94d0871c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 06/23/2021
+ms.openlocfilehash: c3b78a3acf2e14a399e3c294dc40748fae5d7ce9
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88922576"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114668224"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>开始在 .NET 中使用中继混合连接 HTTP 请求
-[!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
+[!INCLUDE [relay-selector-hybrid-connections](./includes/relay-selector-hybrid-connections.md)]
 
 在本快速入门中，请创建 .NET 发送者和接收者应用程序，用于通过 HTTP 协议发送和接收消息。 这些应用程序使用 Azure 中继的混合连接功能。 若要了解 Azure 中继的常规信息，请参阅 [Azure 中继](relay-what-is-it.md)。 
 
@@ -32,20 +32,20 @@ ms.locfileid: "88922576"
 * Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-a-namespace"></a>创建命名空间
-[!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
+[!INCLUDE [relay-create-namespace-portal](./includes/relay-create-namespace-portal.md)]
 
 ## <a name="create-a-hybrid-connection"></a>创建混合连接
-[!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
+[!INCLUDE [relay-create-hybrid-connection-portal](./includes/relay-create-hybrid-connection-portal.md)]
 
 ## <a name="create-a-server-application-listener"></a>创建服务器应用程序（侦听程序）
 在 Visual Studio 中编写可侦听和接收来自中继的消息的 C# 控制台应用程序。
 
-[!INCLUDE [relay-hybrid-connections-http-requests-dotnet-get-started-server](../../includes/relay-hybrid-connections-http-requests-dotnet-get-started-server.md)]
+[!INCLUDE [relay-hybrid-connections-http-requests-dotnet-get-started-server](./includes/relay-hybrid-connections-http-requests-dotnet-get-started-server.md)]
 
 ## <a name="create-a-client-application-sender"></a>创建客户端应用程序（发送程序）
 在 Visual Studio 中编写可将消息发送到中继的 C# 控制台应用程序。
 
-[!INCLUDE [relay-hybrid-connections-http-requests-dotnet-get-started-client](../../includes/relay-hybrid-connections-http-requests-dotnet-get-started-client.md)]
+[!INCLUDE [relay-hybrid-connections-http-requests-dotnet-get-started-client](./includes/relay-hybrid-connections-http-requests-dotnet-get-started-client.md)]
 
 ## <a name="run-the-applications"></a>运行应用程序
 1. 运行服务器应用程序。 可以在控制台窗口中看到以下文本：

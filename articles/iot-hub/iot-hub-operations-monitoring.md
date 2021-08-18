@@ -2,19 +2,18 @@
 title: Azure IoT 中心操作监视（已弃用）| Microsoft Docs
 description: 如何使用 Azure IoT 中心操作监视功能实时监视 IoT 中心上的操作状态。
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: robinsh
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 045d5693c4388c6285bc6983ac2a385ceac9f6d0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e53fe91311eb5ad784c6e843bbe81727abcc547
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94408118"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750755"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT 中心操作监视（已弃用）
 
@@ -37,7 +36,7 @@ IoT 中心监视 6 种类别的事件：
 
 ## <a name="how-to-enable-operations-monitoring"></a>如何启用操作监视
 
-1. 创建 IoT 中心。 有关如何创建 IoT 中心的说明，请参阅[入门](quickstart-send-telemetry-dotnet.md)指南。
+1. 创建 IoT 中心。 有关如何创建 IoT 中心的说明，请参阅[入门](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)指南。
 
 2. 打开 IoT 中心的边栏选项卡。 在此处单击“**操作监视**”。
 

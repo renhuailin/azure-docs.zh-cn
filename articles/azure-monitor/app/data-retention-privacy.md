@@ -4,12 +4,12 @@ description: 保留和隐私政策声明
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 56c86387ab06bf0fe94900e654853e74d3ee2603
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3e37024e4fef3e989977ef76b0508aeb66d93b7a
+ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059403"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113616120"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -39,7 +39,7 @@ Application Insights SDK 可用于多种应用程序类型：托管在自己的 
 ## <a name="what-data-does-it-collect"></a>它收集哪些数据？
 有三种数据源：
 
-* SDK。可以[在开发阶段](./asp-net.md)或者[在运行时](./monitor-performance-live-website-now.md)将它与应用集成。 不同类型的应用程序有不同的 SDK。 此外还有[网页 SDK](./javascript.md)，连同页面一起加载到最终用户的浏览器中。
+* SDK。可以[在开发阶段](./asp-net.md)或者[在运行时](./status-monitor-v2-overview.md)将它与应用集成。 不同类型的应用程序有不同的 SDK。 此外还有[网页 SDK](./javascript.md)，连同页面一起加载到最终用户的浏览器中。
   
   * 每个 SDK 有许多[模块](./configuration-with-applicationinsights-config.md)，这些模块使用不同的技术收集不同类型的遥测数据。
   * 如果在开发环境中安装 SDK，则除了使用标准模块发送自己的遥测数据以外，还可以使用 SDK 的 API 发送这些数据。 这些自定义遥测数据可以包含所要发送的任何数据。
@@ -314,6 +314,6 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅 [Appl
 [java]: ./java-in-process-agent.md
 [platforms]: ./platforms.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
-[redfield]: ./monitor-performance-live-website-now.md
+[redfield]: ./status-monitor-v2-overview.md
 [start]: ./app-insights-overview.md
 

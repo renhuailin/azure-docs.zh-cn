@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c3a1e26b8e24c357aa5be914aaa3b8f8c2d91281
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: a88fd0cd1e973118cc52456030046b3478d07e7a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673220"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741767"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>在 Linux VM 上使用 Azure AD 启用 Azure 磁盘加密（以前版本）
 
@@ -341,7 +341,7 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
      ```azurecli-interactive
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
-- **使用资源管理器模板禁用加密：** 若要禁用加密，请使用 [在正在运行的 Linux VM 上禁用加密](https://aka.ms/decrypt-linuxvm)模板。
+- **使用资源管理器模板禁用加密：** 若要禁用加密，请使用 [在正在运行的 Linux VM 上禁用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/decrypt-running-linux-vm)模板。
      1. 选择“部署到 Azure”。
      2. 选择订阅、资源组、位置、VM、法律条款和协议。
      3. 选择“购买”，在正在运行的 Windows VM 上禁用磁盘加密。

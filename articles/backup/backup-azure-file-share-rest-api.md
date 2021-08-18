@@ -3,12 +3,12 @@ title: 使用 REST API 备份 Azure 文件共享
 description: 了解如何使用 REST API 在恢复服务保管库中备份 Azure 文件共享
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 8d2d8ed88da133986540a293185c8e37000ab87b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6a305200feac635c03caa2477a08267c150219b9
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88824859"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471398"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>通过 Rest API 使用 Azure 备份来备份 Azure 文件共享
 
@@ -32,7 +32,7 @@ ms.locfileid: "88824859"
 
 ### <a name="discover-storage-accounts-with-unprotected-azure-file-shares"></a>发现具有未受保护的 Azure 文件共享的存储帐户
 
-保管库需要使用可备份到恢复服务保管库的文件共享，以发现订阅中的所有 Azure 存储帐户。 这是使用[刷新操作](/rest/api/backup/protectioncontainers/refresh)触发的。 这是一种异步 *POST* 操作，可确保保管库获取当前订阅中所有未受保护的 Azure File 共享的最新列表，并“缓存”这些列表。 文件共享“缓存”后，Recovery 服务便可以访问文件共享并对其进行保护。
+保管库需要使用可备份到恢复服务保管库的文件共享，以发现订阅中的所有 Azure 存储帐户。 这是使用[刷新操作](/rest/api/backup/protection-containers/refresh)触发的。 这是一种异步 *POST* 操作，可确保保管库获取当前订阅中所有未受保护的 Azure File 共享的最新列表，并“缓存”这些列表。 文件共享“缓存”后，Recovery 服务便可以访问文件共享并对其进行保护。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01&$filter={$filter}
@@ -108,7 +108,7 @@ Date   : Mon, 27 Jan 2020 10:53:04 GMT
 
 ### <a name="get-list-of-storage-accounts-with-file-shares-that-can-be-backed-up-with-recovery-services-vault"></a>获取具有可通过恢复服务保管库备份的文件共享的存储帐户列表
 
-若要确认已完成“缓存”，请列出订阅中的所有存储帐户，其中包含可通过恢复服务保管库备份的文件共享。 然后在响应中找到所需存储帐户。 这可以使用 [GET ProtectableContainers](/rest/api/backup/protectablecontainers/list) 操作来完成。
+若要确认已完成“缓存”，请列出订阅中的所有存储帐户，其中包含可通过恢复服务保管库备份的文件共享。 然后在响应中找到所需存储帐户。 这可以使用 [GET ProtectableContainers](/rest/api/backup/protectable-containers/list) 操作来完成。
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectableContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
@@ -160,7 +160,7 @@ protectableContainers/StorageContainer;Storage;AzureFiles;testvault2",
 
 ### <a name="register-storage-account-with-recovery-services-vault"></a>向恢复服务保管库注册存储帐户
 
-仅当之前未向保管库注册存储帐户时，才需要执行此步骤。 可以通过 [ProtectionContainers 注册操作](/rest/api/backup/protectioncontainers/register)来注册保管库。
+仅当之前未向保管库注册存储帐户时，才需要执行此步骤。 可以通过 [ProtectionContainers 注册操作](/rest/api/backup/protection-containers/register)来注册保管库。
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}?api-version=2016-12-01
@@ -205,11 +205,11 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
   "backupManagementType": "AzureStorage"
 
-
  }
+}
 ```
 
-有关请求正文的完整定义列表和其他详细信息，请参阅 “[ProtectionContainers-Register](/rest/api/backup/protectioncontainers/register#azurestoragecontainer)”。
+有关请求正文的完整定义列表和其他详细信息，请参阅 “[ProtectionContainers-Register](/rest/api/backup/protection-containers/register#azurestoragecontainer)”。
 
 这是一种异步操作，可返回两个响应：操作被接受时为“202 已被接受”，操作完成时为“200 已被确定”。  若要跟踪操作状态，请使用位置标头获取操作的最新状态。
 
@@ -241,7 +241,7 @@ protectionContainers/StorageContainer;Storage;AzureFiles;testvault2",
 
 ### <a name="inquire-all-unprotected-files-shares-under-a-storage-account"></a>查询存储帐户下所有不受保护的文件共享
 
-用户可以使用 [Protection Containers-Inquire](/rest/api/backup/protectioncontainers/inquire) 操作来查询存储帐户中的可保护项。 这是一种异步操作，应使用位置标头跟踪结果。
+用户可以使用 [Protection Containers-Inquire](/rest/api/backup/protection-containers/inquire) 操作来查询存储帐户中的可保护项。 这是一种异步操作，应使用位置标头跟踪结果。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire?api-version=2016-12-01
@@ -276,7 +276,7 @@ Date  : Mon, 27 Jan 2020 10:53:05 GMT
 
 ### <a name="select-the-file-share-you-want-to-back-up"></a>选择要备份的文件共享。
 
-可以列出订阅下的所有可保护项，并使用 [GET backupprotectableItems](/rest/api/backup/backupprotectableitems/list) 操作找到需要备份的文件共享。
+可以列出订阅下的所有可保护项，并使用 [GET backupprotectableItems](/rest/api/backup/backup-protectable-items/list) 操作找到需要备份的文件共享。
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems?api-version=2016-12-01&$filter={$filter}
@@ -351,7 +351,7 @@ Status Code:200
 
 ### <a name="enable-backup-for-the-file-share"></a>为文件共享启用备份
 
-在相关文件共享“标识”有易记名称后，选择要保护的策略。 若要了解有关保管库中现有策略的更多信息，请参阅“[列出策略 API](/rest/api/backup/backuppolicies/list)”。 然后，通过引用策略名称来选择[相关策略](/rest/api/backup/protectionpolicies/get)。 若要创建策略，请参阅[创建策略教程](./backup-azure-arm-userestapi-createorupdatepolicy.md)。
+在相关文件共享“标识”有易记名称后，选择要保护的策略。 若要了解有关保管库中现有策略的更多信息，请参阅“[列出策略 API](/rest/api/backup/backup-policies/list)”。 然后，通过引用策略名称来选择[相关策略](/rest/api/backup/protection-policies/get)。 若要创建策略，请参阅[创建策略教程](./backup-azure-arm-userestapi-createorupdatepolicy.md)。
 
 启用保护是一种异步 *PUT* 操作，可创建“受保护的项”。
 

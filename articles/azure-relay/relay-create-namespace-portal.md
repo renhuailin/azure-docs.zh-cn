@@ -2,13 +2,13 @@
 title: 使用 Azure 门户创建中继命名空间 | Microsoft Docs
 description: 本文提供了一个演练，演示如何使用 Azure 门户创建中继命名空间。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 758e63c933b864ac5a77889f4addac4a468baafd
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 06/23/2021
+ms.openlocfilehash: d275f760a72e0469a22e7b1861e49751a9b8350a
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304522"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666279"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>使用 Azure 门户创建中继命名空间
 
@@ -19,7 +19,7 @@ ms.locfileid: "107304522"
 
 ## <a name="create-a-namespace-in-the-azure-portal"></a>在 Azure 门户中创建命名空间
 
-[!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
+[!INCLUDE [relay-create-namespace-portal](./includes/relay-create-namespace-portal.md)]
 
 祝贺！ 现已创建中继命名空间。
 

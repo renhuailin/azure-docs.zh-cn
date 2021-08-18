@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 05/13/2021
 ms.author: azfuncdf
-ms.openlocfilehash: a91baf110e08794bcf2dedec2a61f0e6c2c734a5
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 179eb4c5c380a65374143cf24b2f960458fe62b5
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375870"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112240449"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions 中的性能和缩放 (Azure Functions)
 
@@ -234,7 +234,7 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 > 这些设置有助于管理单个 VM 上的内存和 CPU 用量。 但是，在跨多个 VM 横向扩展后，每个 VM 有自身的一组限制。 无法使用这些设置来全局控制并发性。
 
 > [!NOTE]
-> 业务流程和实体仅在主动处理事件或操作时才加载到内存中。 执行其逻辑并等待在业务流程协调程序函数代码中命中 `await` (C#) 或 `yield`（JavaScript、Python）语句后，它们将从内存中卸载。 从内存中卸载的业务流程和实体不计入 `maxConcurrentOrchestratorFunctions` 限制。 即使数百万个业务流程或实体处于“正在运行”状态，除非业务流程或实体载入到活动内存中，否则它们都不会计入限制。 如果业务流程正在等待活动完成执行，那么计划活动函数的业务流程同样不计入限制。
+> 业务流程和实体仅在主动处理事件或操作时才加载到内存中。 执行其逻辑并等待在业务流程协调程序函数代码中命中 `await` (C#) 或 `yield`（JavaScript、Python）语句后，它们将从内存中卸载。 从内存中卸载的业务流程和实体不计入 `maxConcurrentOrchestratorFunctions` 限制。 即使数百万个业务流程或实体处于“正在运行”状态，它们也仅在加载到活动内存时才会计入限制。 如果业务流程正在等待活动完成执行，那么计划活动函数的业务流程同样不计入限制。
 
 ### <a name="language-runtime-considerations"></a>语言运行时注意事项
 

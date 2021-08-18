@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/17/2020
-ms.openlocfilehash: bdd7fd8e19bf2de6d0b3c6b2edd4515771fae237
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f47833ab0fa36e4f58063640d60e188d850ea73f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98118995"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742148"
 ---
 # <a name="execute-r-script-module"></a>“执行 R 脚本”模块
 
@@ -50,7 +50,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 > [!NOTE]
 > 建议不要从脚本包安装 R 包。 建议直接在脚本编辑器中安装包。
-> 在安装包时，请指定 CRAN 存储库，例如 `install.packages("zoo",repos = "http://cran.us.r-project.org")`。
+> 在安装包时，请指定 CRAN 存储库，例如 `install.packages("zoo",repos = "https://cloud.r-project.org")`。
 
 > [!WARNING]
 > “执行 R 脚本”模块不支持安装需要本机编译的包，例如，`qdap` 包需要 JAVA，`drc` 包需要 C++。 这是因为，此模块是在具有非管理员权限的预安装环境中执行的。
@@ -74,7 +74,7 @@ azureml_main <- function(dataframe1, dataframe2){
 azureml_main <- function(dataframe1, dataframe2){
   print("R script run.")
   
-  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")
+  if(!require(zoo)) install.packages("zoo",repos = "https://cloud.r-project.org")
   library(zoo)
   # Return datasets as a Named List
   return(list(dataset1=dataframe1, dataset2=dataframe2))
@@ -99,32 +99,6 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-## <a name="uploading-files"></a>上传文件
-“执行 R 脚本”模块支持通过使用 Azure 机器学习 R SDK 上传文件。
-
-以下示例演示了如何在“执行 R 脚本”中上传图像文件：
-```R
-azureml_main <- function(dataframe1, dataframe2){
-  print("R script run.")
-
-  # Generate a jpeg graph
-  img_file_name <- "rect.jpg"
-  jpeg(file=img_file_name)
-  example(rect)
-  dev.off()
-
-  upload_files_to_run(names = list(file.path("graphic", img_file_name)), paths=list(img_file_name))
-
-
-  # Return datasets as a Named List
-  return(list(dataset1=dataframe1, dataset2=dataframe2))
-}
-```
-
-管道运行完成后，可在模块的右侧面板中预览该图像。
-
-> [!div class="mx-imgBorder"]
-> ![预览上传的图像](media/module/upload-image-in-r-script.png)
 
 ## <a name="how-to-configure-execute-r-script"></a>如何配置“执行 R 脚本”
 
@@ -147,7 +121,7 @@ azureml_main <- function(dataframe1, dataframe2){
 1. 在“R 脚本”文本框中，键入或粘贴有效的 R 脚本。
 
     > [!NOTE]
-    > 编写脚本时请小心谨慎。 确保没有语法错误，例如，使用未声明的变量或未导入的模块或函数。 请特别注意本文结尾处的预安装包列表。 若要使用未列出的包，请通过脚本安装它们。 例如 `install.packages("zoo&quot;,repos = &quot;http://cran.us.r-project.org")`。
+    > 编写脚本时请小心谨慎。 确保没有语法错误，例如，使用未声明的变量或未导入的模块或函数。 请特别注意本文结尾处的预安装包列表。 若要使用未列出的包，请通过脚本安装它们。 例如 `install.packages("zoo",repos = "https://cloud.r-project.org")`。
     
     为了帮助你入门，“R 脚本”文本框中预填充了可编辑或替换的代码示例。
     

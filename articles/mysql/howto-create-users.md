@@ -6,22 +6,21 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: 9a6346a2b62c81dd74cf0ebe9a85df12d3488679
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7319e0bf5a1c382d6a6f0b2984d5428be6131c5e
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98251244"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113088595"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中创建数据库和用户
 
-[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
+[!INCLUDE[applies-to-mysql-single-flexible-server](includes/applies-to-mysql-single-flexible-server.md)]
 
 本文介绍如何在 Azure Database for MySQL 中创建用户。
 
 > [!NOTE]
 > 本文包含对术语“从属”的引用，这是 Microsoft 不再使用的术语。 在从软件中删除该术语后，我们会将其从本文中删除。
->
 
 首次创建 Azure Database for MySQL 服务器时，需要提供服务器管理员用户名和密码。 有关详细信息，请参阅此[快速入门](quickstart-create-mysql-server-database-using-azure-portal.md)。 你可以在 Azure 门户中确定你的服务器管理员用户名。
 
@@ -69,18 +68,17 @@ ms.locfileid: "98251244"
 
 5. 登录到服务器，指定选定的数据库并使用新用户名和密码。 此示例显示了 mysql 命令行。 使用此命令时，系统会提示你输入用户的密码。 使用你自己的服务器名称、数据库名称和用户名。
 
-   ### <a name="single-server"></a>[单一服务器](#tab/single-server)
+### <a name="single-server"></a>[单一服务器](#tab/single-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
 
-   ### <a name="flexible-server"></a>[灵活服务器](#tab/flexible-server)
+### <a name="flexible-server"></a>[灵活服务器](#tab/flexible-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user -p
    ```
- ---
 
 ## <a name="to-create-more-admin-users-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中创建更多管理员用户
 

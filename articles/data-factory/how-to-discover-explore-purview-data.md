@@ -2,17 +2,18 @@
 title: 使用 Purview 发现和探索 ADF 中的数据
 description: 了解如何使用 Purview 发现和探索 Azure 数据工厂中的数据
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 author: linda33wj
 ms.author: jingwang
 ms.custom: seo-lt-2019
-ms.date: 01/15/2021
-ms.openlocfilehash: f37d2461a0e9c2db0cb3c7aa911dfb0ff5e049af
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 08/10/2021
+ms.openlocfilehash: 145f7c50d6fdd2fef5e1f31e029c06434fa2e8e5
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109486478"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122201687"
 ---
 # <a name="discover-and-explore-data-in-adf-using-purview"></a>使用 Purview 发现和探索 ADF 中的数据
 
@@ -26,6 +27,7 @@ ms.locfileid: "109486478"
 - 将这些数据连接到具有链接服务或数据集的数据工厂 
 
 ## <a name="prerequisites"></a>必备知识 
+
 - [Azure Purview 帐户](../purview/create-catalog-portal.md) 
 - [数据工厂](./quickstart-create-data-factory-portal.md) 
 - [将 Azure Purview 帐户连接到数据工厂](./connect-data-factory-to-azure-purview.md) 
@@ -47,5 +49,8 @@ ms.locfileid: "109486478"
 
 ##  <a name="nextsteps"></a>后续步骤 
 
-- [在 Azure Purview 中注册并扫描 Azure 数据工厂资产](../purview/register-scan-azure-synapse-analytics.md)
-- [如何在 Azure Purview 数据目录中搜索数据](../purview/how-to-search-catalog.md)
+[教程：将数据工厂世系数据推送到 Azure Purview](turorial-push-lineage-to-purview.md)
+
+[将 Azure Purview 帐户连接到数据工厂](connect-data-factory-to-azure-purview.md) 
+
+[如何在 Azure Purview 数据目录中搜索数据](../purview/how-to-search-catalog.md)

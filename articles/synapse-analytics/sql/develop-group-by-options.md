@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: c2e1ddbfb87df40a0e3683e7bca7539c26191a7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e88a1b87dae62b928f2238c6c525b6345b891337
+ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101671317"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112680033"
 ---
 # <a name="group-by-options-in-synapse-sql"></a>Synapse SQL 中的 GROUP BY 选项
 
@@ -26,7 +26,7 @@ Synapse SQL 允许通过实现各种 GROUP BY 选项来开发解决方案。
 
 [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest&preserve-view=true) T-SQL 子句用于将数据聚合成摘要行集。
 
-无服务器 SQL 池支持所有 GROUP BY 选项。 专用 SQL 池支持部分 GROUP BY 选项。
+无服务器 SQL 池不支持 GROUP BY 选项。 专用 SQL 池支持部分 GROUP BY 选项。
 
 ## <a name="group-by-options-supported-in-dedicated-sql-pool"></a>专用 SQL 池中支持的 GROUP BY 选项
 

@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 诊断和 Application Insights 在云服�
 ms.topic: article
 ms.service: cloud-services
 ms.date: 10/14/2020
-ms.author: tagore
-author: tanmaygore
+author: hirenshah1
+ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: fa5dd61c0764be45cdba68b73a4f55745ee5e55a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f18fa4986b9a4a855af6e2b9f14c4e2367213f6e
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100585506"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113089982"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a>收集 Azure 云服务（经典）的性能计数器
 

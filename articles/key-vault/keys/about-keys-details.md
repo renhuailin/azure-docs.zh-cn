@@ -2,19 +2,19 @@
 title: 密钥类型、算法和操作 - Azure Key Vault
 description: 支持的密钥类型、算法和操作（详细信息）。
 services: key-vault
-author: amitbapat
+author: mbaldwin
 manager: msmbaldwin
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.author: ambapat
-ms.openlocfilehash: 675c4f04ece322000ae0ebb44d6291c455db9397
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: mbaldwin
+ms.openlocfilehash: 7dc8d113b8d47ea75938cc7fcd7c24c8a132a3b4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98133270"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471746"
 ---
 # <a name="key-types-algorithms-and-operations"></a>密钥类型、算法和操作
 

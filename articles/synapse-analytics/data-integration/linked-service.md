@@ -2,19 +2,19 @@
 title: 保护链接服务
 description: 了解如何使用托管的 VNet 预配和保护链接服务
 services: synapse-analytics
-author: RonyMSFT
+author: ashinMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 04/15/2020
-ms.author: ronytho
+ms.author: seshin
 ms.reviewer: jrasnick
-ms.openlocfilehash: efe404511b725680697c5f6601b8cb13be13910b
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: ea5be6fc0594d679e7b8dcbd2037e7b47bce993f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109808961"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734716"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>使用专用链接保护链接服务
 

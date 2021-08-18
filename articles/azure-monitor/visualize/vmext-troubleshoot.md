@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
-ms.openlocfilehash: 33bdff8d516929e7f615f3a7f8bd77463eea0c64
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 80cec6ad233a6f6dc4771e82a98601f5db774b0f
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040135"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180575"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Azure Monitor 中的 Log Analytics VM 扩展故障排除
 本文可帮助排查使用 Microsoft Azure 上运行的 Windows 和 Linux 虚拟机的 Log Analytics VM 扩展时可能遇到的错误，并建议解决这些问题可能的解决方案。
@@ -36,7 +36,7 @@ ms.locfileid: "102040135"
 1. 使用 [KB 2965986](https://support.microsoft.com/kb/2965986#mt1) 中的步骤检查是否已安装 Azure VM 代理或者其是否正常工作。
    * 还可以查看 VM 代理日志文件 `C:\WindowsAzure\logs\WaAppAgent.log`
    * 如果此日志不存在，则未安装 VM 代理。
-   * [安装 Azure VM 代理](../vm/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+   * [安装 Azure VM 代理](../vm/monitor-virtual-machine.md#agents)
 2. 查看 `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent` 中的 Microsoft Monitoring Agent VM 扩展日志文件
 3. 确保虚拟机可以运行 PowerShell 脚本
 4. 确保 C:\Windows\temp 上的权限未被更改

@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 07/03/2017
-ms.openlocfilehash: 0d82a3cb4c08d47b6827072378b9827037d32412
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 0753108df52f0dcaea1d6c79eab266eeb000889a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751807"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747224"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault 安全体系和地理边界
 
-Azure 产品可用于许多 [Azure 地理位置](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)，每个 Azure 地理位置包含一个或多个区域。 例如，欧洲地区包含两个区域（北欧和西欧），但巴西地区只有一个区域 - 巴西南部。
+Azure 产品可用于许多 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)，每个 Azure 地理位置包含一个或多个区域。 例如，欧洲地区包含两个区域（北欧和西欧），但巴西地区只有一个区域 - 巴西南部。
 
 Azure Key Vault 是一项多租户服务，使用一个硬件安全模块 (HSM) 池。 一个地理位置中的所有 HSM 共享相同的加密边界，称为“安全体系”。 每个地理位置对应一个安全体系，反之亦然。
 

@@ -4,12 +4,12 @@ description: 了解在 Azure 虚拟网络中创建 HDInsight 群集时可用的�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 43640a9de91b6b44a236090ff029a49313ee0247
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 511f1b1bba227e58303a47994d7a6f7bd8b14604
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104871667"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112290982"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 虚拟网络体系结构
 
@@ -24,7 +24,6 @@ Azure HDInsight 群集包含不同类型的虚拟机（或节点）。 每个节
 | 头节点 |  对于除 Apache Storm 以外的所有群集类型，头节点托管用于管理分布式应用程序的执行的进程。 头节点也是可以通过 SSH 连接到其中并执行应用程序的节点。连接后，系统会协调这些应用程序，使其可在不同的群集资源上运行。 所有群集类型的头节点数目固定为 2 个。 |
 | ZooKeeper 节点 | ZooKeeper 协调执行数据处理的节点之间的任务。 它还执行头节点的主控选择，并跟踪哪个头节点正在运行特定的主服务。 ZooKeeper 节点数目固定为 3 个。 |
 | 工作器节点 | 表示支持数据处理功能的节点。 可以在群集中添加或删除工作器节点，以缩放计算能力和控制成本。 |
-| R Server 边缘节点 | R Server 边缘节点是可以通过 SSH 连接到其中并执行应用程序的节点。连接后，系统会协调这些应用程序，使其可在不同的群集资源上运行。 边缘节点不参与群集内部的数据分析。 此节点还托管 R Studio Server，使你能够使用浏览器运行 R 应用程序。 |
 | 区域节点 | 对于 HBase 群集类型，区域节点（也称为数据节点）将运行区域服务器。 区域服务器为 HBase 管理的一部分数据提供服务，并对其进行管理。 可以在群集中添加或删除区域节点，以缩放计算能力和控制成本。|
 | Nimbus 节点 | 对于 Storm 群集类型，Nimbus 节点提供类似于头节点的功能。 Nimbus 节点通过 Zookeeper 将任务分配给群集中的其他节点，Zookeeper 协调 Storm 拓扑的运行。 |
 | 监督器节点 | 对于 Storm 群集类型，监督器节点执行 Nimbus 节点所提供的指令以进行处理。 |

@@ -2,17 +2,18 @@
 title: 如何计划 Azure-SSIS Integration Runtime
 description: 本文介绍如何使用 Azure 数据工厂计划 Azure-SSIS Integration Runtime 的启动和停止。
 ms.service: data-factory
+ms.subservice: integration-services
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 06/04/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 40c3b8ab228c93fd4c681281d89d16f88ddf30f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dec61a586c744fd8a5f537bf5a593b7409a1636e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100384361"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121735342"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>如何按计划启动和停止 Azure-SSIS Integration Runtime
 
@@ -79,9 +80,9 @@ ms.locfileid: "100384361"
 
 ### <a name="create-your-pipelines"></a>创建管道
 
-1. 在“开始使用”页中，选择“创建管道”   。 
+1. 在主页中，选择“协调”。 
 
-   ![“入门”页](./media/how-to-schedule-azure-ssis-integration-runtime/get-started-page.png)
+   ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
    
 2. 在“活动”工具箱中，展开“常规”菜单，并将“Web”活动拖放到管道设计器图面    。 在活动属性窗口的“常规”选项卡中，将活动名称更改为“startMyIR”   。 切换到“设置”选项卡，然后执行以下操作  。
 

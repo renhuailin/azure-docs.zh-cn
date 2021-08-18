@@ -7,16 +7,16 @@ ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
 keywords: powershell, runbook, json, azure 自动化
-ms.openlocfilehash: 20dbf9f9bbf97ed0c24ea3a525c56c7cde2db428
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 7ea0e8209d244ad2b95e201ec7eb1e84f2038887
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834833"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113587762"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>在 PowerShell Runbook 中部署 Azure 资源管理器模板
 
-可以编写一个 [Azure 自动化 PowerShell Runbook](./learn/automation-tutorial-runbook-textual-powershell.md)，用于通过 [Azure 资源管理模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)部署 Azure 资源。 借助模板可以通过 Azure 自动化来自动部署 Azure 资源。 可以在一个安全的中心位置（例如 Azure 存储）维护资源管理器模板。
+可以编写一个 [Azure 自动化 PowerShell Runbook](./learn/automation-tutorial-runbook-textual-powershell.md)，用于通过 [Azure 资源管理器模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)部署 Azure 资源。 借助模板可以通过 Azure 自动化来自动部署 Azure 资源。 可以在一个安全的中心位置（例如 Azure 存储）维护资源管理器模板。
 
 本文创建一个 PowerShell Runbook，该 Runbook 使用 [Azure 存储](../storage/common/storage-introduction.md)中存储的资源管理器模板部署新的 Azure 存储帐户。
 

@@ -10,12 +10,12 @@ author: v-miegge
 ms.author: ramakoni
 ms.reviewer: cawrites
 ms.date: 09/27/2019
-ms.openlocfilehash: a36fd722f38ec2253ada7e2f759597ea0df080a3
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 27431b24b0f6507ac7031deae6573a8b111e0f76
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110787364"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913659"
 ---
 # <a name="azure-sql-database-and-managed-instance-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Azure SQL 数据库和托管实例导入/导出服务需要很长时间来导入或导出数据库
 
@@ -33,8 +33,6 @@ Azure SQL 数据库导入/导出服务是一项在每个 Azure 数据中心运�
 
 Azure SQL 数据库导入/导出服务为每个区域提供有限数量的计算虚拟机 (VM) 来处理导入和导出操作。 计算 VM 按区域托管，确保导入或导出避免跨区域带宽延迟和收费。 如果在同一区域中同时发出过多请求，则可能会在处理这些操作时出现显著延迟。 完成请求所需的时间可能短至数秒，也可能长达许多小时。
 
-> [!NOTE]
-> 如果某个请求未在四天内处理，此服务会自动取消该请求。
 
 ## <a name="recommended-solutions"></a>建议的解决方案
 

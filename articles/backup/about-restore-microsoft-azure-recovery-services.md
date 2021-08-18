@@ -4,12 +4,12 @@ description: 了解 Microsoft Azure 恢复服务 (MARS) 代理的可用还原选
 ms.reviewer: mepand
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.openlocfilehash: cebe13f6e72a9d8db346171384182756fb474ecd
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6c77ee568b4f6c7643672d38ba543f5eab7db369
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970474"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114295712"
 ---
 # <a name="about-restore-using-the-microsoft-azure-recovery-services-mars-agent"></a>关于使用 Microsoft Azure 恢复服务 (MARS) 代理进行复原 
 
@@ -19,7 +19,7 @@ ms.locfileid: "111970474"
 
 - 确保安装了最新版本的 [MARS 代理](https://aka.ms/azurebackup_agent)。
 - 确保禁用了[网络限制](backup-windows-with-mars-agent.md#enable-network-throttling)。
-- 确保[代理缓存文件夹](/azure/backup/backup-azure-file-folder-backup-faq.yml#manage-the-backup-cache-folder)有高速度、大空间的存储。
+- 确保[代理缓存文件夹](/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)有高速度、大空间的存储。
 - 监视内存和 CPU 资源，并确保有足够的资源可用于解压缩和解密数据。
 - 在使用“即时还原”功能将恢复点挂载为磁盘时，请将 robocopy 与多线程复制选项（/MT 开关）结合使用，以从挂载的恢复点高效地复制文件。 
 
