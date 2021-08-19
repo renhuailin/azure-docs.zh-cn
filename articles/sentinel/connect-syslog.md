@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: d35a97b0008a7ce3069185dd557a60221776b0ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0f4f2ff4fdd2d33e1ac1b56b02fb185203aee39
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100595456"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252588"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>使用 Syslog 从基于 Linux 的源收集数据
+
+[!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 可以使用适用于 Linux 的 Log Analytics 代理（以前称为 OMS 代理），将基于 Linux 的、支持 Syslog 的计算机或设备中的事件流式传输到 Azure Sentinel。 可以对任何允许你直接在其上安装 Log Analytics 代理的计算机执行此操作。 计算机的本机 Syslog 守护程序将收集指定类型的本地事件，并在本地将其转发到代理，代理将它们流式传输到 Log Analytics 工作区。
 
@@ -131,7 +133,8 @@ Azure Sentinel 可以将机器学习 (ML) 应用到 syslog 数据，以确定安
 
 ## <a name="next-steps"></a>后续步骤
 在本文中，你已了解如何将 Syslog 本地设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- [使用工作簿](tutorial-monitor-your-data.md)监视数据。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](detect-threats-built-in.md)。
+- [使用工作簿](monitor-your-data.md)监视数据。
 
+{"mode":"full","isActive":false}
