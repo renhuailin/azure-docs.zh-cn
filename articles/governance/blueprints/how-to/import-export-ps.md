@@ -1,14 +1,14 @@
 ---
 title: 使用 PowerShell 导入和导出蓝图
 description: 了解如何将蓝图定义作为代码进行使用。 使用导入和导出命令对其进行共享、源代码管理和管理。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: how-to
-ms.openlocfilehash: e214d618173f072bc0688e15a2b170958abe0749
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: b4d7eef9ca650d6d8796acb4e235f49889d42821
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108323638"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323265"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>使用 PowerShell 导入和导出蓝图定义
 

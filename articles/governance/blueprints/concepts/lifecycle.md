@@ -1,14 +1,14 @@
 ---
 title: 了解蓝图的生命周期
 description: 了解蓝图定义的整个生命周期及每个阶段（包括更新和删除蓝图分配）的详细信息。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 38deda756a718200334a5e79350ee3b5309ed850
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ffb91fe6d821c73d0d8392c3d3ee08b48dd65bb2
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108761528"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323558"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>了解 Azure 蓝图的生命周期
 

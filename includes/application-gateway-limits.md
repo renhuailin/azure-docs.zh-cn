@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: 1166585c7291c4fe0d78cbc9540e3f08f985db6c
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 3e2b9ab4eaf794e5cf64861d7c641b82f18b64dc
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107589917"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "114201011"
 ---
 | 资源 | 限制 | 注意 |
 | --- | --- | --- |
@@ -38,9 +38,9 @@ ms.locfileid: "107589917"
 | 并发的 WebSocket 连接数 |中型网关 2 万<sup>2</sup><br> 大型网关 5 万<sup>2</sup>| |
 | 最大 URL 长度|32KB| |
 | 适用于 HTTP/2 的最大标头大小 |16KB| |
-| 最大文件上传大小，标准 |2 GB | |
-| 最大文件上传大小 WAF |V1 中型 WAF 网关，100 MB<br>V1 大型 WAF 网关，500 MB<br>V2 WAF，750 MB| |
-| WAF 正文大小限制（不带文件）|128 KB||
+| 最大文件上传大小（标准 SKU） |V2 - 4 GB<br>V1 - 2 GB | |
+| 最大文件上传大小 (WAF SKU) |V1 中等 - 100 MB<br>V1 大型 - 500 MB<br>V2 - 750 MB<br>V2（带有 CRS 3.2 或更高版本）- 4 GB| |
+| WAF 正文大小限制（不带文件）|V1 或 V2（带有 CRS 3.1 及更低版本）- 128 KB<br>V2（带有 CRS 3.2 或更高版本）- 2 MB| |
 | 最大 WAF 自定义规则数|100||
 | 每个应用程序网关的最大 WAF 排除项数|40||
 
