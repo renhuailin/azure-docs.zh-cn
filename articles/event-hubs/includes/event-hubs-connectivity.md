@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/21/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 051dc952381800667fc3b36cdcf32f2aa2f6844c
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 97c3013586e9671d7d9cce55c5e6253cb8a368f4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416626"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733888"
 ---
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>需要在防火墙上打开哪些端口？ 
 可以将以下协议与 Azure 事件中心配合使用，以便发送和接收事件：
@@ -75,7 +75,7 @@ ms.locfileid: "112416626"
 ### <a name="what-client-ips-are-sending-events-to-or-receiving-events-from-my-namespace"></a>哪些客户端 IP 正在向/从我的命名空间发送/接收事件？
 首先，在命名空间上启用 [IP 筛选](../event-hubs-ip-filtering.md)。 
 
-然后，按照[启用诊断日志](../event-hubs-diagnostic-logs.md#enable-diagnostic-logs)中的说明，为[事件中心虚拟网络连接事件](../event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema)启用诊断日志。 你将看到连接遭到拒绝的 IP 地址。
+然后，按照[启用诊断日志](../../azure-monitor/essentials/diagnostic-settings.md)中的说明，为[事件中心虚拟网络连接事件](../monitor-event-hubs-reference.md#event-hubs-virtual-network-connection-event-schema)启用诊断日志。 你将看到连接遭到拒绝的 IP 地址。
 
 ```json
 {

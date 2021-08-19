@@ -1,17 +1,17 @@
 ---
 title: 图像合作伙伴集成
 description: 本文介绍图像合作伙伴集成。
-author: uhabiba04
+author: RiyazPishori
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-ummehabiba
-ms.custom: has-adal-ref
-ms.openlocfilehash: 1bc723892e29ccc24a7612cfbe50d4b274cdacdf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: riyazp
+ms.custom: ''
+ms.openlocfilehash: c4a4b0fa982945b20616d576af4b3e8039d828c0
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183788"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397817"
 ---
 # <a name="imagery-partner-integration"></a>图像合作伙伴集成
 

@@ -1,14 +1,14 @@
 ---
 title: 浏览 Azure 资源
 description: 了解如何使用 Resource Graph 查询语言浏览资源并发现资源的连接方式。
-ms.date: 05/11/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: f76d163ca113617aa25917feb24908eb72d4f515
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 37650c3da17de5cbe3ae8c37da31d0975ea0cdf0
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750874"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323931"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>使用 Resource Graph 浏览 Azure 资源
 

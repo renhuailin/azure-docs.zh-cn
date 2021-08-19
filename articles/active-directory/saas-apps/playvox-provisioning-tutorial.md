@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/18/2020
 ms.author: thwimmer
-ms.openlocfilehash: 68342511a0cf4e6d432216c1d3a779c3bf19d051
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 27ce560c7589e17d2de30247ee32da9e9d2e7f96
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113766394"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122325058"
 ---
 # <a name="tutorial-configure-playvox-for-automatic-user-provisioning"></a>教程：为 Playvox 配置自动用户预配
 

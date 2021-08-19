@@ -1,14 +1,14 @@
 ---
 title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: fdf3b12c3449fc9b2219442d65bae9a0ccdefdfb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b09d11e6f1c5ea8f4882021530dc4d06d2d2f350
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730075"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324883"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -807,7 +807,7 @@ Azure Policy 支持以下类型的效果：
   - `field` 主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
 
 - `requestContext().apiVersion`
-  - 返回已触发策略评估的请求的 API 版本（示例：`2019-09-01`）。
+  - 返回已触发策略评估的请求的 API 版本（示例：`2021-09-01`）。
     该值是 PUT/PATCH 请求中用于对资源创建/更新进行评估的 API 版本。 在对现有资源进行符合性评估时，将会一律使用最新的 API 版本。
 
 - `policy()`

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/17/2021
-ms.openlocfilehash: 5cbfb41d50e055f745864e4d5f8bc15a55d925e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f581594e6830efcf849f4ba51b218ce849bf3f9c
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101668563"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396953"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>Azure Purview 中有关数据的文件扩展名见解 
 
@@ -34,7 +34,7 @@ ms.locfileid: "101668563"
 
 - 对每个数据源中的测试数据设置并完成扫描。 有关详细信息，请参阅[在 Azure Purview（预览版）中管理数据源](manage-data-sources.md)和[创建扫描规则集](create-a-scan-rule-set.md)。
 
-- 使用具有 [Data Reader 或 Data Curator 角色](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)的帐户登录到 Purview。
+- 使用具有 [Data Reader 或 Data Curator 角色](catalog-permissions.md#roles)的帐户登录到 Purview。
 
 
 有关详细信息，请参阅[在 Azure Purview（预览版）中管理数据源](manage-data-sources.md)。
@@ -90,7 +90,7 @@ ms.locfileid: "101668563"
 |**按关键字筛选**     |    在“按关键字筛选”框中输入文本，以查看按名称筛选的文件类型。 例如，要仅查看 PDF，请输入 `PDF`。     |
 |**时间**        | 选择此选项可按创建数据的特定时间范围筛选。 <br>**默认：** 30 天  |
 |**文件扩展名**     |选择此选项可按一个或多个文件类型筛选网格。        |
-|**Sources**    |选择此选项可按特定数据源筛选网格。 |
+|**源**    |选择此选项可按特定数据源筛选网格。 |
 |**内容扫描**     |选择此选项可选择“支持”或“不支持”，以仅显示可进一步扫描其敏感数据的文件类型或无法扫描的数据，例如 .cert 或 .jpg 文件。 |
 | | |
 

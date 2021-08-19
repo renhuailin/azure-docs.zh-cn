@@ -1,14 +1,14 @@
 ---
 title: 排查常见错误
 description: 了解如何排查创建、分配和删除蓝图时遇到的问题，例如，策略冲突和蓝图参数函数。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: ca86b81f846465c996d05f08d3a721829f8e496f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 732fe511fb63ca32cd23c1630195c83d26564371
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733888"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322932"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>排查使用 Azure 蓝图时出现的错误
 

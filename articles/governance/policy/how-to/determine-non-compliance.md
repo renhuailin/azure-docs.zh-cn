@@ -1,14 +1,14 @@
 ---
 title: 确定导致非符合性的原因
 description: 如果资源不符合，可能有很多原因。 找出导致非符合性的原因。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 00871b35911d845ec1e238c37c6db7e2db055e3b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e09bdaee974e77a3afecaaa35a37c56ed3cd56ec
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111970365"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324536"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
