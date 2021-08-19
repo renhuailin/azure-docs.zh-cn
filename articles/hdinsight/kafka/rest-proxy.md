@@ -3,14 +3,14 @@ title: Apache Kafka REST 代理 - Azure HDInsight
 description: 了解如何在 Azure HDInsight 上使用 Kafka REST 代理执行 Apache Kafka 操作。
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: has-adal-ref, devx-track-python
+ms.custom: devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: bc3cbe5d0d7cf5e5a78112ae5df63ebb88a97f5a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 634526e8a136023368a06887af648ca3925151a0
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864833"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396933"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>使用 REST 代理与 Azure HDInsight 中的 Apache Kafka 群集交互
 

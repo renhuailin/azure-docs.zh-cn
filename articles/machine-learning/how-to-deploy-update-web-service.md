@@ -10,12 +10,12 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.custom: deploy
-ms.openlocfilehash: e95bc02cce2cc3ff736de44e9f7fb3d367c33e5c
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 1bb38c45203b0356444d0eb115a8c75e0f1c465d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114296342"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324345"
 ---
 # <a name="update-a-deployed-web-service"></a>更新已部署的 Web 服务
 
@@ -86,7 +86,7 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 >
 > 若要更新服务以使用新的入口脚本或环境，请创建[推理配置文件](./reference-azure-machine-learning-cli.md#inference-configuration-schema)并使用 `ic` 参数指定它。
 
-有关详细信息，请参阅 [az ml 服务更新](/cli/azure/ml(v1)/computetarget/create#az_ml_service_update)文档。
+有关详细信息，请参阅 [az ml 服务更新](/cli/azure/ml(v1)/service?view=azure-cli-latest#az_ml_v1__service_update)文档。
 
 ## <a name="next-steps"></a>后续步骤
 

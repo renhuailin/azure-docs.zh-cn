@@ -1,5 +1,5 @@
 ---
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 08/18/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 167e33ff4a3af463e2537e2714e9e9bf5e125b61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6041f49f613b5eb1367dce0982eaaf041285ffea
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98947405"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122264033"
 ---
 容器提供基于 websocket 的查询终结点 API，你可通过[语音 SDK](../index.yml) 访问这些 API。 默认情况下，语音 SDK 使用联机语音服务。 若要使用该容器，需要更改初始化方法。
 

@@ -1,14 +1,14 @@
 ---
 title: 使用参数创建动态蓝图
 description: 了解静态和动态参数以及使用它们创建安全和动态蓝图的方法。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6db29a058bd8022c2f1224a8a8bf6e4fb85a398f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2dfaa9f02b75e6aff46ae2967311c5b846ef6df8
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108761338"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323561"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>通过参数创建动态蓝图
 
