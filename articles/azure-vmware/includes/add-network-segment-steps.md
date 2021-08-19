@@ -3,12 +3,15 @@ title: 添加 NSX-T 网段
 description: 在 NSX-T Manager 中为 Azure VMware 解决方案添加 NSX-T 网段的步骤。
 ms.topic: include
 ms.date: 03/13/2021
-ms.openlocfilehash: ad02977e422a3bdbe0158dd92761ae91a6260fd5
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+author: shortpatti
+ms.author: v-patsho
+ms.service: azure-vmware
+ms.openlocfilehash: 8431c562b04d62469d2ab261aef0bd779f24ebc6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114229288"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734199"
 ---
 <!-- Used in configure-dhcp-azure-vmware-solution.md and tutorial-nsx-t-network-segment.md -->
 

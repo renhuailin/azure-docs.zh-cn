@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: thwimmer
-ms.openlocfilehash: 6daa90e2a70eea20586b8f95967c938f360585cd
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 401baafba0ae430d2cd33e7006302bf90afc9778
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113764735"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323008"
 ---
 # <a name="tutorial-configure-bentley---automatic-user-provisioning-for-automatic-user-provisioning"></a>教程：为 Bentley - Automatic User Provisioning 配置自动用户预配
 

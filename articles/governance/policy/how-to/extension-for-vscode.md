@@ -1,14 +1,14 @@
 ---
 title: 适用于 Visual Studio Code 的 Azure Policy 扩展
 description: 了解如何使用适用于 Visual Studio Code 的 Azure Policy 扩展来查找 Azure 资源管理器别名。
-ms.date: 04/25/2021
+ms.date: 08/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 8fe0d22aeb307f82034d697e8564f8fccab61a81
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 870559a2f3d36257cb1246e340163f25ef016eb2
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133828"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323172"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用适用于 Visual Studio Code 的 Azure Policy 扩展
 

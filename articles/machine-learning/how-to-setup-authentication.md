@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 05/27/2021
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-js, contperf-fy21q2, subject-rbac-steps
-ms.openlocfilehash: ce03348957bcfb5a838b92903beed17ddbd9b68f
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: dcd4b21214439e03d3c2ba9bc9d46474bdadc48f
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113219437"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323952"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>为 Azure 机器学习资源和工作流设置身份验证
 
@@ -237,7 +237,8 @@ from azureml.core import Workspace
 
 ws = Workspace.get(name="ml-example",
                    auth=sp,
-                   subscription_id="your-sub-id")
+                   subscription_id="your-sub-id",
+                   resource_group="your-rg-name")
 ws.get_details()
 ```
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/30/2021
 ms.author: thwimmer
-ms.openlocfilehash: fb80ddaecb7b200a52b944febc40bf26e9fb6de9
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 504b0c40a2cf0b4daf8af95c6564168dd2867bd5
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765067"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322805"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>教程：为 Adobe Identity Management 配置自动用户预配
 
@@ -125,7 +125,7 @@ ms.locfileid: "113765067"
    |addresses[type eq "work"].country|字符串|
    |name.givenName|字符串|
    |name.familyName|字符串|
-   |urn:ietf:params:scim:schemas:extension:Adobe:2.0:User:emailAliases|字符串|
+   |urn:ietf:params:scim:schemas:extension:Adobe:2.0:User:emailAliases|String|
 
 10. 在“映射”部分下，选择“将 Azure Active Directory 组同步到 Adobe Identity Management” 。
 

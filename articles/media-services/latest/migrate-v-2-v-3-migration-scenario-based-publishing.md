@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 0a0052fa3d78a3b77094cfccbd4c011321ac5925
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: d8cba5c69802828a0bd486d902d85199f3ae1d00
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279011"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322154"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>基于打包和分发方案的迁移指南
 
@@ -26,14 +26,14 @@ ms.locfileid: "106279011"
 
 本文为你提供了基于打包和分发方案的指南，可帮助你从 Azure 媒体服务 v2 迁移到 v3。
 
-V3 API 中内容发布方式的重大更改。 新的发布模型已简化，可使用更少的实体来创建流式处理定位符。 API 缩减到只有两个实体，而之前需要四个实体。 内容密钥策略和流式处理定位符现在替代了对 `ContentKeyAuthoriationPolicy`、`AssetDeliveyPolicy`、`ContentKey` 和 `AccessPolicy` 的需求。
+V3 API 中内容发布方式的重大更改。 新的发布模型已简化，可使用更少的实体来创建流式处理定位符。 API 缩减到只有两个实体，而之前需要四个实体。 内容密钥策略和流式处理定位符现在替代了对 `ContentKeyAuthorizationPolicy`、`AssetDeliveryPolicy`、`ContentKey` 和 `AccessPolicy` 的需求。
 
 ## <a name="packaging-and-delivery-in-v3"></a>V3 中的打包和分发
 
 1. 创建[内容密钥策略](drm-content-key-policy-concept.md)。
 1. 创建[流式处理定位符](stream-streaming-locators-concept.md)。
 1. 获取[流式处理路径](create-streaming-locator-build-url.md) 
-    1. 针对 [DASH](encode-dynamic-packaging-concept.md#mpeg-dash-protocol) 或 [HLS](encode-dynamic-packaging-concept.md#hls-protocol) 播放器进行配置。
+    1. 针对 [DASH](encode-dynamic-packaging-concept.md#deliver-dash) 或 [HLS](encode-dynamic-packaging-concept.md#deliver-hls) 播放器进行配置。
 
 有关具体步骤，请参阅以下发布概念、教程和操作指南。
 

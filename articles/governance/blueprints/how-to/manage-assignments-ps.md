@@ -1,14 +1,14 @@
 ---
 title: 如何使用 PowerShell 管理分配
 description: 了解如何通过正式的 Azure 蓝图 PowerShell 模块 Az.Blueprint 管理蓝图分配。
-ms.date: 01/27/2021
+ms.date: 08/17/2021
 ms.topic: how-to
-ms.openlocfilehash: d60fb887e07b4697b8e86a4e2fd74a735ac0bb58
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 943f2bcceef76a2b867b7459f88f6d5041f38ef5
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98919370"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322417"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>如何使用 PowerShell 管理分配
 

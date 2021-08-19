@@ -1,15 +1,15 @@
 ---
 title: 导出 Azure Policy 资源
 description: 了解如何将 Azure Policy 资源（例如策略定义和策略分配）导出到 GitHub。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 36e3c28d8448bba94222a23581dda7bd6d3ffaeb
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 7eb7cbfcd568eeebcb03979c51d26e8f6231298f
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752662"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122325012"
 ---
 # <a name="export-azure-policy-resources"></a>导出 Azure Policy 资源
 
