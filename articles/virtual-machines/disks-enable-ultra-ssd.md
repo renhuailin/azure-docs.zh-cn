@@ -4,16 +4,16 @@ description: 了解适用于 Azure VM 的超级磁盘
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/29/2021
+ms.date: 08/17/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 51d0a81b50e92859254613b8919536ecd2d08300
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: fb6180754be5e94091e5ff1ca21823b85c8a6e6d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113361200"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322010"
 ---
 # <a name="using-azure-ultra-disks"></a>使用 Azure 超级磁盘
 

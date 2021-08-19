@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/22/2021
 ms.author: thwimmer
-ms.openlocfilehash: 5744c3df69fd595d5fc7a576d9503f7d5b0caf70
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 44fb6342a8910a1edb27ea8e3a9f0ff12415ea2b
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113761341"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324772"
 ---
 # <a name="tutorial-configure-travelperk-for-automatic-user-provisioning"></a>教程：配置 TravelPerk 实现自动用户预配
 
@@ -129,7 +129,7 @@ ms.locfileid: "113761341"
    | userName                                                                          | 字符串    | &check;                 |
    | externalId                                                                        | 字符串    |
    | 活动                                                                            | Boolean   |
-   | name.honorificPrefix                                                              | 字符串    |
+   | name.honorificPrefix                                                              | String    |
    | name.familyName                                                                   | 字符串    |
    | name.givenName                                                                    | 字符串    |
    | name.middleName                                                                   | 字符串    |
@@ -140,11 +140,11 @@ ms.locfileid: "113761341"
    | title                                                                             | 字符串    |
    | urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:costCenter             | 字符串    |
    | urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager                | 参考 |
-   | urn:ietf:params:scim:schemas:extension:travelperk:2.0:User:gender                 | 字符串    |
-   | urn:ietf:params:scim:schemas:extension:travelperk:2.0:User:dateOfBirth            | 字符串    |
+   | urn:ietf:params:scim:schemas:extension:travelperk:2.0:User:gender                 | String    |
+   | urn:ietf:params:scim:schemas:extension:travelperk:2.0:User:dateOfBirth            | String    |
    | urn:ietf:params:scim:schemas:extension:travelperk:2.0:User:invoiceProfiles        | Array     |
-   | urn:ietf:params:scim:schemas:extension:travelperk:2.0:User:emergencyContact.name  | 字符串    |
-   | urn:ietf:params:scim:schemas:extension:travelperk:2.0:User:emergencyContact.phone | 字符串    |
+   | urn:ietf:params:scim:schemas:extension:travelperk:2.0:User:emergencyContact.name  | String    |
+   | urn:ietf:params:scim:schemas:extension:travelperk:2.0:User:emergencyContact.phone | String    |
    | urn:ietf:params:scim:schemas:extension:travelperk:2.0:User:travelPolicy           | 字符串    |
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
