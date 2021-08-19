@@ -1,14 +1,14 @@
 ---
 title: 修正不符合资源
 description: 本指南将指导你完成对 Azure Policy 中不符合策略的资源的修正。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 886087a22712e316f4ecd50674f48594d6953dab
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 22261362f8e1e7115f8670939cbf3279472713b8
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108747460"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122325063"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 

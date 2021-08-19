@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/07/2021
 ms.author: egeaney
-ms.openlocfilehash: c45f7dd7daad911deff3c920222ec18118437692
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: 4ffafa5618de85a0d47a5cf8317aae6d6b5d6987
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114220375"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323870"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>通过 Azure Key Vault 为认知服务配置客户管理的密钥
 
@@ -23,7 +23,7 @@ ms.locfileid: "114220375"
 
 * [自定义视觉静态数据加密](../custom-vision-service/encrypt-data-at-rest.md)
 * [人脸服务静态数据加密](../face/encrypt-data-at-rest.md)
-* [表单识别器静态数据加密](../form-recognizer/encrypt-data-at-rest.md)
+* [表单识别器静态数据加密](../../applied-ai-services/form-recognizer/encrypt-data-at-rest.md)
 
 ## <a name="language"></a>语言
 

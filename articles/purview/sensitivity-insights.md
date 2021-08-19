@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/17/2021
-ms.openlocfilehash: bb8ac82b2e59ec86db89c7eba0ce607fcfc0ac2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d3b828aab13a822c307119dca64dac81c9201d5b
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676560"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397800"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>有关 Azure Purview 中的数据的敏感度标签见解
 
@@ -42,7 +42,7 @@ ms.locfileid: "101676560"
 
 - 对每个数据源中的测试数据设置并完成扫描。 有关详细信息，请参阅[在 Azure Purview（预览版）中管理数据源](manage-data-sources.md)和[创建扫描规则集](create-a-scan-rule-set.md)。
 
-- 已使用具有[“数据读取者”或“数据策展者”角色](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)的帐户登录到 Purview。
+- 已使用具有[“数据读取者”或“数据策展者”角色](catalog-permissions.md#roles)的帐户登录到 Purview。
 
 有关详细信息，请参阅[在 Azure Purview（预览版）中管理数据源](manage-data-sources.md)和[在 Azure Purview 中自动标记数据](create-sensitivity-label.md)。
 

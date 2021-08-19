@@ -8,16 +8,15 @@ ms.topic: include
 ms.date: 09/26/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8671c9d8551d148df84e05e2d7d8ebc4cbdf9aca
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: c0af087c68056b1719355956c30b5e2c7f971531
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110631163"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113094560"
 ---
 | 资源 |  限制 |
 | --- | --- |
-| 每个虚拟 WAN 的虚拟 WAN 中心数 |Azure 区域 |
 | 每个中心的 VPN（分支）连接数 | 1,000 |
 | 每个虚拟 WAN 站点到站点 VPN 网关的总吞吐量 | 20 Gbps |
 | 每个虚拟 WAN VPN 连接的吞吐量（2 个隧道） | 2 Gbps 和 1 Gbps/IPsec 隧道 |
