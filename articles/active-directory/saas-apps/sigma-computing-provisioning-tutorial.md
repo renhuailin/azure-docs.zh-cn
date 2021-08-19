@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/02/2021
 ms.author: thwimmer
-ms.openlocfilehash: 8ad497ad6101406c766c2c3eb5d3ef1c036a0c7b
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: cbf5fd979da640461dea954b395e2f06c37f1198
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114230613"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324768"
 ---
 # <a name="tutorial-configure-sigma-computing-for-automatic-user-provisioning"></a>教程：为 Sigma Computing 配置自动用户预配
 

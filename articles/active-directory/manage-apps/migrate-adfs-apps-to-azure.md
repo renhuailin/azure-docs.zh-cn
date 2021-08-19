@@ -2,21 +2,21 @@
 title: 将应用程序身份验证从 AD FS 移动到 Azure Active Directory
 description: 了解如何使用 Azure Active Directory 替换 Active Directory 联合身份验证服务 (AD FS)，让用户能够单一登录所有应用程序。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
 ms.date: 03/01/2021
-ms.author: mtillman
-ms.reviewer: baselden
-ms.openlocfilehash: 616550188687823438187e1e09c90d5d3c6c6835
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: davidmu
+ms.reviewer: alamaral
+ms.openlocfilehash: 6633d7a6ed7def1a2c3ee7f0262c16b106275bfa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078808"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742903"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>将应用程序身份验证从 Active Directory 联合身份验证服务移动到 Azure Active Directory
 
@@ -135,7 +135,7 @@ AD FS 和 Azure AD 都提供令牌加密，即对发送到应用程序的 SAML �
 有关 Azure AD SAML 令牌加密以及如何配置它的信息，请参阅[操作指南：配置 Azure AD SAML 令牌加密](howto-saml-token-encryption.md)。  
 
 > [!NOTE]
-> 令牌加密是一项 Azure Active Directory (Azure AD) 高级功能。 若要详细了解 Azure AD 版本、功能和定价，请参阅 [Azure AD 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
+> 令牌加密是一项 Azure Active Directory (Azure AD) 高级功能。 若要详细了解 Azure AD 版本、功能和定价，请参阅 [Azure AD 定价](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)。
 
 ### <a name="apps-and-configurations-that-can-be-moved-today"></a>目前可移动的应用和配置
 
@@ -154,8 +154,8 @@ AD FS 和 Azure AD 都提供令牌加密，即对发送到应用程序的 SAML �
 * 具有多个回复 URL 终结点的应用。 使用 PowerShell 或 Azure 门户界面在 Azure AD 中配置它们。
 * 需要 SAML 1.1 版令牌的 WS 联合身份验证应用（例如 SharePoint 应用）。 可使用 PowerShell 手动配置它们。 还可以从库中为 SharePoint 和 SAML 1.1 应用程序添加预集成的通用模板。 我们支持 SAML 2.0 协议。
 * 复杂的声明颁发转换规则。 有关支持的声明映射的信息，请参阅：
-   *  [Azure Active Directory 中的声明映射](../develop/active-directory-claims-mapping.md)。
-   * [在 Azure Active Directory 中为企业应用程序自定义 SAML 令牌中颁发的声明](../develop/active-directory-saml-claims-customization.md)。
+  * [Azure Active Directory 中的声明映射](../develop/active-directory-claims-mapping.md)。
+  * [在 Azure Active Directory 中为企业应用程序自定义 SAML 令牌中颁发的声明](../develop/active-directory-saml-claims-customization.md)。
 
 ### <a name="apps-and-configurations-not-supported-in-azure-ad-today"></a>目前在 Azure AD 中不受支持的应用和配置
 
@@ -308,7 +308,7 @@ AD FS 中的 MFA 规则设置：
 
     ‎![屏幕截图显示“授权”窗格，你可在其中授予访问权限。](media/migrate-adfs-apps-to-azure/mfa-users-groups.png)
 
- #### <a name="example-2-enforce-mfa-for-unregistered-devices"></a>示例 2：对未注册的设备强制执行 MFA
+#### <a name="example-2-enforce-mfa-for-unregistered-devices"></a>示例 2：对未注册的设备强制执行 MFA
 
 在 Azure AD 中为未注册的设备指定 MFA 规则：
 

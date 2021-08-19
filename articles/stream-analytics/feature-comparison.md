@@ -6,12 +6,12 @@ ms.author: raan
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 037bd8bc823cd8c77241d0ca25174e29d25149b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0cb51198fec12590b497f94b23fce8b32b67bb8c
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98020530"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122396812"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure 流分析功能比较
 
@@ -37,13 +37,13 @@ ms.locfileid: "98020530"
 |列出作业和查看作业实体     |是         |是        |是         |
 |将作业导出到本地项目     |否         |是         |是         |
 |提交、启动和停止作业     |是         |是         |是         |
-|查看作业指标和关系图     |是         |是         |在门户中打开         |
-|查看作业运行时错误     |是         |是         |否         |
-|资源日志     |是         |否         |否         |
-|自定义消息属性     |是         |是         |否       |
-|C# 自定义代码函数和反序列化程序|只读模式|是|否|
+|查看作业指标和关系图     |是         |是         |是         |
+|查看作业运行时错误     |是         |是         |是         |
+|资源日志     |是         |否         |是         |
+|自定义消息属性     |是         |是         |是       |
+|C# 自定义代码函数和反序列化程序|只读模式|是|是|
 |JavaScript UDF 和 UDA     |是         |是         |仅限 Windows         |
-|机器学习服务     |是        |是         |否         |
+|机器学习服务     |是        |是         |是         |
 |Azure 机器学习工作室（经典）|是，但无法测试查询        |是 |否         |
 |兼容性级别     |1.0</br>1.1</br>1.2（默认值）         |1.0</br>1.1</br>1.2（默认值）           |1.0</br>1.1</br>1.2（默认值）           |
 |基于 ML 的内置异常情况检测函数     |是         |是         |是         |

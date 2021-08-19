@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/23/2021
 ms.author: thwimmer
-ms.openlocfilehash: 97359ee9b4475f06bc1f09635f9fdb788fcbc19b
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 0fa690836fb53db84263155c0a8661f7295f1c50
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113764841"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323983"
 ---
 # <a name="tutorial-configure-aws-single-sign-on-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 AWS Single Sign-On
 
@@ -126,7 +126,7 @@ ms.locfileid: "113764841"
    |addresses[type eq "work"].postalCode|字符串|
    |addresses[type eq "work"].country|字符串|
    |phoneNumbers[type eq "work"].value|字符串|
-   |externalId|字符串|
+   |externalId|String|
    |区域设置|字符串|
    |timezone|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|
