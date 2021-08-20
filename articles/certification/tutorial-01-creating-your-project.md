@@ -5,14 +5,14 @@ author: nkuntjoro
 ms.author: nikuntjo
 ms.service: certification
 ms.topic: tutorial
-ms.date: 03/01/2021
+ms.date: 06/22/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 11c0a621375cfa57c8b25f0bdd5ed4651dffa853
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f634cb35590a428613858a88a71db1d0792ceb06
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949428"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112967495"
 ---
 # <a name="tutorial-create-your-project"></a>教程：创建项目
 
@@ -26,7 +26,6 @@ ms.locfileid: "111949428"
 > * 指定项目的基本设备详细信息
 
 ## <a name="prerequisites"></a>先决条件
-
 
 - 有效的工作/学校 [Azure Active Directory 帐户](../active-directory/fundamentals/active-directory-whatis.md)。
 - 已验证的 Microsoft 合作伙伴网络 (MPN) 帐户。 如果你没有 MPN 帐户，请在开始之前[加入合作伙伴网络](https://partner.microsoft.com/)。 
@@ -65,6 +64,10 @@ ms.locfileid: "111949428"
     | 设备类型            | 成品或解决方案就绪开发人员工具包的规格。     有关术语的详细信息，请参阅[认证术语表](./resources-glossary.md)。                                                                     |
     | 设备分类           | 网关、传感器或其他分类。  有关术语的详细信息，请参阅[认证术语表](./resources-glossary.md)。                                                                    |
     | 设备源代码 URL | 如果要认证解决方案就绪开发人员工具包，则此字段是必填的；否则是可选的。 URL 必须指向设备代码的 GitHub 位置。 |
+
+    > [!Note]
+    > 如果你正在营销 Microsoft 服务（例如 Azure Sphere），请确保你的设备名称符合 Microsoft [品牌准则](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks)。
+
 1. 选择 `Next` 按钮转到 `Certifications` 选项卡。
 
     ![“创建新项目”窗体中“认证”选项卡的插图](./media/images/create-new-project-certificationswindow.png)

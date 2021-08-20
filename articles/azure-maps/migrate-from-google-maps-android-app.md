@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 3d160649008199233fa0b676d938470569a27853
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 95f24173f584cd6ac6e97ccae053706ff5b8f2cf
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102101488"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091458"
 ---
 # <a name="tutorial-migrate-an-android-app-from-google-maps"></a>教程：从 Google Maps 迁移 Android 应用
 
@@ -258,7 +258,7 @@ Azure Maps Android SDK 有一个类似于 Web SDK 的 API 接口。 如果你已
     3. 更新 dependencies 块。 为最新 Azure Maps Android SDK 添加新的实现依赖项行：
 
         ```gradel
-        implementation "com.microsoft.azure.maps:mapcontrol:0.7"
+        implementation "com.azure.android:azure-maps-control:1.0.0"
         ```
 
         > [!Note]
@@ -277,7 +277,7 @@ Azure Maps Android SDK 有一个类似于 Web SDK 的 API 接口。 如果你已
         android:layout_height="match_parent"
         >
 
-        <com.microsoft.azure.maps.mapcontrol.MapControl
+        <com.azure.android.maps.control.MapControl
             android:id="@+id/mapcontrol"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -312,11 +312,11 @@ Azure Maps Android SDK 有一个类似于 Web SDK 的 API 接口。 如果你已
     package com.example.myapplication;
     
     import androidx.appcompat.app.AppCompatActivity;
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-    import com.microsoft.azure.maps.mapcontrol.MapControl;
-    import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
-    import com.microsoft.azure.maps.mapcontrol.options.MapStyle;
-    import com.microsoft.azure.maps.mapcontrol.source.DataSource;
+    import com.azure.android.maps.control.AzureMaps;
+    import com.azure.android.maps.control.MapControl;
+    import com.azure.android.maps.control.layer.SymbolLayer;
+    import com.azure.android.maps.control.options.MapStyle;
+    import com.azure.android.maps.control.source.DataSource;
     
     public class MainActivity extends AppCompatActivity {
     
@@ -418,10 +418,10 @@ Azure Maps Android SDK 有一个类似于 Web SDK 的 API 接口。 如果你已
 
     import androidx.appcompat.app.AppCompatActivity
     import android.os.Bundle
-    import com.microsoft.azure.maps.mapcontrol.AzureMap
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps
-    import com.microsoft.azure.maps.mapcontrol.MapControl
-    import com.microsoft.azure.maps.mapcontrol.events.OnReady
+    import com.azure.android.maps.control.AzureMap
+    import com.azure.android.maps.control.AzureMaps
+    import com.azure.android.maps.control.MapControl
+    import com.azure.android.maps.control.events.OnReady
     
     class MainActivity : AppCompatActivity() {
     
@@ -542,16 +542,16 @@ baseContext.resources.updateConfiguration(
 
 ![Google Maps 本地化](media/migrate-google-maps-android-app/google-maps-localization.png)
 
-### <a name="after-azure-maps"></a>后者：Azure Maps
+### <a name="after-azure-maps&quot;></a>后者：Azure Maps
 
 Azure Maps 提供三种不同的方式来设置地图的语言和区域视图。 第一个选项是将语言和区域视图信息直接传递到 `AzureMaps` 类。 此选项全局使用静态 `setLanguage` 和 `setView` 方法。 即，在载入到应用的所有 Azure Maps 控件中设置默认的语言和区域视图。 此示例使用“fr-FR”语言代码设置法语。
 
-::: zone pivot="programming-language-java-android"
+::: zone pivot=&quot;programming-language-java-android&quot;
 
 ```java
 static {
     //Set your Azure Maps Key.
-    AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
+    AzureMaps.setSubscriptionKey(&quot;<Your Azure Maps Key>");
 
     //Set the language to be used by Azure Maps.
     AzureMaps.setLanguage("fr-FR");
@@ -585,12 +585,12 @@ companion object {
 第二个选项是将语言和视图信息传递到地图控件 XML 代码中。
 
 ```xml
-<com.microsoft.azure.maps.mapcontrol.MapControl
+<com.azure.android.maps.control.MapControl
     android:id="@+id/myMap"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:mapcontrol_language="fr-FR"
-    app:mapcontrol_view="Auto"
+    app:azure_maps_language="fr-FR"
+    app:azure_maps_view="Auto"
     />
 ```
 
@@ -675,14 +675,14 @@ public override fun onMapReady(googleMap: GoogleMap) {
 可以在地图控件上的 XML 特性中设置初始地图视图。
 
 ```xml
-<com.microsoft.azure.maps.mapcontrol.MapControl
+<com.azure.android.maps.control.MapControl
     android:id="@+id/myMap"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:mapcontrol_cameraLat="35.0272"
-    app:mapcontrol_cameraLng="-111.0225"
-    app:mapcontrol_zoom="14"
-    app:mapcontrol_style="satellite"
+    app:azure_maps_cameraLat="35.0272"
+    app:azure_maps_cameraLng="-111.0225"
+    app:azure_maps_zoom="14"
+    app:azure_maps_style="satellite"
     />
 ```
 
@@ -1216,12 +1216,12 @@ public override fun onMapReady(googleMap: GoogleMap) {
 
 ![Google Maps 图块层](media/migrate-google-maps-android-app/google-maps-tile-layer.png)
 
-### <a name="after-azure-maps"></a>后者：Azure Maps
+### <a name="after-azure-maps&quot;></a>后者：Azure Maps
 
 可以像添加任何其他层一样将图块层添加到地图中。 指定包含 x 轴、y 轴和缩放比例占位符的带格式 URL；`{x}`、`{y}`、`{z}` 分别用于告知层要在何处访问图块。 此外，Azure Maps 中的图块层支持 `{quadkey}`、`{bbox-epsg-3857}` 和 `{subdomain}` 占位符。 若要使图块层半透明，请使用不透明度值 0.8。 尽管不透明度和透明度相似，但两者应使用反值。 若要在这两个选项之间进行转换，请用数字 1 减去其值。
 
 > [!TIP]
-> 在 Azure Maps 中，可以方便地在其他层（包括基础地图层）下面呈现层。 另外，通常情况下，最好是在地图标签下面呈现图块层，便于阅读。 `map.layers.add` 方法采用另一个参数，该参数是要在其中插入新层的层的 ID。 若要在地图标签下面插入图块层，可使用以下代码：`map.layers.add(myTileLayer, "labels");`
+> 在 Azure Maps 中，可以方便地在其他层（包括基础地图层）下面呈现层。 另外，通常情况下，最好是在地图标签下面呈现图块层，便于阅读。 `map.layers.add` 方法采用另一个参数，该参数是要在其中插入新层的层的 ID。 若要在地图标签下面插入图块层，可使用以下代码：`map.layers.add(myTileLayer, &quot;labels");`
 
 ::: zone pivot="programming-language-java-android"
 
@@ -1326,7 +1326,7 @@ mapControl!!.onReady { map: AzureMap ->
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解如何迁移 Azure Maps：
+详细了解 Azure Maps Android SDK：
 
 > [!div class="nextstepaction"]
-> [迁移 Android 应用](migrate-from-google-maps-android-app.md)
+> [Azure Maps Android SDK 入门](how-to-use-android-map-control-library.md)

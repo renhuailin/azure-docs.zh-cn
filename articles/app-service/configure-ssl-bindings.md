@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 0759a3fce2d056bbe5d9234e25b45525874faf4e
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c67dfe6295a62a464d1a7a5eeb7a9ba7afd88ced
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670557"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113128761"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称
 
@@ -24,7 +24,7 @@ ms.locfileid: "110670557"
 - [将专用证书添加到应用服务](configure-ssl-certificate.md)，以满足所有[专用证书要求](configure-ssl-certificate.md#private-certificate-requirements)。
 -  创建相应自定义域的 TLS 绑定。 本文介绍第二步。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 升级应用的定价层
@@ -129,7 +129,7 @@ ms.locfileid: "110670557"
 
 默认情况下，任何人都仍可使用 HTTP 访问应用。 可以将所有 HTTP 请求都重定向到 HTTPS 端口。
 
-在应用页的左侧导航窗格中，选择“SSL 设置”。 然后，在“仅 HTTPS”中，选择“启用”。
+在应用页的左侧导航窗格中，选择“TLS/SSL 设置”。 然后，在“仅 HTTPS”中，选择“启用”。
 
 ![实施 HTTPS](./media/configure-ssl-bindings/enforce-https.png)
 
@@ -143,7 +143,7 @@ ms.locfileid: "110670557"
 
 应用默认情况下允许 [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.2，这是行业标准（例如 [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)）建议的 TLS 级别。 若要强制实施不同的 TLS 版本，请按照下列步骤操作：
 
-在应用页的左侧导航窗格中，选择“SSL 设置”。 然后，在“TLS 版本”中，选择所需的最低 TLS 版本。 此设置仅控制入站调用。 
+在应用页的左侧导航窗格中，选择“TLS/SSL 设置”。 然后，在“TLS 版本”中，选择所需的最低 TLS 版本。 此设置仅控制入站调用。 
 
 ![强制实施 TLS 1.1 或 1.2](./media/configure-ssl-bindings/enforce-tls1-2.png)
 
@@ -168,4 +168,4 @@ ms.locfileid: "110670557"
 ## <a name="more-resources"></a>更多资源
 
 * [在 Azure 应用服务中通过代码使用 TLS/SSL 证书](configure-ssl-certificate-in-code.md)
-* [常见问题解答：应用服务证书](./faq-configuration-and-management.md)
+* [常见问题解答：应用服务证书](./faq-configuration-and-management.yml)

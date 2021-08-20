@@ -7,14 +7,17 @@ ms.topic: quickstart
 ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: be936bf8799d3e16679cf337e2425543163fe8f3
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 331a91f645c64f0b70ff6c4de922b455eb344ce2
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110063291"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433249"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>创建和使用内部负载均衡器应用服务环境 
+> [!NOTE]
+> 本文介绍用于独立应用服务计划的应用服务环境 v2
+> 
 
 Azure 应用服务环境是指将 Azure 应用服务部署到 Azure 虚拟网络 (VNet) 的子网中。 可通过两种方法部署应用服务环境 (ASE)： 
 
@@ -40,7 +43,7 @@ Azure 应用服务环境是指将 Azure 应用服务部署到 Azure 虚拟网络
 
 使用 ILB ASE 时，有一些操作无法执行：
 
--   使用基于 IP 的 SSL。
+-   使用基于 IP 的 TLS/SSL 绑定。
 -   将 IP 地址分配给特定应用。
 -   通过 Azure 门户购买证书并搭配应用使用。 可以直接从证书颁发机构获取证书并搭配应用使用。 无法通过 Azure 门户获取这些证书。
 
@@ -119,7 +122,7 @@ ILB ASE 上同时支持函数和 Web 作业，但对于与其配合使用的门�
 
 ASE 默认域后缀的 DNS 设置不会将你的应用限制为只能由这些名称访问。 可以在 ILB ASE 中设置自定义域名而无需对应用进行任何验证。 如果随后想要创建名为 contoso.net 的区域，可以执行此操作并将其指向 ILB IP 地址。 自定义域名适用于应用请求，但不适用于 scm 站点。 Scm 站点仅在 &lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net 上可用。
 
-名为 .&lt;asename&gt;.appserviceenvironment.net 的区域是全局唯一的。 在 2019 年 5 月之前，客户可以指定 ILB ASE 的域后缀。 如果要将 .contoso.com 用于域后缀，则可以执行此操作，这将包括 scm 站点。 该模型面临一些挑战，其中包括：管理默认的 SSL 证书，缺少对 scm 站点的单一登录，以及要求使用通配符证书。 ILB ASE 默认证书升级过程也会中断，并导致应用程序重启。 为了解决这些问题，ILB ASE 行为已更改为使用基于 ASE 名称域的后缀和 Microsoft 拥有的后缀。 对 ILB ASE 行为的更改仅影响在 2019 日 5 月后发布的 ILB Ase。 预先存在的 ILB ASE 仍必须管理 ASE 及其 DNS 配置的默认证书。
+名为 .&lt;asename&gt;.appserviceenvironment.net 的区域是全局唯一的。 在 2019 年 5 月之前，客户可以指定 ILB ASE 的域后缀。 如果要将 .contoso.com 用于域后缀，则可以执行此操作，这将包括 scm 站点。 该模型面临一些挑战，其中包括：管理默认的 TLS/SSL 证书，缺少对 scm 站点的单一登录，以及要求使用通配符证书。 ILB ASE 默认证书升级过程也会中断，并导致应用程序重启。 为了解决这些问题，ILB ASE 行为已更改为使用基于 ASE 名称域的后缀和 Microsoft 拥有的后缀。 对 ILB ASE 行为的更改仅影响在 2019 日 5 月后发布的 ILB Ase。 预先存在的 ILB ASE 仍必须管理 ASE 及其 DNS 配置的默认证书。
 
 ## <a name="publish-with-an-ilb-ase"></a>使用 ILB ASE 发布
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/28/2021
 ms.author: v-demjoh
-ms.openlocfilehash: 32f28a6fa056819081804a3ccb919436c3f50bae
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 268f248c879d1a6872713159bfb1aa44879d21ad
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112042251"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730371"
 ---
 ## <a name="download-and-install"></a>下载并安装
 
@@ -44,7 +44,7 @@ ms.locfileid: "112042251"
 * CentOS 7/8
 * Debian 9/10 
 * Red Hat Enterprise Linux (RHEL) 7/8
-* Ubuntu 16.04/18.04/20.04
+* Ubuntu 16.04（直到 9 月）、Ubuntu 18.04/20.04
 
 > [!NOTE]
 > 语音 SDK（而不是语音 CLI）支持其他体系结构。 有关详细信息，请参阅[关于语音 SDK](../speech-sdk.md)。

@@ -2,20 +2,20 @@
 title: 快速入门 - 加入 Teams 会议
 author: askaur
 ms.author: askaur
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 2fb04acd75d607772b6582882b98f9ed222f070c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 04ee9f19f23d16af9070d3366981b0690ba9ef27
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111430007"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113113081"
 ---
 本快速入门介绍如何使用适用于 JavaScript 的 Azure 通信服务聊天 SDK 在 Teams 会议中聊天。
 
-> [!NOTE]
-> 在 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/join-chat-to-teams-meeting) 上查找此快速入门的最终代码
+## <a name="sample-code"></a>代码示例
+在 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/join-chat-to-teams-meeting) 上查找此快速入门的最终代码。
 
 ## <a name="prerequisites"></a>先决条件 
 
@@ -325,6 +325,12 @@ sendMessageButton.addEventListener("click", async () =>
     });
 ```
 
+聊天线程参与者的显示名称不由 Teams 客户端设置。 在 `participantsAdded` 事件和 `participantsRemoved` 事件当中，这些名称将在列出参与者的 API 中作为 null 返回。 可以从 `call` 对象的 `remoteParticipants` 字段检索聊天参与者的显示名称。 收到有关名册更改的通知后，可以使用此代码来检索已添加或已删除的用户名称：
+
+```
+var displayName = call.remoteParticipants.find(p => p.identifier.communicationUserId == '<REMOTE_USER_ID>').displayName;
+```
+
 ## <a name="get-a-teams-meeting-chat-thread-for-a-communication-services-user"></a>获取通信服务用户的 Teams 会议聊天线程
 
 可以使用图形 API 来检索 Teams 会议链接和聊天，详情请参见[图形文档](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)。 通信服务呼叫 SDK 接受完整的 Teams 会议链接。 此链接作为 `onlineMeeting` 资源的一部分返回，可在具有[图像 API](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true) 的 [`joinWebUrl` 属性](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)下访问，也可获取 `threadId`。 响应将获得包含 `threadID` 的 `chatInfo` 对象。 
@@ -348,4 +354,4 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 在文本框中插入 Teams 会议链接和线程 ID。 按“加入 Teams 会议”来加入 Teams 会议。 在通信服务用户获批进入会议后，可以在通信服务应用程序中进行聊天。 导航到页面底部的框以开始聊天。
 
 > [!NOTE] 
-> 对于 Teams 中的互操作性方案，当前仅支持发送、接收和编辑消息。 尚不支持其他功能，例如键入指示符，以及通信服务用户从 Teams 会议添加或删除其他用户。
+> 对于 Teams 中的互操作性方案，当前仅支持发送、接收和编辑消息以及发送键入通知。 尚不支持其他功能，例如阅读回执，以及通信服务用户从 Teams 会议中添加或删除其他用户。

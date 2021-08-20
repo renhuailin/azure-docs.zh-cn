@@ -1,23 +1,25 @@
 ---
-title: 快速入门：在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 OIDC 的单一登录 (SSO)
+title: 快速入门：为应用程序配置基于 OIDC 的单一登录
+titleSuffix: Azure AD
 description: 本快速入门逐步介绍在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 OIDC 的单一登录 (SSO) 的过程。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/01/2020
-ms.author: mtillman
-ms.openlocfilehash: 853ae1bf9bb230a28ad4e1e8509ddbeeb9dc34d8
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 07/23/2020
+ms.author: davidmu
+ms.reviewer: ergreenl
+ms.openlocfilehash: 0e1c253211cfef2d9bf55b4d0a615ccb9563036b
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077494"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669432"
 ---
-# <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入门：在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 OIDC 的单一登录 (SSO)
+# <a name="quickstart-set-up-oidc-based-single-sign-on-for-an-application"></a>快速入门：为应用程序配置基于 OIDC 的单一登录
 
 通过为添加到 Azure Active Directory (Azure AD) 租户的应用程序设置单一登录 (SSO)，开始简化用户登录。 设置 SSO 后，用户可以使用其 Azure AD 凭据登录到应用程序。 SSO 在 Azure AD 免费版中提供。
 
@@ -40,16 +42,15 @@ ms.locfileid: "112077494"
 
 ## <a name="enable-single-sign-on-for-an-app"></a>为应用启用单一登录
 
-添加使用 OIDC 标准来实现 SSO 的应用时，你有一个设置按钮。 选择该按钮后，你将转到应用程序站点并完成应用的注册过程。 本系列前面的“添加应用”快速入门介绍了添加应用的过程。 如果要配置已添加的应用程序，请查看第一个快速入门。 它将引导你查看租户中已有的应用程序。 
+添加使用 OIDC 标准来实现 SSO 的应用时，你有一个设置按钮。 选择该按钮后，你将转到应用程序站点并完成应用的注册过程。 本系列前面的“添加应用”快速入门介绍了添加应用的过程。 如果要配置已添加的应用程序，请查看第一个快速入门。 它将引导你查看租户中已有的应用程序。
 
 为应用程序配设置单一登录：
 
-1. 本系列前面的快速入门介绍了如何添加使用 Azure AD 租户进行标识管理的应用。 如果应用开发人员使用 OIDC 标准来实现 SSO，则在添加应用时会显示一个注册按钮。 
+1. 本系列前面的快速入门介绍了如何添加使用 Azure AD 租户进行标识管理的应用。 如果应用开发人员使用 OIDC 标准来实现 SSO，则在添加应用时会显示一个注册按钮。
 
     :::image type="content" source="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png" alt-text="屏幕截图显示单一登录选项和注册按钮。" lightbox="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png":::
 
-
-2. 选择“注册”，你将进入应用开发人员登录页面。 使用 Azure Active Directory 登录凭据进行登录。 
+2. 选择“注册”，你将进入应用开发人员登录页面。 使用 Azure Active Directory 登录凭据进行登录。
 
    > [!IMPORTANT]
     > 如果已经订阅了该应用程序，则将验证用户详细信息以及租户/目录信息。 如果该应用程序无法验证用户，它会将你重定向到应用程序服务注册页面或错误页面。
@@ -59,7 +60,6 @@ ms.locfileid: "112077494"
     :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="屏幕截图显示应用的同意屏幕。" lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
 
 4. 系统将应用程序添加到租户中，并显示应用程序主页。
-
 
 > [!TIP]
 > 可使用 Graph API 自动管理应用，具体请参阅[使用 Microsoft Graph API 自动管理应用](/graph/application-saml-sso-configure-api)。
