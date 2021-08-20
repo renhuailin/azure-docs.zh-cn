@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 04/29/2021
+ms.date: 06/21/2021
 ms.author: victorh
-ms.openlocfilehash: a9f63b41afebc12566c8cc2e04664850203f1e5a
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: c5ba8ed36bc59b9b26dc854a0c1a1757f1c47266
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279921"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113595320"
 ---
 # <a name="what-is-azure-firewall-manager"></a>什么是 Azure 防火墙管理器？
 
@@ -82,7 +82,6 @@ Azure 防火墙管理器存在以下已知问题：
 |每个区域一个安全虚拟中心|在每个区域最多只能使用一个安全虚拟中心。|可在一个区域中创建多个虚拟 WAN。|
 |基本策略必须与本地策略位于同一区域中|可在与基本策略相同的区域中创建所有本地策略。 仍可以将在安全中心的某个区域中创建的策略应用于另一个区域。|正在调查|
 |在安全的虚拟中心部署中筛选中心之间的流量|目前尚不支持安全虚拟中心之间的通信筛选。 但如果未启用对经 Azure 防火墙的专用流量进行筛选，则中心之间的通信仍然有效。|正在调查|
-|虚拟中心外的其他区域中的分支|不支持虚拟中心外的其他区域中的分支。|正在调查<br><br>在每一个区域创建一个中心，并在该中心所在区域创建对等 VNet。|
 |启用了专用流量筛选的分支之间的流量|不支持启用了专用流量筛选时的分支之间的流量。 |正在调查。<br><br>如果分支之间的连接至关重要，请勿保护专用流量的安全。|
 |共享同一虚拟 WAN 的所有安全虚拟中心必须位于同一资源组中。|此行为现在与虚拟 WAN 中心保持一致。|创建多个虚拟 WAN，以允许在不同的资源组中创建安全虚拟中心。|
 |批量 IP 地址添加失败|如果添加多个公共 IP 地址，安全中心防火墙将进入失败状态。|添加较小的公共 IP 地址增量。 例如，一次添加 10 个。|
@@ -91,5 +90,6 @@ Azure 防火墙管理器存在以下已知问题：
 
 ## <a name="next-steps"></a>后续步骤
 
+- [Learn 模块：Azure 防火墙管理器简介](/learn/modules/intro-to-azure-firewall-manager/)。
 - 查看 [Azure 防火墙管理器部署概述](deployment-overview.md)
 - 了解[安全虚拟中心](secured-virtual-hub.md)。

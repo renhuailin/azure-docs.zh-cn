@@ -6,22 +6,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 06/11/2021
+ms.date: 07/15/2021
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: bd2babf0ae88cce5d6162ddd797225a83ef9367b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 58503476a3c17fdaff3c33585210dc762812b539
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112084051"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114594149"
 ---
 <a name="HOLTop"></a>
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
-[参考文档](/java/api/overview/azure/ai-textanalytics-readme?preserve-view=true&view=azure-java-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.7/sdk/textanalytics/azure-ai-textanalytics) | [包](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.7) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.7/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[参考文档](/java/api/overview/azure/ai-textanalytics-readme?preserve-view=true&view=azure-java-preview) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/textanalytics/azure-ai-textanalytics) | [包](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/textanalytics/azure-ai-textanalytics/src/samples)
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
@@ -42,7 +42,7 @@ ms.locfileid: "112084051"
 
 ### <a name="add-the-client-library"></a>添加客户端库
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 在首选 IDE 或开发环境中创建 Maven 项目。 然后在项目的 pom.xml 文件中，添加以下依赖项。 可联机找到[用于其他生成工具](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.7)的实现语法。
 
@@ -51,7 +51,7 @@ ms.locfileid: "112084051"
      <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-ai-textanalytics</artifactId>
-        <version>5.1.0-beta.7</version>
+        <version>5.1.0</version>
     </dependency>
 </dependencies>
 ```
@@ -77,12 +77,41 @@ ms.locfileid: "112084051"
 
 创建名为 `TextAnalyticsSamples.java` 的 Java 文件。 打开 文件并添加以下 `import` 语句：
 
+# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+
+
+```java
+
+import com.azure.ai.textanalytics.TextAnalyticsAsyncClient;
+import com.azure.core.credential.AzureKeyCredential;
+import com.azure.ai.textanalytics.models.*;
+import com.azure.ai.textanalytics.TextAnalyticsClientBuilder;
+import com.azure.ai.textanalytics.TextAnalyticsClient;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import java.util.Arrays;
+import com.azure.core.util.Context;
+import com.azure.core.util.polling.SyncPoller;
+import com.azure.ai.textanalytics.util.AnalyzeHealthcareEntitiesResultCollection;
+import com.azure.ai.textanalytics.util.AnalyzeHealthcareEntitiesPagedIterable;
+```
+
+# <a name="version-30"></a>[版本 3.0](#tab/version-3)
+
 ```java
 import com.azure.core.credential.AzureKeyCredential;
 import com.azure.ai.textanalytics.models.*;
 import com.azure.ai.textanalytics.TextAnalyticsClientBuilder;
 import com.azure.ai.textanalytics.TextAnalyticsClient;
 ```
+
+---
+
+
+
 
 在 java 文件中，添加一个新类并添加你的 Azure 资源的密钥和终结点，如下所示。
 
@@ -97,7 +126,7 @@ public class TextAnalyticsSamples {
 
 将以下 main 方法添加到该类。 稍后将定义此处调用的方法。
 
-# <a name="version-31-preview"></a>[版本 3.1（预览）](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 ```java
 public static void main(String[] args) {
@@ -164,7 +193,7 @@ static TextAnalyticsClient authenticateClient(String key, String endpoint) {
 
 ## <a name="sentiment-analysis"></a>情绪分析
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 > [!NOTE]
 > 在版本 `3.1` 中：
@@ -329,7 +358,7 @@ Detected primary language: French, ISO 6391 name: fr, score: 1.00.
 
 ## <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 > [!NOTE]
 > 在版本 `3.1` 中：
@@ -366,7 +395,7 @@ Recognized entity: last week, entity category: DateTime, entity sub-category: Da
 ```
 
 
-### <a name="personally-identifiable-information-recognition"></a>个人身份信息识别
+## <a name="personally-identifiable-information-pii-recognition"></a>个人身份信息识别 (PII) 识别
 
 创建一个名为 `recognizePiiEntitiesExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `recognizePiiEntities()` 函数。 如果成功，则返回的 `PiiEntityCollection` 对象将包含 `PiiEntity` 的列表，否则将包含 `errorMessage`。 它还将包含已修订的文本，该文本由输入文本组成，其中所有可识别实体均替换为 `*****`。
 
@@ -429,7 +458,7 @@ Recognized entity: last week, entity category: DateTime, entity sub-category: Da
 
 ## <a name="entity-linking"></a>实体链接
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 创建一个名为 `recognizeLinkedEntitiesExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `recognizeLinkedEntities()` 函数。 如果成功，则返回的 `LinkedEntityCollection` 对象将包含 `LinkedEntity` 的列表，否则将包含 `errorMessage`。 由于链接实体是唯一标识的，因此同一实体的实例将以分组形式出现在 `LinkedEntity` 对象下，显示为 `LinkedEntityMatch` 对象的列表。
 
@@ -489,7 +518,7 @@ Matches:
 Text: Altair 8800, Score: 0.88, Offset: 11, Length: 116
 ```
 
-# <a name="version-30-preview"></a>[版本 3.0 预览](#tab/version-3)
+# <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
 创建一个名为 `recognizeLinkedEntitiesExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `recognizeLinkedEntities()` 函数。 如果成功，则返回的 `LinkedEntityCollection` 对象将包含 `LinkedEntity` 的列表，否则将包含 `errorMessage`。 由于链接实体是唯一标识的，因此同一实体的实例将以分组形式出现在 `LinkedEntity` 对象下，显示为 `LinkedEntityMatch` 对象的列表。
 
@@ -574,9 +603,92 @@ veterinarian
 ```
 ---
 
+## <a name="extract-health-entities"></a>提取健康状况实体
+
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
+
+可以使用文本分析来执行异步请求，以从文本中提取健康状况实体。 下面的示例演示了基本示例。 可以[在 GitHub 上](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro/AnalyzeHealthcareEntities.java)找到更高级的示例。
+
+
+```java
+static void healthExample(TextAnalyticsClient client){
+    List<TextDocumentInput> documents = Arrays.asList(
+            new TextDocumentInput("0",
+                    "Prescribed 100mg ibuprofen, taken twice daily."));
+
+    AnalyzeHealthcareEntitiesOptions options = new AnalyzeHealthcareEntitiesOptions().setIncludeStatistics(true);
+
+    SyncPoller<AnalyzeHealthcareEntitiesOperationDetail, AnalyzeHealthcareEntitiesPagedIterable>
+            syncPoller = client.beginAnalyzeHealthcareEntities(documents, options, Context.NONE);
+
+    System.out.printf("Poller status: %s.%n", syncPoller.poll().getStatus());
+    syncPoller.waitForCompletion();
+
+    // Task operation statistics
+    AnalyzeHealthcareEntitiesOperationDetail operationResult = syncPoller.poll().getValue();
+    System.out.printf("Operation created time: %s, expiration time: %s.%n",
+            operationResult.getCreatedAt(), operationResult.getExpiresAt());
+    System.out.printf("Poller status: %s.%n", syncPoller.poll().getStatus());
+
+    for (AnalyzeHealthcareEntitiesResultCollection resultCollection : syncPoller.getFinalResult()) {
+        // Model version
+        System.out.printf(
+                "Results of Azure Text Analytics \"Analyze Healthcare Entities\" Model, version: %s%n",
+                resultCollection.getModelVersion());
+
+        for (AnalyzeHealthcareEntitiesResult healthcareEntitiesResult : resultCollection) {
+            System.out.println("Document ID = " + healthcareEntitiesResult.getId());
+            System.out.println("Document entities: ");
+            // Recognized healthcare entities
+            for (HealthcareEntity entity : healthcareEntitiesResult.getEntities()) {
+                System.out.printf(
+                        "\tText: %s, normalized name: %s, category: %s, subcategory: %s, confidence score: %f.%n",
+                        entity.getText(), entity.getNormalizedText(), entity.getCategory(),
+                        entity.getSubcategory(), entity.getConfidenceScore());
+            }
+            // Recognized healthcare entity relation groups
+            for (HealthcareEntityRelation entityRelation : healthcareEntitiesResult.getEntityRelations()) {
+                System.out.printf("Relation type: %s.%n", entityRelation.getRelationType());
+                for (HealthcareEntityRelationRole role : entityRelation.getRoles()) {
+                    HealthcareEntity entity = role.getEntity();
+                    System.out.printf("\tEntity text: %s, category: %s, role: %s.%n",
+                            entity.getText(), entity.getCategory(), role.getName());
+                }
+            }
+        }
+    }
+}
+```
+
+### <a name="output"></a>output
+
+```console
+Poller status: IN_PROGRESS.
+Operation created time: 2021-07-20T19:45:50Z, expiration time: 2021-07-21T19:45:50Z.
+Poller status: SUCCESSFULLY_COMPLETED.
+Results of Azure Text Analytics "Analyze Healthcare Entities" Model, version: 2021-05-15
+Document ID = 0
+Document entities: 
+    Text: 100mg, normalized name: null, category: Dosage, subcategory: null, confidence score: 1.000000.
+    Text: ibuprofen, normalized name: ibuprofen, category: MedicationName, subcategory: null, confidence score: 1.000000.
+    Text: twice daily, normalized name: null, category: Frequency, subcategory: null, confidence score: 1.000000.
+Relation type: DosageOfMedication.
+    Entity text: 100mg, category: Dosage, role: Dosage.
+    Entity text: ibuprofen, category: MedicationName, role: Medication.
+Relation type: FrequencyOfMedication.
+    Entity text: ibuprofen, category: MedicationName, role: Medication.
+    Entity text: twice daily, category: Frequency, role: Frequency.
+```
+
+# <a name="version-30"></a>[版本 3.0](#tab/version-3)
+
+此功能在版本 3.0 中不可用。
+
+---
+
 ## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>使用“分析”操作异步使用 API
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 可以使用“分析”操作执行异步批处理请求实现以下目的：NER、关键短语提取、情绪分析和 PII 检测。 下面的示例演示了有关一个操作的基本示例。 可以[在 GitHub 上](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeActions.md)找到更高级的示例
 
@@ -585,64 +697,78 @@ veterinarian
 创建名为 `analyzeBatchActionsExample()` 的新函数，它将调用 `beginAnalyzeBatchActions()` 函数。 结果将是一个长期操作，将轮询该操作以获得结果。
 
 ```java
-static void analyzeBatchActionsExample(TextAnalyticsClient client)
-{
-        List<TextDocumentInput> documents = Arrays.asList(
-                        new TextDocumentInput("0", "Microsoft was founded by Bill Gates and Paul Allen.")
-                        );
+static void analyzeActionsExample(TextAnalyticsClient client){
+        List<TextDocumentInput> documents = new ArrayList<>();
+        documents.add(new TextDocumentInput("0", "Microsoft was founded by Bill Gates and Paul Allen."));
 
-        
-        SyncPoller<AnalyzeActionsOperationDetail, PagedIterable<AnalyzeActionsResult>> syncPoller =
+
+        SyncPoller<AnalyzeActionsOperationDetail, AnalyzeActionsResultPagedIterable> syncPoller =
                 client.beginAnalyzeActions(documents,
-                        new TextAnalyticsActions().setDisplayName("Analyze Batch Actions Quickstart")
-                                .setRecognizeEntitiesOptions(new RecognizeEntitiesOptions()),
+                        new TextAnalyticsActions().setDisplayName("Example analyze task")
+                                .setRecognizeEntitiesActions(new RecognizeEntitiesAction())
+                                .setExtractKeyPhrasesActions(
+                                        new ExtractKeyPhrasesAction().setModelVersion("latest")),
                         new AnalyzeActionsOptions().setIncludeStatistics(false),
                         Context.NONE);
 
-        // Task operation statistics
+        // Task operation statistics details
         while (syncPoller.poll().getStatus() == LongRunningOperationStatus.IN_PROGRESS) {
-            final AnalyzeActionsOperationDetail operationResult = syncPoller.poll().getValue();
-            System.out.printf("Action display name: %s, Successfully completed actions: %d, in-process actions: %d, failed actions: %d, total actions: %d%n",
-                    operationResult.getDisplayName(), operationResult.getActionsSucceeded(),
-                    operationResult.getActionsInProgress(), operationResult.getActionsFailed(),
-                    operationResult.getActionsInTotal());
+            final AnalyzeActionsOperationDetail operationDetail = syncPoller.poll().getValue();
+            System.out.printf("Action display name: %s, Successfully completed actions: %d, in-process actions: %d,"
+                            + " failed actions: %d, total actions: %d%n",
+                    operationDetail.getDisplayName(), operationDetail.getSucceededCount(),
+                    operationDetail.getInProgressCount(), operationDetail.getFailedCount(),
+                    operationDetail.getTotalCount());
         }
 
         syncPoller.waitForCompletion();
 
         Iterable<PagedResponse<AnalyzeActionsResult>> pagedResults = syncPoller.getFinalResult().iterableByPage();
-        for (PagedResponse<AnalyzeActionsResult> page : pagedResults) {
-            System.out.printf("Response code: %d, Continuation Token: %s.%n", page.getStatusCode(), page.getContinuationToken());
-            page.getElements().forEach(analyzeActionsResult -> {
+        for (PagedResponse<AnalyzeActionsResult> perPage : pagedResults) {
+            System.out.printf("Response code: %d, Continuation Token: %s.%n", perPage.getStatusCode(),
+                    perPage.getContinuationToken());
+            for (AnalyzeActionsResult actionsResult : perPage.getElements()) {
                 System.out.println("Entities recognition action results:");
-                IterableStream<RecognizeEntitiesActionResult> recognizeEntitiesActionResults =
-                        analyzeActionsResult.getRecognizeEntitiesActionResults();
-                if (recognizeEntitiesActionResults != null) {
-                    recognizeEntitiesActionResults.forEach(actionResult -> {
-                        if (!actionResult.isError()) {
-                            // Recognized entities for each of documents from a batch of documents
-                            AtomicInteger counter = new AtomicInteger();
-                            for (RecognizeEntitiesResult documentResult : actionResult.getResult()) {
-                                System.out.printf("%n%s%n", documents.get(counter.getAndIncrement()));
-                                if (documentResult.isError()) {
-                                    // Erroneous document
-                                    System.out.printf("Cannot recognize entities. Error: %s%n",
-                                            documentResult.getError().getMessage());
-                                } else {
-                                    // Valid document
-                                    documentResult.getEntities().forEach(entity -> System.out.printf(
-                                            "Recognized entity: %s, entity category: %s, entity subcategory: %s, confidence score: %f.%n",
-                                            entity.getText(), entity.getCategory(), entity.getSubcategory(), entity.getConfidenceScore()));
+                for (RecognizeEntitiesActionResult actionResult : actionsResult.getRecognizeEntitiesResults()) {
+                    if (!actionResult.isError()) {
+                        for (RecognizeEntitiesResult documentResult : actionResult.getDocumentsResults()) {
+                            if (!documentResult.isError()) {
+                                for (CategorizedEntity entity : documentResult.getEntities()) {
+                                    System.out.printf(
+                                            "\tText: %s, category: %s, confidence score: %f.%n",
+                                            entity.getText(), entity.getCategory(), entity.getConfidenceScore());
                                 }
+                            } else {
+                                System.out.printf("\tCannot recognize entities. Error: %s%n",
+                                        documentResult.getError().getMessage());
                             }
-                        } else {
-                            TextAnalyticsError actionError = actionResult.getError();
-                            // Erroneous action
-                            System.out.printf("Cannot execute Entities Recognition action. Error: %s%n", actionError.getMessage());
                         }
-                    });
+                    } else {
+                        System.out.printf("\tCannot execute Entities Recognition action. Error: %s%n",
+                                actionResult.getError().getMessage());
+                    }
                 }
-            });
+
+                System.out.println("Key phrases extraction action results:");
+                for (ExtractKeyPhrasesActionResult actionResult : actionsResult.getExtractKeyPhrasesResults()) {
+                    if (!actionResult.isError()) {
+                        for (ExtractKeyPhraseResult documentResult : actionResult.getDocumentsResults()) {
+                            if (!documentResult.isError()) {
+                                System.out.println("\tExtracted phrases:");
+                                for (String keyPhrases : documentResult.getKeyPhrases()) {
+                                    System.out.printf("\t\t%s.%n", keyPhrases);
+                                }
+                            } else {
+                                System.out.printf("\tCannot extract key phrases. Error: %s%n",
+                                        documentResult.getError().getMessage());
+                            }
+                        }
+                    } else {
+                        System.out.printf("\tCannot execute Key Phrases Extraction action. Error: %s%n",
+                                actionResult.getError().getMessage());
+                    }
+                }
+            }
         }
     }
 ```
@@ -656,14 +782,17 @@ analyzeBatchActionsExample(client);
 ### <a name="output"></a>Output
 
 ```console
-Action display name: Analyze Batch Actions Quickstart, Successfully completed actions: 0, in-process actions: 1, failed actions: 0, total actions: 1
+Action display name: Example analyze task, Successfully completed actions: 1, in-process actions: 1, failed actions: 0, total actions: 2
 Response code: 200, Continuation Token: null.
 Entities recognition action results:
-
-Text = Microsoft was founded by Bill Gates and Paul Allen., Id = 0, Language = null
-Recognized entity: Microsoft, entity category: Organization, entity subcategory: null, confidence score: 0.970000.
-Recognized entity: Bill Gates, entity category: Person, entity subcategory: null, confidence score: 1.000000.
-Recognized entity: Paul Allen, entity category: Person, entity subcategory: null, confidence score: 0.990000.
+    Text: Microsoft, category: Organization, confidence score: 1.000000.
+    Text: Bill Gates, category: Person, confidence score: 1.000000.
+    Text: Paul Allen, category: Person, confidence score: 1.000000.
+Key phrases extraction action results:
+    Extracted phrases:
+        Bill Gates.
+        Paul Allen.
+        Microsoft.
 ```
 
 还可以使用“分析”操作来执行 NER、关键短语提取、情绪分析和检测 PII。 请参阅 GitHub 上的[分析示例](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro/AnalyzeActionsAsync.java)。

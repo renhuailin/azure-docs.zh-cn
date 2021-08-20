@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/13/2021
+ms.date: 07/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 7428a2dbde5d95208de4d523e68e1968bc42a7f6
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: e8bd9efa8b86f208608412c315bf13ae2a0ced7a
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110071805"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114602062"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-360-online"></a>教程：Azure Active Directory 与 360 Online 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "110071805"
 * 让用户使用其 Azure AD 帐户自动登录到 360 Online。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -95,11 +95,11 @@ ms.locfileid: "110071805"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 在 Azure 门户的“Azure 服务”窗格中，选择“用户”，然后选择“所有用户”  。
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -110,7 +110,7 @@ ms.locfileid: "110071805"
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
 1. 在应用程序列表中，选择“360 Online”  。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 选择“添加用户/组”，然后在“添加分配”对话框中选择“用户和组”  。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。

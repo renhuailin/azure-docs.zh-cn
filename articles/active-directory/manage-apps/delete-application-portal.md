@@ -1,23 +1,25 @@
 ---
-title: 快速入门：从 Azure Active Directory (Azure AD) 租户中删除应用程序
+title: 快速入门：从租户中删除应用程序
+titleSuffix: Azure AD
 description: 本快速入门使用 Azure 门户从 Azure Active Directory (Azure AD) 租户中删除应用程序。
 services: active-directory
-author: mtillman
+author: davidmu
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 1/5/2021
-ms.author: mtillman
-ms.openlocfilehash: 70129123a842ef123992df4614fa7b9a35a774b9
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 07/23/2021
+ms.author: davidmu
+ms.reviewer: alamaral
+ms.openlocfilehash: 04e4e011773426b5be7f6ef9c00f7969c35d20fd
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075891"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114668417"
 ---
-# <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>快速入门：从 Azure Active Directory (Azure AD) 租户中删除应用程序
+# <a name="quickstart-delete-an-application-from-your-tenant"></a>快速入门：从租户中删除应用程序
 
 本快速入门使用 Azure 门户删除已添加到 Azure Active Directory (Azure AD) 租户的应用程序。
 
@@ -38,13 +40,18 @@ ms.locfileid: "112075891"
 >[!IMPORTANT]
 >使用非生产环境测试本快速入门中的步骤。
 
+> [!NOTE]
+>若要从 Azure AD 中删除应用程序，必须为用户分配以下任一角色：全局管理员、云应用程序管理员、应用程序管理员或服务主体的所有者。
+
 ## <a name="delete-an-application-from-your-azure-ad-tenant"></a>从 Azure AD 租户中删除应用程序
 
 从 Azure AD 租户中删除应用程序的方法如下：
 
-1. 在 Azure AD 门户中，选择“企业应用程序”。 然后找到并选择要删除的应用程序。 在这种情况下，我们会删除在前面的快速入门中添加的 GitHub_test 应用程序。
+1. 在 Azure AD 门户中，选择“企业应用程序”。 然后找到并选择要删除的应用程序。 在本例中，我们想要删除 360 Online。
 1. 在左侧窗格的“管理”部分中，选择“属性” 。
 1. 选择“删除”，然后选择“是”以确认要从 Azure AD 租户中删除该应用 。
+
+:::image type="content" source="media/add-application-portal/delete-application.png" alt-text="显示如何更改徽标的“属性”屏幕的屏幕截图。":::
 
 > [!TIP]
 > 可使用 Graph API 自动管理应用，具体请参阅[使用 Microsoft Graph API 自动管理应用](/graph/application-saml-sso-configure-api)。

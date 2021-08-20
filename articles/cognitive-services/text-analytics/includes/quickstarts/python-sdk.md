@@ -3,20 +3,20 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 06/11/2021
+ms.date: 07/15/2021
 ms.author: aahi
-ms.openlocfilehash: b94aaff50547830c796e3461a55126b3d54d905a
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: c66a17c1591f9a0070af1f6fc6b0ec6127292f6b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112083838"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114594581"
 ---
 <a name="HOLTop"></a>
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
-[v3.1 参考文档](/python/api/azure-ai-textanalytics/azure.ai.textanalytics?preserve-view=true&view=azure-python-preview) | [v3.1 库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics) | [v3.1 包 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/5.1.0b7/) | [v3.1 示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[v3.1 参考文档](/python/api/azure-ai-textanalytics/azure.ai.textanalytics?preserve-view=true&view=azure-python-preview) | [v3.1 库源代码](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/textanalytics/azure-ai-textanalytics) | [v3.1 包 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/5.1.0/) | [v3.1 示例](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
@@ -39,10 +39,10 @@ ms.locfileid: "112083838"
 
 在安装 Python 后，可以通过以下命令安装客户端库：
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 ```console
-pip install azure-ai-textanalytics==5.1.0b7
+pip install azure-ai-textanalytics==5.1.0
 ```
 
 > [!TIP]
@@ -74,7 +74,7 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 ## <a name="object-model"></a>对象模型
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 文本分析客户端是向 Azure 进行身份验证的 `TextAnalyticsClient` 对象。 该客户端提供了几种方法来分析文本。 
 
@@ -96,14 +96,14 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 这些代码片段展示了如何使用适用于 Python 的文本分析客户端库执行以下任务：
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 * [对客户端进行身份验证](#authenticate-the-client)
 * [情绪分析](#sentiment-analysis)
 * [观点挖掘](#opinion-mining)
 * [语言检测](#language-detection)
 * [命名实体识别](#named-entity-recognition-ner) 
-* [个人身份信息识别](#personally-identifiable-information-recognition) 
+* [个人身份信息识别](#personally-identifiable-information-pii-recognition) 
 * [实体链接](#entity-linking)
 * [关键短语提取](#key-phrase-extraction)
 
@@ -121,7 +121,7 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 创建一个函数，以便通过上面创建的 `key` 和 `endpoint` 来实例化 `TextAnalyticsClient` 对象。 然后创建一个新客户端。 
 
@@ -180,7 +180,7 @@ client = authenticate_client()
 
 ## <a name="sentiment-analysis"></a>情绪分析
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 创建一个名为 `sentiment_analysis_example()` 的新函数，该函数采用客户端作为参数，然后调用 `analyze_sentiment()` 函数。 返回的响应对象将包含整个输入文档的情绪标签和分数，以及每个句子的情绪分析。
 
@@ -283,7 +283,7 @@ Negative=0.02
 
 ## <a name="opinion-mining"></a>观点挖掘
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 
 若要使用观点挖掘进行情绪分析，请创建一个名为 `sentiment_analysis_with_opinion_mining_example()` 的新函数（采用客户端作为参数），然后使用选项标志 `show_opinion_mining=True` 调用 `analyze_sentiment()` 函数。 返回的响应对象不仅包含整个输入文档的情绪标签和分数以及每个句子的情绪分析，还包含角度和观点级情绪分析。
@@ -391,7 +391,7 @@ Press any key to continue . . .
 
 ```
 
-# <a name="version-30-preview"></a>[版本 3.0 预览](#tab/version-3)
+# <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
 此功能在版本 3.0 中不可用。
 
@@ -399,7 +399,7 @@ Press any key to continue . . .
 
 ## <a name="language-detection"></a>语言检测
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 创建一个名为 `language_detection_example()` 的新函数，该函数采用客户端作为参数，然后调用 `detect_language()` 函数。 如果成功，则返回的响应对象将在 `primary_language` 中包含检测到的语言，否则将包含 `error`。
 
@@ -456,7 +456,7 @@ Language:  French
 
 ## <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 > [!NOTE]
 > 在版本 `3.1` 中： 
@@ -496,7 +496,7 @@ Named Entities:
         Confidence Score:        0.8    Length:          9      Offset:          34
 ```
 
-### <a name="personally-identifiable-information-recognition"></a>个人身份信息识别
+## <a name="personally-identifiable-information-pii-recognition"></a>个人身份信息识别 (PII) 识别
 
 创建一个名为 `pii_recognition_example` 的新函数，该函数采用客户端作为参数，然后调用 `recognize_pii_entities()` 函数并循环访问结果。 如果成功，则返回的响应对象将在 `entity` 中包含检测到的实体列表，否则将包含 `error`。 对于检测到的每个实体，输出其类别和子类别（如果存在）。
 
@@ -577,7 +577,7 @@ Named Entities:
 
 ## <a name="entity-linking"></a>实体链接
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 创建一个名为 `entity_linking_example()` 的新函数，该函数采用客户端作为参数，然后调用 `recognize_linked_entities()` 函数并循环访问结果。 如果成功，则返回的响应对象将在 `entities` 中包含检测到的实体列表，否则将包含 `error`。 由于链接实体是唯一标识的，因此同一实体的实例将以分组形式出现在 `entity` 对象下，显示为 `match` 对象的列表。
 
@@ -739,7 +739,7 @@ Linked Entities:
 
 ## <a name="key-phrase-extraction"></a>关键短语提取
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 创建一个名为 `key_phrase_extraction_example()` 的新函数，该函数采用客户端作为参数，然后调用 `extract_key_phrases()` 函数。 如果成功，结果将包含 `key_phrases` 中检测到的关键短语列表，如果失败，则将包含 `error`。 输出任何检测到的关键短语。
 
@@ -810,9 +810,73 @@ key_phrase_extraction_example(client)
 
 ---
 
+## <a name="extract-health-entities"></a>提取健康状况实体
+
+可以使用文本分析来执行异步请求，以从文本中提取健康状况实体。 下面的示例演示了基本示例。 可以[在 GitHub 上](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/textanalytics/azure-ai-textanalytics/samples/sample_analyze_healthcare_entities.py)找到更高级的示例。
+
+[!INCLUDE [health operation pricing](../health-operation-pricing-caution.md)]
+
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
+
+``` python
+def health_example(client):
+    documents = [
+        """
+        Patient needs to take 50 mg of ibuprofen.
+        """
+    ]
+
+    poller = client.begin_analyze_healthcare_entities(documents)
+    result = poller.result()
+
+    docs = [doc for doc in result if not doc.is_error]
+
+    for idx, doc in enumerate(docs):
+        for entity in doc.entities:
+            print("Entity: {}".format(entity.text))
+            print("...Normalized Text: {}".format(entity.normalized_text))
+            print("...Category: {}".format(entity.category))
+            print("...Subcategory: {}".format(entity.subcategory))
+            print("...Offset: {}".format(entity.offset))
+            print("...Confidence score: {}".format(entity.confidence_score))
+        for relation in doc.entity_relations:
+            print("Relation of type: {} has the following roles".format(relation.relation_type))
+            for role in relation.roles:
+                print("...Role '{}' with entity '{}'".format(role.name, role.entity.text))
+        print("------------------------------------------")
+health_example(client)
+```
+
+### <a name="output"></a>输出
+
+```console
+Entity: 50 mg
+...Normalized Text: None
+...Category: Dosage
+...Subcategory: None
+...Offset: 31
+...Confidence score: 1.0
+Entity: ibuprofen
+...Normalized Text: ibuprofen
+...Category: MedicationName
+...Subcategory: None
+...Offset: 40
+...Confidence score: 1.0
+Relation of type: DosageOfMedication has the following roles
+...Role 'Dosage' with entity '50 mg'
+...Role 'Medication' with entity 'ibuprofen'
+```
+
+# <a name="version-30"></a>[版本 3.0](#tab/version-3)
+
+此功能在版本 3.0 中不可用。
+
+---
+
+
 ## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>使用“分析”操作异步使用 API
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 可以使用“分析”操作执行异步批处理请求实现以下目的：NER、关键短语提取、情绪分析和 PII 检测。 下面的示例演示了有关一个操作的基本示例。 可以[在 GitHub 上](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/textanalytics/azure-ai-textanalytics/samples/sample_analyze_actions.py)找到更高级的示例。
 
@@ -822,7 +886,8 @@ key_phrase_extraction_example(client)
 
 ```python
 from azure.ai.textanalytics import (
-    RecognizeEntitiesAction
+    RecognizeEntitiesAction,
+    ExtractKeyPhrasesAction
 )
 
 def analyze_batch_example(client):
@@ -833,24 +898,28 @@ def analyze_batch_example(client):
         poller = client.begin_analyze_actions(
             documents,
             display_name="Sample Text Analysis",
-            actions=[RecognizeEntitiesAction()]
+            actions=[RecognizeEntitiesAction(), ExtractKeyPhrasesAction()]
         )
 
         result = poller.result()
-        action_results = [action_result for action_result in list(result) if not action_result.is_error]
-
-        entities_recognition_task_result = action_results[0]
+        action_results = [action_result for action_result in list(result)]
+        first_action_result = action_results[0][0]
         print("Results of Entities Recognition action:")
-        docs = [doc for doc in entities_recognition_task_result.document_results if not doc.is_error]
 
-        for idx, doc in enumerate(docs):
-            print("\nDocument text: {}".format(documents[idx]))
-            for entity in doc.entities:
-                print("Entity: {}".format(entity.text))
-                print("...Category: {}".format(entity.category))
-                print("...Confidence Score: {}".format(entity.confidence_score))
-                print("...Offset: {}".format(entity.offset))
-            print("------------------------------------------")
+        for entity in first_action_result.entities:
+            print("Entity: {}".format(entity.text))
+            print("...Category: {}".format(entity.category))
+            print("...Confidence Score: {}".format(entity.confidence_score))
+            print("...Offset: {}".format(entity.offset))
+            print("...Length: {}".format(entity.length))
+        print("------------------------------------------")
+
+        second_action_result = action_results[0][1]
+        print("Results of Key Phrase Extraction action:")
+        
+        for key_phrase in second_action_result.key_phrases:
+            print("Key Phrase: {}\n".format(key_phrase))
+        print("------------------------------------------")
 
 analyze_batch_example(client)
 ```
@@ -858,20 +927,30 @@ analyze_batch_example(client)
 ### <a name="output"></a>输出
 
 ```console
-Results of Entities Recognition task:
-Document text: Microsoft was founded by Bill Gates and Paul Allen.
+Results of Entities Recognition action:
 Entity: Microsoft
 ...Category: Organization
-...Confidence Score: 0.83
+...Confidence Score: 1.0
 ...Offset: 0
+...Length: 9
 Entity: Bill Gates
 ...Category: Person
-...Confidence Score: 0.85
+...Confidence Score: 1.0
 ...Offset: 25
+...Length: 10
 Entity: Paul Allen
 ...Category: Person
-...Confidence Score: 0.9
+...Confidence Score: 1.0
 ...Offset: 40
+...Length: 10
+------------------------------------------
+Results of Key Phrase Extraction action:
+Key Phrase: Bill Gates
+
+Key Phrase: Paul Allen
+
+Key Phrase: Microsoft
+
 ------------------------------------------
 ```
 

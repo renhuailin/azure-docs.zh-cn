@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 41b627259d84539c868f95eb3cf33db5dbdab52c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8562acbf0b7dc6cac0ef03e6d0ca41691f752cdf
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97862408"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729789"
 ---
 # <a name="introduction-to-azure-functions"></a>Azure Functions 简介
 
@@ -46,7 +46,7 @@ Azure Functions 是一种无服务器解决方案，可以使用户减少代码�
 | **处理文件上传** | 在 [blob 存储](./functions-bindings-storage-blob.md)中上传或更改文件时运行代码 |
 | **构建无服务器工作流** | 使用[持久函数](./durable/durable-functions-overview.md)将一系列函数链接在一起 |
 | **响应数据库更改** | 在 [Cosmos DB](./functions-bindings-cosmosdb-v2.md) 中创建或更新文档时运行自定义逻辑 |
-| **运行计划任务** | 在[设定的时间](./functions-bindings-timer.md)执行代码 |
+| **运行计划任务** | 按照[预定义的时间间隔](./functions-bindings-timer.md)执行代码 |
 | **创建可靠消息队列系统** | 使用[队列存储](./functions-bindings-storage-queue.md)、[服务总线](./functions-bindings-service-bus.md)或[事件中心](./functions-bindings-event-hubs.md)来处理消息队列 |
 | **分析 IoT 数据流** | 收集并处理[来自 IoT 设备的数据](./functions-bindings-event-iot.md) |
 | **实时处理数据** | 使用 [Functions 和 SignalR](./functions-bindings-signalr-service.md) 即时响应数据 |

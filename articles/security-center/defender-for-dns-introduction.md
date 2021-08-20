@@ -3,16 +3,16 @@ title: 适用于 DNS 的 Azure Defender - 优点和功能
 description: 了解适用于 DNS 的 Azure Defender 的优点和功能
 author: memildin
 ms.author: memildin
-ms.date: 05/12/2021
+ms.date: 07/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 976ffc86fd82bb85fefb16b4f442111a07d1f652
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 48306c8ec46274bc123ada4f7c8f748a230edf30
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113003595"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690829"
 ---
 # <a name="introduction-to-azure-defender-for-dns"></a>适用于 DNS 的 Azure Defender 简介
 
@@ -29,7 +29,7 @@ ms.locfileid: "113003595"
 |----|:----|
 |发布状态：|正式发布版 (GA)|
 |定价：|用于 DNS 的 Azure Defender 按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中显示的定价计费|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/地区/主权（US Gov，Azure 中国）|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure 中国<br>:::image type="icon" source="./media/icons/no-icon.png"::: Azure 政府|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-dns"></a>适用于 DNS 的 Azure Defender 有哪些优点？

@@ -3,17 +3,21 @@ title: 快速入门 - 使用 Azure 通信服务将 Microsoft Teams 会议加入�
 description: 本快速入门将介绍如何使用适用于 iOS 的 Azure 通信服务 Teams 嵌入库。
 author: palatter
 ms.author: palatter
-ms.date: 01/25/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 5c2f53138d6f716d2917cff831e9b86c40b77a00
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: b960357782ef7bac6d5c3425dbf3f93aa5600640
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111545865"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113218112"
 ---
 本快速入门介绍如何使用适用于 iOS 的 Azure 通信服务 Teams 嵌入库加入 Microsoft Teams 会议。
+
+## <a name="sample-code"></a>代码示例
+
+可以从 [GitHub](https://github.com/Azure-Samples/teams-embed-ios-getting-started) 下载示例应用。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -88,10 +92,11 @@ end
 
 ### <a name="add-the-teams-embed-framework"></a>添加 Teams 嵌入框架
 
-1. 下载 `MicrosoftTeamsSDK` iOS 包。
+1. 下载并解压缩 `Teams Embed iOS SDK Bundle`。
 2. 在项目根中创建 `Frameworks` 文件夹。 例如： `\TeamsEmbedGettingStarted\Frameworks\`
-3. 将下载的 `TeamsAppSDK.framework` 和 `MeetingUIClient.framework` 以及发布捆绑包中提供的其他框架复制到此文件夹。
-4. 在“常规”选项卡下将框架添加到项目目标。使用 `Add Other` -> `Add Files...` 导航到框架文件并添加它们。
+3. 将下载的 `AzureMeetingUIClient.xcframework` 和 `TeamsAppSDK.xcframework` 以及发布捆绑包中提供的其他框架复制到上述文件夹。
+4. 在“常规”选项卡下将框架添加到项目目标。使用 `Add Other` -> `Add Files...` 导航到框架文件并添加它们。 
+5. 对于所有添加的框架，请选择 `Embed & Sign`。 
 
 :::image type="content" source="../media/ios/xcode-add-frameworks.png" alt-text="显示 Xcode 中所添加框架的屏幕截图。":::
 
@@ -143,6 +148,7 @@ override func viewDidLoad() {
     self.view.addSubview(button)
     button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+}
 ```
 
 在 ViewController.swift 中为按钮创建出口。
@@ -160,7 +166,7 @@ override func viewDidLoad() {
 ```swift
 import UIKit
 import AzureCommunicationCommon
-import MeetingUIClient
+import AzureMeetingUIClient
 ```
 
 将 `ViewController` 类的实现替换为一个简单的按钮，以允许用户加入会议。 在本快速入门中，我们会将业务逻辑附加到此按钮。
@@ -195,22 +201,19 @@ class ViewController: UIViewController {
 | ------------------------------------- | ------------------------------------------------------------ |
 | MeetingUIClient | MeetingUIClient 是 Teams 嵌入库的主要入口点。 |
 | MeetingUIClientMeetingJoinOptions | MeetingUIClientMeetingJoinOptions 用于可配置的选项，例如显示名称。 |
-| MeetingUIClientGroupCallJoinOptions | MeetingUIClientMeetingJoinOptions 用于可配置的选项，例如显示名称。 |
+| MeetingUIClientGroupCallJoinOptions | MeetingUIClientGroupCallJoinOptions 用于可配置的选项，例如显示名称。 |
 | MeetingUIClientTeamsMeetingLinkLocator | MeetingUIClientTeamsMeetingLinkLocator 用于设置用于加入会议的会议 URL。 |
 | MeetingUIClientGroupCallLocator | MeetingUIClientGroupCallLocator 用于设置要加入的组 ID。 |
-| MeetingUIClientInCallScreenDelegate | MeetingUIClientInCallScreenDelegate 用于在 UI 中的主调用屏幕上提供自定义项。 |
-| MeetingUIClientStagingScreenDelegate | MeetingUIClientStagingScreenDelegate 用于在 UI 中的暂存调用屏幕上提供自定义项。 |
-| MeetingUIClientConnectingScreenDelegate | MeetingUIClientConnectingScreenDelegate 用于在 UI 中提供连接调用屏幕的自定义项。 |
 | MeetingUIClientIconType | MeetingUIClientIconType 用于指定哪些图标可以替换为特定于应用的图标。 |
 | MeetingUIClientCall | MeetingUIClientCall 描述调用，并提供 API 来控制调用。 |
 | MeetingUIClientCallState | MeetingUIClientCallState 用于报告调用状态更改。 选项如下：`connecting`、`waitingInLobby`、`connected` 和 `ended`。 |
-| MeetingUIClientUserRole | MeetingUIClientUserRole 用于在组调用中设置用户角色。 |
 | MeetingUIClientAudioRoute | MeetingUIClientAudioRoute 用于本地音频路由，如 `Earpiece` 或 `SpeakerOn`。 |
 | MeetingUIClientLayoutMode | MeetingUIClientLayoutMode 用于允许在调用 UI 模式下选择不同的布局模式。 |
-| MeetingUIClientAvatarSize | MeetingUIClientAvatarSize 用于通知代理请求的头像大小。 |
+| MeetingUIClientAvatarSize | MeetingUIClientAvatarSize 是表示由 MeetingUIClientCallIdentityProvider 请求的不同头像大小的枚举。 |
 | MeetingUIClientCallDelegate | MeetingUIClientDelegate 用于接收事件，例如调用状态的更改。 |
 | MeetingUIClientCallIdentityProviderDelegate | MeetingUIClientIdentityProviderDelegate 用于将用户详细信息映射到会议中的用户。 |
 | MeetingUIClientCallUserEventDelegate | MeetingUIClientUserEventDelegate 在 UI 中提供有关用户操作的信息。 |
+| MeetingUIClientCallRosterDelegate | MeetingUIClientCallRosterDelegate 提供有关调用名册的信息。 |
 
 ## <a name="create-and-authenticate-the-client"></a>创建客户端并对其进行身份验证
 
@@ -252,7 +255,7 @@ private func fetchTokenAsync(completionHandler: @escaping TokenRefreshHandler) {
 
 ```swift
 private func joinMeeting() {
-    let meetingJoinOptions = MeetingUIClientMeetingJoinOptions(displayName: "John Smith", enablePhotoSharing: true, enableNamePlateOptionsClickDelegate: true)
+    let meetingJoinOptions = MeetingUIClientMeetingJoinOptions(displayName: "John Smith", enablePhotoSharing: false, enableNamePlateOptionsClickDelegate: false, enableCallStagingScreen: false, enableCallRosterDelegate: false)
     let meetingLocator = MeetingUIClientTeamsMeetingLinkLocator(meetingLink: "<MEETING_URL>")
     meetingUIClient?.join(meetingLocator: meetingLocator, joinCallOptions: meetingJoinOptions, completionHandler: { (meetingUIClientCall: MeetingUIClientCall?, error: Error?) in
         if (error != nil) {
@@ -272,7 +275,7 @@ private func joinMeeting() {
 
 ### <a name="get-a-microsoft-teams-meeting-link"></a>获取 Microsoft Teams 会议链接
 
-可以使用图形 API 来检索 Microsoft Teams 会议链接。 [Graph 文档](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)中对此进行了详细介绍。
+可以使用图形 API 来检索 Microsoft Teams 会议链接。 [Graph 文档](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)中对此过程进行了详细介绍。
 通信服务呼叫 SDK 接受完整的 Microsoft Teams 会议链接。 此链接作为 `onlineMeeting` 资源的一部分返回，可在 [`joinWebUrl` 属性](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)下方获取。你还可以从 Teams 会议邀请信息的“加入会议”URL 中获取所需的会议信息。
 
 ## <a name="run-the-code"></a>运行代码
@@ -295,8 +298,3 @@ Microsoft Teams SDK 支持超过 100 个字符串和资源。 框架捆绑包包
 1. 从应用程序“Xcode 项目”>“信息”>“本地化列表”，确定应用程序支持的本地化类型
 2. 解压缩包附带的 Localizations.zip
 3. 根据应用程序支持的内容将本地化文件夹从解压缩的文件夹复制到 TeamsAppSDK.framework 的根文件夹
-
-
-## <a name="sample-code"></a>代码示例
-
-可以从 [GitHub](https://github.com/Azure-Samples/teams-embed-ios-getting-started) 下载示例应用

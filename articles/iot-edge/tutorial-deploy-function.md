@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 30abc4a5a1431800cef2bcbda6f5eeedf9a216a3
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: ee3825a7c93396eca4ba6fd6a65b90eddb5b4c8c
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107874632"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113438289"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>教程：将 Azure Functions 作为 IoT Edge 模块进行部署
 
@@ -77,7 +77,7 @@ ms.locfileid: "107874632"
 
    ![提供 Docker 映像存储库](./media/tutorial-deploy-function/repository.png)
 
-### <a name="add-your-registry-credentials&quot;></a>添加注册表凭据
+### <a name="add-your-registry-credentials"></a>添加注册表凭据
 
 环境文件存储容器注册表的凭据，并将其与 IoT Edge 运行时共享。 此运行时需要这些凭据才能将专用映像拉取到 IoT Edge 设备中。
 
@@ -87,7 +87,10 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
 2. 使用从 Azure 容器注册表复制的 **username** 和 **password** 值更新相关字段。
 3. 保存此文件。
 
-### <a name=&quot;select-your-target-architecture&quot;></a>选择目标体系结构
+>[!NOTE]
+>本教程使用 Azure 容器注册表的管理员登录凭据，这对于开发和测试方案非常方便。 准备好生产方案后，建议使用最低权限身份验证选项（如服务主体）。 有关详细信息，请参阅[管理容器注册表的访问权限](production-checklist.md#manage-access-to-your-container-registry)。
+
+### <a name="select-your-target-architecture"></a>选择目标体系结构
 
 目前，Visual Studio Code 可以开发适用于 Linux AMD64 和 Linux ARM32v7 设备的 C 模块。 需要选择面向每个解决方案的体系结构，因为每种体系结构类型的容器的生成和运行方式均不相同。 默认值为 Linux AMD64。
 
@@ -95,7 +98,7 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
 
 2. 在命令面板中，从选项列表中选择目标体系结构。 在本教程中，我们使用 Ubuntu 虚拟机作为 IoT Edge 设备，因此将保留默认的“amd64”  。
 
-### <a name=&quot;update-the-module-with-custom-code&quot;></a>使用自定义代码更新模块
+### <a name="update-the-module-with-custom-code"></a>使用自定义代码更新模块
 
 让我们添加一些附加的代码，使模块在将消息转发到 IoT 中心之前，先在边缘上对其进行处理。
 
@@ -120,7 +123,7 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
    {
        public static class CSharpFunction
        {
-           [FunctionName(&quot;CSharpFunction")]
+           [FunctionName("CSharpFunction")]
            public static async Task FilterMessageAndSendMessage(
                [EdgeHubTrigger("input1")] Message messageReceived,
                [EdgeHub(OutputName = "output1")] IAsyncCollector<Message> output,

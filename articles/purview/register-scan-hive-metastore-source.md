@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 5/17/2021
-ms.openlocfilehash: b259ef022d2fca8f6531a35eca619ef890019ff3
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: c289ab60973c0e907deb97c0e8520f8b608099eb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072754"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467074"
 ---
 # <a name="register-and-scan-hive-metastore-database"></a>注册并扫描 Hive 元存储数据库
 
@@ -85,79 +85,81 @@ Hive 元存储数据库唯一支持的身份验证是 **基本身份验证。**
 
 5.  提供以下详细信息：
 
-    a.  **名称**：扫描操作的名称
+    1. **名称**：扫描操作的名称
 
-    b.  **通过集成运行时进行连接**：选择已配置的自承载集成运行时。
+    1. **通过集成运行时进行连接**：选择已配置的自承载集成运行时。
 
-    c.  **凭据**：选择用于连接到数据源的凭据。 请确保：
+    1. **凭据**：选择用于连接到数据源的凭据。 请确保：
 
-    -   在创建凭据时选择“基本身份验证”。
-    -   在“用户名”输入字段中提供元存储用户名
-    -   将元存储密码存储在密钥中。
+       - 在创建凭据时选择“基本身份验证”。
+       - 在“用户名”输入字段中提供元存储用户名
+       - 将元存储密码存储在密钥中。
 
-    若要进一步了解凭据，请参阅[此处](manage-credentials.md)的链接。 
+       若要进一步了解凭据，请参阅[此处](manage-credentials.md)的链接。 
 
-    **Databricks 使用情况**：导航至你的 Databricks 群集 -> 应用程序 -> 启动 Web 终端。 运行 cmdlet **cat /databricks/hive/conf/hive-site.xml**
+       **Databricks 使用情况**：导航至你的 Databricks 群集 -> 应用程序 -> 启动 Web 终端。 运行 cmdlet **cat /databricks/hive/conf/hive-site.xml**
 
-    可从如下所示的两个属性访问用户名和密码
+       可从如下所示的两个属性访问用户名和密码
 
-    :::image type="content" source="media/register-scan-hive-metastore-source/databricks-credentials.png" alt-text="databricks-username-password-details" border="true":::
+       :::image type="content" source="media/register-scan-hive-metastore-source/databricks-credentials.png" alt-text="databricks-username-password-details" border="true":::
 
-    d. **元存储 JDBC 驱动程序位置**：指定运行自承载集成运行时的 VM 中 JDBC 驱动程序位置的路径。 这应当是指向有效 JAR 文件夹位置的路径。
+    1. **元存储 JDBC 驱动程序位置**：指定运行自承载集成运行时的 VM 中 JDBC 驱动程序位置的路径。 这应当是指向有效 JAR 文件夹位置的路径。
 
-    如果要扫描 Databricks，请参阅下方关于 Databricks 的章节。
+       如果要扫描 Databricks，请参阅下方关于 Databricks 的章节。
 
-    > [!Note]
-    > VM 中的所有帐户均应可以访问该驱动程序。 请不要在用户帐户中安装。
+       > [!Note]
+       > VM 中的所有帐户均应可以访问该驱动程序。 请不要在用户帐户中安装。
 
-    e.  **元存储 JDBC 驱动程序类**：提供连接驱动程序类名称。 例如，\com.microsoft.sqlserver.jdbc.SQLServerDriver。
+    1. **元存储 JDBC 驱动程序类**：提供连接驱动程序类名称。 例如，\com.microsoft.sqlserver.jdbc.SQLServerDriver。
     
-    **Databricks 使用情况**：导航至你的 Databricks 群集 -> 应用程序 -> 启动 Web 终端。 运行 cmdlet **cat /databricks/hive/conf/hive-site.xml**
+       **Databricks 使用情况**：导航至你的 Databricks 群集 -> 应用程序 -> 启动 Web 终端。 运行 cmdlet **cat /databricks/hive/conf/hive-site.xml**
     
-    可从如下所示的属性访问驱动程序类。
+       可从如下所示的属性访问驱动程序类。
     :::image type="content" source="media/register-scan-hive-metastore-source/databricks-driver-class-name.png" alt-text="databricks-driver-class-details" border="true":::
 
-    f.  **元存储 JDBC URL**：提供连接 URL 值并定义与元存储 DB 服务器 URL 的连接。 例如， jdbc:sqlserver://hive.database.windows.net;database=hive;encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300
+    1. **元存储 JDBC URL**：提供连接 URL 值并定义与元存储 DB 服务器 URL 的连接。 例如 `jdbc:sqlserver://hive.database.windows.net;database=hive;encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300`。
 
-    **Databricks 使用情况**：导航至你的 Databricks 群集 -> 应用程序 -> 启动 Web 终端。 运行 cmdlet **cat /databricks/hive/conf/hive-site.xml**
+       **Databricks 使用情况**：导航至你的 Databricks 群集 -> 应用程序 -> 启动 Web 终端。 运行 cmdlet **cat /databricks/hive/conf/hive-site.xml**
     
-    可以从如下所示的“连接 URL 属性”访问 JDBC URL。
-    :::image type="content" source="media/register-scan-hive-metastore-source/databricks-jdbc-connection.png" alt-text="databricks-jdbc-url-details" border="true":::
-
-    对于此 URL，将路径附加到 VM 上的 SSL 证书所在的位置。 可从[此处](../mysql/howto-configure-ssl.md)下载 SSL 证书。
-
-    因此，元存储 JDBC URL 将为：
+       可以从如下所示的“连接 URL 属性”访问 JDBC URL。
+       
+       :::image type="content" source="media/register-scan-hive-metastore-source/databricks-jdbc-connection.png" alt-text="databricks-jdbc-url-details" border="true":::
     
-    jdbc:mariadb://consolidated-westus2-prod-metastore-addl-1.mysql.database.azure.com:3306/organization1829255636414785?trustServerCertificate=true&amp;useSSL=true&sslCA=D:\Drivers\SSLCert\BaltimoreCyberTrustRoot.crt.pem
+       > [!NOTE]
+       > 从 *hive-site.xml* 复制 URL 时，务必从字符串中删除 `amp;`，否则扫描将失败。
 
-    g.  **元存储数据库名称**：提供 Hive 元存储数据库名称
+       对于此 URL，将路径附加到 VM 上的 SSL 证书所在的位置。 可从[此处](../mysql/howto-configure-ssl.md)下载 SSL 证书。
+
+       元存储 JDBC URL 将为：
     
-    如果要扫描 Databricks，请参阅下方关于 Databricks 的章节。
+       `jdbc:mariadb://consolidated-westus2-prod-metastore-addl-1.mysql.database.azure.com:3306/organization1829255636414785?trustServerCertificate=true&amp;useSSL=true&sslCA=D:\Drivers\SSLCert\BaltimoreCyberTrustRoot.crt.pem`
 
-    **Databricks 使用情况**：导航至你的 Databricks 群集 -> 应用程序 -> 启动 Web 终端。 运行 cmdlet **cat /databricks/hive/conf/hive-site.xml**
-
-    可以从如下所示的“JDBC URL 属性”访问数据库名称。 例如：organization1829255636414785 :::image type="content" source="media/register-scan-hive-metastore-source/databricks-data-base-name.png" alt-text="databricks-database-name-details" border="true":::
-
-    h.如果该值不存在，请单击“添加行”。  **架构**：指定要导入的 Hive 架构的列表。 例如：schema1; schema2。 
+    1. **元存储数据库名称**：提供 Hive 元存储数据库名称。
     
-    如果该列表为空，则会导入所有用户架构。 默认情况下，所有系统架构（例如 SysAdmin）和对象都将被忽略。 
+       如果要扫描 Databricks，请参阅下方关于 Databricks 的章节。
 
-    当列表为空时，将导入所有可用的架构。
-    使用 SQL LIKE 表达式语法的可接受架构名称模式包括使用 %，例如 A%; %B; %C%; D
+       **Databricks 使用情况**：导航至你的 Databricks 群集 -> 应用程序 -> 启动 Web 终端。 运行 cmdlet **cat /databricks/hive/conf/hive-site.xml**
 
-    -   以 A 开头或    
-    -   以 B 结尾或    
-    -   包含 C 或    
-    -   等于 D
+       可以从如下所示的“JDBC URL 属性”访问数据库名称。 例如：organization1829255636414785
+       
+       :::image type="content" source="media/register-scan-hive-metastore-source/databricks-data-base-name.png" alt-text="databricks-database-name-details" border="true":::
 
-    不能使用 NOT 和特殊字符。
+    1. **架构**：指定要导入的 Hive 架构的列表。 例如：schema1; schema2。 
+    
+        如果该列表为空，则会导入所有用户架构。 默认情况下，所有系统架构（例如 SysAdmin）和对象都将被忽略。 
 
-    i.  **最大可用内存**：客户 VM 上可供扫描进程使用的最大内存 (GB)。 这取决于要扫描的 Hive 元存储数据库的大小。
-    > [!Note]
-    > **用于扫描 Databricks 元存储**
-    >
+        当列表为空时，将导入所有可用的架构。 使用 SQL LIKE 表达式语法的可接受架构名称模式包括使用 %，例如 A%; %B; %C%; D
 
-    :::image type="content" source="media/register-scan-hive-metastore-source/scan.png" alt-text="扫描 hive 源" border="true":::
+        - 以 A 开头或    
+        - 以 B 结尾或    
+        - 包含 C 或    
+        - 等于 D
+
+        不能使用 NOT 和特殊字符。
+
+     1. **最大可用内存**：客户 VM 上可供扫描进程使用的最大内存 (GB)。 这取决于要扫描的 Hive 元存储数据库的大小。
+
+        :::image type="content" source="media/register-scan-hive-metastore-source/scan.png" alt-text="扫描 hive 源" border="true":::
 
 6.  单击“继续”。
 

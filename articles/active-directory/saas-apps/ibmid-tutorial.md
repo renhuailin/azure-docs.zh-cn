@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/11/2021
+ms.date: 06/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 8c1c0131a2771c843cbd636c4a80a8cb7e4d6c08
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65c743f57b715b2be89e6c5d627571b9597b8c83
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649378"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112552958"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ibmid"></a>Tutorial:Azure Active Directory 单一登录 (SSO) 与 IBMid 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "101649378"
 * 让用户能够使用其 Azure AD 帐户自动登录到 IBMid。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -37,10 +37,13 @@ ms.locfileid: "101649378"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* IBMid 支持 SP 和 IDP 发起的 SSO
-* IBMid 支持实时用户预配
+* IBMid 支持 SP 和 IDP 发起的 SSO。
+* IBMid 支持实时用户预配。
 
-## <a name="adding-ibmid-from-the-gallery"></a>从库中添加 IBMid
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
+
+## <a name="add-ibmid-from-the-gallery"></a>从库中添加 IBMid
 
 要配置 IBMid 与 Azure AD 的集成，需要从库中将 IBMid 添加到托管 SaaS 应用列表。
 
@@ -50,7 +53,6 @@ ms.locfileid: "101649378"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“IBMid” 。
 1. 从结果面板中选择“IBMid”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-ibmid"></a>配置并测试 IBMid 的 Azure AD SSO
 
@@ -75,30 +77,31 @@ ms.locfileid: "101649378"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
     a. 在“标识符”文本框中，键入以下 URL 之一： 
 
     | 标识符 |
     | ---------- |
-    | `https://idaas.iam.ibm.com/idaas/mtfim/sps/idaas/saml20` |
+    | 生产： |
     | `https://ibmlogin.ice.ibmcloud.com/saml/sps/saml20sp/saml20` |
+    | 预生产： |
     | `https://prepiam.ice.ibmcloud.com/saml/sps/saml20sp/saml20` |
     |
 
-    a. 在“回复 URL”文本框中，键入以下 URL 之一： 
+    b. 在“回复 URL”文本框中，键入以下 URL 之一： 
 
     | 回复 URL |
     | ---------- |
-    | `https://idaas.iam.ibm.com/idaas/mtfim/sps/idaas/saml20/login` |
+    | 生产： |
     | `https://login.ibm.com/saml/sps/saml20sp/saml20/login` |
+    | 预生产： |
     | `https://prepiam.ice.ibmcloud.com/saml/sps/saml20sp/saml20/login` |
     |
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，键入 URL：`https://myibm.ibm.com/`
-
 
 1. 单击“ **保存**”。
 
@@ -132,7 +135,7 @@ ms.locfileid: "101649378"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -168,7 +171,7 @@ ms.locfileid: "101649378"
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 IBMid 
+* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 IBMid。 
 
 还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 IBMid 磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 IBMid。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 

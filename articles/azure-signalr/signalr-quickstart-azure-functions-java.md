@@ -1,25 +1,28 @@
 ---
 title: 通过 Java 使用 Azure Functions 和 SignalR 服务创建聊天室
-description: 有关如何使用 Azure SignalR 服务和 Azure Functions 通过 Java 创建聊天室的快速入门。
+description: 介绍如何使用 Java 通过 Azure SignalR 服务和 Azure Functions 来创建一个应用（用于显示 GitHub 星数）的快如入门。
 author: sffamily
 ms.author: zhshang
-ms.date: 03/04/2019
+ms.date: 06/09/2021
 ms.topic: quickstart
 ms.service: signalr
 ms.devlang: java
 ms.custom:
 - devx-track-java
 - mode-api
-ms.openlocfilehash: 0d93b9b645aaf4190a36dbc523d40dec2757a18b
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: fdcc8b9355556804b2f13fccd206eb13ac7c0cb6
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107869790"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112462048"
 ---
-# <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>快速入门：通过 Java 使用 Azure Functions 和 SignalR 服务创建聊天室
+# <a name="quickstart-use-java-to-create-an-app-showing-github-star-count-with-azure-functions-and-signalr-service"></a>快速入门：使用 Java 通过 Azure SignalR 服务和 Azure Functions 来创建一个应用，用于显示 GitHub 星数
 
-Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Azure Functions 是一个无服务器平台，可让你无需管理任何基础结构即可运行代码。 在本快速入门中，你将通过 Java 使用 SignalR 服务和 Functions 构建一个无服务器的实时聊天应用程序。
+Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Azure Functions 是一个无服务器平台，可让你无需管理任何基础结构即可运行代码。 在本快速入门中，了解如何使用 Java 通过 SignalR 服务和 Azure Functions 来构建无服务器应用程序，以将消息广播到客户端。
+
+> [!NOTE]
+> 可以从 [GitHub](https://github.com/aspnet/AzureSignalR-samples/tree/main/samples/QuickStartServerless/java) 获取本文中提到的所有代码
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,7 +36,7 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
    > [!NOTE]
    > 若要安装扩展，Azure Functions Core Tools 需要安装 [.NET Core SDK](https://dotnet.microsoft.com/download)。 但是，构建 JavaScript Azure Function 应用不需要了解 .NET。
 
-- [Java 开发人员工具包](https://www.azul.com/downloads/zulu/)版本 8
+- [Java 开发人员工具包](https://www.azul.com/downloads/zulu/)版本 11
 - [Apache Maven](https://maven.apache.org) 版本 3.0 或更高版本
 
 > [!NOTE]
@@ -51,50 +54,200 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
 
 遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjava)。
 
-[!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
-
-遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjava)。
 
 ## <a name="configure-and-run-the-azure-function-app"></a>配置和运行 Azure 函数应用
 
-1. 在打开 Azure门户的浏览器中，通过在门户顶部的搜索框中搜索先前部署的 SignalR 服务实例的名称，确认该实例已成功创建。 选择该实例以将其打开。
+1. 确保已经安装了 Azure Functions Core Tools、Java（示例中为版本 11）和 maven。
+    
+    ```bash
+    mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -DjavaVersion=11
+    ```
 
-    ![搜索 SignalR 服务实例](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
+    Maven 会要求你提供所需的值来完成项目的生成操作。 可以提供以下值。
 
-1. 选择“密钥”以查看 SignalR 服务实例的连接字符串。
+    | Prompt | 值 | 说明 |
+    | ------ | ----- | ----------- |
+    | **groupId** | `com.signalr` | 一个值，用于按照 Java 的[包命名规则](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7)在所有项目中标识你的项目。 |
+    | **artifactId** | `java` | 一个值，该值是 jar 的名称，没有版本号。 |
+    | **version** | `1.0-SNAPSHOT` | 选择默认值。 |
+    | **package** | `com.signalr` | 一个值，该值是所生成函数代码的 Java 包。 使用默认值。 |   
 
-1. 选择并复制主连接字符串。
+2. 初始化项目后。 转到 `src/main/java/com/signalr` 文件夹，将以下代码复制到 `Function.java`
 
-    ![创建 SignalR 服务](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
+    ```java
+    package com.signalr;
+  
+    import com.google.gson.Gson;
+    import com.microsoft.azure.functions.ExecutionContext;
+    import com.microsoft.azure.functions.HttpMethod;
+    import com.microsoft.azure.functions.HttpRequestMessage;
+    import com.microsoft.azure.functions.HttpResponseMessage;
+    import com.microsoft.azure.functions.HttpStatus;
+    import com.microsoft.azure.functions.annotation.AuthorizationLevel;
+    import com.microsoft.azure.functions.annotation.FunctionName;
+    import com.microsoft.azure.functions.annotation.HttpTrigger;
+    import com.microsoft.azure.functions.annotation.TimerTrigger;
+    import com.microsoft.azure.functions.signalr.*;
+    import com.microsoft.azure.functions.signalr.annotation.*;
+    
+    import org.apache.commons.io.IOUtils;
+    
+    
+    import java.io.IOException;
+    import java.io.InputStream;
+    import java.net.URI;
+    import java.net.http.HttpClient;
+    import java.net.http.HttpRequest;
+    import java.net.http.HttpResponse;
+    import java.net.http.HttpResponse.BodyHandlers;
+    import java.nio.charset.StandardCharsets;
+    import java.util.Optional;
+    
+    public class Function {
+        @FunctionName("index")
+        public HttpResponseMessage run(
+                @HttpTrigger(
+                    name = "req",
+                    methods = {HttpMethod.GET},
+                    authLevel = AuthorizationLevel.ANONYMOUS)HttpRequestMessage<Optional<String>> request,
+                final ExecutionContext context) throws IOException {
+            
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("content/index.html");
+            String text = IOUtils.toString(inputStream, StandardCharsets.UTF_8.name());
+            return request.createResponseBuilder(HttpStatus.OK).header("Content-Type", "text/html").body(text).build();
+        }
+  
+        @FunctionName("negotiate")
+        public SignalRConnectionInfo negotiate(
+                @HttpTrigger(
+                    name = "req",
+                    methods = { HttpMethod.POST },
+                    authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> req,
+                @SignalRConnectionInfoInput(
+                    name = "connectionInfo",
+                    hubName = "serverless") SignalRConnectionInfo connectionInfo) {
+                    
+            return connectionInfo;
+        }
+    
+        @FunctionName("broadcast")
+        @SignalROutput(name = "$return", hubName = "serverless")
+        public SignalRMessage broadcast(
+            @TimerTrigger(name = "timeTrigger", schedule = "*/5 * * * * *") String timerInfo) throws IOException, InterruptedException {
+            
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest req = HttpRequest.newBuilder().uri(URI.create("https://api.github.com/repos/azure/azure-signalr")).header("User-Agent", "serverless").build();
+            HttpResponse<String> res = client.send(req, BodyHandlers.ofString());
+            Gson gson = new Gson();
+            GitResult result = gson.fromJson(res.body(), GitResult.class);
+            return new SignalRMessage("newMessage", "Current start count of https://github.com/Azure/azure-signalr is:".concat(result.stargazers_count));
+        }
+    
+        class GitResult {
+            public String stargazers_count;
+        }
+    }
+    ```
 
-1. 在代码编辑器中，打开克隆存储库中的 *src/chat/java* 文件夹。
+3. 需要更新某些依赖项。 因此，请打开 `pom.xml` 并添加代码中使用的一些依赖项。
 
-1. 将 *local.settings.sample.json* 重命名为 *local.settings.json*。
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure.functions</groupId>
+        <artifactId>azure-functions-java-library-signalr</artifactId>
+        <version>1.0.0</version>
+    </dependency>
+    <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.4</version>
+    </dependency>
+    <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>2.8.7</version>
+    </dependency>
+    ```
 
-1. 在 **local.settings.json** 中，将连接字符串粘贴到 **AzureSignalRConnectionString** 设置的值中。 保存文件。
+4. 此示例的客户端界面为网页。 考虑到我们在 `index` 函数中从 `content/index.html` 中读取 HTML 内容，因此要在 `resources` 目录中创建一个新文件 `content/index.html`。 目录应类似于如下所示。
+    
+    ```
+    FunctionsProject
+     | - src
+     | | - main
+     | | | - java
+     | | | | - com
+     | | | | | - signalr 
+     | | | | | | - Function.java
+     | | | - resources
+     | | | | - content
+     | | | | | - index.html
+     | - pom.xml
+     | - host.json
+     | - local.settings.json
+    ```
 
-1. 包含这些函数的主文件位于 *src/chat/java/src/main/java/com/function/Functions.java* 中：
+    打开 `index.html` 并复制以下内容。
 
-    - **negotiate** - 使用 *SignalRConnectionInfo* 输入绑定生成并返回有效的连接信息。
-    - **sendMessage** - 在请求正文中接收聊天消息，并使用 *SignalR* 输出绑定将消息广播到所有连接的客户端应用程序。
+    ```html
+    <html>
+    
+    <body>
+      <h1>Azure SignalR Serverless Sample</h1>
+      <div id="messages"></div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.7/signalr.min.js"></script>
+      <script>
+        let messages = document.querySelector('#messages');
+        const apiBaseUrl = window.location.origin;
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl(apiBaseUrl + '/api')
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+          connection.on('newMessage', (message) => {
+            document.getElementById("messages").innerHTML = message;
+          });
+    
+          connection.start()
+            .catch(console.error);
+      </script>
+    </body>
+    
+    </html>
+    ```
 
-1. 在终端中，确保你位于 *src/chat/java* 文件夹中。 生成函数应用。
+5. 现在即将完成了。 最后一步是将 SignalR 服务的连接字符串设置为 Azure Functions 设置。
+
+    1. 在打开 Azure门户的浏览器中，通过在门户顶部的搜索框中搜索先前部署的 SignalR 服务实例的名称，确认该实例已成功创建。 选择该实例以将其打开。
+
+        ![搜索 SignalR 服务实例](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
+
+    1. 选择“密钥”以查看 SignalR 服务实例的连接字符串。
+    
+        ![屏幕截图突出显示了主连接字符串。](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
+
+    1. 复制主连接字符串。 并执行以下命令。
+    
+        ```bash
+        func settings add AzureSignalRConnectionString '<signalr-connection-string>'
+        # Also we need to set AzureWebJobsStorage as Azure Function's requirement
+        func settings add AzureWebJobsStorage 'UseDevelopmentStorage=true'
+        ```
+    
+6. 在本地运行 Azure Functions：
 
     ```bash
     mvn clean package
-    ```
-
-1. 在本地运行函数应用。
-
-    ```bash
     mvn azure-functions:run
     ```
+
+    在本地运行 Azure Functions 后。 使用浏览器进行访问 `http://localhost:7071/api/index`，你可以查看当前开始计数。 如果在 GitHub 中进行星标或取消星标，则每隔几秒就会刷新一次星数。
+
+    > [!NOTE]
+    > SignalR 绑定 Azure 存储，但是当 Azure Functions 在本地运行时，你可以使用本地存储模拟器。
+    > 如果收到类似`There was an error performing a read operation on the Blob Storage Secret Repository. Please ensure the 'AzureWebJobsStorage' connection string is valid.`的错误，则需要下载并启用[存储模拟器](../storage/common/storage-use-emulator.md)
     
 遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjava)。
 
-[!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
-
-遇到问题？ 尝试使用[故障排除指南](signalr-howto-troubleshoot-guide.md)或[通知我们](https://aka.ms/asrs/qsjava)。
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
@@ -102,7 +255,14 @@ Azure SignalR 服务可让你轻松地向应用程序添加实时功能，而 Az
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，使用 Maven 生成并运行了一个实时无服务器应用程序。 接下来，了解如何从头开始创建 Java Azure Functions。
+在本快速入门中，你在本地生成并运行了一个实时无服务器应用程序。 详细了解如何将 SignalR 服务绑定用于 Azure Functions。
+接下来，详细了解如何通过 SignalR 服务在客户端与 Azure Functions 之间双向通信。
+
+> [!div class="nextstepaction"]
+> [Azure Functions 的 SignalR Service 绑定](../azure-functions/functions-bindings-signalr-service.md)
+
+> [!div class="nextstepaction"]
+> [无服务器的双向通信](https://github.com/aspnet/AzureSignalR-samples/tree/main/samples/BidirectionChat)
 
 > [!div class="nextstepaction"]
 > [使用 Java 和 Maven 创建第一个函数](../azure-functions/create-first-function-cli-csharp.md?pivots=programming-language-java%2cprogramming-language-java)

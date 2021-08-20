@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 11/23/2020
-ms.openlocfilehash: 5d69aacb6e3f25e3414aa446c4c5ae7852cabdfc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e1825f80b5b2b185d5cf9d9ea75ea4e80ea0ef9
+ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101720896"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114653449"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Azure Red Hat OpenShift (ARO) 的网络概念
 
@@ -108,7 +108,7 @@ Azure Red Hat OpenShift 使用 CoreDNS。 可以配置域转发。 你无法将�
 
 如上图所示，你会注意到一些变化：
 * 之前，ARO 使用了两个公共负载均衡器：一个用于 API 服务器，另一个用于工作器节点池。 此体系结构更新后，这两个负载均衡器已合并到一个负载均衡器中。 
-* 为了降低复杂性，已删除专用的外部 IP 地址资源。
+* 为降低复杂性，已删除专用外部 IP 地址资源。
 * ARO 控制平面现在与 ARO 工作器节点共享一个网络安全组。
 
 有关 OpenShift 4.5 的详细信息，请查看 [OpenShift 4.5 发行说明](https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html)。

@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 Azure 门户快速创建 Kubernetes 群集、部署应用程序，以及监视 Azure Kubernetes 服务 (AKS) 中的性能。
 services: container-service
 ms.topic: quickstart
-ms.date: 03/15/2021
+ms.date: 07/01/2021
 ms.custom: mvc, seo-javascript-october2019, contperf-fy21q3
-ms.openlocfilehash: 28ba2ffd2007aeb45081cf66b05395a2b8456bf7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4c695b3214cebb601e53810ea8d6f3402bcf2e94
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779698"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463115"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -41,13 +41,17 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
         * 选择一个 Azure 订阅。
         * 选择或创建一个 Azure **资源组**，例如 *myResourceGroup*。
     - **群集详细信息**： 
+        * 确保“预设配置”为“Standard ($$)”。 有关预设配置的详细信息，请参阅 [Azure 门户中的群集配置预设][preset-config]。
         * 输入 **Kubernetes 群集名称**，例如 *myAKSCluster*。 
         * 选择 AKS 群集的“区域”和“Kubernetes 版本” 。
     - **主节点池**： 
-        * 为 AKS 节点选择 VM 节点大小。 一旦部署 AKS 群集，不能更改 VM 大小。
-        * 选择要部署到群集中的节点数。 对于本快速入门，请将“节点计数”设置为“1”。 部署群集后，可以调整节点计数。
+        * 保持选中默认值。
     
     ![创建 AKS 群集 - 提供基本信息](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
+
+    > [!NOTE]
+    > 创建群集时，可以通过选择“查看所有预设配置”并选择其他选项来更改预设配置。
+    > ![创建 AKS 群集 - 门户预设选项](media/kubernetes-walkthrough-portal/cluster-preset-options.png)
 
 4. 在完成时选择“下一步:节点池”。
 
@@ -103,8 +107,9 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
     输出显示在上一步骤中创建的单个节点。 确保节点状态为 *Ready*：
 
     ```output
-    NAME                       STATUS    ROLES     AGE       VERSION
-    aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
+    NAME                                STATUS   ROLES   AGE   VERSION
+    aks-agentpool-12345678-vmss000000   Ready    agent   23m   v1.19.11
+    aks-agentpool-12345678-vmss000001   Ready    agent   24m   v1.19.11
     ```
 
 ## <a name="run-the-application"></a>运行应用程序
@@ -273,7 +278,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 ![查看在 AKS 中运行的容器的运行状况](media/kubernetes-walkthrough-portal/monitor-containers.png)
 
-若要查看 `azure-vote-front` Pod 的日志，请从容器下拉列表中选择“查看容器日志”。 这些日志包括容器中的 *stdout* 和 *stderr* 流。
+若要查看 `azure-vote-front` pod 的日志，请从右侧的“azure-vote-front | 概述”区域选择“在 Log Analytics 中查看”。 这些日志包括容器中的 *stdout* 和 *stderr* 流。
 
 ![查看 AKS 中的容器日志](media/kubernetes-walkthrough-portal/monitor-container-logs.png)
 
@@ -318,4 +323,5 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 [aks-network]: ./concepts-network.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md
+[preset-config]: ./quotas-skus-regions.md#cluster-configuration-presets-in-the-azure-portal
 [sp-delete]: kubernetes-service-principal.md#additional-considerations

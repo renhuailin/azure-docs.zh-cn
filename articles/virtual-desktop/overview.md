@@ -3,15 +3,15 @@ title: 什么是 Azure 虚拟桌面？ - Azure
 description: Azure 虚拟桌面概述。
 author: Heidilohr
 ms.topic: overview
-ms.date: 09/14/2020
+ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 76d6574be61b7d1cd92733496d335c64d64bf7a1
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: 773e0053512026f6a92a2981d43340b68e708186
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113031384"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113757712"
 ---
 # <a name="what-is-azure-virtual-desktop"></a>什么是 Azure 虚拟桌面？
 
@@ -38,7 +38,7 @@ Azure 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
 
 使用 Azure 虚拟桌面可以设置可缩放且灵活的环境：
 
-* 在 Azure 订阅中创建完整的桌面虚拟化环境，而无需运行任何额外的网关服务器。
+* 在 Azure 订阅中创建完整的桌面虚拟化环境，而无需运行任何网关服务器。
 * 发布任意数目的主机池来适应各种工作负荷。
 * 自带映像用于生产工作负荷，或者在 Azure 库中进行测试。
 * 使用入池的多会话资源降低成本。 使用 Windows Server 上的 Azure 虚拟桌面和远程桌面会话主机 (RDSH) 角色专用的 Windows 10 Enterprise 多会话新功能，可以大幅降低虚拟机和操作系统 (OS) 的开销，同时仍可向用户提供相同的资源。
@@ -85,7 +85,7 @@ Azure 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
 
 为 Azure 虚拟桌面创建的 Azure 虚拟机必须：
 
-* [已加入标准域](../active-directory-domain-services/compare-identity-solutions.md)，或[已加入混合 AD](../active-directory/devices/hybrid-azuread-join-plan.md)。 虚拟机不能加入 Azure AD。
+* [已加入标准域](../active-directory-domain-services/compare-identity-solutions.md)，或[已加入混合 AD](../active-directory/devices/hybrid-azuread-join-plan.md)。 [已加入 Azure AD](deploy-azure-ad-joined-vm.md) 的虚拟机以预览版提供。
 * 运行以下[受支持的 OS 映像](#supported-virtual-machine-os-images)之一。
 
 >[!NOTE]

@@ -1,26 +1,20 @@
 ---
-title: 新增功能 发行说明 - Azure 事件网格
+title: 新增功能 Azure 事件网格
 description: 了解 Azure 事件网格的最新信息，例如最新的发行说明、已知问题、bug 修复、已弃用的功能和即将应用的更改。
 ms.topic: overview
 ms.date: 04/27/2021
-ms.openlocfilehash: ccb8df774838a1b71ddec08394d7487bf3176039
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a8c39338b43dfb1ddde173c3560faeb977b0148f
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108135916"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112466659"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Azure 事件网格的最新信息
 
 >通过复制此 URL (`https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Event+Grid%22&locale=en-us`) 并粘贴到 ![RSS 源阅读器图标](./media/whats-new/feed-icon-16x16.png) 订阅源阅读器中，获取有关何时重新访问此页以获得更新的通知。
 
-Azure 事件网格会不断改进。 为了让大家随时了解最新的开发成果，本文将提供以下方面的信息：
-
-- 最新版本
-- 已知问题
-- Bug 修复
-- 已弃用的功能
-- 更改计划
+Azure 事件网格会不断改进。 为帮助你随时了解最新开发，本文提供发布中添加或更新的功能的相关信息。 
 
 ## <a name="610-preview-2020-10"></a>6.1.0-preview (2020-10)
 - [系统主题的托管标识](enable-identity-system-topics.md)

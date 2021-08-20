@@ -8,20 +8,21 @@ ms.topic: quickstart
 author: JasonMAnderson
 ms.author: janders
 ms.reviewer: vanto
-ms.date: 05/25/2021
-ms.openlocfilehash: d000ec621dcf840c9f18269a2046b682b6d11b56
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.date: 07/23/2021
+ms.custom: references_regions
+ms.openlocfilehash: ffde0d192888aea852eb4de73e24ce678c4a677a
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112292944"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114666667"
 ---
 # <a name="quickstart-create-a-database-in-azure-sql-database-with-ledger-enabled"></a>快速入门：在 Azure SQL 数据库中创建启用了账本的数据库
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Azure SQL 数据库账本目前为公共预览版，在美国中西部提供。
+> Azure SQL 数据库账本目前为公共预览版，在欧洲西部、巴西南部和美国中西部提供。
 
 在此快速入门中，你将在 Azure SQL 数据库中创建一个[账本数据库](ledger-overview.md#ledger-database)，并使用 Azure 门户[通过 Azure Blob 存储配置自动摘要存储](ledger-digest-management-and-database-verification.md#automatic-generation-and-storage-of-database-digests)。 有关账本的详细信息，请参阅 [Azure SQL 数据库账本](ledger-overview.md)。
 

@@ -6,16 +6,16 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-azcli-net-ps
-ms.openlocfilehash: d852cc082640c676b06efc4799f9a3b7211dcf2e
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: c4a8a58cde2e8fabe1dda374c8942607992c216c
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591505"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762395"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>快速入门：创建和管理通信服务资源
 
@@ -23,8 +23,7 @@ ms.locfileid: "111591505"
 
 
 > [!WARNING]
-> 请注意，虽然在多个地理区域提供通信服务，但若要获得电话号码，资源必须有一个设置为“美国”的数据位置。 另请注意，当前不支持资源移动，但不久就会支持。
-> 另请注意，不能同时创建一个资源组作为 Azure 通信服务的资源。 创建资源时，必须使用已创建的资源组。
+> 请注意，虽然在多个地理区域提供通信服务，但若要获得电话号码，资源必须有一个设置为“美国”的数据位置。 另请注意，不能同时创建一个资源组作为 Azure 通信服务的资源。 创建资源时，必须使用已创建的资源组。
 
 ::: zone pivot="platform-azp"
 [!INCLUDE [Azure portal](./includes/create-resource-azp.md)]

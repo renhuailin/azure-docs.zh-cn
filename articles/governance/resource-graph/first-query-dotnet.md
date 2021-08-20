@@ -1,15 +1,15 @@
 ---
 title: 快速入门：第一个 .NET Core 查询
 description: 本快速入门介绍为 .NET Core 启用 Resource Graph NuGet 包并运行第一个查询的步骤。
-ms.date: 05/01/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b0c1b7165702d00426f3459907a5558a08b12d84
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4cc21a3f73991b3f1177a9bbc16491a18be51489
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751834"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460686"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-net-core"></a>快速入门：使用 .NET Core 运行你的第一个 Resource Graph 查询
 
@@ -65,8 +65,7 @@ ms.locfileid: "108751834"
                string strTenant = args[0];
                string strClientId = args[1];
                string strClientSecret = args[2];
-               string strSubscriptionId = args[3];
-               string strQuery = args[4];
+               string strQuery = args[3];
 
                AuthenticationContext authContext = new AuthenticationContext("https://login.microsoftonline.com/" + strTenant);
                AuthenticationResult authResult = await authContext.AcquireTokenAsync("https://management.core.windows.net", new ClientCredential(strClientId, strClientSecret));
@@ -74,7 +73,6 @@ ms.locfileid: "108751834"
 
                ResourceGraphClient argClient = new ResourceGraphClient(serviceClientCreds);
                QueryRequest request = new QueryRequest();
-               request.Subscriptions = new List<string>(){ strSubscriptionId };
                request.Query = strQuery;
 
                QueryResponse response = argClient.Resources(request);
@@ -85,6 +83,9 @@ ms.locfileid: "108751834"
    }
    ```
 
+   > [!NOTE]
+   > 此代码创建基于租户的查询。 若要将查询限制在[管理组](../management-groups/overview.md)或订阅，请在 `QueryRequest` 对象上设置 `ManagementGroups` 或 `Subscriptions` 属性。
+
 1. 生成并发布 `argQuery` 控制台应用程序：
 
    ```dotnetcli
@@ -94,21 +95,20 @@ ms.locfileid: "108751834"
 
 ## <a name="run-your-first-resource-graph-query"></a>运行首个 Resource Graph 查询
 
-生成并发布 .NET Core 控制台应用程序之后，即可尝试创建简单的 Resource Graph 查询。 该查询返回前五个 Azure 资源，以及每个资源的名称和资源类型 。
+生成并发布 .NET Core 控制台应用程序之后，即可尝试创建一个简单的基于租户的 Resource Graph 查询。 该查询返回前五个 Azure 资源，以及每个资源的名称和资源类型 。
 
 在对 `argQuery` 的每次调用中，都包含替换为自己的值时需要使用的变量：
 
 - `{tenantId}` - 替换为租户 ID
 - `{clientId}` -替换为服务主体的客户端 ID
 - `{clientSecret}` -替换为服务主体的客户端机密
-- `{subscriptionId}` - 替换为订阅 ID
 
 1. 将目录更改为使用先前的 `dotnet publish` 命令定义的 `{run-folder}`。
 
 1. 使用已编译的 .NET Core 控制台应用程序运行首个 Azure Resource Graph 查询：
 
    ```bash
-   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "{subscriptionId}" "Resources | project name, type | limit 5"
+   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "Resources | project name, type | limit 5"
    ```
 
    > [!NOTE]
@@ -117,7 +117,7 @@ ms.locfileid: "108751834"
 1. 将最后一个参数更改为 `argQuery.exe`，并将查询更改为按 Name 属性应用 `order by`：
 
    ```bash
-   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "{subscriptionId}" "Resources | project name, type | limit 5 | order by name asc"
+   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "Resources | project name, type | limit 5 | order by name asc"
    ```
 
    > [!NOTE]
@@ -126,7 +126,7 @@ ms.locfileid: "108751834"
 1. 将最后一个参数更改为 `argQuery.exe`，并将查询更改为先按 Name 属性应用 `order by`，然后对前五个结果应用 `limit`：
 
    ```bash
-   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "{subscriptionId}" "Resources | project name, type | order by name asc | limit 5"
+   argQuery "{tenantId}" "{clientId}" "{clientSecret}" "Resources | project name, type | order by name asc | limit 5"
    ```
 
 假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且按 Name 属性排序，但仍限制为前五个结果。

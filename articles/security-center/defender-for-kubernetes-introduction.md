@@ -3,16 +3,16 @@ title: 适用于 Kubernetes 的 Azure Defender - 优点和功能
 description: 了解适用于 Kubernetes 的 Azure Defender 的优点和功能。
 author: memildin
 ms.author: memildin
-ms.date: 04/07/2021
+ms.date: 07/20/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 6eec2fed58d9c4fa3b0a05dc6ed03d9c5bf9d840
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 85a47bc3f676dc57d3e8cf6107a8acc8b9c6f793
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113002533"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114466669"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>适用于 Kubernetes 的 Azure Defender 简介
 
@@ -26,7 +26,7 @@ Azure Defender for Kubernetes 是 Azure Defender 计划，无论 Kubernetes 群�
 
 Azure 安全中心和 AKS 构成了一种云原生 Kubernetes 安全产品/服务，同时提供环境强化功能、工作负载保护和运行时间保护，如[安全中心中的容器安全](container-security.md)所述。
 
-如果启用[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 及其 Log Analytics 代理，则可以使用适用于 Linux AKS 节点的主机级威胁检测。 但如果在虚拟机规模集上部署群集，则当前不支持 Log Analytics 代理。
+如果启用[适用于服务器的 Azure Defender](defender-for-servers-introduction.md) 及其 Log Analytics 代理，则可以使用适用于 Linux AKS 节点的主机级威胁检测。 但如果在 Azure Kubernetes 服务虚拟机规模集 (VMSS) 上部署群集，则当前不支持 Log Analytics 代理。
 
 
 
@@ -37,7 +37,7 @@ Azure 安全中心和 AKS 构成了一种云原生 Kubernetes 安全产品/服�
 |发布状态：|正式发布版 (GA)|
 |定价：|用于 Kubernetes 的 Azure Defender 按[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)中显示的定价计费|
 |所需角色和权限：|**安全管理员** 可以消除警报。<br>**安全读取者** 可以查看结果。|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov，Azure 中国）|
+|云：|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用云<br>:::image type="icon" source="./media/icons/yes-icon.png":::国家/地区/主权（US Gov，Azure 中国）|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>适用于 Kubernetes 的 Azure Defender 有哪些优点？
@@ -59,6 +59,11 @@ Azure Defender for Kubernetes 监视的安全事件示例包括公开 Kubernetes
 
 ## <a name="faq---azure-defender-for-kubernetes"></a>常见问题解答 - Azure Defender for Kubernetes
 
+- [如果没有 Log Analytics 代理，是否仍可以获得群集保护？](#can-i-still-get-cluster-protections-without-the-log-analytics-agent)
+- [AKS 是否允许我在 AKS 节点上安装自定义 VM 扩展？](#does-aks-allow-me-to-install-custom-vm-extensions-on-my-aks-nodes)
+- [如果我的群集已经在运行用于容器的 Azure Monitor 代理，我是否也需要 Log Analytics 代理？](#if-my-cluster-is-already-running-an-azure-monitor-for-containers-agent-do-i-need-the-log-analytics-agent-too)
+- [Azure Defender for Kubernetes 是否支持包含 VMSS 节点的 AKS？](#does-azure-defender-for-kubernetes-support-aks-with-vmss-nodes)
+
 ### <a name="can-i-still-get-cluster-protections-without-the-log-analytics-agent"></a>如果没有 Log Analytics 代理，是否仍可以获得群集保护？
 
 Azure Defender for Kubernetes 计划在群集级别提供保护。 如果还部署适用于服务器的 Azure Defender 的 Log Analytics 代理，则将获得该计划随附的用于节点的威胁防护功能。 有关详细信息，请参阅[适用于服务器的 Azure Defender 简介](defender-for-servers-introduction.md)。
@@ -68,7 +73,7 @@ Azure Defender for Kubernetes 计划在群集级别提供保护。 如果还部�
 如果你选择不在主机上安装代理，则只能收到一部分威胁防护权益和安全警报。 你仍会收到与网络分析以及与恶意服务器通信相关的警报。
 
 ### <a name="does-aks-allow-me-to-install-custom-vm-extensions-on-my-aks-nodes"></a>AKS 是否允许我在 AKS 节点上安装自定义 VM 扩展？
-为使 Azure Defender 能够监视 AKS 节点，它们必须运行 Log Analytics 代理。 
+为使 Azure Defender 能够监视 AKS 节点，它们必须运行 Log Analytics 代理。
 
 AKS 是一项托管服务，由于 Log Analytics 代理是 Microsoft 托管的扩展，因此也受 AKS 群集支持。
 
@@ -78,6 +83,11 @@ AKS 是一项托管服务，由于 Log Analytics 代理是 Microsoft 托管的�
 如果群集已经在运行用于容器的 Azure Monitor 代理，则也可以安装 Log Analytics 代理，这两个代理可以彼此协同工作，而不会出现任何问题。
 
 [详细了解用于容器的 Azure Monitor 代理](../azure-monitor/containers/container-insights-manage-agent.md)。
+
+
+### <a name="does-azure-defender-for-kubernetes-support-aks-with-vmss-nodes"></a>Azure Defender for Kubernetes 是否支持包含 VMSS 节点的 AKS？
+如果在 Azure Kubernetes 服务虚拟机规模集 (VMSS) 上部署群集，则当前不支持 Log Analytics 代理。
+
 
 
 ## <a name="next-steps"></a>后续步骤

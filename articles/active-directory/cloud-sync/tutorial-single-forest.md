@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3bc9378539e6a7f98e34d0a149848d0e892c224
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: a5ef6895710cf4af6022b728942f94e4c3a3d59d
+ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306086"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112913610"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>教程：将单个林与单个 Azure AD 租户集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "107306086"
 
 ### <a name="in-your-on-premises-environment"></a>在本地环境中
 
-1. 指定一台已加入域、运行 Windows Server 2012 R2 或更高版本、至少有 4 GB RAM 且装有 .NET 4.7.1+ 运行时的主机服务器 
+1. 指定一台已加入域的、运行 Windows Server 2016 或更高版本、至少有 4 GB RAM 且装有 .NET 4.7.1+ 运行时的主机服务器 
 
 2. 如果服务器和 Azure AD 之间存在防火墙，请配置以下项：
    - 确保代理可以通过以下端口向 Azure AD 发出出站请求：

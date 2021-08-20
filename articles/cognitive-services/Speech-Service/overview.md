@@ -3,36 +3,37 @@ title: 什么是语音服务？
 titleSuffix: Azure Cognitive Services
 description: 语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用语音 SDK、语音设备 SDK 或 REST API 在应用程序、工具和设备中添加语音。
 services: cognitive-services
-author: trevorbye
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
-ms.author: trbye
-ms.openlocfilehash: cacf317e433ec89b3bc82f86844e5e6b5e143547
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.author: nitinme
+ms.openlocfilehash: 8e173f8f11f45fc61ee412c7241a5f9297c807bb
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330542"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708223"
 ---
 # <a name="what-is-the-speech-service"></a>什么是语音服务？
 
-语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用[语音 CLI](spx-overview.md)、[语音 SDK](./speech-sdk.md)、[语音设备 SDK](./speech-devices-sdk-quickstart.md?pivots=platform-android)、[Speech Studio](https://speech.microsoft.com/) 或 [REST API](#reference-docs) 可以轻松在应用程序、工具和设备中启用语音。
+语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用[语音 CLI](spx-overview.md)、[语音 SDK](./speech-sdk.md)、[语音设备 SDK](./speech-devices-sdk-quickstart.md?pivots=platform-android)、[Speech Studio](speech-studio-overview.md) 或 [REST API](#reference-docs) 可以轻松在应用程序、工具和设备中启用语音。
 
 > [!IMPORTANT]
 > 语音服务已替代必应语音 API 和语音翻译。 有关迁移说明，请参阅迁移部分。
 
 以下功能是语音服务的一部分。 请使用下表中的链接详细了解每项功能的常见用例或浏览 API 参考信息。
 
-| 服务 | Feature | 说明 | SDK 中 IsInRole 中的声明 | REST |
+| 服务 | 功能 | 说明 | SDK 中 IsInRole 中的声明 | REST |
 |---------|---------|-------------|-----|------|
 | [语音转文本](speech-to-text.md) | 实时语音转文本 | 语音转文本可将音频流或本地文件实时转录或翻译为文本，应用程序、工具或设备可以使用或显示这些文本。 结合[语言理解 (LUIS)](../luis/index.yml) 使用语音转文本可以从听录的语音中派生用户意向，以及处理语音命令。 | [是](./speech-sdk.md) | [是](#reference-docs) |
 | | [批量语音转文本](batch-transcription.md) | 批量语音转文本支持对 Azure Blob 存储中存储的大量语音音频数据进行异步语音到文本转录。 除了将语音音频转换为文本，批量语音转文本还允许进行分割聚类和情感分析。 | 否 | [是](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
 | | [多设备对话](multi-device-conversation.md) | 在对话中连接多个设备或客户端以发送基于语音或文本的消息，并轻松支持听录和翻译| 是 | 否 |
 | | [对话听录](./conversation-transcription.md) | 启用实时语音识别、说话人识别和分割聚类。 它非常适合用于听录能够区分说话人的面对面会谈场景。 | 是 | 否 |
 | | [创建自定义语音识别模型](#customize-your-speech-experience) | 如果使用语音转文本在独特的环境中进行识别和听录，则可以创建并训练自定义的声学、语言和发音模型，以解决环境干扰或行业特定的词汇。 | 否 | [是](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
+| | [发音评估](./how-to-pronunciation-assessment.md) | 发音评估可以评估语音发音，并为说话人提供有关讲话音频准确度和流利度的反馈。 通过发音评估，语言学习者可以练习、获得即时反馈并改进其发音，因此能够自信地讲话和演示。 | [是](./how-to-pronunciation-assessment.md) | [是](./rest-speech-to-text.md#pronunciation-assessment-parameters) |
 | [文本转语音](text-to-speech.md) | 文本转语音 | 文本转语音可使用[语音合成标记语言 (SSML)](speech-synthesis-markup.md) 将输入文本转换为类似人类的合成语音。 使用神经语音，这是由深度神经网络提供支持的类人语音。 请参阅[语言支持](language-support.md)。 | [是](./speech-sdk.md) | [是](#reference-docs) |
 | | [创建自定义语音](#customize-your-speech-experience) | 创建专属于品牌或产品的自定义语音字体。 | 否 | [是](#reference-docs) |
 | [语音翻译](speech-translation.md) | 语音翻译 | 使用语音翻译可在应用程序、工具和设备中实现实时的多语言语音翻译。 进行语音转语音和语音转文本翻译时可以使用此服务。 | [是](./speech-sdk.md) | 否 |
@@ -81,9 +82,9 @@ ms.locfileid: "108330542"
 -->
 部署新的语音资源需要花费片刻时间。 
 
-### <a name="find-keys-and-region"></a>查找密钥和区域
+### <a name="find-keys-and-locationregion"></a>查找密钥和位置/区域
 
-若要查找已完成部署的密钥和区域，请按照下列步骤操作：
+若要查找已完成部署的密钥和位置/区域，请按照下列步骤操作：
 
 1. 使用你的 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com/)。
 
@@ -131,7 +132,7 @@ GitHub 上提供了语音服务的示例代码。 这些示例涵盖了常见方
 
 | 语音服务 | 平台 | 说明 |
 | -------------- | -------- | ----------- |
-| 语音转文本 | [自定义语音识别](https://aka.ms/customspeech) | 根据需要和可用数据自定义语音识别模型。 克服语音识别障碍，如说话风格、词汇和背景噪音。 |
+| 语音转文本 | [自定义语音识别](./custom-speech-overview.md) | 根据需要和可用数据自定义语音识别模型。 克服语音识别障碍，如说话风格、词汇和背景噪音。 |
 | 文本转语音 | [自定义语音](https://aka.ms/customvoice) | 使用可用语音数据为文本转语音应用生成可识别的独一无二的语音。 可以通过调整一组语音参数来进一步微调语音输出。 |
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器进行本地部署
@@ -143,7 +144,7 @@ GitHub 上提供了语音服务的示例代码。 这些示例涵盖了常见方
 * 标准文本转语音
 * 神经文本转语音
 * 自定义文本转语音（预览版）
-* 语音语言检测（预览版）
+* 语音语言识别（预览版）
 
 ## <a name="reference-docs"></a>参考文档
 

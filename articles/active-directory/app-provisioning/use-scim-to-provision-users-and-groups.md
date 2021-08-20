@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/11/2021
+ms.date: 07/26/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: ddc50ab8c72017160a7032e35a69eedf85ebac95
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 11cb3ada0449559eda080cad3e9c528d60a02660
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784802"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707914"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint-in-azure-active-directory"></a>教程：在 Azure Active Directory 中开发 SCIM 终结点并计划其预配
 
@@ -192,8 +192,6 @@ SCIM RFC 中定义了多个终结点。 可以从 `/User` 终结点开始，然�
 |通过 PATCH 请求修改用户或组|[第 3.5.2 节](https://tools.ietf.org/html/rfc7644#section-3.5.2)。 支持可确保以高性能的方式预配组和用户。|
 |为之前创建的用户或组检索已知资源|[第 3.4.1 节](https://tools.ietf.org/html/rfc7644#section-3.4.1)|
 |查询用户或组|[第 3.4.2 节](https://tools.ietf.org/html/rfc7644#section-3.4.2)  默认情况下，按 `id` 检索用户，按 `username` 和 `externalId` 查询用户，以及按 `displayName` 查询组。|
-|按 ID 和按经理查询用户|第 3.4.2 节|
-|按 ID 和按成员查询组|第 3.4.2 节|
 |查询组资源时的筛选器 [excludedAttributes=members](#get-group)|第 3.4.2.5 节|
 |接受使用一个持有者令牌对应用程序进行 AAD 身份验证和授权。||
 |软删除用户 `active=false` 并还原该用户 `active=true`|无论用户是否处于活动状态，都应在请求中返回用户对象。 不应返回用户的唯一例外是，从应用程序中硬删除用户的情况。|
@@ -201,22 +199,37 @@ SCIM RFC 中定义了多个终结点。 可以从 `/User` 终结点开始，然�
 
 实现 SCIM 终结点时，请遵从以下一般准则，以确保与 AAD 兼容：
 
+##### <a name="general"></a>常规： 
 * `id` 是所有资源的必需属性。 每个返回资源的响应都应确保每个资源都具有此属性，但成员数量为零的 `ListResponse` 除外。
-* 对查询/筛选请求的响应应始终为 `ListResponse`。
-* 组是可选项，但只有在 SCIM 实现支持 PATCH 请求时才受支持。
+* 发送的值应采用发送时的格式存储。 应拒绝无效值，并显示一条可操作的描述性错误消息。 Azure AD 发送的数据与 SCIM 应用程序中存储的数据之间不应发生数据转换。 （例如，以 55555555555 格式发送的电话号码不应保存/返回为 +5 (555) 555-5555）
 * 不必在 PATCH 响应中包含整个资源。
-* Microsoft AAD 仅使用以下运算符：`eq`、`and`
 * 对于 SCIM 中的结构元素，不要求区分大小写匹配，尤其是[第 3.5.2 节](https://tools.ietf.org/html/rfc7644#section-3.5.2)中定义的 PATCH `op` 操作值。 AAD 发出 `op` 的值，分别为 Add、Replace 和 Remove  。
 * Microsoft AAD 发出用于提取随机用户和组的请求，以确保终结点和凭据有效。 在 [Azure 门户](https://portal.azure.com)的“测试连接”流中也会完成此操作。 
-* 应在 [Azure 门户](https://portal.azure.com)中将可以查询其资源的特性设置为应用程序的匹配特性，请参阅[自定义用户设置特性映射](customize-application-attributes.md)。
-* 不支持权利属性。
 * 在 SCIM 终结点上支持 HTTPS。
-* [架构发现](#schema-discovery)
-  * 自定义应用程序当前不支持架构发现，但某些库应用程序正在运行它。 日后，架构发现将用作向现有连接器添加其他属性的唯一方法。 
-  * 如果值不存在，则不发送 NULL 值。
-  * 属性值应采用大小写形式，例如，readWrite。
-  * 必须返回列表响应。
-  * 每次用户在 Azure 门户中保存预配配置，或者每次用户登陆 Azure 门户中的“编辑预配”页面时，Azure AD SCIM 客户端都将发出 /schemas 请求。 在目标属性列表下的属性映射中，将向客户显示发现的任何其他属性。 架构发现仅会导致添加其他目标属性。 它不会导致删除属性。 
+* 支持自定义的复杂属性和多值属性，但在这些情况下，AAD 中可供拉取数据的复杂数据结构不多。 可以轻松映射到成对的简单名称/值类型复杂属性，但目前不支持将数据流动到包含三个或更多子属性的复杂属性。
+
+##### <a name="retrieving-resources"></a>检索资源：
+* 对查询/筛选请求的响应应始终为 `ListResponse`。
+* Microsoft AAD 仅使用以下运算符：`eq`、`and`
+* 应在 [Azure 门户](https://portal.azure.com)中将可以查询其资源的特性设置为应用程序的匹配特性，请参阅[自定义用户设置特性映射](customize-application-attributes.md)。
+
+##### <a name="users"></a>/Users：
+* 不支持权利属性。
+* 任何被视为用户唯一性的属性都必须能够作为筛选查询的一部分使用。 （例如，如果用户唯一性是针对 userName 和 emails[type eq "work"] 进行评估，则带有筛选器的 GET to /Users 必须同时支持 userName eq "user@contoso.com" 和 emails[type eq "work"] eq "user@contoso.com" 查询 。
+
+##### <a name="groups"></a>/Groups：
+* 组是可选项，但只有在 SCIM 实现支持 PATCH 请求时才受支持。
+* 为了在 Azure Active Directory 和 SCIM 应用程序之间实现匹配，组在“displayName”值上必须具有唯一性。 这不是 SCIM 协议的要求，而是将 SCIM 服务与 Azure Active Directory 集成的要求。
+
+##### <a name="schemas-schema-discovery"></a>/Schemas（架构发现）：
+
+* [示例请求/响应](#schema-discovery)
+* 自定义非库 SCIM 应用程序当前不支持架构发现，但某些库应用程序正在运行它。 日后，架构发现将用作向现有库 SCIM 应用程序的架构添加其他属性的唯一方法。 
+* 如果值不存在，则不发送 NULL 值。
+* 属性值应采用大小写形式，例如，readWrite。
+* 必须返回列表响应。
+* 每次用户在 Azure 门户中保存预配配置，或者每次用户登陆 Azure 门户中的“编辑预配”页面时，Azure AD SCIM 客户端都将发出 /schemas 请求。 在目标属性列表下的属性映射中，将向客户显示发现的任何其他属性。 架构发现仅会导致添加其他目标属性。 它不会导致删除属性。 
+
   
 ### <a name="user-provisioning-and-deprovisioning"></a>用户预配和取消预配
 
@@ -888,6 +901,8 @@ TLS 1.2 密码套件最低标准：
 ### <a name="ip-ranges"></a>IP 范围
 Azure AD 预配服务当前在 AzureActiveDirectory 的 IP 范围下运行，如[此处](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) 所示。 可以添加 AzureActiveDirectory 标记下面列出的 IP 范围，以允许来自 Azure AD 预配服务的流量进入应用程序。 请注意，需要仔细检查 IP 范围列表中的计算地址。 地址（如“40.126.25.32”）可在 IP 范围列表中表示为“40.126.0.0/18”。 还可以使用以下 [API](/rest/api/virtualnetwork/servicetags/list)以编程方式检索 IP 范围列表。
 
+Azure AD 还支持基于代理的解决方案，以提供与专用网络（本地、托管在 Azure 中、托管在 AWS 中等）中的应用程序的连接。 客户可以在其专用网络中的服务器上部署轻量级代理，该代理提供与 Azure AD 的连接，而无需打开入站端口。 在[此处](/app-provisioning/on-premises-scim-provisioning)了解更多信息。
+
 ## <a name="build-a-scim-endpoint"></a>生成 SCIM 终结点
 
 既然你已设计了架构并了解了 Azure AD SCIM 实现，现在可以开始开发 SCIM 终结点了。 可以依赖于由 SCIM 社区发布的许多开源 SCIM 库，而不必从头开始完全靠自己构建实现。
@@ -1339,7 +1354,7 @@ SCIM 规范未定义用于身份验证和授权的特定于 SCIM 的方案，并
 
 |授权方法|优点|缺点|支持|
 |--|--|--|--|
-|用户名和密码（Azure AD 不推荐或不支持）|易于实现|不安全 - [你的密码无关紧要](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|库应用根据具体情况提供支持。 非库应用不支持。|
+|用户名和密码（Azure AD 不推荐或不支持）|易于实现|不安全 - [你的密码无关紧要](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|新库或非库应用不支持。|
 |长期持有者令牌|长期令牌不要求用户提供此令牌。 管理员在设置预配时可以轻松地使用这些令牌。|如果不使用电子邮件等不安全的方法，则很难与管理员共享长期令牌。 |库应用和非库应用均支持。 |
 |OAuth 授权代码许可|访问令牌的生存期比密码短得多，并且具有长期持有者令牌不具有的自动刷新机制。  初次授权时，真实用户必须提供该令牌，从而增加了责任级别。 |要求用户提供。 如果用户离开组织，则令牌无效，并且需要再次完成授权。|库应用支持，但非库应用不支持。 但是，可以在 UI 中提供一个访问令牌作为短期测试的机密令牌。 我们已计划支持对非库授予的 OAuth 代码，并支持库应用上的可配置身份验证/标记 URL。|
 |OAuth 客户端凭据许可|访问令牌的生存期比密码短得多，并且具有长期持有者令牌不具有的自动刷新机制。 授权代码许可和客户端凭据许可都创建相同类型的访问令牌，因此换用这些方法对 API 是透明的。  预配可以完全自动执行，无需用户干预即可以无提示的方式请求提供新令牌。 ||库应用和非库应用不支持。 支持已在我们的积压工作 (backlog) 中。|

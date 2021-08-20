@@ -1,29 +1,29 @@
 ---
-title: 快速入门 - 获取网络中继令牌
+title: 快速入门 - 访问 TURN 中继
 description: 了解如何使用 Azure 通信服务检索 STUN/TURN 令牌
 author: shahen
 manager: anvalent
 services: azure-communication-services
 ms.author: shahen
-ms.date: 05/21/2021
+ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: acs-js-csharp
-ms.openlocfilehash: 2fc0bfeaef1d3e0e49d1597f41582b6d79d9a3db
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 88bdfe85dbd2905ff060498003b23909abe7a855
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111025917"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471419"
 ---
-# <a name="quickstart-get-a-network-relay-token"></a>快速入门：获取网络中继令牌
+# <a name="quickstart-access-turn-relays"></a>快速入门：访问 TURN 中继
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-本快速入门介绍如何检索网络中继令牌以访问 Azure 通信服务 TURN 服务器
+本快速入门介绍如何检索网络中继令牌以访问 Azure 通信服务 TURN 服务器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free)
 - 有效的 Azure 通信服务资源，如果没有，请参阅[创建一个通信服务资源](./create-communication-resource.md)。

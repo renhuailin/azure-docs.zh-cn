@@ -2,18 +2,18 @@
 title: Azure CLI - 使用专用链接限制对托管磁盘的导入/导出访问
 description: 使用 Azure CLI 为托管磁盘启用专用链接。 仅允许在虚拟网络中安全地导出和导入磁盘。
 author: roygara
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: overview
-ms.date: 08/11/2020
+ms.date: 07/15/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: e1b1852521164b264376f10ce8ade85f415a0a91
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 05cff1385ee4e606a3d5ecae3f04139a67be699a
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112026590"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114289251"
 ---
 # <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI - 使用专用链接限制对托管磁盘的导入/导出访问
 
@@ -154,5 +154,7 @@ az snapshot create -n $snapshotNameSecuredWithPL \
 
 ## <a name="next-steps"></a>后续步骤
 
-- [专用链接常见问题解答](/azure/virtual-machines/faq-for-disks#private-links-for-securely-exporting-and-importing-managed-disks)
+- 将 VHD 上传到 Azure 或将托管磁盘复制到其他区域 - [Azure CLI](disks-upload-vhd-to-managed-disk-cli.md) 或 [Azure PowerShell 模块](../windows/disks-upload-vhd-to-managed-disk-powershell.md)
+- 下载 VHD - [Windows](../windows/download-vhd.md) 或 [Linux](download-vhd.md)
+- [专用链接常见问题解答](/azure/virtual-machines//faq-for-disks#private-links-for-securely-exporting-and-importing-managed-disks)
 - [使用 CLI 将托管快照作为 VHD 导出/复制到不同区域中的存储帐户](/previous-versions/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd)

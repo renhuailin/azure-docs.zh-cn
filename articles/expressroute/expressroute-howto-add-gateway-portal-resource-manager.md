@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: f81446111ab87b280d50caceb93beefc7aedef3b
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 0ab04c21cb904baf7ede72fd69f6d6b8375b07cc
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106110319"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114289894"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>教程：使用 Azure 门户配置 ExpressRoute 的虚拟网络网关
 > [!div class="op_single_selector"]
@@ -89,7 +89,7 @@ ms.locfileid: "106110319"
     | 公共 IP 地址名称 | 为公共 IP 地址提供一个名称。 |
 
     > [!IMPORTANT]
-    > 如果计划通过 ExpressRoute 使用基于 IPv6 的专用对等互连，请确保为“SKU”选择 AZ SKU (ErGw1AZ、ErGw2AZ、ErGw3AZ)。
+    > 如果计划在 ExpressRoute 上使用基于 IPv6 的专用对等互连，请参阅 [PowerShell 文档](./expressroute-howto-add-gateway-resource-manager.md)，创建具有标准、静态类型的公共 IP 地址的网关。
     > 
     > 
 

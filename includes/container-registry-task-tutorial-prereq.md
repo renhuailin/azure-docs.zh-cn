@@ -4,12 +4,12 @@ ms.service: container-registry
 ms.topic: include
 ms.date: 05/02/2019
 ms.author: danlep
-ms.openlocfilehash: 79e2ca71d6b8178be63c3429edba89cf3bb523e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 929bcb52f724162454fc7c65939a4cec2ffd7ca6
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96029977"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112255644"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -23,7 +23,7 @@ Azure 订阅中必须具有 Azure 容器注册表才能完成此教程。 如果
 
 ### <a name="create-a-github-personal-access-token"></a>创建 GitHub 个人访问令牌
 
-若要在向 Git 存储库提交内容时触发任务，ACR 任务需要用于访问存储库的个人访问令牌 (PAT)。 如果还没有 PAT，请按照以下步骤在 GitHub 中生成一个：
+若要在向 Git 存储库提交内容时触发任务，ACR 任务需要用于访问存储库的[个人访问令牌 (PAT)](../articles/container-registry/container-registry-tasks-overview.md#personal-access-token)。 如果还没有 PAT，请按照以下步骤在 GitHub 中生成一个：
 
 1. 导航到 GitHub 上的 PAT 创建页面 https://github.com/settings/tokens/new
 1. 输入令牌的简短 **说明**，例如“ACR 任务演示”

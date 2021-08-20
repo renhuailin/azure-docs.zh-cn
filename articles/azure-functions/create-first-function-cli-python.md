@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-python-uiex
-ms.openlocfilehash: b006f006c9fb45c9a7d80e815f95bec812e5ec3f
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: f08a035b9d095035fb108140af7c010bc9f049ea
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831827"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112573951"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中通过命令行创建 Python 函数
 
@@ -191,6 +191,18 @@ py -m venv .venv
     使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 登录到 Azure 帐户。
 
     ---
+    
+1. 使用 Azure CLI 时，可以启用 `param-persist` 选项，它自动跟踪所创建资源的名称。 要了解详细信息，请参阅 [Azure CLI 持久参数](/cli/azure/param-persist-howto)。  
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    ```azurecli
+    az config param-persist on
+    ```
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
+    
+    Azure PowerShell 不支持此功能。
+    
+    ---
 
 1. 在 `westeurope` 区域中创建名为 `AzureFunctionsQuickstart-rg` 的资源组。 
 
@@ -220,7 +232,7 @@ py -m venv .venv
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
     ```azurecli
-    az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
+    az storage account create --name <STORAGE_NAME> --sku Standard_LRS
     ```
 
     [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令可创建存储帐户。 
@@ -244,7 +256,7 @@ py -m venv .venv
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
         
     ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME> --os-type linux
+    az functionapp create --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name <APP_NAME> --os-type linux
     ```
     
     [az functionapp create](/cli/azure/functionapp#az_functionapp_create) 命令可在 Azure 创建函数应用。 如果使用的是 Python 3.7 或 3.6，请将 `--runtime-version` 分别更改为 `3.7` 或 `3.6`。
@@ -259,7 +271,7 @@ py -m venv .venv
 
     ---
     
-    在上一个示例中，请将 `<STORAGE_NAME>` 替换为在上一步骤中使用的帐户的名称，并将 `<APP_NAME>` 替换为适合自己的全局唯一名称。  `<APP_NAME>` 也是函数应用的默认 DNS 域。 
+    在上一个示例中，将 `<APP_NAME>` 替换为适合自己的全局唯一名称。  `<APP_NAME>` 也是函数应用的默认 DNS 域。 
     
     此命令将创建一个函数应用，该应用在 [Azure Functions 消耗计划](consumption-plan.md)下指定的语言运行时中运行，根据本教程产生的用量，此操作是免费的。 该命令还会在同一资源组中预配关联的 Azure Application Insights 实例，可以使用它来监视函数应用和查看日志。 有关详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。 该实例在激活之前不会产生费用。
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/01/2021
 ms.author: justinha
-ms.openlocfilehash: d0386368b0e6e65f35ad408efc2c420aaf8f1986
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 3ff8ffe39a84f9a1eeddd7de01ad8db44f73d52c
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438479"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112199171"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain"></a>教程：创建和配置 Azure Active Directory 域服务托管域
 
@@ -55,7 +55,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 若要启动“启用 Azure AD 域服务”向导，请完成以下步骤：
 
-1. 在 Azure 门户菜单或“主页”页上，选择“创建资源” 。
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”   。
 1. 在搜索栏中输入“域服务”，然后从搜索建议中选择“Azure AD 域服务”。
 1. 在“Azure AD 域服务”页上选择“创建”。 “启用 Azure AD 域服务”向导随即启动。
 1. 选择要在其中创建托管域的 Azure“订阅”。
@@ -158,7 +158,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 >
 > 如果以后创建托管域，Azure AD 中已同步的凭据信息不可重复使用 - 必须重新配置密码哈希同步，以再次存储密码哈希。 以前加入域的 VM 或用户无法立即进行身份验证 - Azure AD 需要在新的托管域中生成并存储密码哈希。
 >
-> 有关详细信息，请参阅 [Azure AD DS 和 Azure AD Connect 的密码哈希同步过程][password-hash-sync-process]。
+> [Azure AD DS 不支持 Azure AD Connect 云同步][/azure/active-directory/cloud-sync/what-is-cloud-sync#comparison-between-azure-ad-connect-and-cloud-sync]。 本地用户需要使用 Azure AD Connect 进行同步，才能访问已加入域的 VM。 有关详细信息，请参阅 [Azure AD DS 和 Azure AD Connect 的密码哈希同步过程][password-hash-sync-process]。
 
 对于在 Azure AD 中创建的仅限云的用户帐户而言，生成和存储这些密码哈希的步骤不同于使用 Azure AD Connect 从本地目录同步的用户帐户。
 
@@ -182,7 +182,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 1. 在“个人资料”页上，选择“更改密码”。
 1. 在“更改密码”页上输入现有（旧）密码，然后输入并确认新密码。
-1. 选择“提交”。
+1. 选择“提交”。 
 
 更改密码后，需要几分钟才能在 Azure AD DS 中使用新密码，并成功登录已加入托管域的计算机。
 

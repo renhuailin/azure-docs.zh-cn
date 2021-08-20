@@ -4,14 +4,14 @@ description: Azure 自动化每月都有重大更新。
 services: automation
 ms.subservice: ''
 ms.topic: overview
-ms.date: 06/09/2021
+ms.date: 07/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: bd2bd39839645aa0511a00cc7a6c87c711e33e2b
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 6b91b9bb4e1bc871ecd8cb7909718329f5c5c014
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112294744"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729561"
 ---
 # <a name="whats-new-in-azure-automation"></a>Azure 自动化有哪些新增功能？
 
@@ -23,6 +23,22 @@ Azure 自动化会不断改进。 为了让大家随时了解最新的开发成�
 
 本页面每月更新，请不时回来查看。
 
+## <a name="july-2021"></a>2021 年 7 月
+
+### <a name="preview-support-for-user-assigned-managed-identities"></a>支持预览由用户分配的托管标识
+
+**类型：** 新功能
+
+Azure 自动化现在支持对 Azure 公有云、政府云和中国区域中的云作业和混合作业使用[用户分配的托管标识](automation-secure-asset-encryption.md)。 有关详细信息，请参阅[公告](https://azure.microsoft.com/updates/azure-automation-user-assigned-identities/)。
+
+### <a name="general-availability-of-customer-managed-keys-for-azure-automation"></a>Azure 自动化的客户管理密钥的正式发布
+
+**类型：** 新功能
+
+客户可使用自己管理的密钥来管理和保护 Azure 自动化资产的加密。 由于引入了客户管理的密钥，你可以使用在 Azure Key Vault 中创建和管理的密钥，通过一个额外的加密层来补充默认加密。 这一额外的加密应有助于满足组织的法规或合规性需求。
+
+有关详细信息，请参阅[使用客户管理的密钥](automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)。
+
 ## <a name="june-2021"></a>2021 年 6 月
 
 ### <a name="security-update-for-log-analytics-contributor-role"></a>Log Analytics 参与者角色的安全更新
@@ -31,7 +47,7 @@ Azure 自动化会不断改进。 为了让大家随时了解最新的开发成�
 
 Microsoft 打算从 Log Analytics 参与者角色中删除自动化帐户权限。 目前，内置的 [Log Analytics 参与者](./automation-role-based-access-control.md#log-analytics-contributor)角色可以将权限提升为订阅[参与者](./../role-based-access-control/built-in-roles.md#contributor)角色。 由于自动化帐户运行方式帐户最初在订阅上配置了“参与者”权限，因此攻击者可以使用该帐户创建新的 runbook，并以订阅参与者身份执行代码。
 
-由于存在此安全风险，建议不要使用 Log Analytics 参与者角色来执行自动化作业。 请改为创建 Azure 自动化参与者自定义角色，并使用它执行与自动化帐户相关的操作。 有关实现步骤，请参阅[自定义 Azure 自动化参与者角色](./automation-role-based-access-control.md#custom-azure-automation-contributor-role)。
+由于存在这种安全风险，我们建议不要使用 Log Analytics 参与者角色来执行自动化作业。 请改为创建 Azure 自动化参与者自定义角色，并使用它执行与自动化帐户相关的操作。 有关实现步骤，请参阅[自定义 Azure 自动化参与者角色](./automation-role-based-access-control.md#custom-azure-automation-contributor-role)。
 
 ### <a name="support-for-automation-and-state-configuration-available-in-west-us-3"></a>在美国西部 3 区域中推出了对自动化和 State Configuration 的支持
 
@@ -111,7 +127,7 @@ Azure 自动化添加了五个新的内置策略：
 
 **类型：** 新功能
 
-有关详细信息，请参阅[通过 ARM 模板使用 Webhook](./automation-webhooks.md#use-a-webhook-from-an-arm-template)。
+有关详细信息，请参阅[通过 ARM 模板使用 Webhook](./automation-webhooks.md#create-runbook-and-webhook-with-arm-template)。
 
 ### <a name="azure-update-management-now-supports-centos-8x-red-hat-enterprise-linux-server-8x-and-suse-linux-enterprise-server-15"></a>Azure 更新管理现在支持Centos 8.x、Red Hat Enterprise Linux Server 8.x 和 SUSE Linux Enterprise Server 15
 

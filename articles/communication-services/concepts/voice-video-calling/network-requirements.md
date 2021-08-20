@@ -9,20 +9,16 @@ ms.author: nmurav
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 377d6783fb73c2d03f7e4dde7b352abe1eaef993
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 3a4f842f096f6f8c283934b67808bb33b20f8fc1
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110792"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113360192"
 ---
-# <a name="ensure-high-quality-media-in-azure-communication-services"></a>在 Azure 通信服务中确保媒体的高质量
+# <a name="network-recommendations"></a>网络建议
 
-本文档概述了在使用 Azure 通信服务构建高质量多媒体通信体验时应考虑的因素和最佳做法。
-
-## <a name="factors-that-affect-media-quality-and-reliability"></a>影响媒体质量和可靠性的因素
-
-有许多不同的因素会影响 Azure 通信服务实时媒体（音频、视频和应用程序共享）的质量。 这些因素包括网络质量、带宽、防火墙、主机和设备配置。
+本文档总结了网络环境如何影响语音和视频呼叫质量。 有许多不同的因素会影响 Azure 通信服务实时媒体（音频、视频和应用程序共享）的质量。 这些因素包括网络质量、带宽、防火墙、主机和设备配置。
 
 
 ### <a name="network-quality"></a>网络质量

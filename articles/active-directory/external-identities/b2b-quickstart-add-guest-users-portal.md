@@ -6,7 +6,7 @@ author: msmimart
 ms.author: mimart
 manager: celestedg
 ms.reviewer: mal
-ms.date: 08/05/2020
+ms.date: 06/18/2020
 ms.topic: quickstart
 ms.service: active-directory
 ms.subservice: B2B
@@ -15,12 +15,12 @@ ms.custom:
 - seo-update-azuread-jan
 - mode-portal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7326a35d07715eae75f70f2f33763f82946c589c
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 242f5a721959246b8d0159598cc86ab3b5194641
+ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529848"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112422599"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>快速入门：在 Azure 门户中将来宾用户添加到目录
 
@@ -34,7 +34,7 @@ ms.locfileid: "107529848"
 
 若要完成本教程中的方案，需要：
 
- - 一个可用于在租户目录中创建用户的角色，例如全局管理员或任何有限管理员目录角色。
+ - 一个可用于在租户目录中创建用户的角色，例如全局管理员或任何有限管理员目录角色（如来宾邀请者或用户管理员）。
  - 一个有效的电子邮件帐户，该帐户可添加到租户目录中，并可用于接收测试邀请电子邮件。
 
 ## <a name="add-a-new-guest-user-in-azure-ad"></a>在 Azure AD 中添加新的来宾用户

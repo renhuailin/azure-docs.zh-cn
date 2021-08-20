@@ -5,18 +5,18 @@ ms.topic: quickstart
 ms.date: 06/11/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: db1650c61ae9e70955fd945527ff049e2663a174
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 333f9572e9bf5a24e7c9ac230b10f74adf5be7de
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112018056"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112963791"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Python 应用
 
 本文介绍了 [Azure 应用服务](overview.md)如何运行 Python 应用、你如何将现有应用迁移到 Azure 以及如何按需自定义应用服务的行为。 必须连同所有必需的 [pip](https://pypi.org/project/pip/) 模块一起部署 Python 应用。
 
-部署 [Git 存储库](deploy-local-git.md)或 [zip 包](deploy-zip.md)时，应用服务部署引擎会自动激活虚拟环境并运行 `pip install -r requirements.txt`。
+部署 [Git 存储库](deploy-local-git.md)或部署[启用了生成自动化](deploy-zip.md#enable-build-automation)的 [zip 包](deploy-zip.md)时，应用服务部署引擎会自动激活虚拟环境并运行 `pip install -r requirements.txt`。
 
 对于在应用服务中使用内置 Linux 容器的 Python 开发人员，本指南为其提供了关键概念和说明。 若从未使用过 Azure 应用服务，请先按照 [Python 快速入门](quickstart-python.md)以及[将 Python 与 PostgreSQL 配合使用教程](tutorial-python-postgresql-app.md)进行操作。
 
@@ -65,7 +65,7 @@ ms.locfileid: "112018056"
 
 ## <a name="customize-build-automation"></a>自定义生成自动化
 
-在使用 Git 或 zip 包部署应用时，应用服务的生成系统（称为 Oryx）执行以下步骤：
+在部署应用且将应用设置 `SCM_DO_BUILD_DURING_DEPLOYMENT` 设置为 `1` 时，应用服务的生成系统 Oryx 将执行以下步骤：
 
 1. 如果由 `PRE_BUILD_COMMAND` 设置指定，请运行预先生成的自定义脚本。 （该脚本自身可运行其他 Python 和 Node.js 脚本、pip 和 npm 命令，以及 yarn 等基于节点的工具，例如 `yarn install` 和 `yarn build`。）
 
@@ -326,7 +326,7 @@ db_server = os.environ['DATABASE_SERVER']
 
 ## <a name="detect-https-session"></a>检测 HTTPS 会话
 
-在应用服务中，[SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy) (wikipedia.org) 在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。
+在应用服务中，[TLS/SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy) (wikipedia.org) 在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。
 
 ```python
 if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto'] == 'https':
@@ -440,4 +440,4 @@ if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto
 > [教程：从专用容器存储库进行部署](tutorial-custom-container.md?pivots=container-linux)
 
 > [!div class="nextstepaction"]
-> [应用服务 Linux 常见问题解答](faq-app-service-linux.md)
+> [应用服务 Linux 常见问题解答](faq-app-service-linux.yml)

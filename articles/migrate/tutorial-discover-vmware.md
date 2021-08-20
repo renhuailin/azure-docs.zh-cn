@@ -1,18 +1,18 @@
 ---
 title: 通过“Azure Migrate 发现和评估”发现 VMware 环境中运行的服务器
 description: 了解如何通过使用“Azure Migrate 发现和评估”工具发现在 VMware 环境中运行的本地服务器、应用程序和依赖项。
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: 42140e61146d8682d193f89b2a691b8a13260533
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: d2b71b227500644a63eb116493abeba7576eb7eb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803558"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464927"
 ---
 # <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>教程：通过“Azure Migrate：发现和评估”发现 VMware 环境中运行的服务器
 
@@ -145,7 +145,7 @@ Azure Migrate 必须具有 vCenter Server 只读帐户才能发现和评估在 V
 
 1. 提供设备名称，并在门户中生成项目密钥。
 1. 下载 OVA 模板文件，然后将其导入 vCenter Server。 验证 OVA 是否安全。
-1. 从 OVA 文件中创建设备。 验证此设备可以连接到 Azure Migrate。
+1. 从 OVA 文件中创建设备。 确认此设备可以连接到 Azure Migrate。
 1. 首次配置设备。 
 1. 使用项目密钥将设备注册到项目。
 
@@ -153,14 +153,14 @@ Azure Migrate 必须具有 vCenter Server 只读帐户才能发现和评估在 V
 
 1. 在“迁移目标”中，选择“Windows、Linux 和 SQL 服务器” > “Azure Migrate: 发现和评估” > “发现”   。
 1. 在“发现服务器”中，选择“服务器是否虚已拟化？”  > “是，使用 VMware vSphere 虚拟机监控程序”。
-1. 在“1：生成项目密钥”中，为在 VMware 环境中发现服务器而设置的 Azure Migrate 设备提供名称。 该名称应是字母数字，且长度为 14 个或更少的字符。
+1. 在“1: 生成项目密钥”中，为在 VMware 环境中发现服务器而设置的 Azure Migrate 设备提供名称。 该名称应是字母数字，且长度不得超过 14 个字符。
 1. 若要开始创建所需的 Azure 资源，请选择“生成密钥”。 创建资源时，请勿关闭“发现”窗格。
 1. 成功创建 Azure 资源后，会生成一个“项目密钥”。
 1. 复制密钥。 配置设备时，将使用密钥完成设备的注册。
 
 #### <a name="download-the-ova-template"></a>下载 OVA 模板
 
-在“2：下载 Azure Migrate 设备”中，选择 OVA 文件然后选择“下载” 。
+在“2: 下载 Azure Migrate 设备”中，选择 OVA 文件然后选择“下载”。
 
 ##### <a name="verify-security"></a>验证安全性
 
@@ -208,7 +208,7 @@ Azure Migrate 必须具有 vCenter Server 只读帐户才能发现和评估在 V
 
 ### <a name="configure-the-appliance"></a>配置设备
 
-若要首次设置设备：
+首次设置设备的步骤：
 
 > [!NOTE]
 > 如果使用 [PowerShell 脚本](deploy-appliance-script.md)而不是下载的 OVA 模板设置设备，则可以跳过前两个步骤。
@@ -221,26 +221,26 @@ Azure Migrate 必须具有 vCenter Server 只读帐户才能发现和评估在 V
 1. 接受许可条款，并阅读第三方信息。
 1. 在配置管理器中，选择“设置先决条件”，然后完成以下步骤：
     1. **连接**：设备将检查服务器是否可访问 Internet。 如果服务器使用代理：
-        1. 选择“设置代理”以指定代理地址（以 `http://ProxyIPAddress` 或 `http://ProxyFQDN` 形式，其中“FQDN”指“完全限定的域名”）和侦听端口 。
+        1. 选择“设置代理”以指定代理地址（以 `http://ProxyIPAddress` 或 `http://ProxyFQDN` 形式，其中“FQDN”指“完全限定的域名”）和侦听端口。
         1.  如果代理需要身份验证，请输入凭据。
         1. 如果已添加代理详细信息或已禁用代理或身份验证，请选择“保存”，再次触发连接并进行连接性检查。
 
             仅支持 HTTP 代理。
-    1. **时间同步**：检查设备上的时间是否与 Internet 时间同步，以便正常运行发现。
+    1. 时间同步：检查设备上的时间是否与 Internet 时间同步，以便正常运行发现。
     1. **安装更新**：设备可确保安装最新的更新。 检查完成后，可以选择“查看设备服务”查看设备服务器上运行的服务的状态和版本。
-    1. **安装 VDDK**：设备将检查是否已安装 VMware vSphere 虚拟磁盘开发工具包 (VDDK)。 如果未安装 VDDK，请从 VMware 下载 VDDK 6.7。 按照“安装说明”中提供的信息将下载的 zip 内容解压缩到设备上的指定位置。
+    1. 安装 VDDK：设备将检查是否已安装 VMware vSphere 虚拟磁盘开发工具包 (VDDK)。 如果未安装 VDDK，请从 VMware 下载 VDDK 6.7。 按照“安装说明”中提供的信息将下载的 zip 内容解压缩到设备上的指定位置。
 
         Azure Migrate 服务器迁移在迁移到 Azure 期间使用 VDDK 来复制服务器。 
 1. 可以在设备配置期间随时“重新运行先决条件”，以检查设备是否满足所有先决条件：
 
-    :::image type="content" source="./media/tutorial-discover-vmware/appliance-prerequisites.png" alt-text="显示在设备配置管理器中设置先决条件的屏幕截图。":::
+    :::image type="content" source="./media/tutorial-discover-vmware/appliance-prerequisites.png" alt-text="此屏幕截图显示在设备配置管理器中设置先决条件。":::
 
 #### <a name="register-the-appliance-with-azure-migrate"></a>将设备注册到 Azure Migrate
 
 1. 粘贴从门户复制的项目密钥。 如果没有该密钥，请转到“Azure Migrate：发现和评估” > “发现” > 管理现有设备”  。 选择生成项目密钥时提供的设备名称，然后复制显示的密钥。
-1. 必须使用设备代码向 Azure 进行身份验证。 选择“登录名”。 在“继续使用 Azure 登录”选择“复制代码并登录”来复制设备代码，并在新的浏览器标签页中打开 Azure 登录提示。请确保已禁用浏览器中的弹出窗口阻止程序以查看提示 。
+1. 必须使用设备代码向 Azure 进行身份验证。 选择“登录名”。 在“继续使用 Azure 登录”选择“复制代码并登录”来复制设备代码，并在新的浏览器标签页中打开 Azure 登录提示。请确保已禁用浏览器中的弹出窗口阻止程序以查看提示。
 
-    :::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="显示复制设备代码和登录位置的屏幕截图。":::
+    :::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="此屏幕截图显示复制设备代码和登录位置。":::
 
 1. 在浏览器的新选项卡中，粘贴设备代码并使用 Azure 用户名和密码登录。 不支持使用 PIN 登录。
 
@@ -258,31 +258,31 @@ Azure Migrate 必须具有 vCenter Server 只读帐户才能发现和评估在 V
 
 设备必须连接到 vCenter Server 才能发现服务器的配置和性能数据：
 
-1. 在“步骤 1：提供 vCenter Server 凭据”中，选择“添加凭据”以输入凭据的名称 。 添加 vCenter Server 帐户的用户名和密码，设备将使用该帐户发现 vCenter Server 上运行的服务器。
+1. 在“步骤 1: 提供 vCenter Server 凭据”中，选择“添加凭据”以输入凭据的名称。 添加 vCenter Server 帐户的用户名和密码，设备将使用该帐户发现 vCenter Server 上运行的服务器。
     - 你应已按照本文前面所述设置了一个拥有所需权限的帐户。
     - 如果要将发现范围限定于特定的 VMware 对象（vCenter Server 数据中心、群集、主机、群集文件夹、主机文件夹或单个服务器），请参阅[设置发现范围](set-discovery-scope.md)以限制 Azure Migrate 所用帐户的相关说明。
-1. 在“步骤 2：提供 vCenter Server 详细信息”中，选择“添加发现源”，从下拉列表中选择凭据的名称 。 选择 vCenter Server 的 IP 地址或 FQDN。 可以将端口保留为默认值 (443)，或指定 vCenter Server 侦听的自定义端口。 选择“保存”。
+1. 在“步骤 2: 提供 vCenter Server 详细信息”中，选择“添加发现源”，从下拉列表中选择凭据的名称。 选择 vCenter Server 的 IP 地址或 FQDN。 可以将端口保留为默认值 (443)，或指定 vCenter Server 侦听的自定义端口。 选择“保存”。
 1. 设备尝试使用凭据验证与运行 vCenter Server 的服务器之间的连接。 将显示凭据表中 vCenter Server IP 地址或 FQDN 的验证状态。
 1. 在开始发现之前，可以随时“重新验证”与 vCenter Server 之间的连接。
 
-    :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="显示在设备配置管理器中管理 vCenter Server 凭据和发现源的屏幕截图。":::
+    :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="此屏幕截图显示在设备配置管理器中管理 vCenter Server 凭据和发现源。":::
 
 ### <a name="provide-server-credentials"></a>提供服务器凭据
 
-在“步骤 3：提供服务器凭据以执行软件盘存、无代理依赖项分析以及对 SQL Server 实例和数据库的发现”中，可以提供多个服务器凭据。 如果不想使用上述任何设备功能，可以跳过此步骤，开始执行 vCenter Server 发现。 随时可以更改此选项。
+在“步骤 3: 提供服务器凭据以执行软件盘存、无代理依赖项分析以及对 SQL Server 实例和数据库的发现”中，可以提供多个服务器凭据。 如果不想使用上述任何设备功能，可以跳过此步骤，开始执行 vCenter Server 发现。 随时可以更改此选项。
 
-:::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="显示为软件盘存、依赖项分析和 SQL Server 发现提供凭据的屏幕截图。":::
+:::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="此屏幕截图显示为软件盘存、依赖项分析和 SQL Server 发现提供凭据。":::
 
 若要使用这些功能，可通过完成以下步骤提供服务器凭据。 设备会尝试自动将凭据映射到服务器以执行发现功能。
 
-若要添加服务器凭据：
+添加服务器凭据的步骤：
 
 1. 选择“添加凭据”。 
 1. 在下拉菜单中，选择“凭据类型”。
     
-    可以提供域/、Windows（非域）/、Linux（非域）/ 和 SQL Server 身份验证凭据。 了解[如何提供凭据](add-server-credentials.md)以及我们如何处理凭据。
+    可以提供域/、Windows（非域）/、Linux（非域）/ 和 SQL Server 身份验证凭据。 了解如何[提供凭据](add-server-credentials.md)以及我们如何处理凭据。
 1. 对于每种类型的凭据，请输入：
-    * 易记名称。
+    * 一个易记名称。
     * 一个用户名。
     * 一个密码。
     选择“保存”。
@@ -290,34 +290,32 @@ Azure Migrate 必须具有 vCenter Server 只读帐户才能发现和评估在 V
     如果选择使用域凭据，还需要输入域的 FQDN。 必须使用 FQDN 才能在该域的 Active Directory 实例中验证凭据的真实性。
 1. 检查用于发现已安装的应用程序、执行无代理依赖项分析，以及发现 SQL Server 实例和数据库的帐户的[所需权限](add-server-credentials.md#required-permissions)。
 1. 若要一次添加多个凭据，请选择“添加更多”，以保存和添加更多凭据。
-    选择“保存”或“添加更多”时，设备将使用域的 Active Directory 实例验证域凭据以进行身份验证。  每次添加后都会进行验证，以避免在设备循环访问以将凭据映射到相应服务器时帐户锁定。
+    选择“保存”或“添加更多”时，设备将使用域的 Active Directory 实例验证域凭据以进行身份验证。 每次添加后都会进行验证，以避免在设备循环访问以将凭据映射到相应服务器时帐户锁定。
 
-若要对检查域凭据的验证：
+检查域凭据的验证：
 
 在配置管理器的凭据表中，请参阅域凭据的“验证状态”。 只验证域凭据。
 
-如果验证失败，可以选择“失败状态”以查看验证错误。 解决此问题，然后选择“重新验证凭据”以重新尝试凭据验证。
+如果验证失败，可以选择“失败”状态以查看验证错误。 解决此问题，然后选择“重新验证凭据”以重新尝试凭据验证。
 
-:::image type="content" source="./media/tutorial-discover-vmware/add-server-credentials-multiple.png" alt-text="显示提供和验证多个凭据的屏幕截图。":::
+:::image type="content" source="./media/tutorial-discover-vmware/add-server-credentials-multiple.png" alt-text="此屏幕截图显示提供和验证多个凭据。":::
 
 ### <a name="start-discovery"></a>启动发现
 
-若要开始 vCenter Server 发现，在“步骤 3：提供服务器凭据以执行软件盘存、无代理依赖项分析以及对 SQL Server 实例和数据库的发现”中，选择“开始发现” 。 成功启动发现后，可以通过查看源表中的 vCenter Server IP 地址或 FQDN 检查发现状态。
-
-> [!NOTE]
-> [TrustServerCertificate](/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) 属性设置为 `true` 时，Azure Migrate 会加密 Azure Migrate 设备和源 SQL Server 实例之间的通信。 传输层使用 SSL 加密通道并绕过证书链来验证信任。 必须将设备服务器设置为[信任证书的根颁发机构](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。
->
-> 如果服务器在启动时未预配有任何证书，SQL Server 将生成可用于加密登录数据包的自签名证书。 [了解详细信息](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)。
->
+若要启动 vCenter Server 发现，请选择“开始发现”。 成功启动发现后，可以通过查看源表中的 vCenter Server IP 地址或 FQDN 检查发现状态。
 
 ## <a name="how-discovery-works"></a>发现的工作原理
 
 * 在 Azure 门户中，大约需要 15 分钟才能显示发现服务器的库存。
 * 如果已提供服务器凭据，则在发现运行 vCenter Server 的服务器完成后，会自动启动软件盘存（发现已安装的应用程序）。 软件盘存每 12 小时发生一次。
 * [软件盘存](how-to-discover-applications.md)会标识在服务器上运行的 SQL Server 实例。 设备利用该功能收集的信息，尝试通过 Windows 身份验证凭据或设备上提供的 SQL Server 身份验证凭据连接到 SQL Server 实例。 然后，它会收集有关 SQL Server 数据库及其属性的数据。 SQL Server 发现每 24 小时执行一次。
+* 设备只能连接到与其建立了网络连接的 SQL Server 实例，而软件盘存本身无需网络连接。
 * 对安装的应用程序的发现过程可能需要超过 15 分钟。 具体时间取决于发现的服务器数量。 如果有 500 个服务器，门户中的 Azure Migrate 项目大约需要一小时才会显示发现的库存。
-* 在软件盘存过程中，针对服务器循环访问已添加的服务器凭据，并对这些凭据进行验证，以便进行无代理依赖项分析。 完成服务器发现后，可以在门户中对服务器启用无代理依赖项分析。 只能选择验证成功的服务器来启用无代理依赖项分析。
+* 在软件盘存过程中，针对服务器循环访问已添加的服务器凭据，并对这些凭据进行验证，以便进行无代理依赖项分析。 完成服务器发现后，可以在门户中对服务器启用无代理依赖项分析。 只能选择验证成功的服务器来启用[无代理依赖项分析](how-to-create-group-machine-dependencies-agentless.md)。
 * 在开始发现后的 24 小时内，SQL Server 实例和数据库数据将开始在门户中显示。
+* 默认情况下，Azure Migrate 使用最安全的方法连接到 SQL 实例，即 Azure Migrate 通过将 TrustServerCertificate 属性设置为 `true`，对 Azure Migrate 设备和源 SQL Server 实例之间的通信进行加密。 此外，传输层使用 SSL 加密通道并绕过证书链来验证信任。 因此，必须将设备服务器设置为信任证书的根颁发机构。 但是，可以通过在设备上选择“编辑 SQL Server 连接属性”来修改连接设置。[了解详细信息](https://go.microsoft.com/fwlink/?linkid=2158046)以了解要选择的内容。
+
+    :::image type="content" source="./media/tutorial-discover-vmware/sql-connection-properties.png" alt-text="显示如何编辑 SQL Server 连接属性的屏幕截图。":::
 
 ## <a name="next-steps"></a>后续步骤
 

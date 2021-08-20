@@ -1,7 +1,6 @@
 ---
-title: 教程：在 Azure SQL 数据库中开始使用具有安全 enclave 的 Always Encrypted
+title: 教程：开始使用具有安全 enclave 的 Always Encrypted
 description: 本教程介绍如何为 Azure SQL 数据库中具有安全 Enclave 的 Always Encrypted 创建基本环境，如何就地加密数据，以及如何使用 SQL Server Management Studio (SSMS) 对加密列发出各种机密查询。
-keywords: 加密数据, sql 加密, 数据库加密, 敏感数据, 始终加密, 安全 enclave, SGX, 证明
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,20 +9,17 @@ ms.topic: tutorial
 author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
-ms.date: 05/01/2021
-ms.openlocfilehash: 71e90e0afc3bc976ed65eb0ef59c76781490bdc1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 07/14/2021
+ms.openlocfilehash: dd8fc18b8f24a6164830dda6044c1b03151eb180
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110457109"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113727333"
 ---
 # <a name="tutorial-getting-started-with-always-encrypted-with-secure-enclaves-in-azure-sql-database"></a>教程：在 Azure SQL 数据库中开始使用具有安全 enclave 的 Always Encrypted
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
-
-> [!NOTE]
-> Azure SQL 数据库的具有安全 Enclave 的 Always Encrypted 目前提供公共预览版。
 
 本教程介绍如何在 Azure SQL 数据库中开始使用[具有安全 enclave 的 Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves)。 它将介绍：
 
@@ -71,7 +67,7 @@ PowerShell 库已弃用传输层安全性 (TLS) 版本 1.0 和 1.1。 建议使�
 
 ## <a name="step-1-create-and-configure-a-server-and-a-dc-series-database"></a>步骤 1：创建并配置服务器和 DC 系列数据库
 
-此步骤将使用 DC 系列硬件代系创建新的 Azure SQL 数据库逻辑服务器和数据库，这对于使用安全领域的 Always Encrypted 而言是必需的操作。 有关详细信息，请参阅 [DC 系列](service-tiers-vcore.md#dc-series)。
+此步骤将使用 DC 系列硬件代系创建新的 Azure SQL 数据库逻辑服务器和数据库，这对于使用安全领域的 Always Encrypted 而言是必需的操作。 有关详细信息，请参阅 [DC 系列](service-tiers-sql-database-vcore.md#dc-series)。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -90,7 +86,7 @@ PowerShell 库已弃用传输层安全性 (TLS) 版本 1.0 和 1.1。 建议使�
    - **密码**：输入符合要求的密码，然后在“确认密码”字段中再次输入该密码。
    - 位置：从下拉列表中选择一个位置。
       > [!IMPORTANT]
-      > 需要选择一个既支持 DC 系列硬件代系，也支持 Microsoft Azure 证明的位置（Azure 区域）。 有关支持 DC 系列的区域列表，请参阅 [DC 系列可用性](service-tiers-vcore.md#dc-series-1)。 [此文档](https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation)介绍了 Microsoft Azure 证明的区域可用性。
+      > 需要选择一个既支持 DC 系列硬件代系，也支持 Microsoft Azure 证明的位置（Azure 区域）。 有关支持 DC 系列的区域列表，请参阅 [DC 系列可用性](service-tiers-sql-database-vcore.md#dc-series)。 [此文档](https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation)介绍了 Microsoft Azure 证明的区域可用性。
 
    选择“确定”。
 1. 将“想要使用 SQL 弹性池”设置保留为“否” 。
@@ -135,7 +131,7 @@ PowerShell 库已弃用传输层安全性 (TLS) 版本 1.0 和 1.1。 建议使�
 1. 创建新的资源组。
 
    > [!IMPORTANT]
-   > 需要在既支持 DC 系列硬件代系，也支持 Microsoft Azure 证明的区域（位置）创建资源组。 有关支持 DC 系列的区域列表，请参阅 [DC 系列可用性](service-tiers-vcore.md#dc-series-1)。 [此文档](https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation)介绍了 Microsoft Azure 证明的区域可用性。
+   > 需要在既支持 DC 系列硬件代系，也支持 Microsoft Azure 证明的区域（位置）创建资源组。 有关支持 DC 系列的区域列表，请参阅 [DC 系列可用性](service-tiers-sql-database-vcore.md#dc-series)。 [此文档](https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation)介绍了 Microsoft Azure 证明的区域可用性。
 
    ```powershell
    $resourceGroupName = "<your new resource group name>"

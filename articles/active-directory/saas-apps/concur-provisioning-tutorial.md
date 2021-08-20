@@ -10,16 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: edb21287b30f8ba77d6312ec6b456e20aa260598
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca9585ab1b6d02cec5e9addbbd8ca230745a5838
+ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94358205"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114370891"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>教程：为 Concur 配置自动用户预配
 
 本教程旨在介绍为了从 Azure AD 自动将用户帐户预配到 Concur 以及取消其预配而需要在 Concur 和 Azure AD 中执行的步骤。
+
+> [!WARNING]
+> 预配集成不再受到支持。 结果是，Azure Active Directory 企业应用库中 SAP Concur 应用程序的预配功能很快就会被删除。 应用程序的 SSO 功能将保持不变。 Microsoft 正在与 SAP Concur 合作来构建一种新的现代化预配集成，但在这完成之前，目前没有启用 ETA。
 
 ## <a name="prerequisites"></a>先决条件
 

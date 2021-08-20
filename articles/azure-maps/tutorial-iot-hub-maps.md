@@ -3,18 +3,18 @@ title: 教程：实现 IoT 空间分析 | Microsoft Azure Maps
 description: 本教程介绍如何将 IoT 中心与 Microsoft Azure Maps 服务 API 集成
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 09/01/2020
+ms.date: 06/21/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 37aa8c954f847002ad69fa17ee1f025049ec9bb6
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 31e122b3d65598c0e6a3dbfcf3aa65a9fd339609
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110785753"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114405899"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>教程：使用 Azure Maps 实现 IoT 空间分析
 
@@ -119,11 +119,9 @@ ms.locfileid: "110785753"
 
 按照以下步骤，使用 Azure Maps 数据上传 API 上传地理围栏： 
 
-1. 打开 Postman 应用，然后选择“新建”。 在“新建”窗口中，选择“集合”。 命名集合，然后选择“创建”。
+1. 打开 Postman 应用，再次选择“新建”。 在“创建新项”窗口中，选择“HTTP 请求”，然后输入请求名称 。
 
-2. 若要创建请求，请再次选择“新建”。 在“创建新项”窗口中，选择“请求”，然后输入请求名称 。 选择在上一步中创建的集合，然后选择“保存”。
-
-3. 在生成器选项卡上选择“POST”HTTP 方法并输入以下 URL，将地理围栏上传到数据上传 API。 确保将 `{subscription-key}` 替换为主要订阅密钥。
+2. 在生成器选项卡上选择“POST”HTTP 方法并输入以下 URL，将地理围栏上传到数据上传 API。 确保将 `{subscription-key}` 替换为主要订阅密钥。
 
     ```HTTP
     https://us.atlas.microsoft.com/mapData?subscription-key={subscription-key}&api-version=2.0&dataFormat=geojson
@@ -131,21 +129,21 @@ ms.locfileid: "110785753"
 
     在 URL 路径中，`dataFormat` 参数对应的 `geojson` 值表示正在上传的数据的格式。
 
-4. 为输入格式选择“正文” > “原始”，然后从下拉列表选择“JSON”  。 [打开 JSON 数据文件](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)，然后将 JSON 复制到正文部分。 选择“发送”。
+3. 为输入格式选择“正文” > “原始”，然后从下拉列表选择“JSON”  。 [打开 JSON 数据文件](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)，然后将 JSON 复制到正文部分。 选择“发送”。
 
-5. 选择“发送”，然后等待请求处理完成。 在请求处理完成后，请转到响应的“标头”选项卡。 复制“Operation-Location”键的值，即 `status URL`。
+4. 选择“发送”，然后等待请求处理完成。 在请求处理完成后，请转到响应的“标头”选项卡。 复制“Operation-Location”键的值，即 `status URL`。
 
     ```http
     https://us.atlas.microsoft.com/mapData/operations/<operationId>?api-version=2.0
     ```
 
-6. 检查 API 调用的状态，在 `status URL` 上创建“GET”HTTP 请求。 为了进行身份验证，需要将主订阅密钥追加到 URL 中。 “GET”请求应如以下 URL 所示：
+5. 检查 API 调用的状态，在 `status URL` 上创建“GET”HTTP 请求。 为了进行身份验证，需要将主订阅密钥追加到 URL 中。 “GET”请求应如以下 URL 所示：
 
    ```HTTP
    https://us.atlas.microsoft.com/mapData/<operationId>/status?api-version=2.0&subscription-key={subscription-key}
    ```
 
-7. 请求成功完成后，在响应窗口中选择“标头”选项卡。 复制“Resource-Location”键的值，即 `resource location URL`。  `resource location URL` 包含已上传数据的唯一标识符 (`udid`)。 复制 `udid`，本教程稍后会用到它。
+6. 请求成功完成后，在响应窗口中选择“标头”选项卡。 复制“Resource-Location”键的值，即 `resource location URL`。  `resource location URL` 包含已上传数据的唯一标识符 (`udid`)。 复制 `udid`，本教程稍后会用到它。
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/resource-location-url.png" alt-text="复制资源位置 URL。":::
 
@@ -156,7 +154,7 @@ IoT 中心使 IoT 应用程序与其管理的设备之间能够安全可靠地�
 > [!NOTE]
 > 在事件网格中发布设备遥测事件的功能当前处于预览阶段。 此功能已在除以下区域之外的所有区域推出：美国东部、美国西部、西欧、Azure 政府、Azure 中国世纪互联和 Azure 德国。
 
-若要在 ContosoRental 资源组中创建 IoT 中心，请按照[创建 IoT 中心](../iot-hub/quickstart-send-telemetry-dotnet.md#create-an-iot-hub)中的步骤执行操作。
+若要在 ContosoRental 资源组中创建 IoT 中心，请按照[创建 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp#create-an-iot-hub)中的步骤执行操作。
 
 ## <a name="register-a-device-in-your-iot-hub"></a>在 IoT 中心注册设备
 
@@ -174,7 +172,7 @@ Azure Functions 是无服务器计算服务，使用它可以运行一小段代�
 
 1. 在 Azure 门户仪表板中，选择“创建资源”。 在搜索文本框中键入“函数应用”。 选择“函数应用” > “创建” 。
 
-1. 在“函数应用”创建页上为函数应用命名。 在“资源组”下，从下拉列表中选择“ContosoRental”。 选择“.NET Core”作为“运行时堆栈”。 在页面底部，选择“下一页:托管 >”。
+1. 在“函数应用”创建页上为函数应用命名。 在“资源组”下，从下拉列表中选择“ContosoRental”。 选择“.NET”作为“运行时堆栈” 。 “版本”选择“3.1” 。  在页面底部，选择“下一页:托管 >”。
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="创建函数应用的屏幕截图。":::
 
@@ -273,7 +271,7 @@ Azure Functions 是无服务器计算服务，使用它可以运行一小段代�
 
 * [Azure Maps REST API](/rest/api/maps/spatial/getgeofence)
 
-* [IoT 即插即用](../iot-pnp/index.yml)
+* [IoT 即插即用](../iot-develop/index.yml)
 
 若要获取 Azure 认证的 IoT 设备列表，请访问：
 
@@ -289,4 +287,4 @@ Azure Functions 是无服务器计算服务，使用它可以运行一小段代�
 
 
 > [!div class="nextstepaction"]
-> [从设备发送遥测数据](../iot-hub/quickstart-send-telemetry-dotnet.md)
+> [从设备发送遥测数据](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)

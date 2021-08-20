@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/08/2021
+ms.date: 06/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 7a445eefa31e741562105e89fa105d404ccc0c7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 97b8efe9ad614e3b243954eee4a319da778b82c8
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646344"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112457161"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>教程：Azure Active Directory 与 ArcGIS Online 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "101646344"
 * 允许用户使用其 Azure AD 帐户自动登录到 ArcGIS Online。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -95,7 +95,7 @@ ms.locfileid: "101646344"
 
 7. 将扩展添加到浏览器后，单击“设置 ArcGIS Online”会将你定向到 ArcGIS Online 应用程序。 在此处，提供管理员凭据以登录到 ArcGIS Online。 浏览器扩展将自动配置应用程序，并自动执行“配置 ArcGIS Online 单一登录”部分中的步骤。
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户 
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -103,11 +103,11 @@ ms.locfileid: "101646344"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 本部分将通过授予 B.Simon 访问 ArcGIS Online 的权限，使其能够使用 Azure 单一登录。
 
@@ -119,33 +119,33 @@ ms.locfileid: "101646344"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-## <a name="configure-arcgis-online-sso"></a>配置 ArcGIS Online SSO
+## <a name=&quot;configure-arcgis-online-sso&quot;></a>配置 ArcGIS Online SSO
 
 1. 如果想要手动设置 ArcGIS Online，请打开新的 Web 浏览器窗口并以管理员身份登录到你的 ArcGIS 公司网站，并执行以下步骤：
 
-2. 单击“编辑设置”。
+2. 转到“组织” -> “设置” 。 
 
-    ![编辑设置](./media/arcgis-tutorial/settings.png "单击“设置”")
+    ![编辑设置](./media/arcgis-tutorial/settings.png &quot;单击“设置”")
 
-3. 单击 **“安全性”** 。
+3. 在左侧菜单中，单击“安全性”，然后选择“登录”选项卡中的“新建 SAML 登录” 。
 
-    ![安全性](./media/arcgis-tutorial/secure.png "安全性")
+    ![“安全性”选项的屏幕截图](./media/arcgis-tutorial/security.png)
 
-4. 在“企业登录”下，单击“设置标识提供者”。
+4. 在“设置 SAML 登录”窗口中，配置选为“一个表示提供者”，然后单击“下一页”  。
 
-    ![企业登录](./media/arcgis-tutorial/enterprise.png "企业登录")
+    ![企业登录](./media/arcgis-tutorial/identity-provider.png "企业登录")
 
-5. 在“设置标识提供者”配置页上，执行以下步骤：
+5. 在“指定属性”选项卡中，执行以下步骤：
 
-    ![设置标识提供者](./media/arcgis-tutorial/identity-provider.png "设置标识提供者")
+    ![设置标识提供者](./media/arcgis-tutorial/set-saml-login.png "设置标识提供者")
 
     a. 在“名称”文本框中，键入组织的名称。
 
-    b. 对于“企业标识提供者提供元数据所使用的方法”，请选择“文件”。
+    b. 对于“企业标识提供者的元数据源”，请选择“文件” 。
 
-    c. 若要上传下载的元数据文件，请单击“选择文件”。
+    c. 单击“选择文件”以上传从 Azure 门户下载的“联合元数据 XML”文件 。
 
-    d. 单击“设置标识提供者”。
+    d. 单击“ **保存**”。
 
 ### <a name="create-arcgis-online-test-user"></a>创建 ArcGIS Online 测试用户
 
@@ -156,22 +156,25 @@ ms.locfileid: "101646344"
 
 1. 登录“ArcGIS”租户。
 
-2. 单击“邀请成员”。
+2. 转到“组织” -> “成员”，然后单击“邀请成员”  。
 
     ![邀请成员](./media/arcgis-tutorial/invite.png "邀请成员")
 
-3. 选择“自动添加成员且无需发送电子邮件”，然后单击“下一步”。
+3. 选择“添加成员且无需发送邀请”方法，然后单击“下一页” 。
 
-    ![自动添加成员](./media/arcgis-tutorial/members.png "自动添加成员")
+    ![自动添加成员](./media/arcgis-tutorial/add-members.png "自动添加成员")
 
-4. 在“成员”对话框页上，执行以下步骤：
+1. 在“编译成员列表”中，选择“新建成员”，然后单击“下一页”  。
+
+4. 在下一页中填写必填字段，然后单击“下一页”。
 
     ![添加和查看](./media/arcgis-tutorial/review.png "添加和查看")
 
-     a. 输入想要预配的有效 Azure AD 帐户的“电子邮件”、“名字”和“姓氏”  。
+5. 在下一页中，选择要添加的成员，然后单击“下一步”。 
 
-     b. 单击“添加和查看”。
-5. 查看输入的数据，然后单击“添加成员”。
+1. 在下一页中，设置必需的成员属性，然后单击“下一页”。
+
+1. 在“确认并完成”选项卡中，单击“添加成员” 。
 
     ![添加成员](./media/arcgis-tutorial/add.png "添加成员")
 

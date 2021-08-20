@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1ff8eddef1705c8bb84488aa035b1fb44d8f726d
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 65daa2cd4681a50179ef1447ce9e4ebe6f7db717
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111813059"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113438109"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>教程：创建并部署自定义 IoT Edge 模块
 
@@ -148,6 +148,9 @@ IoT Edge 中心促进模块间通信。 通过将 IoT Edge 中心用作消息中
       CONTAINER_REGISTRY_USERNAME_<your registry name>=<ACR username>
       CONTAINER_REGISTRY_PASSWORD_<your registry name>=<ACR password>
       ```
+
+      >[!NOTE]
+      >本教程使用 Azure 容器注册表的管理员登录凭据，这对于开发和测试方案非常方便。 准备好生产方案后，建议使用最低权限身份验证选项（如服务主体）。 有关详细信息，请参阅[管理容器注册表的访问权限](production-checklist.md#manage-access-to-your-container-registry)。
 
 1. 在 Visual Studio Code 资源浏览器中右键单击 deployment.template.json 文件，然后选择“生成 IoT Edge 解决方案”。
 

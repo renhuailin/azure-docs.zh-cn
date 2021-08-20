@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: c49409472c8ce9c5b9dab25cbb66df8e1b30f410
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e8bc2d0ed29cbac171e1d03bc9a6806b1ef64f1f
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110695147"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112465304"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>教程：使用 PowerShell 配置 ExpressRoute 的虚拟网络网关
 > [!div class="op_single_selector"]
@@ -102,6 +102,12 @@ ms.locfileid: "110695147"
    ```azurepowershell-interactive
    $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
    ```
+      
+   如果打算在 ExpressRoute 上使用基于 IPv6 的专用对等互连，请将 IP SKU 设置为“标准”，将 AllocationMethod 设置为“静态”：
+   ```azurepowershell-interactive
+   $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Static -SKU Standard
+   ```
+   
 1. 创建网关配置。 网关配置定义要使用的子网和公共 IP 地址。 在此步骤中，将指定创建网关时使用的配置。 使用以下示例创建网关配置。
 
    ```azurepowershell-interactive
@@ -113,7 +119,7 @@ ms.locfileid: "110695147"
    New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
    ```
 > [!IMPORTANT]
-> 如果你计划通过 ExpressRoute 使用基于 IPv6 的专用对等互连，请确保为“-GatewaySku”选择“AZ SKU (ErGw1AZ、ErGw2AZ、ErGw3AZ)”。
+> 如果计划在 ExpressRoute 上使用基于 IPv6 的专用对等互连，请确保为“-GatewaySku”选择 AZ SKU（ErGw1AZ、ErGw2AZ、ErGw3AZ），或为使用标准和静态公共 IP的 -GatewaySKU 使用非 AZ SKU（标准、HighPerformance、UltraPerformance）。
 > 
 > 
 

@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Looop 配置自动用户预配 | Microsoft Docs
 description: 了解如何配置 Azure Active Directory 来使其自动将用户帐户预配到 Looop 和取消其预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
-ms.author: Zhchia
-ms.openlocfilehash: 528003ac482da6f254bf437321c70c389d23844b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: c17c56651dda65d5bd151f0f274af6ed377fb7df
+ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94834990"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114229770"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>教程：为 Looop 配置自动用户预配
 
@@ -45,7 +45,7 @@ Azure Active Directory 使用“分配”这一概念来确定哪些用户应收
 
 ### <a name="important-tips-for-assigning-users-to-looop"></a>有关将用户分配到 Looop 的重要提示
 
-* 建议将单个 Azure AD 用户分配到 Looop 来测试自动用户预配配置。 其他用户和/或组可以稍后分配。
+* 建议将单个 Azure AD 用户分配到 Looop 来测试自动用户预配配置。 稍后可分配更多用户和/或组。
 
 * 如果将用户分配到 Looop，必须在分配对话框中选择应用程序特定的所有有效角色（若可用）。 具有“默认访问权限”  角色的用户排除在预配之外。
 
@@ -55,11 +55,11 @@ Azure Active Directory 使用“分配”这一概念来确定哪些用户应收
 
 1. 登录 [Looop 管理控制台](https://app.looop.co/#/login)，然后选择“帐户”。 在“帐户设置”下选择“身份验证” 。
 
-    :::image type="content" source="media/looop-provisioning-tutorial/admin.png" alt-text="Looop 管理控制台的屏幕截图。“帐户”选项卡将突出显示并打开。在“帐户设置”下，突出显示“身份验证”。" border="false":::
+    ![Looop 管理员](media/looop-provisioning-tutorial/admin.png)
 
 2. 单击“SCIM 集成”下的“重置令牌”来生成新令牌 。
 
-    :::image type="content" source="media/looop-provisioning-tutorial/resettoken.png" alt-text="Looop 管理控制台中页面的“SCIM 集成”部分的屏幕截图。突出显示了“重置令牌”按钮。" border="false":::
+    ![Looop 令牌](media/looop-provisioning-tutorial/resettoken.png)
 
 3. 复制 SCIM 终结点和令牌 。 在 Azure 门户的 Looop 应用程序的“预配”选项卡中，将这些值输入“租户 URL”和“机密令牌”字段 。 
 
@@ -115,7 +115,7 @@ Azure Active Directory 使用“分配”这一概念来确定哪些用户应收
 
     ![“管理”选项的屏幕截图，其中突出显示了“预配”选项。](common/provisioning.png)
 
-4. 将“预配模式”  设置为“自动”  。
+4. 将“预配模式”设置为“自动”。
 
     ![“预配模式”下拉列表的屏幕截图，其中突出显示了“自动”选项。](common/provisioning-automatic.png)
 
@@ -143,12 +143,13 @@ Azure Active Directory 使用“分配”这一概念来确定哪些用户应收
    |name.givenName|字符串|
    |name.familyName|字符串|
    |externalId|字符串|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|字符串|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:area|字符串|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_1|字符串|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_2|字符串|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_3|字符串|
-   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:department|字符串|
-   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:employee_id|字符串|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:location|字符串|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:position|字符串|
    |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:startAt|字符串|
@@ -184,7 +185,12 @@ Azure Active Directory 使用“分配”这一概念来确定哪些用户应收
 
 若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
-## <a name="additional-resources"></a>其他资源
+## <a name="change-log"></a>更改日志
+
+* 07/15/2021 - 已添加了企业扩展用户属性 **urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department**、**urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber** 和 **urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager**。
+* 07/15/2021 - 已删除了自定义扩展用户属性 **urn:ietf:params:scim:schemas:extension:Looop:2.0:User:department** 和 **urn:ietf:params:scim:schemas:extension:Looop:2.0:User:employee_id**。
+
+## <a name="more-resources"></a>更多资源
 
 * [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)

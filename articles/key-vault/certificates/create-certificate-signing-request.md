@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: a4d079855e5aa05adb84b62d686d9f386608f7bb
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 77a46beceda451d456dfc4f576f855ebf7312e50
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752131"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463506"
 ---
 # <a name="create-and-merge-a-csr-in-key-vault"></a>在 Key Vault 中创建和合并 CSR
 
@@ -140,6 +140,8 @@ Key Vault 与以下证书颁发机构合作，以简化证书的创建。
 
      如果“SubjectName”包含任何特殊字符，则可能发生此错误。 请参阅 Azure 门户和 PowerShell 说明中的注释。
 
+- 错误类型“已使用用于获取证书的 CSR。请尝试使用新的 CSR 生成新证书”。
+     转到证书的“高级策略”部分，检查是否关闭了“续订时重用密钥”选项。
 ---
 
 ## <a name="next-steps"></a>后续步骤

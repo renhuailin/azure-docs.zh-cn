@@ -11,12 +11,12 @@ ms.date: 06/07/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: fb04dbe5cdfab523e8af9a057cc4477f58b1b525
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.openlocfilehash: 26bd2a4e39f2698f47a27a08716dc3049c7b70f8
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565331"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113106814"
 ---
 # <a name="tutorial-create-user-flows-and-custom-policies-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流和自定义策略
 
@@ -53,7 +53,7 @@ ms.locfileid: "111565331"
 
 - 如果没有租户，请[创建链接到 Azure 订阅的 Azure AD B2C 租户](tutorial-create-tenant.md)。
 - [注册 Web 应用程序](tutorial-register-applications.md)并[启用 ID 令牌隐式授权](tutorial-register-applications.md#enable-id-token-implicit-grant)。
-- [创建 Facebook 应用程序](identity-provider-facebook.md#create-a-facebook-application)。 跳过[使用 Facebook 帐户设置注册和登录](identity-provider-facebook.md)一文中的先决条件和重置步骤。 尽管使用自定义策略不需要 Facebook 应用程序，但在本演练中，将用它来演示如何在自定义策略中实现社交登录。
+- [创建 Facebook 应用程序](identity-provider-facebook.md#create-a-facebook-application)。 跳过[使用 Facebook 帐户设置注册和登录](identity-provider-facebook.md)一文中的先决条件和其余步骤。 尽管使用自定义策略不需要 Facebook 应用程序，但在本演练中，将用它来演示如何在自定义策略中实现社交登录。
 
 ::: zone-end
 

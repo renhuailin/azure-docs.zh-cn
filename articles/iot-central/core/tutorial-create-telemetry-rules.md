@@ -7,12 +7,12 @@ ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0d59f50d6fa4f21676cef01ffe0dde8ed1fa4441
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ce10143be81da9ad797ba0ccd68837b647aeb7a7
+ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768762"
+ms.lasthandoff: 07/06/2021
+ms.locfileid: "113301965"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中创建规则并设置通知
 
@@ -31,11 +31,50 @@ ms.locfileid: "108768762"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，应完成[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)和[将模拟设备添加到 IoT Central 应用程序](./quick-create-simulated-device.md)快速入门，以创建要使用的传感器控制器设备模板。
+完成本教程中的步骤需要具备以下各项：
+
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
+
+## <a name="add-and-customize-a-device-template"></a>添加并自定义设备模板
+
+从设备目录添加设备模板。 本教程使用“ESP32-Azure IoT 工具包”设备模板：
+
+1. 若要添加新的设备模板，请在“设备模板”页上选择“+ 新建” 。
+
+1. 在“选择类型”页上，向下滚动直到在“使用预配置的设备模板”部分中找到“ESP32-Azure IoT 套件”磁贴。  
+
+1. 选择“ESP32-Azure IoT 工具包”磁贴，然后选择“下一页: 查看”。
+
+1. 在“查看”页上，选择“创建”   。
+
+创建的模板的名称为“传感器控制器”。 该模型包含“传感器控制器”、“SensorTemp”和“设备信息接口”等组件  。 组件定义 ESP32 设备的功能。 功能包括遥测、属性和命令。
+
+将两个云属性添加到“传感器控制器”设备模板：
+
+1. 依次选择“云属性”、“+ 添加云属性”。 使用下表中的信息将两个云属性添加到设备模板：
+
+    | 显示名称      | 语义类型 | 架构 |
+    | ----------------- | ------------- | ------ |
+    | 最后维修日期 | 无          | 日期   |
+    | 客户名称     | 无          | 字符串 |
+
+1. 选择“保存”  以保存更改。
+
+向设备模板添加新的窗体以管理设备：
+
+1. 选择“视图”节点，然后选择“编辑设备和云数据”磁贴来添加新视图。
+
+1. 将窗体名称更改为“管理设备”。
+
+1. 依次选择“客户名称”、“上次服务日期”云属性和“目标温度”属性  。 然后选择“添加部分”。
+
+1. 选择“保存”以保存新窗体。
+
+现在发布设备模板。
 
 ## <a name="create-a-rule"></a>创建规则
 
-若要创建遥测规则，设备模板必须至少包含一个遥测值。 本教程使用模拟的传感器控制器设备来发送温度和湿度遥测数据。 在[将模拟设备添加到 IoT Central 应用程序](./quick-create-simulated-device.md)快速入门中，你已添加此设备模板并创建了模拟设备。 该规则监视设备报告的温度，并在温度超过 70 度时发送电子邮件。
+若要创建遥测规则，设备模板必须至少包含一个遥测值。 本教程使用模拟的传感器控制器设备来发送温度和湿度遥测数据。 该规则监视设备报告的温度，并在温度超过 70 度时发送电子邮件。
 
 > [!NOTE]
 > 每个应用程序限制 50 条规则。
@@ -120,4 +159,4 @@ ms.locfileid: "108768762"
 现在，你已定义了基于阈值的规则，建议接下来学习如何：
 
 > [!div class="nextstepaction"]
-> [根据规则创建 Webhook](./howto-create-webhooks.md)。
+> [配置规则](howto-configure-rules.md)

@@ -1,24 +1,24 @@
 ---
-title: include 文件
-description: include 文件
+title: 包含文件
+description: 包含文件
 services: azure-communication-services
 author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: b6f53a7c67ac9eeaf103541c471741f24f0302ce
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 63653bb72c278a330101503dbaf2959b7e0eb39f
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111594274"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "114201362"
 ---
-> [!NOTE]
-> 在 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-chat) 上查找此快速入门的最终代码
+## <a name="sample-code"></a>代码示例
+在 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-chat) 上查找此快速入门的最终代码。
 
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：
@@ -129,7 +129,7 @@ let userAccessToken = '<USER_ACCESS_TOKEN>';
 let chatClient = new ChatClient(endpointUrl, new AzureCommunicationTokenCredential(userAccessToken));
 console.log('Azure Communication Chat client created!');
 ```
-- 将 endpointUrl 替换为通信服务资源终结点，如果尚未执行此操作，请参阅[创建 Azure 通信资源](../../create-communication-resource.md)。
+- 将 endpointUrl 替换为通信服务资源终结点，如果尚未执行此操作，请参阅[创建 Azure 通信服务资源](../../create-communication-resource.md)。
 - 将 userAccessToken 替换为你颁发的令牌。
 
 
@@ -151,8 +151,8 @@ Azure Communication Chat client created!
 
 | 名称                                   | 说明                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ChatClient | 聊天功能需要此类。 使用订阅信息实例化此类，并使用它来创建、获取和删除会话。 |
-| ChatThreadClient | 聊天会话功能需要此类。 通过 ChatClient 获取实例，并使用它来发送/接收/更新/删除消息、添加/删除/获取用户、发送键入通知以及阅读回执和订阅聊天事件。 |
+| ChatClient | 聊天功能需要此类。 你使用订阅信息来实例化此类，使用此类来创建、获取和删除会话，并且订阅到聊天事件。 |
+| ChatThreadClient | 聊天会话功能需要此类。 通过 ChatClient 获取实例，并使用它来发送/接收/更新/删除消息、添加/删除/获取用户、发送键入通知和阅读回执。 |
 
 
 ## <a name="start-a-chat-thread"></a>启动聊天会话

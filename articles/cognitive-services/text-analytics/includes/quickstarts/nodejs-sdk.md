@@ -6,22 +6,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 06/11/2021
+ms.date: 07/15/2021
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: 98e8d7862f1270977ed3eb3ab71605e440d53520
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: e58a42809933092499bbd7132c76c0a6e10f9971
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112083623"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114593468"
 ---
 <a name="HOLTop"></a>
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
-[v3 参考文档](/javascript/api/overview/azure/ai-text-analytics-readme?preserve-view=true&view=azure-node-preview) | [v3 库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3 包(NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics/v/5.1.0-beta.6) | [v3 示例](https://github.com/Azure/azure-sdk-for-js/tree/%40azure/ai-text-analytics_5.1.0-beta.6/sdk/textanalytics/ai-text-analytics/samples)
+[v3 参考文档](/javascript/api/overview/azure/ai-text-analytics-readme?preserve-view=true&view=azure-node-preview) | [v3 库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3 包(NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics/v/5.1.0) | [v3 示例](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/textanalytics/ai-text-analytics/samples)
 
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
@@ -59,12 +59,12 @@ npm init
 ```
 ### <a name="install-the-client-library"></a>安装客户端库
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 安装 `@azure/ai-text-analytics` NPM 包：
 
 ```console
-npm install --save @azure/ai-text-analytics@5.1.0-beta.6
+npm install --save @azure/ai-text-analytics@5.1.0
 ```
 
 > [!TIP]
@@ -87,7 +87,7 @@ npm install --save @azure/ai-text-analytics@5.0.0
 应用的 `package.json` 文件将使用依赖项进行更新。
 创建一个名为 `index.js` 的文件，并添加以下内容：
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 ```javascript
 "use strict";
@@ -135,7 +135,7 @@ const endpoint = '<paste-your-text-analytics-endpoint-here>';
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 创建一个新的 `TextAnalyticsClient` 对象并使用你的密钥和终结点作为参数。
 
@@ -155,7 +155,7 @@ const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCrede
 
 ## <a name="sentiment-analysis"></a>情绪分析
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 创建一个字符串数组，使其包含要分析的文档。 调用客户端的 `analyzeSentiment()` 方法，并获取返回的 `SentimentBatchResult` 对象。 循环访问结果列表，输出每个文档的 ID、文档级别情绪以及置信度分数。 对于每个文档，结果都包含句子级别情绪以及偏移量、长度和置信度分数。
 
@@ -251,7 +251,7 @@ ID: 0
 
 ## <a name="opinion-mining"></a>观点挖掘
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 若要使用观点挖掘进行情绪分析，请创建一个包含要分析的文档的字符串数组。 调用客户端的 `analyzeSentiment()` 方法（添加了选项标志 `includeOpinionMining: true`），并获取返回的 `SentimentBatchResult` 对象。 循环访问结果列表，输出每个文档的 ID、文档级别情绪以及置信度分数。 对于每个文档，结果不仅包含如上所述的句子级情绪，而且还包含角度和观点级情绪。
 
@@ -339,7 +339,7 @@ sentimentAnalysisWithOpinionMining(textAnalyticsClient)
 
 ## <a name="language-detection"></a>语言检测
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 创建一个字符串数组，使其包含要分析的文档。 调用客户端的 `detectLanguage()` 方法，并获取返回的 `DetectLanguageResultCollection`。 然后循环访问结果，输出每个文档的 ID 以及各自的主要语言。
 
@@ -401,7 +401,7 @@ ID: 0
 
 ## <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 创建一个字符串数组，使其包含要分析的文档。 调用客户端的 `recognizeEntities()` 方法，并获取 `RecognizeEntitiesResult` 对象。 循环访问结果列表，并输出实体名称、类型、子类型、偏移量、长度和分数。
 
@@ -448,7 +448,7 @@ Document ID: 1
         Score: 0.25
 ```
 
-### <a name="personally-identifying-information-pii-recognition"></a>个人身份信息 (PII) 识别
+## <a name="personally-identifying-information-pii-recognition"></a>个人身份信息 (PII) 识别
 
 创建一个字符串数组，使其包含要分析的文档。 调用客户端的 `recognizePiiEntities()` 方法，并获取 `RecognizePIIEntitiesResult` 对象。 循环访问结果列表，并输出实体名称、类型和分数。
 
@@ -538,7 +538,7 @@ Document ID: 1
 
 ## <a name="entity-linking"></a>实体链接
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 创建一个字符串数组，使其包含要分析的文档。 调用客户端的 `recognizeLinkedEntities()` 方法，并获取 `RecognizeLinkedEntitiesResult` 对象。 循环访问结果列表，并输出实体名称、ID、数据源、URL 和匹配项。 `matches` 数组中的每个对象都将包含该匹配项的偏移量、长度和分数。
 
@@ -650,7 +650,7 @@ Document ID: 0
 
 ## <a name="key-phrase-extraction"></a>关键短语提取
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 创建一个字符串数组，使其包含要分析的文档。 调用客户端的 `extractKeyPhrases()` 方法，并获取返回的 `ExtractKeyPhrasesResult` 对象。 循环访问结果，输出每个文档的 ID 以及任何检测到的密钥短语。
 
@@ -711,9 +711,97 @@ ID: 0
 
 ---
 
+## <a name="extract-health-entities"></a>提取健康状况实体
+
+[!INCLUDE [health operation pricing](../health-operation-pricing-caution.md)]
+
+可以使用文本分析来执行异步请求，以从文本中提取健康状况实体。 下面的示例演示了基本示例。 可以[在 GitHub 上](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/textanalytics/ai-text-analytics/samples/v5/javascript/beginAnalyzeHealthcareEntities.js)找到更高级的示例。
+
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
+
+```javascript
+async function healthExample(client) {
+    console.log("== Recognize Healthcare Entities Sample ==");
+
+    const documents = [
+        "Prescribed 100mg ibuprofen, taken twice daily."
+      ];
+    const poller = await client.beginAnalyzeHealthcareEntities(documents, "en", {
+      includeStatistics: true
+    });
+  
+    poller.onProgress(() => {
+      console.log(
+        `Last time the operation was updated was on: ${poller.getOperationState().lastModifiedOn}`
+      );
+    });
+    console.log(
+      `The analyze healthcare entities operation was created on ${
+        poller.getOperationState().createdOn
+      }`
+    );
+    console.log(
+      `The analyze healthcare entities operation results will expire on ${
+        poller.getOperationState().expiresOn
+      }`
+    );
+  
+    const results = await poller.pollUntilDone();
+  
+    for await (const result of results) {
+      console.log(`- Document ${result.id}`);
+      if (!result.error) {
+        console.log("\tRecognized Entities:");
+        for (const entity of result.entities) {
+          console.log(`\t- Entity "${entity.text}" of type ${entity.category}`);
+        }
+        if (result.entityRelations && (result.entityRelations.length > 0)) {
+          console.log(`\tRecognized relations between entities:`);
+          for (const relation of result.entityRelations) {
+            console.log(
+              `\t\t- Relation of type ${relation.relationType} found between the following entities:`
+            );
+            for (const role of relation.roles) {
+              console.log(`\t\t\t- "${role.entity.text}" with the role ${role.name}`);
+            }
+          }
+        }
+      } else console.error("\tError:", result.error);
+    }
+  }
+  
+  healthExample(textAnalyticsClient).catch((err) => {
+    console.error("The sample encountered an error:", err);
+  });
+```
+
+### <a name="output"></a>输出
+
+```console
+- Document 0
+    Recognized Entities:
+    - Entity "100mg" of type Dosage
+    - Entity "ibuprofen" of type MedicationName
+    - Entity "twice daily" of type Frequency
+    Recognized relations between entities:
+        - Relation of type DosageOfMedication found between the following entities:   
+                - "100mg" with the role Dosage
+                - "ibuprofen" with the role Medication
+        - Relation of type FrequencyOfMedication found between the following entities:
+                - "ibuprofen" with the role Medication
+                - "twice daily" with the role Frequency
+```
+
+# <a name="version-30"></a>[版本 3.0](#tab/version-3)
+
+此功能在版本 3.0 中不可用。
+
+---
+
+
 ## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>使用“分析”操作异步使用 API
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 可以使用“分析”操作执行异步批处理请求实现以下目的：NER、关键短语提取、情绪分析和 PII 检测。 下面的示例演示了有关一个操作的基本示例。 可在 GitHub 上找到更多适用于 [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/textanalytics/ai-text-analytics/samples/v5/javascript/beginAnalyzeActions.js) 和 [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/textanalytics/ai-text-analytics/samples/v5/typescript/src/beginAnalyzeActions.ts) 的高级示例。
 
@@ -723,55 +811,75 @@ ID: 0
 
 ```javascript
 async function analyze_example(client) {
-  const documents = [
-    "Microsoft was founded by Bill Gates and Paul Allen.",
-  ];
+    const documents = [
+        "Microsoft was founded by Bill Gates and Paul Allen.",
+    ];
 
-  const actions = {
-    recognizeEntitiesActions: [{ modelVersion: "latest" }],
-  };
-  const poller = await client.beginAnalyzeActions(documents, actions, "en");
+    const actions = {
+        recognizeEntitiesActions: [{ modelVersion: "latest" }],
+        extractKeyPhrasesActions: [{ modelVersion: "latest" }]
+    };
+    const poller = await client.beginAnalyzeActions(documents, actions, "en");
 
-  console.log(
-    `The analyze batch actions operation was created on ${poller.getOperationState().createdOn}`
-  );
-  console.log(
-    `The analyze batch actions operation results will expire on ${
-      poller.getOperationState().expiresOn
-    }`
-  );
-  const resultPages = await poller.pollUntilDone();
-  for await (const page of resultPages) {
-    const entitiesAction = page.recognizeEntitiesResults[0];
-    if (!entitiesAction.error) {
-      for (const doc of entitiesAction.results) {
-        console.log(`- Document ${doc.id}`);
-        if (!doc.error) {
-          console.log("\tEntities:");
-          for (const entity of doc.entities) {
-            console.log(`\t- Entity ${entity.text} of type ${entity.category}`);
-          }
-        } else {
-          console.error("\tError:", doc.error);
+    console.log(
+        `The analyze batch actions operation was created on ${poller.getOperationState().createdOn}`
+    );
+    console.log(
+        `The analyze batch actions operation results will expire on ${poller.getOperationState().expiresOn
+        }`
+    );
+    const resultPages = await poller.pollUntilDone();
+    for await (const page of resultPages) {
+        const entitiesAction = page.recognizeEntitiesResults[0];
+        if (!entitiesAction.error) {
+            for (const doc of entitiesAction.results) {
+                console.log(`- Document ${doc.id}`);
+                if (!doc.error) {
+                    console.log("\tEntities:");
+                    for (const entity of doc.entities) {
+                        console.log(`\t- Entity ${entity.text} of type ${entity.category}`);
+                    }
+                } else {
+                    console.error("\tError:", doc.error);
+                }
+            }
         }
-      }
     }
-  }
+    for await (const page of resultPages) {
+        const keyPhrasesAction = page.extractKeyPhrasesResults[0];
+        if (!keyPhrasesAction.error) {
+            for (const doc of keyPhrasesAction.results) {
+                console.log(`- Document ${doc.id}`);
+                if (!doc.error) {
+                    console.log("\tKey phrases:");
+                    for (const phrase of doc.keyPhrases) {
+                        console.log(`\t- ${phrase}`);
+                    }
+                } else {
+                    console.error("\tError:", doc.error);
+                }
+            }
+        }
+    }
 }
-
-analyze_example(textAnalyticsClient);
+analyze_example(textAnalyticsClient)
 ```
 
 ### <a name="output"></a>Output
 
 ```console
-The analyze batch actions operation was created on Fri Mar 12 2021 09:53:49 GMT-0800 (Pacific Standard Time)
-The analyze batch actions operation results will expire on Sat Mar 13 2021 09:53:49 GMT-0800 (Pacific Standard Time)
+The analyze batch actions operation was created on Fri Jun 18 2021 12:34:52 GMT-0700 (Pacific Daylight Time)
+The analyze batch actions operation results will expire on Sat Jun 19 2021 12:34:52 GMT-0700 (Pacific Daylight Time)
 - Document 0
         Entities:
         - Entity Microsoft of type Organization
         - Entity Bill Gates of type Person
         - Entity Paul Allen of type Person
+- Document 0
+        Key phrases:
+        - Bill Gates
+        - Paul Allen
+        - Microsoft
 ```
 
 还可以使用“分析”操作来执行 NER、关键短语提取、情绪分析和检测 PII。 请参阅 GitHub 上的 [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/textanalytics/ai-text-analytics/samples/v5/javascript/beginAnalyzeActions.js) 和 [TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/v5/typescript/src) 分析示例。

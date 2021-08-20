@@ -11,58 +11,62 @@ ms.date: 05/28/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f61bc113d03e1c05a1569e96bb340436ce35e23d
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 32f2ad1284dcbd6bbc8ab61f700405521ec07f2e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963972"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114449513"
 ---
-# <a name="troubleshooting-ecma-connector-host-issues"></a>ECMA 连接器主机故障排除
+# <a name="troubleshoot-ecma-connector-host-issues"></a>ECMA 连接器主机问题故障排除
 
 >[!IMPORTANT]
-> 本地预配预览版目前为仅限受邀请人使用的预览版。 可在[此处](https://aka.ms/onpremprovisioningpublicpreviewaccess)请求访问功能。 未来几个月在我们准备发布正式版的过程中，我们会向更多客户和连接者开放该预览版。
+> 本地预配预览版目前为仅限受邀请人使用的预览版。 要请求访问该功能，请使用[访问请求窗体](https://aka.ms/onpremprovisioningpublicpreviewaccess)。 未来几个月在我们准备正式发布版的过程中，我们会向更多客户和连接器开放该预览版。
 
+## <a name="troubleshoot-test-connection-issues"></a>测试连接问题故障排除
+配置 ECMA 主机和预配代理后，可以测试 Azure Active Directory (Azure AD) 预配服务与预配代理、ECMA 主机和应用程序之间的连接性。 要执行此端到端测试，请在 Azure 门户的应用程序中选择“测试连接”。 如果测试连接失败，请尝试以下故障排除步骤：
 
-## <a name="troubleshoot-test-connection-issues"></a>测试连接问题故障排除。 
-配置 ECMA 主机和预配代理后，可以测试从 Azure AD 预配服务测试到预配代理 > ECMA 主机 > 应用程序的连接。 可以通过在 Azure 门户的应用程序中单击“测试连接”来执行这种端到端测试。 如果测试连接失败，请尝试以下故障排除步骤：
-
- 1. 验证代理和 ECMA 主机是否正在运行：
+ 1. 检查代理和 ECMA 主机是否正在运行：
      1. 在安装有代理的服务器上，转到 **开始** > **运行** > **Services.msc** 来打开 **服务**。
-     2. 确保 **Microsoft Azure AD Connect 代理更新程序**、**Microsoft Azure AD Connect 预配代理** 和 **Microsoft ECMA2Host** 服务包含在 **服务** 中，并且其状态为 *正在运行*。 
-![ECMA 服务正在运行](./media/on-premises-ecma-troubleshoot/tshoot-1.png)
+     1. 确保“Microsoft Azure AD Connect 代理更新程序”、“Microsoft Azure AD Connect 预配代理”和“Microsoft ECMA2Host”服务包含在“服务”列表中，并且其状态为“正在运行”。
+    
+        ![显示 ECMA 服务正在运行的屏幕截图。](./media/on-premises-ecma-troubleshoot/tshoot-1.png)
 
- 2. 导航到安装了 ECMA 主机的文件夹，依次进入 Troubleshooting > Scripts > TestECMA2HostConnection 并运行脚本。  此脚本将发送 SCIM GET 或 POST 请求，以便验证 ECMA 连接器主机是否正在运行并响应请求。
-    应在 ECMA 连接器主机服务本身所在的同一台计算机上运行此脚本。
- 3. 导航到 Azure 门户中的应用程序，单击管理员连接，单击代理下拉列表，确保代理处于活动状态。
- 4. 检查提供的机密令牌是否与本地的机密令牌相同（需要在本地再次提供机密令牌，然后将其复制到 Azure 门户）。
- 5. 确保已将一个或多个代理分配给 Azure 门户中的应用程序。
- 6. 分配代理后，需要等待 10 到 20 分钟才能完成注册。  在注册完成之前，连接测试将无法工作。
- 7. 确保您使用的是有效证书。 导航到 ECMA 主机的“设置”选项卡可以生成新的证书。
- 8. 在 VM 中导航到任务栏，搜索“Microsoft Azure AD Connect 预配代理”，从而重新启动预配代理。 右键单击“停止”，然后单击“启动”。
- 9. 在 Azure 门户中预配租户 URL 时，请确保该 URL 遵循以下模式。 你可以将 localhost 替换为你的主机名，但不强制要求这样做。 将“connectorName”替换为在 ECMA 主机中指定的连接器的名称。
+ 1. 选择“故障排除” > “脚本” > “TestECMA2HostConnection”，转到安装 ECMA 主机的文件夹。 运行该脚本。 此脚本发送 SCIM GET 或 POST 请求，以验证 ECMA 连接器主机是否正在运行并响应请求。 应在 ECMA 连接器主机服务本身所在的同一台计算机上运行此脚本。
+ 1. 转到 Azure 门户中的应用程序，选择“管理员连接性”，选择代理下拉列表，确保代理处于活动状态。
+ 1. 检查提供的机密令牌是否与本地机密令牌相同。 转到本地，再次提供机密令牌，并将其复制到 Azure 门户。
+ 1. 确保已将一个或多个代理分配给 Azure 门户中的应用程序。
+ 1. 分配代理后，需要等待 10 到 20 分钟才能完成注册。 在注册完成之前，连接性测试将无法正常工作。
+ 1. 确保使用的是有效证书。 转到 ECMA 主机的“设置”选项卡，生成新的证书。
+ 1. 在虚拟机中转至任务栏，搜索“Microsoft Azure AD Connect 预配代理”，从而重新启动预配代理。 右键单击“停止”，然后选择“启动”。
+ 1. 在 Azure 门户中预配租户 URL 时，请确保该 URL 遵循以下模式。 可将 `localhost` 替换为主机名，但这并非必要操作。 将 `connectorName` 替换为在 ECMA 主机中指定的连接器名称。
+ 
     ```
     https://localhost:8585/ecma2host_connectorName/scim
     ```
 
-## <a name="unable-to-configure-ecma-host-view-logs-in-event-viewer-or-start-ecma-host-service"></a>无法配置 ECMA 主机，请在事件查看器中查看日志，或启动 ECMA 主机服务
+## <a name="unable-to-configure-the-ecma-host-view-logs-in-event-viewer-or-start-the-ecma-host-service"></a>如果无法配置 ECMA 主机，请在事件查看器中查看日志，或启动 ECMA 主机服务
 
-#### <a name="the-following-issues-can-be-resolved-by-running-the-ecma-host-as-an-admin"></a>以管理员身份运行 ECMA 主机可以解决以下问题：
+要解决以下问题，请以管理员身份运行 ECMA 主机：
 
-* 打开 ECMA 主机向导时遇到错误  ![ECMA 向导错误](./media/on-premises-ecma-troubleshoot/tshoot-2.png)
+* 打开 ECMA 主机向导时发生错误。
 
-* 我已经能够配置 ECMA 主机向导，但无法查看 ECMA 主机日志。 在这种情况下，你需要以管理员身份打开主机，并设置一个端到端连接器。 可以通过如下方式来简化此操作：导出现有连接器，然后再次导入。 
+   ![显示 ECMA 向导错误的屏幕截图。](./media/on-premises-ecma-troubleshoot/tshoot-2.png)
 
-   ![主机日志](./media/on-premises-ecma-troubleshoot/tshoot-3.png)
+* 可以配置 ECMA 主机向导，但无法看到 ECMA 主机日志。 在这种情况下，需要以管理员身份打开主机，设置一个端到端连接器。 可通过以下方式简化此步骤：导出现有连接器，然后再次导入。 
 
-* 我已经能够配置 ECMA 主机向导，但无法启动 ECMA 主机服务  ![主机服务](./media/on-premises-ecma-troubleshoot/tshoot-4.png)
+   ![显示主机日志的屏幕截图。](./media/on-premises-ecma-troubleshoot/tshoot-3.png)
+
+* 可以配置 ECMA 主机向导，但无法启动 ECMA 主机日志。
+
+   ![显示主机服务的屏幕截图。](./media/on-premises-ecma-troubleshoot/tshoot-4.png)
 
 
-## <a name="turning-on-verbose-logging"></a>打开详细日志记录 
+## <a name="turn-on-verbose-logging"></a>启用详细日志记录 
 
-默认情况下，ECMA 连接器主机的 swithValue 设置为 Error。  这意味着将只记录分类为“错误”的事件。  为 ECMA 主机服务和/或向导启用详细日志记录。 在这两个位置中，将“switchValue”设置为 Verbose，如下所示。
+默认情况下，ECMA 连接器主机的 `switchValue` 设置为 `Error`。 此设置意味着将只记录“错误”事件。 要为 ECMA 主机服务或向导启用详细日志记录，请在所示的两个位置将 `switchValue` 设置为 `Verbose`。
 
-详细服务日志记录的文件位置：c:\program files\Microsoft ECMA2Host\Service\Microsoft.ECMA2Host.Service.exe.config
+详细服务日志记录的文件位置：C:\Program Files\Microsoft ECMA2Host\Service\Microsoft.ECMA2Host.Service.exe.config。
   ```
   <?xml version="1.0" encoding="utf-8"?> 
   <configuration> 
@@ -87,7 +91,7 @@ ms.locfileid: "111963972"
               <add initializeData="ECMA2Host" type="System.Diagnos
   ```
 
-详细向导日志记录的文件位置：C:\Program Files\Microsoft ECMA2Host\Wizard\Microsoft.ECMA2Host.ConfigWizard.exe.config
+详细向导日志记录的文件位置：C:\Program Files\Microsoft ECMA2Host\Wizard\Microsoft.ECMA2Host.ConfigWizard.exe.config。
   ```
         <source name="ConnectorsLog" switchValue="Verbose"> 
           <listeners> 
@@ -102,43 +106,44 @@ ms.locfileid: "111963972"
             <add initializeData="ECMA2Host" type="System.Diagnostics.EventLogTraceListener, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="ECMA2HostListener" traceOutputOptions="LogicalOperationStack, DateTime, Timestamp, Callstack" /> 
   ```
 
-## <a name="target-attribute-missing"></a>缺少目标属性 
+## <a name="target-attribute-is-missing"></a>缺少目标属性 
 预配服务会自动发现目标应用程序中的属性。 如果发现 Azure 门户中的目标属性列表中缺少目标属性，请执行以下故障排除步骤：
 
- 1. 查看 ECMA 主机配置的“选择属性”页，验证是否已选择向 Azure 门户公开此属性。
- 2. 确保已打开 ECMA 主机服务。 
- 3. 查看 ECMA 主机日志，验证是否发出了 /schemas 请求，并查看响应中的属性。 此信息对于支持问题的解决很有价值。 
+ 1. 查看 ECMA 主机配置的“选择属性”页，检查是否已选择向 Microsoft Azure 门户公开此属性。
+ 1. 确保已打开 ECMA 主机服务。 
+ 1. 查看 ECMA 主机日志，检查是否发出了 /schemas 请求，并查看响应中的属性。 此信息对于支持问题的解决很有价值。
 
 ## <a name="collect-logs-from-event-viewer-as-a-zip-file"></a>从事件查看器中以 zip 文件格式收集日志
-导航到安装了 ECMA 主机的文件夹，依次进入 Troubleshooting > Scripts。 以管理员身份运行 `CollectTroubleshootingInfo` 脚本。此脚本能够以 zip 文件格式捕获日志并导出日志。  
 
-## <a name="reviewing-events-in-the-event-viewer"></a>在事件查看器中查看事件
+选择“故障排除” > “脚本”，转到安装 ECMA 主机的文件夹。 以管理员身份运行 `CollectTroubleshootingInfo` 脚本。可使用此脚本以 zip 文件格式捕获日志并将其导出。
 
-配置 ECMA 连接器主机架构映射后，请启动该服务，以便其侦听传入连接。  然后，监视传入请求。 为此，请执行以下步骤：
+## <a name="review-events-in-event-viewer"></a>查看事件查看器中的事件
 
-  1. 单击“开始”菜单，键入 **事件查看器**，然后单击“事件查看器”。 
-  2. 在 **事件查看器** 中，展开 **应用程序和服务** 日志，然后选择 **Microsoft ECMA2Host Logs**。     
-  3. 在连接器主机收到更改时，事件会写入应用程序日志。 
+配置 ECMA 连接器主机架构映射后，请启动该服务，以便其侦听传入连接。 然后，监视传入请求。
 
+  1. 选择“开始”菜单，输入“事件查看器”并选择 **事件查看器**。 
+  1. 在“事件查看器”中，展开“应用程序和服务”日志，然后选择“Microsoft ECMA2Host 日志”。 
+  1. 在连接器主机收到更改时，事件会写入应用程序日志。 
 
+## <a name="understand-incoming-scim-requests"></a>了解传入的 SCIM 请求
 
-## <a name="understanding-incoming-scim-requests"></a>了解传入的 SCIM 请求 
+由 Azure AD 向预配代理和连接器主机发出的请求将使用 SCIM 协议。 从主机向应用发送的请求使用应用支持的协议。 从主机发送到代理再发送到 Azure AD 的请求依赖于 SCIM。 有关 SCIM 实现的更多信息，请参阅[教程：开发和计划 Azure Active Directory 中 SCIM 终结点的预配](use-scim-to-provision-users-and-groups.md)。
 
-由 Azure AD 向预配代理和连接器主机发出的请求将使用 SCIM 协议。 从主机向应用发出的请求将使用应用支持的协议，而从主机到代理到 Azure AD 的请求则依赖于 SCIM。 可在[此处](use-scim-to-provision-users-and-groups.md)了解有关 SCIM 实现的详细信息。  
-
-请注意，在每个预配周期开始时，在执行按需预配之前以及在执行测试连接时，Azure AD 预配服务通常会为[虚拟用户](use-scim-to-provision-users-and-groups.md#request-3)发出 get 用户调用，以确保目标终结点可用并返回符合 SCIM 的响应。 
+在每个预配周期开始时、执行按需预配前以及执行测试连接时，Azure AD 预配服务通常会为[虚拟用户](use-scim-to-provision-users-and-groups.md#request-3)发出 get-user 调用，以确保目标终结点可用，并能够返回符合 SCIM 的响应。 
 
 
 ## <a name="how-do-i-troubleshoot-the-provisioning-agent"></a>如何对预配代理进行故障排除？
+你可能会遇到以下错误情况。
+
 ### <a name="agent-failed-to-start"></a>代理无法启动
 
 你可能会收到以下错误消息：
 
-“Microsoft Azure AD Connect 预配代理”服务无法启动。请确保有足够的权限启动系统服务。 
+“‘Microsoft Azure AD Connect 预配代理’无法启动。 请检查有足够的特权启动系统服务。” 
 
-出现此问题的原因通常是组策略阻止将权限应用于安装程序创建的本地 NT 服务登录帐户 (NT SERVICE\AADConnectProvisioningAgent)。 这些权限是启动服务所必需的。
+出现此问题的原因通常是组策略阻止将权限应用于安装程序创建的本地 NT 服务登录帐户 (NT Service\AADConnectProvisioningAgent)。 这些权限是启动服务所必需的。
 
-若要解决该问题，请执行以下步骤。
+若要解决此问题，请执行以下操作:
 
 1. 使用管理员帐户登录到服务器。
 1. 导航到“服务”或者转到“开始” > “运行” > “Services.msc”来打开“服务”。
@@ -151,7 +156,7 @@ ms.locfileid: "111963972"
 
 尝试注册代理时，可能会收到以下错误消息。
 
-![代理超时](./media/on-premises-ecma-troubleshoot/tshoot-5.png)
+![显示代理已超时的屏幕截图。](./media/on-premises-ecma-troubleshoot/tshoot-5.png)
 
 此问题通常是由于代理无法连接到混合标识服务所导致，并且需要你配置 HTTP 代理。 若要解决此问题，请配置出站代理。 
 
@@ -181,21 +186,22 @@ ms.locfileid: "111963972"
 
 默认情况下，代理发出最少的错误消息和堆栈跟踪信息。 可以在 C:\ProgramData\Microsoft\Azure AD Connect Provisioning Agent\Trace 文件夹中找到这些跟踪日志。
 
-若要收集用于排查代理相关问题的其他详细信息，请执行以下步骤。
+要收集有关代理相关问题故障排除的更多信息，请执行以下操作：
 
-1.  安装 AADCloudSyncTools PowerShell 模块，如[此处](../../active-directory/cloud-sync/reference-powershell.md#install-the-aadcloudsynctools-powershell-module)所述。
-2. 使用 `Export-AADCloudSyncToolsLogs` PowerShell cmdlet 捕获信息。  可以使用以下开关来微调数据收集。
-      - SkipVerboseTrace 用于仅导出当前日志而不捕获详细日志（默认值 = false）
-      - TracingDurationMins 用于指定不同的捕获持续时间（默认值 = 3 分钟）
-      - OutputPath 用于指定不同的输出路径（默认值 = 用户的文档）
+1. 按照 [Azure AD Connect 云同步的 AADCloudSyncTools Power Shell 模块](../../active-directory/cloud-sync/reference-powershell.md#install-the-aadcloudsynctools-powershell-module)中所述安装 AADCloudSyncTools PowerShell 模块。
+1. 使用 `Export-AADCloudSyncToolsLogs` PowerShell cmdlet 捕获信息。 使用以下开关微调数据收集。 使用：
+
+      - “SkipVerboseTrace”用于仅导出当前日志而不捕获详细日志（默认值 = false）。
+      - “TracingDurationMins”用于指定不同的捕获持续时间（默认值 = 3 分钟）。
+      - “OutputPath”用于指定不同的输出路径（默认值 = 用户的文档）。
 
 ---------------------
 
-Azure AD 可以监视云中的预配服务，还可以在本地收集日志。 预配服务针对在同步过程中评估的每个用户记录日志。 可以通过 [Azure 门户 UI、API 和日志分析](../reports-monitoring/concept-provisioning-logs.md)来使用这些日志。 此外，ECMA 主机在本地生成日志，显示收到的每个预配请求以及发送到 Azure AD 的响应。
+使用 Azure AD，可以在云端监控预配服务、收集本地日志。 预配服务针对在同步过程中评估的每个用户记录日志。 可以通过 [Azure 门户 UI、API 和日志分析](../reports-monitoring/concept-provisioning-logs.md)来使用这些日志。 ECMA 主机还会生成本地日志。 显示收到的每个预配请求，以及发送到 Azure AD 的响应。
 
 ### <a name="agent-installation-fails"></a>代理安装失败
-* `System.ComponentModel.Win32Exception: The specified service already exists` 错误指示未成功卸载以前的 ECMA 主机。 请卸载主机应用程序。 导航到程序文件并删除 ECMA 主机文件夹。 你可能想要存储用于备份的配置文件。 
-* 以下错误指示不满足先决条件。 确保你已经安装了 .NET 4.7.1。
+* `System.ComponentModel.Win32Exception: The specified service already exists` 错误表示以前的 ECMA 主机没有成功卸载。 请卸载主机应用程序。 转到程序文件，删除 ECMA 主机文件夹。 你可能想要存储用于备份的配置文件。 
+* 以下错误表明未满足先决条件。 确保你已经安装了 .NET 4.7.1。
 
   ```
     Method Name : <>c__DisplayClass0_1 : 

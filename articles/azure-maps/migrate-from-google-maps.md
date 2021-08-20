@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 6241f6156b01c3c90f00578ae5416e4e77270930
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2263b27cd2f505bc76f02f24e17d54ec5f6475b2
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386792"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112578840"
 ---
 # <a name="tutorial-migrate-from-google-maps-to-azure-maps"></a>教程：从 Google Maps 迁移到 Azure Maps
 
@@ -34,7 +34,7 @@ ms.locfileid: "100386792"
 
 ## <a name="azure-maps-platform-overview"></a>Azure Maps 平台概述
 
-Azure Maps 为所有行业的开发人员提供强大的地理空间功能。 这些功能搭配了定期更新的地图数据，用于为 Web 和移动应用程序提供地理环境。 Azure Maps 有一组与 Azure One API 兼容的 REST API。 这些 REST API 提供地图绘制、搜索、路线规划、交通、时区、地理位置、地理围栏、地图数据、天气、出行和空间操作功能。 这些操作伴随着 Web 和 Android SDK，可以使开发变得容易、灵活且可跨多个平台移植。
+Azure Maps 为所有行业的开发人员提供强大的地理空间功能。 这些功能搭配了定期更新的地图数据，用于为 Web 和移动应用程序提供地理环境。 Azure Maps 有一组与 Azure One API 兼容的 REST API。 这些 REST API 提供地图绘制、搜索、路线规划、交通、时区、地理位置、地理围栏、地图数据、天气和空间操作功能。 这些操作伴随着 Web 和 Android SDK，可以使开发变得容易、灵活且可跨多个平台移植。
 
 ## <a name="high-level-platform-comparison"></a>概略性的平台比较
 

@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/08/2021
-ms.openlocfilehash: ee3c74e9b1bf1edcfa039703de92e899562ab927
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 9611f80c6895387e71cd6387736cb1445e6b1542
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111903215"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112575293"
 ---
 # <a name="quickstart-connect-a-microchip-atsame54-xpro-evaluation-kit-to-iot-central"></a>快速入门：将微芯片 ATSAME54-XPro 评估工具包连接到 IoT Central
 
@@ -106,7 +106,9 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="connect-the-device"></a>连接设备
 
-1. 在微芯片 E54 上，找到“重置”按钮、“以太网”端口和标记为“调试 USB”的 Micro USB 端口。
+1. 在微芯片 E54 上，找到“重置”按钮、“以太网”端口和标记为“调试 USB”的 Micro USB 端口。 下图突出显示了每个组件：
+
+    :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/microchip-xpro-board.png" alt-text="在 Microchip E54 评估工具包板上找到关键组件":::
 
 1. 将 Micro USB 电缆连接到微芯片 E54 上的“调试 USB”端口，然后连接到计算机。
     > [!NOTE]
@@ -118,7 +120,10 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 如果有 Weather Click 传感器和 mikroBUS Xplained Pro 适配器，请按照本部分中的步骤进行操作；否则，请跳到[生成映像](#build-the-image)。 即使没有传感器，也可完成本快速入门。 如果没有真实传感器，设备的示例代码会返回模拟数据。
 
-1. 如果有 Weather Click 传感器和 mikroBUS Xplained Pro 适配器，请将其安装在微芯片 E54 上。
+1. 如果有 Weather Click 传感器和 mikroBUS Xplained Pro 适配器，请将其安装在微芯片 E54 上，如下图中所示：
+
+    :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/sam-e54-sensor.png" alt-text="在 Microchip ES4 上安装 Weather Click 传感器和 mikroBUS Xplained Pro 适配器":::
+
 1. 重新打开之前编辑的配置文件：
 
     *getting-started\Microchip\ATSAME54-XPRO\app\azure_config.h*
@@ -167,7 +172,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 1. 启动 **Termite**。    
     > [!TIP]
-    > 如果刷写后在设备中进行初始化或连接时遇到问题，请参阅[故障排除](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)获取其他步骤。
+    > 如果刷写后在设备中进行初始化或连接时遇到问题，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)获取其他步骤。
 1. 选择“设置”。
 1. 在“串行端口设置”对话框中，检查以下设置并根据需要进行更新：
     * **波特率**：115,200
@@ -262,7 +267,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ## <a name="troubleshoot-and-debug"></a>故障排除和调试
 
-如果在生成设备代码、刷写设备或连接时遇到问题，请参阅[故障排除](https://github.com/azure-rtos/getting-started/blob/master/docs/troubleshooting.md)。
+如果在生成设备代码、刷写设备或进行连接时遇到问题，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)。
 
 要调试应用程序，请参阅[使用 Visual Studio Code 进行调试](https://github.com/azure-rtos/getting-started/blob/master/docs/debugging.md)。
 

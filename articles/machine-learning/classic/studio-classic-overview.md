@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio-classic
 ms.topic: overview
 ms.date: 08/19/2020
-ms.openlocfilehash: ad0550dc20edfbc10fb8877ad049c27fc2edf086
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 8b9c03395f77bc33fd03cf2b14b2fb1d27bfc0f0
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517529"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579479"
 ---
 # <a name="what-can-i-do-with-machine-learning-studio-classic"></a>机器学习工作室（经典）可以用于执行哪些操作？
 
-**适用对象：** ![这是复选标记，意味着本文适用于机器学习工作室（经典版）。](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）   ![这是 X，意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+适用范围：![这是复选标记，意味着本文适用于机器学习工作室（经典）。](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![这是 X，意味着本文不适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -84,7 +84,7 @@ ms.locfileid: "100517529"
 在浏览可用的机器学习算法大型库时如需帮助，请参阅[如何选择 Microsoft 机器学习工作室（经典）的算法](../how-to-select-algorithms.md)。
 
 ## <a name="deploying-a-predictive-analytics-web-service"></a>部署预测分析 Web 服务
-准备好预测分析模型后，可以从机器学习工作室（经典版）将它部署为 Web 服务。 有关此过程的信息，请参阅 [Deploy an Azure Machine Learning web service](deploy-a-machine-learning-web-service.md)（部署 Azure 机器学习 Web 服务）。
+准备好预测分析模型后，可以从机器学习工作室（经典版）将它部署为 Web 服务。 有关此过程的信息，请参阅[部署机器学习 Web 服务](deploy-a-machine-learning-web-service.md)。
 
 ## <a name="next-steps"></a>后续步骤
 可以使用[分步快速入门](create-experiment.md)和[基于样本的构建](sample-experiments.md)了解预测分析和机器学习的基础知识。

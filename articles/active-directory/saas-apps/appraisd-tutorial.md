@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/27/2019
+ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 79db0a7bb769d6138bfeeb4e765621a1cffb4d14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a694a604bc5ec3b826a1f28b7deccd0e7418f537
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92457854"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603805"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>教程：将 Appraisd 与 Azure Active Directory 集成
 
@@ -26,9 +26,7 @@ ms.locfileid: "92457854"
 * 让用户使用其 Azure AD 帐户自动登录到 Appraisd。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
-
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -37,39 +35,41 @@ ms.locfileid: "92457854"
 
 ## <a name="scenario-description"></a>方案描述
 
-本教程在测试环境中配置并测试 Azure AD SSO。 Appraisd 支持 **SP 和 IDP** 发起的 SSO。
+本教程在测试环境中配置并测试 Azure AD SSO。 
 
-## <a name="adding-appraisd-from-the-gallery"></a>从库中添加 Appraisd
+* Appraisd 支持 **SP 和 IDP** 发起的 SSO。
+
+## <a name="add-appraisd-from-the-gallery"></a>从库中添加 Appraisd
 
 要配置 Appraisd 与 Azure AD 的集成，需要将库中的 Appraisd 添加到托管 SaaS 应用列表。
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入“Appraisd”   。
 1. 从结果面板中选择“Appraisd”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-appraisd"></a>配置并测试 Appraisd 的 Azure AD SSO
 
 使用名为 B. Simon 的测试用户配置和测试 Appraisd 的 Azure AD SSO  。 若要使 SSO 有效，需要在 Azure AD 用户与 Appraisd 相关用户之间建立关联。
 
-若要为 Appraisd 配置和测试 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 Appraisd 的 Azure AD SSO，请执行以下步骤：
 
-1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** ，使用户能够使用此功能。
-2. **[配置 Appraisd](#configure-appraisd)** ，以便在应用程序端配置 SSO 设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以使用 B. Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** ，以使 B. Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Appraisd 测试用户](#create-appraisd-test-user)** ，以便在 Appraisd 中创建 B. Simon 的对应用户，并将其关联到其在 Azure AD 中的表示形式。
-6. **[测试 SSO](#test-sso)** ，验证配置是否正常工作。
+1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+1. [配置 Appraisd SSO](#configure-appraisd-sso) - 在应用程序端配置单一登录设置。
+    1. [创建 Appraisd 测试用户](#create-appraisd-test-user) - 在 Appraisd 中创建 B. Simon 的对应用户，并将其关联到用户在 Azure AD 中的表示形式。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)的“Appraisd”应用程序集成页上，找到“管理”部分，选择“单一登录”    。
+1. 在 Azure 门户的“Appraisd”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -77,7 +77,7 @@ ms.locfileid: "92457854"
 
     a. 单击“设置其他 URL”  。
 
-    b. 在“中继状态”文本框中键入 URL：`<TENANTCODE>` 
+    b. 在“中继状态”文本框中键入值 `<TENANTCODE>`
 
     c. 如果要在 SP 发起的模式下配置应用程序，请在“登录 URL”文本框中使用以下模式键入一个 URL：`https://app.appraisd.com/saml/<TENANTCODE>`  
 
@@ -96,7 +96,31 @@ ms.locfileid: "92457854"
 
    ![复制配置 URL](common/copy-configuration-urls.png)
 
-### <a name="configure-appraisd"></a>配置 Appraisd
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+
+在本部分中，将在 Azure 门户中创建一个名为 B. Simon 的测试用户。
+
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B. Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B. Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
+
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分中，通过授予 B. Simon 访问 Appraisd 的权限，允许她使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
+1. 在应用程序列表中，选择 Appraisd  。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框中，选择“用户”列表中的“B. Simon”，然后单击屏幕底部的“选择”按钮    。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
+
+## <a name="configure-appraisd-sso"></a>配置 Appraisd SSO
 
 1. 若要在 Appraisd 中自动执行配置，需要安装“我的应用安全登录浏览器扩展”，方法是单击“安装扩展”   。
 
@@ -110,15 +134,15 @@ ms.locfileid: "92457854"
 
 4. 在页面的右上角，单击“设置”图标，然后导航到“配置”   。
 
-    ![屏幕截图显示标注的“配置”链接。](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
+    ![屏幕截图显示标注的“配置”链接。](./media/appraisd-tutorial/settings.png)
 
 5. 从菜单的左侧，单击“SAML 单一登录”  。
 
-    ![屏幕截图显示“配置”选项，其中突出显示了“SAML 单一登录”选项。](./media/appraisd-tutorial/tutorial_appraisd_single.png)
+    ![屏幕截图显示“配置”选项，其中突出显示了“SAML 单一登录”选项。](./media/appraisd-tutorial/configuration.png)
 
 6. 在“SAML 2.0 单一登录配置”页面上，执行以下步骤  ：
 
-    ![屏幕截图显示“SAML 2.0 单一登录配置”页，可在其中编辑“默认中继状态”和“服务发起的登录 URL”。](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
+    ![屏幕截图显示“SAML 2.0 单一登录配置”页，可在其中编辑“默认中继状态”和“服务发起的登录 URL”。](./media/appraisd-tutorial/service-page.png)
 
     a. 复制“默认中继状态”值，并将其粘贴到 Azure 门户的“基本 SAML 配置”中的“中继状态”文本框    。
 
@@ -126,43 +150,13 @@ ms.locfileid: "92457854"
 
 7. 在同一页面上向下滚动，在“标识用户”下执行以下步骤  ：
 
-    ![屏幕截图显示“标识用户”，可在其中输入此步骤中的值。](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
+    ![屏幕截图显示“标识用户”，可在其中输入此步骤中的值。](./media/appraisd-tutorial/identifying-users.png)
 
     a. 在“标识提供者单一登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值，然后单击“保存”    。
 
     b. 在“标识提供者证书颁发者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值，然后单击“保存”    。
 
     c. 在记事本中，打开从 Azure 门户下载的 base-64 编码证书，复制其内容，然后将其粘贴到“X.509 证书”框中并单击“保存”   。
-
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
-
-在本部分中，将在 Azure 门户中创建一个名为 B. Simon 的测试用户。
-
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
-1. 选择屏幕顶部的“新建用户”。
-1. 在“用户”属性中执行以下步骤：
-   1. 在“名称”字段中，输入 `B. Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B. Simon@contoso.com`。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
-   1. 单击“创建”。
-
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分中，通过授予 B. Simon 访问 Appraisd 的权限，允许她使用 Azure 单一登录。
-
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择 Appraisd  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
-
-   ![“用户和组”链接](common/users-groups-blade.png)
-
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加用户”链接](common/add-assign-user.png)
-
-1. 在“用户和组”对话框中，选择“用户”列表中的“B. Simon”，然后单击屏幕底部的“选择”按钮    。
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
-1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ### <a name="create-appraisd-test-user"></a>创建 Appraisd 测试用户
 
@@ -172,17 +166,17 @@ ms.locfileid: "92457854"
 
 1. 以安全管理员身份登录到 Appraisd。
 
-2. 在页面的右上角，单击“设置”图标，然后导航到“管理中心”   。
+2. 在页面的右上角，单击“设置”图标，然后导航到“管理中心” 。
 
-    ![屏幕截图显示“设置”选项，可在其中选择“管理中心”。](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
+    ![显示“设置”选项的屏幕截图，可在其中选择“管理中心”。](./media/appraisd-tutorial/admin.png)
 
 3. 在页面顶部的工具栏中，单击“人员”，再导航到“添加新用户”   。
 
-    ![屏幕截图显示“Appraisd”页，其中标注了“人员”和“添加新用户”。](./media/appraisd-tutorial/tutorial_appraisd_user.png)
+    ![屏幕截图显示“Appraisd”页，其中标注了“人员”和“添加新用户”。](./media/appraisd-tutorial/user.png)
 
 4. 在“添加新用户”页面上，执行以下步骤  ：
 
-    ![屏幕截图显示“添加新用户”页。](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
+    ![屏幕截图显示“添加新用户”页。](./media/appraisd-tutorial/new-user.png)
 
     a. 在“名字”文本框中，输入用户的名字，例如 Britta   。
 
@@ -192,14 +186,22 @@ ms.locfileid: "92457854"
 
     d. 单击“添加用户”  。
 
-### <a name="test-sso"></a>测试 SSO
+## <a name="test-sso"></a>测试 SSO
 
-在访问面板中选择“Appraisd”磁贴时，应会自动登录到设置了 SSO 的 Appraisd。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-## <a name="additional-resources"></a>其他资源
+#### <a name="sp-initiated"></a>SP 启动的：
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 在 Azure 门户中单击“测试此应用程序”。 此操作会重定向到 Appraisd 登录 URL，你可在其中启动登录流。  
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+* 直接转到 Appraisd 登录 URL，并从此处启动登录流。
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
+#### <a name="idp-initiated"></a>IDP 启动的：
+
+* 在 Azure 门户中单击“测试此应用程序”后，你应会自动登录到为其设置了 SSO 的 Appraisd。 
+
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 单击“我的应用”中的“Appraisd”磁贴时，如果该应用程序是在 SP 模式下配置的，则会重定向到应用程序登录页来启动登录流；如果是在 IDP 模式下配置的，则会自动登录到为其设置了 SSO 的 Appraisd。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+
+## <a name="next-steps"></a>后续步骤
+
+配置 Appraisd 后，即可强制实施会话控制，实时防止组织的敏感数据发生外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

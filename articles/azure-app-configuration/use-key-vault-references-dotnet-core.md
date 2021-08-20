@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 04/08/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 57abbeefe8e3f2abe527f2b282d643db766b9dc9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e02ac9d6abd3358218f268fb3da1e99b90fac7c5
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775738"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113568075"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用 Key Vault 引用
 
@@ -51,20 +51,20 @@ ms.locfileid: "107775738"
 1. 选择 Azure 门户左上角的“创建资源”选项： 
 
     ![屏幕截图显示 Azure 门户中的“创建资源”选项。](./media/quickstarts/search-services.png)
-1. 在搜索框中输入 **Key Vault**。
+1. 在搜索框中键入“密钥保管库”，然后从下拉列表中选择“密钥保管库” 。
 1. 在结果列表中，选择左侧的“Key Vault”  。
 1. 在“Key Vault”中选择“添加”。  
 1. 在“创建 Key Vault”中的右侧提供以下信息： 
     - 选择“订阅”以选择订阅。 
-    - 在“资源组”中选择“新建”，然后输入资源组的名称   。
-    - 在“Key Vault 名称”中，必须输入唯一的名称。  对于本教程，请输入 **Contoso-vault2**。
+    - 在“资源组”中，选择现有的资源组名称，或者选择“新建”并输入资源组名称 。
+    - 在“Key Vault 名称”中，必须输入唯一的名称。 
     - 在“区域”下拉列表中，选择一个位置。 
 1. 将“创建 Key Vault”的其他选项保留默认值。 
-1. 选择“创建”  。
+1. 单击“查看 + 创建”。
+1. 系统将验证并显示你输入的数据。 单击“创建”。
 
 目前，只有你的 Azure 帐户有权访问这个新保管库。
 
-![屏幕截图显示密钥保管库。](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>向 Key Vault 添加机密
 
@@ -91,68 +91,7 @@ ms.locfileid: "107775738"
     - “订阅”、“资源组”和“Key Vault”：    输入上一部分在 Key Vault 中创建的值相对应的值。
     - **机密**：选择在上一部分创建的名为 **Message** 的机密。
 
-## <a name="connect-to-key-vault"></a>连接到 Key Vault
-
-1. 在本教程中，我们将使用一个服务主体向 Key Vault 进行身份验证。 若要创建该服务主体，请使用 Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) 命令：
-
-    ```azurecli
-    az ad sp create-for-rbac -n "http://mySP" --sdk-auth
-    ```
-
-    此操作返回一系列键/值对：
-
-    ```console
-    {
-    "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
-    "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
-    "subscriptionId": "443e30da-feca-47c4-b68f-1636b75e16b3",
-    "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
-    "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
-    "resourceManagerEndpointUrl": "https://management.azure.com/",
-    "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
-    "galleryEndpointUrl": "https://gallery.azure.com/",
-    "managementEndpointUrl": "https://management.core.windows.net/"
-    }
-    ```
-
-1. 运行以下命令，使服务主体能够访问 Key Vault：
-
-    ```cmd
-    az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
-    ```
-
-1. 添加环境变量以存储 *clientId*、*clientSecret* 和 *tenantId* 的值。
-
-    #### <a name="windows-command-prompt"></a>[Windows 命令提示符](#tab/cmd)
-
-    ```cmd
-    setx AZURE_CLIENT_ID <clientId-of-your-service-principal>
-    setx AZURE_CLIENT_SECRET <clientSecret-of-your-service-principal>
-    setx AZURE_TENANT_ID <tenantId-of-your-service-principal>
-    ```
-
-    #### <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-    ```PowerShell
-    $Env:AZURE_CLIENT_ID = <clientId-of-your-service-principal>
-    $Env:AZURE_CLIENT_SECRET = <clientSecret-of-your-service-principal>
-    $Env:AZURE_TENANT_ID = <tenantId-of-your-service-principal>
-    ```
-
-    #### <a name="bash"></a>[Bash](#tab/bash)
-
-    ```bash
-    export AZURE_CLIENT_ID = <clientId-of-your-service-principal>
-    export AZURE_CLIENT_SECRET = <clientSecret-of-your-service-principal>
-    export AZURE_TENANT_ID = <tenantId-of-your-service-principal>
-    ```
-
-    ---
-
-    > [!NOTE]
-    > 这些 Key Vault 凭据只在应用程序中使用。 应用程序使用这些凭据直接向 Key Vault 进行身份验证。 这些凭据从不传递到应用程序配置服务。
-
-1. 重启终端以加载这些新的环境变量。
+![用于创建新密钥保管库引用的窗体的屏幕截图](./media/create-key-vault-reference.png)
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>更新代码以使用 Key Vault 引用
 
@@ -170,12 +109,13 @@ ms.locfileid: "107775738"
 
 1. 通过调用 `config.AddAzureAppConfiguration` 方法，更新 `CreateWebHostBuilder` 方法以使用应用配置。 包括 `ConfigureKeyVault` 选项，并将正确的凭据传递到 Key Vault。
 
-    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+     #### <a name="net-core-5x"></a>[.NET Core 5.x](#tab/core5x)
 
     ```csharp
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
 
@@ -188,7 +128,7 @@ ms.locfileid: "107775738"
                             });
                 });
             })
-            .UseStartup<Startup>();
+            .UseStartup<Startup>());
     ```
 
     #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
@@ -211,6 +151,27 @@ ms.locfileid: "107775738"
                 });
             })
             .UseStartup<Startup>());
+    ```
+    
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+
+    ```csharp
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                var settings = config.Build();
+
+                config.AddAzureAppConfiguration(options =>
+                {
+                    options.Connect(settings["ConnectionStrings:AppConfig"])
+                            .ConfigureKeyVault(kv =>
+                            {
+                                kv.SetCredential(new DefaultAzureCredential());
+                            });
+                });
+            })
+            .UseStartup<Startup>();
     ```
 
 1. 在初始化与“应用配置”服务的连接时，你已通过调用 `ConfigureKeyVault` 方法设置了与 Key Vault 的连接。 初始化之后，可以像访问普通的应用程序配置密钥值一样访问 Key Vault 引用值。
@@ -237,6 +198,15 @@ ms.locfileid: "107775738"
 
     像访问 **TestApp:Settings:Message** 配置值一样访问 Key Vault 引用 **TestApp:Settings:KeyVaultMessage** 的值。
 
+
+## <a name="grant-your-app-access-to-key-vault"></a>请授予应用对密钥保管库的访问权限
+
+Azure 应用程序配置不会访问你的密钥保管库。 应用将直接读取密钥保管库，因此你需要为应用授予对密钥保管库中机密的读取访问权限。 这样，机密始终会保留在你的应用中。 可以使用[密钥保管库访问策略](../key-vault/general/assign-access-policy-portal.md)或 [Azure 基于角色的访问控制](../key-vault/general/rbac-guide.md)来授予访问权限。
+
+在上面的代码中使用 `DefaultAzureCredential`。 它是一个自动尝试多个凭据类型（如 `EnvironmentCredential`、`ManagedIdentityCredential`、`SharedTokenCacheCredential` 和 `VisualStudioCredential`）的聚合令牌凭据。 有关详细信息，请参阅 [DefaultAzureCredential 类](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet)。 可以显式将 `DefaultAzureCredential` 替换为任何凭据类型。 但是，通过使用 `DefaultAzureCredential`，你可以本地和 Azure 环境中运行相同的代码。 例如，你可以授予对密钥保管库的凭据访问权限。 使用 Visual Studio 进行本地开发时，`DefaultAzureCredential` 将自动回退到 `SharedTokenCacheCredential` 或 `VisualStudioCredential`。
+
+或者，可以设置 AZURE_TENANT_ID、AZURE_CLIENT_ID 和 AZURE_CLIENT_SECRET 环境变量，然后，`DefaultAzureCredential` 将使用你通过 `EnvironmentCredential` 获取的客户端机密对密钥保管库进行身份验证。 将应用部署到启用了托管标识的 Azure 服务（例如 Azure 应用服务、Azure Kubernetes 服务或 Azure 容器实例）后，为 Azure 服务的托管标识授予对密钥保管库的访问权限。 当应用在 Azure 中运行时，`DefaultAzureCredential` 会自动使用 `ManagedIdentityCredential`。 可以使用同一个托管标识对应用程序配置和密钥保管库进行身份验证。 有关详细信息，请参阅[如何使用托管标识访问应用程序配置](howto-integrate-azure-managed-service-identity.md)。
+
 ## <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
 1. 要通过使用 .NET Core CLI 生成应用，请在命令行界面中执行以下命令：
@@ -255,13 +225,21 @@ ms.locfileid: "107775738"
 
     ![快速入门 - 本地应用启动](./media/key-vault-reference-launch-local.png)
 
+
+
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，我们已创建一个引用 Key Vault 中存储的值的应用程序配置密钥。 若要了解如何添加 Azure 托管服务标识来简化对应用程序配置和 Key Vault 的访问，请继续学习下一篇教程。
+在本教程中，你已在应用程序配置中创建一个引用密钥保管库中存储的机密的密钥。
+若要了解如何自动从密钥保管库重载机密和证书，请继续学习下一篇教程：
+
+> [!div class="nextstepaction"]
+> [自动从密钥保管库重新加载机密和证书](./reload-key-vault-secrets-dotnet.md)
+
+若要了解如何使用托管标识来简化对应用程序配置和密钥保管库的访问，请参阅以下教程：
 
 > [!div class="nextstepaction"]
 > [托管标识集成](./howto-integrate-azure-managed-service-identity.md)

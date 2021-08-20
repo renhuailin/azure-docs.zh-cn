@@ -15,12 +15,12 @@ metadata:
   ms.workload: iaas-sql-server
   ms.date: 08/05/2019
   ms.author: mathoma
-  ms.openlocfilehash: 426a1e7fa481f31d279870368ff5616c6ead0c4b
-  ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+  ms.openlocfilehash: afc126a44fec520f4451787c0e8b350a292c2fca
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/14/2021
-  ms.locfileid: "112082611"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114440689"
 title: Azure VM 上的 SQL Server 常见问题解答
 summary: >
   [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -117,22 +117,6 @@ sections:
   - question: >
       哪些订阅支持灾难恢复 (DR) 权益？
     answer: "提供软件保障等效订阅权限作为固定权益的综合计划支持 DR 权益。 这包括 但不限于：开放式价值 (OV)、开放式价值订阅 (OVS)、企业协议 (EA)、企业协议订阅 (EAS) 以及服务器和云注册 (SCE)。 有关详细信息，请参阅[产品条款](https://www.microsoft.com/licensing/product-licensing/products)并与许可联系人或客户经理联系。 \n"
-- name: 分机
-  questions:
-  - question: >
-      将 VM 注册到新的 SQL IaaS 代理扩展是否需额外付费？
-    answer: 不知道。 SQL IaaS 代理扩展只是进一步提高了 Azure VM 上的 SQL Server 的可管理性，不会额外收费。
-  - question: >
-      SQL IaaS 代理扩展是否适用于所有客户？
-    answer: "是的，只要使用资源管理器模型而不是使用经典模型将 SQL Server VM 部署到公共云就行。 所有其他客户都可以注册到新的 SQL IaaS 代理扩展。 但是，只有享受[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)权益的客户才能通过激活 SQL Server VM 上的 [Azure 混合权益 (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) 来使用自己的许可证。 \n"
-  - question: "如果移动或删除 VM 资源，扩展（“Microsoft.SqlVirtualMachine”）资源会发生什么情况？ \n"
-    answer: 删除或移动 Microsoft.Compute/VirtualMachine 资源时，会通知关联的 Microsoft.SqlVirtualMachine 资源以异步方式复制此操作。
-  - question: >
-      如果删除扩展（“Microsoft.SqlVirtualMachine”）资源，VM 会发生什么情况？
-    answer: 删除 Microsoft.SqlVirtualMachine 资源时，Microsoft.Compute/VirtualMachine 资源不受影响。 但是，许可更改会默认回退到原始的映像源。
-  - question: >
-      是否可将自行部署的 SQL Server VM 注册到 SQL IaaS 代理扩展？
-    answer: "是的。 如果你从自己的媒体部署了 SQL Server，并安装了 SQL IaaS 扩展，则可将 SQL Server VM 注册到该扩展，以获得 SQL IaaS 扩展提供的可管理性优势。    \n"
 - name: 管理
   questions:
   - question: >
@@ -197,7 +181,7 @@ sections:
     answer: 是的。 SQL Server 2016 SP2 和更高版本支持本地 DTC。 但是，在使用 Always On 可用性组时必须对应用程序进行测试，因为故障转移期间正在进行的事务将会失败，并且必须重试。 从 Windows Server 2019 开始将会推出群集 DTC。
   - question: >
       Azure SQL 虚拟机是否将客户数据移出区域，或者在区域外部存储客户数据？
-    answer: 不知道。 事实上，Azure SQL 虚拟机和 SQL IaaS 代理扩展不存储任何客户数据。
+    answer: 不是。 事实上，Azure SQL 虚拟机和 SQL IaaS 代理扩展不存储任何客户数据。
 - name: SQL Server IaaS 代理扩展
   questions:
   - question: >
@@ -237,10 +221,10 @@ sections:
     answer: "不是。 不支持降级 SQL Server IaaS 扩展可管理性模式。 可管理性模式无法从完全模式降级为轻型或无代理模式，且无法从轻型模式降级为无代理模式。 \n\n若要将完全可管理性模式更改为其他模式，请删除 SQL 虚拟机资源以从 SQL IaaS 代理扩展中[取消注册](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension) SQL Server VM，然后在其他管理模式下将 SQL Server VM 重新注册到 SQL IaaS 代理扩展。\n"
   - question: >
       是否可以通过 Azure 门户注册到 SQL IaaS 代理扩展？
-    answer: 不知道。 无法在 Azure 门户中注册到 SQL IaaS 代理扩展。 仅支持使用 Azure CLI 或 Azure PowerShell 注册到 SQL IaaS 代理扩展。
+    answer: 不是。 无法在 Azure 门户中注册到 SQL IaaS 代理扩展。 仅支持使用 Azure CLI 或 Azure PowerShell 注册到 SQL IaaS 代理扩展。
   - question: >
       是否可以在安装 SQL Server 之前将 VM 注册到 SQL IaaS 代理扩展？
-    answer: 不知道。 VM 必须至少有一个 SQL Server（数据库引擎）实例才能成功注册到 SQL IaaS 代理扩展。 如果 VM 上没有 SQL Server 实例，则新的 Microsoft.SqlVirtualMachine 资源会处于失败状态。
+    answer: 不是。 VM 必须至少有一个 SQL Server（数据库引擎）实例才能成功注册到 SQL IaaS 代理扩展。 如果 VM 上没有 SQL Server 实例，则新的 Microsoft.SqlVirtualMachine 资源会处于失败状态。
   - question: >
       如果有多个 SQL Server 实例，是否可将 VM 注册到 SQL IaaS 代理扩展？
     answer: 可以，前提是该 VM 上有一个默认实例。 SQL IaaS 代理扩展只会注册一个 SQL Server（数据库引擎）实例。 如果有多个 SQL Server 实例，SQL IaaS 代理扩展将注册默认的实例。
@@ -259,4 +243,20 @@ sections:
   - question: >
       如何删除该扩展？
     answer: "从 SQL IaaS 代理扩展中[取消注册](sql-agent-extension-manually-register-single-vm.md#unregister-from-extension) SQL Server VM 即可删除该扩展。 \n"
+  - question: >
+      将 VM 注册到新的 SQL IaaS 代理扩展是否需额外付费？
+    answer: 不是。 SQL IaaS 代理扩展只是进一步提高了 Azure VM 上的 SQL Server 的可管理性，不会额外收费。
+  - question: >
+      SQL IaaS 代理扩展是否适用于所有客户？
+    answer: "是的，只要使用资源管理器模型而不是使用经典模型将 SQL Server VM 部署到公共云就行。 所有其他客户都可以注册到新的 SQL IaaS 代理扩展。 但是，只有享受[软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)权益的客户才能通过激活 SQL Server VM 上的 [Azure 混合权益 (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) 来使用自己的许可证。 \n"
+  - question: "如果移动或删除 VM 资源，扩展（“Microsoft.SqlVirtualMachine”）资源会发生什么情况？ \n"
+    answer: 删除或移动 Microsoft.Compute/VirtualMachine 资源时，会通知关联的 Microsoft.SqlVirtualMachine 资源以异步方式复制此操作。
+  - question: >
+      如果删除扩展（“Microsoft.SqlVirtualMachine”）资源，VM 会发生什么情况？
+    answer: 删除 Microsoft.SqlVirtualMachine 资源时，Microsoft.Compute/VirtualMachine 资源不受影响。 但是，许可更改会默认回退到原始的映像源。
+  - question: >
+      是否可将自行部署的 SQL Server VM 注册到 SQL IaaS 代理扩展？
+    answer: "是的。 如果你从自己的媒体部署了 SQL Server，并安装了 SQL IaaS 扩展，则可将 SQL Server VM 注册到该扩展，以获得 SQL IaaS 扩展提供的可管理性优势。    \n"
+  - question: "是否可以修复 SQL IaaS 代理扩展？ \n"
+    answer: "是的。 导航到 SQL Server VM 的“SQL 虚拟机”资源，然后选择“技术支持和故障排除”下的“修复”，打开“修复”[](sql-agent-extension-manually-register-single-vm.md#repair-extension)页并修复扩展。 \n"
 additionalContent: "\n## <a name=\"resources\"></a>资源\n\n**Windows VM**：\n\n* [Windows VM 上的 SQL Server 概述](sql-server-on-azure-vm-iaas-what-is-overview.md)\n* [在 Windows VM 上预配 SQL Server](create-sql-vm-portal.md)\n* [将数据库迁移到 Azure VM 上的 SQL Server](migrate-to-vm-from-sql-server.md)\n* [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](business-continuity-high-availability-disaster-recovery-hadr-overview.md)\n* [Azure 虚拟机中 SQL Server 的性能最佳做法](./performance-guidelines-best-practices-checklist.md)\n* [Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略](application-patterns-development-strategies.md)\n\n**Linux VM**：\n\n* [Linux VM 上的 SQL Server 概述](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)\n* [在 Linux VM 上预配 SQL Server](../linux/sql-vm-create-portal-quickstart.md)\n* [常见问题 (Linux)](../linux/frequently-asked-questions-faq.yml)\n* [“Linux 上的 SQL Server”文档](/sql/linux/sql-server-linux-overview)"

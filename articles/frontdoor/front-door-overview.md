@@ -8,12 +8,12 @@ ms.topic: overview
 ms.workload: infrastructure-services
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: 0ba34b298fad21656a63c813057ed0c69db6c7f1
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 11e01d9d61a3a446be1135a212ae6cadcd1eea42
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064879"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113595266"
 ---
 # <a name="what-is-azure-front-door"></a>什么是 Azure Front Door？
 
@@ -75,5 +75,6 @@ Front Door 带有的主要功能：
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[创建 Front Door](quickstart-create-front-door.md)。
+- [快速入门：创建 Front Door](quickstart-create-front-door.md)。
+- [Learn 模块：Azure Front Door 简介](/learn/modules/intro-to-azure-front-door/)。
 - 了解 [Front Door 的工作原理](front-door-routing-architecture.md)。

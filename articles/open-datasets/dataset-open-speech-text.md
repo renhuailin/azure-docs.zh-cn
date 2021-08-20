@@ -7,12 +7,12 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 04/16/2021
-ms.openlocfilehash: 7dc004de8b4c01fca8eebf54332a9fa5c177ae13
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 4c0ec200fa3506dd0b251903954240eff5132dd4
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112038548"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112982503"
 ---
 # <a name="russian-open-speech-to-text"></a>俄语开放语音转文本
 
@@ -97,7 +97,7 @@ store_path = Path(root_folder,
 数据集以两种形式提供：
 
 - 通过 Azure Blob 存储和/或直接链接提供存档；
-- 通过 Azure Blob 存储提供原始文件；所有内容存储在 https://azureopendatastorage.blob.core.windows.net/openstt/ 中
+- 通过 Azure Blob 存储提供原始文件；所有内容都存储在 https://azureopendatastorage.blob.core.windows.net/openstt/ 中
 
 文件夹结构：
 

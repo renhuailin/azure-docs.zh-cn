@@ -7,12 +7,12 @@ ms.date: 06/30/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 2d4e22c58fd45edc4beb58b4b1b9ae7c835e8fa9
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: e6c2a452441b268adc52ef3d9337aa5e604fe1e6
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113215434"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729858"
 ---
 # <a name="run-a-custom-container-in-azure"></a>在 Azure 中运行自定义容器
 
@@ -291,7 +291,7 @@ ENTRYPOINT ["java", "-Dserver.port=80", "-jar", "/tmp/appservice/parkingpage.jar
 
 3. 在映像标记框中，按以下格式指定所需标记：`<acr-name>.azurecr.io/<image-name>/<tag>`，其中 `<acr-name>` 是所创建的容器注册表的名称。 按 **Enter**。
 
-4. 映像完成生成后，请单击“映像”资源管理器顶部的"刷新"，并验证映像是否已成功生成。
+4. 映像完成生成后，请单击“映像”资源管理器顶部的“刷新”，并验证映像是否已成功生成 。
 
     ![屏幕截图显示了带标记的生成映像。](./media/quickstart-docker/built-image.png)
 
@@ -300,7 +300,7 @@ ENTRYPOINT ["java", "-Dserver.port=80", "-jar", "/tmp/appservice/parkingpage.jar
 1. 在活动栏中，单击 Docker 图标。 在“映像”资源管理器中，找到刚刚生成的映像。
 1. 展开映像，右键单击所需的标记，然后单击“推送”。
 1. 确保映像标记以 `<acr-name>.azurecr.io` 开头，然后按 Enter。
-1. 当 Visual Studio Code 将映像推送到容器注册表后，请单击“注册表”资源管理器顶部的“刷新”，并验证映像是否已成功推送。
+1. 当 Visual Studio Code 将映像推送到容器注册表后，请单击“注册表”资源管理器顶部的“刷新”，并验证映像是否已成功推送 。
 
     ![屏幕截图显示了部署到 Azure 容器注册表的映像。](./media/quickstart-docker/image-in-registry.png)
 

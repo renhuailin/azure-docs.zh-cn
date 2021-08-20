@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 82c24a38d8b693bb931be75b3be5d3bfaaa2d38f
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 641a2f902cd0cf0540cd4cd217f720beaa70a7d2
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110615654"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460981"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教程：扩建端到端解决方案
 
@@ -117,24 +117,85 @@ Query
 
 ### <a name="publish-the-app"></a>发布应用
 
-返回到打开 AdtE2ESample 项目的 Visual Studio 窗口中，在“解决方案资源管理器”窗格中查找 SampleFunctionsApp 项目 。
+若要将函数应用发布到 Azure，首先需要创建一个存储帐户，然后在 Azure 中创建函数应用，最后将函数发布到 Azure 函数应用。 本部分使用 Azure CLI 完成这些操作。
 
-[!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
+1. 通过运行以下命令来创建 Azure 存储帐户：
 
-要使函数应用能够访问 Azure 数字孪生，它需要具有访问 Azure 数字孪生实例的权限以及该实例的主机名。 接下来将配置这些设置。
+    ```azurecli-interactive
+    az storage account create --name <name-for-new-storage-account> --location <location> --resource-group <resource-group> --sku Standard_LRS
+    ```
+
+1. 通过运行以下命令来创建 Azure 函数应用：
+
+    ```azurecli-interactive
+    az functionapp create --name <name-for-new-function-app> --storage-account <name-of-storage-account-from-previous-step> --consumption-plan-location <location> --runtime dotnet --resource-group <resource-group>
+    ```
+
+1. 接下来，你将压缩函数并将其发布到新的 Azure 函数应用 。
+
+    1. 在本地计算机上打开一个终端，比如 PowerShell，然后导航到在本教程前面下载的[数字孪生示例存储库](https://github.com/azure-samples/digital-twins-samples/tree/master/)。 在下载的存储库文件夹中，导航到 digital-twins-samples-master\AdtSampleApp\SampleFunctionsApp。
+    
+    1. 在终端中，运行以下命令以发布项目：
+
+        ```powershell
+        dotnet publish -c Release
+        ```
+
+        此命令将项目发布到 digital-twins-samples-master\AdtSampleApp\SampleFunctionsApp\bin\Release\netcoreapp3.1\publish 目录。
+
+    1. 创建位于 digital-twins-samples-master\AdtSampleApp\SampleFunctionsApp\bin\Release\netcoreapp3.1\publish 目录中的已发布文件的 zip。 
+        
+        如果使用的是 PowerShell，可以通过将完整路径复制到该 \publish 目录并将其粘贴到以下命令中来实现此操作：
+    
+        ```powershell
+        Compress-Archive -Path <full-path-to-publish-directory>\* -DestinationPath .\publish.zip
+        ```
+
+        该 cmdlet 将在终端的目录位置创建一个 publish.zip 文件，其中包含 host.json 文件以及 bin、ProcessDTRoutedData 和 ProcessHubToDTEvents 目录   。
+
+        如果未使用 PowerShell 且无权访问 `Compress-Archive` cmdlet，则需要使用文件资源管理器或其他方法压缩文件。
+
+1. 在 Azure CLI 中，运行以下命令，将已发布和已压缩的函数部署到 Azure 函数应用：
+
+    ```azurecli-interactive
+    az functionapp deployment source config-zip --resource-group <resource-group> --name <name-of-your-function-app> --src "<full-path-to-publish.zip>"
+    ```
+
+    > [!NOTE]
+    > 如果在本地使用 Azure CLI，则可以使用计算机上的 ZIP 文件路径直接访问该文件。
+    > 
+    >如果使用的是 Azure Cloud Shell，请在运行命令之前使用此按钮将 ZIP 文件上传到 Cloud Shell：
+    >
+    > :::image type="content" source="media/tutorial-end-to-end/azure-cloud-shell-upload.png" alt-text="Azure Cloud Shell 的屏幕截图，其中侧重展示了如何上传文件。":::
+    >
+    > 在本例中，该文件将上传到 Cloud Shell 存储的根目录中，以便可以通过命令（如 `--src publish.zip`）的 `--src` 参数名称直接引用该文件。
+
+    一个成功的部署的响应状态代码为 202 并会输出一个包含新函数详细信息的 JSON 对象。 可以通过在结果中查找此字段来确认部署是否成功：
+
+    ```json
+    {
+      ...
+      "provisioningState": "Succeeded",
+      ...
+    }
+    ```
+
+你现在已将函数发布到 Azure 中的函数应用。
+
+接下来，函数应用要能访问 Azure 数字孪生，需要具有访问 Azure 数字孪生实例的权限。 你将在下一部分配置此访问权限。
 
 ### <a name="configure-permissions-for-the-function-app"></a>为函数应用配置权限
 
-需要为函数应用执行两项设置才能访问 Azure 数字孪生实例。 可以通过 [Azure Cloud Shell](https://shell.azure.com) 中的命令完成这两项设置。 
+需要为函数应用执行两项设置才能访问 Azure 数字孪生实例。 这些操作均可使用 Azure CLI 完成。 
 
 #### <a name="assign-access-role"></a>分配访问角色
 
-第一个设置为函数应用提供 Azure 数字孪生实例中的“Azure 数字孪生数据所有者”角色。 要对实例执行许多数据平面活动的任何用户或函数都需要此角色。 关于安全性和角色分配，可以在概念：Azure 数字孪生解决方案的安全性中了解详细信息。 
+第一个设置为函数应用提供 Azure 数字孪生实例中的“Azure 数字孪生数据所有者”角色。 要对实例执行许多数据平面活动的任何用户或函数都需要此角色。 可以在 [Azure 数字孪生解决方案的安全性](concepts-security.md)中阅读有关安全性和角色分配的详细信息。 
 
 1. 使用以下命令查看函数的系统托管标识的详细信息。 记下输出中的 principalId 字段。
 
     ```azurecli-interactive 
-    az functionapp identity show -g <your-resource-group> -n <your-App-Service-function-app-name>   
+    az functionapp identity show --resource-group <your-resource-group> --name <your-App-Service-function-app-name> 
     ```
 
     >[!NOTE]
@@ -439,4 +500,4 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 接下来，请开始查看概念文档，详细了解本教程中所用的元素：
 
 > [!div class="nextstepaction"]
-> [概念：自定义模型](concepts-models.md)
+> [自定义模式](concepts-models.md)

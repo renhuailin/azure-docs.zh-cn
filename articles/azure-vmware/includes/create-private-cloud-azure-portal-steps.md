@@ -2,13 +2,13 @@
 title: 创建 Azure VMware 解决方案私有云
 description: 使用 Azure 门户创建 Azure VMware 解决方案私有云的步骤。
 ms.topic: include
-ms.date: 04/23/2021
-ms.openlocfilehash: 40bd1880511f22d9518d0c4526bc697a3693a518
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.date: 06/17/2021
+ms.openlocfilehash: cb357bf5e0fa42c3c67531e45a51b8dbba6aa6da
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945787"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113431038"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
@@ -32,25 +32,25 @@ ms.locfileid: "107945787"
 
    | 字段   | 值  |
    | ---| --- |
-   | **订阅** | 选择打算用于部署的订阅。|
-   | **资源组** | 选择私有云资源的资源组。 |
+   | **订阅** | 选择打算用于部署的订阅。 一个 Azure 订阅中的所有资源在一起计费。|
+   | **资源组** | 选择私有云的资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 或者，可以为私有云创建新的资源组。 |
    | **位置** | 选择一个位置，例如“美国东部”。 这是你在规划阶段定义的区域。 |
    | **资源名称** | 提供 Azure VMware 解决方案私有云的名称。 |
    | **SKU** | 选择 AV36。 |
    | **主机** | 显示为私有云群集分配的主机数。 默认值为 3，在部署后可以增大或减小此值。  |
-   | **地址块** | 输入私有云 CIDR 网络的 IP 地址块,，例如 10.175.0.0/22。 |
+   | **地址块** | 提供私有云的 IP 地址块。  CIDR 表示私有云管理网络，它将用于群集管理服务，例如 vCenter Server 和 NSX-T Manager。 使用 /22 地址空间，例如 10.175.0.0/22。  该地址应是唯一的，且不与其他 Azure 虚拟网络以及本地网络重叠。 |
    | **虚拟网络** | 将此项留空，因为会在部署后步骤中建立 Azure VMware 解决方案 ExpressRoute 线路。   |
 
-   :::image type="content" source="../media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="在“基本信息”选项卡上，输入相关字段的值。" border="true":::
+   :::image type="content" source="../media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="显示“创建私有云”窗口中的“基本信息”选项卡的屏幕截图。" border="true":::
 
 1. 完成后，选择“审阅 + 创建”。 在下一个屏幕上，验证输入的信息。 如果信息全部正确，请选择“创建”。
 
    > [!NOTE]
-   > 此步骤大约需要 3-4 小时。 在现有或同一群集中添加单个节点需要 30-45 分钟。
+   > 此步骤大约需要 3-4 小时。 在现有或同一群集中添加单个主机需要 30-45 分钟。
 
 1. 验证部署是否成功。 导航到创建的资源组，然后选择私有云。  完成部署后，你将看到“成功”状态。 
 
-   :::image type="content" source="../media/tutorial-create-private-cloud/validate-deployment.png" alt-text="验证部署是否成功。" border="true":::
+   :::image type="content" source="../media/tutorial-create-private-cloud/validate-deployment.png" alt-text="显示部署成功的屏幕截图。" border="true":::
 
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -74,7 +74,7 @@ ms.locfileid: "107945787"
    | --------- | ------------ |
    | -g（资源组名称）     | 私有云资源的资源组的名称。        |
    | -n（私有云名称）     | Azure VMware 解决方案私有云的名称。        |
-   | --location     | 用于私有云的位置。         |
+   | --location     | 用于私有云的区域。         |
    | --cluster-size     | 群集的大小。 最小值为 3。         |
    | --network-block     | 用于私有云的 CIDR IP 地址网络块。 地址块不应与订阅和本地网络中的其他虚拟网络中使用的地址块重叠。        |
    | --sku | SKU 值：AV36 |

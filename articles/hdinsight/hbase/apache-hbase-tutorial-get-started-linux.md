@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/22/2021
-ms.openlocfilehash: 89988579c847250938db71844b1bbafa4965e7df
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: fa1ac05766a95754631c5a6c78f80b9abdc4e3a7
+ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004558"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112573663"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中使用 Apache HBase
 
 本教程演示如何在 Azure HDInsight 中创建 Apache HBase 群集、创建 HBase 表以及使用 Apache Hive 查询表。  有关 HBase 的一般信息，请参阅 [HDInsight HBase 概述](./apache-hbase-overview.md)。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Apache HBase 群集
@@ -209,7 +209,7 @@ HBase 提供了多种方法用于将数据载入表中。  有关详细信息，
 无需从 HBase 群集执行访问 HBase 数据的 Hive 查询。 如果已完成以下步骤，Hive 随附的任何群集（包括 Spark、Hadoop、HBase 或 Interactive Query）都可以用于查询 HBase 数据：
 
 1. 两个群集必须附加到同一虚拟网络和子网
-2. 将 `/usr/hdp/$(hdp-select --version)/hbase/conf/hbase-site.xml` 从 HBase 群集头节点复制到 Hive 群集头节点
+2. 将 `/usr/hdp/$(hdp-select --version)/hbase/conf/hbase-site.xml` 从 HBase 群集头节点复制到 Hive 群集头节点和工作器节点。
 
 ### <a name="secure-clusters"></a>安全群集
 
@@ -217,7 +217,7 @@ HBase 提供了多种方法用于将数据载入表中。  有关详细信息，
 
 1. 遵循多群集模式时，两个群集都必须启用 ESP。 
 2. 要允许 Hive 查询 HBase 数据，请确保 `hive` 用户有权通过 Hbase Apache Ranger 插件访问 HBase 数据
-3. 使用启用了 ESP 的单独群集时，必须将 HBase 群集头节点中 `/etc/hosts` 的内容追加到 Hive 群集头节点的 `/etc/hosts`。 
+3. 使用启用了 ESP 的单独群集时，必须将 HBase 群集头节点中 `/etc/hosts` 的内容追加到 Hive 群集头节点和工作器节点的 `/etc/hosts`。 
 > [!NOTE]
 > 缩放任一群集后，必须再次追加 `/etc/hosts`
 
@@ -351,7 +351,7 @@ HDInsight 中的 HBase 随附了一个 Web UI 用于监视群集。 使用该 We
 
 如果不打算继续使用此应用程序，请使用以下步骤删除创建的 HBase 群集：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 在顶部的“搜索”框中，键入 **HDInsight**。
 1. 选择“服务”下的“HDInsight 群集” 。
 1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。 

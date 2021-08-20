@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 02/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 05c131abf23ac060db24b19b6affbeb5e632468b
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: eee130b0736c87b118b38f19e7523c07a431e5c9
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004756"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114202879"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-cwinrt-and-directx"></a>快速入门：在 C++/WinRT 和 DirectX 中使用 Azure Object Anchors 创建 HoloLens 应用
 
@@ -37,13 +37,29 @@ ms.locfileid: "112004756"
 * 已启用[开发人员模式](/windows/mixed-reality/using-visual-studio#enabling-developer-mode)的最新 HoloLens 2 设备。
   * 若要在 HoloLens 上更新为最新版本，请打开“设置”应用，转到“更新和安全”，然后选择“检查更新”    。
 
+[!INCLUDE [Create Account](../../../includes/object-anchors-get-started-create-account.md)]
+
 ## <a name="open-the-sample-project"></a>打开示例项目
 
 [!INCLUDE [Clone Sample Repo](../../../includes/object-anchors-clone-sample-repository.md)]
 
 在 Visual Studio 中打开 `quickstarts/apps/directx/DirectXAoaSampleApp.sln`。
 
-将“解决方案配置”更改为“发布”，将“解决方案平台”更改为 ARM64，并从部署目标选项中选择“设备”    。 然后，右键单击该项目并选择“生成”，生成“AoaSampleApp”项目。
+将“解决方案配置”更改为“发布”，将“解决方案平台”更改为 ARM64，并从部署目标选项中选择“设备”    。
+
+## <a name="configure-the-account-information"></a>配置帐户信息
+
+接下来是将应用配置为使用你的帐户信息。 记下[“创建 Object Anchors 帐户”](#create-an-object-anchors-account)部分中的“帐户密钥”、“帐户 ID”和“帐户域”值  。
+
+打开 `Assets\ObjectAnchorsConfig.json`。
+
+找到 `AccountId` 字段，并将 `Set me` 替换为帐户 ID。
+
+找到 `AccountKey` 字段，并将 `Set me` 替换为帐户密钥。
+
+找到 `AccountDomain` 字段，并将 `Set me` 替换为帐户域。
+
+现在，右键单击该项目并选择“生成”，生成“AoaSampleApp”项目 。
 
 :::image type="content" source="./media/vs-deploy-to-device.png" alt-text="配置 Visual Studio 项目以进行部署":::
 

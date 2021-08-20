@@ -6,12 +6,12 @@ metadata:
   ms.topic: article
   ms.date: 03/15/2021
   ms.author: sajaya
-  ms.openlocfilehash: 4220d2e2bd1163703cbc071a4584299c6f3d2ecb
-  ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+  ms.openlocfilehash: ef541e23c2ad3142c4e5b50ccc5351a569727905
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/15/2021
-  ms.locfileid: "114341405"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114438892"
 title: 常见问题解答 - Azure 容器注册表
 summary: >
   本文解答有关 Azure 容器注册表的常见问题和已知问题。
@@ -272,7 +272,7 @@ sections:
     answer: >
       若要排查常见的环境和注册表问题，请参阅[检查 Azure 容器注册表的运行状况](container-registry-check-health.md)。
   - question: >
-      Docker pull 失败，出现错误：net/http：等待连接时请求被取消（等待标头时 Client.Timeout 超时）
+      Docker pull 失败，出现错误：net/http: 等待连接时取消了请求(等待标头时超过了 Client.Timeout)
     answer: "- 如果此错误是暂时性的，则重试后，提取将会成功。\n- 如果 `docker pull` 连续失败，则原因可能是 Docker 守护程序出现了问题。 重启 Docker 守护程序通常可以缓解此问题。 \n- 如果重启 Docker 守护程序后仍旧出现此问题，则原因可能是计算机上出现了一些网络连接问题。 若要检查计算机上的常规网络是否正常，请运行以下命令来测试终结点连接。 包含此连接性检查命令的最低 `az acr` 版本为 2.2.9。 如果使用早期的版本，请升级 Azure CLI。\n\n ```azurecli\n az acr check-health -n myRegistry\n ```\n\n- 始终应该对所有 Docker 客户端操作使用重试机制。\n"
   - question: >
       Docker 提取速度缓慢
@@ -380,6 +380,8 @@ sections:
       * 缺少网络连接
 
       * 防火墙
+
+      * 从公共网络使用门户，而注册表仅允许专用访问
 
       * 广告阻止程序
 

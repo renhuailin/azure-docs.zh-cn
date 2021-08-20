@@ -9,16 +9,14 @@ ms.author: dademath
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 02246f02226aaac1b7d9dbfd035a0479908f52cc
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: ef518b5dd3ee0e3657be1bf01873763eafdd221b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111531"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471831"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>群组聊天英雄示例入门
-
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include-chat.md)]
 
 > [!IMPORTANT]
 > [GitHub 上提供了此示例。](https://github.com/Azure-Samples/communication-services-web-chat-hero)
@@ -59,7 +57,7 @@ Azure 通信服务的群组聊天特大示例演示了如何使用通信服务�
 - [Node.js（8.11.2 及更高版本）](https://nodejs.org/en/download/)
 - [Visual Studio（2017 及更高版本）](https://visualstudio.microsoft.com/vs/)
 - [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1)（请确保安装与 Visual Studio 实例相对应的版本：32 位或 64 位）
-- 创建 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信资源](../quickstarts/create-communication-resource.md)。 需要为此快速入门记录资源连接字符串。
+- 创建 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信服务资源](../quickstarts/create-communication-resource.md)。 需要为此快速入门记录资源连接字符串。
 
 ## <a name="locally-deploying-the-service--client-app"></a>本地部署服务和客户端应用
 
@@ -73,7 +71,7 @@ Azure 通信服务的群组聊天特大示例演示了如何使用通信服务�
 
 1. 打开 PowerShell、Windows 终端、命令提示符或等效项的实例，然后导航到要将示例克隆到的目录。
 2. `git clone https://github.com/Azure-Samples/communication-services-web-chat-hero.git`
-3. 从 Azure 门户获取 `Connection String`。 有关连接字符串的详细信息，请参阅[创建 Azure 通信资源](../quickstarts/create-communication-resource.md)
+3. 从 Azure 门户获取 `Connection String`。 有关连接字符串的详细信息，请参阅[创建 Azure 通信服务资源](../quickstarts/create-communication-resource.md)
 4. 获取 `Connection String` 后，将连接字符串添加到“聊天”文件夹下的 Chat/appsettings.json 文件中。 在变量 `ResourceConnectionString` 中输入连接字符串。
 
 ### <a name="local-run"></a>本地运行

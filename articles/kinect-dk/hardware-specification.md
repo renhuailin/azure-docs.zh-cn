@@ -1,11 +1,10 @@
 ---
 title: Azure Kinect DK 硬件规格
 description: 了解 Azure Kinect DK 的组件、规范和功能。
-author: tesych
-ms.author: tesych
-ms.reviewer: jarrettr
+author: qm13
+ms.author: quentinm
 ms.prod: kinect-dk
-ms.date: 02/14/2020
+ms.date: 03/18/2021
 ms.topic: article
 keywords: azure, kinect, 规格, 硬件, DK, 功能, 深度, 颜色, RGB, IMU, 麦克风, 阵列
 ms.custom:
@@ -14,12 +13,12 @@ ms.custom:
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: 4421950e855ba0505482743c68e835819fcc61d2
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: b5ec67537fe0bd8732b4068c0ed52861ed8f2c1a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393590"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "116985549"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Azure Kinect DK 硬件规格
 
@@ -47,11 +46,13 @@ Azure Kinect 设备的尺寸和重量如下。
 
 ![Azure Kinect DK 尺寸](./media/resources/hardware-specs-media/dimensions.png)
 
+[此处](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/assets)提供了 Azure Kinect 设备的步骤文件。 
+
 ## <a name="operating-environment"></a>工作环境
 
 Azure Kinect DK 适用于在以下环境条件下工作的开发人员和商业单位：
 
-- **温度**：10-25<sup>0</sup>C
+- **温度**：10-25 <sup>0</sup>C
 - **湿度**：8-90%（非冷凝）相对湿度
 
 > [!NOTE]
@@ -61,7 +62,7 @@ Azure Kinect DK 适用于在以下环境条件下工作的开发人员和商业�
 
 ## <a name="depth-camera-supported-operating-modes"></a>深度相机支持的工作模式
 
-Azure Kinect DK 集成了 Microsoft 设计的 1 兆像素时差测距 (ToF) 深度相机，该相机使用[符合 ISSCC 2018 的图像传感器](https://docs.microsoft.com/windows/mixed-reality/ISSCC-2018)。 深度相机支持如下所述的模式：
+Azure Kinect DK 集成了 Microsoft 设计的 1 兆像素时差测距 (ToF) 深度相机，该相机使用[符合 ISSCC 2018 的图像传感器](/windows/mixed-reality/ISSCC-2018)。 深度相机支持如下所述的模式：
 
  | “模式”            | 解决方法 | FoI       | FPS                | 工作范围* | 曝光时间 |
 |-----------------|------------|-----------|--------------------|------------------|---------------|
@@ -86,7 +87,7 @@ Azure Kinect DK 包含 OV12A10 12MP CMOS 滚动快门传感器。 下面列出�
 |       4096x3072                          |          4:3           |          MJPEG             |          0、5、15           |          90°x74.3°                            |
 |       2048x1536                          |          4:3           |          MJPEG             |          0、5、15、30       |          90°x74.3°                            |
 
-RGB 相机与 USB 视频类兼容，可以在未安装传感器 SDK 的情况下使用。 RGB 相机颜色空间：BT.601 全范围 [0..255]。 
+RGB 相机与 USB 视频类兼容，可以在未安装传感器 SDK 的情况下使用。 RGB 相机颜色空间：BT.601 全范围 [0..255]。 MJPEG [色度子采样](https://en.wikipedia.org/wiki/Chroma_subsampling) 为4:2:2。
 
 > [!NOTE]
 > 传感器 SDK 能够以 BGRA 像素格式提供彩色图像。 这并非设备支持的本机模式，如果使用，会导致 CPU 负载增大。 主机 CPU 用于转换从设备收到的 MJPEG 图像。

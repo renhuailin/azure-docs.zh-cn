@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: b198e64ccec82647d5b49b4b8c51e64f889e983a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 86329b17a437846c3a5c4a29dd901ac1b1ca5902
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110487145"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114408086"
 ---
 [![浏览代码](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample)
 
@@ -19,7 +19,7 @@ ms.locfileid: "110487145"
 
 [!INCLUDE [iot-central-prerequisites-basic](iot-central-prerequisites-basic.md)]
 
-- 具有 Java SE 开发工具包 8 或更高版本的开发计算机。 你可以从[下载 OpenJDK 的 Zulu 版本](https://www.azul.com/downloads/zulu-community/)为多个平台下载 Java 8 (LTS) JDK。
+- 具有 Java SE 开发工具包 8 或更高版本的开发计算机。 有关详细信息，请参阅[安装 JDK](/azure/developer/java/fundamentals/java-jdk-install)。
 
 - [Apache Maven 3](https://maven.apache.org/download.cgi)。
 

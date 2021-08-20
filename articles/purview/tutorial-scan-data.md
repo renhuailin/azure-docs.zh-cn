@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: fb11033e0f4fcff171825d579e62e071f66b1cea
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: e389992b04556107d5c22c56fa39a5912b949b38
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745882"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458995"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>教程：使用 Azure Purview（预览版）扫描数据
 
@@ -147,6 +147,9 @@ PowerShell 安装所需的模块可能最多需要一分钟时间。
    ```
 
    运行该命令时，可能会出现一个弹出窗口，供你使用 Azure Active Directory 凭据登录。
+
+    > [!TIP]
+    > 如果跨租户启用 MFA，则此步骤中可能会遇到 MFA 错误。 如果遇到了 MFA 错误，请针对运行此脚本的帐户禁用 MFA。 然后再次运行。
 
 
 1. 使用以下命令运行该初学者工具包。 替换 `CatalogName`、`TenantID`、`SubscriptionID`、`NewResourceGroupName` 和 `CatalogResourceGroupName` 占位符。 对于 `NewResourceGroupName`，请为将包含数据资产的资源组使用唯一的名称（仅限小写字母数字字符）。

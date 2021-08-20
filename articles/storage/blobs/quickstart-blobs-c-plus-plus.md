@@ -1,18 +1,18 @@
 ---
 title: 快速入门：Azure Blob 存储库 v12 - C++
 description: 本快速入门介绍如何使用适用于 C++ 的 Azure Blob 存储客户端库版本 12 在 Blob（对象）存储中创建容器和 blob。 接下来，将介绍如何将 blob 下载到本地计算机，以及如何在容器中列出所有 blob。
-author: twooley
-ms.author: twooley
-ms.date: 10/21/2020
+author: kyle-patterson
+ms.author: kylepa
+ms.date: 06/21/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: e6832cc835a464a2a3d17d5ed286e71b17bc980e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 5b961145b065f2ce63497b32d4ba533dda04c68f
+ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312274"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112894259"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-c"></a>快速入门：适用于 C++ 的 Azure Blob 存储客户端库 v12
 
@@ -41,8 +41,6 @@ ms.locfileid: "107312274"
 - [C++ 编译器](https://azure.github.io/azure-sdk/cpp_implementation.html#supported-platforms)
 - [CMake](https://cmake.org/)
 - [Vcpkg - C 和 C++ 包管理器](https://github.com/microsoft/vcpkg/blob/master/docs/README.md)
-- [LibCurl](https://curl.haxx.se/libcurl/)
-- [LibXML2](http://www.xmlsoft.org/)
 
 ## <a name="setting-up"></a>设置
 
@@ -50,30 +48,19 @@ ms.locfileid: "107312274"
 
 ### <a name="install-the-packages"></a>安装包
 
-如果尚未安装 LibCurl 和 LibXML2 包，请使用 `vcpkg install` 命令进行安装。
+`vcpkg install` 命令将安装适用于 C++ 的 Azure 存储 Blob SDK 和所需的依赖项：
 
 ```console
-vcpkg.exe install libxml2:x64-windows curl:x64-windows
+vcpkg.exe install azure-storage-blobs-cpp:x64-windows
 ```
 
-按照 GitHub 上的说明获取并构建[适用于 C++ 的 Azure SDK](https://github.com/Azure/azure-sdk-for-cpp/)。
+有关详细信息，请访问 GitHub 以获取并生成[适用于 C++ 的 Azure SDK](https://github.com/Azure/azure-sdk-for-cpp/)。
 
 ### <a name="create-the-project"></a>创建项目
 
 在 Visual Studio 中创建 C++ Windows 控制台应用程序“BlobQuickstartV12”。
 
 :::image type="content" source="./media/quickstart-blobs-c-plus-plus/vs-create-project.jpg" alt-text="用于配置新的 C++ Windows 控制台应用的 Visual Studio 对话框":::
-
-将以下库添加到项目中：
-
-- libcurl.lib
-- libxml2.lib
-- bcrypt.lib
-- Crypt32.Lib
-- WS2_32.Lib
-- azure-core.lib
-- azure-storage-common.lib
-- azure-storage-blobs.lib
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
@@ -91,10 +78,10 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 使用以下 C++ 类与这些资源进行交互：
 
-- [BlobServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/1.0.0-beta.2/class_azure_1_1_storage_1_1_blobs_1_1_blob_service_client.html)：`BlobServiceClient` 类可用于操纵 Azure 存储资源和 blob 容器。
-- [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/1.0.0-beta.2/class_azure_1_1_storage_1_1_blobs_1_1_blob_container_client.html)：`BlobContainerClient` 类可用于操纵 Azure 存储容器及其 blob。
-- [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/1.0.0-beta.2/class_azure_1_1_storage_1_1_blobs_1_1_blob_client.html)：`BlobClient` 类可用于操纵 Azure 存储 blob。 这是所有专用 blob 类的基类。
-- [BlockBlobClient](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/1.0.0-beta.2/class_azure_1_1_storage_1_1_blobs_1_1_block_blob_client.html)：`BlockBlobClient` 类可用于操纵 Azure 存储块 blob。
+- [BlobServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/12.0.0/class_azure_1_1_storage_1_1_blobs_1_1_blob_service_client.html)：`BlobServiceClient` 类可用于操纵 Azure 存储资源和 blob 容器。
+- [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/12.0.0/class_azure_1_1_storage_1_1_blobs_1_1_blob_container_client.html)：`BlobContainerClient` 类可用于操纵 Azure 存储容器及其 blob。
+- [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/12.0.0/class_azure_1_1_storage_1_1_blobs_1_1_blob_client.html)：`BlobClient` 类可用于操纵 Azure 存储 blob。 这是所有专用 blob 类的基类。
+- [BlockBlobClient](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/12.0.0/class_azure_1_1_storage_1_1_blobs_1_1_block_blob_client.html)：`BlockBlobClient` 类可用于操纵 Azure 存储块 blob。
 
 ## <a name="code-examples"></a>代码示例
 
@@ -117,7 +104,7 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 1. 删除自动生成的 `main` 中的所有代码
 1. 添加 `#include` 语句
 
-:::code language="cpp" source="~/azure-storage-snippets/blobs/quickstarts/C++/V12/BlobQuickstartV12/BlobQuickstartV12/BlobQuickstartV12.cpp" id="Snippet_Includes":::
+:::code language="cpp" source="~/azure-storage-snippets/blobs/quickstarts/C++/V12/BlobQuickstartV12/BlobQuickstartV12/BlobQuickstartV12.cpp" ID="Snippet_Includes":::
 
 ### <a name="get-the-connection-string"></a>获取连接字符串
 
@@ -125,18 +112,18 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 在 `main()` 中添加此代码：
 
-:::code language="cpp" source="~/azure-storage-snippets/blobs/quickstarts/C++/V12/BlobQuickstartV12/BlobQuickstartV12/BlobQuickstartV12.cpp" id="Snippet_ConnectionString":::
+:::code language="cpp" source="~/azure-storage-snippets/blobs/quickstarts/C++/V12/BlobQuickstartV12/BlobQuickstartV12/BlobQuickstartV12.cpp" ID="Snippet_ConnectionString":::
 
 ### <a name="create-a-container"></a>创建容器
 
-调用 [CreateFromConnectionString](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/1.0.0-beta.2/class_azure_1_1_storage_1_1_blobs_1_1_blob_container_client.html#ad103d1e3a7ce7c53a82da887d12ce6fe) 函数，创建 [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/1.0.0-beta.2/class_azure_1_1_storage_1_1_blobs_1_1_blob_container_client.html) 类的实例。 然后调用 [Create](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/1.0.0-beta.2/class_azure_1_1_storage_1_1_blobs_1_1_blob_container_client.html#a22a1e001068a4ec52bb1b6bd8b52c047) 方法，在存储帐户中创建实际容器。
+调用 [CreateFromConnectionString](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/12.0.0/class_azure_1_1_storage_1_1_blobs_1_1_blob_container_client.html#a5d253aacb6e20578b7f5f233547be3e2) 函数，创建 [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/12.0.0/class_azure_1_1_storage_1_1_blobs_1_1_blob_container_client.html) 类的实例。 然后调用 [CreateIfNotExists](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/12.0.0/class_azure_1_1_storage_1_1_blobs_1_1_blob_container_client.html#ab3ef187d2e30e1a19ebadf45d0fdf9c4)，在存储帐户中创建实际容器。
 
 > [!IMPORTANT]
 > 容器名称必须为小写。 有关命名容器和 Blob 的详细信息，请参阅[命名和引用容器、Blob 和元数据](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
 将此代码添加到 `main()` 的末尾：
 
-:::code language="cpp" source="~/azure-storage-snippets/blobs/quickstarts/C++/V12/BlobQuickstartV12/BlobQuickstartV12/BlobQuickstartV12.cpp" id="Snippet_CreateContainer":::
+:::code language="cpp" source="~/azure-storage-snippets/blobs/quickstarts/C++/V12/BlobQuickstartV12/BlobQuickstartV12/BlobQuickstartV12.cpp" ID="Snippet_CreateContainer":::
 
 ### <a name="upload-blobs-to-a-container"></a>将 blob 上传到容器中
 
@@ -148,37 +135,37 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 将此代码添加到 `main()` 的末尾：
 
-:::code language="cpp" source="~/azure-storage-snippets/blobs/quickstarts/C++/V12/BlobQuickstartV12/BlobQuickstartV12/BlobQuickstartV12.cpp" id="Snippet_UploadBlob":::
+:::code language="cpp" source="~/azure-storage-snippets/blobs/quickstarts/C++/V12/BlobQuickstartV12/BlobQuickstartV12/BlobQuickstartV12.cpp" ID="Snippet_UploadBlob":::
 
 ### <a name="list-the-blobs-in-a-container"></a>列出容器中的 blob
 
-通过调用 [ListBlobsFlatSegment](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/1.0.0-beta.2/class_azure_1_1_storage_1_1_blobs_1_1_blob_container_client.html#ac7712bc46909dc061d6bf554b496550c) 函数，列出容器中的 blob。 只向容器添加了一个 blob，所以此操作只返回这一个 blob。
+通过调用 [ListBlobs](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/12.0.0/class_azure_1_1_storage_1_1_blobs_1_1_blob_container_client.html#a8f7e6653ef69788cb4fb23ec85d4fd96) 函数，列出容器中的 blob。 只向容器添加了一个 blob，所以此操作只返回这一个 blob。
 
 将此代码添加到 `main()` 的末尾：
 
-:::code language="cpp" source="~/azure-storage-snippets/blobs/quickstarts/C++/V12/BlobQuickstartV12/BlobQuickstartV12/BlobQuickstartV12.cpp" id="Snippet_ListBlobs":::
+:::code language="cpp" source="~/azure-storage-snippets/blobs/quickstarts/C++/V12/BlobQuickstartV12/BlobQuickstartV12/BlobQuickstartV12.cpp" ID="Snippet_ListBlobs":::
 
 ### <a name="download-blobs"></a>下载 Blob
 
-获取上传的 Blob 的属性。 然后，使用上传的 blob 的属性，声明新的 `std::string` 对象并调整其大小。 通过在 [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/1.0.0-beta.2/class_azure_1_1_storage_1_1_blobs_1_1_blob_client.html) 基类中调用 [DownloadTo](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/1.0.0-beta.2/class_azure_1_1_storage_1_1_blobs_1_1_blob_client.html#aa844f37a8c216f3cb0f27912b114c4d2) 函数，将以前创建的 blob 下载到新的 `std::string` 对象。 最后，显示下载的 blob 数据。
+获取上传的 Blob 的属性。 然后，使用上传的 blob 的属性，声明新的 `std::vector<uint8_t>` 对象并调整其大小。 通过在 [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/12.0.0/class_azure_1_1_storage_1_1_blobs_1_1_blob_client.html) 基类中调用 [DownloadTo](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/12.0.0/class_azure_1_1_storage_1_1_blobs_1_1_blob_client.html#aa0bcbdbf6ebd17e4888cced4736420f7) 函数，将以前创建的 blob 下载到新的 `std::vector<uint8_t>` 对象。 最后，显示下载的 blob 数据。
 
 将此代码添加到 `main()` 的末尾：
 
-:::code language="cpp" source="~/azure-storage-snippets/blobs/quickstarts/C++/V12/BlobQuickstartV12/BlobQuickstartV12/BlobQuickstartV12.cpp" id="Snippet_DownloadBlob":::
+:::code language="cpp" source="~/azure-storage-snippets/blobs/quickstarts/C++/V12/BlobQuickstartV12/BlobQuickstartV12/BlobQuickstartV12.cpp" ID="Snippet_DownloadBlob":::
 
 ### <a name="delete-a-blob"></a>删除 Blob
 
-以下代码通过调用 [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/1.0.0-beta.2/class_azure_1_1_storage_1_1_blobs_1_1_blob_client.html#a621eabcc8d23893ca1eb106494198615) 函数，从 Azure Blob 存储容器中删除 blob。
+以下代码通过调用 [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/12.0.0/class_azure_1_1_storage_1_1_blobs_1_1_blob_client.html#ac121df9f5dfcdeb80f47b50543df0984) 函数，从 Azure Blob 存储容器中删除 blob。
 
-:::code language="cpp" source="~/azure-storage-snippets/blobs/quickstarts/C++/V12/BlobQuickstartV12/BlobQuickstartV12/BlobQuickstartV12.cpp" id="Snippet_DeleteBlob":::
+:::code language="cpp" source="~/azure-storage-snippets/blobs/quickstarts/C++/V12/BlobQuickstartV12/BlobQuickstartV12/BlobQuickstartV12.cpp" ID="Snippet_DeleteBlob":::
 
 ### <a name="delete-a-container"></a>删除容器
 
-以下代码使用 [BlobContainerClient.Delete](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/1.0.0-beta.2/class_azure_1_1_storage_1_1_blobs_1_1_blob_container_client.html#aa6b1db52697ae92e9a1227e2e02a5178) 来删除整个容器，从而清除该应用创建的资源。
+以下代码使用 [BlobContainerClient.Delete](https://azuresdkdocs.blob.core.windows.net/$web/cpp/azure-storage-blobs/12.0.0/class_azure_1_1_storage_1_1_blobs_1_1_blob_container_client.html#ae7661b6d8f37213b409504c0e9a68d69) 来删除整个容器，从而清除该应用创建的资源。
 
 将此代码添加到 `main()` 的末尾：
 
-:::code language="cpp" source="~/azure-storage-snippets/blobs/quickstarts/C++/V12/BlobQuickstartV12/BlobQuickstartV12/BlobQuickstartV12.cpp" id="Snippet_DeleteContainer":::
+:::code language="cpp" source="~/azure-storage-snippets/blobs/quickstarts/C++/V12/BlobQuickstartV12/BlobQuickstartV12/BlobQuickstartV12.cpp" ID="Snippet_DeleteContainer":::
 
 ## <a name="run-the-code"></a>运行代码
 

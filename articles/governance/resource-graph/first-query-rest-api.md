@@ -1,14 +1,14 @@
 ---
 title: 快速入门：第一个 REST API 查询
 description: 在此快速入门中，将按照以下步骤调用 REST API 的 Resource Graph 终结点并运行第一个查询。
-ms.date: 05/01/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
-ms.openlocfilehash: ef157eebbdd562262bb33f32e726d0d567c421d5
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 258bda8df671dac3440edef37d8ea5a1c7f362b5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324934"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114460045"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>快速入门：使用 REST API 运行你的第一个 Resource Graph 查询
 
@@ -54,7 +54,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 ## <a name="run-your-first-resource-graph-query"></a>运行首个 Resource Graph 查询
 
-将 REST API 工具添加到所选环境中后，即可尝试一个简单的 Resource Graph 查询。 该查询返回前五个 Azure 资源，以及每个资源的名称和资源类型 。
+将 REST API 工具添加到所选环境中后，即可尝试一个简单的基于订阅的 Resource Graph 查询。 该查询返回前五个 Azure 资源，以及每个资源的名称和资源类型 。 若要按[管理组](../management-groups/overview.md)进行查询，请将 `managementgroups` 参数与 `subscriptions` 结合使用。 若要查询整个租户，请省略请求正文中的 `managementgroups` 和 `subscriptions` 属性。
 
 在每个 REST API 调用的请求正文中，都包含在替换为自己的值时需要使用的变量：
 
@@ -65,7 +65,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
    - REST API URI
 
      ```http
-     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2019-04-01
+     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2021-03-01
      ```
 
    - 请求正文
@@ -87,7 +87,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
    - REST API URI
 
      ```http
-     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2019-04-01
+     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2021-03-01
      ```
 
    - 请求正文
@@ -109,7 +109,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
    - REST API URI
 
      ```http
-     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2019-04-01
+     POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2021-03-01
      ```
 
    - 请求正文
@@ -125,7 +125,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且按 Name 属性排序，但仍限制为前五个结果。
 
-有关 Azure Resource Graph REST API 调用的更多示例，请参阅 [Azure Resource Graph REST 示例](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources#examples)。
+有关 Azure Resource Graph REST API 调用的更多示例，请参阅 [Azure Resource Graph REST 示例](/rest/api/azureresourcegraph/resourcegraph(2021-03-01)/resources/resources#examples)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

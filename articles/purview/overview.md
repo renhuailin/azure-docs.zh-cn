@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 11/30/2020
-ms.openlocfilehash: 3fadfa9d4467209ddbe997afabba27a3752f685d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4ca7c318dc1ac9d135c43c6d063a0f8a45276fe
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419926"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114729753"
 ---
 # <a name="what-is-azure-purview"></a>什么是 Azure Purview？
 
@@ -71,7 +71,7 @@ Azure Purview 提供了基于云的服务，你可以在其中注册数据源。
 与此同时，用户还可通过对已注册的数据源进行标记、记录和批注来参与目录。 他们还可以注册新的数据源，随后目录社区的用户可以发现、了解和使用这些数据源。
 
 ## <a name="in-region-data-residency"></a>区域内数据驻留
-Azure Purview 不会将客户数据移出部署它的区域，也不会将其存储在该区域之外。
+对于 Azure Purview，某些表名、文件路径和对象路径信息存储在美国。 除上述例外情况外，所有地区目前都提供在单个区域存储所有其他客户数据的功能。
 
 ## <a name="next-steps"></a>后续步骤
 

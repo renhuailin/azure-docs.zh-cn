@@ -3,18 +3,18 @@ title: 教程 - 从 Azure 成本管理创建和管理导出的数据
 description: 本文介绍如何创建和管理导出的 Azure 成本管理数据，以便在外部系统中使用。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/06/2021
+ms.date: 07/26/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 9f9afe0b7c27fb2199f9bdcd1fa5edbe4da01602
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 592ef54b359c84309da350bf53da6bb0a4152374
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109517633"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114708639"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -247,7 +247,7 @@ Remove-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-00
 
 #### <a name="create-an-export-for-multiple-subscriptions"></a>为多个订阅创建导出
 
-如果你有企业协议，则可以使用管理组在单个容器中聚合订阅成本信息。 然后，可以导出管理组的成本管理数据。
+如果你有企业协议，则可以使用管理组在单个容器中聚合订阅成本信息。 然后，可以导出管理组的成本管理数据。 管理组的导出仅支持实际成本。
 
 不支持导出其他订阅类型的管理组。
 

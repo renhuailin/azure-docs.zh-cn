@@ -7,12 +7,12 @@ ms.author: jastenze
 ms.date: 04/20/2021
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: 747551dcc400f399e5c36e6a851fdb0f25aaf65b
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: e47e4e9f784e51c646da22063ee954d9b60a4e11
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109755071"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114202664"
 ---
 # <a name="model-conversion-error-codes"></a>模型转换错误代码
 
@@ -34,3 +34,10 @@ ms.locfileid: "109755071"
 | ASSET_CANNOT_BE_CONVERTED | 提供的资产已损坏、格式错误或无法以其提供的格式进行转换。 | 确保资产是指定类型的有效构造文件，并在提交资产进行转换之前参考资产大小准则以确保符合性：aka.ms/aoa/faq |
 
 在实际资产转换作业之外发生的任何错误都将视为异常并引发。 尤其是，如果服务调用收到不成功的（4xx 或 5xx）或意外 HTTP 响应代码，可能会引发 `Azure.RequestFailedException`。 有关这些异常的更多详细信息，请检查异常的 `Status`、`ErrorCode` 或 `Message` 字段。
+
+| 异常                  | 原因                       |
+| ---                      | ---                               |
+| ArgumentException |  <ul><li>发生条件：使用构造无效或全零帐户 ID 通过 ObjectAnchorsConversionClient 构造请求。</li><li>发生条件：尝试使用无效的空白帐户域初始化 ObjectAnchorsConversionClient。</li><li>发生条件：通过 ObjectAnchorsConversionClientOptions 向 ObjectAnchorsConversionClient 提供不受支持的服务版本。</li></ul> |
+| ArgumentNullException | <ul><li>发生条件：尝试使用无效的空帐户域初始化 ObjectAnchorsConversionClient。</li><li>发生条件：尝试使用无效的空凭据初始化 ObjectAnchorsConversionClient。</li></ul> |
+| RequestFailedException | <ul><li>发生条件：因错误的 HTTP 状态代码（与将运行/正在运行/已运行的作业的状态无关）生成的所有其他问题，例如未找到帐户、前端检测到无效的上传 URL、前端服务错误等。</li></ul> |
+| UnsupportedAssetFileTypeException | <ul><li>发生条件：尝试使用带有 Azure Object Anchors 转换服务不支持的扩展或指定的 filetype 的资产提交作业。</li></ul> |

@@ -2,18 +2,18 @@
 title: 管理托管 HSM 中的密钥 - Azure Key Vault |Microsoft Docs
 description: 学习本文内容，了解如何管理托管 HSM 中的密钥
 services: key-vault
-author: amitbapat
+author: mbaldwin
 ms.service: key-vault
 ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.author: ambapat
-ms.openlocfilehash: 8d0cbd35b53bc8460ac8a19e5197d1f560657263
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.author: mbaldwin
+ms.openlocfilehash: 418bc82a503822a79f138fc71213f9ec5c9b5266
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212036"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114471263"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>使用 Azure CLI 管理托管 HSM
 
@@ -29,7 +29,7 @@ ms.locfileid: "102212036"
 若要完成本文中的步骤，必须准备好以下项：
 
 * Microsoft Azure 订阅。 如果没有，可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial)。
-* Azure CLI 版本 2.12.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
+* Azure CLI 版本 2.25.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 * 订阅中的托管 HSM。 请参阅[快速入门：使用 Azure CLI 预配和激活托管 HSM](quick-create-cli.md)，预配和激活托管 HSM。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -48,6 +48,9 @@ az login
 > 下面所有命令都显示了两种使用方法。 一种使用 --hsm-name 和 --name（对于密钥名称）参数，而另一种使用 --id 参数，你可在其中指定整个 URL，包括密钥名称（如果适用）  。 如果调用方（用户或应用程序）没有控制平面的读取访问权限，而且只有数据平面的受限访问权限，则后一种方法非常有用。
 
 ## <a name="create-an-hsm-key"></a>创建 HSM 密钥
+
+> [!NOTE]
+> 无法导出生成或导入到托管 HSM 中的密钥。 请参阅建议的最佳做法，了解密钥便携性和持续性。
 
 使用 `az keyvault key create` 命令来创建密钥。
 

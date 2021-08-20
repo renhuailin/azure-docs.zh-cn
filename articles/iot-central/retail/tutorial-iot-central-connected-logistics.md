@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 7c6c50b6fd8200726aa11f120d9748cc1b40aa22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 156764372d530935332d4343dfdfcb48fd1ebe3a
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831614"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964313"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>教程：部署并演练互联物流应用程序模板
 
@@ -41,7 +41,7 @@ ms.locfileid: "99831614"
 
     :::image type="content" source="media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png" alt-text="互联物流模版":::
 
-1. 选择“互联物流应用程序”下的“创建应用” 。
+1. 选择“互联物流”下的“创建应用” 。
 
 1. 创建应用将打开“新建应用程序”窗体 。 输入以下详细信息：
 
@@ -57,37 +57,26 @@ ms.locfileid: "99831614"
 
 ## <a name="walk-through-the-application"></a>演练应用程序
 
-下面是展示如何选择互联物流应用程序模板的屏幕截图。
-
-> [!div class="mx-imgBorder"]
-> ![展示如何选择互联物流应用程序模板的屏幕截图](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
-
 以下各部分将介绍应用程序的主要功能。
 
 ### <a name="dashboard"></a>仪表板
 
 部署应用程序模板后，默认仪表板是一个以互联物流操作员为中心的门户。 Northwind Trader 是一家虚构的物流服务提供商，负责管理海上和陆地上的货运队。 在此仪表板中，你会看到两个不同的网关，它们提供来自装运的遥测数据以及相关的命令、作业和操作。
 
-> [!div class="mx-imgBorder"]
-> ![展示如何从互联物流应用程序模板创建应用的屏幕截图](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
-
-> [!div class="mx-imgBorder"]
-> ![显示创建应用程序时的计费选项的屏幕截图](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png)
-
 此仪表板已预先配置为展示关键的物流设备操作活动。
 
 仪表板支持两种不同的网关设备管理操作：
 
-* 查看卡车装运的物流路线以及海运地点详细信息。
+* 查看卡车装运的物流路线以及海运[地点](../core/howto-use-location-data.md)详细信息。
 * 查看网关状态和其他相关信息。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png" alt-text="互联物流仪表板":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard-1.png" alt-text="互联物流仪表板":::
 
 * 可以跟踪网关、活动和未知标记的总数。
 * 可以执行设备管理操作，例如更新固件、禁用和启用传感器、更新传感器阈值、更新遥测间隔时间和更新设备服务协定。
 * 查看设备电池消耗。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png" alt-text="互联物流仪表板状态":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard-2.png" alt-text="互联物流仪表板状态":::
 
 #### <a name="device-template"></a>设备模板
 
@@ -95,11 +84,11 @@ ms.locfileid: "99831614"
 
 **网关遥测与属性** - 此接口定义与传感器、位置和设备信息相关的所有遥测数据。 该接口还定义了设备孪生属性功能，如传感器阈值和更新间隔。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png" alt-text="遥测和属性接口":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-device-template-1.png" alt-text="遥测和属性接口":::
 
 **网关命令** - 此接口组织所有网关命令功能：
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png" alt-text="网关命令接口":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-device-template-2.png" alt-text="网关命令接口":::
 
 ### <a name="rules"></a>规则
 
@@ -107,13 +96,13 @@ ms.locfileid: "99831614"
 
 **网关盗窃警报**：在行驶过程中，如果传感器意外检测到光源，则会触发此规则。 必须立即通知操作员调查潜在的盗窃行为。
 
-**网关不响应**：如果网关长时间未向云报告，则会触发此规则。 网关可能会因低电量、连接丢失，或设备损坏而无响应。
+**丢失网关警报**：如果网关长时间未向云报告，则会触发此规则。 网关可能会因低电量、连接丢失，或设备损坏而无响应。
 
 :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png" alt-text="规则定义":::
 
 ### <a name="jobs"></a>作业
 
-选择“作业”选项卡，查看此应用程序中的作业：
+选择“作业”选项卡，查看此应用程序中的作业。 下面的屏幕截图展示了创建的作业示例。
 
 :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png" alt-text="要运行的作业":::
 

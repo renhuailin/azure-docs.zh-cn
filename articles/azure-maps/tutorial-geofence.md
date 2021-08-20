@@ -3,26 +3,28 @@ title: 教程：在 Microsoft Azure Map 上创建地理围栏并跟踪设备
 description: 有关如何设置地理围栏的教程。 了解如何使用 Azure Maps 空间服务跟踪与地理围栏相关的设备
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 8/20/2020
+ms.date: 7/06/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3b9833035aa83f739b2edad7cfea9fd6cd959a69
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 89988d6cac66e347dc131f67003a69e5a91eb220
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032332"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113358221"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教程：使用 Azure Maps 设置地域隔离区
 
-本教程将引导你完成创建和使用 Azure Maps 地理围栏服务的基本步骤。 你将在以下场景的上下文中完成此操作：
+本教程将引导你完成创建和使用 Azure Maps 地理围栏服务的基本步骤。 
+
+假设出现了下面这种情景：
 
 *负责构造的站点管理员需要在设备进入和退出构造区域周界范围时对其进行跟踪。每当有设备退出或进入这些范围时，运营管理员会收到邮件通知。*
 
-Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的跟踪。 本教程介绍以下操作：
+Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的跟踪。 在本教程中，将：
 
 > [!div class="checklist"]
 > * 上传用于定义要监视的构造站点区域的[地理围栏 GeoJSON 数据](geofence-geojson.md)。 你将使用[数据上传 API](/rest/api/maps/data-v2/upload-preview) 将地理围栏作为多边形坐标上传到你的 Azure Maps 账户。
@@ -35,7 +37,7 @@ Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的
 1. [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)。
 2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
 
-本教程使用 [Postman](https://www.postman.com/) 应用，但你也可以选择其他 API 开发环境。
+本教程使用 [Postman](https://www.postman.com/) 应用程序，但你也可以选择其他 API 开发环境。
 
 ## <a name="upload-geofencing-geojson-data"></a>上传地理围栏 GeoJSON 数据
 
@@ -44,11 +46,17 @@ Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的
 >[!TIP]
 >可以随时更新地理围栏数据。 有关详细信息，请参阅[数据上传 API](/rest/api/maps/data-v2/upload-preview)。
 
-1. 打开 Postman 应用。 在顶部附近选择“新建”。 在“新建”窗口中，选择“集合”。 命名集合，然后选择“创建”。
+若要上传地理围栏 GeoJSON 数据：
 
-2. 若要创建请求，请再次选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 选择在上一步中创建的集合，然后选择“保存”。
+1. 在 Postman 应用中，选择“新建”。
 
-3. 在生成器选项卡上选择“POST”HTTP 方法并输入以下 URL 将地理围栏数据上传到 Azure Maps。 对于此请求和本文中提到的其他请求，请将 `{Azure-Maps-Primary-Subscription-key}` 替换为你的主订阅密钥。
+2. 在“新建”窗口中，选择“HTTP 请求” 。
+
+3. 在“请求名称”中输入请求名称，比如 POST GeoJSON Data Upload。
+
+4. 选择“POST”HTTP 方法。
+
+5. 输入以下 URL。 请求应类似于以下 URL（将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥）：
 
     ```HTTP
     https://us.atlas.microsoft.com/mapData?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=2.0&dataFormat=geojson
@@ -56,7 +64,11 @@ Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的
 
     URL 路径中的 `geojson` 参数表示正在上传的数据的数据格式。
 
-4. 选择“正文”选项卡。选择“原始”，然后选择“JSON”作为输入格式 。 将以下 GeoJSON 数据复制并粘贴到“正文”文本区域：
+6. 选择“正文”选项卡。
+
+7. 在下拉列表中，选择“原始”和“JSON”。
+
+8. 复制以下 GeoJSON 数据，然后将其粘贴到“正文”窗口中：
 
    ```JSON
    {
@@ -144,29 +156,63 @@ Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的
    }
    ```
 
-5. 选择“发送”，然后等待请求处理完成。 在请求处理完成后，请转到响应的“头”选项卡。 复制“Operation-Location”键的值，即 `status URL`。
+9. 选择 **Send**。
+
+10. 在响应窗口中，选择“标头”选项卡。
+
+11. 复制“Operation-Location”键的值，即 `status URL`。 我们将使用 `status URL` 检查 GeoJSON 数据上传的状态。
 
     ```http
     https://us.atlas.microsoft.com/mapData/operations/<operationId>?api-version=2.0
     ```
 
-6. 检查 API 调用的状态，在 `status URL` 上创建“GET”HTTP 请求。 为了进行身份验证，需要将主订阅密钥追加到 URL 中。 “GET”请求应如以下 URL 所示：
+### <a name="check-the-geojson-data-upload-status"></a>检查 GeoJSON 数据上传状态
+
+若要检查 GeoJSON 数据的状态并检索其唯一 ID (`udid`)：
+
+1. 选择“新建”。
+
+2. 在“新建”窗口中，选择“HTTP 请求” 。
+
+3. 在“请求名称”中输入请求名称，比如 GET Data Upload Status。
+
+4. 选择“GET”HTTP 方法。
+
+5. 输入在[上传地理围栏 GeoJSON 数据](#upload-geofencing-geojson-data)中复制的 `status URL`。 请求应类似于以下 URL（将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥）：
 
    ```HTTP
    https://us.atlas.microsoft.com/mapData/<operationId>?api-version=2.0&subscription-key={Subscription-key}
    ```
 
-7. 请求成功完成后，在响应窗口中选择“标头”选项卡。 复制“Resource-Location”键的值，即 `resource location URL`。  `resource location URL` 包含已上传数据的唯一标识符 (`udid`)。 保存 `udid`，在本教程的最后一部分中需要用它查询获取地理围栏 API。 （可选）可以使用 `resource location URL` 在下一步中从此资源中检索元数据。
+6. 选择 **Send**。
+
+7. 在响应窗口中，选择“标头”选项卡。
+
+8. 复制“Resource-Location”键的值，即 `resource location URL`。 `resource location URL` 包含已上传数据的唯一标识符 (`udid`)。 保存 `udid`，在本教程的最后一部分中需要用它查询获取地理围栏 API。
 
     :::image type="content" source="./media/tutorial-geofence/resource-location-url.png" alt-text="复制资源位置 URL。":::
 
-8. 要检索内容元数据，请在第 7 步中检索到的 `resource location URL` 上创建“GET”HTTP 请求。 为了进行身份验证，请确保将主订阅密钥追加到 URL 中。 “GET”请求应如以下 URL 所示：
+### <a name="optional-retrieve-geojson-data-metadata"></a>（可选）检索 GeoJSON 数据元数据
+
+可以从上传的数据中检索元数据。 元数据包含资源位置 URL、创建日期、更新日期、大小和上传状态等信息。
+
+检索内容元数据：
+
+1. 选择“新建”。
+
+2. 在“新建”窗口中，选择“HTTP 请求” 。
+
+3. 在“请求名称”中输入请求名称，比如 GET Data Upload Metadata。
+
+4. 选择“GET”HTTP 方法。
+
+5. 输入在[检查 GeoJSON 数据上传状态](#check-the-geojson-data-upload-status)中复制的 `resource Location URL`。 请求应类似于以下 URL（将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥）：
 
     ```http
     https://us.atlas.microsoft.com/mapData/metadata/{udid}?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-9. 请求成功完成后，在响应窗口中选择“标头”选项卡。 元数据应如以下 JSON 片段所示：
+6. 在响应窗口中，选择“正文”选项卡。元数据应类似于以下 JSON 片段：
 
     ```json
     {
@@ -181,7 +227,9 @@ Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的
 
 ## <a name="create-workflows-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建工作流
 
-接下来，你将创建两个用于触发电子邮件通知的[逻辑应用](../event-grid/handler-webhooks.md#logic-apps)终结点。 下面介绍如何创建首个终结点：
+接下来，我们将创建两个用于触发电子邮件通知的[逻辑应用](../event-grid/handler-webhooks.md#logic-apps)终结点。 
+
+若要创建逻辑应用：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
@@ -189,7 +237,7 @@ Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的
 
 3. 在“在市场中搜索”框中键入“逻辑应用”。
 
-4. 从“结果”中选择“逻辑应用” > “创建” 。
+4. 从结果中选择“逻辑应用”。 然后选择“创建”。
 
 5. 在“逻辑应用”页上，输入以下值：
     * 要用于此逻辑应用的“订阅”。
@@ -200,46 +248,57 @@ Azure Maps 提供许多服务来支持对进入和退出构造区域的设备的
 
     :::image type="content" source="./media/tutorial-geofence/logic-app-create.png" alt-text="创建逻辑应用的屏幕截图。":::
 
-6. 选择“查看 + 创建”。 检查设置并选择“创建”以提交部署。 部署成功完成后，选择“转到资源”。 随即转到“逻辑应用设计器”。
+6. 选择“查看 + 创建”。 检查设置，然后选择“创建”。
 
-7. 选择触发器类型。 向下滚动到“从常见触发器开始”部分。 选择“收到 HTTP 请求时”。
+7. 部署成功完成后，选择“转到资源”。
+
+8. 在“逻辑应用设计器”中，向下滚动到“从常见触发器开始”部分 。 选择“收到 HTTP 请求时”。
 
      :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="创建逻辑应用 HTTP 触发器的屏幕截图。":::
 
-8. 在逻辑应用设计器的右上角，选择“保存”。 随即自动生成“HTTP POST URL”。 保存 URL。 下一部分中需要用它来创建事件终结点。
+9. 在逻辑应用设计器的右上角，选择“保存”。 随即自动生成“HTTP POST URL”。 保存 URL。 下一部分中需要用它来创建事件终结点。
 
     :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="逻辑应用 HTTP 请求 URL 和 JSON 的屏幕截图。":::
 
-9. 选择“+ 新步骤”。 现在选择一项操作。 在搜索框中键入“`outlook.com email`”。 在“操作”列表中，向下滚动并选择“发送电子邮件 (V2)” 。
+10. 选择“+ 新步骤”。
+
+11. 在搜索框中，键入“`outlook.com email`”。 在“操作”列表中，向下滚动并选择“发送电子邮件 (V2)” 。
   
     :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="创建逻辑应用设计器的屏幕截图。":::
 
-10. 登录到 Outlook 帐户。 确保选择“是”以允许逻辑应用访问该帐户。 填充用于发送电子邮件的字段。
+12. 登录到 Outlook 帐户。 确保选择“是”以允许逻辑应用访问该帐户。 填充用于发送电子邮件的字段。
 
     :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="创建逻辑应用发送电子邮件步骤的屏幕截图。":::
 
     >[!TIP]
     > 在电子邮件通知中检索 GeoJSON 响应数据（如 `geometryId` 或 `deviceId`）。 可以将逻辑应用配置为读取事件网格发送的数据。 有关如何配置逻辑应用以使用事件数据并将其传递到电子邮件通知的详细信息，请参阅[教程：使用事件网格和逻辑应用发送有关 Azure IoT 中心事件的电子邮件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md)。
 
-11. 在逻辑应用设计器的左上角，选择“保存”。
+13. 在“逻辑应用设计器”的左上角，选择“保存” 。
 
-重复第 3-11 步以创建第二个逻辑应用，以便在设备退出构造站点时通知管理员。 将逻辑应用命名为 `Equipment-Exit`。
+14. 重复相同的过程以创建第二个逻辑应用，以便在设备退出构造站点时通知管理员。 将逻辑应用命名为 `Equipment-Exit`。
 
 ## <a name="create-azure-maps-events-subscriptions"></a>创建 Azure Maps 事件订阅
 
-Azure Maps 支持[三种事件类型](../event-grid/event-schema-azure-maps.md)。 此处需要创建两个不同的事件订阅：一个用于地理围栏进入事件，另一个用于地理围栏退出事件。
+Azure Maps 支持[三种事件类型](../event-grid/event-schema-azure-maps.md)。 在本教程中，我们将创建以下两个事件的订阅：
 
-以下步骤演示如何针对地理围栏进入事件创建事件订阅。 可按类似的方式，重复这些步骤来订阅地理围栏退出事件。
+* 地理围栏进入事件
+* 地理围栏退出事件
 
-1. 转到你的 Azure Maps 帐户。 在仪表板中，选择“订阅”。 选择订阅名称，然后在设置菜单中选择“事件”。
+若要创建地理围栏退出和进入事件订阅：
+
+1. 在 Azure Maps 帐户中，选择“订阅”。
+
+2. 选择你的订阅名称。
+
+3. 在设置菜单中，选择“事件”。
 
     :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="转到 Azure Maps 帐户事件的屏幕截图。":::
 
-2. 要创建事件订阅，请从“事件”页中选择“+ 事件订阅”。
+4. 在事件页面中，选择“+ 事件订阅”。
 
     :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="创建 Azure Maps 事件订阅的屏幕截图。":::
 
-3. 在“创建事件订阅”页中输入以下值：
+5. 在“创建事件订阅”页中输入以下值：
     * 事件订阅的“名称”。
     * “事件架构”应为“事件网格架构” 。
     * 此事件订阅的“系统主题名称”，在本例中为 `Contoso-Construction`。
@@ -249,13 +308,13 @@ Azure Maps 支持[三种事件类型](../event-grid/event-schema-azure-maps.md)�
 
     :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Azure Maps 事件订阅详细信息的屏幕截图。":::
 
-4. 选择“创建”。
+6. 选择“创建”。
 
-对上一个部分中创建的逻辑应用退出终结点重复第 1-4 步。 在步骤 3 中，请确保选择 `Geofence Exited` 作为事件类型。
+7. 对地理围栏退出事件重复相同的过程。 请确保选择 `Geofence Exited` 作为事件类型。
 
 ## <a name="use-spatial-geofence-get-api"></a>使用空间地理围栏获取 API
 
-使用[空间地理围栏获取 API](/rest/api/maps/spatial/getgeofence) 在有设备进入或退出地理围栏时向运营管理员发送电子邮件通知。
+接下来，我们将使用[空间地理围栏获取 API](/rest/api/maps/spatial/getgeofence) 在有设备进入或退出地理围栏时向运营管理员发送电子邮件通知。
 
 每个设备都有一个 `deviceId`。 在本教程中，你将跟踪单个设备，其唯一 ID 为 `device_1`。
 
@@ -269,15 +328,23 @@ Azure Maps 支持[三种事件类型](../event-grid/event-schema-azure-maps.md)�
 
 ### <a name="equipment-location-1-47638237-122132483"></a>设备位置 1 (47.638237,-122.132483)
 
-1. 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 输入“位置 1”。 选择在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中创建的集合，然后选择“保存”。
+1. 在 Postman 应用中，选择“新建”。
 
-2. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 确保将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥，并将 `{udid}` 替换为在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中保存的 `udid`。
+2. 在“新建”窗口中，选择“HTTP 请求” 。
+
+3. 在“请求名称”中输入请求名称，比如 Location 1。
+
+4. 选择“GET”HTTP 方法。
+
+5. 输入以下 URL。 请求应类似于以下 URL（将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥，并将 `{udid}` 替换为在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中保存的 `udid`）。
 
    ```HTTP
    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
-3. 选择“发送”。 随即响应窗口中出现以下 GeoJSON。
+6. 选择 **Send**。
+
+7. 响应应类似于以下 GeoJSON 片段：
 
     ```json
     {
@@ -309,15 +376,23 @@ Azure Maps 支持[三种事件类型](../event-grid/event-schema-azure-maps.md)�
 
 ### <a name="location-2-4763800-122132531"></a>位置 2 (47.63800,-122.132531)
 
-1. 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 输入“位置 2”。 选择在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中创建的集合，然后选择“保存”。
+1. 在 Postman 应用中，选择“新建”。
 
-2. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 确保将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥，并将 `{udid}` 替换为在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中保存的 `udid`。
+2. 在“新建”窗口中，选择“HTTP 请求” 。
+
+3. 在“请求名称”中输入请求名称，比如 Location 2。
+
+4. 选择“GET”HTTP 方法。
+
+5. 输入以下 URL。 请求应类似于以下 URL（将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥，并将 `{udid}` 替换为在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中保存的 `udid`）。
 
    ```HTTP
    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
-3. 选择“发送”。 随即响应窗口中出现以下 GeoJSON：
+6. 选择 **Send**。
+
+7. 响应应类似于以下 GeoJSON 片段：
 
     ```json
     {
@@ -349,15 +424,23 @@ Azure Maps 支持[三种事件类型](../event-grid/event-schema-azure-maps.md)�
 
 ### <a name="location-3-4763810783315048-12213336020708084"></a>位置 3 (47.63810783315048,-122.13336020708084)
 
-1. 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 输入“位置 3”。 选择在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中创建的集合，然后选择“保存”。
+1. 在 Postman 应用中，选择“新建”。
 
-2. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 确保将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥，并将 `{udid}` 替换为在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中保存的 `udid`。
+2. 在“新建”窗口中，选择“HTTP 请求” 。
+
+3. 在“请求名称”中输入请求名称，比如 Location 3。
+
+4. 选择“GET”HTTP 方法。
+
+5. 输入以下 URL。 请求应类似于以下 URL（将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥，并将 `{udid}` 替换为在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中保存的 `udid`）。
 
     ```HTTP
       https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
       ```
 
-3. 选择“发送”。 随即响应窗口中出现以下 GeoJSON：
+6. 选择 **Send**。
+
+7. 响应应类似于以下 GeoJSON 片段：
 
     ```json
     {
@@ -392,15 +475,23 @@ Azure Maps 支持[三种事件类型](../event-grid/event-schema-azure-maps.md)�
 
 ### <a name="location-4-47637988-1221338344"></a>位置 4 (47.637988,-122.1338344)
 
-1. 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 输入“位置 4”。 选择在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中创建的集合，然后选择“保存”。
+1. 在 Postman 应用中，选择“新建”。
 
-2. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 确保将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥，并将 `{udid}` 替换为在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中保存的 `udid`。
+2. 在“新建”窗口中，选择“HTTP 请求” 。
+
+3. 在“请求名称”中输入请求名称，比如 Location 4。
+
+4. 选择“GET”HTTP 方法。
+
+5. 输入以下 URL。 请求应类似于以下 URL（将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥，并将 `{udid}` 替换为在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中保存的 `udid`）。
 
     ```HTTP
     https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&userTime=2023-01-16&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
-3. 选择“发送”。 随即响应窗口中出现以下 GeoJSON：
+6. 选择 **Send**。
+
+7. 响应应类似于以下 GeoJSON 片段：
 
     ```json
     {
@@ -426,15 +517,23 @@ Azure Maps 支持[三种事件类型](../event-grid/event-schema-azure-maps.md)�
 
 ### <a name="location-5-4763799--122134505"></a>位置 5 (47.63799, -122.134505)
 
-1. 在 Postman 应用顶部附近，选择“新建”。 在“新建”窗口中，选择“请求”。 在“请求名称”中，输入请求名称。 输入“位置 5”。 选择在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中创建的集合，然后选择“保存”。
+1. 在 Postman 应用中，选择“新建”。
 
-2. 在生成器选项卡中选择“GET”HTTP 方法，然后输入以下 URL。 确保将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥，并将 `{udid}` 替换为在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中保存的 `udid`。
+2. 在“新建”窗口中，选择“HTTP 请求” 。
+
+3. 在“请求名称”中输入请求名称，比如 Location 5。
+
+4. 选择“GET”HTTP 方法。
+
+5. 输入以下 URL。 请求应类似于以下 URL（将 `{Azure-Maps-Primary-Subscription-key}` 替换为主订阅密钥，并将 `{udid}` 替换为在[上传地理围栏 GeoJSON 数据部分](#upload-geofencing-geojson-data)中保存的 `udid`）。
 
     ```HTTP
     https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63799&lon=-122.134505&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
-3. 选择“发送”。 随即响应窗口中出现以下 GeoJSON：
+6. 选择 **Send**。
+
+7. 响应应类似于以下 GeoJSON 片段：
 
     ```json
     {
@@ -463,7 +562,6 @@ Azure Maps 支持[三种事件类型](../event-grid/event-schema-azure-maps.md)�
     ````
 
 在上述 GeoJSON 响应中，设备已退出主站点地理围栏。 因此，将 `isEventPublished` 参数设置为 `true`，运营管理员将收到指示设备已退出地理围栏的电子邮件通知。
-
 
 还可以[使用事件网格和逻辑应用发送电子邮件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md)，并使用 Azure Maps 检查[事件网格中支持的事件处理程序](../event-grid/event-handlers.md)。
 

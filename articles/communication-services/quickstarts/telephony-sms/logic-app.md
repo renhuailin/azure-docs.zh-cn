@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 9f25e7ce9580ab967d1625a6ab1550bd3f535225
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 2764eede3aebd0110e2cc2de8a1813bc1f28cb86
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113109006"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114444326"
 ---
 # <a name="quickstart-send-sms-messages-in-azure-logic-apps-with-azure-communication-services"></a>快速入门：使用 Azure 通信服务在 Azure 逻辑应用中发送短信
 
@@ -52,14 +52,40 @@ ms.locfileid: "113109006"
    :::image type="content" source="./media/logic-app/select-send-sms-action.png" alt-text="屏幕截图显示逻辑应用设计器和选中了“发送短信”操作的 Azure 通信服务连接器。":::
 
 1. 现在，创建与通信服务资源的连接。
+    1. 在同一订阅中：
 
-   1. 为连接提供一个名称。
+       1. 为连接提供一个名称。
 
-   1. 选择 Azure 通信服务资源。
+       1. 选择 Azure 通信服务资源。
 
-   1. 选择“创建”。
+       1. 选择“创建”。
 
-   :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="屏幕截图显示包含示例信息的“发送短信”操作配置。":::
+       :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="屏幕截图显示包含示例信息的“发送短信”操作配置。":::
+
+    1. 使用来自通信服务资源的连接字符串：
+        
+        1. 为连接提供一个名称。
+        
+        1. 从下拉选项中选择 ConnectionString 身份验证。
+        
+        1. 输入来自通信服务资源的连接字符串。
+        
+        1. 选择“创建”。
+        
+        :::image type="content" source="./media/logic-app/connection-string-auth.png" alt-text="显示连接字符串身份验证配置的屏幕截图。":::
+        
+    1. 使用服务主体（[请参考“创建服务主体”](../identity/service-principal-from-cli.md)）：
+        1. 为连接提供一个名称。
+        
+        1. 从下拉选项中选择“服务主体(Azure AD 应用程序)身份验证”。
+        
+        1. 输入服务主体的租户 ID、客户端 ID 和客户端密码。
+        
+        1. 输入通信服务资源的通信服务终结点 URL 值。
+        
+        1. 选择“创建”。
+        
+        :::image type="content" source="./media/logic-app/service-principal-auth.png" alt-text="显示服务主体身份验证配置的屏幕截图。":::     
 
 1. 在“发送短信”操作中，提供以下信息： 
 

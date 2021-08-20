@@ -4,18 +4,18 @@ description: 了解如何使用 Visual Studio 将现有 .NET 应用程序容器�
 ms.topic: tutorial
 ms.date: 07/08/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b0e75d4054bc814c3e826db4519f9e882964ef4e
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: ae7069b155266b8fc8049b9660d38acbb1103d6c
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677363"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112236404"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>教程：将 Windows 容器中的 .NET 应用程序部署到 Azure Service Fabric
 
 本教程介绍如何将现有 ASP.NET 应用程序容器化，并将其打包为 Service Fabric 应用程序。  在 Service Fabric 开发群集上本地运行该容器，然后将该应用程序部署到 Azure。  应用程序将数据保存在 [Azure SQL 数据库](../azure-sql/database/sql-database-paas-overview.md)中。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -32,14 +32,14 @@ ms.locfileid: "110677363"
 2. 启用“Hyper-V”和“容器”这两项 Windows 功能 。
 3. 安装 [Docker Desktop for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)，以便在 Windows 10 上运行容器。
 4. 安装 [Service Fabric 运行时版本 6.2 或更高版本](service-fabric-get-started.md)以及 [Service Fabric SDK 版本 3.1](service-fabric-get-started.md) 或更高版本。
-5. 安装 [Visual Studio 2019 版本 16.1](https://www.visualstudio.com/) 或更高版本，其中包含 **Azure 开发** 以及 **ASP.NET 和 Web 开发** 工作负荷。
+5. 安装 [Visual Studio](https://www.visualstudio.com/)，并启用“Azure 开发”以及“ASP.NET 和 Web 开发”工作负载。
 6. 安装 [Azure PowerShell][link-azure-powershell-install]
 
 ## <a name="download-and-run-fabrikam-fiber-callcenter"></a>下载并运行 Fabrikam Fiber CallCenter
 
-1. 下载 [Fabrikam Fiber CallCenter][link-fabrikam-github] 示例应用程序。  单击“下载存档”链接。  从“fabrikam.zip”文件的“sourceCode”目录中，提取“sourceCode.zip”文件，然后将“VS2015”目录提取至计算机   。
+1. 从 GitHub 下载 [Fabrikam Fiber CallCenter][link-fabrikam-github] 示例应用程序。
 
-2. 验证 Fabrikam Fiber CallCenter 应用程序是否能正确无误地生成和运行。  以 **管理员身份** 启动 Visual Studio，然后打开 [FabrikamFiber.CallCenter.sln][link-fabrikam-github] 文件。  按 F5 调试并运行应用程序。
+2. 验证 Fabrikam Fiber CallCenter 应用程序是否能正确无误地生成和运行。  以管理员身份启动 Visual Studio，然后打开 [VS2015\FabrikamFiber.CallCenter.sln][link-fabrikam-github] 文件。 按 F5 运行和调试应用程序。
 
    ![本地主机上运行的 Fabrikam Fiber CallCenter 应用程序主页的屏幕截图。 该页显示一个仪表板，其中包含支持电话列表。][fabrikam-web-page]
 
@@ -309,7 +309,7 @@ Remove-AzResourceGroup -Name $clusterresourcegroupname
 
 在本教程的下一部分中，了解如何[使用 CI/CD 将容器应用程序部署到 Service Fabric 群集](service-fabric-tutorial-deploy-container-app-with-cicd-vsts.md)。
 
-[link-fabrikam-github]: https://aka.ms/fabrikamcontainer
+[link-fabrikam-github]: https://github.com/Azure-Samples/service-fabric-dotnet-containerize
 [link-azure-powershell-install]: /powershell/azure/install-Az-ps
 [link-servicefabric-create-secure-clusters]: service-fabric-cluster-creation-via-arm.md
 [link-visualstudio-cd-extension]: https://aka.ms/cd4vs

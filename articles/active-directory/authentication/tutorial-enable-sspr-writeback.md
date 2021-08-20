@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 05/19/2021
+ms.date: 07/26/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: e6d89bdfca268a02c1f58bdceb4e4485dc3851a6
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: ff3c052e2e9e745c59947cda43d12b46786fbd62
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438371"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707583"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>教程：启用到本地环境的 Azure Active Directory 自助式密码重置写回
 
@@ -43,7 +43,7 @@ ms.locfileid: "111438371"
 * 一个至少启用了 Azure AD Premium P1 或试用版许可证的有效 Azure AD 租户。
     * 如果需要，[可免费创建一个](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
     * 有关详细信息，请参阅 [Azure AD SSPR 的许可要求](concept-sspr-licensing.md)。
-* 一个拥有全局管理员特权的帐户。
+* 一个拥有全局管理员特权的帐户。 
 * 为自助式密码重置配置的 Azure AD。
     * 如果需要，请[完成上一篇教程来启用 Azure AD SSPR](tutorial-enable-sspr.md)。
 * 配置有最新 Azure AD Connect 版本的现有本地 AD DS 环境。
@@ -109,6 +109,7 @@ Azure AD Connect 中有一个配置选项用于密码写回。 启用此选项�
 
     ![为密码写回配置 Azure AD Connect](media/tutorial-enable-sspr-writeback/enable-password-writeback.png)
 
+1. 在“目录扩展”页面，选择“下一步” 。
 1. 在“已准备好进行配置”页上，选择“配置”，并等待进程完成。
 1. 在配置完成后，选择“退出”。
 
@@ -131,7 +132,7 @@ Azure AD Connect 中有一个配置选项用于密码写回。 启用此选项�
 
 如果你不再想要使用本教程中配置的 SSPR 写回功能，请完成以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择“Azure Active Directory”，选择“密码重置”，然后选择“本地集成”。
 1. 将“将密码写回到本地目录?”选项设置为“否”。
 1. 将“允许用户在不重置密码的情况下解锁帐户?”选项设置为“否”。

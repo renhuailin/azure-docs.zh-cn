@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/17/2020
+ms.date: 06/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 5fe539521213a6c25804c5c0db1e6b18646cceea
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fe77b2e667ba5bfe5ab40a44efe177648a184f51
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563831"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112456179"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clever"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Clever 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "105563831"
 * 让用户使用其 Azure AD 帐户自动登录到 Clever。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -37,12 +37,12 @@ ms.locfileid: "105563831"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Clever 支持 **SP** 发起的 SSO
+* Clever 支持 SP 发起的 SSO。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
-## <a name="adding-clever-from-the-gallery"></a>从库中添加 Clever
+## <a name="add-clever-from-the-gallery"></a>从库中添加 Clever
 
 若要配置 Clever 与 Azure AD 的集成，需要从库中将 Clever 添加到托管 SaaS 应用列表。
 
@@ -53,12 +53,11 @@ ms.locfileid: "105563831"
 1. 在“从库中添加”部分的搜索框中，键入“Clever”。
 1. 在结果面板中选择“Clever”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-clever"></a>配置并测试 Clever 的 Azure AD SSO
 
 使用名为 B.Simon 的测试用户配置并测试 Clever 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 Clever 相关用户之间建立链接关系。
 
-若要配置和测试 Clever 的 Azure AD SSO，请完成以下构建基块：
+若要配置并测试 Clever 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
@@ -73,26 +72,26 @@ ms.locfileid: "105563831"
 
 1. 在 Azure 门户的“Clever”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值：
+1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://clever.com/in/<companyname>` 
+    a. 在“标识符(实体 ID)”文本框中，键入 URL：`https://clever.com/oauth/saml/metadata.xml` 
 
-    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://clever.com/oauth/saml/metadata.xml`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://clever.com/<COMPANY_NAME>`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://clever.com/<companyname>`
-    
+    c. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://clever.com/in/<COMPANY_NAME>` 
+
     > [!NOTE]
-    >  这些不是实际值。 请使用实际的登录 URL 和回复 URL 更新这些值。 请联系 [Clever 客户端支持团队](https://clever.com/about/contact/)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    >  这些不是实际值。 使用实际的回复 URL 和登录 URL 更新这些值。 请联系 [Clever 客户端支持团队](https://clever.com/about/contact/)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user&quot;></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
@@ -100,11 +99,11 @@ ms.locfileid: "105563831"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 Clever 的权限，允许其使用 Azure 单一登录。
 
@@ -116,9 +115,25 @@ ms.locfileid: "105563831"
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-## <a name="configure-clever-sso"></a>配置 Clever SSO
+## <a name=&quot;configure-clever-sso&quot;></a>配置 Clever SSO
 
-按照[链接](https://support.clever.com/hc/s/articles/205889768)中提供的说明在 Clever 端配置单一登录。
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 Clever 区域仪表板。
+
+2. 从左侧导航栏中，单击“菜单” > “门户” > “SSO 设置”。
+
+3. 在“SSO 设置”页上，执行以下步骤：
+    
+    a. 选择“添加登录方法”。
+
+    b. 选择“Active Directory 身份验证”。 
+
+    ![设置](./media/clever-tutorial/account.png &quot;设置") 
+    
+    c. 在记事本中打开从 Azure 门户下载的“应用联合元数据 URL”，并将内容粘贴到“元数据 URL”文本框中 。
+
+    ![上传证书](./media/clever-tutorial/metadata.png "上传证书") 
+
+    d. 单击“保存”。
 
 ### <a name="create-clever-test-user"></a>创建 Clever 测试用户
 

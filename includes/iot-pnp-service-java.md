@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 8d3f35a733a0f78fabc33df857d911ba3cd222f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6fa30a56b3fb6e8b16a50bff7fda4c9349348633
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102245030"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403572"
 ---
 IoT 即插即用简化了 IoT 的使用，使你无需了解底层设备实现，就能与某个设备的功能交互。 本快速入门介绍如何使用 Java 来连接和控制已与解决方案连接的 IoT 即插即用设备。
 
@@ -24,7 +24,7 @@ IoT 即插即用简化了 IoT 的使用，使你无需了解底层设备实现�
 
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>使用示例代码克隆 SDK 存储库
 
-如果已完成[快速入门：将 Windows 上运行的示例 IoT 即插即用设备应用程序连接到 IoT 中心 (Java)](../articles/iot-pnp/quickstart-connect-device.md)，则已克隆了存储库。
+如果你完成了[教程：将 Windows 上运行的示例 IoT 即插即用设备应用程序连接到 IoT 中心 (Java)](../articles/iot-develop/tutorial-connect-device.md)，则已经克隆了该存储库。
 
 在所选目录中打开命令提示符。 执行以下命令，将[用于 Java 的 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-java) GitHub 存储库克隆到此位置：
 
@@ -60,7 +60,7 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 
 ## <a name="run-the-sample-solution"></a>运行示例解决方案
 
-在[为 IoT 即插即用快速入门和教程设置环境](../articles/iot-pnp/set-up-environment.md)中，已创建了两个环境变量以将示例配置为连接到 IoT 中心和设备：
+在[为 IoT 即插即用快速入门和教程设置环境](../articles/iot-develop/set-up-environment.md)中，已创建了两个环境变量以将示例配置为连接到 IoT 中心和设备：
 
 * **IOTHUB_CONNECTION_STRING**：之前记下的 IoT 中心连接字符串。
 * **IOTHUB_DEVICE_ID**：`"my-pnp-device"`。
@@ -68,7 +68,7 @@ git clone https://github.com/Azure/azure-iot-sdk-java.git
 在本快速入门中，你将使用以 Java 编写的示例 IoT 解决方案与刚设置的示例设备进行交互。
 
 > [!NOTE]
-> 此示例使用来自 IoT 中心服务客户端的“com.microsoft.azure.sdk.iot.service”命名空间 。 若要了解有关 API（包括数字孪生 API）的详细信息，请参阅[服务开发人员指南](../articles/iot-pnp/concepts-developer-guide-service.md)。
+> 此示例使用来自 IoT 中心服务客户端的“com.microsoft.azure.sdk.iot.service”命名空间 。 若要了解有关 API（包括数字孪生 API）的详细信息，请参阅[服务开发人员指南](../articles/iot-develop/concepts-developer-guide-service.md)。
 
 1. 打开另一个终端窗口用作服务终端。
 
