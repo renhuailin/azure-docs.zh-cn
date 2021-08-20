@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: 2099d190ca896a5c8124cdd6b605037256a5ab48
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 3e5e46e15a7885eb5e3f4828cb8298355a116fd8
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489325"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112300482"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-the-azure-portal-preview"></a>教程：使用 Azure 门户添加角色分配条件来限制对 Blob 的访问（预览）
 
@@ -72,8 +72,6 @@ ms.locfileid: "109489325"
 
 ## <a name="step-2-set-up-storage"></a>步骤 2：设置存储
 
-1. 如果尚未这样做，请注册你的订阅以使用 blob 索引标记。 有关详细信息，请参阅[注册订阅（预览版）](../blobs/storage-manage-find-blobs.md#register-your-subscription-preview)。
-
 1. 创建兼容 blob 索引标记功能的存储帐户，此功能当前为公共预览版。 有关详细信息，请查看[通过 Blob 索引标记管理和查找 Azure Blob 数据（预览）](../blobs/storage-manage-find-blobs.md#regional-availability-and-storage-account-support)。
 
 1. 在存储帐户中创建新容器，并将“公共访问级别”设置为“专用(不允许匿名访问)”。
@@ -89,7 +87,7 @@ ms.locfileid: "109489325"
     如果未看到“Blob 索引标记”部分，并且刚注册了订阅，可能需要等待几分钟，更改才会生效。 有关详细信息，请参阅[使用 blob 索引标记（预览版）管理和查找 Azure Blob 存储中的数据](../blobs/storage-blob-index-how-to.md)。
 
     > [!NOTE]
-    > Blob 还支持存储用户定义的任意键-值元数据。 尽管元数据与 blob 索引标记类似，但必须将 blob 索引标记与条件配合使用。 
+    > Blob 还支持存储用户定义的任意键-值元数据。 尽管元数据与 Blob 索引标记类似，但你也必须将 Blob 索引标记与条件配合使用。 
 
     | 密钥 | 值 |
     | --- | --- |
@@ -153,17 +151,15 @@ ms.locfileid: "109489325"
 
     随即展开“表达式”部分。
 
-1. 在“属性源”列表中，选择“资源”。
+1. 指定以下表达式设置：
 
-1. 在“属性”列表中，选择“Blob 索引标记 [密钥中的值]”。
-
-    选择此属性将添加一个密钥框，可在其中指定条件应检查的标记密钥。
-
-1. 在“密钥”框中，输入“Project”。
-
-1. 在“运算符”列表中，选择“StringEqualsIgnoreCase”。
-
-1. 在“值”框中，输入“Cascade”。
+    | 设置 | 值 |
+    | --- | --- |
+    | 特性源 | 资源 |
+    | 特性 | blob 索引标记 [键中的值] |
+    | 密钥 | Project |
+    | 运算符 | StringEqualsIgnoreCase |
+    | 值 | Cascade |
 
     ![“blob 索引标记”的“生成表达式”部分的屏幕截图。](./media/storage-auth-abac-portal/condition-expressions.png)
 

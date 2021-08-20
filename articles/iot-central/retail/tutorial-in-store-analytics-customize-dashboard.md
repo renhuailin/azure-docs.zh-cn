@@ -1,6 +1,6 @@
 ---
-title: 教程 - 在 Azure IoT Central 中自定义操作员仪表板
-description: 本教程介绍如何在 IoT Central 应用程序中自定义操作员仪表板和管理设备。
+title: 教程 - 在 Azure IoT Central 中自定义仪表板
+description: 本教程介绍如何在 IoT Central 应用程序中自定义仪表板和管理设备。
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
@@ -11,17 +11,17 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: cea5ed5d75bbba4e2e6cdc8793bf5ce7503a5912
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d8655251d22f82b6ff6171514cdd48506c5cc895
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755344"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113585962"
 ---
-# <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>教程：在 Azure IoT Central 中自定义操作员仪表板和管理设备
+# <a name="tutorial-customize-the-dashboard-and-manage-devices-in-azure-iot-central"></a>教程：在 Azure IoT Central 中自定义仪表板和管理设备
 
 
-本教程介绍如何在 Azure IoT Central 店内分析应用程序中自定义操作员仪表板。 应用程序操作员可以使用自定义仪表板来运行应用程序和管理连接的设备。
+本教程介绍如何在 Azure IoT Central 店内分析应用程序中自定义仪表板。 应用程序操作员可以使用自定义仪表板来运行应用程序和管理连接的设备。
 
 在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
@@ -39,7 +39,7 @@ ms.locfileid: "108755344"
 * [在 Azure IoT Central 中创建店内分析应用程序](./tutorial-in-store-analytics-create-app.md)（必需）
 
 ## <a name="change-the-dashboard-name"></a>更改仪表板名称
-若要自定义操作员仪表板，必须在应用程序中编辑默认仪表板。 此外，还可以创建其他新仪表板。 自定义应用程序中的仪表板的第一步是更改名称。
+若要自定义仪表板，必须在应用程序中编辑默认仪表板。 此外，还可以创建其他新仪表板。 自定义应用程序中的仪表板的第一步是更改名称。
 
 1. 导航到 [Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站。
 

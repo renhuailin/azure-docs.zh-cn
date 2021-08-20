@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
-ms.date: 05/18/2021
+ms.date: 06/22/2021
 ms.author: lajanuar
-ms.openlocfilehash: ccc0f857f9377c3b82ca70a6611b8e64d352700f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8d348a57470d21f72e55fc3cbf2e66e974e3c8a4
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110116482"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114362730"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
@@ -22,15 +22,29 @@ ms.locfileid: "110116482"
 
 查看文本翻译器服务的最新更新。 将此页添加为书签，以了解最新的发行说明、功能增强和文档更新。
 
+## <a name="june-2021"></a>2021 年 6 月
+
+### <a name="document-translation-client-libraries-for-cnet-and-pythonnow-available-in-prerelease"></a>[用于 C#/.NET 和 Python 的文档翻译客户端库](document-translation/client-sdks.md) - 现已在预发行版中提供。
+
+## <a name="may-2021"></a>2021 年 5 月
+
+### <a name="document-translation--now-in-general-availability"></a>[文档翻译功能 - 现已正式发布](https://www.microsoft.com/translator/blog/2021/05/25/translate-full-documents-with-document-translation-%e2%80%95-now-in-general-availability/)
+
+* 功能版本：翻译器的[文档翻译](document-translation/overview.md)功能现已正式发布。 文档翻译功能旨在翻译包含丰富内容的大型文档和批处理文档，同时保留原始结构和格式。 你还可以使用自定义术语表并利用[自定义翻译器](custom-translator/overview.md)构建的自定义模型来确保快速准确地翻译文档。
+
+### <a name="translator-service-available-in-containers"></a>[容器中提供的翻译器服务](https://www.microsoft.com/translator/blog/2021/05/25/translator-service-now-available-in-containers/)
+
+* 新版本：容器中的翻译器服务以封闭预览版的形式提供。 请在开始使用前[提交在线请求](https://aka.ms/csgate-translator)并获得批准。 通过容器，你可以在自己的环境中运行数个翻译器服务功能，而且容器非常适合特定的安全性和数据管控要求。 请参阅：[安装并运行翻译器容器（预览版）](containers/translator-how-to-install-container.md)
+
 ## <a name="february-2021"></a>2021 年 2 月
 
 ### <a name="document-translation-public-preview"></a>[文档翻译公共预览版](https://www.microsoft.com/translator/blog/2021/02/17/introducing-document-translation/)
 
 * 新版本：[文档翻译](document-translation/overview.md)作为翻译器服务的预览功能提供。 预览功能仍处于开发阶段，不适用于生产。 它们在“预览”的基础上提供，以便客户可以提前访问并提供反馈。 文档翻译可以用于翻译大型文档和处理批处理文件，同时仍然保留原始的结构和格式。 请参阅 [Microsoft 翻译工具博客：文档翻译简介](https://www.microsoft.com/translator/blog/2021/02/17/introducing-document-translation/)
 
-### <a name="text-translation-support-for-9-added-languages"></a>[9 种新增语言的文本翻译支持](https://www.microsoft.com/translator/blog/2021/02/22/microsoft-translator-releases-nine-new-languages-for-international-mother-language-day-2021/)
+### <a name="text-translation-support-for-nine-added-languages"></a>[9 种新增语言的文本翻译支持](https://www.microsoft.com/translator/blog/2021/02/22/microsoft-translator-releases-nine-new-languages-for-international-mother-language-day-2021/)
 
-* 翻译器服务提供以下语言的[文本翻译语言支持](language-support.md#text-translation)：
+* 翻译器服务提供以下语言的[文本翻译语言支持](language-support.md)：
 
   * **阿尔巴尼亚语**。 一种与其他语言无关的孤立语言，有近 800 万人使用。
   * **阿姆哈拉语**。 埃塞俄比亚的官方语言，大约有 3200 万人使用。 它也是埃塞俄比亚东正教的礼拜语言。
@@ -46,7 +60,7 @@ ms.locfileid: "110116482"
 
 ### <a name="text-translation-support-for-inuktitut"></a>[因纽特语的文本翻译支持](https://www.microsoft.com/translator/blog/2021/01/27/inuktitut-is-now-available-in-microsoft-translator/)
 
-* 翻译器服务为因纽特语提供[文本翻译语言支持](language-support.md#text-translation)，该语言是加拿大的主要因纽特语言之一。 因纽特语是西北地区八种官方土著语言之一。
+* 翻译器服务为因纽特语提供[文本翻译语言支持](language-support.md)，该语言是加拿大的主要因纽特语言之一。 因纽特语是西北地区八种官方土著语言之一。
 
 ## <a name="november-2020"></a>2020 年 11 月
 
@@ -58,13 +72,13 @@ ms.locfileid: "110116482"
 
 ### <a name="text-translation-support-for-canadian-french"></a>[加拿大法语的文本翻译支持](https://www.microsoft.com/translator/blog/2020/10/20/cest-tiguidou-ca-translator-adds-canadian-french/)
 
-* 翻译器服务提供加拿大法语的[文本翻译语言支持](language-support.md#text-translation)。 加拿大法语和欧洲法语彼此相似，在理解方面是相通的。 但在词汇、语法、书写和发音方面可能存在明显差异。 超过 700 万加拿大人（人口的 20%）将法语作为第一语言使用。
+* 翻译器服务提供加拿大法语的[文本翻译语言支持](language-support.md)。 加拿大法语和欧洲法语彼此相似，在理解方面是相通的。 但在词汇、语法、书写和发音方面可能存在明显差异。 超过 700 万加拿大人（人口的 20%）将法语作为第一语言使用。
 
 ## <a name="september-2020"></a>2020 年 9 月
 
 ### <a name="text-translation-support-for-assamese-and-axomiya"></a>[阿萨姆语和 Axomiya 的文本翻译支持](https://www.microsoft.com/translator/blog/2020/09/29/assamese-text-translation-is-here/)
 
-* 翻译器服务为阿萨姆语提供[文本翻译语言支持](language-support.md#text-translation)，该语言也称为 Axomiya 。  阿萨姆语/Axomiya 主要在印度东部使用，大约有 1400 万人使用。
+* 翻译器服务为阿萨姆语提供[文本翻译语言支持](language-support.md)，该语言也称为 Axomiya 。  阿萨姆语/Axomiya 主要在印度东部使用，大约有 1400 万人使用。
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -86,4 +100,4 @@ ms.locfileid: "110116482"
 
 ### <a name="text-translation-support-for-odia"></a>[奥里亚语的文本翻译支持](https://www.microsoft.com/translator/blog/2020/08/13/odia-language-text-translation-is-now-available-in-microsoft-translator/)
 
-* 奥里亚语是一种传统语言，在印度和世界各地有 3500 万人使用。 它是继孟加拉语、古吉拉特语、印地语、卡纳达语、马拉雅拉姆语、马拉地语、旁遮普语、泰米尔语、泰卢古语、乌尔都语和英语之后，Microsoft 翻译工具支持的第十二种印度常用语言           。
+* 奥里亚语是一种传统语言，在印度和世界各地有 3500 万人使用。 它是继孟加拉语、古吉拉特语、印地语、卡纳达语、马拉雅拉姆语、马拉地语、旁遮普语、泰米尔语、泰卢古语、乌尔都语和英语之后，Microsoft 翻译器支持的第 12 种印度常用语言           。
