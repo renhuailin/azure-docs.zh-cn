@@ -7,12 +7,12 @@ ms.date: 11/16/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ce02c86fff5ccece1528e0d08413acb5c0a7f9c6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: da7c1c0268f04b183ba48491bd5f0d0b01e15b41
+ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108743374"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113224090"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>教程：使用设备组分析设备遥测数据
 
@@ -28,12 +28,50 @@ ms.locfileid: "108743374"
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，应完成[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)和[将模拟设备添加到 IoT Central 应用程序](./quick-create-simulated-device.md)快速入门，以创建要使用的传感器控制器设备模板。
+完成本教程中的步骤需要具备以下各项：
+
+[!INCLUDE [iot-central-prerequisites-basic](../../../includes/iot-central-prerequisites-basic.md)]
+
+## <a name="add-and-customize-a-device-template"></a>添加并自定义设备模板
+
+从设备目录添加设备模板。 本教程使用“ESP32-Azure IoT 工具包”设备模板：
+
+1. 若要添加新的设备模板，请在“设备模板”页上选择“+ 新建” 。
+
+1. 在“选择类型”页上，向下滚动直到在“使用预配置的设备模板”部分中找到“ESP32-Azure IoT 套件”磁贴。  
+
+1. 选择“ESP32-Azure IoT 工具包”磁贴，然后选择“下一页: 查看”。
+
+1. 在“查看”页上，选择“创建”   。
+
+创建的模板的名称为“传感器控制器”。 该模型包含“传感器控制器”、“SensorTemp”和“设备信息接口”等组件  。 组件定义 ESP32 设备的功能。 功能包括遥测、属性和命令。
+
+将两个云属性添加到“传感器控制器”设备模板：
+
+1. 依次选择“云属性”、“+ 添加云属性”。 使用下表中的信息将两个云属性添加到设备模板：
+
+    | 显示名称      | 语义类型 | 架构 |
+    | ----------------- | ------------- | ------ |
+    | 最后维修日期 | 无          | 日期   |
+    | 客户名称     | 无          | 字符串 |
+
+1. 选择“保存”  以保存更改。
+
+向设备模板添加新的窗体以管理设备：
+
+1. 选择“视图”节点，然后选择“编辑设备和云数据”磁贴来添加新视图。
+
+1. 将窗体名称更改为“管理设备”。
+
+1. 依次选择“客户名称”、“上次服务日期”云属性和“目标温度”属性  。 然后选择“添加部分”。
+
+1. 选择“保存”以保存新窗体。
+
+现在发布设备模板。
 
 ## <a name="create-simulated-devices"></a>创建模拟设备
 
 创建设备组之前，请根据要在本教程中使用的传感器控制器设备模板添加至少五个模拟设备：
-
 
 :::image type="content" source="media/tutorial-use-device-groups/simulated-devices.png" alt-text="显示 5 个模拟传感器控制器设备的屏幕截图":::
 
@@ -73,13 +111,17 @@ ms.locfileid: "108743374"
 
     :::image type="content" source="media/tutorial-use-device-groups/create-analysis.png" alt-text="显示所选的用于分析的遥测类型的屏幕截图":::
 
-    使用遥测类型旁边的齿轮图标选择聚合类型。 默认类型为“平均”。  使用“分组依据”更改聚合数据的显示方式。 例如，如果按设备 ID 进行拆分，则选择“分析”时，将看到每个设备的绘图。 
+    使用遥测类型旁边的省略号图标选择聚合类型。 默认类型为“平均”。  使用“分组依据”更改聚合数据的显示方式。 例如，如果按设备 ID 进行拆分，则选择“分析”时，将看到每个设备的绘图。 
 
 1. 选择“分析”以查看平均遥测值： 
 
     :::image type="content" source="media/tutorial-use-device-groups/view-analysis.png" alt-text="显示所有 Contoso 设备平均值的屏幕截图":::
 
-    可以自定义视图，更改显示的时间段，并导出数据。
+    你可以自定义视图、更改显示的时间段，以及将数据导出为 CSV 或以表格形式查看数据。
+
+    :::image type="content" source="media/tutorial-use-device-groups/export-data.png" alt-text="屏幕截图：显示如何导出 Contoso 设备数据":::
+
+若要详细了解分析功能，请参阅[如何使用分析功能来分析设备数据](howto-create-analytics.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -3,18 +3,18 @@ title: 教程 - 从 Google Maps 迁移 Web 服务 | Microsoft Azure Maps
 description: 有关如何将 Web 服务从 Google Maps 迁移到 Microsoft Azure Maps 的教程
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/19/2020
+ms.date: 06/23/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: caed40f91ef6a6c1e8bdb353c6548aee699dbc07
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: f1220d7368eb0bca48364dc239944a95d29be276
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110795421"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112578876"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>教程：从 Google Maps 迁移 Web 服务
 
@@ -60,7 +60,7 @@ Azure Maps 和 Google Maps 都通过 REST Web 服务提供对空间 API 的访�
 - 最近的道路 - 这可以使用 Web SDK 实现（如[此处](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic)所示），但目前不作为服务提供。
 - 静态街道视图
 
-Azure Maps 提供其他几个你可能会感兴趣的 REST Web 服务：
+Azure Maps 提供几个其他你可能会感兴趣的 REST Web 服务：
 
 - [空间操作](/rest/api/maps/spatial)：将复杂的空间计算和操作（例如地理围栏）负载分散到某个服务。
 - [交通](/rest/api/maps/traffic)：访问实时交通流量和事件数据。
@@ -203,7 +203,6 @@ Azure Maps 路线服务提供以下 API 来计算路线：
 
 - [**计算路线**](/rest/api/maps/route/getroutedirections)：计算路线并立即处理请求。 此 API 支持 GET 和 POST 请求。 指定大量中途点或使用大量路线选项时，建议使用 POST 请求，以确保 URL 请求不会太长并导致出现问题。 Azure Maps 中的“POST 路线方向”有一个选项，该选项可以接受数千个[支持点](/rest/api/maps/route/postroutedirections#supportingpoints)，并将使用这些支持点在它们之间重新创建一个逻辑路线路径（对齐到道路）。 
 - [**批处理路线**](/rest/api/maps/route/postroutedirectionsbatchpreview)：创建最多包含 1,000 个路线请求的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
-- [出行服务（预览版）](/rest/api/maps/mobility)：使用公共交通计算路线和方向。
 
 下表对 Google Maps API 参数与 Azure Maps 中的类似 API 参数做了交叉比较。
 
@@ -221,15 +220,13 @@ Azure Maps 路线服务提供以下 API 来计算路线：
 | `origin`                       | `query`                            |
 | `region`                       | *不适用* – 此功能与地理编码相关。 使用 Azure Maps 地理编码 API 时，请使用 *countrySet* 参数。  |
 | `traffic_model`               | *不适用* – 仅当交通数据应与 *traffic* 参数结合使用时才能指定。 |
-| `transit_mode`                | 请参阅[出行服务（预览）文档](/rest/api/maps/mobility) |
-| `transit_routing_preference` | 请参阅[出行服务（预览）文档](/rest/api/maps/mobility) |
 | `units`                        | *不适用* – Azure Maps 仅使用指标系统。  |
 | `waypoints`                    | `query`                            |
 
 > [!TIP]
 > 默认情况下，Azure Maps 路线 API 仅返回摘要。 它返回距离和时间，以及路径的坐标。 使用 `instructionsType` 参数可检索转弯提示说明。 使用 `routeRepresentation` 参数筛选出摘要和路径。
 
-Azure Maps 路线 API 提供 Google Maps 所不能提供的其他许多功能。 在迁移应用时，请考虑使用这些功能，你可能会发现它们很有用。
+Azure Maps 路线 API 提供 Google Maps 所不能提供的其他功能。 在迁移应用时，请考虑使用这些功能，你可能会发现它们很有用。
 
 * 路线类型支持：最短、最快、trilling 和最省油。
 * 其他交通方式支持：公共汽车、摩托车、出租车、货车和面包车。
@@ -242,7 +239,7 @@ Azure Maps 路线 API 提供 Google Maps 所不能提供的其他许多功能。
 * 支持商务车路线参数。 例如车辆尺寸、重量、轴数和货物类型。
 * 指定最大车速。
 
-除此之外，Azure Maps 中的路线服务还支持[计算可达范围](/rest/api/maps/route/getrouterange)。 可达范围也称为等时线。 这种计算会生成一个多边形，其中涵盖了在指定的时间内或根据剩余的燃料/电量， 从某个原点朝任意方向可以行进到的区域。
+此外，Azure Maps 中的路线服务还支持[计算可达范围](/rest/api/maps/route/getrouterange)。 可达范围也称为等时线。 这种计算会生成一个多边形，其中涵盖了在指定的时间内或根据剩余的燃料/电量， 从某个原点朝任意方向可以行进到的区域。
 
 查看[路线规划最佳做法](how-to-use-best-practices-for-routing.md)文档。
 
@@ -294,7 +291,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 &markers=markerStyles|markerLocation1|markerLocation2|...
 ```
 
-若要添加更多的样式，请在包含不同样式和位置集的 URL 中使用 `markers` 参数。
+若要添其他样式，请在包含不同样式和位置集的 URL 中使用 `markers` 参数。
 
 使用“纬度,经度”格式指定标记位置。
 
@@ -325,7 +322,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 &pins=iconType|pinStyles||pinLocation1|pinLocation2|...
 ```
 
-若要使用更多的样式，请在包含不同样式和位置集的 URL 中添加 `pins` 参数。
+若要使用其他样式，请在包含不同样式和位置集的 URL 中添加其他 `pins` 参数。
 
 在 Azure Maps 中，图钉位置需要采用“经度 纬度”格式。 Google Maps 使用“纬度,经度”格式。 使用空格而不是逗号来分隔 Azure Maps 格式中的经度和纬度。
 
@@ -375,7 +372,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 &path=pathStyles|pathLocation1|pathLocation2|...
 ```
 
-通过将其他 `path` 参数添加到包含不同样式和位置集的 URL 来使用更多样式。
+通过将其他 `path` 参数添加到包含不同样式和位置集的 URL 来使用其他样式。
 
 以 `latitude1,longitude1|latitude2,longitude2|…` 格式指定路径位置。 路径可以编码，或包含点的地址。
 
@@ -402,7 +399,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 &path=pathStyles||pathLocation1|pathLocation2|...
 ```
 
-涉及到路径位置时，Azure Maps 要求坐标采用“经度 纬度”格式。 Google Maps 使用“纬度,经度”格式。 使用空格而不是逗号来分隔 Azure Maps 格式中的经度和纬度。 Azure Maps 不支持编码的路径或点地址。 根据[此文档](how-to-render-custom-data.md#get-data-from-azure-maps-data-storage)所述，将较大的数据集作为 GeoJSON 填充内容上传到 Azure Maps 数据存储 API。
+涉及到路径位置时，Azure Maps 要求坐标采用“经度 纬度”格式。 Google Maps 使用“纬度,经度”格式。 使用空格而不是逗号来分隔 Azure Maps 格式中的经度和纬度。 Azure Maps 不支持编码的路径或点地址。 根据[此文档](how-to-render-custom-data.md#upload-pins-and-path-data)所述，将较大的数据集作为 GeoJSON 填充内容上传到 Azure Maps 数据存储 API。
 
 添加采用 `optionNameValue` 格式的路径样式。 使用竖线 (\|) 字符分隔多个样式，例如 `optionName1Value1|optionName2Value2`。 不用分隔选项名称和值。 使用以下样式选项名称来为 Azure Maps 中的路径设置样式：
 

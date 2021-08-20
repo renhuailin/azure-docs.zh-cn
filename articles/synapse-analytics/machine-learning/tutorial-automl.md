@@ -6,15 +6,15 @@ ms.service: synapse-analytics
 ms.subservice: machine-learning
 ms.topic: tutorial
 ms.reviewer: jrasnick, garye
-ms.date: 11/20/2020
+ms.date: 7/9/2021
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: aaf0aab2ef600b269b9b47182aeb096ca13c7a87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1472336e5244103175ec2ad837d4b503a1e5348
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943522"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114721605"
 ---
 # <a name="tutorial-train-a-machine-learning-model-without-code"></a>教程：无代码训练机器学习模型
 
@@ -29,7 +29,7 @@ ms.locfileid: "98943522"
 ## <a name="prerequisites"></a>先决条件
 
 - 一个 [Azure Synapse Analytics 工作区](../get-started-create-workspace.md)。 确保它具有配置为默认存储的 Azure Data Lake Storage Gen2 存储帐户。 对于使用的 Data Lake Storage Gen2 文件系统，请确保你是存储 Blob 数据参与者。
-- Azure Synapse Analytics 工作区中的 Apache Spark 池。 有关详细信息，请参阅[快速入门：使用 Synapse Studio 创建专用 SQL 池](../quickstart-create-sql-pool-studio.md)。
+- Azure Synapse Analytics（版本 2.4）工作区中的 Apache Spark 池。 有关详细信息，请参阅[快速入门：使用 Synapse Studio 创建无服务器 Apache Spark 池](../quickstart-create-apache-spark-pool-studio.md)。
 - Azure Synapse Analytics 工作区中的 Azure 机器学习链接服务。 有关详细信息，请参阅[快速入门：在 Azure Synapse Analytics 中创建新的 Azure 机器学习链接服务](quickstart-integrate-azure-machine-learning.md)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
@@ -55,8 +55,8 @@ ms.locfileid: "98943522"
 
 若要打开向导：
 
-1. 右键单击在上一步中创建的 Spark 表。 然后，选择“机器学习” > “使用新模型进行扩充” 。
-![Spark 表的屏幕截图，其中突出显示了“机器学习”和“使用新模型进行扩充”。](media/tutorial-automl-wizard/tutorial-automl-wizard-00d.png)
+1. 右键单击在上一步中创建的 Spark 表。 然后选择“机器学习” > “训练新模型”。
+![Spark 表的屏幕截图，其中突出显示了“机器学习”和“训练新模型”。](media/tutorial-automl-wizard/tutorial-automl-wizard-00d.png)
 
 1. 提供配置详细信息用于创建在 Azure 机器学习中运行的自动化机器学习实验。 此运行会训练多个模型。 成功运行的最佳模型是在 Azure 机器学习模型注册表中注册的。
 
@@ -80,7 +80,7 @@ ms.locfileid: "98943522"
 
 根据要回答的问题选择用于试验的机器学习模型类型。 `fareAmount` 是目标列而且是数值，因此建议在此处选择“回归”。 然后选择“继续”。 
 
-![“使用新模型进行扩充”的屏幕截图，其中突出显示了“回归”。](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00b.png)
+![“训练新模型”的屏幕截图，其中突出显示了“回归”。](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00b.png)
 
 ## <a name="additional-configurations"></a>其他配置
 
@@ -114,7 +114,7 @@ ms.locfileid: "98943522"
 ![笔记本的屏幕截图，其中突出显示了“全部运行”。](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00e.png)
 
 成功提交运行后，你将在笔记本输出中看到一个链接，它指向 Azure 机器学习工作区中的试验运行。 选择该链接可监视 Azure 机器学习中的自动化运行。
-![Azure Synapse Analytics 的屏幕截图，其中突出显示了链接。](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00f.png)）
+![Azure Synapse Analytics 的屏幕截图，其中突出显示了一个链接。](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00f.png)
 
 ## <a name="next-steps"></a>后续步骤
 

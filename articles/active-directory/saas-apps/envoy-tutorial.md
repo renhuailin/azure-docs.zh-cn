@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/01/2021
+ms.date: 06/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 643ab787e07cdb1f3a61d1028838a2fc68a169f2
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3342198600c3549a7ce5e1e52111233d4fa920d8
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147978"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113110164"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-envoy"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Envoy 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "108147978"
 * 让用户使用其 Azure AD 帐户自动登录到 Envoy。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -78,7 +78,7 @@ ms.locfileid: "108147978"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值：
+1. 在“基本 SAML 配置”  部分中，执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://app.envoy.com/a/saml/auth/<company-ID-from-Envoy>`
 
@@ -105,7 +105,7 @@ ms.locfileid: "108147978"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -127,27 +127,19 @@ ms.locfileid: "108147978"
 
     ![我的应用扩展](common/install-myappssecure-extension.png)
 
-2. 将该扩展添加到浏览器后，单击“设置 Envoy”定向到 Envoy 应用程序。 在此处提供管理员凭据以登录到 Envoy。 浏览器扩展会自动配置应用程序，并自动执行第 3-7 步。
+2. 将该扩展添加到浏览器后，单击“设置 Envoy”定向到 Envoy 应用程序。 在此处提供管理员凭据以登录到 Envoy。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-5。
 
     ![设置配置](common/setup-sso.png)
 
-3. 若要手动设置 Envoy，请打开新的 Web 浏览器窗口，以管理员身份登录到 Envoy 公司站点，并执行以下步骤：
+3. 若要手动设置 Envoy，请打开新的 Web 浏览器窗口，以管理员身份登录到 Envoy 公司站点，并执行以下步骤。
 
-4. 在顶部工具栏中，单击“设置”。 
+4. 转到“集成” > “所有集成”，然后在“单一登录”下单击“安装” SAML。
 
-    ![Envoy](./media/envoy-tutorial/envoy-1.png "Envoy")
+    ![SAML 身份验证](./media/envoy-tutorial/integrations.png "SAML 身份验证")
 
-5. 单击“公司”。 
+5. 导航到“启用集成”部分，然后执行以下步骤：
 
-    ![Company](./media/envoy-tutorial/envoy-2.png "Company")
-
-6. 单击“SAML”。 
-
-    ![SAML](./media/envoy-tutorial/envoy-3.png "SAML")
-
-7. 在“SAML 身份验证”配置部分中，执行以下步骤：
-
-    ![SAML 身份验证](./media/envoy-tutorial/envoy-4.png "SAML 身份验证")
+    ![单一登录](./media/envoy-tutorial/configuration.png "单一登录")
     
     >[!NOTE]
     >HQ 位置 ID 的值是应用程序自动生成的。
@@ -156,7 +148,7 @@ ms.locfileid: "108147978"
     
     b. 在“标识提供者 HTTP SAML URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
     
-    c. 单击“保存更改”。 
+    c. 单击“ **保存**”。
 
 ### <a name="create-envoy-test-user"></a>创建 Envoy 测试用户
 

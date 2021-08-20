@@ -1,23 +1,25 @@
 ---
-title: 快速入门：在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 SAML 的单一登录 (SSO)
+title: 快速入门：为应用程序设置基于 SAML 的单一登录
+titleSuffix: Azure AD
 description: 本快速入门逐步介绍在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 SAML 的单一登录 (SSO) 的过程。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/01/2020
-ms.author: mtillman
-ms.openlocfilehash: 81a1d2eeeb1b82c488598bc081453193e360d6d5
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 07/23/2020
+ms.author: davidmu
+ms.reviewer: ergleenl
+ms.openlocfilehash: cded1a874c48cab43e24a19acc6707aa8de7d1e7
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077512"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114669396"
 ---
-# <a name="quickstart-set-up-saml-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入门：在 Azure Active Directory (Azure AD) 租户中为应用程序设置基于 SAML 的单一登录 (SSO)
+# <a name="quickstart-set-up-saml-based-single-sign-on-for-an-application"></a>快速入门：为应用程序设置基于 SAML 的单一登录
 
 通过为添加到 Azure Active Directory (Azure AD) 租户的应用程序设置单一登录 (SSO)，开始简化用户登录。 设置 SSO 后，用户可以使用其 Azure AD 凭据登录到应用程序。 SSO 在 Azure AD 免费版中提供。
 
@@ -32,7 +34,6 @@ ms.locfileid: "112077512"
 - 可选：完成[添加应用](add-application-portal.md)。
 - 可选：完成[配置应用](add-application-portal-configure.md)。
 - 可选：完成[将用户分配到应用](add-application-portal-assign-users.md)。
-
 
 >[!IMPORTANT]
 >使用非生产环境测试本快速入门中的步骤。
@@ -49,8 +50,6 @@ ms.locfileid: "112077512"
     > [!IMPORTANT]
     > 如果应用使用 OpenID Connect (OIDC) 标准来实现 SSO，则导航中不会显示单一登录选项。 请参阅基于 OIDC 的 SSO 快速入门，了解如何进行设置。
 
-    :::image type="content" source="media/add-application-portal-setup-sso/configure-sso.png" alt-text="屏幕截图显示 Azure AD 门户中的“单一登录配置”页。":::
-
 1. 选择“SAML”以打开“SSO 配置”页。 在此示例中，我们配置进行 SSO 的应用程序是 GitHub。 设置 GitHub 后，用户可以使用 Azure AD 租户中自己的凭据登录 GitHub。
 
     :::image type="content" source="media/add-application-portal-setup-sso/github-sso.png" alt-text="屏幕截图显示 GitHub 上的“单一登录配置”页。":::
@@ -60,11 +59,8 @@ ms.locfileid: "112077512"
     > [!TIP]
     > 若要详细了解 SAML 配置选项，请参阅[配置基于 SAML 的单一登录](configure-saml-single-sign-on.md)。
 
-    :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="屏幕截图显示 GitHub 定价页面的企业订阅中的“单一登录”选项。":::
-
 > [!TIP]
 > 可使用 Graph API 自动管理应用，具体请参阅[使用 Microsoft Graph API 自动管理应用](/graph/application-saml-sso-configure-api)。
-
 
 ## <a name="clean-up-resources"></a>清理资源
 
