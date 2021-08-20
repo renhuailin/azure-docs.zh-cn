@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/28/2020
+ms.date: 07/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 4ad66b5a5116e650983dd72ffe4875d89c390ced
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 5e4091138f51fdd5af4052895cdb75c2390f7ce5
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110540516"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459724"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教程：为 Workplace by Facebook 配置自动用户预配
 
@@ -167,10 +167,13 @@ ms.locfileid: "110540516"
 
 ## <a name="troubleshooting-tips"></a>故障排除提示
 *  如果看到未成功创建用户，并且存在代码为“1789003”的审核日志事件，则表示用户来自未经验证的域。
+*  在某些情况下，用户会收到错误“错误: 缺少电子邮件字段: 必须提供 Facebook 返回的电子邮件错误: 处理 HTTP 请求时发生异常。 有关详细信息，请参阅此异常情况的“Response”属性返回的 HTTP 响应。 此操作已重试 0 次。 操作将在此日期后重试”。 此错误是因为客户将 mail（而不是 userPrincipalName）映射到 Facebook 电子邮件，但某些用户不具有 mail 属性。 要避免这些错误，并成功将失败的用户预配到 Facebook 中的工作区，请将映射到该工作区的属性从 Facebook 电子邮件属性修改到 Coalesce ([mail],[userPrincipalName]) 或取消从 Facebook 的工作区中分配用户，或预配用户的电子邮件地址。  
+
 
 ## <a name="change-log"></a>更改日志
 
 * 2020/09/10 - 添加了对企业属性“division”、“organization”、“costCenter”和“employeeNumber”的支持。 添加了对自定义属性“startDate”、“auth_method”和“frontline”的支持
+* 2021/07/22 - 更新了向客户提供的故障排除提示，即将 mail 映射到 Facebook 邮件，但某些用户不具有 mail 属性
 
 ## <a name="additional-resources"></a>其他资源
 

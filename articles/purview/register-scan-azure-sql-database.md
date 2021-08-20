@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 06/08/2021
-ms.openlocfilehash: da265e1be47a7ee1a98f6e8169f2531110b5c772
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: f4fa21c99a17111b1045b66713490b86592e04bf
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756592"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114467109"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>注册并扫描 Azure SQL 数据库
 
@@ -120,7 +120,14 @@ Purview 可以通过几个步骤使用服务主体或自己的托管标识来扫
 
 ### <a name="firewall-settings"></a>防火墙设置
 
-数据库服务器必须允许启用 Azure 连接。 这将允许 Azure Purview 访问和连接服务器。 可遵循 [Azure 内部连接](../azure-sql/database/firewall-configure.md#connections-from-inside-azure)的操作指南。
+如果数据库服务器上启用了防火墙，则需要更新防火墙，允许通过以下两种方式之一进行访问：
+
+1. 允许通过防火墙进行 Azure 连接。
+1. 安装自承载集成运行时并允许它通过防火墙进行访问。
+
+#### <a name="allow-azure-connections"></a>允许 Azure 连接
+
+启用 Azure 连接将允许 Azure Pureview 访问和连接服务器，而无需更新防火墙本身。 可遵循 [Azure 内部连接](../azure-sql/database/firewall-configure.md#connections-from-inside-azure)的操作指南。
 
 1. 导航到数据库帐户
 1. 在“概述”页上选择服务器名称
@@ -128,9 +135,14 @@ Purview 可以通过几个步骤使用服务主体或自己的托管标识来扫
 1. 对于“允许 Azure 服务和资源访问此服务器”，选择“是” 
 
     :::image type="content" source="media/register-scan-azure-sql-database/sql-firewall.png" alt-text="允许 Azure 服务和资源访问此服务器。" border="true":::
-    
-> [!Note]
-> 当前，Azure Purview 不支持 VNET 配置。 因此，不能执行基于 IP 的防火墙设置。
+
+#### <a name="self-hosted-integration-runtime"></a>自承载集成运行时
+
+可在计算机上安装自承载集成运行 (SHIR)，以连接到专用网络中的资源。
+
+1. 在个人计算机或与数据库服务器相同的 VNet 中的计算机上[创建并安装自承载集成运行时](/azure/purview/manage-integration-runtimes)。
+1. 检查数据库服务器防火墙，确认 SHIR 计算机是否可通过防火墙进行访问。 如果计算机没有访问权限，请添加该计算机的 IP。
+1. 如果 Azure SQL Server 位于专用终结点后面或 VNet 中，则可使用[引入专用终结点](catalog-private-link.md#ingestion-private-endpoints-and-scanning-sources)来确保端到端网络隔离。
 
 ## <a name="register-an-azure-sql-database-data-source"></a>注册 Azure SQL 数据库数据源
 

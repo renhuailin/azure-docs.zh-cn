@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 03/05/2021
+ms.date: 07/22/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 3359152455df2701d897689a1f177bf63051b94b
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: b87af97dd99fa88dc5aaa0cd5bdd8a2a23032104
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440711"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690417"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>开始使用 Azure Data Box 将数据导入 Azure
 
@@ -47,10 +47,10 @@ ms.locfileid: "102440711"
 - 查看 [Data Box 的安全指南](data-box-safety.md)。
 - 你有一台主机，其中的数据需复制到 Data Box。 该主机必须
     - 运行[支持的操作系统](data-box-system-requirements.md)。
-    - 连接到高速网络。 强烈建议你至少建立一个 10 GbE 连接。 如果 10 GbE 连接不可用，则可使用 1 GbE 数据链路，但复制速度会受影响。 
+    - 连接到高速网络。 强烈建议你至少建立一个 10-GbE 连接。 如果 10-GbE 连接不可用，则可使用 1-GbE 数据链路，但复制速度会受影响。 
 - 必须找到一个可以放置 Data Box 的平面。 如需将设备置于标准的机架上，则需要数据中心机架中的一个 7U 槽。 可以将设备平放或直放在机架中。
 - 你已经采购了以下电缆，用于将 Data Box 连接到主机。
-    - 两根 10 GbE SFP+ Twinax 铜线（用于 DATA 1、DATA 2 网络接口）
+    - 两根 10-GbE SFP+ Twinax 铜线（用于 DATA 1、DATA 2 网络接口）
     - 一根 RJ-45 CAT 6 网线（用于 MGMT 网络接口）
     - 一根 RJ-45 CAT 6A 网线或一根 RJ-45 CAT 6 网线（用于 DATA 3 网络接口，分别配置为 10 Gbps 或 1 Gbps）
 
@@ -102,9 +102,9 @@ ms.locfileid: "102440711"
 2. 进行设备布线时，请确保有以下电缆：
     
     - （已包括）接地电源线，规格为 10 安或更高，一端有 IEC60320 C-13 连接器，用于连接到设备。
-    - 一根 RJ-45 CAT 6 网线（用于 MGMT 网络接口）
-    - 两根 10 GbE SFP+ Twinax 铜线（用于 10 Gbps DATA 1、DATA 2 网络接口）
-    - 一根 RJ-45 CAT 6A 网线或一根 RJ-45 CAT 6 网线（用于 DATA 3 网络接口，分别配置为 10 Gbps 或 1 Gbps）
+    - （不包括）一根 RJ-45 CAT 6 网线（用于 MGMT 网络接口）
+    - （不包括）两根 10 GbE SFP+ Twinax 铜线（用于 10 Gbps DATA 1、DATA 2 网络接口）
+    - （不包括）一根 RJ-45 CAT 6A 网线或一根 RJ-45 CAT 6 网线（用于 DATA 3 网络接口，分别配置为 10 Gbps 或 1 Gbps）
 
 3. 在平面上移除和放置设备。 
     

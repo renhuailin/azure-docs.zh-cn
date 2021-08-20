@@ -4,12 +4,12 @@ description: 本教程介绍在更新同一注册表中的基础映像时，如�
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 6d83fb7796cecab686d52d561266bd41daef9e01
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 18716171b72fd266fda1aff06b67850159627b34
+ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780796"
+ms.lasthandoff: 06/27/2021
+ms.locfileid: "112983655"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>教程：在 Azure 容器注册表中更新基础映像时自动化容器映像生成 
 
@@ -222,7 +222,11 @@ docker stop updatedapp
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，我们已了解在更新映像的基础映像后，如何使用任务来自动触发容器映像生成。 现在，请转到下一个教程学习如何按照定义的计划触发任务。
+在本教程中，我们已了解在更新映像的基础映像后，如何使用任务来自动触发容器映像生成。
+
+有关管理源自公共源的基础映像的完整工作流，请参阅[如何通过 Azure 容器注册表任务使用和维护公共内容](tasks-consume-public-content.md)。 
+
+现在，请转到下一个教程学习如何按照定义的计划触发任务。
 
 > [!div class="nextstepaction"]
 > [按计划运行任务](container-registry-tasks-scheduled.md)

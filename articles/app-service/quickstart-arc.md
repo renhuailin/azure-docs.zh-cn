@@ -3,12 +3,12 @@ title: 快速入门：在 Azure Arc 上创建 Web 应用
 description: 开始使用 Azure Arc 上的应用服务部署第一个 Web 应用。
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: b9292af90c50712ef99496ce6078c4c34b5e5d01
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 4002ef3d66eaae05881da0dd8d95cc82ffeb916d
+ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984871"
+ms.lasthandoff: 06/19/2021
+ms.locfileid: "112377001"
 ---
 # <a name="create-an-app-service-app-on-azure-arc-preview"></a>在 Azure Arc 上创建应用服务应用（预览版）
 
@@ -49,7 +49,7 @@ az appservice plan create -g myResourceGroup -n myPlan \
 
 ```azurecli-interactive
  az webapp create \
-    --plan myPlan
+    --plan myPlan \
     --resource-group myResourceGroup \
     --name <app-name> \
     --custom-location $customLocationId \
@@ -75,7 +75,7 @@ az webapp deployment source config-zip --resource-group myResourceGroup --name <
 > [!NOTE]
 > 若要使用 Log Analytics，应在之前[安装应用服务扩展](manage-create-arc-environment.md#install-the-app-service-extension)时启用它。 如果安装的扩展没有 Log Analytics，请跳过此步骤。
 
-导航到[使用应用服务扩展配置的 Log Analytics 工作区](manage-create-arc-environment.md#install-the-app-service-extension)，然后单击左侧导航栏中的“日志”。 运行以下示例查询以显示过去 72 小时的日志。 将 `<app-name>` 替换为你的 Web 应用名称。 
+导航到[使用应用服务扩展配置的 Log Analytics 工作区](manage-create-arc-environment.md#install-the-app-service-extension)，然后单击左侧导航栏中的“日志”。 运行以下示例查询以显示过去 72 小时的日志。 将 `<app-name>` 替换为你的 Web 应用名称。 如果运行查询时出错，请在 10-15 分钟内重试（Log Analytics 开始从应用程序接收日志前可能会有延迟）。 
 
 ```kusto
 let StartTime = ago(72h);
@@ -98,7 +98,8 @@ Log_s 包含给定应用服务的应用程序日志，AppName_s 包含应用服�
 例如，尝试以下操作：
 
 ```azurecli-interactive
-az webapp create 
+az webapp create \
+    --plan myPlan \
     --resource-group myResourceGroup \
     --name <app-name> \
     --custom-location $customLocationId \

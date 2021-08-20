@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 3dbb6ca64451cb60d5a8ec67ecdc528865a4438c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff3486ae1ff34485dbae47d33d089367515664f8
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719077"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964295"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>教程：部署和演练智能库存管理应用程序模板
 
@@ -57,7 +57,7 @@ ms.locfileid: "101719077"
 仪表板在逻辑上区分两个不同的网关设备管理操作， 
    * 仓库在托盘上部署了固定的 BLE 网关和 BLE 标记，以在大型设备上监测和跟踪库存
    * 零售商店通过在每个商品级别使用固定的 RFID 网关和 RFID 标签来实现监测和跟踪商店中的库存
-   * 查看网关的位置、状态和相关详细信息 
+   * 查看网关的[位置](../core/howto-use-location-data.md)、状态和相关详细信息 
 
 > [!div class="mx-imgBorder"]
 > ![显示智能库存管理仪表板的上半部分的屏幕截图](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard1.png)

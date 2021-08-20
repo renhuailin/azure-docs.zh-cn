@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: 2695b34745ff02d55f18cebbe87a468f807ca77a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d94b3e56b3b8f70a03b6a3872b085e450043ab70
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831682"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113585944"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>教程：从 Azure IoT Central 导出数据，并在 Power BI 中可视化见解
 
@@ -33,7 +33,7 @@ ms.locfileid: "99831682"
 
 要完成本教程，需要：
 
-* 若要完成之前的两个教程，请[在 Azure IoT Central 中创建店内分析应用程序](./tutorial-in-store-analytics-create-app.md)并[在 Azure IoT Central 中自定义操作员仪表板和管理设备](./tutorial-in-store-analytics-customize-dashboard.md)。
+* 若要完成之前的两个教程，请[在 Azure IoT Central 中创建店内分析应用程序](./tutorial-in-store-analytics-create-app.md)并[在 Azure IoT Central 中自定义仪表板和管理设备](./tutorial-in-store-analytics-customize-dashboard.md)。
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 一个 Power BI 帐户。 如果没有 Power BI 帐户，请在开始之前注册 [Power BI Pro 免费试用版](https://app.powerbi.com/signupredirect?pbi_source=web)。
 

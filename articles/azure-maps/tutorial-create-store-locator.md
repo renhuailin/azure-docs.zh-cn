@@ -1,24 +1,24 @@
 ---
-title: 教程：使用 Azure Maps 创建店铺定位器应用程序 | Microsoft Azure Maps
-description: 有关如何创建店铺定位器 Web 应用程序的教程。 使用 Azure Maps Web SDK 创建网页、查询搜索服务并在地图上显示结果。
+title: 教程：使用 Microsoft Azure Maps 创建店铺定位器 Web 应用程序
+description: 有关如何使用 Microsoft Azure Maps 创建店铺定位器 Web 应用程序的教程。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/11/2020
+ms.date: 06/07/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
+manager: philmea
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: bc7e58dcf2ed9c8897ec5a425415451e1083ed44
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 0830bb35befbd2c841eb10c4e94a8ef64f2bf019
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326572"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111757357"
 ---
-# <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教程：使用 Azure Maps 创建店铺定位器
+# <a name="tutorial-use-azure-maps-to-create-a-store-locator"></a>教程：使用 Azure Maps 创建店铺定位器
 
-本教程引导你完成使用 Azure Maps 创建简单店铺定位器的过程。 店铺定位器的使用非常普遍。 此类应用程序中使用的许多概念同样适用于许多其他类型的应用程序。 大多数直销型的商家必须能够向客户提供店铺定位器。 在本教程中，你将了解如何执行以下操作：
+本教程引导你完成使用 Azure Maps 创建简单店铺定位器的过程。 本教程介绍以下操作：
 
 > [!div class="checklist"]
 > * 使用 Azure Map 控件 API 创建新网页。
@@ -31,81 +31,143 @@ ms.locfileid: "108326572"
 
 <a id="Intro"></a>
 
-跳转到[现场店铺定位器示例](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator)或[源代码](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)。
-
 ## <a name="prerequisites"></a>先决条件
 
 1. [在第一代 (S1) 或第二代定价层中创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)。
 2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
 
-有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
+有关 Azure Maps 身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
-## <a name="design"></a>设计
+本教程使用 [Visual Studio Code](https://code.visualstudio.com/) 应用程序，但你也可以选择其他编码环境。
 
-在跳转到代码之前，最好是从某个设计开始。 店铺定位器可以十分简单，也可以非常复杂，具体视需求而定。 在本教程中，我们将创建一个简单的店铺定位器。 在整个过程中，我们会提供一些提示，以帮助你根据需要扩展某些功能。 我们将为一家名为 Contoso Coffee 的虚构公司创建店铺定位器。 下图显示了本教程中要生成的店铺定位器的常规布局框图：
+## <a name="sample-code"></a>代码示例
 
-![Contoso Coffee 店铺位置的店铺定位器应用程序框图](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)
+在本教程中，我们将为一家名为 Contoso Coffee 的虚构公司创建店铺定位器。 此外，本教程还包括了一些提示，可帮助你了解如何通过其他可选功能来扩展店铺定位器。
+
+你可以查看[此处的实时店铺定位器示例](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator)。
+
+为了更轻松地按照本教程内容执行操作，你需要下载以下资源：
+
+* [简单店铺定位器示例的完整源代码](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
+* [要导入到店铺定位器数据集的店铺位置数据](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)
+* [地图图像](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/images)
+
+## <a name="store-locator-features"></a>店铺定位器功能
+
+本部分列出了 Contoso Coffee 店铺定位器应用程序支持的功能。
+
+### <a name="user-interface-features"></a>用户界面功能
+
+* 标头上的店铺徽标
+* 地图支持平移和缩放
+* 用于搜索用户当前位置的“我的位置”按钮。
+* 页面布局根据设备屏幕的宽度进行调整
+* 搜索框和搜索按钮
+
+### <a name="functionality-features"></a>功能
+
+* 将 `keypress` 事件添加到搜索框后，当用户按 Enter时，就会触发搜索。
+* 移动地图时，将会计算每个位置与地图中心之间的距离。 结果列表将会更新，以便在地图顶部显示最靠近的位置。  
+* 当用户在结果列表中选择某个结果时，地图将以所选位置作为中心点，有关该位置的信息将显示在弹出窗口中。  
+* 当用户选择特定位置时，地图会触发弹出窗口。
+* 当用户缩小地图时，位置将组合成聚集。 每个聚集由包含一个数字的一个圆表示。 当用户更改缩放级别时，聚集会相应地合并与分离。
+* 选择一个聚集会将地图放大两个级别，中心点位于聚集所在位置。
+
+## <a name="store-locator-design"></a>店铺定位器设计
+
+下图显示了店铺定位器的常规布局框图。 可在[此处](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator)查看实时框图。
+
+:::image type="content" source="./media/tutorial-create-store-locator/store-locator-wireframe.png" alt-text="Contoso Coffee 店铺定位器应用程序框图。":::
 
 为了最大程度地利用此店铺定位器，我们包含了一种响应式布局，当用户的屏幕宽度小于 700 像素时，该布局可以调整。 在移动设备等的小型屏幕上，响应式布局可让我们轻松使用店铺定位器。 下面是小屏幕布局的框图：  
 
-![移动设备上的 Contoso Coffee 店铺定位器应用程序框图](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</
-
-框图中显示了一个相当简洁的应用程序。 该应用程序包含一个搜索框、附近店铺的列表，以及包含一些标记（例如符号）的地图。 此外，它还包含一个弹出窗口，当用户选择某个标记时，该窗口会显示附加信息。 下面是我们要在本教程所述的店铺定位器中生成的功能的更多详细信息：
-
-* 将所导入的制表符分隔数据文件中的所有位置加载到地图上。
-* 用户可以平移和缩放地图、执行搜索，以及选择“我的位置”GPS 按钮。
-* 页面布局根据设备屏幕的宽度进行调整。  
-* 标题显示店铺徽标。  
-* 用户可以使用搜索框和搜索按钮来搜索位置，例如地址、邮政编码或城市。 
-* 将 `keypress` 事件添加到搜索框后，如果用户按 Enter，则会触发搜索。 此功能很容易被忽略，但可以创建更好的用户体验。
-* 移动地图时，将会计算每个位置与地图中心之间的距离。 结果列表将会更新，以便在地图顶部显示最靠近的位置。  
-* 在结果列表中选择某个结果时，地图将以所选位置作为中心点，有关该位置的信息将显示在弹出窗口中。  
-* 在地图上选择特定的位置也会触发弹出窗口。
-* 当用户缩小地图时，位置将组合成聚集。 聚集由包含数字的圆表示。 当用户更改缩放级别时，聚集会相应地合并与分离。
-* 选择一个聚集会将地图放大两个级别，中心点位于聚集所在位置。
+:::image type="content" source="./media/tutorial-create-store-locator/store-locator-wireframe-mobile.png" alt-text="移动设备上的 Contoso Coffee 店铺定位器应用程序框图。":::
 
 <a id="create a data-set"></a>
 
 ## <a name="create-the-store-location-dataset"></a>创建店铺位置数据集
 
-在开发店铺定位器应用程序之前，需要创建要在地图上显示的店铺的数据集。 在本教程中，我们将使用一家名为 Contoso Coffee 的虚构咖啡厅的数据集。 此简单店铺定位器的数据集在 Excel 工作簿中进行管理。 该数据集包含分布在 9 个国家/地区的 10,213 家 Contoso Coffee 咖啡厅位置：美国、加拿大、英国、法国、德国、意大利、荷兰、丹麦和西班牙。 下面是数据外观的屏幕截图：
+本部分介绍如何创建要在地图上显示的店铺的数据集。 Contoso Coffee 定位器的数据集是在 Excel 工作簿中创建的。 该数据集包含分布在 9 个国家或地区的 10,213 家 Contoso Coffee 咖啡厅位置：美国、加拿大、英国、法国、德国、意大利、荷兰、丹麦和西班牙。 下面是数据外观的屏幕截图：
 
-![Excel 工作簿中店铺定位器数据的屏幕截图](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)
+:::image type="content" source="./media/tutorial-create-store-locator/store-locator-data-spreadsheet.png" alt-text="Excel 工作簿中店铺定位器数据的屏幕截图。":::
 
-可以[下载该 Excel 工作簿](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)。
+若要查看完整数据集，请在[此处下载 Excel 工作簿](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)。
 
 在数据屏幕截图中，我们可以发现：
 
 * 位置信息是使用 **AddressLine**、**City**、**Municipality**（国家）、**AdminDivision**（州/省）、**PostCode**（邮政编码）和 **Country** 列存储的。  
-* **Latitude** 和 **Longitude** 列包含每个 Contoso Coffee 咖啡厅位置的坐标。 如果没有坐标信息，可以使用 Azure Maps 中的搜索服务来确定位置坐标。
-* 某些附加列包含咖啡厅相关的元数据：电话号码、布尔值列，以及营业和停业时间（24 小时格式）。 布尔值列指示是否提供 Wi-Fi 和轮椅通道。 你可以创建自己的列来包含与位置数据更相关的元数据。
+* Latitude 和 Longitude 列包含每个 Contoso Coffee 位置的坐标。 如果没有坐标信息，可以使用 Azure Maps 中的搜索服务来确定位置坐标。
+* 其他一些列包含咖啡厅相关的元数据：电话号码、布尔值列，以及营业和停业时间（24 小时格式）。 布尔值列指示是否提供 Wi-Fi 和轮椅通道。 你可以创建自己的列来包含与位置数据更相关的元数据。
 
 > [!NOTE]
 > Azure Maps 在球面 Mercator 投影“EPSG:3857”中呈现数据，但在使用 WGS84 数据的“EPSG:4326”中读取数据。
 
-可通过多种方法向应用程序公开数据集。 其中一种方法是将数据载入数据库并公开查询数据的 Web 服务。 然后可将结果发送到用户的浏览器。 这种做法非常适合大型数据集或经常更新的数据集。 但是，这种做法会增加开发工作量，并且成本较高。
+## <a name="load-the-store-location-dataset"></a>加载店铺位置数据集
 
-另一种方法是将此数据集转换成浏览器可轻松分析的平面文本文件。 该文件本身可与应用程序的剩余部分托管在一起。 这种做法能够简化开发，但只适合小型数据集，因为用户需要下载所有数据。 由于数据文件大小小于 1 MB，因此我们对此数据集使用了平面文本文件。  
+ Contoso Coffee 店铺定位器数据集很小，因此，我们将 Excel 工作表转换为制表符分隔的文本文件。 然后在应用程序加载时，浏览器可以下载此文件。
 
-若要将工作簿转换为平面文本文件，请将工作簿另存为制表符分隔的文件。 每个列由制表符分隔，因此可以方便地在代码中分析列。 可以使用逗号分隔值 (CSV) 格式，但这样做需要其他分析逻辑。 将两边带有逗号的任何字段括在引号中。 若要在 Excel 中以制表符分隔文件的格式导出此数据，请选择“另存为”。 在“保存类型”下拉列表中，选择“文本(制表符分隔)(*.txt)”。  将文件命名为 *ContosoCoffee.txt*。
+ >[!TIP]
+>如果数据集过大，无法在客户端下载，或者频繁更新，则可以考虑在数据库中存储数据集。 将数据加载到数据库后，可以设置一个 Web 服务，用于接受数据查询并将结果发送到用户的浏览器。
 
-![“另存为类型”对话框的屏幕截图](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)
+### <a name="convert-data-to-tab-delimited-text-file"></a>将数据转换为制表符分隔的文本文件
 
-如果在记事本中打开该文本文件，其外观如下图所示：
+若要将 Contoso Coffee 店铺位置数据从 Excel 工作簿转换为平面文本文件，请执行以下操作：
 
-![演示制表符分隔数据集的记事本文件的屏幕截图](./media/tutorial-create-store-locator/StoreDataTabFile.png)
+1. [下载该 Excel 工作簿](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)。
+
+2. 将工作簿保存到硬盘驱动器。
+
+3. 加载 Excel 应用。
+
+4. 打开下载的工作簿。
+
+5. 选择“另存为”。
+
+6. 在“保存类型”下拉列表中，选择“文本(制表符分隔)(*.txt)”。  
+
+7. 将文件命名为 ContosoCoffee。
+
+:::image type="content" source="./media/tutorial-create-store-locator/data-delimited-text.png" alt-text="“另存为类型”对话框的屏幕截图。":::
+
+如果在记事本中打开该文本文件，其外观类似于以下文本：
+
+:::image type="content" source="./media/tutorial-create-store-locator/data-delimited-file.png" alt-text="演示制表符分隔数据集的记事本文件的屏幕截图。":::
 
 ## <a name="set-up-the-project"></a>设置项目
 
-若要创建项目，可以使用 [Visual Studio](https://visualstudio.microsoft.com) 或所选的代码编辑器。 在项目文件夹中创建三个文件：*index.html*、*index.css* 和 *index.js*。 这些文件定义应用程序的布局、样式和逻辑。 创建名为 *data* 的文件夹并将 *ContosoCoffee.txt* 添加到其中。 创建名为 *images* 的另一个文件夹。 我们将在此应用程序中使用 10 张图像作为地图上的图标、按钮和标记。 可以[下载这些图像](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)。 现在，项目文件夹应如下图所示：
+1. 打开 Visual Studio Code 应用。
 
-![简单店铺定位器项目文件夹的屏幕截图](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
+2. 选择“文件”，然后选择“打开工作区...” 。
 
-## <a name="create-the-user-interface"></a>创建用户界面
+3. 创建一个新文件夹并将其命名为“ContosoCoffee”。
 
-若要创建用户界面，请将代码添加到 *index.html*：
+4. 在资源管理器中选择“CONTOSOCOFFEE”。
 
-1. 将以下 `meta` 标记添加到 *index.html* 的 `head`。 `charset` 标记定义字符集 (UTF-8)。 `http-equiv` 的值告知 Internet Explorer 和 Microsoft Edge 要使用最新的浏览器版本。 最后一个 `meta` 标记指定适用于响应式布局的视区。
+5. 创建以下三个文件，用于定义应用程序的布局、样式和逻辑：
+
+    * index.html 
+    * *index.css*
+    * *index.js*
+
+6. 创建名为 data 的文件夹。
+
+7. 将 ContosoCoffee.txt 添加到 data 文件夹中。
+
+8. 创建名为 *images* 的另一个文件夹。
+
+9. 如果尚未下载图像，请[下载这 10 个图像](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/images)。
+
+10. 将下载的图像添加到 images 文件夹中。
+
+    现在，你的工作区文件夹应如以下屏幕截图所示：
+
+    :::image type="content" source="./media/tutorial-create-store-locator/store-locator-workspace.png" alt-text="简单店铺定位器工作区文件夹的屏幕截图。":::
+
+## <a name="create-the-html"></a>创建 HTML
+
+若要创建 HTML，请执行以下操作：
+
+1. 将以下 `meta` 标记添加到 index.html 的 `head`：
 
     ```HTML
     <meta charset="utf-8">
@@ -113,27 +175,27 @@ ms.locfileid: "108326572"
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     ```
 
-1. 添加对 Azure Maps Web 控件 JavaScript 和 CSS 文件的引用：
+2. 添加对 Azure Maps Web 控件 JavaScript 和 CSS 文件的引用：
 
     ```HTML
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
-1. 添加对 Azure Maps 服务模块的引用。 该模块是一个 JavaScript 库，用于包装 Azure Maps REST 服务，并使其可在 JavaScript 中方便使用。 该模块可用于增强搜索功能。
+3. 添加对 Azure Maps 服务模块的引用。 该模块是一个 JavaScript 库，用于包装 Azure Maps REST 服务，并使其可在 JavaScript 中方便使用。 该模块可用于增强搜索功能。
 
     ```HTML
     <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
     ```
 
-1. 添加对 *index.js* 和 *index.css* 的引用：
+4. 添加对 index.js 和 index.css 的引用。
 
     ```HTML
     <link rel="stylesheet" href="index.css" type="text/css">
     <script src="index.js"></script>
     ```
 
-1. 在文档正文中添加 `header` 标记。 在 `header` 标记内部，添加徽标和公司名称。
+5. 在文档正文中添加 `header` 标记。 在 `header` 标记内部，添加徽标和公司名称。
 
     ```HTML
     <header>
@@ -142,7 +204,7 @@ ms.locfileid: "108326572"
     </header>
     ```
 
-1. 添加 `main` 标记，并创建一个包含文本框和搜索按钮的搜索面板。 此外，为地图、列表面板和“我的位置”GPS 按钮添加 `div` 引用。
+6. 添加 `main` 标记，并创建一个包含文本框和搜索按钮的搜索面板。 此外，为地图、列表面板和“我的位置”GPS 按钮添加 `div` 引用。
 
     ```HTML
     <main>
@@ -158,9 +220,18 @@ ms.locfileid: "108326572"
     </main>
     ```
 
-完成后，*index.html* 应类似于 [此示例 index.html 文件](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)。
+完成后，index.html 应类似于[此示例 index.html 文件](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)。
 
-下一步是定义 CSS 样式。 CSS 样式定义应用程序组件的布局和应用程序的外观。 打开 *index.css* 并在其中添加以下代码。 `@media` 样式定义当屏幕宽度小于 700 像素时要使用的备用样式选项。  
+## <a name="define-the-css-styles"></a>定义 CSS 样式
+
+下一步是定义 CSS 样式。 CSS 样式定义应用程序组件的布局和应用程序的外观。
+
+1. 打开 index.css。
+
+2. 添加以下 css 代码：
+
+    >[!NOTE]
+    > `@media` 样式定义当屏幕宽度小于 700 像素时要使用的备用样式选项。  
 
    ```CSS
     html, body {
@@ -168,7 +239,7 @@ ms.locfileid: "108326572"
         margin: 0;
         font-family: Gotham, Helvetica, sans-serif;
         overflow-x: hidden;
-    }
+    } 
 
     header {
         width: calc(100vw - 10px);
@@ -314,7 +385,7 @@ ms.locfileid: "108326572"
         margin-right: 5px;
     }
 
-    /* Adjust the layout of the page when the screen width is less than 700 pixels. */
+    /* Adjust the layout of the page when the screen width is fewer than 700 pixels. */
     @media screen and (max-width: 700px) {
         .searchPanel {
             width: 100vw;
@@ -365,13 +436,23 @@ ms.locfileid: "108326572"
     }
    ```
 
-现在运行应用程序，则会看到标题、搜索框和搜索按钮。 但看不到地图，因为它尚未加载。 如果尝试执行搜索，不会有任何反应。 我们需要设置下一部分所述的 JavaScript 逻辑。 此逻辑访问店铺定位器的所有功能。
+运行应用程序。 你会看到标题、搜索框和搜索按钮。 但看不到地图，因为它尚未加载。 如果尝试执行搜索，不会有任何反应。 我们需要设置下一部分所述的 JavaScript 逻辑。 此逻辑访问店铺定位器的所有功能。
 
-## <a name="wire-the-application-with-javascript"></a>使用 JavaScript 统合应用程序
+## <a name="add-javascript-code"></a>添加 JavaScript 代码
 
-现已完成用户界面中的所有设置。 我们仍需添加 JavaScript 来加载和分析数据，然后在地图上呈现数据。 若要开始，请打开 *index.js*，并按以下步骤中所述将代码添加到该文件。
+Contoso Coffee 店铺定位器应用中的 JavaScript 代码将启用以下过程：
 
-1. 添加全局选项，以便更轻松地更新设置。 为地图、弹出窗口、数据源、图标层和 HTML 标记定义变量。 将 HTML 标记设置为表示搜索区域的中心。 定义 Azure Maps 搜索服务客户端的实例。
+1. 添加名为 `ready` 的[事件侦听器](/javascript/api/azure-maps-control/atlas.map#events)，以等待页面完成加载过程。 页面加载完成后，事件处理程序将创建更多事件侦听器来监视地图的加载，并为搜索和“我的位置”按钮指定功能。
+
+2. 当用户选择搜索按钮时，或者在搜索框中键入位置后按 Enter 时，系统会针对用户的查询开始模糊搜索。 代码会将在国家/地区 ISO 2 值的数组传入 `countrySet` 选项中，以将搜索结果限制为这些国家/地区。 限制搜索的国家/地区有助于提高返回结果的准确性。
+  
+3. 完成搜索后，第一个位置结果将用作地图照相机的中心焦点。 当用户选择“我的位置”按钮时，代码使用内置于浏览器的 HTML5 地理位置 API 检索用户的位置。 检索位置后，代码会将用户的位置确定为地图的中心。  
+
+若要添加 JavaScript，请执行以下操作：
+
+1. 打开 *index.js*。
+
+2. 添加全局选项，以便更轻松地更新设置。 为地图、弹出窗口、数据源、图标层和 HTML 标记定义变量。 将 HTML 标记设置为表示搜索区域的中心。 定义 Azure Maps 搜索服务客户端的实例。
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -385,16 +466,13 @@ ms.locfileid: "108326572"
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. 将代码添加到 *index.js*。 以下代码初始化地图。 我们添加了一个[事件侦听器](/javascript/api/azure-maps-control/atlas.map#events)，以等待页面加载完成。 然后，我们统合了事件以监视地图加载，并赋予搜索按钮和“我的位置”按钮的功能。
-
-   当用户选择搜索按钮时，或者在搜索框中键入位置后按 Enter 时，系统会针对用户的查询启动模糊搜索。 在 `countrySet` 选项中传入国家/地区 ISO 2 值的数组可将搜索结果限制为这些国家/地区。 限制搜索的国家/地区有助于提高返回结果的准确性。 
-  
-   搜索完成后，请提取第一个结果，并在该区域上方设置地图相机。 当用户选择“我的位置”按钮时，请使用 HTML5 地理位置 API 检索用户的位置。 此 API 内置到浏览器中。 然后，将地图置于其位置中心。  
+3. 添加以下初始化代码。 确保将 `<Your Azure Maps Key>` 替换为主要订阅密钥。
 
    > [!Tip]
    > 使用弹出窗口时，最好是创建单个 `Popup` 实例，并通过更新该实例的内容和位置来重复使用它。 对于添加到代码中的每个 `Popup` 实例，会将多个 DOM 元素添加到页面。 页面上的 DOM 元素越多，浏览器要跟踪的信息就越多。 如果项数过多，浏览器可能会变慢。
 
     ```JavaScript
+
     function initialize() {
         //Initialize a map instance.
         map = new atlas.Map('myMap', {
@@ -500,7 +578,7 @@ ms.locfileid: "108326572"
     window.onload = initialize;
     ```
 
-1. 在地图的 `ready` 事件侦听器中，添加缩放控件和 HTML 标记以显示搜索区域的中心点。
+4. 在地图的 `ready` 事件侦听器中，添加缩放控件和 HTML 标记以显示搜索区域的中心点。
 
     ```JavaScript
     //Add a zoom control to the map.
@@ -517,7 +595,7 @@ ms.locfileid: "108326572"
     map.markers.add(centerMarker);
     ```
 
-1. 在地图的 `ready` 事件侦听器中添加一个数据源。 然后，发出调用来加载和分析数据集。 对数据源启用聚集。 数据源聚集可将重叠的点组合到一个聚集中。 当用户放大地图时，聚集将分离成单独的点。 此行为提供了更好的用户体验，并提高了性能。
+5. 在地图的 `ready` 事件侦听器中添加一个数据源。 然后，发出调用来加载和分析数据集。 对数据源启用聚集。 数据源聚集可将重叠的点组合到一个聚集中。 当用户放大地图时，聚集将分离成单独的点。 此行为提供了更好的用户体验，并提高了性能。
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -532,7 +610,7 @@ ms.locfileid: "108326572"
     loadStoreData();
     ```
 
-1. 在地图的 `ready` 事件侦听器中加载数据集后，定义层集来呈现数据。 气泡层用于呈现聚集数据点。 符号层用于呈现气泡层上方每个聚集中的点数。 另一个符号层在地图上呈现各个位置的自定义图标。
+6. 地图的 `ready` 事件侦听器中加载数据集后，请定义层集来呈现数据。 气泡层将呈现聚集数据点。 符号层将呈现气泡层上方每个聚集中的点数。 另一个符号层在地图上呈现各个位置的自定义图标。
 
    将 `mouseover` 和 `mouseout` 事件添加到气泡层和图标层，以便当用户将鼠标悬停在地图上的聚集或图标上时更改鼠标光标。 将 `click` 事件添加到聚集气泡层。 当用户选择任一聚集时，此 `click` 事件会将地图放大两个级别，并将地图中心点置于某个聚集上。 将 `click` 事件添加到图标层。 当用户选择单个位置图标时，此 `click` 事件会显示一个弹出窗口，其中显示了咖啡厅的详细信息。 将某个事件添加到地图，以监视地图何时完成移动。 激发此事件时，会更新列表面板中的项。  
 
@@ -617,7 +695,7 @@ ms.locfileid: "108326572"
     });
     ```
 
-1. 加载咖啡厅数据集后，必须先下载该数据集。 然后，必须将文本文件拆分为行。 第一行包含标题信息。 为了便于跟踪代码，我们将标题分析成某个对象，然后可以使用该对象来查找每个属性的单元索引。 在第一行后面，循环访问剩余行并创建一个点特征。 将该点特征添加到数据源。 最后，更新列表面板。
+7. 加载咖啡厅数据集后，必须先下载该数据集。 然后，必须将文本文件拆分为行。 第一行包含标题信息。 为了便于跟踪代码，我们将标题分析成某个对象，然后可以使用该对象来查找每个属性的单元索引。 在第一行后面，循环访问剩余行并创建一个点特征。 将该点特征添加到数据源。 最后，更新列表面板。
 
     ```JavaScript
     function loadStoreData() {
@@ -676,7 +754,7 @@ ms.locfileid: "108326572"
     }
     ```
 
-1. 更新列表面板时，会计算距离。 此距离是从地图中心点到当前地图视图中所有点特征的距离。 然后按距离将特征排序。 将生成 HTML 以在列表面板中显示每个位置。
+8. 更新列表面板时，会计算距离。 此距离是从地图中心点到当前地图视图中所有点特征的距离。 然后按距离将特征排序。 将生成 HTML 以在列表面板中显示每个位置。
 
     ```JavaScript
     var listItemTemplate = '<div class="listItem" onclick="itemSelected(\'{id}\')"><div class="listItem-title">{title}</div>{city}<br />Open until {closes}<br />{distance} miles away</div>';
@@ -814,7 +892,7 @@ ms.locfileid: "108326572"
     }
     ```
 
-1. 当用户在列表面板中选择某个项时，将从数据源中检索该项的相关形状。 根据形状中存储的属性信息生成弹出窗口。 地图的中心点置于该形状上。 如果地图的宽度小于 700 像素，则地图视图将会偏移，以显示弹出窗口。
+9. 当用户在列表面板中选择某个项时，将从数据源中检索该项的相关形状。 根据形状中存储的属性信息生成弹出窗口。 地图以该形状为中心。 如果地图的宽度小于 700 像素，则地图视图将会偏移，以显示弹出窗口。
 
     ```JavaScript
     //When a user selects a result in the side panel, look up the shape by its ID value and display the pop-up window.
@@ -827,7 +905,7 @@ ms.locfileid: "108326572"
         var center = shape.getCoordinates();
         var offset;
 
-        //If the map is less than 700 pixels wide, then the layout is set for small screens.
+        //If the map is fewer than 700 pixels wide, then the layout is set for small screens.
         if (map.getCanvas().width < 700) {
             //When the map is small, offset the center of the map relative to the shape so that there is room for the popup to appear.
             offset = [0, -80];
@@ -914,15 +992,15 @@ ms.locfileid: "108326572"
 
 当用户首次选择“我的位置”按钮时，浏览器会显示一条安全警告，要求提供访问用户位置的权限。 如果用户同意共享其位置，则地图将在用户位置放大，并显示附近的咖啡厅。
 
-![浏览器请求访问用户位置的屏幕截图](./media/tutorial-create-store-locator/GeolocationApiWarning.png)
+![浏览器请求访问用户位置的屏幕截图](./media/tutorial-create-store-locator/geolocation-api-warning.png)
 
 如果在包含咖啡厅位置的区域中将地图放到足够大，则聚集将分离成单独的位置。 在地图上选择某个图标或者在侧面板中选择一个项会显示一个弹出窗口。 此弹出窗口显示所选位置的信息。
 
-![成品店铺定位器的屏幕截图](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)
+![成品店铺定位器的屏幕截图](./media/tutorial-create-store-locator/finished-simple-store-locator.png)
 
 如果将浏览器窗口宽度调整为小于 700 像素或者在移动设备上打开该应用程序，则布局将会更改，更适合小屏幕。
 
-![店铺定位器小屏幕版本的屏幕截图](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)
+![店铺定位器小屏幕版本的屏幕截图](./media/tutorial-create-store-locator/finished-simple-store-locator-mobile.png)
 
 本教程介绍了如何使用 Azure Maps 创建基本的店铺定位器。 本教程中创建的店铺定位器可能包含你所需的所有功能。 可将功能添加到店铺定位器或使用其他高级功能，以提供更具个性的用户体验： 
 
@@ -934,7 +1012,7 @@ ms.locfileid: "108326572"
  * 将店铺定位器部署为 [Azure 应用服务 Web 应用](../app-service/quickstart-html.md)。 
  * 将数据存储在数据库中，并搜索附近的位置。 有关详细信息，请参阅 [SQL Server 空间数据类型概述](/sql/relational-databases/spatial/spatial-data-types-overview?preserve-view=true&view=sql-server-2017)和[查询最近的邻域的空间数据](/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?preserve-view=true&view=sql-server-2017)。
 
-你可以[查看完整源代码](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)、[查看实时示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)，并通过使用[缩放级别和磁贴网格](zoom-levels-and-tile-grid.md)来详细了解 Azure Maps 的覆盖范围和功能。 还可以[使用数据驱动的样式表达式](data-driven-style-expressions-web-sdk.md)（将应用于业务逻辑）。
+你可以[在此处查看完整源代码](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)。 [查看实时示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)并通过使用[缩放级别和磁贴网格](zoom-levels-and-tile-grid.md)来详细了解 Azure Maps 的覆盖范围和功能。 还可以[使用数据驱动的样式表达式](data-driven-style-expressions-web-sdk.md)（将应用于业务逻辑）。
 
 ## <a name="clean-up-resources"></a>清理资源
 

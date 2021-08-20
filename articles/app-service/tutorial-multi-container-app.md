@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: msangapu
 ms.custom: cli-validate, devx-track-azurecli
-ms.openlocfilehash: dee00c6f733cfbebf68276ee4b54f91b8e2cb35b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b9a3880c88224906e68054475233e8d8ce02476a
+ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765532"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112964961"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>教程：在用于容器的 Web 应用中创建多容器（预览版）应用
 
@@ -203,7 +203,7 @@ az mysql db create --resource-group myResourceGroup --server-name <mysql-server-
 
 ### <a name="configure-database-variables-in-wordpress"></a>在 WordPress 中配置数据库变量
 
-若要将 WordPress 应用连接到这个新的 MySQL 服务器，请配置几个特定于 WordPress 的环境变量，包括 `MYSQL_SSL_CA` 定义的 SSL CA 路径。 以下[自定义映像](#use-a-custom-image-for-mysql-ssl-and-other-configurations)中提供了来自 [DigiCert](https://www.digicert.com/) 的 [Baltimore 网络信任根证书](https://www.digicert.com/digicert-root-certificates.htm)。
+若要将 WordPress 应用连接到这个新的 MySQL 服务器，请配置几个特定于 WordPress 的环境变量，包括 `MYSQL_SSL_CA` 定义的 SSL CA 路径。 以下[自定义映像](#use-a-custom-image-for-mysql-tlsssl-and-other-configurations)中提供了来自 [DigiCert](https://www.digicert.com/) 的 [Baltimore 网络信任根证书](https://www.digicert.com/digicert-root-certificates.htm)。
 
 若要进行这些更改，请在 Cloud Shell 中使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令。 应用设置区分大小写，用空格分开。
 
@@ -245,9 +245,9 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app-na
 
 有关环境变量的详细信息，请参阅[配置环境变量](configure-custom-container.md#configure-environment-variables)。
 
-### <a name="use-a-custom-image-for-mysql-ssl-and-other-configurations"></a>对 MySQL SSL 和其他配置使用自定义映像
+### <a name="use-a-custom-image-for-mysql-tlsssl-and-other-configurations"></a>对 MySQL TLS/SSL 和其他配置使用自定义映像
 
-默认情况下，SSL 由 Azure Database for MySQL 使用。 WordPress 需要附加的配置才能将 SSL 和 MySQL 配合使用。 WordPress“官方映像”不提供附加的配置，但出于方便，已准备了一个[自定义映像](https://github.com/Azure-Samples/multicontainerwordpress)。 在实践中，请将所需的更改添加到自己的映像。
+默认情况下，TLS/SSL 由 Azure Database for MySQL 使用。 WordPress 需要附加的配置才能将 TLS/SSL 和 MySQL 配合使用。 WordPress“官方映像”不提供附加的配置，但出于方便，已准备了一个[自定义映像](https://github.com/Azure-Samples/multicontainerwordpress)。 在实践中，请将所需的更改添加到自己的映像。
 
 自定义映像基于 [Docker 中心的 WordPress](https://hub.docker.com/_/wordpress/) 的“官方映像”。 适用于 Azure Database for MySQL 的此自定义映像中已做出以下更改：
 

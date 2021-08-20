@@ -3,16 +3,16 @@ title: Azure 视频分析器是什么
 description: 本主题概述了 Azure 视频分析器。
 ms.service: azure-video-analyzer
 ms.topic: overview
-ms.date: 03/11/2021
-ms.openlocfilehash: c1d556662794de6127b0c455ac812b94b5a05742
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 35f13e8cd87e7e633b6836105f2d4c16911be663
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385232"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604803"
 ---
 # <a name="what-is-azure-video-analyzer-preview"></a>Azure 视频分析器是什么？ （预览版）
-
+ 
 Azure 视频分析器提供了一个平台，可用于构建跨越边缘和云的智能视频应用程序。 该平台包含一个 IoT Edge 模块和一个关联的 Azure 服务。 它提供了捕获、录制和分析实时视频的功能，同时还能发布结果（视频和/或视频分析）。 视频可发布到边缘或视频分析器云服务，而视频分析可发布到 Azure 服务（云和/或边缘）。 该平台可用于通过视频分析增强 IoT 解决方案。 视频分析器功能可与其他 Azure IoT Edge 模块（例如 IoT Edge 上的流分析、IoT Edge 上的认知服务）和云中的 Azure 服务（例如事件中心和认知服务等）相结合，构建强大的混合（例如边缘+云）应用程序。
 
 视频分析器边缘模块设计成可扩展平台，以便可以连接到不同的视频分析边缘模块（例如认知服务容器、使用开源机器学习模型或通过自己的数据训练的自定义模型构建的自定义边缘模块），并使用这些模块来分析实时视频，而不必担心构建和运行实时视频管道的复杂性。 视频分析器云服务使你可以播放此类工作流中的视频和视频分析。
@@ -43,5 +43,5 @@ Azure 视频分析器提供了一个平台，可用于构建跨越边缘和云�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅《[快速入门：入门 - Azure 视频分析器](get-started-detect-motion-emit-events.md)》一文，了解如何对实时视频源运行运动检测。
+* 请参照[快速入门：Azure 视频分析器入门](get-started-detect-motion-emit-events.md)了解如何在实时视频源运行运动检测。
 * 查看[术语](terminology.md)

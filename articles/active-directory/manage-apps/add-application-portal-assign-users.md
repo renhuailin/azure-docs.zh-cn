@@ -1,23 +1,25 @@
 ---
-title: 快速入门：将用户分配到使用 Azure Active Directory 作为标识提供者的应用
+title: 快速入门：向应用程序分配用户
+titleSuffix: Azure AD
 description: 此快速入门介绍支持用户使用已设置的应用将 Azure AD 用作标识提供者的过程。
 services: active-directory
-author: mtillman
+author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 09/01/2020
-ms.author: mtillman
-ms.openlocfilehash: a6f320c83d2baf179f4aaf4358f13ad4af2f4953
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.date: 07/23/2021
+ms.author: davidmu
+ms.reviewer: alamaral
+ms.openlocfilehash: 5c8b4ec030f60b940d8d6c36bd31e10932151dd5
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081814"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114667162"
 ---
-# <a name="quickstart-assign-users-to-an-app-that-is-using-azure-ad-as-an-identity-provider"></a>快速入门：将用户分配到使用 Azure AD 作为标识提供者的应用
+# <a name="quickstart-assign-users-to-an-application"></a>快速入门：向应用程序分配用户
 
 在上一个快速入门中，你配置了应用的属性。 设置属性时，会为已分配和未分配的用户配置体验。 此快速入门介绍将用户分配到应用的过程。
 
@@ -35,27 +37,28 @@ ms.locfileid: "112081814"
 >使用非生产环境测试本快速入门中的步骤。
 
 ## <a name="assign-users-to-an-app"></a>向应用分配用户
+
 1. 在 Azure AD 门户中，选择“企业应用程序”。 然后找到并选择要配置的应用程序。
 2. 在左侧导航菜单中，选择“用户和组”。
    > [!NOTE]
-   > 某些 Microsoft 365 应用需要使用 PowerShell。 
-3. 选择“添加用户”按钮。
+   > 某些 Microsoft 365 应用需要使用 PowerShell。
+3. 选择“添加用户/组”按钮。
 4. 在“添加分配”窗格中，选择“用户和组”。 
 5. 选择要分配到该应用程序的用户或组。 也可以开始在搜索框中输入用户或组的名称。 可以选择多个用户和组，所选内容会显示在“选定项”下。
     > [!IMPORTANT]
     > 如果你将某组分配到应用程序，只有属于此组的用户才有访问权限。 此分配不会级联到嵌套组。
 
     > [!NOTE]
-    > 基于组的分配需要 Azure Active Directory Premium P1 或 P2 版本。 基于组的分配仅支持安全组。 目前不支持嵌套的组成员身份和 Microsoft 365 组。 有关本文中讨论的功能的其他许可要求，请参阅 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory)。 
+    > 基于组的分配需要 Azure Active Directory Premium P1 或 P2 版本。 基于组的分配仅支持安全组。 目前不支持嵌套的组成员身份和 Microsoft 365 组。 有关本文中讨论的功能的其他许可要求，请参阅 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory)。
 6. 完成后，请选择“选择”。
-   ![将用户或组分配给应用](./media/assign-user-or-group-access-portal/assign-users.png)
+   :::image type="content" source="./media/assign-user-or-group-access-portal/assign-users.png" alt-text="将用户或组分配给应用":::
 7. 在“用户和组”窗格上的列表中选择一个或多个用户或组，然后选择窗格底部的“选择”按钮。 
-8. 可将角色分配给用户或组（如果应用程序支持此操作）。 在“添加分配”窗格中，选择“选择角色”。  在“选择角色”窗格中，选择要应用到所选用户或组的角色，然后选择窗格底部的“确定”。  
+8. 可将角色分配给用户或组（如果应用程序支持此操作）。 在“添加分配”窗格中，选择“选择角色”。  在“选择角色”窗格中，选择要应用到所选用户或组的角色，然后选择窗格底部的“确定”。 
     > [!NOTE]
     > 如果应用程序不支持角色选择，则会分配默认的访问角色。 在这种情况下，应用程序会管理用户拥有的访问权限级别。
 9. 在“添加分配”窗格中，选择窗格底部的“分配”按钮。 
 
-可以使用相同的过程取消分配用户或组。 选择要取消分配的用户或组，然后选择“删除”。 某些 Microsoft 365 和 Office 365 应用需要使用 PowerShell。 
+可以使用相同的过程取消分配用户或组。 选择要取消分配的用户或组，然后选择“删除”。 某些 Microsoft 365 和 Office 365 应用需要使用 PowerShell。
 
 ## <a name="clean-up-resources"></a>清理资源
 

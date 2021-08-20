@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/22/2021
+ms.date: 06/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 7622b3bb50139ddfdce53bb7e765db5aac90eff3
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 79f0f24d1328181557b2fec1e867c36ebcde57f0
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108766054"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453567"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-cloud"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Saba Cloud 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "108766054"
 * 让用户使用其 Azure AD 帐户自动登录到 Saba Cloud。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -51,7 +51,6 @@ ms.locfileid: "108766054"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入 **Saba Cloud**。
 1. 在结果面板中选择“Saba Cloud”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-saba-cloud"></a>配置并测试 Saba Cloud 的 Azure AD SSO
 
@@ -117,7 +116,7 @@ ms.locfileid: "108766054"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -135,7 +134,16 @@ ms.locfileid: "108766054"
 
 ## <a name="configure-saba-cloud-sso"></a>配置 Saba Cloud SSO
 
-1. 以管理员身份登录到 Saba Cloud 公司站点。
+1. 若要在 Saba Cloud 中自动执行配置，需要通过单击“安装扩展”来安装“我的应用安全登录浏览器扩展” 。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+1. 将扩展添加到浏览器后，单击“设置 Saba Cloud”会将你定向到 Saba Cloud 应用程序。 在此处提供管理员凭据以登录到 Saba Cloud。 浏览器扩展会自动配置应用程序，并自动执行步骤 3-9。
+
+    ![设置配置](common/setup-sso.png)
+
+1. 若要手动设置 Saba Cloud，请在另一个 Web 浏览器窗口中，以管理员身份登录到 Saba Cloud 公司站点。
+
 1. 单击“菜单”图标，单击“管理员”，然后选择“系统管理员”选项卡。  
 
     ![“系统管理员”的屏幕截图](./media/saba-cloud-tutorial/system.png)

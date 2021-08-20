@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/24/2020
+ms.date: 06/16/2021
 ms.author: jeedes
-ms.openlocfilehash: eccc10cc50bac2eb2dde0bf9f77ab1ba656d5eb8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7fd3e18187ae6cb8bc27b3cd600284ad78dd5118
+ms.sourcegitcommit: 5a27d9ba530aee0e563a1b0159241078e8c7c1e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92458353"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112423049"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-loop-flow-crm"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Loop Flow CRM 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "92458353"
 * 让用户使用其 Azure AD 帐户自动登录到 Loop Flow CRM。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -37,9 +37,9 @@ ms.locfileid: "92458353"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Loop Flow CRM 支持 **SP 和 IDP** 发起的 SSO
+* Loop Flow CRM 支持 SP 和 IDP 发起的 SSO。
 
-## <a name="adding-loop-flow-crm-from-the-gallery"></a>从库中添加 Loop Flow CRM
+## <a name="add-loop-flow-crm-from-the-gallery"></a>从库中添加 Loop Flow CRM
 
 若要配置 Loop Flow CRM 与 Azure AD 的集成，需要从库中将 Loop Flow CRM 添加到托管 SaaS 应用列表。
 
@@ -49,7 +49,6 @@ ms.locfileid: "92458353"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中键入“Loop Flow CRM” 。
 1. 从结果面板中选择“Loop Flow CRM”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-loop-flow-crm"></a>为 Loop Flow CRM 配置并测试 Azure AD SSO
 
@@ -70,13 +69,13 @@ ms.locfileid: "92458353"
 
 1. 在 Azure 门户的“Loop Flow CRM”应用程序集成页上，找到“管理”部分，选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.loopworks.com`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.loopworks.com`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<CUSTOMER_NAME>.loopworks.com/sso/consume/<CUSTOMER_NAME>`
 
@@ -90,6 +89,7 @@ ms.locfileid: "92458353"
 1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -98,7 +98,7 @@ ms.locfileid: "92458353"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -134,9 +134,9 @@ ms.locfileid: "92458353"
 
 #### <a name="idp-initiated"></a>IDP 启动的：
 
-* 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 Loop Flow CRM 
+* 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 Loop Flow CRM。 
 
-还可以使用 Microsoft 访问面板在任何模式下测试此应用程序。 在单击访问面板中的 Loop Flow CRM 磁贴时，如果是在 SP 模式下配置的，则会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Loop Flow CRM。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在单击“我的应用”中的“Loop Flow CRM”磁贴时，如果是在 SP 模式下配置的，则会重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Loop Flow CRM。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

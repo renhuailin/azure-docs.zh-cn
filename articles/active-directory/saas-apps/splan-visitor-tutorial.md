@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/14/2020
+ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 20f49c174dde90bc7f1a9b34f3dea3132e9b177e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de00b869aef2d1429740d75829da9a5c3e79de15
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644674"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112465936"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-splan-visitor"></a>Tutorial:将 Azure Active Directory 单一登录 (SSO) 与 Splan Visitor 集成
 
@@ -33,11 +33,14 @@ ms.locfileid: "101644674"
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 启用了 Splan Visitor 单一登录 (SSO) 的订阅。
 
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
+
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-Splan Visitor 支持 IdP 发起的 SSO。
+* Splan Visitor 支持 IdP 发起的 SSO。
 
 ## <a name="add-splan-visitor-from-the-gallery"></a>从库中添加 Splan Visitor
 
@@ -69,7 +72,7 @@ Splan Visitor 支持 IdP 发起的 SSO。
 
 1. 在 Azure 门户中的“Splan Visitor”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页面上，选择“基本 SAML 配置”对应的“编辑/笔”图标以编辑设置  。
+1. 在“设置 SAML 单一登录”页上，选择“基本 SAML 配置”对应的铅笔图标以编辑设置  。
 
    ![屏幕截图突出显示了基本 SAML 配置的“编辑/笔”图标。](common/edit-urls.png)
 

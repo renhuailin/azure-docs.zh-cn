@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 183693963d66a5df13cbb4dd1e561b26f5495f08
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 224e48bad96340554fa3667d990c29d681963109
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685686"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113585966"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>教程：在 Azure IoT Central 中创建店内分析应用程序
 
@@ -64,7 +64,7 @@ ms.locfileid: "109685686"
 
 若要新建店内分析结帐应用程序，请执行以下操作：  
 
-1. 选择“店内分析 - 结帐”应用程序模板  。 此模板包括本教程中使用的所有设备（RuuviTag 传感器除外）的设备模板。 此模板还提供用于监视结帐和环境条件以及设备状态的操作员仪表板。 
+1. 选择“店内分析 - 结帐”应用程序模板  。 此模板包括本教程中使用的所有设备（RuuviTag 传感器除外）的设备模板。 此模板还提供用于监视结帐和环境条件以及设备状态的仪表板。 
 
 1. （可选）选择一个友好的应用程序名称  。 此应用程序基于名为 Contoso 的虚构零售商店。 本教程使用应用程序名称“Contoso checkout”   。 应用程序模板基于虚构公司 Northwind。 在本教程中，你将使用 Contoso 来了解如何自定义应用程序。
 
@@ -155,11 +155,11 @@ ms.locfileid: "109685686"
 ## <a name="customize-device-templates"></a>自定义设备模板
 可以通过三种方式自定义应用程序中的设备模板。 第一种方式是通过更改设备功能来自定义设备中的本机内置界面。 例如，使用温度传感器可以更改温度界面的显示名称、数据类型、度量单位、最小和最大工作范围等详细信息。 
 
-第二种方式是通过添加云属性来自定义设备模板。 云属性不属于内置设备功能。 云属性是 Azure IoT Central 应用程序创建、存储并与设备关联的自定义数据。 云属性的示例可以是计算值，也可以是要与一组设备关联的位置等元数据。 
+第二种方式是通过添加云属性来自定义设备模板。 云属性不属于内置设备功能。 云属性是 Azure IoT Central 应用程序创建、存储并与设备关联的自定义数据。 云属性的示例可以是计算值，也可以是要与一组设备关联的位置等元数据。
 
 第三种方式是通过生成自定义视图来自定义设备模板。 视图为操作员提供一种可视化设备的遥测和元数据（如设备指标和运行状况）的方法。
 
-此处，使用前两种方法来自定义 RuuviTag 传感器的设备模板。 有关为传感器创建视图的信息，请参阅[将模拟设备添加到 IoT Central 应用程序](../core/quick-create-simulated-device.md)快速入门。
+此处，使用前两种方法来自定义 RuuviTag 传感器的设备模板。
 
 若要自定义 RuuviTag 设备模板的内置界面，请执行以下操作：
 
@@ -289,4 +289,4 @@ ms.locfileid: "109685686"
 请注意，在创建 Azure IoT Central 条件监视应用程序之后，建议接下来执行以下后续步骤：
 
 > [!div class="nextstepaction"]
-> [自定义操作员仪表板](./tutorial-in-store-analytics-customize-dashboard.md)
+> [自定义仪表板](./tutorial-in-store-analytics-customize-dashboard.md)

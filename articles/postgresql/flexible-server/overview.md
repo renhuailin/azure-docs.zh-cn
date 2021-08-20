@@ -3,16 +3,16 @@ title: Azure Database for PostgreSQL 灵活服务器
 description: 概述了 Azure Database for PostgreSQL 灵活服务器。
 author: sunilagarwal
 ms.author: sunila
-ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 04/22/2021
-ms.openlocfilehash: efa5502c89a68be05ef8f7dc1d3d57c57e732caa
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 06/14/2021
+ms.custom: mvc, references_regions
+ms.openlocfilehash: 25b2788591c44cb4b75c89ca020825d16884224b
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987067"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112116167"
 ---
 # <a name="overview---azure-database-for-postgresql---flexible-server"></a>概述 - Azure Database for PostgreSQL - 灵活服务器
 
@@ -92,24 +92,32 @@ Azure Database for PostgreSQL 灵活服务器是一种完全托管的数据库�
 
 ## <a name="azure-regions"></a>Azure 区域
 
-在 Azure 中运行工作负载的一个优点是，它可覆盖全球范围。 灵活服务器现已在以下 Azure 区域发布：
+在 Azure 中运行工作负载的一个优点是，它可覆盖全球范围。 灵活服务器当前在以下 Azure 区域中提供：
 
 | Region | 可用性 | 区域冗余 HA | 
 | --- | --- | --- |
-| 西欧 | :heavy_check_mark: | :heavy_check_mark: |
-| 北欧 | :heavy_check_mark: | :heavy_check_mark: |
-| 英国南部 | :heavy_check_mark: | :heavy_check_mark: | 
-| 美国东部 2 | :heavy_check_mark: | :heavy_check_mark: |
-| 美国西部 2 | :heavy_check_mark: | :heavy_check_mark: |
+| 澳大利亚东部 | :heavy_check_mark: | :heavy_check_mark: | 
+| 澳大利亚东南部 | :heavy_check_mark: | :x: | 
+| 巴西南部 | :heavy_check_mark: | :x: |
+| 加拿大中部 | :heavy_check_mark: | :heavy_check_mark: | 
 | 美国中部 | :heavy_check_mark: | :heavy_check_mark: | 
 | 美国东部 | :heavy_check_mark: | :heavy_check_mark: | 
-| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
-| Japan East | :heavy_check_mark: | :heavy_check_mark: | 
-| 澳大利亚东部 | :heavy_check_mark: | :heavy_check_mark: | 
-| 加拿大中部 | :heavy_check_mark: | :heavy_check_mark: | 
+| 美国东部 2 | :heavy_check_mark: | :heavy_check_mark: |
 | 法国中部 | :heavy_check_mark: | :heavy_check_mark: | 
+| Japan East | :heavy_check_mark: | :heavy_check_mark: | 
+| 韩国中部 | :heavy_check_mark: | :x: | 
+| 北欧 | :heavy_check_mark: | :heavy_check_mark: |
+| 挪威东部 | :heavy_check_mark: | :x: |
+| 南非北部 | :heavy_check_mark: | :x: |
+| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
+| 瑞士北部 | :heavy_check_mark: | :x: |
+| 阿拉伯联合酋长国北部 | :heavy_check_mark: | :x: |
+| 英国南部 | :heavy_check_mark: | :heavy_check_mark: | 
+| 西欧 | :heavy_check_mark: | :heavy_check_mark: |
+| 美国西部 | :heavy_check_mark: | :x: |
+| 美国西部 2 | :heavy_check_mark: | :heavy_check_mark: |
 
-我们会继续为灵活服务器添加更多区域。
+<!-- We continue to add more regions for flexible server. -->
 
 ## <a name="migration"></a>迁移
 

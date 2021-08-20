@@ -11,12 +11,12 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e58028495da409df00db8e25adf68945a008bc9e
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 1c5fd2416c37743dc48544da4bcfd23fc6928cdd
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228293"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112538993"
 ---
 # <a name="what-is-azure-iot-hub-device-provisioning-service"></a>Azure IoT 中心设备预配服务是什么？
 Microsoft Azure 提供一套丰富的集成公有云服务，满足所有 IoT 解决方案需求。 IoT 中心设备预配服务 (DPS) 是 IoT 中心的帮助器服务，支持零接触、实时预配到适当的 IoT 中心，不需要人为干预。 使用 DPS 能够以安全且可缩放的方式预配数百万台设备。
@@ -110,13 +110,13 @@ DPS 已在许多区域中推出。 [Azure 区域](https://azure.microsoft.com/re
 ## <a name="availability"></a>可用性
 DPS 的服务级别协议为 99.9%。具体请阅读 [SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/)。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/) 说明了 Azure 作为整体的保证可用性。
 
-## <a name="quotas"></a>配额
+## <a name="quotas-and-limits"></a>配额和限制
 每个 Azure 订阅附带默认的配额限制，这些限制可能影响 IoT 解决方案的范围。 每个订阅的当前限制是每订阅 10 个设备预配服务。
+
+有关配额限制的详细信息，请参阅 [Azure 订阅服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 [!INCLUDE [azure-iotdps-limits](../../includes/iot-dps-limits.md)]
 
-有关配额限制的更多详细信息，请参阅：
-* [Azure 订阅服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>相关 Azure 组件
 DPS 通过 Azure IoT 中心将设备预配自动化。 了解有关 [IoT 中心](../iot-hub/index.yml)的详细信息。

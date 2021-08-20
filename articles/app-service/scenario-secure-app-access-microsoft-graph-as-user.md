@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 01/28/2021
+ms.date: 06/21/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: 3413c1a3f27b48c60ae730ad230c653928702faa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ff35dc6211992bd3d89161dede2745c2e366ee8f
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99063377"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463812"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>教程：以用户身份从安全的应用访问 Microsoft Graph
 
@@ -58,19 +58,76 @@ Web 应用现在具有以已登录用户身份访问 Microsoft Graph 所需的�
 > [!IMPORTANT]
 > 如果未将应用服务配置为返回可用的访问令牌，则在代码中调用 Microsoft 图形 API 时会收到 ```CompactToken parsing failed with error code: 80049217``` 错误。
 
-转到 [Azure 资源浏览器](https://resources.azure.com/)并使用资源树找到 Web 应用。 资源 URL 应类似于 `https://resources.azure.com/subscriptions/subscription-id/resourceGroups/SecureWebApp/providers/Microsoft.Web/sites/SecureWebApp20200915115914`。
+# <a name="azure-resource-explorer"></a>[Azure 资源浏览器](#tab/azure-resource-explorer)
+转到 [Azure 资源浏览器](https://resources.azure.com/)并使用资源树找到 Web 应用。 资源 URL 应类似于 `https://resources.azure.com/subscriptions/subscriptionId/resourceGroups/SecureWebApp/providers/Microsoft.Web/sites/SecureWebApp20200915115914`。
 
 此时会打开 Azure 资源浏览器，Web 应用在资源树中处于选中状态。 在页面顶部选择“读/写”，以便启用编辑 Azure 资源的功能。
 
-在左侧浏览器中，向下钻取到“config” > “authsettings”。
+在左侧浏览器中，向下钻取到“config” > “authsettingsV2”。
 
-在“authsettings”视图中，选择“编辑”。 使用复制的客户端 ID 将 ```additionalLoginParams``` 设置为以下 JSON 字符串。
+在“authsettingsV2”视图中，选择“编辑”。 找到 identityProviders -> azureActiveDirectory 的 login 节，添加以下 loginParameters 设置：`"loginParameters":[ "response_type=code id_token","resource=00000003-0000-0000-c000-000000000000" ]`   。
 
 ```json
-"additionalLoginParams": ["response_type=code id_token","resource=00000003-0000-0000-c000-000000000000"],
+"identityProviders": {
+    "azureActiveDirectory": {
+      "enabled": true,
+      "login": {
+        "loginParameters":[
+          "response_type=code id_token",
+          "resource=00000003-0000-0000-c000-000000000000"
+        ]
+      }
+    }
+  }
+},
 ```
 
 选择“PUT”，对设置进行保存。 此设置可能需要几分钟才能生效。 现在，Web 应用已配置为使用适当的访问令牌访问 Microsoft Graph。 如果未进行设置，Microsoft Graph 将返回一个错误，指示压缩令牌的格式不正确。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用 Azure CLI 调用应用服务 Web 应用 REST API 以[获取](/rest/api/appservice/web-apps/get-auth-settings)并[更新](/rest/api/appservice/web-apps/update-auth-settings)身份验证配置设置，使 Web 应用能够调用 Microsoft Graph。 打开命令窗口并登录到 Azure CLI：
+
+```azurecli
+az login
+```
+
+获取现有的“config/authsettingsv2”设置，并将其保存到本地 authsettings.json 文件中。
+
+```azurecli
+az rest --method GET --url '/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Web/sites/{WEBAPP_NAME}/config/authsettingsv2/list?api-version=2020-06-01' > authsettings.json
+```
+
+使用你偏好的文本编辑器打开 authsettings.json 文件。 找到 identityProviders -> azureActiveDirectory 的 login 节，添加以下 loginParameters 设置：`"loginParameters":[ "response_type=code id_token","resource=00000003-0000-0000-c000-000000000000" ]`   。
+
+```json
+"identityProviders": {
+    "azureActiveDirectory": {
+      "enabled": true,
+      "login": {
+        "loginParameters":[
+          "response_type=code id_token",
+          "resource=00000003-0000-0000-c000-000000000000"
+        ]
+      }
+    }
+  }
+},
+```
+
+保存对文件 authsettings.json 所做的更改，并将本地设置上传到你的 Web 应用：
+
+```azurecli
+az rest --method PUT --url '/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Web/sites/{WEBAPP_NAME}/config/authsettingsv2?api-version=2020-06-01' --body @./authsettings.json
+```
+---
+
+## <a name="update-the-issuer-url"></a>更新颁发者 URL
+在 [Azure 门户](https://portal.azure.com)中导航到你的应用服务，然后导航到“身份验证”边栏选项卡。
+
+单击 Microsoft 标识提供者旁边的“编辑”链接。
+
+检查“基本信息”选项卡中的“颁发者 URL”。如果“颁发者 URL”的末尾包含“/v2.0”，请删除这些字符，然后单击“保存”   。 如果不删除“/v2.0”，则在登录到 Web 应用时，会出现“AADSTS901002: 不支持 'resource' 请求参数”。
 
 ## <a name="call-microsoft-graph-net"></a>调用 Microsoft Graph (.NET)
 
@@ -230,7 +287,7 @@ public class IndexModel : PageModel
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你了解了如何执行以下操作：
+在本教程中，你将了解：
 
 > [!div class="checklist"]
 >

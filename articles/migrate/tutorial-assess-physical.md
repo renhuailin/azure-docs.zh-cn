@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: b1026f718c7c59e88dbf3b041c4b07cd1cfc641c
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 44d92bbf5c3767a15e600836acd23cf3055f842e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780562"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464980"
 ---
 # <a name="tutorial-assess-physical-servers-for-migration-to-azure"></a>教程：评估物理服务器以便迁移到 Azure
 
@@ -56,7 +56,7 @@ ms.locfileid: "104780562"
 
 1. 在“概述”页 >“Windows、Linux 和 SQL Server”中，单击“评估并迁移服务器”。  
 
-   ![“评估和迁移服务器”按钮的位置](./media/tutorial-assess-vmware-azure-vm/assess.png)
+   ![“评估和迁移服务器”按钮的位置。](./media/tutorial-assess-vmware-azure-vm/assess.png)
 
 2. 在 **Azure Migrate：发现和评估** 中，单击 **评估**。
 

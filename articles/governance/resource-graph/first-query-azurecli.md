@@ -4,12 +4,12 @@ description: 本快速入门介绍为 Azure CLI 启用 Resource Graph 扩展并�
 ms.date: 05/01/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3cf4b75d3e2ade6803d2950fa13ee2e01d99de6d
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: cbcd4185507423d488f1ffc348740647881fda81
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751906"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114457361"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>快速入门：使用 Azure CLI 运行你的第一个 Resource Graph 查询
 
@@ -48,7 +48,7 @@ ms.locfileid: "108751906"
 
 ## <a name="run-your-first-resource-graph-query"></a>运行首个 Resource Graph 查询
 
-将 Azure CLI 扩展添加到所选环境中后，即可尝试一个简单的 Resource Graph 查询。 该查询将返回前五个 Azure 资源，以及每个资源的名称和资源类型 。
+将 Azure CLI 扩展添加到所选环境中后，即可尝试一个简单的基于租户的 Resource Graph 查询。 该查询返回前五个 Azure 资源，以及每个资源的名称和资源类型 。 若要按[管理组](../management-groups/overview.md)或订阅进行查询，请使用 `--managementgroups` 或 `--subscriptions` 参数。
 
 1. 使用 `graph` 扩展和 `query` 命令运行你的第一个 Azure Resource Graph 查询：
 

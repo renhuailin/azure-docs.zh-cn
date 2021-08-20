@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/25/2021
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 08868a6ab3a3755d7bc9c2e7af4ab6c9116831d0
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: ac364950b78aeb61bd74fcc918a4dae2a31a6ffa
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110791802"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114690303"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>教程：使用 DRM 动态加密和许可证传送服务
 
@@ -58,9 +58,9 @@ ms.locfileid: "110791802"
 * 安装 Visual Studio Code 或 Visual Studio。
 * 按照[本快速入门](./account-create-how-to.md)所述，创建新的 Azure 媒体服务帐户。
 * 根据[访问 API](./access-api-howto.md) 中所述，获取使用媒体服务 API 时所需的凭据
-* 在应用配置文件 (appsettings.json) 中设置相应的值。
+* 在应用配置文件 (appsettings.json 或 .env 文件) 中设置相应的值。
 
-## <a name="download-code"></a>下载代码
+## <a name="download-the-code-and-configure-the-sample"></a>下载代码和配置示例
 
 使用以下命令，将包含本文中所述完整 .NET 示例的 GitHub 存储库克隆到计算机：
 
@@ -69,6 +69,8 @@ ms.locfileid: "110791802"
  ```
  
 “使用 DRM 进行加密”示例位于 [EncryptWithDRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/EncryptWithDRM) 文件夹中。
+
+[!INCLUDE [appsettings or .env file](./includes/note-appsettings-or-env-file.md)]
 
 > [!NOTE]
 > 每次运行应用时，该示例就会创建唯一的资源。 通常，我们会重复使用现有的资源，例如转换和策略（如果现有资源具有所需的配置）。

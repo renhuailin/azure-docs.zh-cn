@@ -2,13 +2,13 @@
 title: 使用 Azure 视频分析器检测对象在实时视频中越过虚拟线的时间
 description: 本快速入门介绍如何使用 Azure 视频分析器检测对象在来自（模拟）IP 相机的实时视频源中越线的时间。
 ms.topic: tutorial
-ms.date: 05/18/2021
-ms.openlocfilehash: 8cca0aca44f2cb2ebdbee7869d189b0cd2b2451f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 06/01/2021
+ms.openlocfilehash: 0b87d80c5dcc7a72bf940cac3573ee5e68964022
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465653"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604648"
 ---
 # <a name="tutorial-detect-when-objects-cross-a-virtual-line-in-a-live-video"></a>教程：检测对象在实时视频中越过虚拟线的时间
 
@@ -98,11 +98,11 @@ HTTP 扩展节点扮演代理的角色。 它将每第 10 个视频帧转换为�
 1. 编辑 operations.json 文件：
     
     * 将链接更改为管道拓扑：
-    * "pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/line-crossing/topology.json"
-    * 在 livePipelineSet 下，编辑拓扑的名称，使其匹配前面链接中的值：
-    * "topologyName" : "LineCrossingWithHttpExtension"
+    * `"pipelineTopologyUrl" : "https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/line-crossing/topology.json"`
+    * 在 `livePipelineSet` 下，编辑拓扑的名称，使其与上一个链接中的值匹配：
+    * `"topologyName" : "LineCrossingWithHttpExtension"`
     * 在 `pipelineTopologyDelete` 下，编辑名称：
-    * "name" : "LineCrossingWithHttpExtension"
+    * `"name" : "LineCrossingWithHttpExtension"`
     
 在浏览器中打开管道拓扑的 URL，并检查 HTTP 扩展节点的设置。
 
@@ -113,7 +113,7 @@ HTTP 扩展节点扮演代理的角色。 它将每第 10 个视频帧转换为�
    }
 ```
 
-这里，`skipSamplesWithoutAnnotation` 设置为 `false`，因为扩展节点需要将所有帧（无论它们是否具有推理结果）传递到下游对象跟踪器节点。 对象跟踪器能够跟踪大约超过 15 帧的对象。 如果实时视频的帧速率为 30 帧/秒，这意味着每秒至少应向 HTTP 服务器发送两帧进行推理；因此 `maximumSamplesPerSecond` 设置为 2。 实际上就是 15 帧/秒。
+这里，`skipSamplesWithoutAnnotation` 设置为 `false`，因为扩展节点需要将所有帧（无论它们是否具有推理结果）传递到下游对象跟踪器节点。 对象跟踪器能够跟踪大约超过 15 帧的对象。 如果实时视频的帧速率为 30 帧/秒，这意味着每秒至少应向 HTTP 服务器发送两帧进行推理。 AI 模型具有用于处理的最大 FPS，这是 `maximumSamplesPerSecond` 应设置为的最大值。
 
 还应查看越线叉节点参数占位符 `linecrossingName` 和 `lineCoordinates`。 我们为这些参数提供了默认值，但你应使用 operations.js 文件覆盖它们。 查看如何将来自 operations.json 文件的其他参数传递给拓扑（例如 rtsp url）。  
 

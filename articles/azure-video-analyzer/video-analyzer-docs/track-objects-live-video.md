@@ -2,13 +2,13 @@
 title: 使用 Azure 视频分析器跟踪实时视频中的对象
 description: 本快速入门介绍如何使用 Azure 视频分析器 Edge 模块跟踪来自（模拟）IP 相机的实时视频源中的对象。 你将了解如何应用计算机视觉模型来检测实时视频源中部分帧的对象。 然后，你可以使用对象跟踪器节点来跟踪其他帧中的对象。
 ms.topic: quickstart
-ms.date: 05/01/2021
-ms.openlocfilehash: 76723d1fb5dfff47e4ad436e1e4bd18fafa7c102
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 06/01/2021
+ms.openlocfilehash: 211b51660be74d2b2b3b024ead72c93b3a0d8449
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385194"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114603915"
 ---
 # <a name="quickstart-track-objects-in-a-live-video"></a>快速入门：跟踪实时视频中的对象
 
@@ -53,19 +53,19 @@ HTTP 扩展节点扮演代理的角色。 它将每第 15 个视频帧转换为�
 
 ## <a name="deploy-the-required-modules"></a>部署所需的模块
 
-1. 在 Visual Studio Code 中，右键单击“src/edge/deployment.yolov3.template.json”文件，然后选择“生成 IoT Edge 部署清单”。
+1. 在 Visual Studio Code 中，右键单击 src/edge/deployment.yolov3.template.json 文件，然后选择“生成 IoT Edge 部署清单”。
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/analyze-live-video-use-your-model-http/generate-deployment-manifest.png" alt-text="生成 IoT Edge 部署清单":::
 1. 随即将在 src/edge/config 文件夹中创建一个清单文件 deployment.yolov3.amd64.json 。
-1. 右键单击“src/edge/config/deployment.yolov3.amd64.json”，并选择“为单个设备创建部署”。
+1. 右键单击 src/edge/config/deployment.yolov3.amd64.json，然后选择“为单个设备创建部署”。
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/analyze-live-video-use-your-model-http/deployment-single-device.png" alt-text= "Create Deployment for Single Device":::
 1. 如果系统提示你选择 IoT 中心设备，请选择“avasample-iot-edge-device”。
 1. 大约 30 秒后，在该窗口的左下角刷新 Azure IoT 中心。 边缘设备现在显示以下已部署的模块：
 
-    * 视频分析器 Edge 模块（名为“avaedge”）。
+    * 视频分析器 Edge 模块（名称为“avaedge”）。
     * rtspsim 模块，可模拟 RTSP 服务器，充当实时视频源的源。 
     * yolov3 模块，该模块使用 YOLOV3 模型检测各种对象
 
@@ -105,7 +105,7 @@ HTTP 扩展节点扮演代理的角色。 它将每第 15 个视频帧转换为�
    }
 ```
 
-这里，`skipSamplesWithoutAnnotation` 设置为 `false`，因为扩展节点需要将所有帧（无论它们是否具有推理结果）传递到下游对象跟踪器节点。 对象跟踪器能够跟踪大约超过 15 帧的对象。 如果实时视频的帧速率为 30 帧/秒，这意味着每秒至少应向 HTTP 服务器发送两帧进行推理；因此 `maximumSamplesPerSecond` 设置为 2。
+这里，`skipSamplesWithoutAnnotation` 设置为 `false`，因为扩展节点需要将所有帧（无论它们是否具有推理结果）传递到下游对象跟踪器节点。 对象跟踪器能够跟踪大约超过 15 帧的对象。 如果实时视频的帧速率为 30 帧/秒，这意味着每秒至少应向 HTTP 服务器发送两帧进行推理。 AI 模型具有用于处理的最大 FPS，这是 `maximumSamplesPerSecond` 应设置为的最大值。
     
 ## <a name="run-the-sample-program"></a>运行示例程序
 

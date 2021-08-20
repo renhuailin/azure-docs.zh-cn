@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 07/26/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 653159c2e40d3375a422f0da14274f57130de1fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13d427ea5cc73f9cbd4176332c351453891b2e7a
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93359674"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707572"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>使用 Linux VM 系统分配的托管标识访问 Azure 资源管理器
 
@@ -36,7 +36,7 @@ ms.locfileid: "93359674"
 
 - 具备托管标识相关知识。 如果不熟悉 Azure 资源功能的托管标识，请参阅此[概述](overview.md)。 
 - 一个 Azure 帐户，[注册免费 Azure 帐户](https://azure.microsoft.com/free/)。
-- 还需要启用了系统分配的托管标识的 Linux 虚拟机。
+- 还需要启用了系统分配的托管标识的 Linux 虚拟机。 如果你有 VM，但需要启用[系统分配的托管标识](qs-configure-portal-windows-vm.md)，可以在虚拟机属性的标识部分中执行此操作。 
   - 如需为本教程创建虚拟机，则可以按照标题为[使用 Azure 门户创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)的文章进行操作
 
 ## <a name="grant-access"></a>授予访问权限

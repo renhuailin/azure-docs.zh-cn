@@ -2,20 +2,19 @@
 title: 什么是无代理解决方案体系结构
 description: 了解 Azure Defender for IoT 无代理体系结构和信息流。
 ms.topic: overview
-ms.date: 1/25/2021
-ms.author: shhazam
-ms.openlocfilehash: bd639ca2656b901bd87fccf36fb4a5d90d3bf918
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 07/19/2021
+ms.openlocfilehash: cec373f3848e264b7c9f4b9753315189da77bc0b
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011086"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114455221"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender for IoT 体系结构
 
 本文介绍了 Defender for IoT 无代理解决方案的功能系统体系结构。 Azure Defender for IoT 提供了两组功能，可满足你的环境需求,适用于组织的无代理解决方案，以及设备构建者的基于代理的解决方案。
 
-## <a name="agentless-solution-for-organizations"></a>适用于组织的无代理解决方案
+## <a name="agentless-solution-architecture-for-organizations"></a>适用于组织的无代理解决方案体系结构
 ### <a name="defender-for-iot-components"></a>Defender for IoT 组件
 
 Defender for IoT 同时连接到 Azure 云和本地组件。 该解决方案旨在实现具有多个远程位置的大型地理分布式环境中的可伸缩性。 此解决方案支持按国家、地区、业务部门或区域划分的多层分布式体系结构。 

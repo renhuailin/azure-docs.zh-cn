@@ -2,24 +2,22 @@
 title: 快速入门 - 在 Azure 门户中创建 Azure 机密计算虚拟机
 description: 了解如何在 Azure 门户中快速创建机密计算虚拟机，以便开始进行部署。
 author: JBCook
-ms.author: JenCook
-ms.date: 04/23/2020
-ms.topic: quickstart
 ms.service: virtual-machines
-ms.subservice: confidential-computing
+ms.subservice: workloads
 ms.workload: infrastructure
-ms.custom:
-- mode-portal
-ms.openlocfilehash: 1ae6631c3f6ee71d7a09832956c7e687ceca22b6
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.topic: quickstart
+ms.date: 06/13/2021
+ms.author: JenCook
+ms.openlocfilehash: 8fb93b7697e2dd9077995572fc91b6e82a7d8512
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107819045"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113107211"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>快速入门：在 Azure 门户中部署 Azure 机密计算 VM
 
-使用 Azure 门户创建由 Intel SGX 提供支持的虚拟机 (VM)，以便开始使用 Azure 机密计算。 然后，安装 Open Enclave 软件开发工具包 (SDK) 以设置开发环境。 
+使用 Azure 门户创建由 Intel SGX 提供支持的虚拟机 (VM)，以便开始使用 Azure 机密计算。 然后，你就可以运行 enclave 应用程序。
 
 如果你对使用自定义配置部署机密计算虚拟机感兴趣，建议使用本教程。 否则，建议按 [Microsoft 商业市场的机密计算虚拟机部署步骤](quick-create-marketplace.md)进行操作。
 
@@ -62,7 +60,7 @@ ms.locfileid: "107819045"
 
 1. 配置要用于虚拟机的操作系统映像。
 
-    * **选择映像**：对于本教程，请选择 Ubuntu 18.04 LTS。 还可以选择 Windows Server 2019、Windows Server 2016 或 Ubuntu 20.04 LTS。 如果选择这样做，则本教程会对你进行相应的重定向。
+    * **选择映像**：对于本教程，请选择 Ubuntu 18.04 LTS。 还可以选择 Windows Server 2019、Windows Server 2016 或 Ubuntu 16.04 LTS。 如果选择这样做，则本教程会对你进行相应的重定向。
     
     * **切换第 2 代的映像**：机密计算虚拟机仅在 [第 2 代](../virtual-machines/generation-2.md)映像上运行。 确保所选映像是第 2 代映像。 单击上方的“高级”选项卡，你将在其中配置虚拟机。 向下滚动，直至找到标签为“VM 代系”的部分。 选择“第 2 代”，然后返回到“基本信息”选项卡。
     
@@ -79,7 +77,7 @@ ms.locfileid: "107819045"
     ![DCsv2 系列 VM](media/quick-create-portal/dcsv2-virtual-machines.png)
 
     > [!TIP]
-    > 应当会看到以下大小：DC1s_v2、DC2s_v2、DC4s_V2 和 DC8_v2。 这些是目前仅有的支持 Intel SGX 机密计算的虚拟机大小。 [了解详细信息](virtual-machine-solutions.md)。
+    > 应当会看到以下大小：DC1s_v2、DC2s_v2、DC4s_V2 和 DC8_v2。 这是目前仅有的支持机密计算的虚拟机大小。 [了解详细信息](virtual-machine-solutions.md)。
 
 1. 填充以下信息：
 
@@ -94,7 +92,10 @@ ms.locfileid: "107819045"
     
     * 密码：在适用情况下输入你的身份验证密码。
 
-    * **公共入站端口**：选择“允许所选的端口”，然后在“选择公共入站端口”列表中选择“SSH (22)”和“HTTP (80)”。    如果要部署 Windows VM，请选择“HTTP (80)”和“RDP (3389)” 。 在本快速入门中，必须执行此步骤才能连接到 VM 并完成 Open Enclave SDK 配置。 
+    * **公共入站端口**：选择“允许所选的端口”，然后在“选择公共入站端口”列表中选择“SSH (22)”和“HTTP (80)”。    如果要部署 Windows VM，请选择“HTTP (80)”和“RDP (3389)” 。  
+
+    >[!Note]
+    > 对于生产部署，不建议允许使用 RDP/SSH 端口。  
 
      ![入站端口](media/quick-create-portal/inbound-port-virtual-machine.png)
 
@@ -107,7 +108,7 @@ ms.locfileid: "107819045"
 1. 在下面的选项卡中对设置进行任何所需的更改，或保留默认设置。
 
     * **网络**
-    * **Management**
+    * **管理**
     * **来宾配置**
     * **标记**
 
@@ -146,58 +147,16 @@ ssh azureadmin@40.55.55.555
 > [!NOTE]
 > 如果出现有关不会在注册表中缓存服务器主机密钥的 PuTTY 安全警报，请从以下选项中进行选择。 如果你信任此主机，请选择“是”将密钥添加到 PuTTy 缓存并继续进行连接。 如果你只想建立连接一次，而无需将密钥添加到缓存，请选择“否”。 如果你不信任此主机，请选择“取消”以放弃连接。
 
-## <a name="install-the-open-enclave-sdk-oe-sdk"></a>安装 Open Enclave SDK (OE SDK) <a id="Install"></a>
+## <a name="intel-sgx-drivers"></a>Intel SGX 驱动程序
+
+> [!NOTE]
+> Intel SGX 驱动程序已是 Ubuntu 和 Windows Azure 库映像的一部分。 无需专门安装这些驱动程序。 也可以通过访问 [Intel SGX DCAP 驱动程序列表](https://01.org/intel-software-guard-extensions/downloads)，更新映像中随附的现有驱动程序。
+
+## <a name="optional-testing-enclave-apps-built-with-open-enclave-sdk-oe-sdk"></a>可选：测试用 Open Enclave SDK 生成的 enclave 应用 (OE SDK) <a id="Install"></a>
 
 按照分步说明在运行 Ubuntu 18.04 LTS Gen 2 映像的 DCsv2 系列虚拟机上安装 [OE SDK](https://github.com/openenclave/openenclave)。 
 
 如果虚拟机在 Ubuntu 18.04 LTS Gen 2 上运行，则需要按照[适用于 Ubuntu 18.04 的安装说明](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md)进行操作。
-
-#### <a name="1-configure-the-intel-and-microsoft-apt-repositories"></a>1.配置 Intel 和 Microsoft APT 存储库
-
-```bash
-echo 'deb [arch=amd64] https://download.01.org/intel-sgx/sgx_repo/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/intel-sgx.list
-wget -qO - https://download.01.org/intel-sgx/sgx_repo/ubuntu/intel-sgx-deb.key | sudo apt-key add -
-
-echo "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-7 main" | sudo tee /etc/apt/sources.list.d/llvm-toolchain-bionic-7.list
-wget -qO - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
-
-echo "deb [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod bionic main" | sudo tee /etc/apt/sources.list.d/msprod.list
-wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-```
-
-#### <a name="2-install-the-intel-sgx-dcap-driver"></a>2.安装 Intel SGX DCAP 驱动程序
-某些版本的 Ubuntu 可能已安装了 Intel SGX 驱动程序。 使用以下命令检查： 
-
-```bash
-dmesg | grep -i sgx
-[  106.775199] sgx: intel_sgx: Intel SGX DCAP Driver {version}
-``` 
-如果输出为空白，则安装该驱动程序： 
-
-```bash
-sudo apt update
-sudo apt -y install dkms
-wget https://download.01.org/intel-sgx/sgx-dcap/1.7/linux/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.35.bin -O sgx_linux_x64_driver.bin
-chmod +x sgx_linux_x64_driver.bin
-sudo ./sgx_linux_x64_driver.bin
-```
-
-> [!WARNING]
-> 请使用 [Intel SGX 站点](https://01.org/intel-software-guard-extensions/downloads)中的最新 Intel SGX DCAP 驱动程序。
-
-#### <a name="3-install-the-intel-and-open-enclave-packages-and-dependencies"></a>3.安装 Intel 和 Open Enclave 包与依赖项
-
-
-```bash
-sudo apt -y install clang-8 libssl-dev gdb libsgx-enclave-common libprotobuf10 libsgx-dcap-ql libsgx-dcap-ql-dev az-dcap-client open-enclave
-```
-
-> [!NOTE] 
-> 此步骤还会安装 [az-dcap-client](https://github.com/microsoft/azure-dcap-client) 包，在 Azure 中执行远程认证时需要此包。
-
-#### <a name="4-verify-the-open-enclave-sdk-install"></a>4.**验证 Open Enclave SDK 安装**
-
-参阅 GitHub 上的[使用 Open Enclave SDK](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/Linux_using_oe_sdk.md) 来验证和使用已安装的 SDK。
 
 ## <a name="clean-up-resources"></a>清理资源
 

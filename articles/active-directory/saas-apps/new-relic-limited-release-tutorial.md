@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: jeedes
-ms.openlocfilehash: ba6a06b51a9fd3a4efec98d5a713d1a791e9a321
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 96794d2ab07f9fe352f611c7d0cf511067928bee
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108136906"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111413186"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic"></a>教程：Azure Active Directory 单一登录 (SSO) 与 New Relic 集成
 
@@ -31,7 +31,7 @@ ms.locfileid: "108136906"
 要开始，需要：
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 一个启用了单一登录 (SSO) 的 New Relic 订阅。
+* 启用 [New Relic One 帐户/用户模型](https://docs.newrelic.com/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-changes-pricing-user-model/#user-models)和专业版本或企业版本的 New Relic 组织。 有关详细信息，请参阅 [New Relic 要求](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/authentication-domains-saml-sso-scim-more)。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -76,11 +76,8 @@ ms.locfileid: "108136906"
 
 1. 在“基本 SAML 配置”部分中，填入“标识符”和“回复 URL”的值  。
 
-   * 使用 New Relic“我的组织”应用程序检索这些值。 若要使用此应用程序，请执行以下操作：
-      1. [登录](https://login.newrelic.com/) New Relic。
-      1. 在顶部菜单中，选择“应用”。
-      1. 在“你的应用”部分中，选择“我的组织” > “身份验证域”  。
-      1. 选择要 Azure AD SSO 连接到的身份验证域（如果有多个身份验证域）。 大多数公司只有一个称为“默认”的身份验证域。 如果只有一个身份验证域，则无需选择任何内容。
+   * 从 [New Relic 身份验证域 UI](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/authentication-domains-saml-sso-scim-more/#ui) 检索这些值。 由此，可执行以下操作： 
+      1. 如果有多个身份验证域，请选择需要 Azure AD SSO 连接到的身份验证域。 大多数公司只有一个称为“默认”的身份验证域。 如果只有一个身份验证域，则无需选择任何内容。
       1. 在“身份验证”部分中，“断言使用者 URL”包含用于“回复 URL”的值  。
       1. 在“身份验证”部分中，“实体 ID”包含用于“标识符”的值  。
 
@@ -101,7 +98,7 @@ ms.locfileid: "108136906"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -119,13 +116,11 @@ ms.locfileid: "108136906"
 
 ## <a name="configure-new-relic-sso"></a>配置 New Relic SSO
 
-请按照以下步骤在 New Relic 上配置 SSO。
+请按照以下步骤在 New Relic 上配置 SSO。 
 
 1. [登录](https://login.newrelic.com/) New Relic。
 
-1. 在顶部菜单中，选择“应用”。
-
-1. 在“你的应用”部分中，选择“我的组织” > “身份验证域”  。
+1. 转到[“身份验证域”UI](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/authentication-domains-saml-sso-scim-more/#ui)。 
 
 1. 选择要 Azure AD SSO 连接到的身份验证域（如果有多个身份验证域）。 大多数公司只有一个称为“默认”的身份验证域。 如果只有一个身份验证域，则无需选择任何内容。
 
@@ -143,9 +138,7 @@ ms.locfileid: "108136906"
 
 1. [登录](https://login.newrelic.com/) New Relic。
 
-1. 在顶部菜单中，选择“应用”。
-
-1. 在“你的应用”部分中，选择“用户管理” 。
+1. 转到[“用户管理”UI](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/add-manage-users-groups-roles/#where)。
 
 1. 选择“添加用户”。
 
@@ -175,4 +168,8 @@ ms.locfileid: "108136906"
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 New Relic 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
+完成后，可验证是否已将用户添加到 New Relic，方法是转到[“用户管理”UI](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/add-manage-users-groups-roles/#where)，查看用户是否存在。 
+
+接下来，你可能希望将用户分配到特定 New Relic 帐户或角色。 若要详细了解，请参阅[用户管理概念](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/add-manage-users-groups-roles/#understand-concepts)。 
+
+在 New Relic 的身份验证域 UI 中，可配置[其他设置](https://docs.newrelic.com/docs/accounts/accounts-billing/new-relic-one-user-management/authentication-domains-saml-sso-scim-more/#session-mgmt)，如会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。

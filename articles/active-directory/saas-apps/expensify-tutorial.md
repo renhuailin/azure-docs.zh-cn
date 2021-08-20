@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/02/2021
+ms.date: 06/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 5c68453f7f7d638877683920a17022cf3d29bdc5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9bba6c33dafb04be0cec0eb74be3b7211bc1b0ed
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104597800"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112466382"
 ---
 # <a name="tutorial-integrate-expensify-with-azure-active-directory"></a>教程：将 Expensify 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "104597800"
 * 让用户使用其 Azure AD 帐户自动登录到 Expensify。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -78,11 +78,11 @@ ms.locfileid: "104597800"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    a. 在“登录 URL”文本框中，键入 URL：`https://www.expensify.com/authentication/saml/login`
+    a. 在“标识符(实体 ID)”文本框中，键入 URL：`https://www.expensify.com` 
 
-    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://www.expensify.com`
-
-    c. b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.expensify.com/authentication/saml/loginCallback?domain=<yourdomain>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.expensify.com/authentication/saml/loginCallback?domain=<yourdomain>`
+    
+    c. 在“登录 URL”文本框中，键入 URL：`https://www.expensify.com/authentication/saml/login`
 
     > [!NOTE]
     > 答复 URL 值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Expensify 客户端支持团队](mailto:help@expensify.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
@@ -103,7 +103,7 @@ ms.locfileid: "104597800"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -127,7 +127,7 @@ ms.locfileid: "104597800"
 
 1. 登录到 Expensify 应用程序。
 
-2. 在左侧面板中，单击“设置”，然后导航至 **SAML**。
+2. 在左面板中，将鼠标悬停在“设置”上，然后单击“域”并导航到“SAML”。
 
 3. 将“SAML 登录”选项切换为“已启用”。
 
@@ -135,7 +135,7 @@ ms.locfileid: "104597800"
 
 ### <a name="create-expensify-test-user"></a>创建 Expensify 测试用户
 
-在本部分中，将在 Expensify 中创建名为 B.Simon 的用户。 若要在 Expensify 平台中添加用户，请与 [Expensify 客户端支持团队](mailto:help@expensify.com)协作。
+在本部分中，将在 Expensify 中创建名为 B.Simon（例如，B.Simon@contoso.com）的同一个用户。 请在[此处](https://community.expensify.com/discussion/4869/how-to-manage-domain-members)查看成员邀请指南，或与 [Expensify 客户端支持团队](mailto:help@expensify.com)合作，将用户添加到 Expensify 平台。
 
 ## <a name="test-sso"></a>测试 SSO
 

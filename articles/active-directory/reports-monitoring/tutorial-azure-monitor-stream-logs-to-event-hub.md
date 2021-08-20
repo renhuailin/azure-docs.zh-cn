@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 06/23/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f7a35faa75af5a6205609e7afd40225d960d132
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: cff544e3d9ba2851db02e0e4440ba9f97b240e68
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964616"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580829"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心
 
@@ -59,13 +59,19 @@ ms.locfileid: "111964616"
 
 7. 选择“确定”，退出事件中心配置。
 
-8. 执行下列两项操作或之一：
-    * 若要将审核日志发送到事件中心，请选中“AuditLogs”复选框。 
-    * 若要将登录日志发送到事件中心，请选中“SignInLogs”复选框。
+8. 执行下列任意组合操作：
+    - 若要将审核日志发送到事件中心，请选中“AuditLogs”复选框。 
+    - 若要将交互式用户登录日志发送到事件中心，请选中“SignInLogs”复选框。
+    - 要将非交互式用户登录日志发送到事件中心，请选中“NonInteractiveUserSignInLogs”复选框。 
+    - 要将服务主体登录日志发送到事件中心，请选中“ServicePrincipalSignInLogs”复选框。
+    - 要将托管标识登录日志发送到事件中心，请选中“ManagedIdentitySignInLogs”复选框。
+    - 要将预配日志发送到事件中心，请选中“ProvisioningLogs”复选框。
+    - 要通过 AD FS Connect Health 代理向 Azure AD 发送登录信息，请选中“ADFSSignInLogs”复选框。
+
+    >[!Note]
+    >某些登录类别包含大量日志数据，具体取决于租户的配置。 通常，非交互式用户登录和服务主体登录可以比交互式用户登录大 5 到 10 倍。
 
 9. 选择“保存”，保存设置。
-
-    ![诊断设置](./media/quickstart-azure-monitor-stream-logs-to-event-hub/DiagnosticSettings.png)
 
 10. 大约 15 分钟后，验证事件是否显示在事件中心。 为此，请从门户转到事件中心，然后验证“传入消息”计数是否大于零。 
 

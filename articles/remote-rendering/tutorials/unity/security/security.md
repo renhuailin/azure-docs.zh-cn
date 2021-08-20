@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e133de6b4f7f67439734254686d388b9abe71ea0
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: a08516a1cdf968cb5bcfa76228cab88ecacec167
+ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111412018"
+ms.lasthandoff: 06/25/2021
+ms.locfileid: "112970045"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>教程：保护 Azure 远程渲染和模型存储
 
@@ -178,16 +178,16 @@ var task = ARRSessionService.CurrentActiveSession.Connection.LoadModelAsync(load
 
 RemoteRenderingCoordinator 脚本具有一个名为 ARRCredentialGetter 的委托，该委托包含一个返回 SessionConfiguration 对象的方法，此方法用于配置远程会话管理。 我们可以将一个不同的方法分配给 ARRCredentialGetter，这使我们可以使用 Azure 登录流，生成包含 Azure 访问令牌的 SessionConfiguration 对象。 此访问令牌特定于正在登录的用户。
 
-1. 请按照[如何：配置身份验证 - 已部署的应用程序的身份验证](../../../how-tos/authentication.md#authentication-for-deployed-applications)进行操作，具体来说，需要遵循 Azure 空间定位点文档 [Azure AD 用户身份验证](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication)中列出的说明。 这涉及到注册新的 Azure Active Directory 应用程序并配置对 ARR 实例的访问。
+1. 请按照[：配置身份验证 - 已部署的应用程序的身份验证](../../../how-tos/authentication.md#authentication-for-deployed-applications)，其中包括注册新的 Azure Active Directory 应用程序和配置对 ARR 实例的访问。
 1. 配置新的 AAD 应用程序后，请检查你的 AAD 应用程序是否如下图所示：
 
-    AAD 应用程序 -> 身份验证 ![应用身份验证](./media/app-authentication-public.png)
+    AAD 应用程序 -> 身份验证 :::image type="content" source="./../../../how-tos/media/azure-active-directory-app-setup.png" alt-text="应用身份验证":::
 
-    AAD 应用程序 -> API 权限 ![应用 API](./media/request-api-permissions-step-five.png)
+    AAD 应用程序 -> API 权限 :::image type="content" source="./media/azure-active-directory-api-permissions-granted.png" alt-text="应用 API":::    
 
 1. 配置远程渲染帐户后，请检查你的配置是否如下图所示：
 
-    AAR -> AccessControl (IAM) ![ARR 角色](./media/azure-remote-rendering-role-assignment-complete.png)
+    AAR -> AccessControl (IAM) :::image type="content" source="./../../../how-tos/media/azure-remote-rendering-role-assignments.png" alt-text="ARR 角色":::       
 
     >[!NOTE]
     > 所有者角色的权限不足以通过客户端应用程序管理会话。 对于要授予会话管理权限的每个用户，你需要向他们提供远程渲染客户端角色。 对于要管理会话和转换模型的每个用户，必须为其提供远程渲染管理员角色。
@@ -255,9 +255,9 @@ RemoteRenderingCoordinator 脚本具有一个名为 ARRCredentialGetter 的委�
         string authority => "https://login.microsoftonline.com/" + AzureTenantID;
     
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
-    
-        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountDomain + "/mixedreality.signin" };
-    
+
+        string[] scopes => new string[] { "https://sts.mixedreality.azure.com/mixedreality.signin" };
+
         public void OnEnable()
         {
             RemoteRenderingCoordinator.ARRCredentialGetter = GetAARCredentials;
@@ -375,9 +375,12 @@ return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccoun
 
 在 Unity 编辑器中，当 AAD 身份验证处于活动状态时，需要在每次启动应用程序时进行身份验证。 在设备上，首次启动时需要执行身份验证步骤，然后将仅在令牌过期或无效时才需要再次执行。
 
-1. 将 AADAuthentication 组件添加到 RemoteRenderingCoordinator GameObject 中 。
+1. 将“AAD 身份验证”组件添加到“RemoteRenderingCoordinator”GameObject 。
 
     ![AAD 身份验证组件](./media/azure-active-directory-auth-component.png)
+
+> [!NOTE]
+> 如果使用 [ARR 示例存储库](https://github.com/Azure/azure-remote-rendering)中已完成的项目，请确保通过单击其标题旁边的复选框来启用“AAD 身份验证”组件。
 
 1. 填写客户 ID 和租户 ID 的值。 这些值可以在应用程序注册的概述页面中找到：
 
@@ -387,10 +390,10 @@ return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccoun
     * Azure 远程渲染帐户 ID 与用于 RemoteRenderingCoordinator 的帐户 ID 相同  。
     * Azure 远程渲染帐户域与你在 RemoteRenderingCoordinator 中使用的帐户域相同  。
 
-    ![屏幕截图，其中突出显示了“应用程序(客户端)ID”和“目录(租户) ID”。](./media/app-overview-data.png)
+    :::image type="content" source="./media/azure-active-directory-app-overview.png" alt-text="屏幕截图，其中突出显示了“应用程序(客户端)ID”和“目录(租户) ID”。":::
 
 1. 在 Unity 编辑器中按“播放”并同意运行会话。
-    由于 AADAuthentication 组件有一个视图控制器，它将在会话授权模式面板后自动挂钩以显示提示。
+    由于“AAD 身份验证”组件具有视图控制器，它可自动连接以在会话授权模式面板之后显示提示。
 1. 请按照 AppMenu 右边面板中的说明操作。
     看到的内容应该如下所示：![显示在 AppMenu 右侧显示的“指令”面板的插图。](./media/device-flow-instructions.png)
     

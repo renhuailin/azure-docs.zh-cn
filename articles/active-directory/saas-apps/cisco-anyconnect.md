@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: a89ab7f2304fa51d3e8c7a968d445c9b40a457a3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36740e7b135309524b70a74e0f92ceb7e2ac1238
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92456082"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112461796"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco AnyConnect 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "92456082"
 * 让用户使用其 Azure AD 帐户自动登录到 Cisco AnyConnect。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -73,14 +73,16 @@ ms.locfileid: "92456082"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值： 
+1. 在“设置 SAML 单一登录”页上，输入以下字段的值（请注意值区分大小写）：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`< YOUR CISCO ANYCONNECT VPN VALUE >`
+   1. 在“标识符”文本框中，使用以下模式键入 URL：   
+      `https://*.YourCiscoServer.com/saml/sp/metadata/TGTGroup`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`< YOUR CISCO ANYCONNECT VPN VALUE >`
+   1. 在“回复 URL”文本框中，使用以下模式键入 URL：   
+      `https://YOUR_CISCO_ANYCONNECT_FQDN/+CSCOE+/saml/sp/acs?tgname=TGTGroup`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Cisco AnyConnect 客户端支持团队](https://www.cisco.com/c/en/us/support/index.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 有关这些值的说明，请联系 Cisco TAC 客户支持。 使用 Cisco TAC 提供的实际标识符和回复 URL 更新这些值。 请联系 [Cisco AnyConnect 客户端支持团队](https://www.cisco.com/c/en/us/support/index.html)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分，找到“证书(Base64)”，选择“下载”以下载证书文件并将其保存到计算机上。    
 
@@ -101,7 +103,7 @@ ms.locfileid: "92456082"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 

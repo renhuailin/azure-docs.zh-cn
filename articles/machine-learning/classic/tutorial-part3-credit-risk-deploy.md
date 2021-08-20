@@ -1,6 +1,6 @@
 ---
 title: 机器学习工作室（经典）教程 3：部署信用风险模型 - Azure
-description: 本详细教程介绍如何创建预测分析解决方案，用于在 Azure 机器学习工作室（经典版）中进行信用风险评估。 本教程是由三个部分构成的系列教程的第三部分。 其中介绍了如何将模型部署为 Web 服务。
+description: 本教程是机器学习工作室（经典）的三部分教程系列的第三部分。 其中介绍了如何将模型部署为 Web 服务。
 keywords: 信用风险, 预测分析解决方案, 风险评估, 部署, web 服务
 author: likebupt
 ms.author: keli19
@@ -9,22 +9,22 @@ ms.service: machine-learning
 ms.subservice: studio-classic
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 68a5f6773543b922d024336556e4de24dd96fd33
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: c60c511840d6591009064ba6b3f27cd6cdb89856
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517376"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580703"
 ---
-# <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>教程 3：部署信用风险模型 - Azure 机器学习工作室（经典版）
+# <a name="tutorial-3-deploy-credit-risk-model---machine-learning-studio-classic"></a>教程 3：部署信用风险模型 - 机器学习工作室（经典）
 
-**适用对象：** ![这是复选标记，意味着本文适用于机器学习工作室（经典版）。](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）   ![这是 X，意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+适用范围：![这是复选标记，意味着本文适用于机器学习工作室（经典）。](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![这是 X，意味着本文不适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-在本教程中，我们将深入探讨开发预测分析解决方案的过程。 我们将在机器学习工作室（经典版）中开发一个简单模型。  然后将该模型部署为 Azure 机器学习 Web 服务。  部署的模型将使用新数据进行预测。 本教程是 **由三个部分构成的系列教程的第三部分**。
+在本教程中，我们将深入探讨开发预测分析解决方案的过程。 我们将在机器学习工作室（经典版）中开发一个简单模型。  然后将该模型部署为机器学习 Web 服务。  部署的模型将使用新数据进行预测。 本教程是 **由三个部分构成的系列教程的第三部分**。
 
 假设用户需要根据他们提供的贷款申请相关信息预测个人的信用风险。  
 
-信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 我们将使用它作为示例，展示如何使用 Microsoft Azure 机器学习工作室（经典版）来创建预测分析解决方案。 对此解决方案，我们将使用 Azure 机器学习工作室（经典）和机器学习 Web 服务。 
+信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 你将使用它作为示例，展示如何使用机器学习工作室（经典）来创建预测分析解决方案。 在该解决方案中，将使用机器学习工作室（经典）和机器学习 Web 服务。 
 
 在这篇由三个部分构成的教程中，我们将从公开的信用风险数据着手。  然后开发并训练预测模型。  最后将该模型部署为 Web 服务。
 
@@ -90,7 +90,7 @@ ms.locfileid: "100517376"
 可以手动执行此操作，不过幸好上述三个步骤只需单击试验画布底部的“设置 Web 服务”（以及选择“预测 Web 服务”选项）即可完成。
 
 > [!TIP]
-> 要更详细地了解在将训练试验转换为预测试验时会发生什么情况，请参阅[如何准备模型以便在 Azure 机器学习工作室（经典版）中进行部署](deploy-a-machine-learning-web-service.md)。
+> 如需更详细地了解在将训练实验转换为预测实验时会发生什么情况，请参阅[如何准备模型以便在机器学习工作室（经典）中进行部署](deploy-a-machine-learning-web-service.md)。
 
 单击“设置 Web 服务”时，会发生以下情况：
 
@@ -142,11 +142,11 @@ ms.locfileid: "100517376"
 ### <a name="deploy-as-a-new-web-service"></a>部署为新 Web 服务
 
 > [!NOTE] 
-> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用 Azure 机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。 
+> 若要部署新的 Web 服务，必须对要部署 Web 服务的订阅拥有充分的权限。 有关详细信息，请参阅[使用机器学习 Web 服务门户管理 Web 服务](manage-new-webservice.md)。 
 
 若要部署从实验派生的新的 Web 服务，请执行以下操作：
 
-1. 单击画布下面的“部署 Web 服务”，并选择“部署 Web 服务 [新]”。 机器学习工作室（经典版）会你将转到 Azure 机器学习 Web 服务的“部署试验”页。
+1. 单击画布下面的“部署 Web 服务”，并选择“部署 Web 服务 [新]”。 机器学习工作室（经典）会你将转到机器学习 Web 服务的“部署实验”页。
 
 1. 输入 Web 服务的名称。 
 
@@ -179,7 +179,7 @@ ms.locfileid: "100517376"
 只能在 **Azure 机器学习 Web 服务** 门户中测试新的 Web 服务。
 
 > [!TIP]
-> 在 Azure 机器学习 Web 服务门户中测试时，可以让门户创建用于测试请求-响应服务的示例数据。 在“配置”页上，针对“启用示例数据?”选择“是”。 打开“测试”页上的“请求-响应”选项卡时，门户会在其中填充取自原始信用风险数据集的示例数据。
+> 在机器学习 Web 服务门户中测试时，可以让门户创建用于测试请求-响应服务的示例数据。 在“配置”页上，针对“启用示例数据?”选择“是”。 打开“测试”页上的“请求-响应”选项卡时，门户会在其中填充取自原始信用风险数据集的示例数据。
 
 ### <a name="test-a-classic-web-service"></a>测试经典 Web 服务
 
@@ -193,7 +193,7 @@ ms.locfileid: "100517376"
 
 #### <a name="test-in-the-machine-learning-web-services-portal"></a>在机器学习 Web 服务门户中测试
 
-1. 在 Web 服务的“仪表板”页上，单击“默认终结点”下的“测试预览”链接。 Azure 机器学习 Web 服务门户中的 Web 服务终结点测试页将打开，并要求提供服务的输入数据。 这些是在原始信用风险数据集中出现的列。
+1. 在 Web 服务的“仪表板”页上，单击“默认终结点”下的“测试预览”链接。 机器学习 Web 服务门户中的 Web 服务终结点测试页将打开，并要求提供服务的输入数据。 这些是在原始信用风险数据集中出现的列。
 
 2. 单击“测试请求-响应”。 
 
@@ -201,7 +201,7 @@ ms.locfileid: "100517376"
 
 只能在 Azure 机器学习 Web 服务门户中测试新的 Web 服务。
 
-1. 在 [Azure 机器学习 Web 服务](https://services.azureml.net/quickstart)门户中，单击页面顶部的“测试”。 此时会打开“测试”页，可在其中输入服务的数据。 显示的输入字段对应于原始信用风险数据集中出现的列。 
+1. 在[机器学习 Web 服务](https://services.azureml.net/quickstart)门户中，单击页面顶部的“测试”。 此时会打开“测试”页，可在其中输入服务的数据。 显示的输入字段对应于原始信用风险数据集中出现的列。 
 
 1. 输入一组数据，并单击“测试请求-响应”。
 
@@ -210,11 +210,11 @@ ms.locfileid: "100517376"
 
 ## <a name="manage-the-web-service"></a>管理 Web 服务
 
-部署 Web 服务（经典或新式）后，可以从 [Microsoft Azure 机器学习 Web 服务门户](https://services.azureml.net/quickstart)管理它。
+部署 Web 服务（经典或新式）后，可以从[机器学习 Web 服务](https://services.azureml.net/quickstart)门户管理它。
 
 监视 Web 服务的性能：
 
-1. 登录到 [Microsoft Azure 机器学习 Web 服务](https://services.azureml.net/quickstart)门户
+1. 登录[机器学习 Web 服务](https://services.azureml.net/quickstart)门户
 1. 单击“Web 服务”
 1. 单击 Web 服务
 1. 单击“仪表板”
@@ -231,7 +231,7 @@ Web 服务是一种 Azure Web 服务，可以两种方式之一使用 REST API �
 > [!NOTE]
 > 工作室（经典）中的功能列名称区分大小写。 请确保调用 Web 服务的输入数据与训练数据集中的列名称相同。
 
-有关访问和使用 Web 服务的详细信息，请参阅[通过 Web 应用模板使用 Azure 机器学习 Web 服务](./consume-web-services.md)。
+有关访问和使用 Web 服务的详细信息，请参阅[通过 Web 应用模板使用机器学习 Web 服务](./consume-web-services.md)。
 
 
 
@@ -253,7 +253,7 @@ Web 服务是一种 Azure Web 服务，可以两种方式之一使用 REST API �
 还可使用 R、C# 和 Python 编程语言中提供的起始代码开发自定义应用程序，以访问 Web 服务。
 
 > [!div class="nextstepaction"]
-> [使用 Azure 机器学习 Web 服务](consume-web-services.md)
+> [使用机器学习 Web 服务](consume-web-services.md)
 
 <!-- Module References -->
 [evaluate-model]: /azure/machine-learning/studio-module-reference/evaluate-model

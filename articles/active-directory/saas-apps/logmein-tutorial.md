@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/14/2021
+ms.date: 06/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 09c46efab8eea797b10b2724c3c19c7b1b34c87f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 907b627a260bf552555dca63936af6495fb987c6
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467649"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112453747"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-logmein"></a>教程：Azure Active Directory 单一登录 (SSO) 与 LogMeIn 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "110467649"
 * 让用户可使用其 Azure AD 帐户自动登录到 LogMeIn。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -50,7 +50,6 @@ ms.locfileid: "110467649"
 1. 在“从库中添加”部分的搜索框中，键入“LogMeIn” 。
 1. 从结果面板中选择“LogMeIn”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-logmein"></a>配置并测试 LogMeIn 的 Azure AD SSO
 
 使用名为 B.Simon 的测试用户配置并测试 LogMeIn 的 Azure AD SSO。 若要使 SSO 有效，需要在 Azure AD 用户与 LogMeIn 中的相关用户之间建立关联。
@@ -70,7 +69,7 @@ ms.locfileid: "110467649"
 
 1. 在 Azure 门户的 LogMeIn 应用程序集成页上，找到“管理”部分并选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -92,7 +91,6 @@ ms.locfileid: "110467649"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -101,7 +99,7 @@ ms.locfileid: "110467649"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -119,7 +117,15 @@ ms.locfileid: "110467649"
 
 ## <a name="configure-logmein-sso"></a>配置 LogMeIn SSO
 
-1. 在新的浏览器窗口中，以管理员身份登录 LogMeIn 网站。
+1. 若要在 LogMeIn 中自动执行配置，需要通过单击“安装扩展”来安装“我的应用安全登录”浏览器扩展 。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+1. 将扩展添加到浏览器后，单击“安装 LogMeIn”会将你定向到 LogMeIn 应用程序。 在此处，提供管理员凭据以登录到 LogMeIn。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-5。
+
+    ![设置配置](common/setup-sso.png)
+
+1. 若要手动设置 LogMeIn，请在另一个 Web 浏览器窗口中，以管理员身份登录到 LogMeIn 公司站点。
 
 1. 转到“标识提供者”选项卡，在“元数据 URL”文本框中，粘贴从 Azure 门户复制的联合元数据 URL  。
 

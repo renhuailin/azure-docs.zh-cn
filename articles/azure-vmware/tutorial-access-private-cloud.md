@@ -3,12 +3,12 @@ title: 教程 - 访问私有云
 description: 了解如何访问 Azure VMware 解决方案私有云
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: d2046acaf483022f977559fe74254ca58b8c42ea
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 81927e9ad0362ba340bb704d2d7e8b9c0927efbe
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945640"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114605394"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>教程：访问 Azure VMware 解决方案私有云
 
@@ -26,7 +26,7 @@ Azure VMware 解决方案不允许使用本地 vCenter 管理私有云。 你需
 
 1. 在资源组中选择“+ 添加”，搜索并选择“Microsoft Windows 10”，然后选择“创建”  。
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss8-azure-w10vm-create.png" alt-text="说明如何为跳转盒添加新的 Windows 10 VM 的屏幕截图。" border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss8-azure-w10vm-create.png" alt-text="说明如何为跳转盒添加新的 Windows 10 VM 的屏幕截图。":::
 
 1. 在字段中输入所需信息，然后选择“查看 + 创建”。 
 
@@ -58,7 +58,7 @@ Azure VMware 解决方案不允许使用本地 vCenter 管理私有云。 你需
 
    此时会显示私有云 vCenter 和 NSX-T Manager 的 URL 和用户凭据。
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="显示私有云 vCenter 和 NSX 管理器 URL 和凭据。" border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="私有云 vCenter 以及 NSX 管理器 URL 和凭据的屏幕截图。" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
 
 1. 导航到在上一步创建的 VM，并连接到该虚拟机。 
 
@@ -68,13 +68,13 @@ Azure VMware 解决方案不允许使用本地 vCenter 管理私有云。 你需
 
 1. 在“vCenter”选项卡中，输入在上一步获取的 `cloudadmin@vmcp.local` 用户凭据。
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="登录到私有云 vCenter。" border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="显示 VMware vSphere 登录页的屏幕截图。" border="true":::
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss6-vsphere-client-home.png" alt-text="vCenter 门户。" border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss6-vsphere-client-home.png" alt-text="显示 vSphere 客户端中的群集 1 摘要的屏幕截图。" border="true":::
 
 1. 在浏览器的第二个选项卡中，登录到 NSX-T 管理器。
 
-   :::image type="content" source="media/tutorial-access-private-cloud/ss10-nsx-manager-home.png" alt-text="在浏览器的第二个选项卡中，登录到 NSX-T 管理器。" border="true":::
+   :::image type="content" source="media/tutorial-access-private-cloud/ss10-nsx-manager-home.png" alt-text="NSX-T 管理器概述的屏幕截图。" border="true":::
 
 
 
@@ -90,5 +90,4 @@ Azure VMware 解决方案不允许使用本地 vCenter 管理私有云。 你需
 
 > [!div class="nextstepaction"]
 > [创建虚拟网络](tutorial-configure-networking.md)
-
 

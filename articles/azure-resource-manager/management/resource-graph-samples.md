@@ -1,0 +1,27 @@
+---
+title: 针对 Azure 资源管理器的 Azure Resource Graph 示例查询
+description: 针对 Azure 资源管理器的 Azure Resource Graph 示例查询，演示了如何使用资源类型和表来访问与 Azure 资源管理器相关的资源和属性。
+ms.date: 07/21/2021
+ms.topic: sample
+ms.custom: subject-resourcegraph-sample
+ms.openlocfilehash: 1c409e62dd32500b972b45fab94eaa516126daab
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114479554"
+---
+# <a name="azure-resource-graph-sample-queries-for-azure-resource-manager"></a>针对 Azure 资源管理器的 Azure Resource Graph 示例查询
+
+此页面是针对 Azure 资源管理器的 [Azure Resource Graph](../../governance/resource-graph/overview.md) 示例查询的集合。 有关 Azure Resource Graph 示例的完整列表，请参阅 [Resource Graph 示例（按类别）](../../governance/resource-graph/samples/samples-by-category.md)和 [Resource Graph 示例（按表）](../../governance/resource-graph/samples/samples-by-table.md)。
+
+## <a name="sample-queries-for-tags"></a>标记的示例查询
+
+[!INCLUDE [azure-resource-graph-samples-cat-tags](../../../includes/resource-graph/samples/bycat/tags.md)]
+
+## <a name="next-steps"></a>后续步骤
+
+- 详细了解[查询语言](../../governance/resource-graph/concepts/query-language.md)。
+- 详细了解如何[浏览资源](../../governance/resource-graph/concepts/explore-resources.md)。
+- 请参阅[初学者语言查询](../../governance/resource-graph/samples/starter.md)的示例。
+- 请参阅[高级语言查询](../../governance/resource-graph/samples/advanced.md)的示例。

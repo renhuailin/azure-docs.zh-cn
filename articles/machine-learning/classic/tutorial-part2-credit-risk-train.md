@@ -1,6 +1,6 @@
 ---
 title: 机器学习工作室（经典）教程 2：训练信用风险模型 - Azure
-description: 本详细教程介绍如何创建预测分析解决方案，用于在 Azure 机器学习工作室（经典）中进行信用风险评估。 本教程是由三个部分构成的系列教程的第二部分， 其中介绍了如何训练和评估模型。
+description: 本教程是机器学习工作室（经典）的三部分教程系列的第二部分。 其中介绍了如何训练和评估模型。
 keywords: 信用风险, 预测分析解决方案, 风险评估
 author: sdgilley
 ms.author: sgilley
@@ -9,22 +9,22 @@ ms.service: machine-learning
 ms.subservice: studio-classic
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 677c5b791f475468fbcf15c81fbabdcdbb1972de
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 0d0cdab6529f95de2936b32dda590f1f0f75e53c
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517444"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112580739"
 ---
-# <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>教程 2：训练信用风险模型 - Azure 机器学习工作室（经典版）
+# <a name="tutorial-2-train-credit-risk-models---machine-learning-studio-classic"></a>教程 2：训练信用风险模型 - 机器学习工作室（经典）
 
-**适用对象：** ![这是一个复选标记，表示本文适用于机器学习工作室（经典）。](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习工作室（经典）   ![这是一个 X，表示本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**适用对象：** ![这是一个复选标记，表示本文适用于机器学习工作室（经典）。](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习工作室（经典）   ![这是一个 X，表示本文不适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-在本教程中，我们将深入探讨开发预测分析解决方案的过程。 我们将在机器学习工作室（经典版）中开发一个简单模型。  然后将该模型部署为 Azure 机器学习 Web 服务。  部署的模型将使用新数据进行预测。 本教程是 **由三个部分构成的系列教程的第二部分**。
+在本教程中，我们将深入探讨开发预测分析解决方案的过程。 我们将在机器学习工作室（经典版）中开发一个简单模型。  然后将该模型部署为机器学习 Web 服务。  部署的模型将使用新数据进行预测。 本教程是 **由三个部分构成的系列教程的第二部分**。
 
 假设用户需要根据他们提供的贷款申请相关信息预测个人的信用风险。  
 
-信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 我们将使用它作为示例，展示如何使用 Microsoft Azure 机器学习工作室（经典版）来创建预测分析解决方案。 对此解决方案，我们将使用 Azure 机器学习工作室（经典）和机器学习 Web 服务。  
+信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 你将使用它作为示例，展示如何使用机器学习工作室（经典）来创建预测分析解决方案。 对此解决方案，将使用机器学习工作室（经典）和机器学习 Web 服务。  
 
 在这篇由三个部分构成的教程中，我们将从公开的信用风险数据着手。  然后开发并训练预测模型。  最后将该模型部署为 Web 服务。
 
@@ -45,16 +45,12 @@ ms.locfileid: "100517444"
 
 ## <a name="train-multiple-models"></a><a name="train"></a>训练多个模型
 
-使用 Azure 机器学习工作室（经典）创建机器学习模型的优势之一是，能够在单个试验中一次性尝试多种模型并比较结果。 此类型的实验有助于找到最适合解决问题的解决方案。
+使用机器学习工作室（经典）创建机器学习模型的优势之一是，能够在单个实验中一次性尝试多种模型并比较结果。 此类型的实验有助于找到最适合解决问题的解决方案。
 
 在本教程开发的试验中，你将创建两个不同类型的模型，然后比较其评分结果，从而确定我们希望用于最终试验的算法。  
 
 可从多种模型中进行选择。 要查看可用的模型，请在模块调色板中展开“机器学习”节点，并展开“初始化模型”及其下面的节点。 为实现本试验的目的，将选择[两类支持向量机][two-class-support-vector-machine] (SVM) 和[两类提升决策树][two-class-boosted-decision-tree]模块。
 
-> [!TIP]
-> 要获取有关确定哪种机器学习算法最适合你正尝试解决的特定问题的帮助，请参阅[如何选择 Microsoft Azure 机器学习工作室（经典版）的算法](../how-to-select-algorithms.md)。
-> 
-> 
 
 在此试验中，将同时添加[两类提升决策树][two-class-boosted-decision-tree]模块和[两类支持向量机][two-class-support-vector-machine]模块。
 
@@ -189,9 +185,9 @@ ms.locfileid: "100517444"
 通过检查这些值，可以确定哪个模型提供的结果与你所需的结果最接近。 可以返回到之前的步骤，通过更改不同模型中的参数值来迭代进行实验。 
 
 对这些结果进行解释以及对模型性能进行优化的科学与艺术不在本教程的范围内。 若要获得更多帮助，可以阅读以下文章：
-- [如何在 Azure 机器学习工作室（经典版）中评估模型性能](evaluate-model-performance.md)
-- [选择参数优化 Azure 机器学习工作室（经典版）中的算法](algorithm-parameters-optimize.md)
-- [在 Azure 机器学习工作室（经典版）中解释模型结果](interpret-model-results.md)
+- [如何在机器学习工作室（经典）中评估模型性能](evaluate-model-performance.md)
+- [选择参数优化机器学习工作室（经典）中的算法](algorithm-parameters-optimize.md)
+- [在机器学习工作室（经典）中解释模型结果](interpret-model-results.md)
 
 > [!TIP]
 > 每次运行实验时，该迭代的记录都会保留在运行历史记录中。 可以通过单击画布下面的“查看运行历史记录”查看这些迭代，并返回到任何一个迭代。 也可以单击“属性”窗格中的“之前运行”，返回到已打开迭代的前一个迭代。
@@ -199,7 +195,7 @@ ms.locfileid: "100517444"
 > 可通过单击画布下面的“另存为”，复制实验的任何迭代。 
 > 使用试验的“摘要”和“说明”属性，保留在试验迭代中所尝试操作的记录。
 > 
-> 有关详细信息，请参阅[在 Azure 机器学习工作室（经典版）中管理试验迭代](manage-experiment-iterations.md)。  
+> 有关详细信息，请参阅[在机器学习工作室（经典）中管理试验迭代](manage-experiment-iterations.md)。  
 > 
 > 
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 3cd7d2541cb980fc5ca6a1a9c42a430eac1ecb1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47231ecab14ab9d1705d1015c0de4a035a10a02e
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99429273"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112417300"
 ---
 # <a name="basic-concepts"></a>基本概念
 
@@ -129,10 +129,25 @@ Get OpenID Metadata API 返回 [OpenID Connect 发现协议](https://openid.net/
   "x-ms-sgx-mrsigner": <SGX enclave msrigner value>, 
   "x-ms-sgx-product-id": 1, 
   "x-ms-sgx-svn": 1,
-  "x-ms-ver": "1.0"
+  "x-ms-ver": "1.0",
+  "x-ms-sgx-config-id": "000102030405060708090a0b0c0d8f99000102030405060708090a0b0c860e9a000102030405060708090a0b7d0d0e9b000102030405060708090a740c0d0e9c",
+  "x-ms-sgx-config-svn": 3451,
+  "x-ms-sgx-isv-extended-product-id": "8765432143211234abcdabcdef123456",
+  "x-ms-sgx-isv-family-id": "1234567812344321abcd1234567890ab"
 }.[Signature]
 ```
+
 上面使用的某些声明被视为已弃用，但完全受支持。  建议将来所有的代码和工具都使用未弃用的声明名称。 有关详细信息，请参阅[由 Azure 证明颁发的声明](claim-sets.md)。
+
+以下声明将仅出现在为基于 Intel® Xeon® 可缩放处理器的服务器平台生成的证明令牌中。 如果未为 SGX enclave 配置[密钥分离和共享支持](https://github.com/openenclave/openenclave/issues/3054)，则不会出现这些声明
+
+**x-ms-sgx-config-id**
+
+**x-ms-sgx-config-svn**
+
+**x-ms-sgx-isv-extended-product-id**
+
+**x-ms-sgx-isv-family-id**
 
 ## <a name="encryption-of-data-at-rest"></a>静态数据加密
 

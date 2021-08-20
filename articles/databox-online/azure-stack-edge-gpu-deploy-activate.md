@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/07/2020
+ms.date: 07/14/2021
 ms.author: alkohli
-ms.openlocfilehash: 8e88fb2f6f2fc9ad50911bfda2245cd95ae33236
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: fe1397b2853e95af715e4feb8423f7db3cf548f0
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058742"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114219961"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>教程：使用 GPU 激活 Azure Stack Edge Pro
 
@@ -92,6 +92,26 @@ ms.locfileid: "106058742"
 已完成设备激活。 现在可以在设备上添加共享。
 
 如果在激活期间遇到任何问题，请转到[对激活和 Azure Key Vault 错误进行故障排除](azure-stack-edge-gpu-troubleshoot-activation.md#activation-errors)。
+
+
+
+## <a name="deploy-workloads"></a>部署工作负载
+
+激活设备后，下一步是部署工作负载。
+
+- 若要部署 VM 工作负载，请参阅[什么是 Azure Stack Edge 上的 VM？](azure-stack-edge-gpu-virtual-machine-overview.md)和关联的 VM 部署文档。
+- 将网络功能部署为托管应用程序：
+    - 请确保为 Azure 网络功能管理器 (NFM) 创建的设备资源链接到 Azure Stack Edge 资源。 设备资源聚合部署在 Azure Stack Edge 设备上的所有网络功能。 有关详细说明，请参阅[教程：创建网络功能管理器设备资源（预览版）](../network-function-manager/create-device.md)。 
+    - 然后，可按照[教程：在 Azure Stack Edge 上部署网络功能（预览版）](../network-function-manager/deploy-functions.md)中的说明部署网络功能管理器。
+- 部署 IoT Edge 和 Kubernetes 工作负载：
+    - 首先需要按照[教程：在 Azure Stack Edege Pro GPU 设备上配置计算](azure-stack-edge-gpu-deploy-configure-compute.md)中的说明配置计算。 此步骤会创建一个 Kubernetes 群集，充当设备上 IoT Edge 的托管平台。 
+    - 在 Azure Stack Edge 设备上创建 Kubernetes 群集后，可通过以下任一方法在此群集上部署应用程序工作负载：
+
+        - 通过 `kubectl` 进行本机访问
+        - IoT Edge
+        - Azure Arc
+        
+        有关工作负载部署的详细信息，请参阅 [Azure Stack Edge 设备上的 Kubernetes 工作负载管理](azure-stack-edge-gpu-kubernetes-workload-management.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

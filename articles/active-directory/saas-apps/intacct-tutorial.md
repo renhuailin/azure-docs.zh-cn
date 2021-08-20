@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 5a216e39ca32b16de405c7924d08da52c6eae4c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 652126519dc5f9b30c9ff94a28b3e6ee78e95f64
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98736946"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112463677"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>教程：将 Sansan Intacct 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "98736946"
 * 让用户使用其 Azure AD 帐户自动登录到 Sage Intacct。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -75,7 +75,12 @@ ms.locfileid: "98736946"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-    在“回复 URL”文本框中键入 URL：`https://www.intacct.com/ia/acct/sso_response.phtml`
+    在“回复 URL”文本框中，添加以下 URL：  
+    `https://www.intacct.com/ia/acct/sso_response.phtml`（选择作为默认值。）  
+    `https://www.p-02.intacct.com/ia/acct/sso_response.phtml`  
+    `https://www.p-03.intacct.com/ia/acct/sso_response.phtml`  
+    `https://www.p-04.intacct.com/ia/acct/sso_response.phtml`  
+    `https://www.p-05.intacct.com/ia/acct/sso_response.phtml`  
 
 1. Sage Intacct 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标以打开“用户属性”对话框.
 
@@ -98,7 +103,7 @@ ms.locfileid: "98736946"
 
     e. 在“源属性”列表中，键入或选择为该行显示的属性值。
 
-    f. 单击“确定” 
+    f. 单击“确定”
 
     g. 单击“ **保存**”。
 
@@ -118,7 +123,7 @@ ms.locfileid: "98736946"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -189,7 +194,7 @@ ms.locfileid: "98736946"
 
     b. 选择要预配的 Azure AD 帐户的 **管理员特权**。
 
-    c. 单击“保存”  。 
+    c. 单击“ **保存**”。 
     
     d. Azure AD 帐户持有者将收到一封电子邮件，并打开用于在激活帐户前确认其帐户的链接。
 

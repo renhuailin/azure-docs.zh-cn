@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/05/2021
 ms.author: jeedes
-ms.openlocfilehash: af22c7d1ac8d9c878489f257330b0f0c416a64b2
-ms.sourcegitcommit: 19dfdfa85e92c6a34933bdd54a7c94e8b00eacfd
+ms.openlocfilehash: b73c760185e8b5d97ab03fbbee75fd399e0b0c16
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109665132"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112466494"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-documo"></a>教程：Azure Active Directory 与 Documo 的单一登录 (SSO) 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "109665132"
 * 让用户使用其 Azure AD 帐户自动登录到 Documo。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -78,11 +78,12 @@ ms.locfileid: "109665132"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成  。
+1. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成  。 如果 Documo 帐户具有自定义域，还必须有一个自定义 API 域，SSO 才能正常工作。 将默认值替换为自定义 API 域，例如 `https://mycustomapidomain.com` 和 `https://mycustomapidomain.com/assert`。
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，键入 URL：`https://app.documo.com/sso`
+    在“登录 URL”文本框中，键入 URL：  
+    `https://app.documo.com/sso`
 
 1. 单击“ **保存**”。
 
@@ -102,7 +103,7 @@ ms.locfileid: "109665132"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -142,7 +143,7 @@ ms.locfileid: "109665132"
 
     d. 在“SAML 令牌中包含标识电子邮件的字段名称”文本框中输入该值。
 
-    e. 在记事本中打开从 Azure 门户下载的联合元数据 XML，并将内容粘贴到“签名者证书”文本框中 。
+    e. 在记事本中打开从 Azure 门户下载的“联合元数据 XML”。 找到 `<X509Certificate>` 标记，然后将内容粘贴到“签名者证书”文本框中。
 
     f. 单击“提交”  。
 
@@ -164,11 +165,9 @@ ms.locfileid: "109665132"
 
 * 在 Azure 门户中单击“测试此应用程序”后，你应自动登录到为其设置了 SSO 的 Documo 
 
-还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Documo 磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Documo。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+还可以使用 Microsoft“我的应用”在任何模式下测试此应用程序。 在“我的应用”中单击 Documo 磁贴时，如果是在 SP 模式下配置的，你会被重定向到应用程序登录页面来启动登录流；如果是在 IDP 模式下配置的，则应会自动登录到为其设置了 SSO 的 Documo。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Documo 后，即可强制实施会话控制，从而防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+配置 Documo 后，即可强制实施会话控制，从而防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-any-app)。
