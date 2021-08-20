@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 61648bc0eab3aba4806cf4594e6fe222ac77f93f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d07614d79410c388c5b93d635564e2720de7e11e
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111993457"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113659518"
 ---
 > [!NOTE]
 > 在 [GitHub](https://github.com/Azure-Samples/communication-services-python-quickstarts/tree/main/phone-numbers-quickstart) 上查找此快速入门的最终代码
@@ -57,7 +57,7 @@ pip install azure-identity
 
 创建 `DefaultAzureCredential` 对象要求你使用已注册 Azure AD 应用程序中的对应值将 `AZURE_CLIENT_ID`、`AZURE_CLIENT_SECRET` 和 `AZURE_TENANT_ID` 设置为环境变量。
 
-若要快速了解如何获取这些环境变量，你可以使用 [CLI 快速入门中的设置托管标识](../../managed-identity-from-cli.md)。
+若要快速了解如何获取这些环境变量，你可以使用 [CLI 快速入门中的设置服务主体](../../identity/service-principal-from-cli.md)。
 
 安装 `azure-identity` 库后，可以继续对客户端进行身份验证。
 

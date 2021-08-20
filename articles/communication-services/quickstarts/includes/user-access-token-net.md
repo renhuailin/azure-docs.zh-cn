@@ -1,21 +1,21 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: azure-communication-services
 author: tomaschladek
 manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 1d846a282eba516a69460e020cd22c80f845e2f5
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 70e49ef548515e842b3838c892570622c8fe950f
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111429954"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113659571"
 ---
 > [!NOTE]
 > 在 [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/AccessTokensQuickstart) 上查找此快速入门的最终代码
@@ -102,7 +102,7 @@ string accessKey = Environment.GetEnvironmentVariable("COMMUNICATION_SERVICES_AC
 var client = new CommunicationIdentityClient(new Uri(endpoint), new AzureKeyCredential(accessKey));
 ```
 
-如果已设置托管标识，请参阅[使用托管标识](../managed-identity.md)，也可以使用托管标识进行身份验证。
+如果采用 Azure Active Directory (AD) 应用程序设置，请参阅[使用服务主体](../identity/service-principal.md)，也可使用 AD 进行身份验证。
 ```csharp
 TokenCredential tokenCredential = new DefaultAzureCredential();
 var client = new CommunicationIdentityClient(new Uri(endpoint), tokenCredential);

@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 使用 PowerShell 在 Key Vault 中设置和检索机密
+title: 快速入门 - 使用 PowerShell 在密钥保管库中设置和检索机密
 description: 本快速入门介绍如何使用 Azure PowerShell 在 Azure Key Vault 中创建、检索和删除机密。
 services: key-vault
 author: msmbaldwin
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 6d4864252aef5ea241c88abfd2fb4eee35f8c6ae
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2e51e781ca988a496e3f1ba61d8b6a4fcc3d7095
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108770742"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443497"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>快速入门：使用 PowerShell 在 Azure Key Vault 中设置和检索机密
 
