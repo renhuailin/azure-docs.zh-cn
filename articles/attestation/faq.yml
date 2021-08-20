@@ -8,12 +8,12 @@ metadata:
   ms.topic: reference
   ms.date: 07/20/2020
   ms.author: mbaldwin
-  ms.openlocfilehash: a51cb9db06206adb8df4183eb029d025b7d2fa80
-  ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+  ms.openlocfilehash: 662408ecd8071a5d877a1c24ebba2f2d40d76eca
+  ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/14/2021
-  ms.locfileid: "112063577"
+  ms.lasthandoff: 06/21/2021
+  ms.locfileid: "112417084"
 title: 关于 Microsoft Azure 证明的常见问题解答
 summary: >
   本文解答了关于 [Azure 证明](overview.md)的一些最常见问题。
@@ -24,26 +24,26 @@ sections:
 - name: 忽略
   questions:
   - question: >
-      什么是 Azure PCK 缓存服务及其在 enclave 证明中的角色
-    answer: "Azure PCK 缓存服务为 Intel 中的 [Azure 机密计算 (ACC)](../confidential-computing/overview.md) 节点定义 Azure 安全基线，并缓存数据。 缓存的信息将被 Azure 证明进一步用于验证受信任执行环境 (TEE)。  \n\nAzure PCK 缓存服务：\n   - 提供高可用性 \n   - 减少对外部托管服务和 Internet 连接的依赖。\n   - 提取 Intel 中 ACC 节点的最新版证书、CRL、受信任计算基础 (TCB) 信息和引用 Enclave 标识。 所以，此服务在验证 TEE 的同时确认 Azure 证明所引用的 Azure 安全基线，大大减少了因 Intel 证书失效或吊销而导致的证明失败  \n"
+      什么是受信任的硬件标识管理 (THIM) 及其在 Enclave 证明中的作用
+    answer: "受信任的硬件标识管理 (THIM) 为 Intel 中的 [Azure 机密计算 (ACC)](../confidential-computing/overview.md) 节点定义 Azure 安全基线，并缓存数据。 缓存的信息将被 Azure 证明进一步用于验证受信任执行环境 (TEE)。  \n\n建议使用 THIM 的原因如下：\n   - 提供高可用性 \n   - 减少对外部托管服务和 Internet 连接的依赖。\n   - 提取 Intel 中 ACC 节点的最新版证书、CRL、受信任计算基础 (TCB) 信息和引用 Enclave 标识。 所以，此服务在验证 TEE 的同时确认 Azure 证明所引用的 Azure 安全基线，大大减少了因 Intel 证书失效或吊销而导致的证明失败  \n"
   - question: >
       在非 Azure 环境中，Azure 证明是否支持 SGX 证明
-    answer: "不是。 Azure 证明依赖于 Azure PCK 缓存服务所声明的安全基线来验证 TEE。 根据设计，Azure PCK 缓存服务目前只支持 Azure 机密计算节点。 \n"
+    answer: "不是。 Azure 证明依赖于受信任的硬件身份管理 (THIM) 中声明的安全基线来验证 TEE。 根据设计，THIM 目前只支持 Azure 机密计算节点。 \n"
   - question: >
       Azure 证明执行哪些验证来证明 SGX enclave
     answer: >
       Azure 证明是用于远程证明不同类型 TEE 的统一框架。 Azure 证明：
 
          - 验证已签名 enclave 引用的受信任的根是否属于 Intel。
-         - 验证 enclave 引用是符合 Azure PCK 缓存服务定义的 Azure 安全基线。
+         - 验证 Enclave 引用是否符合受信任的硬件标识管理 (THIM) 定义的 Azure 安全基线。
          - 验证证明请求对象中的 Enclave Held Data (EHD) 的 SHA256 哈希是否与 enclave 引用中 reportData 字段的前 32 个字节匹配。
          - 便于客户创建证明提供程序并配置自定义策略。 除了上述验证之外，Azure 证明还根据策略评估 enclave 引用。 策略不仅定义了 enclave 的授权规则，还规定了生成证明令牌的颁发规则。 若要确认目标软件是否在 enclave 中运行，客户可以添加授权规则，以验证 enclave 引用中的 mrsigner 和 mrenclave 字段是否与客户二进制文件的值匹配。
   - question: >
       验证程序如何获取 Azure 证明支持的 SGX 证明的附件
-    answer: "通常，对于以 Intel 作为信任根的证明模型，证明客户端与 enclave API 通信来提取 enclave 证据。 enclave API 在内部调用 Intel PCK 缓存服务，以提取要证明的节点的 Intel 证书。 这些证书用于对 enclave 证据进行签名，从而生成远程可证明的附件。  \n\n同样的过程也可以在 Azure 证明中实现。 但是，为了利用 Azure PCK 缓存服务带来的优势，建议在安装 ACC 虚拟机后安装 [Azure DCAP 库](https://www.nuget.org/packages/Microsoft.Azure.DCAP)。 根据与 Intel 的协议，如果安装 Azure DCAP 库，那么生成 enclave 证据的请求会从 Intel PCK 缓存服务重定向到 Azure PCK 缓存服务。 基于 Windows 和 Linux 的环境中支持 Azure DCAP 库。\n"
+    answer: "通常，对于以 Intel 作为信任根的证明模型，证明客户端与 enclave API 通信来提取 enclave 证据。 enclave API 在内部调用 Intel PCK 缓存服务，以提取要证明的节点的 Intel 证书。 这些证书用于对 enclave 证据进行签名，从而生成远程可证明的附件。  \n\n同样的过程也可以在 Azure 证明中实现。 但是，为了利用受信任的硬件身份管理 (THIM) 的优势，建议在安装 ACC 虚拟机后安装 [Azure DCAP 库](https://www.nuget.org/packages/Microsoft.Azure.DCAP)。 根据与 Intel 的协议，如果安装了 Azure DCAP 库，则生成 Enclave 证据的请求会从 Intel PCK 缓存服务重定向到 THIM。 基于 Windows 和 Linux 的环境中支持 Azure DCAP 库。\n"
   - question: >
       如何从其他证明模型迁移到 Azure 证明
-    answer: "- 在安装 Azure 机密计算虚拟机后，安装 Azure DCAP 库 ([Windows](https://www.nuget.org/packages/Microsoft.Azure.DCAP/)/[Linux](https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/a/az-dcap-client/)) 来利用 Azure PCK 缓存服务带来的优势。\n- 需要创作远程证明客户端，它可以检索 enclave 证据，并向 Azure 证明发送请求。 有关参考，请参阅[代码示例](/samples/browse/?expanded=azure&terms=attestation) \n- 证明请求可以发送到默认提供程序或自定义证明提供程序的 REST API 终结点 \n- Azure 证明 API 受 Azure AD 身份验证保护。 因此，调用证明 API 的客户端必须能够在证明请求中获取和传递有效的 Azure AD 访问令牌 \n"
+    answer: "- 在安装 Azure 机密计算虚拟机后，请安装 Azure DCAP 库 ([Windows](https://www.nuget.org/packages/Microsoft.Azure.DCAP/)/[Linux](https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/a/az-dcap-client/))，以便利用受信任的硬件身份管理 (THIM) 带来的优势。\n- 需要创作远程证明客户端，它可以检索 enclave 证据，并向 Azure 证明发送请求。 有关参考，请参阅[代码示例](/samples/browse/?expanded=azure&terms=attestation) \n- 证明请求可以发送到默认提供程序或自定义证明提供程序的 REST API 终结点 \n- Azure 证明 API 受 Azure AD 身份验证保护。 因此，调用证明 API 的客户端必须能够在证明请求中获取和传递有效的 Azure AD 访问令牌 \n"
   - question: >
       依赖方如何验证证明令牌的完整性
     answer: "由 Azure 证明生成的证明令牌使用自签名证书进行签名。 证书通过 [OpenID 元数据终结点](/rest/api/attestation/metadataconfiguration/get)公开。 依赖方可以从此终结点检索签名证书，并执行对证明令牌的签名验证。 证明令牌的有效期为 8 小时。 \n"

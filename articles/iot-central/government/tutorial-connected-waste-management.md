@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 42a82a59483a582e0d395092558665b12e1cd5a3
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: bc83af43fab3871bf693635ddbdd446c2f4bb2e2
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684354"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113586502"
 ---
 # <a name="tutorial-create-a-connected-waste-management-app"></a>教程：创建连接的废弃物管理应用
 
@@ -22,7 +22,7 @@ ms.locfileid: "109684354"
 
 > [!div class="checklist"]
 > * 使用 Azure IoT Central 联网废弃物管理模板来创建应用。
-> * 浏览和自定义操作员仪表板。 
+> * 浏览并自定义仪表板。 
 > * 浏览联网垃圾箱设备模板。
 > * 浏览模拟设备。
 > * 浏览并配置规则。
@@ -47,7 +47,7 @@ ms.locfileid: "109684354"
 
     ![“Azure IoT Central 构建”页面的屏幕截图。](./media/tutorial-connectedwastemanagement/iotcentral-government-tab-overview.png)
 
-1. 选择“联网废弃物管理”应用程序模板。 此模板包括示例联网垃圾箱设备模板、模拟设备、操作员仪表板以及预配置的监测规则。    
+1. 选择“联网废弃物管理”应用程序模板。 此模板包括示例联网垃圾箱设备模板、模拟设备、仪表板以及预配置的监测规则。    
 
 1. 选择“创建应用”，这会打开“新建应用程序”对话框 。 填写以下字段的信息：
     * **应用程序名称**。 默认情况下，应用程序使用“联网废弃物管理”，后跟 Azure IoT Central 生成的唯一 ID 字符串。 （可选）可选择一个易记的应用程序名称。 稍后也可以更改应用程序名称。
@@ -62,7 +62,7 @@ ms.locfileid: "109684354"
 
  
 新创建的应用程序带有下列预配置的内容：
-* 示例操作员仪表板。
+* 示例仪表板。
 * 预定义的联网垃圾箱设备示例模板。
 * 模拟的联网垃圾箱设备。
 * 规则和作业。
@@ -70,7 +70,7 @@ ms.locfileid: "109684354"
 
 这是你的应用程序，你可以随时修改它。 现在，浏览应用程序并进行一些自定义。  
 
-## <a name="explore-and-customize-the-operator-dashboard"></a>浏览和自定义操作员仪表板 
+## <a name="explore-and-customize-the-dashboard"></a>浏览并自定义仪表板 
 
 查看创建应用后看到的 Wide World 废弃物管理仪表板。
 
@@ -89,7 +89,7 @@ ms.locfileid: "109684354"
 
 * **填充级别 KPI 磁贴**：该磁贴显示垃圾箱中的填充级别传感器报告的值。 可远程监控垃圾箱中的填充级别和其他传感器（例如“气味测量仪”或“重量”） 。 操作员可采取行动，比如调度垃圾收集车。 
 
-* **废弃物监视区域地图**：该磁贴使用 Azure Maps，你可直接在 Azure IoT Central 中对其进行配置。 地图磁贴显示设备位置。 尝试将鼠标悬停在地图上，然后尝试使用地图上的控件，如放大、缩小或展开。
+* **废弃物监视区域地图**：该磁贴使用 Azure Maps，你可直接在 Azure IoT Central 中对其进行配置。 地图磁贴显示设备[位置](../core/howto-use-location-data.md)。 尝试将鼠标悬停在地图上，然后尝试使用地图上的控件，如放大、缩小或展开。
 
      ![联网废弃物管理模板仪表板地图的屏幕截图。](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-map.png)
 

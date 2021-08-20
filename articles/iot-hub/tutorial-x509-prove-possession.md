@@ -6,40 +6,50 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 02/26/2021
+ms.date: 06/25/2021
 ms.author: robinsh
 ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: b7740fa1f6a54dcfcc1181dddedcdd5fdb50402c
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 0140166ac173e51f9b9d4e9617de3b70d24e1474
+ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378221"
+ms.lasthandoff: 07/02/2021
+ms.locfileid: "113215049"
 ---
 # <a name="tutorial-proving-possession-of-a-ca-certificate"></a>教程：证明 CA 证书的所有权
 
-将根证书颁发机构 (CA) 证书或从属 CA 证书上传到 IoT 中心后，你必须证明你拥有证书：
+将根证书颁发机构 (CA) 证书或从属 CA 证书上传到 IoT 中心后，可以将其设置为自动验证，或手动证明你拥有证书。
+
+## <a name="verify-certificate-automatically"></a>自动验证证书 
 
 1. 在 Azure 门户中，导航到 IoT 中心，然后选择“设置”>“证书”。
 
 2. 选择“添加”以添加新 CA 证书。
 
-3. 在“证书名称”字段中输入显示名称，并选择添加之前创建的 PEM 证书文件。
+3. 在“证书名称”字段中输入显示名称，并选择添加要添加的 PEM 证书。
 
-4. 选择“保存”。 证书显示在“证书”列表中，状态为“未验证”。 此验证过程将证明你已拥有证书。
+4. 要自动验证证书，请选中“在上传时将证书状态设置已验证”旁边的框。
 
-5. 选择证书以查看“证书详细信息”对话框。
+  :::image type="content" source="media/tutorial-x509-prove-possession/skip-pop.png" alt-text="显示“跳过所有权证明”复选框所在位置的屏幕截图":::
 
-6. 在对话框中选择“生成验证码”。
+5. 选择“保存”  。  证书显示在证书列表中，状态为“已验证”。
+
+## <a name="verify-certificate-manually-after-upload"></a>上传后手动验证证书
+
+1. 如果未选择在上传过程中自动验证证书，证书会显示在证书列表中，状态为“未验证”。 
+
+2. 选择证书以查看“证书详细信息”对话框。
+
+3. 在对话框中选择“生成验证码”。
 
   :::image type="content" source="media/tutorial-x509-prove-possession/certificate-details.png" alt-text="证书详细信息对话框":::
 
-7. 将验证码复制到剪贴板。 你必须将验证码设置为证书使用者。 例如，如果验证码为 75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3，请将其添加为证书使用者，如下面的步骤所示。
+4. 将验证码复制到剪贴板。 你必须将验证码设置为证书使用者。 例如，如果验证码为 75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3，请将其添加为证书使用者，如下面的步骤所示。
 
-8. 你可以通过三种方式生成验证证书：
+5. 你可以通过三种方式生成验证证书：
 
     * 如果你使用的是 Microsoft 提供的 PowerShell 脚本，请运行 `New-CACertsVerificationCert "75B86466DA34D2B04C0C4C9557A119687ADAE7D4732BDDB3"` 以创建名为 `VerifyCert4.cer` 的证书。 有关详细信息，请参阅[使用 Microsoft 提供的脚本](tutorial-x509-scripts.md)。
 
@@ -77,6 +87,6 @@ ms.locfileid: "107378221"
 
     有关详细信息，请参阅[使用 OpenSSL 创建测试证书](tutorial-x509-openssl.md)。
 
-10. 在“证书详细信息”视图中选择新证书。
+6. 在“证书详细信息”视图中选择新证书。
 
-11. 上载证书后，选择“验证”。 CA 证书状态应更改为“已验证”。
+7. 上载证书后，选择“验证”。 CA 证书状态应更改为“已验证”。

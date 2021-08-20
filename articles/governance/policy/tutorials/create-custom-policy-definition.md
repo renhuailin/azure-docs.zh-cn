@@ -3,12 +3,12 @@ title: 教程：创建自定义策略定义
 description: 本教程介绍如何创建 Azure Policy 的自定义策略定义以在 Azure 资源上强制实施自定义业务规则。
 ms.date: 03/31/2021
 ms.topic: tutorial
-ms.openlocfilehash: 1cd88481e84fd334b95a5969fb7f4fa268e30cf5
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 51b1f71985bde3a405b56514078e905042340321
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752122"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114362145"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教程：创建自定义策略定义
 
@@ -66,7 +66,7 @@ ms.locfileid: "108752122"
 
 ### <a name="arm-templates"></a>ARM 模板
 
-可通过多种方式查看包含要管理的属性的 [ARM](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md)。
+可通过多种方式查看包含要管理的属性的 [ARM 模板](../../../azure-resource-manager/templates/template-tutorial-use-template-reference.md)。
 
 #### <a name="existing-resource-in-the-portal"></a>门户中的现有资源
 
@@ -233,7 +233,7 @@ az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" 
 }
 ```
 
-### <a name="metadata"></a>元数据
+### <a name="metadata"></a>Metadata
 
 前三个组成部分是策略元数据。 由于我们知道要为哪些对象创建规则，因此可以轻松提供这些组成部分的值。 [Mode](../concepts/definition-structure.md#mode) 主要与标记和资源位置相关。 由于我们不需要将评估范围限制为支持标记的资源，因此将对 **mode** 使用 _all_ 值。
 

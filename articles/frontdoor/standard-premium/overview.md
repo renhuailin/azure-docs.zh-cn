@@ -8,12 +8,12 @@ ms.topic: overview
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
-ms.openlocfilehash: 5c3ae5c7b1c45d170548f6fa00481094117e1737
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: acae0362d664567bb15b964f396f0c300135ed1c
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937356"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114726747"
 ---
 # <a name="what-is-azure-front-door-standardpremium-preview"></a>什么是 Azure Front Door 标准版/高级版（预览版）？
 

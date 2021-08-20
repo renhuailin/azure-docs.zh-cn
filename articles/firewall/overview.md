@@ -6,14 +6,14 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
-ms.date: 07/01/2021
+ms.date: 07/15/2021
 ms.author: victorh
-ms.openlocfilehash: e87953217fe44fedc8d693a40a1f3ae942a06a39
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 0b5812b5a562b20d1e0224a038e3572767130333
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113216362"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114441212"
 ---
 # <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -27,14 +27,14 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 
 若要了解 Azure 防火墙的功能，请参阅 [Azure 防火墙功能](features.md)。
 
-## <a name="azure-firewall-premium-preview"></a>Azure 防火墙高级预览版
+## <a name="azure-firewall-premium"></a>Azure 防火墙高级版
 
-Azure 防火墙高级预览版是新一代防火墙，其中包含高度敏感环境和受管制环境所需的功能。 这些功能包括 TLS 检查、IDPS、URL 筛选和 Web 类别。
+Azure 防火墙高级版是新一代防火墙，具备了高度敏感环境和受管制环境所需的功能。 这些功能包括 TLS 检查、IDPS、URL 筛选和 Web 类别。
 
-要了解 Azure 防火墙高级预览版功能，请参阅 [Azure 防火墙高级预览版功能](premium-features.md)。
+若要了解 Azure 防火墙高级版的功能，请参阅 [Azure 防火墙高级版功能](premium-features.md)。
 
 
-若要查看如何在 Azure 门户中配置防火墙高级预览版，请参阅 [Azure 门户中的 Azure 防火墙高级预览版](premium-portal.md)。
+若要查看如何在 Azure 门户中配置防火墙高级版，请参阅 [Azure 门户中的 Azure 防火墙高级版](premium-portal.md)。
 
 
 ## <a name="pricing-and-sla"></a>定价和 SLA
@@ -81,10 +81,11 @@ Azure 防火墙存在以下已知问题：
 |不支持使用 ARM 模板删除 RuleCollectionGroup。|不支持使用 ARM 模板删除 RuleCollectionGroup，这会导致失败。|此操作不受支持。|
 |允许任何 (*) 的 DNAT 规则将对流量进行 SNAT 处理。|如果 DNAT 规则允许任何 (*) 为源 IP 地址，则隐式网络规则将匹配 VNet-VNet 流量，并始终会对流量进行 SNAT 处理。|这是当前的一项限制。|
 |不支持使用安全提供程序将 DNAT 规则添加到安全虚拟中心。|这将导致返回 DNAT 流量的异步路由，该流量将发送到安全提供程序。|不支持。|
-
+| 创建超过 2000 个规则集合时遇到错误。 | NAT/应用程序或网络规则集合的最大数目为 2000（资源管理器限制）。 | 这是当前的一项限制。 |
 
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门：创建 Azure 防火墙和防火墙策略 - ARM 模板](../firewall-manager/quick-firewall-policy.md)
 - [快速入门：部署具有可用性区域的 Azure 防火墙 - ARM 模板](deploy-template.md)
 - [教程：使用 Azure 门户部署和配置 Azure 防火墙](tutorial-firewall-deploy-portal.md)
+- [Learn 模块：Azure 防火墙简介](/learn/modules/introduction-azure-firewall/)
