@@ -6,21 +6,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 06/11/2021
+ms.date: 07/15/2021
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 31a7eccb1f4b0c26640af1321b9779014f663fb4
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 8ccfcf4dbf2b93d4cf4bddc27575269cc1f36fc4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112083884"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114593623"
 ---
 <a name="HOLTop"></a>
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
-[v3.1 参考文档](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview) | [v3.1 库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3.1 包 (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.7) | [v3.1 示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[v3.1 参考文档](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview) | [v3.1 库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3.1 包 (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0) | [v3.1 示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
@@ -43,9 +43,9 @@ ms.locfileid: "112083884"
 
 使用 Visual Studio IDE 创建新的 .NET Core 控制台应用。 这会创建包含单个 C# 源文件的“Hello World”项目：*program.cs*。
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
-右键单击 **解决方案资源管理器** 中的解决方案，然后选择“管理 NuGet 包”，以便安装客户端库。 在打开的包管理器中选择“浏览”，搜索 `Azure.AI.TextAnalytics`。 选中“包括预发行版”框，选择版本 `5.1.0-beta.7`，然后选择“安装”。 也可使用[包管理器控制台](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)。
+右键单击 **解决方案资源管理器** 中的解决方案，然后选择“管理 NuGet 包”，以便安装客户端库。 在打开的包管理器中选择“浏览”，搜索 `Azure.AI.TextAnalytics`。 选择版本 `5.1.0`，然后选择“安装”。 也可使用[包管理器控制台](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)。
 
 # <a name="version-30"></a>[版本 3.0](#tab/version-3)
 
@@ -57,7 +57,7 @@ ms.locfileid: "112083884"
 
 ---
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 打开 *program.cs* 文件并添加以下 `using` 指令：
 
@@ -154,7 +154,7 @@ static void Main(string[] args)
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 请确保先前的 main 方法使用终结点和凭据创建新的客户端对象。
 
@@ -174,7 +174,7 @@ var client = new TextAnalyticsClient(endpoint, credentials);
 
 ## <a name="sentiment-analysis"></a>情绪分析
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 创建一个名为 `SentimentAnalysisExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `AnalyzeSentiment()` 函数。 如果成功，则返回的 `Response<DocumentSentiment>` 对象将包含整个输入文档的情绪标签和分数，以及每个句子的情绪分析。 如果发生错误，则会引发 `RequestFailedException`。
 
@@ -344,7 +344,7 @@ Document sentiment: Positive
 
 ## <a name="language-detection"></a>语言检测
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 
 创建一个名为 `LanguageDetectionExample()` 的新函数，该函数接受你之前创建的客户端并调用其 `DetectLanguage()` 函数。 返回的 `Response<DetectedLanguage>` 对象会包含检测到的语言及其名称和 ISO-6391 代码。 如果发生错误，则会引发 `RequestFailedException`。
@@ -397,7 +397,7 @@ Language:
 
 ## <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 
 创建一个名为 `EntityRecognitionExample()` 的新函数，该函数接受你之前创建的客户端，调用其 `RecognizeEntities()` 函数并循环访问结果。 返回的 `Response<CategorizedEntityCollection>` 对象将包含检测到的实体 `CategorizedEntity` 的集合。 如果发生错误，则会引发 `RequestFailedException`。
@@ -429,7 +429,7 @@ Named Entities:
                 Score: 0.80,    Length: 9,      Offset: 34
 ```
 
-### <a name="personally-identifiable-information-recognition"></a>个人身份信息识别
+## <a name="personally-identifiable-information-pii-recognition"></a>个人身份信息识别 (PII) 识别
 
 创建一个名为 `RecognizePIIExample()` 的新函数，该函数接受你之前创建的客户端，调用其 `RecognizePiiEntities()` 函数并循环访问结果。 返回的 `PiiEntityCollection` 表示检测到的 PII 实体的列表。 如果发生错误，则会引发 `RequestFailedException`。
 
@@ -500,7 +500,7 @@ Named Entities:
 
 ## <a name="entity-linking"></a>实体链接
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 创建一个名为 `EntityLinkingExample()` 的新函数，该函数接受你之前创建的客户端，调用其 `RecognizeLinkedEntities()` 函数并循环访问结果。 返回的 `Response<LinkedEntityCollection>` 对象将包含检测到的实体 `LinkedEntity` 的集合。 如果发生错误，则会引发 `RequestFailedException`。 由于链接实体是唯一标识的，因此同一实体的实例将以分组形式出现在 `LinkedEntity` 对象下，显示为 `LinkedEntityMatch` 对象的列表。
 
@@ -658,7 +658,7 @@ Linked Entities:
 
 ## <a name="key-phrase-extraction"></a>关键短语提取
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 创建一个名为 `KeyPhraseExtractionExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `ExtractKeyPhrases()` 函数。 返回的 `<Response<KeyPhraseCollection>` 对象将包含检测到的关键短语的列表。 如果发生错误，则会引发 `RequestFailedException`。
 
@@ -714,64 +714,71 @@ Key phrases:
 
 ---
 
-## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>使用“分析”操作异步使用 API
 
-# <a name="version-31-preview"></a>[版本 3.1 预览](#tab/version-3-1)
+## <a name="extract-health-entities"></a>提取健康状况实体
 
-可以使用“分析”操作执行异步批处理请求实现以下目的：NER、关键短语提取、情绪分析和 PII 检测。 下面的示例演示了有关一个操作的基本示例。 可以[在 GitHub 上](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeActions.md)找到更高级的示例。
+[!INCLUDE [health operation pricing](../health-operation-pricing-caution.md)]
 
-[!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
+可以使用文本分析来执行异步请求，以从文本中提取健康状况实体。 下面的示例演示了基本示例。 可以[在 GitHub 上](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample7_AnalyzeHealthcareEntities.md)找到更高级的示例。
 
-创建一个名为 `AnalyzeOperationExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `StartAnalyzeBatchActionsAsync()` 函数。 返回的 `AnalyzeBatchActionsOperation` 对象将包含 `Operation` 接口对象。 由于它是一个长期操作，因此请在 `operation.WaitForCompletionAsync()` 上使用 `await` 以便更新值。 `WaitForCompletionAsync()` 完成后，应会在 `operation.Value` 中更新集合。 如果发生错误，则会引发 `RequestFailedException`。
-
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
 
 ```csharp
-static async Task AnalyzeOperationExample(TextAnalyticsClient client)
+static async Task healthExample(TextAnalyticsClient client)
 {
-    string inputText = "Microsoft was founded by Bill Gates and Paul Allen.";
+    string document = "Prescribed 100mg ibuprofen, taken twice daily.";
 
-    var batchDocuments = new List<string> { inputText };
-
-
-    TextAnalyticsActions actions = new TextAnalyticsActions()
+    List<string> batchInput = new List<string>()
     {
-        RecognizeEntitiesOptions = new List<RecognizeEntitiesOptions>() { new RecognizeEntitiesOptions() },
-        DisplayName = "Analyze Operation Quick Start Example"
+        document
     };
+    AnalyzeHealthcareEntitiesOperation healthOperation = await client.StartAnalyzeHealthcareEntitiesAsync(batchInput);
+    await healthOperation.WaitForCompletionAsync();
 
-    AnalyzeBatchActionsOperation operation = await client.StartAnalyzeBatchActionsAsync(batchDocuments, actions);
-
-    await operation.WaitForCompletionAsync();
-
-    Console.WriteLine($"Status: {operation.Status}");
-    Console.WriteLine($"Created On: {operation.CreatedOn}");
-    Console.WriteLine($"Expires On: {operation.ExpiresOn}");
-    Console.WriteLine($"Last modified: {operation.LastModified}");
-    if (!string.IsNullOrEmpty(operation.DisplayName))
-        Console.WriteLine($"Display name: {operation.DisplayName}");
-    Console.WriteLine($"Total actions: {operation.TotalActions}");
-    Console.WriteLine($"  Succeeded actions: {operation.ActionsSucceeded}");
-    Console.WriteLine($"  Failed actions: {operation.ActionsFailed}");
-    Console.WriteLine($"  In progress actions: {operation.ActionsInProgress}");
-
-    await foreach (AnalyzeBatchActionsResult documentsInPage in operation.Value)
+    await foreach (AnalyzeHealthcareEntitiesResultCollection documentsInPage in healthOperation.Value)
     {
-        RecognizeEntitiesResultCollection entitiesResult = documentsInPage.RecognizeEntitiesActionsResults.FirstOrDefault().Result;
+        Console.WriteLine($"Results of Azure Text Analytics \"Healthcare Async\" Model, version: \"{documentsInPage.ModelVersion}\"");
+        Console.WriteLine("");
 
-        Console.WriteLine("Recognized Entities");
-
-        foreach (RecognizeEntitiesResult result in entitiesResult)
+        foreach (AnalyzeHealthcareEntitiesResult entitiesInDoc in documentsInPage)
         {
-            Console.WriteLine($"  Recognized the following {result.Entities.Count} entities:");
-
-            foreach (CategorizedEntity entity in result.Entities)
+            if (!entitiesInDoc.HasError)
             {
-                Console.WriteLine($"  Entity: {entity.Text}");
-                Console.WriteLine($"  Category: {entity.Category}");
-                Console.WriteLine($"  Offset: {entity.Offset}");
-                Console.WriteLine($"  Length: {entity.Length}");
-                Console.WriteLine($"  ConfidenceScore: {entity.ConfidenceScore}");
-                Console.WriteLine($"  SubCategory: {entity.SubCategory}");
+                foreach (var entity in entitiesInDoc.Entities)
+                {
+                    // view recognized healthcare entities
+                    Console.WriteLine($"  Entity: {entity.Text}");
+                    Console.WriteLine($"  Category: {entity.Category}");
+                    Console.WriteLine($"  Offset: {entity.Offset}");
+                    Console.WriteLine($"  Length: {entity.Length}");
+                    Console.WriteLine($"  NormalizedText: {entity.NormalizedText}");
+                }
+                Console.WriteLine($"  Found {entitiesInDoc.EntityRelations.Count} relations in the current document:");
+                Console.WriteLine("");
+
+                // view recognized healthcare relations
+                foreach (HealthcareEntityRelation relations in entitiesInDoc.EntityRelations)
+                {
+                    Console.WriteLine($"    Relation: {relations.RelationType}");
+                    Console.WriteLine($"    For this relation there are {relations.Roles.Count} roles");
+
+                    // view relation roles
+                    foreach (HealthcareEntityRelationRole role in relations.Roles)
+                    {
+                        Console.WriteLine($"      Role Name: {role.Name}");
+
+                        Console.WriteLine($"      Associated Entity Text: {role.Entity.Text}");
+                        Console.WriteLine($"      Associated Entity Category: {role.Entity.Category}");
+                        Console.WriteLine("");
+                    }
+                    Console.WriteLine("");
+                }
+            }
+            else
+            {
+                Console.WriteLine("  Error!");
+                Console.WriteLine($"  Document error code: {entitiesInDoc.Error.ErrorCode}.");
+                Console.WriteLine($"  Message: {entitiesInDoc.Error.Message}");
             }
             Console.WriteLine("");
         }
@@ -779,11 +786,153 @@ static async Task AnalyzeOperationExample(TextAnalyticsClient client)
 }
 ```
 
-将此示例添加到应用程序后，请使用 `await` 在 `main()` 方法中调用。
+```console
+Results of Azure Text Analytics "Healthcare Async" Model, version: "2021-05-15"
+
+  Entity: 100mg
+  Category: Dosage
+  Offset: 11
+  Length: 5
+  NormalizedText:
+  Entity: ibuprofen
+  Category: MedicationName
+  Offset: 17
+  Length: 9
+  NormalizedText: ibuprofen
+  Entity: twice daily
+  Category: Frequency
+  Offset: 34
+  Length: 11
+  NormalizedText:
+  Found 2 relations in the current document:
+
+    Relation: DosageOfMedication
+    For this relation there are 2 roles
+      Role Name: Dosage
+      Associated Entity Text: 100mg
+      Associated Entity Category: Dosage
+
+      Role Name: Medication
+      Associated Entity Text: ibuprofen
+      Associated Entity Category: MedicationName
+
+
+    Relation: FrequencyOfMedication
+    For this relation there are 2 roles
+      Role Name: Medication
+      Associated Entity Text: ibuprofen
+      Associated Entity Category: MedicationName
+
+      Role Name: Frequency
+      Associated Entity Text: twice daily
+      Associated Entity Category: Frequency
+```
+
+# <a name="version-30"></a>[版本 3.0](#tab/version-3)
+
+此功能在版本 3.0 中不可用。
+
+---
+
+## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>使用“分析”操作异步使用 API
+
+# <a name="version-31"></a>[版本 3.1](#tab/version-3-1)
+
+可以使用“分析”操作执行异步批处理请求实现以下目的：NER、关键短语提取、情绪分析和 PII 检测。 下面的示例演示了有关一个操作的基本示例。 可以[在 GitHub 上](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeActions.md)找到更高级的示例。
+
+[!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
+
+向 C# 文件添加以下 using 语句。
 
 ```csharp
-await AnalyzeOperationExample(client).ConfigureAwait(false);
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
 ```
+
+创建一个名为 `AnalyzeOperationExample()` 的新函数，该函数接受你之前创建的客户端，并调用其 `StartAnalyzeBatchActionsAsync()` 函数。 返回的操作将包含一个 `AnalyzeBatchActionsResult` 对象。 由于它是一个长期操作，因此请在 `operation.WaitForCompletionAsync()` 上使用 `await` 以便更新值。 `WaitForCompletionAsync()` 完成后，应会在 `operation.Value` 中更新集合。 如果发生错误，则会引发 `RequestFailedException`。
+
+
+```csharp
+static async Task AnalyzeOperationExample(TextAnalyticsClient client)
+    {
+        string inputText = "Microsoft was founded by Bill Gates and Paul Allen.";
+
+        var batchDocuments = new List<string> { inputText };
+
+
+        TextAnalyticsActions actions = new TextAnalyticsActions()
+        {
+            RecognizeEntitiesActions = new List<RecognizeEntitiesAction>() { new RecognizeEntitiesAction() },
+            ExtractKeyPhrasesActions = new List<ExtractKeyPhrasesAction>() { new ExtractKeyPhrasesAction() },
+            DisplayName = "Analyze Operation Quick Start Example"
+        };
+
+        AnalyzeActionsOperation operation = await client.StartAnalyzeActionsAsync(batchDocuments, actions);
+
+        await operation.WaitForCompletionAsync();
+
+        Console.WriteLine($"Status: {operation.Status}");
+        Console.WriteLine($"Created On: {operation.CreatedOn}");
+        Console.WriteLine($"Expires On: {operation.ExpiresOn}");
+        Console.WriteLine($"Last modified: {operation.LastModified}");
+        if (!string.IsNullOrEmpty(operation.DisplayName))
+            Console.WriteLine($"Display name: {operation.DisplayName}");
+        //Console.WriteLine($"Total actions: {operation.TotalActions}");
+        Console.WriteLine($"  Succeeded actions: {operation.ActionsSucceeded}");
+        Console.WriteLine($"  Failed actions: {operation.ActionsFailed}");
+        Console.WriteLine($"  In progress actions: {operation.ActionsInProgress}");
+
+        await foreach (AnalyzeActionsResult documentsInPage in operation.Value)
+        {
+            RecognizeEntitiesResultCollection entitiesResult = documentsInPage.RecognizeEntitiesResults.FirstOrDefault().DocumentsResults;
+            ExtractKeyPhrasesResultCollection keyPhrasesResults = documentsInPage.ExtractKeyPhrasesResults.FirstOrDefault().DocumentsResults;
+
+            Console.WriteLine("Recognized Entities");
+
+            foreach (RecognizeEntitiesResult result in entitiesResult)
+            {
+                Console.WriteLine($"  Recognized the following {result.Entities.Count} entities:");
+
+                foreach (CategorizedEntity entity in result.Entities)
+                {
+                    Console.WriteLine($"  Entity: {entity.Text}");
+                    Console.WriteLine($"  Category: {entity.Category}");
+                    Console.WriteLine($"  Offset: {entity.Offset}");
+                    Console.WriteLine($"  Length: {entity.Length}");
+                    Console.WriteLine($"  ConfidenceScore: {entity.ConfidenceScore}");
+                    Console.WriteLine($"  SubCategory: {entity.SubCategory}");
+                }
+                Console.WriteLine("");
+            }
+
+            Console.WriteLine("Key Phrases");
+            
+            foreach (ExtractKeyPhrasesResult documentResults in keyPhrasesResults)
+            {
+                Console.WriteLine($"  Recognized the following {documentResults.KeyPhrases.Count} Keyphrases:");
+
+                foreach (string keyphrase in documentResults.KeyPhrases)
+                {
+                    Console.WriteLine($"  {keyphrase}");
+                }
+                Console.WriteLine("");
+            }
+            
+        }
+    }
+```
+
+将此示例添加到应用程序后，请使用 `await` 在 `main()` 方法中调用。 由于分析操作是异步的，你需要将你的 `Main()` 方法更新为 `async Task` 类型。
+
+```csharp
+static async Task Main(string[] args)
+{
+    var client = new TextAnalyticsClient(endpoint, credentials);
+    await AnalyzeOperationExample(client).ConfigureAwait(false);
+}
+```
+
 ### <a name="output"></a>输出
 
 ```console

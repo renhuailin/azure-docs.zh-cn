@@ -1,6 +1,6 @@
 ---
 title: 机器学习工作室（经典）教程：预测信贷风险 - Azure
-description: 本详细教程介绍如何创建预测分析解决方案，用于在 Azure 机器学习工作室（经典版）中进行信用风险评估。 本教程是由三个部分构成的系列教程的第一部分。  其中演示了如何创建工作区、上传数据和创建试验。
+description: 本详细教程介绍如何创建预测分析解决方案，用于在机器学习工作室（经典版）中进行信用风险评估。
 keywords: 信用风险, 预测分析解决方案, 风险评估
 author: sdgilley
 ms.author: sgilley
@@ -9,24 +9,24 @@ ms.service: machine-learning
 ms.subservice: studio-classic
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 571925586bf3b70c38260392bae49c5352f10194
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: f6d336ae1f31ad0e62d56fa4dd24bf38eb9eab7f
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517512"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112579731"
 ---
-# <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>教程 1：预测信用风险 - Azure 机器学习工作室（经典版）
+# <a name="tutorial-1-predict-credit-risk---machine-learning-studio-classic"></a>教程 1：预测信用风险 - 机器学习工作室（经典版）
 
-**适用对象：** ![这是一个复选标记，表示本文适用于机器学习工作室（经典）。](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习工作室（经典）   ![这是一个 X，表示本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**适用对象：** ![这是一个复选标记，表示本文适用于机器学习工作室（经典）。](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习工作室（经典）   ![这是一个 X，表示本文不适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-在本教程中，我们将深入探讨开发预测分析解决方案的过程。 我们将在机器学习工作室（经典版）中开发一个简单模型。  然后将该模型部署为 Azure 机器学习 Web 服务。  部署的模型将使用新数据进行预测。 本教程是 **由三个部分构成的系列教程的第一部分**。
+在本教程中，我们将深入探讨开发预测分析解决方案的过程。 我们将在机器学习工作室（经典版）中开发一个简单模型。  然后将该模型部署为机器学习 Web 服务。  部署的模型将使用新数据进行预测。 本教程是 **由三个部分构成的系列教程的第一部分**。
 
 假设用户需要根据他们提供的贷款申请相关信息预测个人的信用风险。  
 
-信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 我们将使用它作为示例，展示如何使用 Microsoft Azure 机器学习工作室（经典版）来创建预测分析解决方案。 对此解决方案，我们将使用 Azure 机器学习工作室（经典）和机器学习 Web 服务。  
+信用风险评估是个较为复杂的问题，但本教程会将其适当简化。 你将使用它作为示例，展示如何使用机器学习工作室（经典）来创建预测分析解决方案。 在该解决方案中，将使用机器学习工作室（经典）和机器学习 Web 服务。  
 
 在这篇由三个部分构成的教程中，我们将从公开的信用风险数据着手。  然后开发并训练预测模型。  最后将该模型部署为 Web 服务。
 
@@ -43,7 +43,7 @@ ms.locfileid: "100517512"
 
 本教程默认用户此前至少使用过机器学习工作室（经典版）一次，且对机器学习概念有一些了解。 但不假设用户精通其中任一领域。
 
-如果以前从来没用过 Azure 机器学习工作室（经典版），则可能一开始需要学习[在 Azure 机器学习工作室（经典版）中创建第一个数据科学试验](create-experiment.md)快速入门。 该快速入门指导用户首次完成机器学习工作室（经典版）的使用。 教程中会介绍各种基础知识：如何将模块拖放到试验中、如何将模块连接到一起、如何运行试验，以及如何查看结果。
+如果以前从来没用过机器学习工作室（经典版），则可能一开始需要学习[在机器学习工作室（经典版）中创建第一个数据科学试验](create-experiment.md)快速入门。 该快速入门指导用户首次完成机器学习工作室（经典版）的使用。 教程中会介绍各种基础知识：如何将模块拖放到试验中、如何将模块连接到一起、如何运行试验，以及如何查看结果。
 
 
 > [!TIP] 
@@ -53,9 +53,9 @@ ms.locfileid: "100517512"
 
 ## <a name="create-a-machine-learning-studio-classic-workspace"></a>创建机器学习工作室（经典版）工作区
 
-要使用机器学习工作室（经典版），需要具有 Microsoft Azure 机器学习工作室（经典版）工作区。 此工作区包含创建、管理和发布试验所需的工具。  
+若要使用机器学习工作室（经典版），你必须拥有一个机器学习工作室（经典）工作区。 此工作区包含创建、管理和发布试验所需的工具。  
 
-要创建工作区，请参阅[创建和共享 Azure 机器学习工作室（经典版）工作区](create-workspace.md)。
+要创建工作区，请参阅[创建和共享机器学习工作室（经典版）工作区](create-workspace.md)。
 
 创建工作区后，打开机器学习工作室（经典版）([https://studio.azureml.net/Home](https://studio.azureml.net/Home))。 如果有多个工作区，可在窗口右上角的工具栏中选择工作区。
 
@@ -146,7 +146,7 @@ sed 's/ /,/g' german.data > german.csv
 
 ![管理数据集](./media/tutorial-part1-credit-risk/dataset-list.png)
 
-有关将其他数据导入试验类型的详细信息，请参阅[将训练数据导入 Azure 机器学习工作室（经典版）](import-data.md)。
+有关将其他数据导入试验类型的详细信息，请参阅[将训练数据导入机器学习工作室（经典版）](import-data.md)。
 
 ## <a name="create-an-experiment"></a>创建试验
 

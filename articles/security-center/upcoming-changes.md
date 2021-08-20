@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 07/01/2021
+ms.date: 07/25/2021
 ms.author: memildin
-ms.openlocfilehash: cff1215fadcd26f18b75c33bba6794c625729e5d
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: 2770c3532dd83051f9c2c7dcc770850e85aeae4b
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113225581"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114689580"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>即将推出的对 Azure 安全中心的重要更改
 
@@ -28,29 +28,13 @@ ms.locfileid: "113225581"
 
 | 计划的更改                                                                                                                                                                                          | 预计更改日期 |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
-| [CSV 导出限制为 20 MB](#csv-exports-to-be-limited-to-20-mb)                                                                                                                               | 2021 年 7 月                 |
 | [正在将 ISO 27001 的旧版实现替换为新的 ISO 27001:2013](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)                                            | 2021 年 7 月                 |
 | [弃用建议“应在计算机上解决 Log Analytics 代理运行状况问题”](#deprecating-recommendation-log-analytics-agent-health-issues-should-be-resolved-on-your-machines) | 2021 年 7 月                 |
-| [SQL 数据分类建议的增强](#enhancements-to-sql-data-classification-recommendation)                                                                                       | 2021 年第 3 季度                   |
+| [资源管理器警报的 Azure Defender 的逻辑重组](#logical-reorganization-of-azure-defender-for-resource-manager-alerts)                                                           | 2021 年 8 月               |
+| [CSV 导出限制为 20 MB](#csv-exports-to-be-limited-to-20-mb)                                                                                                                               | 2021 年 8 月               |
 | [启用 Azure Defender 安全控件以在安全分数中增加得分](#enable-azure-defender-security-control-to-be-included-in-secure-score)                                                         | 2021 年第 3 季度                   |
-|                                                                                                                                                                                                         |                           |
+| [针对用于对 SQL 数据库中的敏感数据进行分类的建议进行了增强](#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases)                                               | 2022 年第 1 季度                   ||                                                                                                                                                                                                         |                           |
 
-
-### <a name="csv-exports-to-be-limited-to-20-mb"></a>CSV 导出限制为 20 MB
-
-预计更改日期：2021 年 7 月
-
-导出安全中心建议数据时，当前对可下载的数据量没有限制。
-
-:::image type="content" source="media/upcoming-changes/download-csv-report.png" alt-text="安全中心的“下载 CSV 报表”按钮，用于导出建议数据。":::
-
-进行此更改后，我们将设置 20 MB 的限制。
-
-如果需要导出大量数据，请在选择数据前使用可用的筛选器，或选择订阅的子集并批量下载数据。
-
-:::image type="content" source="media/upcoming-changes/filter-subscriptions.png" alt-text="在 Azure 门户中筛选“订阅”。":::
-
-详细了解如何[执行安全建议的 CSV 导出](continuous-export.md#manual-one-time-export-of-alerts-and-recommendations)。
 
 ### <a name="legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013"></a>正在将 ISO 27001 的旧版实现替换为新的 ISO 27001:2013
 
@@ -77,11 +61,62 @@ ms.locfileid: "113225581"
 > [!TIP]
 > [资产清单](asset-inventory.md)页也会受此更改影响，因为该页面也会显示有关计算机是否被监视、未被监视或被部分监视的信息（指存在运行状况问题的代理的状态）。 
 
-### <a name="enhancements-to-sql-data-classification-recommendation"></a>SQL 数据分类建议的增强
 
-**预计更改日期：** 2021 年第 3 季度
+### <a name="logical-reorganization-of-azure-defender-for-resource-manager-alerts"></a>资源管理器警报的 Azure Defender 的逻辑重组
 
-“应用数据分类”安全控制中的“应对 SQL 数据库中的敏感数据进行分类”建议将替换为更符合 Microsoft 的数据分类策略的新版本 。 因此，建议的 ID 也会更改（当前 ID 为 b0df6f56-862d-4730-8597-38c0fd4ebd59）。
+**预计更改日期：** 2021 年 8 月
+
+目前作为[适用于资源管理器的 Azure Defender](defender-for-resource-manager-introduction.md) 计划的一部分提供了下列警报。
+
+在对某些 Azure Defender 计划进行逻辑重组的过程中，我们将一些警报从 **适用于资源管理器的 Azure Defender** 移动到了 **适用于服务器的 Azure Defender**。
+
+警报将根据如下两个主要原则进行组织：
+
+- 跨许多 Azure 资源类型提供控制平面保护的警报将属于适用于资源管理器的 Azure Defender
+- 保护特定工作负载的警报将被移动到与该工作负载相关的对应 Azure Defender 计划
+
+以下的警报目前属于适用于资源管理器的 Azure Defender，由于本次更改，这些警报将被移动到适用于服务器的 Azure Defender：
+
+- ARM_AmBroadFilesExclusion
+- ARM_AmDisablementAndCodeExecution
+- ARM_AmDisablement
+- ARM_AmFileExclusionAndCodeExecution
+- ARM_AmTempFileExclusionAndCodeExecution
+- ARM_AmTempFileExclusion
+- ARM_AmRealtimeProtectionDisabled
+- ARM_AmTempRealtimeProtectionDisablement
+- ARM_AmRealtimeProtectionDisablementAndCodeExec
+- ARM_AmMalwareCampaignRelatedExclusion
+- ARM_AmTemporarilyDisablement
+- ARM_UnusualAmFileExclusion
+- ARM_CustomScriptExtensionSuspiciousCmd
+- ARM_CustomScriptExtensionSuspiciousEntryPoint
+- ARM_CustomScriptExtensionSuspiciousPayload
+- ARM_CustomScriptExtensionSuspiciousFailure
+- ARM_CustomScriptExtensionUnusualDeletion
+- ARM_CustomScriptExtensionUnusualExecution
+- ARM_VMAccessUnusualConfigReset
+- ARM_VMAccessUnusualPasswordReset
+- ARM_VMAccessUnusualSSHReset
+
+详细了解[适用于资源管理器的 Azure Defender](defender-for-resource-manager-introduction.md) 和[适用于服务器的 Azure Defender](defender-for-servers-introduction.md)。
+
+
+### <a name="csv-exports-to-be-limited-to-20-mb"></a>CSV 导出限制为 20 MB
+
+**预计更改日期：** 2021 年 8 月
+
+导出安全中心建议数据时，当前对可下载的数据量没有限制。
+
+:::image type="content" source="media/upcoming-changes/download-csv-report.png" alt-text="安全中心的“下载 CSV 报表”按钮，用于导出建议数据。":::
+
+进行此更改后，我们将设置 20 MB 的限制。
+
+如果需要导出大量数据，请在选择数据前使用可用的筛选器，或选择订阅的子集并批量下载数据。
+
+:::image type="content" source="media/upcoming-changes/filter-subscriptions.png" alt-text="在 Azure 门户中筛选“订阅”。":::
+
+详细了解如何[执行安全建议的 CSV 导出](continuous-export.md#manual-one-time-export-of-alerts-and-recommendations)。
 
 ### <a name="enable-azure-defender-security-control-to-be-included-in-secure-score"></a>启用 Azure Defender 安全控件以在安全分数中增加得分
 
@@ -96,6 +131,12 @@ ms.locfileid: "113225581"
 进行此更改后，将影响不受 Azure Defender 保护的任何订阅的安全得分。 建议在进行此更改之前启用 Azure Defender，以确保不会对得分产生任何影响。 
 
 在[快速入门：启用 Azure Defender](enable-azure-defender.md) 中了解详细信息。
+
+### <a name="enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases"></a>针对用于对 SQL 数据库中的敏感数据进行分类的建议进行了增强
+
+**预计更改日期：** 2022 年第 1 季度
+
+“应用数据分类”安全控制中的“应对 SQL 数据库中的敏感数据进行分类”建议将替换为更符合 Microsoft 的数据分类策略的新版本 。 因此，建议的 ID 也会更改（当前 ID 为 b0df6f56-862d-4730-8597-38c0fd4ebd59）。
 
 
 ## <a name="next-steps"></a>后续步骤

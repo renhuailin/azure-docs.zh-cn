@@ -1,0 +1,154 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure 云服务（外延支持）的常见问题解答
+  description: Azure 云服务（外延支持）的常见问题解答
+  ms.topic: conceptual
+  ms.service: cloud-services-extended-support
+  author: gachandw
+  ms.author: gachandw
+  ms.reviewer: mimckitt
+  ms.date: 10/13/2020
+  ms.custom: references_regions
+  ms.openlocfilehash: 4b8cd236bad28c93949610dd26f45042bc0debc7
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114481247"
+title: Azure 云服务（外延支持）的常见问题解答
+summary: 本文介绍与 Azure 云服务相关的常见问题（外延支持）。
+sections:
+- name: 常规
+  questions:
+  - question: >
+      云服务（经典）和云服务（外延支持）的资源名称是什么？
+    answer: >
+      - 云服务（经典）：`microsoft.classiccompute/domainnames`
+
+      - 云服务（外延支持）：`microsoft.compute/cloudservices`
+  - question: >
+      哪些位置可用于部署云服务（外延支持）？
+    answer: >
+      可以在所有公有云区域中采用云服务（外延支持）。
+  - question: "我的配额将有什么变化？ \n"
+    answer: >
+      客户需要使用与任何其他 Azure 资源管理器产品相同的过程来请求配额。Azure 资源管理器中的配额是区域性的，每个区域需要单独的配额请求。
+  - question: >
+      为什么看不到生产和暂存槽？
+    answer: >
+      云服务（外延支持）不支持托管服务的逻辑概念，而托管服务就包括上述两个槽，即生产和暂存。 每个部署都是独立的云服务（外延支持）部署。 若要测试云服务的新版本并对其进行暂存，请部署云服务部署（外延支持）并将其标记为可与其他云服务（外延支持）交换的 VIP
+  - question: >
+      为什么我不能再创建一个空的云服务？
+    answer: >
+      已不存在托管服务名称的概念，因此无法再创建创建空的云服务（外延支持）。
+  - question: >
+      云服务（外延支持）是否支持资源运行状况检查 (RHC)？
+    answer: >
+      不支持，云服务（外延支持）不支持资源运行状况检查 (RHC)。
+  - question: >
+      角色实例指标有什么变化？
+    answer: "角色实例指标方面没有变化。 \n"
+  - question: >
+      Web 角色和辅助角色有什么变化？
+    answer: "Web 角色和辅助角色的设计、体系结构或组件不会有任何变化。 \n"
+  - question: >
+      角色实例有什么变化？
+    answer: "角色实例的设计、体系结构或组件没有任何变化。 \n"
+  - question: >
+      来宾操作系统更新有什么变化？
+    answer: 推出方法没有任何变化。 云服务（经典）和云服务（外延支持）会获得相同的更新。
+  - question: >
+      云服务（外延支持）是否支持“已停止-已分配”和“已停止-已解除分配”状态？
+    answer: "云服务（外延支持）部署仅支持“已停止-分配”状态，该状态在 Azure 门户中显示为“已停止”。 不支持“已停止-已解除分配”状态。 \n"
+  - question: >
+      云服务（外延支持）部署是否支持跨群集、可用性区域和区域进行缩放？
+    answer: "云服务（外延支持）部署不能跨多个群集、可用性区域和区域进行扩展。 \n"
+  - question: >
+      如何获取云服务（外延支持）的部署 ID
+    answer: >
+      可使用 [CloudServiceInstanceView](/rest/api/compute/cloudservices/getinstanceview#cloudserviceinstanceview) API 访问部署 ID（也称为专用 ID）。 也可从 Azure 门户上云服务（外延支持）的“角色和实例”边栏选项卡中获取
+  - question: >
+      云服务（经典）与云服务（外延支持）的定价方面是否有任何差异？
+    answer: "云服务（外延支持）使用 Azure 密钥保管库和基本 (ARM) 公共 IP 地址。需要证书的客户需要使用 Azure Key Vault 进行证书管理（[详细了解](https://azure.microsoft.com/pricing/details/key-vault/) Azure Key Vault 定价。）云服务（外延支持）的每个公共 IP 地址均需单独付费（[详细了解](https://azure.microsoft.com/pricing/details/ip-addresses/)公共 IP 地址定价。） \n"
+- name: 资源
+  questions:
+  - question: >
+      链接到云服务（外延支持）部署的哪些资源需要位于同一资源组中？
+    answer: "负载均衡器、网络安全组和路由表需要位于同一区域和资源组中。 \n"
+  - question: >
+      链接到云服务（外延支持）部署的哪些资源需要位于同一区域中？
+    answer: >
+      密钥保险库、虚拟网络、公共 IP 地址、网络安全组和路由表都需要位于同一区域中。
+  - question: >
+      链接到云服务（外延支持）部署的哪些资源需要位于同一虚拟网络中？
+    answer: "公共 IP 地址、负载均衡器、网络安全组和路由表需要位于在同一个虚拟网络中。 \n"
+- name: 部署文件
+  questions:
+  - question: >
+      如何使用模板来完成部署或管理部署？
+    answer: "可以使用 REST、PowerShell 和 CLI，将模板和参数文件作为参数进行传递。 也可以使用 Azure 门户来上传模板和参数文件。  \n"
+  - question: >
+      现在是否需要维护四个文件？ （即 template、parameter、csdef 和 cscfg）
+    answer: >
+      模板和参数文件仅用于实现部署自动化。 与云服务一样（经典），你可以先手动创建从属资源，然后再使用 PowerShell、CLI 命令完成云服务（外延支持）部署，也可以在门户中通过 csdef 和 cscfg 来完成。
+  - question: >
+      我在云服务（外延支持）上的应用程序代码有什么变化
+    answer: "不需要对 .cspkg 中打包的应用程序代码进行任何更改。 现有的应用程序将继续像以前一样工作。 \n"
+  - question: >
+      云服务（外延支持）是否允许 CTP 包格式？
+    answer: >
+      云服务（外延支持）不支持 CTP 包格式。 但是，它允许提高的包大小限制 800 MB
+- name: 迁移
+  questions:
+  - question: >
+      云服务（外延支持）是否会因为分配失败而降低故障？
+    answer: "不能，云服务（外延支持）部署与群集（如云服务（经典））有关。 因此，当群集已满时，分配失败的情况将继续存在。 \n"
+  - question: "在什么情况下需要进行迁移？ \n"
+    answer: >
+      估计所需的时间和复杂性迁移取决于一系列变量。 规划是了解迁移的工作范围、阻止程序和复杂性的最有效步骤。
+- name: 网络
+  questions:
+  - question: >
+      为什么在没有虚拟网络的情况下无法创建部署？
+    answer: "虚拟网络是在 Azure 资源管理器上进行任何部署必不可少的资源。 云服务（外延支持）部署必须位于虚拟网络内。 \n"
+  - question: "为什么我现在看到如此多的网络资源？ \n"
+    answer: >
+      在 Azure 资源管理器中，云服务（外延支持）部署的组件作为资源公开，以便更好地查看和改进控制。 云服务（经典）中使用了相同类型的资源，只是这些资源被隐藏了。 此类资源的一个示例是公共负载均衡器，它现在是平台自动创建的显式“只读”资源
+  - question: >
+      子网在云服务（外延支持）方面有哪些限制？
+    answer: >
+      包含云服务（外延支持）部署的子网不能与其他计算产品（例如虚拟机、虚拟机规模集、Service Fabric 等）中的部署共享。
+  - question: >
+      云服务（外延支持）支持哪些 IP 分配方法？
+    answer: >
+      云服务（外延支持）支持动态和静态 IP 分配方法。 静态 IP 地址在 cscfg 文件中作为保留 IP 被引用。
+  - question: >
+      为什么我需要为 IP 地址付费？
+    answer: "客户需要为云服务（外延支持）上使用的 IP 地址付费，就如同用户需要为虚拟机相关的 IP 地址付费一样。 \n"
+  - question: >
+      成功部署后，能否更新保留 IP？
+    answer: >
+      在部署更新或升级期间，无法添加、删除或删除保留 IP。 如果需要更改 IP 地址，请使用可交换的云服务，或在 Azure DNS\流量管理员中部署两个具有 CName 的云服务，以便 IP 可以指向其中一个云服务。
+  - question: "是否可以将 DNS 名称用于云服务（外延支持）？ \n"
+    answer: >
+      是。 还可以为云服务（外延支持）提供 DNS 名称。 使用 Azure 资源管理器，DNS 标签是分配给云服务的公共 IP 地址的可选属性。 基于 Azure 资源管理器的部署的 DNS 名称格式为 `<userlabel>.<region>.cloudapp.azure.com`
+  - question: "是否可以更新或更改现有云服务（外延支持）的虚拟网络引用？ \n"
+    answer: "不是。 在创建云服务的过程中，虚拟网络引用是必需的。 对于现有的云服务，无法更改虚拟网络引用。 可使用 VNet API 修改虚拟网络地址空间本身。 \n"
+- name: 证书和密钥保险库
+  questions:
+  - question: >
+      为什么需要在云服务（外延支持）上管理我的证书？
+    answer: "云服务（外延支持）采用了与其他计算服务相同的过程，其中证书驻留在客户托管的密钥保管库中。 这使客户可以完全控制其机密和证书。 \n"
+  - question: >
+      是否可以对所有区域中的所有部署使用一个密钥保险库？
+    answer: >
+      不是。 密钥保险库是一种区域资源，客户需要在每个区域中提供一个密钥保险库。 但是，可以将一个密钥保险库用于给定区域中的所有部署。
+  - question: >
+      指定要安装到云服务的机密/证书时，KeyVault 资源是否必须与云服务资源在同一 Azure 订阅中？
+    answer: >
+      是的。 我们不允许云服务中的跨订阅密钥保管库引用，以防通过 CS-ES 进行特权升级攻击。 引用机密时，CS-ES 无法跨越订阅的边界。  我们不允许跨订阅引用的原因是，将此作为一个重要的最终步骤来防止恶意用户使用 CS-ES 作为特权提升机制来访问其他用户机密。 订阅不是安全边界，但深层防御是一项要求。 但是，可以使用密钥保管库扩展获取证书的跨订阅和跨区域支持。 请参阅[此处](./enable-key-vault-virtual-machine.md)的文档
+  - question: >
+      指定要安装到云服务的机密/证书时，KeyVault 资源是否必须与云服务资源在同一区域中？
+    answer: >
+      是的。 我们强制实施区域边界的原因是为了防止用户创建具有跨区域依赖项的体系结构。 区域隔离是基于云的应用程序的关键设计原则。 但是，可以使用密钥保管库扩展获取证书的跨订阅和跨区域支持。 请参阅[此处](./enable-key-vault-virtual-machine.md)的文档
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n要开始使用云服务（外延支持），请参阅[使用 PowerShell 部署云服务（外延支持）](deploy-powershell.md)"
