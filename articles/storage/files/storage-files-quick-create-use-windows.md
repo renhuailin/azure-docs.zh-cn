@@ -4,21 +4,28 @@ description: 在 Azure 门户中创建和使用 Azure 文件共享。 将其连�
 author: roygara
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/15/2021
+ms.date: 07/27/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5a3c664f6c6c0532ef915357cfbcbc8228202502
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 3cb97d40008a103d9de6d76018f7881764813e3c
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718151"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727179"
 ---
-# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>快速入门：使用 Windows 虚拟机创建和管理 Azure 文件存储共享
+# <a name="quickstart-create-and-manage-azure-file-shares-with-windows-virtual-machines"></a>快速入门：使用 Windows 虚拟机创建和管理 Azure 文件共享
 
 本文演示创建和使用 Azure 文件存储共享的基本步骤。 本快速入门重点介绍如何快速设置 Azure 文件存储共享，以便可以体验该服务的工作原理。 如需有关在自己环境中创建和使用 Azure 文件共享的更多详细说明，请参阅[在 Windows 中使用 Azure 文件共享](storage-how-to-use-files-windows.md)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+## <a name="applies-to"></a>适用于
+| 文件共享类型 | SMB | NFS |
+|-|:-:|:-:|
+| 标准文件共享 (GPv2)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 标准文件共享 (GPv2)、GRS/GZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
+| 高级文件共享 (FileStorage)、LRS/ZRS | ![是](../media/icons/yes-icon.png) | ![否](../media/icons/no-icon.png) |
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -63,13 +70,14 @@ ms.locfileid: "107718151"
 ### <a name="deploy-a-vm"></a>部署 VM
 
 1. 接下来，请展开 Azure 门户左侧的菜单，然后在左上角选择“创建资源”。
-1. 在 Azure 市场资源列表上方的搜索框中，搜索并选择“Windows Server 2016 Datacenter” 。
+1. 在“常见服务”下，选择“虚拟机”。 
 1. 在“基本信息”选项卡的“项目详细信息”下，选择为本快速入门创建的资源组。
 
    ![在门户边栏选项卡中输入 VM 的基本信息。](./media/storage-files-quick-create-use-windows/vm-resource-group-and-subscription.png)
 
 1. 在“实例详细信息”下，将 VM 命名为 *qsVM*。
-1. 保留“区域”、“可用性选项”、“映像”和“大小”的默认设置。
+1. 在“映像”中选择“Windows Server 2016 Datacenter - Gen2”。 
+1. 保留“区域”、“可用性选项”和“大小”的默认设置。  
 1. 在“管理员帐户”下，添加用户名，并输入 VM 的密码  。
 1. 在“入站端口规则”下，选择“允许所选端口”，然后从下拉列表中选择“RDP (3389)”和“HTTP”。
 1. 选择“查看 + 创建”。

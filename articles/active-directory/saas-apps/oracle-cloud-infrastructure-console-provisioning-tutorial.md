@@ -2,21 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Oracle Cloud Infrastructure Console 配置自动用户预配 | Microsoft Docs
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Oracle Cloud Infrastructure Console 以及如何解除预配。
 services: active-directory
-author: zchia
-writer: zchia
+author: twimmers
+writer: twimmers
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/16/2021
-ms.author: Zhchia
-ms.openlocfilehash: 84024ad57af3ca650c69bfda0eda672aee313793
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.author: thwimmer
+ms.openlocfilehash: 748e32a929e9681bb75a8d627eb9de11807c7c41
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814651"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114709965"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>教程：为 Oracle Cloud Infrastructure Console 配置自动用户预配
 > [!NOTE]
@@ -71,7 +71,7 @@ ms.locfileid: "109814651"
 
     ![Oracle 令牌生成](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/general-information.png)
 
-6. 若要生成机密令牌，请使用“客户端 ID:客户端密码”格式对客户端 ID 和客户端密码进行 Base64 编码。 保存机密令牌。 在 Azure 门户的 Oracle Cloud Infrastructure Console 应用程序的“预配”选项卡中，将此值输入“机密令牌”字段。
+6. 若要生成机密令牌，请使用“客户端 ID：客户端密码”格式对客户端 ID 和客户端密码进行 Base64 编码。 注意 - 此值必须在禁用换行 (base64 -w 0) 的情况下生成。 保存机密令牌。 在 Azure 门户的 Oracle Cloud Infrastructure Console 应用程序的“预配”选项卡中，将此值输入“机密令牌”字段。
 
 ## <a name="step-3-add-oracle-cloud-infrastructure-console-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Oracle Cloud Infrastructure Console
 

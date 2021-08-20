@@ -7,14 +7,17 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 95a4d00a27a0da363561f469b4c5e9e2ad16463c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8d05b4f8e69023e1ecec7002f394141fff008f0d
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97510492"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113432961"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>使用强制隧道配置应用服务环境
+> [!NOTE]
+> 本文介绍用于独立应用服务计划的应用服务环境 v2
+> 
 
 应用服务环境 (ASE) 是部署在客户的 Azure 虚拟网络中的 Azure 应用服务。 许多客户使用 VPN 或 Azure ExpressRoute 连接将其 Azure 虚拟网络配置为本地网络的扩展。 强制隧道是指将本应发往 Internet 的流量重定向到 VPN 或虚拟设备。 虚拟设备通常用于检查和审核出站网络流量。 
 

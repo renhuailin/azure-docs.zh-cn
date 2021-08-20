@@ -1,19 +1,20 @@
 ---
 title: 什么是 Azure 视频分析器媒体版（以前称为视频索引器）？
-titleSuffix: Azure Media Services
+titleSuffix: Azure Video Analyzer for Media
 description: 本文提供 Azure 视频分析器媒体版（以前称为视频索引器）服务的概述。
-services: media-services
+services: azure-video-analyzer
 author: Juliako
 manager: femila
-ms.topic: article
-ms.date: 02/05/2021
+ms.topic: overview
+ms.subservice: azure-video-analyzer-media
+ms.date: 07/15/2021
 ms.author: juliako
-ms.openlocfilehash: acaed6bedcbfeb4ccafd61f0a907f1ccfb7e8bcb
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 79c6dc98bd214594b938cf74ce9176a64867fe3e
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385249"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114711843"
 ---
 # <a name="what-is-video-analyzer-for-media"></a>什么是视频分析器媒体版？
 

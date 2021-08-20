@@ -3,12 +3,12 @@ title: 简介
 description: 了解使用 Azure VMware 解决方案在 Azure 中部署和管理基于 VMware 的工作负载的功能和优势。 Azure VMware 解决方案 SLA 保证 Azure VMware 管理工具（vCenter Server 和 NSX 管理器）将在至少 99.9% 的时间内可用。
 ms.topic: overview
 ms.date: 04/20/2021
-ms.openlocfilehash: 8a75038d9552e62b1bc67265ff2965fea9d8b8d6
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 79739f230b057b030da7a90501e9fb3fb2630eba
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950867"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433573"
 ---
 # <a name="what-is-azure-vmware-solution"></a>什么是 Azure VMware 解决方案？
 
@@ -18,7 +18,7 @@ Azure VMware 解决方案是经过 VMware 验证的解决方案，我们会持�
 
 此图显示了 Azure、Azure 服务和本地环境中的私有云与 VNet 之间的邻近性。 从私有云对 Azure 服务或 VNet 进行网络访问可以提供 SLA 驱动的 Azure 服务终结点集成。 ExpressRoute Global Reach 将本地环境连接到 Azure VMware 解决方案私有云。 
 
-![Azure VMware 解决方案私有云与 Azure 和本地的邻近性图像](./media/adjacency-overview-drawing-final.png)
+:::image type="content" source="media/adjacency-overview-drawing-final.png" alt-text="Azure VMware 解决方案私有云与 Azure 和本地的邻近性图表。" border="false":::
 
 ## <a name="hosts-clusters-and-private-clouds"></a>主机、群集和私有云
 
@@ -66,5 +66,4 @@ Azure VMware 解决方案中的监视模式类似于 IaaS 平台中的 Azure VM�
 
 <!-- LINKS - internal -->
 [concepts-private-clouds-clusters]: ./concepts-private-clouds-clusters.md
-
 

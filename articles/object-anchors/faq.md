@@ -7,12 +7,12 @@ ms.author: crtreasu
 ms.date: 04/01/2020
 ms.topic: overview
 ms.service: azure-object-anchors
-ms.openlocfilehash: 31b46475af345ec4eed3a8d5787bf859918048ef
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: cb64f2be26abc1d3ccaf80b90a85f279c7930c94
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985843"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114710730"
 ---
 # <a name="frequently-asked-questions-about-azure-object-anchors"></a>有关 Azure Object Anchors 的常见问题解答
 
@@ -59,7 +59,7 @@ A：模型文件大小应小于 150 MB。 有关详细信息，请参阅[资产�
 
 **问：在模型转换失败后，如何恢复？**
 
-**答：** 若要详细了解模型转换作业失败可能导致的不同错误代码以及处理每个错误代码的方式，请参阅[转换错误代码页](.\model-conversion-error-codes.md)。
+**答：** 若要详细了解模型转换作业失败可能导致的不同错误代码以及处理每个错误代码的方式，请参阅 [转换错误代码页](.\model-conversion-error-codes.md)。
 
 问：Object Anchors 支持哪些设备？
 
@@ -99,7 +99,7 @@ A：模型文件大小应小于 150 MB。 有关详细信息，请参阅[资产�
 
 问：Object Anchors 是否可以处理移动对象？
 
-答：不支持持续移动或动态对象。
+答：不支持持续移动或动态对象。 在物理上将对象移动到新位置后，我们能够支持位于空间中全新位置的对象，但在移动该对象时无法对其进行跟踪。
 
 问：Object Anchors 是否可以处理变形或接合？
 

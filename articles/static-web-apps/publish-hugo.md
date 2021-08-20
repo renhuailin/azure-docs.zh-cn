@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/11/2021
 ms.author: aapowell
-ms.openlocfilehash: 5257d57221e946ac63559b324e7032e1ba78041e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: cc117859c911d9b2c1df6c03fc6cd9738e5de1ec
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069645"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988295"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps"></a>教程：将 Hugo 站点发布到 Azure 静态 Web 应用
 
@@ -56,7 +56,13 @@ ms.locfileid: "110069645"
 1. 初始化 Git 存储库。
 
    ```bash
-    git init
+   git init
+   ```
+
+1. 请确保分支名为 `main`。
+
+   ```bash
+   git branch -M main
    ```
 
 1. 接下来，通过将主题安装为 Git 子模块并在 Hugo 配置文件中指定主题，将主题添加到站点。
@@ -119,7 +125,7 @@ ms.locfileid: "110069645"
 
     | 属性 | 值 |
     | --- | --- |
-    | 组织 | 选择你所需的 GitHub 组织。 |
+    | 组织 | 选择所需的 GitHub 组织。 |
     | 存储库 | 选择“hugo-static-app”。 |
     | 分支 | 选择“主要”。 |
 
@@ -127,9 +133,9 @@ ms.locfileid: "110069645"
 
 ### <a name="review-and-create"></a>查看并创建
 
-1. 选择“查看 + 创建”按钮以验证详细信息是否都正确。
+1. 选择“查看 + 创建”按钮，验证详细信息是否全部正确。
 
-1. 选择“创建”以开始创建应用服务静态 Web 应用并为部署预配 GitHub 操作。
+1. 选择“创建”，开始创建应用服务静态 Web 应用并为部署预配 GitHub 操作。
 
 1. 部署完成后，单击“转到资源”。
 
@@ -156,7 +162,7 @@ jobs:
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig

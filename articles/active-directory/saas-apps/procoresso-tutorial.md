@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/11/2021
+ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 9200c669df4e9ca756a037f7dd05823e9caf21df
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 56918491f2fad1357f565ed5c07942d0c65c4114
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062639"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112552417"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>教程：Azure Active Directory 与 Procore SSO 的集成
 
@@ -32,6 +32,9 @@ ms.locfileid: "112062639"
 
 * 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 启用了单一登录的 Procore SSO 订阅。
+
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -91,7 +94,7 @@ ms.locfileid: "112062639"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -115,7 +118,7 @@ ms.locfileid: "112062639"
 
     ![显示选择了“目录”的 Procore 公司站点的屏幕截图。](./media/procoresso-tutorial/admin.png)
 
-3. 按如下所述在框中粘贴值-
+3. 按如下所述在框中粘贴值。
 
     ![显示“添加人员”对话框的屏幕截图。](./media/procoresso-tutorial/setting.png)   
 
@@ -139,7 +142,7 @@ ms.locfileid: "112062639"
 
     ![显示从工具箱选择了“目录”的 Procore 公司站点的屏幕截图。](./media/procoresso-tutorial/directory.png)
 
-3. 单击“添加人员”选项以打开窗体，并执行以下选项 -
+3. 单击“添加人员”选项以打开窗体，并执行以下选项。
 
     ![显示“将人员添加到 Boylan 构造”的屏幕截图，可在其中输入用户信息。](./media/procoresso-tutorial/user.png)
 

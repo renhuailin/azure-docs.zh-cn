@@ -7,18 +7,18 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 05/20/2021
-ms.openlocfilehash: 1741c48d98e18053bbb87f46f0223a3fd12d6091
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: a0ac245062f3d0b1951439d6371a6841ef768c75
+ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110476588"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112541313"
 ---
 # <a name="create-and-delete-managed-private-endpoints-in-an-azure-stream-analytics-cluster"></a>在 Azure 流分析群集中创建和删除托管的专用终结点
 
 可以将群集上运行的 Azure 流分析作业连接到防火墙或 Azure 虚拟网络 (VNet) 后面的输入和输出资源。 首先，在流分析群集中创建资源（例如 Azure 事件中心或 Azure SQL 数据库）的托管专用终结点。 然后，批准从输入或输出中连接专用终结点。
 
-批准连接后，在流分析群集中运行的任何作业都可以通过专用终结点访问资源。 本文介绍如何在流分析群集中创建和删除专用终结点。 可以为 Azure SQL 数据库、Azure Synapse SQL 数据库、Azure Cosmos DB、Azure 存储、Azure Data Lake Storage Gen2、Azure 事件中心、Azure IoT 中心和 Azure 服务总线创建专用终结点。
+批准连接后，在流分析群集中运行的任何作业都可以通过专用终结点访问资源。 本文介绍如何在流分析群集中创建和删除专用终结点。 可以为 Azure SQL 数据库、Azure Cosmos DB、Azure 存储、Azure Data Lake Storage Gen2、Azure 事件中心、Azure IoT 中心和 Azure 服务总线创建专用终结点。
 
 ## <a name="create-managed-private-endpoint-in-stream-analytics-cluster"></a>在流分析群集中创建托管的专用终结点
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 05/08/2021
-ms.openlocfilehash: 3ead96a49e2bacca526cd9ee3b8c8e00abbba426
-ms.sourcegitcommit: 3de22db010c5efa9e11cffd44a3715723c36696a
+ms.openlocfilehash: 655314720975738ebdbddb009d6d31ad7a322e72
+ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109656283"
+ms.lasthandoff: 06/23/2021
+ms.locfileid: "112552209"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>注册和扫描 Azure SQL 数据库托管实例
 
@@ -25,10 +25,6 @@ Azure SQL 数据库托管实例数据源支持以下功能：
 - 完全扫描和增量扫描，以捕获 Azure SQL 数据库托管实例中的元数据和分类。
 
 - ADF 复制和数据流活动的数据资产之间的世系。
-
-### <a name="known-limitations"></a>已知的限制
-
-Azure Purview 不支持扫描 Azure SQL 托管实例中的[视图](/sql/relational-databases/views/views?view=azuresqldb-mi-current&preserve-view=true)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -125,7 +121,35 @@ Purview 可以通过几个步骤使用服务主体扫描 Azure SQL 数据库托�
 
     例如 `foobar.public.123.database.windows.net,3342`
 
-[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+## <a name="creating-and-running-a-scan"></a>创建和运行扫描
+
+若要创建并运行新扫描，请执行以下操作：
+
+1. 在 Purview Studio 的左窗格中选择“数据映射”选项卡。
+
+1. 选择你注册的 Azure SQL 数据库托管实例源。
+
+1. 选择“新建扫描”
+
+1. 选择要连接到数据源的凭据。
+
+   :::image type="content" source="media/register-scan-azure-sql-database-managed-instance/set-up-scan-sql-mi.png" alt-text="设置扫描":::
+
+1. 通过在列表中选择适当的项，可以将扫描范围限定到特定的表。
+
+   :::image type="content" source="media/register-scan-azure-sql-database-managed-instance/scope-your-scan.png" alt-text="限定扫描范围":::
+
+1. 然后选择扫描规则集。 可以在系统默认项和现有的自定义规则集之间选择，或者可以以内联方式创建新规则集。
+
+   :::image type="content" source="media/register-scan-azure-sql-database-managed-instance/scan-rule-set.png" alt-text="扫描规则集":::
+
+1. 选择扫描触发器。 可以设置一个计划或运行一次扫描。
+
+   :::image type="content" source="media/register-scan-azure-sql-database-managed-instance/trigger-scan.png" alt-text="trigger":::
+
+1. 查看扫描并选择“保存并运行”。
+
+[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
 
 > [!NOTE]
 > 删除扫描不会删除以前的 Azure SQL 数据库托管实例扫描中的资产。

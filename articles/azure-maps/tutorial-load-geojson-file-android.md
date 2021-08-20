@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 8300a7c120ce816c8068a88fa69f4f978fa664ca
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 66214dc3a21389b779cfb5172747be0700e9d0e9
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034500"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113091225"
 ---
 # <a name="tutorial-load-geojson-data-into-azure-maps-android-sdk"></a>教程：将 GeoJSON 数据加载到 Azure Maps Android SDK 中
 
@@ -24,6 +24,7 @@ ms.locfileid: "102034500"
 > * 将 Azure Maps 添加到 Android 应用程序。
 > * 从本地文件或 Web 创建数据源并将其加载到 GeoJSON 文件中。
 > * 在地图上显示数据。
+> * 与地图上的数据进行交互以查看详细信息。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,7 +33,7 @@ ms.locfileid: "102034500"
 
 ### <a name="import-geojson-data-from-web-or-assets-folder"></a>从 Web 或资产文件夹导入 GeoJSON 数据
 
-大多数 GeoJSON 文件将所有数据包装在 `FeatureCollection` 中。 考虑到这一点，如果将 GeoJSON 文件作为字符串加载到应用程序中，则可以将其传递到功能集合的静态 `fromJson` 方法中，该方法会将字符串反序列化为可添加到地图中的 GeoJSON `FeatureCollection` 对象。
+大多数 GeoJSON 文件将所有数据包装在 `FeatureCollection` 中。 考虑到这一点，如果将 GeoJSON 文件作为字符串加载到应用程序中，则可将其传递到特征集合的静态 `fromJson` 方法中，该方法可将字符串反序列化为 GeoJSON `FeatureCollection` 对象并添加到地图中。
 
 以下步骤显示如何将 GeoJSON 文件导入应用程序并将其反序列化为 GeoJSON `FeatureCollection` 对象。
 
@@ -42,344 +43,209 @@ ms.locfileid: "102034500"
 
 ::: zone pivot="programming-language-java-android"
 
-4. 创建名为 Utils.java 的新文件，并将以下代码添加到该文件中。 此代码提供了名为 `importData` 的静态方法，该方法使用 URL 作为字符串从应用程序的 `assets` 文件夹或从 Web 异步导入文件，然后使用简单的回调方法将其返回给 UI 线程。
+4. 打开 MainActivity.java 文件，并在 `mapControl.onReady` 事件的回调（位于 `onCreate` 方法内）中添加以下代码。 此代码使用 `importDataFromUrl` 方法将资产文件夹中的 SamplePoiDataSet.json 文件加载到数据源中，然后再将其添加到地图中。
 
-    ```java
-    //Modify the package name as needed to align with your application.
-    package com.example.myapplication;
-    
-    import android.content.Context;
-    import android.os.Handler;
-    import android.os.Looper;
-    import android.webkit.URLUtil;
-    
-    import java.io.BufferedReader;
-    import java.io.IOException;
-    import java.io.InputStream;
-    import java.io.InputStreamReader;
-    import java.net.URL;
-    import java.util.concurrent.ExecutorService;
-    import java.util.concurrent.Executors;
-    
-    import javax.net.ssl.HttpsURLConnection;
-    
-    public class Utils {
-    
-        interface SimpleCallback {
-            void notify(String result);
-        }
-    
-        /**
-         * Imports data from a web url or asset file name and returns it to a callback.
-         * @param urlOrFileName A web url or asset file name that points to data to load.
-         * @param context The context of the app.
-         * @param callback The callback function to return the data to.
-         */
-        public static void importData(String urlOrFileName, Context context, SimpleCallback callback){
-            importData(urlOrFileName, context, callback, null);
-        }
-        
-        /**
-         * Imports data from a web url or asset file name and returns it to a callback.
-         * @param urlOrFileName A web url or asset file name that points to data to load.
-         * @param context The context of the app.
-         * @param callback The callback function to return the data to.
-         * @param error A callback function to return errors to.
-         */
-        public static void importData(String urlOrFileName, Context context, SimpleCallback callback, SimpleCallback error){
-            if(urlOrFileName != null && callback != null) {
-                ExecutorService executor = Executors.newSingleThreadExecutor();
-                Handler handler = new Handler(Looper.getMainLooper());
-    
-                executor.execute(() -> {
-                    String data = null;
-    
-                    try {
-    
-                        if(URLUtil.isNetworkUrl(urlOrFileName)){
-                            data = importFromWeb(urlOrFileName);
-                        } else {
-                            //Assume file is in assets folder.
-                            data = importFromAssets(context, urlOrFileName);
-                        }
-    
-                        final String result = data;
-    
-                        handler.post(() -> {
-                            //Ensure the resulting data string is not null or empty.
-                            if (result != null && !result.isEmpty()) {
-                                callback.notify(result);
-                            } else {
-                                error.notify("No data imported.");
-                            }
-                        });
-                    } catch(Exception e) {
-                        if(error != null){
-                            error.notify(e.getMessage());
-                        }
-                    }
-                });
-            }
-        }
-    
-        /**
-         * Imports data from an assets file as a string.
-         * @param context The context of the app.
-         * @param fileName The asset file name.
-         * @return
-         * @throws IOException
-         */
-        private static String importFromAssets(Context context, String fileName) throws IOException {
-            InputStream stream = null;
-    
-            try {
-                stream = context.getAssets().open(fileName);
-    
-                if(stream != null) {
-                    return readStreamAsString(stream);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                // Close Stream and disconnect HTTPS connection.
-                if (stream != null) {
-                    stream.close();
-                }
-            }
-    
-            return null;
-        }
-    
-        /**
-         * Imports data from the web as a string.
-         * @param url URL to the data.
-         * @return
-         * @throws IOException
-         */
-        private static String importFromWeb(String url) throws IOException {
-            InputStream stream = null;
-            HttpsURLConnection connection = null;
-            String result = null;
-    
-            try {
-                connection = (HttpsURLConnection) new URL(url).openConnection();
-    
-                //For this use case, set HTTP method to GET.
-                connection.setRequestMethod("GET");
-    
-                //Open communications link (network traffic occurs here).
-                connection.connect();
-    
-                int responseCode = connection.getResponseCode();
-                if (responseCode != HttpsURLConnection.HTTP_OK) {
-                    throw new IOException("HTTP error code: " + responseCode);
-                }
-    
-                //Retrieve the response body as an InputStream.
-                stream = connection.getInputStream();
-    
-                if (stream != null) {
-                    return readStreamAsString(stream);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                // Close Stream and disconnect HTTPS connection.
-                if (stream != null) {
-                    stream.close();
-                }
-                if (connection != null) {
-                    connection.disconnect();
-                }
-            }
-    
-            return result;
-        }
-    
-        /**
-         * Reads an input stream as a string.
-         * @param stream Stream to convert.
-         * @return
-         * @throws IOException
-         */
-        private static String readStreamAsString(InputStream stream) throws IOException {
-            //Convert the contents of an InputStream to a String.
-            BufferedReader in = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
-    
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-    
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-    
-            in.close();
-    
-            return response.toString();
-        }
-    }
-    ```
+```java
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
 
-5. 进入 MainActivity.java 文件，并在 `mapControl.onReady` 事件的回调中添加以下代码，该代码位于 `onCreate` 方法内。 此代码使用导入实用工具以字符串的形式读取 SamplePoiDataSet.json 文件，然后使用 `FeatureCollection` 类的静态 `fromJson` 方法将其反序列化为功能集合。 此代码还计算功能集合中所有数据的边界框区域，并使用此边界框区域来设置地图的摄像头以将焦点对准数据。
+//Import the geojson data and add it to the data source.
+source.importDataFromUrl("asset://SamplePoiDataSet.json");
 
-    ```java
-    //Create a data source and add it to the map.
-    DataSource source = new DataSource();
-    map.sources.add(source);
-    
-    //Import the GeoJSON data and add it to the data source.
-    Utils.importData("SamplePoiDataSet.json",
-        this,
-        (String result) -> {
-            //Parse the data as a GeoJSON Feature Collection.
-            FeatureCollection fc = FeatureCollection.fromJson(result);
-    
-            //Add the feature collection to the data source.
-            source.add(fc);
-    
-            //Optionally, update the maps camera to focus in on the data.
-    
-            //Calculate the bounding box of all the data in the Feature Collection.
-            BoundingBox bbox = MapMath.fromData(fc);
-    
-            //Update the maps camera so it is focused on the data.
-            map.setCamera(
-                bounds(bbox),
-
-                //Padding added to account for pixel size of rendered points.
-                padding(20)
-            );
-        });
-    ```
-
-6. 使用此代码将 GeoJSON 数据加载到数据源，我们现在需要指定该数据在地图上的显示方式。 点数据有多个不同的渲染层；[气泡层](map-add-bubble-layer-android.md)、[符号层](how-to-add-symbol-to-android-map.md)和[热度地图层](map-add-heat-map-layer-android.md)是最常用的层。 在用于导入数据的代码后面，添加以下代码，以在 `mapControl.onReady` 事件的回调的气泡层中呈现数据。
-
-    ```java
-    //Create a layer and add it to the map.
-    BubbleLayer layer = new BubbleLayer(source);
-    map.layers.add(layer);
-    ```
+//Add data source to the map.
+map.sources.add(source);
+```
 
 ::: zone-end
 
 ::: zone pivot="programming-language-kotlin"
 
-4. 创建一个名为“Utils.kt”的新文件，并将以下代码添加到该文件中。 此代码提供了名为 `importData` 的静态方法，该方法使用 URL 作为字符串从应用程序的 `assets` 文件夹或从 Web 异步导入文件，然后使用简单的回调方法将其返回给 UI 线程。
+4. 打开 MainActivity.kt 文件，并在 `mapControl.onReady` 事件的回调（位于 `onCreate` 方法内）中添加以下代码。 此代码使用 `importDataFromUrl` 方法将资产文件夹中的 SamplePoiDataSet.json 文件加载到数据源中，然后再将其添加到地图中。
 
-    ```kotlin
-    //Modify the package name as needed to align with your application.
-    package com.example.myapplication;
+```kotlin
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
 
-    import android.content.Context
-    import android.os.Handler
-    import android.os.Looper
-    import android.webkit.URLUtil
-    import java.net.URL
-    import java.util.concurrent.ExecutorService
-    import java.util.concurrent.Executors
-    
-    class Utils {
-        companion object {
-    
-            /**
-             * Imports data from a web url or asset file name and returns it to a callback.
-             * @param urlOrFileName A web url or asset file name that points to data to load.
-             * @param context The context of the app.
-             * @param callback The callback function to return the data to.
-             */
-            fun importData(urlOrFileName: String?, context: Context, callback: (String?) -> Unit) {
-                importData(urlOrFileName, context, callback, null)
-            }
-    
-            /**
-             * Imports data from a web url or asset file name and returns it to a callback.
-             * @param urlOrFileName A web url or asset file name that points to data to load.
-             * @param context The context of the app.
-             * @param callback The callback function to return the data to.
-             * @param error A callback function to return errors to.
-             */
-            public fun importData(urlOrFileName: String?, context: Context, callback: (String?) -> Unit, error: ((String?) -> Unit)?) {
-                if (urlOrFileName != null && callback != null) {
-                    val executor: ExecutorService = Executors.newSingleThreadExecutor()
-                    val handler = Handler(Looper.getMainLooper())
-                    executor.execute {
-                        var data: String? = null
-                        
-                        try {
-                            data = if (URLUtil.isNetworkUrl(urlOrFileName)) {
-                                URL(urlOrFileName).readText()
-                            } else { //Assume file is in assets folder.
-                                context.assets.open(urlOrFileName).bufferedReader().use{
-                                    it.readText()
-                                }
-                            }
-    
-                            handler.post {
-                                //Ensure the resulting data string is not null or empty.
-                                if (data != null && !data.isEmpty()) {
-                                    callback(data)
-                                } else {
-                                    error!!("No data imported.")
-                                }
-                            }
-                        } catch (e: Exception) {
-                            error!!(e.message)
-                        }
-                    }
-                }
-            }
-        }
-    }
-    ```
+//Import the geojson data and add it to the data source.
+source.importDataFromUrl("asset://SamplePoiDataSet.json");
 
-5. 进入 MainActivity.kt 文件，并在 `mapControl.onReady` 事件的回调（位于 `onCreate` 方法内）中添加以下代码。 此代码使用导入实用工具以字符串的形式读取 SamplePoiDataSet.json 文件，然后使用 `FeatureCollection` 类的静态 `fromJson` 方法将其反序列化为功能集合。 此代码还计算功能集合中所有数据的边界框区域，并使用此边界框区域来设置地图的摄像头以将焦点对准数据。
-
-    ```kotlin
-    //Create a data source and add it to the map.
-    DataSource source = new DataSource();
-    map.sources.add(source);
-    
-    //Import the GeoJSON data and add it to the data source.
-    Utils.importData("SamplePoiDataSet.json", this) { 
-        result: String? ->
-            //Parse the data as a GeoJSON Feature Collection.
-             val fc = FeatureCollection.fromJson(result!!)
-    
-            //Add the feature collection to the data source.
-            source.add(fc)
-    
-            //Optionally, update the maps camera to focus in on the data.
-    
-            //Calculate the bounding box of all the data in the Feature Collection.
-            val bbox = MapMath.fromData(fc);
-
-            //Update the maps camera so it is focused on the data.
-            map.setCamera(
-                bounds(bbox),
-
-                //Padding added to account for pixel size of rendered points.
-                padding(20)
-            )
-        }
-    ```
-
-6. 使用此代码将 GeoJSON 数据加载到数据源，我们现在需要指定该数据在地图上的显示方式。 点数据有多个不同的渲染层；[气泡层](map-add-bubble-layer-android.md)、[符号层](how-to-add-symbol-to-android-map.md)和[热度地图层](map-add-heat-map-layer-android.md)是最常用的层。 在用于导入数据的代码后面，添加以下代码，以在 `mapControl.onReady` 事件的回调的气泡层中呈现数据。
-
-    ```kotlin
-    //Create a layer and add it to the map.
-    val layer = new BubbleLayer(source)
-    map.layers.add(layer)
-    ```
+//Add data source to the map.
+map.sources.add(source);
+```
 
 ::: zone-end
 
-7. 运行应用程序。 显示的地图将以美国为中心，其中圆圈覆盖了 GeoJSON 文件中的每个位置。
+5. 使用此代码将 GeoJSON 数据加载到数据源，我们现在需要指定该数据在地图上的显示方式。 点数据有多个不同的渲染层；[气泡层](map-add-bubble-layer-android.md)、[符号层](how-to-add-symbol-to-android-map.md)和[热度地图层](map-add-heat-map-layer-android.md)是最常用的层。 在用于导入数据的代码后面，添加以下代码，以在 `mapControl.onReady` 事件的回调的气泡层中呈现数据。
 
-    ![显示 GeoJSON 文件中所含数据的美国地图](media/tutorial-load-geojson-file-android/android-import-geojson.png)
+::: zone pivot="programming-language-java-android"
+
+```java
+//Create a layer and add it to the map.
+BubbleLayer layer = new BubbleLayer(source);
+map.layers.add(layer);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Create a layer and add it to the map.
+val layer = new BubbleLayer(source)
+map.layers.add(layer)
+```
+
+::: zone-end
+
+6. 在 Android Studio 的项目面板中，在路径 `app > res > layout` 下右键单击“布局”文件夹，然后转到 `New > File`。 创建名为 popup_text.xml 的新文件。
+7. 打开 popup_text.xml 文件。 如果该文件在设计器视图中打开，请右键单击屏幕并选择“转到 XML”。 复制以下 XML 并将其粘贴到此文件中。 此 XML 将创建一个简单的布局，该布局通过弹出窗口使用并包含文本视图。
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:layout_margin="8dp"
+    android:padding="10dp"
+
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:text=""
+        android:textSize="18dp"
+        android:textColor="#222"
+        android:layout_height="wrap_content"
+        android:width="200dp"/>
+
+</RelativeLayout>
+```
+
+::: zone pivot="programming-language-java-android"
+
+8. 返回到 MainActivity.java 文件，然后在气泡层的代码后面添加以下代码，以创建可重用的弹出窗口。
+
+```java
+//Create a popup and add it to the map.
+Popup popup = new Popup();
+map.popups.add(popup);
+
+//Close it initially.
+popup.close();
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+8. 返回到 MainActivity.kt 文件，然后在气泡图层的代码后面添加以下代码，以创建可重用的弹出窗口。
+
+```kotlin
+//Create a popup and add it to the map.
+val popup = Popup()
+map.popups.add(popup)
+    
+//Close it initially.
+popup.close()
+```
+
+::: zone-end
+
+9. 添加以下代码，将单击事件附加到气泡层。 单击气泡层中的气泡时，该事件将触发并从所选特征的属性中检索某些详细信息，使用 popup_text.xml 布局文件创建一个视图，将其作为内容传递到弹出窗口中，然后在特征位置显示该弹出窗口。
+
+::: zone pivot="programming-language-java-android"
+
+```java
+//Add a click event to the layer.
+map.events.add((OnFeatureClick)(feature) -> {
+    //Get the first feature and it's properties.
+    Feature f = feature.get(0);
+    JsonObject props = f.properties();
+
+    //Retrieve the custom layout for the popup.
+    View customView = LayoutInflater.from(this).inflate(R.layout.popup_text, null);
+
+    //Display the name and entity type information of the feature into the text view of the popup layout.
+    TextView tv = customView.findViewById(R.id.message);
+    tv.setText("%s\n%s",
+        f.getStringProperty("Name"),
+        f.getStringProperty("EntityType")
+    );
+
+    //Get the position of the clicked feature.
+    Position pos = MapMath.getPosition((Point)f.geometry());
+
+    //Set the options on the popup.
+    popup.setOptions(
+            //Set the popups position.
+            position(pos),
+
+            //Set the anchor point of the popup content.
+            anchor(AnchorType.BOTTOM),
+
+            //Set the content of the popup.
+            content(customView)
+    );
+
+    //Open the popup.
+    popup.open();
+
+    //Return a boolean indicating if event should be consumed or continue to bubble up.
+    return false;
+}, layer);
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+//Add a click event to the layer.
+map.events.add(OnFeatureClick { feature: List<Feature> ->
+    //Get the first feature and it's properties.
+    val f = feature[0]
+    val props = f.properties()
+
+    //Retrieve the custom layout for the popup.
+    val customView: View = LayoutInflater.from(this).inflate(R.layout.popup_text, null)
+
+    //Display the name and entity type information of the feature into the text view of the popup layout.
+    val tv = customView.findViewById<TextView>(R.id.message)
+    tv.text = String.format(
+        "%s\n%s",
+        f.getStringProperty("Name"),
+        f.getStringProperty("EntityType")
+    )
+
+    //Get the position of the clicked feature.
+    val pos = MapMath.getPosition(f.geometry() as Point?)
+
+    //Set the options on the popup.
+    popup.setOptions( //Set the popups position.
+        position(pos),  //Set the anchor point of the popup content.
+        anchor(AnchorType.BOTTOM),  //Set the content of the popup.
+        content(customView)
+    )
+
+    //Open the popup.
+    popup.open()
+
+    //Return a boolean indicating if event should be consumed or continue to bubble up.
+    false
+} as OnFeatureClick, layer)
+```
+
+::: zone-end
+
+10. 运行应用程序。 所显示地图中的气泡即代表 GeoJSON 文件中的每一个位置。 单击任意气泡将显示一个弹出窗口，其中包含所单击特征的名称和实体类型。
+
+    ![显示从 GeoJSON 文件中获取的数据地图，单击位置后打开弹出窗口](media/tutorial-load-geojson-file-android/android-import-geojson.gif)
 
 ## <a name="clean-up-resources"></a>清理资源
 
-请执行以下步骤以清理本教程中的资源：
+请按照以下步骤清理本教程中的资源：
 
 1. 关闭 Android Studio 并删除你创建的应用程序。
 2. 如果在外部设备上测试了应用程序，请从该设备上卸载它。

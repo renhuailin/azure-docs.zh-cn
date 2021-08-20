@@ -1,14 +1,14 @@
 ---
 title: Azure Policy 概述
 description: Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理 Azure 环境中的策略定义。
-ms.date: 05/01/2021
+ms.date: 07/27/2021
 ms.topic: overview
-ms.openlocfilehash: b9cd2becc0c1241c34b7cd887a274088296150ba
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 387c52eb1337f6d3aa7046b122fa66ff93be5e64
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733474"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114726678"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？
 
@@ -61,7 +61,7 @@ Azure Policy 通过应用[效果](./concepts/effects.md)来实现这其中的每
 
 ### <a name="azure-policy-and-azure-rbac"></a>Azure Policy 和 Azure RBAC
 
-Azure Policy 和 Azure 基于角色的访问控制 (Azure RBAC) 之间存在一些主要区别。 Azure Policy 通过检查资源管理器中显示的资源属性和某些资源提供程序的属性来评估状态。 Azure Policy 不会限制操作。 Azure Policy 确保资源状态符合业务规则，而不考虑更改是谁做出的或者谁有权做出更改。
+Azure Policy 和 Azure 基于角色的访问控制 (Azure RBAC) 之间存在一些主要区别。 Azure Policy 通过检查资源管理器中显示的资源属性和某些资源提供程序的属性来评估状态。 Azure Policy 不会限制操作。 Azure Policy 确保资源状态符合业务规则，而不考虑更改是谁做出的或者谁有权做出更改。 某些 Azure Policy 资源（如[策略定义](#policy-definition)、[计划定义](#initiative-definition)和[分配](#assignments)）对所有用户可见。 此设计提供的透明度使所有用户和服务都能了解其环境中设置了何种策略规则。
 
 Azure RBAC 重点关注如何管理不同范围的用户[操作](../../role-based-access-control/resource-provider-operations.md)。 如果需要控制某项操作，则 Azure RBAC 是可以使用的适当工具。 即使个人有权执行操作，但如果结果是不合规的资源，Azure Policy 也仍会阻止创建或更新操作。
 
@@ -148,7 +148,7 @@ Azure Policy 评估订阅级别或更低级别的所有 Azure 资源，包括启
 | 策略 | 参数的名称 |参数的类型  |注意 |
 |---|---|---|---|
 | policyA | allowedLocations | array  |此参数要求将值设置为字符串列表，因为参数类型已定义为数组 |
-| policyB | allowedSingleLocation |字符串 |此参数要求将值设置为一个字词，因为参数类型已定义为字符串 |
+| policyB | allowedSingleLocation |string |此参数要求将值设置为一个字词，因为参数类型已定义为字符串 |
 
 在此情况下，定义 initiativeC 的计划参数时，有三个选项可供选择：
 
