@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 04/19/2021
+ms.date: 07/14/2021
 ms.author: alkohli
-ms.openlocfilehash: b56b79c29838c00fd79a0ed91a1c3ff0686c56ce
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: a307fd2e2504e3c11c96fb56c7ab4f55db9508ff
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109737971"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221257"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>什么是 Azure Stack Edge Pro with GPU？
 
@@ -51,6 +51,7 @@ Azure Stack Edge Pro GPU 具有以下功能：
 |数据刷新     | 可以使用云中的最新内容刷新本地文件。|
 |加密    | BitLocker 支持本地加密数据，并通过 *http* 安全地将数据传输到云中。|
 |带宽限制| 中止以限制在高峰时段使用带宽。|
+|专用网络功能|使用 Azure 网络功能管理器的“市场”体验将网络功能（如移动数据包核心、SD-WAN edge 和 VPN 服务）快速部署到在本地环境中运行的 Azure Stack Edge 设备。 有关详细信息，请参阅[什么是 Azure 网络功能管理器（预览版）](../network-function-manager/overview.md)？|
 
 <!--|ExpressRoute | Added security through ExpressRoute. Use peering configuration where traffic from local devices to the cloud storage endpoints travels over the ExpressRoute. For more information, see [ExpressRoute overview](../expressroute/expressroute-introduction.md).|-->
 
@@ -87,4 +88,5 @@ Azure Stack Edge 服务是一种非区域性服务。 有关详细信息，请�
 - 查看 [Azure Stack Edge Pro GPU 系统要求](azure-stack-edge-gpu-system-requirements.md)。
 
 - 了解 [Azure Stack Edge Pro GPU 限制](azure-stack-edge-limits.md)。
+
 - 在 Azure 门户中部署 [Azure Stack Edge Pro GPU](azure-stack-edge-gpu-deploy-prep.md)。

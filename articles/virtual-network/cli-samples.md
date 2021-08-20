@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 97d63598f6a9cca199779e56cc211b9622117301
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 97565e30171a529dd4d8a30916333407f5bd185c
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048827"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113435697"
 ---
 # <a name="azure-cli-samples-for-virtual-network"></a>适用于虚拟网络的 Azure CLI 示例
 
@@ -35,4 +35,4 @@ ms.locfileid: "105048827"
 | [筛选入站和出站 VM 网络流量](./scripts/virtual-network-cli-sample-filter-network-traffic.md) | 创建包含前端和后端子网的虚拟网络。 前端子网的入站网络流量仅限于 HTTP、HTTPS 和 SSH。 不允许从后端子网到 Internet 的出站流量。 |
 |[使用基本负载均衡器配置 IPv4 + IPv6 双堆栈虚拟网络](./scripts/virtual-network-cli-sample-ipv6-dual-stack.md)|部署具有两个 VM 的双栈 (IPv4+IPv6) 虚拟网络和具有 IPv4 和 IPv6 公共 IP 地址的 Azure 基本负载均衡器。 |
 |[使用标准负载均衡器配置 IPv4 + IPv6 双堆栈虚拟网络](./scripts/virtual-network-cli-sample-ipv6-dual-stack-standard-load-balancer.md)|部署具有两个 VM 的双堆栈 (IPv4+IPv6) 虚拟网络和具有 IPv4 和 IPv6 公共 IP 地址的 Azure 标准负载均衡器。 |
-|[教程：创建并测试 NAT 网关 - Azure CLI](./tutorial-create-nat-gateway-cli.md)|使用源和目标虚拟机创建并验证 NAT 网关。 |
+|[教程：创建并测试 NAT 网关 - Azure CLI](../virtual-network/nat-gateway/tutorial-create-nat-gateway-cli.md)|使用虚拟机创建并验证 NAT 网关。 |

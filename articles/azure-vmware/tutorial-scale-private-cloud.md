@@ -3,12 +3,12 @@ title: 教程 - 在私有云中扩展或收缩群集
 description: 在本教程中，使用 Azure 门户缩放 Azure VMware 解决方案私有云。
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: 23fa38f41a1effab212896e59118978202ef17a7
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 79368483c7edd3ebf6811eeca1853b4bcb4ecec9
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769284"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433987"
 ---
 # <a name="tutorial-expand-or-shrink-clusters-in-a-private-cloud"></a>教程：在私有云中扩展或收缩群集
 
@@ -28,11 +28,11 @@ ms.locfileid: "108769284"
 
 1. 在现有私有云的概览页的“管理”  下，选择“缩放私有云”  。 接下来，选择“+ 添加群集”  。
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss2-select-add-cluster.png" alt-text="选择“添加群集”" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss2-select-add-cluster.png" alt-text="屏幕截图：如何将群集添加到 Azure VMware 解决方案私有云。" border="true":::
 
 1. 在“添加群集”  页中，使用滑块选择主机数。 选择“保存”。 
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss3-configure-new-cluster.png" alt-text="在“添加群集”页中，使用滑块选择主机数。选择“保存”。" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss3-configure-new-cluster.png" alt-text="屏幕截图：如何配置新群集。" border="true":::
 
    将开始部署新群集。
 
@@ -40,11 +40,9 @@ ms.locfileid: "108769284"
 
 1. 在现有私有云的概览页上，选择“缩放私有云”  ，然后选择铅笔图标以编辑群集。
 
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss4-select-scale-private-cloud-2.png" alt-text="在“概览”中选择“缩放私有云”" border="true":::
+   :::image type="content" source="./media/tutorial-scale-private-cloud/ss4-select-scale-private-cloud-2.png" alt-text="屏幕截图：在何处编辑现有群集。" border="true":::
 
 1. 在“编辑群集”  页中，使用滑块选择主机数。 选择“保存”。 
-
-   :::image type="content" source="./media/tutorial-scale-private-cloud/ss5-scale-cluster.png" alt-text="在“编辑群集”页中，使用滑块选择主机数。选择“保存”。" border="true":::
 
    将开始向群集添加主机。
 

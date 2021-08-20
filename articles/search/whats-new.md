@@ -6,18 +6,26 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 06/24/2021
+ms.date: 07/20/2021
 ms.custom: references_regions
-ms.openlocfilehash: 945a11fb8d8aef3eef2d3c43a68b8c092741436e
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 3c44db5c17d1179df03985515acc9133feca198e
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113003775"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114711049"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 认知搜索中的新增功能
 
 了解服务中的新增功能。 请将本页加入书签，以随时了解该服务的最新信息。 访问[预览功能列表](search-api-preview.md)，查看尚未正式发布的功能的完整列表。
+
+## <a name="july-2021"></a>2021 年 7 月
+
+|功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  说明 | 可用性  |
+|------------------------------------|--------------|---------------|
+| [搜索 REST API 2021-04-30-预览版](/rest/api/searchservice/index-preview) | 添加了对使用[托管标识](search-howto-managed-identities-data-sources.md)建立的索引器连接以及 Azure Active Directory (Azure AD) 身份验证的 REST API 支持。 | 公共预览版 |
+| [基于角色的授权（预览版）](search-security-rbac.md) | 使用 Azure Active Directory 和新的内置角色，对索引和索引编制的数据平面访问权限进行身份验证，消除或减少对 API 密钥的依赖。 | 公开预览版（[根据要求提供](https://aka.ms/azure-cognitive-search/rbac-preview)）。 订阅加入后，请使用 Azure 门户或管理 REST API 版本 2021-04-01-预览版为数据平面身份验证配置搜索服务。|
+| [管理 REST API 2021-04-01-预览版](/rest/api/searchmanagement/) | 修改[创建或更新服务](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update)以支持新的 [DataPlaneAuthOptions](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#dataplaneauthoptions)。 | 公共预览版 |
 
 ## <a name="may-2021"></a>2021 年 5 月
 

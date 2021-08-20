@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: overview
 ms.date: 06/02/2021
 ms.author: cherylmc
-ms.openlocfilehash: fec8e3c9c0922b0b6137bbf93502663890b8bc8c
-ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
+ms.openlocfilehash: b62f531c355852dd8a66f8186d4bd73a875e6948
+ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112991534"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114371619"
 ---
 # <a name="what-is-azure-virtual-wan"></a>什么是 Azure 虚拟 WAN？
 
@@ -121,7 +121,7 @@ Azure 虚拟 WAN 提供了加密 ExpressRoute 流量的功能。 此方法通过
 
 路由表现在具有关联和传播功能。 预先存在的路由表是不具有这些功能的路由表。 如果中心路由中有预先存在的路由，并且你希望使用新功能，请考虑以下事项：
 
-* **在虚拟中心中具有预先存在的路由的标准虚拟 WAN 客户**：如果在 Azure 门户中的中心的“路由”部分有预先存在的路由，则需要先将其删除，然后尝试在 Azure 门户中的中心的“路由表”部分创建新的路由表。 强烈建议对虚拟 WAN 中的所有中心执行删除步骤。
+* 在虚拟中心中具有预先存在的路由的标准虚拟 WAN 客户：如果在 Azure 门户中的中心的“路由”部分有预先存在的路由，则需要先将其删除，然后尝试（在 Azure 门户中的中心的“路由表”部分）创建新的路由表。 强烈建议对虚拟 WAN 中的所有中心执行删除步骤。
 
 * **在虚拟中心中具有预先存在的路由的基本虚拟 WAN 客户**：如果在 Azure 门户中的中心的“路由”部分有预先存在的路由，则需要先将其删除，然后将虚拟 WAN 从基本版升级到标准版。 请参阅[将虚拟 WAN 从基本版升级到标准版](upgrade-virtual-wan.md)。 强烈建议对虚拟 WAN 中的所有中心执行删除步骤。
 
@@ -135,4 +135,6 @@ Azure 虚拟 WAN 提供了加密 ExpressRoute 流量的功能。 此方法通过
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用虚拟 WAN 创建站点到站点连接](virtual-wan-site-to-site-portal.md)
+- [教程：使用虚拟 WAN 创建站点到站点连接](virtual-wan-site-to-site-portal.md)
+- [Learn 模块：Azure 虚拟 WAN 简介](/learn/modules/introduction-azure-virtual-wan/)
+

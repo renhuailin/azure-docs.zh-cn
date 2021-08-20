@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 211bdb3bfd71774677e072d739f5b559c3d9f5b3
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: daa13c090ad9c10dbc21c082871f02ee1cc9f241
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113112880"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323063"
 ---
 # <a name="choose-cloud-tiering-policies"></a>选择云分层策略
 
@@ -58,7 +58,7 @@ Windows 使用的所有文件系统都基于群集大小（也称为分配单元
 |1 PB – 2 PB    | 512 KB              |
 |2 PB - 4 PB    | 1024 KB             |
 |4 PB - 8 PB    | 2048 KB（最大大小）  |
-|> 8 TB         | 不支持       |
+|> 8 PB         | 不支持       |
 
 创建卷时，可以使用其他群集大小手动格式化卷。 如果卷源自较早版本的 Windows，则默认群集大小也可能有所不同。 [本文提供了有关默认群集大小的更多详细信息。](https://support.microsoft.com/help/140365/default-cluster-size-for-ntfs-fat-and-exfat) 即使选择了小于 4 KB 的群集大小，作为可以进行分层的最小文件大小的 8 KB 限制仍然适用。 （即使在技术上，群集大小的 2 倍小于 8 KB。）
 

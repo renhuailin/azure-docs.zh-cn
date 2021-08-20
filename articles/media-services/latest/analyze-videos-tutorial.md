@@ -6,14 +6,14 @@ author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: tutorial
-ms.date: 05/25/2021
+ms.date: 07/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: b6e1deb15f5efe8441624a3c00f72efc1ba38138
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 38586e2cc60186c929b5ca43990019e768a1ed13
+ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955433"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114720481"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>教程：使用媒体服务 v3 来分析视频
 
@@ -34,13 +34,14 @@ ms.locfileid: "111955433"
 
 ## <a name="compliance-privacy-and-security"></a>符合性、隐私和安全性
  
-作为一项重要提醒，您必须遵守使用视频索引器的所有适用法律。 不得使用视频索引器或任何其他 Azure 服务，这种方式违反了其他任何 Azure 服务的权限。 在将任何视频（包括任何生物特征数据）上传到视频索引器服务进行处理和存储之前，必须拥有所有适当的权利，包括获得视频中个人的所有适当同意。 若要了解视频索引器中的符合性、隐私和安全性，请参阅 Azure [认知服务条款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)。 若要了解 Microsoft 的隐私义务以及对您的数据的处理，请查看 Microsoft 的[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款](https://www.microsoft.com/licensing/product-licensing/products)（“OST”）和[数据处理附录](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)（“DPA”）。 其他隐私信息（包括有关数据保留、删除/销毁的信息）在 OST 中和[此处](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md)提供。 使用视频索引器即表示您同意接受认知服务条款、OST、DPA 和隐私声明的约束。
+作为一项重要提醒，你必须在使用 Azure 视频分析器媒体版（以前称“视频索引器”）时遵守所有适用法律。 你不得以违反他人权利的方式使用视频分析器媒体版或任何其他 Azure 服务。 在将任何视频（包括任何生物特征数据）上传到视频分析器媒体版服务进行处理和存储之前，你必须拥有所有适当的权利，包括获得视频中个人的所有适当同意。 若要了解视频分析器媒体版中的符合性、隐私和安全性，请参阅 Azure [认知服务条款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)。 若要了解 Microsoft 的隐私义务以及对您的数据的处理，请查看 Microsoft 的[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款](https://www.microsoft.com/licensing/product-licensing/products)（“OST”）和[数据处理附录](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)（“DPA”）。 其他隐私信息（包括有关数据保留、删除/销毁的信息）在 OST 中和[此处](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md)提供。 使用视频分析器媒体版，即表示你同意接受认知服务条款、OST、DPA 和隐私声明的约束。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- 如果没有安装 Visual Studio，请下载 [Visual Studio Community 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)。
-- [创建媒体服务帐户](./account-create-how-to.md)。<br/>请务必记住用于资源组名称和媒体服务帐户名称的值。
-- 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](./access-api-howto.md) 中的步骤并保存凭据。 你将需要使用这些凭据来访问 API。
+- 安装[适用于 Windows/macOS/Linux 的 Visual Studio Code](https://code.visualstudio.com/) 或[适用于 Windows 或 Mac 的 Visual Studio 2019](https://visualstudio.microsoft.com/)。
+- 安装 [.NET 5.0 SDK](https://dotnet.microsoft.com/download)
+- [创建媒体服务帐户](./account-create-how-to.md)。 请务必以 JSON 格式复制 API 访问详细信息，或以此示例中使用的 .env 文件格式存储连接到媒体服务帐户所需的值。
+- 遵循[使用 Azure CLI 访问 Azure 媒体服务 API](./access-api-howto.md) 中的步骤并保存凭据。 你需要使用它们来访问此示例中的 API，或将它们输入为 .env 文件格式。
 
 ## <a name="download-and-configure-the-sample"></a>下载并配置示例
 
@@ -52,7 +53,7 @@ ms.locfileid: "111955433"
 
 该示例位于 [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/main/AMSV3Tutorials/AnalyzeVideos) 文件夹。
 
-打开下载的项目中的 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/main/AMSV3Tutorials/AnalyzeVideos/appsettings.json)。 将值替换为从[访问 API](./access-api-howto.md) 获得的凭据。
+[!INCLUDE [appsettings or .env file](./includes/note-appsettings-or-env-file.md)]
 
 ## <a name="examine-the-code-that-analyzes-the-specified-video"></a>检查用于分析指定视频的代码
 

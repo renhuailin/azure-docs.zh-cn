@@ -8,12 +8,12 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: cog-serv-seo-aug-2020
 ms.date: 03/23/2021
-ms.openlocfilehash: 17c4114214bcff79ced57da4fb58d4de8bc05107
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: e21dab310c41cf6aae0e201d7d1b8e78a8540a30
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382209"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112255325"
 ---
 [参考文档](/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer) | [多槽概念](..\concept-multi-slot-personalization.md) | [示例](https://aka.ms/personalizer/ms-dotnet)
 
@@ -30,6 +30,8 @@ ms.locfileid: "110382209"
 [!INCLUDE [Upgrade Personalizer instance to multi-slot](upgrade-personalizer-multi-slot.md)]
 
 [!INCLUDE [Change model frequency](change-model-frequency.md)]
+
+[!INCLUDE [Change reward wait time](change-reward-wait-time.md)]
 
 ### <a name="create-a-new-c-application"></a>新建 C# 应用程序
 
@@ -72,9 +74,9 @@ using System.Threading.Tasks;
 
 ## <a name="object-model"></a>对象模型
 
-若要请求每个槽的单个最佳内容项，请创建一个 [MultiSlotRankRequest]，然后将 post 请求发送到 [multislot/rank] 终结点 (https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/Rank) 。 然后，响应会被分析为 [MultiSlotRankResponse]。
+若要请求每个槽的单个最佳内容项，请创建一个 MultiSlotRankRequest，然后将 post 请求发送到 [multislot/rank](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/MultiSlot_Rank)。 然后，响应会被分析为 MultiSlotRankResponse。
 
-若要将奖励分数发送到个性化体验创建服务，请创建一个 [MultiSlotReward]，并向 [multislot/events/{eventId}/reward](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/Events_Reward) 发送 post 请求。
+若要将奖励分数发送到个性化体验创建服务，请创建一个 MultiSlotReward，并向 [multislot/events/{eventId}/reward](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/MultiSlot_Events_Reward) 发送 post 请求。
 
 在本快速入门中，可以很容易地确定奖励评分。 在生产系统中，确定哪些因素会影响[奖励评分](../concept-rewards.md)以及影响程度可能是一个复杂的过程，你的判断可能会随时改变。 此设计决策应是个性化体验创建服务体系结构中的主要决策之一。
 
@@ -98,8 +100,9 @@ using System.Threading.Tasks;
 [!INCLUDE [Personalizer find resource info](find-azure-resource-info.md)]
 
 ```csharp
-private static readonly string ResourceKey = "REPLACE-WITH-YOUR-PERSONALIZER-KEY";
-private static readonly string PersonalizationBaseUrl = "https://REPLACE-WITH-YOUR-PERSONALIZER-RESOURCE-NAME.cognitiveservices.azure.com";
+//Replace 'PersonalizationBaseUrl' and 'ResourceKey' with your valid endpoint values.
+private const string PersonalizationBaseUrl = "<REPLACE-WITH-YOUR-PERSONALIZER-ENDPOINT>";
+private const string ResourceKey = "<REPLACE-WITH-YOUR-PERSONALIZER-KEY>";
 ```
 
 接下来，构造排名和奖励 URL。
@@ -177,95 +180,6 @@ private static IList<Slot> GetSlots()
     };
 
     return slots;
-}
-```
-
-## <a name="get-user-preferences-for-context"></a>获取上下文的用户首选项
-
-将以下方法添加到 Program 类，以从命令行获取用户的日期时间输入及用户所在设备的类型。 它们将用作上下文特征。
-
-```csharp
-static string GetTimeOfDayForContext()
-{
-    string[] timeOfDayFeatures = new string[] { "morning", "afternoon", "evening", "night" };
-
-    Console.WriteLine("\nWhat time of day is it (enter number)? 1. morning 2. afternoon 3. evening 4. night");
-    if (!int.TryParse(GetKey(), out int timeIndex) || timeIndex < 1 || timeIndex > timeOfDayFeatures.Length)
-    {
-        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + timeOfDayFeatures[0] + ".");
-        timeIndex = 1;
-    }
-
-    return timeOfDayFeatures[timeIndex - 1];
-}
-```
-
-```csharp
-static string GetDeviceForContext()
-{
-    string[] deviceFeatures = new string[] { "mobile", "tablet", "desktop" };
-
-    Console.WriteLine("\nWhat is the device type (enter number)? 1. Mobile 2. Tablet 3. Desktop");
-    if (!int.TryParse(GetKey(), out int deviceIndex) || deviceIndex < 1 || deviceIndex > deviceFeatures.Length)
-    {
-        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + deviceFeatures[0] + ".");
-        deviceIndex = 1;
-    }
-
-    return deviceFeatures[deviceIndex - 1];
-}
-```
-
-这两个方法都使用 `GetKey` 方法从命令行读取用户的选择。
-
-```csharp
-private static string GetKey()
-{
-    return Console.ReadKey().Key.ToString().Last().ToString().ToUpper();
-}
-```
-
-```csharp
-private static IList<Context> GetContext(string time, string device)
-{
-    IList<Context> context = new List<Context>
-    {
-        new Context
-        {
-            Features = new {timeOfDay = time, device = device }
-        }
-    };
-
-    return context;
-}
-```
-
-## <a name="make-http-requests"></a>发出 HTTP 请求
-
-向个性化体验创建服务终结点发送 post 请求，以进行多槽排名和奖励调用。
-
-```csharp
-private static async Task<MultiSlotRankResponse> SendMultiSlotRank(HttpClient client, string rankRequestBody, string rankUrl)
-{
-    var rankBuilder = new UriBuilder(new Uri(rankUrl));
-    HttpRequestMessage rankRequest = new HttpRequestMessage(HttpMethod.Post, rankBuilder.Uri);
-    rankRequest.Content = new StringContent(rankRequestBody, Encoding.UTF8, "application/json");
-
-    HttpResponseMessage response = await client.SendAsync(rankRequest);
-    MultiSlotRankResponse rankResponse = JsonSerializer.Deserialize<MultiSlotRankResponse>(await response.Content.ReadAsByteArrayAsync());
-    return rankResponse;
-}
-```
-
-```csharp
-private static async Task SendMultiSlotReward(HttpClient client, string rewardRequestBody, string rewardUrlBase, string eventId)
-{
-    string rewardUrl = String.Concat(rewardUrlBase, eventId, "/reward");
-    var rewardBuilder = new UriBuilder(new Uri(rewardUrl));
-    HttpRequestMessage rewardRequest = new HttpRequestMessage(HttpMethod.Post, rewardBuilder.Uri);
-    rewardRequest.Content = new StringContent(rewardRequestBody, Encoding.UTF8, "application/json");
-
-    await client.SendAsync(rewardRequest);
 }
 ```
 
@@ -367,6 +281,104 @@ private class SlotReward
 
     [JsonPropertyName("value")]
     public float Value { get; set; }
+}
+```
+
+## <a name="get-user-preferences-for-context"></a>获取上下文的用户首选项
+
+将以下方法添加到 Program 类，以从命令行获取用户的日期时间输入及用户所在设备的类型。 它们将用作上下文特征。
+
+```csharp
+static string GetTimeOfDayForContext()
+{
+    string[] timeOfDayFeatures = new string[] { "morning", "afternoon", "evening", "night" };
+
+    Console.WriteLine("\nWhat time of day is it (enter number)? 1. morning 2. afternoon 3. evening 4. night");
+    if (!int.TryParse(GetKey(), out int timeIndex) || timeIndex < 1 || timeIndex > timeOfDayFeatures.Length)
+    {
+        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + timeOfDayFeatures[0] + ".");
+        timeIndex = 1;
+    }
+
+    return timeOfDayFeatures[timeIndex - 1];
+}
+```
+
+```csharp
+static string GetDeviceForContext()
+{
+    string[] deviceFeatures = new string[] { "mobile", "tablet", "desktop" };
+
+    Console.WriteLine("\nWhat is the device type (enter number)? 1. Mobile 2. Tablet 3. Desktop");
+    if (!int.TryParse(GetKey(), out int deviceIndex) || deviceIndex < 1 || deviceIndex > deviceFeatures.Length)
+    {
+        Console.WriteLine("\nEntered value is invalid. Setting feature value to " + deviceFeatures[0] + ".");
+        deviceIndex = 1;
+    }
+
+    return deviceFeatures[deviceIndex - 1];
+}
+```
+
+这两个方法都使用 `GetKey` 方法从命令行读取用户的选择。
+
+```csharp
+private static string GetKey()
+{
+    return Console.ReadKey().Key.ToString().Last().ToString().ToUpper();
+}
+```
+
+```csharp
+private static IList<Context> GetContext(string time, string device)
+{
+    IList<Context> context = new List<Context>
+    {
+        new Context
+        {
+            Features = new {timeOfDay = time, device = device }
+        }
+    };
+
+    return context;
+}
+```
+
+## <a name="make-http-requests"></a>发出 HTTP 请求
+
+添加这些功能，以向个性化体验创建服务终结点发送 post 请求，以进行多槽排名和奖励调用。
+
+```csharp
+private static async Task<MultiSlotRankResponse> SendMultiSlotRank(HttpClient client, string rankRequestBody, string rankUrl)
+{
+    try
+    {
+    var rankBuilder = new UriBuilder(new Uri(rankUrl));
+    HttpRequestMessage rankRequest = new HttpRequestMessage(HttpMethod.Post, rankBuilder.Uri);
+    rankRequest.Content = new StringContent(rankRequestBody, Encoding.UTF8, "application/json");
+    HttpResponseMessage response = await client.SendAsync(rankRequest);
+    response.EnsureSuccessStatusCode();
+    MultiSlotRankResponse rankResponse = JsonSerializer.Deserialize<MultiSlotRankResponse>(await response.Content.ReadAsByteArrayAsync());
+    return rankResponse;
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine("\n" + e.Message);
+        Console.WriteLine("Please make sure multi-slot feature is enabled. To do so, follow multi-slot Personalizer documentation to update your loop settings to enable multi-slot functionality.");
+        throw;
+    }
+}
+```
+
+```csharp
+private static async Task SendMultiSlotReward(HttpClient client, string rewardRequestBody, string rewardUrlBase, string eventId)
+{
+    string rewardUrl = String.Concat(rewardUrlBase, eventId, "/reward");
+    var rewardBuilder = new UriBuilder(new Uri(rewardUrl));
+    HttpRequestMessage rewardRequest = new HttpRequestMessage(HttpMethod.Post, rewardBuilder.Uri);
+    rewardRequest.Content = new StringContent(rewardRequestBody, Encoding.UTF8, "application/json");
+
+    await client.SendAsync(rewardRequest);
 }
 ```
 
@@ -485,7 +497,7 @@ static async Task Main(string[] args)
 
 ## <a name="request-the-best-action"></a>请求最佳操作
 
-为了完成排名请求，程序将要求用户指定偏好，以创建内容选项的 `context`。 请求主体包含上下文特征、操作及其特征，以及唯一的事件 ID，用于接收响应。 `SendMultiSlotRank` 方法需要 HTTP 客户端、请求正文和 URL 来发送请求。
+为了完成排名请求，程序将要求用户指定偏好，以创建内容选项的 `context`。 请求正文包含上下文、操作和槽及其各自的功能。 `SendMultiSlotRank` 方法需要 HTTP 客户端、请求正文和 URL 来发送请求。
 
 本快速入门使用简单的日期时间和用户设备上下文特征。 在生产系统中，确定和[评估](../concept-feature-evaluation.md)[操作与特征](../concepts-features.md)可能是一件非常重要的事情。
 
@@ -512,7 +524,7 @@ MultiSlotRankResponse multiSlotRankResponse = await SendMultiSlotRank(client, ra
 
 ## <a name="send-a-reward"></a>发送奖励
 
-为了获取可在奖励请求中发送的奖励评分，程序会通过命令行获取用户针对每个槽所做的选择，为该选择分配一个数值，然后将每个槽的唯一事件 ID、槽 ID 和奖励评分（作为数值）发送到奖励 API。 无需为每个槽定义奖励。
+为了获取可用于奖励请求的奖励评分，程序会通过命令行获取用户针对每个槽所做的选择，为该选择分配一个数值（奖励得分），然后将每个槽的唯一事件 ID、槽 ID 和奖励评分作为数值发送到奖励 API。 无需为每个槽定义奖励。
 
 本快速入门分配一个简单的数字（0 或 1）作为奖励评分。 在生产系统中，确定何时向[奖励](../concept-rewards.md)调用发送哪种内容可能不是一个简单的过程，这取决于具体的需求。
 
@@ -567,4 +579,4 @@ dotnet run
 ![快速入门程序会提出一些问题来收集用户的偏好（称为“特征”），然后提供排名最高的操作。](../media/csharp-quickstart-commandline-feedback-loop/multislot-quickstart-program-feedback-loop-example-1.png)
 
 
-其中还有[本快速入门的源代码](https://aka.ms/personalizer/ms-dotnet)。
+其中还有[本快速入门的源代码](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Personalizer/multislot-quickstart)。

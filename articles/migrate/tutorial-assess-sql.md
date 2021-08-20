@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
-ms.openlocfilehash: d4078d1403df01475c6055dded2bd012e97af98e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 33c4b7f00bcba89c973838c7382397c447d3464c
+ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557983"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114204552"
 ---
 # <a name="tutorial-assess-sql-instances-for-migration-to-azure-sql"></a>教程：评估要迁移到 Azure SQL 的 SQL 实例
 
@@ -26,6 +26,8 @@ ms.locfileid: "105557983"
 > [!NOTE]
 > 教程显示尝试方案的最快路径，并尽可能使用默认选项。 
 
+> [!NOTE]
+> 如果 SQL 服务器在非 VMware 平台上运行。 [请使用数据迁移助手评估 Data SQL Server 数据资产的准备情况，以确定是否可将其迁移至 Azure SQL 数据库](/sql/dma/dma-assess-sql-data-estate-to-sqldb)。
 
 ## <a name="prerequisites"></a>先决条件
 

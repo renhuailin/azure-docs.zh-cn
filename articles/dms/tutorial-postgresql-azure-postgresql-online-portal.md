@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 6d81e43958bf9d4bb8cc20d57ba7ca7a49387f07
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 16493cf44ba3666b900b34e18acd90f5ac73baca
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110070023"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112282756"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>教程：通过 Azure 门户使用 DMS 将 PostgreSQL 联机迁移到 Azure DB for PostgreSQL
 
@@ -43,9 +43,9 @@ ms.locfileid: "110070023"
 
 要完成本教程，需要：
 
-* 下载并安装 [PostgreSQL 社区版](https://www.postgresql.org/download/) 9.4、9.5、9.6 或 10。 源 PostgreSQL 服务器版本必须是 9.4、9.5、9.6、10 或 11。 有关详细信息，请参阅[支持的 PostgreSQL 数据库版本](../postgresql/concepts-supported-versions.md)一文。
+* 下载并安装 [PostgreSQL 社区版](https://www.postgresql.org/download/) 9.4、9.5、9.6 或 10。 源 PostgreSQL 服务器版本必须是 9.4、9.5、9.6、10、11 或 12。 有关详细信息，请参阅[支持的 PostgreSQL 数据库版本](../postgresql/concepts-supported-versions.md)一文。
 
-    另请注意，目标 Azure Database for PostgreSQL 版本必须等于或晚于本地 PostgreSQL 版本。 例如，PostgreSQL 9.6 可以迁移到 Azure Database for PostgreSQL 9.6、10 或 11，而不能迁移到 Azure Database for PostgreSQL 9.5。
+    另请注意，目标 Azure Database for PostgreSQL 版本必须等于或晚于本地 PostgreSQL 版本。 例如，PostgreSQL 9.6 可以迁移到 Azure Database for PostgreSQL 9.6、10 或 11，而不能迁移到 Azure Database for PostgreSQL 9.5。 目前不支持迁移到 PostgreSQL 13+。 
 
 * [创建 Azure Database for PostgreSQL 服务器](../postgresql/quickstart-create-server-database-portal.md)或[创建 Azure Database for PostgreSQL - 超大规模 (Citus) 服务器](../postgresql/quickstart-create-hyperscale-portal.md)。
 * 使用 Azure 资源管理器部署模型创建适合 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，它将使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 或 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 为本地源服务器提供站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](../virtual-network/index.yml)，尤其是提供了分步详细信息的快速入门文章。
