@@ -9,12 +9,12 @@ metadata:
   ms.date: 02/19/2020
   ms.author: alkemper
   ms.custom: references_regions
-  ms.openlocfilehash: c5871704dd2b999bbb9033abc20f41099b53d000
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: 2c7df8ee7ea6947165157e43f79ecca7afd8a118
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "111907077"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114447535"
 title: Azure 应用程序配置常见问题解答
 summary: 本文解答有关 Azure 应用程序配置的常见问题。
 sections:
@@ -142,6 +142,12 @@ sections:
 
 
       检查 429 响应的正文，以了解请求失败的具体原因。
+  - question: 为何无法创建与我刚刚删除的应用程序配置存储同名的应用程序配置存储？
+    answer: >
+      删除标准层应用程序配置存储后，该存储的名称会保留三天。 在保留期结束之前可以重新创建同名的存储，但必须在与原始存储相同的订阅、资源组和区域中创建。 如果删除了包含原始存储的资源组，则需要先在同一订阅中重新创建该资源组，然后才能在其中重新创建存储。
+  - question: 如何还原不小心删除的应用程序配置存储？
+    answer: >
+      可以恢复三天内删除的标准层应用程序配置存储。 若要恢复不小心删除的应用程序配置存储，请与 Microsoft 支持部门联系。
   - question: 如何接收有关新版本的公告以及与应用程序配置相关的其他信息？
     answer: >
       订阅我们的 [GitHub 公告存储库](https://github.com/Azure/AppConfiguration-Announcements)。

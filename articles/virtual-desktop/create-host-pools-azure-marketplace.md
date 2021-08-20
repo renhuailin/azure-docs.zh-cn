@@ -4,26 +4,33 @@ description: 如何使用 Azure 门户创建 Azure 虚拟桌面主机池。
 author: Heidilohr
 ms.topic: tutorial
 ms.custom: references_regions
-ms.date: 03/10/2021
+ms.date: 07/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 96e5fbf825c0550001ae9b0a38517e753b3a8d0f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 34faa055eb14841d1b35d81e62c74fef92c80bac
+ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756250"
+ms.lasthandoff: 07/27/2021
+ms.locfileid: "114707060"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教程：使用 Azure 门户创建主机池
 
 >[!IMPORTANT]
 >本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)。 无法通过 Azure 门户来管理使用 Azure 虚拟桌面（经典）创建的任何对象。
 
-主机池是 Azure 虚拟桌面环境中包含一个或多个相同虚拟机 (VM) 的集合。 每个主机池可以包含一个应用组，用户可以像在物理桌面上一样与该应用组交互。
+主机池是 Azure 虚拟桌面环境中包含一个或多个相同虚拟机 (VM)（也称为“会话主机”）的集合。 每个主机池可以包含一个应用组，用户可以像在物理桌面上一样与该应用组交互。 若要详细了解部署体系结构，请查看 [Azure 虚拟桌面环境](environment-setup.md)。 如果你是一名使用 Azure 虚拟桌面远程应用流式处理的应用开发人员，则你的客户或用户可以像使用物理设备上的本地应用一样使用你的应用。 有关如何以应用开发人员的身份使用 Azure 虚拟桌面的详细信息，请查看 [Azure 虚拟桌面远程应用流式处理](./remote-app-streaming/custom-apps.md)文档。
 
-本文将引导你完成通过 Azure 门户为 Azure 虚拟桌面环境创建主机池的设置过程。 此方法提供基于浏览器的用户界面，用于在 Azure 虚拟桌面中创建主机池，在 Azure 订阅中创建包含 VM 的资源组，将这些 VM 加入 Azure Active Directory (AD) 域，然后将 VM 注册到 Azure 虚拟桌面。
+>[!NOTE]
+>如果你是一名使用 Azure 虚拟桌面远程应用流式处理的应用开发人员，并且应用的用户与部署位于同一组织，则你可以使用现有的 Azure 租户来创建主机池。 如果用户位于组织外部，则出于安全原因，需要为每个组织单独创建至少包含一个主机池的 Azure 租户。 若要详细了解我们为确保部署安全而建议遵循的做法，请参阅[体系结构建议](./remote-app-streaming/architecture-recs.md)。
 
-## <a name="prerequisites"></a>先决条件
+本文将引导你完成通过 Azure 门户为 Azure 虚拟桌面环境创建主机池的设置过程。 此方法提供基于浏览器的用户界面，用于在 Azure 虚拟桌面中创建主机池，在 Azure 订阅中创建包含 VM 的资源组，将这些 VM 加入 Active Directory (AD) 域或 Azure Active Directory (Azure AD) 租户，以及将 VM 注册到 Azure 虚拟桌面。
+
+## <a name="prerequisites"></a>必备条件
+
+有两组不同的要求，具体适用哪组要求取决于你是为组织设置部署的 IT 专业人员还是为客户提供应用程序的应用开发人员。
+
+### <a name="requirements-for-it-professionals"></a>针对 IT 专业人员的要求
 
 需要输入以下参数才能创建主机池：
 
@@ -37,11 +44,21 @@ ms.locfileid: "111756250"
 - 要使用的映像的源所在的位置。 该映像是来自 Azure 库，还是一个自定义映像？
 - 你的域加入凭据。
 
-此外，请确保已注册 Microsoft.DesktopVirtualization 资源提供程序。 如果还没有注册，请转到“订阅”，选择你的订阅名称，然后选择“资源提供程序” 。 搜索“DesktopVirtualization”，选择“Microsoft.DesktopVirtualization”，然后选择“注册”。
+### <a name="requirements-for-app-developers"></a>针对应用开发人员的要求
 
-使用 Azure 资源管理器模板创建 Azure 虚拟桌面主机池时，可以从 Azure 库、托管映像或非托管映像创建虚拟机。 若要详细了解如何创建 VM 映像，请参阅[准备要上传到 Azure 的 Windows VHD 或 VHDX](../virtual-machines/windows/prepare-for-upload-vhd-image.md)，以及[为 Azure 中的通用化 VM 创建托管映像](../virtual-machines/windows/capture-image-resource.md)。
+如果你是使用 Azure 虚拟桌面远程应用流式处理将应用交付给客户的应用开发人员，则需要做好以下准备：
 
-如果你还没有 Azure 订阅，请务必在按照以下说明开始操作之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 如果你打算向最终用户提供组织的应用，请确保该应用已确实准备就绪。 有关详细信息，请参阅[如何使用 Azure 虚拟桌面托管自定义应用](./remote-app-streaming/custom-apps.md)。
+- 如果现有的 Azure 库映像选项不满足需求，则你还需要为会话主机 VM 创建自己的自定义映像。 若要详细了解如何创建 VM 映像，请参阅[准备要上传到 Azure 的 Windows VHD 或 VHDX](../virtual-machines/windows/prepare-for-upload-vhd-image.md)，以及[为 Azure 中的通用化 VM 创建托管映像](../virtual-machines/windows/capture-image-resource.md)。
+- 你的域加入凭据。 如果你没有与 Azure 虚拟桌面兼容的标识管理系统，则需要为主机池设置标识管理。
+
+### <a name="final-requirements"></a>最后的要求
+
+最后，请确保已注册 Microsoft.DesktopVirtualization 资源提供程序。 如果还没有注册，请转到“订阅”，选择你的订阅名称，然后选择“资源提供程序” 。 搜索“DesktopVirtualization”，选择“Microsoft.DesktopVirtualization”，然后选择“注册”  。
+
+如果你是创建网络的 IT 专业人员，在使用 Azure 资源管理器模板创建 Azure 虚拟桌面主机池时，可以从 Azure 库、托管映像或非托管映像创建虚拟机。 若要详细了解如何创建 VM 映像，请参阅[准备要上传到 Azure 的 Windows VHD 或 VHDX](../virtual-machines/windows/prepare-for-upload-vhd-image.md)，以及[为 Azure 中的通用化 VM 创建托管映像](../virtual-machines/windows/capture-image-resource.md)。 （如果你是应用开发人员，则不需要考虑此部分。）
+
+最后但同样重要的是，如果你还没有 Azure 订阅，请务必在按照以下说明开始操作之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="begin-the-host-pool-setup-process"></a>开始执行主机池设置过程
 
@@ -51,6 +68,8 @@ ms.locfileid: "111756250"
    
    >[!NOTE]
    > 如果要登录 US Gov 门户，请改为转到 [https://portal.azure.us/](https://portal.azure.us/)。
+   > 
+   >如果你要访问 Azure 中国门户，请转到 [https://portal.azure.cn/](https://portal.azure.cn/)。
 
 2. 在搜索栏中输入“Azure 虚拟桌面”，然后在“服务”下找到并选择“Azure 虚拟桌面” 。
 
@@ -82,7 +101,7 @@ ms.locfileid: "111756250"
 9.  如果选择“共用”，请输入以下信息：
 
      - 对于“会话数上限”，请输入你要在单个会话主机中进行负载均衡的最大用户数。
-     - 对于“负载均衡算法”，请根据使用模式选择“广度优先”或“深度优先”。
+     - 对于“负载均衡算法”，请根据使用模式选择“广度优先”或“深度优先”。 若要详细了解其中每个选项的含义，请参阅[主机池负载均衡方法](host-pool-load-balancing.md)。
 
        > [!div class="mx-imgBorder"]
        > ![“分配类型”字段的屏幕截图，其中已选择“共用”。 用户正在将其光标悬停在负载均衡下拉菜单中的“广度优先”上。](media/pooled-assignment-type.png)
@@ -103,12 +122,12 @@ ms.locfileid: "111756250"
 
 2. 然后，提供一个名称前缀来为设置过程创建的虚拟机命名。 该后缀是 `-` 加上从 0 开始的数字。
 
-3. 选择要在其中创建虚拟机的“虚拟机位置”。 该区域可以与你为主机池选择的区域相同或不同。
+3. 选择要在其中创建虚拟机的“虚拟机位置”。 该区域可以与你为主机池选择的区域相同或不同。 请记住，VM 价格因区域而异，VM 位置应尽可能靠近其用户，以最大程度地提高性能。 有关详细信息，请参阅 [Azure 虚拟桌面的数据位置](data-locations.md)。
    
-4. 接下来，选择最符合需求的可用性选项。 若要详细了解哪个选项适合你，请参阅 [Azure 中虚拟机的可用性选项](../virtual-machines/availability.md)和[常见问题解答](faq.md#which-availability-option-is-best-for-me)。
+4. 接下来，选择最符合需求的可用性选项。 若要详细了解哪个选项适合你，请参阅 [Azure 中虚拟机的可用性选项](../virtual-machines/availability.md)和[常见问题解答](/azure/virtual-desktop/faq#which-availability-option-is-best-for-me)。
    
    > [!div class="mx-imgBorder"]
-   > [可用性区域下拉菜单的屏幕截图，其中突出显示了“可用性区域”选项。](media/availability-zone.png)
+   > ![可用性区域下拉菜单的屏幕截图。 已突出显示“可用性区域”选项。](media/availability-zone.png)
 
 5. 接下来，选择需要用来创建虚拟机的映像。 可以选择“库”或“存储 Blob” 。
 
@@ -123,7 +142,7 @@ ms.locfileid: "111756250"
       如果未看到所需的映像，请选择“查看所有映像”，然后便可以选择库中的另一个映像，或选择 Microsoft 和其他发行商提供的映像。 确保所选的映像是[受支持的 OS 映像](overview.md#supported-virtual-machine-os-images)之一。
 
       > [!div class="mx-imgBorder"]
-      > ![市场屏幕截图，其中显示了 Microsoft 提供的映像列表。](media/marketplace-images.png)
+      > ![Azure 门户的屏幕截图，其中显示了 Microsoft 提供的映像列表。](media/marketplace-images.png)
 
       还可以转到“我的项”并选择已上传的自定义映像。
 
@@ -132,9 +151,9 @@ ms.locfileid: "111756250"
 
     - 如果选择“存储 Blob”，则可以使用你自己的、通过 Hyper-V 生成的映像或 Azure VM 上的映像。 只需输入该映像在存储 Blob 中的位置作为 URI 即可。
    
-   映像的位置独立于可用性选项，但映像的区域复原能力决定了该映像是否可在可用性区域中使用。 如果在创建映像时选择可用性区域，请确保使用的是已启用区域复原能力的库中的映像。 若要详细了解应使用哪个区域复原能力选项，请参阅[常见问题解答](faq.md#which-availability-option-is-best-for-me)。
+   映像的位置独立于可用性选项，但映像的区域复原能力决定了该映像是否可在可用性区域中使用。 如果在创建映像时选择可用性区域，请确保使用的是已启用区域复原能力的库中的映像。 若要详细了解应使用哪个区域复原能力选项，请参阅[常见问题解答](/azure/virtual-desktop/faq#which-availability-option-is-best-for-me)。
 
-6. 然后，选择要使用的“虚拟机大小”。 可以按原样保留默认大小，也可以选择“更改大小”来更改大小。 如果选择“更改大小”，请在显示的窗口中选择适合你的工作负载的虚拟机大小。
+6. 然后，选择要使用的“虚拟机大小”。 可以按原样保留默认大小，也可以选择“更改大小”来更改大小。 如果选择“更改大小”，请在显示的窗口中选择适合你的工作负载的虚拟机大小。 若要详细了解虚拟机大小以及应该选择的大小，请参阅[虚拟机大小调整指南](/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context)。
 
 7. 在“VM 数量”下，提供要为主机池创建的 VM 数量。
 
@@ -157,11 +176,17 @@ ms.locfileid: "111756250"
 
     如果选择“高级”，请选择已配置的现有网络安全组。
 
-11. 然后，选择是否要将虚拟机加入特定的域和组织单位。 如果选择“是”，请指定要加入到的域。 可以选择添加要将虚拟机加入其中的特定组织单位。 如果你选择“否”，VM 将加入到与“AD 域加入 UPN”的后缀相匹配的域 。
+11. 然后，选择是要将虚拟机加入 Active Directory 还是 Azure Active Directory（预览版） 。
 
-    - 指定 OU 时，请确保使用不带引号的完整路径（可分辨名称）。
+    - 对于 Active Directory，请提供要加入域的帐户，然后选择是否要加入特定的域和组织单位。
 
-12. 在“域管理员帐户”下，输入所选虚拟网络的 Active Directory 域管理员的凭据。 此帐户不能启用多重身份验证 (MFA)。 加入 Azure Active Directory 域服务 (Azure AD DS) 域时，帐户必须是 Azure AD DC 管理员组的成员，并且帐户密码必须在 Azure AD DS 中有效。
+        - 对于 AD 域加入 UPN，请输入所选虚拟网络的 Active Directory 域管理员的凭据。 使用的帐户不能启用多重身份验证 (MFA)。 加入 Azure Active Directory 域服务 (Azure AD DS) 域时，使用的帐户必须是 Azure AD DC 管理员组的成员，并且帐户密码必须在 Azure AD DS 中有效。
+
+        - 若要指定域，请选择“是”，然后输入要加入的域的名称。 如果需要，还可以通过输入不带引号的完整路径（可分辨名称）来添加虚拟机需要加入到的特定组织单位。 如果你不想指定域，请选择“否”。 VM 将自动加入到与 AD 域加入 UPN 的后缀匹配的域。
+  
+    - 对于 Azure Active Directory，可以选择“在 Intune 中注册 VM”，使该 VM 在部署后可供管理。
+
+12. 在“虚拟机管理员帐户”下，输入在创建 VM 时要添加的本地管理员帐户的凭据。 可以在已加入 AD 和已加入 Azure AD 的 VM 中，将此帐户用于管理目的。
 
 13. 在完成时选择“下一步:工作区 >”。
 
@@ -170,6 +195,9 @@ ms.locfileid: "111756250"
 ## <a name="workspace-information"></a>工作区信息
 
 主机池设置过程默认会创建一个桌面应用程序组。 要使主机池按预期方式工作，需将此应用组发布给用户或用户组，并且必须将此应用组注册到工作区。
+
+>[!NOTE]
+>如果你是一名想要发布组织应用的应用开发人员，可将 MSIX 应用动态附加到用户会话，或将应用包添加到自定义 VM 映像。 有关详细信息，请参阅“如何使用 Azure 虚拟桌面为自定义应用提供服务”。
 
 若要将桌面应用组注册到工作区，请执行以下操作：
 
@@ -195,7 +223,7 @@ ms.locfileid: "111756250"
      - 工作区（如果已选择创建工作区）。
      - 如果你选择注册桌面应用组，则注册将会完成。
      - 已加入域并已注册到新主机池的虚拟机（如果已选择创建虚拟机）。
-     - 基于配置的 Azure 资源管理模板的下载链接。
+     - 基于配置的 Azure 资源管理器模板的下载链接。
 
 所有操作现已全部完成！
 

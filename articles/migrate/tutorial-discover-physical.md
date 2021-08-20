@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Migrate 发现和评估发现物理服务器
 description: 了解如何使用 Azure Migrate 发现和评估发现本地物理服务器。
-author: vineetvikram
-ms.author: vivikram
+author: Vikram1988
+ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: 7ff8a7739c0018d415ad503e888d63d04e641153
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 0878911bdd3caa2202ef993142aa89e4eabfe33c
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751196"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114464823"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>教程：使用 Azure Migrate：发现和评估发现物理服务器
 
@@ -79,11 +79,42 @@ ms.locfileid: "109751196"
 
 设置一个可供设备用于访问物理服务器的帐户。
 
-- 对于 **Windows 服务器**，针对已加入域的服务器使用域帐户，针对未加入域的服务器使用本地帐户。 应将用户帐户添加到这些组：远程管理用户、性能监视器用户和性能日志用户。
-    > [!Note]
-    > 对于 Windows Server 2008 和 2008 R2，请确保在服务器上安装 WMF 3.0，以及向这些组中添加用于访问服务器的域/本地帐户：性能监视器用户、性能日志用户和 WinRMRemoteWMIUsers。
+**Windows 服务器**
 
-- 对于 Linux 服务器，需要在要发现的 Linux 服务器上拥有根帐户。 或者，可使用以下命令设置具有所需功能的非根帐户：
+- 对于 Windows 服务器，针对已加入域的服务器使用域帐户，针对未加入域的服务器使用本地帐户。 
+- 应将用户帐户添加到这些组：远程管理用户、性能监视器用户和性能日志用户。 
+- 如果远程管理用户组不存在，请将用户帐户添加到以下组：WinRMRemoteWMIUsers_。
+- 该帐户需要拥有这些权限才能让设备创建与服务器的 CIM 连接，并从此处列出的 WMI 类中拉取所需的配置和性能元数据。
+- 在某些情况下，将帐户添加到这些组可能不会从 WMI 类返回所需的数据，因为该帐户可能由 [UAC](/windows/win32/wmisdk/user-account-control-and-wmi) 筛选。 若要绕过 UAC 筛选，用户帐户需在目标服务器上的 CIMV2 命名空间和子命名空间中拥有所需的权限。 可按[此处](troubleshoot-appliance.md)所述的步骤启用所需的权限。
+
+    > [!Note]
+    > 对于 Windows Server 2008 和 2008 R2，请确保在服务器上安装 WMF 3.0。
+
+**Linux 服务器**
+
+- 在要发现的服务器上需有一个 root 帐户。 或者，可以提供拥有 sudo 权限的用户帐户。
+- 在 2021 年 7 月 20 日之后，默认会通过从门户下载的新设备安装程序脚本来支持添加拥有 sudo 访问权限的用户帐户。
+- 对于较旧的设备，可以按照以下步骤来启用该功能：
+    1. 在运行设备的服务器上，打开注册表编辑器。
+    1. 导航到 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance。
+    1. 创建 DWORD 值为 1 的注册表项“isSudo”。
+
+    :::image type="content" source="./media/tutorial-discover-physical/issudo-reg-key.png" alt-text="显示如何启用 sudo 支持的屏幕截图。":::
+
+- 若要发现目标服务器中的配置和性能元数据，需要为[此处](migrate-appliance.md#linux-server-metadata)列出的命令启用 sudo 访问权限。 确保已启用“NOPASSWD”，使帐户能够运行所需的命令，且不会在每次调用 sudo 命令时都提示用户输入密码。
+- 以下 Linux OS 发行版支持使用拥有 sudo 访问权限的帐户通过 Azure Migrate 进行发现：
+
+    操作系统 | 版本 
+    --- | ---
+    Red Hat Enterprise Linux | 6、7、8
+    Cent OS | 6.6、8.2
+    Ubuntu | 14.04、16.04、18.04
+    SUSE Linux | 11.4、12.4
+    Debian | 7、10
+    Amazon Linux | 2.0.2021
+    CoreOS Container | 2345.3.0
+
+- 如果无法提供 root 帐户或拥有 sudo 访问权限的用户帐户，可以在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance 注册表中将“isSudo”注册表项设置为“0”值，并使用以下命令为非 root 帐户提供所需的功能：
 
 **命令** | **用途**
 --- | --- |
@@ -91,7 +122,6 @@ setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/fdisk <br></br> setcap CAP_DAC_READ_SEA
 setcap "cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_setuid,<br>cap_setpcap,cap_net_bind_service,cap_net_admin,cap_sys_chroot,cap_sys_admin,<br>cap_sys_resource,cap_audit_control,cap_setfcap=+eip" /sbin/lvm | 收集磁盘性能数据
 setcap CAP_DAC_READ_SEARCH+eip /usr/sbin/dmidecode | 收集 BIOS 序列号
 chmod a+r /sys/class/dmi/id/product_uuid | 收集 BIOS GUID
-
 
 ## <a name="set-up-a-project"></a>设置项目
 
@@ -122,7 +152,7 @@ Azure Migrate 设备执行服务器发现并将服务器配置和性能元数据
 1. 提供设备名称，并在门户中生成项目密钥。
 2. 从 Azure 门户下载带有 Azure Migrate 安装程序脚本的压缩文件。
 3. 从压缩文件中提取内容。 使用管理权限启动 PowerShell 控制台。
-4. 执行 PowerShell 脚本以启动设备 Web 应用程序。
+4. 执行 PowerShell 脚本以启动设备配置管理器。
 5. 完成设备的首次配置，并使用项目密钥将其注册到项目。
 
 ### <a name="1-generate-the-project-key"></a>1.生成项目密钥
@@ -133,6 +163,8 @@ Azure Migrate 设备执行服务器发现并将服务器配置和性能元数据
 1. 单击“生成密钥”，开始创建所需的 Azure 资源。 在创建资源期间，请不要关闭发现服务器页。
 1. 成功创建 Azure 资源后，会生成一个 **项目密钥**。
 1. 复制密钥，因为配置设备时需要输入该密钥才能完成设备注册。
+
+  [ ![“生成密钥”的选项。](./media/tutorial-assess-physical/generate-key-physical-inline-1.png)](./media/tutorial-assess-physical/generate-key-physical-expanded-1.png#lightbox)
 
 ### <a name="2-download-the-installer-script"></a>2.下载安装程序脚本
 
@@ -145,50 +177,45 @@ Azure Migrate 设备执行服务器发现并将服务器配置和性能元数据
 1. 在下载文件的服务器上，打开管理员命令窗口。
 2. 运行以下命令以生成 zip 文件的哈希：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 公有云的示例用法：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
-    - 政府云的示例用法：```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip SHA256 ```
-3.  验证最新的设备版本和哈希值：
-    - 对于公有云：
+    - 用法示例：```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+3.  验证最新设备版本和哈希值：
 
-        **方案** | **下载** _ | _ *哈希值**
-        --- | --- | ---
-        物理 (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140334) | ce5e6f0507936def8020eb7b3109173dad60fc51dd39c3bd23099bc9baaabe29
+    **下载** | **哈希值**
+    --- | ---
+    [最新版本](https://go.microsoft.com/fwlink/?linkid=2140334) | 15a94b637a39c53ac91a2d8b21cc3cca8905187e4d9fb4d895f4fa6fd2f30b9f
 
-    - 对于 Azure 政府：
+> [!NOTE]
+> 可以使用同一脚本为已连接到公共或专用终结点的 Azure 公有云或 Azure 政府云设置物理设备。
 
-        **方案** | **下载** _ | _ *哈希值**
-        --- | --- | ---
-        物理 (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
- 
 
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3.运行 Azure Migrate 安装程序脚本
-此安装程序脚本执行以下操作：
-
-- 安装用于物理服务器发现和评估的代理和 Web 应用程序。
-- 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
-- 下载并安装 IIS 可重写模块。
-- 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
-- 在路径下创建以下文件：
-    - **配置文件**：%Programdata%\Microsoft Azure\Config
-    - **日志文件**：%Programdata%\Microsoft Azure\Logs
-
-按如下所示运行脚本：
 
 1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。  请确保不要在现有 Azure Migrate 设备上的服务器上运行该脚本。
 2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
 3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
 4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：
 
-    - 对于公有云： 
     
-        ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 ```
-    - 对于 Azure 政府： 
-    
-        ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
 
-    脚本将在成功完成时启动设备 Web 应用程序。
+5. 从方案、云和连接选项中进行选择，以部署具有所需配置的设备。 例如，下面所示的选择会在 Azure 公有云上已建立默认（公共终结点）连接的 Azure Migrate 项目中，设置一个设备用于发现和评估物理服务器（或在 AWS、GCP、Xen 等其他云上运行的服务器） 。
 
-如果遇到任何问题，可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志来进行故障排除。
+    :::image type="content" source="./media/tutorial-discover-physical/script-physical-default-inline.png" alt-text="显示如何设置具有所需配置的设备的屏幕截图" lightbox="./media/tutorial-discover-physical/script-physical-default-expanded.png":::
+
+6. 此安装程序脚本执行以下操作：
+
+ - 安装代理和 Web 应用程序。
+ - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
+ - 下载并安装 IIS 可重写模块。
+ - 更新 Azure Migrate 的注册表项 (HKLM) 和永久性设置详细信息。
+ - 在路径下创建以下文件：
+    - **配置文件**：%Programdata%\Microsoft Azure\Config
+    - **日志文件**：%Programdata%\Microsoft Azure\Logs
+
+成功执行该脚本后，将自动启动设备配置管理器。
+
+> [!NOTE]
+> 如果遇到任何问题，可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志来进行故障排除。
 
 ### <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
 

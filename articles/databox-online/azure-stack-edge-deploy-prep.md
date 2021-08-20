@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/16/2021
+ms.date: 07/23/2021
 ms.author: alkohli
-ms.openlocfilehash: 1cab6f6f9db0650cee51b3863d521089b500bee9
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: eecdead171e68915430aefe9aebeb24833485789
+ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461302"
+ms.lasthandoff: 07/26/2021
+ms.locfileid: "114688972"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-fpga"></a>教程：准备部署 Azure Stack Edge Pro FPGA  
 
@@ -54,16 +55,32 @@ ms.locfileid: "110461302"
 
 * 已为 Azure Stack Edge 资源启用 Microsoft Azure 订阅。 确保使用了受支持的订阅，例如 [Microsoft 企业协议 (EA)](https://azure.microsoft.com/overview/sales-number/)、[云解决方案提供商 (CSP)](/partner-center/azure-plan-lp) 或 [Microsoft Azure 赞助](https://azure.microsoft.com/offers/ms-azr-0036p/)。 不支持即用即付订阅。
 
-* 你在资源组级别拥有对 Azure Stack Edge/Data Box Gateway、IoT 中心和 Azure 存储资源的所有者或参与者访问权限。
+* RBAC 角色：在 Azure 基于角色的访问控制 (RBAC) 中具有以下角色分配：
 
-  * 你应是订阅级别的“所有者”才能授予参与者访问权限。 若要向其他人授予参与者访问权限，在 Azure 门户中，转到“所有服务” > “订阅” > “访问控制(IAM)” > “+添加” > “添加角色分配”    。 有关详细信息，请参阅[教程：使用 Azure 门户授予用户对 Azure 资源的访问权限](../role-based-access-control/quickstart-assign-role-user-portal.md)。
+  * 若要创建 Azure Stack Edge、IoT 中心和 Azure 存储资源，用户必须在资源组范围具有“参与者”或“所有者”角色。
 
-  * 若要创建任何 Azure Stack Edge/Data Box Gateway 资源，你应该在资源组级别范围内具有参与者（或更高级别）权限。 你还需要确保已注册 `Microsoft.DataBoxEdge` 资源提供程序。 有关如何注册资源提供程序的信息，请参阅[注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
-  * 若要创建任何 IoT 中心资源，请确保已注册 Microsoft.Devices 提供程序。 有关如何注册的信息，请转到[注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
-  * 若要创建存储帐户资源，你同样需要资源组级别范围内的参与者或更高级别访问权限。 Azure 存储在默认情况下是已注册的资源提供程序。
+  * 若要在资源组范围将“参与者”角色分配给用户，必须在订阅范围具有“所有者”角色。
+
+  有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../role-based-access-control/role-assignments-portal.md)。
+
+* 资源提供程序：已注册以下资源提供程序： 
+
+  * 若要创建 Azure Stack Edge/Data Box Gateway 资源，请确保已注册 `Microsoft.DataBoxEdge` 提供程序。
+
+  * 若要创建 IoT 中心资源，请确保已注册 `Microsoft.Devices` 提供程序。
+
+  * 若要创建 Azure 存储资源，请确保已注册 Azure 存储。 默认情况下，Azure 存储资源提供程序 (SRP) 是已注册的资源提供程序，但某些情况下可能需要注册。
+
+  若要注册资源提供程序，必须具有上述相关 RBAC 角色。
+
+  有关如何注册的信息，请参阅[注册资源提供程序](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
+
 * 你拥有对 Azure Active Directory 图形 API 的管理员或用户访问权限。 有关详细信息，请参阅 [Azure Active Directory 图形 API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
+
 * 具有 Microsoft Azure 存储帐户和访问凭据。
+
 * 你未被系统管理员设置的任何 Azure 策略阻止。 有关策略的详细信息，请参阅[快速入门：创建策略分配以识别不合规资源](../governance/policy/assign-policy-portal.md)。
+
 
 ### <a name="for-the-azure-stack-edge-pro-fpga-device"></a>对于 Azure Stack Edge Pro FPGA 设备
 

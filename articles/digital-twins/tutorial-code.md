@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 68afdb1c0ab74f5d05fd13a9fe8868cb9e2ac4aa
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: be0502f61105b88e5a751dde88e4828722c866af
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460251"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114446813"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>教程：使用 Azure 数字孪生 API 编写代码
 
-开发人员使用 Azure 数字孪生编写客户端应用程序，以与其 Azure 数字孪生服务实例交互，这是很常见的情况。 这篇面向开发人员的教程介绍如何使用[适用于 .NET 的 Azure 数字孪生 SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 对 Azure 数字孪生服务进行编程。 本教程会逐步引导你从头开始编写 C# 控制台客户端应用。
+使用 Azure 数字孪生的开发人员经常会编写客户端应用程序来与其 Azure 数字孪生服务实例交互。 这篇面向开发人员的教程介绍如何使用[适用于 .NET 的 Azure 数字孪生 SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 对 Azure 数字孪生服务进行编程。 本教程会逐步引导你从头开始编写 C# 控制台客户端应用。
 
 > [!div class="checklist"]
 > * 设置项目
@@ -53,7 +53,7 @@ ms.locfileid: "110460251"
 dotnet new console
 ```
 
-这会在你的目录中创建多个文件，其中包括一个名为 Program.cs 的文件，你将在其中编写大部分代码。
+此命令将在你的目录中创建多个文件，其中包括一个名为 Program.cs 的文件，你将在其中编写大部分代码。
 
 让命令窗口保持打开状态，因为整个教程都要继续使用该窗口。
 
@@ -66,7 +66,7 @@ dotnet add package Azure.Identity
 
 ## <a name="get-started-with-project-code"></a>开始使用项目代码
 
-在本部分中，你将开始编写新应用项目的代码以使用 Azure 数字孪生。 涵盖的操作包括：
+在本部分，你将开始编写新应用项目的代码以使用 Azure 数字孪生。 涵盖的操作包括：
 * 对服务进行身份验证
 * 上传模型
 * 捕获错误
@@ -74,7 +74,7 @@ dotnet add package Azure.Identity
 * 创建关系
 * 查询数字孪生
 
-在本教程末尾，另有一节显示了完整的代码。 你可以将其用作参考，随时检查自己的程序。
+在本教程末尾，另有一节显示了完整的代码。 你可以将本部分用作参考，随时检查自己的程序。
 
 开始前，请在任何代码编辑器中打开 Program.cs 文件。 你将看到如下所示的基础代码模板：
 
@@ -96,7 +96,7 @@ dotnet add package Azure.Identity
 
 应用必须执行的第一项操作是对 Azure 数字孪生服务进行身份验证。 接着，你可以创建服务客户端类来访问 SDK 函数。
 
-为了进行身份验证，需要 Azure 数字孪生实例的主机名。
+若要进行身份验证，需要 Azure 数字孪生实例的主机名。
 
 在 Program.cs 中，将以下代码粘贴到 `Main` 方法中的“Hello, World!”输出行下方。 将 `adtInstanceUrl` 的值设置为 Azure 数字孪生实例的主机名。
 
@@ -110,7 +110,7 @@ dotnet add package Azure.Identity
 dotnet run
 ```
 
-首次运行时，这会还原依赖项，然后执行程序。 
+首次运行时，此命令会还原依赖项，然后执行程序。 
 * 如果未发生错误，程序将输出“Service client created - ready to go”（服务客户端已创建 - 准备就绪）。
 * 由于此项目中尚没有任何错误处理机制，因此如果出现任何问题，你将看到代码引发的异常。
 
@@ -128,7 +128,7 @@ Azure 数字孪生没有内部域词汇。 环境中可在 Azure 数字孪生中
 > 如果在本教程中使用 Visual Studio，建议你选择新创建的 JSON 文件，并将属性检查器中的“复制到输出目录”属性设置为“有更新时才复制”或“始终复制”  。 当你在本教程的其余部分使用 F5 执行程序时，这可让 Visual Studio 找到具有默认路径的 JSON 文件。
 
 > [!TIP] 
-> 有一种与语言无关的 [DTDL 验证程序示例](/samples/azure-samples/dtdl-validator/dtdl-validator)，可用来检查模型文件，以确保 DTDL 有效。 它是在 DTDL 分析程序库的基础上构建的，详情请参阅[操作方法：分析和验证模型](how-to-parse-models.md)。
+> 有一种与语言无关的 [DTDL 验证程序示例](/samples/azure-samples/dtdl-validator/dtdl-validator)，可用来检查模型文件，以确保 DTDL 有效。 它是在 DTDL 分析程序库的基础上构建的，详情请参阅[分析和验证模型](how-to-parse-models.md)。
 
 接下来，向 Program.cs 添加更多代码，将刚才创建的模型上传到 Azure 数字孪生实例。
 
@@ -212,7 +212,7 @@ dotnet run
 
 在命令窗口中，使用 `dotnet run` 运行程序。 在输出中，查找指出这两种关系已成功创建的 print 语句。
 
-请注意，如果已存在另一个 ID 相同的关系，Azure 数字孪生将不会让你创建关系；因此，如果多次运行程序，你将会看到有关创建关系的异常信息。 此代码会捕获异常并将其忽略。 
+如果已存在另一个 ID 相同的关系，Azure 数字孪生将不会让你创建关系；因此，如果多次运行程序，你将会看到有关创建关系的异常信息。 此代码会捕获异常并将其忽略。 
 
 ### <a name="list-relationships"></a>列出关系
 
@@ -271,4 +271,4 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 请继续学习下一个教程，了解可使用这类示例客户端应用执行的操作： 
 
 > [!div class="nextstepaction"]
-> [教程：使用示例客户端应用了解基础知识](tutorial-command-line-app.md)
+> [使用示例客户端应用了解基础知识](tutorial-command-line-app.md)

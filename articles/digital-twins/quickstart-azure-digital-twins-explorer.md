@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/27/2021
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d4315ff04235e4b555a201e9da7287339b0de125
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 26063c9d0c02079b2c40eb85330be499b4bb624e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110450665"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114461967"
 ---
 # <a name="quickstart---get-started-with-a-sample-scenario-in-azure-digital-twins-explorer"></a>快速入门 - 开始使用 Azure Digital Twins Explorer 中的示例场景
 
@@ -43,23 +43,36 @@ ms.locfileid: "110450665"
 
     :::image type="content" source="media/quickstart-azure-digital-twins-explorer/download-building-scenario.png" alt-text="GitHub 中的 digital-twins-explorer/client/examples/buildingScenario.xlsx 文件的屏幕截图。其中的“下载”按钮突出显示。" lightbox="media/quickstart-azure-digital-twins-explorer/download-building-scenario.png":::
 
-## <a name="set-up-azure-digital-twins-and-azure-digital-twins-explorer"></a>设置 Azure 数字孪生和 Azure Digital Twins Explorer
+## <a name="set-up-azure-digital-twins"></a>设置 Azure 数字孪生
 
-要使用 Azure 数字孪生，第一步是设置 Azure 数字孪生实例。 创建服务的实例后，可在 Azure Digital Twins Explorer 中连接到该实例，稍后可在快速入门中使用示例数据对其进行填充。
+要使用 Azure 数字孪生，第一步是创建一个 Azure 数字孪生实例。 创建服务的实例后，可在 Azure Digital Twins Explorer 中连接到该实例。在本快速入门中，从前到后你都要使用 Azure Digital Twins Explorer 来操作该实例。
 
 本部分的其余部分将指导你完成这些步骤。
 
-### <a name="set-up-an-azure-digital-twins-instance"></a>设置 Azure 数字孪生实例
+### <a name="create-an-azure-digital-twins-instance"></a>创建 Azure 数字孪生实例
 
-若要在本文中使用 Azure 数字孪生，首先需要设置一个 Azure 数字孪生实例。 还需具备使用它所必需的权限。
+[!INCLUDE [digital-twins-setup-portal.md](../../includes/digital-twins-setup-portal.md)]
 
-请按照[设置实例和身份验证](how-to-set-up-instance-portal.md)中的说明操作。 该说明中包含可帮助你验证是否已成功完成每个步骤的信息。
+3. 填写安装程序的“基本信息”选项卡上的字段，包括订阅、资源组、位置和新实例的资源名称。 选中“分配 Azure 数字孪生数据所有者角色”框，以便为你自己授予管理实例中数据的权限。
+
+    >[!NOTE]
+    > 如果“分配 Azure 数字孪生数据所有者角色”框灰显，则表示你在 Azure 订阅中无权管理用户对资源的访问权限。 你可以根据本部分所述继续创建实例，然后应在完成本快速入门的其余部分之前，让某个拥有所需权限的人员[在该实例上为你分配此角色](how-to-set-up-instance-portal.md#assign-the-role-using-azure-identity-management-iam)。
+    >
+    > 满足此要求的常见角色包括“所有者”、“帐户管理员”或“用户访问管理员”和“参与者”的组合。  
+
+4. 选择“查看 + 创建”以完成实例创建。
+
+    :::image type="content" source= "media/quickstart-azure-digital-twins-explorer/create-azure-digital-twins-basics.png" alt-text="Azure 门户中 Azure 数字孪生的“创建资源”过程的屏幕截图。已填写所描述的值。":::
+    
+5. 你将看到一个摘要页，其中显示了输入的详细信息。 确认这些信息，然后选择“创建”以创建实例。
+
+随后你会转到“概述”页，可在其中跟踪实例的部署状态。
 
 ### <a name="open-instance-in-azure-digital-twins-explorer"></a>在 Azure Digital Twins Explorer 中打开实例
 
-接下来，在 Azure 门户为实例打开 [Azure Digital Twins Explorer](https://portal.azure.com)。 
+部署完实例后，使用“转到资源”按钮导航到门户中该实例的“概述”页。
 
-为此，请转到 Azure 门户，在门户搜索栏中搜索新的 Azure 数字孪生实例的名称来导航到该实例。
+:::image type="content" source= "media/quickstart-azure-digital-twins-explorer/deployment-complete.png" alt-text="Azure 门户中 Azure 数字孪生的部署页的屏幕截图。页面中指示部署已完成。":::
 
 接下来，选择“打开 Azure Digital Twins Explorer (预览版)”按钮。
 
@@ -288,4 +301,4 @@ Azure 数字孪生的主要功能是能够轻松有效地[查询](concepts-query
 接下来，请继续学习 Azure 数字孪生教程，生成你自己的 Azure 数字孪生方案和交互工具。
 
 > [!div class="nextstepaction"]
-> [教程：为客户端应用编写代码](tutorial-code.md)
+> [为客户端应用编写代码](tutorial-code.md)

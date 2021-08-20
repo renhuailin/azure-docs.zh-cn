@@ -1,6 +1,6 @@
 ---
 title: 限制对 PaaS 资源的访问 - 教程 - Azure 门户
-description: 本教程介绍如何使用 Azure 门户通过虚拟网络服务终结点限制对 Azure 资源（例如 Azure 存储和 Azure SQL 数据库）的网络访问。
+description: 本教程介绍如何使用 Azure 门户通过虚拟网络服务终结点限制对 Azure 资源（例如 Azure 存储）的网络访问。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 12/11/2020
+ms.date: 07/16/2021
 ms.author: kumud
-ms.openlocfilehash: 789816e37c3aaf9678fd9cb87ff6362442709498
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: a0d721e847d0e47358bfbeb640b9e9a6e6a551a3
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082201"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463357"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>教程：使用 Azure 门户通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
@@ -38,205 +38,231 @@ ms.locfileid: "112082201"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="log-in-to-azure"></a>登录 Azure
-
-在 https://portal.azure.com 登录 Azure 门户。
-
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-1. 选择 Azure 门户左上角的“+ 创建资源”。
-2. 选择“网络”，然后选择“虚拟网络” 。
-3. 单击“+ 添加”，然后输入以下信息： 
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
-   |设置|Value|
+1. 选择 Azure 门户左上角的“+ 创建资源”。 搜索“虚拟网络”，然后选择“创建” 。
+
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/create-resources.png" alt-text="在“创建资源”页中搜索“虚拟网络”时的屏幕截图。":::    
+
+1. 在“基本信息”选项卡上输入以下信息，然后选择“下一步: IP 地址 >” 。 
+
+   | 设置 | 值 |
    |----|----|
-   |订阅| 选择订阅|
-   |资源组 | 选择“新建”，并输入 myResourceGroup|
-   |名称| 输入“myVirtualNetwork” |
-   |区域| 选择“(US)美国东部” |
+   | 订阅 | 选择订阅|
+   | 资源组 | 选择“新建”，并输入 myResourceGroup|
+   | 名称 | 输入“myVirtualNetwork” |
+   | 区域 | 选择“(US)美国东部” |
 
-   ![输入虚拟网络的基本信息](./media/tutorial-restrict-network-access-to-resources/create-virtual-network.png)
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/create-virtual-network.png" alt-text="“创建虚拟网络”的“基本信息”选项卡的屏幕截图。":::  
 
-4. 单击“下一步:IP 地址 >”
+1. 在“IP 地址”选项卡上选择以下 IP 地址设置，然后选择“查看 + 创建” 。
    
-   |设置|值|
-   |----|----|
-   |IPv4Address 空间| 保留为默认值 |
-   |子网名称| 单击“默认”并将名称从“默认”更改为“公共”|
-   |子网地址范围| 保留为默认值|
+   | 设置 | 值 |
+   | --- | --- |
+   | IPv4 地址空间| 保留为默认值。 |
+   | 子网名称 | 选择“默认”并将子网名称更改为“公共”。 |
+   | 子网地址范围 | 保留为默认值。 |
 
-5. 单击“下一步:安全性 >” 
-   
-   |设置|值|
-   |----|----|   
-   |BastionHost| 禁用|
-   |DDOS 保护| 禁用|
-   |防火墙| 禁用|
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/create-virtual-network-ip-addresses.png" alt-text="“创建虚拟网络”的“IP 地址”选项卡的屏幕截图。":::  
 
-6. 完成后，单击“查看并创建”。
-7. 如果验证检查通过，请单击“创建”。
-8. 等待部署完成，然后单击“转到资源”或转到下一节。 
+1. 如果通过了验证检查，请选择“创建”。
+
+1. 等待部署完成，然后选择“转到资源”或转到下一部分。 
 
 ## <a name="enable-a-service-endpoint"></a>启用服务终结点
 
 每个服务、每个子网均启用服务终结点。 创建子网并为该子网启用服务终结点：
 
-1. 如果你尚未进入虚拟网络资源页，可在门户顶部的“搜索资源、服务和文档”框中搜索新创建的网络，输入“myVirtualNetwork”并从列表中选择它。
-2. 在“设置”菜单（左侧）中选择“子网”，然后选择“+ 子网”，如下所示  ：
+1. 如果你尚未进入虚拟网络资源页，可在门户顶部的框中搜索新建的网络。 输入“myVirtualNetwork”并从列表中选择它。
 
-    ![添加子网](./media/tutorial-restrict-network-access-to-resources/add-subnet.png) 
+1. 在“设置”下选择“子网”，然后选择“+ 子网”，如下所示：
 
-3. 在“添加子网”下，选择或输入以下信息，然后选择“确定”：
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/add-subnet.png" alt-text="将子网添加到现有虚拟网络的屏幕截图。":::
 
-    |设置|Value|
-    |----|----|
-    |名称| 专用 |
-    |地址范围| 保留为默认值|
-    |服务终结点| 选择“Microsoft.Storage”|
-    |服务终结点策略 | 保留默认值为 0 |
+1. 在“添加子网”页上选择或输入以下信息，然后选择“保存” ：
+
+    | 设置 |值 |
+    | --- | --- |
+    | 名称 | 专用 |
+    | 子网地址范围 | 保留为默认值|
+    | 服务终结点 | 选择“Microsoft.Storage”|
+    | 服务终结点策略 | 保留默认值。 已选择 0 个。 |
+
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/add-subnet-settings.png" alt-text="“添加子网”页的屏幕截图，其中已配置服务终结点。":::  
 
 > [!CAUTION]
 > 在为其中有资源的现有子网启用服务终结点之前，请参阅[更改子网设置](virtual-network-manage-subnet.md#change-subnet-settings)。
 
-4. 单击“保存”，然后关闭右侧的“子网”窗口。 新创建的子网应会显示在列表中。
-
 ## <a name="restrict-network-access-for-a-subnet"></a>限制子网的网络访问
 
-默认情况下，子网中的所有虚拟机实例均可与所有资源通信。 可以通过创建网络安全组并将其关联到子网来限制与子网中所有资源的通信：
+默认情况下，子网中的所有虚拟机实例均可与任何资源通信。 可以通过创建网络安全组并将其关联到子网来限制与子网中所有资源的通信：
 
-1. 选择 Azure 门户左上角的“所有服务”。
-2. 选择“网络”，然后选择（或搜索）“网络安全组” 。
-3. 在“网络安全组”页中，单击“+ 添加” 。
-4. 输入以下信息 
+1. 在 Azure 门户顶部的搜索框中，搜索“网络安全组”。
 
-    |设置|Value|
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/search-network-security-groups.png" alt-text="搜索“网络安全组”时的屏幕截图。":::  
+
+1. 在“网络安全组”页上，选择“+ 创建”。
+
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/network-security-groups-page.png" alt-text="网络安全组登陆页的屏幕截图。"::: 
+
+1. 输入或选择以下信息：
+
+    |设置|值|
     |----|----|
     |订阅| 选择订阅|
     |资源组 | 从列表中选择“myResourceGroup”|
     |名称| 输入“myNsgPrivate” |
     |位置| 选择“美国东部” |
 
-5. 单击“查看 + 创建”，并在验证检查通过后单击“创建” 。
-6. 创建网络安全组后，单击“转到资源”或搜索 myNsgPrivate。
-7. 在左侧的“设置”下，选择“出站安全规则” 。
-8. 选择“+ 添加”。
-9. 创建一条允许出站通信到 Azure 存储服务的规则。 输入或选择以下信息，然后选择“添加”：
+1. 选择“查看 + 创建”，并在通过了验证检查后选择“创建” 。
 
-    |设置|Value|
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/create-nsg-page.png" alt-text="“创建网络安全组”页的屏幕截图。":::
+
+1. 创建网络安全组后，选择“转到资源”，或者在 Azure 门户顶部搜索“myNsgPrivate”。
+
+1. 在“设置”下选择“出站安全规则”，然后选择“+ 添加”。
+
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/create-outbound-rule.png" alt-text="添加出站安全规则时的屏幕截图。" lightbox="./media/tutorial-restrict-network-access-to-resources/create-outbound-rule-expanded.png":::
+
+1. 创建一条允许出站通信到 Azure 存储服务的规则。 输入或选择以下信息，然后选择“添加”：
+
+    |设置|值|
     |----|----|
     |Source| 选择“VirtualNetwork” |
     |源端口范围| * |
     |目标 | 选择“服务标记”|
     |目标服务标记 | 选择“存储”|
-    |目标端口范围| 保留默认值为 8080 |
+    |服务 | 保留默认值“自定义”。 |
+    |目标端口范围| 更改为 445。 SMB 协议用于连接到在后续步骤中创建的文件共享。 |
     |协议|任意|
-    |操作|允许|
-    |优先级|100|
+    |操作|Allow|
+    |优先度|100|
     |名称|重命名为 Allow-Storage-All|
 
-10. 创建另一条出站安全规则，拒绝到 Internet 的通信。 此规则将覆盖所有网络安全组中允许出站 Internet 通信的默认规则。 使用以下值完成上述步骤 6-9：
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/create-outbound-storage-rule.png" alt-text="创建用于访问存储的出站安全规则时的屏幕截图。":::
 
-    |设置|Value|
+1. 创建另一条出站安全规则，拒绝到 Internet 的通信。 此规则将覆盖所有网络安全组中允许出站 Internet 通信的默认规则。 使用以下值完成上述步骤 6-9，然后选择“添加”：
+
+    |设置|值|
     |----|----|
     |Source| 选择“VirtualNetwork” |
     |源端口范围| * |
     |目标 | 选择“服务标记”|
     |目标服务标记| 选择“Internet”|
+    |服务| 保留默认值“自定义”。 |
     |目标端口范围| * |
     |协议|任意|
-    |操作|将默认值更改为“拒绝” |
+    |操作| 将默认值更改为“拒绝”。 |
     |优先级|110|
     |名称|更改为 Deny-Internet-All|
 
-11. 创建一个允许从任何位置向该子网发送远程桌面协议 (RDP) 流量的入站安全规则。 该规则将替代拒绝来自 Internet 的所有入站流量的默认安全规则。 允许与子网建立远程桌面连接，以便可以在后续步骤中测试连接。 
-12. 在“设置”下，选择“入站安全规则”。 
-13. 选择“+ 添加”，然后使用以下值：
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/create-outbound-internet-rule.png" alt-text="创建用于阻止 Internet 访问的出站安全规则时的屏幕截图。":::
 
-    |设置|Value|
+1. 创建一个允许从任何位置向该子网发送远程桌面协议 (RDP) 流量的入站安全规则。 该规则将替代拒绝来自 Internet 的所有入站流量的默认安全规则。 允许与子网建立远程桌面连接，以便可以在后续步骤中测试连接。 在“设置”下选择“入站安全规则”，然后选择“+ 添加”。
+
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/create-inbound-rule.png" alt-text="添加入站安全规则时的屏幕截图。" lightbox="./media/tutorial-restrict-network-access-to-resources/create-inbound-rule-expanded.png":::
+
+1. 输入或选择以下值，然后选择“添加”。
+
+    |设置|值|
     |----|----|
-    |Source| 任意 |
+    |源| 任意 |
     |源端口范围| * |
     |目标 | 选择“VirtualNetwork”|
     |目标端口范围| 更改为 3389 |
     |协议|任意|
-    |操作|允许|
+    |操作|Allow|
     |优先级|120|
     |名称|更改为 Allow-RDP-All|
+
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/create-inbound-rdp-rule.png" alt-text="创建允许入站远程桌面规则时的屏幕截图。":::
 
    >[!WARNING] 
    > RDP 端口 3389 公开给 Internet。 建议仅用于测试。 对于生产环境，建议使用 VPN 或专用连接。
 
-1.  在“设置”下，选择“子网”。
-2.  单击“+ 关联”。
-3.  在“虚拟网络”下，选择“myVirtualNetwork” 。
-4.  在“子网”下选择“专用”，然后选择“确定”  。
+1.  在“设置”下选择“子网”，然后选择“+ 关联”。
+
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/associate-subnets-page.png" alt-text="网络安全组子网关联页的屏幕截图。":::
+
+1.  在“虚拟网络”下选择“myVirtualNetwork”，然后在“子网”下选择“专用”。 选择“确定”将网络安全组关联到所选的子网。
+
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/associate-private-subnet.png" alt-text="将网络安全组关联到专用子网时的屏幕截图。":::
 
 ## <a name="restrict-network-access-to-a-resource"></a>限制对资源的网络访问
 
-对于通过为服务终结点启用的 Azure 服务创建的资源，限制对其的网络访问时所需的步骤因服务而异。 请参阅各个服务的文档来了解适用于每个服务的具体步骤。 作为示例，本教程的剩余部分包括了针对 Azure 存储帐户限制网络访问的步骤。
+对于通过为服务终结点启用的 Azure 服务创建的资源，限制对其的网络访问时所需的步骤因服务而异。 请参阅各个服务的文档来了解适用于每个服务的具体步骤。 本教程的余下内容以示例的形式介绍了限制 Azure 存储帐户进行网络访问的步骤。
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
 1. 选择 Azure 门户左上角的“+ 创建资源”。
-2. 在搜索栏中输入“存储帐户”，然后从下拉菜单中选择它。
-3. 单击“+ 添加”。
-4. 输入以下信息：
 
-    |设置|Value|
+1. 在搜索栏中输入“存储帐户”，然后从下拉菜单中选择它。 然后选择“创建”。
+
+1. 输入以下信息：
+
+    |设置|值|
     |----|----|
     |订阅| 选择订阅|
     |资源组| 选择“myResourceGroup”|
-    |存储帐户名称| 输入在所有 Azure 位置中唯一的、长度为 3-24 个字符且仅使用数字和小写字母的名称。|
-    |位置| 选择“(US)美国东部” |
+    |存储帐户名称| 输入在所有 Azure 位置均唯一的名称。 该名称的长度必须为 3-24 个字符，并且该名称只能使用数字和小写字母。|
+    |区域| 选择“(US)美国东部” |
     |性能|标准|
-    |帐户种类| StorageV2（常规用途 v2）|
-    |复制| 本地冗余存储 (LRS)|
+    |冗余| 本地冗余存储 (LRS)|
 
-5. 选择“创建 + 查看”，并在验证检查通过后单击“创建” 。 
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/create-storage-account.png" alt-text="创建新存储帐户时的屏幕截图。":::
 
->[!NOTE] 
-> 部署可能需要几分钟时间完成。
+1. 选择“创建 + 查看”，并在通过了验证检查后选择“创建” 。 
 
-6. 创建存储帐户后，单击“转到资源”
+    >[!NOTE] 
+    > 部署可能需要几分钟时间完成。
+
+1. 创建存储帐户后，选择“转到资源”。
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>在存储帐户中创建文件共享
 
-1. 转到存储帐户的“概述”页。
-2. 选择“文件共享”应用图标，然后单击“+ 文件共享” 。
+1. 在“数据存储”下选择“文件共享”，然后选择“+ 文件共享”。
 
-    |设置|Value|
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/file-share-page.png" alt-text="存储帐户中“文件共享”页的屏幕截图。":::
+
+1. 为文件共享输入或设置以下值，然后选择“创建”：
+
+    |设置|值|
     |----|----|
     |名称| my-file-share|
-    |Quota| “设置为最大值” |
+    |Quota| 选择“设置为最大值”。 |
+    |层| 保留默认值“事务优化”。 |
 
-   ![存储帐户](./media/tutorial-restrict-network-access-to-resources/storage-account.png) 
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/create-new-file-share.png" alt-text="新建文件共享设置页的屏幕截图。":::
 
-3. 单击“创建”。
-4. 如果不单击“刷新”，文件共享应显示在 Azure 窗口中
+1. 如果未在页面顶部选择“刷新”按钮，则新文件共享应会显示在文件共享页上。
 
 ### <a name="restrict-network-access-to-a-subnet"></a>限制对子网的网络访问
 
 默认情况下，存储帐户接受来自任何网络（包括 Internet）中的客户端的网络连接。 可限制来自 Internet 以及所有虚拟网络中的所有其他子网的网络访问（除 myVirtualNetwork 虚拟网络中的“专用”子网外） 。限制对子网的网络访问：
 
-1. 在你的（唯一命名）存储帐户的“设置”下，选择“网络” 。
-2. 选择“所选网络”。
-3. 选择“+ 添加现有虚拟网络”。
-4. 在“添加网络”下选择以下值，然后选择“添加”： 
+1. 在你的（唯一命名）存储帐户的“设置”下选择“网络”。
 
-    |设置|Value|
+1. 选择“允许从选定的网络访问”，然后选择“+ 添加现有虚拟网络”。
+
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/storage-network-settings.png" alt-text="存储帐户网络设置页的屏幕截图。":::
+
+1. 在“添加网络”下选择以下值，然后选择“添加”： 
+
+    |设置|值|
     |----|----|
     |订阅| 选择订阅|
     |虚拟网络| **myVirtualNetwork**|
     |子网| **专用**|
 
-    ![屏幕截图显示了可在其中输入指定值的“添加网络”窗格。](./media/tutorial-restrict-network-access-to-resources/virtual-networks.png)
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/add-virtual-network.png" alt-text="将虚拟网络添加到存储帐户页时的屏幕截图。":::
 
-5. 单击“添加”，随后立即单击“保存”图标以保存更改 。
-6. 在存储帐户的“设置”下，选择“访问密钥”，如下图所示： 
+1. 选择“保存”按钮保存虚拟网络配置。
 
-      ![屏幕截图显示了从“设置”中选择的“访问密钥”，可在其中获取密钥。](./media/tutorial-restrict-network-access-to-resources/storage-access-key.png)
+1. 在存储帐户的“安全性 + 网络”下选择“访问密钥”，然后选择“显示密钥”。 记下 key1 的值，以便稍后在 VM 中映射文件共享时使用。
 
-7. 单击“显示密钥”并记下“密钥”值，因为在后续步骤中将文件共享映射到 VM 中的驱动器号时，需要手动输入 key1。 
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/storage-access-key.png" alt-text="存储帐户密钥和连接字符串的屏幕截图。" lightbox="./media/tutorial-restrict-network-access-to-resources/storage-access-key-expanded.png":::
 
 ## <a name="create-virtual-machines"></a>创建虚拟机
 
@@ -244,68 +270,78 @@ ms.locfileid: "112082201"
 
 ### <a name="create-the-first-virtual-machine"></a>创建第一个虚拟机
 
-1. 在“搜索资源. . ." 栏中，搜索“虚拟机”。
-2. 选择“+ 添加”>“虚拟机”。 
-3. 输入以下信息：
+1. 在 Azure 门户上，选择“+ 创建资源”。
 
-   |设置|Value|
+1. 选择“计算”，然后在“虚拟机”下选择“创建” 。
+
+1. 在“基本信息”选项卡上，输入或选择以下信息：
+
+   |设置|值|
    |----|----|
    |订阅| 选择订阅|
-   |资源组| 选择之前创建的 **myResourceGroup。|
+   |资源组| 选择前面创建的“myResourceGroup”。|
    |虚拟机名称| 输入“myVmPublic”|
    |区域 | （美国）美国东部
    |可用性选项| 可用性区域|
    |可用性区域 | 1 |
-   |图像 | Windows Server 2019 Datacenter - Gen1 |
+   |图像 | 选择 OS 映像。 对于此 VM，已选择“Windows Server 2019 Datacenter - Gen1”。 |
    |大小 | 选择要使用的 VM 实例大小 |
    |用户名|输入所选用户名。|
    |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.yml?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-)。|
    |公共入站端口 | 允许所选端口 |
    |选择入站端口 | 保留默认设置为“RDP (3389)” |
 
-   ![选择虚拟网络](./media/tutorial-restrict-network-access-to-resources/virtual-machine-settings.png)
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/create-public-vm-settings.png" alt-text="“创建公共虚拟机”设置的屏幕截图。" lightbox="./media/tutorial-restrict-network-access-to-resources/create-public-vm-settings-expanded.png":::
   
-4. 选择“网络”选项卡，然后选择“myVirtualNetwork” 。 
-5. 选择“公共”子网。
-6. 在“NIC 网络安全组”下，选择“高级”。  门户会自动为你创建一个网络安全组，该组允许端口 3389。此端口需保持打开状态，然后才能在后面的步骤中连接到虚拟机。 
+1. 在“网络”选项卡上，输入或选择以下信息：
 
-   ![输入虚拟机的基本信息](./media/tutorial-restrict-network-access-to-resources/virtual-machine-basics.png)
+    |设置|值|
+    |----|----|
+    | 虚拟网络 | 选择“myVirtualNetwork”。 |
+    | 子网 | 选择“公共”。 |
+    | NIC 网络安全组 | 选择“高级”。 门户会自动为你创建一个允许端口 3389 的网络安全组。 需将此端口保持打开状态，以便在后续步骤中能够连接到虚拟机。 |
 
-7. 依次选择“查看并创建”、“创建”，然后等待部署完成 。
-8. 单击“转到资源”，或打开“主页”>“虚拟机”页，然后选择刚刚创建的 VM“myVmPublic”，应会启动该 VM 。
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/virtual-machine-networking.png" alt-text="“创建公共虚拟机网络”设置的屏幕截图。" lightbox="./media/tutorial-restrict-network-access-to-resources/virtual-machine-networking-expanded.png":::
+
+1. 依次选择“查看并创建”、“创建”，然后等待部署完成 。
+
+1. 选择“转到资源”，或打开“主页”>“虚拟机”页并选择刚刚创建的 VM“myVmPublic”，这应会启动该 VM 。
 
 ### <a name="create-the-second-virtual-machine"></a>创建第二个虚拟机
 
-1. 再次完成步骤 1-8，但在步骤 3 中，请将虚拟机命名为 myVmPrivate，并将“公共入站端口”设置为“无”。 
-2. 在步骤 4-5 中，选择“专用”子网。
+1. 重复步骤 1-5 创建第二个虚拟机。 在步骤 3 中，请将虚拟机命名为 myVmPrivate，并将“NIC 网络安全组”设置为“无” 。 在步骤 4 中，选择“专用”子网。
 
->[!NOTE]
-> “NIC 网络安全组”和“公共入站端口”设置应按照如下所示进行设置，包括指示“默认阻止所有公共 Internet 流量”的蓝色确认窗口 。
+   :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/virtual-machine-2-networking.png" alt-text="“创建专用虚拟机网络”设置的屏幕截图。" lightbox="./media/tutorial-restrict-network-access-to-resources/virtual-machine-2-networking-expanded.png":::
 
-   ![创建专用虚拟机](./media/tutorial-restrict-network-access-to-resources/create-private-virtual-machine.png)
+1. 依次选择“查看并创建”、“创建”，然后等待部署完成 。 
 
-3. 依次选择“查看并创建”、“创建”，然后等待部署完成 。 
+    > [!WARNING]
+    > 在部署完成之前，请不要继续执行下一步。
 
->[!WARNING]
-> 在部署完成之前，请勿转到下一步。
-
-4. 等待下面显示的确认窗口，然后单击“转到资源”。
-
-   ![创建专用虚拟机确认窗口](./media/tutorial-restrict-network-access-to-resources/create-vm-confirmation-window.png)
+1. 选择“转到资源”，或打开“主页”>“虚拟机”页并选择刚刚创建的 VM“myVmPrivate”，这应会启动该 VM 。
 
 ## <a name="confirm-access-to-storage-account"></a>确认对存储帐户的访问
 
-1. 创建完“myVmPrivate”VM 后，单击“转到资源”。 
-2. 选择“连接”>“RDP”以连接到 VM。
-3. 选择“连接”按钮后将创建一个远程桌面协议 (.rdp) 文件。 单击“下载 RDP 文件”以下载到计算机中。  
-4. 打开下载的 rdp 文件。 出现提示时，选择“连接”。 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”，然后选择“使用其他帐户”，以指定在创建 VM 时输入的凭据 。 对于电子邮件字段，请输入前面指定的“管理员帐户: 用户名”凭据。 
-5. 选择“确定”  。
-6. 你可能会在登录过程中收到证书警告。 如果收到警告，请选择“是”或“继续”以继续连接。  你应会看到 VM 启动，如下所示：
+1. 创建 myVmPrivate VM 后，转到该虚拟机的概述页。 选择“连接”按钮连接到该 VM，然后从下拉列表中选择“RDP” 。
 
-   ![显示运行的专用虚拟机](./media/tutorial-restrict-network-access-to-resources/virtual-machine-running.png)
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/connect-private-vm.png" alt-text="用于专用虚拟机的“连接”按钮的屏幕截图。":::
 
-7. 在 VM 窗口中，打开 PowerShell CLI 实例。
-8. 使用下面的脚本，通过 PowerShell 将 Azure 文件共享映射到驱动器 Z。 在运行以下命令之前，请将 `<storage-account-key>` 和 `<storage-account-name>` 字段替换为之前在[创建存储帐户](#create-a-storage-account)中提供或检索的值。
+1. 选择“下载 RDP 文件”将远程桌面文件下载到计算机。
+
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/download-rdp-file.png" alt-text="下载专用虚拟机 RDP 文件时的屏幕截图。":::
+  
+1. 打开下载的 rdp 文件。 出现提示时，选择“连接”。 
+
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/rdp-connect.png" alt-text="专用虚拟机的“连接”屏幕的屏幕截图。":::
+
+1. 输入在创建 VM 时指定的用户名和密码。 可能需要选择“更多选择”，然后选择“使用其他帐户”，以指定在创建 VM 时输入的凭据 。 对于电子邮件字段，请输入前面指定的“管理员帐户: 用户名”凭据。 选择“确定”以登录到 VM。
+
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/credential-screen.png" alt-text="专用虚拟机凭据屏幕的屏幕截图。":::
+
+    > [!NOTE] 
+    > 你可能会在登录过程中收到证书警告。 如果收到警告，请选择“是”或“继续”以继续连接。  
+
+1. 登录后，打开 Windows PowerShell。 使用下面的脚本，通过 PowerShell 将 Azure 文件共享映射到驱动器 Z。 请将 `<storage-account-key>` 和 `<storage-account-name>` 变量替换为前面在[创建存储帐户](#create-a-storage-account)步骤中提供的并已记下的值。
 
    ```powershell
    $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
@@ -316,46 +352,65 @@ ms.locfileid: "112082201"
    PowerShell 将返回类似于以下示例的输出：
 
    ```powershell
-   Name           Used (GB)     Free (GB) Provider      Root
-   ----           ---------     --------- --------      ----
-   Z                                      FileSystem    \\vnt.file.core.windows.net\my-f...
+   Name        Used (GB)     Free (GB) Provider      Root
+   ----        ---------     --------- --------      ----
+   Z                                      FileSystem    \\mystorage007.file.core.windows.net\my-f...
    ```
 
    Azure 文件共享已成功映射到驱动器 Z。
 
-9.   关闭与 *myVmPrivate* VM 建立的远程桌面会话。
+1.   关闭与 *myVmPrivate* VM 建立的远程桌面会话。
 
 ## <a name="confirm-access-is-denied-to-storage-account"></a>确认已拒绝对存储帐户的访问
 
-1. 在门户顶部的“搜索资源、服务和文档”框中，输入 *myVmPublic*。
-2. 当“myVmPublic”出现在搜索结果中时，将其选中。
-3. 针对 myVmPublic VM 完成以上[确认对存储帐户的访问权限](#confirm-access-to-storage-account)中的步骤 1-8。
+### <a name="from-myvmpublic"></a>在 myVmPublic 中：
 
-   稍等片刻，你会收到 `New-PSDrive : Access is denied` 错误。 访问被拒绝，因为 *myVmPublic* VM 部署在“公共”子网中。 “公共”子网没有为 Azure 存储启用服务终结点。 存储帐户仅允许从“专用”子网访问网络，而不允许从“公共”子网访问。
+1. 在门户顶部的“搜索资源、服务和文档”框中，输入 *myVmPublic*。 当“myVmPublic”出现在搜索结果中时，将其选中。
+
+1. 针对 myVmPublic VM 重复前面在[确认对存储帐户的访问权限](#confirm-access-to-storage-account)中执行的步骤 1-5。
+
+   稍等片刻，你会收到 `New-PSDrive : Access is denied` 错误。 访问被拒绝，因为 *myVmPublic* VM 部署在“公共”子网中。 “公共”子网不包含为 Azure 存储启用的服务终结点。 存储帐户仅允许从“专用”子网访问网络，而不允许从“公共”子网访问。
+
+    ```powershell
+    New-PSDrive : Access is denied
+    At line:1 char:1
+    + New-PSDrive -Name Z -PSProvider FileSystem -Root "\\mystorage007.file ...
+    + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        + CategoryInfo          : InvalidOperation: (Z:PSDriveInfo) [New-PSDrive],     Win32Exception
+        + Fu llyQualifiedErrorId : CouldNotMapNetworkDrive,Microsoft.PowerShell.Commands.NewPSDriveCommand
+
+    ```
 
 4. 关闭与 *myVmPublic* VM 建立的远程桌面会话。
-5. 返回 Azure 门户，转到之前创建的唯一命名的存储帐户。
-6. 在“文件服务”下，选择“文件共享”然后选择之前创建的 my-file-share。
-7. 会收到以下错误信息：
 
-   ![访问被拒绝错误](./media/tutorial-restrict-network-access-to-resources/access-denied-error.png)
-   
+### <a name="from-a-local-machine"></a>在本地计算机中：
+
+1. 在 Azure 门户中，转到前面创建的唯一命名的存储帐户。 例如 mystorage007。
+
+1. 在“数据存储”下选择“文件共享”，然后选择前面创建的“my-file-share” 。
+
+1. 会收到以下错误信息：
+
+    :::image type="content" source="./media/tutorial-restrict-network-access-to-resources/access-denied-error.png" alt-text="“拒绝访问”错误消息的屏幕截图。":::
+
 >[!NOTE] 
-> 访问被拒绝，因为计算机不在 *MyVirtualNetwork* 虚拟网络的“专用”子网中。
+> 访问被拒绝，因为计算机不在 MyVirtualNetwork 虚拟网络的“专用”子网中 。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 不再需要资源组时，可将资源组及其包含的所有资源一并删除：
 
 1. 在门户顶部的“搜索”框中输入“myResourceGroup”。 当在搜索结果中看到“myResourceGroup”时，将其选中。
-2. 选择“删除资源组”。
-3. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。 
+
+1. 选择“删除资源组”  。
+
+1. 对于“键入资源组名称:”，输入“myResourceGroup”，然后选择“删除”。 
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，我们为虚拟网络子网启用了服务终结点。 我们已了解，可为通过多个 Azure 服务部署的资源启用服务终结点。 已创建了一个 Azure 存储帐户并将该存储帐户限制为仅可供某个虚拟网络子网中的资源进行网络访问。 若要详细了解服务终结点，请参阅[服务终结点概述](virtual-network-service-endpoints-overview.md)和[管理子网](virtual-network-manage-subnet.md)。
+在本教程中，我们为虚拟网络子网启用了服务终结点。 我们已了解，可为通过多个 Azure 服务部署的资源启用服务终结点。 你已创建一个 Azure 存储帐户，并已将对该存储帐户的网络访问限制为只能从某个虚拟网络子网中的资源进行。 若要详细了解服务终结点，请参阅[服务终结点概述](virtual-network-service-endpoints-overview.md)和[管理子网](virtual-network-manage-subnet.md)。
 
-如果帐户中有多个虚拟网络，可将两个虚拟网络连接到一起，使每个虚拟网络中的资源可以相互通信。 若要了解如何连接虚拟网络，请继续学习下一教程。
+如果你的帐户中有多个虚拟网络，你可能需要在这些虚拟网络之间建立连接，使资源能够相互通信。 若要了解如何连接虚拟网络，请继续学习下一教程。
 
 > [!div class="nextstepaction"]
 > [连接虚拟网络](./tutorial-connect-virtual-networks-portal.md)

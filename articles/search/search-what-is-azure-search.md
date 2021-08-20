@@ -7,36 +7,34 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 05/26/2021
+ms.date: 07/21/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: b08fe34e7ac5eede8d1435e3de3817224fafdbc6
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 803916184fb79c1db249b195dde0ed0b95c5c547
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560162"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459636"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure 认知搜索是什么？
 
-Azure 认知搜索（[以前称为“Azure 搜索”](whats-new.md#new-service-name)）是一个云搜索服务，它为开发人员提供体系结构、API 和工具，用于基于 Web、移动和企业应用程序中的专用异类内容构建丰富的搜索体验。 
+Azure 认知搜索（[以前称为“Azure 搜索”](whats-new.md#new-service-name)）是一个云搜索服务，它为开发人员提供基础结构、API 和工具，用于基于 Web、移动和企业应用程序中的专用异类内容构建丰富的搜索体验。
 
-搜索是任何向用户展示内容的应用的基础，其常见方案包括目录或文档搜索、电子商务站点搜索或数据科学知识挖掘等。
+搜索是任何向用户展示文本内容的应用的基础，其常见方案包括目录或文档搜索、零售产品搜索或数据科学知识挖掘等。
 
 创建搜索服务时，将使用以下功能：
 
-+ 用于进行全文搜索的搜索引擎
-+ 搜索索引中用户拥有的内容的永久性存储
-+ 丰富索引编制、文本分析以及用于提取和转换内容的可选 [AI 扩充](cognitive-search-concept-intro.md)
++ 一个搜索引擎，它支持全文搜索，并可在搜索索引中存储用户拥有的内容
++ 丰富索引编制、文本分析以及用于提取和转换高级内容的可选 [AI 扩充](cognitive-search-concept-intro.md)
 + 丰富查询功能，包括简单语法、完整 Lucene 语法和自动提示搜索
 + 通过 REST API 和适用于 .NET、Python、Java 与 JavaScript 的 Azure SDK 中的客户端库实现的可编程性
 + 数据层、机器学习层和 AI（认知服务）级别的 Azure 集成
-+ 通过[语义搜索（预览版）](semantic-search-overview.md)实现的先进排名算法
 
 从体系结构方面来讲，搜索服务位于外部数据存储（包含未编入索引的数据）与客户端应用（向搜索索引发送查询请求并处理响应）之间。
 
 ![Azure 认知搜索体系结构](media/search-what-is-azure-search/azure-search-diagram.svg "Azure 认知搜索体系结构")
 
-表面上，搜索可以以“索引器”和“技能组”的形式与其他 Azure 服务集成，索引器可以自动从 Azure 数据源引入/检索数据，而技能组可以引入图像和文本分析等认知服务中的可消耗 AI，或者引入你在 Azure 机器学习中创建的或在 Azure Functions 内包装的自定义 AI 。
+认知搜索可以以“索引器”（自动从 Azure 数据源引入/检索数据）和“技能组”（引入认知服务（例如图像和文本分析）中的可消耗 AI，或者引入你在 Azure 机器学习中创建的或在 Azure Functions 内包装的自定义 AI）的形式与其他 Azure 服务集成 。
 
 ## <a name="inside-a-search-service"></a>在搜索服务中
 
@@ -52,11 +50,11 @@ Azure 认知搜索（[以前称为“Azure 搜索”](whats-new.md#new-service-n
 
 功能通过简单的 [REST API](/rest/api/searchservice/) 或 [.NET SDK](search-howto-dotnet-sdk.md) 公开，消除了信息检索固有的复杂性。 你还可以使用 Azure 门户，通过用于原型制作以及查询索引和技能组的工具进行服务管理和内容管理。 因为服务在云中运行，所以基础结构和可用性由 Microsoft 管理。
 
-## <a name="why-use-cognitive-search"></a>为何使用认知搜索
+## <a name="why-use-cognitive-search"></a>为何使用认知搜索？
 
 Azure 认知搜索非常适合以下应用方案：
 
-+ 将异构内容整合成专用的用户定义的搜索索引。
++ 将异构内容整合成专用的用户定义的搜索索引。 将索引编制和查询工作负载分散到专用的搜索服务。
 
 + 轻松实现搜索相关的功能：相关性优化、分面导航、筛选器（包括地理空间搜索）、同义词映射和自动完成。
 
@@ -108,6 +106,6 @@ Azure 认知搜索非常适合以下应用方案：
 
 ## <a name="watch-this-video"></a>观看此视频
 
-在这个 15 分钟的视频中，项目经理 Luis Cabrera 介绍了 Azure 认知搜索。
+通过这段 15 分钟的视频了解 Azure 认知搜索的主要功能。
 
 >[!VIDEO https://www.youtube.com/embed/kOJU0YZodVk?version=3]

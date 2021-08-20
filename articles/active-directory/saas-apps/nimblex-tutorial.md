@@ -9,103 +9,77 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 05/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 528411f7ef662e90bce98a52b67caa9123fad6ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3e6105c45bb3f3bda5e7d8af872050ed0172cf9
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522440"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111557740"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nimblex"></a>教程：Azure Active Directory 与 Nimblex 的集成
 
-在本教程中，了解如何将 Nimblex 与 Azure Active Directory (Azure AD) 集成。
-将 Nimblex 与 Azure AD 集成可以提供以下优势：
+本教程介绍如何将 Nimblex 与 Azure Active Directory (Azure AD) 相集成。 将 Nimblex 与 Azure AD 集成后，可以：
 
-* 可在 Azure AD 中控制谁有权访问 Nimblex。
-* 可以让用户使用其 Azure AD 帐户自动登录到 Nimblex（单一登录）。
-* 可在中心位置（即 Azure 门户）管理帐户。
+* 在 Azure AD 中控制谁有权访问 Nimblex。
+* 让用户使用其 Azure AD 帐户自动登录到 Nimblex。
+* 在一个中心位置（Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+## <a name="prerequisites"></a>必备条件
 
-## <a name="prerequisites"></a>先决条件
+若要开始操作，需备齐以下项目：
 
-若要配置 Azure AD 与 Nimblex 的集成，需要以下项：
-
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 已启用 Nimblex 单一登录的订阅
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 Nimblex 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* Nimblex 支持 SP 发起的 SSO 
+* Nimblex 支持 SP 发起的 SSO。
 
-* Nimblex 支持实时  用户预配
+* Nimblex 支持即时用户预配。
 
-## <a name="adding-nimblex-from-the-gallery"></a>从库中添加 Nimblex
+## <a name="add-nimblex-from-the-gallery"></a>从库中添加 Nimblex
 
 若要配置 Nimblex 与 Azure AD 的集成，需要从库中将 Nimblex 添加到托管的 SaaS 应用列表。
 
-**若要从库中添加 Nimblex，请执行以下步骤：**
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 若要添加新的应用程序，请选择“新建应用程序”。
+1. 在“从库中添加”部分的搜索框中，键入“Nimblex” 。
+1. 在结果面板中选择“Nimblex”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
+## <a name="configure-and-test-azure-ad-sso-for-nimblex"></a>配置并测试 Nimblex 的 Azure AD SSO
 
-    ![“Azure Active Directory”按钮](common/select-azuread.png)
+使用名为 B.Simon 的测试用户配置并测试 Nimblex 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 Nimblex 中的相关用户之间建立链接关系。
 
-2. 转到“企业应用”，并选择“所有应用”选项   。
+若要配置并测试 Nimblex 的 Azure AD SSO，请执行以下步骤：
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+1. [配置 Nimblex SSO](#configure-nimblex-sso) - 在应用程序端配置单一登录设置。
+    1. [创建 Nimblex 测试用户](#create-nimblex-test-user) - 在 Nimblex 中创建 B.Simon 的对应用户，并将其链接到该用户在 Azure AD 中对应的身份。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
-    ![“新增应用程序”按钮](common/add-new-app.png)
+按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-4. 在搜索框中，键入“Nimblex”，在结果面板中选择“Nimblex”，然后单击“添加”按钮以添加该应用程序    。
+1. 在 Azure 门户中的“Nimblex”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
-     ![结果列表中的 Nimblex](common/search-new-app.png)
+   ![编辑基本 SAML 配置](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-在本部分中，基于一个名为“Britta Simon”的测试用户配置和测试 Nimblex 的 Azure AD 单一登录  。
-若要运行单一登录，需要在 Azure AD 用户与 Nimblex 相关用户之间建立链接关系。
+    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<YOUR_APPLICATION_PATH>/Login.aspx`。
 
-若要配置和测试 Nimblex 的 Azure AD 单一登录，需要完成以下构建基块：
-
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. [配置 Nimblex 单一登录](#configure-nimblex-single-sign-on)  - 在应用程序端配置单一登录。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 Nimblex 测试用户](#create-nimblex-test-user)  - 在 Nimblex 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
-6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
-
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
-
-在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
-
-若要配置 Nimblex 的 Azure AD 单一登录，请执行以下步骤：
-
-1. 在 [Azure 门户](https://portal.azure.com/)中的“Nimblex”  应用程序集成页上，选择“单一登录”  。
-
-    ![配置单一登录链接](common/select-sso.png)
-
-2. 在 **选择单一登录方法** 对话框中，选择 **SAML/WS-Fed** 模式以启用单一登录。
-
-    ![单一登录选择模式](common/select-saml-option.png)
-
-3. 在“设置 SAML 单一登录”页上，单击“编辑”图标，打开“基本 SAML 配置”对话框    。
-
-    ![编辑基本 SAML 配置](common/edit-urls.png)
-
-4. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
-
-    ![Nimblex 域和 URL 单一登录信息](common/sp-identifier-reply.png)
-
-    a. 在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<YOUR APPLICATION PATH>/Login.aspx`。
-
-    b. 在“标识符”框中，使用以下模式键入 URL：`https://<YOUR APPLICATION PATH>/`
+    b. 在“标识符”框中，使用以下模式键入 URL：`https://<YOUR_APPLICATION_PATH>/`
 
     c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<path-to-application>/SamlReply.aspx`
 
@@ -120,31 +94,49 @@ ms.locfileid: "92522440"
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
-    a. 登录 URL
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
-    b. Azure AD 标识符
+在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-    c. 注销 URL
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
-### <a name="configure-nimblex-single-sign-on"></a>配置 Nimblex 单一登录
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分中，你将通过授予 B.Simon 访问 NAVEX One 的权限，使其能够使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
+1. 在应用程序列表中，选择“NAVEX One”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
+1. 在“添加分配”对话框中，单击“分配”按钮。
+
+## <a name="configure-nimblex-sso"></a>配置 Nimblex SSO
 
 1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录 Nimblex。
 
 2. 单击页面右上角的“设置”标志  。
 
-    ![屏幕截图显示了“设置”图标。](./media/nimblex-tutorial/tutorial_nimblex_settings.png)
+    ![屏幕截图显示了“设置”图标。](./media/nimblex-tutorial/settings.png)
 
 3. 在“控制面板”页面上，单击“安全”部分下的“单一登录”    。
 
-    ![屏幕截图显示从“安全”菜单选择了“单一登录”。](./media/nimblex-tutorial/tutorial_nimblex_single.png)
+    ![屏幕截图显示从“安全”菜单选择了“单一登录”。](./media/nimblex-tutorial/security.png)
 
 4. 在“管理单一登录”页面上，选择实例名称并单击“编辑”   。
 
-    ![屏幕截图显示了“管理单一登录”，你可以在其中选择“编辑”。](./media/nimblex-tutorial/tutorial_nimblex_saml.png)
+    ![屏幕截图显示了“管理单一登录”，你可以在其中选择“编辑”。](./media/nimblex-tutorial/edit-tab.png)
 
 5. 在“编辑 SSO 提供程序”页面上执行以下步骤  ：
 
-    ![屏幕截图显示了“编辑 SSO 提供程序”，你可以在其中输入所述值。](./media/nimblex-tutorial/tutorial_nimblex_sso.png)
+    ![屏幕截图显示了“编辑 SSO 提供程序”，你可以在其中输入所述值。](./media/nimblex-tutorial/certificate.png)
 
     a. 在“说明”文本框中，键入实例名称  。
 
@@ -152,58 +144,7 @@ ms.locfileid: "92522440"
 
     c. 在“标识提供者 SSO 目标 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
 
-    d. 单击“保存”  。
-
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
-
-本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
-
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”  、“用户”  和“所有用户”  。
-
-    ![“用户和组”以及“所有用户”链接](common/users.png)
-
-2. 选择屏幕顶部的“新建用户”。
-
-    ![“新建用户”按钮](common/new-user.png)
-
-3. 在“用户属性”中，按照以下步骤操作。
-
-    ![“用户”对话框](common/user-properties.png)
-
-    a. 在“名称”  字段中，输入 BrittaSimon  。
-  
-    b. 在“用户名”  字段中键入 brittasimon@yourcompanydomain.extension   
-    例如： BrittaSimon@contoso.com
-
-    c. 选中“显示密码”复选框，然后记下“密码”框中显示的值  。
-
-    d. 单击“创建”。
-
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分中，向 Britta Simon 授予 Nimblex 的访问权限，从而支持她使用 Azure 单一登录。
-
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”和“Nimblex”    。
-
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
-
-2. 在应用程序列表中，选择“Nimblex”  。
-
-    ![应用程序列表中的 Nimblex 链接](common/all-applications.png)
-
-3. 在左侧菜单中，选择“用户和组”  。
-
-    ![“用户和组”链接](common/users-groups-blade.png)
-
-4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加分配”窗格](common/add-assign-user.png)
-
-5. 在“用户和组”  对话框中，选择“用户”列表中的 Britta Simon  ，然后单击屏幕底部的“选择”  按钮。
-
-6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中，从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-
-7. 在“添加分配”对话框中，单击“分配”按钮。  
+    d. 单击“ **保存**”。
 
 ### <a name="create-nimblex-test-user"></a>创建 Nimblex 测试用户
 
@@ -212,16 +153,16 @@ ms.locfileid: "92522440"
 >[!Note]
 >如果需要手动创建用户，请联系 [Nimblex 客户端支持团队](mailto:support@ebms.com.au)。
 
-### <a name="test-single-sign-on"></a>测试单一登录 
+## <a name="test-sso"></a>测试 SSO 
 
-在本部分中，使用访问面板测试 Azure AD 单一登录配置。
+在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-单击访问面板中的 Nimblex 磁贴时，应会自动登录到为其设置了 SSO 的 Nimblex。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Nimblex 登录 URL，可从中启动登录流。 
 
-## <a name="additional-resources"></a>其他资源
+* 直接转到 Nimblex 登录 URL，并从中启动登录流。
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](./tutorial-list.md)
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击“Nimblex”磁贴时，会重定向到 Nimblex 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure Active Directory 中的条件访问？](../conditional-access/overview.md)
+配置 Nimblex 后，可以强制实施会话控制，从而实时防止组织的敏感数据遭到外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

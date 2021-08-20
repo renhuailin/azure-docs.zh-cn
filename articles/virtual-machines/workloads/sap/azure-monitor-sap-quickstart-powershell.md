@@ -3,17 +3,18 @@ title: 使用 Azure PowerShell 部署 Azure Monitor for SAP Solutions
 description: 使用 Azure PowerShell 部署 Azure Monitor for SAP Solutions
 author: sameeksha91
 ms.author: sakhare
-ms.date: 09/08/2020
 ms.topic: quickstart
 ms.service: virtual-machines-sap
+ms.subservice: baremetal-sap
+ms.date: 07/08/2021
 ms.devlang: azurepowershell
 ms.custom: devx-track-azurepowershell - devx-track-azurepowershell - mode-api
-ms.openlocfilehash: 24a8d3a893b5c3c988be25ae55be06f7fc934c8d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 62f1cdcc51779351d743c5e3be5b8405a0bee2d1
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110667554"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113567643"
 ---
 # <a name="quickstart-deploy-azure-monitor-for-sap-solutions-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 部署 Azure Monitor for SAP Solutions
 
@@ -26,7 +27,7 @@ ms.locfileid: "110667554"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-如果选择在本地使用 PowerShell，则本文要求安装 Az PowerShell 模块，并使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。 有关安装 Az PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。 如果你选择使用 Cloud Shell，请参阅 [Azure Cloud Shell 概述](../../../cloud-shell/overview.md)来了解详细信息。
+如果你选择在本地使用 PowerShell，则本文要求安装 Az PowerShell 模块。 还需要使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到你的 Azure 帐户。 有关安装 Az PowerShell 模块的详细信息，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。 或者，可以选择使用 Cloud Shell。 有关 Cloud Shell 的详细信息，请参阅 [Azure Cloud Shell 概述](../../../cloud-shell/overview.md)。
 
 > [!IMPORTANT]
 > 尽管 **Az.HanaOnAzure** PowerShell 模块为预览版，但你必须使用 `Install-Module` cmdlet 单独安装它。 此 PowerShell 模块正式发布后，它会包含在将来的 Az PowerShell 模块发行版中，并在 Azure Cloud Shell 中原生提供。
@@ -73,7 +74,7 @@ $SapMonitorParams = @{
 New-AzSapMonitor @SapMonitorParams
 ```
 
-若要检索 SAP 监视器的属性，请使用 [Get-AzSapMonitor](/powershell/module/az.hanaonazure/get-azsapmonitor) cmdlet。 以下示例为指定的订阅、资源组和资源名称获取 SAP 监视器的属性。
+若要检索 SAP 监视器的属性，请使用 [Get-AzSapMonitor](/powershell/module/az.hanaonazure/get-azsapmonitor) cmdlet。 以下示例获取指定订阅、资源组和资源名称的 SAP 监视器的属性。
 
 ```azurepowershell-interactive
 Get-AzSapMonitor -ResourceGroupName myResourceGroup -Name ps-spamonitor-t01
@@ -98,7 +99,11 @@ $SapProviderParams = @{
 New-AzSapMonitorProviderInstance @SapProviderParams
 ```
 
-若要检索提供程序实例的属性，请使用 [Get-AzSapMonitorProviderInstance](/powershell/module/az.hanaonazure/get-azsapmonitorproviderinstance) cmdlet。 以下示例为指定的订阅、资源组、SapMonitor 名称和资源名称获取提供程序实例的属性。
+若要检索提供程序实例的属性，请使用 [Get-AzSapMonitorProviderInstance](/powershell/module/az.hanaonazure/get-azsapmonitorproviderinstance) cmdlet。 以下示例获取以下各项的属性： 
+- 指定的订阅的提供程序实例
+- 资源组
+- SapMonitor 名称
+- 资源名称
 
 ```azurepowershell-interactive
 Get-AzSapMonitorProviderInstance -ResourceGroupName myResourceGroup -SapMonitorName ps-spamonitor-t01
@@ -118,7 +123,7 @@ Remove-AzSapMonitorProviderInstance -ResourceGroupName myResourceGroup -SapMonit
 
 ### <a name="delete-the-sap-monitor"></a>删除 SAP 监视器
 
-若要删除 SAP 监视器，请使用 [Remove-AzSapMonitor](/powershell/module/az.hanaonazure/remove-azsapmonitor) cmdlet。 以下示例为指定的订阅、资源组和监视器名称删除 SAP 监视器。
+若要删除 SAP 监视器，请使用 [Remove-AzSapMonitor](/powershell/module/az.hanaonazure/remove-azsapmonitor) cmdlet。 以下示例删除指定订阅、资源组和监视器名称的 SAP 监视器。
 
 ```azurepowershell
 Remove-AzSapMonitor -ResourceGroupName myResourceGroup -Name ps-sapmonitor-t02
@@ -136,4 +141,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 [Azure Monitor for SAP Solutions](azure-monitor-overview.md)。
+详细了解 Azure Monitor for SAP Solutions。
+
+> [!div class="nextstepaction"]
+> [Azure Monitor for SAP Solutions](azure-monitor-overview.md)

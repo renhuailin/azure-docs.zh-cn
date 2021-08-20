@@ -4,15 +4,15 @@ description: 了解如何在 Azure 数据工厂中预配 Azure-SSIS 集成运行
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 04/02/2021
+ms.date: 07/19/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 6007ce4b4c54d795ff2cc3188504db11c29219cc
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 6b2f1f796c7a3c41aa28040e023be6cc86bc21f8
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256331"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114447785"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中预配 Azure-SSIS 集成运行时
 
@@ -53,7 +53,7 @@ ms.locfileid: "107256331"
 
   - 将客户端计算机的 IP 地址或一系列包括客户端计算机 IP 地址的 IP 地址添加到数据库服务器的防火墙设置中的客户端 IP 地址列表。 有关详细信息，请参阅 [Azure SQL 数据库服务器级和数据库级防火墙规则](../azure-sql/database/firewall-configure.md)。
 
-  - 若要连接到数据库服务器，可以结合服务器管理员凭据使用 SQL 身份验证，或者结合数据工厂的托管标识使用 Azure AD 身份验证。 对于后者，需将数据工厂的托管标识添加到有权访问数据库服务器的 Azure AD 组中。 有关详细信息，请参阅[使用 Azure AD 身份验证创建 Azure-SSIS IR](./create-azure-ssis-integration-runtime.md)。
+  - 若要连接到数据库服务器，可以通过使用 SQL 身份验证（使用服务器管理员凭据）的方式，也可以通过使用 Azure Active Directory (Azure AD) 身份验证（使用为数据工厂指定的系统/用户分配的托管标识）的方式。 对于后一种方式，需要将为数据工厂指定的系统/用户分配的托管标识添加到有权访问数据库服务器的 Azure AD 组中。 有关详细信息，请参阅[使用 Azure AD 身份验证创建 Azure-SSIS IR](./create-azure-ssis-integration-runtime.md)。
 
   - 确认你的数据库服务器还没有 SSISDB 实例。 预配 Azure-SSIS IR 时不支持使用现有的 SSISDB 实例。
 
@@ -70,9 +70,9 @@ ms.locfileid: "107256331"
 
 ### <a name="from-the-data-factory-overview"></a>使用数据工厂概览
 
-1. 在“入门”页中，选择“配置 SSIS 集成”磁贴 。 
+1. 在主页上，选择“配置 SSIS”磁贴。 
 
-   ![“配置 Azure SSIS 集成运行时”磁贴](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
+   ![屏幕截图显示 Azure 数据工厂主页。](./media/doc-common-process/get-started-page.png)
 
 1. 请参阅[预配 Azure-SSIS 集成运行时](#provision-an-azure-ssis-integration-runtime)部分，了解用于设置 Azure-SSIS IR 的剩余步骤。 
 
@@ -142,13 +142,13 @@ ms.locfileid: "107256331"
 
       如果选择具有 IP 防火墙规则/虚拟网络服务终结点的 Azure SQL 数据库服务器或具有专用终结点的托管实例来承载 SSISDB，或者需要在未配置自承载 IR 的情况下访问本地数据，则需要将 Azure-SSIS IR 加入虚拟网络。 有关详细信息，请参阅[在虚拟网络中创建 Azure-SSIS IR](./create-azure-ssis-integration-runtime.md)。
 
-   1. 选中“结合 ADF 的托管标识使用 Azure AD 身份验证”复选框，选择数据库服务器用来承载 SSISDB 的身份验证方法。 选择使用数据工厂的托管标识进行 SQL 身份验证或 Azure AD 身份验证。
+   1. 选中“结合使用 AAD 身份验证和数据工厂的系统托管标识”或“结合使用 AAD 身份验证和数据工厂的用户分配的托管标识”复选框，以选择 Azure AD 身份验证方法来让 Azure-SSIS IR 访问承载 SSISDB 的数据库服务器 。 如果不选中上述任一复选框，则会改为选择 SQL 身份验证方法。
 
-      如果选中该复选框，需将数据工厂的托管标识添加到有权访问数据库服务器的 Azure AD 组中。 有关详细信息，请参阅[使用 Azure AD 身份验证创建 Azure-SSIS IR](./create-azure-ssis-integration-runtime.md)。
-   
-   1. 对于“管理员用户名”，请输入用于承载 SSISDB 的数据库服务器的 SQL 身份验证用户名。 
+      如果选中上述任一复选框，则需要将数据工厂的指定系统/用户分配的托管标识添加到有权访问数据库服务器的 Azure AD 组中。 如果选中“结合使用 AAD 身份验证和数据工厂的用户分配的托管标识”复选框，则随后可以选择通过所指定用户分配的托管标识创建的任何现有凭据，或者创建新的凭据。 有关详细信息，请参阅[使用 Azure AD 身份验证创建 Azure-SSIS IR](./create-azure-ssis-integration-runtime.md)。
 
-   1. 对于“管理员密码”，请输入用于承载 SSISDB 的数据库服务器的 SQL 身份验证密码。 
+   1. 对于“管理员用户名”，请输入承载 SSISDB 的数据库服务器的 SQL 身份验证用户名。 
+
+   1. 对于“管理员密码”，请输入承载 SSISDB 的数据库服务器的 SQL 身份验证密码。 
 
    1. 选中“结合使用双备用 Azure-SSIS Integration Runtime 对与 SSISDB 故障转移”复选框可配置双备用 Azure-SSIS IR 对，该对与 Azure SQL 数据库/托管实例故障转移组同步工作，以实现业务连续性和灾难恢复 (BCDR)。
    
@@ -207,13 +207,15 @@ ms.locfileid: "107256331"
 
                 1. 对于“数据库名称”，请输入 `msdb`。
                
-            1. 对于“身份验证类型”，请选择“SQL 身份验证”、“托管标识”或“服务主体”   。
+            1. 对于“身份验证类型”，请选择“SQL 身份验证”、“托管标识”、“服务主体”或“用户分配的托管标识”    。
 
                 - 如果选择“SQL 身份验证”，请输入相关的“用户名”和“密码”，或选择在其中作为机密存储的“Azure 密钥保管库”   。
 
-                -  如果选择“托管标识”，请向 ADF 托管标识授予对 Azure SQL 托管实例的访问权限。
+                -  如果选择“托管标识”，请向 ADF 的系统托管标识授予对 Azure SQL 托管实例的访问权限。
 
                 - 如果选择“服务主体”，请输入相关的“服务主体 ID”和“服务主体密钥”，或选择在其中作为机密存储的“Azure 密钥保管库”   。
+                
+                -  如果选择“用户分配的托管标识”，请向 ADF 的指定用户分配的托管标识授予对 Azure SQL 托管实例的访问权限。 然后，可以选择通过所指定用户分配的托管标识创建的任何现有凭据，或者创建新的凭据。
 
       1. 如果选择“文件系统”，请输入在其中为“主机”部署了包的文件夹的 UNC 路径，以及相关的“用户名”和“密码”，或选择在其中作为机密存储的“Azure 密钥保管库”    。
 
