@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 55cd7c86ae4f0110618745459cea48abe5e144d0
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 75b818382102642ecc8380b257c9c31382b8283d
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084567"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588410"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>教程 - 在 Azure IoT Central 应用程序中定义新的 IoT 网关设备类型
 
@@ -30,8 +30,14 @@ ms.locfileid: "110084567"
 * 响应操作员做出的可写属性更新。 例如，操作员可能会更改遥测数据的发送间隔。
 * 响应命令，例如重新启动设备。
 
+在本教程中，你将了解：
+
 > [!div class="checklist"]
-> 创建下游设备模板创建网关设备模板发布设备模板创建模拟设备
+>
+> * 创建下游设备模板
+> * 创建网关设备模板
+> * 发布设备模板
+> * 创建模拟设备
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -92,7 +98,6 @@ ms.locfileid: "110084567"
 
 1. 选择“保存”。
 
-
 ### <a name="add-relationships"></a>添加关系
 
 接下来，将关系添加到下游设备模板中：
@@ -129,7 +134,7 @@ ms.locfileid: "110084567"
 构建人员可将应用程序自定义为向操作员显示有关环境传感器设备的信息。 完成自定义后，操作员可以管理连接到应用程序的环境传感器设备。 可为操作员创建两种类型的视图来让他们与设备交互：
 
 * 用于查看和编辑设备与云属性的窗体。
-* 用于可视化设备的仪表板。
+* 用于可视化设备的视图。
 
 若要为“智能建筑物网关设备”模板生成默认视图： 
 
@@ -207,6 +212,33 @@ ms.locfileid: "110084567"
 
 ![下游设备视图](./media/tutorial-define-gateway-device-type/downstream-device-view.png)
 
+## <a name="connect-real-downstream-devices"></a>连接真实的下游设备
+
+在[创建客户端应用程序并将其连接到 Azure IoT Central 应用程序](tutorial-connect-device.md)教程中，示例代码将演示如何在设备发送的预配有效负载中包含设备模板中的模型 ID。 模型 ID 允许 IoT Central 将设备与正确的设备模板关联。 例如：
+
+```python
+async def provision_device(provisioning_host, id_scope, registration_id, symmetric_key, model_id):
+  provisioning_device_client = ProvisioningDeviceClient.create_from_symmetric_key(
+    provisioning_host=provisioning_host,
+    registration_id=registration_id,
+    id_scope=id_scope,
+    symmetric_key=symmetric_key,
+  )
+
+  provisioning_device_client.provisioning_payload = {"modelId": model_id}
+  return await provisioning_device_client.register()
+```
+
+连接下游设备时，你可以修改预配有效负载，使其包含网关设备的 ID。 模型 ID 允许 IoT Central 将设备与正确的下游设备模板关联。 网关 ID 允许 IoT Central 在下游设备及其网关之间建立关系。 在这种情况下，设备发送的预配有效负载类似于以下 JSON：
+
+```json
+{
+  "modelId": "dtmi:rigado:S1Sensor;2",
+  "iotcGateway":{
+    "iotcGatewayId": "gateway-device-001"
+  }
+}
+```
 
 ## <a name="clean-up-resources"></a>清理资源
 

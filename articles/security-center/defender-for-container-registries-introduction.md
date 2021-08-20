@@ -3,22 +3,22 @@ title: 适用于容器注册表的 Azure Defender - 优点和功能
 description: 了解容器注册表的 Azure Defender 的优点和功能。
 author: memildin
 ms.author: memildin
-ms.date: 04/07/2021
+ms.date: 07/05/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: f11a9391b0a4f467cba41724b1d15493f1393201
-ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
+ms.openlocfilehash: d448d0b0a67987ced1caec04557773c2f8ab33d7
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112992128"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113651810"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>适用于容器注册表的 Azure Defender 简介
 
 Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，它在中心注册表中存储和管理用于 Azure 部署的容器映像。 它基于开源 Docker 注册表 2.0。
 
-若要保护订阅中所有基于 Azure 资源管理器的注册表项，请在订阅级别启用 **适用于容器注册表的 Azure Defender**。 然后，安全中心将扫描推送到注册表、导入注册表或在过去 30 天内提取的任何映像。 此功能按映像收费。
+若要保护订阅中所有基于 Azure 资源管理器的注册表项，请在订阅级别启用适用于容器注册表的 Azure Defender。 然后，Azure Defender 将扫描推送到注册表、导入注册表或在过去 30 天内拉取的所有映像。 将按扫描的每个映像收费，每个映像收费一次。
 
 [!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 

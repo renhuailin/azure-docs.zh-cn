@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial , devx-track-azurecli
-ms.openlocfilehash: 9f6fe063faa9abfa59d7999da17940aae9ccd264
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1c639c323fcd0dd0ed9f417070d679defeb4cf1e
+ms.sourcegitcommit: 20abee54e48f9b40b83d39c5b970bd0193812cb6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463173"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113632423"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>教程：在已启用 Azure Arc 的 Kubernetes 群集上使用 GitOps 部署配置 
 
@@ -39,15 +39,17 @@ ms.locfileid: "110463173"
     >[!TIP]
     > 如果已安装 `k8s-configuration` 扩展，则可以使用以下命令将其更新到最新版本：`az extension update --name k8s-configuration`
 
+- 如果 Git 存储库位于防火墙之外并且 Git 协议通过配置存储库参数来使用，则需要为防火墙上的出口访问启用端口 9418 (`git://:9418`) 上的 TCP。
+
 ## <a name="create-a-configuration"></a>创建配置
 
 本文中使用的[示例存储库](https://github.com/Azure/arc-k8s-demo)是围绕群集运算符的角色构建的。 此存储库中的清单会预配几个命名空间、部署工作负载并提供一些特定于团队的配置。 将此存储库与 GitOps 一起使用会在群集上创建以下资源：
 
 * 命名空间：`cluster-config`、`team-a`、`team-b`
-* 部署：`cluster-config/azure-vote`
+* 部署：`arc-k8s-demo`
 * ConfigMap：`team-a/endpoints`
 
-`config-agent` 会轮询 Azure 以查找新的或更新的配置。 此任务最多需要 30 秒。
+`config-agent` 会轮询 Azure 以查找新的或更新的配置。 此任务最多需要 5 分钟。
 
 如果要将专用存储库与该配置关联，请完成[应用专用 Git 存储库中的配置](#apply-configuration-from-a-private-git-repository)中的以下步骤。
 

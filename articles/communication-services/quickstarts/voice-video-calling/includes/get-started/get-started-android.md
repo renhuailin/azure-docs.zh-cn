@@ -6,17 +6,18 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: dadc8bd00e87b149b32515551886b2a8129b78d4
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 18ac7ba882f82e1c5de29367e3cd27f0f5a260c0
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560779"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114339901"
 ---
 本快速入门将介绍如何使用适用于 Android 的 Azure 通信服务通话 SDK 开始通话。
 
-> [!NOTE]
-> 在 [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/Add%20Voice%20Calling) 上查找此快速入门的最终代码
+## <a name="sample-code"></a>代码示例
+
+可以从 [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/Add%20Voice%20Calling) 下载示例应用。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -175,9 +176,10 @@ package com.contoso.acsquickstart;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
+import android.media.AudioManager;
 import android.Manifest;
 import android.content.pm.PackageManager;
+
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -207,6 +209,8 @@ public class MainActivity extends AppCompatActivity {
         // Bind call button to call `startCall`
         Button callButton = findViewById(R.id.call_button);
         callButton.setOnClickListener(l -> startCall());
+        
+        setVolumeControlStream(AudioManager.STREAM_VOICE_CALL);
     }
 
     /**
@@ -271,7 +275,9 @@ private void getAllPermissions() {
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>从用户访问令牌创建代理
 
-借助用户令牌，可以实例化经过身份验证的呼叫代理。 通常，此令牌从具有特定于应用程序的身份验证的服务生成。 有关用户访问令牌的详细信息，请查看[用户访问令牌](../../../access-tokens.md)指南。 对于快速入门，请使用为你的 Azure 通信服务资源生成的用户访问令牌替换 `<User_Access_Token>`。
+借助用户令牌，可以实例化经过身份验证的呼叫代理。 通常，此令牌从具有特定于应用程序的身份验证的服务生成。 有关用户访问令牌的详细信息，请查看[用户访问令牌](../../../access-tokens.md)指南。 
+
+对于快速入门，请使用为你的 Azure 通信服务资源生成的用户访问令牌替换 `<User_Access_Token>`。
 
 ```java
 
@@ -318,7 +324,3 @@ private void startCall() {
 现在可以使用工具栏上的“运行应用”按钮 (Shift+F10) 启动应用。 通过呼叫 `8:echo123` 来验证是否能够进行呼叫。 将播放预先录制的消息，然后将你的消息重复回复给你。
 
 :::image type="content" source="../../media/android/quickstart-android-call-echobot.png" alt-text="显示已完成应用程序的屏幕截图。":::
-
-## <a name="sample-code"></a>代码示例
-
-可以从 [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/Add%20Voice%20Calling) 下载示例应用

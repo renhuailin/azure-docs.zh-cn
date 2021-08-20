@@ -1,21 +1,21 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: azure-communication-services
 author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: a015ba06be6a10985a4771e842a6d910dd4cd9ab
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a6fc7a8419c3c4b6173771c898a1a4331d3c5874
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108157662"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "114201320"
 ---
 Azure 通信服务的群组通话主图示例演示了如何使用通信服务通话 Web SDK 构建群组通话体验。
 
@@ -23,7 +23,7 @@ Azure 通信服务的群组通话主图示例演示了如何使用通信服务�
 
 ## <a name="download-code"></a>下载代码
 
-在 [GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero) 上查找此示例项目。 可在单独的[分支](https://github.com/Azure-Samples/communication-services-web-calling-hero/tree/teams-interop)中找到具有 [Teams 互操作](../../concepts/teams-interop.md)的示例版本。
+在 [GitHub](https://github.com/Azure-Samples/communication-services-web-calling-hero) 上查找此示例项目。 示例的一个版本可在单独的[分支](https://github.com/Azure-Samples/communication-services-web-calling-hero/tree/public-preview)上找到，其中包含当前处于公共预览版状态的功能，例如 [Teams 互操作](../../concepts/teams-interop.md)和[通话记录](../../concepts/voice-video-calling/call-recording.md)功能。
 
 ## <a name="overview"></a>概述
 
@@ -58,7 +58,7 @@ Azure 通信服务的群组通话主图示例演示了如何使用通信服务�
 - [Node.js（12.18.4 及更高版本）](https://nodejs.org/en/download/)
 - [Visual Studio（2019 及更高版本）](https://visualstudio.microsoft.com/vs/)
 - [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1)（请确保安装与 Visual Studio 实例相对应的版本：32 位或 64 位）
-- 一个 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信资源](../../quickstarts/create-communication-resource.md)。 需要为此快速入门记录资源连接字符串。
+- 一个 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信服务资源](../../quickstarts/create-communication-resource.md)。 需要为此快速入门记录资源连接字符串。
 
 ## <a name="locally-deploy-the-service--client-applications"></a>在本地部署服务和客户端应用程序
 
@@ -72,7 +72,7 @@ Azure 通信服务的群组通话主图示例演示了如何使用通信服务�
 
 1. 打开 PowerShell、Windows 终端、命令提示符或等效项的实例，然后导航到要将示例克隆到的目录。
 2. `git clone https://github.com/Azure-Samples/communication-services-web-calling-hero.git`
-3. 从 Azure 门户获取 `Connection String`。 有关连接字符串的详细信息，请参阅[创建 Azure 通信资源](../../quickstarts/create-communication-resource.md)。
+3. 从 Azure 门户获取 `Connection String`。 有关连接字符串的详细信息，请参阅[创建 Azure 通信服务资源](../../quickstarts/create-communication-resource.md)。
 4. 获取 `Connection String` 后，将连接字符串添加到 Service .NET 文件夹下的 Calling/appsetting.json 文件中。 在变量 `ResourceConnectionString` 中输入连接字符串。
 
 ### <a name="local-run"></a>本地运行

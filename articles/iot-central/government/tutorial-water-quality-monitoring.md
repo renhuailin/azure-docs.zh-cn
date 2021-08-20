@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: bdebe0d29f6ef781cc4b4747ff80010eeac9ff7e
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: fdab861cc122fe738cce4da049154ecb4039ca65
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684246"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588968"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>教程：在 Azure IoT Central 中创建水质监测应用程序
 
@@ -23,7 +23,7 @@ ms.locfileid: "109684246"
 
 > [!div class="checklist"]
 > * 使用水质监测模板来创建水质监测应用程序  。
-> * 浏览并自定义操作员仪表板。
+> * 浏览并自定义仪表板。
 > * 浏览水质监测设备模板。
 > * 浏览模拟设备。
 > * 浏览并配置规则。
@@ -48,7 +48,7 @@ ms.locfileid: "109684246"
 
     ![政府应用程序模板](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
 
-1. 选择“水质监测”  应用程序模板。 此应用程序模板包括水质设备模板、模拟设备、操作员仪表板以及预配置的监视规则。
+1. 选择“水质监测”  应用程序模板。 此应用程序模板包括水质设备模板、模拟设备、仪表板以及预配置的监视规则。
 
 1. 选择“创建应用”  。 “新建应用程序”窗格将打开，并显示以下元素  ：
 
@@ -66,7 +66,7 @@ ms.locfileid: "109684246"
 
 新应用程序附带以下预配置组件：
 
-* 操作员仪表板
+* 仪表板
 * 水质监测设备模板
 * 模拟水质监测设备
 * 规则和作业
@@ -76,7 +76,7 @@ ms.locfileid: "109684246"
 
 接下来，浏览应用程序并进行一些自定义。
 
-## <a name="explore-and-customize-the-operator-dashboard"></a>浏览和自定义操作员仪表板
+## <a name="explore-and-customize-the-dashboard"></a>浏览并自定义仪表板
 
 创建应用程序后，“Wide World 水质仪表板”窗格将打开  。
 
@@ -92,7 +92,7 @@ ms.locfileid: "109684246"
 
 * **平均 pH KPI 磁贴**：“过去 30 分钟内的平均 pH”等 KPI 磁贴位于仪表板窗格的顶部  。 可以自定义 KPI 磁贴，并将每个磁贴设置为不同的类型和时间范围。
 
-* **水监测地区地图**：Azure IoT Central 使用 Azure Maps，你可以在应用程序中直接对其进行设置以显示设备位置。 还可以将位置信息从应用程序映射到设备，然后使用 Azure Maps 显示地图上的信息。 将鼠标悬停在地图上，并尝试使用控件。
+* 水监测地区地图：Azure IoT Central 使用 Azure Maps，你可以在应用程序中直接对其进行设置以显示设备[位置](../core/howto-use-location-data.md)。 还可以将位置信息从应用程序映射到设备，然后使用 Azure Maps 显示地图上的信息。 将鼠标悬停在地图上，并尝试使用控件。
 
 * **平均 pH 分布热图图表**：可选择不同的可视化图表，以最适合你应用程序的方式显示设备遥测数据。
 

@@ -7,12 +7,12 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 04/16/2021
-ms.openlocfilehash: 2e8afede19a948af1863b6b24f277ab934861f22
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 1e1b1fa785d4ab91329216983c5b694cc484860a
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112038554"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114297717"
 ---
 # <a name="human-reference-genomes"></a>人类参考基因组
 
@@ -46,11 +46,11 @@ Blob 名称的前缀开头是 URI 的“vertebrate_mammalian”段。
 
 ## <a name="data-access"></a>数据访问
 
-美国西部 2： https://datasetreferencegenomes.blob.core.windows.net/dataset
+美国西部 2：“https://datasetreferencegenomes.blob.core.windows.net/dataset”
 
-美国中西部： https://datasetreferencegenomes-secondary.blob.core.windows.net/dataset
+美国中西部：“https://datasetreferencegenomes-secondary.blob.core.windows.net/dataset”
 
-[SAS 令牌](/azure/storage/common/storage-sas-overview)：sv=2019-02-02&se=2050-01-01T08%3A00%3A00Z&si=prod&sr=c&sig=JtQoPFqiC24GiEB7v9zHLi4RrA2Kd1r%2F3iFt2l9%2FlV8%3D
+[SAS 令牌](../storage/common/storage-sas-overview.md)：sv=2019-02-02&se=2050-01-01T08%3A00%3A00Z&si=prod&sr=c&sig=JtQoPFqiC24GiEB7v9zHLi4RrA2Kd1r%2F3iFt2l9%2FlV8%3D
 
 ## <a name="use-terms"></a>使用条款
 
@@ -75,7 +75,7 @@ Blob 名称的前缀开头是 URI 的“vertebrate_mammalian”段。
 
 [此处](https://azure.microsoft.com/services/open-datasets/catalog/)已上传多个公用基因组学数据作为 Azure 开放数据集。 我们将创建一个链接到此开放数据集的 blob 服务。 在下面可以找到 Azure 开放数据集中 `Reference Genomes` 数据集的数据调用过程示例：
 
-用户可以使用此笔记本调用和下载位于以下路径的数据： https://datasetreferencegenomes.blob.core.windows.net/dataset/vertebrate_mammalian/Homo_sapiens/latest_assembly_versions/GCF_000001405.39_GRCh38.p13/GCF_000001405.39_GRCh38.p13_assembly_structure/genomic_regions_definitions.txt
+用户可以使用此笔记本调用并下载位于以下路径的数据：“https://datasetreferencegenomes.blob.core.windows.net/dataset/vertebrate_mammalian/Homo_sapiens/latest_assembly_versions/GCF_000001405.39_GRCh38.p13/GCF_000001405.39_GRCh38.p13_assembly_structure/genomic_regions_definitions.txt”
 
 重要说明：用户需要通过 Azure CLI 登录到其 Azure 帐户，以使用 Azure ML SDK 查看数据。 另一方面，他们无需执行任何操作即可下载数据。
 

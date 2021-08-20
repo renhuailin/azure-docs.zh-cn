@@ -4,13 +4,13 @@ metadata:
   description: 解答有关 Azure VMware 解决方案的常见问题。
   ms.topic: troubleshooting
   ms.custom: contperf-fy21q4
-  ms.date: 05/25/2021
-  ms.openlocfilehash: cd72bb3dd857d91ae486555a7fae3cdce0b5eec2
-  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+  ms.date: 06/16/2021
+  ms.openlocfilehash: 1d3268c9f2bd35b9907ac6370598099d8d5cb9b9
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111953010"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114466366"
 title: 有关 Azure VMware 解决方案的常见问题
 summary: 本文将解答有关 Azure VMware 解决方案的常见问题。
 sections:
@@ -20,6 +20,11 @@ sections:
     answer: 随着企业采用 IT 现代化策略来提高业务敏捷性、降低成本和加速创新，混合云平台已成为客户实施数字转型的关键推动力。 Azure VMware 解决方案结合采用 VMware 的软件定义的数据中心 (SDDC) 软件以及 Microsoft 的 Azure 全球云服务生态系统。 客户可通过管理 Azure VMware 解决方案来满足性能、可用性、安全性及符合性要求。 有关详细信息，请参阅 [Azure VMware 解决方案简介](introduction.md)。
   - question: Azure VMware 解决方案目前在哪些地区提供？
     answer: 我们将持续在新地区推出该项服务。 有关详细信息，请参阅[最新的服务可用性信息](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware)。
+  - question: 谁为 Azure VMware 解决方案提供支持？
+    answer: >-
+      Microsoft 负责为 Azure VMware 解决方案提供相关支持。 你可以提交[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+
+      对于云解决方案提供商 (CSP) 管理的订阅，第一级支持提供的是解决方案提供程序，采用的提供方式则与 CSP 为其他 Azure 服务提供支持的方式相同。
   - question: 在 Azure VMware 解决方案实例中运行的工作负载能否结合使用 Azure 服务？
     answer: Azure VMware 解决方案客户可使用所有 Azure 服务。 需要逐一解决特定服务的性能和可用性限制。
   - question: 哪些来宾操作系统与 Azure VMware 解决方案兼容？
@@ -65,10 +70,12 @@ sections:
     answer: 是的。
   - question: 我能否更改默认的 vSphere Web 客户端超时值？
     answer: 是的。 有关更改超时值的信息，请参阅[配置 vSphere Web 客户端超时值](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vcenterhost.doc/GUID-975412DE-CDCB-49A1-8E2A-0965325D33A5.html)。
+  - question: NSX-T 中是否支持 Windows 2008 作为 Active Directory (AD) 服务器或远程桌面会话主机 (RDSH) 操作系统？
+    answer: 否。
 - name: Migrate
   questions:
   - question: 为什么我在使用 Sentinel 设备服务时，在 HCX 管理器中看不到“Sentinel 管理”选项卡？
-    answer: “Sentinel 管理”选项卡可提供下载 Sentinal 软件的访问权限。  但该选项卡需满足以下条件才会在 HCX 互连接口中显示：激活 HCX Enterprise 许可证，并且你已经通过部署 Sentinel 网关 (SGW) 和 Sentinel 数据接收器 (SDR) 对来完成服务网格部署。 此外，在传统的本地到云部署中，Sentinel 选项卡仅在连接器而不是云管理器中可见。
+    answer: “Sentinel 管理”选项卡可提供下载 Sentinel 软件的访问权限。  但该选项卡需满足以下条件才会在 HCX 互连接口中显示：激活 HCX Enterprise 许可证，并且你已经通过部署 Sentinel 网关 (SGW) 和 Sentinel 数据接收器 (SDR) 对来完成服务网格部署。 此外，在传统的本地到云部署中，Sentinel 选项卡仅在连接器而不是云管理器中可见。
   - question: 如果将在本地使用精简预配创建的 VM 迁移到 Azure VMware 解决方案，VM 是否将继续保持精简状态？
     answer: 否。 但是，若是以密集方案迁移 VM，则可以通过 UI 和 PowerCLI 组合来更改单个 VM 和单个 VMDK 上的策略。
 - name: 计算
@@ -142,7 +149,7 @@ sections:
   - question: 我是否可以在创建过程中重命名数据存储或群集？
     answer: 否，你无法更改数据存储或群集的名称。 群集名称可通过非主要群集的非门户部署机制进行配置。
   - question: 什么是 vSAN 上硬件故障的容错？
-    answer: "SDDC 的默认存储策略为 FTT-1、RAID-1（镜像），“对象空间预留”设为“密集预配”。\n\n:::image type=\"content\" source=\"media/vsphere-vm-storage-policies.png\" alt-text=\"显示 vSphere 客户端 VM 存储策略的屏幕截图。\":::  \n"
+    answer: "SDDC 的默认存储策略为 FTT-1、RAID-1（镜像），“对象空间预留”设为“密集预配”。\n\n:::image type=\"content\" source=\"media/concepts/vsphere-vm-storage-policies.png\" alt-text=\"显示 vSphere 客户端 VM 存储策略的屏幕截图。\":::  \n"
   - question: 为什么 Azure VMware 解决方案中的默认 vSAN 策略为“密集预配”？
     answer: 密集预配可预留或预分配存储空间。  借助密集预配预留空间后，系统便可在 vSAN 数据存储已满的情况下依旧正常运行，从而受到保护。 举例来说，假设你要采用密集预配策略创建一个 10 GB 虚拟磁盘。 在这种情况下，则会在创建虚拟磁盘的物理存储上预分配虚拟磁盘的全部存储容量，并占用数据存储中为其分配的所有空间。  该策略不会允许其他 VM 共用数据存储中的空间。 采用精简预配策略的虚拟磁盘则会占用其最初需要的空间，并会扩展到需要使用数据存储中的数据空间。
   - question: 默认 vSAN 策略为密集预配的情况下，我是否可以使用精简预配在 Azure VMware 解决方案中创建新 VM？
@@ -164,7 +171,7 @@ sections:
   - question: 可以使用我的本地 vCenter 来管理私有云吗？
     answer: 正式发布的 Azure VMware 解决方案不支持跨本地和私有云环境实施单一管理。 将通过私有云的本地 vCenter 和 NSX Manager 来管理私有云群集。
   - question: 如果对群集进行纵向扩展后，工作负载需求下降，是否可以纵向缩减群集？
-    answer: 可以，只要为私有云分配配额，便可横向扩展群集。 当工作负载需求下降时，你可以从群集中删除节点，以便进行缩减。 此操作可以通过 Azure VMware 解决方案门户执行。
+    answer: 可以，只要为私有云分配配额，便可横向扩展群集。 当工作负载需求下降时，可以从群集中删除节点，以便缩减群集。 此操作可以通过 Azure VMware 解决方案门户执行。
   - question: 是否共享了底层基础结构？
     answer: 没有，私有云主机和群集是专用的，在使用前后都会安全擦除。
   - question: 每个群集的最小和最大主机数是多少？
@@ -190,22 +197,33 @@ sections:
 
       > 创建了 T0 路由器，并将其配置为私有云部署的一部分。 对该逻辑路由器或 NSX-T 边缘节点 VM 的任何修改都可能会影响与私有云的连接。
   - question: 如何更改我的凭据？
-    answer: 有关重置凭据的信息，请参阅[重置 Azure VMware 解决方案的 vSphere 凭据](rotate-cloudadmin-credentials.md)。
+    answer: 有关重置凭据的信息，请参阅[轮换 Azure VMware 解决方案的云管理员凭据](rotate-cloudadmin-credentials.md)。
   - question: Azure VMware 解决方案是否支持 cloudadmin 扩展特权？
     answer: 否。 我们目前不支持 cloudadmin 扩展特权，并且也没有提供该项支持的计划。
+- name: CSP 和多租户
+  questions:
+  - question: Azure VMware 解决方案是否允许主机合作伙伴提供转售服务？
+    answer: 是的。 有关详细信息，请参阅[为 Azure VMware 解决方案请求主机配额](request-host-quota-azure-vmware-solution.md)。
+  - question: Azure VMware 解决方案是否托管 CSP 合作伙伴提供多租户？
+    answer: 否。 目前，Azure VMware 解决方案不提供多租户。
+  - question: Azure VMware 解决方案是否允许主机合作伙伴在私有云 (SDDC) 中对资源进行分区，以多租户的方式为客户进行管理？
+    answer: 不允许，Azure VMware 解决方案私有云不能在最终客户之间共享。
+  - question: 我使用 Azure VMware 解决方案创建最终用户应用程序或工作负载，并通过公共 IP 在多个 VM 上访问这些应用和工作负载。 我是否可以将此解决方案销售给多个租户？
+    answer: 客户可以在其 Azure VMware 解决方案私有云中创建多租户环境并将其销售给客户，前提是该产品不是标准的 VM，且已添加了大量嵌入到 VM 的知识产权应用程序。
+  - question: 作为主机托管服务提供商或客户，是否可以在 Azure VMware 解决方案中使用现有的 VMware Cloud Director (VCD) 或新的 VCXD 部署？
+    answer: VMware 不允许通过任何超大规模客户（包括 Microsoft）获取云中或本地 VCD 的使用许可。
+  - question: 能否在 Azure 中将 VMware Cloud Director Service (CDS) 连接到 Azure VMware 解决方案实例
+    answer: 尽管从技术上讲是可行的，但 Microsoft 不允许通过 VMC 上运行的 VMware 所提供的新 CDS 服务使用 Azure VMware 解决方案。
+  - question: 能否通过 Microsoft CSP 购买 Azure VMware 解决方案？
+    answer: 能，客户可以在由 CSP 管理的 Azure 订阅中部署 Azure VMware 解决方案。
+  - question: 是否可以通过 CSP 计划购买预留实例？
+    answer: 是的。 CSP 可以为其客户购买预留实例。 有关详细信息，请参阅[使用预留实例节省成本](reserved-instance.md)。
 - name: 计费和支持
   questions:
   - question: 发生故障时，是否替换磁盘上的 SLA？
     answer: 磁盘出现问题的任何主机都将被替换。 此操作可将 Azure VMware 解决方案的 SLA 可用性提升至 99.9。
   - question: 如何建立 Azure VMware 解决方案的定价策略？
     answer: 有关定价的一般问题，请参阅 Azure VMware 解决方案[定价](https://azure.microsoft.com/pricing/details/azure-vmware)页面。
-  - question: 能否通过 Microsoft CSP 购买 Azure VMware 解决方案？
-    answer: 能，客户可以在由 CSP 管理的 Azure 订阅中部署 Azure VMware 解决方案。
-  - question: 谁为 Azure VMware 解决方案提供支持？
-    answer: >-
-      Microsoft 负责为 Azure VMware 解决方案提供相关支持。 你可以提交[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
-
-      对于云解决方案提供商 (CSP) 管理的订阅，第一级支持提供的是解决方案提供程序，采用的提供方式则与 CSP 为其他 Azure 服务提供支持的方式相同。
   - question: 创建 Azure VMware 解决方案私有云需要哪些帐户？
     answer: 需要 Azure 订阅中的 Azure 帐户。
   - question: Red Hat 解决方案是否适用于 Azure VMware 解决方案？
@@ -213,12 +231,10 @@ sections:
   - question: VMware HCX Enterprise 是否可用？如果是，如何收费？
     answer: VMware HCX Enterprise 可作为预览功能/服务在 Azure VMware 解决方案中提供。 虽然适用于 Azure VMware 解决方案的 VMware HCX Enterprise 为预览版，但其是一项免费的功能/服务，并且需要遵守预览版服务条款和条件。 一旦正式发布 VMware HCX Enterprise 服务，你将会在 30 天后收到一则将转换账单计费方法的通知。 你可以关闭或选择退出该项服务。
   - question: 如何请求为 Azure VMware 解决方案增加主机配额？
-    answer: 无论你是希望为现有私有云分配更多主机，还是要创建新的私有云，都需要提交支持票证才可分配主机。  有关详细信息，请参阅[如何启用 Azure VMware 解决方案资源](deploy-azure-vmware-solution.md#step-1-register-the-microsoftavs-resource-provider)。
-  - question: 是否可以通过 CSP 计划购买预留实例？
-    answer: 是的。 CSP 可以为其客户购买预留实例。 有关详细信息，请参阅[使用预留实例节省成本](reserved-instance.md)。
-  - question: Azure VMware 解决方案是否托管 CSP 合作伙伴提供多租户？
-    answer: 否。 目前，Azure VMware 解决方案不提供多租户。
+    answer: 无论你是希望为现有私有云分配更多主机，还是要创建新的私有云，都需要提交支持票证才可分配主机。  有关详细信息，请参阅为 [Azure VMware 解决方案请求主机配额](request-host-quota-azure-vmware-solution.md)。
   - question: 对于通过 ExpressRoute 在本地与 Azure VMware 解决方案之间传输的流量，是否会根据数据流量套餐产生任何出站数据传输费用？
     answer: Azure VMware 解决方案 ExpressRoute 线路中的流量不会以任何方式计费。 通过 ExpressRoute 线路连接到本地以及 Azure 产生的流量根据 ExpressRoute 定价计划收费。
   - question: 从本地 VM 环境使用 L2 扩展进行迁移时，是否有必要购买除 AV36 实例外的其他许可证和资源？
-    answer: 是
+    answer: "否。        \n"
+  - question: 试用版 Azure VMware 解决方案群集的计费何时开始，何时结束？
+    answer: 试用版群集限定为 3 台主机，可用于对 Azure VMware 解决方案私有云进行为期 30 天的评估。 30 天后，群集将按各自的费率自动开始计费。 如果在 30 天的结束日期之前删除了试用版群集，则 Azure VMware 解决方案试用版也将在删除时结束试用。

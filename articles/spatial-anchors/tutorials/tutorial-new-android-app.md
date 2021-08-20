@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: af0d01a20728d2332d4a8d71819f73baf68a65a4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 5875416b129305f95d0337278caf0af3bab2d488
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95998374"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221555"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>教程：有关使用 Azure 空间定位点创建新 Android 应用的分步说明
 
@@ -123,15 +123,27 @@ dependencies {
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>附加本地 Azure 空间定位点
 
-修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此代码将确保应用面向 Azure 空间定位点版本 2.2.0。 即，可以引用任何最新版本的 Azure 空间定位点。 可以在[此处](https://github.com/Azure/azure-spatial-anchors-samples/releases)找到发行说明。
+修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此示例代码片段面向 Azure 空间定位点 SDK 版本 2.10.0。 请注意，SDK 版本 2.7.0 是目前支持的最低版本，引用任何较新版本的 Azure 空间定位点也应能正常运行。 建议使用最新版本的 Azure 空间定位点 SDK。 你可在[此处](https://github.com/Azure/azure-spatial-anchors-samples/releases)找到 SDK 的版本说明。
 
 ```
 dependencies {
     ...
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[2.2.0]"
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[2.2.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[2.10.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[2.10.0]"
     ...
 }
+```
+
+如果面向 Azure 空间定位点 SDK 2.10.0 或更高版本，请在你项目的 build.gradle 文件的 repositories 部分中包含以下条目。 这其中包括了 Maven 包源的 URL，该 URL 托管了适用于 SDK 2.10.0 或更高版本的 Azure 空间定位点 Android 包： 
+```
+repositories {
+    ...
+    maven {
+        url 'https://pkgs.dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging/Maven-packages/maven/v1'
+    }
+    ...
+}
+
 ```
 
 右键单击 `app\java\<PackageName>`->“新建”->“Java 类”。  将“名称”设置为 _MyFirstApp_，将“超类”设置为 _android.app.Application_。  将其他选项保持不变。 单击“确定”。 将创建名为 `MyFirstApp.java` 的文件。 将以下 import 语句添加到该文件：

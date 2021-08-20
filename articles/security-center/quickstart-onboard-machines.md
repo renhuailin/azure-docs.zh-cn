@@ -3,17 +3,17 @@ title: 将非 Azure 计算机连接到 Azure 安全中心
 description: 了解如何将非 Azure 计算机连接到安全中心
 author: memildin
 ms.author: memildin
-ms.date: 11/16/2020
+ms.date: 07/12/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 8ca3f7c9104fa655536762ac38f50c78cb96ad3a
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 3bda35f3973a5125a3e780448b651425bc054cce
+ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112237940"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113641442"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>将非 Azure 计算机连接到安全中心
 
@@ -30,11 +30,17 @@ ms.locfileid: "112237940"
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>使用 Azure Arc 添加非 Azure 计算机
 
-若要将非 Azure 计算机添加到 Azure 安全中心，首选方法是使用启用了 Azure Arc 的服务器。
+若要将非 Azure 计算机添加到 Azure 安全中心，首选方法是使用[启用了 Azure Arc 的服务器](../azure-arc/servers/overview.md)。
 
-带有启用了 Azure Arc 的服务器的计算机将成为一项 Azure 资源，与其他 Azure 资源一样显示在安全中心并带有建议。
+启用了 Azure Arc 的服务器的计算机将成为一项 Azure 资源，并且（在计算机上安装日志分析代理后）会显示在安全中心，并与其他 Azure 资源一样提供建议。
 
-此外，启用了 Azure Arc 的服务器还提供增强功能，例如“在计算机上启用来宾配置策略”、“将 Log Analytics 代理部署为扩展”和“使用其他 Azure 服务简化部署”等选项。 有关这些优势的概述，请参阅[支持的方案](../azure-arc/servers/overview.md#supported-scenarios)。
+此外，启用了 Azure Arc 的服务器还提供增强功能，例如在计算机上启用来宾配置策略、使用其他 Azure 服务简化部署等选项。 有关这些优势的概述，请参阅[支持的方案](../azure-arc/servers/overview.md#supported-scenarios)。
+
+> [!NOTE]
+> 安全中心的自动部署工具（用于部署日志分析代理）不支持运行 Azure Arc 的计算机。使用 Azure Arc 连接计算机后，请采用安全中心的相关建议部署代理，以便获得安全中心提供的全面保护：
+>
+> - [日志分析代理应安装在基于 Linux 的 Azure Arc 计算机上](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/720a3e77-0b9a-4fa9-98b6-ddf0fd7e32c1)
+> - [日志分析代理应安装在基于 Windows 的 Azure Arc 计算机上](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/27ac71b1-75c5-41c2-adc2-858f5db45b08)
 
 详细了解[启用了 Azure Arc 的服务器](../azure-arc/servers/overview.md)。
 
@@ -44,7 +50,7 @@ ms.locfileid: "112237940"
 - 若要大规模地将多台计算机连接到启用了 Arc 的服务器，请参阅[将混合计算机大规模地连接到 Azure](../azure-arc/servers/onboard-service-principal.md)
 
 > [!TIP]
-> 如果你要加入在 AWS 上运行的计算机，安全中心的 AWS 连接器将为你透明地处理 Azure Arc 部署。 在[将 AWS 帐户连接到 Azure 安全中心](quickstart-onboard-aws.md)中了解详细信息。
+> 若要加入在 Amazon Web Services (AWS) 上运行的计算机，安全中心的 AWS 连接器将为你以透明方式处理 Azure Arc 部署。 在[将 AWS 帐户连接到 Azure 安全中心](quickstart-onboard-aws.md)中了解详细信息。
 
 ::: zone-end
 

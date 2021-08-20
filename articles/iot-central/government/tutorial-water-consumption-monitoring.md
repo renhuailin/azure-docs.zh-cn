@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 959289de2fa10e9ce31ce71c8ea3fcb9e33d0951
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: df5752760dcb9968b44243fb4c2d2412698267df
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109789180"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113588986"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>教程：使用 Azure IoT Central 创建水消耗量监测应用程序
 
@@ -23,7 +23,7 @@ ms.locfileid: "109789180"
 
 > [!div class="checklist"]
 > * 使用 Azure IoT Central 水消耗量监测模板创建水消耗量监测应用程序。
-> * 浏览和自定义操作员仪表板。
+> * 浏览并自定义仪表板。
 > * 浏览设备模板。
 > * 浏览模拟设备。
 > * 浏览并配置规则。
@@ -49,7 +49,7 @@ ms.locfileid: "109789180"
   
 
 1. 选择“水消耗量监测”应用程序模板  。
-此模板包括示例水消耗量设备模板、模拟设备、操作员仪表板以及预配置的监测规则。
+此模板包括示例水消耗量设备模板、模拟设备、仪表板以及预配置的监测规则。
 
 1. 选择“创建应用”打开“新建应用程序”创建窗体，其中包含以下字段   ：
     * **应用程序名称**：默认情况下，应用程序使用“水消耗量监测”，后跟 Azure IoT Central 生成的唯一 ID 字符串  。 （可选）选择一个易记的应用程序名称。 稍后也可以更改应用程序名称。
@@ -66,7 +66,7 @@ ms.locfileid: "109789180"
 
 该水消耗量监测应用程序中已预配置了以下组件：
 
-* 示例操作员仪表板。
+* 示例仪表板。
 * 示例预定义水流量和阀设备模板。
 * 模拟水流量和智能阀设备。
 * 规则和作业。
@@ -74,7 +74,7 @@ ms.locfileid: "109789180"
 
 这是你的应用程序，你可以随时修改它。 接下来，浏览应用程序并进行一些自定义。
 
-## <a name="explore-and-customize-the-operator-dashboard"></a>浏览和自定义操作员仪表板
+## <a name="explore-and-customize-the-dashboard"></a>浏览并自定义仪表板
 
 创建应用程序后，会打开“Wide World 水消耗量监测仪表板”示例  。
   
@@ -92,7 +92,7 @@ ms.locfileid: "109789180"
 * **平均水流量 KPI 磁贴**：KPI 磁贴配置为显示为“最近 30 分钟内的平均值”示例  。 可以自定义 KPI 磁贴，并将其设置为不同的类型和时间范围。
 * **设备命令磁贴**：这些磁贴包括“关闭阀门”、“打开阀门”和“设置阀门位置”磁贴。    选择命令将转到模拟设备命令页。 在 Azure IoT Central 中，命令是一种设备功能类型   。 稍后我们会在本教程的[设备模板](../government/tutorial-water-consumption-monitoring.md#explore-the-device-template)部分探讨此概念。
 
-* **水分布区域地图**：该地图使用 Azure Maps，你可以直接在 Azure IoT Central 中对其进行配置。 地图磁贴显示设备位置。 将鼠标悬停在地图上，然后尝试使用地图上的控件，如放大、缩小或展开    。
+* **水分布区域地图**：该地图使用 Azure Maps，你可以直接在 Azure IoT Central 中对其进行配置。 地图磁贴显示设备[位置](../core/howto-use-location-data.md)。 将鼠标悬停在地图上，然后尝试使用地图上的控件，如放大、缩小或展开    。
 
     :::image type="content" source="media/tutorial-waterconsumptionmonitoring/water-consumption-monitoring-dashboard-map.png" alt-text="水消耗量监测仪表板地图":::
 
@@ -109,7 +109,7 @@ ms.locfileid: "109789180"
 
     :::image type="content" source="media/tutorial-waterconsumptionmonitoring/water-consumption-monitoring-edit-dashboard.png" alt-text="编辑仪表板":::
 
-若要了解详细信息，请参阅[创建和自定义仪表板](../core/howto-create-personal-dashboards.md)
+若要了解详细信息，请参阅[创建和自定义仪表板](../core/howto-manage-dashboards.md)
 
 ## <a name="explore-the-device-template"></a>浏览设备模板
 
@@ -146,7 +146,7 @@ ms.locfileid: "109789180"
     在 Azure IoT Central 中，可以添加与设备相关的属性。 例如，云属性可以是特定于安装区域、资产信息或其他维护信息的警报阈值。
 1. 选择“保存”  以保存所有更改。
 
-若要了解详细信息，请参阅[云属性](../core/quick-create-simulated-device.md#add-cloud-properties)。
+若要了解详细信息，请参阅[云属性](../core/concepts-device-templates.md#cloud-properties)。
 
 
 ### <a name="views"></a>视图
@@ -155,20 +155,20 @@ ms.locfileid: "109789180"
 
   ![设备模板视图](./media/tutorial-waterconsumptionmonitoring/water-consumption-monitoring-device-template-views.png)
 
-若要了解详细信息，请参阅[视图](../core/quick-create-simulated-device.md#views)。
+若要了解详细信息，请参阅[视图](../core/concepts-device-templates.md#views)。
 
 ### <a name="publish-the-device-template"></a>发布设备模板
 
 导航到“设备模板”页面，选择“发布”以保存对设备模板所做的任何更改。
 
-若要了解详细信息，请参阅[如何发布模板](../core/quick-create-simulated-device.md#publish-device-template)。
+若要了解详细信息，请参阅[如何发布模板](../core/howto-set-up-template.md#publish-a-device-template)。
 
 ### <a name="create-a-new-device-template"></a>创建新设备模板
 
 选择“+ 新建”以创建新的设备模板，然后执行创建过程  。
 可以从头开始创建自定义设备模板，也可以从 Azure 设备目录中选择设备模板。
 
-若要了解详细信息，请参阅[如何添加设备模板](../core/quick-create-simulated-device.md#add-a-device-template)。
+若要了解详细信息，请参阅[如何添加设备模板](../core/howto-set-up-template.md)。
 
 ## <a name="explore-simulated-devices"></a>浏览模拟设备
 
@@ -195,7 +195,7 @@ ms.locfileid: "109789180"
 
 选择“设备”选项卡上的“+ 新建”来添加新设备   。
 
-若要了解详细信息，请参阅[如何添加新设备](../core/quick-create-simulated-device.md#add-a-simulated-device)。
+若要了解详细信息，请参阅[管理设备](../core/howto-manage-devices-individually.md)。
 
 ## <a name="explore-rules"></a>了解规则
 
@@ -243,7 +243,7 @@ ms.locfileid: "109789180"
 1. 在左侧窗格中选择“作业”  。
 1. 选择“+ 新建”并配置一个或多个作业  。
 
-若要了解详细信息，请参阅[如何运行作业](../core/howto-run-a-job.md)。
+若要了解详细信息，请参阅[如何运行作业](../core/howto-manage-devices-in-bulk.md)。
 
 ## <a name="customize-your-application"></a>自定义应用程序
 

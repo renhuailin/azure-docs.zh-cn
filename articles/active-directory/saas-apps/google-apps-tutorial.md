@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/11/2021
+ms.date: 06/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 04d93913711dc8f03e35ac811b46158dfd038c61
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: cc996384570b20d536f06bae2101987d40b1f3fc
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108750665"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114363182"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Google Cloud (G Suite) Connector 的集成
 
@@ -26,21 +26,21 @@ ms.locfileid: "108750665"
 * 让用户使用其 Azure AD 帐户自动登录到 Google Cloud (G Suite) Connector。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
-- 一个 Azure AD 订阅。
-- 已启用 Google Cloud (G Suite) Connector 单一登录 (SSO) 的订阅。
-- Google Apps 订阅或 Google Cloud Platform 订阅。
+* 一个 Azure AD 订阅。
+* 已启用 Google Cloud (G Suite) Connector 单一登录 (SSO) 的订阅。
+* Google Apps 订阅或 Google Cloud Platform 订阅。
 
 > [!NOTE]
 > 不建议使用生产环境测试本教程中的步骤。 本文档中是使用新用户单一登录体验进行创建的。 如果你仍在使用旧版，安装程序看起来会有所不同。 可以在 G Suite 应用程序的单一登录设置中启用新体验。 转到“Azure AD，企业应用程序”，依次选择“Google Cloud (G Suite) Connector”、“单一登录”，然后单击“尝试新体验”。    
 
 测试本教程中的步骤应遵循以下建议：
 
-- 除非必要，请勿使用生产环境。
-- 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 除非必要，请勿使用生产环境。
+* 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
@@ -78,9 +78,9 @@ ms.locfileid: "108750665"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Google Cloud (G Suite) Connector 支持 **SP** 发起的 SSO
+* Google Cloud (G Suite) 连接器支持 SP 发起的 SSO。
 
-* Google Cloud (G Suite) Connector 支持 [**自动** 用户预配](./g-suite-provisioning-tutorial.md)
+* Google Cloud (G Suite) 连接器支持[自动用户预配](./g-suite-provisioning-tutorial.md)。
 
 ## <a name="adding-google-cloud-g-suite-connector-from-the-gallery"></a>从库中添加 Google Cloud (G Suite) Connector
 
@@ -118,51 +118,53 @@ ms.locfileid: "108750665"
 
 1. 在“基本 SAML 配置”  部分中，如果想要为 **Gmail** 进行配置，请执行以下步骤：
 
-    a. 在“登录 URL”  文本框中，使用以下模式键入 URL： `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
+    a. 在“标识符”文本框中，使用以下模式之一键入 URL：
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL  ：
+    | **Identifier** |
+    |----|
+    | `google.com/a/<yourdomain.com>` |
+    | `google.com` |
+    | `https://google.com` | 
+    | `https://google.com/a/<yourdomain.com>` |
 
-    ```http
-    google.com/a/<yourdomain.com>
-    google.com
-    https://google.com
-    https://google.com/a/<yourdomain.com>
-    ```
+    b. 在“回复 URL”文本框中，使用以下一种模式键入 URL： 
 
-    c. 在“回复 URL”  文本框中，使用以下模式键入 URL： 
-
-    ```http
-    https://www.google.com/acs
-    https://www.google.com/a/<yourdomain.com>/acs
-    ```
+    | 回复 URL |
+    |-----|
+    | `https://www.google.com/acs` |
+    | `https://www.google.com/a/<yourdomain.com>/acs` |
+    
+    c. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
 1. 在“基本 SAML 配置”  部分中，如果想要为 **Google Cloud Platform** 进行配置，请执行以下步骤：
 
-    a. 在“登录 URL”  文本框中，使用以下模式键入 URL： `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com`
-
-    b. 在“标识符”文本框中，使用以下模式键入 URL  ：
+    a. 在“标识符”文本框中，使用以下模式之一键入 URL：
     
-    ```http
-    google.com/a/<yourdomain.com>
-    google.com
-    https://google.com
-    https://google.com/a/<yourdomain.com>
-    ```
+    | **Identifier** |
+    |-----|
+    | `google.com/a/<yourdomain.com>` |
+    | `google.com` |
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
     
-    c. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL： 
+    b. 在“回复 URL”文本框中，使用以下一种模式键入 URL： 
     
-    ```http
-    https://www.google.com/acs
-    https://www.google.com/a/<yourdomain.com>/acs
-    ```
+    | 回复 URL |
+    |-----|
+    | `https://www.google.com/acs` |
+    | `https://www.google.com/a/<yourdomain.com>/acs` |
+    
+    c. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com`
 
     > [!NOTE]
-    > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 Google Cloud (G Suite) Connector 不会在单一登录配置上提供“实体 ID/标识符”值，因此，在取消选中“特定于域的颁发者”选项后，“标识符”值将为 `google.com`。  如果勾选“特定于域的颁发者”选项，  它将为 `google.com/a/<yourdomainname.com>`。 若要选中/取消选中“特定于域的颁发者”选项，需转到“配置 Google Cloud (G Suite) Connector SSO”部分进行操作，详见本教程稍后的介绍。   如需更多信息，请联系 [Google Cloud (G Suite) Connector 客户端支持团队](https://www.google.com/contact/)。
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 Google Cloud (G Suite) Connector 不会在单一登录配置上提供“实体 ID/标识符”值，因此，在取消选中“特定于域的颁发者”选项后，“标识符”值将为 `google.com`。  如果勾选“特定于域的颁发者”选项，  它将为 `google.com/a/<yourdomainname.com>`。 若要选中/取消选中“特定于域的颁发者”选项，需转到“配置 Google Cloud (G Suite) Connector SSO”部分进行操作，详见本教程稍后的介绍。   如需更多信息，请联系 [Google Cloud (G Suite) Connector 客户端支持团队](https://www.google.com/contact/)。
 
 1. Google Cloud (G Suite) Connector 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示一个示例。 “唯一用户标识符”的默认值是“user.userprincipalname”，但 Google Cloud (G Suite) Connector 要求通过用户的电子邮件地址映射此项   。 为此，可以使用列表中的 **user.mail** 属性，或使用基于组织配置的相应属性值。
 
     ![image](common/default-attributes.png)
 
+    > [!NOTE]
+    > 确保 SAML 响应在 DisplayName 和 Surname 属性中不包括任何非标准 ASCII 字符。    
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -184,7 +186,7 @@ ms.locfileid: "108750665"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -206,30 +208,27 @@ ms.locfileid: "108750665"
 
 2. 单击 **“安全性”** 。 如果没有看到该链接，它可能被隐藏在屏幕底部的“其他控件”  菜单下。
 
-    ![单击“安全”。][10]
+    ![单击“安全”。](./media/google-apps-tutorial/gapps-security.png)
 
 3. 在“安全”  页上单击“设置单一登录 (SSO)”  。
 
-    ![单击“SSO”。][11]
+    ![单击“SSO”。](./media/google-apps-tutorial/security-gapps.png)
 
 4. 执行以下配置更改：
 
-    ![配置 SSO][12]
+    ![配置 SSO。](./media/google-apps-tutorial/configuration.png)
 
     a. 选择“使用第三方标识提供者设置 SSO”  。
 
     b. 在 Google Cloud (G Suite) Connector 中的“登录页 URL”字段内，粘贴从 Azure 门户复制的“登录 URL”值。  
 
-    c. 在 Google Cloud (G Suite) Connector 中的“注销页 URL”字段内，粘贴从 Azure 门户复制的“登录 URL”值 。
-
-    > [!NOTE]
-    > Google Cloud (G Suite) 基于 SAML 注销协议。 因此在“注销页 URL”字段中，我们需要使用 SAML 注销 URL（即登录 URL）作为相同字段的值。
+    c. 在 Google Cloud (G Suite) Connector 中的“注销页 URL”字段内，粘贴从 Azure 门户复制的“注销 URL”值。 
 
     d. 在 Google Cloud (G Suite) Connector 中，对于“验证证书”，请上传从 Azure 门户下载的证书。    
 
     e. 按照 Azure AD 中的上述“基本 SAML 配置”部分提供的说明，勾选/取消选中“使用特定于域的颁发者”选项。  
 
-    f. 在 Google Cloud (G Suite) Connector 中的“更改密码 URL”字段内，粘贴从 Azure 门户复制的“更改密码 URL”值。 
+    f. 在 Google Cloud (G Suite) 连接器的“更改密码 URL”字段中，输入值 `https://account.activedirectory.windowsazure.com/changepassword.aspx`
 
     g. 单击“ **保存**”。
 
@@ -255,13 +254,6 @@ Google Cloud (G Suite) Connector 还支持自动用户预配。 若要配置自�
 
 * 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Google Cloud (G Suite) Connector 磁贴时，这将重定向到 Google Cloud (G Suite) Connector 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
-
 ## <a name="next-steps"></a>后续步骤
 
 配置 Google Cloud (G Suite) Connector 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制扩展自条件访问。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。
-
-<!--Image references-->
-
-[10]: ./media/google-apps-tutorial/gapps-security.png
-[11]: ./media/google-apps-tutorial/security-gapps.png
-[12]: ./media/google-apps-tutorial/gapps-sso-config.png

@@ -8,12 +8,12 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: cog-serv-seo-aug-2020
 ms.date: 03/23/2021
-ms.openlocfilehash: e772182cfd1ba656c730f423a7b4b8f0a5d709a7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: da6a271275c0b3b4f8d412bf622e6171609b3128
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382211"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112255761"
 ---
 [多槽概念](..\concept-multi-slot-personalization.md) | [示例](https://aka.ms/personalizer/ms-python)
 
@@ -31,6 +31,8 @@ ms.locfileid: "110382211"
 
 [!INCLUDE [Change model frequency](change-model-frequency.md)]
 
+[!INCLUDE [Change reward wait time](change-reward-wait-time.md)]
+
 ### <a name="create-a-new-python-application"></a>创建新的 Python 应用程序
 
 创建一个新的 Python 文件，为资源的终结点和订阅密钥创建变量。
@@ -38,22 +40,22 @@ ms.locfileid: "110382211"
 [!INCLUDE [Personalizer find resource info](find-azure-resource-info.md)]
 
 ```python
-import datetime, json, os, time, uuid, requests
+import json, uuid, requests
 
 # The endpoint specific to your personalization service instance; 
 # e.g. https://<your-resource-name>.cognitiveservices.azure.com
-PERSONALIZATION_BASE_URL = "https://<REPLACE-WITH-YOUR-PERSONALIZER-ENDPOINT>.cognitiveservices.azure.com"
+PERSONALIZATION_BASE_URL = "<REPLACE-WITH-YOUR-PERSONALIZER-ENDPOINT>"
 # The key specific to your personalization service instance; e.g. "0123456789abcdef0123456789ABCDEF"
 RESOURCE_KEY = "<REPLACE-WITH-YOUR-PERSONALIZER-KEY>"
 ```
 
 ## <a name="object-model"></a>对象模型
 
-若要请求每个槽的单个最佳内容项，请创建一个 [rank_request]，然后将 post 请求发送到 [multislot/rank] 终结点 (https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/Rank) 。 然后将响应分析为 [rank_response]。
+若要请求每个槽的单个最佳内容项，请创建一个 rank_request，然后将 post 请求发送到 [multislot/rank](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/MultiSlot_Rank)。 然后响应会分析为 rank_response。
 
-若要将奖励分数发送到个性化体验创建服务，请创建一个 [rewards]，并向 [multislot/events/{eventId}/reward](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/Events_Reward) 发送 post 请求。
+若要将奖励分数发送到个性化体验创建服务，请创建一个 rewards，并向 [multislot/events/{eventId}/reward](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/MultiSlot_Events_Reward) 发送 post 请求。
 
-在本快速入门中，可以很容易地确定奖励评分。 在生产系统中，确定哪些因素会影响[奖励评分](../concept-rewards.md)以及影响程度可能是一个复杂的过程，你的判断可能会随时改变。 此设计决策应是个性化体验创建服务体系结构中的主要决策之一。
+在本快速入门中，你可以很容易地确定奖励评分。 在生产系统中，确定哪些因素在多大程度上会影响[奖励评分](../concept-rewards.md)可能是一个复杂的过程，因为在此过程中你的判断可能会随着时间而改变。 此设计决策应是个性化体验创建服务体系结构中的主要决策之一。
 
 ## <a name="code-examples"></a>代码示例
 
@@ -65,17 +67,13 @@ RESOURCE_KEY = "<REPLACE-WITH-YOUR-PERSONALIZER-KEY>"
 
 ## <a name="create-base-urls"></a>创建基 URL
 
-在本部分中，你将执行以下两项操作：
-* 构造排名和奖励 UR
-* 构造排名/奖励请求头
-
-使用基 URL 和请求头（使用资源密钥）构造排名/奖励 URL。
+在本节中，你将使用基 URL 和请求头（使用资源密钥）构建排名和奖励 URL。
 
 ```python
 MULTI_SLOT_RANK_URL = '{0}personalizer/v1.1-preview.1/multislot/rank'.format(PERSONALIZATION_BASE_URL)
 MULTI_SLOT_REWARD_URL_BASE = '{0}personalizer/v1.1-preview.1/multislot/events/'.format(PERSONALIZATION_BASE_URL)
 HEADERS = {
-    'ocp-apim-subscription-key.': RESOURCE_KEY,
+    'ocp-apim-subscription-key': RESOURCE_KEY,
     'Content-Type': 'application/json'
 }
 ```
@@ -201,12 +199,14 @@ def get_slots():
 
 ## <a name="make-http-requests"></a>发出 HTTP 请求
 
-向个性化体验创建服务终结点发送 post 请求，以进行多槽排名和奖励调用。
+添加这些功能，以向个性化体验创建服务终结点发送 post 请求，以进行多槽排名和奖励调用。
 
 ```python
 def send_multi_slot_rank(rank_request):
-    multi_slot_response = requests.post(MULTI_SLOT_RANK_URL, data=json.dumps(rank_request), headers=HEADERS )
-    return json.loads(multi_slot_response.text)
+multi_slot_response = requests.post(MULTI_SLOT_RANK_URL, data=json.dumps(rank_request), headers=HEADERS)
+if multi_slot_response.status_code != 201:
+    raise Exception(multi_slot_response.text)
+return json.loads(multi_slot_response.text)
 ```
 
 ```python
@@ -289,7 +289,7 @@ while run_loop:
 
 ## <a name="request-the-best-action"></a>请求最佳操作
 
-为了完成排名请求，程序会询问用户的首选项以创建内容选项。 请求主体包含上下文特征、操作及其特征、槽及其特征，以及唯一的事件 ID，用于接收响应。 `send_multi_slot_rank` 方法需要 rank_equest 来发送多槽排名请求。
+为了完成排名请求，程序会询问用户的首选项以创建内容选项。 请求正文包含上下文、操作和槽及其各自的功能。 `send_multi_slot_rank` 方法采用 rankRequest，并执行多槽排名请求。
 
 本快速入门使用简单的日期时间和用户设备上下文特征。 在生产系统中，确定和[评估](../concept-feature-evaluation.md)[操作与特征](../concepts-features.md)可能是一件非常重要的事情。
 
@@ -313,7 +313,7 @@ multi_slot_rank_response = send_multi_slot_rank(rank_request)
 
 ## <a name="send-a-reward"></a>发送奖励
 
-为了获取可在奖励请求中发送的奖励评分，程序会通过命令行获取用户针对每个槽所做的选择，为该选择分配一个数值，然后将每个槽的唯一事件 ID、槽 ID 和奖励评分（作为数值）发送到 `send_multi_slot_reward` 方法。 无需为每个槽定义奖励。
+为了获取用于奖励请求的奖励评分，程序会通过命令行获取用户针对每个槽所做的选择，为该选择分配一个数值（奖励评分），然后将每个槽的唯一事件 ID、槽 ID 和奖励评分发送到 `send_multi_slot_reward` 方法。 无需为每个槽定义奖励。
 
 本快速入门分配一个简单的数字（0 或 1）作为奖励评分。 在生产系统中，确定何时向[奖励](../concept-rewards.md)调用发送哪种内容可能不是一个简单的过程，这取决于具体的需求。
 
@@ -343,4 +343,4 @@ python sample.py
 ![快速入门程序会提出一些问题来收集用户的偏好（称为“特征”），然后提供排名最高的操作。](../media/csharp-quickstart-commandline-feedback-loop/multislot-quickstart-program-feedback-loop-example-1.png)
 
 
-其中还有[本快速入门的源代码](https://aka.ms/personalizer/ms-python)。
+其中还有[本快速入门的源代码](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/Personalizer/multislot-quickstart)。

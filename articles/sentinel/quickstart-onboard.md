@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 24aeb7a9f9f2090f22869382dca5e07304358137
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d4139ddc0d0befce228e18a65ecfb83065c740dc
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466505"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114443152"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>快速入门：载入 Azure Sentinel
 
@@ -26,7 +26,7 @@ ms.locfileid: "110466505"
 连接数据源后，从熟练地创建的工作簿的库中进行选择，这些工作簿基于你的数据呈现见解。 可以根据需要轻松地自定义这些工作簿。
 
 >[!IMPORTANT] 
-> 有关使用 Azure Sentinel 时产生的费用的信息，请参阅 [Azure Sentinel 定价](https://azure.microsoft.com/pricing/details/azure-sentinel/)。
+> 有关在使用 Azure Sentinel 时产生费用的信息，请参阅 [Azure Sentinel 的定价](https://azure.microsoft.com/pricing/details/azure-sentinel/)和 [Azure Sentinel 的成本和收费](azure-sentinel-billing.md)。
 
 ## <a name="global-prerequisites"></a>全局先决条件
 
@@ -47,16 +47,26 @@ ms.locfileid: "110466505"
 
     | 工作区地理位置/区域 | Azure Sentinel 生成的数据地理位置/区域 |
     | --- | --- |
-    | 美国<br>印度<br>巴西<br>非洲<br>韩国<br>阿拉伯联合酋长国 | 美国 |
-    | 欧洲<br>法国<br>瑞士 | 欧洲 |
+    | 美国<br>印度<br>非洲 | 美国 |
+    | 欧洲<br>法国 | 欧洲 |
     | 澳大利亚 | 澳大利亚 |
     | United Kingdom | United Kingdom |
     | Canada | Canada |
     | 日本 | 日本 |
     | 东南亚（新加坡） | 东南亚（新加坡）* |
+    | 巴西 | 巴西 |
+    | 挪威 | 挪威 |
+    | 南非 | 南非 |
+    | 韩国 | 韩国 |
+    | 德国 | 德国 |
+    | 阿拉伯联合酋长国 | 阿拉伯联合酋长国 |
+    | 瑞士 | 瑞士 |
     |
     
     \* 东南亚没有配对区域。
+
+    > [!IMPORTANT]
+    > - 通过启用使用机器学习 (ML) 引擎的某些规则，你可以向 Microsoft 授予在你的 Azure Sentinel 工作区的地理位置之外复制相关引入数据的权限，因为机器学习引擎可能需要该权限才能处理这些规则。
 
 ## <a name="enable-azure-sentinel"></a>启用 Azure Sentinel <a name="enable"></a>
 
@@ -100,7 +110,17 @@ Azure Sentinel 连接到服务并将事件和日志转发到 Azure Sentinel，�
 连接数据源后，数据开始流式传输到 Azure Sentinel，并准备好供你开始使用。 你可以在[内置仪表板](quickstart-get-visibility.md)中查看日志并开始在 Log Analytics 中构建查询以[调查数据](tutorial-investigate-cases.md)。
 
 ## <a name="next-steps"></a>后续步骤
-本文档介绍了如何加入数据源以及如何将其连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
-- 将数据从[通用事件格式设备](connect-common-event-format.md)流式传输到 Azure Sentinel。
+
+有关详细信息，请参阅：
+
+- 备用部署选项：
+
+    - [通过 API 部署 Azure Sentinel](/rest/api/securityinsights/)
+    - [通过 PowerShell 部署 Azure Sentinel](https://www.powershellgallery.com/packages/Az.SecurityInsights/0.1.0)
+    - [通过 ARM 模板部署 Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-sentinel-all-in-one-accelerator/ba-p/1807933)
+
+- **入门**：
+    - [Azure Sentinel 入门](quickstart-get-visibility.md)
+    - [创建自定义分析规则以检测威胁](tutorial-detect-threats-custom.md)
+    - [使用通用事件格式连接外部解决方案](connect-common-event-format.md)
+

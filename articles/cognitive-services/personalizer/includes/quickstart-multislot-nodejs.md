@@ -8,19 +8,19 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: cog-serv-seo-aug-2020
 ms.date: 03/23/2021
-ms.openlocfilehash: 551b6901b60e55e9496cf5c4483aa3a05dfd72a7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: feb9a43b68d668e19e1fcb4b2a978f113d9ef436
+ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110382212"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112255633"
 ---
 [参考文档](/javascript/api/@azure/cognitiveservices-personalizer/) | [多槽概念](..\concept-multi-slot-personalization.md) | [示例](https://aka.ms/personalizer/ms-nodejs)
 
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
-* 最新版本的 [Node.js](https://nodejs.org) 和 NPM。
+* 安装 [Node.js](https://nodejs.org) 和 NPM（通过 Node.js v14.16.0 和 NPM 6.14.11 验证）。
 * 拥有 Azure 订阅后，在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer"  title="创建个性化体验创建服务资源"  target="_blank">创建个性化体验创建服务资源</a>，获取密钥和终结点。 部署后，单击“转到资源”。
     * 需要从创建的资源获取密钥和终结点，以便将应用程序连接到个性化体验创建服务 API。 稍后在快速入门中将密钥和终结点粘贴到下方的代码中。
     * 可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
@@ -30,6 +30,8 @@ ms.locfileid: "110382212"
 [!INCLUDE [Upgrade Personalizer instance to Multi-Slot](upgrade-personalizer-multi-slot.md)]
 
 [!INCLUDE [Change model frequency](change-model-frequency.md)]
+
+[!INCLUDE [Change reward wait time](change-reward-wait-time.md)]
 
 ### <a name="create-a-new-nodejs-application"></a>创建新的 Node.js 应用程序
 
@@ -55,7 +57,7 @@ const { v4: uuidv4 } = require('uuid');
 const readline = require('readline-sync');
 // The endpoint specific to your personalization service instance; 
 // e.g. https://<your-resource-name>.cognitiveservices.azure.com
-const PersonalizationBaseUrl = 'https://<REPLACE-WITH-YOUR-PERSONALIZER-ENDPOINT>.cognitiveservices.azure.com';
+const PersonalizationBaseUrl = '<REPLACE-WITH-YOUR-PERSONALIZER-ENDPOINT>';
 // The key specific to your personalization service instance; e.g. "0123456789abcdef0123456789ABCDEF"
 const ResourceKey = '<REPLACE-WITH-YOUR-PERSONALIZER-KEY>';
 ```
@@ -63,14 +65,14 @@ const ResourceKey = '<REPLACE-WITH-YOUR-PERSONALIZER-KEY>';
 ### <a name="install-the-npm-packages-for-quickstart"></a>安装用于快速入门的 NPM 包
 
 ```console
-npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid axios --save
+npm install readline-sync uuid axios --save
 ```
 
 ## <a name="object-model"></a>对象模型
 
-若要请求每个槽的单个最佳内容项，请创建一个 [rankRequest]，然后将 post 请求发送到 [multislot/rank] 终结点 (https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/Rank) 。 然后，响应将会分析为 [rankResponse]。
+若要请求每个槽的单个最佳内容项，请创建一个 rankRequest，然后将 post 请求发送到 [multislot/rank](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/MultiSlot_Rank)。 然后，响应将会分析为 rankResponse。
 
-若要将奖励分数发送到个性化体验创建服务，请创建一个 [rewards]，并向 [multislot/events/{eventId}/reward](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/Events_Reward) 发送 post 请求。
+若要将奖励分数发送到个性化体验创建服务，请创建一个 rewards，并向 [multislot/events/{eventId}/reward](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api-v1-1-preview-1/operations/MultiSlot_Events_Reward) 发送 post 请求。
 
 在本快速入门中，可以很容易地确定奖励评分。 在生产系统中，确定哪些因素会影响[奖励评分](../concept-rewards.md)以及影响程度可能是一个复杂的过程，你的判断可能会随时改变。 此设计决策应是个性化体验创建服务体系结构中的主要决策之一。
 
@@ -85,11 +87,7 @@ npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid axios -
 
 ## <a name="create-base-urls"></a>创建基 URL
 
-在本部分中，你将执行以下两项操作：
-* 构造排名和奖励 URL
-* 构造排名/奖励请求头
-
-使用基 URL 和请求头（使用资源密钥）构造排名/奖励 URL。
+在本节中，你将使用基 URL 和请求头（使用资源密钥）构建排名和奖励 URL。
 
 ```javascript
 const MultiSlotRankUrl = PersonalizationBaseUrl.concat('personalizer/v1.1-preview.1/multislot/rank');
@@ -221,7 +219,7 @@ function getSlots() {
 
 ## <a name="make-http-requests"></a>发出 HTTP 请求
 
-向个性化体验创建服务终结点发送 post 请求，以进行多槽排名和奖励调用。
+添加这些功能，以向个性化体验创建服务终结点发送 post 请求，以进行多槽排名和奖励调用。
 
 ```javascript
 async function sendMultiSlotRank(rankRequest) {
@@ -230,7 +228,12 @@ async function sendMultiSlotRank(rankRequest) {
         return response.data;
     }
     catch (err) {
-        console.log(err);
+        if(err.response)
+        {
+            throw err.response.data
+        }
+        console.log(err)
+        throw err;
     }
 }
 ```
@@ -243,6 +246,7 @@ async function sendMultiSlotReward(rewardRequest, eventId) {
     }
     catch (err) {
         console.log(err);
+        throw err;
     }
 }
 ```
@@ -275,7 +279,7 @@ function getRewardForSlot() {
 以下代码会循环调用这样一个循环：通过命令行询问用户的首选项，将该信息发送给个性化体验创建服务来为每个槽选择最佳操作，向客户显示所选项以让他们从列表中进行选择，然后向个性化体验创建服务发送奖励评分，指出服务在做选择时的表现如何。
 
 ```javascript
-runLoop = true;
+let runLoop = true;
 
 (async () => {
     do {
@@ -296,39 +300,36 @@ runLoop = true;
 
         multiSlotRankRequest.deferActivation = false;
 
-        //Rank the actions for each slot
         try {
-            var multiSlotRankResponse = await sendMultiSlotRank(multiSlotRankRequest);
-        }
-        catch (err) {
-            console.log(err);
-        }
-
-        let multiSlotrewards = {};
-        multiSlotrewards.reward = [];
-
-        for (i = 0; i < multiSlotRankResponse.slots.length; i++) {
-            console.log('\nPersonalizer service decided you should display: '.concat(multiSlotRankResponse.slots[i].rewardActionId, ' in slot ', multiSlotRankResponse.slots[i].id, '\n'));
-
-            let slotReward = {};
-            slotReward.slotId = multiSlotRankResponse.slots[i].id;
-            // User agrees or disagrees with Personalizer decision for slot
-            slotReward.value = getRewardForSlot();
-            multiSlotrewards.reward.push(slotReward);
-        }
-
-        // Send the rewards for the event
-        try {
+            //Rank the actions for each slot
+            let multiSlotRankResponse = await sendMultiSlotRank(multiSlotRankRequest);
+            let multiSlotrewards = {};
+            multiSlotrewards.reward = [];
+    
+            for (let i = 0; i < multiSlotRankResponse.slots.length; i++) {
+                console.log('\nPersonalizer service decided you should display: '.concat(multiSlotRankResponse.slots[i].rewardActionId, ' in slot ', multiSlotRankResponse.slots[i].id, '\n'));
+    
+                let slotReward = {};
+                slotReward.slotId = multiSlotRankResponse.slots[i].id;
+                // User agrees or disagrees with Personalizer decision for slot
+                slotReward.value = getRewardForSlot();
+                multiSlotrewards.reward.push(slotReward);
+            }
+    
+            // Send the rewards for the event
             await sendMultiSlotReward(multiSlotrewards, multiSlotRankResponse.eventId);
+    
+            let answer = readline.question('\nPress q to break, any other key to continue:\n').toUpperCase();
+            if (answer === 'Q') {
+                runLoop = false;
+            }
         }
         catch (err) {
             console.log(err);
+            throw err;
         }
 
-        let answer = readline.question('\nPress q to break, any other key to continue:\n').toUpperCase();
-        if (answer === 'Q') {
-            runLoop = false;
-        }
+
 
     } while (runLoop);
 })()
@@ -347,7 +348,7 @@ runLoop = true;
 
 ## <a name="request-the-best-action"></a>请求最佳操作
 
-为了完成排名请求，程序会询问用户的首选项以创建内容选项。 请求主体包含上下文特征、操作及其特征、槽及其特征，以及唯一的事件 ID，用于接收响应。 `sendMultiSlotRank` 方法需要 rankRequest 来发送多槽排名请求。
+为了完成排名请求，程序会询问用户的首选项以创建内容选项。 请求正文包含上下文、操作和槽及其各自的功能。 `sendMultiSlotRank` 方法采用 rankRequest，并执行多槽排名请求。
 
 本快速入门使用简单的日期时间和用户设备上下文特征。 在生产系统中，确定和[评估](../concept-feature-evaluation.md)[操作与特征](../concepts-features.md)可能是一件非常重要的事情。
 
@@ -370,16 +371,17 @@ multiSlotRankRequest.deferActivation = false;
 
 //Rank the actions for each slot
 try {
-    var multiSlotRankResponse = await sendMultiSlotRank(multiSlotRankRequest);
+    let multiSlotRankResponse = await sendMultiSlotRank(multiSlotRankRequest);
 }
 catch (err) {
     console.log(err);
+    throw err;
 }
 ```
 
 ## <a name="send-a-reward"></a>发送奖励
 
-为了获取可在奖励请求中发送的奖励评分，程序会通过命令行获取用户针对每个槽所做的选择，为该选择分配一个数值，然后将每个槽的唯一事件 ID、槽 ID 和奖励评分（作为数值）发送到 `sendMultiSlotReward` 方法。 无需为每个槽定义奖励。
+为了获取用于奖励请求的奖励评分，程序会通过命令行获取用户针对每个槽所做的选择，为该选择分配一个数值（奖励评分），然后将每个槽的唯一事件 ID、槽 ID 和奖励评分发送到 `sendMultiSlotReward` 方法。 无需为每个槽定义奖励。
 
 本快速入门分配一个简单的数字（0 或 1）作为奖励评分。 在生产系统中，确定何时向[奖励](../concept-rewards.md)调用发送哪种内容可能不是一个简单的过程，这取决于具体的需求。
 
@@ -398,12 +400,7 @@ for (i = 0; i < multiSlotRankResponse.slots.length; i++) {
 }
 
 // Send the rewards for the event
-try {
-    await sendMultiSlotReward(multiSlotrewards, multiSlotRankResponse.eventId);
-}
-catch (err) {
-    console.log(err);
-}
+await sendMultiSlotReward(multiSlotrewards, multiSlotRankResponse.eventId);
 ```
 
 ## <a name="run-the-program"></a>运行程序
@@ -417,4 +414,4 @@ node sample.js
 ![快速入门程序会提出一些问题来收集用户的偏好（称为“特征”），然后提供排名最高的操作。](../media/csharp-quickstart-commandline-feedback-loop/multislot-quickstart-program-feedback-loop-example-1.png)
 
 
-其中还有[本快速入门的源代码](https://aka.ms/personalizer/ms-nodejs)。
+其中还有[本快速入门的源代码](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/Personalizer/multislot-quickstart)。

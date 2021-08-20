@@ -4,53 +4,78 @@ description: 本文介绍如何在连接到 Azure Arc 的 Kubernetes 群集上�
 author: jfggdl
 ms.subservice: kubernetes
 ms.author: jafernan
-ms.date: 05/25/2021
+ms.date: 06/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: d29583cecb1498c10320a844923067a48693480a
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 5060d8e3022d98c31d11ea570555b7c5bba3d062
+ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112030298"
+ms.lasthandoff: 06/21/2021
+ms.locfileid: "112415635"
 ---
 # <a name="route-cloud-events-to-webhooks-with-azure-event-grid-on-kubernetes"></a>使用 Kubernetes 上的 Azure 事件网格将云事件路由到 Webhook
 在此快速入门中，你将在 Kubernetes 上的事件网格中创建一个主题，为该主题创建订阅，然后将示例事件发送到该主题以测试方案。 
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../../includes/event-grid-preview-feature-note.md)]
+[!INCLUDE [event-grid-preview-feature-note.md](../includes/event-grid-preview-feature-note.md)]
 
 
 ## <a name="prerequisites"></a>先决条件
 
 1. [将 Kubernetes 群集连接到 Azure Arc](../../azure-arc/kubernetes/quickstart-connect-cluster.md)。
 1. [在 Kubernetes 群集上安装事件网格扩展](install-k8s-extension.md)。 此扩展将事件网格部署到 Kubernetes 群集。 
-1. [创建自定义位置](../../azure-arc/kubernetes/custom-locations.md)。 自定义位置表示群集中的命名空间，是主题和事件订阅的部署位置。
+
+
+## <a name="create-a-custom-location"></a>创建自定义位置
+作为 Azure 位置扩展，自定义位置允许将已启用 Azure Arc 的 Kubernetes 群集用作部署事件网格主题等资源的目标位置。 自定义位置表示群集中的命名空间，是主题和事件订阅的部署位置。 在本节中，你将创建一个自定义位置。 
+
+1. 声明以下变量，用于保存 Azure Arc 群集名称、资源组名称和自定义位置名称的值。 将这些语句复制到编辑器，替换这些值，然后将其复制/粘贴到 Bash 窗口。  
+
+    ```azurecli-interactive
+    resourcegroupname="<AZURE RESOURCE GROUP NAME>"
+    arcclustername="<AZURE ARC CLUSTER NAME>"
+    customlocationname="<CUSTOM LOCATION NAME>"
+    ```
+1. 获取 Azure Arc 连接群集的资源 ID。 运行该命令之前，请更新 Azure Arc 群集名称和资源组参数的值。 
+
+    ```azurecli-interactive
+    hostresourceid=$(az connectedk8s show -n $arcclustername -g $resourcegroupname --query id -o tsv)    
+    ```
+1. 获取事件网格扩展的资源 ID。 此步骤假定为事件网格扩展提供的名称为 **eventgrid-ext**。运行该命令之前，请更新 Azure Arc 群集和资源组名称。 
+
+    ```azurecli-interactive
+    clusterextensionid=$(az k8s-extension show --name eventgrid-ext --cluster-type connectedClusters -c $arcclustername -g $resourcegroupname  --query id -o tsv)    
+    ```
+1. 使用上述两个值创建自定义位置。 运行该命令之前，请更新自定义位置和资源组名称。 
+
+    ```azurecli-interactive
+    az customlocation create -n $customlocationname -g $resourcegroupname --namespace arc --host-resource-id $hostresourceid --cluster-extension-ids $clusterextensionid    
+    ```
+1. 获取自定义位置的资源 ID。 运行该命令之前，请更新自定义位置名称。 
+
+    ```azurecli-interactive
+    customlocationid=$(az customlocation show -n $customlocationname -g $resourcegroupname --query id -o tsv)    
+    ```
+
+    有关创建自定义位置的详细信息，请参阅[在已启用 Azure Arc 的 Kubernetes 上创建和管理自定义位置](../../azure-arc/kubernetes/custom-locations.md)。 
 
 ## <a name="create-a-topic"></a>创建主题
+在本节中，你将在上一步创建的自定义位置中创建一个主题。 运行该命令之前，请更新资源组和事件网格主题的名称。 如果你使用的是美国东部以外的位置，则请更新位置。 
 
-### <a name="azure-cli"></a>Azure CLI
-运行以下 Azure CLI 命令以创建主题：
+1. 声明一个变量，用于保存主题名称。 
 
-```azurecli-interactive
-az eventgrid topic create --name <EVENT GRID TOPIC NAME> \
-                        --resource-group <RESOURCE GROUP NAME> \
-                        --location <REGION> \
-                        --kind azurearc \
-                        --extended-location-name /subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.ExtendedLocation/customLocations/<CUSTOM LOCATION NAME> \
-                        --extended-location-type customlocation \
-                        --input-schema CloudEventSchemaV1_0
-```
-在运行命令之前，请为占位符指定值：
-- 要在其中创建事件网格主题的 Azure 资源组的名称。 
-- 主题的名称。 
-- 主题的区域。
-- 在自定义位置的资源 ID 中，指定以下值：
-    - 自定义位置所在的 Azure 订阅的 ID。
-    - 包含自定义位置的资源组的名称。
-    - 自定义位置的名称
+    ```azurecli-interactive
+    topicname="<TOPIC NAME>"
+    ```
+4. 运行以下命令来创建一个主题。 
 
-有关 CLI 命令的详细信息，请参阅 [`az eventgrid topic create`](/cli/azure/eventgrid/topic#az_eventgrid_topic_create)。
+    ```azurecli-interactive
+    az eventgrid topic create -g $resourcegroupname --name $topicname --kind azurearc --extended-location-name $customlocationid --extended-location-type customlocation --input-schema CloudEventSchemaV1_0 --location $region    
+    ```
+
+    有关 CLI 命令的详细信息，请参阅 [`az eventgrid topic create`](/cli/azure/eventgrid/topic#az_eventgrid_topic_create)。
 
 ## <a name="create-a-message-endpoint"></a>创建消息终结点
+
 在为自定义主题创建订阅之前，请先创建事件消息的终结点。 通常情况下，终结点基于事件数据执行操作。 为了简化此快速入门，将部署用于显示事件消息的[预建的 Web 应用](https://github.com/Azure-Samples/azure-event-grid-viewer)。 所部署的解决方案包括应用服务计划、应用服务 Web 应用和 GitHub 中的源代码。
 
 1. 在项目页中，选择“部署到 Azure”以将解决方案部署到订阅。 在 Azure 门户中，为参数提供值。
@@ -66,38 +91,26 @@ az eventgrid topic create --name <EVENT GRID TOPIC NAME> \
 ## <a name="create-a-subscription"></a>创建订阅
 订阅服务器可以注册发布到主题的事件。 若要接收任何事件，需要为感兴趣的主题创建事件网格订阅。 事件订阅定义将这些事件发送到的目标。 若要了解支持的所有目标或处理程序，请参阅[事件处理程序](event-handlers.md)。
 
-
-### <a name="azure-cli"></a>Azure CLI
-若要使用 WebHook（HTTPS 终结点）目标创建事件订阅，请运行以下 Azure CLI 命令：
+若要使用 WebHook（HTTPS 终结点）目标创建事件订阅，请输入事件订阅名称，更新网站名称，并运行以下命令。
 
 ```azurecli-interactive
-az eventgrid event-subscription create --name <EVENT SUBSCRIPTION NAME> \
-                                    --source-resource-id /subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<TOPIC'S RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<TOPIC NAme> \
-                                    --endpoint https://<SITE NAME>.azurewebsites.net/api/updates
+topicid=$(az eventgrid topic show --name $topicname --resource-group $resourcegroupname --query id -o tsv)
+az eventgrid event-subscription create --name <EVENT SUBSCRIPTION NAME> --source-resource-id $topicid --endpoint https://<SITE NAME>.azurewebsites.net/api/updates
 ```
 
-在运行命令之前，请为占位符指定值：
-- 要创建的事件订阅的名称。 
 
-- 在“主题的资源 ID”中，指定以下值：
-    - 要在其中创建订阅的 Azure 订阅的 ID。 
-    - 包含主题的资源组的名称。
-    - 主题名称。 
-- 对于终结点，请指定事件网格查看器网站的名称。
-    
 有关 CLI 命令的详细信息，请参阅 [`az eventgrid event-subscription create`](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create)。
-
 
 ## <a name="send-events-to-the-topic"></a>将事件发送到主题
 1. 运行以下命令以获取主题的 **终结点**：复制并粘贴该命令后，更新 **主题名称** 和 **资源组名称**，然后运行该命令。 你会将示例事件发布到此主题终结点。 
 
     ```azurecli
-    az eventgrid topic show --name <topic name> -g <resource group name> --query "endpoint" --output tsv
+    az eventgrid topic show --name $topicname -g $resourcegroupname --query "endpoint" --output tsv
     ```
 2. 运行以下命令以获取自定义主题的 **密钥**：复制并粘贴该命令后，更新 **主题名称** 和 **资源组名称**，然后运行该命令。 它是主题的主密钥。 要从 Azure 门户获取此密钥，请切换到“事件网格主题”页的“访问密钥”选项卡 。 要将事件发布到自定义主题，需要访问密钥。 
 
     ```azurecli
-    az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv
+    az eventgrid topic key list --name $topicname -g $resourcegroupname --query "key1" --output tsv
     ```
 1. 运行以下 Curl 命令以发布事件。 在运行命令之前，请从步骤 1 和 2 中指定终结点 URL 和密钥。 
 
@@ -125,24 +138,15 @@ az eventgrid event-subscription create --name <EVENT SUBSCRIPTION NAME> \
     
         ```yml
         apiVersion: v1
-        dnsPolicy: ClusterFirstWithHostNet
-        hostNetwork: true
         kind: Pod
-        metadata: 
-          name: test-pod
-        spec: 
-          containers: 
-            - 
-              name: nginx
-          emptyDir: {}
-          image: nginx
-          volumeMounts: 
-            - 
-              mountPath: /usr/share/nginx/html
-              name: shared-data
-          volumes: 
-            - 
-              name: shared-data  
+        metadata:
+            name: test-pod2
+        spec:
+            containers:
+              - name: nginx
+                image: nginx
+            hostNetwork: true
+            dnsPolicy: ClusterFirstWithHostNet       
         ```
     1. 删除 Pod。
         ```bash

@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 404a25354bdedb5910e10c779e669f1728d8ad1d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 58831956b6c0c6c937add9c4837478199dde0eb0
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110487255"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400019"
 ---
 本教程介绍如何使用组件生成示例 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure IoT 资源管理器工具来查看它发送到中心的信息。 该示例应用程序以 Python 编写，包含在用于 Python 的 Azure IoT 设备 SDK 中。 解决方案构建者可以使用 Azure IoT 资源管理器工具来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
 
@@ -44,7 +44,7 @@ azure-iot-device 包以 PIP 的形式发布。
 pip install azure-iot-device
 ```
 
-如果已完成[快速入门：将 Windows 上运行的示例 IoT 即插即用设备应用程序连接到 IoT 中心 (Python)](../articles/iot-pnp/quickstart-connect-device.md)，则已克隆了存储库。
+如果完成[教程：将 Windows 上运行的示例 IoT 即插即用设备应用程序连接到 IoT 中心 (Python)](../articles/iot-develop/tutorial-connect-device.md)，则已经克隆了该存储库。
 
 克隆 Python SDK IoT 存储库：
 
@@ -54,7 +54,7 @@ git clone https://github.com/Azure/azure-iot-sdk-python
 
 ## <a name="review-the-code"></a>查看代码
 
-此示例实现 IoT 即插即用温度控制器设备。 此示例实现的模型使用[多个组件](../articles/iot-pnp/concepts-modeling-guide.md)。 [温度设备的数字孪生定义语言 (DTDL) 模型文件](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)定义了设备实现的遥测、属性和命令。
+此示例实现 IoT 即插即用温度控制器设备。 此示例实现的模型使用[多个组件](../articles/iot-develop/concepts-modeling-guide.md)。 [温度设备的数字孪生定义语言 (DTDL) 模型文件](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)定义了设备实现的遥测、属性和命令。
 
 azure-iot-sdk-python\azure-iot-device\samples\pnp 文件夹包含 IoT 即插即用设备的示例代码。 温度控制器示例的文件包括：
 

@@ -2,13 +2,13 @@
 title: 教程 - 网络规划清单
 description: 了解 Azure VMware 解决方案中网络连接和网络端口的网络要求。
 ms.topic: tutorial
-ms.date: 06/08/2021
-ms.openlocfilehash: 5719ec1a2495c6a225c35ec46cdf19506a10ba6f
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.date: 07/01/2021
+ms.openlocfilehash: 42400011d1dab9b1e5d869a5d96255cf67ea632c
+ms.sourcegitcommit: 75ad40bab1b3f90bb2ea2a489f8875d4b2da57e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112017264"
+ms.lasthandoff: 07/12/2021
+ms.locfileid: "113640557"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware 解决方案的网络规划清单 
 
@@ -34,6 +34,9 @@ Azure VMware 解决方案提供一个 VMware 私有云环境，用户和应用�
 部署私有云时，你将收到 vCenter 和 NSX-T Manager 的 IP 地址。 若要访问这些管理接口，需要在订阅的虚拟网络中创建更多资源。 在本教程中，可找到有关创建这些资源和建立 [ExpressRoute 专用对等互连](tutorial-expressroute-global-reach-private-cloud.md)的过程。
 
 私有云逻辑网络随附提前预配的 NSX-T。 已为你预配了第 0 层网关和第 1 层网关。 可创建一个段，并将其附加到现有的第 1 层网关，或将其附加到所定义的新的第 1 层网关。 NSX-T 逻辑网络组件提供工作负载之间的东-西连接，并提供与 Internet 和 Azure 服务的北-南连接。
+
+>[!IMPORTANT]
+>[!INCLUDE [disk-pool-planning-note](includes/disk-pool-planning-note.md)] 
 
 ## <a name="routing-and-subnet-considerations"></a>路由和子网注意事项
 使用 Azure ExpressRoute 连接将 Azure VMware 解决方案私有云连接到 Azure 虚拟网络。 这种高带宽、低延迟的连接可让你从私有云环境访问 Azure 订阅中运行的服务。 该路由以边界网关协议 (BGP) 为基础、自动进行预配并且默认对每个私有云部署启用。 

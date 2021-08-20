@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 05/26/2021
+ms.date: 07/15/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2752d437800840181062f7a9c07d37620e06677a
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 8fb3734e1975254442fa2aff57ba60847bbfac04
+ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110578221"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114362236"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
 
@@ -23,6 +23,7 @@ ms.locfileid: "110578221"
 > [!div class="checklist"]
 > * 创建虚拟 WAN
 > * 创建中心
+> * 创建站点到站点 VPN 网关
 > * 创建站点
 > * 将站点连接到中心
 > * 将 VPN 站点连接到中心
@@ -48,9 +49,13 @@ ms.locfileid: "110578221"
 
 ## <a name="create-a-hub"></a><a name="hub"></a>创建中心
 
-中心是一种虚拟网络，可包含适用于站点到站点、ExpressRoute 或点到站点功能的网关。 创建中心后，即使你没有附加任何站点，也会对该中心收取费用。 在虚拟中心创建站点到站点 VPN 网关需要 30 分钟时间。
+中心是一种虚拟网络，可包含适用于站点到站点、ExpressRoute 或点到站点功能的网关。 创建中心后，即使你没有附加任何站点，也会对该中心收取费用。
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
+
+## <a name="create-a-site-to-site-vpn-gateway"></a><a name="gateway"></a>创建站点到站点 VPN 网关
+
+[!INCLUDE [Create a gateway](../../includes/virtual-wan-tutorial-s2s-gateway-include.md)]
 
 ## <a name="create-a-site"></a><a name="site"></a>创建站点
 
