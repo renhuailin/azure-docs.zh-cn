@@ -1,5 +1,5 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 author: robinsh
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: cf651a1a09662e3084a8a9bdb6365b69b6ea52b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bfa5149cb9aea3ae8deea572abd86f5fb776e252
+ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99580174"
+ms.lasthandoff: 07/24/2021
+ms.locfileid: "114671175"
 ---
 此部分介绍如何使用 [Azure 门户](https://portal.azure.com)创建 IoT 中心。
 
@@ -31,7 +31,7 @@ ms.locfileid: "99580174"
 
    - **区域**：选择中心所在的区域。 选择最靠近你的位置。 某些功能（如 [IoT 中心设备流](../articles/iot-hub/iot-hub-device-streams-overview.md)）仅适用于特定区域。 对于这些受限功能，你必须选择受支持的区域之一。
 
-   - **IoT 中心名称**：输入中心的名称。 该名称必须全局唯一。
+   - **IoT 中心名称**：输入中心的名称。 此名称必须全局唯一，长度介于 3 到 50 个字母数字字符之间。 名称还可以包含短破折号 (`'-'`) 字符。
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "99580174"
 
 1. 在完成时选择“下一步:网络”，继续创建中心。
 
-   选择可以连接到 IoT 中心的终结点。 你可以选择默认设置“公共终结点(所有网络)”，也可选择“公共终结点(选定的 IP 范围)”或“专用终结点”  。 接受此示例的默认设置。
+   选择设备可以用来连接到 IoT 中心的终结点。 你可以选择默认设置“公共终结点(所有网络)”，也可选择“公共终结点(选定的 IP 范围)”或“专用终结点”  。 接受此示例的默认设置。
 
    :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-network-screen.png" alt-text="选择可以连接的终结点。":::
 
@@ -56,13 +56,13 @@ ms.locfileid: "99580174"
     - **IoT 中心单元**：每日每单位允许的消息数取决于中心的定价层。 例如，如果希望中心支持 700,000 条消息引入，请选择两个 S1 层单位。
     有关其他层选项的详细信息，请参阅[选择合适的 IoT 中心层](../articles/iot-hub/iot-hub-scaling.md)。
 
-    - **Defender for IoT**：启用此功能可为 IoT 和设备添加额外的一层威胁防护。 此选项不可用于免费层的中心。 有关此功能的详细信息，请参阅[适用于 IoT 的 Azure 安全中心](/azure/asc-for-iot/)。
+    - **Defender for IoT**：启用此功能可为 IoT 和设备添加额外的一层威胁防护。 此选项不可用于免费层的中心。 有关此功能的详细信息，请参阅 [Azure Defender for IoT](/azure/asc-for-iot/)。
 
     - **高级设置** > **设备到云的分区**：此属性将设备到云消息与这些消息的同步读取器数目相关联。 大多数中心只需要 4 个分区。
 
 1. 在完成时选择“下一步:标记”继续到下一屏幕。
 
-    标记是名称/值对。 可以为多个资源和资源组分配相同的标记，以便对资源进行分类并合并计费。 有关详细信息，请参阅[使用标记来组织 Azure 资源](../articles/azure-resource-manager/management/tag-resources.md)。
+    标记是名称/值对。 可以为多个资源和资源组分配相同的标记，以便对资源进行分类并合并计费。 在本文档中，不会添加任何标记。 有关详细信息，请参阅[使用标记来组织 Azure 资源](../articles/azure-resource-manager/management/tag-resources.md)。
 
     :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-tags.png" alt-text="使用 Azure 门户为中心分配标记。":::
 
@@ -70,4 +70,4 @@ ms.locfileid: "99580174"
 
     :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-review-and-create.png" alt-text="查看用于创建新中心的信息。":::
 
-1. 选择“创建”以创建新的中心。 创建中心需要几分钟时间。
+1. 选择“创建”，以启动新中心的部署。 创建中心时，部署将持续几分钟。 部署完成后，单击“转到资源”以打开新的中心。

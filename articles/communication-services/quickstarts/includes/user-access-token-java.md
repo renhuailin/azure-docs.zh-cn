@@ -1,21 +1,21 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: azure-communication-services
 author: tomaschladek
 manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: c0b90279b4c3c65fdc96867f5d9fff9648320294
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 62efd6215dfb83eade0e4ee4e9cfa230d1dd7971
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111430968"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113659443"
 ---
 > [!NOTE]
 > 在 [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/access-token-quickstart) 上查找此快速入门的最终代码
@@ -111,7 +111,7 @@ CommunicationIdentityClient communicationIdentityClient = new CommunicationIdent
     .buildClient();
 ```
 
-如果已设置托管标识，请参阅[使用托管标识](../managed-identity.md)，也可以使用托管标识进行身份验证。
+如果采用 Azure Active Directory (AD) 应用程序设置，请参阅[使用服务主体](../identity/service-principal.md)，也可使用 AD 进行身份验证。
 ```java
 String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
 TokenCredential credential = new DefaultAzureCredentialBuilder().build();

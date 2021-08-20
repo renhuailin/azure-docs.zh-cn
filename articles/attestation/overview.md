@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 020ba74948a062d23d61272ee912eb3364180f1e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe025fad4955095ef16b546b7d326d80b4aea15c
+ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102617992"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112427574"
 ---
 # <a name="microsoft-azure-attestation"></a>Microsoft Azure 证明 
 
@@ -34,6 +34,11 @@ Azure 证明为多种环境和各种不同的用例提供全面的证明服务�
 SGX 指硬件级隔离，这只在一些英特尔 CPU 型号上受支持。 SGX 使代码可以在清理过的隔离舱（称为 SGX enclave）中运行。 然后，通过硬件管理访问和内存权限，利用适当的隔离将攻击面降至最小。
 
 通过委派在这些 enclave 内执行的安全敏感任务，可以将客户端应用程序设计为利用 SGX enclave。 这样，此类应用程序就可以利用 Azure 证明定期在 enclave 中建立信任并访问敏感数据。
+
+英特尔® 至强® 可扩展处理器仅支持[基于 ECDSA 的证明解决方案](https://software.intel.com/content/www/us/en/develop/topics/software-guard-extensions/attestation-services.html#Elliptic%20Curve%20Digital%20Signature%20Algorithm%20(ECDSA)%20Attestation)以远程方式证明 SGX enclave。 利用基于 ECDSA 的证明模型，Azure 证明支持对英特尔® 至强® E3 处理器和基于英特尔® 至强® 可扩展处理器的服务器平台的验证。 
+
+> [!NOTE]
+> 若要使用 Azure 证明执行对基于英特尔® 至强® 可扩展处理器的服务器平台的证明，用户需要安装 [Azure DCAP 版本 1.10.0](https://github.com/microsoft/Azure-DCAP-Client) 或更高版本。
 
 ### <a name="open-enclave"></a>开放式 Enclave
 [开放式 Enclave](https://openenclave.io/sdk/) (OE) 是一系列库，旨在创建一个统一的 enclaving 抽象，供开发人员生成基于 TEE 的应用程序。 它提供了一个可最大程度降低平台特异性的通用安全应用模型。 Microsoft 将其视为普及基于硬件的 enclave 技术（例如 SGX）和增加它们在 Azure 上的使用的方法。
@@ -66,7 +71,7 @@ Azure 证明客户已经表达了一个要求，那就是希望 Microsoft 在操
 Azure 证明是用于证明 TEE 的首选服务，因为它具有以下优势： 
 
 - 统一的框架，可证明多种环境，如 TPM、SGX enclave 和 VBS enclave 
-- 多租户服务，允许配置自定义证明提供程序和策略来限制令牌生成
+- 允许创建自定义证明提供程序和配置策略来限制令牌生成
 - 提供区域共享提供程序，它们无需用户配置即可进行证明
 - 可在与 SGX enclave 中的实现一起使用时保护其数据
 - 高度可用的服务 

@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: bd64c95bcf59cef27aa988712315403c00a5dfd7
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 50a2555bfd86e074da16daf4866d79f506ecd964
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107871248"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113438020"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库存储边缘中的数据
 
@@ -86,6 +86,9 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
 1. 在 VS Code 资源管理器中，打开 .env 文件。
 2. 使用从 Azure 容器注册表复制的 **username** 和 **password** 值更新相关字段。
 3. 保存此文件。
+
+>[!NOTE]
+>本教程使用 Azure 容器注册表的管理员登录凭据，这对于开发和测试方案非常方便。 为生产方案做好准备后，建议使用最低权限身份验证选项（如服务主体）。 有关详细信息，请参阅[管理容器注册表的访问权限](production-checklist.md#manage-access-to-your-container-registry)。
 
 ### <a name="select-your-target-architecture"></a>选择目标体系结构
 

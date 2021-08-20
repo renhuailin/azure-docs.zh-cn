@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/15/2021
+ms.date: 07/12/2021
 ms.author: b-juche
-ms.openlocfilehash: 28006c1b17242d943a70312938282f2d254884a1
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: a50b8eee5a45fdd496aa0e063272c1c32cf0e5a7
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112123428"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113664442"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp 文件中的新增功能
 
@@ -33,11 +33,9 @@ Azure NetApp 文件会定期更新。 本文总结了最新的新功能和增强
 
     NetApp 加载项是存储服务加载项下面引入的第一类加载项。 它提供了对 NetApp 云合规性的访问。 单击“NetApp 云合规性”磁贴将打开一个新浏览器，并将你引导到加载项安装页面。 
 
-* 现已正式发布 (GA) 的功能   
+* [手动 QoS 容量池](manual-qos-capacity-pool-introduction.md)现已正式发布 (GA)   
 
-    以下 Azure NetApp 文件功能现已正式发布。 您无需再注册以下功能，可直接使用：
-    * [快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)
-    * [手动 QoS 容量池](manual-qos-capacity-pool-introduction.md)
+    手动 QoS 容量池功能现已正式发布。 使用该功能前无需再进行注册。 
 
 * [支持共享 AD，在每个区域的每个订阅中，可以让多个帐户访问一个 Active Directory](create-active-directory-connections.md#shared_ad)（预览）   
 

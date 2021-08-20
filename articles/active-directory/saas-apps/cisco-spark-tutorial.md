@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/17/2021
+ms.date: 07/16/2021
 ms.author: jeedes
-ms.openlocfilehash: ad6d5308638b112afe2b51c4e149f876651e429d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2b5a4900c29b294342a6d11a946d487649b64c5e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592517"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114458565"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco Webex 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "104592517"
 * 让用户使用其 Azure AD 帐户自动登录到 Cisco Webex。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -39,6 +39,9 @@ ms.locfileid: "104592517"
 
 * Cisco Webex 支持 SP 发起的 SSO  。
 * Cisco Webex 支持 [**自动用户预配**](./cisco-webex-provisioning-tutorial.md)。
+
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>从库中添加 Cisco Webex
 
@@ -60,17 +63,17 @@ ms.locfileid: "104592517"
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** ，使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** ，以使用 B.Simon 测试 Azure AD 单一登录。
     1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** ，使 B.Simon 能够使用 Azure AD 单一登录。
-2. **[配置 Cisco Webex](#configure-cisco-webex)** ，以在应用程序端配置 SSO 设置。
+2. [配置 Cisco Webex SSO](#configure-cisco-webex-sso)，以在应用程序端配置 SSO 设置。
     1. **[创建 Cisco Webex 测试用户](#create-cisco-webex-test-user)** ，以在 Cisco Webex 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 3. **[测试 SSO](#test-sso)** ，验证配置是否正常工作。
 
-### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
+## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
 1. 在 Azure 门户中的“Cisco Webex”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“设置 SAML 单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -85,7 +88,10 @@ ms.locfileid: "104592517"
 
     c. 成功完成服务提供程序元数据文件的上传后，**标识符** 和 **回复 URL** 值将自动填充在“基本 SAML 配置”部分： 
 
-    在“登录 URL”文本框中，粘贴上传 SP 元数据文件后自动填充的“回复 URL”值。  
+    d. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://web.ciscospark.com/idb/Consumer/metaAlias/<ID>/sp`
+    
+    > [!NOTE]
+    > 此值不是真实值。 复制横向“回复 URL”值，并将该值添加到 `https://web.ciscospark.com/` 来表示实际的登录 URL 值。
 
 1. Cisco Webex 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -113,7 +119,7 @@ ms.locfileid: "104592517"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -126,9 +132,9 @@ ms.locfileid: "104592517"
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
-## <a name="configure-cisco-webex"></a>配置 Cisco Webex
+## <a name="configure-cisco-webex-sso"></a>配置 Cisco Webex SSO
 
 1. 使用管理员凭据登录到 Cisco Webex。
 
@@ -200,4 +206,4 @@ ms.locfileid: "104592517"
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 Cisco Webex 后，可以强制实施会话控制，实时防止组织的敏感数据遭到外泄和渗透。 会话控制扩展自条件访问。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)
+配置 Cisco Webex 后，可以强制实施会话控制，实时防止组织的敏感数据遭到外泄和渗透。 会话控制扩展自条件访问。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

@@ -1,23 +1,23 @@
 ---
-title: 为 SAP 环境部署 Azure Sentinel 解决方案 | Microsoft Docs
+title: 部署 SAP 连续威胁监视 | Microsoft Docs
 description: 了解如何为 SAP 环境部署 Azure Sentinel 解决方案。
 author: batamig
 ms.author: bagold
 ms.service: azure-sentinel
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/13/2021
+ms.date: 07/06/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: cf7a9fb700bba135663e0684d8ba25c7ebcf92f0
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: a77fc691692d3eb6672e2cd80e52a90c117bc9ab
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466523"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439909"
 ---
-# <a name="tutorial-deploy-the-azure-sentinel-solution-for-sap-public-preview"></a>教程：为 SAP 部署 Azure Sentinel 解决方案（公共预览版）
+#  <a name="deploy-sap-continuous-threat-monitoring-public-preview"></a>部署 SAP 连续威胁监视（公共预览版）
 
-本教程将引导你逐步完成为 SAP 部署 Azure Sentinel 解决方案的过程。
+本文将引导你逐步完成为 SAP 部署 Azure Sentinel 连续威胁监视的过程。
 
 > [!IMPORTANT]
 > Azure Sentinel SAP 解决方案目前以预览版提供。 [Azure 预览版补充条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)包含适用于 beta 版、预览版或其他尚未正式发布的 Azure 功能的其他法律条款。
@@ -31,8 +31,7 @@ ms.locfileid: "110466523"
 
 SAP 数据连接器从整个 SAP 系统环境中流式传输大量（14 个）应用程序日志，通过 NetWeaver RFC 调用从高级业务应用程序编程 (ABAP) 收集日志，并通过 OSSAP 控制接口收集文件存储数据。 SAP 数据连接器增加了 Azure Sentinels 监视 SAP 基础结构的能力。
 
-要将 SAP 日志引入 Azure Sentinel，必须在 SAP 环境中安装 Azure Sentinel SAP 数据连接器。
-建议在 Azure VM 上使用 Docker 容器进行部署，如本教程中所述。
+要将 SAP 日志引入 Azure Sentinel，必须在 SAP 环境中安装 Azure Sentinel SAP 数据连接器。 建议在 Azure VM 上使用 Docker 容器进行部署，如本教程中所述。
 
 部署 SAP 数据连接器后，部署 SAP 解决方案安全内容，以顺利深入了解组织的 SAP 环境并改进任何相关的安全操作功能。
 
@@ -49,9 +48,9 @@ SAP 数据连接器从整个 SAP 系统环境中流式传输大量（14 个）�
 
 |区域  |说明  |
 |---------|---------|
-|**Azure 先决条件**     |  对 Azure Sentinel 的访问权限。 请记下你的 Azure Sentinel 工作区 ID 及密钥，以便在本教程中[部署 SAP 数据连接器](#deploy-your-sap-data-connector)时使用。 <br>要从 Azure Sentinel 查看这些详细信息，请转到“设置” > “工作区设置” > “代理管理”  。 <br><br>能够创建 Azure 资源。 有关详细信息，请参阅 [Azure 资源管理器文档](/azure/azure-resource-manager/management/manage-resources-portal)。 <br><br>对 Azure 密钥保管库的访问权限。 本教程介绍了使用 Azure 密钥保管库来存储凭据的建议步骤。 有关详细信息，请参阅 [Azure Key Vault 文档](/azure/key-vault/)。       |
-|**系统先决条件**     |   软件。 SAP 数据连接器部署脚本会自动安装必备软件。 有关详细信息，请参阅[自动安装的软件](#automatically-installed-software)。 <br><br> 系统连接。 确保用作 SAP 数据连接器主机的 VM 有权访问： <br>- Azure Sentinel <br>- Azure 密钥保管库 <br>- SAP 环境主机，通过以下 TCP 端口：32xx、5xx13 和 33xx，其中 xx 是 SAP 实例编号   。 <br><br>请确保你还拥有 SAP 用户帐户，以便访问 SAP 软件下载页面。<br><br>系统体系结构。 SAP 解决方案作为 Docker 容器部署在 VM 上，每个 SAP 客户端都需要自己的容器实例。 <br>你的 VM 和 Azure Sentinel 工作区可以位于不同的 Azure 订阅中，甚至可以位于不同的 Azure AD 租户中。|
-|**SAP 先决条件**     |   支持的 SAP 版本。 建议使用 [SAP_BASIS 版本 750 SP13](https://support.sap.com/en/my-support/software-downloads/support-package-stacks/product-versions.html#:~:text=SAP%20NetWeaver%20%20%20%20SAP%20Product%20Version,%20%20SAPKB710%3Cxx%3E%20%207%20more%20rows) 或更高版本。 <br>如果使用的是 SAP 版本 [SAP_BASIS 740](https://support.sap.com/en/my-support/software-downloads/support-package-stacks/product-versions.html#:~:text=SAP%20NetWeaver%20%20%20%20SAP%20Product%20Version,%20%20SAPKB710%3Cxx%3E%20%207%20more%20rows)，本教程中的选择步骤提供了其他说明。<br><br> SAP 系统详细信息。 请记下以下 SAP 系统详细信息以供本教程使用：<br>    - SAP 系统 IP 地址<br>- SAP 系统编号，如 `00`<br>    - SAP 系统 ID（来自 SAP NetWeaver 系统）。 例如 `NPL`。 <br>- SAP 客户端 ID，如 `001`。<br><br>SAP NetWeaver 实例访问权限。 访问 SAP 实例必须使用以下选项之一： <br>- [SAP ABAP 用户/密码](#configure-your-sap-system)。 <br>- 具有 X509 证书的用户，使用 SAP CRYPTOLIB PSE。 此选项可能需要专家手动步骤。<br><br>SAP 团队的支持。  需要 SAP 团队的支持，以确保为解决方案部署[正确配置](#configure-your-sap-system) SAP 系统。   |
+|**Azure 先决条件**     |  对 Azure Sentinel 的访问权限。 请记下你的 Azure Sentinel 工作区 ID 及密钥，以便在本教程中[部署 SAP 数据连接器](#deploy-your-sap-data-connector)时使用。 <br>要从 Azure Sentinel 查看这些详细信息，请转到“设置” > “工作区设置” > “代理管理”  。 <br><br>能够创建 Azure 资源。 有关详细信息，请参阅 [Azure 资源管理器文档](../azure-resource-manager/management/manage-resources-portal.md)。 <br><br>对 Azure 密钥保管库的访问权限。 本教程介绍了使用 Azure 密钥保管库来存储凭据的建议步骤。 有关详细信息，请参阅 [Azure Key Vault 文档](../key-vault/index.yml)。       |
+|**系统先决条件**     |   软件。 SAP 数据连接器部署脚本会自动安装必备软件。 有关详细信息，请参阅[自动安装的软件](#automatically-installed-software)。 <br><br> 系统连接。 确保用作 SAP 数据连接器主机的 VM 有权访问： <br>- Azure Sentinel <br>- Azure 密钥保管库 <br>- SAP 环境主机，通过以下 TCP 端口：32xx、5xx13 和 33xx，其中 xx 是 SAP 实例编号   。 <br><br>请确保你还拥有 SAP 用户帐户，以便访问 SAP 软件下载页面。<br><br>系统体系结构。 SAP 解决方案作为 Docker 容器部署在 VM 上，每个 SAP 客户端都需要自己的容器实例。 有关大小建议，请参阅[建议的虚拟机大小](sap-solution-detailed-requirements.md#recommended-virtual-machine-sizing)。 <br>你的 VM 和 Azure Sentinel 工作区可以位于不同的 Azure 订阅中，甚至可以位于不同的 Azure AD 租户中。|
+|**SAP 先决条件**     |   支持的 SAP 版本。 建议使用 [SAP_BASIS 版本 750 SP13](https://support.sap.com/en/my-support/software-downloads/support-package-stacks/product-versions.html#:~:text=SAP%20NetWeaver%20%20%20%20SAP%20Product%20Version,%20%20SAPKB710%3Cxx%3E%20%207%20more%20rows) 或更高版本。 <br>如果你使用的是较旧的 SAP 版本 [SAP_BASIS 740](https://support.sap.com/en/my-support/software-downloads/support-package-stacks/product-versions.html#:~:text=SAP%20NetWeaver%20%20%20%20SAP%20Product%20Version,%20%20SAPKB710%3Cxx%3E%20%207%20more%20rows)，本教程中的选择步骤提供了其他说明。<br><br> SAP 系统详细信息。 请记下以下 SAP 系统详细信息以供本教程使用：<br>    - SAP 系统 IP 地址<br>- SAP 系统编号，如 `00`<br>    - SAP 系统 ID（来自 SAP NetWeaver 系统）。 例如 `NPL`。 <br>- SAP 客户端 ID，如 `001`。<br><br>SAP NetWeaver 实例访问权限。 访问 SAP 实例必须使用以下选项之一： <br>- [SAP ABAP 用户/密码](#configure-your-sap-system)。 <br>- 具有 X509 证书的用户，使用 SAP CRYPTOLIB PSE。 此选项可能需要专家手动步骤。<br><br>SAP 团队的支持。  需要 SAP 团队的支持，以确保为解决方案部署[正确配置](#configure-your-sap-system) SAP 系统。   |
 |     |         |
 
 
@@ -75,20 +74,23 @@ SAP 数据连接器从整个 SAP 系统环境中流式传输大量（14 个）�
 
 **为 SAP 数据连接器配置 SAP 系统：**
 
-1. 如果使用的 SAP 版本低于 750，请确保在系统中部署以下 SAP 说明：
+1. 确保在系统中根据你的版本部署以下 SAP 说明：
 
-    - SPS12641084。 适用于运行低于 SAP BASIS 750 SPS13 版本的系统
-    - 2502336。适用于运行低于 SAP BASIS 750 SPS1 版本的系统
-    - 2173545。适用于运行低于 SAP BASIS 750 版本的系统
+    |SAP Basis 版本  |所需注释 |
+    |---------|---------|
+    |- 750 SP01 到 SP12<br>- 751 SP01 到 SP06<br>- 752 SP01 到 SP03     |  2641084：安全审核日志数据的标准化读取访问       |
+    |- 700 到 702<br>- 710 到 711、730、731、740 和 750     | 2173545：CD：CHANGEDOCUMENT_READ_ALL        |
+    |- 700 到 702<br>- 710 到 711、730、731 和 740<br>- 750 到 752     | 2502336：CD（更改文档）：RSSCD100 - 仅从存档读取，而不从数据库中读取        |
+    |     |         |
 
-    使用 SAP 用户帐户在 [SAP 支持启动板站点](https://support.sap.com/en/index.html)访问这些 SAP 说明。
+    更高版本不需要额外的说明。 有关详细信息，请参阅 [SAP 支持速启动板站点](https://support.sap.com/en/index.html)，使用 SAP 用户帐户登录。
 
 1. 从位于 https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/SAP/CR: 的 Azure Sentinel GitHub 存储库下载并安装以下 SAP 更改请求之一
 
-    - **SAP 750 或更高版本**：安装 SAP 更改请求 131 (NPLK900131)
-    - **SAP 版本 740**：安装 SAP 更改请求 132 (NPLK900132)
+    - SAP 版本 750 或更高版本：安装 SAP 更改请求 141 (NPLK900141)
+    - SAP 版本 740：安装 SAP 更改请求 142 (NPLK900142)
 
-    执行此步骤时，请使用 STMS_IMPORT SAP 事务代码。
+    执行此步骤时，请确保使用二进制模式将文件传输到 SAP 系统，并使用 STMS_IMPORT SAP 事务代码。
 
     > [!NOTE]
     > 在 SAP“导入选项”区域中，可能显示“忽略无效的组件版本”选项 。 如果显示，请选择此选项，然后继续。
@@ -120,7 +122,7 @@ SAP 数据连接器从整个 SAP 系统环境中流式传输大量（14 个）�
 
 ## <a name="deploy-a-linux-vm-for-your-sap-data-connector"></a>为 SAP 数据连接器部署 Linux VM
 
-此过程介绍了如何使用 Azure CLI 部署 Ubuntu 服务器 18.04 LTS VM 并为其分配[系统托管标识](/azure/active-directory/managed-identities-azure-resources/)。
+此过程介绍了如何使用 Azure CLI 部署 Ubuntu 服务器 18.04 LTS VM 并为其分配[系统托管标识](../active-directory/managed-identities-azure-resources/index.yml)。
 
 > [!TIP]
 > 还可以在 RHEL 7.7 及更高版本或 SUSE 15 及更高版本上部署数据连接器。 请注意，必须完全更新所有 OS 和修补程序。
@@ -143,11 +145,11 @@ SAP 数据连接器从整个 SAP 系统环境中流式传输大量（14 个）�
 > 请确保为组织应用任何安全最佳做法，就像对任何其他 VM 一样。
 >
 
-有关详细信息，请参阅[快速入门：使用 Azure CLI 创建 Linux 虚拟机](/azure/virtual-machines/linux/quick-create-cli)。
+有关详细信息，请参阅[快速入门：使用 Azure CLI 创建 Linux 虚拟机](../virtual-machines/linux/quick-create-cli.md)。
 
 ## <a name="create-key-vault-for-your-sap-credentials"></a>为 SAP 凭据创建密钥保管库
 
-本教程使用新创建的或专用的 [Azure 密钥保管库](/azure/key-vault/)来存储 SAP 数据连接器的凭据。
+本教程使用新创建的或专用的 [Azure 密钥保管库](../key-vault/index.yml)来存储 SAP 数据连接器的凭据。
 
 **创建 Azure 密钥保管库或将密钥保管库设置为专用**：
 
@@ -170,12 +172,12 @@ SAP 数据连接器从整个 SAP 系统环境中流式传输大量（14 个）�
 
     在 Azure 密钥保管库中，选择“访问策略” > “添加访问策略 - 机密权限: Get、List 和 Set” > “选择主体”  。 输入 [VM 名称](#deploy-a-linux-vm-for-your-sap-data-connector)，然后选择“添加” > “保存” 。
 
-    有关详细信息，请参阅 [Key Vault 文档](/azure/key-vault/general/assign-access-policy-portal)。
+    有关详细信息，请参阅 [Key Vault 文档](../key-vault/general/assign-access-policy-portal.md)。
 
 1. 运行以下命令以获取 [VM 的主体 ID](#deploy-a-linux-vm-for-your-sap-data-connector)，输入 Azure 资源组的名称：
 
     ```azurecli
-    az vm show -g [resource group] -n [Virtual Machine] --query identity.principal– --out tsv
+    VMPrincipalID=$(az vm show -g [resource group] -n [Virtual Machine] --query identity.principalId -o tsv)
     ```
 
     将显示你的主体 ID，供你在以下步骤中使用。
@@ -183,14 +185,14 @@ SAP 数据连接器从整个 SAP 系统环境中流式传输大量（14 个）�
 1. 运行以下命令将 VM 的访问权限分配给密钥保管库，输入资源组的名称和上一步返回的主体 ID 值。
 
     ```azurecli
-    az keyvault set-policy  --name $kv  --resource-group [resource group]  --object-id [Principal ID]  --secret-permissions get set
+    az keyvault set-policy -n [key vault] -g [resource group] --object-id $VMPrincipalID --secret-permissions get list set
     ```
 
 ## <a name="deploy-your-sap-data-connector"></a>部署 SAP 数据连接器
 
 Azure Sentinel SAP 数据连接器部署脚本会安装[所需的软件](#automatically-installed-software)，然后在[新创建的 VM](#deploy-a-linux-vm-for-your-sap-data-connector) 上安装连接器，将凭据存储在[专用密钥保管库](#create-key-vault-for-your-sap-credentials)中。
 
-SAP 数据连接器部署脚本存储在 [Azure Sentinel GitHub 存储库 > DataConnectors > SAP](https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/SAP/) 目录中。
+SAP 数据连接器部署脚本存储在 [Azure Sentinel GitHub 存储库 > DataConnectors > SAP](https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/sapcon-sentinel-kickstart.sh) 中。
 
 要运行 SAP 数据连接器部署脚本，将需要以下详细信息：
 
@@ -199,7 +201,6 @@ SAP 数据连接器部署脚本存储在 [Azure Sentinel GitHub 存储库 > Data
 - 使用 SUDO 权限访问 VM 用户。
 - 在[配置 SAP 系统](#configure-your-sap-system)中创建的 SAP 用户，应用了 /MSFTSEN/SENTINEL_CONNECTOR 角色。
 - SAP 团队的帮助。
-
 
 **运行 SAP 解决方案部署脚本**：
 
@@ -378,7 +379,7 @@ total 508
 1. 确保你拥有来自 Azure Sentinel github 存储库的最新版本的相关部署脚本。 运行：
 
     ```azurecli
-    - wget -O sapcon-sentinel-kickstart.sh https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/sapcon-sentinel-kickstart.sh && bash ./sapcon-sentinel-update.sh
+    - wget -O sapcon-instance-update.sh https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/sapcon-instance-update.sh && bash ./sapcon-instance-update.sh
     ```
 
 1. 在 SAP 数据连接器计算机上运行以下命令：
@@ -388,6 +389,37 @@ total 508
     ```
 
 已更新计算机上的 SAP 数据连接器 Docker 容器。
+
+## <a name="collect-sap-hana-audit-logs"></a>收集 SAP HANA 审核日志
+
+如果你的 SAP HANA 数据库审核日志已配置 Syslog，则还需要配置 Log Analytics 代理以收集 Syslog 文件。
+
+1. 请确保将 SAP HANA 审核日志跟踪配置为使用 Syslog，如 SAP 说明 0002624117 中所述，可从 [SAP 启动板支持站点](https://launchpad.support.sap.com/#/notes/0002624117)访问。 有关详细信息，请参阅：
+
+    - [SAP HANA 审核线索 - 最佳做法](https://archive.sap.com/documents/docs/DOC-51098)
+    - [审核建议](https://help.sap.com/viewer/742945a940f240f4a2a0e39f93d3e2d4/2.0.05/en-US/5c34ecd355e44aa9af3b3e6de4bbf5c1.html)
+
+1. 查看操作系统 Syslog 文件，了解任何相关的 HANA 数据库事件。
+
+1. 在计算机上安装并配置 Log Analytics 代理：
+
+    1. 以具有 sudo 权限的用户身份登录 HANA 数据库操作系统。
+    1. 在 Azure 门户中，转到 Log Analytics 工作区。 在左侧的“设置”下，选择“代理管理 > Linux 服务器” 。
+    1. 将“下载和载入适用于 Linux 的代理”下的框中显示的代码复制到终端，并运行脚本。
+
+    Log Analytics 代理已安装在计算机上并已连接到工作区。 有关详细信息，请参阅 Microsoft GitHub 存储库上的[在 Linux 计算机上安装 Log Analytics 代理](../azure-monitor/agents/agent-linux.md)和[适用于 Linux 的 OMS 代理](https://github.com/microsoft/OMS-Agent-for-Linux)。
+
+1. 刷新“代理管理 > Linux 服务器”选项卡，查看是否连接了 1 台 Linux 计算机。
+
+1. 在左侧的“设置”下，选择“代理配置”，然后选择“Syslog”选项卡。  
+
+1. 选择“添加设施”以添加要收集的设施。 
+
+    > [!TIP]
+    > 由于保存 HANA 数据库事件的设施在不同的发行版中可能会发生变化，因此建议添加所有设施，对照 Syslog 日志进行检查，然后删除任何不相关的设施。
+    >
+
+1. 在 Azure Sentinel 中，检查 HANA 数据库事件现在是否显示在引入的日志中。
 
 ## <a name="next-steps"></a>后续步骤
 

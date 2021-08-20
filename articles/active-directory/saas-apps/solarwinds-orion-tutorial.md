@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/01/2021
+ms.date: 06/29/2021
 ms.author: jeedes
-ms.openlocfilehash: b503697972bfe7fbd8fc18b77d6e0206dc055b67
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ae73974a65ca13c76fc374bf0544d67fa2a524c3
+ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206126"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113107229"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-solarwinds-orion"></a>教程：Azure Active Directory 的单一登录 (SSO) 与 SolarWinds Orion 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "108206126"
 * 让用户使用其 Azure AD 帐户自动登录到 SolarWinds Orion。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -76,7 +76,7 @@ ms.locfileid: "108206126"
 
 1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<ORION-HOSTNAME-OR-EXTERNAL-URL>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<ORION-HOSTNAME-OR-EXTERNAL-URL>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<ORION-HOSTNAME-OR-EXTERNAL-URL>/Orion/SAMLLogin.aspx`
 
@@ -99,6 +99,17 @@ ms.locfileid: "108206126"
     | LastName | user.surname |
     | 电子邮件 |user.mail |
 
+1. 在“用户属性和声明”部分中，单击铅笔图标进行编辑，然后单击“添加组声明”。
+
+    ![“用户属性和声明”的屏幕截图。](./media/solarwinds-orion-tutorial/group-claim.png)
+
+1. 选择“安全组”。
+1. 如果 Azure AD 已与本地 AD 同步，则将“源属性”更改为 sAMAccountName。 否则，请将其保留为组 ID。
+
+1. 在“高级选项”中，勾选“自定义组声明的名称”，并指定 OrionGroups 作为名称。
+
+1. 单击“ **保存**”。
+
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
     ![证书下载链接](common/certificatebase64.png)
@@ -115,7 +126,7 @@ ms.locfileid: "108206126"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 

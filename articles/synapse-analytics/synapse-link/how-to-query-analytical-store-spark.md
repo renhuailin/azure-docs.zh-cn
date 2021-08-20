@@ -10,12 +10,12 @@ ms.date: 09/15/2020
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: 5e2458ebcdcc1b2dba598b5d443b8eab12312e7d
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: e9e211fe3039b85e2807fec159537d32380e9799
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788955"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113664982"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>使用 Azure Synapse Link 中的 Apache Spark 与 Azure Cosmos DB 进行交互
 
@@ -28,7 +28,7 @@ ms.locfileid: "109788955"
 * 还可以利用 Synapse Apache Spark 将数据引入 Azure Cosmos DB。 需要注意的是，数据始终通过事务存储引入到 Azure Cosmos DB 容器中。 启用 Synapse Link 后，任何新的插入、更新和删除操作都将自动同步到分析存储。
 * Synapse Apache Spark 还支持将 Azure Cosmos DB 作为源和接收器的 Spark 结构化流。 
 
-以下各节将演练上述功能的语法。 Azure Synapse Analytics 工作区中的笔势旨在提供一种简单现成的入门体验。 右键单击 Synapse 工作区的“数据”选项卡中的 Azure Cosmos DB 容器时，可以显示这些笔势。 借助笔势，可以快速生成代码，并根据需要对其进行定制。 笔势还适用于只需单击一下即可发现数据的功能。
+以下各节将演练上述功能的语法。 你还可以查看 Learn 模块，了解如何[使用适用于 Azure Synapse Analytics 的 Apache Spark 查询 Azure Cosmos DB](/learn/modules/query-azure-cosmos-db-with-apache-spark-for-azure-synapse-analytics/)。 Azure Synapse Analytics 工作区中的笔势旨在提供一种简单现成的入门体验。 右键单击 Synapse 工作区的“数据”选项卡中的 Azure Cosmos DB 容器时，可以显示这些笔势。 借助笔势，可以快速生成代码，并根据需要对其进行定制。 笔势还适用于只需单击一下即可发现数据的功能。
 
 > [!IMPORTANT]
 > 应注意分析架构中可能会导致数据加载操作出现意外行为的某些约束。
@@ -213,3 +213,4 @@ query.awaitTermination()
 * [Github 上有关 Azure Synapse Link 入门的示例](https://aka.ms/cosmosdb-synapselink-samples)
 * [了解 Azure Synapse Link for Azure Cosmos DB 支持的功能](./concept-synapse-link-cosmos-db-support.md)
 * [连接到 Synapse Link for Azure Cosmos DB](../quickstart-connect-synapse-link-cosmos-db.md)
+* 查看 Learn 模块，了解如何[使用适用于 Azure Synapse Analytics 的 Apache Spark 查询 Azure Cosmos DB](/learn/modules/query-azure-cosmos-db-with-apache-spark-for-azure-synapse-analytics/)。

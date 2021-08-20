@@ -12,12 +12,12 @@ metadata:
   ms.author: dfurman
   ms.reviewer: mathoma
   ms.date: 03/31/2021
-  ms.openlocfilehash: 993254f838af70c62292844991ba72c6977dfd99
-  ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+  ms.openlocfilehash: b173b2ce8de29a4a605e7223bc46130155b81b3d
+  ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/24/2021
-  ms.locfileid: "112574784"
+  ms.lasthandoff: 07/24/2021
+  ms.locfileid: "114668760"
 title: Azure SQL 数据库“超大规模”常见问题解答
 summary: >
   [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -126,7 +126,7 @@ sections:
   - question: >
       “超大规模”是为哪种工作负载而设计的？
     answer: >
-      “超大规模”支持所有 SQL Server 工作负荷，但它主要针对 OLTP 进行了优化。 还可以引入混合 (HTAP) 和分析（数据市场）工作负荷。
+      超大规模支持所有工作负荷类型，其中包括 OLTP、混合 (HTAP) 和分析（数据市场）工作负荷。
   - question: >
       如何在 Azure Synapse Analytics 和 Azure SQL 数据库超大规模之间进行选择？
     answer: "如果目前运行的是使用 SQL Server 作为数据仓库的交互式分析查询，“超大规模”是很好的选择，因为能以较低费用托管中小型数据仓库（例如几 TB 到 100 TB），并且只需对 T-SQL 代码进行极少量的更改，即可将 SQL Server 数据仓库工作负荷迁移到“超大规模”。\n\n如果大规模运行包含复杂查询且持续引入速率超过 100 MB/秒的数据分析，并使用并行数据仓库 (PDW)、Teradata 或其他大规模并行处理 (MPP) 数据仓库，则 Azure Synapse Analytics 可能是最佳选择。\n  \n"
@@ -143,11 +143,11 @@ sections:
   - question: >
       是否可以预配大小不同的多个计算副本？
     answer: >
-      不能。
+      是的。 使用[命名副本](service-tier-hyperscale-replicas.md#named-replica-in-preview)可以实现此操作。
   - question: >
       支持多少个读取扩展副本？
     answer: >
-      默认情况下，超大规模数据库是使用一个读取扩展副本（包括主要副本共有 2 个副本）创建的。 可以使用 [Azure 门户](https://portal.azure.com)或 [REST API](/rest/api/sql/databases/createorupdate) 将只读副本的数目缩放为 0 到 4 个。
+      默认情况下，超大规模数据库是使用一个读取扩展副本（包括主要副本共有 2 个副本）创建的。 可以使用 [Azure 门户](https://portal.azure.com)或 [REST API](/rest/api/sql/databases/createorupdate) 将只读副本的数目缩放为 0 到 4 个。 此外，还可以使用[命名副本](service-tier-hyperscale-replicas.md#named-replica-in-preview)启用许多读取扩展方案。
   - question: >
       若要实现高可用性，是否需要预配额外的计算副本？
     answer: >
@@ -170,7 +170,7 @@ sections:
   - question: >
       `tempdb` 是否会随着数据库增长而缩放？
     answer: >
-      `tempdb` 数据库位于本地 SSD 存储，其大小与预配的计算大小成比例。 为提供最大性能优势，对 `tempdb` 进行了优化。 `tempdb` 大小不可配置，它由你管理。
+      `tempdb` 数据库位于本地 SSD 存储，其大小与预配的计算大小成比例。 为提供最大性能优势，对 `tempdb` 进行了优化。 `tempdb` 大小不可配置，它由你管理。 若要确定数据库的 `tempdb` 大小上限，请参阅[超大规模存储和计算大小](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5)。
   - question: >
       数据库大小是否会自动增长，我是否需要管理数据文件的大小？
     answer: >
@@ -222,7 +222,7 @@ sections:
   - question: >
       迁移到“超大规模”服务层级后，是否会丢失一些功能？
     answer: >
-      是的。 目前，部分 Azure SQL 数据库功能在“超大规模”中不受支持，包括但不限于长期备份保留。 将数据库迁移到“超大规模”服务层级后，这些功能将停止运行。  我们预期这些限制是暂时性的。
+      是的。 目前，部分 Azure SQL 数据库功能在“超大规模”中不受支持，包括但不限于长期备份保留。 将数据库迁移到“超大规模”服务层级后，这些功能将停止运行。  我们预期这些限制是暂时性的。 有关详细信息，请参阅[已知限制](service-tier-hyperscale.md#known-limitations)。
   - question: >
       是否可以将我的本地 SQL Server 数据库或云虚拟机中的 SQL Server 数据库迁移到“超大规模”？
     answer: >
@@ -272,7 +272,7 @@ sections:
   - question: >
       创建数据库备份的频率是多少？
     answer: >
-      “超大规模”数据库没有传统的完整、差异和日志备份。 但有数据文件的定期存储快照。 生成的日志只是按配置的保留期按原样保留，因此可以还原到保留期内的任意时间点。
+      “超大规模”数据库没有传统的完整、差异和日志备份。 但有数据文件的定期存储快照。 生成的日志按配置的保留期按原样保留，因此可以还原到保留期内的任意时间点。
   - question: >
       “超大规模”是否支持时间点还原？
     answer: >
@@ -280,7 +280,7 @@ sections:
   - question: >
       “超大规模”中的数据库还原的恢复点目标 (RPO)/恢复时间目标 (RTO) 是什么？
     answer: >
-      RPO 为 0 分钟。无论数据库大小如何，大多数还原操作都将在 60 分钟内完成。 对于较大的数据库，如果该数据库在还原时间点之前（直到还原时间点）进行了大量写入活动，则还原时间可能会更长。
+      时间点还原的 RPO 为 0 分钟。无论数据库大小如何，大多数时间点还原操作都会在 60 分钟内完成。 对于较大的数据库，如果该数据库在还原时间点之前（直到还原时间点）进行了大量写入活动，则还原时间可能会更长。
   - question: >
       数据库备份是否影响主要副本或次要副本的计算性能？
     answer: >
@@ -292,7 +292,7 @@ sections:
   - question: >
       是否可以对“超大规模”数据库设置异地复制？
     answer: >
-      “超大规模”数据库的[异地复制](active-geo-replication-overview.md)提供公共预览版。
+      是的。 “超大规模”数据库的[异地复制](active-geo-replication-overview.md)提供公共预览版。
   - question: >
       是否可以备份“超大规模”数据库，并还原到我的本地服务器或 VM 中的 SQL Server？
     answer: >
@@ -302,7 +302,7 @@ sections:
   - question: >
       迁移到“超大规模”服务层级后，是否会丢失一些功能？
     answer: >
-      是的。 部分 Azure SQL 数据库功能在“超大规模”中不受支持，包括但不限于长期备份保留。 将数据库迁移到“超大规模”服务层级后，这些功能将停止运行。
+      是的。 部分 Azure SQL 数据库功能在“超大规模”中不受支持，包括但不限于长期备份保留。 将数据库迁移到“超大规模”服务层级后，这些功能将停止运行。 有关详细信息，请参阅[已知限制](service-tier-hyperscale.md#known-limitations)。
   - question: >
       PolyBase 是否适用于“超大规模”？
     answer: >
@@ -324,7 +324,7 @@ sections:
   - question: >
       在最大的计算节点上可以获得多少 IOPS？
     answer: >
-      IOPS 和 IO 延迟根据工作负荷模式而异。 如果访问的数据缓存在计算副本上，则它的 IO 性能与使用本地 SSD 时类似。
+      IOPS 和 IO 延迟根据工作负荷模式而异。 如果正在访问的数据缓存在计算副本上的 RBPEX 中，你将会看到与“业务关键”层级或“高级服务”层级类似的 IO 性能。
   - question: >
       吞吐量是否受备份影响？
     answer: >
@@ -350,14 +350,14 @@ sections:
   - question: >
       缩放操作过程中，连接是否会断开？
     answer: >
-      如果在缩放操作结束时发生故障转移，纵向扩展或缩减操作会导致现有连接断开。 添加次要副本不会导致连接断开。
+      如果在缩放操作结束时发生故障转移，纵向扩展或缩减操作会导致现有连接断开。 添加或删除次要副本不会导致主副本上的连接中断。
   - question: >
       纵向扩展和缩减计算副本是自动的操作还是由最终用户触发的操作？
     answer: "是由最终用户触发的。 不是自动的。  \n"
   - question: >
       计算纵向扩展时，`tempdb` 数据库和 RBPEX 缓存的大小是否也会随之增长？
     answer: >
-      能。 随着内核数量的增加，计算节点上的 `tempdb` 数据库和 [RBPEX 缓存](service-tier-hyperscale.md#distributed-functions-architecture) 大小将自动增加。
+      能。 随着内核数量的增加，计算节点上的 `tempdb` 数据库和 [RBPEX 缓存](service-tier-hyperscale.md#distributed-functions-architecture) 大小将自动增加。 有关详细信息，请参阅[超大规模存储和计算大小](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5)。
   - question: >
       能否预配多个主要计算副本（例如多主数据库系统，其中多个主要计算标头可以驱动更高的并发级别）？
     answer: >

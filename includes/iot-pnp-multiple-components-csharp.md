@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: eda8aeb16dc9a3a7c7ce3c9357732c23a7966a62
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 80e16c64c815cb2d6fa0cb6bcf59610f4b56faec
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110487265"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114400020"
 ---
 本教程介绍如何使用组件生成示例 IoT 即插即用设备应用程序，将其连接到 IoT 中心，并使用 Azure IoT 资源管理器工具来查看它发送到中心的信息。 该示例应用程序以 C# 编写，包含在用于 C# 的 Azure IoT 设备 SDK 中。 解决方案构建者可以使用 Azure IoT 资源管理器工具来了解 IoT 即插即用设备的功能，而无需查看任何设备代码。
 
@@ -34,7 +34,7 @@ ms.locfileid: "110487265"
 
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>使用示例代码克隆 SDK 存储库
 
-如果已完成[快速入门：将 Windows 上运行的示例 IoT 即插即用设备应用程序连接到 IoT 中心 (C#)](../articles/iot-pnp/quickstart-connect-device.md)，则已克隆了存储库。
+如果你完成了[教程：将 Windows 上运行的示例 IoT 即插即用设备应用程序连接到 IoT 中心 (C#)](../articles/iot-develop/tutorial-connect-device.md)，则已经克隆了该存储库。
 
 为 C# GitHub 存储库克隆 Azure IoT 示例中的示例。 在所选文件夹中打开命令提示符。 运行以下命令，以克隆[用于 .NET 的 Microsoft Azure IoT 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存储库：
 
@@ -54,9 +54,9 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
-    | IOTHUB_DEVICE_DPS_ID_SCOPE | 在完成[设置环境](../articles/iot-pnp/set-up-environment.md)时记下的值 |
+    | IOTHUB_DEVICE_DPS_ID_SCOPE | 在完成[设置环境](../articles/iot-develop/set-up-environment.md)时记下的值 |
     | IOTHUB_DEVICE_DPS_DEVICE_ID | my-pnp-device |
-    | IOTHUB_DEVICE_DPS_DEVICE_KEY | 在完成[设置环境](../articles/iot-pnp/set-up-environment.md)时记下的值 |
+    | IOTHUB_DEVICE_DPS_DEVICE_KEY | 在完成[设置环境](../articles/iot-develop/set-up-environment.md)时记下的值 |
 
 
 1. 现在可以在 Visual Studio 中生成示例，并在调试模式下运行它。
@@ -71,7 +71,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 ## <a name="review-the-code"></a>查看代码
 
-此示例实现 IoT 即插即用温度控制器设备。 此示例实现的模型使用[多个组件](../articles/iot-pnp/concepts-modeling-guide.md)。 [温度设备的数字孪生定义语言 (DTDL) 模型文件](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)定义了设备实现的遥测、属性和命令。
+此示例实现 IoT 即插即用温度控制器设备。 此示例实现的模型使用[多个组件](../articles/iot-develop/concepts-modeling-guide.md)。 [温度设备的数字孪生定义语言 (DTDL) 模型文件](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)定义了设备实现的遥测、属性和命令。
 
 设备代码使用标准 `CreateFromConnectionString` 方法连接到 IoT 中心。 设备发送在连接请求中实现的 DTDL 模型的模型 ID。 发送模型 ID 的设备是 IoT 即插即用设备：
 

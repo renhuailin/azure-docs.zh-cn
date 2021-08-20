@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: d70a15456ecc688b6bc8137223d36164545c0123
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 5d473ad0409fcdd301490348659f183d15905cf2
+ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956153"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113585836"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>教程：部署和演练微型配送中心应用程序模板
 
@@ -42,7 +42,7 @@ ms.locfileid: "111956153"
 1. 选择“零售”  。  “零售”页将显示多个零售应用程序模板。
 
 若要创建使用预览版功能的新微型配送中心应用程序：  
-1. 选择“微型配送中心”应用程序模板入门。  此模板包括本教程中使用的所有设备的设备模板。 此模板还提供操作员仪表板，用于监视配送中心内的条件以及机器人载体的条件。 
+1. 选择“微型配送中心”应用程序模板入门。  此模板包括本教程中使用的所有设备的设备模板。 此模板还提供仪表板，用于监视配送中心内的条件以及机器人载体的条件。 
 
     ![Azure IoT Central 的“生成 IoT 应用程序”页的屏幕截图](./media/tutorial-micro-fulfillment-center-app/iotc-retail-homepage-mfc.png)
     
@@ -61,7 +61,7 @@ ms.locfileid: "111956153"
 
 ## <a name="walk-through-the-application"></a>演练应用程序 
 
-成功部署应用模板后，会看到 **Northwind Traders 微型配送中心仪表板**。 Northwind Traders 是一家虚构的零售商，它在此 Azure IoT Central 应用程序中管理微型配送中心。 在操作员仪表板上，可以看到此模板中与设备有关的信息和遥测数据，以及可执行的一组命令、作业和操作。 仪表板以逻辑方式划分为两个部分。 在左侧可以监视配送结构中的环境条件，在右侧可以监视车间中机器人载体的运行状况。  
+成功部署应用模板后，会看到 **Northwind Traders 微型配送中心仪表板**。 Northwind Traders 是一家虚构的零售商，它在此 Azure IoT Central 应用程序中管理微型配送中心。 在仪表板上，可以看到此模板中与设备有关的信息和遥测数据，以及可执行的一组命令、作业和操作。 仪表板以逻辑方式划分为两个部分。 在左侧可以监视配送结构中的环境条件，在右侧可以监视车间中机器人载体的运行状况。  
 
 在仪表板中可以：
    * 查看设备遥测数据，例如取件数量、处理的订单数量，以及结构系统状态等属性。  

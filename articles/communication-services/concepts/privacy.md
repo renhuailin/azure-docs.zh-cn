@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: bb40c4bdcdc61cfa3d82ea5313a1c6b084bb1514
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 870000e49e77475e8f8c7dcac84d470a853c8a76
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110667"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113762871"
 ---
 # <a name="region-availability-and-data-residency"></a>区域可用性和数据驻留
 
@@ -22,6 +22,10 @@ Azure 通信服务致力于帮助我们的客户满足他们的隐私和个人�
 ## <a name="data-residency"></a>数据驻留
 
 创建通信服务资源时，需要指定一个地理位置（非 Azure 数据中心）。 通信服务静态存储的所有聊天消息和资源数据都将保留在该地理位置（由通信服务在内部选择的数据中心中）。 数据可在异地传输或处理。 必需使用这些全局终结点来向最终用户提供高性能、低延迟的体验，无论他们位于何处。
+
+## <a name="data-collection"></a>数据收集
+
+Azure 通信服务只会收集交付服务所需的诊断数据。 
 
 ## <a name="data-residency-and-events"></a>数据驻留和事件
 
@@ -76,6 +80,10 @@ Azure 通信服务维护与通信服务资源关联的电话号码目录。 使�
 ### <a name="internet-voice-and-video-calling"></a>Internet 语音和视频呼叫
 
 音频和视频通信由服务临时处理，不会在 Azure Monitor 日志以外的其他资源中保留任何数据。
+
+### <a name="call-recording"></a>通话记录
+
+通话记录会临时存储在创建资源时为 ```Data Location``` 选择的同一地理区域，存储时间为 48 小时。 在此之后，记录会被删除，你需要负责将记录存储在一个安全且符合要求的位置。
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor 和 Log Analytics
 

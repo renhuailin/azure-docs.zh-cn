@@ -4,20 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: a302cdacb7943e81f884b7f83a03c8b72ce3e197
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: e134173fdcd72c637be990b92a278d848ce6527b
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560658"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112536124"
 ---
 使用 Azure 通信服务呼叫 SDK 向应用添加一对一视频呼叫，开启 Azure 通信服务使用旅程。 你将了解如何使用适用于 iOS 的 Azure 通信服务呼叫 SDK 发起和应答视频呼叫。
 
-> [!NOTE]
-> 本文档使用呼叫 SDK 版本 1.0.0。
+## <a name="sample-code"></a>代码示例
 
-> [!NOTE]
-> 在 [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/Add%20Video%20Calling) 上查找此快速入门的最终代码
+如果你要向前跳转到末尾，可以从 [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/Add%20Video%20Calling) 下载此快速入门示例。
 
 ## <a name="prerequisites"></a>必备条件
 - 获取具有有效订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -76,12 +74,12 @@ import AVFoundation
 ## <a name="object-model"></a>对象模型
 以下类和接口处理适用于 iOS 的 Azure 通信服务呼叫 SDK 的某些主要功能。
 
-| 名称      | 说明 | 
-| :---        |    :----   |
-| CallClient  | CallClient 是通话 SDK 的主入口点。      |
-| CallAgent  | CallAgent 用于启动和管理呼叫。        |
-| CommunicationTokenCredential| CommunicationTokenCredential 用作实例化 CallAgent 的令牌凭据。    |
-| CommunicationIdentifier | CommunicationIdentifier 用于表示用户的标识，可以是 CommunicationUserIdentifier、PhoneNumberIdentifier 或 CallingApplication。        |
+| 名称                         | 说明                                                                                                                                                                        |
+| :--------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CallClient                   | CallClient 是通话 SDK 的主入口点。                                                                                                                         |
+| CallAgent                    | CallAgent 用于启动和管理呼叫。                                                                                                                                   |
+| CommunicationTokenCredential | CommunicationTokenCredential 用作实例化 CallAgent 的令牌凭据。                                                                                     |
+| CommunicationIdentifier      | CommunicationIdentifier 用于表示用户的标识，可以是 CommunicationUserIdentifier、PhoneNumberIdentifier 或 CallingApplication。 |
 
 ## <a name="create-the-call-agent"></a>创建呼叫代理
 将 ContentView 结构的实现替换为使用户可以发起和结束呼叫的一些简单 UI 控件。 我们会在本快速入门中将业务逻辑附加到这些控件。
@@ -228,7 +226,9 @@ struct ContentView_Previews: PreviewProvider {
 ```
 
 ### <a name="authenticate-the-client"></a>验证客户端
-若要初始化 CallAgent 实例，我们需要一个可用于发起和接收呼叫的用户访问令牌。 将以下代码添加到 `ContentView.swift` 中的 `onAppear` 回调：
+若要初始化 CallAgent 实例，我们需要一个可用于发起和接收呼叫的用户访问令牌。 如果还没有可用的令牌，请参阅[用户访问令牌](../../../access-tokens.md?pivots=programming-language-csharp)文档。
+
+如果你有一个令牌，请将以下代码添加到 `ContentView.swift` 中的 `onAppear` 回调。 需要将 `<USER ACCESS TOKEN>` 替换为资源的有效用户访问令牌**：
 
 ```Swift
 var userCredential: CommunicationTokenCredential?
@@ -239,8 +239,6 @@ do {
     return
 }
 ```
-
-将 `<USER ACCESS TOKEN>` 替换为资源的有效用户访问令牌。 如果还没有可用的令牌，请参阅[用户访问令牌](../../../access-tokens.md?pivots=programming-language-csharp)文档。
 
 ### <a name="initialize-the-callagent-and-access-device-manager"></a>初始化 CallAgent 并访问设备管理器
 若要从 CallClient 创建 CallAgent 实例，请使用 `callClient.createCallAgent` 方法，在初始化 CallAgent 对象后，该方法将以异步方式返回该对象。 借助 DeviceManager 可枚举通话中可用于传输音频/视频流的本地设备。 还可向用户请求访问麦克风/相机的权限。 
@@ -617,7 +615,3 @@ public class RemoteParticipantObserver : NSObject, RemoteParticipantDelegate {
 
 ## <a name="run-the-code"></a>运行代码
 可以通过选择“产品”>“运行”或使用 (⌘-R) 键盘快捷方式，在 iOS 模拟器上生成并运行应用。
-
-## <a name="sample-code"></a>代码示例
-
-可以从 [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/Add%20Video%20Calling) 下载示例应用

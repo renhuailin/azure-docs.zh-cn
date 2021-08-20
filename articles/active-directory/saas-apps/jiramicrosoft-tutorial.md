@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: eb35099421faaa34e1b35fb0c171900706069adb
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d9b3bf52e6483577b85787372c77623517a5f9cb
+ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110067035"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113730093"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>教程：Azure Active Directory 单一登录 (SSO) 与 JIRA SAML SSO by Microsoft 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "110067035"
 若要配置 Azure AD 与 JIRA SAML SSO by Microsoft 的集成，需要以下项：
 
 - 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-- 应在 Windows 64 位版本上安装并配置 JIRA Core 和 Software 6.4 到 8.16.1，或 JIRA Service Desk 3.0 到 4.16.1
+- 应在 Windows 64 位版本上安装并配置 JIRA Core 和 Software 6.4 到 8.17.1，或 JIRA Service Desk 3.0 到 4.16.1
 - JIRA 服务器已启用 HTTPS
 - 请注意，下面部分列出了支持 JIRA 插件版本。
 - JIRA 服务器应当可以访问 Internet，尤其是访问用于身份验证的 Azure AD 登录页，还应当可以接收来自 Azure AD 的令牌
@@ -56,7 +56,7 @@ ms.locfileid: "110067035"
 
 ## <a name="supported-versions-of-jira"></a>支持的 JIRA 版本
 
-* JIRA Core 和 Software：6.4 到 8.16.1
+* JIRA Core 和 Software：6.4 到 8.17.1
 * JIRA Service Desk 3.0 到 4.16.1
 * JIRA 还支持 5.2。 有关更多详细信息，请单击 [Microsoft Azure Active Directory single sign-on for JIRA 5.2](jira52microsoft-tutorial.md)
 
@@ -126,7 +126,7 @@ ms.locfileid: "110067035"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 

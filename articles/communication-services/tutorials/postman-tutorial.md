@@ -5,26 +5,26 @@ description: 了解如何使用 Postman 来签署和发出对 ACS 的请求以�
 author: ProbablePrime
 services: azure-communication-services
 ms.author: rifox
-ms.date: 03/10/2021
+ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5805734a9253962d672a4236a5650e9de8b37f0a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7691bb6ffd93c3c87872659417f91de1599a81e8
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044288"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767162"
 ---
 # <a name="tutorial-sign-and-make-requests-with-postman"></a>教程：使用 Postman 签署和发出请求
-在本教程中，我们将设置并使用 Postman 通过 HTTP 对 Azure 通信服务 (ACS) 发出请求。 在本教程结束时，你将会成功地使用 ACS 和 Postman 发送短信，并能够使用 Postman 来探索 ACS 中的其他 API。
+在本教程中，我们将设置并使用 Postman 通过 HTTP 对 Azure 通信服务发出请求。 在本教程结束时，你将会成功地使用通信服务和 Postman 发送短信。 然后，将能够使用 Postman 探索 Azure 通信服务中的其他 API。
 
 在本教程中，我们将执行以下操作：
 > [!div class="checklist"]
 > * 下载 Postman
 > * 设置 Postman 以便对 HTTP 请求进行签名
-> * 对 ACS 的短信 API 发出请求以发送消息。
+> * 对通信服务短信 API 发出请求以发送消息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 具有活动订阅的 Azure 帐户。 有关详细信息，请参阅[创建免费账户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 免费帐户为你提供了价值 200 美元的 Azure 赠金，你可用它来试用任何服务组合。
 - 活动的通信服务资源和连接字符串。 [了解如何创建通信服务资源](../quickstarts/create-communication-resource.md)。
@@ -46,15 +46,15 @@ Postman 可通过多种方式来组织请求。 在本教程中， 我们将创�
 
 选择后，单击“创建新集合”启动集合创建过程。 Postman 的中心区域将打开一个新选项卡。 为集合指定任意所需名称。 在本教程中，集合命名为“ACS”：
 
-:::image type="content" source="media/postman/acs-collection.png" alt-text="Postman，其中已打开一个 ACS 集合，集合名称已突出显示。":::
+:::image type="content" source="media/postman/acs-collection.png" alt-text="已打开通信服务集合且突出显示集合名称的 Postman。":::
 
 创建并命名集合后，即可开始对其进行配置。
 
 ### <a name="adding-collection-variables"></a>添加集合变量
 
-为了更轻松地处理身份验证和发出请求，我们将在新建的 ACS 集合中指定两个集合变量。 这些变量可用于 ACS 集合中的所有请求。 若要开始创建变量，请访问集合的“变量”选项卡。
+为了更轻松地处理身份验证和发出请求，我们将在新建的通信服务集合中指定两个集合变量。 这些变量可用于通信服务集合中的所有请求。 若要开始创建变量，请访问集合的“变量”选项卡。
 
-:::image type="content" source="media/postman/variable-stab.png" alt-text="Postman，其中包含 ACS 集合的“变量”选项卡。":::
+:::image type="content" source="media/postman/variable-stab.png" alt-text="显示通信服务集合的“变量”选项卡的 Postman。":::
 
 在集合选项卡上创建两个变量：
 - key - 此变量应是 Azure 门户中的 Azure 通信服务密钥页提供的一个密钥。 例如 `oW...A==`。
@@ -62,17 +62,17 @@ Postman 可通过多种方式来组织请求。 在本教程中， 我们将创�
 
 在“变量”屏幕的“初始值”列中输入这些值。 输入后，按下紧靠在表格右上方的“全部保存”按钮。 正确配置后，Postman 屏幕应如下所示：
 
-:::image type="content" source="media/postman/acs-variables-set.png" alt-text="Postman，其中已正确设置 ACS 集合的变量。":::
+:::image type="content" source="media/postman/acs-variables-set.png" alt-text="正确设置了通信服务集合的变量的 Postman。":::
 
 可以阅读[有关变量的 Postman 文档](https://learning.postman.com/docs/sending-requests/variables)来详细了解变量。
 
 ### <a name="creating-a-pre-request-script"></a>创建请求前脚本
 
-下一步是在 Postman 中创建请求前脚本。 请求前脚本是在 Postman 中每个请求之前运行的脚本，它可以代表你修改或改变请求参数。 我们将使用此脚本来为 HTTP 请求签名，使请求可由 ACS 的服务授权。 有关签名要求的详细信息，可以[阅读有关身份验证的指南](/rest/api/communication/authentication)。
+下一步是在 Postman 中创建请求前脚本。 请求前脚本是在 Postman 中每个请求之前运行的脚本，它可以代表你修改或改变请求参数。 我们将使用此脚本来为 HTTP 请求签名，使请求可由 Azure 通信服务授权。 有关签名要求的详细信息，可以[阅读有关身份验证的指南](/rest/api/communication/authentication)。
 
 我们将在“集合”中创建此脚本，使它针对集合中的任何请求运行。 为此，请在“集合”选项卡中单击“请求前脚本”子选项卡。
 
-:::image type="content" source="media/postman/start-pre-request-script.png" alt-text="Postman，其中已选择 ACS 集合的“请求前脚本”子选项卡。":::
+:::image type="content" source="media/postman/start-pre-request-script.png" alt-text="选择了通信服务集合的“预请求脚本”子选项卡的 Postman。":::
 
 在此子选项卡上，可以创建一个请求前脚本，只需将此脚本输入到下面的文本区域中即可。 在 [Visual Studio Code](https://code.visualstudio.com/) 等完整代码编辑器中编写此脚本会更方便，可以在编写完成后，将此脚本粘贴到文本区域中。 本教程将会解释该脚本的每个组成部分。 如果你只是想要将脚本复制到 Postman 并开始运行，可以尽管跳转到本文末尾。 让我们开始编写脚本。
 
@@ -86,7 +86,7 @@ const dateStr = new Date().toUTCString();
 pm.request.headers.upsert({key:'Date', value: dateStr});
 ```
 
-接下来，我们使用 SHA 256 对请求正文进行哈希处理，然后将其放到 `x-ms-content-sha256` 头中。 Postman 包含了一些用于全局哈希处理和签名的[标准库](https://learning.postman.com/docs/writing-scripts/script-references/postman-sandbox-api-reference/#using-external-libraries)，因此我们无需安装它们：
+接下来，我们使用 SHA 256 对请求正文进行哈希处理，然后将其放到 `x-ms-content-sha256` 头中。 Postman 包含了一些用于全局哈希处理和签名的[标准库](https://learning.postman.com/docs/writing-scripts/script-references/postman-sandbox-api-reference/#using-external-libraries)，因此我们无需安装或请求它们：
 
 ```JavaScript
 // Hash the request body using SHA256 and encode it as Base64
@@ -117,7 +117,7 @@ const url = pm.request.url.toString().replace('{{endpoint}}','');
 const stringToSign = pm.request.method + '\n' + url + '\n' + dateStr + ';' + hostStr + ';' + hashedBodyStr;
 ```
 
-最后，我们需要使用 ACS 密钥对此字符串进行签名，然后将此字符串添加到请求的 `Authorization` 头中：
+最后，我们需要使用通信服务密钥对此字符串进行签名，然后将此字符串添加到请求的 `Authorization` 头中：
 
 ```JavaScript
 // Decode our access key from previously created variables, into bytes from base64.
@@ -182,13 +182,13 @@ pm.request.headers.upsert({
 
 ## <a name="creating-a-request-in-postman"></a>在 Postman 中创建请求
 
-完成所有设置后，我们便可以在 Postman 中创建 ACS 请求了。 若要开始，请单击 ACS 集合旁边的加号 (+) 图标：
+完成所有设置后，我们便可以在 Postman 中创建通信服务请求了。 首先，单击通信服务集合旁边的加号 (+) 图标：
 
 :::image type="content" source="media/postman/create-request.png" alt-text="Postman 中的加号按钮。":::
 
-这会在 Postman 中打开一个用于创建请求的新选项卡。 创建请求后，需要对其进行配置。 我们将对“短信发送”API 发出请求，因此请务必参阅[有关此 API 的文档以获取帮助](/rest/api/communication/sms/send)。 让我们配置 Postman 的请求。
+这会在 Postman 中为请求创建一个新选项卡。 创建请求后，需要对其进行配置。 我们将对“短信发送”API 发出请求，因此请务必参阅[有关此 API 的文档以获取帮助](/rest/api/communication/sms/send)。 让我们配置 Postman 的请求。
 
-首先将请求类型设置为 `POST`，并在请求 URL 字段中输入 `{{endpoint}}/sms?api-version=2021-03-07`。 此 URL 使用我们前面创建的 `endpoint` 变量自动将请求发送到 ACS 资源。
+首先将请求类型设置为 `POST`，并在请求 URL 字段中输入 `{{endpoint}}/sms?api-version=2021-03-07`。 此 URL 使用我们在前面创建的 `endpoint` 变量自动将请求发送到通信服务资源。
 
 :::image type="content" source="media/postman/post-request-and-url.png" alt-text="一个 Postman 请求，其类型设置为 POST，URL 已正确设置。":::
 
@@ -212,15 +212,15 @@ pm.request.headers.upsert({
 }
 ```
 
-对于“from”值，需要根据前面所述在 ACS 门户中[获取一个电话号码](../quickstarts/telephony-sms/get-phone-number.md)。 输入的电话号码不能包含空格，需要加上国家/地区代码作为前缀。 例如：`+15555551234`。 “message”可以是要发送的任何内容，`Hello from ACS` 就是一个很好的例子。 “to”值应该是你有权使用的、能够接收短信的电话号码。 建议使用你自己的手机。
+对于“from”值，需要根据前面所述在 Azure 通信服务门户中[获取一个电话号码](../quickstarts/telephony-sms/get-phone-number.md)。 输入的电话号码不能包含空格，需要加上国家/地区代码作为前缀。 例如：`+15555551234`。 “message”可以是要发送的任何内容，`Hello from ACS` 就是一个很好的例子。 “to”值应该是你有权使用的、能够接收短信的电话号码。 建议使用你自己的手机。
 
-输入后，需将此请求保存到前面创建的 ACS 集合中。 这可以确保该请求选取前面创建的变量和请求前脚本。 为此，请单击请求区域右上方的“保存”按钮。
+输入后，需将此请求保存到前面创建的通信服务集合中。 这可以确保该请求选取前面创建的变量和请求前脚本。 为此，请单击请求区域右上方的“保存”按钮。
 
 :::image type="content" source="media/postman/postman-save.png" alt-text="Postman 请求的“保存”按钮。":::
 
-此时会显示一个对话框窗口，其中询问要为请求指定哪个名称，以及要将它保存到哪个位置。 可为其指定任意名称，但请确保在对话框的下半部分选择你的 ACS 集合：
+此时会显示一个对话框窗口，其中询问要为请求指定哪个名称，以及要将它保存到哪个位置。 可为其指定任意名称，但请确保在对话框的下半部分选择你的通信服务集合：
 
-:::image type="content" source="media/postman/postman-save-to-acs.png" alt-text="Postman 的“保存请求”对话框，其中已选择 ACS 集合。":::
+:::image type="content" source="media/postman/postman-save-to-acs.png" alt-text="选择了通信服务集合的 Postman“保存请求”对话框。":::
 
 ## <a name="sending-a-request"></a>发送请求
 
@@ -228,17 +228,17 @@ pm.request.headers.upsert({
 
 :::image type="content" source="media/postman/postman-send.png" alt-text="一个 Postman 请求，已突出显示“发送”按钮。":::
 
-如果一切正常，现在应会看到来自 ACS 的响应，其状态代码会是 202：
+如果一切正常，现在应会看到来自通信服务的响应，其状态代码会是 202：
 
 :::image type="content" source="media/postman/postman-202.png" alt-text="一个 Postman 请求，该请求已成功发送，其状态代码为 202。":::
 
-拥有你在“to”值中提供的号码的手机应该也收到了短信。 现已设置好一个可正常工作的 Postman，它可以与 ACS 服务通信并发送短信。
+拥有你在“to”值中提供的号码的手机应该也收到了短信。 现在你就有了一个有效的 Postman 配置，可以与 Azure 通信服务进行通信并发送短信了。
 
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [探索 ACS API](/rest/api/communication/)
+> [探索 Azure 通信服务 API](/rest/api/communication/)
 > [详细了解身份验证](/rest/api/communication/authentication)
 > [详细了解 Postman](https://learning.postman.com/)
 

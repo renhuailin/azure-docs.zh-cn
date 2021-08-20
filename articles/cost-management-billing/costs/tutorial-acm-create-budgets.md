@@ -3,18 +3,18 @@ title: 教程 - 创建和管理 Azure 预算
 description: 本教程介绍如何对所使用的 Azure 服务进行成本计划和核算。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2021
+ms.date: 06/17/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 916abcb702f46e5b18a403369bd2ed4dfe5b8473
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 1531b6bf591d2fb859dbd680c41d51a5835347a1
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110695287"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112320723"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
@@ -71,7 +71,7 @@ ms.locfileid: "110695287"
 - 参与者和成本管理参与者 - 可以创建、修改或删除自己的预算。 可以修改其他人创建的预算的预算金额。
 - 读者和成本管理读者 - 可以查看他们有权访问的预算。
 
-**有关范围的详细信息，包括为企业协议和 Microsoft 客户协议范围配置导出所需的访问权限，请参阅[了解和使用范围](understand-work-scopes.md)** 。 若要详细了解如何分配对成本管理数据的权限，请参阅[分配对成本管理数据的访问权限](./assign-access-acm-data.md)。
+**有关范围的详细信息，包括为企业协议和 Microsoft 客户协议范围配置导出所需的访问权限，请参阅 [了解和使用范围](understand-work-scopes.md)** 。 若要详细了解如何分配对成本管理数据的权限，请参阅[分配对成本管理数据的访问权限](./assign-access-acm-data.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -165,7 +165,12 @@ ms.locfileid: "110695287"
 
 ## <a name="create-and-edit-budgets-with-powershell"></a>通过 PowerShell 创建和编辑预算
 
-如果你是 EA 客户，则可以使用 Azure PowerShell 模块以编程方式创建和编辑预算。 若要下载最新版本的 Azure PowerShell，请运行以下命令：
+如果你是 EA 客户，则可以使用 Azure PowerShell 模块以编程方式创建和编辑预算。 
+
+>[!Note]
+>使用 Microsoft 客户协议的客户应使用[预算 REST API](/rest/api/consumption/budgets/create-or-update) 以编程方式创建预算，因为尚不支持 PowerShell 和 CLI。
+
+若要下载最新版本的 Azure PowerShell，请运行以下命令：
 
 ```azurepowershell-interactive
 install-module -name Az
@@ -189,6 +194,7 @@ $ActionGroupId = (Set-AzActionGroup -ResourceGroupName YourResourceGroup -Name T
 
 #Create a monthly budget that sends an email and triggers an Action Group to send a second email. Make sure the StartDate for your monthly budget is set to the first day of the current month. Note that Action Groups can also be used to trigger automation such as Azure Functions or Webhooks.
 
+Get-AzContext
 New-AzConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
 ```
 

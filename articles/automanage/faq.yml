@@ -1,0 +1,114 @@
+### YamlMime:FAQ
+metadata:
+  title: 适用于虚拟机的 Azure Automanage 常见问题解答
+  description: 有关适用于虚拟机的 Azure Automanage 的常见问题解答。
+  author: deanwe
+  ms.service: virtual-machines
+  ms.subservice: automanage
+  ms.workload: infrastructure
+  ms.topic: troubleshooting
+  ms.date: 02/22/2021
+  ms.author: deanwe
+  ms.openlocfilehash: b1cc973af2c4e50ea0f50698f6628bac77c1dfeb
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114481298"
+title: 有关适用于 VM 的 Azure Automanage 的常见问题解答
+summary: >
+  本文提供有关 [适用于虚拟机的 Azure Automanage](automanage-virtual-machines.md) 的一些最常见问题的解答。
+
+
+  如果本文未解决 Azure 问题，请访问 [MSDN 和 Stack Overflow](https://azure.microsoft.com/support/forums/) 上的 Azure 论坛。 可将问题发布到这些论坛上，或发布到 [Twitter 上的 @AzureSupport](https://twitter.com/AzureSupport)。 还可提交 Azure 支持请求。 若要提交支持请求，请在 [Azure 支持页](https://azure.microsoft.com/support/options/)上，选择“获取支持”。
+sections:
+- name: 适用于虚拟机的 Azure Automanage
+  questions:
+  - question: >
+      启用 Azure Automanage 需要具备哪些先决条件？
+    answer: >
+      以下是启用 Azure Automanage 的先决条件：
+
+      - 支持的 [Windows Server 版本](automanage-windows-server.md#supported-windows-server-versions)和 [Linux 发行版](automanage-linux.md#supported-linux-distributions-and-versions)
+
+      - VM 必须位于受支持的区域
+
+      - 用户必须拥有正确的权限
+
+      - 仅限非规模集 VM
+
+      - Automanage 目前不支持沙盒订阅
+  - question: >
+      启用 Automanage 需要什么 Azure RBAC 权限？
+    answer: >
+      如果要使用现有 Automanage 帐户在 VM 上启用 Automanage，则需要对该 VM 所在的资源组具有“参与者”角色。
+
+
+      如果要在启用时使用新的 Automanage 帐户，则必须对订阅具有“所有者”角色或“参与者”及“用户访问管理员”角色。
+  - question: >
+      哪些区域受支持？
+    answer: >
+      [此处](./automanage-virtual-machines.md#supported-regions)提供受支持区域的完整列表。
+  - question: >
+      Azure Automanage 可自动执行哪些功能？
+    answer: >
+      Automanage 会在 VM 的整个生命周期中注册、配置和监视[此处](automanage-virtual-machines.md)列出的服务。
+  - question: >
+      是否可以将 Azure Automanage 与已启用 Azure Arc 的 VM 一起使用？
+    answer: >
+      Automanage 当前不支持已启用 Arc 的 VM。
+  - question: >
+      能否自定义 Azure Automanage 上的配置？
+    answer: >
+      客户可以通过配置首选项自定义特定服务（如 Azure 备份保留期）的设置。 有关可更改的设置的完整列表，请参阅[此处](automanage-virtual-machines.md#customizing-an-environment-using-preferences)的文档。
+  - question: >
+      是否可以将 Azure Automanage 与 Linux 和 Windows VM 一起使用？
+    answer: >
+      是的，请参阅受支持的 [Windows Server 版本](automanage-windows-server.md#supported-windows-server-versions)和 [Linux 发行版](automanage-linux.md#supported-linux-distributions-and-versions)。
+  - question: >
+      是否可以选择性地仅在一组 VM 上应用 Automanage？
+    answer: >
+      只需通过单击并指向选定的新的和现有 VM 即可启用 Automanage。 也可以随时禁用 Automanage。
+  - question: >
+      Azure Automanage 是否支持虚拟机规模集中的 VM？
+    answer: >
+      否，Azure Automanage 当前不支持虚拟机规模集中的 VM。
+  - question: >
+      Azure Automanage 的费用是多少？
+    answer: >
+      在公共预览版中，无需额外付费即可使用 Azure Automanage。 附加的 Azure 资源（例如 Azure 备份）会产生费用。
+  - question: >
+      能否通过 Azure Policy 应用 Automanage？
+    answer: >
+      是的，我们有一个内置策略，可自动将 Automanage 应用于定义范围内的所有 VM。 你还可以指定环境配置（开发测试或生产）以及 Automanage 帐户。 若要详细了解如何通过 Azure Policy 启用 Automanage，请参阅[此处](virtual-machines-policy-enable.md)。
+  - question: >
+      什么是 Automanage 帐户？
+    answer: >
+      Automanage 帐户是一个 MSI（托管服务标识），可提供用于执行自动化操作的安全性上下文或标识。
+  - question: >
+      启用 Automanage 后，是否会影响我选择的计算机之外的其他计算机？
+    answer: >
+      如果 VM 已链接到现有 Log Analytics 工作区，我们将重用该工作区以应用以下解决方案：更改跟踪、盘存和更新管理。 连接到该工作区的所有计算机都将启用这些解决方案。
+  - question: >
+      能否更改计算机的环境？
+    answer: >
+      此时，你需要为该计算机禁用 Automanage，然后使用所需的环境和首选项重新启用 Automanage。
+  - question: >
+      如果已经为我的计算机配置了某个服务（如更新管理），Automanage 是否会对其进行重新配置？
+    answer: >
+      否，Automanage 不会对其进行重新配置。 我们将开始监视与该服务关联的资源，以发现偏移。
+  - question: >
+      为什么我的计算机在 Automanage 门户中处于“失败”状态？
+    answer: >
+      如果状态显示为“失败”，可通过几种不同方式来解决部署问题：
+
+      * 转到“资源组”，选择你的资源组，单击“部署”，然后会看到显示的“失败”状态和错误详细信息 。
+
+      * 前往“订阅”，选择资源组，点击“部署”，然后查看“失败”状态及错误详细信息。
+
+      * 你还可以访问计算机的活动日志，其中包含“创建或更新配置文件分配”的条目。 这还可能包含有关部署的更多详细信息。
+  - question: >
+      如何获取 Automanage 的故障排除支持？
+    answer: >
+      您可以提交[技术支持案例票证](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。 对于“服务”选项，请在“监视和管理”部分下搜索并选择“Automanage”。
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n尝试在 Azure 门户中启用适用于虚拟机的 Automanage。\n\n> [!div class=\"nextstepaction\"]\n> [在 Azure 门户中启用适用于虚拟机的 Automanage](quick-create-virtual-machines-portal.md)"

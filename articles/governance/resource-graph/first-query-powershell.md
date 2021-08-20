@@ -1,16 +1,16 @@
 ---
 title: 快速入门：第一个 PowerShell 查询
 description: 本快速入门介绍为 Azure PowerShell 启用 Resource Graph 模块并运行第一个查询的步骤。
-ms.date: 05/11/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
 ms.custom:
 - mode-api
-ms.openlocfilehash: dd620ec63547b0b9fdba41da3cd2dcf6daa9dea0
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 20b595a52b238d701b8ec54bdec99d07e7f57fcb
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750908"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114463426"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 运行首个 Resource Graph 查询
 
@@ -47,7 +47,7 @@ Azure Resource Graph 模块需要以下软件：
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. 验证模块是否已导入并且至少是版本 `0.10.0`：
+1. 验证模块是否已导入并且至少是版本 `0.11.0`：
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
@@ -56,7 +56,7 @@ Azure Resource Graph 模块需要以下软件：
 
 ## <a name="run-your-first-resource-graph-query"></a>运行首个 Resource Graph 查询
 
-将 Azure PowerShell 模块添加到所选环境中后，即可尝试一个简单的 Resource Graph 查询。 该查询返回前五个 Azure 资源，以及每个资源的名称和资源类型 。
+将 Azure PowerShell 模块添加到所选环境中后，即可尝试一个简单的基于租户的 Resource Graph 查询。 该查询返回前五个 Azure 资源，以及每个资源的名称和资源类型 。 若要按[管理组](../management-groups/overview.md)或订阅进行查询，请使用 `-ManagementGroup` 或 `-Subscription` 参数。
 
 1. 使用 `Search-AzGraph` cmdlet 运行首个 Azure Resource Graph 查询：
 
@@ -64,7 +64,7 @@ Azure Resource Graph 模块需要以下软件：
    # Login first with Connect-AzAccount if not using Cloud Shell
 
    # Run Azure Resource Graph query
-   (Search-AzGraph -Query 'Resources | project name, type | limit 5').Data
+   Search-AzGraph -Query 'Resources | project name, type | limit 5'
    ```
 
    > [!NOTE]
@@ -74,7 +74,7 @@ Azure Resource Graph 模块需要以下软件：
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
-   (Search-AzGraph -Query 'Resources | project name, type | limit 5 | order by name asc').Data
+   Search-AzGraph -Query 'Resources | project name, type | limit 5 | order by name asc'
    ```
 
    > [!NOTE]
@@ -84,7 +84,7 @@ Azure Resource Graph 模块需要以下软件：
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
-   (Search-AzGraph -Query 'Resources | project name, type | order by name asc | limit 5').Data
+   Search-AzGraph -Query 'Resources | project name, type | order by name asc | limit 5'
    ```
 
 假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且按 Name 属性排序，但仍限制为前五个结果。

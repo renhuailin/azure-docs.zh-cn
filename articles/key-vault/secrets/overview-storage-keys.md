@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 573e4c9d8db3f07f223826ab648f2ef57e1d9c58
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5a73b98f31fb7c2f8979f977138ca7f836fe5a34
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766310"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221797"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>使用 Key Vault 和 Azure CLI 管理存储帐户密钥
 > [!IMPORTANT]
@@ -66,7 +66,7 @@ az login
 使用 Azure CLI [az role assignment create](/cli/azure/role/assignment) 命令授予 Key Vault 访问你的存储帐户的权限。 为该命令提供以下参数值：
 
 - `--role`：传递“存储帐户密钥操作员服务角色”Azure 角色。 此角色将访问范围限制为你的存储帐户。 对于经典存储帐户，请改为传递“经典存储帐户密钥操作员服务角色”。
-- `--assignee`：传递值“https://vault.azure.net”，它是 Azure 公有云中 Key Vault 的 url。 （对于 Azure 政府云，改用“--asingee-object-id”，具体请参阅[服务主体应用程序 ID](#service-principal-application-id)。）
+- `--assignee`：传递值“https://vault.azure.net”，它是 Azure 公有云中 Key Vault 的 url。 （对于 Azure 政府云，改用“--assignee-object-id”，具体请参阅[服务主体应用程序 ID](#service-principal-application-id)。）
 - `--scope`：传递格式为 `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` 的存储帐户资源 ID。 若要查找订阅 ID，请使用 Azure CLI [az account list](/cli/azure/account?#az_account_list) 命令；若要查找存储帐户名称和存储帐户资源组，请使用 Azure CLI [az storage account list](/cli/azure/storage/account?#az_storage_account_list) 命令。
 
 ```azurecli-interactive

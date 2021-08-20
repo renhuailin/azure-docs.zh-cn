@@ -1,21 +1,21 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: azure-communication-services
 author: lakshmans
 manager: ankita
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 03/11/2021
+ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: 86f26e7fbe96284dee5eb606ede22ae63701f309
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 9e44cc1f631a56d1948c744a1ecb912208bad11e
+ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111430870"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113659573"
 ---
 通过使用通信服务 Python 短信 SDK 发送短信，开始使用 Azure 通信服务。
 
@@ -84,8 +84,7 @@ pip install azure-communication-sms
 # Create the SmsClient object which will be used to send SMS messages
 sms_client = SmsClient.from_connection_string(<connection_string>)
 ```
-为简单起见，我们在本快速入门中使用连接字符串，但在生产环境中，我们建议使用[托管标识](../../../quickstarts/managed-identity.md)，因为它们更安全且更易于管理。
-
+为简单起见，我们在本快速入门中使用连接字符串，但在生产环境中，我们建议使用[服务主体](../../../quickstarts/identity/service-principal.md)。
 
 ## <a name="send-a-11-sms-message"></a>发送 1:1 短信
 

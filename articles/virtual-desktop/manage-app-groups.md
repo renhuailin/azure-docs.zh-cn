@@ -3,15 +3,15 @@ title: 管理 Azure 虚拟桌面门户的应用组 - Azure
 description: 如何使用 Azure 门户管理 Azure 虚拟桌面应用组。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 05/28/2021
+ms.date: 07/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 3c28654f70599a67060a94b8bb93397fc51c527e
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 80a066aab79e3ca6ca541a82fe6b7fe023653a81
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753334"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448783"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>教程：使用 Azure 门户管理应用组
 
@@ -19,6 +19,9 @@ ms.locfileid: "111753334"
 >本教程的内容适用于包含 Azure 资源管理器 Azure 虚拟桌面对象的 Azure 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Azure 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/manage-app-groups-2019.md)。
 
 为新的 Azure 虚拟桌面主机池创建的默认应用组也会发布完整桌面。 此外，可为主机池创建一个或多个 RemoteApp 应用程序组。 请遵循本教程创建 RemoteApp 应用组并发布单个“开始”菜单应用。
+
+>[!NOTE]
+>可以将 MISX 应用动态附加到用户会话，或将应用包添加到自定义 VM 映像，以发布组织的应用。 有关详细信息，请参阅[如何使用 Azure 虚拟桌面托管自定义应用](./remote-app-streaming/custom-apps.md)。
 
 本教程介绍如何执行下列操作：
 
@@ -34,6 +37,8 @@ ms.locfileid: "111753334"
    
     >[!NOTE]
     > 如果要登录 US Gov 门户，请改为转到 [https://portal.azure.us/](https://portal.azure.us/)。
+    >
+    >如果你要访问 Azure 中国门户，请转到 [https://portal.azure.cn/](https://portal.azure.cn/)。
 
 2.  搜索并选择“Azure 虚拟桌面”。
 

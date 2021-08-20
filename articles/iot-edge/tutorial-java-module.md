@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: f5f931ce1aa6c06f151241b6136470d494dbcd48
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 3c3dae7cb64dd6c2e13c77c061c770bd787e2f06
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218747"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113438127"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-using-linux-containers"></a>教程：使用 Linux 容器开发 Java IoT Edge 模块
 
@@ -58,7 +58,7 @@ ms.locfileid: "106218747"
 若要开发以 Java 编写的 IoT Edge 模块，请在开发计算机上安装下述额外的必备组件：
 
 * 适用于 Visual Studio Code 的 [Java 扩展包](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)。
-* [Java SE 开发工具包 11](/azure/developer/java/fundamentals/java-jdk-long-term-support)。请[将 `JAVA_HOME` 环境变量](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)设置为指向 JDK 安装项目。
+* [Java SE 开发工具包 11](/azure/developer/java/fundamentals/java-support-on-azure)。请[将 `JAVA_HOME` 环境变量](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)设置为指向 JDK 安装项目。
 * [Maven](https://maven.apache.org/)
 
    >[!TIP]
@@ -72,7 +72,7 @@ ms.locfileid: "106218747"
 
 创建可以使用你自己的代码进行自定义的 Java 解决方案模板。
 
-1. 在 Visual Studio Code 中，选择“查看” > “命令面板”，以打开 VS Code 命令面板。 
+1. 在 Visual Studio Code 中，选择“查看” > “命令面板”，以打开 VS Code 命令面板。  
 
 2. 在“命令面板”中，输入并运行 Azure IoT Edge：**New IoT Edge solution** 命令。 按命令面板中的提示创建解决方案。
 
@@ -82,7 +82,7 @@ ms.locfileid: "106218747"
    | 提供解决方案名称 | 输入解决方案的描述性名称，或者接受默认的 **EdgeSolution**。 |
    | 选择模块模板 | 选择“Java 模块”。 |
    | 提供模块名称 | 将模块命名为 **JavaModule**。 |
-   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是基于你在上一步中提供的名称预先填充的。 将 localhost:5000 替换为 Azure 容器注册表中的“登录服务器”值。 可以在 Azure 门户的容器注册表的“概述”页中检索登录服务器。 <br><br>最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/javamodule。 |
+   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是基于你在上一步中提供的名称预先填充的。 将 localhost:5000 替换为 Azure 容器注册表中的“登录服务器”值 。 可以在 Azure 门户的容器注册表的“概述”页中检索登录服务器。 <br><br>最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/javamodule。 |
    | 为 groupId 提供值 | 输入组 ID 值或接受默认的 **com.edgemodule**。 |
 
    ![提供 Docker 映像存储库](./media/tutorial-java-module/repository.png)
@@ -106,6 +106,9 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
 1. 在 VS Code 资源管理器中，打开 .env 文件。
 2. 使用从 Azure 容器注册表复制的 **username** 和 **password** 值更新相关字段。
 3. 保存此文件。
+
+>[!NOTE]
+>本教程使用 Azure 容器注册表的管理员登录凭据，这对于开发和测试方案非常方便。 为生产方案做好准备后，建议使用最低权限身份验证选项（如服务主体）。 有关详细信息，请参阅[管理容器注册表的访问权限](production-checklist.md#manage-access-to-your-container-registry)。
 
 ### <a name="select-your-target-architecture"></a>选择目标体系结构
 
@@ -278,7 +281,7 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
 
 1. 在 Visual Studio Code 资源管理器中右键单击 IoT Edge 设备的名称，选择“开始监视内置事件终结点”。
 
-2. 查看抵达 IoT 中心的消息。 消息到达可能需要一段时间。 IoT Edge 设备必须接收其新部署并启动所有模块。 然后，在发送消息之前我们对 JavaModule 代码所做的更改需等到机器温度达到 25 度才会生效。 IoT 中心还会将消息类型“警报”添加到达到该温度阈值的任何消息。 
+2. 查看抵达 IoT 中心的消息。 消息到达可能需要一段时间。 IoT Edge 设备必须接收其新部署并启动所有模块。 然后，在发送消息之前我们对 JavaModule 代码所做的更改需等到机器温度达到 25 度才会生效。 IoT 中心还会将消息类型“警报”添加到达到该温度阈值的任何消息。
 
 ## <a name="edit-the-module-twin"></a>编辑模块孪生
 

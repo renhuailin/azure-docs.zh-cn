@@ -7,15 +7,15 @@ metadata:
   ms.service: databox
   ms.subservice: pod
   ms.topic: article
-  ms.date: 05/11/2021
+  ms.date: 07/21/2021
   ms.author: alkohli
   ms.custom: references_regions
-  ms.openlocfilehash: 85b2abd58f55e75a4b560b4cdbcc792693d1a2a3
-  ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+  ms.openlocfilehash: 47d941b1c6e6ce7b0f383e977f227db65fa86871
+  ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/30/2021
-  ms.locfileid: "113094766"
+  ms.lasthandoff: 07/23/2021
+  ms.locfileid: "114653423"
 title: Azure Data Box：常见问题
 summary: >
   利用 Microsoft Azure Data Box 混合云解决方案，可使用传输设备通过快速、经济和可靠的方式将 TB 量级的数据发送到 Azure。 本常见问题解答文章包含了在 Azure 门户使用 Data Box 时可能遇到的问题及其解答。
@@ -234,6 +234,10 @@ sections:
       我订购了美国东部的 Data Box，但收到的设备是从美国西部位置发货的。 我应该将设备退回到何处？
     answer: >
       我们设法让你尽快收到 Data Box 设备。 我们优先从离你的存储帐户位置最近的数据中心发货，但会从任何有可用库存的 Azure 数据中心发运设备。 你的 Data Box 应退回到发货标签中显示的发货地点。
+  - question: >
+      我需要将 Data Box 运送到波多黎各。 是否有任何特殊要求？
+    answer: >
+      如果需要将设备运送到波多黎各，请发送电子邮件 [adbops@microsoft.com](mailto:adbops@microsoft.com) 了解说明。 你将被要求使用美国地址创建订单，但是通过电子邮件向操作团队提供波多黎各地址。 将设备运送到波多黎各时，UPS 不会增加任何额外运输费用。
   - question: >
       电子墨水显示屏未显示退货发货标签。 我该怎么办？
     answer: "如果电子墨水显示屏未显示退货发货标签，请执行以下步骤：\n- 取下上一次发货留下的旧发货标签和任何便签。\n- 在 Azure 门户中转到订单。 转到“概述”和“下载发货标签”。 有关详细信息，请转到[下载发货标签](data-box-portal-admin.md#download-shipping-label)。\n- 打印发货标签并将其插入附加到设备的透明塑料封套中。 \n- 请确保发货标签清晰可见。 \n"

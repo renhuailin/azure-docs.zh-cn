@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/11/2021
+ms.date: 07/07/2021
 ms.author: alkohli
-ms.openlocfilehash: 38259febaed159217379ba131fb2bffb808e65e7
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: 3c3b2bc20481da45bd9345f7668382521642a074
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109838135"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221275"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>教程：使用 GPU 为 Azure Stack Edge Pro 配置网络
 
@@ -67,12 +67,13 @@ ms.locfileid: "109838135"
 
     配置网络设置时，请记住：
 
-   * 如果你的环境中启用了 DHCP，则会自动配置网络接口。 系统会自动分配 IP 地址、子网、网关和 DNS。
-   * 如果未启用 DHCP，则可以根据需要分配静态 IP。
-   * 可以将网络接口配置为 IPv4。
-   * 在 25 Gbps 接口上，可以将 RDMA（远程直接访问内存）模式设置为 iWarp 或 RoCE（通过聚合以太网的 RDMA）。 如果低延迟是主要要求，且可伸缩性不是重点，请使用 RoCE。 当延迟是关键要求，但易用性和可伸缩性也十分重要时，iWARP 是最佳备选方案。
-   * Azure Stack Edge 不支持网络接口卡 (NIC) 组合或链接聚合。 
-   * 任何端口的序列号都与节点序列号相对应。
+    * 对于网络功能管理器部署，请确保端口 5 和端口 6 已连接。 有关详细信息，请参阅[教程：在 Azure Stack Edge 上部署网络功能（预览版）](../network-function-manager/deploy-functions.md)。
+    * 如果你的环境中启用了 DHCP，则会自动配置网络接口。 系统会自动分配 IP 地址、子网、网关和 DNS。
+    * 如果未启用 DHCP，则可以根据需要分配静态 IP。
+    * 可以将网络接口配置为 IPv4。
+    * 在 25 Gbps 接口上，可以将 RDMA（远程直接访问内存）模式设置为 iWarp 或 RoCE（通过聚合以太网的 RDMA）。 如果低延迟是主要要求，且可伸缩性不是重点，请使用 RoCE。 当延迟是关键要求，但易用性和可伸缩性也十分重要时，iWARP 是最佳备选方案。
+    * Azure Stack Edge 不支持网络接口卡 (NIC) 组合或链接聚合。 
+    * 任何端口的序列号都与节点序列号相对应。
 
     配置设备网络后，页面将更新，如下所示。
 
@@ -110,7 +111,7 @@ ms.locfileid: "109838135"
 1. 分配“Kubernetes 外部服务 IP”。 这些地址也是负载均衡 IP 地址。 这些连续的 IP 地址用于要在 Kubernetes 群集之外公开的服务，你可以根据公开的服务数量指定静态 IP 范围。 
     
     > [!IMPORTANT]
-    > 强烈建议为 Azure Stack Edge Pro 中心服务指定至少 1 个 IP 地址，以访问计算模块。 然后，可以选择为需要从群集外部访问的其他服务/IoT Edge 模块指定其他 IP 地址（每个服务/模块 1 个地址）。 以后可以更新服务 IP 地址。 
+    > 强烈建议为 Azure Stack Edge 中心服务指定至少 1 个 IP 地址，以访问计算模块。 然后，可以选择为需要从群集外部访问的其他服务/IoT Edge 模块指定其他 IP 地址（每个服务/模块 1 个地址）。 以后可以更新服务 IP 地址。 
     
 1. 选择“应用”。
 

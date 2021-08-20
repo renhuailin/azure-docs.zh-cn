@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/28/2020
+ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 3f66da38d3303b47c2a9b6cefeee19af6bf64ec1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ec27f6605d2f6f63f0493bb08a27a5b3af85832
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98725484"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112201783"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Workplace by Facebook 集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "98725484"
 * 在一个中心位置（Azure 门户）管理帐户。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -41,9 +41,9 @@ ms.locfileid: "98725484"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Workplace by Facebook 支持 SP 发起的 SSO
-* Workplace by Facebook 支持实时预配
-* Workplace by Facebook 支持[自动用户预配](workplacebyfacebook-provisioning-tutorial.md)
+* Workplace by Facebook 支持 SP 发起的 SSO。
+* Workplace by Facebook 支持实时预配。
+* Workplace by Facebook 支持[自动用户预配](workplacebyfacebook-provisioning-tutorial.md)。
 * 现在可以为 Workplace by Facebook 移动应用程序配置 Azure AD 以启用 SSO。 本教程在测试环境中配置并测试 Azure AD SSO。
 
 
@@ -108,7 +108,7 @@ ms.locfileid: "98725484"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -139,19 +139,21 @@ ms.locfileid: "98725484"
     > [!NOTE]
     > 作为 SAML 身份验证过程的一部分，Workplace 可使用查询字符串（最大为 2.5 KB）将参数传递给 Azure AD。
 
-1. 在左侧导航面板上，导航到“安全性” > “身份验证”选项卡。
+1. 导航到“管理面板” > “安全” > “身份验证”选项卡。
 
-    ![管理面板](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
+    ![管理面板](./media/workplacebyfacebook-tutorial/security.png)
 
     a. 选中“单一登录(SSO)”选项。
+
+    b. 选择 SSO 作为新用户的默认选项。
     
-    b. 单击“+添加新的 SSO 提供程序”。
+    c. 单击“+添加新的 SSO 提供程序”。
     > [!NOTE]
     > 确保也选中“密码登录”复选框。 管理员在执行证书滚动更新时可能需要使用此选项进行登录，以防止自己被锁定。
 
-1. 在“身份验证”标签页下，选择“单一登录(SSO)”并执行以下步骤：
+1. 在“单一登录 (SSO) 设置”弹出窗口中，执行以下步骤：
 
-    ![“身份验证”标签页](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure02.png)
+    ![“身份验证”标签页](./media/workplacebyfacebook-tutorial/single-sign-on-setup.png)
 
     a. 在 **SSO 提供程序的名称** 中，输入 SSO实例名称，如 Azureadsso。
 
@@ -159,7 +161,7 @@ ms.locfileid: "98725484"
 
     c. 在“SAML 颁发者 URL 文本框”中，粘贴从 Azure 门户复制的“Azure AD 标识符”值 。
 
-    d. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“SAML 证书”文本框 。
+    d. 打开从 Azure 门户下载到记事本中的“证书文件(Base64)”，将内容复制到剪贴板，然后粘贴到“SAML 证书”文本框。
 
     e. 复制实例的“受众 URL”，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符(实体 ID)”文本框中。
 

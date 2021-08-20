@@ -13,12 +13,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: urmilano, danil, nnikolic
   ms.date: 09/21/2020
-  ms.openlocfilehash: 92aa04c2df2b23165afdef39ae39ee95922f19d2
-  ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+  ms.openlocfilehash: 9e908764ce860c045403048623d0a50b7b5d738b
+  ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/16/2021
-  ms.locfileid: "114295114"
+  ms.lasthandoff: 07/26/2021
+  ms.locfileid: "114690279"
 title: Azure SQL 托管实例常见问题解答 (FAQ)
 summary: >
   [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ sections:
     answer: "### <a name=\"can-a-managed-instance-have-the-same-name-as-a-sql-server-on-premises-instance\"></a>托管实例是否可与 SQL Server本地实例同名？\n\n不支持更改托管实例名称。\n\n### <a name=\"can-i-change-dns-zone-prefix\"></a>是否可以更改 DNS 区域前缀？\n\n是的，可更改托管实例的默认 DNS 区域 .database.windows.net。 \n\n若要使用其他 DNS 区域而不是默认区域（例如“.contoso.com”），请执行以下操作： \n- 使用 CliConfig 定义别名。 该工具只是一个注册表设置包装器，因此也可以使用组策略或脚本完成此操作。\n- 将 CNAME 与 TrustServerCertificate=true 选项一起使用 。\n"
   - question: >
       迁移选项
-    answer: "### <a name=\"how-can-i-migrate-from-azure-sql-database-single-or-elastic-pool-to-sql-managed-instance\"></a>如何从 Azure SQL 数据库单一池或弹性池迁移到 SQL 托管实例？\n\n托管实例根据计算和存储大小提供与其他 Azure SQL 数据库部署选项相同的性能级别。 若要在单一实例上合并数据，或者只是需要一种仅在托管实例中受支持的功能，可以使用导出/导入 (BACPAC) 功能来迁移数据。 下面是将 SQL 数据库迁移到 SQL 托管实例时可考虑的其他方法： \n- 使用[外部数据源](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-129-using-data-source-external-from-azure-sql/ba-p/1443210)\n- 使用 [SQLPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182)\n- 使用 [BCP](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7)\n\n### <a name=\"how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database\"></a>如何将实例数据库迁移到单个 Azure SQL 数据库？\n\n一种做法是[将数据库导出到 BACPAC](../database/database-export.md)，然后[导入 BACPAC 文件](../database/database-import.md)。 如果数据库小于 100 GB，则建议使用此方法。\n\n如果数据库中的所有表具有主键，并且数据库中没有内存中 OLTP 对象，则可以使用[事务复制](replication-two-instances-and-sql-server-configure-tutorial.md)。\n\n由于托管实例的数据库版本高于 SQL Server，因此无法将从托管实例创建的本机 COPY_ONLY 备份还原到 SQL Server。 有关更多详细信息，请参阅[仅复制备份](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15)。\n\n### <a name=\"how-can-i-migrate-my-sql-server-instance-to-sql-managed-instance\"></a>如何将 SQL Server 实例迁移到 SQL 托管实例？\n\n若要迁移 SQL Server 实例，请参阅[将 SQL Server 实例迁移到 Azure SQL 托管实例](migrate-to-instance-from-sql-server.md)。\n\n### <a name=\"how-can-i-migrate-from-other-platforms-to-sql-managed-instance\"></a>如何从其他平台迁移到 SQL 托管实例？\n\n有关从其他平台迁移的迁移信息，请参阅 [Azure 数据库迁移指南](https://datamigration.microsoft.com/)。\n"
+    answer: "### <a name=\"how-can-i-migrate-from-azure-sql-database-single-or-elastic-pool-to-sql-managed-instance\"></a>如何从 Azure SQL 数据库单一池或弹性池迁移到 SQL 托管实例？\n\n托管实例根据计算和存储大小提供与其他 Azure SQL 数据库部署选项相同的性能级别。 若要在单一实例上合并数据，或者只是需要一种仅在托管实例中受支持的功能，可以使用导出/导入 (BACPAC) 功能来迁移数据。 下面是将 SQL 数据库迁移到 SQL 托管实例时可考虑的其他方法： \n- 使用[外部数据源](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-129-using-data-source-external-from-azure-sql/ba-p/1443210)\n- 使用 [SQLPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182)\n- 使用 [BCP](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7)\n\n### <a name=\"how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database\"></a>如何将实例数据库迁移到单个 Azure SQL 数据库？\n\n一种做法是[将数据库导出到 BACPAC](../database/database-export.md)，然后[导入 BACPAC 文件](../database/database-import.md)。 如果数据库小于 100 GB，则建议使用此方法。\n\n如果数据库中的所有表具有主键，并且数据库中没有内存中 OLTP 对象，则可以使用[事务复制](replication-two-instances-and-sql-server-configure-tutorial.md)。\n\n由于托管实例的数据库版本高于 SQL Server，因此无法将从托管实例创建的本机 COPY_ONLY 备份还原到 SQL Server。 有关更多详细信息，请参阅[仅复制备份](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15)。\n\n### <a name=\"how-can-i-migrate-my-sql-server-instance-to-sql-managed-instance\"></a>如何将 SQL Server 实例迁移到 SQL 托管实例？\n\n若要迁移 SQL Server 实例，请参阅[将 SQL Server 迁移到 Azure SQL 托管实例的指南](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md)。\n\n### <a name=\"how-can-i-migrate-from-other-platforms-to-sql-managed-instance\"></a>如何从其他平台迁移到 SQL 托管实例？\n\n有关从其他平台迁移的迁移信息，请参阅 [Azure 数据库迁移指南](https://datamigration.microsoft.com/)。\n"
   - question: "切换硬件代系 \n"
     answer: >
       ### <a name="can-i-switch-my-managed-instance-hardware-generation-between-gen-4-and-gen-5-online"></a>能否在第 4 代和第 5 代托管实例硬件代系之间联机切换？
@@ -176,7 +176,7 @@ sections:
       ### <a name="is-native-restore-from-bak-files-to-managed-instance-supported"></a>是否支持本机还原（从 .bak 文件）到托管实例？
 
 
-      是的，该功能受支持，可用于 SQL Server 2005 以上版本。  若要使用本机还原，请将 .bak 文件上传到 Azure blob 存储并执行 T-SQL 命令。 有关更多详细信息，请参阅[从 URL本机还原](./migrate-to-instance-from-sql-server.md#native-restore-from-url)。
+      是的，该功能受支持，可用于 SQL Server 2005 以上版本。  若要使用本机还原，请将 .bak 文件上传到 Azure blob 存储并执行 T-SQL 命令。 有关更多详细信息，请参阅[从 URL本机还原](../migration-guides/managed-instance/sql-server-to-managed-instance-guide.md)。
   - question: >
       业务连续性
     answer: >

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/16/2020
 ms.author: jejiang
 ms.reviewer: jrasnick
-ms.openlocfilehash: f0af3b571b1a6d793668c33d0c76e19a3d0c9e62
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 827f1a4cd518d33ea67749482349cad9d4540c82
+ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109716053"
+ms.lasthandoff: 06/15/2021
+ms.locfileid: "112117386"
 ---
 # <a name="quickstartconnect-an-azure-purview-account-to-a-synapse-workspace"></a>快速入门： 将 Azure Purview 帐户连接到 Synapse 工作区 
 
@@ -22,7 +22,7 @@ ms.locfileid: "109716053"
 
 可以在 Synapse 中执行以下任务： 
 - 使用顶部搜索框根据关键字找到 Purview 资产 
-- 根据元数据、世系、注释了解数据 
+- 根据元数据、[世系](../../purview/catalog-lineage-user-guide.md)、注释了解数据 
 - 将这些数据连接到具有链接服务或集成数据集的工作区 
 - 使用 Synapse Apache Spark、Synapse SQL 和数据流分析这些数据集 
 
@@ -50,3 +50,9 @@ ms.locfileid: "109716053"
 [在 Azure Purview 中注册并扫描 Azure Synapse 资产](../../purview/register-scan-azure-synapse-analytics.md)
 
 [使用 Azure Purview 发现、连接和浏览 Synapse 中的数据](how-to-discover-connect-analyze-azure-purview.md)   
+
+[连接 Azure 数据工厂和 Azure Purview](../../purview/how-to-link-azure-data-factory.md)
+
+[连接 Azure Data Share 和 Azure Purview](../../purview/how-to-link-azure-data-share.md)
+
+[从 Power BI 获取世系再转至 Azure Purview](../../purview/how-to-lineage-powerbi.md)

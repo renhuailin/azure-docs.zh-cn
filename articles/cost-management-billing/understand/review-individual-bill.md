@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/17/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 013a59c703d5275278e905314357f32acc211f93
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a8eb9ec2b71495011dfa7ebe9dbf1dcf8cd5d19e
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110067755"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114449410"
 ---
 # <a name="tutorial-review-your-individual-azure-subscription-bill"></a>教程：查看单独的 Azure 订阅账单
 
@@ -103,6 +103,8 @@ ms.locfileid: "110067755"
 ![发票使用费](./media/review-individual-bill/invoice-usage-charges.png)
 
 在 CSV 使用情况文件中，按发票上显示的相应资源的 *MeterName* 进行筛选。 然后，对列中项的“成本”值求和。 以下示例重点介绍与发票上的同一行项对应的计量名称（P10 磁盘）。
+
+若要核对预留购买费用，在 CSV 使用情况文件中按 ChargeType“购买”进行筛选，它将显示该月的所有预留购买费用。 通过查看使用情况文件中的 MeterName 和 MeterSubCategory，将这些费用分别与发票中的“资源”和“类型”进行比较。
 
 ![MeterName 的使用情况文件求和值](./media/review-individual-bill/usage-file-usage-charge-resource.png)
 

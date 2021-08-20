@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: c36c2fd86252f41af0e722445dca78d870c255e2
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9a1c0494d14c6bc5dad43e73fbf9a55cc8985445
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111969898"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112290010"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>教程：使用已启用 Azure Arc 的 Kubernetes 群集通过 GitOps 实现 CI/CD
 
@@ -180,7 +180,8 @@ kubectl create secret docker-registry <secret-name> \
 | AZURE_VOTE_IMAGE_REPO | Azure 投票应用存储库的完整路径，例如 azurearctest.azurecr.io/azvote |
 | ENVIRONMENT_NAME | Dev |
 | MANIFESTS_BRANCH | `master` |
-| MANIFESTS_REPO | GitOps 存储库的 Git 连接字符串 |
+| MANIFESTS_FOLDER | `azure-vote-manifests` |
+| MANIFESTS_REPO | `azure-cicd-demo-gitops` |
 | ORGANIZATION_NAME | Azure DevOps 组织的名称 |
 | PROJECT_NAME | Azure DevOps 中 GitOps 项目的名称 |
 | REPO_URL | GitOps 存储库的完整 URL |

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 04/05/2021
 ms.author: duau
-ms.openlocfilehash: 80a78e7538dfe5a0cb87215b1f46cd59f5ea366b
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 79ff9d8464aa15cac8928a9f5ed4d8863f27400d
+ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690749"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113567396"
 ---
 # <a name="quickstart-create-an-azure-route-server-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure 路由服务器
 
@@ -23,7 +23,7 @@ ms.locfileid: "110690749"
 
 如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-route-server%2Fazuredeploy.json)
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.network%2Froute-server%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,11 +31,11 @@ ms.locfileid: "110690749"
 
 ## <a name="review-the-template"></a>查看模板
 
-本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-route-server)。
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/route-server)。
 
 在本快速入门中，你要将 Azure 路由服务器部署到新的或现有的虚拟网络中。 系统创建一个名为 `RouteServerSubnet` 的专用子网，用于托管路由服务器。 路由服务器还将配置为使用对等 ASN 和对等 IP 以建立 BGP 对等互连。
 
-:::code language="json" source="~/quickstart-templates/101-route-server/azuredeploy.json" range="001-145" highlight="105-142":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.network/route-server/azuredeploy.json" range="001-145" highlight="105-142":::
 
 该模板中已定义了多个 Azure 资源：
 
@@ -55,7 +55,7 @@ ms.locfileid: "110690749"
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-route-server/azuredeploy.json"
+    $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.network/route-server/azuredeploy.json"
 
     $resourceGroupName = "${projectName}rg"
 
@@ -83,7 +83,7 @@ ms.locfileid: "110690749"
 
 ## <a name="validate-the-deployment"></a>验证部署
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 从左侧窗格中选择“资源组”。
 

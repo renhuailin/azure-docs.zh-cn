@@ -2,14 +2,14 @@
 title: 教程 - 快速容器映像生成
 description: 本教程介绍如何使用 Azure 容器注册表任务（ACR 任务）在 Azure 中生成 Docker 容器映像，然后将其部署到 Azure 容器实例。
 ms.topic: tutorial
-ms.date: 11/24/2020
+ms.date: 07/20/2021
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 282e6ea56835fba679510a29af936c1fbcb3ead2
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: be722812c5d3991da6bbc2458770798ded2039d4
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775342"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114448890"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教程：使用 Azure 容器注册表任务在云中生成并部署容器映像
 
@@ -74,7 +74,7 @@ cd acr-build-helloworld-node
 ACR_NAME=<registry-name>
 ```
 
-填充容器注册表环境变量后，现在应能够复制并粘贴本教程中的其余命令，并且无需编辑任何值。 执行以下命令来创建资源组和容器注册表：
+填充容器注册表环境变量后，现在应能够复制并粘贴本教程中的其余命令，并且无需编辑任何值。 执行以下命令来创建资源组和容器注册表。
 
 ```azurecli
 RES_GROUP=$ACR_NAME # Resource Group name
@@ -83,7 +83,9 @@ az group create --resource-group $RES_GROUP --location eastus
 az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --location eastus
 ```
 
-创建注册表后，使用 ACR 任务从示例代码生成容器映像。 执行 [az acr build][az-acr-build] 命令以执行快速任务：
+创建注册表后，使用 ACR 任务从示例代码生成容器映像。 执行 [az acr build][az-acr-build] 命令以执行快速任务。
+
+[!INCLUDE [pull-image-dockerfile-include](../../includes/pull-image-dockerfile-include.md)]
 
 ```azurecli
 az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
@@ -170,7 +172,7 @@ ACR 任务默认将成功生成的映像自动推送到注册表，这样即可�
 
 所有生产方案都应使用[服务主体][service-principal-auth]访问 Azure 容器注册表。 使用服务主体可以提供对容器映像的基于角色的访问控制。 例如，可将服务主体配置为拥有注册表的仅限提取的访问权限。
 
-#### <a name="create-a-key-vault"></a>创建密钥保管库
+#### <a name="create-a-key-vault"></a>创建 key vault
 
 如果 [Azure Key Vault](../key-vault/index.yml) 中没有保管库，请在 Azure CLI 中使用以下命令创建一个保管库。
 
@@ -184,7 +186,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 现在需要创建服务主体，并将其凭据存储在 Key Vault 中。
 
-请使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令创建服务主体，使用 [az keyvault secret set][az-keyvault-secret-set] 将服务主体的 **密码** 存储在保管库中：
+请使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令创建服务主体，使用 [az keyvault secret set][az-keyvault-secret-set] 将服务主体的密码存储在保管库中。 对于以下命令，需要 Azure CLI 版本 2.25.0 或更高版本：
 
 ```azurecli
 # Create service principal, store its password in AKV (the registry *password*)
@@ -208,7 +210,7 @@ az keyvault secret set \
 az keyvault secret set \
     --vault-name $AKV_NAME \
     --name $ACR_NAME-pull-usr \
-    --value $(az ad sp show --id http://$ACR_NAME-pull --query appId --output tsv)
+    --value $(az ad sp list --display-name $ACR_NAME-pull --query [].appId --output tsv)
 ```
 
 现已创建 Azure Key Vault 并在其中存储了两个机密：

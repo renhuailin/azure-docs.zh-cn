@@ -1,15 +1,15 @@
 ---
 author: dominicbetts
 ms.author: dobett
-ms.service: iot-pnp
+ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 4308dd2b63b33604af83b360e5c1c0f02a3dec27
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1716bafa93359c61781d9981bffabe9ba46067dc
+ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95487779"
+ms.lasthandoff: 07/18/2021
+ms.locfileid: "114403571"
 ---
 IoT 即插即用简化了 IoT 的使用，使你无需了解底层设备实现，就能与某个设备的功能交互。 本快速入门介绍如何使用 C# 来连接和控制已与解决方案连接的 IoT 即插即用设备。
 
@@ -24,7 +24,7 @@ IoT 即插即用简化了 IoT 的使用，使你无需了解底层设备实现�
 
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>使用示例代码克隆 SDK 存储库
 
-如果已完成[快速入门：将 Windows 上运行的示例 IoT 即插即用设备应用程序连接到 IoT 中心 (C#)](../articles/iot-pnp/quickstart-connect-device.md)，则已克隆了存储库。
+如果你完成了[教程：将 Windows 上运行的示例 IoT 即插即用设备应用程序连接到 IoT 中心 (C#)](../articles/iot-develop/tutorial-connect-device.md)，则已经克隆了该存储库。
 
 为 C# GitHub 存储库克隆 Azure IoT 示例中的示例。 在所选文件夹中打开命令提示符。 运行以下命令，以克隆[适用于 .NET 的 Microsoft Azure IoT 示例](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub 存储库：
 
@@ -44,9 +44,9 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
-    | IOTHUB_DEVICE_DPS_ID_SCOPE | 在完成[设置环境](../articles/iot-pnp/set-up-environment.md)时记下的值 |
+    | IOTHUB_DEVICE_DPS_ID_SCOPE | 在完成[设置环境](../articles/iot-develop/set-up-environment.md)时记下的值 |
     | IOTHUB_DEVICE_DPS_DEVICE_ID | my-pnp-device |
-    | IOTHUB_DEVICE_DPS_DEVICE_KEY | 在完成[设置环境](../articles/iot-pnp/set-up-environment.md)时记下的值 |
+    | IOTHUB_DEVICE_DPS_DEVICE_KEY | 在完成[设置环境](../articles/iot-develop/set-up-environment.md)时记下的值 |
 
 1. 现在可以在 Visual Studio 中生成示例，并在调试模式下运行它。
 
@@ -54,7 +54,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
 
 ## <a name="run-the-sample-solution"></a>运行示例解决方案
 
-在[为 IoT 即插即用快速入门和教程设置环境](../articles/iot-pnp/set-up-environment.md)中，已创建了两个环境变量以将示例配置为连接到 IoT 中心和设备：
+在[为 IoT 即插即用快速入门和教程设置环境](../articles/iot-develop/set-up-environment.md)中，已创建了两个环境变量以将示例配置为连接到 IoT 中心和设备：
 
 * **IOTHUB_CONNECTION_STRING**：之前记下的 IoT 中心连接字符串。
 * **IOTHUB_DEVICE_ID**：`"my-pnp-device"`。
@@ -68,7 +68,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     | 名称 | 值 |
     | ---- | ----- |
     | IOTHUB_DEVICE_ID | my-pnp-device |
-    | IOTHUB_CONNECTION_STRING | 在完成[设置环境](../articles/iot-pnp/set-up-environment.md)时记下的值 |
+    | IOTHUB_CONNECTION_STRING | 在完成[设置环境](../articles/iot-develop/set-up-environment.md)时记下的值 |
 
 1. 现在可以在 Visual Studio 中生成示例，并在调试模式下运行它。
 
@@ -83,7 +83,7 @@ s_logger.LogDebug($"Model Id of this Twin is: {twin.ModelId}");
 ```
 
 > [!NOTE]
-> 此示例使用 IoT 中心服务客户端中的 Microsoft.Azure.Devices.Client 命名空间 。 若要了解有关 API（包括数字孪生 API）的详细信息，请参阅[服务开发人员指南](../articles/iot-pnp/concepts-developer-guide-service.md)。
+> 此示例使用 IoT 中心服务客户端中的 Microsoft.Azure.Devices.Client 命名空间 。 若要了解有关 API（包括数字孪生 API）的详细信息，请参阅[服务开发人员指南](../articles/iot-develop/concepts-developer-guide-service.md)。
 
 此代码生成以下输出：
 

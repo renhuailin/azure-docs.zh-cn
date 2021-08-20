@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 7173c625ef56ea9e4d4d43d90adc18ba4fe167ab
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 320ef1b523615894910d277fcc155104b4b297bc
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113109280"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113766547"
 ---
 # <a name="calling-sdk-overview"></a>呼叫 SDK 概述
 
@@ -108,10 +108,10 @@ ms.locfileid: "113109280"
 
 下表显示了当前可用的一组受支持的浏览器。 除非另有说明，否则我们支持浏览器最新的三个版本。
 
-| 平台     | Chrome | Safari | Microsoft Microsoft Edge (Chromium) | 注释                                                                                                                                                                                                       |
+| 平台     | Chrome | Safari | Microsoft Microsoft Edge (Chromium) | 说明                                                                                                                                                                                                       |
 | ------------ | ------ | ------ | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Android      | ✔️      | ❌      | ❌               | 不支持传出屏幕共享。                                                                                                                                                                   |
-| iOS          | ❌      | ✔️      | ❌               | Safari 上的一个 iOS 应用无法枚举/选择麦克风和扬声器设备（例如，蓝牙）；这是 OS 的限制，且始终只有一个设备。 不支持传出屏幕共享。 |
+| iOS          | ❌      | ✔️      | ❌               | [Safari 上的 iOS 应用无法枚举/选择麦克风和扬声器设备](https://docs.microsoft.com/azure/communication-services/concepts/known-issues#enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados)（例如，蓝牙）；这是 OS 的限制，且始终只有一个设备，OS 控制默认设备选择。 不支持传出屏幕共享。 |
 | macOS        | ✔️      | ✔️      | ❌               | Safari 14+/macOS 11+ 需要传出视频支持。                                                                                                                                                     |
 | Windows      | ✔️      | ❌      | ✔️               |                                                                                                                                                                                                             |
 | Ubuntu/Linux | ✔️      | ❌      | ❌               |                                                                                                                                                                                                             |

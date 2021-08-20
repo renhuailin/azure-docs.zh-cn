@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 06/07/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29fc4028308d2d1fd9a23aa37d635f6b9fb0e68c
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 7fb3dcb07b8b868dda7bfef587b930765c4f661e
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111570610"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112199231"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技术和功能概述
 
@@ -28,14 +28,14 @@ ms.locfileid: "111570610"
 在 Azure AD B2C 租户中使用的主要资源包括：
 
 * **目录** - Azure AD B2C 在目录中存储用户的凭据、个人资料数据和应用程序注册。
-* **应用程序注册** - 将 Web、移动和本机应用程序注册到 Azure AD B2C 以启用标识管理。 此外，应用程序注册还包括要使用 Azure AD B2C 保护的 API。
-* **用户流** 和 **自定义策略** - 应用程序的内置标识体验（用户流）和完全可自定义的标识体验（自定义策略）。
-  * 使用用户流可以快速配置和启用常见标识任务，例如注册、登录和配置文件编辑。
-  * 对于组织、客户、员工、合作伙伴和公民独有的复杂标识工作流，请使用自定义策略。
-* **标识提供者** - 以下对象的联合设置：
-  * 要在应用程序中支持的社交标识提供者，例如 Facebook、LinkedIn 或 Twitter。
-  * 支持 OAuth 2.0、OpenID Connect 等标准标识协议的外部标识提供者。
-  * 可让用户使用用户名（或者电子邮件地址或其他 ID）和密码注册和登录的本地帐户。
+* 应用程序注册 - 将 Web、移动和本机应用程序注册到 Azure AD B2C 以启用标识管理。 还可以注册你想要使用 Azure AD B2C 保护的任何 API。
+* 用户流和自定义策略 - 使用内置的用户流和完全可配置的自定义策略为应用程序创建标识体验 ：
+  * 用户流可帮助快速启用注册、登录和配置文件编辑等常见标识任务。
+  * 自定义策略可让你构建对于组织、客户、员工、合作伙伴和公民独有的复杂标识工作流。
+* 登录选项 - Azure AD B2C 为应用程序的用户提供各种[注册和登录选项](sign-in-options.md)：
+  * 用户名、电子邮件和电话登录 - 配置 Azure AD B2C 本地帐户以允许使用用户名、电子邮件地址、电话号码或多种方法的组合进行注册和登录。
+  * 社交标识提供程序 - 与社交提供程序（如 Facebook、LinkedIn或 Twitter）联合。
+  * 外部标识提供者 - 与 OAuth 2.0、OpenID Connect 等标准标识协议联合。
 * **密钥** - 添加和管理用于签名和验证令牌、客户端密码、证书和密码的加密密钥。
 
 Azure AD B2C 租户是开始使用 Azure AD B2C 之前必须先创建的第一个资源。 了解如何：
@@ -72,7 +72,7 @@ Azure AD B2C 定义多种类型的用户帐户。 Azure Active Directory、Azure
 
 Azure AD B2C 提供了用户可以用于对用户进行身份验证的各种方式。 用户可以使用用户名和密码、电话验证（也称为无密码身份验证）登录本地帐户。 在默认情况下，本地帐户标识提供者设置中会启用电子邮件注册。
 
-有关详细信息，请参阅[设置本地帐户标识提供者](identity-provider-local.md)。
+详细了解[登录选项](sign-in-options.md)或如何[设置本地帐户标识提供程序](identity-provider-local.md)。
 
 ## <a name="user-profile-attributes"></a>用户配置文件属性
 

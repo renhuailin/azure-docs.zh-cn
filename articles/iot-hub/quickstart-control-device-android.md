@@ -1,5 +1,5 @@
 ---
-title: 快速入门 - 从 Azure IoT 中心控制设备快速入门 (Android) | Microsoft Docs
+title: 从 Azure IoT 中心控制设备 (Android) | Microsoft Docs
 description: 本快速入门会运行两个示例 Java 应用程序。 一个应用程序为服务应用程序，可远程控制连接到中心的设备。 另一个应用程序在物理或模拟设备上运行，该设备连接到可以进行远程控制的中心。
 author: wesmc7777
 manager: philmea
@@ -14,16 +14,14 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 5946220a688206a35d0d68cd4efd4c356d27d7ee
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 9225c53d4271622b0276dadb1d0a526199602d62
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868530"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114727904"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>快速入门：控制连接到 IoT 中心的设备 (Android)
-
-[!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
+# <a name="control-a-device-connected-to-an-iot-hub-android"></a>控制连接到 IoT 中心的设备 (Android)
 
 在本快速入门中，会使用直接方法来控制连接到 Azure IoT 中心的模拟设备。 IoT 中心是一项 Azure 服务，使你可以从云管理 IoT 设备，并将大量设备遥测引入云进行存储或处理。 可使用直接方法远程更改连接到 IoT 中心的设备的行为。 本快速入门使用两个应用程序：一个是模拟设备应用程序，用于响应从后端服务应用程序调用的直接方法；另一个是服务应用程序，用于在 Android 设备上调用直接方法。
 
@@ -47,13 +45,13 @@ ms.locfileid: "107868530"
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-如果已完成上一[快速入门：将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-android.md)，则可跳过此步骤，使用已创建的 IoT 中心。
+如果已完成上一[快速入门：将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md)，则可跳过此步骤，使用已创建的 IoT 中心。
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>注册设备
 
-如果已完成上一[快速入门：将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-android.md)，则可跳过此步骤，使用在上一快速入门中注册的设备。
+如果已完成上一[快速入门：将遥测数据从设备发送到 IoT 中心](../iot-develop/quickstart-send-telemetry-iot-hub.md)，则可跳过此步骤，使用在上一快速入门中注册的设备。
 
 必须先将设备注册到 IoT 中心，然后该设备才能进行连接。 在本快速入门中，将使用 Azure Cloud Shell 来注册模拟设备。
 

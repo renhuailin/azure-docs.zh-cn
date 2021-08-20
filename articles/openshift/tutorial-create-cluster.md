@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: dda4fc6a80bbe07977f8d2a5ffcbea895a4e1fe6
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 219ff986e88bca31912cfe8be72e9dba179b9236
+ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771832"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112289560"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教程：创建 Azure Red Hat OpenShift 4 群集
 
@@ -26,6 +26,15 @@ ms.locfileid: "107771832"
 如果选择在本地安装并使用 CLI，本教程要求运行 Azure CLI 2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 Azure Red Hat OpenShift 至少需要 40 个核心才能创建和运行 OpenShift 群集。 新 Azure 订阅的默认 Azure 资源配额不满足此要求。 若要请求提高资源上限，请参阅[标准配额：按 VM 系列提高上限](../azure-portal/supportability/per-vm-quota-requests.md)中所述。
+
+* 例如，若要查看最小的受支持虚拟机系列 SKU“标准 DSv3”的当前订阅配额，请运行以下代码：
+
+    ```azurecli-interactive
+    LOCATION=eastus
+    az vm list-usage -l $LOCATION \
+    --query "[?contains(name.value, 'standardDSv3Family')]" \
+    -o table
+    ```
 
 ARO 拉取机密不会改变 ARO 的 RH OpenShift 许可证的成本。
 

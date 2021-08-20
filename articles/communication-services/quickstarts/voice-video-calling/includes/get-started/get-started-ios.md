@@ -6,17 +6,18 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 27d1271450715babeb94bfe929e54500c59aa664
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: de2e9fd9cb44b855dbc1db8d1d355be092d6c83e
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560781"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112535657"
 ---
 本快速入门介绍如何使用适用于 iOS 的 Azure 通信服务通话 SDK 开始通话。
 
-> [!NOTE]
-> 在 [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/Add%20Voice%20Calling) 上查找此快速入门的最终代码
+## <a name="sample-code"></a>代码示例
+
+可以从 [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/Add%20Voice%20Calling) 下载示例应用。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -128,7 +129,11 @@ struct ContentView: View {
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-通过用户访问令牌初始化 `CallAgent` 实例，这使我们可以发出和接收呼叫。 将以下代码添加到 ContentView.swift 中的 `onAppear` 回调：
+通过用户访问令牌初始化 `CallAgent` 实例，这使我们可以发出和接收呼叫。 
+
+在以下代码中，需要将 `<USER ACCESS TOKEN>` 替换为资源的有效用户访问令牌。 如果还没有可用的令牌，请参阅[用户访问令牌](../../../access-tokens.md)文档。
+
+将以下代码添加到 ContentView.swift 中的 `onAppear` 回调：
 
 ```swift
 var userCredential: CommunicationTokenCredential?
@@ -154,7 +159,7 @@ self.callClient?.createCallAgent(userCredential: userCredential!) { (agent, erro
 }
 ```
 
-需要将 `<USER ACCESS TOKEN>` 替换为资源的有效用户访问令牌。 如果还没有可用的令牌，请参阅[用户访问令牌](../../../access-tokens.md)文档。
+
 
 ## <a name="start-a-call"></a>开始呼叫
 
@@ -207,7 +212,3 @@ func endCall()
 
 > [!NOTE]
 > 首次发出呼叫时，系统将提示你提供麦克风访问权限。 在生产应用程序中，应使用 `AVAudioSession` API [检查权限状态](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources)，并在未授予权限时正常更新应用程序的行为。
-
-## <a name="sample-code"></a>代码示例
-
-可以从 [GitHub](https://github.com/Azure-Samples/communication-services-ios-quickstarts/tree/main/Add%20Voice%20Calling) 下载示例应用

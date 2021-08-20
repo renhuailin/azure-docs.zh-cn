@@ -1,6 +1,6 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 iProva 集成 | Microsoft Docs
-description: 了解如何在 Azure Active Directory 与 iProva 之间配置单一登录。
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 Zenya 集成 | Microsoft Docs
+description: 了解如何在 Azure Active Directory 和 Zenya 之间配置单一登录。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,69 +9,72 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/17/2021
+ms.date: 06/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 8a59e7be93481b8e5da9cc46e473e4a68e8f8e97
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 71a2ad9d9a9b3c4f8c2be23859782cdb7a38e13f
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463983"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112464856"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iprova"></a>教程：Azure Active Directory 单一登录 (SSO) 与 iProva 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zenya"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Zenya 集成
 
-本教程介绍如何将 iProva 与 Azure Active Directory (Azure AD) 集成。 将 iProva 与 Azure AD 集成后，可以：
+本教程介绍如何将 Zenya 与 Azure Active Directory (Azure AD) 集成。 将 Zenya 与 Azure AD 集成后，可以：
 
-* 在 Azure AD 中控制谁有权访问 iProva。
-* 让用户使用其 Azure AD 帐户自动登录到 iProva。
+* 在 Azure AD 中控制谁有权访问 Zenya。
+* 让用户使用其 Azure AD 帐户自动登录到 Zenya。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-* 启用了单一登录 (SSO) 的 iProva 订阅。
+* 已启用 Zenya 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* iProva 支持 SP 发起的 SSO。
+* Zenya 支持 SP 发起的 SSO。
 
-## <a name="add-iprova-from-the-gallery"></a>从库中添加 iProva
+## <a name="add-zenya-from-the-gallery"></a>从库中添加 Zenya
 
-若要配置 iProva 与 Azure AD 的集成，需要从库中将 iProva 添加到托管 SaaS 应用列表。
+若要配置 Zenya 与 Azure AD 的集成，需要从库中将 Zenya 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 Azure 门户。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
 1. 导航到“企业应用程序”，选择“所有应用程序”   。
-1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分中，在搜索框中键入“iProva” 。
-1. 在结果面板中选择“iProva”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
+1. 若要添加新的应用程序，请选择“新建应用程序”。
+1. 在“从库中添加”部分的搜索框中，键入“Zenya” 。
+1. 从结果面板中选择“Zenya”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-sso-for-iprova"></a>配置并测试 iProva 的 Azure AD SSO
+## <a name="configure-and-test-azure-ad-sso-for-zenya"></a>配置并测试 Zenya 的 Azure AD SSO
 
-使用名为 **B.Simon** 的测试用户配置并测试 iProva 的 Azure AD SSO。 若要使 SSO 正常工作，需要在 Azure AD 用户与 iProva 中的相关用户之间建立链接关系。
+使用名为 B.Simon 的测试用户配置并测试 Zenya 的 Azure AD SSO。 若要使 SSO 正常工作，需要在 Azure AD 用户与 Zenya 中的相关用户之间建立关联。
 
-若要配置并测试 iProva 的 Azure AD SSO，请执行以下步骤：
+若要配置并测试 Zenya 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
     1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
     1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
-1. [配置 iProva SSO](#configure-iprova-sso) - 在应用程序端配置单一登录设置。
-    1. **[创建 iProva 测试用户](#create-iprova-test-user)** - 在 iProva 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. [配置 Zenya SSO](#configure-zenya-sso) - 在应用程序端配置单一登录设置。
+    1. [创建 Zenya 测试用户](#create-zenya-test-user) - 在 Zenya 中创建 B.Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-## <a name="retrieve-configuration-information-from-iprova"></a>从 iProva 检索配置信息
+## <a name="retrieve-configuration-information-from-zenya"></a>从 Zenya 检索配置信息
 
-在本部分，我们将从 iProva 检索信息以配置 Azure AD 单一登录。
+在本部分，你将从 Zenya 检索信息以配置 Azure AD 单一登录。
 
-1. 打开 Web 浏览器并使用以下 URL 模式转到 iProva 中的“SAML2 信息”页：
+1. 打开 Web 浏览器，并使用以下 URL 模式转到 Zenya 中的“SAML2 信息”页：
     
-     `https://<SUBDOMAIN>.iprova.nl/saml2info` `https://<SUBDOMAIN>.iprova.be/saml2info` 
+     `https://<SUBDOMAIN>.zenya.work/saml2info`   
+     `https://<SUBDOMAIN>.iprova.nl/saml2info`  
+     `https://<SUBDOMAIN>.iprova.be/saml2info`  
+     `https://<SUBDOMAIN>.iprova.eu/saml2info` 
 
-    ![查看 iProva SAML2 信息页](media/iprova-tutorial/information.png)
+    ![查看 Zenya 的“SAML2 信息”页](media/iprova-tutorial/information.png)
 
 1. 在另一个浏览器选项卡中继续执行后续步骤时，保持浏览器选项卡处于打开状态。
 
@@ -79,7 +82,7 @@ ms.locfileid: "110463983"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 Azure 门户中的“iProva”应用程序集成页上，找到“管理”部分并选择“单一登录”  。
+1. 在 Azure 门户中的 Zenya 应用程序集成页上，找到“管理”部分并选择“单一登录”。
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
@@ -87,17 +90,17 @@ ms.locfileid: "110463983"
 
 1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“登录 URL”框中填写“iProva SAML2 信息”页上的标签“登录 URL”后面显示的值。 此页仍在另一浏览器标签页中打开。
+    a. 在“登录 URL”框中填写“Zenya SAML2 信息”页上的标签“登录 URL”后面显示的值。   此页仍在另一浏览器标签页中打开。
 
-    b. 在“标识符”框中填写“iProva SAML2 信息”页上的标签“EntityID”后面显示的值。 此页仍在另一浏览器标签页中打开。
+    b. 在“标识符”框中填写“Zenya SAML2 信息”页上的标签“EntityID”后面显示的值。   此页仍在另一浏览器标签页中打开。
 
-    c. 在“回复 URL”框中填写“iProva SAML2 信息”页上的标签“回复 URL”后面显示的值。 此页仍在另一浏览器标签页中打开。
+    c. 在“回复 URL”框中填写“Zenya SAML2 信息”页上的标签“回复 URL”后面显示的值。   此页仍在另一浏览器标签页中打开。
 
-1. iProva 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
+1. Zenya 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。
 
     ![image](common/default-attributes.png)
 
-1. 除了上述属性，iProva 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
+1. 除了上述属性，Zenya 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
     | 名称 | 源属性| 命名空间  |
     | ---------------| -------- | -----|
@@ -115,25 +118,25 @@ ms.locfileid: "110463983"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ## <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
-在本部分中，将通过授予 B.Simon 访问 iProva 的权限，允许其使用 Azure 单一登录。
+在本部分，你将通过授予 B.Simon 访问 Zenya 的权限，使其能够使用 Azure 单一登录。
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
-1. 在应用程序列表中，选择“iProva”。
+1. 在应用程序列表中，选择“Zenya”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
 1. 在“添加分配”对话框中，单击“分配”按钮。
 
-## <a name="configure-iprova-sso"></a>配置 iProva SSO
+## <a name="configure-zenya-sso"></a>配置 Zenya SSO
 
-1. 使用 **管理员** 帐户登录到 iProva。
+1. 使用管理员帐户登录到 Zenya。
 
 2. 打开“转到”菜单。
 
@@ -145,7 +148,7 @@ ms.locfileid: "110463983"
 
 6. 向下滚动到“访问控制”。
 
-    ![iProva 访问控制设置](media/iprova-tutorial/access-control.png)
+    ![Zenya 访问控制设置](media/iprova-tutorial/access-control.png)
 
 7. 查找设置“用户使用其网络帐户自动登录”，并将其更改为“是，通过 SAML 进行身份验证”。 此时会显示其他选项。
 
@@ -153,7 +156,7 @@ ms.locfileid: "110463983"
 
 9. 选择“**下一页**”。
 
-10. iProva 会询问是要从 URL 下载联合数据，还是从文件上传联合数据。 选择“从 URL”选项。
+10. Zenya 会询问是要从 URL 下载联合数据，还是从文件上传联合数据。 选择“从 URL”选项。
 
     ![下载 Azure AD 元数据](media/iprova-tutorial/metadata.png)
 
@@ -173,9 +176,9 @@ ms.locfileid: "110463983"
 
 18. 现在返回“编辑常规设置”屏幕。 向下滚动到页面底部，选择“确定”以保存配置。
 
-## <a name="create-iprova-test-user"></a>创建 iProva 测试用户
+## <a name="create-zenya-test-user"></a>创建 Zenya 测试用户
 
-1. 使用 **管理员** 帐户登录到 iProva。
+1. 使用管理员帐户登录到 Zenya。
 
 2. 打开“转到”菜单。
 
@@ -199,12 +202,12 @@ ms.locfileid: "110463983"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 iProva 登录 URL，你可以在其中启动登录流。 
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Zenya 登录 URL，你可以从那里启动登录流。 
 
-* 直接转到 iProva 登录 URL，从那里启动登录流。
+* 直接转到 Zenya 登录 URL，并从那里启动登录流。
 
-* 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 iProva 磁贴时，会重定向到 iProva 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Zenya 磁贴时，会重定向到 Zenya 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-配置 iProva 后，可以强制实施会话控制，从而实时防止组织的敏感数据遭受外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。
+配置 Zenya 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](/cloud-app-security/proxy-deployment-aad)。

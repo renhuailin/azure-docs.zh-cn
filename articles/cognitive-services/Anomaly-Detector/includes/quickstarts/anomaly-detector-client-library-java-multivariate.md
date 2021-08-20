@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 43ad5918f882a9496cfb9ee7ded13314cfdd87c1
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6c3285dddc559fbdf3da8d877ad7390403acd149
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110166102"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114339492"
 ---
 开始使用适用于 Java 的异常检测器多变量客户端库。 请按照以下步骤操作，以使用服务提供的算法安装软件包。 新的多变量异常情况检测 API 使开发人员能够轻松地集成高级 AI 来检测指标组中的异常，且无需机器学习知识或标记的数据。 不同信号之间的依赖关系和相互关联会自动计为关键因素。 这可以帮助你主动防范复杂系统发生故障。
 
@@ -23,7 +23,7 @@ ms.locfileid: "110166102"
 * 当任何单独的时序都不能告知太多信息时，而你不得不查看所有信号来检测问题。
 * 使用数十到数百种不同类型的传感器对昂贵的物理资产进行预测维护，以测量系统运行状况的各个方面。
 
-[库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/anomalydetector/azure-ai-anomalydetector) | [包 (Maven)](https://repo1.maven.org/maven2/com/azure/azure-ai-anomalydetector/3.0.0-beta.2/) | [示例代码](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/src/samples/java/com/azure/ai/anomalydetector/MultivariateSample.java)
+[库参考文档](/java/api/com.azure.ai.anomalydetector) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/anomalydetector/azure-ai-anomalydetector) | [包 (Maven)](https://repo1.maven.org/maven2/com/azure/azure-ai-anomalydetector/3.0.0-beta.2/) | [示例代码](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/src/samples/java/com/azure/ai/anomalydetector/MultivariateSample.java)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -106,7 +106,7 @@ import java.util.stream.Collectors;
 为资源的 Azure 终结点和密钥创建变量。 为示例数据文件创建另一个变量。
 
 > [!NOTE]
-> 始终可在两个密钥之间任选其一。 这是为了实现安全的密钥轮换。 在本快速入门中，使用第一个密钥。 
+> 始终可以在两个密钥之间选择一个使用。 这是为了实现安全的密钥轮换。 在本快速入门中，使用第一个密钥。 
 
 ```java
 String key = "YOUR_API_KEY";
@@ -245,7 +245,7 @@ while (true) {
 ## <a name="export-model"></a>导出模型
 
 > [!NOTE]
-> Export 命令的作用在于使容器化环境中能够运行异常检测器多变量模型。 目前不支持多变量，但将来会添加相关支持。
+> Export 命令的作用在于使容器化环境中能够运行 Anomaly Detector 多变量模型。 目前不支持多变量，但将来会添加相关支持。
 
 若要导出训练的模型，请使用 `exportModelWithResponse`。
 
@@ -291,4 +291,4 @@ gradle run
 ## <a name="next-steps"></a>后续步骤
 
 * [什么是异常检测器 API？](../../overview-multivariate.md)
-* [使用异常检测器 API 时的最佳做法](../../concepts/best-practices-multivariate.md)。 
+* [使用异常检测器 API 时的最佳做法](../../concepts/best-practices-multivariate.md)。

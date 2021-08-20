@@ -5,14 +5,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 05/04/2021
 ms.author: trbye
-ms.openlocfilehash: 4ac14a82fa5698faf6f79c97cd1cdd729f1966a8
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2ffcb79bb2bb192566e7f6b7e0f933cacce84a77
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769414"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114593813"
 ---
-若要完成意向识别快速入门，需要使用 LUIS 预览门户创建 LUIS 帐户和项目。 本快速入门仅需 LUIS 订阅。 无需语音服务订阅。
+若要完成意向识别快速入门，需要使用 LUIS 预览门户创建 LUIS 帐户和项目。 本快速入门要求在[意向识别可用的区域](/azure/cognitive-services/speech-service/regions#intent-recognition)的 LUIS 订阅。 无需语音服务订阅。
 
 你需要做的第一件事是使用 LUIS 预览门户创建 LUIS 帐户和应用。 创建的 LUIS 应用会将预生成域用于主自动化，提供意向、实体和示例言语。 完成本教程后，你会有一个在云中运行的 LUIS 终结点，可使用语音 SDK 进行调用。 
 

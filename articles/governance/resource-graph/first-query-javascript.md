@@ -1,17 +1,17 @@
 ---
 title: 快速入门：你的第一个 JavaScript 查询
 description: 本快速入门介绍为 JavaScript 启用 Resource Graph 库并运行第一个查询的步骤。
-ms.date: 05/01/2021
+ms.date: 07/09/2021
 ms.topic: quickstart
 ms.custom:
 - devx-track-js
 - mode-api
-ms.openlocfilehash: c958d4dc0662756e2f60a62b6a777a8dd031fe53
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 9dc5068232e6ad19715535ba8e41cff213e23311
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108324952"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114459956"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>快速入门：使用 JavaScript 运行你的第一个 Resource Graph 查询
 
@@ -65,16 +65,13 @@ ms.locfileid: "108324952"
    const authenticator = require("@azure/ms-rest-nodeauth");
    const resourceGraph = require("@azure/arm-resourcegraph");
 
-   if (argv.query && argv.subs) {
-       const subscriptionList = argv.subs.split(",");
-
+   if (argv.query) {
        const query = async () => {
           const credentials = await authenticator.interactiveLogin();
           const client = new resourceGraph.ResourceGraphClient(credentials);
           const result = await client.resources(
              {
-                 query: argv.query,
-                 subscriptions: subscriptionList,
+                 query: argv.query
              },
              { resultFormat: "table" }
           );
@@ -86,21 +83,22 @@ ms.locfileid: "108324952"
    }
    ```
 
+   > [!NOTE]
+   > 此代码创建基于租户的查询。 要将查询限制为[管理组](../management-groups/overview.md)或订阅，定义 [queryrequest](/javascript/api/@azure/arm-resourcegraph/queryrequest) 并将其添加到 `client.resources` 调用，然后指定 `managementGroups` 或 `subscriptions`。
+
 1. 在终端中输入以下命令：
 
    ```bash
-   node index.js --query "Resources | project name, type | limit 5" --subs <YOUR_SUBSCRIPTION_ID_LIST>
+   node index.js --query "Resources | project name, type | limit 5"
    ```
-
-   请确保将 `<YOUR_SUBSCRIPTION_ID_LIST>` 占位符替换为以逗号分隔的 Azure 订阅 ID 列表。
 
    > [!NOTE]
    > 由于此查询示例未提供排序修饰符（例如 `order by`），因此多次运行此查询可能会为每个请求生成一组不同的资源。
 
-1. 将第一个参数更改为 `index.js`，并将查询更改为 `order by` Name 属性。 将 `<YOUR_SUBSCRIPTION_ID_LIST>` 替换为订阅 ID：
+1. 将第一个参数更改为 `index.js`，并将查询更改为 `order by` Name 属性。
 
    ```bash
-   node index.js --query "Resources | project name, type | limit 5 | order by name asc" --subs "<YOUR_SUBSCRIPTION_ID_LIST>"
+   node index.js --query "Resources | project name, type | limit 5 | order by name asc"
    ```
 
    当脚本尝试进行身份验证时，会在终端中显示类似于以下所示的消息：
@@ -112,10 +110,10 @@ ms.locfileid: "108324952"
    > [!NOTE]
    > 与第一个查询一样，多次运行此查询可能会为每个请求生成一组不同的资源。 查询命令的顺序非常重要。 在本例中，`order by` 位于 `limit` 之后。 命令按此顺序执行，首先会限制查询结果，然后对它们进行排序。
 
-1. 将第一个参数更改为 `index.js`，并将查询更改为先 `order by` Name 属性，然后对前五个结果应用 `limit`。 将 `<YOUR_SUBSCRIPTION_ID_LIST>` 替换为订阅 ID：
+1. 将第一个参数更改为 `index.js`，并将查询更改为先 `order by` Name 属性，然后对前五个结果应用 `limit`。
 
    ```bash
-   node index.js --query "Resources | project name, type | order by name asc | limit 5" --subs "<YOUR_SUBSCRIPTION_ID_LIST>"
+   node index.js --query "Resources | project name, type | order by name asc | limit 5"
    ```
 
 假设环境中没有任何变化，则多次运行最后一个查询时，返回的结果将是一致的且按 Name 属性排序，但仍限制为前五个结果。

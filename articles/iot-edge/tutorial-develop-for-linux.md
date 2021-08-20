@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 63740e6d3f6df757cc7cc8847ed10a03b8831fd5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: dfb71802b0aa0fae1bb853823b054ae49d700edf
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110060177"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113438271"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>教程：使用 Linux 容器开发 IoT Edge 模块
 
@@ -157,13 +157,16 @@ Azure IoT Edge Tools 扩展为 Visual Studio Code 中支持的所有 IoT Edge �
 环境文件存储容器注册表的凭据，并将其与 IoT Edge 运行时共享。 运行时需要这些凭据才能将容器映像拉取到 IoT Edge 设备中。
 
 >[!NOTE]
->如果你未将 localhost:5000 值替换为 Azure 容器注册表中的登录服务器值，则在[创建项目模板](#create-a-project-template)步骤中，部署清单的 .env 文件和 registryCredentials 部分将缺失  。 
+>如果你未将 localhost:5000 值替换为 Azure 容器注册表中的登录服务器值，则在[创建项目模板](#create-a-project-template)步骤中，部署清单的 .env 文件和 registryCredentials 部分将缺失  。
 
 IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到环境文件中。 检查凭据是否已包含在内。 如果没有，请立即添加：
 
 1. 打开模块解决方案中的 **.env** 文件。
 2. 添加从 Azure 容器注册表中复制的 **username** 和 **password** 值。
 3. 将更改保存到 .env 文件。
+
+>[!NOTE]
+>本教程使用 Azure 容器注册表的管理员登录凭据，这对于开发和测试方案非常方便。 为生产方案做好准备后，建议使用最低权限身份验证选项（如服务主体）。 有关详细信息，请参阅[管理容器注册表的访问权限](production-checklist.md#manage-access-to-your-container-registry)。
 
 ### <a name="select-your-target-architecture"></a>选择目标体系结构
 

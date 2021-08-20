@@ -1,20 +1,20 @@
 ---
-title: 将本机 C++ 教程部署到 HoloLens
-description: 介绍如何在 HoloLens 上运行本机 C++ 教程的快速入门
+title: 将本机 C++ WMR 教程部署到 HoloLens
+description: 介绍如何在 HoloLens 上运行本机 C++ HolographicApp 教程的快速入门
 author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: b340a180927b3df9ad51295383b09b03dbbb2d98
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: eabade94b06d8689026548d6e09d6098e8da9f59
+ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530580"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113666800"
 ---
-# <a name="quickstart-deploy-native-c-sample-to-hololens"></a>快速入门：将原生 C++ 示例部署到 HoloLens
+# <a name="quickstart-deploy-native-c-wmr-sample-to-hololens"></a>快速入门：将原生 C++ WMR 示例部署到 HoloLens
 
-本快速入门介绍如何在 HoloLens 2 上部署和运行本机 C++ 教程应用程序。
+本快速入门介绍如何在 HoloLens 2 上部署和运行本机 C++ WMR（Windows 混合显示）教程应用程序。
 
 本快速入门将介绍以下操作：
 
@@ -51,11 +51,11 @@ git clone https://github.com/Azure/azure-remote-rendering
 
 最后一个命令会在 ARR 目录中创建一个子目录，其中包含 Azure 远程渲染的各个示例项目。
 
-C++ HoloLens 教程位于子目录 NativeCpp/HoloLens 中。
+C++ HoloLens 教程位于子目录 NativeCpp/HoloLens-Wmr 中。
 
 ## <a name="build-the-project"></a>生成项目
 
-使用 Visual Studio 2019 打开位于 NativeCpp/HoloLens 子目录中的解决方案文件 HolographicApp.sln 。
+使用 Visual Studio 2019 打开位于 NativeCpp/HoloLens 子目录中的解决方案文件 NativeCpp/HoloLens-Wmr 。
 
 将生成配置切换为“调试”（或“发布”）和“ARM64”  。 此外，还要确保将调试程序模式设置为“设备”，而不是“远程计算机” ：
 
@@ -80,7 +80,7 @@ C++ HoloLens 教程位于子目录 NativeCpp/HoloLens 中。
 
 具体而言，请更改以下值：
 * 更改 `init.AccountId``init.AccountKey` 和 `init.AccountDomain` 以使用帐户数据。 请参阅有关如何[检索帐户信息](../../../how-tos/create-an-account.md#retrieve-the-account-information)的段落。
-* 对于 `westus2` 以外的其他区域（例如 `"westeurope.mixedreality.azure.com"`），修改 `init.RemoteRenderingDomain` 字符串的区域部分来指定在何处创建远程渲染会话。
+* 对于 `westus2` 以外的其他[区域](../../../reference/regions.md)（例如 `"westeurope.mixedreality.azure.com"`），修改 `init.RemoteRenderingDomain` 字符串的区域部分来指定在何处创建远程渲染会话。
 * 此外，可以将 `m_sessionOverride` 更改为现有会话 ID。 可在此示例外部创建会话，例如通过使用 [PowerShell 脚本](../../../samples/powershell-example-scripts.md#script-renderingsessionps1)或直接使用[会话 REST API](../../../how-tos/session-rest-api.md)。
 当示例应多次运行时，建议在示例外部创建会话。 如果未传入任何会话，则该示例将在每次启动时创建一个新会话，这可能需花费几分钟的时间。
 

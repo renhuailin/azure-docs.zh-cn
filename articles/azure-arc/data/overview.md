@@ -8,20 +8,20 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 03/31/2021
+ms.date: 07/13/2021
 ms.topic: overview
-ms.openlocfilehash: 2d866dcb5b2a0be9e6468b3d40258e37ac93834e
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: cb905bd3e8ceb7012415a65bda1928b25da3037b
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107716090"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113760999"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>什么是已启用 Azure Arc 的数据服务（预览）？
 
 借助 Azure Arc，可以使用 Kubernetes 和你选择的基础结构在本地、边缘和公有云环境中运行 Azure 数据服务。
 
-当前，以下已启用 Azure Arc 的数据服务以预览形式提供：
+目前，以下已启用 Azure Arc 的数据服务以预览形式提供：
 
 - SQL 托管实例
 - PostgreSQL 超大规模
@@ -42,11 +42,11 @@ Azure Arc 还提供了其他云优势，例如快速部署和大规模自动化�
 
 ## <a name="unified-management"></a>统一管理
 
-现在，使用 Azure 门户、Azure Data Studio 和 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 等熟悉的工具，可以统一查看使用 Azure Arc 部署的所有数据资产。你不仅可以查看和管理整个环境和 Azure 中的各种关系数据库，还可以从 Kubernetes API 获取日志和遥测，以分析基础结构的容量和运行状况。 除了拥有本地化的日志分析和性能监视之外，你现在还可以利用 Azure Monitor 在整个资产范围内获得全面的操作见解。
+现在，使用具有 `arcdata` 扩展的 Azure 门户、Azure Data Studio 和 Azure CLI (`az`) 等熟悉的工具，可以统一查看使用 Azure Arc 部署的所有数据资产。你不仅可以查看和管理整个环境和 Azure 中的各种关系数据库，还可以从 Kubernetes API 获取日志和遥测，以分析基础结构的容量和运行状况。 除了拥有本地化的日志分析和性能监视之外，你现在还可以利用 Azure Monitor 在整个资产范围内获得全面的操作见解。
 
 ## <a name="disconnected-scenario-support"></a>断开连接的方案支持
 
-无论是否直接连接到 Azure，许多服务（例如自助式预配、自动备份/还原和监视）都可以在基础结构中在本地运行。 若直接连接到 Azure，这样可提供用于与其他 Azure 服务（例如 Azure Monitor）集成的其他选项，并且可以在世界各地使用 Azure 门户和 Azure 资源管理器 API 来管理已启用 Azure Arc 的数据服务。
+无论是否直接连接到 Azure，许多服务（例如自助式预配、自动备份/还原和监视）都可以在基础结构中在本地运行。 如果是直接连接到 Azure，可以提供用于与其他 Azure 服务（例如 Azure Monitor）集成的其他选项，并且可以在世界各地使用 Azure 门户和 Azure 资源管理器 API 来管理已启用 Azure Arc 的数据服务。
 
 ## <a name="supported-regions"></a>支持的区域
 
@@ -55,17 +55,30 @@ Azure Arc 还提供了其他云优势，例如快速部署和大规模自动化�
 |Azure 区域  |直接连接模式  |间接连接模式  |
 |---------|---------|---------|
 |美国东部|可用|可用
+|美国东部 2|可用|可用
+|美国西部 2|可用|可用
+|美国中部|不可用|可用
+|美国中南部|可用|可用
+|英国南部|可用|可用
+|法国中部|可用|可用
 |西欧 |可用 |可用
 |北欧|可用|可用
+|日本东部|不可用|可用
+|韩国中部|不可用|可用
+|东亚|不可用|可用
+|东南亚|可用|可用
+|澳大利亚东部|可用|可用
 
 ## <a name="next-steps"></a>后续步骤
 
 > 想尝试一下吗？  
 > 在 Azure Kubernetes 服务 (AKS)、AWS Elastic Kubernetes 服务 (EKS)、Google Cloud Kubernetes Engine (GKE) 或 Azure VM 中，通过 [Azure Arc 快速入门](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)快速开始操作。
+>
+>此外，请部署 [Jumpstart ArcBox](https://azurearcjumpstart.io/azure_jumpstart_arcbox/)，这是一种易于部署的沙盒，适用于 Azure Arc。ArcBox 被设计为完全独立于一个 Azure 订阅和资源组，这将使你能够轻松地使用所有已提供的已启用 Azure Arc 的技术，只需要一个可用的 Azure 订阅。
 
 [安装客户端工具](install-client-tools.md)
 
-[创建 Azure Arc 数据控制器](create-data-controller.md)（首先需要安装客户端工具）
+[规划 Azure Arc 数据服务部署](plan-azure-arc-data-services.md)（首先需要安装客户端工具）
 
 [在 Azure Arc 上创建 Azure SQL 托管实例](create-sql-managed-instance.md)（首先需要创建 Azure Arc 数据控制器）
 

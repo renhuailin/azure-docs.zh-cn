@@ -8,12 +8,12 @@ metadata:
   author: mathapli
   ms.author: mathapli
   ms.date: 01/18/2021
-  ms.openlocfilehash: d11988cbf65b9a66e1ada1640726f2ace5fec336
-  ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+  ms.openlocfilehash: 96e8f93f38d7ba84b93fdfb4101371f426a14f37
+  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/10/2021
-  ms.locfileid: "113598389"
+  ms.lasthandoff: 07/22/2021
+  ms.locfileid: "114456569"
 title: 对虚拟机认证进行故障排除
 summary: >
   当你将虚拟机 (VM) 映像发布到 Azure 市场时，Azure 团队会对映像进行验证，以确保它可启动、与 Azure 兼容并且是安全的。 如果 VM 映像未通过任何高质量测试，则不会发布该映像。 你将收到一条说明此问题的错误消息。
@@ -363,6 +363,11 @@ sections:
   - question: >
       VM 映像必须具有 1 MB 可用空间
     answer: >
+      >[!NOTE]
+
+      >从 2021 年 9 月 30 日起，如果正在将映像发布到 Azure（使用 GPT 分区），请确保操作系统磁盘的首个 2048 扇区 (1 MB) 为空。 否则，你的发布将失败。 该要求使 Azure 能够将重要位添加到映像（示例将位包含在内，以缩短客户的启动时间，改善计费和其他细节）。
+
+
       如果要[构建自己的映像](azure-vm-create-using-own-image.md)，请确保 OS 磁盘的前 2048 个扇区 (1 MB) 为空。 否则，你的发布将失败。 此要求仅适用于 OS 磁盘（而非数据磁盘）。 如果要[从已批准的基础映像](azure-vm-create-using-approved-base.md)构建映像，可跳过这一要求。
 
 

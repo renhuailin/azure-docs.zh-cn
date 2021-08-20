@@ -4,19 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 2bbff7c68b76b82bb834528124271eff69b8ad87
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: e8a00161e9619a27b371ed80a61d7b3ea5d3e9c6
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111896621"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112536091"
 ---
 使用 Azure 通信服务呼叫 SDK 向应用添加一对一视频呼叫，开启 Azure 通信服务使用旅程。 你将了解如何使用适用于 JavaScript 的 Azure 通信服务呼叫 SDK 发起和接听视频呼叫。
 
+## <a name="sample-code"></a>代码示例
 
-> [!NOTE]
-> 在 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling) 上查找此快速入门的最终代码
-
+如果你要向前跳转到末尾，可以从 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling) 下载此快速入门示例。
 
 ## <a name="prerequisites"></a>必备条件
 - 获取具有有效订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -135,7 +134,11 @@ let rendererRemote;
 
 ## <a name="authenticate-the-client-and-access-devicemanager"></a>对客户端进行身份验证并访问 DeviceManager
 
-需将 <[USER_ACCESS_TOKEN](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/access-tokens-quickstart)> 替换为资源的有效用户访问令牌。 如果还没有可用的令牌，请参阅用户访问令牌文档。 使用 `CallClient`，通过 `CommunicationUserCredential` 初始化 `CallAgent` 实例，这将使我们能够启动和接收呼叫。 若要访问 `DeviceManager`，必须先创建 callAgent 实例。 然后，可以在 `CallClient` 实例上使用 `getDeviceManager` 方法来获取 `DeviceManager`。
+需要将 <USER_ACCESS_TOKEN> 替换为资源的有效用户访问令牌。 如果你还没有可用的令牌，请参阅[用户访问令牌文档](../../../access-tokens.md)。 
+
+使用 `CallClient`，通过 `CommunicationUserCredential` 初始化 `CallAgent` 实例，这将使我们能够启动和接收呼叫。 
+
+若要访问 `DeviceManager`，必须先创建 callAgent 实例。 然后，可以在 `CallClient` 实例上使用 `getDeviceManager` 方法来获取 `DeviceManager`。
 
 将以下代码添加到 `client.js`：
 
@@ -294,7 +297,7 @@ hangUpButton.addEventListener("click", async () => {
 
 ## <a name="start-and-end-video-during-the-call"></a>在呼叫期间启动和结束视频
 在当前呼叫期间，可以通过将事件侦听器添加到“停止视频”按钮来释放 `localVideoStream` 的呈现器，以此停止视频。 
- ```JavaScript       
+ ```JavaScript
 stopVideoButton.addEventListener("click", async () => {
     await call.stopVideo(localVideoStream);
     rendererLocal.dispose();
@@ -321,7 +324,4 @@ npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool 
 
 :::image type="content" source="../../media/javascript/1-on-1-video-calling.png" alt-text="1:1 视频呼叫页":::
 
-可以通过在文本字段中提供用户 ID 并单击“开始呼叫”按钮，发起 1:1 传出视频呼叫。 
-
-## <a name="sample-code"></a>示例代码
-可以从 [GitHub](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/tree/main/add-1-on-1-video-calling) 下载示例应用。
+可以通过在文本字段中提供用户 ID 并单击“开始呼叫”按钮，发起 1:1 传出视频呼叫。

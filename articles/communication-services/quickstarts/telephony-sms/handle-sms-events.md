@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 04b0ee4feb74553fc3b24910da338ba02864ec28
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 3d40705b5dc2b1fb3649c9acea33fc500add1c91
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113109155"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113768821"
 ---
 # <a name="quickstart-handle-sms-events-for-delivery-reports-and-inbound-messages"></a>快速入门：处理传递报告和入站消息的短信事件
 
@@ -28,7 +28,7 @@ ms.locfileid: "113109155"
 
 ## <a name="prerequisites"></a>先决条件
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- Azure 通信服务资源。 可在[创建 Azure 通信资源](../create-communication-resource.md)快速入门中找到更多详细信息。
+- Azure 通信服务资源。 可在[创建 Azure 通信服务资源](../create-communication-resource.md)快速入门中找到更多详细信息。
 - 启用短信的电话号码。 [获取电话号码](./get-phone-number.md)。
 
 ## <a name="setting-up"></a>设置

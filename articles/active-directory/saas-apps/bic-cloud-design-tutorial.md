@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 7a706eb120f45fcd08febd0bda9aaaa54a82135a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f1f8e47235cff2e23e45dcba535caf92ca6da0e4
+ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98728160"
+ms.lasthandoff: 06/16/2021
+ms.locfileid: "112199567"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bic-cloud-design"></a>教程：Azure Active Directory 单一登录 (SSO) 与 BIC Cloud Design 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "98728160"
 * 让用户使用其 Azure AD 帐户自动登录到 BIC Cloud Design。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -40,9 +40,9 @@ ms.locfileid: "98728160"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* BIC Cloud Design 支持 **SP** 发起的 SSO
+* BIC Cloud Design 支持 SP 发起的 SSO。
 
-## <a name="adding-bic-cloud-design-from-the-gallery"></a>从库中添加 BIC Cloud Design
+## <a name="add-bic-cloud-design-from-the-gallery"></a>从库中添加 BIC Cloud Design
 
 若要配置 BIC Cloud Design 与 Azure AD 的集成，需要从库中将 BIC Cloud Design 添加到托管 SaaS 应用列表。
 
@@ -53,7 +53,6 @@ ms.locfileid: "98728160"
 1. 在“从库中添加”部分的搜索框中，键入 **BIC Cloud Design**。
 1. 在结果面板中选择“BIC Cloud Design”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-bic-cloud-design"></a>配置并测试 BIC Cloud Design 的 Azure AD SSO
 
 使用名为 **B.Simon** 的测试用户配置并测试 BIC Cloud Design 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 BIC Cloud Design 中的相关用户之间建立链接关系。
@@ -61,10 +60,10 @@ ms.locfileid: "98728160"
 若要配置并测试 BIC Cloud Design 的 Azure AD SSO，请执行以下步骤：
 
 1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
-    * **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
-    * **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
 1. **[配置 BIC Cloud Design SSO](#configure-bic-cloud-design-sso)** - 在应用程序端配置单一登录设置。
-    * **[创建 BIC Cloud Design 测试用户](#create-bic-cloud-design-test-user)** - 在 BIC Cloud Design 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+    1. **[创建 BIC Cloud Design 测试用户](#create-bic-cloud-design-test-user)** - 在 BIC Cloud Design 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
 1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
 ## <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
@@ -87,17 +86,15 @@ ms.locfileid: "98728160"
 
     ![选择元数据文件](common/browse-upload-metadata.png)
 
-    c. 成功上传元数据文件后，“标识符”值会自动填充在“基本 SAML 配置”部分中。
+    c. 成功上传元数据文件后，“标识符”值会自动填充在“基本 SAML 配置”部分中  。
 
-    ![BIC Cloud Design 域和 URL 单一登录信息](common/sp-identifier.png)
+    在“登录 URL”文本框中，使用以下模式键入 URL： 
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：
-
-    ```https
-    https://<customer-specific-name/tenant>.biccloud.com
-    https://<customer-specific-name/tenant>.biccloud.de
-    ```
-
+    | 登录 URL |
+    |-----|
+    | `https://<CUSTOMER_SPECIFIC_NAME/TENANT>.biccloud.com` |
+    | `https://<CUSTOMER_SPECIFIC_NAME/TENANT>.biccloud.de` |
+    
     > [!Note]
     > 如果“标识符”值未自动填充，请根据要求手动填充该值。 登录 URL 值不是实际值。 使用实际登录 URL 更新此值。 请联系 [BIC Cloud Design 客户端支持团队](mailto:bicsupport@gbtec.de)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
@@ -127,7 +124,7 @@ ms.locfileid: "98728160"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -160,7 +157,6 @@ ms.locfileid: "98728160"
 * 直接转到 BIC Cloud Design 登录 URL，并在其中启动登录流。
 
 * 你可使用 Microsoft 的“我的应用”。 单击“我的应用”中的 BIC Cloud Design 磁贴时，将会重定向到 BIC Cloud Design 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
-
 
 ## <a name="next-steps"></a>后续步骤
 

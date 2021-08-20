@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: qna maker, 低代码聊天机器人, 多回合对话
-ms.openlocfilehash: 84678e0472284f6a9acfec53fbe31ff550775446
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: b3e780393b911697d17ca1873201720c0bc628be
+ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108292659"
+ms.lasthandoff: 06/17/2021
+ms.locfileid: "112322595"
 ---
 # <a name="what-is-qna-maker"></a>什么是 QnA Maker？
 
@@ -21,6 +21,13 @@ QnA Maker 是一种基于云的自然语言处理 (NLP) 服务，它可以基于
 QnA Maker 通常用于生成对话式客户端应用程序，其中包括社交媒体应用程序、聊天机器人和支持语音的桌面应用程序。
 
 QnA Maker 不会存储客户数据。 所有客户数据（问题答案和聊天日志）都存储在客户部署了从属服务实例的区域中。 有关从属服务的详细信息，请参阅[此处](../concepts/plan.md?tabs=v1)。
+
+本文档包含以下文章类型：
+
+* [快速入门](../quickstarts/create-publish-knowledge-base.md)是分步说明，可按照其调用服务，并在短时间内获得结果。 
+* [操作指南](../how-to/set-up-qnamaker-service-azure.md)包含以更具体的方式或自定义方式使用服务的说明。
+* [概念性文章](../concepts/plan.md)对服务的功能和特性进行了深入说明。
+* [**教程**](../tutorials/create-faq-bot-with-azure-bot-service.md)是较长的指南，向您演示了如何在更广泛的业务解决方案中使用该服务作为组件。
 
 ## <a name="when-to-use-qna-maker"></a>何时使用 QnA Maker
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/10/2020
+ms.date: 06/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 8b1203693b67bb1a8b9699b84dd3a437027e4c3d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2b63b496fb06c2987161661ddbbfcfe74580e3bf
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055308"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113356610"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>教程：使用 GPU 为 Azure Stack Edge Pro 配置证书
 
@@ -32,12 +32,12 @@ ms.locfileid: "106055308"
 
 在使用 GPU 配置和设置 Azure Stack Edge Pro 设备之前，请确保：
 
-* 已根据[安装 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-install.md) 中详述的内容安装了物理设备。
+* 已按照[安装 Azure Stack Edge Pro GPU](azure-stack-edge-gpu-deploy-install.md) 中详述的内容安装物理设备。
 * 如果你计划使用自己的证书：
     - 应该使用适当的格式来准备证书，包括签名链证书。 有关证书的详细信息，请参阅[管理证书](azure-stack-edge-gpu-manage-certificates.md)
 
-<!--    - If your device is deployed in Azure Government or Azure Government Secret or Azure Government top secret cloud and not deployed in Azure public cloud, a signing chain certificate is required before you can activate your device. 
-    For details on certificate, go to [Manage certificates](azure-stack-edge-gpu-manage-certificates.md).-->
+    - 如果你的设备已在 Azure 政府中部署，但未在 Azure 公有云中部署，则需具备签名链证书，然后才能激活该设备。 
+    有关证书的详细信息，请参阅[管理证书](azure-stack-edge-gpu-manage-certificates.md)。
 
 
 ## <a name="configure-certificates-for-device"></a>为设备配置证书
@@ -58,9 +58,9 @@ ms.locfileid: "106055308"
 
         这是因为证书不反映更新的设备名称和 DNS 域（在使用者名称和使用者备用名称中使用）。 若要成功激活设备，请选择下列选项之一： 
     
-        - **生成所有设备证书**。 这些设备证书应仅用于测试，不能用于生产工作负载。 有关详细信息，请转到[在 Azure Stack Edge Pro上生成设备证书](#generate-device-certificates)。
+        - **生成所有设备证书**。 这些设备证书应仅用于测试，不能用于生产工作负载。 有关详细信息，请转到[在 Azure Stack Edge Pro GPU 上生成设备证书](#generate-device-certificates)。
 
-        - **使用自己的证书**。 可以使用自己的已签名终结点证书和相应的签名链。 先添加签名链，然后上传终结点证书。 建议始终将自己的证书用于生产工作负载。 有关详细信息，请转到[在 Azure Stack Edge Pro 设备上使用自己的证书](#bring-your-own-certificates)。
+        - **使用自己的证书**。 可以使用自己的已签名终结点证书和相应的签名链。 先添加签名链，然后上传终结点证书。 建议始终将自己的证书用于生产工作负载。 有关详细信息，请转到[在 Azure Stack Edge Pro GPU 设备上使用自己的证书](#bring-your-own-certificates)。
     
         - 可以使用一些自己的证书并生成一些设备证书。 “生成证书”选项只重新生成设备证书。
 
@@ -71,7 +71,7 @@ ms.locfileid: "106055308"
 
 按照以下步骤操作，以生成设备证书。
 
-使用以下步骤重新生成并下载 Azure Stack Edge Pro 设备证书：
+使用以下步骤重新生成并下载 Azure Stack Edge Pro GPU 设备证书：
 
 1. 在设备的本地 Web UI 中，转到“配置”>“证书”。 选择“生成证书”。
 
@@ -117,9 +117,9 @@ ms.locfileid: "106055308"
 
     `<Device name>_<Endpoint name>.cer`. 这些证书包含设备上安装的相应证书的公钥。 
 
-需要在所用客户端系统上安装这些证书，才能在 ASE 设备上访问终结点。 这些证书在客户端和设备之间建立信任关系。
+需要在所用客户端系统上安装这些证书，才能在 Azure Stack Edge 设备上访问终结点。 这些证书在客户端和设备之间建立信任关系。
 
-若要在所用客户端上导入并安装这些证书以访问设备，请按照[在访问 Azure Stack Edge Pro 设备的客户端上导入证书](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)中的步骤操作。 
+若要在所用客户端上导入并安装这些证书以访问设备，请按照[在访问 Azure Stack Edge Pro GPU 设备的客户端上导入证书](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)中的步骤操作。 
 
 如果使用 Azure 存储资源管理器，需要在客户端上以 PEM 格式安装证书，并且需要将设备生成的证书转换为 PEM 格式。 
 
@@ -130,7 +130,14 @@ ms.locfileid: "106055308"
 
 ### <a name="bring-your-own-certificates"></a>使用自己的证书
 
-请按照以下步骤添加自己的证书，包括签名链。
+你可以使用自己的证书。 
+
+- 首先了解[可与 Azure Stack Edge 设备一起使用的证书类型](azure-stack-edge-gpu-certificates-overview.md)。
+- 接下来，查看[每种类型的证书的证书要求](azure-stack-edge-gpu-certificate-requirements.md)。
+- 然后，可以[通过 Azure PowerShell 创建证书](azure-stack-edge-gpu-create-certificates-powershell.md)或[通过就绪检查器工具创建证书](azure-stack-edge-gpu-create-certificates-tool.md)。
+- 最后，[将证书转换成正确的格式](azure-stack-edge-gpu-prepare-certificates-device-upload.md)，这样它们就可以上传到你的设备。
+
+请按照以下步骤上传自己的证书，包括签名链。
 
 1. 若要上传证书，请在“证书”页上选择“+ 添加证书” 。
 
@@ -176,7 +183,7 @@ ms.locfileid: "106055308"
 > * 先决条件
 > * 为物理设备配置证书
 
-若要了解如何激活 Azure Stack Edge Pro 设备，请参阅：
+若要了解如何激活 Azure Stack Edge Pro GPU 设备，请参阅：
 
 > [!div class="nextstepaction"]
-> [激活 Azure Stack Edge Pro 设备](./azure-stack-edge-gpu-deploy-activate.md)
+> [激活 Azure Stack Edge Pro GPU 设备](./azure-stack-edge-gpu-deploy-activate.md)

@@ -8,12 +8,12 @@ ms.author: mikben
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: da099fe09b44a8c7aeecdfd7118e936ce3f0ff91
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 12e0c9c277bbf162797d52692add208ce921569b
+ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113113060"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113360912"
 ---
 # <a name="what-is-azure-communication-services"></a>什么是 Azure 通信服务？
 
@@ -23,9 +23,9 @@ Azure 通信服务是具有 REST API 和客户端库 SDK 的基于云的服务�
 1. 格式文本聊天
 1. SMS
 
-语音和视频通话应用程序可与公共交换电话网 (PSTN) 交互。 可以直接通过 Azure 通信服务 REST API、SDK 或 Azure 门户获取电话号码。 借助 Azure 通信服务直接路由，可以使用 SIP 和会话边界控制器连接你自己的 PSTN 运营商并自带电话号码。
+你可以将自定义客户端终结点、自定义服务和公共交换电话网络 (PSTN) 连接到通信应用程序。 可以直接通过 Azure 通信服务 REST API、SDK 或 Azure 门户获取电话号码；并将这些号码用于短信或通话应用程序。 借助 Azure 通信服务直接路由，可以使用 SIP 和会话边界控制器连接你自己的 PSTN 运营商并自带电话号码。
 
-除了 REST API，[Azure 通信服务客户端库](./concepts/sdk-options.md)还可用于各种平台和语言，包括 Web 浏览器 (JavaScript)、iOS (Swift)、Java (Android)、Windows (.NET)。 Azure 通信服务与标识无关，你可以控制最终用户的标识和身份验证方式。
+除了 REST API，[Azure 通信服务客户端库](./concepts/sdk-options.md)还可用于各种平台和语言，包括 Web 浏览器 (JavaScript)、iOS (Swift)、Java (Android)、Windows (.NET)。 [适用于 Web 浏览器的 UI 库](https://aka.ms/acsstorybook)可以加速移动设备和桌面浏览器的开发。 Azure 通信服务与标识无关，你可以控制最终用户的标识和身份验证方式。
 
 Azure 通信服务的场景包括：
 

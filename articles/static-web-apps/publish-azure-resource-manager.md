@@ -5,14 +5,14 @@ services: static-web-apps
 author: petender
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 05/10/2021
+ms.date: 07/13/2021
 ms.author: petender
-ms.openlocfilehash: 4d79e417e637894f2a41bd55b52fbbe55300a694
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: b7b75fcf6f7ef1d6f2444a8fe59421bdb64c1890
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109685398"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113765864"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-using-an-arm-template"></a>教程：使用 ARM 模板发布 Azure Static Web Apps
 
@@ -27,18 +27,18 @@ ms.locfileid: "109685398"
 ## <a name="prerequisites"></a>先决条件
 
 - **有效的 Azure 帐户：** 如果你没有帐户，可以 [免费创建一个帐户](https://azure.microsoft.com/free/)。
-- **GitHub 帐户：** 如果没有帐户，可以[免费创建 GitHub 帐户](https://github.com)
+- **GitHub 帐户：** 如果没有帐户，可以 [免费创建 GitHub 帐户](https://github.com)
 - **ARM 模板的编辑器：** 查看和编辑模板需要 JSON 编辑器。 具有 [Azure 资源管理器工具扩展](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)的 Visual Studio Code 适用于编辑 ARM 模板。 有关如何安装和配置 Visual Studio Code 的说明，请参阅[快速入门：使用 Visual Studio Code 创建 ARM 模板](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md)。
 
 - **Azure CLI 或 Azure PowerShell**：部署 ARM 模板需要使用命令行工具。 有关安装说明，请参阅：
-  - [在 Windows OS 上安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows)
-  - [在 Linux OS 上安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-linux)
-  - [在 macOS 上安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-macos)
-  - [安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)
+  - [在 Windows OS 上安装 Azure CLI](/cli/azure/install-azure-cli-windows)
+  - [在 Linux OS 上安装 Azure CLI](/cli/azure/install-azure-cli-linux)
+  - [在 macOS 上安装 Azure CLI](/cli/azure/install-azure-cli-macos)
+  - [安装 Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="create-a-github-personal-access-token"></a>创建 GitHub 个人访问令牌
 
-ARM 模板中所需的参数之一是 `repositoryToken`，它使 ARM 部署过程可以与包含静态站点源代码的 GitHub 存储库交互。 
+ARM 模板中参数之一是 `repositoryToken`，它使 ARM 部署过程可以与包含静态站点源代码的 GitHub 存储库交互。 
 
 1. 从 GitHub 帐户配置文件（位于右上角）中选择“设置”。
 
@@ -57,7 +57,7 @@ ARM 模板中所需的参数之一是 `repositoryToken`，它使 ARM 部署过�
 1. 复制令牌值并将其粘贴到文本编辑器以备稍后使用。
 
 > [!IMPORTANT]
-> 请确保复制此令牌并将其存储在安全的位置。 请考虑将此令牌存储在 [Azure KeyVault](../azure-resource-manager/templates/template-tutorial-use-key-vault.md)，并在 ARM 模板中对其进行访问。
+> 请确保复制此令牌并将其存储在安全的位置。 请考虑将此令牌存储在 [Azure Key Vault](../azure-resource-manager/templates/template-tutorial-use-key-vault.md)，并在 ARM 模板中对其进行访问。
 
 ## <a name="create-a-github-repo"></a>创建 GitHub 存储库
 
@@ -122,11 +122,14 @@ ARM 模板中所需的参数之一是 `repositoryToken`，它使 ARM 部署过�
                 },
                 "resourceTags": {
                     "type": "object"
+                },
+                "appSettings": {
+                    "type": "object"
                 }
             },
             "resources": [
                 {
-                    "apiVersion": "2019-12-01-preview",
+                    "apiVersion": "2021-01-15",
                     "name": "[parameters('name')]",
                     "type": "Microsoft.Web/staticSites",
                     "location": "[parameters('location')]",
@@ -144,7 +147,19 @@ ARM 模板中所需的参数之一是 `repositoryToken`，它使 ARM 部署过�
                     "sku": {
                         "Tier": "[parameters('sku')]",
                         "Name": "[parameters('skuCode')]"
-                    }
+                    },
+                    "resources":[
+                        {
+                            "apiVersion": "2021-01-15",
+                            "name": "appsettings",
+                            "type": "config",
+                            "location": "[parameters('location')]",
+                            "properties": "[parameters('appSettings')]",
+                            "dependsOn": [
+                                "[resourceId('Microsoft.Web/staticSites', parameters('name'))]"
+                            ]
+                        }
+                    ]
                 }
             ]
         }
@@ -163,9 +178,8 @@ ARM 模板中所需的参数之一是 `repositoryToken`，它使 ARM 部署过�
                 "name": {
                     "value": "myfirstswadeployment"
                 },
-                "location": {
-                "type": "string",
-                "defaultValue": "Central US"
+                "location": { 
+                    "value": "Central US"
                 },   
                 "sku": {
                     "value": "Free"
@@ -197,6 +211,12 @@ ARM 模板中所需的参数之一是 `repositoryToken`，它使 ARM 部署过�
                         "Project": "Testing SWA with ARM",
                         "ApplicationName": "myfirstswadeployment"
                     }
+                },
+                "appSettings": {
+                    "value": {
+                        "MY_APP_SETTING1": "value 1",
+                        "MY_APP_SETTING2": "value 2"
+                    }
                 }
             }
         }
@@ -217,7 +237,7 @@ ARM 模板中所需的参数之一是 `repositoryToken`，它使 ARM 部署过�
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
-将模板登录部署到 Azure CLI 或 Azure PowerShell。
+若要部署模板，请登录到 Azure CLI 或 Azure PowerShell。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

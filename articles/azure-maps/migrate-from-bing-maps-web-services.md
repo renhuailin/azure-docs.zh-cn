@@ -1,5 +1,5 @@
 ---
-title: 教程：从必应地图迁移 Web 服务 | Microsoft Azure Maps
+title: 教程：将 Web 服务从必应地图迁移到 Microsoft Azure Maps
 description: 有关如何将 Web 服务从必应地图迁移到 Microsoft Azure Maps 的教程
 author: rbrundritt
 ms.author: richbrun
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 07fbe0cff104c25eca6db2750c2db692429ada65
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 605d30a6e209b8da9e772a95f6318a4aa679c704
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786507"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112578930"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>教程：从必应地图迁移 Web 服务
 
@@ -199,7 +199,6 @@ Azure Maps 路线服务提供以下 API 来计算路线；
 
 -   [计算路线](/rest/api/maps/route/getroutedirections)：计算路线并立即处理请求。 此 API 支持 GET 和 POST 请求。 指定大量中途点或使用大量路线选项时，建议使用 POST 请求，以确保 URL 请求不会太长并导致出现问题。
 -   [批处理路线](/rest/api/maps/route/postroutedirectionsbatchpreview)：创建最多包含 1,000 个路线请求的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
--   [出行服务（预览版）](/rest/api/maps/mobility)：使用公共交通计算路线和方向。
 
 下表对必应地图 API 参数与 Azure Maps 中的类似 API 参数做了交叉比较。
 
@@ -281,8 +280,8 @@ Azure Maps 可以通过使用[路线方向](/rest/api/maps/route/postroutedirect
 |----------------------------|---------------------------------------------------------------------|
 | `points`                   | `supportingPoints` - 将这些点传递到 post 请求的正文中  |
 | `interpolate`              | 空值                                                                 |
-| `includeSpeedLimit`        | 不适用                                                                 |
-| `includeTruckSpeedLimit`   | 不适用                                                                 |
+| `includeSpeedLimit`        | 空值                                                                 |
+| `includeTruckSpeedLimit`   | 空值                                                                 |
 | `speedUnit`                | 空值                                                                 |
 | `travelMode`               | `travelMode`                                                        |
 | `key`                      | `subscription-key` – 另请参阅[使用 Azure Maps 进行身份验证](./azure-maps-authentication.md)文档。 |
@@ -343,7 +342,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 | `mapLayer` (`ml`)        | 空值                                            |
 | `mapSize` (`ms`)         | `width` 和 `height` – 最大大小可为 8192x8192。 |
 | `declutterPins` (`dcl`)  | 空值                                            |
-| `dpi`                    | 不适用                                            |
+| `dpi`                    | 空值                                            |
 | `drawCurve`              | `path`                                         |
 | `mapMetadata`            | 空值                                            |
 | `pitch`                  | N/A - 不支持街景。                |
@@ -451,7 +450,7 @@ Azure Maps 中添加的图钉样式采用 `optionNameValue` 格式，多个样�
 
 > `&path=pathStyles||pathLocation1|pathLocation2|...`
 
-关于路径位置，Azure Maps 要求坐标采用 `longitude latitude` 格式，而必应地图采用 `latitude,longitude` 格式。 另请注意，在 Azure Maps 中使用空格而不是逗号来分隔经度和纬度。 Azure Maps 当前不支持编码的路径。 可根据[此文档](./how-to-render-custom-data.md#get-data-from-azure-maps-data-storage)所述，将较大的数据集作为 GeoJSON 填充内容上传到 Azure Maps 数据存储 API。
+关于路径位置，Azure Maps 要求坐标采用 `longitude latitude` 格式，而必应地图采用 `latitude,longitude` 格式。 另请注意，在 Azure Maps 中使用空格而不是逗号来分隔经度和纬度。 Azure Maps 当前不支持编码的路径。 可根据[此文档](./how-to-render-custom-data.md#upload-pins-and-path-data)所述，将较大的数据集作为 GeoJSON 填充内容上传到 Azure Maps 数据存储 API。
 
 Azure Maps 中添加的路径样式采用 `optionNameValue` 格式，多个样式以竖线 (`|`) 字符分隔，例如 `optionName1Value1|optionName2Value2`。 请注意，不用分隔选项名称和值。 可使用以下样式选项名称来为 Azure Maps 中的路径设置样式：
 

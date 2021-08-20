@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c087533958665eb71e046d3bab1f03265adbd3ba
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 011461b1ecba9c5ce8cf636980a97d26f2228a98
+ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111853561"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113128833"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 TLS/SSL 证书
 
@@ -341,6 +341,9 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 ### <a name="renew-certificate"></a>续订证书
 
+> [!NOTE]
+> 续订过程要求[应用服务的已知服务主体拥有对密钥保管库的所需访问权限](deploy-resource-manager-template.md#deploy-web-app-certificate-from-key-vault)。 当你通过门户导入应用服务证书时，系统会为你配置此权限，不应从密钥保管库中删除它。
+
 若要在任何时候启用证书自动续订，请选择[应用服务证书](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders)页面中的证书，然后单击左侧导航窗格的“自动续订设置”。 默认情况下，应用服务证书具有一年的有效期。
 
 选择“开”，然后单击“保存”。 如果启用了自动续订，则证书会在到期前 30 天自动续订。
@@ -389,11 +392,11 @@ az keyvault secret download \
 
 现在，你可以删除应用服务证书。 在左侧导航窗格中选择“概述” > “删除”。 在确认对话框中，键入证书名称并选择“确定”。
 
-## <a name="automate-with-scripts"></a>使用脚本自动化
+## <a name="automate-with-scripts&quot;></a>使用脚本自动化
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name=&quot;azure-cli&quot;></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 &quot;Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
@@ -405,4 +408,4 @@ az keyvault secret download \
 * [实施 HTTPS](configure-ssl-bindings.md#enforce-https)
 * [实施 TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
 * [在 Azure 应用服务中通过代码使用 TLS/SSL 证书](configure-ssl-certificate-in-code.md)
-* [常见问题解答：应用服务证书](./faq-configuration-and-management.md)
+* [常见问题解答：应用服务证书](./faq-configuration-and-management.yml)

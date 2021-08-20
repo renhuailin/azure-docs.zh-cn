@@ -3,17 +3,17 @@ title: Azure 虚拟桌面中有哪些新增功能？ - Azure
 description: Azure 虚拟桌面的新增功能和产品更新。
 author: Heidilohr
 ms.topic: overview
-ms.date: 06/02/2021
+ms.date: 07/07/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: bd8af603e8e9d9b7a6c59004092ba2a8c59bc4e2
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d597e4c33652cb5a7106943ebd9f4e8b23b496ef
+ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753820"
+ms.lasthandoff: 07/28/2021
+ms.locfileid: "114730219"
 ---
 # <a name="whats-new-in-azure-virtual-desktop"></a>Azure 虚拟桌面中有哪些新增功能？
 
@@ -42,24 +42,60 @@ Azure 虚拟桌面代理每月至少更新一次。
 
 请参阅 Azure 虚拟桌面代理的更改：
 
-- 版本 1.0.2944.1400 用于生产，版本 1.0.2990.800 用于所有验证主机池：此更新于 2021 年 4 月 27 日发布。
-- 版本 1.0.2990.800：此更新发布于 2021 年 4 月 13 日，包含以下更改：
+- 版本 1.0.3130.1200：此更新针对验证池，发布于 2021 年 5 月，包含以下更改：
+    - 一般改进和 bug 修复。
+    - 修复了获取 Intune 注册的主机池路径时出现的问题。
+    - 添加了日志记录，以便更好地诊断代理问题。
+- 版本 1.0.3050.1200：此更新针对验证池，发布于 2021 年 5 月，包含以下更改：
+    - 更新了代理运行状况的内部监视器。
+    - 更新了堆栈运行状况的重试逻辑。
+- 版本 1.0.2990.1500：此更新发布于 2021 年 4 月，包含以下更改：
     - 已更新代理错误消息。
-    - 添加例外，阻止在 Windows 7 VM 上安装非 Windows 7 代理。
+    - 添加了阻止在 Windows 7 VM 上安装非 Windows 7 代理的例外。
     - 已更新检测信号服务逻辑。
-- 版本 1.0.2944.1400：此更新发布于 2021 年 4 月 7 日，包含以下更改：
+- 版本 1.0.2944.1400：此更新发布于 2021 年 4 月，包含以下更改：
     - 在代理错误的事件查看器日志中放置了 Azure 虚拟桌面代理故障排除指南的链接。
     - 添加了额外的例外以实现更好的错误处理。
     - 添加了 WVDAgentUrlTool.exe，让客户可以检查其能访问的必需 URL。
-- 版本 1.0.2866.1500：此更新发布于 2021 年 3 月 26 日，修复了堆栈运行状况检查的一个问题。
-- 版本 1.0.2800.2802：此更新发布于 2021 年 3 月 10 日，其中包含常规改进和错误修复。
-- 版本 1.0.2800.2800：此更新发布于 2021 年 3 月 2 日，修复了反向连接问题。
-- 版本 1.0.2800.2700：此更新发布于 2021 年 2 月 10 日，其中包含常规改进和错误修复。
-- 版本 1.0.2800.2700：此更新发布于 2021 年 2 月 4 日，修复了访问遭拒的业务流程问题。
+-   版本 1.0.2866.1500：此更新发布于 2021 年 3 月，修复了堆栈运行状况检查的一个问题。
+-   版本 1.0.2800.2802：此更新发布于 2021 年 3 月，包含常规改进和错误修复。
+-   版本 1.0.2800.2800：此更新发布于 2021 年 3 月，修复了反向连接问题。
+-   版本 1.0.2800.2700：此更新发布于 2021 年 2 月，修复了访问遭拒的业务流程问题。
 
 ## <a name="fslogix-updates"></a>FSLogix 更新
 
 想知道 FSLogix 的最新更新吗？ 请查看 [FSLogix 的新增功能](/fslogix/whats-new)。
+
+## <a name="june-2021"></a>2021 年 6 月
+
+以下是 2021 年 6 月的变更：
+
+### <a name="windows-virtual-desktop-is-now-azure-virtual-desktop"></a>Windows 虚拟桌面现在是 Azure 虚拟桌面
+
+为了更好地符合我们对灵活的云桌面和远程应用程序平台的愿景，我们已将 Windows 虚拟桌面更名为 Azure 虚拟桌面。 有关详细信息，请参阅[我们博客中的公告文章](https://azure.microsoft.com/blog/azure-virtual-desktop-the-desktop-and-app-virtualization-platform-for-the-hybrid-workplace/)。
+
+### <a name="eu-uk-and-canada-geographies-are-now-generally-available"></a>在欧盟、英国和加拿大的地理区域现已正式发布
+
+欧盟、英国和加拿大的元数据服务现已正式发布。 这些新地点对于美国以外的数据主权非常重要。 有关详细信息，请参阅[我们的博客文章](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/announcing-public-preview-of-azure-virtual-desktop-service/m-p/2478401#M7314)。
+
+### <a name="the-getting-started-tool-is-now-in-public-preview"></a>入门工具现已提供公共预览版
+
+我们创建了 Azure 虚拟桌面入门工具，使首次使用的用户能够更轻松地完成部署过程。 通过简化和自动化部署过程，我们希望此工具能帮助更多用户更快速地采用 Azure 虚拟桌面，并且使他们的访问更轻松。 有关详细信息，请参阅我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/getting-started-wizard-in-azure-virtual-desktop/m-p/2451385)。
+
+### <a name="azure-virtual-desktop-pricing-calculator-updates"></a>Azure 虚拟桌面定价计算器更新
+
+我们进行了一些重大更新，以改进 Azure 虚拟桌面的 Azure 定价计算器上的定价体验，其中包括：  
+  
+- 我们已将服务名称更新为 Azure 虚拟桌面  
+- 我们还使用以下新项更新了布局：  
+   - 具有托管磁盘和文件存储带宽的“存储”部分  
+   - 显示每用户成本的自定义部分
+
+可以从[本页面](https://azure.microsoft.com/pricing/calculator/)访问定价计算器。
+
+### <a name="single-sign-on-sso-using-active-directory-federation-services-ad-fs"></a>使用 Active Directory 联合身份验证服务 (AD FS) 的单一登录 (SSO)
+
+AD FS 单一登录功能现已正式发布。 借助此功能，客户可以使用 AD FS 为 Windows 和 Web 客户端上的用户提供单一登录体验。 有关详细信息，请参阅[为 Azure 虚拟桌面配置 AD FS 单一登录](configure-adfs-sso.md)。
 
 ## <a name="may-2021"></a>2021 年 5 月
 
@@ -453,7 +489,7 @@ Azure 政府云现已正式发布。 有关详细信息，请参阅[我们的博
 
 ### <a name="teams-update"></a>Teams 更新
 
-我们对适用于 Azure 虚拟桌面的 Microsoft Teams 进行了改进。 最重要的是，Azure 虚拟桌面现在支持适用于 Windows 桌面客户端的音频和视频优化。 用户使用音频或视频进行通话和会议时，重定向可在用户之间创建直接路径，从而改善延迟。 距离越短意味着跃点越少，因此通话的视频和音频都会更流畅。 有关详细信息，请参阅[在 Azure 虚拟桌面上使用 Teams](teams-on-wvd.md)。
+我们对适用于 Azure 虚拟桌面的 Microsoft Teams 进行了改进。 最重要的是，Azure 虚拟桌面现在支持适用于 Windows 桌面客户端的音频和视频优化。 用户使用音频或视频进行通话和会议时，重定向可在用户之间创建直接路径，从而改善延迟。 距离越短意味着跃点越少，因此通话的视频和音频都会更流畅。 有关详细信息，请参阅[在 Azure 虚拟桌面上使用 Teams](./teams-on-avd.md)。
 
 ## <a name="june-2020"></a>2020 年 6 月
 

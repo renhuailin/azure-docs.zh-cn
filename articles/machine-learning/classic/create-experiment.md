@@ -9,21 +9,21 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: 843845e6099bdf43f7cd37b0f3e6f82d3ed50b4c
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 68741d273cc0461bc2c0d362c1a859146d696cad
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100520606"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112582467"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>快速入门：在机器学习工作室（经典）中创建第一个数据科学试验
 
-**适用对象：** ![这是复选标记，意味着本文适用于机器学习工作室（经典版）。](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）   ![这是 X，意味着本文适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+适用范围：![这是复选标记，意味着本文适用于](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典版）![机器学习工作室（经典版）   这是 X，意味着本文不适用于 Azure 机器学习。](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-在本快速入门中，你将在 [Azure 机器学习工作室（经典版）](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)中创建一个机器学习试验，用于根据制造商和技术规格等不同变量来预测汽车的价格。
+在本快速入门中，你将在[机器学习工作室（经典版）](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)中创建一个机器学习试验，用于根据制造商和技术规格等不同变量来预测汽车的价格。
 
 如果你不熟悉机器学习，请观看视频系列 [Data Science for Beginners](data-science-for-beginners-the-5-questions-data-science-answers.md)（适合初学者的数据科学），其中使用日常语言和概念对机器学习做了精彩的介绍。
 

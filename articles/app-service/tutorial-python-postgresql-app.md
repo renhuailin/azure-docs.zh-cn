@@ -3,7 +3,7 @@ title: 教程：使用 Postgre 部署 Python Django 应用
 description: 创建使用 PostgreSQL 数据库的 Python Web 应用并将其部署到 Azure。 本教程使用 Django 框架，应用托管在 Linux 上的 Azure 应用服务上。
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 02/02/2021
+ms.date: 07/02/2021
 ms.custom:
 - mvc
 - seodec18
@@ -11,16 +11,19 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 97b24403d5472d2f9ae701a043d4cccbb2bf03cb
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+zone_pivot_groups: postgres-server-options
+ms.openlocfilehash: a5e57cf8ac41c6452116d4a88a5892d1779e6519
+ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110617529"
+ms.lasthandoff: 07/22/2021
+ms.locfileid: "114439099"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>教程：在 Azure 应用服务中部署使用 PostgreSQL 的 Django Web 应用
 
-本教程介绍如何将数据驱动的 Python [Django](https://www.djangoproject.com/) Web 应用部署到 [Azure 应用服务](overview.md)，并将其连接到 Azure Database for Postgres 数据库。 应用服务提供高度可缩放的、可自我修补的 Web 托管服务。
+::: zone pivot="postgres-single-server"
+
+本教程介绍如何将数据驱动的 Python [Django](https://www.djangoproject.com/) Web 应用部署到 [Azure 应用服务](overview.md)，并将其连接到 Azure Database for Postgres 数据库。 也可选择上述选项来试用 PostgresSQL 灵活服务器（预览版）。 灵活服务器提供更简单的部署机制并降低持续成本。
 
 在本教程中，你将使用 Azure CLI 完成以下任务：
 
@@ -32,8 +35,27 @@ ms.locfileid: "110617529"
 > * 查看诊断日志
 > * 在 Azure 门户中管理 Web 应用
 
-你还可以使用[本教程的 Azure 门户版本](/azure/developer/python/tutorial-python-postgresql-app-portal)。
+你还可以使用[本教程的 Azure 门户版本](/azure/developer/python/tutorial-python-postgresql-app-portal?pivots=postgres-single-server)。
 
+:::zone-end
+
+::: zone pivot="postgres-flexible-server"
+
+本教程介绍如何将数据驱动的 Python [Django](https://www.djangoproject.com/) Web 应用部署到 [Azure 应用服务](overview.md)，并将其连接到 [Azure Database for PostgreSQL 灵活服务器（预览版）](../postgresql/flexible-server/index.yml)数据库。 如果无法使用 PostgreSQL 灵活服务器（预览版），请选择上面的“单一服务器”选项。 
+
+在本教程中，你将使用 Azure CLI 完成以下任务：
+
+> [!div class="checklist"]
+> * 使用 Python 和 Azure CLI 设置初始环境
+> * 创建 Azure Database for PostgreSQL 灵活服务器数据库
+> * 将代码部署到 Azure 应用服务并连接到 PostgreSQL 灵活服务器
+> * 更新代码并重新部署
+> * 查看诊断日志
+> * 在 Azure 门户中管理 Web 应用
+
+你还可以使用[本教程的 Azure 门户版本](/azure/developer/python/tutorial-python-postgresql-app-portal?pivots=postgres-flexible-server)。
+
+:::zone-end
 
 ## <a name="1-set-up-your-initial-environment"></a>1.设置初始环境
 
@@ -99,9 +121,25 @@ git clone https://github.com/Azure-Samples/djangoapp
 cd djangoapp
 ```
 
+::: zone pivot="postgres-flexible-server"
+
+对于灵活服务器（预览版），请使用示例的灵活服务器分支，其中包含一些必要的更改，例如，如何设置数据库服务器 URL，以及如何根据 Azure PostgreSQL 灵活服务器的要求将 `'OPTIONS': {'sslmode': 'require'}` 添加到 Django 数据库配置。
+
+```terminal
+git checkout flexible-server
+```
+
+::: zone-end
+
 # <a name="download"></a>[下载](#tab/download)
 
-访问 [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp)，选择“克隆”，然后选择“下载 ZIP” 。 
+请访问 [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp)。
+
+::: zone pivot="postgres-flexible-server"
+对于灵活服务器（预览版），选择显示“master”的分支控件，并改为选择灵活服务器分支。
+::: zone-end
+
+ 选择“克隆”，然后选择“下载 ZIP”。 
 
 将 ZIP 文件解压缩到名为“djangoapp”的文件夹中。 
 
@@ -122,6 +160,7 @@ Djangoapp 示例包含数据驱动的 Django 投票应用，该应用是根据 D
 
 ## <a name="3-create-postgres-database-in-azure"></a>3.在 Azure 中创建 Postgres 数据库
 
+::: zone pivot="postgres-single-server"
 <!-- > [!NOTE]
 > Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. -->
 
@@ -136,7 +175,7 @@ az extension add --name db-up
 然后使用 [`az postgres up`](/cli/azure/postgres#az_postgres_up) 命令在 Azure 中创建 Postgres 数据库：
 
 ```azurecli
-az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgres-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
+az postgres up --resource-group DjangoPostgres-tutorial-rg --location centralus --sku-name B_Gen5_1 --server-name <postgres-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
 ```
 
 - 将 \<postgres-server-name> 替换为在整个 Azure 中唯一的名称（服务器终结点将变为 `https://<postgres-server-name>.postgres.database.azure.com`）。 良好的模式是结合使用公司名称和其他唯一值。
@@ -162,6 +201,45 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 > [!TIP]
 > `-l <location-name>` 可以设置为任一个 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。 可以使用 [`az account list-locations`](/cli/azure/account#az_account_list_locations) 命令获取可供你的订阅使用的区域。 对于生产应用，请将数据库和应用放置在同一位置。
 
+::: zone-end
+
+::: zone pivot="postgres-flexible-server"
+
+1. 启用 Azure CLI 的参数缓存，以便不需要为每个命令提供这些参数。 （缓存值保存在 .azure 文件夹中。）
+
+    ```azurecli
+    az config param-persist on 
+    ```
+
+1. 创建一个[资源组](../azure-resource-manager/management/overview.md#terminology)（如果需要，可以更改名称）。 资源组名称会进行缓存并自动应用于后续命令。
+
+    ```azurecli
+    az group create --name Python-Django-PGFlex-rg --location centralus
+    ```
+
+1. 创建数据库服务器（此过程需要几分钟才能完成）：
+
+    ```azurecli
+    az postgres flexible-server create --sku-name Standard_B1ms --public-access all
+    ```
+    
+    如果无法识别 `az` 命令，请确保按照[设置初始环境](#1-set-up-your-initial-environment)中所述安装 Azure CLI。
+    
+    [az postgres flexible-server create](/cli/azure/postgres/flexible-server#az_postgres_flexible_server_create) 命令执行以下操作，这需要几分钟的时间：
+    
+    - 如果还没有缓存的名称，请创建一个默认资源组。
+    - 创建一个 PostgreSQL 灵活服务器：
+        - 默认情况下，命令使用生成的名称，如 `server383813186`。 你可以使用 `--name` 参数指定自己使用的名称。 该名称在全 Azure 中必须是唯一的。
+        - 该命令使用成本最低的 `Standard_B1ms` 定价层。 省略 `--sku-name` 参数以使用默认 `Standard_D2s_v3` 层。
+        - 该命令使用从上一个 `az group create` 命令缓存的资源组和位置，在本例中是 `centralus` 区域中的 `Python-Django-PGFlex-rg` 资源组。
+    - 使用用户名和密码创建一个管理员帐户。 可以使用 `--admin-user` 和 `--admin-password` 参数直接指定这些值。
+    - 创建一个名称默认为 `flexibleserverdb` 的数据库。 你可以使用 `--database-name` 参数指定数据库名称。
+    - 启用完全公共访问权限，你可以使用 `--public-access` 参数进行控制。
+    
+1. 当命令完成后，将命令的 JSON 输出复制到文件，因为本教程后面的内容需要输出中的值，特别是主机、用户名和密码以及数据库名称。
+
+::: zone-end
+
 遇到问题？ [请告诉我们](https://aka.ms/DjangoCLITutorialHelp)。
 
 ## <a name="4-deploy-the-code-to-azure-app-service"></a>4.将代码部署到 Azure 应用服务
@@ -170,12 +248,14 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 
 ### <a name="41-create-the-app-service-app"></a>4.1 创建应用服务应用
 
+::: zone pivot="postgres-single-server"
+
 在终端中，请确保位于包含应用代码的“djangoapp”存储库文件夹中。
 
 使用 [`az webapp up`](/cli/azure/webapp#az_webapp_up) 命令创建应用服务应用（主机进程）：
 
 ```azurecli
-az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --plan DjangoPostgres-tutorial-plan --sku B1 --name <app-name>
+az webapp up --resource-group DjangoPostgres-tutorial-rg --location centralus --plan DjangoPostgres-tutorial-plan --sku B1 --name <app-name>
 ```
 <!-- without --sku creates PremiumV2 plan -->
 
@@ -193,6 +273,36 @@ az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --pl
 - 在启用了生成自动化的情况下，使用 ZIP 部署上传存储库。
 - 将常用参数（例如资源组和应用服务计划的名称）缓存到文件“.azure/config”中。因此，不需要使用后面的命令指定所有相同的参数。 例如，若要在进行更改后重新部署应用，则无需任何参数即可再次运行 `az webapp up`。 但是，来自 CLI 扩展的命令（如 `az postgres up`）目前不使用缓存，因此在初次使用 `az webapp up` 时需要在此处指定资源组和位置。
 
+::: zone-end
+
+::: zone pivot="postgres-flexible-server"
+
+1. 在终端中，请确保位于包含应用代码的“djangoapp”存储库文件夹中。
+
+1. 切换到示例应用的 `flexible-server` 分支。 此分支包含 PostgreSQL 灵活服务器所需的特定配置：
+
+    ```cmd
+    git checkout flexible-server
+    ```
+
+1. 运行以下 [`az webapp up`](/cli/azure/webapp#az_webapp_up) 命令，为应用创建应用服务主机：
+
+    ```azurecli
+    az webapp up --name <app-name> --sku B1 
+    ```
+    <!-- without --sku creates PremiumV2 plan -->
+        
+    此命令执行以下操作（可能需要几分钟的时间），使用上一个 `az group create` 命令中缓存的资源组和位置（本例中是 `centralus` 区域中的组 `Python-Django-PGFlex-rg`）。
+    
+    <!-- - Create the resource group if it doesn't exist. `--resource-group` is optional. -->
+    <!-- No it doesn't. az webapp up doesn't respect --resource-group -->
+    - 在“基本”定价层 (B1) 中创建[应用服务计划](overview-hosting-plans.md)。 可以省略 `--sku` 以使用默认值。
+    - 创建应用服务应用。
+    - 为应用启用默认日志记录。
+    - 在启用了生成自动化的情况下，使用 ZIP 部署上传存储库。
+
+::: zone-end
+
 成功部署后，该命令会生成类似于以下示例的 JSON 输出：
 
 ![示例 az webapp up 命令输出](./media/tutorial-python-postgresql-app/az-webapp-up-output.png)
@@ -207,13 +317,29 @@ az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --pl
 
 若要在应用服务中设置环境变量，请通过以下 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) 命令创建“应用设置”。
 
+::: zone pivot="postgres-single-server"
+
 ```azurecli
-az webapp config appsettings set --settings DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
+az webapp config appsettings set --settings DBHOST="<postgres-server-name>" DBUSER="<username>" DBPASS="<password>" DBNAME="pollsdb" 
 ```
 
 - 将 *\<postgres-server-name>* 替换为之前通过 `az postgres up` 命令使用的名称。 Azuresite/production.py 中的代码会自动追加 `.postgres.database.azure.com` 来创建完整的 Postgres 服务器 URL。
 - 将 \<username> 和 \<password> 替换为你先前在 `az postgres up` 命令中使用的管理员凭据，或 `az postgres up` 为你生成的评估。 azuresite/production.py 中的代码会自动通过 `DBUSER` 和 `DBHOST` 构造完整的 Postgres 用户名，因此请勿包含 `@server` 部分。 （此外，如前所述，不应在任何一个值中使用 `$` 字符，因为它对 Linux 环境变量具有特殊含义。）
 - 从 .azure/config 文件中的缓存值提取资源组和应用名称。
+
+::: zone-end
+
+::: zone pivot="postgres-flexible-server"
+
+```azurecli
+az webapp config appsettings set --settings DBHOST="<host>" DBUSER="<username>" DBPASS="<password>" DBNAME="flexibleserverdb" 
+```
+
+将主机、用户名和密码的值替换为前面使用的 `az postgres flexible-server create` 命令的输出值。 主机应为类似于 `server383813186.postgres.database.azure.com` 的 URL。
+
+如果使用 `az postgres flexible-server create` 命令更改了 `flexibleserverdb`，则还要将其替换为数据库名称。
+
+::: zone-end
 
 在 Python 代码中，可以使用 `os.environ.get('DBHOST')` 之类的语句来访问这些设置（作为环境变量）。 有关详细信息，请参阅[访问环境变量](configure-language-python.md#access-environment-variables)。
 
@@ -223,15 +349,11 @@ az webapp config appsettings set --settings DBHOST="<postgres-server-name>" DBNA
 
 Django 数据库迁移会确保 Azure 数据库上的 PostgreSQL 中的架构与代码中描述的架构相匹配。
 
-1. 通过导航至以下 URL 并使用 Azure 帐户凭据（而不是数据库服务器凭据）登录来在浏览器中建立 SSH 会话。
+1. 运行 `az webpp ssh` 以在浏览器中打开 Web 应用的 SSH 会话：
 
+    ```azurecli
+    az webapp ssh
     ```
-    https://<app-name>.scm.azurewebsites.net/webssh/host
-    ```
-
-    将 `<app-name>` 替换为之前在 `az webapp up` 命令中使用的名称。
-
-    可以使用 [`az webapp ssh`](/cli/azure/webapp#az_webapp_ssh) 命令以其他方式连接到 SSH 会话。 在 Windows 上，此命令需要 Azure CLI 2.18.0 或更高版本。
 
     如果你无法连接到 SSH 会话，则表示应用本身已启动失败。 [请查看诊断日志](#6-stream-diagnostic-logs)以了解详细信息。 例如，如果你没有在上一部分中创建必要的应用设置，则日志将指示 `KeyError: 'DBNAME'`。
 
@@ -255,15 +377,19 @@ Django 数据库迁移会确保 Azure 数据库上的 PostgreSQL 中的架构与
     
 ### <a name="44-create-a-poll-question-in-the-app"></a>4.4 在应用中创建投票问题
 
-1. 在浏览器中打开 URL `http://<app-name>.azurewebsites.net`。 应用应显示“投票应用”和“无可用投票”消息，这是因为数据库中尚无特定投票。
+1. 打开应用网站。 应用应显示“投票应用”和“无可用投票”消息，这是因为数据库中尚无特定投票。
+
+    ```azurecli
+    az webapp browse
+    ```
 
     如果看到“应用程序错误”，可能是由于你没有在上一步（[配置环境变量以连接数据库](#42-configure-environment-variables-to-connect-the-database)）中创建所需的设置，或者这些值包含错误。 运行命令 `az webapp config appsettings list` 以检查设置。 还可以[检查诊断日志](#6-stream-diagnostic-logs)以查看应用启动过程中的特定错误。 例如，如果你未创建设置，则日志将显示错误 `KeyError: 'DBNAME'`。
 
     更新设置以更正所有错误后，请等待应用重启，然后刷新浏览器。
 
-1. 浏览到 `http://<app-name>.azurewebsites.net/admin`。 使用上一部分中的 Django 超级用户凭据登录（`root` 和 `Pollsdb1`）。 在“投票”下，选择“问题”旁边的“添加”，创建一个包含一些选项的投票问题  。
+1. 通过将 `/admin` 追加到 URL（例如 `http://<app-name>.azurewebsites.net/admin`），浏览到 Web 应用的管理页。 使用上一部分中的 Django 超级用户凭据登录（`root` 和 `Pollsdb1`）。 在“投票”下，选择“问题”旁边的“添加”，创建一个包含一些选项的投票问题  。
 
-1. 再次浏览到 `http://<app-name>.azurewebsites.net`，确认现在是否向用户显示了问题。 回答你希望如何在数据库中生成某些数据。
+1. 返回到主网站 (`http://<app-name>.azurewebsites.net`)，确认现在是否向用户显示了问题。 回答你希望如何在数据库中生成某些数据。
 
 祝贺你！ 你将在适用于 Linux 的 Azure 应用服务中使用主动 Postgres 数据库运行 Python Django Web 应用。
 
@@ -399,7 +525,7 @@ python manage.py migrate
 
 ### <a name="55-review-app-in-production"></a>5.5 在生产环境中查看应用
 
-浏览到“`http://<app-name>.azurewebsites.net`”并再次在生产中测试应用。 （因为你仅更改了数据库字段的长度，所以仅在创建问题时尝试输入较长的响应时，更改才会比较明显。）
+再次浏览到应用（使用 `az webapp browse` 或导航到 `http://<app-name>.azurewebsites.net`），并在生产环境中再次测试该应用。 （因为你仅更改了数据库字段的长度，所以仅在创建问题时尝试输入较长的响应时，更改才会比较明显。）
 
 遇到问题？ 请先参阅[故障排除指南](configure-language-python.md#troubleshooting)，如果问题未能解决，请[告诉我们](https://aka.ms/DjangoCLITutorialHelp)。
 
@@ -445,10 +571,10 @@ az webapp log tail
 如果想要保留应用或者继续查看其他教程，请直接跳转到[后续步骤](#next-steps)。 否则，若要避免产生持续的费用，你可以删除为本教程创建的资源组：
 
 ```azurecli
-az group delete --no-wait
+az group delete --name Python-Django-PGFlex-rg --no-wait
 ```
 
-此命令使用 .azure/config 文件中缓存的资源组名称。 通过删除资源组，还可以解除分配并删除其中包含的所有资源。
+通过删除资源组，还可以解除分配并删除其中包含的所有资源。 在运行该命令之前，请确认不再需要该组中的资源。
 
 删除所有资源可能需要一些时间。 `--no-wait` 参数允许命令立即返回。
 

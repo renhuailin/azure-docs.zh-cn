@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/04/2021
+ms.date: 07/07/2021
 ms.author: alkohli
-ms.openlocfilehash: 406e31320e8f7d0d95bfef44f620505989b3ae9f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 488b6d791afe477bb1aecacd0ecb15d54dcb43da
+ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746692"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114221311"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>教程：使用 GPU 安装 Azure Stack Edge Pro
 
@@ -21,7 +21,7 @@ ms.locfileid: "111746692"
 
 安装可能需要大约两小时才能完成。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 拆开设备包装
@@ -228,6 +228,7 @@ ms.locfileid: "111746692"
 
     - 如果连接端口 2，请使用 1-GbE RJ-45 网线。
     - 对于 10/25-GbE 网络接口，请使用 SFP+ 铜缆或光纤。 如果使用光纤，请为 SFP 适配器使用光纤接口。
+    - 对于网络功能管理器部署，请确保端口 5 和端口 6 已连接。 有关详细信息，请参阅[教程：在 Azure Stack Edge 上部署网络功能（预览版）](../network-function-manager/deploy-functions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

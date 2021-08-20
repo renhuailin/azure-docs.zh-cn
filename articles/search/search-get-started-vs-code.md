@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 03/10/2021
-ms.openlocfilehash: 3237a32a90e3964644ff84958a065656cdf7f3ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 991dbb9027d247834f63f41de8d02d893ba9bb46
+ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103015839"
+ms.lasthandoff: 06/24/2021
+ms.locfileid: "112583691"
 ---
 # <a name="get-started-with-azure-cognitive-search-using-visual-studio-code"></a>通过 Visual Studio Code 开始使用 Azure 认知搜索
 
@@ -22,7 +22,7 @@ ms.locfileid: "103015839"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!IMPORTANT] 
-> 此功能目前处于公开预览状态。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
+> 此技能根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)处于公开预览状态。 
 
 ## <a name="prerequisites"></a>先决条件
 

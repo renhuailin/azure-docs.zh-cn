@@ -5,13 +5,13 @@ author: Juliako
 ms.author: juliako
 ms.service: azure-video-analyzer
 ms.topic: tutorial
-ms.date: 04/01/2021
-ms.openlocfilehash: 82edf5b282f7b68a7d4d1d7909cfe653a65c175b
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 06/01/2021
+ms.openlocfilehash: 0f0ee0a7288a3ef07f0aa8fa3c04660cac1ad0b5
+ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746549"
+ms.lasthandoff: 07/23/2021
+ms.locfileid: "114604167"
 ---
 # <a name="tutorial-live-video-with-computer-vision-for-spatial-analysis-preview"></a>教程：使用计算机视觉空间分析（预览版）功能分析实时视频
 
@@ -49,7 +49,7 @@ ms.locfileid: "111746549"
 
 ## <a name="set-up-azure-resources"></a>设置 Azure 资源
 
-1. 若要运行空间分析容器，需要一台搭载 [NVIDIA Tesla T4 GPU](https://www.nvidia.com/data-center/tesla-t4/) 的计算设备。 建议使用具有 GPU 加速功能的 [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/)，但该容器可在主机上安装了 [Ubuntu Desktop 18.04 LTS](http://releases.ubuntu.com/18.04/) 的任何其他台式机上运行。
+1. 若要运行空间分析容器，需要一台搭载 [NVIDIA Tesla T4 GPU](https://www.nvidia.com/en-us/data-center/tesla-t4/) 的计算设备。 建议使用具有 GPU 加速功能的 [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/)，但该容器可在主机上安装了 [Ubuntu Desktop 18.04 LTS](http://releases.ubuntu.com/18.04/) 的任何其他台式机上运行。
 
    #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge 设备](#tab/azure-stack-edge)
 
@@ -125,7 +125,7 @@ ms.locfileid: "111746549"
 
 ## <a name="create-the-computer-vision-resource"></a>创建计算机视觉资源
 
-你需要通过 [Azure 门户](../../iot-edge/how-to-deploy-modules-portal.md)或 Azure CLI 创建计算机视觉类型的 Azure 资源。 如果对容器的访问请求获得批准并且你已注册 Azure 订阅 ID，你将能够创建资源。 转到 https://aka.ms/csgate 提交你的用例和你的 Azure 订阅 ID。 你需要使用在“请求访问”窗体上提供的同一 Azure 订阅来创建 Azure 资源。
+你需要通过 [Azure 门户](../../iot-edge/how-to-deploy-modules-portal.md)或 Azure CLI 创建计算机视觉类型的 Azure 资源。 
 
 ### <a name="gathering-required-parameters"></a>收集必需的参数
 
@@ -437,7 +437,7 @@ personZoneEvent 的输出示例（来自 `SpatialAnalysisPersonZoneCrossingOpera
 | 名称                      | 类型    | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | zones                     | list    | 区域列表。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| name                      | 字符串  | 此区域的友好名称。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| name                      | string  | 此区域的友好名称。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | polygon                   | 字符串  | 每个值对表示多边形顶点的 x、y。 多边形表示跟踪或统计其中人数的区域。 Float 值表示顶点相对于左上角的位置。 要计算 x、y 的绝对值，可以用这些值乘以帧大小。 当人员在区域内的像素数大于此像素数时，将发出 threshold float 事件。 当类型为 zonecrossing 时，默认值为 48；当时间为 DwellTime 时，默认值为 16。 这些都是实现最大准确性的推荐值。 |
 | eventType                 | 字符串  | 对于 cognitiveservices.vision.spatialanalysis-personcrossingpolygon，此值应为 zonecrossing 或 zonedwelltime。                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | 触发器                   | 字符串  | 发送事件的触发器的类型。 支持的值：“事件”：有人进入或离开区域时触发。                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
@@ -492,9 +492,16 @@ personZoneEvent 的输出示例（来自 `SpatialAnalysisPersonZoneCrossingOpera
 ```
 
 ### <a name="more-operations"></a>更多操作：
+`spatialAnalysis` 模块提供不同的操作：
 
+- **personCount**
+- **personDistance**
+- **personCrossingLine**
+- **personZoneCrossing**
+- **customOperation**
+<br></br>
 <details>
-  <summary>单击以展开</summary>
+  <summary>单击进行扩展，并查看适用于每个操作的不同配置选项。</summary>
 
 ### <a name="person-line-crossing"></a>人员越线
 
@@ -503,7 +510,7 @@ personZoneEvent 的输出示例（来自 `SpatialAnalysisPersonZoneCrossingOpera
 | 名称                      | 类型    | 说明                                                                                                                                                                                                                                                                   |
 | ------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | lines                     | list    | 线列表。                                                                                                                                                                                                                                                                |
-| name                      | 字符串  | 此线的友好名称。                                                                                                                                                                                                                                                  |
+| name                      | string  | 此线的友好名称。                                                                                                                                                                                                                                                  |
 | line                      | 字符串  | 每个值对表示线条的起点和终点。 Float 值表示顶点相对于左上角的位置。 要计算 x、y 的绝对值，可以用这些值乘以帧大小。                            |
 | outputFrequency           | int     | 发出事件的比率。 如果 output_frequency = X，则每 X 个事件发出一次，例如 output_frequency = 2 表示每隔一个事件输出一次。 output_frequency 适用于 event 和 interval。                                                       |
 | 焦点                     | 字符串  | 人员边界框内的点位置用于计算事件数。 焦点的值可以是 footprint（人员足迹）、bottom_center（人员边界框的底部中心）、center（人员边界框的中心）。 默认值为 footprint。 |
@@ -564,7 +571,7 @@ personZoneEvent 的输出示例（来自 `SpatialAnalysisPersonZoneCrossingOpera
 | 名称                      | 类型    | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | zones                     | list    | 区域列表。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| name                      | 字符串  | 此区域的友好名称。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| name                      | string  | 此区域的友好名称。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | polygon                   | 字符串  | 每个值对表示多边形顶点的 x、y。 多边形表示跟踪或统计其中人数的区域。 Float 值表示顶点相对于左上角的位置。 要计算 x、y 的绝对值，可以用这些值乘以帧大小。 当人员在区域内的像素数大于此像素数时，将发出 threshold float 事件。 当类型为 zonecrossing 时，默认值为 48；当时间为 DwellTime 时，默认值为 16。 这些都是实现最大准确性的推荐值。 |
 | outputFrequency           | int     | 发出事件的比率。 如果 output_frequency = X，则每 X 个事件发出一次，例如 output_frequency = 2 表示每隔一个事件输出一次。 output_frequency 适用于 event 和 interval。                                                                                                                                                                                                                                                                                                                                                     |
 | 焦点                     | 字符串  | 人员边界框内的点位置用于计算事件数。 焦点的值可以是 footprint（人员足迹）、bottom_center（人员边界框的底部中心）、center（人员边界框的中心）。 默认值为 footprint。                                                                                                                                                                                                                                                                                               |
@@ -609,7 +616,7 @@ personZoneEvent 的输出示例（来自 `SpatialAnalysisPersonZoneCrossingOpera
 | 名称                      | 类型    | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | zones                     | list    | 区域列表。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| name                      | 字符串  | 此区域的友好名称。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| name                      | string  | 此区域的友好名称。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | polygon                   | 字符串  | 每个值对表示多边形顶点的 x、y。 多边形表示跟踪或统计其中人数的区域。 Float 值表示顶点相对于左上角的位置。 要计算 x、y 的绝对值，可以用这些值乘以帧大小。 当人员在区域内的像素数大于此像素数时，将发出 threshold float 事件。 当类型为 zonecrossing 时，默认值为 48；当时间为 DwellTime 时，默认值为 16。 这些都是实现最大准确性的推荐值。 |
 | outputFrequency           | int     | 发出事件的比率。 如果 output_frequency = X，则每 X 个事件发出一次，例如 output_frequency = 2 表示每隔一个事件输出一次。 output_frequency 适用于 event 和 interval。                                                                                                                                                                                                                                                                                                                                                     |
 | 触发器                   | 字符串  | 发送事件的触发器的类型。 在计数发生更改时，支持的值为 event，表示发送事件；或者为 interval，表示定期发送事件，而不考虑计数是否发生更改。                                                                                                                                                                                                                                                                                                                                                           |
@@ -734,8 +741,7 @@ personZoneEvent 的输出示例（来自 `SpatialAnalysisPersonZoneCrossingOpera
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/record-stream-inference-data-with-video/bounding-box.png" alt-text="“边界框”图标":::
 
-> [!NOTE]
-> 由于视频源是模拟相机源的容器，因此视频中的时间戳与启用和停用实时管道的时间有关。
+[!INCLUDE [activate-deactivate-pipeline](./includes/common-includes/activate-deactivate-pipeline.md)]
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -819,7 +825,7 @@ spatialanalysis 是一个大型容器，其启动时间最多可能需要 30 秒
 要尝试 `spatialAnalysis` 模块提供的不同操作，请参阅以下 pipelineTopologies：
 
 - [personCount](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-count-operation-topology.json)
-- [personDistance](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-distance-pperation-topology.json)
+- [personDistance](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-distance-operation-topology.json)
 - [personCrossingLine](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-line-crossing-operation-topology.json)
 - [personZoneCrossing](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/person-zone-crossing-operation-topology.json)
 - [customOperation](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/spatial-analysis/custom-operation-topology.json)

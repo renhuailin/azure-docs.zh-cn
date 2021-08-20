@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: overview
 ms.date: 03/11/2021
-ms.openlocfilehash: 573e0dc028391c2eea9d412bfe68c07a2e95aec3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 43d702f3294d728b196de69790f543dc67491400
+ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963142"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113433919"
 ---
 # <a name="quickstart-create-a-serverless-simple-chat-application-with-azure-functions-and-azure-web-pubsub-service"></a>快速入门：使用 Azure Functions 和 Azure Web PubSub 服务创建简单的无服务器聊天应用程序 
 
@@ -27,6 +27,12 @@ Azure Web PubSub 服务可帮助你轻松地使用 Websocket 和发布-订阅模
    > 有关支持的 Node.js 版本的详细信息，请参阅 [Azure Functions 运行时版本文档](../azure-functions/functions-versions.md#languages)。
 
 安装 [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing)（2.7.1505 或更高版本）以在本地运行 Azure Functions 应用。
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+安装代码编辑器，如 [Visual Studio Code](https://code.visualstudio.com/)。
+
+安装 [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing)（版本 3 或更高版本）以在本地运行 Azure Functions 应用。
 
 ---
 
@@ -51,6 +57,8 @@ Azure Web PubSub 服务可帮助你轻松地使用 Websocket 和发布-订阅模
 - 在浏览器中，打开“Azure 门户”，确认已成功创建前面部署的 Web PubSub 服务实例。 导航到该实例。
 - 选择“密钥”并复制连接字符串。
 
+:::image type="content" source="media/quickstart-serverless/copy-connection-string.png" alt-text="复制 Web PubSub 连接字符串的屏幕截图。":::
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 - 更新函数配置。
@@ -59,7 +67,7 @@ Azure Web PubSub 服务可帮助你轻松地使用 Websocket 和发布-订阅模
   在 local.settings.json 中需要进行这些更改，然后保存该文件。
     - 将占位符 <connection-string> 替换为从 Azure 门户中复制的值，以便进行 `WebPubSubConnectionString` 设置 。 
     - 对于 `AzureWebJobsStorage` 设置，这是必需的，因为 [Azure Functions 需要 Azure 存储帐户](../azure-functions/storage-considerations.md)。
-        - 如果 Azure 存储模拟器在本地运行，请保留“UseDevelopmentStorage=true”原始设置。
+        - 如果 [Azure 存储模拟器](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409)在本地运行，请保留“UseDevelopmentStorage=true”原始设置。
         - 如果有 Azure 存储连接字符串，请用它来替换值。
  
 - JavaScript 函数将组织到文件夹中。 每个文件夹中有两个文件：`function.json` 定义函数中使用的绑定，`index.js` 是函数的主体。 此函数应用中有几个 HTTP 触发的函数：
@@ -76,11 +84,39 @@ Azure Web PubSub 服务可帮助你轻松地使用 Websocket 和发布-订阅模
     func start
     ```
 
+# <a name="c"></a>[C#](#tab/csharp)
+
+- 更新函数配置。
+
+  打开克隆的存储库中的 /samples/functions/csharp/simplechat 文件夹。 编辑 local.settings.json 以添加服务连接字符串。
+  在 local.settings.json 中需要进行这些更改，然后保存该文件。
+    - 将占位符 <connection-string> 替换为从 Azure 门户中复制的值，以便进行 `WebPubSubConnectionString` 设置 。 
+    - 对于 `AzureWebJobsStorage` 设置，这是必需的，因为 [Azure Functions 需要 Azure 存储帐户](../azure-functions/storage-considerations.md)。
+        - 如果 [Azure 存储模拟器](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409)在本地运行，请保留“UseDevelopmentStorage=true”原始设置。
+        - 如果有 Azure 存储连接字符串，请用它来替换值。
+
+- C# 函数是由文件 Functions.cs 组织的。 此函数应用中有几个 HTTP 触发的函数：
+
+    - login：这是 HTTP 触发的函数。 它使用 webPubSubConnection 输入绑定生成并返回有效的服务连接信息。
+    - connected：这是 `WebPubSubTrigger` 触发的函数。 在请求正文中接收聊天消息，并通过多个任务将消息广播到所有连接的客户端应用程序。
+    - broadcast - 这是 `WebPubSubTrigger` 触发的函数。 在请求正文中接收聊天消息，并通过单个任务将消息广播到所有连接的客户端应用程序。
+    - connect 和 disconnect - 它们是 `WebPubSubTrigger` 触发的函数。 处理 connect 事件和 disconnect 事件。
+
+- 在终端中，确保自己位于 /samples/functions/csharp/simplechat 文件夹中。 安装扩展并运行函数应用。
+
+    ```bash
+    func extensions install
+
+    func start
+    ```
+
+---
+
 - 本地函数将使用在 `local.settings.json` 文件中定义的端口。 若要使其在公用网络中可用，需要使用 [ngrok](https://ngrok.com) 来公开此终结点。 运行下面的命令，将获得一个转发终结点，例如： http://{ngrok-id}.ngrok.io -> http://localhost:7071 。
 
     ```bash
     ngrok http 7071
-    ```    
+    ``` 
 
 - 在 Azure Web PubSub 服务中设置 `Event Handler`。 转到“Azure 门户”>“查找 Web PubSub 资源”>“设置” 。 将新的中心设置映射添加到使用中的一个函数，如下所示。 将 {ngrok-id} 替换为自己的值。
 
@@ -89,7 +125,7 @@ Azure Web PubSub 服务可帮助你轻松地使用 Websocket 和发布-订阅模
    - 用户事件模式：*
    - 系统事件：connect、connected、disconnected。
 
----
+:::image type="content" source="media/quickstart-serverless/set-event-hanlder.png" alt-text="设置事件处理程序的屏幕截图。":::
 
 ## <a name="run-the-web-application"></a>运行 Web 应用程序
 
@@ -114,3 +150,16 @@ Azure Web PubSub 服务可帮助你轻松地使用 Websocket 和发布-订阅模
 1. 在打开的窗口中选择资源组，然后选择“删除资源组”。
 
 1. 在新窗口中键入要删除的资源组的名称，然后选择“删除”。
+
+## <a name="next-steps"></a>后续步骤
+
+在本快速入门中，你已了解如何运行简单的无服务器聊天应用程序。 现在，可以开始构建自己的应用程序。 
+
+> [!div class="nextstepaction"]
+> [快速入门：使用 Azure Web PubSub 创建简单的聊天室](https://azure.github.io/azure-webpubsub/getting-started/create-a-chat-app/js-handle-events)
+
+> [!div class="nextstepaction"]
+> [适用于 Azure Functions 的 Azure Web PubSub 绑定](https://azure.github.io/azure-webpubsub/references/functions-bindings)
+
+> [!div class="nextstepaction"]
+> [了解更多 Azure Web PubSub 示例](https://github.com/Azure/azure-webpubsub/tree/main/samples)

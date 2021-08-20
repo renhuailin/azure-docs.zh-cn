@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/29/2020
+ms.date: 06/25/2021
 ms.author: jeedes
-ms.openlocfilehash: f756e738989775bf9c06b44a03f002c14f42e3ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 85c59b42532b56d2f61cbd3a7f7e2f9e7aeb557a
+ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96182319"
+ms.lasthandoff: 06/28/2021
+ms.locfileid: "112988100"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Sonarqube 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "96182319"
 * 让用户使用其 Azure AD 帐户自动登录到 Sonarqube。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -37,12 +37,12 @@ ms.locfileid: "96182319"
 
 本教程在测试环境中配置并测试 Azure AD SSO。
 
-* Sonarqube 支持 **SP** 发起的 SSO
+* Sonarqube 支持 SP 发起的 SSO。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
-## <a name="adding-sonarqube-from-the-gallery"></a>从库中添加 Sonarqube
+## <a name="add-sonarqube-from-the-gallery"></a>从库中添加 Sonarqube
 
 要配置 Sonarqube 与 Azure AD 的集成，需要从库中将 Sonarqube 添加到托管 SaaS 应用列表。
 
@@ -72,13 +72,15 @@ ms.locfileid: "96182319"
 
 1. 在 Azure 门户的“Sonarqube”应用程序集成页上，找到“管理”部分，然后选择“单一登录”  。
 1. 在“选择单一登录方法”页上选择“SAML” 。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
+1. 在“设置 SAML 单一登录”页面上，单击“基本 SAML 配置”旁边的铅笔图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
+1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    在“登录 URL”文本框中，键入 URL  ：
+    a. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://servicessonar.<YOUR_ORGANIZATION>.com`
+
+    b. 在“登录 URL”文本框中，键入以下 URL 之一： 
 
     * **对于生产环境**
 
@@ -87,6 +89,9 @@ ms.locfileid: "96182319"
     * **对于开发环境**
 
         `https://servicescode-dev.westus.cloudapp.azure.com`
+
+    > [!NOTE]
+    > 此值不是真实值。 需要使用实际的回复 URL 更新该值（本教程稍后将会介绍）。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -104,7 +109,7 @@ ms.locfileid: "96182319"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -118,7 +123,6 @@ ms.locfileid: "96182319"
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。
-
 1. 在“添加分配”对话框中，单击“分配”按钮。  
 
 ## <a name="configure-sonarqube-sso"></a>配置 Sonarqube SSO
@@ -131,12 +135,14 @@ ms.locfileid: "96182319"
     1. IdP 实体 ID
     2. 登录 URL
     3. X.509 证书 
+
 1. 保存所有详细信息。
-    ![saml 插件 IDP](./media/sonarqube-tutorial/sso-idp-metadata.png)
+
+    ![saml 插件 IDP](./media/sonarqube-tutorial/metadata.png)
 
 1. 在 **SAML** 页上执行以下步骤：
 
-    ![Sonarqube 配置](./media/sonarqube-tutorial/config01.png)
+    ![Sonarqube 配置](./media/sonarqube-tutorial/configuration.png)
 
     a. 将“启用”  选项切换到“是”  。
 
@@ -166,11 +172,11 @@ ms.locfileid: "96182319"
 
 在本部分，你将使用以下选项测试 Azure AD 单一登录配置。 
 
-1. 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Sonarqube 登录 URL，可以在其中启动登录流。 
+* 在 Azure 门户中单击“测试此应用程序”。 这会重定向到 Sonarqube 登录 URL，可以在其中启动登录流。 
 
-2. 直接转到 Sonarqube 登录 URL，并在其中启动登录流。
+* 直接转到 Sonarqube 登录 URL，并在其中启动登录流。
 
-3. 可以使用 Microsoft 访问面板。 在访问面板中单击 Sonarqube 磁贴时，将会重定向到 Sonarqube 登录 URL。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](../user-help/my-apps-portal-end-user-access.md)（访问面板简介）。
+* 你可使用 Microsoft 的“我的应用”。 在“我的应用”中单击 Sonarqube 磁贴时，将会重定向到 Sonarqube 登录 URL。 有关“我的应用”的详细信息，请参阅[“我的应用”简介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
