@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 4278a3b0e022015a1e12542cac7699590150b5e4
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 25cfca98857d33a90b2c1f11692d83ae30911bb7
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602578"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110480854"
 ---
 # <a name="plan-a-virtual-machine-offer"></a>规划虚拟机产品/服务
 
@@ -23,7 +23,7 @@ ms.locfileid: "114602578"
 
 ### <a name="technical-fundamentals"></a>技术基础知识
 
-设计、生成和测试产品/服务的过程需要一些时间，并需要在 Azure 平台和生成产品/服务相关技术方面有一定的专业知识。 你的工程团队应拥有 [Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/)、[Azure 存储](https://azure.microsoft.com/services/?filter=storage#storage)和 [Azure 网络](https://azure.microsoft.com/services/?filter=networking#networking)的工作知识，并熟悉 [Azure 应用程序的设计和体系结构](https://azure.microsoft.com/solutions/architecture/)。 请参阅以下附加技术资源：
+设计、生成和测试产品/服务的过程需要一些时间，并需要在 Azure 平台和生成产品/服务相关技术方面有一定的专业知识。 你的工程团队应拥有 [Azure 虚拟机](https://azure.microsoft.com/services/virtual-machines/)、[Azure 存储](https://azure.microsoft.com/services/?filter=storage#storage)和 [Azure 网络](https://azure.microsoft.com/services/?filter=networking#networking)的工作知识，并熟悉 [Azure 应用程序的设计和体系结构](https://azure.microsoft.com/solutions/architecture/)。 请参阅以下附加技术资源： 
 
 - 教程
   - [Linux VM](../virtual-machines/linux/tutorial-manage-vm.md)

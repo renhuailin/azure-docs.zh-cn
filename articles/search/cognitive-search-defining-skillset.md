@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 39a7c92ca6c83684658cf767722698806ed994ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ec7f9a874bff6eaa0e23f5fb926bf031f2b059d
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88935443"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111555964"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中的 AI 扩充管道中创建技能组 
 
@@ -84,7 +84,7 @@ Content-Type: application/json
       "outputs": [
         {
           "name": "organizations",
-          "targetName": "organizations"
+          "targetName": "orgs"
         }
       ]
     },
@@ -110,11 +110,11 @@ Content-Type: application/json
       "httpHeaders": {
           "Ocp-Apim-Subscription-Key": "foobar"
       },
-      "context": "/document/organizations/*",
+      "context": "/document/orgs/*",
       "inputs": [
         {
           "name": "query",
-          "source": "/document/organizations/*"
+          "source": "/document/orgs/*"
         }
       ],
       "outputs": [
@@ -144,11 +144,11 @@ Content-Type: application/json
 
 ## <a name="add-built-in-skills"></a>添加内置技能
 
-让我们看看第一个技能，它是内置的[实体识别技能](cognitive-search-skill-entity-recognition.md)：
+让我们看看第一个技能，它是内置的[实体识别技能](cognitive-search-skill-entity-recognition-v3.md)：
 
 ```json
     {
-      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+      "@odata.type": "#Microsoft.Skills.Text.V3.EntityRecognitionSkill",
       "context": "/document",
       "categories": [ "Organization" ],
       "defaultLanguageCode": "en",
@@ -161,7 +161,7 @@ Content-Type: application/json
       "outputs": [
         {
           "name": "organizations",
-          "targetName": "organizations"
+          "targetName": "orgs"
         }
       ]
     }
@@ -169,19 +169,21 @@ Content-Type: application/json
 
 * 每个内置技能具有 `odata.type`、`input` 和 `output` 属性。 技能特定的属性提供适用于该技能的附加信息。 对于实体识别，`categories` 是一组固定的实体类型中，可由预先训练的模型识别的一个实体。
 
-* 每个技能应包含 ```"context"```。 上下文表示发生操作的级别。 在上面的技能中，上下文是整个文档，这意味着，针对每个文档调用实体识别技能一次。 输出也会在该级别生成。 更具体地说，将生成 ```"organizations"``` 作为 ```"/document"``` 的成员。 在下游技能中，可以使用 ```"/document/organizations"``` 的形式引用此新建信息。  如果未显式设置 ```"context"``` 字段，则默认上下文是文档。
+* 每个技能应包含 ```"context"```。 上下文表示发生操作的级别。 在上面的技能中，上下文是整个文档，这意味着，针对每个文档调用实体识别技能一次。 输出也会在该级别生成。 该技能返回一个名为 ```organizations``` 的属性，该属性被捕获为 ```orgs```。 更具体地说，现将 ```"orgs"``` 添加为 ```"/document"``` 的成员。 在下游技能中，可使用 ```"/document/orgs"``` 的形式引用此新建的扩充。  如果未显式设置 ```"context"``` 字段，则默认上下文是文档。
 
-* 技能包含一个名为“text”的输入，其源输入设置为 ```"/document/content"```。 该技能（实体识别）对每个文档的内容字段运行，该字段是 Azure Blob 索引器创建的标准字段。 
+* 一种技能的输出可能与另一种技能的输出发生冲突。 如果有多个返回 ```result``` 属性的技能，可使用技能输出的 ```targetName``` 属性将一个技能的命名 JSON 输出捕获到不同的属性中。
 
-* 该技能包含一个名为 ```"organizations"``` 的输出。 输出只会在处理期间存在。 若要将此输出链接到下游技能的输入，请以 ```"/document/organizations"``` 的形式引用输出。
+* 技能包含一个名为“text”的输入，其源输入设置为 ```"/document/content"```。 该技能（实体识别）对每个文档的内容字段进行操作，内容字段是 Azure Blob 索引器创建的标准字段。 
 
-* 对于特定的文档，```"/document/organizations"``` 的值是从文本提取的组织数组。 例如：
+* 该技能有一个名为 ```"organizations"``` 的输出，该输出在属性 ```orgs``` 中进行捕获。 输出只会在处理期间存在。 若要将此输出链接到下游技能的输入，请以 ```"/document/orgs"``` 的形式引用输出。
+
+* 对于特定的文档，```"/document/orgs"``` 的值是从文本提取的组织数组。 例如：
 
   ```json
   ["Microsoft", "LinkedIn"]
   ```
 
-在某些情况下，需要单独引用数组的每个元素。 例如，假设我们要将 ```"/document/organizations"``` 的每个元素单独传递给另一个技能（例如自定义的必应实体搜索扩充器）。 可以通过在路径中添加星号，来引用该数组的每个元素：```"/document/organizations/*"``` 
+在某些情况下，需要单独引用数组的每个元素。 例如，假设我们要将 ```"/document/orgs"``` 的每个元素单独传递给另一个技能（例如自定义的必应实体搜索扩充器）。 可以通过在路径中添加星号，来引用该数组的每个元素：```"/document/orgs/*"``` 
 
 第二个情绪提取技能遵循与第一个扩充器相同的模式。 它采用 ```"/document/content"``` 作为输入，并返回每个内容实例的情绪评分。 由于未显式设置 ```"context"``` 字段，输出 (mySentiment) 现在是 ```"/document"``` 的子级。
 
@@ -215,11 +217,11 @@ Content-Type: application/json
       "httpHeaders": {
           "Ocp-Apim-Subscription-Key": "foobar"
       },
-      "context": "/document/organizations/*",
+      "context": "/document/orgs/*",
       "inputs": [
         {
           "name": "query",
-          "source": "/document/organizations/*"
+          "source": "/document/orgs/*"
         }
       ],
       "outputs": [
@@ -233,9 +235,9 @@ Content-Type: application/json
 
 此定义是在扩充过程中调用某个 Web API 的[自定义技能](cognitive-search-custom-skill-web-api.md)。 对于实体识别技能所识别到的每个组织，此技能调用 Web API 来查找该组织的说明。 扩充引擎会在内部协调处理何时调用 Web API，以及如何流式传输收到的信息。 但是，必须在 JSON 中提供调用此自定义 API 所需的初始化（例如所需的 uri、httpHeaders 和 inputs）。 有关为扩充管道创建自定义 Web API 的指导，请参阅[如何定义自定义接口](cognitive-search-custom-skill-interface.md)。
 
-请注意，“上下文”字段设置为包含星号的 ```"/document/organizations/*"```，这意味着，将对 ```"/document/organizations"``` 下的每个组织调用扩充步骤。 
+请注意，“上下文”字段设置为包含星号的 ```"/document/orgs/*"```，这意味着，将对 ```"/document/orgs"``` 下的每个组织调用扩充步骤。 
 
-将为识别到的每个组织生成输出（在本例中为公司说明）。 引用下游步骤中的说明时（例如，在关键短语提取中），应该使用路径 ```"/document/organizations/*/description"``` 执行此操作。 
+将为识别到的每个组织生成输出（在本例中为公司说明）。 引用下游步骤中的说明时（例如，在关键短语提取中），应该使用路径 ```"/document/orgs/*/description"``` 执行此操作。 
 
 ## <a name="add-structure"></a>添加结构
 

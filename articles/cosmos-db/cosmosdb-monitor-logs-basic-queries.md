@@ -1,27 +1,27 @@
 ---
 title: 使用诊断查询排查问题
 titleSuffix: Azure Cosmos DB
-description: 了解如何查询诊断日志以对存储在 Azure Cosmos DB 中的数据进行故障排除
+description: 了解如何查询诊断日志，以对存储在 Azure Cosmos DB 中的数据进行故障排除
 author: StefArroyo
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/12/2021
 ms.author: esarroyo
-ms.openlocfilehash: 769db1b447c6f5ce31a1ed23ddf5d7ef973bcad5
-ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
+ms.openlocfilehash: 51ab68d77e6d5f7e69701b7bc36eaf58f51bf48d
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112553137"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111966368"
 ---
 # <a name="troubleshoot-issues-with-diagnostics-queries"></a>使用诊断查询排查问题
 
-本文介绍如何使用发送到“AzureDiagnostics (legacy)”和“Resource-specific (preview)”表的诊断日志编写简单查询，以帮助排查 Azure Cosmos DB 帐户的问题。
+本文介绍如何使用发送到 AzureDiagnostics（旧版）和特定于资源（预览版）的表的诊断日志编写简单的查询，以帮助排查 Azure Cosmos DB 帐户的问题 。
 
-就 Azure 诊断表来说，所有数据都写入到一个表中，用户需要指定要查询的类别。
+对于 Azure 诊断表，所有数据都写入一个表中，用户需要指定要查询的类别。
 
-对于特定于资源的表，数据将写入每个资源类别的各个表中（不适用于表 API）。 建议使用此模式，因为它可以大幅简化数据的处理、更好地发现架构、改善引入延迟和查询时间方面的性能。
+对于特定于资源的表（当前为 SQL API 预览版），数据被写入每个资源类别的单个表中。 我们推荐这种模式，因为它可以更轻松地处理数据，提供更好的架构可发现性，并同时缩短引入延迟和查询时间。
 
 ## <a name="azurediagnostics-queries"></a><a id="azure-diagnostics-queries"></a> AzureDiagnostics 查询
 
@@ -83,7 +83,7 @@ ms.locfileid: "112553137"
    | summarize max(responseLength_s), max(requestLength_s), max(requestCharge_s), count = count() by OperationName, requestResourceType_s, userAgent_s, collectionRid_s, bin(TimeGenerated, 1h)
    ```
 
-- 如何获取与 DataPlaneRequests 和 QueryRunTimeStatistics 中的数据联接时消耗超过 100 RU/秒的所有查询 。
+- 如何获取与 DataPlaneRequests 和 QueryRunTimeStatistics 中的数据联接时消耗超过 100 RU/s 的所有查询 。
 
    ```kusto
    AzureDiagnostics
@@ -240,7 +240,7 @@ ms.locfileid: "112553137"
     | summarize max(ResponseLength), max(RequestLength), max(RequestCharge), count = count() by OperationName, RequestResourceType, UserAgent, CollectionName, bin(TimeGenerated, 1h)
    ```
 
-- 如何获取与 DataPlaneRequests 和 QueryRunTimeStatistics 中的数据联接时消耗超过 100 RU/秒的所有查询 。
+- 如何获取与 DataPlaneRequests 和 QueryRunTimeStatistics 中的数据联接时消耗超过 100 RU/s 的所有查询 。
 
    ```kusto
     CDBDataPlaneRequests
@@ -328,7 +328,7 @@ ms.locfileid: "112553137"
    | summarize by OperationName 
    ```
 
-## <a name="next-steps"></a>后续步骤 
-* 若要详细了解如何为 Cosmos DB 创建诊断设置，请参阅[创建诊断设置](cosmosdb-monitor-resource-logs.md)一文。
+## <a name="next-steps"></a>后续步骤
+* 有关如何为 Cosmos DB 创建诊断设置的详细信息，请参阅[创建诊断设置](cosmosdb-monitor-resource-logs.md)一文。
 
-* 若要详细了解如何使用 Azure 门户、CLI 或 PowerShell 创建诊断设置，请参阅[创建诊断设置以在 Azure 中收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)一文。
+* 若要详细了解如何通过使用 Azure 门户、CLI 或 PowerShell 来创建诊断设置，请参阅[创建诊断设置以在 Azure 中收集平台日志和指标](../azure-monitor/essentials/diagnostic-settings.md)一文。

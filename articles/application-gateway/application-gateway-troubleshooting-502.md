@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 62433a284cb271ed31427ff867cb14223443d404
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 2f1892ab7cafae0b344026ed73a801ca30f4d9ee
+ms.sourcegitcommit: ef950cf37f65ea7a0f583e246cfbf13f1913eb12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113090414"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111421537"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>排查应用程序网关中的网关无效错误
 
@@ -83,7 +83,7 @@ DhcpOptions            : {
 
 下表列出了与默认运行状况探测关联的值：
 
-| 探测属性 | 值 | 说明 |
+| 探测属性 | Value | 说明 |
 | --- | --- | --- |
 | 探测 URL |`http://127.0.0.1/` |URL 路径 |
 | 时间间隔 |30 |探测间隔（秒） |

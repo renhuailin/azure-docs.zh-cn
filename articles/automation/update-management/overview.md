@@ -3,133 +3,64 @@ title: Azure 自动化更新管理概述
 description: 本文概述了为 Windows 和 Linux 计算机实现更新的更新管理功能。
 services: automation
 ms.subservice: update-management
-ms.date: 04/01/2021
+ms.date: 06/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 62ae2eab33063416fdd6265b14dd8c30da55e174
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 576bc21791d088a736044a0111c25dc97c57b059
+ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166694"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111854803"
 ---
 # <a name="update-management-overview"></a>更新管理概述
 
-可以使用 Azure 自动化中的更新管理，为 Azure、本地环境和其他云环境中的 Windows 和 Linux 虚拟机管理操作系统更新。 可以快速评估所有代理计算机上可用更新的状态，并管理为服务器安装所需更新的过程。
+你可以使用 Azure 自动化中的更新管理来管理 Azure 中的 Windows 和 Linux 虚拟机、本地环境和其他云环境中的物理或虚拟机的操作系统更新。 你可以快速评估可用更新的状态，并对向更新管理报告的计算机安装所需更新的过程进行管理。 
 
-作为服务提供商，你可能已经将多个客户租户载入了 [Azure Lighthouse](../../lighthouse/overview.md)。 借助 Azure Lighthouse，你可以一次在多个 Azure Active Directory (Azure AD) 中大规模执行操作，从而提高你负责的这些租户上更新管理等管理任务的效率。
+作为服务提供商，你可能已经将多个客户租户载入了 [Azure Lighthouse](../../lighthouse/overview.md)。 更新管理可用于评估和安排同一 Azure Active Directory (Azure AD) 租户中的或使用 Azure Lighthouse 跨租户的多个订阅中的计算机的更新部署。
 
-> [!NOTE]
-> 不能使用配置了更新管理功能的计算机从 Azure 自动化运行自定义脚本。 此计算机只能运行 Microsoft 签名的更新脚本。
+Microsoft 还有其他功能，有助于管理 Azure 虚拟机或 Azure 虚拟机规模集的更新，应当将其看作总体更新管理策略的一部分。 
 
-> [!NOTE]
-> 目前，不支持直接从启用了 Arc 的服务器启用更新管理。 请参阅[从自动化帐户启用更新管理](../../automation/update-management/enable-from-automation-account.md)，以了解要求以及如何为服务器启用更新管理。
+- 如果有兴趣自动评估和更新 Azure 虚拟机，以保持安全性与每月发布的“关键”和“安全”更新相符合，请查看[自动 VM 来宾修补”](../../virtual-machines/automatic-vm-guest-patching.md)（预览）。  与通过 Azure 自动化中的管理更新对 Azure 虚拟机（包括可用性集内的虚拟机）的更新部署进行管理相比，这是为这些虚拟机提供的另一种更新管理解决方案，可以在非高峰期自动更新这些虚拟机。 
 
-若要在 Azure VM 上自动下载并安装可用的关键修补程序和安全修补程序 ，请查看适用于 Windows VM 的[自动 VM 来宾修补](../../virtual-machines/automatic-vm-guest-patching.md)。
+- 对于管理 Azure 虚拟机规模集，请查看如何执行“[自动 OS 映像升级](../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)”，以安全、自动地升级规模集内所有实例的 OS 磁盘。 
 
 在部署更新管理并启用计算机进行管理之前，请确保你了解以下部分中的信息。
 
 ## <a name="about-update-management"></a>关于更新管理
 
-通过更新管理进行管理的计算机依赖于以下项进行评估和更新部署：
-
-* 用于 Windows 或 Linux 的 [Log Analytics 代理](../../azure-monitor/agents/log-analytics-agent.md)
-* 用于 Linux 的 PowerShell 所需状态配置 (DSC)
-* 自动化混合 Runbook 辅助角色（在计算机上启用更新管理时自动安装）
-* 适用于 Windows 计算机的 Microsoft 更新或 [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (WSUS)
-* 适用于 Linux 计算机的专用或公共更新存储库
-
-下图说明了更新管理如何评估安全更新并将其应用于工作区中的所有连接的 Windows 服务器和 Linux 服务器：
+下图说明了更新管理如何评估安全更新并将其应用于所有连接的 Windows 服务器和 Linux 服务器。
 
 ![更新管理工作流](./media/overview/update-mgmt-updateworkflow.png)
 
-更新管理可用于以本机方式部署到同一租户中的多个订阅中的计算机，或使用 [Azure 委派资源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)跨租户进行部署。
+更新管理集成了 Azure Monitor 日志，以日志数据的形式存储已分配的 Azure 计算机和非 Azure 计算机中的更新评估和更新部署结果。 为了收集这些数据，系统会绑定自动化帐户和 Log Analytics 工作区，同时，计算机上需要适用于 Windows 和 Linux 的 Log Analytics 代理，且需要将其配置为向此工作区报告。 更新管理支持从连接到工作区的 System Center Operations Manager 管理组中的代理收集有关系统更新的信息。 不支持在多个 Log Analytics 工作区（也称为多宿主）中对计算机注册更新管理。
 
-发布包后，Linux 计算机需要 2-3 小时才会显示修补程序以供评估。 对于 Windows 计算机，发布后，需要 12-15 小时才会显示修补程序以供评估。 当计算机完成更新合规性扫描时，代理会将信息批量转发到 Azure Monitor 日志。 在 Windows 计算机上，符合性扫描默认情况下每 12 小时运行一次。 对于 Linux 计算机，符合性扫描默认情况下每小时执行一次。 如果 Log Analytics 代理重启，则会在 15 分钟内启动符合性扫描。
+下表汇总了具有更新管理的受支持的已连接源。
 
-除了按扫描计划扫描，更新符合性扫描还会在 Log Analytics 代理重启的 15 分钟内、更新安装前和更新安装后启动。
+| 连接的源 | 支持 | 说明 |
+| --- | --- | --- |
+| Windows |是 |更新管理通过使用 Log Analytics 代理并安装所需的更新，从 Windows 计算机收集有关系统更新的信息。 |
+| Linux |是 |更新管理通过使用 Log Analytics 代理并在受支持的发行版上安装所需的更新，从 Linux 计算机收集有关系统更新的信息。 |
+| Operations Manager 管理组 |是 |更新管理从已连接的管理组中的代理收集有关软件更新的信息。<br/><br/>从 Operations Manager 代理到 Azure Monitor 日志的直接连接不是必需的。 系统会将日志数据从管理组转发到 Log Analytics 工作区。 |
 
-更新管理根据所配置的与之进行同步的源来报告计算机的更新情况。 如果将 Windows 计算机配置为向 [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (WSUS) 报告，则结果可能与 Microsoft 更新所显示的内容不同，具体取决于 WSUS 上次通过 Microsoft 更新进行同步的时间。 对于配置为向本地存储库（而非公共存储库）报告的 Linux 计算机来说，行为也是如此。
+分配给更新管理的计算机根据将其配置为与之同步的源报告其最新状态。 可以将 Windows 计算机配置为向 Windows Server Update Services 或 Microsoft 更新报告，并且可以将 Linux 计算机配置为向本地或公共存储库报告。 此外，还可以将更新管理与 Microsoft Endpoint Configuration Manager 一起使用，相关详情请参阅[集成更新管理与 Windows Endpoint Configuration Manager](mecmintegration.md)。 
 
-> [!NOTE]
-> 若要正确地向服务进行报告，更新管理要求启用某些 URL 和端口。 若要了解有关这些要求的详细信息，请参阅[网络配置](../automation-hybrid-runbook-worker.md#network-planning)。
+如果将 Windows 计算机上的 Windows Update Agent (WUA) 配置为向 WSUS 报告，则结果可能不同于 Microsoft 更新所显示的内容，具体取决于 WSUS 上次与 Microsoft 更新同步的时间。 对于配置为向本地存储库（而非公共存储库）报告的 Linux 计算机来说，情况亦是如此。 在 Windows 计算机上，符合性扫描默认情况下每 12 小时运行一次。 对于 Linux 计算机，符合性扫描默认情况下每小时执行一次。 如果 Log Analytics 代理重启，则会在 15 分钟内启动符合性扫描。 当计算机完成更新合规性扫描时，代理会将信息批量转发到 Azure Monitor 日志。 
 
 可以创建计划的部署，在需要更新的计算机上部署和安装软件更新。 归类为“可选”的更新不包括在 Windows 计算机的部署范围内。 只有必需的更新会包括在部署范围内。
 
-计划的部署定义哪些目标计算机接收适用的更新。 它通过以下某种方式来实现此目的：显式指定特定的计算机，或选择基于特定计算机集的日志搜索（或基于根据指定条件动态选择 Azure VM 的 [Azure 查询](query-logs.md)）的[计算机组](../../azure-monitor/logs/computer-groups.md)。 这些组与[范围配置](../../azure-monitor/insights/solution-targeting.md)不同，后者用于控制接收配置以启用更新管理的目标计算机。 这会阻止它们执行和报告更新符合性，并安装已批准的所需更新。
+计划的部署定义哪些目标计算机接收适用的更新。 它通过以下某种方式来实现此目的：明确指定特定的计算机，或选择基于特定计算机集的日志搜索（或基于根据指定条件动态选择 Azure VM 的 [Azure 查询](query-logs.md)）的[计算机组](../../azure-monitor/logs/computer-groups.md)。 这些组与[范围配置](../../azure-monitor/insights/solution-targeting.md)不同，后者用于控制接收配置以启用更新管理的目标计算机。 这会阻止它们执行和报告更新符合性，并安装已批准的所需更新。
 
 定义部署时，还可以指定要批准的计划，并设置可以安装更新的一个时段。 此时段称为维护时段。 假设需要重启，并选择了相应的重启选项，则会预留 20 分钟的维护时段进行重启。 如果修补时间比预期时间长且维护时段少于 20 分钟，则不会进行重启。
 
-通过 Azure 自动化中的 runbook 安装更新。 无法查看这些 runbook，它们不需要任何配置。 创建更新部署时，会创建一个在指定的时间为所包含的计算机启动主更新 runbook 的计划。 此主 Runbook 会在每个代理上启动一个子 Runbook 来安装必需的更新。
+为部署安排更新包后，Linux 计算机需要 2-3 小时才会显示更新以供评估。 对于 Windows 计算机，发布后，需要 12-15 小时才会显示更新以供评估。 在更新安装之前和之后，会执行更新符合性扫描，日志数据结果将转发到工作区。
+
+通过 Azure 自动化中的 runbook 安装更新。 无法查看这些 runbook，它们不需要任何配置。 创建更新部署时，会创建一个在指定的时间为所包含的计算机启动主更新 runbook 的计划。 主 Runbook 在每个代理上启动子 Runbook，该子 Runbook 使用 Windows 上的 Windows 更新代理或受支持的 Linux 发行版上的适用命令启动所需更新的安装。
 
 目标计算机会按更新部署中指定的日期和时间，以并行方式执行部署。 在安装之前，会运行扫描来验证更新是否仍然是必需的。 对于 WSUS 客户端计算机，如果更新未在 WSUS 中获得批准，则更新部署会失败。
 
-不支持在多个 Log Analytics 工作区（也称为多宿主）中对计算机注册更新管理。
+## <a name="limits"></a>限制
 
-## <a name="clients"></a>客户端
-
-### <a name="supported-operating-systems"></a>支持的操作系统
-
-下表列出了适用于更新评估和修补的支持的操作系统。 修补需要一个系统混合 Runbook 辅助角色（在你通过更新管理启用虚拟机或服务器进行管理时自动安装）。 有关混合 Runbook 辅助角色系统需求的信息，请参阅[部署 Windows 混合 Runbook 辅助角色](../automation-windows-hrw-install.md)和[部署 Linux 混合 Runbook 辅助角色](../automation-linux-hrw-install.md)。
-
-> [!NOTE]
-> 仅自动化帐户和 Log Analytics 工作区[映射表](../how-to/region-mappings.md#supported-mappings)中列出的特定区域支持 Linux 计算机的更新评估。
-
-|操作系统  |说明  |
-|---------|---------|
-|Windows Server 2019（包括 Server 核心的数据中心/标准）<br><br>Windows Server 2016（不包括 Server 核心的数据中心/标准）<br><br>Windows Server 2012 R2(Datacenter/Standard)<br><br>Windows Server 2012 | |
-|Windows Server 2008 R2（RTM 和 SP1 Standard）| 更新管理仅支持对此操作系统进行评估和修补。 Windows Server 2008 R2 不支持[混合 Runbook 辅助角色](../automation-windows-hrw-install.md)。 |
-|CentOS 6、7 和 8 (x64)      | Linux 代理需要具有访问更新存储库的权限。 基于分类的修补需要借助 `yum` 来返回 CentOS 的 RTM 版本中没有的安全数据。 有关 CentOS 上基于分类的修补的详细信息，请参阅 [Linux 上的更新分类](view-update-assessments.md#linux)。          |
-|Red Hat Enterprise 6、7 和 8 (x64)     | Linux 代理需要具有访问更新存储库的权限。        |
-|SUSE Linux Enterprise Server 12、15 和 15.1 (x64)     | Linux 代理需要具有访问更新存储库的权限。 对于 SUSE 15.x，需要在计算机上安装 Python 3。      |
-|Ubuntu 14.04 LTS、16.04 LTS 和 18.04 LTS (x64)      |Linux 代理需要具有访问更新存储库的权限。         |
-
-> [!NOTE]
-> 更新管理不支持对 Azure 虚拟机规模集中的所有实例安全地自动执行更新管理。 建议使用[自动 OS 映像升级](../../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)来管理规模集的 OS 映像升级。
-
-### <a name="unsupported-operating-systems"></a>不支持的操作系统
-
-下表列出了更新管理不支持的操作系统：
-
-|操作系统  |说明  |
-|---------|---------|
-|Windows 客户端     | 不支持客户端操作系统（例如 Windows 7 和 Windows 10）。<br> 对于 Azure Windows 虚拟桌面 (WVD)，管理更新<br> 的推荐方法是使用 [Microsoft Endpoint Configuration Manager](../../virtual-desktop/configure-automatic-updates.md) 实现 Windows 10 客户端计算机修补程序管理。 |
-|Windows Server 2016 Nano Server     | 不支持。       |
-|Azure Kubernetes 服务节点 | 不支持。 使用[对 Azure Kubernetes 服务 (AKS) 中的 Linux 节点应用安全和内核更新](../../aks/node-updates-kured.md)中所述的修补过程|
-
-### <a name="system-requirements"></a>系统要求
-
-以下信息介绍操作系统特定的要求。 有关其他指南，请参阅[网络规划](#ports)。 若要了解 TLS 1.2 的要求，请参阅[强制 Azure 自动化执行 TLS 1.2](../automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
-
-#### <a name="windows"></a>Windows
-
-软件要求：
-
-- 需要 .NET Framework 4.6 或更高版本。 （[下载 .NET Framework](/dotnet/framework/install/guide-for-developers)。
-- 需要 Windows PowerShell 5.1（[下载 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。）
-
-Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Microsoft 更新。 对于混合计算机，我们建议通过首先将计算机连接到[启用了 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 Windows 的 Log Analytics 代理，然后使用 Azure Policy 分配[将 Log Analytics 代理部署到 Windows Azure Arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring)内置策略。 或者，如果计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用[启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
-
-可以将更新管理与 Microsoft Endpoint Configuration Manager 配合使用。 若要了解有关集成方案的详细信息，请参阅[将更新管理与 Microsoft Endpoint Configuration Manager](mecmintegration.md)。 对于由 Configuration Manager 环境中的站点托管的 Windows 服务器，需要[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/agents/agent-windows.md)。
-
-默认情况下，从 Azure 市场部署的 Windows VM 设置为从 Windows 更新服务接收自动更新。 将 Windows VM 添加到工作区时，此行为不会更改。 如果不主动使用更新管理来管理更新，则会应用默认行为（即自动应用更新）。
-
-> [!NOTE]
-> 可以修改组策略，以便仅由用户而非系统来执行计算机重启。 如果在用户不进行手动交互的情况下，更新管理无权重启计算机，则托管计算机可能会停滞。 有关详细信息，请参阅[配置自动更新的组策略设置](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates)。
-
-#### <a name="linux"></a>Linux
-
-软件要求：
-
-- 计算机需要有权访问专用或公共的更新存储库。
-- 需要 TLS 1.1 或 TLS 1.2 才能与更新管理进行交互。
-- 已安装 Python 2.x。
-
-> [!NOTE]
-> 仅特定区域支持 Linux 计算机的更新评估。 请参阅自动化帐户和 Log Analytics 工作区[映射表](../how-to/region-mappings.md#supported-mappings)。
-
-对于混合计算机，我们建议通过首先将计算机连接到[启用了 Azure Arc 的服务器](../../azure-arc/servers/overview.md)来安装适用于 Linux 的 Log Analytics 代理，然后使用 Azure Policy 分配[将 Log Analytics 代理部署到 Linux Azure Arc 计算机](../../governance/policy/samples/built-in-policies.md#monitoring)内置策略。 或者，如果计划使用用于 VM 的 Azure Monitor 来监视计算机，请改用[启用用于 VM 的 Azure Monitor](../../governance/policy/samples/built-in-initiatives.md#monitoring) 计划。
-
-基于 Azure 市场中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的 VM 注册为访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../../virtual-machines/workloads/redhat/redhat-rhui.md)。 对于任何其他 Linux 发行版，必须使用发行版支持的方法从发行版联机文件存储库对其进行更新。
+有关适用于更新管理的限制，请参阅 [Azure 自动化服务限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#update-management)。
 
 ## <a name="permissions"></a>权限
 
@@ -149,33 +80,21 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 
 ### <a name="management-packs"></a>管理包
 
-如果 Operations Manager 管理组[已连接到 Log Analytics 工作区](../../azure-monitor/agents/om-agents.md)，则会在 Operations Manager 中安装以下管理包。 对于直接连接的 Windows 计算机上的更新管理，也会安装这些管理包。 你不需要对这些管理包进行配置或管理。
+以下管理包安装在由更新管理进行管理的计算机上。 如果 Operations Manager 管理组[已连接到 Log Analytics 工作区](../../azure-monitor/agents/om-agents.md)，则管理包将安装在 Operations Manager 管理组中。 你不需要对这些管理包进行配置或管理。
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
 * 更新部署 MP
 
 > [!NOTE]
-> 如果已将 Operations Manager 1807 或 2019 管理组连接到 Log Analytics 工作区并且在管理组中将代理配置为收集日志数据，则需要重写参数 `IsAutoRegistrationEnabled` 并在 Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init 规则中将其设置为 True。
+> 如果已将 Operations Manager 1807 或 2019 管理组连接到 Log Analytics 工作区并且在管理组中将代理配置为收集日志数据，则需要重写参数 `IsAutoRegistrationEnabled` 并在 Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init 规则中将其设置为 `True`。
 
 有关管理包更新内容的详细信息，请参阅[将 Operations Manager 连接到 Azure Monitor 日志](../../azure-monitor/agents/om-agents.md)。
 
 > [!NOTE]
 > 若要更新管理通过 Log Analytics 代理完全管理计算机，必须更新为适用于 Windows 的 Log Analytics 代理或适用于 Linux 的 Log Analytics 代理。 若要了解如何更新代理，请参阅[如何升级 Operations Manager 代理](/system-center/scom/deploy-upgrade-agents)。 在使用 Operations Manager 的环境中，必须运行 System Center Operations Manager 2012 R2 UR 14 或更高版本。
 
-## <a name="data-collection"></a>数据收集
-
-### <a name="supported-sources"></a>受支持的源
-
-下表介绍了更新管理支持的连接的源：
-
-| 连接的源 | 支持 | 说明 |
-| --- | --- | --- |
-| Windows 代理 |是 |更新管理从 Windows 代理收集有关系统更新的信息，然后开始安装必需的更新。 |
-| Linux 代理 |是 |更新管理从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
-| Operations Manager 管理组 |是 |“更新管理”从已连接的管理组中的代理收集有关系统更新的信息。<br/><br/>从 Operations Manager 代理到 Azure Monitor 日志的直接连接不是必需的。 数据将从管理组转发到 Log Analytics 工作区。 |
-
-### <a name="collection-frequency"></a>收集频率
+## <a name="data-collection-frequency"></a>数据收集频率
 
 更新管理使用以下规则扫描托管计算机中的数据。 可能需要 30 分钟到 6 小时，仪表板才会显示托管计算机提供的已更新数据。
 
@@ -184,18 +103,6 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 * 每个 Linux 计算机 - 更新管理每小时执行一次扫描。
 
 使用更新管理的计算机的每月平均 Azure Monitor 日志数据使用情况大约为 25 MB。 此值仅为近似值，且随时可能基于环境而更改。 建议监视环境，以跟踪实际使用情况。 有关分析 Azure Monitor 日志数据使用情况的详细信息，请参阅[管理使用情况和成本](../../azure-monitor/logs/manage-cost-storage.md)。
-
-## <a name="network-planning"></a><a name="ports"></a>网络规划
-
-查看 [Azure 自动化网络配置](../automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration)，以了解有关更新管理所需的端口、URL 和其他网络的详细信息。
-
-对于 Windows 计算机，还必须允许流量发送到 Windows 更新所需的任何终结点。 可以在[与 HTTP/Proxy 相关的问题](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中找到所需终结点的更新列表。 如果拥有本地 [Windows 更新服务器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)，则还必须允许流量发送到 [WSUS 密钥](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的服务器。
-
-对于 Red Hat Linux 计算机，请参阅[适用于 RHUI 内容分发服务器的 IP](../../virtual-machines/workloads/redhat/redhat-rhui.md#the-ips-for-the-rhui-content-delivery-servers) 了解所需的终结点。 对于其他 Linux 发行版，请参阅提供程序文档。
-
-若要详细了解混合 Runbook 辅助角色所需的端口，请参阅[混合 Runbook 辅助角色的更新管理地址](../automation-hybrid-runbook-worker.md#update-management-addresses-for-hybrid-runbook-worker)。
-
-如果 IT 安全策略不允许网络上的计算机连接到 Internet，则可以设置 [Log Analytics 网关](../../azure-monitor/agents/gateway.md)，然后将计算机配置为通过该网关连接到 Azure 自动化和 Azure Monitor。
 
 ## <a name="update-classifications"></a>更新分类
 
@@ -219,8 +126,8 @@ Windows 代理必须配置为与 WSUS 服务器通信或需要有权访问 Micro
 |关键和安全更新     | 特定问题或产品特定、安全相关问题的更新。         |
 |其他更新     | 本质上不是关键更新或不是安全更新的所有其他更新。        |
 
->[!NOTE]
->适用于 Linux 计算机的更新分类只适合在支持的 Azure 公有云区域中使用。 在以下国家/地区云区域中使用更新管理时，没有适用于 Linux 的更新分类：
+> [!NOTE]
+> 适用于 Linux 计算机的更新分类只适合在支持的 Azure 公有云区域中使用。 在以下国家/地区云区域中使用更新管理时，没有适用于 Linux 的更新分类：
 >
 >* Azure 美国政府
 >* 中国世纪互联
@@ -251,25 +158,8 @@ sudo yum -q --security check-update
 
 更新管理依赖于本地配置的更新存储库来更新受支持的 Windows 系统（WSUS 或 Windows 更新）。 借助 [System Center Updates Publisher](/configmgr/sum/tools/updates-publisher) 等工具，可通过 WSUS 导入和发布自定义更新。 在这种情况下，允许更新管理借助第三方软件来更新使用 Configuration Manager 作为其更新存储库的计算机。 若要了解如何配置 Updates Publisher，请参阅[安装 Updates Publisher](/configmgr/sum/tools/install-updates-publisher)。
 
-## <a name="enable-update-management"></a>启用更新管理
-
-可以通过以下方式启用更新管理并选择要管理的计算机：
-
-- 使用 Azure [资源管理器模板](enable-from-template.md)将更新管理部署到订阅中新的或现有的自动化帐户和 Azure Monitor Log Analytics 工作区。 它不会配置应管理的计算机范围，而是在使用模板后在单独的步骤中执行此操作。
-
-- 从[自动化帐户](enable-from-automation-account.md)为一个或多个 Azure 和非 Azure 计算机（包括启用了 Arc 的服务器）启用。
-
-- 使用 Enable-AutomationSolution [runbook](enable-from-runbook.md) 方法。
-
-- 从 Azure 门户中的“虚拟机”页为[所选 Azure VM](enable-from-vm.md) 启用。 此方案适用于 Linux 和 Windows VM。
-
-- 可以从 Azure 门户中的“虚拟机”页选择启用[多个 Azure VM](enable-from-portal.md)。
-
-> [!NOTE]
-> 更新管理要求将 Log Analytics 工作区链接到自动化帐户。 有关受支持区域的明确列表，请参阅 [Azure 工作区映射](../how-to/region-mappings.md)。 区域映射不会影响在单独的区域中管理自动化帐户内 VM 的功能。
-
 ## <a name="next-steps"></a>后续步骤
 
-* 有关使用更新管理的详细信息，请参阅[管理 VM 的更新](manage-updates-for-vm.md)。
+* 在启用和使用更新管理之前，请查看[计划更新管理部署](plan-deployment.md)。
 
 * 查看 [Azure 自动化常见问题解答](../automation-faq.md)中有关更新管理的常见问题。

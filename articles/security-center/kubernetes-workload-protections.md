@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 06/14/2021
 ms.author: memildin
-ms.openlocfilehash: 1a6a9080a8957b56d12eca289a500fd45f0e709b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: fefbc605702539cb882aba4c7802d284b4291a9c
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310812"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112062291"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>保护 Kubernetes 工作负载
 
@@ -33,14 +33,14 @@ ms.locfileid: "107310812"
 
 ## <a name="availability"></a>可用性
 
-|方面|详细信息|
-|----|:----|
-|发布状态：|正式发布版 (GA)|
-|定价：|免费|
-|所需角色和权限：|**所有者** 或 **安全管理员**，用以编辑分配<br>**读者**，用以查看建议|
-|环境要求：|需要 Kubernetes v1.14（或更高版本）<br>群集上没有 PodSecurityPolicy 资源（旧的 PSP 模型）<br>不支持 Windows 节点|
-|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov）|
-|||
+| 方面                          | 详细信息                                                                                                                                      |
+|---------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------|
+| 发布状态：                  | 正式发布版 (GA)                                                                                                                    |
+| 定价：                        | 免费                                                                                                                                         |
+| 所需角色和权限： | **所有者** 或 **安全管理员**，用以编辑分配<br>**读者**，用以查看建议                                              |
+| 环境要求：       | 需要 Kubernetes v1.14（或更高版本）<br>群集上没有 PodSecurityPolicy 资源（旧的 PSP 模型）<br>不支持 Windows 节点 |
+| 云：                         | ![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权（US Gov、中国 Gov、其他 Gov） |
+|                                 |                                                                                                                                              |
 
 
 ## <a name="set-up-your-workload-protection"></a>设置工作负载保护
@@ -69,7 +69,7 @@ Azure 安全中心包含一系列建议，安装 **适用于 Kubernetes 的 Azur
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="**应在群集上安装并启用适用于 Kubernetes 的 Azure Policy 加载项** 的建议详细信息页面":::
 
-### <a name="step-2-view-and-configure-the-bundle-of-13-recommendations"></a>步骤 2：查看并配置包含 13 个建议的捆绑包
+### <a name="step-2-view-and-configure-the-bundle-of-recommendations"></a>步骤 2：查看并配置建议的捆绑包
 
 1. 在加载项安装完成大约 30 分钟后，安全中心会显示以下建议的群集运行状况状态，每个建议都显示在相关安全控件中，如下所示：
 
@@ -253,5 +253,5 @@ spec:
 有关其他相关材料，请参阅以下页面： 
 
 - [针对计算的安全中心建议](recommendations-reference.md#recs-compute)
-- [AKS 群集级别的警报](alerts-reference.md#alerts-akscluster)
+- [AKS 群集级别的警报](alerts-reference.md#alerts-k8scluster)
 - [容器主机级别的警报](alerts-reference.md#alerts-containerhost)

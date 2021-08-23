@@ -5,19 +5,19 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 4/8/2021
 ms.author: baanders
-ms.openlocfilehash: 34fec713c3764987f07bc7fb89ecb0a0d770a840
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 460176dd8c86abc59d2f82948a6a35655b9eef84
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728008"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530574"
 ---
 ### <a name="functional-limits"></a>功能限制
 
 下表列出了 Azure 数字孪生的功能限制。 
 
 > [!TIP]
-> 有关在这些功能限制内进行操作的建模建议，请参阅[设计模型的最佳做法](../articles/digital-twins/concepts-models.md#best-practices-for-designing-models)。
+> 有关在这些功能限制内进行操作的建模建议，请参阅[建模最佳做法](../articles/digital-twins/concepts-models.md#modeling-best-practices)。
 
 | 区域 | 功能 | 默认限制 | 可调？ |
 | --- | --- | --- | --- |
@@ -56,6 +56,6 @@ ms.locfileid: "107728008"
 
 ### <a name="other-limits"></a>其他限制
 
-有关 Azure 数字孪生模型的 DTDL 文档中数据类型和字段的限制，可参阅 GitHub 中的相应规范文档：[数字孪生定义语言 (DTDL) - 版本 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
+有关 Azure 数字孪生模型的 DTDL 文档中数据类型和字段的限制，可参阅 GitHub 中的相应规范文档：数字孪生定义语言 (DTDL) - 版本 2。
  
-查询延迟详细信息和其他查询限制可以在[操作指南：查询孪生图](../articles/digital-twins/how-to-query-graph.md)中找到。
+有关查询延迟的详细信息，请参阅[概念：查询语言](../articles/digital-twins/concepts-query-language.md#considerations-for-querying)。 可以在[查询引用文档](../articles/digital-twins/concepts-query-language.md#reference-documentation)中找到特定查询语言功能的限制。

@@ -1,5 +1,5 @@
 ---
-title: 计划和管理成本
+title: 计划管理成本
 titleSuffix: Azure Machine Learning
 description: 使用 Azure 门户中的成本分析来计划和管理 Azure 机器学习成本。 了解更多节约成本的技巧，以降低构建 ML 模型时的成本。
 author: sdgilley
@@ -9,43 +9,38 @@ ms.reviewer: nigup
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: a52bcc9a2649592bef7b6f8d09cdde96226b77ea
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.date: 06/08/2021
+ms.openlocfilehash: 01c985b0554fe5955010c1c8c286f81f8de6d3ee
+ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107886111"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112005998"
 ---
-# <a name="plan-and-manage-costs-for-azure-machine-learning"></a>计划和管理 Azure 机器学习成本
+# <a name="plan-to-manage-costs-for-azure-machine-learning"></a>计划管理 Azure 机器学习的成本
 
-本文介绍如何计划和管理 Azure 机器学习成本。 首先，请在添加任何资源以前使用 Azure 定价计算器来帮助计划成本。 接下来，在添加 Azure 资源时，查看预估成本。 最后，在使用托管 Azure 机器学习计算群集训练模型时，请运用成本节省技巧。
+本文介绍如何计划和管理 Azure 机器学习成本。 首先，请在添加任何资源以前使用 Azure 定价计算器来帮助计划成本。 接下来，在添加 Azure 资源时，查看预估成本。 
 
 开始使用 Azure 机器学习资源后，使用成本管理功能来设置预算和监视成本。 另外，还应查看预测的成本并识别支出趋势，以确定可能需要实施措施的领域。
 
 请知晓，Azure 机器学习的成本只是 Azure 账单中每月成本的一部分。 如果在使用其他 Azure 服务，需要为 Azure 订阅中使用的所有 Azure 服务和资源（包括第三方服务）付费。 本文介绍如何为 Azure 机器学习计划和管理成本。 在熟悉了如何管理 Azure 机器学习成本之后，应用类似的方法来管理订阅中使用的所有 Azure 服务的成本。
 
-训练机器学习模型时，通过使用托管 Azure 机器学习计算群集来利用更多节省成本的技巧：
-
-* 配置训练群集以实现自动缩放
-* 设置订阅和工作区上的配额
-* 针对“训练运行”设置终止策略
-* 使用低优先级虚拟机 (VM)
-* 使用 Azure 虚拟机预留实例
+有关优化成本的详细信息，请参阅[如何在 Azure 机器学习中管理和优化成本](how-to-manage-optimize-cost.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-成本分析支持各种 Azure 帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。 
+成本管理中的成本分析支持大多数 Azure 帐户类型，但不支持所有帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 
 
-若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。 若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
 ## <a name="estimate-costs-before-using-azure-machine-learning"></a>使用 Azure 机器学习之前估计成本
 
-在 Azure 机器学习帐户中创建资源之前，使用 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)估算成本。 在左侧，选择“AI + 机器学习”，然后选择“Azure 机器学习”，开始操作 。  
+- 在 Azure 机器学习工作区创建资源之前，请使用 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)估算成本。
+在左侧，选择“AI + 机器学习”，然后选择“Azure 机器学习”，开始操作 。  
 
 以下屏幕截图显示了使用计算器进行成本估算：
 
-:::image type="content" source="media/concept-plan-manage-cost/capacity-calculator-cost-estimate.png" alt-text="Azure 计算器中的成本估算":::
+:::image type="content" source="media/concept-plan-manage-cost/capacity-calculator-cost-estimate.png" alt-text="显示 Azure 定价计算器中的预估成本的示例。":::
 
 向工作区添加新资源时，请返回到此计算器，并在此处添加相同资源来更新成本估算。
 
@@ -54,6 +49,11 @@ ms.locfileid: "107886111"
 ## <a name="understand-the-full-billing-model-for-azure-machine-learning"></a>了解 Azure 机器学习的完整计费模式
 
 Azure 机器学习在 Azure 基础结构上运行，部署新资源时，Azure 基础结构会随 Azure 机器学习的使用产生成本。 需要了解的是，其他基础结构可能会产生成本。 对已部署的资源进行更改时需要管理该成本。 
+
+
+
+
+
 
 ### <a name="costs-that-typically-accrue-with-azure-machine-learning"></a>会随 Azure 机器学习的使用而产生的成本
 
@@ -83,9 +83,58 @@ ws.delete(delete_dependent_resources=True)
 
 ### <a name="using-azure-prepayment-credit-with-azure-machine-learning"></a>将 Azure 预付款信用额度与 Azure 机器学习结合使用
 
-可以使用 Azure 预付款（之前称为货币承诺）额度支付 Azure 机器学习费用。 但是，不能使用 Azure 预付款来支付第三方产品和服务（包括 Azure 市场中的）的费用。
+可以使用 Azure 预付额度支付 Azure 机器学习费用。 但是，不能使用 Azure 预付款额度来支付第三方产品和服务（包括 Azure 市场中的）的费用。
+
+## <a name="review-estimated-costs-in-the-azure-portal"></a>在 Azure 门户中查看估计成本
+
+<!-- Note for Azure service writer: If your service shows estimated costs when a user is creating resources in the Azure portal, at a minimum, insert this section as a brief walkthrough that steps through creating a Azure Machine Learning resource where the estimated cost is shown to the user, updated for your service. Add a screenshot where the estimated costs or subscription credits are shown.
+
+If your service doesn't show costs as they create a resource or if estimated costs aren't shown to users before they use your service, then omit this section.
+
+For example, you might start with the following (modify for your service):
+-->
+
+为 Azure 机器学习创建计算资源时，可以看到估计成本。
+
+若要创建计算实例并查看估计价格，请执行以下操作：
+
+1. 登录到 [Azure 机器学习工作室](https://ml.azure.com)
+1. 在左侧选择“计算”。
+1. 在顶部工具栏中，选择“+ 新建”。
+1. 查看显示的每个可用虚拟机大小的估计价格。
+1. 完成资源创建过程。
 
 
+:::image type="content" source="media/concept-plan-manage-cost/create-resource.png" alt-text="显示创建计算实例时的估计成本的示例。" lightbox="media/concept-plan-manage-cost/create-resource.png" :::
+
+如果你的 Azure 订阅有支出限制，Azure 将阻止超过额度金额的支出。 创建和使用 Azure 资源时，将使用额度。 达到额度限制时，将在该计费周期的剩余时间内禁用部署的资源。 你无法更改额度限制，但可以删除该限制。 有关支出限制的详细信息，请参阅 [Azure 支出限制](../cost-management-billing/manage/spending-limit.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+
+## <a name="monitor-costs"></a>监视成本
+
+将 Azure 机器学习与 Azure 资源一起使用时，会产生成本。 Azure 资源使用情况的单位成本因时间间隔（秒、分钟、小时和天）或单位使用情况（字节、MB 等）而异。一旦开始使用 Azure 机器学习，就会产生费用，你可以在[成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)中看到这些费用。
+
+使用成本分析时，可以在图表中查看不同时间间隔的 Azure 机器学习成本。 有些示例是按天、当前、上个月和年划分的。 还可以对比预算和预测的成本来查看成本。 随着时间的推移切换到较长的视图，可帮助你确定支出趋势。 你会看到可能出现超支的地方。 如果已创建预算，还可以轻松查看超支的地方。
+
+若要在成本分析中查看 Azure 机器学习，请执行以下操作：
+
+1. 登录到 Azure 门户。
+2. 在 Azure 门户中打开范围，并在菜单中选择“成本分析”。 例如，转到“订阅”，从列表中选择一项订阅，然后在菜单中选择“成本分析” 。 选择“范围”，在成本分析中切换到不同的范围。
+3. 默认情况下，服务的成本显示在第一个圆环图中。 选择图表中标记为“Azure 机器学习”的区域。
+
+最初打开成本分析时，会显示实际的每月成本。 下面是显示所有每月使用成本的示例。
+
+:::image type="content" source="media/concept-plan-manage-cost/all-costs.png" alt-text="显示订阅累计成本的示例。" lightbox="media/concept-plan-manage-cost/all-costs.png" :::
+
+
+若要缩小单个服务（如 Azure 机器学习）的成本，请选择“添加筛选器”，然后选择“服务名称” 。 然后选择“Azure 机器学习”。
+
+下面的示例只显示了 Azure 机器学习的成本。
+
+:::image type="content" source="media/concept-plan-manage-cost/vm-specific-cost.png" alt-text="显示 ServiceName 累积成本的示例。" lightbox="media/concept-plan-manage-cost/vm-specific-cost.png" :::
+
+<!-- Note to Azure service writer: The image shows an example for Azure Storage. Replace the example image with one that shows costs for your service. -->
+
+在前面的示例中，可查看服务的当前成本。 还显示了 Azure 区域（位置）的成本和资源组的 Azure 机器学习成本。 从这里，你可以自行探索成本。
 ## <a name="create-budgets"></a>创建预算
 
 可以创建[预算](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来管理成本，并创建[警报](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)以自动通知利益干系人支出异常和超支风险。 警报基于与预算和成本阈值相比的支出。 预算和警报是针对 Azure 订阅和资源组创建的，作为总体成本监视策略的一部分，它们非常有用。 
@@ -98,70 +147,25 @@ ws.delete(delete_dependent_resources=True)
 
 ## <a name="other-ways-to-manage-and-reduce-costs-for-azure-machine-learning"></a>管理和降低 Azure 机器学习成本的其他方式
 
-使用这些技巧来控制机器学习计算资源的成本。
+使用以下技巧来帮助管理和优化计算资源成本。
 
-### <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>使用 Azure 机器学习计算群集 (AmlCompute)
+- 配置训练群集以实现自动缩放
+- 设置订阅和工作区上的配额
+- 针对“训练运行”设置终止策略
+- 使用低优先级虚拟机 (VM)
+- 使用 Azure 虚拟机预留实例
+- 本地训练
+- 并行化训练
+- 设置数据保留和删除策略
+- 将资源部署到同一区域
 
-随着数据的不断变化，需要快速且精简的模型训练和重训练流程来维持模型准确。 但是，持续训练需要付出一定代价，尤其是 GPU 上的深度学习模型。 
-
-Azure 机器学习用户可以使用托管 Azure 机器学习计算群集（也称为 AmlCompute）。 AmlCompute 支持多种 GPU 和 CPU 选项。 AmlCompute 是由 Azure 机器学习代表你的订阅在内部进行托管的。 它在 Azure IaaS 云规模上提供相同的企业级安全性、合规性和治理功能。
-
-由于这些计算池位于 Azure IaaS 基础结构内，因此，你可以按照与基础结构的其余部分相同的安全性和合规性要求来部署、缩放和管理训练。  这些部署在你的订阅中发生，遵循你的治理规则。 详细了解 [Azure 机器学习计算](how-to-create-attach-compute-cluster.md)。
-
-### <a name="configure-training-clusters-for-autoscaling"></a>配置训练群集以实现自动缩放
-
-根据工作负载要求自动缩放群集有助于降低成本，这样就可以只使用所需的内容。
-
-AmlCompute 群集的设计旨在根据工作负载动态进行缩放。 群集可以纵向扩展到所配置的最大节点数。 每次运行完成后，群集将释放节点并缩放到所配置的最小节点计数。
-
-[!INCLUDE [min-nodes-note](../../includes/machine-learning-min-nodes.md)]
-
-还可以配置节点在纵向缩减之前处于空闲状态的时间量。 默认情况下，纵向缩减之前的空闲时间设置为 120 秒。
-
-+ 如果执行迭代较少的试验，请缩短此时间以节省成本。
-+ 如果迭代较多的开发/测试试验，可能需要增加此时间，这样就不用在每次更改训练脚本或环境后为纵向扩展或纵向缩减付费。
-
-可以使用 [AmlCompute SDK 类](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute)、[AmlCompute CLI](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_amlcompute) 以及 [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable) 来配置 AmlCompute 群集，以适应 Azure 门户中不断变化的工作负载要求。
-
-```azurecli
-az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300
-```
-
-### <a name="set-quotas-on-resources"></a>设置资源上的配额
-
-AmlCompute 附带一个[配额（或限制）配置](how-to-manage-quotas.md#azure-machine-learning-compute)。 此配额根据 VM 系列（例如 Dv2 系列、NCv3 系列）而定，且因每个订阅的区域而异。 订阅从较小的默认值开始以便于你上手，但使用此设置可以控制在订阅中逐渐增加的 Amlcompute 资源量。 
-
-对于订阅内的每个工作区，还需配置[按 VM 系列的工作区级别配额](how-to-manage-quotas.md#workspace-level-quotas)。 这样，你就可以对每个工作区可能产生的成本进行更精细的控制并限制某些 VM 系列。 
-
-若要在工作区级别设置配额，请使用 [Azure 门户](https://portal.azure.com)。  选择订阅中的任何工作区，然后在左窗格中选择“使用量 + 配额”。 然后选择“配置配额”选项卡以查看配额。 你需要订阅范围的权限来设置配额，因为这是一个会影响多个工作区的设置。
-
-### <a name="set-run-autotermination-policies"></a>设置“运行自动终止”策略 
-
-在某些情况下，应对“训练运行”进行配置以限制其持续时间或提前终止。 例如，当使用 Azure 机器学习的内置超参数优化或自动化机器学习时。
-
-以下是可执行的几个选择：
-* 在 RunConfiguration 中定义名为 `max_run_duration_seconds` 的参数，用于控制一个运行可在所选计算（本地或远程云计算）上持续的最长持续时间。
-* 对于[超参数优化](how-to-tune-hyperparameters.md#early-termination)，请在老虎机策略、中间值停止策略或截断选择策略中定义提前终止策略。 若要进一步控制超参数整理，请使用 `max_total_runs` 或 `max_duration_minutes` 等参数。
-* 对于[自动化机器学习](how-to-configure-auto-train.md#exit)，请使用 `enable_early_stopping` 标志设置类似的终止策略。 另外，请使用诸如 `iteration_timeout_minutes` 和 `experiment_timeout_minutes` 等属性来控制运行的最长持续时间或整个试验的最长持续时间。
-
-### <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a>使用低优先级 VM
-
-Azure 允许在虚拟机规模集、Batch 和机器学习服务中将未利用的多余容量作为低优先级 VM 来使用。 这些容量分配是可预先抢占的，其价格比专用 VM 低。 通常，建议为 Batch 工作负载使用低优先级 VM。 如果可通过重新提交（对于 Batch 推理）或通过重启（对于具有检查点的深度学习培训）从中断中恢复，也应使用它们。
-
-低优先级 VM 具有与专用配额值（按 VM 系列）不同的单一配额。 了解[有关 AmlCompute 配额的详细信息](how-to-manage-quotas.md)。
-
- 低优先级 VM 不适用于计算实例，因为后者需要支持交互式笔记本体验。
-
-### <a name="use-reserved-instances"></a>使用预留实例
-
-节省计算资源成本的另一种方法是 Azure 虚拟机预留实例。 此产品按一年或三年的期限提供。 其折扣最高可达即用即付价格的 72%，并直接应用于每月 Azure 帐单。
-
-Azure 机器学习计算本身就支持预留实例。 如果你购买了一年或三年的预留实例，将自动根据你的 Azure 机器学习托管计算来应用折扣。
-
+有关详细信息，请参阅[管理和优化 Azure 机器学习成本](how-to-manage-optimize-cost.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
+- [管理和优化 Azure 机器学习成本](how-to-manage-optimize-cost.md)。
+- [在组织范围内管理 Azure 机器学习的预算、成本和配额](/azure/cloud-adoption-framework/ready/azure-best-practices/optimize-ai-machine-learning-cost)
 - 了解[如何通过 Azure 成本管理优化云投资](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 - 详细了解如何通过[成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)来管理成本。
-- 了解如何[防止意外成本](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+- 了解如何[防止意外成本](../cost-management-billing/understand/analyze-unexpected-charges.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 - 参与[成本管理](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)引导式学习课程。

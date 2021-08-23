@@ -2,18 +2,18 @@
 title: 使用 Azure 门户更改 Azure 托管磁盘的性能
 description: 了解如何使用 Azure 门户更改新的和现有托管磁盘的性能层。
 author: roygara
-ms.service: storage
+ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 06/29/2021
+ms.date: 05/13/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 37069bb17e0ce6a104ae3c1b79714da160737fe8
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: a82865930a5ed770b742c3d5e8906d4e69be3f64
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113356268"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110079401"
 ---
 # <a name="change-your-performance-tier-using-the-azure-portal"></a>使用 Azure 门户更改性能层
 
@@ -58,7 +58,7 @@ ms.locfileid: "113356268"
 
 ### <a name="prerequisites"></a>先决条件
 
-磁盘必须满足[在不停机的情况下更改性能层（预览版）](#change-performance-tier-without-downtime-preview)部分中规定的要求，如果不满足，则更改性能层会造成停机。
+磁盘必须满足 [在不停机的情况下更改性能层（预览版）](#change-performance-tier-without-downtime-preview) 部分中规定的要求，如果不满足，则更改性能层会造成停机。
 
 必须先为订阅启用该功能，然后才能在不停机的情况下更改磁盘的性能层。 请按照以下步骤为订阅启用此功能：
 

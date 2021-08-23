@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: krsh
 ms.date: 04/16/2021
-ms.openlocfilehash: 46b29bb6a7294d0f6741be4cac7028fe7e42ec95
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 23fc6f6f6a62230e2cfc710c1c738eb42d6cc115
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113430262"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527526"
 ---
 # <a name="create-a-virtual-machine-using-an-approved-base"></a>使用经过批准的基础映像创建虚拟机
 
@@ -78,5 +78,5 @@ Azure 随即开始预配所指定的虚拟机。 请通过选择左侧菜单中�
 ## <a name="next-steps"></a>后续步骤
 
 - 建议的后续步骤：[测试 VM 映像](azure-vm-image-test.md)，以确保它满足 Azure 市场发布要求。 此为可选项。
-- 如果你不想测试 VM 映像，请登录到[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165935)来发布映像。
-- 如果在创建新的基于 Azure 的 VHD 时遇到困难，请参阅 [Azure 市场的 VM 常见问题解答](azure-vm-create-faq.yml)。
+- 如果你不想测试 VM 映像，请登录到[合作伙伴中心](https://partner.microsoft.com/)来发布映像。
+- 如果在创建新的基于 Azure 的 VHD 时遇到困难，请参阅 [Azure 市场的 VM 常见问题解答](azure-vm-create-faq.md)。

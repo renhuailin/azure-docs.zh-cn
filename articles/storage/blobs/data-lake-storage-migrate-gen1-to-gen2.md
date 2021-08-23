@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 875c046406b7989a39f09dde82640ed5567b6b3e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 485f0a19c5cb87b358f1723664425619b5d2c6aa
+ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101714861"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111903304"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>将 Azure Data Lake Storage 从 Gen1 迁移到 Gen2
 
@@ -81,7 +81,7 @@ ms.locfileid: "101714861"
    
 6. 搜索代码文件、Databricks 笔记本、Apache Hive HQL 文件或其他任何用作工作负载一部分的文件中包含字符串 `adl://` 的 URI 引用。 将这些引用替换为新存储帐户的 [Gen2 格式 URI](data-lake-storage-introduction-abfs-uri.md)。 例如，Gen1 URI：`adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` 可能会变为 `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile`。 
 
-7. 在帐户上配置安全性，以包括 [Azure 角色](../common/storage-auth-aad-rbac-portal.md)、[文件和文件夹级别安全性](data-lake-storage-access-control.md)，以及 [Azure 存储防火墙和虚拟网络](../common/storage-network-security.md)。
+7. 在帐户上配置安全性，以包括 [Azure 角色](assign-azure-role-data-access.md)、[文件和文件夹级别安全性](data-lake-storage-access-control.md)，以及 [Azure 存储防火墙和虚拟网络](../common/storage-network-security.md)。
 
 ### <a name="step-4-cutover-from-gen1-to-gen2"></a>步骤 4：从 Gen1 转换为 Gen2
 
@@ -111,7 +111,7 @@ ms.locfileid: "101714861"
 
 选择迁移模式，并根据需要修改该模式。
 
-|||
+|迁移模式 | 详细信息 |
 |---|---|
 |**直接迁移**|最简单的模式。 如果数据管道可以承受停机，这是理想选择。|
 |**增量复制**|类似于直接迁移，但停机时间更少。 非常适合需要较长时间才能复制的大量数据。|

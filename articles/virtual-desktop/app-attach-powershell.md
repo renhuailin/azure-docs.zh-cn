@@ -7,12 +7,12 @@ ms.date: 04/13/2021
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: d77dfb8883aac4e960274ce86de243f25df2f196
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 6a5dd53bee4e6ae99559d63441f1240d5905644e
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707041"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745414"
 ---
 # <a name="set-up-msix-app-attach-using-powershell"></a>通过 PowerShell 设置 MSIX 应用附加
 
@@ -242,4 +242,4 @@ $grName = "<AppGroupName>"
 下面是一些可能有用的其他文章：
 
 - [MSIX 应用附加术语表](app-attach-glossary.md)
-- [MSIX 应用附加常见问题解答](app-attach-faq.yml)
+- [MSIX 应用附加常见问题解答](app-attach-faq.md)

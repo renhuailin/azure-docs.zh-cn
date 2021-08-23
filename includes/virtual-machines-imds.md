@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: bc0aee5184e5058cdebaac8a495d88129e6fc7c1
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 669304159a525248dbd4f9d1c3f7b34660274b74
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109805417"
+ms.lasthandoff: 05/25/2021
+ms.locfileid: "110486603"
 ---
 Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实例的信息。 可以使用它来管理和配置虚拟机。
 这些信息包括 SKU、存储、网络配置和即将发生的维护事件。 有关可用数据的完整列表，请参阅[终结点类别摘要](#endpoint-categories)。
@@ -40,13 +40,13 @@ IMDS 是一个 REST API，在已知的、不可路由的 IP 地址 (`169.254.169
 #### <a name="windows"></a>[Windows](#tab/windows/)
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | ConvertTo-Json -Depth 64
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance?api-version=2021-02-01" | ConvertTo-Json -Depth 64
 ```
 
 #### <a name="linux"></a>[Linux](#tab/linux/)
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2020-09-01" | jq
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2021-02-01" | jq
 ```
 
 ---
@@ -99,14 +99,14 @@ IMDS 不用于在代理后使用，系统不支持那样做。 大多数 HTTP �
 IMDS 终结点支持 HTTP 查询字符串参数。 例如： 
 
 ```
-http://169.254.169.254/metadata/instance/compute?api-version=2019-06-04&format=json
+http://169.254.169.254/metadata/instance/compute?api-version=2021-01-01&format=json
 ```
 
 指定参数：
 
 | 名称 | 值 |
 |------|-------|
-| `api-version` | `2019-06-04`
+| `api-version` | `2021-01-01`
 | `format` | `json`
 
 系统会拒绝具有重复的查询参数名称的请求。
@@ -248,6 +248,7 @@ IMDS 进行了版本控制，在 HTTP 请求中指定 API 版本是必需的。 
 - 2020-10-01
 - 2020-12-01
 - 2021-01-01
+- 2021-02-01
 
 ### <a name="swagger"></a>Swagger
 
@@ -370,7 +371,7 @@ GET /metadata/instance
 
 **存储配置文件**
 
-VM 的存储配置文件分为三个类别：映像引用、OS 磁盘和数据磁盘。
+VM 的存储配置文件分为三个类别：映像引用、操作系统磁盘和数据磁盘，以及本地临时磁盘的其他对象。
 
 映像引用对象包含有关 OS 映像的以下信息：
 
@@ -412,6 +413,13 @@ OS 磁盘对象包含有关 VM 所用 OS 磁盘的以下信息：
 | `osType` | 磁盘中包含的 OS 类型
 | `vhd` | 虚拟硬盘
 | `writeAcceleratorEnabled` | 磁盘上是否启用了 writeAccelerator
+
+资源磁盘对象包含附加到 VM 的[本地临时磁盘](../articles/virtual-machines/managed-disks-overview.md#temporary-disk)（如果有）的大小（以 KB 为单位）。
+如果 [VM 没有本地临时磁盘](../articles/virtual-machines/azure-vms-no-temp-disk.md)，则此值为 0。 
+
+| 数据 | 说明 | 引入的版本 |
+|------|-------------|--------------------|
+| `resourceDisk.size` | VM 的本地临时磁盘大小（以 KB 为单位） | 2021-02-01
 
 **Network**
 
@@ -710,6 +718,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
                 "uri": ""
             },
             "writeAcceleratorEnabled": "false"
+        },
+        "resourceDisk": {
+            "size": "4096"
         }
     },
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
@@ -811,6 +822,9 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/co
                 "uri": ""
             },
             "writeAcceleratorEnabled": "false"
+        },
+        "resourceDisk": {
+            "size": "4096"
         }
     },
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",

@@ -1,17 +1,17 @@
 ---
 title: 为 Azure Cosmos DB 使用具有 Always Encrypted 功能的客户端加密
 description: 了解如何将具有 Always Encrypted 功能的客户端加密用于 Azure Cosmos DB
+author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: thweiss
-author: ThomasWeiss
-ms.openlocfilehash: 9135e35e74eda1387dc6dee5ba0875c4152439b0
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 884626bd5b0cbbf6fb24bf0e3da3b7776e720f77
+ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113356376"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112071634"
 ---
 # <a name="use-client-side-encryption-with-always-encrypted-for-azure-cosmos-db-preview"></a>将具有 Always Encrypted 功能的客户端加密用于 Azure Cosmos DB （预览版）
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

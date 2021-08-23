@@ -1,23 +1,22 @@
 ---
-title: 在 Dynamics (Common Data Service) 中复制数据
-description: 了解如何通过在数据工厂管道中使用复制活动，将数据从 Microsoft Dynamics CRM 或 Microsoft Dynamics 365 (Common Data Service/Microsoft Dataverse) 复制到受支持的接收器数据存储，或者从受支持的源数据存储复制到 Dynamics CRM 或 Dynamics 365。
+title: 在 Dynamics 中复制数据 (Microsoft Dataverse)
+description: 了解如何通过在数据工厂管道中使用复制活动，将数据从 Microsoft Dynamics CRM 或 Microsoft Dynamics 365 (Microsoft Dataverse) 复制到受支持的接收器数据存储，或者从受支持的源数据存储复制到 Dynamics CRM 或 Dynamics 365。
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: jianleishen
 author: jianleishen
 ms.custom: seo-lt-2019
 ms.date: 03/17/2021
-ms.openlocfilehash: c949ed8d0ecb35df0a2c31bb90514c18cf3a3755
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 5b09872ccdf28a6343fdbaa2f7e9e6fbafbd9410
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484318"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111950836"
 ---
-# <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Common Data Service/Microsoft Dataverse) 或 Dynamics CRM 复制数据
+# <a name="copy-data-from-and-to-dynamics-365-microsoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Dynamics 365 (Microsoft Dataverse) 或 Dynamics CRM 复制数据
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-
 本文概述了如何使用 Azure 数据工厂中的复制活动从/向 Microsoft Dynamics 365 和 Microsoft Dynamics CRM 复制数据。 它基于[复制活动概述](copy-activity-overview.md)一文，该文概述了复制活动。
 
 ## <a name="supported-capabilities"></a>支持的功能
@@ -27,30 +26,32 @@ ms.locfileid: "109484318"
 - [复制活动](copy-activity-overview.md)和[支持的源和接收器矩阵](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
-可将数据从 Dynamics 365 (Common Data Service/Microsoft Dataverse) 或 Dynamics CRM 复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 Dynamics 365 (Common Data Service) 或 Dynamics CRM。 如需复制活动支持将其用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
+可将数据从 Dynamics 365 (Microsoft Dataverse) 或 Dynamics CRM 复制到任何支持的接收器数据存储。 还可以将数据从任何支持的源数据存储复制到 Dynamics 365 (Microsoft Dataverse) 或 Dynamics CRM。 如需复制活动支持将其用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
+
+>[!NOTE]
+>自 2020 年 11 月起，Common Data Service 已更名为 [Microsoft Dataverse](/powerapps/maker/data-platform/data-platform-intro)。 本文已更新并使用最新术语。 
 
 此 Dynamics 连接器支持联机的和本地的 Dynamics 版本 7-9。 更具体地说：
-
 - 版本 7 映射到 Dynamics CRM 2015。
 - 版本 8 映射到 Dynamics CRM 2016 和早期版 Dynamics 365。
 - 版本 9 映射到较新版 Dynamics 365。
+
 
 请参阅下表，了解各种 Dynamics 版本和产品支持的身份验证类型和配置。
 
 | Dynamics 版本 | 身份验证类型 | 链接的服务示例 |
 |:--- |:--- |:--- |
-| Common Data Service <br/><br/> Dynamics 365 联机 <br/><br/> Dynamics CRM 联机 | Azure Active Directory (Azure AD) 服务主体 <br/><br/> Office 365 | [联机 Dynamics 和 Azure AD 服务主体或 Office 365 身份验证](#dynamics-365-and-dynamics-crm-online) |
+| Dataverse <br/><br/> Dynamics 365 联机 <br/><br/> Dynamics CRM 联机 | Azure Active Directory (Azure AD) 服务主体 <br/><br/> Office 365 | [联机 Dynamics 和 Azure AD 服务主体或 Office 365 身份验证](#dynamics-365-and-dynamics-crm-online) |
 | 本地 Dynamics 365，具有面向 Internet 的部署 (IFD) <br/><br/> 带有 IFD 的本地 Dynamics CRM 2016 <br/><br/> 带有 IFD 的本地 Dynamics CRM 2015 | IFD | [带有 IFD 和 IFD 身份验证的本地 Dynamics](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
+> [!IMPORTANT]
+>如果在 Azure Active Directory 中为[条件访问](../active-directory/conditional-access/overview.md)租户和用户和/或需要多重身份验证，你将无法使用 Office 365 身份验证类型。 在这些情况下，必须使用 Azure Active Directory (Azure AD) 服务主体身份验证。
 
 具体而言，对于 Dynamics 365，支持以下应用程序类型：
-
 - Dynamics 365 for Sales
 - Dynamics 365 for Customer Service
 - Dynamics 365 for Field Service
 - Dynamics 365 for Project Service Automation
-- Dynamics 365 for Marketing
-
-此连接器不支持其他应用程序类型，如“财务”、“运营”和“人才”。
+- Dynamics 365 for Marketing 此连接器不支持其他应用程序类型，如“财务”、“运营”和“人才”。
 
 >[!TIP]
 >若要从 Dynamics 365 Finance and Operations 复制数据，可以使用 [Dynamics AX 连接器](connector-dynamics-ax.md)。
@@ -58,8 +59,8 @@ ms.locfileid: "109484318"
 此 Dynamics 连接器基于 [Dynamics XRM 工具](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)构建。
 
 ## <a name="prerequisites"></a>先决条件
+若要将此连接器与 Azure AD 服务主体身份验证配合使用，必须在 Dataverse 或 Dynamics 中设置服务器到服务器 (S2S) 身份验证。 先在 Azure Active Directory 中注册应用程序用户（服务主体）。 可在[此处](../active-directory/develop/howto-create-service-principal-portal.md)了解如何执行此操作。 在应用程序注册期间，需在 Dataverse 或 Dynamics 中创建该用户并授予权限。 可以直接授予这些权限，也可以通过将应用程序用户添加到已在 Dataverse 或 Dynamics 中为其授予了这些权限的团队来间接授权。 可在[此处](/powerapps/developer/data-platform/use-single-tenant-server-server-authentication)详细了解如何将应用程序用户设置为使用 Dataverse 进行身份验证。 
 
-若要将此连接器与 Azure AD 服务主体身份验证配合使用，必须在 Common Data Service 或 Dynamics 中设置服务器到服务器 (S2S) 身份验证。 请参阅[此文](/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication)，了解详细步骤。
 
 ## <a name="get-started"></a>入门
 
@@ -73,7 +74,7 @@ Dynamics 链接服务支持以下属性。
 
 ### <a name="dynamics-365-and-dynamics-crm-online"></a>联机 Dynamics 365 和 Dynamics CRM
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为“Dynamics”、“DynamicsCrm”或“CommonDataServiceForApps”。 | 是 |
 | deploymentType | Dynamics 实例的部署类型。 对于联机 Dynamics，此值必须为“Online”。 | 是 |
@@ -111,6 +112,7 @@ Dynamics 链接服务支持以下属性。
     }  
 }  
 ```
+
 #### <a name="example-dynamics-online-using-azure-ad-service-principal-and-certificate-authentication"></a>示例：使用 Azure AD 服务主体和证书身份验证的联机 Dynamics
 
 ```json
@@ -140,7 +142,6 @@ Dynamics 链接服务支持以下属性。
     } 
 } 
 ```
-
 #### <a name="example-dynamics-online-using-office-365-authentication"></a>示例：使用 Office 365 身份验证的联机 Dynamics
 
 ```json
@@ -170,7 +171,7 @@ Dynamics 链接服务支持以下属性。
 
 与联机 Dynamics 进行对比的其他属性是 **hostName** 和 **port**。
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为“Dynamics”、“DynamicsCrm”或“CommonDataServiceForApps”。 | 是的。 |
 | deploymentType | Dynamics 实例的部署类型。 对于带有 IFD 的本地 Dynamics，此值必须为“OnPremisesWithIfd”。| 是的。 |
@@ -216,7 +217,7 @@ Dynamics 链接服务支持以下属性。
 
 支持使用以下属性从/向 Dynamics 复制数据：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为“DynamicsEntity”、“DynamicsCrmEntity”或“CommonDataServiceForAppsEntity”。 |是 |
 | entityName | 要检索的实体的逻辑名称。 | 对于源非必需（如果将活动源指定为“query”），对于接收器为必需的 |
@@ -248,7 +249,7 @@ Dynamics 链接服务支持以下属性。
 
 为了从 Dynamics 复制数据，复制活动的 **source** 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为“DynamicsSource”、“DynamicsCrmSource”或“CommonDataServiceForAppsSource”。 | 是 |
 | query | FetchXML 是在联机和本地 Dynamics 中使用的专属查询语言。 请参阅以下示例。 若要了解详细信息，请参阅[使用 FetchXML 生成查询](/previous-versions/dynamicscrm-2016/developers-guide/gg328332(v=crm.8))。 | 否（如果指定了数据集中的 `entityName`） |
@@ -316,7 +317,7 @@ Dynamics 链接服务支持以下属性。
 
 为了将数据复制到 Dynamics，复制活动的 **sink** 节支持以下属性：
 
-| 属性 | 说明 | 必需 |
+| 属性 | 说明 | 必须 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为“DynamicsSink”、“DynamicsCrmSink”或“CommonDataServiceForAppsSink”。 | 是的。 |
 | writeBehavior | 操作的写入行为。 值必须是“Upsert”。 | 是 |
@@ -457,4 +458,5 @@ Dynamics 链接服务支持以下属性。
 若要了解有关属性的详细信息，请参阅[“查找”活动](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>后续步骤
+
 若要获取数据工厂中的复制活动支持将其用作源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

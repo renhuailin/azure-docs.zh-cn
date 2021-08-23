@@ -6,32 +6,32 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 0431f28a23b9fcae8e34e7c163e9628d3d503255
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 768e751f28f9725cab47f100188c318d6b35d667
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396983"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111969131"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>IoT 中心的设备更新和 IoT 即插即用
 
-IoT 中心的设备更新使用 [IoT 即插即用](../iot-develop/index.yml)以发现和管理支持无线更新的设备。 设备更新服务将使用 PnP 接口向设备发送并从设备接收属性和消息。 IoT 中心的设备更新要求 IoT 设备实现以下接口和模型-ID（如下所述）。
+IoT 中心的设备更新使用 [IoT 即插即用](../iot-pnp/index.yml)以发现和管理支持无线更新的设备。 设备更新服务将使用 PnP 接口向设备发送并从设备接收属性和消息。 IoT 中心的设备更新要求 IoT 设备实现以下接口和模型-ID（如下所述）。
 
 概念： 
-* 了解 [IoT 即插即用设备客户端](../iot-develop/concepts-developer-guide-device.md?pivots=programming-language-csharp)。 
+* 了解 [IoT 即插即用设备客户端](../iot-pnp/concepts-developer-guide-device.md?pivots=programming-language-csharp#implement-telemetry-properties-and-commands)。 
 * 查看如何[实现设备更新代理](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-build-agent-code.md)。
 
 ## <a name="adu-core-interface"></a>ADU Core 接口
 
 “ADUCoreInterface”接口用于向设备发送更新操作和元数据，并从设备接收更新状态。 “ADU Core”接口拆分为两个对象属性。
 
-实现此接口时，模型中的预期组件名称为“azureDeviceUpdateAgent”。 [详细了解 Azure IoT PnP 组件](../iot-develop/concepts-modeling-guide.md)
+实现此接口时，模型中的预期组件名称为“azureDeviceUpdateAgent”。 [详细了解 Azure IoT PnP 组件](../iot-pnp/concepts-modeling-guide.md)
 
 ### <a name="agent-metadata"></a>代理元数据
 
 设备或设备更新代理会使用代理元数据中包含的字段向设备更新服务发送信息和状态。
 
-|名称|架构|方向|描述|示例|
+|名称|架构|方向|说明|示例|
 |----|------|---------|-----------|-----------|
 |resultCode|integer|设备到云|此代码包含上次更新操作结果的信息。 可能填充成功，也可能填充失败，应遵循 [HTTP 状态代码规范](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)。|500|
 |extendedResultCode|integer|设备到云|此代码包含结果的其他信息。 可能填充成功，也可能填充失败。|0x80004005|
@@ -43,12 +43,12 @@ IoT 中心的设备更新使用 [IoT 即插即用](../iot-develop/index.yml)以�
 
 此为设备更新代理从设备更新服务接收操作后报告的状态。 系统会报告 `State`，以响应从设备更新服务发送到设备更新代理的 `Action`（请参阅下文 `Actions`）。 请参阅[概述工作流](understand-device-update.md#device-update-agent)，以了解在设备更新服务和设备更新代理之间流动的请求。
 
-|名称|“值”|说明|
+|名称|Value|说明|
 |---------|-----|-----------|
 |闲置|0|设备已准备就绪，可以接收来自设备更新服务的操作。 更新成功后，状态返回到 `Idle`。|
 |DownloadSucceeded|2|下载成功。|
 |InstallSucceeded|4|安装成功。|
-|失败|255|更新时出错。|
+|已失败|255|更新时出错。|
 
 #### <a name="device-properties"></a>设备属性
 
@@ -80,7 +80,7 @@ IoT 中心设备孪生示例
                             }
 ```
 
-注意：设备或模块必须添加 {"__t": "c"} 标记以指示元素引用组件，请在[此处](../iot-develop/concepts-convention.md#sample-multiple-components-writable-property)了解详细信息。
+注意：设备或模块必须添加 {"__t": "c"} 标记以指示元素引用组件，请在[此处](../iot-pnp/concepts-convention.md#sample-multiple-components-writable-property)了解详细信息。
 
 ### <a name="service-metadata"></a>服务元数据
 
@@ -97,7 +97,7 @@ IoT 中心设备孪生示例
 
 如下 `Actions` 表示设备更新代理按照设备更新服务的指示所执行的操作。 设备更新代理将报告处理收到的 `Action` 的 `State`（请参阅上述 `State` 部分）。 请参阅[概述工作流](understand-device-update.md#device-update-agent)，以了解在设备更新服务和设备更新代理之间流动的请求。
 
-|名称|“值”|说明|
+|名称|Value|说明|
 |---------|-----|-----------|
 |下载|0|下载已发布的内容或更新以及所需的任何其他内容|
 |安装|1|安装内容或更新。 通常，这意味着调用内容或更新的安装程序。|
@@ -106,11 +106,11 @@ IoT 中心设备孪生示例
 
 ## <a name="device-information-interface"></a>设备信息接口
 
-设备信息接口是 [IoT 即插即用体系结构](../iot-develop/overview-iot-plug-and-play.md)中使用的概念。 它包含设备到云的属性，这些属性提供有关设备的硬件和操作系统的信息。 IoT 中心的设备更新使用 DeviceInformation.manufacturer 和 DeviceInformation.model 属性进行遥测和诊断。 若要详细了解设备信息接口，请参阅此[示例](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json)。
+设备信息接口是 [IoT 即插即用体系结构](../iot-pnp/overview-iot-plug-and-play.md)中使用的概念。 它包含设备到云的属性，这些属性提供有关设备的硬件和操作系统的信息。 IoT 中心的设备更新使用 DeviceInformation.manufacturer 和 DeviceInformation.model 属性进行遥测和诊断。 若要详细了解设备信息接口，请参阅此[示例](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json)。
 
-实现此接口时，模型中的预期组件名称为 deviceInformation。 [了解 Azure IoT PnP 组件](../iot-develop/concepts-modeling-guide.md)
+实现此接口时，模型中的预期组件名称为 deviceInformation。 [了解 Azure IoT PnP 组件](../iot-pnp/concepts-modeling-guide.md)
 
-|名称|类型|架构|方向|描述|示例|
+|名称|类型|架构|方向|说明|示例|
 |----|----|------|---------|-----------|-----------|
 |制造商|属性|字符串|设备到云|设备制造商的公司名称。 此名称可以与原始设备制造商 (OEM) 的名称相同。|Contoso|
 |模型|属性|字符串|设备到云|设备型号名称或 ID。|IoT Edge 设备|
@@ -123,6 +123,6 @@ IoT 中心设备孪生示例
 
 ## <a name="model-id"></a>模型 ID 
 
-模型 ID 是智能设备通过 IoT 即插即用向 Azure IoT 应用程序发布其功能的方式。若要了解如何构建智能设备以向 Azure IoT 应用程序发布其功能的详细信息，请访问《[IoT 即插即用设备开发人员指南](../iot-develop/concepts-developer-guide-device.md)》。
+模型 ID 是智能设备通过 IoT 即插即用向 Azure IoT 应用程序发布其功能的方式。若要了解如何构建智能设备以向 Azure IoT 应用程序发布其功能的详细信息，请访问《[IoT 即插即用设备开发人员指南](../iot-pnp/concepts-developer-guide-device.md)》。
 
-IoT 中心的设备更新要求 IoT 即插即用智能设备在设备连接过程中公布值为“dtmi:AzureDeviceUpdate;1” 的模型 ID。 [了解如何公布模型 ID](../iot-develop/concepts-developer-guide-device.md#model-id-announcement)。
+IoT 中心的设备更新要求 IoT 即插即用智能设备在设备连接过程中公布值为“dtmi:AzureDeviceUpdate;1” 的模型 ID。 [了解如何公布模型 ID](../iot-pnp/concepts-developer-guide-device.md#model-id-announcement)。

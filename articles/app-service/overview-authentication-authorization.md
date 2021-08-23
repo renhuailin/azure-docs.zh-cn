@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/29/2021
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 1b6e600fcaf32a115af14be2444144fee099d635
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: a362e99e9da7cf4c41f042364792a05a27b1aa6a
+ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075332"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111892681"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure 应用服务和 Azure Functions 中的身份验证和授权
 
@@ -138,7 +138,7 @@ Azure 应用服务提供内置的身份验证和授权功能（有时称为“�
 
 有关详细信息，请参阅[访问用户声明](app-service-authentication-how-to.md#access-user-claims)。
 
-目前，ASP.NET Core 不支持为当前用户填充身份验证/授权功能。 但是，确实存在一些[第三方开源中间件组件](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)，可以帮助填补这一空白。
+对于 .NET Core，[Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) 支持使用身份验证/授权功能填充当前用户。 若要了解详细信息，可以在 [Microsoft.Identity.Web Wiki](https://github.com/AzureAD/microsoft-identity-web/wiki/1.2.0#integration-with-azure-app-services-authentication-of-web-apps-running-with-microsoftidentityweb) 上阅读相关内容，或查看[本教程中有关访问 Microsoft Graph 的 Web 应用的演示](./scenario-secure-app-access-microsoft-graph-as-user.md?tabs=command-line#install-client-library-packages)。
 
 #### <a name="token-store"></a>令牌存储
 

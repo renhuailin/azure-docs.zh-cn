@@ -7,12 +7,12 @@ ms.date: 04/27/2021
 ms.author: helohr
 ms.reviewer: denisgun
 manager: femila
-ms.openlocfilehash: 41ee917602ed67af40f3244ad7215cae4d3a93c8
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: c8df5cbcc241877e5637abd89804071b4dcbf938
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113032446"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111753082"
 ---
 # <a name="proxy-server-guidelines-for-azure-virtual-desktop"></a>Azure 虚拟桌面的代理服务器准则
 
@@ -115,7 +115,7 @@ Azure 虚拟桌面客户端支持使用系统设置或[网络代理 CSP](/window
 | macOS | 是 |
 | Windows 应用商店 | 是 |
 
-有关 Linux 上基于瘦客户端的代理支持的详细信息，请参阅[瘦客户端支持](./user-documentation/linux-overview.md)。
+有关 Linux 上基于瘦客户端的代理支持的详细信息，请参阅[瘦客户端支持](linux-overview.md)。
 
 ## <a name="support-limitations"></a>支持限制
 

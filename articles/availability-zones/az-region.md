@@ -4,16 +4,16 @@ description: 若要在 Azure 中创建具有高可用性和弹性的应用程序
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 04/21/2021
+ms.date: 05/27/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 94de23463c99960a6c58ef5d4aa964abf828dd22
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 07f0e87b77d359d9bc1009ccc7e5176795e12cd5
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123854"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112029002"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>支持可用性区域的 Azure 服务
 
@@ -50,9 +50,9 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 | 美洲           | 欧洲               | 非洲              | 亚太区   |
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
-| 巴西南部       | 法国中部       | 南非北部* | 澳大利亚东部 |
+| Brazil South       | 法国中部       | 南非北部* | 澳大利亚东部 |
 | 加拿大中部     | 德国中西部 |                     | 印度中部* |
-| Central US         | 北欧         |                     | 日本东部     |
+| 美国中部         | 北欧         |                     | 日本东部     |
 | 美国东部            | 英国南部             |                     | 韩国中部* |
 | 美国东部 2          | 西欧          |                     | 东南亚 |
 | 美国中南部 |                      |                     |                |
@@ -78,12 +78,13 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 
 **基础服务**
 
-|     产品                                                    | 复原能力             |
+|     产品                                                    | 复原             |
 |-----------------------------------------------------------------|:----------------------------:|
 |     [应用程序网关 (V2)](../application-gateway/application-gateway-autoscaling-zone-redundant.md)                                  | :large_blue_diamond:  |
 |     [Azure 备份](../backup/backup-create-rs-vault.md#set-storage-redundancy)                                                | :large_blue_diamond:  |
 |     [Azure Cosmos DB](../cosmos-db/high-availability.md#availability-zone-support)                                           | :large_blue_diamond:  |
 |     [Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md)                             | :large_blue_diamond:  |
+|     [Azure DNS：Azure DNS 专用区域](../dns/private-dns-getstarted-portal.md)                   | :large_blue_diamond:  |
 |     [Azure Express Route](../expressroute/designing-for-high-availability-with-expressroute.md)                                       | :large_blue_diamond:  |
 |     [Azure 公共 IP](../virtual-network/public-ip-addresses.md)                                           | :large_blue_diamond:  |
 |     Azure SQL 数据库（[常规用途层](../azure-sql/database/high-availability-sla.md)）                 | :large_blue_diamond:  |
@@ -117,7 +118,7 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 **主流服务**
 
 
-|     产品                                                    | 复原能力             |
+|     产品                                                    | 复原             |
 |-----------------------------------------------------------------|:----------------------------:|
 |     [应用服务环境](../app-service/environment/zone-redundancy.md)                                    | :large_blue_diamond:  |
 |     [Azure Active Directory 域服务](../active-directory-domain-services/overview.md)                      | :large_blue_diamond:  |
@@ -127,6 +128,7 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 |     [Azure 认知搜索](../search/search-performance-optimization.md#availability-zones)               | :large_blue_diamond:  |
 |     Azure 认知服务：[文本分析](../cognitive-services/text-analytics/index.yml)                    | :large_blue_diamond:  |
 |     [Azure 数据资源管理器](/azure/data-explorer/create-cluster-database-portal)                               | :large_blue_diamond:  |
+|     [Azure 数据工厂](../data-factory/index.yml)                               | :large_blue_diamond:  |
 |     Azure Database for MySQL - [灵活服务器](../mysql/flexible-server/concepts-high-availability.md)                  | :large_blue_diamond:  |
 |     Azure Database for PostgreSQL - [灵活服务器](../postgresql/flexible-server/overview.md)             | :large_blue_diamond:  |
 |     [Azure DDoS 防护](../ddos-protection/ddos-faq.md)                                       | :large_blue_diamond:  |
@@ -140,8 +142,8 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 |     [Azure Web 应用程序防火墙](../firewall/deploy-availability-zone-powershell.md)                              | :large_blue_diamond:  |
 |     [容器注册表](../container-registry/zone-redundancy.md)                                          | :large_blue_diamond:  |
 |     [事件网格](../event-grid/overview.md)                                                  | :large_blue_diamond:  |
-|     [网络观察程序](../network-watcher/frequently-asked-questions.md#service-availability-and-redundancy)                                             | :large_blue_diamond:  |
-|     网络观察程序：[流量分析](../network-watcher/frequently-asked-questions.md#service-availability-and-redundancy)                          | :large_blue_diamond:  |
+|     [网络观察程序](/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                                             | :large_blue_diamond:  |
+|     网络观察程序：[流量分析](/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                          | :large_blue_diamond:  |
 |     [Power BI Embedded](/power-bi/admin/service-admin-failover#what-does-high-availability)                                           | :large_blue_diamond:  |
 |     [高级 Blob 存储](../storage/blobs/storage-blob-performance-tiers.md)                                        | :large_blue_diamond:  |
 |     存储：[Azure 高级文件](../storage/files/storage-files-planning.md)                                | :large_blue_diamond:  |
@@ -156,15 +158,15 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 |     虚拟机：[Ev4 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                                | :large_blue_diamond:  |
 |     虚拟机：[Fsv2 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                               | :large_blue_diamond:  |
 |     虚拟机：[M 系列](../virtual-machines/windows/create-powershell-availability-zone.md)                                  | :large_blue_diamond:  |
-|     [虚拟 WAN](../virtual-wan/virtual-wan-about.md#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                                 | :large_blue_diamond:  |
-|     虚拟 WAN：[ExpressRoute](../virtual-wan/virtual-wan-about.md#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                   | :large_blue_diamond:  |
+|     [虚拟 WAN](../virtual-wan/virtual-wan-faq.md#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                                 | :large_blue_diamond:  |
+|     虚拟 WAN：[ExpressRoute](../virtual-wan/virtual-wan-faq.md#how-are-availability-zones-and-resiliency-handled-in-virtual-wan)                                   | :large_blue_diamond:  |
 |     虚拟 WAN：[点到站点 VPN 网关](../vpn-gateway/about-zone-redundant-vnet-gateways.md)                      | :large_blue_diamond:  |
 |     虚拟 WAN：[站点到站点 VPN 网关](../vpn-gateway/about-zone-redundant-vnet-gateways.md)                       | :large_blue_diamond:  |
 
 
 **专用服务**
 
-|     产品                                                    | 复原能力             |
+|     产品                                                    | 复原             |
 |-----------------------------------------------------------------|:----------------------------:|
 |     Azure Red Hat OpenShift                                     | :large_blue_diamond:  |
 |     认知服务：异常检测器                        | :large_blue_diamond:  |
@@ -174,7 +176,7 @@ Microsoft Azure 全球基础结构的每一层都设计并构造为向客户提�
 
 **非地理区域**
 
-|     产品                                                    | 复原能力             |
+|     产品                                                    | 复原             |
 |-----------------------------------------------------------------|:----------------------------:|
 |     Azure DNS                                                   | :globe_with_meridians: |
 |     Azure Active Directory                                    | :globe_with_meridians: |

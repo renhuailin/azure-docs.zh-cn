@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 12/23/2020
+ms.date: 5/19/2021
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d2c8b4c121c14cb9bff59cf1c70367dec6702139
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: b3433031beba287d1412d0c2254941b7a3e9e118
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109786440"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111968416"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>在 Azure AD 权利管理中使用 Azure Monitor 存档日志和进行报告
 
@@ -82,6 +82,8 @@ Azure AD 在审核日志中将审核事件存储最长 30 天。 但是，可以
 
     每行包含时间、访问包 ID、操作名称、对象 ID、UPN，以及启动该操作的用户的显示名称。  JSON 中包含更多详细信息。   
 
+1. 如果想要查看应用程序的应用程序角色分配是否发生了更改，而这些更改不是由访问包分配引起的（例如全局管理员直接将用户分配给应用程序角色），则可以选择名为“应用程序角色分配活动”的工作簿。
+
 
 ## <a name="create-custom-azure-monitor-queries-using-the-azure-portal"></a>使用 Azure 门户创建自定义 Azure Monitor 查询
 你可以对 Azure AD 审核事件（包括权利管理事件）创建自己的查询。  
@@ -108,7 +110,7 @@ Azure AD 在审核日志中将审核事件存储最长 30 天。 但是，可以
 AuditLogs | where TimeGenerated > ago(3653d) | summarize OldestAuditEvent=min(TimeGenerated), NewestAuditEvent=max(TimeGenerated) by Type
 ```
 
-有关 Azure Monitor 中为审核事件存储的列的详细信息，请参阅[解释 Azure Monitor 中的 Azure AD 审核日志架构](../reports-monitoring/reference-azure-monitor-audit-log-schema.md)。
+有关 Azure Monitor 中为审核事件存储的列的详细信息，请参阅[解释 Azure Monitor 中的 Azure AD 审核日志架构](../reports-monitoring/overview-reports.md)。
 
 ## <a name="create-custom-azure-monitor-queries-using-azure-powershell"></a>使用 Azure PowerShell 创建自定义 Azure Monitor 查询
 

@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 3e5aab3d38e4f981e27ceb59db1511c54ed89381
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 795353c88853d53864edb2968c757d14f106ee3f
+ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752422"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110585384"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>在 Azure 应用服务中通过代码使用 TLS/SSL 证书
 
@@ -184,5 +184,4 @@ var cert = new X509Certificate2(bytes);
 * [在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)
 * [实施 HTTPS](configure-ssl-bindings.md#enforce-https)
 * [实施 TLS 1.1/1.2](configure-ssl-bindings.md#enforce-tls-versions)
-* [常见问题解答：应用服务证书](./faq-configuration-and-management.yml)
-* [环境变量和应用设置参考](reference-app-settings.md)
+* [常见问题解答：应用服务证书](./faq-configuration-and-management.md)

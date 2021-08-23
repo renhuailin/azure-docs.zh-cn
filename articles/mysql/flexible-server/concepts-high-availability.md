@@ -1,17 +1,17 @@
 ---
 title: Azure Database for MySQL 灵活服务器的区域冗余高可用性概述
 description: 了解 Azure Database for MySQL 灵活服务器的区域冗余高可用性概念
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/29/2021
-ms.openlocfilehash: f01a0869f7786ee6197835610456f4bb1cbd6b03
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e25412e502f10c80a55aeab215fddfd0cfc3f41b
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99097111"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110471914"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL 灵活服务器（预览版）中的高可用性概念
 
@@ -45,13 +45,13 @@ Azure Database for MySQL 灵活服务器（预览版）支持使用“区域冗�
 
 下面是使用区域冗余 HA 功能的一些优点： 
 
--   备用副本将部署与主服务器完全相同的 VM 配置，包括 vCore、存储、网络设置（VNET、防火墙）等。
--   可以通过禁用高可用性来删除备用副本。
--   自动备份基于快照从主数据库服务器执行，并存储在区域冗余存储中。
--   发生故障转移时，如果已启用高可用性，Azure Database for MySQL 灵活服务器将自动故障转移到备用副本。 高可用性设置将监视主服务器并使其重新联机。
--   客户端始终连接到主数据库服务器。
--   如果数据库崩溃或节点发生故障，将首先在同一节点上尝试重启。 如果此操作失败，则会触发自动故障转移。
--   可以重启服务器来获取任何静态服务器参数更改。
+- 备用副本将部署在与主服务器完全相同的 VM 配置中，包括 vCore、存储、网络设置（VNET、防火墙）等。
+- 可以通过禁用高可用性来删除备用副本。
+- 自动备份基于快照从主数据库服务器执行，并存储在区域冗余存储中。
+- 发生故障转移时，如果已启用高可用性，Azure Database for MySQL 灵活服务器将自动故障转移到备用副本。 高可用性设置将监视主服务器并使其重新联机。
+- 客户端始终连接到主数据库服务器。
+- 如果数据库崩溃或节点发生故障，将首先在同一节点上尝试重启。 如果此操作失败，则会触发自动故障转移。
+- 可以重启服务器来获取任何静态服务器参数更改。
 
 ## <a name="steady-state-operations"></a>稳定状态操作
 
@@ -59,6 +59,9 @@ Azure Database for MySQL 灵活服务器（预览版）支持使用“区域冗�
 
 ## <a name="failover-process"></a>故障转移过程 
 为保证业务连续性，需要对计划内和计划外事件都提供故障转移过程。 
+
+>[!NOTE]
+> 始终使用完全限定的域名 (FQDN) 连接到主服务器，并避免使用 IP 地址进行连接。 在故障转移的情况下，切换主服务器角色和备用服务器角色后，DNS A 记录也可能更改，如果连接字符串中使用了 IP 地址，则这可能会导致应用程序无法连接到新的主服务器。 
 
 ### <a name="planned-events"></a>计划内事件
 
@@ -69,6 +72,9 @@ Azure Database for MySQL 灵活服务器（预览版）支持使用“区域冗�
 
 ### <a name="failover-process---unplanned-events"></a>故障转移过程 - 计划外事件
 计划外维护停机包括软件 bug 或基础结构故障，例如计算、网络、存储故障或电源中断影响数据库的可用性。 如果数据库不可用，则会断开到备用副本的复制，并将激活备用副本作为主数据库。 DNS 更新，然后客户端可重新连接到数据库服务器并恢复操作。 总体故障转移时间预计为 60-120 秒。 不过，根据发生故障转移时主数据库服务器中的活动（例如大型事务和恢复时间），故障转移可能需要更长时间。
+
+### <a name="forced-failover"></a>强制故障转移
+通过 Azure Database for MySQL 强制故障转移可以手动强制故障转移，这样，就可以使用应用程序方案测试功能，并帮助应对任何服务中断。 强制故障转移通过触发故障转移将备用服务器切换为主服务器，这会通过更新 DNS 记录将备用副本激活为具有相同数据库服务器名称的主服务器。 原始主服务器将会重启并切换到备用副本。 客户端连接将断开，它们必须重新连接才能恢复操作。 将根据当前工作负载和最后一个检查点度量总体故障转移时间。 一般情况下，故障转移时间预期为 60-120 秒。
 
 ## <a name="schedule-maintenance-window"></a>计划维护时段 
 
@@ -86,19 +92,19 @@ Azure Database for MySQL 灵活服务器（预览版）支持使用“区域冗�
 
 在使用区域冗余高可用性时，请注意以下几项注意事项： 
 
--   高可用性只能在创建灵活服务器时设置。
--   可突发的计算层不支持高可用性。
--   由于是同步复制到另一个可用性区域，所以主数据库服务器可能会遇到写入和提交延迟增加。
--   备用副本不能用于只读查询。
--   根据发生故障转移时主服务器上的活动，可能需要长达 60-120 秒或更长时间才能完成故障转移。
--   重启主数据库服务器来获取静态参数更改也会重启备用副本。
--   不支持为区域冗余高可用性服务器配置读取副本。
--   在管理的维护时段不能自动配置客户启动的管理任务。
--   计划内事件（例如缩放计算和次要版本升级）将同时在主服务器和备用副本上进行。 
+- 高可用性只能在创建灵活服务器时设置。
+- 可突发的计算层不支持高可用性。
+- 由于是同步复制到另一个可用性区域，所以主数据库服务器可能会遇到写入和提交延迟增加。
+- 备用副本不能用于只读查询。
+- 根据发生故障转移时主服务器上的活动，可能需要长达 60-120 秒或更长时间才能完成故障转移。
+- 重启主数据库服务器来获取静态参数更改也会重启备用副本。
+- 不支持为区域冗余高可用性服务器配置读取副本。
+- 在管理的维护时段不能自动配置客户启动的管理任务。
+- 计划内事件（例如缩放计算和次要版本升级）将同时在主服务器和备用副本上进行。 
 
 
 ## <a name="next-steps"></a>后续步骤
 
--   了解[业务连续性](./concepts-business-continuity.md)
--   了解[区域冗余高可用性](./concepts-high-availability.md)
--   了解[备份和恢复](./concepts-backup-restore.md)
+- 了解[业务连续性](./concepts-business-continuity.md)
+- 了解[区域冗余高可用性](./concepts-high-availability.md)
+- 了解[备份和恢复](./concepts-backup-restore.md)

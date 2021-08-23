@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: chadam
 ms.date: 11/06/2020
-ms.openlocfilehash: bf7cf597d97f1316d43546382cbac140c3ba6fff
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f330fb4886a04a1bc861b63e5dd70e3ba1286351
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746607"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "110794884"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>迁移概述：将 SQL Server 迁移到 Azure VM 上的 SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -136,10 +136,12 @@ Azure 虚拟机在 Azure 的许多不同区域运行，还提供各种[计算机
 
 |资产  |说明  |
 |---------|---------|
-|[数据工作负荷评估模型和工具](https://www.microsoft.com/download/details.aspx?id=103130)| 此工具为给定的工作负荷提供了建议的“最佳匹配”目标平台、云就绪和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
-|[使用 Logman 自动执行 Perfmon 数据收集](https://www.microsoft.com/download/details.aspx?id=103114)|用于收集 Perfmon 数据以了解基线性能的工具，该工具可帮助推荐迁移目标。 该工具使用 logman.exe 创建命令，该命令可创建、启动、停止和删除远程 SQL Server 上设置的性能计数器。|
-|[Multiple-SQL-VM-VNet-ILB](https://www.microsoft.com/download/details.aspx?id=103104)|本白皮书概述在 SQL Server Always On 可用性组配置中设置多个 Azure 虚拟机的步骤。|
-|[每个区域支持超级 SSD 的 Azure 虚拟机](https://www.microsoft.com/download/details.aspx?id=103105)|这些 PowerShell 脚本提供一个编程选项，可用于检索支持超级 SSD 的 Azure 虚拟机的区域列表。|
+|[数据工作负荷评估模型和工具](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Data%20Workload%20Assessment%20Model%20and%20Tool)| 此工具为给定的工作负荷提供了建议的“最佳匹配”目标平台、云就绪和应用程序/数据库修正级别。 它提供简单的一键式计算和报表生成功能，通过提供统一的自动化目标平台决策过程，帮助加速大规模评估。|
+|[使用 Logman 自动执行 Perfmon 数据收集](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|用于收集 Perfmon 数据以了解基线性能的工具，该工具可帮助推荐迁移目标。 该工具使用 logman.exe 创建命令，该命令可创建、启动、停止和删除远程 SQL Server 上设置的性能计数器。|
+|[在 Azure 中部署 SQL Server](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/SQL%20Server%20Deployment%20in%20Azure%20.pdf)|本指导白皮书有助于查看将 SQL Server 工作负载迁移到 Azure 的各种选项，包括功能比较、高可用性和备份/存储注意事项。 |
+|[从本地 SQL Sever 迁移到 Azure 虚拟机](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/OnPremise%20SQL%20Server%20to%20Azure%20VM.pdf)|本白皮书概述使用示例脚本从本地 SQL Sever 向 Azure 虚拟机上的 SQL Sever 备份和还原数据库的步骤。|
+|[Multiple-SQL-VM-VNet-ILB](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/ARM%20Templates/Multiple-SQL-VM-VNet-ILB)|本白皮书概述在 SQL Server Always On 可用性组配置中设置多个 Azure 虚拟机的步骤。|
+|[每个区域支持超级 SSD 的 Azure 虚拟机](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Find%20Azure%20VMs%20supporting%20Ultra%20SSD)|这些 PowerShell 脚本提供一个编程选项，可用于检索支持超级 SSD 的 Azure 虚拟机的区域列表。|
 
 数据 SQL 工程团队开发了这些资源。 此团队的核心章程是解锁和加速到 Microsoft 的 Azure 数据平台的数据平台迁移项目的复杂现代化进程。
 

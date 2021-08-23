@@ -3,13 +3,13 @@ title: 在 Azure Kubernetes 服务 (AKS) 中使用多个节点池
 description: 了解如何为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 services: container-service
 ms.topic: article
-ms.date: 04/08/2020
-ms.openlocfilehash: 3e029695e9dce79473ada0bae3e7f0bbfd30db89
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.date: 02/11/2021
+ms.openlocfilehash: ef6b23cf7564cff57f398c76162f9c25efac7075
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218479"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110081273"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -42,7 +42,7 @@ ms.locfileid: "102218479"
 > [!Important]
 > 如果在生产环境中为 AKS 群集运行单个系统节点池，则建议至少将三个节点用作节点池。
 
-若要开始，请创建包含单个节点池的 AKS 群集。 以下示例使用 [az group create][az-group-create]命令在 *eastus* 区域中创建名为 *myResourceGroup* 的资源组。 然后使用 [az AKS create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。
+若要开始，请创建包含单个节点池的 AKS 群集。 以下示例使用 [az group create][az-group-create] 命令在 eastus 区域中创建名为 myResourceGroup 的资源组 。 然后使用 [az AKS create][az-aks-create] 命令创建名为 *myAKSCluster* 的 AKS 群集。
 
 > [!NOTE]
 > 使用多个节点池时，**不支持**“基本”负载均衡器 SKU。 默认情况下，AKS 群集是在 Azure CLI 和 Azure 门户中使用“标准”负载均衡器 SKU 创建的。
@@ -130,11 +130,11 @@ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluste
 #### <a name="limitations"></a>限制
 
 * 分配给节点池的所有子网都必须属于同一虚拟网络。
-* 系统盒必须有权访问群集中的所有节点/pod，才能提供重要功能，例如 DNS 解析和隧道 kubectl 日志/exec/端口转发代理。
-* 如果在创建群集后扩展 VNET，则必须更新群集 (执行任何托管 clster 操作，但节点池操作不会计数) ，然后将子网添加到原始 cidr 之外。 即使我们最初允许，AKS 也会在代理池添加错误。 如果你不知道如何协调群集文件 a 支持票证。 
+* 系统 Pod 必须有权访问群集中的所有节点/pod，以提供关键功能，例如 DNS 解析和隧道 kubectl logs/exec/port-forward 代理。
+* 如果在创建群集后扩展 VNET，则必须更新群集（执行任意托管群集操作，但节点池操作不算），然后添加到原始 cidr 之外的子网。 尽管我们最初允许，但 AKS 会在现在添加的代理池上出错。 如果你不知道如何协调群集文件，请提交支持票证。 
 * 不支持 Calico 网络策略。 
 * 不支持 Azure 网络策略。
-* Kube 需要单个连续 cidr，并将其用于三个 optmizations。 查看此 [K.E.P.](https://github.com/kubernetes/enhancements/blob/master/keps/sig-network/20191104-iptables-no-cluster-cidr.md ) [有关详细信息，请](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)参阅。 在 azure cni 中，第一个节点池的子网将被提供给 kube-proxy。 
+* Kube-proxy 应有单个连续 CIDR，并将其用于三个优化。 有关详细信息，请参阅此 [K.E.P.](https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/2450-Remove-knowledge-of-pod-cluster-CIDR-from-iptables-rules) 和[此处](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)的 --cluster-cidr。 在 azure cni 中，第一个节点池的子网将被提供给 kube-proxy。 
 
 若要创建具有专用子网的节点池，请在创建节点池时将子网资源 ID 作为附加参数传递。
 
@@ -355,9 +355,9 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 在前面的创建节点池示例中，对群集中创建的节点使用了默认 VM 大小。 一个更常见的场景是创建具有不同 VM 大小和功能的节点池。 例如，可以创建一个包含具有大量 CPU 或内存的节点的节点池，或创建一个提供 GPU 支持的节点池。 下一步骤将[使用排斥和容许](#setting-nodepool-taints)来告知 Kubernetes 计划程序如何将访问权限限制为可在这些节点上运行的 pod。
 
-在以下示例中，创建使用 *Standard_NC6* VM 大小的基于 GPU 的节点池。 这些 VM 采用 NVIDIA Tesla K80 卡。 有关可用 VM 大小的信息，请参阅 [Azure 中的 Linux 虚拟机大小][vm-sizes]。
+在以下示例中，创建使用 Standard_NC6 VM 大小的基于 GPU 的节点池。 这些 VM 采用 NVIDIA Tesla K80 卡。 有关可用 VM 大小的信息，请参阅 [Azure 中的 Linux 虚拟机大小][vm-sizes]。
 
-再次使用 [az aks node pool add][az-aks-nodepool-add] 命令创建节点池。 这一次，请指定名称 *gpunodepool*，并使用 `--node-vm-size` 参数指定 *Standard_NC6* 大小：
+再次使用 [az aks node pool add][az-aks-nodepool-add] 命令创建节点池。 这一次请指定名称 gpunodepool，并使用 `--node-vm-size` 参数指定 Standard_NC6 大小 ：
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -408,9 +408,12 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>指定节点池的排斥、标签或标记
 
-### <a name="setting-nodepool-taints"></a>设置节点池排斥
-
 创建节点池时，可将排斥、标签或标记添加到该节点池。 添加排斥、标签或标记时，该节点池中的所有节点也会获取该排斥、标签或标记。
+
+> [!IMPORTANT]
+> 应该使用 `az aks nodepool` 为整个节点池向节点添加排斥、标签或标记。 不建议使用 `kubectl` 将排斥、标签或标记应用于节点池中的单个节点。  
+
+### <a name="setting-nodepool-taints"></a>设置节点池排斥
 
 若要创建具有排斥的节点池，请使用 [az aks nodepool add][az-aks-nodepool-add]。 指定名称 taintnp，并使用 `--node-taints` 参数为排斥指定 sku=gpu:NoSchedule。 
 
@@ -608,6 +611,109 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
+## <a name="add-a-fips-enabled-node-pool-preview"></a>添加已启用 FIPS 的节点池（预览版）
+
+美国联邦信息处理标准 (FIPS) 140-2 是美国政府标准，用于定义信息技术产品和系统中加密模块的最低安全要求。 AKS 支持创建已启用 FIPS 140-2 的基于 Linux 的节点池。 在已启用 FIPS 的节点池上运行的部署可以使用这些加密模块来增加安全性，并帮助满足 FedRAMP 合规性中的安全控制要求。 有关 FIPS 140-2 的更多详细信息，请参阅 [美国联邦信息处理标准 (FIPS) 140-2][fips]。
+
+已启用 FIPS 的节点池目前为预览版。
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+将需要 *aks-preview* Azure CLI 扩展 *0.5.11* 或更高版本。 使用 [az extension add][az-extension-add] 命令安装 aks-preview Azure CLI 扩展。 或者使用 [az extension update][az-extension-update] 命令安装任何可用的更新。
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+若要使用该功能，还必须在订阅上启用 `FIPSPreview` 功能标志。
+
+使用 [az feature register][az-feature-register] 命令注册 `FIPSPreview` 功能标志，如以下示例所示：
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.ContainerService" --name "FIPSPreview"
+```
+
+状态显示为“已注册”需要几分钟时间。 使用 [az feature list][az-feature-list] 命令验证注册状态：
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/FIPSPreview')].{Name:name,State:properties.state}"
+```
+
+准备就绪后，使用 [az provider register][az-provider-register] 命令刷新 Microsoft.ContainerService 资源提供程序的注册状态：
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+已启用 FIPS 的节点池具有下列限制：
+
+* 目前，只能在 Ubuntu 18.04 上运行已启用 FIPS 的基于 Linux 的节点池。
+* 已启用 FIPS 的节点池需要 Kubernetes 1.19 及更高版本。
+* 若要更新用于 FIPS 的基础包或模块，必须使用 [节点映像升级][node-image-upgrade]。
+
+> [!IMPORTANT]
+> 已启用 FIPS 的 Linux 映像与用于基于 Linux 的节点池的默认 Linux 映像不同。 若要在节点池上启用 FIPS，必须创建新的基于 Linux 的节点池。 不能在现有节点池上启用 FIPS。
+> 
+> 已启用 FIPS 的节点映像的版本号（如内核版本）可能不同于未启用 FIPS 的映像。 此外，已启用 FIPS 的节点池和节点映像的更新周期可能与未启用 FIPS 的节点池和映像不同。
+
+若要创建已启用 FIPS 的节点池，在创建节点池时，请一起使用 [az aks nodepool add][az-aks-nodepool-add] 和“--enable-fips-image”参数。
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name fipsnp \
+    --enable-fips-image
+```
+
+> [!NOTE]
+> 创建群集时，还可以一起使用“--enable-fips-image”参数和 [az aks create][az-aks-create]，以在默认节点池上启用 FIPS。 向以此方式创建的群集添加节点池时，在添加节点池时，仍必须使用“--enable-fips-image”参数，以创建已启用 FIPS 的节点池。
+
+若要验证节点池是否已启用 FIPS，请使用 [az aks show][az-aks-show] 检查“agentPoolProfiles”中的“enableFIPS”值。 
+
+```azurecli-interactive
+az aks show --resource-group myResourceGroup --cluster-name myAKSCluster --query="agentPoolProfiles[].{Name:name enableFips:enableFips}" -o table
+```
+
+以下示例输出表明“fipsnp”节点池已启用 FIPS 而“nodepool1”未启用。 
+
+```output
+Name       enableFips
+---------  ------------
+fipsnp     True
+nodepool1  False  
+```
+
+还可以使用 `kubectl debug` 在已启用 FIPS 的节点池中的节点上验证部署是否具有对 FIPS 加密库的访问权限。 使用 `kubectl get nodes` 列出节点：
+
+```output
+$ kubectl get nodes
+NAME                                STATUS   ROLES   AGE     VERSION
+aks-fipsnp-12345678-vmss000000      Ready    agent   6m4s    v1.19.9
+aks-fipsnp-12345678-vmss000001      Ready    agent   5m21s   v1.19.9
+aks-fipsnp-12345678-vmss000002      Ready    agent   6m8s    v1.19.9
+aks-nodepool1-12345678-vmss000000   Ready    agent   34m     v1.19.9
+```
+
+在上面的示例中，以 `aks-fipsnp` 开始的节点属于已启用 FIPS 的节点池。 使用 `kubectl debug` 在已启用 FIPS 的节点池中的这些节点之一上以交互会话运行部署。
+
+```azurecli-interactive
+kubectl debug node/aks-fipsnp-12345678-vmss000000 -it --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
+```
+
+在交互会话中，可以验证是否已启用 FIPS 加密库：
+
+```output
+root@aks-fipsnp-12345678-vmss000000:/# cat /proc/sys/crypto/fips_enabled
+1
+```
+
+已启用 FIPS 的节点池还具有 *kubernetes.azure.com/fips_enabled=true* 标签，可供部署用来锁定这些节点池。
+
 ## <a name="manage-node-pools-using-a-resource-manager-template"></a>使用资源管理器模板管理节点池
 
 使用 Azure 资源管理器模板创建和管理资源时，通常可以更新该模板中的设置，然后重新部署以更新资源。 对于 AKS 中的节点池，一旦创建 AKS 群集，就无法更新初始节点池的配置文件。 此行为意味着无法更新现有的资源管理器模板，更改节点池，然后重新部署。 必须创建单独的资源管理器模板来仅更新现有 AKS 群集的节点池。
@@ -687,7 +793,7 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 }
 ```
 
-使用 [az deployment group create][az-deployment-group-create] 命令部署此模板，如以下示例中所示。 系统将提示输入现有的 AKS 群集名称和位置：
+如以下示例中所示，使用 [az deployment group create][az-deployment-group-create] 命令部署此模板。 系统将提示输入现有的 AKS 群集名称和位置：
 
 ```azurecli-interactive
 az deployment group create \
@@ -716,61 +822,64 @@ az deployment group create \
 
 更新 AKS 群集可能需要花费几分钟时间，具体取决于资源管理器模板中定义的节点池设置和操作。
 
-## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a> (预览为节点池分配每个节点的公共 IP) 
+## <a name="assign-a-public-ip-per-node-for-your-node-pools"></a>为节点池的每个节点分配公共 IP
 
-> [!WARNING]
-> 必须安装 CLI 预览版扩展0.4.43 或更高版本，才能使用公共 IP 每节点功能。
+AKS 节点无需使用自身的公共 IP 地址进行通信。 但某些方案可能需要节点池中的节点收到专用公共 IP 地址。 游戏工作负载就是一种常见方案，此时控制台需要直接连接到云虚拟机才能尽量减少画面跳跃。 可通过使用节点公共 IP 在 AKS 上实现此方案。
 
-AKS 节点无需使用自身的公共 IP 地址进行通信。 但是，方案可能需要节点池中的节点接收其自己的专用公共 IP 地址。 常见的情况是，游戏工作负荷，控制台需要直接连接到云虚拟机以最大程度地减少跃点。 此方案可通过注册预览功能、节点公共 IP (preview) 来实现 AKS。
-
-若要安装和更新最新的 aks 扩展，请使用以下 Azure CLI 命令：
-
-```azurecli
-az extension add --name aks-preview
-az extension update --name aks-preview
-az extension list
-```
-
-用以下 Azure CLI 命令为 Node 公共 IP 功能注册：
-
-```azurecli-interactive
-az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
-```
-注册该功能可能需要几分钟时间。  可以通过以下命令检查状态：
-
-```azurecli-interactive
- az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodePublicIPPreview')].{Name:name,State:properties.state}"
-```
-
-注册成功后，创建新的资源组。
+首先，创建一个新的资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup2 --location eastus
 ```
 
-创建新的 AKS 群集并为节点附加公共 IP。 节点池中的每个节点都接收唯一的公共 IP。 可以通过查看虚拟机规模集实例来验证这一点。
+创建新的 AKS 群集并为节点附加公共 IP。 节点池中的每个节点都将收到唯一的公共 IP。 可以通过查看虚拟机规模集实例来验证这一点。
 
 ```azurecli-interactive
 az aks create -g MyResourceGroup2 -n MyManagedCluster -l eastus  --enable-node-public-ip
 ```
 
-对于现有的 AKS 群集，你还可以添加新的节点池，并为节点附加一个公共 IP。
+对于现有 AKS 群集，还可以添加新的节点池，并为节点附加公共 IP。
 
 ```azurecli-interactive
 az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
 ```
 
-> [!Important]
-> 预览期间，Azure 实例元数据服务目前不支持检索标准层 VM SKU 的公共 IP 地址。 由于此限制，不能使用 kubectl 命令显示分配给节点的公共 Ip。 但是，将分配 Ip 并按预期方式工作。 节点的公共 Ip 会附加到虚拟机规模集中的实例。
+### <a name="use-a-public-ip-prefix"></a>使用公共 IP 前缀
 
-可以通过多种方式找到节点的公共 Ip：
+[使用公共 IP 前缀有很多好处][public-ip-prefix-benefits]。 在创建新群集或添加节点池时，通过使用标志 `node-public-ip-prefix` 传递资源 ID，AKS 支持使用节点的现有公共 IP 前缀中的地址。
 
-* 使用 Azure CLI 命令 [az vmss-instance-public-ip][az-list-ips]
+首先，使用 [az network public-ip prefix create][az-public-ip-prefix-create] 创建公共 IP 前缀：
+
+```azurecli-interactive
+az network public-ip prefix create --length 28 --location eastus --name MyPublicIPPrefix --resource-group MyResourceGroup3
+```
+
+查看输出，并记下前缀的 `id`：
+
+```output
+{
+  ...
+  "id": "/subscriptions/<subscription-id>/resourceGroups/myResourceGroup3/providers/Microsoft.Network/publicIPPrefixes/MyPublicIPPrefix",
+  ...
+}
+```
+
+最后，在创建新群集或添加新的节点池时，使用标志 `node-public-ip-prefix` 并传入前缀的资源 ID：
+
+```azurecli-interactive
+az aks create -g MyResourceGroup3 -n MyManagedCluster -l eastus --enable-node-public-ip --node-public-ip-prefix /subscriptions/<subscription-id>/resourcegroups/MyResourceGroup3/providers/Microsoft.Network/publicIPPrefixes/MyPublicIPPrefix
+```
+
+### <a name="locate-public-ips-for-nodes"></a>找到节点的公共 IP
+
+可以通过多种方式找到节点的公共 IP：
+
+* 使用 Azure CLI 命令 [az vmss list-instance-public-ips][az-list-ips]。
 * 使用 [PowerShell 或 Bash 命令][vmss-commands]。 
-* 通过查看虚拟机规模集中的实例，还可以查看 Azure 门户中的公共 Ip。
+* 还可以通过在 Azure 门户中查看虚拟机规模集中的实例来查看公共 IP。
 
 > [!Important]
-> [节点资源组][node-resource-group]包含节点及其公共 ip。 执行命令时，请使用节点资源组来查找节点的公共 Ip。
+> [节点资源组][node-resource-group]包含节点及其公共 IP。 执行命令时，使用节点资源组查找节点的公共 IP。
 
 ```azurecli
 az vmss list-instance-public-ips -g MC_MyResourceGroup2_MyManagedCluster_eastus -n YourVirtualMachineScaleSetName
@@ -792,7 +901,7 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name gpu
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-还可以删除为 "节点池的公共 IP" 方案创建的其他群集。
+还可以删除为“节点池的公共 IP”方案创建的其他群集。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup2 --yes --no-wait
@@ -818,20 +927,24 @@ az group delete --name myResourceGroup2 --yes --no-wait
 
 <!-- INTERNAL LINKS -->
 [aks-windows]: windows-container-cli.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
-[az-aks-nodepool-list]: /cli/azure/aks/nodepool#az-aks-nodepool-list
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool#az-aks-nodepool-update
-[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool#az-aks-nodepool-upgrade
-[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az-aks-nodepool-scale
-[az-aks-nodepool-delete]: /cli/azure/aks/nodepool#az-aks-nodepool-delete
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-group-create]: /cli/azure/group#az-group-create
-[az-group-delete]: /cli/azure/group#az-group-delete
-[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_credentials
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_create
+[az-aks-get-upgrades]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_upgrades
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_add
+[az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_list
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_update
+[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_upgrade
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_scale
+[az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_delete
+[az-aks-show]: /cli/azure/aks#az_aks_show
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_add
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_update
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
+[az-group-create]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_create
+[az-group-delete]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete
+[az-deployment-group-create]: /cli/azure/deployment/group?view=azure-cli-latest&preserve-view=true#az_deployment_group_create
 [gpu-cluster]: gpu-cluster.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
@@ -844,5 +957,9 @@ az group delete --name myResourceGroup2 --yes --no-wait
 [ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
-[az-list-ips]: /cli/azure/vmss.md#az-vmss-list-instance-public-ips
+[az-list-ips]: /cli/azure/vmss?view=azure-cli-latest&preserve-view=true#az_vmss_list_instance_public_ips
 [reduce-latency-ppg]: reduce-latency-ppg.md
+[public-ip-prefix-benefits]: ../virtual-network/public-ip-address-prefix.md#why-create-a-public-ip-address-prefix
+[az-public-ip-prefix-create]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest&preserve-view=true#az_network_public_ip_prefix_create
+[node-image-upgrade]: node-image-upgrade.md
+[fips]: /azure/compliance/offerings/offering-fips-140-2

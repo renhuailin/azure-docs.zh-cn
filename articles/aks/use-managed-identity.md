@@ -3,13 +3,13 @@ title: 在 Azure Kubernetes 服务中使用托管标识
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用托管标识
 services: container-service
 ms.topic: article
-ms.date: 12/16/2020
-ms.openlocfilehash: c87b6dbde14c8b736301846faa8471dd518a98a4
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.date: 05/12/2021
+ms.openlocfilehash: a5bf71a654afd122aad682df732e5a6c9dcd9538
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108289761"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110476187"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用托管标识
 
@@ -21,7 +21,7 @@ ms.locfileid: "108289761"
 
 必须安装了以下资源：
 
-- Azure CLI 2.15.1 或更高版本
+- Azure CLI 2.23.0 或更高版本
 
 ## <a name="limitations"></a>限制
 
@@ -74,32 +74,12 @@ az aks create -g myResourceGroup -n myManagedCluster --enable-managed-identity
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
 
-## <a name="update-an-aks-cluster-to-managed-identities-preview"></a>将 ASK 群集更新至托管标识（预览版）
+## <a name="update-an-aks-cluster-to-managed-identities"></a>将 ASK 群集更新至托管标识
 
 现在可以使用以下 CLI 命令更新当前使用服务主体的 AKS 集群以使用托管标识。
 
-首先，为系统分配的标识注册功能标志：
-
-```azurecli-interactive
-az feature register --namespace Microsoft.ContainerService -n MigrateToMSIClusterPreview
-```
-
-更新系统分配的标识：
-
 ```azurecli-interactive
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity
-```
-
-为用户分配的标识注册功能标志：
-
-```azurecli-interactive
-az feature register --namespace Microsoft.ContainerService -n UserAssignedIdentityPreview
-```
-
-更新用户分配的标识：
-
-```azurecli-interactive
-az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
 ```
 > [!NOTE]
 > 将系统分配的标识或用户分配的标识更新为托管标识后，请在节点上执行 `az aks nodepool upgrade --node-image-only` 以完成对托管标识的更新。
@@ -223,7 +203,6 @@ az aks create \
 ### <a name="limitations"></a>限制
 
 - 仅适用于用户分配的托管群集。
-- 当前不支持 Azure 政府。
 - 当前不支持 Azure 中国世纪互联。
 
 首先，为 Kubelet 标识注册功能标志：

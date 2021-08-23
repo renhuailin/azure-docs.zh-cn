@@ -7,17 +7,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4ed881b74f240946d98d9868344c898d3e9a9dad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f714a70a0d9eb971498fc2f9fe648804a59b5136
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99627291"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110475007"
 ---
 # <a name="azure-cosmos-db-resource-model"></a>Azure Cosmos DB 资源模型
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB 是完全托管的平台即服务 (PaaS)。 若要开始使用 Azure Cosmos DB，首先应在 Azure 订阅中创建一个 Azure Cosmos 帐户，然后在帐户下创建数据库、容器和项。 本文介绍 Azure Cosmos DB 资源模型以及资源模型层次结构中的不同实体。
+Azure Cosmos DB 是完全托管的平台即服务 (PaaS)。 若要开始使用 Azure Cosmos DB，首先应在所需订阅中的 Azure 资源组中创建一个 Azure Cosmos 帐户，然后在帐户下创建数据库、容器和项。 本文介绍 Azure Cosmos DB 资源模型以及资源模型层次结构中的不同实体。
 
 Azure Cosmos 帐户是全局分配和高可用性的基本单元。 Azure Cosmos 帐户包含唯一的 DNS 名称，可以使用 Azure 门户、Azure CLI 或不同的特定于语言的 SDK 来管理帐户。 有关详细信息，请参阅[如何管理 Azure Cosmos 帐户](how-to-manage-database-account.md)。 要在多个 Azure 区域之间全局分配数据和吞吐量，可随时在帐户中添加和删除 Azure 区域。 可将帐户配置为使用单区域或多个写入区域。 有关详细信息，请参阅[如何在帐户中添加和删除 Azure 区域](how-to-manage-database-account.md)。 可在帐户中配置[默认一致性](consistency-levels.md)级别。
 

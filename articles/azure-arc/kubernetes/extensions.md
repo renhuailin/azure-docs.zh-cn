@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: 在已启用 Azure Arc 的 Kubernetes 上部署扩展并管理其生命周期
-ms.openlocfilehash: 34e8f39450b6ac87ccb0e377526e2b2172e21ed7
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cd2d0915b173f3621502f22a2d47e25271f87400
+ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110373326"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111951676"
 ---
 # <a name="deploy-and-manage-azure-arc-enabled-kubernetes-cluster-extensions"></a>部署并管理已启用 Azure Arc 的 Kubernetes 群集扩展
 
@@ -59,10 +59,11 @@ Kubernetes 扩展功能可在已启用 Azure Arc 的 Kubernetes 群集上实现�
 | --------- | ----------- |
 | [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json) | 提供 Kubernetes 群集上部署的工作负载的性能相关信息。 从控制器、节点和容器收集内存与 CPU 利用率指标。 |
 | [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | 从 Kubernetes 群集收集与安全相关的信息，如审核日志数据。 基于收集的数据提供建议和威胁警报。 |
+| [启用了 Azure Arc 的开放式服务网格](tutorial-arc-enabled-open-service-mesh.md) | 在群集上部署开放式服务网格，并启用 mTLS 安全性、细化的访问控制、流量移动、使用 Azure Monitor 或 Prometheus 和 Grafana 的开源附加产品进行监视、使用 Jaeger 进行跟踪、与外部认证管理解决方案集成等功能。 |
 | [已启用 Azure Arc 的数据服务](../../azure-arc/kubernetes/custom-locations.md#create-custom-location) | 可以使用 Kubernetes 和你选择的基础结构在本地、边缘和公有云环境中运行 Azure 数据服务。 |
 | [Azure Arc 上的 Azure 应用服务](../../app-service/overview-arc-integration.md) | 允许在已启用 Azure Arc 的 Kubernetes 群集基础之上预配应用服务 Kubernetes 环境。 |
-| [Kubernetes 上的事件网格](/azure/event-grid/kubernetes/overview) | 在已启用 Azure Arc 的 Kubernetes 群集基础之上创建并管理事件网格资源，如主题和事件订阅。 |
-| [Azure Arc 上的 Azure API 管理](/azure/api-management/how-to-deploy-self-hosted-gateway-azure-arc) | 在已启用 Azure Arc 的 Kubernetes 群集上部署并管理 API 管理网关。 |
+| [Kubernetes 上的事件网格](../../event-grid/kubernetes/overview.md) | 在已启用 Azure Arc 的 Kubernetes 群集基础之上创建并管理事件网格资源，如主题和事件订阅。 |
+| [Azure Arc 上的 Azure API 管理](../../api-management/how-to-deploy-self-hosted-gateway-azure-arc.md) | 在已启用 Azure Arc 的 Kubernetes 群集上部署并管理 API 管理网关。 |
 
 ## <a name="usage-of-cluster-extensions"></a>群集扩展的用法
 
@@ -264,6 +265,8 @@ az k8s-extension delete --name azuremonitor-containers --cluster-name <clusterNa
 
 > [!div class="nextstepaction"]
 > [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json)
+> [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
+> [启用了 Azure Arc 的开放式服务网格](tutorial-arc-enabled-open-service-mesh.md)
 > 
 > [!div class="nextstepaction"]
 > [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json)
@@ -272,7 +275,7 @@ az k8s-extension delete --name azuremonitor-containers --cluster-name <clusterNa
 > [Azure Arc 上的 Azure 应用服务](../../app-service/overview-arc-integration.md)
 > 
 > [!div class="nextstepaction"]
-> [Kubernetes 上的事件网格](/azure/event-grid/kubernetes/overview)
+> [Kubernetes 上的事件网格](../../event-grid/kubernetes/overview.md)
 > 
 > [!div class="nextstepaction"]
-> [Azure Arc 上的 Azure API 管理](/azure/api-management/how-to-deploy-self-hosted-gateway-azure-arc)
+> [Azure Arc 上的 Azure API 管理](../../api-management/how-to-deploy-self-hosted-gateway-azure-arc.md)

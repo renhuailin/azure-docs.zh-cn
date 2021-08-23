@@ -1,14 +1,14 @@
 ---
 title: 了解效果的工作原理
 description: Azure Policy 定义具有各种效果，用来确定如何对符合性进行管理和报告。
-ms.date: 02/17/2021
+ms.date: 04/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 67445b3d0d63b3827f82822de00412bdab67c5ab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6025451779ba04b3a20307d35ca8a939c7762d64
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101741814"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110474363"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -36,12 +36,12 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 
 Azure Policy 首先评估创建或更新资源的请求。 Azure Policy 会创建将应用于资源的所有分配列表，然后根据每个定义评估资源。 对于[资源管理器模式](./definition-structure.md#resource-manager-modes)，Azure Policy 在将请求转交给相应的资源提供程序之前处理多个效果。 此顺序可以防止资源提供程序在资源不符合 Azure Policy 的设计治理控制时进行不必要的处理。 使用[资源提供程序模式](./definition-structure.md#resource-provider-modes)，资源提供程序管理评估和结果，并将结果报告回 Azure Policy。
 
-- 首先检查 **已禁用** 效果以确定是否应评估策略规则。
+- 首先检查“已禁用”以确定是否应评估策略规则。
 - 然后评估“附加”和“修改”。  由于这两个效果可能会改变请求，因此所做的更改可能会阻止“审核”或“拒绝”效果的触发。 这些效果仅在资源管理器模式下可用。
 - 然后评估“拒绝”。 通过在“审核”之前评估“拒绝”，可以防止两次记录不需要的资源。
 - 最后评估审核。
 
-资源提供程序针对资源管理器模式请求返回成功代码后，AuditIfNotExists 和 DeployIfNotExists 将进行评估以确定是否需要其他符合性日志记录或操作 。
+资源提供程序在资源管理器模式请求上返回成功代码后，将会评估 AuditIfNotExists 和 DeployIfNotExists 以确定是否需要其他符合性日志记录或操作 。
 
 此外，若 `PATCH` 请求仅修改 `tags` 相关字段，会限制对包含检查 `tags` 相关字段条件的策略执行策略评估。
 
@@ -64,7 +64,8 @@ Azure Policy 首先评估创建或更新资源的请求。 Azure Policy 会创�
 
 ### <a name="append-examples"></a>“附加”示例
 
-示例 1：单个“字段/值”对使用具有数组值的非 \[\*\] [别名](definition-structure.md#aliases)在存储帐户上设置 IP 规则。   如果非 **\[\*\] 别名是数组，则附加效果会将值附加为整个数组** 。 如果数组已存在，该冲突会导致拒绝事件发生。
+示例 1：单个“字段/值”对使用具有数组值的非 **\[\*\]** 
+[别名](definition-structure.md#aliases)在存储帐户上设置 IP 规则。 如果非 **\[\*\] 别名是数组，则附加效果会将值附加为整个数组** 。 如果数组已存在，该冲突会导致拒绝事件发生。
 
 ```json
 "then": {
@@ -100,7 +101,7 @@ Azure Policy 首先评估创建或更新资源的请求。 Azure Policy 会创�
 
 ### <a name="audit-evaluation"></a>“审核”评估
 
-“审核”是 Azure Policy 在创建或更新资源期间检查的最后一个效果。 对于资源管理器模式，Azure Policy 会将资源发送到资源提供程序。 “审核”对于资源请求和评估周期的工作方式相同。 对于新资源和已更新的资源，Azure Policy 会将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志，并将该资源标记为不合规。
+“审核”是 Azure Policy 在创建或更新资源期间检查的最后一个效果。 对于资源管理器模式，Azure Policy 会将资源发送到资源提供程序。 评估资源的创建或更新请求时，Azure 策略会将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志，并将资源标记为不合规。 在标准符合性评估周期期间，只会更新资源上的符合性状态。
 
 ### <a name="audit-properties"></a>“审核”属性
 
@@ -313,7 +314,8 @@ DeployIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 
 ### <a name="deployifnotexists-example"></a>DeployIfNotExists 示例
 
-示例：评估 SQL Server 数据库以确定是否启用 transparentDataEncryption。 如果未启用，则执行启用它的部署。
+示例：评估 SQL Server 数据库以确定是否启用 transparentDataEncryption。
+如果未启用，则执行启用它的部署。
 
 ```json
 "if": {
@@ -390,7 +392,7 @@ EnforceOPAConstraint 效果的 Details 属性具有描述 Gatekeeper v3 许可�
 - constraintTemplate（必选）
   - 约束模板 CustomResourceDefinition (CRD) 定义新约束。 该模板定义 Rego 逻辑、约束架构和通过 Azure Policy 的值传递的约束参数。
 - constraint（必选）
-  - 约束模板的 CRD 实现。 使用通过值传递的参数，如 `{{ .Values.<valuename> }}`。 在下面的示例中，这些值为 `{{ .Values.cpuLimit }}` 和 `{{ .Values.memoryLimit }}`。
+  - 约束模板的 CRD 实现。 使用通过值传递的参数，如 `{{ .Values.<valuename> }}`。 在以下示例中，这些值为 `{{ .Values.cpuLimit }}` 和 `{{ .Values.memoryLimit }}`。
 - values（可选）
   - 定义要传递给约束的任何参数和值。 每个值都必须在约束模板 CRD 中存在。
 
@@ -506,7 +508,7 @@ Modify 支持以下操作：
 如果这些检查中的任何一个失败，策略评估将回退到指定的 conflictEffect。
 
 > [!IMPORTANT]
-> 建议包含别名的 Modify 定义采用 Audit 冲突效果，避免使用 API 版本（其中映射的属性不是“可修改”）的请求失败。 如果同一别名在不同 API 版本中的行为不同，可以使用 Conditional Modify 操作来确定对每个 API 版本使用的 Modify 操作。
+> 建议包含别名的 Modify 定义采用“audit”冲突效果，避免使用 API 版本（其中映射的属性不是“可修改”）的请求失败。 如果同一别名在不同 API 版本中的行为不同，可以使用 Conditional Modify 操作来确定对每个 API 版本使用的 Modify 操作。
 
 当使用修改效果的策略定义作为评估周期的一部分运行时，它不会更改已存在的资源。 相反，它会将符合 if 条件的任意资源标记为不符合。
 
@@ -656,7 +658,7 @@ Modify 支持以下操作：
   - 将资源位置限制为“eastus”
   - 分配到订阅 A 中的资源组 B
   - “审核”效果
-  
+
 此设置将产生以下结果：
 
 - 位于“eastus”的资源组 B 中的任何现有资源都符合策略 2，但不符合策略 1

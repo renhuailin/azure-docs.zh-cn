@@ -3,25 +3,26 @@ title: 使用日志重播服务将数据库迁移到 SQL 托管实例
 description: 了解如何使用日志重播服务将数据库从 SQL Server 迁移到 SQL 托管实例
 services: sql-database
 ms.service: sql-managed-instance
-ms.custom: seo-lt-2019, sqldbrb=1
+ms.subservice: migration
+ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: sstein
-ms.date: 03/01/2021
-ms.openlocfilehash: 0bc00aea67fa2f71599ee62e657e1ca1b0627681
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.reviewer: mathoma
+ms.date: 03/31/2021
+ms.openlocfilehash: 535ad3bac6c4f88593fc196cf6487038f937d509
+ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199843"
+ms.lasthandoff: 05/29/2021
+ms.locfileid: "110697288"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>使用日志重播服务（预览版）将数据库从 SQL Server 迁移到 SQL 托管实例
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 本文介绍如何使用日志重播服务 (LRS) 手动配置从 SQL Server 2008-2019 到 Azure SQL 托管实例的数据库迁移，该服务目前为公共预览版。 LRS 是为 SQL 托管实例启用的云服务，它基于 SQL Server 日志传送技术。 
 
-[Azure 数据库迁移服务](/azure/dms/tutorial-sql-server-to-managed-instance)和 LRS 使用相同的基础迁移技术和相同的 API。 通过发布 LRS，我们将进一步在本地 SQL Server 与 SQL 托管实例之间实现复杂的自定义迁移和混合体系结构。
+[Azure 数据库迁移服务](../../dms/tutorial-sql-server-to-managed-instance.md)和 LRS 使用相同的基础迁移技术和相同的 API。 通过发布 LRS，我们将进一步在本地 SQL Server 与 SQL 托管实例之间实现复杂的自定义迁移和混合体系结构。
 
 ## <a name="when-to-use-log-replay-service"></a>何时使用日志重播服务
 
@@ -33,8 +34,9 @@ ms.locfileid: "102199843"
 - 无法在环境中安装数据库迁移服务可执行文件。
 - 数据库迁移服务可执行文件无权访问数据库备份。
 - 无法访问主机 OS，或者没有管理员特权。
-- 无法打开从环境到 Azure 的网络端口。
-- 备份通过 `TO URL` 选项直接存储到 Azure Blob 存储中。
+- 不能将环境中的网络端口打开到 Azure。
+- 环境中的带宽限制或代理阻塞性问题。
+- 通过 `TO URL` 选项将备份直接存储到 Azure Blob 存储。
 - 需要使用差异备份。
 
 > [!NOTE]
@@ -64,13 +66,13 @@ LRS 监视 Blob 存储中是否有在还原完整备份后添加的任何新的�
 
 :::image type="content" source="./media/log-replay-service-migrate/log-replay-service-conceptual.png" alt-text="该图解释了 SQL 托管实例的日志重播服务编排步骤。" border="false":::
     
-| Operation | 详细信息 |
+| 操作 | 详细信息 |
 | :----------------------------- | :------------------------- |
-| **1.将数据库备份从 SQL Server 复制到 Blob 存储**。 | 使用 [Azcopy](/azure/storage/common/storage-use-azcopy-v10) 或 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)将完整备份、差异备份和日志备份从 SQL Server 复制到 Blob 存储容器。 <br /><br />使用任意文件名。 LRS 不需要特定的文件命名约定。<br /><br />在迁移多个数据库时，每个数据库都需要一个单独的文件夹。 |
+| **1.将数据库备份从 SQL Server 复制到 Blob 存储**。 | 使用 [AzCopy](../../storage/common/storage-use-azcopy-v10.md) 或 [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)将完整备份、差异备份和日志备份从 SQL Server 复制到 Blob 存储容器。 <br /><br />使用任意文件名。 LRS 不需要特定的文件命名约定。<br /><br />在迁移多个数据库时，每个数据库都需要一个单独的文件夹。 |
 | **2.在云中启动 LRS**。 | 可以使用以下 cmdlet 来重启服务：PowerShell ([start-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/start-azsqlinstancedatabaselogreplay)) 或 Azure CLI ([az_sql_midb_log_replay_start cmdlets](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_start))。 <br /><br /> 为指向 Blob 存储上的备份文件夹的每个数据库单独启动 LRS。 <br /><br /> 启动该服务后，它将从 Blob 存储容器中获取备份，并开始在 SQL 托管实例上进行还原。<br /><br /> 如果在连续模式下启动 LRS，则在还原所有最初上传的备份之后，该服务将监视上传到文件夹的所有新文件。 该服务将根据日志序列号 (LSN) 链连续应用日志，直到停止运行。 |
 | **2.1.监视操作进度**。 | 可以使用以下 cmdlet 来监视还原操作的进度：PowerShell ([get-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/get-azsqlinstancedatabaselogreplay)) 或 Azure CLI ([az_sql_midb_log_replay_show cmdlets](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_show))。 |
 | **2.2.根据需要停止操作**。 | 如果需要停止迁移过程，可以选择以下 cmdlet：PowerShell ([stop-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/stop-azsqlinstancedatabaselogreplay)) 或 Azure CLI ([az_sql_midb_log_replay_stop](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_stop))。 <br /><br /> 停止操作会删除正在 SQL 托管实例上还原的数据库。 停止操作后，将无法为数据库恢复 LRS。 你需要从头开始重启迁移过程。 |
-| **3.准备就绪后，直接转换到云**。 | 停止应用程序和工作负载。 获取最后一个日志结尾备份，并将其上传到 Azure Blob 存储。<br /><br /> 通过使用以下 cmdlet 启动 LRS `complete` 操作来完成直接转换：PowerShell ([complete-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay)) 或 Azure CLI [az_sql_midb_log_replay_complete](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete)。 此操作将停止 LRS，并使数据库联机，可以在 SQL 托管实例上用于读取和写入。<br /><br /> 将应用程序连接字符串从 SQL Server 重新指向 SQL 托管实例。 |
+| **3.准备就绪后，直接转换到云**。 | 停止应用程序和工作负载。 获取最后一个日志结尾备份，并将其上传到 Azure Blob 存储。<br /><br /> 通过使用以下 cmdlet 启动 LRS `complete` 操作来完成直接转换：PowerShell ([complete-azsqlinstancedatabaselogreplay](/powershell/module/az.sql/complete-azsqlinstancedatabaselogreplay)) 或 Azure CLI [az_sql_midb_log_replay_complete](/cli/azure/sql/midb/log-replay#az_sql_midb_log_replay_complete)。 此操作将停止 LRS，并使数据库联机，可以在 SQL 托管实例上用于读取和写入。<br /><br /> 将应用程序连接字符串从 SQL Server 重新指向 SQL 托管实例。 你需要通过在应用程序中手动或自动（例如，在应用程序可从属性或数据库中读取连接字符串的情况下）更改连接字符串来自行安排此步骤。 |
 
 ## <a name="requirements-for-getting-started"></a>入门要求
 
@@ -164,7 +166,7 @@ Azure Blob 存储用作 SQL Server 与 SQL 托管实例之间的备份文件的�
 
 使用 LRS 将数据库迁移到托管实例时，可以使用以下方法将备份上传到 Blob 存储：
 - 使用 SQL Server 的原生[备份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) 功能
-- 使用 [Azcopy](/azure/storage/common/storage-use-azcopy-v10) 或 [Azure 存储资源管理器](https://azure.microsoft.com/en-us/features/storage-explorer)将备份上传到 blob 容器
+- 使用 [AzCopy](../../storage/common/storage-use-azcopy-v10.md) 或 [Azure 存储资源管理器](https://azure.microsoft.com/en-us/features/storage-explorer)将备份上传到 blob 容器
 - 使用 Azure 门户中的存储资源管理器
 
 ### <a name="make-backups-from-sql-server-directly-to-blob-storage"></a>从 SQL Server 直接备份到 Blob 存储

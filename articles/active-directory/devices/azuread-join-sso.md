@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05df955e85bf5de12e3cc8892b1a2323947dd66f
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 930fecda6a962c031b3e358fc640a41cc7b85d68
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114227855"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112075090"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>本地资源的 SSO 在已加入 Azure AD 的设备上的工作原理
 
@@ -42,7 +42,7 @@ ms.locfileid: "114227855"
 >[!NOTE]
 > Windows Hello for Business 需要其他配置才能支持已加入 Azure AD 的设备的本地 SSO。 有关详细信息，请参阅[使用 Windows Hello for Business 配置已加入 Azure AD 的设备进行本地单一登录](/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base)。 
 >
-> 使用 Windows 10 的基于 FIDO2 安全密钥的无密码身份验证需要额外的配置，才能从已加入 Azure AD 的设备启用本地 SSO。 有关详细信息，请参阅[使用 Azure Active Directory 启用无密码安全密钥登录到本地资源](../authentication/howto-authentication-passwordless-security-key-on-premises.md)。 
+> 使用 Windows 10 的基于 FIDO2 安全密钥的无密码身份验证需要额外的配置，才能从已加入 Azure AD 的设备启用本地 SSO。 有关详细信息，请参阅[使用 Azure Active Directory 启用无密码安全密钥登录到本地资源](/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises)。 
 
 在尝试访问用户本地环境中请求 Kerberos 或 NTLM 的资源期间，设备：
 
@@ -75,4 +75,4 @@ ms.locfileid: "114227855"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [Azure Active Directory 中的设备管理是什么？](overview.md)
+有关详细信息，请参阅 [Azure Active Directory 中的设备管理是什么？](overview.md) 

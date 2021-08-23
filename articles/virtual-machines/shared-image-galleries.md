@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.topic: conceptual
 ms.workload: infrastructure
-ms.date: 10/14/2020
-ms.author: akjosh
+ms.date: 6/8/2021
+ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 32b4cf1555a2d0e074ae1551a5c0085f2758fa2b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6c39a7ef0404a0e78e5b8ed0b41bf54156b488a
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102609135"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112032656"
 ---
 # <a name="shared-image-galleries-overview"></a>共享映像库概述
 
@@ -64,7 +64,7 @@ ms.locfileid: "102609135"
 
 - 操作系统状态 - 可将 OS 状态设置为[通用化或专用化](#generalized-and-specialized-images)。 此字段为必需字段。
 - 操作系统 - 可以是 Windows 或 Linux。 此字段为必需字段。
--   Hyper-V 代 - 指定映像是从第 1 代还是[第 2 代](generation-2.md) Hyper-V VHD 创建的。 默认值是“第 1 代”。
+- Hyper-V 代 - 指定映像是从第 1 代还是[第 2 代](generation-2.md) Hyper-V VHD 创建的。 默认值是“第 1 代”。
 
 
 下面是可在映像定义上设置的其他参数，以便你可以更轻松地跟踪资源：
@@ -72,7 +72,7 @@ ms.locfileid: "102609135"
 - 说明 - 使用说明可以更详细地解释该映像定义为何存在。 例如，可为预装了应用程序的前端服务器创建一个映像定义。
 - Eula - 可用于指向特定于映像定义的最终用户许可协议。
 - 隐私声明和发行说明 - 将发行说明和隐私声明存储在 Azure 存储中，并提供在映像定义中用于访问它们的 URI。
-- 生命周期结束日期 - 将生命周期结束日期附加到映像定义，以便能够使用自动化功能删除旧的映像定义。
+- 生命周期终止日期 - 为映像定义中的所有映像版本建立默认的生命周期终止日期。 生命周期终止日期是信息性的；用户仍然可以从过期的映像和版本创建 VM。
 - 标记 - 可以在创建映像定义时添加标记。 有关标记的详细信息，请参阅[使用标记来组织资源](../azure-resource-manager/management/tag-resources.md)
 - 最小和最大 vCPU 与内存建议量 - 如果映像附带 vCPU 和内存建议量，则你可以将该信息附加到映像定义。
 - 不允许的磁盘类型 - 可以提供有关 VM 所需存储的信息。 例如，如果映像不适合标准 HDD 磁盘，请将其添加到禁止列表。
@@ -88,7 +88,7 @@ ms.locfileid: "102609135"
 - 版本号。 它用作映像版本的名称。 它始终采用以下格式：MajorVersion.MinorVersion.Patch。 如果指定在创建 VM 时使用最新版本，则依次根据版本最高的 MajorVersion、MinorVersion 和 Patch 选择最新映像。 
 - 源。 源可以是 VM、托管磁盘、快照、托管映像，也可以是其他映像版本。 
 - 最新版本中不包含它。 可将某个版本设为不用作最新映像版本。 
-- 生命周期结束日期。 在此之后无法从此映像创建 VM 的日期。
+- 生命周期结束日期。 指示映像版本的生命周期终止日期。 生命周期终止日期是信息性的；用户仍然可以从过期的版本创建 VM。
 
 
 ## <a name="generalized-and-specialized-images"></a>通用和专用映像
@@ -120,7 +120,7 @@ ms.locfileid: "102609135"
 ## <a name="scaling"></a>扩展
 使用共享映像库可以指定要让 Azure 保留的映像副本数。 这有助于实现多 VM 部署方案，因为可将 VM 部署分散到不同的副本，减少单个副本过载导致实例创建过程受到限制的可能性。
 
-现在，使用共享映像库，最多可在虚拟机规模集中部署 1,000 个 VM 实例（相比使用托管映像部署 600 个有所增加）。 映像副本可用于提高部署性能、可靠性和一致性。   可以在每个目标区域中设置不同的副本计数，具体视该区域的缩放需求而定。 由于每个副本都是映像的深层副本，这有助于使用每个额外的副本线性扩展部署。 我们知道了没有两个图像或区域是相同的，不过以下提供了有关如何在区域中使用副本的一般准则：
+现在，使用共享映像库，最多可在虚拟机规模集中部署 1,000 个 VM 实例（相比使用托管映像部署 600 个有所增加）。 映像副本可用于提高部署性能、可靠性和一致性。   可以在每个目标区域中设置不同的副本计数，具体视该区域的缩放需求而定。 由于每个副本是映像的深层复制，因此，这有助于使用每个额外的副本线性地缩放部署。 虽然我们了解没有两个映像或区域是相同的，但是，需要遵循下面有关如何在区域中使用副本的一般原则：
 
 - 对于非虚拟机规模集部署 - 建议为每 20 个同时创建的 VM 保留一个副本。 例如，如果使用某个区域中的同一映像同时创建 120 个 VM，我们建议你保留至少 6 个映像副本。 
 - 对于虚拟机规模集部署 - 建议为每个包含多达 600 个实例的规模集部署至少保留一个副本。 例如，如果同时创建 5 个规模集，每个规模集具有 600 个使用某个区域中的同一映像的 VM 实例，则建议至少保留 5 个映像副本。 
@@ -159,8 +159,8 @@ ms.locfileid: "102609135"
 
 ## <a name="billing"></a>计费
 使用共享映像库服务不会产生额外的费用。 以下资源会产生费用：
--   存储每个副本的存储成本。 存储按快照收费，基于映像版本的占用大小、映像版本的副本数量以及将版本复制到的区域数。 
--   将第一个映像版本从源区域复制到目标区域的网络传出费用。 后续副本将在区域中处理，因此不会产生额外的费用。 
+- 存储每个副本的存储成本。 存储按快照收费，基于映像版本的占用大小、映像版本的副本数量以及将版本复制到的区域数。 
+- 将第一个映像版本从源区域复制到目标区域的网络传出费用。 后续副本将在区域中处理，因此不会产生额外的费用。 
 
 例如，假设你有一个 127 GB 的 OS 磁盘的映像，它只占用 10 GB 的存储空间，还有一个 32 GB 的空数据磁盘。 每个映像的占用大小仅为 10 GB。 将映像复制到 3 个区域，每个区域有两个副本。 总共有 6 个快照，每个快照使用 10 GB。 将根据 10 GB 的占用大小向你收取每个快照的存储成本。 你将为要复制到另外两个区域的第一个副本支付网络流出量费用。 有关每个区域中快照定价的详细信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。 有关网络流出量的详细信息，请参阅[带宽定价](https://azure.microsoft.com/pricing/details/bandwidth/)。
 
@@ -198,10 +198,10 @@ ms.locfileid: "102609135"
 
 可以使用模板创建共享映像库资源。 提供多个 Azure 快速入门模板： 
 
-- [创建共享映像库](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [创建共享映像库](https://azure.microsoft.com/resources/templates/sig-create/)
+- [在共享的映像库中创建映像定义](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [在共享映像库中创建映像版本](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [根据映像版本创建 VM](https://azure.microsoft.com/resources/templates/vm-from-sig/)
 
 ## <a name="frequently-asked-questions"></a>常见问题 
 
@@ -227,7 +227,7 @@ ms.locfileid: "102609135"
 若要在 Azure 门户上列出不同订阅中你有权访问的所有共享映像库资源，请执行以下步骤：
 
 1. 打开 [Azure 门户](https://portal.azure.com)。
-1. 向下滚动页面并选择“所有资源”。
+1. 向下滚动页面然后选择“所有资源”。
 1. 选择要列出其中的所有资源的所有订阅。
 1. 查找类型为“共享映像库”的资源。
   
@@ -315,7 +315,7 @@ ms.locfileid: "102609135"
 
 ### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>是否可以将使用托管映像创建的虚拟机规模集更新为使用共享映像库映像？
 
-是的，你可以将规模集映像引用从托管映像更新为共享映像库映像，前提是这些映像之间的 OS 类型、Hyper-V 生成和数据磁盘布局均匹配。
+可以，你可以将规模集映像参考从托管映像更新为共享映像库映像，前提是这些映像之间的 OS 类型、Hyper-V 代次和数据磁盘布局均匹配。
 
 ## <a name="troubleshoot-shared-image-gallery-issues"></a>排查共享映像库问题
 如果对共享映像库资源执行任何操作时遇到问题，请参阅[故障排除指南](troubleshooting-shared-images.md)中的常见错误列表。

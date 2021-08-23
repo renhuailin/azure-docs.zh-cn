@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/02/2021
+ms.date: 06/11/2021
 ms.author: victorh
-ms.openlocfilehash: 8dbfb23d4314f8ceb13ad36ca9733e446e176090
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 364072c44791cb9b74d385dbc3f2688a3725d76c
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278175"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112033503"
 ---
 # <a name="azure-firewall-features"></a>Azure 防火墙功能
 
@@ -35,7 +35,7 @@ Azure 防火墙包括以下功能：
 - 多个公共 IP 地址
 - Azure Monitor 日志记录
 - 强制隧道
-- Web 类别(预览)
+- Web 类别（预览版）
 - 认证
 
 ## <a name="built-in-high-availability"></a>内置的高可用性
@@ -59,7 +59,7 @@ Azure 防火墙包括以下功能：
 
 ## <a name="unrestricted-cloud-scalability"></a>不受限制的云可伸缩性
 
-为了适应不断变化的网络流量流，Azure 防火墙可尽最大程度进行纵向扩展，因此不需要为峰值流量做出预算。
+为了适应不断变化的网络流量，Azure 防火墙可最大程度地进行横向扩展，因此不需要你为峰值流量做出预算。
 
 ## <a name="application-fqdn-filtering-rules"></a>应用程序 FQDN 筛选规则
 
@@ -114,9 +114,9 @@ Azure 防火墙工作簿为 Azure 防火墙数据分析提供了一个灵活的�
 
 你可以对 Azure 防火墙进行配置，使其将所有 Internet 绑定的流量路由到指定的下一跃点，而不是直接前往 Internet。 例如，你可能有一个本地边缘防火墙或其他网络虚拟设备 (NVA)，用于对网络流量进行处理，然后再将其传递到 Internet。 有关详细信息，请参阅 [Azure 防火墙强制隧道](forced-tunneling.md)。
 
-## <a name="web-categories-preview"></a>Web 类别(预览)
+## <a name="web-categories-preview"></a>Web 类别（预览版）
 
-通过 Web 类别，管理员可以允许或拒绝用户访问某些类别的网站，例如赌博网站、社交媒体网站等。 Web 类别还包含在 Azure 防火墙标准版中，但在 Azure 防火墙高级预览版中，它会进行更多微调。 标准版 SKU 中的 Web 类别功能根据 FQDN 来匹配类别，而高级版 SKU 则根据 HTTP 和 HTTPS 流量的整个 URL 来匹配类别。 要详细了解 Azure 防火墙高级预览版，请参阅 [Azure 防火墙高级预览版功能](premium-features.md)。
+通过 Web 类别，管理员可以允许或拒绝用户访问某些类别的网站，例如赌博网站、社交媒体网站等。 Web 类别还包含在 Azure 防火墙标准版中，但在 Azure 防火墙高级预览版中，它会进行更多微调。 标准版 SKU 中的 Web 类别功能根据 FQDN 来匹配类别，而高级版 SKU 则根据 HTTP 和 HTTPS 流量的整个 URL 来匹配类别。 若要详细了解 Azure 防火墙高级预览版，请参阅 [Azure 防火墙高级预览版功能](premium-features.md)。
 
 例如，如果 Azure 防火墙截获了 `www.google.com/news` 的 HTTPS 请求，则需要进行以下分类： 
 

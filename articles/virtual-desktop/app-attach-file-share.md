@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e0ba3363b6004afb8e42f420fae681b2827106fb
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 80de8767d96cacc5fdec95f26efec88c55e2ceb3
+ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707080"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111745684"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach"></a>设置用于 MSIX 应用附加的文件共享
 
@@ -107,4 +107,4 @@ MSIX 应用附加文件共享的设置过程在很大程度上与 [FSLogix 配�
 - 请在 [Azure 虚拟桌面技术社区](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)询问有关此功能的问题。
 - 还可以在 [Azure 虚拟桌面反馈中心](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)提供关于 Azure 虚拟桌面的反馈。
 - [MSIX 应用附加术语表](app-attach-glossary.md)
-- [MSIX 应用附加常见问题解答](app-attach-faq.yml)
+- [MSIX 应用附加常见问题解答](app-attach-faq.md)

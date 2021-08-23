@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d92f00281a06357f2135fe148f923b0671e10304
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 3a62afbcd120a7404b1677a8c8adb62723a119d5
+ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114203451"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110070257"
 ---
 # <a name="building-a-conditional-access-policy"></a>生成条件访问策略
 
@@ -77,15 +77,15 @@ ms.locfileid: "114203451"
 
 #### <a name="client-apps"></a>客户端应用
 
-默认情况下，所有新创建的条件访问策略都会应用到所有客户端应用类型，即使未配置客户端应用条件。
+默认情况下，条件访问策略适用于支持新式身份验证的浏览器应用、移动应用和桌面客户端。 
 
-已于 2020 年 8 月更新了客户端应用条件的行为。 如果你有现有的条件访问策略，这些策略将保持不变。 但是，如果你单击某个现有策略，则会发现“配置”开关已被删除，且该策略所应用到的客户端应用处于选中状态。
+此分配条件允许条件访问策略将不使用新式身份验证的特定客户端应用程序作为目标。 这些应用程序包括 Exchange ActiveSync 客户端、不使用新式身份验证的旧版 Office 应用程序，以及 IMAP、MAPI、POP 和 SMTP 等邮件协议。
 
 #### <a name="device-state"></a>设备状态
 
 此控制条件用于排除已加入混合 Azure AD 或在 Intune 中标记为合规的设备。 可以通过此排除来阻止非托管设备。 
 
-#### <a name="filters-for-devices-preview"></a>设备筛选器（预览版）
+#### <a name="filters-for-devices-preview"></a>适用于设备的筛选器（预览版）
 
 此控制允许基于策略中特定设备的属性来定位特定设备。
 

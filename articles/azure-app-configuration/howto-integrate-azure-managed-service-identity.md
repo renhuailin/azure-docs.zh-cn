@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: ff7c2b6ced87c8254283923a9163e51f06ae6ef6
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 2aefa7ed7ce63b1ecbe735f21d372133ba4c7825
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114298167"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111592405"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>使用托管标识来访问应用程序配置
 
@@ -48,7 +48,7 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
 
 要在门户中设置托管标识，首先创建应用程序，然后启用该功能。
 
-1. 在 [Azure 门户](https://portal.azure.com)中访问应用程序服务资源。 如果没有可使用的现有应用程序服务资源，请创建一个。 
+1. 在 [Azure 门户](https://portal.azure.com)中访问应用服务资源。 如果没有可使用的现有应用服务资源，请创建一个。 
 
 1. 在左侧窗格向下滚动到“设置”组，然后选择“标识”。
 
@@ -164,9 +164,9 @@ Azure 应用程序配置及其 .NET Core、.NET Framework 和 Java Spring 客户
 
 ## <a name="deploy-your-application"></a>部署应用程序
 
-使用托管标识需要将应用部署到 Azure 服务。 托管标识不能用于对本地运行的应用进行身份验证。 若要部署你在[使用应用程序配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md)快速入门中创建并修改的 .NET Core 应用，以便使用托管标识，请按照[发布 Web 应用](../app-service/quickstart-dotnetcore.md?pivots=development-environment-vs&tabs=netcore31#publish-your-web-app)中的指南操作。
+使用托管标识需要将应用部署到 Azure 服务。 托管标识不能用于对本地运行的应用进行身份验证。 若要部署你在[使用应用配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md)快速入门中创建并修改的 .NET Core 应用，以便使用托管标识，请按照[发布 Web 应用](/azure/app-service/quickstart-dotnetcore?tabs=netcore31&pivots=development-environment-vs#publish-your-web-app)中的指南操作。
 
-除了应用服务，许多其他 Azure 服务也支持托管标识。 有关详细信息，请参阅[支持 Azure 资源托管标识的服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)。
+除了应用服务，许多其他 Azure 服务也支持托管标识。 有关详细信息，请参阅[支持 Azure 资源托管标识的服务](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)。
 
 ## <a name="clean-up-resources"></a>清理资源
 

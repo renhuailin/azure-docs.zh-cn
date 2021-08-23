@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/30/2021
-ms.openlocfilehash: 28017bb8649e748ddf2299748f3d718ae4896a68
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 70bb18984f5ed3ca6887fd01ec0e98e6f3d41595
+ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416193"
+ms.lasthandoff: 05/27/2021
+ms.locfileid: "110547505"
 ---
 # <a name="plan-an-iot-edge-modules-offer"></a>规划 IoT Edge 模块产品/服务
 
@@ -114,4 +114,5 @@ Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块
 
 ## <a name="next-steps"></a>后续步骤
 
+- 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建或完成产品/服务。
 - 在合作伙伴中心[创建 IoT Edge 模块产品/服务](./iot-edge-offer-setup.md)。

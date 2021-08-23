@@ -7,12 +7,12 @@ ms.topic: reference
 ms.custom: subject-monitoring
 ms.service: container-registry
 ms.date: 03/19/2021
-ms.openlocfilehash: 99b9206e305e57898a2eb4bc6d0de7dd6fe94473
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 86c8047727711655a262425032b7a9fe3daa6dc1
+ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290426"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112059969"
 ---
 # <a name="monitoring-azure-container-registry-data-reference"></a>监视 Azure 容器注册表数据参考
 
@@ -24,7 +24,7 @@ ms.locfileid: "114290426"
 
 资源提供程序和类型：[Microsoft.ContainerRegistry/registries](../azure-monitor/essentials/metrics-supported.md#microsoftcontainerregistryregistries)
 
-| 指标 | 是否可通过诊断设置导出？ | 单位 | 聚合类型 | 说明 | 维度  |  
+| 指标 | 是否可通过诊断设置导出？ | 计价单位 | 聚合类型 | 说明 | 维度  |  
 |:-------|:-----|:-----|:------------|:------------------|:----- |
 |     AgentPoolCPUTime   | 是 |   秒   | 总计 |   在专用[代理池](tasks-agent-pools.md)上运行的 [ACR 任务](container-registry-tasks-overview.md)使用的 CPU 时间             | 无 | 
 |     RunDuration   | 是 |  毫秒   |  总计 |  [ACR 任务](container-registry-tasks-overview.md)运行的持续时间       | 无 | 
@@ -105,4 +105,4 @@ Azure 容器注册表的资源日志正在使用以下架构。
 ## <a name="next-steps"></a>后续步骤
 
 - 有关监视 Azure 容器注册表的说明，请参阅[监视 Azure 容器注册表](monitor-service.md)。
-- 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](../azure-monitor/overview.md)。
+- 有关监视 Azure 资源的详细信息，请参阅[使用 Azure Monitor 监视 Azure 资源](/azure/azure-monitor/overview)。

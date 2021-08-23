@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 映像生成器用于 Windows VM 的映像库（预览）
+title: 结合使用 Azure 映像生成器和 Windows VM 的映像库
 description: 使用 Azure 映像生成器和 Azure PowerShell 创建 Azure 共享库映像版本。
 author: cynthn
 ms.author: cynthn
@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.openlocfilehash: e8caf9f742217161c60ce90351989999f18adabb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: dd821ac9f5722047ec5c233feaaf2a48d4de3b41
+ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694081"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112031144"
 ---
-# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>预览版：创建 Windows 映像并将其分发到共享映像库 
+# <a name="create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>创建 Windows 映像并将其分发到共享映像库 
 
 本文介绍如何使用 Azure 映像生成器和 Azure PowerShell，来在[共享映像库](../shared-image-galleries.md)中创建映像版本，然后全局分发此映像。 也可以使用 [Azure CLI](../linux/image-builder-gallery.md) 来实现此目的。
 
@@ -27,24 +28,9 @@ Azure 映像生成器会自动运行 sysprep 来将映像通用化，这是一�
 
 请注意层自定义的次数。 最多可以对单个 Windows 映像运行 Sysprep 命令 8 次。 运行 Sysprep 8 次后，必须重新创建 Windows 映像。 有关详细信息，请参阅[有关 Sysprep 可运行次数的限制](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)。 
 
-> [!IMPORTANT]
-> Azure 映像生成器目前提供公开预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="register-the-features"></a>注册功能
-若要在预览期间使用 Azure 映像生成器，需要注册新功能。
-
-```powershell
-Register-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
-```
-
-检查功能注册的状态。
-
-```powershell
-Get-AzProviderFeature -FeatureName VirtualMachineTemplatePreview -ProviderNamespace Microsoft.VirtualMachineImages
-```
-
-等到 `RegistrationState` 成为 `Registered`，然后再进入下一步。
+若要使用 Azure 映像生成器，则需要注册此功能。
 
 检查提供程序注册情况。 请确保每个都返回 `Registered`。
 
