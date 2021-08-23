@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/07/2020
+ms.date: 07/21/2021
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 7890d87730aa65e09e3bbc5a79fd22eb68610939
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 649bf52c48867f4508a7071cb1443b62eae36010
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079708"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860341"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>向 SQL IaaS 代理扩展注册 SQL Server VM
 
@@ -57,8 +57,8 @@ ms.locfileid: "112079708"
 
 1. 打开 Azure 门户，转到“所有服务”。
 1. 转到“订阅”，选择感兴趣的订阅。
-1. 在“订阅”页中，转到“扩展” 。
-1. 在筛选器中输入“sql”，以便显示与 SQL 相关的扩展。
+1. 在“订阅”页上，选择“设置”下的“资源提供程序”。
+1. 在筛选器中输入“sql”，以便显示与 SQL 相关的资源提供程序。
 1. 根据所需操作为“Microsoft.SqlVirtualMachine”提供程序选择“注册”、“重新注册”或“取消注册”   。
 
    ![修改提供程序](./media/sql-agent-extension-manually-register-single-vm/select-resource-provider-sql.png)
@@ -167,9 +167,11 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ---
 
-## <a name="verify-mode"></a>验证模式
+## <a name="check-extension-mode"></a>检查扩展模式
 
-可以使用 Azure PowerShell 查看 SQL Server IaaS 代理的当前模式：
+使用 Azure PowerShell 检查 SQL Server IaaS 代理扩展所处的模式。 
+
+若要检查扩展模式，请使用此 Azure PowerShell cmdlet： 
 
 ```powershell-interactive
 # Get the SqlVirtualMachine
@@ -189,7 +191,7 @@ $sqlvm.SqlManagementType
 若要使用 Azure 门户将扩展升级到完整模式，请执行以下步骤：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 转到 [SQL 虚拟机](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)资源。
+1. 转到 [SQL 虚拟机](manage-sql-vm-portal.md#access-the-resource)资源。
 1. 选择 SQL Server VM，然后选择“概述”。
 1. 对于具有无代理或轻型 IaaS 模式的 SQL Server VM，请选择“SQL IaaS 扩展仅提供许可证类型和版本更新”消息。
 
@@ -239,6 +241,8 @@ $sqlvm.SqlManagementType
 
    ![通过 SQL RP 注册验证状态](./media/sql-agent-extension-manually-register-single-vm/verify-registration-status.png)
 
+也可通过在“SQL 虚拟机”资源的“支持 + 故障排除”窗格下选择“修复”来检查状态。 SQL IaaS 代理扩展的预配状态可以是“成功”，也可以是“失败”。 
+
 ### <a name="command-line"></a>命令行
 
 使用 Azure CLI 或 Azure PowerShell 验证当前 SQL Server VM 注册状态。 如果注册成功，`ProvisioningState` 将显示 `Succeeded`。
@@ -262,6 +266,23 @@ $sqlvm.SqlManagementType
 ---
 
 错误表明 SQL Server VM 尚未向扩展注册。
+
+## <a name="repair-extension"></a>修复扩展
+
+SQL IaaS 代理扩展可能处于失败状态。 使用 Azure 门户修复 SQL IaaS 代理扩展。 为此，请执行下列步骤： 
+
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 转到 [SQL Server VM](manage-sql-vm-portal.md)。
+1. 从列表中选择 SQL Server VM。 如果 SQL Server VM 未在此处列出，则可能尚未向 SQL IaaS 代理扩展注册。
+1. 在“SQL 虚拟机”资源页的“支持 + 故障排除”下选择“修复”。 
+
+   :::image type="content" source="media/sql-agent-extension-manually-register-single-vm/repair-extension.png" alt-text="在“SQL 虚拟机”资源页的“支持 + 故障排除”下选择“修复”":::   
+
+1. 如果预配状态显示为“失败”，请选择“修复”来修复扩展。 如果状态为“成功”，则可以选中“强制修复”旁边的框来修复扩展，而不考虑状态。 
+
+   ![如果预配状态显示为“失败”，请选择“修复”来修复扩展。 如果状态为“成功”，则可选中“强制修复”旁边的框来修复扩展，而不考虑状态。](./media/sql-agent-extension-manually-register-single-vm/force-repair-extension.png)
+
+
 
 ## <a name="unregister-from-extension"></a>从扩展取消注册
 

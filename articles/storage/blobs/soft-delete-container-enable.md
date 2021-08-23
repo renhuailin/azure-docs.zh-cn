@@ -1,48 +1,68 @@
 ---
-title: 启用和管理容器的软删除（预览版）
+title: 启用和管理容器的软删除
 titleSuffix: Azure Storage
-description: 启用容器软删除（预览版），以便在错误地修改或删除数据时更轻松地恢复数据。
+description: 启用容器软删除，以便在错误地修改或删除数据时更轻松地恢复数据。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 07/06/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2097c1743e07b5563bc75d3d1cce48aa11b98e5f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2284344e525608c2c1498503f3bf479df1cea559
+ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102216337"
+ms.lasthandoff: 07/08/2021
+ms.locfileid: "113504489"
 ---
-# <a name="enable-and-manage-soft-delete-for-containers-preview"></a>启用和管理容器的软删除（预览版）
+# <a name="enable-and-manage-soft-delete-for-containers"></a>启用和管理容器的软删除
 
-容器软删除（预览版）可防止意外或错误地修改或删除数据。 为存储帐户启用容器软删除后，容器及其内容被删除后可以在指定的保持期内恢复。
+容器软删除可防止意外或错误地修改或删除数据。 为存储帐户启用容器软删除后，容器及其内容被删除后可以在指定的保持期内恢复。 有关容器软删除的更多详细信息，请参阅[容器的软删除](soft-delete-container-overview.md)。
 
-如果你的数据有可能被应用程序或其他存储帐户用户意外修改或删除，Microsoft 建议启用容器软删除。 本文介绍如何启用容器的软删除。 有关容器软删除的更多详细信息（包括如何注册预览版），请参阅[容器的软删除（预览版）](soft-delete-container-overview.md)。
-
-对于端到端的数据保护，Microsoft 建议同时启用 blob 的软删除和 Blob 版本控制。 若要了解如何同时启用 blob 的软删除，请参阅[启用和管理 blob 的软删除](soft-delete-blob-enable.md)。 若要了解如何启用 blob 版本控制，请参阅 [Blob 版本控制](versioning-overview.md)。
-
-> [!IMPORTANT]
->
-> 容器软删除目前处于预览阶段。 有关 beta 版本、预览版或尚未正式发布的版本的 Azure 功能所适用的法律条款，请参阅 [Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+对于端到端数据保护，Microsoft 建议你还启用 blob 软删除和 blob 版本控制。 若要了解如何同时启用 blob 的软删除，请参阅[启用和管理 blob 的软删除](soft-delete-blob-enable.md)。 若要了解如何启用 blob 版本控制，请参阅 [Blob 版本控制](versioning-overview.md)。
 
 ## <a name="enable-container-soft-delete"></a>启用容器软删除
 
-可通过使用 Azure 门户或 Azure 资源管理器模板，随时为存储帐户启用或禁用容器软删除。
+可以随时使用 Azure 门户、PowerShell、Azure CLI 或 Azure 资源管理器模板为存储帐户启用或禁用容器软删除。 Microsoft 建议将容器软删除的保留期设置为至少 7 天。
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要使用 Azure 门户为存储帐户启用容器软删除，请执行以下步骤：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中导航到存储帐户。
-1. 在“Blob 服务”下，找到“数据保护”设置 。
-1. 将“容器软删除”属性设置为“已启用”。
-1. 在“保留策略”下，指定软删除的容器可由 Azure 存储保留多长时间。
+1. 在“数据管理”下找到“数据保护”设置。
+1. 选择“为容器启用软删除”。
+1. 指定一个 1 到 365 天的保持期。
 1. 保存更改。
 
-:::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-configure.png" alt-text="显示如何在 Azure 门户中启用容器软删除的屏幕截图":::
+    :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-configure.png" alt-text="显示如何在 Azure 门户中启用容器软删除的屏幕截图":::
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+若要通过 PowerShell 启用容器软删除，请先安装 [Az.Storage](https://www.powershellgallery.com/packages/Az.Storage) 模块 3.9.0 版或更高版本。 接下来，调用 Enable-AzStorageContainerDeleteRetentionPolicy 命令并指定保留期的天数。 请务必将尖括号中的值替换为你自己的值：
+
+```azurepowershell-interactive
+Enable-AzStorageContainerDeleteRetentionPolicy -ResourceGroupName <resource-group> `
+    -StorageAccountName <storage-account> `
+    -RetentionDays 7 
+```
+
+若要禁用容器软删除，请调用 Disable-AzStorageContainerDeleteRetentionPolicy 命令。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+若要通过 Azure CLI 启用容器软删除，请先安装 Azure CLI 2.26.0 或更高版本。 接下来，调用 [az storage account blob-service-properties update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) 命令并指定保留期的天数。 请务必将尖括号中的值替换为你自己的值：
+
+```azurecli-interactive
+az storage account blob-service-properties update \
+    --enable-container-delete-retention true \
+    --container-delete-retention-days 7 \
+    --account-name <storage-account> \
+    --resource-group <resource_group>
+```
+
+若要禁用容器软删除，请为 `--enable-container-delete-retention` 参数指定 `false`。
 
 # <a name="template"></a>[模板](#tab/template)
 
@@ -75,11 +95,11 @@ ms.locfileid: "102216337"
     }
     ```
 
----
-
 1. 指定保持期。 默认值为 7。
 1. 保存模板。
 1. 指定帐户的资源组，然后选择“查看 + 创建”按钮来部署模板并启用容器软删除。
+
+---
 
 ## <a name="view-soft-deleted-containers"></a>查看软删除的容器
 
@@ -103,6 +123,6 @@ ms.locfileid: "102216337"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [容器软删除（预览版）](soft-delete-container-overview.md)
+- [容器软删除](soft-delete-container-overview.md)
 - [blob 的软删除](soft-delete-blob-overview.md)
 - [Blob 版本控制](versioning-overview.md)

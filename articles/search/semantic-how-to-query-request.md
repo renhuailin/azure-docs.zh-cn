@@ -7,18 +7,18 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/27/2021
-ms.openlocfilehash: b87f36b755037519d29881eeaefddfa8c92f6a3f
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 07/21/2021
+ms.openlocfilehash: e3ae63b202d826e48789bd8d15a197048d5566b7
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744928"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178331"
 ---
 # <a name="create-a-query-that-invokes-semantic-ranking-and-returns-semantic-captions"></a>创建调用语义排名并返回语义标题的查询
 
 > [!IMPORTANT]
-> 语义搜索根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)处于公开预览状态。 它可通过 Azure 门户、预览版 REST API 和 beta 版本的 SDK 获得。 这些功能将计费。 有关详细信息，请参阅[可用性和定价](semantic-search-overview.md#availability-and-pricing)。
+> 根据[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)，语义搜索为预览版。 它可通过 Azure 门户、预览版 REST API 和 beta 版本的 SDK 获得。 这些功能将计费。 有关详细信息，请参阅[可用性和定价](semantic-search-overview.md#availability-and-pricing)。
 
 语义搜索是 Azure 认知搜索中的一项高级功能，可对结果集调用语义排名算法并返回语义标题（和可选的[语义式答案](semantic-answers.md)），并突出显示最相关的术语和短语。 在使用“语义”查询类型进行表述的查询中，将返回标题和答案。
 
@@ -30,7 +30,7 @@ ms.locfileid: "111744928"
 
 + [注册预览](https://aka.ms/SemanticSearchPreviewSignup)。 预期周转时间大约为两个工作日。
 
-+ 现有搜索索引，其中包含使用[支持的语言](/rest/api/searchservice/preview-api/search-documents#queryLanguage)的内容。
++ 现有搜索索引，其中包含使用[支持的语言](/rest/api/searchservice/preview-api/search-documents#queryLanguage)的内容。 语义搜索最适用于信息性或描述性内容。
 
 + 用于发送查询的搜索客户端。
 
@@ -104,7 +104,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 | queryLanguage | 字符串 | 语义查询必须提供。 指定的词典同样适用于语义排名、标题、答案和拼写检查。 有关详细信息，请参阅[支持的语言（REST API 参考）](/rest/api/searchservice/preview-api/search-documents#queryLanguage)。 |
 | searchFields | 字符串 | 可搜索字段的逗号分隔列表。 指定进行语义排名的字段，将从这些字段中提取标题和答案。 </br></br>与简单查询类型和完整查询类型不同，字段的列出顺序决定了优先级。 有关详细的使用说明，请参阅[步骤 2：设置 searchFields](#searchfields)。 |
 | speller | 字符串 | 可选参数，不特定于语义查询，用于在拼写错误的字词到达搜索引擎之前对其进行更正。 有关详细信息，请参阅[向查询添加拼写更正](speller-how-to-add.md)。 |
-| answers |字符串 | 可选字段，用于指定结果中是否包含语义答案。 目前只实现了“extractive”。 可以将答案配置为最多返回 5 个。 默认值为 1。 此示例显示了三个答案的计数：“extractive\|count3”`。 有关更多信息，请参见[返回语义答案](semantic-answers.md)。|
+| answers |字符串 | 可选字段，用于指定结果中是否包含语义答案。 目前只实现了“extractive”。 可以将答案配置为最多返回 10 个。 默认值为 1。 此示例显示了三个答案的计数：`extractive\|count-3`。 有关更多信息，请参见[返回语义答案](semantic-answers.md)。|
 
 ### <a name="formulate-the-request"></a>表述请求
 
@@ -163,9 +163,13 @@ searchFields 参数用于识别要对查询进行“语义相似性”评估的�
 
   + 上述字段后跟可在其中找到语义查询答案的其他描述性字段，例如文档的主要内容。
 
-#### <a name="step-3-remove-orderby-clauses"></a>步骤 3：删除 orderBy 子句
+#### <a name="step-3-remove-or-bracket-query-features-that-bypass-relevance-scoring"></a>步骤 3：删除或用括号括起绕过相关性评分的查询功能
 
-从现有查询代码中删除任何 orderBy 子句。 语义分数用于对结果进行排序，如果包括显式排序逻辑，则返回 HTTP 400 错误。
+认知搜索中的一些查询功能不进行相关性评分，有些甚至会完全绕过全文搜索引擎。 如果查询逻辑包含以下功能，你不会得到结果的相关性分数或语义排名：
+
++ 筛选器、模糊搜索查询和正则表达式会循环访问未切分的文本，并在内容中扫描逐字匹配项。 上述所有查询形式的搜索分数都是统一的 1.0，不会为语义排名提供有意义的输入。
+
++ 对特定字段的排序（orderBy 子句）也会替代搜索分数和语义分数。 假设将语义分数用于对结果进行排序（包括显式排序逻辑），则会导致返回 HTTP 400 错误。
 
 #### <a name="step-4-add-answers"></a>步骤 4：添加答案
 
@@ -190,6 +194,17 @@ searchFields 参数用于识别要对查询进行“语义相似性”评估的�
 ```
 
 突出显示样式应用于响应中的标题。 可以使用默认样式，也可以选择性地自定义应用于标题的突出显示样式。 标题对文档中汇总响应的关键段落应用突出显示格式。 默认值为 `<em>`。 若要指定格式类型（例如，黄色背景），可以设置 highlightPreTag 和 highlightPostTag。
+
+## <a name="query-using-azure-sdks"></a>使用 Azure SDK 进行查询
+
+Azure SDK 的 Beta 版本包括对语义搜索的支持。 因为该 SDK 是 beta 版本，所以没有文档或示例，但是你可以参考上面的“REST API”部分，了解 API 的工作原理。
+
+| Azure SDK | 包裹 |
+|-----------|---------|
+| .NET | [Azure.Search.Documents 包 11.3.0-beta.2](https://www.nuget.org/packages/Azure.Search.Documents/11.3.0-beta.2)  |
+| Java | [com.azure:azure-search-documents 11.4.0-beta.2](https://search.maven.org/artifact/com.azure/azure-search-documents/11.4.0-beta.2/jar)  |
+| JavaScript | [azure/search-documents 11.2.0-beta.2](https://www.npmjs.com/package/@azure/search-documents/v/11.2.0-beta.2)|
+| Python | [azure-search-documents 11.2.0b3](https://pypi.org/project/azure-search-documents/11.2.0b3/) |
 
 ## <a name="evaluate-the-response"></a>评估响应
 

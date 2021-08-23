@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: a02be0938b1ab925fb0343351ce1c414cc59c615
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 82d406521ad534c77fc48c095631e07a74bfd080
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044832"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252922"
 ---
 # <a name="audit-azure-sentinel-queries-and-activities"></a>审核 Azure Sentinel 查询和活动
 
@@ -226,8 +226,35 @@ LAQueryLogs
 ```
 
 
+## <a name="monitor-azure-sentinel-with-workbooks-rules-and-playbooks"></a>使用工作簿、规则和 playbook 监视 Azure Sentinel
+
+使用 Azure Sentinel 自己的功能来监视 Azure Sentinel 中发生的事件和操作。
+
+- 使用工作簿进行监视。 已生成以下工作簿来监视工作区活动：
+
+    - 工作区审核。 包括的信息涉及环境中的哪些用户正在执行操作、他们执行了哪些操作，等等。
+    - 分析效率。 了解在使用哪些分析规则、哪些 MITRE 技巧最受青睐，以及从规则中生成哪些事件。
+    - 安全操作效率。 提供 SOC 团队绩效、已打开事件、已关闭事件等方面的指标。 此工作簿可用于显示团队绩效，并突出显示任何可能缺少的需要注意的方面。
+    - 数据收集运行状况监视。 帮助监视是否有已停滞的或已停止的引入。 
+
+    有关详细信息，请参阅[常用的 Azure Sentinel 工作簿](top-workbooks.md)。
+
+- 监视引入延迟。  如果担心引入延迟，请[在分析规则中设置一个变量](https://techcommunity.microsoft.com/t5/azure-sentinel/handling-ingestion-delay-in-azure-sentinel-scheduled-alert-rules/ba-p/2052851)来表示延迟。 
+
+    例如，以下分析规则有助于确保结果不包含重复项，并且在运行规则时日志不会缺失：
+
+    ```kusto
+    let ingestion_delay= 2min;let rule_look_back = 5min;CommonSecurityLog| where TimeGenerated >= ago(ingestion_delay + rule_look_back)| where ingestion_time() > (rule_look_back)
+    -   Calculating ingestion delay
+    CommonSecurityLog| extend delay = ingestion_time() - TimeGenerated| summarize percentiles(delay,95,99) by DeviceVendor, DeviceProduct
+    ```
+
+    有关详细信息，请参阅[在 Azure Sentinel 中使用自动化规则自动处理事件](automate-incident-handling-with-automation-rules.md)。
+
+- 使用[连接器运行状况推送通知解决方案](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Send-ConnectorHealthStatus) playbook 监视数据连接器运行状况，看是否有已停滞的或已停止的引入，并在连接器停止收集数据或计算机停止报告时发送通知。
+
 ## <a name="next-steps"></a>后续步骤
 
 在 Azure Sentinel 中，使用“工作区审核”工作簿审核 SOC 环境中的活动。
 
-有关详细信息，请参阅[教程：可视化和监视数据](tutorial-monitor-your-data.md)。
+有关详细信息，请参阅[可视化和监视数据](monitor-your-data.md)。

@@ -1,18 +1,20 @@
 ---
 title: 映射数据流中的源转换
-description: 了解如何在映射数据流中设置源转换。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何在 Azure 数据工厂或 Azure Synapse Analytics 管道的映射数据流中设置源转换。
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/10/2021
-ms.openlocfilehash: 1001ef2e76d2d7c68d709cee52ecf75278766fe4
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 07/27/2021
+ms.openlocfilehash: ef2db7e11666c104215b29f298882cfe77631310
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110789672"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015538"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>映射数据流中的源转换
 
@@ -36,28 +38,37 @@ ms.locfileid: "110789672"
 
 ![显示已选择“内联”的屏幕截图。](media/data-flow/inline-selector.png "显示已选择“内联”的屏幕截图。")
 
+## <a name="workspace-db-synapse-workspaces-only"></a>工作区 DB（仅 Synapse 工作区）
+
+在 Azure Synapse 工作区的名为“```Workspace DB```”的数据流源转换中存在一个附加选项。 因此，你可以直接选取任何可用类型的工作区数据库作为源数据，无需额外的链接服务或数据集。
+
+> [!NOTE]
+> Azure Synapse 工作区 DB 连接器目前为公共预览版，只能与 Spark Lake 数据库配合使用
+
+![显示选定工作区 DB 的屏幕截图。](media/data-flow/syms-source.png "显示选定工作区 DB 的屏幕截图。")
+
 ##  <a name="supported-source-types"></a><a name="supported-sources"></a>受支持的源类型
 
 映射数据流遵循提取、加载和转换 (ELT) 方法，可与全部位于 Azure 中的过渡数据集结合使用。 目前，以下数据集可用于源转换。
 
 | 连接器 | 格式 | 数据集/内联 |
 | --------- | ------ | -------------- |
-| [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties)<br>[增量](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties) <br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br>✓/✓<br>✓/✓<br>✓/✓<br/>✓/-<br>✓/✓<br/>✓/-<br>✓/✓ |
+| [Azure Blob 存储](connector-azure-blob-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties)<br>[增量](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties) <br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br>✓/✓<br>✓/✓<br>✓/✓<br/>✓/✓<br>✓/✓<br/>✓/✓<br>✓/✓ |
 | [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
-| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br>✓/✓<br>✓/✓<br/>✓/-<br>✓/✓<br/>✓/-<br>✓/✓ |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[常见数据模型](format-common-data-model.md#source-properties)<br>[带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties)<br>[增量](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br/>-/✓<br>✓/✓<br>✓/✓<br>✓/✓<br>✓/-<br/>✓/✓<br/>✓/-<br>✓/✓ |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br>✓/✓<br>✓/✓<br/>✓/✓<br>✓/✓<br/>✓/✓<br>✓/✓ |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)<br>[常见数据模型](format-common-data-model.md#source-properties)<br>[带分隔符的文本](format-delimited-text.md#mapping-data-flow-properties)<br>[增量](format-delta.md)<br>[Excel](format-excel.md#mapping-data-flow-properties)<br>[JSON](format-json.md#mapping-data-flow-properties)<br>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties)<br>[XML](format-xml.md#mapping-data-flow-properties) | ✓/✓<br/>-/✓<br>✓/✓<br>✓/✓<br>✓/✓<br>✓/✓<br/>✓/✓<br/>✓/✓<br>✓/✓ |
 | [Azure Database for MySQL](connector-azure-database-for-mysql.md) |  | ✓/✓ |
 | [Azure Database for PostgreSQL](connector-azure-database-for-postgresql.md) |  | ✓/✓ |
 | [Azure SQL 数据库](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/✓ |
-| [Azure SQL 托管实例](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
-| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL 托管实例](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/✓ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/✓ |
 | [Hive](connector-hive.md#mapping-data-flow-properties) | | -/✓ |
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
 | [SQL Server](connector-sql-server.md) | | ✓/✓ |
 
 特定于这些连接器的设置位于“源选项”选项卡上。有关这些设置的信息和数据流脚本示例位于连接器文档中。
 
-Azure 数据工厂可以访问 [90 多个原生连接器](connector-overview.md)。 若要将其他这些源中的数据包含到你自己的数据流中，请使用复制活动将该数据加载到其中一个受支持的暂存区域。
+Azure 数据工厂和 Synapse 管道可以访问超过 [90 个原生连接器](connector-overview.md)。 若要将其他这些源中的数据包含到你自己的数据流中，请使用复制活动将该数据加载到其中一个受支持的暂存区域。
 
 ## <a name="source-settings"></a>源设置
 
@@ -73,11 +84,11 @@ Azure 数据工厂可以访问 [90 多个原生连接器](connector-overview.md)
 
 **测试连接**：测试数据流的 Spark 服务是否可以成功连接到源数据集中使用的链接服务。 要启用此功能，必须打开调试模式。
 
-**架构偏差**：[架构偏差](concepts-data-flow-schema-drift.md)是数据工厂的功能，可在本机处理数据流中的灵活架构，而无需显式定义列更改。
+架构偏差：[架构偏差](concepts-data-flow-schema-drift.md)是指在无需显式定义列更改的情况下，服务在数据流中以原生方式处理灵活架构的能力。
 
 * 如果源列经常更改，请选择“允许架构偏差”复选框。 此设置可让所有传入的源字段通过转换流向接收器。
 
-* 选择“推断偏移列类型”指示数据工厂检测并定义发现的每个新列的数据类型。 关闭此功能后，所有偏移列都将为字符串类型。
+* 选择“推断偏移列类型”会指示服务检测并定义发现的每个新列的数据类型。 关闭此功能后，所有偏移列都将为字符串类型。
 
 **验证架构：** 如果选择“验证架构”，那么如果传入的源数据与数据集定义的架构不匹配，数据流将无法运行。
 
@@ -100,7 +111,7 @@ Azure 数据工厂可以访问 [90 多个原生连接器](connector-overview.md)
 
 ![显示“投影”选项卡上的设置的屏幕截图。](media/data-flow/source3.png "显示“投影”选项卡上的设置的屏幕截图。")
 
-如果文本文件未定义架构，请选择“检测数据类型”，这样数据工厂将采样并推断数据类型。 选择“定义默认格式”以自动检测默认数据格式。
+如果文本文件没有定义的架构，请选择“检测数据类型”，以便服务采样并推断数据类型。 选择“定义默认格式”以自动检测默认数据格式。
 
 “重置架构”将投影重置为在引用的数据集中定义的投影。
 
@@ -116,7 +127,7 @@ Azure 数据工厂可以访问 [90 多个原生连接器](connector-overview.md)
 
 “优化”选项卡允许在每个转换步骤编辑分区信息。 在大多数情况下，“使用当前分区”会针对源的理想分区结构进行优化。
 
-如果要从 Azure SQL 数据库源读取数据，自定义源分区可能会以最快的速度读取数据。 数据工厂将通过建立与数据库的并行连接来读取大型查询。 此源分区可在列上完成，也可使用查询来完成。
+如果要从 Azure SQL 数据库源读取数据，自定义源分区可能会以最快的速度读取数据。 服务会通过建立与数据库的并行连接来读取大型查询。 此源分区可在列上完成，也可使用查询来完成。
 
 ![显示“源”分区设置的屏幕截图。](media/data-flow/sourcepart3.png "显示“源”分区设置的屏幕截图。")
 

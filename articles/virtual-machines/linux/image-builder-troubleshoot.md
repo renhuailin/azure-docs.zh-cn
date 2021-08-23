@@ -1,24 +1,34 @@
 ---
 title: 排查 Azure 映像生成器服务的问题
 description: 排查在使用 Azure VM 映像生成器服务时遇到的常见问题和错误
-author: cynthn
-ms.author: danis
+author: kof-f
+ms.author: kofiforson
+ms.reviewer: cynthn
 ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.collection: linux
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 85296a7b7de8e1bce03d39ab8c96c8444fe1dffb
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 91b60204c8fddd892fbaacf00a7588cf1a64854d
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111440945"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180359"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>排查 Azure 映像生成器服务的问题
-
 本文有助于排查和解决在使用 Azure 映像生成器服务时可能会遇到的常见问题。
+
+## <a name="prerequisites"></a>先决条件
+创建版本时，请确保版本满足以下先决条件：
+    
+- 映像生成器服务使用 WinRM 或 SSH 与生成 VM 通信，请勿在生成过程中禁用这些设置。
+- 映像生成器会在生成过程中创建资源，请确认 Azure Policy 不会阻止 AIB 创建或使用必要的资源。
+  - 创建 IT_ 资源组
+  - 创建不带防火墙的存储帐户
+- 验证 Azure Policy 未在生成 VM 上安装意外功能（例如 Azure 扩展）。
+-   确保映像生成器具有读取/写入映像和连接到 Azure 存储的相应权限。 请查看 [CLI](./image-builder-permissions-cli.md) 或 [PowerShell](./image-builder-permissions-powershell.md) 的权限文档。
+- 如果脚本/内嵌命令失败并出现错误（非零退出代码），映像生成器的生成会失败，请确保已测试并验证自定义脚本在运行时无错误（退出代码为 0），否则需要用户输入。 有关详细信息，请参阅[此文档](../windows/image-builder-virtual-desktop.md#tips-for-building-windows-images)。
 
 AIB 故障可能会出现在 2 个方面：
 - 映像模板提交

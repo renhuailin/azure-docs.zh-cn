@@ -2,7 +2,6 @@
 title: 配置 API 代理模块 - Azure IoT Edge | Microsoft Docs
 description: 了解如何针对 IoT Edge 网关层次结构自定义 API 代理模块。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 11/10/2020
 ms.topic: conceptual
@@ -12,25 +11,24 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: f55c3a1f699f8a087eb97eaba347a3f21c124cc9
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 100d67f30066b74fdcd6e70cfc714be7f7ee5ccd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307310"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750802"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>配置适用于网关层次结构方案的 API 代理模块（预览版）
 
 [!INCLUDE [iot-edge-version-202011](../../includes/iot-edge-version-202011.md)]
 
-API 代理模块允许 IoT Edge 设备通过网关发送 HTTP 请求，而不是直接连接到云服务。 本文将介绍配置选项，以便你可以自定义该模块以满足网关层次结构要求。
+本文介绍了 API 代理模块的配置选项，以便你可以自定义模块以支持网关层次结构要求。
 
->[!NOTE]
->此功能要求运行 Linux 容器的 IoT Edge 1.2 版本，该版本为公共预览版。
+API 代理模块在部署多个服务（都支持 HTTPS 协议并绑定到端口 443）时简化了 IoT Edge 设备的通信。 这在基于 ISA-95 的网络隔离体系结构（如[网络隔离下游设备](how-to-connect-downstream-iot-edge-device.md#network-isolate-downstream-devices)中所述）的 IoT Edge 设备的分层部署中尤其重要，因为子设备上的客户端无法直接连接到云。
 
-在某些网络体系结构中，网关后面的 IoT Edge 设备无法直接访问云。 尝试连接到云服务的任何模块都将失败。 API 代理模块将模块连接重新路由到各层网关层次结构，从而支持此配置中的下游 IoT Edge 设备。 它提供了一种安全方法，使客户端可通过 HTTPS 与多个服务通信，无需创建隧道，而是终止每一层的连接。 API 代理模块充当网关层次结构中 IoT Edge 设备之间的代理模块，直到它们到达顶层的 IoT Edge 设备。 此时，在顶层的 IoT Edge 设备上运行的服务将处理这些请求，API 代理模块将代理通过单个端口从本地服务到云中的所有 HTTP 流量。
+例如，若要允许子 IoT Edge 设备拉取 Docker 映像，需要部署 Docker 注册表模块。 若要允许上传 blob，需要在同一 IoT Edge 设备上部署 Azure Blob 存储模块。 这两个服务都使用 HTTPS 进行通信。 API 代理会在 IoT Edge 设备上启用此类部署。 API 代理模块不是绑定到每个服务，而是绑定到主机设备上的 443 端口，并根据可供用户配置的规则将请求路由到该设备上运行的相应服务模块。 各个服务仍负责处理请求，包括对客户端进行身份验证和授权。
 
-API 代理模块可以为网关层次结构启用多种方案，包括允许较低层的设备拉取容器映像或将 blob 推送到存储。 可通过配置代理规则来定义数据的路由方式。 本文讨论了几种常见的配置选项。
+如果没有 API 代理，每个服务模块都必须绑定到主机设备上的独立端口，这就需要在连接到父 IoT Edge 设备的每个子设备上进行繁琐且容易出错的配置更改。
 
 ## <a name="deploy-the-proxy-module"></a>部署代理模块
 

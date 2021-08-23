@@ -11,30 +11,32 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/12/2021
+ms.date: 07/13/2021
 ms.author: yelevin
-ms.openlocfilehash: d8f7fff97a92a98fbcd0198ce601c88df914d9e2
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8c9206404294557f3f4a50d03ae550e407b92ed3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110471477"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751793"
 ---
 # <a name="threat-intelligence-integration-in-azure-sentinel"></a>Azure Sentinel 中的威胁情报集成
 
-> [!IMPORTANT]
-> Azure Sentinel 中的威胁情报数据连接器目前处于公共预览版阶段。
-> 此功能不附带服务级别协议，不建议将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+Azure Sentinel 可让你通过几种不同的方式[使用威胁情报源](work-with-threat-indicators.md)来增强安全分析师检测和优先处理已知威胁的能力。 
 
-Azure Sentinel 可让你通过几种不同的方式[使用威胁情报源](import-threat-intelligence.md)来增强安全分析师检测和优先处理已知威胁的能力。 
-
-你可以使用众多可用的集成式威胁情报平台 (TIP) 产品之一，可以连接到 TAXII 服务器以利用任何 STIX 兼容的威胁情报源，还可以利用任何可直接与 [Microsoft Graph Security tiIndicators API](/graph/api/resources/tiindicator) 通信的自定义解决方案。
+你可以使用众多可用的集成式[威胁情报平台 (TIP) 产品](connect-threat-intelligence-tip.md)之一，可以[连接到 TAXII 服务器](connect-threat-intelligence-taxii.md)以利用任何与 STIX 兼容的威胁情报源，还可以利用任何可直接与 [Microsoft Graph Security tiIndicators API](/graph/api/resources/tiindicator) 通信的自定义解决方案。 
 
 此外，还可以从 playbook 连接到威胁情报源，以使用有助于引导完成调查和响应操作的 TI 信息来扩充事件。
 
+> [!TIP]
+> 如果同一租户中有多个工作区，例如针对[托管服务提供商 (MSSP)](mssp-protect-intellectual-property.md)的工作区，则仅将威胁指标连接到集中式工作区可能更具成本效益。
+>
+> 将同一组威胁指标导入到每个单独的工作区时，可以运行跨工作区查询以聚合整个工作区的威胁指标。 在 MSSP 事件检测、调查和搜寻体验中关联这些指标。
+>
+
 ## <a name="taxii-threat-intelligence-feeds"></a>TAXII 威胁情报源
 
-若要连接到 TAXII 威胁情报源，请将[威胁情报 - TAXII](connect-threat-intelligence.md#connect-azure-sentinel-to-taxii-servers) 数据连接器与下面链接的每个供应商提供的数据配合使用。 你可能需要直接联系供应商来获取与连接器配合使用的必要数据。
+若要连接到 TAXII 威胁情报源，请结合使用下面链接的每个供应商提供的数据，按说明[将 Azure Sentinel 连接到 STIX/TAXII 威胁情报源](connect-threat-intelligence-taxii.md)。 你可能需要直接联系供应商来获取与连接器配合使用的必要数据。
 
 ### <a name="anomali-limo"></a>Anomali Limo
 
@@ -69,7 +71,7 @@ Azure Sentinel 可让你通过几种不同的方式[使用威胁情报源](impor
 
 ## <a name="integrated-threat-intelligence-platform-products"></a>集成式威胁情报平台产品
 
-若要连接到威胁情报平台 (TIP) 源，请按照说明[将威胁情报平台源连接到 Azure Sentinel](connect-threat-intelligence.md#connect-azure-sentinel-to-your-threat-intelligence-platform)。 这些说明的第二部分要求你在 TIP 解决方案中输入信息。 有关详细信息，请参阅以下链接。
+若要连接到威胁情报平台 (TIP) 源，请按说明[将威胁情报平台连接到 Azure Sentinel](connect-threat-intelligence-tip.md)。 这些说明的第二部分要求你在 TIP 解决方案中输入信息。 有关详细信息，请参阅以下链接。
 
 ### <a name="agari-phishing-defense-and-brand-protection"></a>Agari Phishing Defense 和 Agari Brand Protection
 
@@ -85,7 +87,7 @@ Azure Sentinel 可让你通过几种不同的方式[使用威胁情报源](impor
 
 ### <a name="eclecticiq-platform"></a>EclecticIQ 平台
 
-- 详细了解 [EclecticIQ Platform](https://www.eclecticiq.com/platform/)。
+- EclecticIQ 平台与 Azure Sentinel 集成以增强威胁检测、搜寻和响应功能。 详细了解此双向集成的[优势和用例](https://www.eclecticiq.com/resources/azure-sentinel-and-eclecticiq-intelligence-center)。
 
 ### <a name="groupib-threat-intelligence-and-attribution"></a>GroupIB Threat Intelligence and Attribution
 
@@ -128,7 +130,7 @@ Azure Sentinel 可让你通过几种不同的方式[使用威胁情报源](impor
 
 ### <a name="reversinglabs-titaniumcloud"></a>ReversingLabs TitaniumCloud
 
-- 在 Azure Sentinel [GitHub 存储库](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks/Enrich-SentinelIncident-ReversingLabs-File-Information)中查找并启用用于 [ReversingLabs](https://www.reversinglabs.com/products/file-reputation-service) 的事件扩充 playbook。
+- 在 Azure Sentinel [GitHub 存储库](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/ReversingLabs/Playbooks/Enrich-SentinelIncident-ReversingLabs-File-Information)中查找并启用用于 [ReversingLabs](https://www.reversinglabs.com/products/file-reputation-service) 的事件扩充 playbook。
 - 参阅 ReversingLabs Intelligence 逻辑应用[连接器文档](/connectors/reversinglabsintelligence/)。
 
 ### <a name="riskiq-passive-total"></a>RiskIQ Passive Total
@@ -146,5 +148,5 @@ Azure Sentinel 可让你通过几种不同的方式[使用威胁情报源](impor
 
 本文档介绍了如何将威胁情报连接到 Azure Sentinel。 若要详细了解 Azure Sentinel，请参阅以下文章。
 
-- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
-- 开始[使用 Azure Sentinel 检测威胁](./tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](./detect-threats-built-in.md)。

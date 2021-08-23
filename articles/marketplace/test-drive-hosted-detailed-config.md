@@ -6,23 +6,23 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 11/06/2020
-ms.openlocfilehash: 88779f67a2fa9b18f0177a1459b32c672343bb57
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 04/20/2021
+ms.openlocfilehash: d3458d456793a3853fc2277bc1443c6fdfbc5865
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96462947"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122068333"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>托管体验版的详细配置
 
-本文介绍如何为 Dynamics 365 for Customer Engagement 或 Dynamics 365 for Operations 配置托管体验版。
+本文介绍如何为 Dynamics 365 for Customer Engagement & Power Apps 或 Dynamics 365 for Operations 配置托管体验版。
 
-## <a name="configure-for-dynamics-365-customer-engagement"></a>为 Dynamics 365 Customer Engagement 配置
+## <a name="configure-for-dynamics-365-customer-engagement--power-apps"></a>针对 Dynamics 365 Customer Engagement & Power Apps 进行配置
 
-1. 登录[合作伙伴中心](https://partner.microsoft.com/)。
+1. 登录到[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165507)。
 2. 如果无法访问上述链接，则需要在[此处](https://appsource.microsoft.com/partners/list-an-app)提交请求以发布应用程序。 查看请求后，你将获得访问权限以开始发布过程。
-3. 查找现有的 Dynamics 365 for Customer Engagement 产品/服务，或创建一个新的。
+3. 查找现有的 Dynamics 365 for Customer Engagement & Power Apps 产品/服务，或创建一个新的 Dynamics 365 for Customer Engagement & Power Apps 产品/服务。
 4. 选中“启用体验版”复选框并选择一种“体验版类型”（参阅下面的项目符号），然后选择“保存”。
 
     [![选中“启用体验版”复选框。](media/test-drive/enable-test-drive-check-box.png)](media/test-drive/enable-test-drive-check-box.png#lightbox)
@@ -36,15 +36,29 @@ ms.locfileid: "96462947"
 
     - **最大并发体验版数** - 可以同时运行活动体验版的并发用户数。 当每个用户的体验版处于活动状态时，该用户将使用一个 Dynamics 许可证，因此，请确保至少有这么多的 Dynamics 许可证可供体验版用户使用。 建议有 3 到 5 个。
     - **体验版持续时间** - 用户的体验版将处于活动状态的小时数。 超过该时间后，将从租户中取消预配该用户。 建议为 2-24 小时，具体取决于应用的复杂性。 如果用户已耗尽时间并想要再次访问体验版，始终可以请求另一个体验版。
-    - **实例 URL** – 体验版用户启动体验版时将发送到的 URL。 通常情况下，这是 Dynamics 365 实例的 URL，应用和示例数据便安装在该实例上。 示例值：`https://testdrive.crm.dynamics.com`。
-    - **实例 Web API URL** - Dynamics 365 实例的 Web API URL。 登录到 Microsoft Dynamics 365 实例，并导航到“设置” > “自定义” > “开发人员资源” > “实例 Web API”，检索此值并复制此地址 (URL)   。 示例值：
+    - **实例 URL**
+        - 客户参与 - 一个 URL，体验版用户启动体验版时会被系统发送到该 URL。 通常情况下，这是 Dynamics 365 实例的 URL，应用和示例数据便安装在该实例上。 示例值：`https://testdrive.crm.dynamics.com`。
+        - 画布应用 (Power Apps)
+            1. 打开“PowerApps 门户”页并登录。
+            2. 选择“应用”，然后选择应用中的省略号。
+            4. 选择“详细信息”。
+            5. 从“详细信息”选项卡复制“Web 链接”：
 
-        :::image type="content" source="./media/test-drive/sample-web-api-url.png" alt-text="实例 Web API 的示例。":::
+                :::image type="content" source="./media/test-drive/testdrive-canvas-app.png" alt-text="显示“体验版画布应用”窗口。":::
 
-    - **角色名称** – 为体验版创建的自定义 Dynamics 365 安全角色的名称，也可以使用现有角色的名称。 新角色应具有为登录到 Customer Engagement 实例所需而添加到角色的最低特权。 请参阅[登录到 Microsoft Dynamics 365 所需的最低特权](https://community.dynamics.com/crm/b/crminogic/archive/2016/11/24/minimum-privileges-required-to-login-microsoft-dynamics-365) 这是在用户使用体验版期间为其分配的角色。 示例值：`testdriverole`。
+    - 实例 Web API URL
+        - 客户参与 - Dynamics 365 实例的 Web API URL。 检索此值，方法是：登录到 Microsoft Dynamics 365 实例，选择“设置” > “自定义” > “开发人员资源” > “实例 Web API”，然后复制地址 (URL)。 示例值：
+
+            :::image type="content" source="./media/test-drive/sample-web-api-url.png" alt-text="实例 Web API 的示例。":::
+
+        - 画布应用 (Power Apps) - 如果不使用 CE/Dataverse 作为画布应用的后端，请使用 `https://localhost` 作为占位符。
+
+    - **角色名称**
+        - 客户参与 - 为体验版创建的自定义 Dynamics 365 安全角色的名称。你也可以使用现有的角色。 新角色应具有为登录到 Customer Engagement 实例所需而添加到角色的最低特权。 请参阅[登录到 Microsoft Dynamics 365 所需的最低特权](https://community.dynamics.com/crm/b/crminogic/archive/2016/11/24/minimum-privileges-required-to-login-microsoft-dynamics-365) 这是在用户使用体验版期间为其分配的角色。 示例值：`testdriverole`。
+        - 画布应用 (Power Apps) - 如果不使用 CE/Dataverse 作为后端数据源，请使用“NA”。
     
-        > [!IMPORTANT]
-        > 确保未添加安全组检查。 这样就可以将用户同步到 Customer Engagement 实例。
+    > [!IMPORTANT]
+    > 确保未添加安全组检查。 这样就可以将用户同步到 Customer Engagement 实例。
 
     - **Azure Active Directory 租户 ID** - Dynamics 365 实例的 Azure 租户 ID。 若要检索此值，请登录到 Azure 门户并导航到“Azure Active Directory” > “属性”，然后复制目录 ID 。 示例值：172f988bf-86f1-41af-91ab-2d7cd01112341。
     - **Azure Active Directory 租户名称** - Dynamics 365 实例的 Azure 租户的名称。 使用格式 `<tenantname>.onmicrosoft.com`。 示例值：`testdrive.onmicrosoft.com`。
@@ -61,9 +75,10 @@ ms.locfileid: "96462947"
 
 ## <a name="configure-for-dynamics-365-operations"></a>为 Dynamics 365 Operations 配置
 
+1. 登录到[合作伙伴中心](https://go.microsoft.com/fwlink/?linkid=2165507)。
 2. 如果无法访问上述链接，则需要在[此处](https://appsource.microsoft.com/partners/list-an-app)提交请求以发布应用程序。 查看请求后，你将获得访问权限以开始发布过程。
 3. 查找现有的 Dynamics 365 for Operations 产品/服务，或创建一个新的。
-4. 选中“启用体验版”复选框并选择一种“体验版类型”（参阅下面的项目符号），然后选择“保存”。
+4. 选中“启用体验版”复选框并选择一种“体验版类型”（参阅下面的项目符号），然后选择“保存草稿”。
 
     [![选中“启用体验版”复选框。](media/test-drive/enable-test-drive-check-box-operations.png)](media/test-drive/enable-test-drive-check-box-operations.png#lightbox)
 

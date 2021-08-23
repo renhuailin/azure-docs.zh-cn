@@ -2,25 +2,24 @@
 title: 在 Azure 中连接 BareMetal 基础结构实例
 description: 了解如何通过 Azure 门户或 Azure CLI 确定 BareMetal 实例并与其交互。
 ms.topic: how-to
-ms.subservice: workloads
-ms.date: 04/06/2021
-ms.openlocfilehash: 8f28579a83c45692e5d1eade2e4632ff8c1c8e42
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 07/13/2021
+ms.openlocfilehash: b9f5de92ed213d987c7dfac5b3e48f9b565bfff5
+ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139608"
+ms.lasthandoff: 07/14/2021
+ms.locfileid: "113767145"
 ---
 # <a name="connect-baremetal-infrastructure-instances-in-azure"></a>在 Azure 中连接 BareMetal 基础结构实例
 
-本文说明 [Azure 门户](https://portal.azure.com/)如何显示 [BareMetal 实例](concepts-baremetal-infrastructure-overview.md)。 本文还介绍了可以在 Azure 门户中通过已部署的 BareMetal 基础结构实例执行的操作。 
+本文将介绍在 [Azure 门户](https://portal.azure.com/)中使用已部署的 BareMetal 基础结构实例可以执行哪些操作。 
  
 ## <a name="register-the-resource-provider"></a>注册资源提供程序
-用于 BareMetal 实例的 Azure 资源提供程序提供了 Azure 门户中实例的可见性。 默认情况下，用于 BareMetal 实例部署的 Azure 订阅将注册 BareMetalInfrastructure 资源提供程序。 如果你看不到已部署的 BareMetal 实例，则必须将资源提供程序注册到订阅。 
+使用用于 BareMetal 实例的 Azure 资源提供程序可以查看 Azure 门户中的实例。 默认情况下，用于 BareMetal 实例部署的 Azure 订阅将注册 BareMetalInfrastructure 资源提供程序。 如果你看不到已部署的 BareMetal 实例，请将资源提供程序注册到订阅。 
 
-可以通过使用 Azure 门户或 Azure CLI 来注册 BareMetal 实例资源提供程序。
+可以使用 Azure 门户或 Azure 命令行界面 (CLI) 来注册 BareMetal 实例资源提供程序。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
  
 需要在 Azure 门户中列出你的订阅，然后双击用于部署 BareMetal 实例的订阅。
  
@@ -59,11 +58,11 @@ az provider register --namespace Microsoft.BareMetalInfrastructure
 
 ## <a name="baremetal-instances-in-the-azure-portal"></a>Azure 门户中的 BareMetal 实例
  
-提交 BareMetal 实例部署请求时，需要指定要连接到 BareMetal 实例的 Azure 订阅。 使用你用于部署适用于 BareMetal 实例的应用程序层的同一订阅。
+提交 BareMetal 实例部署请求时，请指定要连接到 BareMetal 实例的 Azure 订阅。 使用你用于部署适用于 BareMetal 实例的应用程序层的同一订阅。
  
-在 BareMetal 实例的部署过程中，将在部署请求中使用的 Azure 订阅中创建新的 [Azure 资源组](../azure-resource-manager/management/manage-resources-portal.md)。 这个新资源组会列出你已在该订阅中部署的所有 BareMetal 实例。
+在部署 BareMetal 实例时，将在你已在部署请求中使用过的 Azure 订阅中创建新的 [Azure 资源组](../azure-resource-manager/management/manage-resources-portal.md)。 这个新资源组会列出你已在该订阅中部署的所有 BareMetal 实例。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 Azure 门户的 BareMetal 订阅中，选择“资源组”。
  
@@ -104,7 +103,7 @@ az baremetalinstance list --resource-group DSM05A-T550 –output table
  
 :::image type="content" source="media/connect-baremetal-infrastructure/view-attributes-single-baremetal-instance.png" alt-text="屏幕截图显示单个实例的 BareMetal 实例属性。" lightbox="media/connect-baremetal-infrastructure/view-attributes-single-baremetal-instance.png":::
  
-映像中的属性与 Azure 虚拟机 (VM) 属性看起来没什么不同。 在左侧，将看到资源组、Azure 区域和订阅名称及 ID。 如果分配了标记，则还会在此处看到它们。 默认情况下，BareMetal 实例没有分配标记。
+映像中的属性与 Azure 虚拟机 (VM) 属性看起来没什么不同。 在左侧，将看到资源组、Azure 区域和订阅名称及 ID。 如果分配了标记，则也会在此处看到标记。 默认情况下，BareMetal 实例没有分配标记。
  
 在右侧，将看到 BareMetal 实例的名称、操作系统 (OS)、IP 地址和显示 CPU 线程数和内存的 SKU。 还会看到电源状态和硬件版本（BareMetal 实例标记的修订）。 电源状态指示硬件设备是开机还是关机。 但是，操作系统详细信息并不指明它是否已启动并正在运行。
  
@@ -120,7 +119,7 @@ az baremetalinstance list --resource-group DSM05A-T550 –output table
 >Rev 4.2 是使用现有 Rev 4 体系结构的最新更名 BareMetal 基础结构。 Rev 4 更接近于 Azure 虚拟机 (VM) 主机。 它大大降低了 Azure VM 与 SAP HANA 实例之间的网络延迟。 可以通过 Azure 门户访问和管理 BareMetal 实例。 有关详细信息，请参阅 [Azure 上的 BareMetal 基础结构](concepts-baremetal-infrastructure-overview.md)。
 
  
-此外，在右侧，还会发现 [Azure 邻近放置组](../virtual-machines/co-location.md)的名称，该名称是自动为每个已部署的 BareMetal 实例创建的。 在部署用于托管应用程序层的 Azure VM 时，引用邻近放置组。 使用与 BareMetal 实例关联的邻近放置组时，请确保将 Azure VM 部署到靠近 BareMetal 实例的位置。
+此外，在右侧，还会发现 [Azure 邻近放置组](../virtual-machines/co-location.md)的名称。 该放置组名称是自动为每个已部署的 BareMetal 实例创建的。 在部署用于托管应用程序层的 Azure VM 时，引用邻近放置组。 使用与 BareMetal 实例关联的邻近放置组可确保将 Azure VM 部署到靠近 BareMetal 实例的位置。
  
 >[!TIP]
 >要在与修订版 4.x 相同的 Azure 数据中心中查找应用程序层，请参阅[用于最大程度地降低网络延迟的 Azure 邻近放置组](../virtual-machines/workloads/sap/sap-proximity-placement-scenarios.md)。
@@ -143,7 +142,7 @@ az baremetalinstance show --resource-group DSM05A-T550 --instance-name orcllabds
  
 :::image type="content" source="media/connect-baremetal-infrastructure/check-activities-single-baremetal-instance.png" alt-text="屏幕截图显示 BareMetal 实例活动。" lightbox="media/connect-baremetal-infrastructure/check-activities-single-baremetal-instance.png":::
  
-在 Azure 中对实例的元数据进行的更改也会记录在活动日志中。 除了启动重启之外，还可以看到“写入 BareMetallnstances”的活动。 此活动不会对 BareMetal 实例本身进行任何更改，但是会在 Azure 中记录对单元元数据的更改。
+在 Azure 中对实例的元数据进行的更改也会记录在活动日志中。 除了重启之外，还可以看到“写入 BareMetalInstances”活动。 此活动不会对 BareMetal 实例本身进行任何更改，但是会在 Azure 中记录对单元元数据的更改。
  
 记录的另一个活动是向实例添加或删除[标记](../azure-resource-manager/management/tag-resources.md)。
  
@@ -153,7 +152,7 @@ az baremetalinstance show --resource-group DSM05A-T550 --instance-name orcllabds
  
 可以将 Azure 标记添加到 BareMetal 实例，也可以将其删除。 标记的分配方式就像为 VM 分配标记一样。 和 VM 一样，标记存在于 Azure 元数据中。 标记对 BareMetal 实例的限制与对 VM 的限制相同。
  
-删除标记的方式也与 VM 相同。 对标记的应用和删除信息会在 BareMetal 实例的活动日志中列出。
+删除标记的方式也与 VM 相同。 应用和删除标记的操作都会在 BareMetal 实例的活动日志中列出。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -175,9 +174,16 @@ az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllab
 
 ## <a name="check-properties-of-an-instance"></a>检查实例的属性
  
-获取实例时，可以通过“属性”部分查看收集的有关实例的数据。 收集的数据包括 Azure 连接、存储后端、ExpressRoute 线路 ID、唯一的资源 ID 和订阅 ID。 你将在支持请求或设置存储快照配置时使用此信息。
+获取实例时，可以通过“属性”部分查看收集的有关实例的数据。 收集的数据包括：
+- Azure 连接性
+- 存储后端
+- ExpressRoute 线路 ID
+- 唯一的资源 ID
+- 订阅 ID。 
+
+你将在支持请求或设置存储快照配置时使用此信息。
  
-你将看到的另一条关键信息是存储 NFS IP 地址。 它将你的存储隔离到 BareMetal 实例堆栈中的“租户”。 在编辑[存储快照备份的配置文件](../virtual-machines/workloads/sap/hana-backup-restore.md#set-up-storage-snapshots)时，将使用此 IP 地址。
+你将看到的另一条关键信息是存储 NFS IP 地址。 它将你的存储隔离到 BareMetal 实例堆栈中的“租户”。 编辑[配置 Azure 应用程序一致性快照工具](../azure-netapp-files/azacsnap-cmd-ref-configure.md)时，将使用此 IP 地址。
  
 :::image type="content" source="media/connect-baremetal-infrastructure/baremetal-instance-properties.png" alt-text="屏幕截图显示 BareMetal 实例的属性设置。" lightbox="media/connect-baremetal-infrastructure/baremetal-instance-properties.png":::
  
@@ -241,6 +247,7 @@ az baremetalinstance restart --resource-group DSM05a-T550 --instance-name orclla
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解工作负荷：
+详细了解 BareMetal 基础结构的工作负荷。
 
-- [什么是 Azure 上的 SAP HANA（大型实例）？](../virtual-machines/workloads/sap/hana-overview-architecture.md)
+> [!div class="nextstepaction"]
+> [什么是 Azure 上的 SAP HANA（大型实例）？](../virtual-machines/workloads/sap/hana-overview-architecture.md)

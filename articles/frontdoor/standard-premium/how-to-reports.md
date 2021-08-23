@@ -2,17 +2,17 @@
 title: Azure Front Door 标准版/高级版（预览版）报告
 description: 本文介绍 Azure Front Door 中报告功能的工作原理。
 services: frontdoor
-author: duongau
+author: jessie-jyy
 ms.service: frontdoor
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 07/07/2021
 ms.author: yuajia
-ms.openlocfilehash: 9670d8204d04fc770bf3fe98a270a3f6ccbf234b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e43bf01be44c8d82bb8b5f9d466552fc9d7ad17
+ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101098804"
+ms.lasthandoff: 07/10/2021
+ms.locfileid: "113594996"
 ---
 # <a name="azure-front-door-standardpremium-preview-reports"></a>Azure Front Door 标准版/高级版（预览版）报告
 
@@ -84,7 +84,7 @@ Azure Front Door 标准版/高级版分析报告提供一个内置的全方位�
 
         始终可以使用“聚合”来更改默认聚合粒度。 注意：“5 分钟”不适用于超过 14 天的数据范围。 
 
-    1. **位置** - 按国家/地区选择单个或多个客户端位置。 国家/地区分为六个区域：北美、亚洲、欧洲、非洲、大洋洲和南美洲。 请参阅[区域或国家/地区映射](https://en.wikipedia.org/wiki/Subregion)。 默认情况下，所有国家/地区均处于选中状态。
+    1. 位置 - 按国家/地区选择单个或多个客户端位置。 国家/地区分为六个区域：北美、亚洲、欧洲、非洲、大洋洲和南美洲。 请参阅[国家/地区映射](https://en.wikipedia.org/wiki/Subregion)。 默认情况下，所有国家/地区均处于选中状态。
     
         :::image type="content" source="../media/how-to-reports/front-door-reports-dimension-locations.png" alt-text="位置维度报告的屏幕截图。":::
    
@@ -152,15 +152,15 @@ Azure Front Door 标准版/高级版分析报告提供一个内置的全方位�
 
 ## <a name="traffic-by-location"></a>流量(按位置)
 
-此报告按国家/地区显示访问者最常访问你的资产的前 50 个位置。 此报告还提供按国家/地区显示的指标明细，并提供生成最多流量的国家/地区的总体视图。 最后，你可以看到哪个国家/地区具有更高的缓存命中率或 4XX/5XX 错误代码。
+此报告按国家/地区显示最常访问你资产的访问者所在的前 50 个位置。 此报告还提供按国家/地区显示的指标明细，并提供产生最多流量的国家/地区的总体视图。 最后，你可以看到哪个国家/地区具有更高的缓存命中率或 4XX/5XX 错误代码。
 
 :::image type="content" source="../media/how-to-reports/front-door-reports-by-location.png" alt-text="位置报告的屏幕截图" lightbox="../media/how-to-reports/front-door-reports-by-location-expanded.png":::
 
 报告中包含以下内容：
 
-* 按所选的已传输数据量或请求数显示的前 50 个国家/地区的世界地图视图。
-* 按所选的已传输数据量或请求数显示的前五个国家/地区的两个折线图趋势视图。 
-* 一个网格，其中包含热门国家/地区以及相应的从 AFD 传输到客户端的数据量、已传输数据量占所有国家/地区的百分比、请求数、请求数占所有国家/地区的百分比、缓存命中率、4XX 响应代码和 5XX 响应代码。
+* 按所选的已传出数据量或请求数列出的前 50 个国家/地区的世界地图视图。
+* 按所选的已传出数据量或请求数列出的前五个国家/地区的两个折线图趋势视图。 
+* 一个网格，其中包含热门国家/地区以及从 AFD 传出到客户端的相应数据量、已传出数据量在所有国家/地区中的百分比、请求数、请求数在所有国家/地区中的百分比、缓存命中率、4XX 响应代码和 5XX 响应代码。
 
 ## <a name="caching"></a>Caching
 
@@ -259,7 +259,7 @@ Azure Front Door 标准版/高级版分析报告提供一个内置的全方位�
 | 事件数(按规则组) | 按规则组分布的 WAF 请求数的圆环图。 |
 | 请求数(按操作) | 按操作显示的请求数表，按降序排列。 |
 | 请求数(按热门规则 ID) | 按前 50 个规则 ID 显示的请求数表，按降序排列。 |
-| 请求数(按热门国家/地区) |  按前 50 个国家/地区显示的请求数表，按降序排列。 |
+| 请求数(按热门国家/地区) |  按前 50 个国家/地区列出的请求数表，按降序排列。 |
 | 请求数(按热门客户端 IP) |  按前 50 个 IP 显示的请求数表，按降序排列。 |
 | 请求数(按热门请求 URL) |  按前 50 个 URL 显示的请求数表，按降序排列。 |
 | 请求数(按热门主机名) | 按前 50 个主机名显示的请求数表，按降序排列。 |
@@ -281,7 +281,7 @@ Azure Front Door 标准版/高级版分析报告提供一个内置的全方位�
 | 开始时间 UTC | 生成报告的日期范围的开始时间，采用协调世界时 (UTC) |
 | 结束时间 UTC | 生成报告的日期范围的结束时间，采用协调世界时 (UTC) |
 | 生成时间 UTC | 生成报告的日期和时间，采用协调世界时 (UTC) |
-| 位置 | 发出客户端请求的国家/地区的列表。 默认情况下，该值为 ALL。 不适用于安全报告。 |
+| 位置 | 发起客户端请求的国家/地区列表。 默认情况下，该值为 ALL。 不适用于安全报告。 |
 | 协议 | HTTP 或 HTTPs 请求协议。 不适用于报告和安全报告中的“热门 URL”和“流量(按用户代理)”。 |
 | 聚合 | 每一行中数据聚合的粒度：每 5 分钟、每小时和每天。 不适用于报告和安全报告中的“流量(按域)”、“热门 URL”和“流量(按用户代理)”。 |
 
@@ -338,7 +338,7 @@ HTTP 状态代码报告。
 
 ### <a name="data-in-top-url"></a>“热门 URL”中的数据 
 
-* 代码 
+* URL 
 * TotalRequests 
 * 请求百分比 
 * 已传输数据量(字节) 

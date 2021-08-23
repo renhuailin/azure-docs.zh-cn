@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 了解 Azure 数字孪生如何使用自定义模型来描述环境中的实体。
 author: baanders
 ms.author: baanders
-ms.date: 3/12/2020
+ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f99309302c594d407a0d65d0ab61a8ece860695b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 8590f10f521841d0f483b82bd2e8e9e7d0b3528d
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082318"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253484"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>了解 Azure 数字孪生中的孪生模型
 
@@ -28,7 +28,7 @@ Azure 数字孪生的模型是使用数字孪生定义语言 (DTDL) 定义的。
 
 可以在 GitHub 中查看 DTDL 的完整语言规范：[数字孪生定义语言 (DTDL) - 版本 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
 
-DTDL 基于 JSON-LD，独立于编程语言。 DTDL 并非专用于 Azure 数字孪生，它还可用于表示 [IoT 即插即用](../iot-pnp/overview-iot-plug-and-play.md)等其他 IoT 服务中的设备数据。 Azure 数字孪生使用 DTDL **版本 2**（现在不建议在 Azure 数字孪生中使用 DTDL 版本 1）。 
+DTDL 基于 JSON-LD，独立于编程语言。 DTDL 并非专用于 Azure 数字孪生，它还可用于表示 [IoT 即插即用](../iot-develop/overview-iot-plug-and-play.md)等其他 IoT 服务中的设备数据。 Azure 数字孪生使用 DTDL **版本 2**（现在不建议在 Azure 数字孪生中使用 DTDL 版本 1）。 
 
 本文的余下内容总结了如何在 Azure 数字孪生中使用该语言。
 
@@ -94,6 +94,8 @@ DTDL 基于 JSON-LD，独立于编程语言。 DTDL 并非专用于 Azure 数字
 
 本部分详细介绍了 DTDL 模型中的属性和遥测 。
 
+有关可能出现在属性中的字段的完整列表，请参阅 [DTDL v2 规范中的属性](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#property)。有关可能出现在遥测中的字段的完整列表，请参阅 [DTDL v2 规范中的遥测](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#telemetry)。
+
 ### <a name="difference-between-properties-and-telemetry"></a>属性和遥测之间的差异
 
 下面是有关在概念上区分 Azure 数字孪生中 DTDL 属性和遥测的一些附加指导 。
@@ -152,11 +154,16 @@ DTDL 基于 JSON-LD，独立于编程语言。 DTDL 并非专用于 Azure 数字
 
 本部分详细介绍 DTDL 模型中的关系。
 
+有关可能出现在关系中的字段的完整列表，请参阅 [DTDL v2 规范中的关系](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#relationship)。
+
 ### <a name="basic-relationship-example"></a>基本关系示例
 
 下面是 DTDL 模型中关系的基本示例。 此示例展示了住宅模型上的关系，通过这种关系，住宅模型可以连接到楼层模型。
 
 :::code language="json" source="~/digital-twins-docs-samples-getting-started/models/basic-home-example/IHome.json" highlight="12-18":::
+
+>[!NOTE]
+>对于关系，`@id` 是一个可选字段。 如果未提供 `@id`，则数字孪生体接口处理器会分配一个。
 
 ### <a name="targeted-and-non-targeted-relationships"></a>目标和非目标关系
 
@@ -180,14 +187,18 @@ DTDL 还允许关系具有其自己的属性。 在 DTDL 模型中定义关系�
 
 本部分详细介绍 DTDL 模型中的组件。
 
+有关可能出现在组件中的字段的完整列表，请参阅 [DTDL v2 规范中的组件](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md#component)。
+
 ### <a name="basic-component-example"></a>基本组件示例
 
-下面是 DTDL 模型中组件的基本示例。 此示例演示使用恒温器组件的房间模型。
+下面是 DTDL 模型中组件的基本示例。 此示例演示使用恒温器模型作为组件的 Room 模型。
 
 :::code language="json" source="~/digital-twins-docs-samples-getting-started/models/advanced-home-example/IRoom.json" highlight="15-19, 28-41":::
 
-> [!NOTE]
-> 请注意，组件接口（恒温器组件）是在使用该接口的接口（房间）所在的同一数组中定义的。 必须以这种方式在 API 调用中定义组件才能找到该接口。
+如果此解决方案中的其他模型也应该包含恒温器，那么这些模型可以在自己的定义中引用相同的恒温器模型作为组件，就像 Room 所做的那样。
+
+> [!IMPORTANT]
+> 组件接口（上面示例中的恒温器）必须与任何使用它的接口（上面示例中的 Room）定义在同一个数组中，以便找到组件引用。
 
 ## <a name="model-inheritance"></a>模型继承
 
@@ -225,7 +236,7 @@ DTDL 还允许关系具有其自己的属性。 在 DTDL 模型中定义关系�
 
 ### <a name="model-uploader"></a>模型上传程序 
 
-完成创建、扩展或选择模型后，可以将其上传到 Azure 数字孪生实例，使其可在解决方案中使用。 可以根据操作指南：管理 DTDL 模型中所述，使用 [Azure 数字孪生 API](concepts-apis-sdks.md) 来执行此操作。
+完成创建、扩展或选择模型后，可以将其上传到 Azure 数字孪生实例，使其可在解决方案中使用。 可以按照[管理 DTDL 模型](how-to-manage-model.md#upload-models)中所述，使用 [Azure 数字孪生 API](concepts-apis-sdks.md) 来执行此操作。
 
 但如果你要上传很多模型，或者这些模型存在很多相互依赖关系，导致各个模型的上传顺序变得复杂，那么，你可以使用 [Azure 数字孪生模型上传程序示例](https://github.com/Azure/opendigitaltwins-tools/tree/master/ADTTools#uploadmodels)一次上传很多模型。 按照示例附带的说明，配置并使用此项目将模型上传到你自己的实例中。
 
@@ -235,9 +246,9 @@ DTDL 还允许关系具有其自己的属性。 在 DTDL 模型中定义关系�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何基于行业标准本体创建模型：概念：什么是本体？
+* 了解如何基于行业标准本体来创建模型：[什么是本体？](concepts-ontologies.md)
 
-* 深入了解如何通过 API 操作管理模型：[操作指南：管理 DTDL 模型](how-to-manage-model.md)
+* 更深入地了解如何通过 API 操作来管理模型：[管理 DTDL 模型](how-to-manage-model.md)
 
-* 了解如何使用模型来创建数字孪生：[概念：数字孪生和孪生图](concepts-twins-graph.md)。
+* 了解如何使用模型来创建数字孪生体：[数字孪生体和孪生体关系图](concepts-twins-graph.md)
 

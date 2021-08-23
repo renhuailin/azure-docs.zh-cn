@@ -8,12 +8,12 @@ ms.date: 2/11/2020
 ms.author: amgowda
 ms.service: container-service
 ms.subservice: confidential-computing
-ms.openlocfilehash: 280f75e8d18d16dd76d0730a90755774af34d6f6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 35bf2fc96f93d1eed2b15c4ea87aa1f2a3aaa0a5
+ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933570"
+ms.lasthandoff: 06/29/2021
+ms.locfileid: "113002881"
 ---
 # <a name="confidential-containers"></a>机密容器
 
@@ -59,7 +59,7 @@ ms.locfileid: "105933570"
 
 ### <a name="fortanix"></a>Fortanix
 
-[Fortanix](https://www.fortanix.com/) 允许开发人员选择门户和基于 CLI 的体验来引入容器化应用程序，并将其转换为支持 SGX 的机密容器，而无需修改或重新编译应用程序。 Fortanix 提供运行和管理最广泛应用程序集（包括现有的应用程序、新的 enclave 原生应用程序以及预打包的应用程序）所需的灵活性。 用户可以从[机密计算管理器](https://em.fortanix.com/) UI 或 [REST API](https://www.fortanix.com/api/em/) 着手，按照 Azure Kubernetes 服务的[快速入门](https://support.fortanix.com/hc/en-us/articles/360049658291-Fortanix-Confidential-Container-on-Azure-Kubernetes-Service)指南来创建机密容器。
+[Fortanix](https://www.fortanix.com/) 允许开发人员选择门户和基于 CLI 的体验来引入容器化应用程序，并将其转换为支持 SGX 的机密容器，而无需修改或重新编译应用程序。 Fortanix 提供运行和管理最广泛应用程序集（包括现有的应用程序、新的 enclave 原生应用程序以及预打包的应用程序）所需的灵活性。 用户可以从[机密计算管理器](https://em.fortanix.com/) UI 或 [REST API](https://www.fortanix.com/api/em/) 着手，按照 Azure Kubernetes 服务的[快速入门](https://fortanix.com/blog/2020/10/fortanix-confidential-containers-on-microsoft-azure-kubernetes-service-aks/)指南来创建机密容器。
 
 ![Fortanix 部署过程](./media/confidential-containers/fortanix-confidential-containers-flow.png)
 
@@ -89,6 +89,15 @@ AKS 的机密计算节点上的 Scone 部署在其他 Azure 服务中完全受�
 
 Occlum 支持 AKS 部署。 按照[此处](https://github.com/occlum/occlum/blob/master/docs/azure_aks_deployment_guide.md)提供的各种示例应用的部署说明进行操作
 
+### <a name="marblerun"></a>Marblerun
+
+[Marblerun](https://marblerun.sh/) 是机密容器的业务流程框架。 有了它，就可以轻松地在支持 SGX 的 Kubernetes 上运行和缩放机密服务。 Marblerun 负责样板任务，例如验证群集中的服务、管理这些服务的机密，以及在这些服务之间建立 enclave 到 enclave 的 mTLS 连接。 Marblerun 还确保机密容器的群集符合以简单 JSON 定义的清单。 外部客户端可以通过远程证明来验证清单。 
+
+![Marblerun 流](./media/confidential-containers/marblerun-workflow.png)
+
+简而言之，Marblerun 可将单个 enclave 的机密性、完整性和可验证性属性扩展到 Kubernetes 群集。 
+
+Marblerun 支持使用 Graphene、Occlum 和 EGo 创建的机密容器。 [此处](https://www.marblerun.sh/docs/examples/)提供了每个 SDK 的示例。 Marblerun 构建为在 Kubernetes 上与现有的云原生工具一起运行。 它附带了易用的 CLI 和 helm chart。 它为 AKS 上的机密计算节点提供一流支持。 可在[此处](https://www.marblerun.sh/docs/deployment/cloud/)找到有关如何在 AKS 上部署 Marblerun 的信息。
 
 ## <a name="confidential-containers-demo"></a>机密容器演示
 观看有关机密容器的机密医疗保健演示。 [此处](/azure/architecture/example-scenario/confidential/healthcare-inference)提供示例。 

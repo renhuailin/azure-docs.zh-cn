@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 06/04/2021
+ms.date: 08/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 9913fc2e3780d9d6ab91be19913238f8002f281a
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: e04d3a0a5b7c48117af1f597606658a878a3a6ff
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111983262"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740768"
 ---
 # <a name="troubleshoot-vm-deployment-in-azure-stack-edge-pro-gpu"></a>排查在 Azure Stack Edge Pro GPU 中部署 VM 的问题
 
@@ -21,7 +21,7 @@ ms.locfileid: "111983262"
 
 本文介绍如何排查在 Azure Stack Edge Pro GPU 设备上部署虚拟机时出现的常见错误。 本文提供相关指导，助你调查导致 VM 预配超时的最常见问题，以及在创建网路接口和 VM 过程中出现的各种问题。
 
-若要诊断 VM 预配失败，请查看故障虚拟机的来宾日志。 <!--For steps to collect VM guest logs and include them in a Support package, see [Collect guest logs for VMs on Azure Stack Edge Pro](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md).-->
+若要诊断 VM 预配失败，请查看故障虚拟机的来宾日志。 有关收集 VM 来宾日志并将其包含在支持包中的步骤，请参阅[在 Azure Stack Edge Pro 上收集 VM 的来宾日志](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)。
 
 如需相关指导以在部署 VM 之前排查会导致 VM 映像上传失败的问题，请参阅[排查在 Azure Stack Edge Pro GPU 中上传虚拟机映像的问题](azure-stack-edge-gpu-troubleshoot-virtual-machine-image-upload.md)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "111983262"
 
 当 VM 预配超时时，你会看到以下错误： 
 
-![VM 预配超时时显示的 Azure 门户错误的屏幕截图。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/vm-provisioning-timeout-01.png) 
+![Azure Stack Edge 中的 VM 预配超时时在 Azure 门户中显示的错误的屏幕截图。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/vm-provisioning-timeout-01.png) 
 
 以下问题是导致 VM 预配超时的主要原因：
 - 分配给 VM 的 IP 地址已在使用中。 [了解详细信息](#vm-provisioning-timeout)
@@ -90,7 +90,7 @@ ms.locfileid: "111983262"
 
    若要查找默认网关和 DNS 服务器的 IP 地址，请转到设备的本地 UI。 选择相关端口，并查看网络设置。
 
-   ![Azure Stack Edge Pro GPU 设备上端口的默认网关和 DNS 服务器的屏幕截图。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/gateway-dns-server-settings-01.png) 
+   ![Azure Stack Edge 设备的“网络”页的屏幕截图，其中显示了端口 2 的网络设置。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/gateway-dns-server-settings-01.png) 
 
 
 ### <a name="cloud-init-issues-linux-vms"></a>`cloud init` 问题 (Linux VM)
@@ -121,7 +121,7 @@ ms.locfileid: "111983262"
 
    当数据源被设置为 Azure 时，cloud init 日志中的条目将如下所示。
 
-   ![图片：数据源设置为 Azure 时，VM 映像的 cloud-init 日志条目。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/cloud-init-log-entry-01.png) 
+   ![“数据源”设置为“Azure”的 VM 映像的 cloud-init 日志条目图示。 标识文本已突出显示。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/cloud-init-log-entry-01.png)
 
    若数据源未设置为 Azure，则可能需要修改 `cloud init` 脚本。 有关详细信息，请参阅[深入了解 cloud-init](../virtual-machines/linux/cloud-init-deep-dive.md)。
 
@@ -153,7 +153,7 @@ ms.locfileid: "111983262"
 
 1. 如果未成功创建网络接口，你将看到以下错误。
 
-   ![创建网络接口失败时门户中所显示错误的屏幕截图。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/nic-creation-failed-01.png)
+   ![在 Azure Stack Edge 设备上部署 VM 期间创建网络接口失败时，Azure 门户中显示的错误的屏幕截图。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/nic-creation-failed-01.png)
 
 建议的解决方案：再次创建 VM，并为其分配静态 IP 地址。
 
@@ -166,7 +166,7 @@ ms.locfileid: "111983262"
 
 错误说明：若因内存不足而导致 VM 创建失败时，你将看到以下错误。
  
-![VM 创建失败时门户中所显示错误的屏幕截图。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/vm-creation-failed-01.png)
+![在 Azure Stack Edge 设备上创建 VM 失败时，Azure 门户中显示的错误的屏幕截图。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/vm-creation-failed-01.png)
 
 建议的解决方案：检查设备上可用的内存，并根据 VM 大小做出相应选择。 有关详细信息，请参阅 [Azure Stack Edge 上支持的虚拟机大小](azure-stack-edge-gpu-virtual-machine-sizes.md)。
 
@@ -188,16 +188,15 @@ ms.locfileid: "111983262"
 
 若尝试在已启用 Kubernetes 的 GPU 设备上部署 VM，你将无法使用 GPU，VM 预配亦会失败并出现以下错误：
 
-![因没有可用 GPU 而导致 GPU VM 创建失败时，门户中所显示错误的屏幕截图。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/gpu-vm-creation-failed-01.png)
+![因 Azure Stack Edge 设备上没有可用的 GPU 而导致 GPU VM 创建失败时，在 Azure 门户中显示的错误的屏幕截图。](./media/azure-stack-edge-gpu-troubleshoot-virtual-machine-provisioning/gpu-vm-creation-failed-01.png)
 
 可能的原因：如果在创建 VM 之前已经启用 Kubernetes，则 Kubernetes 将会使用所有可用的 GPU，从而导致你无法创建与 GPU 同等大小的 VM。 你能够创建的与 GPU 同等大小的 VM 数同于可用的 GPU 数。 而你的 Azure Stack Edge 设备可以配备 1 或 2 个 GPU。
 
-建议解决方案：如需了解已配置 Kubernetes 的 1 GPU 或 2 GPU 设备上的 VM 部署选项，请参阅 [GPU VM 和 Kubernetes](azure-stack-edge-gpu-deploy-gpu-virtual-machine.md#gpu-vms-and-kubernetes)。
+建议解决方案：如需了解已配置 Kubernetes 的 1 GPU 或 2 GPU 设备上的 VM 部署选项，请参阅 [GPU VM 和 Kubernetes](azure-stack-edge-gpu-overview-gpu-virtual-machines.md#gpu-vms-and-kubernetes)。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-<!-- Remove link while cmdlet issue is fixed. - * [Collect a Support package that includes guest logs for a failed VM](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)-->
-* [排查 GPU 扩展安装失败的问题](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)
-* [排查 Azure 资源管理器的问题](azure-stack-edge-gpu-troubleshoot-azure-resource-manager.md)
-
+- [收集一个包含故障 VM 的来宾日志的支持包](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)<!--Does a failed VM have a guest log? Does it have GPU and memory metrics?-->
+- [排查 GPU 扩展安装失败的问题](azure-stack-edge-gpu-collect-virtual-machine-guest-logs.md)
+- [排查 Azure 资源管理器的问题](azure-stack-edge-gpu-troubleshoot-azure-resource-manager.md)

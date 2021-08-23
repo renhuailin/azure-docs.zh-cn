@@ -7,18 +7,17 @@ ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 95a04d763fa5982181cc1c797bce969d9857ae4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e9bb7ac183873c0fc4d97bd883ddd85110f9188
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92890626"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747719"
 ---
 # <a name="use-the-drawing-tools-module"></a>使用绘图工具模块
 
-Azure Maps Web SDK 提供了一个 *绘图工具模块*。 使用此模块，可以轻松地使用输入设备（如鼠标或触摸屏）绘制和编辑地图上的形状。 此模块的核心类是[绘图管理器](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)。 绘图管理器提供了在地图上绘制和编辑形状所需的一切功能。 它可直接使用，并与自定义工具栏 UI 集成。 还可以使用内置的[绘图工具栏](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)类。 
+Azure Maps Web SDK 提供了一个 *绘图工具模块*。 使用此模块，可以轻松地使用输入设备（如鼠标或触摸屏）绘制和编辑地图上的形状。 此模块的核心类是[绘图管理器](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)。 绘图管理器提供了在地图上绘制和编辑形状所需的一切功能。 它可直接使用，并与自定义工具栏 UI 集成。 还可以使用内置的[绘图工具栏](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)类。
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>在网页中加载绘图工具模块
 
@@ -27,14 +26,14 @@ Azure Maps Web SDK 提供了一个 *绘图工具模块*。 使用此模块，可
     - 使用 Azure Maps 服务模块的全局托管 Azure 内容分发网络版本。 在文件的 `<head>` 元素中添加对 JavaScript 和 CSS 样式表的引用：
 
         ```html
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.css" type="text/css" />
-        <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.js"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/drawing/1/atlas-drawing.min.css" type="text/css" />
+        <script src="https://atlas.microsoft.com/sdk/javascript/drawing/1/atlas-drawing.min.js"></script>
         ```
 
     - 或者，可以通过使用 [azure-maps-drawing-tools](https://www.npmjs.com/package/azure-maps-drawing-tools) npm 包在本地加载 Azure Maps Web SDK 源代码的绘图工具模块，然后将其托管在你的应用中。 此程序包还包括了 TypeScript 定义。 使用此命令：
-    
+
         > **npm install azure-maps-drawing-tools**
-    
+
         然后，在文件的 `<head>` 元素中添加对 JavaScript 和 CSS 样式表的引用：
 
          ```html
@@ -71,7 +70,7 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 绘图管理器支持三种不同的方法来与地图进行交互以绘制形状。
 
 * `click` -在单击鼠标或触摸时添加坐标。
-* `freehand ` -在地图上拖动鼠标或触摸时添加坐标。 
+* `freehand ` - 在地图上拖动鼠标或触摸时添加坐标。 
 * `hybrid` -在单击或拖动鼠标或触摸时添加坐标。
 
 下面的代码将启用多边形绘制模式，并设置绘图管理器应遵循的绘图交互的类型 `freehand`。 
@@ -102,6 +101,64 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 <iframe height="685" title="自定义绘图管理器" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>获取形状数据</a>。
 </iframe>
 
+
+### <a name="put-a-shape-into-edit-mode"></a>将形状置于编辑模式
+
+通过将现有形状传入绘图管理器的 `edit` 函数，以编程方式将现有形状置于编辑模式。 如果形状是 GeoJSON 特征，则使用 `atls.Shape` 类将其包装，然后再将其传入。
+
+若要以编程方式使形状退出编辑模式，请将绘图管理器模式设置为 `idle`。
+
+```javascript
+//If you are starting with a GeoJSON feature, wrap it with the atlas.Shape class.
+var feature = { 
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [0,0]
+        },
+    "properties":  {}
+};
+
+var shape = new atlas.Shape(feature);
+
+//Pass the shape into the edit function of the drawing manager.
+drawingManager.edit(shape);
+
+//Later, to programmatically take shape out of edit mode, set mode to idle. 
+drawingManager.setOptions({ mode: 'idle' });
+```
+
+> [!NOTE]
+> 将形状传入绘图管理器的 `edit` 函数时，形状将添加到由绘图管理器维护的数据源中。 如果此形状以前在另一个数据源中，则会从该数据源中删除它。
+
+若要将形状添加到绘图管理器中供最终用户查看和编辑，但又不想以编程方式将其置于编辑模式，请从绘图管理器中检索数据源并将形状添加到其中。
+
+```javascript
+//The shape(s) you want to add to the drawing manager so 
+var shape = new atlas.Shape(feature);
+
+//Retrieve the data source from the drawing manager.
+var source = drawingManager.getSource();
+
+//Add your shape.
+source.add(shape);
+
+//Alternatively, load in a GeoJSON feed using the sources importDataFromUrl function.
+source.importDataFromUrl('yourFeatures.json');
+```
+
+下表列出了不同类型的形状特征支持的编辑类型。
+
+| 形状特征 | 编辑点 | 旋转 | 删除形状 |
+|---------------|:-----------:|:------:|:------------:|
+| 点         | ✓           |        | ✓           |
+| LineString    | ✓           | ✓      | ✓           |
+| Polygon       | ✓           | ✓      | ✓           |
+| MultiPoint    |             | ✓      | ✓           |
+| MultiLineString |           | ✓      | ✓           |
+| MultiPolygon  |             | ✓      | ✓           |
+| 圆形        | ✓           |        | ✓           |
+| Rectangle     | ✓           | ✓      | ✓           |
 
 ## <a name="next-steps"></a>后续步骤
 
