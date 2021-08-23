@@ -4,12 +4,12 @@ description: 本文提供了有关如何向虚拟网络中添加 Microsoft.Servi
 ms.topic: article
 ms.date: 03/29/2021
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 63a2f556739f7f3eaec3874e6d02cc996e2aaec4
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 9b5aba6c5ad4e1e6d0c90b99ebcdf441bb35cc39
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416715"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960446"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>允许从特定虚拟网络访问 Azure 服务总线命名空间
 通过将服务总线与[虚拟网络 (VNet) 服务终结点][vnet-sep]集成可从绑定到虚拟网络的工作负荷（如虚拟机）安全地访问消息传递功能，同时在两端保护网络流量路径。
@@ -20,7 +20,7 @@ ms.locfileid: "112416715"
 
 ## <a name="important-points"></a>要点
 - 虚拟网络仅在[高级层](service-bus-premium-messaging.md)服务总线命名空间中受支持。 将 VNet 服务终结点用于服务总线时，不应在混合使用标准层和高级层服务总线命名空间的应用程序中启用这些终结点。 原因是标准层不支持 VNet。 此终结点仅限于高级层命名空间。
-- 实现虚拟网络集成可以防止其他 Azure 服务与服务总线交互。 例外情况是，即使启用了网络服务终结点，也可以允许从某些“受信任的服务”访问服务总线资源。 有关受信任服务的列表，请参阅[受信任服务](#trusted-microsoft-services)。
+- 实现虚拟网络集成可以防止其他 Azure 服务与服务总线交互。 例外情况是，即使启用了网络服务终结点，也可以允许从某些“受信任的服务”访问 Azure 服务总线资源。 有关受信任服务的列表，请参阅[受信任服务](#trusted-microsoft-services)。
 
     以下 Microsoft 服务必须在虚拟网络中
     - Azure 应用服务
@@ -85,7 +85,7 @@ ms.locfileid: "112416715"
     > [!NOTE]
     > 有关允许从特定 IP 地址或范围访问的说明，请参阅[允许从特定 IP 地址或范围访问](service-bus-ip-filtering.md)。
 
-[!INCLUDE [service-bus-trusted-services](./includes/service-bus-trusted-services.md)]
+[!INCLUDE [service-bus-trusted-services](../../includes/service-bus-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
 以下示例资源管理器模板会向现有服务总线命名空间添加虚拟网络规则。 对于网络规则，该模板指定虚拟网络中子网的 ID。 

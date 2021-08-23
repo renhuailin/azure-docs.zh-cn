@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: 332be773bca07acf178bd0754d3dad12f4879f51
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 3d7ba65e6965ff488ead6094376bea7142eb5ec9
+ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371129"
+ms.lasthandoff: 06/08/2021
+ms.locfileid: "111590587"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -27,6 +27,28 @@ __RSS 源__：通过将以下 URL 复制并粘贴到源阅读器中，可以在�
 ### <a name="announcing-the-20-cli-preview-for-azure-machine-learning"></a>宣布推出适用于 Azure 机器学习的 2.0 CLI（预览版）
 
 Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 该扩展可让你从命令行训练和部署模型，并提供了在跟踪模型生命周期时加快数据科学纵向和横向扩展的功能。 [安装并开始使用](how-to-configure-cli.md)。
+
+## <a name="2021-06-07"></a>2021-06-07
+
+### <a name="azure-machine-learning-sdk-for-python-v1300"></a>适用于 Python v1.30.0 的 Azure 机器学习 SDK
++ **Bug 修复与改进**
+  + **azureml-core**
+    + 将依赖项 `ruamel-yaml` 固定为 < 0.17.5，因为 0.17.5 中发布了中断性变更。
+    + `aml_k8s_config` 属性被替换为用于 `KubernetesCompute` 附加的 `namespace`、`default_instance_type` 和 `instance_types` 参数。
+    + 工作区同步密钥已更改为长时间运行的操作。
+  + **azureml-automl-runtime**
+    + 修复了使用大数据运行可能会因 `Elements of y_test cannot be NaN` 而失败的问题。
+  + **azureml-mlflow**
+    + 没有签名的模型的 MLFlow 部署插件 bug 修复。
+  + **azureml-pipeline-steps**
+    + ParallelRunConfig：更新 process_count_per_node 的文档。
+  + **azureml-train-automl-runtime**
+    + 在 MM 推理期间支持自定义的分位数
+    + 在批量推理期间支持 forecast_quantiles。
+  + azureml-contrib-automl-pipeline-steps
+    + 在 MM 推理期间支持自定义的分位数
+    + 在批量推理期间支持 forecast_quantiles。
+
 
 ### <a name="azure-machine-learning-sdk-for-python-v1290"></a>适用于 Python v1.29.0 的 Azure 机器学习 SDK
 + **Bug 修复与改进**
@@ -63,7 +85,7 @@ Azure CLI 的 `ml` 扩展是适用于 Azure 机器学习的下一代接口。 �
     + 修补了以下 bug：如果在早期版本的 SDK 中训练，使用 Prophet 模型进行预测会引发“缺少列”错误。
     + 将 ARIMAX 模型添加到了 AutoML SDK 的面向公众的、支持预测功能的模型列表。 此处的 ARIMAX 是具有 ARIMA 错误的回归，并且是 Box 和 Jenkins 开发的传输函数模型的特例。 有关这两种方法的差别的讨论，请参阅 [The ARIMAX model muddle](https://robjhyndman.com/hyndsight/arimax/)（ARIMAX 模型令人困惑之处）。 与 AutoML 中使用自动生成的时间相关特征（一天的某一小时、一年中的某一天等）的其他多变体模型不同，此模型仅使用用户提供的特征，使系数解释变得简单。
   + **azureml-contrib-dataset**
-    + 更新了文档说明，指出在使用 mount 时应安装 libfuse。
+    + 更新了文档说明，指出在使用装载时应安装 libfuse。
   + **azureml-core**
     + 默认的 CPU 特选映像现在为 mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04。 默认的 GPU 映像现在为 mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.2-cudnn8-ubuntu18.04
     + Run.fail() 现已弃用，请使用 Run.tag() 将运行标记为“失败”，或使用 Run.cancel() 将运行标记为“已取消”。

@@ -1,24 +1,24 @@
 ---
 title: 在 Azure 市场中为虚拟机产品/服务创建计划
-description: 了解如何在 Azure 市场中为虚拟机产品/服务创建计划。
+description: 在 Azure 市场中为虚拟机产品/服务创建计划。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 04/01/2021
-ms.openlocfilehash: b1111caf2eaab1114371cbfed1e929afcff20898
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 05/20/2021
+ms.openlocfilehash: f0e05f06258cc30253fefdc7113fce045009f500
+ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219359"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111527615"
 ---
-# <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>如何为虚拟机产品/服务创建计划
+# <a name="create-plans-for-a-virtual-machine-offer"></a>为虚拟机产品/服务创建计划
 
 在“计划概述”页上（从合作伙伴中心的左侧导航菜单中选择）可以在同一产品/服务内提供各种计划选项。 产品/服务需要至少一个计划（以前称为 SKU），计划可能在盈利受众、Azure 区域、功能或 VM 映像方面有所不同。
 
-最多可为每个产品/服务创建 100 个计划：其中最多 45 个为专用计划。 详细了解 [Microsoft 商业市场中的专用产品/服务](private-offers.md)中的专用计划。
+最多可为每个产品/服务创建 100 个计划；其中专用计划最多 45 个。 详细了解 [Microsoft 商业市场中的专用产品/服务](private-offers.md)中的专用计划。
 
 创建计划后，选择“计划概述”选项卡以显示：
 
@@ -28,7 +28,7 @@ ms.locfileid: "106219359"
 - 当前发布状态
 - 可用操作
 
-“计划概述”窗格中的可用操作因计划的当前状态而异。
+此窗格上的可用操作因计划的当前状态而异。
 
 - 如果计划状态为“草稿”，选择“删除草稿”。
 -  如果计划状态为上线，选择“停止销售计划”或“同步专用受众”。
@@ -49,13 +49,6 @@ ms.locfileid: "106219359"
 ## <a name="plan-setup"></a>计划设置
 
 为计划类型设置高级别的配置，指定它是否重复使用其他计划中的技术配置，并确定应在其中提供该计划的 Azure 区域。 此处的选择确定同一计划的其他窗格上显示的字段。
-
-### <a name="reuse-technical-configuration"></a>重复使用技术配置
-
-如果有多个具有相同类型的计划，并且包在它们之间完全相同，则可以选择“此计划重复使用其他计划中的技术配置”。 使用此选项，可以为此产品/服务选择相同类型的其他计划，并允许重复使用其技术配置。
-
-> [!NOTE]
-> 重复使用其他计划中的技术配置时，整个“技术配置”选项卡会从此计划中消失。 其他计划中的技术配置详细信息（包括将来进行的任何更新）也将用于此计划。 此计划发布之后便无法更改此设置。
 
 ### <a name="azure-regions"></a>Azure 区域
 
@@ -164,8 +157,9 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 提供与此计划关联的映像和其他技术属性。
 
-> [!NOTE]
-> 如果已在“计划设置”选项卡上将此计划配置为重新使用其他计划的包，则此选项卡将不可见。
+### <a name="reuse-technical-configuration"></a>重复使用技术配置
+
+如果有多个相同类型的计划，并且它们用的包完全相同，请选择“此计划重复使用其他计划中的技术配置”。 使用此选项，可以为此产品/服务选择相同类型的其他计划，并重复使用其技术配置。
 
 ### <a name="operating-system"></a>操作系统
 
@@ -216,11 +210,14 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 上图显示了两个必填字段：
 
 - “磁盘版本”：正在提供的映像的版本。
-- “OS VHD 链接”：操作系统 VHD 在 Azure 存储帐户中的位置。 若要了解如何获取 SAS URI，请参阅[获取 VM 映像的共享访问签名 URI](azure-vm-get-sas-uri.md)。
+- **OS VHD 链接**：存储在 Azure 共享映像库中的映像。 了解如何在[共享映像库](azure-vm-create-using-approved-base.md#capture-image)中捕获映像。
 
 数据磁盘（选择“添加数据磁盘（最多 16 个）”）也是存储在其 Azure 存储帐户中的 VHD 共享访问签名 URI。 计划中的每次提交只添加一个映像。
 
 无论使用何种操作系统，都仅添加解决方案所需的最少数据磁盘数。 客户无法在部署时删除映像中包含的磁盘，但始终可以在部署期间或之后添加磁盘。
+
+> [!NOTE]
+> 如果使用 SAS 提供映像并拥有数据磁盘，则还需要将它们作为 SAS URI 提供。 如果使用共享映像，它们将作为共享映像库中映像的一部分被捕获。 将产品/服务发布到 Azure 市场后，可以从 Azure 存储或共享映像库中删除映像。
 
 选择“保存草稿”，然后选择左上方的“←计划概述”以查看刚创建的计划。
 

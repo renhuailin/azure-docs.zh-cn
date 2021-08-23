@@ -3,15 +3,15 @@ title: 快速入门 - 使用 Azure 通信服务向 Windows 应用添加通话功
 description: 本快速入门介绍如何使用适用于 Windows 的 Azure 通信服务通话 SDK。
 author: tophpalmer
 ms.author: mikben
-ms.date: 06/30/2021
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: dc5905ab50932f156e17831356c0998ffd001285
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 16e7562fb37ebcf0044f9ba07e4d9f53acf2d35e
+ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "114201393"
+ms.lasthandoff: 06/07/2021
+ms.locfileid: "111560472"
 ---
 本快速入门介绍如何使用适用于 Windows 的 Azure 通信服务通话 SDK 开始通话。
 
@@ -158,14 +158,14 @@ catch (Exception)
 
 ```csharp
 client.CreateCallAgent(creds, callAgentOptions).Completed +=
-async (IAsyncOperation<CallAgent> asyncInfo, AsyncStatus asyncStatus) =>
+(IAsyncOperation<CallAgent> asyncInfo, AsyncStatus asyncStatus) =>
 {
     agent_ = asyncInfo.GetResults();
 
-    CommunicationUserIdentifier target = new CommunicationUserIdentifier("<CALLEE>");
+    string[] calling = { "<CALLEE>" };
 
-    StartCallOptions startCallOptions = new StartCallOptions();
-    call_ = await agent_.StartCallAsync(new List<ICommunicationIdentifier>() { target }, startCallOptions);
+    StartCallOptions startCallOptions = new StartCallOptions(); ;
+    call_ = agent_.Call(calling, startCallOptions);
 };
 ```
 
@@ -180,8 +180,8 @@ async (IAsyncOperation<CallAgent> asyncInfo, AsyncStatus asyncStatus) =>
 应在 `HangupHandler` 中添加以下代码。
 
 ```csharp
-HangUpOptions hangupOptions = new HangUpOptions();
-call_.HangUpAsync(hangupOptions).Completed +=
+HangupOptions hangupOptions = new HangupOptions();
+call_.HangupAsync(hangupOptions).Completed +=
 (IAsyncAction asyncInfo, AsyncStatus asyncStatus) =>
 {
 };

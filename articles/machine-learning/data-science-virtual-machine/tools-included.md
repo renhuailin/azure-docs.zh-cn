@@ -10,12 +10,12 @@ ms.author: tklimmer
 ms.topic: reference
 ms.date: 05/12/2021
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: ba7006c9dc266819e4c965ae3a72fc0f78506056
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 63269512a33ce2743d1082001525030c85bc8a4a
+ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113649979"
+ms.lasthandoff: 05/26/2021
+ms.locfileid: "110462881"
 ---
 # <a name="what-tools-are-included-on-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine 中包含哪些工具？
 
@@ -32,7 +32,7 @@ Data Science Virtual Machine 预装有最实用的数据科学工具。
 | [NVidia System Management Interface  (nvidia-smi)](https://developer.nvidia.com/nvidia-system-management-interface) | <span class='green-check'>&#9989;</span> | <span class='green-check'>&#9989;</span> | [DSVM 上的 nvidia-smi](./dsvm-tools-deep-learning-frameworks.md#nvidia-system-management-interface-nvidia-smi) |
 | [PyTorch](https://pytorch.org) | <span class='green-check'>&#9989;</span> | <span class='green-check'>&#9989;</span> | [DSVM 上的 PyTorch](./dsvm-tools-deep-learning-frameworks.md#pytorch) |
 | [TensorFlow](https://www.tensorflow.org) | <span class='green-check'>&#9989;</span></br> | <span class='green-check'>&#9989;</span></br> | [DSVM 上的 TensorFlow](./dsvm-tools-deep-learning-frameworks.md#tensorflow) |
-| 与 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/) (Python) 集成 | <span class='green-check'>&#9989;</span></br> （Python SDK、示例） | <span class='green-check'>&#9989;</span></br> （Python SDK、CLI、示例） | [Azure ML SDK](./dsvm-tools-data-science.md#azure-machine-learning-sdk-for-python) |
+| 与 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)（R、Python）集成 | <span class='green-check'>&#9989;</span></br> （Python SDK、示例） | <span class='green-check'>&#9989;</span></br> （Python/R SDK、CLI、示例） | [Azure ML SDK](./dsvm-tools-data-science.md#azure-machine-learning-sdk-for-python) |
 | [XGBoost](https://github.com/dmlc/xgboost) | <span class='green-check'>&#9989;</span></br> （CUDA 支持） | <span class='green-check'>&#9989;</span></br> （CUDA 支持） | [DSVM 上的 XGBoost](./dsvm-tools-data-science.md#xgboost) |
 | [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) | <span class='green-check'>&#9989;</span> | <span class='green-check'>&#9989;</span></br> | [DSVM 上的 Vowpal Wabbit](./dsvm-tools-data-science.md#vowpal-wabbit) |
 | [Weka](https://www.cs.waikato.ac.nz/ml/weka/) | <span class='red-x'>&#10060;</span> | <span class='red-x'>&#10060;</span> |  |
@@ -81,7 +81,7 @@ Data Science Virtual Machine 预装有最实用的数据科学工具。
 
 Ubuntu 18.04 DSVM 和 Windows Server 2019 DSVM 具有以下 Jupyter 内核：</br> 
 * Python 3.8 - 默认</br>  
-* Python 3.8 - PyTorch</br>  
+* Python 3.8 - PyTorch</br>  
 * Python 3.8 - TensorFlow</br>  
 * Python 3.6 - AzureML - TensorFlow</br>  
 * Python 3.6 - AzureML - PyTorch</br>  
@@ -111,7 +111,7 @@ Ubuntu 18.04 DSVM 和 Windows Server 2019 DSVM 具有以下 conda 环境：</br>
 | [Visual Studio 2019 Community Edition](https://www.visualstudio.com/community/) | <span class='green-check'>&#9989;</span> | <span class='red-x'>&#10060;</span> | [DSVM 上的 Visual Studio](dsvm-tools-development.md#visual-studio-community-edition) |
 | [Visual Studio Code](https://code.visualstudio.com/) | <span class='green-check'>&#9989;</span></br> | <span class='green-check'>&#9989;</span></br> | [DSVM 上的 Visual Studio Code](./dsvm-tools-development.md#visual-studio-code) |
 | [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) | <span class='green-check'>&#9989;</span></br> | <span class='green-check'>&#9989;</span></br> | [DSVM 上的 RStudio Desktop](./dsvm-tools-development.md#rstudio-desktop) |
-| [RStudio Server](https://www.rstudio.com/products/rstudio/#Server) <br/> （默认已禁用） | <span class='red-x'>&#10060;</span> | <span class='green-check'>&#9989;</span> |  |
+| [RStudio Server](https://www.rstudio.com/products/rstudio/#Server) <br/> （默认情况下禁用） | <span class='red-x'>&#10060;</span> | <span class='green-check'>&#9989;</span> |  |
 | [PyCharm Community Edition](https://www.jetbrains.com/pycharm/) | <span class='green-check'>&#9989;</span></br> | <span class='green-check'>&#9989;</span></br> | [DSVM 上的 PyCharm](./dsvm-tools-development.md#pycharm) |
 | [IntelliJ IDEA](https://www.jetbrains.com/idea/) | <span class='red-x'>&#10060;</span> | <span class='green-check'>&#9989;</span> |  |
 | [Vim](https://www.vim.org) | <span class='red-x'>&#10060;</span> | <span class='green-check'>&#9989;</span></br> |  |

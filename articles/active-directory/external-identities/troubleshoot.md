@@ -5,7 +5,7 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: troubleshooting
-ms.date: 02/12/2021
+ms.date: 05/27/2021
 tags: active-directory
 ms.author: mimart
 author: msmimart
@@ -14,20 +14,20 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60cd944ecb144a30e872259f6e959a11c3ea6319
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c971c93d873bb8326b986cfd771ef96b615f2131
+ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100365423"
+ms.lasthandoff: 05/28/2021
+ms.locfileid: "110612759"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B 协作故障排除
 
 以下是 Azure Active Directory (Azure AD) B2B 协作的常见问题的一些补救措施。
 
    > [!IMPORTANT]
-   > - 从 2021 年 1 月 4 日开始，Google 将[弃用 WebView 登录支持](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果要通过 Gmail 使用 Google 联合身份验证或自助服务注册，则应[测试业务线本机应用程序的兼容性](google-federation.md#deprecation-of-webview-sign-in-support)。
-   > - 从 2021 年 10 月起，Microsoft 将不再支持兑换通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行的邀请。 在准备期间，我们鼓励客户选择参与[电子邮件一次性密码身份验证](one-time-passcode.md)。 我们欢迎你提供有关此公共预览版功能的反馈，并且很乐意创建更多的协作方式。
+   > - 从 2021 年下半年开始，Google 将[弃用 Web 视图登录支持](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)。 如果正在对 B2B 邀请或 [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) 使用 Google 联合身份验证，或者正在将自助注册与 Gmail 一起使用，那么当你的应用通过嵌入的 Web 视图对用户进行身份验证时，Google Gmail 用户将无法登录。 [了解详细信息](google-federation.md#deprecation-of-web-view-sign-in-support)。
+   > - 从 2021 年 10 月起，Microsoft 将不再支持兑换通过创建用于 B2B 协作方案的非托管 Azure AD 帐户和租户进行的邀请。 在准备期间，我们鼓励客户选择加入现已正式发布的[电子邮件一次性密码身份验证](one-time-passcode.md)。
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>我已添加外部用户，但在全局通讯簿或人员选取器中看不到这些用户
 
@@ -39,6 +39,9 @@ ms.locfileid: "100365423"
 
 可使用“ShowPeoplePickerSuggestionsForGuestUsers”设置在租户和网站集级别启用此功能。 可使用 Set-SPOTenant 和 Set-SPOSite cmdlet 设置此功能，这将允许用户搜索目录中的所有现有来宾用户。 租户范围中的更改不会影响已经预配的 SPO 站点。
 
+## <a name="my-guest-invite-settings-and-domain-restrictions-arent-being-respected-by-sharepoint-onlineonedrive"></a>SharePoint Online/OneDrive 未遵守我的来宾邀请设置和域限制
+
+默认情况下，SharePoint Online 和 OneDrive 有其自己的一组外部用户选项，不使用 Azure AD 的设置。  需要启用 [SharePoint 和 OneDrive 与 Azure AD B2B 的集成](/sharepoint/sharepoint-azureb2b-integration-preview)，以确保选项在那些应用程序中一致。
 ## <a name="invitations-have-been-disabled-for-directory"></a>已对目录禁用邀请
 
 如果收到无权邀请用户的通知，请在“Azure Active Directory”>“用户设置”>“外部用户”>“管理外部协作设置”下验证你的用户帐户是否有权邀请外部用户：
@@ -63,6 +66,14 @@ ms.locfileid: "100365423"
 
 要解决此问题，外部用户的管理员必须将该用户的帐户同步到 Azure Active Directory。
 
+## <a name="i-cant-invite-an-email-address-because-of-a-conflict-in-proxyaddresses"></a>由于 proxyAddresses 中的冲突，无法邀请电子邮件地址
+
+当目录中的其他对象具有与它的某个 proxyAddresses 相同的受邀电子邮件地址时，就会发生这种情况。 若要解决此冲突，请从[用户](/graph/api/resources/user?view=graph-rest-1.0&preserve-view=true)对象中删除电子邮件，并删除关联的[联系人](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true)对象，然后再次尝试邀请此电子邮件。
+
+## <a name="the-guest-user-object-doesnt-have-a-proxyaddress"></a>来宾用户对象没有 proxyAddress
+
+在邀请外部来宾用户时，有时此操作会与现有的[联系人对象](/graph/api/resources/contact?view=graph-rest-1.0&preserve-view=true)冲突。 在出现这种情况时，就会创建没有 proxyAddress 的来宾用户。 这意味着用户将无法使用[实时兑换](redemption-experience.md#redemption-through-a-direct-link)或[电子邮件一次性密码身份验证](one-time-passcode.md#user-experience-for-one-time-passcode-guest-users)来兑换此帐户。
+
 ## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>“\#”（这通常不是有效字符）如何与 Azure AD 进行同步？
 
 由于受邀帐户 user@contoso.com 变为 user_contoso.com#EXT#@fabrikam.onmicrosoft.com，“\#”是 Azure AD B2B 协作或外部用户的 UPN 中的保留字符。 因此，不允许来自本地的 UPN 中的 \# 登录到 Azure 门户。 
@@ -74,6 +85,9 @@ ms.locfileid: "100365423"
 ## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>我的外部用户未收到用于兑换的电子邮件
 
 被邀请者应该向其 ISP 或垃圾邮件筛选器查询，以确保允许以下地址：Invites@microsoft.com
+
+> [!NOTE]
+> 对于中国世纪互联运营的 Azure 服务，发送方地址是 Invites@oe.21vianet.com。
 
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>我发现邀请消息有时不包含自定义消息
 
@@ -110,17 +124,17 @@ ms.locfileid: "100365423"
 
 ## <a name="i-receive-the-error-that-azure-ad-cannot-find-the-aad-extensions-app-in-my-tenant"></a>我收到 Azure AD 在我的租户中找不到 aad-extensions-app 的错误
 
-使用自助服务注册功能（如自定义用户属性或用户流）时，会自动创建一个名为 `aad-extensions-app. Do not modify. Used by AAD for storing user data.` 的应用。 Azure AD 外部标识使用它来存储有关注册的用户和收集的自定义属性的信息。
+使用自助注册功能（如自定义用户属性或用户流）时，会自动创建一个名为 `aad-extensions-app. Do not modify. Used by AAD for storing user data.` 的应用。 Azure AD 外部标识使用此应用存储注册的用户和收集的自定义属性的相关信息。
 
-如果将 `aad-extensions-app` 意外删除，则你有 30 天的时间可以恢复它。 你可以使用 Azure AD PowerShell 模块还原该应用。
+如果将 `aad-extensions-app` 意外删除，则你有 30 天的时间可以恢复它。 你可以使用 Azure AD PowerShell 模块恢复此应用。
 
 1. 启动 Azure AD PowerShell 模块并运行 `Connect-AzureAD`。
-1. 以要为其还原已删除应用的 Azure AD 租户的全局管理员身份登录。
+1. 以要为其恢复已删除应用的 Azure AD 租户的全局管理员身份登录。
 1. 运行 PowerShell 命令 `Get-AzureADDeletedApplication`。
 1. 在列表中找到显示名称以 `aad-extensions-app` 开头的应用程序，并复制其 `ObjectId` 属性值。
 1. 运行 PowerShell 命令 `Restore-AzureADDeletedApplication -ObjectId {id}`。 将此命令的 `{id}` 部分替换为之前步骤中的 `ObjectId`。
 
-现在应该可以在 Azure 门户中查看还原的应用。
+现在应在 Azure 门户中看到恢复的应用。
 
 ## <a name="next-steps"></a>后续步骤
 

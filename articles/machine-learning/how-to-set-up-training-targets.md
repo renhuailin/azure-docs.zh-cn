@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 06/18/2021
+ms.date: 09/28/2020
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 875407e07af1059c98a2adb6bb0f7b075d78fe02
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 1b4394c7338aabb63654a1462a97518aaff9ada3
+ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112462716"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111408508"
 ---
 # <a name="configure-and-submit-training-runs"></a>配置和提交训练运行
 
@@ -28,7 +28,7 @@ ms.locfileid: "112462716"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用 [Azure 机器学习的免费版或付费版](https://azure.microsoft.com/free/)
+* 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用 [Azure 机器学习的免费版或付费版](https://aka.ms/AMLFree)
 * [适用于 Python 的 Azure 机器学习 SDK](/python/api/overview/azure/ml/install) (>= 1.13.0)
 * [Azure 机器学习工作区](how-to-manage-workspace.md) `ws`
 * 计算目标 `my_compute_target`。  [创建计算目标](how-to-create-attach-compute-studio.md) 
@@ -77,9 +77,7 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 本文中的示例代码假设你已创建了“先决条件”部分的计算目标 `my_compute_target`。
 
 >[!Note]
->不支持将 Azure Databricks 作为用于模型训练的计算目标。 可以使用 Azure Databricks 执行数据准备和部署任务。
-
-[!INCLUDE [arc-enabled-kubernetes](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
+>不支持将 Azure Databricks 作为用于模型训练的计算目标。 可以使用 Azure Databricks 执行数据准备和部署任务。 
 
 ## <a name="create-an-environment"></a>创建环境
 Azure 机器学习[环境](concept-environments.md)是（机器学习训练发生于其中的）环境的封装。 此类学习环境会指定与训练和评分脚本有关的 Python 包、Docker 映像、环境变量和软件设置。 它们还指定运行时（Python、Spark 或 Docker）。

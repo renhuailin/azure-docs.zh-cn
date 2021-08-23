@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: allensu
-ms.openlocfilehash: 42c5b315c9c3560c400c685448a11dc61bf64eb6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 36d45cf5b972feaecb8563f28e931cb344dcc36d
+ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102215606"
+ms.lasthandoff: 06/14/2021
+ms.locfileid: "112080374"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 专用终结点 DNS 配置
 
@@ -45,6 +45,7 @@ Azure 将在公共 DNS 上创建一个规范名称 DNS 记录 (CNAME)。 CNAME �
 | Azure 自动化 /(Microsoft.Automation/automationAccounts)/Webhook、DSCAndHybridWorker | privatelink.azure-automation.net | azure-automation.net |
 | Azure SQL 数据库 (Microsoft.Sql/servers)/sqlServer | privatelink.database.windows.net | database.windows.net |
 | Azure Synapse Analytics (Microsoft.Sql/servers)/sqlServer  | privatelink.database.windows.net | database.windows.net |
+| Azure Synapse Analytics (Microsoft.Synapse/workspaces) / Sql  | privatelink.sql.azuresynapse.net | sql.azuresynapse.net |
 | 存储帐户 (Microsoft.Storage/storageAccounts)/Blob (blob, blob_secondary) | privatelink.blob.core.windows.net | blob.core.windows.net |
 | 存储帐户 (Microsoft.Storage/storageAccounts)/表 (table, table_secondary) | privatelink.table.core.windows.net | table.core.windows.net |
 | 存储帐户 (Microsoft.Storage/storageAccounts)/队列 (queue, queue_secondary) | privatelink.queue.core.windows.net | queue.core.windows.net |
@@ -63,7 +64,7 @@ Azure 将在公共 DNS 上创建一个规范名称 DNS 记录 (CNAME)。 CNAME �
 | Azure Kubernetes 服务 - Kubernetes API (Microsoft.ContainerService/managedClusters)/management | privatelink.{region}.azmk8s.io | {region}.azmk8s.io |
 | Azure 搜索 (Microsoft.Search/searchServices) / searchService | privatelink.search.windows.net | search.windows.net |
 | Azure 容器注册表 (Microsoft.ContainerRegistry/registries) / registry | privatelink.azurecr.io | azurecr.io |
-| Azure 应用程序配置 (Microsoft.AppConfiguration/configurationStores) / configurationStore | privatelink.azconfig.io | azconfig.io |
+| Azure 应用程序配置 (Microsoft.AppConfiguration/configurationStores) / configurationStores | privatelink.azconfig.io | azconfig.io |
 | Azure 备份 (Microsoft.RecoveryServices/vaults) / vault | privatelink.{region}.backup.windowsazure.com | {region}.backup.windowsazure.com |
 | Azure Site Recovery (Microsoft.RecoveryServices/vaults)/vault | {region}.privatelink.siterecovery.windowsazure.com | {region}.hypervrecoverymanager.windowsazure.com |
 | Azure 事件中心 (Microsoft.EventHub/namespaces)/namespace | privatelink.servicebus.windows.net | servicebus.windows.net |
@@ -138,7 +139,7 @@ DNS 是通过成功解析专用终结点 IP 地址使应用程序正常工作的
 > 此配置需要使用单个专用 DNS 区域。 为不同的虚拟网络创建具有相同名称的多个区域时，需要通过手动操作来合并 DNS 记录。
 
 > [!IMPORTANT]
-> 如果使用的是不同订阅的中心辐射型模型中的专用终结点，请在中心重用同一专用 DNS 区域。
+> 如果你在不同的订阅或甚至在同一订阅的中心辐射型模型中使用专用终结点，请将同一专用 DNS 区域链接到包含需要从区域进行 DNS 解析的客户端的所有中心辐射型虚拟网络。
 
 在此方案中，有一个[中心辐射型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)网络拓扑。 辐射型网络共用一个专用终结点。 辐射型虚拟网络关联到同一专用 DNS 区域。 
 
@@ -146,7 +147,7 @@ DNS 是通过成功解析专用终结点 IP 地址使应用程序正常工作的
 
 ## <a name="on-premises-workloads-using-a-dns-forwarder"></a>使用 DNS 转发器的本地工作负荷
 
-要使本地工作负载解析专用终结点的 FQDN，可使用 DNS 转发器在 Azure 中解析 Azure 服务[公共 DNS 区域](#azure-services-dns-zone-configuration)。
+要使本地工作负载解析专用终结点的 FQDN，可使用 DNS 转发器在 Azure 中解析 Azure 服务[公共 DNS 区域](#azure-services-dns-zone-configuration)。 [DNS 转发器](/windows-server/identity/ad-ds/plan/reviewing-dns-concepts#resolving-names-by-using-forwarding)是在与专用 DNS 区域链接的虚拟网络上运行的虚拟机，可以代理来自其他虚拟网络或本地的 DNS 查询。 这是必需的，因为查询必须从虚拟网络发起到 Azure DNS。 DNS 代理的一些选项包括：运行 DNS 服务的 Windows、运行 DNS 服务的 Linux、[Azure 防火墙](../firewall/dns-settings.md)。
 
 以下方案适用于在 Azure 中具有 DNS 转发器的本地网络。 此转发器通过服务器级转发器将所有 DNS 查询解析为 Azure 提供的 DNS [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md)。 
 

@@ -4,14 +4,14 @@ description: 提供有关 Azure 数据工厂 UI 中“复制数据”工具的�
 author: dearandyxu
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 06/01/2021
 ms.author: yexu
-ms.openlocfilehash: 18d61c7f51547a524e64fc44c98e70e0f5bc2752
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68bfa62817d971ce8c8127f44f43576431a499fc
+ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100372988"
+ms.lasthandoff: 06/03/2021
+ms.locfileid: "111371787"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure 数据工厂中的“复制数据”工具
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -54,7 +54,7 @@ Azure 数据工厂“复制数据”工具可简化并优化将数据引入 Data
 
 ![文件设置](./media/copy-data-tool/file-format-settings.png)
 
-检测后：
+检测后，选择“预览数据”：
 
 ![已检测的文件设置和预览](./media/copy-data-tool/after-detection.png)
 
@@ -88,7 +88,7 @@ Azure 数据工厂“复制数据”工具可简化并优化将数据引入 Data
 
 单击“文件或文件夹”的“浏览”按钮，找到其中一个文件夹（例如，2016-> 03-> 01-> 02），并单击“选择”。 文本框中应该会显示 2016/03/01/02。 
 
-然后，请用 {year} 代替 2016、{month} 代替 03、{day} 代替 01、{hour} 代替 02，并按 Tab 键        。 可以看到用于选择这四个变量格式的下拉列表：
+然后，请用 {year} 代替 2016、{month} 代替 03、{day} 代替 01、{hour} 代替 02，并按 Tab 键        。 在“文件加载行为”部分选择“增量加载: 按时间分区的文件夹名称/文件名”并在“属性”页上选择“计划”或“翻转窗口”时，你应该看到用于选择这四个变量的格式的下拉列表：
 
 ![筛选文件或文件夹](./media/copy-data-tool/filter-file-or-folder.png)
 

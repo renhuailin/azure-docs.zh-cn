@@ -1,5 +1,5 @@
 ---
-title: Azure 映像生成器服务 DevOps 任务
+title: 预览：Azure 映像生成器服务 DevOps 任务
 description: Azure DevOps 任务将生成工件注入到 VM 映像中，使你能够安装并配置应用程序和 OS。
 author: danielsollondon
 ms.author: danis
@@ -8,14 +8,15 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: d02a5c6bc194009d459647721dab16be0dcade84
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7055aa967058e1592f757c2dabf7890b1da76632
+ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101670480"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111441791"
 ---
-# <a name="azure-image-builder-service-devops-task"></a>Azure 映像生成器服务 DevOps 任务
+# <a name="azure-image-builder-service-devops-task-preview"></a>Azure 映像生成器服务 DevOps 任务（预览）
 
 本文介绍如何使用 Azure DevOps 任务将生成工件注入到 VM 映像中，以便能够安装并配置应用程序和 OS。
 
@@ -28,6 +29,9 @@ ms.locfileid: "101670480"
 * [“不稳定”AIB 任务](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary)：在我们将此版本提升为“稳定”任务之前，我们可在此版本中加入最新的更新和功能，并让客户对其进行测试。 如果未报告任何问题，并且在我们的遥测数据未显示出任何问题，则在大约 1 周后，我们就会将任务代码提升为“稳定”。 
 
 ## <a name="prerequisites"></a>先决条件
+
+> [!NOTE]
+> AIB 任务当前不支持 Windows 重启、以管理员身份运行提升的命令，这意味着它不适用于需要上述操作的 Windows 虚拟桌面场景或 Windows 自定义项。 如果希望将 DevOps 与映像生成器配合使用，应将模板嵌套到 Azure 资源管理器任务中，使用 AZ CLI 或 PowerShell 任务。
 
 * [从 Visual Studio Marketplace 安装稳定 DevOps 任务](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)。
 * 必须有一个 VSTS DevOps 帐户，并已创建生成管道
