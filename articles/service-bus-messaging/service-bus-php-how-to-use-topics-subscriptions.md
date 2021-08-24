@@ -1,17 +1,17 @@
 ---
 title: 如何通过 PHP 使用 Azure 服务总线主题
-description: 本教程介绍如何通过 PHP 应用程序使用 Azure 服务总线主题和订阅。
+description: 本文介绍如何通过 PHP 应用程序使用 Azure 服务总线主题和订阅。
 ms.devlang: PHP
-ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: 7cdb6ca30b2c9abf2c2525057a90888b2c5d1c78
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.topic: how-to
+ms.date: 07/27/2021
+ms.openlocfilehash: 0265b138b2f6f44961d085ca8492ba125b9a36b2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113302529"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725115"
 ---
-# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>快速入门：如何通过 PHP 使用服务总线主题和订阅
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>如何通过 PHP 使用服务总线主题和订阅
 
 本文说明如何使用服务总线主题和订阅。 示例采用 PHP 编写并使用 [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php)。 涉及的方案包括：
 
@@ -26,11 +26,11 @@ ms.locfileid: "113302529"
  
 
 ## <a name="prerequisites"></a>先决条件
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 按照 [快速入门：使用 Azure 门户创建一个服务总线主题和对此主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来创建服务总线 **命名空间** 并获取 **连接字符串**。
+1. Azure 订阅。 要完成本文中的步骤，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 遵循 [快速入门：使用 Azure 门户创建服务总线主题以及对该主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)中的步骤创建服务总线 **命名空间** 并获取 **连接字符串**。
 
     > [!NOTE]
-    > 在本快速入门中，你将使用 **PHP** 创建一个 **主题** 和对此主题的 **订阅**。 
+    > 在本文中，你将使用 PHP 创建“主题”以及对该主题的“订阅”  。 
 
 ## <a name="create-a-php-application"></a>创建 PHP 应用程序
 创建访问 Azure Blob 服务的 PHP 应用程序的唯一要求是从代码中引用[用于 PHP 的 Azure SDK](https://github.com/Azure/azure-sdk-for-php) 中的类。 可以使用任何开发工具或记事本创建应用程序。

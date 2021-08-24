@@ -1,14 +1,14 @@
 ---
 title: Azure 事件中心功能概述 | Microsoft Docs
 description: 本文详细介绍 Azure 事件中心的功能和术语。
-ms.topic: article
-ms.date: 03/15/2021
-ms.openlocfilehash: e75e8fe3b405652e245119cafa828e752436095b
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.topic: overview
+ms.date: 08/03/2021
+ms.openlocfilehash: 79773db042aacc6805bb2c4081815248bc6cb076
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111422114"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733911"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中心的功能和术语
 
@@ -25,7 +25,9 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 
 ## <a name="namespace"></a>命名空间
-事件中心命名空间提供 DNS 集成网络终结点与一系列的访问控制和网络集成管理功能（例如 [IP 筛选](event-hubs-ip-filtering.md)、[虚拟网络服务终结点](event-hubs-service-endpoints.md)和[专用链接](private-link-service.md)），并且是用于多个事件中心实例（或 Kafka 用语中的“主题”）之一的管理容器。
+事件中心命名空间是事件中心（在 Kafka 术语中称为“主题”）的管理容器。 事件中心命名空间提供 DNS 集成网络终结点与一系列的访问控制和网络集成管理功能（例如 [IP 筛选](event-hubs-ip-filtering.md)、[虚拟网络服务终结点](event-hubs-service-endpoints.md)和[专用链接](private-link-service.md)），并且 
+
+:::image type="content" source="./media/event-hubs-features/namespace.png" alt-text="显示事件中心命名空间的图像":::
 
 ## <a name="event-publishers"></a>事件发布者
 
@@ -85,8 +87,14 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 使用[事件中心捕获](event-hubs-capture-overview.md)，可以自动捕获事件中心的流式处理数据，并将其保存到所选 Blob 存储帐户或 Azure Data Lake 服务帐户。 可以从 Azure 门户启用“捕获”，并指定用于执行捕获的最小大小和时间窗口。 使用事件中心捕获，用户可以指定自己的 Azure Blob 存储帐户和容器或 Azure Data Lake 服务帐户（其中之一用于存储已捕获数据）。 捕获的数据以 Apache Avro 格式编写。
 
+:::image type="content" source="./media/event-hubs-features/capture.png" alt-text="显示将事件中心数据捕获到 Azure 存储或 Azure Data Lake Storage 中的图像":::
+
+事件中心捕获生成的文件具有以下 Avro 架构：
+
+:::image type="content" source="./media/event-hubs-capture-overview/event-hubs-capture3.png" alt-text="显示捕获数据的结构的图像":::
+
 ## <a name="partitions"></a>分区
-[!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
+[!INCLUDE [event-hubs-partitions](./includes/event-hubs-partitions.md)]
 
 
 ## <a name="sas-tokens"></a>SAS 令牌
@@ -137,7 +145,7 @@ Azure SDK 提供的某些客户端是智能使用者代理，可以自动管理�
 > 如果你在一个环境中使用 Azure Blob 存储作为检查点存储，该环境支持与 Azure 上通常可用的存储 Blob SDK 版本不同的版本，那么你需要使用代码将存储服务 API 版本更改为该环境支持的特定版本。 例如，如果在 [Azure Stack Hub 版本 2002 上运行事件中心](/azure-stack/user/event-hubs-overview)，则存储服务的最高可用版本为 2017-11-09。 在这种情况下，需要使用代码将存储服务 API 版本设定为 2017-11-09。 如需通过示例来了解如何以特定的存储 API 版本为目标，请参阅“GitHub 上的这些示例”： 
 > - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/) 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
-> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) 或 [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/eventhubs-checkpointstore-blob/samples/v1/javascript) 或 [TypeScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/eventhub/eventhubs-checkpointstore-blob/samples/v1/typescript)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/)
 
 ### <a name="common-consumer-tasks"></a>常见的使用者任务

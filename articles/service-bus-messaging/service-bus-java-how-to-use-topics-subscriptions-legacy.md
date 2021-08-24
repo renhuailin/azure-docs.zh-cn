@@ -1,8 +1,8 @@
 ---
 title: 通过 Java 使用 Azure 服务总线主题和订阅
-description: 在本快速入门中，先编写 Java 代码，将消息发送到某个 Azure 服务总线主题，然后从该主题的订阅中接收消息。
-ms.date: 06/23/2020
-ms.topic: quickstart
+description: 在本文中，你将编写一些 Java 代码，用于将消息发送到 Azure 服务总线主题，然后从该主题的订阅接收消息。
+ms.date: 07/27/2021
+ms.topic: how-to
 ms.devlang: Java
 ms.custom:
 - seo-java-july2019
@@ -10,23 +10,23 @@ ms.custom:
 - seo-java-september2019
 - devx-track-java
 - mode-api
-ms.openlocfilehash: c20a9372ddc951b7d4184a7abeda9537006c4865
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f6f0520797a5c221f1c3e1ea60c22d1576bad07e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533378"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736242"
 ---
-# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>快速入门：通过 Java 使用服务总线主题和订阅
-在本快速入门中，先编写 Java 代码，将消息发送到某个 Azure 服务总线主题，然后从该主题的订阅中接收消息。 
+# <a name="use-service-bus-topics-and-subscriptions-with-java-old-package"></a>通过 Java 使用服务总线主题和订阅（旧包）
+在本文中，你将编写 Java 代码，用于将消息发送到 Azure 服务总线主题，然后从该主题的订阅接收消息。 
 
 > [!WARNING]
->  本快速入门使用旧的 azure-servicebus 包。 对于使用最新 azure-messaging-servicebus 包的快速入门，请参阅[使用 azure-messaging-servicebus 发送和接收消息](service-bus-java-how-to-use-topics-subscriptions.md)。
+>  本文使用旧的 azure-servicebus 包。 对于使用最新 azure-messaging-servicebus 包的文章，请参阅[使用 azure-messaging-servicebus 发送和接收消息](service-bus-java-how-to-use-topics-subscriptions.md)。
 
 
 ## <a name="prerequisites"></a>先决条件
 
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+1. Azure 订阅。 要完成本文中的步骤，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 2. 遵循[快速入门：使用 Azure 门户创建服务总线主题和主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
     1. 创建一个服务总线 **命名空间**。
     2. 获取 **连接字符串**。

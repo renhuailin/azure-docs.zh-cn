@@ -1,21 +1,21 @@
 ---
 title: 如何通过 PHP 使用 Azure 服务总线队列
-description: 本教程介绍如何创建 PHP 应用程序，以便向服务总线队列发送消息以及从中接收消息。
+description: 本文介绍如何创建 PHP 应用程序，用于向/从服务总线队列发送/接收消息。
 services: service-bus-messaging
 ms.devlang: PHP
-ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: 46f2f4a532b8b2e3001ec7f0411498f74919a36b
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.topic: how-to
+ms.date: 07/23/2021
+ms.openlocfilehash: d0909c4e2ea5ef53a1438ce05f5ddad485c80248
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113302549"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725127"
 ---
-# <a name="quickstart-how-to-use-service-bus-queues-with-php"></a>快速入门：如何通过 PHP 使用服务总线队列
+# <a name="how-to-use-service-bus-queues-with-php"></a>如何通过 PHP 使用服务总线队列
 [!INCLUDE [service-bus-selector-queues](./includes/service-bus-selector-queues.md)]
 
-本教程介绍如何创建 PHP 应用程序，以便向服务总线队列发送消息以及从中接收消息。 
+本文介绍如何创建 PHP 应用程序，用于向/从服务总线队列发送/接收消息。 
 
 > [!IMPORTANT]
 > 截至 2021 年 2 月，适用于 PHP 的 Azure SDK 已进入停用阶段，不再受到 Microsoft 的正式支持。 有关详细信息，请参阅 GitHub 上的[此公告](https://github.com/Azure/azure-sdk-for-php#important-annoucement)。 本文将很快停用。 
@@ -28,7 +28,7 @@ ms.locfileid: "113302549"
     3. 获取 **连接字符串**。 
 
         > [!NOTE]
-        > 在本教程中，需使用 PHP 在服务总线命名空间中创建一个 **队列**。 
+        > 在本文中，你将使用 PHP 在服务总线命名空间中创建一个队列。 
 3. [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php)
 
 ## <a name="create-a-php-application"></a>创建 PHP 应用程序

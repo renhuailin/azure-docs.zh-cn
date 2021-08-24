@@ -1,28 +1,28 @@
 ---
-title: Azure 服务总线队列入门 | Microsoft Docs
-description: 在本教程中，你将创建 .NET Core 控制台应用程序来向服务总线队列发送消息以及从中接收消息。
-ms.topic: quickstart
+title: 通过 .NET 使用 Azure 服务总线队列（旧版本）
+description: 在本文中，你将创建 .NET Core 控制台应用程序来向/从服务总线队列发送/接收消息。
+ms.topic: how-to
 ms.tgt_pltfrm: dotnet
-ms.date: 09/01/2020
+ms.date: 07/27/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d92a5e0b0d1a6953d0043f85ff98f6740aaacebb
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 86ff3608a0575413b6c5c30eec05ec0bb898247e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107864007"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748061"
 ---
-# <a name="get-started-with-service-bus-queues"></a>服务总线队列入门
-在本教程中，你将创建 .NET Core 控制台应用程序来向服务总线队列发送消息以及从中接收消息。
+# <a name="send-and-receive-messages-from-azure-service-bus-queues-using-net-old-package"></a>使用 .NET 向/从 Azure 服务总线队列发送/接收消息（旧包）
+在本文中，你将创建 .NET Core 控制台应用程序来向/从服务总线队列发送/接收消息。
 
 > [!WARNING]
-> 本快速入门使用旧的 Microsoft.Azure.ServiceBus 包。 对于使用最新 Azure.Messaging.ServiceBus 包的快速入门，请参阅[使用 Azure.Messaging.ServiceBus 包发送和接收事件](service-bus-dotnet-get-started-with-queues.md)。 
+> 本文使用旧的 Microsoft.Azure.ServiceBus 包。 对于使用最新 Azure.Messaging.ServiceBus 包的文章，请参阅[使用 Azure.Messaging.ServiceBus 包发送和接收事件](service-bus-dotnet-get-started-with-queues.md)。 
 
 ## <a name="prerequisites"></a>先决条件
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs)。
 - [NET Core SDK](https://dotnet.microsoft.com/download) 2.0 或更高版本。
-- Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或[注册免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+- Azure 订阅。 要完成本文中的步骤，需要一个 Azure 帐户。 可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或[注册免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 - 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。
 
   - 阅读服务总线队列的快速概述。

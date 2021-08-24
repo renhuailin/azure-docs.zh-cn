@@ -1,29 +1,29 @@
 ---
-title: Azure 服务总线主题和订阅入门 | Microsoft Docs
+title: 通过 .NET 使用 Azure 服务总线主题和订阅（旧版本）
 description: 编写一个 C# .NET Core 控制台应用程序，以便使用服务总线消息传递主题和订阅。
-ms.topic: quickstart
+ms.topic: how-to
 ms.tgt_pltfrm: dotnet
-ms.date: 09/02/2020
+ms.date: 07/27/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a64ccec49248f48a85782cfe9537513a97b2bdfc
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 4644cc6ed4c3f668c7a53ad963e7779740f0b771
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868152"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736269"
 ---
-# <a name="get-started-with-service-bus-topics"></a>服务总线主题入门
-本教程涵盖以下步骤：
+# <a name="use-service-bus-topics-and-subscriptions-with-net-old-package"></a>通过 .NET 使用服务总线主题和订阅（旧包）
+本文涵盖以下步骤：
 
 1. 编写 .NET Core 控制台应用程序，向主题发送一组消息。
 2. 编写 .NET Core 控制台应用程序，从订阅接收这些消息。
 
 > [!WARNING]
-> 本快速入门使用旧的 Microsoft.Azure.ServiceBus 包。 如需了解使用最新 Azure.Messaging.ServiceBus 包的快速入门，请参阅[使用 Azure.Messaging.ServiceBus 包发送和接收消息](service-bus-dotnet-how-to-use-topics-subscriptions.md)。 若要将应用程序从使用旧库迁移到使用新库，请参阅[从 Microsoft.Azure.ServiceBus 迁移到 Azure.Messaging.ServiceBus 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide.md)。 
+> 本文使用旧的 Microsoft.Azure.ServiceBus 包。 对于使用最新 Azure.Messaging.ServiceBus 包的文章，请参阅[使用 Azure.Messaging.ServiceBus 包发送和接收消息](service-bus-dotnet-how-to-use-topics-subscriptions.md)。 若要将应用程序从使用旧库迁移到使用新库，请参阅[从 Microsoft.Azure.ServiceBus 迁移到 Azure.Messaging.ServiceBus 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide.md)。 
 
 ## <a name="prerequisites"></a>先决条件
 
-1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+1. Azure 订阅。 要完成本文中的步骤，需要一个 Azure 帐户。 可以激活 [Visual Studio 或 MSDN 订阅者权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 2. 遵循[快速入门：使用 Azure 门户创建服务总线主题和主题的订阅](service-bus-quickstart-topics-subscriptions-portal.md)来执行以下任务：
     1. 创建一个服务总线 **命名空间**。
     2. 获取 **连接字符串**。
