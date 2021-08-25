@@ -4,15 +4,15 @@ description: 在本教程中，你将创建一个带管道的 Azure 数据工厂
 author: dearandyxu
 ms.author: yexu
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
-ms.custom: seo-dt-2019
 ms.date: 07/05/2021
-ms.openlocfilehash: a7730a12f6e017c23e5007b030cb4b6b05be4761
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: e884869b77398ab32987363bb85367d46a958380
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113436257"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638383"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>使用 Azure 门户以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 

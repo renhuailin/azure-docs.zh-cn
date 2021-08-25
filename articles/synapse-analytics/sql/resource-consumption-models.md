@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e31fd58887dfa179bc01f89ec7e56dc93fa3b6b8
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: c135b0e1e1e5c1b8c57b4b8ba7af06d165f00ac8
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112540233"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862334"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL 资源消耗
 
@@ -54,7 +54,7 @@ Synapse SQL 池表示所预配的分析资源的集合。 分析资源定义为 
 服务级别目标 (SLO) 是确定数据仓库的成本和性能级别的可伸缩性设置。 第 2 代专用 SQL 池的服务级别是以数据仓库单位 (DWU) 计量的，例如 DW2000c。
 
 > [!NOTE]
-> Azure Synapse Analytics Gen2 最近添加了额外的缩放功能，以支持低至 100 cDWU 的计算层。 当前在 Gen1 上需要较低计算层的现有数据仓库现可升级到当前可用区域中的 Gen2，无需额外成本。  如果你的区域尚不支持，仍可升级到支持的区域。 有关详细信息，请参阅[升级到 Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+> Azure Synapse Analytics Gen2 最近添加了额外的缩放功能，以支持低至 100 cDWU 的计算层。 当前在 Gen1 上需要较低计算层的现有数据仓库现可升级到当前可用区域中的 Gen2，无需额外成本。  如果你的区域尚不支持，仍可升级到支持的区域。 有关详细信息，请参阅[升级到 Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?context=/azure/synapse-analytics/context/context)。
 
 在 T-SQL 中，SERVICE_OBJECTIVE 设置决定了专用 SQL 池的服务级别和性能层级。
 
@@ -79,7 +79,7 @@ DWU 和 cDWU 都支持增加或减少计算，以及在无需使用数据仓库�
 
 #### <a name="capacity-limits"></a>容量限制
 
-每个 SQL Server（例如 myserver.database.windows.net）都有一个允许指定数据仓库单位数的[数据库事务单位 (DTU)](../../azure-sql/database/service-tiers-dtu.md) 配额。 有关详细信息，请参阅[工作负荷管理容量限制](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management)。
+每个 SQL Server（例如 myserver.database.windows.net）都有一个允许指定数据仓库单位数的[数据库事务单位 (DTU)](../../azure-sql/database/service-tiers-dtu.md) 配额。 有关详细信息，请参阅[工作负荷管理容量限制](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?context=/azure/synapse-analytics/context/context#workload-management)。
 
 ### <a name="assess-the-number-of-data-warehouse-units-you-need"></a>评估所需的数据仓库单位数
 
@@ -216,4 +216,4 @@ AND       major_resource_id = 'MySQLDW'
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关如何管理性能的详细信息，请参阅[用于工作负荷管理的资源类](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)和[内存和并发限制](../sql-data-warehouse/memory-concurrency-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+若要了解有关如何管理性能的详细信息，请参阅[用于工作负荷管理的资源类](../sql-data-warehouse/resource-classes-for-workload-management.md?context=/azure/synapse-analytics/context/context)和[内存和并发限制](../sql-data-warehouse/memory-concurrency-limits.md?context=/azure/synapse-analytics/context/context)。

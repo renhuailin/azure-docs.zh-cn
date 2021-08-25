@@ -3,12 +3,12 @@ title: 快速入门：在自定义容器中创建基于 Azure Arc 的函数应�
 description: 通过在自定义 Linux 容器中部署第一个函数应用，开始在 Azure Arc 上使用 Azure Functions。
 ms.topic: quickstart
 ms.date: 05/11/2021
-ms.openlocfilehash: 28079b9a7821350736647d49815c541f6a79d119
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 48940e70e1678e4426efb34e40b3b16b742e4f5c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111525617"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746739"
 ---
 # <a name="create-your-first-function-on-azure-arc-using-a-custom-container-preview"></a>使用自定义容器创建第一个基于 Azure Arc 的函数（预览版）
 
@@ -101,7 +101,7 @@ ms.locfileid: "111525617"
     cd LocalFunctionProj
     ```
 
-    此文件夹包含项目的其他 Dockerfile 文件，其中包括名为 [local.settings.json](functions-run-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 的配置文件。 默认情况下，local.settings.json 文件会从 .gitignore 文件的源代码管理中排除。  此排除是因为该文件可以包含从 Azure 下载的机密。
+    此文件夹包含项目的其他 Dockerfile 文件，其中包括名为 [local.settings.json](functions-develop-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 的配置文件。 默认情况下，local.settings.json 文件会从 .gitignore 文件的源代码管理中排除。  此排除是因为该文件可以包含从 Azure 下载的机密。
 
 1. 打开生成的 `Dockerfile` 并找到基础映像的 `3.0` 标记。 如果有 `3.0` 标记，请将其替换为 `3.0.15885` 标记。 例如，在 JavaScript 应用程序中，Docker 文件应该修改为包含 `FROM mcr.microsoft.com/azure-functions/node:3.0.15885`。 此版本的基础映像支持部署到已启用 Azure Arc 的 Kubernetes 群集。 
 

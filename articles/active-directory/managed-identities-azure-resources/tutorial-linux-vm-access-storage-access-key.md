@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/24/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d554e5cc535975ad7c9f2ccb4c228e33e489645e
-ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
+ms.openlocfilehash: 94c7cdbdfabbe525c9176ea7fe6f88f55c9b1baa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113038023"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738713"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>教程：使用 Linux VM 系统分配的托管标识通过访问密钥访问 Azure 存储
 
@@ -68,7 +68,7 @@ Azure 存储原本不支持 Azure AD 身份验证。  但是，可以使用 VM �
 有关详细步骤，请参阅[使用 Azure 门户分配 Azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 >[!NOTE]
-> 有关可用于授予存储权限的各种角色的信息，请查看[使用 Azure Active Directory 对 Blob 和队列授予访问权限](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)。
+> 有关可用于授予存储权限的各种角色的信息，请查看[使用 Azure Active Directory 对 Blob 和队列授予访问权限](../../storage/blobs/authorize-access-azure-active-directory.md#assign-azure-roles-for-access-rights)。
 
 
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 标识获取访问令牌，并使用它调用 Azure 资源管理器

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
 ms.custom: devx-track-js
-ms.openlocfilehash: f8ffa90ba0f1ac32d4691165fabf3d8eb9fb7605
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f158064b68de37c68dc0c01d3c6539f8c95736a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91335443"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752324"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 创建你的第一个持久函数
 
@@ -23,7 +23,7 @@ ms.locfileid: "91335443"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 * 安装 [Visual Studio Code](https://code.visualstudio.com/download)。
 
@@ -51,12 +51,12 @@ ms.locfileid: "91335443"
 
     | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
-    | 选择函数应用项目的语言 | JavaScript | 创建本地 Node.js Functions 项目。 |
+    | 选择函数应用项目的语言 | Javascript | 创建本地 Node.js Functions 项目。 |
     | 选择版本 | Azure Functions v3 | 仅当尚未安装 Core Tools 时，才会出现此选项。 在本例中，当你首次运行应用时即已安装 Core Tools。 |
     | 为项目的第一个函数选择模板 | 暂时跳过 | |
     | 选择打开项目的方式 | 在当前窗口中打开 | 在所选的文件夹中重新打开 VS Code。 |
 
-Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会在某个文件夹中创建一个函数应用项目。 此项目包含 [host.json](../functions-host-json.md) 和 [local.settings.json](../functions-run-local.md#local-settings-file) 配置文件。
+Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会在某个文件夹中创建一个函数应用项目。 此项目包含 [host.json](../functions-host-json.md) 和 [local.settings.json](../functions-develop-local.md#local-settings-file) 配置文件。
 
 此外，还会在根文件夹中创建 package.json 文件。
 
@@ -128,7 +128,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
 
 使用 Azure Functions Core Tools 可以在本地开发计算机上运行 Azure Functions 项目。 首次从 Visual Studio Code 启动某个函数时，系统会提示你安装这些工具。
 
-1. 若要测试函数，请在 `Hello` 活动函数代码 (*Hello/node.js*) 中设置断点。 按 F5 或者在命令面板中选择 `Debug: Start Debugging` 以启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”  面板中。
+1. 若要测试函数，请在 `Hello` 活动函数代码 (*Hello/node.js*) 中设置断点。 按 F5 或者在命令面板中选择 `Debug: Start Debugging` 以启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”面板中。
 
     > [!NOTE]
     > 有关调试的详细信息，请参阅 [Durable Functions 诊断](durable-functions-diagnostics.md#debugging)。
@@ -145,7 +145,7 @@ Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会
     | 选择存储帐户 | 新建存储帐户 |  |
     | 输入新存储帐户的名称 | *唯一名称* | 要创建的存储帐户的名称 |
     | 选择资源组 | *唯一名称* | 要创建的资源组名称 |
-    | 选择位置 | *region* | 选择离你较近的区域 |
+    | 选择一个位置 | *region* | 选择离你较近的区域 |
 
 1. 在“终端”  面板中，复制 HTTP 触发的函数的 URL 终结点。
 

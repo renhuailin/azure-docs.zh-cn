@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: e6d06cb63b3fa52e83605abf565afdb7eb9e167b
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: dc5240d3b0d4e2fa7b209d5f1a3b8b3f9acd01c7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691740"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738471"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>探索如何使用 Azure SQL 数据库、Azure Synapse Analytics、数据工厂和 Power BI 进行 SaaS 分析
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -164,7 +164,7 @@ Azure 数据工厂用于协调数据的提取、加载和转换。 从本教程�
 ![adf_linkedservices](./media/saas-tenancy-tenant-analytics-adf/linkedservices.JPG)
 
 对应于三个链接服务，有三个数据集引用了在管道活动中用作输入或输出的数据。 请浏览每个数据集，以观察所用的连接和参数。 _AzureBlob_ 指向包含源表和目标表，以及每个源中的跟踪器列的配置文件。
-  
+
 ### <a name="data-warehouse-pattern-overview"></a>数据仓库模式概述
 
 使用 Azure Synapse 作为分析存储，对租户数据执行聚合。 本示例中使用 PolyBase 将数据载入数据仓库。 原始数据载入临时表，这些表中包含一个标识列，用于跟踪已转换为星型架构表的行。 下图显示了加载模式：![示意图显示了数据库表的加载模式。](./media/saas-tenancy-tenant-analytics-adf/loadingpattern.JPG)
@@ -208,7 +208,7 @@ Azure 数据工厂用于协调数据的提取、加载和转换。 从本教程�
 
     ![sign-in-to-power-bi](./media/saas-tenancy-tenant-analytics-adf/powerBISignIn.PNG)
 
-5. 在左窗格中选择“数据库”，然后输入“developer”作为用户名，输入“P\@ssword1”作为密码。 单击“连接”。  
+5. 在左窗格中选择“数据库”，然后输入“developer”作为用户名，输入“P\@ssword1”作为密码。 单击“连接”。
 
     ![database-sign-in](./media/saas-tenancy-tenant-analytics-adf/databaseSignIn.PNG)
 
@@ -244,7 +244,7 @@ Azure 数据工厂用于协调数据的提取、加载和转换。 从本教程�
 
 同时，某些 Wingtip Tickets 客户抱怨他们正在努力售出足够多的票证，以抵消服务费用。 通过这些见解，绩效不佳的会场也许能够找到促升门票销量的机会。 销量提高会增大服务的认知价值。 右键单击“fact_Tickets”并选择“新建度量值”。 针对名为 **AverageTicketsSold** 的新度量值输入以下表达式：
 
-```sql
+```DAX
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))
 ```
 

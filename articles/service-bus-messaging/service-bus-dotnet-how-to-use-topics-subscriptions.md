@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 06/29/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: b101603577324200c348a7522596b44db8049a05
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 8a53a8099df37ec3f24489cccaf91af2d53c97ce
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457836"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747126"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-its-subscriptions-net"></a>向 Azure 服务总线主题发送消息，并从其订阅接收消息 (.NET)
 本快速入门介绍如何使用 [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) .NET 库向服务总线主题发送消息和接收有关该主题订阅的消息。
@@ -98,7 +98,7 @@ ms.locfileid: "114457836"
                     // create a batch 
                     using ServiceBusMessageBatch messageBatch = await sender.CreateMessageBatchAsync();
         
-                    for (int i = 1; i <= 3; i++)
+                    for (int i = 1; i <= numOfMessages; i++)
                     {
                         // try adding a message to the batch
                         if (!messageBatch.TryAddMessage(new ServiceBusMessage($"Message {i}")))
