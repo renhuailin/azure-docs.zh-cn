@@ -14,12 +14,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 04/05/2021
 ms.author: mametcal
-ms.openlocfilehash: 9f9f5bff0cc0c1e70178cab1e1b0e29ffbd8fc90
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 1b4dbe38c1b70bb44eb1c280e56954c150a5a23a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114479587"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739895"
 ---
 # <a name="tutorial-use-dynamic-configuration-using-push-refresh-in-a-java-spring-app"></a>教程：通过在 Java Spring 应用中使用推送刷新来使用动态配置
 
@@ -27,7 +27,7 @@ ms.locfileid: "114479587"
 
 - 轮询模型：这是使用轮询检测配置更改的默认行为。 设置的缓存值到期后，对 `AppConfigurationRefresh` 的 `refreshConfigurations` 的下一次调用将向服务器发送请求，以检查配置是否已更改，并根据需要拉取已更新的配置。
 
-- 推送模型：这将使用[应用配置事件](./concept-app-configuration-event.md)检测配置更改。 应用程序配置设置为使用事件网格发送键值更改事件后，应用程序就可以通过 [Webhook](/azure/event-grid/handler-event-hubs)，使用这些事件来优化保持配置更新所需的请求总数。
+- 推送模型：这将使用[应用配置事件](./concept-app-configuration-event.md)检测配置更改。 应用程序配置设置为使用事件网格发送键值更改事件后，应用程序就可以通过 [Webhook](../event-grid/handler-event-hubs.md)，使用这些事件来优化保持配置更新所需的请求总数。
 
 本教程演示如何在代码中使用推送刷新实现动态配置更新。 它建立在快速入门中介绍的应用之上。 请先完成[使用应用程序配置创建 Java Spring 应用](./quickstart-java-spring-app.md)，然后再继续。
 
@@ -68,7 +68,7 @@ ms.locfileid: "114479587"
            </dependency>
    ```
 
-1. 设置 [Maven 应用服务部署](/azure/app-service/quickstart-java?tabs=javase)，以便可以通过 Maven 将应用程序部署到 Azure 应用服务。
+1. 设置 [Maven 应用服务部署](../app-service/quickstart-java.md?tabs=javase)，以便可以通过 Maven 将应用程序部署到 Azure 应用服务。
 
    ```console
    mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
@@ -95,7 +95,7 @@ ms.locfileid: "114479587"
 
 ## <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
-事件网格 Webhook 需要在创建时进行验证。 可以按照本[指南](/azure/event-grid/webhook-event-delivery)进行验证，也可以通过启动已配置了 Azure 应用程序配置 Spring Web 库（此过程将注册应用程序）的应用程序来验证。 要使用事件订阅，请按照以下两部分中的步骤操作。
+事件网格 Webhook 需要在创建时进行验证。 可以按照本[指南](../event-grid/webhook-event-delivery.md)进行验证，也可以通过启动已配置了 Azure 应用程序配置 Spring Web 库（此过程将注册应用程序）的应用程序来验证。 要使用事件订阅，请按照以下两部分中的步骤操作。
 
 1. 将环境变量设置为应用程序配置实例的连接字符串：
 
@@ -152,7 +152,7 @@ ms.locfileid: "114479587"
     :::image type="content" source="./media/event-subscription-view-webhook.png" alt-text="Webhook 显示在页面底部的表中。" :::
 
 > [!NOTE]
-> 订阅配置更改时，可以使用一个或多个筛选器来减少发送到应用程序的事件数。 这些筛选器可以配置为[事件网格订阅筛选器](/azure/event-grid/event-filtering.md)或[服务总线订阅筛选器](/azure/service-bus-messaging/topic-filters.md)。 例如，订阅筛选器可用于仅订阅以特定字符串开头的键的更改的事件。
+> 订阅配置更改时，可以使用一个或多个筛选器来减少发送到应用程序的事件数。 这些筛选器可以配置为[事件网格订阅筛选器](../event-grid/event-filtering.md)或[服务总线订阅筛选器](../service-bus-messaging/topic-filters.md)。 例如，订阅筛选器可用于仅订阅以特定字符串开头的键的更改的事件。
 
 ## <a name="verify-and-test-application"></a>验证并测试应用程序
 

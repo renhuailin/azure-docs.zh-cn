@@ -8,19 +8,19 @@ ms.author: bobazile
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 15e6c2383539a1b7c119346ea0624a01964f2364
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 27b1b08196ef76bba92bf1f2ff518585c896178a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762753"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743531"
 ---
 # <a name="session-border-controllers-and-voice-routing"></a>会话边界控制器和语音路由
 使用 Azure 通信服务直接路由可将现有电话服务基础结构连接到 Azure。 本文列出了将支持的会话边界控制器 (SBC) 连接到直接路由所要执行的概要步骤，并介绍了如何对已启用的通信资源运行语音路由。 
 
 [!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
  
-有关 Azure 通信服务直接路由是否是适合你组织的解决方案的信息，请参阅 [Azure 电话服务概念](./telephony-concept.md)。 有关先决条件和部署规划的信息，请参阅[通信服务直接路由基础结构要求](./sip-interface-infrastructure.md)。
+有关 Azure 通信服务直接路由是否是适合你组织的解决方案的信息，请参阅 [Azure 电话服务概念](./telephony-concept.md)。 有关先决条件和部署规划的信息，请参阅[通信服务直接路由基础结构要求](./direct-routing-infrastructure.md)。
 
 ## <a name="connect-the-sbc-with-azure-communication-services"></a>将 SBC 连接到 Azure 通信服务
 
@@ -32,7 +32,7 @@ ms.locfileid: "113762753"
 - 例如，如果在 O365 中注册的域是 `contoso.com`，则不能对通信服务使用 `sbc.contoso.com`。 但是，如果 O365 中不存在上级域，可以使用上级域：可以创建 `acs.contoso.com` 域并使用 FQDN `sbc.acs.contoso.com` 作为 SBC 名称。
 - SBC 证书必须与该名称匹配；通配符证书受支持。
 - *.onmicrosoft.com 域不可用于 SBC 的 FQDN。
-有关完整的要求列表，请参阅 [Azure 直接路由基础结构要求](./sip-interface-infrastructure.md)。
+有关完整的要求列表，请参阅 [Azure 直接路由基础结构要求](./direct-routing-infrastructure.md)。
 
    :::image type="content" source="../media/direct-routing-provisioning/add-session-border-controller.png" alt-text="添加会话边界控制器。":::
 - 完成后，单击“下一步”。

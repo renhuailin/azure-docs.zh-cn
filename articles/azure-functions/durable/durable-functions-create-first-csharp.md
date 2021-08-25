@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
-ms.openlocfilehash: da5819c6a40e1d5a513e9d742702d5435f4efbeb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: cbbe782260852194352ae2db508ce3dbaa1867ae
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110465965"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739880"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>使用 C\# 创建你的第一个持久函数
 
@@ -25,7 +25,7 @@ ms.locfileid: "110465965"
 
 ## <a name="prerequisites"></a>必备条件
 
-完成本教程：
+为完成此教程：
 
 * 安装 [Visual Studio Code](https://code.visualstudio.com/download)。
 
@@ -60,7 +60,7 @@ ms.locfileid: "110465965"
     | 为项目的第一个函数选择模板 | 暂时跳过 | |
     | 选择打开项目的方式 | 在当前窗口中打开 | 在所选的文件夹中重新打开 VS Code。 |
 
-Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会在某个文件夹中创建一个函数应用项目。 此项目包含 [host.json](../functions-host-json.md) 和 [local.settings.json](../functions-run-local.md#local-settings-file) 配置文件。
+Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会在某个文件夹中创建一个函数应用项目。 此项目包含 [host.json](../functions-host-json.md) 和 [local.settings.json](../functions-develop-local.md#local-settings-file) 配置文件。
 
 ## <a name="add-functions-to-the-app"></a>向应用中添加函数
 

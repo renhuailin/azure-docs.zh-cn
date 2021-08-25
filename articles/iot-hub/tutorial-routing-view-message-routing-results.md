@@ -2,19 +2,18 @@
 title: 教程 - 查看 Azure IoT 中心消息路由结果 (.NET) | Microsoft Docs
 description: 教程 - 在使用本教程的第 1 部分设置了所有资源之后，添加将消息路由到 Azure 流分析的功能并在 Power BI 中查看结果。
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: d8d7d42b7c459b1414fbce6e0fa70a1577d55327
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 0ba5032d13e41702064aa1502bc9f7930624fc11
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110689604"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742234"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>教程：第 2 部分 - 查看路由的消息
 

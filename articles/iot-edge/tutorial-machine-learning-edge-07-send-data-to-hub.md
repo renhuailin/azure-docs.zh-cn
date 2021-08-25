@@ -2,19 +2,18 @@
 title: 教程：通过透明网关发送设备数据 - Azure IoT Edge 上的机器学习
 description: 本教程介绍如何使用开发计算机作为模拟的 IoT Edge 设备，通过配置为透明网关的设备将数据发送到 IoT 中心。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 6/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a830c2cbbc16d5d5e93e6f2283af012e4412c0be
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: fbf957dee80a50b8256925b751d3df5440acca96
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310642"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740533"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>教程：通过透明网关发送数据
 

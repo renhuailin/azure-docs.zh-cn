@@ -2,7 +2,6 @@
 title: 从 Azure IoT 中心控制设备 (Android) | Microsoft Docs
 description: 本快速入门会运行两个示例 Java 应用程序。 一个应用程序为服务应用程序，可远程控制连接到中心的设备。 另一个应用程序在物理或模拟设备上运行，该设备连接到可以进行远程控制的中心。
 author: wesmc7777
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
@@ -14,12 +13,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 9225c53d4271622b0276dadb1d0a526199602d62
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 929f402a2beb9de7e9537647542199ff68f0d32f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114727904"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747283"
 ---
 # <a name="control-a-device-connected-to-an-iot-hub-android"></a>控制连接到 IoT 中心的设备 (Android)
 

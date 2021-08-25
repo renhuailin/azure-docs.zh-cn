@@ -4,16 +4,18 @@ description: 使用 MetaMask 连接到 Azure 区块链服务网络并部署智�
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: 4a45e02a861ff20a4dc774668a4e008f9b42aeea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01eeb187d1d1dd314d008c92559453e1edb67b27
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90530431"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122643073"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>使用 MetaMask 进行连接并部署智能合同
 
 在本快速入门中，我们将使用 MetaMask 连接到 Azure 区块链服务网络，并使用 Remix 来部署智能合同。 Metamask 是一个浏览器扩展，用于管理 Ether 钱包并执行智能合同操作。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,18 +70,18 @@ Remix 是一个基于浏览器的 Solidity 开发环境。 将 MetaMask 与 Remi
 
     ```solidity
     pragma solidity ^0.5.0;
-             
+
     contract simple {
         uint balance;
-                 
+
         constructor() public{
             balance = 0;
         }
-                 
+
         function add(uint _num) public {
             balance += _num;
         }
-                 
+
         function get() public view returns (uint){
             return balance;
         }

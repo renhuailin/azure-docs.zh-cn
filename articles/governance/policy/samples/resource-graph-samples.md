@@ -1,15 +1,15 @@
 ---
 title: 针对 Azure Policy 的 Azure Resource Graph 示例查询
 description: 针对 Azure Policy 的 Azure Resource Graph 示例查询，演示了如何使用资源类型和表来访问与 Azure Policy 相关的资源和属性。
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.topic: sample
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: 30908c9e4fef6ee5bdd33c8f5a59eb0c22e30634
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c1757d475fde691bf3938298d70535cce491be52
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460721"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860621"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-policy"></a>针对 Azure Policy 的 Azure Resource Graph 示例查询
 
