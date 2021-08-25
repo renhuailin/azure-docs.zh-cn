@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mathoma
-ms.openlocfilehash: 35fff49a53f5a0a9532fd0dff841356c5deaf3ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52e9ba6dcf0a8f6f987206cac2881ada098a8bcc
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97724776"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635182"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>将 Azure 存储用于 SQL Server 备份和还原
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,7 +50,7 @@ SQL Server 2016 引入了新功能；可以使用[文件快照备份](/sql/relat
 
 | 组件 | 说明 |
 | --- | --- |
-| **存储帐户** |存储帐户是所有存储服务的起点。 若要访问 Azure Blob 存储，请先创建一个 Azure 存储帐户。 有关 Azure Blob 存储的详细信息，请参阅[如何使用 Azure Blob 存储](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/)。 |
+| **存储帐户** |存储帐户是所有存储服务的起点。 若要访问 Azure Blob 存储，请先创建一个 Azure 存储帐户。 SQL Server 对于使用的存储冗余类型不可知。 每种存储冗余（LRS、ZRS、GRS、RA-GRS、RA-GZRS 等）都支持备份到页 blob 和块 blob。 有关 Azure Blob 存储的详细信息，请参阅[如何使用 Azure Blob 存储](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/)。 |
 | **容器** |容器提供一组 Blob 集，并且可存储无限数量的 Blob。 若要将 SQL Server 备份写入到 Azure Blob 存储，必须创建至少一个根容器。 |
 | **Blob** |任何类型和大小的文件。 可以使用以下 URL 格式来对 Blob 寻址：`https://<storageaccount>.blob.core.windows.net/<container>/<blob>`。 有关页 Blob 的详细信息，请参阅[了解块 Blob 和页 Blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) |
 

@@ -3,11 +3,11 @@
   topicHref: /azure/index
   items:
     - name: 机器学习
-      tocHref: /azure/architecture/
+      tocHref: /azure/machine-learning/
       topicHref: /azure/machine-learning/index
       items:
-        - name: 工作室（经典版）
-          tocHref: /azure/architecture/data-guide/technology-choices/
+        - name: 机器学习工作室（经典版）
+          tocHref: /azure/machine-learning/classic/
           topicHref: /azure/machine-learning/classic/index
           items:
             - name: 数据体系结构指南

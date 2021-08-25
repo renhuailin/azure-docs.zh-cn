@@ -7,12 +7,12 @@ ms.subservice: shared-capabilities
 ms.date: 06/15/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5484f1fb798022e59e71f153d087a880bca5c983
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: 4af5a6d105867df7d5c7a00f6fc47bd0032f4336
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113032554"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597409"
 ---
 # <a name="manage-role-permissions-and-security"></a>管理角色权限和安全性
 
@@ -24,7 +24,7 @@ Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 资源进行�
 
 | **角色** | **说明** |
 |:--- |:--- |
-| 所有者 |“所有者”角色允许访问自动化帐户中的所有资源和操作，包括访问其他用户、组和应用程序以管理自动化帐户。 |
+| “所有者” |“所有者”角色允许访问自动化帐户中的所有资源和操作，包括访问其他用户、组和应用程序以管理自动化帐户。 |
 | 参与者 |“参与者”角色允许管理所有事项，修改其他用户对自动化帐户的访问权限除外。 |
 | 读取器 |“读取者”角色允许查看自动化帐户中的所有资源，但不能进行任何更改。 |
 | 自动化运算符 |自动化操作员角色允许针对某个自动化帐户中的所有 Runbook 查看 Runbook 名称和属性，以及为其创建和管理作业。 如果想要防止他人查看或修改自动化帐户资源（例如凭据资产和 Runbook），但仍允许所在组织的成员执行这些 Runbook，则可使用此角色。 |
@@ -40,7 +40,7 @@ Azure 基于角色的访问控制 (Azure RBAC) 可用于对 Azure 资源进行�
 
 下表描述授予每个角色的特定权限。 这可能包括授予权限的操作和限制权限的不操作。
 
-### <a name="owner"></a>所有者
+### <a name="owner"></a>“所有者”
 
 所有者可管理所有内容，包括访问权限。 下表显示了授予角色的权限：
 
@@ -273,9 +273,11 @@ Microsoft 打算从 Log Analytics 参与者角色中删除自动化帐户权限�
    ```json
    {
     "properties": {
-        "roleName": "Automation account Contributor (custom)",
+        "roleName": "Automation Account Contributor (Custom)",
         "description": "Allows access to manage Azure Automation and its resources",
-        "type": "CustomRole",
+        "assignableScopes": [
+            "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
+        ],
         "permissions": [
             {
                 "actions": [
@@ -292,9 +294,6 @@ Microsoft 打算从 Log Analytics 参与者角色中删除自动化帐户权限�
                 "dataActions": [],
                 "notDataActions": []
             }
-        ],
-        "assignableScopes": [
-            "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX"
         ]
       }
    }

@@ -2,19 +2,18 @@
 title: 教程：配置 Azure IoT Edge 设备 - IoT Edge 上的机器学习
 description: 在本教程中，我们将运行 Linux 的 Azure 虚拟机配置为充当透明网关的 Azure IoT Edge 设备。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: e5e1556b0b4960850c955f3d52c34396d1363b2a
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 445163b0d33f404845a66b7d885815d6336dac46
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110535746"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726367"
 ---
 # <a name="tutorial-configure-an-azure-iot-edge-device"></a>教程：配置 Azure IoT Edge 设备
 

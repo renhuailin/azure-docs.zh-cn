@@ -4,15 +4,16 @@ description: 本教程提供使用数据流将文件写入数据湖的最佳做�
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2021
-ms.date: 04/01/2021
-ms.openlocfilehash: 8010f3f95c9358714b659df5821a375bd8488ad8
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 06/04/2021
+ms.openlocfilehash: 91eb5d1072f1385c025d9d93b89466aaa9320ecd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581995"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638533"
 ---
 # <a name="best-practices-for-writing-to-files-to-data-lake-with-data-flows"></a>使用数据流将文件写入数据湖的最佳做法
 
@@ -52,9 +53,9 @@ ms.locfileid: "106581995"
 
 在此步骤中，你将创建一个包含数据流活动的管道。
 
-1. 在“开始使用”页中，选择“创建管道”。 
+1. 在 Azure 数据工厂的主页上，选择“协调”。
 
-   ![创建管道](./media/doc-common-process/get-started-page.png)
+   ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
 
 1. 在管道的“常规”选项卡中，输入“DeltaLake”作为管道的名称。 
 1. 在工厂顶部栏中，将“数据流调试”滑块滑动到打开。 调试模式允许针对实时 Spark 群集进行转换逻辑的交互式测试。 数据流群集需要 5-7 分钟才能预热，如果用户计划进行数据流开发，建议先打开调试。 有关详细信息，请参阅[调试模式](concepts-data-flow-debug-mode.md)。

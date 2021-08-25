@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2020
 ms.author: yelevin
-ms.openlocfilehash: 3f18481821361feff525e3357543036784b21495
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 0b8db5dfa399aaef087adb0ec5c2d67b91fceab9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253478"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694041"
 ---
 # <a name="connect-cyberark-enterprise-password-vault-epv-to-azure-sentinel"></a>将 CyberArk 企业密码保管库 (EPV) 连接到 Azure Sentinel
 
@@ -42,7 +42,7 @@ CyberArk EPV 日志会从保管库发送到安装了 Log Analytics 代理的基�
 
 1. 按照 [CyberArk EPV 说明](https://docs.cyberark.com/Product-Doc/OnlineHelp/PAS/Latest/en/Content/PASIMP/DV-Integrating-with-SIEM-Applications.htm)，配置将 syslog 数据发送到日志转发服务器。
 
-1. 使用[这些说明](connect-cef-verify.md)验证连接并验证数据引入。 可能需要长达 20 分钟的时间，日志才会开始出现在 Log Analytics 中。
+1. 使用[这些说明](troubleshooting-cef-syslog.md#validate-cef-connectivity)验证连接并验证数据引入。 可能需要长达 20 分钟的时间，日志才会开始出现在 Log Analytics 中。
 
 ## <a name="find-your-data"></a>查找数据
 

@@ -4,15 +4,16 @@ description: 数据工厂的数据流脚本代码隐藏语言概述
 author: kromerm
 ms.author: nimoolen
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2021
-ms.openlocfilehash: 7dd58a7d4a94b832e52930f8ac6507cdd8f7a20e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0860d59d7d04354b6236d02126492468dec5921b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100534815"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638819"
 ---
 # <a name="data-flow-script-dfs"></a>数据流脚本 (DFS)
 
@@ -269,6 +270,13 @@ window(over(stocksymbol),
     startRowOffset: -7L,
     endRowOffset: 7L,
     FifteenDayMovingAvg = round(avg(Close),2)) ~> Window1
+```
+
+### <a name="distinct-count-of-all-column-values"></a>所有列值的非重复计数
+可以使用此脚本来识别键列，并使用单个脚本片段查看流中所有列的基数。 将此脚本作为聚合转换添加到数据流中，它会自动提供所有列的非重复计数。
+
+```
+aggregate(each(match(true()), $$ = countDistinct($$))) ~> KeyPattern
 ```
 
 ## <a name="next-steps"></a>后续步骤
