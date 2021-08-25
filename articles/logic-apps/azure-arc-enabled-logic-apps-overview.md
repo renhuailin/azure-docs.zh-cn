@@ -6,19 +6,19 @@ ms.suite: integration
 ms.reviewer: estfan, ladolan, reylons, archidda, sopai, azla
 ms.topic: overview
 ms.date: 05/25/2021
-ms.openlocfilehash: dcaa0e9fe10d26bb6b1e7d014e0b6e50f09a81f2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 880e194fefdf49b05f2b531699a83d1f0e3e70cc
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385043"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429473"
 ---
 # <a name="what-is-azure-arc-enabled-logic-apps-preview"></a>什么是已启用 Azure Arc 的逻辑应用？ （预览版）
 
 > [!NOTE]
 > 此功能以预览版提供，受 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)限制。
 
-使用已启用 Azure Arc 的逻辑应用，可以在可运行 Kubernetes 的任何位置开发并运行基于单租户的逻辑应用。 例如，可以在 Azure、Azure Kubernetes 服务、本地甚至其他云平台中运行你的逻辑应用工作流。 此产品/服务通过 Azure Arc 和 Azure 门户提供集中式的单一视图管理平台来实现以下功能： 
+使用已启用 Azure Arc 的逻辑应用，可以在可运行 Kubernetes 的任何位置开发并运行基于单租户的逻辑应用。 例如，可以在 Azure、Azure Kubernetes 服务、本地甚至其他云平台中运行你的逻辑应用工作流。 此产品/服务通过 Azure Arc 和 Azure 门户提供集中式的单一视图管理平台来实现以下功能：
 
 - 使用 Azure 逻辑应用作为集成平台。
 - 无论工作流托管在何处，都可以将其连接到所有服务。

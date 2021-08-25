@@ -11,14 +11,14 @@ ms.workload: identity
 ms.devlang: java
 ms.date: 09/14/2019
 ms.author: shoatman
-ms.custom: aaddev, devx-track-java
+ms.custom: aaddev, devx-track-java, has-adal-ref
 ms.reviewer: shoatman
-ms.openlocfilehash: b11b2591ad90111c7a2d96ae1f7bf7bdde0673d5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e70dc252ac23f1e25e53a4d4d2bac6c499894e93
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110471409"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419142"
 ---
 # <a name="accounts--tenant-profiles-android"></a>帐户和租户配置文件 (Android)
 

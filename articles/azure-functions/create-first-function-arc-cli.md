@@ -3,12 +3,12 @@ title: 快速入门：在 Azure Arc 上创建函数应用
 description: 通过部署第一个函数应用，开始在 Azure Arc 上使用 Azure Functions。
 ms.topic: quickstart
 ms.date: 05/10/2021
-ms.openlocfilehash: da00cc070e14490bcd3f4661d30b65bd97553c2e
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 3a9c92e500e79b68688ec526baa2a77b8df2ccef
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528461"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723013"
 ---
 # <a name="create-your-first-function-on-azure-arc-preview"></a>在 Azure Arc 上创建第一个函数（预览版）
 
@@ -96,7 +96,7 @@ ms.locfileid: "111528461"
     cd LocalFunctionProj
     ```
 
-    此文件夹包含项目的各个文件，其中包括名为 [local.settings.json](functions-run-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 的配置文件。 默认情况下，local.settings.json 文件会从 .gitignore 文件的源代码管理中排除。  此排除是因为该文件可以包含从 Azure 下载的机密。
+    此文件夹包含项目的各个文件，其中包括名为 [local.settings.json](functions-develop-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 的配置文件。 默认情况下，local.settings.json 文件会从 .gitignore 文件的源代码管理中排除。  此排除是因为该文件可以包含从 Azure 下载的机密。
 
 1. 使用以下命令将一个函数添加到项目，其中，`--name` 参数是该函数 (HttpExample) 的唯一名称，`--template` 参数指定该函数的触发器 (HTTP)。
 

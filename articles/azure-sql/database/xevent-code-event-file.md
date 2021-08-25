@@ -9,14 +9,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 06/06/2020
-ms.openlocfilehash: 869f2c8ca5f0cbfb422c1aaa65907a2ad941e86a
-ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+ms.openlocfilehash: 9523a28ca191402ca4f1ec4bfb174edce359bf67
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112678135"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722875"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL 数据库中扩展事件的事件文件目标代码
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,12 +43,12 @@ ms.locfileid: "112678135"
 
 - Azure 帐户和订阅。 可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 - 可在其中创建表的任何数据库。
-  
+
   - 或者，也可以在几分钟内 [创建一个 **AdventureWorksLT** 演示数据库](single-database-create-quickstart.md)。
 
 - SQL Server Management Studio (ssms.exe)，最好是每月最新更新版。
   可从以下位置下载最新的 ssms.exe：
-  
+
   - 标题为[下载 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 的主题。
   - [直接指向下载位置的链接。](https://go.microsoft.com/fwlink/?linkid=616025)
 
@@ -442,9 +442,11 @@ GO
 如果运行脚本时无法附加目标，必须停止再重新启动事件会话：
 
 ```sql
-ALTER EVENT SESSION ... STATE = STOP;
+ALTER EVENT SESSION gmeventsessionname240b
+    ON DATABASE STATE = STOP;
 GO
-ALTER EVENT SESSION ... STATE = START;
+ALTER EVENT SESSION gmeventsessionname240b
+    ON DATABASE STATE = START;
 GO
 ```
 
@@ -508,7 +510,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 - 为简单起见，会想要将 Azure 存储容器完全替换为一个简单文件（例如 *C:\myeventdata.xel*）。 该文件将写入 SQL Server 所在计算机的本地硬盘驱动器。
 - 不需要为 **CREATE MASTER KEY** 和 **CREATE CREDENTIAL** 使用任何类型的 Transact-SQL 语句。
 - 在 **CREATE EVENT SESSION** 语句的 **ADD TARGET** 子句中，将对 **filename=** 分配的 Http 值替换为完整路径字符串（例如 *C:\myfile.xel*）。
-  
+
   - 此操作不涉及任何 Azure 存储帐户。
 
 ## <a name="more-information"></a>详细信息

@@ -1,15 +1,15 @@
 ---
 title: 快速入门：使用 Go 创建管理组
 description: 在本快速入门中，你将使用 Go 创建一个管理组，来将资源整理到资源层次结构中。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 32665afec15d17b2bc15d61853ef6b1dc58388fa
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4949ef10d7bb38ada2faefcee1d6b104c4a08ad7
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733690"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322936"
 ---
 # <a name="quickstart-create-a-management-group-with-go"></a>快速入门：使用 Go 创建管理组
 
@@ -49,7 +49,7 @@ ms.locfileid: "108733690"
 
    ```bash
    # Add the management group package for Go
-   go get -u github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2018-03-01-preview/managementgroups
+   go get -u github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2020-05-01/managementgroups
 
    # Add the Azure auth package for Go
    go get -u github.com/Azure/go-autorest/autorest/azure/auth
@@ -69,7 +69,7 @@ ms.locfileid: "108733690"
     "fmt"
     "os"
 
-    mg "github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2018-03-01-preview/managementgroups"
+    mg "github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2020-05-01/managementgroups"
     "github.com/Azure/go-autorest/autorest/azure/auth"
    )
 
@@ -121,7 +121,7 @@ ms.locfileid: "108733690"
 
 ```bash
 # Remove the installed packages from the Go environment
-go clean -i github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2018-03-01-preview/managementgroups
+go clean -i github.com/Azure/azure-sdk-for-go/services/resources/mgmt/2020-05-01/managementgroups
 go clean -i github.com/Azure/go-autorest/autorest/azure/auth
 ```
 

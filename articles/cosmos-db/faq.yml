@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/01/2019
   ms.author: sngun
   ms.custom: seodec18
-  ms.openlocfilehash: 098f113b45f54ed0f74a30731a68708b06ee5663
-  ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+  ms.openlocfilehash: 8ded857f617ab61f6914635f41642b86c1848861
+  ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/19/2021
-  ms.locfileid: "111907066"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122321781"
 title: 有关 Azure Cosmos DB 中不同 API 的常见问题
 summary: >
   [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -84,9 +84,6 @@ sections:
       * [Microsoft Q&A 问题页](/answers/topics/azure-cosmos-db.html)
 
       * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow 适合编程问题。 请确保提问[切中主题](https://stackoverflow.com/help/on-topic)并[尽可能提供较多的详细信息，使问题清楚明了，便于回答](https://stackoverflow.com/help/how-to-ask)。
-
-
-      若要请求新功能，请在 [Uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db) 上提交新的请求。
 
 
       若要修复帐户问题，请在 Azure 门户中提交[支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
@@ -249,4 +246,4 @@ sections:
       [azure-portal]: https://portal.azure.com
 
       [query]: ./sql-query-getting-started.md
-additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n若要了解其他 API 中的常见问题，请参阅：\n\n* 有关 [Azure Cosmos DB 中 MongoDB API](mongodb-api-faq.yml) 的常见问题\n* 有关 [Azure Cosmos DB 中 Gremlin API](gremlin-api-faq.yml) 的常见问题\n* 有关 [Azure Cosmos DB 中 Cassandra API](cassandra-faq.yml) 的常见问题\n* 有关 [Azure Cosmos DB 中表 API](table-api-faq.yml) 的常见问题"
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n若要了解其他 API 中的常见问题，请参阅：\n\n* 有关 [Azure Cosmos DB 中 MongoDB API](mongodb/mongodb-faq.yml) 的常见问题\n* 有关 [Azure Cosmos DB 中 Gremlin API](gremlin-api-faq.yml) 的常见问题\n* 有关 [Azure Cosmos DB 中 Cassandra API](cassandra/cassandra-faq.yml) 的常见问题\n* 有关 [Azure Cosmos DB 中表 API](table/table-api-faq.yml) 的常见问题"

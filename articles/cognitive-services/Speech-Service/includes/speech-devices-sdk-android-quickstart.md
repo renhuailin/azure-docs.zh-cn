@@ -1,16 +1,16 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
-ms.author: trbye
-ms.openlocfilehash: 2caf1ed42bec3c4e950fbb1067869576344085d7
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.author: lajanuar
+ms.openlocfilehash: 5942b5048e7969365285d8aacaf372a66964abce
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110163794"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067987"
 ---
 本快速入门介绍如何使用适用于 Android 的语音设备 SDK 来生成支持语音的产品，或将其用作[对话听录](../conversation-transcription.md)设备。
 

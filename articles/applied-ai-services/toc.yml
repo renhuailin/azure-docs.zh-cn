@@ -7,16 +7,16 @@
       href: what-are-applied-ai-services.md
     - name: 为何使用应用 AI 服务？
       href: why-applied-ai-services.md
-    - name: 常见问题解答 (FAQ)
+    - name: 常见问题 (FAQ)
       href: faq.yml
 - name: 快速入门
   items:
     - name: Azure 表单识别器
-      href: ../cognitive-services/form-recognizer/quickstarts/get-started-with-form-recognizer.md
+      href: ./form-recognizer/quickstarts/get-started-with-form-recognizer.md
     - name: Azure 指标顾问
-      href: ../cognitive-services/metrics-advisor/quickstarts/web-portal.md
+      href: ./metrics-advisor/quickstarts/web-portal.md
     - name: Azure 沉浸式阅读器
-      href: ../cognitive-services/immersive-reader/quickstarts/client-libraries.md
+      href: ./immersive-reader/quickstarts/client-libraries.md
     - name: Azure 认知搜索
       href: ../search/search-get-started-portal.md
     - name: Azure 视频分析器

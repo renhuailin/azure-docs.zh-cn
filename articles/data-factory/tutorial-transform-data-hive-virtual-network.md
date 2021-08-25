@@ -2,17 +2,18 @@
 title: 在 Azure 虚拟网络中使用 Hive 转换数据
 description: 使用 Azure PowerShell 创建一个数据工厂管道，该管道可以使用 HDInsight 群集上的 Hive 活动转换 Azure 虚拟网络 (VNet) 中的数据。
 ms.service: data-factory
+ms.subservice: tutorials
 author: nabhishek
 ms.author: abnarain
 ms.topic: tutorial
-ms.custom: seo-dt-2019, devx-track-azurepowershell
+ms.custom: devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 48d3ae3089a59e9d89ea57b5720981483344dae0
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 3382cb1cf42b86b7dbd37b3f006c19e4822800ba
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110672515"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722354"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
 
@@ -90,7 +91,7 @@ ms.locfileid: "110672515"
     ```powershell
     $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
-2. 启动 **PowerShell**。 在完成本快速入门之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
+2. 启动 **PowerShell**。 在完成本快速入门之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库，等等）和计算资源（HDInsight 等）可以位于其他区域中。
 
     运行以下命令并输入用于登录 Azure 门户的用户名和密码：
         

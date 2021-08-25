@@ -91,8 +91,6 @@
               href: ../virtual-machines/workloads/sap/os-upgrade-hana-large-instance.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
             - name: 为 SUSE Linux 安装 SMT 服务器
               href: ../virtual-machines/workloads/sap/hana-setup-smt.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
-            - name: HLI 到 Azure VM 的迁移
-              href: ../virtual-machines/workloads/sap/hana-large-instance-virtual-machine-migration.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
             - name: 购买 SAP HANA 大型实例预留
               href: ../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md
     - name: Oracle

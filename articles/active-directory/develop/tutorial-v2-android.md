@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f54d4a704779aab1b84a92ef3b152e9319c55e89
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.custom: aaddev, identityplatformtop40, has-adal-ref
+ms.openlocfilehash: 3bb6f374ee1d9720fd3c8646ef22aad6c4f86737
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713353"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428948"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>教程：从 Android 应用程序登录用户并调用 Microsoft Graph API
 
@@ -76,7 +76,7 @@ MSAL 将自动续订令牌，在设备上的其他应用之间提供单一登录
 
 1. 登录 <a href="https://portal.azure.com/" target="_blank">Azure 门户</a>。
 1. 如果有权访问多个租户，请使用顶部菜单中的“目录 + 订阅”筛选器:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::，选择要在其中注册应用程序的租户。
-1. 搜索并选择“Azure Active Directory”  。
+1. 搜索并选择“Azure Active Directory”。
 1. 在“管理”下，选择“应用注册” > “新建注册”  。
 1. 输入应用程序的 **名称**。 应用的用户可能会看到此名称，你稍后可对其进行更改。
 1. 选择“注册”  。

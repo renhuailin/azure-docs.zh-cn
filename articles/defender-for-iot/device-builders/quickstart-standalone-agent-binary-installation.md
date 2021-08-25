@@ -3,12 +3,12 @@ title: 快速入门：安装 Defender for IoT 微代理（预览版）
 description: 通过本快速入门，了解如何安装 Defender 微代理并对其进行身份验证。
 ms.date: 06/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 040fb547baf201d9d699cfac21c1407c707fb8f9
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: e77ebaf3ab99fc88d3d0138edf3c815b63507e6c
+ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011042"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122195546"
 ---
 # <a name="quickstart-install-defender-for-iot-micro-agent-preview"></a>快速入门：安装 Defender for IoT 微代理（预览版）
 
@@ -173,4 +173,4 @@ sudo apt-get install defender-iot-micro-agent=<version>
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [通过源代码构建 Defender 微代理](quickstart-building-the-defender-micro-agent-from-source.md)
+> [快速入门：创建 Defender IoT 微代理模块孪生（预览版）](quickstart-create-micro-agent-module-twin.md)

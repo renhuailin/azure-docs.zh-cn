@@ -8,12 +8,13 @@ ms.topic: reference
 ms.subservice: spark
 ms.date: 01/04/2021
 ms.author: midesa
-ms.openlocfilehash: 803cbebb26ad3b8514697dfcfa2b7600a813acad
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.custom: has-adal-ref
+ms.openlocfilehash: dd204f7d183af4aa29b32009774e48e28858440f
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110482326"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429242"
 ---
 # <a name="azure-synapse-runtime-for-apache-spark-24"></a>适用于 Apache Spark 2.4 的 Azure Synapse 运行时
 

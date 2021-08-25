@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 058a60758e20a36d3490e40ea96a35c21b3db563
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 1c8f31642f79654e2ba17625df70889fa41ca040
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112237215"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181947"
 ---
 # <a name="planning-and-operations-guide"></a>规划和操作指南
 本指南适用于计划使用 Azure 安全中心的信息技术 (IT) 专业人员、IT 架构师、信息安全分析师和云管理员。
@@ -135,7 +135,7 @@ Azure 安全中心使用 Log Analytics 代理（Azure Monitor 服务同样使用
 
 ### <a name="agent"></a>Agent
 
-在安全策略中启用自动预配后，Log Analytics 代理（适用于 [Windows](../azure-monitor/agents/agent-windows.md) 或 [Linux](../azure-monitor/vm/quick-collect-linux-computer.md)）会安装在所有支持的 Azure VM 和新建的任何 VM 上。 如果 VM 或计算机已安装 Log Analytics 代理，Azure 安全中心会利用当前的已安装代理。 代理的过程设计为非入侵性，对 VM 性能的影响非常小。
+在安全策略中启用自动预配后，Log Analytics 代理（适用于 [Windows](../azure-monitor/agents/agent-windows.md) 或 [Linux](../azure-monitor/vm/monitor-virtual-machine.md)）会安装在所有支持的 Azure VM 和新建的任何 VM 上。 如果 VM 或计算机已安装 Log Analytics 代理，Azure 安全中心会利用当前的已安装代理。 代理的过程设计为非入侵性，对 VM 性能的影响非常小。
 
 适用于 Windows 的 Log Analytics 代理需要使用 TCP 端口 443。 有关其他详细信息，请参阅[故障排除文章](security-center-troubleshooting-guide.md)。
 

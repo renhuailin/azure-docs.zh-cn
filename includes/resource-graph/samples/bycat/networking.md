@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 47184f90bade6fd7178ba2a66a151429e260a623
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 642743a6ac3f6c450f3a851c1ebb09e72d70d51b
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457080"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861694"
 ---
 ### <a name="count-resources-that-have-ip-addresses-configured-by-subscription"></a>对具有由订阅配置的 IP 地址的资源进行计数
 

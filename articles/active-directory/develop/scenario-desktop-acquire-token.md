@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
-ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 797b7e376774f0295fa0d7e158cd9ea3df68d25d
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.custom: aaddev, devx-track-python, has-adal-ref
+ms.openlocfilehash: 586724ec137fc58c5f26bebb02d59141242e3804
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110575966"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429000"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>用于调用 Web API 的桌面应用：获取令牌
 

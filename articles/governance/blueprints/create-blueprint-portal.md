@@ -1,16 +1,16 @@
 ---
 title: 快速入门：在门户中创建蓝图
 description: 本快速入门介绍如何通过 Azure 门户使用 Azure 蓝图创建、定义和部署项目。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 0f999b5c3a1efcf151876e3f2c1e285260edb8a3
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 0cda427929c51b9b794f02ac2c0686d1b06d30d1
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110535057"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323176"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>在门户中定义和分配蓝图
 

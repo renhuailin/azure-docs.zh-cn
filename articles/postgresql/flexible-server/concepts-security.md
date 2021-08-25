@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 07/26/2021
-ms.openlocfilehash: 79e308605a0d6262e95dc6ff673d74a5a1eaaec7
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 489ae3e9593ed5fa0865fb6f3fbe2eb617113d71
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114732028"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181489"
 ---
 # <a name="security-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL（灵活服务器）中的安全性
 
@@ -43,7 +43,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对服务器的访�
 可将灵活服务器部署到 Azure 虚拟网络中。 Azure 虚拟网络提供专用的安全网络通信。 有关详细信息，请参阅[灵活服务器](concepts-networking.md)
 
 ### <a name="network-security-groups-nsg"></a>网络安全组 (NSG)
-通过网络安全组中的安全规则，可以筛选可流入和流出虚拟网络子网和网络接口的流量类型。  有关详细信息，请参阅[网络安全组概述](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)
+通过网络安全组中的安全规则，可以筛选可流入和流出虚拟网络子网和网络接口的流量类型。  有关详细信息，请参阅[网络安全组概述](../../virtual-network/network-security-groups-overview.md)
 
 ## <a name="access-management"></a>访问管理
 
@@ -54,7 +54,7 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对服务器的访�
 
 ### <a name="azure-defender-protection"></a>Azure Defender 保护
 
- Azure Database for PostgreSQL（灵活服务器）当前不支持 [Azure Defender 保护](https://docs.microsoft.com/azure/security-center/azure-defender)。 
+ Azure Database for PostgreSQL（灵活服务器）当前不支持 [Azure Defender 保护](../../security-center/azure-defender.md)。 
 
 
 [审核日志记录](../concepts-audit.md)可用于跟踪数据库中的活动。 

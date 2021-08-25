@@ -12,12 +12,13 @@ ms.date: 07/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 859a4f199e65dd0c3aee9424029f6060683d5fbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: has-adal-ref
+ms.openlocfilehash: 4c358a0ac6d19918c43cdc99417664ff8ce63971
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94836081"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428694"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect：版本发布历史记录存档
 
@@ -364,16 +365,16 @@ Azure AD Connect 版本 1.1.654.0（以及更高版本）中已添加了一项�
 
 类型     | 名称                          | 访问               | 应用于
 ---------|-------------------------------|----------------------|--------------|
-Allow    | SYSTEM                        | 完全控制         | 此对象  |
-Allow    | 企业管理员             | 完全控制         | 此对象  |
-Allow    | 域管理员                 | 完全控制         | 此对象  |
-Allow    | 管理员                | 完全控制         | 此对象  |
-Allow    | 企业域控制器 | 列出内容        | 此对象  |
-Allow    | 企业域控制器 | 读取所有属性  | 此对象  |
-Allow    | 企业域控制器 | 读取权限     | 此对象  |
-Allow    | 经过身份验证的用户           | 列出内容        | 此对象  |
-Allow    | 经过身份验证的用户           | 读取所有属性  | 此对象  |
-Allow    | 经过身份验证的用户           | 读取权限     | 此对象  |
+允许    | SYSTEM                        | 完全控制         | 此对象  |
+允许    | 企业管理员             | 完全控制         | 此对象  |
+允许    | 域管理员                 | 完全控制         | 此对象  |
+允许    | 管理员                | 完全控制         | 此对象  |
+允许    | 企业域控制器 | 列出内容        | 此对象  |
+允许    | 企业域控制器 | 读取所有属性  | 此对象  |
+允许    | 企业域控制器 | 读取权限     | 此对象  |
+允许    | 经过身份验证的用户           | 列出内容        | 此对象  |
+允许    | 经过身份验证的用户           | 读取所有属性  | 此对象  |
+允许    | 经过身份验证的用户           | 读取权限     | 此对象  |
 
 #### <a name="powershell-script-to-tighten-a-pre-existing-service-account"></a>PowerShell 脚本增强预先存在的服务帐户
 

@@ -12,18 +12,24 @@ ms.date: 05/24/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 图像识别, 图像标识符, 图像识别应用, 自定义视觉
-ms.openlocfilehash: e245c4882a06d5053e8781a48469d104bcaced23
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ff90aedd43622c3f6fb696c15b3034b2a133322d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454779"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322280"
 ---
 # <a name="what-is-custom-vision"></a>什么是自定义视觉？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Azure 自定义视觉是一种图像识别服务，可用于构建、部署和改进你自己的图像标识符。 图像标识符根据图像的视觉特征将标签（表示类或对象）应用于图像。 与[计算机视觉](../computer-vision/overview.md)服务不同，自定义视觉允许你指定标签并训练自定义模型以对其进行检测。
+
+本文档包含以下类型的文章：
+* [快速入门](./getting-started-build-a-classifier.md)是分步说明，可按照其调用服务，并在短时间内获得结果。
+* [操作指南](./test-your-model.md)包含以更具体的方式或自定义方式使用服务的说明。
+* [教程](./iot-visual-alerts-tutorial.md)是较长的指南，向你演示了如何在更广泛的业务解决方案中使用此服务作为组件。
+<!--* The [conceptual articles](Vision-API-How-to-Topics/call-read-api.md) provide in-depth explanations of the service's functionality and features.-->
 
 ## <a name="what-it-does"></a>作用
 

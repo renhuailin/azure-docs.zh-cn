@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 06/25/2021
 ms.author: jmprieur
 ms.reviewer: mmacy
-ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 5149150ab1ad04852683e005495a2aae8b0218b8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.custom: devx-track-csharp, aaddev, has-adal-ref
+ms.openlocfilehash: e472ab645b9caaffafa393ade675d9fc1b4ba684
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469829"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419190"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET 中的令牌缓存序列化
 

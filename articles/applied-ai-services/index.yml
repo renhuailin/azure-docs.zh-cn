@@ -32,7 +32,7 @@ productDirectory:
     - title: Azure 表单识别器
       imageSrc: ./media/form-recognizer.svg
       summary: 仅需很少的时间和成本即可将文档转换为可用数据
-      url: ../cognitive-services/form-recognizer/index.yml
+      url: ./form-recognizer/index.yml
     - title: Azure 认知搜索
       imageSrc: ./media/cognitive-search.svg
       summary: 将由 AI 提供支持的云搜索引入移动和 Web 应用
@@ -48,7 +48,7 @@ productDirectory:
     - title: Azure 沉浸式阅读器
       imageSrc: ./media/immersive-reader.svg
       summary: 帮助用户阅读和理解文本
-      url: ../cognitive-services/immersive-reader/index.yml
+      url: ./immersive-reader/index.yml
 additionalContent:
   sections:
     - title: 其他资源
@@ -64,11 +64,11 @@ additionalContent:
         - title: 利用快速入门获取编码
           links:
             - text: Azure 表单识别器
-              url: ../cognitive-services/form-recognizer/quickstarts/get-started-with-form-recognizer.md
+              url: ./form-recognizer/quickstarts/get-started-with-form-recognizer.md
             - text: Azure 指标顾问
               url: ./metrics-advisor/quickstarts/web-portal.md
             - text: Azure 沉浸式阅读器
-              url: ../cognitive-services/immersive-reader/quickstarts/client-libraries.md
+              url: ./immersive-reader/quickstarts/client-libraries.md
             - text: Azure 认知搜索
               url: ../search/search-get-started-portal.md
             - text: Azure 视频分析器

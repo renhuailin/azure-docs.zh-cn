@@ -7,12 +7,12 @@ ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: 9a1c0494d14c6bc5dad43e73fbf9a55cc8985445
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 8b62437fc8bcad406750101eb72b1ef8d48c102f
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112290010"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322201"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>教程：使用已启用 Azure Arc 的 Kubernetes 群集通过 GitOps 实现 CI/CD
 
@@ -47,13 +47,13 @@ ms.locfileid: "112290010"
 
   ```azurecli
   az extension add --name connectedk8s
-  az extension add --name k8sconfiguration
+  az extension add --name k8s-configuration
   ```
   * 若要将这些扩展更新到最新版本，请运行以下命令：
 
     ```azurecli
     az extension update --name connectedk8s
-    az extension update --name k8sconfiguration
+    az extension update --name k8s-configuration
     ```
 
 ## <a name="import-application-and-gitops-repos-into-azure-repos"></a>将应用程序存储库和 GitOps 存储库导入 Azure Repos
@@ -89,13 +89,13 @@ CI/CD 工作流将在清单目录中填充额外的清单，以部署应用。
 1. 与 Azure Repos 中新导入的 **arc-cicd-demo-gitops** 存储库 [建立新的 GitOps 连接](./tutorial-use-gitops-connected-cluster.md)。
 
    ```azurecli
-   az k8sconfiguration create \
+   az k8s-configuration create \
       --name cluster-config \
       --cluster-name arc-cicd-cluster \
       --resource-group myResourceGroup \
       --operator-instance-name cluster-config \
       --operator-namespace cluster-config \
-      --repository-url https://dev.azure.com/<Your organization>/arc-cicd-demo-gitops \
+      --repository-url https://dev.azure.com/<Your organization>/<Your project>/_git/arc-cicd-demo-gitops \
       --https-user <Azure Repos username> \
       --https-key <Azure Repos PAT token> \
       --scope cluster \
@@ -108,7 +108,7 @@ CI/CD 工作流将在清单目录中填充额外的清单，以部署应用。
    `--git-path=arc-cicd-cluster/manifests`
 
    > [!NOTE]
-   > 如果你使用 HTTPS 连接字符串并出现连接问题，请确保在 URL 中省略用户名前缀。 例如，必须删除 `https://alice@dev.azure.com/contoso/arc-cicd-demo-gitops` 中的 `alice@`。 在此情况下，将由 `--https-user` 指定用户，例如 `--https-user alice`。
+   > 如果你使用 HTTPS 连接字符串并出现连接问题，请确保在 URL 中省略用户名前缀。 例如，必须删除 `https://alice@dev.azure.com/contoso/project/_git/arc-cicd-demo-gitops` 中的 `alice@`。 在此情况下，将由 `--https-user` 指定用户，例如 `--https-user alice`。
 
 1. 在 Azure 门户中检查部署状态。
    * 如果成功，你会发现群集中创建了 `dev` 和 `stage` 命名空间。
@@ -181,7 +181,7 @@ kubectl create secret docker-registry <secret-name> \
 | ENVIRONMENT_NAME | Dev |
 | MANIFESTS_BRANCH | `master` |
 | MANIFESTS_FOLDER | `azure-vote-manifests` |
-| MANIFESTS_REPO | `azure-cicd-demo-gitops` |
+| MANIFESTS_REPO | `arc-cicd-demo-gitops` |
 | ORGANIZATION_NAME | Azure DevOps 组织的名称 |
 | PROJECT_NAME | Azure DevOps 中 GitOps 项目的名称 |
 | REPO_URL | GitOps 存储库的完整 URL |
@@ -333,7 +333,7 @@ Lint 分析期间出现的错误包括：
 
 1. 删除 Azure Arc GitOps 配置连接：
    ```azurecli
-   az k8sconfiguration delete \
+   az k8s-configuration delete \
    --name cluster-config \
    --cluster-name arc-cicd-cluster \
    --resource-group myResourceGroup \

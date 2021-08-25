@@ -3,8 +3,8 @@ title: 教程：使用 Azure Active Directory 为 Bpanda 配置自动用户预�
 description: 了解如何将用户帐户从 Azure AD 自动预配到 Bpanda 及如何取消预配。
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: twimmers
+writer: twimmers
 manager: beatrizd
 ms.assetid: 57e424f8-6fbc-4701-a312-899b562589ea
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/05/2021
-ms.author: Zhchia
-ms.openlocfilehash: 7e11f60fee0565b86fe62008f418175bce21be03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: thwimmer
+ms.openlocfilehash: 90e2b260e59caceaca059b524c34233603959ef3
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104585173"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322356"
 ---
 # <a name="tutorial-configure-bpanda-for-automatic-user-provisioning"></a>教程：为 Bpanda 配置自动用户预配
 
@@ -48,7 +48,7 @@ ms.locfileid: "104585173"
 2. 确定谁在[预配范围](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中。
 3. 确定要[在 Azure AD 与 Bpanda 之间映射](../app-provisioning/customize-application-attributes.md)哪些数据。 
 
-## <a name="step-2-configure-bpanda-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Bpanda 以支持通过 Azure AD 进行预配
+## <a name="step-2-configure-bpanda-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Bpanda 以支持通过 Azure AD 进行预配
 1. 如需有关身份验证租户 URL 的详细信息，请联系 support@mid.de。
 
 2. 用于进一步生成访问令牌的客户端机密。 此机密肯定以安全方式传送给了你。 如需详细信息，请联系 support@mid.de。
@@ -83,7 +83,7 @@ $response = Invoke-WebRequest -Uri "{Your tenant specific authentication endpoin
 
 使用 Azure AD 预配服务，可以根据对应用的分配或用户/组的特性来限定谁在预配范围内。 如果选择根据分配来限定要将谁预配到应用，可以按照下面的[步骤](../manage-apps/assign-user-or-group-access-portal.md)操作，将用户和组分配到应用。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的范围筛选器。 
 
-* 将用户和组分配到 Bpanda 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)以添加其他角色。 
+* 将用户和组分配到 Bpanda 时，必须选择“默认访问”以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果“默认访问”角色是应用程序上唯一可用的角色，则可以通过[更新应用程序清单](../develop/howto-add-app-roles-in-azure-ad-apps.md)来添加其他角色。 
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 
@@ -136,6 +136,7 @@ $response = Invoke-WebRequest -Uri "{Your tenant specific authentication endpoin
    |phoneNumbers[type eq "mobile"].value|字符串|
    |externalId|字符串|
    |title|字符串|
+   |preferredLanguage|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|字符串|

@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/06/2021
 ms.author: v-doeris
-ms.openlocfilehash: 0036dcb5a87ea6b36c6deea3760ff24aa7c7bd8d
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.custom: has-adal-ref
+ms.openlocfilehash: a67f493666c458637a2cd48b7e0d78e0bcf59862
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113431865"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418767"
 ---
 # <a name="how-to-migrate-a-javascript-app-from-adaljs-to-msaljs"></a>如何将 JavaScript 应用从 ADAL.js 迁移到 MSAL.js
 
@@ -165,9 +166,9 @@ ADAL.js 中的某些公共方法在 MSAL.js 中有等效方法：
 | `login`                           | 不适用                             | 已弃用。 使用 `loginPopup` 或 `loginRedirect`  |
 | `logOut`                          | 空值                             | 已弃用。 使用 `logoutPopup` 或 `logoutRedirect`|
 | 空值                               | `loginPopup`                    |                                                  |
-| 不适用                               | `loginRedirect`                 |                                                  |
-| 不适用                               | `logoutPopup`                   |                                                  |
-| 不适用                               | `logoutRedirect`                |                                                  |
+| 不可用                               | `loginRedirect`                 |                                                  |
+| 不可用                               | `logoutPopup`                   |                                                  |
+| 不可用                               | `logoutRedirect`                |                                                  |
 | 空值                               | `getAccountByHomeId`            | 按主目录 ID（OID + 租户 ID）筛选帐户    |
 | 空值                               | `getAccountLocalId`             | 按本地 ID 筛选帐户（对于 ADFS 非常有用）   |
 | 空值                               | `getAccountUsername`            | 按用户名（如果存在）筛选帐户         |

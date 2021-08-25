@@ -1,14 +1,14 @@
 ---
 title: 快速入门：使用 Azure CLI 创建共享查询
 description: 本快速入门将按照步骤为 Azure CLI 启用 Resource Graph 扩展，并创建共享查询。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: 990f38b3d11cf2c0a1a8dc9c3ea8991911ada896
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: acee8e8961b22df8b7ab7b38af1d0e3c6f3fa300
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108751528"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122321806"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 Resource Graph 共享查询
 

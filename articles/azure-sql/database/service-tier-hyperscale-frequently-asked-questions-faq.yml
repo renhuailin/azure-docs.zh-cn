@@ -11,13 +11,13 @@ metadata:
   author: dimitri-furman
   ms.author: dfurman
   ms.reviewer: mathoma
-  ms.date: 03/31/2021
-  ms.openlocfilehash: b173b2ce8de29a4a605e7223bc46130155b81b3d
-  ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+  ms.date: 07/27/2021
+  ms.openlocfilehash: bb858077d649c5fb7d41a1e39e1626331819da50
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/24/2021
-  ms.locfileid: "114668760"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121722929"
 title: Azure SQL 数据库“超大规模”常见问题解答
 summary: >
   [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,373 +33,374 @@ sections:
 - name: 一般问题
   questions:
   - question: >
-      什么是“超大规模”数据库？
+      What is a Hyperscale database?
     answer: >
-      超大规模数据库是“超大规模”服务层级中 SQL 数据库中的数据库，由超大规模横向扩展存储技术提供支持。 一个“超大规模”数据库支持最多 100 TB 的数据，提供高吞吐量和高性能，可以快速缩放以适应工作负荷要求。 缩放对应用程序透明 - 连接、查询处理等都与 SQL 数据库中的其他任何数据库一样工作。
+      A Hyperscale database is a database in SQL Database in the Hyperscale service tier that is backed by the Hyperscale scale-out storage technology. A Hyperscale database supports up to 100 TB of data and provides high throughput and performance, as well as rapid scaling to adapt to the workload requirements. Scaling is transparent to the application – connectivity, query processing, etc. work like any other database in Azure SQL Database.
   - question: >
-      哪些资源类型和购买模型支持“超大规模”？
-    answer: "“超大规模”服务层级仅适用于在 Azure SQL 数据库中使用基于 vCore 的购买模型的单一数据库。  \n"
+      What resource types and purchasing models support Hyperscale?
+    answer: "The Hyperscale service tier is only available for single databases using the vCore-based purchasing model in Azure SQL Database.  \n"
   - question: >
-      “超大规模”服务层级与“常规用途”和“业务关键”服务层级有何区别？
+      How does the Hyperscale service tier differ from the General Purpose and Business Critical service tiers?
     answer: >
-      根据下表中所述的数据库可用性、存储类型性能和最大大小区分基于 vCore 的服务层级。
+      The vCore-based service tiers are differentiated based on database availability and storage type, performance, and maximum size, as described in the following table.
 
 
-      | | 资源类型 | 常规用途 |  超大规模 | 业务关键 |
+      | | Resource type | General Purpose |  Hyperscale | Business Critical |
 
       |:---:|:---:|:---:|:---:|:---:|
 
-      | **最适用于** |全部|提供以预算导向的、均衡的计算和存储选项。|大多数业务工作负荷。 自动缩放存储大小，最大可达 100 TB，快速的垂直和水平计算缩放，快速数据库还原。|事务率较高、IO 延迟较低的 OLTP 应用程序。 使用多个同步更新的副本提供最高故障复原能力和快速故障转移。|
+      | **Best for** |All|Offers budget oriented balanced compute and storage options.|Most business workloads. Autoscaling storage size up to 100 TB, fast vertical and horizontal compute scaling, fast database restore.|OLTP applications with high transaction rate and low IO latency. Offers highest resilience to failures and fast failovers using multiple synchronously updated replicas.|
 
-      |  **资源类型** ||SQL 数据库/ SQL 托管实例 | 单一数据库 | SQL 数据库/ SQL 托管实例 |
+      |  **Resource type** ||SQL Database / SQL Managed Instance | Single database | SQL Database / SQL Managed Instance |
 
-      | **计算大小**|SQL 数据库* | 1 - 80 个 vCore | 1 - 80 个 vCore* | 1 - 80 个 vCore |
+      | **Compute size**|SQL Database* | 1 to 80 vCores | 1 to 80  vCores* | 1 to 80 vCores |
 
-      | **计算大小**|SQL 托管实例 | 8、16、24、32、40、64、80 个 vCore | 空值 | 8、16、24、32、40、64、80 个 vCore |
+      | **Compute size**|SQL Managed Instance | 8, 16, 24, 32, 40, 64, 80  vCores | N/A | 8, 16, 24, 32, 40, 64, 80  vCores |
 
-      | **存储类型** | 全部 |高级远程存储（每个实例） | 具有本地 SSD 缓存的分离的存储（每个实例） | 超快的本地 SSD 存储（每个实例） |
+      | **Storage type** | All |Premium remote storage (per instance) | De-coupled storage with local SSD cache (per instance) | Super-fast local SSD storage (per instance) |
 
-      | **存储大小** | SQL 数据库 *| 5 GB – 4 TB | 最多 100 TB | 5 GB – 4 TB |
+      | **Storage size** | SQL Database *| 5 GB – 4 TB | Up to 100 TB | 5 GB – 4 TB |
 
-      | **存储大小** | SQL 托管实例  | 32 GB – 8 TB | 不适用 | 32 GB – 4 TB |
+      | **Storage size** | SQL Managed Instance  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
 
-      | **IOPS** | 单一数据库 | 每个 vCore 提供 500 IOPS，最大 7000 IOPS | 超大规模是具有多个级别缓存的多层体系结构。 有效 IOPS 将取决于工作负荷。 | 5000 IOPS，最大 200,000 IOPS|
+      | **IOPS** | Single database | 500 IOPS per vCore with 7000 maximum IOPS | Hyperscale is a multi-tiered architecture with caching at multiple levels. Effective IOPS will depend on the workload. | 5000 IOPS with 200,000 maximum IOPS|
 
-      | **IOPS** | SQL 托管实例 | 取决于文件大小 | 空值 | 1375 IOPS/vCore |
+      | **IOPS** | SQL Managed Instance | Depends on file size | N/A | 1375 IOPS/vCore |
 
-      |**可用性**|全部|1 个副本，无读取扩展，无本地缓存 | 多个副本，最多 4 个读取扩展，部分本地缓存 | 3 个副本，1 个读取扩展，区域冗余 HA，完整的本地存储 |
+      |**Availability**|All|1 replica, no Read Scale-out, no local cache | Multiple replicas, up to 4 Read Scale-out, partial local cache | 3 replicas, 1 Read Scale-out, zone-redundant HA, full local storage |
 
-      |**备份**|全部|RA-GRS，7-35 天保留期（默认为 7 天）| RA-GRS，7 天保留期，恒定的时间时点恢复 (PITR) | RA-GRS，7-35 天保留期（默认为 7 天） |
+      |**Backups**|All|RA-GRS, 7-35 day retention (7 days by default)| RA-GRS, 7 day retention, constant time point-in-time recovery (PITR) | RA-GRS, 7-35 day retention (7 days by default) |
 
 
-      \*“超大规模”服务层级不支持弹性池
+      \* Elastic pools are not supported in the Hyperscale service tier
   - question: >
-      哪些群体应使用“超大规模”服务层级？
+      Who should use the Hyperscale service tier?
     answer: >
-      “超大规模”服务层级面向拥有大型本地 SQL Server 数据库并希望通过迁移到云来实现应用程序现代化的客户，或已使用 Azure SQL 数据库并且想大大拓展数据库增长可能性的客户。 “超大规模”服务层级也适用于那些寻求高性能和高可伸缩性的客户。 使用“超大规模”服务层级，可以：
+      The Hyperscale service tier is intended for customers who have large on-premises SQL Server databases and want to modernize their applications by moving to the cloud, or for customers who are already using Azure SQL Database and want to significantly expand the potential for database growth. Hyperscale is also intended for customers who seek both high performance and high scalability. With Hyperscale, you get:
 
 
-      - 数据库大小最大为 100 TB
+      - Database size up to 100 TB
 
-      - 快速进行数据库备份，无需考虑数据库大小（备份基于存储快照）
+      - Fast database backups regardless of database size (backups are based on storage snapshots)
 
-      - 快速进行数据库还原，无需考虑数据库大小（从存储快照还原）
+      - Fast database restores regardless of database size (restores are from storage snapshots)
 
-      - 无论数据库大小和 vCore 数目如何，都可提高日志吞吐量
+      - Higher log throughput regardless of database size and the number of vCores
 
-      - 使用一个或多个只读副本的读取扩展，用于卸载读取工作负荷，并用作热备用服务器。
+      - Read Scale-out using one or more read-only replicas, used for read offloading  and as hot standbys.
 
-      - 在恒定时间内快速纵向扩展计算，以便提高适应繁重工作负荷的能力；然后在恒定时间内纵向缩减。 例如，这与在 P6 和 P11 之间来回缩放类似，但速度更快，因为这不是一种数据大小操作。
+      - Rapid scale up of compute, in constant time, to be more powerful to accommodate the heavy workload and then scale down, in constant time. This is similar to scaling up and down between a P6 and a P11, for example, but much faster as this is not a size of data operation.
   - question: >
-      哪些区域当前支持“超大规模”？
+      What regions currently support Hyperscale?
     answer: >
-      “超大规模”服务层级目前已在 [Azure SQL 数据库“超大规模”概述](service-tier-hyperscale.md#regions)下面列出的区域中推出。
+      The Hyperscale service tier is currently available in the regions listed under [Azure SQL Database Hyperscale Overview](service-tier-hyperscale.md#regions).
   - question: >
-      能否为每个服务器创建多个“超大规模”数据库？
+      Can I create multiple Hyperscale databases per server?
     answer: >
-      是的。 有关每个服务器的“超大规模”数据库数量的详细信息和限制，请参阅[服务器上单一和共用数据库的 SQL 数据库资源限制](resource-limits-logical-server.md)。
+      Yes. For more information and limits on the number of Hyperscale databases per server, see [SQL Database resource limits for single and pooled databases on a server](resource-limits-logical-server.md).
   - question: >
-      “超大规模”数据库的性能特征有哪些？
+      What are the performance characteristics of a Hyperscale database?
     answer: >
-      “超大规模”体系结构提供高性能和吞吐量，同时支持大型数据库。
+      The Hyperscale architecture provides high performance and throughput while supporting large database sizes.
   - question: >
-      什么是“超大规模”数据库的可伸缩性？
-    answer: "“超大规模”根据工作负荷需求，提供快速的可伸缩性。\n\n- **增加/减少**\n\n  使用“超大规模”数据库，可以纵向扩展 CPU、内存等资源的主要计算大小，然后在恒定的时间内将其减少。 因为是共享存储，所以纵向扩展和缩减不是数据大小操作。  \n- **缩小/扩大**\n\n  借助“超大规模”数据库，还能够预配一个或多个额外的计算副本，用于为读取请求提供服务。 这意味着，可以将这些额外的计算副本用作只读副本，从主计算卸载读取工作负荷。 这些副本除用作只读副本外，在主计算发生故障转移时，还充当热备用节点。\n\n  对每个额外的计算副本的预配可在恒定时间内完成，并且是联机操作。 将连接字符串的 `ApplicationIntent` 参数设置为 `ReadOnly`，即可连接到这些额外的只读计算副本。 具有 `ReadOnly` 应用程序意向的任何连接均自动路由到某个额外的只读计算副本。\n"
+      What is the scalability of a Hyperscale database?
+    answer: "Hyperscale provides rapid scalability based on your workload demand.\n\n- **Scaling Up/Down**\n\n  With  Hyperscale, you can scale up the primary compute size in terms of resources like CPU and memory, and then scale down, in constant time. Because the storage is shared, scaling up and scaling down is not a size of data operation.  \n- **Scaling In/Out**\n\n  With Hyperscale, you also get the ability to provision one or more additional compute replicas that you can use to serve your read requests. This means that you can use these additional compute replicas as read-only replicas to offload your read workload from the primary compute. In addition to read-only, these replicas also serve as hot-standbys in case of a failover from the primary.\n\n  Provisioning of each of these additional compute replicas can be done in constant time and is an online operation. You can connect to these additional read-only compute replicas by setting the `ApplicationIntent` argument on your connection string to `ReadOnly`. Any connections  with the `ReadOnly` application intent are automatically routed to one of the additional read-only compute replicas.\n"
 - name: 深入的问题
   questions:
   - question: >
-      是否可以在单个服务器中混合使用“超大规模”数据库和单一数据库？
+      Can I mix Hyperscale and single databases in a single server?
     answer: >
-      可以。
+      Yes, you can.
   - question: >
-      “超大规模”数据库需要更改应用程序编程模型吗？
+      Does Hyperscale require my application programming model to change?
     answer: >
-      不，应用程序编程模型保持原样。 可以照常使用连接字符串和其他常规方式，以与“超大规模”数据库进行交互。
+      No, your application programming model stays as is. You use your connection string as usual and the other regular ways to interact with your Hyperscale database.
   - question: >
-      “超大规模”数据库中的默认事务隔离级别是什么？
+      What transaction isolation level is the default in a Hyperscale database?
     answer: >
-      在主要副本上，默认的事务隔离级别为 RCSI（已提交读快照隔离）。 在读取扩展次要副本上，默认隔离级别为“快照”。
+      On the primary replica, the default transaction isolation level is RCSI (Read Committed Snapshot Isolation). On the Read Scale-out secondary replicas, the default isolation level is Snapshot.
   - question: >
-      能否将我的本地或 IaaS SQL Server 许可证引入“超大规模”？
+      Can I bring my on-premises or IaaS SQL Server license to Hyperscale?
     answer: >
-      能，[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)适用于“超大规模”。 每个 SQL Server Standard 核心都可以映射到 1 个超大规模 vCore。 每个 SQL Server Enterprise 核心都可以映射到 4 个“超大规模”vCore。 对于次要副本，不需要 SQL 许可证。 Azure 混合权益价格会自动应用到读取扩展（次要）副本。
+      Yes, [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) is available for Hyperscale. Every SQL Server Standard core can map to 1 Hyperscale vCores. Every SQL Server Enterprise core can map to 4 Hyperscale vCores. You don’t need a SQL license for secondary replicas. The Azure Hybrid Benefit price will be automatically applied to Read Scale-out (secondary) replicas.
   - question: >
-      “超大规模”是为哪种工作负载而设计的？
+      What kind of workloads is Hyperscale designed for?
     answer: >
-      超大规模支持所有工作负荷类型，其中包括 OLTP、混合 (HTAP) 和分析（数据市场）工作负荷。
+      Hyperscale supports all workload types, including OLTP, Hybrid (HTAP), and Analytical (data mart) workloads.
   - question: >
-      如何在 Azure Synapse Analytics 和 Azure SQL 数据库超大规模之间进行选择？
-    answer: "如果目前运行的是使用 SQL Server 作为数据仓库的交互式分析查询，“超大规模”是很好的选择，因为能以较低费用托管中小型数据仓库（例如几 TB 到 100 TB），并且只需对 T-SQL 代码进行极少量的更改，即可将 SQL Server 数据仓库工作负荷迁移到“超大规模”。\n\n如果大规模运行包含复杂查询且持续引入速率超过 100 MB/秒的数据分析，并使用并行数据仓库 (PDW)、Teradata 或其他大规模并行处理 (MPP) 数据仓库，则 Azure Synapse Analytics 可能是最佳选择。\n  \n"
+      How can I choose between Azure Synapse Analytics and Azure SQL Database Hyperscale?
+    answer: "If you are currently running interactive analytics queries using SQL Server as a data warehouse, Hyperscale is a great option because you can host small and mid-size data warehouses (such as a few TB up to 100 TB) at a lower cost, and you can migrate your SQL Server data warehouse workloads to Hyperscale with minimal T-SQL code changes.\n\nIf you are running data analytics on a large scale with complex queries and sustained ingestion rates higher than 100 MB/s, or using Parallel Data Warehouse (PDW), Teradata, or other Massively Parallel Processing (MPP) data warehouses, Azure Synapse Analytics may be the best choice.\n  \n"
 - name: “超大规模”计算问题
   questions:
   - question: >
-      是否可以随时暂停计算？
+      Can I pause my compute at any time?
     answer: >
-      目前不能，但可以缩减计算和副本数量，以降低非高峰时段的成本。
+      Not at this time, however you can scale your compute and number of replicas down to reduce cost during non-peak times.
   - question: >
-      是否可以为内存密集型工作负载预配包含额外 RAM 的计算副本？
+      Can I provision a compute replica with extra RAM for my memory-intensive workload?
     answer: >
-      否。 要获取更多 RAM，需要升级到更大的计算大小。 有关详细信息，请参阅[超大规模存储和计算大小](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5)。
+      No. To get more RAM, you need to upgrade to a higher compute size. For more information, see [Hyperscale storage and compute sizes](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5).
   - question: >
-      是否可以预配大小不同的多个计算副本？
+      Can I provision multiple compute replicas of different sizes?
     answer: >
-      是的。 使用[命名副本](service-tier-hyperscale-replicas.md#named-replica-in-preview)可以实现此操作。
+      Yes. This can be achieved using [named replicas](service-tier-hyperscale-replicas.md#named-replica-in-preview).
   - question: >
-      支持多少个读取扩展副本？
+      How many Read Scale-out replicas are supported?
     answer: >
-      默认情况下，超大规模数据库是使用一个读取扩展副本（包括主要副本共有 2 个副本）创建的。 可以使用 [Azure 门户](https://portal.azure.com)或 [REST API](/rest/api/sql/databases/createorupdate) 将只读副本的数目缩放为 0 到 4 个。 此外，还可以使用[命名副本](service-tier-hyperscale-replicas.md#named-replica-in-preview)启用许多读取扩展方案。
+      The Hyperscale databases are created with one Read Scale-out replica (two replicas including primary) by default. You can scale the number of read-only replicas between 0 and 4 using [Azure portal](https://portal.azure.com) or [REST API](/rest/api/sql/databases/createorupdate). Additionally, many read scale-out scenarios can be enabled using [named replicas](service-tier-hyperscale-replicas.md#named-replica-in-preview).
   - question: >
-      若要实现高可用性，是否需要预配额外的计算副本？
+      For high availability, do I need to provision additional compute replicas?
     answer: >
-      在超大规模数据库中，数据复原能力是在存储级别提供的。 只需一个副本即可提供复原能力。 计算副本关闭后，系统自动创建一个新副本，且不会丢失数据。
+      In Hyperscale databases, data resiliency is provided at the storage level. You only need one replica to provide resiliency. When the compute replica is down, a new replica is created automatically with no data loss.
 
 
-      但是，如何只有一个副本，故障转移后可能需要一些时间才能在新副本中生成本地缓存。 在缓存重新生成阶段，数据库直接从页面服务器中提取数据，导致存储延迟提高，查询性能下降。
+      However, if there’s only one replica, it may take some time to build the local cache in the new replica after failover. During the cache rebuild phase, the database fetches data directly from the page servers, resulting in higher storage latency and degraded query performance.
 
 
-      对于需要高可用性且只能对故障排除造成轻微影响的任务关键应用，应该预配至少 2 个计算副本（包括主要计算副本）。 这是默认配置。 这样，就有一个充当故障转移目标的热备用副本可用。
+      For mission-critical apps that require high availability with minimal failover impact, you should provision at least 2 compute replicas including the primary compute replica. This is the default configuration. That way there is a hot-standby replica available that serves as a failover target.
 - name: 数据大小和存储问题
   questions:
   - question: >
-      “超大规模”支持的最大数据库大小是多少？
-    answer: 100 TB。
+      What is the maximum database size supported with Hyperscale?
+    answer: 100 TB.
   - question: >
-      “超大规模”事务日志的大小是多少？
+      What is the size of the transaction log with Hyperscale?
     answer: >
-      “超大规模”数据库的事务日志几乎是无穷大的。 不需要担心在具有高日志吞吐量的系统上耗尽日志空间。 但是，可能为连续主动写入工作负荷限制日志生成速率。 峰值持续日志生成速率为 100 MB/秒。
+      The transaction log with Hyperscale is practically infinite. You do not need to worry about running out of log space on a system that has a high log throughput. However, log generation rate might be throttled for continuous aggressively writing workloads. The peak sustained log generation rate is 100 MB/s.
   - question: >
-      `tempdb` 是否会随着数据库增长而缩放？
+      Does my `tempdb` scale as my database grows?
     answer: >
-      `tempdb` 数据库位于本地 SSD 存储，其大小与预配的计算大小成比例。 为提供最大性能优势，对 `tempdb` 进行了优化。 `tempdb` 大小不可配置，它由你管理。 若要确定数据库的 `tempdb` 大小上限，请参阅[超大规模存储和计算大小](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5)。
+      Your `tempdb` database is located on local SSD storage and is sized proportionally to the compute size that you provision. Your `tempdb` is optimized to provide maximum performance benefits. `tempdb` size is not configurable and is managed for you. To determine maximum `tempdb` size for your database, see [Hyperscale storage and compute sizes](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5).
   - question: >
-      数据库大小是否会自动增长，我是否需要管理数据文件的大小？
+      Does my database size automatically grow, or do I have to manage the size of data files?
     answer: >
-      你的数据库会随着你插入/引入更多数据自动增长。
+      Your database size automatically grows as you insert/ingest more data.
   - question: >
-      “超大规模”支持的最小数据库大小是多少？
-    answer: 40 GB。 创建的“超大规模”数据库的初始大小为 10 GB。 然后，它每隔 10 分钟增大 10 GB，直至达到 40 GB 大小。 其中的每个 10 GB 区块在不同的页面服务器中分配，以提供更大的 IOPS 和更高的 I/O 并行度。 由于这种优化，即使选择小于 40 GB 的初始数据库大小，数据库也会自动扩大为至少 40 GB。
+      What is the smallest database size that Hyperscale supports?
+    answer: 40 GB. A Hyperscale database is created with a starting size of 10 GB. Then, it starts growing by 10 GB every 10 minutes, until it reaches the size of 40 GB. Each of these 10 GB chunks is allocated in a different page server in order to provide more IOPS and higher I/O parallelism. Because of this optimization, even if you choose initial database size smaller than 40 GB, the database will grow to at least 40 GB automatically.
   - question: >
-      数据库的大小按多少增量增长？
+      In what increments does my database size grow?
     answer: >
-      每个数据文件以 10 GB 增量增长。 多个数据文件可以同时增长。
+      Each data file grows by 10 GB. Multiple data files may grow at the same time.
   - question: >
-      “超大规模”中的存储是本地存储还是远程存储？
+      Is the storage in Hyperscale local or remote?
     answer: >
-      在“超大规模”数据库中，数据文件存储在 Azure 标准存储中。 数据完全缓存在本地 SSD 存储中靠近计算副本的页面服务器上。 此外，计算副本在本地 SSD 和内存中均有数据缓存，以便降低从远程页面服务器提取数据的频率。
+      In Hyperscale, data files are stored in Azure standard storage. Data is fully cached on local SSD storage, on page servers that are close to the compute replicas. In addition, compute replicas have data caches on local SSD and in memory, to reduce the frequency of fetching data from remote page servers.
   - question: >
-      是否可以使用“超大规模”数据库管理或定义文件或文件组？
+      Can I manage or define files or filegroups with Hyperscale?
     answer: >
-      否。 自动添加数据文件。 创建其他文件组的常见原因在“超大规模”存储体系结构中不适用。
+      No. Data files are added automatically. The common reasons for creating additional filegroups do not apply in the Hyperscale storage architecture.
   - question: >
-      是否可以为我的数据库的数据增长预配硬上限？
+      Can I provision a hard cap on the data growth for my database?
     answer: >
-      不能。
+      No.
   - question: >
-      如何使用“超大规模”排列数据文件？
+      How are data files laid out with Hyperscale?
     answer: >
-      数据文件由页面服务器控制，每个数据文件有一个页面服务器。 随着数据大小的增长添加数据文件和关联的页面服务器。
+      The data files are controlled by page servers, with one page server per data file. As the data size grows, data files and associated page servers are added.
   - question: >
-      是否支持数据库收缩？
+      Is database shrink supported?
     answer: >
-      不能。
+      No.
   - question: >
-      是否支持数据压缩？
+      Is data compression supported?
     answer: >
-      是，包括行、页和列存储压缩。
+      Yes, including row, page, and columnstore compression.
   - question: >
-      如果表格巨大，表格数据是否会分布在多个数据文件中？
+      If I have a huge table, does my table data get spread out across multiple data files?
     answer: >
-      是的。 与给定表格关联的数据页可在多个数据文件中出现，它们均属于相同文件组。 SQL Server 使用[按比例填充策略](/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy)在数据文件间分布数据。
+      Yes. The data pages associated with a given table can end up in multiple data files, which are all part of the same filegroup. SQL Server uses [proportional fill strategy](/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy) to distribute data over data files.
 - name: 数据迁移问题
   questions:
   - question: >
-      能否将 Azure SQL 数据库中的现有数据库迁移到“超大规模”服务层级？
-    answer: "是的。 可以将 Azure SQL 数据库中的现有数据库迁移到“超大规模”服务层级。 这是一种单向迁移。 无法将数据库从“超大规模”层级移到另一个服务层级。 对于概念证明 (POC)，我们建议创建数据库的副本，并将副本迁移到“超大规模”。 \n\n将现有数据库移动到超大规模所需的时间包含复制数据所需的时间以及在复制数据期间重播在源数据库中进行的更改所需的时间。 数据复制时间与数据大小成正比。 如果移动在写入活动较少的时间段内进行，则重播更改所需的时间会较短。\n  \n"
+      Can I move my existing databases in Azure SQL Database to the Hyperscale service tier?
+    answer: "Yes. You can move your existing databases in Azure SQL Database to Hyperscale. This is a one-way migration. You can’t move databases from Hyperscale to another service tier. For proofs of concept (POCs), we recommend you make a copy of your database and migrate the copy to Hyperscale. \n\nThe time required to move an existing database to Hyperscale consists of the time to copy data, and the time to replay the changes made in the source database while copying data. The data copy time is proportional to data size. The time to replay changes will be shorter if the move is done during a period of low write activity.\n  \n"
   - question: >
-      能否将“超大规模”数据库迁移到其他服务层级？
+      Can I move my Hyperscale databases to other service tiers?
     answer: >
-      否。 目前，无法将超大规模数据库迁移到其他服务层级。
+      No. At this time, you can’t move a Hyperscale database to another service tier.
   - question: >
-      迁移到“超大规模”服务层级后，是否会丢失一些功能？
+      Do I lose any functionality or capabilities after migration to the Hyperscale service tier?
     answer: >
-      是的。 目前，部分 Azure SQL 数据库功能在“超大规模”中不受支持，包括但不限于长期备份保留。 将数据库迁移到“超大规模”服务层级后，这些功能将停止运行。  我们预期这些限制是暂时性的。 有关详细信息，请参阅[已知限制](service-tier-hyperscale.md#known-limitations)。
+      Yes. Some Azure SQL Database features are not supported in Hyperscale yet, including but not limited to long term backup retention. After you migrate your databases to Hyperscale, those features stop working.  We expect these limitations to be temporary. For details, see [Known limitations](service-tier-hyperscale.md#known-limitations).
   - question: >
-      是否可以将我的本地 SQL Server 数据库或云虚拟机中的 SQL Server 数据库迁移到“超大规模”？
+      Can I move my on-premises SQL Server database, or my SQL Server database in a cloud virtual machine to Hyperscale?
     answer: >
-      是的。 可以使用所有现有的迁移技术迁移到“超大规模”，包括事务复制，以及任何其他数据移动技术（批量复制、Azure 数据工厂、Azure Databricks、SSIS）。 另请参阅支持许多迁移方案的 [Azure 数据库迁移服务](../../dms/dms-overview.md)。
+      Yes. You can use all existing migration technologies to migrate to Hyperscale, including transactional replication, and any other data movement technologies (Bulk Copy, Azure Data Factory, Azure Databricks, SSIS). See also the [Azure Database Migration Service](../../dms/dms-overview.md), which supports many migration scenarios.
   - question: >
-      从本地或虚拟机环境迁移到“超大规模”服务层级期间，我的停机时间有多长，如何尽量减少停机时间？
+      What is my downtime during migration from an on-premises or virtual machine environment to Hyperscale, and how can I minimize it?
     answer: >
-      迁移到“超大规模”造成的停机时间与将数据库迁移到其他 Azure SQL 数据库服务层级造成的停机时间相同。 可以使用[事务复制](replication-to-sql-database.md#data-migration-scenario
+      Downtime for migration to Hyperscale is the same as the downtime when you migrate your databases to other Azure SQL Database service tiers. You can use [transactional replication](replication-to-sql-database.md#data-migration-scenario
 
-      )尽量减少大小最多几 TB 的数据库的故障时间迁移。 对于非常大的数据库（10 TB 以上），可以考虑使用 ADF、Spark 或其他数据移动技术迁移数据。
+      ) to minimize downtime migration for databases up to few TB in size. For very large databases (10+ TB), you can consider to migrate data using ADF, Spark, or other data movement technologies.
   - question: >
-      向“超大规模”引入 X 数据量需要多少时间？
+      How much time would it take to bring in X amount of data to Hyperscale?
     answer: >
-      “超大规模”每秒能够使用 100 MB 的新数据/更改的数据，但将数据移入 Azure SQL 数据库中的数据库所需的时间也会受到可用网络吞吐量、源读取速度和目标数据库服务级别目标的影响。
+      Hyperscale is capable of consuming 100 MB/s of new/changed data, but the time needed to move data into databases in Azure SQL Database is also affected by available network throughput, source read speed and the target database service level objective.
   - question: >
-      是否可以从 blob 存储读取数据并执行快速加载（如 Azure Synapse Analytics 中的 Polybase）？
+      Can I read data from blob storage and do fast load (like Polybase in Azure Synapse Analytics)?
     answer: >
-      可让客户端应用程序从 Azure 存储中读取数据并将数据加载到“超大规模”数据库（就像对 Azure SQL 数据库中的任何其他数据库执行的操作一样）。 Azure SQL 数据库当前不支持 Polybase。 作为提供快速加载的替代方法，你可以使用 [Azure 数据工厂](../../data-factory/index.yml)，或通过[适用于 SQL 的 Spark 连接器](spark-connector.md)在 [Azure Databricks](/azure/azure-databricks/) 中使用 Spark 作业。 SQL 的 Spark 连接器支持批量插入。
-
-
-      还可以使用 BULK INSERT 或 OPENROWSET 从 Azure Blob 存储批量读取数据：[批量访问 Azure Blob 存储中的数据的示例](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location)。
+      You can have a client application read data from Azure Storage and load data load into a Hyperscale database (just like you can with any other database in Azure SQL Database). Polybase is currently not supported in Azure SQL Database. As an alternative to provide fast load, you can use [Azure Data Factory](../../data-factory/index.yml), or use a Spark job in [Azure Databricks](/azure/azure-databricks/) with the [Spark connector for SQL](spark-connector.md). The Spark connector to SQL supports bulk insert.
 
 
-      “超大规模”数据库中不支持简单恢复或批量日志记录模式。 提供高可用性和时点恢复需要完整恢复模式。 但是，相比于其他 Azure SQL 数据库服务层级而言，“超大规模”日志体系结构提供更佳的数据引入速率。
+      It is also possible to bulk read data from Azure Blob store using BULK INSERT or OPENROWSET: [Examples of Bulk Access to Data in Azure Blob Storage](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
+
+
+      Simple recovery or bulk logging model is not supported in Hyperscale. Full recovery model is required to provide high availability and point-in-time recovery. However, Hyperscale log architecture provides better data ingest rate compared to other Azure SQL Database service tiers.
   - question: >
-      “超大规模”是否允许预配多个节点，用于并行引入大量数据？
+      Does Hyperscale allow provisioning multiple nodes for parallel ingesting of large amounts of data?
     answer: >
-      否。 “超大规模”是对称多处理 (SMP) 体系结构，而不是大规模并行处理 (MPP) 或多主数据库体系结构。 只能创建多个副本来横向扩展只读工作负荷。
+      No. Hyperscale is a symmetric multi-processing (SMP) architecture and is not a massively parallel processing (MPP) or a multi-master architecture. You can only create multiple replicas to scale out read-only workloads.
   - question: >
-      支持迁移到“超大规模”的 SQL Server 最早版本是什么？
+      What is the oldest SQL Server version supported for migration to Hyperscale?
     answer: >
-      SQL Server 2005。 有关详细信息，请参阅[迁移到单一数据库或共用数据库](migrate-to-database-from-sql-server.md#migrate-to-a-single-database-or-a-pooled-database)。 对于兼容性问题，请参阅[解决数据库迁移的兼容性问题](migrate-to-database-from-sql-server.md#resolving-database-migration-compatibility-issues)。
+      SQL Server 2005. For more information, see [Migrate to a single database or a pooled database](migrate-to-database-from-sql-server.md#migrate-to-a-single-database-or-a-pooled-database). For compatibility issues, see [Resolving database migration compatibility issues](migrate-to-database-from-sql-server.md#resolving-database-migration-compatibility-issues).
   - question: >
-      “超大规模”是否支持从其他数据源（如 Amazon Aurora、MySQL、PostgreSQL、Oracle、DB2）和其他数据库平台进行迁移？
+      Does Hyperscale support migration from other data sources such as Amazon Aurora, MySQL, PostgreSQL, Oracle, DB2, and other database platforms?
     answer: >
-      是的。 [Azure 数据库迁移服务](../../dms/dms-overview.md)支持许多迁移方案。
+      Yes. [Azure Database Migration Service](../../dms/dms-overview.md) supports many migration scenarios.
 - name: 业务连续性和灾难恢复问题
   questions:
   - question: >
-      对“超大规模”数据库提供的 SLA 是什么？
+      What SLAs are provided for a Hyperscale database?
     answer: >
-      请参阅 [Azure SQL 数据库的 SLA](https://azure.microsoft.com/support/legal/sla/azure-sql-database)。 更多的次要计算副本可提高可用性，对于包含两个或更多个次要计算副本的数据库，SLA 高达 99.99%。
+      See [SLA for Azure SQL Database](https://azure.microsoft.com/support/legal/sla/azure-sql-database). Additional secondary compute replicas increase availability, up to 99.99% for a database with two or more secondary compute replicas.
   - question: >
-      Azure SQL 数据库是否托管我的数据库备份？
+      Are the database backups managed for me by Azure SQL Database?
     answer: >
-      是的。
+      Yes.
   - question: >
-      创建数据库备份的频率是多少？
+      How often are the database backups taken?
     answer: >
-      “超大规模”数据库没有传统的完整、差异和日志备份。 但有数据文件的定期存储快照。 生成的日志按配置的保留期按原样保留，因此可以还原到保留期内的任意时间点。
+      There are no traditional full, differential, and log backups for Hyperscale databases. Instead, there are regular storage snapshots of data files. Log that is generated is retained as-is for the configured retention period, allowing restore to any point in time within the retention period.
   - question: >
-      “超大规模”是否支持时间点还原？
+      Does Hyperscale support point-in-time restore?
     answer: >
-      是的。
+      Yes.
   - question: >
-      “超大规模”中的数据库还原的恢复点目标 (RPO)/恢复时间目标 (RTO) 是什么？
+      What is the Recovery Point Objective (RPO)/Recovery Time Objective (RTO) for database restore in Hyperscale?
     answer: >
-      时间点还原的 RPO 为 0 分钟。无论数据库大小如何，大多数时间点还原操作都会在 60 分钟内完成。 对于较大的数据库，如果该数据库在还原时间点之前（直到还原时间点）进行了大量写入活动，则还原时间可能会更长。
+      The RPO for point-in-time restore is 0 min. Most point-in-time restore operations complete within 60 minutes regardless of database size. Restore time may be longer for larger databases, and if the database had experienced significant write activity before and up to the restore point in time.
   - question: >
-      数据库备份是否影响主要副本或次要副本的计算性能？
+      Does database backup affect compute performance on my primary or secondary replicas?
     answer: >
-      否。 备份由存储子系统管理，利用存储快照。 它们不会影响用户工作负荷。
+      No. Backups are managed by the storage subsystem, and leverage storage snapshots. They do not impact user workloads.
   - question: >
-      是否可以对“超大规模”数据库执行异地还原？
+      Can I perform geo-restore with a Hyperscale database?
     answer: >
-      是的。 完全支持异地还原。 与时间点还原不同，异地还原需要数据大小操作。 将并行复制数据文件，因此此操作的持续时间主要取决于数据库中最大文件的大小，而不是数据库总大小。 如果将数据库还原到与源数据库的区域[配对](../../best-practices-availability-paired-regions.md)的 Azure 区域中，则异地还原时间会明显缩短。
+      Yes. Geo-restore is fully supported. Unlike point-in-time restore, geo-restore requires a size-of-data operation. Data files are copied in parallel, so the duration of this operation depends primarily on the size of the largest file in the database, rather than on total database size. Geo-restore time will be significantly shorter if the database is restored in the Azure region that is [paired](../../best-practices-availability-paired-regions.md) with the region of the source database.
   - question: >
-      是否可以对“超大规模”数据库设置异地复制？
+      Can I set up geo-replication with a Hyperscale database?
     answer: >
-      是的。 “超大规模”数据库的[异地复制](active-geo-replication-overview.md)提供公共预览版。
+      Yes. [Geo-replication](active-geo-replication-overview.md) for Hyperscale databases is in public preview.
   - question: >
-      是否可以备份“超大规模”数据库，并还原到我的本地服务器或 VM 中的 SQL Server？
+      Can I take a Hyperscale database backup and restore it to my on-premises server, or on SQL Server in a VM?
     answer: >
-      否。 “超大规模”数据库的存储格式不同于任何 SQL Server 发行版，你不控制备份且无权访问备份。 若要将数据移出“超大规模”数据库，可以使用任何数据移动技术（例如 Azure 数据工厂、Azure Databricks、SSIS 等）提取数据。
+      No. The storage format for Hyperscale databases is different from any released version of SQL Server, and you don’t control backups or have access to them. To take your data out of a Hyperscale database, you can extract data using any data movement technologies, i.e. Azure Data Factory, Azure Databricks, SSIS, etc.
 - name: 跨功能问题
   questions:
   - question: >
-      迁移到“超大规模”服务层级后，是否会丢失一些功能？
+      Do I lose any functionality or capabilities after migration to the Hyperscale service tier?
     answer: >
-      是的。 部分 Azure SQL 数据库功能在“超大规模”中不受支持，包括但不限于长期备份保留。 将数据库迁移到“超大规模”服务层级后，这些功能将停止运行。 有关详细信息，请参阅[已知限制](service-tier-hyperscale.md#known-limitations)。
+      Yes. Some Azure SQL Database features are not supported in Hyperscale, including but not limited to long term backup retention. After you migrate your databases to Hyperscale, those features stop working. For details, see [Known limitations](service-tier-hyperscale.md#known-limitations).
   - question: >
-      PolyBase 是否适用于“超大规模”？
+      Will PolyBase work with Hyperscale?
     answer: >
-      不是。 Azure SQL 数据库不支持 PolyBase。
+      No. PolyBase is not supported in Azure SQL Database.
   - question: >
-      “超大规模”是否支持 R 和 Python？
+      Does Hyperscale have support for R and Python?
     answer: >
-      目前没有。
+      Not at this time.
   - question: >
-      计算节点是否进行了容器化？
+      Are compute nodes containerized?
     answer: >
-      否。 “超大规模”进程在 [Service Fabric](https://azure.microsoft.com/services/service-fabric/) 节点 (VM) 上运行，而不是在容器中运行。
+      No. Hyperscale processes run on [Service Fabric](https://azure.microsoft.com/services/service-fabric/) nodes (VMs), not in containers.
 - name: 性能问题
   questions:
   - question: >
-      可以在“超大规模”数据库中推送多少写入吞吐量？
+      How much write throughput can I push in a Hyperscale database?
     answer: >
-      对于任何“超大规模”计算大小，事务日志吞吐量上限设置为 100 MB/秒。 实现此速率的能力取决于多种因素，包括但不限于工作负荷类型、客户端配置，以及在主要计算副本上提供足够的计算容量来以此速率生成日志。
+      Transaction log throughput cap is set to 100 MB/s for any Hyperscale compute size. The ability to achieve this rate depends on multiple factors, including but not limited to workload type, client configuration, and having sufficient compute capacity on the primary compute replica to produce log at this rate.
   - question: >
-      在最大的计算节点上可以获得多少 IOPS？
+      How many IOPS do I get on the largest compute?
     answer: >
-      IOPS 和 IO 延迟根据工作负荷模式而异。 如果正在访问的数据缓存在计算副本上的 RBPEX 中，你将会看到与“业务关键”层级或“高级服务”层级类似的 IO 性能。
+      IOPS and IO latency will vary depending on the workload patterns. If the data being accessed is cached in RBPEX on the compute replica, you will see similar IO performance as in Business Critical or Premium service tiers.
   - question: >
-      吞吐量是否受备份影响？
+      Does my throughput get affected by backups?
     answer: >
-      否。 计算节点与存储层分离。 这消除了备份对性能的影响。
+      No. Compute is decoupled from the storage layer. This eliminates performance impact of backup.
   - question: >
-      当我预配其他计算副本时，吞吐量是否会受到影响？
+      Does my throughput get affected as I provision additional compute replicas?
     answer: >
-      由于存储已共享，并且主要计算副本和次要计算副本之间没有发生直接物理复制，添加次要副本不会直接影响主要副本上的吞吐量。 但我们可以限制在主要副本上连续主动写入工作负荷，从而允许日志应用到次要副本和页面服务器上，并避免次要副本上读取性能不佳。
+      Because the storage is shared and there is no direct physical replication happening between primary and secondary compute replicas, the throughput on primary replica will not be directly affected by adding secondary replicas. However, we may throttle continuous aggressively writing workload on the primary to allow log apply on secondary replicas and page servers to catch up, to avoid poor read performance on secondary replicas.
   - question: >
-      如何诊断和排查“超大规模”数据库中的性能问题？
+      How do I diagnose and troubleshoot performance problems in a Hyperscale database?
     answer: >
-      对于大多数性能问题，尤其是根本原因与存储无关的性能问题，可以采取常用的 SQL 诊断和故障排除步骤。 有关特定于“超大规模”的存储诊断，请参阅 [SQL 超大规模服务层级性能故障排除诊断](hyperscale-performance-diagnostics.md)。
+      For most performance problems, particularly the ones not rooted in storage performance, common SQL diagnostic and troubleshooting steps apply. For Hyperscale-specific storage diagnostics, see [SQL Hyperscale performance troubleshooting diagnostics](hyperscale-performance-diagnostics.md).
 - name: 可伸缩性问题
   questions:
   - question: >
-      纵向扩展和减少计算副本需要多长时间？
+      How long would it take to scale up and down a compute replica?
     answer: >
-      无论数据大小如何，纵向扩展或缩减计算都需要多达 2 分钟时间。
+      Scaling compute up or down typically takes up to 2 minutes regardless of data size.
   - question: >
-      进行纵向扩展/缩减操作时，数据库是否处于脱机状态？
+      Is my database offline while the scaling up/down operation is in progress?
     answer: >
-      否。 纵向扩展/缩减操作为联机操作。
+      No. The scaling up and down will be online.
   - question: >
-      缩放操作过程中，连接是否会断开？
+      Should I expect connection drop when the scaling operations are in progress?
     answer: >
-      如果在缩放操作结束时发生故障转移，纵向扩展或缩减操作会导致现有连接断开。 添加或删除次要副本不会导致主副本上的连接中断。
+      Scaling up or down results in existing connections being dropped when a failover happens at the end of the scaling operation. Adding or removing secondary replicas does not result in connection drops on the primary.
   - question: >
-      纵向扩展和缩减计算副本是自动的操作还是由最终用户触发的操作？
-    answer: "是由最终用户触发的。 不是自动的。  \n"
+      Is the scaling up and down of compute replicas automatic or end-user triggered operation?
+    answer: "End-user. Not automatic.  \n"
   - question: >
-      计算纵向扩展时，`tempdb` 数据库和 RBPEX 缓存的大小是否也会随之增长？
+      Does the size of my `tempdb` database and RBPEX cache also grow as the compute is scaled up?
     answer: >
-      能。 随着内核数量的增加，计算节点上的 `tempdb` 数据库和 [RBPEX 缓存](service-tier-hyperscale.md#distributed-functions-architecture) 大小将自动增加。 有关详细信息，请参阅[超大规模存储和计算大小](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5)。
+      Yes. The `tempdb` database and [RBPEX cache](service-tier-hyperscale.md#distributed-functions-architecture) size on compute nodes will scale up automatically as the number of cores is increased. For details, see [Hyperscale storage and compute sizes](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5).
   - question: >
-      能否预配多个主要计算副本（例如多主数据库系统，其中多个主要计算标头可以驱动更高的并发级别）？
+      Can I provision multiple primary compute replicas, such as a multi-master system, where multiple primary compute heads can drive a higher level of concurrency?
     answer: >
-      否。 只有主要计算副本接受读/写请求。 次要计算副本只接受只读请求。
+      No. Only the primary compute replica accepts read/write requests. Secondary compute replicas only accept read-only requests.
 - name: 读取扩展问题
   questions:
   - question: >
-      可以预配多少个次要计算副本？
+      What kinds of secondary (read scale-out) replicas are available in Hyperscale?
     answer: >
-      默认情况下，我们将为“超大规模”数据库创建一个辅助副本。 若要调整副本数目，可以使用 [Azure 门户](https://portal.azure.com)或 [REST API](/rest/api/sql/databases/createorupdate)。 有关副本类型的详细信息，请参阅[超大规模副本](service-tier-hyperscale-replicas.md)。
+      Hyperscale supports High Availability (HA) replicas, named replicas, and geo-replicas. See [Hyperscale secondary replicas](service-tier-hyperscale-replicas.md) for details.
   - question: >
-      如何连接到这些次要计算副本？
+      How many secondary HA replicas can I provision?
     answer: >
-      将连接字符串的 `ApplicationIntent` 参数设置为 `ReadOnly`，即可连接到这些额外的只读计算副本。 任何标记为 `ReadOnly` 的连接均自动路由到某个额外的只读计算副本。 有关详细信息，请参阅[使用只读副本卸载只读的查询工作负载](read-scale-out.md)。
+      We create one secondary HA replica for Hyperscale databases by default. If you want to adjust the number of replicas, you can do so using [Azure portal](https://portal.azure.com) or [REST API](/rest/api/sql/databases/createorupdate).
   - question: >
-      如何使用 SSMS 或其他客户端工具验证是否已成功连接到辅助计算副本？
+      How do I connect to secondary HA replicas?
     answer: >
-      可执行以下 T-SQL 查询：`SELECT DATABASEPROPERTYEX ('<database_name>', 'Updateability')`。
-
-      如果已连接到只读辅助副本，则结果为 `READ_ONLY`；如果已连接到主要副本，则结果为 `READ_WRITE`。 请注意，必须将数据库上下文设置为“超大规模”数据库的名称，而不能设置为 `master` 数据库的名称。
+      You can connect to these additional read-only compute replicas by setting the `ApplicationIntent` argument in your connection string to `ReadOnly`. Any connections marked with `ReadOnly` are automatically routed to one of the secondary HA replicas, if they were added for your database. For details, see [Use read-only replicas to offload read-only query workloads](read-scale-out.md).
   - question: >
-      能否为读取扩展副本创建专用终结点？
+      How do I validate if I have successfully connected to secondary compute replica using SSMS or other client tools?
     answer: >
-      否。 只能通过指定 `ApplicationIntent=ReadOnly` 连接到读取扩展副本。
+      You can execute the following T-SQL query: `SELECT DATABASEPROPERTYEX ('<database_name>', 'Updateability')`. The result is `READ_ONLY` if you are connected to a read-only secondary replica, and `READ_WRITE` if you are connected to the primary replica. Note that the database context must be set to the name of the Hyperscale database, not to the `master` database.
   - question: >
-      系统是否对读取工作负载进行智能负载均衡？
-    answer: >
-      否。 具有只读意向的新连接将重定向到任意读取扩展副本。
+      Can I create a dedicated endpoint for a secondary HA replica?
+    answer: "No. You can only connect to HA replicas by specifying `ApplicationIntent=ReadOnly`. However, you can use dedicated endpoints for [named replicas](service-tier-hyperscale-replicas.md#named-replica-in-preview). \n"
   - question: >
-      能否独立于主要副本纵向扩展/缩减次要计算副本？
+      Does the system do intelligent load balancing of the read workload on HA replicas?
     answer: >
-      否。 辅助计算副本也用作高可用性故障转移目标，因此它们的配置需要与主要副本相同，才能在故障转移后提供预期的性能。
+      No. A new connection with read-only intent is redirected to an arbitrary HA replica.
   - question: >
-      对于我的主要计算副本和额外的次要计算副本，能否获得不同的 `tempdb` 大小？
+      Can I scale up/down HA replicas independently of the primary replica?
     answer: >
-      否。 `tempdb` 数据库根据计算大小预配进行配置，辅助计算副本的大小与主要计算副本相同。
+      No. HA replicas are used as high availability failover targets, so they need to have the same configuration as the primary to provide expected performance after failover. [Named replicas](service-tier-hyperscale-replicas.md#named-replica-in-preview) provide the ability to scale each replica independently.
   - question: >
-      能否对次要计算副本添加索引和视图？
+      Do I get different `tempdb` sizing for my primary compute and my HA replicas?
     answer: >
-      否。 “超大规模”数据库有共享存储，这表示所有计算副本会看到相同的表格、索引和视图。 如果要使次要副本上的额外索引得到读取优化，必须在主要副本上添加索引。
+      No. Your `tempdb` database is configured based on the provisioned compute size, your HA replicas are the same size, including `tempdb`, as the primary compute. On [named replicas](service-tier-hyperscale-replicas.md#named-replica-in-preview), `tempdb` is sized according to the compute size of the replica, thus it can be smaller or larger than `tempdb` on the primary.
   - question: >
-      主要和次要计算副本之间的延迟是多少？
+      Can I add indexes and views on my secondary compute replicas?
     answer: >
-      从在主要副本上提交事务的时间开始算起，到该事务在次要副本上可读的时间为止，数据延迟取决于当前日志生成速率、事务大小、副本上的负载以及其他因素。 小型事务的典型数据延迟为数十毫秒，但数据延迟没有上限。 给定次要副本上的数据始终在事务上保持一致。 但在给定的时间点，不同次要副本的数据延迟可能不同。 需要立即读取已提交数据的工作负载应在主要副本上运行。
-additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n有关“超大规模”服务层级的详细信息，请参阅[“超大规模”服务层级](service-tier-hyperscale.md)。"
+      No. Hyperscale databases have shared storage, meaning that all compute replicas see the same tables, indexes, and views. If you want additional indexes optimized for reads on secondary, you must add them on the primary.
+  - question: >
+      How much delay is there going to be between the primary and secondary compute replicas?
+    answer: >
+      Data latency from the time a transaction is committed on the primary to the time it is readable on a secondary depends on current log generation rate, transaction size, load on the replica, and other factors. Typical data latency for small transactions is in tens of milliseconds, however there is no upper bound on data latency. Data on a given secondary replica is always transactionally consistent. However, at a given point in time data latency may be different for different secondary replicas. Workloads that need to read committed data immediately should run on the primary replica.
+additionalContent: "\n## Next steps\n\nFor more information about the Hyperscale service tier, see [Hyperscale service tier](service-tier-hyperscale.md)."

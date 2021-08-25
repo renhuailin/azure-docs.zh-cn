@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 03/30/2021
 ms.author: parkerra
-ms.openlocfilehash: 7faab3340483d99fa276de06f3fd7787457edb9e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 2cd6fff6cc68baa28e85fa0c17294bcfe783ae54
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076681"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121721804"
 ---
 下一步是下载适用于 Unity 的 Azure 空间定位点包。 
 
@@ -27,7 +27,7 @@ ms.locfileid: "106076681"
 
 # <a name="download-with-web-browser"></a>[使用 Web 浏览器下载](#tab/unity-package-web-ui)
 
-在[此处](https://aka.ms/aoa/unity-sdk/package)查找适用于 Unity 的 Azure 空间定位点包。 选择所需的版本，并使用“下载”按钮下载该包。 重复此步骤，为你计划支持的每个平台下载包。
+在[此处](https://dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging?_a=feed&feed=Unity-packages)查找适用于 Unity 的 Azure 空间定位点核心包 (com.microsoft.azure.spatial-anchors-sdk.core)。 选择所需的版本，并使用“下载”按钮下载该包。 重复此步骤，为你计划支持的每个平台下载包。
 
 # <a name="download-with-npm"></a>[使用 NPM 下载](#tab/unity-package-npm)
 
@@ -48,8 +48,8 @@ npm pack com.microsoft.azure.spatial-anchors-sdk.core@<version_number> --registr
 
 Azure 空间定位点核心包将下载到运行命令的文件夹。 重复此步骤，为你计划支持的每个平台下载包。
 
-# <a name="install-with-mixed-reality-feature-tool-beta"></a>[使用混合现实功能工具（beta 版本）进行安装](#tab/unity-package-mixed-reality-feature-tool)
+# <a name="install-with-mixed-reality-feature-tool"></a>[使用混合现实功能工具进行安装](#tab/unity-package-mixed-reality-feature-tool)
 
-继续执行下一步。 在稍后的步骤中将使用<a a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">混合现实功能工具</a>。
+继续执行下一步。 在稍后的步骤中将使用<a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">混合现实功能工具</a>。
 
 ---

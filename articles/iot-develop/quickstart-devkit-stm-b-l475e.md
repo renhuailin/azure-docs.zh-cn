@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: dd8a214e060f9f4ace9f310fec3ebca33d4619c0
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: fe009eec23e940377e737938ea1986f515546138
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113109226"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862128"
 ---
 # <a name="quickstart-connect-an-stmicroelectronics-b-l475e-iot01a-or-b-l4s5i-iot01a-discovery-kit-to-iot-central"></a>快速入门：将 STMicroelectronics B-L475E-IOT01A 或 B-L4S5I-IOT01A 发现工具包连接到 IoT Central
 
@@ -145,7 +145,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 1. 启动 **Termite**。
     > [!TIP]
-    > 如果无法将 Termite 连接到 devkit，请安装 [ST-LINK 驱动程序](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip)，然后重试。 有关其他步骤，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)。
+    > 如果无法将 Termite 连接到 devkit，请安装 [ST-LINK 驱动程序](https://www.st.com/en/development-tools/stsw-link009.html)，然后重试。 有关其他步骤，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)。
 1. 选择“设置”。
 1. 在“串行端口设置”对话框中，检查以下设置并根据需要进行更新：
     * **波特率**：115,200

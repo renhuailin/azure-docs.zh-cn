@@ -1,15 +1,15 @@
 ---
 title: 教程：使用 Azure CLI 将策略状态更改事件路由到事件网格
 description: 在本教程中，你将配置事件网格以侦听策略状态更改事件并调用 Webhook。
-ms.date: 03/29/2021
+ms.date: 08/17/2021
 ms.topic: tutorial
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d2017b4e85c4d064fc206d9b908be126559032bd
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: bbbc1468c1a50835ea79efcd11e468c70002769c
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752014"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322317"
 ---
 # <a name="tutorial-route-policy-state-change-events-to-event-grid-with-azure-cli"></a>教程：使用 Azure CLI 将策略状态更改事件路由到事件网格
 

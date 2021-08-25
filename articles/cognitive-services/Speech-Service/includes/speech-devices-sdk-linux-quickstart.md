@@ -1,16 +1,16 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
-ms.author: trbye
-ms.openlocfilehash: 39cead8306ece6638f85813efc318dd41a6faf8c
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.author: lajanuar
+ms.openlocfilehash: 2fe98566c459a8e4c30df5d8e0d6a5040be13284
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99213722"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067989"
 ---
 本快速入门介绍如何使用适用于 Linux 的语音设备 SDK 来生成支持语音的产品，或将其用作[对话听录](../conversation-transcription.md)设备。 目前，只有 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) 受支持。
 
@@ -76,7 +76,7 @@ ms.locfileid: "99213722"
 
 1. 从 Eclipse 菜单栏上，依次选择“文件” > “新建” > “Java 项目”以新建一个项目。 如果不可用，请依次选择“项目”和“Java 项目”。
 
-1. 此时将启动“新建 Java 项目”向导。 **浏览** 示例项目所在的位置。 选择“完成”  。
+1. 此时将启动“新建 Java 项目”向导。 **浏览** 示例项目所在的位置。 选择“完成”。
 
    ![“新建 Java 项目”向导的屏幕截图](../media/speech-devices-sdk/eclipse-new-java-project-linux.png)
 

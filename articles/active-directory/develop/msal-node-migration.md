@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/26/2021
 ms.author: v-doeris
-ms.openlocfilehash: 4b23538ed02bd737764c24a8511986966473c7ed
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.custom: has-adal-ref
+ms.openlocfilehash: 55cf58924bca9839225eafaa3e4084d60db5f898
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114402381"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429119"
 ---
 # <a name="how-to-migrate-a-nodejs-app-from-adal-to-msal"></a>如何将 Node.js 应用从 ADAL 迁移到 MSAL
 

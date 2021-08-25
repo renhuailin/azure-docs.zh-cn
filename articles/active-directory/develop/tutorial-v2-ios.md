@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e273b1c41a9c418bf0121e87e73ec59e65f2242e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: aaddev, identityplatformtop40, has-adal-ref
+ms.openlocfilehash: 400b7b6f5c0f124773743d41ca8425842f5d6571
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100102948"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428920"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>教程：从 iOS 或 macOS 应用登录用户并调用 Microsoft Graph
 
