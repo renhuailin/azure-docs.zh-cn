@@ -8,12 +8,12 @@ ms.custom:
 - devx-track-azurecli
 - devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: e144304ae1b36ca02d4b8796e7994e87b09505d9
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 8bbd177e5cf9a6148179dfec7f7f6b6c0082cdde
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831089"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739840"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中通过命令行创建 Python 函数
 
@@ -35,7 +35,7 @@ ms.locfileid: "107831089"
 
 在开始之前，必须满足以下条件：
 
-+ 具有有效订阅的 Azure <abbr title="用于维护 Azure 使用情况计费信息的配置文件。">account</abbr> 帐户 <abbr title="在 Azure 中管理资源的基本组织结构，通常与组织中的个人或部门关联。">订阅</abbr>. [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
++ 具有有效订阅的 Azure <abbr title="用于维护 Azure 使用情况计费信息的配置文件。">account</abbr> 帐户 <abbr title="在 Azure 中管理资源的基本组织结构，通常与组织中的个人或部门相关联。">订阅</abbr>. [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) 版本 3.x。 
   
@@ -145,7 +145,7 @@ py -m venv .venv
     <details>
     <summary><strong>在 LocalFunctionProj 文件夹中创建了哪些内容？</strong></summary>
     
-    此文件夹包含项目的各个文件，其中包括名为 [local.settings.json](functions-run-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 的配置文件。 由于 *local.settings.json* 可以包含从 Azure 下载的机密，因此，默认情况下，该文件会从 *.gitignore* 文件的源代码管理中排除。
+    此文件夹包含项目的各个文件，其中包括名为 [local.settings.json](functions-develop-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 的配置文件。 由于 *local.settings.json* 可以包含从 Azure 下载的机密，因此，默认情况下，该文件会从 *.gitignore* 文件的源代码管理中排除。
     </details>
 
 1. 使用以下命令将函数添加到项目：
@@ -401,7 +401,7 @@ func azure functionapp logstream <APP_NAME> --browser
 
 ## <a name="8-clean-up-resources"></a>8.清理资源
 
-如果继续[后续步骤](#next-steps)并添加 <abbr title="一种将函数与存储队列关联，以确保函数可在队列上创建消息的方法。 ">Azure 存储队列输出绑定</abbr>，请将所有资源准备到位，以便在已完成的工作基础上进行操作。
+如果继续[后续步骤](#next-steps)并添加 <abbr title="一种将函数与存储队列关联，以确保函数可在队列上创建消息的方法。 ">Azure 存储队列输出绑定</abbr>，请将所有资源保存到正确位置，以便根据已完成的工作进行操作。
 
 否则，请使用以下命令删除资源组及其包含的所有资源，以免产生额外的费用。
 

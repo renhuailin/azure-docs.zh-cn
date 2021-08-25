@@ -8,19 +8,16 @@ ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android-windows
-ms.openlocfilehash: 1fb7373842e7edfdede482d83fdc7e27da0e6965
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 540b9021af6961cf873b6b6503905a94e1138a64
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113107752"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738419"
 ---
 # <a name="quickstart-join-your-calling-app-to-a-teams-meeting"></a>快速入门：在 Teams 会议中加入通话应用
 
 [!INCLUDE [Public Preview](../../includes/public-preview-include-document.md)]
-
-> [!IMPORTANT]
-> 若要启用/禁用 [Teams 租户互操作性](../../concepts/teams-interop.md)，请填写[此表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)。
 
 通过使用 JavaScript SDK 将呼叫解决方案连接到 Microsoft Teams，开始使用 Azure 通信服务。
 

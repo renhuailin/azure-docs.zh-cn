@@ -3,18 +3,17 @@ title: 教程 - 使用 SQL 模块存储数据 - Azure IoT Edge
 description: 本教程介绍如何使用 SQL Server 模块将数据存储到本地的 IoT Edge 设备
 services: iot-edge
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 50a2555bfd86e074da16daf4866d79f506ecd964
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 4a45cb97d4565eac279f054bcd862329311f4d8c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438020"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726346"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>教程：使用 SQL Server 数据库存储边缘中的数据
 

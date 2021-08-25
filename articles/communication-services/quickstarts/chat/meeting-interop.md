@@ -8,17 +8,16 @@ ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-web-ios-android
-ms.openlocfilehash: 09a4f044ee7084cec31c61c3a00a6e3a42d688f0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f7d815c94c2f04bfdef354efb8364d9b94e915f1
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114442871"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067108"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>快速入门：将你的聊天应用连接到 Teams 会议
 
-> [!IMPORTANT]
-> 若要启用/禁用 [Teams 租户互操作性](../../concepts/teams-interop.md)，请填写[此表单](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)。
+
 
 通过将聊天解决方案连接到 Microsoft Teams，开始使用 Azure 通信服务。 
 

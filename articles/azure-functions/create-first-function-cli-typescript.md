@@ -4,12 +4,12 @@ description: 了解如何通过命令行创建 TypeScript 函数，然后将本�
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c7b37700d93ea129ba46de81989f06dd2afe52ba
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: d9c9f95de61581614ffe48c60f8928775f208b77
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831809"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738575"
 ---
 # <a name="quickstart-create-a-typescript-function-in-azure-from-the-command-line"></a>快速入门：在 Azure 中通过命令行创建 TypeScript 函数
 
@@ -75,7 +75,7 @@ ms.locfileid: "107831809"
     cd LocalFunctionProj
     ```
     
-    此文件夹包含项目的各个文件，其中包括名为 [local.settings.json](functions-run-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 的配置文件。 由于 *local.settings.json* 可以包含从 Azure 下载的机密，因此，默认情况下，该文件会从 *.gitignore* 文件的源代码管理中排除。
+    此文件夹包含项目的各个文件，其中包括名为 [local.settings.json](functions-develop-local.md#local-settings-file) 和 [host.json](functions-host-json.md) 的配置文件。 由于 *local.settings.json* 可以包含从 Azure 下载的机密，因此，默认情况下，该文件会从 *.gitignore* 文件的源代码管理中排除。
 
 1. 使用以下命令将一个函数添加到项目，其中，`--name` 参数是该函数 (HttpExample) 的唯一名称，`--template` 参数指定该函数的触发器 (HTTP)。
 

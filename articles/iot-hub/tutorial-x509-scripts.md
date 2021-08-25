@@ -2,7 +2,6 @@
 title: 教程：使用 Microsoft 脚本创建 Azure IoT 中心的 x.509 测试证书 | Microsoft Docs
 description: 教程：使用自定义脚本为 Azure IoT 中心创建 CA 和设备证书
 author: v-gpettibone
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 8170b6529ca38c54d3030514a79948678861f3bd
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 1d3a024fd46fae80c45e2478e60d6e3eddd92725
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113214899"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747226"
 ---
 # <a name="tutorial-using-microsoft-supplied-scripts-to-create-test-certificates"></a>教程：使用 Microsoft 提供的脚本创建测试证书
 

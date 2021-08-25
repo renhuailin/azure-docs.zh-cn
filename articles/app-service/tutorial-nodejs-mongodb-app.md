@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/13/2021
 ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: ee40828bcb83d81aee7f1ece06971decf8143370
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 7338e5c8ef1e3f1fce6242b62153dd492de9e3a2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113767448"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746022"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>教程：在 Azure 中生成 Node.js 和 MongoDB 应用
 
@@ -101,7 +101,7 @@ MEAN 示例应用程序将用户数据存储在数据库中。 它默认使用�
 
 在此步骤中，会在 Azure 中创建 MongoDB 数据库。 应用部署到 Azure 后，它将使用该云数据库。
 
-对于 MongoDB，本教程使用了 [Azure Cosmos DB](/azure/cosmos-db/)。 Cosmos DB 支持 MongoDB 客户端连接。
+对于 MongoDB，本教程使用了 [Azure Cosmos DB](../cosmos-db/index.yml)。 Cosmos DB 支持 MongoDB 客户端连接。
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
@@ -425,7 +425,7 @@ https://<app-name>.azurewebsites.net
 
 ![在 Azure 应用服务中运行的 MEAN 应用](./media/tutorial-nodejs-mongodb-app/run-in-azure.png)
 
-**祝贺你！** 正在 Azure 应用服务中运行数据驱动的 Node.js 应用。
+祝贺你！ 正在 Azure 应用服务中运行数据驱动的 Node.js 应用。
 
 ## <a name="update-data-model-and-redeploy"></a>更新数据模型和重新部署
 
@@ -579,5 +579,5 @@ az webapp log tail --name <app-name> --resource-group myResourceGroup
 
 或者，查看其他资源：
 
-> [!div class="nextstepaction"]
-> [配置 Node.js 应用](configure-language-nodejs.md)
+- [配置 Node.js 应用](configure-language-nodejs.md)
+- [环境变量和应用设置参考](reference-app-settings.md)

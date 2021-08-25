@@ -11,12 +11,12 @@ metadata:
   author: SnehaGunda
   ms.author: sngun
   ms.date: 09/10/2019
-  ms.openlocfilehash: 0dda9cb110592c9fd9325f607b455d16c32da7f3
-  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+  ms.openlocfilehash: 272b23b326aa98d57558425a8cd2c09745b4fbf3
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/02/2021
-  ms.locfileid: "101658006"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121745460"
 landingContent:
 - title: 关于 Azure Cosmos DB
   linkLists:
@@ -81,85 +81,85 @@ landingContent:
   - linkListType: overview
     links:
     - text: 什么是 Azure Cosmos DB 的适用于 MongoDB API？
-      url: mongodb-introduction.md
+      url: mongodb/mongodb-introduction.md
   - linkListType: quickstart
     links:
     - text: 使用 .NET 应用管理数据
-      url: create-mongodb-dotnet.md
+      url: mongodb/create-mongodb-dotnet.md
     - text: 使用 GoLang 应用管理数据
-      url: create-mongodb-go.md
+      url: mongodb/create-mongodb-go.md
   - linkListType: concept
     links:
     - text: 与 MongoDB 的网络协议兼容性
-      url: mongodb-feature-support-40.md
+      url: mongodb/feature-support-40.md
     - text: MongoDB 扩展命令
-      url: mongodb-custom-commands.md
+      url: mongodb/custom-commands.md
     - text: 更改流
-      url: mongodb-change-streams.md
+      url: mongodb/change-streams.md
   - linkListType: tutorial
     links:
     - text: 使用 MongoDB shell 查询数据
-      url: tutorial-query-mongodb.md
+      url: mongodb/tutorial-query-mongodb.md
   - linkListType: how-to-guide
     links:
     - text: 管理数据索引编制
-      url: mongodb-indexing.md
+      url: mongodb/mongodb-indexing.md
     - text: 使用 Robo 3T 连接
-      url: mongodb-robomongo.md
+      url: mongodb/connect-using-robomongo.md
 - title: 使用 Azure Cosmos DB Gremlin API
   linkLists:
   - linkListType: overview
     links:
     - text: 什么是 Azure Cosmos Gremlin API？
-      url: graph-introduction.md
+      url: graph/graph-introduction.md
   - linkListType: quickstart
     links:
     - text: 使用 Gremlin 控制台管理数据
-      url: create-graph-gremlin-console.md
+      url: graph/create-graph-console.md
     - text: 使用 .NET 应用管理数据
-      url: create-graph-dotnet.md
+      url: graph/create-graph-dotnet.md
   - linkListType: concept
     links:
     - text: 与 Tinkerpop Gremlin 的网络协议兼容性
-      url: gremlin-support.md
+      url: graph/gremlin-support.md
     - text: Gremlin API 服务限制
-      url: gremlin-limits.md
+      url: graph/gremlin-limits.md
   - linkListType: how-to-guide
     links:
     - text: 图形数据建模
-      url: graph-modeling.md
+      url: graph/graph-modeling.md
     - text: 图形数据分区最佳做法
-      url: graph-partitioning.md
+      url: graph/graph-partitioning.md
     - text: 优化 Gremlin 查询
-      url: graph-execution-profile.md
+      url: graph/graph-execution-profile.md
 - title: 使用 Azure Cosmos DB Cassandra API
   linkLists:
   - linkListType: overview
     links:
     - text: 什么是 Azure Cosmos DB Cassandra API？
-      url: cassandra-introduction.md
+      url: cassandra/cassandra-introduction.md
   - linkListType: quickstart
     links:
     - text: 使用.NET Core 应用管理数据
-      url: create-cassandra-dotnet-core.md
+      url: cassandra/manage-data-dotnet-core.md
     - text: 使用 Java 应用管理数据
-      url: create-cassandra-java-v4.md
+      url: cassandra/manage-data-java-v4-sdk.md
   - linkListType: concept
     links:
     - text: 与 Apache Cassandra 的网络协议兼容性
-      url: cassandra-support.md
+      url: cassandra/cassandra-support.md
     - text: 弹性缩放
-      url: manage-scale-cassandra.md
+      url: cassandra/scale-account-throughput.md
     - text: 辅助索引
-      url: cassandra-secondary-index.md
+      url: cassandra/secondary-indexing.md
     - text: 分区
-      url: cassandra-partitioning.md
+      url: cassandra/cassandra-partitioning.md
   - linkListType: how-to-guide
     links:
     - text: 从 Spark 连接到 Cassandra API
-      url: cassandra-spark-generic.md
+      url: cassandra/connect-spark-configuration.md
     - text: 更改源支持和查询谓词
-      url: cassandra-change-feed.md?tabs=java
+      url: cassandra/cassandra-change-feed.md?tabs=java
 - title: 将数据迁移到 Cosmos DB
   linkLists:
   - linkListType: tutorial
@@ -167,21 +167,21 @@ landingContent:
     - text: 数据迁移工具 – SQL API
       url: import-data.md
     - text: CQL shell、Spark – Cassandra API
-      url: cassandra-import-data.md
+      url: cassandra/migrate-data.md
     - text: Azure 数据库迁移服务 – MongoDB API
       url: ../dms/tutorial-mongodb-cosmos-db.md
     - text: AzCopy、数据迁移工具 – 表 API
-      url: table-import.md
+      url: table/table-import.md
   - linkListType: how-to-guide
     links:
     - text: 使用 Striim 从 Oracle DB 迁移到 Cosmos DB SQL API 帐户
       url: cosmosdb-sql-api-migrate-data-striim.md
     - text: 使用 Striim 从 Oracle DB 迁移到 Cosmos DB Cassandra API 帐户
-      url: cosmosdb-cassandra-api-migrate-data-striim.md
+      url: cassandra/migrate-data-striim.md
     - text: 使用 Blitzz 从Oracle DB 迁移到 Cosmos DB Cassandra API 帐户
-      url: oracle-migrate-cosmos-db-blitzz.md
+      url: cassandra/oracle-migrate-cosmos-db-blitzz.md
     - text: 使用 Blitzz 从 Apache Cassandra 迁移到 Cosmos DB
-      url: cassandra-migrate-cosmos-db-blitzz.md
+      url: cassandra/migrate-data-blitzz.md
     - text: 迁移 100 TB 的数据
       url: migrate-cosmosdb-data.md
 - title: 使用 Azure Synapse Link 进行分析
@@ -203,10 +203,10 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: 使用 .NET 应用管理数据
-      url: create-table-dotnet.md
+      url: table/create-table-dotnet.md
     - text: 使用 Java 应用管理数据
-      url: create-table-java.md
+      url: table/create-table-java.md
   - linkListType: concept
     links:
     - text: 表 API 和 Azure 表存储之间的差异
-      url: table-support.md
+      url: table/table-support.md

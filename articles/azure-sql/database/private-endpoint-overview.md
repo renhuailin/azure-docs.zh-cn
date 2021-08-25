@@ -5,16 +5,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.service: sql-database
+ms.subservice: security
 ms.topic: overview
 ms.custom: sqldbrb=1, fasttrack-edit
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 9212c538ff0cf95e0383defe1881e877462de71e
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 5a6c3251b95bad9ba8f0f03fe97ba833d5390fb1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109488089"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741237"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 数据库和 Azure Synapse Analytics 的 Azure 专用链接
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -52,12 +53,12 @@ ms.locfileid: "109488089"
 
 1. 最后单击专用终结点名称 ![PEC 详细信息的屏幕截图][7]   
 
-   导致网络接口详细信息 ![NIC 详细信息的屏幕截图][8]
+   指向网络接口详细信息 ![NIC 详细信息的屏幕截图][8]
 
-   这最后导致专用终结点的 IP 地址![专用 IP 的屏幕截图][9]
+   最后指向专用终结点的 IP 地址![专用 IP 的屏幕截图][9]
 
 ## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network"></a>测试从同一虚拟网络中的 Azure VM 到 SQL 数据库的连接
-对于此场景，假设你已在与专用终结点相同的虚拟网络中创建了一个运行最新版本 Windows 的 Azure虚拟机 (VM)。
+对于此场景，假设你已在与专用终结点相同的虚拟网络中创建了一个运行最新版 Windows 的 Azure虚拟机 (VM)。
 
 1. [启动远程桌面 (RDP) 会话并连接到虚拟机](../../virtual-machines/windows/connect-logon.md#connect-to-the-virtual-machine)。 
 

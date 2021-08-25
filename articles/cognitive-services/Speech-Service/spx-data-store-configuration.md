@@ -3,19 +3,19 @@ title: 语音 CLI 配置选项 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何创建和管理配置文件来与 Azure 语音 CLI 一起使用。
 services: cognitive-services
-author: erhopf
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 01/13/2021
-ms.author: erhopf
-ms.openlocfilehash: aa8551e49c8ef16984783c4e9735c987174b180a
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.author: lajanuar
+ms.openlocfilehash: eeff86e7955f2e8e32059ba1acb220d0dd2a567f
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540217"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071515"
 ---
 # <a name="speech-cli-configuration-options"></a>语音 CLI 配置选项
 

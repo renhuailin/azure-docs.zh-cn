@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 11cb3ada0449559eda080cad3e9c528d60a02660
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 0d7a139588ac2ab507e4b4d4ef2061e42de41e35
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707914"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122180582"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint-in-azure-active-directory"></a>教程：在 Azure Active Directory 中开发 SCIM 终结点并计划其预配
 
@@ -901,7 +901,7 @@ TLS 1.2 密码套件最低标准：
 ### <a name="ip-ranges"></a>IP 范围
 Azure AD 预配服务当前在 AzureActiveDirectory 的 IP 范围下运行，如[此处](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) 所示。 可以添加 AzureActiveDirectory 标记下面列出的 IP 范围，以允许来自 Azure AD 预配服务的流量进入应用程序。 请注意，需要仔细检查 IP 范围列表中的计算地址。 地址（如“40.126.25.32”）可在 IP 范围列表中表示为“40.126.0.0/18”。 还可以使用以下 [API](/rest/api/virtualnetwork/servicetags/list)以编程方式检索 IP 范围列表。
 
-Azure AD 还支持基于代理的解决方案，以提供与专用网络（本地、托管在 Azure 中、托管在 AWS 中等）中的应用程序的连接。 客户可以在其专用网络中的服务器上部署轻量级代理，该代理提供与 Azure AD 的连接，而无需打开入站端口。 在[此处](/app-provisioning/on-premises-scim-provisioning)了解更多信息。
+Azure AD 还支持基于代理的解决方案，以提供与专用网络（本地、托管在 Azure 中、托管在 AWS 中等）中的应用程序的连接。 客户可以在其专用网络中的服务器上部署轻量级代理，该代理提供与 Azure AD 的连接，而无需打开入站端口。 在[此处](./on-premises-scim-provisioning.md)了解更多信息。
 
 ## <a name="build-a-scim-endpoint"></a>生成 SCIM 终结点
 

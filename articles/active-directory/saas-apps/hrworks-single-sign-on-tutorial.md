@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/26/2021
+ms.date: 07/29/2021
 ms.author: jeedes
-ms.openlocfilehash: 5de617feb34db1ada91423d8f3cb3ed235f15151
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 28127068210199985a280c26a34ce3aa49520a8b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111570020"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746985"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>教程：Azure Active Directory 单一登录 (SSO) 与 HRworks Single Sign-On 的集成
 
@@ -81,7 +81,7 @@ ms.locfileid: "111570020"
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://login.hrworks.de/?companyId=<COMPANY_ID>&directssologin=true`
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [HRworks Single Sign-On 客户端支持团队](mailto:nadja.sommerfeld@hrworks.de)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [HRworks Single Sign-On 客户端支持团队](https://www.hrworks.de/dienstleistungen/support/)获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 

@@ -3,22 +3,22 @@ title: 语音转文本快速入门 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用 Speech SDK 将语音转换为文本。 本快速入门介绍对象构造、支持的音频输入格式和语音识别的配置选项。
 services: cognitive-services
-author: nitinme
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/15/2020
-ms.author: nitinme
+ms.author: lajanuar
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-twenty-three
 keywords: 语音转文本, 语音转文本软件
-ms.openlocfilehash: 70e19a375fcf20c0d50a4ce2d324391bd60a0807
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 5a283f18b494adaa60fb8b9530f9ed1a1ff41376
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114711572"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071148"
 ---
 # <a name="get-started-with-speech-to-text"></a>语音转文本入门
 

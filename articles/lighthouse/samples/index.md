@@ -2,13 +2,13 @@
 title: Azure Lighthouse 示例和模板
 description: 这些示例和 Azure 资源管理器模板可帮助你加入客户并为 Azure Lighthouse 方案提供支持。
 ms.topic: sample
-ms.date: 05/11/2021
-ms.openlocfilehash: 356b929749e9098dbb618dfd7a484c87ae3d69a5
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.date: 08/13/2021
+ms.openlocfilehash: eee538dfa0b7a4d4de22790f7925986bcaae4d26
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785864"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178157"
 ---
 # <a name="azure-lighthouse-samples"></a>Azure Lighthouse 示例
 

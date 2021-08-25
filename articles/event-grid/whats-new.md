@@ -3,12 +3,12 @@ title: 新增功能 Azure 事件网格
 description: 了解 Azure 事件网格的最新信息，例如最新的发行说明、已知问题、bug 修复、已弃用的功能和即将应用的更改。
 ms.topic: overview
 ms.date: 04/27/2021
-ms.openlocfilehash: a8c39338b43dfb1ddde173c3560faeb977b0148f
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: f516a9896f98c96e6f9cd2c651d9edac86474d14
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112466659"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122068198"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Azure 事件网格的最新信息
 
@@ -85,14 +85,14 @@ Azure 事件网格会不断改进。 为帮助你随时了解最新开发，本�
 - 此版本与 `2019-06-01` API 版本相对应。
 - 它添加了对以下新功能的支持：
     * [域](event-domains.md)
-    * 用于资源列表操作的分页和搜索筛选器。 有关示例，请参阅[主题 - 按订阅列出](/rest/api/eventgrid/version2020-10-15-preview/partnernamespaces/listbysubscription)。
+    * 用于资源列表操作的分页和搜索筛选器。 有关示例，请参阅[主题 - 按订阅列出](/rest/api/eventgrid/version2021-06-01-preview/partner-namespaces/list-by-subscription)。
     * [将服务总线队列作为目标](handler-service-bus.md)
     * [高级筛选](event-filtering.md#advanced-filtering)
 
 ## <a name="410-preview-2019-03"></a>4.1.0-preview (2019-03)
 - 此版本与 2019-02-01-preview API 版本相对应。
 - 它添加了对以下新功能的支持：
-    * 用于资源列表操作的分页和搜索筛选器。 有关示例，请参阅[主题 - 按订阅列出](/rest/api/eventgrid/version2020-10-15-preview/partnernamespaces/listbysubscription)。
+    * 用于资源列表操作的分页和搜索筛选器。 有关示例，请参阅[主题 - 按订阅列出](/rest/api/eventgrid/version2021-06-01-preview/partner-namespaces/list-by-subscription)。
     * [手动创建/删除域主题](how-to-event-domains.md)
     * [将服务总线队列作为目标](handler-service-bus.md)
 

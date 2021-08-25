@@ -2,19 +2,18 @@
 title: 教程 - 使用 Azure IoT Edge 开发用于 Linux 设备的模块
 description: 本教程详细介绍如何设置开发计算机和云资源来使用适用于 Linux 设备的 Linux 容器开发 IoT Edge 模块
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: dfb71802b0aa0fae1bb853823b054ae49d700edf
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: dde83e48fe25e1f7e4d23462574e80c75323dde3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438271"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740588"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>教程：使用 Linux 容器开发 IoT Edge 模块
 
@@ -273,7 +272,7 @@ Visual Studio Code 现在有权访问容器注册表，因此可以将解决方�
 
 <!--Alternative steps: Use VS Code Docker tools to view ACR images with tags-->
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 如果在生成并推送模块映像时遇到错误，这通常与开发计算机上的 Docker 配置有关。 使用以下检查来检查配置：
 
