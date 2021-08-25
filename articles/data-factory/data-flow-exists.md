@@ -1,19 +1,21 @@
 ---
 title: 映射数据流中的存在转换
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 使用 Azure 数据工厂映射数据流中的存在转换检查现有行
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 05/07/2020
-ms.openlocfilehash: 805b51bf4e6d8feab9539f660dfc72ca78b82d5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ad68638862c8ff348538b2cf9d73a533854f984
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "82982626"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638077"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>映射数据流中的存在转换
 

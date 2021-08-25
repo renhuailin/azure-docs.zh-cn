@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 01/07/2021
+ms.date: 08/24/2021
 ms.author: alexeyo
-ms.openlocfilehash: f30b1f0f14bba54b8b4fcd7c5190f3c533f199a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c7c140b1ff2d3d2151ad8ce01e3ad8f64660543d
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98061746"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777889"
 ---
 # <a name="speech-services-in-sovereign-clouds"></a>主权云中的语音服务
 
@@ -99,6 +99,7 @@ spx recognize --host "usGovHost" --file myaudio.wav
   - [https://portal.azure.cn/](https://portal.azure.cn/)
 - **区域：**
   - 中国东部 2
+  - 中国北部 2
 - **可用定价层：**
   - 免费层 (F0) 和标准层 (S0)。 有关更多详细信息，请参阅[此处](https://www.azure.cn/pricing/details/cognitive-services/index.html)
 - **支持的功能：**
@@ -134,6 +135,7 @@ Azure 中国中的语音服务 REST API 终结点采用以下格式：
 |                     | 区域标识符 |
 |--|--|
 | **中国东部 2**  | `chinaeast2` |
+| **中国北部 2**  | `chinanorth2` |
 
 #### <a name="speech-sdk"></a>语音 SDK
 
@@ -154,3 +156,6 @@ spx recognize --host "azCnHost" --file myaudio.wav
 | **中国东部 2** | |
 | 语音转文本 | `wss://chinaeast2.stt.speech.azure.cn` |
 | 文本到语音转换 | `https://chinaeast2.tts.speech.azure.cn` |
+| **中国北部 2** | |
+| 语音转文本 | `wss://chinanorth2.stt.speech.azure.cn` |
+| 文本到语音转换 | `https://chinanorth2.tts.speech.azure.cn` |

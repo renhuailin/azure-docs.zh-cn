@@ -2,14 +2,15 @@
 metadata:
   title: Microsoft Azure 恢复服务 (MARS) 代理 - 常见问题解答
   description: 解决与使用 Azure 备份对文件和文件夹进行备份相关的常见问题。
-  ms.topic: conceptual
+  ms.topic: article
+  ms.service: backup
   ms.date: 04/05/2021
-  ms.openlocfilehash: a26ed95843e93323a31c25e6b894b070cf3837aa
-  ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+  ms.openlocfilehash: ff157a3d8e744dffd314525a053b8c3ca1ab8999
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/07/2021
-  ms.locfileid: "111907113"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122252493"
 title: 常见问题解答 - Microsoft Azure 恢复服务 (MARS) 代理
 summary: >
   本文解答了与使用 [Azure 备份](backup-overview.md)服务中的 Microsoft Azure 恢复服务 (MARS) 代理对数据进行备份相关的常见问题。

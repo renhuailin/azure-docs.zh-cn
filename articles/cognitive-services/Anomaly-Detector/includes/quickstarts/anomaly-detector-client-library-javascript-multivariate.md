@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: e55b4329105230f023d890983c79aa6c5244009d
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 9bf2b62e59b8320135629cc9fe751d6e4ab0e437
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114339641"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121803117"
 ---
 开始使用适用于 JavaScript 的异常检测器多变量客户端库。 请按照以下步骤安装软件包并开始使用服务提供的算法。 新的多变量异常情况检测 API 使开发人员能够轻松地集成高级 AI 来检测指标组中的异常，且无需机器学习知识或标记的数据。 不同信号之间的依赖关系和相互关联会自动计为关键因素。 这可以帮助你主动防范复杂系统发生故障。
 
@@ -120,11 +120,11 @@ const client = new AnomalyDetectorClient(endpoint, new AzureKeyCredential(apiKey
 
 ```javascript
 const Modelrequest = {
-      source: data_source,
-      startTime: new Date(2021,0,1,0,0,0),
-      endTime: new Date(2021,0,2,12,0,0),
-      slidingWindow:200
-    };    
+  source: data_source,
+  startTime: new Date(2021,0,1,0,0,0),
+  endTime: new Date(2021,0,2,12,0,0),
+  slidingWindow:200
+};
 ```
 
 ### <a name="train-a-new-model"></a>训练新模型
@@ -141,16 +141,23 @@ console.log("New model ID: " + model_id)
 若要检查模型训练是否完成，可以跟踪模型的状态：
 
 ```javascript
-let model_response = await client.getMultivariateModel(model_id)
-let model_status = model_response.modelInfo?.status
+let model_response = await client.getMultivariateModel(model_id);
+let model_status = model_response.modelInfo.status;
 
-while (model_status != 'READY'){
-    await sleep(10000).then(() => {});
-    model_response = await client.getMultivariateModel(model_id)
-    model_status = model_response.modelInfo?.status
+while (model_status != 'READY' && model_status != 'FAILED'){
+  await sleep(10000).then(() => {});
+  model_response = await client.getMultivariateModel(model_id);
+  model_status = model_response.modelInfo.status;
 }
 
-console.log("TRAINING FINISHED.")
+if (model_status == 'FAILED') {
+  console.log("Training failed.\nErrors:");
+  for (let error of model_response.modelInfo?.errors ?? []) {
+    console.log("Error code: " + error.code + ". Message: " + error.message);
+  }
+}
+
+console.log("TRAINING FINISHED.");
 ```
 
 ## <a name="detect-anomalies"></a>检测异常
@@ -158,22 +165,31 @@ console.log("TRAINING FINISHED.")
 使用 `detectAnomaly` 和 `getDectectionResult` 函数确定数据源中是否存在异常。
 
 ```javascript
-console.log("Start detecting...")
+console.log("Start detecting...");
 const detect_request = {
-    source: data_source,
-    startTime: new Date(2021,0,2,12,0,0),
-    endTime: new Date(2021,0,3,0,0,0)
+  source: data_source,
+  startTime: new Date(2021,0,2,12,0,0),
+  endTime: new Date(2021,0,3,0,0,0)
 };
-const result_header = await client.detectAnomaly(model_id, detect_request)
-const result_id = result_header.location?.split("/").pop() ?? ""
-let result = await client.getDetectionResult(result_id)
-let result_status = result.summary.status
+const result_header = await client.detectAnomaly(model_id, detect_request);
+const result_id = result_header.location?.split("/").pop() ?? "";
+let result = await client.getDetectionResult(result_id);
+let result_status = result.summary.status;
 
-while (result_status != 'READY'){
-    await sleep(2000).then(() => {});
-    result = await client.getDetectionResult(result_id)
-    result_status = result.summary.status
+while (result_status != 'READY' && result_status != 'FAILED'){
+  await sleep(2000).then(() => {});
+  result = await client.getDetectionResult(result_id);
+  result_status = result.summary.status;
 }
+
+if (result_status == 'FAILED') {
+  console.log("Detection failed.\nErrors:");
+  for (let error of result.summary.errors ?? []) {
+    console.log("Error code: " + error.code + ". Message: " + error.message)
+  }
+}
+console.log("Result status: " + result_status);
+console.log("Result Id: " + result.resultId);
 ```
 
 ## <a name="export-model"></a>导出模型

@@ -5,15 +5,16 @@ metadata:
   title: Azure 顾问文档
   description: Azure 顾问是一种个性化的云顾问，可帮助遵循最佳做法来优化 Azure 部署。 它分析资源配置和使用情况遥测数据。 然后，它推荐解决方案，帮助提高资源的性能、安全性和高可用性，同时寻找机会减少总体 Azure 支出。
   ms.topic: landing-page
+  ms.service: advisor
   author: rboucher
   ms.author: robb
   ms.date: 10/16/2019
-  ms.openlocfilehash: 41198ef3e8026bd8de9e55a0e75b23f0cd357e4e
-  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+  ms.openlocfilehash: 5bf8d8651e10ba003529d8182a3434fed9558e18
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/09/2021
-  ms.locfileid: "102508786"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253462"
 landingContent:
 - title: 关于 Azure 顾问
   linkLists:

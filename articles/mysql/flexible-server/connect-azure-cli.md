@@ -7,19 +7,21 @@ ms.service: mysql
 ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/01/2021
-ms.openlocfilehash: 3d24c6443dfa4c2e4eab1f247e075b34e891c1b6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f75b933769e94986b1c140fb8bcbadca44b96cf1
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470245"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643093"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>快速入门：通过 Azure CLI 与 Azure Database for MySQL - 灵活服务器进行连接和查询
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
 
-本快速入门演示了如何在 Azure CLI 中使用 ```az mysql flexible-server connect``` 连接到 Azure Database for MySQL 灵活服务器并使用 ```az mysql flexible-server execute``` 命令执行单个查询或 sql 文件。 通过此命令可测试与数据库服务器的连接并运行查询。 还可以使用交互模式运行多个查询。 
+本快速入门演示了如何在 Azure CLI 中使用 ```az mysql flexible-server connect``` 连接到 Azure Database for MySQL 灵活服务器并使用 ```az mysql flexible-server execute``` 命令执行单个查询或 sql 文件。 通过此命令可测试与数据库服务器的连接并运行查询。 还可以使用交互模式运行多个查询。
 
 ## <a name="prerequisites"></a>先决条件
 

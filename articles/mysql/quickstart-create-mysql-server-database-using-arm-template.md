@@ -7,14 +7,16 @@ ms.service: mysql
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 05/19/2020
-ms.openlocfilehash: 8795d51c082733101dba69f0018a09982ce2634c
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 2e9589063d5a094161a8eef09d0968c0679d58bd
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111560015"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643091"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>快速入门：使用 ARM 模板创建 Azure Database for MySQL 服务器
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Azure Database for MySQL 是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 MySQL 数据库。 本快速入门介绍了如何使用 Azure 资源管理器模板（ARM 模板）创建一个带有虚拟网络集成的 Azure Database for MySQL 服务器。 可通过 Azure 门户、Azure CLI 或 Azure PowerShell 创建该服务器。
 
@@ -26,7 +28,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 
 ## <a name="prerequisites"></a>先决条件
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/)。
 
@@ -62,7 +64,7 @@ Azure Database for MySQL 是一种托管服务，可用于在云中运行、管�
 
 ## <a name="deploy-the-template"></a>部署模板
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 选择以下链接以在 Azure 门户中部署 Azure Database for MySQL 服务器模板：
 
@@ -149,7 +151,7 @@ echo "Press [ENTER] to continue ..."
 
 ## <a name="review-deployed-resources"></a>查看已部署的资源
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 按照以下步骤查看新 Azure Database for MySQL 服务器的概览：
 
@@ -211,7 +213,7 @@ az resource show --resource-group $resourcegroupName --name $serverName --resour
 
 如果不再需要该资源组，可以将其删除，这将删除资源组中的资源。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“资源组”。
 

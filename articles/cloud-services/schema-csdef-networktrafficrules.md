@@ -9,17 +9,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 6a73a867d0a204ae4afa0f99c42adae7215b242c
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: b20fec2d32ba9050a2dded14ed4741e6908eb66f
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113087551"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824180"
 ---
 # <a name="azure-cloud-services-classic-definition-networktrafficrules-schema"></a>Azure 云服务（经典）定义 NetworkTrafficRules 架构
 
-> [!IMPORTANT]
-> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 `NetworkTrafficRules` 节点是服务定义文件中的一个可选元素，用于指定角色如何彼此进行通信。 它限制哪些角色可以访问特定角色的内部终结点。 `NetworkTrafficRules` 不是一个独立的元素；它在服务定义文件中与两个或更多角色结合使用。
 
@@ -94,7 +93,7 @@ AllowAllTraffic 元素
 ##  <a name="fromrole-element"></a><a name="FromRole"></a> FromRole 元素
 `FromRole` 元素指定可以与 `Destinations` 节点中定义的终结点进行通信的角色。 如果有多个可以与终结点进行通信的角色，可以指定多个 `FromRole` 元素。
 
-| Attribute  | 类型     | 说明 |
+| Attribute  | 类型     | 描述 |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | 必需。 允许从中进行通信的角色的名称。|
 

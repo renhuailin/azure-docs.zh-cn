@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 65f4bb6f50b6c09bc570b2832aa6d3aee3ac703f
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 67f317594b257776a3a8ac8c257281352516bfee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111981739"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749472"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>快速入门：从 Azure 门户中创建适用于 Apache Cassandra 群集的 Azure 托管实例（预览版）
  
@@ -100,7 +100,7 @@ ms.locfileid: "111981739"
 
 ## <a name="connecting-to-your-cluster"></a>连接到你的群集
 
-适用于 Apache Cassandra 的 Azure 托管实例不会创建具有公共 IP 地址的节点，因此，若要连接到新创建的 Cassandra 群集，你需要在 VNet 中创建另一个资源。 这可以是应用程序，也可以是安装了 Apache 的开源查询工具 [CQLSH](https://cassandra.apache.org/doc/latest/tools/cqlsh.html) 的虚拟机。 你可以使用[模板](https://azure.microsoft.com/resources/templates/vm-simple-linux/)部署 Ubuntu 虚拟机。 部署后，请使用 SSH 连接到计算机，并使用以下命令安装 CQLSH：
+适用于 Apache Cassandra 的 Azure 托管实例不会创建具有公共 IP 地址的节点，因此，若要连接到新创建的 Cassandra 群集，你需要在 VNet 中创建另一个资源。 这可以是应用程序，也可以是安装了 Apache 的开源查询工具 [CQLSH](https://cassandra.apache.org/doc/latest/cassandra/tools/cqlsh.html) 的虚拟机。 你可以使用[模板](https://azure.microsoft.com/resources/templates/vm-simple-linux/)部署 Ubuntu 虚拟机。 部署后，请使用 SSH 连接到计算机，并使用以下命令安装 CQLSH：
 
 ```bash
 # Install default-jre and default-jdk

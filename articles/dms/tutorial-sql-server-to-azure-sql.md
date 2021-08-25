@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: 0383b76a08c5c56c27bfbc7f83bf786b4b452849
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 990dfd3a2cf86f77310e51cb29fa65e181b37a9f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110796699"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638467"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-using-dms"></a>教程：使用 DMS 将 SQL Server 迁移到 Azure SQL 数据库
 
@@ -217,19 +217,7 @@ ms.locfileid: "110796699"
 
     ![部署架构](media/tutorial-sql-server-to-azure-sql/dma-schema-deploy.png)
 
-## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
-
-1. 登录到 Azure 门户。 搜索并选择“订阅”。
-
-   ![显示门户订阅](media/tutorial-sql-server-to-azure-sql/portal-select-subscription-1.png)
-
-2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”。
-
-    ![显示资源提供程序](media/tutorial-sql-server-to-azure-sql/portal-select-resource-provider.png)
-
-3. 搜索迁移，然后选择 Microsoft.DataMigration 旁的“注册” 。
-
-    ![注册资源提供程序](media/tutorial-sql-server-to-azure-sql/portal-register-resource-provider.png)    
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]   
 
 ## <a name="create-an-instance"></a>创建实例
 

@@ -1,18 +1,20 @@
 ---
 title: 映射数据流中的窗口转换
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure 数据工厂映射数据流窗口转换
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 11/16/2020
-ms.openlocfilehash: 56024fd0aac2f9fbefb7fe919eef2481550e573f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8331d3908e484f1b82a4aa73cd6d498dac2a0ad3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100367820"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638350"
 ---
 # <a name="window-transformation-in-mapping-data-flow"></a>映射数据流中的窗口转换
 

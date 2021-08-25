@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 9b37b2c4-5927-4271-85c7-19adf33d838b
 ms.date: 05/25/2021
-ms.openlocfilehash: 5ed86f84f8b2fbe78ee53f776cb9f420e5077113
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 3c819367f35cb4a8174abaac1380eb439ace206a
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290625"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769703"
 ---
 # <a name="deploy-red-hat-jboss-enterprise-platform-eap-on-azure-vms-and-virtual-machine-scale-sets-using-the-azure-marketplace-offer"></a>使用 Azure 市场产品/服务在 Azure VM 和虚拟机规模集上部署 Red Hat JBoss Enterprise Platform (EAP)
 
@@ -29,7 +29,7 @@ Azure 市场上的 JBoss EAP 产品/服务是 Red Hat 和 Microsoft 联合推出
 
 * JBoss EAP 安装 - 需要有一个 Red Hat 帐户，该帐户具有针对 JBoss EAP 的 Red Hat 订阅管理 (RHSM) 权利。 这项权利允许你下载经过 Red Hat 测试和认证的 JBoss EAP 版本。  如果没有 EAP 权利，请通过[适用于个人的 Red Hat 开发人员订阅](https://developers.redhat.com/register)注册免费的开发人员订阅。 注册后，您可以在 [Red Hat 客户门户](https://access.redhat.com/management/)中找到必要的凭据（池 ID）。
 
-* RHEL 选项 - 在即用即付 (PAYG) 或自带订阅 (BYOS) 之间进行选择。 若使用 BYOS，则在使用解决方案模板部署市场产品/服务之前激活 [Red Hat Cloud Access](https://access.redhat.com/) [RHEL 黄金映像](https://azure.microsoft.com/updates/red-hat-enterprise-linux-gold-images-now-available-on-azure/)。 按照[以下说明](https://access.redhat.com/documentation/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access)启用 RHEL 黄金映像，以在 Microsoft Azure 中使用。
+* RHEL 选项 - 在即用即付 (PAYG) 或自带订阅 (BYOS) 之间进行选择。 若使用 BYOS，则在使用解决方案模板部署市场产品/服务之前激活 [Red Hat Cloud Access](https://access.redhat.com/) [RHEL 黄金映像](https://azure.microsoft.com/updates/red-hat-enterprise-linux-gold-images-now-available-on-azure/)。 按照[以下说明](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)启用 RHEL 黄金映像，以在 Microsoft Azure 中使用。
 
 * Azure 命令行界面 (CLI)。
 
@@ -59,11 +59,11 @@ Azure 市场产品/服务允许你作为按需 PAYG 虚拟机/虚拟机规模集
 若要使用 RHEL 作为 BYOS 虚拟机/虚拟机规模集，你需要拥有有效的 Red Hat 订阅，并具备在 Azure 中使用 RHEL 的权利。 RHEL BYOS 计划中的 JBoss EAP 将作为 [Azure 专用产品/服务](../../../marketplace/private-offers.md)提供。 要从 Azure 市场中部署 RHEL BYOS 产品/服务计划，必须完成以下先决条件。 
 
 1. 确保已将 RHEL OS 和 JBoss EAP 权利附加到 Red Hat 订阅。
-2. 授权 Azure 订阅 ID 使用 RHEL BYOS 映像。 按照 [Red Hat 订阅管理 (RHSM) 文档](https://access.redhat.com/documentation/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access)完成此进程，其中包括以下步骤：
+2. 授权 Azure 订阅 ID 使用 RHEL BYOS 映像。 按照 [Red Hat 订阅管理 (RHSM) 文档](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)完成此进程，其中包括以下步骤：
     1. 在 Red Hat Cloud Access 仪表板中启用 Microsoft Azure 作为提供商。
     2. 添加 Azure 订阅 ID。
     3. 在 Microsoft Azure 上启用 Cloud Access 的新产品。
-    4. 为 Azure 订阅激活 Red Hat 黄金映像。 请参阅有关[启用和维护 Cloud Access 的订阅](https://access.redhat.com/documentation/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#using-gold-images-on-azure_cloud-access)的章节，了解更多详细信息。 
+    4. 为 Azure 订阅激活 Red Hat 黄金映像。 请参阅有关[启用和维护 Cloud Access 的订阅](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/understanding-gold-images_cloud-access#using-gold-images-on-azure_cloud-access#using-gold-images-on-azure_cloud-access)的章节，了解更多详细信息。 
     5. 等待 Red Hat 黄金映像在 Azure 订阅中可用。 这些黄金映像通常在提交后 3 小时（或者小于 Azure 专用产品/服务的时间）内可用。
 
 3. 接受 RHEL BYOS 映像的 Azure 市场条款和条件 (T&C)。 若要接受，请运行 [Azure 命令行界面 (CLI)](/cli/azure/install-azure-cli) 命令，如下所示。 请参阅 [Azure 中的 RHEL BYOS 黄金映像](./byos.md)文档，了解更多详细信息。 务必运行最新 Azure CLI 版本。
@@ -215,7 +215,7 @@ JBoss EAP 在 Azure 上仅以 BYOS 模式提供。 部署 RHEL 上的 JBoss EAP 
 
 有关任何与支持相关的疑问、问题或自定义要求，请联系 [Red Hat 支持](https://access.redhat.com/support)或 [Microsoft Azure 支持](https://ms.portal.azure.com/?quickstart=true#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
 
-* 详细了解 [JBoss EAP](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform)
+* 详细了解 [JBoss EAP](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/)
 * [Azure Red Hat OpenShift 上的 JBoss EAP](https://azure.microsoft.com/services/openshift/)
 * [Azure 应用服务中的 JBoss EAP](/azure/developer/java/ee/jboss-on-azure) 
 * [Azure 混合权益](../../windows/hybrid-use-benefit-licensing.md)

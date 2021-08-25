@@ -2,19 +2,18 @@
 title: 教程：将 Azure Functions 部署为模块 - Azure IoT Edge
 description: 在本教程中，将 Azure Functions 开发为 IoT Edge 模块，然后将其部署到边缘设备。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: ee3825a7c93396eca4ba6fd6a65b90eddb5b4c8c
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: a98d50b1c06397db5de928f39ebff34c1fe9ddb0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438289"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726502"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>教程：将 Azure Functions 作为 IoT Edge 模块进行部署
 
@@ -88,7 +87,7 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
 3. 保存此文件。
 
 >[!NOTE]
->本教程使用 Azure 容器注册表的管理员登录凭据，这对于开发和测试方案非常方便。 准备好生产方案后，建议使用最低权限身份验证选项（如服务主体）。 有关详细信息，请参阅[管理容器注册表的访问权限](production-checklist.md#manage-access-to-your-container-registry)。
+>本教程使用 Azure 容器注册表的管理员登录凭据，这对于开发和测试方案非常方便。 为生产方案做好准备后，建议使用最低权限身份验证选项（如服务主体）。 有关详细信息，请参阅[管理容器注册表的访问权限](production-checklist.md#manage-access-to-your-container-registry)。
 
 ### <a name="select-your-target-architecture"></a>选择目标体系结构
 

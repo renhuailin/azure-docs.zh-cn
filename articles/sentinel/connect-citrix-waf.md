@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2020
 ms.author: yelevin
-ms.openlocfilehash: eaee16d865a0d208dbf0c41665d590e7ecb14e89
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 309d2cfb47c61d516be19d110cb7ade1f3c63e18
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253591"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695170"
 ---
 # <a name="connect-your-citrix-waf-to-azure-sentinel"></a>将 Citrix WAF 连接到 Azure Sentinel
 
@@ -42,7 +42,7 @@ Citrix WAF 使用 CEF 格式将 Syslog 消息发送到安装了 Log Analytics �
 
 1. 按照 Citrix 提供的说明[配置 WAF](https://support.citrix.com/article/CTX234174)，[配置 CEF 日志记录](https://support.citrix.com/article/CTX136146)，并[配置将日志发送到日志转发器](https://docs.citrix.com/en-us/citrix-adc/13/system/audit-logging/configuring-audit-logging.html)。 请确保将日志发送到日志转发器计算机 IP 地址上的 TCP 端口 514。
 
-1. 验证连接并使用[这些说明](connect-cef-verify.md)验证数据引入。 可能需要长达 20 分钟的时间，日志才会开始出现在 Log Analytics 中。
+1. 验证连接并使用[这些说明](troubleshooting-cef-syslog.md#validate-cef-connectivity)验证数据引入。 可能需要长达 20 分钟的时间，日志才会开始出现在 Log Analytics 中。
 
 ## <a name="find-your-data"></a>查找数据
 
