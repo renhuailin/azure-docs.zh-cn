@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: aabb4806dd709236af9e5b25a14cf3e1e8799dee
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android, has-adal-ref
+ms.openlocfilehash: 794e173bdd1dd70873cd17f64ac4f24022bd738c
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713443"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429078"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
 
@@ -122,7 +122,7 @@ dependencies {
 
 此代码指示 Gradle 从 Maven Central 下载并生成 MSAL。
 
-还必须在 build.gradle (Module: app) 的“allprojects” > “repositories”部分添加对 maven 的引用，如下所示  ：
+还必须将对 maven 的引用添加到“build.gradle (Module: app)”的“allprojects > repositories”部分，如下所示  ：
 
 ```java
 allprojects {

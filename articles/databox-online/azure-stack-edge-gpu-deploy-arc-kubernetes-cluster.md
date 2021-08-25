@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 9eef9a99dbf27100fdb6e1fd731ace380f7ba4fb
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 1f3ecf919337c17514af7d9e0d3d83b2dc75bf1d
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072840"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769253"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>在 Azure Stack Edge Pro GPU 设备的 Kubernetes 群集上启用 Azure Arc
 
@@ -145,7 +145,7 @@ ms.locfileid: "112072840"
     如果使用的云不是 Azure 公有云，请添加 `CloudEnvironment` 参数。 可以将此参数设置为 `AZUREPUBLICCLOUD`、`AZURECHINACLOUD`、      `AZUREGERMANCLOUD` 和 `AZUREUSGOVERNMENTCLOUD`。
 
     > [!NOTE]
-    > - 若要在设备上部署 Azure Arc，请确保使用[受支持的 Azure Arc 区域](../azure-arc/kubernetes/overview.md#supported-regions)。 
+    > - 若要在设备上部署 Azure Arc，请确保使用[受支持的 Azure Arc 区域](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)。 
     > - 使用 `az account list-locations` 命令找出要传入到 `Set-HcsKubernetesAzureArcAgent` cmdlet 的确切位置名称。 位置名称的格式通常不含任何空格。
     > - `ClientId` 和 `ClientSecret` 为所需参数。 `ClientSecret` 是安全字符串。
     

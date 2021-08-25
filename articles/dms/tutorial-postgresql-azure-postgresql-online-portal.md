@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 16493cf44ba3666b900b34e18acd90f5ac73baca
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 9d0f1fbe81c8d221b1dd83b1f15b3ea099769043
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112282756"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638492"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>教程：通过 Azure 门户使用 DMS 将 PostgreSQL 联机迁移到 Azure DB for PostgreSQL
 
@@ -113,20 +113,7 @@ ms.locfileid: "112282756"
    > [!NOTE]
    > 迁移服务在内部处理外键和触发器的启用/禁用，以确保可靠且稳定的数据迁移。 因此，你不需要担忧对目标数据库架构所做的任何修改。
 
-
-## <a name="register-the-microsoftdatamigration-resource-provider"></a>注册 Microsoft.DataMigration 资源提供程序
-
-1. 登录到 Azure 门户，选择“所有服务”，然后选择“订阅”。
-
-   ![显示门户订阅](media/tutorial-postgresql-to-azure-postgresql-online-portal/portal-select-subscriptions.png)
-
-2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”。
-
-    ![显示资源提供程序](media/tutorial-postgresql-to-azure-postgresql-online-portal/portal-select-resource-provider.png)
-
-3. 搜索迁移服务，再选择“Microsoft.DataMigration”右侧的“注册” 。
-
-    ![注册资源提供程序](media/tutorial-postgresql-to-azure-postgresql-online-portal/portal-register-resource-provider.png)
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]
 
 ## <a name="create-a-dms-instance"></a>创建 DMS 实例
 

@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: inhenkel
-ms.openlocfilehash: 43997810798322a628490aa72db74944f2fc38c7
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: b618396edb60e1a2092ecd4aa6ce134227220df5
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589753"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429164"
 ---
 # <a name="create-a-media-services-and-storage-account-with-a-private-link"></a>使用专用链接创建媒体服务和存储帐户
 
@@ -24,7 +24,7 @@ ms.locfileid: "107589753"
 
 ## <a name="prerequisites"></a>必备条件
 
-请阅读[快速入门：使用 Azure 门户创建和部署 ARM 模板](https://docs.microsoft.com/azure/azure-resource-manager/templates/quickstart-create-templates-use-the-portal)。
+请阅读[快速入门：使用 Azure 门户创建和部署 ARM 模板](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
 ## <a name="limitations"></a>限制
 
@@ -42,6 +42,8 @@ ms.locfileid: "107589753"
   - 链接之间的链接（将专用 DNS 区域连接到 VNet）
   - 专用 DNS 区域组 （用于触发在专用 DNS 区域中自动创建 DNS 记录）
 - VM（具有关联的公共 IP 地址和网络接口）
+
+[!INCLUDE [Azure Policy Media Services](includes/security-azure-policy-private-links.md)]
 
 ## <a name="azure-resource-manager-arm-template-for-private-link"></a>用于专用链接的 Azure 资源管理器 (ARM) 模板
 

@@ -1,18 +1,21 @@
 ---
 title: 映射数据流中的平展转换
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 利用平展转换使分层数据非规范化
 author: kromerm
 ms.author: makromer
 ms.review: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e632260e8af6e4bac9fac9ec43f25bf636b98b4d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81413680"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638357"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>映射数据流中的平展转换
 
@@ -39,6 +42,28 @@ ms.locfileid: "81413680"
 与选择转换类似，从传入字段和已实现非规范化的数组中选择新结构的投影。 如果映射了已实现非规范化的数组，则输出列的数据类型将与数组的数据类型相同。 如果 unroll by 数组是包含子数组的复杂对象数组，在映射该子数组的项时，便会输出一个数组。
 
 请参阅检查选项卡和数据预览，验证映射输出。
+
+## <a name="rule-based-mapping"></a>基于规则的映射
+
+平展转换支持基于规则的映射，使你能够创建动态和灵活的转换，根据规则平展数组，并根据层次结构级别平展结构。
+
+![平展模式](media/data-flow/flatten-pattern.png "平展模式")
+
+### <a name="matching-condition"></a>匹配条件
+
+输入要使用完全匹配或模式平展的一列或多列的模式匹配条件。 示例： ```like(name,'cust%')```
+
+### <a name="deep-column-traversal"></a>深层列遍历
+
+可选设置通知 ADF 逐个处理复杂对象的所有子列，而不是将复杂对象作为一个整列处理。
+
+### <a name="hierarchy-level"></a>层次结构级别
+
+选择要扩展的层次结构级别。
+
+### <a name="name-matches-regex"></a>名称匹配 (regex)
+
+还可以选择在此框中以正则表达式表示名称匹配，而不是使用以上匹配条件。
 
 ## <a name="examples"></a>示例
 

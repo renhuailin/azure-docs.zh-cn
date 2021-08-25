@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 1643b20c6c157c43e93967cef364e703dbf4478e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7205fa7095608084140f7ac6e1c3965b1296a8fe
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96010743"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122336067"
 ---
 |VPN<br>网关 **<br>代系** |**SKU**   | **S2S/VNet 到 VNet<br>隧道** | **P2S<br> SSTP 连接** | **P2S<br> IKEv2/OpenVPN 连接** | **聚合<br>吞吐量基准** | **BGP** | **区域冗余** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
@@ -48,7 +48,7 @@ ms.locfileid: "96010743"
 
 为了帮助我们的客户了解使用不同算法的 SKU 的相对性能，我们使用市售 iPerf 和 CTSTraffic 工具来衡量性能。 下表列出了第 1 代 VpnGw SKU 的性能测试结果。 可以看到，对 IPsec 加密和完整性使用 GCMAES256 算法时，可获得最佳性能。 对 IPsec 加密使用 AES256 以及对完整性使用 SHA256 时，可获得平均性能。 对 IPsec 加密使用 DES3 以及对完整性使用 SHA256 可获得最低性能。
 
-|**代系**|**SKU**   | **使用<br>的算法** | **观察到的<br>吞吐量** | **观察到的<br>每秒数据包数** |
+|**代系**|**SKU**   | **使用<br>的算法** | **观察到的<br>吞吐量** | **观察到的<br>每隧道每秒数据包数** |
 |---           |---       | ---                 | ---            | ---                    |
 |**第 1 代**|VpnGw1 | GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 650 Mbps<br>500 Mbps<br>120 Mbps   | 58,000<br>50,000<br>50,000|
 |**第 1 代**|VpnGw2 | GCMAES256<br>AES256 & SHA256<br>DES3 & SHA256| 1 Gbps<br>500 Mbps<br>120 Mbps | 90,000<br>80,000<br>55,000|

@@ -2,19 +2,19 @@
 title: Azure Synapse 工作区访问控制概述
 description: 本文介绍用于控制对 Synapse 工作区的访问的机制及其包含的资源和代码项目。
 services: synapse-analytics
-author: RonyMSFT
+author: meenalsri
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
 ms.date: 12/03/2020
-ms.author: ronytho
+ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 574211bc426d97c5bd734dcf348b66ecce1b3ff8
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: b92603e5aa9f7c42a2e4789353077058b1fc6ea9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113217802"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730928"
 ---
 # <a name="azure-synapse-access-control"></a>Azure Synapse 访问控制 
 

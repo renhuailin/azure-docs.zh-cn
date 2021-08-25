@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 keywords: 认知服务, 认知智能, 认知解决方案, ai 服务
 ms.topic: quickstart
-ms.date: 3/22/2021
+ms.date: 06/04/2021
 ms.author: aahi
-ms.openlocfilehash: 26e3b264b7268f7a9ffdb592beef7d76844646f5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1c838a9b805eed20fec9f9feabf4aa24c58b1cd5
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789134"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429930"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>快速入门：使用 Azure 命令行接口 (CLI) 创建认知服务资源
 
@@ -33,6 +33,8 @@ Azure 认知服务是包含 REST API 和客户端库 SDK 的云服务，可帮�
 
 * 一个有效的 Azure 订阅 - 免费[创建订阅](https://azure.microsoft.com/free/cognitive-services)。
 * [Azure 命令行接口 (CLI)](/cli/azure/install-azure-cli)
+* [!INCLUDE [contributor-requirement](./includes/quickstarts/contributor-requirement.md)]
+* [!INCLUDE [terms-azure-portal](./includes/quickstarts/terms-azure-portal.md)]
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>安装 Azure CLI 并登录
 
@@ -78,51 +80,10 @@ az group create \
 
 创建新资源时，需要知道你要使用哪种服务，以及所需的[定价层](https://azure.microsoft.com/pricing/details/cognitive-services/)（或 SKU）。 创建资源时，需要使用此信息和其他信息作为参数。
 
-### <a name="multi-service"></a>多服务
-
-| 服务                    | 种类                      |
-|----------------------------|---------------------------|
-| 多个服务。 有关更多详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/cognitive-services/)页。            | `CognitiveServices`     |
+[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 
-> [!NOTE]
-> 下面的许多认知服务都有一个免费层，可以使用它来试用服务。 若要使用免费层，请使用 `F0` 作为资源的 SKU。
-
-### <a name="vision"></a>影像
-
-| 服务                    | 种类                      |
-|----------------------------|---------------------------|
-| 计算机视觉            | `ComputerVision`          |
-| 自定义视觉 - 预测 | `CustomVision.Prediction` |
-| 自定义视觉 - 定型   | `CustomVision.Training`   |
-| 人脸                       | `Face`                    |
-| 表单识别器            | `FormRecognizer`          |
-| 墨迹识别器             | `InkRecognizer`           |
-
-### <a name="speech"></a>语音
-
-| 服务            | 种类                 |
-|--------------------|----------------------|
-| 语音服务    | `SpeechServices`     |
-| 语音识别 | `SpeakerRecognition` |
-
-### <a name="language"></a>语言
-
-| 服务            | 种类                |
-|--------------------|---------------------|
-| 窗体理解 | `FormUnderstanding` |
-| LUIS               | `LUIS`              |
-| QnA Maker          | `QnAMaker`          |
-| 文本分析     | `TextAnalytics`     |
-| 文本翻译   | `TextTranslation`   |
-
-### <a name="decision"></a>决策
-
-| 服务           | 种类               |
-|-------------------|--------------------|
-| 异常检测器  | `AnomalyDetector`  |
-| 内容审查器 | `ContentModerator` |
-| 个性化体验创建服务      | `Personalizer`     |
+[!INCLUDE [SKUs and pricing](./includes/quickstarts/sku-pricing.md)]
 
 可以使用 [az cognitiveservices account list-kinds](/cli/azure/cognitiveservices/account#az_cognitiveservices_account_list_kinds) 命令查找可用认知服务“种类”的列表：
 
@@ -193,6 +154,8 @@ az cognitiveservices account list-usage \
 ```azurecli-interactive
 az group delete --name cognitive-services-resource-group
 ```
+
+如果需要恢复已删除的资源，请参阅[恢复已删除的认知服务资源](manage-resources.md)。
 
 ## <a name="see-also"></a>另请参阅
 

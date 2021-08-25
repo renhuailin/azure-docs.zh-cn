@@ -4,12 +4,12 @@ description: 本文演练如何创建一个可使用最新 Azure.Messaging.Event
 ms.topic: quickstart
 ms.date: 06/10/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 948bacd1506bc65c97c84ea5fa9d3f5b4ad95503
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 3f8a0c2d9021f0a084025dbca661e37af421c9d1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730254"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749698"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>向 Azure 事件中心发送事件及从 Azure 事件中心接收事件 - .NET (Azure.Messaging.EventHubs) 
 本快速入门介绍如何使用 Azure.Messaging.EventHubs .NET 库向事件中心发送事件以及从事件中心接收事件。 
@@ -109,7 +109,7 @@ ms.locfileid: "114730254"
             {
                 // Use the producer client to send the batch of events to the event hub
                 await producerClient.SendAsync(eventBatch);
-                Console.WriteLine($"A batch of {numEvents} events has been published.");
+                Console.WriteLine($"A batch of {numOfEvents} events has been published.");
             }
             finally
             {

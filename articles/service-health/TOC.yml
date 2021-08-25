@@ -50,7 +50,7 @@
     - name: 资源运行状况类型和检查
       href: resource-health-checks-resource-types.md
     - name: 资源运行状况常见问题解答
-      href: resource-health-faq.md
+      href: resource-health-faq.yml
 - name: 资源
   items:
     - name: Azure 路线图
