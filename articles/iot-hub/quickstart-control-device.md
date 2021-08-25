@@ -1,8 +1,8 @@
 ---
 title: 快速入门 - 从 Azure IoT 中心控制设备 | Microsoft Docs
 description: 在本快速入门中，请运行两个示例应用程序。 一个应用程序为服务应用程序，可远程控制连接到中心的设备。 另一个应用程序可模拟连接到中心的可受远程控制的设备。
-author: philmea
-ms.author: philmea
+author: robinsh
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: quickstart
@@ -13,12 +13,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 07/26/2021
 zone_pivot_groups: iot-hub-set1
-ms.openlocfilehash: 01bd08a246274a2692db340e0d4aeb75bb68fc98
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: b89e13a6cf1a9dd6b30a9acc489969bb388ab3d1
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114732030"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860942"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub"></a>快速入门：控制连接到 IoT 中心的设备
 

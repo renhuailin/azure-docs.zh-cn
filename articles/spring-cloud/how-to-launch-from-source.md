@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: aca3e1231e2883bb077cb9fb8c2c353b607aa37e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a4bfa5687c4b552a99b8d4e5a7e5c8f79807d766
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114473569"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014912"
 ---
 # <a name="how-to-launch-your-spring-cloud-application-from-source-code"></a>如何从源代码启动 Spring Cloud 应用程序
 
@@ -32,6 +32,7 @@ Azure Spring Cloud 在 Azure 上启用了基于 Spring Cloud 的微服务应用�
 > * 为应用程序分配公共终结点
 
 ## <a name="prerequisites"></a>先决条件
+
 在开始之前，请确保 Azure 订阅已安装所需的依赖项：
 
 1. [安装 Git](https://git-scm.com/)
@@ -53,7 +54,7 @@ az extension add --name spring-cloud
 
 ## <a name="provision-a-service-instance-using-the-azure-cli"></a>使用 Azure CLI 预配服务实例
 
-登录到 Azure CLI 并选择你的有效订阅。 
+登录到 Azure CLI 并选择你的有效订阅。
 
 ```azurecli
 az login
@@ -101,13 +102,13 @@ az spring-cloud app create -n <app-name>
 将 fat-JAR 部署到活动部署
 
 ```azurecli
-az spring-cloud app deploy -n <app-name> --jar-path <path-to-fat-JAR e.g. "target\hellospring-0.0.1-SNAPSHOT.jar">
+az spring-cloud app deploy -n <app-name> --jar-path <path-to-fat-JAR, for example "target\hellospring-0.0.1-SNAPSHOT.jar">
 ```
 
 将 fat-JAR 部署到特定部署
 
 ```azurecli
-az spring-cloud app deployment create --app <app-name> -n <deployment-name> --jar-path <path-to-fat-JAR e.g. "target\hellospring-0.0.1-SNAPSHOT.jar">
+az spring-cloud app deployment create --app <app-name> -n <deployment-name> --jar-path <path-to-fat-JAR, for example "target\hellospring-0.0.1-SNAPSHOT.jar">
 ```
 
 ### <a name="deploy-from-source-code"></a>从源代码进行部署
@@ -146,7 +147,7 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 
 1. 打开“应用程序仪表板”页。
 2. 选择 `gateway` 应用程序以显示“应用程序详细信息”页。
-3. 选择“分配终结点”，将一个公共终结点分配到网关。 这可能需要几分钟的时间。 
+3. 选择“分配终结点”，将一个公共终结点分配到网关。 这可能需要几分钟的时间。
 4. 在浏览器中输入分配的公共 IP 以查看正在运行的应用程序。
 
 > [!div class="nextstepaction"]

@@ -179,7 +179,7 @@
               items:
                 - name: Windows
                   href: openvpn-azure-ad-client.md
-                - name: macOS - 预览
+                - name: macOS
                   href: openvpn-azure-ad-client-mac.md
             - name: 使用 VPN 客户端配置文件
               href: about-vpn-profile-download.md

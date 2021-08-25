@@ -7,14 +7,16 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: baba4d373d4a79ab0c339aac00bb9ab48de9262b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1b207091a3c38fb2842a53a9c7c4627fd5c0b790
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109601"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643101"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>快速入门：使用 PHP 连接到 Azure Database for MySQL 灵活服务器并查询其中的数据
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
@@ -22,6 +24,7 @@ ms.locfileid: "105109601"
 本快速入门演示了如何使用 [PHP](https://secure.php.net/manual/intro-whatis.php) 应用程序连接到 Azure Database for MySQL 灵活服务器。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文假设你熟悉如何使用 PHP 进行开发，但不太熟悉 Azure Database for MySQL 灵活服务器的用法。
 
 ## <a name="prerequisites"></a>先决条件
+
 此快速入门使用以下任意指南中创建的资源作为起点：
 
 - [使用 Azure 门户创建 Azure Database for MySQL 灵活服务器](./quickstart-create-server-portal.md)

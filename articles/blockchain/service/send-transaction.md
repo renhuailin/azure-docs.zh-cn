@@ -4,16 +4,18 @@ description: 此教程介绍如何在 Visual Studio Code 中使用适用于 Eth
 ms.date: 11/30/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
-ms.openlocfilehash: 4c2df952480d2c30de10838c3d0f7714fc7e6126
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9a38314b9dbc54750da7dfa81ece487c87b73884
+ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628639"
+ms.lasthandoff: 05/12/2021
+ms.locfileid: "122643070"
 ---
 # <a name="tutorial-create-build-and-deploy-smart-contracts-on-azure-blockchain-service"></a>教程：在 Azure 区块链服务中创建、生成和部署智能合同
 
 此教程介绍如何在 Visual Studio Code 中使用适用于 Ethereum 的 Azure 区块链开发工具包扩展，在 Azure 区块链服务上创建、生成和部署智能合同。 还可以使用开发工具包通过事务执行智能合同函数。
+
+[!INCLUDE [Retirement note](./includes/retirement.md)]
 
 你将使用适用于 Ethereum 的 Azure 区块链开发工具包执行以下操作：
 
@@ -88,7 +90,7 @@ Azure 区块链开发工具包使用 Truffle 执行迁移脚本，以将合同�
 
     ```javascript
     var HelloBlockchain = artifacts.require(&quot;HelloBlockchain");
-        
+
     module.exports = function(done) {
       console.log("Getting the deployed version of the HelloBlockchain smart contract")
       HelloBlockchain.deployed().then(function(instance) {
@@ -144,7 +146,7 @@ Truffle 将针对区块链网络执行脚本。
 
     ```javascript
     var HelloBlockchain = artifacts.require("HelloBlockchain");
-    
+
     module.exports = function(done) {
       console.log("Getting the deployed version of the HelloBlockchain smart contract")
       HelloBlockchain.deployed().then(function(instance) {
@@ -187,7 +189,7 @@ Truffle 将针对区块链网络执行脚本。
 若要删除资源组，请执行以下操作：
 
 1. 在 Azure 门户中，导航至左侧导航窗格中的“资源组”  ，然后选择要删除的资源组。
-1. 选择“删除资源组”。 输入资源组名称确认删除并选择“删除”  。
+1. 选择“删除资源组”  。 输入资源组名称确认删除并选择“删除”  。
 
 ## <a name="next-steps"></a>后续步骤
 

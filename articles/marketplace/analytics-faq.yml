@@ -6,46 +6,47 @@ metadata:
   ms.subservice: partnercenter-marketplace-publisher
   ms.topic: conceptual
   ms.date: 11/10/2020
-  author: sayantanroy83
-  ms.author: sroy
-  ms.openlocfilehash: 677c8e3ea4642a256ff4962611fbcbf8e889ac98
-  ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
+  author: smannepalle
+  ms.author: smannepalle
+  ms.reviewer: sroy
+  ms.openlocfilehash: 7402fd17b8e91016bae3d64ab278544140d907ee
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/11/2021
-  ms.locfileid: "113603530"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121748298"
 title: 商业市场分析常见问题
 summary: 本文解答有关合作伙伴中心内分析消息的常见问题。
 sections:
 - name: 忽略
   questions:
   - question: >
-      为什么我无法在合作伙伴中心查看分析数据？
+      Why am I unable to view my analytics data in Partner Center?
     answer: >
-      访问分析页面时会显示以下消息。
+      When I access the analytics pages, I see the following message.
 
 
-      [![你的套餐还没有数据。](./media/analytics-faq-no-data.png)](./media/analytics-faq-no-data.png#lightbox)
+      [![No data for your offers yet.](./media/analytics-faq-no-data.png)](./media/analytics-faq-no-data.png#lightbox)
 
 
-      为何会出现此消息：
+      Why you may be seeing this message:
 
 
-      - 你在商业市场中发布的套餐目前还没有任何人购买。 这可能意味着，你的套餐虽然已在商业市场中上线，并且客户正在查看产品列表页面，但是，目前还没有客户采取行动来购买和部署这些套餐。
+      - No acquisitions currently exist for your published offers in the commercial marketplace. This can mean that your offers are live in the commercial marketplace and customers are viewing your product listing pages, but customers haven't yet taken action to purchase and deploy them.
 
-      - 你的套餐可能正在发布，但还没有上线。 客户只能获取已上线的产品/服务。 如果要检查套餐的状态，请参阅[分析仪表板](https://go.microsoft.com/fwlink/?linkid=2165765)中的“摘要”页面。 有关详细信息，请参阅[商业市场分析中的摘要仪表板](summary-dashboard.md)。
+      - Your offer might be in the process of being published but isn't live yet. Only live offers can be acquired by customers. To check the status of your offers, see the **Summary** page in the [Analyze dashboard](https://go.microsoft.com/fwlink/?linkid=2165765). For more information, see [Summary dashboard in commercial marketplace analytics](summary-dashboard.md).
 
-      - 你的套餐可能只是以“与我联系”的形式列出，商业市场中的客户无法购买这种只是列表形式的套餐。 虽然这些产品/服务能够带来潜在顾客并与你共享，但市场不会为这些产品/服务创建订单，因为客户无法购买。 如果要检查套餐列表类型，请转到套餐的设置页。
+      - Your offers may be listed as **Contact Me**, which are list-only offers and cannot be purchased by customers in the commercial marketplace. Although these offers generate leads and are shared with you, orders aren't created for these offers as they cannot be purchased. To check your offer listing type, go to the setup page for your offer.
   - question: >
-      我知道我有分析数据，所以为什么出现了“无分析可用”消息？
+      I know I have analytics data, so why does the No Analytics Available message appear?
     answer: >
-      [![你的套餐还没有数据。](./media/analytics-faq-no-data.png)](./media/analytics-faq-no-data.png#lightbox)
+      [![No data for your offers yet.](./media/analytics-faq-no-data.png)](./media/analytics-faq-no-data.png#lightbox)
 
 
-      为何会出现此消息：
+      Why you might be seeing this message:
 
 
-      - 如果收到此消息，表示你有分析数据，但在所选的计算期间没有数据。 请选择其他计算期间或月份范围，以查看自 2010 年以来的任何数据。
+      - If you're receiving this message, it means you have analytics data but there isn't data for the computation period that you have selected. Select a different computation period or month range to view any data since 2010.
 
-      - 如果已从筛选器选择的各种维度中选择了一个或更多类别，则可能没有用于所选内容的分析数据。 请尝试重置筛选器或从筛选器中选择其他内容。
-additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n\n- 有关合作伙伴中心中可用分析报表的概述，请参阅[在合作伙伴中心访问商业市场的分析报表](analytics.md)。\n- 有关采用图形和可下载格式显示的订单的信息，请参阅[商业市场分析中的订单仪表板](orders-dashboard.md)。\n- 有关虚拟机 (VM) 产品/服务使用情况和按流量计费指标的信息，请参阅[商业市场分析中的“使用情况”仪表板](usage-dashboard.md)。\n- 有关客户的详细信息（包括增长趋势），请参阅[商业市场分析中的客户仪表板](customer-dashboard.md)。\n- 若要获取过去 30 天内的下载请求列表，请参阅[商业市场分析中的“下载”仪表板](downloads-dashboard.md)。\n- 如果要查看客户对 Azure 市场和 Microsoft AppSource 中套餐的反馈的综合视图，请参阅[合作伙伴中心的评分和评价分析仪表板](ratings-reviews.md)。"
+      - If you have selected one or more categories from the various dimensions in the filter selection, you may not have analytics data for the selection. Try resetting the filter or make different selections from the filter.
+additionalContent: "\n## Next steps\n\n- For an overview of analytics reports available in Partner Center, see [Access analytics reports for the commercial marketplace in Partner Center](analytics.md).\n- For information about your orders in a graphical and downloadable format, see  [Orders dashboard in commercial marketplace analytics](orders-dashboard.md).\n- For Virtual Machine (VM) offers usage and metered billing metrics, see [Usage dashboard in commercial marketplace analytics](usage-dashboard.md).\n- For detailed information about your customers, including growth trends, see [Customers dashboard in commercial marketplace analytics](customer-dashboard.md).\n- For a list of your download requests over the last 30 days, see [Downloads dashboard in commercial marketplace analytics](downloads-dashboard.md).\n- To see a consolidated view of customer feedback for offers on Azure Marketplace and Microsoft AppSource, see [Ratings & reviews analytics dashboard in Partner Center](ratings-reviews.md)."

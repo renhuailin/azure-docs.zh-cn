@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: bd013bc6e0c41865f0c2f47559f024a42c3f7462
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f1b3e1b0b2734e54bdf8f63981a80848662cda64
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461249"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747384"
 ---
 # <a name="tutorial-transfer-data-with-azure-stack-edge-pro-fpga"></a>教程：使用 Azure Stack Edge Pro FPGA 传输数据
 
@@ -61,7 +61,7 @@ ms.locfileid: "110461249"
     c. 提供一个可供共享驻留在其中的存储帐户。 
 
     > [!IMPORTANT]
-    > 确保未对所用的 Azure 存储帐户设置不可变策略，才可将该帐户用于 Azure Stack Edge Pro FPGA 或 Data Box Gateway 设备。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](../storage/blobs/storage-blob-immutability-policies-manage.md)。
+    > 确保未对所用的 Azure 存储帐户设置不可变策略，才可将该帐户用于 Azure Stack Edge Pro FPGA 或 Data Box Gateway 设备。 有关详细信息，请参阅[为 blob 存储设置和管理不可变策略](../storage/blobs/immutable-policy-configure-version-scope.md)。
     
     d. 在“存储服务”下拉列表中，选择“块 Blob”、“页 Blob”或“文件”。      
     所选服务类型取决于数据需要在 Azure 中采用何种格式。 在此示例中，我们希望数据以块 Blob 的形式存储在 Azure 中，因此选择“块 Blob”。  如果选择“页 Blob”，请确保数据按 512 字节对齐。  例如，VHDX 始终按 512 字节对齐。

@@ -1,15 +1,15 @@
 ---
 title: 针对 Azure Arc 的 Azure Resource Graph 示例查询
 description: 针对 Azure Arc 的 Azure Resource Graph 示例查询，演示了如何使用资源类型和表来访问与 Azure Arc 相关的资源和属性。
-ms.date: 07/21/2021
+ms.date: 08/09/2021
 ms.topic: sample
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: a95df46566a419a290990f1bac6992f85c1b18d3
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: d89e63239fb24502cf30a8942143ea7e63986561
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669868"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121861392"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-arc"></a>针对 Azure Arc 的 Azure Resource Graph 示例查询
 

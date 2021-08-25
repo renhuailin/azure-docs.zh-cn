@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 58cd69ebe97d9d0965d7e648b0ded012ac71cd0d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc1518b169f3da8b34e97c999cd23e201aea59ce
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646110"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015670"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>教程：为 BlueJeans 配置自动用户预配
 
-本教程介绍了在 BlueJeans 和 Azure Active Directory (Azure AD) 中配置自动用户预配需执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动将用户预配到 [BlueJeans](https://www.bluejeans.com/pricing) 并自动取消预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
+本教程介绍了在 BlueJeans 和 Azure Active Directory (Azure AD) 中配置自动用户预配需执行的步骤。 配置后，Azure AD 会使用 Azure AD 预配服务自动将用户预配到 [BlueJeans](https://www.bluejeans.com) 并自动取消预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
 
 ## <a name="capabilities-supported"></a>支持的功能
 > [!div class="checklist"]
@@ -35,7 +35,7 @@ ms.locfileid: "101646110"
 
 * [Azure AD 租户](../develop/quickstart-create-new-tenant.md)。
 * Azure AD 中[有权](../roles/permissions-reference.md)配置预配的用户帐户（例如应用管理员、云应用管理员、应用所有者或全局管理员）。 
-* 启用了[我的公司](https://www.bluejeans.com/pricing)计划或更佳计划的 BlueJeans 租户。
+* 启用了[我的公司](https://www.bluejeans.com)计划或更佳计划的 BlueJeans 租户。
 * BlueJeans 中具有管理员权限的用户帐户。
 * BlueJeans Enterprise 中已启用 SCIM 预配。
 

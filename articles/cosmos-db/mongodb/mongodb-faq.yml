@@ -1,0 +1,44 @@
+### YamlMime:FAQ
+metadata:
+  title: 有关适用于 MongoDB 的 Azure Cosmos DB API 的常见问题解答
+  description: 获取有关适用于 MongoDB 的 Azure Cosmos DB API 的常见问题解答
+  author: SnehaGunda
+  ms.service: cosmos-db
+  ms.subservice: cosmosdb-mongo
+  ms.topic: conceptual
+  ms.date: 04/28/2020
+  ms.author: sngun
+  ms.openlocfilehash: dd4deb9fd671c2e6b142d8731ad2a13fdb8f06c3
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121782990"
+title: 有关适用于 MongoDB 的 Azure Cosmos DB API 的常见问题解答
+summary: >
+  [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
+
+
+  Azure Cosmos DB 的 API for MongoDB 是一个线路协议兼容层，允许应用程序使用现有的、社区支持的 SDK 和用于 MongoDB 的驱动程序轻松、透明地与本机 Azure Cosmos 数据库引擎通信。 开发人员现在可以使用现有的 MongoDB 工具链和技术，生成能够充分利用 Azure Cosmos DB 的应用程序。 开发人员可以使用 Azure Cosmos DB 的独特功能，其中包括带多区域写入复制功能的全局分发、自动索引、备份维护、获得财务支持的服务级别协议 (SLA) 等。
+sections:
+- name: 常规
+  questions:
+  - question: >
+      How do I connect to my database?
+    answer: >
+      The quickest way to connect to a Cosmos database with Azure Cosmos DB's API for MongoDB is to head over to the [Azure portal](https://portal.azure.com). Go to your account and then, on the left navigation menu, click **Quick Start**. Quickstart is the best way to get code snippets to connect to your database.
+
+
+      Azure Cosmos DB enforces strict security requirements and standards. Azure Cosmos DB accounts require authentication and secure communication via TLS, so be sure to use TLSv1.2.
+
+
+      For more information, see [Connect to your Cosmos database with Azure Cosmos DB's API for MongoDB](connect-mongodb-account.md).
+  - question: >
+      Error codes while using Azure Cosmos DB's API for MongoDB?
+    answer: >
+      Along with the common MongoDB error codes, the Azure Cosmos DB's API for MongoDB has its own specific error codes. These can be found in the [Troubleshooting Guide](error-codes-solutions.md).
+  - question: >
+      Is the Simba driver for MongoDB supported for use with Azure Cosmos DB's API for MongoDB?
+    answer: >
+      Yes, you can use Simba's Mongo ODBC driver with Azure Cosmos DB's API for MongoDB
+additionalContent: "\n## Next steps\n\n* [Build a .NET web app using Azure Cosmos DB's API for MongoDB](create-mongodb-dotnet.md)\n* [Create a console app with Java and the MongoDB API in Azure Cosmos DB](create-mongodb-java.md)"

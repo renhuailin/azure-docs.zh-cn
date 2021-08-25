@@ -10,12 +10,12 @@ ms.date: 11/19/2020
 ms.author: martinle
 ms.reviewer: nirav
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: a5355a449cb55f671c59da55ba4d038e9b4b2ec5
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 1290fdb907272d4a47e4b11430fc47955a259951
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108803415"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860857"
 ---
 # <a name="secure-credentials-with-linked-services-using-the-tokenlibrary"></a>通过使用 TokenLibrary 的链接服务保护凭据
 
@@ -25,7 +25,7 @@ Synapse 默认使用 Azure Active Directory (AAD) 传递进行资源之间的身
 
 从 Azure Key Vault 检索机密时，建议为 Azure Key Vault 创建链接服务。  确保 Synapse 工作区托管服务标识 (MSI) 对你的 Azure Key Vault 具有机密获取特权。  Synapse 将使用 Synapse 工作区托管服务标识向 Azure Key Vault 进行身份验证。 如果没有链接服务而直接连接到 Azure Key Vault，将使用用户 Azure Active Directory 凭据进行身份验证。
 
-有关详细信息，请参阅[链接服务](../../data-factory/concepts-linked-services.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+有关详细信息，请参阅[链接服务](../../data-factory/concepts-linked-services.md?context=/azure/synapse-analytics/context/context)。
 
 ## <a name="usage"></a>使用情况
 

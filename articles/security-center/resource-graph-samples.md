@@ -1,18 +1,18 @@
 ---
 title: 适用于 Azure 安全中心 的 Azure Resource Graph 示例查询
 description: 适用于 Azure 安全中心 的 Azure Resource Graph 示例查询，演示了如何使用资源类型和表来访问与 Azure 安全中心相关的资源和属性。
-ms.date: 07/21/2021
+ms.date: 08/13/2021
 ms.topic: sample
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-resourcegraph-sample
-ms.openlocfilehash: c4789913012fb1b2da90f8bfb20a782c48760946
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 637a91641a73fb9eebf6838eb51fa86aefb0fdd7
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669872"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122072345"
 ---
 # <a name="azure-resource-graph-sample-queries-for-azure-security-center"></a>适用于 Azure 安全中心 的 Azure Resource Graph 示例查询
 
