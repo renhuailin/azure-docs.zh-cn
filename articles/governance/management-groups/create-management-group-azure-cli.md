@@ -1,15 +1,15 @@
 ---
 title: 快速入门：使用 Azure CLI 创建管理组
 description: 本快速入门使用 Azure CLI 创建管理组，将资源整理到资源层次结构中。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 189f8cab18051dbebd3e22df67116311f431cae8
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 51d8f6e9a13bd09cd5f7d0dd423639f07ee59c05
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733816"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324967"
 ---
 # <a name="quickstart-create-a-management-group-with-the-azure-cli"></a>快速入门：使用 Azure CLI 创建管理组
 

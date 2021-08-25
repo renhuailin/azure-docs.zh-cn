@@ -8,12 +8,12 @@ ms.author: bobazile
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: ef77648a87a22eda950704a6d86b2e699dc61ebe
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: c2d6f3ebe3d11c304efe57141db3d8935611bf72
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762748"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743547"
 ---
 # <a name="telephony-concepts"></a>电话服务概念
 
@@ -77,7 +77,7 @@ ms.locfileid: "113762748"
 ### <a name="conceptual-documentation"></a>概念文档
 
 - [Azure 通信服务中的电话号码类型](./plan-solution.md)
-- [规划 Azure 直接路由](./sip-interface-infrastructure.md)
+- [规划 Azure 直接路由](./direct-routing-infrastructure.md)
 - [为 Azure 通信服务直接路由认证的会话边界控制器](./certified-session-border-controllers.md)
 - [定价](../pricing.md)
 

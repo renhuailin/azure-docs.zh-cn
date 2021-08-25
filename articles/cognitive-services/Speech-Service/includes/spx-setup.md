@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/28/2021
 ms.author: v-demjoh
-ms.openlocfilehash: 268f248c879d1a6872713159bfb1aa44879d21ad
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 364ceacaea122e7ffda58ef0c7d4db072c8fee13
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730371"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122261532"
 ---
 ## <a name="download-and-install"></a>下载并安装
 
@@ -68,8 +68,11 @@ ms.locfileid: "114730371"
 
 #### <a name="docker-install-windows-linux-macos"></a>[Docker 安装（Windows、Linux、macOS）](#tab/dockerinstall)
 
-> [!WARNING]
+> [!IMPORTANT]
 > 在 Docker 容器中运行语音 CLI 时，不能使用计算机的麦克风。 但你可以在本地装载的目录中读取和保存音频文件。 
+
+> [!NOTE]
+> 以下示例从 Docker Hub 拉取公共容器映像。 建议首先对 Docker Hub 帐户 (`docker login`) 进行身份验证，而不是发出匿名拉取请求。 若要在使用公共内容时提高可靠性，请在专用 Azure 容器注册表中导入和管理映像。 [详细了解如何使用公共映像](../../../container-registry/buffer-gate-public-content.md)。
 
 按照以下步骤在 Docker 容器中安装语音 CLI：
 

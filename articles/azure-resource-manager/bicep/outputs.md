@@ -3,12 +3,12 @@ title: Bicep 中的输出
 description: 介绍如何在 Bicep 中定义输出
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 25691bb31fbec0b00144619b97db019e13295661
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 1468f1a8a42f51dec1d195d39fe9096746c8193f
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112201079"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635137"
 ---
 # <a name="outputs-in-bicep"></a>Bicep 中的输出
 
@@ -112,7 +112,7 @@ publicIPAddress: {
 
 Bicep 当前不支持循环。
 
-:::code language="bicep" source="~/resourcemanager-templates/azure-resource-manager/outputs.bicep":::
+:::code language="bicep" source="~/azure-docs-bicep-samples/bicep/output.bicep":::
 
 ## <a name="get-output-values"></a>获取输出值
 

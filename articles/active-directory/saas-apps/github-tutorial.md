@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: c87f66e48aa7b39a7f3fc5f9b8572dd6925abbc0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12d80ee98ceef33221b7713703e8106bada6470c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98732137"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750432"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-a-github-enterprise-cloud-organization"></a>教程：Azure Active Directory 单一登录 (SSO) 与 GitHub Enterprise Cloud 组织的集成
 
@@ -77,11 +77,11 @@ ms.locfileid: "98732137"
 
 1. 在“基本 SAML 配置”部分，输入以下字段的值：
 
-   a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<Organization ID>/sso` 
+    a. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<Organization ID>`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<Organization ID>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<Organization ID>/saml/consume`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<Organization ID>/saml/consume`
+    c. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<Organization ID>/sso` 
 
 
     > [!NOTE]

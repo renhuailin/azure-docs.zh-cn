@@ -4,16 +4,16 @@ description: 了解如何为 SAP 环境部署 Azure Sentinel 解决方案。
 author: batamig
 ms.author: bagold
 ms.service: azure-sentinel
-ms.topic: tutorial
+ms.topic: how-to
 ms.custom: mvc
 ms.date: 07/06/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: a77fc691692d3eb6672e2cd80e52a90c117bc9ab
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7bddb61bbbab008fad4e538400bbe4396ac744b4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114439909"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121723456"
 ---
 #  <a name="deploy-sap-continuous-threat-monitoring-public-preview"></a>部署 SAP 连续威胁监视（公共预览版）
 
@@ -87,8 +87,8 @@ SAP 数据连接器从整个 SAP 系统环境中流式传输大量（14 个）�
 
 1. 从位于 https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/SAP/CR: 的 Azure Sentinel GitHub 存储库下载并安装以下 SAP 更改请求之一
 
-    - SAP 版本 750 或更高版本：安装 SAP 更改请求 141 (NPLK900141)
-    - SAP 版本 740：安装 SAP 更改请求 142 (NPLK900142)
+    - **SAP 版本 750 或更高版本**：安装 SAP 更改请求 144 (NPLK900144)
+    - **SAP 版本 740**：安装 SAP 更改请求 146 (NPLK900146)
 
     执行此步骤时，请确保使用二进制模式将文件传输到 SAP 系统，并使用 STMS_IMPORT SAP 事务代码。
 
@@ -96,7 +96,7 @@ SAP 数据连接器从整个 SAP 系统环境中流式传输大量（14 个）�
     > 在 SAP“导入选项”区域中，可能显示“忽略无效的组件版本”选项 。 如果显示，请选择此选项，然后继续。
     >
 
-1. 通过导入 SAP 更改请求 14 (NPLK900114)，创建名为 /MSFTSEN/SENTINEL_CONNECTOR 的新 SAP 角色。 使用 STMS_IMPORT SAP 事务代码。
+1. 通过导入 SAP 更改请求 14 (NPLK900140)，创建名为 /MSFTSEN/SENTINEL_CONNECTOR 的新 SAP 角色。 使用 STMS_IMPORT SAP 事务代码。
 
     验证创建的角色是否具有所需的权限，例如：
 
@@ -259,7 +259,7 @@ SAP 数据连接器部署脚本存储在 [Azure Sentinel GitHub 存储库 > Data
 
     要显示新部署的内容，请转到：
 
-    - “威胁管理” > “工作簿”，找到 [SAP - 系统应用程序及产品 - 预览版](sap-solution-security-content.md#sap---system-applications-and-products-workbook)工作簿 。
+    - “威胁管理” > “工作簿” > “我的工作簿”，找到[内置 SAP 工作簿](sap-solution-security-content.md#built-in-workbooks)  。
     - “配置” > “分析”，找到一系列[与 SAP 相关的分析规则](sap-solution-security-content.md#built-in-analytics-rules) 。
 
 1. 添加与 SAP 相关的监视列表，以便在搜索、检测规则、威胁搜寻和响应 playbook 中使用。 这些监视列表为 Azure Sentinel SAP 连续威胁监视解决方案提供配置。
@@ -282,95 +282,6 @@ SAP 数据连接器部署脚本存储在 [Azure Sentinel GitHub 存储库 > Data
 
     有关详细信息，请参阅 [Azure Sentinel SAP 解决方案日志参考（公共预览版）](sap-solution-log-reference.md)。
 
-## <a name="sap-solution-deployment-troubleshooting"></a>SAP 解决方案部署疑难解答
-
-部署 SAP 数据连接器和安全内容后，你可能会遇到以下错误或问题：
-
-|问题  |解决方法  |
-|---------|---------|
-|与 SAP 环境或 Azure Sentinel 的网络连接问题     |  根据需要检查你的网络连接。       |
-|SAP ABAP 用户凭据不正确     |检查凭据并通过将正确的值应用于 Azure 密钥保管库中的 ABAPUSER 和 ABAPPASS 值来修复它们 。         |
-|缺少权限，例如未根据需要将 /MSFTSEN/SENTINEL_CONNECTOR 角色分配给 SAP 用户，或角色处于非活动状态     |通过分配角色并确保它在 SAP 系统中处于活动状态来修复此错误。         |
-|SAP 更改请求缺失     | 确保已导入正确的 SAP 更改请求，如[配置 SAP 系统](#configure-your-sap-system)中所述。        |
-|在部署脚本中输入的 Azure Sentinel 工作区 ID 或密钥不正确     |  若要修复此错误，请在 Azure KeyVault 中输入正确的凭据。       |
-|SAP SDK 文件损坏或缺失     | 通过重新安装 SAP SDK 并确保使用正确的 Linux 64 位版本来修复此错误。        |
-|工作簿或警报中缺少数据     |    确保在 SAP 端正确启用审核日志策略，并且日志文件中没有错误。 在此步骤中使用 RSAU_CONFIG_LOG 事务。     |
-|     |         |
-
-> [!TIP]
-> 强烈建议在安装数据连接器后查看系统日志。 运行：
->
-> ```bash
-> docker logs -f sapcon-[SID]
-> ```
->
-有关详细信息，请参阅：
-
-- [查看所有 Docker 执行日志](#view-all-docker-execution-logs)
-- [查看和更新 SAP 数据连接器配置](#review-and-update-the-sap-data-connector-configuration)
-- [有用的 Docker 命令](#useful-docker-commands)
-
-### <a name="view-all-docker-execution-logs"></a>查看所有 Docker 执行日志
-
-若要查看 Azure Sentinel SAP 数据连接器部署的所有 Docker 执行日志，请运行以下命令之一：
-
-```bash
-docker exec -it sapcon-[SID] bash && cd /sapcon-app/sapcon/logs
-```
-
-或
-
-```bash
-docker exec –it sapcon-[SID] cat /sapcon-app/sapcon/logs/[FILE_LOGNAME]
-```
-
-应会显示类似于以下内容的输出：
-
-```bash
-Logs directory:
-root@644c46cd82a9:/sapcon-app# ls sapcon/logs/ -l
-total 508
--rwxr-xr-x 1 root root      0 Mar 12 09:22 ' __init__.py'
--rw-r--r-- 1 root root    282 Mar 12 16:01  ABAPAppLog.log
--rw-r--r-- 1 root root   1056 Mar 12 16:01  ABAPAuditLog.log
--rw-r--r-- 1 root root    465 Mar 12 16:01  ABAPCRLog.log
--rw-r--r-- 1 root root    515 Mar 12 16:01  ABAPChangeDocsLog.log
--rw-r--r-- 1 root root    282 Mar 12 16:01  ABAPJobLog.log
--rw-r--r-- 1 root root    480 Mar 12 16:01  ABAPSpoolLog.log
--rw-r--r-- 1 root root    525 Mar 12 16:01  ABAPSpoolOutputLog.log
--rw-r--r-- 1 root root      0 Mar 12 15:51  ABAPTableDataLog.log
--rw-r--r-- 1 root root    495 Mar 12 16:01  ABAPWorkflowLog.log
--rw-r--r-- 1 root root 465311 Mar 14 06:54  API.log # view this log to see submits of data into Azure Sentinel
--rw-r--r-- 1 root root      0 Mar 12 15:51  LogsDeltaManager.log
--rw-r--r-- 1 root root      0 Mar 12 15:51  PersistenceManager.log
--rw-r--r-- 1 root root   4830 Mar 12 16:01  RFC.log
--rw-r--r-- 1 root root   5595 Mar 12 16:03  SystemAdmin.log
-```
-
-### <a name="review-and-update-the-sap-data-connector-configuration"></a>查看和更新 SAP 数据连接器配置
-
-如果要检查 SAP 数据连接器配置文件并手动进行更新，请执行以下步骤：
-
-1. 在 VM 上的用户主目录中，打开 ~/sapcon/[SID]/systemconfig.ini 文件。
-1. 根据需要更新配置，然后重启容器：
-
-    ```bash
-    docker restart sapcon-[SID]
-    ```
-
-### <a name="useful-docker-commands"></a>有用的 Docker 命令
-
-在对 SAP 数据连接器进行故障排除时，可能会发现以下命令很有用：
-
-|函数  |命令  |
-|---------|---------|
-|停止 Docker 容器     |  `docker stop sapcon-[SID]`       |
-|启动 Docker 容器     |`docker start sapcon-[SID]`         |
-|查看 Docker 系统日志     |  `docker logs -f sapcon-[SID]`       |
-|输入 Docker 容器     |   `docker exec -it sapcon-[SID] bash`      |
-|     |         |
-
-有关详细信息，请参阅 [Docker CLI 文档](https://docs.docker.com/engine/reference/commandline/docker/)。
 
 ## <a name="update-your-sap-data-connector"></a>更新 SAP 数据连接器
 
@@ -379,7 +290,7 @@ total 508
 1. 确保你拥有来自 Azure Sentinel github 存储库的最新版本的相关部署脚本。 运行：
 
     ```azurecli
-    - wget -O sapcon-instance-update.sh https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/sapcon-instance-update.sh && bash ./sapcon-instance-update.sh
+    wget -O sapcon-instance-update.sh https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/sapcon-instance-update.sh && bash ./sapcon-instance-update.sh
     ```
 
 1. 在 SAP 数据连接器计算机上运行以下命令：
@@ -425,9 +336,10 @@ total 508
 
 详细了解 Azure Sentinel SAP 解决方案：
 
-- [使用备用部署部署 Azure Sentinel SAP 解决方案](sap-solution-deploy-alternate.md)
+- [专家配置选项、本地部署和 SAPControl 日志源](sap-solution-deploy-alternate.md)
 - [Azure Sentinel SAP 解决方案详细的 SAP 要求](sap-solution-detailed-requirements.md)
 - [Azure Sentinel SAP 解决方案日志参考](sap-solution-log-reference.md)
 - [Azure Sentinel SAP 解决方案：内置安全内容](sap-solution-security-content.md)
+- [Azure Sentinel SAP 解决方案部署故障排除](sap-deploy-troubleshoot.md)
 
 有关详细信息，请参阅 [Azure Sentinel 解决方案](sentinel-solutions.md)。

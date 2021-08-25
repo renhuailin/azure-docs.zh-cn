@@ -1,18 +1,21 @@
 ---
 title: 使用 Azure 数据工厂更新 Azure 机器学习工作室（经典版）模型
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 介绍如何使用 Azure 数据工厂和 Azure 机器学习工作室（经典版）创建预测管道
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: tutorials
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 5eac6f939ffcc39961f508a993ca17757221503f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0afbd758022805735231b415e0e06643722488cd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783092"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637949"
 ---
 # <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>使用“更新资源”活动更新 Azure 机器学习工作室（经典版）模型
 

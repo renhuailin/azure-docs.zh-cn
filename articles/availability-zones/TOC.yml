@@ -3,11 +3,9 @@
     - name: Azure 复原功能页
       href: 'https://azure.microsoft.com/features/resiliency'
     - name: 设计适用于 Azure 的可复原应用程序
-      href: /azure/architecture/resiliency/
+      href: /azure/architecture/framework/resiliency/app-design
 - name: 高可用性
   items:
-    - name: Azure 应用程序的高可用性
-      href: /azure/architecture/resiliency/high-availability-azure-applications
     - name: 区域和可用性区域
       href: az-overview.md
     - name: 可用性区域文档

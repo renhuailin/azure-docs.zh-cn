@@ -1,17 +1,20 @@
 ---
 title: 使用 Databricks Notebook 转换数据
-description: 了解如何通过在 Azure 数据工厂中运行 Databricks Notebook 处理或转换数据。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: 了解如何通过在 Azure 数据工厂中运行 Databricks Notebook 来处理或转换数据。
 ms.service: data-factory
+ms.subservice: tutorials
+ms.custom: synapse
 author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: fea572c2e75f62b5e7e7b4634e37da348bdcdaf1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d4db58e70c31724bac3678eb0f692e13d26211c6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183482"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638013"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>通过运行 Databricks Notebook 转换数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -112,7 +115,7 @@ ms.locfileid: "102183482"
 
 在某些情况下，你可能需要将某些值从笔记本传回数据工厂，这些值可用于数据工厂中的控制流（条件检查）或由下游活动使用（大小限制为 2MB）。
 
-1. 在笔记本中，可以调用 [dbutils.notebook.exit("returnValue")](/azure/databricks/notebooks/notebook-workflows#notebook-workflows-exit)，相应的“returnValue”将会返回到数据工厂。
+1. 在笔记本中，你可以调用 [dbutils.notebook.exit("returnValue")](/azure/databricks/notebooks/notebook-workflows#notebook-workflows-exit)，相应的“returnValue”会返回到数据工厂。
 
 2. 可以通过表达式（如 `@{activity('databricks notebook activity name').output.runOutput}`）在数据工厂中使用输出。 
 

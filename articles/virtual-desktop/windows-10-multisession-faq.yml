@@ -1,18 +1,19 @@
 ### YamlMime:FAQ
 metadata:
   title: Windows 10 企业版多会话常见问题解答 - Azure
-  description: 有关使用适用于 Azure 虚拟桌面的 Windows 10 企业版多会话的常见问题解答和最佳做法。
+  description: 关于使用面向 Azure 虚拟桌面的 Windows 10 企业版多会话的常见问题解答和最佳做法。
   author: Heidilohr
-  ms.topic: conceptual
+  ms.topic: article
+  ms.prod: windows
   ms.date: 02/19/2020
   ms.author: helohr
   manager: femila
-  ms.openlocfilehash: a8fe71b3f89121d752f99f59755064aa6b64d4b4
-  ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+  ms.openlocfilehash: e6633e117fc06e9d7e337d6bece2cc2f7c36193c
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/09/2021
-  ms.locfileid: "111907125"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253323"
 title: Windows 10 Enterprise 多会话常见问题解答
 summary: 本文解答了 Windows 10 企业版多会话的常见问题，并说明了相应的最佳做法。
 sections:
@@ -23,12 +24,12 @@ sections:
       Windows 10 企业版多会话，以前称为适用于虚拟桌面的 Windows 10 企业版 (EVD)，是一种新型远程桌面会话主机，允许多个并发交互式会话。 以前，只有 Windows Server 支持此功能。 此功能为用户提供了一个熟悉的 Windows 10 体验，同时 IT 能够从多会话的成本优势中获益，并使用现有的每用户 Windows 许可，而不是 RDS 客户端访问许可证 (CAL)。 有关许可证和定价的详细信息，请参阅 [Azure 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
   - question: 在 Windows 10 企业版多会话中，有多少用户可以同时进行交互式会话？
     answer: >
-      可以同时处于活动状态的交互式会话数量取决于系统的硬件资源（vCPU、内存、磁盘和 vGPU）、用户登录到会话时使用其应用的方式，以及系统的工作负载繁重情况。 我们建议你验证系统的性能，了解可以在 Windows 10 企业版多会话上拥有的用户数量。 若要了解详细信息，请参阅 [Azure 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
+      可以同时处于活动状态的交互式会话数量取决于系统的硬件资源（vCPU、内存、磁盘和 vGPU）、用户登录到会话时使用其应用的方式，以及系统的工作负载繁重情况。 我们建议你验证系统的性能，了解可以在 Windows 10 企业版多会话上拥有的用户数量。 有关详细信息，请参阅 [Azure 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
   - question: 为什么我的应用程序将 Windows 10 企业版多会话报告为服务器操作系统？
     answer: >
       Windows 10 企业版多会话是 Windows 10 企业版的虚拟版本。 其中一个区别是，此操作系统 (OS) 报告的 [ProductType](/windows/win32/cimwin32prov/win32-operatingsystem) 值为 3，这与 Windows Server 的值相同。 这一特性可让 OS 与现有的 RDSH 管理工具、RDSH 多会话感知应用程序，以及针对 RDSH 环境的大多数低级别系统性能优化保持兼容。 某些应用程序安装程序会阻止 Windows 10 多会话上的安装，具体取决于它们是否检测到 ProductType 设置为“客户端”。 如果你的应用无法安装，请联系应用程序供应商，获取更新的版本。
   - question: 能否在本地运行 Windows 10 企业版多会话？
-    answer: Windows 10 企业版多会话无法在本地生产环境中运行，因为它针对适用于 Azure 的 Azure 虚拟桌面服务进行了优化。 在 Azure 之外出于生产目的运行 Windows 10 企业版多会话违反了许可协议。 Windows 10 企业版多会话不会针对本地密钥管理服务 (KMS) 激活。
+    answer: Windows 10 企业版多会话无法在本地生产环境中运行，因为它已针对适用于 Azure 的 Azure 虚拟桌面服务进行了优化。 在 Azure 之外出于生产目的运行 Windows 10 企业版多会话违反了许可协议。 Windows 10 企业版多会话不会针对本地密钥管理服务 (KMS) 激活。
   - question: 是否可以将 Windows 10 VM 升级到 Windows 10 企业版多会话？
     answer: 不是。 目前无法将运行 Windows 10 专业版或企业版的现有虚拟机 (VM) 升级到 Windows 10 企业版多会话。 另外，如果部署了 Windows 10 企业版多会话 VM，然后将产品密钥更新到另一个版本，则无法将该 VM 切换回 Windows 10 企业版多会话，需要重新部署该 VM。 不支持将 Azure 虚拟桌面 VM SKU 更改为其他版本。
   - question: 如何为组织自定义 Windows 10 企业版多会话映像？
@@ -39,7 +40,7 @@ sections:
       首先，使用 Windows 10 企业版多会话在 Azure 中创建一个 VM。 你可以直接下载 VHD，而不是在 Azure 中启动 VM。 之后，你将能够使用已下载的 VHD 在已启用 Hyper-V 的 Windows 10 电脑上创建新的第 1 代 VM。
 
 
-      通过安装 LOB 应用程序，根据需要自定义映像，并对映像进行 sysprep。 完成自定义后，将包含 VHD 的映像上传到 Azure。 然后，请从 Azure 市场获取 Azure 虚拟桌面，并使用它来通过自定义映像部署新主机池。
+      通过安装 LOB 应用程序，根据需要自定义映像，并对映像进行 sysprep。 完成自定义后，将包含 VHD 的映像上传到 Azure。 然后，从 Azure 市场获取 Azure 虚拟桌面，并使用它来部署包含自定义映像的新主机池。
   - question: 部署后如何管理 Windows 10 企业版多会话？
     answer: 你可以使用任何支持的配置工具，但我们建议使用 Configuration Manager 版本 1906，因为它支持 Windows 10 企业版多会话。 我们目前正在努力提供 Microsoft Intune 支持。
   - question: Windows 10 企业版多会话能否加入 Azure Active Directory (AD)？
@@ -48,12 +49,12 @@ sections:
   - question: 在哪里可以找到 Windows 10 企业版多会话映像？
     answer: Windows 10 企业版多会话位于 Azure 库。 若要查找它，请导航到 Azure 门户并搜索 Windows 10 企业版虚拟桌面版本。 对于与 Microsoft 365 企业应用版集成的映像，请转到 Azure 门户并搜索“Microsoft Windows 10 + Microsoft 365 企业应用版”。
   - question: 我应该使用哪个 Windows 10 企业版多会话映像？
-    answer: Azure 库包含多个版本，包括 Windows 10 企业版多会话版本 1809 和 Windows 10 企业版多会话版本 1903。 建议使用最新版本，以提高性能和可靠性。
+    answer: Azure 库包含多个版本，包括 Windows 10 企业版多会话版本 1909 和 Windows 10 企业版多会话版本 1903。 建议使用最新版本，以提高性能和可靠性。
   - question: 哪些 Windows 10 企业版多会话版本受支持？
-    answer: Windows 10 企业版多会话版本 1809 及更高版本均受支持，它们都通过 Azure 库提供。 这些版本遵循与 Windows 10 企业版相同的支持生命周期策略，这意味着 3 月版可得到支持 18 个月，9 月版可得到支持 30 个月。
+    answer: Windows 10 企业版多会话版本 1909 及更高版本均受支持，它们都通过 Azure 库提供。 这些版本遵循与 Windows 10 企业版相同的支持生命周期策略，这意味着 3 月版可得到支持 18 个月，9 月版可得到支持 30 个月。
   - question: 应该对 Windows 10 企业版多会话使用哪种配置文件管理解决方案？
     answer: >
-      如果在非永久性环境或其他需要集中存储配置文件的场景中配置 Windows 10 企业版，我们建议你使用 FSLogix 配置文件容器。 FSLogix 可确保用户配置文件对每个用户会话可用，且保持最新。 我们还建议你使用 FSLogix 配置文件容器将用户配置文件存储在具有相应权限的任何 SMB 共享中，但如有必要，也可将用户配置文件存储在 Azure 页 blob 存储中。 Azure 虚拟桌面用户可以使用 FSLogix，无需额外付费。  FSLogix 预先安装在所有 Windows 10 企业版多会话映像上，但仍由 IT 管理员负责配置 FSLogix 配置文件容器。
+      如果在非永久性环境或其他需要集中存储配置文件的场景中配置 Windows 10 企业版，我们建议你使用 FSLogix 配置文件容器。 FSLogix 可确保用户配置文件对每个用户会话可用，且保持最新。 我们还建议你使用 FSLogix 配置文件容器将用户配置文件存储在具有相应权限的任何 SMB 共享中，但如有必要，也可将用户配置文件存储在 Azure 页 blob 存储中。 Azure 虚拟桌面用户可以使用 FSLogix，而无需额外付费。  FSLogix 预先安装在所有 Windows 10 企业版多会话映像上，但仍由 IT 管理员负责配置 FSLogix 配置文件容器。
 
 
       要详细了解如何配置 FSLogix 配置文件容器，请参阅[配置 FSLogix 配置文件容器](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)。
@@ -91,4 +92,4 @@ sections:
       5. 选择“禁用”，然后选择“确定” 。
 
       6. 选择“应用”。
-additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n   \n若要详细了解 Azure 虚拟桌面和 Windows 10 企业版多会话，请执行以下操作：\n        \n- 阅读 [Azure 虚拟桌面文档](overview.md)\n- 访问 [Azure 虚拟桌面 TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)\n- 利用 [Azure 虚拟桌面教程](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)设置 Azure 虚拟桌面部署"
+additionalContent: "\n## <a name=\"next-steps\"></a>后续步骤\n   \n详细了解 Azure 虚拟桌面和 Windows 10 企业版多会话：\n        \n- 阅读 [Azure 虚拟桌面文档](overview.md)\n- 访问 [Azure 虚拟桌面 TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)\n- 使用 [Azure 虚拟桌面教程](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)设置 Azure 虚拟桌面部署"

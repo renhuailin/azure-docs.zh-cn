@@ -1,17 +1,17 @@
 ---
 title: 快速入门：使用 Python 创建管理组
 description: 在本快速入门中，你将使用 Python 创建一个管理组，来将资源整理到资源层次结构中。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: 777cb39324e94c40bc4eac4538e59a2b75b8745e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ec4b66033093d6fa56e2bb5bce0f9d0fedf0a7e5
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108765262"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324947"
 ---
 # <a name="quickstart-create-a-management-group-with-python"></a>快速入门：使用 Python 创建管理组
 

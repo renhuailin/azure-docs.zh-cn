@@ -8,32 +8,32 @@ metadata:
   ms.topic: conceptual
   ms.service: applied-ai-services
   ms.date: 05/28/2021
-  ms.openlocfilehash: fbb8d236f106e318ef0689d787e5f8401f8f6808
-  ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+  ms.openlocfilehash: b1e6b81b29fd21713e1357540026d777dad1cfac
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/02/2021
-  ms.locfileid: "113231046"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121747769"
 title: Azure 应用 AI 服务常见问题
 summary: >
   以下是有关使用 Azure 应用 AI 服务的常见问题解答。
 sections:
 - name: 单一部分 - 已忽略
   questions:
-  - question: Azure 应用 AI 服务是否支持静态数据加密和客户托管密钥 (CMK)？
+  - question: Does Azure Applied AI Services support encryption of data at rest and Customer Managed Keys (CMK)?
     answer: >
-      支持，使用 Azure 密钥保管库为应用 AI 服务启用客户管理的密钥的过程因产品而异。 使用以下链接获得特定服务的说明：
+      Yes, the process to enable Customer-Managed Keys with Azure Key Vault for Applied AI Services varies by product. Use these links for service-specific instructions:
 
-      - [认知搜索静态数据加密](../search/search-security-manage-encryption-keys.md)
+      - [Cognitive Search encryption of data at rest](../search/search-security-manage-encryption-keys.md)
 
-      - [表单识别器静态数据加密](../cognitive-services/form-recognizer/encrypt-data-at-rest.md)
+      - [Form Recognizer encryption of data at rest](../cognitive-services/form-recognizer/encrypt-data-at-rest.md)
 
-      - [对静态数据的指标顾问加密](../cognitive-services/metrics-advisor/encryption.md)
+      - [Metrics Advisor encryption of data at rest](./metrics-advisor/encryption.md)
 
-      - [视频分析器静态数据加密](../azure-video-analyzer/video-analyzer-docs/customer-managed-keys.md)
+      - [Video Analyzer encryption of data at rest](../azure-video-analyzer/video-analyzer-docs/customer-managed-keys.md)
 additionalContent: >-
-  ## <a name="next-steps"></a>后续步骤
+  ## Next Steps
 
-  - [什么是 Azure Key Vault？](../key-vault/general/overview.md)
+  - [What is Azure Key Vault](../key-vault/general/overview.md)?
 
-  - [应用 AI 服务客户管理的密钥请求表单](https://aka.ms/cogsvc-cmk)
+  - [Applied AI Services Customer-Managed Key Request Form](https://aka.ms/cogsvc-cmk)

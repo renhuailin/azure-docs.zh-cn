@@ -9,12 +9,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./functions-create-your-first-function-visual-studio-uiex
-ms.openlocfilehash: b76d9cf86a1bb00ea73c396ce1e563374a834f89
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 9b5d5d85d8df58a8e8c3e2626abaed75377e6025
+ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459448"
+ms.lasthandoff: 06/02/2021
+ms.locfileid: "122643075"
 ---
 # <a name="quickstart-create-your-first-c-function-in-azure-using-visual-studio"></a>快速入门：使用 Visual Studio 在 Azure 中创建第一个 C# 函数
 
@@ -52,7 +52,7 @@ Visual Studio 将创建一个项目和一个包含 HTTP 触发器函数类型样
 
 1. 在代码中，将 Function1 类重命名为 `HttpExample`。
 
-1. 在名为 `Run` 的 `HttpTrigger` 方法中，将 `FunctionName` 方法属性重命名为 `HttpExample`。
+1. 在名为 `Run` 的 `HttpTrigger` 方法中，将 `FunctionName` 方法属性重命名为 `HttpExample`。 
 
 函数定义现在应如以下代码所示：
 
@@ -74,7 +74,7 @@ Visual Studio 与 Azure Functions Core Tools 集成，这样你便可使用完�
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
-## <a name="test-your-function-in-azure"></a>在 Azure 中测试函数
+## <a name="verify-your-function-in-azure"></a>在 Azure 中验证函数
 
 1. 在 Cloud Explorer 中，应已选中新的函数应用。 如果未选中，请依次展开你的订阅>“应用服务”，并选择新的函数应用。
 
@@ -88,7 +88,7 @@ Visual Studio 与 Azure Functions Core Tools 集成，这样你便可使用完�
 
     `http://<APP_NAME>.azurewebsites.net/api/HttpExample?name=Functions`
 
-2. 转到此 URL，你会在浏览器中看到函数返回的对远程 GET 请求的响应，如下例所示：
+1. 转到此 URL，你会在浏览器中看到函数返回的对远程 GET 请求的响应，如下例所示：
 
     :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="浏览器中的函数响应":::
 
@@ -98,19 +98,9 @@ Visual Studio 与 Azure Functions Core Tools 集成，这样你便可使用完�
 
 Azure 中的资源是指函数应用、函数、存储帐户等。 这些资源可以组合到资源组中，删除该组即可删除组中的所有内容。 
 
-已创建完成这些快速入门所需的资源。 这些资源可能需要付费，具体取决于[帐户状态](https://azure.microsoft.com/account/)和[服务定价](https://azure.microsoft.com/pricing/)。 如果不再需要这些资源，请参阅下面介绍的资源删除方法：
+已创建完成这些快速入门所需的资源。 这些资源可能需要付费，具体取决于[帐户状态](https://azure.microsoft.com/account/)和[服务定价](https://azure.microsoft.com/pricing/)。 
 
-1. 在 Cloud Explorer 中，请依次展开你的订阅>“应用服务”，右键单击函数应用，然后选择“在门户中打开” 。 
-
-1. 在函数应用页中，请选择“概览”选项卡，然后选择“资源组”下的链接 。
-
-   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="从函数应用页选择要删除的资源组":::
-
-2. 在“资源组”页中查看所包括的资源的列表，然后验证这些资源是否是要删除的。
- 
-3. 选择“删除资源组”，然后按说明操作。
-
-   可能需要数分钟才能删除完毕。 完成后会显示一个通知，持续数秒。 也可以选择页面顶部的钟形图标来查看通知。
+[!INCLUDE [functions-vstools-cleanup](../../includes/functions-vstools-cleanup.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

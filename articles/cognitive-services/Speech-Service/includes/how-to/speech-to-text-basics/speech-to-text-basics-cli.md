@@ -1,15 +1,15 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/08/2020
-ms.author: trbye
-ms.openlocfilehash: 905eacc3751b3d5d6c66a2fdb0e1391a747ab895
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: lajanuar
+ms.openlocfilehash: 06499883236d0f893e05134441265964a76648e3
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91327009"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071147"
 ---
 语音服务的核心功能之一是能够识别并转录人类语音（通常称为语音转文本）。 本快速入门介绍如何在应用和产品中使用语音 CLI 来执行高质量的语音转文本转换。
 

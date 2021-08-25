@@ -4,15 +4,16 @@ description: 了解必须允许来自哪些 IP 地址的入站流量，以便正
 ms.author: lle
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: 872a8b0124a8ad1c86b201ca90b391d03bb76921
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: e1e8a1429e853a652d3fe6a08ec7571547c56399
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485956"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638995"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime IP 地址
 

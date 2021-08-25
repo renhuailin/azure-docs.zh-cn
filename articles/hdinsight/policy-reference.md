@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight 的内置策略定义
 description: 列出 Azure HDInsight 的 Azure Policy 内置策略定义。 这些内置的策略定义提供了管理 Azure 资源的常用方法。
-ms.date: 08/13/2021
+ms.date: 08/20/2021
 ms.topic: reference
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 26429ba751f3e5f36cc9600def51a3e50c120d95
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 11c9ca96dca450eafdd1f25b78870904976e1d46
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182807"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606778"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-hdinsight"></a>Azure HDInsight 的 Azure Policy 内置定义
 
