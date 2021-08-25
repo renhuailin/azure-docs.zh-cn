@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/15/2021
-ms.openlocfilehash: 398f17c59e9d67c68bbbe411852f909f34acc216
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 6387b07aa29a836eae79b6090571f143091d2115
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111981685"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749504"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>快速入门：使用 Azure CLI 创建 Azure Managed Instance for Apache Cassandra 群集（预览版）
 
@@ -119,7 +119,7 @@ Azure Managed Instance for Apache Cassandra 为托管的开源 Apache Cassandra 
 
 ## <a name="connect-to-your-cluster"></a>连接到群集
 
-Azure Managed Instance for Apache Cassandra 不会创建具有公共 IP 地址的节点。 若要连接到新创建的 Cassandra 群集，必须在虚拟网络中另外创建一个资源。 此资源可以是应用程序，也可以是安装了 Apache 开源查询工具 [CQLSH](https://cassandra.apache.org/doc/latest/tools/cqlsh.html) 的虚拟机。 你可使用[资源管理器模板](https://azure.microsoft.com/resources/templates/vm-simple-linux/)来部署 Ubuntu 虚拟机。 部署后，使用 SSH 连接到该虚拟机并安装 CQLSH，如以下命令中所示：
+Azure Managed Instance for Apache Cassandra 不会创建具有公共 IP 地址的节点。 若要连接到新创建的 Cassandra 群集，必须在虚拟网络中另外创建一个资源。 此资源可以是应用程序，也可以是安装了 Apache 开源查询工具 [CQLSH](https://cassandra.apache.org/doc/latest/cassandra/tools/cqlsh.html) 的虚拟机。 你可使用[资源管理器模板](https://azure.microsoft.com/resources/templates/vm-simple-linux/)来部署 Ubuntu 虚拟机。 部署后，使用 SSH 连接到该虚拟机并安装 CQLSH，如以下命令中所示：
 
 ```bash
 # Install default-jre and default-jdk

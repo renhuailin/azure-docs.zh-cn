@@ -2,21 +2,21 @@
 title: 专用 SQL 池中的 T-SQL 语句
 description: 指向 Azure Synapse Analytics 中专用 SQL 池支持的 T-SQL 语句的相关文档的链接。
 services: synapse-analytics
-author: XiaoyuMSFT
+author: WilliamDAssafMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 05/01/2019
-ms.author: xiaoyul
+ms.author: wiassaf
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 1d565d358b055eeb01ddcbbb733c34c439353ea4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ccc53d172c7157754035d3b2f5781787c0ed8e8
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98683028"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634575"
 ---
 # <a name="t-sql-statements-supported-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中专用 SQL 池支持的 T-SQL 语句 
 

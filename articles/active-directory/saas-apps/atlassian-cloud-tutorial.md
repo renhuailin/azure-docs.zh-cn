@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/20/2021
+ms.date: 07/29/2021
 ms.author: jeedes
-ms.openlocfilehash: 06df04167cd39b8909528b600319be810e549730
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a6f647e7aed23766e62546497a6065efd7bd3985
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114449186"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730786"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>教程：将 Atlassian Cloud 与 Azure Active Directory 集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "114449186"
 * 让用户使用其 Azure AD 帐户自动登录到 Atlassian Cloud。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -96,10 +96,6 @@ ms.locfileid: "114449186"
 1. 在“ATLASSIAN 管理门户”中，转至“安全性”选项卡，选择“SAML单一登录”，然后单击“添加 SAML 配置”。   
 
    ![安全性](./media/atlassian-cloud-tutorial/admin.png)
-
-1. 在“添加 SAML 配置”部分中，从配置文件复制信息，粘贴至 Microsoft Azure 门户的必填字段，单击“保存配置”。 
-
-   ![添加 SAML 配置](./media/atlassian-cloud-tutorial/configuration.png)
 
 1. 在 Azure 门户的 Atlassian Cloud 应用程序集成页上，找到“管理”部分并选择“设置单一登录”  。
 
@@ -200,7 +196,7 @@ ms.locfileid: "114449186"
 1. 选择屏幕顶部的“新建用户”。
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com` 。
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
@@ -210,7 +206,7 @@ ms.locfileid: "114449186"
 
 1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
 1. 在应用程序列表中，选择“Atlassian Cloud”。 
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
 1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
 1. 如果你希望将某角色分配给用户，可以从“选择角色”下拉列表中选择该角色。 如果尚未为此应用设置任何角色，你将看到选择了“默认访问权限”角色。

@@ -1,18 +1,20 @@
 ---
 title: 从 MongoDB 复制数据或将数据复制到其中
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 MongoDB 复制到支持的接收器数据存储，或者从支持的源数据存储复制到 MongoDB。
-author: jianleishen
-ms.author: jianleishen
+ms.author: chez
+author: chez-charlie
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019; seo-dt-2019
+ms.custom: synapse
 ms.date: 06/01/2021
-ms.openlocfilehash: c566b3d13a58b1ad6095f9e2443e10d6db33dedb
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 3a555f92fb210516ce7fa010e39df339c3823bf0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111749520"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638438"
 ---
 # <a name="copy-data-from-or-to-mongodb-by-using-azure-data-factory"></a>通过使用 Azure 数据工厂从 MongoDB 复制数据或将数据复制到其中
 
@@ -47,7 +49,7 @@ ms.locfileid: "111749520"
 
 MongoDB 链接的服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type |type 属性必须设置为：MongoDbV2  |是 |
 | connectionString |指定 MongoDB 连接字符串，例如 `mongodb://[username:password@]host[:port][/[database][?options]]`。 请参阅 [MongoDB 连接字符串手册](https://docs.mongodb.com/manual/reference/connection-string/)获取详细信息。 <br/><br /> 还可以将连接字符串置于 Azure Key Vault 中。 有关更多详细信息，请参阅[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
@@ -77,7 +79,7 @@ MongoDB 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 MongoDB 数据集支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：MongoDbV2Collection  | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
@@ -110,7 +112,7 @@ MongoDB 链接的服务支持以下属性：
 
 复制活动 **source** 部分支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：MongoDbV2Source  | 是 |
 | filter | 使用查询运算符指定选择筛选器。 若要返回集合中的所有文档，请省略此参数或传递空文档 ({})。 | 否 |
@@ -165,7 +167,7 @@ MongoDB 链接的服务支持以下属性：
 
 复制活动 **sink** 节支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的“type”属性必须设置为“MongoDbV2Sink” 。 |是 |
 | writeBehavior |介绍如何将数据写入 MongoDB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 `_id` 的文档，则替换该文档；否则将插入该文档。<br /><br />备注：如果未在原始文档中或通过列映射指定 `_id`，则数据工厂会自动为文档生成 `_id`。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |

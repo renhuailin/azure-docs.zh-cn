@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/04/2021
 ms.author: pafarley
-ms.openlocfilehash: d98b71680e8be744b52f5060cc9be38366963fd6
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 4a44e65a4cda79a07c3fb94231945aa1dd1654e3
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593972"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442498"
 ---
 [参考文档](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices) | [包 (PyPi)](https://pypi.org/project/azure-mgmt-cognitiveservices/) | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices/tests)
 
@@ -21,6 +21,7 @@ ms.locfileid: "111593972"
 
 * 一个有效的 Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。
 * [Python 3.x](https://www.python.org/)
+* [!INCLUDE [contributor-requirement](./contributor-requirement.md)]
 * [!INCLUDE [terms-azure-portal](./terms-azure-portal.md)]
 
 [!INCLUDE [Create a service principal](./create-service-principal.md)]

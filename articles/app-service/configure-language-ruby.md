@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: b71b6867221a2cae6bf5b8751a848413b6f8d20a
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 2998d6deaa2a070d0811d1e0f2438c2afe0ead08
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112963773"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734444"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Ruby 应用
 
@@ -149,10 +149,8 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 [!INCLUDE [robots933456](../../includes/app-service-web-configure-robots933456.md)]
 
-## <a name="next-steps"></a>后续步骤
+## <a name="more-resources"></a>更多资源
 
-> [!div class="nextstepaction"]
-> [教程：使用 PostgreSQL 的 Rails 应用](tutorial-ruby-postgres-app.md)
-
-> [!div class="nextstepaction"]
-> [应用服务 Linux 常见问题解答](faq-app-service-linux.yml)
+- [教程：使用 PostgreSQL 的 Rails 应用](tutorial-ruby-postgres-app.md)
+- [应用服务 Linux 常见问题解答](faq-app-service-linux.yml)
+- [环境变量和应用设置参考](reference-app-settings.md)

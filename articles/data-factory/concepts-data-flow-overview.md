@@ -4,15 +4,16 @@ description: Azure 数据工厂中的映射数据流的概述
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 05/20/2021
-ms.openlocfilehash: ef0639637736b0a8b4f41d6fd038de81a8e94a69
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8e10ede945f60ee693738ab7230a2c50b5bcb972
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454953"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638640"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure 数据工厂中的映射数据流
 
@@ -32,11 +33,11 @@ ms.locfileid: "110454953"
 
 此操作将转到数据流画布，你可在其中创建转换逻辑。 选择“添加源”，开始配置源转换。 有关详细信息，请参阅[源转换](data-flow-source.md)。
 
-## <a name="authoring-data-flows&quot;></a>创作数据流
+## <a name="authoring-data-flows"></a>创作数据流
 
 映射数据流具有独特的创作画布，旨在简化生成转换逻辑。 数据流画布分为三个部分：顶部栏、图形和配置面板。 
 
-![屏幕截图显示数据流画布，其中标记了顶部栏、图形和配置面板。](media/data-flow/canvas-1.png &quot;画布")
+![屏幕截图显示数据流画布，其中标记了顶部栏、图形和配置面板。](media/data-flow/canvas-1.png "画布")
 
 ### <a name="graph"></a>图形
 

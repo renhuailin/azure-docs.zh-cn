@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 195a0bfa-dff1-429b-b030-19ca95ee6abe
 ms.date: 06/08/2021
-ms.openlocfilehash: e640f65707fd4ae8745426e00253cbc9c66192ee
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 7c61422a301c32f6ccb9c24779a9f304991a6c7b
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114285825"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772805"
 ---
 # <a name="red-hat-jboss-eap-on-azure-best-practices"></a>Azure 上的 Red Hat JBoss EAP 最佳做法
 
@@ -61,7 +61,7 @@ JBoss EAP 为 HA 群集、消息和分布式缓存等功能提供预先配置的
 
 创建将在 Microsoft Azure 环境中托管 JBoss EAP 实例的虚拟机。 使用 Standard_A2 或更高规格的 Azure 虚拟机大小。 可以使用 Azure 按需 PAYG 高级映像创建虚拟机，也可手动创建自己的虚拟机。 例如，可以按如下所示部署 RHEL 虚拟机：
 
-* 在 Azure 中使用按需 Marketplace RHEL 映像 - Azure 市场中提供了多个产品/服务，可在其中选择要设置 JBoss EAP 的 RHEL 虚拟机。 请访问[从 Azure 市场部署 RHEL 8 虚拟机](https://access.redhat.com/documentation//red_hat_enterprise_linux/8/html/deploying_red_hat_enterprise_linux_8_on_public_cloud_platforms/assembly_deploying-a-rhel-image-as-a-virtual-machine-on-microsoft-azure_cloud-content)。 在 Azure 市场中，可以通过两种方式来选择 RHEL 操作系统许可。 通过 Red Hat 黄金映像模型，选择“PAYG”或“自带订阅 (BYOS)”。 请注意，如果已使用 PAYG 计划部署 RHEL 虚拟机，则仅使用 JBoss EAP 订阅详细信息来向 Red Hat 订阅中订阅生成的部署。
+* 在 Azure 中使用按需 Marketplace RHEL 映像 - Azure 市场中提供了多个产品/服务，可在其中选择要设置 JBoss EAP 的 RHEL 虚拟机。 请访问[从 Azure 市场部署 RHEL 8 虚拟机](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/deploying_red_hat_enterprise_linux_8_on_public_cloud_platforms/assembly_deploying-a-rhel-image-as-a-virtual-machine-on-microsoft-azure_cloud-content)。 在 Azure 市场中，可以通过两种方式来选择 RHEL 操作系统许可。 通过 Red Hat 黄金映像模型，选择“PAYG”或“自带订阅 (BYOS)”。 请注意，如果已使用 PAYG 计划部署 RHEL 虚拟机，则仅使用 JBoss EAP 订阅详细信息来向 Red Hat 订阅中订阅生成的部署。
 
 * [手动创建和预配 Azure 的 RHEL 映像](https://access.redhat.com/articles/uploading-rhel-image-to-azure)。 使用 RHEL 每个主版本的最新次要版本。
 
@@ -81,9 +81,9 @@ JBoss EAP 为 HA 群集、消息和分布式缓存等功能提供预先配置的
 > [!IMPORTANT]
 > 可以通过多种不同的方式来安装 JBoss EAP。 在特定情况下，适用的最佳方法各不相同。 如果使用 Microsoft Azure 市场中的 RHEL 按需虚拟机，请使用 ZIP 或安装程序方法安装 JBoss EAP。 **不要向 Red Hat 订阅管理 (RHSM) 注册 RHEL 按需虚拟机，因为该虚拟机使用的是 PAYG 计费方法，这样会针对该虚拟机向你收费两次。
 
-* **ZIP 安装** - ZIP 存档适用于在所有受支持的操作系统上安装。 如果希望手动提取实例，则应使用 ZIP 安装方法。 ZIP 安装将提供 JBoss EAP 的默认安装，以及要在安装之后完成的所有配置。 如果计划使用 JBoss Operations Network(ON) 服务器部署和安装 JBoss EAP 补丁，则应该使用 ZIP 安装方法安装目标 JBoss EAP 实例。 有关更多详细信息，请查看 [ZIP 安装](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/html-single/installation_guide/index#zip_installation)。
+* **ZIP 安装** - ZIP 存档适用于在所有受支持的操作系统上安装。 如果希望手动提取实例，则应使用 ZIP 安装方法。 ZIP 安装将提供 JBoss EAP 的默认安装，以及要在安装之后完成的所有配置。 如果计划使用 JBoss Operations Network(ON) 服务器部署和安装 JBoss EAP 补丁，则应该使用 ZIP 安装方法安装目标 JBoss EAP 实例。 有关更多详细信息，请查看 [ZIP 安装](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html-single/installation_guide/index#zip_installation)。
 
-* **JAR 安装程序** - JAR 安装程序可以在控制台中运行，也可以作为图形向导运行。 这两个选项都提供了安装和配置服务器实例的分步说明。 JAR 安装程序是在所有受支持的平台上安装 JBoss EAP 的首选方法。 有关检查 [JAR 安装程序安装](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/html-single/installation_guide/index#installer_installation)的详细信息。
+* **JAR 安装程序** - JAR 安装程序可以在控制台中运行，也可以作为图形向导运行。 这两个选项都提供了安装和配置服务器实例的分步说明。 JAR 安装程序是在所有受支持的平台上安装 JBoss EAP 的首选方法。 有关检查 [JAR 安装程序安装](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html-single/installation_guide/index#installer_installation)的详细信息。
 
 * **RPM 安装** - 在 RHEL6、RHEL7 和 RHEL8 受支持的安装上，可以使用 RPM 包来安装 JBoss EAP。 计划在 Azure 上的 RHEL 虚拟机上自动安装 EAP 时，RPM 安装方法最适合。 JBoss EAP 的 RPM 安装会安装作为服务运行 JBoss EAP 所需的所有内容。 有关检查 [RPM 安装](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.3/html-single/installation_guide/index#rpm_installation)的详细信息。
 
@@ -136,7 +136,7 @@ Red Hat 和 Microsoft 进行了合作，将一组 Azure 解决方案模板引入
 
 ## <a name="configuring-jboss-eap-to-work-on-cloud-platforms"></a>配置 JBoss EAP 以在云平台上工作
 
-在虚拟机中安装了 JBoss EAP 之后，便可以将 JBoss EAP 配置为作为服务运行。 如何将 JBoss EAP 配置为作为服务运行取决于 JBoss EAP 的安装方法和虚拟机 OS 类型。 请注意，JBoss EAP 的 RPM 安装会安装作为服务运行 JBoss EAP 所需的所有内容。 有关详细信息，请参阅[将 JBoss EAP 配置为作为服务运行](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/html-single/installation_guide/index#configuring_jboss_eap_to_run_as_a_service)。
+在虚拟机中安装了 JBoss EAP 之后，便可以将 JBoss EAP 配置为作为服务运行。 如何将 JBoss EAP 配置为作为服务运行取决于 JBoss EAP 的安装方法和虚拟机 OS 类型。 请注意，JBoss EAP 的 RPM 安装会安装作为服务运行 JBoss EAP 所需的所有内容。 有关详细信息，请参阅[将 JBoss EAP 配置为作为服务运行](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html-single/installation_guide/index#configuring_jboss_eap_to_run_as_a_service)。
 
 ### <a name="starting-and-stopping-jboss-eap"></a>启动和停止 JBoss EAP
 
@@ -155,13 +155,13 @@ RHEL 和 Windows Server 上均支持 JBoss EAP，并且仅在独立服务器操�
     ```
 用于启动 JBoss EAP（通过 ZIP 或安装程序方法进行安装）的启动脚本使用 `EAP_HOME/bin/standalone.conf` 文件，对于 Windows Server，则使用 `standalone.conf.bat` 来设置一些默认首选项，如 JVM 选项。 自定义此文件中的设置。 JBoss EAP 默认使用 `standalone.xml` 配置文件，但也可以使用其他配置文件启动。 要更改用于启动通过 RPM 方法安装的 JBoss EAP 的默认配置文件，请使用 `/etc/opt/rh/eap7/wildfly/eap7-standalone.conf`。 使用相同的 eap7-standalone.conf 文件进行其他配置更改，例如 WildFly 绑定地址。
 
-有关可用的独立配置文件及其使用方法的详细信息，请查看[独立服务器配置文件](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/html-single/configuration_guide/index#standalone_server_configuration_files)。
+有关可用的独立配置文件及其使用方法的详细信息，请查看[独立服务器配置文件](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html-single/configuration_guide/index#standalone_server_configuration_files)。
 
 若要使用不同的配置启动 JBoss EAP，请使用 --server-config 参数。 有关所有可用启动脚本参数及其用途的完整列表，请使用 --help 参数或查看[服务器运行时参数](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.3/html-single/configuration_guide/index#reference_of_switches_and_arguments_to_pass_at_server_runtime)
 
 #### <a name="stopping-jboss-eap"></a>停止 JBoss EAP
 
-停止 JBoss EAP 的方式取决于其启动方式。 在 JBoss EAP 启动的终端中按下 `Ctrl+C` 以停止 JBoss EAP 的交互式实例。 要停止 JBoss EAP 的后台实例，请使用管理 CLI 连接到正在运行的实例并关闭服务器。 有关更多详细信息，请查看[停止 JBoss EAP](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/html-single/configuration_guide/index#stopping_jboss_eap)。
+停止 JBoss EAP 的方式取决于其启动方式。 在 JBoss EAP 启动的终端中按下 `Ctrl+C` 以停止 JBoss EAP 的交互式实例。 要停止 JBoss EAP 的后台实例，请使用管理 CLI 连接到正在运行的实例并关闭服务器。 有关更多详细信息，请查看[停止 JBoss EAP](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html-single/configuration_guide/index#stopping_jboss_eap)。
 
 与 ZIP 或安装程序安装相比，针对 RPM 安装，JBoss EAP 的停止方式有所不同。 用于停止 JBoss EAP 的 RPM 安装的命令取决于要启动的操作模式以及正在运行的 RHEL 版本。 独立模式仅在 Azure 中受支持。 
 
@@ -173,15 +173,15 @@ RHEL 和 Windows Server 上均支持 JBoss EAP，并且仅在独立服务器操�
 
 ### <a name="configuring-jboss-eap-subsystems-to-work-on-cloud-platforms"></a>配置 JBoss EAP 子系统以在云平台上工作
 
-向部署到 JBoss EAP 的应用程序公开的许多 API 和功能都组织到子系统中。 管理员可以将这些子系统配置为提供不同的行为，具体取决于应用程序的目标。 有关子系统的更多详细信息，请查看 [JBoss EAP 子系统](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/html-single/configuration_guide/index#jboss_eap_subsystems)。
+向部署到 JBoss EAP 的应用程序公开的许多 API 和功能都组织到子系统中。 管理员可以将这些子系统配置为提供不同的行为，具体取决于应用程序的目标。 有关子系统的更多详细信息，请查看 [JBoss EAP 子系统](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html-single/configuration_guide/index#jboss_eap_subsystems)。
 
-某些 JBoss EAP 子系统需要特定配置才能在云平台上正常运行。 由于 JBoss EAP 服务器绑定到云虚拟机的专用 IP 地址，因此需要某种配置。 专用 IP 仅在云平台中可见。 对于某些子系统，专用 IP 地址需要映射到服务器的公共 IP 地址，可以从云外部看到这些公共 IP 地址。 要详细了解如何修改这些子系统，请查看[配置 JBoss EAP 子系统以在云平台上运行](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/html-single/using_jboss_eap_in_microsoft_azure/index#configuring_subsystems_for_cloud_platforms)
+某些 JBoss EAP 子系统需要特定配置才能在云平台上正常运行。 由于 JBoss EAP 服务器绑定到云虚拟机的专用 IP 地址，因此需要某种配置。 专用 IP 仅在云平台中可见。 对于某些子系统，专用 IP 地址需要映射到服务器的公共 IP 地址，可以从云外部看到这些公共 IP 地址。 要详细了解如何修改这些子系统，请查看[配置 JBoss EAP 子系统以在云平台上运行](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html-single/using_jboss_eap_in_microsoft_azure/index#configuring_subsystems_for_cloud_platforms)
 
 ## <a name="using-jboss-eap-high-availability-in-microsoft-azure"></a>在 Microsoft Azure 中使用 JBoss EAP 高可用性
 
 Azure 不支持基于 UDP 多播的 JGroups 发现协议。 默认情况下，JGroup 使用 UDP 堆栈，请确保将堆栈更改为 TCP，因为 Azure 不支持 UDP。 尽管可以使用 TCPPING、JDBC_PING 等其他 JGroups 发现协议，但建议使用为 Azure 开发的共享文件发现协议，也就是 *Azure_PING*。
 
-*AZURE_PING* 在 Microsoft Azure 存储帐户中使用通用 Blob 容器。 如果您还没有 AZURE_PING 可以使用的 Blob 容器，请创建一个虚拟机可以访问的 Blob 容器。 有关更多信息，请查看[在 Microsoft Azure 中配置 JBoss EAP 高可用性](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/html-single/using_jboss_eap_in_microsoft_azure/index#using_jboss_eap_high_availability_in_microsoft_azure)。
+*AZURE_PING* 在 Microsoft Azure 存储帐户中使用通用 Blob 容器。 如果您还没有 AZURE_PING 可以使用的 Blob 容器，请创建一个虚拟机可以访问的 Blob 容器。 有关更多信息，请查看[在 Microsoft Azure 中配置 JBoss EAP 高可用性](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html-single/using_jboss_eap_in_microsoft_azure/index#using_jboss_eap_high_availability_in_microsoft_azure)。
 
 为 JBoss EAP 配置负载均衡环境。 确保所有均衡器和工作程序都绑定到内部 Microsoft Azure 虚拟网络 (VNet) 中的可访问 IP 地址。 有关负载均衡配置的详细信息，请查看[在 Microsoft Azure 中安装和配置 Red Hat Enterprise Linux 7.4（和更高版本）高可用性群集](https://access.redhat.com/articles/3252491)。
 
@@ -203,13 +203,13 @@ Azure 不支持基于 UDP 多播的 JGroups 发现协议。 默认情况下，JG
 
 ## <a name="optimizing-the-jboss-eap-server-configuration"></a>优化 JBoss EAP 服务器配置
 
-安装 JBoss EAP 服务器并创建管理用户后，可以优化服务器配置。 请确保在[性能优化指南](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/html-single/performance_tuning_guide/index)中查看有关如何优化服务器配置并避免在生产环境中部署应用程序时出现的常见问题的信息
+安装 JBoss EAP 服务器并创建管理用户后，可以优化服务器配置。 请确保在[性能优化指南](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html-single/performance_tuning_guide/index)中查看有关如何优化服务器配置并避免在生产环境中部署应用程序时出现的常见问题的信息
 
 ## <a name="resource-links-and-support"></a>资源链接和支持
 
 有关任何与支持相关的疑问、问题或自定义要求，请联系 [Red Hat 支持](https://access.redhat.com/support)或 [Microsoft Azure 支持](https://ms.portal.azure.com/?quickstart=true#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
 
-* 详细了解 [JBoss EAP](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/html/getting_started_with_jboss_eap_for_openshift_online/introduction)
+* 详细了解 [JBoss EAP](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3/html/getting_started_with_jboss_eap_for_openshift_online/index)
 * Red Hat 订阅管理器 (RHSM) [Cloud Access](https://access.redhat.com/documentation/en/red_hat_subscription_management/1/html-single/red_hat_cloud_access_reference_guide/index)
 * [Azure Red Hat OpenShift (ARO)](https://azure.microsoft.com/services/openshift/)
 * [Azure 上的 Red Hat](./overview.md) 的 Microsoft Docs

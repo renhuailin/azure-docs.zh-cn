@@ -2,19 +2,18 @@
 title: 教程 - 使用 Azure PowerShell 为 Azure IoT 中心配置消息路由
 description: 教程 - 使用 Azure PowerShell 为 Azure IoT 中心配置消息路由。 根据消息中的属性，路由到存储帐户或服务总线队列。
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: be1560bcc03ec7a26f4bc374392c746243cd731a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10a7a3435dcc31c6694b7b88316bb59c1c2e45cc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98624066"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727776"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>教程：使用 Azure PowerShell 配置 IoT 中心消息路由
 

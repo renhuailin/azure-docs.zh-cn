@@ -8,14 +8,16 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: bb38b72af6e7c649c0904c41d3052b15a4c36955
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3a2f51d0d15ebd00335f7685d3983e527a3e8b7d
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770050"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643095"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 PHP (Laravel) 应用和 MySQL 灵活服务器（预览版）
+
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 
 :::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Azure 中的 PHP Web 应用与灵活服务器":::
@@ -35,7 +37,7 @@ ms.locfileid: "107770050"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 1. [安装 Git](https://git-scm.com/)
 2. [安装 PHP 5.6.4 或更高版本](https://php.net/downloads.php)
@@ -132,7 +134,7 @@ php artisan key:generate
 php artisan serve
 ```
 
-在浏览器中导航到 `http://localhost:8000`。 在页面中添加一些任务。
+在浏览器中导航至 `http://localhost:8000` 。 在页面中添加一些任务。
 
 :::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP 已成功连接到 MySQL":::
 
@@ -146,7 +148,7 @@ az mysql flexible-server create  --resource-group myResourceGroup --public-acces
 ```
 
 > [!IMPORTANT]
-> - 记下服务器名和连接字符串，以在下一步中使用它来连接和运行 laravel 数据迁移 。
+>- 记下服务器名和连接字符串，以在下一步中使用它来连接和运行 laravel 数据迁移 。
 > - 对于 IP 地址参数，请提供客户端计算机的 IP。 服务器在创建时处于锁定状态，你需要允许对客户端计算机的访问才能在本地管理该服务器。
 
 ### <a name="configure-server-firewall-to-allow-web-app-to-connect-to-the-server"></a>配置服务器防火墙以允许 Web 应用连接到服务器

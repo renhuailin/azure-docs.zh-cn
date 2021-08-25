@@ -3,7 +3,6 @@ title: 教程 - 使用 Azure IoT Edge 的自定义 Java 模块教程
 description: 本教程介绍如何使用 Java 代码创建 IoT Edge 模块并将其部署到边缘设备。
 services: iot-edge
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 3c3dae7cb64dd6c2e13c77c061c770bd787e2f06
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 437cb7c751b5cbc4c7f85dc3c20da3de28f29d1c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438127"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726436"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-using-linux-containers"></a>教程：使用 Linux 容器开发 Java IoT Edge 模块
 
@@ -82,7 +81,7 @@ ms.locfileid: "113438127"
    | 提供解决方案名称 | 输入解决方案的描述性名称，或者接受默认的 **EdgeSolution**。 |
    | 选择模块模板 | 选择“Java 模块”。 |
    | 提供模块名称 | 将模块命名为 **JavaModule**。 |
-   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是基于你在上一步中提供的名称预先填充的。 将 localhost:5000 替换为 Azure 容器注册表中的“登录服务器”值 。 可以在 Azure 门户的容器注册表的“概述”页中检索登录服务器。 <br><br>最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/javamodule。 |
+   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是基于你在上一步中提供的名称预先填充的。 将 localhost:5000 替换为 Azure 容器注册表中的“登录服务器”值。 可以在 Azure 门户的容器注册表的“概述”页中检索登录服务器。 <br><br>最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/javamodule。 |
    | 为 groupId 提供值 | 输入组 ID 值或接受默认的 **com.edgemodule**。 |
 
    ![提供 Docker 映像存储库](./media/tutorial-java-module/repository.png)
