@@ -1,16 +1,16 @@
 ---
-author: trevorbye
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/22/2020
-ms.author: trbye
-ms.openlocfilehash: dc569050b78a5797808f2e2e000019ba516ba22e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: lajanuar
+ms.openlocfilehash: 2c134e409643951a5594c276dd34da23535543f9
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97739224"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122066230"
 ---
 **交互式**
 - 适用于命令和控制方案。

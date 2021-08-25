@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/15/2020
 ms.custom: devx-track-java
-ms.author: erhopf
-ms.openlocfilehash: d5780c6ad924e8a6517837dff23e3a4e7ae4d0e1
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.author: lajanuar
+ms.openlocfilehash: 3ae4b6cd241e798305f2e8d1ce3acd61a32d337a
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111545888"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122070000"
 ---
 本指南介绍如何安装用于 64 位 Java 8 JRE 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。 如果只是需要包名称以便自行开始，那么请知悉在 Maven 中央存储库中未提供 Java SDK。 无论是使用 Gradle 还是 `pom.xml` 依赖项文件，都需要添加指向 `https://csspeechstorage.blob.core.windows.net/maven/` 的自定义存储库（请参阅下文了解包名称）。
 
@@ -44,7 +44,7 @@ ms.locfileid: "111545888"
 
 ## <a name="gradle-config"></a>Gradle 配置
 
-Gradle 配置既需要自定义存储库，也需要显式引用依赖项扩展 `.jar`。 
+Gradle 配置既需要自定义存储库，也需要显式引用依赖项扩展 `.jar`。
 
 ```groovy
 // build.gradle
@@ -56,7 +56,7 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'com.microsoft.cognitiveservices.speech', name: 'client-sdk', version: "1.17.0", ext: "jar"
+    implementation group: 'com.microsoft.cognitiveservices.speech', name: 'client-sdk', version: "1.18.0", ext: "jar"
 }
 ```
 

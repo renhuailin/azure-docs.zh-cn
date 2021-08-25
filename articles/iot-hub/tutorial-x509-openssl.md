@@ -2,7 +2,6 @@
 title: 教程 - 使用 OpenSSL 为 Azure IoT 中心创建 X.509 测试证书 | Microsoft Docs
 description: 教程 - 使用 OpenSSL 为 Azure IoT 中心创建 CA 和设备证书
 author: v-gpettibone
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: e4f2aa51b3cee5d63c543ce94eddf7d132f72ded
-ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
+ms.openlocfilehash: 7985879b54fe840ec47d72595d95547aa062938b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114371784"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724301"
 ---
 # <a name="tutorial-using-openssl-to-create-test-certificates"></a>教程：使用 OpenSSL 创建测试证书
 

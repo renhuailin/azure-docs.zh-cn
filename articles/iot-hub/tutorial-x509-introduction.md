@@ -2,7 +2,6 @@
 title: 教程 - 了解 Azure IoT 中心的加密和 X.509 证书 | Microsoft Docs
 description: 教程 - 了解 Azure IoT 中心的加密和 X.509 PKI
 author: v-gpettibone
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 2c375a02f534572826e1ebd6b8549e59f6e83640
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 096d7bb1ca05f3d49c0b5c93751238f41e724ec6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378374"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724396"
 ---
 # <a name="tutorial-understanding-public-key-cryptography-and-x509-public-key-infrastructure"></a>教程：了解公钥加密和 X.509 公钥基础结构
 
@@ -130,7 +129,7 @@ ms.locfileid: "107378374"
 如果你已经详细了解 X.509 证书，想要生成可用于向 IoT 中心进行身份验证的测试版本，请参阅以下主题：
 
 * [使用 Microsoft 提供的脚本来创建测试证书](tutorial-x509-scripts.md)
-* [使用 OpenSSL 来创建测试证书](tutorial-x509-openssl.md)
-* [使用 OpenSSL 来创建自签名测试证书](tutorial-x509-self-sign.md)
+* [使用 OpenSSL 创建测试证书](tutorial-x509-openssl.md)
+* [使用 OpenSSL 创建自签名测试证书](tutorial-x509-self-sign.md)
 
-如果你有证书颁发机构 (CA) 证书或从属 CA 证书，想要将其上传到 IoT 中心并证明你拥有该证书，请参阅[证明对 CA 证书的所有权](tutorial-x509-prove-possession.md)。
+如果你有证书颁发机构 (CA) 证书或从属 CA 证书，并且想要将其上传到 IoT 中心并证明自己拥有该证书，请参阅[证明对 CA 证书的所有权](tutorial-x509-prove-possession.md)。
