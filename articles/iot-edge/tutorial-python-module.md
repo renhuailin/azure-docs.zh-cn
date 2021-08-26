@@ -3,19 +3,18 @@ title: 教程 - 使用 Azure IoT Edge 的自定义 Python 模块教程
 description: 本教程介绍如何使用 Python 代码创建 IoT Edge 模块并将其部署到边缘设备。
 services: iot-edge
 author: kgremban
-manager: philmea
 ms.reviewer: kgremban
 ms.author: kgremban
 ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4f1b9c225d0f28e7e7c6c222fcca475c05dd26fd
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: ca31b4ed8cbc7a6328daf468c3a026665a801f1f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438061"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726369"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-using-linux-containers"></a>教程：使用 Linux 容器开发和部署 Python IoT Edge 模块
 
@@ -86,7 +85,7 @@ IoT Edge 不支持使用 Windows 容器的 Python 模块。
    | 提供解决方案名称 | 输入解决方案的描述性名称，或者接受默认的 **EdgeSolution**。 |
    | 选择模块模板 | 选择“Python 模块”。  |
    | 提供模块名称 | 将模块命名为 **PythonModule**。 |
-   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是基于你在上一步中提供的名称预先填充的。 将 localhost:5000 替换为 Azure 容器注册表中的“登录服务器”值 。 可以在 Azure 门户的容器注册表的“概述”页中检索登录服务器。 <br><br>最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/pythonmodule。 |
+   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是基于你在上一步中提供的名称预先填充的。 将 localhost:5000 替换为 Azure 容器注册表中的“登录服务器”值。 可以在 Azure 门户的容器注册表的“概述”页中检索登录服务器。 <br><br>最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/pythonmodule。 |
 
    ![提供 Docker 映像存储库](./media/tutorial-python-module/repository.png)
 

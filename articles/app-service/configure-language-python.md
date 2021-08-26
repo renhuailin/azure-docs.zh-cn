@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 06/11/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 333f9572e9bf5a24e7c9ac230b10f74adf5be7de
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 99985e3ff0f6c856b04fff4a0b4d31d2c5b7af2a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112963791"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752451"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Python 应用
 
@@ -296,7 +296,7 @@ gunicorn --bind=0.0.0.0 --timeout 600 app:app
 
     有关详细信息，请参阅 [Gunicorn 日志记录](https://docs.gunicorn.org/en/stable/settings.html#logging) (docs.gunicorn.org)。
     
-- **自定义 Flask 主模块**：默认情况下，应用服务假定 Flask 应用的主模块是 application.py 或 app.py 。 如果主模块使用其他名称，则必须自定义启动命令。 例如，如果 Flask 应用的主模块是 hello.py，而该文件中的 Flask 应用对象名为 `myapp`，则命令如下所示：
+- **自定义 Flask 主模块**：默认情况下，应用服务假定 Flask 应用的主模块是 application.py 或 app.py 。 如果主模块使用其他名称，则必须自定义启动命令。 例如，如果 Flask 应用的主模块是 *hello.py*，而该文件中的 Flask 应用对象名为 `myapp`，则命令如下所示：
 
     ```bash
     gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -431,13 +431,9 @@ if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto
 
 - **你看到消息“致命错误: 需要建立 SSL 连接”** ：检查任何用于从应用内部访问资源（如数据库）的用户名和密码。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="more-resources"></a>更多资源：
 
-> [!div class="nextstepaction"]
-> [教程：使用 PostgreSQL 的 Python 应用](tutorial-python-postgresql-app.md)
-
-> [!div class="nextstepaction"]
-> [教程：从专用容器存储库进行部署](tutorial-custom-container.md?pivots=container-linux)
-
-> [!div class="nextstepaction"]
-> [应用服务 Linux 常见问题解答](faq-app-service-linux.yml)
+- [教程：使用 PostgreSQL 的 Python 应用](tutorial-python-postgresql-app.md)
+- [教程：从专用容器存储库进行部署](tutorial-custom-container.md?pivots=container-linux)
+- [应用服务 Linux 常见问题解答](faq-app-service-linux.yml)
+- [环境变量和应用设置参考](reference-app-settings.md)

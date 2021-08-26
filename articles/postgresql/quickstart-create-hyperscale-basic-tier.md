@@ -7,24 +7,19 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 04/07/2021
-ms.openlocfilehash: 07ace217e5299662a1c3145a225abc25f4f1f337
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 08/03/2021
+ms.openlocfilehash: 88bf816ca5cad294a7ab0592c80420f20ade4ed5
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107023824"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728716"
 ---
 # <a name="create-a-hyperscale-citus-basic-tier-server-group-in-the-azure-portal"></a>在 Azure 门户中创建超大规模 (Citus) 基本层服务器组
 
 Azure Database for PostgreSQL - 超大规模 (Citus) 是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 PostgreSQL 数据库。 其[基本层](concepts-hyperscale-tiers.md)是一种用于初始开发和测试的便捷部署选项。
 
 本快速入门介绍如何使用 Azure 门户创建超大规模 (Citus) 基本层服务器组。 你将预配服务器组，并验证能否连接到该服务器组来运行查询。
-
-> [!IMPORTANT]
-> 超大规模 (Citus) 基本层目前以预览版提供。  此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
->
-> 请参阅[超大规模 (Citus) 的预览功能](hyperscale-preview-features.md)，以查看其他新功能的完整列表。
 
 [!INCLUDE [azure-postgresql-hyperscale-create-basic-tier](../../includes/azure-postgresql-hyperscale-create-basic-tier.md)]
 

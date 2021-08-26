@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 306a8d78caf36291573d021ed1d814aa4f7a2164
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: af829349ba5fe4b6ad2bf9e443eb780e926da565
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642769"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751278"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>教程：保护 Azure SQL 数据库中的数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -206,7 +206,7 @@ Azure Active Directory 身份验证要求将数据库用户作为包含的用户
 1. 在查询窗口中输入以下命令，并将 `<Azure_AD_principal_name>` 修改为 Azure AD 用户的主体名称，或者修改为 Azure AD 组的显示名称：
 
    ```sql
-   CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
+   CREATE USER [<Azure_AD_principal_name>] FROM EXTERNAL PROVIDER;
    ```
 
 > [!NOTE]
@@ -303,7 +303,7 @@ Azure Defender for SQL 功能可检测出现的可能威胁，并提供有关异
 > [!IMPORTANT]
 > 请参阅 [SQL 数据库审核](../../azure-sql/database/auditing-overview.md)，了解如何使用 PowerShell 或 REST API 来进一步自定义审核事件。
 
-### <a name="dynamic-data-masking"></a>动态数据掩码
+### <a name="dynamic-data-masking"></a>动态数据屏蔽
 
 数据掩码功能会自动隐藏数据库中的敏感数据。
 

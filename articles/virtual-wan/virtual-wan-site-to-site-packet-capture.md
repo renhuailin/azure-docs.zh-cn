@@ -2,18 +2,18 @@
 title: 教程：在 Azure 虚拟 WAN 站点到站点连接上执行数据包捕获
 description: 本教程介绍如何在虚拟 WAN 站点到站点 VPN 网关上执行数据包捕获。
 services: virtual-wan
-author: wellee
+author: wtnlee
 ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: wellee
 Customer intent: As someone with a networking background using Virtual WAN, I want to perform a packet capture on my Site-to-site VPN Gateway.
-ms.openlocfilehash: bb31d6d9c19df7a914593213e98af1d7a54825a4
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 765285a8b7c2434c64d1513e510f1cf06b513291
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809519"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122598057"
 ---
 # <a name="perform-packet-capture-on-the-azure-virtual-wan-site-to-site-vpn-gateway"></a>在 Azure 虚拟 WAN 站点到站点 VPN 网关上执行数据包捕获 
 
@@ -47,15 +47,15 @@ ms.locfileid: "109809519"
 
 创建帐户后，请运行以下命令，以生成共享访问签名 (SAS) URL。 将通过此 URL 存储数据包捕获的结果。
    ```azurepowershell-interactive
-  $rgname = “<resource group name containing storage account>” 
+  $rg = “<resource group name containing storage account>” 
 $storeName = “<name of storage account> “
 $containerName = “<name of container you want to store packet capture in>
-$key = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storeNAme
+$key = Get-AzStorageAccountKey -ResourceGroupName $rg -Name $storeName
 $context = New-AzStorageContext -StorageAccountName  $storeName -StorageAccountKey $key[0].value
 New-AzStorageContainer -Name $containerName -Context $context
 $container = Get-AzStorageContainer -Name $containerName  -Context $context
 $now = get-date
-$sasurl = New-AzureStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
+$sasurl = New-AzStorageContainerSASToken -Name $containerName -Context $context -Permission "rwd" -StartTime $now.AddHours(-1) -ExpiryTime $now.AddDays(1) -FullUri
    ```
 
 ## <a name="start-the-packet-capture"></a>启动数据包捕获
@@ -122,18 +122,18 @@ Start-AzVpnGatewayPacketCapture -ResourceGroupName $rg -Name "<name of the Gatew
 ## <a name="stopping-the-packet-capture"></a>停止数据包捕获
 建议让数据包捕获运行至少 600 秒。 由于路径上多个组件之间的同步问题，较短的数据包捕获可能无法提供完整的数据。 一旦准备好停止数据包捕获，请运行以下命令。
 
-这些参数与“启动数据包捕获”部分中的参数相似。 SAS URL 是在[创建存储帐户](#createstorage)部分中生成的。
+这些参数与“启动数据包捕获”部分中的参数相似。 SAS URL 是在[创建存储帐户](#createstorage)部分中生成的。 如果 `SASurl` 参数配置不正确，则跟踪可能会失败，并显示 Azure 存储错误。
 
 ### <a name="gateway-level-packet-capture"></a>网关级数据包捕获
 
    ```azurepowershell-interactive
-Stop-AzVpnGatewayPacketCapture -ResourceGroupName $rg -Name <GatewayName> -SasUrl $sas
+Stop-AzVpnGatewayPacketCapture -ResourceGroupName $rg -Name <GatewayName> -SasUrl $sasurl
    ```
 
 ### <a name="connection-level-packet-captures"></a>连接级数据包捕获
 
    ```azurepowershell-interactive
-Stop-AzVpnConnectionPacketCapture -ResourceGroupName $rg -Name <name of the VPN connection> -ParentResourceName "<name of VPN Gateway>" -LinkConnectionName <comma separated list of links e.g. "link1,link2">-SasUrl $sas
+Stop-AzVpnConnectionPacketCapture -ResourceGroupName $rg -Name <name of the VPN connection> -ParentResourceName "<name of VPN Gateway>" -LinkConnectionName <comma separated list of links e.g. "link1,link2">-SasUrl $sasurl
    ```
 
 ## <a name="viewing-your-packet-capture"></a>查看数据包捕获

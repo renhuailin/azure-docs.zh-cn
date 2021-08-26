@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 6588ee515d46f3f300bf3c486f0d528c6f31df98
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 146c1f78ffe0b8a4061417086cf66d96d2317890
+ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032080"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114285367"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -271,8 +271,8 @@ New-AzStorageAccount `
 
 **查找**
 
-- 哪些主机、子网和虚拟网络正在发送或接收最多的流量、有最大恶意流量流过以及阻止重要流？
-    - 检查主机、子网和虚拟网络的比较图表。 了解哪些主机、子网和虚拟网络正在发送或接收大部分流量有助于识别正在处理大部分流量的主机，以及是否正确进行了流量分发。
+- 哪些主机、子网、虚拟网络和虚拟机规模集正在发送或接收大部分流量、有最大恶意流量流过，以及阻止重要流？
+    - 检查主机、子网、虚拟网络和虚拟机规模集的比较图表。 了解哪些主机、子网、虚拟网络和虚拟机规模集正在发送或接收大部分流量可有助于确定正在处理大部分流量的主机，以及流量分布的设置是否正确。
     - 然后，可以评估流量大小是否适合让某台主机来处理。 流量行为是否正常，或者是否需要进一步的调查？
 - 有多少入站/出站流量？
     -   主机预期收到的入站流量是否多过出站流量，或反之？
@@ -281,13 +281,16 @@ New-AzStorageAccount `
 - 允许/阻止的恶意流量统计信息
   - 主机为何接收恶意流量，为何允许来自恶意源的流？ 对于此行为，需要进一步进行调查，并且可能需要对配置进行优化。
 
-    在“主机”下选择“查看全部”，如下图所示 ：
+    在“IP”下选择“查看全部”，如下图所示 ：
 
     ![展示处理大部分流量的主机详细信息的仪表板](media/traffic-analytics/dashboard-showcasing-host-with-most-traffic-details.png)
 
-- 下图显示了对话最活跃的五台主机的时间趋势，以及主机的流相关详细信息（允许 - 入站/出站流，拒绝 - 入站/出站流）：
+    下图显示了对话最活跃的五台主机的时间趋势，以及主机的流相关详细信息（允许 - 入站/出站流，拒绝 - 入站/出站流）：
+
+    如下图所示，在“通信量前 5 的 IP 的详细信息”下，选择“查看更多”，以获取有关所有主机的见解 ：
 
     ![对话最活跃的五台主机的趋势](media/traffic-analytics/top-five-most-talking-host-trend.png)
+    
 
 **查找**
 
@@ -354,6 +357,10 @@ New-AzStorageAccount `
     ![展示不同国家/地区和大洲流量分布的地图视图](./media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png)
 
     ![日志搜索中流量分布的流详细信息](./media/traffic-analytics/flow-details-for-traffic-distribution-in-log-search.png)
+    
+- Azure 区域的“更多见解”边栏选项卡还显示该区域内剩余的总流量（即同一区域中的源和目标）。 此外，它还提供有关在数据中心的可用性区域之间交换的流量的见解 
+
+    ![局部区域之间的以及地理区域之内的流量](./media/traffic-analytics/inter-zone-and-intra-region-traffic.png)
 
 ### <a name="visualize-traffic-distribution-by-virtual-networks"></a>按虚拟网络可视化流量分布
 
@@ -369,7 +376,7 @@ New-AzStorageAccount `
 
 - 使用虚拟网络拓扑顶部的功能区可以选择参数，例如虚拟网络的（虚拟网络连接之间/活动/非活动）、外部连接、活动流和虚拟网络的恶意流。
 - 可以根据订阅、工作区、资源组和时间间隔筛选虚拟网络拓扑。 可以帮助你了解流的其他筛选器包括：流类型（InterVNet、IntraVNET，等等），流方向（入站、出站），流状态（已允许、已阻止）、VNET（已定向和已连接）、连接类型（对等互连或网关 - P2S 和 S2S）以及 NSG。 使用这些筛选器可以专注于你要详细观察的 VNet。
-- 虚拟网络拓扑显示虚拟网络的流相关流量分布（允许/阻止/入站/出站/良性/恶意）、应用程序协议和网络安全组，例如：
+- 虚拟网络拓扑显示虚拟网络与流相关的流量分布（允许/阻止/入站/出站/良性/恶意）、应用程序协议和网络安全组，例如：
 
     ![展示流量分布和流详细信息的虚拟网络拓扑](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)
     
@@ -383,7 +390,7 @@ New-AzStorageAccount `
     - 了解哪两个子网正在对话。 如果发现意外的对话，可以更正配置。
     - 如果未授权网络正在与子网对话，可以配置 NSG 规则来阻止未授权网络，从而更正此行为。
 - 使用子网拓扑顶部的功能区可以选择参数，例如活动/非活动的子网、外部连接、活动流和子网的恶意流。
-- 子网拓扑显示虚拟网络的流相关流量分布（允许/阻止/入站/出站/良性/恶意）、应用程序协议和 NSG，例如：
+- 子网拓扑显示虚拟网络与流相关的流量分布（允许/阻止/入站/出站/良性/恶意）、应用程序协议和 NSG，例如：
 
     ![展示虚拟网络子网的流相关流量分布的子网拓扑](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-virtual-subnet-with-regards-to-flows.png)
 
@@ -413,6 +420,22 @@ New-AzStorageAccount `
 
 ![日志搜索中的恶意流量流详细信息](./media/traffic-analytics/malicious-traffic-flows-detail-in-log-search.png)
 
+### <a name="view-information-about-public-ips-interacting-with-your-deployment"></a>查看有关与部署交互的公共 IP 的信息
+
+**查找**
+
+- 哪些公共 IP 正在与我的网络通信？ 什么是所有公共 IP 的 WHOIS 数据和地理位置？
+- 哪些恶意 IP 正在向我的部署发送流量？ 什么是恶意 IP 的威胁类型和威胁描述？
+    - “公共 IP 信息”部分提供了网络流量中所有类型的公共 IP 的摘要。 
+      请选择关注的公共 IP 类型来查看详细信息。 此[架构文档](./traffic-analytics-schema.md#public-ip-details-schema)定义了所提供的数据字段。
+      
+      :::image type="content" source="./media/traffic-analytics/public-ip-information.png" alt-text="公共 IP 信息" lightbox="./media/traffic-analytics/public-ip-information.png":::
+      
+    - 在流量分析仪表板上，单击任意 IP 可查看其信息   
+    
+      :::image type="content" source="./media/traffic-analytics/external-public-ip-details.png" alt-text="工具提示中的外部 IP 信息" lightbox="./media/traffic-analytics/external-public-ip-details.png":::
+      
+      :::image type="content" source="./media/traffic-analytics/malicious-ip-details.png" alt-text="工具提示中的恶意 IP 信息" lightbox="./media/traffic-analytics/malicious-ip-details.png":::
 
 ### <a name="visualize-the-trends-in-nsgnsg-rules-hits"></a>可视化 NSG/NSG 规则的触发趋势
 

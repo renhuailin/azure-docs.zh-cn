@@ -2,16 +2,17 @@
 title: '在 Azure 数据工厂中使用 Spark 转换数据 '
 description: 本教程提供有关在 Azure 数据工厂中使用 Spark 活动转换数据的分步说明。
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 author: nabhishek
 ms.author: abnarain
 ms.date: 06/07/2021
-ms.openlocfilehash: 7e4ad47f933757c4ebce66acd7ddc5e0033b601e
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: b417b4bb45c4c5ace4985c2bcf221dcd998896de
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113215769"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726831"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Spark 活动转换云中的数据
 

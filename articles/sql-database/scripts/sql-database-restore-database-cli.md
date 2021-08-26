@@ -3,20 +3,20 @@ title: Azure CLI：还原备份
 description: Azure CLI 示例脚本，用于通过自动备份将 Azure SQL 数据库中的数据库还原到更早的时间点。
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: backup-restore
 ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
-author: mashamsft
-ms.author: mathoma
+author: SQLSourabh
+ms.author: sourabha
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: f4054d19ccf4d136e30896bc066e51c92a4a4ad9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5dc1516595aa74d12cbcb55a1a19b34cf952f86d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783460"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748042"
 ---
 # <a name="use-cli-to-restore-a-single-database-in-azure-sql-database-to-an-earlier-point-in-time"></a>使用 CLI 将 Azure SQL 数据库中的单一数据库还原到更早的时间点
 

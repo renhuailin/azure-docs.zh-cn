@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 06/04/2021
-ms.openlocfilehash: 3681164f1b7415679ed599a70faf6453ab0a5c87
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 6c55b2e5fbaadec239c1818d1bbe47443e797ddf
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968000"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725459"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -79,10 +79,10 @@ Azure Cosmos DB 是一种用于新式应用开发的完全托管的 NoSQL 数据
 
 - 了解在 Azure Cosmos DB 中[如何选择 API](choose-api.md)
 - [Azure Cosmos DB SQL API 入门](create-sql-api-dotnet.md)
-- [Azure Cosmos DB 的用于 MongoDB 的 API 入门](create-mongodb-nodejs.md)
-- [Azure Cosmos DB Cassandra API 入门](create-cassandra-dotnet.md)
+- [Azure Cosmos DB 的用于 MongoDB 的 API 入门](mongodb/create-mongodb-nodejs.md)
+- [Azure Cosmos DB Cassandra API 入门](cassandra/manage-data-dotnet.md)
 - [Azure Cosmos DB Gremlin API 入门](create-graph-dotnet.md)
-- [Azure Cosmos DB 表 API 入门](create-table-dotnet.md)
+- [Azure Cosmos DB 表 API 入门](table/create-table-dotnet.md)
 - [有关 Azure Cosmos DB 的下一代应用开发的白皮书](https://azure.microsoft.com/resources/microsoft-azure-cosmos-db-flexible-reliable-cloud-nosql-at-any-scale/)
 
 > [!div class="nextstepaction"]

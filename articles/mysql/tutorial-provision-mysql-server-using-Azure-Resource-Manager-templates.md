@@ -4,18 +4,19 @@ description: 本教程介绍如何使用 Azure 资源管理器模板预配并自
 author: savjani
 ms.author: pariks
 ms.service: mysql
-ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 2219e7b31e4c6594fc5f98022151f6094853a1b1
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 81d2dc2da69f050333223dc09434b9ef82e3c9f9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111984644"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121782048"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>教程：使用 Azure 资源管理器模板预配 Azure Database for MySQL 服务器
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 借助 [Azure Database for MySQL REST API](/rest/api/mysql/)，DevOps 工程师能够自动执行并集成 Azure 中托管的 MySQL 服务器和数据库的预配、配置和操作。  通过 API，可对 Azure Database for MySQL 服务上的 MySQL 服务器和数据库进行创建、枚举、管理和删除。
 
@@ -205,7 +206,7 @@ SELECT * FROM inventory;
 
 如果不再需要该资源组，可以将其删除，这将删除资源组中的资源。
 
-# <a name="portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“资源组”。
 

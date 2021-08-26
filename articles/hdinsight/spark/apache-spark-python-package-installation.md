@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 0c3db80edf771b0ad34aa9260da80b43ba8c355e
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: eb95c7e6cd2c76cc35556f13025505785707ed04
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110652576"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597871"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用脚本操作在 Azure HDInsight 上安全管理 Python 环境
 
@@ -34,7 +34,7 @@ HDInsight 服务中有两种类型的开放源代码组件：
 > [!IMPORTANT]
 > 完全支持通过 HDInsight 群集提供的组件。 Microsoft 支持部门可帮助找出并解决与这些组件相关的问题。
 >
-> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 例如，有许多可以使用的社区站点，例如：[有关 HDInsight 的 Microsoft Q&A 问题页面](/answers/topics/azure-hdinsight.html)、`https://stackoverflow.com`。 此外，Apache 项目在 `https://apache.org` 上有项目站点。
+> 自定义组件可获得合理范围的支持，有助于进一步解决问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 例如，有许多可以使用的社区站点，例如：[有关 HDInsight 的 Microsoft Q&A 问题页面](/answers/topics/azure-hdinsight.html)、`https://stackoverflow.com`。 此外，Apache 项目在 `https://apache.org` 上有项目站点。
 
 ## <a name="understand-default-python-installation"></a>了解默认 Python 安装
 
@@ -155,11 +155,6 @@ HDInsight 群集依赖于内置 Python 环境（Python 2.7 和 Python 3.5）。 
 
     :::image type="content" source="./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png" alt-text="在 Jupyter Notebook 中检查 Python 版本" border="true":::
 
-## <a name="known-issue"></a>已知问题
-
-Anaconda 版本 `4.7.11`、`4.7.12`、`4.8.0` 有一个已知的 bug。 如果发现脚本操作在执行 `"Collecting package metadata (repodata.json): ...working..."` 时停止响应，然后失败并显示 `"Python script has been killed due to timeout after waiting 3600 secs"`， 可以下载[此脚本](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)，并在所有节点上将其作为脚本操作运行，这样即可解决此问题。
-
-若要检查 Anaconda 版本，可以通过 SSH 连接到群集头节点并运行 `/usr/bin/anaconda/bin/conda --v`。
 
 ## <a name="next-steps"></a>后续步骤
 

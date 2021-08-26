@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/15/2020
-ms.author: erhopf
+ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 95b0c127d005efe95fa2b7fdb58c69602a98b217
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c244009dffab84938c06eee10d7031bc23f10e7a
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110164937"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122069993"
 ---
 本指南介绍如何安装用于 [Unity](https://unity3d.com/) 的[语音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md)。
 
@@ -33,8 +33,8 @@ ms.locfileid: "110164937"
 - [Unity 2018.3 或更高版本](https://store.unity.com/)，以及[支持 UWP ARM64 的 Unity 2019.1](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)。
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)。 也可以使用 Visual Studio 2017 版本 15.9 或更高版本。
 - 为了支持 Windows ARM64，请安装[适用于 ARM64 的可选版本工具，以及适用于 ARM64 的 Windows 10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/)
-- 在 Android 上，你需要基于 ARM 的 Android 设备（API 23：Android 6.0 Marshmallow 或更高版本）支持使用工作麦克风进行开发。
-- 在 iOS 上，你需要为开发工作使用 iOS 设备 (ARM64)，并配备正常运行的麦克风。
+- 在 Android 上，你需要一台可用于开发的基于 ARM 的 Android 设备（API 23：Android 6.0 Marshmallow 或更高版本），并配备正常工作的麦克风。
+- 在 iOS 上，你需要一台可用于开发的 iOS 设备 (ARM64)，并配备正常工作的麦克风。
 - 在 macOS 上，你需要 Mac 设备 (x64) 和最新 LTS 版本的 Unity 2019（或更高版本），以便在 Unity Player 设置中实现对麦克风访问的集成支持。
 
 ## <a name="install-the-speech-sdk"></a>安装语音 SDK

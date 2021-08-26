@@ -7,12 +7,12 @@ ms.service: azure-redhat-openshift
 ms.topic: overview
 ms.date: 11/13/2020
 ms.custom: mvc
-ms.openlocfilehash: ec934a8a9907f0c0c3aff047e003c6725c5ab25f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a0b0eca91cbf070e41057254d060d6dbc8ff249
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100636214"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726197"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -36,7 +36,7 @@ Azure Red Hat OpenShift 节点在 Azure 虚拟机上运行。 可以将存储连
 
 ## <a name="service-level-agreement"></a>服务级别协议
 
-Azure Red Hat OpenShift 提供服务级别协议来保证服务在 99.95% 的时间可用。 有关 SLA 的详细信息，请参阅 [Azure Red Hat OpenShift SLA](https://azure.microsoft.com/en-au/support/legal/sla/openshift/v1_0/)。
+Azure Red Hat OpenShift 提供服务级别协议来保证服务在 99.95% 的时间可用。 有关 SLA 的详细信息，请参阅 [Azure Red Hat OpenShift SLA](https://azure.microsoft.com/support/legal/sla/openshift/v1_0/)。
 
 ## <a name="next-steps"></a>后续步骤
 

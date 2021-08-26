@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: rolyon
 ms.reviewer: psignoret
 ms.custom: it-pro
-ms.openlocfilehash: 8795007a5a38d21985d8b31884c66342b3dda7ed
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 0b920df34358c83fa69274f0d7b52f889cd15010
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792401"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724824"
 ---
 # <a name="app-consent-permissions-for-custom-roles-in-azure-active-directory"></a>Azure Active Directory 中自定义角色的应用同意权限
 
@@ -34,7 +34,7 @@ ms.locfileid: "110792401"
 > [!NOTE]
 > Azure AD 管理门户尚不支持将本文中列出的权限添加到自定义目录角色定义中。 你必须[使用 Azure AD PowerShell 来创建具有本文所列权限的自定义目录角色](custom-create.md#create-a-role-using-powershell)。
 
-### <a name="granting-delegated-permissions-to-apps-on-behalf-of-self-user-consent"></a>代表自己（用户同意）向应用授予委托的权限
+#### <a name="granting-delegated-permissions-to-apps-on-behalf-of-self-user-consent"></a>代表自己（用户同意）向应用授予委托的权限
 
 根据应用同意策略，允许用户代表自己（用户同意）向应用程序授予同意。
 
@@ -44,7 +44,7 @@ ms.locfileid: "110792401"
 
 例如，若要根据 ID 为 `microsoft-user-default-low` 的内置应用同意策略，允许用户代表自己授予同意，应使用权限 `...managePermissionGrantsForSelf.microsoft-user-default-low`。
 
-### <a name="granting-permissions-to-apps-on-behalf-of-all-admin-consent"></a>代表所有人（管理员同意）向应用授予权限
+#### <a name="granting-permissions-to-apps-on-behalf-of-all-admin-consent"></a>代表所有人（管理员同意）向应用授予权限
 
 将租户范围内的管理员同意委托给应用，以同时获得委托的权限和应用程序权限（应用角色）：
 
@@ -54,7 +54,7 @@ ms.locfileid: "110792401"
 
 例如，若要根据 ID 为 `low-risk-any-app` 的自定义[应用同意策略](../manage-apps/manage-app-consent-policies.md)，允许角色被分派人向应用授予租户范围内的管理员同意，应使用权限 `microsoft.directory/servicePrincipals/managePermissionGrantsForAll.low-risk-any-app`。
 
-### <a name="managing-app-consent-policies"></a>管理应用同意策略
+#### <a name="managing-app-consent-policies"></a>管理应用同意策略
 
 委托[应用同意策略](../manage-apps/manage-app-consent-policies.md)的创建、更新和删除。
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/10/2021
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: ace2c9819802150f1131da9e542c6c8feb589c3a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: f4f911feef354e4f2bd1f947bef6418615b74ca2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954938"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750232"
 ---
 # <a name="tutorial-create-a-function-to-integrate-with-azure-logic-apps"></a>教程：创建与 Azure 逻辑应用集成的函数
 

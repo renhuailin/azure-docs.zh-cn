@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: msangapu
 ms.custom: cli-validate, devx-track-azurecli
-ms.openlocfilehash: b9a3880c88224906e68054475233e8d8ce02476a
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 0e4bcc24aa64cfa875057d8503d0d6b629b36896
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112964961"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748821"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>教程：在用于容器的 Web 应用中创建多容器（预览版）应用
 
@@ -530,8 +530,8 @@ WordPress 将连接到 Redis 服务器。 同一页面上会显示连接 **状�
 
 或者，查看其他资源：
 
-> [!div class="nextstepaction"]
-> [配置自定义容器](configure-custom-container.md)
+- [配置自定义容器](configure-custom-container.md)
+- [环境变量和应用设置参考](reference-app-settings.md)
 
 <!--Image references-->
 [1]: ./media/tutorial-multi-container-app/azure-multi-container-wordpress-install.png

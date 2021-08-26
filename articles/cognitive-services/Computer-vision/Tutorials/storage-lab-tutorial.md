@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/06/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 441bbfcbb4f864ab8f82bb1216b9860dcfbf254c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 35e98fcbd1be87e471152d0760ca375e46770a81
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114451759"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121747642"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>教程：使用计算机视觉在 Azure 存储中生成图像元数据
 
@@ -197,7 +197,7 @@ ms.locfileid: "114451759"
     }
     ```
 
-    新的“Index”方法会枚举 `"photos"` 容器中的 blob，并通过 ASP.NET MVC 的“ViewBag”属性将表示这些 blob 的“BlobInfo”对象数组传递给视图。 稍后，你将修改视图以枚举这些对象，并显示照片缩略图的集合。 访问存储帐户和枚举 blob &mdash; **[CloudStorageAccount](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount?WT.mc_id=academiccontent-github-cxa)** 、 **[CloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient?WT.mc_id=academiccontent-github-cxa)** 和 **[CloudBlobContainer](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer?WT.mc_id=academiccontent-github-cxa)** &mdash; 时使用的类来自你通过 NuGet 安装的“WindowsAzure.Storage”包。
+    新的“Index”方法会枚举 `"photos"` 容器中的 blob，并通过 ASP.NET MVC 的“ViewBag”属性将表示这些 blob 的“BlobInfo”对象数组传递给视图。 稍后，你将修改视图以枚举这些对象，并显示照片缩略图的集合。 访问存储帐户和枚举 blob &mdash; **[CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet)** 、 **[CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient?view=azure-dotnet-legacy)** 和 **[CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer?view=azure-dotnet-legacy)** &mdash; 时使用的类来自你通过 NuGet 安装的“WindowsAzure.Storage”包。
 
 1. 将以下方法添加至“HomeController.cs”中的“HomeController”类：
 

@@ -3,18 +3,17 @@ title: 快速入门：使用 Azure CLI 创建 Azure 数据工厂
 description: 本快速入门将创建一个 Azure 数据工厂，其中包括链接服务、数据集和管道。 可以运行管道来执行文件复制操作。
 author: linda33wj
 ms.author: jingwang
-ms.service: azure-cli
+ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: quickstart
 ms.date: 03/24/2021
-ms.custom:
-- template-quickstart
-- devx-track-azurecli
-ms.openlocfilehash: c9f4b46553a119bfb7b8b639e6a28e95a2be5999
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.custom: template-quickstart, devx-track-azurecli
+ms.openlocfilehash: f12b9f785063b8fa6fec4bc8cd4011d65110b7fe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111750814"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749876"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 Azure 数据工厂
 

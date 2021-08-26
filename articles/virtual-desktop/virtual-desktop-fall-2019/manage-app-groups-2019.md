@@ -3,15 +3,15 @@ title: 管理 Azure 虚拟桌面（经典）的应用组 - Azure
 description: 了解如何在 Azure Active Directory (AD) 中设置 Azure 虚拟桌面（经典）租户。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 03/30/2020
+ms.date: 08/16/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: b4c0f4733ec1d80db4b2181ed292f702926e0e75
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6fe87fb7fc0cbe9e727fe1539d8424d9ee1fe1b1
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111754000"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253258"
 ---
 # <a name="tutorial-manage-app-groups-for-azure-virtual-desktop-classic"></a>教程：管理 Azure 虚拟桌面（经典）的应用组
 
@@ -37,44 +37,44 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 1. 运行以下 PowerShell cmdlet 以创建新的空 RemoteApp 应用组。
 
    ```powershell
-   New-RdsAppGroup <tenantname> <hostpoolname> <appgroupname> -ResourceType "RemoteApp"
+   New-RdsAppGroup -TenantName <tenantname> -HostPoolName <hostpoolname> -Name <appgroupname> -ResourceType "RemoteApp"
    ```
 
 2. （可选）若要验证是否已创建应用组，可运行以下 cmdlet，以查看主机池的所有应用组列表。
 
    ```powershell
-   Get-RdsAppGroup <tenantname> <hostpoolname>
+   Get-RdsAppGroup -TenantName <tenantname> -HostPoolName <hostpoolname>
    ```
 
 3. 运行以下 cmdlet，以获取主机池虚拟机映像中的“开始”  菜单应用列表。 记下要发布的应用程序的 **FilePath**、**IconPath**、**IconIndex** 值和其他重要信息。
 
    ```powershell
-   Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
+   Get-RdsStartMenuApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
    ```
 
 4. 运行以下 cmdlet，以基于其 `AppAlias` 安装应用程序。 运行步骤 3 的输出时，可以看到 `AppAlias`。
 
    ```powershell
-   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>
+   New-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <remoteappname> -AppAlias <appalias>
    ```
 
 5. （可选）运行以下 cmdlet，将新的 RemoteApp 程序发布到在步骤 1 中创建的应用程序组。
 
    ```powershell
-   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
+    New-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
    ```
 
 6. 若要验证应用是否已发布，请运行以下 cmdlet。
 
    ```powershell
-   Get-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname>
+    Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
    ```
 
 7. 针对要为此应用组发布的每个应用程序重复步骤 1-5。
 8. 运行以下 cmdlet，授予用户对应用组中 RemoteApp 程序的访问权限。
 
    ```powershell
-   Add-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname> -UserPrincipalName <userupn>
+   Add-RdsAppGroupUser -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -UserPrincipalName <userupn>
    ```
 
 ## <a name="next-steps"></a>后续步骤

@@ -3,18 +3,17 @@ title: 教程：开发适用于 Linux 的 C 模块 - Azure IoT Edge | Microsoft 
 description: 本教程介绍如何使用 C 代码创建 IoT Edge 模块并将其部署到运行 IoT Edge 的 Linux 设备
 services: iot-edge
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5149d33052f3ad8783ed35d03b4f3760790f5ee5
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 26067037eabd2878971aa71f8996c24feaf3ed1f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438415"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728818"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>教程：使用 Linux 容器开发 C IoT Edge 模块
 
@@ -80,7 +79,7 @@ ms.locfileid: "113438415"
    | 提供解决方案名称 | 输入解决方案的描述性名称，或者接受默认的 **EdgeSolution**。 |
    | 选择模块模板 | 选择“C 模块”。 |
    | 提供模块名称 | 将模块命名为 **CModule**。 |
-   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是基于你在上一步中提供的名称预先填充的。 将 localhost:5000 替换为 Azure 容器注册表中的“登录服务器”值 。 可以在 Azure 门户的容器注册表的“概述”页中检索登录服务器。 <br><br> 最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/cmodule。 |
+   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是基于你在上一步中提供的名称预先填充的。 将 localhost:5000 替换为 Azure 容器注册表中的“登录服务器”值。 可以在 Azure 门户的容器注册表的“概述”页中检索登录服务器。 <br><br> 最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/cmodule。 |
 
    ![提供 Docker 映像存储库](./media/tutorial-c-module/repository.png)
 
@@ -95,7 +94,7 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
 3. 保存此文件。
 
 >[!NOTE]
->本教程使用 Azure 容器注册表的管理员登录凭据，这对于开发和测试方案非常方便。 准备好生产方案后，建议使用最低权限身份验证选项（如服务主体）。 有关详细信息，请参阅[管理容器注册表的访问权限](production-checklist.md#manage-access-to-your-container-registry)。
+>本教程使用 Azure 容器注册表的管理员登录凭据，这对于开发和测试方案非常方便。 为生产方案做好准备后，建议使用最低权限身份验证选项（如服务主体）。 有关详细信息，请参阅[管理容器注册表的访问权限](production-checklist.md#manage-access-to-your-container-registry)。
 
 ### <a name="select-your-target-architecture"></a>选择目标体系结构
 

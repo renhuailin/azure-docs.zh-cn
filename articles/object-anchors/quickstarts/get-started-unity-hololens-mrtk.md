@@ -5,15 +5,15 @@ author: craigktreasure
 manager: virivera
 services: azure-object-anchors
 ms.author: crtreasu
-ms.date: 03/02/2021
+ms.date: 08/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 5cccfb2b750e9ea1a167f8bbbddcb2621bd19b5b
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: b047c293a14dcfde5c8de2f56fb5c2abeab61c69
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112008077"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254302"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-unity-with-mrtk"></a>快速入门：通过 MRTK 在 Unity 中创建具有 Azure Object Anchors 的 HoloLens 应用
 
@@ -28,7 +28,11 @@ ms.locfileid: "112008077"
 
 [!INCLUDE [Unity quickstart prerequisites](../../../includes/object-anchors-quickstart-unity-prerequisites.md)]
 
+[!INCLUDE [Create Account](../../../includes/object-anchors-get-started-create-account.md)]
+
 [!INCLUDE [Unity device setup](../../../includes/object-anchors-quickstart-unity-device-setup.md)]
+
+[!INCLUDE [Unity upload your model](../../../includes/object-anchors-quickstart-unity-upload-model.md)]
 
 ## <a name="open-the-sample-project"></a>打开示例项目
 
@@ -40,6 +44,8 @@ ms.locfileid: "112008077"
 
 [!INCLUDE [Import Unity Package](../../../includes/object-anchors-quickstart-unity-import-package.md)]
 
+[!INCLUDE [Configure Account](../../../includes/object-anchors-get-started-configure-account.md)]
+
 [!INCLUDE [Unity build sample scene 1](../../../includes/object-anchors-quickstart-unity-build-sample-scene-1.md)]
 
 当“TMP 导入程序”对话框提示导入 TextMesh Pro 资源时，请选择“导入 TMP Essentials”以执行此操作。
@@ -49,9 +55,7 @@ ms.locfileid: "112008077"
 
 [!INCLUDE [Unity build and deploy](../../../includes/object-anchors-quickstart-unity-build-deploy.md)]
 
-### <a name="run-the-sample-app"></a>运行示例应用
-
-打开设备，选择“所有应用”，然后找到并启动该应用。 在 Unity 初始屏幕后，应该会显示一个白色的边框。 你可以用手移动、缩放或旋转该边框。 放置边框以包围要检测的物体。
+ 在 Unity 初始屏幕后，应该会显示一个白色的边框。 你可以用手移动、缩放或旋转该边框。 放置边框以包围要检测的物体。
 
 打开<a href="https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_HandMenu.html" target="_blank">手动菜单</a>，选择“锁定 SearchArea”以防止边框进一步移动。 选择“开始搜索”以启动物体检测。 检测到物体时，将在物体上呈现一个网格。 屏幕上将显示检测到的实例的详细信息，例如更新的时间戳和表面覆盖率。 选择“停止搜索”停止跟踪，将删除检测到的所有实例。
 
@@ -66,7 +70,7 @@ ms.locfileid: "112008077"
 * **跟踪器设置** – 切换跟踪器设置菜单的激活状态。
 * **搜索区域设置** – 切换搜索区域设置菜单的激活状态。
 * **开始跟踪** – 捕获诊断数据并将其保存到设备。 有关更多详细信息，请参阅“调试检测问题和捕获诊断”部分。
-* 上传跟踪 – 将诊断数据上传到 Object Anchors 服务。 用户必须在 `subscription.json` 中提供其订阅帐户，并将其上传到 `LocalState` 文件夹中。 可以在下面找到示例 `subscription.json` 文件。
+* 上传跟踪 – 将诊断数据上传到 Object Anchors 服务。    
 
     :::image type="content" source="./media/mrtk-hand-menu-primary.png" alt-text="Unity 主手动菜单":::
 
@@ -87,23 +91,12 @@ ms.locfileid: "112008077"
 
     :::image type="content" source="./media/mrtk-hand-menu-search-area.png" alt-text="Unity 搜索区域手动菜单":::
 
-示例 `subscription.json`：
-
-```json
-{
-  "AccountId": "<your account id>",
-  "AccountKey": "<your account key>",
-  "AccountDomain": "<your account domain>"
-}
-```
-
-[!INCLUDE [Unity setup Windows Device Portal](../../../includes/object-anchors-quickstart-unity-setup-device-portal.md)]
-
-[!INCLUDE [Unity upload your model](../../../includes/object-anchors-quickstart-unity-upload-model.md)]
-
 [!INCLUDE [Unity troubleshooting](../../../includes/object-anchors-quickstart-unity-troubleshooting.md)]
 
 ## <a name="next-steps"></a>后续步骤
+
+> [!div class="nextstepaction"]
+> [快速入门：深度 MRTK 演练](in-depth-mrtk-walkthrough.md)
 
 > [!div class="nextstepaction"]
 > [概念：SDK 概述](../concepts/sdk-overview.md)

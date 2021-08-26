@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: troubleshooting
 ms.date: 03/13/2021
 ms.author: banders
-ms.openlocfilehash: 965e90eed0690d57b6ad3cf3a1543b1329c0fe74
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: baf7fe1968f2ba2a72e27f1caf85d02c65a3e93f
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773365"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514753"
 ---
 # <a name="find-a-reservation-purchaser-from-azure-logs"></a>从 Azure 日志中查找预留项购买者
 
@@ -33,4 +33,4 @@ ms.locfileid: "107773365"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如有需要，计费管理员可以[获得预留项的所有权](view-reservations.md#how-billing-administrators-can-view-or-manage-reservations)。
+- 如有需要，计费管理员可以[获得预留项的所有权](view-reservations.md#view-and-manage-reservations)。

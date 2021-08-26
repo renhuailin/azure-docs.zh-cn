@@ -2,16 +2,17 @@
 metadata:
   title: VM 见解 (GA) 常见问题 | Microsoft Docs
   description: VM 见解是 Azure 中的一个解决方案，它合并了 Azure VM 操作系统的运行状况和性能监视、应用程序组件及其与其他资源的依赖关系的自动发现功能，并映射这些组件和资源之间的通信。 本文解答有关 GA 版本的常见问题。
-  ms.topic: conceptual
+  ms.topic: article
   author: bwren
   ms.author: bwren
   ms.date: 01/31/2020
-  ms.openlocfilehash: 930a51c83767a14c1547e2ed6330fbd134afbaae
-  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+  ms.service: azure-monitor
+  ms.openlocfilehash: 230bac590e4506593cc0cb6cce0aba89ed289ad3
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/17/2021
-  ms.locfileid: "112305926"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122253861"
 title: VM 见解正式发布 (GA) 常见问题
 summary: 此正式发布版本 FAQ 介绍了我们在为 GA 做准备时在 2019 年第 4 季度和 2020 年第 1 季度所做的更改。
 sections:

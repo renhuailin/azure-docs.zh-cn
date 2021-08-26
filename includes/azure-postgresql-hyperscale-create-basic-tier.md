@@ -5,15 +5,15 @@ author: jonels-msft
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: include
-ms.date: 04/07/2021
+ms.date: 08/03/2021
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: 09eb6d9483268314febd9478a551595a059d973b
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 3f0468a55c897559a2dab3eb2f29855129fcff2b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107023801"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121728699"
 ---
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -29,7 +29,6 @@ ms.locfileid: "107023801"
 4. 使用以下信息填写“新服务器详细信息”窗体：
    - 资源组：单击此字段的文本框下的“新建”链接。 输入一个名称，例如 **myresourcegroup**。
    - 服务器组名称：输入新服务器组的唯一名称，该名称也将用于服务器子域。
-   - 激活“启用预览功能”复选框。
    - 管理员用户名：当前必须是值 **citus**，并且不能更改。
    - 密码：长度必须至少为八个字符，且必须包含以下类别中三种类别的字符 - 英文大写字母、英文小写字母、数字 (0-9) 和非字母数字字符（!、$、#、%，等等。）
    - 位置：使用距离你的用户最近的位置，使用户可以最快速度访问数据。

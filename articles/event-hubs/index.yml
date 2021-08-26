@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 07/23/2021
-  ms.openlocfilehash: 3d6eb1645bec3d6a6da09b0ecefce0f894018280
-  ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+  ms.openlocfilehash: fcda8ee1157d1aa8c9c7de1ee1bb219019ba738d
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/24/2021
-  ms.locfileid: "114667284"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121728867"
 landingContent:
 - title: 关于事件中心
   linkLists:
@@ -91,7 +91,7 @@ landingContent:
       url: event-hubs-java-get-started-send.md
     - text: Python
       url: event-hubs-python-get-started-send.md
-    - text: JavaScript
+    - text: Javascript
       url: event-hubs-node-get-started-send.md
     - text: Apache Kafka
       url: event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs
@@ -151,8 +151,6 @@ landingContent:
     links:
     - text: 使用 Azure Monitor 监视事件中心
       url: monitor-event-hubs.md
-    - text: 设置诊断日志
-      url: event-hubs-diagnostic-logs.md
     - text: 自动纵向扩展
       url: event-hubs-auto-inflate.md
     - text: 排查异常

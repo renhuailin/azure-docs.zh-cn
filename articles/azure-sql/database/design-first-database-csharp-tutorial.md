@@ -8,14 +8,14 @@ ms.custom: seo-lt-2019, sqldbrb=1, devx-track-csharp
 ms.topic: tutorial
 author: rothja
 ms.author: jroth
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 07/29/2019
-ms.openlocfilehash: 67d20a4f0f5d2dae769429c9c476899ea8099c43
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 0c22415b1a724e99b04344f33c31151628e8753b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551675"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727159"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-cx23-and-adonet"></a>教程：在 Azure SQL 数据库 C&#x23; 和 ADO.NET 中设计关系数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

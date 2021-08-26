@@ -1,5 +1,5 @@
 ---
-title: 包含文件
+title: include 文件
 description: include 文件
 services: cosmos-db
 author: SnehaGunda
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2021
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: d1fd9daa32f37f586832932b67a0363f85f07e72
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: 2f055d8fe6608d328421e1916c5855d300c49dcc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113223418"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725485"
 ---
 1. 在新浏览器窗口中，登录到 [Azure 门户](https://portal.azure.com/)。
 
@@ -58,7 +58,7 @@ ms.locfileid: "113223418"
 1. （可选）可以在以下选项卡中配置其他详细信息：
 
    * **网络** - 配置 [来自虚拟网络的访问](../how-to-configure-vnet-service-endpoint.md)。
-   * **备份策略**- 配置 [定期](../configure-periodic-backup-restore.md)或 [连续](../continuous-backup-restore-portal.md)备份策略。
+   * **备份策略**- 配置 [定期](../configure-periodic-backup-restore.md)或 [连续](../provision-account-continuous-backup.md)备份策略。
    * **加密** - 使用服务管理的密钥或 [客户管理的密钥](../how-to-setup-cmk.md#create-a-new-azure-cosmos-account)。
    * **标记** - 标记是名称/值对，通过将相同的标记应用到多个资源和资源组，可以对资源进行分类并查看合并的账单。
 

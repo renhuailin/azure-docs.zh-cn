@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/08/2021
 ms.author: amgowda
 ms.custom: contentperf-fy21q3, devx-track-azurecli
-ms.openlocfilehash: 950f6fa47de273534a4636796351dd3640628dda
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: e7ff59c3c6ba75321c63db81d34ea4c7d46a841a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113551229"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748632"
 ---
 # <a name="quickstart-deploy-an-aks-cluster-with-confidential-computing-nodes-by-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署具有机密计算节点的 AKS 群集
 
@@ -61,7 +61,7 @@ az group create --name myResourceGroup --location westus2
 现在，使用 [az aks create][az-aks-create] 命令创建一个启用了机密计算加载项的 AKS 群集：
 
 ```azurecli-interactive
-az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addon confcom
+az aks create -g myResourceGroup --name myAKSCluster --generate-ssh-keys --enable-addons confcom
 ```
 
 ### <a name="add-a-user-node-pool-with-confidential-computing-capabilities-to-the-aks-cluster"></a>将具有机密计算功能的用户节点池添加到 AKS 群集 

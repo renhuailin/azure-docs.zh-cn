@@ -2,7 +2,7 @@
 title: 已启用 Azure Arc 的数据服务
 summary: 在你选择的基础结构上使用 Kubernetes 在本地、边缘和多云环境中运行 Azure 数据服务。
 metadata:
-  title: 已启用 Azure Arc 的数据服务（预览版）
+  title: 已启用 Azure Arc 的数据服务
   description: 在你选择的基础结构上使用 Kubernetes 在本地、边缘和多云环境中运行 Azure 数据服务。
   ms.service: azure-arc
   ms.subservice: azure-arc-data
@@ -10,12 +10,12 @@ metadata:
   author: MikeRayMSFT
   ms.author: mikeray
   ms.date: 12/16/2020
-  ms.openlocfilehash: f31ce0d0a010b27698de094e4c72f56e35ad2409
-  ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+  ms.openlocfilehash: d65aa597cb3bd9d2f8abdb22a6f60d0a6af9418a
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/14/2021
-  ms.locfileid: "113732829"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121750304"
 landingContent:
 - title: 关于
   linkLists:
@@ -49,7 +49,7 @@ landingContent:
       url: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
     - text: 还原
       url: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
-- title: 已启用 Azure Arc 的 SQL 托管实例（预览）
+- title: 已启用 Azure Arc 的 SQL 托管实例
   linkLists:
   - linkListType: quickstart
     links:

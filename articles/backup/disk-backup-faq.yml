@@ -2,14 +2,15 @@
 metadata:
   title: 有关 Azure 磁盘备份的常见问题
   description: 获取有关 Azure 磁盘备份的常见问题的解答
-  ms.topic: conceptual
+  ms.topic: article
+  ms.service: backup
   ms.date: 05/27/2021
-  ms.openlocfilehash: 4c676d412799838193122399f50e984fbad833b2
-  ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+  ms.openlocfilehash: d53eda8e8b0f168da69dba1334feca0d4cb39524
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/28/2021
-  ms.locfileid: "111907093"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122252504"
 title: 有关 Azure 磁盘备份的常见问题
 summary: >
   本文解答了有关 Azure 磁盘备份的常见问题。 有关 [Azure 磁盘备份](disk-backup-overview.md)区域可用性、支持的方案和限制的详细信息，请参阅[支持矩阵](disk-backup-support-matrix.md)。
