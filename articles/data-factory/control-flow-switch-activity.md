@@ -5,21 +5,23 @@ author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
 ms.topic: conceptual
-ms.date: 10/08/2019
+ms.date: 06/23/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cf2a5bcc511b0401ff1be3630e0388b43eaeb78d
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 19dd17afc7114d739e1faa043a40962ce601d253
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110674964"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638159"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Switch 活动
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Switch 活动提供的功能与编程语言中 switch 语句提供的功能相同。 它计算一组与条件求值匹配的 case 相对应的活动。
+
 
 ## <a name="syntax"></a>语法
 
@@ -66,10 +68,10 @@ Switch 活动提供的功能与编程语言中 switch 语句提供的功能相�
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必须
+属性 | 说明 | 允许的值 | 必需
 -------- | ----------- | -------------- | --------
-name | switch 活动的名称。 | 字符串 | 是
-type | 必须设置为 Switch* | 字符串 | 是
+name | switch 活动的名称。 | String | 是
+type | 必须设置为 Switch* | String | 是
 表达式 | 必须评估为字符串值的表达式 | 具有结果类型字符串的表达式 | 是
 cases | 一组 case，其中包含一个值和一组在该值与表达式求值匹配时要执行的活动。 必须至少提供一个 case。 最大限制为 25 个 case。 | Case 对象数组 | 是
 defaultActivities | 不满足表达式求值时执行的一组活动。 | 活动数组 | 是

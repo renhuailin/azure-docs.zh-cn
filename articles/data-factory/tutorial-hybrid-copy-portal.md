@@ -4,15 +4,15 @@ description: 了解如何在 Azure 数据工厂中使用自承载 Integration Ru
 ms.author: abnarain
 author: nabhishek
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
-ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 07/05/2021
-ms.openlocfilehash: 2b9f37d6f45591a43849c8d61787513702982e5b
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 55b0d4246616dd862cfcf9fb15069f13f130e857
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113436402"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638303"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>将数据从 SQL Server 数据库复制到 Azure Blob 存储
 
@@ -195,9 +195,9 @@ ms.locfileid: "113436402"
 
 1. 转到“属性”窗口底部的“接收器”选项卡，选择“+ 新建”。  
 
-1. 在“新建数据集”对话框中，选择“Azure Blob 存储”，  然后选择“继续”。
+1. 在“新建数据集”对话框中，选择“Azure Blob 存储”，  然后选择“继续”。 
 
-1. 在“选择格式”对话框中，选择数据的格式类型。 然后选择“继续”。
+1. 在“选择格式”对话框中，选择数据的格式类型。 然后选择“继续”。 
 
     ![数据格式选择](./media/doc-common-process/select-data-format.png)
 

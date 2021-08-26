@@ -1,18 +1,19 @@
 ---
 title: 从 Amazon 简单存储服务 (S3) 兼容存储中复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过使用 Azure 数据工厂将数据从 Amazon S3 兼容存储中复制到受支持的接收器数据存储。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 05/11/2021
-ms.openlocfilehash: 96b8ac29fadc03ca6e5b374acc269d5e19210b03
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 12d7080a9f000df1f2e7469defef820cd4231e1b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110103634"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638180"
 ---
 # <a name="copy-data-from-amazon-s3-compatible-storage-by-using-azure-data-factory"></a>通过使用 Azure 数据工厂从 Amazon S3 兼容存储中复制数据
 
@@ -54,7 +55,7 @@ ms.locfileid: "110103634"
 
 Amazon S3 兼容链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 AmazonS3Compatible 。 | 是 |
 | accessKeyId | 机密访问键 ID。 |是 |
@@ -97,7 +98,7 @@ Amazon S3 兼容链接服务支持以下属性：
 
 Amazon S3 兼容存储支持基于格式的数据集中 `location` 设置下的以下属性：
 
-| 属性   | 说明                                                  | 必须 |
+| 属性   | 说明                                                  | 必需 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中 `location` 下的 type 属性必须设置为 AmazonS3CompatibleLocation 。 | 是      |
 | bucketName | S3 兼容存储 Bucket 名称。                                          | 是      |
@@ -142,7 +143,7 @@ Amazon S3 兼容存储支持基于格式的数据集中 `location` 设置下的�
 
 Amazon S3 兼容存储支持基于格式的复制源中 `storeSettings` 设置下的以下属性：
 
-| 属性                 | 说明                                                  | 必须                                                    |
+| 属性                 | 说明                                                  | 必需                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为 AmazonS3CompatibleReadSettings 。 | 是                                                         |
 | 找到要复制的文件： |  |  |

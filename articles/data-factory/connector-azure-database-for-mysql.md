@@ -1,18 +1,20 @@
 ---
 title: 复制和转换 Azure Database for MySQL 中的数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过使用 Azure 数据工厂来复制和转换 Azure Database for MySQL 中的数据。
-ms.author: jianleishen
-author: jianleishen
+ms.author: susabat
+author: ssabat
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 03/10/2021
-ms.openlocfilehash: 69ed45d50c98321c68e55aa15304e6d439fe58ad
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 338405fd04617d3b1d563b7ac95d7233d23a8678
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109480250"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638853"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-mysql-by-using-azure-data-factory"></a>通过使用 Azure 数据工厂复制和转换 Azure Database for MySQL 中的数据
 
@@ -137,7 +139,7 @@ Azure Database for MySQL 链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：**AzureMySqlSource** | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 | queryCommandTimeout | 查询请求超时前的等待时间。默认值为 120 分钟 (02:00:00) | 否 |
 
 **示例：**
