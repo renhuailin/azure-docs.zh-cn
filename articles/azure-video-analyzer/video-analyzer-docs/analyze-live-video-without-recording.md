@@ -3,12 +3,12 @@ title: 在不录制的情况下分析实时视频 - Azure
 description: 使用管道拓扑，可以仅从实时视频流中提取分析，而不在边缘或云中进行录制。 本文讨论了这一概念。
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: da9134d3fd86185c9606b297de48e843c76d4909
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 8444759d231153419873679624645a96e07058ce
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604126"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515700"
 ---
 # <a name="analyzing-live-videos-without-recording"></a>无需录制即可分析实时视频
 
@@ -27,7 +27,7 @@ ms.locfileid: "114604126"
 下面显示的管道拓扑包括一个 [RTSP](pipeline.md#rtsp-source) 源节点、一个[运动检测处理器](pipeline.md#motion-detection-processor)节点和一个 [IoT 中心消息接收器](pipeline.md#iot-hub-message-sink)节点，你可以看到其 [JSON 表示形式](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/motion-detection/topology.json)中使用的设置。 根据此拓扑，你可以检测传入实时视频流中的运动，并通过 IoT 中心消息接收器节点将动作事件中继到其他应用和服务。 外部应用或服务可以触发警报，或向相应人员发送通知。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/analyze-live-video-without-recording/motion-detection.svg" alt-text="检测实时视频中的运动":::
+> :::image type="content" source="./media/get-started-detect-motion-emit-events/motion-detection.svg" alt-text="检测实时视频中的运动":::
 
 ### <a name="analyzing-video-using-a-custom-vision-model"></a>使用自定义视觉模型分析视频 
 

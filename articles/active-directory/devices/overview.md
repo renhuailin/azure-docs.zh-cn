@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo, ravenn, spunukol, jogro, jploegert
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ccb47e7600b50223ea0247c678a73ced4c86be3
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: d5115b8ce7d28e7fe3c254a1942ea035aa9db473
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113302962"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514883"
 ---
 # <a name="what-is-a-device-identity"></a>什么是设备标识？
 
-[设备标识](/graph/api/resources/device?view=graph-rest-1.0)是 Azure Active Directory (Azure AD) 中的一个对象。 此设备对象类似于用户、组或应用程序。 设备标识为管理员提供信息，供其在做出访问或配置决策时使用。
+[设备标识](/graph/api/resources/device?view=graph-rest-1.0&preserve-view=true)是 Azure Active Directory (Azure AD) 中的一个对象。 此设备对象类似于用户、组或应用程序。 设备标识为管理员提供信息，供其在做出访问或配置决策时使用。
 
 ![“Azure AD 设备”边栏选项卡中显示的设备](./media/overview/azure-active-directory-devices-all-devices.png)
 

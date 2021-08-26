@@ -1,7 +1,7 @@
 ---
 # <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>必填字段。 有关详细信息，请参阅 aka.ms/skyeye/meta。
 title: 媒体服务中的转换和作业：Azure 媒体服务 description: 转换描述了在 Azure 媒体服务中处理视频的规则。
-services: media-services author: IngridAtMicrosoft manager: femila ms.service: media-services ms.topic: conceptual ms.date: 03/22/2021 ms.author: inhenkel
+services: 媒体服务 author: IngridAtMicrosoft manager: femila ms.service: 媒体服务 ms.topic: 概念 ms.date: 2021 年 3 月 22 日 ms.author: inhenkel
 ---
 
 # <a name="transforms-and-jobs-in-media-services"></a>媒体服务中的转换和作业
@@ -96,7 +96,7 @@ services: media-services author: IngridAtMicrosoft manager: femila ms.service: m
 ## <a name="see-also"></a>另请参阅
 
 * [错误代码](/rest/api/media/jobs/get#joberrorcode)
-* [媒体服务实体的筛选、排序和分页](filter-order-page-entitites-how-to.md)
+* [媒体服务实体的筛选、排序和分页](filter-order-page-entities-how-to.md)
 
 ## <a name="next-steps"></a>后续步骤
 

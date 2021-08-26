@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 4/28/2021
 ms.custom: support-help-page
-ms.openlocfilehash: 75b2dd041e4c693258c39fbf0f32f76c1085a966
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3729651cc3a97a13435b0891e135e550dc48a255
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949887"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634510"
 ---
 # <a name="support-and-troubleshooting-for-azure-vms"></a>对 Azure VM 的支持和故障排除
 
@@ -86,19 +86,6 @@ ms.locfileid: "111949887"
 | Terraform | https://github.com/Azure/terraform/issues | 
 | Ansible | https://github.com/Azure/Ansible/issues | 
 
-
-
-## <a name="submit-feature-requests-on-azure-feedback"></a>在 Azure 反馈中提交功能请求
-
-<div class='icon is-large'>
-    <img alt='UserVoice' src='./media/logos/azure-feedback-logo.png'>
-</div>
-
-若要请求新功能，请在 Azure 反馈中发布请求。 分享你对改进 Azure 虚拟机的想法。
-
-| 服务                       | Azure 反馈 URL |
-|-------------------------------|---------------|
-| Azure 虚拟机  | https://feedback.azure.com/forums/216843-virtual-machines 
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>随时了解更新和新的版本
 

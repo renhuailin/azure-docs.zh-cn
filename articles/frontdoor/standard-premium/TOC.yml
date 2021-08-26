@@ -89,6 +89,8 @@
           href: troubleshoot-compression.md
         - name: 跨源资源共享
           href: troubleshoot-cross-origin-resources.md
+        - name: 订阅套餐和带宽限制
+          href: subscription-offers.md
         - name: 允许的证书颁发机构
           href: 'https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT'
 - name: 参考

@@ -1,23 +1,23 @@
 ---
 title: 教程 - 使用 Azure IoT Central 创建运行状况数据会审仪表板 | Microsoft Docs
 description: 教程 - 了解如何使用 Azure IoT Central 应用程序模板构建运行状况数据会审仪表板。
-author: philmea
-ms.author: philmea
+author: dominicbetts
+ms.author: dobett
 ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: d227d934eedd31342ce419576fffe7cea17efb1d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8fee85dfab72594f7a00f985d7d095b96d693e6
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101742787"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597235"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>教程：构建 Power BI 提供程序仪表板
 
-构建持续患者监视解决方案时，还可以为医护团队创建一个仪表板，以将患者数据可视化。 本教程介绍如何通过 IoT Central 持续患者监视应用程序模板创建 Power BI 实时流式处理仪表板。 如果用例不需要访问实时数据，可以使用 [IoT Central Power BI 仪表板](../core/howto-connect-powerbi.md)，使用经过简化的部署过程。 
+构建持续患者监视解决方案时，还可以为医护团队创建一个仪表板，以将患者数据可视化。 本教程介绍如何通过 IoT Central 持续患者监视应用程序模板创建 Power BI 实时流式处理仪表板。
 
 :::image type="content" source="media/dashboard-gif-3.gif" alt-text="仪表板 GIF":::
 
@@ -27,12 +27,11 @@ ms.locfileid: "101742787"
 
 在本教程中，你将了解如何执行以下操作：
 
-> [!div class="checklist"]
-> * 将数据从 Azure IoT Central 导出到 Azure 事件中心
-> * 设置 Power BI 流数据集
-> * 将逻辑应用连接到 Azure 事件中心
-> * 将数据从逻辑应用流式传输到 Power BI
-> * 构建患者生命体征数据的实时仪表板
+- 将数据从 Azure IoT Central 导出到 Azure 事件中心
+- 设置 Power BI 流数据集
+- 将逻辑应用连接到 Azure 事件中心
+- 将数据从逻辑应用流式传输到 Power BI
+- 构建患者生命体征数据的实时仪表板
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -49,6 +48,7 @@ ms.locfileid: "101742787"
 
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>设置到 Azure 事件中心的持续数据导出
+
 首先需要在订阅中设置从 Azure IoT Central 应用程序模板到 Azure 事件中心的持续数据导出。 可以遵循本 Azure IoT Central 教程所述的[导出到事件中心](../core/howto-export-data.md)的步骤来完成此设置。 对于本教程，只需导出遥测数据。
 
 
@@ -206,8 +206,3 @@ ms.locfileid: "101742787"
 
 1. 对于 IoT Central 应用程序，请转到“管理”选项卡并选择“删除”。
 
-
-## <a name="next-steps"></a>后续步骤
-
-> [!div class="nextstepaction"]
-> [持续患者监视体系结构指南](concept-continuous-patient-monitoring-architecture.md)

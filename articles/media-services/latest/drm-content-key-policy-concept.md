@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 6e60292c817ccad8eb1dd6cb3c33b944ab1c18a0
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: d8bff86065e4849723ab4001bd19218b89a2c8a2
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277672"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633728"
 ---
 # <a name="content-key-policies"></a>内容密钥策略
 
@@ -37,7 +37,7 @@ ms.locfileid: "106277672"
 * 应为媒体服务帐户设计一组有限的策略，并在需要相同的选项时重新将这些策略用于流定位符。 有关详细信息，请参阅[配额和限制](limits-quotas-constraints-reference.md)。
 * 内容密钥策略可更新。 密钥传送缓存可能需要长达 15 分钟来更新策略和拾取更新后的策略。 
 
-   更新策略后，你将覆盖现有的 CDN 缓存，这可能会导致使用缓存内容的客户出现播放问题。  
+   更新策略后，将覆盖现有的 CDN 缓存，这可能导致正在使用缓存内容的客户出现播放问题。  
 * 建议不要为每个资产创建新的内容密钥策略。 在需要使用相同策略选项的资产之间共享同一内容密钥策略的主要好处包括：
    
    * 可以更轻松地管理少量的策略。
@@ -53,7 +53,7 @@ ms.locfileid: "106277672"
 
 ## <a name="filtering-ordering-paging"></a>筛选、排序、分页
 
-请参阅[媒体服务实体的筛选、排序、分页](filter-order-page-entitites-how-to.md)。
+请参阅[媒体服务实体的筛选、排序、分页](filter-order-page-entities-how-to.md)。
 
 ## <a name="additional-notes"></a>附加说明
 

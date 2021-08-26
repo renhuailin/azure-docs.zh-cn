@@ -3,12 +3,12 @@ title: 有关使用 Azure Site Recovery 进行 VMware 灾难恢复的常见问�
 description: 获取使用 Azure Site Recovery 将本地 VMware VM 灾难恢复到 Azure 时出现的常见问题的解答。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: a272486eea111ab8c8e489556986f12f382e3f65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 006f0a51da933336a354b275bb882e5538832741
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97587786"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444308"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>有关 VMware 到 Azure 的复制的常见问题
 
@@ -96,7 +96,7 @@ Site Recovery 已通过 ISO 27001:2013、27018、HIPAA 和 DPA 认证， 目前�
 在要复制的每个 VM 上，使用以下多种方法之一安装该服务：
 
 - [推送安装](vmware-physical-mobility-service-overview.md#push-installation)
-- 从 UI 或 PowerShell [手动安装](vmware-physical-mobility-service-overview.md#install-the-mobility-service-using-ui)
+- 从 UI 或 PowerShell [手动安装](vmware-physical-mobility-service-overview.md#install-the-mobility-service-using-ui-classic)
 - 使用 [Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) 等部署工具进行部署
 
 ## <a name="managed-disks"></a>托管磁盘

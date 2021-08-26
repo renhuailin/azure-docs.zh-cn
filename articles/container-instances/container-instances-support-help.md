@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: troubleshooting
 ms.date: 6/4/2021
 ms.custom: support-help-page
-ms.openlocfilehash: b6b32861fd5f99edc55b2992dd825836aa9f5c6b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d8b3829b76e31d066ccab3054613128412dfd10e
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111961675"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634447"
 ---
 # <a name="support-and-troubleshooting-for-azure-container-instances"></a>对 Azure 容器实例的支持和故障排除
 
@@ -75,19 +75,6 @@ ms.locfileid: "111961675"
 | Terraform | https://github.com/Azure/terraform/issues | 
 | Ansible | https://github.com/Azure/Ansible/issues | 
 
-
-
-## <a name="submit-feature-requests-on-azure-feedback"></a>在 Azure 反馈中提交功能请求
-
-<div class='icon is-large'>
-    <img alt='UserVoice' src='./media/logos/azure-feedback-logo.png'>
-</div>
-
-若要请求新功能，请在 Azure 反馈中发布请求。 分享你对改进 Azure 容器实例的想法。
-
-| 服务                       | Azure 反馈 URL |
-|-------------------------------|---------------|
-| Azure 容器实例  | https://feedback.azure.com/forums/602224-azure-container-instances 
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>随时了解更新和新的版本
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: dea5a005815e551edfe5fbea8f65c7b3a23171e8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a6e63a1c5bbcf8c44f46cd87463fecb5d8b82f62
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735808"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515020"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor 中的日志数据引入时间
 Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 关于日志数据在收集后需要多长时间才可供使用，大家通常存有疑问。 本文将对影响此延迟的不同因素进行说明。
@@ -80,7 +80,7 @@ Azure Monitor 的首要任务是确保不会丢失任何客户数据，因此系
 
 | 步骤 | 属性或函数 | 注释 |
 |:---|:---|:---|
-| 在数据源处创建的记录 | [TimeGenerated](./log-standard-columns.md#timegenerated-and-timestamp) <br>如果数据源未设置此值，则它将设置为与 _TimeReceived 相同的时间。 |
+| 在数据源处创建的记录 | [TimeGenerated](./log-standard-columns.md#timegenerated) <br>如果数据源未设置此值，则它将设置为与 _TimeReceived 相同的时间。 |
 | Azure Monitor 引入终结点收到的记录 | [_TimeReceived](./log-standard-columns.md#_timereceived) | 该字段未针对批量处理进行优化，因此不应用于筛选大型数据集。 |
 | 存储在工作区中并可用于查询的记录 | [ingestion_time()](/azure/kusto/query/ingestiontimefunction) | 如果只需要筛选在特定时间窗口内引入的记录，则建议使用 ingestion_time()。 在本例中，建议同时添加具有更大范围的 TimeGenerated 筛选器。 |
 
