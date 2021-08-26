@@ -8,18 +8,18 @@ ms.reviewer: jukullam
 ms.service: azure
 ms.date: 05/20/2021
 ms.custom: github-actions-azure
-ms.openlocfilehash: 984bf8f225c34f34910bc57cb019a75301778360
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: c7782349fb467ef34169f46843b3c91d182c0995
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113288939"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741085"
 ---
 # <a name="scan-container-images-using-github-actions"></a>使用 GitHub Actions 扫描容器映像
 
 通过创建用于生成和扫描容器映像的工作流来开始使用 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions)。
 
-借助 GitHub Actions，可以生成和扫描映像，以及从工作流将映像推送到公共或专用[容器注册表](https://azure.microsoft.com/en-in/services/container-registry/)，从而加快 CI/CD 过程。
+借助 GitHub Actions，可以生成和扫描映像，以及从工作流将映像推送到公共或专用[容器注册表](https://azure.microsoft.com/services/container-registry/)，从而加快 CI/CD 过程。
 
 本文使用[GitHub 市场](https://github.com/marketplace) 中的 [容器映像扫描](https://github.com/marketplace/actions/container-image-scan)。
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/08/2021
 ms.author: pafarley
-ms.openlocfilehash: 2261bf9f52747bee8617b4393c207703a252a1ad
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 7e168c650361bf0579b5e718a71243ee485ba9dd
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113005989"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824684"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>安装和运行空间分析容器（预览版）
 
@@ -24,6 +24,7 @@ ms.locfileid: "113005989"
 ## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
+* [!INCLUDE [contributor-requirement](../includes/quickstarts/contributor-requirement.md)]
 * 拥有 Azure 订阅后，在 Azure 门户中为标准 S1 层<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="创建计算机视觉资源"  target="_blank">创建计算机视觉资源</a>，以获取密钥和终结点。 部署后，单击“转到资源”。
     * 需要使用所创建资源的密钥和终结点来运行空间分析容器。 稍后你将使用该密钥和终结点。
 
@@ -108,39 +109,54 @@ Azure Stack Edge 是一个硬件即服务解决方案，也是一台具有网络
 
 ###  <a name="enable-mps-on-azure-stack-edge"></a>在 Azure Stack Edge 上启用 MPS 
 
-1. 以管理员身份运行 Windows PowerShell 会话。 
+请按照以下步骤从 Windows 客户端进行远程连接。
 
-2. 确保 Windows 远程管理服务正在客户端上运行。 在 PowerShell 终端中使用以下命令 
-    
+1. 以管理员身份运行 Windows PowerShell 会话。
+2. 确保 Windows 远程管理服务正在客户端上运行。 在命令提示符处，键入：
+
     ```powershell
     winrm quickconfig
     ```
-    
-    如果看到了有关防火墙异常的警告，请检查网络连接类型，并参阅 [Windows 远程管理](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management)文档。
 
-3. 为设备 IP 地址分配一个变量。 
-    
-    ```powershell
-    $ip = "<device-IP-address>" 
-    ```
-    
-4. 若要将设备的 IP 地址添加到客户端的受信任主机列表，请使用以下命令： 
-    
-    ```powershell
-    Set-Item WSMan:\localhost\Client\TrustedHosts $ip -Concatenate -Force 
-    ```
+    有关详细信息，请参阅 [Windows 远程管理的安装和配置](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#quick-default-configuration)。
 
-5. 在设备上启动 Windows PowerShell 会话。 
+3. 将变量分配给 `hosts` 文件中使用的连接字符串。
 
     ```powershell
-    Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell 
+    $Name = "<Node serial number>.<DNS domain of the device>"
+    ``` 
+
+    将 `<Node serial number>` 和 `<DNS domain of the device>` 替换为设备的节点序列号和 DNS 域。 可以从设备的本地 Web UI 中的“证书”页获取节点序列号的值，从“设备”页获取 DNS 域。
+
+4. 若要将设备的连接字符串添加到客户端的受信任主机列表，请键入以下命令：
+
+    ```powershell
+    Set-Item WSMan:\localhost\Client\TrustedHosts $Name -Concatenate -Force
     ```
 
-6. 根据提示提供密码。 使用登录到本地 Web UI 时所用的同一密码。 默认的本地 Web UI 密码为 `Password1`。
+5. 在设备上启动 Windows PowerShell 会话：
 
-键入 `Start-HcsGpuMPS` 以在设备上启动 MPS 服务。 
+    ```powershell
+    Enter-PSSession -ComputerName $Name -Credential ~\EdgeUser -ConfigurationName Minishell -UseSSL
+    ```
 
-如需有关 Azure Stack Edge 设备故障排除的帮助，请参阅 [Azure Stack Edge 设备故障排除](spatial-analysis-logging.md#troubleshooting-the-azure-stack-edge-device) 
+    如果看到与信任关系相关的错误，请检查上传到你的设备的节点证书的签名链是否也安装在访问设备的客户端上。
+
+6. 根据提示提供密码。 使用登录到本地 Web UI 时所用的同一密码。 默认的本地 Web UI 密码为 Password1。 使用远程 PowerShell 成功连接到设备后，可以看到以下示例输出：  
+
+    ```
+    Windows PowerShell
+    Copyright (C) Microsoft Corporation. All rights reserved.
+    
+    PS C:\WINDOWS\system32> winrm quickconfig
+    WinRM service is already running on this machine.
+    PS C:\WINDOWS\system32> $Name = "1HXQG13.wdshcsso.com"
+    PS C:\WINDOWS\system32> Set-Item WSMan:\localhost\Client\TrustedHosts $Name -Concatenate -Force
+    PS C:\WINDOWS\system32> Enter-PSSession -ComputerName $Name -Credential ~\EdgeUser -ConfigurationName Minishell -UseSSL
+
+    WARNING: The Windows PowerShell interface of your device is intended to be used only for the initial network configuration. Please engage Microsoft Support if you need to access this interface to troubleshoot any potential issues you may be experiencing. Changes made through this interface without involving Microsoft Support could result in an unsupported configuration.
+    [1HXQG13.wdshcsso.com]: PS>
+    ```
 
 #### <a name="desktop-machine"></a>[台式机](#tab/desktop-machine)
 

@@ -7,17 +7,18 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: 95ecb64165075a7effe0c6eaf568ee172ad67b9b
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: bf516da87533fb057bd473aa50fc3d5304dbadd1
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226288"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643099"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server-preview"></a>快速入门：使用 MySQL Workbench 连接到 Azure Database for MySQL 灵活服务器（预览版）并查询其中的数据
 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
 
 本快速入门演示如何使用 MySQL Workbench 应用程序连接到 Azure Database for MySQL 灵活服务器。

@@ -5,15 +5,15 @@ author: timlt
 ms.author: timlt
 ms.service: iot-develop
 ms.topic: quickstart
-ms.date: 05/04/2021
+ms.date: 08/03/2021
 ms.collection: embedded-developer, application-developer
 zone_pivot_groups: iot-develop-set1
-ms.openlocfilehash: 04d7883088a4f8f9c12e384b3dcc3b4c0dfa6edf
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 0ac38398f31c2256761c0f1b75d03f2fafeb65f8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730795"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744311"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-hub"></a>快速入门：将设备中的遥测数据发送到 Azure IoT 中心
 
@@ -48,18 +48,6 @@ ms.locfileid: "114730795"
 [!INCLUDE [iot-develop-send-telemetry-iot-hub-python](../../includes/iot-develop-send-telemetry-iot-hub-python.md)]
 
 :::zone-end
-
-## <a name="view-telemetry"></a>查看遥测数据
-模拟设备在连接到 IoT 中心后，将开始发送遥测数据。 可以在 Azure 门户中查看有关 IoT 中心和设备的遥测指标及其他详细信息。
-
-1. 登录 [Azure 门户](https://portal.azure.com)。
-
-1. 单击你的 IoT 中心将其打开。  可以在“最近使用的资源”下找到你的 IoT 中心，或者可以在左侧导航栏上的“所有资源”中找到它 。
-
-1. 在“概述”页上滚动，以查看中心的概述指标。
-    :::image type="content" source="media/quickstart-send-telemetry-iot-hub/iot-hub-metrics.png" alt-text="IoT 中心设备指标概述":::
-
-1. （可选）若要查看更多指标并生成自定义视图，请在左侧导航栏上的“监视”中选择“指标” 。
     
 ## <a name="clean-up-resources"></a>清理资源
 如果不再需要本快速入门中创建的 Azure 资源，可以使用 Azure CLI 将其删除。

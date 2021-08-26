@@ -2,18 +2,17 @@
 title: 教程：设置环境 - Azure IoT Edge 上的机器学习
 description: 教程：准备环境，以便开发和部署用于在边缘实现机器学习的模块。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 71ef55d720ca768bfa45ea13ba7ec481b908d915
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b97634c1f7014cd0d1687e4fb523ce366bbca5f9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133792"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726397"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>教程：在 IoT Edge 上设置机器学习环境
 

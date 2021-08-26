@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/26/2021
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: fad0da60ab19a8614e25a56701c5ee2d1a80548c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 4f56571fb96f6d9baf28a119a978f2658de5616c
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410506"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860537"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>通过 Synapse SQL 使用外部表
 
@@ -49,7 +49,7 @@ ms.locfileid: "111410506"
 - 从 Azure Blob 存储和 Azure Data Lake Storage 导入数据并将其存储到专用 SQL 池中（仅限专用池中的 Hadoop 表）。
 
 > [!NOTE]
-> 与 [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 语句结合使用时，从外部表中选择数据可将数据导入到专用 SQL 池中的表。 除了 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)以外，外部表也可用于加载数据。 
+> 与 [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?context=/azure/synapse-analytics/context/context) 语句结合使用时，从外部表中选择数据可将数据导入到专用 SQL 池中的表。 除了 [COPY 语句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)以外，外部表也可用于加载数据。 
 > 
 > 有关加载操作的教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)。
 

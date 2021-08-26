@@ -8,14 +8,16 @@ ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: fd8294d60ed0af4e8d1eeb8a3cd07c737b69aadd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6910f8ad0ee5661cd71d57282c3abf99c7dde67a
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96011449"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643081"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-powershell"></a>教程：使用 PowerShell 设计 Azure Database for MySQL
+
+[!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
 Azure Database for MySQL 是 Microsoft 云中基于 MySQL Community Edition 数据库引擎的一种关系型数据库服务。 本教程介绍如何使用 PowerShell 和其他实用程序来执行以下操作：
 

@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: a889f0b740d506bd546f1fb67f050317146c31e8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 3667a201e293a844fbcd60b4f00c43aee03ca550
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677884"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015645"
 ---
 # <a name="tutorial-configure-the-opc-publisher"></a>教程：配置 OPC 发布服务器
 
@@ -44,7 +44,7 @@ IoT Edge 为 OPC 发布服务器提供了自动访问 IoT 中心所用的安全�
 
 ## <a name="configuration-via-configuration-file"></a>通过配置文件配置
 
-配置 OPC 发布服务器的最简单方法是通过配置文件。 示例配置文件以及有关其格式的文档是通过此存储库中的 [`publishednodes.json`](https://raw.githubusercontent.com/Azure/iot-edge-opc-publisher/master/opcpublisher/publishednodes.json) 文件提供的。
+配置 OPC 发布服务器的最简单方法是通过配置文件。 示例配置文件以及有关其格式的文档是通过此存储库中的 [`publishednodes.json`](https://raw.githubusercontent.com/Azure/Industrial-IoT/main/components/opc-ua/src/Microsoft.Azure.IIoT.OpcUa.Edge.Publisher/tests/Engine/publishednodes.json) 文件提供的。
 配置文件语法随时间推移而更改，OPC 发布服务器仍可读取旧格式，但在保存配置时将它们转换为最新格式，并定期以自动方式进行。
 
 基本配置文件如下所示：

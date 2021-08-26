@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/09/2021
-ms.openlocfilehash: 21e7e54e346d24758711990bfa5f71d387ba4956
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: aea20a9f8a6f0725220a60e425b48e22c6aa8794
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114403909"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862117"
 ---
 # <a name="quickstart-connect-an-mxchip-az3166-devkit-to-iot-hub"></a>快速入门：将 MXCHIP AZ3166 devkit 连接到 IoT 中心
 
@@ -243,7 +243,7 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 1. 启动 **Termite**。
     > [!TIP]
-    > 如果无法将 Termite 连接到 devkit，请安装 [ST-LINK 驱动程序](https://my.st.com/content/ccc/resource/technical/software/driver/files/stsw-link009.zip)，然后重试。 有关其他步骤，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)。
+    > 如果无法将 Termite 连接到 devkit，请安装 [ST-LINK 驱动程序](https://www.st.com/en/development-tools/stsw-link009.html)，然后重试。 有关其他步骤，请参阅[故障排除](troubleshoot-embedded-device-quickstarts.md)。
 1. 选择“设置”。
 1. 在“串行端口设置”对话框中，检查以下设置并根据需要进行更新：
     * **波特率**：115,200
