@@ -9,14 +9,13 @@ metadata:
   ms.topic: landing-page
   author: dominicbetts
   ms.author: dobett
-  manager: philmea
   ms.date: 09/16/2019
-  ms.openlocfilehash: 366cd9973ff72ecf638a2bbaec69004e45552ac8
-  ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+  ms.openlocfilehash: 9ca988e573ad61316c233223c6aa6462ad89bb76
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/07/2021
-  ms.locfileid: "109480952"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121735201"
 landingContent:
 - title: 关于 IoT 解决方案加速器
   linkLists:
@@ -33,11 +32,11 @@ landingContent:
     - text: 工业 IoT 概述
       url: overview-iot-industrial.md
     - text: OPC 孪生概述
-      url: overview-opc-twin.md
+      url: /previous-versions/azure/iot-accelerators/overview-opc-twin
     - text: OPC 保管库概述
-      url: overview-opc-vault.md
+      url: /previous-versions/azure/iot-accelerators/overview-opc-vault
     - text: OPC 发布服务器概述
-      url: overview-opc-publisher.md
+      url: /previous-versions/azure/iot-accelerators/overview-opc-publisher
     - text: 什么是工业 IoT？
       url: iot-accelerators-connected-factory-features.md
   - linkListType: quickstart

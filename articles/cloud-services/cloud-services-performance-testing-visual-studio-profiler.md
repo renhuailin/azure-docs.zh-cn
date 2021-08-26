@@ -8,17 +8,16 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: d392db5a2cd38ba1195764d72b30de6dc90000ef
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 0ea51a0e6817416fb145dbc885f8f900b9bebd8d
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113092682"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823622"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-classic-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>在 Azure 计算模拟器中使用 Visual Studio 探查器来本地测试云服务（经典）的性能
 
-> [!IMPORTANT]
-> [Azure 云服务（外延支持）](../cloud-services-extended-support/overview.md)是 Azure 云服务产品基于 Azure 资源管理器的新型部署模型。 进行此更改后，在基于 Azure 服务管理器的部署模型上运行的 Azure 云服务已重命名为云服务（经典），所有新部署都应使用[云服务（外延支持）](../cloud-services-extended-support/overview.md)。
+[!INCLUDE [Cloud Services (classic) deprecation announcement](includes/deprecation-announcement.md)]
 
 可通过各种工具和技术来测试云服务的性能。
 在将云服务发布到 Azure 后，可以让 Visual Studio 收集分析数据，并在本地进行分析，如[分析 Azure 应用程序][1]中所述。

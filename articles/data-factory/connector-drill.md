@@ -1,17 +1,20 @@
 ---
 title: 使用 Azure 数据工厂从 Drill 复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 Drill 复制到支持的接收器数据存储。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jianleishen
-ms.openlocfilehash: 3b61916bb5c9d10e16a39c250fd9b94323633569
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: e3e8217c1a19058f16e5ab1ad105bc1ec8ee59f3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109487198"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638096"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory"></a>使用 Azure 数据工厂从 Drill 复制数据
 
@@ -104,7 +107,7 @@ Drill 链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的类型属性必须设置为：DrillTable | 是 |
-| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
 | 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
@@ -136,7 +139,7 @@ Drill 链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：DrillSource | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

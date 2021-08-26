@@ -4,12 +4,12 @@ description: 了解如何与 Kubernetes 资源交互，从 Azure 门户管理 Az
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: ce5dc74dc3625b2b1fed447c4e6480308267d32a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d48a11a3897a4de8f613e015ffc87c84bea08950
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100578676"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779095"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal"></a>从 Azure 门户访问 Kubernetes 资源
 
@@ -81,7 +81,7 @@ Kubernetes 资源视图还包括一个 YAML 编辑器。 内置的 YAML 编辑�
 > 可以添加 [API 服务器已授权 IP 范围](api-server-authorized-ip-ranges.md) AKS 功能，以便限制 API 服务器仅访问防火墙的公共终结点。 此类群集的另一个选项是更新 `--api-server-authorized-ip-ranges`，以包括（从所浏览的门户）访问本地客户端计算机或 IP 地址范围的权限。 要允许此访问，需要计算机的公共 IPv4 地址。 可通过以下命令或在 Internet 浏览器中搜索“我的 IP 地址是多少”来查找此地址。
 ```bash
 # Retrieve your IP address
-CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+CURRENT_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
 
 # Add to AKS approved list
 az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32

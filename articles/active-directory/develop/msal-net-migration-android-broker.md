@@ -11,13 +11,13 @@ ms.workload: identity
 ms.date: 08/31/2020
 ms.author: aiwang
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 01af0e620ecb100839f7b1101e5ff9fcfc874eea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: aaddev, has-adal-ref
+ms.openlocfilehash: eca1a3246853bafbf498dd3a751bf86f60c2bdde
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92206663"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419034"
 ---
 # <a name="migrate-android-applications-that-use-a-broker-from-adalnet-to-msalnet"></a>将使用代理的 Android 应用程序从 ADAL.NET 迁移到 MSAL.NET
 

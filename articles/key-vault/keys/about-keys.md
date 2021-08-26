@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 02/17/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 602c146b014d2c129deb7a6cb4539e2cf9260d0c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 74d08095b8ea1df0ffb34264c2f0ca3af64b5dd8
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114471728"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772688"
 ---
 # <a name="about-keys"></a>关于密钥
 
@@ -36,8 +36,8 @@ Azure Key Vault 提供了两种类型的资源来存储和管理加密密钥。 
 Key Vault 中的加密密钥表示为 JSON Web 密钥 [JWK] 对象。 JavaScript 对象表示法 (JSON) 和 JavaScript 对象签名和加密 (JOSE) 规范如下：
 
 -   [JSON Web 密钥 (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
--   [JSON Web 加密 (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
--   [JSON Web 算法 (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
+-   [JSON Web 加密 (JWE)](https://datatracker.ietf.org/doc/html/draft-jones-json-web-encryption)  
+-   [JSON Web 算法 (JWA)](https://datatracker.ietf.org/doc/html/draft-ietf-jose-json-web-algorithms)  
 -   [JSON Web 签名 (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature) 
 
 此外，还扩展了基本 JWK/JWA 规范，以启用对于 Azure Key Vault 和托管 HSM 实现独有的密钥类型。 

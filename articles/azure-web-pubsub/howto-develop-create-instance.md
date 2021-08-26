@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: quickstart
 ms.date: 03/17/2021
-ms.openlocfilehash: 7b2b66c0c3865bb07d4b4ad25d3d777484ce194a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cb4fead9c56eed8496e1eaf15f47815b1726d6dd
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738443"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445801"
 ---
 # <a name="quickstart-create-a-web-pubsub-instance-from-azure-portal"></a>快速入门：从 Azure 门户创建 Web PubSub 实例
 
@@ -30,5 +30,7 @@ ms.locfileid: "121738443"
 > [通过 Azure CLI 试用实例](./quickstart-cli-try.md#play-with-the-instance)
 
 ## <a name="next-steps"></a>后续步骤
+
+在现实应用程序中，你可以使用各种语言的 SDK 来生成自己的应用程序。 我们还提供了函数扩展，供你轻松生成无服务器应用程序。
 
 [!INCLUDE [next step](includes/include-next-step.md)]

@@ -3,12 +3,12 @@ title: 使用 Bicep 将资源部署到资源组
 description: 介绍如何通过 Bicep 文件部署资源。 它介绍如何将多个资源组作为目标。
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: f32ee9ce08b447a776ae74d19c0edabba233f345
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 4d68d0d28763c21574a3fd4f2f4c57561759e51e
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111025861"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634474"
 ---
 # <a name="resource-group-deployments-with-bicep-files"></a>使用 Bicep 文件部署资源组
 
@@ -87,16 +87,16 @@ New-AzResourceGroupDeployment `
 // resource deployed to target resource group
 resource exampleResource 'Microsoft.Storage/storageAccounts@2019-06-01' = {
   ...
-} 
+}
 ```
 
 有关示例模板，请参阅[部署到目标资源组](#deploy-to-target-resource-group)。
 
 ### <a name="scope-to-different-resource-group"></a>将范围限定为其他资源组
 
-要将资源部署到不是目标资源组的资源组，请添加[模块](modules.md)。 使用 [resourceGroup 函数](bicep-functions-scope.md#resourcegroup)设置该模块的 `scope` 属性。 
+要将资源部署到不是目标资源组的资源组，请添加[模块](modules.md)。 使用 [resourceGroup 函数](bicep-functions-scope.md#resourcegroup)设置该模块的 `scope` 属性。
 
-如果资源组位于其他订阅中，请提供该订阅 ID 和资源组名称。 如果资源组与当前部署位于同一订阅，请仅提供资源组名称。 如果未在 [resourceGroup 函数](bicep-functions-scope.md#resourcegroup)中指定订阅，则使用当前订阅。 
+如果资源组位于其他订阅中，请提供该订阅 ID 和资源组名称。 如果资源组与当前部署位于同一订阅，请仅提供资源组名称。 如果未在 [resourceGroup 函数](bicep-functions-scope.md#resourcegroup)中指定订阅，则使用当前订阅。
 
 下面的示例显示了一个以其他订阅中的资源组为目标的模块。
 
@@ -127,9 +127,9 @@ module exampleModule 'module.bicep' = {
 
 ### <a name="scope-to-subscription"></a>订阅的范围
 
-要将资源部署到订阅，请添加一个模块。 使用 [subscription 函数](bicep-functions-scope.md#subscription)设置其 `scope` 属性。 
+要将资源部署到订阅，请添加一个模块。 使用 [subscription 函数](bicep-functions-scope.md#subscription)设置其 `scope` 属性。
 
-要部署到当前订阅，请使用不带参数的 subscription 函数。 
+要部署到当前订阅，请使用不带参数的 subscription 函数。
 
 ```bicep
 
@@ -191,7 +191,7 @@ output output string = mgName
 
 若要在目标资源组部署资源，请在模板的“资源”部分定义这些资源。 以下模板会在部署操作中指定的资源组中创建一个存储帐户。
 
-:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.bicep":::
+:::code language="bicep" source="~/azure-docs-bicep-samples/get-started-with-bicep-files/add-output/azuredeploy.bicep":::
 
 ## <a name="deploy-to-multiple-resource-groups"></a>部署到多个资源组
 

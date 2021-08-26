@@ -1,17 +1,20 @@
 ---
 title: 使用 Azure 数据工厂从 HubSpot 复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动，将数据从 HubSpot 复制到支持的接收器数据存储。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jianleishen
-ms.openlocfilehash: ff50962baf4337f977406739da16876ab878a2d7
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: e0c5ad1ce0f17c6dd2ce7126d0c853d4d2dfd773
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484930"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637966"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory"></a>使用 Azure 数据工厂从 HubSpot 复制数据
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -116,7 +119,7 @@ HubSpot 链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 的 type 属性必须设置为：HubspotSource  | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Companies where Company_Id = xxx"`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM Companies where Company_Id = xxx"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

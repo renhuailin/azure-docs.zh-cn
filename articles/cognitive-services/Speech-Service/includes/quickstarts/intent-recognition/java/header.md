@@ -1,15 +1,15 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
-ms.author: trbye
-ms.openlocfilehash: 18427d47f4a6ceb9065c9031df821c17b9c9a3e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: lajanuar
+ms.openlocfilehash: 12132f33c7d229ac2c83308fc71f94eb07689b13
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86544281"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071706"
 ---
 可以在 GitHub 上查看或下载所有<a href="https://aka.ms/speech/github-java">语音 SDK Java 示例</a>。 

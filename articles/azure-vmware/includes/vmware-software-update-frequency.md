@@ -3,16 +3,19 @@ title: VMware 软件更新频率
 description: Azure VMware 解决方案支持的 VMware 软件更新频率。
 ms.topic: include
 ms.date: 04/23/2021
-ms.openlocfilehash: 5adf381e3c27197b6791dbd389d3b7359fa30248
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+author: shortpatti
+ms.author: v-patsho
+ms.service: azure-vmware
+ms.openlocfilehash: 3295ab9da93b1e1ec1cace62653670de366c880d
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950977"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324311"
 ---
 <!-- Used in faq.md and concepts-private-clouds-clusters.md -->
 
-主机维护和生命周期管理对私有云群集的容量或性能没有影响。  私有云软件按计划升级，该计划将跟踪 VMware 发布的软件捆绑包。 私有云无需停机即可升级。
+主机维护和生命周期管理对私有云群集的容量或性能没有影响。 私有云软件按计划升级，该计划将跟踪 VMware 发布的软件捆绑包。  因此，私有云无需停机即可升级。
 
 私有云软件捆绑包升级的目的是使软件与 VMware 最新发布的版软件捆绑包保持同一版本。 私有云软件版本可能不同于各个软件组件（ESXi、NSX-T、vCenter、vSAN）的最新版本。 更新还包括驱动程序、网络交换机上的软件和裸机节点上的固件。
 

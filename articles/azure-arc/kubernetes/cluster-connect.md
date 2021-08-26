@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: 使用群集连接安全连接到已启用 Azure Arc 的 Kubernetes 群集
-ms.openlocfilehash: 54a462164e4b992451cc66f8a0ec229aff27f2e1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 65070f8850bb18be5c142c658190ebe9da41f7a0
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108145584"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122767903"
 ---
 # <a name="use-cluster-connect-to-connect-to-azure-arc-enabled-kubernetes-clusters"></a>使用群集连接连接到已启用 Azure Arc 的 Kubernetes 群集
 
@@ -55,7 +55,7 @@ ms.locfileid: "108145584"
     | 端点 | 端口 |
     |----------------|-------|
     |`*.servicebus.windows.net` | 443 |
-    |`*.guestnotificationservice.azure.com` | 443 |
+    |`guestnotificationservice.azure.com`, `*.guestnotificationservice.azure.com` | 443 |
 
 ## <a name="usage"></a>使用情况
 

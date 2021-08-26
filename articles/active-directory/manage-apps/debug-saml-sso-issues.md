@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 02/18/2019
 ms.reviewer: ergreenl
-ms.openlocfilehash: 8e01b93c2371f55f56d9c9284894c3bdbbaac993
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 272e2d8a7234ca97646cf044be997f9ddba415e1
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744127"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772256"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>在 Azure Active Directory 中调试应用程序的基于 SAML 的单一登录
 
@@ -30,7 +30,6 @@ ms.locfileid: "121744127"
 
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
 - [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
-- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 ## <a name="test-saml-based-single-sign-on"></a>测试基于 SAML 的单一登录
 
