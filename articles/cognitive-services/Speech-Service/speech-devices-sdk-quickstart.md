@@ -3,20 +3,20 @@ title: 快速入门：在 Windows、Linux 或 Android 上运行语音设备 SDK 
 titleSuffix: Azure Cognitive Services
 description: 本文中有 Windows、Linux 或 Android 语音设备 SDK 入门的先决条件和说明。
 services: cognitive-services
-author: nitinme
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
-ms.author: nitinme
+ms.author: lajanuar
 zone_pivot_groups: platforms-set-of-three
-ms.openlocfilehash: 39aaec3c1690ad8476e2bc26ff22ba252dc569b2
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: ba4356d39c0e5646f9caef54c824a64a3f71ba9f
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114709176"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122067986"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows-linux-or-android"></a>快速入门：在 Windows、Linux 或 Android 上运行语音设备 SDK 示例应用
 

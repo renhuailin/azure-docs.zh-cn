@@ -1,16 +1,16 @@
 ---
-author: trevorbye
+author: laujan
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
-ms.author: trbye
+ms.author: lajanuar
 ms.custom: devx-track-js
-ms.openlocfilehash: bbd7091eb2139801956d77ec8b3ca821c935ac64
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 44ff9049f31a220d8a459f682597b437203a5c4d
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98109488"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122071717"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>从一些样本代码入手
 
@@ -31,7 +31,7 @@ ms.locfileid: "98109488"
 
 现在，我们将为输入框添加一些基本 UI，引用语音 SDK 的 JavaScript，并获取授权令牌（如果有）。
 
-```html  
+```html
 <body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;">
   <div id="content" style="display:none">
     <table width="100%">
@@ -132,7 +132,7 @@ ms.locfileid: "98109488"
     });
   </script>
 ```
- 
+
 ## <a name="create-a-speech-configuration"></a>创建语音配置
 
 在初始化 `SpeechRecognizer` 对象之前，需要创建一个使用订阅密钥和订阅区域的配置。 将此代码插入 `startRecognizeOnceAsyncButton.addEventListener()` 方法。
@@ -178,7 +178,7 @@ ms.locfileid: "98109488"
 
 需要将 `LanguageUnderstandingModel` 与意向识别器相关联，并添加要识别的意向。 我们将使用预生成的域中的意向进行主自动化。
 
-将此代码插入到你的 `IntentRecognizer` 下方。 请确保将 `"YourLanguageUnderstandingAppId"` 替换为 LUIS 应用 ID。 
+将此代码插入到你的 `IntentRecognizer` 下方。 请确保将 `"YourLanguageUnderstandingAppId"` 替换为 LUIS 应用 ID。
 
 ```JavaScript
         if (appId.value !== "" && appId.value !== "YOUR_LANGUAGE_UNDERSTANDING_APP_ID") {
@@ -205,9 +205,9 @@ ms.locfileid: "98109488"
         recognizer.recognizeOnceAsync(
           function (result) {
             window.console.log(result);
-  
+
             phraseDiv.innerHTML = result.text + "\r\n";
-  
+
             statusDiv.innerHTML += "(continuation) Reason: " + SpeechSDK.ResultReason[result.reason];
             switch (result.reason) {
               case SpeechSDK.ResultReason.RecognizedSpeech:
@@ -215,7 +215,7 @@ ms.locfileid: "98109488"
                 break;
               case SpeechSDK.ResultReason.RecognizedIntent:
                 statusDiv.innerHTML += " Text: " + result.text + " IntentId: " + result.intentId;
-                
+
                 // The actual JSON returned from Language Understanding is a bit more complex to get to, but it is available for things like
                 // the entity name and type if part of the intent.
                 statusDiv.innerHTML += " Intent JSON: " + result.properties.getProperty(SpeechSDK.PropertyId.LanguageUnderstandingServiceResponse_JsonResult);
@@ -228,7 +228,7 @@ ms.locfileid: "98109488"
               case SpeechSDK.ResultReason.Canceled:
                 var cancelDetails = SpeechSDK.CancellationDetails.fromResult(result);
                 statusDiv.innerHTML += " CancellationReason: " + SpeechSDK.CancellationReason[cancelDetails.reason];
-              
+
               if (cancelDetails.reason === SpeechSDK.CancellationReason.Error) {
                 statusDiv.innerHTML += ": " + cancelDetails.errorDetails;
               }
@@ -239,7 +239,7 @@ ms.locfileid: "98109488"
           },
           function (err) {
             window.console.log(err);
-    
+
             phraseDiv.innerHTML += "ERROR: " + err;
             startIntentRecognizeAsyncButton.disabled = false;
           });
@@ -247,7 +247,7 @@ ms.locfileid: "98109488"
 
 ## <a name="check-your-code"></a>查看代码
 
- [!code-html [SampleCode](~/samples-cognitive-services-speech-sdk/quickstart/javascript/browser/index-intent-recognition.html)]
+ [!code-html [SampleCode](~/samples-cognitive-services-speech-sdk/quickstart/javascript/browser/intent-recognition/index.html)]
 
 ## <a name="create-the-token-source-optional"></a>创建令牌源（可选）
 

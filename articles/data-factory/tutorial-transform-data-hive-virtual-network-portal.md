@@ -2,17 +2,17 @@
 title: 通过 Azure 门户在 Azure 虚拟网络中使用 Hive 转换数据
 description: 本教程提供有关在 Azure 数据工厂中使用 Hive 活动转换数据的分步说明。
 ms.service: data-factory
+ms.subservice: tutorials
 author: nabhishek
 ms.author: abnarain
 ms.topic: tutorial
-ms.custom: seo-dt-2019
 ms.date: 06/07/2021
-ms.openlocfilehash: 90166f1a6716d9ed6b30ca002836d03d26c1ee3b
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 565a81f06d3fe70b4fc4a27eef0afba95748e5ed
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113215887"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722436"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>通过 Azure 门户在 Azure 数据工厂中使用 Hive 活动转换 Azure 虚拟网络中的数据
 
@@ -165,7 +165,7 @@ ms.locfileid: "113215887"
     2. 为“通过集成运行时连接”选择“MySelfHostedIR”。 
     3. 对于“存储帐户名称”，请选择自己的 Azure 存储帐户。 
     4. 若要测试与存储帐户的连接，请单击“测试连接”。
-    5. 单击“ **保存**”。
+    5. 单击“保存”  。
    
         ![指定 Azure Blob 存储帐户](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-storage-account.png)
 

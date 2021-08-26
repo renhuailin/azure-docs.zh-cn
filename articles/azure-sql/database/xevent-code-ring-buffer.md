@@ -9,14 +9,14 @@ ms.devlang: PowerShell
 ms.topic: sample
 author: WilliamDAssafMSFT
 ms.author: wiassaf
-ms.reviewer: sstein
+ms.reviewer: mathoma
 ms.date: 12/19/2018
-ms.openlocfilehash: a646588616b874e40b1ed2a5a0b5e691b075075d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0a74c6851c8dc3e2c2e4808f324fe711e31fd603
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96487297"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741201"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL 数据库中扩展事件的环形缓冲区目标代码
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,11 +45,11 @@ ms.locfileid: "96487297"
 
 * Azure 帐户和订阅。 可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 可在其中创建表的任何数据库。
-  
+
   * 或者，也可以在几分钟内 [创建一个 **AdventureWorksLT** 演示数据库](single-database-create-quickstart.md)。
 * SQL Server Management Studio (ssms.exe)，最好是每月最新更新版。
   可从以下位置下载最新的 ssms.exe：
-  
+
   * 标题为[下载 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 的主题。
   * [直接指向下载位置的链接。](https://go.microsoft.com/fwlink/?linkid=616025)
 
@@ -226,7 +226,7 @@ GO
 
 &nbsp;
 
-```
+```xml
 <RingBufferTarget truncated="0" processingTime="0" totalEventsProcessed="2" eventCount="2" droppedCount="0" memoryUsed="1728">
   <event name="sql_statement_starting" package="sqlserver" timestamp="2015-09-22T15:29:31.317Z">
     <data name="state">

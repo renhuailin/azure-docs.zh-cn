@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: e4a76367b65556c0f6b030eba79355382e8db0c6
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: fc8c1db006ddd8b1ca455d7e47be0d8fa8381f1c
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754508"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181392"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>创建和共享 Log Analytics 数据的仪表板
 
@@ -23,7 +23,7 @@ Log Analytics 仪表板可直观显示所有已保存的日志查询，使你能
 > * 将日志查询添加到共享仪表板 
 > * 在共享仪表板中自定义磁贴
 
-要完成本教程中的示例，必须将现有虚拟机[连接到 Log Analytics 工作区](../vm/quick-collect-azurevm.md)。  
+要完成本教程中的示例，必须将现有虚拟机[连接到 Log Analytics 工作区](../vm/monitor-virtual-machine.md)。  
  
 ## <a name="sign-in-to-azure-portal"></a>登录到 Azure 门户
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。 
