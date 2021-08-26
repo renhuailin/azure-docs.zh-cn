@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/03/2021
+ms.date: 07/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 9e233e30521e5c1fa05509fa6dc42a567f6ac4e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d89a197e21185c345fe166d0e5890b125f5797dd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653093"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743997"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>教程：将 Bynder 与 Azure Active Directory 集成
 
@@ -75,27 +75,27 @@ ms.locfileid: "101653093"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值 ：
+1. 如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分中输入以下字段的值   ：
 
     a. 在“标识符”文本框中，使用以下模式键入 URL： 
     
-    对于默认域：`https://<company name>.getbynder.com`
+    对于默认域：`https://<COMPANY_NAME>.bynder.com`
     
-    对于自定义域：`https://<subdomain>.<domain>.com`
+    对于自定义域：`https://<SUBDOMAIN>.<DOMAIN>.com`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL： 
     
-     对于默认域：`https://<company name>.getbynder.com/sso/SAML/authenticate/`
+     对于默认域：`https://<COMPANY_NAME>.bynder.com/sso/SAML/authenticate/`
     
-    对于自定义域：`https://<subdomain>.<domain>.com/sso/SAML/authenticate/`
+    对于自定义域：`https://<SUBDOMAIN>.<DOMAIN>.com/sso/SAML/authenticate/`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL： 
     
-     对于默认域：`https://<company name>.getbynder.com/login/`
+     对于默认域：`https://<COMPANY_NAME>.bynder.com/login/`
     
-     对于自定义域：` https://<subdomain>.<domain>.com/login/`
+     对于自定义域：` https://<SUBDOMAIN>.<DOMAIN>.com/login/`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [Bynder 客户端支持团队](https://www.bynder.com/en/support/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

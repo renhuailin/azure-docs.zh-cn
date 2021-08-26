@@ -2,7 +2,6 @@
 title: 教程：在 Azure IoT 中心内证明 CA 证书的所有权 | Microsoft Docs
 description: 教程：证明你拥有 Azure IoT 中心的 CA 证书
 author: v-gpettibone
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
@@ -12,12 +11,12 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 0140166ac173e51f9b9d4e9617de3b70d24e1474
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: fb91c2e32b8b9ee3f3781f3930fe6fdfc5501e01
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113215049"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732776"
 ---
 # <a name="tutorial-proving-possession-of-a-ca-certificate"></a>教程：证明 CA 证书的所有权
 

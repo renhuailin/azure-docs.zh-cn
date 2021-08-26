@@ -19,8 +19,13 @@
       href: partners.md
     - name: 常见问题解答
       href: faq.md
+- name: 参考
+  items:
+    - name: 用于 Java 的 SDK
+      href: 'https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/hybridnetwork/azure-resourcemanager-hybridnetwork'
+    - name: 用于 Python 的 SDK
+      href: 'https://pypi.org/project/azure-mgmt-hybridnetwork/1.0.0/'
 - name: 资源
-  expanded: true
   items:
     - name: 网络功能管理器产品页
       href: 'https://go.microsoft.com/fwlink/?linkid=2166098'

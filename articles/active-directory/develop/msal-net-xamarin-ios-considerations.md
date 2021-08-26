@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 09/09/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 62eb4ab9eb6e4b0e7be0f7aadae1173950d21615
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp, aaddev, has-adal-ref
+ms.openlocfilehash: 3c44d6f6c5c3dabe1fb2e5d22083cc31c2294e72
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98064481"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429113"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>将 Xamarin iOS 与 MSAL.NET 配合使用时的注意事项
 

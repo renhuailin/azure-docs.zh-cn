@@ -3,15 +3,16 @@ title: 使用 Azure 数据工厂 UI 创建 Azure 数据工厂
 description: 创建包含管道的数据工厂。该管道可将数据从 Azure Blob 存储中的一个位置复制到另一个位置。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: quickstart
 ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: 9d8bf0d62518c94458a5b989c040f8eaefea11cd
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: ad2e2edf916b5b2c4309ed18c5a3349e67adfc33
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113436993"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749895"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入门：使用 Azure 数据工厂 UI 创建数据工厂 
 

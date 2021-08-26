@@ -4,14 +4,15 @@ description: 本文将 Azure 数据工厂与 Azure 数据工厂版本 1 进行�
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: overview
 ms.date: 04/09/2018
-ms.openlocfilehash: dc5a4c92ee4ac0acd4a69ef94fec0981e328d829
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47dc63568683007d714997a2921ce27387609ba2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393711"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722381"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure 数据工厂与数据工厂版本 1 之对比
 

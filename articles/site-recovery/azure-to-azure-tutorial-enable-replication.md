@@ -2,14 +2,14 @@
 title: 教程：使用 Azure Site Recovery 设置 Azure VM 灾难恢复
 description: 在本教程中，使用 Site Recovery 服务将 Azure VM 的灾难恢复设置到其他 Azure 区域。
 ms.topic: tutorial
-ms.date: 11/03/2020
+ms.date: 07/25/2021
 ms.custom: mvc
-ms.openlocfilehash: 473a264ef497cab4bd4f88372600161b33178099
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 67dcbaf555de14c445f041b200ead48c4deac5ee
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97656863"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121742978"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-azure-vms"></a>教程：为 Azure VM 设置灾难恢复
 
@@ -32,7 +32,7 @@ ms.locfileid: "97656863"
 
 开始本教程前，请执行以下操作：
 
-- [查看支持的区域](azure-to-azure-support-matrix.md#region-support)。 可以在同一地理位置的任意两个区域之间为 Azure VM 设置灾难恢复。
+- [查看支持的区域](azure-to-azure-support-matrix.md#region-support)。 
 - 需要一个或多个 Azure VM。 验证 [Windows](azure-to-azure-support-matrix.md#windows) 或 [Linux](azure-to-azure-support-matrix.md#replicated-machines---linux-file-systemguest-storage) VM 是否受支持。
 - 查看 VM [计算](azure-to-azure-support-matrix.md#replicated-machines---compute-settings)、[存储](azure-to-azure-support-matrix.md#replicated-machines---storage)和[网络](azure-to-azure-support-matrix.md#replicated-machines---networking)要求。
 - 本教程假定 VM 未加密。 如果要为加密的 VM 设置灾难恢复，请[按照本文](azure-to-azure-how-to-enable-replication-ade-vms.md)进行操作。
@@ -47,7 +47,7 @@ Azure 帐户需要某些权限才能创建恢复服务保管以及在目标区�
 
 - 如果你刚刚创建了免费的 Azure 订阅，则你是帐户管理员，无需执行任何其他操作。
 - 如果你不是管理员，请联系管理员获取所需的权限。
-    - **创建保管库**：针对订阅的管理员或所有者权限。 
+    - **创建保管库**：针对订阅的管理员或所有者权限。
     - **管理保管库中的 Site Recovery 操作**：Site Recovery 参与者内置的 Azure 角色。
     - **在目标区域中创建 Azure VM**：内置参与者虚拟机角色或特定权限，用于：
         - 在所选虚拟网络中创建 VM。
@@ -56,14 +56,14 @@ Azure 帐户需要某些权限才能创建恢复服务保管以及在目标区�
 
 ### <a name="verify-target-settings"></a>验证目标设置
 
-在灾难恢复过程中，从源区域进行故障转移时，将在目标区域中创建 VM。 
+在灾难恢复过程中，从源区域进行故障转移时，将在目标区域中创建 VM。
 
 检查订阅在目标区域中是否有足够的资源。 需要能够创建大小与源区域中的 VM 匹配的 VM。 设置灾难恢复时，Site Recovery 会为目标 VM 选择相同的大小（或尽可能接近的大小）。
 
 
 ## <a name="prepare-vms"></a>准备 VM
 
-确保 VM 具有出站连接和最新的根证书。 
+确保 VM 具有出站连接和最新的根证书。
 
 
 ### <a name="set-up-vm-connectivity"></a>设置 VM 连接
@@ -88,12 +88,12 @@ Azure 帐户需要某些权限才能创建恢复服务保管以及在目标区�
 
 如果使用网络安全组 (NSG) 来控制连接，请创建基于服务标记的 NSG 规则，这些规则允许这些[服务标记](../virtual-network/service-tags-overview.md#available-service-tags)（IP 地址组）的 HTTPS 出站连接到端口 443：
 
-**标记** | **允许** 
+**标记** | **允许**
 --- | ---
-存储标记  |允许将数据从 VM 写入缓存存储帐户。   
-Azure AD 标记 | 允许访问与 Azure AD 对应的所有 IP 地址。   
-EventsHub 标记 | 允许访问 Site Recovery 监视。  
-AzureSiteRecovery 标记 | 允许在任何区域访问 Site Recovery 服务。   
+存储标记  |允许将数据从 VM 写入缓存存储帐户。
+Azure AD 标记 | 允许访问与 Azure AD 对应的所有 IP 地址。
+EventsHub 标记 | 允许访问 Site Recovery 监视。
+AzureSiteRecovery 标记 | 允许在任何区域访问 Site Recovery 服务。
 GuestAndHybridManagement 标记 | 如果要自动升级在为复制启用的 VM 上运行的 Site Recovery 移动代理，请使用此标记。
 
 [详细了解](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)所需的标记和标记示例。
@@ -126,8 +126,8 @@ GuestAndHybridManagement 标记 | 如果要自动升级在为复制启用的 VM 
 9. 在“查看 + 创建”中，选择“创建” 。
 
 10. 开始部署保管库。 在通知中跟踪进度。
-11. 部署保管库后，选择“固定到仪表板”以保存该保管库，以供快速参考。 选择“转到资源”，打开新的保管库。 
-    
+11. 部署保管库后，选择“固定到仪表板”以保存该保管库，以供快速参考。 选择“转到资源”，打开新的保管库。
+
     ![用于在部署后打开保管库并将其固定到仪表板的按钮](./media/azure-to-azure-tutorial-enable-replication/vault-deploy.png)
 
 ### <a name="enable-site-recovery"></a>启用 Site Recovery
@@ -138,7 +138,7 @@ GuestAndHybridManagement 标记 | 如果要自动升级在为复制启用的 VM 
 
 ## <a name="enable-replication"></a>启用复制
 
-选择源设置，然后启用 VM 复制。 
+选择源设置，然后启用 VM 复制。
 
 ### <a name="select-source-settings"></a>选择源设置
 

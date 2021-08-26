@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: mathoma
 ms.date: 06/22/2020
-ms.openlocfilehash: b4b19be4215f8a5bfa0b1f4eb42607c51bfe1d16
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 882613ef5b27b7021c61cabfabe3f37c3c842bd6
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889024"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722819"
 ---
 # <a name="quickstart-create-an-azure-sql-managed-instance-using-an-arm-template"></a>快速入门：使用 ARM 模板创建 Azure SQL 托管实例
 
@@ -52,7 +52,7 @@ ms.locfileid: "111889024"
 从以下 PowerShell 代码块中选择“试用”以打开 Azure Cloud Shell。
 
 > [!IMPORTANT]
-> 部署托管实例是一项运行时间很长的操作。 通常情况下，子网中第一个实例的部署时间比子网中已经有托管实例时实例的部署时间要长得多。 若要了解平均预配时间，请参阅 [SQL 托管实例管理操作](sql-managed-instance-paas-overview.md#management-operations)。
+> 部署托管实例是一项运行时间很长的操作。 通常情况下，子网中第一个实例的部署时间比子网中已经有托管实例时实例的部署时间要长得多。 若要了解平均预配时间，请参阅 [SQL 托管实例管理操作](management-operations-overview.md#duration)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

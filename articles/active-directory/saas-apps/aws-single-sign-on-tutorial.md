@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 2d0b9e45dc5de0cd4550cf4b9f944fd33ebd7e7e
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 91a66240941ce18b4d898327abeac695b09d65e3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720663"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732344"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-sign-on"></a>教程：Azure Active Directory 单一登录 (SSO) 与 AWS Single Sign-on 的集成
 
@@ -26,7 +26,7 @@ ms.locfileid: "104720663"
 * 让用户使用其 Azure AD 帐户自动登录到 AWS Single Sign-on。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要开始操作，需备齐以下项目：
 
@@ -89,17 +89,17 @@ ms.locfileid: "104720663"
     ![image3](common/idp-intiated.png)
 
     > [!Note]
-    > 如果 **标识符** 和 **回复 URL** 值未自动填充，则请按要求手动填充这些值。
+    > 如果“标识符”和“回复 URL”值未自动填充，请根据需求手动填充这些值。
 
 1. 如果你没有 **服务提供商元数据文件**，请在“基本 SAML 配置”部分执行以下步骤；如果你想要在“IDP”发起的模式下配置应用程序，请输入以下字段的值： 
 
-    a. 在“标识符”  文本框中，使用以下模式键入 URL：`https://<REGION>.signin.aws.amazon.com/platform/saml/<ID>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<REGION>.signin.aws.amazon.com/platform/saml/<ID>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<REGION>.signin.aws.amazon.com/platform/saml/acs/<ID>`
 
 1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://portal.sso.<REGION>.amazonaws.com/saml/assertion/<ID>`
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://portal.sso.<REGION>.amazonaws.com/saml/assertion/<ID>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [AWS Single Sign-on 客户端支持团队](mailto:aws-sso-partners@amazon.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。

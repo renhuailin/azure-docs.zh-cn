@@ -2,14 +2,15 @@
 metadata:
   title: IoT Edge 上的 Azure 实时视频分析常见问题解答
   description: 本文解答了有关 IoT Edge 上的 Azure 实时视频分析的常见问题。
-  ms.topic: conceptual
+  ms.topic: article
+  ms.service: media-services
   ms.date: 12/01/2020
-  ms.openlocfilehash: 8191fba7a6b9533082855e9e759a287d80d4f551
-  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+  ms.openlocfilehash: 068714c46805bb65affa292284126aab0e41098b
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/17/2021
-  ms.locfileid: "112305842"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122252932"
 title: IoT Edge 上的 Azure 实时视频分析常见问题解答
 summary: "\n[!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]\n\n本文解答了有关 Azure IoT Edge 上的实时视频分析的常见问题。\n"
 sections:

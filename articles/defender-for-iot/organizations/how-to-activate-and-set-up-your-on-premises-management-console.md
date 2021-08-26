@@ -3,12 +3,12 @@ title: 激活和设置本地管理控制台
 description: 激活管理控制台可确保将传感器注册到 Azure 并将信息发送到本地管理控制台，还能确保本地管理控制台在连接的传感器上执行管理任务。
 ms.date: 05/05/2021
 ms.topic: how-to
-ms.openlocfilehash: c491ebfe68c85b222818c9a9cf2e8e66abe8d959
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 84506e9ebd12dab4198d075c6afea8ae23604a42
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113015957"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445857"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>激活和设置本地管理控制台 
 
@@ -185,10 +185,10 @@ ms.locfileid: "113015957"
 2. 登录到每个传感器，并运行以下命令：
 
    ```bash
-   sudo cyberx-xsense-management-connect -ip <centralmanagerIPAddress>
+   sudo cyberx-xsense-management-connect -ip <on-premises management console IP Address> -token < Copy the string that appears after the IP colon (:) from the Connection String field, Management Console Connection dialog box>
    sudo cyberx-xsense-management-tunnel
    sudo vi /var/cyberx/properties/network.properties
-   opened_tcp_incoming_ports=22,80,443,102,9000
+   opened_tcp_incoming_ports=22,80,443,9000
    sudo cyberx-xsense-network-validation
    sudo /etc/network/if-up.d/iptables-recover
    sudo iptables -nvL
@@ -270,7 +270,7 @@ ms.locfileid: "113015957"
 
 下表描述了“站点管理”窗口中的参数。
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |--|--|
 | 名称 | 传感器名称。 只能从传感器更改此名称。 有关详细信息，请参阅 Defender for IoT 用户指南。 |
 | IP | 传感器 IP 地址。 |

@@ -2,14 +2,15 @@
 metadata:
   title: 常见问题的解答
   description: 针对以下常见问题的解答
-  ms.topic: conceptual
+  ms.topic: article
+  ms.service: backup
   ms.date: 06/10/2021
-  ms.openlocfilehash: 994e23fae780ecc3bf046d834810fbbf983473ed
-  ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+  ms.openlocfilehash: cf4539afef4df4f09da7eacdf3c195cb08a70e44
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111907133"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122254245"
 title: Azure 备份 - 常见问题
 summary: 本文回答有关 Azure 备份服务的常见问题。
 sections:
@@ -64,7 +65,7 @@ sections:
   - question: >
       如何将数据从恢复服务保管库移到本地？
     answer: >
-      若要将备份数据从恢复服务保管库移出，需要还原必需的数据。 如果保管库包含本地数据的备份，请使用相应的代理（[MARS](backup-azure-about-mars.md)、[MABS](backup-azure-microsoft-azure-backup.md) 或 [DPM](backup-azure-dpm-introduction.md#why-back-up-dpm-to-azure)）将数据还原到本地。 <br><br> 我们不支持将数据直接从恢复服务保管库导出到本地存储来备份云工作负荷（[Azure VM](backup-azure-arm-restore-vms.md#restore-options)、[SQL](restore-sql-database-azure-vm.md#restore-as-files) 以及 Azure VM 中的 [SAP HANA](sap-hana-db-restore.md#restore-as-files)）。 但是，你可以先将数据还原到 Azure 存储帐户中的相应云资源，然后再移到本地。 也可通过 [Data Box](../databox/data-box-overview.md) 或[导入/导出](../import-export/storage-import-export-service.md)将这些数据导出到本地。
+      若要将备份数据从恢复服务保管库移出，需要还原必需的数据。 如果保管库包含本地数据的备份，请使用相应的代理（[MARS](backup-azure-about-mars.md)、[MABS](backup-azure-microsoft-azure-backup.md) 或 [DPM](backup-azure-dpm-introduction.md#why-back-up-dpm-to-azure)）将数据还原到本地。 <br><br> 我们不支持将数据直接从恢复服务保管库导出到本地存储来备份云工作负载（[Azure VM](backup-azure-arm-restore-vms.md#restore-options)、[SQL](restore-sql-database-azure-vm.md#restore-as-files) 以及 Azure VM 中的 [SAP HANA](sap-hana-db-restore.md#restore-as-files)）。 但是，可以先将数据还原到 Azure 存储帐户中的相应云资源，然后再移到本地。 也可通过 [Data Box](../databox/data-box-overview.md) 或[导入/导出](../import-export/storage-import-export-service.md)将这些数据导出到本地。
   - question: >
       启用和不启用跨区域还原 (CRR) 功能的异地冗余存储 (GRS) 保管库之间有何区别？
     answer: >

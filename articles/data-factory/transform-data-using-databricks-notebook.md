@@ -2,17 +2,18 @@
 title: 使用活动运行 Databricks Notebook
 description: 了解如何使用 Azure 数据工厂中的 Databricks Notebook 活动针对 Databricks 作业群集运行 Databricks Notebook。
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.author: abnarain
 author: nabhishek
 ms.custom: seo-lt-2019
 ms.date: 06/07/2021
-ms.openlocfilehash: e9b4d075832fde6aec81a7f8440756b4d6f32834
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 57ad017decff68ff1ce561a2863313571933489b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113215984"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121730116"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Databricks Notebook 活动运行 Databricks Notebook
 
@@ -159,7 +160,7 @@ ms.locfileid: "113215984"
            ```
            # Creating widgets for leveraging parameters, and printing the parameters
 
-           dbutils.widgets.text("input&quot;, &quot;&quot;,&quot;")
+           dbutils.widgets.text("input", "","")
            y = dbutils.widgets.get("input")
            print ("Param -\'input':")
            print (y)

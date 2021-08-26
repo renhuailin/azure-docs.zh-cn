@@ -3,13 +3,13 @@ title: 检测运动并从边缘发出事件 - Azure
 description: 本快速入门介绍如何以编程方式调用直接方法，从而使用 Azure 视频分析器来检测运动和发出事件。
 ms.topic: quickstart
 ms.date: 06/01/2021
-zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 7a8e06af94ee4a0a473ef60a5920a0d3e44e685e
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+zone_pivot_groups: video-analyzer-programming-languages
+ms.openlocfilehash: 6ffcd4be2a0abde81943025866931e5aa31b9277
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114605310"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748719"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>快速入门：检测运动并发出事件
 

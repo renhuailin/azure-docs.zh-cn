@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 812bf7bd68362667fcd1b636d0d28fdbb21c1409
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: has-adal-ref
+ms.openlocfilehash: 527c9bfac3df50d012f3b0a805d0ac4ec1ea9067
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99582343"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428959"
 ---
 # <a name="microsoft-identity-platform-token-exchange-scenarios-with-saml-and-oidcoauth"></a>采用 SAML 和 OIDC/OAuth 的 Microsoft 标识平台令牌交换方案
 

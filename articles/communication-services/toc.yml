@@ -100,7 +100,7 @@ items:
           - name: 电话号码类型
             href: concepts/telephony-sms/plan-solution.md
           - name: Azure 直接路由基础结构要求
-            href: concepts/telephony-sms/sip-interface-infrastructure.md
+            href: concepts/telephony-sms/direct-routing-infrastructure.md
           - name: Azure 直接路由认证的会话边界控制器
             href: concepts/telephony-sms/certified-session-border-controllers.md
           - name: 配对会话边界控制器并配置语音路由

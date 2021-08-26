@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: overview
 ms.date: 06/02/2021
-ms.openlocfilehash: e5e202d12beb93bc6970593f327400917a4b7ef5
-ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
+ms.openlocfilehash: c2529f355e7d39c22bf5f3d703cb33c59101a5f8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113516736"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749457"
 ---
 # <a name="live-migration-to-azure-managed-instance-for-apache-cassandra-by-using-a-dual-write-proxy"></a>使用双重写入代理实时迁移到 Azure Managed Instance for Apache Cassandra
 
@@ -45,13 +45,13 @@ ms.locfileid: "113516736"
 
 建议选择 Azure Databricks 运行时版本 7.5，该版本支持 Spark 3.0。
 
-:::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="显示如何查找 Azure Databricks 运行时版本的屏幕截图。":::
+:::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-runtime.png" alt-text="显示如何查找 Azure Databricks 运行时版本的屏幕截图。":::
 
 ## <a name="add-spark-dependencies"></a>添加 Spark 依赖项
 
 你需要将 Apache Spark Cassandra 连接器库添加到群集，以便连接到原生终结点和 Azure Cosmos DB Cassandra 终结点。 在群集中，选择“库” > “安装新库” > “Maven”，然后在 Maven 坐标中添加 `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0`  。
 
-:::image type="content" source="../cosmos-db/media/cassandra-migrate-cosmos-db-databricks/databricks-search-packages.png" alt-text="显示如何在 Azure Databricks 中搜索 Maven 包的屏幕截图。":::
+:::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-search-packages.png" alt-text="显示如何在 Azure Databricks 中搜索 Maven 包的屏幕截图。":::
 
 选择“安装”，然后在安装完成后重启群集。
 
@@ -148,7 +148,7 @@ java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar source-server destination-
 ```
 
 > [!NOTE]
-> 在群集节点上安装代理不需要重启节点。 但是，如果你有许多应用程序客户端，并希望代理在标准 Cassandra 端口 9042 上运行，以便无需进行任何应用程序级别的代码更改，则需要更改 [Apache Cassandra 默认端口](https://cassandra.apache.org/doc/latest/faq/#what-ports-does-cassandra-use)。 然后需要重启群集中的节点，并将源端口配置为你已为源 Cassandra 群集定义的新端口。 
+> 在群集节点上安装代理不需要重启节点。 但是，如果你有许多应用程序客户端，并希望代理在标准 Cassandra 端口 9042 上运行，以便无需进行任何应用程序级别的代码更改，则需要更改 [Apache Cassandra 默认端口](https://cassandra.apache.org/doc/latest/cassandra/faq/#what-ports-does-cassandra-use)。 然后需要重启群集中的节点，并将源端口配置为你已为源 Cassandra 群集定义的新端口。 
 >
 > 在以下示例中，我们将源 Cassandra 群集更改为在端口 3074 上运行，并在端口 9042 上启动群集：
 >

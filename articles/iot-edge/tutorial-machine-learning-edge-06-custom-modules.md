@@ -2,19 +2,18 @@
 title: 教程：创建和部署自定义模块 - Azure IoT Edge 上的机器学习
 description: 本教程演示如何通过机器学习模型创建和部署基于叶设备处理数据的 IoT Edge 模块，然后将见解发送到 IoT 中心。
 author: kgremban
-manager: philmea
 ms.author: kgremban
 ms.date: 6/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 65daa2cd4681a50179ef1447ce9e4ebe6f7db717
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: e045f1bfe3be8bc34a6d1705d7e2e4ec39dd4197
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438109"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740566"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>教程：创建并部署自定义 IoT Edge 模块
 
@@ -150,7 +149,7 @@ IoT Edge 中心促进模块间通信。 通过将 IoT Edge 中心用作消息中
       ```
 
       >[!NOTE]
-      >本教程使用 Azure 容器注册表的管理员登录凭据，这对于开发和测试方案非常方便。 准备好生产方案后，建议使用最低权限身份验证选项（如服务主体）。 有关详细信息，请参阅[管理容器注册表的访问权限](production-checklist.md#manage-access-to-your-container-registry)。
+      >本教程使用 Azure 容器注册表的管理员登录凭据，这对于开发和测试方案非常方便。 为生产方案做好准备后，建议使用最低权限身份验证选项（如服务主体）。 有关详细信息，请参阅[管理容器注册表的访问权限](production-checklist.md#manage-access-to-your-container-registry)。
 
 1. 在 Visual Studio Code 资源浏览器中右键单击 deployment.template.json 文件，然后选择“生成 IoT Edge 解决方案”。
 

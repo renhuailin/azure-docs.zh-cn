@@ -11,17 +11,16 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 01/27/2021
-ms.openlocfilehash: 98d692c304c4d25412dcaf26fd0779b1b446e252
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: baf181c90b4bc899f682cbfea28d1998f7b2117a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113218054"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722893"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>快速入门：创建 Azure SQL 数据库单一数据库
 
 在本快速入门中，你将使用 Azure 门户、PowerShell 脚本或 Azure CLI 脚本在 Azure SQL 数据库中创建[单一数据库](single-database-overview.md)。 然后，在 Azure 门户中使用“查询编辑器”查询该数据库。
-
 
 
 ## <a name="prerequisite"></a>先决条件
@@ -286,7 +285,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 用完这些资源后，可以删除创建的资源组，这也会删除该资源组中的服务器和单一数据库。
 
-### <a name="portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 若要使用 Azure 门户删除 **myResourceGroup** 及其包含的所有资源：
 

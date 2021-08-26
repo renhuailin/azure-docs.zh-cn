@@ -3,12 +3,12 @@ title: 将基于事件的视频录制到云中并从云播放教程 - Azure
 description: 本教程介绍如何使用 Azure 视频分析器将基于事件的视频录制到云中并从云中播放。
 ms.topic: tutorial
 ms.date: 06/01/2021
-ms.openlocfilehash: 9b5935b9b06a1e48ac106c7736390e39612b0af4
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 018e01e781e67ebe58d1337443813e1ca973a9e0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602169"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733308"
 ---
 # <a name="tutorial-event-based-video-recording-and-playback"></a>教程：基于事件的视频录制和播放
 
@@ -61,9 +61,9 @@ ms.locfileid: "114602169"
 该图以图画形式呈现了[管道](pipeline.md)以及用于完成所需方案的其他模块。 共涉及四个 IoT Edge 模块：
 
 * IoT Edge 上的视频分析器模块。
-* Edge 模块，它在 HTTP 终结点后面运行 AI 模型。 此 AI 模块使用 [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) 模型，该模型能够检测许多类型的对象。
+* Edge 模块，它在 HTTP 终结点后面运行 AI 模型。 此 AI 模块使用 [YOLOv3](https://github.com/Azure/video-analyzer/tree/main/edge-modules/extensions/yolo/yolov3) 模型，该模型能够检测许多类型的对象。
 * 一个用于筛选对象并对其进行计数的自定义模块，该模块在图中称为对象计数器。 在本教程中，你将生成一个对象计数器并对其进行部署。
-* [RTSP 模拟器模块](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)用于模拟 RTSP 摄像机。
+* [RTSP 模拟器模块](https://github.com/Azure/video-analyzer/tree/main/edge-modules/sources/rtspsim-live555)用于模拟 RTSP 摄像机。
     
 如图所示，你将使用管道中的 [RTSP 源](pipeline.md#rtsp-source)节点捕获模拟的实时视频（高速公路上的交通流视频），并将该视频发送到两条路径：
 
@@ -164,7 +164,7 @@ ms.locfileid: "114602169"
     
 1. 接下来，在 livePipelineSet 和 pipelineTopologyDelete 节点下，确保 topologyName 的值与上述管道拓扑中的 name 属性的值匹配   ：
 
-    `"pipelineTopologyName" : "EVRtoVideosOnObjDetect"`
+    `"pipelineTopologyName" : "EVRtoVideoSinkOnObjDetect"`
 1. 在浏览器中打开[管道拓扑](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/evr-hubMessage-video-sink/topology.json)，查看 videoName（硬编码为 `sample-evr-video`）。 对于教程来说，这是可以接受的。 在生产环境中，应注意确保每个唯一的 RTSP 相机都会录制到一个具有唯一名称的视频资源中。
 1. 选择 F5 以启动调试会话。 在“终端”窗口中，你将看到一些输出的消息。
 1. operations.json 文件首先调用 pipelineTopologyList 和 livePipelineList。 如果在先前的快速入门或教程后清理了资源，此操作会返回空列表，然后暂停以便你能够选择 Enter，如下所示：
@@ -192,7 +192,7 @@ ms.locfileid: "114602169"
           "@apiVersion": "1.0",
           "name": "Sample-Pipeline-1",
           "properties": {
-            "topologyName": "EVRtoVideosOnObjDetect",
+            "topologyName": "EVRtoVideoSinkOnObjDetect",
             "description": "Sample topology description",
             "parameters": [
               {
