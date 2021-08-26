@@ -4,15 +4,15 @@ description: 此快速入门介绍如何使用 Object Anchors 生成 HoloLens Un
 author: craigktreasure
 manager: virivera
 ms.author: crtreasu
-ms.date: 03/02/2021
+ms.date: 08/02/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 2c96f1392228c4fcce65e05711b70a6ce689592a
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: cb9b1d5aa489950e86bc2f1575d44fd78919359e
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006881"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254301"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-unity"></a>快速入门：在 Unity 中使用 Azure Object Anchors 创建 HoloLens 应用
 
@@ -27,7 +27,11 @@ ms.locfileid: "112006881"
 
 [!INCLUDE [Unity quickstart prerequisites](../../../includes/object-anchors-quickstart-unity-prerequisites.md)]
 
+[!INCLUDE [Create Account](../../../includes/object-anchors-get-started-create-account.md)]
+
 [!INCLUDE [Unity device setup](../../../includes/object-anchors-quickstart-unity-device-setup.md)]
+
+[!INCLUDE [Unity upload your model](../../../includes/object-anchors-quickstart-unity-upload-model.md)]
 
 ## <a name="open-the-sample-project"></a>打开示例项目
 
@@ -39,19 +43,15 @@ ms.locfileid: "112006881"
 
 [!INCLUDE [Import Unity Package](../../../includes/object-anchors-quickstart-unity-import-package.md)]
 
+[!INCLUDE [Configure Account](../../../includes/object-anchors-get-started-configure-account.md)]
+
 [!INCLUDE [Unity build sample scene 1](../../../includes/object-anchors-quickstart-unity-build-sample-scene-1.md)]
 
 [!INCLUDE [Unity build sample scene 2](../../../includes/object-anchors-quickstart-unity-build-sample-scene-2.md)]
 
 [!INCLUDE [Unity build and deploy](../../../includes/object-anchors-quickstart-unity-build-deploy.md)]
 
-### <a name="run-the-sample-app"></a>运行示例应用
-
-打开设备，选择“所有应用”，然后找到并启动应用。 在 Unity 初始屏幕后，你将看到一条消息，指示对象观察程序已经初始化。 但是，你需要将模型添加到应用。
-
-[!INCLUDE [Unity setup Windows Device Portal](../../../includes/object-anchors-quickstart-unity-setup-device-portal.md)]
-
-[!INCLUDE [Unity upload your model](../../../includes/object-anchors-quickstart-unity-upload-model.md)]
+在 Unity 初始屏幕后，你将看到一条消息，指示对象观察程序已经初始化。
 
 应用在当前视野中查找对象，然后在检测到对象后进行跟踪。 当某个实例与用户的位置相距 6 米时，它将被删除。 调试文本显示有关实例的详细信息，例如 ID、更新的时间戳和表面覆盖率。
 

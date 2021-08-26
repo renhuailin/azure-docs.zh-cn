@@ -2,14 +2,14 @@
 author: jianleishen
 ms.service: data-factory
 ms.topic: include
-ms.date: 06/01/2021
+ms.date: 07/29/2021
 ms.author: jianleishen
-ms.openlocfilehash: 0082bac41a615d078854ccfc76524c41db14c595
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: cd015ad73755ceaeb89b27b85df253f76440b927
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111761504"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638430"
 ---
 | 类别              | 数据存储                                                   | [复制活动](../copy-activity-overview.md)（源/接收器） | [映射数据流源](../concepts-data-flow-overview.md)（源/接收器） | [Lookup 活动](../control-flow-lookup-activity.md) | [获取元数据活动](../control-flow-get-metadata-activity.md)/[验证活动](../control-flow-validation-activity.md) | [删除活动](../delete-activity.md) |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
@@ -71,7 +71,7 @@ ms.locfileid: "111761504"
 | **通用协议**  | [泛型 HTTP](../connector-http.md)   | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [泛型 OData](../connector-odata.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [泛型 ODBC](../connector-odbc.md)   | ✓/✓                                                          |                                                              | ✓                                                            |                                                              |                                                              |
-| &nbsp;                | [泛型 REST](../connector-rest.md)   | ✓/✓                                                          |                                                              |                                                              |                                                              |                                                              |
+| &nbsp;                | [泛型 REST](../connector-rest.md)   | ✓/✓                                                          | ✓/✓                                                          |                                                              |                                                              |                                                              |
 | **服务和应用** | [Amazon Marketplace Web Service](../connector-amazon-marketplace-web-service.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Concur（预览）](../connector-concur.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Dataverse](../connector-dynamics-crm-office-365.md) | ✓/✓                                                          |                                                              | ✓                                                            |                                                              |                                                              |

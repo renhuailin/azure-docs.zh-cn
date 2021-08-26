@@ -1,17 +1,20 @@
 ---
 title: 使用 Azure 数据工厂从 Impala 复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何使用数据工厂管道中的复制活动，将数据从 Impala 复制到支持的接收器数据存储。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jianleishen
-ms.openlocfilehash: 4d8ff83bc7ecc9bc98a5962badfd0056fae23fb9
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: a1c2769da27b4bdd495194406a1c45ff53881ed7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109484948"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637969"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Impala 复制数据
 
@@ -93,7 +96,7 @@ Impala 链接服务支持以下属性。
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：**ImpalaObject** | 是 |
-| schema | 架构的名称。 |否（如果指定了活动源中的“query”）  |
+| 架构 | 架构的名称。 |否（如果指定了活动源中的“query”）  |
 | 表 | 表的名称。 |否（如果指定了活动源中的“query”）  |
 | tableName | 具有架构的表的名称。 支持此属性是为了向后兼容。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 否（如果指定了活动源中的“query”） |
 
@@ -125,7 +128,7 @@ Impala 链接服务支持以下属性。
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **ImpalaSource**。 | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
+| query | 使用自定义 SQL 查询读取数据。 例如 `"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |
 
 **示例：**
 

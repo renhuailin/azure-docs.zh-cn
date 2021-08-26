@@ -20,15 +20,24 @@
           href: get-started-cli.md
 - name: 概念
   items:
-    - name: 通过 Azure Functions 提供 API 支持
-      href: apis.md
+    - name: API
+      items:
+        - name: 通过 Azure Functions 提供 API 支持
+          href: apis.md
+        - name: 添加 API
+          href: add-api.md
+        - name: 创建自己的函数
+          href: functions-bring-your-own.md
     - name: Configuration
       items:
         - name: 应用程序配置
           href: configuration.md
           displayName: 'routing, routes'
-        - name: 生成和工作流配置
+        - name: 生成配置
           href: github-actions-workflow.md
+        - name: 应用设置
+          href: application-settings.md
+          displayName: environment variables
     - name: 安全性
       items:
         - name: 身份验证和授权
@@ -43,14 +52,22 @@
       href: custom-domain.md
 - name: 操作指南
   items:
+    - name: API
+      items:
+        - name: 添加 API
+          href: add-api.md
+        - name: 创建自己的函数
+          href: functions-bring-your-own.md
+    - name: 安全
+      items:
+        - name: 设置专用终结点
+          href: private-endpoint.md
+        - name: 保护身份验证机密
+          href: key-vault-secrets.md
     - name: 设置本地开发
       href: local-development.md
-    - name: 添加 API
-      href: add-api.md
     - name: 配置应用设置
       href: application-settings.md
-    - name: 使用 Azure DevOps 进行发布
-      href: publish-devops.md
     - name: 配置前端框架和库
       href: front-end-frameworks.md
     - name: 启用监视
@@ -61,10 +78,6 @@
     - name: 排查错误
       href: troubleshooting.md
       displayName: 'deployment, runtime, errors'
-    - name: 创建自己的函数
-      href: functions-bring-your-own.md
-    - name: 保护身份验证机密
-      href: key-vault-secrets.md
 - name: 教程
   items:
     - name: 从静态站点生成器发布

@@ -3,13 +3,14 @@ metadata:
   title: 常见问题 - Azure 事件中心 | Microsoft Docs
   description: 本文提供了有关 Azure 事件中心的常见问题 (FAQ) 和解答的列表。
   ms.topic: article
+  ms.service: event-hubs
   ms.date: 01/20/2021
-  ms.openlocfilehash: 75179e8ab3b418de773ceac5dbd35c446421a790
-  ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+  ms.openlocfilehash: 57f2f7c6cbb1cb502339d7fa87509672cef69e41
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/16/2021
-  ms.locfileid: "114286129"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122252632"
 title: 事件中心常见问题
 summary: ''
 sections:
@@ -214,7 +215,7 @@ sections:
       是否有与事件中心关联的配额？
     answer: >
       如需所有事件中心配额的列表，请参阅[配额](event-hubs-quotas.md)。
-- name: 疑难解答
+- name: 故障排除
   questions:
   - question: "为什么在从其他订阅中删除命名空间后无法创建该命名空间？ \n"
     answer: "从订阅中删除命名空间时，请等待 4 个小时，然后才能在另一个订阅中使用相同的名称重新创建它。 否则，可能会收到以下错误消息：`Namespace already exists`。 \n"
@@ -225,7 +226,7 @@ sections:
   - question: >
       诊断日志
     answer: >
-      事件中心支持两种类型的[诊断日志](event-hubs-diagnostic-logs.md) - 捕获错误日志和操作日志 - 这两种日志都用 json 表示并可以通过 Azure 门户启用。
+      事件中心支持两种类型的[诊断日志](monitor-event-hubs-reference.md#resource-logs) - 捕获错误日志和操作日志 - 这两种日志都用 json 表示并可以通过 Azure 门户启用。
   - question: >
       支持和 SLA
     answer: >

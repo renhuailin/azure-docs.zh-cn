@@ -4,14 +4,15 @@ description: 分析嵌入的列文档
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 05/10/2021
-ms.openlocfilehash: 7a01d2d17a4c98656588530f5b288c6a69b8a206
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 2058fcade3375f680f616374ba8dee73a4e72dbc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734155"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637906"
 ---
 # <a name="parse-transformation-in-mapping-data-flow"></a>分析映射数据流中的转换
 

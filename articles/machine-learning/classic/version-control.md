@@ -8,17 +8,18 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 16d5765d03c02ac733c3d3dc2dbc8ac117caea35
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: f9b3a48d1f63220c7b7cc5ace90ae9676b4efd84
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112583421"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690017"
 ---
 # <a name="application-lifecycle-management-in-machine-learning-studio-classic"></a>机器学习工作室（经典）中的应用程序生命周期管理
 
 **适用对象：** ![适用于.](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![不适用于.](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 机器学习工作室（经典）是一个在 Azure 云平台中运行的工具，用于开发机器学习试验。 它类似于将 Visual Studio IDE 和可缩放云服务合并到单个平台。 可以将标准的应用程序生命周期管理 (ALM) 实践（从各种资产的版本控制到自动执行和部署）合并到机器学习工作室（经典）中。 本文介绍一些选项和方法。
 

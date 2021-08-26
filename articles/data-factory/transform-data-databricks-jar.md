@@ -1,17 +1,20 @@
 ---
 title: 使用 Databricks Jar 转换数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何通过在 Azure 数据工厂管道中运行 Databricks Jar 来处理或转换数据。
 ms.service: data-factory
+ms.subservice: tutorials
+ms.custom: synapse
 ms.topic: conceptual
 ms.author: abnarain
 author: nabhishek
 ms.date: 02/10/2021
-ms.openlocfilehash: ccfe8fbf330e1c7f6f415b64a1f18d93a084a0ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d713decf0a82b5e501b7c2065a358e8ccc754d8e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100374008"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638016"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>通过运行 Azure Databricks 中的 Jar 活动转换数据
 

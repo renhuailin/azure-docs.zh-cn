@@ -1,18 +1,20 @@
 ---
 title: 复制和转换 Azure Database for PostgreSQL 中的数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何使用 Azure 数据工厂复制和转换 Azure Database for PostgreSQL 中的数据。
-ms.author: jianleishen
-author: jianleishen
+ms.author: susabat
+author: ssabat
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 02/25/2021
-ms.openlocfilehash: d7d5ac30549667a6806b9f0c45328c0662a2e47e
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: synapse
+ms.date: 06/16/2021
+ms.openlocfilehash: f3d0dca67391bd8bb5ee66e3fd186fcabb1ffd89
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109785288"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637935"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>使用 Azure 数据工厂复制和转换 Azure Database for PostgreSQL 中的数据
 
@@ -131,7 +133,7 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 | 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **AzurePostgreSqlSource** | 是 |
-| 查询 | 使用自定义 SQL 查询读取数据。 例如 `SELECT * FROM mytable` 或 `SELECT * FROM "MyTable"`。 请注意，在 PostgreSQL 中，如果未加引号，则实体名称不区分大小写。 | 否（如果指定了数据集中的 tableName 属性） |
+| query | 使用自定义 SQL 查询读取数据。 例如 `SELECT * FROM mytable` 或 `SELECT * FROM "MyTable"`。 请注意，在 PostgreSQL 中，如果未加引号，则实体名称不区分大小写。 | 否（如果指定了数据集中的 tableName 属性） |
 
 **示例**：
 
@@ -173,7 +175,7 @@ Azure Database for PostgreSQL 链接服务支持以下属性：
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **AzurePostgreSQLSink**。 | 是 |
 | preCopyScript | 每次运行时将数据写入 Azure Database for PostgreSQL 之前，为要执行的复制活动指定 SQL 查询。 可以使用此属性清除预加载的数据。 | 否 |
-| writeMethod | 用于将数据写入 Azure Database for PostgreSQL 的方法。<br>允许的值为：CopyCommand（预览，更高性能）和 BulkInsert（默认） 。 | 否 |
+| writeMethod | 用于将数据写入 Azure Database for PostgreSQL 的方法。<br>允许的值为：CopyCommand（默认值，性能较佳）和 BulkInsert 。 | 否 |
 | writeBatchSize | 每批加载到 Azure Database for PostgreSQL 中的行数。<br>允许的值是表示行数的整数。 | 否（默认值为 1000000） |
 | writeBatchTimeout | 超时之前等待批插入操作完成时的等待时间。<br>允许的值为 Timespan 字符串。 示例为 00:30:00（30 分钟）。 | 否（默认值为 00:30:00） |
 

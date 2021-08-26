@@ -1,18 +1,20 @@
 ---
 title: 在 Azure SQL 托管实例中复制和转换数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何使用 Azure 数据工厂在 Azure SQL 托管实例中复制和转换数据。
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.author: jianleishen
 author: jianleishen
-ms.custom: seo-lt-2019
-ms.date: 03/17/2021
-ms.openlocfilehash: da1dbfc43aa8dccda8cca53b33923e2fee730d12
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.custom: synapse
+ms.date: 06/15/2021
+ms.openlocfilehash: 4fd8da77cfd6006b176fb3351b967d730e0d441f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110789723"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638116"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure SQL 托管实例中复制和转换数据
 
@@ -35,9 +37,6 @@ ms.locfileid: "110789723"
 - 作为源，使用 SQL 查询或存储过程检索数据。 还可选择从 SQL MI 源进行并行复制。有关详细信息，请参阅[从 SQL MI 进行并行复制](#parallel-copy-from-sql-mi)部分。
 - 作为接收器，根据源架构自动创建目标表（如果不存在）；在复制过程中，使用自定义逻辑将数据追加到表或调用存储过程。
 
->[!NOTE]
-> 目前此连接器不支持 SQL 托管实例 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)。 为了解决此问题，可以通过自承载 Integration Runtime 使用[泛型 ODBC 连接器](connector-odbc.md)和 SQL Server ODBC 驱动程序。 从[使用 Always Encrypted](#using-always-encrypted) 部分了解更多信息。 
-
 ## <a name="prerequisites"></a>先决条件
 
 若要访问 SQL 托管实例[公共终结点](../azure-sql/managed-instance/public-endpoint-overview.md)，可以使用 Azure 数据工厂管理的 Azure Integration Runtime。 确保启用公共终结点，并在网络安全组中允许公共终结点流量，使 Azure 数据工厂能够连接到你的数据库。 有关详细信息，请参阅[此指南](../azure-sql/managed-instance/public-endpoint-configure.md)。
@@ -54,7 +53,7 @@ ms.locfileid: "110789723"
 
 SQL 托管实例链接服务支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureSqlMI**。 | 是 |
 | connectionString |此属性指定通过 SQL 身份验证连接到 SQL 托管实例时所需的 **connectionString** 信息。 有关详细信息，请参阅以下示例。 <br/>默认端口为 1433。 如果将 SQL 托管实例与公共终结点配合使用，请显式指定端口 3342。<br> 还可以在 Azure Key Vault 中输入密码。 如果使用 SQL 身份验证，请从连接字符串中提取 `password` 配置。 有关详细信息，请参阅表格后面的 JSON 示例，以及[在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
@@ -62,7 +61,11 @@ SQL 托管实例链接服务支持以下属性：
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 **SecureString**，以安全地将其存储在 Azure 数据工厂中或 [引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
 | tenant | 指定应用程序所在的租户的信息（例如域名或租户 ID）。 将鼠标悬停在 Azure 门户右上角进行检索。 | 是，将 Azure AD 身份验证与服务主体配合使用时是必需的 |
 | azureCloudType | 对于服务主体身份验证，请指定 Azure AD 应用程序注册到的 Azure 云环境的类型。 <br/> 允许的值为 AzurePublic、AzureChina、AzureUsGovernment 和 AzureGermany   。 默认情况下，使用数据工厂的云环境。 | 否 |
+| alwaysEncryptedSettings | 指定所需的 alwaysencryptedsettings 信息来启用 Always Encrypted，以使用托管标识或服务主体保护 SQL Server 中存储的敏感数据。 有关详细信息，请参阅表格后面的 JSON 示例以及[使用 Always Encrypted](#using-always-encrypted) 部分。 如果不指定此属性，将禁用默认的 Always Encrypted 设置。 |否 |
 | connectVia | 此[集成运行时](concepts-integration-runtime.md)用于连接到数据存储。 如果托管实例有公共终结点且允许 Azure 数据工厂进行访问，则可使用自承载集成运行时或 Azure Integration Runtime。 如果未指定，则使用默认 Azure Integration Runtime。 |是 |
+
+> [!NOTE]
+> 数据流中不支持 SQL 托管实例 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-ver15&preserve-view=true)。 
 
 有关各种身份验证类型，请参阅关于先决条件和 JSON 示例的以下各部分：
 
@@ -106,6 +109,32 @@ SQL 托管实例链接服务支持以下属性：
                     "type": "LinkedServiceReference" 
                 }, 
                 "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+示例 3：将 SQL 身份验证与 Always Encrypted 配合使用
+
+```json
+{
+    "name": "AzureSqlMILinkedService",
+    "properties": {
+        "type": "AzureSqlMI",
+        "typeProperties": {
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
+        },
+        "alwaysEncryptedSettings": {
+            "alwaysEncryptedAkvAuthType": "ServicePrincipal",
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": {
+                "type": "SecureString",
+                "value": "<service principal key>"
             }
         },
         "connectVia": {
@@ -224,10 +253,10 @@ SQL 托管实例链接服务支持以下属性：
 
 若要从/向 SQL 托管实例复制数据，以下属性需受支持：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzureSqlMITable。 | 是 |
-| schema | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
+| 架构 | 架构的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | 表 | 表/视图的名称。 |对于源为“No”，对于接收器为“Yes”  |
 | tableName | 具有架构的表/视图的名称。 此属性支持后向兼容性。 对于新的工作负荷，请使用 `schema` 和 `table`。 | 对于源为“No”，对于接收器为“Yes” |
 
@@ -263,7 +292,7 @@ SQL 托管实例链接服务支持以下属性：
 
 若要从 SQL 托管实例复制数据，复制活动的 source 节需要支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **SqlMISource**。 | 是 |
 | sqlReaderQuery |此属性使用自定义 SQL 查询来读取数据。 例如 `select * from MyTable`。 |否 |
@@ -376,7 +405,7 @@ GO
 
 若要将数据复制到 SQL 托管实例，复制活动的 sink 节需要支持以下属性：
 
-| 属性 | 说明 | 必须 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **SqlMISink**。 | 是 |
 | preCopyScript |此属性指定将数据写入到 SQL 托管实例之前要由复制活动运行的 SQL 查询。 每次运行复制仅调用该查询一次。 可以使用此属性清除预加载的数据。 |否 |
@@ -744,32 +773,19 @@ IncomingStream sink(allowSchemaDrift: true,
 
 ## <a name="using-always-encrypted"></a>使用 Always Encrypted
 
-使用 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 从/向 Azure SQL 托管实例复制数据时，请通过 Self-hosted Integration Runtime 使用[通用 ODBC 连接器](connector-odbc.md)和 SQL Server ODBC 驱动程序。 此 Azure SQL 托管实例连接器目前不支持 Always Encrypted。 
+使用 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 从/向 SQL Server 复制数据时，请执行以下步骤： 
 
-更具体地说：
+1. 将[列主密钥 (CMK)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-ver15&preserve-view=true) 存储在 [Azure 密钥保管库](../key-vault/general/overview.md)中。 详细了解[如何使用 Azure 密钥保管库配置 Always Encrypted](../azure-sql/database/always-encrypted-azure-key-vault-configure.md?tabs=azure-powershell)
 
-1. 安装自承载 Integration Runtime（如果没有）。 有关详细信息，请参阅[自承载集成运行时](create-self-hosted-integration-runtime.md)一文。
+2. 确保授予对存储了[列主密钥 (CMK)](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-ver15&preserve-view=true) 的密钥保管库的访问权限。 有关所需的权限，请参阅[此文](/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-ver15&preserve-view=true#key-vaults)。
 
-2. 从[此处](/sql/connect/odbc/download-odbc-driver-for-sql-server)下载适用于 SQL Server 的 64 位 ODBC 驱动程序，并将其安装在 Integration Runtime 计算机上。 若要详细了解此驱动程序的工作原理，请参阅[在适用于 SQL Server 的 ODBC 驱动程序中使用 Always Encrypted](/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver#using-the-azure-key-vault-provider)。
+3. 创建链接服务，以使用托管标识或服务主体连接到 SQL 数据库并启用“Always Encrypted”功能。 
 
-3. 若要创建 ODBC 类型的链接服务以连接到 SQL 数据库，请参阅以下示例：
-
-    - 若要使用“SQL 身份验证”，请执行以下操作：如下所示指定 ODBC 连接字符串，并选择“基本”身份验证以设置用户名和密码。
-
-        ```
-        Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>
-        ```
-
-    - 如果在 Azure 虚拟机上运行自承载集成运行时，则可对 Azure VM 的标识使用“托管标识身份验证”： 
-
-        1. 按照相同的[先决条件](#managed-identity)为托管标识创建数据库用户，并在数据库中授予适当的角色。
-        2. 在链接服务中，如下所示指定 ODBC 连接字符串，并选择“匿名”身份验证，因为连接字符串本身指示 `Authentication=ActiveDirectoryMsi`。
-
-        ```
-        Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>; Authentication=ActiveDirectoryMsi;
-        ```
-
-4. 相应地使用 ODBC 类型创建数据集和复制活动。 若要了解详细信息，请参阅 [ODBC 连接器](connector-odbc.md)一文。
+>[!NOTE]
+>SQL Server [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 支持以下方案： 
+>1. 源或接收器数据存储使用托管标识或服务主体作为密钥提供程序身份验证类型。
+>2. 源和接收器数据存储都使用托管标识作为密钥提供程序身份验证类型。
+>3. 源和接收器数据存储都使用同一个服务主体作为密钥提供程序身份验证类型。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。

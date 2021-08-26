@@ -1,14 +1,14 @@
 ---
 title: 快速入门：使用 REST API 进行新策略分配
 description: 本快速入门介绍如何使用 REST API 创建 Azure Policy 分配以识别不合规资源。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: 7c7657143673e773e1c4108ecb8d86ddc8d1c559
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 4650a213777e30ddffb7604ab94c11fe0fd85ee7
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763084"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323493"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>快速入门：使用 REST API 创建策略分配以识别不合规资源
 
@@ -36,7 +36,7 @@ REST API 用于创建和管理 Azure 资源。 本指南使用 REST API 创建�
    - REST API URI
 
      ```http
-     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/audit-vm-manageddisks?api-version=2019-09-01
+     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/audit-vm-manageddisks?api-version=2021-09-01
      ```
 
    - 请求正文
@@ -113,7 +113,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 要删除创建的分配，请使用以下命令：
 
 ```http
-DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/audit-vm-manageddisks?api-version=2019-09-01
+DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/audit-vm-manageddisks?api-version=2021-09-01
 ```
 
 将 `{scope}` 替换为最初创建策略分配时使用的范围。

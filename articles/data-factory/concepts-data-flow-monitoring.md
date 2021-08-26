@@ -1,24 +1,28 @@
 ---
 title: 监视映射数据流
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 如何以可视化方式监视 Azure 数据工厂中的映射数据流
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 06/11/2021
-ms.openlocfilehash: 18481a24bb9e8d5624cb52c9b02833204d4f403d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.custom: synapse
+ms.date: 06/18/2021
+ms.openlocfilehash: b64ed4b59c2aba13640dec2f19dfa4e42696ce59
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112076577"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638930"
 ---
 # <a name="monitor-data-flows"></a>监视数据流
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-完成数据流的生成和调试之后，需要在管道上下文中将数据流安排为按计划执行。 可以使用触发器从 Azure 数据工厂计划管道。 或者，可以使用 Azure 数据工厂管道生成器中的“立即触发”选项执行单次运行，以便在管道上下文中测试数据流。
+完成数据流的生成和调试之后，需要在管道上下文中将数据流安排为按计划执行。 可以使用触发器从 Azure 数据工厂计划管道。 要测试和调试管道中的数据流，可以使用工具栏功能区上的“调试”按钮或 Azure 数据工厂管道生成器中的“立即触发”选项来执行单次运行，以测试管道上下文中的数据流。
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4P5pV]
 
 执行管道时，可以监视该管道及其包含的所有活动，包括数据流活动。 在 Azure 数据工厂 UI 的左侧面板中单击监视图标。 可以看到下面所示的屏幕。 使用突出显示的图标可以深入到管道中的活动，包括数据流活动。
 
@@ -28,7 +32,7 @@ ms.locfileid: "112076577"
 
 ![屏幕截图显示了查看数据流执行详细信息的眼镜图标。](media/data-flow/monitoring-details.png "数据流监视")
 
-在图形节点监视视图中，可以看到数据流图形的简化只读版本。
+在图形节点监视视图中，可以看到数据流图形的简化只读版本。 若要查看包含转换阶段标签的较大图形节点的详细信息视图，请使用画布右侧的缩放滑块。 还可使用右侧的搜索按钮在图中查找部分数据流逻辑。
 
 ![屏幕截图显示图形的仅查看版本。](media/data-flow/mon003.png "数据流监视")
 
@@ -41,6 +45,12 @@ ms.locfileid: "112076577"
 * 在监视窗口中选择空白区域时，底部窗格中的统计信息会显示每个接收器的计时和行数，以及生成转换沿袭的接收器数据的转换。
 
 * 选择单个转换时，右侧面板会显示其他反馈，其中显示了分区统计信息、列数、偏斜度（数据在分区之间的分布均匀度）和峰度（数据的峰度）。
+
+* 按处理时间排序有助于确定数据流中的哪些阶段所花时间最多。
+
+* 若要找出每个阶段中的哪些转换所花时间最多，请按最长处理时间进行排序。
+
+* 也可对写入的行排序，以确定数据流中的哪些流写入的数据最多。
 
 * 在节点视图中选择“接收器”时，可以看到列沿袭。 在整个数据流中，可通过三种不同的方法来累积要载入接收器的列。 它们分别是：
 
