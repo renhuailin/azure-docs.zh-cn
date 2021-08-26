@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 05/19/2021
-ms.openlocfilehash: 31f3dc8adcd17c7795351877c856fa854582007b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 937fcc60e8be144fce10748345b71cc05703c04f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110456542"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638519"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-db-api-for-mongodb-offline"></a>教程：将 MongoDB 脱机迁移到适用于 MongoDB 的 Azure Cosmos DB API
 [!INCLUDE[appliesto-mongodb-api](../cosmos-db/includes/appliesto-mongodb-api.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "110456542"
 
 本 MongoDB 迁移指南是 MongoDB 迁移系列的一部分。 关键的 MongoDB 迁移步骤包括[迁移前步骤](../cosmos-db/mongodb-pre-migration.md)、迁移步骤和[迁移后步骤](../cosmos-db/mongodb-post-migration.md)，如下所示。
 
-![迁移步骤示意图。](../cosmos-db/media/mongodb-pre-migration/overall-migration-steps.png)
+![迁移步骤示意图。](../cosmos-db/mongodb/media/pre-migration-steps/overall-migration-steps.png)
 
 ## <a name="overview-of-offline-data-migration-from-mongodb-to-azure-cosmos-db-using-dms"></a>使用 DMS 以脱机方式将数据从 MongoDB 迁移到 Azure Cosmos DB 概述
 
@@ -81,19 +81,7 @@ ms.locfileid: "110456542"
 
 ![显示如何启用服务器重试功能的屏幕截图。](media/tutorial-mongodb-to-cosmosdb/mongo-server-side-retry-enable.png)
 
-## <a name="register-the-resource-provider"></a>注册资源提供程序
-
-1. 登录到 Azure 门户，选择“所有服务”，然后选择“订阅”。
-
-   ![显示门户订阅的屏幕截图。](media/tutorial-mongodb-to-cosmosdb/portal-select-subscription1.png)
-
-2. 选择要在其中创建 Azure 数据库迁移服务实例的订阅，再选择“资源提供程序”。
-
-    ![显示资源提供程序的屏幕截图。](media/tutorial-mongodb-to-cosmosdb/portal-select-resource-provider.png)
-
-3. 搜索迁移服务，再选择“Microsoft.DataMigration”右侧的“注册” 。
-
-    ![显示如何注册资源提供程序的屏幕截图。](media/tutorial-mongodb-to-cosmosdb/portal-register-resource-provider.png)    
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]  
 
 ## <a name="create-an-instance"></a>创建实例
 

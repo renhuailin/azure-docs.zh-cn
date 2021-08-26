@@ -10,25 +10,25 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: joseys
-ms.openlocfilehash: dc674a7e013ed39bd04161cb7e96dc969eaf47eb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7253be0e9d7723bdb018b53e3ee655188bb3d679
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114473176"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121803156"
 ---
 ## <a name="prerequisites"></a>先决条件
 在开始之前，请务必：
 - 创建活动订阅的 Azure 帐户。 有关详细信息，请参阅[创建免费账户](https://azure.microsoft.com/free/)。
 - [Java 开发工具包 (JDK)](/azure/developer/java/fundamentals/java-jdk-install) 11 或更高版本。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
-- 创建 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信服务资源](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource)。 需要为此示例记录资源连接字符串。
-- 获取新的 Azure 通信服务资源的电话号码。 有关详细信息，请参阅[获取电话号码](https://docs.microsoft.com/azure/communication-services/quickstarts/telephony-sms/get-phone-number?pivots=platform-azp)。
+- 创建 Azure 通信服务资源。 有关详细信息，请参阅[创建 Azure 通信服务资源](../../../create-communication-resource.md)。 需要记下你的资源连接字符串以便在本示例中使用。
+- 获取新 Azure 通信服务资源的电话号码。 有关详细信息，请参阅[获取电话号码](../../../telephony-sms/get-phone-number.md?pivots=platform-azp)。
 - 下载并安装 [ngrok](https://www.ngrok.com/download)。 由于示例在本地运行，ngrok 将允许接收所有事件。
-- （可选）创建 Azure 语音资源，用于生成要由应用程序播放的自定义消息。 按照[本指南](../../../../../cognitive-services/speech-service/overview.md#try-the-speech-service-for-free)操作来创建资源。
+- （可选）创建 Azure 语音资源，以生成要由应用程序播放的自定义消息。 按照[此指南](../../../../../cognitive-services/speech-service/overview.md#try-the-speech-service-for-free)创建资源。
 
 > [!NOTE]
-> 可以在 [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/OutboundCallReminder) 上找到本快速入门的最终代码。 此示例使用 Microsoft 认知服务语音 SDK。 下载 Microsoft 认知服务语音 SDK，即表示你承认其[许可证](https://aka.ms/csspeech/license201809)。
+> 可以在 [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/OutboundCallReminder) 上找到本快速入门的已完成代码。 本示例使用 Microsoft 认知服务语音 SDK。 下载 Microsoft 认知服务语音 SDK，即表示你承认其[许可证](https://aka.ms/csspeech/license201809)。
 
 ## <a name="add-the-package-references-for-the-calling-server-sdk"></a>添加通话服务器 SDK 的包引用
 
@@ -65,8 +65,8 @@ ms.locfileid: "114473176"
 | 名称                                  | 说明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | CallingServerClientBuilder | 此类用于创建 CallingServerClient 的实例。|
-| CallingServerClient | 通话功能需要此类。 通过 CallingServerClientBuilder 获取一个实例，并使用它来开始/挂断电话、播放/取消播放音频以及添加/删除参与者 |
-| CommunicationIdentityClient | 创建或删除通信用户标识需要此类。 |
+| CallingServerClient | 呼叫功能需要此类。 通过 CallingServerClientBuilder 获取一个实例，并使用它来开始/挂断电话、播放/取消播放音频以及添加/删除参与者 |
+| CommunicationIdentityClient | 创建或删除通信用户标识时需要此类。 |
 
 ## <a name="create-a-call-client"></a>创建呼叫客户端
 
@@ -106,10 +106,10 @@ client.deleteUser(new CommunicationUserIdentifier(source));
 
 使用 `CallingServerClient` 对象的 `createCallConnectionWithResponse` 方法开始调用。 `createCallConnectionWithResponse` 方法支持以下参数：
 - `source` - 类型为 `CommunicationUserIdentifier` 的调用方的源用户标识。
-- `targets` - 类型为 `Iterable<CommunicationIdentifier>` 的目标标识列表。
-- `options` - 类型为 `CreateCallOptions` 的调用选项。 以下是 `CreateCallOptions` 方法的参数：
+- `targets`：类型为 `Iterable<CommunicationIdentifier>` 的目标标识列表。
+- `options`：类型为 `CreateCallOptions` 的呼叫选项。 下面是 `CreateCallOptions` 方法的参数：
 
-    - `callbackUri` - 应用程序的回叫 URI。
+    - `callbackUri`：应用程序的回调 URI。
     - `requestedModalities` - 请求调用方式。 类型为 `Iterable<MediaType>`。 值可以是音频或视频。
     - `requestedCallEvents` - 类型为 `Iterable<EventSubscriptionType>` 的请求回调事件。 使用此参数订阅 `EventSubscriptionType.PARTICIPANTS_UPDATED` 和 `EventSubscriptionType.DTMF_RECEIVED` 事件
 
@@ -171,9 +171,9 @@ Logger.logMessage(Logger.MessageType.INFORMATION, "playAudioWithResponse -- > " 
 response.getStatus().toString());
 ```
 
-## <a name="add-a-participant-to-the-call"></a>向通话添加参与者
+## <a name="add-a-participant-to-the-call"></a>添加呼叫参与者
 
-使用 `CallConnection` 对象的 `addParticipantWithResponse` 方法将参与者添加到通话中。 `addParticipantWithResponse` 方法支持以下参数：
+使用 `CallConnection` 对象的 `addParticipantWithResponse` 方法添加呼叫参与者。 `addParticipantWithResponse` 方法支持以下参数：
 
 - `participant` - 类型为 `CommunicationUserIdentifier` 或 `PhoneNumberIdentifier` 的参与者标识符。
 - `alternateCallerId` - 源呼叫方 ID。

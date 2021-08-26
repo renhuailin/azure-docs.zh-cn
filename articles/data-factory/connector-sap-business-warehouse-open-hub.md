@@ -1,18 +1,20 @@
 ---
 title: 通过 Open Hub 从 SAP Business Warehouse 中复制数据
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 了解如何在 Azure 数据工厂管道中使用复制活动，通过 Open Hub 将数据从 SAP Business Warehouse (BW) 复制到支持的接收器数据存储。
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 04/02/2021
-ms.openlocfilehash: a45de693f6818966eaf79fc8f636b27e8cb0c1da
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.custom: synapse
+ms.date: 07/30/2021
+ms.openlocfilehash: 2155e39da58650fb5ce14c56d7a3564f211a2cdd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788258"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638670"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>使用 Azure 数据工厂通过 Open Hub 从 SAP Business Warehouse 复制数据
 
@@ -188,6 +190,7 @@ SAP Business Warehouse Open Hub 链接服务支持以下属性：
 | excludeLastRequest | 是否排除最后一个请求的记录。 | 否（默认为 **true**） |
 | baseRequestId | 增量加载的请求的 ID。 设置以后，只会检索 requestId **大于** 此属性的值的数据。  | 否 |
 | customRfcReadTableFunctionModule | 可用于从 SAP 表读取数据的自定义 RFC 函数模块。 <br/> 可以使用自定义 RFC 函数模块来定义如何从 SAP 系统检索数据并将其返回到数据工厂。 必须为自定义函数模块实现一个接口（导入、导出、表），类似于数据工厂使用的默认接口 `/SAPDS/RFC_READ_TABLE2`。 | 否 |
+| sapDataColumnDelimiter | 单个字符，将用作传递给 SAP RFC 的分隔符，以用于拆分输出数据。 | 否 |
 
 >[!TIP]
 >如果 Open Hub 表只包含通过单个请求 ID 生成的数据（例如，始终进行完全加载并覆盖表中的现有数据，或者只在测试时运行 DTP 一次），则请记住取消选中“excludeLastRequest”选项，以便复制数据。

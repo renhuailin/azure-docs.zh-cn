@@ -3,15 +3,16 @@ title: 使用 Azure 数据工厂中的映射数据流处理错误行
 description: 了解如何使用映射数据流处理 Azure 数据工厂中的 SQL 截断错误。
 author: kromerm
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: makromer
-ms.openlocfilehash: a7a03ff1a58f50f16ebefce48b9e2772a16a011a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4f4c1c334bb3720118b050947da6345116ef22f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386333"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638573"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>使用映射数据流处理数据工厂中的 SQL 截断错误行
 

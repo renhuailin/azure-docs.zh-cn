@@ -1,19 +1,21 @@
 ---
 title: 映射数据流中的排序转换
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure 数据工厂映射数据排序转换
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 04/14/2020
-ms.openlocfilehash: 4a6567f8576e2507704956233bc593b203b48239
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 88253393820892f20544f5cbf6a83b21e24e8ec8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588728"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638646"
 ---
 # <a name="sort-transformation-in-mapping-data-flow"></a>映射数据流中的排序转换
 

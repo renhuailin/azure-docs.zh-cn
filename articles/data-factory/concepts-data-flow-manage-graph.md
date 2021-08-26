@@ -1,19 +1,21 @@
 ---
 title: 管理映射数据流图
+titleSuffix: Azure Data Factory & Azure Synapse
 description: 如何有效地管理和编辑映射数据流图
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
+ms.custom: synapse
 ms.date: 09/02/2020
-ms.openlocfilehash: f55364fe0eabae4bb1698bd655cde8d3e01b127a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bf274ce49a2b83fca49bc039c1ba3c7980531979
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97590454"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638188"
 ---
 # <a name="managing-the-mapping-data-flow-graph"></a>管理映射数据流图
 
@@ -25,11 +27,11 @@ ms.locfileid: "97590454"
 
 随着数据流变得越来越复杂，请使用以下机制来有效地导航和管理数据流图。 
 
-## <a name="moving-transformations"></a>移动转换
+## <a name="moving-transformations&quot;></a>移动转换
 
 在映射数据流时，一组连接的转换逻辑称为流。 传入流字段指示正在馈送当前转换的数据流。 每个转换都有一个或两个传入流（具体视其函数而定），并表示一个输出流。 传入流的输出架构确定当前转换可引用的列元数据。
 
-![移动节点](media/data-flow/move-nodes.png "移动节点")
+![移动节点](media/data-flow/move-nodes.png &quot;移动节点")
 
 与管道画布不同，数据流转换不使用拖放模型进行编辑。 要更改转换的传入流或“移动”转换，请从“传入流”下拉列表中选择其他值。 执行此操作时，所有下游转换将随编辑过的转换一起移动。 该图将自动更新以显示新的逻辑流。 如果将传入流更改为已具有下游转换的转换，则将创建新的分支或并行数据流。 详细了解[映射数据流中的新分支](data-flow-new-branch.md)。
 

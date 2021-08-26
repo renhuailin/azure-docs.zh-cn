@@ -3,15 +3,16 @@ title: 使用 Azure 数据工厂从 Office 365 加载数据
 description: 使用 Azure 数据工厂从 Office 365 复制数据
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: eae3a83a5354c61db27f38b7b73a396923427073
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: a7c809803df1e84528cc7cd8eb41574591aab8c1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485614"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638540"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Office 365 加载数据
 
@@ -38,15 +39,15 @@ ms.locfileid: "109485614"
 3. 选择“创建”  。
 4. 创建操作完成后，请转到数据工厂。 此时会看到“数据工厂”主页，如下图所示：
    
-   ![数据工厂主页](./media/load-office-365-data/data-factory-home-page.png)
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="Azure 数据工厂主页，其中包含“打开 Azure 数据工厂工作室”磁贴。":::
 
-5. 选择“创作和监视”磁贴，在单独的选项卡中启动数据集成应用程序  。
+5. 在“打开 Azure 数据工厂工作室”磁贴上选择“打开”，以便在单独的标签页中启动“数据集成应用程序”。 
 
 ## <a name="create-a-pipeline"></a>创建管道
 
-1. 在“开始使用”页中，选择“创建管道”。 
+1. 在主页上，选择“协调”。
  
-    ![创建管道](./media/load-office-365-data/create-pipeline-entry.png)
+    ![显示 ADF 主页的屏幕截图。](./media/doc-common-process/get-started-page.png)
 
 2. 在管道的“常规”  选项卡中，输入“CopyPipeline”作为管道的 **名称**。
 

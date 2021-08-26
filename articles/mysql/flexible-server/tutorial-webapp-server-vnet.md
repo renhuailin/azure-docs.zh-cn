@@ -8,17 +8,21 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 13baf8f033338e242610d7b8c4eec14806cd5ec5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1131b42b58e1ed751a7563b4c59e71981b722305
+ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770014"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "122643094"
 ---
 # <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>教程：在虚拟网络中创建 Azure Database for MySQL 灵活服务器（预览版）和应用服务 Web 应用
 
+[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+
+
 > [!IMPORTANT]
 > Azure Database for MySQL 灵活服务器当前以公共预览版提供。
+
 
 本教程介绍如何在[虚拟网络](../../virtual-network/virtual-networks-overview.md)中创建 Azure 应用服务 Web 应用和 MySQL 灵活服务器（预览版）。
 
